@@ -1,28 +1,49 @@
-import android.view.View;
-import java.util.List;
-
-class axhk
-  implements begw
+public class axhk
 {
-  axhk(axhh paramaxhh, List paramList, axin paramaxin, begr parambegr) {}
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private float jdField_b_of_type_Float;
+  private long jdField_b_of_type_Long;
+  private float jdField_c_of_type_Float;
+  private long jdField_c_of_type_Long;
   
-  public void OnClick(View paramView, int paramInt)
+  public long a(float paramFloat)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    this.jdField_b_of_type_Long += (1000.0F * paramFloat);
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public long a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Long == 0L)
     {
-      paramView = (axio)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (axhh.a(this.jdField_a_of_type_Axhh) != null) {
-        axhh.a(this.jdField_a_of_type_Axhh).a(paramView.b(), this.jdField_a_of_type_Axin);
-      }
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
+      this.jdField_a_of_type_Long = (paramLong * 1000L);
+      this.jdField_b_of_type_Long = (paramLong * 1000L);
+      this.jdField_c_of_type_Long = paramLong;
     }
-    this.jdField_a_of_type_Begr.cancel();
+    return paramLong * 1000L;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Float = 0.0F;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = ((float)(1000.0D / paramFloat));
+    this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + 0.3F);
+    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float - 0.7F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axhk
  * JD-Core Version:    0.7.0.1
  */

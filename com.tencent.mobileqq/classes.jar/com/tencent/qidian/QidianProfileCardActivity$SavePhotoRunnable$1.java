@@ -1,6 +1,6 @@
 package com.tencent.qidian;
 
-import bbmy;
+import bcpw;
 
 class QidianProfileCardActivity$SavePhotoRunnable$1
   implements Runnable
@@ -9,7 +9,7 @@ class QidianProfileCardActivity$SavePhotoRunnable$1
   
   public void run()
   {
-    bbmy.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getTitleBarHeight());
+    bcpw.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getTitleBarHeight());
   }
 }
 

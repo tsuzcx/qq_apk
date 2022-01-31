@@ -1,21 +1,29 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
 
-public class apch
-  implements Comparator<FileInfo>
+class apch
+  extends apbi
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  public apch(apbe paramapbe)
   {
-    if (paramFileInfo1.c())
+    super(paramapbe);
+  }
+  
+  protected String a()
+  {
+    return "StateSenderCancelSendWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      if (!paramFileInfo2.c()) {
-        return -1000;
-      }
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
     }
-    else if (paramFileInfo2.c()) {
-      return 1000;
-    }
-    return paramFileInfo1.d().compareToIgnoreCase(paramFileInfo2.d());
+    apbe.b(this.jdField_a_of_type_Apbe, 11, 8);
+    apbe.c(this.jdField_a_of_type_Apbe, 11, 8);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateSenderCancelSend)");
+    this.jdField_a_of_type_Apbi = new apcf(this.jdField_a_of_type_Apbe);
   }
 }
 

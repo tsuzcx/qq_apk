@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import agtk;
-import ajjy;
+import ahfz;
+import ajyc;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import awnu;
+import axmt;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
@@ -34,8 +34,8 @@ class MiniAppDesktopAdapter$SearchViewHolder
   public MiniAppDesktopAdapter$SearchViewHolder(WeakReference<Activity> paramWeakReference, View paramView)
   {
     super(paramView);
-    this.keywordTv = ((TextView)paramView.findViewById(2131304568));
-    this.container = paramView.findViewById(2131304567);
+    this.keywordTv = ((TextView)paramView.findViewById(2131370250));
+    this.container = paramView.findViewById(2131370249);
     this.container.setPadding(0, 0, 0, 0);
     paramView.setOnClickListener(new MiniAppDesktopAdapter.SearchViewHolder.1(this, paramWeakReference));
   }
@@ -46,12 +46,12 @@ class MiniAppDesktopAdapter$SearchViewHolder
     Object localObject1;
     if (localAppInterface != null)
     {
-      localObject1 = (agtk)localAppInterface.getManager(342);
-      if ((localObject1 == null) || (!((agtk)localObject1).h())) {
-        break label322;
+      localObject1 = (ahfz)localAppInterface.getManager(342);
+      if ((localObject1 == null) || (!((ahfz)localObject1).h())) {
+        break label312;
       }
       DesktopDataManager localDesktopDataManager = (DesktopDataManager)localAppInterface.getManager(336);
-      Object localObject2 = ((agtk)localObject1).a();
+      Object localObject2 = ((ahfz)localObject1).a();
       localObject1 = localObject2;
       if (localDesktopDataManager != null)
       {
@@ -86,43 +86,35 @@ class MiniAppDesktopAdapter$SearchViewHolder
         this.keywordTv.setText(paramDesktopSearchInfo);
         label253:
         if (this.keywordTv.getText() == null) {
-          break label458;
+          break label448;
         }
       }
     }
-    label322:
-    label458:
-    for (paramDesktopSearchInfo = this.keywordTv.getText().toString();; paramDesktopSearchInfo = ajjy.a(2131641011))
+    label312:
+    label448:
+    for (paramDesktopSearchInfo = this.keywordTv.getText().toString();; paramDesktopSearchInfo = ajyc.a(2131706796))
     {
-      if (localAppInterface != null)
-      {
-        localObject1 = (MiniAppExposureManager)localAppInterface.getManager(322);
-        paramDesktopSearchInfo = new MiniAppExposureManager.CardModuleExposureData("desktop", "search", "expo_search", paramDesktopSearchInfo);
-        if (((MiniAppExposureManager)localObject1).getDesktopPullDownState() != 3) {
-          break label467;
-        }
-        ((MiniAppExposureManager)localObject1).addReportItem(paramDesktopSearchInfo);
+      if (localAppInterface != null) {
+        ((MiniAppExposureManager)localAppInterface.getManager(322)).putReportDataToMap("search", new MiniAppExposureManager.CardModuleExposureData("desktop", "search", "expo_search", paramDesktopSearchInfo));
       }
       return;
-      if ((ThemeUtil.isDefaultTheme()) || (ThemeUtil.isGoldenTheme()) || (DisplayUtil.isWhiteModeTheme()) || (awnu.b(ThemeUtil.getCurrentThemeId()))) {
-        this.container.setBackgroundResource(2130840616);
+      if ((ThemeUtil.isDefaultTheme()) || (ThemeUtil.isGoldenTheme()) || (DisplayUtil.isWhiteModeTheme()) || (axmt.b(ThemeUtil.getCurrentThemeId()))) {
+        this.container.setBackgroundResource(2130840660);
       }
       for (;;)
       {
-        localObject1 = BaseApplicationImpl.getContext().getResources().getDrawable(2130848992);
+        localObject1 = BaseApplicationImpl.getContext().getResources().getDrawable(2130849227);
         ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getMinimumWidth(), ((Drawable)localObject1).getMinimumHeight());
         this.keywordTv.setCompoundDrawables((Drawable)localObject1, null, null, null);
-        this.keywordTv.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131101349));
+        this.keywordTv.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131166944));
         break;
-        this.container.setBackgroundResource(2130848996);
+        this.container.setBackgroundResource(2130849231);
       }
-      this.keywordTv.setText(ajjy.a(2131641003));
+      this.keywordTv.setText(ajyc.a(2131706788));
       break label253;
-      this.keywordTv.setText(ajjy.a(2131641006));
+      this.keywordTv.setText(ajyc.a(2131706791));
       break label253;
     }
-    label467:
-    ((MiniAppExposureManager)localObject1).putReportDataToMap("search", paramDesktopSearchInfo);
   }
 }
 

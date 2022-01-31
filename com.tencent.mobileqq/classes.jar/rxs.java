@@ -1,16 +1,26 @@
-import android.content.DialogInterface;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-final class rxs
-  extends baca
+public class rxs
+  implements rwi
 {
-  rxs(WSDownloadParams paramWSDownloadParams) {}
+  public rxs(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
-    rxn.a(126, this.a);
-    rzw.a(this.a.mScene, false, false);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("result", false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(BridgeModule.TAG, 2, "canOpenPage error" + localException.getMessage());
+    }
   }
 }
 

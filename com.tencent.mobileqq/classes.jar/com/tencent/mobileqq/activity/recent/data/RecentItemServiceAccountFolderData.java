@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ahcw;
-import amnh;
+import ahpl;
+import ando;
 import android.content.Context;
 import android.content.res.Resources;
-import auqh;
+import avpq;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
 import mqq.manager.Manager;
-import rol;
-import rsp;
+import sbc;
+import sfh;
 
 public class RecentItemServiceAccountFolderData
   extends RecentUserBaseData
@@ -32,23 +32,23 @@ public class RecentItemServiceAccountFolderData
       return;
     }
     super.a(paramQQAppInterface, paramContext);
-    boolean bool = rsp.a;
+    boolean bool = sfh.a;
     label35:
-    rol localrol;
+    sbc localsbc;
     if (bool)
     {
       this.mMenuFlag |= 0x1;
       if (QLog.isColorLevel()) {
         QLog.d("RecentItemServiceAccountFolderData", 2, "uin:" + paramQQAppInterface.c() + ", canDelete:" + bool + ", mMenuFlag:" + this.mMenuFlag);
       }
-      localrol = rol.a();
-      this.mTitleName = rol.a(paramQQAppInterface);
-      this.mDisplayTime = localrol.a(paramQQAppInterface);
-      this.mUnreadNum = localrol.b();
+      localsbc = sbc.a();
+      this.mTitleName = sbc.a(paramQQAppInterface);
+      this.mDisplayTime = localsbc.a(paramQQAppInterface);
+      this.mUnreadNum = localsbc.b();
       Manager localManager = paramQQAppInterface.getManager(36);
-      if ((localManager instanceof auqh))
+      if ((localManager instanceof avpq))
       {
-        int i = ((auqh)localManager).a("104000.104001", 100);
+        int i = ((avpq)localManager).a("104000.104001", 100);
         if (i > 0) {
           this.mUnreadNum += i;
         }
@@ -57,7 +57,7 @@ public class RecentItemServiceAccountFolderData
       if (this.mUnreadNum > 0) {
         break label665;
       }
-      if ((!localrol.a()) || (this.mDisplayTime <= localrol.b())) {
+      if ((!localsbc.a()) || (this.mDisplayTime <= localsbc.b())) {
         break label657;
       }
       this.mUnreadFlag = 2;
@@ -66,11 +66,11 @@ public class RecentItemServiceAccountFolderData
       if (this.mDisplayTime == 0L) {
         break label673;
       }
-      this.mShowTime = ahcw.a().a(a(), this.mDisplayTime);
+      this.mShowTime = ahpl.a().a(a(), this.mDisplayTime);
       label280:
-      this.mReportKeyBytesOacMsgxtend = localrol.b();
-      this.mLastMsg = localrol.a(paramQQAppInterface);
-      if (!localrol.b()) {
+      this.mReportKeyBytesOacMsgxtend = localsbc.b();
+      this.mLastMsg = localsbc.a(paramQQAppInterface);
+      if (!localsbc.b()) {
         break label686;
       }
       this.mStatus = 4;
@@ -78,12 +78,12 @@ public class RecentItemServiceAccountFolderData
       if ((this.mUnreadNum <= 0) || (this.mUnreadFlag != 1)) {
         break label694;
       }
-      this.mMsgExtroInfo = localrol.c();
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131101360);
+      this.mMsgExtroInfo = localsbc.c();
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131166955);
     }
     for (;;)
     {
-      if (AppSetting.c)
+      if (AppSetting.d)
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(this.mTitleName).append(",");
@@ -103,7 +103,7 @@ public class RecentItemServiceAccountFolderData
         break label35;
       }
       QLog.d("RecentItemServiceAccountFolderData", 1, "canDelete:" + bool + ", mMenuFlag:" + this.mMenuFlag + " tryResetServiceAccountFolderDeleteFlag = " + tryResetServiceAccountFolderDeleteFlag);
-      amnh.c(paramQQAppInterface, paramQQAppInterface.c());
+      ando.c(paramQQAppInterface, paramQQAppInterface.c());
       tryResetServiceAccountFolderDeleteFlag += 1;
       break label35;
       label657:
@@ -113,7 +113,7 @@ public class RecentItemServiceAccountFolderData
       this.mUnreadFlag = 1;
       break label253;
       label673:
-      this.mShowTime = localrol.b(paramQQAppInterface);
+      this.mShowTime = localsbc.b(paramQQAppInterface);
       break label280;
       label686:
       this.mStatus = 0;

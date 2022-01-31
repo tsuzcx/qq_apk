@@ -1,36 +1,30 @@
 import android.content.res.Resources;
-import com.tencent.mobileqq.nearby.gift.TroopGiftPanelForNearby;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class asim
-  extends azjp
+class asim
+  extends ClickableSpan
 {
-  public asim(TroopGiftPanelForNearby paramTroopGiftPanelForNearby) {}
+  asim(asik paramasik, BaseActivity paramBaseActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    ajnb.a("gift_store", "suc_one", this.a.a(), TroopGiftPanelForNearby.a(this.a) + "", "", "");
+    asik.a(this.jdField_a_of_type_Asik, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
   }
   
-  public void a(int paramInt, String paramString)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
-    }
-    if (paramInt == 20007) {
-      bbmy.a(TroopGiftPanelForNearby.a(this.a), ajjy.a(2131649632), 0).b(this.a.getResources().getDimensionPixelSize(2131167766));
-    }
-    for (;;)
-    {
-      ajnb.a("gift_store", "fail_one", this.a.a(), TroopGiftPanelForNearby.b(this.a) + "", "", "");
-      return;
-      bbmy.a(TroopGiftPanelForNearby.b(this.a), ajjy.a(2131649629), 0).b(this.a.getResources().getDimensionPixelSize(2131167766));
-    }
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setColor(this.jdField_a_of_type_Asik.a.getApp().getResources().getColor(2131166862));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asim
  * JD-Core Version:    0.7.0.1
  */

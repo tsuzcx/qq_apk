@@ -1,56 +1,44 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import org.json.JSONObject;
+import android.os.Debug;
+import java.io.IOException;
 
-class bfmq
-  extends bfmh
+public class bfmq
 {
-  bfmq(bfmp parambfmp) {}
+  private static boolean jdField_a_of_type_Boolean;
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "35872667", "354653668", "270749863", "279242625", "1849510872" };
   
-  public void b(@NonNull bfmi parambfmi)
+  public static void a(String paramString)
   {
-    int i = 1;
+    if (jdField_a_of_type_Boolean) {}
     for (;;)
     {
-      try
+      return;
+      Object localObject = jdField_a_of_type_ArrayOfJavaLangString;
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
       {
-        parambfmi = parambfmi.a();
-        bfne.b("ReaderShadowGrayManager", "onReceiveDataOnSubThread: jsonResult:" + parambfmi);
-        if (parambfmi == null) {
-          break;
-        }
-        if (parambfmi.length() == 0) {
-          return;
-        }
-        if ((parambfmi.getInt("ret") == 0) && (parambfmi.getJSONObject("data").getBoolean("isGrayUser")))
+        if (localObject[i].equals(paramString))
         {
-          bool = true;
-          bfmp.a(true);
-          parambfmi = bfmp.a().edit();
-          if (!bool) {
-            break label140;
+          localObject = ajsf.bc + "dump_";
+          try
+          {
+            Debug.dumpHprofData((String)localObject + paramString + System.currentTimeMillis());
+            jdField_a_of_type_Boolean = true;
+            return;
           }
-          parambfmi.putInt("KEY_SHADOW_GRAY", i).apply();
-          bfne.b("ReaderShadowGrayManager", "onReceiveDataOnSubThread: result=" + bool);
-          return;
+          catch (IOException paramString)
+          {
+            return;
+          }
         }
+        i += 1;
       }
-      catch (Exception parambfmi)
-      {
-        bfne.a("ReaderShadowGrayManager", "onReceiveDataOnSubThread: Exception happened ---> ", parambfmi);
-        return;
-      }
-      boolean bool = false;
-      continue;
-      label140:
-      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfmq
  * JD-Core Version:    0.7.0.1
  */

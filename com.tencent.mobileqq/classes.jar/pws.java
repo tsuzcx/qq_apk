@@ -1,148 +1,127 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import java.util.HashMap;
+import java.util.List;
 
 public class pws
-  extends psk
+  extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  public Bundle a;
-  axvs jdField_a_of_type_Axvs = new pwt(this);
-  axvt jdField_a_of_type_Axvt;
-  private WeakReference<psm> jdField_a_of_type_JavaLangRefWeakReference;
-  private QQAppInterface jdField_b_of_type_ComTencentMobileqqAppQQAppInterface;
-  private WeakReference<Context> jdField_b_of_type_JavaLangRefWeakReference;
-  private String d;
-  private String e;
-  private String f;
-  private String g;
-  private String h;
+  private List<RecommendFollowInfo> jdField_a_of_type_JavaUtilList;
   
-  public pws(Context paramContext, psm parampsm, Intent paramIntent)
+  private pws(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
+  
+  public void a(List<RecommendFollowInfo> paramList)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parampsm);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)obz.a());
-    this.jdField_a_of_type_AndroidOsBundle = paramIntent.getExtras();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    c();
-    psj.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
   }
   
-  private void a(float paramFloat)
+  public int getCount()
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((psm)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, paramFloat);
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
+    return 0;
   }
   
-  private void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public Object getItem(int paramInt)
   {
-    paramString1 = pwl.a().a(paramString1).b(paramString2).d(paramString4).c(paramString3).e(paramString5).a();
-    if (paramInt == 0) {
-      a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidOsBundle, paramString1, (psm)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    }
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((psm)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, paramInt, paramString1);
-    }
+    return null;
   }
   
-  private void b(int paramInt)
+  public long getItemId(int paramInt)
   {
-    a(paramInt, null, null, null, null, null);
+    return paramInt;
   }
   
-  private void c()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    this.g = this.jdField_a_of_type_AndroidOsBundle.getString("arg_video_path");
-    this.h = this.jdField_a_of_type_AndroidOsBundle.getString("arg_video_cover");
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("mTaskID");
-  }
-  
-  private void c(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    long l1 = NetConnInfoCenter.getServerTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    awrn localawrn = awrn.a((Context)this.jdField_b_of_type_JavaLangRefWeakReference.get());
-    String str = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
+    int i = 0;
+    if (paramView == null)
     {
-      localawrn.a(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
-      return;
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560000, paramViewGroup, false);
+      paramViewGroup = new pwt(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367399));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367408));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378802));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376422));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370838));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376878));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366537));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366528));
+      paramView.setTag(paramViewGroup);
+      paramView.setOnClickListener(paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(paramViewGroup);
+      RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo = localRecommendFollowInfo;
+      ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList).mRecommendFollowInfos.a.put(Long.valueOf(localRecommendFollowInfo.uin), localRecommendFollowInfo);
+      if (TextUtils.isEmpty(localRecommendFollowInfo.headUrl)) {
+        break label409;
+      }
+      Object localObject = URLDrawable.URLDrawableOptions.obtain();
+      Drawable localDrawable = bbdr.b();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
+      localObject = URLDrawable.getDrawable(localRecommendFollowInfo.headUrl, (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setDecodeHandler(bavi.a);
+      ((URLDrawable)localObject).setFadeInImage(true);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      label291:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localRecommendFollowInfo.nickName);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localRecommendFollowInfo.recommendReason);
+      if (!localRecommendFollowInfo.isFollowed) {
+        break label422;
+      }
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(ajyc.a(2131702330));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-8947849);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130848437);
+      label353:
+      localObject = paramViewGroup.jdField_b_of_type_AndroidWidgetImageView;
+      if (!localRecommendFollowInfo.isVip) {
+        break label454;
+      }
+      paramInt = 0;
+      label369:
+      ((ImageView)localObject).setVisibility(paramInt);
+      paramViewGroup = paramViewGroup.jdField_c_of_type_AndroidWidgetImageView;
+      if (!localRecommendFollowInfo.isStar) {
+        break label460;
+      }
     }
-  }
-  
-  public void a()
-  {
-    a(this.h);
-    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.d("KingsMomentVideoDeliveControllerr", 1, "startUploadPic path=" + paramString);
-    if (TextUtils.isEmpty(paramString))
+    label409:
+    label422:
+    label454:
+    label460:
+    for (paramInt = i;; paramInt = 8)
     {
-      QLog.d("KingsMomentVideoDeliveControllerr", 1, "startUploadPic empty path!");
-      b(10);
-      return;
+      paramViewGroup.setVisibility(paramInt);
+      return paramView;
+      paramViewGroup = (pwt)paramView.getTag();
+      break;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(bbdr.b());
+      break label291;
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(ajyc.a(2131702320));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130848406);
+      break label353;
+      paramInt = 8;
+      break label369;
     }
-    if (!new File(paramString).exists())
-    {
-      QLog.d("KingsMomentVideoDeliveControllerr", 1, "startUploadPic file not exist, path=" + paramString);
-      b(5);
-      return;
-    }
-    if (!mpq.a((Context)this.jdField_b_of_type_JavaLangRefWeakReference.get()))
-    {
-      b(1003);
-      return;
-    }
-    this.d = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.f = "";
-    CompressInfo localCompressInfo = new CompressInfo(paramString, 0);
-    localCompressInfo.f = 0;
-    if (!atqs.a(localCompressInfo)) {
-      c(1001);
-    }
-    QLog.d("KingsMomentVideoDeliveControllerr", 1, "startUploadPic compressPath=" + localCompressInfo.jdField_e_of_type_JavaLangString + ", originPath=" + paramString + ", outWidth=" + localCompressInfo.d + ", outHeight=" + localCompressInfo.jdField_e_of_type_Int);
-    if (TextUtils.isEmpty(localCompressInfo.jdField_e_of_type_JavaLangString)) {}
-    for (;;)
-    {
-      this.d = paramString;
-      paramString = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      this.jdField_a_of_type_Axvs.addFilter(new Class[] { axom.class });
-      paramString.a(this.jdField_a_of_type_Axvs);
-      this.jdField_a_of_type_Axvt = new axvt();
-      this.jdField_a_of_type_Axvt.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Axvt.jdField_c_of_type_Int = 10;
-      this.jdField_a_of_type_Axvt.i = this.d;
-      this.jdField_a_of_type_Axvt.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-      this.jdField_a_of_type_Axvt.jdField_c_of_type_JavaLangString = "0";
-      this.jdField_a_of_type_Axvt.b = 24;
-      this.jdField_a_of_type_Axvt.jdField_a_of_type_JavaLangString = "KandianUGCPicUpload";
-      paramString.a(this.jdField_a_of_type_Axvt);
-      return;
-      paramString = localCompressInfo.jdField_e_of_type_JavaLangString;
-    }
-  }
-  
-  public void b()
-  {
-    psj.a(this.d);
   }
 }
 

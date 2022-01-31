@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import com.tencent.mobileqq.mini.apkg.WindowInfo;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
@@ -29,8 +30,8 @@ class MiniAppVideoPlayer$16
   
   public void run()
   {
+    int i = 4;
     int j = 0;
-    i = 0;
     if (this.this$0.isBusyInChangeScreen) {}
     Activity localActivity;
     do
@@ -49,6 +50,12 @@ class MiniAppVideoPlayer$16
     this.this$0.isFullScreen = false;
     MiniAppVideoPlayer.access$4100(this.this$0).setVisibility(8);
     MiniAppVideoPlayer.access$4200(this.this$0).setVisibility(8);
+    if (this.this$0.hideTimeDesc)
+    {
+      MiniAppVideoPlayer.access$3200(this.this$0).setVisibility(4);
+      MiniAppVideoPlayer.access$1900(this.this$0).setVisibility(4);
+      MiniAppVideoPlayer.access$3300(this.this$0).setVisibility(4);
+    }
     if ((this.this$0.webviewContainer != null) && (this.this$0.webviewContainer.appBrandRuntime != null) && (this.this$0.webviewContainer.appBrandRuntime.getCurPage() != null))
     {
       if (this.this$0.webviewContainer.appBrandRuntime.getCurPage().getNavBar() != null) {
@@ -63,66 +70,67 @@ class MiniAppVideoPlayer$16
     if (this.this$0.webviewContainer != null)
     {
       localObject = this.this$0.webviewContainer.getPageOrientation();
-      if (WindowInfo.ORIENTATION_AUTO.equals(localObject))
-      {
-        i = 4;
-        localActivity.setRequestedOrientation(i);
-        label359:
-        if (Build.VERSION.SDK_INT >= 16) {
-          localActivity.getWindow().getDecorView().setSystemUiVisibility(1024);
-        }
-      }
+      if (!WindowInfo.ORIENTATION_AUTO.equals(localObject)) {}
     }
     for (;;)
     {
-      try
-      {
-        if ((this.this$0.webviewContainer != null) && (this.this$0.webviewContainer.appBrandRuntime != null) && (this.this$0.webviewContainer.appBrandRuntime.getCurPage() != null) && (this.this$0.webviewContainer.appBrandRuntime.getCurPage().getNavBar() != null))
-        {
-          i = this.this$0.webviewContainer.appBrandRuntime.getCurPage().getNavBar().getStatusNavigationBarTextStyle();
-          if (i != -1) {
-            continue;
-          }
-          ImmersiveUtils.a(false, localActivity.getWindow());
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("MiniAppVideoPlayer", 1, "smallScreen: ", localException);
-        continue;
-        i = 1;
-        continue;
-      }
-      this.this$0.lastSmallScreenTime = System.currentTimeMillis();
-      this.this$0.isBusyInChangeScreen = true;
-      MiniAppVideoPlayer.access$3900(this.this$0).postDelayed(new MiniAppVideoPlayer.16.1(this), 200L);
-      MiniAppVideoPlayer.access$3500(this.this$0);
-      MiniAppVideoPlayer.access$5400(this.this$0);
-      return;
-      if (WindowInfo.ORIENTATION_LANDSCAPE.equals(localObject)) {
-        break;
-      }
-      i = 1;
-      break;
-      if (GameLoadManager.g().getMiniGamePkg() == null) {
-        break label359;
-      }
-      localObject = GameLoadManager.g().getMiniGamePkg().mGameConfigJson;
-      if (localObject == null) {
-        break label359;
-      }
-      localObject = ((JSONObject)localObject).optString("deviceOrientation", null);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label359;
-      }
-      if (!"landscape".equals(localObject)) {
-        continue;
-      }
-      i = j;
       localActivity.setRequestedOrientation(i);
-      break label359;
-      if (i == -16777216) {
-        ImmersiveUtils.a(true, localActivity.getWindow());
+      label400:
+      if (Build.VERSION.SDK_INT >= 16) {
+        localActivity.getWindow().getDecorView().setSystemUiVisibility(1024);
+      }
+      for (;;)
+      {
+        try
+        {
+          if ((this.this$0.webviewContainer != null) && (this.this$0.webviewContainer.appBrandRuntime != null) && (this.this$0.webviewContainer.appBrandRuntime.getCurPage() != null) && (this.this$0.webviewContainer.appBrandRuntime.getCurPage().getNavBar() != null))
+          {
+            i = this.this$0.webviewContainer.appBrandRuntime.getCurPage().getNavBar().getStatusNavigationBarTextStyle();
+            if (i != -1) {
+              continue;
+            }
+            ImmersiveUtils.a(false, localActivity.getWindow());
+          }
+        }
+        catch (Exception localException)
+        {
+          QLog.e("MiniAppVideoPlayer", 1, "smallScreen: ", localException);
+          continue;
+          i = 1;
+          continue;
+          i = 1;
+        }
+        this.this$0.lastSmallScreenTime = System.currentTimeMillis();
+        this.this$0.isBusyInChangeScreen = true;
+        MiniAppVideoPlayer.access$3900(this.this$0).postDelayed(new MiniAppVideoPlayer.16.1(this), 200L);
+        MiniAppVideoPlayer.access$3500(this.this$0);
+        MiniAppVideoPlayer.access$5400(this.this$0);
+        return;
+        if (!WindowInfo.ORIENTATION_LANDSCAPE.equals(localObject)) {
+          continue;
+        }
+        i = 0;
+        break;
+        if (GameLoadManager.g().getMiniGamePkg() == null) {
+          break label400;
+        }
+        localObject = GameLoadManager.g().getMiniGamePkg().mGameConfigJson;
+        if (localObject == null) {
+          break label400;
+        }
+        localObject = ((JSONObject)localObject).optString("deviceOrientation", null);
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label400;
+        }
+        if (!"landscape".equals(localObject)) {
+          continue;
+        }
+        i = j;
+        localActivity.setRequestedOrientation(i);
+        break label400;
+        if (i == -16777216) {
+          ImmersiveUtils.a(true, localActivity.getWindow());
+        }
       }
     }
   }

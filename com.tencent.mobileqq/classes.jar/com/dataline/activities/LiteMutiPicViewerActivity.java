@@ -1,10 +1,10 @@
 package com.dataline.activities;
 
-import aciy;
-import ajgm;
-import ajgs;
-import akau;
-import aken;
+import actn;
+import ajuo;
+import ajuv;
+import akpg;
+import aksz;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -21,13 +21,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aons;
-import apcb;
-import apck;
-import badq;
-import ci;
-import cj;
-import ck;
+import apen;
+import aptv;
+import apue;
+import bbev;
 import com.dataline.util.file.DLFileInfo;
 import com.dataline.util.widget.WaitTextView;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -36,27 +33,30 @@ import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
 import com.tencent.qphone.base.util.QLog;
-import dj;
-import dk;
-import fb;
+import eb;
+import ec;
+import ed;
+import fc;
+import fd;
+import gu;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class LiteMutiPicViewerActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, fb
+  implements View.OnClickListener, gu
 {
   private int jdField_a_of_type_Int;
-  private ajgs jdField_a_of_type_Ajgs = new cj(this);
+  private ajuv jdField_a_of_type_Ajuv = new ec(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private GridView jdField_a_of_type_AndroidWidgetGridView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ck jdField_a_of_type_Ck;
   private WaitTextView jdField_a_of_type_ComDatalineUtilWidgetWaitTextView;
   private DataLineMsgSet jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet;
+  private ed jdField_a_of_type_Ed;
   private int jdField_b_of_type_Int;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private int c;
@@ -70,21 +70,21 @@ public class LiteMutiPicViewerActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131305913));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131302178));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131302179));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131302180));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131101260));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131302173));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131302167));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131371609));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367796));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367797));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367798));
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166854));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131367791));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131367785));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView = new WaitTextView(this);
     this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setRefreshListener(this);
     this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setGravity(17);
-    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setTextColor(getResources().getColor(2131101338));
+    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setTextColor(getResources().getColor(2131166933));
     this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setTextSize(1, 16.0F);
-    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setPadding(0, 0, 0, aciy.a(50.0F, getResources()));
+    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setPadding(0, 0, 0, actn.a(50.0F, getResources()));
     AbsListView.LayoutParams localLayoutParams = new AbsListView.LayoutParams(a(this), -2);
     this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(3);
@@ -93,8 +93,8 @@ public class LiteMutiPicViewerActivity
     this.jdField_a_of_type_AndroidWidgetGridView.setHorizontalSpacing(this.c * 2);
     this.jdField_a_of_type_AndroidWidgetGridView.setPadding(this.e, this.jdField_a_of_type_AndroidWidgetGridView.getPaddingTop(), this.e, this.jdField_a_of_type_AndroidWidgetGridView.getPaddingBottom());
     this.jdField_a_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
-    this.jdField_a_of_type_Ck = new ck(this, null);
-    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Ck);
+    this.jdField_a_of_type_Ed = new ed(this, null);
+    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Ed);
     c();
   }
   
@@ -108,14 +108,14 @@ public class LiteMutiPicViewerActivity
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSendFromLocal()) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131627233);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692871);
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ck.notifyDataSetChanged();
+      this.jdField_a_of_type_Ed.notifyDataSetChanged();
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131627232);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692870);
       continue;
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.hasSendingOrRecving())
       {
@@ -139,7 +139,7 @@ public class LiteMutiPicViewerActivity
     String str = "(" + this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getCompletedCount() + "/" + this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getTotalCount() + ")";
     StringBuilder localStringBuilder = new StringBuilder();
     if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSendFromLocal()) {}
-    for (int i = 2131627247;; i = 2131627208)
+    for (int i = 2131692885;; i = 2131692846)
     {
       str = getString(i) + str;
       this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
@@ -149,7 +149,7 @@ public class LiteMutiPicViewerActivity
   
   private void e()
   {
-    setTitle(2131628267);
+    setTitle(2131693908);
     this.rightViewImg.setVisibility(4);
     this.rightViewText.setVisibility(4);
   }
@@ -157,29 +157,29 @@ public class LiteMutiPicViewerActivity
   private void f()
   {
     Display localDisplay = ((WindowManager)getSystemService("window")).getDefaultDisplay();
-    this.e = getResources().getDimensionPixelSize(2131166199);
-    this.c = getResources().getDimensionPixelSize(2131166201);
-    this.d = getResources().getDimensionPixelSize(2131166202);
+    this.e = getResources().getDimensionPixelSize(2131297280);
+    this.c = getResources().getDimensionPixelSize(2131297282);
+    this.d = getResources().getDimensionPixelSize(2131297283);
     this.jdField_a_of_type_Int = ((localDisplay.getWidth() - this.e * 2 - this.c * 2) / 3);
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
   }
   
   private void g()
   {
-    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setText(String.format(getString(2131628286), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getTotalCount()) }));
+    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setText(String.format(getString(2131693927), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getTotalCount()) }));
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet != null) && (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isTimeOut()) && (this.jdField_a_of_type_Ck != null)) {
-      this.jdField_a_of_type_Ck.notifyDataSetChanged();
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet != null) && (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isTimeOut()) && (this.jdField_a_of_type_Ed != null)) {
+      this.jdField_a_of_type_Ed.notifyDataSetChanged();
     }
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131494872);
+    setContentView(2131560443);
     int i = getIntent().getIntExtra("dataline_group_id", -1);
     this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet = this.app.a(0).a(i);
     if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet == null) {
@@ -190,7 +190,7 @@ public class LiteMutiPicViewerActivity
       QLog.e("IphoneTitleBarActivity", 1, "LiteMutiPicViewerActivity mSet is null, so finish");
       finish();
     }
-    addObserver(this.jdField_a_of_type_Ajgs);
+    addObserver(this.jdField_a_of_type_Ajuv);
     f();
     b();
     e();
@@ -201,8 +201,8 @@ public class LiteMutiPicViewerActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Ajgs != null) {
-      removeObserver(this.jdField_a_of_type_Ajgs);
+    if (this.jdField_a_of_type_Ajuv != null) {
+      removeObserver(this.jdField_a_of_type_Ajuv);
     }
     if (this.app.a() != null) {
       this.app.a().e();
@@ -215,19 +215,19 @@ public class LiteMutiPicViewerActivity
   public void onClick(View paramView)
   {
     Object localObject2 = null;
-    ajgm localajgm = (ajgm)this.app.a(8);
+    ajuo localajuo = (ajuo)this.app.a(8);
     Object localObject1;
     switch (paramView.getId())
     {
     default: 
       return;
-    case 2131302179: 
-      if (badq.d(this))
+    case 2131367797: 
+      if (bbev.d(this))
       {
-        apck.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSendFromLocal(), this, new ci(this, localajgm));
+        apue.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSendFromLocal(), this, new eb(this, localajuo));
         this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
         if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2000) && (!this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle())) {
-          dj.p(this.app);
+          fc.p(this.app);
         }
         Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
         localObject1 = null;
@@ -235,7 +235,7 @@ public class LiteMutiPicViewerActivity
         while (localIterator.hasNext())
         {
           DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-          DLFileInfo localDLFileInfo = dk.a(localDataLineMsgRecord);
+          DLFileInfo localDLFileInfo = fd.a(localDataLineMsgRecord);
           if (localDLFileInfo.jdField_a_of_type_Int == 1)
           {
             localObject2 = localObject1;
@@ -257,7 +257,7 @@ public class LiteMutiPicViewerActivity
               if (!DataLineMsgSet.isSingle(localDataLineMsgRecord)) {
                 break label326;
               }
-              dj.d(this.app);
+              fc.d(this.app);
             }
             for (;;)
             {
@@ -272,31 +272,31 @@ public class LiteMutiPicViewerActivity
               paramView = (View)localObject2;
               break;
               label326:
-              dj.e(this.app);
+              fc.e(this.app);
             }
           }
         }
         if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0)) {
-          localajgm.a((ArrayList)localObject1, true);
+          localajuo.a((ArrayList)localObject1, true);
         }
         if ((paramView != null) && (paramView.size() > 0)) {
-          localajgm.a(paramView);
+          localajuo.a(paramView);
         }
         c();
         return;
       }
-      apcb.a(2131629008);
+      aptv.a(2131694672);
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(true);
     if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2000) && (!this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle())) {
-      dj.o(this.app);
+      fc.o(this.app);
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335) && (!this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isReportPause))
     {
       this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isReportPause = true;
       if (!this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle()) {
-        dj.m(this.app);
+        fc.m(this.app);
       }
     }
     else
@@ -304,22 +304,22 @@ public class LiteMutiPicViewerActivity
       if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle()) || (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335)) {
         break label524;
       }
-      localajgm.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupId(), 0L, false);
+      localajuo.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupId(), 0L, false);
     }
     for (;;)
     {
       c();
       return;
-      dj.k(this.app);
+      fc.k(this.app);
       break;
       label524:
       paramView = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
       while (paramView.hasNext())
       {
         localObject1 = (DataLineMsgRecord)paramView.next();
-        localObject2 = dk.a((DataLineMsgRecord)localObject1);
+        localObject2 = fd.a((DataLineMsgRecord)localObject1);
         if ((((DLFileInfo)localObject2).jdField_a_of_type_Int == 0) || (((DLFileInfo)localObject2).jdField_a_of_type_Int == 3)) {
-          localajgm.a(((DataLineMsgRecord)localObject1).groupId, ((DataLineMsgRecord)localObject1).sessionid, false);
+          localajuo.a(((DataLineMsgRecord)localObject1).groupId, ((DataLineMsgRecord)localObject1).sessionid, false);
         }
       }
     }

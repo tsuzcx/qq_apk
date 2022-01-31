@@ -1,29 +1,55 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import Wallet.PfaFriendRsp;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-class agyd
-  implements View.OnClickListener
+final class agyd
+  extends Handler
 {
-  agyd(agxq paramagxq) {}
-  
-  public void onClick(View paramView)
+  agyd(Looper paramLooper)
   {
-    this.a.a(-1, null);
-    if (akgo.a().a() == 4)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool2 = true;
+    switch (paramMessage.what)
     {
-      awqx.b(agxq.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, akgn.b(), akgo.b(), akgo.a(), "1");
-      akgo.a().a(agxq.a(this.a));
+    default: 
       return;
     }
-    awqx.b(agxq.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, akgn.b(), akgo.b(), akgo.a(), "1");
-    UpgradeDetailActivity.a(agxq.a(this.a), akgo.a().a(), true, true, true);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramMessage.obj != null)
+    {
+      localObject1 = localObject2;
+      if ((paramMessage.obj instanceof PfaFriendRsp)) {
+        localObject1 = (PfaFriendRsp)paramMessage.obj;
+      }
+    }
+    boolean bool1;
+    if (paramMessage.arg1 == 1)
+    {
+      bool1 = true;
+      if (paramMessage.arg2 != 1) {
+        break label93;
+      }
+    }
+    for (;;)
+    {
+      agyc.a(bool1, (PfaFriendRsp)localObject1, bool2);
+      return;
+      bool1 = false;
+      break;
+      label93:
+      bool2 = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agyd
  * JD-Core Version:    0.7.0.1
  */

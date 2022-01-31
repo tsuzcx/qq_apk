@@ -1,65 +1,48 @@
-import java.io.File;
+import android.content.Context;
 
 public class argk
 {
-  public int a;
-  public boolean a;
-  public String[] a;
-  public int b;
-  public String[] b;
-  public int c;
-  public int d;
+  private static final String jdField_a_of_type_JavaLangString = "PTT|" + argk.class.getSimpleName();
+  argm jdField_a_of_type_Argm;
+  private argn jdField_a_of_type_Argn;
+  private argn b = new argl(this);
   
-  public argk()
+  public argk(Context paramContext, int paramInt)
   {
-    a();
+    this.jdField_a_of_type_Argm = new argm(this, paramContext);
   }
   
-  private void a()
+  public int a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 1;
-    this.c = 100;
-    this.d = 0;
-    this.jdField_a_of_type_ArrayOfJavaLangString = null;
-    this.jdField_b_of_type_ArrayOfJavaLangString = null;
+    this.jdField_a_of_type_Argm.a();
+    return 0;
   }
   
-  public boolean a()
+  public String a()
   {
-    int i;
-    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
-    {
-      i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        if (!new File(this.jdField_a_of_type_ArrayOfJavaLangString[i]).exists()) {
-          return false;
-        }
-        i += 1;
-      }
-    }
-    if ((this.jdField_b_of_type_ArrayOfJavaLangString != null) && (this.jdField_b_of_type_ArrayOfJavaLangString.length > 0))
-    {
-      i = 0;
-      for (;;)
-      {
-        if (i >= this.jdField_b_of_type_ArrayOfJavaLangString.length) {
-          break label106;
-        }
-        if (!new File(this.jdField_b_of_type_ArrayOfJavaLangString[i]).exists()) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    label106:
-    return true;
+    return ".m4a";
+  }
+  
+  public void a(String paramString, argn paramargn)
+  {
+    this.jdField_a_of_type_Argn = paramargn;
+    this.jdField_a_of_type_Argm.a(paramString, this.b);
+  }
+  
+  public int b()
+  {
+    this.jdField_a_of_type_Argm.b();
+    return 0;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Argm.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     argk
  * JD-Core Version:    0.7.0.1
  */

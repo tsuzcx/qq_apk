@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import asvw;
-import atqs;
-import axvo;
-import axvt;
-import baip;
+import atsa;
+import auoq;
+import ayvv;
+import aywa;
+import bbjw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 import com.tencent.mobileqq.pic.CompressInfo;
@@ -14,27 +14,27 @@ import java.util.LinkedList;
 public class NearbyProfileEditPanel$22
   implements Runnable
 {
-  public NearbyProfileEditPanel$22(asvw paramasvw) {}
+  public NearbyProfileEditPanel$22(atsa paramatsa) {}
   
   public void run()
   {
-    asvw.a(this.this$0, (PicInfo)this.this$0.jdField_a_of_type_JavaUtilLinkedList.poll());
-    if (asvw.a(this.this$0) == null) {
+    atsa.a(this.this$0, (PicInfo)this.this$0.jdField_a_of_type_JavaUtilLinkedList.poll());
+    if (atsa.a(this.this$0) == null) {
       return;
     }
-    CompressInfo localCompressInfo = new CompressInfo(asvw.a(this.this$0).c, 0);
+    CompressInfo localCompressInfo = new CompressInfo(atsa.a(this.this$0).c, 0);
     localCompressInfo.f = 0;
-    atqs.a(localCompressInfo);
+    auoq.a(localCompressInfo);
     if (QLog.isColorLevel()) {
       QLog.d("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..uploadPhoto(), img_path = " + localCompressInfo.e);
     }
-    if (!baip.a(localCompressInfo.e))
+    if (!bbjw.a(localCompressInfo.e))
     {
-      axvt localaxvt = new axvt();
-      localaxvt.a = true;
-      localaxvt.i = localCompressInfo.e;
-      localaxvt.b = 8;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.a().a(localaxvt);
+      aywa localaywa = new aywa();
+      localaywa.a = true;
+      localaywa.i = localCompressInfo.e;
+      localaywa.b = 8;
+      this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.a().a(localaywa);
       return;
     }
     this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.runOnUiThread(new NearbyProfileEditPanel.22.1(this));

@@ -1,48 +1,112 @@
-public class lap
+import android.os.SystemClock;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InterruptedIOException;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.HashSet;
+import java.util.Iterator;
+import javax.net.ssl.SSLException;
+import org.apache.http.NoHttpResponseException;
+import org.apache.http.client.HttpRequestRetryHandler;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.protocol.HttpContext;
+
+class lap
+  implements HttpRequestRetryHandler
 {
-  public static String a;
-  private laq jdField_a_of_type_Laq = new laq(this);
-  private lay jdField_a_of_type_Lay = new lay(this);
+  private static HashSet<Class<?>> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private static HashSet<Class<?>> b = new HashSet();
+  private final int jdField_a_of_type_Int;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "";
+    jdField_a_of_type_JavaUtilHashSet.add(NoHttpResponseException.class);
+    jdField_a_of_type_JavaUtilHashSet.add(UnknownHostException.class);
+    jdField_a_of_type_JavaUtilHashSet.add(SocketException.class);
+    b.add(InterruptedIOException.class);
+    b.add(SSLException.class);
   }
   
-  public int a(byte[] paramArrayOfByte)
+  public lap(int paramInt)
   {
-    if (this.jdField_a_of_type_Lay != null) {
-      return this.jdField_a_of_type_Lay.a(paramArrayOfByte);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected boolean a(HashSet<Class<?>> paramHashSet, Throwable paramThrowable)
+  {
+    paramHashSet = paramHashSet.iterator();
+    while (paramHashSet.hasNext()) {
+      if (((Class)paramHashSet.next()).isInstance(paramThrowable)) {
+        return true;
+      }
     }
-    return -1;
+    return false;
   }
   
-  public lar a()
+  public boolean retryRequest(IOException paramIOException, int paramInt, HttpContext paramHttpContext)
   {
-    lar locallar = null;
-    if (this.jdField_a_of_type_Lay != null) {
-      locallar = this.jdField_a_of_type_Lay.a();
+    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("Translator", 2, "[retryRequest] exception:" + paramIOException + "executionCount:" + paramInt);
     }
-    return locallar;
-  }
-  
-  public void a(long paramLong, laz paramlaz)
-  {
-    this.jdField_a_of_type_Laq.a(paramLong, paramlaz);
-  }
-  
-  public byte[] a()
-  {
-    byte[] arrayOfByte = null;
-    if (this.jdField_a_of_type_Laq != null) {
-      arrayOfByte = this.jdField_a_of_type_Laq.a();
+    Boolean localBoolean = (Boolean)paramHttpContext.getAttribute("http.request_sent");
+    int i;
+    boolean bool1;
+    if ((localBoolean != null) && (localBoolean.booleanValue()))
+    {
+      i = 1;
+      if (paramInt <= this.jdField_a_of_type_Int) {
+        break label136;
+      }
+      bool1 = false;
     }
-    return arrayOfByte;
+    for (;;)
+    {
+      label83:
+      if (bool1) {
+        if (!((HttpUriRequest)paramHttpContext.getAttribute("http.request")).getMethod().equals("POST")) {
+          bool1 = bool2;
+        }
+      }
+      for (;;)
+      {
+        if (bool1)
+        {
+          SystemClock.sleep(1500L);
+          return bool1;
+          i = 0;
+          break;
+          label136:
+          if (a(b, paramIOException))
+          {
+            bool1 = false;
+            break label83;
+          }
+          if (a(jdField_a_of_type_JavaUtilHashSet, paramIOException))
+          {
+            bool1 = true;
+            break label83;
+          }
+          if (i != 0) {
+            break label197;
+          }
+          bool1 = true;
+          break label83;
+          bool1 = false;
+          continue;
+        }
+        paramIOException.printStackTrace();
+        return bool1;
+      }
+      label197:
+      bool1 = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     lap
  * JD-Core Version:    0.7.0.1
  */

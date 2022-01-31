@@ -1,11 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import tencent.im.oidb.oidb_0xc90.RspBody;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract class rbo
+class rbo
+  implements View.OnClickListener
 {
-  public rbo(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
+  rbo(rap paramrap, String paramString) {}
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0xc90.RspBody paramRspBody) {}
+  public void onClick(View paramView)
+  {
+    noo.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
+  }
 }
 
 

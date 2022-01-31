@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import atmo;
+import aukm;
 
 public class ChannelTopCookie
-  extends atmo
+  extends aukm
   implements Cloneable
 {
   public static final String TABLE_NAME = ArticleInfo.class.getSimpleName();

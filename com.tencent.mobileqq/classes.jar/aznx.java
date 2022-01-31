@@ -1,15 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.data.TroopFeedItem;
+import java.nio.ByteBuffer;
 
-public abstract class aznx
+class aznx
 {
-  public aznx(aznr paramaznr) {}
+  public final int a;
+  public final long a;
+  public final long b;
   
-  protected abstract View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean);
-  
-  public View a(TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
+  public aznx(ByteBuffer paramByteBuffer)
   {
-    return a(null, paramTroopFeedItem, paramInt, paramBoolean);
+    this.jdField_a_of_type_Int = (paramByteBuffer.get() & 0xFFFF);
+    this.jdField_a_of_type_Long = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
   }
 }
 

@@ -1,33 +1,22 @@
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
-import java.lang.ref.SoftReference;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class adqz
+class adqz
+  implements View.OnClickListener
 {
-  public String a;
-  SoftReference<View> a;
-  SoftReference<ViewGroup> b;
+  adqz(adqy paramadqy, long paramLong) {}
   
-  public adqz(String paramString, View paramView, ViewGroup paramViewGroup)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
-    this.b = new SoftReference(paramViewGroup);
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-  }
-  
-  public ViewGroup a()
-  {
-    return (ViewGroup)this.b.get();
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    this.b = new SoftReference(paramViewGroup);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("uinType", this.jdField_a_of_type_Adqy.a.a);
+    localIntent.putExtra("uniseq", this.jdField_a_of_type_Long);
+    localIntent.putExtra("public_fragment_window_feature", 1);
+    abtu.a(paramView.getContext(), localIntent, PublicTransFragmentActivity.class, ScoreQAVFragment.class);
   }
 }
 

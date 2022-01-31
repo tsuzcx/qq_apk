@@ -1,47 +1,23 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
-import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiShareDataInfo;
 
-class bhfg
-  implements bimf
+public final class bhfg
+  implements Parcelable.Creator<WeishiShareDataInfo>
 {
-  bhfg(bhff parambhff) {}
-  
-  public void a()
+  public WeishiShareDataInfo a(Parcel paramParcel)
   {
-    if (this.a.jdField_a_of_type_Int != 14)
-    {
-      this.a.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setVisibility(0);
-      bhff.a(this.a).setVisibility(0);
-      bhff.a(this.a).setVisibility(0);
-      bhff.a(this.a).a();
-      if ((!this.a.f()) && (!bhff.a(this.a)))
-      {
-        bhff.a(this.a).setVisibility(0);
-        if (this.a.c()) {
-          bhff.a(this.a).setVisibility(0);
-        }
-      }
-    }
+    return new WeishiShareDataInfo(paramParcel);
   }
   
-  public void a(birb parambirb)
+  public WeishiShareDataInfo[] a(int paramInt)
   {
-    this.a.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setVisibility(8);
-    bhff.a(this.a).setVisibility(8);
-    bhff.a(this.a).setVisibility(8);
-    if (this.a.c()) {
-      bhff.a(this.a).setVisibility(8);
-    }
-    bhff.a(this.a).a(103, new Object[] { parambirb });
+    return new WeishiShareDataInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhfg
  * JD-Core Version:    0.7.0.1
  */

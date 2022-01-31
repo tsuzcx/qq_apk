@@ -1,32 +1,26 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class abvw
   implements View.OnClickListener
 {
-  public abvw(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public abvw(QQMapActivity paramQQMapActivity) {}
   
   public void onClick(View paramView)
   {
-    int i = 0;
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.size() == 0)) {}
-    for (;;)
+    if (this.a.a == null)
     {
-      return;
-      awqx.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_confirm", 0, 0, "", "", "", "");
-      this.a.jdField_a_of_type_Bahr = ((bahr)this.a.app.getManager(31));
-      this.a.b.setCompoundDrawablesWithIntrinsicBounds(2130839113, 0, 0, 0);
-      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        paramView = String.valueOf(this.a.jdField_a_of_type_JavaUtilList.get(i));
-        this.a.a(paramView, 4);
-        i += 1;
-      }
+      this.a.a = ((bfol)bfoy.a(this.a, null));
+      this.a.a.b(2131698133);
+      this.a.a.b(2131692324);
+      this.a.a.c(2131690596);
+      this.a.a.a(new abvx(this));
     }
+    if (!this.a.a.isShowing()) {
+      this.a.a.show();
+    }
+    axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
   }
 }
 

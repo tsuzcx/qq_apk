@@ -1,71 +1,20 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
+import android.os.Bundle;
 
-public class aztk
-  extends baxr
+public abstract interface aztk
 {
-  public aztk(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramAppInterface);
-    super.preInitPluginEngine();
-    this.mWebview = new TouchWebView(this.mContext);
-    buildBaseWebView(paramAppInterface);
-  }
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public void a()
-  {
-    super.doOnResume();
-  }
+  public abstract void a(String paramString);
   
-  public void a(Intent paramIntent)
-  {
-    super.doOnCreate(paramIntent);
-  }
+  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, Bundle paramBundle);
   
-  public void a(String paramString)
-  {
-    if (bbdf.jdField_a_of_type_Boolean)
-    {
-      bbdc.a(this.mWebview, bbdf.jdField_a_of_type_JavaLangString);
-      bbdf.jdField_a_of_type_Boolean = false;
-    }
-    this.mUrl = paramString;
-    this.mWebview.loadUrl(this.mUrl);
-  }
+  public abstract void b(String paramString);
   
-  public void b()
-  {
-    super.doOnPause();
-  }
-  
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
-  {
-    if (paramArrayList != null) {
-      paramArrayList.add(new bbey());
-    }
-  }
-  
-  public void c()
-  {
-    super.doOnDestroy();
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-    paramWebView.loadUrl("javascript:" + SnapshotService.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aztk
  * JD-Core Version:    0.7.0.1
  */

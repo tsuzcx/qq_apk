@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.os.Handler;
 import com.tencent.biz.pubaccount.VideoInfo;
-import qcn;
+import qol;
 
 class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable
   implements Runnable
@@ -28,7 +28,7 @@ class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable
   {
     try
     {
-      boolean bool = qcn.a(VideoFeedsRecommendFragment.a(this.this$0), Long.valueOf(this.a.j).longValue());
+      boolean bool = qol.a(VideoFeedsRecommendFragment.a(this.this$0), Long.valueOf(this.a.j).longValue());
       if (VideoFeedsRecommendFragment.a(this.this$0) == null) {
         return;
       }

@@ -18,7 +18,7 @@ class MultiVideoCtrlLayerUIBase$3
       }
       return;
     }
-    int i = this.this$0.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131167858);
+    int i = this.this$0.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131298957);
     this.this$0.d.setMaxWidth(i);
   }
 }

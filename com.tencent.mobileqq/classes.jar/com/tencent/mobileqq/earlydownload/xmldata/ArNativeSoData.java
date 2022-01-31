@@ -1,16 +1,18 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
+import anpf;
+
 public class ArNativeSoData
   extends XmlData
 {
   public String getSharedPreferencesName()
   {
-    return "early_qq.android.ar.native.so_v8.0.0";
+    return "early_" + anpf.a;
   }
   
   public String getStrResName()
   {
-    return "qq.android.ar.native.so_v8.0.0";
+    return anpf.a;
   }
 }
 

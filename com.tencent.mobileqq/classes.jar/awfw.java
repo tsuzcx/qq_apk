@@ -1,12 +1,30 @@
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.richstatus.topic.TopicEditTextView;
+
 public class awfw
+  implements ActionMode.Callback
 {
-  double jdField_a_of_type_Double = 0.15D;
-  int jdField_a_of_type_Int = 1280;
-  long jdField_a_of_type_Long = 754974720L;
-  double jdField_b_of_type_Double = 0.067D;
-  int jdField_b_of_type_Int = 30;
-  long jdField_b_of_type_Long = 1048576L;
-  long c = 4194304L;
+  public awfw(TopicEditTextView paramTopicEditTextView) {}
+  
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  {
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return TopicEditTextView.a(this.a);
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
 }
 
 

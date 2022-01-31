@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.app;
 
-import aifg;
-import ajfs;
+import airz;
+import ajtu;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class ClubContentUpdateHandler$1
   implements Runnable
 {
-  public ClubContentUpdateHandler$1(ajfs paramajfs, int paramInt, String paramString) {}
+  public ClubContentUpdateHandler$1(ajtu paramajtu, int paramInt, String paramString) {}
   
   public void run()
   {
     try
     {
-      aifg localaifg = (aifg)this.this$0.a.getManager(153);
+      airz localairz = (airz)this.this$0.a.getManager(153);
       int i = ApolloUtil.a(1);
       if (i != this.jdField_a_of_type_Int) {
-        localaifg.a(1);
+        localairz.a(1);
       }
       QLog.i("ClubContentUpdateHandler", 1, "handleApolloPanelRelTimeUpdate name: " + this.jdField_a_of_type_JavaLangString + ", ver: " + this.jdField_a_of_type_Int + ", locver: " + i);
       return;

@@ -1,51 +1,31 @@
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.view.QQGameStatusView;
-import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodCodec;
 
-public class apzh
-  implements View.OnClickListener
+public abstract class apzh
+  extends apzg
 {
-  public apzh(QQGameStatusView paramQQGameStatusView) {}
+  MethodChannel a;
   
-  public void onClick(View paramView)
+  public apzh(String paramString, BinaryMessenger paramBinaryMessenger)
   {
-    if ((QQGameStatusView.a(this.a) == null) || (QQGameStatusView.a(this.a))) {}
-    do
-    {
-      do
-      {
-        return;
-        if (QQGameStatusView.a(this.a) == 1)
-        {
-          QQGameStatusView.a(this.a).b(QQGameStatusView.a(this.a));
-          return;
-        }
-        if (QQGameStatusView.a(this.a) == 2)
-        {
-          QQGameStatusView.a(this.a).a(QQGameStatusView.a(this.a));
-          return;
-        }
-        if (QQGameStatusView.a(this.a) == 3)
-        {
-          QQGameStatusView.a(this.a).c(QQGameStatusView.a(this.a));
-          return;
-        }
-        if (QQGameStatusView.a(this.a) == 5)
-        {
-          QQGameStatusView.a(this.a).d(QQGameStatusView.a(this.a));
-          return;
-        }
-      } while (QQGameStatusView.a(this.a) != 6);
-      if (!TextUtils.isEmpty(QQGameStatusView.b(this.a)))
-      {
-        QQGameStatusView.a(this.a).a(QQGameStatusView.a(this.a), QQGameStatusView.b(this.a));
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQGameStatusView", 1, "downloadFilePath is null,install faile");
+    super(paramString, paramBinaryMessenger);
+    MethodCodec localMethodCodec = a();
+    if (TextUtils.isEmpty(paramString)) {
+      throw new IllegalArgumentException("channelName must not be empty");
+    }
+    if (localMethodCodec == null) {
+      throw new IllegalArgumentException("methodCodec must not be null");
+    }
+    this.a = new MethodChannel(paramBinaryMessenger, paramString, a());
+    this.a.setMethodCallHandler(a());
   }
+  
+  public abstract MethodChannel.MethodCallHandler a();
+  
+  public abstract MethodCodec a();
 }
 
 

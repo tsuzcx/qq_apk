@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo;
 
-import afzt;
+import aglr;
 import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
 
 public class FileVideoMediaPlayHelper$2
   implements Runnable
 {
-  public FileVideoMediaPlayHelper$2(afzt paramafzt) {}
+  public FileVideoMediaPlayHelper$2(aglr paramaglr) {}
   
   public void run()
   {
-    if (afzt.a(this.this$0) != null) {
-      afzt.a(this.this$0).stopPreLoad(afzt.a(this.this$0));
+    if (aglr.a(this.this$0) != null) {
+      aglr.a(this.this$0).stopPreLoad(aglr.a(this.this$0));
     }
   }
 }

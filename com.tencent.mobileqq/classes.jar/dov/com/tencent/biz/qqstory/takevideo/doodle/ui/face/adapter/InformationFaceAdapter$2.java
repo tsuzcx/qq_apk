@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter;
 
-import bace;
-import bipg;
+import bbdj;
+import bkgb;
 import java.io.File;
 
 public class InformationFaceAdapter$2
   implements Runnable
 {
-  public InformationFaceAdapter$2(bipg parambipg, String paramString) {}
+  public InformationFaceAdapter$2(bkgb parambkgb, String paramString) {}
   
   public void run()
   {
-    bace.a(new File(this.a).getParentFile().getParentFile().getPath(), false);
+    bbdj.a(new File(this.a).getParentFile().getParentFile().getPath(), false);
   }
 }
 

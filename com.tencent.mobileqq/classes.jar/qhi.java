@@ -1,18 +1,22 @@
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
 
-class qhi
-  extends beem
+public class qhi
+  implements View.OnKeyListener
 {
-  qhi(qhf paramqhf, AlphaAnimation paramAlphaAnimation) {}
+  public qhi(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Qhf.a.s.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0) && (TextUtils.isEmpty(ReadInJoySelectMemberFragment.a(this.a).getText()))) {
+      ReadInJoySelectMemberFragment.a(this.a).a();
+    }
+    return false;
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

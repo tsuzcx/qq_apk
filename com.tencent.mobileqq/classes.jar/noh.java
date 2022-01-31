@@ -1,44 +1,52 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.ADVideoAppDownloadManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SetRefuseFollowResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
-public class noh
+class noh
+  implements BusinessObserver
 {
-  public static void a(Activity paramActivity, int paramInt, VideoInfo paramVideoInfo)
-  {
-    if (paramVideoInfo == null) {
-      return;
-    }
-    AdvertisementInfo localAdvertisementInfo = nbe.a(paramVideoInfo.a);
-    if (paramVideoInfo.a(paramActivity))
-    {
-      nbe.a(new nmv().a(paramActivity).a(nbe.a).b(nbe.P).a(localAdvertisementInfo).a(paramVideoInfo.a).d(paramInt).a());
-      return;
-    }
-    nbe.a(new nmv().a(paramActivity).a(nbe.a).b(nbe.N).a(localAdvertisementInfo).a(paramVideoInfo.a).d(paramInt).a());
-  }
+  noh(nnx paramnnx, NewIntent paramNewIntent, non paramnon) {}
   
-  public static void a(Activity paramActivity, int paramInt, VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, ADVideoAppDownloadManager paramADVideoAppDownloadManager)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramVideoInfo.c)
-    {
-      if (!paramADVideoAppDownloadManager.a(paramVideoInfo)) {
-        break label33;
-      }
-      rvb.b(paramActivity, paramAdvertisementInfo, null, 3, true, null);
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (QLog.isColorLevel()) {
+      QLog.i("PublicAccountManager", 2, "success:" + String.valueOf(paramBoolean));
     }
-    for (;;)
+    bool = paramBoolean;
+    if (paramBoolean) {}
+    try
     {
-      a(paramActivity, paramInt, paramVideoInfo);
-      return;
-      label33:
-      if (paramAdvertisementInfo != null) {
-        paramAdvertisementInfo.setClickPos(paramInt);
+      paramBundle = paramBundle.getByteArray("data");
+      mobileqq_mp.SetRefuseFollowResponse localSetRefuseFollowResponse = new mobileqq_mp.SetRefuseFollowResponse();
+      localSetRefuseFollowResponse.mergeFrom(paramBundle);
+      bool = paramBoolean;
+      if (localSetRefuseFollowResponse.ret_info.has())
+      {
+        bool = paramBoolean;
+        if (localSetRefuseFollowResponse.ret_info.ret_code.has())
+        {
+          paramInt = localSetRefuseFollowResponse.ret_info.ret_code.get();
+          bool = paramBoolean;
+          if (paramInt != 0L) {
+            bool = false;
+          }
+        }
       }
-      paramADVideoAppDownloadManager = new nmr();
-      paramADVideoAppDownloadManager.c = true;
-      rvb.b(paramActivity, paramAdvertisementInfo, null, 3, true, paramADVideoAppDownloadManager);
+    }
+    catch (Exception paramBundle)
+    {
+      for (;;)
+      {
+        bool = false;
+      }
+    }
+    if (this.jdField_a_of_type_Non != null) {
+      this.jdField_a_of_type_Non.a(bool);
     }
   }
 }

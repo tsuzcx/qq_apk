@@ -1,22 +1,57 @@
-import android.graphics.Paint;
-import android.support.annotation.NonNull;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class axjy
-  extends axkc
+  extends AsyncTask<String, Integer, Boolean>
 {
-  axjy(@NonNull String paramString)
+  axjy(axjq paramaxjq) {}
+  
+  protected Boolean a(String... paramVarArgs)
   {
-    super(0, paramString);
+    paramVarArgs = paramVarArgs[0];
+    if (paramVarArgs == null) {
+      paramVarArgs = Boolean.valueOf(false);
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramVarArgs;
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("VALUE_MSG_VIDEO_ID", paramVarArgs);
+        paramVarArgs = axkb.a().a("CMD_QUERY_VIDEO_REDBAG_STAT", (Bundle)localObject);
+        if (paramVarArgs == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("RedBagVideoManager", 2, "QueryRewardedTask VideoPlayIPCClient.callServer value=null");
+          }
+          return Boolean.valueOf(false);
+        }
+        localObject = Boolean.valueOf(paramVarArgs.getBoolean("VALUE_MSG_REDBAG_STAT"));
+        paramVarArgs = (String[])localObject;
+      } while (!((Boolean)localObject).booleanValue());
+      paramVarArgs = (String[])localObject;
+    } while (axjq.b(this.a) == null);
+    axjq.b(this.a).h = 1;
+    return localObject;
   }
   
-  float a(@NonNull Paint paramPaint)
+  protected void a(Boolean paramBoolean)
   {
-    return paramPaint.measureText(a());
+    if (paramBoolean.booleanValue()) {
+      axjq.c(this.a);
+    }
+    while (axjq.a(this.a)) {
+      return;
+    }
+    axjq.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axjy
  * JD-Core Version:    0.7.0.1
  */

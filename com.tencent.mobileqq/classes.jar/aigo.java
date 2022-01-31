@@ -1,34 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-public final class aigo
-  implements zrt
+abstract interface aigo
 {
-  public aigo(View paramView, zrw paramzrw, long paramLong, int paramInt, String paramString) {}
+  public abstract void a(int paramInt);
   
-  public void onComplete() {}
+  public abstract void a(int paramInt, String paramString1, PublishVideoEntry paramPublishVideoEntry, String paramString2, long paramLong);
   
-  public void onFailure(int paramInt, String paramString)
-  {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login failed," + paramString);
-  }
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
   
-  public void onPermission(int paramInt)
-  {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login permision code");
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    ApolloRender.getLocationDoLocation(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
+  public abstract void b(PublishVideoEntry paramPublishVideoEntry, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aigo
  * JD-Core Version:    0.7.0.1
  */

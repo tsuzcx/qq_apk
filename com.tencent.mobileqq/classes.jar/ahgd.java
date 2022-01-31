@@ -1,36 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import java.util.Comparator;
 
-public class ahgd
-  implements View.OnTouchListener
+class ahgd
+  implements Comparator<ahgk>
 {
-  public ahgd(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  ahgd(ahfz paramahfz) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(ahgk paramahgk1, ahgk paramahgk2)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (EditLocalVideoActivity.a(this.a).isPlaying()) {
-        if (EditLocalVideoActivity.b(this.a))
-        {
-          EditLocalVideoActivity.b(this.a, false);
-          EditLocalVideoActivity.a(this.a).pause();
-          EditLocalVideoActivity.a(this.a).setVisibility(0);
-        }
-      }
-      while (!EditLocalVideoActivity.b(this.a)) {
-        return true;
-      }
-      EditLocalVideoActivity.a(this.a).start();
-      EditLocalVideoActivity.b(this.a, true);
-      EditLocalVideoActivity.a(this.a).setVisibility(4);
-      return true;
+    if (paramahgk1.a == paramahgk2.a) {
+      return 0;
     }
-    return false;
+    if (paramahgk1.a > paramahgk2.a) {
+      return 1;
+    }
+    return -1;
   }
 }
 

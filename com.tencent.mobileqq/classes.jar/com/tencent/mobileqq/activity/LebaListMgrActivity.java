@@ -1,96 +1,98 @@
 package com.tencent.mobileqq.activity;
 
-import abbg;
-import abbh;
-import abbi;
-import afqa;
-import aiat;
-import aiax;
-import aiay;
-import ajqx;
-import amnq;
+import ablc;
+import abld;
+import able;
+import agca;
+import ainm;
+import ainq;
+import ainr;
+import ajzo;
+import akfh;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import atdh;
-import awqx;
-import behi;
+import andx;
+import atzl;
+import axqw;
+import bfpc;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.XListView;
-import msg;
+import ndh;
 
 public class LebaListMgrActivity
   extends IphoneTitleBarActivity
-  implements aiax, aiay, behi
+  implements ainq, ainr, bfpc
 {
   char jdField_a_of_type_Char;
-  private aiat jdField_a_of_type_Aiat;
-  protected ajqx a;
-  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new abbg(this);
+  private ainm jdField_a_of_type_Ainm;
+  protected akfh a;
+  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new ablc(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private atdh jdField_a_of_type_Atdh = new abbh(this);
+  private atzl jdField_a_of_type_Atzl = new abld(this);
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private boolean jdField_a_of_type_Boolean = true;
   
   public LebaListMgrActivity()
   {
-    this.jdField_a_of_type_Ajqx = new abbi(this);
+    this.jdField_a_of_type_Akfh = new able(this);
   }
   
   private void a()
   {
     if (this.jdField_a_of_type_ComTencentWidgetXListView == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)View.inflate(this, 2131495240, null));
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)View.inflate(this, 2131560818, null));
       this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
       this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
       this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-      View localView = View.inflate(this, 2131495238, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131311534));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131628113);
+      View localView = View.inflate(this, 2131560816, null);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377350));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131693754);
       this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(localView, null, false);
     }
-    if (this.jdField_a_of_type_Aiat == null)
+    if (this.jdField_a_of_type_Ainm == null)
     {
-      this.jdField_a_of_type_Aiat = new aiat(this.app, this, afqa.a().a(), this, this);
-      this.jdField_a_of_type_Aiat.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
+      this.jdField_a_of_type_Ainm = new ainm(this.app, this, agca.a().a(), this, this);
+      this.jdField_a_of_type_Ainm.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
       this.jdField_a_of_type_AndroidDatabaseDataSetObserver.onChanged();
     }
     super.setContentView(this.jdField_a_of_type_ComTencentWidgetXListView);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aiat);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ainm);
     this.centerView.setTextSize(1, 17.0F);
-    setTitle(2131628112);
+    setTitle(2131693753);
     if (QLog.isDevelopLevel()) {
-      QLog.i("Q.lebatab.mgr", 4, "initUi, " + afqa.a().jdField_a_of_type_Boolean);
+      QLog.i("Q.lebatab.mgr", 4, "initUi, " + agca.a().jdField_a_of_type_Boolean);
     }
     this.app.m();
-    if (!afqa.a().jdField_a_of_type_Boolean) {
+    this.jdField_a_of_type_Ainm.a(this.app.a().a());
+    if (!agca.a().jdField_a_of_type_Boolean) {
       ThreadManager.post(new LebaListMgrActivity.1(this), 5, null, true);
     }
   }
   
-  public void a(amnq paramamnq) {}
+  public void a(andx paramandx) {}
   
-  public boolean a(amnq paramamnq)
+  public boolean a(andx paramandx)
   {
-    return (paramamnq != null) && (paramamnq.a != null);
+    return (paramandx != null) && (paramandx.a != null);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    afqa.jdField_a_of_type_Int |= 0x1;
+    agca.jdField_a_of_type_Int |= 0x1;
     this.jdField_a_of_type_Char = this.app.a().a().charAt(2);
     a();
-    this.app.registObserver(this.jdField_a_of_type_Atdh);
-    this.app.addObserver(this.jdField_a_of_type_Ajqx, true);
-    awqx.b(this.app, "dc00898", "", "", "0X80098FB", "0X80098FB", 0, 0, "", "", "", "");
+    this.app.registObserver(this.jdField_a_of_type_Atzl);
+    this.app.addObserver(this.jdField_a_of_type_Akfh, true);
+    axqw.b(this.app, "dc00898", "", "", "0X80098FB", "0X80098FB", 0, 0, "", "", "", "");
     return true;
   }
   
@@ -98,13 +100,13 @@ public class LebaListMgrActivity
   {
     super.doOnDestroy();
     this.jdField_a_of_type_ComTencentWidgetXListView = null;
-    if (this.jdField_a_of_type_Aiat != null)
+    if (this.jdField_a_of_type_Ainm != null)
     {
-      this.jdField_a_of_type_Aiat.unregisterDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
-      this.jdField_a_of_type_Aiat = null;
+      this.jdField_a_of_type_Ainm.unregisterDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
+      this.jdField_a_of_type_Ainm = null;
     }
-    this.app.unRegistObserver(this.jdField_a_of_type_Atdh);
-    this.app.removeObserver(this.jdField_a_of_type_Ajqx);
+    this.app.unRegistObserver(this.jdField_a_of_type_Atzl);
+    this.app.removeObserver(this.jdField_a_of_type_Akfh);
   }
   
   public void doOnPause()
@@ -121,7 +123,7 @@ public class LebaListMgrActivity
     default: 
       return;
     }
-    this.jdField_a_of_type_Aiat.a(afqa.a().a());
+    this.jdField_a_of_type_Ainm.a(agca.a().a());
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {}
@@ -129,8 +131,8 @@ public class LebaListMgrActivity
   public void onPostThemeChanged()
   {
     super.onPostThemeChanged();
-    if (this.jdField_a_of_type_Aiat != null) {
-      this.jdField_a_of_type_Aiat.a();
+    if (this.jdField_a_of_type_Ainm != null) {
+      this.jdField_a_of_type_Ainm.a();
     }
   }
 }

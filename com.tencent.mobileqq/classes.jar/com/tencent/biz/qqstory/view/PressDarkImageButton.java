@@ -14,7 +14,7 @@ import android.support.v4.util.MQLruCache;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageButton;
-import azvq;
+import bawu;
 import com.tencent.common.app.BaseApplicationImpl;
 
 @TargetApi(14)
@@ -34,7 +34,7 @@ public class PressDarkImageButton
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 16843210, 16843211, 2130968820 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 16843210, 16843211, 2131034363 };
   }
   
   public PressDarkImageButton(Context paramContext)
@@ -90,7 +90,7 @@ public class PressDarkImageButton
         {
           localObject1 = paramContext;
           localObject2 = paramContext;
-          this.jdField_a_of_type_AndroidGraphicsBitmap = azvq.b(BaseApplicationImpl.getApplication().getResources(), 2130845397);
+          this.jdField_a_of_type_AndroidGraphicsBitmap = bawu.b(BaseApplicationImpl.getApplication().getResources(), 2130845581);
           localObject1 = paramContext;
           localObject2 = paramContext;
           if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)

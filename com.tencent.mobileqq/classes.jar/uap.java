@@ -1,17 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter;
 
-class uap
-  implements View.OnClickListener
+public class uap
+  implements tzu
 {
-  uap(uao paramuao) {}
+  public uap(StoryPlayerGroupAdapter paramStoryPlayerGroupAdapter) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    if (this.a.a.a != null) {
-      this.a.a.a.a(paramView, this.a.a.a(i));
-    }
+    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2);
+  }
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
+  {
+    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramFloat, paramInt3);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramInt3);
   }
 }
 

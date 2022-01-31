@@ -1,18 +1,11 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.8.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
-import mqq.os.MqqHandler;
-
 public class trs
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+  extends trp
 {
-  trs(trk paramtrk) {}
-  
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.8.1(this, paramTVK_IMediaPlayer));
-  }
+  public String a;
+  public boolean a;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

@@ -1,34 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView.3.1;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Timer;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel.17.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class anyj
-  implements View.OnClickListener
+  extends anwf
 {
-  public anyj(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  public anyj(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void onClick(View paramView)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    if (!badq.d(BaseApplicationImpl.getContext())) {
-      apcb.a(BaseApplicationImpl.getContext().getString(2131628946));
-    }
+    if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {}
     do
     {
       return;
-      apcb.a(BaseApplicationImpl.getContext().getString(2131628680));
-      paramView = (ajgm)MPFileVerifyPwdView.a(this.a).a(8);
-      MPFileVerifyPwdView.a(this.a, paramView.a().a(3));
-      MPFileVerifyPwdView.b(this.a).setEnabled(false);
-      MPFileVerifyPwdView.b(this.a).setTextColor(-7829368);
-      MPFileVerifyPwdView.a(this.a).schedule(new MPFileVerifyPwdView.3.1(this), 15000L);
-    } while (MPFileVerifyPwdView.a(this.a) == null);
-    MPFileVerifyPwdView.a(this.a).a(MPFileVerifyPwdView.a(this.a));
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonMainPanel", 2, "onPackageEnd resultCode = " + paramInt + ",ep = " + paramEmoticonPackage);
+      }
+    } while (this.a.n);
+    ThreadManager.getUIHandler().post(new EmoticonMainPanel.17.1(this, paramEmoticonPackage, paramInt));
   }
 }
 

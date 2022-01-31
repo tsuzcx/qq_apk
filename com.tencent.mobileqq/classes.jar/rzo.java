@@ -1,15 +1,8 @@
-import android.content.Context;
-
-public abstract class rzo<MSG extends rzh, INFO extends rzi>
+public abstract interface rzo
 {
-  MSG a;
+  public abstract void a();
   
-  public rzo(MSG paramMSG)
-  {
-    this.a = paramMSG;
-  }
-  
-  public abstract boolean a(Context paramContext, INFO paramINFO);
+  public abstract void a(boolean paramBoolean);
 }
 
 

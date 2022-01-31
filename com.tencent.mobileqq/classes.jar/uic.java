@@ -1,17 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class uic
-  implements DialogInterface.OnClickListener
+class uic
+  implements DialogInterface.OnDismissListener
 {
-  public uic(StoryMessageListActivity paramStoryMessageListActivity) {}
+  uic(uib paramuib) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.f();
-    paramDialogInterface.dismiss();
-    urp.a(this.a.a(), "clk_sure", 0, 0, new String[] { "2", "", "", "" });
+    if (this.a.a != null) {
+      this.a.a.c(false);
+    }
   }
 }
 

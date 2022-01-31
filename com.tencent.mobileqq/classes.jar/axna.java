@@ -1,67 +1,78 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import cooperation.vip.pb.TianShuAccess.AdItem;
-import cooperation.vip.pb.TianShuAccess.AdPlacementInfo;
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-import cooperation.vip.pb.TianShuAccess.MapEntry;
-import cooperation.vip.pb.TianShuAccess.RspEntry;
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 public class axna
 {
-  public TianShuAccess.AdItem a;
-  public String a;
-  public String b;
-  public String c;
+  long jdField_a_of_type_Long = 0L;
+  List<axnb> jdField_a_of_type_JavaUtilList = new LinkedList();
   
-  public static axna a(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
+  static String a(axna paramaxna)
   {
-    if ((!paramBoolean) || (paramGetAdsRsp == null)) {
+    if ((paramaxna == null) || (paramaxna.jdField_a_of_type_JavaUtilList == null) || (paramaxna.jdField_a_of_type_JavaUtilList.size() <= 0)) {
       return null;
     }
-    if (paramGetAdsRsp.mapAds.has()) {}
-    for (paramGetAdsRsp = paramGetAdsRsp.mapAds.get(); paramGetAdsRsp == null; paramGetAdsRsp = null) {
-      return null;
-    }
-    HashMap localHashMap = new HashMap();
-    paramGetAdsRsp = paramGetAdsRsp.iterator();
-    while (paramGetAdsRsp.hasNext())
+    StringBuilder localStringBuilder = new StringBuilder("names=");
+    paramaxna = paramaxna.jdField_a_of_type_JavaUtilList.iterator();
+    int i = 1;
+    if (paramaxna.hasNext())
     {
-      localObject1 = (TianShuAccess.RspEntry)paramGetAdsRsp.next();
-      if ((localObject1 != null) && (((TianShuAccess.RspEntry)localObject1).key.has())) {
-        localHashMap.put(Integer.valueOf(((TianShuAccess.RspEntry)localObject1).key.get()), localObject1);
+      axnb localaxnb = (axnb)paramaxna.next();
+      if (i != 0) {
+        i = 0;
+      }
+      for (;;)
+      {
+        localStringBuilder.append(localaxnb.jdField_a_of_type_JavaLangString);
+        break;
+        localStringBuilder.append("&");
       }
     }
-    paramGetAdsRsp = (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(236));
-    if ((paramGetAdsRsp == null) || (paramGetAdsRsp.value == null) || (paramGetAdsRsp.value.lst.size() == 0) || (paramGetAdsRsp.value.lst.get(0) == null) || (((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0)).argList == null) || (((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0)).argList.get() == null)) {
-      return null;
+    return localStringBuilder.toString();
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+      return false;
     }
-    Object localObject1 = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0)).argList.get();
-    localHashMap = new HashMap();
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      Object localObject2 = (TianShuAccess.MapEntry)((Iterator)localObject1).next();
-      String str = ((TianShuAccess.MapEntry)localObject2).key.get();
-      localObject2 = ((TianShuAccess.MapEntry)localObject2).value.get();
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
-        localHashMap.put(str, localObject2);
+      axnb localaxnb = (axnb)localIterator.next();
+      if ((localaxnb == null) || (TextUtils.isEmpty(localaxnb.jdField_a_of_type_JavaLangString)) || (localaxnb.jdField_a_of_type_Axmy == null)) {
+        return false;
       }
     }
-    localObject1 = new axna();
-    ((axna)localObject1).jdField_a_of_type_JavaLangString = ((String)localHashMap.get("type"));
-    ((axna)localObject1).c = ((String)localHashMap.get("pic"));
-    ((axna)localObject1).b = ((String)localHashMap.get("url"));
-    ((axna)localObject1).jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0));
-    if (TextUtils.isEmpty(((axna)localObject1).c)) {
-      return null;
+    return true;
+  }
+  
+  public boolean a(axna paramaxna)
+  {
+    if (paramaxna == null) {}
+    while (paramaxna.jdField_a_of_type_JavaUtilList.size() != this.jdField_a_of_type_JavaUtilList.size()) {
+      return false;
     }
-    return localObject1;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= paramaxna.jdField_a_of_type_JavaUtilList.size()) {
+        break label83;
+      }
+      axnb localaxnb = (axnb)paramaxna.jdField_a_of_type_JavaUtilList.get(i);
+      if (!((axnb)this.jdField_a_of_type_JavaUtilList.get(i)).a(localaxnb)) {
+        break;
+      }
+      i += 1;
+    }
+    label83:
+    return true;
+  }
+  
+  public String toString()
+  {
+    return "LoadParam{mLoadItems=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

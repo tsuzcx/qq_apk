@@ -1,23 +1,22 @@
-import android.support.annotation.NonNull;
+import android.content.Context;
 
-class bhmt
-  implements bhmf
+public class bhmt
 {
-  bhmt(bhmr parambhmr) {}
+  public static Context a;
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public static Context a()
   {
-    String str = paramString;
-    if (paramInt == 0) {
-      str = azjg.b(paramString);
-    }
-    return str;
+    return a;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    a = paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhmt
  * JD-Core Version:    0.7.0.1
  */

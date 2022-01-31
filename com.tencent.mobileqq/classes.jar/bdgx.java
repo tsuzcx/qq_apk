@@ -1,38 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.appstore.dl.DownloadManagerV2.19;
 
 public class bdgx
+  implements DialogInterface.OnClickListener
 {
-  private static volatile bdgx jdField_a_of_type_Bdgx;
-  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bdgy(this);
-  private bdgz jdField_a_of_type_Bdgz;
+  public bdgx(DownloadManagerV2.19 param19) {}
   
-  public static bdgx a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (jdField_a_of_type_Bdgx == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bdgx == null) {
-        jdField_a_of_type_Bdgx = new bdgx();
-      }
-      return jdField_a_of_type_Bdgx;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) && (this.jdField_a_of_type_Bdgz != null))
-    {
-      MiniAppEnv.g().getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Bdgz = null;
-    }
+    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bdkm.r, false);
+    bdgz.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdgx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,87 +1,77 @@
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowListReq;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetUserFollowListRequest;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+
 public class akdn
+  implements axaw
 {
-  public static int a;
-  public static long a;
-  public static String a;
-  public static boolean a;
-  public static int b;
-  public static String b;
-  public static boolean b;
-  public static int c;
-  public static String c;
-  public static int d;
-  public static String d;
-  public static int e;
-  public static String e;
-  public static int f;
-  public static int g;
-  public static int h;
-  public static int i;
-  public static int j;
-  public static int k;
-  public static int l;
-  public static int m;
-  public static int n;
-  public static int o;
+  public akdn(PublicAccountHandler paramPublicAccountHandler) {}
   
-  static
+  public int a()
   {
-    jdField_a_of_type_JavaLangString = "sp_msglrucache";
-    jdField_b_of_type_JavaLangString = "sp_key_msglrucache_switch";
-    jdField_c_of_type_JavaLangString = "sp_key_cacheinitadjust_switch";
-    jdField_d_of_type_JavaLangString = "sp_key_report_aio_last_time";
-    jdField_a_of_type_Int = 1600;
-    jdField_b_of_type_Int = 1400;
-    jdField_c_of_type_Int = 1;
-    jdField_d_of_type_Int = 2;
-    jdField_e_of_type_Int = 40;
-    f = 20;
-    g = 10;
-    i = 5;
-    j = -1;
-    k = 2;
-    l = 1;
-    m = 1;
-    jdField_e_of_type_JavaLangString = "msglrucacheMoniterLogin";
-    n = 100;
-    o = 10;
-    jdField_a_of_type_Long = 60000L;
+    return 1;
   }
   
-  public static int a(String paramString)
+  public ReqItem a(int paramInt)
   {
-    if (paramString != null) {
-      try
-      {
-        if (paramString.contains("&"))
-        {
-          paramString = paramString.split("&");
-          if (paramString.length >= 2)
-          {
-            int i1 = Integer.valueOf(paramString[1]).intValue();
-            return i1;
-          }
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    return 0;
-  }
-  
-  public static String a(String paramString)
-  {
-    String str = paramString;
-    if (paramString != null)
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.cOperType = 0;
+    localReqItem.eServiceID = 102;
+    boolean bool = sfh.c();
+    long l1 = PublicAccountHandler.a(this.a, bool);
+    long l2 = PublicAccountHandler.b(this.a, bool);
+    Object localObject2 = PublicAccountHandler.a(this.a);
+    if (bool)
     {
-      str = paramString;
-      if (paramString.contains("&")) {
-        str = paramString.split("&")[0];
+      localObject1 = new CertifiedAccountRead.StGetFollowListReq();
+      ((CertifiedAccountRead.StGetFollowListReq)localObject1).seq.set(bbbd.a(l1));
+      ((CertifiedAccountRead.StGetFollowListReq)localObject1).count.set(bbbd.a(1L));
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        ((CertifiedAccountRead.StGetFollowListReq)localObject1).attach_info.set((String)localObject2);
       }
+      localObject2 = new PROTOCAL.StQWebReq();
+      ((PROTOCAL.StQWebReq)localObject2).Seq.set(-1L);
+      ((PROTOCAL.StQWebReq)localObject2).qua.set(bgxr.a());
+      ((PROTOCAL.StQWebReq)localObject2).deviceInfo.set(bgxq.a().c());
+      ((PROTOCAL.StQWebReq)localObject2).busiBuff.set(ByteStringMicro.copyFrom(((CertifiedAccountRead.StGetFollowListReq)localObject1).toByteArray()));
+      localObject1 = wrm.a();
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        ((PROTOCAL.StQWebReq)localObject2).traceid.set((String)localObject1);
+      }
+      localObject2 = ((PROTOCAL.StQWebReq)localObject2).toByteArray();
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new byte[4];
+      }
+      localReqItem.vecParam = bblm.a((byte[])localObject1);
+      return localReqItem;
     }
-    return str;
+    Object localObject1 = new mobileqq_mp.GetUserFollowListRequest();
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).follow_seqno.set((int)l1);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).public_account_seqno.set((int)l2);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).begin.set(0);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).limit.set(1);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).version.set(1);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).is_increment.set(true);
+    localReqItem.vecParam = bblm.a(((mobileqq_mp.GetUserFollowListRequest)localObject1).toByteArray());
+    return localReqItem;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if ((paramRespItem.eServiceID == 102) && (paramRespItem.cResult == 0)) {
+      this.a.b();
+    }
   }
 }
 

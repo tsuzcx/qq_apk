@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
 public class ayci
-  implements QQPermissionCallback
+  extends ayay
 {
-  public ayci(AbsPublishActivity paramAbsPublishActivity) {}
+  protected SpriteGLView a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public aybe a()
   {
-    this.a.a(this.a, this.a);
+    return this.a;
+  }
+  
+  public void aO_() {}
+  
+  public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
+  {
+    this.e = paramInt1;
+    this.f = paramInt2;
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayci
  * JD-Core Version:    0.7.0.1
  */

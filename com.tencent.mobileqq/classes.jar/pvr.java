@@ -1,9 +1,6 @@
-class pvr
-  implements behy
+public abstract interface pvr
 {
-  pvr(pvp parampvp) {}
-  
-  public void a() {}
+  public abstract void a();
 }
 
 

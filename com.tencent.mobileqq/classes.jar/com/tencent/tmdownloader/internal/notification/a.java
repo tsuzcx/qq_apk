@@ -13,8 +13,8 @@ import android.os.Message;
 import android.widget.RemoteViews;
 import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.q;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.p;
 import com.tencent.tmdownloader.internal.downloadservice.ApkDownloadManager;
 import com.tencent.tmdownloader.internal.downloadservice.h;
 import java.util.Iterator;
@@ -28,7 +28,7 @@ public class a
 {
   private static a f = null;
   protected final ConcurrentHashMap<String, b> a = new ConcurrentHashMap();
-  q b = null;
+  p b = null;
   protected AtomicInteger c;
   d d;
   protected long e = 0L;
@@ -84,7 +84,7 @@ public class a
     if ((GlobalUtil.getInstance().getContext() == null) || (paramNotifyParam == null)) {
       return null;
     }
-    ac.c("SDK_NotificationManager", "<getNotification> title = " + paramNotifyParam.title + ", content=" + paramNotifyParam.content);
+    ab.c("SDK_NotificationManager", "<getNotification> title = " + paramNotifyParam.title + ", content=" + paramNotifyParam.content);
     Notification localNotification = new Notification();
     localNotification.tickerText = paramNotifyParam.title;
     localNotification.when = System.currentTimeMillis();
@@ -110,7 +110,7 @@ public class a
     }
     catch (Exception paramNotification)
     {
-      ac.c("SDK_NotificationManager", "notify " + paramNotification);
+      ab.c("SDK_NotificationManager", "notify " + paramNotification);
     }
   }
   
@@ -148,9 +148,9 @@ public class a
   {
     try
     {
-      ac.a("SDK_NotificationManager", "***尝试  保存至本地：" + paramb.toString());
+      ab.a("SDK_NotificationManager", "***尝试  保存至本地：" + paramb.toString());
       Object localObject = GlobalUtil.getInstance().getContext().getSharedPreferences("downloadsdk_notification_ids", 0);
-      ac.d("SDK_NotificationManager", "***保存至本地：" + paramb.toString());
+      ab.d("SDK_NotificationManager", "***保存至本地：" + paramb.toString());
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).putString(paramb.a, paramb.toString());
       ((SharedPreferences.Editor)localObject).commit();
@@ -158,7 +158,7 @@ public class a
     }
     catch (Exception paramb)
     {
-      ac.c("SDK_NotificationManager", "saveToLocal>>>", paramb);
+      ab.c("SDK_NotificationManager", "saveToLocal>>>", paramb);
     }
   }
   
@@ -177,7 +177,7 @@ public class a
     if (localObject == null) {}
     for (localObject = "";; localObject = paramString1)
     {
-      ac.a("SDK_NotificationManager", (String)localObject);
+      ab.a("SDK_NotificationManager", (String)localObject);
       localObject = this.d.obtainMessage();
       ((Message)localObject).what = paramInt1;
       ((Message)localObject).obj = paramString2;
@@ -205,7 +205,7 @@ public class a
     if (localObject1 == null) {}
     for (Object localObject1 = "";; localObject1 = paramString)
     {
-      ac.a("SDK_NotificationManager", (String)localObject1);
+      ab.a("SDK_NotificationManager", (String)localObject1);
       localObject1 = this.d.obtainMessage();
       ((Message)localObject1).what = 2;
       localObject2 = new Bundle();
@@ -240,7 +240,7 @@ public class a
   
   public void b(String paramString)
   {
-    ac.a("SDK_NotificationManager", "cancelBySendTime:" + paramString);
+    ab.a("SDK_NotificationManager", "cancelBySendTime:" + paramString);
     if ((this.g != null) && (this.a.containsKey(paramString)))
     {
       this.g.cancel(((b)this.a.get(paramString)).c);
@@ -258,7 +258,7 @@ public class a
   
   public void c(String paramString)
   {
-    ac.a("SDK_NotificationManager", "cancelBySendTime:" + paramString);
+    ab.a("SDK_NotificationManager", "cancelBySendTime:" + paramString);
     if ((this.g != null) && (this.a.containsKey(paramString))) {
       this.g.cancel(((b)this.a.get(paramString)).c);
     }
@@ -266,7 +266,7 @@ public class a
   
   protected void d()
   {
-    ac.a("SDK_NotificationManager", "------------从本地初始化ID------------");
+    ab.a("SDK_NotificationManager", "------------从本地初始化ID------------");
     for (;;)
     {
       Map.Entry localEntry;
@@ -274,7 +274,7 @@ public class a
       {
         Object localObject = GlobalUtil.getInstance().getContext().getSharedPreferences("downloadsdk_notification_ids", 0).getAll();
         if (localObject != null) {
-          ac.a("SDK_NotificationManager", "%%%共有" + ((Map)localObject).size() + "条数据");
+          ab.a("SDK_NotificationManager", "%%%共有" + ((Map)localObject).size() + "条数据");
         }
         if ((localObject == null) || (((Map)localObject).size() <= 0)) {
           break;
@@ -284,40 +284,40 @@ public class a
           break;
         }
         localEntry = (Map.Entry)((Iterator)localObject).next();
-        ac.a("SDK_NotificationManager", ">>>数据：key=" + (String)localEntry.getKey() + ",value=" + (String)localEntry.getValue());
+        ab.a("SDK_NotificationManager", ">>>数据：key=" + (String)localEntry.getKey() + ",value=" + (String)localEntry.getValue());
         if (this.a.containsKey(localEntry.getKey()))
         {
-          ac.d("SDK_NotificationManager", "列表已经包含，跳过");
+          ab.d("SDK_NotificationManager", "列表已经包含，跳过");
           continue;
         }
         localb = e((String)localEntry.getValue());
       }
       catch (Exception localException)
       {
-        ac.c("SDK_NotificationManager", "init id from local error:" + localException.getMessage(), localException);
+        ab.c("SDK_NotificationManager", "init id from local error:" + localException.getMessage(), localException);
         return;
       }
       b localb;
       if (localb != null)
       {
-        ac.a("SDK_NotificationManager", ">>>转换为数据对象：" + localb.toString());
+        ab.a("SDK_NotificationManager", ">>>转换为数据对象：" + localb.toString());
         this.h = Math.max(this.h, localb.c);
-        ac.d("SDK_NotificationManager", ">>>initValue=" + this.h);
+        ab.d("SDK_NotificationManager", ">>>initValue=" + this.h);
         this.a.put(localEntry.getKey(), localb);
       }
       else
       {
-        ac.e("SDK_NotificationManager", "init id from local en.getValue() error:");
+        ab.e("SDK_NotificationManager", "init id from local en.getValue() error:");
       }
     }
-    ac.a("SDK_NotificationManager", "------------从本地初始化ID 结束------------");
+    ab.a("SDK_NotificationManager", "------------从本地初始化ID 结束------------");
   }
   
   protected void d(String paramString)
   {
     try
     {
-      ac.a("SDK_NotificationManager", "&&&从本地删除 removeFromLocal:" + paramString);
+      ab.a("SDK_NotificationManager", "&&&从本地删除 removeFromLocal:" + paramString);
       SharedPreferences.Editor localEditor = GlobalUtil.getInstance().getContext().getSharedPreferences("downloadsdk_notification_ids", 0).edit();
       localEditor.remove(paramString);
       localEditor.commit();
@@ -325,7 +325,7 @@ public class a
     }
     catch (Exception paramString)
     {
-      ac.c("SDK_NotificationManager", "remove nid from local error:" + paramString.getMessage(), paramString);
+      ab.c("SDK_NotificationManager", "remove nid from local error:" + paramString.getMessage(), paramString);
     }
   }
   
@@ -346,7 +346,7 @@ public class a
   {
     try
     {
-      ac.a("SDK_NotificationManager", "&&&从本地清除 clearLocal");
+      ab.a("SDK_NotificationManager", "&&&从本地清除 clearLocal");
       SharedPreferences.Editor localEditor = GlobalUtil.getInstance().getContext().getSharedPreferences("downloadsdk_notification_ids", 0).edit();
       localEditor.clear();
       localEditor.commit();
@@ -354,13 +354,13 @@ public class a
     }
     catch (Exception localException)
     {
-      ac.c("SDK_NotificationManager", "clear nid from local error:" + localException.getMessage(), localException);
+      ab.c("SDK_NotificationManager", "clear nid from local error:" + localException.getMessage(), localException);
     }
   }
   
   protected void finalize()
   {
-    ac.e("SDK_NotificationManager", "finalize 清理 sp数据");
+    ab.e("SDK_NotificationManager", "finalize 清理 sp数据");
     e();
     super.finalize();
   }

@@ -1,245 +1,114 @@
-import android.content.Intent;
 import android.os.Bundle;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.biz.pubaccount.AccountDetail.jce.GetRecvMsgStateReq;
-import com.tencent.biz.pubaccount.AccountDetail.jce.SetRecvMsgStateReq;
-import com.tencent.mobileqq.app.PublicAccountHandler;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity.12.1;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoRequest;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ndt
-  extends MSFServlet
+  implements BusinessObserver
 {
-  private String a = "com.tencent.biz.pubaccount.PublicAccountServlet";
+  public ndt(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public static void a(Intent paramIntent)
-  {
-    paramIntent.putExtra("need_handler", true);
-  }
-  
-  protected byte[] a(FromServiceMsg paramFromServiceMsg)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramFromServiceMsg != null)
-    {
-      localObject1 = localObject2;
-      if (paramFromServiceMsg.isSuccess()) {
-        localObject1 = bakc.b(paramFromServiceMsg.getWupBuffer());
-      }
-    }
-    return localObject1;
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, "onReceive");
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "follow isSuccess:" + String.valueOf(paramBoolean));
     }
-    byte[] arrayOfByte = a(paramFromServiceMsg);
-    rrr.a(paramFromServiceMsg);
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putByteArray("data", arrayOfByte);
-    ((Bundle)localObject).putInt("respones_code", paramFromServiceMsg.getBusinessFailCode());
-    ((Bundle)localObject).putInt("type", paramIntent.getIntExtra("type", 0));
-    if (paramIntent.getBooleanExtra("need_handler", false))
-    {
-      localObject = (PublicAccountHandler)((QQAppInterface)super.getAppRuntime()).a(11);
-      if (localObject != null) {
-        ((PublicAccountHandler)localObject).a(paramIntent, paramFromServiceMsg, arrayOfByte);
-      }
+    if (!paramBoolean) {
+      this.a.d(2131695568);
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "onReceive exit");
+      EqqAccountDetailActivity.e(this.a);
+      if (EqqAccountDetailActivity.f(this.a) == 0) {
+        EqqAccountDetailActivity.d(this.a);
       }
+      EqqAccountDetailActivity.b(this.a).postDelayed(new EqqAccountDetailActivity.12.1(this), 1000L);
       return;
-      super.notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject, null);
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, "onSend");
-    }
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    Object localObject = paramIntent.getStringExtra("cmd");
-    rrr.a(arrayOfByte, (String)localObject);
-    if (((String)localObject).equals("get_business_recommend"))
-    {
-      paramPacket.setSSOCommand("PubAccBusiRecSvc." + (String)localObject);
-      paramIntent = arrayOfByte;
-    }
-    for (;;)
-    {
-      if (paramIntent != null) {
-        paramPacket.putSendData(bakc.a(paramIntent));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "onSend exit");
-      }
-      return;
-      if (((String)localObject).equals("post_punchcard_info"))
-      {
-        paramPacket.setSSOCommand("PubAccountSSOProxySvc." + (String)localObject);
-        paramIntent = arrayOfByte;
-      }
-      else if ((((String)localObject).equals("PubAccountFollowSvc.follow")) || (((String)localObject).equals("PubAccountFollowSvc.subscribe")))
-      {
-        paramPacket.setTimeout(10000L);
-        paramPacket.setSSOCommand((String)localObject);
-        paramIntent = arrayOfByte;
-      }
-      else if (((String)localObject).equals("PubAccountAdSvc.recent_list_report"))
-      {
-        paramPacket.setSSOCommand((String)localObject);
-        paramIntent = arrayOfByte;
-      }
-      else if ((((String)localObject).equals("PubAccountArticleCenter.GetUrlByVid")) || (((String)localObject).equals("PubAccountArticleCenter.GetVidByUrl")) || (((String)localObject).equals("SQQShopAdSvr.GetUrlByVid")))
-      {
-        paramPacket.setTimeout(15000L);
-        paramPacket.setSSOCommand((String)localObject);
-        paramIntent = arrayOfByte;
-      }
-      else if (((String)localObject).equals("PubAccountAdSvc."))
-      {
-        paramPacket.setSSOCommand("PubAccountAdSvc.ad_report");
-        paramIntent = arrayOfByte;
-      }
-      else if ((((String)localObject).equals("PubAccountSvc.net_connect_info")) || (((String)localObject).equals("PubAccountArticleCenter.GetRecommendPubAccount")) || (((String)localObject).equals("KdAdReportSsoSvr.kandian_ad")) || (((String)localObject).equals("KdAdReportSsoSvr.kandian_ad_report")) || (((String)localObject).equals("KdAdReportSsoSvr.kandian_ad_native")) || (((String)localObject).equals("KdAdReportSsoSvr.kandian_ad_report_new")) || (((String)localObject).equals("KdAdReportSsoSvr.kandian_ad_report_test")) || (((String)localObject).equals("MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_fetch")) || (((String)localObject).equals("MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_create")) || (((String)localObject).equals("MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_delete")) || (((String)localObject).equals("MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_like")) || (((String)localObject).equals("MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_report")) || (((String)localObject).equals("MQUpdateSvc_com_qq_kandian.web.firstCommentRead.getNewestList")) || (((String)localObject).equals("FeedsContentCenter.QualityReport")))
-      {
-        paramPacket.setTimeout(15000L);
-        paramPacket.setSSOCommand((String)localObject);
-        paramIntent = arrayOfByte;
-      }
-      else if (((String)localObject).equals("getGuideFriends"))
-      {
-        paramPacket.setSSOCommand("KandianSvc_biu_guide." + (String)localObject);
-        paramIntent = arrayOfByte;
-      }
-      else if (((String)localObject).equals("ConfigSvc.getRecvMsgState"))
-      {
-        try
-        {
-          localObject = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getName());
-          paramIntent = ((ToServiceMsg)localObject).getServiceCmd();
-          localObject = (GetRecvMsgStateReq)((ToServiceMsg)localObject).getAttribute("GetRecvMsgStateReq");
-          paramPacket.setServantName("QQMP.ConfigServer.ConfigObj");
-          paramPacket.setFuncName("getRecvMsgState");
-          paramPacket.addRequestPacket("req", (JceStruct)localObject);
-          paramPacket.setSSOCommand(paramIntent);
-          paramPacket.setTimeout(15000L);
-          paramIntent = arrayOfByte;
-        }
-        catch (Exception paramIntent)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(this.a, 2, "onSend exception");
-          }
-          paramIntent = arrayOfByte;
-        }
-      }
-      else
-      {
-        if (!((String)localObject).equals("ConfigSvc.setRecvMsgState")) {
-          break;
-        }
-        try
-        {
-          localObject = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getName());
-          paramIntent = ((ToServiceMsg)localObject).getServiceCmd();
-          localObject = (SetRecvMsgStateReq)((ToServiceMsg)localObject).getAttribute("SetRecvMsgStateReq");
-          paramPacket.setServantName("QQMP.ConfigServer.ConfigObj");
-          paramPacket.setFuncName("setRecvMsgState");
-          paramPacket.addRequestPacket("req", (JceStruct)localObject);
-          paramPacket.setSSOCommand(paramIntent);
-          paramPacket.setTimeout(15000L);
-          paramIntent = arrayOfByte;
-        }
-        catch (Exception paramIntent)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(this.a, 2, "onSend exception");
-          }
-          paramIntent = arrayOfByte;
-        }
-      }
-    }
-    if ("CertifiedAccountSvc.certified_account_read.GetFollowList".equals(localObject))
-    {
-      paramPacket.setSSOCommand((String)localObject);
-      paramPacket.setTimeout(30000L);
-      paramPacket.autoResend = true;
-      label718:
-      if (!((String)localObject).equals("get_detail_info")) {
-        break label1082;
-      }
-      localObject = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    }
-    label1082:
-    label1088:
-    for (;;)
-    {
+      Object localObject = new JSONObject();
+      ((FriendListHandler)EqqAccountDetailActivity.j(this.a).a(1)).a(true, false);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail != null) {}
       try
       {
-        ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).mergeFrom(arrayOfByte);
-        oidb_cmd0xcf8.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new oidb_cmd0xcf8.GetPublicAccountDetailInfoRequest();
-        long l = ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).uin.get();
-        if (l >= 0L) {
-          break label1088;
+        ((JSONObject)localObject).put("uin", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin);
+        ((JSONObject)localObject).put("name", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.name);
+        ((JSONObject)localObject).put("summary", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.summary);
+        ((JSONObject)localObject).put("certified", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.certifiedGrade);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add("find.mp.qq.com");
+        localArrayList.add("post.mp.qq.com");
+        localArrayList.add("article.mp.qq.com");
+        armk.a("follow", (JSONObject)localObject, localArrayList, null);
+        if (!paramBoolean) {
+          break label555;
         }
-        l = -(-2147483648L - l) + 2147483647L + 1L;
-        if ((paramIntent.getBooleanExtra("useNewProtocol", false)) || (((super.getAppRuntime() instanceof QQAppInterface)) && (rtr.a((QQAppInterface)super.getAppRuntime(), l + "") != -4)))
+        try
         {
-          paramIntent.putExtra("type", 1);
-          localGetPublicAccountDetailInfoRequest.luin.set(l);
-          localGetPublicAccountDetailInfoRequest.seqno.set(((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).seqno.get());
-          localGetPublicAccountDetailInfoRequest.version.set(((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).version.get());
-          localGetPublicAccountDetailInfoRequest.versionInfo.set(((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).versionInfo.get());
-          paramIntent = new oidb_sso.OIDBSSOPkg();
-          paramIntent.uint32_command.set(3320);
-          paramIntent.uint32_result.set(0);
-          paramIntent.uint32_service_type.set(1);
-          paramIntent.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localGetPublicAccountDetailInfoRequest.toByteArray()));
-          paramIntent = paramIntent.toByteArray();
-          paramPacket.setSSOCommand("OidbSvc.0xcf8");
-          break;
-          if ("get_follow_list".equals(localObject))
-          {
-            paramPacket.autoResend = true;
-            paramPacket.setSSOCommand("PubAccountSvc." + (String)localObject);
-            break label718;
+          paramBundle = paramBundle.getByteArray("data");
+          if (paramBundle == null) {
+            continue;
           }
-          if (("CertifiedAccountSvc.certified_account_read.GetAccountMenu".equals(localObject)) || ("CertifiedAccountSvc.certified_account_write.SendMenuEvent".equals(localObject)))
+          localObject = new mobileqq_mp.FollowResponse();
+          ((mobileqq_mp.FollowResponse)localObject).mergeFrom(paramBundle);
+          paramInt = ((mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get()).ret_code.get();
+          if (paramInt == 0)
           {
-            paramPacket.setSSOCommand((String)localObject);
-            break label718;
+            this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType = 1;
+            EqqAccountDetailActivity.a(this.a).setEnabled(false);
+            EqqAccountDetailActivity.b(this.a);
+            this.a.i();
+            EqqAccountDetailActivity.c(this.a);
+            AccountDetailActivity.a(EqqAccountDetailActivity.k(this.a), EqqAccountDetailActivity.k(this.a), EqqAccountDetailActivity.a(this.a));
+            if ((TextUtils.isEmpty(this.a.b)) || (TextUtils.isEmpty(this.a.c))) {
+              continue;
+            }
+            axqw.b(EqqAccountDetailActivity.l(this.a), "CliOper", "", "", this.a.b, this.a.c, 0, 0, "", "", EqqAccountDetailActivity.m(this.a).getCurrentAccountUin(), EqqAccountDetailActivity.l(this.a));
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "----[follow report done]----");
           }
-          paramPacket.setSSOCommand("PubAccountSvc." + (String)localObject);
         }
+        catch (Exception paramBundle) {}
       }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      catch (JSONException localJSONException)
       {
-        localInvalidProtocolBufferMicroException.printStackTrace();
-        continue;
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+        if (paramInt == 58)
+        {
+          this.a.d(2131695565);
+          continue;
+        }
+        if (paramInt == 65)
+        {
+          this.a.d(2131695538);
+          continue;
+        }
+        if (paramInt == 20)
+        {
+          this.a.d(2131695539);
+          continue;
+        }
+        this.a.d(2131695568);
       }
-      paramIntent = arrayOfByte;
-      break;
+      continue;
+      label555:
+      this.a.d(2131695568);
     }
   }
 }

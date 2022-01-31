@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.haoliyou;
 
-import ajjy;
-import aqbh;
-import aqbi;
-import babr;
-import bafb;
+import ajyc;
+import aqvj;
+import aqvk;
+import bbcv;
+import bbgg;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class JefsClass$8
@@ -14,7 +14,7 @@ public class JefsClass$8
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     if ((localBaseActivity != null) && (!localBaseActivity.isFinishing())) {
-      babr.a(localBaseActivity, 0, null, ajjy.a(2131640080), localBaseActivity.getString(2131625035), localBaseActivity.getString(2131629116), new aqbh(this), new aqbi(this)).show();
+      bbcv.a(localBaseActivity, 0, null, ajyc.a(2131705865), localBaseActivity.getString(2131690596), localBaseActivity.getString(2131694793), new aqvj(this), new aqvk(this)).show();
     }
   }
 }

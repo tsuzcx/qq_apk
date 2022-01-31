@@ -1,33 +1,36 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class apgs
-  implements acmv
+public abstract interface apgs
 {
-  public apgs(FlashChatPanel paramFlashChatPanel) {}
+  public abstract int a();
   
-  public boolean onLongClick(View paramView)
-  {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-    return true;
-  }
+  public abstract long a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((paramView instanceof ArkAppView)) {
-      ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
-    }
-    return true;
-  }
+  public abstract FileManagerEntity a();
+  
+  public abstract String a();
+  
+  public abstract void a(Object paramObject, int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract void aw_();
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apgs
  * JD-Core Version:    0.7.0.1
  */

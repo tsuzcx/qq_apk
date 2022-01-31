@@ -1,9 +1,10 @@
 package com.tencent.open.agent;
 
-import abju;
-import amdo;
-import amdp;
-import amdq;
+import abtu;
+import amtp;
+import amtu;
+import amtv;
+import amtw;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -19,22 +20,23 @@ import android.os.Handler;
 import android.os.Process;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import apmt;
-import awrn;
-import bach;
-import bbms;
-import bbtn;
-import bbtq;
-import bcad;
-import bcam;
-import bcew;
-import bcfn;
-import bcgd;
-import bciz;
-import bcja;
-import bcjl;
-import bcjn;
-import bcjy;
+import aqgh;
+import axrl;
+import bbdm;
+import bcpq;
+import bcxn;
+import bcxq;
+import bded;
+import bdem;
+import bden;
+import bdix;
+import bdjo;
+import bdke;
+import bdna;
+import bdnb;
+import bdnm;
+import bdno;
+import bdnz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.LoginActivity;
@@ -52,10 +54,10 @@ public class AgentActivity
   extends BaseActivity
 {
   private long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bbtq(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bcxq(this);
   private Intent jdField_a_of_type_AndroidContentIntent;
   protected Handler a;
-  protected bbms a;
+  protected bcpq a;
   public OpenSDKAppInterface a;
   protected String a;
   protected boolean a;
@@ -69,8 +71,8 @@ public class AgentActivity
   
   private String a()
   {
-    bcja.a().a();
-    Object localObject3 = bcgd.a();
+    bdnb.a().a();
+    Object localObject3 = bdke.a();
     Object localObject2 = null;
     if (this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.isLogin()) {
       localObject2 = this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount();
@@ -83,7 +85,7 @@ public class AgentActivity
         localObject1 = (String)((ArrayList)localObject3).get(0);
       }
     }
-    localObject3 = bcam.a(getIntent(), "login_success_uin");
+    localObject3 = bdem.a(getIntent(), "login_success_uin");
     localObject2 = localObject1;
     if (!TextUtils.isEmpty((CharSequence)localObject3))
     {
@@ -109,7 +111,7 @@ public class AgentActivity
       localObject = str;
       localMessageDigest.update(paramContext[0].toByteArray());
       localObject = str;
-      paramContext = bach.a(localMessageDigest.digest());
+      paramContext = bbdm.a(localMessageDigest.digest());
       if (paramContext == null) {
         return "";
       }
@@ -122,7 +124,7 @@ public class AgentActivity
       localObject = str;
       localMessageDigest.update((paramString1 + "_" + paramContext + "_" + paramString2 + "").getBytes());
       localObject = str;
-      paramContext = bach.a(localMessageDigest.digest());
+      paramContext = bbdm.a(localMessageDigest.digest());
       localObject = paramContext;
       localMessageDigest.reset();
       return paramContext;
@@ -159,9 +161,9 @@ public class AgentActivity
       return;
     }
     long l = System.currentTimeMillis();
-    new bciz().jdField_a_of_type_JavaLangString = str;
-    apmt.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
-    this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, str, new bbtn(this, paramString1, paramBundle, paramString2, l));
+    new bdna().jdField_a_of_type_JavaLangString = str;
+    aqgh.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
+    this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, str, new bcxn(this, paramString1, paramBundle, paramString2, l));
   }
   
   private void a(String paramString1, Bundle paramBundle, String paramString2, boolean paramBoolean)
@@ -178,38 +180,68 @@ public class AgentActivity
     {
       localIntent.putExtra("key_action", paramString1);
       Object localObject1 = b();
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      boolean bool;
+      if ((TextUtils.isEmpty((CharSequence)localObject1)) && (amtp.e()))
       {
-        Object localObject2 = bcjy.a(this, (String)localObject1);
-        String str1 = localObject2[0];
-        String str2 = localObject2[1];
-        localObject2 = localObject2[2];
-        QLog.d("AgentActivity", 1, new Object[] { "-->onCreate appid: ", paramString2, ", package: ", localObject1, ", getAuthorizeSign.sign: ", str1 });
-        paramBundle.putString("packagename", (String)localObject1);
-        paramBundle.putString("packagesign", str1);
-        paramBundle.putString("sign", str2);
-        paramBundle.putString("time", (String)localObject2);
-        if (QLog.isColorLevel()) {
-          QLog.d("AgentActivity", 2, new Object[] { "-->onCreate, getAuthorizeSign.sign: ", str2 });
+        Object localObject2 = paramBundle.getString("ppsts");
+        QLog.d("AgentActivity", 1, new Object[] { "ppsts=", localObject2 });
+        HashMap localHashMap;
+        Object localObject3;
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          localObject1 = bden.a(paramBundle);
+          localHashMap = new HashMap();
+          localHashMap.put("appid", paramString2);
+          localHashMap.put("ppsts", localObject2);
+          localHashMap.put("sha", localObject1);
+          localObject1 = bden.a((String)localObject2, (String)localObject1);
+          QLog.d("AgentActivity", 1, new Object[] { "can not get calling package name, use ppsts callFromPackageName=", localObject1 });
+          localObject2 = axrl.a(BaseApplicationImpl.getApplication());
+          localObject3 = a();
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            bool = true;
+            label209:
+            ((axrl)localObject2).a((String)localObject3, "use_third_pkg_name", bool, 0L, 0L, localHashMap, "", false);
+          }
+        }
+        else
+        {
+          label228:
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            break label640;
+          }
+          localObject3 = bdnz.a(this, (String)localObject1);
+          localHashMap = localObject3[0];
+          localObject2 = localObject3[1];
+          localObject3 = localObject3[2];
+          QLog.d("AgentActivity", 1, new Object[] { "-->onCreate appid: ", paramString2, ", package: ", localObject1, ", getAuthorizeSign.sign: ", localHashMap });
+          paramBundle.putString("packagename", (String)localObject1);
+          paramBundle.putString("packagesign", localHashMap);
+          paramBundle.putString("sign", (String)localObject2);
+          paramBundle.putString("time", (String)localObject3);
+          if (QLog.isColorLevel()) {
+            QLog.d("AgentActivity", 2, new Object[] { "-->onCreate, getAuthorizeSign.sign: ", localObject2 });
+          }
         }
       }
       try
       {
-        bcfn.a().a(0, "LOGIN_CHECK_AGENT", null, paramString2, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, null);
+        bdjo.a().a(0, "LOGIN_CHECK_AGENT", null, paramString2, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, null);
         for (;;)
         {
-          label217:
+          label390:
           if (localIntent != null)
           {
             localIntent.putExtra("key_params", paramBundle);
             if ((getAppInterface() == null) || (getAppInterface().isLogin())) {
-              break label500;
+              break label723;
             }
             if (QLog.isColorLevel()) {
               QLog.d("AgentActivity", 2, " qq is not login");
             }
             if ((!"action_login".equals(paramString1)) && (!"action_quick_login".equals(paramString1)) && (!"action_ptlogin_login".equals(paramString1))) {
-              break label500;
+              break label723;
             }
             this.jdField_a_of_type_AndroidContentIntent = localIntent;
             this.jdField_a_of_type_AndroidContentIntent.putExtra("authority_start_qq_login", true);
@@ -230,21 +262,26 @@ public class AgentActivity
           return;
           localIntent = new Intent(this, AuthorityActivity.class);
           break;
+          bool = false;
+          break label209;
+          QLog.d("AgentActivity", 1, new Object[] { "isUseThirdTransformPkgName=", Boolean.valueOf(amtp.e()), ", ppsts=", paramBundle.getString("ppsts") });
+          break label228;
+          label640:
           QLog.i("AgentActivity", 1, "-->onCreate can not get calling package name!");
           localObject1 = new HashMap();
           ((HashMap)localObject1).put("appid", paramString2);
-          awrn.a(BaseApplicationImpl.getApplication()).a(a(), "login_pkg_name_empty", true, 0L, 0L, (HashMap)localObject1, "", false);
+          axrl.a(BaseApplicationImpl.getApplication()).a(a(), "login_pkg_name_empty", true, 0L, 0L, (HashMap)localObject1, "", false);
           try
           {
-            bcfn.a().a(1, "LOGIN_CHECK_AGENT", null, paramString2, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity callFromPackageName is null");
+            bdjo.a().a(1, "LOGIN_CHECK_AGENT", null, paramString2, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity callFromPackageName is null");
           }
           catch (Exception paramString2) {}
         }
-        label500:
+        label723:
         if (paramBoolean) {
           try
           {
-            abju.a(this, localIntent, PublicFragmentActivityForOpenSDK.class, OpenAuthorityFragment.class, 0);
+            abtu.a(this, localIntent, PublicFragmentActivityForOpenSDK.class, OpenAuthorityFragment.class, 0);
             QLog.d("AgentActivity", 1, new Object[] { "start_auth_use_time", " launch OpenAuthFragment use time = ", Long.valueOf(System.currentTimeMillis() - l) });
             QLog.d("AgentActivity", 1, new Object[] { "start_auth_use_time", " start Auth total time = ", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
             return;
@@ -263,7 +300,7 @@ public class AgentActivity
       }
       catch (Exception paramString2)
       {
-        break label217;
+        break label390;
       }
     }
   }
@@ -271,13 +308,13 @@ public class AgentActivity
   private boolean a()
   {
     long l1 = System.currentTimeMillis();
-    amdo localamdo = amdq.b(467);
+    amtu localamtu = amtw.b(467);
     long l2 = System.currentTimeMillis();
-    if (localamdo == null) {}
-    for (String str = "is null";; str = "enable: " + localamdo.a().jdField_a_of_type_Boolean)
+    if (localamtu == null) {}
+    for (String str = "is null";; str = "enable: " + localamtu.a().jdField_a_of_type_Boolean)
     {
       QLog.d("AgentActivity", 1, new Object[] { "start_auth_use_time", " load config use time: ", Long.valueOf(l2 - l1), " -->OpenSdkSwitchConfBean ", str });
-      if ((localamdo == null) || (!localamdo.a().jdField_a_of_type_Boolean)) {
+      if ((localamtu == null) || (!localamtu.a().jdField_a_of_type_Boolean)) {
         break;
       }
       return true;
@@ -330,12 +367,12 @@ public class AgentActivity
       return;
       try
       {
-        if (this.jdField_a_of_type_Bbms != null)
+        if (this.jdField_a_of_type_Bcpq != null)
         {
-          if (this.jdField_a_of_type_Bbms.isShowing()) {
+          if (this.jdField_a_of_type_Bcpq.isShowing()) {
             continue;
           }
-          this.jdField_a_of_type_Bbms.show();
+          this.jdField_a_of_type_Bcpq.show();
         }
       }
       catch (Exception localException)
@@ -344,17 +381,17 @@ public class AgentActivity
         return;
       }
     }
-    this.jdField_a_of_type_Bbms = new bbms(this, 0, 2131495447, 17);
-    this.jdField_a_of_type_Bbms.a(-1);
-    this.jdField_a_of_type_Bbms.show();
+    this.jdField_a_of_type_Bcpq = new bcpq(this, 0, 2131561034, 17);
+    this.jdField_a_of_type_Bcpq.a(-1);
+    this.jdField_a_of_type_Bcpq.show();
   }
   
   protected void a()
   {
-    if ((!super.isFinishing()) && (this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing())) {}
+    if ((!super.isFinishing()) && (this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bbms.dismiss();
+      this.jdField_a_of_type_Bcpq.dismiss();
       return;
     }
     catch (Exception localException)
@@ -367,7 +404,7 @@ public class AgentActivity
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("key_error_code", paramInt);
-    localIntent.putExtra("key_error_msg", bcew.c);
+    localIntent.putExtra("key_error_msg", bdix.c);
     localIntent.putExtra("key_error_detail", "");
     localIntent.putExtra("key_response", "");
     super.setResult(-1, localIntent);
@@ -378,9 +415,9 @@ public class AgentActivity
   {
     Bundle localBundle = null;
     super.doOnCreate(paramBundle);
-    apmt.a();
-    apmt.a("KEY_LOGIN_STAGE_1_TOTAL");
-    apmt.a("KEY_AUTHORITY_TOTAL");
+    aqgh.a();
+    aqgh.a("KEY_LOGIN_STAGE_1_TOTAL");
+    aqgh.a("KEY_AUTHORITY_TOTAL");
     b();
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface = ((OpenSDKAppInterface)super.getAppRuntime());
@@ -391,7 +428,7 @@ public class AgentActivity
     {
       try
       {
-        bcfn.a().a(1, "LOGIN_CHECK_AGENT", null, null, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity getIntent is null");
+        bdjo.a().a(1, "LOGIN_CHECK_AGENT", null, null, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity getIntent is null");
         return true;
       }
       catch (Exception paramBundle) {}
@@ -420,7 +457,7 @@ public class AgentActivity
           }
           try
           {
-            bcfn.a().a(1, "LOGIN_CHECK_AGENT", null, null, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity bundle is null");
+            bdjo.a().a(1, "LOGIN_CHECK_AGENT", null, null, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity bundle is null");
             return true;
           }
           catch (Exception paramBundle)
@@ -479,7 +516,7 @@ public class AgentActivity
           startActivity(paramBundle);
           try
           {
-            bcad.a().a(getAppInterface().getCurrentAccountUin(), "", str, "1", "8", "0", true);
+            bded.a().a(getAppInterface().getCurrentAccountUin(), "", str, "1", "8", "0", true);
             return true;
           }
           catch (Exception paramBundle)
@@ -507,7 +544,7 @@ public class AgentActivity
           {
             paramBundle.putExtra("key_action", (String)localObject2);
             localObject1 = localBundle.getString("hopenid");
-            localBundle.putString("encrytoken", bcjl.a(this, "openid_encrytoken").getString((String)localObject1, ""));
+            localBundle.putString("encrytoken", bdnm.a(this, "openid_encrytoken").getString((String)localObject1, ""));
             localObject1 = paramBundle;
           }
         }

@@ -1,22 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.12.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
 
-public class awkn
-  implements adcx
+class awkn
+  implements View.OnClickListener
 {
   awkn(awkk paramawkk) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (awkk.a(this.a) == null) {
-      awkk.a(this.a, new Handler());
-    }
-    awkk.a(this.a).postDelayed(new RedBagVideoManager.12.1(this), 1000L);
+    this.a.a.b(this.a.a.b);
+    this.a.a.f.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awkn
  * JD-Core Version:    0.7.0.1
  */

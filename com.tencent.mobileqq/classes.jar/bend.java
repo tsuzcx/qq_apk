@@ -1,12 +1,10 @@
-import com.tencent.widget.ScrollView;
-
 public abstract interface bend
 {
-  public abstract void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean);
+  public abstract void a(int paramInt, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bend
  * JD-Core Version:    0.7.0.1
  */

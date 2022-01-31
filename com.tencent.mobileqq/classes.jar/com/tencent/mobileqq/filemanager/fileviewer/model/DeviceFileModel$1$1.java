@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import aovc;
-import aovd;
-import aovo;
+import apmp;
+import apmq;
+import apnb;
 
 public class DeviceFileModel$1$1
   implements Runnable
 {
-  public DeviceFileModel$1$1(aovd paramaovd) {}
+  public DeviceFileModel$1$1(apmq paramapmq) {}
   
   public void run()
   {

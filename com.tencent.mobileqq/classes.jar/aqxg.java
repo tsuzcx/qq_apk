@@ -1,63 +1,67 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class aqxg
-  implements Application.ActivityLifecycleCallbacks
+public class aqxg
 {
-  aqxg(aqxa paramaqxa) {}
+  public int a;
+  public long a;
+  public Bitmap a;
+  public String a;
+  public AtomicBoolean a;
+  public boolean a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public boolean b;
+  public int c;
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
+  public aqxg()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LyricsController", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LyricsController", 2, "onActivityResumed: " + paramActivity.getClass().getName());
+    int i = 1;
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      if (!this.jdField_b_of_type_JavaLangString.startsWith("act")) {}
     }
-    if ((this.a.c) && (!this.a.b))
+    for (;;)
     {
-      ThreadManager.getUIHandlerV2().removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      ThreadManager.getUIHandlerV2().postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
+      if (QLog.isColorLevel()) {
+        QLog.d("HiBoomFont.Item", 2, "getTagType id = " + this.jdField_a_of_type_Int + " type = " + i);
+      }
+      return i;
+      if (this.jdField_b_of_type_JavaLangString.startsWith("free"))
+      {
+        String[] arrayOfString = this.jdField_b_of_type_JavaLangString.split("-");
+        if ((arrayOfString.length >= 3) && (!TextUtils.isEmpty(arrayOfString[1])) && (TextUtils.isDigitsOnly(arrayOfString[1])) && (!TextUtils.isEmpty(arrayOfString[2])) && (TextUtils.isDigitsOnly(arrayOfString[2])))
+        {
+          long l1 = Long.parseLong(arrayOfString[1]);
+          long l2 = Long.parseLong(arrayOfString[2]);
+          long l3 = NetConnInfoCenter.getServerTime();
+          if ((l3 > l1) && (l3 < l2))
+          {
+            i = 2;
+            continue;
+          }
+        }
+      }
+      i = 0;
     }
-    while (!aqxa.b(this.a)) {
-      return;
-    }
-    aqxa.a(this.a, false);
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.a(true);
   }
   
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LyricsController", 2, "onActivityStarted: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityStopped(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LyricsController", 2, "onActivityStopped: " + paramActivity.getClass().getName());
-    }
+    return "HiBoomItem: id = " + this.jdField_a_of_type_Int + " name = " + this.jdField_a_of_type_JavaLangString + " engine = " + this.jdField_b_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqxg
  * JD-Core Version:    0.7.0.1
  */

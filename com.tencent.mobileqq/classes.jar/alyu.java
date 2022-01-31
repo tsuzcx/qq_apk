@@ -1,104 +1,56 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopConfess;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.OneUinHeadInfo;
 
 public class alyu
-  extends BaseBubbleBuilder
 {
-  private int c;
+  public int a;
+  public long a;
+  public ArrayList<alyv> a;
+  public long b;
   
-  public alyu(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public static alyu a(oidb_0x74b.OneUinHeadInfo paramOneUinHeadInfo)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.c = (BaseChatItemLayout.A + aciy.a(20.0F, paramContext.getResources()));
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
-  }
-  
-  public acju a()
-  {
-    return new alyw();
-  }
-  
-  public View a(ChatMessage paramChatMessage, acju paramacju, View paramView, BaseChatItemLayout paramBaseChatItemLayout, acmv paramacmv)
-  {
-    paramBaseChatItemLayout = (MessageForTroopConfess)paramChatMessage;
-    alyw localalyw = (alyw)paramacju;
-    paramChatMessage = paramView;
-    if (paramView == null)
-    {
-      paramChatMessage = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131493201, null);
-      paramChatMessage.setLayoutParams(new ViewGroup.LayoutParams(this.c, -2));
-      alyw.a(localalyw, (TextView)paramChatMessage.findViewById(2131312700));
-      alyw.b(localalyw, (TextView)paramChatMessage.findViewById(2131312691));
-      alyw.c(localalyw, (TextView)paramChatMessage.findViewById(2131312715));
-      alyw.a(localalyw, (ConfessNewsBgView)paramChatMessage.findViewById(2131312974));
-      alyw.a(localalyw).setPressMask(true);
-      alyw.a(localalyw, paramChatMessage.findViewById(2131303748));
+    Object localObject;
+    if (paramOneUinHeadInfo == null) {
+      localObject = null;
     }
-    alyw.a(localalyw).setBgType(paramBaseChatItemLayout.getConfessTopicId() % 4);
-    alyw.a(localalyw).setOnLongClickListener(paramacmv);
-    alyw.a(localalyw).setOnTouchListener(paramacmv);
-    localalyw.a(paramBaseChatItemLayout.mTroopConfessMsg);
-    paramChatMessage.setOnClickListener(new alyv(this, paramBaseChatItemLayout));
-    if (e)
+    alyu localalyu;
+    do
     {
-      ((alyw)paramacju).b.append(alyw.b(localalyw).getText()).append(alyw.a(localalyw).getText());
-      if (alyw.c(localalyw).getVisibility() == 0) {
-        ((alyw)paramacju).b.append(alyw.c(localalyw).getText());
+      return localObject;
+      localalyu = new alyu();
+      if (paramOneUinHeadInfo.uint64_uin.has()) {
+        localalyu.jdField_a_of_type_Long = paramOneUinHeadInfo.uint64_uin.get();
       }
-      paramChatMessage.setContentDescription(((alyw)paramacju).b.toString());
-    }
-    return paramChatMessage;
+      if (paramOneUinHeadInfo.uint64_tinyid.has()) {
+        localalyu.b = paramOneUinHeadInfo.uint64_tinyid.get();
+      }
+      localalyu.jdField_a_of_type_Int = ((int)(System.currentTimeMillis() / 1000L));
+      localObject = localalyu;
+    } while (!paramOneUinHeadInfo.rpt_msg_head_list.has());
+    localalyu.jdField_a_of_type_JavaUtilArrayList = alyv.a(paramOneUinHeadInfo.rpt_msg_head_list.get());
+    return localalyu;
   }
   
-  public String a(ChatMessage paramChatMessage)
+  public static ArrayList<alyu> a(List<oidb_0x74b.OneUinHeadInfo> paramList)
   {
-    return null;
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
-  {
-    if ((paramChatMessage == null) || (!(paramChatMessage instanceof MessageForTroopConfess))) {
-      return;
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return null;
     }
-    MessageForTroopConfess localMessageForTroopConfess = (MessageForTroopConfess)paramChatMessage;
-    switch (paramInt)
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-    default: 
-      super.a(paramInt, paramContext, paramChatMessage);
-      return;
+      alyu localalyu = a((oidb_0x74b.OneUinHeadInfo)paramList.next());
+      if (localalyu != null) {
+        localArrayList.add(localalyu);
+      }
     }
-    aael.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-  }
-  
-  public void a(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout, int paramInt1, int paramInt2) {}
-  
-  public bakj[] a(View paramView)
-  {
-    paramView = new bakh();
-    aael.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    super.d(paramView, this.jdField_a_of_type_AndroidContentContext);
-    return paramView.a();
-  }
-  
-  public void b(View paramView)
-  {
-    super.b(paramView);
+    return localArrayList;
   }
 }
 

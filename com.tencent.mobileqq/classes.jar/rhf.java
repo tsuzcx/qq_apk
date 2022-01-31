@@ -1,14 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.29.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
-class rhf
-  implements View.OnClickListener
+public class rhf
+  extends pzh
 {
-  rhf(rhd paramrhd) {}
+  public rhf(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt)
   {
-    this.a.dismiss();
+    if ((paramBoolean) && (paramInt == 0))
+    {
+      ReadinjoyTabFrame.d(this.a);
+      ThreadManager.post(new ReadinjoyTabFrame.29.1(this, paramGuideInfo2, paramInt, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 5, null, true);
+    }
   }
 }
 

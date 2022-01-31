@@ -1,13 +1,29 @@
+import com.tencent.qphone.base.util.QLog;
+
 class apbh
-  implements bbrx
+  extends apbi
 {
-  apbh(apbf paramapbf, apca paramapca) {}
-  
-  public void a(int paramInt)
+  public apbh(apbe paramapbe)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_Apca.a();
+    super(paramapbe);
+  }
+  
+  protected String a()
+  {
+    return "StateAcceptByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
     }
+    apbe.b(this.jdField_a_of_type_Apbe, 11, 5);
+    apbe.c(this.jdField_a_of_type_Apbe, 11, 5);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateAcceptByPC)");
+    this.jdField_a_of_type_Apbi = new apbf(this.jdField_a_of_type_Apbe);
   }
 }
 

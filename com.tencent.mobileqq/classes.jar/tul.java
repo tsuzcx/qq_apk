@@ -1,69 +1,24 @@
-import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
 
 public class tul
-  extends sgl<tuj, syp>
+  extends uyl
 {
-  public tul(tuj paramtuj)
-  {
-    super(paramtuj);
-  }
+  public tul(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
   
-  public void a(@NonNull tuj paramtuj, @NonNull syp paramsyp)
+  public void a(int paramInt, View paramView, Object paramObject, vas paramvas)
   {
-    if (tuj.a(paramtuj) != 1) {}
-    label149:
-    label209:
-    label218:
-    for (;;)
+    if ((paramObject instanceof QQUserUIItem))
     {
-      return;
-      int i = 0;
-      StoryVideoItem localStoryVideoItem;
-      if (i < paramsyp.a.size())
-      {
-        localStoryVideoItem = (StoryVideoItem)paramsyp.a.get(i);
-        if (!localStoryVideoItem.mVid.equals(tuj.a(paramtuj))) {}
-      }
-      for (paramsyp = localStoryVideoItem;; paramsyp = null)
-      {
-        if ((paramsyp == null) || (paramsyp.mErrorCode != 0)) {
-          break label218;
-        }
-        localStoryVideoItem = tuj.a(paramtuj).a();
-        i = localStoryVideoItem.comparedLevel;
-        int j = tuj.a(paramtuj).a.jdField_a_of_type_Int;
-        String str = tuj.a(paramtuj).a.jdField_a_of_type_JavaLangString;
-        tuj.a(paramtuj, tuj.a(paramtuj), str, false, i, j);
-        paramtuj = ((sqs)sqg.a(2)).b(paramsyp.mOwnerUid);
-        if ((paramtuj != null) && (paramtuj.isVip))
-        {
-          i = 1;
-          if (i == 0) {
-            break label209;
-          }
-        }
-        for (paramtuj = "2";; paramtuj = "1")
-        {
-          urp.a("play_video", "multishoot_entry_clk", 0, j, new String[] { paramtuj, paramsyp.mVid, paramsyp.mOwnerUid, localStoryVideoItem.mVid });
-          return;
-          i += 1;
-          break;
-          i = 0;
-          break label149;
-        }
+      paramView = (QQUserUIItem)paramObject;
+      sxp.a(this.a, 10, paramView.uid);
+      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)) {
+        vel.a("home_page", "clk_head_list", vel.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem), 0, new String[] { "1", vel.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_JavaLangString });
       }
     }
   }
-  
-  public Class acceptEventClass()
-  {
-    return syp.class;
-  }
-  
-  public void b(@NonNull tuj paramtuj, @NonNull syp paramsyp) {}
 }
 
 

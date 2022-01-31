@@ -1,24 +1,78 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class andb
-  extends DataSetObserver
+public class andb
+  extends ampb<String>
 {
-  andb(anda paramanda, DragSortListView paramDragSortListView) {}
-  
-  public void onChanged()
+  public int a()
   {
-    this.jdField_a_of_type_Anda.notifyDataSetChanged();
+    return 462;
   }
   
-  public void onInvalidated()
+  public Class<String> a()
   {
-    this.jdField_a_of_type_Anda.notifyDataSetInvalidated();
+    return String.class;
+  }
+  
+  @NonNull
+  public String a(int paramInt)
+  {
+    return "";
+  }
+  
+  @Nullable
+  public String a(ampi[] paramArrayOfampi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onParsed");
+    }
+    if ((paramArrayOfampi == null) || (paramArrayOfampi.length == 0)) {
+      paramArrayOfampi = null;
+    }
+    String str;
+    do
+    {
+      return paramArrayOfampi;
+      str = paramArrayOfampi[0].a;
+      paramArrayOfampi = str;
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoDrawConfProcessor", 2, " onParsed, content:" + str);
+    return str;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onReqFailed");
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onUpdate");
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     andb
  * JD-Core Version:    0.7.0.1
  */

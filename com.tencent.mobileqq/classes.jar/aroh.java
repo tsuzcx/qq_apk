@@ -1,55 +1,23 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.data.PhoneContact;
-import friendlist.GetOnlineInfoResp;
-import java.util.List;
-import mqq.manager.Manager;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-public abstract interface aroh
-  extends Manager
+public class aroh
+  implements Animation.AnimationListener
 {
-  public abstract RespondQueryQQBindingStat a();
+  public aroh(UiApiPlugin paramUiApiPlugin, View paramView, int paramInt1, int paramInt2) {}
   
-  public abstract PhoneContact a(String paramString);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getRight(), this.b);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
   
-  public abstract String a(String paramString);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void a(int paramInt, List<String> paramList);
-  
-  public abstract void a(aroi paramaroi);
-  
-  public abstract void a(String paramString, GetOnlineInfoResp paramGetOnlineInfoResp);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract Object[] a();
-  
-  public abstract PhoneContact b(String paramString);
-  
-  public abstract String b(String paramString);
-  
-  public abstract void b(aroi paramaroi);
-  
-  public abstract PhoneContact c(String paramString);
-  
-  public abstract void c(String paramString1, String paramString2);
-  
-  public abstract boolean c();
-  
-  public abstract int d();
-  
-  public abstract List<PhoneContact> d();
-  
-  public abstract void d();
-  
-  public abstract List<List<PhoneContact>> e();
-  
-  public abstract List<PhoneContact> f();
-  
-  public abstract List<PhoneContact> g();
-  
-  public abstract void g();
-  
-  public abstract boolean h();
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

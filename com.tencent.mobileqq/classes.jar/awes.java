@@ -1,17 +1,19 @@
-import java.util.ArrayList;
-
 class awes
-  implements awfr
+  extends akgp
 {
-  awes(awer paramawer) {}
+  awes(aweo paramaweo) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, awfk paramawfk) {}
-  
-  public void a(int paramInt, ArrayList<awfk> paramArrayList) {}
-  
-  public void b(int paramInt, awfk paramawfk) {}
+  protected void g(boolean paramBoolean, Object paramObject)
+  {
+    int j = ((Integer)paramObject).intValue();
+    paramObject = hy.a();
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
+    {
+      paramObject.b(i, j);
+      return;
+    }
+  }
 }
 
 

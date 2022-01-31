@@ -1,21 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class aqco
-  extends ajmm
+  implements DialogInterface.OnClickListener
 {
-  aqco(aqcl paramaqcl) {}
+  aqco(aqcn paramaqcn) {}
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(paramLong);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong, ajmj paramajmj)
-  {
-    this.a.a(paramLong);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqco
  * JD-Core Version:    0.7.0.1
  */

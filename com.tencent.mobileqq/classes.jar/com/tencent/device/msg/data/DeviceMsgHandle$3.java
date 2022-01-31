@@ -1,15 +1,15 @@
 package com.tencent.device.msg.data;
 
-import awao;
+import awzw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
-import xvq;
+import yeu;
 
 public class DeviceMsgHandle$3
   implements Runnable
 {
-  public DeviceMsgHandle$3(xvq paramxvq, MessageRecord paramMessageRecord) {}
+  public DeviceMsgHandle$3(yeu paramyeu, MessageRecord paramMessageRecord) {}
   
   public void run()
   {

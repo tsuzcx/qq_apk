@@ -1,23 +1,29 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import java.lang.ref.WeakReference;
+import android.util.Pair;
+import android.view.View;
+import com.tencent.mobileqq.activity.MainFragment;
+import java.util.List;
 
 public class abnd
-  implements xga
+  implements bfoq
 {
-  WeakReference<QQSettingMe> a;
+  public abnd(MainFragment paramMainFragment, List paramList, bfol parambfol) {}
   
-  public abnd(QQSettingMe paramQQSettingMe)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = new WeakReference(paramQQSettingMe);
-  }
-  
-  public int a()
-  {
-    QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
-    if (localQQSettingMe != null) {
-      return localQQSettingMe.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.e();
+    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return;
     }
-    return 0;
+    try
+    {
+      MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (abnk)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      paramView.printStackTrace();
+    }
   }
 }
 

@@ -1,36 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class aiuu
-  extends batl
+public abstract interface aiuu
 {
-  public aiuu(ApolloCardWindow paramApolloCardWindow) {}
+  public abstract EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig);
   
-  public void onDoneFile(batm parambatm)
-  {
-    if (parambatm == null) {
-      return;
-    }
-    try
-    {
-      ??? = parambatm.a().getString("path");
-      String str = parambatm.a().getString("url");
-      parambatm = this.a.a((String)???);
-      str = bcdu.d(str);
-      synchronized (ApolloCardWindow.a)
-      {
-        ApolloCardWindow.a.put(str, parambatm);
-        return;
-      }
-      return;
-    }
-    catch (Exception parambatm)
-    {
-      QLog.e("ApolloCardWindow", 1, "onDoneFile error:", parambatm);
-    }
-  }
+  public abstract void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext);
 }
 
 

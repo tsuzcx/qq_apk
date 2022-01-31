@@ -1,44 +1,76 @@
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.app.Activity;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.widget.BubblePopupWindow;
 
 class ohy
+  implements View.OnClickListener
 {
-  public long a;
-  public ArrayList<Pair<BaseArticleInfo, Float>> a;
-  public long b;
+  ohy(ohv paramohv, oii paramoii, TextView paramTextView, boolean paramBoolean1, boolean paramBoolean2, Activity paramActivity, BubblePopupWindow paramBubblePopupWindow) {}
   
-  private ohy(ohp paramohp)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public ArrayList<Long> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(Long.valueOf(((BaseArticleInfo)((Pair)localIterator.next()).first).mArticleID));
-    }
-    return localArrayList;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("screenInfo : \n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    int j = 1;
+    int i;
+    switch (paramView.getId())
     {
-      Pair localPair = (Pair)localIterator.next();
-      localStringBuilder.append("【").append(((BaseArticleInfo)localPair.first).mTitle).append("】");
+    default: 
+      i = -1;
+      label50:
+      if (this.jdField_a_of_type_Ohv.a != null)
+      {
+        paramView = this.jdField_a_of_type_Ohv.a;
+        if (!(this.jdField_a_of_type_Ohv instanceof ogq)) {
+          break label251;
+        }
+      }
+      break;
     }
-    return localStringBuilder.toString();
+    for (;;)
+    {
+      paramView.a(j, i, this.jdField_a_of_type_Oii);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+      return;
+      paramView = (ClipboardManager)paramView.getContext().getSystemService("clipboard");
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Oii.a)) {
+        break;
+      }
+      paramView.setText(this.jdField_a_of_type_Oii.a);
+      i = -1;
+      break label50;
+      this.jdField_a_of_type_Ohv.d(this.jdField_a_of_type_Oii);
+      i = 1;
+      break label50;
+      this.jdField_a_of_type_Ohv.e(this.jdField_a_of_type_Oii);
+      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = ajyc.a(2131712723);; paramView = ajyc.a(2131712788))
+      {
+        localTextView.setText(paramView);
+        i = 5;
+        break;
+      }
+      if (this.b)
+      {
+        this.jdField_a_of_type_Ohv.c(this.jdField_a_of_type_Oii);
+        i = 4;
+        break label50;
+      }
+      this.jdField_a_of_type_Ohv.a(this.jdField_a_of_type_AndroidAppActivity, new ohz(this));
+      i = 3;
+      break label50;
+      label251:
+      j = 2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ohy
  * JD-Core Version:    0.7.0.1
  */

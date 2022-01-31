@@ -1,6 +1,16 @@
-public abstract interface ajac
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+class ajac
+  implements EIPCResultCallback
 {
-  public abstract void a(int paramInt);
+  ajac(aizw paramaizw) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow onDressChanged send!");
+  }
 }
 
 

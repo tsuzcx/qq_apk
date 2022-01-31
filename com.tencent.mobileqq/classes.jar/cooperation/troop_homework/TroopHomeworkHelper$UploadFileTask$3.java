@@ -1,18 +1,18 @@
 package cooperation.troop_homework;
 
-import ajjy;
-import bbmy;
-import bgny;
+import ajyc;
+import bcpw;
+import bhws;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class TroopHomeworkHelper$UploadFileTask$3
   implements Runnable
 {
-  public TroopHomeworkHelper$UploadFileTask$3(bgny parambgny) {}
+  public TroopHomeworkHelper$UploadFileTask$3(bhws parambhws) {}
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getApplication(), ajjy.a(2131649655), 0).a();
+    bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131715445), 0).a();
   }
 }
 

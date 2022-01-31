@@ -1,18 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import com.tencent.mobileqq.widget.ParticipleView;
+import java.lang.ref.WeakReference;
 
-public class acfe
-  implements DialogInterface.OnClickListener
+public final class acfe
+  extends FlingGestureHandler
 {
-  public acfe(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  private WeakReference<TextPreviewActivity> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private acfe(TextPreviewActivity paramTextPreviewActivity)
   {
-    this.a.l();
-    this.a.a(atxe.g, this.a.a, false);
-    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, mpl.a(), "2", "1");
+    super(paramTextPreviewActivity);
+    this.b = new WeakReference(paramTextPreviewActivity);
+  }
+  
+  public void flingLToR()
+  {
+    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.b.get();
+    int i;
+    if (localTextPreviewActivity != null) {
+      if ((localTextPreviewActivity.a != null) && (localTextPreviewActivity.a.getVisibility() == 0)) {
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        super.flingLToR();
+      }
+      return;
+      i = 0;
+      continue;
+      i = 0;
+    }
   }
 }
 

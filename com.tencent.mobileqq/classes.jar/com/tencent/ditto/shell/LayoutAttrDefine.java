@@ -28,6 +28,12 @@ public class LayoutAttrDefine
   public static final String BELOW = "below";
   @DittoJsonElement(value="背景色", valueStyles={"#AARRGGBB", "#RRGGBB"})
   public static final String BG_Color = "bg_color";
+  @DittoJsonElement("背景渐变色方向")
+  public static final String BG_GRADIENT_DIRECTION = "bgGradientDir";
+  @DittoJsonElement("背景渐变色结束色")
+  public static final String BG_GRADIENT_END_COLOR = "bgGradientEndColor";
+  @DittoJsonElement("背景渐变色开始色")
+  public static final String BG_GRADIENT_START_COLOR = "bgGradientStartColor";
   @DittoJsonElement
   public static final String BorderColor = "border_color";
   @DittoJsonElement
@@ -85,6 +91,8 @@ public class LayoutAttrDefine
   public static final String PADDING_TOP = "padding_top";
   @DittoJsonElement("静默wns请求返回结果如果是修改字段, 这个参数标识了修改字段的keyPath")
   public static final String POST_CLICK_KEY_PATH = "post_click_key_path";
+  @DittoJsonElement("点击态透明度")
+  public static final String PRESSED_ALPHA = "pressedAlpha";
   public static final String[] RULES_HORIZONTAL = { "toLeftOf", "toRightOf", "alignLeft", "alignRight" };
   public static final String[] RULES_VERTICAL = { "above", "below", "alignTop", "alignBottom" };
   @DittoJsonElement

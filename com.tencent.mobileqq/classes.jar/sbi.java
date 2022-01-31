@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
 
 public class sbi
-  implements View.OnClickListener
+  implements wkt
 {
-  public sbi(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  public sbi(FolderFollowTabFragment paramFolderFollowTabFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a);
-    PublicAccountImageCollectionCommentActivity.a(this.a, -1);
-    PublicAccountImageCollectionCommentActivity.b(this.a, false);
+    if ((this.a.getActivity() != null) && (!this.a.getActivity().isFinishing()) && (FolderFollowTabFragment.a(this.a) != null)) {
+      FolderFollowTabFragment.a(this.a).a(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sbi
  * JD-Core Version:    0.7.0.1
  */

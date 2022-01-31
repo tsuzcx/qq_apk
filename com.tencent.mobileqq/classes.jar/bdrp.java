@@ -1,164 +1,132 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.Choreographer;
-import android.view.Choreographer.FrameCallback;
-import com.tencent.qqmini.sdk.monitor.common.FPSCalculator.2;
-import com.tencent.qqmini.sdk.monitor.common.FPSCalculator.3;
-import java.util.Vector;
-import java.util.concurrent.TimeUnit;
+import android.content.Context;
+import com.tencent.av.gaudio.QQGAudioCtrl;
+import com.tencent.av.video.call.ClientLogReport;
+import com.tencent.av.video.call.GAClientLogReport;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
-@TargetApi(16)
 public class bdrp
+  implements bdrk
 {
-  private static volatile bdrp jdField_a_of_type_Bdrp;
-  private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Choreographer.FrameCallback jdField_a_of_type_AndroidViewChoreographer$FrameCallback;
-  private Choreographer jdField_a_of_type_AndroidViewChoreographer;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new FPSCalculator.2(this);
-  private Vector<bdrr> jdField_a_of_type_JavaUtilVector = new Vector();
-  private boolean jdField_a_of_type_Boolean;
-  private Runnable b = new FPSCalculator.3(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bdrm jdField_a_of_type_Bdrm;
+  private bdrs jdField_a_of_type_Bdrs;
+  private QQGAudioCtrl jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl;
   
-  private static long a(long paramLong)
+  public bdrp(Context paramContext, long paramLong, bdrm parambdrm)
   {
-    return TimeUnit.NANOSECONDS.toMillis(paramLong);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Bdrm = parambdrm;
+    this.jdField_a_of_type_Bdrm.a(this);
+    bdrx.a().a(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Bdrs = new bdrs(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, this.jdField_a_of_type_Bdrm);
+    this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = this.jdField_a_of_type_Bdrs.a();
+    ClientLogReport.instance();
+    GAClientLogReport.instance();
   }
   
-  public static bdrp a()
+  public static int a()
   {
-    if (jdField_a_of_type_Bdrp == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bdrp == null) {
-        jdField_a_of_type_Bdrp = new bdrp();
-      }
-      return jdField_a_of_type_Bdrp;
-    }
-    finally {}
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      bdnw.a("FPSCalculator", "FPSCalculator is enable");
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    bdnw.a("FPSCalculator", "FPSCalculator set enable = true");
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    if (Build.VERSION.SDK_INT > 16)
-    {
-      if (this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback == null) {
-        this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback = new bdrq(this);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
-      return;
-    }
-    if (bdnw.a()) {
-      bdnw.a("FPSCalculator", "build version is not support ");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.b, 500L);
-  }
-  
-  private void a(long paramLong)
-  {
-    paramLong = a(paramLong);
-    if (this.jdField_a_of_type_Long <= 0L) {
-      this.jdField_a_of_type_Long = paramLong;
+    int i;
+    if (AppNetConnInfo.isWifiConn()) {
+      i = 1;
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidViewChoreographer.postFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
-      return;
-      long l = paramLong - this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Int += 1;
-      if (l <= 500L) {
-        continue;
-      }
-      double d = this.jdField_a_of_type_Int * 1000 / l;
-      this.jdField_a_of_type_Long = paramLong;
-      this.jdField_a_of_type_Int = 0;
-      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-      int i = 0;
-      try
-      {
-        while (i < this.jdField_a_of_type_JavaUtilVector.size())
+      bdru.c("QavCtrl", String.format("getApn networkType=%s", new Object[] { Integer.valueOf(i) }));
+      return i;
+      if (AppNetConnInfo.isMobileConn()) {
+        switch (AppNetConnInfo.getMobileInfo())
         {
-          ((bdrr)this.jdField_a_of_type_JavaUtilVector.get(i)).a(this.jdField_a_of_type_Long, d);
-          i += 1;
+        default: 
+          i = 100;
+          break;
+        case 1: 
+          i = 3;
+          break;
+        case 2: 
+          i = 9;
+          break;
+        case 3: 
+          i = 11;
+          break;
+        case 4: 
+          i = 14;
+          break;
         }
+      } else {
+        i = 0;
       }
-      finally {}
     }
   }
   
-  private void b()
+  public static void a(bdrm parambdrm)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (Build.VERSION.SDK_INT < 16) {
-        break label80;
-      }
-      if (this.jdField_a_of_type_AndroidViewChoreographer != null)
-      {
-        this.jdField_a_of_type_AndroidViewChoreographer.removeFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
-        if (bdnw.a()) {
-          bdnw.a("FPSCalculator", "removeFrameCallback ");
-        }
-      }
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Boolean = false;
-      bdnw.a("FPSCalculator", "FPSCalculator set enable = false");
-      return;
-      label80:
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
+    if (parambdrm != null) {
+      parambdrm.a();
     }
   }
   
-  public void a(bdrr parambdrr)
+  public static void a(bdrm parambdrm, Context paramContext, long paramLong)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (!this.jdField_a_of_type_JavaUtilVector.contains(parambdrr)) {
-        this.jdField_a_of_type_JavaUtilVector.add(parambdrr);
-      }
-      if (this.jdField_a_of_type_JavaUtilVector.size() > 0) {
-        a();
-      }
-      return;
+    if (parambdrm != null) {
+      parambdrm.a(llq.a(paramLong, String.valueOf(AppSetting.a()), paramContext));
     }
   }
   
-  public void b(bdrr parambdrr)
+  public bdrq a()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    return this.jdField_a_of_type_Bdrs;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bdrs != null)
     {
-      if (this.jdField_a_of_type_JavaUtilVector.contains(parambdrr)) {
-        this.jdField_a_of_type_JavaUtilVector.remove(parambdrr);
-      }
-      if (this.jdField_a_of_type_JavaUtilVector.size() <= 0) {
-        b();
-      }
-      return;
+      this.jdField_a_of_type_Bdrs.c();
+      this.jdField_a_of_type_Bdrs = null;
+    }
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Bdrm = null;
+    this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = null;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
+      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setNetIPAndPort(paramString, paramInt);
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    llq.a(String.valueOf(AppSetting.a()), this.jdField_a_of_type_AndroidContentContext, paramArrayOfByte);
+  }
+  
+  public void b(byte[] paramArrayOfByte) {}
+  
+  public void c(byte[] paramArrayOfByte) {}
+  
+  public void d(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
+      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.onNativeRecvGAudioCMD(1, paramArrayOfByte);
+    }
+  }
+  
+  public void e(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
+      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.onNativeRecvGAudioCMD(2, paramArrayOfByte);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdrp
  * JD-Core Version:    0.7.0.1
  */

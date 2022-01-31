@@ -3,10 +3,10 @@ package cooperation.troop;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import awqx;
-import bfcz;
-import bfdi;
-import bgnu;
+import axqw;
+import bgkq;
+import bgkz;
+import bhwm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
 
@@ -15,12 +15,12 @@ public class TroopMemberCardProxyActivity
 {
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, Class paramClass, Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString3, String paramString4, int paramInt)
   {
-    paramQQAppInterface = new bgnu(paramQQAppInterface);
+    paramQQAppInterface = new bhwm(paramQQAppInterface);
     PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
     if (localPluginCommunicationHandler != null) {
       localPluginCommunicationHandler.register(paramQQAppInterface);
     }
-    paramQQAppInterface = new bfdi(1);
+    paramQQAppInterface = new bgkz(1);
     paramQQAppInterface.jdField_b_of_type_JavaLangString = paramString1;
     paramQQAppInterface.d = paramString2;
     paramQQAppInterface.jdField_a_of_type_JavaLangString = paramString4;
@@ -34,8 +34,8 @@ public class TroopMemberCardProxyActivity
     paramQQAppInterface.jdField_b_of_type_Int = paramInt;
     paramQQAppInterface.c = 10000;
     paramQQAppInterface.f = null;
-    bfcz.a(paramActivity, paramQQAppInterface);
-    awqx.b(null, "P_CliOper", "BizTechReport", "", "troop_member_card_plugin", "load_plugin", 0, 0, null, null, null, null);
+    bgkq.a(paramActivity, paramQQAppInterface);
+    axqw.b(null, "P_CliOper", "BizTechReport", "", "troop_member_card_plugin", "load_plugin", 0, 0, null, null, null, null);
   }
   
   public String getPluginID()

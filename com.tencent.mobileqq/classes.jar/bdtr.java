@@ -1,65 +1,61 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONObject;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qidian.QidianProfileCardActivity;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bdtr
-  extends bdtz
+  extends ajxl
 {
-  private INTERFACE.StGetRobotUinReq a = new INTERFACE.StGetRobotUinReq();
+  public bdtr(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public bdtr(COMM.StCommonExt paramStCommonExt, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-    this.a.appid.set(paramString);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetRobotUinRsp localStGetRobotUinRsp = new INTERFACE.StGetRobotUinRsp();
-    try
+    super.onUpdateCustomHead(paramBoolean, paramString);
+    if (paramBoolean)
     {
-      localStGetRobotUinRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetRobotUinRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("robotUin", localStGetRobotUinRsp.uin.get());
-        return paramArrayOfByte;
+      if (!paramString.equals(this.a.jdField_a_of_type_Auuw.a.jdField_a_of_type_JavaLangString)) {
+        break label86;
       }
-      bdnw.a("GetRobotUinRequest", "onResponse fail.rsp = null");
-      return null;
+      if (!axmt.b()) {
+        break label64;
+      }
+      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.app.a(paramString, (byte)2, false);
+      this.a.c();
     }
-    catch (Exception paramArrayOfByte)
+    label64:
+    label86:
+    do
     {
-      bdnw.a("GetRobotUinRequest", "onResponse fail." + paramArrayOfByte);
+      return;
+      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.app.a(paramString, false);
+      break;
+      paramString = (bdum)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    } while (paramString == null);
+    this.a.a(paramString.jdField_a_of_type_Int, (URLImageView)paramString.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString.jdField_a_of_type_JavaLangString, true);
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_Auuw.a.jdField_a_of_type_JavaLangString.equals(String.valueOf(paramObject)))) {
+      this.a.b();
     }
-    return null;
   }
   
-  protected byte[] a()
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetRobotUin";
+    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_Auuw.a.jdField_a_of_type_JavaLangString != null) && (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_Auuw.a)) && (this.a.jdField_a_of_type_Ajxn != null) && (this.a.jdField_a_of_type_Ajxn.b(this.a.jdField_a_of_type_Auuw.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_Auuw.a.jdField_a_of_type_JavaLangString.equals(this.a.app.getCurrentAccountUin())))
+    {
+      this.a.jdField_a_of_type_Auuw.a.jdField_a_of_type_Int = 1;
+      QidianProfileCardActivity.b(this.a, this.a.jdField_a_of_type_Auuw.a.jdField_a_of_type_JavaLangString);
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bdtr
  * JD-Core Version:    0.7.0.1
  */

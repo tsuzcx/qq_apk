@@ -1,28 +1,31 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class rnv
-  implements TextWatcher
+class rnv
+  implements wxw
 {
-  public rnv(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  rnv(rnu paramrnu) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(Bundle paramBundle)
   {
-    if (TextUtils.isEmpty(ReadInJoyNewSearchActivity.a(this.a).getText().toString()))
-    {
-      ReadInJoyNewSearchActivity.a(this.a).setVisibility(8);
-      return;
+    int i = paramBundle.getInt("readinjoy_to_wx_config");
+    if (QLog.isColorLevel()) {
+      QLog.d("", 2, "config = " + i);
     }
-    ReadInJoyNewSearchActivity.a(this.a).setVisibility(0);
+    if (i == 0) {
+      WxShareHelperFromReadInjoy.a().a(rnu.b(this.a), rnu.a(this.a), 0, false);
+    }
+    for (;;)
+    {
+      rnu.a(this.a).recycle();
+      rnu.a(this.a, null);
+      return;
+      WXShareHelper.a().a(rnu.b(this.a), rnu.a(this.a), 0, false);
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

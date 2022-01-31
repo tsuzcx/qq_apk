@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import agtk;
-import agud;
-import agug;
+import ahfz;
+import ahgs;
+import ahgv;
 import android.os.Handler;
-import bajq;
+import bbkx;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpakcetPreviewConfBean.BreathLight;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,16 +13,16 @@ import com.tencent.mobileqq.app.ThreadManagerV2;
 public class SpringHbConversationEntry$6$1
   implements Runnable
 {
-  public SpringHbConversationEntry$6$1(agug paramagug) {}
+  public SpringHbConversationEntry$6$1(ahgv paramahgv) {}
   
   public void run()
   {
-    agtk localagtk = (agtk)this.a.jdField_a_of_type_Agud.a.a.getManager(342);
-    localagtk.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalConfigSpringFestivalRedpakcetPreviewConfBean$BreathLight);
+    ahfz localahfz = (ahfz)this.a.jdField_a_of_type_Ahgs.a.a.getManager(342);
+    localahfz.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalConfigSpringFestivalRedpakcetPreviewConfBean$BreathLight);
     if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalConfigSpringFestivalRedpakcetPreviewConfBean$BreathLight.type == 0)
     {
-      int i = bajq.b(45.0F);
-      ThreadManagerV2.getUIHandlerV2().postDelayed(new SpringHbConversationEntry.6.1.1(this, i, localagtk), 3500L);
+      int i = bbkx.b(45.0F);
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new SpringHbConversationEntry.6.1.1(this, i, localahfz), 3500L);
     }
   }
 }

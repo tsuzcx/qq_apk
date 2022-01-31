@@ -1,13 +1,67 @@
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class aijc
 {
-  public static boolean a(String paramString)
+  public List<aijd> a = new ArrayList();
+  
+  public static aijc a(JSONObject paramJSONObject)
   {
-    return ("cs.close_room.local".equals(paramString)) || ("cs.create_room.local".equals(paramString)) || ("sc.force_stop_game.local".equals(paramString)) || ("cs.get_dress_path.local".equals(paramString)) || ("cs.join_room.local".equals(paramString)) || ("cs.game_tips.local".equals(paramString)) || ("cs.make_room_min.local".equals(paramString)) || ("cs.first_frame_drawn.local".equals(paramString)) || ("cs.share_game_result.local".equals(paramString)) || ("sc.init_global_var.local".equals(paramString)) || ("cs.report_data_2_compass.local".equals(paramString)) || ("cs.report_data_2_backstage.local".equals(paramString)) || ("cs.report_event.local".equals(paramString)) || ("cs.report_flow_data.local".equals(paramString)) || ("cs.encrypt_data.local".equals(paramString)) || ("cs.decrypt_data.local".equals(paramString)) || ("cs.get_server_ip_port.local".equals(paramString)) || ("cs.save_recommend_ip.local".equals(paramString)) || ("cs.game_start.local".equals(paramString)) || ("cs.check_pubAccount_state.local".equals(paramString)) || ("cs.enter_pubAccount_card.local".equals(paramString)) || ("cs.invite_friends.local".equals(paramString)) || ("cs.send_b2c_redpacket.local".equals(paramString)) || ("cs.finish_group_whiteface.local".equals(paramString)) || ("cs.ready_play_whiteface.local".equals(paramString)) || ("cs.on_get_open_key.local".equals(paramString)) || ("cs.apolloGameWebMessage.local".equals(paramString)) || ("cs.openFloatTransparentView.local".equals(paramString)) || ("cs.openWebView.local".equals(paramString)) || ("cs.show_apollo_panel.local".equals(paramString)) || ("cs.slave_action_status_notify.local".equals(paramString)) || ("cs.qta_notify_test_result.local".equals(paramString)) || ("cs.share_pic.local".equals(paramString)) || ("cs.single_action_status_changed.local".equals(paramString)) || ("cs.audioRoom_enter.local".equals(paramString)) || ("cs.audioRoom_exit.local".equals(paramString)) || ("cs.audioRoom_set_mic.local".equals(paramString)) || ("cs.audioRoom_set_speaker.local".equals(paramString)) || ("cs.script_action_status_notify.local".equals(paramString)) || ("cs.script_get_dress_data.local".equals(paramString)) || ("cs.script_change_panel_status.local".equals(paramString)) || ("cs.script_sprite_status_change.local".equals(paramString)) || ("cs.script_get_show_action.local".equals(paramString)) || ("cs.script_is_allow_play_audio.local".equals(paramString)) || ("cs.script_show_barrage.local".equals(paramString)) || ("cs.script_send_action_msg.local".equals(paramString)) || ("cs.script_show_toast.local".equals(paramString)) || ("cs.script_get_config.local".equals(paramString)) || ("cs.script_get_nickname.local".equals(paramString)) || ("cs.script_get_action_data.local".equals(paramString)) || ("cs.send_game_msg.local".equals(paramString)) || ("cs.share_game_in_ark.local".equals(paramString)) || ("cs.h5_communicate.local".equals(paramString)) || ("cs.get_cm3D_state.local".equals(paramString)) || ("cs.trace_begin.local".equals(paramString)) || ("cs.trace_end.local".equals(paramString)) || ("cs.trace_span_begin.local".equals(paramString)) || ("cs.trace_span_end.local".equals(paramString)) || ("cs.trace_log.local".equals(paramString));
+    if (paramJSONObject == null) {
+      paramJSONObject = new aijc();
+    }
+    for (;;)
+    {
+      return paramJSONObject;
+      localaijc = new aijc();
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(paramJSONObject.getString("items"));
+        paramJSONObject = localaijc;
+        if (localJSONArray == null) {
+          continue;
+        }
+        paramJSONObject = localaijc;
+        if (localJSONArray.length() < 0) {
+          continue;
+        }
+        int j = localJSONArray.length();
+        int i = 0;
+        for (;;)
+        {
+          paramJSONObject = localaijc;
+          if (i >= j) {
+            break;
+          }
+          paramJSONObject = aijd.a(localJSONArray.getJSONObject(i));
+          localaijc.a.add(paramJSONObject);
+          i += 1;
+        }
+        return localaijc;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return localaijc;
+      }
+      catch (OutOfMemoryError paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return localaijc;
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aijc
  * JD-Core Version:    0.7.0.1
  */

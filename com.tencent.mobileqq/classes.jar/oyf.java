@@ -1,91 +1,103 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.os.SystemClock;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
 import com.tencent.qphone.base.util.QLog;
 
 public class oyf
-  extends ViewBase
 {
-  private NativeAvatarView a;
+  public static final int[] a = { 0, 1, 2, 3, 4 };
   
-  public oyf(VafContext paramVafContext)
+  public static SparseArray<oya> a(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup)
   {
-    super(paramVafContext);
-    this.a = new NativeAvatarView(paramVafContext.getContext());
+    SparseArray localSparseArray = new SparseArray();
+    int i = 0;
+    if (i < a.length)
+    {
+      int j = a[i];
+      oya localoya = a(j);
+      if (localoya == null) {
+        QLog.d("HandlerFactory", 2, new Object[] { "create handler fail, id : ", Integer.valueOf(j) });
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localoya.a(paramReadInJoyBaseListViewGroup);
+        localSparseArray.put(j, localoya);
+      }
+    }
+    return localSparseArray;
   }
   
-  public void a(opw paramopw)
+  public static Object a(SparseArray<oya> paramSparseArray, oyg paramoyg)
   {
-    this.a.setModel(paramopw);
+    if (paramoyg == null) {
+      return null;
+    }
+    int i = -1;
+    int j = 0;
+    Object localObject = null;
+    long l1;
+    if (j < paramSparseArray.size())
+    {
+      l1 = SystemClock.currentThreadTimeMillis();
+      paramoyg.a((oya)paramSparseArray.valueAt(j));
+      if (paramoyg.a == null) {
+        break label189;
+      }
+      if (localObject == null)
+      {
+        localObject = paramoyg.a;
+        i = ((oya)paramSparseArray.valueAt(j)).a();
+        paramoyg.a = null;
+      }
+    }
+    label189:
+    for (;;)
+    {
+      long l2 = SystemClock.currentThreadTimeMillis();
+      QLog.d("HandlerFactory", 2, new Object[] { "execute with return value handler job , id : ", Integer.valueOf(paramSparseArray.keyAt(j)), ", jobName : ", paramoyg.a(), ", cost : ", Long.valueOf(l2 - l1) });
+      j += 1;
+      break;
+      throw new RuntimeException("has more than one handler return value. preHandlerID : " + i + ", now : " + ((oya)paramSparseArray.valueAt(j)).a());
+      return localObject;
+    }
   }
   
-  public void a(opw paramopw, boolean paramBoolean)
-  {
-    this.a.setModel(paramopw, paramBoolean);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public boolean onClick()
-  {
-    super.onClick();
-    return true;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
+  public static oya a(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return super.setAttribute(paramInt, paramObject);
+      return null;
+    case 1: 
+      return new nym();
+    case 2: 
+      return new oyc();
+    case 0: 
+      return new oyh();
+    case 3: 
+      return new oyb();
     }
-    if ((paramObject instanceof Long)) {
-      this.a.setUin(((Long)paramObject).longValue());
-    }
-    return true;
+    return new oyv();
   }
   
-  public boolean setAttribute(int paramInt, String paramString)
+  public static void a(SparseArray<oya> paramSparseArray, oyg paramoyg)
   {
-    switch (paramInt)
+    if (paramoyg == null) {}
+    for (;;)
     {
-    default: 
-      return super.setAttribute(paramInt, paramString);
+      return;
+      int i = 0;
+      while (i < paramSparseArray.size())
+      {
+        long l1 = SystemClock.currentThreadTimeMillis();
+        paramoyg.a((oya)paramSparseArray.valueAt(i));
+        long l2 = SystemClock.currentThreadTimeMillis();
+        QLog.d("HandlerFactory", 2, new Object[] { "execute handler job , id : ", Integer.valueOf(paramSparseArray.keyAt(i)), ", jobName : ", paramoyg.a(), ", cost : ", Long.valueOf(l2 - l1) });
+        i += 1;
+      }
     }
-    try
-    {
-      this.a.setUin(Long.valueOf(paramString).longValue());
-      return true;
-    }
-    catch (NumberFormatException paramString)
-    {
-      QLog.e("AvatarView", 1, paramString, new Object[0]);
-    }
-    return false;
   }
 }
 

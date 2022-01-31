@@ -1,16 +1,10 @@
-import android.content.Context;
-
-public class awtl
+public abstract interface awtl
 {
-  public static void a() {}
-  
-  public static void a(Context paramContext) {}
-  
-  public static void b() {}
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awtl
  * JD-Core Version:    0.7.0.1
  */

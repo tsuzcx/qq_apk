@@ -1,34 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qqfav.widget.QfavJumpActivity;
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public class bfjm
-  implements DialogInterface.OnClickListener
+class bfjm
+  implements bfjg
 {
-  public bfjm(QfavJumpActivity paramQfavJumpActivity, InputStream paramInputStream) {}
+  bfjm(bfjl parambfjl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaIoInputStream.close();
-      this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.finish();
-      return;
-    }
-    catch (IOException paramDialogInterface)
-    {
-      for (;;)
+    if (paramInt1 == 1) {
+      synchronized (bfjl.a(this.a))
       {
-        paramDialogInterface.printStackTrace();
+        Object localObject2 = (List)bfjl.a(this.a).get(Integer.valueOf(paramInt2));
+        if (localObject2 != null)
+        {
+          bfjl.a(this.a).remove(Integer.valueOf(paramInt2));
+          bfjl.a(this.a);
+        }
+        if (localObject2 != null)
+        {
+          ??? = ((List)localObject2).iterator();
+          if (((Iterator)???).hasNext())
+          {
+            localObject2 = (bfjn)((Iterator)???).next();
+            bfjl.a(this.a).a(((bfjn)localObject2).jdField_a_of_type_Int, ((bfjn)localObject2).b, ((bfjn)localObject2).c, new Object[] { ((bfjn)localObject2).jdField_a_of_type_ArrayOfByte }, null);
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfjm
  * JD-Core Version:    0.7.0.1
  */

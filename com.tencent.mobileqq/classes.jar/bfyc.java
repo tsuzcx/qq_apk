@@ -1,13 +1,17 @@
-import java.lang.reflect.Method;
+import android.view.animation.Interpolator;
 
-public class bfyc
+final class bfyc
+  implements Interpolator
 {
-  public Object a;
-  public Method a;
+  public float getInterpolation(float paramFloat)
+  {
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfyc
  * JD-Core Version:    0.7.0.1
  */

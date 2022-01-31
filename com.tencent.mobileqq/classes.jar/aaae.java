@@ -1,20 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.view.Choreographer.FrameCallback;
 
-public class aaae
-  implements CompoundButton.OnCheckedChangeListener
+class aaae
+  implements Choreographer.FrameCallback
 {
-  public aaae(AssistantSettingActivity paramAssistantSettingActivity, ajjj paramajjj) {}
+  aaae(aaad paramaaad) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void doFrame(long paramLong)
   {
-    this.jdField_a_of_type_Ajjj.a(paramBoolean);
+    this.a.a(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaae
  * JD-Core Version:    0.7.0.1
  */

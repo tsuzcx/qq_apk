@@ -1,58 +1,25 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import java.io.File;
+import com.tencent.ad.tangram.toast.AdToastAdapter;
 
 public class ysm
-  extends URLDrawableParams
+  implements AdToastAdapter
 {
-  Context a;
-  
-  public ysm(Context paramContext, File paramFile)
+  public void show(Context paramContext, int paramInt1, CharSequence paramCharSequence, int paramInt2)
   {
-    super(paramContext);
-    this.a = paramContext;
-    axwd.a = paramFile;
-    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new axpv(paramFile);
-  }
-  
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
-  {
-    boolean bool = true;
-    if (("http".equals(paramString)) || ("https".equals(paramString)))
+    int i = 1;
+    if (paramInt1 == 1) {
+      paramInt1 = i;
+    }
+    for (;;)
     {
-      if (BaseApplicationImpl.sProcessId == 1) {}
-      for (;;)
-      {
-        return new axrg(bool, paramObject);
-        bool = false;
+      bcpw.a(paramContext, paramInt1, paramCharSequence, paramInt2).a();
+      return;
+      if (paramInt1 == 2) {
+        paramInt1 = 2;
+      } else {
+        paramInt1 = 0;
       }
     }
-    return null;
-  }
-  
-  public String doGetLocalFilePath(String paramString)
-  {
-    return null;
-  }
-  
-  public ApngSoLoader getApngSoLoader()
-  {
-    return baon.a();
-  }
-  
-  public Drawable getDefaultLoadingDrawable()
-  {
-    return this.a.getResources().getDrawable(2130846730);
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return this.a.getResources().getDrawable(2130846730);
   }
 }
 

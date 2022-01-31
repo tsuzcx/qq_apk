@@ -1,27 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.annotation.SuppressLint;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
 
-class bfny
-  implements View.OnClickListener
+@SuppressLint({"NewApi"})
+public abstract interface bfny
+  extends ActionMode.Callback
 {
-  bfny(bfnx parambfnx) {}
-  
-  public void onClick(View paramView)
-  {
-    if (bfnx.a(this.a))
-    {
-      if (bfnx.b(this.a)) {
-        this.a.dismiss();
-      }
-      if (bfnx.a(this.a) != null) {
-        bfnx.a(this.a).onClick(paramView);
-      }
-    }
-  }
+  public abstract void a(ActionMode paramActionMode, int paramInt, long paramLong, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfny
  * JD-Core Version:    0.7.0.1
  */

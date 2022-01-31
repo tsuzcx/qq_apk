@@ -1,22 +1,29 @@
-import com.tencent.image.URLDrawable.DownloadListener;
-
-class ayxt
-  implements URLDrawable.DownloadListener
+public class ayxt
 {
-  ayxt(ayxq paramayxq) {}
-  
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    ayxq.a(this.a);
-  }
+  public int a;
+  public long a;
+  public ayxn a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayxt
  * JD-Core Version:    0.7.0.1
  */

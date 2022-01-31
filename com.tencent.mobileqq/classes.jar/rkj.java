@@ -1,22 +1,48 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-class rkj
-  implements Animation.AnimationListener
+public abstract class rkj
 {
-  rkj(rki paramrki) {}
+  public static int a;
+  public float a;
+  public View a;
+  public BaseData a;
+  protected rkl a;
+  public float b = 14.0F;
+  public int b;
+  public int c = 16;
+  public int d = 18;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  static
   {
-    rkg.a(this.a.a).getActivity().doOnBackPressed();
-    rkg.a(this.a.a).getActivity().overridePendingTransition(0, 0);
+    jdField_a_of_type_Int = 32;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public rkj() {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public rkj(View paramView, BaseData paramBaseData)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
+  }
+  
+  public void a() {}
+  
+  public abstract void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean);
+  
+  public void a(String paramString, Bitmap paramBitmap) {}
+  
+  public void a(rkl paramrkl)
+  {
+    this.jdField_a_of_type_Rkl = paramrkl;
+  }
+  
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData2;
+    a(paramBaseData1, paramBaseData2, paramBoolean);
+  }
 }
 
 

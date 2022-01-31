@@ -14,7 +14,7 @@ final class MiniProgramLpReportDC04884$1
   
   public void run()
   {
-    Object localObject = StorageUtil.getPreference().getString("version", "1.10.0.00173");
+    Object localObject = StorageUtil.getPreference().getString("version", "1.12.1.00001");
     localObject = MiniProgramReportHelper.newSingleDcData(9, String.valueOf(6), new ArrayList(Arrays.asList(new COMM.Entry[] { MiniProgramReportHelper.newEntry("appid", this.val$appId), MiniProgramReportHelper.newEntry("miniapp_version", this.val$miniapp_version), MiniProgramReportHelper.newEntry("baselib_version", (String)localObject), MiniProgramReportHelper.newEntry("apiResult", this.val$jsonParams) })), null);
     MiniProgramReporter.getInstance().add((REPORT.SingleDcData)localObject);
   }

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
 import android.os.Bundle;
-import ayue;
+import azuu;
 import java.util.UUID;
 
 public class TroopFileUploadMgr$7
   implements Runnable
 {
-  public TroopFileUploadMgr$7(ayue paramayue, UUID paramUUID, Bundle paramBundle) {}
+  public TroopFileUploadMgr$7(azuu paramazuu, UUID paramUUID, Bundle paramBundle) {}
   
   public void run()
   {
-    ayue.a(this.this$0, this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_AndroidOsBundle);
+    azuu.a(this.this$0, this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

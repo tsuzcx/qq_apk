@@ -1,128 +1,72 @@
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.forward.ForwardQFavBatchOption.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import java.util.List;
 
 public class apku
-  extends aphp
 {
-  boolean i = false;
+  protected int a;
+  protected QQAppInterface a;
+  protected FileManagerEntity a;
+  protected List<apkp> a;
+  private int b;
   
-  public apku(Intent paramIntent)
+  public apku(QQAppInterface paramQQAppInterface)
   {
-    super(paramIntent);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public String a()
+  public int a()
   {
-    if (!this.i) {}
-    for (this.jdField_a_of_type_JavaLangString = ajjy.a(2131638985);; this.jdField_a_of_type_JavaLangString = null)
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public apii a(BaseActivity paramBaseActivity)
+  {
+    return new apkv(this, paramBaseActivity);
+  }
+  
+  public List<apkp> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public boolean a(Intent paramIntent, Activity paramActivity)
+  {
+    Object localObject = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
+    if (localObject == null) {
+      return false;
+    }
+    if (paramIntent.getBooleanExtra("from_webview", false))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardQFavBatchOption", 2, "DialogContent:mForwardText=" + this.jdField_a_of_type_JavaLangString);
-      }
-      return this.jdField_a_of_type_JavaLangString;
+      azqt localazqt = bakj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((ForwardFileInfo)localObject).a(), ((ForwardFileInfo)localObject).b(), ((ForwardFileInfo)localObject).e(), ((ForwardFileInfo)localObject).d(), ((ForwardFileInfo)localObject).d(), paramIntent.getIntExtra("bisId", 0));
+      l1 = ((ForwardFileInfo)localObject).a();
+      localObject = paramIntent.getStringExtra("sender_uin");
+      long l2 = paramIntent.getLongExtra("last_time", 0L);
+      apvk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramActivity, null, null, l1, localazqt, (String)localObject, l2, -1, 0, null, false, false);
+      paramActivity.finish();
+      return false;
     }
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    this.i = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("bSinglePicSelected", false);
-    if ((this.i) && (TextUtils.isEmpty(this.b))) {
-      this.b = this.jdField_a_of_type_AndroidOsBundle.getString("forward_filepath");
+    long l1 = ((ForwardFileInfo)localObject).b();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l1);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
+      return false;
     }
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("qqfav_extra_skip_confirm", false)) {
-      v();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime = paramIntent.getLongExtra("last_time", 0L);
+    this.jdField_a_of_type_JavaUtilList.add(apki.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity));
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0)
+    {
+      this.jdField_a_of_type_Int = 1;
+      return true;
     }
+    this.jdField_a_of_type_Int = 3;
     return true;
-  }
-  
-  protected void b()
-  {
-    this.jdField_a_of_type_Bafb.setMessageWithEmo(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Float);
-    TextView localTextView = this.jdField_a_of_type_Bafb.getMessageTextView();
-    ViewGroup.LayoutParams localLayoutParams = localTextView.getLayoutParams();
-    localLayoutParams.width = -1;
-    localTextView.setLayoutParams(localLayoutParams);
-    localTextView.setGravity(17);
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_AndroidOsBundle.getString("uinname");
-  }
-  
-  protected void s()
-  {
-    if (this.i) {
-      t();
-    }
-  }
-  
-  public void v()
-  {
-    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin");
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
-    String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("uinname");
-    int m = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
-    Object localObject2 = new Intent();
-    boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("needStartChatActivity", false);
-    ((Intent)localObject2).putExtra("needStartChatActivity", bool);
-    Object localObject1 = localObject2;
-    if (bool)
-    {
-      localObject1 = aciy.a((Intent)localObject2, null);
-      ((Intent)localObject1).putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    }
-    this.jdField_a_of_type_AndroidAppActivity.getIntent().putExtra("isFromFavorites", true);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, (Intent)localObject1);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    localObject1 = new Intent((Intent)localObject1);
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    int j;
-    ArrayList localArrayList;
-    int k;
-    label180:
-    Object localObject3;
-    MqqHandler localMqqHandler;
-    if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("forwardFromAIO", false))
-    {
-      j = 2;
-      localArrayList = this.jdField_a_of_type_AndroidContentIntent.getParcelableArrayListExtra("bundleList");
-      k = 0;
-      if (k >= localArrayList.size()) {
-        break label275;
-      }
-      localObject3 = (Bundle)localArrayList.get(k);
-      if (localObject3 != null)
-      {
-        localMqqHandler = ThreadManager.getUIHandler();
-        localObject3 = new ForwardQFavBatchOption.1(this, (Bundle)localObject3, (String)localObject2, str2, str1, m, j, str3, (Intent)localObject1);
-        if (k != 0) {
-          break label265;
-        }
-      }
-    }
-    label265:
-    for (long l = 200L;; l = k * 10)
-    {
-      localMqqHandler.postDelayed((Runnable)localObject3, l);
-      k += 1;
-      break label180;
-      j = 1;
-      break;
-    }
-    label275:
-    bfhz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_BatchForwardSendBtnClick", 0, 0, localArrayList.size());
   }
 }
 

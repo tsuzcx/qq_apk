@@ -1,19 +1,19 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class acvd
-  extends aclw
+public abstract class acvd
+  implements acvf
 {
-  acvd(acvc paramacvc, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, String paramString)
-  {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
-  }
+  public static final boolean e = AppSetting.d;
+  public int b;
   
-  public void j()
-  {
-    this.a.a(true);
-  }
+  public abstract View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, acxn paramacxn);
+  
+  public abstract void a();
+  
+  public abstract void a(View paramView, ChatMessage paramChatMessage, int paramInt);
 }
 
 

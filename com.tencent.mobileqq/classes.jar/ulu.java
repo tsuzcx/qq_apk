@@ -1,58 +1,29 @@
-import android.widget.ImageView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.ListIterator;
-import java.util.Map.Entry;
-import java.util.WeakHashMap;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ulu
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, svy>
 {
-  private LinkedHashMap<vpk, WeakReference<ImageView>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(10, 0.75F, true);
-  private WeakHashMap<ImageView, vpk> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
-  
-  public int a()
+  public ulu(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    return this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public ListIterator<Map.Entry<vpk, WeakReference<ImageView>>> a()
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull svy paramsvy)
   {
-    return new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet()).listIterator(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
-  }
-  
-  public vpk a(ImageView paramImageView)
-  {
-    paramImageView = (vpk)this.jdField_a_of_type_JavaUtilWeakHashMap.remove(paramImageView);
-    if (paramImageView != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramImageView);
+    paramsvy = paramsvy.a;
+    if (paramsvy == null) {}
+    while (uyn.a(paramsvy.mUploadStatus) != 3) {
+      return;
     }
-    return paramImageView;
+    paramQQStoryShareGroupProfileActivity.b = true;
   }
   
-  public void a()
+  public Class acceptEventClass()
   {
-    this.jdField_a_of_type_JavaUtilWeakHashMap.clear();
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-  }
-  
-  public void a(ImageView paramImageView, vpk paramvpk)
-  {
-    vpk localvpk = (vpk)this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramImageView, paramvpk);
-    if (localvpk != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(localvpk);
-    }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramvpk, new WeakReference(paramImageView));
-  }
-  
-  public void a(vpk paramvpk)
-  {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramvpk);
-  }
-  
-  public vpk b(ImageView paramImageView)
-  {
-    return (vpk)this.jdField_a_of_type_JavaUtilWeakHashMap.get(paramImageView);
+    return svy.class;
   }
 }
 

@@ -1,17 +1,44 @@
 package com.tencent.mobileqq.listentogether.ui;
 
-import aqyg;
-import com.tencent.mobileqq.widget.QQBlurView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.PopupWindow;
+import artw;
+import arua;
+import bbkx;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class BaseListenTogetherPanel$6
   implements Runnable
 {
-  public BaseListenTogetherPanel$6(aqyg paramaqyg) {}
+  public BaseListenTogetherPanel$6(artw paramartw) {}
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.a();
+    try
+    {
+      View localView = ((LayoutInflater)this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("layout_inflater")).inflate(2131560622, this.this$0.jdField_a_of_type_AndroidViewViewGroup, false);
+      localView.measure(0, 0);
+      this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localView);
+      this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
+      this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
+      this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
+      localView.setOnClickListener(new arua(this));
+      if (this.this$0.jdField_a_of_type_AndroidViewViewGroup != null) {}
+      for (int i = this.this$0.jdField_a_of_type_AndroidViewViewGroup.getWidth();; i = bbkx.a())
+      {
+        int j = localView.getMeasuredWidth();
+        int k = bbkx.a(52.0F);
+        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout, i - j - k, 0);
+        return;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("BaseListenTogetherPanel", 1, "showGuide exception, ", localException);
     }
   }
 }

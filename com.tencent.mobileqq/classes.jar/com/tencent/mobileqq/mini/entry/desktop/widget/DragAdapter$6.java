@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry.desktop.widget;
 
-import ajjy;
-import amda;
-import bbmy;
+import ajyc;
+import amtc;
+import bcpw;
 import java.util.List;
 
 class DragAdapter$6
@@ -12,7 +12,7 @@ class DragAdapter$6
   
   public void run()
   {
-    bbmy.a(DragAdapter.access$600(this.this$0), ajjy.a(2131637728) + amda.c() + ajjy.a(2131637727), 0).a();
+    bcpw.a(DragAdapter.access$600(this.this$0), ajyc.a(2131703513) + amtc.c() + ajyc.a(2131703512), 0).a();
     if (this.val$overTopTargetIndex != -1)
     {
       this.this$0.mData.remove(this.val$overTopTargetIndex);

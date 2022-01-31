@@ -1,19 +1,26 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import cooperation.liveroom.LiveRoomProxyActivity;
 
 class pfp
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  pfp(pfl parampfl, LinearLayout paramLinearLayout) {}
+  pfp(pfm parampfm, pax parampax, rap paramrap) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    if ((this.jdField_a_of_type_Pax.a() != null) && (this.jdField_a_of_type_Pax.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_Pax.a().mSocialFeedInfo.a != null)) {
+      LiveRoomProxyActivity.open(this.jdField_a_of_type_Rap.a(), this.jdField_a_of_type_Pax.a().mSocialFeedInfo.a.c, "kandian biu feed click");
     }
-    return false;
+    rbu localrbu;
+    do
+    {
+      return;
+      localrbu = this.jdField_a_of_type_Rap.a();
+    } while (localrbu == null);
+    localrbu.a(paramView, this.jdField_a_of_type_Pax.a(), 2);
   }
 }
 

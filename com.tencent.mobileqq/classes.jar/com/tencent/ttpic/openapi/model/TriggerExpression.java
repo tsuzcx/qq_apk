@@ -5,13 +5,17 @@ import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.aekit.plugin.core.PTHandAttr;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.manager.TriggerStateManager;
+import com.tencent.ttpic.openapi.util.TriggerUtil;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 public class TriggerExpression
 {
   public int mTriggerType;
+  public ArrayList<StickerItem.TriggerArea> triggerArea;
+  public int triggerHandPoint;
   
   public TriggerExpression(int paramInt)
   {
@@ -25,77 +29,59 @@ public class TriggerExpression
   
   public boolean isTriggered()
   {
-    boolean bool2 = true;
+    boolean bool = true;
     PTDetectInfo localPTDetectInfo = TriggerStateManager.getInstance().getPTDetectInfo();
-    if (localPTDetectInfo == null) {
-      return false;
-    }
-    Object localObject = localPTDetectInfo.triggeredExpression;
-    List localList = localPTDetectInfo.bodyPoints;
-    AIAttr localAIAttr = localPTDetectInfo.aiAttr;
-    boolean bool1;
-    if (VideoMaterialUtil.isFaceTriggerType(this.mTriggerType))
+    if (localPTDetectInfo == null) {}
+    Object localObject;
+    List localList;
+    AIAttr localAIAttr;
+    do
     {
-      if (localObject != null)
-      {
-        bool1 = ((Set)localObject).contains(Integer.valueOf(this.mTriggerType));
-        return bool1;
+      return false;
+      localObject = localPTDetectInfo.triggeredExpression;
+      localList = localPTDetectInfo.bodyPoints;
+      localAIAttr = localPTDetectInfo.aiAttr;
+      if (!VideoMaterialUtil.isFaceTriggerType(this.mTriggerType)) {
+        break;
       }
-    }
-    else if (VideoMaterialUtil.isGestureTriggerType(this.mTriggerType))
+    } while (localObject == null);
+    return ((Set)localObject).contains(Integer.valueOf(this.mTriggerType));
+    if (VideoMaterialUtil.isGestureTriggerType(this.mTriggerType))
     {
       localObject = (PTHandAttr)localAIAttr.getAvailableData(AEDetectorType.HAND.value);
       if (localObject == null) {
-        break label248;
-      }
-      if (((PTHandAttr)localObject).getHandType() == this.mTriggerType) {
-        bool1 = true;
+        break label227;
       }
     }
-    for (;;)
+    label227:
+    for (bool = TriggerUtil.isGestureTriggered((PTHandAttr)localObject, this.mTriggerType, this.triggerHandPoint, this.triggerArea, localAIAttr);; bool = false)
     {
       if (localPTDetectInfo.isFreezeInfo)
       {
-        bool1 = bool2;
-        if (localPTDetectInfo.gestureTrigger == this.mTriggerType) {
+        if (localPTDetectInfo.gestureTrigger != this.mTriggerType) {
           break;
         }
-        bool1 = false;
-        break;
-        bool1 = false;
-        continue;
+        return true;
       }
-      break;
-      bool1 = bool2;
+      return bool;
       if (VideoMaterialUtil.isAudioTextTriggerType(this.mTriggerType)) {
+        return true;
+      }
+      if (VideoMaterialUtil.isAllFreezeFrameTriggerType(this.mTriggerType)) {
+        return ((Set)localObject).contains(Integer.valueOf(this.mTriggerType));
+      }
+      if (VideoMaterialUtil.isTouchTriggerType(this.mTriggerType)) {
+        return ((Set)localObject).contains(Integer.valueOf(this.mTriggerType));
+      }
+      if (!VideoMaterialUtil.isBodyDetectType(this.mTriggerType)) {
         break;
       }
-      if (VideoMaterialUtil.isAllFreezeFrameTriggerType(this.mTriggerType))
+      if ((localList != null) && (!localList.isEmpty())) {}
+      for (;;)
       {
-        bool1 = ((Set)localObject).contains(Integer.valueOf(this.mTriggerType));
-        break;
+        return bool;
+        bool = false;
       }
-      if (VideoMaterialUtil.isTouchTriggerType(this.mTriggerType))
-      {
-        bool1 = ((Set)localObject).contains(Integer.valueOf(this.mTriggerType));
-        break;
-      }
-      if (VideoMaterialUtil.isBodyDetectType(this.mTriggerType))
-      {
-        if (localList != null)
-        {
-          bool1 = bool2;
-          if (!localList.isEmpty()) {
-            break;
-          }
-        }
-        bool1 = false;
-        break;
-      }
-      bool1 = false;
-      break;
-      label248:
-      bool1 = false;
     }
   }
 }

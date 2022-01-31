@@ -2,7 +2,7 @@ package com.tencent.av.business.manager.magicface;
 
 import com.tencent.av.business.manager.pendant.PendantItem;
 import java.lang.ref.WeakReference;
-import kyd;
+import liv;
 
 class MagicFaceDataEntity$StopSelfDecorationRunnable
   implements Runnable

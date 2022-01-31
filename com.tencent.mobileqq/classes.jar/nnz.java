@@ -1,44 +1,32 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.ArrayList;
-import java.util.HashSet;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class nnz
+class nnz
+  extends BroadcastReceiver
 {
-  public static HashSet<String> a = new HashSet();
+  nnz(nnx paramnnx) {}
   
-  public static void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    a.clear();
-  }
-  
-  public static void a(int paramInt, qhp paramqhp)
-  {
-    if (paramqhp == null) {}
-    qht localqht;
-    AdvertisementInfo localAdvertisementInfo;
-    do
+    if (this.a.a == 1)
     {
-      do
-      {
-        return;
-        localqht = paramqhp.a();
-        paramqhp = paramqhp.a();
-      } while ((paramqhp == null) || (localqht == null) || (!(localqht.a instanceof AdvertisementInfo)));
-      localAdvertisementInfo = (AdvertisementInfo)localqht.a;
-    } while (paramInt < localAdvertisementInfo.mC2SReportTriggerTime / 1000);
-    a(paramqhp, localAdvertisementInfo, localqht);
-  }
-  
-  public static boolean a(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo, qht paramqht)
-  {
-    if ((paramqht == null) || (paramActivity == null) || (paramAdvertisementInfo == null)) {}
-    while ((!(paramqht.a instanceof AdvertisementInfo)) || (!paramqht.b) || (a.contains(paramAdvertisementInfo.mAdTraceId)) || (paramAdvertisementInfo.mC2SVideoPlayUrl == null) || (paramAdvertisementInfo.mC2SVideoPlayUrl.size() <= 0)) {
-      return false;
+      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
+      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
+      this.a.a(null, 0, 13, i, paramIntent);
     }
-    nbe.a(new nmv().a(paramActivity).a(nbe.E).b(nbe.L).a(paramAdvertisementInfo).a());
-    a.add(paramAdvertisementInfo.mAdTraceId);
-    return true;
+    try
+    {
+      paramContext.unregisterReceiver(this.a.b);
+      label50:
+      this.a.b = null;
+      this.a.a = 0;
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      break label50;
+    }
   }
 }
 

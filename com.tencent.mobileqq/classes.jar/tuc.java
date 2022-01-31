@@ -1,37 +1,17 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import com.tencent.widget.AbsListView;
 
-public final class tuc
-  extends QQUIEventReceiver<ttr, swv>
+public class tuc
+  implements bfob
 {
-  public tuc(@NonNull ttr paramttr)
+  public tuc(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramttr);
+    this.a.a = paramInt1;
   }
   
-  public void a(@NonNull ttr paramttr, @NonNull swv paramswv)
-  {
-    if ((paramswv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramswv.jdField_a_of_type_JavaUtilList != null) && (paramttr.a != null))
-    {
-      paramswv = paramswv.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramswv.hasNext())
-      {
-        srj localsrj = (srj)paramswv.next();
-        if (TextUtils.equals(paramttr.a.b, localsrj.a)) {
-          paramttr.i();
-        }
-      }
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return swv.class;
-  }
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

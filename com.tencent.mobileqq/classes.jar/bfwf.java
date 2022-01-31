@@ -1,23 +1,85 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.LocalImageShootInfo;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 
-public final class bfwf
-  implements Parcelable.Creator<LocalImageShootInfo>
+public class bfwf
 {
-  public LocalImageShootInfo a(Parcel paramParcel)
+  private TypedArray a;
+  
+  public bfwf(TypedArray paramTypedArray)
   {
-    return new LocalImageShootInfo(paramParcel);
+    this.a = paramTypedArray;
   }
   
-  public LocalImageShootInfo[] a(int paramInt)
+  public int a(int paramInt1, int paramInt2)
   {
+    int i = paramInt2;
+    if (paramInt1 >= 0) {
+      i = this.a.getInt(paramInt1, paramInt2);
+    }
+    return i;
+  }
+  
+  public Drawable a(int paramInt)
+  {
+    if (paramInt >= 0) {
+      return this.a.getDrawable(paramInt);
+    }
     return null;
+  }
+  
+  public void a()
+  {
+    this.a.recycle();
+  }
+  
+  public boolean a(int paramInt, boolean paramBoolean)
+  {
+    boolean bool = paramBoolean;
+    if (paramInt >= 0) {
+      bool = this.a.getBoolean(paramInt, paramBoolean);
+    }
+    return bool;
+  }
+  
+  public CharSequence[] a(int paramInt)
+  {
+    if (paramInt >= 0) {
+      return this.a.getTextArray(paramInt);
+    }
+    return null;
+  }
+  
+  public int b(int paramInt1, int paramInt2)
+  {
+    int i = paramInt2;
+    if (paramInt1 >= 0) {
+      i = this.a.getColor(paramInt1, paramInt2);
+    }
+    return i;
+  }
+  
+  public int c(int paramInt1, int paramInt2)
+  {
+    int i = paramInt2;
+    if (paramInt1 >= 0) {
+      i = this.a.getDimensionPixelSize(paramInt1, paramInt2);
+    }
+    return i;
+  }
+  
+  public int hashCode()
+  {
+    return this.a.hashCode();
+  }
+  
+  public String toString()
+  {
+    return this.a.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfwf
  * JD-Core Version:    0.7.0.1
  */

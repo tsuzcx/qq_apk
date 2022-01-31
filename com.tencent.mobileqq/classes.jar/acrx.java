@@ -1,22 +1,95 @@
-import android.content.BroadcastReceiver;
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.ColorDrawable;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.Window;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class acrx
-  extends BroadcastReceiver
+  extends Dialog
 {
-  public acrx(ConfessHalfScreenActivity paramConfessHalfScreenActivity) {}
+  Context jdField_a_of_type_AndroidContentContext = null;
+  Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable = null;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public acrx(Context paramContext)
   {
-    if ("com.tencent.mobileqq.action.ACTION_CONFESS_FINISH_EVENT".equals(paramIntent.getAction()))
+    super(paramContext);
+    a(paramContext);
+  }
+  
+  protected void a(Context paramContext)
+  {
+    super.requestWindowFeature(1);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    setContentView(LayoutInflater.from(paramContext).inflate(2131560605, null));
+    paramContext = getWindow();
+    if (paramContext != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_QQBrowserActivity", 2, "Confess finish action! ");
+      paramContext.setLayout(-1, -1);
+      paramContext.setBackgroundDrawable(new ColorDrawable(0));
+      if (ImmersiveUtils.isSupporImmersive() == 1) {
+        paramContext.addFlags(67108864);
       }
-      this.a.finish();
+    }
+    setCanceledOnTouchOutside(false);
+    paramContext = (ImageView)super.findViewById(2131372586);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
+    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+    localTranslateAnimation.setDuration(800L);
+    localTranslateAnimation.setRepeatCount(-1);
+    paramContext.startAnimation(localTranslateAnimation);
+    super.setCancelable(false);
+  }
+  
+  public void dismiss()
+  {
+    super.dismiss();
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
+    }
+  }
+  
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4) {
+      try
+      {
+        dismiss();
+        if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+          ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+        }
+        return false;
+      }
+      catch (Exception paramKeyEvent)
+      {
+        for (;;)
+        {
+          if (QLog.isDevelopLevel()) {
+            paramKeyEvent.printStackTrace();
+          }
+        }
+      }
+    }
+    return super.onKeyDown(paramInt, paramKeyEvent);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    if (this.jdField_a_of_type_AndroidContentContext != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839144));
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
+        this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
+      }
     }
   }
 }

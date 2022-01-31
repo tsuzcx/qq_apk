@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class MsgTabNodeEntity
-  extends atmo
+  extends aukm
 {
   public long cacheSeq;
   public boolean firstExp = true;
@@ -23,7 +23,7 @@ public class MsgTabNodeEntity
   public long reqTimeStamp;
   public String title;
   public long uid;
-  @atoc
+  @auma
   public String unionId;
   public String videoCover;
   public int videoCoverType;

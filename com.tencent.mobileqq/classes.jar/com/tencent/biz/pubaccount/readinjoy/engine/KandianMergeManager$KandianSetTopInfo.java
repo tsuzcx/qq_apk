@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import ajed;
-import akeu;
+import ajsf;
+import aktg;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -13,8 +13,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.Calendar;
 import mqq.os.MqqHandler;
-import ndn;
-import obz;
+import noo;
+import onk;
 
 public class KandianMergeManager$KandianSetTopInfo
   implements Serializable
@@ -30,7 +30,7 @@ public class KandianMergeManager$KandianSetTopInfo
     {
       this.count = this.fixNumOfTimes;
       this.setTopCountResetTime += 86400000L;
-      obz.a("kandian_msgtab_settop", this, true);
+      onk.a("kandian_msgtab_settop", this, true);
       QLog.d("KandianMergeManager.SETTOP", 2, "reset kandian SetTopInfo count : " + this);
     }
   }
@@ -57,18 +57,18 @@ public class KandianMergeManager$KandianSetTopInfo
   public void trySetTopKandianMsg(QQAppInterface paramQQAppInterface)
   {
     a();
-    MessageRecord localMessageRecord = paramQQAppInterface.a().b(ajed.az, 7220);
+    MessageRecord localMessageRecord = paramQQAppInterface.a().b(ajsf.aA, 7220);
     long l;
-    akeu localakeu;
+    aktg localaktg;
     RecentUser localRecentUser;
-    if ((localMessageRecord != null) && (!localMessageRecord.isread) && (!obz.b(ajed.az)) && (localMessageRecord.uniseq != this.lastSetTopMsgUniseq) && (this.count != 0))
+    if ((localMessageRecord != null) && (!localMessageRecord.isread) && (!onk.b(ajsf.aA)) && (localMessageRecord.uniseq != this.lastSetTopMsgUniseq) && (this.count != 0))
     {
       if (!paramQQAppInterface.a.d()) {
         break label243;
       }
       l = System.currentTimeMillis() / 1000L;
-      localakeu = paramQQAppInterface.a().a();
-      localRecentUser = localakeu.b(ajed.az, 7220);
+      localaktg = paramQQAppInterface.a().a();
+      localRecentUser = localaktg.b(ajsf.aA, 7220);
       if (localRecentUser != null) {}
     }
     else
@@ -76,20 +76,20 @@ public class KandianMergeManager$KandianSetTopInfo
       return;
     }
     localRecentUser.lastmsgtime = l;
-    paramQQAppInterface.a().a(ajed.az, 7220, localMessageRecord.uniseq, "time", Long.valueOf(l));
-    localakeu.a(localRecentUser);
+    paramQQAppInterface.a().a(ajsf.aA, 7220, localMessageRecord.uniseq, "time", Long.valueOf(l));
+    localaktg.a(localRecentUser);
     paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
     if (paramQQAppInterface != null) {
       paramQQAppInterface.sendEmptyMessage(1009);
     }
     this.count -= 1;
     this.lastSetTopMsgUniseq = localMessageRecord.uniseq;
-    obz.a("kandian_msgtab_settop", this, true);
-    ndn.a(null, "CliOper", "", "", "0X8007927", "0X8007927", 0, 0, "", "", "", "");
+    onk.a("kandian_msgtab_settop", this, true);
+    noo.a(null, "CliOper", "", "", "0X8007927", "0X8007927", 0, 0, "", "", "", "");
     QLog.d("KandianMergeManager.SETTOP", 2, "successful setTop !  newTime : " + l + this);
     return;
     label243:
-    obz.c = true;
+    onk.e = true;
     QLog.d("KandianMergeManager.SETTOP", 2, "receiving msg , wait callback ! " + this);
   }
 }

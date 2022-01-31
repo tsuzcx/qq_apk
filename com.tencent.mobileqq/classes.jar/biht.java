@@ -1,62 +1,59 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
-import java.util.Iterator;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
+import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.aekit.api.standard.AEModuleConfig;
+import com.tencent.aekit.api.standard.AEModuleConfig.Builder;
+import com.tencent.aekit.api.standard.ai.AIManager;
+import com.tencent.aekit.openrender.AEOpenRenderConfig;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.Resources;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.sveffects.SLog;
+import com.tencent.sveffects.SdkContext;
+import com.tencent.ttpic.openai.ttpicmodule.AEHandDetector;
+import com.tencent.ttpic.openapi.ttpicmodule.PTEmotionDetector;
+import com.tencent.ttpic.openapi.ttpicmodule.PTSegmenter;
+import com.tencent.ttpic.openapi.ttpicmodule.module_hair_segment.PTHairSegmenter;
+import com.tencent.ttpic.openapi.ttpicmodule.module_sky_segment.PTSkySegmenter;
+import com.tencent.ttpic.openapi.util.CfConfig;
+import com.tencent.ttpic.video.AECoderFactory;
 
-class biht
-  extends SimpleObserver<bitz>
+public class biht
 {
-  biht(bihs parambihs) {}
+  private static boolean a;
   
-  public void a(bitz parambitz)
+  public static boolean a()
   {
-    super.onNext(parambitz);
-    this.a.jdField_a_of_type_Bihj.b();
-    this.a.jdField_a_of_type_Bihj.getActivity().overridePendingTransition(0, 0);
-    this.a.p();
-    this.a.jdField_b_of_type_Boolean = false;
-    Object localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((bifz)((Iterator)localObject).next()).b(parambitz);
+    if (a) {
+      return true;
     }
-    this.a.jdField_b_of_type_Boolean = false;
-    this.a.jdField_a_of_type_Bihj.b();
-    localObject = (bigl)this.a.a(bigl.class);
-    if (localObject != null) {
-      ((bigl)localObject).l();
-    }
-    if (this.a.jdField_b_of_type_JavaUtilList.isEmpty())
+    if (!b())
     {
-      localObject = this.a.jdField_a_of_type_Bihj.getActivity();
-      if (localObject != null)
-      {
-        ((EditWebVideoActivity)localObject).d(ajjy.a(2131638180));
-        bihs.a(this.a, (Activity)localObject, this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a, parambitz.a);
-      }
-      return;
+      SLog.e("AEKitForQQ", "sdk version Limited!");
+      return false;
     }
-    bbmy.a(this.a.jdField_a_of_type_Bihj.a(), ajjy.a(2131638176), 0).a();
-    this.a.jdField_a_of_type_Bihj.getActivity().finish();
+    bflj.a();
+    String str = SdkContext.getInstance().getResources().getPtuFilterResource().getSoPathDir();
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    SharedPreferences localSharedPreferences = bizj.a().a();
+    AEOpenRenderConfig.setEnableStrictMode(false);
+    AEModule.initialize(localBaseApplication, AEModuleConfig.newBuilder().setLoadSo(false).setLutDir(null).setModelDir(str).setSoDir(str).setLicense("youtusdk_mqq.licence").setPreferences(localSharedPreferences).setEnableDebug(false).setFramebufferFetchEnable(false).setEnableResourceCheck(false).setEnableProfiler(false).setEnableDefaultBasic3(false).build());
+    AECoderFactory.setAEDecoder(new bihu());
+    AECoderFactory.setAEEncoder(new bihv());
+    AIManager.registerDetector(AEHandDetector.class);
+    AIManager.registerDetector(PTHairSegmenter.class);
+    AIManager.registerDetector(PTSkySegmenter.class);
+    AIManager.registerDetector(PTSegmenter.class);
+    AIManager.registerDetector(PTEmotionDetector.class);
+    CfConfig.setDecryptListener(new bihw());
+    a = true;
+    return true;
   }
   
-  public void onCancel()
+  public static boolean b()
   {
-    super.onCancel();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    this.a.jdField_b_of_type_JavaUtilList.add(paramError);
-    if (QLog.isColorLevel()) {
-      QLog.e("EditWebVideoActivity", 2, "publish error:", paramError);
-    }
-    bbmy.a(this.a.jdField_a_of_type_Bihj.a(), ajjy.a(2131638179), 0).a();
-    this.a.jdField_a_of_type_Bihj.getActivity().finish();
+    return (AEModule.isAeKitSupportVersion()) && (Build.VERSION.SDK_INT >= 21);
   }
 }
 

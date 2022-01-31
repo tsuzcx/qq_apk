@@ -1,60 +1,136 @@
-final class bguf
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import cooperation.qqreader.QRBridgeUtil;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONObject;
+
+public class bguf
+  extends QIPCModule
 {
-  public static int d = 16;
-  int jdField_a_of_type_Int = 538116905;
-  short jdField_a_of_type_Short = 1;
-  int jdField_b_of_type_Int;
-  short jdField_b_of_type_Short = 0;
-  int c;
+  private static bguf a;
   
-  public int a()
+  public bguf(String paramString)
   {
-    return this.jdField_b_of_type_Int;
+    super(paramString);
   }
   
-  public void a(int paramInt)
+  public static bguf a()
   {
-    this.jdField_b_of_type_Int = paramInt;
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bguf("ReaderIPCModule");
+      }
+      return a;
+    }
+    finally {}
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    byte[] arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, 4);
-    this.jdField_a_of_type_Int = azvx.a(arrayOfByte);
-    arrayOfByte = new byte[2];
-    System.arraycopy(paramArrayOfByte, 4, arrayOfByte, 0, 2);
-    this.jdField_a_of_type_Short = azvx.a(arrayOfByte);
-    arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 6, arrayOfByte, 0, 4);
-    this.jdField_b_of_type_Int = azvx.a(arrayOfByte);
-    arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 10, arrayOfByte, 0, 4);
-    this.c = azvx.a(arrayOfByte);
-    arrayOfByte = new byte[2];
-    System.arraycopy(paramArrayOfByte, 14, arrayOfByte, 0, 2);
-    this.jdField_b_of_type_Short = azvx.a(arrayOfByte);
-  }
-  
-  public byte[] a()
-  {
-    byte[] arrayOfByte = new byte[16];
-    System.arraycopy(azvx.a(this.jdField_a_of_type_Int), 0, arrayOfByte, 0, 4);
-    System.arraycopy(azvx.a(this.jdField_a_of_type_Short), 0, arrayOfByte, 4, 2);
-    System.arraycopy(azvx.a(this.jdField_b_of_type_Int), 0, arrayOfByte, 6, 4);
-    System.arraycopy(azvx.a(this.c), 0, arrayOfByte, 10, 4);
-    System.arraycopy(azvx.a(this.jdField_b_of_type_Short), 0, arrayOfByte, 14, 2);
-    return arrayOfByte;
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.c = paramInt;
+    bgvo.e("ReaderIPCModule", "action = " + paramString);
+    if (paramBundle == null)
+    {
+      bgvo.e("ReaderIPCModule", "Err params = null, action = " + paramString);
+      return null;
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface))
+    {
+      bgvo.e("ReaderIPCModule", "onRemoteInvoke cannot get QQAppInterface");
+      return null;
+    }
+    localObject = (QQAppInterface)localObject;
+    if ("getRedTouchInfo".equals(paramString))
+    {
+      paramString = (avpq)((QQAppInterface)localObject).getManager(36);
+      localObject = paramBundle.getStringArrayList("pathList");
+      if ((paramString != null) && (localObject != null))
+      {
+        paramBundle = new ArrayList();
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          BusinessInfoCheckUpdate.AppInfo localAppInfo = paramString.a((String)((Iterator)localObject).next());
+          if (localAppInfo != null) {
+            paramBundle.add(avpt.a(localAppInfo));
+          }
+        }
+        paramString = new Bundle();
+        paramString.putParcelableArrayList("redTouchInfoList", paramBundle);
+        return EIPCResult.createResult(0, paramString);
+      }
+    }
+    else if ("getSingleRedTouchInfo".equals(paramString))
+    {
+      paramString = (avpq)((QQAppInterface)localObject).getManager(36);
+      if (paramString != null)
+      {
+        paramString = paramString.a(paramBundle.getString("path"));
+        if (paramString != null)
+        {
+          paramString = avpt.a(paramString);
+          paramBundle = new Bundle();
+          paramBundle.putParcelable("redTouchInfo", paramString);
+          if ((paramString != null) && (paramString.b() == 1)) {
+            bgvo.e("ReaderIPCModule", "path=" + paramString.b());
+          }
+          return EIPCResult.createResult(0, paramBundle);
+        }
+      }
+    }
+    else
+    {
+      if (!"reportRedTouchClick".equals(paramString)) {
+        break label396;
+      }
+      paramString = (avpq)((QQAppInterface)localObject).getManager(36);
+      if (paramString != null)
+      {
+        paramBundle = paramBundle.getString("path");
+        paramString.b(paramBundle);
+      }
+    }
+    label396:
+    do
+    {
+      try
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("service_type", 2);
+        ((JSONObject)localObject).put("act_id", 1002);
+        paramString.c(paramString.a(paramBundle), ((JSONObject)localObject).toString());
+        return null;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
+      }
+      if ("download_reader_plugin".equals(paramString))
+      {
+        bgtc.a().a(((QQAppInterface)localObject).getApp());
+        return EIPCResult.createResult(0, new Bundle());
+      }
+      if ("get_skey".equals(paramString))
+      {
+        paramString = new Bundle();
+        paramString.putString("get_skey_value", QRBridgeUtil.getSKey((QQAppInterface)localObject));
+        return EIPCResult.createResult(0, paramString);
+      }
+    } while (!"action_get_account".equals(paramString));
+    paramString = new Bundle();
+    paramString.putString("key_get_account", ((QQAppInterface)localObject).getAccount());
+    return EIPCResult.createResult(0, paramString);
   }
 }
 

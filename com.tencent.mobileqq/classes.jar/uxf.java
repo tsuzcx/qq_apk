@@ -1,43 +1,44 @@
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+
 public class uxf
-  implements Comparable<uxf>
+  extends sth<uwt, uxn>
 {
-  public int a;
-  public String a;
-  int b;
-  public String b;
-  public String c;
-  
-  public uxf()
+  public uxf(uwt paramuwt)
   {
-    this.jdField_a_of_type_Int = -1;
+    super(paramuwt);
   }
   
-  public uxf(int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3)
+  public void a(@NonNull uwt paramuwt, @NonNull uxn paramuxn)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-  }
-  
-  public int a(uxf paramuxf)
-  {
-    if (paramuxf == null) {}
-    do
+    Object localObject = paramuxn.a;
+    paramuxn = paramuwt.a(((uxp)localObject).a.feedId);
+    if (paramuxn == null)
     {
-      return -1;
-      if (this.jdField_b_of_type_Int < paramuxf.jdField_b_of_type_Int) {
-        return 1;
-      }
-    } while (this.jdField_b_of_type_Int != paramuxf.jdField_b_of_type_Int);
-    return 0;
+      veg.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { ((uxp)localObject).a.feedId });
+      return;
+    }
+    if ((!(localObject instanceof uxr)) || (!(paramuxn instanceof uxr)))
+    {
+      veg.e("Q.qqstory.home.data.HomeFeedPresenter", "SingleFeedInfoEvent error!!");
+      return;
+    }
+    localObject = (uxr)localObject;
+    paramuxn = (uxr)paramuxn;
+    paramuxn.a = ((uxr)localObject).a;
+    paramuxn.a(((uxr)localObject).b(), false);
+    paramuxn.b(((uxr)localObject).c(), false);
+    paramuxn.c(((uxr)localObject).a(), false);
+    uwt.a(paramuwt).b(paramuxn.a.feedId);
+    veg.a("Q.qqstory.home.data.HomeFeedPresenter", "single feed update from server %s", paramuxn);
   }
   
-  public String toString()
+  public Class acceptEventClass()
   {
-    return "FilterTemplate{id='" + this.jdField_a_of_type_Int + '\'' + ", thumbPath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", priority=" + this.jdField_b_of_type_Int + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", pron='" + this.c + '\'' + '}';
+    return uxn.class;
   }
+  
+  public void b(@NonNull uwt paramuwt, @NonNull uxn paramuxn) {}
 }
 
 

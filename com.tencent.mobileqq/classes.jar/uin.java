@@ -1,35 +1,48 @@
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.BannerFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class uin
-  extends uio<BannerFeedItem>
+  extends QQUIEventReceiver<uhz, ttk>
 {
-  public uin(@NonNull BannerFeedItem paramBannerFeedItem)
+  public uin(@NonNull uhz paramuhz)
   {
-    super(paramBannerFeedItem);
+    super(paramuhz);
   }
   
-  public List<StoryVideoItem> a()
+  public void a(@NonNull uhz paramuhz, @NonNull ttk paramttk)
   {
-    return new ArrayList(0);
+    if (!TextUtils.equals(paramttk.b, String.valueOf(paramuhz.hashCode()))) {
+      return;
+    }
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramuhz.a()).a();
+    if (localVideoViewVideoHolder != null) {
+      localVideoViewVideoHolder.c(false);
+    }
+    paramuhz.l();
+    if (paramttk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      veg.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramttk.jdField_a_of_type_JavaLangString);
+      if (paramttk.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
+      {
+        tti.a().a(paramuhz.b(), paramttk.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      tti.a().a(paramuhz.b(), paramttk.jdField_a_of_type_JavaLangString, paramttk.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramuhz.hashCode());
+      return;
+    }
+    veg.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
+    bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131706877), 0).a();
   }
   
-  public void a() {}
-  
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
+  public Class acceptEventClass()
   {
-    qqstory_struct.BannerFeed localBannerFeed = (qqstory_struct.BannerFeed)paramStoryFeed.banner_feed.get();
-    ((BannerFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), localBannerFeed);
-    ((BannerFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    return true;
+    return ttk.class;
   }
 }
 

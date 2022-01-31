@@ -1,91 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
 
 public class amkp
-  implements alzn<String>
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public ArrayList<amkq> a;
-  private String b = "place_holder";
-  private String c = "data";
-  private String d = "topic_id";
-  private String e = "topic_name";
+  public amkp(SwipePostTableLayout paramSwipePostTableLayout) {}
   
-  public amkp()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("SigTopicConfig", 1, "SigTopic config content is empty");
-      return;
+    if (SwipePostTableLayout.a(this.a).isShowing()) {
+      SwipePostTableLayout.a(this.a).dismiss();
     }
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        paramString = localJSONObject.optJSONArray(this.c);
-        this.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.b, ajjy.a(2131648367));
-        if (paramString == null) {
-          break;
-        }
-        i = 0;
-        if (i >= paramString.length()) {
-          break;
-        }
-        localJSONObject = paramString.getJSONObject(i);
-        localamkq = new amkq();
-        localamkq.jdField_a_of_type_Int = localJSONObject.optInt(this.d);
-        localamkq.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.e);
-        if (!TextUtils.isEmpty(localamkq.jdField_a_of_type_JavaLangString)) {
-          break label193;
-        }
-        if (!QLog.isColorLevel()) {
-          break label198;
-        }
-        QLog.e("SigTopicConfig", 2, new Object[] { "SigTopic config parse has invalid item,index=", Integer.valueOf(i) });
-      }
-      catch (JSONException paramString)
-      {
-        int i;
-        amkq localamkq;
-        QLog.e("SigTopicConfig", 1, "SigTopic config parse exception", paramString);
-        return;
-      }
-      if (j != 0) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localamkq);
-      }
-      i += 1;
-      continue;
-      label193:
-      int j = 1;
-      continue;
-      label198:
-      j = 0;
-    }
-  }
-  
-  public String toString()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return "recommend title is " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_a_of_type_JavaUtilArrayList.toString();
-    }
-    return "";
+    amkg.a(this.a.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkp
  * JD-Core Version:    0.7.0.1
  */

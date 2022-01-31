@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.MapContext;
@@ -12,7 +11,7 @@ import org.json.JSONObject;
 class MapViewJsPlugin$6
   implements Runnable
 {
-  MapViewJsPlugin$6(MapViewJsPlugin paramMapViewJsPlugin, String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt) {}
+  MapViewJsPlugin$6(MapViewJsPlugin paramMapViewJsPlugin, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt) {}
   
   public void run()
   {
@@ -21,12 +20,12 @@ class MapViewJsPlugin$6
       try
       {
         int i = new JSONObject(this.val$jsonParams).optInt("mapId", 0);
-        Object localObject1 = this.this$0.jsPluginEngine.appBrandRuntime.getCurWebviewContainer();
+        Object localObject1 = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
         if (localObject1 != null)
         {
           localObject1 = ((WebviewContainer)localObject1).getMapContext(i);
           if (localObject1 == null) {
-            break label251;
+            break label252;
           }
           localObject1 = ((MapContext)localObject1).getCenterLocation();
           if (localObject1 != null)
@@ -41,7 +40,7 @@ class MapViewJsPlugin$6
         else
         {
           QLog.w("[mini] MapViewJsPlugin", 2, "handleNativeRequest eventName=" + this.val$eventName + "，top page not found");
-          break label251;
+          break label252;
         }
         this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$eventName, null, this.val$callbackId);
         return;
@@ -54,7 +53,7 @@ class MapViewJsPlugin$6
         this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$eventName, null, this.val$callbackId);
         return;
       }
-      label251:
+      label252:
       Object localObject2 = null;
     }
   }

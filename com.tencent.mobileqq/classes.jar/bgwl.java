@@ -1,29 +1,41 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.weiyun.utils.Utils;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class bgwl
+final class bgwl
+  implements WtTicketPromise
 {
-  public static ByteStringMicro a(String paramString)
-  {
-    return ByteStringMicro.copyFrom(Utils.hexStr2Bytes(paramString));
-  }
+  bgwl(bgwm parambgwm, String paramString) {}
   
-  public static String a(ByteStringMicro paramByteStringMicro)
+  public void Done(Ticket paramTicket)
   {
-    return Utils.bytes2HexStr(paramByteStringMicro.toByteArray());
-  }
-  
-  public static byte[] a(String paramString)
-  {
-    int j = paramString.length();
-    byte[] arrayOfByte = new byte[j / 2];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfByte[(i / 2)] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4) + Character.digit(paramString.charAt(i + 1), 16)));
-      i += 2;
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "get pskey async success!");
     }
-    return arrayOfByte;
+    if (this.jdField_a_of_type_Bgwm != null) {
+      this.jdField_a_of_type_Bgwm.a(0, new String[] { bgwk.a(paramTicket, this.jdField_a_of_type_JavaLangString) });
+    }
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "preGetKey. PSk Failed!!!");
+    }
+    if (this.jdField_a_of_type_Bgwm != null) {
+      this.jdField_a_of_type_Bgwm.a(-1, new String[] { paramErrMsg.getMessage() });
+    }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "preGetKey. PSk Timeout!");
+    }
+    if (this.jdField_a_of_type_Bgwm != null) {
+      this.jdField_a_of_type_Bgwm.a(-1, new String[] { paramErrMsg.getMessage() });
+    }
   }
 }
 

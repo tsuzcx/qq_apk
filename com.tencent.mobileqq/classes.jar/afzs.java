@@ -1,33 +1,25 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+
 public class afzs
-  extends afzz
+  implements View.OnClickListener
 {
-  private afzz i;
+  public afzs(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, int paramInt1, int paramInt2) {}
   
-  public afzs(afzz paramafzz)
+  public void onClick(View paramView)
   {
-    this.i = paramafzz;
-  }
-  
-  public boolean a()
-  {
-    return this.i.a();
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (!super.a(paramString)) {
-      return false;
-    }
-    String[] arrayOfString = agaq.a(paramString);
-    if ((arrayOfString != null) && ("image".equals(arrayOfString[0])) && ("gif".equals(arrayOfString[1]))) {
-      return true;
-    }
-    return this.i.a(paramString);
-  }
-  
-  public boolean b()
-  {
-    return this.i.b();
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), TroopMemberListActivity.class);
+    paramView.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.c);
+    paramView.putExtra("param_from", 15);
+    paramView.putExtra("param_seq_days", ChatHistoryTroopMemberFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment));
+    paramView.putExtra("param_seq_name", ChatHistoryTroopMemberFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment));
+    paramView.putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.startActivityForResult(paramView, 4);
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().app, "dc00899", "Grp_mber", "", "mber_list", "clk_inacentry", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.c, "" + this.b, "", "");
   }
 }
 

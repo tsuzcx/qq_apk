@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView;
+import org.json.JSONObject;
 
 public class asjj
-  implements View.OnClickListener
 {
-  public asjj(InterestTagItemView paramInterestTagItemView) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((paramView == InterestTagItemView.a(this.a)) || (paramView == this.a))
-    {
-      InterestTagItemView.a(this.a).a(InterestTagItemView.a(this.a));
-      this.a.a();
-    }
-  }
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     asjj
  * JD-Core Version:    0.7.0.1
  */

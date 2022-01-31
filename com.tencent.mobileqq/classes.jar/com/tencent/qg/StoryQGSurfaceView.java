@@ -1,10 +1,10 @@
 package com.tencent.qg;
 
 import android.content.Context;
-import bcog;
-import bcoi;
-import bcoj;
-import bcor;
+import bdsh;
+import bdsj;
+import bdsk;
+import bdss;
 import com.tencent.qg.sdk.QGBitmapLoader;
 import com.tencent.qg.sdk.QGGLSurfaceView;
 import com.tencent.qg.sdk.QGReporter;
@@ -33,11 +33,11 @@ public class StoryQGSurfaceView
   
   public void a()
   {
-    GLog.init(new bcoi());
-    QGBitmapLoader.setBitmapLoader(new bcog());
-    QGReporter.setReporter(new bcoj());
+    GLog.init(new bdsj());
+    QGBitmapLoader.setBitmapLoader(new bdsh());
+    QGReporter.setReporter(new bdsk());
     this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine = new ModuleEngine();
-    this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine.registerJsModule(new bcor());
+    this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine.registerJsModule(new bdss());
     setModuleEngin(this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine);
   }
 }

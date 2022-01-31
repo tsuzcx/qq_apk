@@ -1,74 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.Face;
+import android.hardware.Camera.FaceDetectionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.FaceDetectionCallbackForward.1;
 import com.tencent.qphone.base.util.QLog;
 
+@TargetApi(14)
 public class amfp
-  extends alzl<amfq>
+  implements Camera.FaceDetectionListener
 {
-  public static amfq a()
-  {
-    return (amfq)alzw.a().a(564);
-  }
+  private final amfe jdField_a_of_type_Amfe;
+  private final amfi jdField_a_of_type_Amfi;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
   
-  public int a()
+  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
   {
-    return 564;
-  }
-  
-  @NonNull
-  public amfq a(int paramInt)
-  {
-    return new amfq();
-  }
-  
-  @Nullable
-  public amfq a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length == 0)) {
-      return null;
-    }
-    paramArrayOfalzs = paramArrayOfalzs[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor onParsed, content:" + paramArrayOfalzs);
-    }
-    return amfq.a(paramArrayOfalzs);
-  }
-  
-  public Class<amfq> a()
-  {
-    return amfq.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amfq paramamfq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor update.");
-    }
-    if (paramamfq != null) {
-      avbz.a = (int)(paramamfq.a * 60.0D * 60.0D);
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    QLog.d("Q.camera.CameraManagerImpl", 2, "[onFaceDetection] faces = " + paramArrayOfFace + ", length = " + paramArrayOfFace.length);
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.FaceDetectionCallbackForward.1(this, paramArrayOfFace));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amfp
  * JD-Core Version:    0.7.0.1
  */

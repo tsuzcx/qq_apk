@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.Advertisement.manager;
 
-import myh;
+import nji;
 
 public class AdvertisementVideoPreloadManager$9
   implements Runnable
 {
-  public AdvertisementVideoPreloadManager$9(myh parammyh) {}
+  public AdvertisementVideoPreloadManager$9(nji paramnji) {}
   
   public void run()
   {

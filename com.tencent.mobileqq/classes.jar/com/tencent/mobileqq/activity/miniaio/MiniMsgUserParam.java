@@ -18,6 +18,7 @@ public class MiniMsgUserParam
   public boolean isNeedFullScreen;
   public int positionX;
   public int positionY;
+  public int requestCode;
   public IMiniMsgUnreadCallback unreadCallback;
   public TextView unreadView;
 }

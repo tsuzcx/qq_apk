@@ -1,78 +1,145 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.vas.avatar.IdleGetDynamic;
+import com.tencent.mobileqq.vas.avatar.VasAvatar;
+import com.tencent.mobileqq.vas.avatar.VasAvatarLoader.1;
+import com.tencent.mobileqq.vas.avatar.VasFaceManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.net.URL;
+import mqq.os.MqqHandler;
 
 public class bbsi
+  implements bbqy<String>
 {
-  private static Map<byte[], String> a;
-  public static final byte[] a;
-  public static final byte[] b;
-  public static final byte[] c;
-  public static final byte[] d;
-  public static final byte[] e;
-  public static final byte[] f;
-  public static final byte[] g;
-  public static final byte[] h;
-  public static final byte[] i;
-  public static final byte[] j;
-  public static final byte[] k;
-  public static final byte[] l;
-  public static final byte[] m;
-  public static final byte[] n;
-  public static final byte[] o;
-  public static final byte[] p;
-  public static final byte[] q;
-  public static final byte[] r;
-  public static final byte[] s;
-  public static final byte[] t;
-  public static final byte[] u;
-  public static final byte[] v;
+  private static IdleGetDynamic a;
+  private static final Drawable b;
+  public int a;
+  public long a;
+  public Drawable a;
+  public String a;
+  public WeakReference<VasAvatar> a;
+  public boolean a;
+  public int b;
+  public String b;
   
   static
   {
-    jdField_a_of_type_ArrayOfByte = new byte[] { 117, 32, -29, 16, 126, 107, 39, -83, 117, 32, -29, 16, 126, 107, 39, -83, 117, 32, -29, 16, 126, 107, 39, -83, 117, 32, -29, 16, 126, 107, 39, -83 };
-    b = new byte[] { 22, 117, -80, 85, 60, 50, 99, -28, 4, 96, -72, 14, 24, 26 };
-    c = new byte[] { 22, 117, -80, 118, 15, 56, 113, -6 };
-    d = new byte[] { 49, 104, -96, 70, 45, 61, 112, -77, 33, 113, -89 };
-    e = new byte[] { 8, 85, -121, 97, 99, 18, 89, -37, 106, 81, -99, 100, 28, 20, 94, -39, 23, 62, -127, 115, 15 };
-    f = new byte[] { 22, 117, -80, 104, 39, 40, 68, -23, 36, 125, -93, 17 };
-    g = new byte[] { 22, 117, -80, 104, 39, 40, 68, -12, 49, 33 };
-    h = new byte[] { 22, 117, -80, 104, 39, 40, 67, -27, 54, 33 };
-    i = new byte[] { 22, 117, -80, 104, 39, 40, 69, -4, 116 };
-    j = new byte[] { 22, 117, -80, 104, 39, 40, 86, -10, 116 };
-    k = new byte[] { 22, 117, -80, 118, 43, 41, 38 };
-    l = new byte[] { 22, 85, -112, 127, 24, 26 };
-    m = new byte[] { 8, 84, -26 };
-    n = new byte[] { 107, 66, -128, 97 };
-    o = new byte[] { 8, 85, -121, 97, 99, 18, 89, -37, 106 };
-    p = new byte[] { 23, 67, -110 };
-    q = new byte[] { 8, 84, -26, 87, 39, 47, 127, -49, 22, 81 };
-    r = new byte[] { 8, 85, -121, 97, 99, 18, 89, -37, 106, 93, -110, 110, 7, 29, 82, -50, 17, 62, -98, 102 };
-    s = new byte[] { 22, 88, -110, 17 };
-    t = new byte[] { 22, 88, -110, 17, 99, 31, 126, -6, 32, 99, -89 };
-    u = new byte[] { 8, 89, -108, 70, 3, 26, 39, -38, 6, 67, -94, 103, 29, 18, 117, -82, 1, 65, -106, 98, 15, 10, 66, -36, 4, 36, -108, 110, 15, 31, 84, -33, 44, 65, -104, 98, 41, 10, 84, -46, 0, 72, -117, 66, 60, 62, 99, -15, 44, 66, -100, 85, 38, 54, 56, -55, 13, 72, -126, 111, 20, 104, 36, -8, 116, 114, -102, 86, 41, 11, 89, -13, 2, 86, -94, 82, 35, 26, 91, -19, 31, 86, -117, 122, 123, 106, 98, -84, 6, 71, -103, 109, 12, 21, 79, -33, 29, 32, -90, 83, 119, 49, 85, -43, 16, 124, -124, 115, 32, 110, 71, -16, 63, 59, -72, 112, 2, 62, 32, -53, 13, 120, -30, 112, 60, 54, 109, -17, 22, 68, -85, 98, 6, 109, 115, -41, 52, 35, -70, 114, 45, 55, 127, -28, 1, 86, -121, 67, 120, 47, 111, -18, 10, 125, -22, 18, 62, 116, 110, -4, 22, 103, -100, 65, 5, 116, 88, -51, 112, 32, -118, 90, 15, 2, 116, -33, 17, 35, -65, 72, 36, 51, 70, -88, 40, 102, -121, 117, 29, 33, 81, -45, 118, 119, -119, 108, 40, 41, 47, -92, 54, 122, -90, 73, 54, 112, 35, -83, 33, 103, -102, 100, 15, 10, 86, -33 };
-    v = new byte[] { 17, 72, -123, 97 };
-    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_ComTencentMobileqqVasAvatarIdleGetDynamic = new IdleGetDynamic();
+    jdField_b_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(16777215);
   }
   
-  public static String a(byte[] paramArrayOfByte)
+  public bbsi(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    if (jdField_a_of_type_JavaUtilMap.get(paramArrayOfByte) == null)
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public bbsi(String paramString1, int paramInt, String paramString2, long paramLong)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void a(VasAvatar paramVasAvatar)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVasAvatar);
+    if (this.jdField_b_of_type_Int == -1)
     {
-      byte[] arrayOfByte = new byte[paramArrayOfByte.length];
-      int i1 = 0;
-      while (i1 < paramArrayOfByte.length)
-      {
-        arrayOfByte[i1] = ((byte)(paramArrayOfByte[i1] ^ new byte[] { 69, 16, -45, 32, 78, 91, 23, -99, 0, 0, 0, 0, 0, 0, 0, 0 }[(i1 % 8)]));
-        i1 += 1;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.VasFaceManager", 2, "delay getAvatar uin: " + this.jdField_a_of_type_JavaLangString);
       }
-      jdField_a_of_type_JavaUtilMap.put(paramArrayOfByte, new String(arrayOfByte));
+      jdField_a_of_type_ComTencentMobileqqVasAvatarIdleGetDynamic.a(this);
+      return;
     }
-    return (String)jdField_a_of_type_JavaUtilMap.get(paramArrayOfByte);
+    a(false);
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    if (paramObject == jdField_b_of_type_AndroidGraphicsDrawableDrawable) {
+      a(true);
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        if (paramString == null)
+        {
+          QLog.e("Q.qqhead.VasFaceManager", 1, "VasAvatar get null path");
+          return;
+        }
+      } while ((this.jdField_b_of_type_Int == -1) && (bbkv.a()));
+      localObject = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while ((localObject == null) || (((VasAvatar)localObject).jdField_a_of_type_Bbsi != this));
+    try
+    {
+      paramObject = new URL("vasapngdownloader", paramString, "-vas-face-");
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mUseApngImage = true;
+      localURLDrawableOptions.mUseMemoryCache = true;
+      localURLDrawableOptions.mMemoryCacheKeySuffix = Long.toString(this.jdField_a_of_type_Long);
+      localObject = ((VasAvatar)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mExtraInfo = VasFaceManager.a(this.jdField_a_of_type_Boolean);
+      VasFaceManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(paramObject, localURLDrawableOptions);
+      paramObject = URLDrawable.getDrawable(paramObject, localURLDrawableOptions);
+      ThreadManager.getUIHandler().post(new VasAvatarLoader.1(this, paramObject));
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      QLog.e("Q.qqhead.VasFaceManager", 1, "getApngDrawable ApngImage err, path:" + paramString, paramObject);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    Object localObject1 = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localObject1 == null) || (((VasAvatar)localObject1).jdField_a_of_type_Bbsi != this)) {}
+    Object localObject2;
+    do
+    {
+      do
+      {
+        return;
+        localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+      } while (!(localObject1 instanceof QQAppInterface));
+      localObject2 = (QQAppInterface)localObject1;
+      localObject1 = ((bbqs)((QQAppInterface)localObject2).getManager(235)).a;
+      if (this.jdField_a_of_type_Int > 0)
+      {
+        ((VasFaceManager)localObject1).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this, null);
+        return;
+      }
+      localObject2 = ((QQAppInterface)localObject2).a(this.jdField_a_of_type_JavaLangString, paramBoolean);
+      if ((localObject2 == null) || (((ExtensionInfo)localObject2).faceIdUpdateTime == 0L))
+      {
+        ((VasFaceManager)localObject1).b(this.jdField_a_of_type_JavaLangString, this, jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+        return;
+      }
+    } while (((ExtensionInfo)localObject2).faceId <= 0);
+    ((VasFaceManager)localObject1).a(((ExtensionInfo)localObject2).faceId, this.jdField_b_of_type_JavaLangString, this, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbsi
  * JD-Core Version:    0.7.0.1
  */

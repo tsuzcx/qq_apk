@@ -1,101 +1,82 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.open.appcommon.js.HttpInterface;
-import com.tencent.smtt.sdk.WebView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import java.lang.reflect.Method;
 
-public class bcbn
-  implements bceo
+@Deprecated
+public abstract class bcbn
+  extends WebViewPlugin
 {
-  protected final WebView a;
-  protected final String a;
-  protected final boolean a;
-  protected final String b;
-  protected final String c;
-  
-  public bcbn(HttpInterface paramHttpInterface, WebView paramWebView, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  public bcbn()
   {
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
-    this.b = paramString3;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.c = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mPluginNameSpace = getNameSpace();
   }
   
-  public void a(Exception paramException)
+  protected Method getJsMethod(String paramString1, String paramString2, int paramInt)
   {
-    if ((!this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight()) || (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null)) {
-      return;
-    }
-    bcds.c("HttpInterface", "onException >>> ");
-    paramException = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
-    bcbs localbcbs = new bcbs();
-    localbcbs.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
-    paramException.obj = localbcbs;
-    paramException.arg1 = 0;
-    if (TextUtils.isEmpty(this.b)) {}
-    for (localbcbs.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");; localbcbs.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);"))
-    {
-      this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(paramException);
-      return;
-    }
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if ((!this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight()) || (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null)) {
-      return;
-    }
-    JSONObject localJSONObject = paramJSONObject;
-    if (paramJSONObject == null) {
-      localJSONObject = new JSONObject();
-    }
-    Message localMessage = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
-    localbcbs = new bcbs();
-    localbcbs.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
-    localMessage.obj = localbcbs;
-    localMessage.arg1 = 0;
+    if (!getNameSpace().equals(paramString1)) {}
     for (;;)
     {
-      try
+      return null;
+      paramString1 = getClass().getDeclaredMethods();
+      int j = paramString1.length;
+      int i = 0;
+      while (i < j)
       {
-        if (!this.jdField_a_of_type_Boolean) {
-          continue;
+        Method localMethod = paramString1[i];
+        if ((localMethod.getName().equals(paramString2)) && (localMethod.getParameterTypes().length == paramInt)) {
+          return localMethod;
         }
-        localJSONObject.put("guid", this.c);
-        paramJSONObject = localJSONObject.toString();
-        bcds.a("HttpInterface", "onResult >>> " + paramJSONObject);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          continue;
-        }
-        localbcbs.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject + ");}void(0);");
+        i += 1;
       }
-      catch (JSONException paramJSONObject)
-      {
-        if (!TextUtils.isEmpty(this.b)) {
-          continue;
-        }
-        localbcbs.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");
-        continue;
-        localbcbs.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);");
-        continue;
-      }
-      this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(localMessage);
-      return;
-      paramJSONObject = new JSONObject();
-      paramJSONObject.put("guid", this.c);
-      paramJSONObject.put("content", localJSONObject.toString());
-      paramJSONObject = paramJSONObject.toString();
-      continue;
-      localbcbs.jdField_a_of_type_JavaLangString = ("javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject + ");void(0);");
     }
+  }
+  
+  protected abstract String getNameSpace();
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = false;
+    paramString2 = getJsMethod(paramString2, paramString3, paramVarArgs.length);
+    if (paramString2 != null) {}
+    try
+    {
+      if (paramVarArgs.length == 0) {}
+      for (paramString1 = paramString2.invoke(this, new Object[0]);; paramString1 = paramString2.invoke(this, paramVarArgs))
+      {
+        paramString2 = paramString2.getReturnType();
+        if ((paramString2 != Void.TYPE) && (paramString2 != Void.class)) {
+          break label97;
+        }
+        if (paramJsBridgeListener == null) {
+          break label128;
+        }
+        if (!paramJsBridgeListener.a) {
+          break;
+        }
+        callJs4OpenApi(paramJsBridgeListener, 0, JsBridgeListener.a(0, null, null));
+        break label128;
+      }
+      paramJsBridgeListener.a(null);
+      break label128;
+      label97:
+      if (paramJsBridgeListener != null) {
+        if (paramJsBridgeListener.a) {
+          callJs4OpenApi(paramJsBridgeListener, 0, JsBridgeListener.a(0, paramString1, null));
+        } else {
+          paramJsBridgeListener.a(paramString1);
+        }
+      }
+      label128:
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramJsBridgeListener) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcbn
  * JD-Core Version:    0.7.0.1
  */

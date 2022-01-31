@@ -7,20 +7,20 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import java.io.IOException;
 import java.util.Map;
-import mpl;
-import rrd;
-import run;
+import nam;
+import sdv;
+import shf;
 
 public class GalleryShareHelper$3
   implements Runnable
 {
-  public GalleryShareHelper$3(rrd paramrrd, String paramString, boolean paramBoolean, Map paramMap, run paramrun) {}
+  public GalleryShareHelper$3(sdv paramsdv, String paramString, boolean paramBoolean, Map paramMap, shf paramshf) {}
   
   public void run()
   {
     try
     {
-      localObject = mpl.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      localObject = nam.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
       if (localObject == null) {
         break label129;
       }
@@ -50,7 +50,7 @@ public class GalleryShareHelper$3
       for (;;) {}
     }
     this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
-    rrd.a(this.this$0).runOnUiThread(new GalleryShareHelper.3.1(this));
+    sdv.a(this.this$0).runOnUiThread(new GalleryShareHelper.3.1(this));
   }
 }
 

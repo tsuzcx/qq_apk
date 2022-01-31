@@ -1,6 +1,18 @@
-public abstract interface qer
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+
+public class qer
+  implements qfo
 {
-  public abstract void a(long paramLong);
+  public qer(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  
+  public boolean a(View paramView, MotionEvent paramMotionEvent)
+  {
+    ReadInJoyDeliverUGCActivity.a(this.a, true);
+    ReadInJoyDeliverUGCActivity.a(this.a, ((Integer)paramView.getTag()).intValue());
+    return false;
+  }
 }
 
 

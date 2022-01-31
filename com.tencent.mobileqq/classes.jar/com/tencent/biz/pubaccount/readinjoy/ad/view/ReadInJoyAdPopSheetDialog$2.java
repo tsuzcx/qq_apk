@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import nqz;
+import oci;
 
 public class ReadInJoyAdPopSheetDialog$2
   implements Runnable
 {
-  public ReadInJoyAdPopSheetDialog$2(nqz paramnqz) {}
+  public ReadInJoyAdPopSheetDialog$2(oci paramoci) {}
   
   public void run()
   {
-    nqz.a(this.this$0);
+    oci.a(this.this$0);
   }
 }
 

@@ -1,21 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class quy
-  implements View.OnClickListener
+class quy
+  implements URLDrawable.URLDrawableListener
 {
-  public quy(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  quy(qur paramqur) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.a(this.a.a(), (ViewGroup)ReadinjoyTabFrame.a(this.a));
-    if (BaseApplicationImpl.sProcessId != 9) {
-      bheo.a(BaseApplicationImpl.getContext());
+    if ((qur.a(this.a) != null) && (qur.a(this.a).getStatus() == 1) && ((qur.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    {
+      paramURLDrawable = (RegionDrawable)qur.a(this.a).getCurrDrawable();
+      qur.a(this.a, paramURLDrawable.getBitmap());
     }
-    obz.c("1");
   }
 }
 

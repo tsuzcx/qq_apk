@@ -1,20 +1,21 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.Groups;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-class ahso
+public class ahso
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  Groups jdField_a_of_type_ComTencentMobileqqDataGroups;
-  TextView b;
+  public ahso(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  ahso(ahsm paramahsm) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a("608", "7", "2", true);
+    EditLocalVideoActivity.a(this.a, "an_yuanshipin");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahso
  * JD-Core Version:    0.7.0.1
  */

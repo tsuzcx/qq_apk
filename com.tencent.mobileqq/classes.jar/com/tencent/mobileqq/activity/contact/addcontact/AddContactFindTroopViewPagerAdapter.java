@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import aeso;
-import afdh;
-import afgy;
+import afdk;
+import afpd;
+import afsv;
 import android.support.v4.app.FragmentManager;
 import android.util.SparseArray;
 import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
@@ -14,40 +14,40 @@ import java.util.ArrayList;
 public class AddContactFindTroopViewPagerAdapter
   extends ContactsViewPagerAdapter
 {
-  public AddContactFindTroopViewPagerAdapter(FragmentManager paramFragmentManager, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, ArrayList<afdh> paramArrayList)
+  public AddContactFindTroopViewPagerAdapter(FragmentManager paramFragmentManager, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, ArrayList<afpd> paramArrayList)
   {
     super(paramFragmentManager, paramQQAppInterface, paramBaseActivity, paramArrayList);
   }
   
   public ContactsBaseFragment a(int paramInt, boolean paramBoolean)
   {
-    afdh localafdh = a(paramInt);
+    afpd localafpd = a(paramInt);
     Object localObject;
-    if ((localafdh != null) && ((localafdh instanceof aeso)))
+    if ((localafpd != null) && ((localafpd instanceof afdk)))
     {
-      aeso localaeso = (aeso)localafdh;
-      localObject = a(localafdh.c);
+      afdk localafdk = (afdk)localafpd;
+      localObject = a(localafpd.c);
       if ((localObject == null) && (paramBoolean))
       {
         localObject = new AddContactViewPagerTroopFragment();
-        ((AddContactViewPagerTroopFragment)localObject).jdField_a_of_type_Int = localaeso.jdField_a_of_type_Int;
-        ((AddContactViewPagerTroopFragment)localObject).jdField_a_of_type_JavaLangString = localaeso.jdField_a_of_type_JavaLangString;
-        ((AddContactViewPagerTroopFragment)localObject).b = localaeso.d;
+        ((AddContactViewPagerTroopFragment)localObject).jdField_a_of_type_Int = localafdk.jdField_a_of_type_Int;
+        ((AddContactViewPagerTroopFragment)localObject).jdField_a_of_type_JavaLangString = localafdk.jdField_a_of_type_JavaLangString;
+        ((AddContactViewPagerTroopFragment)localObject).b = localafdk.d;
         ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
         ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
         ((ContactsBaseFragment)localObject).a(this);
-        ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_Afex);
+        ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_Afqu);
         ((ContactsBaseFragment)localObject).e(paramInt);
-        if ((localObject instanceof afgy)) {
-          this.jdField_b_of_type_JavaUtilArrayList.add((afgy)localObject);
+        if ((localObject instanceof afsv)) {
+          this.jdField_b_of_type_JavaUtilArrayList.add((afsv)localObject);
         }
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(localafdh.c, localObject);
+        this.jdField_a_of_type_AndroidUtilSparseArray.put(localafpd.c, localObject);
       }
     }
     for (;;)
     {
-      if ((localObject != null) && ((localObject instanceof afgy)) && (this.jdField_b_of_type_Int > 0)) {
-        ((afgy)localObject).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      if ((localObject != null) && ((localObject instanceof afsv)) && (this.jdField_b_of_type_Int > 0)) {
+        ((afsv)localObject).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
       return localObject;
       continue;

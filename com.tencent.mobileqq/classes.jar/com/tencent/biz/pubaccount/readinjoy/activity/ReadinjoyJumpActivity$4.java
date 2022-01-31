@@ -8,20 +8,15 @@ import com.tencent.qphone.base.util.QLog;
 final class ReadinjoyJumpActivity$4
   implements Runnable
 {
-  ReadinjoyJumpActivity$4(Intent paramIntent, Context paramContext) {}
+  ReadinjoyJumpActivity$4(long paramLong, Intent paramIntent, Context paramContext) {}
   
   public void run()
   {
-    long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("jump_article_param_ids", -1L);
-    if (l != -1L)
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("jump_article_param_ids", l);
-      localIntent.putExtra("jump_activity_launch_from", this.jdField_a_of_type_AndroidContentIntent.getIntExtra("jump_activity_launch_from", 0));
-      PublicFragmentActivity.a(this.jdField_a_of_type_AndroidContentContext, localIntent, ReadinjoyJumpActivity.class);
-      this.jdField_a_of_type_AndroidContentIntent.removeExtra("jump_article_param_ids");
-      QLog.d("ReadinjoyJumpActivity", 2, "start activity!");
-    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("jump_article_param_ids", this.jdField_a_of_type_Long);
+    localIntent.putExtra("jump_activity_launch_from", this.jdField_a_of_type_AndroidContentIntent.getIntExtra("jump_activity_launch_from", 0));
+    PublicFragmentActivity.a(this.jdField_a_of_type_AndroidContentContext, localIntent, ReadinjoyJumpActivity.class);
+    QLog.d("ReadinjoyJumpActivity", 2, "start activity!");
     ReadinjoyJumpActivity.a(null);
   }
 }

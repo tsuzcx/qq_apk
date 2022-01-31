@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
+import aukm;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="eId,epId,keyword")
 public class EmotionKeyword
-  extends atmo
+  extends aukm
 {
   public String eId;
   public String epId;

@@ -1,16 +1,19 @@
-public abstract interface xex
+import android.view.View;
+
+class xex
+  implements xfe
 {
-  public abstract void a();
+  xex(xev paramxev) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void a(View paramView, float paramFloat)
+  {
+    paramView.getLayoutParams().height = ((int)paramFloat);
+    paramView.requestLayout();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xex
  * JD-Core Version:    0.7.0.1
  */

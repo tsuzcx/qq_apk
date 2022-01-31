@@ -1,181 +1,251 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.widget.MessageProgressView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.tribe.async.reactive.SimpleObserver;
+import com.tribe.async.reactive.Stream;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class baci
+  extends babu
 {
-  private static String a(String paramString)
+  protected String b;
+  protected Map<babd, Stream<babd>> b;
+  
+  public baci(XMediaEditor paramXMediaEditor)
   {
-    return paramString;
+    super(paramXMediaEditor);
   }
   
-  public static void a(String paramString)
+  public bacl a(ViewGroup paramViewGroup)
   {
-    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("history_chat_msg_search_key", 0).edit();
-    localEditor.remove(a(paramString));
-    localEditor.commit();
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    int j = 0;
-    if ((paramString2 == null) || (paramString2.length() == 0)) {
-      return;
-    }
-    Object localObject1 = paramString2.toLowerCase();
-    String str1 = a(paramString1);
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("history_chat_msg_search_key", 0);
-    paramString1 = localSharedPreferences.getString(str1, "");
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560346, paramViewGroup, false);
+    bacl localbacl = new bacl(paramViewGroup);
     if (QLog.isColorLevel()) {
-      QLog.d("HistoryChatMsgSearchKeyUtil", 2, "in storeKeyword(),content is:" + paramString1 + ",keyword is:" + paramString2);
+      QLog.d("VideoItem", 2, new Object[] { "Video onCreateViewHolder. vh hash=", Integer.valueOf(localbacl.hashCode()) });
     }
-    int i;
-    if ((paramString1 != null) && (paramString1.trim().length() > 0))
-    {
-      try
-      {
-        localObject2 = new JSONArray(paramString1);
-        HashMap localHashMap = new HashMap();
-        k = ((JSONArray)localObject2).length();
-        paramString1 = new ArrayList();
-        i = 0;
-        if (i < k)
-        {
-          String str2 = ((JSONArray)localObject2).optString(i, "");
-          if ((str2 == null) || (str2.length() <= 0)) {
-            break label506;
-          }
-          paramString1.add(str2);
-          break label506;
-        }
-        k = paramString1.size();
-        i = 0;
-        while (i < k)
-        {
-          localHashMap.put(((String)paramString1.get(i)).toLowerCase(), Integer.valueOf(i));
-          i += 1;
-        }
-        localObject2 = (Integer)localHashMap.get(localObject1);
-        if (localObject2 != null) {
-          break label359;
-        }
-        j = k - 10 + 1;
-        i = j;
-        if (j < 0) {
-          i = 0;
-        }
-        localObject1 = new JSONArray();
-        while (i < k)
-        {
-          ((JSONArray)localObject1).put((String)paramString1.get(i));
-          i += 1;
-        }
-        ((JSONArray)localObject1).put(paramString2);
-        paramString1 = ((JSONArray)localObject1).toString();
-      }
-      catch (JSONException paramString1)
-      {
-        for (;;)
-        {
-          Object localObject2;
-          int k;
-          label302:
-          label359:
-          int m;
-          if (QLog.isColorLevel()) {
-            QLog.d("HistoryChatMsgSearchKeyUtil", 2, "storeKeyword(),parse string failed,error msg is:" + paramString1.getMessage(), paramString1);
-          }
-          paramString1 = new JSONArray();
-          paramString1.put(paramString2);
-          paramString1 = paramString1.toString();
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("HistoryChatMsgSearchKeyUtil", 2, "lastSaveContent is:" + paramString1);
-      }
-      paramString2 = localSharedPreferences.edit();
-      paramString2.putString(str1, paramString1);
-      paramString2.commit();
-      return;
-      localObject1 = new JSONArray();
-      m = ((Integer)localObject2).intValue();
-      i = j;
+    b(localbacl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, localbacl);
+    b(localbacl.jdField_a_of_type_AndroidWidgetImageView, localbacl);
+    b(localbacl.b, localbacl);
+    b(localbacl.c, localbacl);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a() != 0) {
+      paramViewGroup.setPadding(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0);
     }
-    for (;;)
+    return localbacl;
+  }
+  
+  protected SimpleObserver<baax> a(baax parambaax)
+  {
+    return new bacj(this, parambaax);
+  }
+  
+  protected SimpleObserver<babd> a(babd parambabd)
+  {
+    return new back(this, parambabd);
+  }
+  
+  public void a()
+  {
+    super.a();
+    if ((this.jdField_b_of_type_JavaUtilMap != null) && (!this.jdField_b_of_type_JavaUtilMap.isEmpty()))
     {
-      if (i < k)
+      Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator.hasNext())
       {
-        localObject2 = (String)paramString1.get(i);
-        if (i != m) {
-          ((JSONArray)localObject1).put(localObject2);
+        Object localObject = (babd)localIterator.next();
+        localObject = (Stream)this.jdField_b_of_type_JavaUtilMap.get(localObject);
+        if (localObject != null) {
+          ((Stream)localObject).cancel();
         }
       }
-      else
-      {
-        ((JSONArray)localObject1).put(paramString2);
-        paramString1 = ((JSONArray)localObject1).toString();
-        break label302;
-        paramString1 = new JSONArray();
-        paramString1.put(paramString2);
-        paramString1 = paramString1.toString();
-        break label302;
-        label506:
-        i += 1;
-        break;
-      }
-      i += 1;
+      this.jdField_b_of_type_JavaUtilMap.clear();
     }
   }
   
-  public static String[] a(String paramString)
+  protected void a(int paramInt, boolean paramBoolean)
   {
-    paramString = a(paramString);
-    paramString = BaseApplication.getContext().getSharedPreferences("history_chat_msg_search_key", 0).getString(paramString, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("HistoryChatMsgSearchKeyUtil", 2, "in getKeywords(),content is:" + paramString);
+    if (paramInt == 0) {
+      super.a(paramInt, paramBoolean);
     }
-    if ((paramString != null) && (paramString.trim().length() > 0)) {}
-    for (;;)
+    do
     {
-      int i;
-      try
+      Object localObject;
+      Stream localStream;
+      do
       {
-        paramString = new JSONArray(paramString);
-        i = paramString.length();
-        ArrayList localArrayList = new ArrayList(i);
-        if (i >= 0)
+        do
         {
-          String str = paramString.optString(i, "");
-          if ((str == null) || (str.length() <= 0)) {
-            break label177;
-          }
-          localArrayList.add(str);
-          break label177;
-        }
-        paramString = (String[])localArrayList.toArray(new String[0]);
-        return paramString;
-      }
-      catch (JSONException paramString)
-      {
+          return;
+        } while (paramInt != 1);
+        localObject = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
         if (QLog.isColorLevel()) {
-          QLog.d("HistoryChatMsgSearchKeyUtil", 2, "getKeywords(),parse string failed,error msg is:" + paramString.getMessage(), paramString);
+          QLog.d("VideoItem", 2, new Object[] { "scheduleStream for poster. hasNext=", Boolean.valueOf(((Iterator)localObject).hasNext()) });
         }
-        return null;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        localObject = (babd)((Iterator)localObject).next();
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoItem", 2, new Object[] { "scheduleStream for poster. next info position=", Integer.valueOf(((babd)localObject).c), ", type=", Integer.valueOf(((babd)localObject).b()), ", hash=", Integer.valueOf(localObject.hashCode()) });
+        }
+        localStream = (Stream)this.jdField_b_of_type_JavaUtilMap.get(localObject);
+      } while (localStream == null);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoItem", 2, new Object[] { "scheduleStream for poster. fire stream. info hash=", Integer.valueOf(localObject.hashCode()) });
       }
-      return null;
-      label177:
-      i -= 1;
+      this.jdField_b_of_type_JavaLangString = ((babd)localObject).d;
+      ((babd)localObject).a = System.currentTimeMillis();
+      localStream.subscribe(a((babd)localObject));
+      return;
+      this.jdField_b_of_type_JavaLangString = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoItem", 2, new Object[] { "scheduleStream for poster. no poster stream. mHasStartUploading=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    a(0, true);
+  }
+  
+  public void a(View paramView, baby parambaby)
+  {
+    babd localbabd = (babd)parambaby.jdField_a_of_type_Baas;
+    switch (paramView.getId())
+    {
+    case 2131367571: 
+    default: 
+    case 2131367568: 
+    case 2131367572: 
+      do
+      {
+        return;
+        this.jdField_a_of_type_Babp.a(parambaby);
+        return;
+      } while (localbabd.g != 2);
+      parambaby.b.setVisibility(4);
+      a(localbabd);
+      return;
+    }
+    bfmr.a((Activity)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext());
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoItem", 2, new Object[] { "onItemViewClick preview. info position=", Integer.valueOf(localbabd.c), ", path=", localbabd.f });
+    }
+    a(localbabd);
+  }
+  
+  protected void a(baax parambaax)
+  {
+    parambaax = (babd)parambaax;
+    if (this.jdField_a_of_type_JavaUtilMap == null) {
+      this.jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
+    }
+    if (this.jdField_b_of_type_JavaUtilMap == null) {
+      this.jdField_b_of_type_JavaUtilMap = new LinkedHashMap();
+    }
+    Stream localStream1 = parambaax.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor);
+    if ((localStream1 != null) && (!this.jdField_b_of_type_JavaUtilMap.containsKey(parambaax))) {
+      this.jdField_b_of_type_JavaUtilMap.put(parambaax, localStream1);
+    }
+    Stream localStream2 = parambaax.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor);
+    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(parambaax)) {
+      this.jdField_a_of_type_JavaUtilMap.put(parambaax, localStream2);
+    }
+    if (localStream1 != null) {
+      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+      {
+        this.jdField_b_of_type_JavaLangString = parambaax.d;
+        parambaax.a = System.currentTimeMillis();
+        localStream1.subscribe(a(parambaax));
+      }
+    }
+    while (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = parambaax.d;
+    this.jdField_a_of_type_Boolean = true;
+    parambaax.a = System.currentTimeMillis();
+    localStream2.subscribe(a(parambaax));
+  }
+  
+  public void a(babd parambabd)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.d() == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.requestFocus();
+    }
+    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext();
+    Intent localIntent = new Intent(localBaseActivity, ShortVideoPlayActivity.class);
+    localIntent.putExtra("file_send_path", parambabd.c());
+    localIntent.putExtra("video_play_caller", 4);
+    localIntent.putExtra("message_click_start", System.currentTimeMillis());
+    localBaseActivity.startActivity(localIntent);
+    parambabd = new Intent();
+    parambabd.setAction("com.tencent.mobileqq.troop.homework.xmediaeditor.ui.action_play_video");
+    parambabd.setPackage(localBaseActivity.getPackageName());
+    localBaseActivity.sendBroadcast(parambabd);
+  }
+  
+  protected void a(baby parambaby, baax parambaax, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      parambaby.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      parambaby.c.setVisibility(0);
+      parambaby.b.setVisibility(4);
+      parambaby.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(4);
+    }
+    do
+    {
+      return;
+      parambaby.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      switch (parambaax.g)
+      {
+      default: 
+        return;
+      case -2147483648: 
+      case -2147483647: 
+      case -2147483646: 
+      case -2147483645: 
+        parambaby.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
+        parambaby.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+        parambaby.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(parambaax.e, parambaax.d);
+        parambaby.b.setVisibility(4);
+        parambaby.c.setVisibility(4);
+        return;
+      }
+    } while (parambaax.e != 100);
+    parambaby.a();
+    return;
+    parambaby.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(4);
+    parambaby.b.setVisibility(0);
+    parambaby.c.setVisibility(4);
+  }
+  
+  public void d(baas parambaas)
+  {
+    super.d(parambaas);
+    parambaas = (babd)parambaas;
+    if ((this.jdField_b_of_type_JavaUtilMap != null) && (!this.jdField_b_of_type_JavaUtilMap.isEmpty()))
+    {
+      parambaas = (Stream)this.jdField_b_of_type_JavaUtilMap.get(parambaas);
+      if (parambaas != null) {
+        parambaas.cancel();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baci
  * JD-Core Version:    0.7.0.1
  */

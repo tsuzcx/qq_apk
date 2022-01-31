@@ -1,22 +1,31 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.VipTagView;
 
-class avav
-  extends ajmm
+public class avav
+  implements Animation.AnimationListener
 {
-  avav(avau paramavau) {}
+  public avav(VipTagView paramVipTagView) {}
   
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramBoolean1) && (paramList != null) && (!paramList.isEmpty()) && ((paramList.get(0) instanceof MessageForShortVideo))) {
-      advs.a((MessageRecord)paramList.get(0));
+    if (VipTagView.a(this.a)) {
+      VipTagView.a(this.a).a();
     }
+    VipTagView.a(this.a, false);
+    this.a.invalidate();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    VipTagView.a(this.a, 0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avav
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
+import android.os.Handler;
+import android.os.Message;
 
 class aedm
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  aedm(aedl paramaedl, String paramString) {}
+  boolean jdField_a_of_type_Boolean = true;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  aedm(aedl paramaedl) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    ((ajhh)this.jdField_a_of_type_Aedl.a.a.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Aedl.a.a.a().a();
-    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.b(localRecentUser);
+    if (paramMessage.what == aedl.a()) {}
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (paramMessage.what != aedl.b()) {}
     }
-    this.jdField_a_of_type_Aedl.a.H();
   }
 }
 

@@ -695,28 +695,28 @@ public final class u
     }
   }
   
-  public final void a(int paramInt, am paramam, String paramString1, String paramString2, t paramt, long paramLong, boolean paramBoolean)
+  public final void a(int paramInt, ap paramap, String paramString1, String paramString2, t paramt, long paramLong, boolean paramBoolean)
   {
-    int i1 = paramam.g;
-    paramam = a.a(paramam);
+    int i1 = paramap.g;
+    paramap = a.a(paramap);
     try
     {
-      a(new v(this.e, paramInt, i1, paramam, paramString1, paramString2, paramt, this.b, paramBoolean), true, true, paramLong);
+      a(new v(this.e, paramInt, i1, paramap, paramString1, paramString2, paramt, this.b, paramBoolean), true, true, paramLong);
       return;
     }
-    catch (Throwable paramam)
+    catch (Throwable paramap)
     {
-      while (x.a(paramam)) {}
-      paramam.printStackTrace();
+      while (x.a(paramap)) {}
+      paramap.printStackTrace();
     }
   }
   
-  public final void a(int paramInt, am paramam, String paramString1, String paramString2, t paramt, boolean paramBoolean)
+  public final void a(int paramInt, ap paramap, String paramString1, String paramString2, t paramt, boolean paramBoolean)
   {
-    a(paramInt, paramam.g, a.a(paramam), paramString1, paramString2, paramt, 0, 0, paramBoolean, null);
+    a(paramInt, paramap.g, a.a(paramap), paramString1, paramString2, paramt, 0, 0, paramBoolean, null);
   }
   
-  public final void a(int paramInt, an arg2)
+  public final void a(int paramInt, aq arg2)
   {
     int i3 = 1;
     int i4 = 1;
@@ -988,7 +988,7 @@ public final class u
     x.c("[UploadManager] Clear network consume.", new Object[0]);
   }
   
-  protected final void b(boolean paramBoolean)
+  public final void b(boolean paramBoolean)
   {
     synchronized (this.s)
     {

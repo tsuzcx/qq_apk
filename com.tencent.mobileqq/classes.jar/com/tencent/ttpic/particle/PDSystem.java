@@ -11,12 +11,12 @@ public class PDSystem
     reset();
   }
   
-  public static PDSystem create(String paramString, byte[] paramArrayOfByte)
+  public static PDSystem create(boolean paramBoolean, String paramString, byte[] paramArrayOfByte)
   {
-    return new PDSystem(nCreateSystem(paramString, paramArrayOfByte));
+    return new PDSystem(nCreateSystem(paramBoolean, paramString, paramArrayOfByte));
   }
   
-  private static native long nCreateSystem(String paramString, byte[] paramArrayOfByte);
+  private static native long nCreateSystem(boolean paramBoolean, String paramString, byte[] paramArrayOfByte);
   
   private static native void nDestroy(long paramLong);
   
@@ -40,7 +40,7 @@ public class PDSystem
   
   private static native boolean nTotalFinished(long paramLong);
   
-  private static native void nUpdateFboSize(long paramLong, int paramInt1, int paramInt2, int paramInt3);
+  private static native void nUpdateFboSize(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
   public void destroy()
   {
@@ -104,9 +104,9 @@ public class PDSystem
     return nTotalFinished(this.mNativeObject);
   }
   
-  public void updateFboSize(int paramInt1, int paramInt2, int paramInt3)
+  public void updateFboSize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    nUpdateFboSize(this.mNativeObject, paramInt1, paramInt2, paramInt3);
+    nUpdateFboSize(this.mNativeObject, paramInt1, paramInt2, paramInt3, paramInt4);
   }
 }
 

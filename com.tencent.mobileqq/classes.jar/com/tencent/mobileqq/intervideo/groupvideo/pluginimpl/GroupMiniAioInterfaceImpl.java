@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
-import aciv;
-import ajjy;
+import actk;
+import ajyc;
 import android.app.Activity;
 import android.app.Application;
 import android.app.PendingIntent;
@@ -13,8 +13,8 @@ import android.net.Uri;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import aqqm;
-import bajq;
+import arle;
+import bbkx;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
@@ -26,7 +26,7 @@ public class GroupMiniAioInterfaceImpl
   implements NewMiniAioInterface
 {
   private Activity mActivity;
-  private aqqm mMiniMsgUser;
+  private arle mMiniMsgUser;
   private long roomId;
   private int roomType;
   private int xPoint;
@@ -38,7 +38,7 @@ public class GroupMiniAioInterfaceImpl
     localIntent1.setFlags(67108864);
     localIntent1.putExtra("tab_index", MainFragment.b);
     localIntent1.putExtra("fragment_id", 1);
-    localIntent1.putExtra("banner_wording", ajjy.a(2131639554));
+    localIntent1.putExtra("banner_wording", ajyc.a(2131705339));
     localIntent1.putExtra("banner_iconIdx", 13);
     localIntent1.putExtra("banner_iconIdx", 14);
     localIntent1.putExtra("banner_businessCategory", "GroupVideo");
@@ -46,7 +46,7 @@ public class GroupMiniAioInterfaceImpl
     localIntent1.putExtra("banner_plguinType", 1);
     localIntent1.putExtra("banner_pluginProxyActivityName", this.mActivity.getClass().getName());
     Intent localIntent2 = new Intent(this.mActivity, JumpActivity.class);
-    localIntent2.setData(Uri.parse(String.format("mqqapi://now/openroom?src_type=app&version=1&bid=88&roomid=%d&fromid=10001&roomtype=%d", new Object[] { Long.valueOf(this.roomId), Integer.valueOf(this.roomType) })));
+    localIntent2.setData(Uri.parse(String.format("nowmqqapi://now/openroom?src_type=app&version=1&bid=88&roomid=%d&fromid=10001&roomtype=%d", new Object[] { Long.valueOf(this.roomId), Integer.valueOf(this.roomType) })));
     localIntent2.addFlags(268435456);
     localIntent1.putExtra("banner_pendingIntent", PendingIntent.getActivities(this.mActivity, 0, new Intent[] { localIntent2 }, 134217728));
     return localIntent1;
@@ -56,14 +56,14 @@ public class GroupMiniAioInterfaceImpl
   {
     int i = this.mActivity.getApplication().getResources().getDisplayMetrics().widthPixels;
     int j = ImmersiveUtils.getStatusBarHeight(this.mActivity);
-    int k = this.mActivity.getApplication().getResources().getDimensionPixelSize(2131166108);
+    int k = this.mActivity.getApplication().getResources().getDimensionPixelSize(2131297186);
     if (this.xPoint == 0)
     {
-      i = i - k * 4 - bajq.b(35.0F);
+      i = i - k * 4 - bbkx.b(35.0F);
       if (this.yPoint != 0) {
         break label147;
       }
-      j += bajq.a(7.0F);
+      j += bbkx.a(7.0F);
     }
     for (;;)
     {
@@ -96,7 +96,7 @@ public class GroupMiniAioInterfaceImpl
     this.mActivity = ((Activity)((ContextWrapper)paramContext).getBaseContext());
     this.roomId = paramLong;
     this.roomType = paramInt;
-    this.mMiniMsgUser = new aqqm(this.mActivity, paramString1, paramString2, getMiniMsgUserParam());
+    this.mMiniMsgUser = new arle(this.mActivity, paramString1, paramString2, getMiniMsgUserParam());
     ThreadManagerV2.getUIHandlerV2().post(new GroupMiniAioInterfaceImpl.1(this));
   }
   

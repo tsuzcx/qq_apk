@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
 
 class afqk
-  extends ajgf
+  implements afsy
 {
-  afqk(afqi paramafqi) {}
+  afqk(afqe paramafqe) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void a(int paramInt1, int paramInt2)
   {
-    afqi.a(this.a, paramUpgradeDetailWrapper);
-    this.a.e();
+    if (afqe.a(this.a) != null) {
+      afqe.a(this.a).a(paramInt1, paramInt2);
+    }
   }
 }
 

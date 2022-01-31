@@ -1,41 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
-
-public class ajgg
-  implements Manager
+class ajgg
+  extends ajgf
 {
-  private azxd jdField_a_of_type_Azxd;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public Object a;
+  private int b;
   
-  public ajgg(QQAppInterface paramQQAppInterface)
+  public ajgg(int paramInt1, int paramInt2, ajgh paramajgh, ajgd paramajgd)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramInt1, paramajgh, paramajgd);
+    this.b = paramInt2;
   }
   
-  public azxd a()
+  public aivx a(long paramLong, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Azxd == null) {}
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Azxd == null) {
-        this.jdField_a_of_type_Azxd = new azxd(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      return this.jdField_a_of_type_Azxd;
-    }
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Azxd != null) {
-      this.jdField_a_of_type_Azxd.a();
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajgg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.history;
 
-import aflb;
-import ajmp;
+import afwy;
+import akay;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -15,7 +15,7 @@ import mqq.os.MqqHandler;
 public class ChatHistoryC2CDateFragment$3$1
   implements Runnable
 {
-  public ChatHistoryC2CDateFragment$3$1(aflb paramaflb) {}
+  public ChatHistoryC2CDateFragment$3$1(afwy paramafwy) {}
   
   public void run()
   {
@@ -31,7 +31,9 @@ public class ChatHistoryC2CDateFragment$3$1
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = (MessageRecord)((List)localObject).get(0);
-        ChatHistoryActivity.a(this.a.a.getActivity(), ChatHistoryC2CDateFragment.a(this.a.a), ChatHistoryC2CDateFragment.a(this.a.a), ChatHistoryC2CDateFragment.b(this.a.a), ((MessageRecord)localObject).time, ((MessageRecord)localObject).shmsgseq, 0);
+        if (this.a.a.getActivity() != null) {
+          ChatHistoryActivity.a(this.a.a.getActivity(), ChatHistoryC2CDateFragment.a(this.a.a), ChatHistoryC2CDateFragment.a(this.a.a), ChatHistoryC2CDateFragment.b(this.a.a), ((MessageRecord)localObject).time, ((MessageRecord)localObject).shmsgseq, 0);
+        }
       }
       for (;;)
       {

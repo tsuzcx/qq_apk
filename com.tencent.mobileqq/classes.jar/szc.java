@@ -1,36 +1,21 @@
-import com.tencent.biz.qqstory.database.LikeEntry;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class szc
+  extends SimpleJob<Void>
 {
-  public int a;
-  public String a;
-  public List<LikeEntry> a;
-  public int b;
-  
-  public boolean equals(Object paramObject)
+  public szc(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, syv paramsyv)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (szc)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
-      }
-    } while (paramObject.a == null);
-    return false;
+    super(paramString);
   }
   
-  public int hashCode()
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (this.a != null) {
-      return this.a.hashCode();
-    }
-    return 0;
+    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_Syv);
+    return null;
   }
 }
 

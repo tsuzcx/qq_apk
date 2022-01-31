@@ -27,11 +27,14 @@ class MenuActivity$EventListener
     {
     default: 
       return;
-    case 2130837507: 
+    case 2130837508: 
       runV8TestDynamicContext();
       return;
-    case 2130837506: 
+    case 2130837507: 
       runV8Test();
+      return;
+    case 2130837506: 
+      startFlutterApp1();
       return;
     case 2130837505: 
       startFlutter();
@@ -79,6 +82,13 @@ class MenuActivity$EventListener
   void startFlutter()
   {
     Intent localIntent = new Intent((Context)this.ctxRef.get(), MainActivity.class);
+    ((Context)this.ctxRef.get()).startActivity(localIntent);
+  }
+  
+  void startFlutterApp1()
+  {
+    Intent localIntent = new Intent((Context)this.ctxRef.get(), MainActivity.class);
+    localIntent.putExtra("OPEN_MINIPROGRAM_NAME", "QIANDAO");
     ((Context)this.ctxRef.get()).startActivity(localIntent);
   }
 }

@@ -1,66 +1,38 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-
-class akzz
-  implements INetInfoHandler
+public class akzz
 {
-  akzz(akzp paramakzp) {}
+  private alaa jdField_a_of_type_Alaa = new alaa();
+  private alab jdField_a_of_type_Alab = new alab();
   
-  public void onNetMobile2None()
+  public akzz()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ark.download.module", 2, "onNetMobile2None");
-    }
+    this.jdField_a_of_type_Alaa.a();
+    this.jdField_a_of_type_Alab.a();
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ark.download.module", 2, new Object[] { "onNetMobile2Wifi", paramString });
-    }
+    this.jdField_a_of_type_Alaa.c();
+    this.jdField_a_of_type_Alab.c();
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ark.download.module", 2, new Object[] { "onNetNone2Mobile", paramString });
-    }
-    paramString = BaseActivity.sTopActivity;
-    if ((akzp.a(this.a)) && (!akzp.b(this.a)) && (paramString != null))
+    if (paramInt1 == 36197)
     {
-      paramString = paramString.getString(2131624678);
-      if (akzp.a(this.a, paramString)) {
-        akzp.b(this.a, true);
-      }
+      this.jdField_a_of_type_Alab.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
+      return;
     }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ark.download.module", 2, new Object[] { "onNetNone2Wifi", paramString });
+    if (paramInt1 == 3553)
+    {
+      this.jdField_a_of_type_Alaa.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
+      return;
     }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ark.download.module", 2, new Object[] { "onNetWifi2Mobile", paramString });
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ark.download.module", 2, "onNetWifi2None");
-    }
+    throw new RuntimeException("textureType must be GLES11Ext.GL_TEXTURE_EXTERNAL_OES or GLES20.GL_TEXTURE_2D.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akzz
  * JD-Core Version:    0.7.0.1
  */

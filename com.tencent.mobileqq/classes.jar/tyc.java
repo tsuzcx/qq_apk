@@ -1,18 +1,34 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.Stream;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class tyc
-  implements txw<Bitmap>
+  implements tbf
 {
-  tyc(txz paramtxz, List paramList, String paramString) {}
+  tyc(tyb paramtyb, CommentEntry paramCommentEntry, boolean paramBoolean) {}
   
-  @NonNull
-  public Stream<Bitmap> a(txs paramtxs)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    return txz.a(this.jdField_a_of_type_Txz, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
+    a(-1, ajyc.a(2131702169));
   }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    bcpw.a(BaseApplication.getContext(), 1, ajyc.a(2131702166), 0).a();
+    veg.e("Q.qqstory.player.CommentFloatDialog", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
+  }
+  
+  public void a(MessageMicro paramMessageMicro)
+  {
+    if (!txw.b(this.jdField_a_of_type_Tyb.a)) {
+      txw.a(this.jdField_a_of_type_Tyb.a).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
+    }
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

@@ -14,6 +14,7 @@ public enum AdThreadManager
 {
   INSTANCE;
   
+  public static final int FILE = 5;
   public static final int MAIN_THREAD = 0;
   public static final int NETWORK = 4;
   public static final int NORMAL = 3;

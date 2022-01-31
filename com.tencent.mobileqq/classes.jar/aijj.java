@@ -1,101 +1,33 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Paint;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class aijj
+  implements Animation.AnimationListener
 {
-  public static int a(Paint paramPaint)
+  public aijj(SpecailCareListActivity paramSpecailCareListActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return (int)(1.0F + paramPaint.measureText(ajjy.a(2131634505)));
+    this.a.leftView.clearAnimation();
+    this.a.a.clearAnimation();
+    this.a.leftView.setVisibility(4);
+    this.a.a.setVisibility(8);
+    this.a.rightViewText.setClickable(true);
+    this.a.rightViewText.setText(SpecailCareListActivity.b);
+    this.a.rightViewText.setContentDescription(ajyc.a(2131714266));
+    this.a.c = true;
   }
   
-  public static void a(int paramInt1, int paramInt2, aijl paramaijl, Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    a(null, paramInt1, paramInt2, paramaijl, paramContext, paramString1, paramString2, paramBoolean);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public static void a(aijl paramaijl, Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (paramaijl != null) {
-      a(paramaijl.a(), paramaijl.b(), paramaijl, paramContext, paramString1, paramString2, paramBoolean);
-    }
-  }
-  
-  public static void a(String paramString1, int paramInt1, int paramInt2, aijl paramaijl, Context paramContext, String paramString2, String paramString3, boolean paramBoolean)
-  {
-    if ((paramaijl == null) || (paramContext == null) || (TextUtils.isEmpty(paramString3))) {
-      return;
-    }
-    if (paramString3.length() > 12) {
-      paramString3 = paramString3.substring(0, 11) + "...";
-    }
-    for (;;)
-    {
-      int i = paramInt1;
-      if (paramInt1 == 0) {
-        i = paramaijl.a();
-      }
-      paramInt1 = paramInt2;
-      if (paramInt2 == 0) {
-        paramInt1 = paramaijl.b();
-      }
-      long l = System.currentTimeMillis();
-      ArrayList localArrayList = new ArrayList();
-      aijk localaijk1 = new aijk(paramaijl.a(), babp.a(), i, paramInt1, paramString2, paramString3);
-      float f1 = i;
-      localaijk1.a = f1;
-      localaijk1.e = f1;
-      localaijk1.jdField_b_of_type_Float = 0.0F;
-      localaijk1.f = 0.0F;
-      localaijk1.c = (-i / 4000.0F);
-      localaijk1.jdField_d_of_type_Float = 0.0F;
-      localaijk1.jdField_h_of_type_Float = 1.0F;
-      localaijk1.g = (17.0F * paramContext.getResources().getDisplayMetrics().scaledDensity);
-      localaijk1.jdField_b_of_type_Boolean = true;
-      localaijk1.jdField_b_of_type_JavaLangString = paramString1;
-      Random localRandom = new Random();
-      paramInt2 = 0;
-      while (paramInt2 < 5)
-      {
-        aijk localaijk2 = new aijk(paramaijl.a(), babp.a(), i, paramInt1, paramString2, paramString3);
-        localaijk2.c = (-i / (3000.0F - paramInt2 * 500));
-        localaijk2.jdField_d_of_type_Float = 0.0F;
-        int j = localRandom.nextInt(3);
-        localaijk2.jdField_d_of_type_Int = ((int)(new float[] { 0.6F, 0.8F, 1.0F }[j] * 255.0F));
-        localaijk2.g = (new int[] { 14, 14, 12, 12, 12 }[paramInt2] * paramContext.getResources().getDisplayMetrics().scaledDensity);
-        localaijk2.jdField_h_of_type_Float = aijg.a(localaijk1, localaijk2);
-        f1 = i * localRandom.nextFloat() + i / 2;
-        localaijk2.a = f1;
-        localaijk2.e = f1;
-        f1 = paramInt1;
-        float f2 = aijg.a(localaijk2.g);
-        float f3 = localaijk2.jdField_h_of_type_Int * 2;
-        f1 = (paramInt1 - (f1 * 0.28F + f2 + f3)) * localRandom.nextFloat();
-        localaijk2.jdField_b_of_type_Float = f1;
-        localaijk2.f = f1;
-        localaijk2.jdField_b_of_type_Boolean = true;
-        localaijk2.jdField_b_of_type_JavaLangString = paramString1;
-        localArrayList.add(localaijk2);
-        paramInt2 += 1;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloBarrageUtil", 2, "bulkApolloBarrages use:" + (System.currentTimeMillis() - l));
-      }
-      localArrayList.add(localaijk1);
-      paramaijl.a(localArrayList, paramBoolean);
-      return;
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aijj
  * JD-Core Version:    0.7.0.1
  */

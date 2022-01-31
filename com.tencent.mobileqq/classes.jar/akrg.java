@@ -1,49 +1,27 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
 
 class akrg
-  extends akgd
+  implements akoq
 {
-  akrg(akrc paramakrc, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  akrg(akqx paramakqx, long paramLong1, long paramLong2, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public ToServiceMsg a()
   {
-    akrc.f(this.a, false);
-    if (akrc.a(this.a) != null) {
-      akrc.a(this.a).removeMessages(2);
-    }
-    if (akrc.a(this.a)) {
-      return;
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      paramSosoLbsInfo = paramSosoLbsInfo.a;
-      paramInt = (int)(paramSosoLbsInfo.jdField_a_of_type_Double * 1000000.0D);
-      int i = (int)(paramSosoLbsInfo.jdField_b_of_type_Double * 1000000.0D);
-      QLog.i("AREngine_ARCloudControl", 1, "GetLBSLocation. onLocationFinish. gps info. Lat_02 = " + paramSosoLbsInfo.jdField_a_of_type_Double + ", Lon_02 = " + paramSosoLbsInfo.jdField_b_of_type_Double + ", latitude = " + paramInt + ", longitude = " + i + ", altitude = " + paramSosoLbsInfo.e + ", accuracy = " + paramSosoLbsInfo.jdField_a_of_type_Float + ", name = " + paramSosoLbsInfo.jdField_a_of_type_JavaLangString + ", address = " + paramSosoLbsInfo.jdField_b_of_type_JavaLangString);
-      paramSosoLbsInfo = aksc.a(this.a.a.recognitions, akrc.a(this.a));
-      akrc.a(this.a, paramSosoLbsInfo, paramInt, i);
-      return;
-    }
-    QLog.i("AREngine_ARCloudControl", 1, "GetLBSLocation. onLocationFinish. gps info failed. errCode = " + paramInt);
-    paramSosoLbsInfo = new akrk();
-    paramSosoLbsInfo.a = 2;
-    aksc.a(this.a.a.recognitions, akrc.a(this.a), paramSosoLbsInfo);
-    if (akrc.a(this.a) != null) {
-      akrc.a(this.a).a(0, akrc.a(this.a));
-    }
-    akrc.a(this.a, null);
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Akqx.a.createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
+    localToServiceMsg.extraData.putLong("latestFriendSeq", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putLong("latestGroupSeq", this.b);
+    localToServiceMsg.extraData.putLong("type", 1L);
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
+    localToServiceMsg.setEnableFastResend(true);
+    return localToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akrg
  * JD-Core Version:    0.7.0.1
  */

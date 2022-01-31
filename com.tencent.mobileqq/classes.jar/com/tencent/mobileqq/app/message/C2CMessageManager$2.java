@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app.message;
 
-import akai;
-import akaj;
-import akbj;
-import akbm;
-import akcg;
+import akou;
+import akov;
+import akpv;
+import akpy;
+import akqs;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,11 +16,11 @@ import java.util.List;
 public class C2CMessageManager$2
   implements Runnable
 {
-  public C2CMessageManager$2(akai paramakai, akcg paramakcg, int paramInt, String paramString, akaj paramakaj, FragmentActivity paramFragmentActivity) {}
+  public C2CMessageManager$2(akou paramakou, akqs paramakqs, int paramInt, String paramString, akov paramakov, FragmentActivity paramFragmentActivity) {}
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_Akcg);
+    this.this$0.b(this.jdField_a_of_type_Akqs);
     Object localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Int).e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
     Object localObject1;
     int i;
@@ -28,7 +28,7 @@ public class C2CMessageManager$2
     {
       long l = ((MessageRecord)((List)localObject2).get(0)).uniseq;
       localObject1 = new ArrayList();
-      this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, l, 200 - ((List)localObject2).size(), this.jdField_a_of_type_Akcg, (ArrayList)localObject1);
+      this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, l, 200 - ((List)localObject2).size(), this.jdField_a_of_type_Akqs, (ArrayList)localObject1);
       if (((ArrayList)localObject1).size() <= 200 - ((List)localObject2).size()) {
         break label397;
       }
@@ -39,7 +39,7 @@ public class C2CMessageManager$2
       if (i < ((ArrayList)localObject1).size())
       {
         localObject2 = (ChatMessage)((ArrayList)localObject1).get(i);
-        if ((akbm.b((MessageRecord)localObject2)) || (((ChatMessage)localObject2).msgUid != this.jdField_a_of_type_Akaj.a) || (((ChatMessage)localObject2).time != this.jdField_a_of_type_Akaj.b)) {}
+        if ((akpy.b((MessageRecord)localObject2)) || (((ChatMessage)localObject2).msgUid != this.jdField_a_of_type_Akov.a) || (((ChatMessage)localObject2).time != this.jdField_a_of_type_Akov.b)) {}
       }
       for (i = 1;; i = 0)
       {
@@ -49,14 +49,14 @@ public class C2CMessageManager$2
           {
             do
             {
-              this.jdField_a_of_type_Akcg.e = 15;
-              this.jdField_a_of_type_Akcg.jdField_a_of_type_Int = 0;
-              localObject1 = akai.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 15, this.jdField_a_of_type_Akcg, this.jdField_a_of_type_Akaj);
+              this.jdField_a_of_type_Akqs.e = 15;
+              this.jdField_a_of_type_Akqs.jdField_a_of_type_Int = 0;
+              localObject1 = akou.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 15, this.jdField_a_of_type_Akqs, this.jdField_a_of_type_Akov);
             } while ((localObject1 == null) || (((List)localObject1).size() <= 0));
             localObject1 = (ChatMessage)((List)localObject1).get(0);
-          } while ((akbm.b((MessageRecord)localObject1)) || (((ChatMessage)localObject1).msgUid != this.jdField_a_of_type_Akaj.a) || (((ChatMessage)localObject1).time != this.jdField_a_of_type_Akaj.b));
-          this.jdField_a_of_type_Akcg.g = true;
-          this.this$0.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(this.jdField_a_of_type_Akcg);
+          } while ((akpy.b((MessageRecord)localObject1)) || (((ChatMessage)localObject1).msgUid != this.jdField_a_of_type_Akov.a) || (((ChatMessage)localObject1).time != this.jdField_a_of_type_Akov.b));
+          this.jdField_a_of_type_Akqs.g = true;
+          this.this$0.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(this.jdField_a_of_type_Akqs);
         }
         for (;;)
         {

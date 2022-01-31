@@ -1,21 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.ParticipleView;
-
-public class bbkw
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract class bbkw
 {
-  public bbkw(ParticipleView paramParticipleView) {}
+  public int a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bbkw(int paramInt)
   {
-    ParticipleView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    this.a = paramInt;
   }
+  
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbkw
  * JD-Core Version:    0.7.0.1
  */

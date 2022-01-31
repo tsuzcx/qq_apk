@@ -1,142 +1,75 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class akke
+  implements ajtg
 {
-  static int jdField_a_of_type_Int = -1;
-  static final String jdField_a_of_type_JavaLangString = akkm.jdField_a_of_type_JavaLangString;
-  static int b = -1;
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public static boolean a()
-  {
-    return (c()) && (d()) && (b());
-  }
+  protected void a(boolean paramBoolean, String paramString) {}
   
-  public static boolean a(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
-  {
-    int i = babp.a();
-    if (i < paramInt2)
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error OSversion[" + paramInt2 + "->" + i + "]");
-      return false;
-    }
-    paramInt2 = babp.b();
-    if (paramInt2 < paramInt1)
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error cpucount[" + paramInt1 + "->" + paramInt2 + "]");
-      return false;
-    }
-    long l = babp.a();
-    if (l < paramLong1)
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error cpuFrequency[" + paramLong1 + "->" + l + "]");
-      return false;
-    }
-    paramLong1 = babp.d();
-    if (paramLong1 < paramLong2)
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error memory[" + paramLong2 + "->" + paramLong1 + "]");
-      return false;
-    }
-    return true;
-  }
+  public void a(boolean paramBoolean, List<AddFriendBlockedInfo> paramList, String paramString) {}
   
-  public static boolean b()
-  {
-    return (!Build.MODEL.equalsIgnoreCase("ATH-AL00")) && (!Build.MODEL.equalsIgnoreCase("BND-AL10"));
-  }
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
   
-  public static boolean c()
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (jdField_a_of_type_Int == -1) {
-      if (Build.VERSION.SDK_INT <= 20) {
-        break label118;
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerification.obsever", 2, " onUpdate() type =" + paramInt + " isSuccess = " + paramBoolean);
+    }
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("NewFriendVerification.obsever", 2, " default type =" + paramInt);
       }
-    }
-    label111:
-    label116:
-    label118:
-    for (int i = 1;; i = 0)
-    {
-      int j;
-      if ((a(8, 1367L, 2800000000L, 15)) || (a(4, 2099L, 2800000000L, 15)))
+      return;
+    case 1: 
+      b(paramBoolean, null);
+      return;
+    case 2: 
+      a(paramBoolean, null);
+      return;
+    case 3: 
+      paramObject = (Object[])paramObject;
+      boolean bool1 = ((Boolean)paramObject[0]).booleanValue();
+      boolean bool2 = ((Boolean)paramObject[1]).booleanValue();
+      paramObject = (String)paramObject[2];
+      if (QLog.isColorLevel()) {
+        QLog.d("NewFriendVerification.obsever", 2, " isShowEntrance =" + bool1 + " isShowRedPoint =" + bool2);
+      }
+      a(paramBoolean, bool1, bool2, paramObject);
+      return;
+    case 4: 
+      paramObject = (Object[])paramObject;
+      List localList = (List)paramObject[0];
+      String str = (String)paramObject[1];
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
       {
-        j = 1;
-        if ((j == 0) || (i == 0)) {
-          break label111;
+        localStringBuilder = new StringBuilder().append(" blockedInfos =");
+        if (localList == null) {
+          break label297;
         }
       }
-      for (i = 1;; i = 0)
+      label297:
+      for (paramObject = Integer.valueOf(localList.size());; paramObject = " is null")
       {
-        jdField_a_of_type_Int = i;
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "isDevicesSupport, DeviceSupportFromLocal[" + jdField_a_of_type_Int + "]");
-        if (jdField_a_of_type_Int != 1) {
-          break label116;
-        }
-        return true;
-        j = 0;
-        break;
+        QLog.d("NewFriendVerification.obsever", 2, paramObject);
+        a(paramBoolean, localList, str);
+        return;
       }
-      return false;
     }
-  }
-  
-  public static boolean d()
-  {
-    String str;
-    Object localObject;
-    int j;
-    boolean bool;
-    if (b == -1)
-    {
-      str = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.ARCfg.name());
-      if (TextUtils.isEmpty(str)) {
-        break label160;
-      }
-      localObject = new String[13];
-      j = DeviceProfileManager.a(str, (Object[])localObject, new ajhb());
-      if (localObject.length <= 12) {
-        break label173;
-      }
-      localObject = localObject[12];
-      if (TextUtils.equals((CharSequence)localObject, "1")) {
-        break label150;
-      }
-      bool = true;
-    }
-    for (;;)
-    {
-      if (bool) {}
-      for (int i = 1;; i = 0)
-      {
-        b = i;
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "isEnableInDPC, isEnable[" + bool + "], arCfg[" + str + "], size[" + j + "], params[" + (String)localObject + "]");
-        if (b != 1) {
-          break label171;
-        }
-        return true;
-        label150:
-        bool = false;
-        break;
-      }
-      label160:
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isEnableInDPC, 没拉到dpc配置");
-      return true;
-      label171:
-      return false;
-      label173:
-      localObject = null;
-      bool = true;
-    }
+    paramObject = (Object[])paramObject;
+    a(((Boolean)paramObject[0]).booleanValue(), (String)paramObject[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akke
  * JD-Core Version:    0.7.0.1
  */

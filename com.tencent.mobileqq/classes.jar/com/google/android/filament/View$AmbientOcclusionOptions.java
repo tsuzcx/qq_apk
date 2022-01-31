@@ -3,6 +3,7 @@ package com.google.android.filament;
 public class View$AmbientOcclusionOptions
 {
   public float bias = 0.005F;
+  public float intensity = 1.0F;
   public float power = 0.0F;
   public float radius = 0.3F;
   public float resolution = 0.5F;

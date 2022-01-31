@@ -1,24 +1,14 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-
-public final class bfrn
-  implements DialogInterface.OnClickListener
+public class bfrn
 {
-  public bfrn(Activity paramActivity, int paramInt, String paramString, Intent paramIntent) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (!bfpr.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
-      bfpr.a(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("sid"), this.jdField_a_of_type_AndroidAppActivity);
-    }
-    paramDialogInterface.dismiss();
-  }
+  public float a;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfrn
  * JD-Core Version:    0.7.0.1
  */

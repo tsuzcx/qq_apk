@@ -1,80 +1,48 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.app.Activity;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
+import java.io.File;
 
-class aeib
-  extends akih
+final class aeib
+  extends AsyncTask<Void, Void, Boolean>
 {
-  boolean jdField_a_of_type_Boolean;
+  aeib(File paramFile1, File paramFile2, Activity paramActivity, aeid paramaeid) {}
   
-  aeib(aegy paramaegy) {}
-  
-  public int a()
+  protected Boolean a(Void... paramVarArgs)
   {
-    return 4;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
+    try
     {
-      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
+      if (gp.a(this.jdField_a_of_type_JavaIoFile, this.b))
+      {
+        bbdr.a(this.jdField_a_of_type_AndroidAppActivity, this.b.getAbsolutePath());
+        return Boolean.valueOf(true);
+      }
+      return Boolean.valueOf(false);
+    }
+    catch (OutOfMemoryError paramVarArgs)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_Aegy.jdField_a_of_type_JavaLangString, 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
+        QLog.e("AIOGalleryUtils", 2, "savePhoto  OOM ");
       }
-      ndn.a(this.jdField_a_of_type_Aegy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0x8005750", "0x8005750", 0, 0, this.jdField_a_of_type_Aegy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "", false);
-      paramObject = (ajoy)this.jdField_a_of_type_Aegy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
-      if (paramObject == null) {
-        break label256;
-      }
-      paramObject = paramObject.a(this.jdField_a_of_type_Aegy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      if (paramObject == null) {
-        break label240;
-      }
-      if (this.jdField_a_of_type_Aegy.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler == null) {
-        this.jdField_a_of_type_Aegy.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler = ((PublicAccountHandler)this.jdField_a_of_type_Aegy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11));
-      }
-      this.jdField_a_of_type_Aegy.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(paramObject);
     }
-    for (;;)
+    return Boolean.valueOf(false);
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {}
+    for (int i = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight();; i = 0)
     {
-      this.jdField_a_of_type_Aegy.T = true;
-      this.jdField_a_of_type_Aegy.Y = true;
-      this.jdField_a_of_type_Aegy.bo();
-      if ((this.jdField_a_of_type_Aegy.an) && (aegy.c(this.jdField_a_of_type_Aegy) != null)) {
-        aegy.d(this.jdField_a_of_type_Aegy).d();
+      if (paramBoolean.booleanValue()) {}
+      for (String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131695163);; str = this.jdField_a_of_type_AndroidAppActivity.getString(2131695189))
+      {
+        bcpw.a(this.jdField_a_of_type_AndroidAppActivity, 2, str, 0).b(i);
+        if (this.jdField_a_of_type_Aeid != null) {
+          this.jdField_a_of_type_Aeid.a(paramBoolean.booleanValue());
+        }
+        return;
       }
-      this.jdField_a_of_type_Aegy.c(this.jdField_a_of_type_Aegy.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
-      return;
-      label240:
-      this.jdField_a_of_type_Aegy.D();
-      this.jdField_a_of_type_Boolean = false;
-      continue;
-      label256:
-      this.jdField_a_of_type_Aegy.D();
-      this.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void b(Object paramObject)
-  {
-    this.jdField_a_of_type_Aegy.B(2131629887);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Aegy.bn();
     }
   }
 }

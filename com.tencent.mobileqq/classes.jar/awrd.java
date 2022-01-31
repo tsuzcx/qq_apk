@@ -1,141 +1,154 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager.ISpLogCallback;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
 
-public final class awrd
-  implements SharedPreferencesProxyManager.ISpLogCallback
+public class awrd
+  extends awry
 {
-  private static String jdField_a_of_type_JavaLangString;
-  public static final boolean a;
-  private List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private Map<String, String[]> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private Map<String, String[]> b = new ConcurrentHashMap();
+  protected awrf a;
   
-  static
+  public awrd(baxk parambaxk)
   {
-    jdField_a_of_type_Boolean = false;
+    super(parambaxk);
   }
   
-  private static int a(String paramString1, String paramString2, String paramString3)
+  public void a(awog paramawog, awwp paramawwp, Bitmap paramBitmap)
   {
-    return (paramString1 + paramString2 + paramString3).hashCode();
-  }
-  
-  public static awrd a()
-  {
-    return awrf.a;
-  }
-  
-  private static awrg a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (paramawog.c() == 103)
     {
-      return null;
-      paramString = paramString.split("\\|");
-    } while (paramString.length != 3);
-    return new awrg(paramString[0], paramString[1], paramString[2]);
-  }
-  
-  private boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((paramString.contains("com.oppo.embryo")) || (!paramString.contains("."))) {
-      return true;
-    }
-    return false;
-  }
-  
-  public void onIllegalModify(String paramString1, String paramString2, Object paramObject)
-  {
-    String str = null;
-    int i = 1;
-    if ((!jdField_a_of_type_Boolean) || (BaseApplicationImpl.sProcessId != 1)) {}
-    label388:
-    label392:
-    for (;;)
-    {
-      return;
-      if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-        jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getPackageName();
+      if (paramawwp.b() != null) {
+        paramawwp.b().setImageDrawable(awvy.a(paramBitmap));
       }
-      if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && ((paramObject instanceof String)) && (!TextUtils.isEmpty((String)paramObject)))
+      return;
+    }
+    super.a(paramawog, paramawwp, paramBitmap);
+  }
+  
+  public void b(awog paramawog, awwp paramawwp)
+  {
+    if ((paramawog instanceof awol)) {}
+    for (Object localObject1 = (awol)paramawog;; localObject1 = null)
+    {
+      if ((paramawwp instanceof awws)) {}
+      for (awws localawws = (awws)paramawwp;; localawws = null)
       {
-        boolean bool = jdField_a_of_type_JavaLangString.equals(paramString2);
-        paramObject = (String)paramObject;
-        if (bool)
+        Object localObject2;
+        ColorDrawable localColorDrawable;
+        if (paramawog.c() == null)
         {
-          this.jdField_a_of_type_JavaUtilMap.put(paramString1, new String[] { paramString2, null });
-          label111:
-          if (!bool) {
-            break label353;
+          if (localawws.c() != null) {
+            localawws.c().setVisibility(8);
           }
-          paramString2 = (String[])this.b.get(paramString1);
-          if (paramString2 == null) {
-            break label345;
+          if (localawws.a() != null) {
+            localawws.a().setVisibility(8);
           }
-          paramObject = paramString2[0];
-          paramString2 = paramString2[1];
-          label142:
-          if (TextUtils.isEmpty(paramObject)) {
-            break label388;
+          localObject2 = localawws.a();
+          if (localObject2 != null) {
+            ((URLImageView)localObject2).setVisibility(8);
+          }
+          localObject2 = localawws.e();
+          if (localObject2 != null)
+          {
+            ((TextView)localObject2).setVisibility(0);
+            if (!TextUtils.isEmpty(((awol)localObject1).a())) {
+              ((TextView)localObject2).setText(((awol)localObject1).a());
+            }
+          }
+          if ((paramawwp.b() != null) && (!TextUtils.isEmpty(((awol)localObject1).g())))
+          {
+            localObject2 = ((awol)localObject1).g();
+            localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
+            URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+            localURLDrawableOptions.mRequestWidth = bawz.a(paramawwp.a().getContext(), 50.0F);
+            localURLDrawableOptions.mRequestHeight = bawz.a(paramawwp.a().getContext(), 50.0F);
+            localURLDrawableOptions.mFailedDrawable = localColorDrawable;
+            localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
+            if (!bfng.a((String)localObject2)) {
+              break label625;
+            }
+            localObject2 = URLDrawable.getDrawable((String)localObject2, localURLDrawableOptions);
+            ((URLDrawable)localObject2).setTag(bavi.b(bawz.a(paramawwp.a().getContext(), 50.0F), bawz.a(paramawwp.a().getContext(), 50.0F), bawz.a(paramawwp.a().getContext(), 3.0F)));
+            ((URLDrawable)localObject2).setDecodeHandler(bavi.i);
+            paramawwp.b().setImageDrawable((Drawable)localObject2);
+            if ((((URLDrawable)localObject2).getStatus() != 1) && (((URLDrawable)localObject2).getStatus() != 0)) {
+              ((URLDrawable)localObject2).restartDownload();
+            }
           }
         }
         for (;;)
         {
-          if (i == 0) {
-            break label392;
-          }
-          Object localObject = a(paramString2);
-          if (localObject == null) {
-            break;
-          }
-          paramString2 = ((awrg)localObject).c;
-          str = ((awrg)localObject).jdField_a_of_type_JavaLangString;
-          localObject = ((awrg)localObject).b;
-          if ((a(str)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty((CharSequence)localObject)) || (this.jdField_a_of_type_JavaUtilList.contains(paramString2))) {
-            break;
-          }
-          this.jdField_a_of_type_JavaUtilList.add(paramString2);
-          SharedPreferences.Editor localEditor = SharedPreferencesProxyManager.getInstance().getProxy("sp_dm_report", 0).edit();
-          localEditor.putString(String.valueOf(a(str, (String)localObject, paramObject)), paramString1 + '|' + str + '|' + paramObject + '|' + paramString2);
-          localEditor.commit();
-          return;
-          this.b.put(paramString1, new String[] { paramString2, paramObject });
-          break label111;
-          label345:
-          paramString2 = null;
-          paramObject = str;
-          break label142;
-          label353:
-          if ((String[])this.jdField_a_of_type_JavaUtilMap.get(paramString1) != null)
+          c(paramawog, paramawwp);
+          if ((localawws.a() != null) && (((awol)localObject1).c()))
           {
-            str = paramString2;
-            paramString2 = paramObject;
-            paramObject = str;
-            break label142;
+            paramawog = ((awol)localObject1).h();
+            localObject1 = new ColorDrawable(Color.parseColor("#e7e7e7"));
+            localObject2 = URLDrawable.URLDrawableOptions.obtain();
+            ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = bawz.a(paramawwp.a().getContext(), 40.0F);
+            ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = bawz.a(paramawwp.a().getContext(), 12.0F);
+            ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
+            ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
+            paramawog = URLDrawable.getDrawable(paramawog, (URLDrawable.URLDrawableOptions)localObject2);
+            paramawog.setTag(bavi.b(bawz.a(paramawwp.a().getContext(), 38.0F), bawz.a(paramawwp.a().getContext(), 12.0F), 0));
+            paramawog.setDecodeHandler(bavi.i);
+            localawws.a().setImageDrawable(paramawog);
+            if ((paramawog.getStatus() != 1) && (paramawog.getStatus() != 0)) {
+              paramawog.restartDownload();
+            }
           }
-          paramString2 = null;
-          paramObject = str;
-          break label142;
-          i = 0;
+          return;
+          if ((localawws.c() != null) && (!TextUtils.isEmpty(paramawog.c())))
+          {
+            localawws.c().setVisibility(0);
+            localawws.c().setText(paramawog.c());
+          }
+          for (;;)
+          {
+            if (localawws.a() != null) {
+              localawws.a().setVisibility(0);
+            }
+            localObject2 = localawws.e();
+            if (localObject2 != null) {
+              ((TextView)localObject2).setVisibility(8);
+            }
+            if (TextUtils.isEmpty(paramawog.a())) {
+              break;
+            }
+            localawws.a().setText(((awol)localObject1).a());
+            break;
+            if (paramawwp.c() != null) {
+              localawws.c().setVisibility(8);
+            }
+          }
+          label625:
+          paramawwp.b().setImageDrawable(localColorDrawable);
         }
       }
     }
   }
   
-  public void printLog(boolean paramBoolean, String paramString1, String paramString2, Exception paramException) {}
+  protected void c(awog paramawog, awwp paramawwp)
+  {
+    if (this.a != null)
+    {
+      if (paramawwp.a() != null) {
+        paramawwp.a().setOnClickListener(new awre(this));
+      }
+      return;
+    }
+    super.c(paramawog, paramawwp);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awrd
  * JD-Core Version:    0.7.0.1
  */

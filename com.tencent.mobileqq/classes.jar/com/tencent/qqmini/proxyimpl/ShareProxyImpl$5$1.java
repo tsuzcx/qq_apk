@@ -1,12 +1,12 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bbms;
-import bdng;
+import bcpq;
+import bers;
 
 class ShareProxyImpl$5$1
   implements Runnable
 {
-  ShareProxyImpl$5$1(ShareProxyImpl.5 param5, bbms parambbms) {}
+  ShareProxyImpl$5$1(ShareProxyImpl.5 param5, bcpq parambcpq) {}
   
   public void run()
   {

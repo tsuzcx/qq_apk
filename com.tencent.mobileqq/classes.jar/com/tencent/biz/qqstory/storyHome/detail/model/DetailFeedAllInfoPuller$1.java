@@ -5,28 +5,28 @@ import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
 import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 import java.util.List;
-import spd;
-import sps;
-import sqg;
-import sqj;
-import ucr;
-import ucw;
-import uje;
-import ujk;
-import urk;
+import tbz;
+import tco;
+import tdc;
+import tdf;
+import upn;
+import ups;
+import uwa;
+import uwg;
+import veg;
 
 public class DetailFeedAllInfoPuller$1
   implements Runnable
 {
-  public DetailFeedAllInfoPuller$1(ucr paramucr) {}
+  public DetailFeedAllInfoPuller$1(upn paramupn) {}
   
   public void run()
   {
     boolean bool2 = false;
-    Object localObject1 = (CommentLikeFeedItem)((uje)sqg.a(11)).a(ucr.a(this.this$0));
+    Object localObject1 = (CommentLikeFeedItem)((uwa)tdc.a(11)).a(upn.a(this.this$0));
     if (localObject1 == null)
     {
-      ucr.a(this.this$0, ucr.a(this.this$0), true, new ErrorMessage(-1, "no cache data found."));
+      upn.a(this.this$0, upn.a(this.this$0), true, new ErrorMessage(-1, "no cache data found."));
       return;
     }
     Object localObject2;
@@ -34,46 +34,46 @@ public class DetailFeedAllInfoPuller$1
     if ((localObject1 instanceof VideoListFeedItem))
     {
       localObject2 = (VideoListFeedItem)localObject1;
-      localObject3 = ((ujk)sqg.a(12)).a(ucr.a(this.this$0), ((VideoListFeedItem)localObject2).mVideoPullType);
+      localObject3 = ((uwg)tdc.a(12)).a(upn.a(this.this$0), ((VideoListFeedItem)localObject2).mVideoPullType);
       if (localObject3 == null)
       {
-        ucr.a(this.this$0, ucr.a(this.this$0), true, new ErrorMessage(-1, "no cache data found."));
+        upn.a(this.this$0, upn.a(this.this$0), true, new ErrorMessage(-1, "no cache data found."));
         return;
       }
       ((VideoListFeedItem)localObject2).mVideoNextCookie = ((FeedVideoInfo)localObject3).mVideoNextCookie;
       ((VideoListFeedItem)localObject2).mIsVideoEnd = ((FeedVideoInfo)localObject3).mIsVideoEnd;
       ((VideoListFeedItem)localObject2).mVideoPullType = ((FeedVideoInfo)localObject3).mVideoPullType;
       ((VideoListFeedItem)localObject2).mVideoSeq = ((FeedVideoInfo)localObject3).mVideoSeq;
-      ucr.a(this.this$0).a(((FeedVideoInfo)localObject3).mVideoItemList, true);
-      localObject2 = ((sqj)sqg.a(27)).a(ucr.a(this.this$0), ((FeedVideoInfo)localObject3).mVideoItemList);
-      ucr.a(this.this$0).b((List)localObject2, true);
+      upn.a(this.this$0).a(((FeedVideoInfo)localObject3).mVideoItemList, true);
+      localObject2 = ((tdf)tdc.a(27)).a(upn.a(this.this$0), ((FeedVideoInfo)localObject3).mVideoItemList);
+      upn.a(this.this$0).b((List)localObject2, true);
     }
-    ucr.a(this.this$0).a = ((CommentLikeFeedItem)localObject1);
+    upn.a(this.this$0).a = ((CommentLikeFeedItem)localObject1);
     if (this.this$0.a)
     {
-      localObject2 = (sps)sqg.a(15);
-      localObject1 = ((sps)localObject2).a(ucr.a(this.this$0), ucr.a(this.this$0));
-      ucr.a(this.this$0).b((List)localObject1, true, ucr.a(this.this$0));
-      localObject1 = (spd)sqg.a(17);
-      localObject3 = ((spd)localObject1).a(ucr.a(this.this$0), ucr.a(this.this$0));
-      ucr.a(this.this$0).a((List)localObject3, true, ucr.a(this.this$0));
-      if (ucr.a(this.this$0).a())
+      localObject2 = (tco)tdc.a(15);
+      localObject1 = ((tco)localObject2).a(upn.a(this.this$0), upn.a(this.this$0));
+      upn.a(this.this$0).b((List)localObject1, true, upn.a(this.this$0));
+      localObject1 = (tbz)tdc.a(17);
+      localObject3 = ((tbz)localObject1).a(upn.a(this.this$0), upn.a(this.this$0));
+      upn.a(this.this$0).a((List)localObject3, true, upn.a(this.this$0));
+      if (upn.a(this.this$0).a())
       {
-        localObject3 = ucr.a(this.this$0);
-        if (ucr.a(this.this$0)) {
+        localObject3 = upn.a(this.this$0);
+        if (upn.a(this.this$0)) {
           break label510;
         }
         bool1 = true;
-        localObject2 = ((sps)localObject2).a((String)localObject3, bool1);
-        localObject3 = ucr.a(this.this$0);
-        if (ucr.a(this.this$0)) {
+        localObject2 = ((tco)localObject2).a((String)localObject3, bool1);
+        localObject3 = upn.a(this.this$0);
+        if (upn.a(this.this$0)) {
           break label515;
         }
         bool1 = true;
         label401:
-        ((ucw)localObject3).b((List)localObject2, true, bool1);
-        localObject2 = ucr.a(this.this$0);
-        if (ucr.a(this.this$0)) {
+        ((ups)localObject3).b((List)localObject2, true, bool1);
+        localObject2 = upn.a(this.this$0);
+        if (upn.a(this.this$0)) {
           break label520;
         }
       }
@@ -82,15 +82,15 @@ public class DetailFeedAllInfoPuller$1
     label520:
     for (boolean bool1 = true;; bool1 = false)
     {
-      localObject1 = ((spd)localObject1).a((String)localObject2, bool1);
-      localObject2 = ucr.a(this.this$0);
+      localObject1 = ((tbz)localObject1).a((String)localObject2, bool1);
+      localObject2 = upn.a(this.this$0);
       bool1 = bool2;
-      if (!ucr.a(this.this$0)) {
+      if (!upn.a(this.this$0)) {
         bool1 = true;
       }
-      ((ucw)localObject2).a((List)localObject1, true, bool1);
-      urk.a("Q.qqstory.detail.DetailFeedAllInfoPuller", "load feed data from cache: %s.", ucr.a(this.this$0).toString());
-      ucr.a(this.this$0, ucr.a(this.this$0), true, new ErrorMessage());
+      ((ups)localObject2).a((List)localObject1, true, bool1);
+      veg.a("Q.qqstory.detail.DetailFeedAllInfoPuller", "load feed data from cache: %s.", upn.a(this.this$0).toString());
+      upn.a(this.this$0, upn.a(this.this$0), true, new ErrorMessage());
       return;
       label510:
       bool1 = false;

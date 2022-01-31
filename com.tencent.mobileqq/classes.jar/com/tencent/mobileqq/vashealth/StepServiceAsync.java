@@ -2,9 +2,9 @@ package com.tencent.mobileqq.vashealth;
 
 import android.content.Context;
 import android.text.TextUtils;
-import basd;
-import basg;
-import basl;
+import bbuf;
+import bbui;
+import bbun;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -14,7 +14,7 @@ import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.msf.sdk.utils.SignUtils;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.NewIntent;
-import nfw;
+import nqx;
 
 public class StepServiceAsync
   extends AsyncStep
@@ -24,12 +24,12 @@ public class StepServiceAsync
     if (QLog.isColorLevel()) {
       QLog.i("StepServiceAsync", 2, "StepServiceAsync call!");
     }
-    Object localObject = (nfw)this.a.app.a(139);
-    ((nfw)localObject).a = true;
-    ((nfw)localObject).b = System.currentTimeMillis();
-    ((nfw)localObject).a(null, null, false, null);
+    Object localObject = (nqx)this.a.app.a(139);
+    ((nqx)localObject).a = true;
+    ((nqx)localObject).b = System.currentTimeMillis();
+    ((nqx)localObject).a(null, null, false, null);
     localObject = BaseApplicationImpl.getApplication().getApplicationContext();
-    if (!basg.a())
+    if (!bbui.a())
     {
       QLog.i("StepServiceAsync", 1, "step counter unsupported model.");
       return super.a();
@@ -38,7 +38,7 @@ public class StepServiceAsync
     QLog.i("StepServiceAsync", 1, "ban_info:" + str);
     if ((!TextUtils.isEmpty(str)) && (Integer.parseInt(str) == 0))
     {
-      localObject = new NewIntent((Context)localObject, basl.class);
+      localObject = new NewIntent((Context)localObject, bbun.class);
       ((NewIntent)localObject).putExtra("msf_cmd_type", "cmd_health_switch");
       ((NewIntent)localObject).putExtra("isOpen", false);
       this.a.app.startServlet((NewIntent)localObject);
@@ -48,12 +48,12 @@ public class StepServiceAsync
     if (!SignUtils.isSupportKeyStore()) {}
     for (boolean bool = true;; bool = false)
     {
-      basd.b = bool;
-      localObject = (basg)this.a.app.getManager(260);
-      if (basd.a(1)) {
-        ((basg)localObject).a("login");
+      bbuf.b = bool;
+      localObject = (bbui)this.a.app.getManager(260);
+      if (bbuf.a(1)) {
+        ((bbui)localObject).a("login");
       }
-      ((basg)localObject).a();
+      ((bbui)localObject).a();
       return 7;
     }
   }

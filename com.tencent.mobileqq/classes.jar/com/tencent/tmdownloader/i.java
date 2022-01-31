@@ -1,8 +1,8 @@
 package com.tencent.tmdownloader;
 
 import android.os.RemoteException;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.t;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.s;
 import com.tencent.tmdownloader.internal.remote.a;
 
 class i
@@ -21,11 +21,11 @@ class i
           if (locala2 != null)
           {
             locala2.a();
-            ac.c("RemoteOpProxy", "<initSDKReportManager2> process:" + t.e() + ", mServiceInterface is ok");
+            ab.c("RemoteOpProxy", "<initSDKReportManager2> process:" + s.e() + ", mServiceInterface is ok");
           }
           return;
         }
-        ac.c("RemoteOpProxy", "<initSDKReportManager2> process:" + t.e() + ", mServiceInterface is null, post the operation");
+        ab.c("RemoteOpProxy", "<initSDKReportManager2> process:" + s.e() + ", mServiceInterface is null, post the operation");
       }
       catch (RemoteException localRemoteException)
       {
@@ -34,13 +34,13 @@ class i
       }
       catch (NullPointerException localNullPointerException)
       {
-        ac.e("RemoteOpProxy", "initSDKReportManager2 failed,mServiceInterface");
+        ab.e("RemoteOpProxy", "initSDKReportManager2 failed,mServiceInterface");
         return;
       }
     }
     try
     {
-      ac.c("RemoteOpProxy", "<initSDKReportManager2> process:" + t.e() + ", getServiceInterface()");
+      ab.c("RemoteOpProxy", "<initSDKReportManager2> process:" + s.e() + ", getServiceInterface()");
       a locala1 = (a)this.a.getServiceInterface();
       if (locala1 != null)
       {
@@ -50,7 +50,7 @@ class i
     }
     catch (Exception localException)
     {
-      ac.c("RemoteOpProxy", "<initSDKReportManager2> process:" + t.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
+      ab.c("RemoteOpProxy", "<initSDKReportManager2> process:" + s.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
       localException.printStackTrace();
     }
   }

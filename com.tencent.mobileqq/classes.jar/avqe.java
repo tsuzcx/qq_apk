@@ -1,95 +1,72 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
-import com.tencent.mobileqq.search.mostused.MostUsedSearchResultManager.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.widget.VerticalGallery.LayoutParams;
 
 public class avqe
-  implements Manager
+  extends BaseAdapter
 {
-  private avpz jdField_a_of_type_Avpz = new avpz("Cahce_");
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private int jdField_a_of_type_Int = 25;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private int b;
+  private int c;
   
-  public avqe(QQAppInterface paramQQAppInterface)
+  public avqe(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
+    this.b = paramContext.getColor(2131166937);
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt, paramContext.getDisplayMetrics()));
+    this.c = paramContext.getColor(2131166912);
   }
   
-  public ArrayList<avqc> a(String paramString)
+  public View a(int paramInt)
   {
-    if (this.jdField_a_of_type_Avpz != null)
+    return getView(paramInt, null, null);
+  }
+  
+  public int getCount()
+  {
+    return avql.jdField_a_of_type_Int;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = null;
+    if (paramView == null)
     {
-      paramString = this.jdField_a_of_type_Avpz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-      if ((paramString != null) && (paramString.size() > 10))
-      {
-        ArrayList localArrayList = new ArrayList(paramString.subList(0, 10));
-        QLog.i("MostUsedSearchResultManager", 2, "tmpResult subList 10 ,orglist is " + paramString.size());
-        return localArrayList;
+      paramViewGroup = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+    }
+    for (paramView = (WheelTextView)paramViewGroup;; paramView = (View)localObject)
+    {
+      localObject = paramView;
+      if (paramView == null) {
+        localObject = (WheelTextView)paramViewGroup;
       }
-      return paramString;
+      paramView = avql.a(paramInt);
+      ((WheelTextView)localObject).setTextSize(20.0F);
+      ((WheelTextView)localObject).setTextColor(this.b);
+      ((WheelTextView)localObject).setGravity(17);
+      ((WheelTextView)localObject).setText(paramView);
+      ((WheelTextView)localObject).setBackgroundColor(this.c);
+      return paramViewGroup;
+      paramViewGroup = paramView;
     }
-    QLog.e("MostUsedSearchResultManager", 2, "Match with null cache");
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Avpz != null)
-    {
-      this.jdField_a_of_type_Avpz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      QLog.d("MostUsedSearchResultManager", 2, "init");
-      return;
-    }
-    QLog.e("MostUsedSearchResultManager", 2, "init with null cache ");
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    if ((paramString1 == null) || (TextUtils.isEmpty(paramString1))) {
-      return;
-    }
-    if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2))) {}
-    for (String str = paramString2;; str = paramString1)
-    {
-      QLog.d("MostUsedSearchResultManager", 2, "UpdateItemUsed : key= " + paramString1 + " mostusedKey= " + paramString2);
-      int i = avpy.a(paramInt);
-      if (!a(i)) {
-        break;
-      }
-      paramString1 = new MostUsedSearchItem(str, NetConnInfoCenter.getServerTimeMillis(), paramString3, paramInt, i);
-      ThreadManager.getSubThreadHandler().post(new MostUsedSearchResultManager.1(this, paramString1));
-      return;
-      paramString2 = "";
-    }
-  }
-  
-  boolean a(int paramInt)
-  {
-    return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Avpz != null) {
-      this.jdField_a_of_type_Avpz.a();
-    }
-  }
-  
-  public void onDestroy()
-  {
-    b();
-    this.jdField_a_of_type_Avpz = null;
-    QLog.d("MostUsedSearchResultManager", 2, "onDestroy");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avqe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,92 +1,340 @@
-import android.net.Uri;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.appcommon.js.OpenJsBridge.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.HashMap;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver;
+import android.widget.Button;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.webviewplugin.Hole;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.SwiftFloatViewUI.3;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bcbq
-  extends aqrc
 {
-  public HashMap<String, aqre> b = new HashMap();
+  public int a;
+  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  public View a;
+  public bcfj a;
+  public bcfm a;
+  public Hole a;
+  Runnable jdField_a_of_type_JavaLangRunnable = new SwiftFloatViewUI.3(this);
+  public int b;
+  public View b;
+  int c;
+  public View c;
+  int d;
+  public View d;
+  public View e;
+  public View f;
+  public View g;
+  public View h;
+  public View i;
   
-  public HashMap<String, aqre> a()
+  public bcbq(bcfj parambcfj)
   {
-    return this.b;
+    this.jdField_a_of_type_Bcfj = parambcfj;
+    this.jdField_a_of_type_Bcfm = parambcfj.jdField_a_of_type_Bcfm;
   }
   
-  public void a(aqre paramaqre, String paramString)
+  public void a()
   {
-    this.b.put(paramString, paramaqre);
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString == null)
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (8 == this.c.getVisibility())) {
+      if (this.jdField_a_of_type_Bcfj.jdField_a_of_type_AndroidAppActivity == null) {
+        break label91;
+      }
+    }
+    label91:
+    for (DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_Bcfj.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics();; localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics())
     {
-      this.b.clear();
+      this.jdField_a_of_type_Int = localDisplayMetrics.widthPixels;
+      this.jdField_b_of_type_Int = localDisplayMetrics.heightPixels;
+      if ((this.jdField_a_of_type_Bcfm == null) || (!this.jdField_a_of_type_Bcfm.d) || (!this.jdField_a_of_type_Bcfm.F)) {
+        break;
+      }
+      c();
       return;
     }
-    this.b.remove(paramString);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.leftMargin = ((int)(this.jdField_a_of_type_Int - 50.0F * localDisplayMetrics.density));
+    localLayoutParams.topMargin = ((int)(this.jdField_b_of_type_Int - localDisplayMetrics.density * 100.0F));
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
   }
   
-  public void a(String paramString1, String paramString2, List<String> paramList, aqrd paramaqrd)
+  @TargetApi(11)
+  public void a(Activity paramActivity)
   {
-    long l1 = System.currentTimeMillis();
-    int j = paramList.size();
-    int i = 0;
+    if (bfxo.a(paramActivity))
+    {
+      paramActivity = paramActivity.findViewById(16908290);
+      paramActivity.addOnLayoutChangeListener(new bcbu(this, paramActivity));
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    int j = paramView.getResources().getColor(2131167030);
+    if (this.jdField_a_of_type_Bcfm.jdField_c_of_type_Boolean) {
+      j = paramView.getResources().getColor(2131167031);
+    }
     for (;;)
     {
-      if (i < j) {
-        try
-        {
-          paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
-          i += 1;
+      if ((this.f != null) && ((this.f instanceof TextView))) {
+        if (!this.jdField_a_of_type_Bcfm.jdField_c_of_type_Boolean) {
+          break label326;
         }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      }
+      label292:
+      label308:
+      label314:
+      label320:
+      label326:
+      for (int k = 2130842112;; k = 2130842111)
+      {
+        ((TextView)this.f).setCompoundDrawablesWithIntrinsicBounds(0, k, 0, 0);
+        ((TextView)this.f).setTextColor(j);
+        if ((this.g != null) && ((this.g instanceof TextView))) {
+          if (!this.jdField_a_of_type_Bcfm.jdField_c_of_type_Boolean) {
+            break label320;
+          }
+        }
+        for (k = 2130842109;; k = 2130842108)
         {
-          for (;;)
+          ((TextView)this.g).setCompoundDrawablesWithIntrinsicBounds(0, k, 0, 0);
+          ((TextView)this.g).setTextColor(j);
+          if ((this.e != null) && ((this.e instanceof TextView))) {
+            if (!this.jdField_a_of_type_Bcfm.jdField_c_of_type_Boolean) {
+              break label314;
+            }
+          }
+          for (k = 2130842103;; k = 2130842102)
           {
-            localUnsupportedEncodingException.printStackTrace();
-            if (QLog.isDevelopLevel()) {
-              QLog.i("OpenJsBridge", 4, "[getResult]decode failed: " + (String)paramList.get(i));
+            ((TextView)this.e).setCompoundDrawablesWithIntrinsicBounds(0, k, 0, 0);
+            ((TextView)this.e).setTextColor(j);
+            if ((this.d != null) && ((this.d instanceof TextView))) {
+              if (!this.jdField_a_of_type_Bcfm.jdField_c_of_type_Boolean) {
+                break label308;
+              }
+            }
+            for (k = 2130842100;; k = 2130842099)
+            {
+              ((TextView)this.d).setCompoundDrawablesWithIntrinsicBounds(0, k, 0, 0);
+              ((TextView)this.d).setTextColor(j);
+              if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof Button)))
+              {
+                j = 2130842095;
+                if (!this.jdField_a_of_type_Bcfm.jdField_c_of_type_Boolean) {
+                  break label292;
+                }
+                j = 2130842105;
+              }
+              for (;;)
+              {
+                this.jdField_a_of_type_AndroidViewView.setBackgroundResource(j);
+                return;
+                if (this.jdField_a_of_type_Bcfm.F) {
+                  j = 2130842107;
+                }
+              }
             }
           }
         }
       }
     }
-    long l2 = System.currentTimeMillis();
-    bcds.b("OpenJsBridge", "[getResult]time4-time3=" + (l2 - l1));
-    paramString1 = (aqre)this.b.get(paramString1);
-    if (paramString1 != null) {
-      paramString1.call(paramString2, paramList, paramaqrd);
-    }
-    while (!(paramaqrd instanceof bcbr)) {
-      return;
-    }
-    ((bcbr)paramaqrd).b(paramString2);
   }
   
-  public boolean a(WebView paramWebView, String paramString)
+  @TargetApi(16)
+  public void a(View paramView, View.OnClickListener paramOnClickListener)
   {
-    if (paramString == null) {}
-    Uri localUri;
-    do
+    DisplayMetrics localDisplayMetrics;
+    int j;
+    if (this.jdField_a_of_type_Bcfj.jdField_a_of_type_AndroidAppActivity != null)
     {
-      return false;
-      localUri = Uri.parse(paramString);
-    } while ((localUri == null) || (localUri.getScheme() == null) || (!localUri.getScheme().equals("jsbridge")));
-    bcds.b("OpenJsBridge", "[canHandleUrl] AsyncInterface_start:" + paramString);
-    ThreadManager.executeOnSubThread(new OpenJsBridge.1(this, paramString, paramWebView));
-    return true;
+      localDisplayMetrics = this.jdField_a_of_type_Bcfj.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics();
+      if (!this.jdField_a_of_type_Bcfm.d) {
+        break label557;
+      }
+      if (localDisplayMetrics.heightPixels <= localDisplayMetrics.widthPixels) {
+        break label539;
+      }
+      j = localDisplayMetrics.heightPixels;
+      label54:
+      this.jdField_a_of_type_Int = j;
+      if (localDisplayMetrics.heightPixels <= localDisplayMetrics.widthPixels) {
+        break label548;
+      }
+      j = localDisplayMetrics.widthPixels;
+      label78:
+      this.jdField_b_of_type_Int = j;
+      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366378);
+      this.c = paramView.findViewById(2131377302);
+      this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363404);
+      this.d = paramView.findViewById(2131365778);
+      this.f = paramView.findViewById(2131376003);
+      this.g = paramView.findViewById(2131375864);
+      this.h = paramView.findViewById(2131370398);
+      this.e = paramView.findViewById(2131366505);
+      this.i = paramView.findViewById(2131369804);
+      this.jdField_a_of_type_ComTencentBizWebviewpluginHole = ((Hole)paramView.findViewById(2131367544));
+      b();
+      if (this.jdField_a_of_type_Bcfm.jdField_c_of_type_Boolean) {
+        a(paramView);
+      }
+      if ((this.jdField_a_of_type_Bcfm.jdField_c_of_type_Long & 1L) != 0L)
+      {
+        this.f.setVisibility(0);
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+      if ((this.jdField_a_of_type_Bcfm.jdField_c_of_type_Long & 0x4) != 0L)
+      {
+        this.d.setVisibility(0);
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+      if ((this.jdField_a_of_type_Bcfm.jdField_c_of_type_Long & 0x2) != 0L)
+      {
+        this.h.setVisibility(0);
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+      if ((((this.jdField_a_of_type_Bcfm.b & 0x800) != 0L) || ((this.jdField_a_of_type_Bcfm.a & 0x80000000) != 0L)) && (this.jdField_a_of_type_Bcfj.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) && (mvv.a().j(this.jdField_a_of_type_Bcfj.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.h)))
+      {
+        this.e.setVisibility(0);
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("secondHandSharePre", 0);
+      if (!localSharedPreferences.getBoolean("first_float_tip", true)) {
+        break label626;
+      }
+      this.c.setVisibility(0);
+      localSharedPreferences.edit().putBoolean("first_float_tip", false).apply();
+      paramView.getViewTreeObserver().addOnGlobalLayoutListener(new bcbr(this, paramView, localDisplayMetrics));
+    }
+    for (;;)
+    {
+      paramView = new bcbs(this, localDisplayMetrics);
+      this.d.setOnClickListener(paramOnClickListener);
+      this.f.setOnClickListener(paramOnClickListener);
+      this.h.setOnClickListener(paramOnClickListener);
+      this.g.setOnClickListener(paramOnClickListener);
+      this.e.setOnClickListener(paramOnClickListener);
+      this.jdField_a_of_type_AndroidViewView.setOnTouchListener(paramView);
+      this.c.setOnTouchListener(paramView);
+      this.i.setOnTouchListener(paramView);
+      return;
+      localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
+      break;
+      label539:
+      j = localDisplayMetrics.widthPixels;
+      break label54;
+      label548:
+      j = localDisplayMetrics.heightPixels;
+      break label78;
+      label557:
+      if (localDisplayMetrics.heightPixels < localDisplayMetrics.widthPixels)
+      {
+        j = localDisplayMetrics.heightPixels;
+        label576:
+        this.jdField_a_of_type_Int = j;
+        if (localDisplayMetrics.heightPixels >= localDisplayMetrics.widthPixels) {
+          break label617;
+        }
+      }
+      label617:
+      for (j = localDisplayMetrics.widthPixels;; j = localDisplayMetrics.heightPixels)
+      {
+        this.jdField_b_of_type_Int = j;
+        break;
+        j = localDisplayMetrics.widthPixels;
+        break label576;
+      }
+      label626:
+      this.c.setVisibility(8);
+    }
+  }
+  
+  public void a(View paramView, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Bcfm.jdField_c_of_type_Boolean)
+    {
+      paramView.setBackgroundResource(2130842105);
+      return;
+    }
+    if (this.jdField_a_of_type_Bcfm.F)
+    {
+      paramView.setBackgroundResource(2130842107);
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramView.setBackgroundResource(2130842095);
+      return;
+    }
+    paramView.setBackgroundResource(2130842096);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    View localView;
+    if (this.f != null)
+    {
+      localView = this.f;
+      if (!paramBoolean) {
+        break label67;
+      }
+    }
+    label67:
+    for (int j = 8;; j = 0)
+    {
+      localView.setVisibility(j);
+      if ((!paramBoolean) && (this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) || (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4))) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Bcfm != null) && (this.jdField_a_of_type_Bcfm.d) && (this.jdField_a_of_type_Bcfm.F) && (this.jdField_a_of_type_AndroidViewView != null) && (8 == this.c.getVisibility())) {
+      c();
+    }
+  }
+  
+  public void c()
+  {
+    int j;
+    int k;
+    if (this.jdField_b_of_type_Int > this.jdField_a_of_type_Int)
+    {
+      j = this.jdField_a_of_type_Int;
+      k = this.jdField_b_of_type_Int;
+      if (this.jdField_a_of_type_Bcfj.jdField_a_of_type_AndroidAppActivity == null) {
+        break label115;
+      }
+    }
+    label115:
+    for (DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_Bcfj.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics();; localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics())
+    {
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.leftMargin = ((int)(k - localDisplayMetrics.density * 70.0F));
+      localLayoutParams.topMargin = (j / 2 - this.jdField_a_of_type_AndroidViewView.getWidth() / 2);
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      return;
+      j = this.jdField_b_of_type_Int;
+      k = this.jdField_a_of_type_Int;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcbq
  * JD-Core Version:    0.7.0.1
  */

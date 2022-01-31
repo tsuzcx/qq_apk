@@ -1,173 +1,120 @@
-import android.graphics.BitmapFactory.Options;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.MD5;
+import android.annotation.TargetApi;
+import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
-public class wbd
+@TargetApi(14)
+class wbd
 {
-  public static Pair<Boolean, Setting> a(int paramInt1, String paramString, int paramInt2)
+  static String a(InputStream paramInputStream)
   {
-    String str = QQAppInterface.b(paramInt1, paramString, paramInt2);
-    paramString = new QQEntityManagerFactory(paramString).createEntityManager();
-    if ((0 == 0) && (!TextUtils.isEmpty(str)) && (paramString != null)) {}
-    for (paramString = (Setting)paramString.a(Setting.class, str);; paramString = null)
+    try
     {
-      if (paramString == null) {
-        return new Pair(Boolean.valueOf(true), paramString);
-      }
-      boolean bool;
-      switch (paramInt1)
-      {
-      default: 
-        bool = false;
-      }
+      paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream));
+      StringBuilder localStringBuilder = new StringBuilder();
       for (;;)
       {
-        return new Pair(Boolean.valueOf(bool), paramString);
-        if ((paramString == null) || (System.currentTimeMillis() - paramString.updateTimestamp > 86400000L)) {
-          bool = true;
-        } else {
-          bool = false;
+        String str = paramInputStream.readLine();
+        if (str == null) {
+          break;
         }
+        localStringBuilder.append(str);
       }
+      paramInputStream = localStringBuilder.toString();
+    }
+    catch (IOException paramInputStream)
+    {
+      veg.c("Q.qqstory.ffmpeg.FFmpeg", "error converting input stream to string", paramInputStream);
+      return null;
+    }
+    return paramInputStream;
+  }
+  
+  static void a(Process paramProcess)
+  {
+    if (paramProcess != null) {
+      paramProcess.destroy();
     }
   }
   
-  public static azvr a(String paramString)
+  static void a(wal paramwal)
   {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inPreferredConfig = azwb.a;
-    azvr localazvr = new azvr();
-    int i = 0;
+    if ((paramwal != null) && (!paramwal.a()))
+    {
+      if (paramwal.jdField_a_of_type_JavaLangProcess != null)
+      {
+        paramwal.jdField_a_of_type_JavaLangProcess.destroy();
+        paramwal.jdField_a_of_type_JavaLangProcess = null;
+      }
+      if (!paramwal.isCancelled()) {
+        paramwal.cancel(true);
+      }
+      veg.e("Q.qqstory.ffmpeg.FFmpeg", "kill ffmpeg task", new Object[] { Arrays.toString(paramwal.jdField_a_of_type_ArrayOfJavaLangString) });
+    }
+  }
+  
+  static boolean a(File paramFile)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramFile == null) || (!paramFile.exists())) {
+      bool1 = false;
+    }
     do
     {
-      azvq.a(paramString, localOptions, localazvr);
-      if (localazvr.a == 1) {
-        NearbyAppInterface.b();
-      }
-      i += 1;
-    } while ((i < 2) && (localazvr.a == 1));
-    return localazvr;
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (paramFile.canExecute());
+      bool1 = bool2;
+    } while (paramFile.setExecutable(true));
+    return false;
   }
   
-  public static String a(Setting paramSetting, int paramInt1, String paramString, int paramInt2)
+  static boolean a(Process paramProcess)
   {
-    Object localObject = paramSetting;
-    if (paramSetting == null)
-    {
-      localObject = paramSetting;
-      if (paramString != null)
-      {
-        localObject = paramSetting;
-        if (paramInt1 != 101)
-        {
-          localObject = paramSetting;
-          if (paramInt1 != 1001) {
-            localObject = (Setting)a(paramInt1, paramString, paramInt2).second;
-          }
-        }
-      }
-    }
-    paramSetting = new StringBuilder(256);
-    if (paramInt1 == 32) {
-      if (azzu.a())
-      {
-        paramSetting.append(ajed.bC);
-        localObject = a((Setting)localObject, paramString, paramInt1);
-        switch (((Integer)localObject[0]).intValue())
-        {
-        }
-      }
-    }
+    if (paramProcess == null) {}
     for (;;)
     {
-      localObject = MD5.toMD5(paramString);
-      localObject = MD5.toMD5((String)localObject + paramString);
-      paramSetting.append(MD5.toMD5((String)localObject + paramString));
-      paramSetting.append(".jpg_");
-      return paramSetting.toString();
-      paramSetting.append("/data/data/com.tencent.mobileqq/files/head/_stranger/");
-      break;
-      if (azzu.a())
+      return true;
+      try
       {
-        paramSetting.append(ajed.bA);
-        break;
+        paramProcess.exitValue();
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "isProcessCompleted: true  in  process.exitValue()");
+          return true;
+        }
       }
-      paramSetting.append("/data/data/com.tencent.mobileqq/files/head/_hd/");
-      break;
-      paramSetting.append("troop_sys_b_");
-      paramString = (String)localObject[1];
-      continue;
-      paramSetting.append("sys_");
-      paramString = (String)localObject[1];
-      continue;
-      paramSetting.append("dis_g_");
-      paramString = paramString + paramString;
-      continue;
-      paramSetting.append("dis_pstn_g_");
-      paramString = paramString + paramString;
-      continue;
-      paramSetting.append("troop_");
-      continue;
-      paramSetting.append("new_troop_b_");
-      continue;
-      paramSetting.append("stranger_").append(Integer.toString(paramInt2)).append("_");
-      continue;
-      paramSetting.append("qcall_").append(Integer.toString(paramInt2)).append("_");
+      catch (IllegalThreadStateException paramProcess)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "IllegalThreadStateException e, ", paramProcess);
+        }
+      }
     }
+    return false;
   }
   
-  private static Object[] a(Setting paramSetting, String paramString, int paramInt)
+  static <T> T[] a(T[] paramArrayOfT1, T[] paramArrayOfT2)
   {
-    String str = paramString;
-    int i = paramInt;
-    if (paramSetting != null)
-    {
-      str = paramString;
-      i = paramInt;
-      if (paramInt != 101)
-      {
-        str = paramString;
-        i = paramInt;
-        if (paramInt != 1001)
-        {
-          str = paramString;
-          i = paramInt;
-          if (paramString != null)
-          {
-            str = paramString;
-            i = paramInt;
-            if (paramSetting.bHeadType == 0)
-            {
-              str = String.valueOf(paramSetting.systemHeadID);
-              if (paramInt != 4) {
-                break label87;
-              }
-              i = -56;
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      return new Object[] { Integer.valueOf(i), str };
-      label87:
-      if (paramInt == 16) {
-        i = 16;
-      } else {
-        i = -55;
-      }
-    }
+    int i = paramArrayOfT1.length;
+    int j = paramArrayOfT2.length;
+    Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfT1.getClass().getComponentType(), i + j);
+    System.arraycopy(paramArrayOfT1, 0, arrayOfObject, 0, i);
+    System.arraycopy(paramArrayOfT2, 0, arrayOfObject, i, j);
+    return arrayOfObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wbd
  * JD-Core Version:    0.7.0.1
  */

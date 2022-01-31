@@ -1,22 +1,31 @@
-import android.os.Bundle;
-import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import com.tencent.widget.HorizontalListView;
 
 public class awxa
+  extends awww
+  implements bfrx
 {
-  public Bundle a;
-  public View a;
-  public LinearLayout a;
-  public boolean a;
-  public View b;
-  public LinearLayout b;
-  public View c;
-  public View d;
-  public View e;
+  public awou a;
+  public HorizontalListView a;
+  
+  public awxa(ViewGroup paramViewGroup, int paramInt)
+  {
+    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)((LinearLayout)a(paramInt)).findViewById(2131375732));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(this);
+  }
+  
+  public void onScrollStateChanged(int paramInt)
+  {
+    if (paramInt == 4097) {
+      this.jdField_a_of_type_Awou.b = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getCurrentX();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awxa
  * JD-Core Version:    0.7.0.1
  */

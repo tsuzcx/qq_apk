@@ -1,46 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
 
 public class azzl
-  implements DownloadParams.DecodeHandler
+  implements azzq
 {
-  private DownloadParams.DecodeHandler a;
-  private DownloadParams.DecodeHandler b;
+  public azzl(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public azzl(DownloadParams.DecodeHandler paramDecodeHandler1, DownloadParams.DecodeHandler paramDecodeHandler2)
+  public void a(View paramView, int paramInt)
   {
-    this.a = paramDecodeHandler1;
-    this.b = paramDecodeHandler2;
-  }
-  
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    Bitmap localBitmap = this.a.run(paramDownloadParams, paramBitmap);
-    DownloadParams localDownloadParams = null;
-    if (localBitmap != null)
-    {
-      paramDownloadParams = this.b.run(paramDownloadParams, localBitmap);
-      localDownloadParams = paramDownloadParams;
-      if (localBitmap != paramDownloadParams)
-      {
-        localDownloadParams = paramDownloadParams;
-        if (localBitmap != paramBitmap)
-        {
-          localBitmap.recycle();
-          localDownloadParams = paramDownloadParams;
-        }
-      }
-    }
-    if (localDownloadParams != null) {
-      paramBitmap = localDownloadParams;
-    }
-    return paramBitmap;
+    paramView = this.a.jdField_a_of_type_Azzp.a(paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramView.length());
+    bbbb.a("Grp_edu", "Grp_recite", "Recommend_Clk", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramView });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azzl
  * JD-Core Version:    0.7.0.1
  */

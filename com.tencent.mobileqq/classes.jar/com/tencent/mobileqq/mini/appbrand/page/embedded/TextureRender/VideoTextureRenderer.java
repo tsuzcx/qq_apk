@@ -22,6 +22,7 @@ public class VideoTextureRenderer
   private static final String fragmentShaderCode = "#extension GL_OES_EGL_image_external : require\nprecision mediump float;uniform samplerExternalOES texture;varying vec2 v_TexCoordinate;void main () {    vec4 color = texture2D(texture, v_TexCoordinate);    gl_FragColor = color;}";
   private static float[] squareCoords;
   private static float squareSize = 1.0F;
+  private static float[] textureCoords = { 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F };
   private static final String vertexShaderCode = "attribute vec4 vPosition;attribute vec4 vTexCoordinate;uniform mat4 textureTransform;varying vec2 v_TexCoordinate;void main() {   v_TexCoordinate = (textureTransform * vTexCoordinate).xy;   gl_Position = vPosition;}";
   private boolean adjustViewport;
   private Context ctx;
@@ -31,7 +32,6 @@ public class VideoTextureRenderer
   private String objectFit = "contain";
   private int shaderProgram;
   private FloatBuffer textureBuffer;
-  private float[] textureCoords = { 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F };
   private int[] textures = new int[1];
   private FloatBuffer vertexBuffer;
   private int vertexShaderHandle;
@@ -86,60 +86,84 @@ public class VideoTextureRenderer
   
   private void loadShaders()
   {
-    QLog.d("miniapp-embedded", 1, "loadShaders");
-    this.vertexShaderHandle = GLES20.glCreateShader(35633);
-    GLES20.glShaderSource(this.vertexShaderHandle, "attribute vec4 vPosition;attribute vec4 vTexCoordinate;uniform mat4 textureTransform;varying vec2 v_TexCoordinate;void main() {   v_TexCoordinate = (textureTransform * vTexCoordinate).xy;   gl_Position = vPosition;}");
-    GLES20.glCompileShader(this.vertexShaderHandle);
-    checkGlError("Vertex shader compile");
-    this.fragmentShaderHandle = GLES20.glCreateShader(35632);
-    GLES20.glShaderSource(this.fragmentShaderHandle, "#extension GL_OES_EGL_image_external : require\nprecision mediump float;uniform samplerExternalOES texture;varying vec2 v_TexCoordinate;void main () {    vec4 color = texture2D(texture, v_TexCoordinate);    gl_FragColor = color;}");
-    GLES20.glCompileShader(this.fragmentShaderHandle);
-    checkGlError("Pixel shader compile");
-    this.shaderProgram = GLES20.glCreateProgram();
-    GLES20.glAttachShader(this.shaderProgram, this.vertexShaderHandle);
-    GLES20.glAttachShader(this.shaderProgram, this.fragmentShaderHandle);
-    GLES20.glLinkProgram(this.shaderProgram);
-    checkGlError("Shader program compile");
-    Object localObject = new int[1];
-    GLES20.glGetProgramiv(this.shaderProgram, 35714, (int[])localObject, 0);
-    if (localObject[0] != 1)
+    try
     {
-      localObject = GLES20.glGetProgramInfoLog(this.shaderProgram);
-      QLog.e("miniapp-embedded", 1, "Error while linking program:\n" + (String)localObject);
+      QLog.d("miniapp-embedded", 1, "loadShaders");
+      this.vertexShaderHandle = GLES20.glCreateShader(35633);
+      GLES20.glShaderSource(this.vertexShaderHandle, "attribute vec4 vPosition;attribute vec4 vTexCoordinate;uniform mat4 textureTransform;varying vec2 v_TexCoordinate;void main() {   v_TexCoordinate = (textureTransform * vTexCoordinate).xy;   gl_Position = vPosition;}");
+      GLES20.glCompileShader(this.vertexShaderHandle);
+      checkGlError("Vertex shader compile");
+      this.fragmentShaderHandle = GLES20.glCreateShader(35632);
+      GLES20.glShaderSource(this.fragmentShaderHandle, "#extension GL_OES_EGL_image_external : require\nprecision mediump float;uniform samplerExternalOES texture;varying vec2 v_TexCoordinate;void main () {    vec4 color = texture2D(texture, v_TexCoordinate);    gl_FragColor = color;}");
+      GLES20.glCompileShader(this.fragmentShaderHandle);
+      checkGlError("Pixel shader compile");
+      this.shaderProgram = GLES20.glCreateProgram();
+      GLES20.glAttachShader(this.shaderProgram, this.vertexShaderHandle);
+      GLES20.glAttachShader(this.shaderProgram, this.fragmentShaderHandle);
+      GLES20.glLinkProgram(this.shaderProgram);
+      checkGlError("Shader program compile");
+      Object localObject = new int[1];
+      GLES20.glGetProgramiv(this.shaderProgram, 35714, (int[])localObject, 0);
+      if (localObject[0] != 1)
+      {
+        localObject = GLES20.glGetProgramInfoLog(this.shaderProgram);
+        QLog.e("miniapp-embedded", 1, "Error while linking program:\n" + (String)localObject);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("miniapp-embedded", 1, "loadShaders error.", localThrowable);
     }
   }
   
   private void setupTexture(Context paramContext)
   {
-    paramContext = ByteBuffer.allocateDirect(this.textureCoords.length * 4);
-    paramContext.order(ByteOrder.nativeOrder());
-    this.textureBuffer = paramContext.asFloatBuffer();
-    this.textureBuffer.put(this.textureCoords);
-    this.textureBuffer.position(0);
-    GLES20.glActiveTexture(33984);
-    GLES20.glGenTextures(1, this.textures, 0);
-    checkGlError("Texture generate");
-    GLES20.glBindTexture(36197, this.textures[0]);
-    checkGlError("Texture bind");
-    this.videoTexture = new SurfaceTexture(this.textures[0]);
-    this.videoTexture.setOnFrameAvailableListener(this);
-    if (this.mHandler != null) {
-      this.mHandler.sendEmptyMessage(1002);
+    try
+    {
+      paramContext = ByteBuffer.allocateDirect(textureCoords.length * 4);
+      paramContext.order(ByteOrder.nativeOrder());
+      this.textureBuffer = paramContext.asFloatBuffer();
+      this.textureBuffer.put(textureCoords);
+      this.textureBuffer.position(0);
+      GLES20.glActiveTexture(33984);
+      GLES20.glGenTextures(1, this.textures, 0);
+      checkGlError("Texture generate");
+      GLES20.glBindTexture(36197, this.textures[0]);
+      checkGlError("Texture bind");
+      this.videoTexture = new SurfaceTexture(this.textures[0]);
+      this.videoTexture.setOnFrameAvailableListener(this);
+      if (this.mHandler != null) {
+        this.mHandler.sendEmptyMessage(1002);
+      }
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      QLog.e("miniapp-embedded", 1, "setupTexture error.", paramContext);
     }
   }
   
   private void setupVertexBuffer()
   {
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(drawOrder.length * 2);
-    localByteBuffer.order(ByteOrder.nativeOrder());
-    this.drawListBuffer = localByteBuffer.asShortBuffer();
-    this.drawListBuffer.put(drawOrder);
-    this.drawListBuffer.position(0);
-    localByteBuffer = ByteBuffer.allocateDirect(squareCoords.length * 4);
-    localByteBuffer.order(ByteOrder.nativeOrder());
-    this.vertexBuffer = localByteBuffer.asFloatBuffer();
-    this.vertexBuffer.put(squareCoords);
-    this.vertexBuffer.position(0);
+    try
+    {
+      ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(drawOrder.length * 2);
+      localByteBuffer.order(ByteOrder.nativeOrder());
+      this.drawListBuffer = localByteBuffer.asShortBuffer();
+      this.drawListBuffer.put(drawOrder);
+      this.drawListBuffer.position(0);
+      localByteBuffer = ByteBuffer.allocateDirect(squareCoords.length * 4);
+      localByteBuffer.order(ByteOrder.nativeOrder());
+      this.vertexBuffer = localByteBuffer.asFloatBuffer();
+      this.vertexBuffer.put(squareCoords);
+      this.vertexBuffer.position(0);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("miniapp-embedded", 1, "setupVertexBuffer error.", localThrowable);
+    }
   }
   
   public void checkGlError(String paramString)
@@ -166,37 +190,45 @@ public class VideoTextureRenderer
   {
     try
     {
-      if (this.frameAvailable)
+      try
       {
-        this.videoTexture.updateTexImage();
-        this.videoTexture.getTransformMatrix(this.videoTextureTransform);
-        this.frameAvailable = false;
-        if (this.adjustViewport) {
-          adjustViewport();
+        if (this.frameAvailable)
+        {
+          this.videoTexture.updateTexImage();
+          this.videoTexture.getTransformMatrix(this.videoTextureTransform);
+          this.frameAvailable = false;
+          if (this.adjustViewport) {
+            adjustViewport();
+          }
+          GLES20.glClearColor(1.0F, 0.0F, 0.0F, 0.0F);
+          GLES20.glClear(16384);
+          GLES20.glUseProgram(this.shaderProgram);
+          int i = GLES20.glGetUniformLocation(this.shaderProgram, "texture");
+          int j = GLES20.glGetAttribLocation(this.shaderProgram, "vTexCoordinate");
+          int k = GLES20.glGetAttribLocation(this.shaderProgram, "vPosition");
+          int m = GLES20.glGetUniformLocation(this.shaderProgram, "textureTransform");
+          GLES20.glEnableVertexAttribArray(k);
+          GLES20.glVertexAttribPointer(k, 3, 5126, false, 12, this.vertexBuffer);
+          GLES20.glBindTexture(36197, this.textures[0]);
+          GLES20.glActiveTexture(33984);
+          GLES20.glUniform1i(i, 0);
+          GLES20.glEnableVertexAttribArray(j);
+          GLES20.glVertexAttribPointer(j, 4, 5126, false, 0, this.textureBuffer);
+          GLES20.glUniformMatrix4fv(m, 1, false, this.videoTextureTransform, 0);
+          GLES20.glDrawElements(4, drawOrder.length, 5123, this.drawListBuffer);
+          GLES20.glDisableVertexAttribArray(k);
+          GLES20.glDisableVertexAttribArray(j);
+          return true;
         }
-        GLES20.glClearColor(1.0F, 0.0F, 0.0F, 0.0F);
-        GLES20.glClear(16384);
-        GLES20.glUseProgram(this.shaderProgram);
-        int i = GLES20.glGetUniformLocation(this.shaderProgram, "texture");
-        int j = GLES20.glGetAttribLocation(this.shaderProgram, "vTexCoordinate");
-        int k = GLES20.glGetAttribLocation(this.shaderProgram, "vPosition");
-        int m = GLES20.glGetUniformLocation(this.shaderProgram, "textureTransform");
-        GLES20.glEnableVertexAttribArray(k);
-        GLES20.glVertexAttribPointer(k, 3, 5126, false, 12, this.vertexBuffer);
-        GLES20.glBindTexture(36197, this.textures[0]);
-        GLES20.glActiveTexture(33984);
-        GLES20.glUniform1i(i, 0);
-        GLES20.glEnableVertexAttribArray(j);
-        GLES20.glVertexAttribPointer(j, 4, 5126, false, 0, this.textureBuffer);
-        GLES20.glUniformMatrix4fv(m, 1, false, this.videoTextureTransform, 0);
-        GLES20.glDrawElements(4, drawOrder.length, 5123, this.drawListBuffer);
-        GLES20.glDisableVertexAttribArray(k);
-        GLES20.glDisableVertexAttribArray(j);
-        return true;
+        return false;
       }
+      finally {}
       return false;
     }
-    finally {}
+    catch (Throwable localThrowable)
+    {
+      QLog.e("miniapp-embedded", 1, "draw error.", localThrowable);
+    }
   }
   
   public SurfaceTexture getVideoTexture()

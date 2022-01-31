@@ -1,18 +1,28 @@
-import android.view.View;
+import Wallet.SkinInfo;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.fragment.UsualHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
-class ahal
-  implements behy
+public class ahal
+  implements ahaz
 {
-  ahal(ahai paramahai, View paramView) {}
+  public ahal(UsualHbFragment paramUsualHbFragment) {}
   
-  public void a()
+  public void a(ahap paramahap)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    if ((paramahap.jdField_a_of_type_WalletSkinInfo.skin_id == 0) || (paramahap.jdField_a_of_type_WalletSkinInfo.skin_id == -2))
+    {
+      paramahap = ahao.a(this.a.channel, this.a.a, this.a.mActivity.a(), paramahap.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
+      this.a.c.setHint(paramahap);
+      return;
+    }
+    this.a.c.setHint(paramahap.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahal
  * JD-Core Version:    0.7.0.1
  */

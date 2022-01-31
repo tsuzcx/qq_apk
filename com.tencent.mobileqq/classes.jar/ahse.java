@@ -1,17 +1,21 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-class ahse
-  implements View.OnClickListener
+public class ahse
+  implements DialogInterface.OnClickListener
 {
-  ahse(ahsc paramahsc) {}
+  public ahse(LoginView paramLoginView) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GroupManagerActivity.a((Activity)ahsc.a(this.a));
-    awqx.b(ahsc.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
+    axqw.a(this.a.a, "dc00898", "", "", "0X8006797", "0X8006797", 0, 0, "", "", "", "");
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
   }
 }
 

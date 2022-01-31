@@ -1,29 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONArray;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class aivh
-  implements aiuf
+public class aivh
+  extends ajxl
 {
-  aivh(aivd paramaivd, String paramString1, File paramFile, JSONArray paramJSONArray, int[] paramArrayOfInt, String paramString2) {}
+  public aivh(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void a(String paramString)
   {
-    QLog.d("ApolloPluginRscLoader", 1, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
-    Object localObject = this.jdField_a_of_type_Aivd;
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_JavaIoFile.exists()) {}
-    for (paramInt = 0;; paramInt = 2)
-    {
-      localObject = aivd.a((aivd)localObject, 6, str, paramInt);
-      this.jdField_a_of_type_OrgJsonJSONArray.put(localObject);
-      if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0)) {
-        break;
-      }
-      this.jdField_a_of_type_Aivd.a(this.b, ajjy.a(2131634709), this.jdField_a_of_type_OrgJsonJSONArray);
+    if (!paramString.equals(HotChatCenterFragment.a(this.a).getAccount())) {}
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte) {}
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (!paramBoolean) {}
+    while ((HotChatCenterFragment.a(this.a).getCurrentAccountUin() == null) || (!HotChatCenterFragment.a(this.a).getCurrentAccountUin().equals(paramString))) {
       return;
     }
-    aivd.a(this.jdField_a_of_type_Aivd, this.jdField_a_of_type_ArrayOfInt, this.b, this.jdField_a_of_type_OrgJsonJSONArray);
+    ThreadManager.post(new HotChatCenterFragment.1.1(this, paramString), 8, null, true);
+  }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString) {}
+  
+  protected void onUpdateRecentList()
+  {
+    this.a.b();
   }
 }
 

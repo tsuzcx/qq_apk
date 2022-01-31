@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
-import xfu;
+import xou;
 
 public class ToolRuntimeBase
   extends PluginRuntime
@@ -114,7 +114,7 @@ public class ToolRuntimeBase
     {
       if (this.componentCallbacks == null)
       {
-        this.componentCallbacks = new xfu(this);
+        this.componentCallbacks = new xou(this);
         BaseApplicationImpl.getApplication().getApplicationContext().registerComponentCallbacks(this.componentCallbacks);
       }
       return;

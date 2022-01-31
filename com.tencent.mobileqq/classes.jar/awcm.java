@@ -1,18 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-
-class awcm
-  implements yfp
+public abstract interface awcm
 {
-  awcm(awcl paramawcl, int paramInt) {}
+  public abstract void a(bcjy parambcjy);
   
-  public void a(int paramInt, String paramString)
-  {
-    QLog.i("Q.lebatab.GameCenterManagerImp", 1, "on push code=" + paramInt + " cmd=" + this.jdField_a_of_type_Int);
-  }
+  public abstract boolean a(bcjy parambcjy);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awcm
  * JD-Core Version:    0.7.0.1
  */

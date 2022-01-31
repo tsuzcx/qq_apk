@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahhk;
-import ahjh;
-import ahjj;
-import ahkb;
+import ahub;
+import ahvy;
+import ahwb;
+import ahwt;
 import com.tencent.qphone.base.util.QLog;
 
 class NewFlowCameraActivity$7
@@ -15,7 +15,7 @@ class NewFlowCameraActivity$7
   {
     String str = this.this$0.e;
     NewFlowCameraActivity.a(this.this$0);
-    ahkb.a(str, ahjh.a);
+    ahwt.a(str, ahvy.a);
     this.this$0.q = 0;
     if (QLog.isColorLevel()) {
       QLog.d(".photo", 2, "shot photo with capture from video");
@@ -24,7 +24,7 @@ class NewFlowCameraActivity$7
     if (this.this$0.a == null) {}
     for (str = "";; str = this.this$0.a.a())
     {
-      ahhk.a("", "0X80075BE", str, "", "", "");
+      ahub.a("", "0X80075BE", str, "", "", "");
       return;
     }
   }

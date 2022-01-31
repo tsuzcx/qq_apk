@@ -1,22 +1,12 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-
-final class bfdd
-  implements bfdg
+public abstract interface bfdd
 {
-  public void a(boolean paramBoolean, Context paramContext, bfdi parambfdi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      bfcz.e(paramContext, parambfdi);
-    }
-  }
+  public abstract String a(String paramString1, String paramString2, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, int[] paramArrayOfInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfdd
  * JD-Core Version:    0.7.0.1
  */

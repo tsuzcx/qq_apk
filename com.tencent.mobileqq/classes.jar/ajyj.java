@@ -1,27 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateTroop;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
-public class ajyj
-  extends ajuc
+class ajyj
+  implements bcij<oidb_0x8e4.RspBody>
 {
-  private ajyj(UpdateTroop paramUpdateTroop) {}
+  ajyj(ajyi paramajyi) {}
   
-  protected void a(boolean paramBoolean)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
-    }
-    if (!paramBoolean)
+    if (paramInt == 0)
     {
-      this.a.a(6);
-      return;
+      paramRspBody = paramRspBody.string_invite_id.get().toStringUtf8();
+      if (!TextUtils.isEmpty(paramRspBody))
+      {
+        com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.a = paramRspBody;
+        atcf.a().a(0, paramRspBody, 0L, null);
+      }
     }
-    this.a.a.a.edit().putBoolean("isTrooplistok", true).commit();
-    this.a.a.notifyUI(3, true, Integer.valueOf(2));
-    this.a.a(7);
   }
 }
 

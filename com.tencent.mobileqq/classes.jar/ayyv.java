@@ -1,22 +1,16 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-
 public class ayyv
-  implements vqk
+  extends ayyy
 {
-  public ayyv(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  public String a;
   
-  public void a() {}
-  
-  public boolean a(boolean paramBoolean)
+  public String toString()
   {
-    this.a.b(this.a.a.getText().toString());
-    return true;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayyv
  * JD-Core Version:    0.7.0.1
  */

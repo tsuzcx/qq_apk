@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.webprocess;
 
 import android.text.TextUtils;
-import bajr;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.CookieManager;
-import mkw;
-import mpw;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
+import mvv;
+import nax;
 
 class WebAccelerateHelper$3
   implements Runnable
@@ -19,7 +19,7 @@ class WebAccelerateHelper$3
   {
     Object localObject1 = CookieManager.getInstance().getCookie(this.val$url);
     if (QLog.isColorLevel()) {
-      QLog.d("WebAccelerateHelper", 2, "cookie=" + mpw.c((String)localObject1, new String[0]));
+      QLog.d("WebAccelerateHelper", 2, "cookie=" + nax.c((String)localObject1, new String[0]));
     }
     boolean bool3 = TextUtils.isEmpty((CharSequence)localObject1);
     boolean bool2;
@@ -34,7 +34,7 @@ class WebAccelerateHelper$3
         if ((!((String)localObject1).contains("uin")) || (!((String)localObject1).contains(str)))
         {
           bool2 = true;
-          if (!mkw.a().a(this.val$url)) {
+          if (!mvv.a().a(this.val$url)) {
             break label272;
           }
           if ((((String)localObject1).contains("skey")) && (((String)localObject1).contains((CharSequence)localObject2))) {
@@ -60,7 +60,7 @@ class WebAccelerateHelper$3
       ((StringBuilder)localObject1).append(bool2).append('|');
       ((StringBuilder)localObject1).append(bool1).append('|');
       ((StringBuilder)localObject1).append(false);
-      bajr.a(null, "webview_report", "0X8006117", "0X8006117", 2, 0, new String[] { this.val$url, ((StringBuilder)localObject1).toString() });
+      VipUtils.a(null, "webview_report", "0X8006117", "0X8006117", 2, 0, new String[] { this.val$url, ((StringBuilder)localObject1).toString() });
       return;
       label272:
       bool1 = false;

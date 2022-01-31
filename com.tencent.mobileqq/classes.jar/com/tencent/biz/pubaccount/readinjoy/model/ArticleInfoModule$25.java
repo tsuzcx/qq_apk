@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import atmp;
+import aukn;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import ooq;
+import ozr;
 
 public class ArticleInfoModule$25
   implements Runnable
 {
-  public ArticleInfoModule$25(ooq paramooq, ArticleInfo paramArticleInfo) {}
+  public ArticleInfoModule$25(ozr paramozr, ArticleInfo paramArticleInfo) {}
   
   public void run()
   {

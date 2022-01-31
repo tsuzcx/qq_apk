@@ -1,303 +1,269 @@
-import android.net.Uri;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeSummaryView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 
 public class rvq
 {
-  public static int a;
-  private static rvq a;
-  public static int b;
-  
-  static
+  static CharSequence a(BaseArticleInfo paramBaseArticleInfo, pbj parampbj)
   {
-    jdField_a_of_type_Int = 800;
-    jdField_b_of_type_Int = 700;
+    if (paramBaseArticleInfo == null) {
+      return "";
+    }
+    SocializeFeedsInfo localSocializeFeedsInfo;
+    int i;
+    if ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo != null))
+    {
+      localSocializeFeedsInfo = paramBaseArticleInfo.mSocialFeedInfo;
+      if ((localSocializeFeedsInfo.jdField_a_of_type_Qcj != null) && (localSocializeFeedsInfo.jdField_a_of_type_Qcj.a != null) && (localSocializeFeedsInfo.jdField_a_of_type_Qcj.a.size() > 0) && ((localSocializeFeedsInfo.jdField_a_of_type_Qcj.a.size() != 1) || ((!TextUtils.isEmpty(((SocializeFeedsInfo.BiuCommentInfo)localSocializeFeedsInfo.jdField_a_of_type_Qcj.a.get(0)).jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(((SocializeFeedsInfo.BiuCommentInfo)localSocializeFeedsInfo.jdField_a_of_type_Qcj.a.get(0)).jdField_a_of_type_JavaLangString, ":")) && (!TextUtils.equals(((SocializeFeedsInfo.BiuCommentInfo)localSocializeFeedsInfo.jdField_a_of_type_Qcj.a.get(0)).jdField_a_of_type_JavaLangString, "：")))))
+      {
+        SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+        parampbj = localSocializeFeedsInfo.jdField_a_of_type_Qcj.a((ArticleInfo)paramBaseArticleInfo, "5", parampbj);
+        if (!TextUtils.isEmpty(parampbj)) {
+          localSpannableStringBuilder.append(parampbj);
+        }
+        i = 1;
+        parampbj = localSpannableStringBuilder;
+      }
+    }
+    for (;;)
+    {
+      QLog.d("Utils", 2, "makeBiuComment: " + paramBaseArticleInfo.rawkey + " ssb: " + parampbj + " condition flag: " + i);
+      return parampbj;
+      if (!TextUtils.isEmpty(localSocializeFeedsInfo.jdField_a_of_type_JavaLangString))
+      {
+        if (localSocializeFeedsInfo.jdField_a_of_type_JavaLangString.length() >= 100) {
+          localSocializeFeedsInfo.jdField_a_of_type_JavaLangString = (localSocializeFeedsInfo.jdField_a_of_type_JavaLangString.substring(0, 99) + '…');
+        }
+        parampbj = localSocializeFeedsInfo.jdField_a_of_type_JavaLangString;
+        i = 1;
+      }
+      else
+      {
+        i = 0;
+        parampbj = "";
+      }
+    }
   }
   
-  public static String a(AbsStructMsg paramAbsStructMsg)
+  public static pax a(ArticleInfo paramArticleInfo)
   {
-    if (((paramAbsStructMsg instanceof StructMsgForGeneralShare)) && (((StructMsgForGeneralShare)paramAbsStructMsg).mIsPAVideoStructMsg))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShareStructLongMessageManager", 2, "is video struct msg");
-      }
-      return null;
-    }
-    if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgUrl)) {
-      return paramAbsStructMsg.mMsgUrl;
-    }
-    if (adww.b(paramAbsStructMsg.mMsgActionData))
-    {
-      paramAbsStructMsg = adww.b(paramAbsStructMsg.mMsgActionData);
-      if ((paramAbsStructMsg != null) && (paramAbsStructMsg.length > 2)) {
-        return paramAbsStructMsg[1];
-      }
-    }
-    return null;
+    return new pbi(null, paramArticleInfo, rap.c(paramArticleInfo), (int)paramArticleInfo.mChannelID, 0, 0, false, 0, null, null);
   }
   
-  public static String a(String paramString)
+  static CharSequence b(BaseArticleInfo paramBaseArticleInfo, pbj parampbj)
   {
-    if (TextUtils.isEmpty(paramString))
+    int i1 = 0;
+    int n = 0;
+    Object localObject3 = (ArticleInfo)paramBaseArticleInfo;
+    if (localObject3 == null) {
+      return "";
+    }
+    Object localObject2 = "";
+    int j;
+    int k;
+    int m;
+    int i;
+    Object localObject1;
+    switch (rap.c((ArticleInfo)localObject3))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShareStructLongMessageManager", 2, "url is empty");
+    default: 
+      j = 0;
+      k = 0;
+      m = 0;
+      i = n;
+      localObject1 = localObject2;
+      if (paramBaseArticleInfo.mSocialFeedInfo != null)
+      {
+        if (!paramBaseArticleInfo.isPGCShortContent()) {
+          break label423;
+        }
+        i = 9;
+        if ((localObject3 == null) || (((ArticleInfo)localObject3).mSocialFeedInfo == null) || (((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Qcy == null) || (TextUtils.isEmpty(((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Qcy.jdField_a_of_type_JavaLangString))) {
+          break label390;
+        }
+        if (((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Int != 19191924) {
+          break label374;
+        }
       }
-      return null;
+      break;
     }
-    try
+    for (;;)
     {
-      paramString = Uri.parse(paramString).getQueryParameter("article_id");
-      return paramString;
-    }
-    catch (Exception paramString) {}
-    return null;
-  }
-  
-  private static String a(byte[] paramArrayOfByte)
-  {
-    String str1 = "";
-    int i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      String str3 = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-      String str2 = str3;
-      if (str3.length() == 1) {
-        str2 = "0" + str3;
-      }
-      str1 = str1 + " " + str2;
-      i += 1;
-    }
-    return str1;
-  }
-  
-  public static rvq a()
-  {
-    if (jdField_a_of_type_Rvq == null) {
-      jdField_a_of_type_Rvq = new rvq();
-    }
-    return jdField_a_of_type_Rvq;
-  }
-  
-  private boolean a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3, int paramInt1, long paramLong, int paramInt2, atqq paramatqq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareStructLongMessageManager", 2, "[sendLongTextMsg]data.length = " + paramArrayOfByte.length);
-    }
-    axvt localaxvt = new axvt();
-    localaxvt.jdField_a_of_type_Boolean = true;
-    localaxvt.jdField_b_of_type_Int = 131078;
-    localaxvt.h = 1;
-    localaxvt.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
-    localaxvt.jdField_b_of_type_JavaLangString = paramString1;
-    localaxvt.c = paramString2;
-    localaxvt.d = paramString3;
-    localaxvt.jdField_a_of_type_Int = paramInt1;
-    localaxvt.jdField_a_of_type_Long = paramLong;
-    localaxvt.e = paramInt2;
-    localaxvt.jdField_a_of_type_Atqq = paramatqq;
-    paramQQAppInterface.a().a(localaxvt);
-    return true;
-  }
-  
-  public static boolean a(AbsStructMsg paramAbsStructMsg)
-  {
-    boolean bool;
-    if ((paramAbsStructMsg instanceof StructMsgForGeneralShare))
-    {
-      if ("micro_app".equals(paramAbsStructMsg.mMsg_A_ActionData)) {
-        return true;
-      }
-      if (((StructMsgForGeneralShare)paramAbsStructMsg).needSendLongMsgWhenFailed) {
-        return true;
-      }
-      if (((StructMsgForGeneralShare)paramAbsStructMsg).mIsPAVideoStructMsg)
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareStructLongMessageManager", 2, "matches!");
-        }
-        return true;
+        localObject1 = rrj.a(((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Qcy.jdField_a_of_type_JavaLangString, ((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Qcr.a.b, ((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Qcr.a.jdField_a_of_type_JavaLangString, ((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Qcr.a.c, (ArticleInfo)localObject3);
+        QLog.d("Utils", 2, "makeNonBiuComment: " + paramBaseArticleInfo.rawkey + " ssb: " + localObject1 + " condition flag: " + i);
+        return localObject1;
+        i = 1;
+        k = 0;
+        j = 1;
+        m = i;
+        break;
+        j = 0;
+        k = 1;
+        m = 0;
       }
-      if (((StructMsgForGeneralShare)paramAbsStructMsg).mMsgServiceID == 118)
+      catch (NullPointerException parampbj)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareStructLongMessageManager", 2, "tribe matches!");
-        }
-        return true;
+        QLog.e("Utils", 2, parampbj.toString());
+        localObject1 = localObject2;
+        continue;
       }
-      if (((StructMsgForGeneralShare)paramAbsStructMsg).mMsgServiceID == 35)
+      label374:
+      localObject1 = ((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Qcy.jdField_a_of_type_JavaLangString;
+      continue;
+      label390:
+      if ((localObject3 != null) && (!TextUtils.isEmpty(((ArticleInfo)localObject3).mTitle)))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareStructLongMessageManager", 2, "MULTI_MSG matches!");
-        }
-        return true;
+        localObject1 = ((ArticleInfo)localObject3).mTitle;
       }
-      if (((StructMsgForGeneralShare)paramAbsStructMsg).mMsgServiceID == 83)
+      else
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareStructLongMessageManager", 2, "gallery matches!");
-        }
-        return true;
-      }
-      if (((StructMsgForGeneralShare)paramAbsStructMsg).mMsgServiceID == 123)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareStructLongMessageManager", 2, "confess general share msg matches!");
-        }
-        return true;
-      }
-      if ((((StructMsgForGeneralShare)paramAbsStructMsg).mMsgServiceID == 151) || (((StructMsgForGeneralShare)paramAbsStructMsg).mMsgServiceID == 156))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareStructLongMessageManager", 2, "STRUCT_TYPE_NEW_SUBSCRIBE_ACCOUNT_NEWS share msg matches!");
-        }
-        return true;
-      }
-      if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgUrl))
-      {
-        String str = paramAbsStructMsg.mMsgUrl;
-        try
+        localObject1 = "";
+        continue;
+        label423:
+        if (k != 0)
         {
-          Uri localUri = Uri.parse(str);
-          if (bapz.a().a(localUri.getHost())) {
-            return true;
-          }
-          bool = bexy.c(localUri.getHost());
-          if (bool) {
-            return true;
-          }
+          localObject1 = ((ArticleInfo)localObject3).mTitle;
+          i = 1;
         }
-        catch (Exception localException)
+        else if ((rap.a((ArticleInfo)localObject3)) || (rap.c((BaseArticleInfo)localObject3)) || (rap.h((ArticleInfo)localObject3)))
         {
-          QLog.e("ShareStructLongMessageManager", 1, "shouldShareStructLongMessage vip url exception, url = " + str, localException);
-        }
-      }
-    }
-    if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgUrl))
-    {
-      if (Pattern.compile("http://.*.mp.qq.com.*").matcher(paramAbsStructMsg.mMsgUrl).matches())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareStructLongMessageManager", 2, "matches!");
-        }
-        return true;
-      }
-      if (Pattern.compile("https://.*.mp.qq.com.*").matcher(paramAbsStructMsg.mMsgUrl).matches())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareStructLongMessageManager", 2, "matches!");
-        }
-        return true;
-      }
-    }
-    try
-    {
-      bool = rsp.b(new URL(paramAbsStructMsg.mMsgUrl).getHost());
-      if (!bool) {
-        break label407;
-      }
-      return true;
-    }
-    catch (Exception paramAbsStructMsg) {}
-    if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgActionData)) {
-      return b(paramAbsStructMsg);
-    }
-    label407:
-    return false;
-  }
-  
-  public static boolean b(AbsStructMsg paramAbsStructMsg)
-  {
-    if (adww.b(paramAbsStructMsg.mMsgActionData))
-    {
-      paramAbsStructMsg = adww.b(paramAbsStructMsg.mMsgActionData);
-      if ((paramAbsStructMsg != null) && (paramAbsStructMsg.length > 2))
-      {
-        paramAbsStructMsg = paramAbsStructMsg[1];
-        if (!TextUtils.isEmpty(paramAbsStructMsg))
-        {
-          if (Pattern.compile("http://.*.mp.qq.com.*").matcher(paramAbsStructMsg).matches()) {
-            if (QLog.isColorLevel()) {
-              QLog.d("ShareStructLongMessageManager", 2, "matches!");
+          if (m != 0)
+          {
+            localObject1 = new SpannableStringBuilder();
+            if ((((ArticleInfo)localObject3).mSocialFeedInfo != null) && (((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Qcy != null) && (((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Qcy.jdField_a_of_type_JavaLangString != null))
+            {
+              ((SpannableStringBuilder)localObject1).append(((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Qcy.jdField_a_of_type_JavaLangString);
+              if (QLog.isColorLevel()) {
+                QLog.d("Q.readinjoy.ui", 2, "Comment String: " + ((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Qcy.jdField_a_of_type_JavaLangString);
+              }
+            }
+            for (;;)
+            {
+              i = 2;
+              break;
+              if (((ArticleInfo)localObject3).mTitle != null) {
+                ((SpannableStringBuilder)localObject1).append(((ArticleInfo)localObject3).mTitle);
+              }
             }
           }
-          do
+          if (j != 0)
           {
-            return true;
-            if (!Pattern.compile("https://.*.mp.qq.com.*").matcher(paramAbsStructMsg).matches()) {
+            if (!TextUtils.isEmpty(((ArticleInfo)localObject3).mTitle)) {}
+            for (parampbj = ((ArticleInfo)localObject3).mTitle;; parampbj = ((ArticleInfo)localObject3).mSummary)
+            {
+              i = 3;
+              localObject1 = parampbj;
               break;
             }
-          } while (!QLog.isColorLevel());
-          QLog.d("ShareStructLongMessageManager", 2, "matches!");
-          return true;
+          }
+          if (rap.c((BaseArticleInfo)localObject3))
+          {
+            localObject1 = new StringBuilder(ajyc.a(2131716029));
+            if (!rap.f(paramBaseArticleInfo))
+            {
+              localObject2 = (qdv)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qdt.a.get(0);
+              localObject3 = ((StringBuilder)localObject1).append("“");
+              if (!TextUtils.isEmpty(((qdv)localObject2).c)) {
+                break label744;
+              }
+              parampbj = "";
+              label705:
+              localObject3 = ((StringBuilder)localObject3).append(parampbj);
+              if (!TextUtils.isEmpty(((qdv)localObject2).jdField_a_of_type_JavaLangString)) {
+                break label753;
+              }
+            }
+            label744:
+            label753:
+            for (parampbj = "";; parampbj = ((qdv)localObject2).jdField_a_of_type_JavaLangString)
+            {
+              ((StringBuilder)localObject3).append(parampbj).append("”");
+              i = 4;
+              break;
+              parampbj = ((qdv)localObject2).c;
+              break label705;
+            }
+          }
+          localObject1 = ((ArticleInfo)localObject3).mSummary;
+          i = 5;
+        }
+        else
+        {
+          i = n;
+          localObject1 = localObject2;
+          if (((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Qdd != null)
+          {
+            qdd localqdd = ((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Qdd;
+            if (onk.a(localqdd))
+            {
+              localObject1 = localqdd.jdField_a_of_type_Qcj.a((ArticleInfo)localObject3, "3", parampbj);
+              i = 6;
+            }
+            else
+            {
+              if ((pvb.c((ArticleInfo)localObject3)) && (!rap.q((ArticleInfo)localObject3)))
+              {
+                localObject2 = ((qdf)((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Qdd.b.get(0)).e;
+                if (TextUtils.isEmpty((CharSequence)localObject2)) {
+                  break label984;
+                }
+                localObject1 = omu.a((String)localObject2);
+                parampbj = (pbj)localObject1;
+                if (TextUtils.equals((CharSequence)localObject1, (CharSequence)localObject2)) {
+                  parampbj = axas.b((String)localObject2);
+                }
+                parampbj = new ayki(parampbj, 7, 16);
+              }
+              for (i = 7;; i = i1)
+              {
+                localObject1 = parampbj;
+                break;
+                i = n;
+                localObject1 = localObject2;
+                if (TextUtils.isEmpty(localqdd.jdField_a_of_type_JavaLangString)) {
+                  break;
+                }
+                parampbj = null;
+                try
+                {
+                  localObject1 = axas.b(localqdd.jdField_a_of_type_JavaLangString);
+                  parampbj = (pbj)localObject1;
+                }
+                catch (Exception localException)
+                {
+                  label959:
+                  break label959;
+                }
+                localObject1 = new ayki(parampbj, 7, 16);
+                i = 8;
+                break;
+                label984:
+                parampbj = "";
+              }
+              i = 0;
+            }
+          }
         }
       }
     }
-    return false;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  public static CharSequence c(BaseArticleInfo paramBaseArticleInfo, pbj parampbj)
   {
-    paramMessageRecord.extraflag = 32768;
-    paramQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
-    String str = paramMessageRecord.frienduin;
-    int i = paramMessageRecord.istroop;
-    long l = paramMessageRecord.uniseq;
-    ((MessageHandler)paramQQAppInterface.a(0)).notifyUI(MessageHandler.a(paramMessageRecord.istroop), false, new Object[] { str, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, ajmm paramajmm, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareStructLongMessageManager", 2, "step2: sendShareStructLongMessage saveMessage end and pack ShareStructLongMessage start currenttime:" + System.currentTimeMillis());
-    }
-    if (!(paramMessageRecord instanceof MessageForStructing)) {
-      QLog.d("ShareStructLongMessageManager", 2, "is not MessageForStructing");
-    }
-    do
-    {
-      return;
-      byte[] arrayOfByte = ((MessageForStructing)paramMessageRecord).structingMsg.getXmlBytes();
-      if (QLog.isColorLevel()) {
-        QLog.d("ShareStructLongMessageManager", 2, "buff is " + arrayOfByte);
-      }
-      String str = a(arrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.d("ShareStructLongMessageManager", 2, "buffer is " + str);
-      }
-      if (arrayOfByte == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareStructLongMessageManager", 2, "step2: sendShareStructLongMessage pack failed! packData is null.............................");
-        }
-        paramMessageRecord.extraflag = 32768;
-        paramQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
-        paramajmm = paramMessageRecord.frienduin;
-        int i = paramMessageRecord.istroop;
-        long l = paramMessageRecord.uniseq;
-        ((MessageHandler)paramQQAppInterface.a(0)).notifyUI(MessageHandler.a(paramMessageRecord.istroop), false, new Object[] { paramajmm, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
-        return;
-      }
-      paramBoolean = a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.selfuin, paramMessageRecord.istroop, paramMessageRecord.uniseq + 1L, 1035, new rvr(this, paramMessageRecord, paramQQAppInterface, paramajmm, paramBoolean));
-      if (!paramBoolean) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ShareStructLongMessageManager", 2, "sendShareStructLongMessage successful, uploadShareStructLongMessagePkg start!");
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareStructLongMessageManager", 2, "sendShareStructLongMessage failed! isSuccess:" + paramBoolean);
-    }
-    a(paramQQAppInterface, paramMessageRecord);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    paramBaseArticleInfo = a((ArticleInfo)paramBaseArticleInfo);
+    NativeSummaryView.a(paramBaseArticleInfo, localSpannableStringBuilder, parampbj);
+    NativeSummaryView.b(paramBaseArticleInfo, localSpannableStringBuilder, parampbj);
+    return localSpannableStringBuilder;
   }
 }
 

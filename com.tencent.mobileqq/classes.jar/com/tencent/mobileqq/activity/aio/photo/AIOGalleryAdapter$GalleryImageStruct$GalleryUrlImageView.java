@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import advr;
-import adyb;
-import ageu;
+import aegq;
+import aeja;
+import agqs;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -23,7 +23,7 @@ public class AIOGalleryAdapter$GalleryImageStruct$GalleryUrlImageView
   extends AbstractImageAdapter.URLImageView2
 {
   int jdField_a_of_type_Int;
-  public adyb a;
+  public aeja a;
   boolean b = false;
   
   public AIOGalleryAdapter$GalleryImageStruct$GalleryUrlImageView(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, Context paramContext)
@@ -46,7 +46,7 @@ public class AIOGalleryAdapter$GalleryImageStruct$GalleryUrlImageView
     }
     float f = paramMatrix.width() / paramMatrix.height();
     int j = (int)(paramInt1 / f);
-    int k = ageu.a(1280, 1280, paramInt1, j);
+    int k = agqs.a(1280, 1280, paramInt1, j);
     int i = j;
     paramInt2 = paramInt1;
     if (k > 1)
@@ -98,16 +98,16 @@ public class AIOGalleryAdapter$GalleryImageStruct$GalleryUrlImageView
       if ((localObject == null) || (!((String)localObject).equals("DISPLAY"))) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a.a(this.jdField_a_of_type_Int, true);
       }
-      if (this.jdField_a_of_type_Adyb != null)
+      if (this.jdField_a_of_type_Aeja != null)
       {
-        if (this.jdField_a_of_type_Adyb.b == -2) {
-          this.jdField_a_of_type_Adyb.b = paramURLDrawable.getExifOrientation();
+        if (this.jdField_a_of_type_Aeja.b == -2) {
+          this.jdField_a_of_type_Aeja.b = paramURLDrawable.getExifOrientation();
         }
-        AIOGalleryAdapter.a((View)getParent(), paramURLDrawable, this.jdField_a_of_type_Adyb.b);
+        AIOGalleryAdapter.a((View)getParent(), paramURLDrawable, this.jdField_a_of_type_Aeja.b);
       }
       localObject = paramURLDrawable.getCurrDrawable();
       if (VideoDrawable.class.isInstance(localObject)) {
-        ((VideoDrawable)localObject).setOnPlayRepeatListener(new advr(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a));
+        ((VideoDrawable)localObject).setOnPlayRepeatListener(new aegq(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a));
       }
     }
   }

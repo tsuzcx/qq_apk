@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.videoceiling;
 
-import abju;
+import abtu;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,8 @@ import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import yny;
-import ypk;
+import yxs;
+import yze;
 
 public abstract class GdtBaseVideoCeilingFragment
   extends PublicBaseFragment
@@ -31,10 +31,10 @@ public abstract class GdtBaseVideoCeilingFragment
   {
     if ((paramActivity == null) || (paramGdtVideoCeilingData == null) || (!paramGdtVideoCeilingData.isValid()))
     {
-      yny.d("GdtBaseVideoCeilingFragment", "start error");
+      yxs.d("GdtBaseVideoCeilingFragment", "start error");
       return;
     }
-    yny.b("GdtBaseVideoCeilingFragment", "start");
+    yxs.b("GdtBaseVideoCeilingFragment", "start");
     Bundle localBundle = new Bundle();
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
       localBundle.putAll(paramBundle);
@@ -48,14 +48,14 @@ public abstract class GdtBaseVideoCeilingFragment
     paramBundle.putExtra("big_brother_source_key", "biz_src_ads");
     paramBundle.putExtras(localBundle);
     if (TextUtils.isEmpty(paramBundle.getStringExtra("big_brother_ref_source_key"))) {
-      yny.d("GdtBaseVideoCeilingFragment", "start gdt empty refId");
+      yxs.d("GdtBaseVideoCeilingFragment", "start gdt empty refId");
     }
     if (paramGdtVideoCeilingData.getStyle() == 4)
     {
-      abju.a(paramActivity, paramBundle, PublicFragmentActivity.class, paramClass);
+      abtu.a(paramActivity, paramBundle, PublicFragmentActivity.class, paramClass);
       return;
     }
-    abju.a(paramActivity, paramBundle, PublicFragmentActivityForTool.class, paramClass);
+    abtu.a(paramActivity, paramBundle, PublicFragmentActivityForTool.class, paramClass);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -95,9 +95,9 @@ public abstract class GdtBaseVideoCeilingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131493542, paramViewGroup, false);
-    this.a = ((GdtVideoCeilingView)paramLayoutInflater.findViewById(2131313277));
-    ypk.a(this.a);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559111, paramViewGroup, false);
+    this.a = ((GdtVideoCeilingView)paramLayoutInflater.findViewById(2131379112));
+    yze.a(this.a);
     this.a.a(paramBundle);
     if ((getArguments() != null) && ((getArguments().getSerializable("data") instanceof GdtVideoCeilingData))) {
       this.a.setData((GdtVideoCeilingData)getArguments().getSerializable("data"));

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.debug.page;
 
-import aikn;
+import aixg;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.view.View;
 public abstract class CmGameDebugBaseFragment
   extends Fragment
 {
-  public aikn a;
+  public aixg a;
   
   public void a()
   {
@@ -17,9 +17,9 @@ public abstract class CmGameDebugBaseFragment
     }
   }
   
-  public void a(aikn paramaikn)
+  public void a(aixg paramaixg)
   {
-    this.a = paramaikn;
+    this.a = paramaixg;
   }
   
   public void onDestroy()

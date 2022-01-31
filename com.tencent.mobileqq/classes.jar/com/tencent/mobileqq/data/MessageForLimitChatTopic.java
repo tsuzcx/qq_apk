@@ -10,7 +10,6 @@ public class MessageForLimitChatTopic
   
   public MessageForLimitChatTopic()
   {
-    this.msgtype = -4023;
     this.mNeedTimeStamp = false;
   }
   

@@ -1,17 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 public class anxn
-  implements View.OnClickListener
+  extends anxe
 {
-  public anxn(FilePreviewActivity paramFilePreviewActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    awqx.b(this.a.app, "dc00898", "", "", "0X8008A32", "0X8008A32", 0, 0, "", "", "", "");
-    FilePreviewActivity.a(this.a, axea.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131654243), false));
-  }
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout[] jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout;
 }
 
 

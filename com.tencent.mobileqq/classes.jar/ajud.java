@@ -1,11 +1,6 @@
-class ajud
+public abstract interface ajud
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public int c;
+  public abstract void a();
 }
 
 

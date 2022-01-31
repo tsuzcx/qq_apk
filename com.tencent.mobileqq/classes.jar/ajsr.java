@@ -1,63 +1,77 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Process;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.SubAccountObserver;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
-class ajsr
-  extends SubAccountObserver
+public class ajsr
+  extends ajyb
 {
-  ajsr(ajsq paramajsq, axau paramaxau, axat paramaxat, boolean paramBoolean) {}
-  
-  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  protected void a()
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    if ((paramString3 == null) || (paramString2 == null) || (paramString1 == null))
+    super.a();
+    float f2 = MemoryManager.a().a();
+    float f1;
+    if (akai.a().d > 0.0F)
     {
-      if (QLog.isColorLevel())
+      f1 = akai.a().d;
+      if ((f2 >= f1) && (akai.a().c) && (this.a.a == null))
       {
-        StringBuilder localStringBuilder = new StringBuilder().append("handlerGetBindSubAccount() onGetKeyBack key is null or ? happen 0 ? =>");
-        if (paramString3 != null) {
-          break label107;
-        }
-        bool1 = true;
-        paramString3 = localStringBuilder.append(bool1);
-        if (paramString2 != null) {
-          break label113;
-        }
+        MemoryManager.a().a(2L);
+        System.exit(-1);
       }
-      label107:
-      label113:
-      for (bool1 = true;; bool1 = false)
-      {
-        paramString2 = paramString3.append(bool1);
-        bool1 = bool2;
-        if (paramString1 == null) {
-          bool1 = true;
-        }
-        QLog.e("SUB_ACCOUNT", 2, bool1);
-        this.jdField_a_of_type_Ajsq.notifyUI(2, true, this.jdField_a_of_type_Axau);
-        return;
-        bool1 = false;
-        break;
+      if (this.d != GuardManager.c * 50 - 1) {
+        break label227;
+      }
+      l = MemoryManager.a(Process.myPid());
+      localHashMap = new HashMap();
+      localHashMap.put("qqUsedMemory", String.valueOf(l / 1024L));
+      localHashMap.put("ramSize", String.valueOf(bbct.d() / 1024L));
+      localHashMap.put("heapSize", String.valueOf(Runtime.getRuntime().totalMemory() / 1024L));
+      localHashMap.put("maxHeapSize", String.valueOf(Runtime.getRuntime().maxMemory() / 1024L));
+      this.a.a("GM_reborn", localHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuardManager", 2, "suicide to free memory! suicide_factor=" + GuardManager.c);
       }
     }
-    if ((this.jdField_a_of_type_Ajsq.app != null) && (paramString2.equalsIgnoreCase(this.jdField_a_of_type_Axau.c)) && (paramString1.equalsIgnoreCase(this.jdField_a_of_type_Ajsq.app.getAccount())))
+    label227:
+    while (((this.d != GuardManager.c * 50) && (this.d != GuardManager.c * 50 + 1)) || (this.a.a != null))
     {
-      this.jdField_a_of_type_Axat.a(paramString2, paramString3, this.jdField_a_of_type_Boolean);
-      axam.a(this.jdField_a_of_type_Ajsq.app, (byte)1, paramString2);
-      this.jdField_a_of_type_Axau.b = true;
-      this.jdField_a_of_type_Ajsq.notifyUI(2, true, this.jdField_a_of_type_Axau);
+      long l;
+      HashMap localHashMap;
       return;
+      f1 = 0.95F;
+      break;
     }
-    if (QLog.isColorLevel())
-    {
-      paramString3 = new StringBuilder().append("handlerGetBindSubAccount() onGetKeyBack error happen 1 ? =>app:");
-      if (this.jdField_a_of_type_Ajsq.app == null) {
-        bool1 = true;
-      }
-      QLog.d("SUB_ACCOUNT", 2, bool1 + " subUin:" + paramString2.equalsIgnoreCase(this.jdField_a_of_type_Axau.c) + " mainAccount:" + paramString1.equalsIgnoreCase(this.jdField_a_of_type_Ajsq.app.getAccount()));
+    System.exit(-1);
+  }
+  
+  protected void a(String paramString)
+  {
+    this.a.a(3, paramString);
+  }
+  
+  protected void b()
+  {
+    this.a.a(4, "fake_p_msg");
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.c(false);
+    if (!"trick_p_msg".equals(paramString)) {
+      this.a.a(false, new String[] { paramString });
     }
-    this.jdField_a_of_type_Ajsq.notifyUI(2, true, this.jdField_a_of_type_Axau);
+    long l = MemoryManager.a(Process.myPid());
+    if (ajxz.a().a(l) != 2) {
+      this.a.c();
+    }
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(2, ajxz.a().a, 0L);
+    CoreService.stopCoreService();
   }
 }
 

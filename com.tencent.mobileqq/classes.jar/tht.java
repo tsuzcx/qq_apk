@@ -1,17 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tht
-  extends AnimatorListenerAdapter
+  extends QQUIEventReceiver<thk, svy>
 {
-  public tht(StoryPlayerActivity paramStoryPlayerActivity) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public tht(@NonNull thk paramthk)
   {
-    super.onAnimationEnd(paramAnimator);
-    StoryPlayerActivity.a(this.a);
-    StoryPlayerActivity.a(this.a, 0, 0);
+    super(paramthk);
+  }
+  
+  public void a(@NonNull thk paramthk, @NonNull svy paramsvy)
+  {
+    paramthk.a.b(paramsvy);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return svy.class;
   }
 }
 

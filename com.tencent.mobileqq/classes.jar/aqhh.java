@@ -1,60 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.fragment.CommonTabFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
 public class aqhh
-  extends RecyclerView.Adapter
+  implements View.OnClickListener
 {
-  private RecyclerView.Adapter jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  private RecyclerView.AdapterDataObserver jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver = new aqhi(this);
-  aqet jdField_a_of_type_Aqet;
+  public aqhh(CommonTabFragment paramCommonTabFragment) {}
   
-  public aqhh(@NonNull RecyclerView.Adapter paramAdapter, aqet paramaqet)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aqet = paramaqet;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramAdapter;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver);
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_Aqet == null) {
-      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
-    }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount() + 1;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Aqet != null) && (paramInt == getItemCount() - 1)) {
-      return 2147483647;
-    }
-    return super.getItemViewType(paramInt);
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((this.jdField_a_of_type_Aqet != null) && (paramInt == getItemCount() - 1))
+    if ((this.a.a == null) || (this.a.a.mWebview == null)) {}
+    do
     {
-      this.jdField_a_of_type_Aqet.a(paramViewHolder, paramInt);
       return;
-    }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt);
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    if ((this.jdField_a_of_type_Aqet != null) && (2147483647 == paramInt)) {
-      return this.jdField_a_of_type_Aqet.a(paramViewGroup, paramInt);
-    }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
+      paramView = this.a.a.mWebview.getPluginEngine();
+    } while (paramView == null);
+    paramView.a(this.a.a.mWebview.getUrl(), 8589934606L, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqhh
  * JD-Core Version:    0.7.0.1
  */

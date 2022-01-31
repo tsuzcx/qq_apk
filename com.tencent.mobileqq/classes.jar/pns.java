@@ -1,18 +1,19 @@
-import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
 class pns
-  extends pnc
+  extends RecyclerView.OnScrollListener
 {
-  pns(pnn parampnn) {}
+  pns(pnr parampnr) {}
   
-  public Drawable a()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    return a("readinjoy_diandian_icon_background");
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pns
  * JD-Core Version:    0.7.0.1
  */

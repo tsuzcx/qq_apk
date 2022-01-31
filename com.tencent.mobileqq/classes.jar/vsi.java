@@ -1,20 +1,54 @@
-import android.animation.Animator;
-import android.view.View;
+import android.app.Activity;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
 
-public final class vsi
+public class vsi
+  extends vsq<vsd, vsd>
 {
-  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  private int a;
+  public WeakReference<Activity> a;
+  
+  public vsi(@NonNull Activity paramActivity, int paramInt)
   {
-    return a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2, 2);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3)
+  protected void a(JobContext paramJobContext, vsd paramvsd)
   {
-    vsd localvsd = vsd.a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2);
-    if (paramInt3 != paramView.getLayerType()) {
-      localvsd.addListener(new vsf(paramView, paramInt3));
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity == null)
+    {
+      veg.e("Q.qqstory.publish.edit.GeneratePicThumbSegment", "ChangePicArgToVideoArgSegment, activity is null");
+      super.notifyError(new ErrorMessage(-1, "ChangePicArgToVideoArgSegment error"));
+      return;
     }
-    return localvsd;
+    Object localObject = paramvsd.jdField_a_of_type_Vsh.jdField_a_of_type_JavaLangString;
+    paramJobContext = (JobContext)localObject;
+    if (!paramvsd.jdField_a_of_type_Vsh.jdField_b_of_type_Boolean)
+    {
+      paramJobContext = (JobContext)localObject;
+      if (paramvsd.jdField_a_of_type_Vsh.jdField_a_of_type_Boolean) {
+        paramJobContext = paramvsd.jdField_a_of_type_Vsh.jdField_b_of_type_JavaLangString;
+      }
+    }
+    localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(paramJobContext, (BitmapFactory.Options)localObject);
+    int i = ((BitmapFactory.Options)localObject).outWidth;
+    int j = ((BitmapFactory.Options)localObject).outHeight;
+    if (this.jdField_a_of_type_Int == 5) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramvsd.jdField_a_of_type_Vsj = new vsj(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
+      paramvsd.jdField_a_of_type_JavaLangString = paramJobContext;
+      super.notifyResult(paramvsd);
+      return;
+    }
   }
 }
 

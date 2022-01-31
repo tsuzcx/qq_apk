@@ -1,28 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
+import java.util.Comparator;
 
 class pcd
-  implements oli
+  implements Comparator<WeiShiVideoArticleInfo>
 {
-  pcd(pcc parampcc) {}
+  pcd(pcb parampcb) {}
   
-  public void a()
+  public int a(WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo1, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo2)
   {
-    QLog.d(pbz.a(this.a.a), 2, "stopScroll as videoplayer start");
-    pbz.b(this.a.a);
-  }
-  
-  public void b()
-  {
-    QLog.d(pbz.a(this.a.a), 2, "startScroll as videoplayer stop");
-    if (pbz.a(this.a.a) != null) {
-      pbz.a(this.a.a, pbz.a(this.a.a).a());
+    if (paramWeiShiVideoArticleInfo1.recommendSeq == paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return 0;
     }
-  }
-  
-  public void c()
-  {
-    QLog.d(pbz.a(this.a.a), 2, "startScroll as videoplayer complete");
-    pbz.a(this.a.a, 1000L);
+    if (paramWeiShiVideoArticleInfo1.recommendSeq > paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 

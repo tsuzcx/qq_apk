@@ -1,11 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import aamd;
-import abai;
-import abgi;
-import afqb;
-import ajii;
-import ajik;
+import ajwm;
+import ajwo;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -19,12 +15,16 @@ import android.view.ViewGroup;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
-import apnm;
-import awrn;
-import bahj;
+import aqha;
+import axrl;
+import bbio;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.Contacts;
 import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Now;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.leba.QzoneFrame;
 import com.tencent.mobileqq.widget.QQTabHost;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -36,14 +36,14 @@ import mqq.app.Constants.LogoutReason;
 
 public class FrameFragment
   extends Fragment
-  implements TabHost.OnTabChangeListener, TabHost.TabContentFactory, apnm
+  implements TabHost.OnTabChangeListener, TabHost.TabContentFactory, aqha
 {
   long jdField_a_of_type_Long = -1L;
-  private ajii jdField_a_of_type_Ajii;
+  private ajwm jdField_a_of_type_Ajwm;
   protected View a;
   public QQTabHost a;
   private HashMap<String, TabHost.TabSpec> jdField_a_of_type_JavaUtilHashMap;
-  private final Map<String, ajii> jdField_a_of_type_JavaUtilMap = new HashMap(4);
+  private final Map<String, ajwm> jdField_a_of_type_JavaUtilMap = new HashMap(4);
   String f = null;
   protected boolean g;
   
@@ -52,25 +52,25 @@ public class FrameFragment
     return this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getCurrentTab();
   }
   
-  protected ajii a()
+  protected ajwm a()
   {
-    return this.jdField_a_of_type_Ajii;
+    return this.jdField_a_of_type_Ajwm;
   }
   
-  public ajii a(Class<? extends ajii> paramClass)
+  public ajwm a(Class<? extends ajwm> paramClass)
   {
-    ajii localajii = null;
+    ajwm localajwm = null;
     if (this.jdField_a_of_type_JavaUtilMap != null) {
-      localajii = (ajii)this.jdField_a_of_type_JavaUtilMap.get(paramClass.getName());
+      localajwm = (ajwm)this.jdField_a_of_type_JavaUtilMap.get(paramClass.getName());
     }
-    return localajii;
+    return localajwm;
   }
   
   protected String a()
   {
-    ajii localajii = b();
-    if (localajii != null) {
-      return localajii.a();
+    ajwm localajwm = b();
+    if (localajwm != null) {
+      return localajwm.a();
     }
     return null;
   }
@@ -82,25 +82,25 @@ public class FrameFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.PerfTrace", 2, this.f + "TabSwitch, cost=" + l);
     }
-    awrn.a(BaseApplication.getContext()).a(bahj.a(), "actSwitch" + this.f, true, l, 0L, null, null);
+    axrl.a(BaseApplication.getContext()).a(bbio.a(), "actSwitch" + this.f, true, l, 0L, null, null);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    ajii localajii = b();
-    if (localajii != null) {
-      localajii.a(paramInt1, paramInt2, paramIntent);
+    ajwm localajwm = b();
+    if (localajwm != null) {
+      localajwm.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
-  protected void a(View paramView1, Class<? extends ajii> paramClass, View paramView2)
+  protected void a(View paramView1, Class<? extends ajwm> paramClass, View paramView2)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost = ((QQTabHost)paramView1.findViewById(16908306));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setup();
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setOnTabChangedListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setOnTabSelectionListener(new ajik(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setOnTabSelectionListener(new ajwo(this));
       this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
     }
     String str = paramClass.getName();
@@ -114,13 +114,13 @@ public class FrameFragment
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.addTab(paramView1);
   }
   
-  protected void a(Class<? extends ajii> paramClass)
+  protected void a(Class<? extends ajwm> paramClass)
   {
     if (this.jdField_a_of_type_JavaUtilMap != null)
     {
-      ajii localajii = a(paramClass);
-      if (localajii != null) {
-        localajii.j();
+      ajwm localajwm = a(paramClass);
+      if (localajwm != null) {
+        localajwm.j();
       }
       paramClass = paramClass.getName();
       this.jdField_a_of_type_JavaUtilMap.remove(paramClass);
@@ -134,11 +134,11 @@ public class FrameFragment
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((ajii)localIterator.next()).a(paramLogoutReason);
+      ((ajwm)localIterator.next()).a(paramLogoutReason);
     }
   }
   
-  public ajii b()
+  public ajwm b()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost == null)
     {
@@ -147,7 +147,7 @@ public class FrameFragment
       }
       return null;
     }
-    return (ajii)this.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getCurrentTabTag());
+    return (ajwm)this.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getCurrentTabTag());
   }
   
   protected void b()
@@ -157,7 +157,7 @@ public class FrameFragment
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((ajii)localIterator.next()).a();
+      ((ajwm)localIterator.next()).a();
     }
   }
   
@@ -176,22 +176,22 @@ public class FrameFragment
     }
     for (;;)
     {
-      ((ajii)localObject).a(getActivity());
-      View localView = ((ajii)localObject).a(getActivity().getLayoutInflater());
-      ((ajii)localObject).e(localView);
-      ((ajii)localObject).f();
+      ((ajwm)localObject).a(getActivity());
+      View localView = ((ajwm)localObject).a(getActivity().getLayoutInflater());
+      ((ajwm)localObject).c(localView);
+      ((ajwm)localObject).f();
       this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
       return localView;
-      if (paramString.equals(aamd.class.getName())) {
-        localObject = new aamd();
-      } else if (paramString.equals(abai.class.getName())) {
-        localObject = new abai();
-      } else if (paramString.equals(abgi.class.getName())) {
-        localObject = new abgi();
+      if (paramString.equals(Contacts.class.getName())) {
+        localObject = new Contacts();
+      } else if (paramString.equals(Leba.class.getName())) {
+        localObject = new Leba();
+      } else if (paramString.equals(Now.class.getName())) {
+        localObject = new Now();
       } else if (paramString.equals(ReadinjoyTabFrame.class.getName())) {
         localObject = new ReadinjoyTabFrame(this);
-      } else if (paramString.equals(afqb.class.getName())) {
-        localObject = new afqb();
+      } else if (paramString.equals(QzoneFrame.class.getName())) {
+        localObject = new QzoneFrame();
       }
     }
   }
@@ -200,13 +200,13 @@ public class FrameFragment
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((ajii)localIterator.next()).a(paramConfiguration);
+      ((ajwm)localIterator.next()).a(paramConfiguration);
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2131493634, null);
+    return paramLayoutInflater.inflate(2131559203, null);
   }
   
   public void onDestroy()
@@ -214,7 +214,7 @@ public class FrameFragment
     super.onDestroy();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((ajii)localIterator.next()).j();
+      ((ajwm)localIterator.next()).j();
     }
   }
   
@@ -222,52 +222,52 @@ public class FrameFragment
   {
     super.onPause();
     if ((SplashActivity.a != 1) && (!this.g)) {}
-    ajii localajii;
+    ajwm localajwm;
     do
     {
       return;
-      localajii = b();
-    } while (localajii == null);
-    localajii.h();
+      localajwm = b();
+    } while (localajwm == null);
+    localajwm.h();
   }
   
   public void onResume()
   {
     super.onResume();
     if (SplashActivity.a != 1) {}
-    ajii localajii;
+    ajwm localajwm;
     do
     {
       return;
-      localajii = b();
-    } while ((localajii == null) || (!localajii.b()));
-    localajii.d(false);
+      localajwm = b();
+    } while ((localajwm == null) || (!localajwm.b()));
+    localajwm.d(false);
   }
   
   public void onStart()
   {
     super.onStart();
     if (SplashActivity.a != 1) {}
-    ajii localajii;
+    ajwm localajwm;
     do
     {
       return;
-      localajii = b();
-    } while (localajii == null);
-    localajii.g();
+      localajwm = b();
+    } while (localajwm == null);
+    localajwm.g();
   }
   
   public void onStop()
   {
     super.onStop();
     if ((SplashActivity.a != 1) && (!this.g)) {}
-    ajii localajii;
+    ajwm localajwm;
     do
     {
       return;
-      localajii = b();
-    } while (localajii == null);
-    localajii.i();
+      localajwm = b();
+    } while (localajwm == null);
+    localajwm.i();
   }
   
   public void onTabChanged(String paramString)
@@ -284,14 +284,14 @@ public class FrameFragment
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setFirstDrawTrue();
       }
     }
-    if (this.jdField_a_of_type_Ajii != null)
+    if (this.jdField_a_of_type_Ajwm != null)
     {
-      this.jdField_a_of_type_Ajii.h();
-      this.jdField_a_of_type_Ajii.A();
+      this.jdField_a_of_type_Ajwm.h();
+      this.jdField_a_of_type_Ajwm.A();
     }
-    this.jdField_a_of_type_Ajii = b();
-    if ((this.jdField_a_of_type_Ajii != null) && (this.jdField_a_of_type_Ajii.b())) {
-      this.jdField_a_of_type_Ajii.d(true);
+    this.jdField_a_of_type_Ajwm = b();
+    if ((this.jdField_a_of_type_Ajwm != null) && (this.jdField_a_of_type_Ajwm.b())) {
+      this.jdField_a_of_type_Ajwm.d(true);
     }
   }
 }

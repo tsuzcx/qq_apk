@@ -1,17 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class atkp
-  implements DialogInterface.OnClickListener
+class atkp
+  implements atky
 {
-  public atkp(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  atkp(atkm paramatkm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(atkx paramatkx)
+  {
+    if (this.a.jdField_a_of_type_Atkv != null) {
+      this.a.jdField_a_of_type_Atkv.a();
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
+    paramatkx = atkm.a(this.a).a;
+    if (this.a.c()) {}
+    for (int i = 1;; i = 2)
+    {
+      atiw.a(paramatkx, i);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atkp
  * JD-Core Version:    0.7.0.1
  */

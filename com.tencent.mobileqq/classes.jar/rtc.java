@@ -1,15 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class rtc
-  implements View.OnClickListener
+public abstract interface rtc
 {
-  rtc(rsv paramrsv) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    this.a.a.dismiss();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a(int paramInt);
 }
 
 

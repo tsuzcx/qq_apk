@@ -1,6 +1,6 @@
 public abstract interface bjbd
 {
-  public abstract void a();
+  public abstract void a(boolean paramBoolean, Object paramObject);
 }
 
 

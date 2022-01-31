@@ -1,65 +1,35 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import android.os.Handler;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.21.1;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.21.2;
 
-public abstract class azaw<VH extends RecyclerView.ViewHolder, D extends azaa>
-  implements View.OnClickListener
+public class azaw
+  implements INetInfoHandler
 {
-  public azax a;
-  public XMediaEditor a;
+  public azaw(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public azaw(XMediaEditor paramXMediaEditor)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor = paramXMediaEditor;
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.21.1(this));
   }
   
-  public abstract VH a(ViewGroup paramViewGroup);
+  public void onNetNone2Wifi(String paramString) {}
   
-  public azaw a(azax paramazax)
+  public void onNetWifi2Mobile(String paramString)
   {
-    this.jdField_a_of_type_Azax = paramazax;
-    return this;
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.21.2(this));
   }
   
-  public azax a()
-  {
-    return this.jdField_a_of_type_Azax;
-  }
-  
-  public void a() {}
-  
-  public void a(VH paramVH) {}
-  
-  public abstract void a(VH paramVH, D paramD, int paramInt);
-  
-  public abstract void a(View paramView, VH paramVH);
-  
-  public void b(VH paramVH) {}
-  
-  public void b(View paramView, VH paramVH)
-  {
-    paramView.setTag(paramVH);
-    paramView.setOnClickListener(this);
-  }
-  
-  public void b(D paramD) {}
-  
-  public void c(VH paramVH) {}
-  
-  public void c(D paramD) {}
-  
-  public void d(D paramD) {}
-  
-  public void onClick(View paramView)
-  {
-    a(paramView, (RecyclerView.ViewHolder)paramView.getTag());
-  }
+  public void onNetWifi2None() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azaw
  * JD-Core Version:    0.7.0.1
  */

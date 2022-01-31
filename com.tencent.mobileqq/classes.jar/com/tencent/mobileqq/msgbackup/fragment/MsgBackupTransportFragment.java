@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -12,20 +12,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import arop;
-import arpa;
-import arpk;
-import arrd;
-import arre;
-import arrf;
-import arrg;
-import arrt;
-import arsa;
-import arsc;
-import babr;
-import badq;
-import bafb;
-import bajq;
+import askt;
+import asle;
+import aslo;
+import asnh;
+import asni;
+import asnj;
+import asnk;
+import asnx;
+import asoe;
+import asog;
+import bbcv;
+import bbev;
+import bbgg;
+import bbkx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 import com.tencent.mobileqq.msgbackup.transport.MsgBackupEndPoint;
@@ -41,9 +41,9 @@ public class MsgBackupTransportFragment
   private int jdField_f_of_type_Int;
   private boolean jdField_f_of_type_Boolean = true;
   
-  private void a(arpk paramarpk)
+  private void a(aslo paramaslo)
   {
-    if (paramarpk == null) {
+    if (paramaslo == null) {
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "processConfirmRsp confim qr, data is null!");
       }
@@ -57,36 +57,36 @@ public class MsgBackupTransportFragment
     do
     {
       return;
-      str1 = paramarpk.b();
-      str2 = paramarpk.b();
-      i = paramarpk.a();
+      str1 = paramaslo.b();
+      str2 = paramaslo.b();
+      i = paramaslo.a();
       localMsgBackupEndPoint1 = new MsgBackupEndPoint();
       localMsgBackupEndPoint2 = new MsgBackupEndPoint();
-      int j = arsc.a(paramarpk.a().a());
+      int j = asog.a(paramaslo.a().a());
       localMsgBackupEndPoint1.ipv4 = j;
       localMsgBackupEndPoint2.ipv4 = j;
-      localObject = paramarpk.a().a();
+      localObject = paramaslo.a().a();
     } while (((List)localObject).size() != 2);
     localMsgBackupEndPoint1.port = ((Integer)((List)localObject).get(0)).intValue();
     localMsgBackupEndPoint2.port = ((Integer)((List)localObject).get(1)).intValue();
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "processConfirmRsp: server ip = " + paramarpk.a().a() + ", udpport = " + ((List)localObject).get(1) + ", tcpport = " + ((List)localObject).get(0));
+      QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "processConfirmRsp: server ip = " + paramaslo.a().a() + ", udpport = " + ((List)localObject).get(1) + ", tcpport = " + ((List)localObject).get(0));
     }
     if (QLog.isColorLevel()) {
       QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "扫码成功了，可以发起直连了！");
     }
-    paramarpk = arpa.a();
-    if (paramarpk != null)
+    paramaslo = asle.a();
+    if (paramaslo != null)
     {
-      localObject = paramarpk.a();
-      ((arrt)localObject).b(str1);
-      paramarpk.a().a(i);
-      paramarpk.a().b(str2);
-      ((arrt)localObject).d(localMsgBackupEndPoint1);
-      ((arrt)localObject).c(localMsgBackupEndPoint2);
-      ((arrt)localObject).c(1);
-      ((arrt)localObject).b(1);
-      ((arrt)localObject).f(1);
+      localObject = paramaslo.a();
+      ((asnx)localObject).b(str1);
+      paramaslo.a().a(i);
+      paramaslo.a().b(str2);
+      ((asnx)localObject).d(localMsgBackupEndPoint1);
+      ((asnx)localObject).c(localMsgBackupEndPoint2);
+      ((asnx)localObject).c(1);
+      ((asnx)localObject).b(1);
+      ((asnx)localObject).f(1);
       return;
     }
     QLog.e("MsgBackup.MsgBackupTransportFragment", 2, "MsgBackupManager为空了", new Throwable());
@@ -104,7 +104,7 @@ public class MsgBackupTransportFragment
     }
     for (;;)
     {
-      arsa.a("0X800A252", i);
+      asoe.a("0X800A252", i);
       return;
       label27:
       if (this.jdField_a_of_type_Boolean) {
@@ -121,15 +121,15 @@ public class MsgBackupTransportFragment
     if (this.jdField_e_of_type_AndroidWidgetTextView != null)
     {
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131100170));
-      this.jdField_e_of_type_AndroidWidgetTextView.setText(2131624804);
+      this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165760));
+      this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690365);
     }
     if (this.jdField_f_of_type_Int == 2)
     {
-      arsa.a("0X800A241", 1);
+      asoe.a("0X800A241", 1);
       return;
     }
-    arsa.a("0X800A250", 1);
+    asoe.a("0X800A250", 1);
   }
   
   private void p()
@@ -139,27 +139,27 @@ public class MsgBackupTransportFragment
       return;
     }
     this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131100171));
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131624807);
+    this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165761));
+    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690368);
   }
   
   protected void a()
   {
     super.a();
-    this.jdField_c_of_type_Int = arpa.jdField_b_of_type_Int;
-    arsc.a();
-    if (arrt.a().a() == 1) {
+    this.jdField_c_of_type_Int = asle.jdField_b_of_type_Int;
+    asog.a();
+    if (asnx.a().a() == 1) {
       this.jdField_b_of_type_MqqOsMqqHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, 15000L);
     }
-    arsc.b("MsgBackup.MsgBackupTransportFragment-loadData ..start toPage = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    asog.b("MsgBackup.MsgBackupTransportFragment-loadData ..start toPage = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
     if (this.jdField_a_of_type_Int == 4)
     {
-      if (this.jdField_a_of_type_Aroq != null) {
-        getActivity().app.removeObserver(this.jdField_a_of_type_Aroq);
+      if (this.jdField_a_of_type_Asku != null) {
+        getActivity().app.removeObserver(this.jdField_a_of_type_Asku);
       }
-      localarpa = arpa.a();
-      localarpa.a().a(this);
-      getActivity().app.addObserver(this.jdField_a_of_type_Aroq);
+      localasle = asle.a();
+      localasle.a().a(this);
+      getActivity().app.addObserver(this.jdField_a_of_type_Asku);
       localObject = getActivity().getIntent().getStringExtra("msgbackup_qr_sig");
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
@@ -167,22 +167,22 @@ public class MsgBackupTransportFragment
         if (QLog.isColorLevel()) {
           QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "scan QRCode sig = " + localObject[1]);
         }
-        localarpa.a().a(localObject[1]);
-        localarpa.a().a(3);
-        localarpa.j();
-        arpa.jdField_b_of_type_Boolean = true;
+        localasle.a().a(localObject[1]);
+        localasle.a().a(3);
+        localasle.j();
+        asle.jdField_b_of_type_Boolean = true;
         if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "MsgBackupManager.sIsTranferingStatus = " + arpa.jdField_b_of_type_Boolean);
+          QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "MsgBackupManager.sIsTranferingStatus = " + asle.jdField_b_of_type_Boolean);
         }
         this.jdField_e_of_type_Boolean = false;
-        if (badq.a(getActivity()) != 1) {
-          arsa.a("0X800A245", 2);
+        if (bbev.a(getActivity()) != 1) {
+          asoe.a("0X800A245", 2);
         }
       }
     }
     while (this.jdField_a_of_type_Int != 5)
     {
-      arpa localarpa;
+      asle localasle;
       Object localObject;
       return;
       if (QLog.isColorLevel()) {
@@ -190,7 +190,7 @@ public class MsgBackupTransportFragment
       }
       if (this.jdField_d_of_type_AndroidWidgetTextView != null)
       {
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131624821));
+        this.jdField_d_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690382));
         this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(10014);
         this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(10014, 800L);
       }
@@ -198,18 +198,18 @@ public class MsgBackupTransportFragment
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = arpa.a().a();
+    this.jdField_a_of_type_Long = asle.a().a();
     c(this.jdField_d_of_type_Int, this.jdField_c_of_type_Int);
-    if (this.jdField_a_of_type_Aroq != null) {
-      getActivity().app.removeObserver(this.jdField_a_of_type_Aroq);
+    if (this.jdField_a_of_type_Asku != null) {
+      getActivity().app.removeObserver(this.jdField_a_of_type_Asku);
     }
-    if (arrt.a().b()) {
+    if (asnx.a().b()) {
       p();
     }
     for (;;)
     {
-      arpa.a().a().a(this);
-      getActivity().app.addObserver(this.jdField_a_of_type_Aroq);
+      asle.a().a().a(this);
+      getActivity().app.addObserver(this.jdField_a_of_type_Asku);
       return;
       o();
     }
@@ -239,9 +239,9 @@ public class MsgBackupTransportFragment
   {
     super.a(paramLong);
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "speedState!!! increment = " + paramLong + " , isStart = " + this.jdField_a_of_type_Boolean + ", MsgBackupManager.isTransportStart = " + arpa.jdField_e_of_type_Boolean);
+      QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "speedState!!! increment = " + paramLong + " , isStart = " + this.jdField_a_of_type_Boolean + ", MsgBackupManager.isTransportStart = " + asle.jdField_e_of_type_Boolean);
     }
-    if ((this.jdField_a_of_type_Boolean) || (arpa.jdField_e_of_type_Boolean))
+    if ((this.jdField_a_of_type_Boolean) || (asle.jdField_e_of_type_Boolean))
     {
       this.jdField_a_of_type_Long = paramLong;
       Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10002);
@@ -270,10 +270,10 @@ public class MsgBackupTransportFragment
     int i = 6;
     super.a(paramBoolean, paramObject);
     this.jdField_f_of_type_Boolean = true;
-    this.jdField_f_of_type_Int = arrt.a().a();
+    this.jdField_f_of_type_Int = asnx.a().a();
     if (paramBoolean)
     {
-      paramObject = (arpk)paramObject;
+      paramObject = (aslo)paramObject;
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "onConfirmQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
       }
@@ -283,34 +283,34 @@ public class MsgBackupTransportFragment
       return;
     }
     int j = ((Integer)paramObject).intValue();
-    arsc.b("MsgBackup.MsgBackupTransportFragment", "processConfirmQRRsp  result = %d", new Object[] { Integer.valueOf(j) });
+    asog.b("MsgBackup.MsgBackupTransportFragment", "processConfirmQRRsp  result = %d", new Object[] { Integer.valueOf(j) });
     if (j == 1006)
     {
-      a(this.jdField_d_of_type_AndroidWidgetTextView, getString(2131624811));
-      bajq.b(this.jdField_c_of_type_AndroidWidgetProgressBar, 8);
+      a(this.jdField_d_of_type_AndroidWidgetTextView, getString(2131690372));
+      bbkx.b(this.jdField_c_of_type_AndroidWidgetProgressBar, 8);
       this.jdField_f_of_type_Boolean = false;
       i = 3;
     }
     for (;;)
     {
       if (this.jdField_c_of_type_AndroidWidgetImageView != null) {
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840845);
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840910);
       }
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(10014);
       if (this.jdField_f_of_type_Int != 1) {
         break;
       }
-      arsa.a("0X800A245", i);
+      asoe.a("0X800A245", i);
       return;
       if (j == 1021)
       {
-        a(this.jdField_d_of_type_AndroidWidgetTextView, getString(2131624812));
-        bajq.b(this.jdField_c_of_type_AndroidWidgetProgressBar, 8);
+        a(this.jdField_d_of_type_AndroidWidgetTextView, getString(2131690373));
+        bbkx.b(this.jdField_c_of_type_AndroidWidgetProgressBar, 8);
       }
       else if (j == 1022)
       {
-        a(this.jdField_d_of_type_AndroidWidgetTextView, getString(2131624814));
-        bajq.b(this.jdField_c_of_type_AndroidWidgetProgressBar, 8);
+        a(this.jdField_d_of_type_AndroidWidgetTextView, getString(2131690375));
+        bbkx.b(this.jdField_c_of_type_AndroidWidgetProgressBar, 8);
         i = 1;
       }
     }
@@ -320,7 +320,7 @@ public class MsgBackupTransportFragment
   {
     super.b();
     Object localObject = getActivity().getIntent().getStringExtra("msgbackup_qr_sig");
-    this.jdField_f_of_type_Int = arrt.a().a();
+    this.jdField_f_of_type_Int = asnx.a().a();
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       this.jdField_f_of_type_Int = 1;
     }
@@ -334,14 +334,14 @@ public class MsgBackupTransportFragment
     }
     if ((this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 5))
     {
-      setTitle(getActivity().getString(2131624802));
+      setTitle(getActivity().getString(2131690363));
       this.vg.setLeftBackVisible(8);
-      this.vg.setRightButton(2131624786);
-      this.vg.setLeftButton(2131624810);
-      if ((this.jdField_a_of_type_Int == 4) || (arpa.a().a().a() == 2)) {
+      this.vg.setRightButton(2131690347);
+      this.vg.setLeftButton(2131690371);
+      if ((this.jdField_a_of_type_Int == 4) || (asle.a().a().a() == 2)) {
         this.vg.a();
       }
-      this.vg.setOnItemSelectListener(new arrd(this));
+      this.vg.setOnItemSelectListener(new asnh(this));
     }
   }
   
@@ -363,11 +363,11 @@ public class MsgBackupTransportFragment
         if (this.jdField_f_of_type_Int != 1) {
           break label315;
         }
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840840);
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840905);
       }
       if (this.jdField_d_of_type_AndroidWidgetTextView != null)
       {
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(getActivity().getResources().getString(2131624821));
+        this.jdField_d_of_type_AndroidWidgetTextView.setText(getActivity().getResources().getString(2131690382));
         this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(10014);
         this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(10014, 800L);
       }
@@ -375,7 +375,7 @@ public class MsgBackupTransportFragment
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
       }
       if (this.jdField_f_of_type_Int == 1) {
-        arsa.a("0X800A246");
+        asoe.a("0X800A246");
       }
     }
     int i;
@@ -383,43 +383,43 @@ public class MsgBackupTransportFragment
     if (this.jdField_a_of_type_Int == 5)
     {
       if (this.jdField_c_of_type_AndroidWidgetImageView != null) {
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840840);
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840905);
       }
-      arpa.jdField_a_of_type_Boolean = false;
-      int j = arpa.a().a();
+      asle.jdField_a_of_type_Boolean = false;
+      int j = asle.a().a();
       this.jdField_d_of_type_Int = j;
       i = j;
-      if (j != arpa.jdField_b_of_type_Int) {
+      if (j != asle.jdField_b_of_type_Int) {
         i = j + 1;
       }
-      if (arrt.a().a() != 1) {
+      if (asnx.a().a() != 1) {
         break label328;
       }
-      str1 = getActivity().getResources().getString(2131624831);
+      str1 = getActivity().getResources().getString(2131690392);
     }
-    for (String str2 = i + "/" + arpa.jdField_b_of_type_Int;; str2 = i + "/" + arpa.jdField_b_of_type_Int)
+    for (String str2 = i + "/" + asle.jdField_b_of_type_Int;; str2 = i + "/" + asle.jdField_b_of_type_Int)
     {
       if (this.jdField_d_of_type_AndroidWidgetTextView != null)
       {
-        String str3 = arsc.a(this.jdField_a_of_type_Long);
+        String str3 = asog.a(this.jdField_a_of_type_Long);
         this.jdField_d_of_type_AndroidWidgetTextView.setText(String.format(str1, new Object[] { str2, str3 + "/S" }));
       }
       if (this.jdField_e_of_type_AndroidWidgetTextView != null) {
-        this.jdField_e_of_type_AndroidWidgetTextView.setText(2131624807);
+        this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690368);
       }
-      arsa.a("0X800A24A");
+      asoe.a("0X800A24A");
       return;
       label315:
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840841);
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840906);
       break;
       label328:
-      str1 = getActivity().getResources().getString(2131624834);
+      str1 = getActivity().getResources().getString(2131690395);
     }
   }
   
   protected void c(int paramInt1, int paramInt2)
   {
-    arsc.b("MsgBackup.MsgBackupTransportFragment", "refreshProgress is called! finishedCount = %d, total = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    asog.b("MsgBackup.MsgBackupTransportFragment", "refreshProgress is called! finishedCount = %d, total = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt2 == 0) {}
     do
     {
@@ -438,10 +438,10 @@ public class MsgBackupTransportFragment
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_f_of_type_Int == 2)
     {
-      arsa.a("0X800A23D");
+      asoe.a("0X800A23D");
       return;
     }
-    arsa.a("0X800A248");
+    asoe.a("0X800A248");
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -471,7 +471,7 @@ public class MsgBackupTransportFragment
   {
     super.f();
     if (this.jdField_f_of_type_Int == 1) {
-      arsa.a("0X800A250", 6);
+      asoe.a("0X800A250", 6);
     }
   }
   
@@ -495,10 +495,10 @@ public class MsgBackupTransportFragment
         do
         {
           return super.handleMessage(paramMessage);
-          if ((this.jdField_a_of_type_Boolean) && (arpa.a().a().a() != 2)) {
-            this.vg.setLeftButton(2131624810);
+          if ((this.jdField_a_of_type_Boolean) && (asle.a().a().a() != 2)) {
+            this.vg.setLeftButton(2131690371);
           }
-        } while ((!this.jdField_a_of_type_Boolean) && (!arpa.jdField_e_of_type_Boolean));
+        } while ((!this.jdField_a_of_type_Boolean) && (!asle.jdField_e_of_type_Boolean));
         if (this.jdField_d_of_type_Boolean)
         {
           this.jdField_d_of_type_Boolean = false;
@@ -507,20 +507,20 @@ public class MsgBackupTransportFragment
             if (this.jdField_f_of_type_Int != 1) {
               break label326;
             }
-            this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840840);
+            this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840905);
           }
         }
-        str3 = arsc.a(this.jdField_a_of_type_Long);
-        arsc.b("MsgBackup.MsgBackupTransportFragment", "transport speed ...xp.increaseLen = %d,compute result = %s", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), str3 });
+        str3 = asog.a(this.jdField_a_of_type_Long);
+        asog.b("MsgBackup.MsgBackupTransportFragment", "transport speed ...xp.increaseLen = %d,compute result = %s", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), str3 });
         j = this.jdField_d_of_type_Int;
         i = j;
-        if (j != arpa.jdField_b_of_type_Int) {
+        if (j != asle.jdField_b_of_type_Int) {
           i = j + 1;
         }
-        if (arrt.a().a() == 1) {
-          str1 = getString(2131624831);
+        if (asnx.a().a() == 1) {
+          str1 = getString(2131690392);
         }
-        for (str2 = i + "/" + arpa.jdField_b_of_type_Int;; str2 = i + "/" + arpa.jdField_b_of_type_Int)
+        for (str2 = i + "/" + asle.jdField_b_of_type_Int;; str2 = i + "/" + asle.jdField_b_of_type_Int)
         {
           str1 = String.format(str1, new Object[] { str2, str3 + "B/s" });
           if (this.jdField_d_of_type_AndroidWidgetTextView != null) {
@@ -530,16 +530,16 @@ public class MsgBackupTransportFragment
             break;
           }
           this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.jdField_e_of_type_AndroidWidgetTextView.setText(2131624807);
+          this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690368);
           break;
-          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840841);
+          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840906);
           break label142;
-          str1 = getString(2131624834);
+          str1 = getString(2131690395);
         }
-        if ((this.jdField_a_of_type_Boolean) && (arpa.a().a().a() != 2)) {
-          this.vg.setLeftButton(2131624810);
+        if ((this.jdField_a_of_type_Boolean) && (asle.a().a().a() != 2)) {
+          this.vg.setLeftButton(2131690371);
         }
-      } while ((!this.jdField_a_of_type_Boolean) && (!arpa.jdField_e_of_type_Boolean));
+      } while ((!this.jdField_a_of_type_Boolean) && (!asle.jdField_e_of_type_Boolean));
       if (this.jdField_d_of_type_Boolean)
       {
         this.jdField_d_of_type_Boolean = false;
@@ -548,10 +548,10 @@ public class MsgBackupTransportFragment
           if (this.jdField_f_of_type_Int != 1) {
             break;
           }
-          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840840);
+          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840905);
         }
       }
-      str3 = arsc.a(this.jdField_a_of_type_Long);
+      str3 = asog.a(this.jdField_a_of_type_Long);
       j = paramMessage.arg1;
       k = paramMessage.arg2;
       c(j, k);
@@ -560,10 +560,10 @@ public class MsgBackupTransportFragment
     }
     for (int i = j + 1;; i = j)
     {
-      if (arrt.a().a() == 1) {
-        str1 = getString(2131624831);
+      if (asnx.a().a() == 1) {
+        str1 = getString(2131690392);
       }
-      for (str2 = i + "/" + arpa.jdField_b_of_type_Int;; str2 = i + "/" + arpa.jdField_b_of_type_Int)
+      for (str2 = i + "/" + asle.jdField_b_of_type_Int;; str2 = i + "/" + asle.jdField_b_of_type_Int)
       {
         if (this.jdField_d_of_type_AndroidWidgetTextView != null) {
           this.jdField_d_of_type_AndroidWidgetTextView.setText(String.format(str1, new Object[] { str2, str3 + "B/s" }));
@@ -571,7 +571,7 @@ public class MsgBackupTransportFragment
         if (this.jdField_e_of_type_AndroidWidgetTextView != null)
         {
           this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.jdField_e_of_type_AndroidWidgetTextView.setText(2131624807);
+          this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690368);
         }
         if (j != k) {
           break;
@@ -579,14 +579,14 @@ public class MsgBackupTransportFragment
         if (QLog.isColorLevel()) {
           QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "sessionCompleted!!!>>>>>>>>>>>");
         }
-        if (arrt.a().a() != 2) {
+        if (asnx.a().a() != 2) {
           break label721;
         }
         MsgBackupCompleteFragment.a(getActivity(), this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
         break;
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840841);
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840906);
         break label459;
-        str1 = getString(2131624834);
+        str1 = getString(2131690395);
       }
       label721:
       MsgBackupCompleteFragment.d(getActivity(), this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
@@ -603,11 +603,11 @@ public class MsgBackupTransportFragment
       if ((this.jdField_d_of_type_AndroidWidgetTextView == null) || (this.jdField_d_of_type_AndroidWidgetTextView.getVisibility() != 0) || (this.jdField_a_of_type_Boolean)) {
         break;
       }
-      str1 = getActivity().getString(2131624821);
+      str1 = getActivity().getString(2131690382);
       i = this.jdField_e_of_type_Int + 1;
       this.jdField_e_of_type_Int = i;
       str1 = str1.substring(0, str1.length() - (2 - i % 3));
-      arsc.b("MsgBackup.MsgBackupTransportFragment", "refreshThreeDot text = %s,threeIdottime = %d", new Object[] { str1, Integer.valueOf(this.jdField_e_of_type_Int) });
+      asog.b("MsgBackup.MsgBackupTransportFragment", "refreshThreeDot text = %s,threeIdottime = %d", new Object[] { str1, Integer.valueOf(this.jdField_e_of_type_Int) });
       this.jdField_d_of_type_AndroidWidgetTextView.setText(str1);
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(10014);
       this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(10014, 800L);
@@ -621,21 +621,21 @@ public class MsgBackupTransportFragment
     if (getActivity() != null)
     {
       if (this.jdField_c_of_type_AndroidWidgetImageView != null) {
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840838);
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840903);
       }
       if (this.jdField_d_of_type_AndroidWidgetTextView != null) {
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(getString(2131624833));
+        this.jdField_d_of_type_AndroidWidgetTextView.setText(getString(2131690394));
       }
       if (this.jdField_e_of_type_AndroidWidgetTextView != null)
       {
-        this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131100171));
-        this.jdField_e_of_type_AndroidWidgetTextView.setText(getString(2131624832));
+        this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165761));
+        this.jdField_e_of_type_AndroidWidgetTextView.setText(getString(2131690393));
       }
-      bajq.b(this.jdField_b_of_type_AndroidWidgetProgressBar, 8);
-      bajq.b(this.jdField_c_of_type_AndroidWidgetProgressBar, 8);
+      bbkx.b(this.jdField_b_of_type_AndroidWidgetProgressBar, 8);
+      bbkx.b(this.jdField_c_of_type_AndroidWidgetProgressBar, 8);
       this.vg.b();
       if ((this.jdField_f_of_type_Int == 1) && (!this.jdField_a_of_type_Boolean)) {
-        arsa.a("0X800A241", 2);
+        asoe.a("0X800A241", 2);
       }
     }
   }
@@ -654,13 +654,13 @@ public class MsgBackupTransportFragment
     if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing())) {
       return;
     }
-    babr.a(localFragmentActivity, 0, localFragmentActivity.getString(2131624826), localFragmentActivity.getString(2131624822), localFragmentActivity.getString(2131624824), localFragmentActivity.getString(2131624825), new arre(this), new arrf(this)).show();
+    bbcv.a(localFragmentActivity, 0, localFragmentActivity.getString(2131690387), localFragmentActivity.getString(2131690383), localFragmentActivity.getString(2131690385), localFragmentActivity.getString(2131690386), new asni(this), new asnj(this)).show();
   }
   
   public void l()
   {
-    arpa.a().a().c();
-    arpa.a().a().a(null);
+    asle.a().a().c();
+    asle.a().a().a(null);
     h();
   }
   
@@ -670,43 +670,43 @@ public class MsgBackupTransportFragment
     if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing())) {
       return;
     }
-    String str = ajjy.a(2131641126);
-    babr.a(localFragmentActivity, 0, null, ajjy.a(2131641117), null, str, new arrg(this), null).show();
+    String str = ajyc.a(2131706911);
+    bbcv.a(localFragmentActivity, 0, null, ajyc.a(2131706902), null, str, new asnk(this), null).show();
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    if ((getActivity() != null) && (this.jdField_a_of_type_Aroq != null)) {
-      getActivity().app.removeObserver(this.jdField_a_of_type_Aroq);
+    if ((getActivity() != null) && (this.jdField_a_of_type_Asku != null)) {
+      getActivity().app.removeObserver(this.jdField_a_of_type_Asku);
     }
-    arpa localarpa = arpa.a();
+    asle localasle = asle.a();
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "onDestroy called! MsgBackupManager.sIsShouQiBtnClick = " + arpa.jdField_a_of_type_Boolean + ", topage = " + this.jdField_a_of_type_Int);
+      QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "onDestroy called! MsgBackupManager.sIsShouQiBtnClick = " + asle.jdField_a_of_type_Boolean + ", topage = " + this.jdField_a_of_type_Int);
     }
-    if (!arpa.jdField_a_of_type_Boolean)
+    if (!asle.jdField_a_of_type_Boolean)
     {
-      localarpa.d();
-      arpa.jdField_d_of_type_Boolean = false;
-      if (arrt.a().a() == 2) {
-        localarpa.l();
+      localasle.d();
+      asle.jdField_d_of_type_Boolean = false;
+      if (asnx.a().a() == 2) {
+        localasle.l();
       }
-      localarpa.a().a(null);
+      localasle.a().a(null);
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    arpa.a().b(getActivity());
+    asle.a().b(getActivity());
   }
   
   public void onResume()
   {
     super.onResume();
-    arsc.b("MsgBackup.MsgBackupTransportFragment", "onResume is called!", new Object[0]);
-    arpa.a().a(getActivity());
-    arpa.jdField_f_of_type_Boolean = true;
+    asog.b("MsgBackup.MsgBackupTransportFragment", "onResume is called!", new Object[0]);
+    asle.a().a(getActivity());
+    asle.jdField_f_of_type_Boolean = true;
   }
   
   public void onStop()

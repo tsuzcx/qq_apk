@@ -1,10 +1,21 @@
-public abstract interface tqr
+import java.util.HashMap;
+
+class tqr
+  extends tps
 {
-  public abstract void a(long paramLong1, long paramLong2, tqg paramtqg);
+  tqr(tqk paramtqk, String paramString1, String paramString2, boolean paramBoolean, tro paramtro)
+  {
+    super(paramString1, paramString2, paramBoolean);
+  }
   
-  public abstract void b(tqg paramtqg);
-  
-  public abstract void c(tqg paramtqg);
+  public boolean b()
+  {
+    this.jdField_a_of_type_Tro.a = ((String)a("EncryptUrlJob_encryptedUrl"));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(this.jdField_a_of_type_Tro.a, this.jdField_a_of_type_Tro.a);
+    a("ShortenUrlJob_shortenedUrls", localHashMap);
+    return true;
+  }
 }
 
 

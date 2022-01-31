@@ -1,18 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
 public class abkv
-  implements View.OnTouchListener
+  extends aoeu
 {
-  public abkv(QQLSActivity paramQQLSActivity) {}
+  public abkv(Leba paramLeba) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(int paramInt)
   {
-    QQLSActivity.a(this.a).setCursorVisible(true);
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.lebatab.leba", 2, "onUpdateRedPoint " + paramInt);
+    }
+    if (Leba.a(this.a) != null) {
+      Leba.a(this.a).b();
+    }
   }
 }
 

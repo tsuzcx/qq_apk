@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nkg
-  implements View.OnClickListener
+class nkg
+  implements DialogInterface.OnClickListener
 {
-  public nkg(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  nkg(nke paramnke, JsResult paramJsResult) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReadInJoyChannelActivity.a(this.a);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
   }
 }
 

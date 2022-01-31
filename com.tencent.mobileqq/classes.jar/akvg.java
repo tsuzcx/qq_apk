@@ -1,130 +1,87 @@
-import android.content.Context;
-import android.util.Xml;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.NewUpgradeConfig;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.util.HashMap;
-import org.xmlpull.v1.XmlPullParser;
+import mqq.manager.Manager;
 
 public class akvg
-  extends akuu
+  implements Manager
 {
-  private static final Object a;
-  public static boolean a;
+  private final QQAppInterface a;
   
-  static
+  public akvg(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
+    this.a = paramQQAppInterface;
   }
   
-  public static byte a(String paramString)
+  public static akvg a(QQAppInterface paramQQAppInterface)
   {
-    return akuu.a(0, paramString);
+    return (akvg)paramQQAppInterface.getManager(189);
   }
   
-  public static Object a()
+  public boolean a()
   {
-    return jdField_a_of_type_JavaLangObject;
-  }
-  
-  public static String a()
-  {
-    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject == null)
+    if (akva.a().a() == 4) {}
+    for (boolean bool = true;; bool = false)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniScanDecodeSoLoader", 2, "getFilesDir is null");
+        QLog.d("UpgradeManager", 2, new Object[] { "hasNewApkDownloaded: invoked. ", " hasDl: ", Boolean.valueOf(bool) });
       }
-      localObject = "";
+      return bool;
     }
-    String str;
+  }
+  
+  public boolean a(UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  {
+    if ((paramUpgradeDetailWrapper == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog == null)) {}
+    int i;
+    int j;
+    int k;
+    long l1;
+    long l2;
     do
     {
-      return localObject;
-      str = localObject + "/pddata/prd/" + "qq.android.minidecode.so_v8.1.5";
-      localObject = str;
-    } while (!QLog.isColorLevel());
-    QLog.i("MiniRecog.MiniScanDecodeSoLoader", 2, "getLibDir ,path = " + str);
-    return str;
-  }
-  
-  public static String a(String paramString)
-  {
-    return "lib" + paramString + ".so";
-  }
-  
-  protected static void a(boolean paramBoolean)
-  {
-    jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    if (!akuu.a(0, jdField_a_of_type_Boolean, "minicode"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.MiniScanDecodeSoLoader", 2, "native so is not exist!");
-      }
       return false;
-    }
+      i = bbjn.aN(this.a.getApp(), this.a.c());
+      j = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.c;
+      k = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.d;
+      l1 = bbjn.k(this.a.getApp(), this.a.c());
+      l2 = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("UpgradeManager", 2, new Object[] { "needShowDownloadDialog: invoked. ", " downloadDialogMaxTimes: ", Integer.valueOf(j), " downloadDialogShownTimes: ", Integer.valueOf(i), " downloadDialogDayRate: ", Integer.valueOf(k), " downloadDialogShownTimestamp: ", Long.valueOf(l1), " now: ", Long.valueOf(l2) });
+      }
+    } while ((i >= j) || (l2 - l1 < k * 86400000L));
     return true;
   }
   
-  public static boolean a(String paramString, HashMap<String, String> paramHashMap)
+  public boolean b(UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    boolean bool = true;
-    XmlPullParser localXmlPullParser = Xml.newPullParser();
-    paramHashMap.clear();
-    for (;;)
+    if ((paramUpgradeDetailWrapper == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog == null)) {}
+    int i;
+    int j;
+    int k;
+    long l1;
+    long l2;
+    do
     {
-      try
-      {
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
+      return false;
+      i = bbjn.aO(this.a.getApp(), this.a.c());
+      j = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.e;
+      k = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.f;
+      l1 = bbjn.l(this.a.getApp(), this.a.c());
+      l2 = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("UpgradeManager", 2, new Object[] { "needShowInstallDialog: invoked. ", " installDialogMaxTimes: ", Integer.valueOf(j), " installDialogShownTimes: ", Integer.valueOf(i), " installDialogDayRate: ", Integer.valueOf(k), " installDialogShownTimestamp: ", Long.valueOf(l1), " now: ", Long.valueOf(l2) });
       }
-      catch (Exception paramHashMap)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("MiniRecog.MiniScanDecodeSoLoader", 2, paramString, paramHashMap);
-        bool = false;
-        return bool;
-      }
-      int i = localXmlPullParser.next();
-      if (localXmlPullParser.getName().equalsIgnoreCase("minicode"))
-      {
-        paramHashMap.put("minicode", localXmlPullParser.nextText());
-        break label104;
-        ;;
-        label104:
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MiniRecog.MiniScanDecodeSoLoader", 2, "parseConfig success|config=" + paramHashMap);
-          return true;
-          if (i != 1) {
-            switch (i)
-            {
-            }
-          }
-        }
-      }
-    }
+    } while ((i >= j) || (l2 - l1 < k * 86400000L));
+    return true;
   }
   
-  public static byte b(String paramString)
-  {
-    return akuu.a(0, jdField_a_of_type_Boolean, paramString);
-  }
-  
-  public static String b(String paramString)
-  {
-    return akuu.a(0, paramString);
-  }
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akvg
  * JD-Core Version:    0.7.0.1
  */

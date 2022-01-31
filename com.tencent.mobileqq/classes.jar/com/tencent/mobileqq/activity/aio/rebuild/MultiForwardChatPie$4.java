@@ -1,16 +1,24 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import acka;
-import aege;
+import aerb;
+import com.tencent.qphone.base.util.QLog;
 
 public class MultiForwardChatPie$4
   implements Runnable
 {
-  public MultiForwardChatPie$4(aege paramaege) {}
+  public MultiForwardChatPie$4(aerb paramaerb) {}
   
   public void run()
   {
-    aege.a(this.this$0).notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.this$0.a, 2, "mRunOnShow 800 hasDestory=" + this.this$0.N);
+    }
+    if ((aerb.a(this.this$0)) || (this.this$0.N))
+    {
+      QLog.i(this.this$0.a, 1, "onShowFirst return|3 hasDestory:" + this.this$0.N);
+      return;
+    }
+    aerb.a(this.this$0);
   }
 }
 

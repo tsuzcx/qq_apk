@@ -1,24 +1,19 @@
-import android.content.res.Resources;
-import android.text.SpannableString;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
-import com.tencent.image.URLDrawable.DownloadListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.ReadInJoyDraftboxContent;
 
-public class pbf
-  implements URLDrawable.DownloadListener
+public final class pbf
+  implements Parcelable.Creator<ReadInJoyDraftboxItem.ReadInJoyDraftboxContent>
 {
-  public pbf(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
-  
-  public void onFileDownloadFailed(int paramInt)
+  public ReadInJoyDraftboxItem.ReadInJoyDraftboxContent a(Parcel paramParcel)
   {
-    wop localwop = new wop(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getResources().getDrawable(2130842104));
-    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(localwop, 0, 1, 17);
-    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
+    return new ReadInJoyDraftboxItem.ReadInJoyDraftboxContent(paramParcel);
   }
   
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
+  public ReadInJoyDraftboxItem.ReadInJoyDraftboxContent[] a(int paramInt)
+  {
+    return new ReadInJoyDraftboxItem.ReadInJoyDraftboxContent[paramInt];
+  }
 }
 
 

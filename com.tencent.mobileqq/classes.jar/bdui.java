@@ -1,19 +1,41 @@
-import com.tencent.smtt.sdk.ValueCallback;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-class bdui
-  implements ValueCallback
+public class bdui
+  implements View.OnClickListener
 {
-  bdui(bduh parambduh, String paramString) {}
+  public bdui(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public void onReceiveValue(Object paramObject)
+  public void onClick(View paramView)
   {
-    bduh.a(this.jdField_a_of_type_Bduh).add(this.jdField_a_of_type_JavaLangString);
+    boolean bool = true;
+    paramView = QidianProfileCardActivity.a(this.a);
+    int i;
+    if (QidianProfileCardActivity.a(this.a))
+    {
+      i = 1;
+      paramView.setMaxLines(i);
+      paramView = this.a;
+      if (QidianProfileCardActivity.a(this.a)) {
+        break label54;
+      }
+    }
+    for (;;)
+    {
+      QidianProfileCardActivity.a(paramView, bool);
+      return;
+      i = 3;
+      break;
+      label54:
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bdui
  * JD-Core Version:    0.7.0.1
  */

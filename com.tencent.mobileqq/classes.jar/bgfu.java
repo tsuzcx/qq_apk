@@ -1,17 +1,30 @@
-import com.tencent.mobileqq.testassister.ShareAppLogHelper.LogFile;
-import java.util.Comparator;
+import common.config.service.QzoneConfig;
 
-final class bgfu
-  implements Comparator<ShareAppLogHelper.LogFile>
+public class bgfu
 {
-  public int a(ShareAppLogHelper.LogFile paramLogFile1, ShareAppLogHelper.LogFile paramLogFile2)
+  private static volatile bgfu jdField_a_of_type_Bgfu;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  
+  public static bgfu a()
   {
-    return (int)(paramLogFile1.lastModified() - paramLogFile2.lastModified()) / 1000;
+    if (jdField_a_of_type_Bgfu == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Bgfu == null) {
+        jdField_a_of_type_Bgfu = new bgfu();
+      }
+      return jdField_a_of_type_Bgfu;
+    }
+  }
+  
+  public int a()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "POICacheDistance", 1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgfu
  * JD-Core Version:    0.7.0.1
  */

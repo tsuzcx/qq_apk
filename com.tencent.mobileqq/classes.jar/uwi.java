@@ -1,36 +1,49 @@
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class uwi
-  extends auyu
+  extends uxr<GeneralFeedItem>
 {
-  public uwi(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  public boolean a;
   
-  public void a()
+  public uwi(@NonNull GeneralFeedItem paramGeneralFeedItem)
   {
-    super.a();
-    this.a.a.n();
-    this.a.l();
+    super(paramGeneralFeedItem);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public GeneralFeedItem a()
   {
-    super.a(paramInt1, paramInt2);
+    return (GeneralFeedItem)super.a();
   }
   
-  public void a(long paramLong)
+  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DanceMachineQQBrowserActivity", 2, "onPlayFrame");
-    }
-    super.a(paramLong);
-    try
+    Object localObject = (qqstory_struct.GeneralFeed)paramStoryFeed.general_feed.get();
+    ((GeneralFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.GeneralFeed)localObject);
+    ((GeneralFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    veg.a("Q.qqstory.home.data.GeneralHomeFeed", "GeneralHomeFeed convertFrom, feedSourceType:%s, feedId:%s", Integer.valueOf(((GeneralFeedItem)this.a).feedSourceTagType), ((GeneralFeedItem)this.a).feedId);
+    paramStoryFeed = new ArrayList();
+    localObject = ((qqstory_struct.GeneralFeed)localObject).feed_video_info_list.get().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      this.a.a(1000L * paramLong);
-      return;
+      qqstory_struct.FeedVideoInfo localFeedVideoInfo = (qqstory_struct.FeedVideoInfo)((Iterator)localObject).next();
+      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+      localStoryVideoItem.convertFrom("Q.qqstory.home.data.GeneralHomeFeed", localFeedVideoInfo);
+      paramStoryFeed.add(localStoryVideoItem);
     }
-    catch (InterruptedException localInterruptedException) {}
+    c(paramStoryFeed, true);
+    return true;
   }
 }
 

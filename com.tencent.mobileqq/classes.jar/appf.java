@@ -1,60 +1,43 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
+import android.view.View;
+import com.tencent.widget.AdapterView;
 
-public class appf
-  implements bemm
+class appf
+  implements bfpc
 {
-  public appf(NowLiveFragment paramNowLiveFragment) {}
+  appf(appd paramappd) {}
   
-  public void a(beml parambeml)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (parambeml.a)
+    paramAdapterView = this.a;
+    boolean bool;
+    if (!appd.a(this.a))
     {
-    default: 
-      return;
-    case 0: 
-      parambeml = this.a.getActivity().getIntent().getStringExtra("big_brother_source_key");
-      if (aqod.a())
-      {
-        localObject = new Bundle();
-        if (!TextUtils.isEmpty(parambeml)) {
-          ((Bundle)localObject).putString("big_brother_source_key", parambeml);
-        }
-        aqod.b((Bundle)localObject);
-        return;
+      bool = true;
+      appd.a(paramAdapterView, bool);
+      if (this.a.jdField_a_of_type_Apkn != null) {
+        this.a.jdField_a_of_type_Apkn.a(appd.a(this.a));
       }
-      localObject = "" + this.a.c;
-      Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      localIntent.putExtra("url", (String)localObject);
-      if (!TextUtils.isEmpty(parambeml)) {
-        localIntent.putExtra("big_brother_source_key", parambeml);
+      if (!appd.a(this.a)) {
+        break label110;
       }
-      localIntent.putExtra("reqType", 1);
-      this.a.startActivity(localIntent);
-      return;
-    case 1: 
-      parambeml = "" + this.a.d;
-      localObject = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", parambeml);
-      ((Intent)localObject).putExtra("reqType", 1);
-      this.a.startActivity((Intent)localObject);
-      return;
+      this.a.jdField_a_of_type_Apqq.a(false);
+      this.a.jdField_a_of_type_Apqq.b(false);
     }
-    parambeml = "" + this.a.e;
-    Object localObject = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", parambeml);
-    ((Intent)localObject).putExtra("reqType", 1);
-    ((Intent)localObject).putExtra("title", ajjy.a(2131641885));
-    this.a.startActivity((Intent)localObject);
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Apqq.e(appd.a(this.a));
+      return;
+      bool = false;
+      break;
+      label110:
+      this.a.jdField_a_of_type_Apqq.a(true);
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     appf
  * JD-Core Version:    0.7.0.1
  */

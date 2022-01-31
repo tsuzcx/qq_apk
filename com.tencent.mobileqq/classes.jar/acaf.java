@@ -1,16 +1,43 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 public class acaf
-  implements View.OnTouchListener
+  extends RecyclerView.Adapter<acag>
 {
-  public acaf(TroopMemberListActivity paramTroopMemberListActivity) {}
+  acad jdField_a_of_type_Acad;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public acaf(ScoreQAVFragment paramScoreQAVFragment) {}
+  
+  public acag a(ViewGroup paramViewGroup, int paramInt)
   {
-    return true;
+    return new acag(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2131559576, paramViewGroup, false), this.jdField_a_of_type_Acad);
+  }
+  
+  public void a(acad paramacad)
+  {
+    this.jdField_a_of_type_Acad = paramacad;
+  }
+  
+  public void a(acag paramacag, int paramInt)
+  {
+    paramacag.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt))
+    {
+      paramacag.a.setSelected(true);
+      return;
+    }
+    paramacag.a.setSelected(false);
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

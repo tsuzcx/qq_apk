@@ -1,144 +1,170 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageForLongTextMsg;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.annotation.SuppressLint;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
 
-final class arxr
-  implements atpa
+class arxr
 {
-  arxr(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong1, long paramLong2) {}
+  int jdField_a_of_type_Int = 0;
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  View jdField_d_of_type_AndroidViewView;
+  TextView jdField_d_of_type_AndroidWidgetTextView;
+  View jdField_e_of_type_AndroidViewView;
+  TextView jdField_e_of_type_AndroidWidgetTextView;
+  View jdField_f_of_type_AndroidViewView;
+  TextView jdField_f_of_type_AndroidWidgetTextView;
+  View jdField_g_of_type_AndroidViewView;
+  TextView jdField_g_of_type_AndroidWidgetTextView;
+  View h;
+  View i;
   
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(atpb paramatpb)
+  arxr(arxh paramarxh, View paramView)
   {
-    for (;;)
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131375533);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375547));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375546));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131375532);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375545));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375534));
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131375537);
+    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131375536);
+    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131375530);
+    this.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131375544);
+    this.jdField_g_of_type_AndroidViewView = paramView.findViewById(2131375540);
+    this.h = paramView.findViewById(2131375538);
+    this.i = paramView.findViewById(2131375542);
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375541));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375539));
+    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375543));
+    if (bfwa.a())
     {
-      try
-      {
-        if ((paramatpb.jdField_a_of_type_Int != 0) || (paramatpb.jdField_a_of_type_ArrayOfByte == null)) {
-          continue;
-        }
-        Object localObject1 = new HashMap();
-        localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-        try
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg mr:" + localMessageRecord.toString());
-          }
-          Object localObject4 = new aylt();
-          ((aylt)localObject4).jdField_a_of_type_Int = localMessageRecord.istroop;
-          ArrayList localArrayList1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramatpb.jdField_a_of_type_ArrayOfByte, (HashMap)localObject1, null, (aylt)localObject4);
-          if ((localArrayList1 == null) || (localArrayList1.size() != 1) || ((((MessageRecord)localArrayList1.get(0)).msgtype != -1000) && (((MessageRecord)localArrayList1.get(0)).msgtype != -1051) && (((MessageRecord)localArrayList1.get(0)).msgtype != -1035))) {
-            continue;
-          }
-          localObject1 = null;
-          if (((MessageRecord)localArrayList1.get(0)).msgtype == -1035)
-          {
-            localObject1 = (MessageRecord)localArrayList1.get(0);
-            MessageRecord.copyMessageRecordStatusField((MessageRecord)localObject1, localMessageRecord);
-            ((MessageRecord)localObject1).selfuin = localMessageRecord.selfuin;
-            ((MessageRecord)localObject1).frienduin = localMessageRecord.frienduin;
-            ((MessageRecord)localObject1).senderuin = localMessageRecord.senderuin;
-            ((MessageRecord)localObject1).istroop = localMessageRecord.istroop;
-            ((MessageRecord)localObject1).msgId = localMessageRecord.msgId;
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
-            ((arno)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(174)).a(true, this.jdField_a_of_type_Int);
-            if (((((MessageRecord)localArrayList1.get(0)).istroop == 1) && (localMessageRecord.istroop == 1)) || ((((MessageRecord)localArrayList1.get(0)).istroop == 3000) && (localMessageRecord.istroop == 3000) && (localObject4 != null)))
-            {
-              if (((aylt)localObject4).f.jdField_a_of_type_Long != -1L) {
-                ((aylt)localObject4).f.b = this.jdField_a_of_type_Long;
-              }
-              if (((aylt)localObject4).jdField_a_of_type_Aylu.jdField_a_of_type_Long != -1L) {
-                ((aylt)localObject4).jdField_a_of_type_Aylu.b = this.jdField_a_of_type_Long;
-              }
-              String str = localMessageRecord.frienduin;
-              long l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(str, localMessageRecord.istroop);
-              if (QLog.isColorLevel()) {
-                QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg update MessageInfo-- groupUin:" + str + "lastSeq:" + l + ",shMsgSeq:" + localMessageRecord.shmsgseq + ",msgInfo.hasFlag:" + ((aylt)localObject4).a());
-              }
-              if ((localMessageRecord.shmsgseq > l) && (((aylt)localObject4).a()))
-              {
-                localMessageRecord.mMessageInfo = ((aylt)localObject4);
-                localObject4 = (akab)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(1);
-                ArrayList localArrayList2 = new ArrayList();
-                localArrayList2.add(localMessageRecord);
-                ((akab)localObject4).a(str, localArrayList2);
-              }
-            }
-            if ((((MessageRecord)localArrayList1.get(0)).msgtype != -1035) || (localObject1 == null)) {
-              continue;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((MessageRecord)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(1000, true, this.jdField_a_of_type_JavaLangString);
-            if (QLog.isColorLevel()) {
-              QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg onDownload success end! cost:" + (System.currentTimeMillis() - this.b));
-            }
-            ((MessageForLongTextMsg)localMessageRecord).loading = false;
-            ((arxo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(166)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, paramatpb.jdField_a_of_type_Int, 1);
-            return;
-          }
-          localMessageRecord.msg = ((MessageRecord)localArrayList1.get(0)).msg;
-          localMessageRecord.saveExtInfoToExtStr("long_text_recv_state", "1");
-          localMessageRecord.removeExtInfoToExtStr("long_text_msg_resid");
-          continue;
-          if (localObject2 == null) {
-            continue;
-          }
-        }
-        catch (Exception localException1)
-        {
-          localObject2 = localMessageRecord;
-        }
-      }
-      catch (Exception localException2)
-      {
-        MessageRecord localMessageRecord;
-        Object localObject2;
-        Object localObject3 = null;
-        continue;
-      }
-      if ((localObject2 instanceof MessageForLongTextMsg))
-      {
-        ((MessageForLongTextMsg)localObject2).loading = false;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg onDownload exception! resultCode:" + paramatpb.jdField_a_of_type_Int + ",errCode: " + paramatpb.b + ",errStr:" + paramatpb.jdField_a_of_type_JavaLangString + ",cost:" + (System.currentTimeMillis() - this.b));
-        continue;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, localMessageRecord.msg);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, "extStr", localMessageRecord.extStr);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
-        continue;
-        ((MessageForLongTextMsg)localMessageRecord).loading = false;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
-        continue;
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-        try
-        {
-          if ((localObject2 instanceof MessageForLongTextMsg))
-          {
-            ((MessageForLongTextMsg)localObject2).loading = false;
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg onDownload failed! resultCode:" + paramatpb.jdField_a_of_type_Int + ",errCode: " + paramatpb.b + ",errStr:" + paramatpb.jdField_a_of_type_JavaLangString + ",cost:" + (System.currentTimeMillis() - this.b));
-          }
-        }
-        catch (Exception localException3) {}
-      }
+      this.jdField_g_of_type_AndroidViewView.setBackgroundResource(2130844529);
+      this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(arxh.a(paramarxh).getResources().getColor(2131165692));
+      this.h.setBackgroundResource(2130844529);
+      this.jdField_f_of_type_AndroidWidgetTextView.setTextColor(arxh.a(paramarxh).getResources().getColor(2131165692));
+      this.i.setBackgroundResource(2130844529);
+      this.jdField_g_of_type_AndroidWidgetTextView.setTextColor(arxh.a(paramarxh).getResources().getColor(2131165692));
+      paramView.findViewById(2131365266).setBackgroundColor(Color.parseColor("#282828"));
+      paramView.findViewById(2131365267).setBackgroundColor(Color.parseColor("#282828"));
+      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
+      this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(-1);
     }
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new arxs(this, paramarxh));
+    this.jdField_c_of_type_AndroidViewView.setOnClickListener(new arxt(this, paramarxh));
+    if (bfwa.a())
+    {
+      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130844530);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
+    }
+    this.jdField_g_of_type_AndroidViewView.setOnClickListener(new arxu(this, paramarxh));
+    this.h.setOnClickListener(new arxv(this, paramarxh));
+    this.i.setOnClickListener(new arxw(this, paramarxh));
+  }
+  
+  private String a()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      return "drive";
+    case 2: 
+      return "bus";
+    }
+    return "walk";
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  void a(int paramInt)
+  {
+    this.jdField_d_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_f_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_e_of_type_AndroidViewView.setVisibility(8);
+    LocationRoom.Venue localVenue = arxh.a(this.jdField_a_of_type_Arxh).a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(localVenue.b);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(localVenue.c);
+    b(paramInt);
+  }
+  
+  void a(View paramView)
+  {
+    this.jdField_g_of_type_AndroidViewView.setSelected(false);
+    this.h.setSelected(false);
+    this.i.setSelected(false);
+    paramView.setSelected(true);
+  }
+  
+  void a(aryn paramaryn)
+  {
+    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_f_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_e_of_type_AndroidViewView.setVisibility(0);
+    LocationRoom.Venue localVenue = arxh.a(this.jdField_a_of_type_Arxh).a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(localVenue.b);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(localVenue.c);
+    if (paramaryn != null) {}
+    for (int j = paramaryn.jdField_a_of_type_JavaLangInteger.intValue();; j = 1)
+    {
+      b(j);
+      return;
+    }
+  }
+  
+  @SuppressLint({"SetTextI18n", "DefaultLocale"})
+  void a(aryn paramaryn, LocationRoom.Venue paramVenue)
+  {
+    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_f_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_e_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramVenue.b);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramVenue.c);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(aryd.a(paramaryn.jdField_a_of_type_Float));
+    if (paramaryn.b < 1000.0F) {}
+    for (paramVenue = String.format(arxh.a(this.jdField_a_of_type_Arxh).getResources().getString(2131694003), new Object[] { Integer.valueOf(Math.round(paramaryn.b)) });; paramVenue = String.format(arxh.a(this.jdField_a_of_type_Arxh).getResources().getString(2131694002), new Object[] { Double.valueOf(paramaryn.b / 1000.0D) }))
+    {
+      this.jdField_d_of_type_AndroidWidgetTextView.setText(paramVenue);
+      b(paramaryn.jdField_a_of_type_JavaLangInteger.intValue());
+      return;
+    }
+  }
+  
+  void b()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  void b(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_Int = 1;
+      a(this.jdField_g_of_type_AndroidViewView);
+      return;
+    case 2: 
+      a(this.h);
+      return;
+    }
+    a(this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arxr
  * JD-Core Version:    0.7.0.1
  */

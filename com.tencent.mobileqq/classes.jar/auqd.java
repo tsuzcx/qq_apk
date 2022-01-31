@@ -1,23 +1,22 @@
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
-import java.util.List;
-
-public abstract class auqd
+public class auqd
 {
-  private static int b;
-  public int a;
+  int jdField_a_of_type_Int;
+  int[] jdField_a_of_type_ArrayOfInt;
   
-  public auqd()
+  private auqd(int[] paramArrayOfInt, int paramInt)
   {
-    int i = b;
-    b = i + 1;
-    this.a = i;
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public abstract void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList);
+  static auqd a(int[] paramArrayOfInt, int paramInt)
+  {
+    return new auqd(paramArrayOfInt, paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     auqd
  * JD-Core Version:    0.7.0.1
  */

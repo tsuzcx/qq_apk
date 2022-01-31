@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.control;
 
-import bhfm;
-import bhiu;
+import bjae;
+import bjdm;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 
@@ -10,11 +10,11 @@ public class CaptureAsyncStep$InitMusic
 {
   public int a()
   {
-    bhiu localbhiu = (bhiu)bhfm.a().c(8);
-    if (localbhiu != null) {
-      localbhiu.e();
+    bjdm localbjdm = (bjdm)bjae.a().c(8);
+    if (localbjdm != null) {
+      localbjdm.e();
     }
-    ((QIMMusicConfigManager)bhfm.a(2)).g();
+    ((QIMMusicConfigManager)bjae.a(2)).i();
     return 7;
   }
 }

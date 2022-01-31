@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.out.activity;
 
 import android.view.View;
-import behi;
+import bfpc;
 import com.tencent.widget.AdapterView;
 
 class PhotoPreviewActivity$2
-  implements behi
+  implements bfpc
 {
   PhotoPreviewActivity$2(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   

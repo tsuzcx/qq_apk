@@ -1,390 +1,85 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
-import android.os.Environment;
 import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class azkd
+  extends VasWebviewJsPlugin
 {
-  public static Intent a(Activity paramActivity, String paramString1, String paramString2)
+  public static String a;
+  protected Context a;
+  protected AppInterface a;
+  
+  static
   {
-    paramString1 = TroopMemberListActivity.a(paramActivity, paramString1, 14);
-    paramString1.putExtra("custom_title_name", paramActivity.getString(2131632255));
-    paramString1.putExtra("troop_gift_from", paramString2);
-    return paramString1;
+    jdField_a_of_type_JavaLangString = "TroopUpgradePlugin";
   }
   
-  public static String a(int paramInt)
+  public azkd()
   {
-    return Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MobileQQ/.troop/pic_effects/" + paramInt + ".mp4";
+    this.mPluginNameSpace = "Troop";
   }
   
-  public static String a(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
+  public long getPluginBusiness()
   {
-    String str = b(paramMessageForDeliverGiftTips);
-    if (paramMessageForDeliverGiftTips.isInteract()) {
-      return a(str);
-    }
-    return a(str, paramMessageForDeliverGiftTips.animationType);
+    return 2147614720L;
   }
   
-  public static String a(String paramString)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(ajed.cs).append(paramString + "_NEW").append(File.separator);
-    return localStringBuffer.toString();
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (paramInt == 1) {
-      localStringBuffer.append(ajed.cs).append(paramString + "_V").append(File.separator);
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
     }
-    for (;;)
-    {
-      return localStringBuffer.toString();
-      localStringBuffer.append(ajed.cs).append(paramString + "_HD").append(File.separator);
-    }
-  }
-  
-  public static String a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (paramBoolean) {
-      localStringBuffer.append(ajed.cs).append(File.separator).append(paramString).append("_NEW.zip");
-    }
-    for (;;)
-    {
-      return localStringBuffer.toString();
-      if (paramInt == 1) {
-        localStringBuffer.append(ajed.cs).append(File.separator).append(paramString).append("_V.zip");
-      } else {
-        localStringBuffer.append(ajed.cs).append(File.separator).append(paramString).append("_HD.zip");
-      }
-    }
-  }
-  
-  public static List<String> a(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramMessageForDeliverGiftTips = new File(a(paramMessageForDeliverGiftTips));
-    if (paramMessageForDeliverGiftTips.exists())
-    {
-      paramMessageForDeliverGiftTips = paramMessageForDeliverGiftTips.listFiles();
-      int i = 0;
-      while (i < paramMessageForDeliverGiftTips.length)
-      {
-        if (paramMessageForDeliverGiftTips[i].getAbsolutePath().endsWith(".png")) {
-          localArrayList.add(paramMessageForDeliverGiftTips[i].getAbsolutePath());
-        }
-        i += 1;
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static JSONObject a(String paramString)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(ajed.cs).append(paramString + "_NEW").append(File.separator).append("info.json");
-    paramString = bace.a(new File(localStringBuffer.toString()));
-    if (paramString == null) {
-      return null;
-    }
+    if ("Troop".equals(paramString2)) {}
     try
     {
-      paramString = new JSONObject(paramString);
-      return paramString;
-    }
-    catch (JSONException paramString) {}
-    return null;
-  }
-  
-  public static void a(Activity paramActivity, Intent paramIntent, QQAppInterface paramQQAppInterface)
-  {
-    if (paramIntent == null) {
-      return;
-    }
-    a(paramActivity, paramIntent.getStringExtra("troop_uin"), paramIntent.getStringExtra("member_uin"), paramIntent.getStringExtra("member_display_name"), paramIntent.getStringExtra("troop_gift_from"), paramQQAppInterface);
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
-  {
-    TroopInfo localTroopInfo;
-    int i;
-    if (paramQQAppInterface != null)
-    {
-      localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramString1);
-      if (localTroopInfo != null)
-      {
-        if (!localTroopInfo.isTroopOwner(paramQQAppInterface.getCurrentAccountUin())) {
-          break label133;
-        }
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      awqx.b(paramQQAppInterface, "P_CliOper", "Grp_flower", "", "mber", "exp", 0, 0, paramString1, i + "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopUtils", 2, "startSendGiftActivity from:" + paramString2);
-      }
-      paramActivity.startActivityForResult(a(paramActivity, paramString1, paramString2), 12005);
-      paramActivity.overridePendingTransition(2130771997, 2130771990);
-      return;
-      label133:
-      if (localTroopInfo.isAdmin()) {
-        i = 1;
-      } else {
-        i = 2;
-      }
-    }
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, QQAppInterface paramQQAppInterface)
-  {
-    a(paramActivity, paramString1, paramString2, paramString3, paramString4, paramQQAppInterface, null);
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, QQAppInterface paramQQAppInterface, Map<String, String> paramMap)
-  {
-    if (paramActivity == null) {
-      return;
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        str1 = Base64.encodeToString(paramString3.getBytes("UTF-8"), 0);
-        Object localObject = null;
-        if (paramQQAppInterface != null)
-        {
-          azkf localazkf = azkf.a();
-          String str2 = localazkf.a("troop_gift");
-          localObject = str2;
-          if (!TextUtils.isEmpty(str2))
-          {
-            localObject = new azkg();
-            ((azkg)localObject).a = paramString1;
-            ((azkg)localObject).c = paramString4;
-            ((azkg)localObject).b = paramString2;
-            ((azkg)localObject).e = paramString3;
-            localObject = localazkf.a(str2, (azkg)localObject);
-          }
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          break label445;
-        }
-        paramString3 = new Bundle();
-        paramString3.putString("troopUin", paramString1);
-        paramString3.putString("uin", paramString2);
-        paramString3.putString("name", str1);
-        paramString3.putString("from", paramString4);
-        paramString3.putString("_wv", "1031");
-        paramString3.putString("_bid", "2204");
-        paramString2 = "https://qun.qq.com/qunpay/gifts/index.html?" + mpl.a(paramString3);
-        paramString3 = new Intent(paramActivity, QQBrowserActivity.class);
-        paramString3.putExtra("url", paramString2);
-        if ((paramMap != null) && (paramMap.size() > 0))
-        {
-          paramString4 = paramMap.entrySet().iterator();
-          if (paramString4.hasNext())
-          {
-            paramMap = (Map.Entry)paramString4.next();
-            paramString3.putExtra((String)paramMap.getKey(), (String)paramMap.getValue());
-            continue;
-          }
-        }
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-        String str1 = paramString3;
-        continue;
-        paramActivity.startActivityForResult(paramString3, 13001);
-        if (paramQQAppInterface != null)
-        {
-          paramActivity = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramString1);
-          if (paramActivity != null)
-          {
-            if (!paramActivity.isTroopOwner(paramQQAppInterface.getCurrentAccountUin())) {
-              break label426;
-            }
-            i = 0;
-            awqx.b(paramQQAppInterface, "P_CliOper", "Grp_flower", "", "mber", "send_page", 0, 0, paramString1, i + "", "", "");
-          }
-        }
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopUtils", 2, "openSendTroopGiftUrl url:" + paramString2);
-      return;
-      label426:
-      if (paramActivity.isAdmin())
-      {
-        i = 1;
-      }
-      else
-      {
-        i = 2;
-        continue;
-        label445:
-        paramString2 = localUnsupportedEncodingException;
-      }
-    }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    if ((paramInt < 40003) || (paramInt > 40005)) {}
-    long l;
-    do
-    {
-      return true;
-      File localFile = new File(a(paramInt));
-      if (!localFile.exists()) {
-        break;
-      }
-      l = localFile.length();
-    } while (((paramInt == 40003) && (l == 827720L)) || ((paramInt == 40004) && (l == 355077L)) || ((paramInt == 40005) && (l == 796025L)));
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopUtils", 2, "isTroopPicEffectVideoValid = false, id:" + paramInt);
-    }
-    return false;
-  }
-  
-  public static boolean a(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
-  {
-    return (paramMessageForDeliverGiftTips != null) && ((paramMessageForDeliverGiftTips.animationPackageId > 0) || (paramMessageForDeliverGiftTips.isToAll()));
-  }
-  
-  public static boolean a(File paramFile)
-  {
-    StringBuffer localStringBuffer;
-    Object localObject;
-    if (paramFile.exists())
-    {
-      localStringBuffer = new StringBuffer();
-      localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append("check.ini");
-      localObject = new File(localStringBuffer.toString());
-      if (((File)localObject).exists()) {}
-    }
-    else
-    {
-      return false;
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        localObject = bace.b((File)localObject);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
-        }
-        localObject = ((String)localObject).split("&");
-        if (localObject == null) {
-          break;
-        }
-        i = 0;
-        if (i >= localObject.length) {
-          break label203;
-        }
-        localStringBuffer.setLength(0);
-        localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append(localObject[i].toString());
-        File localFile = new File(localStringBuffer.toString());
-        if (localFile.exists()) {
-          break label196;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e(".troop.send_giftTroopUtils", 2, "isAnimationPackageValid File not exist:" + localFile.getName());
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+      if (paramJsBridgeListener == null) {
         return false;
       }
-      catch (IOException paramFile) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("TroopUtils", 2, "isAnimationPackageValid IOException");
-      return false;
-      label196:
-      i += 1;
     }
-    label203:
+    catch (JSONException paramJsBridgeListener)
+    {
+      for (;;)
+      {
+        paramJsBridgeListener.printStackTrace();
+        paramJsBridgeListener = null;
+      }
+    }
+    catch (Exception paramJsBridgeListener)
+    {
+      int i;
+      do
+      {
+        for (;;)
+        {
+          paramJsBridgeListener.printStackTrace();
+          paramJsBridgeListener = null;
+        }
+        if (!"updateMaxMemberNum".equals(paramString3)) {
+          break;
+        }
+        paramString1 = paramJsBridgeListener.optString("groupId", "");
+        i = paramJsBridgeListener.optInt("type", 0);
+      } while ((TextUtils.isEmpty(paramString1)) || (i == 0));
+      paramJsBridgeListener = new Bundle();
+      paramJsBridgeListener.putString("groupId", paramString1);
+      paramJsBridgeListener.putInt("type", i);
+      sendRemoteReq(anqp.a("notifyTroopUpgradeSuccess", "", this.mOnRemoteResp.key, paramJsBridgeListener), true, false);
+    }
     return true;
   }
   
-  public static boolean a(String paramString, int paramInt, boolean paramBoolean)
+  public void onCreate()
   {
-    if (paramBoolean) {}
-    for (paramString = a(paramString);; paramString = a(paramString, paramInt)) {
-      return a(new File(paramString));
-    }
-  }
-  
-  public static boolean a(List<?> paramList)
-  {
-    return (paramList == null) || (paramList.size() == 0);
-  }
-  
-  public static String b(int paramInt)
-  {
-    return "http://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effect_" + paramInt + ".mp4";
-  }
-  
-  public static String b(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
-  {
-    if (paramMessageForDeliverGiftTips == null) {
-      return null;
-    }
-    if (paramMessageForDeliverGiftTips.isToAll()) {
-      return String.valueOf(paramMessageForDeliverGiftTips.exflag);
-    }
-    return String.valueOf(paramMessageForDeliverGiftTips.animationPackageId);
-  }
-  
-  public static String c(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
-  {
-    String str = b(paramMessageForDeliverGiftTips);
-    if (paramMessageForDeliverGiftTips.isInteract()) {
-      return "http://pub.idqqimg.com/pc/misc/groupgift/" + str + "_NEW.zip";
-    }
-    if (paramMessageForDeliverGiftTips.animationType == 1) {
-      return "http://pub.idqqimg.com/pc/misc/groupgift/" + str + "_V.zip";
-    }
-    return "http://pub.idqqimg.com/pc/misc/groupgift/" + str + "_HD.zip";
-  }
-  
-  public static String d(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
-  {
-    paramMessageForDeliverGiftTips = new File(a(paramMessageForDeliverGiftTips) + "/video.mp4");
-    if (paramMessageForDeliverGiftTips.exists()) {
-      return paramMessageForDeliverGiftTips.getAbsolutePath();
-    }
-    return null;
+    super.onCreate();
+    this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
   }
 }
 

@@ -1,51 +1,26 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class aase
-  implements abqm
+  implements aptu
 {
-  public aase(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public aase(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aouq paramaouq) {}
   
-  public void a(Editable paramEditable)
+  public void a()
   {
-    paramEditable = paramEditable.toString();
-    if (TextUtils.isEmpty(paramEditable)) {
-      ForwardFriendListActivity.a(this.a).setVisibility(8);
-    }
-    for (;;)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      if (ForwardFriendListActivity.a(this.a) != null) {
-        ForwardFriendListActivity.a(this.a).a(paramEditable);
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        this.jdField_a_of_type_Aouq.b(localFileManagerEntity);
       }
-      return;
-      ForwardFriendListActivity.a(this.a).setVisibility(0);
     }
   }
   
-  public void a(ResultRecord paramResultRecord)
-  {
-    if (paramResultRecord != null) {
-      ForwardFriendListActivity.a(this.a, paramResultRecord.a, paramResultRecord.a());
-    }
-    ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (ForwardFriendListActivity.a(this.a) == null))
-    {
-      ForwardFriendListActivity.a(this.a, ContactSearchFragment.a(6, 1, null, null, ForwardFriendListActivity.a(this.a)));
-      FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
-      localFragmentTransaction.add(2131309439, ForwardFriendListActivity.a(this.a));
-      localFragmentTransaction.commitAllowingStateLoss();
-    }
-  }
+  public void b() {}
 }
 
 

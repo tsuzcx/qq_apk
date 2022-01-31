@@ -1,13 +1,17 @@
-public class aewr
+import android.animation.Animator;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+
+class aewr
 {
-  public int a;
-  public int b;
-  
-  public aewr(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+  aewh jdField_a_of_type_Aewh;
+  Animator jdField_a_of_type_AndroidAnimationAnimator;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
 }
 
 

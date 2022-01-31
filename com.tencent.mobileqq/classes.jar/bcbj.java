@@ -1,81 +1,25 @@
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.open.appcommon.js.DownloadInterface;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
-public class bcbj
-  implements bchv
+public abstract interface bcbj
 {
-  protected String a;
+  public abstract void buildBottomBar();
   
-  public bcbj(DownloadInterface paramDownloadInterface, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void buildContentView(Bundle paramBundle);
   
-  public void a(String paramString)
-  {
-    if (!this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.hasRight()) {
-      return;
-    }
-    bcds.e("DownloadInterface", "JsCheckUpdateCallback onException >>> " + paramString);
-    paramString = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramString);
-  }
+  public abstract void buildData();
   
-  public void a(ArrayList<ApkUpdateDetail> paramArrayList)
-  {
-    if (!this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.hasRight()) {
-      return;
-    }
-    bcds.a("DownloadInterface", "JsCheckUpdateCallback onResult >>> " + paramArrayList.size());
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONArray localJSONArray = new JSONArray();
-    int i = 0;
-    try
-    {
-      while (i < paramArrayList.size())
-      {
-        ApkUpdateDetail localApkUpdateDetail = (ApkUpdateDetail)paramArrayList.get(i);
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("packageName", localApkUpdateDetail.packageName);
-        localJSONObject2.put("newapksize", localApkUpdateDetail.newapksize);
-        localJSONObject2.put("patchsize", localApkUpdateDetail.patchsize);
-        localJSONObject2.put("updatemethod", localApkUpdateDetail.updatemethod);
-        localJSONObject2.put("versioncode", localApkUpdateDetail.versioncode);
-        localJSONObject2.put("versionname", localApkUpdateDetail.versionname);
-        localJSONObject2.put("fileMd5", localApkUpdateDetail.fileMd5);
-        localJSONObject2.put("sigMd5", localApkUpdateDetail.sigMd5);
-        localJSONObject2.put("url", localApkUpdateDetail.url);
-        localJSONArray.put(localJSONObject2);
-        i += 1;
-      }
-      localJSONObject1.put("guid", this.jdField_a_of_type_JavaLangString);
-      localJSONObject1.put("content", localJSONArray.toString());
-      localJSONObject1.put("resultCode", "0");
-      paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'" + localJSONArray.toString() + "'});}void(0);";
-    }
-    catch (JSONException paramArrayList)
-    {
-      for (;;)
-      {
-        paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
-      }
-    }
-    bcds.b("DownloadInterface", ">>checkUpdate jsUrl:" + paramArrayList);
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramArrayList);
-  }
+  public abstract void buildLayout();
   
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void buildTitleBar();
+  
+  public abstract void buildWebView(AppInterface paramAppInterface);
+  
+  public abstract void preInitWebviewPlugin();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcbj
  * JD-Core Version:    0.7.0.1
  */

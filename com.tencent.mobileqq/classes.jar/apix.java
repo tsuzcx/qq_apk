@@ -1,160 +1,82 @@
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.ResultReceiver;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import java.util.UUID;
 
-public class apix
-  extends aphp
+final class apix
+  implements View.OnClickListener
 {
-  protected ResultReceiver a;
+  apix(apkm paramapkm, FileManagerEntity paramFileManagerEntity) {}
   
-  public apix(Intent paramIntent)
+  public void onClick(View paramView)
   {
-    super(paramIntent);
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public List<RecentUser> a(List<RecentUser> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    ajjj localajjj = (ajjj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("choose_friend_h5_type", 0);
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    try
     {
-      RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && ((localRecentUser.getType() != 1006) || (a(aphf.h))) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 7000)) {
-        if ((localRecentUser.getType() == 0) && (!azzz.a(localRecentUser.uin)) && (!azzz.c(localRecentUser.uin)) && (!mqb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))
-        {
-          if ((localajjj != null) && (localajjj.b(localRecentUser.uin)) && ((i == 1) || (i == 13))) {
-            localArrayList.add(localRecentUser);
-          }
-        }
-        else if (localRecentUser.getType() == 1)
-        {
-          if ((i == 4) || (i == 13) || (i == 12)) {
-            localArrayList.add(localRecentUser);
-          }
-        }
-        else if ((localRecentUser.getType() == 3000) && ((i == 8) || (i == 13) || (i == 12))) {
-          localArrayList.add(localRecentUser);
-        }
+      paramView = new apud();
+      paramView.b = "file_forward";
+      paramView.a = 9;
+      apuc.a(this.jdField_a_of_type_Apkm.a().getCurrentAccountUin(), paramView);
+      if (bbev.a(this.jdField_a_of_type_Apkm.getActivity()) == 0)
+      {
+        bajf.a(this.jdField_a_of_type_Apkm.getActivity(), this.jdField_a_of_type_Apkm.getActivity().getString(2131697853));
+        return;
       }
-    }
-    return localArrayList;
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("choose_friend_is_qqfriends", true);
-    this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("choose_friend_is_contacts", false);
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("choose_friend_h5_type", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("h5ptv", 2, "bType=" + i);
-    }
-    if ((i == 1) && (m())) {
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
-    }
-    if (i == 4) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (i == 8) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-    if (i == 13)
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-    if (i == 12)
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    if ((this.jdField_a_of_type_Bafb != null) && (this.jdField_a_of_type_Bafb.isShowing())) {
+      FileManagerEntity localFileManagerEntity = new FileManagerEntity();
+      localFileManagerEntity.copyFrom(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      localFileManagerEntity.nSessionId = apue.a().longValue();
+      localFileManagerEntity.status = 2;
+      paramView = this.jdField_a_of_type_Apkm.a();
+      if (paramView != null) {
+        paramView.a().d(localFileManagerEntity);
+      }
+      azqt localazqt = bakj.a(this.jdField_a_of_type_Apkm.a(), localFileManagerEntity);
+      ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
+      localForwardFileInfo.b(localFileManagerEntity.nSessionId);
+      if (!TextUtils.isEmpty(localFileManagerEntity.getFilePath())) {
+        localForwardFileInfo.a(localazqt.jdField_a_of_type_JavaLangString);
+      }
+      localForwardFileInfo.d(localazqt.g);
+      localForwardFileInfo.d(localazqt.jdField_c_of_type_Long);
+      localForwardFileInfo.a(localFileManagerEntity.TroopUin);
+      Object localObject = localazqt.d;
+      paramView = (View)localObject;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        paramView = localazqt.jdField_c_of_type_JavaLangString;
+      }
+      localForwardFileInfo.f(paramView);
+      if (localFileManagerEntity.isZipInnerFile)
+      {
+        localForwardFileInfo.b(10000);
+        localForwardFileInfo.d(3);
+      }
+      for (;;)
+      {
+        localForwardFileInfo.a(2);
+        paramView = new Bundle();
+        paramView.putInt("forward_type", 0);
+        paramView.putParcelable("fileinfo", localForwardFileInfo);
+        paramView.putBoolean("not_forward", true);
+        localObject = new Intent();
+        ((Intent)localObject).putExtras(paramView);
+        ((Intent)localObject).putExtra("forward_text", localazqt.g);
+        ((Intent)localObject).putExtra("forward_from_troop_file", true);
+        aqbc.a(this.jdField_a_of_type_Apkm.getActivity(), (Intent)localObject, 103);
+        return;
+        if (localazqt.jdField_a_of_type_JavaUtilUUID != null) {
+          localForwardFileInfo.e(localazqt.jdField_a_of_type_JavaUtilUUID.toString());
+        }
+        localForwardFileInfo.b(10006);
+        localForwardFileInfo.d(4);
+      }
       return;
     }
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList3 = new ArrayList();
-    ArrayList localArrayList4 = new ArrayList();
-    paramInt = paramBundle.getInt("uintype", -1);
-    if ((paramInt == 0) || (paramInt == 1004))
-    {
-      localArrayList1.add(paramBundle.getString("uin"));
-      localArrayList2.add("");
-      localArrayList3.add(paramBundle.getString("uinname"));
-      localArrayList4.add("1");
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
-      {
-        paramBundle = new Bundle();
-        paramBundle.putStringArrayList("choose_friend_uins", localArrayList1);
-        paramBundle.putStringArrayList("choose_friend_phones", localArrayList2);
-        paramBundle.putStringArrayList("choose_friend_names", localArrayList3);
-        paramBundle.putStringArrayList("choose_friend_types", localArrayList4);
-        this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramBundle);
-      }
-      if (this.jdField_a_of_type_AndroidAppActivity == null) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidAppActivity.setResult(1);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      return;
-      if (paramInt == 1006)
-      {
-        localArrayList1.add("");
-        localArrayList2.add(paramBundle.getString("uin"));
-        localArrayList3.add(paramBundle.getString("uinname"));
-        localArrayList4.add("2");
-      }
-      else if (paramInt == 1)
-      {
-        localArrayList1.add(paramBundle.getString("uin"));
-        localArrayList2.add("");
-        localArrayList3.add(paramBundle.getString("uinname"));
-        localArrayList4.add("4");
-      }
-      else if (paramInt == 3000)
-      {
-        localArrayList1.add(paramBundle.getString("uin"));
-        localArrayList2.add("");
-        localArrayList3.add(paramBundle.getString("uinname"));
-        localArrayList4.add("8");
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidOsResultReceiver = ((ResultReceiver)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("choose_friend_callback"));
-    return true;
-  }
-  
-  public String b()
-  {
-    String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("choose_friend_title");
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = ajjy.a(2131638974);
-    }
-    return str1;
+    catch (Exception paramView) {}
   }
 }
 

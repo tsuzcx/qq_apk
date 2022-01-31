@@ -1,32 +1,90 @@
-class lbv
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp;
+
+public class lbv
+  extends MSFServlet
 {
-  static final float[] a;
-  
-  static
+  private byte[] a(byte[] paramArrayOfByte)
   {
-    int k = 0;
-    a = new float[16384];
-    int i = 0;
-    int j;
-    for (;;)
+    byte[] arrayOfByte = new byte[paramArrayOfByte.length + 4];
+    bbmj.a(arrayOfByte, 0, paramArrayOfByte.length + 4);
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 4, paramArrayOfByte.length);
+    return arrayOfByte;
+  }
+  
+  public String[] getPreferSSOCommands()
+  {
+    return new String[] { "QqAd.getAd" };
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtSSOLoadAD", 2, paramFromServiceMsg.isSuccess() + " onReceive with code: " + paramFromServiceMsg.getResultCode());
+    }
+    if (paramFromServiceMsg.isSuccess())
     {
-      j = k;
-      if (i >= 16384) {
-        break;
+      Object localObject = new qq_ad_get.QQAdGetRsp();
+      try
+      {
+        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        byte[] arrayOfByte = new byte[paramFromServiceMsg.getInt() - 4];
+        paramFromServiceMsg.get(arrayOfByte);
+        ((qq_ad_get.QQAdGetRsp)localObject).mergeFrom(arrayOfByte);
+        paramFromServiceMsg = yxr.a((PBField)localObject);
+        if ((paramFromServiceMsg != null) && (paramFromServiceMsg != JSONObject.NULL))
+        {
+          paramFromServiceMsg = paramFromServiceMsg.toString();
+          localObject = new Bundle();
+          ((Bundle)localObject).putString("sso_GdtLoadAd_rsp_json", paramFromServiceMsg);
+          notifyObserver(paramIntent, 1, true, (Bundle)localObject, lbw.class);
+          return;
+        }
+        notifyObserver(paramIntent, 1, false, null, lbw.class);
+        return;
       }
-      a[i] = ((float)Math.sin((i + 0.5F) / 16384.0F * 6.283186F));
-      i += 1;
+      catch (Exception paramFromServiceMsg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("GdtSSOLoadAD", 2, paramFromServiceMsg.getMessage());
+        }
+        notifyObserver(paramIntent, 1, false, null, lbw.class);
+        return;
+      }
     }
-    while (j < 360)
+    notifyObserver(paramIntent, 1, false, null, lbw.class);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null) {
+      return;
+    }
+    String str = paramIntent.getStringExtra("GdtLoadAdServletCMD");
+    paramPacket.setSSOCommand(str);
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtSSOLoadAD", 2, "onSend with cmd: " + str);
+    }
+    paramIntent = paramIntent.getByteArrayExtra("sso_GdtLoadAd_rquest_bytes");
+    if (paramIntent != null)
     {
-      a[((int)(j * 45.511112F) & 0x3FFF)] = ((float)Math.sin(j * 0.01745329F));
-      j += 90;
+      paramPacket.putSendData(a(paramIntent));
+      return;
     }
+    QLog.e("GdtSSOLoadAD", 1, "no bytes to send" + str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     lbv
  * JD-Core Version:    0.7.0.1
  */

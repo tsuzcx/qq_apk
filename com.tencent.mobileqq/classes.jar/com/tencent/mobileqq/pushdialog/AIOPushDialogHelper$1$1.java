@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.pushdialog;
 
-import audq;
-import audr;
+import avcw;
+import avcx;
 import java.util.List;
 
 public class AIOPushDialogHelper$1$1
   implements Runnable
 {
-  public AIOPushDialogHelper$1$1(audr paramaudr, List paramList) {}
+  public AIOPushDialogHelper$1$1(avcx paramavcx, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Audr.a.a(this.jdField_a_of_type_JavaUtilList, 100, 103);
+    this.jdField_a_of_type_Avcx.a.a(this.jdField_a_of_type_JavaUtilList, 100, 103);
   }
 }
 

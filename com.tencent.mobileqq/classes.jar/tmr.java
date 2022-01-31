@@ -1,16 +1,35 @@
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetMusicListConfig;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-class tmr
-  extends tnm
+public class tmr
+  extends syv<tol>
 {
-  tmr(tmq paramtmq) {}
+  private static final String a = sxp.a("StorySvc.video_music_get");
   
-  public void g()
+  public String a()
   {
-    super.g();
-    tmq.a(this.a, false);
-    sgi.a().unRegisterSubscriber(tmq.a(this.a));
-    sgi.a().unRegisterSubscriber(tmq.a(this.a));
+    return a;
+  }
+  
+  public tol a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetMusicListConfig localRspGetMusicListConfig = new qqstory_service.RspGetMusicListConfig();
+    try
+    {
+      localRspGetMusicListConfig.mergeFrom(paramArrayOfByte);
+      return new tol(localRspGetMusicListConfig);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetMusicListConfig().toByteArray();
   }
 }
 

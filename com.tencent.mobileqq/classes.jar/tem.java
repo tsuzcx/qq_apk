@@ -1,69 +1,100 @@
-public abstract class tem
-  extends tdo
+import android.support.annotation.Nullable;
+import java.util.Arrays;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class tem
 {
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
+  public final int a;
+  private final String a;
+  public final String[] a;
+  public final int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public final int i;
   
-  protected String a(int paramInt)
+  private tem(JSONObject paramJSONObject)
   {
+    int k;
+    try
+    {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("v");
+      this.b = paramJSONObject.getInt("id");
+      this.i = paramJSONObject.getJSONObject("a").getInt("r");
+      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
+      this.c = localJSONArray.getInt(0);
+      this.d = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
+      this.e = localJSONArray.getInt(0);
+      this.f = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
+      this.g = localJSONArray.getInt(0);
+      this.h = localJSONArray.getInt(1);
+      paramJSONObject = paramJSONObject.getJSONObject("a").getJSONArray("c");
+      k = paramJSONObject.length();
+      if (k < 1) {
+        throw new IllegalArgumentException("content length should more than 1");
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      throw new IllegalArgumentException(paramJSONObject);
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[k];
+    while (j < k)
+    {
+      this.jdField_a_of_type_ArrayOfJavaLangString[j] = paramJSONObject.optString(j, "(NULL)");
+      j += 1;
+    }
+  }
+  
+  public static tem a(@Nullable String paramString)
+  {
+    try
+    {
+      paramString = a(new JSONObject(paramString));
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      veg.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+      return null;
+    }
+    catch (NullPointerException paramString)
+    {
+      veg.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+    }
     return null;
   }
   
-  public void a(tes paramtes)
+  public static tem a(JSONObject paramJSONObject)
   {
-    super.a(paramtes);
-    paramtes.a = this.jdField_c_of_type_JavaLangString;
+    try
+    {
+      paramJSONObject = new tem(paramJSONObject);
+      return paramJSONObject;
+    }
+    catch (IllegalArgumentException paramJSONObject)
+    {
+      veg.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
+    }
+    return null;
   }
   
-  public void a(teu paramteu)
+  public String a()
   {
-    super.a(paramteu);
-    paramteu.b = 2;
-    paramteu.d = ("[" + sfm.a + "] " + this.a);
-    paramteu.a = this.d;
-    paramteu.k = this.a;
-    paramteu.l = this.b;
-    paramteu.h = this.jdField_c_of_type_JavaLangString;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(tev paramtev)
+  public String toString()
   {
-    super.a(paramtev);
-    paramtev.jdField_c_of_type_JavaLangString = this.a;
-    paramtev.d = this.b;
-    paramtev.a = this.d;
-    paramtev.e = this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public void a(tew paramtew)
-  {
-    super.a(paramtew);
-    paramtew.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    paramtew.e = this.d;
-    paramtew.a = this.a;
-    paramtew.d = tfe.a(this.d);
-  }
-  
-  public void a(tex paramtex)
-  {
-    super.a(paramtex);
-    paramtex.jdField_c_of_type_JavaLangString = this.b;
-    paramtex.a = this.a;
-    paramtex.d = this.jdField_c_of_type_JavaLangString;
-    paramtex.e = this.d;
-    paramtex.jdField_c_of_type_Boolean = true;
-  }
-  
-  public void b(tex paramtex)
-  {
-    super.b(paramtex);
-    paramtex.jdField_c_of_type_JavaLangString = this.b;
-    paramtex.a = this.a;
-    paramtex.d = this.jdField_c_of_type_JavaLangString;
-    paramtex.e = this.d;
-    paramtex.jdField_c_of_type_Boolean = true;
+    return "PollLayout{version=" + this.jdField_a_of_type_Int + ", id=" + this.b + ", screenWidth=" + this.c + ", screenHeight=" + this.d + ", layoutWidth=" + this.e + ", layoutHeight=" + this.f + ", layoutCenterX=" + this.g + ", layoutCenterY=" + this.h + ", rotation=" + this.i + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
   }
 }
 

@@ -1,42 +1,64 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import mqq.util.WeakReference;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.DevlockPushActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aaya
-  implements DialogInterface.OnDismissListener
+  extends WtloginObserver
 {
-  WeakReference<GeneralSettingActivity> a;
-  WeakReference<CompoundButton> b;
+  public aaya(DevlockPushActivity paramDevlockPushActivity) {}
   
-  public aaya(GeneralSettingActivity paramGeneralSettingActivity, CompoundButton paramCompoundButton)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    this.a = new WeakReference(paramGeneralSettingActivity);
-    this.b = new WeakReference(paramCompoundButton);
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    CompoundButton localCompoundButton = null;
-    if (this.a == null)
+    if (!this.a.isResume())
     {
-      paramDialogInterface = null;
-      if (this.b != null) {
-        break label47;
-      }
-    }
-    for (;;)
-    {
-      if ((paramDialogInterface != null) && (localCompoundButton != null)) {
-        paramDialogInterface.a(localCompoundButton, false);
-      }
+      this.a.b();
       return;
-      paramDialogInterface = (GeneralSettingActivity)this.a.get();
-      break;
-      label47:
-      localCompoundButton = (CompoundButton)this.b.get();
     }
+    if (((this.a.jdField_a_of_type_Bcpq == null) || (!this.a.jdField_a_of_type_Bcpq.isShowing())) && (paramInt == 0) && (paramDevlockInfo != null))
+    {
+      this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = paramDevlockInfo;
+      aoeh.a().a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.TransferInfo);
+      return;
+    }
+    this.a.b();
+    if ((paramInt == 0) && (paramDevlockInfo != null))
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
+      }
+      this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = paramDevlockInfo;
+      aoeh.a().a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.TransferInfo);
+      this.a.a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
+      }
+      if (paramDevlockInfo == null) {
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus DevlockInfo is null");
+      }
+    }
+    paramDevlockInfo = this.a.getString(2131692133);
+    paramWUserSigInfo = paramDevlockInfo;
+    if (paramErrMsg != null)
+    {
+      paramWUserSigInfo = paramDevlockInfo;
+      if (!TextUtils.isEmpty(paramErrMsg.getMessage())) {
+        paramWUserSigInfo = paramErrMsg.getMessage();
+      }
+    }
+    bcpw.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.getTitleBarHeight());
   }
 }
 

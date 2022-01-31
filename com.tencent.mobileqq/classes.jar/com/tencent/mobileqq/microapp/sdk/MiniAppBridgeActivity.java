@@ -6,9 +6,9 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import awoz;
-import bbms;
-import bbmy;
+import axow;
+import bcpq;
+import bcpw;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager;
@@ -30,7 +30,7 @@ public class MiniAppBridgeActivity
   public static final String TAG = "MiniAppBridgeActivity";
   private MiniAppConfig fromAppConfig;
   private LaunchParam launchParam;
-  private bbms mDialog;
+  private bcpq mDialog;
   private FakeUrl mFakeUrl;
   
   private void handleAbnormal(String paramString)
@@ -40,7 +40,7 @@ public class MiniAppBridgeActivity
     }
     if ((getActivity() != null) && (!getActivity().isFinishing()))
     {
-      bbmy.a(getActivity(), "网络异常，请稍后重试", 0).a();
+      bcpw.a(getActivity(), "网络异常，请稍后重试", 0).a();
       getActivity().finish();
     }
   }
@@ -99,7 +99,7 @@ public class MiniAppBridgeActivity
       }
       if (!isFromDebugConfig(this.launchParam))
       {
-        long l = awoz.a("com.tencent.mobileqq:miniapp");
+        long l = axow.a("com.tencent.mobileqq:miniapp");
         localWeakReference = new WeakReference(getActivity());
         localMiniAppConfig = localApkgConfigManager.getConfig(this.launchParam);
         if ((localMiniAppConfig == null) || (localMiniAppConfig.config == null) || (!new File(g.a(localMiniAppConfig.config)).exists()))
@@ -143,7 +143,7 @@ public class MiniAppBridgeActivity
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.mDialog = new bbms(getActivity());
+    this.mDialog = new bcpq(getActivity());
     this.mDialog.a("正在加载中...");
     this.mDialog.setOnDismissListener(new MiniAppBridgeActivity.1(this));
     this.mDialog.show();

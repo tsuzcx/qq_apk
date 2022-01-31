@@ -1,135 +1,32 @@
-import java.io.Reader;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
-public final class aprt
-  extends aprr
+class aprt
+  implements aptu
 {
-  private int jdField_a_of_type_Int;
-  private final char[] jdField_a_of_type_ArrayOfChar = new char['ÿ'];
-  private int jdField_b_of_type_Int;
-  private final char[] jdField_b_of_type_ArrayOfChar = new char[1024];
-  private int c;
-  private int d;
-  private int e;
-  private int f = -1;
+  aprt(aprs paramaprs, List paramList, aouq paramaouq, aprx paramaprx) {}
   
-  public aprt(Reader paramReader)
+  public void a()
   {
-    this.jdField_a_of_type_JavaIoReader = paramReader;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        this.jdField_a_of_type_Aouq.b(localFileManagerEntity);
+      }
+    }
+    if (this.jdField_a_of_type_Aprx != null) {
+      this.jdField_a_of_type_Aprx.a(1, 0);
+    }
   }
   
-  private final void a(char paramChar)
+  public void b()
   {
-    if (this.d == 0) {
-      this.e = (this.jdField_a_of_type_Int - 1);
+    if (this.jdField_a_of_type_Aprx != null) {
+      this.jdField_a_of_type_Aprx.a(1, 1);
     }
-    char[] arrayOfChar = this.jdField_a_of_type_ArrayOfChar;
-    int i = this.d;
-    this.d = (i + 1);
-    arrayOfChar[i] = Character.toLowerCase(paramChar);
-  }
-  
-  private final aprp b()
-  {
-    if (this.d > 0)
-    {
-      String str2 = "other";
-      String str1 = str2;
-      switch (Character.getType(this.jdField_a_of_type_ArrayOfChar[0]))
-      {
-      default: 
-        str1 = str2;
-      }
-      for (;;)
-      {
-        return new aprp(new String(this.jdField_a_of_type_ArrayOfChar, 0, this.d), this.e, this.e + this.d, str1);
-        str1 = "num";
-        continue;
-        str1 = "en";
-        continue;
-        str1 = "cn";
-      }
-    }
-    return null;
-  }
-  
-  public final aprp a()
-  {
-    this.d = 0;
-    this.e = this.jdField_a_of_type_Int;
-    char c1;
-    do
-    {
-      this.jdField_a_of_type_Int += 1;
-      if (this.jdField_b_of_type_Int >= this.c)
-      {
-        this.c = this.jdField_a_of_type_JavaIoReader.read(this.jdField_b_of_type_ArrayOfChar);
-        this.jdField_b_of_type_Int = 0;
-      }
-      if (this.c == -1)
-      {
-        this.f = -1;
-        return b();
-      }
-      char[] arrayOfChar = this.jdField_b_of_type_ArrayOfChar;
-      int i = this.jdField_b_of_type_Int;
-      this.jdField_b_of_type_Int = (i + 1);
-      c1 = arrayOfChar[i];
-      switch (Character.getType(c1))
-      {
-      }
-    } while (this.d <= 0);
-    return b();
-    if (this.f == -1) {
-      this.f = 0;
-    }
-    do
-    {
-      do
-      {
-        a(c1);
-        if (this.d != 255) {
-          break;
-        }
-        return b();
-      } while (this.f == 0);
-      this.f = 0;
-    } while (this.d <= 0);
-    this.jdField_b_of_type_Int -= 1;
-    this.jdField_a_of_type_Int -= 1;
-    return b();
-    if (this.f == -1) {
-      this.f = 1;
-    }
-    do
-    {
-      do
-      {
-        a(c1);
-        if (this.d != 255) {
-          break;
-        }
-        return b();
-      } while (this.f == 1);
-      this.f = 1;
-    } while (this.d <= 0);
-    this.jdField_b_of_type_Int -= 1;
-    this.jdField_a_of_type_Int -= 1;
-    return b();
-    if (this.f == -1) {
-      this.f = 2;
-    }
-    do
-    {
-      do
-      {
-        a(c1);
-        return b();
-      } while (this.f == 2);
-      this.f = 2;
-    } while (this.d <= 0);
-    this.jdField_b_of_type_Int -= 1;
-    this.jdField_a_of_type_Int -= 1;
-    return b();
   }
 }
 

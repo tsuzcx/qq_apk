@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class atyd
-  implements DialogInterface.OnClickListener
+class atyd
+  implements View.OnClickListener
 {
-  public atyd(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  atyd(atyc paramatyc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.f();
+    this.a.dismiss();
   }
 }
 

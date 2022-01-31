@@ -1,53 +1,18 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.PAHighLightImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Point;
 
-public class bbko
-  implements View.OnTouchListener
+final class bbko
+  implements bbkr<Point>
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  PAHighLightImageView jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView;
-  
-  public bbko(PAHighLightImageView paramPAHighLightImageView, Context paramContext)
+  public Point a(float paramFloat, Point paramPoint1, Point paramPoint2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView = paramPAHighLightImageView;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAHighLightImageView", 2, "onTouch is called,action is:" + paramMotionEvent.getAction());
-    }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.getTag(2131306412);
-    if (paramView == null) {}
-    label100:
-    do
-    {
-      return false;
-      if (paramView.equals(Integer.valueOf(1))) {}
-      for (boolean bool = true;; bool = false)
-      {
-        if (paramMotionEvent.getAction() != 0) {
-          break label100;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a(this.jdField_a_of_type_AndroidContentContext, bool);
-        return false;
-        if (!paramView.equals(Integer.valueOf(2))) {
-          break;
-        }
-      }
-    } while ((paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a();
-    return false;
+    float f1 = paramPoint1.x;
+    float f2 = paramPoint1.y;
+    return new Point((int)(f1 + (paramPoint2.x - f1) * paramFloat), (int)(f2 + (paramPoint2.y - f2) * paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbko
  * JD-Core Version:    0.7.0.1
  */

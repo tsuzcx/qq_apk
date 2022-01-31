@@ -1,53 +1,30 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.ViewPagerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
 
 public class rnz
-  implements View.OnClickListener
+  extends Handler
 {
-  public rnz(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
-  
-  public void onClick(View paramView)
+  public rnz(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController, Looper paramLooper)
   {
-    if (wpl.a("service_account_folder_publish_feed_button", 2000L)) {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (ReadInJoyDiandianHeaderController.a(this.a)) {}
+    while (ReadInJoyDiandianHeaderController.a(this.a).getCount() <= 1) {
       return;
     }
-    paramView = new Intent();
-    paramView.putExtra("postUin", ServiceAccountFolderActivityNew.a(this.a));
-    paramView.putExtra("sourceFrom", 2);
-    boolean bool;
-    String str;
-    if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).user.youZhan.size() > 0))
-    {
-      if (((CertifiedAccountMeta.StYouZanShop)ServiceAccountFolderActivityNew.a(this.a).user.youZhan.get(0)).type.get() > 1)
-      {
-        bool = true;
-        paramView.putExtra("has_shop", bool);
-      }
-    }
-    else
-    {
-      bfpr.a(this.a.getActivity(), paramView, 0);
-      str = ((CertifiedAccountMeta.StUser)ServiceAccountFolderActivityNew.a(this.a).user.get()).id.get();
-      if (ServiceAccountFolderActivityNew.a(this.a) != 0) {
-        break label188;
-      }
-    }
-    label188:
-    for (paramView = "auth_follow";; paramView = "auth_discover")
-    {
-      wye.a(str, paramView, "post_clk", 0, 0, new String[] { "", "" });
-      return;
-      bool = false;
-      break;
-    }
+    paramMessage = this.a;
+    paramMessage.jdField_a_of_type_Int += 1;
+    this.a.jdField_a_of_type_Int %= ReadInJoyDiandianHeaderController.a(this.a).getCount();
+    ReadInJoyDiandianHeaderController.a(this.a).setCurrentItem(this.a.jdField_a_of_type_Int, true);
+    noo.a(null, "", "0X8009827", "0X8009827", 0, 0, "", "", "", "", false);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 3000L);
   }
 }
 

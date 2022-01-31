@@ -1,28 +1,19 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.PoiMapActivity;
 
 public class mwn
-  implements begw
+  implements View.OnTouchListener
 {
-  public mwn(AccountDetailActivity paramAccountDetailActivity) {}
+  public mwn(PoiMapActivity paramPoiMapActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.o) {
-      return;
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.b();
     }
-    this.a.o = true;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      this.a.q();
-      continue;
-      this.a.E();
-    }
+    return true;
   }
 }
 

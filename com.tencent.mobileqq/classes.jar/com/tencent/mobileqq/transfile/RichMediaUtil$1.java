@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import axub;
+import ayui;
 import java.util.TimerTask;
 
 public final class RichMediaUtil$1
@@ -10,7 +10,7 @@ public final class RichMediaUtil$1
   
   public void run()
   {
-    axub.a(this.a, false, null);
+    ayui.a(this.a, false, null);
   }
 }
 

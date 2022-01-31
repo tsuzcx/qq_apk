@@ -1,18 +1,18 @@
 package dov.com.qq.im.story.mode;
 
-import bhzq;
-import biaa;
-import sou;
+import bjrh;
+import bjrr;
+import tbq;
 
 public class StoryEffectTextMode$6$1
   implements Runnable
 {
-  public StoryEffectTextMode$6$1(biaa parambiaa) {}
+  public StoryEffectTextMode$6$1(bjrr parambjrr) {}
   
   public void run()
   {
-    if (bhzq.a(this.a.a, bhzq.a(this.a.a).d)) {
-      bhzq.b(this.a.a, bhzq.a(this.a.a));
+    if (bjrh.a(this.a.a, bjrh.a(this.a.a).d)) {
+      bjrh.b(this.a.a, bjrh.a(this.a.a));
     }
   }
 }

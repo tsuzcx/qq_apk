@@ -1,30 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-
 public class aywz
-  implements DialogInterface.OnClickListener
 {
-  public aywz(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, ayuv paramayuv) {}
+  int a;
+  int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aywz(int paramInt1, int paramInt2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a > 0L)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(this.jdField_a_of_type_Ayuv);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(3, null, null, this.jdField_a_of_type_Ayuv);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public int a()
+  {
+    return this.a;
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aywz
  * JD-Core Version:    0.7.0.1
  */

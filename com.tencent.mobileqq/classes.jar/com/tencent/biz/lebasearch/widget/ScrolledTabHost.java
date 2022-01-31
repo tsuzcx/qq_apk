@@ -17,8 +17,8 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
-import mse;
-import msf;
+import ndf;
+import ndg;
 
 public class ScrolledTabHost
   extends FrameLayout
@@ -30,7 +30,7 @@ public class ScrolledTabHost
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   HorizontalScrollView jdField_a_of_type_AndroidWidgetHorizontalScrollView;
   List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  msf jdField_a_of_type_Msf;
+  ndg jdField_a_of_type_Ndg;
   
   public ScrolledTabHost(Context paramContext)
   {
@@ -55,10 +55,10 @@ public class ScrolledTabHost
   
   private void c()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495008, this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131310997));
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131311009));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131300772);
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560582, this);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376806));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131376818));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366383);
   }
   
   public View a(int paramInt)
@@ -72,7 +72,7 @@ public class ScrolledTabHost
     while (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
     {
       View localView = this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
-      localView.findViewById(2131310983).setVisibility(4);
+      localView.findViewById(2131376792).setVisibility(4);
       this.jdField_a_of_type_JavaUtilList.add(localView);
       i += 1;
     }
@@ -100,11 +100,11 @@ public class ScrolledTabHost
       label66:
       if (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
       {
-        localObject = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).findViewById(2131312553);
+        localObject = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).findViewById(2131378378);
         if (i != paramInt) {
           break label146;
         }
-        ((TextView)localObject).setTextColor(getResources().getColor(2131101265));
+        ((TextView)localObject).setTextColor(getResources().getColor(2131166859));
       }
     }
     for (;;)
@@ -118,7 +118,7 @@ public class ScrolledTabHost
       this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.smoothScrollBy(j + i - k, 0);
       break label64;
       label146:
-      ((TextView)localObject).setTextColor(getResources().getColor(2131101334));
+      ((TextView)localObject).setTextColor(getResources().getColor(2131166929));
     }
   }
   
@@ -126,8 +126,8 @@ public class ScrolledTabHost
   {
     View localView1 = a(paramInt1);
     View localView2 = a(paramInt2);
-    localView1 = localView1.findViewById(2131310983);
-    localView2 = localView2.findViewById(2131310983);
+    localView1 = localView1.findViewById(2131376792);
+    localView2 = localView2.findViewById(2131376792);
     if (paramInt1 == paramInt2)
     {
       localView2.setVisibility(0);
@@ -148,7 +148,7 @@ public class ScrolledTabHost
     ((TranslateAnimation)localObject1).setDuration(300L);
     ((TranslateAnimation)localObject1).setFillAfter(false);
     ((AnimationSet)localObject2).addAnimation((Animation)localObject1);
-    ((AnimationSet)localObject2).setAnimationListener(new mse(this, localView1, localView2, paramInt2));
+    ((AnimationSet)localObject2).setAnimationListener(new ndf(this, localView1, localView2, paramInt2));
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     localView1.setVisibility(4);
     this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject2);
@@ -157,16 +157,16 @@ public class ScrolledTabHost
   public void a(String paramString)
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 0) {}
-    for (View localView = LayoutInflater.from(getContext()).inflate(2131495013, null);; localView = (View)this.jdField_a_of_type_JavaUtilList.remove(0))
+    for (View localView = LayoutInflater.from(getContext()).inflate(2131560587, null);; localView = (View)this.jdField_a_of_type_JavaUtilList.remove(0))
     {
-      ((TextView)localView.findViewById(2131312553)).setText(paramString);
+      ((TextView)localView.findViewById(2131378378)).setText(paramString);
       localView.setTag(-3, paramString);
       if (localView.getParent() == null) {
         break;
       }
       return;
     }
-    localView.findViewById(2131310983).setVisibility(4);
+    localView.findViewById(2131376792).setVisibility(4);
     this.jdField_a_of_type_AndroidViewViewGroup.addView(localView);
     localView.setOnClickListener(this);
   }
@@ -179,7 +179,7 @@ public class ScrolledTabHost
       int i = 0;
       if (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
       {
-        View localView = this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).findViewById(2131310983);
+        View localView = this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).findViewById(2131376792);
         if (i == 0) {
           localView.setVisibility(0);
         }
@@ -190,18 +190,18 @@ public class ScrolledTabHost
           localView.setVisibility(4);
         }
       }
-      if (this.jdField_a_of_type_Msf != null) {
-        this.jdField_a_of_type_Msf.a(0);
+      if (this.jdField_a_of_type_Ndg != null) {
+        this.jdField_a_of_type_Ndg.a(0);
       }
     }
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Msf != null)
+    if (this.jdField_a_of_type_Ndg != null)
     {
-      this.jdField_a_of_type_Msf.a(this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(paramView));
-      this.jdField_a_of_type_Msf.b(this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(paramView));
+      this.jdField_a_of_type_Ndg.a(this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(paramView));
+      this.jdField_a_of_type_Ndg.b(this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(paramView));
     }
   }
   
@@ -212,29 +212,29 @@ public class ScrolledTabHost
     }
     int j = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Msf != null) {
-      this.jdField_a_of_type_Msf.a(paramInt);
+    if (this.jdField_a_of_type_Ndg != null) {
+      this.jdField_a_of_type_Ndg.a(paramInt);
     }
     int i = 0;
     if (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
     {
-      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).findViewById(2131312553);
+      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).findViewById(2131378378);
       if (i == paramInt) {
-        localTextView.setTextColor(getResources().getColor(2131101265));
+        localTextView.setTextColor(getResources().getColor(2131166859));
       }
       for (;;)
       {
         i += 1;
         break;
-        localTextView.setTextColor(getResources().getColor(2131101334));
+        localTextView.setTextColor(getResources().getColor(2131166929));
       }
     }
     a(j, this.jdField_a_of_type_Int);
   }
   
-  public void setOnTabSelectedListener(msf parammsf)
+  public void setOnTabSelectedListener(ndg paramndg)
   {
-    this.jdField_a_of_type_Msf = parammsf;
+    this.jdField_a_of_type_Ndg = paramndg;
   }
 }
 

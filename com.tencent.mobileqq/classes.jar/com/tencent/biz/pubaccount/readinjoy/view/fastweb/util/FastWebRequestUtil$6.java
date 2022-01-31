@@ -6,32 +6,32 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import mpl;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
-import obz;
+import nam;
+import onk;
 import org.json.JSONObject;
-import pye;
-import rgc;
+import qke;
+import rss;
 
 public final class FastWebRequestUtil$6
   implements Runnable
 {
-  public FastWebRequestUtil$6(ArticleInfo paramArticleInfo, rgc paramrgc) {}
+  public FastWebRequestUtil$6(ArticleInfo paramArticleInfo, rss paramrss) {}
   
   public void run()
   {
     try
     {
       Bundle localBundle = new Bundle();
-      Object localObject = (QQAppInterface)obz.a();
-      String str1 = obz.a();
+      Object localObject = (QQAppInterface)onk.a();
+      String str1 = onk.a();
       String str2 = ((TicketManager)((QQAppInterface)localObject).getManager(2)).getSkey(str1);
       localBundle.putString("feeds_id", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId));
       localBundle.putString("uin", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.publishUin));
       localBundle.putString("feedsType", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType));
       if (str2 == null) {}
-      for (localObject = "";; localObject = pye.a(str2))
+      for (localObject = "";; localObject = qke.a(str2))
       {
         localBundle.putString("g_tk", (String)localObject);
         if (QLog.isColorLevel()) {
@@ -39,12 +39,12 @@ public final class FastWebRequestUtil$6
         }
         localObject = new Bundle();
         ((Bundle)localObject).putString("cookie", "uin=o" + str1 + ";skey=" + str2);
-        localObject = new String(mpl.a(BaseApplicationImpl.getContext(), "https://kandian.qq.com/qz_kandian_social/kandian_ext/deleteFeeds", "GET", localBundle, (Bundle)localObject));
+        localObject = new String(nam.a(BaseApplicationImpl.getContext(), "https://kandian.qq.com/qz_kandian_social/kandian_ext/deleteFeeds", "GET", localBundle, (Bundle)localObject));
         QLog.d("FastWebRequestUtil", 1, new Object[] { "deleteFeeds result = ", localObject });
         localObject = new JSONObject((String)localObject).getJSONObject("result");
         int i = ((JSONObject)localObject).getInt("retCode");
         localObject = ((JSONObject)localObject).getString("retMsg");
-        if (this.jdField_a_of_type_Rgc == null) {
+        if (this.jdField_a_of_type_Rss == null) {
           break;
         }
         ThreadManager.getUIHandler().post(new FastWebRequestUtil.6.1(this, i, (String)localObject));
@@ -54,7 +54,7 @@ public final class FastWebRequestUtil$6
     }
     catch (Exception localException)
     {
-      if (this.jdField_a_of_type_Rgc != null) {
+      if (this.jdField_a_of_type_Rss != null) {
         ThreadManager.getUIHandler().post(new FastWebRequestUtil.6.2(this, localException));
       }
       QLog.d("FastWebRequestUtil", 2, "deleteFeeds exception. ", localException);

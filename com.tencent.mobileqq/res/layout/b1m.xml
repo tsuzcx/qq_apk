@@ -7,7 +7,7 @@
         <com.tencent.widget.DragView android:id="@id/bq8" android:background="@color/ajr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="67.0dip" android:layout_marginRight="67.0dip" android:layout_centerHorizontal="true">
             <com.tencent.mobileqq.activity.photo.DragGallery android:id="@id/gallery" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         </com.tencent.widget.DragView>
-        <ImageView android:id="@id/b3q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="-3.0dip" android:src="@drawable/bzw" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/g0j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="-3.0dip" android:src="@drawable/ckq" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
     </RelativeLayout>
     <LinearLayout android:orientation="vertical" android:id="@id/ihs" android:background="@drawable/skin_header_bar_bg_mini" android:layout_width="fill_parent" android:layout_height="@dimen/av8">
         <TextView android:textSize="12.0sp" android:textColor="@color/skin_color_qq_screen_shot_gray_text" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ihu" android:layout_width="wrap_content" android:layout_height="44.0dip" android:text="@string/r1z" />

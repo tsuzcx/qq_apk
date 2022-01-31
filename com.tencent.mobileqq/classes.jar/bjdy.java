@@ -1,18 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public final class bjdy
-  implements Parcelable.Creator<FilterCategory>
+public class bjdy
+  implements bjdz
 {
-  public FilterCategory a(Parcel paramParcel)
+  private File a;
+  
+  public void a()
   {
-    return new FilterCategory(paramParcel);
+    try
+    {
+      bjed localbjed = (bjed)bjae.a().c(10);
+      localbjed.a(this.a);
+      localbjed.a(7000.0F);
+      localbjed.c();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("HumVoiceRecognizer", 2, "recognize: invoked. info: throwable = " + localThrowable);
+    }
   }
   
-  public FilterCategory[] a(int paramInt)
+  public void a(File paramFile)
   {
-    return new FilterCategory[paramInt];
+    this.a = paramFile;
   }
 }
 

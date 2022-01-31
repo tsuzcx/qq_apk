@@ -1,37 +1,197 @@
-import java.util.HashMap;
+import SharpSvrPack.MultiVideoMsg;
+import SharpSvrPack.SharpVideoMsg;
+import VideoSvrPack.VideoCallMsg;
+import com.qq.jce.wup.UniPacket;
+import java.util.ArrayList;
 
-public class bdrj
+public abstract class bdrj
+  implements bdrm
 {
-  private static bdrj jdField_a_of_type_Bdrj;
-  private HashMap<Integer, bdrg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private bdrk jdField_a_of_type_Bdrk;
+  private bdro jdField_a_of_type_Bdro;
   
-  public static bdrj a()
+  private void a(MultiVideoMsg paramMultiVideoMsg)
   {
-    if (jdField_a_of_type_Bdrj == null) {
-      jdField_a_of_type_Bdrj = new bdrj();
-    }
-    return jdField_a_of_type_Bdrj;
+    UniPacket localUniPacket = new UniPacket();
+    localUniPacket.setServantName("MultiVideo");
+    localUniPacket.setFuncName("MultiVideos2cack");
+    localUniPacket.put("MultiVideoMsg", paramMultiVideoMsg);
+    j(localUniPacket.encode());
   }
   
-  public bdrg a(int paramInt)
+  private void a(SharpVideoMsg paramSharpVideoMsg)
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() == 0)) {
-      return null;
-    }
-    return (bdrg)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    UniPacket localUniPacket = new UniPacket();
+    localUniPacket.setServantName("SharpSvr");
+    localUniPacket.setFuncName("s2cack");
+    localUniPacket.put("SharpVideoMsg", paramSharpVideoMsg);
+    h(localUniPacket.encode());
   }
   
-  public void a(int paramInt, bdrg parambdrg)
+  private boolean a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    boolean bool = true;
+    if (this.jdField_a_of_type_Bdro != null) {
+      bool = this.jdField_a_of_type_Bdro.isSharpVideoMsgSupport(paramInt);
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), parambdrg);
+    return bool;
   }
+  
+  private boolean b(int paramInt)
+  {
+    boolean bool = true;
+    if (this.jdField_a_of_type_Bdro != null) {
+      bool = this.jdField_a_of_type_Bdro.isMultiVideoMsgSupport(paramInt);
+    }
+    return bool;
+  }
+  
+  protected abstract long a();
+  
+  public void a()
+  {
+    b();
+  }
+  
+  public void a(long paramLong1, long paramLong2, byte[] paramArrayOfByte)
+  {
+    long l = a();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Long.valueOf(paramLong1));
+    MultiVideoMsg localMultiVideoMsg = new MultiVideoMsg();
+    localMultiVideoMsg.ver = 0;
+    localMultiVideoMsg.type = 1;
+    localMultiVideoMsg.csCmd = ((short)(int)paramLong2);
+    localMultiVideoMsg.from_uin = l;
+    localMultiVideoMsg.to_uin = localArrayList;
+    localMultiVideoMsg.video_buff = paramArrayOfByte;
+    paramArrayOfByte = new UniPacket();
+    paramArrayOfByte.setServantName("MultiVideo");
+    paramArrayOfByte.setFuncName("MultiVideoMsg");
+    paramArrayOfByte.put("MultiVideoMsg", localMultiVideoMsg);
+    i(paramArrayOfByte.encode());
+  }
+  
+  public void a(bdrk parambdrk)
+  {
+    this.jdField_a_of_type_Bdrk = parambdrk;
+  }
+  
+  public void a(bdro parambdro)
+  {
+    this.jdField_a_of_type_Bdro = parambdro;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (this.jdField_a_of_type_Bdrk != null) {
+      this.jdField_a_of_type_Bdrk.a(paramString, paramInt);
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    long l = a();
+    VideoCallMsg localVideoCallMsg = new VideoCallMsg();
+    localVideoCallMsg.ver = 1;
+    localVideoCallMsg.type = 1;
+    localVideoCallMsg.lUin = l;
+    localVideoCallMsg.uDateTime = ((int)(System.currentTimeMillis() / 1000L));
+    localVideoCallMsg.vMsg = paramArrayOfByte;
+    paramArrayOfByte = new UniPacket();
+    paramArrayOfByte.setServantName("VideoSvc");
+    paramArrayOfByte.setFuncName("SendVideoMsg");
+    paramArrayOfByte.put("VideoCallMsg", localVideoCallMsg);
+    g(paramArrayOfByte.encode());
+  }
+  
+  protected abstract void b();
+  
+  public void b(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Bdrk != null)
+    {
+      UniPacket localUniPacket = new UniPacket(true);
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      paramArrayOfByte = (SharpVideoMsg)localUniPacket.getByClass("SharpVideoMsg", new SharpVideoMsg());
+      if (a(paramArrayOfByte.type))
+      {
+        a(paramArrayOfByte);
+        this.jdField_a_of_type_Bdrk.b(paramArrayOfByte.video_buff);
+      }
+    }
+  }
+  
+  public void c(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Bdrk != null)
+    {
+      UniPacket localUniPacket = new UniPacket(true);
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      paramArrayOfByte = (SharpVideoMsg)localUniPacket.getByClass("SharpVideoMsg", new SharpVideoMsg());
+      if (a(paramArrayOfByte.type)) {
+        this.jdField_a_of_type_Bdrk.c(paramArrayOfByte.video_buff);
+      }
+    }
+  }
+  
+  public void d(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Bdrk != null)
+    {
+      UniPacket localUniPacket = new UniPacket(true);
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      paramArrayOfByte = (MultiVideoMsg)localUniPacket.getByClass("MultiVideoMsg", new MultiVideoMsg());
+      bdru.c("VideoChannelBase", String.format("receiveMultiVideoMsg type=0x%X csCmd=0x%X", new Object[] { Byte.valueOf(paramArrayOfByte.type), Short.valueOf(paramArrayOfByte.csCmd) }));
+      if (b(paramArrayOfByte.type))
+      {
+        a(paramArrayOfByte);
+        this.jdField_a_of_type_Bdrk.d(paramArrayOfByte.video_buff);
+      }
+    }
+  }
+  
+  public void e(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Bdrk != null)
+    {
+      UniPacket localUniPacket = new UniPacket(true);
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      paramArrayOfByte = (MultiVideoMsg)localUniPacket.getByClass("MultiVideoMsg", new MultiVideoMsg());
+      bdru.c("VideoChannelBase", String.format("receiveMultiVideoAck type=0x%X csCmd=0x%X", new Object[] { Byte.valueOf(paramArrayOfByte.type), Short.valueOf(paramArrayOfByte.csCmd) }));
+      if (b(paramArrayOfByte.type)) {
+        this.jdField_a_of_type_Bdrk.e(paramArrayOfByte.video_buff);
+      }
+    }
+  }
+  
+  public void f(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Bdrk != null)
+    {
+      UniPacket localUniPacket = new UniPacket(true);
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      paramArrayOfByte = (VideoCallMsg)localUniPacket.getByClass("VideoCallMsg", new VideoCallMsg());
+      this.jdField_a_of_type_Bdrk.a(paramArrayOfByte.vMsg);
+    }
+  }
+  
+  protected abstract void g(byte[] paramArrayOfByte);
+  
+  protected abstract void h(byte[] paramArrayOfByte);
+  
+  protected abstract void i(byte[] paramArrayOfByte);
+  
+  protected abstract void j(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdrj
  * JD-Core Version:    0.7.0.1
  */

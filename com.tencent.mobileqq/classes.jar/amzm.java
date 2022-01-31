@@ -1,84 +1,89 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavGAudioSoundData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amzm
-  extends amza
 {
-  public amzm(QQAppInterface paramQQAppInterface)
+  private String a;
+  public boolean a;
+  private String b;
+  public boolean b;
+  private String c = "https://mc.vip.qq.com/group/create2k?_wwv=4&_wv=1027&_wvx=3";
+  private String d = "https://mc.vip.qq.com/group/create3k?_wwv=4&_wv=1027&_wvx=3";
+  
+  public amzm()
   {
-    super("qq.android.qav.muteaudio", paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = "https://club.vip.qq.com/grouphaoma/home?_wv=131072&_fv=0&_proxy=1&from={from}";
+    this.jdField_b_of_type_JavaLangString = "https://club.vip.qq.com/grouphaoma/mine?_wv=131072&_fv=0&_proxy=1&from={from}&groupnum={groupnum}";
   }
   
-  public int a()
+  @NonNull
+  public static amzm a(String paramString)
   {
-    return 10046;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return QavGAudioSoundData.class;
+    boolean bool2 = false;
+    amzm localamzm = new amzm();
+    if (TextUtils.isEmpty(paramString)) {
+      return localamzm;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (paramString.optInt("showCreateIcon") == 1)
+        {
+          bool1 = true;
+          localamzm.jdField_b_of_type_Boolean = bool1;
+          localamzm.jdField_a_of_type_JavaLangString = paramString.optString("pretty_home", "https://club.vip.qq.com/grouphaoma/home?_wv=131072&_fv=0&_proxy=1&from={from}");
+          localamzm.jdField_b_of_type_JavaLangString = paramString.optString("pretty_mine", "https://club.vip.qq.com/grouphaoma/mine?_wv=131072&_fv=0&_proxy=1&from={from}&groupnum={groupnum}");
+          localamzm.c = paramString.optString("2k", "https://mc.vip.qq.com/group/create2k?_wwv=4&_wv=1027&_wvx=3");
+          localamzm.d = paramString.optString("3k", "https://mc.vip.qq.com/group/create3k?_wwv=4&_wv=1027&_wvx=3");
+          bool1 = bool2;
+          if (paramString.optInt("limit_off", 0) == 1) {
+            bool1 = true;
+          }
+          localamzm.jdField_a_of_type_Boolean = bool1;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("vip_pretty.ConfigProcessor", 1, localamzm.toString());
+          return localamzm;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("vip_pretty.ConfigProcessor", 1, "json parse error:" + paramString);
+        return localamzm;
+      }
+      boolean bool1 = false;
+    }
   }
   
   public String a()
   {
-    return "qavDownloadGAudioSoundDuration";
+    return this.c;
   }
   
-  public void a(String paramString)
+  public String a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavGAudioSoundHandler", 2, "download success: " + paramString);
-    }
-    try
-    {
-      bace.a(paramString, mgi.a(), false);
-      super.a(paramString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    return this.jdField_a_of_type_JavaLangString.replace("{from}", paramString);
   }
   
-  public void a(boolean paramBoolean)
+  public String a(String paramString1, String paramString2)
   {
-    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
-    if ((localQavGAudioSoundData != null) && (!localQavGAudioSoundData.autoDownload))
-    {
-      localQavGAudioSoundData.autoDownload = true;
-      amyo.a(localQavGAudioSoundData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
+    return this.jdField_b_of_type_JavaLangString.replace("{from}", paramString1).replace("{groupnum}", paramString2);
   }
   
   public String b()
   {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
-    if (localQavGAudioSoundData == null) {
-      return super.h();
-    }
-    return localQavGAudioSoundData.autoDownload;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amzm
  * JD-Core Version:    0.7.0.1
  */

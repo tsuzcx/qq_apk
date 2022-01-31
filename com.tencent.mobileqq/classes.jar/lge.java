@@ -1,34 +1,28 @@
-import android.opengl.GLES20;
-import javax.microedition.khronos.opengles.GL11;
+import java.util.HashMap;
 
 public class lge
-  implements lgf
 {
-  public int a()
+  public int a;
+  protected HashMap<String, Integer> a;
+  
+  public static int a(lge paramlge, String paramString)
   {
-    int[] arrayOfInt = new int[1];
-    arrayOfInt[0] = 0;
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    lie.a();
-    return arrayOfInt[0];
+    if (paramlge == null) {}
+    while ((paramlge.a == null) || (!paramlge.a.containsKey(paramString))) {
+      return 0;
+    }
+    return ((Integer)paramlge.a.get(paramString)).intValue();
   }
   
-  public void a(int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public static void a(lge paramlge, String paramString, int paramInt)
   {
-    GLES20.glGenBuffers(paramInt1, paramArrayOfInt, paramInt2);
-    lie.a();
-  }
-  
-  public void a(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
-  {
-    GLES20.glDeleteTextures(paramInt1, paramArrayOfInt, paramInt2);
-    lie.a();
-  }
-  
-  public void b(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
-  {
-    GLES20.glDeleteBuffers(paramInt1, paramArrayOfInt, paramInt2);
-    lie.a();
+    if (paramlge == null) {
+      return;
+    }
+    if (paramlge.a == null) {
+      paramlge.a = new HashMap();
+    }
+    paramlge.a.put(paramString, Integer.valueOf(paramInt));
   }
 }
 

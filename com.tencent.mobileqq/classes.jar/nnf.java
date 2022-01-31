@@ -1,47 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment.1.1;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class nnf
-  implements AladdinConfigHandler
+  implements View.OnClickListener
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("VideoSoftAdConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = ocx.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("VideoSoftAdConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (paramInt1 == 200)
-      {
-        if ((TextUtils.equals(str1, "ad_guide_area")) && (!TextUtils.isEmpty(str2))) {
-          bgmq.a("sp_key_ad_soft_total_area", str2.trim());
-        }
-        if ((TextUtils.equals(str1, "ad_max_num")) && (!TextUtils.isEmpty(str2))) {
-          bgmq.a("sp_key_ad_soft_ad_max", str2.trim());
-        }
-        if ((TextUtils.equals(str1, "kd_max_num")) && (!TextUtils.isEmpty(str2))) {
-          bgmq.a("sp_key_ad_soft_kd_max", str2.trim());
-        }
-      }
-    }
-    return true;
-  }
+  public nnf(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   
-  public void onWipeConfig(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 200)
+    switch (paramView.getId())
     {
-      bgmq.a("sp_key_ad_soft_total_area", "0");
-      bgmq.a("sp_key_ad_soft_ad_max", "25");
-      bgmq.a("sp_key_ad_soft_kd_max", "25");
+    default: 
+      onClick(paramView);
+      return;
+    case 2131368457: 
+      if (!this.a.jdField_a_of_type_Bcfj.a.a)
+      {
+        paramView = this.a.jdField_a_of_type_Bcbv.c.getText().toString();
+        this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onRightBtn(\"" + paramView + "\")");
+        return;
+      }
+      if (PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a) == 1001)
+      {
+        ThreadManager.executeOnSubThread(new PublicAccountBrowser.PublicAccountBrowserFragment.1.1(this));
+        this.a.getActivity().finish();
+        return;
+      }
+      onClick(paramView);
+      return;
     }
+    if (!this.a.jdField_a_of_type_Bcfj.a.a)
+    {
+      paramView = this.a.jdField_a_of_type_Bcbv.a.getText().toString();
+      if (paramView.equals(PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a).getStringExtra("leftViewText")))
+      {
+        this.a.f();
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onLeftBtn(\"" + paramView + "\")");
+      return;
+    }
+    onClick(paramView);
   }
 }
 

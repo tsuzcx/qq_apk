@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import awqx;
-import axfs;
+import axqw;
+import ayfv;
 import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -12,7 +12,7 @@ import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import nfp;
+import nqq;
 
 public class QQBrowserDelegationActivity
   extends BaseActivity
@@ -31,20 +31,20 @@ public class QQBrowserDelegationActivity
     do
     {
       int i;
-      nfp localnfp;
+      nqq localnqq;
       do
       {
         return;
         i = 0;
-        localnfp = (nfp)paramQQAppInterface.getManager(88);
-        if ("3046055438".equals(localnfp.i)) {
+        localnqq = (nqq)paramQQAppInterface.getManager(88);
+        if ("3046055438".equals(localnqq.i)) {
           i = 1;
         }
-        localnfp.i = null;
+        localnqq.i = null;
       } while (i == 0);
       paramIntent.setClass(this, BusinessBrowser.class);
       paramIntent.putExtra("jump_from", 1);
-      paramQQAppInterface = paramQQAppInterface.a().a(localnfp.i, 1008);
+      paramQQAppInterface = paramQQAppInterface.a().a(localnqq.i, 1008);
     } while (paramQQAppInterface == null);
     paramIntent.putExtra("msg_id", paramQQAppInterface.getExtInfoFromExtStr("public_account_msg_id"));
   }
@@ -53,56 +53,66 @@ public class QQBrowserDelegationActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidContentIntent = getIntent();
-    if (this.jdField_a_of_type_AndroidContentIntent.getExtras() == null)
-    {
+    if (this.jdField_a_of_type_AndroidContentIntent.getExtras() == null) {
       finish();
-      return false;
     }
-    Intent localIntent = new Intent(getIntent());
-    int i = localIntent.getIntExtra("browserType", 0);
-    localIntent.putExtra("needSkey", "true");
+    Intent localIntent;
     String str;
-    switch (i)
+    label244:
+    boolean bool;
+    do
     {
-    case 2: 
-    default: 
-      localIntent.setClass(this, QQBrowserActivity.class);
-      str = localIntent.getStringExtra("url");
-      if (!axfs.b(str)) {
-        break label236;
-      }
-      paramBundle = null;
-      i = localIntent.getIntExtra("uinType", 1);
-      if (i == 1) {
-        paramBundle = localIntent.getStringExtra("groupUin");
-      }
-      break;
-    }
-    for (;;)
-    {
-      if ((TextUtils.isEmpty(paramBundle)) || (!axfs.a(this, str, axfs.a(this.app, paramBundle, i)))) {
-        break label236;
-      }
-      awqx.b(this.app, "dc00898", "", paramBundle, "0X8009FCF", "0X8009FCF", 0, 0, "", "", "", "");
-      finish();
       return false;
-      localIntent.setClass(this, QQH5BrowserActivity.class);
-      break;
-      localIntent.putExtra("fragmentClass", ArkBrowserFragment.class);
-      localIntent.setClass(this, QQBrowserActivity.class);
-      break;
-      if (i == 0) {
-        paramBundle = localIntent.getStringExtra("friend_uin");
+      localIntent = new Intent(getIntent());
+      int i = localIntent.getIntExtra("browserType", 0);
+      localIntent.putExtra("needSkey", "true");
+      switch (i)
+      {
+      case 2: 
+      default: 
+        localIntent.setClass(this, QQBrowserActivity.class);
+        str = localIntent.getStringExtra("url");
+        if (!ayfv.b(str)) {
+          break label244;
+        }
+        paramBundle = null;
+        i = localIntent.getIntExtra("uinType", 1);
+        if (i == 1) {
+          paramBundle = localIntent.getStringExtra("groupUin");
+        }
+        break;
       }
-    }
-    label236:
-    paramBundle = localIntent;
-    if (axfs.a(str))
-    {
-      localIntent.setClass(this, TeamWorkDocEditBrowserActivity.class);
-      localIntent.addFlags(603979776);
-      paramBundle = TeamWorkDocEditBrowserActivity.a(localIntent, str, this);
-    }
+      for (;;)
+      {
+        if ((TextUtils.isEmpty(paramBundle)) || (!ayfv.a(this, str, ayfv.a(this.app, paramBundle, i)))) {
+          break label244;
+        }
+        axqw.b(this.app, "dc00898", "", paramBundle, "0X8009FCF", "0X8009FCF", 0, 0, "", "", "", "");
+        finish();
+        return false;
+        localIntent.setClass(this, QQH5BrowserActivity.class);
+        break;
+        localIntent.putExtra("fragmentClass", ArkBrowserFragment.class);
+        localIntent.setClass(this, QQBrowserActivity.class);
+        break;
+        if (i == 0) {
+          paramBundle = localIntent.getStringExtra("friend_uin");
+        }
+      }
+      paramBundle = localIntent;
+      if (!ayfv.a(str)) {
+        break label309;
+      }
+      if (!localIntent.getBooleanExtra("h5_ark_is_from_share", false)) {
+        break;
+      }
+      bool = TeamWorkDocEditBrowserActivity.a(this, str, "s_qq_aio_ark_h5");
+      finish();
+    } while (bool);
+    localIntent.setClass(this, TeamWorkDocEditBrowserActivity.class);
+    localIntent.addFlags(603979776);
+    paramBundle = TeamWorkDocEditBrowserActivity.a(localIntent, str, this);
+    label309:
     a(paramBundle, this.app);
     paramBundle.putExtra("startOpenPageTime", System.currentTimeMillis());
     paramBundle.putExtra("uin", this.app.getCurrentAccountUin());

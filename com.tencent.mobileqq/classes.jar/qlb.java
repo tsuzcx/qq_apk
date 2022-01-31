@@ -1,24 +1,45 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class qlb
-  implements Animation.AnimationListener
+final class qlb
+  implements bbwy
 {
-  qlb(qla paramqla, boolean paramBoolean) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (qla.a(this.jdField_a_of_type_Qla) != null) {
-      qla.a(this.jdField_a_of_type_Qla).setImageDrawable(this.jdField_a_of_type_Qla.a(qla.a(this.jdField_a_of_type_Qla, this.jdField_a_of_type_Boolean)));
+    if (QLog.isColorLevel()) {
+      QLog.d(qla.a, 2, "queryKingCardType()#callback postQuery, sucess=" + paramBoolean1 + " isKingCard=" + paramBoolean2 + " product=" + paramInt);
     }
-    paramAnimation.setInterpolator(new AnticipateInterpolator());
+    if (paramBoolean1)
+    {
+      qla.a(paramInt);
+      try
+      {
+        JSONObject localJSONObject = qla.b();
+        if (localJSONObject != null) {}
+        try
+        {
+          qla.b().put("simCardType", qla.a());
+          if (QLog.isColorLevel()) {
+            QLog.d(qla.a, 2, "queryKingCardType()#callback postQuery, update jsonStr ");
+          }
+          return;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+            if (QLog.isColorLevel()) {
+              QLog.e(qla.a, 2, "queryKingCardType()#callback postQuery, update json error ", localJSONException);
+            }
+          }
+        }
+        return;
+      }
+      finally {}
+    }
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

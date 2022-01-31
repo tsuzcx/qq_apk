@@ -1,14 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class ngu
-  extends azue
+class ngu
+  implements View.OnClickListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  ngu(nfu paramnfu, nmv paramnmv) {}
+  
+  public void onClick(View paramView)
   {
-    paramDownloadParams = paramBitmap.copy(paramBitmap.getConfig(), true);
-    bain.a(paramDownloadParams, 40);
-    return paramDownloadParams;
+    nfu.a(this.jdField_a_of_type_Nfu);
+    nfu.a(this.jdField_a_of_type_Nfu, this.jdField_a_of_type_Nmv.a);
   }
 }
 

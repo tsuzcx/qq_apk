@@ -1,31 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class rkz
-  implements DialogInterface.OnClickListener
+class rkz
+  extends osp
 {
-  public rkz(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
+  rkz(rky paramrky, rkx paramrkx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new JSONObject();
-    try
-    {
-      paramDialogInterface.put("button", 1);
-      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("okBtnText", ""));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
-      return;
-    }
-    catch (JSONException paramDialogInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(BridgeModule.TAG, 2, "showDialog error" + paramDialogInterface.getMessage());
-    }
+    rky.a(this.jdField_a_of_type_Rky, paramBoolean, paramInt, paramString);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
+  {
+    rky.a(this.jdField_a_of_type_Rky, paramBoolean, paramLong, paramInt, paramString);
   }
 }
 

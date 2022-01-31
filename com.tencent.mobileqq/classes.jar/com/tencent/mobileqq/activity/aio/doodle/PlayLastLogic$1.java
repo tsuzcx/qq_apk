@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import acub;
+import adeu;
 
 public class PlayLastLogic$1
   implements Runnable
 {
-  public PlayLastLogic$1(acub paramacub) {}
+  public PlayLastLogic$1(adeu paramadeu) {}
   
   public void run()
   {
     if (this.this$0.a == 0) {
-      acub.a(this.this$0, true);
+      adeu.a(this.this$0, true);
     }
   }
 }

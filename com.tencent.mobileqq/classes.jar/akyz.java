@@ -1,26 +1,41 @@
-import com.tencent.ark.ark.VariantWrapper;
+import android.content.res.Resources;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class akyz
-  implements alaj
+  extends bbjx
 {
-  akyz(akyy paramakyy, long paramLong) {}
+  PromotionConfigInfo jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
+  final String jdField_a_of_type_JavaLangString;
+  WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(long paramLong)
+  akyz(String paramString1, String paramString2, AppInterface paramAppInterface)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Akyy.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
+    super(paramString1);
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
   }
   
-  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  public void innerClean()
   {
-    akyv.a(this.jdField_a_of_type_Akyy.a, this.jdField_a_of_type_Long, paramBoolean, "Motion", paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
+  }
+  
+  public boolean runOnSubThread(Resources paramResources)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = bblp.a(this.jdField_a_of_type_JavaLangString, null);
+    QLog.w(this.TAG, 1, "ReadConfigTask,ConfigInfo[" + this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo + "]");
+    akyq.c();
+    AudioHelper.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akyz
  * JD-Core Version:    0.7.0.1
  */

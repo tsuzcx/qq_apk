@@ -1,41 +1,88 @@
-import android.content.res.Resources;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-class akkn
-  extends baiq
+public abstract class akkn
 {
-  PromotionConfigInfo jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  protected akkr a;
+  public QQAppInterface a;
+  protected Class<? extends aukm> a;
+  protected ArrayList<akkq> a;
+  public ConcurrentHashMap<String, aukm> a;
   
-  akkn(String paramString1, String paramString2, AppInterface paramAppInterface)
+  public akkn(QQAppInterface paramQQAppInterface, akkr paramakkr, Class<? extends aukm> paramClass)
   {
-    super(paramString1);
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Akkr = paramakkr;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void innerClean()
+  public aukm a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
+    return (aukm)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
   }
   
-  public boolean runOnSubThread(Resources paramResources)
+  protected String a(aukm paramaukm)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = bakf.a(this.jdField_a_of_type_JavaLangString, null);
-    QLog.w(this.TAG, 1, "ReadConfigTask,ConfigInfo[" + this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo + "]");
-    akke.c();
-    AudioHelper.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    return true;
+    return Long.toString(paramaukm.getId());
+  }
+  
+  protected abstract void a();
+  
+  public void a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((akkq)localIterator.next()).a(paramInt);
+    }
+  }
+  
+  public void a(aukm paramaukm)
+  {
+    a(paramaukm, 0, null);
+  }
+  
+  public abstract void a(aukm paramaukm, int paramInt, akkt paramakkt);
+  
+  protected abstract void b();
+  
+  public void b(aukm paramaukm)
+  {
+    b(paramaukm, 0, null);
+  }
+  
+  public void b(aukm paramaukm, int paramInt, akkt paramakkt)
+  {
+    String str = a(paramaukm);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramaukm);
+    if (paramaukm.getStatus() == 1000)
+    {
+      this.jdField_a_of_type_Akkr.a(paramaukm, 0, paramInt, paramakkt);
+      return;
+    }
+    this.jdField_a_of_type_Akkr.a(paramaukm, 1, paramInt, paramakkt);
+  }
+  
+  public void c(aukm paramaukm)
+  {
+    c(paramaukm, 0, null);
+  }
+  
+  public void c(aukm paramaukm, int paramInt, akkt paramakkt)
+  {
+    String str = a(paramaukm);
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+    }
+    this.jdField_a_of_type_Akkr.a(paramaukm, 2, paramInt, paramakkt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akkn
  * JD-Core Version:    0.7.0.1
  */

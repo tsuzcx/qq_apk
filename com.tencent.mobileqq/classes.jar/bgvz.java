@@ -1,119 +1,130 @@
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import android.util.SparseArray;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.mobileqq.redtouch.RedDisplayInfo;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.redtouch.RedTouchUI;
+import com.tencent.mobileqq.redtouch.RedTypeInfo;
+import cooperation.qqreader.view.ReaderTabBarView;
+import java.util.ArrayList;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bgvz
 {
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private final short jdField_a_of_type_Short;
-  private final byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private short jdField_b_of_type_Short;
-  private final byte[] jdField_b_of_type_ArrayOfByte;
-  private long c;
+  public int a;
+  RedTouchUI jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI;
+  public String a;
+  public boolean a;
+  public int b = 0;
   
-  public bgvz(int paramInt, byte[] paramArrayOfByte1, long paramLong1, byte[] paramArrayOfByte2, long paramLong2)
+  public bgvz(ReaderTabBarView paramReaderTabBarView, int paramInt1, String paramString, boolean paramBoolean, int paramInt2, RedTouchUI paramRedTouchUI)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte2;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_ArrayOfByte = new byte[20];
-    if (paramArrayOfByte1.length > 20) {
-      throw new IllegalArgumentException("file Hash is too long.");
-    }
-    this.jdField_a_of_type_Short = ((short)paramArrayOfByte1.length);
-    paramInt = 0;
-    while (paramInt < paramArrayOfByte1.length)
-    {
-      this.jdField_b_of_type_ArrayOfByte[paramInt] = paramArrayOfByte1[paramInt];
-      paramInt += 1;
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI = paramRedTouchUI;
   }
   
-  public int a()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Int == 1000) {
-      return this.jdField_a_of_type_ArrayOfByte.length + 2 + 34 + 16;
-    }
-    return this.jdField_a_of_type_ArrayOfByte.length + 2 + 42 + 16;
-  }
-  
-  public int a(long paramLong, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
-  {
-    paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte, paramInt2, paramInt3);
-    if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {
-      paramArrayOfByte.order(ByteOrder.BIG_ENDIAN);
-    }
-    paramArrayOfByte.putInt(-1412589450);
-    paramArrayOfByte.putInt(this.jdField_a_of_type_Int);
-    paramArrayOfByte.putInt((int)this.jdField_b_of_type_Long);
-    if (this.jdField_a_of_type_Int == 1000) {}
-    for (paramInt2 = this.jdField_a_of_type_ArrayOfByte.length + 2 + 34 + paramInt1;; paramInt2 = this.jdField_a_of_type_ArrayOfByte.length + 2 + 42 + paramInt1)
-    {
-      paramArrayOfByte.putInt(paramInt2);
-      short s = (short)this.jdField_a_of_type_ArrayOfByte.length;
-      paramArrayOfByte.putShort(s);
-      paramArrayOfByte.put(this.jdField_a_of_type_ArrayOfByte, 0, s);
-      paramArrayOfByte.putShort(this.jdField_a_of_type_Short);
-      paramArrayOfByte.put(this.jdField_b_of_type_ArrayOfByte);
-      paramArrayOfByte.putInt((int)(this.jdField_a_of_type_Long & 0xFFFFFFFF));
-      paramArrayOfByte.putInt((int)(0xFFFFFFFF & paramLong));
-      paramArrayOfByte.putInt(paramInt1);
-      if (this.jdField_a_of_type_Int == 1007)
-      {
-        paramArrayOfByte.putInt((int)((this.jdField_a_of_type_Long & 0x0) >> 32));
-        paramArrayOfByte.putInt((int)((0x0 & paramLong) >> 32));
-      }
-      return paramInt2 + 16 - paramInt1;
-    }
-  }
-  
-  public int a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
-  {
-    paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte, 0, paramInt);
-    if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {
-      paramArrayOfByte.order(ByteOrder.BIG_ENDIAN);
-    }
-    long l1 = paramArrayOfByte.getInt();
-    this.jdField_b_of_type_Int = paramArrayOfByte.getInt();
-    paramArrayOfByte.getInt();
-    paramInt = paramArrayOfByte.getInt();
-    if (l1 != -1412589450L) {}
+    if (ReaderTabBarView.a(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView).get(paramInt) == null) {}
+    label165:
     do
     {
-      return 100002;
-      if (this.jdField_b_of_type_Int != 0) {
-        return this.jdField_b_of_type_Int;
+      do
+      {
+        return;
+        this.jdField_a_of_type_Boolean = paramBoolean;
+        if ((!this.jdField_a_of_type_Boolean) && (ReaderTabBarView.a(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView).containsKey(Integer.valueOf(paramInt)))) {
+          ReaderTabBarView.a(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView).remove(Integer.valueOf(paramInt));
+        }
+        switch (this.jdField_a_of_type_Int)
+        {
+        default: 
+          paramInt = 0;
+        }
+        for (;;)
+        {
+          if (this.jdField_a_of_type_Boolean) {
+            break label165;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.b();
+          return;
+          paramInt = 0;
+          continue;
+          paramInt = -1;
+          try
+          {
+            int i = Integer.parseInt(this.jdField_a_of_type_JavaLangString);
+            paramInt = i;
+          }
+          catch (NumberFormatException localNumberFormatException)
+          {
+            for (;;)
+            {
+              bgvo.a("ReaderTabBarView", localNumberFormatException.getMessage());
+              continue;
+              paramBoolean = false;
+            }
+          }
+          if (this.jdField_a_of_type_Boolean)
+          {
+            if (paramInt <= 0) {
+              break;
+            }
+            paramBoolean = true;
+            this.jdField_a_of_type_Boolean = paramBoolean;
+          }
+          paramInt = 4;
+        }
+        RedAppInfo localRedAppInfo = new RedAppInfo();
+        localRedAppInfo.b(1);
+        localRedAppInfo.c(paramInt);
+        RedDisplayInfo localRedDisplayInfo = new RedDisplayInfo();
+        RedTypeInfo localRedTypeInfo = new RedTypeInfo();
+        localRedTypeInfo.setRed_type(paramInt);
+        Object localObject;
+        if (paramInt == 4) {
+          localObject = new JSONObject();
+        }
+        try
+        {
+          ((JSONObject)localObject).put("cn", "#FF0000");
+          localRedTypeInfo.setRed_desc(((JSONObject)localObject).toString());
+          localRedTypeInfo.setRed_content(this.jdField_a_of_type_JavaLangString);
+          localObject = new ArrayList();
+          ((ArrayList)localObject).add(localRedTypeInfo);
+          localRedDisplayInfo.a((ArrayList)localObject);
+          localRedAppInfo.a(localRedDisplayInfo);
+          this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(localRedAppInfo);
+          if (localRedTypeInfo.getRed_type() != 0) {
+            break;
+          }
+          if (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) == 4)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 20, 8, 0).a();
+            return;
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            bgvo.a("ReaderTabBarView", localJSONException.getMessage());
+          }
+        }
+      } while (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) != 5);
+      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 15, 8, 0).a();
+      return;
+      if (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) == 4)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 30, 2, 0).a();
+        return;
       }
-      if (!paramBoolean) {
-        break;
-      }
-    } while ((paramInt != 5) && (paramInt != 9));
-    this.jdField_b_of_type_Short = ((short)paramArrayOfByte.get());
-    l1 = 0L;
-    long l2 = paramArrayOfByte.getInt();
-    if (this.jdField_a_of_type_Int == 1007) {
-      l1 = paramArrayOfByte.getInt();
-    }
-    this.c = ((l1 << 32 & 0x0) + (l2 & 0xFFFFFFFF));
-    return 0;
-  }
-  
-  public long a()
-  {
-    return this.c;
-  }
-  
-  public short a()
-  {
-    return this.jdField_b_of_type_Short;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
+    } while (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) != 5);
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 25, 2, 0).a();
   }
 }
 

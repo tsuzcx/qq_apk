@@ -1,20 +1,20 @@
 package com.tencent.device.file;
 
-import ajed;
-import ajfe;
+import ajsf;
+import ajtg;
 import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Base64;
-import apck;
-import axro;
-import axrr;
-import axrt;
-import axsp;
-import axsq;
-import bace;
-import bcdu;
+import apue;
+import ayrv;
+import ayry;
+import aysa;
+import aysw;
+import aysx;
+import bbdj;
+import bdhv;
 import com.tencent.litetransfersdk.ActionInfo;
 import com.tencent.litetransfersdk.FTNInfo;
 import com.tencent.litetransfersdk.FTNNotify;
@@ -43,21 +43,21 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
-import xrh;
-import xsv;
-import xsw;
-import xvq;
+import yak;
+import yby;
+import ybz;
+import yeu;
 
 public class DeviceFileHandler
   extends RouterHandler
-  implements axrt
+  implements aysa
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new xsv(this, Looper.getMainLooper());
+  Handler jdField_a_of_type_AndroidOsHandler = new yby(this, Looper.getMainLooper());
   private DeviceFileHandler.DeviceNotifyReceiver jdField_a_of_type_ComTencentDeviceFileDeviceFileHandler$DeviceNotifyReceiver;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  protected HashMap<Long, axro> a;
+  protected HashMap<Long, ayrv> a;
   protected HashSet<Long> a;
-  protected HashMap<axro, Integer> b;
+  protected HashMap<ayrv, Integer> b;
   protected HashSet<Long> b;
   protected HashMap<Long, Integer> c;
   private HashMap<Long, Boolean> f;
@@ -187,7 +187,7 @@ public class DeviceFileHandler
         }
         this.e.put(Long.valueOf(paramSession.uSessionID), paramSession);
       } while (this.jdField_a_of_type_JavaUtilHashSet.contains(Long.valueOf(paramSession.uSessionID)));
-      if ((!paramSession.bSend) && ((xvq.d.equalsIgnoreCase(paramSession.actionInfo.strServiceName)) || (xvq.h.equalsIgnoreCase(paramSession.actionInfo.strServiceName)) || (xvq.b.equalsIgnoreCase(paramSession.actionInfo.strServiceName))))
+      if ((!paramSession.bSend) && ((yeu.d.equalsIgnoreCase(paramSession.actionInfo.strServiceName)) || (yeu.h.equalsIgnoreCase(paramSession.actionInfo.strServiceName)) || (yeu.b.equalsIgnoreCase(paramSession.actionInfo.strServiceName))))
       {
         super.a(paramSession, paramNFCInfo, paramFTNInfo, false);
         super.b(paramSession);
@@ -246,7 +246,7 @@ public class DeviceFileHandler
   {
     long l = 0L;
     if (paramInt1 == 3) {
-      l = ((xrh)paramQQAppInterface.a(51)).a(paramString, paramInt2);
+      l = ((yak)paramQQAppInterface.a(51)).a(paramString, paramInt2);
     }
     return l;
   }
@@ -267,41 +267,41 @@ public class DeviceFileHandler
       if (paramInt1 == 2)
       {
         l = this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.generateSessionID(0);
-        paramString2 = bcdu.d(paramString1) + paramString1.substring(paramString1.lastIndexOf("."));
-        paramString2 = ajed.aU + "smartdevice/" + paramString2;
-        if (bace.b(paramString2))
+        paramString2 = bdhv.d(paramString1) + paramString1.substring(paramString1.lastIndexOf("."));
+        paramString2 = ajsf.aW + "smartdevice/" + paramString2;
+        if (bbdj.b(paramString2))
         {
           paramQQAppInterface = new Message();
           paramQQAppInterface.what = 0;
           paramString1 = new Session();
           paramString1.uSessionID = l;
-          this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(paramString1, xvq.g, null);
+          this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(paramString1, yeu.g, null);
           paramString1.strFilePathSrc = paramString2;
-          paramString1.uFileSizeSrc = bace.a(paramString2);
+          paramString1.uFileSizeSrc = bbdj.a(paramString2);
           paramQQAppInterface.obj = paramString1;
           this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramQQAppInterface, 100L);
           return l;
         }
         Object localObject = new Session();
         ((Session)localObject).uSessionID = l;
-        this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService((Session)localObject, xvq.g, null);
+        this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService((Session)localObject, yeu.g, null);
         this.e.put(Long.valueOf(l), localObject);
         notifyUI(101, true, localObject);
-        localObject = new axro();
-        ((axro)localObject).jdField_a_of_type_Axrt = this;
-        ((axro)localObject).jdField_a_of_type_JavaLangString = paramString1;
-        ((axro)localObject).jdField_a_of_type_Int = 0;
-        ((axro)localObject).c = paramString2;
+        localObject = new ayrv();
+        ((ayrv)localObject).jdField_a_of_type_Aysa = this;
+        ((ayrv)localObject).jdField_a_of_type_JavaLangString = paramString1;
+        ((ayrv)localObject).jdField_a_of_type_Int = 0;
+        ((ayrv)localObject).c = paramString2;
         this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(l), localObject);
-        paramQQAppInterface.getNetEngine(0).a((axsp)localObject);
+        paramQQAppInterface.getNetEngine(0).a((aysw)localObject);
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
         return l;
       }
     } while (paramInt1 != 3);
-    l = ((xrh)paramQQAppInterface.a(51)).a(paramString1, paramString2, paramInt2);
+    l = ((yak)paramQQAppInterface.a(51)).a(paramString1, paramString2, paramInt2);
     paramQQAppInterface = new Session();
     paramQQAppInterface.uSessionID = l;
-    this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(paramQQAppInterface, xvq.g, null);
+    this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(paramQQAppInterface, yeu.g, null);
     this.e.put(Long.valueOf(l), paramQQAppInterface);
     notifyUI(101, true, paramQQAppInterface);
     this.jdField_b_of_type_JavaUtilHashSet.add(Long.valueOf(l));
@@ -335,7 +335,7 @@ public class DeviceFileHandler
     localSession.emFileType = paramSession.emFileType;
     localSession.strFileNameSrc = paramSession.strFileNameSrc;
     localSession.uFileSizeSrc = paramSession.uFileSizeSrc;
-    this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(localSession, xvq.c, null);
+    this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(localSession, yeu.c, null);
     this.e.put(Long.valueOf(localSession.uSessionID), localSession);
     return localSession;
   }
@@ -355,17 +355,17 @@ public class DeviceFileHandler
       return null;
     }
     int i;
-    if (paramString2.equalsIgnoreCase(xvq.c))
+    if (paramString2.equalsIgnoreCase(yeu.c))
     {
       i = 2251;
-      switch (apck.a(paramString1))
+      switch (apue.a(paramString1))
       {
       default: 
         localSession.uSessionID = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, 3, i);
         localSession.emFileType = i;
-        localSession.strFileNameSrc = apck.a(paramString1);
-        localSession.uFileSizeSrc = bace.a(paramString1);
-        this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(localSession, xvq.c, null);
+        localSession.strFileNameSrc = apue.a(paramString1);
+        localSession.uFileSizeSrc = bbdj.a(paramString1);
+        this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(localSession, yeu.c, null);
         this.e.put(Long.valueOf(localSession.uSessionID), localSession);
         notifyUI(101, true, localSession);
       }
@@ -405,9 +405,9 @@ public class DeviceFileHandler
         if (localIterator.hasNext())
         {
           localObject = (Map.Entry)localIterator.next();
-          if ((((Long)((Map.Entry)localObject).getKey()).longValue() != paramLong) && (((axro)((Map.Entry)localObject).getValue()).jdField_a_of_type_JavaLangString.equals(((axro)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong))).jdField_a_of_type_JavaLangString)))
+          if ((((Long)((Map.Entry)localObject).getKey()).longValue() != paramLong) && (((ayrv)((Map.Entry)localObject).getValue()).jdField_a_of_type_JavaLangString.equals(((ayrv)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong))).jdField_a_of_type_JavaLangString)))
           {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0).b((axsp)((Map.Entry)localObject).getValue());
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0).b((aysw)((Map.Entry)localObject).getValue());
             localObject = (Session)this.e.get(((Map.Entry)localObject).getKey());
             if (localObject != null) {
               break;
@@ -426,7 +426,7 @@ public class DeviceFileHandler
         super.notifyUI(103, false, localObject);
         localIterator.remove();
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0).b((axsp)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0).b((aysw)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)));
       this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
       return;
     }
@@ -459,9 +459,9 @@ public class DeviceFileHandler
     return true;
   }
   
-  public Class<? extends ajfe> observerClass()
+  public Class<? extends ajtg> observerClass()
   {
-    return xsw.class;
+    return ybz.class;
   }
   
   public void onDestroy()
@@ -474,9 +474,9 @@ public class DeviceFileHandler
     }
   }
   
-  public void onResp(axsq paramaxsq)
+  public void onResp(aysx paramaysx)
   {
-    if (paramaxsq.jdField_a_of_type_Int == 3) {}
+    if (paramaysx.jdField_a_of_type_Int == 3) {}
     Iterator localIterator;
     label22:
     Object localObject;
@@ -490,12 +490,12 @@ public class DeviceFileHandler
           break;
         }
         localObject = (Map.Entry)localIterator.next();
-      } while (!((axro)((Map.Entry)localObject).getValue()).jdField_a_of_type_JavaLangString.equals(((axro)paramaxsq.jdField_a_of_type_Axsp).jdField_a_of_type_JavaLangString));
+      } while (!((ayrv)((Map.Entry)localObject).getValue()).jdField_a_of_type_JavaLangString.equals(((ayrv)paramaysx.jdField_a_of_type_Aysw).jdField_a_of_type_JavaLangString));
       localObject = (Session)this.e.get(((Map.Entry)localObject).getKey());
     } while (localObject == null);
-    ((Session)localObject).strFilePathSrc = paramaxsq.jdField_a_of_type_Axsp.c;
-    ((Session)localObject).uFileSizeSrc = paramaxsq.jdField_a_of_type_Long;
-    if (paramaxsq.jdField_a_of_type_Int == 0) {}
+    ((Session)localObject).strFilePathSrc = paramaysx.jdField_a_of_type_Aysw.c;
+    ((Session)localObject).uFileSizeSrc = paramaysx.jdField_a_of_type_Long;
+    if (paramaysx.jdField_a_of_type_Int == 0) {}
     for (boolean bool = true;; bool = false)
     {
       super.notifyUI(103, bool, localObject);
@@ -505,7 +505,7 @@ public class DeviceFileHandler
     }
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2)
+  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
     for (;;)
@@ -515,19 +515,19 @@ public class DeviceFileHandler
       if (localIterator.hasNext())
       {
         localEntry = (Map.Entry)localIterator.next();
-        if (!((axro)localEntry.getValue()).jdField_a_of_type_JavaLangString.equals(((axro)paramaxsp).jdField_a_of_type_JavaLangString)) {
+        if (!((ayrv)localEntry.getValue()).jdField_a_of_type_JavaLangString.equals(((ayrv)paramaysw).jdField_a_of_type_JavaLangString)) {
           continue;
         }
         int i = 0;
-        if (this.jdField_b_of_type_JavaUtilHashMap.containsKey(paramaxsp)) {
-          i = ((Integer)this.jdField_b_of_type_JavaUtilHashMap.get(paramaxsp)).intValue();
+        if (this.jdField_b_of_type_JavaUtilHashMap.containsKey(paramaysw)) {
+          i = ((Integer)this.jdField_b_of_type_JavaUtilHashMap.get(paramaysw)).intValue();
         }
         if (i < 10)
         {
-          this.jdField_b_of_type_JavaUtilHashMap.put((axro)paramaxsp, Integer.valueOf(i + 1));
+          this.jdField_b_of_type_JavaUtilHashMap.put((ayrv)paramaysw, Integer.valueOf(i + 1));
           continue;
         }
-        this.jdField_b_of_type_JavaUtilHashMap.put((axro)paramaxsp, Integer.valueOf(0));
+        this.jdField_b_of_type_JavaUtilHashMap.put((ayrv)paramaysw, Integer.valueOf(0));
         localSession = (Session)this.e.get(localEntry.getKey());
         if (localSession != null) {}
       }

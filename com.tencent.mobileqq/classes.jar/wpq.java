@@ -1,165 +1,46 @@
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
 
 public class wpq
+  extends LinearLayoutManager
 {
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private final List<Animator> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final wqa jdField_a_of_type_Wqa;
-  private boolean jdField_a_of_type_Boolean;
-  private final View[] jdField_a_of_type_ArrayOfAndroidViewView;
-  private boolean b;
-  
-  public wpq(wqa paramwqa, View... paramVarArgs)
+  public wpq(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Wqa = paramwqa;
-    this.jdField_a_of_type_ArrayOfAndroidViewView = paramVarArgs;
+    super(paramContext, paramInt, paramBoolean);
   }
   
-  protected float a(float paramFloat)
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
   {
-    return this.jdField_a_of_type_ArrayOfAndroidViewView[0].getContext().getResources().getDisplayMetrics().density * paramFloat;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_ArrayOfAndroidViewView[0];
-  }
-  
-  public Interpolator a()
-  {
-    return this.jdField_a_of_type_AndroidViewAnimationInterpolator;
-  }
-  
-  protected List<Animator> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public wpq a(long paramLong)
-  {
-    this.jdField_a_of_type_Wqa.a(paramLong);
-    return this;
-  }
-  
-  protected wpq a(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramAnimator);
-    return this;
-  }
-  
-  public wpq a(String paramString, float... paramVarArgs)
-  {
-    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
-    int j = arrayOfView.length;
-    int i = 0;
-    while (i < j)
+    try
     {
-      View localView = arrayOfView[i];
-      this.jdField_a_of_type_JavaUtilList.add(ObjectAnimator.ofFloat(localView, paramString, a(paramVarArgs)));
-      i += 1;
+      super.onLayoutChildren(paramRecycler, paramState);
+      return;
     }
-    return this;
-  }
-  
-  public wpq a(wpx paramwpx)
-  {
-    this.jdField_a_of_type_Wqa.a(paramwpx);
-    return this;
-  }
-  
-  public wpq a(wpz paramwpz, float... paramVarArgs)
-  {
-    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
-    int j = arrayOfView.length;
-    int i = 0;
-    while (i < j)
+    catch (IndexOutOfBoundsException paramRecycler)
     {
-      View localView = arrayOfView[i];
-      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(a(paramVarArgs));
-      if (paramwpz != null) {
-        localValueAnimator.addUpdateListener(new wpr(this, paramwpz, localView));
-      }
-      a(localValueAnimator);
-      i += 1;
+      paramRecycler.printStackTrace();
     }
-    return this;
   }
   
-  public wpq a(float... paramVarArgs)
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
   {
-    return a("translationY", paramVarArgs);
-  }
-  
-  public wpq a(View... paramVarArgs)
-  {
-    return this.jdField_a_of_type_Wqa.b(paramVarArgs);
-  }
-  
-  public wqa a()
-  {
-    return this.jdField_a_of_type_Wqa.a(new AccelerateInterpolator());
-  }
-  
-  public wqa a(float paramFloat)
-  {
-    return this.jdField_a_of_type_Wqa.a(new DecelerateInterpolator(paramFloat));
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected float[] a(float... paramVarArgs)
-  {
-    if (!this.b) {
-      return paramVarArgs;
-    }
-    float[] arrayOfFloat = new float[paramVarArgs.length];
-    int i = 0;
-    while (i < paramVarArgs.length)
+    try
     {
-      arrayOfFloat[i] = a(paramVarArgs[i]);
-      i += 1;
+      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
     }
-    return arrayOfFloat;
-  }
-  
-  public wpq b(float... paramVarArgs)
-  {
-    return a("alpha", paramVarArgs);
-  }
-  
-  public wqa b()
-  {
-    this.jdField_a_of_type_Wqa.a();
-    return this.jdField_a_of_type_Wqa;
-  }
-  
-  public wpq c(float... paramVarArgs)
-  {
-    return a(new wps(this), paramVarArgs);
-  }
-  
-  public wpq d(float... paramVarArgs)
-  {
-    return a(new wpt(this), paramVarArgs);
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wpq
  * JD-Core Version:    0.7.0.1
  */

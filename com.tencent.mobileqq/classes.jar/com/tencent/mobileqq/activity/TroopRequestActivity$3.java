@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import azri;
-import azrj;
+import basm;
+import basn;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -14,10 +14,10 @@ class TroopRequestActivity$3
   
   public void run()
   {
-    azri localazri = azrj.a(BaseApplication.getContext()).a(this.this$0, Long.toString(this.a.dwGroupClassExt));
-    if (localazri != null)
+    basm localbasm = basn.a(BaseApplication.getContext()).a(this.this$0, Long.toString(this.a.dwGroupClassExt));
+    if (localbasm != null)
     {
-      this.this$0.i = localazri.a();
+      this.this$0.i = localbasm.a();
       ThreadManager.getUIHandler().post(new TroopRequestActivity.3.1(this));
     }
   }

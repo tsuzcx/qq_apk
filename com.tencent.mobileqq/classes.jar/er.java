@@ -1,14 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.AsyncTask;
 
-class er
-  implements DialogInterface.OnClickListener
+public class er
 {
-  er(ep paramep) {}
+  public boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a()
   {
-    paramDialogInterface.dismiss();
+    eo.a(2131693901, 1);
+  }
+  
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
+  {
+    this.a = true;
+  }
+  
+  protected void b()
+  {
+    eo.a(ajyc.a(2131703326), 1);
+  }
+  
+  protected void c()
+  {
+    eo.a(ajyc.a(2131703324), 1);
+  }
+  
+  protected void d()
+  {
+    eo.a(ajyc.a(2131703323), 1);
   }
 }
 

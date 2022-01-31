@@ -5,17 +5,17 @@ import android.util.AttributeSet;
 import android.util.Pair;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bitc;
-import bitd;
+import bkjq;
+import bkjr;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class SegmentPicker
   extends RelativeLayout
-  implements bitd
+  implements bkjr
 {
   private SegmentRangeView jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView;
-  private WeakReference<bitc> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<bkjq> jdField_a_of_type_JavaLangRefWeakReference;
   
   public SegmentPicker(Context paramContext)
   {
@@ -55,23 +55,23 @@ public class SegmentPicker
   
   public void a(long paramLong)
   {
-    bitc localbitc = null;
+    bkjq localbkjq = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbitc = (bitc)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbkjq = (bkjq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbitc != null) {
-      localbitc.a(paramLong);
+    if (localbkjq != null) {
+      localbkjq.a(paramLong);
     }
   }
   
   public void a(List<Long> paramList)
   {
-    bitc localbitc = null;
+    bkjq localbkjq = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbitc = (bitc)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbkjq = (bkjq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbitc != null) {
-      localbitc.a(paramList);
+    if (localbkjq != null) {
+      localbkjq.a(paramList);
     }
   }
   
@@ -82,9 +82,9 @@ public class SegmentPicker
     }
   }
   
-  public boolean a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, bitc parambitc, boolean paramBoolean2)
+  public boolean a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, bkjq parambkjq, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambitc);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambkjq);
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView != null) {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView.a(paramString, paramLong1, paramLong2, paramInt1, paramInt2, paramInt3, paramBoolean1, this, paramBoolean2);
     }
@@ -93,12 +93,12 @@ public class SegmentPicker
   
   public void b(long paramLong)
   {
-    bitc localbitc = null;
+    bkjq localbkjq = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbitc = (bitc)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbkjq = (bkjq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbitc != null) {
-      localbitc.b(paramLong);
+    if (localbkjq != null) {
+      localbkjq.b(paramLong);
     }
   }
   

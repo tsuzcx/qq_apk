@@ -1,118 +1,73 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class lco
 {
-  lcj jdField_a_of_type_Lcj = null;
-  lcp jdField_a_of_type_Lcp = null;
-  boolean jdField_a_of_type_Boolean = false;
-  
-  lco()
+  public static String a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGPDownloadManager", 4, "QavGPDownloader in QQAppInterface");
-    }
-    this.jdField_a_of_type_Lcp = new lcp();
+    return bbuv.a(ajsf.aW + "qav" + File.separator);
   }
   
-  static void a(int paramInt)
+  public static String b()
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    Intent localIntent = new Intent("tencent.video.qavgameplaysomgr.notify");
-    localIntent.setPackage(localBaseApplicationImpl.getPackageName());
-    localIntent.putExtra("Event_Progress", paramInt);
-    localBaseApplicationImpl.sendBroadcast(localIntent);
+    return bbuv.a(ajsf.aW + "ptv_template" + File.separator);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  public static String c()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGPDownloadManager", 4, "onEnterBackground");
-    }
-    a();
+    return bbuv.a(ajsf.aW + "new_ptv_template" + File.separator);
   }
   
-  public static void a(String paramString)
+  public static String d()
   {
-    if (lck.a()) {
-      lck.a().a.b(paramString);
-    }
+    return c() + "new_ptv_template_usable" + File.separator;
   }
   
-  public static void a(lcj paramlcj)
+  public static String e()
   {
-    SharedPreferences localSharedPreferences = lcr.a();
-    paramlcj = paramlcj.b;
-    localSharedPreferences.edit().putString("so_zip_md5", paramlcj).commit();
+    return a() + "effect";
   }
   
-  public static boolean a()
+  public static String f()
   {
-    return lck.a().a.b();
+    return bbuv.a(ajsf.aW + "funcall" + File.separator);
   }
   
-  private boolean b()
+  public static String g()
   {
-    QLog.d("QavGPDownloadManager", 4, "innerDownload, start");
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    if (bbay.a()) {}
+    for (String str1 = bbuv.a(ajsf.aW);; str1 = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath())
     {
-      if (((QQAppInterface)localObject).getManager(21) == null)
+      String str2 = str1;
+      if (str1 != null)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("QavGPDownloadManager", 4, "innerDownload, getNetEngine 为空");
+        str2 = str1;
+        if (!str1.endsWith(File.separator)) {
+          str2 = str1 + File.separator;
         }
-        return false;
       }
-    }
-    else
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGPDownloadManager", 4, "appRuntime 不是 QQAppInterface");
-      }
-      return false;
-    }
-    if (this.jdField_a_of_type_Lcj == null) {
-      this.jdField_a_of_type_Lcj = lcj.a();
-    }
-    localObject = this.jdField_a_of_type_Lcj;
-    if (localObject == null)
-    {
-      QLog.d("QavGPDownloadManager", 2, "downloadInfo == null");
-      this.jdField_a_of_type_Boolean = true;
-      return false;
-    }
-    if (11 == lcr.a((lcj)localObject)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (bool)
-      {
-        QLog.d("QavGPDownloadManager", 2, "downloadTask.start");
-        return this.jdField_a_of_type_Lcp.a((lcj)localObject);
-      }
-      QLog.d("QavGPDownloadManager", 2, "bDownloading = false");
-      return bool;
+      return str2 + "pddata/prd/" + "av_redpacket" + File.separator;
     }
   }
   
-  void b(String paramString)
+  public static String h()
   {
-    lcj locallcj = null;
-    if (!TextUtils.isEmpty(paramString)) {
-      locallcj = lcj.a(paramString);
-    }
-    this.jdField_a_of_type_Lcj = locallcj;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QLog.d("QavGPDownloadManager", 1, "handle_QAG_QavGameplay_Config, mNeedDownloadAfterGetConfig == true");
-      this.jdField_a_of_type_Boolean = false;
-      a();
-    }
+    return a() + "beauty" + File.separator;
+  }
+  
+  public static String i()
+  {
+    return bbuv.a(ajsf.aW + "av_image_data" + File.separator);
+  }
+  
+  public static String j()
+  {
+    return bbuv.a(ajsf.aW + "av_report_record_dir");
+  }
+  
+  public static String k()
+  {
+    return BaseApplicationImpl.getLogExternalPath(BaseApplicationImpl.getContext()) + "/tencent/msflogs/com/tencent/mobileqq/";
   }
 }
 

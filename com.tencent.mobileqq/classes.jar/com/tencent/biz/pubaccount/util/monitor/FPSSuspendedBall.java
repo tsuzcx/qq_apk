@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
-import rwh;
+import sja;
 
 public class FPSSuspendedBall
   extends TextView
@@ -28,12 +28,12 @@ public class FPSSuspendedBall
   
   private void a(Context paramContext)
   {
-    setId(2131304712);
-    setBackgroundColor(paramContext.getResources().getColor(2131099748));
+    setId(2131370369);
+    setBackgroundColor(paramContext.getResources().getColor(2131165285));
     setText("60.00");
     setTextColor(-16711936);
     setGravity(17);
-    setOnTouchListener(new rwh(this, null));
+    setOnTouchListener(new sja(this, null));
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams(-2, -2, 1000, 8, -3);
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 53;
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = 250;

@@ -1,14 +1,36 @@
+import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
+
 public class aoon
-  extends avsc
+  implements bfpc
 {
-  public aoon(azwg paramazwg)
-  {
-    super(paramazwg);
-  }
+  public aoon(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  protected avrh<avon, avww> a(azwg paramazwg)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return new aooo(paramazwg);
+    paramAdapterView = (FileInfo)this.a.b.get(paramInt);
+    if (paramAdapterView.c()) {
+      LocalFileBrowserActivity.a(this.a, paramAdapterView.c(), true);
+    }
+    while (!this.a.f()) {
+      return;
+    }
+    if (apeh.a(paramAdapterView)) {
+      apeh.b(paramAdapterView);
+    }
+    for (;;)
+    {
+      this.a.l();
+      LocalFileBrowserActivity.a(this.a);
+      return;
+      if (this.a.f) {
+        apeh.b();
+      }
+      apeh.a(paramAdapterView);
+    }
   }
 }
 

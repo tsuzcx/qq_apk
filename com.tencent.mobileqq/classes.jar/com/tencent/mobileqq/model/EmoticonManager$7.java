@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.model;
 
-import arnz;
-import atmp;
-import atmr;
+import askd;
+import aukn;
+import aukp;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -11,22 +11,22 @@ import java.util.List;
 public class EmoticonManager$7
   implements Runnable
 {
-  public EmoticonManager$7(arnz paramarnz, List paramList) {}
+  public EmoticonManager$7(askd paramaskd, List paramList) {}
   
   public void run()
   {
-    atmr localatmr = this.this$0.a.a();
-    localatmr.a();
+    aukp localaukp = this.this$0.a.a();
+    localaukp.a();
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       EmoticonPackage localEmoticonPackage = (EmoticonPackage)localIterator.next();
-      if ((localEmoticonPackage != null) && (!arnz.a(this.this$0, localEmoticonPackage))) {
+      if ((localEmoticonPackage != null) && (!askd.a(this.this$0, localEmoticonPackage))) {
         QLog.e("EmoticonManager", 1, "saveEmoticonPackages fail epId = " + localEmoticonPackage.epId);
       }
     }
-    localatmr.c();
-    localatmr.b();
+    localaukp.c();
+    localaukp.b();
   }
 }
 

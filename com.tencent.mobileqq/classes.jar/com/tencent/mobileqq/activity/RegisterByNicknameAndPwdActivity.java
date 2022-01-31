@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aboj;
-import ajjy;
+import abyn;
+import ajyc;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,13 +17,13 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
-import auqn;
-import auqt;
-import awqx;
-import azve;
-import badq;
-import bavd;
-import beex;
+import avpw;
+import avqc;
+import axqw;
+import bawi;
+import bbev;
+import bbxx;
+import bfmr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -37,8 +37,8 @@ public class RegisterByNicknameAndPwdActivity
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private auqt jdField_a_of_type_Auqt;
-  private bavd jdField_a_of_type_Bavd;
+  private avqc jdField_a_of_type_Avqc;
+  private bbxx jdField_a_of_type_Bbxx;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   private boolean jdField_a_of_type_Boolean = true;
   private View jdField_b_of_type_AndroidViewView;
@@ -179,55 +179,55 @@ public class RegisterByNicknameAndPwdActivity
     this.e = getIntent().getBooleanExtra("key_register_phonenum_bindnewqq", true);
     String str1 = getIntent().getStringExtra("key_register_nick");
     String str2 = getIntent().getStringExtra("key_register_password");
-    b(ajjy.a(2131647547));
+    b(ajyc.a(2131713335));
     b();
     a(100);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131306475);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131306478);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131306474));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131306477));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131305587));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131372172);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131372175);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372171));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372174));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131371283));
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131305163));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131370836));
     this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298078));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363630));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131303887));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131369562));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131313439);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131379273);
     if (!TextUtils.isEmpty(str1)) {
       this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText.setText(str1);
     }
     if (!TextUtils.isEmpty(str2)) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(str2);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131305588));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371284));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845885);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131647567));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846066);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajyc.a(2131713355));
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setOnFocusChangeListener(new aboj(this));
-      if (azve.a(this))
+      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setOnFocusChangeListener(new abyn(this));
+      if (bawi.a(this))
       {
-        this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText.setHint(2131628982);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setHint(2131629285);
+        this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText.setHint(2131694646);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setHint(2131694962);
       }
-      if (this.jdField_a_of_type_Bavd == null) {
+      if (this.jdField_a_of_type_Bbxx == null) {
         break;
       }
-      this.jdField_a_of_type_Bavd.a();
+      this.jdField_a_of_type_Bbxx.a();
       return;
       this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845886);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131647550));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846067);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajyc.a(2131713338));
     }
-    this.jdField_a_of_type_Bavd = new bavd(this, findViewById(2131303233), 1);
+    this.jdField_a_of_type_Bbxx = new bbxx(this, findViewById(2131368900), 1);
   }
   
   private void e()
@@ -266,29 +266,29 @@ public class RegisterByNicknameAndPwdActivity
     String str2 = this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
     if (TextUtils.isEmpty(str1))
     {
-      a(2131629365, 1);
+      a(2131695042, 1);
       return false;
     }
     if (b(str1))
     {
-      a(2131651360, 1);
+      a(2131717152, 1);
       return false;
     }
     if (!a(str1))
     {
-      a(2131651359, 1);
+      a(2131717151, 1);
       return false;
     }
     if ((TextUtils.isEmpty(str2)) || (str2.trim().length() == 0))
     {
-      a(2131651308, 1);
+      a(2131717100, 1);
       return false;
     }
     try
     {
       if (a(str2) > 24L)
       {
-        a(2131651309, 1);
+        a(2131717101, 1);
         return false;
       }
     }
@@ -315,7 +315,7 @@ public class RegisterByNicknameAndPwdActivity
     if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
       if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).length() >= 8))
       {
-        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130840158);
+        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130840205);
         i = 1;
       }
     }
@@ -326,7 +326,7 @@ public class RegisterByNicknameAndPwdActivity
       if (this.jdField_c_of_type_AndroidWidgetImageView != null) {
         if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (a((String)localObject2)))
         {
-          this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130840158);
+          this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130840205);
           j = 1;
         }
       }
@@ -340,8 +340,8 @@ public class RegisterByNicknameAndPwdActivity
           }
           for (;;)
           {
-            if (this.jdField_a_of_type_Bavd != null) {
-              this.jdField_a_of_type_Bavd.b(this.jdField_a_of_type_AndroidWidgetButton.isEnabled());
+            if (this.jdField_a_of_type_Bbxx != null) {
+              this.jdField_a_of_type_Bbxx.b(this.jdField_a_of_type_AndroidWidgetButton.isEnabled());
             }
             if (paramEditable != localObject1) {
               break;
@@ -351,10 +351,10 @@ public class RegisterByNicknameAndPwdActivity
             }
             this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setClearButtonVisible(false);
             return;
-            this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130840155);
+            this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130840202);
             i = 0;
             break label86;
-            this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130840155);
+            this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130840202);
             j = 0;
             break label122;
             this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
@@ -387,8 +387,8 @@ public class RegisterByNicknameAndPwdActivity
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    if ((paramInt1 == 2) && (paramInt2 == -1) && (this.jdField_a_of_type_Bavd != null) && (this.jdField_a_of_type_Bavd.jdField_a_of_type_Auqn != null)) {
-      this.jdField_a_of_type_Bavd.jdField_a_of_type_Auqn.a(paramInt1, paramInt2, paramIntent);
+    if ((paramInt1 == 2) && (paramInt2 == -1) && (this.jdField_a_of_type_Bbxx != null) && (this.jdField_a_of_type_Bbxx.jdField_a_of_type_Avpw != null)) {
+      this.jdField_a_of_type_Bbxx.jdField_a_of_type_Avpw.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
@@ -397,7 +397,7 @@ public class RegisterByNicknameAndPwdActivity
     super.doOnNewIntent(paramIntent);
     setIntent(paramIntent);
     if (QLog.isDevelopLevel()) {
-      bavd.a("RegisterByNicknameAndPwdActivity -- doOnNewIntent", getIntent());
+      bbxx.a("RegisterByNicknameAndPwdActivity -- doOnNewIntent", getIntent());
     }
     d();
   }
@@ -405,8 +405,8 @@ public class RegisterByNicknameAndPwdActivity
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Auqt != null) {
-      this.jdField_a_of_type_Auqt.c();
+    if (this.jdField_a_of_type_Avqc != null) {
+      this.jdField_a_of_type_Avqc.c();
     }
     e();
   }
@@ -414,8 +414,8 @@ public class RegisterByNicknameAndPwdActivity
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Auqt != null) {
-      this.jdField_a_of_type_Auqt.b();
+    if (this.jdField_a_of_type_Avqc != null) {
+      this.jdField_a_of_type_Avqc.b();
     }
   }
   
@@ -427,8 +427,8 @@ public class RegisterByNicknameAndPwdActivity
   public void onAccountChanged()
   {
     super.onAccountChanged();
-    if (this.jdField_a_of_type_Auqt != null) {
-      this.jdField_a_of_type_Auqt.d();
+    if (this.jdField_a_of_type_Avqc != null) {
+      this.jdField_a_of_type_Avqc.d();
     }
   }
   
@@ -443,35 +443,35 @@ public class RegisterByNicknameAndPwdActivity
       do
       {
         return;
-        if ((this.jdField_a_of_type_Bavd != null) && (this.jdField_a_of_type_Bavd.jdField_a_of_type_Boolean))
+        if ((this.jdField_a_of_type_Bbxx != null) && (this.jdField_a_of_type_Bbxx.jdField_a_of_type_Boolean))
         {
-          this.jdField_a_of_type_Bavd.a(this.e);
+          this.jdField_a_of_type_Bbxx.a(this.e);
           return;
         }
-        awqx.b(this.app, "CliOper", "", "", "0X8006653", "0X8006653", 0, 0, "", "", "", "");
-        if (!badq.d(BaseApplication.getContext()))
+        axqw.b(this.app, "CliOper", "", "", "0X8006653", "0X8006653", 0, 0, "", "", "", "");
+        if (!bbev.d(BaseApplication.getContext()))
         {
-          a(2131626719, 0);
+          a(2131692321, 0);
           return;
         }
       } while (!a());
       paramView = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText());
       String str = this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
-      if (this.jdField_a_of_type_Auqt == null) {
-        this.jdField_a_of_type_Auqt = new auqt(this);
+      if (this.jdField_a_of_type_Avqc == null) {
+        this.jdField_a_of_type_Avqc = new avqc(this);
       }
-      this.jdField_a_of_type_Auqt.a(str, paramView, true, this.e);
-      awqx.a(this.app, "new_reg_805", "setting_page", "reg_clk", "", 1, "");
+      this.jdField_a_of_type_Avqc.a(str, paramView, true, this.e);
+      axqw.a(this.app, "new_reg_805", "setting_page", "reg_clk", "", 1, "");
       return;
       paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
       if (this.jdField_a_of_type_Boolean)
       {
         if (this.d) {
-          awqx.a(this.app, "dc00898", "", "", "0X80072FA", "0X80072FA", 0, 0, "", "", "", "");
+          axqw.a(this.app, "dc00898", "", "", "0X80072FA", "0X80072FA", 0, 0, "", "", "", "");
         }
         this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845886);
-        this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131647557));
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846067);
+        this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajyc.a(2131713345));
       }
       for (;;)
       {
@@ -484,75 +484,75 @@ public class RegisterByNicknameAndPwdActivity
         this.jdField_a_of_type_Boolean = bool;
         return;
         this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845885);
-        this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131647564));
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846066);
+        this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajyc.a(2131713352));
       }
-      beex.a(this);
+      bfmr.a(this);
       new Handler().postDelayed(new RegisterByNicknameAndPwdActivity.2(this), 200L);
       return;
-    } while (this.jdField_a_of_type_Auqt == null);
-    this.jdField_a_of_type_Auqt.f();
+    } while (this.jdField_a_of_type_Avqc == null);
+    this.jdField_a_of_type_Avqc.f();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131495867);
+    setContentView(2131561458);
     if (QLog.isDevelopLevel()) {
-      bavd.a(getClass().getSimpleName(), getIntent());
+      bbxx.a(getClass().getSimpleName(), getIntent());
     }
     d();
-    awqx.b(this.app, "CliOper", "", "", "0X8006652", "0X8006652", 0, 0, "", "", "", "");
-    awqx.a(this.app, "dc00898", "", "", "0X800735E", "0X800735E", 0, 0, "", "", "", "");
+    axqw.b(this.app, "CliOper", "", "", "0X8006652", "0X8006652", 0, 0, "", "", "", "");
+    axqw.a(this.app, "dc00898", "", "", "0X800735E", "0X800735E", 0, 0, "", "", "", "");
     if (this.d) {
-      awqx.a(this.app, "dc00898", "", "", "0X800735E", "0X800735E", 1, 0, "", "", "", "");
+      axqw.a(this.app, "dc00898", "", "", "0X800735E", "0X800735E", 1, 0, "", "", "", "");
     }
     if (!this.jdField_b_of_type_Boolean) {
-      awqx.a(this.app, "dc00898", "", "", "0X800735E", "0X800735E", 2, 0, "", "", "", "");
+      axqw.a(this.app, "dc00898", "", "", "0X800735E", "0X800735E", 2, 0, "", "", "", "");
     }
     for (;;)
     {
       if (getIntent().getBooleanExtra("key_register_from_send_sms", false)) {
-        awqx.a(this.app, "dc00898", "", "", "0X800735E", "0X800735E", 5, 0, "", "", "", "");
+        axqw.a(this.app, "dc00898", "", "", "0X800735E", "0X800735E", 5, 0, "", "", "", "");
       }
       if (this.jdField_b_of_type_Int != 4) {
         break;
       }
-      awqx.a(this.app, "new_reg_805", "setting_page", "page_exp", "3", 1, "", "1", "", "", "", "", "", "", "");
+      axqw.a(this.app, "new_reg_805", "setting_page", "page_exp", "3", 1, "", "1", "", "", "", "", "", "", "");
       return;
       if (!this.jdField_c_of_type_Boolean) {
-        awqx.a(this.app, "dc00898", "", "", "0X800735E", "0X800735E", 3, 0, "", "", "", "");
+        axqw.a(this.app, "dc00898", "", "", "0X800735E", "0X800735E", 3, 0, "", "", "", "");
       } else {
-        awqx.a(this.app, "dc00898", "", "", "0X800735E", "0X800735E", 4, 0, "", "", "", "");
+        axqw.a(this.app, "dc00898", "", "", "0X800735E", "0X800735E", 4, 0, "", "", "", "");
       }
     }
     if (this.jdField_b_of_type_Int == 5)
     {
-      awqx.a(this.app, "new_reg_805", "setting_page", "page_exp", "1", 1, "", "2", "", "", "", "", "", "", "");
+      axqw.a(this.app, "new_reg_805", "setting_page", "page_exp", "1", 1, "", "2", "", "", "", "", "", "", "");
       return;
     }
     if (this.jdField_b_of_type_Int == 6)
     {
-      awqx.a(this.app, "new_reg_805", "setting_page", "page_exp", "2", 1, "", "3", "", "", "", "", "", "", "");
+      axqw.a(this.app, "new_reg_805", "setting_page", "page_exp", "2", 1, "", "3", "", "", "", "", "", "", "");
       return;
     }
     if (this.d)
     {
-      awqx.a(this.app, "new_reg_805", "setting_page", "page_exp", "4", 1, "", "3", "", "", "", "", "", "", "");
+      axqw.a(this.app, "new_reg_805", "setting_page", "page_exp", "4", 1, "", "3", "", "", "", "", "", "", "");
       return;
     }
-    awqx.a(this.app, "new_reg_805", "setting_page", "page_exp", "5", 1, "", "4", "", "", "", "", "", "", "");
+    axqw.a(this.app, "new_reg_805", "setting_page", "page_exp", "5", 1, "", "4", "", "", "", "", "", "", "");
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     c();
-    if (this.jdField_a_of_type_Bavd != null) {
-      this.jdField_a_of_type_Bavd.b();
+    if (this.jdField_a_of_type_Bbxx != null) {
+      this.jdField_a_of_type_Bbxx.b();
     }
-    if (this.jdField_a_of_type_Auqt != null) {
-      this.jdField_a_of_type_Auqt.a();
+    if (this.jdField_a_of_type_Avqc != null) {
+      this.jdField_a_of_type_Avqc.a();
     }
   }
   

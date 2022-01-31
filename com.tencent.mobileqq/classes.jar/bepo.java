@@ -1,149 +1,220 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils.TruncateAt;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.widgets.KandianTextView;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Vector;
 
+@begu(a={"com.tencent.qqmini.sdk.runtime.flutter.FlutterRuntimeLoader", "com.tencent.qqmini.sdk.runtime.app.AppRuntimeLoader", "com.tencent.qqmini.sdk.minigame.GameRuntimeLoader"})
 public class bepo
 {
-  private float jdField_a_of_type_Float = 12.0F;
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = 17170445;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = 17170445;
-  private Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
-  private int d = 5;
-  private int e = 49;
+  private static volatile bepo jdField_a_of_type_Bepo;
+  private static volatile byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private bepn jdField_a_of_type_Bepn = new bepp(this);
+  private beqk jdField_a_of_type_Beqk = new beqk(this);
+  private final HashMap<Class<bepv>, bepv> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final LinkedList<bepv> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private final Vector<bepn> jdField_a_of_type_JavaUtilVector = new Vector();
   
-  private bepo(Context paramContext)
+  public bepo()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    besl.b("minisdk-start_AppRuntimeLoaderManager", "RuntimeLoaderConfig:" + this.jdField_a_of_type_Beqk.toString());
   }
   
-  public bepn a()
+  public static bepo a()
+  {
+    if (jdField_a_of_type_Bepo == null) {}
+    synchronized (jdField_a_of_type_ArrayOfByte)
+    {
+      if (jdField_a_of_type_Bepo == null) {
+        jdField_a_of_type_Bepo = new bepo();
+      }
+      return jdField_a_of_type_Bepo;
+    }
+  }
+  
+  private bepv a(MiniAppInfo paramMiniAppInfo, Bundle paramBundle)
+  {
+    Iterator localIterator = this.jdField_a_of_type_Beqk.a().iterator();
+    while (localIterator.hasNext())
+    {
+      beql localbeql = (beql)localIterator.next();
+      if ((localbeql.jdField_a_of_type_Bepw.a(paramBundle)) && (localbeql.jdField_a_of_type_Bepw.a(paramMiniAppInfo)))
+      {
+        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localbeql.jdField_a_of_type_JavaLangClass)) {}
+        for (paramMiniAppInfo = (bepv)this.jdField_a_of_type_JavaUtilHashMap.remove(localbeql.jdField_a_of_type_JavaLangClass);; paramMiniAppInfo = (bepv)localbeql.jdField_a_of_type_Bepw.a(MiniAppEnv.g().getContext(), paramBundle))
+        {
+          paramMiniAppInfo.addRuntimeStateObserver(this.jdField_a_of_type_Bepn);
+          return paramMiniAppInfo;
+        }
+      }
+    }
+    return null;
+  }
+  
+  private void a(bepm parambepm)
   {
     try
     {
-      int i = azvv.a(this.jdField_a_of_type_AndroidContentContext, 300.0F);
-      int j = azvv.a(this.jdField_a_of_type_AndroidContentContext, 120.0F);
-      LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      localLinearLayout.setOrientation(0);
-      localLinearLayout.setPadding(azvv.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), azvv.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), azvv.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), azvv.a(this.jdField_a_of_type_AndroidContentContext, 8.0F));
-      Object localObject = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject).gravity = 17;
-      localLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      if (this.jdField_b_of_type_Boolean) {}
-      for (localObject = new KandianTextView(this.jdField_a_of_type_AndroidContentContext);; localObject = new TextView(this.jdField_a_of_type_AndroidContentContext))
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
+      while (localIterator.hasNext()) {
+        ((bepn)localIterator.next()).a(parambepm);
+      }
+    }
+    finally {}
+  }
+  
+  private void b(bepv parambepv)
+  {
+    if (parambepv != null) {}
+    try
+    {
+      if (parambepv.getMiniAppInfo() != null) {
+        this.jdField_a_of_type_JavaUtilLinkedList.addFirst(parambepv);
+      }
+      return;
+    }
+    finally
+    {
+      parambepv = finally;
+      throw parambepv;
+    }
+  }
+  
+  public bepv a()
+  {
+    try
+    {
+      Object localObject = new LinkedList(this.jdField_a_of_type_JavaUtilLinkedList);
+      if (((LinkedList)localObject).size() > 0)
       {
-        ((TextView)localObject).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(17170443));
-        ((TextView)localObject).setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-        localLinearLayout.addView((View)localObject);
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-        {
-          int k = localLinearLayout.getPaddingLeft();
-          int m = localLinearLayout.getPaddingTop();
-          int n = localLinearLayout.getPaddingRight();
-          int i1 = localLinearLayout.getPaddingBottom();
-          localLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          localLinearLayout.setPadding(k, m, n, i1);
-        }
-        ((TextView)localObject).setMaxWidth(i);
-        ((TextView)localObject).setMaxHeight(j);
-        ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
-        ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
-        ((TextView)localObject).setTextSize(this.jdField_a_of_type_Float);
-        ((TextView)localObject).setTextColor(this.jdField_a_of_type_Int);
-        localLinearLayout.measure(i, j);
-        localObject = new bepn(this.jdField_a_of_type_AndroidContentContext, localLinearLayout.getMeasuredWidth(), this.e);
-        ((bepn)localObject).d(this.jdField_b_of_type_Int);
-        ((bepn)localObject).a(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-        ((bepn)localObject).b(this.jdField_c_of_type_AndroidGraphicsDrawableDrawable);
-        ((bepn)localObject).e(this.jdField_c_of_type_Int);
-        ((bepn)localObject).setContentView(localLinearLayout);
-        ((bepn)localObject).a(83);
-        if (!this.jdField_a_of_type_Boolean) {
-          ((bepn)localObject).setOutsideTouchable(false);
-        }
-        ((bepn)localObject).b(azvv.a(this.jdField_a_of_type_AndroidContentContext, 6.0F));
-        bepn.a((bepn)localObject, this.d);
+        localObject = (bepv)((LinkedList)localObject).peekFirst();
         return localObject;
       }
-      return null;
     }
     catch (Throwable localThrowable)
     {
-      Log.e("CalloutPopupWindow", "[build] failed to build window", localThrowable);
+      besl.d("minisdk-start_AppRuntimeLoaderManager", "getCurrentRunTimeLoader exception!", localThrowable);
+    }
+    return null;
+  }
+  
+  public bepv a(MiniAppInfo paramMiniAppInfo)
+  {
+    if (paramMiniAppInfo == null) {
+      return null;
+    }
+    besl.b("minisdk-start_AppRuntimeLoaderManager", "queryAppRunTimeLoader appId=" + paramMiniAppInfo.appId + " name=" + paramMiniAppInfo.name + " versionType=" + paramMiniAppInfo.verType + " version=" + paramMiniAppInfo.version);
+    try
+    {
+      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedList).iterator();
+      while (localIterator.hasNext())
+      {
+        bepv localbepv = (bepv)localIterator.next();
+        if (localbepv.getMiniAppInfo() != null)
+        {
+          boolean bool = localbepv.getMiniAppInfo().equals(paramMiniAppInfo);
+          if (bool) {
+            return localbepv;
+          }
+        }
+      }
+    }
+    catch (Throwable paramMiniAppInfo)
+    {
+      besl.d("minisdk-start_AppRuntimeLoaderManager", "getAppBrandRunTime exception!", paramMiniAppInfo);
+    }
+    return null;
+  }
+  
+  public bepv a(MiniAppInfo paramMiniAppInfo, bepx parambepx, Bundle paramBundle)
+  {
+    if (paramMiniAppInfo == null) {
+      return null;
+    }
+    try
+    {
+      paramBundle = a(paramMiniAppInfo, paramBundle);
+      besl.b("minisdk-start_AppRuntimeLoaderManager", "initAppRuntimeLoader appId=" + paramMiniAppInfo.appId + " name=" + paramMiniAppInfo.name + " versionType=" + paramMiniAppInfo.verType + " version=" + paramMiniAppInfo.version + " obtainRuntimeLoader:" + paramBundle);
+      paramBundle.setRuntimeLoadListener(new bepq(this, parambepx));
+      paramBundle.loadMiniAppInfo(paramMiniAppInfo);
+      paramBundle.start();
+      b(paramBundle);
+      return paramBundle;
+    }
+    catch (Throwable paramMiniAppInfo)
+    {
+      besl.d("minisdk-start_AppRuntimeLoaderManager", "getAppBrandRunTime exception!", paramMiniAppInfo);
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_Beqk.a().iterator();
+    while (localIterator.hasNext())
+    {
+      beql localbeql = (beql)localIterator.next();
+      if (!localbeql.jdField_a_of_type_Bepw.a(null))
+      {
+        localbeql.jdField_a_of_type_Bepw.a(null);
+      }
+      else if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localbeql.jdField_a_of_type_JavaLangClass))
+      {
+        bepv localbepv = (bepv)localbeql.jdField_a_of_type_Bepw.a(MiniAppEnv.g().getContext(), new Bundle());
+        localbepv.addRuntimeStateObserver(this.jdField_a_of_type_Bepn);
+        localbepv.getAppStateManager().a = true;
+        localbepv.start();
+        this.jdField_a_of_type_JavaUtilHashMap.put(localbeql.jdField_a_of_type_JavaLangClass, localbepv);
+      }
     }
   }
   
-  public bepo a(float paramFloat)
+  public void a(int paramInt, Object... paramVarArgs)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    return this;
+    if (a() != null) {
+      a().notifyRuntimeEvent(paramInt, paramVarArgs);
+    }
   }
   
-  public bepo a(int paramInt)
+  public void a(bepn parambepn)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    if (parambepn != null) {}
+    try
+    {
+      if (!this.jdField_a_of_type_JavaUtilVector.contains(parambepn)) {
+        this.jdField_a_of_type_JavaUtilVector.addElement(parambepn);
+      }
+      return;
+    }
+    finally
+    {
+      parambepn = finally;
+      throw parambepn;
+    }
   }
   
-  public bepo a(Drawable paramDrawable)
+  public void a(bepv parambepv)
   {
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    return this;
-  }
-  
-  public bepo a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public bepo a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public bepo b(int paramInt)
-  {
-    this.d = paramInt;
-    return this;
-  }
-  
-  public bepo b(Drawable paramDrawable)
-  {
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    return this;
-  }
-  
-  public bepo c(int paramInt)
-  {
-    this.e = paramInt;
-    return this;
-  }
-  
-  public bepo c(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    return this;
+    if (parambepv != null) {}
+    try
+    {
+      this.jdField_a_of_type_JavaUtilLinkedList.remove(parambepv);
+      return;
+    }
+    finally
+    {
+      parambepv = finally;
+      throw parambepv;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bepo
  * JD-Core Version:    0.7.0.1
  */

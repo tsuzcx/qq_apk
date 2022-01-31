@@ -1,113 +1,63 @@
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.earlydownload.handler.AppleEmojiHandler.1;
+import com.tencent.mobileqq.earlydownload.xmldata.AppleEmojiData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class anpe
+  extends anpi
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "0";
-  
-  public anpe()
+  public anpe(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 30;
+    super("qq.android.appleemoji", paramQQAppInterface);
   }
   
-  public static String a(anpe paramanpe)
+  public int a()
   {
-    if ((paramanpe == null) || (!paramanpe.a())) {
-      return null;
+    return 10001;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return AppleEmojiData.class;
+  }
+  
+  public String a()
+  {
+    return "AppleMojiHandler";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess:" + paramString);
     }
-    JSONObject localJSONObject = new JSONObject();
-    try
+    File localFile = new File(paramString);
+    if (!localFile.exists())
     {
-      localJSONObject.putOpt("uin", paramanpe.jdField_a_of_type_JavaLangString);
-      if ((paramanpe.jdField_a_of_type_ArrayOfByte != null) && (paramanpe.jdField_a_of_type_ArrayOfByte.length > 0)) {
-        localJSONObject.putOpt("sig", bakz.a(paramanpe.jdField_a_of_type_ArrayOfByte));
+      if (QLog.isColorLevel()) {
+        QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess sorse not exists");
       }
-      localJSONObject.putOpt("matchUin", paramanpe.b);
-      localJSONObject.putOpt("tipsWording", paramanpe.c);
-      localJSONObject.putOpt("timeStamp", Long.valueOf(paramanpe.jdField_a_of_type_Long));
-      localJSONObject.putOpt("matchExpiredTime", Integer.valueOf(paramanpe.jdField_a_of_type_Int));
-      paramanpe = localJSONObject.toString();
-      return paramanpe;
+      return;
     }
-    catch (JSONException paramanpe) {}
-    return null;
-  }
-  
-  public anpe a()
-  {
-    anpe localanpe = new anpe();
-    localanpe.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localanpe.jdField_a_of_type_ArrayOfByte = ((byte[])this.jdField_a_of_type_ArrayOfByte.clone());
-    localanpe.b = this.b;
-    localanpe.c = this.c;
-    localanpe.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    localanpe.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localanpe.e = this.e;
-    return localanpe;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfByte = azzz.a("");
-    this.b = "";
-    this.c = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.e = "0";
+    ThreadManager.excute(new AppleEmojiHandler.1(this, localFile, paramString), 64, null, true);
   }
   
   public boolean a()
   {
-    String str = azzz.a(this.jdField_a_of_type_ArrayOfByte);
-    return (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(str));
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b))) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof anpe));
-      paramObject = (anpe)paramObject;
-    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.b.equals(paramObject.b)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
     return true;
   }
   
-  public String toString()
+  public String b()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{uin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    String str = azzz.a(this.jdField_a_of_type_ArrayOfByte);
-    int i = 0;
-    if (str != null) {
-      i = str.length();
-    }
-    localStringBuilder.append("{sig: ").append(i).append("}");
-    localStringBuilder.append("{matchUin: ").append(this.b).append("}");
-    localStringBuilder.append("{tipsWording: ").append(this.c).append("}");
-    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
-    localStringBuilder.append("{nickName: ").append(this.d).append("}");
-    localStringBuilder.append("{algorithmID: ").append(this.e).append("}");
-    return localStringBuilder.toString();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anpe
  * JD-Core Version:    0.7.0.1
  */

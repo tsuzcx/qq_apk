@@ -1,42 +1,39 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.view.ViewGroup;
 
-class uun
-  implements View.OnClickListener
+public class uun
+  extends wcr
 {
-  uun(uuk paramuuk) {}
+  public static final String KEY = "MemoriesPlaceHolderSegment";
   
-  public void onClick(View paramView)
+  public uun(Context paramContext)
   {
-    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Vdm.jdField_a_of_type_JavaLangString))
-    {
-      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Vdm.jdField_a_of_type_JavaLangString;
-      paramView = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
-      if ((paramView.equals("##")) || (TextUtils.isEmpty(paramView)) || (!paramView.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
-      {
-        uut localuut = this.a.jdField_a_of_type_Uut;
-        if (this.a.jdField_a_of_type_Uut.a())
-        {
-          paramView = "2";
-          localuut.a("use_custom_tag", 0, 0, new String[] { paramView });
-        }
-      }
-      else
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Uut.a(0);
-      return;
-      paramView = "1";
-      break;
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    }
+    super(paramContext);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, vas paramvas, ViewGroup paramViewGroup)
+  {
+    paramInt = vzo.d(this.a);
+    int i = vzo.e(this.a);
+    paramvas.a().getLayoutParams().height = (paramInt - i);
+    return paramvas.a();
+  }
+  
+  public String a()
+  {
+    return "MemoriesPlaceHolderSegment";
+  }
+  
+  public vas a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new vas(LayoutInflater.from(this.a).inflate(2131561295, paramViewGroup, false));
   }
 }
 

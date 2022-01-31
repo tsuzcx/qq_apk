@@ -2,24 +2,24 @@ package com.tencent.mobileqq.nearby;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import asfg;
-import mpl;
+import atbk;
+import nam;
 import org.json.JSONObject;
 
 public class NearbyTribeAppController$1
   implements Runnable
 {
-  public NearbyTribeAppController$1(asfg paramasfg) {}
+  public NearbyTribeAppController$1(atbk paramatbk) {}
   
   public void run()
   {
     try
     {
-      asfg.a(this.this$0, false);
+      atbk.a(this.this$0, false);
       Object localObject = new Bundle();
       ((Bundle)localObject).putString("REFERER", " https://buluo.qq.com/");
       ((Bundle)localObject).putString("HOST", " buluo.qq.com");
-      localObject = new JSONObject(mpl.a(asfg.a(this.this$0), "http://buluo.qq.com/cgi-bin/bar/post/get_entry?entry_ids=[18]", "POST", null, (Bundle)localObject));
+      localObject = new JSONObject(nam.a(atbk.a(this.this$0), "http://buluo.qq.com/cgi-bin/bar/post/get_entry?entry_ids=[18]", "POST", null, (Bundle)localObject));
       if (((JSONObject)localObject).getInt("retcode") == 0)
       {
         localObject = ((JSONObject)localObject).getJSONObject("result").getJSONObject("18").getString("download_link");

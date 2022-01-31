@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.data;
 
-import awrn;
-import aymy;
+import axrl;
+import azno;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
@@ -9,16 +9,16 @@ import java.util.HashMap;
 public class TroopAndDiscMsgProxy$2
   implements Runnable
 {
-  public TroopAndDiscMsgProxy$2(aymy paramaymy, boolean paramBoolean) {}
+  public TroopAndDiscMsgProxy$2(azno paramazno, boolean paramBoolean) {}
   
   public void run()
   {
-    awrn localawrn = awrn.a(BaseApplication.getContext());
-    String str = aymy.a(this.this$0).getCurrentAccountUin();
+    axrl localaxrl = axrl.a(BaseApplication.getContext());
+    String str = azno.a(this.this$0).getCurrentAccountUin();
     if (!this.a) {}
     for (boolean bool = true;; bool = false)
     {
-      localawrn.a(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
+      localaxrl.a(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
       return;
     }
   }

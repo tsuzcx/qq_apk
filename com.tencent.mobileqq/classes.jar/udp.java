@@ -1,22 +1,95 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.ArrayList;
+import java.util.Collections;
 
-public abstract interface udp
+public class udp
+  implements Cloneable
 {
-  public abstract void P_();
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<Integer> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public long e;
   
-  public abstract void a();
+  public udp()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
   
-  public abstract void a(CommentEntry paramCommentEntry);
+  public udp(udp paramudp)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramudp.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_JavaLangString = paramudp.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramudp.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Long = paramudp.jdField_a_of_type_Long;
+    this.jdField_b_of_type_JavaLangString = paramudp.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramudp.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = paramudp.jdField_b_of_type_Int;
+    this.jdField_b_of_type_Long = paramudp.jdField_b_of_type_Long;
+    this.jdField_c_of_type_JavaLangString = paramudp.jdField_c_of_type_JavaLangString;
+    this.jdField_c_of_type_Long = paramudp.jdField_c_of_type_Long;
+    this.d = paramudp.d;
+  }
   
-  public abstract void b(int paramInt);
+  public long a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 3) {
+      return ((Integer)Collections.max(this.jdField_a_of_type_JavaUtilArrayList)).intValue();
+    }
+    return -1L;
+  }
   
-  public abstract void b(CommentEntry paramCommentEntry);
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_c_of_type_Long = 0L;
+    this.d = null;
+  }
   
-  public abstract void c();
+  public long b()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 3) {
+      return ((Integer)Collections.min(this.jdField_a_of_type_JavaUtilArrayList)).intValue();
+    }
+    return -1L;
+  }
   
-  public abstract void d();
+  public long c()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() < 3) {
+      return -1L;
+    }
+    int k = Math.min(this.jdField_a_of_type_JavaUtilArrayList.size(), 10);
+    int i = 0;
+    int j = 0;
+    while (i < k)
+    {
+      j += ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
+      i += 1;
+    }
+    return j / k;
+  }
   
-  public abstract void f_(int paramInt);
+  public String toString()
+  {
+    return " " + this.jdField_a_of_type_JavaLangString + " " + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_Int + " " + this.jdField_b_of_type_Int + " " + this.jdField_b_of_type_Long + " " + this.jdField_a_of_type_Boolean + " " + c() + " " + b() + " " + a() + " " + this.jdField_b_of_type_JavaLangString + " " + this.jdField_c_of_type_JavaLangString + " " + this.jdField_c_of_type_Long + " " + this.d;
+  }
 }
 
 

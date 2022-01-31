@@ -1,19 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class apvg
-  implements DialogInterface.OnClickListener
+public abstract interface apvg
 {
-  apvg(apux paramapux) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    apsm.a().a().a("AIOGalleryPicView", 4, "showSaveFileTips cancel");
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apvg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class wsk
-  implements View.OnClickListener
+final class wsk
+  implements bfos
 {
-  wsk(wsj paramwsj) {}
+  wsk(bfol parambfol, wsp paramwsp) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    this.a.a.a(655364, new Object[] { "趣动视频", "qudong_wenzi" });
+    this.jdField_a_of_type_Bfol.dismiss();
+    if (this.jdField_a_of_type_Wsp != null) {
+      this.jdField_a_of_type_Wsp.a(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wsk
  * JD-Core Version:    0.7.0.1
  */

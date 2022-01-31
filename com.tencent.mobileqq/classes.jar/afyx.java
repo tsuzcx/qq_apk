@@ -1,26 +1,29 @@
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8.1;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8.2;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8.3;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
-class afyx
-  extends atog
+public class afyx
+  extends xau
 {
-  afyx(afyw paramafyw) {}
+  public afyx(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  protected void c(boolean paramBoolean)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SettingActivity2", 2, "onDisableMobileMatch suc[" + paramBoolean + "]");
-    }
-    this.a.a.a.b();
-    this.a.a.a.app.unRegistObserver(this);
-    if (paramBoolean)
-    {
-      this.a.a.a.a();
-      this.a.a.a.setResult(-1);
+    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
+    while (!paramBoolean1) {
       return;
     }
-    this.a.a.a.a(1, ajjy.a(2131648069));
+    ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryTroopFileFragment.8.1(this, paramInt1));
+    if (paramBoolean2)
+    {
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new ChatHistoryTroopFileFragment.8.2(this), 1000L);
+      return;
+    }
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new ChatHistoryTroopFileFragment.8.3(this), 1000L);
   }
 }
 

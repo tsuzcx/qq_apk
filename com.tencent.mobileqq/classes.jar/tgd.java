@@ -1,35 +1,30 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
 
-final class tgd
-  implements begw
+class tgd
+  implements syt<tgi, tgj>
 {
-  tgd(QQUserUIItem paramQQUserUIItem, begr parambegr) {}
+  tgd(tgc paramtgc, ssv paramssv, ssw paramssw) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(@NonNull tgi paramtgi, @Nullable tgj paramtgj, @NonNull ErrorMessage paramErrorMessage)
   {
-    switch (paramInt)
+    if ((paramErrorMessage.isFail()) || (paramtgj == null))
     {
-    default: 
-      paramView = "16384";
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq))) {
-        new syc().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend(), paramView);
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
+      QLog.w("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 1, "get active fail" + paramErrorMessage.getErrorMessage());
       return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      urk.d("Q.qqstory.player.PlayModeUtils", "report user error because evil uin is empty.");
     }
+    if (paramtgj.b == 1)
+    {
+      this.jdField_a_of_type_Tgc.a(true);
+      this.jdField_a_of_type_Ssv.b(2);
+      this.jdField_a_of_type_Tgc.a = 2;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "active value is " + paramtgj.b);
+    }
+    this.jdField_a_of_type_Ssw.a(paramtgj.a);
   }
 }
 

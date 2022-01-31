@@ -1,22 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Point;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-
-final class qcv
-  implements ValueAnimator.AnimatorUpdateListener
+public class qcv
 {
-  qcv(ViewGroup paramViewGroup, int paramInt1, int paramInt2) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
+  private String d;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public qcv(String paramString)
   {
-    paramValueAnimator = (Point)paramValueAnimator.getAnimatedValue();
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    localLayoutParams.width = (this.jdField_a_of_type_Int + paramValueAnimator.x);
-    int i = this.b;
-    localLayoutParams.height = (paramValueAnimator.y + i);
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+    this.d = paramString;
   }
 }
 

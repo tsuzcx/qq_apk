@@ -1,8 +1,8 @@
 public abstract interface acti
 {
-  public abstract void a();
+  public abstract void a(aeyv paramaeyv);
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void b(aeyv paramaeyv);
 }
 
 

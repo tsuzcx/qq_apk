@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajjy;
+import ajyc;
 import android.content.res.Resources;
-import aziv;
-import bbmy;
+import bajy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class TroopFileTransferManager$13$1
   implements Runnable
 {
-  public TroopFileTransferManager$13$1(aziv paramaziv) {}
+  public TroopFileTransferManager$13$1(bajy parambajy) {}
   
   public void run()
   {
-    int i = BaseApplicationImpl.sApplication.getResources().getDimensionPixelSize(2131167766);
-    bbmy.a(BaseApplicationImpl.sApplication, ajjy.a(2131649526), 0).b(i);
+    int i = BaseApplicationImpl.sApplication.getResources().getDimensionPixelSize(2131298865);
+    bcpw.a(BaseApplicationImpl.sApplication, ajyc.a(2131715316), 0).b(i);
   }
 }
 

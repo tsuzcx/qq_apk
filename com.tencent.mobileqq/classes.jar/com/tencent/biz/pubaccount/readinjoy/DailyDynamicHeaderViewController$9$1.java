@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import akfu;
-import ngv;
+import akug;
+import nsf;
 
 class DailyDynamicHeaderViewController$9$1
   implements Runnable
@@ -10,7 +10,7 @@ class DailyDynamicHeaderViewController$9$1
   
   public void run()
   {
-    akfu.a(ngv.a(this.a.this$0));
+    akug.a(nsf.a(this.a.this$0));
   }
 }
 

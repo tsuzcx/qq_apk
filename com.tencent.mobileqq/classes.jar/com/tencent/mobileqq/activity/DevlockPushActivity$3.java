@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bbms;
+import bcpq;
 
 class DevlockPushActivity$3
   implements Runnable
@@ -13,8 +13,8 @@ class DevlockPushActivity$3
     {
       if ((this.this$0.a == null) && (!this.this$0.isFinishing()))
       {
-        this.this$0.a = new bbms(this.this$0, this.this$0.getTitleBarHeight());
-        this.this$0.a.c(2131629253);
+        this.this$0.a = new bcpq(this.this$0, this.this$0.getTitleBarHeight());
+        this.this$0.a.c(2131694930);
       }
       if ((this.this$0.a != null) && (!this.this$0.a.isShowing())) {
         this.this$0.a.show();

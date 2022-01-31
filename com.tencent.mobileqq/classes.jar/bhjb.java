@@ -1,23 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import cooperation.qzone.plugin.PluginRecord;
 
-public class bhjb
-  implements View.OnClickListener
+class bhjb
 {
-  public bhjb(HummingActivity paramHummingActivity) {}
+  bhjc jdField_a_of_type_Bhjc;
+  bhjd jdField_a_of_type_Bhjd;
+  PluginRecord jdField_a_of_type_CooperationQzonePluginPluginRecord;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
-  {
-    if (bhix.b()) {
-      return;
-    }
-    HummingActivity.a(this.a);
-  }
+  bhjb(bhiz parambhiz) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhjb
  * JD-Core Version:    0.7.0.1
  */

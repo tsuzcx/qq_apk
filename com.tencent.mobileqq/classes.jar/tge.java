@@ -1,36 +1,66 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.qphone.base.util.QLog;
 
-final class tge
-  implements begw
+class tge
+  extends ssy
 {
-  tge(CommentEntry paramCommentEntry, begr parambegr) {}
+  tge(tgc paramtgc) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(byte paramByte)
   {
-    switch (paramInt)
+    boolean bool = true;
+    this.a.a = paramByte;
+    tgc.c(this.a, true);
+    tgc localtgc;
+    if (paramByte != -1)
     {
-    default: 
-      paramView = "16384";
-      QQUserUIItem localQQUserUIItem = ((sqs)sqg.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId);
-      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
-        new syc().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.content);
+      if (paramByte == 0) {
+        tgc.b(this.a);
       }
-      break;
+      localtgc = this.a;
+      if (paramByte != 2) {
+        break label88;
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Begr.dismiss();
+      localtgc.a(bool);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryOIDBReceived:" + this.a.c);
+      }
       return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      urk.d("Q.qqstory.player.PlayModeUtils", "report comment error because evil uin is empty.");
+      label88:
+      bool = false;
+    }
+  }
+  
+  public void b()
+  {
+    tcv localtcv = (tcv)tdc.a(10);
+    this.a.b = ((Boolean)localtcv.b("key_story_msg_tab_show", Boolean.valueOf(false))).booleanValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "commonConfigReceived:" + this.a.b);
+    }
+    tgc.a(this.a);
+    tgc.a(this.a, true);
+    tgc.a(this.a, true);
+    tgc.b(this.a);
+  }
+  
+  public void f(boolean paramBoolean)
+  {
+    if (!tgc.a(this.a))
+    {
+      if (paramBoolean)
+      {
+        this.a.c = this.a.a();
+        tgc.a(this.a);
+        tgc.a(this.a, true);
+      }
+      tgc.b(this.a, true);
+      tgc.b(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryDPCCfgHasContentReceived:" + this.a.c);
     }
   }
 }

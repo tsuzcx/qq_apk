@@ -1,15 +1,47 @@
 import android.support.annotation.Nullable;
+import com.tencent.map.geolocation.TencentLocation;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class tjh
-  extends tjs
+public abstract class tjh
 {
-  @Nullable
-  public uiw a;
+  public long a;
+  protected AtomicBoolean a;
+  public boolean a;
+  public long b;
+  public boolean b;
   
-  public tjh(String paramString, @Nullable uiw paramuiw)
+  public tjh()
   {
-    super(paramString);
-    this.a = paramuiw;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(String paramString)
+  {
+    long l2 = System.currentTimeMillis();
+    long l1 = this.b - this.jdField_a_of_type_Long;
+    l2 -= this.b;
+    veg.c(paramString, "page network respond times " + l1);
+    veg.c(paramString, "page db times " + l2);
+  }
+  
+  public void b()
+  {
+    this.b = System.currentTimeMillis();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

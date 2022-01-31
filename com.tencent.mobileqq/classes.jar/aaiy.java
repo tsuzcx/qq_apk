@@ -1,36 +1,53 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
 
-class aaiy
-  implements apca
+public class aaiy
+  implements CompoundButton.OnCheckedChangeListener
 {
-  aaiy(aaiw paramaaiw, FileManagerEntity paramFileManagerEntity) {}
+  public aaiy(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      this.jdField_a_of_type_Aaiw.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    ajgm localajgm;
-    ArrayList localArrayList;
-    do
+    int i;
+    label43:
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
+      i = 1;
+      bhvh.e(i);
+      bhvh.a(paramBoolean);
+      bhvh.a(true);
+      if (!paramBoolean) {
+        break label98;
       }
-      localajgm = (ajgm)this.jdField_a_of_type_Aaiw.a.a.a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localajgm.a(localArrayList));
-    apcb.a(2131627027);
-    return;
-    this.jdField_a_of_type_Aaiw.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      bcpw.a(this.a.getBaseContext(), 2, 2131718571, 2000).a();
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label121;
+      }
+      paramCompoundButton = "0X8008236";
+      label59:
+      if (!paramBoolean) {
+        break label127;
+      }
+    }
+    label98:
+    label121:
+    label127:
+    for (String str = "0X8008236";; str = "0X8008235")
+    {
+      noo.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
+      return;
+      i = 0;
+      break;
+      bcpw.a(this.a.getBaseContext(), 2, 2131718569, 2000).a();
+      break label43;
+      paramCompoundButton = "0X8008235";
+      break label59;
+    }
   }
-  
-  public void b() {}
 }
 
 

@@ -1,20 +1,12 @@
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.mobileqq.widget.InterestLabelTextView;
 
 public class abjo
-  extends aiac
 {
-  public abjm a;
-  public View a;
   public ImageView a;
   public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  public InterestLabelTextView a;
 }
 
 

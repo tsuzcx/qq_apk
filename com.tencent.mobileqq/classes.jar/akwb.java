@@ -1,55 +1,32 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public abstract class akwb
-  implements akwm
+public class akwb
 {
-  public int a;
-  protected Context a;
-  protected AppInterface a;
-  protected int b;
-  
-  public akwb()
+  public static Object a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Int = 0;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
+    }
+    return new ObjectInputStream(new ByteArrayInputStream(paramArrayOfByte)).readObject();
   }
   
-  public int a()
+  public static byte[] a(Serializable paramSerializable)
   {
-    return 0;
-  }
-  
-  public void a(Context paramContext, AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void g()
-  {
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public void h()
-  {
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  public void i() {}
-  
-  public void j()
-  {
-    this.jdField_a_of_type_Int = 5;
+    if (paramSerializable == null) {
+      return null;
+    }
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    new ObjectOutputStream(localByteArrayOutputStream).writeObject(paramSerializable);
+    return localByteArrayOutputStream.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akwb
  * JD-Core Version:    0.7.0.1
  */

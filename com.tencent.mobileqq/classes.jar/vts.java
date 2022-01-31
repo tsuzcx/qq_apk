@@ -1,48 +1,23 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-public class vts
-  implements vsp
+public final class vts
+  implements Parcelable.Creator<SlideItemInfo>
 {
-  public int a;
-  public String a;
-  public WeakReference<QRDisplayActivity> a;
-  
-  public void a(boolean paramBoolean, String paramString)
+  public SlideItemInfo a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    QRDisplayActivity localQRDisplayActivity;
-    do
-    {
-      do
-      {
-        return;
-        localQRDisplayActivity = (QRDisplayActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while (localQRDisplayActivity == null);
-      if (QLog.isColorLevel()) {
-        QLog.d("QRDisplayActivity", 2, String.format("onReceive qrcode url:%s suc:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
-      }
-    } while ((localQRDisplayActivity.b) || (localQRDisplayActivity.isFinishing()));
-    if (!paramBoolean)
-    {
-      localQRDisplayActivity.g();
-      return;
-    }
-    localQRDisplayActivity.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramString);
-    paramString = vvp.a(paramString, -1);
-    if (paramString != null)
-    {
-      localQRDisplayActivity.a = paramString;
-      localQRDisplayActivity.f();
-      return;
-    }
-    localQRDisplayActivity.g();
+    return new SlideItemInfo(paramParcel);
+  }
+  
+  public SlideItemInfo[] a(int paramInt)
+  {
+    return new SlideItemInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vts
  * JD-Core Version:    0.7.0.1
  */

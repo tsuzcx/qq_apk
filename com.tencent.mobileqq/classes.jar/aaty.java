@@ -1,38 +1,40 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aaty
-  extends bajp
+  implements bfoq
 {
-  public aaty(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
-  {
-    super(paramInt);
-  }
+  public aaty(ChatSettingForTroop paramChatSettingForTroop, bfol parambfol) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    Intent localIntent = new Intent(this.a, CardPicGalleryActivity.class);
-    ArrayList localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b)) {
-      localIntent.putExtra("extra_default", 2130844815);
-    }
-    localArrayList.add(this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b);
-    localIntent.putExtra("extra_mode", 2);
-    localIntent.putExtra("is_from_mine_profile", true);
-    localIntent.putStringArrayListExtra("business_card_pics", localArrayList);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.e == 0) {}
-    for (int i = this.a.jdField_a_of_type_Atwx.a.defaultCardId;; i = 0)
+    switch (paramInt)
     {
-      localIntent.putExtra("default_card_id", i);
-      this.a.startActivity(localIntent);
-      this.a.overridePendingTransition(2130772286, 0);
-      this.a.b(1);
+    default: 
       return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcpt == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcpt = new bcpt(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+    }
+    paramView = (akhq)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.a(20);
+    if ((bbev.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getApp().getApplicationContext())) && (paramView != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcpt.b(0, 2131692213, 0);
+      paramView.k(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+    }
+    for (;;)
+    {
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Bfol.cancel();
+      return;
+      if (paramView != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcpt.b(2, 2131694672, 1500);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcpt.b(2, 2131692212, 1500);
+      }
     }
   }
 }

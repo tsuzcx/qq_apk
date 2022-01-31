@@ -1,122 +1,165 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.GroupInfo;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.util.WeakReference;
 
 public class afck
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public afck(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  public int a;
+  private ajxl jdField_a_of_type_Ajxl = new afcl(this);
+  akim jdField_a_of_type_Akim = new afcm(this);
+  public bcpq a;
+  private final bfnk jdField_a_of_type_Bfnk = new bfnk(Looper.getMainLooper(), this);
+  public QQAppInterface a;
+  private String jdField_a_of_type_JavaLangString;
+  public WeakReference<BaseActivity> a;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public afck(BaseActivity paramBaseActivity, int paramInt)
   {
-    if (!(paramView.getTag() instanceof afbb)) {
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramBaseActivity);
+    this.jdField_a_of_type_Int = paramInt;
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)localAppRuntime);
+    }
+    paramBaseActivity = paramBaseActivity.getIntent();
+    this.jdField_b_of_type_Int = paramBaseActivity.getIntExtra("uintype", -1);
+    this.jdField_a_of_type_JavaLangString = paramBaseActivity.getStringExtra("uin");
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajxl);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akim);
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if (axuy.a(paramIntent.getByteArrayExtra("stuctmsg_bytes")) == null) {
       return;
     }
-    afbb localafbb = (afbb)paramView.getTag();
-    if (localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 80)
+    SessionInfo localSessionInfo = new SessionInfo();
+    localSessionInfo.jdField_a_of_type_Int = paramIntent.getIntExtra("uintype", 0);
+    localSessionInfo.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("uin");
+    localSessionInfo.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("troop_uin");
+    paramIntent = asty.a();
+    paramIntent.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramIntent.a);
+  }
+  
+  public void a(List<ChatMessage> paramList)
+  {
+    Object localObject = (BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localObject == null)
     {
-      paramView = TroopInfoActivity.a(String.valueOf(localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get()), 5);
-      TroopInfoActivity.a(this.a.a(), paramView);
+      QLog.e("SeparateForward", 1, "sendMultiMsg, activity recyled");
       return;
     }
-    if (!badq.d(this.a.a()))
-    {
-      bbmy.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.a().getString(2131628946), 0).b(this.a.a());
-      return;
+    ArrayList localArrayList = new ArrayList();
+    paramList = asuf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ArrayList)paramList);
+    asty.a().b(paramList);
+    if (this.jdField_a_of_type_Bcpq == null) {
+      this.jdField_a_of_type_Bcpq = new bcpq((Context)localObject, ((BaseActivity)localObject).getTitleBarHeight());
     }
-    ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).b(String.valueOf(localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get()));
-    TroopNotifyAndRecommendView.a(this.a, (structmsg.StructMsg)localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get(), localafbb.c);
-    String str2 = localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_info.msg_alert.get();
-    String str3 = localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "";
-    int i;
-    label286:
-    String str1;
-    if ((this.a.jdField_a_of_type_Afbk != null) && (localafbb.b < this.a.jdField_a_of_type_Afbk.jdField_a_of_type_Int))
+    this.jdField_a_of_type_Bcpq.c(2131698467);
+    this.jdField_a_of_type_Bcpq.show();
+    localObject = paramList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      paramView = "1";
-      i = localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_inviter_role.get();
-      if ((i != 2) && (i != 3)) {
-        break label383;
+      ChatMessage localChatMessage = (ChatMessage)((Iterator)localObject).next();
+      if (!localArrayList.contains(localChatMessage.senderuin)) {
+        localArrayList.add(localChatMessage.senderuin);
       }
-      i = 0;
-      if (i == 0) {
-        break label388;
-      }
-      str1 = "0";
-      label293:
-      if ((str2 != null) && (!"".equals(str2))) {
-        break label715;
-      }
-      if (localafbb.jdField_a_of_type_Int != 82) {
-        break label394;
-      }
-      TroopNotifyAndRecommendView.a(this.a, localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get(), (structmsg.StructMsg)localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
+    }
+    asty.a().a.clear();
+    asty.a().a.addAll(paramList);
+    if (this.jdField_b_of_type_Int == 1) {
+      ((akhq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(this.jdField_a_of_type_JavaLangString, localArrayList, false, null);
     }
     for (;;)
     {
-      TroopNotifyAndRecommendView.c(this.a);
-      this.a.jdField_a_of_type_Bbms.c(2131653452);
-      this.a.jdField_a_of_type_Bbms.show();
+      paramList = this.jdField_a_of_type_Bfnk.obtainMessage(1);
+      paramList.arg1 = localArrayList.size();
+      this.jdField_a_of_type_Bfnk.sendMessageDelayed(paramList, 30000L);
       return;
-      paramView = "0";
-      break;
-      label383:
-      i = 1;
-      break label286;
-      label388:
-      str1 = "1";
-      break label293;
-      label394:
-      if (localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 2)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopNotifyAndRecommendView", 2, "doCheckPayTroopReq start: " + str3);
-        }
-        TroopRequestActivity.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str3, localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.a.jdField_a_of_type_Afcf);
-        azzx.a("Grp_contacts_news", "notice", "agree_invite", 0, 0, new String[] { str3, paramView, str1, "0" });
-      }
-      else
-      {
-        TroopNotifyAndRecommendView.a(this.a, 1, (structmsg.StructMsg)localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
-        if ((localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.has()) && (localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.has())) {
-          ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(str3, localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "", localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.get());
-        }
-        if (localafbb.jdField_a_of_type_Int == 1)
-        {
-          azzx.a("Grp_contacts_news", "notice", "agree_ask", 0, 0, new String[] { str3, paramView, str1, "0" });
-        }
-        else if (localafbb.jdField_a_of_type_Int == 2)
-        {
-          azzx.a("Grp_contacts_news", "notice", "agree_invite", 0, 0, new String[] { str3, paramView, str1, "0" });
-          continue;
-          label715:
-          TroopNotifyAndRecommendView.a(this.a, 0, (structmsg.StructMsg)localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
-          if (localafbb.jdField_a_of_type_Int == 1) {
-            azzx.a("Grp_contacts_news", "notice", "refuse_ask", 0, 0, new String[] { str3, paramView, str1, "0" });
-          } else if (localafbb.jdField_a_of_type_Int == 2) {
-            azzx.a("Grp_contacts_news", "notice", "refuse_invite", 0, 0, new String[] { str3, paramView, str1, "0" });
-          }
-        }
+      if ((this.jdField_b_of_type_Int == 0) || (this.jdField_b_of_type_Int == 3000)) {
+        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(localArrayList);
       }
     }
+  }
+  
+  public void a(Map<String, String> paramMap, ArrayList<ChatMessage> paramArrayList)
+  {
+    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localBaseActivity == null)
+    {
+      QLog.e("SeparateForward", 1, "sendMultiMsg, activity recyled");
+      return;
+    }
+    String str = " ";
+    if (this.jdField_b_of_type_Int == 0) {}
+    for (str = bbcl.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);; str = this.jdField_b_of_type_JavaLangString) {
+      do
+      {
+        paramMap = aaod.a(localBaseActivity, str, paramArrayList, paramMap, true);
+        if (paramMap == null) {
+          break;
+        }
+        paramMap.mMsg_A_ActionData = null;
+        paramArrayList = new Intent();
+        paramArrayList.putExtra("forward_type", -3);
+        paramArrayList.putExtra("stuctmsg_bytes", paramMap.getBytes());
+        paramArrayList.putExtra("is_need_show_sources", false);
+        paramArrayList.putExtra("forward_msg_from_together", 1);
+        paramArrayList.putExtra("forwardDirect", true);
+        aqbc.a(localBaseActivity, paramArrayList, this.jdField_a_of_type_Int);
+        return;
+      } while ((this.jdField_b_of_type_Int != 1) && (this.jdField_b_of_type_Int != 3000));
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajxl);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akim);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return false;
+      paramMessage = (BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    } while ((this.jdField_a_of_type_Bcpq == null) || (paramMessage == null));
+    this.jdField_a_of_type_Bcpq.dismiss();
+    bcpw.a(paramMessage, 2131698469, 0).b(paramMessage.getResources().getDimensionPixelSize(2131298865));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afck
  * JD-Core Version:    0.7.0.1
  */

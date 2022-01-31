@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import agwj;
+import ahiy;
 import com.tencent.qphone.base.util.QLog;
 
 class PreloadConfig$1
@@ -14,7 +14,7 @@ class PreloadConfig$1
     {
       if (this.this$0.isModulesChange(this.this$0.mLastModules))
       {
-        agwj.a(this.this$0, this.this$0.mSavePath);
+        ahiy.a(this.this$0, this.this$0.mSavePath);
         if (QLog.isColorLevel()) {
           QLog.d("PreloadManager", 2, "really save:" + this.this$0);
         }

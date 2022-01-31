@@ -1,89 +1,44 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-class xbd
-  extends BroadcastReceiver
+public abstract class xbd
+  extends mxm
 {
-  public int a;
-  public String a;
-  public String b;
-  
-  private xbd(xbb paramxbb) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public xbd()
   {
-    int i = paramIntent.getIntExtra("bc_seq", -1);
-    if (i < 0) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence = " + i + "| wrong seq");
-      }
-    }
-    byte[] arrayOfByte;
-    do
-    {
-      do
-      {
-        return;
-        if (i == this.jdField_a_of_type_Int) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence != seq | miss hit");
-      return;
-      paramContext = paramIntent.getExtras();
-      arrayOfByte = paramContext.getByteArray("bc_data");
-      i = paramIntent.getIntExtra("portal_type_key", -1);
-      if (arrayOfByte != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive data = null");
-    return;
-    if (QLog.isColorLevel())
-    {
-      if (i != 1009) {
-        break label286;
-      }
-      paramContext = "REQ_TYPE_GET_HEAD returned";
-    }
-    for (;;)
-    {
-      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceiver.onReceive | " + i + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + paramContext);
-      switch (i)
-      {
-      default: 
-        return;
-      }
-      this.jdField_a_of_type_Xbb.a(this.jdField_a_of_type_Int);
-      paramIntent = attn.b(arrayOfByte);
-      paramContext = paramIntent;
-      if (paramIntent == null) {
-        paramContext = new JSONObject();
-      }
-      try
-      {
-        paramContext.put("errorCode", -1);
-        paramContext = paramContext.toString();
-        this.jdField_a_of_type_Xbb.a(this.jdField_a_of_type_JavaLangString, new String[] { paramContext });
-        return;
-        label286:
-        paramContext = paramContext.toString();
-      }
-      catch (JSONException paramContext)
-      {
-        for (;;)
-        {
-          paramContext.printStackTrace();
-          paramContext = paramIntent;
-        }
-      }
-    }
+    super(false);
   }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt != 0)
+    {
+      a(false, paramInt, null, paramBundle);
+      return;
+    }
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.DownloadFileRspBody)localRspBody.download_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
+      {
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null, paramBundle);
+      return;
+    }
+    a(false, -1, null, paramBundle);
+  }
+  
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle);
 }
 
 

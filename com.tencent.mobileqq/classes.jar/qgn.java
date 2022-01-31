@@ -1,13 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import com.tencent.widget.AdapterView;
 
-class qgn
-  implements begz
+public class qgn
+  implements bfpc
 {
-  qgn(qgm paramqgm) {}
+  public qgn(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public void an_()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    qfy.a(this.a.a).c();
+    paramAdapterView = (TagInfo)ReadInJoyVideoTagSelectionFragment.a(this.a).getItem(paramInt);
+    ReadInJoyVideoTagSelectionFragment.a(this.a).b(paramAdapterView);
   }
 }
 

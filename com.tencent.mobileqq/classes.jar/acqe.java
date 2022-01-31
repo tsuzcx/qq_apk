@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-class acqe
-  implements axbf
+public class acqe
+  extends atzl
 {
-  acqe(acqc paramacqc) {}
+  public acqe(VisitorsActivity paramVisitorsActivity) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    axbl localaxbl = new axbl(3000, 360, 0);
-    localaxbl.a = true;
-    this.a.a.e.a(new axbe[] { localaxbl });
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acqe
  * JD-Core Version:    0.7.0.1
  */

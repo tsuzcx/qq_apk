@@ -1,105 +1,37 @@
-import android.graphics.Bitmap;
-import java.util.List;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
 
-public class asju
+class asju
+  extends akav
 {
-  protected void a() {}
+  asju(asjs paramasjs, QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, String paramString, int paramInt) {}
   
-  protected void a(int paramInt, String paramString) {}
-  
-  protected void a(int paramInt, String paramString, Bitmap paramBitmap) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(int paramInt, Object... paramVarArgs)
+  public void a(boolean paramBoolean, long paramLong, akaw paramakaw)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(6003, true, new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq + "" });
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData);
+    if (paramBoolean)
     {
-    default: 
-    case 4118: 
-    case 4131: 
-      do
-      {
-        do
-        {
-          return;
-        } while ((paramVarArgs == null) || (paramVarArgs.length != 2));
-        a((List)paramVarArgs[0], (List)paramVarArgs[1]);
-        return;
-      } while ((paramVarArgs == null) || (paramVarArgs.length != 2));
-      a(((Integer)paramVarArgs[0]).intValue(), ((Boolean)paramVarArgs[1]).booleanValue());
-      return;
-    case 4113: 
-      a(((Boolean)paramVarArgs[0]).booleanValue(), (List)paramVarArgs[1]);
-      return;
-    case 4114: 
-      b(((Boolean)paramVarArgs[0]).booleanValue(), (List)paramVarArgs[1]);
-      return;
-    case 4115: 
-      a(((Boolean)paramVarArgs[0]).booleanValue(), null);
-      return;
-    case 4116: 
-      a(((Boolean)paramVarArgs[0]).booleanValue(), null);
-      return;
-    case 4159: 
-      b();
-      return;
-    case 4161: 
-      try
-      {
-        a(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1], (Bitmap)paramVarArgs[2]);
-        return;
-      }
-      catch (Exception paramVarArgs)
-      {
-        paramVarArgs.printStackTrace();
-        return;
-      }
-    case 4162: 
-      try
-      {
-        if (((Integer)paramVarArgs[0]).intValue() == 0)
-        {
-          a(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1]);
-          return;
-        }
-      }
-      catch (Exception paramVarArgs)
-      {
-        paramVarArgs.printStackTrace();
-        return;
-      }
-      b(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1]);
+      asjs.a(this.jdField_a_of_type_Asjs, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
       return;
     }
-    try
+    asjs localasjs = this.jdField_a_of_type_Asjs;
+    MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
+    StringBuilder localStringBuilder = new StringBuilder().append("sendStructLongMsg fail : errCode = ");
+    if (paramakaw != null) {}
+    for (paramakaw = Integer.valueOf(paramakaw.b);; paramakaw = "")
     {
-      a();
+      asjs.a(localasjs, localMessageForMixedMsg, true, paramakaw);
       return;
-    }
-    catch (Exception paramVarArgs)
-    {
-      paramVarArgs.printStackTrace();
     }
   }
-  
-  public void a(List<String> paramList1, List<String> paramList2) {}
-  
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  public void a(boolean paramBoolean, List<Long> paramList) {}
-  
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  protected void b() {}
-  
-  protected void b(int paramInt, String paramString) {}
-  
-  public void b(boolean paramBoolean, List<Long> paramList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asju
  * JD-Core Version:    0.7.0.1
  */

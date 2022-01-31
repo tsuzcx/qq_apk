@@ -1,29 +1,16 @@
-public class ret
+import com.tencent.widget.AbsListView;
+
+class ret
+  extends oyg
 {
-  private final int jdField_a_of_type_Int;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final int b;
-  
-  public ret(int paramInt1, int paramInt2, Object paramObject)
+  ret(rer paramrer, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    super(paramString);
   }
   
-  public int a()
+  public void a(oya paramoya)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    paramoya.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

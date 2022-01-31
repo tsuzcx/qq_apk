@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.structmsg;
 
 import android.util.Log;
-import awuk;
-import awwc;
+import axum;
+import axwe;
 import java.io.Externalizable;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -19,23 +19,23 @@ public class StructMsgSubImageVideo$VideoItem
   public String videoUrl;
   public int width;
   
-  private static VideoItem a(awwc paramawwc)
+  private static VideoItem a(axwe paramaxwe)
   {
-    Iterator localIterator = paramawwc.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = paramaxwe.jdField_a_of_type_JavaUtilList.iterator();
     Object localObject1 = null;
     Object localObject2 = null;
     Object localObject3;
     if (localIterator.hasNext())
     {
-      localObject3 = (awwc)localIterator.next();
-      if ("title".equals(((awwc)localObject3).b)) {
+      localObject3 = (axwe)localIterator.next();
+      if ("title".equals(((axwe)localObject3).b)) {
         localObject2 = localObject3;
       }
     }
     for (;;)
     {
       break;
-      if ("video".equals(((awwc)localObject3).b))
+      if ("video".equals(((axwe)localObject3).b))
       {
         localObject1 = localObject3;
         continue;
@@ -45,11 +45,11 @@ public class StructMsgSubImageVideo$VideoItem
           return null;
         }
         localObject3 = new VideoItem();
-        ((VideoItem)localObject3).schema = paramawwc.a("url");
+        ((VideoItem)localObject3).schema = paramaxwe.a("url");
         if (localObject2 == null) {}
-        for (paramawwc = "";; paramawwc = localObject2.jdField_a_of_type_JavaLangString)
+        for (paramaxwe = "";; paramaxwe = localObject2.jdField_a_of_type_JavaLangString)
         {
-          ((VideoItem)localObject3).title = paramawwc;
+          ((VideoItem)localObject3).title = paramaxwe;
           ((VideoItem)localObject3).coverUrl = localObject1.a("cover");
           ((VideoItem)localObject3).videoUrl = localObject1.a("url");
           try
@@ -58,9 +58,9 @@ public class StructMsgSubImageVideo$VideoItem
             ((VideoItem)localObject3).height = Integer.parseInt(localObject1.a("height"));
             return localObject3;
           }
-          catch (NumberFormatException paramawwc)
+          catch (NumberFormatException paramaxwe)
           {
-            Log.w("StructMsgSubImageVideo", "parseVideoNode: wrong width or height param", paramawwc);
+            Log.w("StructMsgSubImageVideo", "parseVideoNode: wrong width or height param", paramaxwe);
             return localObject3;
           }
         }
@@ -78,25 +78,25 @@ public class StructMsgSubImageVideo$VideoItem
     this.height = paramObjectInput.readInt();
   }
   
-  public void toXml(awuk paramawuk)
+  public void toXml(axum paramaxum)
   {
-    paramawuk.startTag(null, "item");
-    paramawuk.attribute(null, "apptype", "10");
-    paramawuk.attribute(null, "type", "0");
-    paramawuk.attribute(null, "url", this.schema);
-    paramawuk.startTag(null, "title");
+    paramaxum.startTag(null, "item");
+    paramaxum.attribute(null, "apptype", "10");
+    paramaxum.attribute(null, "type", "0");
+    paramaxum.attribute(null, "url", this.schema);
+    paramaxum.startTag(null, "title");
     if (this.title == null)
     {
       str = "";
-      paramawuk.text(str);
-      paramawuk.endTag(null, "title");
-      paramawuk.startTag(null, "video");
+      paramaxum.text(str);
+      paramaxum.endTag(null, "title");
+      paramaxum.startTag(null, "video");
       if (this.coverUrl != null) {
         break label173;
       }
       str = "";
       label90:
-      paramawuk.attribute(null, "cover", str);
+      paramaxum.attribute(null, "cover", str);
       if (this.videoUrl != null) {
         break label181;
       }
@@ -105,11 +105,11 @@ public class StructMsgSubImageVideo$VideoItem
     label181:
     for (String str = "";; str = this.videoUrl)
     {
-      paramawuk.attribute(null, "url", str);
-      paramawuk.attribute(null, "width", Integer.toString(this.width));
-      paramawuk.attribute(null, "height", Integer.toString(this.height));
-      paramawuk.endTag(null, "video");
-      paramawuk.endTag(null, "item");
+      paramaxum.attribute(null, "url", str);
+      paramaxum.attribute(null, "width", Integer.toString(this.width));
+      paramaxum.attribute(null, "height", Integer.toString(this.height));
+      paramaxum.endTag(null, "video");
+      paramaxum.endTag(null, "item");
       return;
       str = this.title;
       break;

@@ -1,13 +1,12 @@
-public class batj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class batj
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
+  batj(bath parambath) {}
   
-  public batj()
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

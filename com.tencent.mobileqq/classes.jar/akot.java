@@ -1,28 +1,19 @@
-import com.tencent.mobileqq.ar.ObjectBaseData;
-import com.tencent.mobileqq.ar.ObjectSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class akot
-  implements atht
+class akot
+  implements Comparator<MessageRecord>
 {
-  public akot(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData) {}
+  akot(akor paramakor) {}
   
-  public void a()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ObjectSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
-    }
-    ObjectSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.a.a();
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akot
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bbms;
+import bcpq;
 
 class RegisterQQNumberActivity$5
   implements Runnable
@@ -13,8 +13,8 @@ class RegisterQQNumberActivity$5
     {
       if ((RegisterQQNumberActivity.a(this.this$0) == null) && (!this.this$0.isFinishing()))
       {
-        RegisterQQNumberActivity.a(this.this$0, new bbms(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
-        RegisterQQNumberActivity.a(this.this$0).c(2131629253);
+        RegisterQQNumberActivity.a(this.this$0, new bcpq(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+        RegisterQQNumberActivity.a(this.this$0).c(2131694930);
       }
       if ((RegisterQQNumberActivity.a(this.this$0) != null) && (!RegisterQQNumberActivity.a(this.this$0).isShowing())) {
         RegisterQQNumberActivity.a(this.this$0).show();

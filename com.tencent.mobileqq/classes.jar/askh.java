@@ -1,21 +1,22 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public class askh
-  implements AudioManager.OnAudioFocusChangeListener
+class askh
+  extends akfz
 {
-  public askh(SmallVideoFragment paramSmallVideoFragment) {}
+  askh(askd paramaskd) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void a()
   {
-    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (SmallVideoFragment.a(this.a))) {
-      this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonManager", 2, "mVipStatusObserver vip change");
     }
+    super.a();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     askh
  * JD-Core Version:    0.7.0.1
  */

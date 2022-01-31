@@ -1,46 +1,20 @@
-import android.graphics.SurfaceTexture;
-import android.view.TextureView.SurfaceTextureListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.AECamera.qudong.AETemplateInfoFragment;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qzone.TranslucentActivity;
 
 public class bhau
-  implements TextureView.SurfaceTextureListener
+  implements DialogInterface.OnDismissListener
 {
-  private WeakReference<AETemplateInfoFragment> a;
+  public bhau(TranslucentActivity paramTranslucentActivity) {}
   
-  public bhau(AETemplateInfoFragment paramAETemplateInfoFragment)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a = new WeakReference(paramAETemplateInfoFragment);
+    this.a.finish();
   }
-  
-  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureAvailable");
-    if ((this.a != null) && (this.a.get() != null)) {
-      AETemplateInfoFragment.a((AETemplateInfoFragment)this.a.get(), paramSurfaceTexture);
-    }
-  }
-  
-  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
-  {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureDestroyed");
-    if ((this.a != null) && (this.a.get() != null)) {
-      AETemplateInfoFragment.c((AETemplateInfoFragment)this.a.get());
-    }
-    return true;
-  }
-  
-  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureSizeChanged");
-  }
-  
-  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhau
  * JD-Core Version:    0.7.0.1
  */

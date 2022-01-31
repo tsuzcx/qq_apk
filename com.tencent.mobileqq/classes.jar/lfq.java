@@ -1,34 +1,38 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Process;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class lfq
-  extends lfu
+class lfq
+  extends BroadcastReceiver
 {
-  protected Handler a;
-  
-  public lfq()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    HandlerThread localHandlerThread = new HandlerThread("OffscreenGLThread" + (int)(Math.random() * 100.0D));
-    localHandlerThread.start();
-    this.a = new lfr(localHandlerThread.getLooper(), this);
-  }
-  
-  protected abstract void a(Message paramMessage);
-  
-  protected void b()
-  {
-    super.b();
-    Process.setThreadPriority(0);
-    krx.c("GLContextThread", "init: ");
-  }
-  
-  protected void d()
-  {
-    super.e();
-    this.a.getLooper().quit();
+    if (paramIntent == null) {}
+    do
+    {
+      return;
+      paramContext = paramIntent.getAction();
+      if (paramContext.equals("android.intent.action.SCREEN_ON"))
+      {
+        QLog.d("GScreenActionMonitor", 1, "avideo ACTION_SCREEN_ON");
+        return;
+      }
+      if (paramContext.equals("android.intent.action.SCREEN_OFF"))
+      {
+        QLog.d("GScreenActionMonitor", 1, "avideo ACTION_SCREEN_OFF");
+        liz.a(19, 1L);
+        return;
+      }
+      if (paramContext.equals("android.intent.action.USER_PRESENT"))
+      {
+        QLog.d("GScreenActionMonitor", 1, "avideACTION_USER_PRESENT");
+        liz.a(19, 2L);
+        return;
+      }
+    } while (!paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
+    paramContext = paramIntent.getStringExtra("reason");
+    QLog.d("GScreenActionMonitor", 1, "avideo ACTION_CLOSE_SYSTEM_DIALOGS, reason[" + paramContext + "]");
   }
 }
 

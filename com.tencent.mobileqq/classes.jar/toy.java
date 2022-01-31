@@ -1,80 +1,53 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgListHeadNode;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class toy
-  extends JobSegment<tnz, String>
+  extends syq
 {
-  private toy(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  private String jdField_a_of_type_JavaLangString;
+  private List<tfi> jdField_a_of_type_JavaUtilList;
   
-  protected void a(JobContext paramJobContext, tnz paramtnz)
+  public toy(@NonNull qqstory_service.RspMsgListHeadNode paramRspMsgListHeadNode)
   {
-    urk.b(this.a.jdField_a_of_type_JavaLangString, "CheckDataSegment runSegment");
-    if (this.a.jdField_a_of_type_Tnz.a())
-    {
-      urk.b(this.a.jdField_a_of_type_JavaLangString, "isLoadingData, show loading view");
-      VideoViewVideoHolder.a(this.a, 2);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-      this.a.jdField_a_of_type_Tqg.a(8);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.a.b.setVisibility(8);
-      notifyError(new ErrorMessage(0, "isLoadingData"));
-      return;
-    }
-    if (this.a.jdField_a_of_type_Tnz.b())
-    {
-      urk.b(this.a.jdField_a_of_type_JavaLangString, "showPage, show error view, because this is a error data = %s", this.a.jdField_a_of_type_Tnz.a());
-      VideoViewVideoHolder.b(this.a, this.a.jdField_a_of_type_Tnz.a().errorCode);
-      VideoViewVideoHolder.a(this.a, false);
-      urk.d(this.a.jdField_a_of_type_JavaLangString, "isErrorData, hide loading view. subErrorCode=%d", new Object[] { Integer.valueOf(VideoViewVideoHolder.a(this.a)) });
-      if (VideoViewVideoHolder.a(this.a) == 97000000)
-      {
-        VideoViewVideoHolder.c(this.a, 4);
-        notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "PLAY_DATA_NO_VID"));
-        return;
-      }
-      VideoViewVideoHolder.c(this.a, 9);
-      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "isErrorData"));
-      return;
-    }
-    if (StoryVideoItem.isFakeVid(this.a.jdField_a_of_type_Tnz.jdField_a_of_type_JavaLangString))
-    {
-      paramJobContext = ((sqd)sqg.a(5)).b(this.a.jdField_a_of_type_Tnz.jdField_a_of_type_JavaLangString);
-      if (paramJobContext != null)
-      {
-        VideoViewVideoHolder.a(this.a, paramJobContext);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramtnz = (String)this.a.jdField_a_of_type_AndroidWidgetImageView.getTag();
-        if (!TextUtils.equals(this.a.jdField_a_of_type_Tnz.jdField_a_of_type_JavaLangString, paramtnz))
-        {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(this.a.jdField_a_of_type_Tnz.jdField_a_of_type_JavaLangString);
-          tfy.a(this.a.jdField_a_of_type_AndroidWidgetImageView, paramJobContext.mVideoLocalThumbnailPath, paramJobContext.getThumbUrl(), VideoViewVideoHolder.a(this.a), this.a.jdField_a_of_type_Tgk);
-        }
-        urk.d(this.a.jdField_a_of_type_JavaLangString, "showPage, show error view, because this is fake vid = %s", new Object[] { this.a.jdField_a_of_type_Tnz.jdField_a_of_type_JavaLangString });
-        VideoViewVideoHolder.c(this.a, 5);
-        VideoViewVideoHolder.a(this.a, false);
-        notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "isFakeData"));
-        return;
-      }
-      VideoViewVideoHolder.c(this.a, 11);
-      VideoViewVideoHolder.a(this.a, false);
-      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "Fake Vid No Data"));
-      return;
-    }
-    notifyResult(this.a.jdField_a_of_type_Tnz.jdField_a_of_type_JavaLangString);
+    super(paramRspMsgListHeadNode.result);
+    this.jdField_a_of_type_JavaLangString = paramRspMsgListHeadNode.list_seq.get().toStringUtf8();
+    this.jdField_a_of_type_JavaUtilList = a(paramRspMsgListHeadNode.node_list.get());
   }
   
-  public void onCancel()
+  private static List<tfi> a(List<qqstory_service.MsgTabNodeInfo> paramList)
   {
-    super.onCancel();
-    urk.b(this.a.jdField_a_of_type_JavaLangString, "CheckDataSegment onCancel");
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      qqstory_service.MsgTabNodeInfo localMsgTabNodeInfo = (qqstory_service.MsgTabNodeInfo)paramList.next();
+      tfi localtfi = new tfi();
+      localtfi.a(localMsgTabNodeInfo);
+      localArrayList.add(localtfi);
+    }
+    return localArrayList;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<tfi> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public String toString()
+  {
+    return "RecentTabHaloResponse{mSeq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mMsgTabNodeInfos=" + this.jdField_a_of_type_JavaUtilList + ", errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 

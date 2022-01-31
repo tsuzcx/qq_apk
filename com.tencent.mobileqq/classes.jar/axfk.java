@@ -1,30 +1,16 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-class axfk
-  implements View.OnClickListener
+public abstract interface axfk
 {
-  axfk(axfj paramaxfj, DialogInterface.OnClickListener paramOnClickListener) {}
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat);
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Axfj, 1);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Axfj.isShowing()) {
-        this.jdField_a_of_type_Axfj.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
-  }
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo, int paramInt);
+  
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axfk
  * JD-Core Version:    0.7.0.1
  */

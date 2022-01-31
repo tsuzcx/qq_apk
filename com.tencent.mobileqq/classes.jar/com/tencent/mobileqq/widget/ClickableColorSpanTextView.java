@@ -8,12 +8,12 @@ import android.util.StateSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import bbgx;
+import bcjx;
 
 public class ClickableColorSpanTextView
   extends TextView
 {
-  private bbgx jdField_a_of_type_Bbgx;
+  private bcjx jdField_a_of_type_Bcjx;
   private StatableSpanTextView.StatableForegroundColorSpan jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
   private StatableSpanTextView.StatableForegroundColorSpan[] jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
   
@@ -102,8 +102,8 @@ public class ClickableColorSpanTextView
           }
           if (this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan != null)
           {
-            if ((this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan == localStatableForegroundColorSpan) && (this.jdField_a_of_type_Bbgx != null)) {
-              this.jdField_a_of_type_Bbgx.a(this, this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan);
+            if ((this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan == localStatableForegroundColorSpan) && (this.jdField_a_of_type_Bcjx != null)) {
+              this.jdField_a_of_type_Bcjx.a(this, this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan);
             }
             this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan.a(StateSet.WILD_CARD);
             this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = null;
@@ -116,9 +116,9 @@ public class ClickableColorSpanTextView
     }
   }
   
-  public void setSpanClickListener(bbgx parambbgx)
+  public void setSpanClickListener(bcjx parambcjx)
   {
-    this.jdField_a_of_type_Bbgx = parambbgx;
+    this.jdField_a_of_type_Bcjx = parambcjx;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)

@@ -1,31 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
 
-public class aqex
-  implements Animator.AnimatorListener
+class aqex
+  extends Handler
 {
-  public aqex(HotPicMainPanel paramHotPicMainPanel) {}
+  aqex(aqeq paramaqeq) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
+    if (paramMessage.what == 0) {
+      bcpw.a(this.a.a, ajyc.a(2131704804), 0).a();
     }
-    this.a.b.setVisibility(8);
+    while (1 != paramMessage.what) {
+      return;
+    }
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqex
  * JD-Core Version:    0.7.0.1
  */

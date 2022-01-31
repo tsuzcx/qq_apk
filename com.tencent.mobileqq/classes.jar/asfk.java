@@ -1,35 +1,47 @@
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
+import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class asfk
-  extends azmd
+  extends aoeu
 {
-  private NearbyAppInterface a;
+  public asfk(MatchChatSettingFragment paramMatchChatSettingFragment) {}
   
-  public asfk(NearbyAppInterface paramNearbyAppInterface, String paramString1, String paramString2, String paramString3)
+  protected void a(boolean paramBoolean1, ArrayList<aogi> paramArrayList, boolean paramBoolean2, int paramInt, ArrayList<String> paramArrayList1)
   {
-    super(paramString1, paramString2, paramString3);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
-  }
-  
-  public UsingTimeReportManager a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean1 + " chatSwitchOpen:" + paramBoolean2);
     }
-    return (UsingTimeReportManager)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(221);
+    if (paramBoolean1) {
+      MatchChatSettingFragment.a(this.a, paramBoolean2);
+    }
   }
   
-  public void a(long paramLong)
+  protected void f(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.reportClickEvent("dc00899", this.jdField_a_of_type_JavaLangString, "", this.b, this.c, 0, 0, String.valueOf(paramLong), "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean);
+    }
+    MatchChatSettingFragment localMatchChatSettingFragment;
+    if (!paramBoolean)
+    {
+      localMatchChatSettingFragment = this.a;
+      if (MatchChatSettingFragment.a(this.a).a()) {
+        break label61;
+      }
+    }
+    label61:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      MatchChatSettingFragment.a(localMatchChatSettingFragment, paramBoolean);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asfk
  * JD-Core Version:    0.7.0.1
  */

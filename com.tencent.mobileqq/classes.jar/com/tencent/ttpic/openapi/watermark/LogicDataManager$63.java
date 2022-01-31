@@ -25,11 +25,14 @@ class LogicDataManager$63
     {
       int i = Integer.parseInt((String)this.this$0.mFollowData.get(paramWMElement.numberSource));
       if (((paramWMElement.showCaseMin.equals("")) && (paramWMElement.showCaseMax.equals(""))) || ((i >= Integer.parseInt(paramWMElement.showCaseMin)) && (i <= Integer.parseInt(paramWMElement.showCaseMax)))) {
-        return String.valueOf(i % 1000000000 / 100000000);
+        return String.valueOf(i % 100000000 / 10000000);
       }
       return "-1";
     }
-    catch (NumberFormatException paramWMElement) {}
+    catch (NumberFormatException paramWMElement)
+    {
+      paramWMElement.printStackTrace();
+    }
     return "-1";
   }
 }

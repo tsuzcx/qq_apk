@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry;
 
-import agtk;
+import ahfz;
 
 public class SpringHbEntryManager$2
   implements Runnable
 {
-  public SpringHbEntryManager$2(agtk paramagtk) {}
+  public SpringHbEntryManager$2(ahfz paramahfz) {}
   
   public void run()
   {
-    agtk.a(this.this$0);
+    ahfz.a(this.this$0);
   }
 }
 

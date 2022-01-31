@@ -1,32 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GpsInfo;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
 
-public final class bfpa
-  implements Parcelable.Creator<LbsDataV2.GpsInfo>
+public class bfpa
+  implements ContextMenu.ContextMenuInfo
 {
-  public LbsDataV2.GpsInfo a(Parcel paramParcel)
-  {
-    LbsDataV2.GpsInfo localGpsInfo = new LbsDataV2.GpsInfo();
-    if (paramParcel != null)
-    {
-      localGpsInfo.lat = paramParcel.readInt();
-      localGpsInfo.lon = paramParcel.readInt();
-      localGpsInfo.alt = paramParcel.readInt();
-      localGpsInfo.gpsType = paramParcel.readInt();
-      localGpsInfo.accuracy = paramParcel.readInt();
-    }
-    return localGpsInfo;
-  }
+  public int a;
+  public long a;
+  public View a;
   
-  public LbsDataV2.GpsInfo[] a(int paramInt)
+  public bfpa(View paramView, int paramInt, long paramLong)
   {
-    return null;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfpa
  * JD-Core Version:    0.7.0.1
  */

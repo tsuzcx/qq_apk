@@ -1,161 +1,25 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import mqq.util.WeakReference;
 
-public class aguj
-  extends Dialog
-  implements View.OnClickListener
+class aguj
+  implements aptu
 {
-  private long jdField_a_of_type_Long;
-  private CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private long b;
+  aguj(agug paramagug) {}
   
-  public aguj(@NonNull Context paramContext)
+  public void a()
   {
-    super(paramContext, 2131689627);
+    this.a.h();
   }
   
-  private void a()
+  public void b()
   {
-    if (this.jdField_a_of_type_AndroidOsCountDownTimer != null) {
-      this.jdField_a_of_type_AndroidOsCountDownTimer.cancel();
-    }
-  }
-  
-  private void a(int paramInt1, int paramInt2, int paramInt3, RelativeLayout paramRelativeLayout)
-  {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {}
-    for (;;)
-    {
-      return;
-      int i = (int)(paramInt2 * 1.0F / paramInt1 * paramInt3);
-      if (i > 0) {}
-      try
-      {
-        ViewGroup.LayoutParams localLayoutParams = paramRelativeLayout.getLayoutParams();
-        localLayoutParams.height = i;
-        localLayoutParams.width = paramInt3;
-        paramRelativeLayout.setLayoutParams(localLayoutParams);
-        if (QLog.isColorLevel())
-        {
-          QLog.d("SpringHbCountDownDialog", 2, "outWidth:" + paramInt1 + ",outHeight:" + paramInt2 + ",calc height: " + i);
-          return;
-        }
-      }
-      catch (Throwable paramRelativeLayout)
-      {
-        QLog.e("SpringHbCountDownDialog", 1, paramRelativeLayout, new Object[0]);
-      }
-    }
-  }
-  
-  public aguj a(String paramString, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    if (QLog.isColorLevel()) {
-      QLog.i("SpringHbCountDownDialog", 2, "init -->,mBgUrl:" + this.jdField_a_of_type_JavaLangString + ",mCurrentTime:" + this.jdField_a_of_type_Long + ",mSpecifyTime:" + this.b);
-    }
-    return this;
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    long l = paramLong2 - paramLong1;
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SpringHbCountDownDialog", 2, "startCountDown:-->mCurrentTime:" + paramLong1 + ",mSpecifyTime" + paramLong2 + ",totalTime:" + l);
-      }
-      a();
-      this.jdField_a_of_type_AndroidOsCountDownTimer = new agum(this, l, 1000L);
-      this.jdField_a_of_type_AndroidOsCountDownTimer.start();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("SpringHbCountDownDialog", 1, localThrowable, new Object[0]);
-    }
-  }
-  
-  public void dismiss()
-  {
-    try
-    {
-      a();
-      super.dismiss();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("SpringHbCountDownDialog", 1, localThrowable, new Object[0]);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131302926) {
-      cancel();
-    }
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    super.requestWindowFeature(1);
-    paramBundle = View.inflate(getContext(), 2131495983, null);
-    setContentView(paramBundle, new ViewGroup.LayoutParams(bajq.a() - bajq.b(20.0F), -2));
-    setCanceledOnTouchOutside(true);
-    findViewById(2131302926).setOnClickListener(this);
-    int i = bajq.a();
-    int j = bajq.a(20.0F);
-    Drawable localDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130846257);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131312307));
-    ImageView localImageView = (ImageView)findViewById(2131302925);
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131309600);
-    DownloadParam localDownloadParam = new DownloadParam();
-    localDownloadParam.filePos = 0;
-    localDownloadParam.url = this.jdField_a_of_type_JavaLangString;
-    paramBundle.setVisibility(4);
-    setOnCancelListener(new aguk(this));
-    PreloadManager.a().a(localDownloadParam, new agul(this, localDrawable, i - j * 2, localRelativeLayout, localImageView, paramBundle));
-  }
-  
-  public void onDetachedFromWindow()
-  {
-    super.onDetachedFromWindow();
-    try
-    {
-      a();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("SpringHbCountDownDialog", 1, localThrowable, new Object[0]);
-    }
+    ((NewPhotoListActivity)this.a.a.get()).c.setClickable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aguj
  * JD-Core Version:    0.7.0.1
  */

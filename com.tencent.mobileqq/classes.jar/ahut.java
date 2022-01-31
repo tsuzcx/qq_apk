@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import java.util.Comparator;
 
 public class ahut
-  implements DialogInterface.OnClickListener
+  implements Comparator<ahwx>
 {
-  public ahut(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public ahut(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(ahwx paramahwx1, ahwx paramahwx2)
   {
-    this.a.s();
+    if ((paramahwx1.a < paramahwx2.a) || ((paramahwx1.a == paramahwx2.a) && (paramahwx1.b < paramahwx2.b))) {
+      return -1;
+    }
+    if ((paramahwx1.a != paramahwx2.a) || (paramahwx1.b != paramahwx2.b)) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahut
  * JD-Core Version:    0.7.0.1
  */

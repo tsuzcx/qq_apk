@@ -1,29 +1,63 @@
-class nya
-  extends nyf
+import org.json.JSONObject;
+
+public class nya
 {
-  nya(nxd paramnxd, int paramInt)
-  {
-    super(paramnxd, null);
-  }
+  public double a;
+  public int a;
+  public long a;
+  public String a;
+  public double b;
+  public int b;
+  public long b;
+  public String b;
+  public double c;
+  public long c;
+  public String c;
+  public double d;
   
-  void a(nyi paramnyi)
+  public static nya a(JSONObject paramJSONObject)
   {
-    if (paramnyi == null) {}
-    do
+    if (paramJSONObject == null) {
+      return null;
+    }
+    try
     {
-      return;
-      if (this.jdField_a_of_type_Int == 1)
+      nya localnya = new nya();
+      try
       {
-        paramnyi.onCommentListLoad(1, false, null, false, 2, 2);
-        return;
+        localnya.jdField_a_of_type_Int = paramJSONObject.optInt("showGesturesAdType");
+        localnya.jdField_a_of_type_Long = paramJSONObject.optLong("showGesturesAd_beginTime");
+        localnya.jdField_b_of_type_Long = paramJSONObject.optLong("showGesturesAd_endTime");
+        localnya.jdField_a_of_type_JavaLangString = paramJSONObject.optString("DragGoods");
+        localnya.jdField_a_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateH");
+        localnya.jdField_b_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateW");
+        localnya.jdField_c_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateX");
+        localnya.d = paramJSONObject.optDouble("DragGoodsCoordinateY");
+        localnya.jdField_b_of_type_JavaLangString = paramJSONObject.optString("LongPressColor");
+        localnya.jdField_c_of_type_Long = paramJSONObject.optLong("LongPressTime");
+        localnya.jdField_c_of_type_JavaLangString = paramJSONObject.optString("slideColor");
+        localnya.jdField_b_of_type_Int = paramJSONObject.optInt("validSlideLength");
+        return localnya;
       }
-    } while (this.jdField_a_of_type_Int != 2);
-    paramnyi.onCommentLoadMore(1, false, null, false, 2);
+      catch (Exception localException1)
+      {
+        paramJSONObject = localnya;
+      }
+    }
+    catch (Exception localException2)
+    {
+      for (;;)
+      {
+        paramJSONObject = null;
+      }
+    }
+    localException1.printStackTrace();
+    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nya
  * JD-Core Version:    0.7.0.1
  */

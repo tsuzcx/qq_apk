@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import aipj;
+import ajch;
 import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 import com.tencent.mobileqq.apollo.ApolloTicker;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class CmGameLauncher$7
   extends IApolloRunnableTask
 {
-  public CmGameLauncher$7(aipj paramaipj) {}
+  public CmGameLauncher$7(ajch paramajch) {}
   
   public String a()
   {
@@ -19,9 +19,9 @@ public class CmGameLauncher$7
   
   public void run()
   {
-    if ((aipj.a(this.this$0) != null) && (aipj.a(this.this$0).getRender() != null) && (aipj.a(this.this$0).getRender().mApolloTicker != null))
+    if ((ajch.a(this.this$0) != null) && (ajch.a(this.this$0).getRender() != null) && (ajch.a(this.this$0).getRender().mApolloTicker != null))
     {
-      ApolloRender.tickerPause(aipj.a(this.this$0).getRender().mApolloTicker.ticker);
+      ApolloRender.tickerPause(ajch.a(this.this$0).getRender().mApolloTicker.ticker);
       if (QLog.isColorLevel()) {
         QLog.d("cmgame_process.CmGameLauncher", 2, "mPauseTickerTask");
       }

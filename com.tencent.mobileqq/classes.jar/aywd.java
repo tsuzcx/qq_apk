@@ -1,14 +1,22 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
+import com.tencent.image.URLDrawableHandler;
 
-class aywd
+public class aywd
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public int a;
+  public URLDrawableHandler a;
+  public String a;
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUrlFromMsg:" + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",mStartDownOffset:" + this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aywd
  * JD-Core Version:    0.7.0.1
  */

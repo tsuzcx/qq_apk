@@ -1,27 +1,8 @@
 import android.view.View;
 
-class acwf
-  implements begw
+public abstract interface acwf
 {
-  acwf(acwe paramacwe, boolean paramBoolean, begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      if (acwe.a(this.jdField_a_of_type_Acwe) != null) {
-        acwe.a(this.jdField_a_of_type_Acwe, acwe.a(this.jdField_a_of_type_Acwe));
-      }
-      acwe.a(this.jdField_a_of_type_Acwe, "0X800A7F5", this.jdField_a_of_type_Boolean);
-      continue;
-      acwe.a(this.jdField_a_of_type_Acwe, "0X800A7F6", this.jdField_a_of_type_Boolean);
-    }
-  }
+  public abstract void a(View paramView, ayqm paramayqm, int paramInt1, int paramInt2);
 }
 
 

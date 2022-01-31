@@ -1,32 +1,49 @@
-import android.app.Dialog;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.widget.TipsBar;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
 
 public class aagx
   implements View.OnClickListener
 {
-  public aagx(ChatHistory paramChatHistory) {}
+  public aagx(AddFriendVerifyActivity paramAddFriendVerifyActivity, StringBuffer paramStringBuffer, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void onClick(View paramView)
   {
-    if (badq.d(BaseApplication.getContext()))
+    paramView = this.jdField_a_of_type_JavaLangStringBuffer.toString();
+    int i = 0;
+    String str;
+    if (i < AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).size())
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
-      if (this.a.jdField_a_of_type_Int == 0) {
-        this.a.l();
+      str = ((EditText)AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).get(i)).getText().toString().trim();
+      if (!"".equals(str)) {}
+    }
+    for (i = 1;; i = 0)
+    {
+      if (i != 0) {
+        bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131690059), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getTitleBarHeight());
       }
-      return;
+      for (;;)
+      {
+        axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("AddFriendVerifyActivity", 2, "reportClickEvent action: 0X80077B4  sourceId = " + this.jdField_a_of_type_Int + " subSourceId = " + this.b);
+        }
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
+          axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_Int, this.c);
+        return;
+        paramView = paramView.replaceFirst("\\$\\{answer\\}", Matcher.quoteReplacement(str));
+        i += 1;
+        break;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(paramView, null, "");
+      }
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(0);
-    this.a.c.setText(this.a.getString(2131626719));
   }
 }
 

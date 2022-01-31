@@ -1,32 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import Wallet.GetRandomHbIdiomRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.fragment.IdiomHbFragment;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.observer.BusinessObserver;
 
-class agzp
-  implements View.OnClickListener
+public class agzp
+  implements BusinessObserver
 {
-  private agzn jdField_a_of_type_Agzn;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public agzp(IdiomHbFragment paramIdiomHbFragment, agzq paramagzq) {}
   
-  agzp(agzn paramagzn, MqqHandler paramMqqHandler)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_Agzn = paramagzn;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Agzn.jdField_a_of_type_JavaLangString + " on enter");
+    if (paramInt == 27)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment.a = false;
+      paramBundle = (GetRandomHbIdiomRsp)paramBundle.getSerializable("rsp");
+      if (QLog.isColorLevel()) {
+        QLog.d("IdiomHbFragment", 2, "ReportHBGameRsp reportObserver:" + paramBoolean + "|" + paramBundle);
+      }
+      if ((!paramBoolean) || (paramBundle == null) || (paramBundle.suggestIdioms == null) || (paramBundle.suggestIdioms.size() <= 0)) {
+        break label170;
+      }
+      IdiomHbFragment.a().clear();
+      IdiomHbFragment.a().addAll(paramBundle.suggestIdioms);
+      if (QLog.isColorLevel()) {
+        QLog.d("IdiomHbFragment", 2, "getIdiomListFromSSO idiomListSize:" + IdiomHbFragment.a().size());
+      }
+      if (this.jdField_a_of_type_Agzq != null) {
+        this.jdField_a_of_type_Agzq.a(true, IdiomHbFragment.a());
+      }
+      IdiomHbFragment.a(System.currentTimeMillis());
     }
-    this.jdField_a_of_type_Agzn.jdField_a_of_type_Agzl.onEnter();
-    awqx.a(null, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 1, 0, "", "", "", "");
+    label170:
+    while (this.jdField_a_of_type_Agzq == null) {
+      return;
+    }
+    this.jdField_a_of_type_Agzq.a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agzp
  * JD-Core Version:    0.7.0.1
  */

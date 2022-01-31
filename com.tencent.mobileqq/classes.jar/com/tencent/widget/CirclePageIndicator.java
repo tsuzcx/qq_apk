@@ -50,7 +50,7 @@ public class CirclePageIndicator
   
   public CirclePageIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130968577);
+    this(paramContext, paramAttributeSet, 2131034113);
   }
   
   public CirclePageIndicator(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -60,11 +60,11 @@ public class CirclePageIndicator
       return;
     }
     Object localObject = getResources();
-    int i = ((Resources)localObject).getColor(2131099938);
-    int j = ((Resources)localObject).getColor(2131099937);
-    int k = ((Resources)localObject).getColor(2131099939);
-    float f1 = ((Resources)localObject).getDimension(2131165662);
-    float f2 = ((Resources)localObject).getDimension(2131165661);
+    int i = ((Resources)localObject).getColor(2131165523);
+    int j = ((Resources)localObject).getColor(2131165522);
+    int k = ((Resources)localObject).getColor(2131165524);
+    float f1 = ((Resources)localObject).getDimension(2131296734);
+    float f2 = ((Resources)localObject).getDimension(2131296733);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.CirclePageIndicator, paramInt, 0);
     this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(2, true);
     this.d = paramAttributeSet.getInt(0, 0);

@@ -12,7 +12,7 @@ public class RecentItemScheduleData
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super.a(paramQQAppInterface, paramContext);
-    if (AppSetting.c)
+    if (AppSetting.d)
     {
       paramQQAppInterface = new StringBuilder(24);
       paramQQAppInterface.append(this.mTitleName);

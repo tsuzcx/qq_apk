@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.mini.entry;
 
-import bace;
-import bbds;
+import bcgs;
+import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppUtils$4$1
   implements Runnable
 {
-  MiniAppUtils$4$1(MiniAppUtils.4 param4, bbds parambbds) {}
+  MiniAppUtils$4$1(MiniAppUtils.4 param4, bcgs parambcgs) {}
   
   public void run()
   {
     try
     {
       String str = this.this$0.val$filePath + "__temp";
-      bace.a(str, this.val$cgiState.d);
-      bace.b(str, this.this$0.val$filePath);
+      FileUtils.writeFile(str, this.val$cgiState.d);
+      FileUtils.moveFile(str, this.this$0.val$filePath);
       QLog.d("MiniAppUtils", 1, "--- prefetch cache data finished :" + this.this$0.val$requestUrl);
       return;
     }

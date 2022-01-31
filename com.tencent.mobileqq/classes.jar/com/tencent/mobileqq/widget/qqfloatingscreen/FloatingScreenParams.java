@@ -10,11 +10,10 @@ public class FloatingScreenParams
   implements Cloneable
 {
   static final int DEFAULT_LENGTH = 500;
-  static final float DEFAULT_SCREEN_RATIO = 0.5625F;
+  public static final float DEFAULT_SCREEN_RATIO = 0.5625F;
   public static final int SHAPE_HORIZONTAL = 1;
   public static final int SHAPE_SQUARE = 3;
   public static final int SHAPE_VERTICAL = 2;
-  private static float mScreenRatio = 0.5625F;
   private static boolean mShowPadding = true;
   private boolean mCanMove = true;
   private int mFloatingCenterX;
@@ -23,39 +22,14 @@ public class FloatingScreenParams
   private int mOuterPadding = 2;
   private int mRoundCorner = 12;
   private int mScreenLonger = 500;
+  private float mScreenRatio = 0.5625F;
   private int mShapeType = 1;
   private int mSquareLength = 300;
   private int mWidth;
   
   private FloatingScreenParams()
   {
-    Object localObject = BaseApplicationImpl.sApplication.getResources();
-    if (localObject != null)
-    {
-      this.mScreenLonger = ((Resources)localObject).getDimensionPixelSize(2131167206);
-      this.mSquareLength = ((Resources)localObject).getDimensionPixelSize(2131167208);
-      this.mRoundCorner = ((Resources)localObject).getDimensionPixelSize(2131167207);
-      this.mOuterPadding = ((Resources)localObject).getDimensionPixelSize(2131167209);
-    }
-    this.mWidth = this.mScreenLonger;
-    this.mHeight = ((int)(this.mWidth * mScreenRatio));
-    if (QLog.isColorLevel()) {
-      QLog.d("FSParams", 2, new Object[] { "param corner:", Integer.valueOf(this.mRoundCorner), ", pad:", Integer.valueOf(this.mOuterPadding), ", width:", Integer.valueOf(this.mWidth), ", height:", Integer.valueOf(this.mHeight) });
-    }
-    localObject = (WindowManager)BaseApplicationImpl.sApplication.getSystemService("window");
-    if (localObject != null)
-    {
-      i = ((WindowManager)localObject).getDefaultDisplay().getHeight();
-      if (i / 2 - 214 - this.mHeight / 2 <= 0) {
-        break label262;
-      }
-    }
-    label262:
-    for (int i = i / 2 - 214 - this.mHeight / 2;; i = 200)
-    {
-      this.mFloatingCenterY = i;
-      return;
-    }
+    initParam();
   }
   
   private void setCanMove(boolean paramBoolean)
@@ -141,6 +115,11 @@ public class FloatingScreenParams
     return this.mRoundCorner;
   }
   
+  public float getScreenRatio()
+  {
+    return this.mScreenRatio;
+  }
+  
   int getShapeType()
   {
     return this.mShapeType;
@@ -151,6 +130,37 @@ public class FloatingScreenParams
     return this.mWidth;
   }
   
+  public void initParam()
+  {
+    Object localObject = BaseApplicationImpl.sApplication.getResources();
+    if (localObject != null)
+    {
+      this.mScreenLonger = ((Resources)localObject).getDimensionPixelSize(2131298299);
+      this.mSquareLength = ((Resources)localObject).getDimensionPixelSize(2131298301);
+      this.mRoundCorner = ((Resources)localObject).getDimensionPixelSize(2131298300);
+      this.mOuterPadding = ((Resources)localObject).getDimensionPixelSize(2131298302);
+    }
+    this.mWidth = this.mScreenLonger;
+    this.mHeight = ((int)(this.mWidth * this.mScreenRatio));
+    if (QLog.isColorLevel()) {
+      QLog.d("FSParams", 2, new Object[] { "param corner:", Integer.valueOf(this.mRoundCorner), ", pad:", Integer.valueOf(this.mOuterPadding), ", width:", Integer.valueOf(this.mWidth), ", height:", Integer.valueOf(this.mHeight) });
+    }
+    localObject = (WindowManager)BaseApplicationImpl.sApplication.getSystemService("window");
+    if (localObject != null)
+    {
+      i = ((WindowManager)localObject).getDefaultDisplay().getHeight();
+      if (i / 2 - 214 - this.mHeight / 2 <= 0) {
+        break label217;
+      }
+    }
+    label217:
+    for (int i = i / 2 - 214 - this.mHeight / 2;; i = 200)
+    {
+      this.mFloatingCenterY = i;
+      return;
+    }
+  }
+  
   public void setFloatingCenterX(int paramInt)
   {
     this.mFloatingCenterX = paramInt;
@@ -159,6 +169,15 @@ public class FloatingScreenParams
   public void setFloatingCenterY(int paramInt)
   {
     this.mFloatingCenterY = paramInt;
+  }
+  
+  public void setScreenRatio(float paramFloat)
+  {
+    if (this.mScreenRatio != paramFloat)
+    {
+      this.mScreenRatio = paramFloat;
+      setShapeType(this.mShapeType);
+    }
   }
   
   void setShapeType(int paramInt)
@@ -180,10 +199,10 @@ public class FloatingScreenParams
       return;
     case 1: 
       setWidth(this.mScreenLonger);
-      setHeight((int)(this.mScreenLonger * mScreenRatio));
+      setHeight((int)(this.mScreenLonger * this.mScreenRatio));
       return;
     case 2: 
-      setWidth((int)(this.mScreenLonger * mScreenRatio));
+      setWidth((int)(this.mScreenLonger * this.mScreenRatio));
       setHeight(this.mScreenLonger);
       return;
     }

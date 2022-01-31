@@ -1,26 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CountDownLatch;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class aqpg
-  implements Callable<Bundle>
+  implements DialogInterface.OnCancelListener
 {
-  aqpg(aqpc paramaqpc, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  aqpg(aqox paramaqox) {}
   
-  public Bundle a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    aqkd localaqkd = new aqkd();
-    CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    Bundle[] arrayOfBundle = new Bundle[1];
-    localaqkd.a(this.jdField_a_of_type_Aqpc.a.c(), this.jdField_a_of_type_JavaLangString, this.b, this.c, new aqph(this, localaqkd, arrayOfBundle, localCountDownLatch), true, this.d);
-    localCountDownLatch.await();
-    return arrayOfBundle[0];
+    if (this.a.d) {
+      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqpg
  * JD-Core Version:    0.7.0.1
  */

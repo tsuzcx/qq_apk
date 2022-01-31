@@ -1,117 +1,65 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CameraEmotionData;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
 public class anbl
+  extends ampb<anbk>
 {
-  private static int a;
-  public static bhgj a;
-  
-  static
+  public static anbk a()
   {
-    jdField_a_of_type_Int = -1;
-    jdField_a_of_type_Bhgj = new bhgj();
+    return (anbk)ampm.a().a(261);
   }
   
-  private static int a()
+  public int a()
   {
-    Object localObject = (anbo)((QQAppInterface)bhfc.a()).getManager(333);
-    if (jdField_a_of_type_Int == -1)
-    {
-      jdField_a_of_type_Int = 1;
-      localObject = ((anbo)localObject).a();
-      if (localObject != null)
-      {
-        i = 0;
-        while (i < ((List)localObject).size())
-        {
-          int j = ((CameraEmotionData)((List)localObject).get(i)).emoId;
-          if (jdField_a_of_type_Int < j) {
-            jdField_a_of_type_Int = j;
-          }
-          i += 1;
-        }
-      }
-    }
-    int i = jdField_a_of_type_Int + 1;
-    jdField_a_of_type_Int = i;
-    return i;
+    return 261;
   }
   
-  private static CameraEmotionData a(String paramString1, String paramString2)
+  @NonNull
+  public anbk a(int paramInt)
   {
-    CameraEmotionData localCameraEmotionData = new CameraEmotionData();
-    localCameraEmotionData.uin = bhfc.a().getCurrentAccountUin();
-    localCameraEmotionData.emoPath = paramString1;
-    localCameraEmotionData.RomaingType = "needUpload";
-    localCameraEmotionData.strContext = paramString2;
-    return localCameraEmotionData;
+    return new anbk();
   }
   
-  private static CameraEmotionData a(String paramString1, String paramString2, String paramString3)
+  @Nullable
+  public anbk a(ampi[] paramArrayOfampi)
   {
-    CameraEmotionData localCameraEmotionData = new CameraEmotionData();
-    localCameraEmotionData.uin = bhfc.a().getCurrentAccountUin();
-    localCameraEmotionData.emoOriginalPath = paramString1;
-    localCameraEmotionData.thumbPath = paramString3;
-    localCameraEmotionData.RomaingType = "needUpload";
-    localCameraEmotionData.strContext = paramString2;
-    return localCameraEmotionData;
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
+      return anbk.a(paramArrayOfampi);
+    }
+    return null;
   }
   
-  public static void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
+  public Class<anbk> a()
   {
-    Object localObject = (QQAppInterface)bhfc.a();
-    if (localObject == null) {
-      return;
-    }
-    anbo localanbo = (anbo)((QQAppInterface)localObject).getManager(333);
-    localObject = (ajff)((QQAppInterface)localObject).a(160);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayList1.size())
-    {
-      CameraEmotionData localCameraEmotionData = a((String)paramArrayList1.get(i), (String)paramArrayList2.get(i));
-      localCameraEmotionData.emoId = a();
-      localanbo.c(localCameraEmotionData);
-      localArrayList.add(localCameraEmotionData);
-      i += 1;
-    }
-    ((ajff)localObject).notifyUI(4, true, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraEmoSendControl", 2, "doStep, insert completed");
-    }
-    jdField_a_of_type_Bhgj.a(String.valueOf(1011), new Object[] { localArrayList });
+    return anbk.class;
   }
   
-  public static void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
+  public void a(int paramInt)
   {
-    Object localObject = (QQAppInterface)bhfc.a();
-    anbo localanbo = (anbo)((QQAppInterface)localObject).getManager(333);
-    localObject = (ajff)((QQAppInterface)localObject).a(160);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayList1.size())
-    {
-      CameraEmotionData localCameraEmotionData = a((String)paramArrayList1.get(i), (String)paramArrayList2.get(i), (String)paramArrayList3.get(i));
-      localCameraEmotionData.emoId = a();
-      localanbo.c(localCameraEmotionData);
-      localArrayList.add(localCameraEmotionData);
-      i += 1;
-    }
-    ((ajff)localObject).notifyUI(4, true, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraEmoSendControl", 2, "doStep, insert completed");
-    }
-    jdField_a_of_type_Bhgj.a(String.valueOf(1011), new Object[] { localArrayList });
+    QLog.d("TencentDocConvertConfigProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
+  }
+  
+  public void a(anbk paramanbk) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anbl
  * JD-Core Version:    0.7.0.1
  */

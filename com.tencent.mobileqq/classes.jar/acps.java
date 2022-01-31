@@ -1,118 +1,22 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.support.annotation.IntRange;
-import android.support.annotation.Nullable;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.base.FriendShipLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public abstract class acps
-  implements acpx
+public class acps
+  implements DialogInterface.OnClickListener
 {
-  private acpu jdField_a_of_type_Acpu = new acpt(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
-  private FriendShipLayout jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout;
+  public acps(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public acps(Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseDirector", 2, "BaseDirector init");
-    }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-  }
-  
-  @Nullable
-  public static acpx a(@IntRange(from=0L, to=3L) int paramInt, Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseDirector", 2, "makeDirector type = " + paramInt);
-    }
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return null;
-    case 1: 
-      return new acph(paramActivity);
-    case 2: 
-      return new acpj(paramActivity);
-    }
-    return new acpn(paramActivity);
-  }
-  
-  public Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public FriendShipLayout a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseDirector", 2, "BaseDirector play");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout = new FriendShipLayout(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout.setBackListener(this.jdField_a_of_type_Acpu);
-      if (Build.VERSION.SDK_INT < 19) {
-        break label101;
-      }
-    }
-    label101:
-    for (int i = 67109888;; i = 1024)
-    {
-      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -1, 2, i, -2);
-      new FrameLayout.LayoutParams(-1, -1).gravity = 51;
-      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout, localLayoutParams);
-      return;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout.setVisibility(paramInt);
-    }
-  }
-  
-  public void a(acpy paramacpy) {}
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseDirector", 2, "BaseDirector cancel");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout.removeAllViews();
-    }
-    try
-    {
-      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout = null;
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
-      {
-        QLog.e("BaseDirector", 1, "cancel anim error");
-      }
-    }
+    this.a.n();
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nam.a(), "2", "0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acps
  * JD-Core Version:    0.7.0.1
  */

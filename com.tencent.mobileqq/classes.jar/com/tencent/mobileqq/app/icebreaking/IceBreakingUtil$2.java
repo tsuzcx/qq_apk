@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.icebreaking;
 
-import ajzm;
+import akny;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPoke;
 
@@ -11,7 +11,7 @@ public final class IceBreakingUtil$2
   
   public void run()
   {
-    ajzm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke);
+    akny.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke);
   }
 }
 

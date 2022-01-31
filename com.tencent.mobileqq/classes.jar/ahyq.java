@@ -1,29 +1,12 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.AvatarPendantAdapter.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import java.nio.ByteBuffer;
 
-public class ahyq
-  implements View.OnLayoutChangeListener
+public abstract interface ahyq
 {
-  ahyq(ahyo paramahyo) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    View localView = paramView.findViewById(2131299722);
-    TextView localTextView = (TextView)paramView.findViewById(2131299721);
-    paramInt1 = ((ImageView)paramView.findViewById(2131310925)).getRight() - localView.getWidth();
-    if (paramInt1 > 0) {
-      ThreadManager.getUIHandler().post(new AvatarPendantAdapter.2.1(this, localTextView, paramInt1));
-    }
-  }
+  public abstract void a(long paramLong, ByteBuffer paramByteBuffer);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahyq
  * JD-Core Version:    0.7.0.1
  */

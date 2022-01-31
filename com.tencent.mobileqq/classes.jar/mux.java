@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.av.video.effect.core.qqavimage.QQAVImageFilterGroup;
+import com.tencent.av.video.effect.core.qqavimage.QQAVImageGaussianBlurFilter;
 
-class mux
-  implements View.OnClickListener
+public class mux
+  extends QQAVImageFilterGroup
 {
-  mux(mut parammut) {}
-  
-  public void onClick(View paramView)
+  public mux()
   {
-    this.a.a(this.a.a, this.a.a.d);
+    super(null);
+    int i = 0;
+    while (i < 3)
+    {
+      addFilter(new QQAVImageGaussianBlurFilter());
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mux
  * JD-Core Version:    0.7.0.1
  */

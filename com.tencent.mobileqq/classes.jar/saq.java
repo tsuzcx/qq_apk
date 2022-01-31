@@ -1,20 +1,62 @@
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils.4;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class saq
-  implements rcu
+  implements View.OnClickListener
 {
-  public saq(WeishiUtils.4 param4) {}
+  public saq(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public void a(rcw paramrcw, int paramInt) {}
-  
-  public void a(rcw paramrcw, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    sai.b("PreloadCoverImgLog", "onFail request = " + paramrcw);
-  }
-  
-  public void a(rcw paramrcw, rcs paramrcs)
-  {
-    sai.b("PreloadCoverImgLog", "onSuccess request = " + paramrcw);
+    if (xeq.a("service_account_folder_publish_feed_button", 2000L)) {
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 23) {}
+    for (boolean bool = akwg.a(this.a);; bool = true)
+    {
+      if (!bool)
+      {
+        bbcv.b(this.a);
+        return;
+      }
+      paramView = new Intent();
+      paramView.putExtra("postUin", ServiceAccountFolderActivityNew.a(this.a));
+      paramView.putExtra("sourceFrom", 2);
+      String str;
+      if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).user.youZhan.size() > 0))
+      {
+        if (((CertifiedAccountMeta.StYouZanShop)ServiceAccountFolderActivityNew.a(this.a).user.youZhan.get(0)).type.get() > 1)
+        {
+          bool = true;
+          paramView.putExtra("has_shop", bool);
+        }
+      }
+      else
+      {
+        bgxy.a(this.a.getActivity(), paramView, 0);
+        str = ((CertifiedAccountMeta.StUser)ServiceAccountFolderActivityNew.a(this.a).user.get()).id.get();
+        if (ServiceAccountFolderActivityNew.a(this.a) != 0) {
+          break label217;
+        }
+      }
+      label217:
+      for (paramView = "auth_follow";; paramView = "auth_discover")
+      {
+        xhe.a(str, paramView, "post_clk", 0, 0, new String[] { "", "" });
+        return;
+        bool = false;
+        break;
+      }
+    }
   }
 }
 

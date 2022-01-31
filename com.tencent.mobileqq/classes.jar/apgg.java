@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
 
-class apgg
-  implements bbrx
+public class apgg
+  extends ajta
 {
-  apgg(apgd paramapgd) {}
+  public apgg(TroopFileSearchFragment paramTroopFileSearchFragment) {}
   
-  public void a(int paramInt)
+  protected void a(Object paramObject)
   {
-    if (paramInt == 2) {
-      this.a.a.c();
-    }
+    TroopFileSearchFragment.a(this.a).notifyDataSetChanged();
   }
 }
 

@@ -18,8 +18,8 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rme;
-import rmg;
+import ryv;
+import ryx;
 
 public class VVideo
   extends VComponentContainer<VVideoView>
@@ -27,7 +27,7 @@ public class VVideo
   public static String TAG = "VVideo";
   private String mCurrentVid;
   private String mCurrentVideoUrl;
-  private VComponentAdapter.OnVideoViewMethodListener mVideoViewMethodListener = new rme(this);
+  private VComponentAdapter.OnVideoViewMethodListener mVideoViewMethodListener = new ryv(this);
   
   public VVideo(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -117,7 +117,7 @@ public class VVideo
     }
   }
   
-  public rmg getVideoViewControlListener()
+  public ryx getVideoViewControlListener()
   {
     if ((getHostView() != null) && (((VVideoView)getHostView()).a() != null)) {
       return ((VVideoView)getHostView()).a();
@@ -410,7 +410,7 @@ public class VVideo
   public void setEndWithLastFrame(boolean paramBoolean)
   {
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().d_(paramBoolean);
+      getVideoViewControlListener().c_(paramBoolean);
     }
   }
   
@@ -429,7 +429,7 @@ public class VVideo
   public void setLoopBack(boolean paramBoolean)
   {
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().c_(paramBoolean);
+      getVideoViewControlListener().b_(paramBoolean);
     }
   }
   

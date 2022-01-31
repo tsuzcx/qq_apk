@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
-import anmd;
+import aocn;
 
 public class SystemAndEmojiAdapter$1
   implements Runnable
 {
-  public SystemAndEmojiAdapter$1(anmd paramanmd, EmoticonMainPanel paramEmoticonMainPanel) {}
+  public SystemAndEmojiAdapter$1(aocn paramaocn, EmoticonMainPanel paramEmoticonMainPanel) {}
   
   public void run()
   {

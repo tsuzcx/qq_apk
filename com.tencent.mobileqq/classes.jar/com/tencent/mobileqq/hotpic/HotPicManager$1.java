@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.hotpic;
 
-import aqfa;
-import atmp;
+import aqzc;
+import aukn;
 
 public class HotPicManager$1
   implements Runnable
 {
-  public HotPicManager$1(aqfa paramaqfa, HotPicSendData paramHotPicSendData1, HotPicSendData paramHotPicSendData2) {}
+  public HotPicManager$1(aqzc paramaqzc, HotPicSendData paramHotPicSendData1, HotPicSendData paramHotPicSendData2) {}
   
   public void run()
   {
-    aqfa.a(this.this$0).b(this.a);
+    aqzc.a(this.this$0).b(this.a);
     if (this.b != null) {
-      aqfa.a(this.this$0).b(this.b);
+      aqzc.a(this.this$0).b(this.b);
     }
   }
 }

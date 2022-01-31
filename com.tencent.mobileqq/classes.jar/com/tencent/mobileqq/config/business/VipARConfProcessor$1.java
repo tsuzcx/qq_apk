@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.config.business;
 
-import alzw;
-import amgm;
-import amgo;
+import ampm;
+import amwq;
+import amws;
 
 public class VipARConfProcessor$1
   implements Runnable
 {
   public void run()
   {
-    amgm localamgm = (amgm)alzw.a().a(499);
-    amgo localamgo = this.this$0;
-    if (localamgm != null) {}
+    amwq localamwq = (amwq)ampm.a().a(499);
+    amws localamws = this.this$0;
+    if (localamwq != null) {}
     for (boolean bool = true;; bool = false)
     {
-      amgo.a(localamgo, bool, localamgm, "loadConfig", "bean = null");
+      amws.a(localamws, bool, localamwq, "loadConfig", "bean = null");
       return;
     }
   }

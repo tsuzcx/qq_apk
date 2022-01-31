@@ -1,65 +1,57 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.widget.Button;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import java.util.ArrayList;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
 
-public class wlk
-  extends wlp
+class wlk
+  implements xgx<CertifiedAccountRead.StGetFeedListRsp>
 {
-  public wlk(MoveFileActivity paramMoveFileActivity) {}
+  wlk(wlj paramwlj, wpn paramwpn) {}
   
-  protected void a(boolean paramBoolean, int paramInt, ayoq paramayoq)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedListRsp paramStGetFeedListRsp)
   {
-    if (this.a.getActivity().isFinishing()) {
-      return;
-    }
-    this.a.b();
-    int i = this.a.getActivity().getResources().getDimensionPixelSize(2131167766);
-    if (paramBoolean)
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      MoveFileActivity.a(this.a).add(0, paramayoq);
-      MoveFileActivity.c(this.a, 0);
-      MoveFileActivity.a(this.a).setEnabled(true);
-      MoveFileActivity.a(this.a).setBackgroundResource(2130839019);
-      MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131689792);
-      MoveFileActivity.a(this.a).i(paramayoq);
-      MoveFileActivity.a(this.a).notifyDataSetChanged();
-      awqx.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "new_suc", 0, 0, this.a.jdField_a_of_type_Long + "", paramayoq.b, "", "");
-      bbmy.a(this.a.getActivity(), 2, ajjy.a(2131641114), 0).b(i);
-      return;
+      if ((!this.jdField_a_of_type_Wpn.c()) && (!this.jdField_a_of_type_Wpn.d())) {
+        break label122;
+      }
+      paramString = this.jdField_a_of_type_Wlj;
+      localList = paramStGetFeedListRsp.vecFeed.get();
+      localStCommonExt = paramStGetFeedListRsp.extInfo;
+      if (paramStGetFeedListRsp.isFinish.get() != 1) {
+        break label117;
+      }
+      paramBoolean = bool1;
+      paramString.a(localList, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
+      this.jdField_a_of_type_Wlj.b("share_key_continue_feeds", new wpi(paramStGetFeedListRsp.vecFeed.get()));
     }
-    switch (paramInt)
-    {
-    default: 
-      paramayoq = this.a.getString(2131630677);
-      bbmy.a(this.a.getActivity(), 1, paramayoq, 0).b(i);
-      return;
-    case -313: 
-      paramayoq = this.a.getString(2131631912);
-      awqx.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "repeat", 0, 0, this.a.jdField_a_of_type_Long + "", "1", "", "");
+    label117:
+    label122:
+    while (!this.jdField_a_of_type_Wpn.e()) {
+      for (;;)
+      {
+        return;
+        paramBoolean = false;
+      }
     }
-    for (;;)
+    paramString = this.jdField_a_of_type_Wlj;
+    List localList = paramStGetFeedListRsp.vecFeed.get();
+    COMM.StCommonExt localStCommonExt = paramStGetFeedListRsp.extInfo;
+    if (paramStGetFeedListRsp.isFinish.get() == 1) {}
+    for (paramBoolean = bool2;; paramBoolean = false)
     {
-      this.a.a(this.a.getResources().getString(2131632062), null, this.a.jdField_a_of_type_JavaLangString, paramayoq);
+      paramString.b(localList, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
       return;
-      paramayoq = this.a.getString(2131631917);
-      awqx.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, this.a.jdField_a_of_type_Long + "", "1", "", "");
-      continue;
-      paramayoq = this.a.getString(2131631915);
-      bbmy.a(this.a.getActivity(), 1, paramayoq, 0).b(i);
-      return;
-      paramayoq = this.a.getString(2131631914);
-      bbmy.a(this.a.getActivity(), 1, paramayoq, 0).b(i);
-      return;
-      paramayoq = this.a.getString(2131631918);
-      bbmy.a(this.a.getActivity(), 1, paramayoq, 0).b(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wlk
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,9 @@ import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.facedetect.FaceStatus;
-import com.tencent.ttpic.gameplaysdk.GamePlaySDK;
 import com.tencent.ttpic.model.FaceLusterData;
 import com.tencent.ttpic.openapi.PTDetectInfo;
+import com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector;
 import com.tencent.ttpic.util.SDKResourceLoader;
 import java.util.Arrays;
 
@@ -74,12 +74,12 @@ public class FaceLusterFilter
   private float getFov(float paramFloat)
   {
     if ((this.width == 0) || (this.height == 0)) {
-      return GamePlaySDK.getInstance().getFov();
+      return VideoPreviewFaceOutlineDetector.getFov();
     }
     if (((paramFloat > 89.0F) && (paramFloat < 91.0F)) || ((paramFloat > 269.0F) && (paramFloat < 271.0F))) {
-      return (float)(Math.toDegrees(Math.atan(Math.tan(Math.toRadians(GamePlaySDK.getInstance().getFov() / 2.0F)) * this.height / this.width)) * 2.0D);
+      return (float)(Math.toDegrees(Math.atan(Math.tan(Math.toRadians(VideoPreviewFaceOutlineDetector.getFov() / 2.0F)) * this.height / this.width)) * 2.0D);
     }
-    return GamePlaySDK.getInstance().getFov();
+    return VideoPreviewFaceOutlineDetector.getFov();
   }
   
   private void initGLResources()

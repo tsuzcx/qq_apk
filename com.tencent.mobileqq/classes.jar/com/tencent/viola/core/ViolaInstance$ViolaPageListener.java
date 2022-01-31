@@ -1,9 +1,12 @@
 package com.tencent.viola.core;
 
 import android.view.MotionEvent;
+import android.view.View;
 
 public abstract interface ViolaInstance$ViolaPageListener
 {
+  public abstract void onComponentTopIndex(View paramView, float paramFloat);
+  
   public abstract void onDispatchTouchEvent(String paramString, int paramInt1, MotionEvent paramMotionEvent, int paramInt2);
   
   public abstract void onScroll(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);

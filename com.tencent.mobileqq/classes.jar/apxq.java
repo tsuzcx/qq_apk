@@ -1,36 +1,18 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
 public class apxq
-  extends apxp
+  implements bcvx
 {
-  private ImageView a;
+  public apxq(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public apxq(Context paramContext, View paramView, ViewGroup paramViewGroup)
+  public void a(int paramInt)
   {
-    super(paramContext, paramView, paramViewGroup);
-    this.a = ((ImageView)paramView.findViewById(2131297502));
-  }
-  
-  public void a(FeedsItemData paramFeedsItemData)
-  {
-    this.itemView.setBackgroundDrawable(apyr.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130845983);
-    localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130845983);
-    this.a.setImageDrawable(URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions));
-    this.a.setOnClickListener(new apxr(this, paramFeedsItemData));
+    QfileEditBottomBar.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apxq
  * JD-Core Version:    0.7.0.1
  */

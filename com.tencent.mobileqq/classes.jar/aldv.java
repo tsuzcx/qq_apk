@@ -1,16 +1,23 @@
-public class aldv
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
+
+public final class aldv
+  implements Parcelable.Creator<ARCommonConfigInfo.NativeSoRes>
 {
-  public void a(aldx paramaldx, Object paramObject) {}
+  public ARCommonConfigInfo.NativeSoRes a(Parcel paramParcel)
+  {
+    return new ARCommonConfigInfo.NativeSoRes(paramParcel);
+  }
   
-  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject) {}
-  
-  public void b(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
+  public ARCommonConfigInfo.NativeSoRes[] a(int paramInt)
+  {
+    return new ARCommonConfigInfo.NativeSoRes[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aldv
  * JD-Core Version:    0.7.0.1
  */

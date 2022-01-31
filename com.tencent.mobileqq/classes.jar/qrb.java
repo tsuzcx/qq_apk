@@ -1,16 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.VideoInfo;
 
 public class qrb
-  extends omr
+  extends qjl
 {
-  public qrb(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  private VideoInfo a;
+  
+  public VideoInfo a()
   {
-    super(paramString);
+    return this.a;
   }
   
-  public void a(oml paramoml)
+  public String a()
   {
-    paramoml.b();
+    return this.a.g;
   }
 }
 

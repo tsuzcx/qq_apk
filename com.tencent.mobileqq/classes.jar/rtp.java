@@ -1,8 +1,6 @@
-class rtp
+public abstract interface rtp
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public abstract void a(rtq paramrtq);
 }
 
 

@@ -1,51 +1,57 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
 
 public class tlt
-  extends vpv
+  extends syv
 {
-  public static final String KEY = "EmptyPlaceHolderSegment";
-  private final int jdField_a_of_type_Int;
-  private unw jdField_a_of_type_Unw;
+  private static final String jdField_a_of_type_JavaLangString = sxp.a("StorySvc.feed_comment_list_batch_775");
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private int c;
   
-  public tlt(Context paramContext, int paramInt)
+  public tlt(List<String> paramList, boolean paramBoolean)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public View a(int paramInt, unw paramunw, ViewGroup paramViewGroup)
-  {
-    return paramunw.a();
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      this.c = i;
+      return;
+    }
   }
   
   public String a()
   {
-    return "EmptyPlaceHolderSegment";
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public unw a(int paramInt, ViewGroup paramViewGroup)
+  public syq a(byte[] paramArrayOfByte)
   {
-    paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
-    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.jdField_a_of_type_Int));
-    if (QQStoryContext.a()) {
-      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100756));
-    }
-    for (;;)
+    qqstory_service.RspBatchFeedComment localRspBatchFeedComment = new qqstory_service.RspBatchFeedComment();
+    try
     {
-      this.jdField_a_of_type_Unw = new unw(paramViewGroup);
-      return this.jdField_a_of_type_Unw;
-      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131099888));
+      localRspBatchFeedComment.mergeFrom(paramArrayOfByte);
+      return new tlu(localRspBatchFeedComment);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBatchFeedComment localReqBatchFeedComment = new qqstory_service.ReqBatchFeedComment();
+    List localList = a(this.jdField_a_of_type_JavaUtilList);
+    localReqBatchFeedComment.feed_id_list.set(localList);
+    localReqBatchFeedComment.source.set(this.c);
+    return localReqBatchFeedComment.toByteArray();
   }
 }
 

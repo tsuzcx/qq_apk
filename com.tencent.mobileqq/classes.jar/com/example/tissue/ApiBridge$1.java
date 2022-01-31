@@ -21,7 +21,7 @@ class ApiBridge$1
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("onMessage: ");
     ((StringBuilder)localObject1).append(paramObject);
-    Log.w("ApiBridge", ((StringBuilder)localObject1).toString());
+    Log.w("ApiBridge3", ((StringBuilder)localObject1).toString());
     try
     {
       paramObject = (HashMap)paramObject;
@@ -36,7 +36,7 @@ class ApiBridge$1
         ((StringBuilder)localObject2).append((String)localObject1);
         ((StringBuilder)localObject2).append(" module:");
         ((StringBuilder)localObject2).append(paramObject);
-        Log.w("ApiBridge", ((StringBuilder)localObject2).toString());
+        Log.w("ApiBridge3", ((StringBuilder)localObject2).toString());
         HdAsync.with(this.this$0).then(new ApiBridge.1.2(this, ThreadUtil.getLooper("v8Thread"), paramObject, (String)localObject1)).then(new ApiBridge.1.1(this, Looper.getMainLooper(), paramReply)).call();
         return;
       }
@@ -56,11 +56,13 @@ class ApiBridge$1
     }
     if ("__tissue_bridge_ready_".equals(localObject1))
     {
-      Logger.i("ApiBridge", "__tissue_bridge_ready_");
+      Logger.i("ApiBridge3", "__tissue_bridge_ready_");
       this.this$0.testJs2Dart();
-      return;
+      if (this.this$0.bridgeReadyListener != null) {
+        this.this$0.bridgeReadyListener.onBridgeReady(ApiBridge.access$200(this.this$0));
+      }
     }
-    if ("testjs2dart_message_recieved".equals(localObject1))
+    else if ("testjs2dart_message_recieved".equals(localObject1))
     {
       SpeedUtil.DEFAULT.event("testjs2dart finish");
       SpeedUtil.DEFAULT.report(new String[0]);

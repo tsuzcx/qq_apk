@@ -1,16 +1,18 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
 class qsg
-  extends omr
+  implements bfot
 {
-  qsg(qsf paramqsf, String paramString, AbsListView paramAbsListView, int paramInt)
-  {
-    super(paramString);
-  }
+  qsg(qrw paramqrw) {}
   
-  public void a(oml paramoml)
+  public void ak_()
   {
-    paramoml.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
+    if (qrw.b(this.a)) {
+      qrw.a(this.a).c();
+    }
+    if (qrw.a(this.a) != null) {
+      qrw.a(this.a).f();
+    }
   }
 }
 

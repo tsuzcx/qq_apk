@@ -1,57 +1,41 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardPresenter.5.1;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.Observable;
-import java.util.Observer;
+import android.content.Intent;
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import java.io.IOException;
 
 public class azfd
-  implements Observer
+  extends AsyncTask<Void, Void, String>
 {
-  azfd(azez paramazez) {}
+  public azfd(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  protected String a(Void... paramVarArgs)
   {
-    if ((azez.a(this.a) == null) || (azez.a(this.a) == null)) {}
-    do
+    try
     {
-      do
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null)
       {
-        return;
-      } while (!(paramObject instanceof azli));
-      paramObservable = (azli)paramObject;
-    } while (paramObservable.a != 1);
-    if (paramObservable.d == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramObservable = azez.a(this.a);
-      azez.a(this.a).a(azez.a(this.a).troopUin);
-      if (bool)
-      {
-        azez.a(this.a).hasSetNewTroopHead = true;
-        if (azez.a(this.a).hasSetNewTroopName) {
-          azez.a(this.a).isNewTroop = false;
+        bbdr.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramVarArgs);
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getIntent().getBooleanExtra("from_photo_wall", false)) {
+          return ajyc.a(2131715212);
         }
-        if (azez.a(this.a).isUseClassAvatar) {
-          azez.a(this.a).isUseClassAvatar = false;
-        }
-        if ((paramObservable != null) && (paramObservable.a != null))
-        {
-          paramObservable.a.hasSetNewTroopHead = true;
-          paramObservable.a.isNewTroop = azez.a(this.a).isNewTroop;
-          if (paramObservable.a.isUseClassAvatar()) {
-            paramObservable.a.setUseClassAvatar(false);
-          }
-          this.a.c();
-        }
+        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131695190) + " " + paramVarArgs;
       }
-      if (!azez.a(this.a).isResume()) {
-        break;
-      }
-      azez.a(this.a).runOnUiThread(new VisitorTroopCardPresenter.5.1(this, bool));
-      return;
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131695189);
+      return paramVarArgs;
     }
+    catch (IOException paramVarArgs)
+    {
+      return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131695189);
+    }
+    catch (OutOfMemoryError paramVarArgs) {}
+    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131695189);
+  }
+  
+  protected void a(String paramString)
+  {
+    bcpw.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getTitleBarHeight());
   }
 }
 

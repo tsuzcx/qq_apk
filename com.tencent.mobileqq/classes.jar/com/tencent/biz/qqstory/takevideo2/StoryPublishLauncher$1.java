@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.takevideo2;
 
-import urk;
-import vjq;
+import veg;
+import vwm;
 
 public class StoryPublishLauncher$1
   implements Runnable
 {
-  public StoryPublishLauncher$1(vjq paramvjq, boolean paramBoolean) {}
+  public StoryPublishLauncher$1(vwm paramvwm, boolean paramBoolean) {}
   
   public void run()
   {
-    boolean bool = vjq.c();
-    urk.a("Q.qqstory.publish.StoryPublishLauncher", "launchForResult, videoSoUsable=%s, filterOk=%s", Boolean.valueOf(this.a), Boolean.valueOf(bool));
+    boolean bool = vwm.c();
+    veg.a("Q.qqstory.publish.StoryPublishLauncher", "launchForResult, videoSoUsable=%s, filterOk=%s", Boolean.valueOf(this.a), Boolean.valueOf(bool));
   }
 }
 

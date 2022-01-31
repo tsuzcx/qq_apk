@@ -1,36 +1,25 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bdnr
+class bdnr
+  implements bdny
 {
-  public abstract void init(Context paramContext);
+  bdnr(bdno parambdno, bdny parambdny) {}
   
-  public abstract boolean isMiniProcess(String paramString);
+  public void a()
+  {
+    QLog.d("OpenSdkVirtualManager", 1, "updatePreAuthFromServer onSuccess");
+    this.jdField_a_of_type_Bdny.a();
+  }
   
-  public abstract void onAppBackground(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
-  
-  public abstract void onAppForeground(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
-  
-  public abstract void onAppStart(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
-  
-  public abstract void onAppStop(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
-  
-  public abstract void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo);
-  
-  public abstract void preloadMiniApp(Bundle paramBundle);
-  
-  public abstract void registerProcessInfo(List<bdns> paramList);
-  
-  public abstract void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver);
+  public void a(int paramInt, String paramString)
+  {
+    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "updatePreAuthFromServer onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
+    this.jdField_a_of_type_Bdny.a(paramInt, paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdnr
  * JD-Core Version:    0.7.0.1
  */

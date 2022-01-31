@@ -1,45 +1,70 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.NewFriendManager.3.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-class akbr
-  implements akae
+public class akbr
+  extends ajxl
 {
-  akbr(akbq paramakbq, String paramString, FMTransC2CMsgInfo paramFMTransC2CMsgInfo, int paramInt, byte[] paramArrayOfByte) {}
+  akbr(akbo paramakbo) {}
   
-  public ToServiceMsg a()
+  protected void onAddFriend(String paramString)
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Akbq.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.createToServiceMsg("MessageSvc.PbSendMsg");
-    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("msgsize", 0L);
-    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uniseq);
-    localToServiceMsg.extraData.putInt("SEND_MSG_CMD_MSG_TYPE", 1);
-    localToServiceMsg.extraData.putString("uuid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uuid);
-    localToServiceMsg.extraData.putByte("cmd", (byte)0);
-    localToServiceMsg.extraData.putByte("keyType", (byte)0);
-    localToServiceMsg.extraData.putInt("busiType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.busiType);
-    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("queueSeq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.queueSeq);
-    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.sessionId);
-    localToServiceMsg.extraData.putInt("random", awbk.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid));
-    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq));
-    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 13);
-    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_a_of_type_Int);
-    awbn localawbn = new awbn();
-    localawbn.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.subCmd;
-    localawbn.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    msg_svc.PbSendMsgReq localPbSendMsgReq = awbg.a(this.jdField_a_of_type_Akbq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 13, this.jdField_a_of_type_JavaLangString, localawbn, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq, awbk.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid));
-    akbq.a(this.jdField_a_of_type_Akbq, localPbSendMsgReq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo);
-    akbq.a(this.jdField_a_of_type_Akbq, localPbSendMsgReq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo, localawbn);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.entity != null) {
-      localToServiceMsg.extraData.putLong("tmpSessionType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.entity.tmpSessionType);
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      localObject = this.a.b();
+    } while (((ArrayList)localObject).isEmpty());
+    Object localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      atyy localatyy = (atyy)((Iterator)localObject).next();
+      if ((localatyy instanceof atyt))
+      {
+        int i = ((atyt)localatyy).a.structMsg.msg.sub_type.get();
+        String str = ((atyt)localatyy).a.senderuin;
+        if ((i == 13) && (paramString.equals(str)))
+        {
+          ((Iterator)localObject).remove();
+          akbo.a(this.a).a().b(ajsf.M, 0, ((atyt)localatyy).a.uniseq, false);
+        }
+      }
     }
-    localToServiceMsg.putWupBuffer(localPbSendMsgReq.toByteArray());
-    localToServiceMsg.extraData.putLong(aofk.class.getName(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.observerSeq);
-    return localToServiceMsg;
+    akbo.a(this.a).sendEmptyMessage(2);
+  }
+  
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (akbo.a(this.a) != null)) {
+      akbo.a(this.a).sendEmptyMessage(2);
+    }
+  }
+  
+  protected void onGetPushRecommend(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (akbo.a(this.a) != null)) {
+      akbo.a(this.a).sendEmptyMessage(2);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    akbo.a(this.a).runOnUiThread(new NewFriendManager.3.1(this, paramBoolean));
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (akbo.a(this.a) != null)) {
+      akbo.a(this.a).sendEmptyMessage(2);
+    }
   }
 }
 

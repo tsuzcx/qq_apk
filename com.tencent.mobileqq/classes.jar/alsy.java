@@ -1,19 +1,10 @@
-import android.content.Context;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-
-public class alsy
-  implements alsv
+public abstract interface alsy
 {
-  public void a(Context paramContext, ColorNote paramColorNote)
-  {
-    String str = paramColorNote.getSubType();
-    paramColorNote = paramColorNote.getReserve();
-    bfhn.a(paramContext, "", Long.parseLong(str), paramColorNote);
-  }
+  public abstract Object a(int paramInt, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alsy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,77 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.21;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x74f.oidb_cmd0x74f.RspBody;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.widget.RedDotTextView;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class afnr
-  extends mmn
+  implements bcrn
 {
-  public afnr(ChatHistoryTroopMemberFragment.21 param21) {}
+  public afnr(TroopActivity paramTroopActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    do
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.b();
+    }
+    if (this.a.b != 2)
     {
+      switch (paramInt2)
+      {
+      default: 
+        axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+        axqw.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
+      }
       for (;;)
       {
+        this.a.a(this.a.jdField_a_of_type_Int);
+        this.a.jdField_a_of_type_Bfmt.sendEmptyMessage(1234);
+        TroopActivity.a(this.a, paramInt2);
         return;
-        try
-        {
-          paramBundle = new oidb_cmd0x74f.RspBody();
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
-          {
-            ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.range.get());
-            ChatHistoryTroopMemberFragment.c(this.a.this$0);
-            ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
-            return;
-          }
-        }
-        catch (Exception paramArrayOfByte) {}
+        axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+        axqw.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
+        continue;
+        axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "discuss", "contact_discuss_tab", 0, 0, "", "", "", "");
+        axqw.b(this.a.app, "CliOper", "", "", "0X8006621", "0X8006621", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 1;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.history.BaseFragment", 2, "initListView, get0x74f：failed");
+    }
+    switch (paramInt2)
+    {
+    default: 
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {
+        break;
+      }
+    }
+    for (String str = "0";; str = "1")
+    {
+      axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
+      axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+      this.a.jdField_a_of_type_Int = 1;
+      break;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {}
+      for (str = "0";; str = "1")
+      {
+        axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
+        axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 1;
+        break;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).a()) {}
+      for (str = "0";; str = "1")
+      {
+        axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grprecom", 0, 0, "", str, "", "");
+        axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_recom", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
+        break;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afnr
  * JD-Core Version:    0.7.0.1
  */

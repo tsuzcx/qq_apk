@@ -1,14 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.15.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class abdr
-  extends asju
+  extends atzl
 {
-  public abdr(NearbyActivity paramNearbyActivity) {}
+  public abdr(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  protected void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a.sendEmptyMessageDelayed(2, 0L);
+    ThreadManager.post(new FriendProfileCardActivity.15.1(this), 5, null, false);
   }
 }
 

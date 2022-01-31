@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aiyu;
-import atmq;
+import ajmw;
+import auko;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloGameRankData;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ final class ApolloGameUtil$8
     {
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameRankData);
-      ((aiyu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager(), localArrayList);
+      ((ajmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager(), localArrayList);
     }
   }
 }

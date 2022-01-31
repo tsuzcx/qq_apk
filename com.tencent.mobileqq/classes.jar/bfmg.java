@@ -1,17 +1,18 @@
-import android.support.annotation.NonNull;
-import cooperation.qqreader.net.BaseCgiTask;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public abstract interface bfmg
+public class bfmg
+  implements Animation.AnimationListener
 {
-  public abstract void a(@NonNull bfmi parambfmi);
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public abstract void a(BaseCgiTask paramBaseCgiTask, String paramString);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void b(@NonNull bfmi parambfmi);
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfmg
  * JD-Core Version:    0.7.0.1
  */

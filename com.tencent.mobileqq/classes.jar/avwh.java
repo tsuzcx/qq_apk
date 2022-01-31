@@ -1,26 +1,33 @@
-class avwh
+public class avwh
+  implements Cloneable
 {
-  int jdField_a_of_type_Int;
-  CharSequence jdField_a_of_type_JavaLangCharSequence;
-  int b;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
   
-  public avwh(CharSequence paramCharSequence)
+  public avwh(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = -1;
-    this.b = 0;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public avwh(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public avwh a()
   {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    return (avwh)super.clone();
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int + " failCount:" + this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avwh
  * JD-Core Version:    0.7.0.1
  */

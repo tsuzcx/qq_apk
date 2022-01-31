@@ -1,32 +1,46 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
-class ajtn
-  implements mgp
+public class ajtn
+  extends ayvz
 {
-  private final azrn jdField_a_of_type_Azrn;
-  private final WeakReference<ajtg> jdField_a_of_type_JavaLangRefWeakReference;
-  private final long[] jdField_a_of_type_ArrayOfLong;
+  WeakReference<ajto> a;
   
-  ajtn(ajtg paramajtg, azrn paramazrn, long[] paramArrayOfLong)
+  public ajtn(ajto paramajto)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramajtg);
-    this.jdField_a_of_type_Azrn = paramazrn;
-    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
+    this.a = new WeakReference(paramajto);
   }
   
-  public void a(int paramInt1, mgr parammgr, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    parammgr = (ajtg)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((parammgr != null) && (parammgr.app != null))
-    {
-      if (paramInt1 == 0) {
-        parammgr.app.a().a(1, this.jdField_a_of_type_Azrn.a, this.jdField_a_of_type_Azrn.b, this.jdField_a_of_type_ArrayOfLong, 2);
+    ayqm localayqm = (ayqm)paramMessage.obj;
+    if (localayqm.b == 35) {
+      switch (paramMessage.what)
+      {
       }
-      return;
     }
-    QLog.e("TroopHandler", 1, "WeakGVideoGrayConfigListener#onResult get weakAppReference " + parammgr);
+    do
+    {
+      do
+      {
+        return;
+        paramMessage = localayqm.a;
+        if ((this.a != null) && (this.a.get() != null))
+        {
+          ((ajto)this.a.get()).b(paramMessage);
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("CardHandler", 2, "CardTransProcessorHandler no callback");
+      return;
+      if ((this.a != null) && (this.a.get() != null))
+      {
+        ((ajto)this.a.get()).d();
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("CardHandler", 2, "CardTransProcessorHandler error no callback");
   }
 }
 

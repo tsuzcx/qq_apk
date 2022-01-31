@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.newshare.model;
 
-import ten;
-import tep;
+import trj;
+import trl;
 
 public class JobExecutor$4
   implements Runnable
 {
-  public JobExecutor$4(tep paramtep, ten paramten) {}
+  public JobExecutor$4(trl paramtrl, trj paramtrj) {}
   
   public void run()
   {

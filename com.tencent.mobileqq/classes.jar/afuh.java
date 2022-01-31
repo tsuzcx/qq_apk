@@ -1,20 +1,29 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.qphone.base.util.QLog;
 
-class afuh
-  extends GestureDetector.SimpleOnGestureListener
+public class afuh
+  implements View.OnClickListener
 {
-  afuh(afug paramafug) {}
+  public afuh(ImgPreviewAdapter paramImgPreviewAdapter) {}
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (afug.a(this.a) != null)
+    EmoticonFromGroupEntity localEmoticonFromGroupEntity = this.a.a(ImgPreviewAdapter.a(this.a).getCurrentItem());
+    if (localEmoticonFromGroupEntity != null)
     {
-      afug.a(this.a).onClick(afug.a(this.a));
-      return true;
+      if (localEmoticonFromGroupEntity.msg != null)
+      {
+        ImgPreviewAdapter.a(this.a).a(ImgPreviewAdapter.a(this.a), localEmoticonFromGroupEntity.msg, paramView);
+        return;
+      }
+      QLog.e("ImgPreviewAdapter.msgnull", 1, "img click msg is null.");
+      return;
     }
-    return false;
+    QLog.e("ImgPreviewAdapter.emonull", 1, "img click emo is null.");
   }
 }
 

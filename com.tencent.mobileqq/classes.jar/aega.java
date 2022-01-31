@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
 
-class aega
-  extends ajjh
+public abstract interface aega
 {
-  aega(aefv paramaefv) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  protected void onAddFriend(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddFriend : " + paramString);
-    }
-    if ((this.a.v()) && (paramString != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
-      aefv.a(this.a);
-    }
-  }
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

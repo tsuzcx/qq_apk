@@ -1,8 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-
-public abstract interface qxt
+abstract interface qxt
 {
-  public abstract void a(BaseData paramBaseData);
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

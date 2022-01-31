@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class aepl
-  implements Parcelable.Creator<ZhituResponse>
+class aepl
+  implements DialogInterface.OnClickListener
 {
-  public ZhituResponse a(Parcel paramParcel)
-  {
-    return new ZhituResponse(paramParcel);
-  }
+  aepl(aepg paramaepg, boolean paramBoolean, bcir parambcir) {}
   
-  public ZhituResponse[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new ZhituResponse[paramInt];
+    this.jdField_a_of_type_Aepg.ab = true;
+    aepg.d(this.jdField_a_of_type_Aepg, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Aepg.aa = true;
+    if ((this.jdField_a_of_type_Bcir.a()) && (!this.jdField_a_of_type_Bcir.b())) {
+      axqw.b(this.jdField_a_of_type_Aepg.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
+    }
   }
 }
 

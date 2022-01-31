@@ -1,35 +1,29 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.TMG.utils.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import java.lang.ref.WeakReference;
 
 class ailz
-  implements EIPCResultCallback
+  implements View.OnLongClickListener
 {
-  ailz(aily paramaily) {}
+  private WeakReference<ailu> a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public ailz(ailu paramailu)
   {
-    if (paramEIPCResult.code == 0)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("key_game_friUin");
-      QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] current game friendUin:" + paramEIPCResult + ",mCurrentFriUin:" + aily.a(this.a));
-      if (!aily.a(this.a).equals(paramEIPCResult))
-      {
-        aily.a(this.a).removeMessages(1);
-        aily.a(this.a).sendEmptyMessage(1);
-      }
-      return;
+    this.a = new WeakReference(paramailu);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    ailu localailu = (ailu)this.a.get();
+    if (localailu != null) {
+      return localailu.onLongClick(paramView);
     }
-    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] game is not exist. exit room");
-    aily.a(this.a).removeMessages(1);
-    aily.a(this.a).sendEmptyMessage(1);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ailz
  * JD-Core Version:    0.7.0.1
  */

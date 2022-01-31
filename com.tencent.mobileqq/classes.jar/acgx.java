@@ -1,39 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
-public class acgx
-  implements View.OnClickListener
+class acgx
+  implements DialogInterface.OnClickListener
 {
-  public acgx(ActivateFriendView paramActivateFriendView) {}
+  acgx(acgv paramacgv, bbgg parambbgg) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = (ActivateFriendViewItem)paramView;
-    if (paramView.a)
-    {
-      ActivateFriendView.a(this.a);
-      if (paramView.a) {
-        break label75;
-      }
-    }
-    label75:
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      if (ActivateFriendView.a(this.a) != null) {
-        ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
-      }
-      return;
-      ActivateFriendView.b(this.a);
-      break;
-    }
+    axqw.b(this.jdField_a_of_type_Acgv.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Acgv.a.a, "", "", "");
+    this.jdField_a_of_type_Bbgg.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acgx
  * JD-Core Version:    0.7.0.1
  */

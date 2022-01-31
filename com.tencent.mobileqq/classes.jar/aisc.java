@@ -1,134 +1,83 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc.1;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc.2;
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Vector;
 
-public class aisc
+class aisc
+  extends Handler
 {
-  private static final Set<String> a = new SpriteCommFunc.1();
-  
-  public static void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString)
+  aisc(airz paramairz, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[stopTaskByMsg], msgId", Long.valueOf(paramLong), ",from:", paramString });
-    }
-    if (!aisl.c(paramQQAppInterface)) {}
-    do
-    {
-      do
-      {
-        return;
-        paramQQAppInterface = aisl.a(paramQQAppInterface);
-      } while (paramQQAppInterface == null);
-      paramQQAppInterface = paramQQAppInterface.a();
-    } while (paramQQAppInterface == null);
-    paramString = paramQQAppInterface.a(paramLong);
-    if (paramString == null)
-    {
-      QLog.w("cmshow_scripted_SpriteCommFunc", 2, "task NOT exist, msgId:" + paramLong);
-      return;
-    }
-    ThreadManager.post(new SpriteCommFunc.2(paramQQAppInterface, paramString), 5, null, true);
+    super(paramLooper);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[stopAllTask]", ",from:", paramString });
-    }
-    if (!aisl.c(paramQQAppInterface)) {
-      return;
-    }
-    try
+    if (paramMessage.what == airz.jdField_a_of_type_Int)
     {
-      paramString = new JSONObject();
-      paramString.put("type", 0);
-      paramQQAppInterface = aisl.a(paramQQAppInterface);
-      if ((paramQQAppInterface == null) || (paramQQAppInterface.a() == null))
-      {
-        QLog.e("cmshow_scripted_SpriteCommFunc", 1, "[stopAllTask], spriteContext or getSurfaceView is null.");
-        return;
+      paramMessage = (bbqp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71);
+      if (paramMessage != null) {
+        localObject = new ArrayList(airz.jdField_a_of_type_JavaUtilVector.size());
       }
     }
-    catch (Throwable paramQQAppInterface)
+    while (paramMessage.what != airz.jdField_b_of_type_Int)
     {
-      QLog.e("cmshow_scripted_SpriteCommFunc", 1, "[stopAllTask],", paramQQAppInterface);
-      return;
-    }
-    ApolloCmdChannel.getChannel(paramQQAppInterface.a()).callbackFromRequest(paramQQAppInterface.a().getLuaState(), 0, "sc.stop_all_task.local", paramString.toString());
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[showOrHideSprite]", ",from:", paramString });
-    }
-    if (!aisl.c(paramQQAppInterface)) {}
-    do
-    {
-      aisi localaisi;
-      do
+      try
       {
-        do
+        Iterator localIterator = airz.jdField_a_of_type_JavaUtilVector.iterator();
+        while (localIterator.hasNext())
         {
-          return;
-        } while (!a.contains(paramString));
-        localaisi = aisl.a(paramQQAppInterface);
-      } while (localaisi == null);
-      aisd localaisd = aisl.a(paramQQAppInterface);
-      if (localaisd != null) {
-        localaisd.a(paramString, paramBoolean);
+          String str = (String)localIterator.next();
+          if (!((ArrayList)localObject).contains(str)) {
+            ((ArrayList)localObject).add(Long.valueOf(Long.parseLong(str)));
+          }
+        }
+        paramMessage.a((ArrayList)localObject, "troop");
       }
-      if (aisl.a(paramQQAppInterface))
+      catch (Exception localException) {}
+      for (;;)
       {
-        QLog.i("cmshow_scripted_SpriteCommFunc", 1, "showOrHideSprite double should hide");
+        airz.jdField_a_of_type_JavaUtilVector.clear();
+        if (airz.jdField_b_of_type_JavaUtilVector.size() > 0)
+        {
+          paramMessage.a((String[])airz.jdField_b_of_type_JavaUtilVector.toArray(new String[0]));
+          airz.jdField_b_of_type_JavaUtilVector.clear();
+        }
         return;
+        if ((airz.a(this.a) != null) && (airz.a(this.a).apolloLocalTS != airz.a(this.a).apolloServerTS) && (!((ArrayList)localObject).contains(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()))) {
+          ((ArrayList)localObject).add(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin()));
+        }
       }
-      paramQQAppInterface = localaisi.a();
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.a(paramBoolean, false, paramString);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool1 = aisl.b(paramQQAppInterface);
-    boolean bool2 = aisl.a(paramQQAppInterface);
-    return (bool1) || (bool2);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[isSpriteActive]", ",from:", paramString });
     }
-    if (!aisl.c(paramQQAppInterface)) {}
-    do
-    {
-      do
+    Object localObject = (String)paramMessage.obj;
+    if (paramMessage.arg1 == 1) {
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!airz.jdField_a_of_type_JavaUtilVector.contains(localObject)))
       {
-        return false;
-        paramQQAppInterface = aisl.a(paramQQAppInterface);
-      } while (paramQQAppInterface == null);
-      paramQQAppInterface = paramQQAppInterface.a();
-    } while (paramQQAppInterface == null);
-    return paramQQAppInterface.a();
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {}
-    do
+        airz.jdField_a_of_type_JavaUtilVector.add(localObject);
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloManager", 2, "addToBulkPullMap-->dress uin:" + (String)localObject);
+        }
+      }
+    }
+    for (;;)
     {
-      return false;
-      paramQQAppInterface = aisl.a(paramQQAppInterface);
-    } while ((paramQQAppInterface == null) || (!paramQQAppInterface.a(paramString)));
-    return true;
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(airz.jdField_a_of_type_Int);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(airz.jdField_a_of_type_Int, 200L);
+      return;
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!airz.jdField_b_of_type_JavaUtilVector.contains(localObject)))
+      {
+        airz.jdField_b_of_type_JavaUtilVector.add(localObject);
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloManager", 2, "addToBulkPullMap-->info uin:" + (String)localObject);
+        }
+      }
+    }
   }
 }
 

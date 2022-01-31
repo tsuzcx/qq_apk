@@ -1,164 +1,80 @@
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
-import android.os.Build;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Locale;
-import org.json.JSONException;
-import org.json.JSONObject;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFilePreviewRspBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 
-public class xaw
-  extends WebViewPlugin
+public abstract class xaw
+  extends mxm
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static xaw jdField_a_of_type_Xaw;
-  private static boolean jdField_a_of_type_Boolean;
-  private static boolean b;
-  protected final byte a;
-  protected SensorManager a;
-  protected xax a;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[4];
-  
-  public xaw()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Byte = 3;
-    if (QLog.isColorLevel()) {
-      QLog.d("ARTransparentWebviewPlugin", 2, "init");
-    }
-    jdField_a_of_type_Xaw = this;
-  }
-  
-  public static final void b()
-  {
-    b = true;
-    QLog.d("ARTransparentWebviewPlugin", 1, "WebViewTime startRender. isStartRender = " + b);
-    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-      jdField_a_of_type_Xaw.callJs(jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true) });
-    }
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARTransparentWebviewPlugin", 1, "stop motion");
-    }
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager != null) && (this.jdField_a_of_type_Xax != null))
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Xax);
-      this.jdField_a_of_type_Xax = null;
+      a(false, paramInt, null, null, 0, 0, null, null, null, null, paramBundle);
+      return;
     }
-    jdField_a_of_type_Boolean = false;
-    b = false;
-  }
-  
-  public void a(String paramString)
-  {
-    jdField_a_of_type_JavaLangString = paramString;
-    QLog.d("ARTransparentWebviewPlugin", 1, "WebViewTime notifyRenderReady. callbackStartRender = " + jdField_a_of_type_JavaLangString);
-    paramString = this.mRuntime.a();
-    if ((paramString != null) && ((paramString instanceof ScanTorchActivity))) {
-      ((ScanTorchActivity)paramString).i();
-    }
-  }
-  
-  public final boolean a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARTransparentWebviewPlugin", 1, "start motion");
-    }
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)BaseApplication.getContext().getSystemService("sensor"));
-    }
-    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager;
-    int i;
-    if (akmu.a())
+    Object localObject = new oidb_0x6d8.RspBody();
+    try
     {
-      i = 15;
-      localObject = ((SensorManager)localObject).getSensorList(i);
-      Sensor localSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4);
-      if ((((List)localObject).size() <= 0) || (localSensor == null)) {
-        break label211;
+      ((oidb_0x6d8.RspBody)localObject).mergeFrom(paramArrayOfByte);
+      localObject.toString();
+      if (((oidb_0x6d8.RspBody)localObject).file_preview_rsp.has()) {
+        break label106;
       }
-      localObject = (Sensor)((List)localObject).get(0);
-      if (this.jdField_a_of_type_Xax != null) {
-        a();
-      }
-      this.jdField_a_of_type_Xax = new xax(this, (byte)3, paramString);
-      if (!Build.MODEL.equalsIgnoreCase("Nexus 5X")) {
-        break label194;
-      }
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Xax, (Sensor)localObject, 3);
-      label141:
       if (QLog.isColorLevel()) {
-        QLog.d("ARTransparentWebviewPlugin", 2, "support gyroscope");
+        QLog.d("TroopFileProtocol", 2, "no file_preview rsp.");
       }
+      a(false, paramInt, null, null, 0, 0, null, null, null, null, paramBundle);
+      return;
     }
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      jdField_a_of_type_Boolean = true;
-      QLog.d("ARTransparentWebviewPlugin", 1, "WebViewTime startMotion. isRenderReady = " + jdField_a_of_type_Boolean);
-      return true;
-      i = 11;
-      break;
-      label194:
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Xax, (Sensor)localObject, 1);
-      break label141;
-      label211:
-      callJs(paramString, new String[] { "false" });
-      if (QLog.isColorLevel()) {
-        QLog.d("ARTransparentWebviewPlugin", 2, "not support gyroscope");
-      }
+      paramArrayOfByte = paramBundle;
     }
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARTransparentWebviewPlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
-    }
-    if ("sensor".equals(paramString2))
+    a(false, paramInt, null, null, 0, 0, null, null, null, null, paramArrayOfByte);
+    return;
+    label106:
+    paramArrayOfByte = (oidb_0x6d8.GetFilePreviewRspBody)((oidb_0x6d8.RspBody)localObject).file_preview_rsp.get();
+    if (!paramArrayOfByte.bytes_download_url.has())
     {
-      if ("startMotion".equals(paramString3)) {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-          QLog.d("ARTransparentWebviewPlugin", 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
-          return a(paramJsBridgeListener.optString("callback"));
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          paramJsBridgeListener.printStackTrace();
-          return false;
-        }
-      }
-      if ("stopMotion".equals(paramString3))
+      a(false, paramInt, null, null, 0, 0, null, null, null, null, paramBundle);
+      return;
+    }
+    int i = paramArrayOfByte.int32_ret_code.get();
+    localObject = paramArrayOfByte.str_ret_msg.get();
+    String str1 = paramArrayOfByte.str_client_wording.get();
+    int j = paramArrayOfByte.int32_server_ip.get();
+    int k = paramArrayOfByte.int32_server_port.get();
+    String str2 = paramArrayOfByte.str_download_dns.get();
+    ByteStringMicro localByteStringMicro1 = paramArrayOfByte.bytes_download_url.get();
+    ByteStringMicro localByteStringMicro2 = paramArrayOfByte.bytes_reserved_field.get();
+    String str3 = paramArrayOfByte.str_cookie_val.get();
+    if (paramBundle == null) {}
+    for (paramArrayOfByte = new Bundle();; paramArrayOfByte = paramBundle)
+    {
+      try
       {
-        a();
-        return true;
-      }
-      if ("notifyRenderReady".equals(paramString3)) {
-        try
+        if (!TextUtils.isEmpty(str2))
         {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-          QLog.d("ARTransparentWebviewPlugin", 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
-          a(paramJsBridgeListener.optString("callback"));
-          return true;
+          paramArrayOfByte.putString("strHttpsDomain", str2);
+          paramArrayOfByte.putInt("httpsPort", 443);
         }
-        catch (JSONException paramJsBridgeListener)
-        {
-          paramJsBridgeListener.printStackTrace();
-          return false;
-        }
+        a(true, i, (String)localObject, str1, j, k, str2, localByteStringMicro1, str3, localByteStringMicro2, paramArrayOfByte);
+        return;
       }
-      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+      catch (InvalidProtocolBufferMicroException paramBundle) {}
+      break;
     }
-    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
+  
+  public abstract void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle);
 }
 
 

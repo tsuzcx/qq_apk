@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
-import java.util.HashSet;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Process;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class arrc
-  implements arqp
+  extends BroadcastReceiver
 {
-  public arrc(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
+  public arrc(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void a(boolean paramBoolean, RecentBaseData paramRecentBaseData)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramBoolean) {
-      MsgBackupSelectionFragment.a(this.a).a.add(paramRecentBaseData);
-    }
-    for (;;)
-    {
-      int i = MsgBackupSelectionFragment.a(this.a).a.size();
-      MsgBackupSelectionFragment.a(this.a, i);
+    if (paramIntent == null) {}
+    while (paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) {
       return;
-      MsgBackupSelectionFragment.a(this.a).a.remove(paramRecentBaseData);
     }
+    QLog.i("ListenTogether.Manager", 1, "onThemeChange.");
+    ListenTogetherManager.c(this.a);
   }
 }
 

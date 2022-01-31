@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import ajkc;
-import ajkn;
-import ajxq;
+import ajyi;
+import ajyt;
+import akma;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -11,26 +11,26 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class GetJoinedHotChatListStep
   extends AsyncStep
 {
-  private ajkn a;
+  private ajyt a;
   
   public int a()
   {
     if (!HotChatManager.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app)) {
       return 7;
     }
-    ajkc localajkc = (ajkc)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(35);
-    this.jdField_a_of_type_Ajkn = new ajxq(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Ajkn);
-    localajkc.a();
+    ajyi localajyi = (ajyi)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(35);
+    this.jdField_a_of_type_Ajyt = new akma(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Ajyt);
+    localajyi.a();
     return 2;
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Ajkn != null)
+    if (this.jdField_a_of_type_Ajyt != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ajkn);
-      this.jdField_a_of_type_Ajkn = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ajyt);
+      this.jdField_a_of_type_Ajyt = null;
     }
   }
 }

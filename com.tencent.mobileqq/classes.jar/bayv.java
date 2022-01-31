@@ -1,13 +1,12 @@
-public class bayv
+import android.graphics.drawable.Drawable;
+
+public abstract interface bayv
 {
-  public static bayw a(bbcj parambbcj)
-  {
-    return new bayw(parambbcj);
-  }
+  public abstract Drawable a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bayv
  * JD-Core Version:    0.7.0.1
  */

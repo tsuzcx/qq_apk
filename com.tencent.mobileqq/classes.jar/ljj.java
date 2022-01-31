@@ -1,75 +1,111 @@
-import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.C2CGameInfo;
-import com.tencent.qphone.base.util.QLog;
 
-class ljj
-  implements kwc
+public class ljj
+  extends ljf
 {
-  ljj(lji paramlji) {}
+  boolean a;
+  int c = -1;
+  int d = -1;
   
-  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  public ljj(VideoAppInterface paramVideoAppInterface)
   {
-    bool2 = false;
-    String str = mez.a();
-    if ((paramArrayOfByte == null) || (TextUtils.isEmpty(str)) || (paramInt1 != 9))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AVRedPacketHandler", 2, "onC2CDataCome error return, msgType=" + paramInt1);
-      }
-      return false;
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public int a(String paramString)
+  {
+    int j = 0;
+    int i;
+    if ("750".equalsIgnoreCase(paramString)) {
+      i = this.c;
     }
-    localAVRedPacketManager = (AVRedPacketManager)this.a.a.a(6);
-    localC2CGameInfo = new AVRedPacketGameSyncInfo.C2CGameInfo();
-    try
+    for (;;)
     {
-      localC2CGameInfo.mergeFrom(paramArrayOfByte);
-      bool1 = true;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
+      lcl.c("SupportZimu", "isSupportPeer:" + paramString + "|" + i);
+      return i;
+      if ("735".equalsIgnoreCase(paramString))
       {
-        boolean bool1 = bool2;
-        if (QLog.isColorLevel())
+        i = this.d;
+      }
+      else
+      {
+        i = j;
+        if ("live".equalsIgnoreCase(paramString))
         {
-          QLog.e("AVRedPacketHandler", 2, "onC2CDataCome,", paramArrayOfByte);
-          bool1 = bool2;
-          continue;
-          if ((paramInt2 == 2) || (paramInt2 == 3)) {
-            localAVRedPacketManager.b(paramInt2);
-          } else if (paramInt2 == 4) {
-            localAVRedPacketManager.c(localC2CGameInfo.exceptionType.get());
+          i = j;
+          if (this.jdField_a_of_type_Boolean) {
+            i = 1;
           }
         }
       }
     }
-    if (paramInt2 == 1)
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    lcl.c("SupportZimu", "onReceiveSupportMessage type:" + paramInt + "|" + paramString);
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramArrayOfByte = new Bundle();
-      paramArrayOfByte.putString("key", localC2CGameInfo.key.get());
-      paramArrayOfByte.putInt("gameState", localC2CGameInfo.state.get());
-      paramArrayOfByte.putString("peerUin", str);
-      paramArrayOfByte.putInt("fromWho", localC2CGameInfo.fromWho.get());
-      paramArrayOfByte.putString("money", localC2CGameInfo.money.get());
-      paramArrayOfByte.putInt("resultCode", localC2CGameInfo.resultCode.get());
-      paramArrayOfByte.putString("resultState", localC2CGameInfo.resultState.get());
-      paramArrayOfByte.putInt("musicId", localC2CGameInfo.musicId.get());
-      paramArrayOfByte.putInt("hitScore", localC2CGameInfo.scores.get());
-      paramArrayOfByte.putInt("enterType", localC2CGameInfo.enterType.get());
-      paramArrayOfByte.putInt("maxScore", localC2CGameInfo.maxScore.get());
-      paramArrayOfByte.putInt("totalEmojiNum", localC2CGameInfo.totalEmojiNum.get());
-      localAVRedPacketManager.a(bool1, paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.d("AVRedPacketHandler", 2, "onC2CDataCome, isSucc: " + bool1 + ", subType=" + paramInt2);
+      String[] arrayOfString = paramString.split("\\|");
+      paramString = null;
+      if (arrayOfString.length > 0) {
+        paramString = arrayOfString[0];
       }
-      return true;
+      switch (paramInt)
+      {
+      }
+      while (("SUPPORT_TRUE".equalsIgnoreCase(paramString)) || ("SUPPORT_FALSE".equalsIgnoreCase(paramString)))
+      {
+        return true;
+        if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
+        {
+          this.c = 1;
+        }
+        else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
+        {
+          this.c = 0;
+          continue;
+          if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
+          {
+            this.d = 1;
+          }
+          else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
+          {
+            this.d = 0;
+            continue;
+            if ("SUPPORT_TRUE".equalsIgnoreCase(paramString)) {
+              this.jdField_a_of_type_Boolean = true;
+            } else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString)) {
+              this.jdField_a_of_type_Boolean = false;
+            }
+          }
+        }
+      }
     }
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    localVideoController.a(12, "SUPPORT_TRUE");
+    localVideoController.a(13, "SUPPORT_TRUE");
+    lcl.c("SupportZimu", "sendSupportMsg");
+  }
+  
+  public void c()
+  {
+    this.c = -1;
+    this.d = -1;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

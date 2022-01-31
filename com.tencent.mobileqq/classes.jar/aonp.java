@@ -1,22 +1,14 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 
 public class aonp
-  implements Cloneable
+  extends aouj
 {
-  public int a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public String a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public aonp(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  public aonp(aono paramaono) {}
+  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
+  {
+    super.a(paramString1, paramString2, paramInteger, paramString3, paramBoolean);
+  }
 }
 
 

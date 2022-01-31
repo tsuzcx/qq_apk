@@ -1,14 +1,15 @@
+import android.animation.ValueAnimator;
+
 public class vne
+  implements vnd
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  String c;
-  public String d;
-  String e;
-  public String f;
-  public String g;
+  public void a(ValueAnimator paramValueAnimator) {}
+  
+  public void b(ValueAnimator paramValueAnimator) {}
+  
+  public void c(ValueAnimator paramValueAnimator) {}
+  
+  public void d(ValueAnimator paramValueAnimator) {}
 }
 
 

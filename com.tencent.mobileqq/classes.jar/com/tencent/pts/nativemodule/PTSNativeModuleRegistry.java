@@ -1,6 +1,5 @@
 package com.tencent.pts.nativemodule;
 
-import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.pts.utils.PTSLog;
 import java.util.HashMap;
@@ -8,13 +7,13 @@ import java.util.HashMap;
 public class PTSNativeModuleRegistry
 {
   public static final String MODULE_NAME_ALL_IN_ONE_JUMP_REQUEST = "AllInOneJumpModule";
-  public static final String MODULE_NAME_DAILY_REQUEST = "DailyRequestModule";
   public static final String MODULE_NAME_HANDLE_JS_EXCEPTION = "HandleJSException";
-  public static final String MODULE_NAME_LOAD_DAILY_DB_ARTICLES = "LoadDailyDBArticlesModule";
+  public static final String MODULE_NAME_LOAD_FEEDS = "LoadFeedsModule";
   public static final String MODULE_NAME_MAKE_HTTP_REQUEST = "MakeHttpRequest";
   public static final String MODULE_NAME_MARK_ARTICLE_READ = "MarkArticleRead";
   public static final String MODULE_NAME_NAVIGATE_TO = "NavigateToModule";
   public static final String MODULE_NAME_REPORT_TO_1160 = "ReportTo1160";
+  public static final String MODULE_NAME_REQUEST_FEEDS = "RequestFeedsModule";
   public static final String TAG = "PTSNativeModuleRegistry";
   public static boolean sIsDemo = false;
   private static HashMap<String, PTSNativeModuleRegistry.PTSNativeModule> sNativeModuleMap = new HashMap();
@@ -102,19 +101,11 @@ public class PTSNativeModuleRegistry
     }
   }
   
-  public static void loadDailyDBArticles(long paramLong1, long paramLong2)
+  public static void loadFeeds(long paramLong1, long paramLong2, int paramInt, long paramLong3)
   {
-    PTSNativeModuleRegistry.PTSNativeModule localPTSNativeModule = (PTSNativeModuleRegistry.PTSNativeModule)sNativeModuleMap.get("LoadDailyDBArticlesModule");
-    if ((localPTSNativeModule instanceof IPTSLoadDailyDBArticles)) {
-      ((IPTSLoadDailyDBArticles)localPTSNativeModule).loadDailyDBArticles(paramLong1, paramLong2);
-    }
-  }
-  
-  public static void makeDailyRequest(long paramLong, Bundle paramBundle)
-  {
-    PTSNativeModuleRegistry.PTSNativeModule localPTSNativeModule = (PTSNativeModuleRegistry.PTSNativeModule)sNativeModuleMap.get("DailyRequestModule");
-    if ((localPTSNativeModule instanceof IPTSDailyRequest)) {
-      ((IPTSDailyRequest)localPTSNativeModule).makeDailyRequest(paramLong, paramBundle);
+    PTSNativeModuleRegistry.PTSNativeModule localPTSNativeModule = (PTSNativeModuleRegistry.PTSNativeModule)sNativeModuleMap.get("LoadFeedsModule");
+    if ((localPTSNativeModule instanceof IPTSLoadFeeds)) {
+      ((IPTSLoadFeeds)localPTSNativeModule).loadFeeds(paramLong1, paramLong2, paramInt, paramLong3);
     }
   }
   
@@ -161,11 +152,19 @@ public class PTSNativeModuleRegistry
     }
   }
   
-  public static void reportTo1160(String paramString1, String paramString2)
+  public static void reportTo1160(String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4)
   {
     PTSNativeModuleRegistry.PTSNativeModule localPTSNativeModule = (PTSNativeModuleRegistry.PTSNativeModule)sNativeModuleMap.get("ReportTo1160");
     if ((localPTSNativeModule instanceof PTSNativeModuleRegistry.IPTSReportTo1160)) {
-      ((PTSNativeModuleRegistry.IPTSReportTo1160)localPTSNativeModule).reportTo1160(paramString1, paramString2);
+      ((PTSNativeModuleRegistry.IPTSReportTo1160)localPTSNativeModule).reportTo1160(paramString1, paramString2, paramLong, paramInt, paramString3, paramString4);
+    }
+  }
+  
+  public static void requestFeeds(long paramLong1, long paramLong2, boolean paramBoolean, long paramLong3, long paramLong4)
+  {
+    PTSNativeModuleRegistry.PTSNativeModule localPTSNativeModule = (PTSNativeModuleRegistry.PTSNativeModule)sNativeModuleMap.get("RequestFeedsModule");
+    if ((localPTSNativeModule instanceof IPTSRequestFeeds)) {
+      ((IPTSRequestFeeds)localPTSNativeModule).requestFeeds(paramLong1, paramLong2, paramBoolean, paramLong3, paramLong4);
     }
   }
 }

@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class adzg
-  implements View.OnClickListener
+public class adzg
+  extends acun
 {
-  adzg(adzf paramadzf, int paramInt) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Adzf.a.a(paramView, this.jdField_a_of_type_Int);
-  }
+  public adzg(adzc paramadzc) {}
 }
 
 

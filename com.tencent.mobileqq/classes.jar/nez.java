@@ -1,6 +1,8 @@
 public class nez
 {
-  public static final String a = ajjy.a(2131650626);
+  public int a;
+  public String a;
+  public String b;
 }
 
 

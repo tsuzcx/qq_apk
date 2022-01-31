@@ -1,11 +1,4 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-
-public abstract interface qxq
-{
-  public abstract BaseData a();
-  
-  public abstract void a();
-}
+public class qxq {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

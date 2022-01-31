@@ -1,27 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.intervideo.nowproxy.proxyinner.channel.ToService;
 
-public class zyy
-  implements View.OnClickListener
+public final class zyy
+  implements Parcelable.Creator<ToService>
 {
-  public zyy(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
-  
-  public void onClick(View paramView)
+  public ToService a(Parcel paramParcel)
   {
-    if (ArkFullScreenAppActivity.a(this.a) != null) {
-      alep.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, alep.b, 0, 0);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkFullScreenAppActivity", 2, "click to close");
-    }
-    this.a.finish();
+    ToService localToService = new ToService();
+    localToService.jdField_a_of_type_Int = paramParcel.readInt();
+    localToService.b = paramParcel.readInt();
+    localToService.c = paramParcel.readInt();
+    localToService.d = paramParcel.readInt();
+    localToService.jdField_a_of_type_Long = paramParcel.readLong();
+    localToService.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localToService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
+    return localToService;
+  }
+  
+  public ToService[] a(int paramInt)
+  {
+    return new ToService[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zyy
  * JD-Core Version:    0.7.0.1
  */

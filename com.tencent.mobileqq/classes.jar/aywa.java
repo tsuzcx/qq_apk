@@ -1,135 +1,140 @@
-import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.wx.voice.vad.WXVadSeg;
+import java.io.OutputStream;
 
 public class aywa
-  extends BaseAdapter
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private String jdField_a_of_type_JavaLangString;
-  List<aywe<TroopInfo, Boolean>> jdField_a_of_type_JavaUtilList;
+  public int a;
+  public long a;
+  public aumy a;
+  public auoo a;
+  public aywh a;
+  public URLDrawableHandler a;
+  public PhotoSendParams a;
+  public MessageRecord a;
+  public WXVadSeg a;
+  public OutputStream a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public Object b;
+  public String b;
+  public boolean b;
+  public byte[] b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public boolean d;
+  public int e;
+  public long e;
+  public String e;
+  public boolean e;
+  public int f;
+  public long f;
+  public String f;
+  public boolean f;
+  public int g;
+  public String g;
+  public boolean g;
+  public int h;
+  public String h;
+  public boolean h;
+  public int i;
+  public String i;
+  public boolean i;
+  public int j;
+  public String j;
+  public boolean j;
+  public int k;
+  public String k;
+  public boolean k;
+  public int l;
+  public String l;
+  public boolean l;
+  public int m;
+  public String m;
+  public boolean m;
+  public int n;
+  public String n;
+  public boolean n;
+  public int o;
+  public String o;
+  public boolean o;
+  public int p;
+  private String p;
+  public boolean p;
+  public int q;
+  public boolean q;
+  public boolean r;
   
-  public aywa(Activity paramActivity, List<TroopInfo> paramList, TroopInfo paramTroopInfo, List<String> paramList1)
+  public aywa()
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (paramTroopInfo != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(new aywe(paramTroopInfo, Boolean.valueOf(true)));
-      this.jdField_a_of_type_JavaLangString = paramTroopInfo.troopuin;
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        this.jdField_a_of_type_JavaLangString = "";
-      }
-    }
-    if (paramList != null)
-    {
-      paramActivity = paramList.iterator();
-      while (paramActivity.hasNext())
-      {
-        paramList = (TroopInfo)paramActivity.next();
-        if (paramList != null)
-        {
-          if ((paramList1 != null) && (paramList1.contains(paramList.troopuin))) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.jdField_a_of_type_JavaUtilList.add(new aywe(paramList, Boolean.valueOf(bool)));
-            break;
-          }
-        }
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Int = 5;
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_f_of_type_Int = 1;
+    this.jdField_f_of_type_Boolean = true;
   }
   
-  public int getCount()
+  public String a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.jdField_c_of_type_JavaLangString + this.jdField_a_of_type_Long;
   }
   
-  public Object getItem(int paramInt)
+  public String b()
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    aywe localaywe = (aywe)getItem(paramInt);
-    Object localObject1;
-    if (paramView != null)
+    if (this.p == null)
     {
-      localObject1 = (aywd)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = (View)localObject1;
-      paramViewGroup.setOnClickListener(null);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(null);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(((Boolean)localaywe.b).booleanValue());
-      localObject1 = paramView.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (((TroopInfo)localaywe.a).troopuin.equals(this.jdField_a_of_type_JavaLangString)) {
-        break label458;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.jdField_b_of_type_Long);
+      return localStringBuilder.toString();
     }
-    label458:
-    for (boolean bool = true;; bool = false)
-    {
-      ((CheckBox)localObject1).setEnabled(bool);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new aywb(this, localaywe));
-      paramViewGroup.setOnClickListener(new aywc(this, paramView.jdField_a_of_type_AndroidWidgetCheckBox));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((TroopInfo)localaywe.a).troopname);
-      return paramViewGroup;
-      paramView = new aywd();
-      paramViewGroup = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
-      paramViewGroup.setMinimumHeight(awmc.a(48.0F));
-      paramViewGroup.setOrientation(0);
-      paramViewGroup.setGravity(16);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox = new CheckBox(this.jdField_a_of_type_AndroidAppActivity);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(2130838739);
-      localObject1 = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject1).setMargins(awmc.a(12.0F), 0, 0, 0);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
-      Object localObject2 = new LinearLayout.LayoutParams(-1, -1);
-      ((LinearLayout.LayoutParams)localObject2).setMargins(awmc.a(12.0F), 0, awmc.a(12.0F), 0);
-      ((LinearLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      ((LinearLayout)localObject1).setOrientation(1);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidAppActivity);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 16.0F);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
-      localObject2 = new LinearLayout.LayoutParams(-1, 0);
-      ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localObject2 = new View(this.jdField_a_of_type_AndroidAppActivity);
-      ((View)localObject2).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#dedfe0")));
-      ((View)localObject2).setLayoutParams(new LinearLayout.LayoutParams(-1, 2));
-      ((LinearLayout)localObject1).addView(paramView.jdField_a_of_type_AndroidWidgetTextView);
-      ((LinearLayout)localObject1).addView((View)localObject2);
-      paramViewGroup.addView(paramView.jdField_a_of_type_AndroidWidgetCheckBox);
-      paramViewGroup.addView((View)localObject1);
-      paramViewGroup.setClickable(true);
-      paramViewGroup.setTag(paramView);
-      break;
-    }
+    return this.p;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("TransferRequest\n");
+    localStringBuilder.append("mUniseq=" + this.jdField_a_of_type_Long);
+    localStringBuilder.append(",mMd5=" + this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(",mIsIp=" + this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",mUinType=" + this.jdField_a_of_type_Int);
+    localStringBuilder.append(",mFileType=" + this.jdField_b_of_type_Int);
+    localStringBuilder.append(",mSelfUin=" + this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",mPeerUin=" + this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(",mSecondId=" + this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(",mServerPath=" + this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(",mLocalPath=" + this.i);
+    localStringBuilder.append(",mBusiType=" + this.jdField_e_of_type_Int);
+    localStringBuilder.append(",mGroupFileID=" + this.jdField_c_of_type_Long);
+    localStringBuilder.append(",mExtraObj={" + this.jdField_a_of_type_JavaLangObject + "}");
+    localStringBuilder.append(",mPrioty=" + this.jdField_f_of_type_Int);
+    localStringBuilder.append(",mLogicCallBack=" + this.jdField_a_of_type_Auoo);
+    localStringBuilder.append(",bEnableEnc=" + this.m);
+    localStringBuilder.append(",isQzonePic=" + this.q);
+    localStringBuilder.append(",pcmForVadPath=" + this.o);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aywa
  * JD-Core Version:    0.7.0.1
  */

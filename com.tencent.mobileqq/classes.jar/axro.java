@@ -1,30 +1,21 @@
-public class axro
-  extends axsp
+class axro
 {
-  public int a = 0;
-  public axrp a;
-  public axrq a;
-  public axtz a;
-  public String a;
-  public boolean a;
-  public String[] a;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
+  int jdField_a_of_type_Int = 1;
+  boolean jdField_a_of_type_Boolean = true;
+  int b = 86400;
+  int c = 5;
   
-  public axro()
+  void a()
   {
-    this.b = 0;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 1;
+    this.b = 86400;
+    this.c = 5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axro
  * JD-Core Version:    0.7.0.1
  */

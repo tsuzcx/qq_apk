@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class waa
-  implements View.OnClickListener
+public class waa
 {
-  waa(vzz paramvzz) {}
-  
-  public void onClick(View paramView)
-  {
-    vzz.a(this.a);
-  }
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  String c;
+  public String d;
+  String e;
+  public String f;
+  public String g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     waa
  * JD-Core Version:    0.7.0.1
  */

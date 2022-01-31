@@ -1,21 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import org.json.JSONObject;
+import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public class otc
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    otl.a(paramBaseArticleInfo, localJSONObject, true);
-    otl.a(paramBaseArticleInfo, localJSONObject);
-    otl.b(paramBaseArticleInfo, localJSONObject);
-    otl.e(paramBaseArticleInfo, localJSONObject);
-    otl.m(paramBaseArticleInfo, localJSONObject);
-    otl.g(paramBaseArticleInfo, localJSONObject);
-    localJSONObject.put("style_ID", "ReadInjoy_none_img_cell");
-    otl.a(localJSONObject, paramBaseArticleInfo);
-    return localJSONObject;
-  }
+  public oidb_cmd0x80a.AttributeList a;
+  public oidb_cmd0x80a.AttributeList b;
+  public oidb_cmd0x80a.AttributeList c;
+  public oidb_cmd0x80a.AttributeList d;
+  
+  public otc(ota paramota) {}
 }
 
 

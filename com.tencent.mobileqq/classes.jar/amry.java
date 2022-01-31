@@ -1,31 +1,72 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Book;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amry
-  implements Parcelable.Creator
+public class amry
+  extends ampb<amrx>
 {
-  public IPSiteModel.Book a(Parcel paramParcel)
+  public static amrx a()
   {
-    IPSiteModel.Book localBook = new IPSiteModel.Book();
-    localBook.cover = paramParcel.readString();
-    localBook.desc = paramParcel.readString();
-    localBook.id = paramParcel.readString();
-    localBook.jumpUrl = paramParcel.readString();
-    localBook.name = paramParcel.readString();
-    localBook.recommDesc = paramParcel.readString();
-    localBook.authorName = paramParcel.readString();
-    return localBook;
+    return (amrx)ampm.a().a(452);
   }
   
-  public IPSiteModel.Book[] a(int paramInt)
+  public int a()
   {
-    return new IPSiteModel.Book[paramInt];
+    return 452;
+  }
+  
+  @NonNull
+  public amrx a(int paramInt)
+  {
+    return new amrx().b("0");
+  }
+  
+  @Nullable
+  public amrx a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    {
+      amrx localamrx = amrx.a(paramArrayOfampi[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CLovePushGrayProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
+      }
+      return localamrx;
+    }
+    return null;
+  }
+  
+  public Class<amrx> a()
+  {
+    return amrx.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CLovePushGrayProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(amrx paramamrx) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amry
  * JD-Core Version:    0.7.0.1
  */

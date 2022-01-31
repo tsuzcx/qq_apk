@@ -1,16 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.dataline.activities.LiteAdvanceActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.LiteActivity;
 
 public class cg
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public cg(LiteAdvanceActivity paramLiteAdvanceActivity) {}
+  public cg(LiteActivity paramLiteActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    LiteAdvanceActivity.d(this.a, paramBoolean);
-    LiteAdvanceActivity.b(this.a, LiteAdvanceActivity.b(this.a));
+    actn.n = true;
+    paramView = (fw)((fw)paramView.getTag()).clone();
+    this.a.a(paramView);
   }
 }
 

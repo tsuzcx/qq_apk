@@ -1,24 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.mobileqq.pic.CompressInfo;
 
 public class auou
-  implements View.OnClickListener
+  extends auow
 {
-  public auou(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, MessageForPic paramMessageForPic) {}
-  
-  public void onClick(View paramView)
+  auou(CompressInfo paramCompressInfo)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.isAdded()) {
-      return;
+    super(paramCompressInfo);
+  }
+  
+  protected int a()
+  {
+    return 80;
+  }
+  
+  protected final int[] a()
+  {
+    if (this.a.g == 2) {
+      return null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.getActivity(), ReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, ReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment));
+    int[] arrayOfInt = new int[2];
+    arrayOfInt[0] = 2560;
+    arrayOfInt[1] = (arrayOfInt[0] * 2);
+    aune.a("PicTypeNormal", "getScaleLargerSide", "PicType.SendPhotoMaxLongSide = " + arrayOfInt[0]);
+    return arrayOfInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auou
  * JD-Core Version:    0.7.0.1
  */

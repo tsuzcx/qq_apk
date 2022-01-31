@@ -1,22 +1,20 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
 
 public class bcil
-  implements View.OnClickListener
+  implements atcg
 {
-  public bcil(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
+  public bcil(WerewolvesHostInterface paramWerewolvesHostInterface) {}
   
-  public void onClick(View paramView)
+  public void bt()
   {
-    bcdj.b(bcdl.a().a("200").k(ApkFileDownloadFragment.a(this.a).b).j("1").l("0").m(ApkFileDownloadFragment.a(this.a).a).a(ApkFileDownloadFragment.a(this.a).h).b(ApkFileDownloadFragment.a(this.a).f).g(ApkFileDownloadFragment.a(this.a).e));
-    ApkFileDownloadFragment.a(this.a).finish();
+    this.a.mGameRoomAVController.c();
   }
+  
+  public void bu() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bcil
  * JD-Core Version:    0.7.0.1
  */

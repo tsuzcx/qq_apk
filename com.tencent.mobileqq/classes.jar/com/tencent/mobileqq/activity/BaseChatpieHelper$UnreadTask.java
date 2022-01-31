@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aael;
-import acka;
-import acoa;
-import akbm;
-import aqax;
-import asch;
-import ascr;
-import awao;
+import aaod;
+import acut;
+import acyt;
+import akpy;
+import aquz;
+import asyl;
+import asyv;
+import awzw;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -64,7 +64,7 @@ class BaseChatpieHelper$UnreadTask
         bool2 = false;
         break;
         label99:
-        if (!akbm.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) {
+        if (!akpy.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) {
           break label387;
         }
         i = 0;
@@ -102,13 +102,13 @@ class BaseChatpieHelper$UnreadTask
           if (QLog.isColorLevel()) {
             QLog.d("AioAnimationDetector", 2, "onPreSetReadConfirm_AIOEggs: hasUnread=" + bool2 + ", lastMsgTimeOrSeq=" + l1);
           }
-          paramQQAppInterface = acoa.a();
+          paramQQAppInterface = acyt.a();
           paramQQAppInterface.jdField_a_of_type_Boolean = bool2;
           paramQQAppInterface.jdField_a_of_type_Long = l1;
           if (bool2) {}
           for (;;)
           {
-            aael.jdField_a_of_type_Long = l1;
+            aaod.jdField_a_of_type_Long = l1;
             return;
             l2 = localChatMessage.time;
             break label177;
@@ -163,7 +163,7 @@ class BaseChatpieHelper$UnreadTask
           }
           if ((((MessageForUniteGrayTip)localObject3).tipParam.b == 2097153) && (((MessageForUniteGrayTip)localObject3).hasRead == 0))
           {
-            asch.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForUniteGrayTip)localObject3, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_MqqOsMqqHandler, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, ((MessageForUniteGrayTip)localObject3).subType);
+            asyl.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForUniteGrayTip)localObject3, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_MqqOsMqqHandler, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, ((MessageForUniteGrayTip)localObject3).subType);
             ((MessageForUniteGrayTip)localObject3).hasRead = 1;
             ((MessageForUniteGrayTip)localObject3).updateUniteGrayTipMsgData(localQQAppInterface);
           }
@@ -182,7 +182,7 @@ class BaseChatpieHelper$UnreadTask
     {
       ((BaseChatPie)localObject1).q = bool;
       a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d);
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Acka.a();
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Acut.a();
       localObject2 = new ArrayList();
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) {
         break label478;
@@ -210,13 +210,13 @@ class BaseChatpieHelper$UnreadTask
     label478:
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(16711689, 300000L);
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.q) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.p)) {
-      aael.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      aaod.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     }
     for (;;)
     {
       localQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true, true);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) {
-        ascr.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        asyv.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(localQQAppInterface);
       return;

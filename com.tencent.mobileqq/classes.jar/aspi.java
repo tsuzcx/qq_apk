@@ -1,18 +1,34 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.qphone.base.util.QLog;
 
-class aspi
-  implements tsr
+public class aspi
+  implements asrd
 {
-  aspi(aspg paramaspg, asow paramasow, Object paramObject) {}
+  public aspi(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public boolean a(tso paramtso, int paramInt1, int paramInt2)
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_Asow.a(this.jdField_a_of_type_Aspg, 0, paramInt1, this.jdField_a_of_type_Aspg.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "Indicator onPageScrollStateChanged() called with: state = [" + paramInt + "]");
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      MultiAIOFragment.a(this.a, MultiAIOFragment.a(this.a).a());
+      return;
+    case 1: 
+      MultiAIOFragment.b(this.a);
+      return;
+    }
+    MultiAIOFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aspi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,77 @@
-import android.text.TextUtils;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.sdk.utils.MonitorHttpInfo;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import eipc.EIPCResult;
 
 public class axtq
-  extends axoa
+  extends QIPCModule
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  private static axtq a;
+  
+  private axtq(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonecover.", 2, "downloadImage|config.urlStr = " + paramDownloadParams.urlStr);
-    }
-    paramOutputStream = paramDownloadParams.url.getFile();
-    paramDownloadParams = paramDownloadParams.url.getHost();
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonecover.", 2, "downloadImage|host = " + paramDownloadParams + ", url = " + paramOutputStream);
-    }
-    paramOutputStream = a(paramOutputStream);
-    if (TextUtils.isEmpty(paramOutputStream)) {
-      throw new RuntimeException("downloadImage|url is null");
-    }
-    paramDownloadParams = bftg.a(BaseApplication.getContext(), paramOutputStream);
-    if (QLog.isColorLevel())
-    {
-      QLog.i("Q.qzonecover.", 2, "downloadImage|path = " + paramDownloadParams);
-      if (!bace.b(paramDownloadParams)) {
-        break label198;
-      }
-      QLog.i("Q.qzonecover.", 2, "downloadImage|file exist and not empty");
-    }
-    while (paramDownloadParams == null)
-    {
-      throw new RuntimeException("downloadImage|file not exist, path = " + paramDownloadParams);
-      label198:
-      QLog.i("Q.qzonecover.", 2, "downloadImage|file not exist or empty!!");
-    }
-    paramURLDrawableHandler = new File(paramDownloadParams);
-    if ((paramURLDrawableHandler.exists()) || ((paramOutputStream.startsWith("http://")) && (bato.a(new batm(paramOutputStream, paramURLDrawableHandler), null) == 0) && (paramURLDrawableHandler.exists()))) {
-      return paramURLDrawableHandler;
-    }
-    throw new RuntimeException("downloadImage|file not exist, path = " + paramDownloadParams);
+    super(paramString);
   }
   
-  protected String a(String paramString)
+  public static axtq a()
   {
-    int i;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      i = paramString.indexOf("http", 0);
-      if ((i <= 0) || (i >= paramString.length())) {}
-    }
-    for (String str = paramString.substring(i);; str = paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qzonecover.", 2, "dealUrl|in: " + paramString + ", out: " + str);
-      }
-      return str;
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonecover.", 2, "decodeFile() url = " + paramDownloadParams.url + ", path = " + paramFile.getAbsolutePath());
-    }
+    if (a == null) {}
     try
     {
-      paramFile = super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
-      return paramFile;
+      if (a == null) {
+        a = new axtq("NetworkMonitorIPCModule");
+      }
+      return a;
     }
-    catch (Exception paramFile)
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "NetworkMonitorIPCModule : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
+    }
+    if ("ACTION_REPORT_DOWNLOAD_URL".equalsIgnoreCase(paramString))
     {
-      QLog.i("Q.qzonecover.", 2, "decodeFile() exception: " + paramFile.toString());
-      paramFile.printStackTrace();
-      throw paramFile;
+      paramString = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_URL", "");
+      axtn.a().a(paramString);
+    }
+    for (;;)
+    {
+      return new EIPCResult();
+      if ("ACTION_REPORT_HTTPINFO".equalsIgnoreCase(paramString))
+      {
+        try
+        {
+          paramString = (MonitorHttpInfo)paramBundle.getSerializable("BUNDLE_KEY_REPORT_HTTP_INFO_INFO");
+          String str = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_PROCESS_NAME", "");
+          paramBundle = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_TOP_ACTIVITY", "");
+          if (paramString != null)
+          {
+            try
+            {
+              axtn.a().a(paramString, str, paramBundle);
+            }
+            catch (Throwable paramString) {}
+            continue;
+          }
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("NetworkMonitorIPCModule", 2, "MonitorHttpInfo == null");
+        }
+        catch (Exception paramString) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "ClassCastException", paramString.toString() });
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axtq
  * JD-Core Version:    0.7.0.1
  */

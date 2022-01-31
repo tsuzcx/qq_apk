@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader;
 
-import aops;
+import aphb;
 
 public class ExtfBaseFileDownloader$1
   implements Runnable
 {
-  public ExtfBaseFileDownloader$1(aops paramaops, long paramLong1, long paramLong2) {}
+  public ExtfBaseFileDownloader$1(aphb paramaphb, long paramLong1, long paramLong2) {}
   
   public void run()
   {

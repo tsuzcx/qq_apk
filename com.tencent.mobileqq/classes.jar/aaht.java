@@ -1,16 +1,58 @@
+import android.app.Dialog;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
-class aaht
+public class aaht
   implements View.OnClickListener
 {
-  aaht(aahr paramaahr, String paramString) {}
+  public aaht(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aahr.a.app.a(this.jdField_a_of_type_JavaLangString, false);
+    if (this.a.a != null)
+    {
+      this.a.getWindow().setSoftInputMode(2);
+      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
+      AddFriendVerifyActivity.a(this.a).clearFocus();
+    }
+    paramView = AddFriendVerifyActivity.a(this.a).getText().toString().trim();
+    if (TextUtils.isEmpty(paramView))
+    {
+      if (!this.a.isFinishing())
+      {
+        paramView = new myj(this.a);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131699861));
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849324);
+        paramView.a();
+      }
+      return;
+    }
+    if (paramView.length() > 90)
+    {
+      paramView = new Dialog(this.a, 2131755791);
+      paramView.setContentView(2131562356);
+      ((TextView)paramView.findViewById(2131365147)).setText(this.a.getString(2131691095));
+      ((ProgressBar)paramView.findViewById(2131366570)).setVisibility(8);
+      ((ImageView)paramView.findViewById(2131378673)).setImageResource(2130839317);
+      paramView.show();
+      return;
+    }
+    this.a.a(paramView, true);
+    if (bbev.d(this.a))
+    {
+      AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), paramView, this.a.getIntent().getIntExtra("stat_option", 0), 2000);
+      return;
+    }
+    bcpw.a(this.a, 1, 2131694609, 0).b(this.a.getTitleBarHeight());
   }
 }
 

@@ -1,53 +1,77 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tribe.async.async.JobContext;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.StoryItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.HashSet;
+import java.util.Set;
 
-class tlq
-  implements slx<szd, sze>
+public class tlq
+  implements syt<tnu, tpd>
 {
-  tlq(tlp paramtlp, JobContext paramJobContext, ucw paramucw) {}
+  public Set<String> a = new HashSet();
   
-  public void a(@NonNull szd paramszd, @Nullable sze paramsze, @NonNull ErrorMessage paramErrorMessage)
+  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      urk.d("Q.qqstory.player.CommentFloatDialogController", "pull commentLikeFeedItem cancel on net respond");
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
       return;
     }
-    if ((paramErrorMessage.isFail()) || (paramsze == null))
+    tnu localtnu = new tnu();
+    localtnu.jdField_b_of_type_JavaLangString = paramString1;
+    localtnu.jdField_c_of_type_JavaLangString = paramString2;
+    localtnu.jdField_a_of_type_Boolean = paramBoolean;
+    localtnu.jdField_c_of_type_Int = paramInt;
+    localtnu.jdField_b_of_type_Long = paramLong;
+    syr.a().a(localtnu, this);
+  }
+  
+  public void a(@NonNull tnu paramtnu, @Nullable tpd paramtpd, @NonNull ErrorMessage paramErrorMessage)
+  {
+    tlr localtlr = new tlr();
+    localtlr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    localtlr.jdField_a_of_type_JavaLangString = paramtnu.jdField_b_of_type_JavaLangString;
+    if (vws.a(localtlr.jdField_a_of_type_JavaLangString)) {
+      paramtnu.jdField_c_of_type_JavaLangString = "4_10000";
+    }
+    localtlr.jdField_b_of_type_JavaLangString = paramtnu.jdField_c_of_type_JavaLangString;
+    localtlr.jdField_a_of_type_Boolean = paramtnu.jdField_a_of_type_Boolean;
+    tcz localtcz = (tcz)tdc.a(5);
+    if ((paramtnu.jdField_c_of_type_Int == 3) || (paramtnu.jdField_c_of_type_Int == 4) || (paramtnu.jdField_c_of_type_Int == 31) || (paramtnu.jdField_c_of_type_Int == 62))
     {
-      urk.a("Q.qqstory.player.CommentFloatDialogController", "pull commentLikeFeedItem fail %s", paramErrorMessage.toString());
-      tlp.a(this.jdField_a_of_type_Tlp, paramErrorMessage);
+      localtlr.jdField_a_of_type_Int = localtcz.a("Q.qqstory.player.WatchVideoHandler", paramtnu.jdField_c_of_type_JavaLangString, paramtnu.jdField_b_of_type_JavaLangString);
+      StoryItem localStoryItem = localtcz.a(paramtnu.jdField_c_of_type_JavaLangString, 1);
+      if (localStoryItem != null)
+      {
+        if (localStoryItem.unReadCount == 0) {
+          break label281;
+        }
+        localStoryItem.unReadCount = localtlr.jdField_a_of_type_Int;
+        localtcz.a(paramtnu.jdField_c_of_type_JavaLangString, 1, localStoryItem);
+        veg.d("Q.qqstory.player.WatchVideoHandler", String.format("read video %s ,update %s unread count , count = %d", new Object[] { paramtnu.jdField_b_of_type_JavaLangString, localStoryItem.key, Integer.valueOf(localStoryItem.unReadCount) }));
+      }
+      label210:
+      if ((paramtpd == null) || (!paramErrorMessage.isSuccess())) {
+        break label294;
+      }
+      this.a.add(paramtnu.jdField_b_of_type_JavaLangString);
+      ste.a().dispatch(localtlr);
+    }
+    label281:
+    label294:
+    do
+    {
       return;
-    }
-    paramszd = (uje)sqg.a(11);
-    if (paramsze.a.size() < 1)
-    {
-      urk.e("Q.qqstory.player.CommentFloatDialogController", "pull feedItem return null. maybe it's a share group feed and it has been dissolved.");
-      paramszd.a(tlj.a(this.jdField_a_of_type_Tlp.a));
-      paramszd = new ErrorMessage(2222, "no feed data back.");
-      tlp.b(this.jdField_a_of_type_Tlp, paramszd);
-      return;
-    }
-    paramsze = (uio)paramsze.a.get(0);
-    if ((paramsze instanceof ukv))
-    {
-      paramErrorMessage = (ukv)paramsze;
-      this.jdField_a_of_type_Ucw.a = paramsze.a();
-      this.jdField_a_of_type_Ucw.a(paramszd.a(tlj.a(this.jdField_a_of_type_Tlp.a), paramErrorMessage.a(), true), true);
-      ((ujk)sqg.a(12)).a(2, this.jdField_a_of_type_Ucw.a.feedId, this.jdField_a_of_type_Ucw.a().mVideoSeq, this.jdField_a_of_type_Ucw.a(), this.jdField_a_of_type_Ucw.a().mVideoNextCookie, this.jdField_a_of_type_Ucw.a().mIsVideoEnd, this.jdField_a_of_type_Ucw.a().mVideoPullType, true);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Ucw.a = ((CommentLikeFeedItem)paramszd.a(tlj.a(this.jdField_a_of_type_Tlp.a).a));
-      tlp.a(this.jdField_a_of_type_Tlp, this.jdField_a_of_type_Ucw);
-      return;
-      this.jdField_a_of_type_Ucw.a = paramsze.a();
-    }
+      localtlr.jdField_a_of_type_Int = localtcz.a(paramtnu.jdField_c_of_type_JavaLangString);
+      veg.a("Q.qqstory.player.WatchVideoHandler", "read video %s , source = %d , not effect recent story", paramtnu.jdField_b_of_type_JavaLangString, Integer.valueOf(paramtnu.jdField_c_of_type_Int));
+      break;
+      localtcz.a(paramtnu.jdField_c_of_type_JavaLangString, 1);
+      break label210;
+      ste.a().dispatch(localtlr);
+      paramtpd = localtcz.a(paramtnu.jdField_b_of_type_JavaLangString);
+    } while (paramtpd == null);
+    ((tcs)tdc.a(13)).a(paramtnu.jdField_b_of_type_JavaLangString, paramtnu.jdField_c_of_type_JavaLangString, paramtnu.jdField_a_of_type_Boolean, paramtpd.mCreateTime, paramtnu.jdField_c_of_type_Int, paramtnu.d, true);
   }
 }
 

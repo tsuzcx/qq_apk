@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import lzu;
+import mkl;
 
 public class VideoInviteFloatBar$1
   implements Runnable
 {
-  public VideoInviteFloatBar$1(lzu paramlzu) {}
+  public VideoInviteFloatBar$1(mkl parammkl) {}
   
   public void run()
   {

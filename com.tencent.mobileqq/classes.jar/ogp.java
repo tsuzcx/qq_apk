@@ -1,16 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
-
-public class ogp
-  extends bgna
+public abstract interface ogp
 {
-  protected void a(String paramString)
-  {
-    TaskManager.getInstance().accept(paramString);
-  }
+  public abstract void onScroll(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ogp
  * JD-Core Version:    0.7.0.1
  */

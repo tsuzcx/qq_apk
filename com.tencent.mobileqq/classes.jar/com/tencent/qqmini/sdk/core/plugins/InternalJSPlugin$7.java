@@ -1,10 +1,9 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
-import bdeg;
-import bdnw;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import beig;
+import besl;
+import beuc;
 
 final class InternalJSPlugin$7
   implements Runnable
@@ -14,37 +13,25 @@ final class InternalJSPlugin$7
   public void run()
   {
     Object localObject3 = null;
-    bdeg localbdeg2 = null;
-    bdeg localbdeg1 = localbdeg2;
-    Object localObject1 = localObject3;
+    Object localObject1 = null;
     try
     {
-      MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      localbdeg1 = localbdeg2;
-      localObject1 = localObject3;
-      localbdeg2 = bdeg.a(this.val$context, String.valueOf(localMiniAppProxy.getAccount()), this.val$appId);
-      localbdeg1 = localbdeg2;
-      localObject1 = localbdeg2;
-      localbdeg2.a(this.val$key, "Object", this.val$data);
-      if (localbdeg2 != null) {
-        localbdeg2.a();
-      }
+      beig localbeig = beig.a(this.val$context, String.valueOf(beuc.a().a()), this.val$appId);
+      localObject1 = localbeig;
+      localObject3 = localbeig;
+      localbeig.a(this.val$key, "Object", this.val$data);
       return;
     }
     catch (Exception localException)
     {
-      do
-      {
-        localObject1 = localbdeg1;
-        bdnw.d("InternalJSPlugin", "saveToMiniAppStorage ", localException);
-      } while (localbdeg1 == null);
-      localbdeg1.a();
+      localObject3 = localObject1;
+      besl.d("InternalJSPlugin", "saveToMiniAppStorage ", localException);
       return;
     }
     finally
     {
-      if (localObject1 != null) {
-        ((bdeg)localObject1).a();
+      if (localObject3 != null) {
+        localObject3.a();
       }
     }
   }

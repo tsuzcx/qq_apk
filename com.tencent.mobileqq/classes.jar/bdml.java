@@ -1,186 +1,77 @@
-import android.text.TextUtils;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.export.js.VipDownloadInterface;
+import java.util.ArrayList;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bdml
+  implements bdlw
 {
-  public bdmz a;
-  public bdna a;
-  public bdni a;
-  public String a;
-  public List<String> a;
-  private Map<String, bdna> a;
-  public JSONObject a;
-  public boolean a;
-  public String b;
-  public List<String> b;
-  private Map<String, String> b;
+  protected final String a;
   
-  public bdml()
+  public bdml(VipDownloadInterface paramVipDownloadInterface, String paramString)
   {
-    this.jdField_b_of_type_JavaUtilMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilList = new LinkedList();
+    bdht.b(paramVipDownloadInterface.jdField_a_of_type_JavaLangString, "new  JsCheckUpdateCallback");
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static bdml a(String paramString)
+  public void a(String paramString)
   {
-    bdml localbdml = new bdml();
-    JSONObject localJSONObject;
+    if (!this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.hasRight()) {
+      return;
+    }
+    bdht.e(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "JsCheckUpdateCallback onException >>> " + paramString);
+    paramString = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
+    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramString);
+  }
+  
+  public void a(ArrayList<ApkUpdateDetail> paramArrayList)
+  {
+    if (!this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.hasRight()) {
+      return;
+    }
+    bdht.a(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "JsCheckUpdateCallback onResult >>> " + paramArrayList.size());
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONArray localJSONArray = new JSONArray();
+    int i = 0;
     try
     {
-      localJSONObject = new JSONObject(paramString);
-      paramString = localJSONObject.keys();
-      while (paramString.hasNext())
+      while (i < paramArrayList.size())
       {
-        localObject = (String)paramString.next();
-        String str = localJSONObject.optString((String)localObject);
-        localbdml.jdField_b_of_type_JavaUtilMap.put(localObject, str);
-      }
-      localbdml.jdField_a_of_type_Boolean = localJSONObject.optBoolean("debug");
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-      return localbdml;
-    }
-    localbdml.jdField_a_of_type_JavaLangString = localJSONObject.optString("entryPagePath");
-    localbdml.jdField_a_of_type_Bdna = bdna.a();
-    localbdml.jdField_a_of_type_Bdna.a(localJSONObject.optJSONObject("global"));
-    localbdml.jdField_a_of_type_JavaUtilMap = a(localJSONObject.optJSONObject("page"), localbdml.jdField_a_of_type_Bdna);
-    localbdml.jdField_a_of_type_JavaUtilList = a(localJSONObject.optJSONArray("pages"));
-    localbdml.jdField_a_of_type_Bdmz = bdmz.a(localJSONObject.optJSONObject("networkTimeout"));
-    localbdml.jdField_a_of_type_Bdni = bdni.a(localJSONObject.optJSONObject("tabBar"));
-    Object localObject = localJSONObject.optJSONArray("subpackages");
-    paramString = (String)localObject;
-    if (localObject == null) {
-      paramString = localJSONObject.optJSONArray("subPackages");
-    }
-    localbdml.jdField_b_of_type_JavaUtilList = b(paramString);
-    localbdml.jdField_b_of_type_JavaLangString = localJSONObject.optString("PackageToolVersion");
-    localbdml.jdField_a_of_type_OrgJsonJSONObject = localJSONObject.optJSONObject("permission");
-    return localbdml;
-  }
-  
-  public static List<String> a(JSONArray paramJSONArray)
-  {
-    LinkedList localLinkedList = new LinkedList();
-    if (paramJSONArray != null)
-    {
-      int i = 0;
-      while (i < paramJSONArray.length())
-      {
-        String str = paramJSONArray.optString(i);
-        if (!TextUtils.isEmpty(str)) {
-          localLinkedList.add(str);
-        }
+        ApkUpdateDetail localApkUpdateDetail = (ApkUpdateDetail)paramArrayList.get(i);
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("packageName", localApkUpdateDetail.packageName);
+        localJSONObject2.put("newapksize", localApkUpdateDetail.newapksize);
+        localJSONObject2.put("patchsize", localApkUpdateDetail.patchsize);
+        localJSONObject2.put("updatemethod", localApkUpdateDetail.updatemethod);
+        localJSONObject2.put("versioncode", localApkUpdateDetail.versioncode);
+        localJSONObject2.put("versionname", localApkUpdateDetail.versionname);
+        localJSONObject2.put("fileMd5", localApkUpdateDetail.fileMd5);
+        localJSONObject2.put("sigMd5", localApkUpdateDetail.sigMd5);
+        localJSONObject2.put("url", localApkUpdateDetail.url);
+        localJSONArray.put(localJSONObject2);
         i += 1;
       }
+      localJSONObject1.put("guid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject1.put("content", localJSONArray.toString());
+      localJSONObject1.put("resultCode", "0");
+      paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'" + localJSONArray.toString() + "'});}void(0);";
     }
-    return localLinkedList;
-  }
-  
-  public static Map<String, bdna> a(JSONObject paramJSONObject, bdna parambdna)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramJSONObject != null)
+    catch (JSONException paramArrayList)
     {
-      Iterator localIterator = paramJSONObject.keys();
-      while (localIterator.hasNext())
+      for (;;)
       {
-        String str = (String)localIterator.next();
-        bdna localbdna = parambdna.b();
-        localbdna.a(paramJSONObject.optJSONObject(str));
-        localHashMap.put(str, localbdna);
+        paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
       }
     }
-    return localHashMap;
-  }
-  
-  public static String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
-      return paramString;
-      i = paramString.indexOf("?");
-    } while (i == -1);
-    return paramString.substring(0, i);
-  }
-  
-  private static List<String> b(JSONArray paramJSONArray)
-  {
-    LinkedList localLinkedList = new LinkedList();
-    if (paramJSONArray != null)
-    {
-      int i = 0;
-      while (i < paramJSONArray.length())
-      {
-        Object localObject = paramJSONArray.optJSONObject(i);
-        if (localObject != null)
-        {
-          localObject = ((JSONObject)localObject).optString("root");
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            localLinkedList.add(localObject);
-          }
-        }
-        i += 1;
-      }
-    }
-    return localLinkedList;
-  }
-  
-  public bdna a(String paramString)
-  {
-    paramString = b(paramString);
-    bdna localbdna = (bdna)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    paramString = localbdna;
-    if (localbdna == null) {
-      paramString = this.jdField_a_of_type_Bdna;
-    }
-    return paramString;
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    String str2 = b(paramString);
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    label97:
-    label100:
-    while (localIterator.hasNext())
-    {
-      String str3 = (String)localIterator.next();
-      if (str3.startsWith("/"))
-      {
-        paramString = str3.substring(1);
-        if (!str2.startsWith("/")) {
-          break label97;
-        }
-      }
-      for (String str1 = str2.substring(1);; str1 = str2)
-      {
-        if (!str1.startsWith(paramString)) {
-          break label100;
-        }
-        return str3;
-        paramString = str3;
-        break;
-      }
-    }
-    return "";
+    bdht.b(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, ">>checkUpdate jsUrl:" + paramArrayList);
+    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdml
  * JD-Core Version:    0.7.0.1
  */

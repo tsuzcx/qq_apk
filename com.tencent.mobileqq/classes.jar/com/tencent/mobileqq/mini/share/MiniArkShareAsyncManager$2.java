@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.share;
 
 import android.text.TextUtils;
-import bace;
+import bbdj;
 import com.tencent.qphone.base.util.QLog;
 
 final class MiniArkShareAsyncManager$2
@@ -11,7 +11,7 @@ final class MiniArkShareAsyncManager$2
   
   public void run()
   {
-    if ((!TextUtils.isEmpty(this.val$filePath)) && (bace.d(this.val$filePath))) {
+    if ((!TextUtils.isEmpty(this.val$filePath)) && (bbdj.d(this.val$filePath))) {
       QLog.d("MiniArkShareAsyncManage", 2, "removeArkShareLocalTemporaryFile() called with: filePath = [" + this.val$filePath + "]");
     }
   }

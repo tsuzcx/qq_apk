@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.troop.createNewTroop.RelationFriendsTroopViewHelper.4.1;
-import com.tencent.widget.PinnedFooterExpandableListView;
-import java.util.ArrayList;
+import java.util.Comparator;
 
-public class aykz
-  implements ayns
+class aykz
+  implements Comparator
 {
-  aykz(ayky paramayky) {}
+  aykz(aykx paramaykx) {}
   
-  public void a(ArrayList<atmo> paramArrayList)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    this.a.a.post(new RelationFriendsTroopViewHelper.4.1(this, paramArrayList));
+    int i = this.a.getSpanStart(paramObject1);
+    int j = this.a.getSpanStart(paramObject2);
+    if (i == j) {
+      return 0;
+    }
+    if (i > j) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aykz
  * JD-Core Version:    0.7.0.1
  */

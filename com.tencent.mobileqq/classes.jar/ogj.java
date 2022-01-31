@@ -1,102 +1,34 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetMessageConfigurationResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.text.Editable;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import java.util.Comparator;
 
 public class ogj
-  implements BusinessObserver
+  implements Comparator<BiuNicknameSpan>
 {
-  public ogj(KandianMergeManager paramKandianMergeManager) {}
+  private Editable jdField_a_of_type_AndroidTextEditable;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ogj(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, Editable paramEditable)
   {
-    mobileqq_mp.GetMessageConfigurationResponse localGetMessageConfigurationResponse;
-    if (paramBoolean) {
-      localGetMessageConfigurationResponse = new mobileqq_mp.GetMessageConfigurationResponse();
+    this.jdField_a_of_type_AndroidTextEditable = paramEditable;
+  }
+  
+  public int a(BiuNicknameSpan paramBiuNicknameSpan1, BiuNicknameSpan paramBiuNicknameSpan2)
+  {
+    int i = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan1);
+    int j = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan2);
+    if (i > j) {
+      return 1;
     }
-    for (;;)
-    {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label253;
-        }
-        localGetMessageConfigurationResponse.mergeFrom(paramBundle);
-        if ((!localGetMessageConfigurationResponse.ret_info.has()) || (!localGetMessageConfigurationResponse.ret_info.ret_code.has())) {
-          break label238;
-        }
-        paramInt = localGetMessageConfigurationResponse.ret_info.ret_code.get();
-        if (paramInt != 0) {
-          break label206;
-        }
-        if (!localGetMessageConfigurationResponse.type.has()) {
-          break label267;
-        }
-        paramInt = localGetMessageConfigurationResponse.type.get();
-        if (paramInt != 1) {
-          break label268;
-        }
-        paramBoolean = true;
-        paramBundle = BaseActivity.sTopActivity;
-        if (!bgmq.e(KandianMergeManager.a(this.a)))
-        {
-          if (!(paramBundle instanceof ReadInJoySettingActivity)) {
-            break label195;
-          }
-          paramBundle = (ReadInJoySettingActivity)paramBundle;
-          if (paramBundle.a()) {
-            QLog.d("KandianMergeManager", 1, "setting: has set kandian status");
-          }
-        }
-        else
-        {
-          QLog.d("KandianMergeManager", 1, "result:" + paramInt);
-          return;
-        }
-        this.a.a(paramBoolean);
-        paramBundle.a(paramBoolean);
-        continue;
-        this.a.a(paramBoolean);
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.d("KandianMergeManager", 1, "failed to handle request Kandian status configuration");
-        return;
-      }
-      label195:
-      continue;
-      label206:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("KandianMergeManager", 2, "request Kandian status fail code:" + paramInt);
-        return;
-        label238:
-        if (QLog.isColorLevel())
-        {
-          QLog.d("KandianMergeManager", 2, "request Kandian status wrong resp");
-          return;
-          label253:
-          if (QLog.isColorLevel()) {
-            QLog.d("KandianMergeManager", 2, "request Kandian status fail data null");
-          }
-        }
-      }
-      label267:
-      return;
-      label268:
-      paramBoolean = false;
+    if (i < j) {
+      return -1;
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ogj
  * JD-Core Version:    0.7.0.1
  */

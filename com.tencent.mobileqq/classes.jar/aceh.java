@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import mqq.os.MqqHandler;
 
 public class aceh
-  implements DialogInterface.OnClickListener
+  extends MqqHandler
 {
-  public aceh(UpgradeActivity paramUpgradeActivity) {}
+  public aceh(SubLoginActivity paramSubLoginActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    UpgradeActivity.a(this.a, false);
-    awqx.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, akgn.b(), String.valueOf(0), akgo.a(), "");
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1982: 
+      this.a.finish();
+      return;
+    }
+    this.a.c();
   }
 }
 

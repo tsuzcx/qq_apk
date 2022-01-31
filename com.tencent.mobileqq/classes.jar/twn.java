@@ -1,17 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
 
-class twn
-  implements DialogInterface.OnDismissListener
+public class twn
+  extends twp
 {
-  twn(twm paramtwm, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public ErrorMessage a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public twn(two paramtwo, @Nullable ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    super(paramtwo);
+    if (paramErrorMessage == null) {}
+    for (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(97000001, "loading");; this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage)
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      return;
     }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000000;
+  }
+  
+  public boolean b()
+  {
+    return (!a()) && (!c());
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000001;
+  }
+  
+  public String toString()
+  {
+    return "fg{g=" + this.jdField_a_of_type_Two + ", em=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
   }
 }
 

@@ -1,266 +1,282 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.ads.CmGameBannerAds.1;
-import com.tencent.mobileqq.apollo.process.ads.CmGameBannerAds.2;
-import com.tencent.mobileqq.apollo.process.ads.CmGameBannerAds.3;
-import com.tencent.mobileqq.apollo.process.ads.CmGameBannerAds.4;
-import com.tencent.mobileqq.apollo.process.ads.CmGameBannerAds.5;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.troop.widget.HotChatPostItemView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
-import mqq.os.MqqHandler;
+import java.util.HashSet;
+import java.util.Queue;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGet;
-import tencent.gdt.qq_ad_get.QQAdGet.ContextInfo;
-import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo;
-import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo.PositionExt;
-import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo;
-import tencent.gdt.qq_ad_get.QQAdGet.UserInfo;
 
 public class ainj
+  extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
-  private HashMap<Integer, ainl> jdField_a_of_type_JavaUtilHashMap;
+  protected int a;
+  Context jdField_a_of_type_AndroidContentContext;
+  ArrayList<JSONObject> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  JSONObject jdField_a_of_type_OrgJsonJSONObject = null;
+  xjm jdField_a_of_type_Xjm;
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = true;
   
-  public ainj(int paramInt)
+  public ainj(Context paramContext, JSONArray paramJSONArray, xjm paramxjm)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  private int a()
-  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Xjm = paramxjm;
+    if (this.jdField_a_of_type_Xjm != null) {}
     for (;;)
     {
-      try
-      {
-        Object localObject = aing.a(this.jdField_a_of_type_Int);
-        if ((localObject == null) || (((aipj)localObject).a() == null)) {
-          break label105;
-        }
-        i = ((aipj)localObject).a().getMeasuredHeight();
-        if (i == 0)
-        {
-          localObject = a();
-          if (localObject != null)
-          {
-            localObject = (FrameLayout)((Activity)localObject).findViewById(2131301332);
-            if (localObject != null)
-            {
-              i = ((FrameLayout)localObject).getMeasuredHeight();
-              if (QLog.isColorLevel()) {
-                QLog.d("cmgame_process.CmGameBannerAds", 2, new Object[] { "getParent height from gameview, h:", Integer.valueOf(i) });
-              }
-              return i;
-            }
-          }
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("cmgame_process.CmGameBannerAds", 1, localThrowable, new Object[0]);
-        return 0;
-      }
-      return i;
-      label105:
-      int i = 0;
-    }
-  }
-  
-  private Activity a()
-  {
-    aipj localaipj = aing.a(this.jdField_a_of_type_Int);
-    if (localaipj == null) {
-      return null;
-    }
-    return localaipj.a();
-  }
-  
-  private CmGameInitParams a()
-  {
-    aipj localaipj = aing.a(this.jdField_a_of_type_Int);
-    if (localaipj == null) {
-      return null;
-    }
-    return localaipj.a();
-  }
-  
-  private String a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameBannerAds", 2, new Object[] { "[getPosId], viewId:", Integer.valueOf(paramInt) });
-    }
-    Object localObject = a();
-    if (localObject == null) {}
-    do
-    {
-      return null;
-      localObject = ((CmGameInitParams)localObject).adForbidPosId;
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).contains("8080135688610643")))
-      {
-        QLog.i("cmgame_process.CmGameBannerAds", 1, "viewId is in forbidden list.");
-        return null;
-      }
-    } while (paramInt != 1003);
-    return "8080135688610643";
-  }
-  
-  private void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("bannerId", paramInt1);
-      localJSONObject.put("errCode", paramInt3);
-      aing.a().callbackFromRequest(paramLong, paramInt2, "sc.game_ad_banner_load.local", localJSONObject.toString());
+      this.jdField_a_of_type_Boolean = bool;
+      b(paramJSONArray);
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("cmgame_process.CmGameBannerAds", 1, localThrowable, new Object[0]);
+      bool = false;
     }
   }
   
-  private static qq_ad_get.QQAdGet b(long paramLong1, String paramString, long paramLong2, long paramLong3, int paramInt1, int paramInt2)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameBannerAds", 2, new Object[] { "posId:", paramString, ",src:", Integer.valueOf(paramInt1), ",shareRate:", Integer.valueOf(paramInt2) });
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      return i + this.jdField_a_of_type_Int;
     }
-    Object localObject1 = new qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo();
-    ((qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo)localObject1).share_rate.set(paramInt2);
-    ((qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo)localObject1).share_check.set(yjp.a(paramLong2, paramLong3, paramInt2));
-    Object localObject2 = new qq_ad_get.QQAdGet.PositionInfo.PositionExt();
-    ((qq_ad_get.QQAdGet.PositionInfo.PositionExt)localObject2).share_info.set((MessageMicro)localObject1);
-    ((qq_ad_get.QQAdGet.PositionInfo.PositionExt)localObject2).deep_link_version.set(1);
-    localObject1 = new qq_ad_get.QQAdGet.PositionInfo();
-    ((qq_ad_get.QQAdGet.PositionInfo)localObject1).pos_id.set(paramString);
-    ((qq_ad_get.QQAdGet.PositionInfo)localObject1).ad_count.set(1);
-    ((qq_ad_get.QQAdGet.PositionInfo)localObject1).pos_ext.set((MessageMicro)localObject2);
-    paramString = new qq_ad_get.QQAdGet.ContextInfo();
-    paramString.public_id.set(paramLong2);
-    paramString.article_id.set(paramLong3);
-    paramString.source_from.set(paramInt1);
-    localObject2 = new qq_ad_get.QQAdGet.UserInfo();
-    ((qq_ad_get.QQAdGet.UserInfo)localObject2).qq.set(paramLong1);
-    qq_ad_get.QQAdGet localQQAdGet = new qq_ad_get.QQAdGet();
-    localQQAdGet.position_info.add((MessageMicro)localObject1);
-    localQQAdGet.context_info.set(paramString);
-    localQQAdGet.user_info.set((MessageMicro)localObject2);
-    return localQQAdGet;
-  }
-  
-  private void b(long paramLong, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameBannerAds", 2, new Object[] { "[showBannerAd], bannerId:", Integer.valueOf(paramInt1), ",left:", Integer.valueOf(paramInt2), ",top:", Integer.valueOf(paramInt3) });
-    }
-    ThreadManager.getUIHandler().post(new CmGameBannerAds.5(this, paramInt1, paramInt3, paramInt2, paramLong));
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameBannerAds", 2, new Object[] { "[closeBanner], bannerId:", Integer.valueOf(paramInt) });
-    }
-    ThreadManager.getUIHandler().post(new CmGameBannerAds.2(this, paramInt));
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    ThreadManager.getUIHandler().post(new CmGameBannerAds.1(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5));
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameBannerAds", 2, new Object[] { "[loadBannerAd], bannerId:", Integer.valueOf(paramInt2), ",viewId:", Integer.valueOf(paramInt1) });
-    }
-    ThreadManager.getUIHandler().post(new CmGameBannerAds.4(this, paramInt1, paramLong, paramInt2));
-  }
-  
-  public void a(long paramLong, String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    int k;
     try
     {
-      paramString2 = new JSONObject(paramString2);
-      k = paramString2.optInt("bannerId");
-      if ("cs.game_ad_banner_close.local".equals(paramString1))
-      {
-        a(k);
-        return;
-      }
-    }
-    catch (Throwable paramString1)
-    {
-      QLog.e("cmgame_process.CmGameBannerAds", 1, paramString1, new Object[0]);
+      this.b = true;
       return;
     }
-    if ("cs.game_ad_banner_load.local".equals(paramString1))
+    finally
     {
-      a(paramLong, paramString2.optInt("viewId"), k);
-      return;
+      localObject = finally;
+      throw localObject;
     }
+  }
+  
+  public void a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList;
+    StringBuilder localStringBuilder;
     int i;
-    int j;
-    if ("cs.game_ad_banner_show.local".equals(paramString1))
+    if (paramJSONArray != null)
     {
-      paramString1 = paramString2.optJSONObject("style");
-      if (paramString1 == null) {
-        break label208;
-      }
-      i = paramString1.optInt("x");
-      j = paramString1.optInt("y");
+      localArrayList = new ArrayList();
+      localStringBuilder = new StringBuilder("filterPids:");
+      i = 0;
     }
     for (;;)
     {
-      b(paramLong, k, i, j);
-      return;
-      if ("cs.game_ad_banner_hide.local".equals(paramString1))
+      if (i < paramJSONArray.length())
       {
-        b(k);
+        try
+        {
+          JSONObject localJSONObject = (JSONObject)paramJSONArray.get(i);
+          if (!localJSONObject.has("pid")) {
+            break label171;
+          }
+          String str = localJSONObject.optString("pid");
+          if (!this.jdField_a_of_type_JavaUtilHashSet.add(str))
+          {
+            localStringBuilder.append(str).append(",");
+            this.jdField_a_of_type_Int += 1;
+          }
+          else
+          {
+            localArrayList.add(localJSONObject);
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          if (!QLog.isColorLevel()) {
+            break label171;
+          }
+        }
+        QLog.e("HotChatPostListAdapterQ.hotchat.aio_post_list_req", 2, "process array" + localJSONException.toString());
+      }
+      else
+      {
+        if (!localArrayList.isEmpty())
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
+          notifyDataSetChanged();
+        }
         return;
       }
-      if (!"cs.game_ad_banner_resize.local".equals(paramString1)) {
-        break;
-      }
-      paramString1 = paramString2.optJSONObject("style");
-      a(k, paramString1.optInt("x"), paramString1.optInt("y"), paramString1.optInt("w"), paramString1.optInt("h"));
-      return;
-      label208:
-      j = 0;
-      i = 0;
+      label171:
+      i += 1;
     }
   }
   
-  public void b(int paramInt)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameBannerAds", 2, new Object[] { "[hideBanner], bannerId:", Integer.valueOf(paramInt) });
+    try
+    {
+      boolean bool = this.b;
+      return bool;
     }
-    ThreadManager.getUIHandler().post(new CmGameBannerAds.3(this, paramInt));
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.b = false;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void b(JSONArray paramJSONArray)
+  {
+    if (paramJSONArray != null)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_JavaUtilHashSet.clear();
+      int i = 0;
+      for (;;)
+      {
+        if (i < paramJSONArray.length()) {
+          try
+          {
+            JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
+            String str = localJSONObject.optString("pid");
+            this.jdField_a_of_type_JavaUtilHashSet.add(str);
+            this.jdField_a_of_type_JavaUtilArrayList.add(localJSONObject);
+            i += 1;
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.e("HotChatPostListAdapterQ.hotchat.aio_post_list_req", 2, "setListItemsAndNotify JSONException:" + localJSONException.toString());
+              }
+            }
+          }
+        }
+      }
+      notifyDataSetChanged();
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_Xjm != null)
+      {
+        this.jdField_a_of_type_Xjm.a("com.tencent.biz.hotchatpostlist.widget.HotChatPostItemView");
+        this.jdField_a_of_type_Xjm = null;
+      }
+      return;
+    }
+    HotChatPostItemView.jdField_a_of_type_JavaUtilHashMap.clear();
+    HotChatPostItemView.jdField_a_of_type_JavaUtilQueue.clear();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return null;
+    }
+    return (JSONObject)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if ((paramView == null) && (this.jdField_a_of_type_Boolean)) {
+      paramView = this.jdField_a_of_type_Xjm.a("com.tencent.biz.hotchatpostlist.widget.HotChatPostItemView");
+    }
+    for (;;)
+    {
+      paramViewGroup = paramView;
+      if (paramView == null)
+      {
+        paramViewGroup = new HotChatPostItemView(this.jdField_a_of_type_AndroidContentContext);
+        if (QLog.isColorLevel()) {
+          QLog.e("HotChatPostListAdapter", 2, "loadPluginView failed");
+        }
+        this.jdField_a_of_type_Boolean = false;
+      }
+      paramView = (JSONObject)getItem(paramInt);
+      if (paramView != null) {
+        paramViewGroup.setOnClickListener(new ainl(this, paramView.optString("bid"), paramView.optString("pid")));
+      }
+      try
+      {
+        if (this.jdField_a_of_type_OrgJsonJSONObject == null)
+        {
+          this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+          paramInt = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay().getWidth();
+          this.jdField_a_of_type_OrgJsonJSONObject.put("densityDpi", this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi);
+          this.jdField_a_of_type_OrgJsonJSONObject.put("screenWidth", paramInt);
+        }
+        this.jdField_a_of_type_OrgJsonJSONObject.put("currentTime", NetConnInfoCenter.getServerTime());
+        paramView.put("extra_info_key", this.jdField_a_of_type_OrgJsonJSONObject);
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("HotChatPostListAdapter", 2, localJSONException.toString());
+          }
+        }
+        ((HotChatPostItemView)paramViewGroup).setData(paramView.toString());
+        return paramViewGroup;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        xjm.a(paramViewGroup, paramView.toString());
+        return paramViewGroup;
+      }
+    }
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new aink(this));
+    super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ainj
  * JD-Core Version:    0.7.0.1
  */

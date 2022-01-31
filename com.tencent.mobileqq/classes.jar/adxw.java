@@ -1,19 +1,19 @@
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.view.View.OnClickListener;
 
-public class adxw
+class adxw
+  implements View.OnClickListener
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public URLImageView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
+  adxw(adxv paramadxv) {}
   
-  public adxw(adxv paramadxv) {}
+  public void onClick(View paramView)
+  {
+    paramView = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(paramView)) {
+      ahix.b(this.a.a, paramView);
+    }
+  }
 }
 
 

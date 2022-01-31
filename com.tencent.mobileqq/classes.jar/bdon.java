@@ -1,48 +1,57 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
-import com.tencent.qqmini.sdk.manager.EngineManager.2;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.wadl.WadlJsBridgeDownloadInfo;
 
-public class bdon
-  implements bdol
+public final class bdon
+  implements Parcelable.Creator<WadlJsBridgeDownloadInfo>
 {
-  public bdon(EngineManager.2 param2) {}
-  
-  public void a()
+  public WadlJsBridgeDownloadInfo a(Parcel paramParcel)
   {
-    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
-    bdoi localbdoi = (bdoi)bdom.b(this.a.this$0).get(this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType);
-    if (localbdoi != null) {
-      localbdoi.b(this);
+    boolean bool2 = true;
+    WadlJsBridgeDownloadInfo localWadlJsBridgeDownloadInfo = new WadlJsBridgeDownloadInfo();
+    localWadlJsBridgeDownloadInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.d = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Long = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.g = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.j = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.jdField_f_of_type_Int = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localWadlJsBridgeDownloadInfo.jdField_b_of_type_Boolean = bool1;
+      localWadlJsBridgeDownloadInfo.l = paramParcel.readString();
+      localWadlJsBridgeDownloadInfo.h = paramParcel.readInt();
+      localWadlJsBridgeDownloadInfo.i = paramParcel.readInt();
+      localWadlJsBridgeDownloadInfo.m = paramParcel.readString();
+      if (paramParcel.readByte() == 0) {
+        break label203;
+      }
+    }
+    label203:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localWadlJsBridgeDownloadInfo.jdField_c_of_type_Boolean = bool1;
+      return localWadlJsBridgeDownloadInfo;
+      bool1 = false;
+      break;
     }
   }
   
-  public void a(float paramFloat, String paramString)
+  public WadlJsBridgeDownloadInfo[] a(int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putFloat("engineInstallerProgress", paramFloat);
-    localBundle.putString("engineInstallerMessage", paramString);
-    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(53, localBundle);
-  }
-  
-  public void b()
-  {
-    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(52, null);
-  }
-  
-  public void c()
-  {
-    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
-    bdoi localbdoi = (bdoi)bdom.b(this.a.this$0).get(this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType);
-    if (localbdoi != null) {
-      localbdoi.b(this);
-    }
+    return new WadlJsBridgeDownloadInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdon
  * JD-Core Version:    0.7.0.1
  */

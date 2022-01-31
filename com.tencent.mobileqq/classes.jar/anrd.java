@@ -1,28 +1,24 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-import com.tencent.widget.RoundBGTextView;
+import mqq.app.QQPermissionCallback;
 
-public class anrd
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+class anrd
+  implements QQPermissionCallback
 {
-  public RoundBGTextView a;
+  anrd(anqx paramanqx) {}
   
-  public anrd(ExtendFriendGroupFragment paramExtendFriendGroupFragment, ViewGroup paramViewGroup)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramViewGroup);
-    this.jdField_a_of_type_ComTencentWidgetRoundBGTextView = ((RoundBGTextView)paramViewGroup.findViewById(2131303206));
-    this.jdField_a_of_type_ComTencentWidgetRoundBGTextView.setRoundCornerSize(2);
+    bbcv.b(this.a.a);
   }
   
-  public void onClick(View paramView) {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    anqx.b(this.a);
+    axqw.b(anqx.a(this.a), "CliOper", "", "", "0X800A6D6", "0X800A6D6", 0, 0, "", "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anrd
  * JD-Core Version:    0.7.0.1
  */

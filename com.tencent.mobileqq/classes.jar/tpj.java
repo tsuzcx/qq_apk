@@ -1,21 +1,20 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-
-class tpj
-  implements tql
+public abstract interface tpj
 {
-  tpj(tpg paramtpg, StoryVideoItem paramStoryVideoItem) {}
+  public abstract void a();
   
-  public void a_(tqg paramtqg)
-  {
-    if (this.jdField_a_of_type_Tpg.isCanceled()) {
-      return;
-    }
-    urk.a(this.jdField_a_of_type_Tpg.a.a, "onPrepared, [videoView=%d]", Integer.valueOf(System.identityHashCode(paramtqg)));
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Tpg.a, "VP", SystemClock.uptimeMillis());
-    this.jdField_a_of_type_Tpg.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d();
+  
+  public abstract void d(int paramInt);
 }
 
 

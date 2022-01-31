@@ -4,9 +4,11 @@ import android.content.Context;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.TextUtils;
-import bfot;
-import bfou;
-import bgfb;
+import bbuv;
+import bgxa;
+import bgxb;
+import bhbp;
+import bhnq;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -21,33 +23,13 @@ public class CrashGuard
   private static long appLaunchTime;
   private static int crashBetweenLaunch = -1;
   private Runnable clearTimestamp;
-  private bfot crashListener;
+  private bgxa crashListener;
   AtomicBoolean isTimeOvered = new AtomicBoolean(false);
   private Handler mHandler;
   
   public static void clearFileCache(Context paramContext)
   {
-    String str = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "Android" + File.separator + "data" + File.separator + "com.qzone" + File.separator + "cache" + File.separator + "imageV2";
-    if (str != null) {
-      bgfb.a(new File(str));
-    }
-    str = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "Android" + File.separator + "data" + File.separator + "com.qzone" + File.separator + "cache" + File.separator + "video";
-    if (str != null) {
-      bgfb.a(new File(str));
-    }
-    str = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "Android" + File.separator + "data" + File.separator + "com.qzone" + File.separator + "cache" + File.separator + "paster";
-    if (str != null) {
-      bgfb.a(new File(str));
-    }
-    bgfb.a(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "Android" + File.separator + "data" + File.separator + "com.tencent.mobileqq" + File.separator + "cache" + File.separator + "video_cache"));
-    str = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "Android" + File.separator + "data" + File.separator + "com.qzone" + File.separator + "cache" + File.separator + "file";
-    if (str != null) {
-      bgfb.a(new File(str));
-    }
-    paramContext = paramContext.getFilesDir().getAbsolutePath() + File.separator + "qzone" + File.separator + "feeds";
-    if (paramContext != null) {
-      bgfb.a(new File(paramContext));
-    }
+    bhbp.a(paramContext);
   }
   
   public static int getCrashDurationAfterLaunch()
@@ -62,7 +44,7 @@ public class CrashGuard
   
   public static CrashGuard getInstance()
   {
-    return bfou.a;
+    return bgxb.a;
   }
   
   public void clearCache(BaseApplication paramBaseApplication, String paramString)
@@ -74,21 +56,21 @@ public class CrashGuard
     paramBaseApplication = paramBaseApplication.getFilesDir().getParent() + File.separator + "shared_prefs";
     if (!TextUtils.isEmpty(paramBaseApplication))
     {
-      bgfb.a(new File(paramBaseApplication + File.separator + "qz_predownload_config.xml"));
-      bgfb.a(new File(paramBaseApplication + File.separator + "QZ_Per_Config.xml"));
-      bgfb.a(new File(paramBaseApplication + File.separator + "QZONE_UNREAD.xml"));
+      bhnq.a(new File(paramBaseApplication + File.separator + "qz_predownload_config.xml"));
+      bhnq.a(new File(paramBaseApplication + File.separator + "QZ_Per_Config.xml"));
+      bhnq.a(new File(paramBaseApplication + File.separator + "QZONE_UNREAD.xml"));
     }
-    paramBaseApplication = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "MobileQQ" + File.separator + "trace";
+    paramBaseApplication = bbuv.a(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "MobileQQ" + File.separator + "trace");
     if (paramBaseApplication != null) {
-      bgfb.a(new File(paramBaseApplication));
+      bhnq.a(new File(paramBaseApplication));
     }
   }
   
-  public void onAppLaunch(long paramLong, Handler paramHandler, bfot parambfot)
+  public void onAppLaunch(long paramLong, Handler paramHandler, bgxa parambgxa)
   {
     appLaunchTime = System.currentTimeMillis();
     this.mHandler = paramHandler;
-    this.crashListener = parambfot;
+    this.crashListener = parambgxa;
     if (this.clearTimestamp == null) {
       this.clearTimestamp = new CrashGuard.1(this, paramLong);
     }

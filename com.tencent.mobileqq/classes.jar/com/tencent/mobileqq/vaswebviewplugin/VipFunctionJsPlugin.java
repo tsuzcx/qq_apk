@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import anad;
-import anah;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bajr;
-import bbac;
+import anql;
+import anqp;
+import bcdb;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
@@ -43,7 +43,7 @@ public class VipFunctionJsPlugin
     localBundle.putInt("fromeType", paramInt1);
     localBundle.putInt("result", paramInt2);
     localBundle.putStringArray("reserves", paramArrayOfString);
-    sendRemoteReq(anah.a("QQVIPFunctionReport643", "callback", this.mOnRemoteResp.key, localBundle), false, false);
+    sendRemoteReq(anqp.a("QQVIPFunctionReport643", "callback", this.mOnRemoteResp.key, localBundle), false, false);
   }
   
   private void reportToClientTo644(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String[] paramArrayOfString)
@@ -51,7 +51,7 @@ public class VipFunctionJsPlugin
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
       return;
     }
-    bajr.a(null, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramArrayOfString);
+    VipUtils.a(null, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramArrayOfString);
   }
   
   public void callPJs(String paramString1, String paramString2)

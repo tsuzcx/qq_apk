@@ -1,9 +1,12 @@
-import java.util.ArrayList;
-
-public class aves
+class aves
+  extends ajxl
 {
-  public String a;
-  public ArrayList<Integer> a;
+  aves(aver paramaver) {}
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    this.a.a(String.valueOf(paramObject));
+  }
 }
 
 

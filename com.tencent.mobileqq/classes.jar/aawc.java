@@ -1,26 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aawc
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aawc(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public aawc(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramView.getId() == 2131299411)
-    {
-      paramView = this.a.jdField_a_of_type_Aawn.a();
-      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (paramView != null))
-      {
-        begr localbegr = (begr)behe.a(this.a, null);
-        localbegr.a(2131627739, 3);
-        localbegr.c(2131625035);
-        localbegr.a(new aawd(this, paramView, localbegr));
-        localbegr.show();
-      }
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
     }
+    this.a.a(1134057, 50L, true);
   }
 }
 

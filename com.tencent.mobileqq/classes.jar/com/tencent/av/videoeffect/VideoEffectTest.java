@@ -6,8 +6,8 @@ import android.opengl.GLES20;
 import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGL10;
-import mjw;
-import mjz;
+import muv;
+import muy;
 
 public class VideoEffectTest
   implements Runnable
@@ -20,11 +20,11 @@ public class VideoEffectTest
   private javax.microedition.khronos.egl.EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   private javax.microedition.khronos.egl.EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
   private javax.microedition.khronos.egl.EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-  mjz jdField_a_of_type_Mjz = null;
+  muy jdField_a_of_type_Muy = null;
   
-  public VideoEffectTest(mjz parammjz)
+  public VideoEffectTest(muy parammuy)
   {
-    this.jdField_a_of_type_Mjz = parammjz;
+    this.jdField_a_of_type_Muy = parammuy;
   }
   
   private void c()
@@ -118,10 +118,10 @@ public class VideoEffectTest
     {
       try
       {
-        localObject = new mjw((byte[])localObject, 480, 640);
-        ((mjw)localObject).a();
-        l2 = (((mjw)localObject).a() + 0L + ((mjw)localObject).a()) / 2L;
-        ((mjw)localObject).b();
+        localObject = new muv((byte[])localObject, 480, 640);
+        ((muv)localObject).a();
+        l2 = (((muv)localObject).a() + 0L + ((muv)localObject).a()) / 2L;
+        ((muv)localObject).b();
         if (l2 > 0L) {
           continue;
         }
@@ -134,8 +134,8 @@ public class VideoEffectTest
         i = 0;
         continue;
       }
-      if (this.jdField_a_of_type_Mjz != null) {
-        this.jdField_a_of_type_Mjz.a(i, l1, GLES20.glGetString(7936), GLES20.glGetString(7937));
+      if (this.jdField_a_of_type_Muy != null) {
+        this.jdField_a_of_type_Muy.a(i, l1, GLES20.glGetString(7936), GLES20.glGetString(7937));
       }
       return;
       i = 1;
@@ -164,9 +164,9 @@ public class VideoEffectTest
     }
     catch (Throwable localThrowable)
     {
-      if (this.jdField_a_of_type_Mjz != null)
+      if (this.jdField_a_of_type_Muy != null)
       {
-        this.jdField_a_of_type_Mjz.a(0, 0L, null, null);
+        this.jdField_a_of_type_Muy.a(0, 0L, null, null);
         return;
         d();
       }

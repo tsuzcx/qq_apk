@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity.selectmember;
 
 import android.os.Handler;
 import android.os.Message;
-import azzz;
-import babh;
+import bbbd;
+import bbcl;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.mobileqq.utils.ChnToSpell;
@@ -44,7 +44,7 @@ class TroopMemberListInnerFrame$5
           this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo = localTroopMemberInfo;
           break;
         }
-        if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d.contains(localTroopMemberInfo.memberuin)) || (!azzz.d(localTroopMemberInfo.memberuin))) {
+        if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d.contains(localTroopMemberInfo.memberuin)) || (!bbbd.d(localTroopMemberInfo.memberuin))) {
           break;
         }
         if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) && (this.this$0.jdField_b_of_type_Int == 2) && (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isTroopAdmin(localTroopMemberInfo.memberuin)) && (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isTroopOwner(localTroopMemberInfo.memberuin)))
@@ -52,7 +52,7 @@ class TroopMemberListInnerFrame$5
           this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d.add(localTroopMemberInfo.memberuin);
           break;
         }
-        localTroopMemberInfo.displayedNamePinyinFirst = ChnToSpell.a(babh.h(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localTroopMemberInfo.troopuin, localTroopMemberInfo.memberuin), 2);
+        localTroopMemberInfo.displayedNamePinyinFirst = ChnToSpell.a(bbcl.h(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localTroopMemberInfo.troopuin, localTroopMemberInfo.memberuin), 2);
         String str;
         if ((localTroopMemberInfo.displayedNamePinyinFirst == null) || (localTroopMemberInfo.displayedNamePinyinFirst.length() == 0))
         {

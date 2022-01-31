@@ -33,7 +33,6 @@
                 "layout_type":"layout_relative",
                 "default_visible":"YES",
                 "below_of_view":"id_comment_title_top_gray",
-
                 "height": {
                     "type": "relative",
                     "value": "40"
@@ -83,7 +82,7 @@
                         }
                     },
                     {
-                        "view_type": "UIImageView",
+                        "view_type": "UIButton",
                         "event_type": "cmd_choose_comment_type_click",
                         "view_id": "id_comment_type_choose_icon",
                         "default_visible":"NO",
@@ -101,7 +100,18 @@
                         },
                         "attributes": {
                             "setScaleType:":"1",
-                            "loadImageWithPath:":"rij_comment_type_choose"
+                            "setImages:forStates:": [
+                                [
+                                    "rij_comment_type_choose",
+                                    "rij_comment_type_choose_highlight",
+                                    "rij_comment_type_choose_highlight"
+                                ],
+                                [
+                                    "0",
+                                    "1",
+                                    "4"
+                                ]
+                            ]
                         }
                     },
                     {

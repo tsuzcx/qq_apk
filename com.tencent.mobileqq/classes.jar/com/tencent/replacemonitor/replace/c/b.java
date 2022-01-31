@@ -6,7 +6,7 @@ import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.replacemonitor.MonitorTask;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import java.util.Map;
 
 class b
@@ -16,13 +16,13 @@ class b
   
   public void a(int paramInt1, int paramInt2, long paramLong1, String paramString1, long paramLong2, String paramString2)
   {
-    ac.c("WashMonitor", "ReplaceMonitorImpl >>onGetMonitorInfoSuccess reqId = " + paramInt1 + " appType = " + paramInt2 + " fileSize = " + paramLong1 + " apkMd5 = " + paramString1 + " runMd5FileSize = " + paramLong2 + " cpChannelId = " + paramString2);
+    ab.c("WashMonitor", "ReplaceMonitorImpl >>onGetMonitorInfoSuccess reqId = " + paramInt1 + " appType = " + paramInt2 + " fileSize = " + paramLong1 + " apkMd5 = " + paramString1 + " runMd5FileSize = " + paramLong2 + " cpChannelId = " + paramString2);
     Object localObject = (Long)a.a(this.a).get(Integer.valueOf(paramInt1));
     if (localObject != null) {}
     for (long l = ((Long)localObject).longValue();; l = 0L)
     {
       localObject = com.tencent.replacemonitor.replace.b.a.a().a(l);
-      ac.c("WashMonitor", "ReplaceMonitorImpl >>onGetMonitorInfoSuccess task = " + localObject);
+      ab.c("WashMonitor", "ReplaceMonitorImpl >>onGetMonitorInfoSuccess task = " + localObject);
       if (localObject != null)
       {
         if (((MonitorTask)localObject).fileSize <= 0L) {
@@ -51,14 +51,14 @@ class b
   
   public void a(int paramInt1, int paramInt2, String paramString)
   {
-    ac.d("WashMonitor", "ReplaceMonitorImpl >>onGetMonitorInfoFailed reqId = " + paramInt1 + " errorCode = " + paramInt2 + " errorMsg = " + paramString);
+    ab.d("WashMonitor", "ReplaceMonitorImpl >>onGetMonitorInfoFailed reqId = " + paramInt1 + " errorCode = " + paramInt2 + " errorMsg = " + paramString);
     paramString = (Long)a.a(this.a).get(Integer.valueOf(paramInt1));
     if (paramString != null) {}
     for (long l = paramString.longValue();; l = 0L)
     {
       paramString = com.tencent.replacemonitor.replace.b.a.a().a(l);
       if (paramString != null) {
-        ac.d("WashMonitor", "ReplaceMonitorImpl >>onGetMonitorInfoFailed task.packageName = " + paramString.packageName + " apkId = " + paramString.yybApkId + " appId = " + paramString.yybAppId);
+        ab.d("WashMonitor", "ReplaceMonitorImpl >>onGetMonitorInfoFailed task.packageName = " + paramString.packageName + " apkId = " + paramString.yybApkId + " appId = " + paramString.yybAppId);
       }
       return;
     }

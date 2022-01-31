@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bbce;
+import bcfe;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 
 public class SwiftBrowserTBSHandler$6
   implements Runnable
 {
-  public SwiftBrowserTBSHandler$6(bbce parambbce) {}
+  public SwiftBrowserTBSHandler$6(bcfe parambcfe) {}
   
   public void run()
   {

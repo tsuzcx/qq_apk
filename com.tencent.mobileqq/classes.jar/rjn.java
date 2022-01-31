@@ -1,18 +1,16 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import android.database.DataSetObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class rjn
-  implements TopGestureLayout.OnGestureListener
+  extends DataSetObserver
 {
-  public rjn(ViolaFragment paramViolaFragment, ViewGroup paramViewGroup) {}
+  public rjn(FastWebActivity paramFastWebActivity) {}
   
-  public void flingLToR()
+  public void onChanged()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.a.b(this.jdField_a_of_type_AndroidViewViewGroup);
+    super.onChanged();
+    if (FastWebActivity.a(this.a) == null) {}
   }
-  
-  public void flingRToL() {}
 }
 
 

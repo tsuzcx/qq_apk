@@ -1,180 +1,152 @@
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.TroopNickNameManager.2;
-import com.tencent.biz.qqstory.model.TroopNickNameManager.3;
-import com.tencent.biz.qqstory.model.TroopNickNameManager.4;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class sqo
-  implements spo
+  extends JobSegment<List<sqc>, List<sqc>>
+  implements sqe, sqi
 {
-  public static final String a;
-  ajtg jdField_a_of_type_Ajtg;
-  ajuc jdField_a_of_type_Ajuc = new sqp(this);
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public TroopManager a;
-  public Map<String, Long> a;
-  Map<String, Set<String>> b;
+  private HashMap<String, sqa> jdField_a_of_type_JavaUtilHashMap;
+  private sqp jdField_a_of_type_Sqp;
   
-  static
+  public sqo(sqp paramsqp)
   {
-    jdField_a_of_type_JavaLangString = tfy.b;
+    this.jdField_a_of_type_Sqp = paramsqp;
   }
   
-  public static String a(String paramString1, String paramString2)
+  public void a(ErrorMessage paramErrorMessage, HashMap<String, AddressItem> paramHashMap)
   {
-    return paramString1 + '_' + paramString2;
-  }
-  
-  public String a(QQUserUIItem paramQQUserUIItem, String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramQQUserUIItem == null) || (!paramQQUserUIItem.isAvailable())) {
-      return jdField_a_of_type_JavaLangString;
-    }
-    if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
-      return paramQQUserUIItem.nickName;
-    }
-    if ((!TextUtils.isEmpty(paramQQUserUIItem.qq)) && (!TextUtils.isEmpty(paramString)))
+    veg.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "handlePOIResult errorMessage=%s", new Object[] { paramErrorMessage.toString() });
+    if (paramErrorMessage.isFail())
     {
-      TroopMemberInfo localTroopMemberInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(paramString, paramQQUserUIItem.qq);
-      if (localTroopMemberInfo != null)
-      {
-        if (!TextUtils.isEmpty(localTroopMemberInfo.troopnick)) {
-          return localTroopMemberInfo.troopnick;
-        }
-      }
-      else {
-        ThreadManager.post(new TroopNickNameManager.2(this, paramString, paramQQUserUIItem, paramBoolean1, paramBoolean2), 8, null, true);
-      }
-    }
-    return paramQQUserUIItem.getDisplayName();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.b = new ConcurrentHashMap();
-    QQStoryContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = QQStoryContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
-    this.jdField_a_of_type_Ajtg = ((ajtg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajuc);
-  }
-  
-  public void a(QQUserUIItem paramQQUserUIItem, String paramString, boolean paramBoolean)
-  {
-    String str = a(paramString, paramQQUserUIItem.qq);
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-      a(paramString, paramQQUserUIItem.qq);
-    }
-    if (paramBoolean) {
-      c();
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    Set localSet = (Set)this.b.get(paramString1);
-    Object localObject = localSet;
-    if (localSet == null)
-    {
-      localObject = new HashSet();
-      this.b.put(paramString1, localObject);
-    }
-    ((Set)localObject).add(paramString2);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajuc);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  }
-  
-  public void c()
-  {
-    if (Looper.myLooper() != ThreadManager.getSubThreadLooper())
-    {
-      ThreadManager.executeOnSubThread(new TroopNickNameManager.3(this));
+      notifyError(new ErrorMessage(paramErrorMessage.errorCode, "request POI list error:" + paramErrorMessage.getErrorMessage()));
       return;
     }
-    long l = System.currentTimeMillis();
-    Iterator localIterator = this.b.entrySet().iterator();
-    int i = 0;
-    Object localObject1;
-    String str1;
-    TroopInfo localTroopInfo;
-    for (;;)
+    Object localObject;
+    if ((paramHashMap != null) && (paramHashMap.size() > 0))
     {
-      if (localIterator.hasNext())
+      paramErrorMessage = paramHashMap.entrySet().iterator();
+      while (paramErrorMessage.hasNext())
       {
-        localObject1 = (Map.Entry)localIterator.next();
-        str1 = (String)((Map.Entry)localObject1).getKey();
-        Object localObject2 = (Set)((Map.Entry)localObject1).getValue();
-        localIterator.remove();
-        localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(str1);
-        if (localTroopInfo == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopNickNameManager", 2, "troopInfo not found:" + str1);
-          }
-        }
-        else
-        {
-          localObject1 = new ArrayList(20);
-          localObject2 = ((Set)localObject2).iterator();
-          label167:
-          if (((Iterator)localObject2).hasNext())
-          {
-            String str2 = (String)((Iterator)localObject2).next();
-            this.jdField_a_of_type_JavaUtilMap.put(a(str1, str2), Long.valueOf(l));
-            ((ArrayList)localObject1).add(str2);
-            if (((ArrayList)localObject1).size() < 20) {
-              break label316;
-            }
-            this.jdField_a_of_type_Ajtg.a(str1, localTroopInfo.troopcode, (ArrayList)localObject1);
-            localObject1 = new ArrayList(20);
-            i = 1;
-          }
+        paramHashMap = (Map.Entry)paramErrorMessage.next();
+        localObject = (String)paramHashMap.getKey();
+        paramHashMap = (AddressItem)paramHashMap.getValue();
+        localObject = (sqa)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+        ((sqa)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem = paramHashMap;
+        localObject = ((sqa)localObject).jdField_a_of_type_JavaUtilList.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((sqc)((Iterator)localObject).next()).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem = paramHashMap;
         }
       }
     }
-    label314:
-    label316:
-    for (;;)
+    paramErrorMessage = new ArrayList();
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      break label167;
-      if (((ArrayList)localObject1).size() > 0)
+      paramHashMap = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      while (paramHashMap.hasNext())
       {
-        this.jdField_a_of_type_Ajtg.a(str1, localTroopInfo.troopcode, (ArrayList)localObject1);
-        i = 1;
+        localObject = (sqa)((Map.Entry)paramHashMap.next()).getValue();
+        paramErrorMessage.addAll(((sqa)localObject).jdField_a_of_type_JavaUtilList);
+        if (((sqc)((sqa)localObject).jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem == null) {
+          veg.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "后台返回的POI数据里缺少了 ：" + ((sqa)localObject).jdField_a_of_type_Srg);
+        }
       }
-      for (;;)
-      {
+    }
+    veg.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "this segment is finish  : result=%s", paramErrorMessage);
+    notifyResult(paramErrorMessage);
+  }
+  
+  public void a(ErrorMessage paramErrorMessage, List<String> paramList)
+  {
+    String str = paramErrorMessage.toString();
+    if (paramList == null) {}
+    for (int i = 0;; i = paramList.size())
+    {
+      veg.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "handleBlackResult errorMessage=%s, blackGeohash count=%d", new Object[] { str, Integer.valueOf(i) });
+      if (!paramErrorMessage.isFail()) {
         break;
-        if (i == 0) {
-          break label314;
-        }
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopNickNameManager.4(this), 30000L);
-        return;
       }
-      break;
+      notifyError(new ErrorMessage(paramErrorMessage.errorCode, "request black list error:" + paramErrorMessage.getErrorMessage()));
+      return;
     }
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramErrorMessage = paramList.iterator();
+      while (paramErrorMessage.hasNext())
+      {
+        paramList = (String)paramErrorMessage.next();
+        this.jdField_a_of_type_JavaUtilHashMap.remove(paramList);
+      }
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.size() == 0)
+    {
+      notifyResult(new ArrayList());
+      return;
+    }
+    if ((this.jdField_a_of_type_JavaUtilHashMap.size() == 1) && (this.jdField_a_of_type_JavaUtilHashMap.get("EMPTY") != null))
+    {
+      a(new ErrorMessage(), null);
+      return;
+    }
+    paramErrorMessage = new sqd();
+    paramErrorMessage.a(this.jdField_a_of_type_JavaUtilHashMap);
+    paramErrorMessage.a(this);
+    paramErrorMessage.a();
+    veg.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "sendPOIRequest total count:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()) });
+  }
+  
+  protected void a(JobContext paramJobContext, List<sqc> paramList)
+  {
+    veg.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "start PreProcessSegment piccount=%d", new Object[] { Integer.valueOf(paramList.size()) });
+    if (paramList.isEmpty())
+    {
+      notifyResult(paramList);
+      return;
+    }
+    int i = ((spq)tdc.a(30)).a().b();
+    veg.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "PreProcessSegment geohashlevel=%d", new Object[] { Integer.valueOf(i) });
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    paramJobContext = paramList.iterator();
+    while (paramJobContext.hasNext())
+    {
+      paramList = (sqc)paramJobContext.next();
+      if ((paramList.jdField_a_of_type_Double == 0.0D) && (paramList.b == 0.0D)) {}
+      for (paramList.c = "EMPTY";; paramList.c = srf.a(paramList.jdField_a_of_type_Double, paramList.b, i))
+      {
+        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramList.c)) {
+          break label192;
+        }
+        ((sqa)this.jdField_a_of_type_JavaUtilHashMap.get(paramList.c)).jdField_a_of_type_JavaUtilList.add(paramList);
+        break;
+      }
+      label192:
+      sqa localsqa = new sqa(paramList.c);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(paramList);
+      localsqa.jdField_a_of_type_JavaUtilList = localArrayList;
+      if ((!TextUtils.isEmpty(localsqa.jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(localsqa.jdField_a_of_type_JavaLangString, "EMPTY"))) {
+        localsqa.jdField_a_of_type_Srg = srf.a(localsqa.jdField_a_of_type_JavaLangString);
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramList.c, localsqa);
+    }
+    veg.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "group by geohash count:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()) });
+    if ((this.jdField_a_of_type_JavaUtilHashMap.size() == 1) && (this.jdField_a_of_type_JavaUtilHashMap.get("EMPTY") != null))
+    {
+      a(new ErrorMessage(), null);
+      return;
+    }
+    paramJobContext = new sqh();
+    paramJobContext.a(this.jdField_a_of_type_JavaUtilHashMap);
+    paramJobContext.a(this);
+    paramJobContext.a();
   }
 }
 

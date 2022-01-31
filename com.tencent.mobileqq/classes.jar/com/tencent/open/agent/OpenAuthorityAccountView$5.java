@@ -18,7 +18,7 @@ class OpenAuthorityAccountView$5
       return;
     }
     if ((localBitmap == null) && (QLog.isColorLevel())) {
-      QLog.e("AuthorityAccountView", 2, "-->updateAccountFace uin = " + this.jdField_a_of_type_JavaLangString);
+      QLog.e("OpenAuthorityAccountView", 2, "-->updateAccountFace uin = " + this.jdField_a_of_type_JavaLangString);
     }
     ((BaseActivity)OpenAuthorityAccountView.a(this.this$0)).runOnUiThread(new OpenAuthorityAccountView.5.1(this, localBitmap));
   }

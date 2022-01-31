@@ -1,29 +1,15 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import bdld;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
+import besn;
 
 class AppBrandLaunchManager$1
   implements Runnable
 {
-  AppBrandLaunchManager$1(AppBrandLaunchManager paramAppBrandLaunchManager, bdld parambdld) {}
+  AppBrandLaunchManager$1(AppBrandLaunchManager paramAppBrandLaunchManager) {}
   
   public void run()
   {
-    AppBrandLaunchManager localAppBrandLaunchManager;
-    if ((this.a != null) && (this.a.a != null))
-    {
-      localAppBrandLaunchManager = this.this$0;
-      if (this.a.a.isEngineTypeMiniGame()) {
-        break label43;
-      }
-    }
-    label43:
-    for (boolean bool = true;; bool = false)
-    {
-      localAppBrandLaunchManager.preloadExtraMiniApp(bool);
-      return;
-    }
+    besn.a().a();
   }
 }
 

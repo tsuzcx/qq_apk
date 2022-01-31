@@ -1,18 +1,19 @@
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+
 public class apax
+  extends aoyr
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public byte[] b;
-  public long c;
-  public long d;
+  int a;
+  int b;
+  
+  public apax(FileManagerEntity paramFileManagerEntity)
+  {
+    super(paramFileManagerEntity);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apax
  * JD-Core Version:    0.7.0.1
  */

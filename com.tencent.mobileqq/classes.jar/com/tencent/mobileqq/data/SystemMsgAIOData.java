@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class SystemMsgAIOData
-  extends atmo
+  extends aukm
 {
   public long msgtime;
-  @atoc
+  @auma
   public long uin;
 }
 

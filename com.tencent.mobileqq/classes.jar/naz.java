@@ -1,59 +1,58 @@
 import android.app.Activity;
-import android.view.View;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogViewForAd;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.coupon.CouponActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class naz
+  extends WebViewPlugin
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private begr jdField_a_of_type_Begr;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  
-  public naz(Activity paramActivity, AppInterface paramAppInterface)
+  public naz()
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.mPluginNameSpace = "coupon";
   }
   
-  public void a(AdvertisementInfo paramAdvertisementInfo, ArrayList<DislikeInfo> paramArrayList)
+  public void a(String paramString)
   {
-    if ((paramAdvertisementInfo == null) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    for (;;)
+    Activity localActivity = this.mRuntime.a();
+    int i;
+    if ((localActivity instanceof CouponActivity))
     {
-      return;
-      this.jdField_a_of_type_Begr = ((begr)behe.a(this.jdField_a_of_type_AndroidAppActivity, null));
-      Object localObject = new nba(this);
-      this.jdField_a_of_type_Begr.a((begz)localObject);
-      localObject = new ReadInJoyDisLikeDialogViewForAd(this.jdField_a_of_type_AndroidAppActivity);
-      ((ReadInJoyDisLikeDialogView)localObject).setOnUninterestConfirmListener(new nbb(this, paramAdvertisementInfo));
-      ((ReadInJoyDisLikeDialogView)localObject).setOnComplainListener(new nbc(this, paramAdvertisementInfo));
-      ((ReadInJoyDisLikeDialogView)localObject).setUninterestData(paramArrayList);
-      this.jdField_a_of_type_Begr.a((View)localObject, null);
-      try
+      localObject = (CouponActivity)localActivity;
+      i = ((CouponActivity)localObject).a;
+      if ((i & 0x8) != 0)
       {
-        if (!this.jdField_a_of_type_Begr.isShowing())
-        {
-          if ((befo.g()) && (!ShortVideoUtils.c()) && ((this.jdField_a_of_type_AndroidAppActivity instanceof Activity)))
-          {
-            this.jdField_a_of_type_Begr.getWindow().setFlags(8, 8);
-            this.jdField_a_of_type_Begr.getWindow().getDecorView().setSystemUiVisibility(this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getSystemUiVisibility());
-            this.jdField_a_of_type_Begr.setOnShowListener(new nbd(this));
-          }
-          this.jdField_a_of_type_Begr.show();
-          return;
-        }
-      }
-      catch (Exception paramAdvertisementInfo)
-      {
-        paramAdvertisementInfo.printStackTrace();
+        paramString = new Intent();
+        paramString.putExtra("toPage", 2);
+        ((CouponActivity)localObject).setResult(-1, paramString);
+        ((CouponActivity)localObject).superFinish();
       }
     }
+    else
+    {
+      return;
+    }
+    Object localObject = new Intent(localActivity, CouponActivity.class);
+    ((Intent)localObject).putExtra("from", (i | 0xA) & 0xE);
+    if (!TextUtils.isEmpty(paramString)) {
+      ((Intent)localObject).putExtra("jsonParams", paramString);
+    }
+    localActivity.startActivity((Intent)localObject);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("coupon".equals(paramString2))
+    {
+      if (("goToCouponHomePage".equals(paramString3)) && (paramVarArgs.length == 1))
+      {
+        a(paramVarArgs[0]);
+        paramJsBridgeListener.a(null);
+      }
+      return true;
+    }
+    return false;
   }
 }
 

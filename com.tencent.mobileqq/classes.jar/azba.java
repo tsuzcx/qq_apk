@@ -1,40 +1,32 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import android.os.Handler;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.25.1;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.25.2;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
 public class azba
-  extends azaw<azbb, azad>
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
+  public azba(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public azba(XMediaEditor paramXMediaEditor, Context paramContext)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    super(paramXMediaEditor);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.25.1(this));
+      continue;
+      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.25.2(this));
+    }
   }
-  
-  public azbb a(ViewGroup paramViewGroup)
-  {
-    return new azbb(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(View paramView, azbb paramazbb) {}
-  
-  public void a(azbb paramazbb, azad paramazad, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azba
  * JD-Core Version:    0.7.0.1
  */

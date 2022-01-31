@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.channelCover;
 
-import nto;
+import oey;
 
 public class FollowCoverView$2
   implements Runnable
 {
   public void run()
   {
-    nto.a(this.this$0);
+    oey.a(this.this$0);
   }
 }
 

@@ -1,54 +1,29 @@
-import com.tencent.TMG.utils.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.util.ArrayList;
 
 public class alsn
-  implements ajfe
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public long a;
+  public alsk a;
+  public ByteArrayOutputStream a;
+  public File a;
+  public String a;
+  public final ArrayList<Object> a;
+  public byte[] a;
+  public String b;
+  public final ArrayList<alsj> b = new ArrayList();
+  public String c;
+  
+  private alsn()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      paramObject = (Object[])paramObject;
-      if ((paramObject != null) && (paramObject.length == 1))
-      {
-        alsp localalsp = alsq.a();
-        if ((localalsp == null) || (!localalsp.a())) {
-          break label135;
-        }
-      }
-      break;
-    }
-    label135:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if ((paramInt != 0) && (!((Boolean)paramObject[0]).booleanValue())) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        alrv.c(paramBoolean);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_GET_COLOR_NOTE_RECENT_SWITCH");
-        return;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ColorNoteObserver", 0, "onUpdate: params == null || params.length != 1");
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_SET_COLOR_NOTE_RECENT_SWITCH");
-      return;
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Long = -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alsn
  * JD-Core Version:    0.7.0.1
  */

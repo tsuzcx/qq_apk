@@ -1,13 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-
 public class admr
-  implements DialogInterface.OnClickListener
+  extends acun
 {
-  public admr(QQStoryItemBuilder paramQQStoryItemBuilder) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public String b;
 }
 
 

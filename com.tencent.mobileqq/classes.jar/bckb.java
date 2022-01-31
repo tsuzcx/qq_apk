@@ -1,23 +1,44 @@
+import android.text.Spanned;
+import android.text.style.CharacterStyle;
+import java.util.Comparator;
+
 public class bckb
+  implements Comparator<CharacterStyle>
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  Spanned a;
   
-  public bckb(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public int a(CharacterStyle paramCharacterStyle1, CharacterStyle paramCharacterStyle2)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.d = paramString3;
-    this.c = paramString4;
-    this.e = paramString5;
+    int i = 1;
+    if (this.a == null) {
+      i = 0;
+    }
+    int j;
+    int k;
+    do
+    {
+      do
+      {
+        return i;
+        j = this.a.getSpanStart(paramCharacterStyle1);
+        k = this.a.getSpanStart(paramCharacterStyle2);
+        if (j != k) {
+          break;
+        }
+        j = this.a.getSpanEnd(paramCharacterStyle1);
+        k = this.a.getSpanEnd(paramCharacterStyle2);
+        if (j == k) {
+          return 0;
+        }
+      } while (j > k);
+      return -1;
+    } while (j > k);
+    return -1;
   }
   
-  public String toString()
+  public void a(Spanned paramSpanned)
   {
-    return " appId=" + this.a + ",appName=" + this.b + ",pkgName=" + this.c + ",channel=" + this.d + ",defUrl=" + this.e;
+    this.a = paramSpanned;
   }
 }
 

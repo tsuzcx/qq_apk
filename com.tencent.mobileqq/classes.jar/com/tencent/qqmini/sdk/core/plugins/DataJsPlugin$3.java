@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
-import bdnw;
+import beka;
+import besl;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class DataJsPlugin$3
   implements AsyncResult
 {
-  DataJsPlugin$3(DataJsPlugin paramDataJsPlugin, bdfz parambdfz) {}
+  DataJsPlugin$3(DataJsPlugin paramDataJsPlugin, beka parambeka) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    bdnw.a("DataJsPlugin", "onCmdListener() called with: isSuc = [" + paramBoolean + "], ret = [" + paramJSONObject + "]");
+    besl.a("DataJsPlugin", "onCmdListener() called with: isSuc = [" + paramBoolean + "], ret = [" + paramJSONObject + "]");
     if (paramBoolean)
     {
       this.val$req.a(paramJSONObject);

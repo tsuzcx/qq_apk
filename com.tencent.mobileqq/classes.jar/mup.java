@@ -1,61 +1,45 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerIndicator;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerViewPager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
 
 public class mup
-  implements ViewPager.OnPageChangeListener
 {
-  public mup(AccountDetailBannerViewPager paramAccountDetailBannerViewPager) {}
+  public int a;
+  public String a;
+  public HashMap<String, String> a;
+  public muq a;
+  public int b;
+  public int c = 60000;
   
-  public void onPageScrollStateChanged(int paramInt)
+  public mup()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AccountDetailBannerViewPager", 2, "onPageScrollStateChanged->" + paramInt);
-    }
-    AccountDetailBannerViewPager.a(this.a, paramInt);
-    if (AccountDetailBannerViewPager.a(this.a) != null)
-    {
-      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
-      }
-    }
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_b_of_type_Int = 5000;
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public String toString()
   {
-    if (AccountDetailBannerViewPager.a(this.a) != null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUrl = ").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",mConnectionTimeout = ").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",mSocketTimeout = ").append(this.c);
+    if (this.jdField_a_of_type_Muq != null)
     {
-      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
-      }
+      localStringBuilder.append(",mResult.mIsSucc = ").append(this.jdField_a_of_type_Muq.jdField_a_of_type_Boolean);
+      localStringBuilder.append(",mResult.mFileLength = ").append(this.jdField_a_of_type_Muq.jdField_a_of_type_Long);
+      localStringBuilder.append(",mResult.mErrCode = ").append(this.jdField_a_of_type_Muq.jdField_a_of_type_Int);
+      localStringBuilder.append(",mResult.mErrStr = ").append(this.jdField_a_of_type_Muq.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(",mResult.mTryCount = ").append(this.jdField_a_of_type_Muq.jdField_b_of_type_Int);
+      localStringBuilder.append(",mResult.mCostTime = ").append(this.jdField_a_of_type_Muq.jdField_b_of_type_Long).append("ms");
     }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AccountDetailBannerViewPager", 2, "onPageSelected->" + paramInt);
-    }
-    if (AccountDetailBannerViewPager.a(this.a) != null)
+    for (;;)
     {
-      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
-      }
-    }
-    if (AccountDetailBannerViewPager.a(this.a) != null) {
-      AccountDetailBannerViewPager.a(this.a).a(paramInt);
+      return localStringBuilder.toString();
+      localStringBuilder.append(",mResult = null");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mup
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,31 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ahtx
-  extends vnh
+  implements bfoq
 {
-  long jdField_a_of_type_Long;
-  ahtw jdField_a_of_type_Ahtw;
-  PublishVideoEntry jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public ahtx(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public ahtx(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = paramPublishVideoEntry;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a(ahtw paramahtw)
-  {
-    this.jdField_a_of_type_Ahtw = paramahtw;
-  }
-  
-  public void onFailure(String paramString)
-  {
-    this.jdField_a_of_type_Ahtw.a(-11);
-    if (QLog.isColorLevel()) {
-      QLog.d("EncodeVideoTask", 2, "generate files|second step fail:" + paramString);
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EncodeVideoTask", 2, "generate files|second step cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D + ", isSuccess:" + paramBoolean);
+    if (this.a.a.b.get() == 4) {
+      this.a.a(false);
     }
-    if (paramBoolean) {
-      this.jdField_a_of_type_Ahtw.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.b);
-    }
-  }
-  
-  public void onStart()
-  {
-    super.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    bace.d(this.jdField_a_of_type_JavaLangString);
-    ahtt.a(System.currentTimeMillis() - this.jdField_a_of_type_Long, 2);
-    if (QLog.isColorLevel()) {
-      QLog.d("EncodeVideoTask", 2, "generate files|second step success!");
-    }
+    this.a.a.a("FlowCameraActivity");
+    this.a.b();
+    ahub.b("", "0X800656F", "0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahtx
  * JD-Core Version:    0.7.0.1
  */

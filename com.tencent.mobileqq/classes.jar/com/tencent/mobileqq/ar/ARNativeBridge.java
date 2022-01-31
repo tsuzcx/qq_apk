@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar;
 
-import aknn;
-import akue;
+import albz;
+import aliq;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -40,7 +40,7 @@ public class ARNativeBridge
   {
     boolean bool2 = true;
     long l = System.currentTimeMillis();
-    boolean bool3 = aknn.a("ArMapEngine800", needCheckMd5);
+    boolean bool3 = albz.a(albz.a, needCheckMd5);
     if (!bool3) {}
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -63,7 +63,7 @@ public class ARNativeBridge
     {
       try
       {
-        int i = aknn.a("ArMapEngine800");
+        int i = albz.a(albz.a);
         if (i != 0) {
           continue;
         }
@@ -84,7 +84,7 @@ public class ARNativeBridge
       if (QLog.isColorLevel()) {
         QLog.d("AREngine", 2, "initSoEnvirontMent loadSoSuccess = " + loadSoSuccess);
       }
-      akue.a().f(System.currentTimeMillis() - l, loadSoSuccess);
+      aliq.a().f(System.currentTimeMillis() - l, loadSoSuccess);
       return loadSoSuccess;
       bool1 = false;
     }

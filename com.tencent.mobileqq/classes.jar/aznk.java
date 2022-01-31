@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.os.Handler;
+import android.os.Message;
 
-public class aznk
-  implements azla
+class aznk
+  extends Handler
 {
-  public aznk(TroopAIORobotLayout paramTroopAIORobotLayout) {}
+  aznk(aznj paramaznj) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 0) {}
+    if ((paramMessage.what == aznj.j) && (aznj.e == this.a.k)) {
+      aznj.a(this.a);
+    }
   }
 }
 

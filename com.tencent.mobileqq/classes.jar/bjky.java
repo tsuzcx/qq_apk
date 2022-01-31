@@ -1,24 +1,16 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.capture.view.QIMSlidingTabView;
+
 public class bjky
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static String a;
-  public static boolean a;
-  private static long[] a;
-  private static boolean jdField_b_of_type_Boolean = true;
-  private static long[] jdField_b_of_type_ArrayOfLong;
-  private static long[] c;
-  private static long[] d;
-  private static long[] e;
-  private static long[] f;
+  public bjky(QIMSlidingTabView paramQIMSlidingTabView) {}
   
-  static
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    jdField_a_of_type_ArrayOfLong = new long[20];
-    jdField_b_of_type_ArrayOfLong = new long[20];
-    c = new long[20];
-    d = new long[20];
-    e = new long[20];
-    f = new long[20];
-    jdField_a_of_type_JavaLangString = "";
+    QIMSlidingTabView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 

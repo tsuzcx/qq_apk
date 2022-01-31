@@ -1,7 +1,7 @@
 package cooperation.wadl.ipc;
 
-import bckd;
-import bgsp;
+import bdoe;
+import bibr;
 import com.tencent.qphone.base.util.QLog;
 
 class WadlProxyServiceMonitor$MonitorWorkingThread
@@ -22,7 +22,7 @@ class WadlProxyServiceMonitor$MonitorWorkingThread
         if ((WadlProxyServiceMonitor.b(this.this$0) != 0L) && (l - WadlProxyServiceMonitor.b(this.this$0) > 30000L) && (WadlProxyServiceMonitor.a(this.this$0)) && (WadlProxyServiceMonitor.a(this.this$0) != null))
         {
           if (QLog.isColorLevel()) {
-            bckd.b(WadlProxyServiceMonitor.a(), "##@<<<MonitorWorkingThread: check ipc service status...");
+            bdoe.b(WadlProxyServiceMonitor.a(), "##@<<<MonitorWorkingThread: check ipc service status...");
           }
           WadlProxyServiceMonitor.a(this.this$0).a();
         }

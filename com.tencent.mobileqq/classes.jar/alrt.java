@@ -1,72 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class alrt
-  extends alzl<alrs>
+class alrt
+  implements alrx
 {
-  public static alrs a()
-  {
-    return (alrs)alzw.a().a(549);
-  }
+  alrt(alrm paramalrm, alrw paramalrw, String paramString, alry paramalry) {}
   
-  public int a()
+  public void a(byte[] paramArrayOfByte)
   {
-    return 549;
-  }
-  
-  @NonNull
-  public alrs a(int paramInt)
-  {
-    return new alrs();
-  }
-  
-  @Nullable
-  public alrs a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Alrw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alrw.b }));
+    }
+    for (;;)
     {
-      alrs localalrs = alrs.a(paramArrayOfalzs[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteConfigProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
+      this.jdField_a_of_type_Alry.a(false);
+      return;
+      if (!alrm.b(paramArrayOfByte, this.jdField_a_of_type_Alrw.d))
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, check md5 fail, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Alrw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alrw.b, this.jdField_a_of_type_Alrw.d }));
       }
-      return localalrs;
+      else
+      {
+        String str = String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alrw.jdField_a_of_type_JavaLangString });
+        if (alrm.a(paramArrayOfByte, str)) {
+          break;
+        }
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, write to file fail, name=%s, url=%s, path=%s", new Object[] { this.jdField_a_of_type_Alrw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alrw.b, str }));
+      }
     }
-    return null;
-  }
-  
-  public Class a()
-  {
-    return alrs.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteConfigProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(alrs paramalrs) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.jdField_a_of_type_Alry.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alrt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.GroupIconHelper;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.Random;
 
 public class aufe
-  extends ajhi
+  extends awyn
 {
-  public aufe(QCallDetailActivity paramQCallDetailActivity) {}
+  OlympicToolAppInterface jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
+  Random jdField_a_of_type_JavaUtilRandom = new Random();
   
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((((ArrayList)paramObject).indexOf(QCallDetailActivity.a(this.a)) != -1) && (paramBoolean) && (QCallDetailActivity.a(this.a) == 3000)) {
-      this.a.a(QCallDetailActivity.a(this.a));
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a).equals(paramString)) && (QCallDetailActivity.a(this.a) == 3000)) {
-      this.a.a(paramString);
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public aufe(OlympicToolAppInterface paramOlympicToolAppInterface)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QCallDetailActivity", 2, " === onUpdateDiscussionFaceIcon isSuccess | " + paramBoolean1 + ", disUin | " + paramString + ",isComplete | " + paramBoolean2);
+      QLog.i("OlympicToolService", 2, "new OlympicToolService");
     }
-    if ((paramBoolean1) && (paramBoolean2) && (QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a) == 3000))
+    this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface = paramOlympicToolAppInterface;
+    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
+  }
+  
+  public AppInterface a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
+  }
+  
+  protected void a()
+  {
+    try
     {
-      String str = paramString;
-      if (GroupIconHelper.a(paramString)) {
-        str = GroupIconHelper.b(paramString);
-      }
-      if (QCallDetailActivity.a(this.a).equals(str))
-      {
-        this.a.a(QCallDetailActivity.a(this.a));
-        if (QLog.isColorLevel()) {
-          QLog.i("QCallDetailActivity", 2, "==== onUpdateDiscussionFaceIcon updateUin ===");
-        }
-      }
+      super.a();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  protected void b(boolean paramBoolean, String paramString)
+  public void a(ToServiceMsg paramToServiceMsg)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(QCallDetailActivity.a(this.a))) && (QCallDetailActivity.a(this.a).equals(paramString)) && (!this.a.isFinishing())) {
-      this.a.finish();
-    }
+    super.b(paramToServiceMsg, null, auff.class);
   }
 }
 

@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import mqq.os.MqqHandler;
 
 public class acds
+  extends MqqHandler
 {
-  public int a;
-  public atmo a;
-  public String a;
+  public acds(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public acds(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, int paramInt, atmo paramatmo)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Atmo = paramatmo;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1981: 
+      this.a.finish();
+      return;
+    }
+    this.a.d();
   }
 }
 

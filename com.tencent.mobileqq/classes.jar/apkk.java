@@ -1,54 +1,62 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class apkk
-  extends apkg
+class apkk
+  implements apii
 {
-  private int jdField_a_of_type_Int;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private AnimationTextView jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView;
+  apkk(apkj paramapkj, BaseActivity paramBaseActivity) {}
   
-  public apkk(bafb parambafb)
+  public apmx a()
   {
-    super(parambafb);
-  }
-  
-  protected int a()
-  {
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = ((int)((this.jdField_a_of_type_Bafb.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131165900)) / bajq.a));
+    Object localObject3 = null;
+    int i = 0;
+    Object localObject1;
+    switch (this.jdField_a_of_type_Apkj.a())
+    {
+    default: 
+      localObject1 = null;
     }
-    return this.jdField_a_of_type_Int;
-  }
-  
-  protected View a()
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131493328, null));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = ((AnimationTextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131311233));
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new apkl(this));
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardPreviewTextController", 2, " bindData ");
+    int j;
+    int k;
+    for (;;)
+    {
+      Object localObject2 = localObject3;
+      if (localObject1 != null)
+      {
+        localObject2 = localObject3;
+        if (((List)localObject1).size() > 0)
+        {
+          localObject2 = (apkp)((List)localObject1).get(i);
+          j = ((apkp)localObject2).c();
+          k = ((apkp)localObject2).b();
+          if (j != 7) {
+            break;
+          }
+          localObject2 = new apnd(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+        }
+      }
+      return localObject2;
+      localObject1 = this.jdField_a_of_type_Apkj.a();
+      i = this.jdField_a_of_type_Apkj.b();
+      continue;
+      localObject1 = this.jdField_a_of_type_Apkj.a();
+      i = this.jdField_a_of_type_Apkj.b();
+      continue;
+      localObject1 = new ArrayList(1);
+      ((List)localObject1).add(this.jdField_a_of_type_Apkj.a());
     }
-    if (paramString1 != null) {
-      a(paramString1);
+    if (j == 9) {
+      return new apmu(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
     }
-    if ((paramString2 != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText(new axkd(paramString2, 5, 20));
+    switch (k)
+    {
+    default: 
+      return new apls(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+    case 6000: 
+      return new aply(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
     }
+    return new apmp(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
   }
 }
 

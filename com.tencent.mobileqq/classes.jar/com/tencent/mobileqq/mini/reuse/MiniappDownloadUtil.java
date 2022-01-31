@@ -20,6 +20,7 @@ import org.json.JSONObject;
 public class MiniappDownloadUtil
 {
   private static final String TAG = "[mini] MiniappDownloadUtil";
+  public static float gDownloadProgressStep = 0.2F;
   private static volatile MiniappDownloadUtil instance;
   private Downloader resumableDownloader;
   
@@ -32,20 +33,24 @@ public class MiniappDownloadUtil
         QDLog.setLog(new MiniappDownloadUtil.1(this));
       }
       if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_use_download_optimize", 1) != 1) {
-        break label116;
+        break label143;
       }
       i = 1;
       if (i == 0) {
-        break label121;
+        break label148;
       }
       Config.setConfig(new MiniDownloadConfig());
       DownloaderFactory.getInstance(BaseApplicationImpl.getContext());
     }
-    label116:
-    label121:
+    label143:
+    label148:
     for (this.resumableDownloader = DownloaderFactory.createDownloader("mini_app_downloader");; this.resumableDownloader = DownloaderFactory.getInstance(BaseApplicationImpl.getContext()).getCommonDownloader())
     {
       this.resumableDownloader.enableResumeTransfer(true);
+      if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_https_ipdirect_enable", 1) == 1) {
+        bool = true;
+      }
+      this.resumableDownloader.setHttpsIpDirectEnable(bool);
       try
       {
         Object localObject = new QzoneIPStracyConfig();
@@ -76,6 +81,11 @@ public class MiniappDownloadUtil
     finally {}
   }
   
+  public static void preLoadDownloader()
+  {
+    getInstance();
+  }
+  
   public void abort(String paramString)
   {
     this.resumableDownloader.abort(paramString, null);
@@ -85,7 +95,7 @@ public class MiniappDownloadUtil
   {
     if (NetworkUtils.isNetworkUrl(paramString1))
     {
-      paramDownloadListener = new MiniappDownloadUtil.ProgressResampleDownloadListener(paramDownloadListener, 0.1F);
+      paramDownloadListener = new MiniappDownloadUtil.ProgressResampleDownloadListener(paramDownloadListener, gDownloadProgressStep);
       paramString1 = new DownloadRequest(paramString1, new String[] { paramString2 }, false, paramDownloadListener);
       paramString1.mode = paramDownloadMode;
       paramString1.addParam("Accept-Encoding", "gzip, deflat");

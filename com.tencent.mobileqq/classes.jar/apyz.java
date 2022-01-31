@@ -1,17 +1,13 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class apyz
-  implements View.OnClickListener
+class apyz
+  implements admw
 {
-  public apyz(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQGameMsgInfo paramQQGameMsgInfo) {}
+  apyz(apyy paramapyy) {}
   
-  public void onClick(View paramView)
+  public boolean a(int paramInt)
   {
-    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId);
+    return (aqxh.c.get()) && (paramInt == 0);
   }
 }
 

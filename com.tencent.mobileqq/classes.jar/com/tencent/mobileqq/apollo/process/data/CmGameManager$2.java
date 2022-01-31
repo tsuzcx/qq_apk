@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import aips;
+import ajcq;
 
 public class CmGameManager$2
   implements Runnable
 {
-  public CmGameManager$2(aips paramaips) {}
+  public CmGameManager$2(ajcq paramajcq) {}
   
   public void run()
   {
-    aips.a(this.this$0);
-    aips.b(this.this$0);
+    ajcq.a(this.this$0);
+    ajcq.b(this.this$0);
   }
 }
 

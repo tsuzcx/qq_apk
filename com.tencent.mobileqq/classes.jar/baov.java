@@ -1,171 +1,133 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.business.qvip.QQLevelIconConfig;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.vas.avatar.VasFaceManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class baov
-  implements Manager
+  implements View.OnClickListener
 {
-  public anbw a;
-  public angs a;
-  public aphc a;
-  public aqcl a;
-  public atwy a;
-  public bami a;
-  private baow a;
-  public bara a;
-  public QQAppInterface a;
-  public VasFaceManager a;
+  int jdField_a_of_type_Int = 1000;
+  long jdField_a_of_type_Long = 0L;
+  protected Context a;
+  protected Drawable a;
+  protected azpa a;
+  protected bado a;
+  protected SessionInfo a;
+  protected QQAppInterface a;
+  protected HashMap<Integer, bapb> a;
+  protected Drawable b;
+  protected Drawable c;
   
-  public baov(QQAppInterface paramQQAppInterface)
+  public baov(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, azpa paramazpa, bado parambado)
   {
+    this.jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Angs = new angs(paramQQAppInterface);
-    this.jdField_a_of_type_Aphc = new aphc(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager = new VasFaceManager(paramQQAppInterface);
-    this.jdField_a_of_type_Anbw = new anbw(paramQQAppInterface);
-    this.jdField_a_of_type_Atwy = new atwy(paramQQAppInterface);
-    this.jdField_a_of_type_Bami = new bami(paramQQAppInterface);
-    this.jdField_a_of_type_Aqcl = new aqcl(paramQQAppInterface);
-    this.jdField_a_of_type_Bara = new bara(paramQQAppInterface);
-    this.jdField_a_of_type_Baow = new baow();
-    AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApp(), this.jdField_a_of_type_Baow);
+    this.jdField_a_of_type_Azpa = paramazpa;
+    this.jdField_a_of_type_Bado = parambado;
   }
   
-  public static String a(int paramInt)
+  protected int a(int paramInt)
   {
-    int i = paramInt & 0xF;
-    String str = null;
-    if (i == 1)
+    switch (paramInt)
     {
-      str = amio.c().mNotifyPaymentText;
-      if (TextUtils.isEmpty(str)) {
-        break label112;
-      }
-      i = 0;
-      switch (paramInt >> 4)
-      {
-      default: 
-        paramInt = i;
+    }
+    return 0;
+  }
+  
+  public View a(TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2)) != null) {
+      return null;
+    }
+    int i = a(paramTroopFeedItem.type);
+    bapb localbapb2 = (bapb)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+    bapb localbapb1 = localbapb2;
+    if (localbapb2 == null)
+    {
+      localbapb1 = a(i);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localbapb1);
+    }
+    if (localbapb1 != null) {
+      return localbapb1.a(paramTroopFeedItem, paramInt, paramBoolean);
+    }
+    return null;
+  }
+  
+  protected bapb a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return new baoy(this);
+    case 0: 
+      return new baoy(this);
+    }
+    return new bapc(this);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(2));
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((paramView.getTag() instanceof baox))
+    {
+      this.jdField_a_of_type_Bado.b(true);
+      break label18;
+    }
+    label18:
+    while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long < this.jdField_a_of_type_Int) {
+      return;
+    }
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    int i;
+    if ((localTroopInfo != null) && (str != null)) {
+      if (str.equals(localTroopInfo.troopowneruin)) {
+        i = 0;
       }
     }
     for (;;)
     {
-      if (paramInt == 0) {
-        break label112;
-      }
-      return str.replace("[vip]", BaseApplicationImpl.getContext().getResources().getString(paramInt));
-      if (i != 2) {
+      localIntent.putExtra("url", String.format("http://web.qun.qq.com/qqweb/m/qun/notification/index.html?gc=%s&role=%d&_bid=2223&_wv=1031", new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, Integer.valueOf(i) }));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      paramView = paramView.getTag();
+      if (!(paramView instanceof bapa)) {
         break;
       }
-      str = amio.c().mExpiredNotifyPaymentText;
-      break;
-      paramInt = 2131629804;
-      continue;
-      paramInt = 2131654075;
-      continue;
-      paramInt = 2131624903;
-    }
-    label112:
-    return "";
-  }
-  
-  public static boolean a()
-  {
-    if (baud.a().a())
-    {
-      if (badq.b(BaseApplicationImpl.getApplication()) == 0)
-      {
-        baud.a().a(null, false);
-        return true;
+      paramView = ((bapa)paramView).a;
+      if ((paramView == null) || (!paramView.isStoryType())) {
+        break;
       }
-      QLog.d("KC.TMSManager", 1, "can only query in mobile connection");
-      return true;
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "notice_center", "Clk_story_pgc", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+      return;
+      if ((localTroopInfo.Administrator != null) && (localTroopInfo.Administrator.contains(str))) {
+        i = 1;
+      } else {
+        i = 2;
+      }
     }
-    QLog.d("KC.TMSManager", 1, "tms can not work");
-    return false;
-  }
-  
-  public static String b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 17: 
-    case 33: 
-      return "mvip.n.a.qlevel_cuifei";
-    case 18: 
-    case 34: 
-      return "mvip.n.a.qlevel_guoqi";
-    case 49: 
-      return "jhan_qlevel_cuifei";
-    }
-    return "jhan_qlevel_guoqi";
-  }
-  
-  public static String c(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 17: 
-    case 18: 
-      return "LTMCLUB";
-    case 33: 
-    case 34: 
-      return "CJCLUBT";
-    }
-    return "SVHHZLH";
-  }
-  
-  public int a()
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    return BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).getInt("is_show_qq_level_notice", 0);
-  }
-  
-  public void a(int paramInt)
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    QLog.e("QQLevelNotice", 1, "setShowQQLevelNoticeValue: " + paramInt + ", " + str);
-    BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).edit().putInt("is_show_qq_level_notice", paramInt).commit();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).edit().putBoolean("is_show_host_qq_level_guide", paramBoolean).commit();
-  }
-  
-  public boolean b()
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    return BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).getBoolean("is_show_host_qq_level_guide", true);
-  }
-  
-  public void onDestroy()
-  {
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Baow);
-    this.jdField_a_of_type_Aphc.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager.onDestroy();
-    this.jdField_a_of_type_Bara.a();
-    this.jdField_a_of_type_Bami.onDestroy();
-    this.jdField_a_of_type_Aqcl.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baov
  * JD-Core Version:    0.7.0.1
  */

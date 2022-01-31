@@ -2,15 +2,15 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.databinding;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import pux;
-import pva;
-import pvb;
+import qgv;
+import qgy;
+import qgz;
 
 public class ObservableArrayList<T>
   extends ArrayList<T>
-  implements pva<T>
+  implements qgy<T>
 {
-  private transient pux a = new pux();
+  private transient qgv a = new qgv();
   
   private void a(int paramInt1, int paramInt2)
   {
@@ -58,12 +58,12 @@ public class ObservableArrayList<T>
     return bool;
   }
   
-  public void addOnListChangedCallback(pvb parampvb)
+  public void addOnListChangedCallback(qgz paramqgz)
   {
     if (this.a == null) {
-      this.a = new pux();
+      this.a = new qgv();
     }
-    this.a.a(parampvb);
+    this.a.a(paramqgz);
   }
   
   public void clear()
@@ -93,10 +93,10 @@ public class ObservableArrayList<T>
     return false;
   }
   
-  public void removeOnListChangedCallback(pvb parampvb)
+  public void removeOnListChangedCallback(qgz paramqgz)
   {
     if (this.a != null) {
-      this.a.b(parampvb);
+      this.a.b(paramqgz);
     }
   }
   

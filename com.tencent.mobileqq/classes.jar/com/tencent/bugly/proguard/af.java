@@ -1,42 +1,45 @@
 package com.tencent.bugly.proguard;
 
-import javax.crypto.Cipher;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.DESKeySpec;
-import javax.crypto.spec.IvParameterSpec;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 
 public final class af
-  implements ag
+  implements ae
 {
-  private String a = null;
-  
-  public final void a(String paramString)
-  {
-    if (paramString != null) {
-      this.a = paramString;
-    }
-  }
-  
   public final byte[] a(byte[] paramArrayOfByte)
   {
-    if ((this.a == null) || (paramArrayOfByte == null)) {
-      return null;
-    }
-    Cipher localCipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
-    DESKeySpec localDESKeySpec = new DESKeySpec(this.a.getBytes("UTF-8"));
-    localCipher.init(2, SecretKeyFactory.getInstance("DES").generateSecret(localDESKeySpec), new IvParameterSpec(this.a.getBytes("UTF-8")));
-    return localCipher.doFinal(paramArrayOfByte);
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream(localByteArrayOutputStream);
+    localGZIPOutputStream.write(paramArrayOfByte);
+    localGZIPOutputStream.finish();
+    localGZIPOutputStream.close();
+    paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+    localByteArrayOutputStream.close();
+    return paramArrayOfByte;
   }
   
   public final byte[] b(byte[] paramArrayOfByte)
   {
-    if ((this.a == null) || (paramArrayOfByte == null)) {
-      return null;
+    paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
+    GZIPInputStream localGZIPInputStream = new GZIPInputStream(paramArrayOfByte);
+    byte[] arrayOfByte = new byte[1024];
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    for (;;)
+    {
+      int i = localGZIPInputStream.read(arrayOfByte, 0, arrayOfByte.length);
+      if (i == -1) {
+        break;
+      }
+      localByteArrayOutputStream.write(arrayOfByte, 0, i);
     }
-    Cipher localCipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
-    DESKeySpec localDESKeySpec = new DESKeySpec(this.a.getBytes("UTF-8"));
-    localCipher.init(1, SecretKeyFactory.getInstance("DES").generateSecret(localDESKeySpec), new IvParameterSpec(this.a.getBytes("UTF-8")));
-    return localCipher.doFinal(paramArrayOfByte);
+    arrayOfByte = localByteArrayOutputStream.toByteArray();
+    localByteArrayOutputStream.flush();
+    localByteArrayOutputStream.close();
+    localGZIPInputStream.close();
+    paramArrayOfByte.close();
+    return arrayOfByte;
   }
 }
 

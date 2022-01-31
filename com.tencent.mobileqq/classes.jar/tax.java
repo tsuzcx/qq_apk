@@ -1,82 +1,62 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqWatchVideoBatch;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideoBatch;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.VideoItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.HashMap;
 
 public class tax
-  extends slz<tcg>
 {
-  public static final String a;
-  public ArrayList<spx> a;
-  public int c;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = skt.a("StorySvc.video_watch_batch");
-  }
+  private static LruCache<String, CharSequence> jdField_a_of_type_AndroidSupportV4UtilLruCache;
+  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  private static tax jdField_a_of_type_Tax;
+  public String a;
   
   public tax()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public String a()
+  public static tax a()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public slu a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspWatchVideoBatch localRspWatchVideoBatch = new qqstory_service.RspWatchVideoBatch();
-    try
+    if (jdField_a_of_type_Tax == null)
     {
-      localRspWatchVideoBatch.mergeFrom(paramArrayOfByte);
-      return new tcg(localRspWatchVideoBatch);
+      jdField_a_of_type_Tax = new tax();
+      jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(150);
+      jdField_a_of_type_JavaUtilHashMap = new HashMap();
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        urk.d("Q.qqstory:WatchVideoBatchRequest", paramArrayOfByte.toString());
-      }
+    return jdField_a_of_type_Tax;
+  }
+  
+  public static void a()
+  {
+    if (jdField_a_of_type_AndroidSupportV4UtilLruCache != null) {
+      jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
     }
   }
   
-  protected byte[] a()
+  public CharSequence a(String paramString)
   {
-    qqstory_service.ReqWatchVideoBatch localReqWatchVideoBatch = new qqstory_service.ReqWatchVideoBatch();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    if (localIterator.hasNext())
-    {
-      spx localspx = (spx)localIterator.next();
-      qqstory_service.VideoItem localVideoItem = new qqstory_service.VideoItem();
-      localVideoItem.vid.set(ByteStringMicro.copyFromUtf8(localspx.jdField_a_of_type_JavaLangString));
-      Object localObject = a(localspx.b);
-      localVideoItem.to_union_id.set(ByteStringMicro.copyFromUtf8((String)localObject));
-      localObject = localVideoItem.is_live_video;
-      if (localspx.jdField_a_of_type_Boolean) {}
-      for (int i = 1;; i = 0)
-      {
-        ((PBUInt32Field)localObject).set(i);
-        localVideoItem.create_time.set(localspx.jdField_a_of_type_Long / 1000L);
-        localVideoItem.source.set(localspx.jdField_a_of_type_Int);
-        localReqWatchVideoBatch.video_list.add(localVideoItem);
-        break;
-      }
-    }
-    return localReqWatchVideoBatch.toByteArray();
+    return (CharSequence)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
   }
   
-  public String toString()
+  public void a(CommentEntry paramCommentEntry)
   {
-    return "WatchVideoBatchRequest{seq=" + this.c + "mVideoList=" + this.jdField_a_of_type_JavaUtilArrayList + "}";
+    if (paramCommentEntry == null) {
+      return;
+    }
+    paramCommentEntry = paramCommentEntry.feedId + paramCommentEntry.replyTime;
+    if (jdField_a_of_type_JavaUtilHashMap.get(paramCommentEntry) == null)
+    {
+      jdField_a_of_type_JavaUtilHashMap.put(paramCommentEntry, Integer.valueOf(1));
+      return;
+    }
+    int i = ((Integer)jdField_a_of_type_JavaUtilHashMap.get(paramCommentEntry)).intValue();
+    jdField_a_of_type_JavaUtilHashMap.put(paramCommentEntry, Integer.valueOf(i + 1));
+  }
+  
+  public void a(String paramString, CharSequence paramCharSequence)
+  {
+    if (a(paramString) == null) {
+      jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, paramCharSequence);
+    }
   }
 }
 

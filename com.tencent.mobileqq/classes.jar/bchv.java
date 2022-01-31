@@ -1,15 +1,23 @@
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public abstract interface bchv
+  extends bcci
 {
-  public abstract void a(String paramString);
+  public abstract void a(boolean paramBoolean);
   
-  public abstract void a(ArrayList<ApkUpdateDetail> paramArrayList);
+  public abstract String b();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract CustomWebView getWebView();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bchv
  * JD-Core Version:    0.7.0.1
  */

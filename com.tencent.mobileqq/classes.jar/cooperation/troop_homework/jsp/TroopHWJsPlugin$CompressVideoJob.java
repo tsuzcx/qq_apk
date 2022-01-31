@@ -5,10 +5,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.text.TextUtils;
-import bbac;
-import bgnv;
-import bgoe;
-import bgof;
+import bbuv;
+import bcdb;
+import bhwp;
+import bhxb;
+import bhxc;
+import com.tencent.mm.vfs.VFSFile;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
@@ -19,22 +21,22 @@ import java.util.Set;
 class TroopHWJsPlugin$CompressVideoJob
   implements Runnable
 {
-  private bgoe jdField_a_of_type_Bgoe;
+  private bhxb jdField_a_of_type_Bhxb;
   private HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap;
   
-  public TroopHWJsPlugin$CompressVideoJob(bgoe parambgoe, HashMap<Integer, String> paramHashMap)
+  public TroopHWJsPlugin$CompressVideoJob(bhxb parambhxb, HashMap<Integer, String> paramHashMap)
   {
     Object localObject;
     this.jdField_a_of_type_JavaUtilHashMap = localObject;
-    this.jdField_a_of_type_Bgoe = paramHashMap;
+    this.jdField_a_of_type_Bhxb = paramHashMap;
   }
   
   public void run()
   {
     Context localContext = this.this$0.mRuntime.a().getApplicationContext();
-    File localFile = new File(TroopHWJsPlugin.a);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    VFSFile localVFSFile = new VFSFile(TroopHWJsPlugin.a);
+    if (!localVFSFile.exists()) {
+      localVFSFile.mkdirs();
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
     while (localIterator.hasNext())
@@ -53,16 +55,16 @@ class TroopHWJsPlugin$CompressVideoJob
         try
         {
           localBitmap = TroopHWJsPlugin.a(this.this$0, i, (String)localObject);
-          str = localFile.getAbsolutePath() + new File((String)localObject).getName();
+          str = bbuv.a(localVFSFile.getAbsolutePath() + "/" + new File((String)localObject).getName());
           this.this$0.a(i, 0.05F);
-          j = bgnv.a(localContext, (String)localObject, str);
+          j = bhwp.a(localContext, (String)localObject, str);
           this.this$0.a(i, 0.1F);
           if (j != 1) {
-            break label298;
+            break label306;
           }
-          localObject = this.this$0.a(this.this$0, i, (String)localObject, localBitmap, this.jdField_a_of_type_Bgoe, 2);
+          localObject = this.this$0.a(this.this$0, i, (String)localObject, localBitmap, this.jdField_a_of_type_Bhxb, 2);
           this.this$0.b.put(Integer.valueOf(i), localObject);
-          ((bgof)localObject).a();
+          ((bhxc)localObject).a();
         }
         catch (Exception localException)
         {
@@ -70,22 +72,22 @@ class TroopHWJsPlugin$CompressVideoJob
           TroopHWJsPlugin.a(this.this$0).sendEmptyMessage(0);
         }
         continue;
-        label298:
-        bgof localbgof;
+        label306:
+        bhxc localbhxc;
         if ((j == 0) && (new File(str).exists()))
         {
-          localbgof = this.this$0.a(this.this$0, i, str, localBitmap, this.jdField_a_of_type_Bgoe, 2);
-          this.this$0.b.put(Integer.valueOf(i), localbgof);
-          localbgof.a();
+          localbhxc = this.this$0.a(this.this$0, i, str, localBitmap, this.jdField_a_of_type_Bhxb, 2);
+          this.this$0.b.put(Integer.valueOf(i), localbhxc);
+          localbhxc.a();
         }
         else
         {
           if (QLog.isColorLevel()) {
             QLog.w("TroopHWJsPlugin", 2, "CompressVideoJob failed:" + j);
           }
-          localbgof = this.this$0.a(this.this$0, i, localbgof, localBitmap, this.jdField_a_of_type_Bgoe, 2);
-          this.this$0.b.put(Integer.valueOf(i), localbgof);
-          localbgof.a();
+          localbhxc = this.this$0.a(this.this$0, i, localbhxc, localBitmap, this.jdField_a_of_type_Bhxb, 2);
+          this.this$0.b.put(Integer.valueOf(i), localbhxc);
+          localbhxc.a();
         }
       }
       else

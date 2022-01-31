@@ -1,35 +1,26 @@
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class uka
-  extends sgc
+  extends mxm
 {
-  uka(ujx paramujx) {}
+  uka(ujx paramujx, boolean paramBoolean) {}
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
+    if (paramInt != 0)
     {
-      urk.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new comment push: %s", new Object[] { paramStoryPushMsg });
-      this.a.a(paramStoryPushMsg.d);
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramArrayOfByte.a(3, bool);
+        this.a.a(0, this.a.a.getString(2131720533));
+        return;
+      }
     }
-    do
-    {
-      return;
-      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 18))
-      {
-        urk.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new like push: %s", new Object[] { paramStoryPushMsg });
-        this.a.b(paramStoryPushMsg.d);
-        return;
-      }
-      if (paramStoryPushMsg.a == 17)
-      {
-        urk.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete comment push: %s", new Object[] { paramStoryPushMsg });
-        ((spd)sqg.a(17)).a(paramStoryPushMsg.d, paramStoryPushMsg.c);
-        return;
-      }
-    } while (paramStoryPushMsg.a != 16);
-    urk.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete like push: %s", new Object[] { paramStoryPushMsg });
-    this.a.b(paramStoryPushMsg.d);
+    ((ssw)this.a.a.app.getManager(181)).b(this.b);
   }
 }
 

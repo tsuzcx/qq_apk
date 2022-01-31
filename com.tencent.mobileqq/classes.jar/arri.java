@@ -1,19 +1,38 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class arri
+class arri
+  implements EIPCResultCallback
 {
-  public String a = "MsgBackup." + getClass().getSimpleName();
+  arri(arrg paramarrg) {}
   
-  public void a(String paramString)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (arsc.a) {
-      QLog.d(this.a, 2, paramString);
+    int i = 0;
+    JSONObject localJSONObject;
+    if (!TextUtils.isEmpty(arrg.a(this.a))) {
+      localJSONObject = new JSONObject();
     }
-  }
-  
-  protected boolean a(String paramString)
-  {
-    return bace.a(paramString);
+    try
+    {
+      if (paramEIPCResult.data.getBoolean("result")) {}
+      for (;;)
+      {
+        localJSONObject.put("result", i);
+        this.a.callJs(arrg.a(this.a), new String[] { localJSONObject.toString() });
+        return;
+        i = 1;
+      }
+      return;
+    }
+    catch (JSONException paramEIPCResult)
+    {
+      paramEIPCResult.printStackTrace();
+    }
   }
 }
 

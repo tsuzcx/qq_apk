@@ -1,11 +1,33 @@
-class svd
-  implements begy
+import android.annotation.TargetApi;
+import java.util.List;
+
+@TargetApi(14)
+public class svd
+  implements suo
 {
-  svd(svc paramsvc, ssm paramssm) {}
+  public int a;
   
-  public void onDismiss()
+  public void a()
   {
-    urp.a("msg_tab", "clk_press", 0, 0, new String[] { this.jdField_a_of_type_Ssm.jdField_a_of_type_Int + "", "8", "", this.jdField_a_of_type_Ssm.jdField_a_of_type_JavaLangString });
+    ((suw)tdc.a(6)).a(this.a);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public void a(List<sul> paramList, boolean paramBoolean)
+  {
+    if (paramList == null) {
+      return;
+    }
+    ((suw)tdc.a(6)).a(paramList, this.a, paramBoolean);
+  }
+  
+  public void a(sup paramsup)
+  {
+    ((suw)tdc.a(6)).a(paramsup);
   }
 }
 

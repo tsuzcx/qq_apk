@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.minigame.jsapi.plugins;
 
-import ajjy;
+import ajyc;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import baip;
+import bbjw;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -147,7 +148,7 @@ public class OpenDataPlugin
     for (boolean bool2 = true;; bool2 = false)
     {
       paramString2 = new ShareChatModel(0, 0L, paramString2);
-      if ((!baip.a(paramString4)) && ((bool1) || (bool2))) {
+      if ((!bbjw.a(paramString4)) && ((bool1) || (bool2))) {
         break label326;
       }
       this.jsPluginEngine.appBrandRuntime.startShare(paramString3, GameWnsUtils.defaultShareImg(), paramString5, "", "", "", null, paramString2, 11, 5, paramString1, paramJsRuntime);
@@ -177,12 +178,12 @@ public class OpenDataPlugin
       modifyFriendInteractiveStorage(paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, paramJsRuntime, paramInt2, paramString8, paramString9);
       return;
     }
-    showQQCustomModel(str2, str1, "确认" + paramString8, Boolean.valueOf(false), "", new OpenDataPlugin.6(this, paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, paramJsRuntime, paramInt2, paramString8, paramString9));
+    showQQCustomModel(str2, str1, "确认" + paramString8, Boolean.valueOf(false), "", new OpenDataPlugin.6(this, paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, paramJsRuntime, paramInt2, paramString8, paramString9), null, new OpenDataPlugin.7(this, paramJsRuntime, paramInt2));
   }
   
-  private void showQQCustomModel(String paramString1, String paramString2, String paramString3, Boolean paramBoolean, String paramString4, DialogInterface.OnClickListener paramOnClickListener)
+  private void showQQCustomModel(String paramString1, String paramString2, String paramString3, Boolean paramBoolean, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppBrandTask.runTaskOnUiThread(new OpenDataPlugin.7(this, paramString1, paramString2, paramString3, paramOnClickListener, paramBoolean, paramString4));
+    AppBrandTask.runTaskOnUiThread(new OpenDataPlugin.8(this, paramString1, paramString2, paramString3, paramOnClickListener1, paramBoolean, paramString4, paramOnClickListener2, paramOnCancelListener));
   }
   
   public void getFriendCloudStorage(String[] paramArrayOfString, JsRuntime paramJsRuntime, int paramInt)
@@ -193,7 +194,7 @@ public class OpenDataPlugin
     for (String str = Arrays.toString(paramArrayOfString);; str = "")
     {
       localGameLog.i("OpenDataPlugin", str);
-      MiniAppCmdUtil.getInstance().getFriendCloudStorage(GameInfoManager.g().getAppId(), paramArrayOfString, new OpenDataPlugin.10(this, paramJsRuntime, paramInt));
+      MiniAppCmdUtil.getInstance().getFriendCloudStorage(GameInfoManager.g().getAppId(), paramArrayOfString, new OpenDataPlugin.11(this, paramJsRuntime, paramInt));
       return;
     }
   }
@@ -206,7 +207,7 @@ public class OpenDataPlugin
       try
       {
         paramString.put("state", "fail");
-        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "getGroupCloudStorage", paramString, ajjy.a(2131642068), paramInt);
+        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "getGroupCloudStorage", paramString, ajyc.a(2131707853), paramInt);
         return;
       }
       catch (JSONException paramString)
@@ -216,7 +217,7 @@ public class OpenDataPlugin
         return;
       }
     }
-    MiniAppCmdUtil.getInstance().getGroupCloudStorage(GameInfoManager.g().getAppId(), paramString, paramArrayOfString, new OpenDataPlugin.9(this, paramJsRuntime, paramInt));
+    MiniAppCmdUtil.getInstance().getGroupCloudStorage(GameInfoManager.g().getAppId(), paramString, paramArrayOfString, new OpenDataPlugin.10(this, paramJsRuntime, paramInt));
   }
   
   public void getUserCloudStorage(String[] paramArrayOfString, JsRuntime paramJsRuntime, int paramInt)
@@ -232,7 +233,7 @@ public class OpenDataPlugin
       }
       return;
     }
-    paramJsRuntime = new OpenDataPlugin.8(this, paramJsRuntime, paramInt);
+    paramJsRuntime = new OpenDataPlugin.9(this, paramJsRuntime, paramInt);
     MiniAppCmdUtil.getInstance().getUserCloudStorage(GameInfoManager.g().getAppId(), paramArrayOfString, paramJsRuntime);
   }
   
@@ -246,7 +247,7 @@ public class OpenDataPlugin
     if ("getUserCloudStorage".equals(paramString1)) {}
     int i;
     label124:
-    Object localObject;
+    Object localObject1;
     for (;;)
     {
       try
@@ -258,7 +259,7 @@ public class OpenDataPlugin
         paramString1 = new String[paramString2.length()];
         i = 0;
         if (i >= paramString2.length()) {
-          break label1885;
+          break label1981;
         }
         paramString1[i] = ((String)paramString2.get(i));
         i += 1;
@@ -285,7 +286,7 @@ public class OpenDataPlugin
             paramString1 = new String[paramString2.length()];
             i = 0;
             if (i >= paramString2.length()) {
-              break label1888;
+              break label1984;
             }
             paramString1[i] = ((String)paramString2.get(i));
             i += 1;
@@ -309,16 +310,16 @@ public class OpenDataPlugin
           {
             paramString1 = new JSONObject(paramString2);
             paramString2 = paramString1.optString("shareTicket");
-            localObject = paramString1.optJSONArray("keyList");
-            if (localObject == null) {
+            localObject1 = paramString1.optJSONArray("keyList");
+            if (localObject1 == null) {
               break label430;
             }
-            paramString1 = new String[((JSONArray)localObject).length()];
+            paramString1 = new String[((JSONArray)localObject1).length()];
             i = 0;
-            if (i >= ((JSONArray)localObject).length()) {
-              break label1891;
+            if (i >= ((JSONArray)localObject1).length()) {
+              break label1987;
             }
-            paramString1[i] = ((String)((JSONArray)localObject).get(i));
+            paramString1[i] = ((String)((JSONArray)localObject1).get(i));
             i += 1;
             continue;
             label382:
@@ -345,7 +346,7 @@ public class OpenDataPlugin
             paramString1 = new String[paramString2.length()];
             i = 0;
             if (i >= paramString2.length()) {
-              break label1894;
+              break label1990;
             }
             paramString1[i] = ((String)paramString2.get(i));
             i += 1;
@@ -373,8 +374,8 @@ public class OpenDataPlugin
             i = 0;
             while (i < paramString1.length())
             {
-              localObject = paramString1.getJSONObject(i);
-              paramString2.put(((JSONObject)localObject).get("key").toString(), ((JSONObject)localObject).get("value").toString());
+              localObject1 = paramString1.getJSONObject(i);
+              paramString2.put(((JSONObject)localObject1).get("key").toString(), ((JSONObject)localObject1).get("value").toString());
               i += 1;
             }
           }
@@ -416,65 +417,92 @@ public class OpenDataPlugin
       else if ("modifyFriendInteractiveStorage".equals(paramString1))
       {
         String str4;
-        int k;
+        int m;
         String str5;
         String str6;
         String str7;
         String str8;
         Boolean localBoolean;
         String str1;
-        try
+        int j;
+        for (;;)
         {
-          localObject = new JSONObject(paramString2);
-          str4 = ((JSONObject)localObject).getString("key");
-          k = ((JSONObject)localObject).getInt("opNum");
-          str5 = ((JSONObject)localObject).getString("operation");
-          str6 = ((JSONObject)localObject).optString("title");
-          str7 = ((JSONObject)localObject).optString("imageUrl");
-          str8 = ((JSONObject)localObject).optString("imageUrlId");
-          localBoolean = Boolean.valueOf(((JSONObject)localObject).optBoolean("quiet"));
-          paramString1 = "";
-          paramString2 = "";
-          int j = -1;
-          String str2 = "";
-          String str3 = "";
-          localObject = ((JSONObject)localObject).optJSONObject("friendInfo");
-          if (localObject != null)
+          try
           {
-            paramString1 = ((JSONObject)localObject).getString("openid");
-            paramString2 = ((JSONObject)localObject).getString("nickname");
-          }
-          JSONObject localJSONObject = ((GameActivity)this.jsPluginEngine.getActivityContext()).getGameConfigJson();
-          str1 = str2;
-          localObject = str3;
-          i = j;
-          if (localJSONObject != null)
-          {
-            localJSONObject = localJSONObject.optJSONObject("modifyFriendInteractiveStorageTemplates");
-            str1 = str2;
-            localObject = str3;
-            i = j;
-            if (localJSONObject != null)
+            localObject1 = new JSONObject(paramString2);
+            str4 = ((JSONObject)localObject1).getString("key");
+            m = ((JSONObject)localObject1).getInt("opNum");
+            str5 = ((JSONObject)localObject1).getString("operation");
+            str6 = ((JSONObject)localObject1).optString("title");
+            str7 = ((JSONObject)localObject1).optString("imageUrl");
+            str8 = ((JSONObject)localObject1).optString("imageUrlId");
+            localBoolean = Boolean.valueOf(((JSONObject)localObject1).optBoolean("quiet"));
+            paramString1 = "";
+            paramString2 = "";
+            int k = -1;
+            String str2 = "";
+            String str3 = "";
+            localObject1 = ((JSONObject)localObject1).optJSONObject("friendInfo");
+            if (localObject1 != null)
             {
-              i = localJSONObject.optInt("ratio");
-              str1 = localJSONObject.optString("action");
-              localObject = localJSONObject.optString("object");
+              paramString1 = ((JSONObject)localObject1).getString("openid");
+              paramString2 = ((JSONObject)localObject1).getString("nickname");
             }
+            Object localObject2 = ((GameActivity)this.jsPluginEngine.getActivityContext()).getGameConfigJson();
+            str1 = str2;
+            localObject1 = str3;
+            j = k;
+            if (localObject2 != null)
+            {
+              localObject2 = ((JSONObject)localObject2).optJSONArray("modifyFriendInteractiveStorageTemplates");
+              str1 = str2;
+              localObject1 = str3;
+              j = k;
+              if (localObject2 != null)
+              {
+                str1 = str2;
+                localObject1 = str3;
+                j = k;
+                if (((JSONArray)localObject2).length() > 0)
+                {
+                  i = 0;
+                  str1 = str2;
+                  localObject1 = str3;
+                  j = k;
+                  if (i < ((JSONArray)localObject2).length())
+                  {
+                    localObject1 = ((JSONArray)localObject2).getJSONObject(i);
+                    if (localObject1 == null) {
+                      break label1342;
+                    }
+                    str1 = ((JSONObject)localObject1).optString("key");
+                    if ((TextUtils.isEmpty(str1)) || (!str1.equals(str4))) {
+                      break label1342;
+                    }
+                    j = ((JSONObject)localObject1).optInt("ratio");
+                    str1 = ((JSONObject)localObject1).optString("action");
+                    localObject1 = ((JSONObject)localObject1).optString("object");
+                  }
+                }
+              }
+            }
+            if (!localBoolean.booleanValue()) {
+              break label1351;
+            }
+            modifyFriendInteractiveStorage(str4, m, str5, paramString1, paramString2, str6, str7, str8, localBoolean, paramJsRuntime, paramInt, str1, (String)localObject1);
           }
-          if (!localBoolean.booleanValue()) {
-            break label1255;
+          catch (Throwable paramString1)
+          {
+            GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramString1.getMessage());
+            GameLog.vconsoleLog("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramString1.getMessage());
+            this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "modifyFriendInteractiveStorage", null, paramInt);
           }
-          modifyFriendInteractiveStorage(str4, k, str5, paramString1, paramString2, str6, str7, str8, localBoolean, paramJsRuntime, paramInt, str1, (String)localObject);
+          break;
+          label1342:
+          i += 1;
         }
-        catch (Throwable paramString1)
-        {
-          GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramString1.getMessage());
-          GameLog.vconsoleLog("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramString1.getMessage());
-          this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "modifyFriendInteractiveStorage", null, paramInt);
-        }
-        continue;
-        label1255:
-        showConfirmModificationModel(str4, k, str5, paramString1, paramString2, str6, str7, str8, localBoolean, paramJsRuntime, paramInt, str1, (String)localObject, i);
+        label1351:
+        showConfirmModificationModel(str4, m, str5, paramString1, paramString2, str6, str7, str8, localBoolean, paramJsRuntime, paramInt, str1, (String)localObject1, j);
       }
       else
       {
@@ -483,13 +511,13 @@ public class OpenDataPlugin
         }
       }
     }
-    label1443:
-    label1601:
-    label1885:
-    label1888:
-    label1891:
-    label1894:
-    label1897:
+    label1539:
+    label1697:
+    label1981:
+    label1984:
+    label1987:
+    label1990:
+    label1993:
     for (;;)
     {
       for (;;)
@@ -502,12 +530,12 @@ public class OpenDataPlugin
             {
               paramString2 = new JSONObject(paramString2).getJSONArray("keyList");
               if (paramString2 == null) {
-                break label1443;
+                break label1539;
               }
               paramString1 = new String[paramString2.length()];
               i = 0;
               if (i >= paramString2.length()) {
-                break label1897;
+                break label1993;
               }
               paramString1[i] = ((String)paramString2.get(i));
               i += 1;
@@ -524,13 +552,13 @@ public class OpenDataPlugin
             paramString1 = new String[0];
             continue;
             if (!"shareMessageToFriend".equals(paramString1)) {
-              break label1601;
+              break label1697;
             }
             try
             {
               paramString2 = new JSONObject(paramString2);
-              localObject = paramString2.getJSONObject("friendInfo");
-              shareMessageToFriend(((JSONObject)localObject).getString("openid"), ((JSONObject)localObject).getString("nickname"), paramString2.optString("title"), paramString2.optString("imageUrl"), paramString2.optString("imageUrlId"), paramJsRuntime, paramInt, paramString1);
+              localObject1 = paramString2.getJSONObject("friendInfo");
+              shareMessageToFriend(((JSONObject)localObject1).getString("openid"), ((JSONObject)localObject1).getString("nickname"), paramString2.optString("title"), paramString2.optString("imageUrl"), paramString2.optString("imageUrlId"), paramJsRuntime, paramInt, paramString1);
             }
             catch (Throwable paramString1)
             {
@@ -541,7 +569,7 @@ public class OpenDataPlugin
           }
           break;
           if (!"getPotentialFriendList".equals(paramString1)) {
-            break label1695;
+            break label1791;
           }
           try
           {
@@ -555,6 +583,7 @@ public class OpenDataPlugin
           }
         }
         break;
+        label1791:
         if (!"setMessageToFriendQuery".equals(paramString1)) {
           break;
         }
@@ -595,7 +624,7 @@ public class OpenDataPlugin
     for (String str = Arrays.toString(paramArrayOfString);; str = "")
     {
       localGameLog.i("OpenDataPlugin", str);
-      MiniAppCmdUtil.getInstance().removeUserCloudStorage(GameInfoManager.g().getAppId(), paramArrayOfString, new OpenDataPlugin.12(this, paramJsRuntime, paramInt));
+      MiniAppCmdUtil.getInstance().removeUserCloudStorage(GameInfoManager.g().getAppId(), paramArrayOfString, new OpenDataPlugin.13(this, paramJsRuntime, paramInt));
       return;
     }
   }
@@ -608,7 +637,7 @@ public class OpenDataPlugin
     for (String str = paramHashMap.toString();; str = "")
     {
       localGameLog.i("OpenDataPlugin", str);
-      MiniAppCmdUtil.getInstance().setUserCloudStorage(GameInfoManager.g().getAppId(), paramHashMap, new OpenDataPlugin.11(this, paramJsRuntime, paramInt));
+      MiniAppCmdUtil.getInstance().setUserCloudStorage(GameInfoManager.g().getAppId(), paramHashMap, new OpenDataPlugin.12(this, paramJsRuntime, paramInt));
       return;
     }
   }

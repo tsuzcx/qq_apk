@@ -1,101 +1,40 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.mp.bigFileUpload.BigFileExtRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class pxa
-  extends axvs
+public class pxa
+  implements View.OnClickListener
 {
-  pxa(pwz parampwz) {}
+  public pxa(ComponentHeaderNewSocial paramComponentHeaderNewSocial, ArticleInfo paramArticleInfo) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    axqf localaxqf = (axqf)paramMessage.obj;
-    if ((localaxqf == null) || (localaxqf.jdField_b_of_type_Int != 24) || (localaxqf.c != 54)) {}
-    do
+    paramView = "";
+    try
     {
-      do
-      {
-        do
-        {
-          return;
-        } while ((pwz.a(this.a) == null) || (pwz.a(this.a).jdField_a_of_type_Long != localaxqf.jdField_b_of_type_Long));
-        switch (paramMessage.what)
-        {
-        case 1004: 
-        default: 
-          return;
-        case 1001: 
-          pwz.a(this.a, System.currentTimeMillis());
-        }
-      } while (this.a.a == null);
-      this.a.a.a();
-      return;
-    } while (this.a.a == null);
-    this.a.a.a((float)localaxqf.e * 100.0F / (float)localaxqf.jdField_a_of_type_Long);
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoUploadController", 2, "mVideoTransProcessorHandler send finished!");
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("folder_status", onk.d);
+      ((JSONObject)localObject).put("feeds_source", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a));
+      ((JSONObject)localObject).put("tab_source", onk.d());
+      ((JSONObject)localObject).put("kandian_mode", onk.e());
+      ((JSONObject)localObject).put("rowkey", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
+      localObject = ((JSONObject)localObject).toString();
+      paramView = (View)localObject;
     }
-    paramMessage = new bigFileUpload.BigFileExtRsp();
-    for (;;)
+    catch (JSONException localJSONException)
     {
-      try
+      for (;;)
       {
-        paramMessage.mergeFrom(localaxqf.jdField_a_of_type_ArrayOfByte);
-        i = paramMessage.int32_retcode.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoUploadController", 2, "mVideoTransProcessorHandler rsp.errorCode:" + i);
-        }
-        if (i != 0) {
-          continue;
-        }
-        pwz.a(this.a, localaxqf.f);
-        if (paramMessage.bytes_download_url.has()) {
-          pwz.b(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
-        }
-        if (paramMessage.bytes_file_name.has()) {
-          pwz.c(this.a, paramMessage.bytes_file_name.get().toStringUtf8());
-        }
-        if ((TextUtils.isEmpty(pwz.c(this.a))) || (TextUtils.isEmpty(pwz.d(this.a)))) {
-          continue;
-        }
-        boolean bool = TextUtils.isEmpty(pwz.e(this.a));
-        if (bool) {
-          continue;
-        }
-        i = 1;
+        localJSONException.printStackTrace();
       }
-      catch (Exception paramMessage)
-      {
-        int i = 0;
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("VideoUploadController", 2, "mVideoTransProcessorHandler send finish with error!");
-        pwz.a(this.a, 1004, null, null, null);
-        pwz.a(this.a, null);
-        return;
-      }
-      if (i == 0) {
-        continue;
-      }
-      pwz.a(this.a, 0, pwz.e(this.a), pwz.c(this.a), pwz.d(this.a));
-      return;
-      if ((QLog.isColorLevel()) && (paramMessage.bytes_msg.has())) {
-        QLog.d("VideoUploadController", 2, "mVideoTransProcessorHandler rsp.error info:" + paramMessage.bytes_msg.get().toStringUtf8());
-      }
-      i = 0;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoUploadController", 2, "mVideoTransProcessorHandler send error:" + localaxqf.g);
-    }
-    pwz.a(this.a, 1004, null, null, null);
-    pwz.a(this.a, null);
+    noo.a(null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSubscribeID, "0X8007B63", "0X8007B63", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), "", paramView, false);
+    paramView = omm.f + String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId);
+    onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.getContext(), paramView);
   }
 }
 

@@ -1,10 +1,38 @@
-public abstract class wwa
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import java.util.List;
+
+public class wwa
+  extends FragmentPagerAdapter
 {
-  abstract wwb a();
+  public wwa(RelativePersonalBottomView paramRelativePersonalBottomView, FragmentManager paramFragmentManager)
+  {
+    super(paramFragmentManager);
+  }
+  
+  public int getCount()
+  {
+    return RelativePersonalBottomView.a(this.a).size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
+      return (Fragment)RelativePersonalBottomView.a(this.a).get(paramInt);
+    }
+    return null;
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wwa
  * JD-Core Version:    0.7.0.1
  */

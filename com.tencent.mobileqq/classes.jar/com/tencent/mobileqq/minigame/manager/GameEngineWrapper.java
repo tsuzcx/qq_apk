@@ -124,6 +124,14 @@ public class GameEngineWrapper
     return null;
   }
   
+  public boolean getOptionalSoLoadStatus(String paramString)
+  {
+    if (this.baseEngine != null) {
+      return this.baseEngine.getOptionalSoLoadStatus(paramString);
+    }
+    return false;
+  }
+  
   public Map<String, String> getResPathCache()
   {
     if (this.baseEngine != null) {
@@ -237,6 +245,13 @@ public class GameEngineWrapper
   {
     if (this.baseEngine != null) {
       this.baseEngine.setEnableCodeCache(paramBoolean);
+    }
+  }
+  
+  public void setEnableJankCanary(boolean paramBoolean)
+  {
+    if (this.baseEngine != null) {
+      this.baseEngine.setEnableJankCanary(paramBoolean);
     }
   }
   

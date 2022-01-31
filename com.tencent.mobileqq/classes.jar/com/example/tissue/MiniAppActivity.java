@@ -55,7 +55,7 @@ public class MiniAppActivity
   {
     super.onCreate(paramBundle);
     setContentView(2130903040);
-    this.layout = ((ViewGroup)findViewById(2130837508));
+    this.layout = ((ViewGroup)findViewById(2130837509));
     checkAndLoadApkg();
   }
   

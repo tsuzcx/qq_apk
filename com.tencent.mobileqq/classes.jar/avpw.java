@@ -1,278 +1,424 @@
 import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
-import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.register.QueryAccount.1;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Locale;
+import mqq.manager.AccountManager;
+import mqq.observer.AccountObserver;
 
 public class avpw
-  extends avoo
+  extends avpz
 {
   public int a;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private avqa jdField_a_of_type_Avqa;
   public String a;
-  public boolean a;
-  public int b;
+  private HashMap<String, avpy> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new avpx(this);
   public String b;
   public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  private String d;
   
-  public avpw(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  public avpw(RegisterNewBaseActivity paramRegisterNewBaseActivity)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super(paramRegisterNewBaseActivity);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
   }
   
-  public avpw(String paramString1, String paramString2, int paramInt, String paramString3)
+  private void a(int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.d = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = paramString3;
-    a();
-  }
-  
-  private void a()
-  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, RegisterVerifyCodeActivity.class);
+    localIntent.putExtra("phonenum", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("invite_code", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_JavaLangString);
+    localIntent.putExtra("key", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString);
+    localIntent.putExtra("key_register_is_phone_num_registered", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_Boolean);
+    localIntent.putExtra("key_register_has_pwd", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_Boolean);
+    localIntent.putExtra("key_register_binded_qq", this.d);
+    localIntent.putExtra("key_register_left_time", paramInt);
+    localIntent.putExtra("key_register_exit_time", paramLong);
+    localIntent.putExtra("register_verify_code_start_time", System.currentTimeMillis());
+    localIntent.putExtra("selfSet_leftViewText", ajyc.a(2131711220));
+    localIntent.putExtra("key_register_from", 7);
     if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.SearchResultModelForEntrance", 2, "extension info:" + this.d);
+      QLog.d("QueryAccount", 2, "go2next countryCode=" + this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString + ", phoneNum=" + bbfj.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString) + ", leftTime=" + paramInt + ", exitTime=" + paramLong);
     }
-    if (!TextUtils.isEmpty(this.d)) {}
-    try
+    b(localIntent);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivityForResult(localIntent, 2);
+  }
+  
+  private boolean a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return TextUtils.isEmpty(paramString2);
+    }
+    return paramString1.equals(paramString2);
+  }
+  
+  private void b(String paramString)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, RegisterSendUpSms.class);
+    localIntent.putExtra("phonenum", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("invite_code", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_JavaLangString);
+    localIntent.putExtra("key", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString);
+    localIntent.putExtra("key_register_prompt_info", paramString);
+    localIntent.putExtra("key_register_is_phone_num_registered", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_Boolean);
+    localIntent.putExtra("key_register_has_pwd", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_Boolean);
+    localIntent.putExtra("key_register_binded_qq", this.d);
+    localIntent.putExtra("selfSet_leftViewText", ajyc.a(2131711217));
+    localIntent.putExtra("key_register_from", 7);
+    b(localIntent);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity(localIntent);
+  }
+  
+  private void c()
+  {
+    if ((this.jdField_a_of_type_AndroidContentIntent != null) && (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("key_register_from_fail_pay_lh", false)))
     {
-      JSONObject localJSONObject = new JSONObject(this.d);
-      if (localJSONObject.getInt("hideArrow") == 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.jdField_a_of_type_Boolean = bool;
-        this.e = localJSONObject.optString("title1");
-        this.jdField_a_of_type_JavaLangString = localJSONObject.optString("title2");
-        this.f = localJSONObject.optString("title3");
-        this.g = localJSONObject.optString("secondLine");
-        return;
+      if (this.jdField_a_of_type_Avqa == null) {
+        this.jdField_a_of_type_Avqa = new avqa(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity);
       }
+      this.jdField_a_of_type_Avqa.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getIntent());
       return;
     }
-    catch (JSONException localJSONException)
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.c();
+    RegisterPersonalInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString, "", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_Boolean, false, null, 7);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.finish();
+  }
+  
+  private void c(String paramString)
+  {
+    try
     {
-      localJSONException.printStackTrace();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_AndroidOsHandler.post(new QueryAccount.1(this, paramString));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
-  public CharSequence a()
+  public String a(String paramString)
   {
-    switch (this.jdField_a_of_type_Int)
+    int k = 0;
+    int j = 1;
+    if (paramString != null) {}
+    for (;;)
     {
-    case -3: 
-    case -2: 
-    default: 
-      return ajjy.a(2131647868);
-    case -4: 
-      return this.e;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public void a(View paramView)
-  {
-    Object localObject1;
-    Object localObject2;
-    switch (this.jdField_a_of_type_Int)
-    {
-    case -2: 
-    default: 
-      localObject1 = this.jdField_b_of_type_JavaLangString;
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      int i;
+      try
       {
-        localObject2 = bade.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), (String)localObject1);
-        if (localObject2 == null) {
-          break label825;
+        if ("852".equals(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString)) {
+          break label189;
         }
-        ((bacn)localObject2).c();
+        if ("853".equals(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString))
+        {
+          break label189;
+          paramString = paramString.toString().trim();
+        }
       }
-    case -1: 
-      do
+      catch (Exception paramString)
       {
-        return;
-        ActiveEntitySearchActivity.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, ajjy.a(2131647853), new long[] { 1001L, 1002L });
-        avwf.a("all_result", "clk_people_group", new String[] { this.jdField_a_of_type_JavaLangString });
-        avwf.a("all_search", "all_result", "clk_user_grp", 0, 0, new String[] { "", "", this.jdField_a_of_type_JavaLangString, "" });
-      } while (!(paramView.getContext() instanceof UniteSearchActivity));
-      if (avjb.b.containsKey(this))
-      {
-        paramView = (avjc)avjb.b.get(this);
-        localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        localObject2 = new JSONObject();
+        boolean bool;
+        paramString = null;
       }
       try
       {
-        ((JSONObject)localObject2).put("project", avsv.a());
-        ((JSONObject)localObject2).put("event_src", "client");
-        ((JSONObject)localObject2).put("obj_lct", paramView.jdField_a_of_type_Int);
-        ((JSONObject)localObject2).put("get_src", "native");
-        avsv.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(paramView.jdField_a_of_type_Long + "").obj2(paramView.jdField_b_of_type_JavaLangString).ver1(paramView.jdField_a_of_type_JavaLangString).ver2(avsv.a(UniteSearchActivity.d)).ver7(((JSONObject)localObject2).toString()).session_id(((QQAppInterface)localObject1).getCurrentAccountUin() + avjb.jdField_a_of_type_Long));
-        avsv.a(null, this.s, 0, "0X8009D3F", 0, 0, null, null);
-        return;
-      }
-      catch (JSONException localJSONException1)
-      {
-        for (;;)
-        {
-          QLog.e("Q.uniteSearch.SearchResultModelForEntrance", 2, "e = " + localJSONException1);
+        Long.parseLong(paramString);
+        if (paramString.length() < i) {
+          j = 0;
         }
+        i = j;
+        if (!paramString.startsWith("1"))
+        {
+          i = j;
+          if ("86".equals(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString)) {
+            i = 0;
+          }
+        }
+        if (!"86".equals(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString)) {
+          break label181;
+        }
+        j = paramString.length();
+        if (j == 11) {
+          break label181;
+        }
+        i = k;
       }
-    }
-    if ((paramView.getContext() instanceof UniteSearchActivity)) {
-      switch (((UniteSearchActivity)paramView.getContext()).jdField_a_of_type_Int)
+      catch (Exception localException)
       {
+        break label164;
+        continue;
+        i = 3;
+      }
+      if (i == 0) {
+        paramString = null;
+      }
+      return paramString;
+      bool = "886".equals(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString);
+      if (bool)
+      {
+        i = 9;
+        continue;
+        label164:
+        i = 0;
+        continue;
+        i = 0;
+        paramString = null;
+      }
+      else
+      {
+        label181:
+        continue;
+        label189:
+        i = 6;
       }
     }
-    for (int i = 0;; i = 0)
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.c();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
+    if (this.jdField_a_of_type_Avqa != null) {
+      this.jdField_a_of_type_Avqa.a();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    Object localObject;
+    String str1;
+    String str2;
+    long l;
+    if ((paramInt1 == 2) && (paramInt2 == -1))
     {
-      for (;;)
+      localObject = paramIntent.getStringExtra("phonenum");
+      String str3 = paramIntent.getStringExtra("key");
+      str1 = paramIntent.getStringExtra("invite_code");
+      str2 = str3 + (String)localObject;
+      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str2)) {
+        this.jdField_a_of_type_JavaUtilHashMap.remove(str2);
+      }
+      paramInt1 = paramIntent.getIntExtra("key_register_left_time", 0);
+      l = paramIntent.getLongExtra("key_register_exit_time", 0L);
+      if (QLog.isColorLevel())
       {
-        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-        {
-          localObject1 = avwc.a(this.jdField_a_of_type_JavaLangString, i, "group");
-          label480:
-          if (!TextUtils.isEmpty((CharSequence)localObject1))
-          {
-            localObject2 = new Intent(paramView.getContext(), QQBrowserActivity.class);
-            ((Intent)localObject2).putExtra("url", (String)localObject1);
-            ((Intent)localObject2).putExtra("search_title", this.jdField_a_of_type_JavaLangString);
-            paramView.getContext().startActivity((Intent)localObject2);
-          }
-          if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-            break label787;
-          }
-          localObject1 = this.jdField_a_of_type_JavaLangString;
-          avwf.a("all_result", "clk_net_search", new String[] { localObject1 });
-          if ((!(paramView.getContext() instanceof UniteSearchActivity)) || (!avjb.b.containsKey(this))) {
-            break;
-          }
-          paramView = (avjc)avjb.b.get(this);
-          localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          localObject2 = new JSONObject();
+        localObject = new StringBuilder().append("doOnActivityResult countryCode=").append(str3).append(", phoneNum=").append(bbfj.a((String)localObject)).append(", leftTime=").append(paramInt1).append(", exitTime=").append(l).append(", inviteCode=");
+        if (str1 != null) {
+          break label231;
         }
+      }
+    }
+    label231:
+    for (paramIntent = "";; paramIntent = str1)
+    {
+      QLog.d("QueryAccount", 2, paramIntent);
+      if ((paramInt1 > 0) && (l > 0L))
+      {
+        paramIntent = new avpy(this);
+        paramIntent.jdField_a_of_type_Int = paramInt1;
+        paramIntent.jdField_a_of_type_Long = l;
+        paramIntent.jdField_a_of_type_JavaLangString = str1;
+        this.jdField_a_of_type_JavaUtilHashMap.put(str2, paramIntent);
+      }
+      return;
+    }
+  }
+  
+  @RequiresApi(api=23)
+  public void a(Context paramContext)
+  {
+    String str2 = Locale.getDefault().getLanguage();
+    Object localObject = akwi.a(BaseApplicationImpl.getContext(), "key_local_cache", "0");
+    if ("0".equals(localObject)) {
+      QLog.e("QueryAccount", 1, "addLocaleIdCookie, localeIdStr = 0");
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        i = Integer.parseInt((String)localObject);
         try
         {
-          ((JSONObject)localObject2).put("project", avsv.a());
-          ((JSONObject)localObject2).put("event_src", "client");
-          ((JSONObject)localObject2).put("obj_lct", paramView.jdField_a_of_type_Int);
-          ((JSONObject)localObject2).put("get_src", "web");
-          avsv.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(paramView.jdField_a_of_type_Long + "").obj2(paramView.jdField_b_of_type_JavaLangString).ver1(paramView.jdField_a_of_type_JavaLangString).ver2(avsv.a(UniteSearchActivity.d)).ver7(((JSONObject)localObject2).toString()).session_id(((QQAppInterface)localObject1).getCurrentAccountUin() + avjb.jdField_a_of_type_Long));
-          return;
-          i = 1;
-          continue;
-          i = 2;
-          continue;
-          i = 3;
-          continue;
-          localObject1 = this.jdField_b_of_type_JavaLangString;
-          break label480;
-          label787:
-          localObject1 = "";
+          paramContext = (WifiManager)paramContext.getSystemService("wifi");
+          if (paramContext == null) {
+            break label210;
+          }
+          paramContext = paramContext.getConnectionInfo();
+          if (paramContext == null) {
+            break label210;
+          }
+          paramContext = paramContext.getMacAddress();
         }
-        catch (JSONException localJSONException2)
+        catch (Throwable paramContext)
         {
           for (;;)
           {
-            QLog.e("Q.uniteSearch.SearchResultModelForEntrance", 2, "e = " + localJSONException2);
+            QLog.e("QueryAccount", 1, paramContext, new Object[0]);
+            paramContext = "02:00:00:00:00:00";
           }
         }
+        localObject = "";
+        try
+        {
+          String str1 = SosoInterface.b();
+          localObject = str1;
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            QLog.e("QueryAccount", 1, localThrowable, new Object[0]);
+          }
+        }
+        this.jdField_a_of_type_JavaLangString = paramContext;
+        this.jdField_b_of_type_JavaLangString = str2;
+        this.jdField_a_of_type_Int = i;
+        this.jdField_c_of_type_JavaLangString = ((String)localObject);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("QueryAccount", 2, new Object[] { "regMacAddr:", this.jdField_a_of_type_JavaLangString, " regOS:", this.jdField_b_of_type_JavaLangString, " regQQLang:", Integer.valueOf(this.jdField_a_of_type_Int), " regLocation:", this.jdField_c_of_type_JavaLangString });
+        return;
       }
-      label825:
-      if ((!((String)localObject1).startsWith("http://")) && (!((String)localObject1).startsWith("https://"))) {
-        break;
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.e("QueryAccount", 1, localException.toString());
+          int i = 0;
+        }
       }
-      paramView = paramView.getContext();
-      localObject2 = new Intent(paramView, QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("url", (String)localObject1);
-      paramView.startActivity((Intent)localObject2);
+    }
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("QueryAccount", 4, "setExtraInfo");
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (!a()) {
       return;
+    }
+    try
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("wifi_mac", this.jdField_a_of_type_JavaLangString);
+      localBundle.putString("os_language", this.jdField_b_of_type_JavaLangString);
+      localBundle.putInt("qq_language", this.jdField_a_of_type_Int);
+      localBundle.putString("gps_location", this.jdField_c_of_type_JavaLangString);
+      ((AccountManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(0)).sendRegistByPhoneNumber(paramString, (byte)2, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_JavaLangString, Long.valueOf(AppSetting.a()), "8.2.8", localBundle, null);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public CharSequence b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int == -1;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public CharSequence c()
-  {
-    switch (this.jdField_a_of_type_Int)
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString = a(str);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString == null)
     {
-    case -3: 
-    case -2: 
-    default: 
-      return "";
-    case -1: 
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      return avis.a(BaseApplicationImpl.getContext(), localQQAppInterface.c());
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131717115, 1);
+      return false;
     }
-    return this.g;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.b();
+    return true;
   }
   
-  public int d()
+  public void b()
   {
-    switch (this.jdField_a_of_type_Int)
+    if (!a()) {
+      return;
+    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))
     {
-    case -2: 
-    case -1: 
-    default: 
-      return 2131494041;
+      Object localObject = this.jdField_a_of_type_JavaUtilHashMap.get(str);
+      if ((localObject != null) && ((localObject instanceof avpy)))
+      {
+        avpy localavpy = (avpy)localObject;
+        if ((localavpy.jdField_a_of_type_Int > 0) && (localavpy.jdField_a_of_type_Long > 0L) && (a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_JavaLangString, localavpy.jdField_a_of_type_JavaLangString)))
+        {
+          long l = System.currentTimeMillis() - localavpy.jdField_a_of_type_Long;
+          StringBuilder localStringBuilder;
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder().append("startQueryAccount countryCode=").append(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString).append(", phoneNum=").append(bbfj.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString)).append(", leftTime=").append(localavpy.jdField_a_of_type_Int).append(", exitTime=").append(localavpy.jdField_a_of_type_Long).append(", interval=").append(l).append(", inviteCode=");
+            if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_JavaLangString != null) {
+              break label281;
+            }
+          }
+          label281:
+          for (localObject = "";; localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_JavaLangString)
+          {
+            QLog.d("QueryAccount", 2, (String)localObject);
+            if ((l <= 0L) || (l >= localavpy.jdField_a_of_type_Int * 1000L)) {
+              break;
+            }
+            a(localavpy.jdField_a_of_type_Int, localavpy.jdField_a_of_type_Long);
+            return;
+          }
+        }
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.remove(str);
     }
-    return 2131494035;
+    if (!bbev.d(BaseApplication.getContext()))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131692321, 0);
+      return;
+    }
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("queryMobile", 2, "startQueryAccount countryCode=" + this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString + " phoneNum=" + bbfj.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString));
+      }
+      ((AccountManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(0)).sendRegisterQueryMobile(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString, null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.b(2131717161);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
   
-  public CharSequence d()
+  public void b(Intent paramIntent)
   {
-    return null;
+    if ((paramIntent != null) && (this.jdField_a_of_type_AndroidContentIntent != null)) {
+      paramIntent.putExtras(this.jdField_a_of_type_AndroidContentIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avpw
  * JD-Core Version:    0.7.0.1
  */

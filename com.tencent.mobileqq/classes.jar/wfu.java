@@ -1,28 +1,50 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView.DotsIndicator;
-import java.util.ArrayList;
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
 
 public class wfu
-  implements ViewPager.OnPageChangeListener
+  implements View.OnLongClickListener
 {
-  public wfu(SubscribeBannerView paramSubscribeBannerView) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new wfw(this);
+  View jdField_a_of_type_AndroidViewView;
   
-  public void onPageScrollStateChanged(int paramInt) {}
+  public wfu(QRCardActivity paramQRCardActivity) {}
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  @SuppressLint({"ServiceCast", "NewApi"})
+  void a(String paramString)
   {
-    if ((SubscribeBannerView.a(this.a) != null) && (SubscribeBannerView.a(this.a) != null)) {
-      SubscribeBannerView.a(this.a).setDotsSelected(paramInt % SubscribeBannerView.a(this.a).a().size());
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (Build.VERSION.SDK_INT < 11) {
+        ((android.text.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
+      }
     }
+    else {
+      return;
+    }
+    ((android.content.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    if (paramView == null) {
+      return false;
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    paramView.setSelected(true);
+    bblr localbblr = new bblr();
+    localbblr.a(2131364825, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getString(2131691307), 2130838597);
+    bbcc.a(paramView, localbblr, this.jdField_a_of_type_AndroidViewView$OnClickListener, new wfv(this, paramView));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wfu
  * JD-Core Version:    0.7.0.1
  */

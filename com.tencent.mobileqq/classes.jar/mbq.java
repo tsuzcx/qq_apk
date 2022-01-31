@@ -1,22 +1,41 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.av.ui.chatroom.VideoChatRoomContainer;
+import android.content.Context;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-class mbq
-  implements Animator.AnimatorListener
+public class mbq
+  extends mbv
 {
-  mbq(mbo parammbo) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public mbq(AVActivity paramAVActivity, Context paramContext, int paramInt)
   {
-    mbo.a(this.a).setVisibility(8);
+    super(paramContext, paramInt);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    long l = AudioHelper.b();
+    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.h != paramInt)
+    {
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "onVideoOrientationChanged, mRotationAngle[" + this.jdField_a_of_type_ComTencentAvUiAVActivity.h + "->" + paramInt + "], seq[" + l + "], isFinishing[" + this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing() + "]");
+      if (AudioHelper.d())
+      {
+        Display localDisplay = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay();
+        QLog.w(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "onVideoOrientationChanged, Display.getRotation[" + localDisplay.getRotation() + "], seq[" + l + "]");
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing()) {
+      return;
+    }
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_ComTencentAvUiAVActivity.a(l, 270, paramBoolean);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(l, paramInt, paramBoolean);
+  }
 }
 
 

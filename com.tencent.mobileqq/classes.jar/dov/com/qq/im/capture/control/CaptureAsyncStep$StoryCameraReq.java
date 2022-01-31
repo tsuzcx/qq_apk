@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.control;
 
-import avzi;
+import biqb;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -10,11 +10,11 @@ public class CaptureAsyncStep$StoryCameraReq
 {
   public int a()
   {
-    avzi localavzi = (avzi)QQStoryContext.a().getBusinessHandler(3);
-    localavzi.a("MqStoryCamera");
-    localavzi.a("MqEmoCamera");
-    localavzi.b();
-    localavzi.a();
+    biqb localbiqb = (biqb)QQStoryContext.a().getBusinessHandler(3);
+    localbiqb.a("MqStoryCamera");
+    localbiqb.a("MqEmoCamera");
+    localbiqb.b();
+    localbiqb.a();
     return 7;
   }
 }

@@ -1,32 +1,205 @@
-class aeyg
-  extends benv
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar.1;
+import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar.2;
+import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar.3;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.os.MqqHandler;
+
+public class aeyg
+  implements aeyv, View.OnClickListener
 {
-  aeyg(aeyf paramaeyf, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  private long jdField_a_of_type_Long;
+  private aeyx jdField_a_of_type_Aeyx;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
+  private View jdField_a_of_type_AndroidViewView;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public String a;
+  private boolean jdField_a_of_type_Boolean = true;
+  public String b;
+  
+  public aeyg(QQAppInterface paramQQAppInterface, aeyx paramaeyx, SessionInfo paramSessionInfo, Activity paramActivity)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aeyx = paramaeyx;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    ThreadManager.post(new LightalkBlueTipsBar.1(this), 5, null, true);
   }
   
-  public void a(int paramInt, Object paramObject, benu[] paramArrayOfbenu)
+  public static boolean a()
   {
-    paramInt = 1;
-    if ((paramArrayOfbenu == null) || (paramArrayOfbenu.length <= 0)) {}
+    boolean bool = false;
+    if (aeyh.a() != null) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public int a()
+  {
+    return 45;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LightalkBlueTipsBar", 2, "getBarView()");
+    }
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558558, null);
+      paramVarArgs = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369168);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null)
+      {
+        paramVarArgs.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+        paramVarArgs = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369171);
+        if (this.jdField_a_of_type_JavaLangString == null) {
+          break label322;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("LightalkBlueTipsBar", 2, "getBarView() mTextWording =" + this.jdField_a_of_type_JavaLangString);
+        }
+        paramVarArgs.setText(this.jdField_a_of_type_JavaLangString);
+        paramVarArgs.setContentDescription(this.jdField_a_of_type_JavaLangString + ajyc.a(2131706018));
+        paramVarArgs.setOnClickListener(this);
+        paramVarArgs = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369170);
+        if (AppSetting.d) {
+          paramVarArgs.setContentDescription(ajyc.a(2131706017));
+        }
+        paramVarArgs.setOnClickListener(this);
+      }
+    }
     for (;;)
     {
-      return;
-      int i = this.a.a();
-      if ((paramArrayOfbenu.length < 0) && ((i & 0xF) == 1))
+      for (;;)
       {
-        paramArrayOfbenu[0].b = 0;
-        paramArrayOfbenu[0].a = 0;
+        return this.jdField_a_of_type_AndroidViewView;
+        File localFile = new File(aeyh.c);
+        if ((localFile != null) && (localFile.exists())) {}
+        try
+        {
+          this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources(), bawu.a(aeyh.c));
+          if (QLog.isDevelopLevel()) {
+            QLog.i("LightalkBlueTipsBar", 4, "load icon to bitmap ");
+          }
+          if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) {
+            paramVarArgs.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("LightalkBlueTipsBar", 2, "decodeFile Failed!", localThrowable);
+            }
+            this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = ((BitmapDrawable)this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130844027));
+            localThrowable.printStackTrace();
+          }
+        }
       }
-      while (paramInt < paramArrayOfbenu.length)
+      return null;
+      label322:
+      return null;
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    if (paramInt != 1000) {}
+    label7:
+    do
+    {
+      do
       {
-        paramArrayOfbenu[paramInt].b = -1;
-        paramArrayOfbenu[paramInt].a = -1;
-        paramInt += 1;
-        continue;
-        paramInt = 0;
-      }
+        do
+        {
+          String str;
+          do
+          {
+            do
+            {
+              break label7;
+              break label7;
+              break label7;
+              do
+              {
+                return;
+              } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0);
+              if (QLog.isColorLevel()) {
+                QLog.d("LightalkBlueTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW");
+              }
+              paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+            } while (!paramVarArgs.getBoolean("lightalk_tip_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false));
+            str = paramVarArgs.getString("Lightalk_tips_frdUin", null);
+          } while ((str == null) || (!str.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
+          paramInt = paramVarArgs.getInt("LT_tip_show_times" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+          if (QLog.isColorLevel()) {
+            QLog.d("LightalkBlueTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====> tipsum = " + paramInt);
+          }
+          if (paramInt < 3) {
+            break;
+          }
+        } while (!(this.jdField_a_of_type_Aeyx.a() instanceof aeyg));
+        this.jdField_a_of_type_Aeyx.a();
+        return;
+      } while (!this.jdField_a_of_type_Aeyx.a(this, new Object[0]));
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800510F", "0X800510F", 0, 0, "" + (paramInt + 1), "", "", "");
+    } while (!this.jdField_a_of_type_Boolean);
+    ThreadManager.getSubThreadHandler().post(new LightalkBlueTipsBar.2(this));
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 12;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aeyx.a();
+      ThreadManager.getSubThreadHandler().post(new LightalkBlueTipsBar.3(this));
+      long l;
+      do
+      {
+        return;
+        l = System.currentTimeMillis();
+      } while (l - this.jdField_a_of_type_Long < 200L);
+      this.jdField_a_of_type_Long = l;
+      paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      paramView.putExtra("hide_more_button", true);
+      paramView.putExtra("url", this.b);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005111", "0X8005111", 0, 0, "", "", "", "");
+      continue;
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005110", "0X8005110", 0, 0, "", "", "", "");
     }
   }
 }

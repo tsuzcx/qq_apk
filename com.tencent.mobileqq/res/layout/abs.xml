@@ -5,11 +5,11 @@
       xmlns:android="http://schemas.android.com/apk/res/android">
         <LinearLayout android:orientation="vertical" android:id="@id/e7t" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
             <RelativeLayout android:id="@id/e7p" android:paddingLeft="6.0dip" android:layout_width="fill_parent" android:layout_height="265.0dip">
-                <FrameLayout android:id="@id/e7i" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout android:id="@id/e7i" android:layout_width="fill_parent" android:layout_height="fill_parent">
                     <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/e7u" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
                     <com.tencent.image.URLImageView android:id="@id/e7w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-                </FrameLayout>
-                <View android:background="@drawable/tc" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_alignParentBottom="true" />
+                    <View android:layout_gravity="bottom" android:background="@drawable/tc" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+                </com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout>
                 <LinearLayout android:orientation="horizontal" android:id="@id/e7o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
                     <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dtb" android:scaleType="fitCenter" android:contentDescription="@string/px8" />
                     <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/e7x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" />
@@ -30,11 +30,11 @@
         </LinearLayout>
         <LinearLayout android:orientation="vertical" android:id="@id/ia_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
             <RelativeLayout android:id="@id/ia6" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="265.0dip" android:layout_marginLeft="3.0dip" android:layout_weight="1.0">
-                <FrameLayout android:id="@id/ia1" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout android:id="@id/ia1" android:layout_width="fill_parent" android:layout_height="fill_parent">
                     <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/iaa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
                     <com.tencent.image.URLImageView android:id="@id/iac" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-                </FrameLayout>
-                <View android:background="@drawable/tc" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_alignParentBottom="true" />
+                    <View android:layout_gravity="bottom" android:background="@drawable/tc" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+                </com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout>
                 <LinearLayout android:orientation="horizontal" android:id="@id/ia5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
                     <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dtb" android:scaleType="fitCenter" android:contentDescription="@string/pvp" />
                     <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/iad" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" />

@@ -1,13 +1,25 @@
+import mqq.os.MqqHandler;
+
 class anog
-  extends anoj
+  implements anob
 {
-  anog(anoe paramanoe) {}
+  anog(anod paramanod, MqqHandler paramMqqHandler) {}
   
-  protected void a(boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if (paramBoolean) {
-      anoe.a(this.a);
+    switch (paramInt)
+    {
     }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(80);
+      return;
+    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(80, 5000L);
   }
 }
 

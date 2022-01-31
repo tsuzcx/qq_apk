@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import akep;
-import arij;
-import babl;
+import aktb;
+import asel;
+import bbcp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 
@@ -19,9 +19,9 @@ class AssociatedAccountManageActivity$7
       if (localProxyManager != null)
       {
         localProxyManager.d();
-        akep.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, true);
-        new arij().a(this.jdField_a_of_type_JavaLangString);
-        babl.a().a(this.this$0.app.getApp(), this.jdField_a_of_type_JavaLangString, false);
+        aktb.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, true);
+        new asel().a(this.jdField_a_of_type_JavaLangString);
+        bbcp.a().a(this.this$0.app.getApp(), this.jdField_a_of_type_JavaLangString, false);
       }
     }
     this.this$0.runOnUiThread(new AssociatedAccountManageActivity.7.1(this));

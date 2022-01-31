@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
 public class abmx
-  implements bapy
+  implements View.OnClickListener
 {
-  public abmx(QQSettingMe paramQQSettingMe) {}
+  public abmx(MainFragment paramMainFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "enterWordListener");
-      }
-      this.a.c(this.a.a.getAccount());
-    }
+    this.a.g();
   }
 }
 

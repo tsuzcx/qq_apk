@@ -1,6 +1,12 @@
-public abstract interface mhb
+class mhb
+  implements mhv
 {
-  public abstract void a(String paramString, mhc parammhc);
+  mhb(mgx parammgx) {}
+  
+  public void a(long paramLong, String paramString, boolean paramBoolean)
+  {
+    this.a.a(paramLong, paramString, paramBoolean);
+  }
 }
 
 

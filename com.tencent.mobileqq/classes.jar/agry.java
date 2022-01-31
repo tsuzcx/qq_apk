@@ -1,147 +1,222 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Cap;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.Rect;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
+import com.tencent.image.RegionDrawableData;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class agry
+  extends BaseAdapter
+  implements agpe
 {
-  public static Bitmap a(acsj paramacsj, int paramInt1, int paramInt2)
+  int jdField_a_of_type_Int = -1;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  
+  public agry(NewPhotoPreviewActivity paramNewPhotoPreviewActivity) {}
+  
+  String a()
   {
-    if ((paramacsj == null) || (paramacsj.a() == null) || (paramacsj.a().size() <= 0)) {
-      return null;
-    }
-    float f2;
-    float f6;
-    float f3;
-    float f7;
-    label548:
-    do
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("(preview) Actives: ");
+    int i = 0;
+    while (i < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agsq.jdField_a_of_type_AndroidUtilSparseArray.size())
     {
-      for (;;)
-      {
-        float f8;
-        try
-        {
-          int i = paramacsj.a().a().width();
-          int j = paramacsj.a().a().height();
-          localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-          localCanvas = new Canvas(localBitmap);
-          localCanvas.drawColor(-1);
-          localPaint = new Paint(7);
-          localPaint.setStyle(Paint.Style.STROKE);
-          localPaint.setColor(-16777216);
-          localPaint.setStrokeWidth(paramInt1 / 16.0F);
-          localPaint.setStrokeCap(Paint.Cap.ROUND);
-          localPaint.setStrokeJoin(Paint.Join.ROUND);
-          f2 = i;
-          f6 = 0.0F;
-          f3 = j;
-          f7 = 0.0F;
-          localObject1 = paramacsj.a().iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          localObject2 = ((actt)((Iterator)localObject1).next()).a().iterator();
-          f8 = f2;
-          f5 = f6;
-          f4 = f3;
-          f1 = f7;
-          f7 = f1;
-          f3 = f4;
-          f6 = f5;
-          f2 = f8;
-          if (!((Iterator)localObject2).hasNext()) {
-            continue;
-          }
-          localObject3 = (actu)((Iterator)localObject2).next();
-          f2 = f8;
-          if (((actu)localObject3).a() < f8) {
-            f2 = ((actu)localObject3).a();
-          }
-          f3 = f5;
-          if (((actu)localObject3).a() > f5) {
-            f3 = ((actu)localObject3).a();
-          }
-          f5 = f4;
-          if (((actu)localObject3).b() < f4) {
-            f5 = ((actu)localObject3).b();
-          }
-          if (((actu)localObject3).b() <= f1) {
-            break label548;
-          }
-          f1 = ((actu)localObject3).b();
-        }
-        catch (Throwable paramacsj)
-        {
-          Bitmap localBitmap;
-          Canvas localCanvas;
-          Paint localPaint;
-          Object localObject1;
-          Object localObject2;
-          float f1;
-          Object localObject3;
-          actt localactt;
-          ArrayList localArrayList;
-          paramacsj.printStackTrace();
-          return null;
-        }
-        float f4 = f6 - f2;
-        float f5 = f7 - f3;
-        f1 = Math.max(f4, f5);
-        f2 -= (f1 - f4) / 2.0F;
-        f3 -= (f1 - f5) / 2.0F;
-        localObject2 = new Path();
-        f4 = paramInt1 / f1;
-        f1 = paramInt2 / f1;
-        localObject3 = paramacsj.a().iterator();
-        if (((Iterator)localObject3).hasNext())
-        {
-          localactt = (actt)((Iterator)localObject3).next();
-          paramacsj = localactt.a();
-          if (paramacsj != null)
-          {
-            ((Path)localObject2).moveTo((paramacsj.a() - f2) * f4, (paramacsj.b() - f3) * f1);
-            localArrayList = localactt.a();
-            paramInt1 = 1;
-            if (paramInt1 < localactt.c())
-            {
-              localObject1 = (actu)localArrayList.get(paramInt1);
-              ((Path)localObject2).quadTo((paramacsj.a() - f2) * f4, (paramacsj.b() - f3) * f1, (((actu)localObject1).a() - f2) * f4, (((actu)localObject1).b() - f3) * f1);
-              paramInt1 += 1;
-              paramacsj = (acsj)localObject1;
-            }
-          }
-        }
-        else
-        {
-          localCanvas.drawPath((Path)localObject2, localPaint);
-          return localBitmap;
-          f4 = f5;
-          f5 = f3;
-          f8 = f2;
-        }
+      if (i > 0) {
+        localStringBuilder.append(" , ");
       }
-    } while ((f2 <= f6) && (f3 <= f7));
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agsq.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i) + 1);
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agsq.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agsq.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
+      return (String)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agsq.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    }
     return null;
   }
   
-  public static void a(Bitmap paramBitmap)
+  public int getCount()
   {
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-      paramBitmap.recycle();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agsq.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoPreviewActivity", 2, "wywy getCount =" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agsq.jdField_a_of_type_JavaUtilArrayList.size());
+      }
+      return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agsq.jdField_a_of_type_JavaUtilArrayList.size();
     }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agss.a != null) {
+      localView = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agss.a.a(paramInt, paramView, paramViewGroup);
+    }
+    return localView;
+  }
+  
+  public View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = (URLDrawable)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agsq.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (paramView != null) {
+      if (paramView.getStatus() == 3) {
+        paramView.restartDownload();
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PEAK", 2, a());
+      }
+      do
+      {
+        do
+        {
+          return null;
+        } while (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.a(a(paramInt)) == 1);
+        paramView = a(paramInt);
+        if (!TextUtils.isEmpty(paramView)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("PhotoPreviewActivity", 2, "Path is empty. position " + paramInt + ", size " + getCount());
+      return null;
+      File localFile = new File(paramView);
+      if (localFile.exists())
+      {
+        paramView = URLDrawable.URLDrawableOptions.obtain();
+        paramView.mRequestWidth = paramViewGroup.getWidth();
+        paramView.mRequestHeight = paramViewGroup.getHeight();
+        paramView.mLoadingDrawable = aywk.a;
+        paramView.mPlayGifImage = true;
+        paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.a(localFile);
+        if (paramViewGroup != null)
+        {
+          paramView = URLDrawable.getDrawable(paramViewGroup, paramView);
+          paramView.setTag(Integer.valueOf(1));
+          paramView.startDownload();
+          this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agsq.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
+        }
+      }
+    }
+  }
+  
+  public void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = (URLDrawable)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agsq.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (paramView != null)
+    {
+      if (paramView.getStatus() == 0) {
+        paramView.cancelDownload(true);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agsq.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PEAK", 2, a());
+    }
+  }
+  
+  public void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData)
+  {
+    if (!ImageView.class.isInstance(paramView)) {}
+    do
+    {
+      return;
+      paramView = ((ImageView)paramView).getDrawable();
+    } while (!URLDrawable.class.isInstance(paramView));
+    ((URLDrawable)paramView).updateRegionBitmap(paramRegionDrawableData);
+  }
+  
+  public void onSlot(int paramInt, View paramView, ViewGroup paramViewGroup) {}
+  
+  public void onViewDetached(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean)
+  {
+    if (paramInt == this.jdField_a_of_type_Int)
+    {
+      if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 0)) {
+        this.jdField_a_of_type_ComTencentImageURLDrawable.cancelDownload(true);
+      }
+      this.jdField_a_of_type_ComTencentImageURLDrawable = null;
+      this.jdField_a_of_type_Int = -1;
+      if (QLog.isColorLevel()) {
+        QLog.d("PEAK", 2, "(preview)destory rawDrawable, position: " + paramInt);
+      }
+    }
+  }
+  
+  public void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (!(paramView instanceof AbstractImageAdapter.URLImageView2)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("PEAK", 2, "onscaleBegin,classcast error,class of current view is " + paramView.getClass().toString());
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramView = (AbstractImageAdapter.URLImageView2)paramView;
+          paramViewGroup = paramView.getDrawable();
+          localObject = paramView.jdField_a_of_type_ComTencentImageURLDrawable;
+        } while ((!(paramViewGroup instanceof URLDrawable)) || (!((URLDrawable)paramViewGroup).isFakeSize()) || (localObject != null));
+        paramViewGroup = ((URLDrawable)paramViewGroup).getURL();
+      } while ((!"file".equals(paramViewGroup.getProtocol())) || (paramViewGroup.getRef() != null));
+      if ((paramInt != this.jdField_a_of_type_Int) || (this.jdField_a_of_type_ComTencentImageURLDrawable == null)) {
+        break;
+      }
+      paramView = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    } while ((!QLog.isColorLevel()) || (this.jdField_a_of_type_ComTencentImageURLDrawable == null));
+    QLog.d("PEAK", 2, "use exist raw drawable");
+    return;
+    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentImageURLDrawable != null)) {
+      QLog.d("PEAK", 2, "rawDrawable is exist");
+    }
+    paramViewGroup = paramViewGroup.toString() + "#NOSAMPLE";
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mUseExifOrientation = false;
+    ((URLDrawable.URLDrawableOptions)localObject).mUseMemoryCache = false;
+    paramViewGroup = URLDrawable.getDrawable(paramViewGroup, (URLDrawable.URLDrawableOptions)localObject);
+    paramViewGroup.setTag(Integer.valueOf(2));
+    this.jdField_a_of_type_ComTencentImageURLDrawable = null;
+    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("PEAK", 2, "create rawDrawable, position:" + paramInt);
+    }
+    if (paramViewGroup.getStatus() == 1)
+    {
+      paramView.jdField_a_of_type_Boolean = true;
+      paramView.setImageDrawable(paramViewGroup);
+      paramView.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    paramView.setDecodingDrawble(paramViewGroup);
+    paramViewGroup.startDownload();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agry
  * JD-Core Version:    0.7.0.1
  */

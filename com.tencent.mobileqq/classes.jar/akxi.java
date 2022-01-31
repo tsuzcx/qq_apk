@@ -1,53 +1,73 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.RemoteException;
+import com.tencent.mobileqq.ar.ARGlobalConfigService;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public final class akxi
 {
-  public static int a(String paramString)
+  private static volatile akxi jdField_a_of_type_Akxi;
+  private volatile alei jdField_a_of_type_Alei;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new akxj(this);
+  
+  private akxi(Context paramContext)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).getInt(paramString, 0);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public static void a(Context paramContext, View paramView)
+  public static akxi a(Context paramContext)
   {
-    if (ImmersiveUtils.isSupporImmersive() == 1)
+    if (jdField_a_of_type_Akxi == null) {}
+    try
     {
-      int i = ImmersiveUtils.getStatusBarHeight(paramContext);
-      paramContext = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-      paramContext.topMargin = i;
-      paramView.setLayoutParams(paramContext);
-    }
-  }
-  
-  public static void a(Context paramContext, View paramView, boolean paramBoolean, int paramInt)
-  {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams;
-    int i;
-    if (awmc.a(paramContext))
-    {
-      localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-      i = paramInt;
-      if (paramBoolean) {
-        i = paramInt + awmc.d(paramContext);
+      if (jdField_a_of_type_Akxi == null) {
+        jdField_a_of_type_Akxi = new akxi(paramContext.getApplicationContext());
       }
-      if (localMarginLayoutParams.bottomMargin != i) {}
+      return jdField_a_of_type_Akxi;
     }
-    else
+    finally {}
+  }
+  
+  public ARScanStarFaceConfigInfo a()
+  {
+    Object localObject3 = null;
+    Object localObject1 = localObject3;
+    if (this.jdField_a_of_type_Alei != null) {}
+    try
     {
+      localObject1 = this.jdField_a_of_type_Alei.a();
+      QLog.d("ARGlobalRemoteManager", 2, String.format("getScanStarFaceConfigInfo IService=%s configInfo=%s", new Object[] { this.jdField_a_of_type_Alei, localObject1 }));
+      return localObject1;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        QLog.e("ARGlobalRemoteManager", 1, "getScanStarFaceConfigInfo fail!", localRemoteException);
+        Object localObject2 = localObject3;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Alei == null)
+      {
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, ARGlobalConfigService.class);
+        this.jdField_a_of_type_AndroidContentContext.bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
+      }
       return;
     }
-    localMarginLayoutParams.bottomMargin = i;
-    paramView.setLayoutParams(localMarginLayoutParams);
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).edit().putInt(paramString, paramInt).commit();
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

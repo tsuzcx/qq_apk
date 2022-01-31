@@ -22,11 +22,11 @@ final class MiniAppUtils$11
       if (paramJSONObject != null)
       {
         paramJSONObject.mergeData(this.val$appConfig.config);
-        MiniAppUtils.access$300(paramJSONObject);
+        MiniAppUtils.access$200(paramJSONObject);
       }
       return;
     }
-    MiniAppUtils.access$300(this.val$appConfig.config);
+    MiniAppUtils.access$200(this.val$appConfig.config);
     MiniAppUtils.updateMiniAppList(11);
     QLog.e("MiniAppUtils", 1, "updateMiniAppMemoryCache, request fail. appInfo: " + this.val$appConfig.config);
   }

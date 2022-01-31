@@ -1,208 +1,354 @@
-import android.content.BroadcastReceiver;
-import android.text.TextUtils;
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionResDownload.1;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Locale;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class akyv
-  extends alar
 {
-  private akyw jdField_a_of_type_Akyw = new akyw(this, null);
-  private akyy jdField_a_of_type_Akyy = new akyy(this, null);
-  private akzm jdField_a_of_type_Akzm = new akzm(this, null);
-  private akzo jdField_a_of_type_Akzo = new akzo(this, null);
-  public alad a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private HashMap<String, akyx> b = new ArkAppDeviceModule.1(this);
+  PromotionConfigInfo jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
+  final String jdField_a_of_type_JavaLangString;
+  ArrayList<akyx> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public akyv(ark.Application paramApplication, long paramLong)
+  public akyv(long paramLong)
   {
-    super(paramApplication, paramLong);
-    this.jdField_a_of_type_Alad = new alad(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaLangString = ("ARPromotionResDownload_" + paramLong);
   }
   
-  private void a(long paramLong, String paramString1, String paramString2)
+  static akyp a(boolean paramBoolean, PromotionConfigInfo paramPromotionConfigInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doScanCodeCallback cbId=" + paramLong + ", scanResult=" + paramString1 + ", scanType=" + paramString2);
+    Iterator localIterator = paramPromotionConfigInfo.operationInfos.entrySet().iterator();
+    akyp localakyp = null;
+    while (localIterator.hasNext())
+    {
+      akyo localakyo = (akyo)((Map.Entry)localIterator.next()).getValue();
+      if (!akyy.a(localakyo.jdField_b_of_type_Long))
+      {
+        localakyp = a(paramBoolean, paramPromotionConfigInfo.mUin, localakyo);
+        if (localakyp != null) {
+          return localakyp;
+        }
+      }
     }
-    ark.VariantWrapper localVariantWrapper1 = a(paramLong);
-    if (localVariantWrapper1 == null) {
+    return localakyp;
+  }
+  
+  static akyp a(boolean paramBoolean, PromotionConfigInfo paramPromotionConfigInfo, akyo paramakyo)
+  {
+    akyp localakyp = a(paramBoolean, paramPromotionConfigInfo.mUin, paramakyo);
+    paramakyo = localakyp;
+    if (localakyp == null)
+    {
+      paramakyo = localakyp;
+      if (paramBoolean) {
+        paramakyo = a(paramBoolean, paramPromotionConfigInfo);
+      }
+    }
+    return paramakyo;
+  }
+  
+  public static akyp a(boolean paramBoolean, String paramString, akyo paramakyo)
+  {
+    paramakyo = paramakyo.a().entrySet().iterator();
+    while (paramakyo.hasNext())
+    {
+      akyp localakyp = (akyp)((Map.Entry)paramakyo.next()).getValue();
+      if (localakyp.jdField_c_of_type_Int == -1)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.w(akyy.jdField_a_of_type_JavaLangString, 1, "isPromotionResReady, 已经下载失败了, id[" + localakyp.e + "], index[" + localakyp.jdField_a_of_type_Int + "]");
+        }
+      }
+      else if ((paramBoolean) && (localakyp.jdField_b_of_type_Int == 0))
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.w(akyy.jdField_a_of_type_JavaLangString, 1, "isPromotionResReady, 无需预下载, id[" + localakyp.e + "], index[" + localakyp.jdField_a_of_type_Int + "]");
+        }
+      }
+      else if (!a(paramString, localakyp)) {
+        return localakyp;
+      }
+    }
+    return null;
+  }
+  
+  private ArrayList<akyx> a()
+  {
+    ArrayList localArrayList2 = new ArrayList();
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      localArrayList2.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+      return localArrayList2;
+    }
+  }
+  
+  private void a(String paramString1, boolean paramBoolean, AppInterface paramAppInterface, String paramString2, int paramInt, akyp paramakyp)
+  {
+    if ((a() == null) || (paramakyp == null))
+    {
+      a(paramString2, paramInt, -3);
       return;
     }
-    int i;
-    ark.VariantWrapper localVariantWrapper2;
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    paramString2 = a(paramAppInterface, paramakyp);
+    paramakyp.jdField_b_of_type_Long = System.currentTimeMillis();
+    Object localObject1 = (ayxq)paramAppInterface.getManager(193);
+    ((ayxq)localObject1).a(paramakyp.jdField_a_of_type_JavaLangString);
+    ((ayxq)localObject1).a(paramakyp.jdField_a_of_type_JavaLangString, 0L);
+    localObject1 = paramakyp.jdField_c_of_type_JavaLangString;
+    if (a(paramAppInterface.getAccount(), paramakyp))
     {
-      i = 1;
-      localVariantWrapper2 = localVariantWrapper1.Create();
-      if (i == 0) {
-        break label186;
+      paramAppInterface = paramakyp.jdField_a_of_type_JavaLangObject;
+      if (!paramBoolean) {}
+      try
+      {
+        paramakyp.jdField_a_of_type_Boolean = false;
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "innerDownloadRes[" + paramString1 + "], 资源已经存在, callByPreDownload[" + paramBoolean + "], item[" + paramakyp + "], zipPath[" + (String)localObject1 + "]");
+        paramakyp.a(2);
+        paramString2.a(paramakyp.jdField_a_of_type_JavaLangString, paramakyp.jdField_b_of_type_JavaLangString, 100, (String)localObject1, paramakyp);
+        return;
       }
-      if (!"QR_CODE".equalsIgnoreCase(paramString2)) {
-        break label179;
-      }
-      paramString2 = "QRCode";
-      label104:
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"result\":\"%s\",\"type\":\"%s\",\"charset\":\"%s\"}", new Object[] { paramString1, paramString2, "utf-8" }));
+      finally {}
     }
+    Object localObject2 = paramakyp.jdField_a_of_type_JavaLangObject;
+    if (!paramBoolean) {}
     for (;;)
     {
-      paramString1 = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString1);
-      paramString1.Reset();
-      localVariantWrapper2.Reset();
-      localVariantWrapper1.Reset();
-      return;
-      i = 0;
-      break;
-      label179:
-      paramString2 = "BarCode";
-      break label104;
-      label186:
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doPositionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", lat=" + paramDouble1 + ", lng=" + paramDouble2);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    if (paramBoolean) {
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"latitude\":%.6f,\"longitude\":%.6f}", new Object[] { Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) }));
-    }
-    for (;;)
-    {
-      ark.VariantWrapper localVariantWrapper3 = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, localVariantWrapper3);
-      localVariantWrapper3.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doConnectionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", netType=" + paramString);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    if (paramBoolean) {
-      localVariantWrapper2.SetString(paramString);
-    }
-    for (;;)
-    {
-      paramString = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
-      paramString.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, String paramString, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doSensorCallback cbId=" + paramLong + ", success=" + paramBoolean + ", sensorEventType=" + paramString + ", argA=" + paramFloat1 + ", argB=" + paramFloat2 + ", argC=" + paramFloat3);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    String str = null;
-    if ("Motion".equals(paramString))
-    {
-      str = "{\"x\":%.6f,\"y\":%.6f,\"z\":%.6f}";
-      if ((!paramBoolean) || (TextUtils.isEmpty(str))) {
-        break label220;
+      try
+      {
+        paramakyp.jdField_a_of_type_Boolean = false;
+        if (paramakyp.jdField_c_of_type_Int == 1)
+        {
+          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "innerDownloadRes[" + paramString1 + "], 已经在下载中, callByPreDownload[" + paramBoolean + "], item[" + paramakyp + "], zipPath[" + (String)localObject1 + "]");
+          return;
+        }
       }
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, str, new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3) }));
-    }
-    for (;;)
-    {
-      paramString = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
-      paramString.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      if (!"Orientation".equals(paramString)) {
-        break;
+      finally {}
+      paramakyp.a(1);
+      boolean bool = ((alxp)paramAppInterface.getManager(191)).a(paramakyp.jdField_a_of_type_JavaLangString, paramakyp.jdField_b_of_type_JavaLangString, ".zip", true, 5, paramakyp, paramakyp.jdField_a_of_type_Alxs);
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "innerDownloadRes[" + paramString1 + "], 开始下载, callByPreDownload[" + paramBoolean + "], ret[" + bool + "], item[" + paramakyp + "]");
+      if (!bool) {
+        paramString2.a(paramakyp.jdField_a_of_type_JavaLangString, paramakyp.jdField_b_of_type_JavaLangString, -4, null, paramakyp);
       }
-      str = "{\"alpha\":%.6f,\"beta\":%.6f,\"gamma\":%.6f}";
-      break;
-      label220:
-      localVariantWrapper2.SetNull();
     }
   }
   
-  public void Destruct()
+  static boolean a(akyp paramakyp)
   {
-    if (this.jdField_a_of_type_Alad != null) {
-      this.jdField_a_of_type_Alad.a();
-    }
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
-    try
+    if (paramakyp.jdField_a_of_type_Int == 0)
     {
-      BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      label31:
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-      super.Destruct();
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label31;
-    }
-  }
-  
-  public String GetTypeName()
-  {
-    return "Device";
-  }
-  
-  public boolean HasMenthod(String paramString)
-  {
-    return (this.b != null) && (this.b.containsKey(paramString)) && (this.b.get(paramString) != null);
-  }
-  
-  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "invokeFunc=" + paramString);
-    }
-    if (!a(paramString)) {
+      String str = akyu.a(paramakyp);
+      if (!new File(str + "entry.png").exists()) {
+        if (QLog.isDevelopLevel()) {
+          QLog.w("PromotionResDownload", 1, "文件不存在, path[" + str + "], name[" + "entry.png" + "]");
+        }
+      }
+      do
+      {
+        do
+        {
+          return false;
+          if (new File(str + "entry.json").exists()) {
+            break;
+          }
+        } while (!QLog.isDevelopLevel());
+        QLog.w("PromotionResDownload", 1, "文件不存在, path[" + str + "], name[" + "entry.json" + "]");
+        return false;
+        paramakyp = akyu.b(paramakyp);
+        if (new File(paramakyp + "guide.json").exists()) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.w("PromotionResDownload", 1, "文件不存在, path[" + paramakyp + "], name[" + "guide.json" + "]");
       return false;
     }
-    if (this.b != null)
-    {
-      akyx localakyx = (akyx)this.b.get(paramString);
-      if (localakyx != null) {
-        return localakyx.a(paramString, paramArrayOfVariantWrapper, paramVariantWrapper);
-      }
+    if (paramakyp.jdField_a_of_type_Int == 1) {}
+    return true;
+  }
+  
+  public static boolean a(String paramString, akyp paramakyp)
+  {
+    String str = paramakyp.d;
+    if (bblp.a(paramString, paramakyp.e, paramakyp.jdField_a_of_type_Int, paramakyp.jdField_b_of_type_JavaLangString, str)) {
+      return a(paramakyp);
     }
     return false;
+  }
+  
+  /* Error */
+  alxs a(AppInterface paramAppInterface, akyp paramakyp)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_2
+    //   3: getfield 218	akyp:jdField_a_of_type_Alxs	Lalxs;
+    //   6: ifnull +12 -> 18
+    //   9: aload_2
+    //   10: getfield 218	akyp:jdField_a_of_type_Alxs	Lalxs;
+    //   13: astore_1
+    //   14: aload_0
+    //   15: monitorexit
+    //   16: aload_1
+    //   17: areturn
+    //   18: aload_2
+    //   19: getfield 116	akyp:jdField_a_of_type_Int	I
+    //   22: istore_3
+    //   23: aload_2
+    //   24: new 265	akyw
+    //   27: dup
+    //   28: aload_0
+    //   29: aload_1
+    //   30: aload_2
+    //   31: getfield 112	akyp:e	Ljava/lang/String;
+    //   34: iload_3
+    //   35: invokespecial 268	akyw:<init>	(Lakyv;Lcom/tencent/common/app/AppInterface;Ljava/lang/String;I)V
+    //   38: putfield 218	akyp:jdField_a_of_type_Alxs	Lalxs;
+    //   41: aload_2
+    //   42: getfield 218	akyp:jdField_a_of_type_Alxs	Lalxs;
+    //   45: astore_1
+    //   46: goto -32 -> 14
+    //   49: astore_1
+    //   50: aload_0
+    //   51: monitorexit
+    //   52: aload_1
+    //   53: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	54	0	this	akyv
+    //   0	54	1	paramAppInterface	AppInterface
+    //   0	54	2	paramakyp	akyp
+    //   22	13	3	i	int
+    // Exception table:
+    //   from	to	target	type
+    //   2	14	49	finally
+    //   18	46	49	finally
+  }
+  
+  PromotionConfigInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
+  }
+  
+  public void a(akyx paramakyx)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramakyx);
+      return;
+    }
+  }
+  
+  void a(AppInterface paramAppInterface, boolean paramBoolean, String paramString, int paramInt)
+  {
+    Object localObject1 = a();
+    if (localObject1 == null) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, ConfigInfo为空, callByPreDownload[" + paramBoolean + "], activatyid[" + paramString + "], index[" + paramInt + "]");
+    }
+    do
+    {
+      Object localObject2;
+      for (;;)
+      {
+        return;
+        if (!(paramAppInterface instanceof QQAppInterface))
+        {
+          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, 不在主进程");
+          return;
+        }
+        localObject2 = ((PromotionConfigInfo)localObject1).getItem(paramString);
+        if (localObject2 == null)
+        {
+          a(paramString, paramInt, -3);
+          return;
+        }
+        localObject1 = a(paramBoolean, (PromotionConfigInfo)localObject1, (akyo)localObject2);
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, expectID[" + paramString + "], expectIndex[" + paramInt + "], callByPreDownload[" + paramBoolean + "], zipItem[" + localObject1 + "]");
+        if (localObject1 != null) {
+          break;
+        }
+        paramAppInterface = ((akyo)localObject2).a().entrySet().iterator();
+        while (paramAppInterface.hasNext()) {
+          a(paramString, ((akyp)((Map.Entry)paramAppInterface.next()).getValue()).jdField_a_of_type_Int, 100);
+        }
+      }
+      paramString = ((akyp)localObject1).jdField_b_of_type_JavaLangString;
+      if (!paramBoolean) {
+        break;
+      }
+      if (((akyp)localObject1).jdField_b_of_type_Int != 0)
+      {
+        localObject2 = new ayxr((QQAppInterface)paramAppInterface, paramString, new PromotionResDownload.1(this, paramBoolean, paramAppInterface, (akyp)localObject1), 0L);
+        paramBoolean = ((ayxq)paramAppInterface.getManager(193)).a(10074, "prd", paramString, 0, ((akyp)localObject1).jdField_a_of_type_JavaLangString, ((akyp)localObject1).jdField_c_of_type_JavaLangString, ((akyp)localObject1).jdField_b_of_type_Int, 0, true, (ayxn)localObject2);
+        ((akyp)localObject1).jdField_a_of_type_Long = System.currentTimeMillis();
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, 预下载申请调度, ret[" + paramBoolean + "], index[" + ((akyp)localObject1).jdField_a_of_type_Int + "]");
+        return;
+      }
+    } while (!AudioHelper.e());
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, 无需预下载，id[" + ((akyp)localObject1).e + "], index[" + ((akyp)localObject1).jdField_a_of_type_Int + "]");
+    return;
+    a(ajyc.a(2131708516), paramBoolean, paramAppInterface, ((akyp)localObject1).e, ((akyp)localObject1).jdField_a_of_type_Int, (akyp)localObject1);
+  }
+  
+  void a(PromotionConfigInfo paramPromotionConfigInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
+    paramPromotionConfigInfo = paramPromotionConfigInfo.operationInfos.entrySet().iterator();
+    while (paramPromotionConfigInfo.hasNext())
+    {
+      Iterator localIterator = ((akyo)((Map.Entry)paramPromotionConfigInfo.next()).getValue()).a().entrySet().iterator();
+      while (localIterator.hasNext()) {
+        ((akyp)((Map.Entry)localIterator.next()).getValue()).a();
+      }
+    }
+  }
+  
+  void a(String paramString, int paramInt1, int paramInt2)
+  {
+    b(paramString, paramInt1, paramInt2);
+    BusinessCommonConfig.sendDownloadResultNotify(2, paramString, paramInt1, paramInt2);
+  }
+  
+  void b()
+  {
+    Iterator localIterator = a().iterator();
+    while (localIterator.hasNext()) {
+      ((akyx)localIterator.next()).a();
+    }
+  }
+  
+  public void b(akyx paramakyx)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(paramakyx);
+      return;
+    }
+  }
+  
+  void b(String paramString, int paramInt1, int paramInt2)
+  {
+    Iterator localIterator = a().iterator();
+    while (localIterator.hasNext()) {
+      ((akyx)localIterator.next()).a(paramString, paramInt1, paramInt2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akyv
  * JD-Core Version:    0.7.0.1
  */

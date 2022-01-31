@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class asqq
-  implements View.OnClickListener
+public class asqq
+  implements asqm
 {
-  asqq(aspq paramaspq) {}
+  public void a(int paramInt) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.g(paramView);
-  }
+  public void a(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void b(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asqq
  * JD-Core Version:    0.7.0.1
  */

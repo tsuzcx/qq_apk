@@ -1,55 +1,17 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPOIPosters;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIPosters;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class szw
-  extends slz<tbq>
+class szw
+  extends szu
 {
-  public final int c;
-  public final int d;
-  public final int e;
+  szw(szv paramszv) {}
   
-  public szw(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = 1;
-  }
-  
-  public String a()
-  {
-    return skt.a("StorySvc.video_poi_posters_get");
-  }
-  
-  public slu a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetPOIPosters localRspGetPOIPosters = new qqstory_service.RspGetPOIPosters();
-    try
-    {
-      localRspGetPOIPosters.mergeFrom(paramArrayOfByte);
-      return new tbq(localRspGetPOIPosters);
+    this.a.e();
+    if (paramBoolean) {
+      this.a.a(true, paramCommentEntry);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetPOIPosters localReqGetPOIPosters = new qqstory_service.ReqGetPOIPosters();
-    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
-    localGpsMsg.lng.set(this.c);
-    localGpsMsg.lat.set(this.d);
-    localReqGetPOIPosters.coordinate.set(this.e);
-    localReqGetPOIPosters.gps.set(localGpsMsg);
-    return localReqGetPOIPosters.toByteArray();
   }
 }
 

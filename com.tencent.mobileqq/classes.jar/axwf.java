@@ -1,103 +1,148 @@
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class axwf
-  extends axoo
+  extends DefaultHandler
+  implements axuw
 {
-  public axwf(axvo paramaxvo, axvt paramaxvt)
-  {
-    super(paramaxvo, paramaxvt);
-    this.b = ((axvw)this.jdField_a_of_type_Axvt.jdField_a_of_type_JavaLangObject).jdField_a_of_type_Int;
-  }
+  axwe jdField_a_of_type_Axwe;
+  private String jdField_a_of_type_JavaLangString;
+  Stack<axwe> jdField_a_of_type_JavaUtilStack = new Stack();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void aU_()
+  public AbsStructMsg a()
   {
-    f();
-  }
-  
-  void d()
-  {
-    super.d();
-    this.jdField_a_of_type_Axos.a(axvo.a(this.jdField_a_of_type_Axvt));
-    axwa localaxwa = this.jdField_a_of_type_Axvt.jdField_a_of_type_Axwa;
-    if (localaxwa != null)
+    Object localObject1 = null;
+    if (this.jdField_a_of_type_Axwe == null) {}
+    label161:
+    for (;;)
     {
-      localaxwa.jdField_a_of_type_Int = -1;
-      localaxwa.jdField_a_of_type_Long = this.j;
-      localaxwa.jdField_a_of_type_JavaLangString = this.i;
-      localaxwa.jdField_a_of_type_Axvt = this.jdField_a_of_type_Axvt;
-    }
-    try
-    {
-      b("notify", "start");
-      notifyAll();
-      b("notify", "end");
-      return;
-    }
-    finally {}
-  }
-  
-  void e()
-  {
-    super.e();
-    axwa localaxwa = this.jdField_a_of_type_Axvt.jdField_a_of_type_Axwa;
-    this.jdField_a_of_type_Axos.a(axvo.a(this.jdField_a_of_type_Axvt));
-    if (localaxwa != null)
-    {
-      localaxwa.jdField_a_of_type_Int = 0;
-      localaxwa.jdField_a_of_type_Axvt = this.jdField_a_of_type_Axvt;
-    }
-    try
-    {
-      b("notify", "start");
-      notifyAll();
-      b("notify", "end");
-      return;
-    }
-    finally {}
-  }
-  
-  void f()
-  {
-    String str = this.jdField_a_of_type_Axvt.jdField_e_of_type_JavaLangString;
-    axro localaxro = new axro();
-    localaxro.jdField_a_of_type_Axrt = this;
-    localaxro.jdField_a_of_type_JavaLangString = str;
-    localaxro.jdField_a_of_type_Int = 0;
-    localaxro.jdField_a_of_type_JavaIoOutputStream = this.jdField_a_of_type_Axvt.jdField_a_of_type_JavaIoOutputStream;
-    localaxro.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Axvt.h;
-    localaxro.jdField_e_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Axvt.jdField_a_of_type_Long);
-    localaxro.g = this.jdField_a_of_type_Axvt.jdField_a_of_type_Int;
-    localaxro.f = this.jdField_a_of_type_Axvt.b;
-    localaxro.jdField_a_of_type_Long = this.b;
-    localaxro.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
-    localaxro.jdField_e_of_type_Int = this.jdField_a_of_type_Axvt.f;
-    if (this.jdField_a_of_type_Axvt.d)
-    {
-      localaxro.jdField_a_of_type_JavaUtilHashMap.put("Range", "bytes=" + localaxro.jdField_a_of_type_Long + "-");
-      localaxro.jdField_a_of_type_Axrs = jdField_a_of_type_Axrs;
-    }
-    localaxro.jdField_c_of_type_Int = 4;
-    localaxro.jdField_c_of_type_Long = 90000L;
-    b("httpDown", " url:" + str + ",downOffset:" + localaxro.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Axrr.a(localaxro);
-  }
-  
-  public void onResp(axsq paramaxsq)
-  {
-    super.onResp(paramaxsq);
-    StringBuilder localStringBuilder = new StringBuilder().append(" result:");
-    if (paramaxsq.jdField_a_of_type_Int == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      b("onHttpResp", bool);
-      this.b += paramaxsq.jdField_c_of_type_Long;
-      if (paramaxsq.jdField_a_of_type_Int != 0) {
-        break;
+      return localObject1;
+      if (this.jdField_a_of_type_Axwe.a() > 0) {}
+      for (Object localObject2 = this.jdField_a_of_type_Axwe.a(0);; localObject2 = null)
+      {
+        if (localObject2 == null) {
+          break label161;
+        }
+        int i = Integer.parseInt(this.jdField_a_of_type_Axwe.a("serviceID"));
+        if (i == 2) {
+          return new StructMsgForAudioShare(this.jdField_a_of_type_Axwe);
+        }
+        if ((i == 3) || (i == 82) || (i == 120)) {
+          return new StructMsgForHypertext(this.jdField_a_of_type_Axwe, i);
+        }
+        if ((i == 5) || (i == 137)) {
+          return new StructMsgForImageShare(this.jdField_a_of_type_Axwe);
+        }
+        if (i == 150)
+        {
+          localObject2 = new StructMsgSubImageVideo(this.jdField_a_of_type_Axwe);
+          localObject1 = localObject2;
+          if (((StructMsgSubImageVideo)localObject2).isValid()) {
+            break;
+          }
+        }
+        return new StructMsgForGeneralShare(this.jdField_a_of_type_Axwe);
       }
-      e();
-      return;
     }
-    d();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    super.characters(paramArrayOfChar, paramInt1, paramInt2);
+    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+    axwe localaxwe;
+    if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
+    {
+      localaxwe = (axwe)this.jdField_a_of_type_JavaUtilStack.peek();
+      if (localaxwe != null) {
+        if (localaxwe.jdField_a_of_type_JavaLangString != null) {
+          break label81;
+        }
+      }
+    }
+    for (;;)
+    {
+      localaxwe.jdField_a_of_type_JavaLangString = paramArrayOfChar;
+      localaxwe.jdField_a_of_type_JavaLangString = ayjw.b(localaxwe.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b);
+      return;
+      label81:
+      paramArrayOfChar = localaxwe.jdField_a_of_type_JavaLangString.concat(paramArrayOfChar);
+    }
+  }
+  
+  public void endDocument()
+  {
+    super.endDocument();
+    this.jdField_a_of_type_JavaUtilStack.clear();
+    this.jdField_a_of_type_JavaUtilStack = null;
+  }
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    super.endElement(paramString1, paramString2, paramString3);
+    if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
+    {
+      paramString1 = (axwe)this.jdField_a_of_type_JavaUtilStack.pop();
+      if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
+        this.jdField_a_of_type_Axwe = paramString1;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if ((paramString1 != null) && (!"".equals(paramString1.jdField_a_of_type_JavaLangString))) {
+          paramString1.jdField_a_of_type_Int = 3;
+        }
+        this.jdField_a_of_type_Boolean = false;
+      }
+    }
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    super.startElement(paramString1, paramString2, paramString3, paramAttributes);
+    HashMap localHashMap = new HashMap();
+    int i = 0;
+    while (i < paramAttributes.getLength())
+    {
+      localHashMap.put(paramAttributes.getLocalName(i), ayjw.b(paramAttributes.getValue(i), this.jdField_a_of_type_JavaLangString, this.b));
+      i += 1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("StructMsg", 2, "StructMsgParserHandler startElement uri = " + paramString1 + ", localName = " + paramString2 + ", qName = " + paramString3 + ", map = " + localHashMap);
+    }
+    paramString1 = new axwe(paramString2, localHashMap);
+    if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
+    {
+      paramString2 = (axwe)this.jdField_a_of_type_JavaUtilStack.peek();
+      if (paramString2 != null)
+      {
+        paramString1.jdField_a_of_type_Axwe = paramString2;
+        paramString2.a(paramString1);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilStack.push(paramString1);
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

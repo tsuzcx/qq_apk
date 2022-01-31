@@ -1,45 +1,70 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Build;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.util.QzoneHardwareRestriction;
 
-final class bhpn
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
+public class bhpn
 {
-  final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  final View jdField_a_of_type_AndroidViewView;
+  public static final int a = QzoneConfig.getInstance().getConfig("PhotoUpload", "createGifLowDeviceSize", 720);
+  public static final int b = QzoneConfig.getInstance().getConfig("PhotoUpload", "createGifMiddleDeviceSize", 720);
+  public static final int c = QzoneConfig.getInstance().getConfig("PhotoUpload", "createGifHighDeviceSize", 720);
+  public static final int d = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_delay", 200);
+  public static final int e = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_size_limit", 64);
+  public static final int f = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_max_speed", 20);
+  public static final int g = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_min_multiple_speed", 3);
+  private static int h = -1;
   
-  bhpn(View paramView, View.OnClickListener paramOnClickListener)
+  public static int a()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_AndroidViewView);
+    int i = 2;
+    if (QzoneHardwareRestriction.meetHardwareRestriction(2, 2)) {
+      i = 3;
     }
+    while (QzoneHardwareRestriction.meetHardwareRestriction(1, 1)) {
+      return i;
+    }
+    return 1;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static boolean a()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setScaleX(f);
-    this.jdField_a_of_type_AndroidViewView.setScaleY(f);
+    if (h >= 0) {
+      return h == 1;
+    }
+    String[] arrayOfString = QzoneConfig.getInstance().getConfig("QZoneSetting", "GenerateGifBlackList", "X9007,MI 2C,A0001").split(",");
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = arrayOfString[i];
+      if (Build.MODEL.equalsIgnoreCase(str))
+      {
+        h = 1;
+        return true;
+      }
+      i += 1;
+    }
+    h = 0;
+    return false;
+  }
+  
+  public static int b()
+  {
+    int i = a();
+    if (i == 1) {
+      return a;
+    }
+    if (i == 2) {
+      return b;
+    }
+    if (i == 3) {
+      return c;
+    }
+    return 720;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhpn
  * JD-Core Version:    0.7.0.1
  */

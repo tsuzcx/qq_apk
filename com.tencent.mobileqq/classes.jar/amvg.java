@@ -1,33 +1,84 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.animation.AlphaAnimation;
-import android.widget.TextView;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amvg
-  implements Animator.AnimatorListener
+  extends ampb<amvf>
 {
-  public amvg(DataReportViewer paramDataReportViewer) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public static amvf a()
   {
-    this.a.a.setVisibility(0);
-    paramAnimator = new AlphaAnimation(0.0F, 1.0F);
-    paramAnimator.setFillAfter(true);
-    paramAnimator.setDuration(200L);
-    this.a.a.startAnimation(paramAnimator);
-    paramAnimator.setAnimationListener(new amvh(this));
+    return (amvf)ampm.a().a(441);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public int a()
+  {
+    return 441;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  @NonNull
+  public amvf a(int paramInt)
+  {
+    return new amvf();
+  }
+  
+  @Nullable
+  public amvf a(ampi[] paramArrayOfampi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfProcessor", 2, "onParsed ");
+    }
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    {
+      new amvf();
+      return amvf.a(paramArrayOfampi);
+    }
+    return null;
+  }
+  
+  public Class<amvf> a()
+  {
+    return amvf.class;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(amvf paramamvf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfProcessor", 2, "onUpdate " + paramamvf.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amvg
  * JD-Core Version:    0.7.0.1
  */

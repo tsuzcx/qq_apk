@@ -1,18 +1,23 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-
-public final class bfnb
+public class bfnb
 {
-  private static SharedPreferences b(Context paramContext)
+  private static ThreadLocal<StringBuilder> a = new ThreadLocal();
+  
+  public static StringBuilder a()
   {
-    return paramContext.getSharedPreferences("reader_user" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
+    StringBuilder localStringBuilder = (StringBuilder)a.get();
+    if (localStringBuilder == null)
+    {
+      localStringBuilder = new StringBuilder();
+      a.set(localStringBuilder);
+      return localStringBuilder;
+    }
+    localStringBuilder.setLength(0);
+    return localStringBuilder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfnb
  * JD-Core Version:    0.7.0.1
  */

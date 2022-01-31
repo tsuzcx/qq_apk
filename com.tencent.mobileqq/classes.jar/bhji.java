@@ -1,40 +1,38 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.content.ServiceConnection;
+import java.lang.ref.WeakReference;
 
 public class bhji
-  implements bhjh
 {
-  private float jdField_a_of_type_Float;
-  private File jdField_a_of_type_JavaIoFile;
+  private static ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new bhjj();
+  static bhim jdField_a_of_type_Bhim;
+  private static WeakReference<bhjk> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a()
+  public static void a(Context paramContext, bhjk parambhjk)
   {
-    if ((this.jdField_a_of_type_JavaIoFile == null) || (!this.jdField_a_of_type_JavaIoFile.exists()))
+    if ((jdField_a_of_type_Bhim != null) && (jdField_a_of_type_Bhim.b()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("OriginalBgmRecognizer", 2, "recognize: invoked. info: audioFile not exist. mTargetAudioFile = " + this.jdField_a_of_type_JavaIoFile);
+      if (parambhjk != null) {
+        parambhjk.onQzonePluginClientReady(jdField_a_of_type_Bhim);
       }
       return;
     }
-    bhjl localbhjl = (bhjl)bhfm.a().c(10);
-    localbhjl.a(this.jdField_a_of_type_Float);
-    localbhjl.a(this.jdField_a_of_type_JavaIoFile);
-    localbhjl.c();
+    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambhjk);
+    bhig.a().a(paramContext, jdField_a_of_type_AndroidContentServiceConnection, 0);
   }
   
-  public void a(float paramFloat)
+  private static void b()
   {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(File paramFile)
-  {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
+    if (jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      jdField_a_of_type_JavaLangRefWeakReference.clear();
+      jdField_a_of_type_JavaLangRefWeakReference = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhji
  * JD-Core Version:    0.7.0.1
  */

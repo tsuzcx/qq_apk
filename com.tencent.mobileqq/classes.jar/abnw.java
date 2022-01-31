@@ -1,19 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class abnw
-  implements benm
+  extends Handler
 {
-  public abnw(RecommendFriendActivity paramRecommendFriendActivity) {}
+  public abnw(NearbyActivity paramNearbyActivity) {}
   
-  public void a(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    RecommendFriendActivity.a(this.a, false);
-  }
-  
-  public void b(View paramView)
-  {
-    RecommendFriendActivity.a(this.a, true);
+    if (!this.a.c)
+    {
+      this.a.g();
+      this.a.b.removeMessages(this.a.i);
+      sendEmptyMessageDelayed(this.a.i, this.a.n);
+    }
   }
 }
 

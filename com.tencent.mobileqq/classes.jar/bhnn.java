@@ -1,54 +1,32 @@
-import java.util.Arrays;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
 
-public class bhnn
+final class bhnn
+  implements ModuleDownloadListener
 {
-  public static String a;
-  private static final int[] a;
+  public void onDownloadCanceled(String paramString) {}
   
-  static
+  public void onDownloadFailed(String paramString)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 64, 91, 96, 123, 8543, 8576, 12295, 19967, 40870, 65295, 65306, 65312, 65339, 65344, 65371, 2147483647 };
-    jdField_a_of_type_JavaLangString = "[a-zA-Z0-9\\u4e00-\\u9fa5]";
+    QZLog.i(bhnm.a, "download webp so fail");
   }
   
-  public static int a(char paramChar)
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString)
   {
-    if (a(paramChar)) {
-      return 3;
+    if (!paramString.equals("animatedWebp.so")) {
+      return;
     }
-    switch (Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, paramChar))
-    {
-    default: 
-      if (Character.isHighSurrogate(paramChar)) {
-        return 2;
-      }
-      break;
-    case -16: 
-    case -14: 
-    case -12: 
-    case -10: 
-    case -7: 
-    case -5: 
-    case -3: 
-    case 5: 
-      return 0;
-    }
-    return 1;
-  }
-  
-  public static int a(String paramString)
-  {
-    return Character.codePointCount(paramString, 0, paramString.length());
-  }
-  
-  private static boolean a(char paramChar)
-  {
-    return (paramChar >= '0') && (paramChar <= '9');
+    bdkd.a().edit().putString("PREFERENCE_SO_MD5_KEY", bhnm.b).commit();
+    QZLog.i(bhnm.a, "download webp so succ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhnn
  * JD-Core Version:    0.7.0.1
  */

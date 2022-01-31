@@ -1,38 +1,19 @@
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
+import com.tencent.open.appstore.js.DINewForCommonWebView.2;
+import com.tencent.smtt.sdk.ValueCallback;
 
-public abstract class bdhf
+public class bdhf
+  implements ValueCallback<String>
 {
-  public static String a(String paramString)
-  {
-    try
-    {
-      paramString = URLEncoder.encode(paramString, "UTF-8");
-      return paramString;
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      throw new IllegalArgumentException(paramString);
-    }
-  }
+  public bdhf(DINewForCommonWebView.2 param2) {}
   
-  public static String b(String paramString)
+  public void a(String paramString)
   {
-    try
-    {
-      paramString = URLDecoder.decode(paramString, "UTF-8");
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      throw new IllegalArgumentException(paramString);
-    }
+    bdht.b("DINewForCommonWebView", "[jsCallBack]:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdhf
  * JD-Core Version:    0.7.0.1
  */

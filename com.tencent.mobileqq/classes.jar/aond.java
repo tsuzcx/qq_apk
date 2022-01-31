@@ -1,42 +1,51 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 
 public class aond
-  extends aoiy
+  implements Animation.AnimationListener
 {
-  aodp jdField_a_of_type_Aodp = null;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public aond(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
   
-  public aond(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    a();
+    Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
   }
   
-  public int a()
-  {
-    return 4;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a()
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Aodp = new aone(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aodp);
-  }
-  
-  public boolean a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.b);
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aodp != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aodp);
+    if (Face2FaceFriendBubbleView.a(this.a) == 1)
+    {
+      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+    }
+    for (;;)
+    {
+      Face2FaceFriendBubbleView.a(this.a).setVisibility(4);
+      return;
+      if (Face2FaceFriendBubbleView.a(this.a) == 2)
+      {
+        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839577);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      }
+      else if (Face2FaceFriendBubbleView.a(this.a) == 3)
+      {
+        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839578);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      }
+      else if (Face2FaceFriendBubbleView.a(this.a) == 4)
+      {
+        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839579);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+      }
     }
   }
 }

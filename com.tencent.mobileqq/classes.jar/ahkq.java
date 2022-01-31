@@ -1,25 +1,30 @@
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ahkq
-  implements veh
+class ahkq
+  implements View.OnClickListener
 {
-  public ahkq(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  ahkq(ahkf paramahkf) {}
   
-  public void a() {}
-  
-  public void a(ver paramver)
+  public void onClick(View paramView)
   {
-    this.a.b(paramver);
-  }
-  
-  public void b()
-  {
-    this.a.a();
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    paramView = new Bundle();
+    paramView.putBoolean("string_from", false);
+    paramView.putBoolean("string_uin", true);
+    paramView.putLong("device_din", 0L);
+    paramView.putInt("sTitleID", 0);
+    bgoq.a(ahkf.a(this.a), paramView, "com.qqdataline.activity.LiteWifiphotoActivity");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahkq
  * JD-Core Version:    0.7.0.1
  */

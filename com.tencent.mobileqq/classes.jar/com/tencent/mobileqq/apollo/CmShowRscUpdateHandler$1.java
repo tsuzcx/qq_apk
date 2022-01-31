@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo;
 
-import aihn;
+import aiug;
 import com.tencent.common.app.AppInterface;
 
 public class CmShowRscUpdateHandler$1
   implements Runnable
 {
-  public CmShowRscUpdateHandler$1(aihn paramaihn, AppInterface paramAppInterface) {}
+  public CmShowRscUpdateHandler$1(aiug paramaiug, AppInterface paramAppInterface) {}
   
   public void run()
   {

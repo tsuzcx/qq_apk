@@ -1,7 +1,7 @@
 package com.tencent.qqconnect.wtlogin;
 
-import ajed;
-import ajjy;
+import ajsf;
+import ajyc;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.content.BroadcastReceiver;
@@ -22,13 +22,13 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import atmq;
-import awpm;
-import azvq;
-import bacm;
-import bcjn;
-import bdco;
-import bdcp;
+import auko;
+import axpj;
+import bawu;
+import bbdr;
+import bdno;
+import begq;
+import begr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.startup.step.Step;
@@ -46,7 +46,7 @@ public class OpenSDKAppInterface
   extends AppInterface
 {
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private bcjn jdField_a_of_type_Bcjn;
+  private bdno jdField_a_of_type_Bdno;
   private BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
   
   public OpenSDKAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
@@ -98,7 +98,7 @@ public class OpenSDKAppInterface
     }
     paramInt1 = (int)(paramInt1 * f1);
     paramInt2 = (int)(f1 * paramInt2);
-    return bacm.a(paramBitmap, paramInt1, paramInt1, paramInt2);
+    return bbdr.a(paramBitmap, paramInt1, paramInt1, paramInt2);
   }
   
   public Bitmap a(String paramString)
@@ -108,15 +108,15 @@ public class OpenSDKAppInterface
     while (System.currentTimeMillis() / 1000L - l > 172800L) {
       return null;
     }
-    return azvq.a(ajed.aU + "appicon/" + paramString);
+    return bawu.a(ajsf.aW + "appicon/" + paramString);
   }
   
   public Bitmap a(String paramString, int paramInt, boolean paramBoolean)
   {
-    Bitmap localBitmap2 = azvq.a(b(paramString));
+    Bitmap localBitmap2 = bawu.a(b(paramString));
     Bitmap localBitmap1 = localBitmap2;
     if (localBitmap2 == null) {
-      localBitmap1 = azvq.a(a(paramString));
+      localBitmap1 = bawu.a(a(paramString));
     }
     if (localBitmap1 == null) {
       paramString = null;
@@ -134,15 +134,15 @@ public class OpenSDKAppInterface
     return a(localBitmap1);
   }
   
-  public bcjn a()
+  public bdno a()
   {
     try
     {
-      if (this.jdField_a_of_type_Bcjn == null) {
-        this.jdField_a_of_type_Bcjn = new bcjn();
+      if (this.jdField_a_of_type_Bdno == null) {
+        this.jdField_a_of_type_Bdno = new bdno();
       }
-      bcjn localbcjn = this.jdField_a_of_type_Bcjn;
-      return localbcjn;
+      bdno localbdno = this.jdField_a_of_type_Bdno;
+      return localbdno;
     }
     finally {}
   }
@@ -152,7 +152,7 @@ public class OpenSDKAppInterface
     String str = MD5.toMD5(paramString);
     str = MD5.toMD5(str + paramString);
     paramString = MD5.toMD5(str + paramString);
-    return ajed.bA + paramString + ".png";
+    return ajsf.bI + paramString + ".png";
   }
   
   public void a(Context paramContext, String paramString)
@@ -161,7 +161,7 @@ public class OpenSDKAppInterface
     {
       paramContext = new AlertDialog.Builder(paramContext);
       paramContext.setMessage(paramString);
-      paramContext.setNegativeButton(ajjy.a(2131642070), new bdco(this));
+      paramContext.setNegativeButton(ajyc.a(2131707855), new begq(this));
       paramContext.show();
     }
   }
@@ -172,7 +172,7 @@ public class OpenSDKAppInterface
       return;
     }
     this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSharedPreferences("ssoappicon", 0).edit().putLong(paramString, System.currentTimeMillis() / 1000L).commit();
-    File localFile = new File(ajed.aU + "appicon/");
+    File localFile = new File(ajsf.aW + "appicon/");
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
@@ -204,7 +204,7 @@ public class OpenSDKAppInterface
     String str = MD5.toMD5(paramString);
     str = MD5.toMD5(str + paramString);
     paramString = MD5.toMD5(str + paramString);
-    return ajed.bF + paramString + ".png";
+    return ajsf.bN + paramString + ".png";
   }
   
   public BaseApplication getApp()
@@ -222,7 +222,7 @@ public class OpenSDKAppInterface
     return null;
   }
   
-  public atmq getEntityManagerFactory(String paramString)
+  public auko getEntityManagerFactory(String paramString)
   {
     return null;
   }
@@ -230,11 +230,11 @@ public class OpenSDKAppInterface
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    awpm.b(11, BaseApplicationImpl.sDirector, null).step();
+    axpj.b(11, BaseApplicationImpl.sDirector, null).step();
     if (QLog.isColorLevel()) {
       QLog.i("OpenSDKAppInterface", 2, "onCreate: invoked.  savedInstanceState: " + paramBundle);
     }
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bdcp(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new begr(this);
     paramBundle = new IntentFilter();
     paramBundle.addAction("mqq.intent.action.ACCOUNT_KICKED");
     this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);

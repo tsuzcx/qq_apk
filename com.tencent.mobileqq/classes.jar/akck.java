@@ -1,114 +1,113 @@
-import android.os.Bundle;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.os.AsyncTask;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class akck
-  extends ajzy
+  extends AsyncTask<RespondQueryQQBindingStat, Void, List<PhoneContact>>
 {
-  public akck(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
-  {
-    super(paramQQAppInterface, paramQQMessageFacade);
-  }
+  private List<String> jdField_a_of_type_JavaUtilList;
   
-  public long a(MessageRecord paramMessageRecord)
-  {
-    return 0L;
-  }
+  private akck(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public void a(MessageRecord paramMessageRecord, atmp paramatmp, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, ajzz paramajzz)
-  {
-    if (paramMessageRecord == null) {
-      return;
-    }
-    if (paramMessageRecord.time == 0L) {
-      paramMessageRecord.time = awao.a();
-    }
-    if (paramMessageRecord.msgseq == 0L) {
-      paramMessageRecord.msgseq = ((int)paramMessageRecord.time);
-    }
-    a(paramMessageRecord, true, 1);
-  }
-  
-  public void a(String paramString, int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2, Bundle paramBundle) {}
-  
-  public void a(String paramString, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
+  protected List<PhoneContact> a(RespondQueryQQBindingStat... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded uin=" + paramString + ",type=" + paramInt1 + ",needDelMark=" + paramBoolean2);
+      QLog.d("PhoneContact.Manager.ContactFriendTask", 2, "doInBackground");
     }
-    if (paramString == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded return : uin=null");
-      }
+    Object localObject = paramVarArgs[0];
+    paramVarArgs = new ArrayList();
+    paramVarArgs.addAll(PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).values());
+    Collections.sort(paramVarArgs, new akcl(this));
+    ArrayList localArrayList = new ArrayList();
+    ajxn localajxn = (ajxn)PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).getManager(51);
+    Iterator localIterator;
+    if (paramVarArgs.size() > 0)
+    {
+      localObject = ((RespondQueryQQBindingStat)localObject).mobileNo;
+      localIterator = paramVarArgs.iterator();
     }
-    label120:
+    PhoneContact localPhoneContact;
     do
     {
       do
       {
-        return;
-        if (!ajed.x.equals(paramString)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded return : clean all");
-        }
-        paramString = (axat)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(61);
-      } while (paramString == null);
-      paramString = paramString.a().iterator();
-      Object localObject1;
-      Object localObject2;
-      akaq localakaq;
-      while (paramString.hasNext())
-      {
-        localObject1 = (String)paramString.next();
-        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject1, paramInt1) > 0))
+        if (localIterator.hasNext())
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded clean one uin = " + (String)localObject1);
-          }
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramInt1).a((String)localObject1, paramInt1);
-          localakaq = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-          if (localObject2 == null) {
-            break label274;
-          }
+          paramVarArgs = (PhoneContact)localIterator.next();
+          if (!isCancelled()) {}
         }
-      }
-      for (long l = a((MessageRecord)localObject2);; l = 0L)
-      {
-        localakaq.a((String)localObject1, paramInt1, l, paramBoolean1, paramBoolean2);
-        a((String)localObject1, paramInt1);
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a((String)localObject1, paramInt1));
-        break label120;
-        break;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramInt1) > 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded clean only one, uin = " + paramString);
-        }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramInt1).a(paramString, paramInt1);
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-        if (localObject1 != null) {}
-        for (l = a((MessageRecord)localObject1);; l = 0L)
+        else
         {
-          ((akaq)localObject2).a(paramString, paramInt1, l, paramBoolean1, paramBoolean2);
-          a(paramString, paramInt1);
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(paramString, paramInt1));
-          return;
+          Collections.sort(localArrayList, new akcm(this));
+          return localArrayList;
         }
+      } while ((localObject != null) && (((String)localObject).endsWith(paramVarArgs.mobileNo.trim())));
+      localPhoneContact = (PhoneContact)paramVarArgs.clone();
+    } while (TextUtils.isEmpty(localPhoneContact.uin));
+    if (localPhoneContact.uin.equals("0"))
+    {
+      paramVarArgs = null;
+      label201:
+      if ((paramVarArgs == null) || (paramVarArgs.groupid < 0)) {
+        break label260;
       }
-    } while (!QLog.isColorLevel());
-    label274:
-    QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded unread=0, no clean");
+      localPhoneContact.nickName = paramVarArgs.getFriendNick();
+      localPhoneContact.remark = paramVarArgs.remark;
+      localPhoneContact.sortWeight = 262144;
+    }
+    for (;;)
+    {
+      localArrayList.add(localPhoneContact);
+      break;
+      paramVarArgs = localajxn.e(localPhoneContact.uin);
+      break label201;
+      label260:
+      localPhoneContact.uin = "0";
+      if (localajxn.d(localPhoneContact.nationCode + localPhoneContact.mobileCode))
+      {
+        localPhoneContact.sortWeight = 131072;
+        localPhoneContact.hasSendAddReq = true;
+      }
+      else if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.contains(localPhoneContact.mobileNo)))
+      {
+        localPhoneContact.sortWeight = this.jdField_a_of_type_JavaUtilList.indexOf(localPhoneContact.mobileNo);
+      }
+      else
+      {
+        localPhoneContact.sortWeight = 65536;
+      }
+    }
   }
   
-  public void b(String paramString, int paramInt1, int paramInt2, akcg paramakcg) {}
+  public void a(List<String> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  protected void b(List<PhoneContact> paramList)
+  {
+    if (!isCancelled()) {
+      this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a(paramList);
+    }
+  }
+  
+  protected void onCancelled()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager.ContactFriendTask", 2, "on cancelled");
+    }
+    PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp, null);
+  }
 }
 
 

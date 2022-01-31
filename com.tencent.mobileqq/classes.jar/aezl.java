@@ -1,126 +1,123 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.PhoneContactAddBuilder.1;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.PhoneContactAdd;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import com.tencent.image.NativeGifImage;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aezl
-  extends aeyf
-  implements View.OnClickListener
+  extends NativeGifImage
 {
-  public aezl(Context paramContext, QQAppInterface paramQQAppInterface, aicw paramaicw, atcu paramatcu)
+  private afal jdField_a_of_type_Afal;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private boolean jdField_a_of_type_Boolean;
+  private Paint b;
+  
+  public aezl(File paramFile, boolean paramBoolean, float paramFloat)
   {
-    super(paramContext, paramQQAppInterface, paramaicw, paramatcu);
-    this.jdField_a_of_type_Bens = a(paramContext);
+    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
   }
   
-  protected int a()
+  private void a(Canvas paramCanvas, Rect paramRect)
   {
-    return 1;
-  }
-  
-  public View a(int paramInt, View paramView)
-  {
-    aezm localaezm;
-    PhoneContactAdd localPhoneContactAdd;
-    if ((paramView == null) || (!(paramView.getTag() instanceof aezm)))
+    float f2 = 1.0F;
+    if ((QLog.isColorLevel()) && (!this.jdField_a_of_type_Boolean))
     {
-      localaezm = new aezm();
-      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2131495535, localaezm);
-      localaezm.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296259));
-      localaezm.h = ((TextView)paramView.findViewById(2131305159));
-      localaezm.i = ((TextView)paramView.findViewById(2131309446));
-      localaezm.l = ((TextView)paramView.findViewById(2131296655));
-      localaezm.j = ((TextView)paramView.findViewById(2131310547));
-      localaezm.k = ((TextView)paramView.findViewById(2131309443));
-      localaezm.a = ((Button)paramView.findViewById(2131309433));
-      b(localaezm.jdField_f_of_type_AndroidWidgetImageView);
-      paramView.setTag(localaezm);
-      localaezm.g.setTag(localaezm);
-      localaezm.g.setOnClickListener(this);
-      a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_Atcu, localaezm, this);
-      a(localaezm.g, false);
-      localPhoneContactAdd = ((atdd)this.jdField_a_of_type_Atcu).a;
-      if (TextUtils.isEmpty(localPhoneContactAdd.name)) {
-        break label346;
-      }
-      localaezm.h.setVisibility(0);
-      localaezm.h.setText(localPhoneContactAdd.name);
-      label221:
-      localaezm.l.setVisibility(8);
-      localaezm.j.setVisibility(8);
-      if (TextUtils.isEmpty(localPhoneContactAdd.remindInfo)) {
-        break label358;
-      }
-      localaezm.i.setVisibility(0);
-      localaezm.i.setText(localPhoneContactAdd.remindInfo);
+      QLog.d("ZhituManager", 2, " dst rect is " + paramRect + " but bitmap is " + getWidth() + " / " + getHeight());
+      this.jdField_a_of_type_Boolean = true;
     }
-    for (;;)
+    float f1 = paramRect.width() / getWidth();
+    if (Math.abs(f1 - 1.0F) < 0.01D)
     {
-      localaezm.k.setVisibility(0);
-      localaezm.a.setVisibility(8);
-      localaezm.k.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131652918));
-      localaezm.jdField_f_of_type_JavaLangString = localPhoneContactAdd.unifiedCode;
-      localaezm.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Aicw.a(11, localPhoneContactAdd.unifiedCode));
-      return paramView;
-      localaezm = (aezm)paramView.getTag();
-      break;
-      label346:
-      localaezm.h.setVisibility(8);
-      break label221;
-      label358:
-      localaezm.i.setVisibility(8);
-    }
-  }
-  
-  protected void a()
-  {
-    ThreadManager.postImmediately(new PhoneContactAddBuilder.1(this), null, true);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      a(paramView);
-    }
-    PhoneContactAdd localPhoneContactAdd;
-    do
-    {
-      do
+      f1 = f2;
+      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
       {
-        return;
-        paramView = paramView.getTag();
-      } while ((paramView == null) || (!(paramView instanceof aezm)));
-      localPhoneContactAdd = ((atdd)this.jdField_a_of_type_Atcu).a;
-    } while (localPhoneContactAdd == null);
-    paramView = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
-    if (paramView.c(localPhoneContactAdd.unifiedCode) == null) {
-      paramView = new ProfileActivity.AllInOne(localPhoneContactAdd.unifiedCode, 29);
+        this.jdField_a_of_type_AndroidGraphicsPaint = this.jdField_a_of_type_Afal.jdField_a_of_type_AndroidGraphicsPaint;
+        this.b = this.jdField_a_of_type_Afal.b;
+        f1 = f2;
+      }
     }
     for (;;)
     {
-      paramView.h = localPhoneContactAdd.name;
-      ProfileActivity.a((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext, paramView, 227);
-      ((ajnf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).g();
-      return;
-      if (paramView.h()) {
-        paramView = new ProfileActivity.AllInOne(localPhoneContactAdd.unifiedCode, 34);
-      } else {
-        paramView = new ProfileActivity.AllInOne(localPhoneContactAdd.unifiedCode, 29);
+      int i = 0;
+      while (i < this.jdField_a_of_type_Afal.jdField_a_of_type_ArrayOfFloat.length)
+      {
+        f2 = paramRect.top + this.jdField_a_of_type_Afal.jdField_a_of_type_ArrayOfFloat[i] * f1;
+        if (this.b != null) {
+          paramCanvas.drawText(this.jdField_a_of_type_Afal.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.b);
+        }
+        paramCanvas.drawText(this.jdField_a_of_type_Afal.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+        i += 1;
+      }
+      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(this.jdField_a_of_type_Afal.jdField_a_of_type_AndroidGraphicsPaint);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Afal.jdField_a_of_type_AndroidGraphicsPaint.getTextSize() * f1);
+        if (this.jdField_a_of_type_Afal.b != null)
+        {
+          this.b = new Paint(this.jdField_a_of_type_Afal.b);
+          this.b.setTextSize(this.jdField_a_of_type_Afal.b.getTextSize() * f1);
+        }
       }
     }
+  }
+  
+  public int a()
+  {
+    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
+  }
+  
+  public Bitmap a()
+  {
+    return this.mCurrentFrameBitmap;
+  }
+  
+  public void a()
+  {
+    getNextFrame();
+    applyNextFrame();
+  }
+  
+  public void a(afal paramafal)
+  {
+    this.jdField_a_of_type_Afal = paramafal;
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    Rect localRect = new Rect(0, 0, paramCanvas.getWidth(), paramCanvas.getHeight());
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituManager", 2, "draw text to file dst rect is " + localRect + " and bitmap is " + getWidth() + " / " + getHeight());
+    }
+    a(paramCanvas, localRect);
+  }
+  
+  public int b()
+  {
+    return this.mMetaData[FRAME_COUNT_INDEX];
+  }
+  
+  public int c()
+  {
+    return this.mCurrentFrameIndex;
+  }
+  
+  public int d()
+  {
+    return this.mMetaData[WIDTH_INDEX];
+  }
+  
+  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
+  {
+    super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
+    a(paramCanvas, paramRect);
+  }
+  
+  public void drawFirstFrame(Canvas paramCanvas, Rect paramRect, Paint paramPaint)
+  {
+    super.drawFirstFrame(paramCanvas, paramRect, paramPaint);
+    a(paramCanvas, paramRect);
   }
 }
 

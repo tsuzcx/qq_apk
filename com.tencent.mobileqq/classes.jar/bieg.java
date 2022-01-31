@@ -1,31 +1,27 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import java.util.Iterator;
+import java.util.List;
 
 class bieg
-  implements bign
+  implements ThreadPool.Job<Void>
 {
-  bieg(bief parambief) {}
+  bieg(bidy parambidy, List paramList) {}
   
-  public void a()
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    urk.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
-  }
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
-  {
-    urk.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
-    this.a.a.setLocation(paramTroopBarPOI);
-    if (paramTroopBarPOI != null) {}
-    for (boolean bool = true;; bool = false)
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramJobContext.hasNext())
     {
-      bioo.b = bool;
-      return;
+      long l = ((Long)paramJobContext.next()).longValue();
+      this.jdField_a_of_type_Bidy.a(l, true, false, false);
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bieg
  * JD-Core Version:    0.7.0.1
  */

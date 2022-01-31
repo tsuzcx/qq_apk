@@ -1,55 +1,64 @@
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class wkz
-  implements URLDrawable.URLDrawableListener
+  implements wnu
 {
-  wkz(wku paramwku, DisplayMetrics paramDisplayMetrics) {}
+  wkz(wkx paramwkx) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Wku.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_Wku.c = false;
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_Wku.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_Wku.c = false;
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_Wku.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_Wku.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-    float f1 = paramURLDrawable.getIntrinsicHeight();
-    float f2 = paramURLDrawable.getIntrinsicWidth();
-    paramURLDrawable = this.jdField_a_of_type_Wku.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    int i = 0;
-    if (f2 != 0.0F) {
-      if (f1 <= bacc.a(this.jdField_a_of_type_Wku.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F)) {
-        break label109;
-      }
+    if (this.a.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) {
+      this.a.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a(paramInt);
     }
-    label109:
-    for (i = (int)bacc.a(this.jdField_a_of_type_Wku.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F);; i = (int)((this.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - bacc.a(this.jdField_a_of_type_Wku.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 60.0F)) * (f1 / f2)))
+  }
+  
+  public void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString)
+  {
+    if (paramStGetFeedDetailRsp == null)
     {
-      if (i > 0)
-      {
-        paramURLDrawable.height = i;
-        this.jdField_a_of_type_Wku.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramURLDrawable);
-      }
+      QLog.e(wkx.jdField_a_of_type_JavaLangString, 1, "onFeedResponse rsp is null");
       return;
     }
+    CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)paramStGetFeedDetailRsp.feed.get();
+    QLog.d(wkx.jdField_a_of_type_JavaLangString, 1, "onFeedResponse hideLoadingView!");
+    this.a.d();
+    boolean bool = wkx.a(this.a, paramLong, localStFeed);
+    String str = wkx.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder().append("isInterceptRspByFeedStatus ").append(bool).append(",status ");
+    if (localStFeed == null) {}
+    for (Object localObject = "none";; localObject = Integer.valueOf(localStFeed.status.get()))
+    {
+      QLog.i(str, 2, localObject);
+      if (!bool) {
+        break;
+      }
+      this.a.a(paramLong, paramString);
+      return;
+    }
+    this.a.b(localStFeed);
+    wkx.a(this.a, paramStGetFeedDetailRsp.share);
+    wkx.a(this.a, paramStGetFeedDetailRsp.detailUrl.get());
+    wkx.b(this.a, paramStGetFeedDetailRsp.share);
+    this.a.a(localStFeed);
+    QLog.i(wkx.jdField_a_of_type_JavaLangString, 1, "isFinish:" + paramStGetFeedDetailRsp.isFinish.get() + " | recommend feeds size:" + paramStGetFeedDetailRsp.vecRcmdFeed.get().size());
+    this.a.a(paramStGetFeedDetailRsp, paramBoolean);
+    if (!paramBoolean) {
+      xhe.a(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + wva.a(this.a.a()), "exp", 0, 0, new String[] { "", "", localStFeed.id.get(), localStFeed.title.get() });
+    }
+    this.a.d(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wkz
  * JD-Core Version:    0.7.0.1
  */

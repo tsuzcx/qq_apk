@@ -1,90 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.comment.DanmuItemBean;
 
-public class amle
+public final class amle
+  implements Parcelable.Creator<DanmuItemBean>
 {
-  private boolean a;
-  private boolean b;
-  
-  public static amle a(alzs[] paramArrayOfalzs)
+  public DanmuItemBean a(Parcel paramParcel)
   {
-    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length <= 0)) {
-      return null;
-    }
-    amle localamle = new amle();
-    ArrayList localArrayList = new ArrayList();
-    int j = paramArrayOfalzs.length;
-    int i = 0;
-    while (i < j)
-    {
-      localArrayList.add(paramArrayOfalzs[i].a);
-      i += 1;
-    }
-    if (localArrayList.size() > 0)
-    {
-      paramArrayOfalzs = new HashMap();
-      i = 0;
-      if (i < localArrayList.size())
-      {
-        Object localObject = (String)localArrayList.get(i);
-        if (QLog.isColorLevel()) {
-          QLog.d("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd receiveAllConfigs |type: 294,content: " + (String)localObject);
-        }
-        if (TextUtils.isEmpty((CharSequence)localObject)) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = ((String)localObject).split("=");
-          if (localObject.length == 2)
-          {
-            if (!TextUtils.isEmpty(localObject[1])) {
-              localObject[1] = localObject[1].trim();
-            }
-            paramArrayOfalzs.put(localObject[0], localObject[1]);
-            if (QLog.isColorLevel()) {
-              QLog.i("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd, name=" + localObject[0] + ", val=" + localObject[1]);
-            }
-          }
-        }
-      }
-      localamle.a = "1".equals(paramArrayOfalzs.get("enable_tencent_docs_assistant"));
-      localamle.b = "1".equals(paramArrayOfalzs.get("preload_tool_process"));
-      paramArrayOfalzs = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramArrayOfalzs instanceof QQAppInterface))
-      {
-        paramArrayOfalzs = (QQAppInterface)paramArrayOfalzs;
-        axfs.b(paramArrayOfalzs, localamle.b);
-        axfs.a(paramArrayOfalzs, localamle.a);
-      }
-    }
+    boolean bool = true;
+    DanmuItemBean localDanmuItemBean = new DanmuItemBean();
+    localDanmuItemBean.jdField_a_of_type_Long = paramParcel.readLong();
+    localDanmuItemBean.jdField_b_of_type_Long = paramParcel.readLong();
+    localDanmuItemBean.d = paramParcel.readLong();
+    localDanmuItemBean.jdField_c_of_type_Long = paramParcel.readLong();
+    localDanmuItemBean.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localDanmuItemBean.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      return localamle;
-      if (QLog.isColorLevel()) {
-        QLog.d("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd receiveAllConfigs|type: 294,content_list is empty ");
-      }
+      localDanmuItemBean.jdField_a_of_type_Boolean = bool;
+      localDanmuItemBean.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localDanmuItemBean.jdField_a_of_type_Int = paramParcel.readInt();
+      return localDanmuItemBean;
+      bool = false;
     }
   }
   
-  public boolean a()
+  public DanmuItemBean[] a(int paramInt)
   {
-    return this.a;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
+    return new DanmuItemBean[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amle
  * JD-Core Version:    0.7.0.1
  */

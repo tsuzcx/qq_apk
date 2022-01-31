@@ -18,19 +18,19 @@ import android.view.WindowManager.LayoutParams;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.widget.immersive.SystemBarCompact;
-import thw;
-import thy;
-import thz;
-import tia;
-import tii;
+import tus;
+import tuu;
+import tuv;
+import tuw;
+import tve;
 
 public class StoryPlayerFragment
   extends Fragment
-  implements tii
+  implements tve
 {
   private int jdField_a_of_type_Int;
   public AnimationParam a;
-  protected tia a;
+  protected tuw a;
   private boolean jdField_a_of_type_Boolean;
   
   @NonNull
@@ -53,20 +53,20 @@ public class StoryPlayerFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.jdField_a_of_type_Tia.a(paramBundle, getArguments());
+    this.jdField_a_of_type_Tuw.a(paramBundle, getArguments());
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_Tia.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Tuw.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_Tia = new tia();
-    this.jdField_a_of_type_Tia.a(this);
+    this.jdField_a_of_type_Tuw = new tuw();
+    this.jdField_a_of_type_Tuw.a(this);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -77,7 +77,7 @@ public class StoryPlayerFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131495735, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561326, paramViewGroup, false);
     paramViewGroup = getActivity();
     this.jdField_a_of_type_Int = paramViewGroup.getWindow().getAttributes().flags;
     if ((this.jdField_a_of_type_Int & 0x400) != 1024) {
@@ -91,16 +91,16 @@ public class StoryPlayerFragment
       }
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam != null) {
-      paramLayoutInflater.getViewTreeObserver().addOnPreDrawListener(new thw(this, paramLayoutInflater));
+      paramLayoutInflater.getViewTreeObserver().addOnPreDrawListener(new tus(this, paramLayoutInflater));
     }
-    paramLayoutInflater.setOnTouchListener(new thy(this));
+    paramLayoutInflater.setOnTouchListener(new tuu(this));
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Tia.g();
+    this.jdField_a_of_type_Tuw.g();
   }
   
   public void onDestroyView()
@@ -121,28 +121,28 @@ public class StoryPlayerFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Tia.e();
+    this.jdField_a_of_type_Tuw.e();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Tia.d();
+    this.jdField_a_of_type_Tuw.d();
   }
   
   public void onStart()
   {
     super.onStart();
-    this.jdField_a_of_type_Tia.c();
+    this.jdField_a_of_type_Tuw.c();
     getView().setFocusableInTouchMode(true);
     getView().requestFocus();
-    getView().setOnKeyListener(new thz(this));
+    getView().setOnKeyListener(new tuv(this));
   }
   
   public void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_Tia.f();
+    this.jdField_a_of_type_Tuw.f();
   }
 }
 

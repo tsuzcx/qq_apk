@@ -1,98 +1,30 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.drawer.CardDrawerStatus.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.widget.RecentDynamicAvatarView;
 
 public class aikt
-  extends aiks
+  extends RecyclerView.ViewHolder
 {
-  public aikt(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-    this.a = 99;
-    if (paramQQAppInterface != null)
-    {
-      int i = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.c(), 0).getInt("hire_priority", 99);
-      if (i > this.a) {
-        this.a = (i + 1);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("CardDrawerStatus", 2, "[CardDrawerStatus] onCreate ");
-    }
-  }
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RecentDynamicAvatarView jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView;
+  TextView b;
   
-  private void a(QQAppInterface paramQQAppInterface)
+  public aikt(SessionClearFragment paramSessionClearFragment, View paramView)
   {
-    ThreadManager.getUIHandler().post(new CardDrawerStatus.1(this, paramQQAppInterface));
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    Object localObject = aifg.a();
-    if (localObject != null)
-    {
-      localObject = ((SharedPreferences)localObject).edit();
-      if (localObject != null)
-      {
-        ((SharedPreferences.Editor)localObject).putBoolean("CardDrawerStatus.VOICE_CONTROL", paramBoolean).commit();
-        return;
-      }
-      QLog.e("CardDrawerStatus", 1, "[setVoicePermission] editor is null ");
-      return;
-    }
-    QLog.e("CardDrawerStatus", 1, "[setVoicePermission] sp is null ");
-  }
-  
-  public static boolean a()
-  {
-    SharedPreferences localSharedPreferences = aifg.a();
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getBoolean("CardDrawerStatus.VOICE_CONTROL", true);
-    }
-    QLog.e("CardDrawerStatus", 1, "[getVoicePermission] sp is null ");
-    return true;
-  }
-  
-  public int a(aisu paramaisu, int paramInt, AppInterface paramAppInterface, Context paramContext)
-  {
-    if ((paramaisu == null) || (paramAppInterface == null) || (paramContext == null))
-    {
-      QLog.e("CardDrawerStatus", 1, "[onExecAction] null pointer");
-      return 0;
-    }
-    if (!this.c) {
-      return super.a(paramaisu, paramInt, paramAppInterface, paramContext);
-    }
-    paramContext = ((aifg)paramAppInterface.getManager(153)).a((QQAppInterface)paramAppInterface, paramAppInterface.getCurrentAccountUin(), new int[] { 2, 4 });
-    if (paramContext != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CardDrawerStatus", 2, new Object[] { "CardDrawerStatus onExecAction actionId:", Integer.valueOf(paramContext.actionId), ",actionType:", Integer.valueOf(paramContext.actionType) });
-      }
-      a((QQAppInterface)paramAppInterface);
-      aisl.a(paramaisu, 12, paramContext);
-    }
-    for (;;)
-    {
-      return 0;
-      paramAppInterface = new ApolloActionData();
-      paramAppInterface.actionId = -1;
-      paramAppInterface.actionType = 0;
-      aisl.a(paramaisu, 5, paramAppInterface);
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364193));
+    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131367679));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370647));
+    this.b = ((TextView)paramView.findViewById(2131376248));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aikt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,13 @@
-import android.text.TextUtils;
+import java.util.List;
 
 public class ance
 {
-  public static int a = 300;
-  public static int b = 300;
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return ajed.bf + akhi.a(paramString);
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("https://p.qpic.cn/");
-    localStringBuilder.append(paramString2).append("/").append(paramString3).append("/").append(paramString1).append("/0");
-    return localStringBuilder.toString();
-  }
+  public int a;
+  public List<ancd> a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ance
  * JD-Core Version:    0.7.0.1
  */

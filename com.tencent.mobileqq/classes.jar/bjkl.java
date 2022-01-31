@@ -1,37 +1,34 @@
-import android.hardware.Camera;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
 
 public class bjkl
-  extends PreviewContext
-  implements SurfaceHolder.Callback, awiy
+  extends AnimatorListenerAdapter
 {
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
+  public bjkl(QIMCircleProgress paramQIMCircleProgress) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    getPreviewFrame(paramArrayOfByte, paramCamera);
+    this.a.b = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator cancel");
+    }
   }
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.mCamera.a(paramInt1, paramInt2, paramInt3);
-    this.mCamera.a(null, paramSurfaceHolder, this, true);
+    this.a.b = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator end");
+    }
   }
   
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.mCamera.a();
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (this.mCamera != null)
-    {
-      this.mCamera.b();
-      this.mCamera.b(true);
-      if (this.mActivtiyDestory) {
-        this.mCamera = null;
-      }
+    this.a.b = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator start");
     }
   }
 }

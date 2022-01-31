@@ -1,38 +1,36 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class artu
+final class artu
+  implements ayrz
 {
-  public static int a = 12;
-  public static boolean a;
-  
-  public static int a(Context paramContext)
+  public void a(aysw paramaysw, aysx paramaysx)
   {
-    paramContext = paramContext.getResources();
-    return paramContext.getDisplayMetrics().widthPixels - aciy.a(42.0F, paramContext) * 2;
-  }
-  
-  public static int a(Context paramContext, int paramInt)
-  {
-    paramInt /= 5;
-    int i = a(paramContext);
-    paramContext = paramContext.getResources().getDisplayMetrics();
-    float f = paramContext.heightPixels * 1.0F / paramContext.widthPixels;
-    if (QLog.isColorLevel()) {
-      QLog.d("VelocityUtil", 2, "getInitVelocity() displayMetrics.widthPixels = " + paramContext.widthPixels + ", displayMetrics.heightPixels = " + paramContext.heightPixels + ", ratio = " + f + ", 16.F/9.F = " + 1.777778F + ",viewPagerClientWidth = " + i);
-    }
-    if ((f > 1.777778F) && (QLog.isColorLevel())) {
-      QLog.d("VelocityUtil", 2, "getInitVelocity() ratio > 16.F/9.F");
-    }
-    QLog.d("VelocityUtil", 1, "getInitVelocity: pendingVelocity = " + paramInt + ", viewPagerClientWidth = " + i);
-    return paramInt;
+    if ((paramaysw == null) || (paramaysx == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramaysw instanceof ayrv));
+      paramaysw = (ayrv)paramaysw;
+      paramaysw.jdField_a_of_type_Long += paramaysx.c;
+      paramaysx.c = 0L;
+      paramaysx = "bytes=" + paramaysw.jdField_a_of_type_Long + "-";
+      paramaysw.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysx);
+      paramaysx = paramaysw.jdField_a_of_type_JavaLangString;
+      if (paramaysx.contains("range="))
+      {
+        String str = paramaysx.substring(0, paramaysx.lastIndexOf("range="));
+        paramaysw.jdField_a_of_type_JavaLangString = (str + "range=" + paramaysw.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ListenTogether.downloader", 2, "IBreakDownFix, " + paramaysx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     artu
  * JD-Core Version:    0.7.0.1
  */

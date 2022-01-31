@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 import java.util.List;
-import nro;
+import ocy;
 
 public class ReadInjoyCutImageView
   extends NativeReadInjoyImageView
@@ -29,7 +29,7 @@ public class ReadInjoyCutImageView
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
   Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private List<nro> jdField_a_of_type_JavaUtilList;
+  private List<ocy> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
@@ -37,7 +37,7 @@ public class ReadInjoyCutImageView
   private Matrix jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
   private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint(1);
   Path jdField_b_of_type_AndroidGraphicsPath = new Path();
-  private List<nro> jdField_b_of_type_JavaUtilList;
+  private List<ocy> jdField_b_of_type_JavaUtilList;
   private float jdField_c_of_type_Float;
   private Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
   private Matrix jdField_c_of_type_AndroidGraphicsMatrix = new Matrix();
@@ -119,8 +119,8 @@ public class ReadInjoyCutImageView
       if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
         break label240;
       }
-      f1 = ((nro)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Float;
-      f2 = ((nro)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_b_of_type_Float;
+      f1 = ((ocy)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Float;
+      f2 = ((ocy)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_b_of_type_Float;
       if (f1 != 0.0F) {
         break label206;
       }
@@ -166,8 +166,8 @@ public class ReadInjoyCutImageView
       if (i >= this.jdField_b_of_type_JavaUtilList.size()) {
         break label466;
       }
-      f1 = ((nro)this.jdField_b_of_type_JavaUtilList.get(i)).jdField_a_of_type_Float;
-      f2 = ((nro)this.jdField_b_of_type_JavaUtilList.get(i)).jdField_b_of_type_Float;
+      f1 = ((ocy)this.jdField_b_of_type_JavaUtilList.get(i)).jdField_a_of_type_Float;
+      f2 = ((ocy)this.jdField_b_of_type_JavaUtilList.get(i)).jdField_b_of_type_Float;
       if (f1 != 0.0F) {
         break label432;
       }
@@ -281,7 +281,7 @@ public class ReadInjoyCutImageView
     }
   }
   
-  public void setClipArea(List<nro> paramList1, List<nro> paramList2)
+  public void setClipArea(List<ocy> paramList1, List<ocy> paramList2)
   {
     this.jdField_a_of_type_JavaUtilList = paramList1;
     this.jdField_b_of_type_JavaUtilList = paramList2;

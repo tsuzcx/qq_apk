@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import awav;
+import axad;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -24,7 +24,7 @@ class LightVideoItemBuilder$2
       {
         ChatMessage localChatMessage = (ChatMessage)((Iterator)localObject).next();
         if (((localChatMessage instanceof MessageForLightVideo)) && (localChatMessage.uniseq == this.a.uniseq)) {
-          localChatMessage.saveExtInfoToExtStr(awav.u, "1");
+          localChatMessage.saveExtInfoToExtStr(axad.u, "1");
         }
       }
     }

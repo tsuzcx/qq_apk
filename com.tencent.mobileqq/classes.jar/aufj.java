@@ -1,31 +1,20 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.QCallDetailActivity.9.1;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aufj
-  extends bawg
+class aufj
+  implements View.OnClickListener
 {
-  public aufj(QCallDetailActivity paramQCallDetailActivity) {}
+  aufj(aufh paramaufh, aufw paramaufw) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
+    aufh.a(this.jdField_a_of_type_Aufh).removeMessages(101);
+    aufh.a(this.jdField_a_of_type_Aufh).obtainMessage(101).sendToTarget();
+    if (this.jdField_a_of_type_Aufw.a != null) {
+      this.jdField_a_of_type_Aufw.a.a();
     }
-    do
-    {
-      do
-      {
-        return;
-        paramObject = (Bundle)paramObject;
-      } while ((paramObject == null) || (TextUtils.isEmpty(QCallDetailActivity.a(this.a))) || (!QCallDetailActivity.a(this.a).equals(paramObject.getString("uin"))));
-      if (this.a.app != null) {
-        this.a.app.removeObserver(this);
-      }
-    } while (!paramBoolean);
-    this.a.runOnUiThread(new QCallDetailActivity.9.1(this));
   }
 }
 

@@ -1,43 +1,44 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.graphics.Point;
+import android.os.Bundle;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class amgr
 {
-  public int a;
-  public int b;
-  
-  public static amgr a(String paramString)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    if (paramString == null) {}
-    do
+    if (paramBundle != null)
     {
-      return null;
-      try
-      {
-        amgr localamgr = new amgr();
-        paramString = new JSONObject(paramString);
-        localamgr.a = paramString.optInt("switch", 0);
-        localamgr.b = paramString.optInt("stoppreload", 0);
-        QLog.d("ConfBean", 2, "confBean = " + localamgr.a);
-        return localamgr;
+      int i = paramBundle.getInt("param_service_type");
+      String str = paramBundle.getString("param_sub_type");
+      if (paramBundle.getInt("param_extra", 1) != 2) {
+        amhk.a().a(i, str, paramBoolean);
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+      amhk.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
+    }
   }
   
-  public String toString()
+  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("result:").append(this.a);
-    localStringBuilder.append(" stoppreload:").append(this.b);
-    return localStringBuilder.toString();
+    amhk.a().a(paramInt, paramString, paramBoolean);
+  }
+  
+  public void onUpdateColorNote(ColorNote paramColorNote, boolean paramBoolean) {}
+  
+  public void onUpdateColorNoteState(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (paramBundle != null)
+    {
+      amhk.a().a(paramInt, paramString, paramBundle.getBoolean("extra_is_colornote_exists"));
+      amhk.a().c(paramBundle.getBoolean("extra_can_add_colornote"));
+      amhk.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
+      boolean bool = paramBundle.getBoolean("extra_after_sync_msg");
+      amhk.a().b(bool);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amgr
  * JD-Core Version:    0.7.0.1
  */

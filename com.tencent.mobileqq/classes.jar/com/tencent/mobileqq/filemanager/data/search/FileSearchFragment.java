@@ -5,20 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import aoom;
-import aooq;
-import avkj;
-import avon;
-import avuz;
+import apfh;
+import apfl;
+import awkc;
+import awog;
+import awus;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import java.util.List;
 
 public class FileSearchFragment
-  extends BaseSearchFragment<avon>
+  extends BaseSearchFragment<awog>
 {
   protected boolean a;
   public String b;
-  public List<avon> b;
+  public List<awog> b;
   int c = -1;
   
   public FileSearchFragment()
@@ -26,19 +26,19 @@ public class FileSearchFragment
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public avkj a()
+  public awkc a()
   {
-    return new aoom(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Azwg, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new apfh(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxk, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public avuz a()
+  public awus a()
   {
     return new FileManagerSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c);
   }
   
   public String a()
   {
-    return aooq.jdField_b_of_type_JavaLangString;
+    return apfl.jdField_b_of_type_JavaLangString;
   }
   
   public void b(boolean paramBoolean)
@@ -49,7 +49,7 @@ public class FileSearchFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramViewGroup = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131301817);
+    paramViewGroup = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367427);
     if (!this.jdField_a_of_type_Boolean)
     {
       paramViewGroup.setVisibility(8);

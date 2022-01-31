@@ -1,20 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amsv
-  implements DialogInterface.OnClickListener
 {
-  public amsv(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
+  private String a = "";
+  private String b = "";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static amsv a(String paramString)
   {
-    paramDialogInterface.dismiss();
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        amsv localamsv = new amsv();
+        paramString = new JSONObject(paramString);
+        localamsv.a = paramString.optString("dest_icon", "");
+        localamsv.b = paramString.optString("avatar_pendant", "");
+        return localamsv;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("TogetherEntryConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amsv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,123 +1,46 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.os.Build;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class rpv
-  extends BaseAdapter
-  implements azwh
+  implements ComplementFileStringLoader
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  public azwg a;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  protected List<rpu> a;
-  private rpq jdField_a_of_type_Rpq;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString;
+  private rqc jdField_a_of_type_Rqc;
   
-  public rpv(Activity paramActivity, QQAppInterface paramQQAppInterface, rpq paramrpq)
+  public rpv(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(11);
-    this.jdField_a_of_type_Azwg = new azwg(paramActivity, paramQQAppInterface);
-    this.jdField_a_of_type_Azwg.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Rpq = paramrpq;
-    this.jdField_a_of_type_Boolean = ThemeUtil.isInNightMode(paramQQAppInterface);
-    if (Build.MANUFACTURER.toUpperCase().equals("XIAOMI")) {
-      this.b = true;
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Rqc = new rqc(paramContext, paramString);
   }
   
-  public void a()
+  public String loadFileAsString(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(List<rpu> paramList)
-  {
-    if (paramList != null)
+    AssetManager localAssetManager = this.jdField_a_of_type_AndroidContentContext.getAssets();
+    try
     {
-      if (paramList.size() >= 10) {}
-      for (int i = 10;; i = paramList.size())
-      {
-        int j = 0;
-        while (j < i)
-        {
-          a((rpu)paramList.get(j));
-          j += 1;
-        }
+      InputStream localInputStream = this.jdField_a_of_type_Rqc.a(paramString);
+      Object localObject = localInputStream;
+      if (localInputStream == null) {
+        localObject = localAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
       }
-      paramList = new rpu();
-      paramList.a = -1L;
-      a(paramList);
+      localObject = rqm.a((InputStream)localObject);
+      return localObject;
     }
-  }
-  
-  public void a(rpu paramrpu)
-  {
-    if (paramrpu != null) {
-      this.jdField_a_of_type_JavaUtilList.add(paramrpu);
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Azwg.a(null);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt > getCount()) || (paramInt < 0)) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
+    catch (IOException localIOException)
     {
-      localView = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2131494541, null);
-      paramView = new rpw(this, localView, this.jdField_a_of_type_Boolean);
-      localView.setVisibility(0);
-      localView.setFocusable(false);
-      localView.setTag(paramView);
-      paramViewGroup = paramView;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("AssetsComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
+        localIOException.printStackTrace();
+      }
     }
-    for (;;)
-    {
-      paramViewGroup.a((rpu)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
-      return localView;
-      paramViewGroup = (rpw)paramView.getTag();
-      localView = paramView;
-    }
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    notifyDataSetChanged();
+    return null;
   }
 }
 

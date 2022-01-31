@@ -1,70 +1,23 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 public class nkb
-  implements anhs
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public nkb(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public nkb(VideoCoverView paramVideoCoverView) {}
   
-  public void a(anht paramanht)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if ((paramanht instanceof anla))
-    {
-      paramanht = (anla)paramanht;
-      if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
-        ((ReadInJoyDeliverUGCActivity)this.a).a(paramanht);
-      }
-      return;
-    }
-    ReadInJoyBaseDeliverActivity.a(this.a.app, paramanht, this.a.a);
+    this.a.jdField_a_of_type_Int = 7;
+    njf.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString);
+    this.a.g();
+    return false;
   }
-  
-  public void a(anht paramanht1, anht paramanht2, Drawable paramDrawable) {}
-  
-  public boolean a(anht paramanht)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.a.getSelectionStart() == 0) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Editable localEditable = this.a.a.getText();
-        int i = this.a.a.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.a.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void b(anht paramanht) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nkb
  * JD-Core Version:    0.7.0.1
  */

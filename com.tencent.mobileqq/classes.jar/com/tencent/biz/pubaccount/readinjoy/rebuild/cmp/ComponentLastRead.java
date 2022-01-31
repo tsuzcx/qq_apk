@@ -13,19 +13,19 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafCon
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import odm;
-import opw;
-import pey;
-import pfh;
-import pjg;
-import pmi;
+import oox;
+import pax;
+import pqs;
+import prb;
+import pvb;
+import pyd;
 
 public class ComponentLastRead
   extends LinearLayout
-  implements pey
+  implements pqs
 {
   private Container a;
-  public pjg a;
+  public pvb a;
   
   public ComponentLastRead(Context paramContext)
   {
@@ -45,7 +45,7 @@ public class ComponentLastRead
     b(paramContext);
   }
   
-  private void a(opw paramopw)
+  private void a(pax parampax)
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null) {}
     do
@@ -61,25 +61,25 @@ public class ComponentLastRead
             do
             {
               return;
-              i = paramopw.e();
-            } while ((i != 0) && (!odm.c(i)));
-            paramopw = paramopw.a();
-          } while (paramopw == null);
-          localObject = paramopw.getTemplateFactory();
-        } while (localObject == null);
+              i = parampax.e();
+            } while ((i != 0) && (!oox.c(i)));
+            parampax = parampax.a();
+          } while (parampax == null);
+          localObject = parampax.getTemplateFactory();
+        } while ((localObject == null) || (!((BaseTemplateFactory)localObject).hasTemplate("ReadInjoy_last_read_cell")));
         localObject = ((BaseTemplateFactory)localObject).getTemplate("ReadInjoy_last_read_cell");
       } while (localObject == null);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramopw.getViewFactory().inflate(paramopw, (TemplateBean)localObject);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = parampax.getViewFactory().inflate(parampax, (TemplateBean)localObject);
     } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null);
     removeAllViews();
-    paramopw = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
-    paramopw = new RelativeLayout.LayoutParams(paramopw.mLayoutWidth, paramopw.mLayoutHeight);
-    addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, paramopw);
+    parampax = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
+    parampax = new RelativeLayout.LayoutParams(parampax.mLayoutWidth, parampax.mLayoutHeight);
+    addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, parampax);
   }
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Pjg = new pjg();
+    this.jdField_a_of_type_Pvb = new pvb();
     a(paramContext);
     a();
   }
@@ -88,21 +88,21 @@ public class ComponentLastRead
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131494308, this, true);
-    setBackgroundResource(2131101149);
+    LayoutInflater.from(paramContext).inflate(2131559879, this, true);
+    setBackgroundResource(2131166743);
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof opw))
+    if ((paramObject instanceof pax))
     {
-      this.jdField_a_of_type_Pjg.a((opw)paramObject);
+      this.jdField_a_of_type_Pvb.a((pax)paramObject);
       b();
-      a((opw)paramObject);
-      if (this.jdField_a_of_type_Pjg.a.g())
+      a((pax)paramObject);
+      if (this.jdField_a_of_type_Pvb.a.g())
       {
         setVisibility(0);
-        setOnClickListener(new pmi(this));
+        setOnClickListener(new pyd(this));
         ThreadManager.executeOnSubThread(new ComponentLastRead.2(this));
       }
     }
@@ -113,9 +113,9 @@ public class ComponentLastRead
     setVisibility(8);
   }
   
-  public void a(pfh parampfh)
+  public void a(prb paramprb)
   {
-    this.jdField_a_of_type_Pjg.a(parampfh);
+    this.jdField_a_of_type_Pvb.a(paramprb);
   }
   
   public void b() {}

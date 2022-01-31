@@ -1,25 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 class nhd
-  extends ohe
 {
-  nhd(ngv paramngv) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void a(boolean paramBoolean)
-  {
-    QLog.i("DailyHeaderViewController", 1, "[onDailyDynamicHeaderDataUpdated] " + paramBoolean);
-    if (!paramBoolean)
-    {
-      if ((ngv.a(this.a) == -1) || (ngv.a(this.a) == 0))
-      {
-        ngv.a(this.a, 0);
-        return;
-      }
-      ngv.a(this.a, 4);
-      return;
-    }
-    ngv.a(this.a, 1);
-  }
+  nhd(nhc paramnhc) {}
 }
 
 

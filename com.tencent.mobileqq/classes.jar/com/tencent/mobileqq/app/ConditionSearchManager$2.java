@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.app;
 
-import ajfw;
-import alxj;
+import ajty;
+import ammz;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class ConditionSearchManager$2
   implements Runnable
 {
-  public ConditionSearchManager$2(ajfw paramajfw, File paramFile) {}
+  public ConditionSearchManager$2(ajty paramajty, File paramFile) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
     try
     {
-      ajfw.a(this.this$0, alxj.a(ajfw.a(this.this$0), this.a));
+      ajty.a(this.this$0, ammz.a(ajty.a(this.this$0), this.a));
       if (QLog.isColorLevel()) {
         QLog.d("ConditionSearch.Manager", 2, "updateLocal | doParse cost " + (float)(System.currentTimeMillis() - l) / 1000.0F + " seconds");
       }
-      ajfw.a(this.this$0).runOnUiThread(new ConditionSearchManager.2.1(this));
+      ajty.a(this.this$0).runOnUiThread(new ConditionSearchManager.2.1(this));
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)

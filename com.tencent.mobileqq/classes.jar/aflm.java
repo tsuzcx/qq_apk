@@ -1,58 +1,46 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.webkit.URLUtil;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.util.SparseArray;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.SwipListView;
 
-class aflm
-  implements View.OnClickListener
+public class aflm
+  implements rtz
 {
-  aflm(afll paramafll, String paramString, aflo paramaflo, MessageRecord paramMessageRecord) {}
+  public aflm(SystemMsgListView paramSystemMsgListView) {}
   
-  public void onClick(View paramView)
+  public void a(rue paramrue)
   {
-    Object localObject;
-    if (!this.jdField_a_of_type_Afll.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.c) {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        paramView = null;
-        int i = this.jdField_a_of_type_JavaLangString.lastIndexOf("#");
-        if (i > 0) {
-          paramView = this.jdField_a_of_type_JavaLangString.substring(i);
-        }
-        localObject = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
-        if (paramView == null) {
-          break label171;
-        }
-      }
-    }
-    label171:
-    for (paramView = (String)localObject + paramView;; paramView = (View)localObject)
+    int j;
+    if (paramrue != null)
     {
-      localObject = new Intent(this.jdField_a_of_type_Afll.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", paramView);
-      this.jdField_a_of_type_Afll.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-      return;
-      boolean bool = aflo.a(this.jdField_a_of_type_Aflo).isChecked();
-      afll.a(this.jdField_a_of_type_Afll).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      paramView = aflo.a(this.jdField_a_of_type_Aflo);
-      if (!bool) {}
-      for (bool = true;; bool = false)
-      {
-        paramView.setChecked(bool);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.newfriendSystemMsgListView", 2, "setStickHead onTabSelected : position = " + paramrue.a() + " tabid = " + (Integer)paramrue.a());
       }
+      SystemMsgListView.a(this.a).a(((Integer)paramrue.a()).intValue(), paramrue.a());
+      i = SystemMsgListView.a(this.a).b();
+      paramrue = (afmj)SystemMsgListView.a(this.a).get(i);
+      if (paramrue == null) {
+        break label141;
+      }
+      j = paramrue.b;
+    }
+    for (int i = paramrue.c;; i = SystemMsgListView.a(this.a).c)
+    {
+      SystemMsgListView.a(this.a).setSelectionFromTop(j, i);
+      SystemMsgListView.a(this.a).a(0L);
+      return;
+      label141:
+      j = SystemMsgListView.a(this.a).b;
     }
   }
+  
+  public void b(rue paramrue) {}
+  
+  public void c(rue paramrue) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aflm
  * JD-Core Version:    0.7.0.1
  */

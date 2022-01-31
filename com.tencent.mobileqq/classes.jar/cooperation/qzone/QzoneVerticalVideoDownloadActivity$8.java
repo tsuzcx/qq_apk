@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import awqm;
+import axql;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.Properties;
 
@@ -11,7 +11,7 @@ final class QzoneVerticalVideoDownloadActivity$8
   
   public void run()
   {
-    awqm.a(BaseApplicationImpl.getContext()).reportKVEvent(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilProperties);
+    axql.a(BaseApplicationImpl.getContext()).reportKVEvent(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilProperties);
   }
 }
 

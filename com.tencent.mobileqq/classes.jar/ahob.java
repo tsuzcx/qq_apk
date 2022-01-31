@@ -1,27 +1,618 @@
-public final class ahob
-  implements ahoe
+import com.tencent.mobileqq.activity.recent.HotChatCenterItemBuilder;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemAppletsFolderData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemConfessMsg;
+import com.tencent.mobileqq.activity.recent.data.RecentItemContactsGuideData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemImaxADData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendVerticalListData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountADFolderData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemRecommendTroopData;
+import com.tencent.mobileqq.activity.recent.data.RecentMsgBoxItem;
+import com.tencent.mobileqq.activity.recent.data.RecentSayHelloBoxItem;
+import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.apollo.activity.RecentHotchatItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.matchchat.RecentMatchChatListItem;
+
+public class ahob
 {
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  protected static final int[] a;
+  protected static final int[] b = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+  protected static final int[] c = { 0, 1, 2, 3 };
+  protected static final int[] d = { 0, 1 };
+  protected static final int[] e = { 0, 1, 2, 3 };
+  protected static final int[] f = { 0, 1, 2 };
+  protected static final int[] g = { 0, 1, 2 };
+  protected static final int[] h = { 0, 1, 2 };
+  protected static final int[] i = { 0, 1, 2, 3, 4 };
+  protected static final int[] j = { 0, 1, 2, 3 };
+  protected static final int[] k = { 0, 1, 2, 3 };
+  protected int a;
+  protected ahmx a;
+  protected ahny[] a;
+  protected int[] l;
+  
+  static
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
+    jdField_a_of_type_ArrayOfInt = new int[] { 0 };
   }
   
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public ahob(int paramInt)
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
+    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Int == 0) {
+      this.l = b;
     }
-    return -paramInt1;
+    for (;;)
+    {
+      this.jdField_a_of_type_ArrayOfAhny = new ahny[this.l.length];
+      return;
+      if (this.jdField_a_of_type_Int == 1) {
+        this.l = e;
+      } else if (this.jdField_a_of_type_Int == 5) {
+        this.l = g;
+      } else if (this.jdField_a_of_type_Int == 6) {
+        this.l = c;
+      } else if (this.jdField_a_of_type_Int == 7) {
+        this.l = d;
+      } else if (this.jdField_a_of_type_Int == 9) {
+        this.l = h;
+      } else if (this.jdField_a_of_type_Int == 10) {
+        this.l = i;
+      } else if (this.jdField_a_of_type_Int == 11) {
+        this.l = j;
+      } else if (this.jdField_a_of_type_Int == 12) {
+        this.l = f;
+      } else if (this.jdField_a_of_type_Int == 13) {
+        this.l = k;
+      } else {
+        this.l = jdField_a_of_type_ArrayOfInt;
+      }
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int a(Object paramObject)
+  {
+    int m = this.l[0];
+    switch (this.jdField_a_of_type_Int)
+    {
+    case 2: 
+    case 3: 
+    case 4: 
+    case 8: 
+    default: 
+      return m;
+    case 0: 
+      if ((paramObject instanceof Integer))
+      {
+        if (((Integer)paramObject).intValue() != 0) {
+          break label802;
+        }
+        m = this.l[1];
+      }
+      break;
+    }
+    label802:
+    for (;;)
+    {
+      return m;
+      if ((paramObject instanceof RecentUserBaseData))
+      {
+        if ((paramObject instanceof RecentItemPublicAccountADFolderData)) {
+          return this.l[3];
+        }
+        if ((paramObject instanceof RecentItemImaxADData)) {
+          return this.l[4];
+        }
+        if ((paramObject instanceof RecentItemChatMsgData)) {
+          return this.l[5];
+        }
+        if ((paramObject instanceof RecentItemMayKnowFriendData)) {
+          return this.l[6];
+        }
+        if ((paramObject instanceof RecentItemMayKnowFriendVerticalListData)) {
+          return this.l[7];
+        }
+        if ((paramObject instanceof RecentItemAppletsFolderData)) {
+          return this.l[8];
+        }
+        if ((paramObject instanceof RecentItemContactsGuideData)) {
+          return this.l[9];
+        }
+        if ((paramObject instanceof RecentItemRecommendTroopData)) {
+          return this.l[10];
+        }
+        return this.l[2];
+      }
+      if (!(paramObject instanceof String)) {
+        break;
+      }
+      return this.l[0];
+      if ((paramObject instanceof Integer))
+      {
+        paramObject = (Integer)paramObject;
+        if (paramObject.intValue() == 3) {
+          return this.l[3];
+        }
+        if (paramObject.intValue() == 4) {
+          return this.l[1];
+        }
+        if (paramObject.intValue() != 5) {
+          break;
+        }
+        return this.l[1];
+      }
+      if (!(paramObject instanceof RecentBaseData)) {
+        break;
+      }
+      return this.l[2];
+      if ((paramObject instanceof Integer))
+      {
+        paramObject = (Integer)paramObject;
+        if (paramObject.intValue() == 18) {
+          return this.l[1];
+        }
+        if (paramObject.intValue() != 19) {
+          break;
+        }
+        return this.l[1];
+      }
+      if (!(paramObject instanceof RecentBaseData)) {
+        break;
+      }
+      return this.l[2];
+      if ((paramObject instanceof Integer))
+      {
+        paramObject = (Integer)paramObject;
+        if (paramObject.intValue() == 11) {
+          return this.l[1];
+        }
+        if (paramObject.intValue() != 12) {
+          break;
+        }
+        return this.l[1];
+      }
+      if (!(paramObject instanceof RecentBaseData)) {
+        break;
+      }
+      return this.l[2];
+      if ((paramObject instanceof Integer)) {
+        return this.l[1];
+      }
+      if (!(paramObject instanceof RecentBaseData)) {
+        break;
+      }
+      return this.l[2];
+      if ((paramObject instanceof String)) {
+        return this.l[0];
+      }
+      if ((paramObject instanceof RecentSayHelloBoxItem)) {
+        return this.l[2];
+      }
+      if ((paramObject instanceof RecentItemNearbyLiveTipData)) {
+        return this.l[3];
+      }
+      if (!(paramObject instanceof RecentMsgBoxItem)) {
+        break;
+      }
+      return this.l[1];
+      if ((paramObject instanceof String)) {
+        return this.l[0];
+      }
+      if (!(paramObject instanceof RecentSayHelloListItem)) {
+        break;
+      }
+      return this.l[1];
+      if ((paramObject instanceof Integer))
+      {
+        paramObject = (Integer)paramObject;
+        if (paramObject.intValue() == 13) {
+          return this.l[2];
+        }
+        if (paramObject.intValue() != 4) {
+          break;
+        }
+        return this.l[1];
+      }
+      if (!(paramObject instanceof RecentHotchatItem)) {
+        break;
+      }
+      switch (((RecentHotchatItem)paramObject).mType)
+      {
+      default: 
+        return m;
+      case 1: 
+        return this.l[3];
+      case 4: 
+        return this.l[4];
+      case 2: 
+        return this.l[2];
+      }
+      return this.l[1];
+      if ((paramObject instanceof RecentItemConfessMsg)) {
+        return this.l[1];
+      }
+      if (((paramObject instanceof Integer)) && (((Integer)paramObject).intValue() == 16)) {
+        return this.l[2];
+      }
+      if ((!(paramObject instanceof Integer)) || (((Integer)paramObject).intValue() != 17)) {
+        break;
+      }
+      return this.l[3];
+      if ((paramObject instanceof RecentMatchChatListItem)) {
+        return this.l[1];
+      }
+      if (((paramObject instanceof Integer)) && (((Integer)paramObject).intValue() == 20)) {
+        return this.l[2];
+      }
+      if ((!(paramObject instanceof Integer)) || (((Integer)paramObject).intValue() != 21)) {
+        break;
+      }
+      return this.l[3];
+    }
+  }
+  
+  public ahny a(Object paramObject)
+  {
+    Object localObject = null;
+    int m = a(paramObject);
+    if (this.jdField_a_of_type_Int == 0) {
+      if (m == 1)
+      {
+        if (this.jdField_a_of_type_ArrayOfAhny[1] == null) {
+          this.jdField_a_of_type_ArrayOfAhny[1] = new ahns();
+        }
+        paramObject = this.jdField_a_of_type_ArrayOfAhny[1];
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        for (;;)
+                        {
+                          localObject = paramObject;
+                          if (paramObject == null)
+                          {
+                            if (this.jdField_a_of_type_ArrayOfAhny[0] == null) {
+                              this.jdField_a_of_type_ArrayOfAhny[0] = new ahnh();
+                            }
+                            localObject = this.jdField_a_of_type_ArrayOfAhny[0];
+                          }
+                          ((ahny)localObject).a(this.jdField_a_of_type_Ahmx);
+                          return localObject;
+                          if (m == 2)
+                          {
+                            if (this.jdField_a_of_type_ArrayOfAhny[2] == null) {
+                              this.jdField_a_of_type_ArrayOfAhny[2] = new ahnq();
+                            }
+                            paramObject = this.jdField_a_of_type_ArrayOfAhny[2];
+                          }
+                          else if (m == 3)
+                          {
+                            if (this.jdField_a_of_type_ArrayOfAhny[3] == null) {
+                              this.jdField_a_of_type_ArrayOfAhny[3] = new ahox();
+                            }
+                            paramObject = this.jdField_a_of_type_ArrayOfAhny[3];
+                          }
+                          else if (m == 4)
+                          {
+                            if (this.jdField_a_of_type_ArrayOfAhny[4] == null) {
+                              this.jdField_a_of_type_ArrayOfAhny[4] = new ahnu();
+                            }
+                            paramObject = this.jdField_a_of_type_ArrayOfAhny[4];
+                          }
+                          else if (m == 5)
+                          {
+                            if (this.jdField_a_of_type_ArrayOfAhny[5] == null) {
+                              this.jdField_a_of_type_ArrayOfAhny[5] = new ahni();
+                            }
+                            paramObject = this.jdField_a_of_type_ArrayOfAhny[5];
+                          }
+                          else if (m == 6)
+                          {
+                            if (this.jdField_a_of_type_ArrayOfAhny[6] == null) {
+                              this.jdField_a_of_type_ArrayOfAhny[6] = new ahoe();
+                            }
+                            paramObject = this.jdField_a_of_type_ArrayOfAhny[6];
+                          }
+                          else if (m == 7)
+                          {
+                            if (this.jdField_a_of_type_ArrayOfAhny[7] == null) {
+                              this.jdField_a_of_type_ArrayOfAhny[7] = new ahoh();
+                            }
+                            paramObject = this.jdField_a_of_type_ArrayOfAhny[7];
+                          }
+                          else if (m == 8)
+                          {
+                            if (this.jdField_a_of_type_ArrayOfAhny[8] == null) {
+                              this.jdField_a_of_type_ArrayOfAhny[8] = new ahnf();
+                            }
+                            paramObject = this.jdField_a_of_type_ArrayOfAhny[8];
+                          }
+                          else if (m == 9)
+                          {
+                            if (this.jdField_a_of_type_ArrayOfAhny[9] == null) {
+                              this.jdField_a_of_type_ArrayOfAhny[9] = new ahnk();
+                            }
+                            paramObject = this.jdField_a_of_type_ArrayOfAhny[9];
+                          }
+                          else
+                          {
+                            paramObject = localObject;
+                            if (m == 10)
+                            {
+                              if (this.jdField_a_of_type_ArrayOfAhny[10] == null) {
+                                this.jdField_a_of_type_ArrayOfAhny[10] = new ahpb();
+                              }
+                              paramObject = this.jdField_a_of_type_ArrayOfAhny[10];
+                              continue;
+                              if (this.jdField_a_of_type_Int == 1)
+                              {
+                                if (m == 1)
+                                {
+                                  if (this.jdField_a_of_type_ArrayOfAhny[1] == null) {
+                                    this.jdField_a_of_type_ArrayOfAhny[1] = new ahpn();
+                                  }
+                                  paramObject = this.jdField_a_of_type_ArrayOfAhny[1];
+                                }
+                                else if (m == 2)
+                                {
+                                  if (this.jdField_a_of_type_ArrayOfAhny[2] == null) {
+                                    this.jdField_a_of_type_ArrayOfAhny[2] = new ahno();
+                                  }
+                                  paramObject = this.jdField_a_of_type_ArrayOfAhny[2];
+                                }
+                                else
+                                {
+                                  paramObject = localObject;
+                                  if (m == 3)
+                                  {
+                                    if (this.jdField_a_of_type_ArrayOfAhny[3] == null) {
+                                      this.jdField_a_of_type_ArrayOfAhny[3] = new ahpm();
+                                    }
+                                    paramObject = this.jdField_a_of_type_ArrayOfAhny[3];
+                                  }
+                                }
+                              }
+                              else if (this.jdField_a_of_type_Int == 12)
+                              {
+                                if (m == 1)
+                                {
+                                  if (this.jdField_a_of_type_ArrayOfAhny[1] == null) {
+                                    this.jdField_a_of_type_ArrayOfAhny[1] = new ahpn();
+                                  }
+                                  paramObject = this.jdField_a_of_type_ArrayOfAhny[1];
+                                }
+                                else
+                                {
+                                  paramObject = localObject;
+                                  if (m == 2)
+                                  {
+                                    if (this.jdField_a_of_type_ArrayOfAhny[2] == null) {
+                                      this.jdField_a_of_type_ArrayOfAhny[2] = new ahno();
+                                    }
+                                    paramObject = this.jdField_a_of_type_ArrayOfAhny[2];
+                                  }
+                                }
+                              }
+                              else if (this.jdField_a_of_type_Int == 9)
+                              {
+                                if (m == 1)
+                                {
+                                  if (this.jdField_a_of_type_ArrayOfAhny[1] == null) {
+                                    this.jdField_a_of_type_ArrayOfAhny[1] = new ahpn();
+                                  }
+                                  paramObject = this.jdField_a_of_type_ArrayOfAhny[1];
+                                }
+                                else
+                                {
+                                  paramObject = localObject;
+                                  if (m == 2)
+                                  {
+                                    if (this.jdField_a_of_type_ArrayOfAhny[2] == null) {
+                                      this.jdField_a_of_type_ArrayOfAhny[2] = new ahno();
+                                    }
+                                    paramObject = this.jdField_a_of_type_ArrayOfAhny[2];
+                                  }
+                                }
+                              }
+                              else if (this.jdField_a_of_type_Int == 5)
+                              {
+                                if (m == 1)
+                                {
+                                  if (this.jdField_a_of_type_ArrayOfAhny[1] == null) {
+                                    this.jdField_a_of_type_ArrayOfAhny[1] = new ahnh();
+                                  }
+                                  paramObject = this.jdField_a_of_type_ArrayOfAhny[1];
+                                }
+                                else
+                                {
+                                  paramObject = localObject;
+                                  if (m == 2)
+                                  {
+                                    if (this.jdField_a_of_type_ArrayOfAhny[2] == null) {
+                                      this.jdField_a_of_type_ArrayOfAhny[2] = new ahno();
+                                    }
+                                    paramObject = this.jdField_a_of_type_ArrayOfAhny[2];
+                                  }
+                                }
+                              }
+                              else if (this.jdField_a_of_type_Int == 6)
+                              {
+                                if (m == 2)
+                                {
+                                  if (this.jdField_a_of_type_ArrayOfAhny[2] == null) {
+                                    this.jdField_a_of_type_ArrayOfAhny[2] = new ahpg();
+                                  }
+                                  paramObject = this.jdField_a_of_type_ArrayOfAhny[2];
+                                }
+                                else if (m == 1)
+                                {
+                                  if (this.jdField_a_of_type_ArrayOfAhny[1] == null) {
+                                    this.jdField_a_of_type_ArrayOfAhny[1] = new ahno();
+                                  }
+                                  paramObject = this.jdField_a_of_type_ArrayOfAhny[1];
+                                }
+                                else
+                                {
+                                  paramObject = localObject;
+                                  if (m == 3)
+                                  {
+                                    if (this.jdField_a_of_type_ArrayOfAhny[3] == null) {
+                                      this.jdField_a_of_type_ArrayOfAhny[3] = new ahoc();
+                                    }
+                                    paramObject = this.jdField_a_of_type_ArrayOfAhny[3];
+                                  }
+                                }
+                              }
+                              else
+                              {
+                                if (this.jdField_a_of_type_Int != 7) {
+                                  break;
+                                }
+                                paramObject = localObject;
+                                if (m == 1)
+                                {
+                                  if (this.jdField_a_of_type_ArrayOfAhny[1] == null) {
+                                    this.jdField_a_of_type_ArrayOfAhny[1] = new ahpj();
+                                  }
+                                  paramObject = this.jdField_a_of_type_ArrayOfAhny[1];
+                                }
+                              }
+                            }
+                          }
+                        }
+                        if (this.jdField_a_of_type_Int != 10) {
+                          break;
+                        }
+                        paramObject = localObject;
+                      } while (m <= 0);
+                      paramObject = localObject;
+                    } while (m >= this.jdField_a_of_type_ArrayOfAhny.length);
+                    localObject = this.jdField_a_of_type_ArrayOfAhny[m];
+                    paramObject = localObject;
+                  } while (localObject != null);
+                  switch (m)
+                  {
+                  default: 
+                    paramObject = localObject;
+                  }
+                  for (;;)
+                  {
+                    this.jdField_a_of_type_ArrayOfAhny[m] = paramObject;
+                    break;
+                    paramObject = new ahno();
+                    continue;
+                    paramObject = new ahpn();
+                    continue;
+                    paramObject = new HotChatCenterItemBuilder();
+                    continue;
+                    paramObject = new ahmp();
+                  }
+                  if (this.jdField_a_of_type_Int != 11) {
+                    break;
+                  }
+                  paramObject = localObject;
+                } while (m <= 0);
+                paramObject = localObject;
+              } while (m >= this.jdField_a_of_type_ArrayOfAhny.length);
+              localObject = this.jdField_a_of_type_ArrayOfAhny[m];
+              paramObject = localObject;
+            } while (localObject != null);
+            switch (m)
+            {
+            default: 
+              paramObject = localObject;
+            }
+            for (;;)
+            {
+              this.jdField_a_of_type_ArrayOfAhny[m] = paramObject;
+              break;
+              paramObject = new ahnj();
+              continue;
+              paramObject = new amnm();
+            }
+            paramObject = localObject;
+          } while (this.jdField_a_of_type_Int != 13);
+          paramObject = localObject;
+        } while (m <= 0);
+        paramObject = localObject;
+      } while (m >= this.jdField_a_of_type_ArrayOfAhny.length);
+      localObject = this.jdField_a_of_type_ArrayOfAhny[m];
+      paramObject = localObject;
+    } while (localObject != null);
+    switch (m)
+    {
+    default: 
+      paramObject = localObject;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ArrayOfAhny[m] = paramObject;
+      break;
+      paramObject = new ahnq();
+      continue;
+      paramObject = new asfl();
+    }
+  }
+  
+  public void a(ahmx paramahmx)
+  {
+    this.jdField_a_of_type_Ahmx = paramahmx;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ArrayOfAhny != null) && (this.jdField_a_of_type_ArrayOfAhny.length > 6) && ((this.jdField_a_of_type_ArrayOfAhny[6] instanceof ahoe)))
+    {
+      ((ahoe)this.jdField_a_of_type_ArrayOfAhny[6]).a();
+      this.jdField_a_of_type_ArrayOfAhny[6] = null;
+    }
+  }
+  
+  public int b()
+  {
+    return this.l.length;
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ArrayOfAhny != null) && (this.jdField_a_of_type_ArrayOfAhny.length > 6) && ((this.jdField_a_of_type_ArrayOfAhny[6] instanceof ahoe)))
+    {
+      ((ahoe)this.jdField_a_of_type_ArrayOfAhny[6]).a();
+      this.jdField_a_of_type_ArrayOfAhny[6] = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahob
  * JD-Core Version:    0.7.0.1
  */

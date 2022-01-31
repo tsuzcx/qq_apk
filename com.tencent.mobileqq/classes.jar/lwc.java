@@ -1,72 +1,19 @@
-import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class lwc
-  extends kur
+final class lwc
+  extends mru
 {
-  public lwc(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
-  
-  protected void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
+  lwc(String paramString1, String paramString2, String paramString3)
   {
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Lwd != null)) {
-      this.a.jdField_a_of_type_Lwd.notifyDataSetChanged();
-    }
+    super(paramString1, paramString2, paramString3);
   }
   
-  protected void a(long paramLong1, long paramLong2, long paramLong3, int paramInt, boolean paramBoolean)
+  protected void a(String paramString)
   {
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Lwd != null)) {
-      this.a.jdField_a_of_type_Lwd.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    super.a(paramLong1, paramLong2, paramBoolean);
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      if (this.a.jdField_a_of_type_Lwd != null) {
-        this.a.jdField_a_of_type_Lwd.notifyDataSetChanged();
-      }
-      this.a.c();
-    }
-  }
-  
-  protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    super.a(paramLong1, paramLong2, paramBoolean1, paramBoolean2);
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      if (this.a.jdField_a_of_type_Lwd != null) {
-        this.a.jdField_a_of_type_Lwd.notifyDataSetChanged();
-      }
-      this.a.c();
-    }
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Lwd != null)) {
-      this.a.jdField_a_of_type_Lwd.notifyDataSetChanged();
-    }
-  }
-  
-  protected void c(long paramLong1, long paramLong2)
-  {
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Lwd != null)) {
-      this.a.jdField_a_of_type_Lwd.notifyDataSetChanged();
-    }
-  }
-  
-  protected void d(long paramLong)
-  {
+    lwb.a(null);
     if (QLog.isColorLevel()) {
-      QLog.d("MultiVideoMembersListviewAvtivity", 2, "onCloseMemberListActivity --> RelationId = " + paramLong + "mRelationUin = " + this.a.jdField_a_of_type_Long);
+      QLog.d("AVPushReport", 2, "onAvReportPush SimpleHttpPostTask rsp = " + paramString);
     }
-    if (paramLong == this.a.jdField_a_of_type_Long) {
-      MultiVideoMembersListviewAvtivity.a(this.a);
-    }
-    super.d(paramLong);
   }
 }
 

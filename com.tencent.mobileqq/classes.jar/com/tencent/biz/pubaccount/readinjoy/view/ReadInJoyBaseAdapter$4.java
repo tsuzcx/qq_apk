@@ -11,22 +11,22 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import npj;
-import obj;
-import obz;
-import qoe;
-import qpl;
-import rcv;
-import rcw;
+import oau;
+import omu;
+import onk;
+import rap;
+import rbw;
+import rpj;
+import rpk;
 
 public class ReadInJoyBaseAdapter$4
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$4(qoe paramqoe, long paramLong1, List paramList, int paramInt1, int paramInt2, long paramLong2) {}
+  public ReadInJoyBaseAdapter$4(rap paramrap, long paramLong1, List paramList, int paramInt1, int paramInt2, long paramLong2) {}
   
   public void run()
   {
-    if (qoe.a(this.this$0) != this.jdField_a_of_type_Long) {
+    if (rap.a(this.this$0) != this.jdField_a_of_type_Long) {
       return;
     }
     int i;
@@ -62,7 +62,7 @@ public class ReadInJoyBaseAdapter$4
       break label39;
       i = this.jdField_a_of_type_JavaUtilList.size();
       break label25;
-      if (qoe.a(this.this$0) != this.jdField_a_of_type_Long) {
+      if (rap.a(this.this$0) != this.jdField_a_of_type_Long) {
         break;
       }
       for (;;)
@@ -78,20 +78,20 @@ public class ReadInJoyBaseAdapter$4
             break label182;
           }
           URL localURL = ((BaseArticleInfo)localObject2).mVideoCoverUrl;
-          localLinkedList.add(qpl.a(localURL, obj.f()));
+          localLinkedList.add(rbw.a(localURL, omu.f()));
         }
         catch (Exception localException)
         {
           localException.printStackTrace();
         }
-        if (qoe.a(this.this$0) == this.jdField_a_of_type_Long) {
+        if (rap.a(this.this$0) == this.jdField_a_of_type_Long) {
           break;
         }
         return;
         if (((BaseArticleInfo)localObject2).mSinglePicture != null) {
           localObject1 = ((BaseArticleInfo)localObject2).mSinglePicture;
         } else {
-          localObject1 = obz.a(((BaseArticleInfo)localObject2).mFirstPagePicUrl);
+          localObject1 = onk.a(((BaseArticleInfo)localObject2).mFirstPagePicUrl);
         }
       }
       label213:
@@ -99,7 +99,7 @@ public class ReadInJoyBaseAdapter$4
       {
         localObject1 = ((BaseArticleInfo)localObject2).mVideoCoverUrl;
         label228:
-        localLinkedList.add(qpl.a((URL)localObject1, obj.g()));
+        localLinkedList.add(rbw.a((URL)localObject1, omu.g()));
         if ((((BaseArticleInfo)localObject2).mSubArtilceList == null) || (((BaseArticleInfo)localObject2).mSubArtilceList.size() <= 0)) {
           continue;
         }
@@ -111,20 +111,20 @@ public class ReadInJoyBaseAdapter$4
       }
       for (;;)
       {
-        localLinkedList.add(qpl.a((URL)localObject1, obj.g()));
+        localLinkedList.add(rbw.a((URL)localObject1, omu.g()));
         break;
         if (((BaseArticleInfo)localObject2).mSinglePicture != null)
         {
           localObject1 = ((BaseArticleInfo)localObject2).mSinglePicture;
           break label228;
         }
-        localObject1 = obz.a(((BaseArticleInfo)localObject2).mFirstPagePicUrl);
+        localObject1 = onk.a(((BaseArticleInfo)localObject2).mFirstPagePicUrl);
         break label228;
         label346:
         if (((ArticleInfo)localObject1).mSinglePicture != null) {
           localObject1 = ((ArticleInfo)localObject1).mSinglePicture;
         } else {
-          localObject1 = obz.a(((ArticleInfo)localObject1).mFirstPagePicUrl);
+          localObject1 = onk.a(((ArticleInfo)localObject1).mFirstPagePicUrl);
         }
       }
       label377:
@@ -135,45 +135,45 @@ public class ReadInJoyBaseAdapter$4
         k = 0;
         while (k < m)
         {
-          localLinkedList.add(qpl.a(localObject1[k], obj.a()));
+          localLinkedList.add(rbw.a(localObject1[k], omu.a()));
           k += 1;
         }
         continue;
-        localLinkedList.add(qpl.a(((BaseArticleInfo)localObject2).mSinglePicture, obj.e()));
+        localLinkedList.add(rbw.a(((BaseArticleInfo)localObject2).mSinglePicture, omu.e()));
       }
     }
     for (;;)
     {
-      localLinkedList.add(qpl.a(((BaseArticleInfo)localObject2).mSinglePicture, obj.a()));
+      localLinkedList.add(rbw.a(((BaseArticleInfo)localObject2).mSinglePicture, omu.a()));
       break label61;
       label474:
-      if ((k != 122) || (!AdvertisementInfo.isAdvertisementInfo((BaseArticleInfo)localObject2)) || (!npj.l((AdvertisementInfo)localObject2)) || (((AdvertisementInfo)localObject2).mAdImgList == null)) {
+      if ((k != 122) || (!AdvertisementInfo.isAdvertisementInfo((BaseArticleInfo)localObject2)) || (!oau.l((AdvertisementInfo)localObject2)) || (((AdvertisementInfo)localObject2).mAdImgList == null)) {
         break label61;
       }
       localObject1 = ((AdvertisementInfo)localObject2).mAdImgList.iterator();
       while (((Iterator)localObject1).hasNext()) {
-        localLinkedList.add(qpl.a(obz.a((String)((Iterator)localObject1).next()), obj.e()));
+        localLinkedList.add(rbw.a(onk.a((String)((Iterator)localObject1).next()), omu.e()));
       }
       break label61;
       label563:
-      if (qoe.a(this.this$0) != this.jdField_a_of_type_Long) {
+      if (rap.a(this.this$0) != this.jdField_a_of_type_Long) {
         break;
       }
       localObject1 = localLinkedList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (qpl)((Iterator)localObject1).next();
-        if ((localObject2 != null) && (((qpl)localObject2).jdField_a_of_type_JavaNetURL != null))
+        localObject2 = (rbw)((Iterator)localObject1).next();
+        if ((localObject2 != null) && (((rbw)localObject2).jdField_a_of_type_JavaNetURL != null))
         {
-          if (TextUtils.equals("pubaccountimage", ((qpl)localObject2).jdField_a_of_type_JavaNetURL.getProtocol())) {
-            ((qpl)localObject2).jdField_a_of_type_JavaNetURL = obz.a(((qpl)localObject2).jdField_a_of_type_JavaNetURL.getFile(), false);
+          if (TextUtils.equals("pubaccountimage", ((rbw)localObject2).jdField_a_of_type_JavaNetURL.getProtocol())) {
+            ((rbw)localObject2).jdField_a_of_type_JavaNetURL = onk.a(((rbw)localObject2).jdField_a_of_type_JavaNetURL.getFile(), false);
           }
-          rcw localrcw = new rcw();
-          localrcw.jdField_a_of_type_JavaNetURL = ((qpl)localObject2).jdField_a_of_type_JavaNetURL;
-          localrcw.jdField_a_of_type_Int = ((Integer)((qpl)localObject2).jdField_a_of_type_AndroidUtilPair.first).intValue();
-          localrcw.jdField_b_of_type_Int = ((Integer)((qpl)localObject2).jdField_a_of_type_AndroidUtilPair.second).intValue();
-          localrcw.jdField_b_of_type_Boolean = true;
-          rcv.a().a(localrcw, null);
+          rpk localrpk = new rpk();
+          localrpk.jdField_a_of_type_JavaNetURL = ((rbw)localObject2).jdField_a_of_type_JavaNetURL;
+          localrpk.jdField_a_of_type_Int = ((Integer)((rbw)localObject2).jdField_a_of_type_AndroidUtilPair.first).intValue();
+          localrpk.jdField_b_of_type_Int = ((Integer)((rbw)localObject2).jdField_a_of_type_AndroidUtilPair.second).intValue();
+          localrpk.jdField_b_of_type_Boolean = true;
+          rpj.a().a(localrpk, null);
         }
       }
       if (!QLog.isColorLevel()) {

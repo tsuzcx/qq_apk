@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import aciy;
-import ahhj;
-import ahjj;
+import actn;
+import ahua;
+import ahwb;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import awmq;
-import azue;
-import befo;
+import axlw;
+import bavi;
+import bfni;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
@@ -31,14 +31,14 @@ class NewFlowCameraActivity$6
     {
       this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
       this.this$0.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      awmq.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
-      if (befo.e()) {
+      axlw.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
+      if (bfni.e()) {
         this.this$0.J();
       }
-      NewFlowCameraActivity.a(this.this$0).put("cameraType", String.valueOf(ahhj.a));
+      NewFlowCameraActivity.a(this.this$0).put("cameraType", String.valueOf(ahua.a));
       NewFlowCameraActivity.a(this.this$0).put("isTemplateMode", String.valueOf(this.this$0.g));
-      if (this.this$0.jdField_a_of_type_Ahjj != null) {
-        str = this.this$0.jdField_a_of_type_Ahjj.a();
+      if (this.this$0.jdField_a_of_type_Ahwb != null) {
+        str = this.this$0.jdField_a_of_type_Ahwb.a();
       }
       NewFlowCameraActivity.a(this.this$0).put("templateId", str);
       if ((this.this$0.o != 90) && (this.this$0.o != 270)) {
@@ -60,16 +60,16 @@ class NewFlowCameraActivity$6
         return;
         this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         Object localObject;
-        if (this.this$0.jdField_a_of_type_Ahjj != null)
+        if (this.this$0.jdField_a_of_type_Ahwb != null)
         {
-          localObject = this.this$0.jdField_a_of_type_Ahjj.a();
+          localObject = this.this$0.jdField_a_of_type_Ahwb.a();
           if ((localObject == null) || (TextUtils.isEmpty(((PtvTemplateManager.PtvTemplateInfo)localObject).iconurl))) {
             break label499;
           }
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          i = aciy.a(50.0F, this.this$0.getResources());
+          i = actn.a(50.0F, this.this$0.getResources());
           GradientDrawable localGradientDrawable = new GradientDrawable();
-          localGradientDrawable.setColor(this.this$0.getResources().getColor(2131100176));
+          localGradientDrawable.setColor(this.this$0.getResources().getColor(2131165766));
           localGradientDrawable.setShape(1);
           localGradientDrawable.setSize(i, i);
           localURLDrawableOptions.mRequestWidth = i;
@@ -77,13 +77,13 @@ class NewFlowCameraActivity$6
           localURLDrawableOptions.mFailedDrawable = localGradientDrawable;
           localURLDrawableOptions.mLoadingDrawable = localGradientDrawable;
           localObject = URLDrawable.getDrawable(((PtvTemplateManager.PtvTemplateInfo)localObject).iconurl, localURLDrawableOptions);
-          ((URLDrawable)localObject).setTag(azue.a(i, i));
-          ((URLDrawable)localObject).setDecodeHandler(azue.a);
+          ((URLDrawable)localObject).setTag(bavi.a(i, i));
+          ((URLDrawable)localObject).setDecodeHandler(bavi.a);
           this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
         }
         for (;;)
         {
-          if (!befo.e()) {
+          if (!bfni.e()) {
             break label562;
           }
           this.this$0.J();
@@ -93,7 +93,7 @@ class NewFlowCameraActivity$6
           {
             this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
             this.this$0.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            awmq.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
+            axlw.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
           }
         }
         break;

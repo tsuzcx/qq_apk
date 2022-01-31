@@ -1,7 +1,5 @@
 package com.tencent.ttpic.openapi.watermark;
 
-import com.tencent.ttpic.audio.LocalAudioDataManager;
-
 class LogicDataManager$69
   extends LogicDataManager.LogicValueProvider
 {
@@ -12,7 +10,7 @@ class LogicDataManager$69
   
   public String getValue()
   {
-    return LocalAudioDataManager.getInstance().getDB();
+    return LogicDataManager.access$4400(this.this$0, 1);
   }
 }
 

@@ -1,25 +1,19 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.support.annotation.NonNull;
-import android.text.SpannableString;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.PicData;
 
-public class pbe
-  implements Drawable.Callback
+public final class pbe
+  implements Parcelable.Creator<ReadInJoyDraftboxItem.PicData>
 {
-  public pbe(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
-  
-  public void invalidateDrawable(@NonNull Drawable paramDrawable)
+  public ReadInJoyDraftboxItem.PicData a(Parcel paramParcel)
   {
-    paramDrawable = new wop(paramDrawable);
-    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramDrawable, 0, 1, 17);
-    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
+    return new ReadInJoyDraftboxItem.PicData(paramParcel);
   }
   
-  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
-  
-  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
+  public ReadInJoyDraftboxItem.PicData[] a(int paramInt)
+  {
+    return new ReadInJoyDraftboxItem.PicData[paramInt];
+  }
 }
 
 

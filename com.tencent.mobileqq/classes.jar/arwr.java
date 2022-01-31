@@ -1,35 +1,26 @@
-import android.os.Message;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
 public class arwr
-  extends MqqHandler
+  implements View.OnClickListener
 {
-  public arwr(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  public arwr(LocationPickFragment paramLocationPickFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    if (LocationPickFragment.a(this.a).b())
     {
+      LocationPickFragment.a(this.a).b();
+      return;
     }
-    do
-    {
-      return;
-      MultiCardRecommendFragment.e(this.a);
-      sendEmptyMessageDelayed(3, 500L);
-      return;
-      MultiCardRecommendFragment.a(this.a, MultiCardRecommendFragment.b(this.a));
-      MultiCardRecommendFragment.e(this.a);
-      return;
-      MultiCardRecommendFragment.d(this.a);
-      return;
-    } while (MultiCardRecommendFragment.a(this.a) == null);
-    MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
+    LocationPickFragment.a(this.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arwr
  * JD-Core Version:    0.7.0.1
  */

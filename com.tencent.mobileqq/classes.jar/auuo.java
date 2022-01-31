@@ -1,49 +1,28 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Point;
+import android.graphics.Rect;
+import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
+import java.util.Comparator;
 
 public class auuo
-  extends OrientationEventListener
+  implements Comparator<Rect>
 {
-  public auuo(CameraCaptureView paramCameraCaptureView, Context paramContext)
+  Point jdField_a_of_type_AndroidGraphicsPoint;
+  
+  public auuo(TagCloudView paramTagCloudView, Point paramPoint)
   {
-    super(paramContext);
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
   }
   
-  public void onOrientationChanged(int paramInt)
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    this.a.v = paramInt;
-    if (paramInt == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraCaptureView", 2, "OrientationEventListener unknown");
-      }
-      this.a.w = 90;
-    }
-    if ((paramInt > 315) || (paramInt < 45)) {
-      this.a.w = 90;
-    }
-    for (;;)
-    {
-      if (this.a.g) {
-        this.a.u = this.a.w;
-      }
-      auue.a = this.a.u;
-      return;
-      if ((paramInt > 45) && (paramInt < 135)) {
-        this.a.w = 180;
-      } else if ((paramInt > 135) && (paramInt < 225)) {
-        this.a.w = 270;
-      } else if ((paramInt > 225) && (paramInt < 315)) {
-        this.a.w = 0;
-      }
-    }
+    paramRect1 = new Point((int)(paramRect1.width() * 0.5F + paramRect1.left), (int)(paramRect1.height() * 0.5F + paramRect1.top));
+    paramRect2 = new Point((int)(paramRect2.width() * 0.5F + paramRect2.left), (int)(paramRect2.height() * 0.5F + paramRect2.top));
+    return TagCloudView.a(paramRect1, this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramRect2, this.jdField_a_of_type_AndroidGraphicsPoint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auuo
  * JD-Core Version:    0.7.0.1
  */

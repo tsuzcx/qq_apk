@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.magicface.service;
 
 import android.media.SoundPool;
-import arho;
+import asdq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimerTask;
 
 public class SoundPoolUtil$2
   extends TimerTask
 {
-  public SoundPoolUtil$2(arho paramarho, int paramInt, String paramString) {}
+  public SoundPoolUtil$2(asdq paramasdq, int paramInt, String paramString) {}
   
   public void run()
   {

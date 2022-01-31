@@ -1,16 +1,47 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditScrollerView;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
+import java.util.ArrayList;
 
 public class acro
-  implements ValueAnimator.AnimatorUpdateListener
+  extends akjz
 {
-  public acro(VoiceTextEditScrollerView paramVoiceTextEditScrollerView, int paramInt1, int paramInt2, View paramView) {}
+  public acro(ActivateFriendView paramActivateFriendView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void b()
   {
-    VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView, paramValueAnimator, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidViewView);
+    if ((ActivateFriendView.a(this.a) == null) || (ActivateFriendView.b(this.a) == null)) {}
+    do
+    {
+      return;
+      ActivateFriendView.a(this.a, 0);
+      int i = 0;
+      if (i < ActivateFriendView.a(this.a).size())
+      {
+        if (this.a.a.c(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
+        {
+          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
+          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689585));
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (this.a.a.b(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
+          {
+            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
+            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689588));
+          }
+          else
+          {
+            ActivateFriendView.b(this.a);
+            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(true);
+          }
+        }
+      }
+    } while (ActivateFriendView.a(this.a) == null);
+    ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
   }
 }
 

@@ -1,13 +1,19 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.TroopBarMyBar;
 
-public class aznq
+public final class aznq
+  implements Parcelable.Creator<TroopBarMyBar>
 {
-  afzi jdField_a_of_type_Afzi;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  public TroopBarMyBar a(Parcel paramParcel)
+  {
+    return new TroopBarMyBar(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+  }
   
-  protected aznq(azno paramazno) {}
+  public TroopBarMyBar[] a(int paramInt)
+  {
+    return null;
+  }
 }
 
 

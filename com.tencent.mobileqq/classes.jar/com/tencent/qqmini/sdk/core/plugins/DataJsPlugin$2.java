@@ -2,27 +2,27 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import bdcz;
-import bdfz;
-import bdit;
+import begz;
+import beka;
+import bemw;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class DataJsPlugin$2
   implements AsyncResult
 {
-  DataJsPlugin$2(DataJsPlugin paramDataJsPlugin, bdfz parambdfz) {}
+  DataJsPlugin$2(DataJsPlugin paramDataJsPlugin, beka parambeka) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     if (!paramBoolean)
     {
       this.val$req.b();
-      bdit.a(this.this$0.mMiniAppContext.a(), 0, "网络异常，请检查网络", 1).b(this.this$0.mMiniAppContext.a().getResources().getDimensionPixelSize(2131166148));
+      bemw.a(this.this$0.mMiniAppContext.a(), 0, "网络异常，请检查网络", 1).b(this.this$0.mMiniAppContext.a().getResources().getDimensionPixelSize(2131297229));
       return;
     }
     this.val$req.a();
-    bdit.a(this.this$0.mMiniAppContext.a(), 0, "关注公众号成功", 1).b(this.this$0.mMiniAppContext.a().getResources().getDimensionPixelSize(2131166148));
+    bemw.a(this.this$0.mMiniAppContext.a(), 0, "关注公众号成功", 1).b(this.this$0.mMiniAppContext.a().getResources().getDimensionPixelSize(2131297229));
   }
 }
 

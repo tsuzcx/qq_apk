@@ -1,23 +1,16 @@
+import android.view.animation.Interpolator;
+
 public class bfvk
+  implements Interpolator
 {
-  private static String a;
-  
-  public static String a()
+  public float getInterpolation(float paramFloat)
   {
-    if (a != null) {
-      return a;
-    }
-    return "";
-  }
-  
-  public static void a(String paramString)
-  {
-    a = paramString;
+    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfvk
  * JD-Core Version:    0.7.0.1
  */

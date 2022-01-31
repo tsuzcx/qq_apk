@@ -1,396 +1,108 @@
-import android.util.Xml;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopMemberCard;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.xmlpull.v1.XmlPullParser;
+import java.util.List;
 
-public class aknx
+class aknx
+  extends akim
 {
-  public static int a(String paramString)
+  aknx(aknv paramaknv) {}
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2))) {
+      this.a.f(paramString);
+    }
+  }
+  
+  protected void a(String paramString, List<Pair<String, String>> paramList)
+  {
+    Object localObject = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
+    if (paramList == null)
+    {
+      i = 0;
+      QLog.i("IceBreak.HotPic", 2, i);
+      if ((paramString != null) && (paramList != null) && (paramList.size() > 1)) {
+        break label76;
+      }
+    }
+    label76:
+    while (!paramString.equals(aknv.a(this.a)))
+    {
+      return;
+      i = paramList.size();
+      break;
+    }
+    localObject = (ajxn)this.a.a.getManager(51);
+    String str1 = this.a.a.getCurrentAccountUin();
+    int k = paramList.size();
+    int j = 0;
+    int i = 0;
+    label133:
+    if (j < k)
+    {
+      String str2 = (String)((Pair)paramList.get(j)).first;
+      if ((TextUtils.isEmpty(str2)) || (str2.equals(str1)) || (((ajxn)localObject).b(str2))) {
+        break label283;
+      }
+      i += 1;
+    }
+    label283:
+    for (;;)
+    {
+      j += 1;
+      break label133;
+      float f = aknv.a(this.a) / 100.0F;
+      QLog.i("IceBreak.HotPic", 1, "friendCount: " + i + " total count: " + paramList.size());
+      if (1.0F * i / (paramList.size() - 1) <= f) {
+        break;
+      }
+      this.a.e(paramString);
+      return;
+    }
+  }
+  
+  protected void b(String paramString, int paramInt)
+  {
+    this.a.f(paramString);
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
   {
     try
     {
-      int i = akno.a("arsdk2", "v7.9.5.1", akno.b("arsdk2", "v7.9.5.1", "arsdk2"), paramString);
-      return i;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public static int a(String paramString1, String paramString2)
-  {
-    int i = -5;
-    Object localObject;
-    for (;;)
-    {
-      try
+      if (QLog.isColorLevel()) {
+        QLog.i("IceBreak.HotPic", 2, "onGetTroopMemberCard: isSuccess " + paramBoolean);
+      }
+      if (paramBoolean)
       {
-        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. soResFilename = " + paramString1 + ", soResMd5FromConfig = " + paramString2);
-        akno.a("arsdk2", "v7.9.5.1", "arsdk2", paramString2);
-        try
+        paramObject = (Object[])paramObject;
+        long l = ((Long)paramObject[0]).longValue();
+        paramObject = (TroopMemberCard)paramObject[2];
+        if (String.valueOf(l).equals(aknv.a(this.a)))
         {
-          aknk.a(paramString1, akno.a("arsdk2", "v7.9.5.1", akno.b("arsdk2", "v7.9.5.1", "arsdk2")));
-          paramString2 = akno.a("arsdk2", "v7.9.5.1", akno.b("arsdk2", "v7.9.5.1", "arsdk2")) + File.separator + "md5_config.xml";
-          localObject = new File(paramString2);
-          if (!((File)localObject).exists()) {
-            break label826;
+          QLog.i("IceBreak.HotPic", 1, " onGetTroopMemberCard last_active_time: " + paramObject.lastSpeak + " join_time: " + paramObject.joinTime);
+          if (paramObject.lastSpeak > paramObject.joinTime) {
+            return;
           }
-          new HashMap();
+          aknv.a(this.a, String.valueOf(l));
+          return;
         }
-        catch (IOException paramString2)
-        {
-          File localFile;
-          String str;
-          i = -6;
-          bace.a(akno.a("arsdk2", "v7.9.5.1", akno.b("arsdk2", "v7.9.5.1", "arsdk2")), false);
-          paramString2 = new File(paramString1);
-          if (paramString2.exists()) {
-            paramString2.delete();
-          }
-          QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. unzip failed. result = " + -6 + ", soResFilename = " + paramString1);
-          continue;
-        }
-      }
-      finally {}
-      try
-      {
-        paramString2 = a(bace.b((File)localObject));
-        if (paramString2.size() <= 0) {
-          break label796;
-        }
-        paramString2 = paramString2.entrySet().iterator();
-        if (!paramString2.hasNext()) {
-          break label867;
-        }
-        localObject = (Map.Entry)paramString2.next();
-        paramString1 = "";
-        if (!((String)((Map.Entry)localObject).getKey()).equalsIgnoreCase("libAlphaAR")) {
-          break label573;
-        }
-        paramString1 = akno.a("arsdk2", "v7.9.5.1", akno.b("arsdk2", "v7.9.5.1", "arsdk2")) + File.separator + (String)((Map.Entry)localObject).getKey() + ".so";
-        akno.a("arsdk2", "v7.9.5.1", "libAlphaAR", (String)((Map.Entry)localObject).getValue());
-      }
-      catch (IOException paramString2)
-      {
-        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
-        continue;
-      }
-      catch (OutOfMemoryError paramString2)
-      {
-        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
-        continue;
-        if (!((String)((Map.Entry)localObject).getKey()).equalsIgnoreCase("libYTCommon")) {
-          break label664;
-        }
-        paramString1 = akno.a("arsdk2", "v7.9.5.1", akno.b("arsdk2", "v7.9.5.1", "arsdk2")) + File.separator + (String)((Map.Entry)localObject).getKey() + ".so";
-        akno.a("arsdk2", "v7.9.5.1", "libYTCommon", (String)((Map.Entry)localObject).getValue());
-        continue;
-        if (!((String)((Map.Entry)localObject).getKey()).equalsIgnoreCase("AlphaAR_mqq_license")) {
-          continue;
-        }
-        paramString1 = akno.a("arsdk2", "v7.9.5.1", akno.b("arsdk2", "v7.9.5.1", "arsdk2")) + File.separator + (String)((Map.Entry)localObject).getKey() + ".dat";
-        akno.a("arsdk2", "v7.9.5.1", "AlphaAR_mqq_license", (String)((Map.Entry)localObject).getValue());
-        continue;
-        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", filename = " + paramString1);
-        i = -2;
-        continue;
-        i = -1;
-        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. sSoMd5ListFromConfig.size() == 0. result = " + -1);
-        continue;
-      }
-      localFile = new File(paramString1);
-      QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. soFilename = " + paramString1);
-      if (localFile.exists())
-      {
-        str = attn.a(paramString1);
-        localObject = (String)((Map.Entry)localObject).getValue();
-        if (((String)localObject).equalsIgnoreCase(str)) {
-          continue;
-        }
-        localFile.delete();
-        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. check md5 failed. result = " + -3 + ", filename = " + paramString1 + ", md5FromCalc = " + str + ", md5FromConfig = " + (String)localObject);
-        i = -3;
       }
     }
-    for (;;)
+    catch (Exception paramObject)
     {
-      return i;
-      label573:
-      QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", configFilename = " + paramString2);
-      label664:
-      label796:
-      label826:
-      i = -2;
-      continue;
-      label867:
-      QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. result = " + 0);
-      i = 0;
-    }
-  }
-  
-  /* Error */
-  public static String a()
-  {
-    // Byte code:
-    //   0: ldc 176
-    //   2: astore 4
-    //   4: new 29	java/lang/StringBuilder
-    //   7: dup
-    //   8: invokespecial 33	java/lang/StringBuilder:<init>	()V
-    //   11: ldc 8
-    //   13: ldc 10
-    //   15: ldc 8
-    //   17: ldc 10
-    //   19: ldc 8
-    //   21: invokestatic 16	akno:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   24: invokestatic 56	akno:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   27: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: getstatic 67	java/io/File:separator	Ljava/lang/String;
-    //   33: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: ldc 164
-    //   38: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   44: astore_1
-    //   45: new 29	java/lang/StringBuilder
-    //   48: dup
-    //   49: invokespecial 33	java/lang/StringBuilder:<init>	()V
-    //   52: astore_3
-    //   53: new 63	java/io/File
-    //   56: dup
-    //   57: aload_1
-    //   58: invokespecial 72	java/io/File:<init>	(Ljava/lang/String;)V
-    //   61: astore_1
-    //   62: new 178	java/io/BufferedReader
-    //   65: dup
-    //   66: new 180	java/io/FileReader
-    //   69: dup
-    //   70: aload_1
-    //   71: invokespecial 183	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   74: invokespecial 186	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   77: astore_2
-    //   78: iconst_1
-    //   79: istore_0
-    //   80: aload_2
-    //   81: astore_1
-    //   82: aload_2
-    //   83: invokevirtual 189	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   86: astore 5
-    //   88: aload 5
-    //   90: ifnull +19 -> 109
-    //   93: aload_2
-    //   94: astore_1
-    //   95: aload_3
-    //   96: aload 5
-    //   98: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   101: pop
-    //   102: iload_0
-    //   103: iconst_1
-    //   104: iadd
-    //   105: istore_0
-    //   106: goto -26 -> 80
-    //   109: aload_2
-    //   110: astore_1
-    //   111: aload_2
-    //   112: invokevirtual 192	java/io/BufferedReader:close	()V
-    //   115: aload_2
-    //   116: astore_1
-    //   117: aload_3
-    //   118: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   121: astore_3
-    //   122: aload_3
-    //   123: astore_1
-    //   124: aload_2
-    //   125: ifnull +9 -> 134
-    //   128: aload_2
-    //   129: invokevirtual 192	java/io/BufferedReader:close	()V
-    //   132: aload_3
-    //   133: astore_1
-    //   134: ldc 27
-    //   136: iconst_2
-    //   137: new 29	java/lang/StringBuilder
-    //   140: dup
-    //   141: invokespecial 33	java/lang/StringBuilder:<init>	()V
-    //   144: ldc 194
-    //   146: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   149: aload_1
-    //   150: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   156: invokestatic 51	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   159: aload_1
-    //   160: areturn
-    //   161: astore_3
-    //   162: aconst_null
-    //   163: astore_2
-    //   164: aload_2
-    //   165: astore_1
-    //   166: aload_3
-    //   167: invokevirtual 197	java/io/IOException:printStackTrace	()V
-    //   170: aload 4
-    //   172: astore_1
-    //   173: aload_2
-    //   174: ifnull -40 -> 134
-    //   177: aload_2
-    //   178: invokevirtual 192	java/io/BufferedReader:close	()V
-    //   181: aload 4
-    //   183: astore_1
-    //   184: goto -50 -> 134
-    //   187: astore_1
-    //   188: aload 4
-    //   190: astore_1
-    //   191: goto -57 -> 134
-    //   194: astore_2
-    //   195: aconst_null
-    //   196: astore_1
-    //   197: aload_1
-    //   198: ifnull +7 -> 205
-    //   201: aload_1
-    //   202: invokevirtual 192	java/io/BufferedReader:close	()V
-    //   205: aload_2
-    //   206: athrow
-    //   207: astore_1
-    //   208: aload_3
-    //   209: astore_1
-    //   210: goto -76 -> 134
-    //   213: astore_1
-    //   214: goto -9 -> 205
-    //   217: astore_2
-    //   218: goto -21 -> 197
-    //   221: astore_3
-    //   222: goto -58 -> 164
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   79	27	0	i	int
-    //   44	140	1	localObject1	Object
-    //   187	1	1	localIOException1	IOException
-    //   190	12	1	str1	String
-    //   207	1	1	localIOException2	IOException
-    //   209	1	1	localObject2	Object
-    //   213	1	1	localIOException3	IOException
-    //   77	101	2	localBufferedReader	java.io.BufferedReader
-    //   194	12	2	localObject3	Object
-    //   217	1	2	localObject4	Object
-    //   52	81	3	localObject5	Object
-    //   161	48	3	localIOException4	IOException
-    //   221	1	3	localIOException5	IOException
-    //   2	187	4	str2	String
-    //   86	11	5	str3	String
-    // Exception table:
-    //   from	to	target	type
-    //   62	78	161	java/io/IOException
-    //   177	181	187	java/io/IOException
-    //   62	78	194	finally
-    //   128	132	207	java/io/IOException
-    //   201	205	213	java/io/IOException
-    //   82	88	217	finally
-    //   95	102	217	finally
-    //   111	115	217	finally
-    //   117	122	217	finally
-    //   166	170	217	finally
-    //   82	88	221	java/io/IOException
-    //   95	102	221	java/io/IOException
-    //   111	115	221	java/io/IOException
-    //   117	122	221	java/io/IOException
-  }
-  
-  private static HashMap<String, String> a(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    for (;;)
-    {
-      try
-      {
-        localXmlPullParser = Xml.newPullParser();
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
+      if (QLog.isColorLevel()) {
+        QLog.i("IceBreak.HotPic", 2, "onGetTroopMemberCard:" + paramObject.toString());
       }
-      catch (Exception localException)
-      {
-        XmlPullParser localXmlPullParser;
-        QLog.e("AREngine_ArSDK2NativeSoLoader", 2, "parseSoMd5FromXmlConfig failed. error = " + localException.getMessage() + ", xmlConfigContent = " + paramString);
-        return localHashMap;
-      }
-      int i = localXmlPullParser.next();
-      break label204;
-      str = localXmlPullParser.getName();
-      if (str.equalsIgnoreCase("libAlphaAR"))
-      {
-        localHashMap.put("libAlphaAR", localXmlPullParser.nextText());
-      }
-      else if (str.equalsIgnoreCase("libYTCommon"))
-      {
-        localHashMap.put("libYTCommon", localException.nextText());
-      }
-      else if (str.equalsIgnoreCase("AlphaAR_mqq_license"))
-      {
-        localHashMap.put("AlphaAR_mqq_license", localException.nextText());
-        label204:
-        while (i == 1)
-        {
-          String str;
-          QLog.d("AREngine_ArSDK2NativeSoLoader", 2, "parseSoMd5FromXmlConfig successfully. soMd5List = " + localHashMap);
-          return localHashMap;
-        }
-        switch (i)
-        {
-        }
-      }
-    }
-  }
-  
-  public static boolean a()
-  {
-    File localFile1 = new File(akno.a("arsdk2", "v7.9.5.1", akno.b("arsdk2", "v7.9.5.1", "arsdk2")) + File.separator + "libYTCommon" + ".so");
-    File localFile2 = new File(akno.a("arsdk2", "v7.9.5.1", akno.b("arsdk2", "v7.9.5.1", "arsdk2")) + File.separator + "libAlphaAR" + ".so");
-    File localFile3 = new File(akno.a("arsdk2", "v7.9.5.1", akno.b("arsdk2", "v7.9.5.1", "arsdk2")) + File.separator + "AlphaAR_mqq_license" + ".dat");
-    if (!localFile1.exists()) {}
-    while ((!localFile2.exists()) || (!localFile3.exists())) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool1 = false;
-    for (;;)
-    {
-      try
-      {
-        String str = akno.a("arsdk2", "v7.9.5.1", akno.b("arsdk2", "v7.9.5.1", "arsdk2")) + File.separator + paramString + ".so";
-        Object localObject = new File(str);
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ArSDK2NativeSoLoader", 2, "isSoFileExist soFile=" + str + ", exist=" + ((File)localObject).exists());
-        }
-        if (((File)localObject).exists())
-        {
-          paramString = akno.b("arsdk2", "v7.9.5.1", paramString);
-          localObject = attn.a(str);
-          boolean bool2 = paramString.equalsIgnoreCase((String)localObject);
-          if (bool2)
-          {
-            bool1 = true;
-            return bool1;
-          }
-          QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "isSoFileExist. check md5 failed. soFilename = " + str + ", md5FromConfig = " + paramString + ", md5FromCalc = " + (String)localObject);
-          continue;
-        }
-        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "isSoFileExist. so not exist. soFilename = " + str);
-      }
-      finally {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aknx
  * JD-Core Version:    0.7.0.1
  */

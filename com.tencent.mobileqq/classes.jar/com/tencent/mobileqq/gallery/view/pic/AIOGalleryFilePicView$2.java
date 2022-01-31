@@ -3,18 +3,18 @@ package com.tencent.mobileqq.gallery.view.pic;
 import android.app.Activity;
 import android.util.Pair;
 import android.util.SparseArray;
-import apur;
-import awqx;
-import bahv;
+import aqor;
+import axqw;
+import bcuq;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
-import vup;
+import whm;
 
 public class AIOGalleryFilePicView$2
   implements Runnable
 {
-  public AIOGalleryFilePicView$2(apur paramapur, int paramInt, SparseArray paramSparseArray, ArrayList paramArrayList) {}
+  public AIOGalleryFilePicView$2(aqor paramaqor, int paramInt, SparseArray paramSparseArray, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -24,19 +24,19 @@ public class AIOGalleryFilePicView$2
     Object localObject;
     String str1;
     String str2;
-    if (vup.a(this.jdField_a_of_type_Int))
+    if (whm.a(this.jdField_a_of_type_Int))
     {
       localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(1);
       if (!(localObject instanceof Pair)) {
-        break label306;
+        break label308;
       }
       localObject = (Pair)localObject;
       str1 = String.valueOf(((Pair)localObject).second).trim();
       str2 = String.valueOf(((Pair)localObject).first).trim();
     }
-    label278:
-    label285:
-    label306:
+    label280:
+    label287:
+    label308:
     for (;;)
     {
       try
@@ -55,9 +55,9 @@ public class AIOGalleryFilePicView$2
             if (localObject == null)
             {
               localObject = "";
-              this.this$0.a(2131627276, 2130839598, 55, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
-              awqx.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
-              if (vup.b(this.jdField_a_of_type_Int))
+              this.this$0.a(2131692914, 2130839646, 55, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+              axqw.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
+              if (whm.b(this.jdField_a_of_type_Int))
               {
                 localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(2);
                 if (!(localObject instanceof String)) {
@@ -89,17 +89,17 @@ public class AIOGalleryFilePicView$2
         {
           ((JSONObject)localObject).put("strMini", str1);
           if (localObject != null) {
-            break label285;
+            break label287;
           }
           localObject = "";
-          this.this$0.a(2131627275, 2130839597, 56, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
-          awqx.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
-          this.this$0.jdField_a_of_type_Bahv.c();
+          this.this$0.a(2131692913, 2130839645, 56, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+          axqw.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
+          this.this$0.jdField_a_of_type_Bcuq.d();
           return;
         }
         catch (JSONException localJSONException3)
         {
-          break label278;
+          break label280;
         }
         localJSONException1 = localJSONException1;
         localObject = null;

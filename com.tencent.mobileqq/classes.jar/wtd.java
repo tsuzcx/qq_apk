@@ -1,22 +1,10 @@
-import android.support.annotation.Nullable;
-import android.view.View;
-
-class wtd
-  implements bhwg<Boolean>
+public abstract interface wtd
 {
-  wtd(wta paramwta) {}
-  
-  public void a(@Nullable Boolean paramBoolean)
-  {
-    if (paramBoolean == null) {
-      return;
-    }
-    wta.d(this.a).setSelected(paramBoolean.booleanValue());
-  }
+  public abstract void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wtd
  * JD-Core Version:    0.7.0.1
  */

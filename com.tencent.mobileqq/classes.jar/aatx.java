@@ -1,16 +1,35 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.15.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aatx
-  extends atdh
+  implements bfoq
 {
-  public aatx(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aatx(ChatSettingForTroop paramChatSettingForTroop, bfol parambfol) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    ThreadManager.post(new FriendProfileCardActivity.15.1(this), 5, null, false);
+    paramView = this.jdField_a_of_type_Bfol.a(paramInt);
+    if (paramView != null)
+    {
+      paramInt = paramView.c;
+      switch (paramInt)
+      {
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      paramInt = -1;
+      break;
+      ChatSettingForTroop.e(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+      bbbb.a("Grp_set_new", "grpData_admin", "clk_quitgrp", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, bbbb.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a) });
+      continue;
+      bamn.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app);
+      continue;
+      bamn.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app);
+    }
   }
 }
 

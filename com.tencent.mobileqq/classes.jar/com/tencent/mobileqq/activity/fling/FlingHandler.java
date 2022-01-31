@@ -14,7 +14,7 @@ public abstract class FlingHandler
     this.a = new WeakReference(paramActivity);
   }
   
-  int a()
+  protected int a()
   {
     Activity localActivity = (Activity)this.a.get();
     if (localActivity != null) {
@@ -25,14 +25,14 @@ public abstract class FlingHandler
   
   protected abstract void a();
   
-  protected abstract boolean a();
-  
-  protected abstract void b();
-  
-  boolean b()
+  protected boolean a()
   {
     return a() != 0;
   }
+  
+  protected abstract void b();
+  
+  protected abstract boolean b();
   
   public void onConfigurationChanged(Configuration paramConfiguration) {}
   

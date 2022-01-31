@@ -1,38 +1,33 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Environment;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.io.File;
-import java.text.SimpleDateFormat;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
+import com.tencent.qphone.base.util.QLog;
 
 public class aklk
+  extends akdo
 {
-  public static String a()
-  {
-    String str = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath();
-    return str + "/Camera/ARVideoRecord.tmp";
-  }
+  private aklk(CheckPublicAccount paramCheckPublicAccount) {}
   
-  public static boolean a()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    return (Build.VERSION.SDK_INT >= 18) && (akpb.a().d) && (!Build.MODEL.equalsIgnoreCase("CAM-TL00"));
-  }
-  
-  public static String b()
-  {
-    String str = ShortVideoUtils.d();
-    str = str + new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(Long.valueOf(System.currentTimeMillis()));
-    str = str + mcg.a;
-    File localFile = new File(str).getParentFile();
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "PublicAccount onUpdateUserFollowList:" + paramBoolean + " " + paramInt);
     }
-    return str;
+    if ((paramBoolean) && (paramInt == 0))
+    {
+      this.a.a.a.edit().putBoolean("isPublicAccountListOK", true).commit();
+      this.a.a(7);
+    }
+    while (paramInt == 0) {
+      return;
+    }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aklk
  * JD-Core Version:    0.7.0.1
  */

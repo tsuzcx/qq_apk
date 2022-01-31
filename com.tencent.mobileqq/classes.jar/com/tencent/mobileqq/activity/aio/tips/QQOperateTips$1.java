@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aenu;
-import akaq;
-import amnb;
-import amnd;
+import aeyq;
+import akpc;
+import andi;
+import andk;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -15,11 +15,11 @@ import java.util.List;
 public class QQOperateTips$1
   implements Runnable
 {
-  public QQOperateTips$1(aenu paramaenu) {}
+  public QQOperateTips$1(aeyq paramaeyq) {}
   
   public void run()
   {
-    Object localObject1 = aenu.a(this.this$0).a().a(aenu.a(this.this$0).jdField_a_of_type_JavaLangString, aenu.a(this.this$0).jdField_a_of_type_Int);
+    Object localObject1 = aeyq.a(this.this$0).a().a(aeyq.a(this.this$0).jdField_a_of_type_JavaLangString, aeyq.a(this.this$0).jdField_a_of_type_Int);
     int j = ((List)localObject1).size();
     Object localObject2;
     int i;
@@ -28,13 +28,13 @@ public class QQOperateTips$1
       localObject2 = (ChatMessage)((List)localObject1).get(j - 1);
       if (localObject2 != null)
       {
-        if (aenu.a(this.this$0).jdField_a_of_type_Int != 0) {
+        if (aeyq.a(this.this$0).jdField_a_of_type_Int != 0) {
           break label333;
         }
-        aenu.a(this.this$0, ((ChatMessage)localObject2).time);
-        aenu.b(this.this$0, ((ChatMessage)localObject2).uniseq);
+        aeyq.a(this.this$0, ((ChatMessage)localObject2).time);
+        aeyq.b(this.this$0, ((ChatMessage)localObject2).uniseq);
       }
-      if (aenu.a(this.this$0).a().a(aenu.a(this.this$0).jdField_a_of_type_JavaLangString, aenu.a(this.this$0).jdField_a_of_type_Int) <= 0) {
+      if (aeyq.a(this.this$0).a().a(aeyq.a(this.this$0).jdField_a_of_type_JavaLangString, aeyq.a(this.this$0).jdField_a_of_type_Int) <= 0) {
         break label365;
       }
       i = 1;
@@ -53,31 +53,31 @@ public class QQOperateTips$1
       else
       {
         if (QLog.isDevelopLevel()) {
-          QLog.d("QQOperateVoIP", 4, " from aio open .. unreadMsg index = " + aenu.a(this.this$0));
+          QLog.d("QQOperateVoIP", 4, " from aio open .. unreadMsg index = " + aeyq.a(this.this$0));
         }
-        localObject2 = amnb.a(aenu.a(this.this$0));
+        localObject2 = andi.a(aeyq.a(this.this$0));
         if (localObject2 != null)
         {
-          localObject1 = ((amnb)localObject2).a(aenu.a(this.this$0).jdField_a_of_type_JavaLangString, aenu.a(this.this$0).jdField_a_of_type_Int, aenu.a(this.this$0), (List)localObject1, true, aenu.a(this.this$0));
-          if (((amnd)localObject1).jdField_a_of_type_Boolean)
+          localObject1 = ((andi)localObject2).a(aeyq.a(this.this$0).jdField_a_of_type_JavaLangString, aeyq.a(this.this$0).jdField_a_of_type_Int, aeyq.a(this.this$0), (List)localObject1, true, aeyq.a(this.this$0));
+          if (((andk)localObject1).jdField_a_of_type_Boolean)
           {
-            localObject1 = ((amnd)localObject1).jdField_a_of_type_JavaUtilArrayList;
-            ((amnb)localObject2).a(aenu.a(this.this$0).jdField_a_of_type_JavaLangString, aenu.a(this.this$0).jdField_a_of_type_Int, (ArrayList)localObject1, aenu.a(this.this$0));
+            localObject1 = ((andk)localObject1).jdField_a_of_type_JavaUtilArrayList;
+            ((andi)localObject2).a(aeyq.a(this.this$0).jdField_a_of_type_JavaLangString, aeyq.a(this.this$0).jdField_a_of_type_Int, (ArrayList)localObject1, aeyq.a(this.this$0));
           }
         }
-        aenu.a(this.this$0, -1);
+        aeyq.a(this.this$0, -1);
         return;
         label333:
-        if (aenu.a(this.this$0).jdField_a_of_type_Int != 3000) {
+        if (aeyq.a(this.this$0).jdField_a_of_type_Int != 3000) {
           break;
         }
-        aenu.a(this.this$0, ((ChatMessage)localObject2).shmsgseq);
+        aeyq.a(this.this$0, ((ChatMessage)localObject2).shmsgseq);
         break;
         label365:
         i = 0;
         break label145;
       }
-      aenu.a(this.this$0, i - 1);
+      aeyq.a(this.this$0, i - 1);
       i -= 1;
     }
   }

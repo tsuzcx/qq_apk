@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x977.oidb_cmd0x977.FollowStatusInfo;
-import tencent.im.oidb.cmd0x977.oidb_cmd0x977.KdUserInfo;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class ops
-  implements psh<oidb_cmd0x977.FollowStatusInfo, ppg>
+public class ops
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  ops(opp paramopp) {}
-  
-  public ppg a(oidb_cmd0x977.FollowStatusInfo paramFollowStatusInfo)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    return new ppg(Long.valueOf(paramFollowStatusInfo.uint64_uin.get()), Integer.valueOf(paramFollowStatusInfo.enum_account_type.get()), paramFollowStatusInfo.user_info.bytes_nick.get().toStringUtf8(), paramFollowStatusInfo.user_info.bytes_qq_head_url.get().toStringUtf8());
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoSingleModeConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = ooi.a(paramString);
+    if ((String)paramString.get("readinjoy_single_video_switch") != null) {
+      bhvh.a((String)paramString.get("readinjoy_single_video_switch"));
+    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bhvh.a(null);
   }
 }
 

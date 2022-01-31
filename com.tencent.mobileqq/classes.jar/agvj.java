@@ -1,45 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import mqq.util.WeakReference;
 
 class agvj
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  private agvj(agvf paramagvf) {}
+  agvj(agvi paramagvi) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ("open_video_callback".equals(paramIntent.getAction())) {}
-    try
-    {
-      int i = paramIntent.getIntExtra("retcode", 4);
-      paramContext = paramIntent.getStringExtra("retmsg");
-      int j = paramIntent.getIntExtra("isDownloaded", -1);
-      long l1 = paramIntent.getLongExtra("played_time", 0L);
-      long l2 = paramIntent.getLongExtra("total_time", 0L);
-      paramIntent = new JSONObject();
-      paramIntent.put("retcode", i);
-      paramIntent.put("retmsg", paramContext);
-      paramIntent.put("played_time", l1);
-      paramIntent.put("total_time", l2);
-      if (j != -1) {
-        paramIntent.put("is_downloaded", j);
-      }
-      agvf.a(this.a, "openVideoPlayer", paramIntent.toString());
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      QLog.e("springHb_SpringFestivalRedpacketJsPlugin", 1, paramContext, new Object[0]);
-    }
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", ((NewPhotoPreviewActivity)this.a.a.a.get()).a());
+    ((NewPhotoPreviewActivity)this.a.a.a.get()).setResult(-1, paramDialogInterface);
+    ((NewPhotoPreviewActivity)this.a.a.a.get()).finish();
+    agvh.a(this.a.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agvj
  * JD-Core Version:    0.7.0.1
  */

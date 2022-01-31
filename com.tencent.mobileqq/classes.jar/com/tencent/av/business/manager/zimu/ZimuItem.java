@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.zimu;
 
-import kxb;
+import lhq;
 
 public class ZimuItem
-  extends kxb
+  extends lhq
 {
   private String desc;
   private String iconurl;

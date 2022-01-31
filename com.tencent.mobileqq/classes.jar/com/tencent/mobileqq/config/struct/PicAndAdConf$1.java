@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.config.struct;
 
-import amnt;
-import amnu;
+import anea;
+import aneb;
 
 public class PicAndAdConf$1
   implements Runnable
 {
-  public PicAndAdConf$1(amnt paramamnt, amnu paramamnu) {}
+  public PicAndAdConf$1(anea paramanea, aneb paramaneb) {}
   
   public void run()
   {

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import abai;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 
-public class Leba$9
+class Leba$9
   implements Runnable
 {
-  public Leba$9(abai paramabai, boolean paramBoolean) {}
+  Leba$9(Leba paramLeba, boolean paramBoolean, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo) {}
   
   public void run()
   {
-    abai.a(this.this$0, this.a);
+    Leba.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$RedTypeInfo);
   }
 }
 

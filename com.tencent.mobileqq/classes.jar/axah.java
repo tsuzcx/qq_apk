@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.data.MessageForPtt;
-
-public abstract interface axah
+public class axah
 {
-  public abstract void a(String paramString, MessageForPtt paramMessageForPtt);
+  public byte[] a;
+  public byte[] b;
   
-  public abstract void a(boolean paramBoolean, MessageForPtt paramMessageForPtt);
+  public axah(axaf paramaxaf, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
+    this.b = paramArrayOfByte2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axah
  * JD-Core Version:    0.7.0.1
  */

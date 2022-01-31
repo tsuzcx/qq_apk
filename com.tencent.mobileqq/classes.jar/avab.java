@@ -1,51 +1,32 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUAlphaBlendFilter;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import com.tencent.ttpic.openapi.filter.GPUOESBaseFilter;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import com.tencent.mobileqq.profile.view.VipTagView;
 
 public class avab
+  implements Animation.AnimationListener
 {
-  public static GPUBaseFilter a(int paramInt)
+  public avab(ProfileTagView paramProfileTagView, boolean paramBoolean, VipTagView paramVipTagView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramInt)
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a.a != 0) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131373674) != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131373674).equals(Boolean.valueOf(true))))
     {
-    default: 
-      return new GPUBaseFilter();
-    case 101: 
-      return new GPUBaseFilter();
-    case 102: 
-      return new GPUOESBaseFilter();
-    case 0: 
-      return new avad();
-    case 7: 
-      return new avaf();
-    case 5: 
-      return new avah();
-    case 6: 
-      return new avai();
-    case 4: 
-      return new avae();
-    case 106: 
-      return new avag();
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTag(2131373674, Boolean.valueOf(false));
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, ((Long)this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131373676)).longValue());
+      return;
     }
-    return new GPUAlphaBlendFilter();
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setShakingState(true);
   }
   
-  public static boolean a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    case 3: 
-    default: 
-      return false;
-    }
-    return true;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avab
  * JD-Core Version:    0.7.0.1
  */

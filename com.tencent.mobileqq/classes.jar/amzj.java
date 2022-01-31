@@ -1,65 +1,53 @@
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.PrecoverData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class amzj
-  extends amza
+  extends amyi<amzi>
 {
-  public amzj(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.early.precover", paramQQAppInterface);
-  }
-  
   public int a()
   {
-    return 10045;
+    return 76;
   }
   
-  public Class<? extends XmlData> a()
+  @NonNull
+  public amzi a()
   {
-    return PrecoverData.class;
+    return new amzi();
   }
   
-  public String a()
+  @NonNull
+  public amzi a(ampi[] paramArrayOfampi)
   {
-    return "actEarlyPrecover";
-  }
-  
-  public void a(XmlData paramXmlData)
-  {
-    super.a(paramXmlData);
-    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof PrecoverData))) {
-      QLog.d("PrecoverHandler", 2, new Object[] { "doOnServerResp, xmlData=", paramXmlData });
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    paramArrayOfampi = paramArrayOfampi[0].a;
+    bbwa.a().a(localQQAppInterface.getApplication(), paramArrayOfampi, localQQAppInterface.getCurrentAccountUin());
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipKeywordsProcessor", 2, "receiveAllConfigs|type: 76,content: " + paramArrayOfampi);
     }
+    return new amzi();
   }
   
-  public boolean a()
+  public Class<amzi> a()
+  {
+    return amzi.class;
+  }
+  
+  @NonNull
+  public amzi b()
+  {
+    return new amzi();
+  }
+  
+  public boolean c()
   {
     return false;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public boolean i()
-  {
-    File localFile = new File(c());
-    return (localFile != null) && (localFile.exists());
-  }
-  
-  public boolean j()
-  {
-    File localFile = new File(d());
-    return (localFile != null) && (localFile.exists());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amzj
  * JD-Core Version:    0.7.0.1
  */

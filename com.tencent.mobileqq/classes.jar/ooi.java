@@ -1,87 +1,121 @@
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-import javax.crypto.spec.SecretKeySpec;
+import android.util.Xml;
+import com.tencent.qphone.base.util.QLog;
+import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Map;
+import org.xmlpull.v1.XmlPullParser;
 
 public class ooi
 {
-  private final ooj a;
-  
-  private ooi(ooj paramooj)
+  public static Map<String, String> a(String paramString)
   {
-    this.a = paramooj;
-  }
-  
-  private SecretKey a(char[] paramArrayOfChar)
-  {
-    return new SecretKeySpec(SecretKeyFactory.getInstance(ooj.d(this.a)).generateSecret(new PBEKeySpec(paramArrayOfChar, ooj.e(this.a).getBytes(ooj.b(this.a)), ooj.b(this.a), ooj.c(this.a))).getEncoded(), ooj.f(this.a));
-  }
-  
-  public static ooi a(String paramString1, String paramString2, byte[] paramArrayOfByte)
-  {
-    try
+    HashMap localHashMap = new HashMap();
+    label159:
+    for (;;)
     {
-      paramString1 = ooj.a(paramString1, paramString2, paramArrayOfByte).a();
-      return paramString1;
+      try
+      {
+        XmlPullParser localXmlPullParser = Xml.newPullParser();
+        localXmlPullParser.setFeature("http://xmlpull.org/v1/doc/features.html#process-namespaces", false);
+        localXmlPullParser.setInput(new StringReader(paramString));
+        int i = localXmlPullParser.getEventType();
+        if (i != 1)
+        {
+          if (localXmlPullParser.getEventType() == 0)
+          {
+            QLog.d("AladdinParseUtils", 2, "[parseContentXml] START_DOCUMENT");
+            i = localXmlPullParser.next();
+            continue;
+          }
+          if (localXmlPullParser.getEventType() != 2) {
+            continue;
+          }
+          QLog.d("AladdinParseUtils", 2, "[parseContentXml] START_TAG");
+          paramString = localXmlPullParser.getName();
+          if (!"configs".equals(paramString)) {
+            break label159;
+          }
+          a(localXmlPullParser, localHashMap);
+          continue;
+        }
+        QLog.e("AladdinParseUtils", 1, "[parseContentXml] unknown tag: " + paramString);
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("AladdinParseUtils", 1, "[parseContentXml] ", paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d("AladdinParseUtils", 2, "[parseContentXml] result=" + localHashMap);
+        }
+        return localHashMap;
+      }
     }
-    catch (NoSuchAlgorithmException paramString1) {}
-    return null;
   }
   
-  private char[] a(String paramString)
+  private static void a(XmlPullParser paramXmlPullParser)
   {
-    MessageDigest localMessageDigest = MessageDigest.getInstance(ooj.g(this.a));
-    localMessageDigest.update(paramString.getBytes(ooj.b(this.a)));
-    return baaw.encodeToString(localMessageDigest.digest(), 1).toCharArray();
-  }
-  
-  public String a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
+    if (paramXmlPullParser.getEventType() != 2) {
+      throw new IllegalStateException();
     }
-    SecretKey localSecretKey = a(a(ooj.a(this.a)));
-    paramString = paramString.getBytes(ooj.b(this.a));
-    Cipher localCipher = Cipher.getInstance(ooj.c(this.a));
-    localCipher.init(1, localSecretKey, ooj.a(this.a), ooj.a(this.a));
-    return baaw.encodeToString(localCipher.doFinal(paramString), ooj.a(this.a));
+    int i = 1;
+    while (i != 0) {
+      switch (paramXmlPullParser.next())
+      {
+      default: 
+        break;
+      case 1: 
+        throw new IllegalStateException();
+      case 3: 
+        i -= 1;
+        break;
+      case 2: 
+        QLog.d("AladdinParseUtils", 2, "[skip] " + paramXmlPullParser.getName());
+        i += 1;
+      }
+    }
   }
   
-  public String b(String paramString)
+  private static void a(XmlPullParser paramXmlPullParser, Map<String, String> paramMap)
   {
-    try
+    paramXmlPullParser.require(2, null, "configs");
+    int i = paramXmlPullParser.next();
+    if ((i != 3) && (i != 1))
     {
-      paramString = a(paramString);
-      return paramString;
+      if (i == 2) {
+        b(paramXmlPullParser, paramMap);
+      }
+      for (;;)
+      {
+        i = paramXmlPullParser.next();
+        break;
+        QLog.e("AladdinParseUtils", 1, "[readConfigs] unknown event type: " + i);
+      }
     }
-    catch (Exception paramString) {}
-    return null;
+    paramXmlPullParser.require(3, null, "configs");
   }
   
-  public String c(String paramString)
+  private static void b(XmlPullParser paramXmlPullParser, Map<String, String> paramMap)
   {
-    if (paramString == null) {
-      return null;
+    if (paramXmlPullParser.getEventType() != 2) {
+      throw new IllegalStateException();
     }
-    paramString = baaw.decode(paramString, ooj.a(this.a));
-    SecretKey localSecretKey = a(a(ooj.a(this.a)));
-    Cipher localCipher = Cipher.getInstance(ooj.c(this.a));
-    localCipher.init(2, localSecretKey, ooj.a(this.a), ooj.a(this.a));
-    return new String(localCipher.doFinal(paramString));
-  }
-  
-  public String d(String paramString)
-  {
-    try
+    String str = paramXmlPullParser.getName();
+    int i = paramXmlPullParser.next();
+    if ((i != 3) && (i != 1))
     {
-      paramString = c(paramString);
-      return paramString;
+      if (i == 4) {
+        paramMap.put(str, paramXmlPullParser.getText());
+      }
+      for (;;)
+      {
+        i = paramXmlPullParser.next();
+        break;
+        if (i == 2)
+        {
+          QLog.d("AladdinParseUtils", 2, "[readTag] unexpected nested tag: " + paramXmlPullParser.getName() + ", skip.");
+          a(paramXmlPullParser);
+        }
+      }
     }
-    catch (Exception paramString) {}
-    return null;
   }
 }
 

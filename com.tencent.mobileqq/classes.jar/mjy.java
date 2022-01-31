@@ -1,18 +1,26 @@
-import com.tencent.av.video.effect.core.qqavimage.QQAVImageFilterGroup;
-import com.tencent.av.video.effect.core.qqavimage.QQAVImageGaussianBlurFilter;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class mjy
-  extends QQAVImageFilterGroup
+class mjy
+  implements mht
 {
-  public mjy()
+  mjy(mjx parammjx) {}
+  
+  public void a()
   {
-    super(null);
-    int i = 0;
-    while (i < 3)
+    if (this.a.a.a != null)
     {
-      addFilter(new QQAVImageGaussianBlurFilter());
-      i += 1;
+      this.a.a.a.setViewEnable(2131372372, false);
+      this.a.a.a.setViewEnable(2131362922, false);
+      this.a.a.a.setViewEnable(2131362934, false);
+      this.a.a.a.setViewEnable(2131362933, false);
     }
+  }
+  
+  public void b()
+  {
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 2130772163);
   }
 }
 

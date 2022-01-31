@@ -1,42 +1,41 @@
-import android.text.Spanned;
-import android.text.method.NumberKeyListener;
-import com.tencent.widget.TCWNumberPicker;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnErrorListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class beoe
-  extends NumberKeyListener
+  implements VideoPlayerProxy.OnErrorListener
 {
-  private beoe(TCWNumberPicker paramTCWNumberPicker) {}
+  public beoe(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public boolean onError(VideoPlayerProxy paramVideoPlayerProxy, int paramInt1, int paramInt2)
   {
-    CharSequence localCharSequence2 = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-    CharSequence localCharSequence1 = localCharSequence2;
-    if (localCharSequence2 == null) {
-      localCharSequence1 = paramCharSequence.subSequence(paramInt1, paramInt2);
+    besl.d("MiniAppVideoPlayer", "video onError: m what=" + paramInt1 + " extra=" + paramInt2);
+    if (!this.a.jdField_a_of_type_Begy.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
+      MiniAppVideoPlayer.a(this.a, "error");
     }
-    paramCharSequence = String.valueOf(paramSpanned.subSequence(0, paramInt3)) + localCharSequence1 + paramSpanned.subSequence(paramInt4, paramSpanned.length());
-    if ("".equals(paramCharSequence)) {
-      localCharSequence1 = paramCharSequence;
+    for (;;)
+    {
+      return true;
+      try
+      {
+        paramVideoPlayerProxy = new JSONObject();
+        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
+        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+        this.a.jdField_a_of_type_Begy.a("onVideoError", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+        besl.a("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoError = " + paramVideoPlayerProxy.toString());
+      }
+      catch (JSONException paramVideoPlayerProxy)
+      {
+        paramVideoPlayerProxy.printStackTrace();
+      }
     }
-    while (TCWNumberPicker.a(this.a, paramCharSequence) <= TCWNumberPicker.a(this.a)) {
-      return localCharSequence1;
-    }
-    return "";
-  }
-  
-  protected char[] getAcceptedChars()
-  {
-    return TCWNumberPicker.a();
-  }
-  
-  public int getInputType()
-  {
-    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beoe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
-public class ajad
+class ajad
 {
-  public void a(int paramInt, byte[] paramArrayOfByte) {}
+  private static aizw a = new aizw("cm_game_module");
 }
 
 

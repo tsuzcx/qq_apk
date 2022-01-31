@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import qnw;
-import qnx;
+import rag;
+import rah;
 
 public class KandianTipFloatingWindow$1
   implements Runnable
 {
-  public KandianTipFloatingWindow$1(qnw paramqnw, qnx paramqnx, View paramView) {}
+  public KandianTipFloatingWindow$1(rag paramrag, rah paramrah, View paramView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Qnx.a.onClick(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_Rah.a.onClick(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

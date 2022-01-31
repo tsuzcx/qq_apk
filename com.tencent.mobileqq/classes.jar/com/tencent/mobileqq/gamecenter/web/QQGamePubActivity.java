@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import aing;
-import alhf;
+import ajae;
+import alvt;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 
@@ -10,13 +10,13 @@ public class QQGamePubActivity
 {
   static
   {
-    alhf.a(true);
-    alhf.a();
+    alvt.a(true);
+    alvt.a();
   }
   
   public AppInterface getAppInterface()
   {
-    return aing.a();
+    return ajae.a();
   }
 }
 

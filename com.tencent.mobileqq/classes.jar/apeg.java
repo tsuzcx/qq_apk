@@ -1,9 +1,8 @@
-public class apeg
+public abstract interface apeg
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  String c;
+  public abstract void a();
+  
+  public abstract void a(int paramInt, String paramString);
 }
 
 

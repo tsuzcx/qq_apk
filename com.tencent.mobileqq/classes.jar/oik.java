@@ -1,32 +1,33 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class oik
-  implements Animation.AnimationListener
+class oik
+  extends ClickableSpan
 {
-  public oik(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
+  oik(oii paramoii, SubCommentData paramSubCommentData) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a(this.a.a);
-    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment show info");
+    ohi.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin, BaseActivity.sTopActivity);
+    paramView = new ofv(this.jdField_a_of_type_Oii).a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin).a();
+    noo.a(null, ohi.a(this.jdField_a_of_type_Oii.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Oii.a.mArticleID), String.valueOf(this.jdField_a_of_type_Oii.a.mAlgorithmID), this.jdField_a_of_type_Oii.a.innerUniqueID, paramView, false);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment Repeat animation");
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment start animation");
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#737373"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oik
  * JD-Core Version:    0.7.0.1
  */

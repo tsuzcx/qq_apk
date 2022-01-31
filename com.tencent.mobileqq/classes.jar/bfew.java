@@ -1,40 +1,44 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qappcenter.remote.SendMsg;
+import com.tencent.qqmini.sdk.task.TaskThreadPool.2;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
-class bfew
-  implements ServiceConnection
+public class bfew
 {
-  bfew(bfev parambfev) {}
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new TaskThreadPool.2(this);
+  private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private final RejectedExecutionHandler jdField_a_of_type_JavaUtilConcurrentRejectedExecutionHandler = new bfex(this);
+  private final ScheduledExecutorService jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService = Executors.newScheduledThreadPool(1);
+  protected final ScheduledFuture<?> a;
+  private final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public bfew(String paramString, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + bfev.a(this.a));
-    }
-    this.a.a = bfes.a(paramIBinder);
-    if (bfev.a(this.a) != null)
-    {
-      paramComponentName = new SendMsg("cmd.registerListener");
-      paramComponentName.a = bfev.a(this.a);
-      this.a.b(paramComponentName);
-    }
-    this.a.a();
+    this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService.scheduleAtFixedRate(this.jdField_a_of_type_JavaLangRunnable, 0L, 100L, TimeUnit.MILLISECONDS);
+    this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(paramInt1, paramInt2, 5000L, TimeUnit.SECONDS, new ArrayBlockingQueue(100), new bfey(paramString), this.jdField_a_of_type_JavaUtilConcurrentRejectedExecutionHandler);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  private boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + bfev.a(this.a));
+    return !this.jdField_a_of_type_JavaUtilQueue.isEmpty();
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    if (paramRunnable != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(paramRunnable);
     }
-    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfew
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.3.1;
 import com.tencent.qphone.base.util.QLog;
 
-public class adza
-  implements DialogInterface.OnClickListener
+public final class adza
+  implements bcph
 {
-  public adza(PhotoListPanel paramPhotoListPanel) {}
+  public adza(Handler paramHandler) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(bcpf parambcpf)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
+      QLog.i("ScribbleItemBuilder", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambcpf);
     }
+    this.a.postDelayed(new ScribbleItemBuilder.3.1(this, parambcpf), 100L);
   }
+  
+  public void a(bcpf parambcpf, int paramInt1, int paramInt2) {}
 }
 
 

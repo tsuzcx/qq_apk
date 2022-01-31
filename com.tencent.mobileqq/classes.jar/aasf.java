@@ -1,41 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class aasf
-  implements avrb
+  implements bcvx
 {
-  public aasf(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public aasf(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aouq paramaouq) {}
   
-  public void a(View paramView)
+  public void a(int paramInt)
   {
-    int i = 1;
-    avoj localavoj = (avoj)paramView.getTag(2131313373);
-    if (localavoj == null) {}
-    for (;;)
+    if (paramInt == 2)
     {
-      return;
-      String str1 = localavoj.b();
-      String str2 = localavoj.a().toString();
-      paramView = "-1";
-      if ((localavoj instanceof avmx))
+      aptv.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131692829));
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        paramView = ((avmx)localavoj).e();
-        i = 3000;
-      }
-      while ((i != -1) && (ForwardFriendListActivity.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
-      {
-        ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
-        return;
-        if ((localavoj instanceof avnd)) {
-          paramView = ((avnd)localavoj).a;
-        } else if ((localavoj instanceof avni)) {
-          paramView = ((avni)localavoj).a().troopuin;
-        } else if ((localavoj instanceof avmy)) {
-          i = 0;
-        } else {
-          i = -1;
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+          if (bbdj.b(localFileManagerEntity.getFilePath())) {
+            this.jdField_a_of_type_Aouq.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
+          } else {
+            this.jdField_a_of_type_Aouq.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+          }
         }
       }
     }

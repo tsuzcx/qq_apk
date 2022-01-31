@@ -4,30 +4,30 @@ import android.content.Context;
 import android.graphics.Rect;
 import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import rvd;
+import shv;
 
 public class PublicAccountCompactSwipeBackLayout
   extends SwipePostTableLayout
 {
   protected WebViewFragment a;
-  protected rvd a;
+  protected shv a;
   private boolean g = true;
   private boolean h;
   
   public PublicAccountCompactSwipeBackLayout(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Rvd = new rvd();
+    this.jdField_a_of_type_Shv = new shv();
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_Rvd.a(paramString);
+    this.jdField_a_of_type_Shv.a(paramString);
   }
   
   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Rvd.a(paramString, new Rect(paramInt1, paramInt2, paramInt3, paramInt4));
+    this.jdField_a_of_type_Shv.a(paramString, new Rect(paramInt1, paramInt2, paramInt3, paramInt4));
   }
   
   public void a(boolean paramBoolean)

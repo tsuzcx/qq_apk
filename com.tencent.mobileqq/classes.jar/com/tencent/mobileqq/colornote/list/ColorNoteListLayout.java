@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.colornote.list;
 
-import altu;
+import amin;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,7 +18,7 @@ public class ColorNoteListLayout
   extends LinearLayout
 {
   private int jdField_a_of_type_Int;
-  private altu jdField_a_of_type_Altu;
+  private amin jdField_a_of_type_Amin;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
@@ -50,7 +50,7 @@ public class ColorNoteListLayout
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(paramContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setId(2131298840);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setId(2131364398);
     paramContext = new LinearLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, paramContext);
   }
@@ -64,8 +64,8 @@ public class ColorNoteListLayout
   {
     if (paramKeyEvent.getKeyCode() == 4)
     {
-      if ((paramKeyEvent.getAction() == 1) && (this.jdField_a_of_type_Altu != null)) {
-        this.jdField_a_of_type_Altu.a();
+      if ((paramKeyEvent.getAction() == 1) && (this.jdField_a_of_type_Amin != null)) {
+        this.jdField_a_of_type_Amin.a();
       }
       return true;
     }
@@ -136,9 +136,9 @@ public class ColorNoteListLayout
     this.b = paramInt2;
   }
   
-  public void setHideListener(altu paramaltu)
+  public void setHideListener(amin paramamin)
   {
-    this.jdField_a_of_type_Altu = paramaltu;
+    this.jdField_a_of_type_Amin = paramamin;
   }
 }
 

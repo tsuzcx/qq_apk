@@ -1,16 +1,12 @@
-import android.support.annotation.RequiresApi;
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class agha
-  implements View.OnClickListener
+  implements bbjt
 {
-  agha(aggx paramaggx) {}
+  agha(aggy paramaggy) {}
   
-  @RequiresApi(api=17)
-  public void onClick(View paramView)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.a.a(paramView);
+    aggy.a(this.a, bbjr.a(paramInt));
+    this.a.a.height = aggy.a(this.a);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.theme.ListenTogetherTheme;
 
-import axlp;
+import aylv;
 
 public class FloatViewSkin$4
   implements Runnable
 {
-  public FloatViewSkin$4(axlp paramaxlp) {}
+  public FloatViewSkin$4(aylv paramaylv) {}
   
   public void run()
   {
-    this.this$0.b(axlp.a(this.this$0));
+    this.this$0.b(aylv.a(this.this$0));
   }
 }
 

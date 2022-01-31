@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.runtime.core;
 
-import bdfz;
-import bduk;
-import bdvc;
+import beka;
+import bfas;
+import bfbk;
 
 public class EventListener$7
   implements Runnable
 {
-  public EventListener$7(bduk parambduk, bdvc parambdvc, String paramString1, String paramString2, bdfz parambdfz) {}
+  public EventListener$7(bfas parambfas, bfbk parambfbk, String paramString1, String paramString2, beka parambeka) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bdvc.a(this.jdField_a_of_type_JavaLangString, this.b, null);
-    this.jdField_a_of_type_Bdfz.a();
+    this.jdField_a_of_type_Bfbk.a(this.jdField_a_of_type_JavaLangString, this.b, null);
+    this.jdField_a_of_type_Beka.a();
   }
 }
 

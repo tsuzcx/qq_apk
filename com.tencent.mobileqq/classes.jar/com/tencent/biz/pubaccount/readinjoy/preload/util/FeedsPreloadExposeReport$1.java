@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.preload.util;
 
 import java.util.List;
-import ogy;
-import orw;
+import osj;
+import pcy;
 
 public final class FeedsPreloadExposeReport$1
   implements Runnable
 {
-  public FeedsPreloadExposeReport$1(ogy paramogy, List paramList, String paramString) {}
+  public FeedsPreloadExposeReport$1(osj paramosj, List paramList, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ogy != null) {
-      this.jdField_a_of_type_Ogy.a(orw.a(this.jdField_a_of_type_JavaUtilList), this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Osj != null) {
+      this.jdField_a_of_type_Osj.a(pcy.a(this.jdField_a_of_type_JavaUtilList), this.jdField_a_of_type_JavaLangString);
     }
   }
 }

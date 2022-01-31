@@ -1,20 +1,45 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
 
 public class auae
-  implements View.OnClickListener
+  implements bcns
 {
-  public auae(ProfileHeaderView paramProfileHeaderView, View paramView) {}
+  public auae(OCRResultActivity paramOCRResultActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a.getCurrentAccountUin(), 0).edit().putBoolean("common_topic_friend_list_should_show", false).apply();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (OCRResultActivity.a(this.a) == 0) {
+      OCRResultActivity.a(this.a);
+    }
+    while (OCRResultActivity.a(this.a) != 1) {
+      return;
+    }
+    OCRResultActivity.b(this.a);
+  }
+  
+  public void a(String paramString)
+  {
+    aylc.a(paramString, "OCR_Participle_copy");
+  }
+  
+  public void b(String paramString)
+  {
+    OCRResultActivity.a(this.a, paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    aylc.a(this.a, this.a.app, paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    Intent localIntent = new Intent(this.a, TextPreviewTranslateActivity.class);
+    localIntent.putExtra("TranslateText", paramString);
+    localIntent.putExtra("WhereAreYouFrom", "OCR_RESULT");
+    this.a.startActivityForResult(localIntent, 1);
+    OCRResultActivity.a(this.a, true);
   }
 }
 

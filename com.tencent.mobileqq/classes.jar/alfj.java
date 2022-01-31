@@ -1,85 +1,55 @@
-import android.text.TextUtils;
-import com.tencent.ark.ArkAppPanelList.AppDetail;
-import com.tencent.ark.ArkAppPanelList.RespBody;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.1;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.common.config.AppSetting;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class alfj
-  implements ajfe
+  implements alff
 {
-  public alfj(ArkMessageServerLogic.1 param1) {}
+  private static final boolean jdField_a_of_type_Boolean = AppSetting.b;
+  private final String jdField_a_of_type_JavaLangString = "huawei_arcore";
+  private final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private final String b = "huawei_arcore_arch64";
+  private final String c = "v8.0.0";
+  private final String d = "v8.2.0";
+  private final String e = "md5_config.xml";
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public alfj()
   {
-    if ((paramBoolean) && (paramObject != null))
-    {
-      localObject1 = new ArkAppPanelList.RespBody();
-      try
-      {
-        ((ArkAppPanelList.RespBody)localObject1).mergeFrom((byte[])paramObject);
-        localArrayList = new ArrayList();
-        if (((ArkAppPanelList.RespBody)localObject1).apps.has())
-        {
-          paramObject = ((ArkAppPanelList.RespBody)localObject1).apps.get();
-          if ((paramObject == null) || (paramObject.size() <= 0)) {
-            break label234;
-          }
-          paramObject = paramObject.iterator();
-          while (paramObject.hasNext())
-          {
-            localObject2 = (ArkAppPanelList.AppDetail)paramObject.next();
-            if (localObject2 != null)
-            {
-              localObject1 = ((ArkAppPanelList.AppDetail)localObject2).appName.get();
-              str = ((ArkAppPanelList.AppDetail)localObject2).cnName.get();
-              localObject2 = ((ArkAppPanelList.AppDetail)localObject2).iconUrl.get();
-              if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
-              {
-                localArrayList.add(new alet((String)localObject1, str, (String)localObject2));
-                continue;
-                return;
-              }
-            }
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramObject)
-      {
-        ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList mergeFrom exception=" + paramObject);
-        if (this.a.a != null) {
-          this.a.a.b(null);
-        }
-      }
+    this.jdField_a_of_type_JavaUtilArrayList.add("libarengine_api");
+    this.jdField_a_of_type_JavaUtilArrayList.add("libhuawei_arengine_impl");
+    this.jdField_a_of_type_JavaUtilArrayList.add("libhuawei_arengine_ndk");
+    this.jdField_a_of_type_JavaUtilArrayList.add("libhuawei_arengine_jni");
+  }
+  
+  public String a()
+  {
+    if (jdField_a_of_type_Boolean) {
+      return "huawei_arcore_arch64";
     }
-    label234:
-    while (this.a.a == null)
-    {
-      ArrayList localArrayList;
-      do
-      {
-        for (;;)
-        {
-          Object localObject1;
-          Object localObject2;
-          String str;
-          paramObject = null;
-        }
-      } while (this.a.a == null);
-      this.a.a.b(localArrayList);
-      return;
+    return "huawei_arcore";
+  }
+  
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public String b()
+  {
+    if (jdField_a_of_type_Boolean) {
+      return "v8.2.0";
     }
-    this.a.a.b(null);
+    return "v8.0.0";
+  }
+  
+  public String c()
+  {
+    return "md5_config.xml";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alfj
  * JD-Core Version:    0.7.0.1
  */

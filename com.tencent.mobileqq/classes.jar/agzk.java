@@ -1,83 +1,94 @@
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
-class agzk
-  implements agzl
+public class agzk
 {
-  private agzn jdField_a_of_type_Agzn;
-  private String jdField_a_of_type_JavaLangString;
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private static volatile agzk a;
   
-  public agzk(String paramString, QQAppInterface paramQQAppInterface)
+  private agzk()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    ahcf.a().a();
   }
   
-  public void a(@Nullable agzn paramagzn)
+  public static agzk a()
   {
-    this.jdField_a_of_type_Agzn = paramagzn;
-  }
-  
-  public boolean isNeedAutoCloseWhenAccountChange()
-  {
-    return true;
-  }
-  
-  public void onClose()
-  {
-    if (this.jdField_a_of_type_Agzn == null) {}
-    QQAppInterface localQQAppInterface;
-    do
+    if (a == null) {}
+    try
     {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    agxq.a(localQQAppInterface, this.jdField_a_of_type_Agzn);
-  }
-  
-  public void onEnter()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null) {
-      return;
+      if (a == null) {
+        a = new agzk();
+      }
+      return a;
     }
-    Intent localIntent;
-    if (BaseActivity.sTopActivity != null)
+    finally {}
+  }
+  
+  public int a(String paramString, int paramInt, String... paramVarArgs)
+  {
+    ahcf.a().a();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 0);
+    localBundle.putString("module", paramString);
+    localBundle.putInt("def_value", paramInt);
+    localBundle.putStringArray("sub_keys", paramVarArgs);
+    paramString = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getConfig", localBundle);
+    int i = paramInt;
+    if (paramString != null)
     {
-      localIntent = new Intent();
-      localIntent.putExtra("public_fragment_window_feature", 1);
-      localIntent.addFlags(268435456);
-    }
-    for (;;)
-    {
-      try
+      i = paramInt;
+      if (paramString.isSuccess())
       {
-        PublicTransFragmentActivity.b(localQQAppInterface.getApp(), localIntent, Class.forName(this.jdField_a_of_type_JavaLangString));
-        agxq.a(localQQAppInterface, this.jdField_a_of_type_Agzn);
-        return;
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        localClassNotFoundException.printStackTrace();
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
+        i = paramInt;
+        if (paramString.data != null) {
+          i = paramString.data.getInt("res_get_value");
+        }
       }
     }
+    return i;
   }
   
-  public void onOverride() {}
+  public String a(String paramString)
+  {
+    ahcf.a().a();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 2);
+    localBundle.putString("module", paramString);
+    paramString = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getConfig", localBundle);
+    if ((paramString != null) && (paramString.isSuccess()) && (paramString.data != null)) {
+      return paramString.data.getString("res_get_value");
+    }
+    return "";
+  }
+  
+  public String a(String paramString1, String paramString2, String... paramVarArgs)
+  {
+    ahcf.a().a();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 1);
+    localBundle.putString("module", paramString1);
+    localBundle.putString("def_value", paramString2);
+    localBundle.putStringArray("sub_keys", paramVarArgs);
+    paramVarArgs = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getConfig", localBundle);
+    paramString1 = paramString2;
+    if (paramVarArgs != null)
+    {
+      paramString1 = paramString2;
+      if (paramVarArgs.isSuccess())
+      {
+        paramString1 = paramString2;
+        if (paramVarArgs.data != null) {
+          paramString1 = paramVarArgs.data.getString("res_get_value");
+        }
+      }
+    }
+    return paramString1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agzk
  * JD-Core Version:    0.7.0.1
  */

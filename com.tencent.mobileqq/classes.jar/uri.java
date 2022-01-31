@@ -1,24 +1,45 @@
-public abstract interface uri
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
+
+public final class uri
+  extends QQUIEventReceiver<uqy, tjr>
 {
-  public abstract void a(String paramString1, String paramString2);
+  public uri(@NonNull uqy paramuqy)
+  {
+    super(paramuqy);
+  }
   
-  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
+  public void a(@NonNull uqy paramuqy, @NonNull tjr paramtjr)
+  {
+    if (uqy.a(paramuqy) == null) {
+      veg.b(this.TAG, "ignore this feature event. %s.", paramtjr.toString());
+    }
+    tef localtef;
+    do
+    {
+      return;
+      while (!paramtjr.hasNext())
+      {
+        do
+        {
+          veg.a(this.TAG, "receive feature event. %s.", paramtjr.toString());
+        } while (paramtjr.a == null);
+        paramtjr = paramtjr.a.iterator();
+      }
+      localtef = (tef)paramtjr.next();
+    } while (!localtef.a.equals(uqy.a(paramuqy)));
+    veg.a(this.TAG, "receive feature data. update visit count from %d to %d.", Long.valueOf(uqy.a(paramuqy).a.mViewTotalTime), Integer.valueOf(localtef.c));
+    uqy.a(paramuqy).a.mViewTotalTime = localtef.c;
+    paramuqy.a();
+  }
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract void b(String paramString1, String paramString2);
-  
-  public abstract void b(String paramString1, String paramString2, Throwable paramThrowable);
-  
-  public abstract void c(String paramString1, String paramString2);
-  
-  public abstract void c(String paramString1, String paramString2, Throwable paramThrowable);
-  
-  public abstract void d(String paramString1, String paramString2);
-  
-  public abstract void d(String paramString1, String paramString2, Throwable paramThrowable);
-  
-  public abstract void e(String paramString1, String paramString2);
+  public Class acceptEventClass()
+  {
+    return tjr.class;
+  }
 }
 
 

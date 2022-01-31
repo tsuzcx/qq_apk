@@ -1,17 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
+import android.graphics.Bitmap;
+import java.util.List;
 
 public class vqt
-  implements View.OnClickListener
 {
-  public vqt(SlideTabViewPager paramSlideTabViewPager) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = (Integer)paramView.getTag();
-    this.a.setTab(paramView.intValue());
-  }
+  public int a;
+  public List<String> a;
+  public List<Bitmap> b;
 }
 
 

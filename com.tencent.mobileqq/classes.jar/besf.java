@@ -1,37 +1,41 @@
-import com.tencent.widget.soload.LoadExtResult;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Messenger;
+import android.os.ResultReceiver;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import java.util.List;
 
-class besf
-  implements besg
+public abstract interface besf
 {
-  besf(bese parambese, int paramInt, besc parambesc, besg parambesg) {}
+  public abstract void init(Context paramContext);
   
-  public void a(int paramInt, LoadExtResult paramLoadExtResult)
-  {
-    paramLoadExtResult = LoadExtResult.mergeExtResult(paramLoadExtResult, bese.a(this.jdField_a_of_type_Bese));
-    bese.a(this.jdField_a_of_type_Bese, paramLoadExtResult);
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Besc.a.size() - 1) {
-        if (this.jdField_a_of_type_Besg != null) {
-          this.jdField_a_of_type_Besg.a(paramInt, paramLoadExtResult);
-        }
-      }
-    }
-    do
-    {
-      return;
-      bese.a(this.jdField_a_of_type_Bese, this.jdField_a_of_type_Besc, this.jdField_a_of_type_Besg, this.jdField_a_of_type_Int + 1);
-      return;
-      if (paramLoadExtResult != null) {
-        paramLoadExtResult.setFailIndex(this.jdField_a_of_type_Int + 1);
-      }
-    } while (this.jdField_a_of_type_Besg == null);
-    this.jdField_a_of_type_Besg.a(paramInt, paramLoadExtResult);
-  }
+  public abstract boolean isMiniProcess(String paramString);
+  
+  public abstract void onAppBackground(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
+  
+  public abstract void onAppForeground(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
+  
+  public abstract void onAppStart(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
+  
+  public abstract void onAppStop(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
+  
+  public abstract void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo);
+  
+  public abstract void preloadMiniApp(Bundle paramBundle);
+  
+  public abstract void registerClientMessenger(String paramString, Messenger paramMessenger);
+  
+  public abstract void registerProcessInfo(List<besg> paramList);
+  
+  public abstract void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver);
+  
+  public abstract void stopMiniApp(MiniAppInfo paramMiniAppInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     besf
  * JD-Core Version:    0.7.0.1
  */

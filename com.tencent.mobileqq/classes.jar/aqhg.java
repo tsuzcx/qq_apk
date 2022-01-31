@@ -1,12 +1,32 @@
-import com.tencent.mobileqq.hotpic.HotPicData;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.fragment.CommonTabFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aqhg
+public class aqhg
+  extends akup
 {
-  public abstract void a(HotPicData paramHotPicData);
+  public aqhg(CommonTabFragment paramCommonTabFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  {
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonTabFragment", 2, "startLocation finish" + System.currentTimeMillis());
+    }
+    if (paramInt != 0)
+    {
+      bcpw.a(this.a.a, 1, ajyc.a(2131702239), 1).a();
+      this.a.e();
+      return;
+    }
+    this.a.a(paramSosoLbsInfo);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqhg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import acis;
-import aeob;
+import acth;
+import aeyx;
 import java.util.List;
 
 public class TipsManager$2
   implements Runnable
 {
-  public TipsManager$2(aeob paramaeob) {}
+  public TipsManager$2(aeyx paramaeyx) {}
   
   public void run()
   {
-    if (aeob.a(this.this$0) != null) {
-      aeob.a(this.this$0).a(aeob.a(this.this$0));
+    if (aeyx.a(this.this$0) != null) {
+      aeyx.a(this.this$0).a(aeyx.a(this.this$0));
     }
-    aeob.a(this.this$0, null);
+    aeyx.a(this.this$0, null);
     if (this.this$0.a != null) {
       this.this$0.a.clear();
     }

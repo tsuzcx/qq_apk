@@ -1656,7 +1656,7 @@ public final class a
     //   0: aconst_null
     //   1: astore_2
     //   2: aload_0
-    //   3: invokestatic 719	baip:a	(Ljava/lang/String;)Z
+    //   3: invokestatic 719	bbjw:a	(Ljava/lang/String;)Z
     //   6: ifeq +7 -> 13
     //   9: aload_2
     //   10: astore_0

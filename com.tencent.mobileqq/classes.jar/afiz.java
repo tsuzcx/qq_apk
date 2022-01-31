@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class afiz
-  implements DialogInterface.OnClickListener
+public abstract interface afiz<T>
 {
-  afiz(afiu paramafiu, int paramInt) {}
+  public abstract int a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    afiu.a(this.jdField_a_of_type_Afiu, this.jdField_a_of_type_Int);
-  }
+  public abstract void a(afjh paramafjh, T paramT, int paramInt);
+  
+  public abstract boolean a(T paramT, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afiz
  * JD-Core Version:    0.7.0.1
  */

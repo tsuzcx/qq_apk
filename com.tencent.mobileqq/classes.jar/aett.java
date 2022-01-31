@@ -1,19 +1,16 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import android.view.View.OnClickListener;
 
-public class aett
-  implements benm
+class aett
+  implements View.OnClickListener
 {
-  public aett(AddContactsView paramAddContactsView) {}
+  aett(aets paramaets) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    AddContactsView.a(this.a, false);
-  }
-  
-  public void b(View paramView)
-  {
-    AddContactsView.a(this.a, true);
+    if (!this.a.N) {
+      aaod.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a());
+    }
   }
 }
 

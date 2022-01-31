@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video;
 
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class VideoView$12
@@ -10,25 +9,11 @@ class VideoView$12
   
   public void run()
   {
-    if ((this.this$0.a() != 4) && (this.this$0.a() != 9) && (this.this$0.a() != 10) && (VideoView.b(this.this$0) != VideoView.d)) {
-      QLog.d("gifvideo.VideoView", 1, "current state is " + this.this$0.a() + ", return");
-    }
-    do
-    {
-      return;
-      if (TextUtils.isEmpty(VideoView.a(this.this$0))) {
-        break;
-      }
-    } while (VideoView.c(this.this$0).equals(VideoView.a(this.this$0)));
-    VideoView.b(this.this$0, VideoView.a(this.this$0));
-    this.this$0.b(VideoView.a(this.this$0));
-    return;
-    if (!TextUtils.isEmpty(VideoView.d(this.this$0)))
-    {
-      VideoView.f(this.this$0);
-      return;
-    }
-    QLog.d("gifvideo.VideoView", 1, "both url and vid is null");
+    QLog.d("gifvideo.VideoView", 1, this.this$0.getTag() + " stopPlay");
+    VideoView.a(this.this$0, "");
+    VideoView.b(this.this$0, "");
+    this.this$0.g();
+    VideoView.e(this.this$0);
   }
 }
 

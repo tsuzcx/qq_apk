@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
 import android.graphics.drawable.Drawable;
-import asrn;
+import atnr;
 import com.tencent.image.URLImageView;
 
 public class GalleryItemVideo$2
   implements Runnable
 {
-  public GalleryItemVideo$2(asrn paramasrn, URLImageView paramURLImageView, Drawable paramDrawable) {}
+  public GalleryItemVideo$2(atnr paramatnr, URLImageView paramURLImageView, Drawable paramDrawable) {}
   
   public void run()
   {

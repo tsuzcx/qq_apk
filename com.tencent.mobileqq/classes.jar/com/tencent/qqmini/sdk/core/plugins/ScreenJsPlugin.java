@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.provider.Settings.System;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import bdcz;
-import bdfz;
-import bdgi;
-import bdnw;
+import begz;
+import beka;
+import beki;
+import besl;
 import org.json.JSONObject;
 
 public class ScreenJsPlugin
@@ -33,7 +33,7 @@ public class ScreenJsPlugin
         if (f2 < 0.0F)
         {
           int i;
-          bdnw.d("ScreenJsPlugin", paramActivity.getMessage(), paramActivity);
+          besl.d("ScreenJsPlugin", paramActivity.getMessage(), paramActivity);
         }
       }
       catch (Exception paramActivity)
@@ -85,39 +85,39 @@ public class ScreenJsPlugin
     paramActivity.setAttributes(localLayoutParams);
   }
   
-  public String getScreenBrightness(bdfz parambdfz)
+  public String getScreenBrightness(beka parambeka)
   {
     try
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("value", getScreenBrightness(this.mActivity));
-      parambdfz.a(localJSONObject);
+      parambeka.a(localJSONObject);
       return "";
     }
-    catch (Throwable parambdfz)
+    catch (Throwable parambeka)
     {
       for (;;)
       {
-        bdnw.d("ScreenJsPlugin", parambdfz.getMessage(), parambdfz);
+        besl.d("ScreenJsPlugin", parambeka.getMessage(), parambeka);
       }
     }
   }
   
-  public void onCreate(bdcz parambdcz)
+  public void onCreate(begz parambegz)
   {
-    super.onCreate(parambdcz);
-    this.mActivity = parambdcz.a();
+    super.onCreate(parambegz);
+    this.mActivity = parambegz.a();
   }
   
-  public String setKeepScreenOn(bdfz parambdfz)
+  public String setKeepScreenOn(beka parambeka)
   {
-    bdgi.a(new ScreenJsPlugin.2(this, parambdfz));
+    beki.a(new ScreenJsPlugin.2(this, parambeka));
     return "";
   }
   
-  public String setScreenBrightness(bdfz parambdfz)
+  public String setScreenBrightness(beka parambeka)
   {
-    bdgi.a(new ScreenJsPlugin.1(this, parambdfz));
+    beki.a(new ScreenJsPlugin.1(this, parambeka));
     return "";
   }
 }

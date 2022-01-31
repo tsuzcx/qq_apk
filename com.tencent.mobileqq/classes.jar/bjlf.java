@@ -1,21 +1,17 @@
-import android.media.MediaCodec.BufferInfo;
-import java.nio.ByteBuffer;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.StaticStickerProviderView;
 
-class bjlf
+public class bjlf
+  extends bjdc
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public ByteBuffer a;
-  public int b;
+  public bjlf(StaticStickerProviderView paramStaticStickerProviderView) {}
   
-  private bjlf()
+  public void d()
   {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
+    if (QLog.isColorLevel()) {
+      QLog.i("StaticStickerProviderView", 2, "paster config get notify");
+    }
+    this.a.g();
   }
 }
 

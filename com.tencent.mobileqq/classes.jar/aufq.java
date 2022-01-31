@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.data.QCallRecord;
-import java.util.Comparator;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 class aufq
-  implements Comparator<QCallRecord>
+  extends AnimatorListenerAdapter
 {
-  aufq(aufp paramaufp) {}
+  aufq(aufh paramaufh, View paramView) {}
   
-  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramQCallRecord1.type == QCallRecord.TYPE_DATE) {
-      return 0;
-    }
-    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+    aufh.a(this.jdField_a_of_type_Aufh).removeView(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

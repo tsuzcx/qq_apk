@@ -1,15 +1,16 @@
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
 
 public class pvy
-  extends aiac
+  implements View.OnClickListener
 {
-  public View a;
-  public CheckBox a;
-  public Object a;
-  public TextView d;
-  public TextView e;
+  public pvy(ComponentContentNoteCard paramComponentContentNoteCard) {}
+  
+  public void onClick(View paramView)
+  {
+    ComponentContentNoteCard.a(this.a);
+  }
 }
 
 

@@ -1,58 +1,129 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class affm
-  implements Comparator<affp>
+class affm
+  extends ajxl
 {
-  public affm(PublicAccountFragment paramPublicAccountFragment) {}
+  affm(affl paramaffl) {}
   
-  public int a(affp paramaffp1, affp paramaffp2)
+  protected void onSearchFriendResult(boolean paramBoolean1, int paramInt1, Object paramObject, int paramInt2, String paramString, boolean paramBoolean2, long paramLong)
   {
-    paramaffp1 = paramaffp1.a.name;
-    paramaffp2 = paramaffp2.a.name;
-    if ((paramaffp1 == null) && (paramaffp2 == null)) {}
-    int j;
-    int k;
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d(affl.a, 2, "onSearchFriendResult  searchType = " + paramInt1 + " isSuccess = " + paramBoolean1);
+    }
+    int i;
+    if (paramInt1 == 87)
     {
-      return 0;
-      if ((paramaffp1 == null) && (paramaffp2 != null)) {
-        return -1;
-      }
-      if ((paramaffp1 != null) && (paramaffp2 == null)) {
-        return 1;
-      }
-      j = paramaffp1.length();
-      k = paramaffp2.length();
-      int m = Math.min(j, k);
-      int i = 0;
-      while (i < m)
+      this.a.b();
+      i = 1;
+    }
+    for (;;)
+    {
+      Object localObject;
+      if (affl.a(this.a) != null)
       {
-        char c1 = paramaffp1.charAt(i);
-        char c2 = paramaffp2.charAt(i);
-        if (c1 != c2)
-        {
-          paramaffp1 = ChnToSpell.a(c1, i);
-          paramaffp2 = ChnToSpell.a(c2, i);
-          if (paramaffp1.jdField_a_of_type_Int == paramaffp2.jdField_a_of_type_Int) {
-            return paramaffp1.jdField_a_of_type_JavaLangString.compareTo(paramaffp2.jdField_a_of_type_JavaLangString);
-          }
-          return paramaffp1.jdField_a_of_type_Int - paramaffp2.jdField_a_of_type_Int;
+        localObject = affl.a(this.a);
+        if (i != 0) {
+          label81:
+          ((affn)localObject).a(paramInt1, paramBoolean1, paramObject, paramInt2, paramString);
         }
-        i += 1;
       }
-      if (j < k) {
-        return -1;
+      else
+      {
+        label95:
+        do
+        {
+          do
+          {
+            return;
+            if (paramInt1 != 88) {
+              break;
+            }
+          } while (paramLong != affl.a(this.a));
+          this.a.b();
+          if (paramBoolean2) {
+            break;
+          }
+        } while (affl.a(this.a) == null);
+        affl.a(this.a).a(affl.a(this.a), paramBoolean1, new ArrayList(), paramInt2, paramString);
+        return;
+        if (!paramBoolean1) {}
       }
-    } while (j <= k);
-    return 1;
+      for (;;)
+      {
+        try
+        {
+          localObject = (ArrayList)paramObject;
+          if ((localObject != null) && (affl.a(this.a) != 80000005) && (((ArrayList)localObject).size() == 1)) {
+            affl.a(this.a, ((afgx)((ArrayList)localObject).get(0)).jdField_b_of_type_Int);
+          }
+          if ((localObject == null) || (((ArrayList)localObject).size() < 1)) {
+            break label582;
+          }
+          localObject = ((ArrayList)localObject).iterator();
+          if (!((Iterator)localObject).hasNext()) {
+            break label570;
+          }
+          afgx localafgx = (afgx)((Iterator)localObject).next();
+          if (localafgx.a != 80000003) {
+            continue;
+          }
+          i = 0;
+          if (i >= localafgx.jdField_b_of_type_JavaUtilList.size()) {
+            break label576;
+          }
+          ((AccountSearchPb.record)localafgx.jdField_b_of_type_JavaUtilList.get(i)).number.set(i + 1);
+          i += 1;
+          continue;
+          if (i == 0) {
+            break label582;
+          }
+          if (affl.a(this.a) != 80000005) {
+            noo.a(affl.a(this.a), "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D96", "0X8005D96", 0, 0, affl.b(this.a) + "", "", this.a.b, "", false);
+          } else {
+            noo.a(affl.a(this.a), "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D94", "0X8005D94", 0, 0, "", "", this.a.b, "", false);
+          }
+        }
+        catch (Exception paramObject)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e(affl.a, 2, "", paramObject);
+          }
+        }
+        if (affl.a(this.a) == null) {
+          break label95;
+        }
+        affl.a(this.a).a(affl.a(this.a), paramBoolean1, new ArrayList(), paramInt2, paramString);
+        return;
+        if (QLog.isColorLevel())
+        {
+          QLog.d(affl.a, 2, "search failed error msg = " + paramString);
+          i = 0;
+          break;
+          this.a.b();
+        }
+        i = 0;
+        break;
+        paramInt1 = affl.a(this.a);
+        break label81;
+        label570:
+        i = 0;
+        continue;
+        label576:
+        i = 1;
+      }
+      label582:
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     affm
  * JD-Core Version:    0.7.0.1
  */

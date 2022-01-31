@@ -1,34 +1,23 @@
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
-public class avvt
+public abstract interface avvt
 {
-  public static final String a = ajjy.a(2131637010);
-  public static final String b = ajjy.a(2131637037);
-  public static final String c = ajjy.a(2131637009);
-  public static final String d = ajjy.a(2131637008);
+  public abstract void a(int paramInt);
   
-  public static String a(long paramLong)
-  {
-    long l = System.currentTimeMillis() / 1000L - paramLong;
-    if ((l >= 0L) && (l < 60L)) {
-      return a;
-    }
-    if ((l >= 60L) && (l < 3600L)) {
-      return l / 60L + b;
-    }
-    if ((l >= 3600L) && (l < 86400L)) {
-      return l / 3600L + c;
-    }
-    if ((l >= 86400L) && (l < 432000L)) {
-      return l / 86400L + d;
-    }
-    return new SimpleDateFormat("yyyy-MM-dd").format(Long.valueOf(paramLong * 1000L));
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(FilterCategoryItem paramFilterCategoryItem);
+  
+  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo);
+  
+  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString);
+  
+  public abstract void b(FilterCategoryItem paramFilterCategoryItem);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avvt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,18 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedFeature;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
-public class tbm
-  extends slu
+class tbm
+  implements View.OnLongClickListener
 {
-  public List<srj> a = new ArrayList();
+  tbm(tbk paramtbk, tbj paramtbj) {}
   
-  public tbm(qqstory_service.RspGetBatchFeedFeature paramRspGetBatchFeedFeature)
+  public boolean onLongClick(View paramView)
   {
-    if ((paramRspGetBatchFeedFeature.feed_feature_list.has()) && (!paramRspGetBatchFeedFeature.feed_feature_list.isEmpty()))
-    {
-      paramRspGetBatchFeedFeature = paramRspGetBatchFeedFeature.feed_feature_list.get().iterator();
-      while (paramRspGetBatchFeedFeature.hasNext())
-      {
-        qqstory_struct.FeedFeature localFeedFeature = (qqstory_struct.FeedFeature)paramRspGetBatchFeedFeature.next();
-        srj localsrj = new srj();
-        localsrj.a(localFeedFeature);
-        this.a.add(localsrj);
-      }
+    int i = this.jdField_a_of_type_Tbj.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Tbk.a.b(this.jdField_a_of_type_Tbj.itemView, i);
     }
+    return true;
   }
 }
 

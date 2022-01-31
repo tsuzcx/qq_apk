@@ -1,14 +1,37 @@
-public abstract interface akol
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class akol
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public ajxn a;
+  public akpc a;
+  public aktg a;
+  public askq a;
+  public Map<String, RecentUser> a;
+  public Map<String, MessageRecord> b = new HashMap();
+  public Map<String, MessageRecord> c = new HashMap();
+  public Map<String, MessageRecord> d = new HashMap();
+  public Map<String, MessageRecord> e = new HashMap();
+  public Map<String, List<MessageRecord>> f = new HashMap();
+  public Map<String, List<MessageRecord>> g = new HashMap();
   
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void j_(int paramInt);
+  public akol(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_Ajxn = ((ajxn)paramQQAppInterface.getManager(51));
+    this.jdField_a_of_type_Askq = ((askq)paramQQAppInterface.getManager(37));
+    this.jdField_a_of_type_Aktg = paramQQAppInterface.a().a();
+    this.jdField_a_of_type_Akpc = paramQQAppInterface.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akol
  * JD-Core Version:    0.7.0.1
  */

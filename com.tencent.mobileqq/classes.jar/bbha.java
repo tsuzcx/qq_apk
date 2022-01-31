@@ -1,25 +1,14 @@
-import android.text.style.CharacterStyle;
+import android.widget.TextView;
 
-public class bbha
+class bbha
 {
-  public int a;
-  public CharacterStyle a;
-  public String a;
-  public int b;
-  public int c;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public bbha(int paramInt1, int paramInt2, int paramInt3, String paramString, CharacterStyle paramCharacterStyle)
-  {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidTextStyleCharacterStyle = paramCharacterStyle;
-  }
+  private bbha(bbgu parambbgu) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbha
  * JD-Core Version:    0.7.0.1
  */

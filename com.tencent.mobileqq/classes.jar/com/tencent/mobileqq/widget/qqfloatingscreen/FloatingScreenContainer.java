@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen;
 
-import aciy;
+import actn;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
@@ -18,16 +18,16 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bbqa;
-import bbqb;
-import bbqc;
-import bbqd;
-import bbqe;
-import bbqf;
-import bbqg;
-import bbqh;
-import bbqi;
-import bbqo;
+import bcsz;
+import bcta;
+import bctb;
+import bctc;
+import bctd;
+import bcte;
+import bctf;
+import bctg;
+import bcth;
+import bctn;
 
 public class FloatingScreenContainer
   extends FrameLayout
@@ -39,9 +39,9 @@ public class FloatingScreenContainer
   private Context jdField_a_of_type_AndroidContentContext;
   private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
-  private bbqg jdField_a_of_type_Bbqg;
-  private bbqh jdField_a_of_type_Bbqh;
-  private bbqi jdField_a_of_type_Bbqi;
+  private bctf jdField_a_of_type_Bctf;
+  private bctg jdField_a_of_type_Bctg;
+  private bcth jdField_a_of_type_Bcth;
   private FloatingScreenParams jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenParams;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
@@ -81,11 +81,6 @@ public class FloatingScreenContainer
     this.jdField_b_of_type_Int = 2002;
   }
   
-  private void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
   private void a(int paramInt1, int paramInt2)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenParams.getCanMove())
@@ -104,6 +99,11 @@ public class FloatingScreenContainer
     }
   }
   
+  private void b(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
   private void b(WindowManager.LayoutParams paramLayoutParams)
   {
     this.jdField_b_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenParams = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenParams.clone();
@@ -116,8 +116,8 @@ public class FloatingScreenContainer
       this.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
     }
     this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewWindowManager, new PropertyValuesHolder[] { localPropertyValuesHolder });
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addUpdateListener(new bbqc(this, paramLayoutParams));
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new bbqd(this));
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addUpdateListener(new bctb(this, paramLayoutParams));
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new bctc(this));
     this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
   
@@ -132,8 +132,8 @@ public class FloatingScreenContainer
       this.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
     }
     this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewWindowManager, new PropertyValuesHolder[] { localPropertyValuesHolder });
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addUpdateListener(new bbqe(this, paramLayoutParams));
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new bbqf(this));
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addUpdateListener(new bctd(this, paramLayoutParams));
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new bcte(this));
     this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
   
@@ -146,7 +146,7 @@ public class FloatingScreenContainer
     {
       i = j;
       if (this.jdField_a_of_type_AndroidContentContext.getResources() != null) {
-        i = aciy.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        i = actn.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       }
     }
     k = 0;
@@ -216,11 +216,11 @@ public class FloatingScreenContainer
           this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
           n = localLayoutParams.x;
           i1 = localLayoutParams.y;
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bbqa(this, i, k, localLayoutParams, n, j, m, i1));
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bbqb(this));
+          this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bcsz(this, i, k, localLayoutParams, n, j, m, i1));
+          this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bcta(this));
           this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-          if (this.jdField_a_of_type_Bbqh != null) {
-            this.jdField_a_of_type_Bbqh.b();
+          if (this.jdField_a_of_type_Bctg != null) {
+            this.jdField_a_of_type_Bctg.b();
           }
           return;
         }
@@ -270,7 +270,7 @@ public class FloatingScreenContainer
     if (Build.VERSION.SDK_INT >= 28) {
       this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.layoutInDisplayCutoutMode = 1;
     }
-    if (!bbqo.a(this.jdField_a_of_type_AndroidContentContext)) {
+    if (!bctn.a(this.jdField_a_of_type_AndroidContentContext)) {
       this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 256;
     }
     return this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
@@ -308,7 +308,7 @@ public class FloatingScreenContainer
       if (Build.VERSION.SDK_INT >= 28) {
         this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.layoutInDisplayCutoutMode = 2;
       }
-      if (!bbqo.a(this.jdField_a_of_type_AndroidContentContext)) {
+      if (!bctn.a(this.jdField_a_of_type_AndroidContentContext)) {
         this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.systemUiVisibility = 5892;
       }
       return this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
@@ -319,7 +319,27 @@ public class FloatingScreenContainer
   
   void a()
   {
-    a(0);
+    b(0);
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (paramFloat != this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenParams.getScreenRatio())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenParams.setScreenRatio(paramFloat);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenParams = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenParams.clone();
+      a(b(this.jdField_b_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenParams));
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenParams.getShapeType())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenParams.setShapeType(paramInt);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenParams = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenParams.clone();
+      a(b(this.jdField_b_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenParams));
+    }
   }
   
   public void a(View paramView, FloatingScreenParams paramFloatingScreenParams)
@@ -388,7 +408,7 @@ public class FloatingScreenContainer
         i = m;
         j = n;
         if (this.jdField_a_of_type_AndroidContentContext.getResources() != null) {
-          n = aciy.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          n = actn.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
         }
       }
       try
@@ -445,7 +465,7 @@ public class FloatingScreenContainer
   public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
     int i = -1;
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131307451);
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131373162);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     localLayoutParams.gravity = 17;
     if (localFrameLayout != null)
@@ -596,7 +616,7 @@ public class FloatingScreenContainer
   
   void b()
   {
-    a(1);
+    b(1);
   }
   
   public boolean b()
@@ -606,7 +626,7 @@ public class FloatingScreenContainer
   
   void c()
   {
-    a(2);
+    b(2);
   }
   
   public boolean c()
@@ -647,8 +667,8 @@ public class FloatingScreenContainer
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (c()) && (this.jdField_a_of_type_Bbqg != null)) {
-      this.jdField_a_of_type_Bbqg.a();
+    if ((paramKeyEvent.getKeyCode() == 4) && (c()) && (this.jdField_a_of_type_Bctf != null)) {
+      this.jdField_a_of_type_Bctf.a();
     }
     return super.dispatchKeyEvent(paramKeyEvent);
   }
@@ -735,19 +755,19 @@ public class FloatingScreenContainer
     }
   }
   
-  public void setOnBackPressListener(bbqg parambbqg)
+  public void setOnBackPressListener(bctf parambctf)
   {
-    this.jdField_a_of_type_Bbqg = parambbqg;
+    this.jdField_a_of_type_Bctf = parambctf;
   }
   
-  public void setOnDragListener(bbqh parambbqh)
+  public void setOnDragListener(bctg parambctg)
   {
-    this.jdField_a_of_type_Bbqh = parambbqh;
+    this.jdField_a_of_type_Bctg = parambctg;
   }
   
-  public void setOnScaleAnimListener(bbqi parambbqi)
+  public void setOnScaleAnimListener(bcth parambcth)
   {
-    this.jdField_a_of_type_Bbqi = parambbqi;
+    this.jdField_a_of_type_Bcth = parambcth;
   }
 }
 

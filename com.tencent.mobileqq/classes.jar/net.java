@@ -1,19 +1,6 @@
-import android.os.Bundle;
-
-public class net
-  implements ajfe
+public abstract interface net
 {
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramObject != null)
-    {
-      a(paramBoolean, (Bundle)paramObject);
-      return;
-    }
-    a(paramBoolean, null);
-  }
+  public abstract void a();
 }
 
 

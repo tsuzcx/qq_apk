@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app;
 
-import ajnl;
+import akbv;
 import android.os.Parcel;
 import android.util.Xml;
-import atiu;
+import augt;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
 import java.io.Serializable;
@@ -14,7 +14,7 @@ public class NewUpgradeConfig
 {
   private static NewUpgradeConfig jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig;
   private static String jdField_a_of_type_JavaLangString = "com.tencent.mobileqq.app.NewUpgradeConfig";
-  public ajnl dialog;
+  public akbv dialog;
   
   private NewUpgradeConfig() {}
   
@@ -79,11 +79,11 @@ public class NewUpgradeConfig
         paramString.printStackTrace();
         return;
       }
-      jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.jdField_a_of_type_Long = atiu.a(localXmlPullParser.nextText());
+      jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.jdField_a_of_type_Long = augt.a(localXmlPullParser.nextText());
       continue;
       label212:
       if (paramString.equalsIgnoreCase("showTime")) {
-        jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.jdField_b_of_type_Long = atiu.a(localXmlPullParser.nextText());
+        jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.jdField_b_of_type_Long = augt.a(localXmlPullParser.nextText());
       } else if (paramString.equalsIgnoreCase("title")) {
         jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.jdField_b_of_type_JavaLangString = localXmlPullParser.nextText();
       } else if (paramString.equalsIgnoreCase("content")) {
@@ -110,7 +110,7 @@ public class NewUpgradeConfig
   
   public void prepareDialog()
   {
-    this.dialog = new ajnl();
+    this.dialog = new akbv();
   }
 }
 

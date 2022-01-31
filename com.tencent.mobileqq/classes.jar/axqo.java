@@ -1,71 +1,160 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.TicketManager;
-import mqq.observer.SSOAccountObserver;
+import com.tencent.av.app.VideoAppInterface;
 
-class axqo
-  extends axql
+public class axqo
 {
-  private SSOAccountObserver a;
-  private AtomicBoolean c = new AtomicBoolean(false);
+  static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  static String jdField_a_of_type_JavaLangString;
+  static boolean jdField_a_of_type_Boolean;
+  public static int b;
+  private static long jdField_b_of_type_Long;
+  private static String jdField_b_of_type_JavaLangString = "MultiVideoRichActionReportCollection";
+  public static int c;
+  private static long jdField_c_of_type_Long;
+  private static String jdField_c_of_type_JavaLangString = "";
+  public static int d;
+  private static long jdField_d_of_type_Long;
+  private static String jdField_d_of_type_JavaLangString = "";
+  private static int jdField_e_of_type_Int;
+  private static String jdField_e_of_type_JavaLangString = "";
+  private static String f = "";
   
-  axqo(axqk paramaxqk)
+  static
   {
-    super(paramaxqk);
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new axqp(this);
-    this.jdField_a_of_type_JavaLangString = "GetSKeyStep";
+    jdField_a_of_type_JavaLangString = "";
+    jdField_b_of_type_Int = 1;
+    jdField_c_of_type_Int = 2;
+    jdField_d_of_type_Int = 3;
   }
   
-  protected boolean a()
+  public static void a(int paramInt, String paramString)
   {
-    return (this.c.get()) && (!TextUtils.isEmpty(axqk.f(this.jdField_b_of_type_Axqk)));
-  }
-  
-  protected void d()
-  {
-    String str = this.jdField_b_of_type_Axqk.a.getCurrentAccountUin();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetSKeyStep|process|account=" + str + ",refresh=" + axqk.a(this.jdField_b_of_type_Axqk));
+    lcl.a(jdField_b_of_type_JavaLangString, String.format("onConnected sessionType = %s, roomid = %s", new Object[] { Integer.valueOf(paramInt), paramString }));
+    jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_JavaLangString = paramString;
+    jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_JavaLangString = paramString;
+    if ((jdField_a_of_type_Int == 4) || (jdField_a_of_type_Int == 3)) {
+      jdField_e_of_type_Int = jdField_d_of_type_Int;
     }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      f();
+    while ((jdField_a_of_type_Int != 2) && (jdField_a_of_type_Int != 1)) {
+      return;
+    }
+    jdField_e_of_type_Int = jdField_c_of_type_Int;
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface)
+  {
+    int i = 0;
+    if (paramVideoAppInterface != null) {
+      i = paramVideoAppInterface.b("BEAUTY_SKIN");
+    }
+    if (i > 0) {
+      d(i + "");
+    }
+    if (jdField_e_of_type_Int == jdField_c_of_type_Int)
+    {
+      if (jdField_a_of_type_Long == 0L) {
+        a("0X8007F32");
+      }
+      if (jdField_a_of_type_Long == 0L) {
+        a("0X8007F34");
+      }
+      if (jdField_c_of_type_Long == 0L) {
+        a("0X8007F36");
+      }
+      if (jdField_d_of_type_Long == 0L) {
+        a("0X8007E69");
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (jdField_e_of_type_Int != jdField_d_of_type_Int);
+      if (jdField_a_of_type_Long == 0L) {
+        a("0X8007F38");
+      }
+      if (jdField_b_of_type_Long == 0L) {
+        a("0X8007F3A");
+      }
+      if (jdField_c_of_type_Long == 0L) {
+        a("0X8007F3C");
+      }
+    } while (jdField_d_of_type_Long != 0L);
+    a("0X8007E65");
+  }
+  
+  public static void a(String paramString)
+  {
+    lcl.a(jdField_b_of_type_JavaLangString, String.format("reportClickEvent key = %s, type = %s, roomid = %s", new Object[] { paramString, "", jdField_a_of_type_JavaLangString }));
+    axqw.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", jdField_a_of_type_JavaLangString, "");
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    lcl.a(jdField_b_of_type_JavaLangString, String.format("reportClickEvent id = %s, type = %s, roomid = %s", new Object[] { paramString1, paramString2, jdField_a_of_type_JavaLangString }));
+    axqw.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, "", "", jdField_a_of_type_JavaLangString, paramString2);
+  }
+  
+  public static void b(String paramString)
+  {
+    jdField_c_of_type_JavaLangString = paramString;
+    jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public static void c(String paramString)
+  {
+    if (jdField_e_of_type_Int == jdField_c_of_type_Int) {
+      a("0X8007F33", paramString);
     }
     for (;;)
     {
+      jdField_d_of_type_JavaLangString = paramString;
+      jdField_b_of_type_Long = System.currentTimeMillis();
       return;
-      if (!this.jdField_b_of_type_Axqk.e())
-      {
-        QLog.d("Q.share.ForwardSdkShareProcessor", 1, "illegal app = " + this.jdField_b_of_type_Axqk.a);
-        this.jdField_b_of_type_Axqk.b(9366, "illegal app");
-        c();
-        return;
+      if (jdField_e_of_type_Int == jdField_d_of_type_Int) {
+        a("0X8007F39", paramString);
       }
-      int i;
-      if ((!axqk.a(this.jdField_b_of_type_Axqk)) && (!bcgd.a(str)))
-      {
-        str = ((TicketManager)this.jdField_b_of_type_Axqk.a.getManager(2)).getSkey(str);
-        if (!TextUtils.isEmpty(str))
-        {
-          i = 0;
-          axqk.d(this.jdField_b_of_type_Axqk, str);
-          this.c.set(true);
-          b();
-        }
+    }
+  }
+  
+  public static void d(String paramString)
+  {
+    if (jdField_e_of_type_Int == jdField_c_of_type_Int) {
+      a("0X8007F35", paramString);
+    }
+    for (;;)
+    {
+      jdField_e_of_type_JavaLangString = paramString;
+      jdField_c_of_type_Long = System.currentTimeMillis();
+      return;
+      if (jdField_e_of_type_Int == jdField_d_of_type_Int) {
+        a("0X8007F3B", paramString);
       }
-      while (i != 0)
-      {
-        this.jdField_b_of_type_Axqk.a.ssoGetTicketNoPasswd(this.jdField_b_of_type_Axqk.a.getCurrentAccountUin(), 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
-        return;
-        i = 1;
+    }
+  }
+  
+  public static void e(String paramString)
+  {
+    if (jdField_e_of_type_Int == jdField_c_of_type_Int) {
+      a("0X8007E6A", paramString);
+    }
+    for (;;)
+    {
+      f = paramString;
+      jdField_d_of_type_Long = System.currentTimeMillis();
+      return;
+      if (jdField_e_of_type_Int == jdField_d_of_type_Int) {
+        a("0X8007E66", paramString);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axqo
  * JD-Core Version:    0.7.0.1
  */

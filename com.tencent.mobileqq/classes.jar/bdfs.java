@@ -1,43 +1,65 @@
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener.1;
+import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener.2;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.lang.ref.WeakReference;
+
 public class bdfs
-  extends bdfz
-  implements bdft<String>
+  extends arlv
 {
-  public int a;
-  private bdcy b;
+  public long b;
+  String jdField_b_of_type_JavaLangString;
+  WeakReference<WebView> jdField_b_of_type_JavaLangRefWeakReference;
   
-  public bdfs()
+  public bdfs(WebView paramWebView, long paramLong, String paramString)
   {
-    this.jdField_a_of_type_Int = 2;
+    super(paramWebView, paramLong, paramString);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramWebView);
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  public static bdfs a(bdfz parambdfz, int paramInt)
+  public void a(String paramString, Object paramObject)
   {
-    bdfs localbdfs = new bdfs();
-    localbdfs.jdField_a_of_type_JavaLangString = parambdfz.jdField_a_of_type_JavaLangString;
-    localbdfs.jdField_b_of_type_JavaLangString = parambdfz.jdField_b_of_type_JavaLangString;
-    localbdfs.jdField_a_of_type_Bdcy = parambdfz.jdField_a_of_type_Bdcy;
-    localbdfs.jdField_b_of_type_Int = parambdfz.jdField_b_of_type_Int;
-    localbdfs.jdField_a_of_type_Int = paramInt;
-    return localbdfs;
-  }
-  
-  public String a(bdcw parambdcw)
-  {
-    bdnw.a("RuntimeMessage", "sendNativeViewEvent " + "eventName = " + this.jdField_a_of_type_JavaLangString + " " + "jsService = " + this.jdField_a_of_type_Bdcy + " " + "callbackId = " + this.jdField_b_of_type_Int + " " + "target = " + this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_Bdcy = parambdcw.a();
-    return parambdcw.a().a(this);
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt)
-  {
-    if (this.jdField_b_of_type_Bdcy != null) {
-      this.jdField_b_of_type_Bdcy.a(paramString1, paramString2, paramInt);
+    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    if ((localWebView == null) || (paramObject == null)) {
+      return;
     }
+    String str = "'undefined'";
+    if ((paramObject instanceof String))
+    {
+      paramObject = ((String)paramObject).replace("\\", "\\\\").replace("'", "\\'");
+      str = "'" + paramObject + "'";
+    }
+    for (;;)
+    {
+      new Handler(Looper.getMainLooper()).post(new OpenJsBridge.OpenJsBridgeListener.1(this, paramString, str, localWebView));
+      return;
+      if (((paramObject instanceof Number)) || ((paramObject instanceof Long)) || ((paramObject instanceof Integer)) || ((paramObject instanceof Double)) || ((paramObject instanceof Float))) {
+        str = paramObject.toString();
+      } else if ((paramObject instanceof Boolean)) {
+        str = paramObject.toString();
+      }
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("OpenJsBridge", 4, "onNoMatchMethod");
+    }
+    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    if (localWebView == null) {
+      return;
+    }
+    new Handler(Looper.getMainLooper()).post(new OpenJsBridge.OpenJsBridgeListener.2(this, paramString, localWebView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdfs
  * JD-Core Version:    0.7.0.1
  */

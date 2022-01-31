@@ -1,44 +1,55 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bcqc
-  implements begw
 {
-  public bcqc(QidianProfileCardActivity paramQidianProfileCardActivity, begr parambegr, URLDrawable paramURLDrawable, String paramString) {}
+  Context jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+  private Handler jdField_a_of_type_AndroidOsHandler = new bcqd(this, Looper.getMainLooper());
+  Toast jdField_a_of_type_AndroidWidgetToast = null;
   
-  public void OnClick(View paramView, int paramInt)
+  public bcqc(Context paramContext) {}
+  
+  public void a()
   {
-    if (paramView == null) {
-      this.jdField_a_of_type_Begr.dismiss();
+    if (this.jdField_a_of_type_AndroidWidgetToast != null) {
+      this.jdField_a_of_type_AndroidWidgetToast.cancel();
     }
-    do
-    {
-      return;
-      paramView = this.jdField_a_of_type_Begr.a(paramInt);
-      if (TextUtils.isEmpty(paramView))
-      {
-        this.jdField_a_of_type_Begr.dismiss();
-        return;
-      }
-      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131627742)))
-      {
-        QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-        return;
-      }
-      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131627752)))
-      {
-        QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-        return;
-      }
-    } while (!paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131632505)));
-    QidianProfileCardActivity.c(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    bcqe localbcqe = new bcqe(null);
+    localbcqe.jdField_a_of_type_Int = paramInt4;
+    localbcqe.b = paramInt1;
+    localbcqe.c = paramInt3;
+    localbcqe.d = paramInt2;
+    localMessage.obj = localbcqe;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    bcqe localbcqe = new bcqe(null);
+    localbcqe.jdField_a_of_type_Int = paramInt3;
+    localbcqe.jdField_a_of_type_JavaLangString = paramString;
+    localbcqe.c = paramInt2;
+    localbcqe.d = paramInt1;
+    localMessage.obj = localbcqe;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcqc
  * JD-Core Version:    0.7.0.1
  */

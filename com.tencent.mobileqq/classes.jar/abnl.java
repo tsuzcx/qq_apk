@@ -1,60 +1,25 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.Window;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
 
 public class abnl
-  extends Dialog
+  extends ajxl
 {
-  public abnl(Context paramContext)
-  {
-    super(paramContext, 2131690041);
-    setContentView(2131496243);
-    getWindow().setFlags(1024, 2048);
-  }
+  public abnl(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public void a(String paramString)
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
   {
-    ((TextView)findViewById(2131311534)).setText(paramString);
-  }
-  
-  public void dismiss()
-  {
-    try
-    {
-      super.dismiss();
+    if (this.a.isFinishing()) {
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("WebLog_QQBrowserActivity", 2, localException, new Object[0]);
+    MoveToGroupActivity.a(this.a);
+    if (paramString == null) {
+      bcpw.a(this.a, this.a.getString(2131694323), 0).b(this.a.getTitleBarHeight());
     }
-  }
-  
-  public void setTitle(int paramInt)
-  {
-    if (paramInt == 0) {}
-    for (String str = null;; str = getContext().getResources().getString(paramInt))
+    for (;;)
     {
-      a(str);
+      MoveToGroupActivity.b(this.a);
+      this.a.removeObserver(MoveToGroupActivity.a(this.a));
       return;
-    }
-  }
-  
-  public void show()
-  {
-    try
-    {
-      super.show();
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("WebLog_QQBrowserActivity", 2, localException, new Object[0]);
+      bcpw.a(this.a, 2, this.a.getString(2131694325), 0).b(this.a.getTitleBarHeight());
     }
   }
 }

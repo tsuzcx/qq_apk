@@ -737,6 +737,7 @@ public class URLDrawable
   {
     int i;
     int j;
+    Rect localRect;
     if (this.mCurrDrawable != null)
     {
       if (Build.VERSION.SDK_INT >= 11) {
@@ -751,11 +752,14 @@ public class URLDrawable
         }
         float f = (float)(l - this.mFadeInAnimationStartTime) / 600.0F;
         if ((f < 0.0F) || (f > 1.0F)) {
-          break label396;
+          break label438;
         }
         j = Math.min((int)((1.0F - (1.0F - f) * (1.0F - f)) * 255.0F), 255);
-        Rect localRect = getBounds();
-        paramCanvas.saveLayerAlpha(localRect.left, localRect.top, localRect.width(), localRect.height(), j, 20);
+        localRect = getBounds();
+        if (Build.VERSION.SDK_INT < 21) {
+          break label402;
+        }
+        paramCanvas.saveLayerAlpha(localRect.left, localRect.top, localRect.width(), localRect.height(), j);
         invalidateSelf();
       }
     }
@@ -789,14 +793,18 @@ public class URLDrawable
           this.individualPauseCount += 1;
         }
         if (((sPause) && (!this.mDrawableContainerState.mIgnorePause)) || ((this.individualPause) && ((!this.individualPause) || (this.individualPauseCount != 1)))) {
-          break;
+          break label446;
         }
         startDownload();
       }
       return;
-      label396:
+      label402:
+      paramCanvas.saveLayerAlpha(localRect.left, localRect.top, localRect.width(), localRect.height(), j, 31);
+      break;
+      label438:
       this.mFadeInAnimationStarted = false;
     }
+    label446:
     if (QLog.isDevelopLevel()) {
       QLog.d("URLDrawable_pause", 4, "addToPending:" + getURL());
     }

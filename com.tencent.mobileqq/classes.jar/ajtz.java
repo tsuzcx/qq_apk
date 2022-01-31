@@ -1,27 +1,19 @@
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import java.util.Comparator;
 
-public class ajtz
+class ajtz
+  implements Comparator<BaseAddress>
 {
-  public int a;
-  public String a;
+  ajtz(ajty paramajty) {}
   
-  public ajtz(TroopManager paramTroopManager) {}
-  
-  public boolean equals(Object paramObject)
+  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
   {
-    if ((paramObject instanceof ajtz))
-    {
-      paramObject = (ajtz)paramObject;
-      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))) {
-        return true;
-      }
+    int j = paramBaseAddress1.pinyinFirst.compareTo(paramBaseAddress2.pinyinFirst);
+    int i = j;
+    if (j == 0) {
+      i = paramBaseAddress1.pinyinAll.compareTo(paramBaseAddress2.pinyinAll);
     }
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.hashCode();
+    return i;
   }
 }
 

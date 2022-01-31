@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.arithmetic.ui;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -16,19 +16,19 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import ayva;
-import ayvb;
-import ayvd;
-import ayvf;
-import ayvh;
-import ayvi;
-import ayvj;
-import ayvn;
-import ayvo;
-import bacm;
-import bbmy;
-import begr;
-import behe;
+import azvq;
+import azvr;
+import azvt;
+import azvv;
+import azvx;
+import azvy;
+import azvz;
+import azwd;
+import azwe;
+import bbdr;
+import bcpw;
+import bfol;
+import bfoy;
 import com.tencent.image.RegionDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
@@ -43,21 +43,21 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import org.json.JSONException;
 import org.json.JSONObject;
-import urk;
-import vkw;
+import veg;
+import vxs;
 
 public class CheckArithHWResultFragment
   extends PublicBaseFragment
-  implements View.OnClickListener, ayvj, URLDrawable.URLDrawableListener
+  implements View.OnClickListener, azvz, URLDrawable.URLDrawableListener
 {
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ayva jdField_a_of_type_Ayva;
-  private begr jdField_a_of_type_Begr;
+  private azvq jdField_a_of_type_Azvq;
+  private bfol jdField_a_of_type_Bfol;
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   private ArithResultView jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView;
-  Stream<ayvh> jdField_a_of_type_ComTribeAsyncReactiveStream;
+  Stream<azvx> jdField_a_of_type_ComTribeAsyncReactiveStream;
   private String jdField_a_of_type_JavaLangString;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -84,7 +84,7 @@ public class CheckArithHWResultFragment
     localIntent.putExtra("troopUin", paramString5);
     localIntent.putExtra("hwId", paramString4);
     localIntent.putExtra("targetUin", paramString6);
-    urk.a("QQ.Troop.homework.CheckArithHWResultFragment", "getOpenIntent %s", localIntent.toString());
+    veg.a("QQ.Troop.homework.CheckArithHWResultFragment", "getOpenIntent %s", localIntent.toString());
     localIntent.setClass(paramActivity, PublicFragmentActivity.class);
     localIntent.putExtra("public_fragment_class", CheckArithHWResultFragment.class.getName());
     return localIntent;
@@ -94,7 +94,7 @@ public class CheckArithHWResultFragment
   {
     String str = paramIntent.getStringExtra("imgUrl");
     paramIntent = paramIntent.getStringExtra("ytData");
-    urk.d("QQ.Troop.homework.CheckArithHWResultFragment", "handleWebCallBack:" + str);
+    veg.d("QQ.Troop.homework.CheckArithHWResultFragment", "handleWebCallBack:" + str);
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -105,7 +105,7 @@ public class CheckArithHWResultFragment
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
-      urk.e("QQ.Troop.homework.CheckArithHWResultFragment", "handleWebCallBack--json put data failed imgUrl=:" + str + ",ytDate=" + paramIntent);
+      veg.e("QQ.Troop.homework.CheckArithHWResultFragment", "handleWebCallBack--json put data failed imgUrl=:" + str + ",ytDate=" + paramIntent);
     }
     return localJSONObject;
   }
@@ -113,14 +113,14 @@ public class CheckArithHWResultFragment
   public static void a(String paramString)
   {
     if ((paramString != null) && (paramString.equals("null"))) {
-      vkw.a("param is n-u-l-l,plz dont do this...", new Object[0]);
+      vxs.a("param is n-u-l-l,plz dont do this...", new Object[0]);
     }
-    vkw.a(paramString);
+    vxs.a(paramString);
   }
   
   private void a(String paramString, Bitmap paramBitmap)
   {
-    if (!this.jdField_a_of_type_Ayva.jdField_a_of_type_Boolean)
+    if (!this.jdField_a_of_type_Azvq.jdField_a_of_type_Boolean)
     {
       a(null, null);
       return;
@@ -128,24 +128,24 @@ public class CheckArithHWResultFragment
     if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
       this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
     }
-    ayvf localayvf = new ayvf();
-    localayvf.jdField_a_of_type_Long = Long.parseLong(this.e);
-    localayvf.jdField_b_of_type_JavaLangString = paramString;
-    localayvf.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    azvv localazvv = new azvv();
+    localazvv.jdField_a_of_type_Long = Long.parseLong(this.e);
+    localazvv.jdField_b_of_type_JavaLangString = paramString;
+    localazvv.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
     try
     {
-      localayvf.jdField_b_of_type_Long = Long.parseLong(this.jdField_b_of_type_JavaLangString);
-      localayvf.c = Long.parseLong(this.f);
+      localazvv.jdField_b_of_type_Long = Long.parseLong(this.jdField_b_of_type_JavaLangString);
+      localazvv.c = Long.parseLong(this.f);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(paramBitmap).map(new ThreadOffFunction("QQ.Troop.homework.CheckArithHWResultFragment", 2)).map(new ayvi(this.e, this.jdField_a_of_type_Ayva, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView.jdField_a_of_type_Int)).map(new ayvd(localayvf)).map(new UIThreadOffFunction(null));
-      this.jdField_a_of_type_ComTribeAsyncReactiveStream.subscribe(new ayvo(this));
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(paramBitmap).map(new ThreadOffFunction("QQ.Troop.homework.CheckArithHWResultFragment", 2)).map(new azvy(this.e, this.jdField_a_of_type_Azvq, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView.jdField_a_of_type_Int)).map(new azvt(localazvv)).map(new UIThreadOffFunction(null));
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream.subscribe(new azwe(this));
       return;
     }
     catch (NumberFormatException paramString)
     {
       for (;;)
       {
-        vkw.a("requestSendHomeworkResult hwid=" + this.jdField_b_of_type_JavaLangString + "uin=" + this.f + " is illegal", new Object[0]);
+        vxs.a("requestSendHomeworkResult hwid=" + this.jdField_b_of_type_JavaLangString + "uin=" + this.f + " is illegal", new Object[0]);
       }
     }
   }
@@ -163,13 +163,13 @@ public class CheckArithHWResultFragment
     getActivity().finish();
   }
   
-  public void a(ayvb paramayvb)
+  public void a(azvr paramazvr)
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramayvb.jdField_a_of_type_JavaLangString.replace("*", "x").replace("/", "÷").replace("frac", "").replace(",", "/"));
-    int i = (int)(paramayvb.b - paramayvb.d * 0.05F);
-    int j = (int)(paramayvb.c - paramayvb.e * 0.05F);
-    int k = (int)(paramayvb.b + paramayvb.d * 1.05F);
-    int m = (int)(paramayvb.c + paramayvb.e * 1.05F);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramazvr.jdField_a_of_type_JavaLangString.replace("*", "x").replace("/", "÷").replace("frac", "").replace(",", "/"));
+    int i = (int)(paramazvr.b - paramazvr.d * 0.05F);
+    int j = (int)(paramazvr.c - paramazvr.e * 0.05F);
+    int k = (int)(paramazvr.b + paramazvr.d * 1.05F);
+    int m = (int)(paramazvr.c + paramazvr.e * 1.05F);
     if (i > 0)
     {
       if (j <= 0) {
@@ -190,8 +190,8 @@ public class CheckArithHWResultFragment
     {
       Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView.a(), i, j, k, m);
       this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-      this.jdField_a_of_type_Begr.a = paramayvb;
-      this.jdField_a_of_type_Begr.show();
+      this.jdField_a_of_type_Bfol.a = paramazvr;
+      this.jdField_a_of_type_Bfol.show();
       return;
       i = 0;
       break;
@@ -220,7 +220,7 @@ public class CheckArithHWResultFragment
   {
     try
     {
-      a(this.jdField_a_of_type_Ayva.a(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView.a());
+      a(this.jdField_a_of_type_Azvq.a(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView.a());
       return true;
     }
     catch (JSONException localJSONException)
@@ -228,7 +228,7 @@ public class CheckArithHWResultFragment
       for (;;)
       {
         localJSONException.printStackTrace();
-        vkw.a("QQ.Troop.homework.CheckArithHWResultFragment//onBackEvent toJSON error:" + localJSONException, new Object[0]);
+        vxs.a("QQ.Troop.homework.CheckArithHWResultFragment//onBackEvent toJSON error:" + localJSONException, new Object[0]);
       }
     }
   }
@@ -236,23 +236,23 @@ public class CheckArithHWResultFragment
   public void onClick(View paramView)
   {
     if (paramView == this.jdField_a_of_type_AndroidWidgetImageView) {
-      this.jdField_a_of_type_Begr.dismiss();
+      this.jdField_a_of_type_Bfol.dismiss();
     }
     while (paramView != this.jdField_c_of_type_AndroidWidgetTextView) {
       return;
     }
-    ayvb localayvb = (ayvb)this.jdField_a_of_type_Begr.a;
-    this.jdField_a_of_type_Ayva.jdField_a_of_type_Boolean = true;
-    paramView = this.jdField_a_of_type_Ayva;
+    azvr localazvr = (azvr)this.jdField_a_of_type_Bfol.a;
+    this.jdField_a_of_type_Azvq.jdField_a_of_type_Boolean = true;
+    paramView = this.jdField_a_of_type_Azvq;
     paramView.jdField_a_of_type_Int -= 1;
-    localayvb.jdField_a_of_type_Boolean = true;
-    paramView = ajjy.a(2131635976);
-    if (this.jdField_a_of_type_Ayva.jdField_a_of_type_Int > 0) {
-      paramView = this.jdField_a_of_type_Ayva.jdField_a_of_type_Int + ajjy.a(2131635973);
+    localazvr.jdField_a_of_type_Boolean = true;
+    paramView = ajyc.a(2131701760);
+    if (this.jdField_a_of_type_Azvq.jdField_a_of_type_Int > 0) {
+      paramView = this.jdField_a_of_type_Azvq.jdField_a_of_type_Int + ajyc.a(2131701757);
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
-    this.jdField_a_of_type_Begr.dismiss();
-    urk.d("QQ.Troop.homework.CheckArithHWResultFragment", "teacher correct the item:" + localayvb.toString());
+    this.jdField_a_of_type_Bfol.dismiss();
+    veg.d("QQ.Troop.homework.CheckArithHWResultFragment", "teacher correct the item:" + localazvr.toString());
   }
   
   public void onCreate(Bundle paramBundle)
@@ -266,7 +266,7 @@ public class CheckArithHWResultFragment
     }
     for (;;)
     {
-      vkw.a(bool, "you must use the function:CheckArithHWResultFragment.open() to open this page!!!! :" + i);
+      vxs.a(bool, "you must use the function:CheckArithHWResultFragment.open() to open this page!!!! :" + i);
       this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("url");
       this.jdField_c_of_type_JavaLangString = paramBundle.getStringExtra("json");
       this.d = paramBundle.getStringExtra("cb");
@@ -275,8 +275,8 @@ public class CheckArithHWResultFragment
       this.f = paramBundle.getStringExtra("targetUin");
       try
       {
-        this.jdField_a_of_type_Ayva = ayva.a(this.jdField_c_of_type_JavaLangString);
-        urk.d("QQ.Troop.homework.CheckArithHWResultFragment", "onCreate");
+        this.jdField_a_of_type_Azvq = azvq.a(this.jdField_c_of_type_JavaLangString);
+        veg.d("QQ.Troop.homework.CheckArithHWResultFragment", "onCreate");
         return;
         bool = false;
       }
@@ -285,8 +285,8 @@ public class CheckArithHWResultFragment
         for (;;)
         {
           paramBundle.printStackTrace();
-          urk.e("QQ.Troop.homework.CheckArithHWResultFragment", "json is illegal!! " + this.jdField_c_of_type_JavaLangString);
-          bbmy.a(getActivity(), 1, ajjy.a(2131635975), 0).a();
+          veg.e("QQ.Troop.homework.CheckArithHWResultFragment", "json is illegal!! " + this.jdField_c_of_type_JavaLangString);
+          bcpw.a(getActivity(), 1, ajyc.a(2131701759), 0).a();
         }
       }
     }
@@ -294,14 +294,14 @@ public class CheckArithHWResultFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramBundle = paramLayoutInflater.inflate(2131495550, paramViewGroup, false);
-    this.jdField_a_of_type_Begr = ((begr)behe.a(getActivity(), null));
-    paramLayoutInflater = paramLayoutInflater.inflate(2131495551, paramViewGroup, false);
-    this.jdField_a_of_type_Begr.a(paramLayoutInflater);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131307419));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131307422));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131307421));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131307420));
+    paramBundle = paramLayoutInflater.inflate(2131561139, paramViewGroup, false);
+    this.jdField_a_of_type_Bfol = ((bfol)bfoy.a(getActivity(), null));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561140, paramViewGroup, false);
+    this.jdField_a_of_type_Bfol.a(paramLayoutInflater);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131373130));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131373133));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131373132));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131373131));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
     paramLayoutInflater = getActivity();
@@ -311,16 +311,16 @@ public class CheckArithHWResultFragment
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView = ((ArithResultView)paramBundle.findViewById(2131307426));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramBundle.findViewById(2131307424));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131307428));
-      paramLayoutInflater = ajjy.a(2131635977);
-      if (this.jdField_a_of_type_Ayva.jdField_a_of_type_Int > 0)
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView = ((ArithResultView)paramBundle.findViewById(2131373137));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramBundle.findViewById(2131373135));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131373139));
+      paramLayoutInflater = ajyc.a(2131701761);
+      if (this.jdField_a_of_type_Azvq.jdField_a_of_type_Int > 0)
       {
-        paramLayoutInflater = this.jdField_a_of_type_Ayva.jdField_a_of_type_Int + ajjy.a(2131635972);
+        paramLayoutInflater = this.jdField_a_of_type_Azvq.jdField_a_of_type_Int + ajyc.a(2131701756);
         label239:
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramLayoutInflater);
-        ((TextView)paramBundle.findViewById(2131307427)).setOnClickListener(new ayvn(this));
+        ((TextView)paramBundle.findViewById(2131373138)).setOnClickListener(new azwd(this));
         paramLayoutInflater = URLDrawable.URLDrawableOptions.obtain();
         paramLayoutInflater.mRequestWidth = 0;
         paramLayoutInflater.mRequestHeight = 0;
@@ -338,10 +338,10 @@ public class CheckArithHWResultFragment
           paramLayoutInflater.mSystemBarComp.setStatusBarColor(0);
           paramLayoutInflater.mSystemBarComp.setStatusColor(0);
           continue;
-          if (this.jdField_a_of_type_Ayva.a() != 0) {
+          if (this.jdField_a_of_type_Azvq.a() != 0) {
             break label239;
           }
-          paramLayoutInflater = ajjy.a(2131635974);
+          paramLayoutInflater = ajyc.a(2131701758);
           break label239;
         }
         else if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 2) || (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 3))
@@ -353,8 +353,8 @@ public class CheckArithHWResultFragment
       catch (MalformedURLException paramLayoutInflater)
       {
         paramLayoutInflater.printStackTrace();
-        urk.e("QQ.Troop.homework.CheckArithHWResultFragment", "url is illegal!! " + this.jdField_a_of_type_JavaLangString);
-        bbmy.a(getActivity(), 1, ajjy.a(2131635971), 0).a();
+        veg.e("QQ.Troop.homework.CheckArithHWResultFragment", "url is illegal!! " + this.jdField_a_of_type_JavaLangString);
+        bcpw.a(getActivity(), 1, ajyc.a(2131701755), 0).a();
         return paramBundle;
       }
     }
@@ -368,7 +368,7 @@ public class CheckArithHWResultFragment
     if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
       this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
     }
-    urk.d("QQ.Troop.homework.CheckArithHWResultFragment", "onDestroy");
+    veg.d("QQ.Troop.homework.CheckArithHWResultFragment", "onDestroy");
   }
   
   public void onDetach()
@@ -377,24 +377,24 @@ public class CheckArithHWResultFragment
     if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
       this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
     }
-    urk.d("QQ.Troop.homework.CheckArithHWResultFragment", "onDetach");
+    veg.d("QQ.Troop.homework.CheckArithHWResultFragment", "onDetach");
   }
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    urk.e("QQ.Troop.homework.CheckArithHWResultFragment", "onLoadCanceled url=" + paramURLDrawable.getURL().toString());
+    veg.e("QQ.Troop.homework.CheckArithHWResultFragment", "onLoadCanceled url=" + paramURLDrawable.getURL().toString());
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    urk.e("QQ.Troop.homework.CheckArithHWResultFragment", "onLoadFialed url=" + paramURLDrawable.getURL().toString());
+    veg.e("QQ.Troop.homework.CheckArithHWResultFragment", "onLoadFialed url=" + paramURLDrawable.getURL().toString());
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    urk.d("QQ.Troop.homework.CheckArithHWResultFragment", "urlDrawable onLoad Success url:" + paramURLDrawable.getURL().toString());
+    veg.d("QQ.Troop.homework.CheckArithHWResultFragment", "urlDrawable onLoad Success url:" + paramURLDrawable.getURL().toString());
     Object localObject1 = paramURLDrawable.getCurrDrawable();
     if ((localObject1 instanceof RegionDrawable))
     {
@@ -406,22 +406,22 @@ public class CheckArithHWResultFragment
       Object localObject2 = localObject1;
       if (localObject1 == null)
       {
-        urk.d("QQ.Troop.homework.CheckArithHWResultFragment", "region bitmap is null!!");
-        localObject2 = bacm.a(paramURLDrawable, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
+        veg.d("QQ.Troop.homework.CheckArithHWResultFragment", "region bitmap is null!!");
+        localObject2 = bbdr.a(paramURLDrawable, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
       }
       if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView.setData(this.jdField_a_of_type_Ayva);
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView.setData(this.jdField_a_of_type_Azvq);
         if (localObject2 != null)
         {
           this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView.setImageBitmap((Bitmap)localObject2);
           this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView.setOnItemClickListener(this);
           return;
         }
-        urk.e("QQ.Troop.homework.CheckArithHWResultFragment", "URLDrawable onLoadSuccessed bitmap is null!!");
+        veg.e("QQ.Troop.homework.CheckArithHWResultFragment", "URLDrawable onLoadSuccessed bitmap is null!!");
         return;
       }
-      urk.e("QQ.Troop.homework.CheckArithHWResultFragment", "URLDrawable onLoadSuccessed mArithResultView is null!!");
+      veg.e("QQ.Troop.homework.CheckArithHWResultFragment", "URLDrawable onLoadSuccessed mArithResultView is null!!");
       return;
       localObject1 = null;
     }

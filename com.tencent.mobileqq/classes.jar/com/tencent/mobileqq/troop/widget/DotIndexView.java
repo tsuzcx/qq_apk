@@ -20,7 +20,7 @@ public class DotIndexView
   public DotIndexView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 2130843200;
+    this.jdField_a_of_type_Int = 2130843283;
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
     this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
   }
@@ -28,7 +28,7 @@ public class DotIndexView
   public DotIndexView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130843200;
+    this.jdField_a_of_type_Int = 2130843283;
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
     this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
   }

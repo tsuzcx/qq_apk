@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.camera;
 
-import alqt;
-import alrc;
+import amfj;
+import amfs;
 
 public class CameraManagerImpl$ShutterCallbackForward$1
   implements Runnable
 {
-  public CameraManagerImpl$ShutterCallbackForward$1(alrc paramalrc) {}
+  public CameraManagerImpl$ShutterCallbackForward$1(amfs paramamfs) {}
   
   public void run()
   {
-    alrc.a(this.this$0).a(alrc.a(this.this$0));
+    amfs.a(this.this$0).a(amfs.a(this.this$0));
   }
 }
 

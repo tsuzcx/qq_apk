@@ -1,56 +1,81 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
-import com.tencent.gdtad.views.videoimax.GdtImaxData;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.1.1;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.ipc.AdIPCManager;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Adapter;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
-public class ysf
-  implements yru
+public final class ysf
+  implements AdIPCManager.Adapter
 {
-  public ysf(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
-  
-  public void a(View paramView)
+  public AdIPCManager.Result receive(String paramString, AdIPCManager.Params paramParams)
   {
-    if (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() == 1)
+    boolean bool = false;
+    AdIPCManager.Result localResult2 = new AdIPCManager.Result();
+    AdIPCManager.Result localResult1;
+    if (TextUtils.isEmpty(paramString)) {
+      localResult1 = localResult2;
+    }
+    for (;;)
     {
-      GdtVideoImaxFragment.a(this.a);
-      GdtVideoImaxFragment.b(this.a);
+      if (localResult1 != null) {
+        bool = localResult1.success;
+      }
+      yxs.b("GdtIPCAdapter", String.format("receive action:%s result:%b", new Object[] { paramString, Boolean.valueOf(bool) }));
+      return localResult1;
+      Boolean localBoolean = AdProcessManager.INSTANCE.isOnMainProcess();
+      localResult1 = localResult2;
+      if (localBoolean != null)
+      {
+        localResult1 = localResult2;
+        if (localBoolean.booleanValue())
+        {
+          localResult1 = localResult2;
+          if (QIPCClientHelper.getInstance() != null)
+          {
+            localResult1 = localResult2;
+            if (QIPCClientHelper.getInstance().getClient() != null) {
+              localResult1 = AdIPCManager.INSTANCE.receive(paramString, paramParams);
+            }
+          }
+        }
+      }
     }
-    while (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() != 0) {
-      return;
-    }
-    GdtVideoImaxFragment.a(this.a).g();
-    paramView = ypk.a(this.a.getActivity());
-    GdtVideoImaxFragment.a(this.a, paramView[1], GdtVideoImaxFragment.a(this.a).getLayoutParams().height, paramView[1]);
   }
   
-  public void a(GdtVideoCommonView paramGdtVideoCommonView)
+  public AdIPCManager.Result send(String paramString, AdIPCManager.Params paramParams)
   {
-    yny.a("GdtVideoImaxFragment", "onPrepared() called with: v = [" + paramGdtVideoCommonView + "]");
-  }
-  
-  public void b(GdtVideoCommonView paramGdtVideoCommonView)
-  {
-    yny.a("GdtVideoImaxFragment", "onStart() called with: ");
-    if (GdtVideoImaxFragment.a(this.a))
+    AdIPCManager.Result localResult = new AdIPCManager.Result();
+    if (TextUtils.isEmpty(paramString)) {
+      if (localResult == null) {
+        break label148;
+      }
+    }
+    label148:
+    for (boolean bool = localResult.success;; bool = false)
     {
-      GdtVideoImaxFragment.a(this.a).removeCallbacks(GdtVideoImaxFragment.a(this.a));
-      GdtVideoImaxFragment.a(this.a).postDelayed(new GdtVideoImaxFragment.1.1(this), 75L);
-      GdtVideoImaxFragment.a(this.a, false);
+      yxs.b("GdtIPCAdapter", String.format("send action:%s result:%b", new Object[] { paramString, Boolean.valueOf(bool) }));
+      return localResult;
+      Object localObject = AdProcessManager.INSTANCE.isOnMainProcess();
+      if ((localObject == null) || (((Boolean)localObject).booleanValue()) || (QIPCClientHelper.getInstance() == null) || (QIPCClientHelper.getInstance().getClient() == null)) {
+        break;
+      }
+      localObject = QIPCClientHelper.getInstance().getClient();
+      if (paramParams != null) {}
+      for (paramParams = paramParams.bundle;; paramParams = null)
+      {
+        paramParams = ((EIPCClient)localObject).callServer("gdt_ipc", paramString, paramParams);
+        if (paramParams == null) {
+          break;
+        }
+        localResult.success = paramParams.isSuccess();
+        localResult.bundle = paramParams.data;
+        break;
+      }
     }
-  }
-  
-  public void c(GdtVideoCommonView paramGdtVideoCommonView)
-  {
-    yny.a("GdtVideoImaxFragment", "onStop() called with: v = [" + paramGdtVideoCommonView + "]");
-  }
-  
-  public void d(GdtVideoCommonView paramGdtVideoCommonView)
-  {
-    yny.a("GdtVideoImaxFragment", "onComplete() called with: v = [" + paramGdtVideoCommonView + "]");
   }
 }
 

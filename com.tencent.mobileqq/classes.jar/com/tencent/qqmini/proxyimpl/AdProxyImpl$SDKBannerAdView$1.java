@@ -12,7 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
-import yju;
+import ysx;
 
 class AdProxyImpl$SDKBannerAdView$1
   implements AdProxy.ICmdListener
@@ -52,7 +52,7 @@ class AdProxyImpl$SDKBannerAdView$1
               break label264;
             }
             GdtAd localGdtAd = new GdtAd(paramJSONObject);
-            yju.a().a(localGdtAd);
+            ysx.a().a(localGdtAd);
             this.this$1.mReportUrl = paramJSONObject.report_info.exposure_url.get();
             this.this$1.mGdtBannerView = AdProxyImpl.access$300(this.this$1.this$0, this.val$activity, paramJSONObject, this.this$1.mWidth, this.this$1.mHeight);
             if (this.this$1.mGdtBannerView == null) {

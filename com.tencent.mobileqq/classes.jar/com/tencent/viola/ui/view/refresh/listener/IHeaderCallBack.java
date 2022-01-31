@@ -14,6 +14,8 @@ public abstract interface IHeaderCallBack
   
   public abstract void notifyVisiableChangeOnScreen(boolean paramBoolean);
   
+  public abstract void onFingerRelease();
+  
   public abstract void onStateFinish(boolean paramBoolean);
   
   public abstract void onStateNormal();
@@ -21,6 +23,8 @@ public abstract interface IHeaderCallBack
   public abstract void onStateReady();
   
   public abstract void onStateRefreshing();
+  
+  public abstract void onStickRefreshing();
   
   public abstract void show();
 }

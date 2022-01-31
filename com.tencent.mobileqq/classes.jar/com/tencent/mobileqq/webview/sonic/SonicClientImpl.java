@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.MutableContextWrapper;
 import android.net.Uri;
 import android.os.Bundle;
-import badq;
-import bazk;
-import bbaq;
-import bbaw;
-import bbca;
+import bbev;
+import bcce;
+import bcdq;
+import bcdw;
+import bcfa;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -97,7 +97,7 @@ public class SonicClientImpl
     if (QLog.isColorLevel()) {
       QLog.d("sonicSdkImpl_SonicClientImpl", 2, "destroy");
     }
-    int i = badq.a(BaseApplication.getContext());
+    int i = bbev.a(BaseApplication.getContext());
     int j = i;
     if (i == 0) {
       j = -1;
@@ -112,17 +112,17 @@ public class SonicClientImpl
       if ((localContext instanceof MutableContextWrapper)) {
         localObject = ((MutableContextWrapper)localContext).getBaseContext();
       }
-      if (!(localObject instanceof bbaw)) {
+      if (!(localObject instanceof bcdw)) {
         break label226;
       }
-      localObject = (bbca)((bbaw)localObject).b().a(-2);
+      localObject = (bcfa)((bcdw)localObject).b().a(-2);
     }
     for (;;)
     {
       i = k;
       if (localObject != null)
       {
-        if (!((bbca)localObject).w) {
+        if (!((bcfa)localObject).w) {
           break label269;
         }
         i = 2;
@@ -135,17 +135,17 @@ public class SonicClientImpl
         this.webView = null;
         return;
         label226:
-        if (!(localObject instanceof bazk)) {
+        if (!(localObject instanceof bcce)) {
           break label285;
         }
-        localObject = ((bazk)localObject).b();
+        localObject = ((bcce)localObject).b();
         if (localObject == null) {
           break label285;
         }
-        localObject = (bbca)((WebViewFragment)localObject).b().a(-2);
+        localObject = (bcfa)((WebViewFragment)localObject).b().a(-2);
         break;
         label269:
-        if (bbca.s) {
+        if (bcfa.s) {
           i = 1;
         } else {
           i = 0;

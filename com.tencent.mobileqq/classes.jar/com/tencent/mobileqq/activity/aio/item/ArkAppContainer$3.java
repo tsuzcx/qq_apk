@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adaj;
+import adll;
 import com.tencent.ark.open.ArkAppInfo.TimeRecord;
 
 public class ArkAppContainer$3
   implements Runnable
 {
-  public ArkAppContainer$3(adaj paramadaj) {}
+  public ArkAppContainer$3(adll paramadll) {}
   
   public void run()
   {

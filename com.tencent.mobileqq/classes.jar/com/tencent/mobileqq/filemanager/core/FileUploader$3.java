@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aoiz;
-import aojb;
+import aozt;
+import aozv;
 import com.tencent.qphone.base.util.QLog;
 
 public class FileUploader$3
   implements Runnable
 {
-  public FileUploader$3(aoiz paramaoiz) {}
+  public FileUploader$3(aozt paramaozt) {}
   
   public void run()
   {
-    if (aoiz.a(this.this$0)) {
+    if (aozt.a(this.this$0)) {
       return;
     }
-    QLog.i("FtnHttpUploader<FileAssistant>", 1, "Id[" + aoiz.b(this.this$0) + "] resend");
-    if (aoiz.a(this.this$0) != null) {
-      aoiz.a(this.this$0).i();
+    QLog.i("FtnHttpUploader<FileAssistant>", 1, "Id[" + aozt.b(this.this$0) + "] resend");
+    if (aozt.a(this.this$0) != null) {
+      aozt.a(this.this$0).i();
     }
-    aoiz.a(this.this$0, 0L);
-    aoiz.a(this.this$0, 0L);
+    aozt.a(this.this$0, 0L);
+    aozt.a(this.this$0, 0L);
   }
 }
 

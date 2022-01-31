@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar;
 
-import aknj;
+import albv;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArConfigService$ArConfigManagerStub$1
   implements Runnable
 {
-  public ArConfigService$ArConfigManagerStub$1(aknj paramaknj, ArConfigService paramArConfigService, int paramInt) {}
+  public ArConfigService$ArConfigManagerStub$1(albv paramalbv, ArConfigService paramArConfigService, int paramInt) {}
   
   public void run()
   {

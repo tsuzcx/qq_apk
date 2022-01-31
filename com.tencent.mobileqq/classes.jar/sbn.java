@@ -1,22 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
 
-public class sbn
-  implements View.OnClickListener
+class sbn
+  implements wsq
 {
-  public sbn(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  sbn(sbm paramsbm) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
+    if (paramBoolean)
+    {
+      sbl.a(this.a.a).c();
+      this.a.a.a(false);
+      this.a.a.a.c();
+      xhe.a("", "auth_discover", "fold", 0, 0, new String[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sbn
  * JD-Core Version:    0.7.0.1
  */

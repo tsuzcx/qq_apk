@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.richmedia;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import awjy;
+import axje;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureFilterManager;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -47,7 +47,7 @@ class NewFlowCameraActivity$49
     } while ((this.b) || (NewFlowCameraActivity.a(this.this$0)));
     if ((this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (!this.this$0.jdField_a_of_type_JavaLangString.equalsIgnoreCase(GestureFilterManager.sGestureType)))
     {
-      this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = awjy.a(this.this$0, GestureFilterManager.sGestureType);
+      this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = axje.a(this.this$0, GestureFilterManager.sGestureType);
       this.this$0.jdField_a_of_type_JavaLangString = GestureFilterManager.sGestureType;
     }
     this.this$0.jdField_d_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable);

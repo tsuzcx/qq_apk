@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ark;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class ArkAppTestData
-  extends atmo
+  extends aukm
 {
   public long date;
-  @atoc
+  @auma
   public String name;
   public String value;
 }

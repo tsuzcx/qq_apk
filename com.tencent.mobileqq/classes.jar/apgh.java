@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
 
-class apgh
-  implements DialogInterface.OnClickListener
+public class apgh
+  extends awkc<awog, awwp>
 {
-  apgh(apgd paramapgd) {}
+  public apgh(TroopFileSearchFragment paramTroopFileSearchFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected awrb<awog, awwp> a(int paramInt)
   {
-    if (paramInt == 1) {
-      this.a.a.c();
-    }
-    paramDialogInterface.dismiss();
+    return new apgj();
+  }
+  
+  protected awwq a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new apgl(paramViewGroup);
   }
 }
 

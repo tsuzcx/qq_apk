@@ -1,25 +1,27 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbVideoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import mqq.util.WeakReference;
 
-public class agvc
-  implements TVK_IMediaPlayer.OnErrorListener
+class agvc
+  implements adgz
 {
-  public agvc(SpringHbVideoView paramSpringHbVideoView) {}
+  agvc(agvb paramagvb) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void a()
   {
-    QLog.i("springHb_SpringHbVideoView", 1, String.format("TVK_IMediaPlayer.onError model=%s what=%s position=%s detailInfo=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString }));
-    if (SpringHbVideoView.a(this.a) != null) {
-      SpringHbVideoView.a(this.a).a(paramInt2, paramInt3, paramString, paramObject);
-    }
-    return false;
+    ((NewPhotoPreviewActivity)this.a.a.a.get()).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)this.a.a.a.get()).finish();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoPreviewActivity)this.a.a.a.get()).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)this.a.a.a.get()).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agvc
  * JD-Core Version:    0.7.0.1
  */

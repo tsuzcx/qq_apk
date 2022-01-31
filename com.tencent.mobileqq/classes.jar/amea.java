@@ -1,72 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class amea
-  extends alzl<amdz>
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 442;
-  }
+  public amea(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  @NonNull
-  public amdz a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new amdz();
-  }
-  
-  @Nullable
-  public amdz a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0) && (paramArrayOfalzs[0] != null))
-    {
-      amdz localamdz = amdz.a(paramArrayOfalzs[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PttAutoChangeProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
-      }
-      return localamdz;
+    paramView = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(paramView)) {
+      this.a.a(paramView);
     }
-    return null;
-  }
-  
-  public Class<amdz> a()
-  {
-    return amdz.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amdz paramamdz)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttAutoChangeProcessor", 2, "onUpdate " + paramamdz.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amea
  * JD-Core Version:    0.7.0.1
  */

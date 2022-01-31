@@ -1,211 +1,27 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
-public class aeky
+public abstract interface aeky
 {
-  private aekx jdField_a_of_type_Aekx = new aekz(this);
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-  private StickerBubbleAnimationView jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
-  private List<WeakReference<aelb>> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
-  private aekx jdField_b_of_type_Aekx = new aela(this);
-  private StickerBubbleAnimationView jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
-  private List<WeakReference<aelb>> jdField_b_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_b_of_type_Boolean;
+  public static final String a = ajyc.a(2131705723);
+  public static final String b = ajyc.a(2131705720);
+  public static final String c = ajyc.a(2131705721);
+  public static final String d = ajyc.a(2131705722);
   
-  public static aeky a()
-  {
-    return aelc.a();
-  }
+  public abstract void a();
   
-  private void a(View paramView)
-  {
-    if (paramView.getParent() == null) {
-      return;
-    }
-    ((ViewGroup)paramView.getParent()).removeView(paramView);
-  }
+  public abstract void b();
   
-  private void a(ViewGroup paramViewGroup, View paramView)
-  {
-    new RelativeLayout.LayoutParams(-1, -1);
-    if (paramView.getParent() != null) {
-      if (paramView.getParent() != paramViewGroup)
-      {
-        ((ViewGroup)paramView.getParent()).removeView(paramView);
-        paramViewGroup.addView(paramView);
-      }
-    }
-    for (;;)
-    {
-      paramView.bringToFront();
-      return;
-      paramViewGroup.addView(paramView);
-    }
-  }
+  public abstract boolean b();
   
-  private void a(List<WeakReference<aelb>> paramList)
-  {
-    try
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        aelb localaelb = (aelb)((WeakReference)paramList.next()).get();
-        if (localaelb != null) {
-          localaelb.a();
-        }
-      }
-    }
-    finally {}
-  }
+  public abstract void c();
   
-  private void b(List<WeakReference<aelb>> paramList)
-  {
-    Iterator localIterator = new ArrayList(paramList).iterator();
-    while (localIterator.hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      aelb localaelb = (aelb)localWeakReference.get();
-      if (localaelb != null) {
-        localaelb.b();
-      } else {
-        paramList.remove(localWeakReference);
-      }
-    }
-  }
+  public abstract void e();
   
-  public StickerBubbleAnimationView a(Context paramContext)
-  {
-    paramContext = d(paramContext);
-    if (this.jdField_b_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "hideSendAnimationView: " + paramContext);
-      }
-      a(paramContext);
-      this.jdField_b_of_type_Boolean = false;
-    }
-    return paramContext;
-  }
+  public abstract void f();
   
-  public StickerBubbleAnimationView a(ViewGroup paramViewGroup, Context paramContext)
-  {
-    paramContext = d(paramContext);
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "showSendAnimationView: " + paramContext.getParent() + " / " + paramViewGroup);
-      }
-      a(paramViewGroup, paramContext);
-      this.jdField_b_of_type_Boolean = true;
-    }
-    return paramContext;
-  }
+  public abstract void g();
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleAnimationViewHolder", 2, "cleanView");
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      b(this.jdField_a_of_type_AndroidContentContext);
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      a(this.jdField_a_of_type_AndroidContentContext);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = null;
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = null;
-  }
+  public abstract void h();
   
-  public void a(aelb paramaelb)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramaelb));
-      return;
-    }
-    finally
-    {
-      paramaelb = finally;
-      throw paramaelb;
-    }
-  }
-  
-  public StickerBubbleAnimationView b(Context paramContext)
-  {
-    paramContext = c(paramContext);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "hideReceiveAnimationView: " + paramContext);
-      }
-      a(paramContext);
-      this.jdField_a_of_type_Boolean = false;
-    }
-    return paramContext;
-  }
-  
-  public StickerBubbleAnimationView b(ViewGroup paramViewGroup, Context paramContext)
-  {
-    paramContext = c(paramContext);
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "showReceiveAnimationView: " + paramContext.getParent() + " / " + paramViewGroup);
-      }
-      a(paramViewGroup, paramContext);
-      this.jdField_a_of_type_Boolean = true;
-    }
-    return paramContext;
-  }
-  
-  public void b(aelb paramaelb)
-  {
-    try
-    {
-      this.jdField_b_of_type_JavaUtilList.add(new WeakReference(paramaelb));
-      return;
-    }
-    finally
-    {
-      paramaelb = finally;
-      throw paramaelb;
-    }
-  }
-  
-  public StickerBubbleAnimationView c(Context paramContext)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(paramContext);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setShowText(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131310715);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_a_of_type_Aekx);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
-  }
-  
-  public StickerBubbleAnimationView d(Context paramContext)
-  {
-    if (this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
-    {
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(paramContext);
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131310715);
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_b_of_type_Aekx);
-    }
-    return this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
-  }
+  public abstract void i();
 }
 
 

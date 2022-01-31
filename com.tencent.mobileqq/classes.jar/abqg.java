@@ -1,26 +1,47 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
 
 public class abqg
-  implements TextWatcher
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abqg(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  public abqg(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (SelectedAndSearchBar.a(this.a) != null) {
-      SelectedAndSearchBar.a(this.a).a(paramEditable);
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, new Object[] { "avCallOnCheckedChangeListener::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
     }
+    if (!NotifyPushSettingActivity.a(this.a).b())
+    {
+      NotifyPushSettingActivity.a(this.a).a(this.a);
+      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(null);
+      paramCompoundButton = NotifyPushSettingActivity.a(this.a);
+      paramBoolean = bool;
+      if (!NotifyPushSettingActivity.a(this.a).a()) {
+        paramBoolean = true;
+      }
+      paramCompoundButton.setChecked(paramBoolean);
+      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(this.a.a);
+    }
+    do
+    {
+      return;
+      mqr.a(this.a.app.getCurrentAccountUin(), paramBoolean);
+      if (!paramBoolean) {
+        axqw.b(this.a.app, "dc00898", "", "", "0X800A33D", "0X800A33D", 0, 0, "", "", "", "");
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("IphoneTitleBarActivity", 2, "isChecked[" + paramBoolean + "]");
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abqg
  * JD-Core Version:    0.7.0.1
  */

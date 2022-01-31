@@ -1,15 +1,15 @@
 package com.tencent.gdtad.views.image;
 
-import yri;
+import zba;
 
 public class GdtDrawableLoader$2
   implements Runnable
 {
-  public GdtDrawableLoader$2(yri paramyri) {}
+  public GdtDrawableLoader$2(zba paramzba) {}
   
   public void run()
   {
-    yri.a(this.this$0);
+    zba.a(this.this$0);
   }
 }
 

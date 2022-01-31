@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.data;
 
-import amtg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import atmo;
-import atnz;
-import atoc;
+import anjn;
+import aukm;
+import aulx;
+import auma;
 
 public class PrecoverResource
-  extends atmo
+  extends aukm
   implements Parcelable
 {
-  public static final Parcelable.Creator<PrecoverResource> CREATOR = new amtg();
-  @atnz
+  public static final Parcelable.Creator<PrecoverResource> CREATOR = new anjn();
+  @aulx
   public int arg1;
-  @atnz
+  @aulx
   public int arg2;
   public String businessId;
   public String md5;
-  @atoc
+  @auma
   public String pk;
   public String resId;
-  @atnz
+  @aulx
   public String thirdPartDownloadPath;
   public String url;
   

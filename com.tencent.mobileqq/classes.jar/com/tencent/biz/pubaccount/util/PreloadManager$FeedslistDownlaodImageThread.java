@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import rsf;
+import sex;
 
 class PreloadManager$FeedslistDownlaodImageThread
   implements Runnable
 {
   PreloadManager$FeedslistDownlaodImageThread(PreloadManager paramPreloadManager) {}
   
-  rsf a()
+  sex a()
   {
     Object localObject1 = this.this$0.a;
     int i = 3;
@@ -20,7 +20,7 @@ class PreloadManager$FeedslistDownlaodImageThread
     {
       try
       {
-        rsf localrsf;
+        sex localsex;
         do
         {
           Iterator localIterator = PreloadManager.a(this.this$0).values().iterator();
@@ -36,12 +36,12 @@ class PreloadManager$FeedslistDownlaodImageThread
             }
             localObject3 = ((ArrayList)localObject3).iterator();
           }
-          localrsf = (rsf)((Iterator)localObject3).next();
-          if (localrsf == null) {
+          localsex = (sex)((Iterator)localObject3).next();
+          if (localsex == null) {
             return null;
           }
-        } while ((PreloadManager.a(localrsf.jdField_a_of_type_JavaLangString) != 0) || (localrsf.jdField_a_of_type_Int != i));
-        return localrsf;
+        } while ((PreloadManager.a(localsex.jdField_a_of_type_JavaLangString) != 0) || (localsex.jdField_a_of_type_Int != i));
+        return localsex;
       }
       finally {}
       i -= 1;
@@ -54,14 +54,14 @@ class PreloadManager$FeedslistDownlaodImageThread
     this.this$0.b = true;
     for (;;)
     {
-      rsf localrsf = a();
-      if (localrsf == null) {
+      sex localsex = a();
+      if (localsex == null) {
         break;
       }
       if (NetworkState.getNetworkType() != 1) {
         return;
       }
-      this.this$0.b(localrsf.jdField_a_of_type_JavaLangString);
+      this.this$0.b(localsex.jdField_a_of_type_JavaLangString);
     }
     this.this$0.b = false;
   }

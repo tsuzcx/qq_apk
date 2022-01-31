@@ -1,33 +1,55 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.biz.troop.file.MoveFileActivity;
 
-class xal
-  extends batl
+public class xal
+  implements TextWatcher
 {
-  xal(xai paramxai, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  public xal(MoveFileActivity paramMoveFileActivity, EditText paramEditText, xnm paramxnm) {}
   
-  public void onDone(batm parambatm)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "downloadUpdate loaded json = " + parambatm.c + " code = " + parambatm.jdField_a_of_type_Int);
+    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    TextView localTextView = this.jdField_a_of_type_Xnm.getBtnight();
+    if (bakj.b(paramEditable))
+    {
+      localTextView.setEnabled(false);
+      localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165540));
+      return;
     }
-    boolean bool = this.jdField_a_of_type_Xai.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "downloadUpdate unCompressOffline" + bool);
-    }
-    this.jdField_a_of_type_Xai.a();
+    localTextView.setEnabled(true);
+    localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165535));
   }
   
-  public void onProgress(batm parambatm)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = (int)(parambatm.jdField_a_of_type_Float * 100.0F);
-    if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel())) {
-      QLog.d("ViewPluginLoader", 2, "downding progress = " + i);
+    if (paramInt3 > 0)
+    {
+      paramCharSequence = paramCharSequence.toString();
+      String str = bakj.b(paramCharSequence);
+      if ((paramCharSequence == null) || (paramCharSequence.equals(str))) {
+        break label57;
+      }
+      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Int = paramInt1;
+      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(str);
     }
+    label57:
+    while (!this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xal
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,29 @@
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class uip
+public final class uip
+  extends QQUIEventReceiver<uhz, uwf>
 {
-  private sfw<uiv> a;
-  
-  public void a()
+  public uip(@NonNull uhz paramuhz)
   {
-    try
+    super(paramuhz);
+  }
+  
+  public void a(@NonNull uhz paramuhz, @NonNull uwf paramuwf)
+  {
+    if ((paramuwf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramuwf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramuhz.a != null) && (TextUtils.equals(paramuwf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramuhz.a.b)))
     {
-      if (this.a != null)
-      {
-        this.a.a();
-        this.a = null;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+      veg.a(paramuhz.b, "refresh feed item , feed id :%s", paramuhz.a.b);
+      paramuhz.i();
     }
   }
   
-  public void a(List<uiv> paramList)
+  public Class acceptEventClass()
   {
-    try
-    {
-      if (this.a == null) {
-        this.a = new sfw(new uir());
-      }
-      this.a.a(paramList);
-      return;
-    }
-    finally {}
+    return uwf.class;
   }
 }
 

@@ -1,22 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class abby
-  implements Animation.AnimationListener
+  implements ainf
 {
-  public abby(LoginInfoActivity paramLoginInfoActivity) {}
+  public abby(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(View paramView)
   {
-    LoginInfoActivity.a(this.a).setVisibility(4);
-    LoginInfoActivity.a(this.a).clearAnimation();
+    if (ForwardFriendListActivity.a(this.a))
+    {
+      ForwardFriendListActivity.b(this.a, paramView);
+      return;
+    }
+    ForwardFriendListActivity.c(this.a, paramView);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean a(String paramString, int paramInt)
+  {
+    return ForwardFriendListActivity.a(this.a, paramString, paramInt);
+  }
 }
 
 

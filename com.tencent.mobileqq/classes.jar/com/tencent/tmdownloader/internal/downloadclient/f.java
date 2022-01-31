@@ -1,7 +1,7 @@
 package com.tencent.tmdownloader.internal.downloadclient;
 
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmassistantsdk.internal.b.b;
 import com.tencent.tmassistantsdk.internal.openSDK.param.a;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.SubScribeSDKDownloadTaskByViaRequest;
@@ -27,7 +27,7 @@ class f
   
   public void a(TMAssistantDownloadTaskInfo paramTMAssistantDownloadTaskInfo)
   {
-    ac.c(c.b(), "onSyncSDKDownloadInfo......");
+    ab.c(c.b(), "onSyncSDKDownloadInfo......");
     if (paramTMAssistantDownloadTaskInfo == null) {}
     for (;;)
     {

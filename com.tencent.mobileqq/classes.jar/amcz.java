@@ -1,293 +1,296 @@
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.ColorMatrixColorFilter;
+import android.graphics.NinePatch;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.util.MQLruCache;
+import android.util.DisplayMetrics;
+import android.util.StateSet;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.business.MiniAppConfBean.1;
-import com.tencent.mobileqq.minigame.splash.SplashMiniGameUtil;
+import com.tencent.mobileqq.bubble.VipBubbleDrawable.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import com.tencent.util.Pair;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class amcz
+  extends Drawable
 {
-  private int jdField_a_of_type_Int = 60;
-  private String jdField_a_of_type_JavaLangString = "";
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new MiniAppConfBean.1(this);
-  private boolean jdField_a_of_type_Boolean = true;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = true;
-  private String jdField_c_of_type_JavaLangString = "";
+  private static final ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter = new ColorMatrixColorFilter(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, -26.0F, 0.0F, 1.0F, 0.0F, 0.0F, -26.0F, 0.0F, 0.0F, 1.0F, 0.0F, -26.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F });
+  private static int[] jdField_a_of_type_ArrayOfInt = { 16842919 };
+  private int jdField_a_of_type_Int = 160;
+  private Resources jdField_a_of_type_AndroidContentResResources;
+  private NinePatch jdField_a_of_type_AndroidGraphicsNinePatch;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  public String a;
+  public boolean a;
+  private int jdField_b_of_type_Int;
+  private NinePatch jdField_b_of_type_AndroidGraphicsNinePatch;
+  private String jdField_b_of_type_JavaLangString;
+  public boolean b;
+  private int[] jdField_b_of_type_ArrayOfInt;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
   private boolean jdField_c_of_type_Boolean;
-  private String jdField_d_of_type_JavaLangString = "";
+  private int jdField_d_of_type_Int;
   private boolean jdField_d_of_type_Boolean;
-  private String jdField_e_of_type_JavaLangString = "";
-  private boolean jdField_e_of_type_Boolean;
-  private String jdField_f_of_type_JavaLangString = "";
-  private boolean jdField_f_of_type_Boolean;
-  private String jdField_g_of_type_JavaLangString = "";
-  private boolean jdField_g_of_type_Boolean;
-  private boolean h;
+  private boolean e;
+  private boolean f;
   
-  public static amcz a(alzs[] paramArrayOfalzs)
+  public amcz(Resources paramResources, NinePatch paramNinePatch1, NinePatch paramNinePatch2, int paramInt)
   {
-    amcz localamcz = new amcz();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    for (;;)
+    this.jdField_a_of_type_AndroidContentResResources = paramResources;
+    this.jdField_a_of_type_AndroidGraphicsNinePatch = paramNinePatch1;
+    this.jdField_b_of_type_AndroidGraphicsNinePatch = paramNinePatch2;
+    this.jdField_d_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
+    if (paramResources != null)
     {
-      int j;
-      try
-      {
-        if (i < paramArrayOfalzs.length)
-        {
-          String str1 = paramArrayOfalzs[i].jdField_a_of_type_JavaLangString;
-          if (str1 == null) {
-            break label671;
-          }
-          Object localObject = new JSONObject(str1);
-          if (((JSONObject)localObject).has("aio_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("aio_mini_app_on", 1) != 1) {
-              break label685;
-            }
-            bool = true;
-            localamcz.jdField_a_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("mini_app_local_search"))
-          {
-            if (((JSONObject)localObject).optInt("mini_app_local_search", 1) != 1) {
-              break label691;
-            }
-            bool = true;
-            localamcz.jdField_b_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("mini_app_refresh_time")) {
-            localamcz.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("mini_app_refresh_time", 60);
-          }
-          if (((JSONObject)localObject).has("popBarShowMiniAppStore"))
-          {
-            if (((JSONObject)localObject).optInt("popBarShowMiniAppStore", 0) != 1) {
-              break label697;
-            }
-            bool = true;
-            localamcz.jdField_c_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("minigame_splash")) {
-            SplashMiniGameUtil.saveConfigData(str1);
-          }
-          if (((JSONObject)localObject).has("mini_app_entry_auto_show"))
-          {
-            if (((JSONObject)localObject).optInt("mini_app_entry_auto_show", 0) != 1) {
-              break label703;
-            }
-            bool = true;
-            localamcz.jdField_d_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("contact_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("contact_mini_app_on", 0) != 1) {
-              break label709;
-            }
-            bool = true;
-            localamcz.jdField_f_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("more_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("more_mini_app_on", 0) != 1) {
-              break label715;
-            }
-            bool = true;
-            localamcz.jdField_e_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("group_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("group_mini_app_on", 0) != 1) {
-              break label721;
-            }
-            bool = true;
-            localamcz.jdField_g_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("avatar_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("avatar_mini_app_on", 0) != 1) {
-              break label727;
-            }
-            bool = true;
-            localamcz.h = bool;
-            if (((JSONObject)localObject).has("avatar_mini_app_url")) {
-              localamcz.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("avatar_mini_app_url");
-            }
-          }
-          if (((JSONObject)localObject).has("back_to_home_scene_list"))
-          {
-            if (localamcz.jdField_a_of_type_JavaUtilArrayList == null) {
-              localamcz.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-            }
-            localamcz.jdField_a_of_type_JavaUtilArrayList.clear();
-            String[] arrayOfString = ((JSONObject)localObject).optString("back_to_home_scene_list", "1044|1007|1008|2003").split("\\|");
-            int k = arrayOfString.length;
-            j = 0;
-            if (j < k)
-            {
-              String str2 = arrayOfString[j];
-              if (TextUtils.isEmpty(str2)) {
-                break label678;
-              }
-              localamcz.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(str2));
-              break label678;
-            }
-          }
-          if (1 == ((JSONObject)localObject).optInt("enable_c2c_plus_panel", 0))
-          {
-            localamcz.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("url", "");
-            localamcz.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("icon", "");
-            localamcz.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("icon_night", "");
-            localamcz.jdField_e_of_type_JavaLangString = ((JSONObject)localObject).optString("simple_icon", "");
-            localamcz.jdField_f_of_type_JavaLangString = ((JSONObject)localObject).optString("simple_icon_night", "");
-            localamcz.jdField_g_of_type_JavaLangString = ((JSONObject)localObject).optString("name", BaseApplicationImpl.sApplication.getString(2131632753));
-            localObject = BaseApplicationImpl.getApplication().getRuntime();
-            if ((localObject instanceof QQAppInterface))
-            {
-              localObject = (QQAppInterface)localObject;
-              advd.a((QQAppInterface)localObject).a((QQAppInterface)localObject, localamcz);
-            }
-          }
-          localStringBuilder.append("config: ").append(str1).append(",");
-        }
-      }
-      catch (Exception paramArrayOfalzs)
-      {
-        QLog.d("MiniAppConfProcessor", 2, "parse, failed!");
-        paramArrayOfalzs.printStackTrace();
-        return null;
-      }
-      QLog.e("MiniAppConfProcessor", 2, "parse, content:" + localStringBuilder.toString());
-      return localamcz;
-      label671:
-      i += 1;
-      continue;
-      label678:
-      j += 1;
-      continue;
-      label685:
-      boolean bool = false;
-      continue;
-      label691:
-      bool = false;
-      continue;
-      label697:
-      bool = false;
-      continue;
-      label703:
-      bool = false;
-      continue;
-      label709:
-      bool = false;
-      continue;
-      label715:
-      bool = false;
-      continue;
-      label721:
-      bool = false;
-      continue;
-      label727:
-      bool = false;
+      this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;
+      this.jdField_b_of_type_Int = actn.a(65.0F, paramResources);
+      this.jdField_c_of_type_Int = actn.a(57.0F, paramResources);
     }
   }
   
-  public int a()
+  private int a(Bitmap paramBitmap)
   {
-    return this.jdField_a_of_type_Int;
+    if (paramBitmap == null) {
+      return 0;
+    }
+    if (Build.VERSION.SDK_INT >= 12) {
+      return paramBitmap.getByteCount();
+    }
+    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
   }
   
-  public String a()
+  private void a(Canvas paramCanvas)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (paramCanvas == null) {}
+    label261:
+    for (;;)
+    {
+      return;
+      String str = "bubblebg://" + "0_local_default_" + this.jdField_b_of_type_Boolean;
+      Object localObject1;
+      if (BaseApplicationImpl.sImageCache != null)
+      {
+        localObject1 = (Pair)BaseApplicationImpl.sImageCache.get(str);
+        if (localObject1 != null)
+        {
+          localObject1 = (NinePatch)((Pair)localObject1).first;
+          if (localObject1 != null) {
+            ((NinePatch)localObject1).draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+          }
+        }
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          break label261;
+        }
+        if (this.jdField_b_of_type_Boolean) {}
+        for (i = 2130848752;; i = 2130848928) {
+          for (;;)
+          {
+            localObject1 = new BitmapFactory.Options();
+            ((BitmapFactory.Options)localObject1).inDensity = 320;
+            ((BitmapFactory.Options)localObject1).inTargetDensity = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().densityDpi;
+            try
+            {
+              localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, i, (BitmapFactory.Options)localObject1);
+              if (localObject1 == null) {
+                break;
+              }
+              Object localObject2 = ((Bitmap)localObject1).getNinePatchChunk();
+              if (localObject2 == null) {
+                break;
+              }
+              localObject2 = new NinePatch((Bitmap)localObject1, (byte[])localObject2, null);
+              ((NinePatch)localObject2).draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+              if (BaseApplicationImpl.sImageCache == null) {
+                break;
+              }
+              paramCanvas = new Pair(localObject2, Integer.valueOf(a((Bitmap)localObject1)));
+              BaseApplicationImpl.sImageCache.put(str, paramCanvas);
+              return;
+            }
+            catch (OutOfMemoryError paramCanvas)
+            {
+              QLog.e("VipBubbleDrawable", 1, "drawDefaultBubbleBg, decode default bubble bg error, bubbleId=" + this.jdField_d_of_type_Int, paramCanvas);
+              return;
+            }
+          }
+        }
+      }
+    }
   }
   
-  public ArrayList<Integer> a()
+  public void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public boolean a()
+  public void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Boolean;
+    this.f = paramBoolean;
+    invalidateSelf();
   }
   
-  public String b()
+  public void a(boolean paramBoolean, String paramString1, int[] paramArrayOfInt, String paramString2)
   {
-    return this.jdField_b_of_type_JavaLangString;
+    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
+    if (this.jdField_d_of_type_Boolean)
+    {
+      this.jdField_b_of_type_JavaLangString = paramString1;
+      this.jdField_b_of_type_ArrayOfInt = paramArrayOfInt;
+      this.jdField_c_of_type_JavaLangString = paramString2;
+    }
   }
   
-  public boolean b()
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return this.jdField_b_of_type_Boolean;
+    this.jdField_b_of_type_Boolean = paramBoolean1;
+    this.f = paramBoolean2;
   }
   
-  public String c()
+  public void b(boolean paramBoolean)
   {
-    return this.jdField_c_of_type_JavaLangString;
+    if (paramBoolean) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(jdField_a_of_type_AndroidGraphicsColorFilter);
+    }
+    for (;;)
+    {
+      invalidateSelf();
+      return;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(null);
+    }
   }
   
-  public boolean c()
+  public void c(boolean paramBoolean)
   {
-    return this.jdField_c_of_type_Boolean;
+    if (!this.e) {
+      return;
+    }
+    this.jdField_d_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new VipBubbleDrawable.1(this));
   }
   
-  public String d()
+  public void draw(Canvas paramCanvas)
   {
-    return this.jdField_d_of_type_JavaLangString;
+    Rect localRect = getBounds();
+    int i = paramCanvas.save();
+    Object localObject;
+    if ((this.f) && (this.jdField_b_of_type_AndroidGraphicsNinePatch != null))
+    {
+      localObject = this.jdField_b_of_type_AndroidGraphicsNinePatch;
+      if (localObject == null) {
+        break label153;
+      }
+      if (this.jdField_b_of_type_Boolean) {
+        paramCanvas.scale(-1.0F, 1.0F, localRect.centerX(), localRect.centerY());
+      }
+      ((NinePatch)localObject).draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    for (;;)
+    {
+      paramCanvas.restoreToCount(i);
+      localObject = (HashMap)ambf.a().a.get(Integer.valueOf(this.jdField_d_of_type_Int));
+      if ((localObject == null) || (((HashMap)localObject).size() <= 0)) {
+        return;
+      }
+      localObject = ((HashMap)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((amcm)((Iterator)localObject).next()).a(this, paramCanvas);
+      }
+      localObject = this.jdField_a_of_type_AndroidGraphicsNinePatch;
+      break;
+      label153:
+      QLog.e("VipBubbleDrawable", 1, "draw, ninePatch null, use default, mUseAnimationBg=" + this.f + ", mNormalNinePatch=" + this.jdField_a_of_type_AndroidGraphicsNinePatch + ", mAnimationNinePath" + this.jdField_b_of_type_AndroidGraphicsNinePatch + ", bubbleId=" + this.jdField_d_of_type_Int + ", drawable=" + this);
+      a(paramCanvas);
+    }
   }
   
-  public boolean d()
+  public int getIntrinsicHeight()
   {
-    return this.jdField_d_of_type_Boolean;
+    return this.jdField_c_of_type_Int;
   }
   
-  public String e()
+  public int getIntrinsicWidth()
   {
-    return this.jdField_e_of_type_JavaLangString;
+    return this.jdField_b_of_type_Int;
   }
   
-  public boolean e()
+  public int getOpacity()
   {
-    return this.jdField_f_of_type_Boolean;
+    if (this.jdField_a_of_type_AndroidGraphicsNinePatch != null) {
+      if (!this.jdField_a_of_type_AndroidGraphicsNinePatch.hasAlpha()) {}
+    }
+    while ((this.jdField_a_of_type_AndroidGraphicsPaint != null) && (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() < 255))
+    {
+      return -3;
+      return -1;
+    }
+    return -1;
   }
   
-  public String f()
+  public boolean isStateful()
   {
-    return this.jdField_f_of_type_JavaLangString;
+    return true;
   }
   
-  public boolean f()
+  protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    return this.jdField_e_of_type_Boolean;
+    boolean bool1 = false;
+    boolean bool2 = StateSet.stateSetMatches(jdField_a_of_type_ArrayOfInt, paramArrayOfInt);
+    if (this.jdField_c_of_type_Boolean != bool2)
+    {
+      this.jdField_c_of_type_Boolean = bool2;
+      if ((!this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_Boolean)) {
+        break label61;
+      }
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(jdField_a_of_type_AndroidGraphicsColorFilter);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      invalidateSelf();
+      bool1 = true;
+      return bool1;
+      label61:
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(null);
+    }
   }
   
-  public String g()
+  public void setAlpha(int paramInt)
   {
-    return this.jdField_g_of_type_JavaLangString;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    invalidateSelf();
   }
   
-  public boolean g()
-  {
-    return this.jdField_g_of_type_Boolean;
-  }
-  
-  public boolean h()
-  {
-    return this.h;
-  }
-  
-  public String toString()
-  {
-    new StringBuilder().append("miniAppEntryEnable:").append(this.jdField_a_of_type_Boolean).append(", miniAppRefreshTime:").append(this.jdField_a_of_type_Int).append(",miniAppLocalSearchEnable").append(this.jdField_b_of_type_Boolean);
-    return super.toString();
-  }
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amcz
  * JD-Core Version:    0.7.0.1
  */

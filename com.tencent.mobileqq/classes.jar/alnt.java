@@ -1,56 +1,23 @@
-import android.content.res.Resources;
-import android.os.SystemClock;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6;
 
 public class alnt
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public static almt a = new almt(0);
-  public static almt b = new almt(100000, 2130845932, 2130845933);
-  public static almt c = new almt(100001, 2130845932, 2130845932);
+  public alnt(ArkAppDeviceModule.ObserverMethod.6 param6, bbgg parambbgg) {}
   
-  public static almt a(int paramInt, QQAppInterface paramQQAppInterface, Resources paramResources, BaseAdapter paramBaseAdapter)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    return a(paramInt, paramQQAppInterface, paramResources, paramBaseAdapter, true);
-  }
-  
-  public static almt a(int paramInt, QQAppInterface paramQQAppInterface, Resources paramResources, BaseAdapter paramBaseAdapter, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BubbleUtils", 2, "getBubbleInfo, bubbleId=" + paramInt + ", shouldDownload=" + paramBoolean);
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_Bbgg.findViewById(2131365106)).setImageBitmap(paramBitmap);
     }
-    long l = SystemClock.elapsedRealtime();
-    if (paramInt == 100000) {
-      paramQQAppInterface = c;
-    }
-    do
-    {
-      return paramQQAppInterface;
-      if (paramInt == 100001) {
-        return b;
-      }
-      if (paramInt < 1) {
-        return a;
-      }
-      paramResources = ((BubbleManager)paramQQAppInterface.getManager(44)).a(paramInt, paramBoolean);
-      if (paramResources == null) {
-        break;
-      }
-      paramQQAppInterface = paramResources;
-    } while (!QLog.isColorLevel());
-    QLog.d("bubble_performance", 2, "getBubbleInfo time " + (SystemClock.elapsedRealtime() - l));
-    return paramResources;
-    if (QLog.isColorLevel()) {
-      QLog.d("bubble_performance", 2, "getBubbleInfo time default" + (SystemClock.elapsedRealtime() - l));
-    }
-    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alnt
  * JD-Core Version:    0.7.0.1
  */

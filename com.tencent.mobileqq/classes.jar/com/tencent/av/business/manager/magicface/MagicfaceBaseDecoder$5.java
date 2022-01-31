@@ -1,19 +1,19 @@
 package com.tencent.av.business.manager.magicface;
 
 import java.lang.ref.WeakReference;
-import kxq;
-import kxr;
+import lie;
+import lif;
 
 public class MagicfaceBaseDecoder$5
   implements Runnable
 {
-  public MagicfaceBaseDecoder$5(kxq paramkxq, String paramString) {}
+  public MagicfaceBaseDecoder$5(lie paramlie, String paramString) {}
   
   public void run()
   {
-    kxr localkxr = (kxr)this.this$0.a.get();
-    if (localkxr != null) {
-      localkxr.b(-1040L, this.a);
+    lif locallif = (lif)this.this$0.a.get();
+    if (locallif != null) {
+      locallif.b(-1040L, this.a);
     }
   }
 }

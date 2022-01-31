@@ -191,18 +191,21 @@ public class VideoEmbeddedWidgetClient
     if (this.mMediaPlayer != null)
     {
       if (!this.muted) {
-        break label60;
+        break label118;
       }
       this.mMediaPlayer.setVolume(0.0F, 0.0F);
     }
     for (;;)
     {
       this.mMediaPlayer.setLooping(this.loop);
-      if (this.initialTime > 0) {
+      if (this.initialTime > 0)
+      {
+        QLog.d("miniapp-embedded", 1, "before seekTo " + this.initialTime);
         this.mMediaPlayer.seekTo(this.initialTime);
+        QLog.d("miniapp-embedded", 1, "after seekTo " + this.initialTime);
       }
       return;
-      label60:
+      label118:
       this.mMediaPlayer.setVolume(1.0F, 1.0F);
     }
   }
@@ -237,7 +240,6 @@ public class VideoEmbeddedWidgetClient
     if (this.renderer != null) {
       this.renderer.setSurfaceSize(this.width, this.height);
     }
-    updateMediaPlayer();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -547,6 +549,9 @@ public class VideoEmbeddedWidgetClient
           this.isPaused = false;
           this.hasPrepared = false;
           this.hasCompleted = false;
+          if (this.mMediaPlayer.isPlaying()) {
+            this.mMediaPlayer.stop();
+          }
           this.mMediaPlayer.reset();
           if ((!this.filePath.startsWith("http")) && (!this.filePath.startsWith("https"))) {
             continue;
@@ -557,7 +562,6 @@ public class VideoEmbeddedWidgetClient
           this.handler.sendEmptyMessage(1003);
           this.mMediaPlayer.prepareAsync();
         }
-        updateMediaPlayer();
       }
       catch (Throwable localThrowable)
       {
@@ -587,27 +591,33 @@ public class VideoEmbeddedWidgetClient
   public void nativeDestroy()
   {
     QLog.i("miniapp-embedded", 1, "VideoEmbeddedWidgetClient.nativeDestroy " + this);
-    if (this.renderer != null)
+    this.isPaused = true;
+    try
     {
-      this.renderer.pauseRender();
-      this.renderer.onPause();
-      this.renderer = null;
+      if (this.renderer != null)
+      {
+        this.renderer.pauseRender();
+        this.renderer.onPause();
+        this.renderer = null;
+      }
+      if (this.videoTexture != null)
+      {
+        this.videoTexture.release();
+        this.videoTexture = null;
+      }
+      if (this.mediaPlaySurface != null)
+      {
+        this.mediaPlaySurface.release();
+        this.mediaPlaySurface = null;
+      }
+      if (this.mMediaPlayer != null)
+      {
+        this.mMediaPlayer.release();
+        this.mMediaPlayer = null;
+      }
+      return;
     }
-    if (this.videoTexture != null)
-    {
-      this.videoTexture.release();
-      this.videoTexture = null;
-    }
-    if (this.mediaPlaySurface != null)
-    {
-      this.mediaPlaySurface.release();
-      this.mediaPlaySurface = null;
-    }
-    if (this.mMediaPlayer != null)
-    {
-      this.mMediaPlayer.release();
-      this.mMediaPlayer = null;
-    }
+    finally {}
   }
   
   public void nativePause()
@@ -667,27 +677,33 @@ public class VideoEmbeddedWidgetClient
   public void onDestroy()
   {
     QLog.i("miniapp-embedded", 2, "VideoEmbeddedWidgetClient.onDestroy");
-    if (this.renderer != null)
+    this.isPaused = true;
+    try
     {
-      this.renderer.pauseRender();
-      this.renderer.onPause();
-      this.renderer = null;
+      if (this.renderer != null)
+      {
+        this.renderer.pauseRender();
+        this.renderer.onPause();
+        this.renderer = null;
+      }
+      if (this.videoTexture != null)
+      {
+        this.videoTexture.release();
+        this.videoTexture = null;
+      }
+      if (this.mediaPlaySurface != null)
+      {
+        this.mediaPlaySurface.release();
+        this.mediaPlaySurface = null;
+      }
+      if (this.mMediaPlayer != null)
+      {
+        this.mMediaPlayer.release();
+        this.mMediaPlayer = null;
+      }
+      return;
     }
-    if (this.videoTexture != null)
-    {
-      this.videoTexture.release();
-      this.videoTexture = null;
-    }
-    if (this.mediaPlaySurface != null)
-    {
-      this.mediaPlaySurface.release();
-      this.mediaPlaySurface = null;
-    }
-    if (this.mMediaPlayer != null)
-    {
-      this.mMediaPlayer.release();
-      this.mMediaPlayer = null;
-    }
+    finally {}
   }
   
   public void onRectChanged(Rect paramRect)
@@ -702,7 +718,8 @@ public class VideoEmbeddedWidgetClient
   
   public void onStateChanged()
   {
-    if (getCurrState() == this.stateCanPlay)
+    QLog.i("miniapp-embedded", 1, "onStateChanged : " + getCurrState() + "; videoTexture : " + this.videoTexture);
+    if ((getCurrState() == this.stateCanPlay) && (this.videoTexture != null))
     {
       QLog.d("miniapp-embedded", 1, "stateCanPlay!!!!");
       this.mediaPlaySurface = new Surface(this.videoTexture);
@@ -726,10 +743,11 @@ public class VideoEmbeddedWidgetClient
       this.isPaused = false;
       this.mMediaPlayer.start();
       sendTimingMsg(400L);
+      updateMediaPlayer();
       if (this.callBackWebview != null) {
         if (!this.autoplay) {
           if (this.hasPlayClicked) {
-            break label319;
+            break label372;
           }
         }
       }
@@ -745,7 +763,7 @@ public class VideoEmbeddedWidgetClient
         ((AppBrandRuntime)this.curAppBrandRuntime).serviceRuntime.evaluateSubcribeJS("onXWebVideoPlay", localJSONObject.toString(), this.curPageWebviewId);
         this.callBackWebview.evaluateSubcribeJS("onXWebVideoPlay", localJSONObject.toString(), this.curPageWebviewId);
         QLog.d("miniapp-embedded", 2, "evaluateSubcribeJS onXWebVideoPlay = " + localJSONObject.toString());
-        label319:
+        label372:
         if (this.mMediaPlayer == null) {}
       }
       catch (Throwable localThrowable2)
@@ -770,7 +788,7 @@ public class VideoEmbeddedWidgetClient
             break;
             localThrowable2 = localThrowable2;
             QLog.e("miniapp-embedded", 1, "VIDEO_EVENT_PLAY error.", localThrowable2);
-            break label319;
+            break label372;
             l = this.mMediaPlayer.getDuration();
           }
           return;
@@ -786,6 +804,16 @@ public class VideoEmbeddedWidgetClient
   public void onSurfaceCreated(Surface paramSurface)
   {
     QLog.d("miniapp-embedded", 1, "onSurfaceCreated: " + paramSurface);
+    if ((paramSurface == null) || (!paramSurface.isValid()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("onSurfaceCreated isValid() : ");
+      if (paramSurface != null) {}
+      for (paramSurface = Boolean.valueOf(paramSurface.isValid());; paramSurface = null)
+      {
+        QLog.e("miniapp-embedded", 1, paramSurface);
+        return;
+      }
+    }
     this.mSurface = paramSurface;
     this.renderer = new VideoTextureRenderer(BaseApplicationImpl.getContext(), this.mSurface, this.width, this.height, this.handler);
     sendEvent(Integer.valueOf(2));
@@ -811,27 +839,32 @@ public class VideoEmbeddedWidgetClient
   {
     QLog.i("miniapp-embedded", 1, "VideoEmbeddedWidgetClient.webviewDestory " + this);
     this.isPaused = true;
-    if (this.renderer != null)
+    try
     {
-      this.renderer.pauseRender();
-      this.renderer.onPause();
-      this.renderer = null;
+      if (this.renderer != null)
+      {
+        this.renderer.pauseRender();
+        this.renderer.onPause();
+        this.renderer = null;
+      }
+      if (this.videoTexture != null)
+      {
+        this.videoTexture.release();
+        this.videoTexture = null;
+      }
+      if (this.mediaPlaySurface != null)
+      {
+        this.mediaPlaySurface.release();
+        this.mediaPlaySurface = null;
+      }
+      if (this.mMediaPlayer != null)
+      {
+        this.mMediaPlayer.release();
+        this.mMediaPlayer = null;
+      }
+      return;
     }
-    if (this.videoTexture != null)
-    {
-      this.videoTexture.release();
-      this.videoTexture = null;
-    }
-    if (this.mediaPlaySurface != null)
-    {
-      this.mediaPlaySurface.release();
-      this.mediaPlaySurface = null;
-    }
-    if (this.mMediaPlayer != null)
-    {
-      this.mMediaPlayer.release();
-      this.mMediaPlayer = null;
-    }
+    finally {}
   }
   
   public void webviewPause()

@@ -1,46 +1,28 @@
-import java.lang.ref.WeakReference;
+import android.os.IInterface;
+import cooperation.qzone.plugin.PluginRecord;
 
-class bhjt
-  implements bhkl
+public abstract interface bhjt
+  extends IInterface
 {
-  private float jdField_a_of_type_Float;
-  private WeakReference<bhjr> jdField_a_of_type_JavaLangRefWeakReference;
+  public abstract PluginRecord a(String paramString);
   
-  public bhjt(bhjr parambhjr)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambhjr);
-  }
+  public abstract void a();
   
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
+  public abstract void a(bhhy parambhhy, int paramInt);
   
-  public void a(float paramFloat, String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
+  public abstract boolean a();
   
-  public void a(boolean paramBoolean, String paramString, bior parambior)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Float = 1.0F;
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-        ((bhjr)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b();
-      }
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Float = 0.0F;
-    } while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
-    ((bhjr)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0);
-  }
+  public abstract boolean a(String paramString);
+  
+  public abstract boolean a(String paramString, bhib parambhib, int paramInt);
+  
+  public abstract boolean b(String paramString);
+  
+  public abstract boolean c(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhjt
  * JD-Core Version:    0.7.0.1
  */

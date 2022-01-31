@@ -1,30 +1,30 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
-import bdcz;
-import bdfs;
-import bdfv;
-import bdfx;
-import bdfz;
+import begz;
+import bejs;
+import bejw;
+import bejy;
+import beka;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public abstract class BaseJsPlugin
   implements IJsPlugin
 {
-  protected bdfx mApkgInfo;
+  protected bejy mApkgInfo;
   protected Context mContext;
   protected boolean mIsDestroyed;
-  protected boolean mIsMiniGame;
-  public bdcz mMiniAppContext;
+  public boolean mIsMiniGame;
+  public begz mMiniAppContext;
   public MiniAppInfo mMiniAppInfo;
   
-  public void onCreate(bdcz parambdcz)
+  public void onCreate(begz parambegz)
   {
-    this.mMiniAppContext = parambdcz;
-    this.mContext = parambdcz.a();
-    this.mMiniAppInfo = parambdcz.a();
-    this.mApkgInfo = ((bdfx)this.mMiniAppInfo.apkgInfo);
-    this.mIsMiniGame = parambdcz.e();
+    this.mMiniAppContext = parambegz;
+    this.mContext = parambegz.a();
+    this.mMiniAppInfo = parambegz.a();
+    this.mApkgInfo = ((bejy)this.mMiniAppInfo.apkgInfo);
+    this.mIsMiniGame = parambegz.e();
     this.mIsDestroyed = false;
   }
   
@@ -33,7 +33,7 @@ public abstract class BaseJsPlugin
     this.mIsDestroyed = true;
   }
   
-  public boolean onInterceptJsEvent(bdfz parambdfz)
+  public boolean onInterceptJsEvent(beka parambeka)
   {
     return false;
   }
@@ -42,14 +42,14 @@ public abstract class BaseJsPlugin
   
   public void onResume() {}
   
-  protected void sendNativeViewEvent(bdfz parambdfz, int paramInt)
+  protected void sendNativeViewEvent(beka parambeka, int paramInt)
   {
-    this.mMiniAppContext.a(bdfs.a(parambdfz, paramInt));
+    this.mMiniAppContext.a(bejs.a(parambeka, paramInt));
   }
   
   public void sendSubscribeEvent(String paramString1, String paramString2)
   {
-    this.mMiniAppContext.a(bdfv.a(paramString1, paramString2, 0));
+    this.mMiniAppContext.a(bejw.a(paramString1, paramString2, 0));
   }
 }
 

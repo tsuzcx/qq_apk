@@ -1,38 +1,23 @@
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
 
-public class agpc
+public final class agpc
+  implements Parcelable.Creator<PhotoSendParams>
 {
-  int jdField_a_of_type_Int = 0;
-  agpf jdField_a_of_type_Agpf;
-  HashMap<String, PreloadManager.PathResult> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  List<DownloadParam> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
-  
-  public agpc(List<DownloadParam> paramList, agpf paramagpf)
+  public PhotoSendParams a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilList = paramagpf;
-    Object localObject;
-    this.jdField_a_of_type_Agpf = localObject;
+    return new PhotoSendParams(paramParcel);
   }
   
-  public void a()
+  public PhotoSendParams[] a(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      DownloadParam localDownloadParam = (DownloadParam)localIterator.next();
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.a(localDownloadParam, new agpd(this));
-    }
+    return new PhotoSendParams[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agpc
  * JD-Core Version:    0.7.0.1
  */

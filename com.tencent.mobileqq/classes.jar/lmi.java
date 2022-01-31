@@ -1,57 +1,121 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.LBSInfo;
+import android.graphics.Color;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.av.doodle.DoodleSurfaceView;
 
-public abstract class lmi
-  extends Binder
-  implements lmh
+public class lmi
 {
-  public static lmh a(IBinder paramIBinder)
+  public static boolean a;
+  
+  public static int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IQQServiceLocationCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof lmh))) {
-      return (lmh)localIInterface;
-    }
-    return new lmj(paramIBinder);
+    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public static int a(int[] paramArrayOfInt, float paramFloat)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.service.IQQServiceLocationCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
-      a(paramParcel1.readInt(), paramParcel1.readString());
-      return true;
+    if (paramFloat <= 0.0F) {
+      return paramArrayOfInt[0];
     }
-    paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
-    boolean bool;
-    if (paramParcel1.readInt() != 0)
+    if (paramFloat >= 1.0F) {
+      return paramArrayOfInt[(paramArrayOfInt.length - 1)];
+    }
+    paramFloat = (paramArrayOfInt.length - 1) * paramFloat;
+    int j = (int)paramFloat;
+    paramFloat -= j;
+    int i = paramArrayOfInt[j];
+    j = paramArrayOfInt[(j + 1)];
+    return Color.argb(a(Color.alpha(i), Color.alpha(j), paramFloat), a(Color.red(i), Color.red(j), paramFloat), a(Color.green(i), Color.green(j), paramFloat), a(Color.blue(i), Color.blue(j), paramFloat));
+  }
+  
+  public static DoodleSurfaceView a(ViewGroup paramViewGroup)
+  {
+    Object localObject2 = (DoodleSurfaceView)paramViewGroup.findViewById(2131372240);
+    Object localObject1 = localObject2;
+    View localView;
+    if (localObject2 == null)
     {
-      bool = true;
-      if (paramParcel1.readInt() == 0) {
-        break label125;
+      localObject1 = new DoodleSurfaceView(paramViewGroup.getContext());
+      localObject2 = new ViewGroup.LayoutParams(-1, -1);
+      localView = paramViewGroup.findViewById(2131372532);
+      if (localView == null) {
+        break label67;
       }
     }
-    label125:
-    for (paramParcel1 = (LBSInfo)LBSInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    label67:
+    for (int i = paramViewGroup.indexOfChild(localView);; i = -1)
     {
-      a(bool, paramParcel1);
-      return true;
-      bool = false;
-      break;
+      paramViewGroup.addView((View)localObject1, i, (ViewGroup.LayoutParams)localObject2);
+      return localObject1;
     }
+  }
+  
+  public static lmd a(int paramInt)
+  {
+    Object localObject;
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      localObject = new lmj();
+    }
+    for (;;)
+    {
+      ((lmd)localObject).a = paramInt;
+      return localObject;
+      localObject = new lmj();
+      continue;
+      localObject = new lmo(2130968654);
+    }
+  }
+  
+  public static void a(ViewGroup paramViewGroup)
+  {
+    View localView = paramViewGroup.findViewById(2131372240);
+    if (localView != null) {
+      paramViewGroup.removeView(localView);
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    axqw.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
+  
+  public static boolean a()
+  {
+    if (a) {
+      return true;
+    }
+    if (!b()) {
+      return false;
+    }
+    a = true;
+    return a;
+  }
+  
+  public static boolean b()
+  {
+    int i = lmb.e();
+    if (i < 4)
+    {
+      lcl.c("DoodleUtils", "isSupportOfDevice error cpucount = " + i);
+      return false;
+    }
+    long l = lmb.c();
+    if (l < 1400000L)
+    {
+      lcl.c("DoodleUtils", "isSupportOfDevice error cpuFrequency = " + l);
+      return false;
+    }
+    l = bbct.d();
+    if (l < 1073741824L)
+    {
+      lcl.c("DoodleUtils", "isSupportOfDevice error memory = " + l);
+      return false;
+    }
+    return true;
   }
 }
 

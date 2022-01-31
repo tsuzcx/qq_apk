@@ -1,33 +1,42 @@
-class avqs
-  implements aydf
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
+
+public class avqs
+  implements Manager
 {
-  avqs(avqo paramavqo, avnl paramavnl) {}
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ConcurrentHashMap<Long, ChatMessage> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void a(String paramString, int paramInt)
+  public avqs(QQAppInterface paramQQAppInterface)
   {
-    if ((this.jdField_a_of_type_Avnl.b != null) && (this.jdField_a_of_type_Avnl.b.equals(paramString)))
-    {
-      if (paramInt != 3) {
-        break label45;
-      }
-      this.jdField_a_of_type_Avnl.j = 2;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Avqo.a();
-      return;
-      label45:
-      if ((paramInt == 2) || (paramInt == 4)) {
-        this.jdField_a_of_type_Avnl.j = 1;
-      } else if (paramInt == 1) {
-        this.jdField_a_of_type_Avnl.j = 0;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public ChatMessage a(long paramLong)
+  {
+    return (ChatMessage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+  }
+  
+  public void a(ChatMessage paramChatMessage)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramChatMessage.uniseq), paramChatMessage);
+  }
+  
+  public ChatMessage b(long paramLong)
+  {
+    return (ChatMessage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avqs
  * JD-Core Version:    0.7.0.1
  */

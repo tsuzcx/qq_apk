@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
-import bdnw;
+import beka;
+import besl;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.IChoosePhotoListner;
 import java.util.ArrayList;
 
 class ImageJsPlugin$2
   implements MiniAppProxy.IChoosePhotoListner
 {
-  ImageJsPlugin$2(ImageJsPlugin paramImageJsPlugin, bdfz parambdfz) {}
+  ImageJsPlugin$2(ImageJsPlugin paramImageJsPlugin, beka parambeka) {}
   
   public void onResult(ArrayList<String> paramArrayList)
   {
-    bdnw.b("ImageJsPlugin", "openChoosePhotoActivity, path=" + paramArrayList);
+    besl.b("ImageJsPlugin", "openChoosePhotoActivity, path=" + paramArrayList);
     ImageJsPlugin.access$100(this.this$0, paramArrayList, this.val$req);
   }
 }

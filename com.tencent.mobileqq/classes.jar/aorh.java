@@ -1,28 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
 
-final class aorh
+public class aorh
   implements View.OnClickListener
 {
-  aorh(FileManagerEntity paramFileManagerEntity, aotc paramaotc) {}
+  public aorh(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
   public void onClick(View paramView)
   {
-    try
-    {
-      paramView = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      paramView.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin);
-      apcb.d(BaseActivity.sTopActivity.getString(2131627191));
-      if ((this.jdField_a_of_type_Aotc != null) && (this.jdField_a_of_type_Aotc.b())) {
-        apck.a(paramView, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      }
-      return;
-    }
-    catch (Exception paramView) {}
+    QfileCloudFileTabView.a(this.a, paramView, true);
+    paramView.sendAccessibilityEvent(8);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
 import android.util.Log;
-import atmp;
-import atmq;
+import aukn;
+import auko;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ class MiniAppUserAppInfoListManager$10
     try
     {
       localMiniAppEntity.setStatus(1001);
-      if (((atmp)localObject).a(localMiniAppEntity, "appId=?", new String[] { localMiniAppEntity.appId }))
+      if (((aukn)localObject).a(localMiniAppEntity, "appId=?", new String[] { localMiniAppEntity.appId }))
       {
         QLog.d("MiniAppUserAppInfoListManager", 2, "deleteMiniAppFromDB, delete " + localMiniAppEntity.name + " success from db");
         return;

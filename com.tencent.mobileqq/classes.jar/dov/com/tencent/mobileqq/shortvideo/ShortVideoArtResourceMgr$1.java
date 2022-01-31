@@ -1,10 +1,10 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bace;
-import bjac;
-import bjit;
-import bjje;
-import bjjf;
+import bbdj;
+import bkqo;
+import bkze;
+import bkzp;
+import bkzq;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import java.io.File;
 
@@ -13,8 +13,8 @@ public final class ShortVideoArtResourceMgr$1
 {
   public void run()
   {
-    String str1 = bjit.b();
-    String str2 = bjit.a();
+    String str1 = bkze.b();
+    String str2 = bkze.a();
     File[] arrayOfFile = new File(str1).listFiles();
     int j;
     Object localObject1;
@@ -38,8 +38,8 @@ public final class ShortVideoArtResourceMgr$1
           localObject2 = arrayOfFile[k].getName();
           if (!str2.equalsIgnoreCase((String)localObject2))
           {
-            localObject3 = bjje.a((String)localObject2);
-            m = ((bjjf)localObject3).a();
+            localObject3 = bkzp.a((String)localObject2);
+            m = ((bkzq)localObject3).a();
             if (m == 0) {
               break label197;
             }
@@ -51,7 +51,7 @@ public final class ShortVideoArtResourceMgr$1
           }
         }
         label197:
-        localObject3 = ((bjjf)localObject3).a();
+        localObject3 = ((bkzq)localObject3).a();
       }
     }
     label419:
@@ -82,8 +82,8 @@ public final class ShortVideoArtResourceMgr$1
           ((File)localObject1).delete();
         }
       }
-      if (new File(bjac.a).exists()) {
-        bace.a(bjac.a);
+      if (new File(bkqo.a).exists()) {
+        bbdj.a(bkqo.a);
       }
       return;
     }

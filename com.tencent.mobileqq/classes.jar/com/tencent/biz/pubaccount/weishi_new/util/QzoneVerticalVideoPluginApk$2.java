@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.weishi_new.util;
 
 import cooperation.qzone.LocalMultiProcConfig;
-import saf;
+import snb;
 
 public class QzoneVerticalVideoPluginApk$2
   implements Runnable
 {
-  public QzoneVerticalVideoPluginApk$2(saf paramsaf) {}
+  public QzoneVerticalVideoPluginApk$2(snb paramsnb) {}
   
   public void run()
   {

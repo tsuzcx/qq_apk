@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aejb;
-import azkh;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class TroopChatPie$1
   implements Runnable
 {
-  public TroopChatPie$1(aejb paramaejb) {}
+  TroopChatPie$1(TroopChatPie paramTroopChatPie) {}
   
   public void run()
   {
-    azkh.a(this.this$0.a);
+    this.this$0.a.showOverScrollHeader();
   }
 }
 

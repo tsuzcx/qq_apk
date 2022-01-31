@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import anrq;
-import ansi;
+import aoic;
+import aoiu;
 import com.tencent.qphone.base.util.QLog;
 
 public class ExtendFriendSearchFragment$6$1
   implements Runnable
 {
-  public ExtendFriendSearchFragment$6$1(anrq paramanrq) {}
+  public ExtendFriendSearchFragment$6$1(aoic paramaoic) {}
   
   public void run()
   {

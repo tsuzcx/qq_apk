@@ -1,22 +1,20 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-public class apyj
-  implements View.OnTouchListener
+class apyj
+  implements bcvx
 {
-  public apyj(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  apyj(apyg paramapyg) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt)
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    if (paramInt == 2) {
+      this.a.a.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apyj
  * JD-Core Version:    0.7.0.1
  */

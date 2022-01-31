@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.qzone.widget.BubbleUpFrameAnimView android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" qq:animHeight="28.0dip" qq:animHeightCnt="4" qq:animImageUrl="https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-photo/qq_qzone_android/feed_share_anim_darkmode.png" qq:animSpeed="25" qq:animWidth="28.0dip" qq:animWidthCnt="4"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qq="http://schemas.android.com/apk/res-auto" />
+<RelativeLayout android:id="@id/m6i" android:paddingBottom="8.0dip" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="53.0dip" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <dov.com.qq.im.ae.mode.AECaptureModeSelectPager android:id="@id/mfs" android:paddingLeft="153.5dip" android:paddingRight="153.5dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/lnb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:src="@drawable/hjt" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

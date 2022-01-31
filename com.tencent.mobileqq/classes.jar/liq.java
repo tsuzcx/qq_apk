@@ -1,77 +1,113 @@
-import com.tencent.av.random.RandomWebProtocol;
-import java.util.Random;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.shortvideo.panoramicvideo.Sensor.SensorEventHandler.CameraChangedCallBack;
+import com.tencent.mobileqq.shortvideo.util.CameraInterFace;
+import java.lang.ref.WeakReference;
 
 public class liq
-  extends lip
+  implements CameraInterFace
 {
-  int c;
-  int d;
-  int e;
-  String f;
+  private static volatile liq jdField_a_of_type_Liq;
+  private volatile int jdField_a_of_type_Int = -1;
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  private WeakReference<SensorEventHandler.CameraChangedCallBack> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public liq(RandomWebProtocol paramRandomWebProtocol, lip paramlip, String paramString, int paramInt1, int paramInt2, int paramInt3, String... paramVarArgs)
+  public static liq a()
   {
-    super(paramRandomWebProtocol, paramlip);
-    this.a = 1;
-    this.c = paramString;
-    this.d = paramInt1;
-    this.c = paramInt2;
-    this.e = paramInt3;
-    if ((this.e == 2) && (paramVarArgs != null) && (paramVarArgs.length == 1)) {
-      this.f = paramVarArgs[0];
+    if (jdField_a_of_type_Liq == null) {}
+    try
+    {
+      if (jdField_a_of_type_Liq == null) {
+        jdField_a_of_type_Liq = new liq();
+      }
+      return jdField_a_of_type_Liq;
     }
-    this.d = "[d] RequestDouble";
+    finally {}
   }
   
-  String a()
+  public void a(Activity paramActivity)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    Object localObject = localJSONObject1;
-    for (;;)
-    {
-      try
-      {
-        this.a = new JSONObject().put("peer_gender", this.c).put("session_type", this.d).put("reqtype", this.e);
-        localObject = localJSONObject1;
-        if (this.e == 2)
-        {
-          localObject = localJSONObject1;
-          if (this.f != null)
-          {
-            localObject = localJSONObject1;
-            this.a.put("uniqkey", this.f);
-            localObject = localJSONObject1;
-            JSONObject localJSONObject2 = new JSONObject(super.a());
-            localObject = localJSONObject1;
-            if (this.e != 1) {
-              break label178;
-            }
-            localObject = localJSONObject1;
-            i = this.b.a;
-            localObject = localJSONObject1;
-            localJSONObject1 = localJSONObject2.put("rand", i);
-            localObject = localJSONObject1;
-            return localJSONObject1.toString();
-          }
-        }
-        localObject = localJSONObject1;
-        if (this.e != 1) {
-          continue;
-        }
-        localObject = localJSONObject1;
-        this.b.a = new Random().nextInt();
-        continue;
-        localObject = localException;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return ((JSONObject)localObject).toString();
-      }
-      label178:
-      int i = new Random().nextInt();
+    if (paramActivity == null) {
+      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
     }
+    while (this.jdField_a_of_type_AndroidHardwareSensorManager != null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramActivity.getSystemService("sensor"));
+  }
+  
+  public void a(SensorEventListener paramSensorEventListener)
+  {
+    if ((this.jdField_a_of_type_AndroidHardwareSensorManager == null) || (paramSensorEventListener == null)) {}
+    Sensor localSensor;
+    do
+    {
+      return;
+      localSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(11);
+    } while (localSensor == null);
+    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(paramSensorEventListener, localSensor, 1);
+  }
+  
+  public void a(SensorEventHandler.CameraChangedCallBack paramCameraChangedCallBack)
+  {
+    if (paramCameraChangedCallBack == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramCameraChangedCallBack);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    b(paramBoolean);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    SensorEventHandler.CameraChangedCallBack localCameraChangedCallBack;
+    do
+    {
+      return;
+      localCameraChangedCallBack = (SensorEventHandler.CameraChangedCallBack)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localCameraChangedCallBack == null);
+    localCameraChangedCallBack.onCameraChanged(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {}
+    while (this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(11) == null) {
+      return false;
+    }
+    return true;
+  }
+  
+  public void b(SensorEventListener paramSensorEventListener)
+  {
+    if ((this.jdField_a_of_type_AndroidHardwareSensorManager == null) || (paramSensorEventListener == null)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(paramSensorEventListener);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int getCameraID()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

@@ -16,8 +16,8 @@ import android.view.Display;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import awih;
-import awii;
+import axhn;
+import axho;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
@@ -235,7 +235,7 @@ public class CameraSurfaceView
   
   boolean canFocus()
   {
-    return !awii.d(awii.a);
+    return !axho.d(axho.a);
   }
   
   public void closeCamera()
@@ -317,7 +317,7 @@ public class CameraSurfaceView
             bool1 = bool2;
           }
         }
-      } while (!awih.a().a(paramString));
+      } while (!axhn.a().a(paramString));
       localRuntimeException.setFocusMode(paramString);
       bool2 = setCameraParameters(localRuntimeException);
       bool1 = bool2;
@@ -356,7 +356,7 @@ public class CameraSurfaceView
       {
         mCamera = Camera.open(i);
         i = 90;
-        if (awii.d(awii.g)) {
+        if (axho.d(axho.g)) {
           i = 270;
         }
         mCamera.setDisplayOrientation(i);

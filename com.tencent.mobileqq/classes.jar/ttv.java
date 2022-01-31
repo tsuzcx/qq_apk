@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.widget.AbsListView;
 
-class ttv
-  implements DialogInterface.OnClickListener
+public class ttv
+  implements bfob
 {
-  ttv(ttr paramttr) {}
+  public ttv(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    ttr.a(this.a);
-    urp.a("play_video", "clk_window", 0, 0, new String[0]);
+    this.a.b = paramInt1;
   }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.widget.TextView;
 
-public abstract interface baof
+public class baof
+  extends adfp
 {
-  public abstract void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
-  
-  public abstract void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3);
+  public View a;
+  public TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baof
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,35 @@
-import com.tencent.mobileqq.apollo.GLTextureView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class aihx
-  extends aihw
+  implements DialogInterface.OnClickListener
 {
-  protected int a;
-  protected int b;
-  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
-  protected int c;
-  protected int d;
-  protected int e;
-  protected int f;
+  public aihx(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public aihx(GLTextureView paramGLTextureView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramGLTextureView, new int[] { 12324, paramInt1, 12323, paramInt2, 12322, paramInt3, 12321, paramInt4, 12325, paramInt5, 12326, paramInt6, 12344 });
-    this.a = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.e = paramInt5;
-    this.f = paramInt6;
-  }
-  
-  private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt1, int paramInt2)
-  {
-    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt1, this.jdField_b_of_type_ArrayOfInt)) {
-      paramInt2 = this.jdField_b_of_type_ArrayOfInt[0];
-    }
-    return paramInt2;
-  }
-  
-  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
-  {
-    int j = paramArrayOfEGLConfig.length;
-    int i = 0;
-    while (i < j)
-    {
-      EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
-      int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325, 0);
-      int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326, 0);
-      if ((k >= this.e) && (m >= this.f))
-      {
-        k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324, 0);
-        m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323, 0);
-        int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322, 0);
-        int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321, 0);
-        if ((k == this.a) && (m == this.jdField_b_of_type_Int) && (n == this.c) && (i1 == this.d)) {
-          return localEGLConfig;
-        }
-      }
-      i += 1;
-    }
-    return null;
+    Object localObject = ShortVideoPreviewActivity.a(this.a);
+    paramDialogInterface = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    localObject = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
+    Intent localIntent = new Intent();
+    localIntent.setClassName((String)localObject, paramDialogInterface);
+    localIntent.addFlags(603979776);
+    localIntent.putExtra("file_send_path", this.a.c);
+    localIntent.putExtra("file_send_size", this.a.a);
+    localIntent.putExtra("file_send_duration", this.a.jdField_b_of_type_Long);
+    localIntent.putExtra("file_source", this.a.jdField_b_of_type_JavaLangString);
+    this.a.startActivity(localIntent);
+    ShortVideoPreviewActivity.a(this.a);
+    localObject = new Intent("key_video_select_confirm_ok_click");
+    ((Intent)localObject).putExtra("className", paramDialogInterface);
+    this.a.sendBroadcast((Intent)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aihx
  * JD-Core Version:    0.7.0.1
  */

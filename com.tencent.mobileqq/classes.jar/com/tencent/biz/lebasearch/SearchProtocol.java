@@ -12,39 +12,39 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import mmi;
-import mpl;
 import mqq.app.NewIntent;
-import mry;
-import mrz;
-import msa;
+import mxh;
+import nam;
+import ncz;
+import nda;
+import ndb;
 
 public class SearchProtocol
 {
-  public static void a(AppInterface paramAppInterface, Context paramContext, msa parammsa)
+  public static void a(AppInterface paramAppInterface, Context paramContext, ndb paramndb)
   {
-    if ((paramAppInterface == null) || (parammsa == null)) {
+    if ((paramAppInterface == null) || (paramndb == null)) {
       return;
     }
-    paramContext = new mry(Looper.getMainLooper(), parammsa);
-    if (mpl.a() == 0)
+    paramContext = new ncz(Looper.getMainLooper(), paramndb);
+    if (nam.a() == 0)
     {
       paramAppInterface = paramContext.obtainMessage();
       paramAppInterface.arg1 = -1;
       paramContext.sendMessage(paramAppInterface);
       return;
     }
-    parammsa = new NewIntent(paramAppInterface.getApp(), mmi.class);
-    parammsa.putExtra("cmd", "PubAccountArticleCenter.GetSearchHotwords");
+    paramndb = new NewIntent(paramAppInterface.getApp(), mxh.class);
+    paramndb.putExtra("cmd", "PubAccountArticleCenter.GetSearchHotwords");
     mobileqq_dynamic_search.RequestBody localRequestBody = new mobileqq_dynamic_search.RequestBody();
     localRequestBody.cmd.set(1);
     mobileqq_dynamic_search.RootSearcherRequest localRootSearcherRequest = new mobileqq_dynamic_search.RootSearcherRequest();
     localRootSearcherRequest.business.set(128);
     localRequestBody.search_request.set(localRootSearcherRequest);
-    localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.2.6"));
-    parammsa.putExtra("data", localRequestBody.toByteArray());
-    parammsa.setObserver(new mrz(paramContext));
-    paramAppInterface.startServlet(parammsa);
+    localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.2.8"));
+    paramndb.putExtra("data", localRequestBody.toByteArray());
+    paramndb.setObserver(new nda(paramContext));
+    paramAppInterface.startServlet(paramndb);
   }
   
   private static int b(String paramString)

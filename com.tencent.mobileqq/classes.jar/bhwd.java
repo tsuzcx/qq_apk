@@ -1,46 +1,46 @@
-import android.support.annotation.NonNull;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Handler;
+import android.os.IBinder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 class bhwd
-  extends bhwc<T>.bhwe
-  implements bhvb
+  implements ServiceConnection
 {
-  @NonNull
-  final bhvg jdField_a_of_type_Bhvg;
+  bhwd(bhwb parambhwb) {}
   
-  bhwd(bhvg parambhvg, @NonNull bhwg<? super T> parambhwg)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    super(parambhvg, localbhwg);
-    this.jdField_a_of_type_Bhvg = parambhwg;
+    bhwb.a(this.a).removeMessages(1);
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_Bhvy = bhvz.a(paramIBinder);
+    this.a.b();
+    QLog.d("SmartDeviceIPCHost", 1, "plugin service connected");
+    ymw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Net_Start_Service_Host", 0, 1, 0);
   }
   
-  void a()
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    this.jdField_a_of_type_Bhvg.a().b(this);
-  }
-  
-  public void a(bhvg parambhvg, bhvd parambhvd)
-  {
-    if (this.jdField_a_of_type_Bhvg.a().a() == bhve.a)
+    try
     {
-      this.jdField_a_of_type_Bhwc.a(this.jdField_a_of_type_Bhwg);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unbindService(this.a.jdField_a_of_type_AndroidContentServiceConnection);
+      label20:
+      this.a.jdField_a_of_type_Bhvy = null;
+      this.a.jdField_a_of_type_Boolean = false;
+      QLog.d("SmartDeviceIPCHost", 1, "plugin service disconnected");
       return;
     }
-    a(a());
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_Bhvg.a().a().a(bhve.d);
-  }
-  
-  boolean a(bhvg parambhvg)
-  {
-    return this.jdField_a_of_type_Bhvg == parambhvg;
+    catch (Exception paramComponentName)
+    {
+      break label20;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhwd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,85 +1,57 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.List;
+import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class azca
-  extends azbz
 {
-  private TextView a;
-  private View b;
-  
-  protected azca(View paramView)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong, String paramString, int paramInt5, azcc paramazcc)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312486));
-    this.b = ((ImageView)paramView.findViewById(2131302908));
-  }
-  
-  public void a(View paramView, HWReciteItem paramHWReciteItem, azbx paramazbx)
-  {
-    boolean bool2 = false;
-    switch (paramView.getId())
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-    default: 
-      return;
-    case 2131312486: 
-      paramHWReciteItem = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-      if ((paramHWReciteItem != null) && (paramHWReciteItem.isActive())) {
-        paramHWReciteItem.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+      localJSONObject.put("start", paramInt1);
+      localJSONObject.put("num", paramInt2);
+      localJSONObject.put("type", paramInt3);
+      if ((paramInt3 == 1) || (paramInt3 == 2)) {
+        localJSONObject.put("theme_id", paramInt4);
       }
-      paramHWReciteItem = (azac)paramazbx.a;
-      boolean bool1 = bool2;
-      if (paramHWReciteItem.a != null)
+      localJSONObject.put("from", 2);
+      localJSONObject.put("bid", paramLong);
+      localJSONObject.put("pid", paramString);
+      if (paramInt5 != -1) {
+        localJSONObject.put("recommend_by_bid", paramInt5);
+      }
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
       {
-        bool1 = bool2;
-        if (!paramHWReciteItem.a.isEmpty()) {
-          bool1 = true;
-        }
+        WebSsoBody.WebSsoRequestBody localWebSsoRequestBody;
+        paramString.printStackTrace();
       }
-      paramView = begr.d(paramView.getContext());
-      paramView.a(new azcb(this, paramView, bool1, paramHWReciteItem));
-      if (bool1) {
-        paramView.c(ajjy.a(2131647458));
-      }
-      paramView.c(ajjy.a(2131647457));
-      paramView.d(ajjy.a(2131647455));
-      paramView.show();
-      return;
     }
-    paramHWReciteItem.a().a(paramazbx);
-  }
-  
-  public void a(HWReciteItem paramHWReciteItem, azbx paramazbx, azac paramazac, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (TextUtils.isEmpty(paramazac.c))
-    {
-      StringBuilder localStringBuilder = new StringBuilder(ajjy.a(2131647456)).append(paramazac.b);
-      if ((paramazac.a != null) && (!paramazac.a.isEmpty())) {
-        localStringBuilder.append(ayzg.a(paramazac.a));
-      }
-      paramazac.c = localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, localJSONObject.toString());
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramazac.c);
-    if (paramInt != 1)
-    {
-      paramHWReciteItem.b(this.jdField_a_of_type_AndroidWidgetTextView, paramazbx);
-      paramHWReciteItem.b(this.b, paramazbx);
-      this.b.setVisibility(0);
-      return;
-    }
-    this.b.setVisibility(8);
+    paramString = new NewIntent(BaseApplicationImpl.getApplication().getApplicationContext(), mxh.class);
+    paramString.putExtra("cmd", "MQUpdateSvc_com_qq_buluo.web.shortvideo_feeds");
+    localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
+    localWebSsoRequestBody.type.set(0);
+    localWebSsoRequestBody.data.set(localJSONObject.toString());
+    paramString.putExtra("data", localWebSsoRequestBody.toByteArray());
+    paramString.setObserver(new azcb(paramazcc));
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azca
  * JD-Core Version:    0.7.0.1
  */

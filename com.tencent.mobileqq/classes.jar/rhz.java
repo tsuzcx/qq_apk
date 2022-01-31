@@ -1,15 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.BannerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 
 public class rhz
   implements View.OnClickListener
 {
-  public rhz(BannerAdapter paramBannerAdapter, int paramInt) {}
+  public rhz(SlideActiveAnimController paramSlideActiveAnimController) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.a(this.jdField_a_of_type_Int);
+    SlideActiveAnimController.a(this.a);
   }
 }
 

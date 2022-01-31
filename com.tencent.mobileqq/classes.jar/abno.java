@@ -1,25 +1,19 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import mqq.app.QQPermissionCallback;
 
 public class abno
-  implements AdapterView.OnItemClickListener
+  implements QQPermissionCallback
 {
-  public abno(QuickLoginActivity paramQuickLoginActivity) {}
+  public abno(NearbyActivity paramNearbyActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramAdapterView = (String)((HashMap)this.a.a.get(paramInt)).get("qq");
-    libsafeedit.getLoginLegal((String)((HashMap)this.a.a.get(paramInt)).get("password"));
-    paramView = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
-    this.a.getAppRuntime().login(paramAdapterView, paramView, QuickLoginActivity.a(this.a));
-    Toast.makeText(this.a.getApplicationContext(), "logining...", 0).show();
+    bbcv.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a();
   }
 }
 

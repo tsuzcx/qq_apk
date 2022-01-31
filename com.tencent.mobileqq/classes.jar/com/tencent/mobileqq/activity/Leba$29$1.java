@@ -1,25 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import abai;
-import abat;
-import aiba;
-import java.util.List;
+import abkq;
+import arpq;
 
 public class Leba$29$1
   implements Runnable
 {
-  public Leba$29$1(abat paramabat, List paramList) {}
+  public Leba$29$1(abkq paramabkq) {}
   
   public void run()
   {
-    if (abai.a(this.jdField_a_of_type_Abat.a) != null)
-    {
-      abai.a(this.jdField_a_of_type_Abat.a).clear();
-      abai.a(this.jdField_a_of_type_Abat.a).addAll(this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_Abat.a.a != null) {
-        this.jdField_a_of_type_Abat.a.a.notifyDataSetChanged();
-      }
-      abai.c(this.jdField_a_of_type_Abat.a);
+    if ((Leba.a(this.a.a) != null) && (Leba.a(this.a.a) != null)) {
+      Leba.a(this.a.a).b();
     }
   }
 }

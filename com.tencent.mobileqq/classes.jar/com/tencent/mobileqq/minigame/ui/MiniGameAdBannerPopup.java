@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.minigame.ui;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Build.VERSION;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.TypedValue;
@@ -15,10 +17,10 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bbtm;
-import bgqu;
-import bgqw;
-import bgqx;
+import bcxm;
+import bhzt;
+import bhzv;
+import bhzw;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -233,11 +235,11 @@ public class MiniGameAdBannerPopup
     }
     try
     {
-      bgqu localbgqu = new bgqu();
-      localbgqu.jdField_a_of_type_Int = 258;
-      localbgqu.b = 1;
+      bhzt localbhzt = new bhzt();
+      localbhzt.jdField_a_of_type_Int = 258;
+      localbhzt.b = 1;
       GET_AD_CALLBACK = new MiniGameAdBannerPopup.GetAdCallback(paramContext, paramMiniAppConfig);
-      bgqw.a().a(Collections.singletonList(localbgqu), GET_AD_CALLBACK);
+      bhzv.a().a(Collections.singletonList(localbhzt), GET_AD_CALLBACK);
       return;
     }
     catch (Exception paramContext)
@@ -447,20 +449,20 @@ public class MiniGameAdBannerPopup
   }
   
   @NotNull
-  private static bgqx newTianShuReportData(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
+  private static bhzw newTianShuReportData(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
   {
     int i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-    bgqx localbgqx = new bgqx();
-    localbgqx.b = (String.valueOf(bbtm.a().a()) + '_' + i);
-    localbgqx.d = paramInt;
-    localbgqx.jdField_e_of_type_Int = 1;
-    localbgqx.g = String.valueOf(paramAdItem.iAdId.get());
-    localbgqx.n = paramString;
-    localbgqx.jdField_a_of_type_Long = i;
-    localbgqx.jdField_a_of_type_Int = 1;
-    localbgqx.jdField_e_of_type_JavaLangString = "tianshu.81";
-    localbgqx.i = "";
-    return localbgqx;
+    bhzw localbhzw = new bhzw();
+    localbhzw.b = (String.valueOf(bcxm.a().a()) + '_' + i);
+    localbhzw.d = paramInt;
+    localbhzw.jdField_e_of_type_Int = 1;
+    localbhzw.g = String.valueOf(paramAdItem.iAdId.get());
+    localbhzw.n = paramString;
+    localbhzw.jdField_a_of_type_Long = i;
+    localbhzw.jdField_a_of_type_Int = 1;
+    localbhzw.jdField_e_of_type_JavaLangString = "tianshu.81";
+    localbhzw.i = "";
+    return localbhzw;
   }
   
   private static void performReport(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
@@ -470,13 +472,19 @@ public class MiniGameAdBannerPopup
   
   private static void showAdBannerPopupWindow(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, TianShuAccess.AdItem paramAdItem)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (TextUtils.isEmpty(paramString4))) {
-      return;
-    }
-    View localView = LayoutInflater.from(paramContext).inflate(2131493709, null);
-    ImageView localImageView = (ImageView)localView.findViewById(2131304580);
-    TextView localTextView = (TextView)localView.findViewById(2131304583);
-    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131304581);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (TextUtils.isEmpty(paramString4))) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramContext instanceof Activity));
+      localObject = (Activity)paramContext;
+    } while ((((Activity)localObject).isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (((Activity)localObject).isDestroyed())));
+    View localView = LayoutInflater.from(paramContext).inflate(2131559276, null);
+    ImageView localImageView = (ImageView)localView.findViewById(2131370261);
+    TextView localTextView = (TextView)localView.findViewById(2131370264);
+    Object localObject = (LinearLayout)localView.findViewById(2131370262);
     Dialog localDialog = new Dialog(paramContext);
     localDialog.setCancelable(false);
     if (localDialog.getWindow() != null)
@@ -498,7 +506,7 @@ public class MiniGameAdBannerPopup
     paramString2.setOnClickListener(new MiniGameAdBannerPopup.5(localDialog, paramContext, paramString4, paramAdItem, paramString1));
     paramContext = new LinearLayout.LayoutParams(-1, (int)TypedValue.applyDimension(1, 229.0F, paramContext.getResources().getDisplayMetrics()));
     paramContext.gravity = 1;
-    localLinearLayout.addView(paramString2, paramContext);
+    ((LinearLayout)localObject).addView(paramString2, paramContext);
     localDialog.show();
   }
 }

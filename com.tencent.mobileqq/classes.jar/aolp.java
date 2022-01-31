@@ -1,134 +1,325 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class aolp
-  extends aoko
+public class aolp
 {
-  public aolp(aokk paramaokk)
+  private final int jdField_a_of_type_Int = 7;
+  private ArrayList<aolq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private int b = -1;
+  private int c = -1;
+  private int d;
+  private int e;
+  
+  public aolp(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super(paramaokk);
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
+    this.e = paramInt4;
   }
   
-  protected String a()
+  private int a()
   {
-    return "StateUploadingWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    switch (this.b)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+    default: 
+      return 0;
+    case 0: 
+      return -30;
+    case 1: 
+      return -80;
+    case 2: 
+      return -10;
+    }
+    return -60;
+  }
+  
+  private void a(ArrayList<aogi> paramArrayList)
+  {
+    if (paramArrayList == null) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < paramArrayList.size())
+      {
+        a(new aolq((aogi)paramArrayList.get(i)));
+        i += 1;
+      }
+    }
+  }
+  
+  public ArrayList<aolq> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a()
+  {
+    int m = 0;
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0))
+    {
+      QLog.e("RaceLine horserace", 2, "一个都没有，没法复制啊大哥");
       return;
     }
-    aokk.c(this.jdField_a_of_type_Aokk, 9, 14);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateUploadingWhenRecv)");
-    this.jdField_a_of_type_Aoko = new aolq(this.jdField_a_of_type_Aokk);
-  }
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    b(paramInt1, paramInt2);
-  }
-  
-  protected void a(int paramInt, String paramString)
-  {
-    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    int j = 0;
+    int i = 0;
+    for (int k = 0; j < this.jdField_a_of_type_JavaUtilArrayList.size(); k = n)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      int i1 = ((aolq)this.jdField_a_of_type_JavaUtilArrayList.get(j)).d();
+      n = k + i1;
+      k = i;
+      if (i < i1) {
+        k = i1;
+      }
+      j += 1;
+      i = k;
+    }
+    int n = this.c + i;
+    float f2 = 0.0F;
+    float f1;
+    if (k < n)
+    {
+      f1 = n / k;
+      if (f1 <= 7.0F) {
+        break label306;
+      }
+      f1 = 7.0F;
+    }
+    label306:
+    for (;;)
+    {
+      ArrayList localArrayList = new ArrayList();
+      j = 0;
+      for (;;)
+      {
+        k = m;
+        if (j >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+          break;
+        }
+        aogi localaogi = ((aolq)this.jdField_a_of_type_JavaUtilArrayList.get(j)).a;
+        if (localaogi != null) {
+          localArrayList.add(new aogi(localaogi.jdField_a_of_type_Int, localaogi.jdField_a_of_type_JavaLangString, localaogi.b));
+        }
+        j += 1;
+      }
+      for (;;)
+      {
+        f2 = f1;
+        if (k >= f1) {
+          break;
+        }
+        a(localArrayList);
+        k += 1;
+      }
+      QLog.d("RaceLine horserace", 2, "finalWid: " + n + " parent: " + this.c + " maxTagwid:" + i + " copyTime : " + f2);
       return;
     }
-    aokk.b(this.jdField_a_of_type_Aokk, 10, 12);
-    aokk.c(this.jdField_a_of_type_Aokk, 10, 12);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateExcepInvalidWhenPause)");
-    this.jdField_a_of_type_Aoko = new aoky(this.jdField_a_of_type_Aokk);
   }
   
-  protected void a(long paramLong)
+  public void a(int paramInt)
   {
-    b(paramLong);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    int m = 0;
+    int j = 0;
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      QLog.e("RaceLine horserace", 2, "tag 数量连2个都没有，不滑了哦～嘤嘤嘤嘤嘤～");
       return;
     }
-    if (paramBoolean == true)
+    if ((this.c == -1) || (this.c < 10))
     {
-      aokk.a(this.jdField_a_of_type_Aokk);
-      aokk.b(this.jdField_a_of_type_Aokk, 10, 11);
-      aokk.c(this.jdField_a_of_type_Aokk, 10, 14);
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateUploadingWhenPause)");
-      this.jdField_a_of_type_Aoko = new aolp(this.jdField_a_of_type_Aokk);
+      QLog.e("RaceLine horserace", 2, "mParentWidth err num");
       return;
     }
-    aokk.b(this.jdField_a_of_type_Aokk, 10, 10);
-    aokk.c(this.jdField_a_of_type_Aokk, 10, 10);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateChangeToOffFailedWhenPause)");
-    this.jdField_a_of_type_Aoko = new aoks(this.jdField_a_of_type_Aokk);
-    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]  recv failed!!");
-  }
-  
-  protected boolean a(int paramInt, String paramString, long paramLong)
-  {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
+    aolq localaolq1;
+    int k;
+    aolq localaolq2;
+    if (paramInt > 0)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
+      for (i = -1; j < this.jdField_a_of_type_JavaUtilArrayList.size(); i = k)
+      {
+        localaolq1 = (aolq)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+        localaolq1.a(localaolq1.a() + paramInt);
+        m = localaolq1.a();
+        k = i;
+        if (m > 0)
+        {
+          k = i;
+          if (m < this.c)
+          {
+            k = i;
+            if (i == -1) {
+              k = j;
+            }
+          }
+        }
+        j += 1;
+      }
+      if (i == -1)
+      {
+        QLog.e("RaceLine horserace", 2, "SubIndex out of range");
+        return;
+      }
+      paramInt = i;
+      if (paramInt >= 0)
+      {
+        localaolq1 = (aolq)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+        if (localaolq1.a() > this.c)
+        {
+          localaolq2 = localaolq1.b();
+          if (localaolq2 != null) {
+            break label242;
+          }
+          QLog.e("RaceLine horserace", 2, "rightBro is null " + paramInt + "  index:" + this.b);
+        }
+        for (;;)
+        {
+          paramInt -= 1;
+          break;
+          label242:
+          localaolq1.a(localaolq2.a() - localaolq1.c());
+        }
+      }
+      paramInt = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+      label271:
+      if (paramInt > i)
+      {
+        localaolq1 = (aolq)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+        if (localaolq1.a() > this.c)
+        {
+          localaolq2 = localaolq1.b();
+          if (localaolq2 != null) {
+            break label357;
+          }
+          QLog.e("RaceLine horserace", 2, "rightBro is null " + paramInt + "  index:" + this.b);
+        }
+      }
+      for (;;)
+      {
+        paramInt -= 1;
+        break label271;
+        break;
+        label357:
+        localaolq1.a(localaolq2.a() - localaolq1.c());
+      }
     }
-    localFileManagerEntity.Uuid = new String(paramString);
-    localFileManagerEntity.fProgress = 0.0F;
-    if ((apck.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
-      this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
-    }
-    this.jdField_a_of_type_Aokk.a(paramLong, localFileManagerEntity.peerUin);
-    localFileManagerEntity.setCloudType(1);
-    aokk.b(this.jdField_a_of_type_Aokk, 1, 3);
-    aokk.c(this.jdField_a_of_type_Aokk, 1, 3);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateUploadoneWhenPause)");
-    this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    this.jdField_a_of_type_Aoko = new aols(this.jdField_a_of_type_Aokk);
-    return true;
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    j = 0;
+    for (int i = -1; j < this.jdField_a_of_type_JavaUtilArrayList.size(); i = k)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      localaolq1 = (aolq)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+      localaolq1.a(localaolq1.a() + paramInt);
+      k = localaolq1.a();
+      int n = localaolq1.c() + k;
+      k = i;
+      if (n > 0)
+      {
+        k = i;
+        if (n < this.c)
+        {
+          k = i;
+          if (i == -1) {
+            k = j;
+          }
+        }
+      }
+      j += 1;
+    }
+    if (i == -1)
+    {
+      QLog.e("RaceLine horserace", 2, "SubIndex out of range");
       return;
     }
-    aokk.b(this.jdField_a_of_type_Aokk, 10, 9);
-    aokk.c(this.jdField_a_of_type_Aokk, 10, 9);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateCancelUploadWhenPause)");
-    this.jdField_a_of_type_Aoko = new aokq(this.jdField_a_of_type_Aokk);
+    paramInt = i;
+    j = m;
+    if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      localaolq1 = (aolq)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      if (localaolq1.a() + localaolq1.c() < 0)
+      {
+        localaolq2 = localaolq1.a();
+        if (localaolq2 != null) {
+          break label587;
+        }
+        QLog.e("RaceLine horserace", 2, "leftBro is null " + paramInt + "  index:" + this.b);
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break;
+        label587:
+        j = localaolq2.a();
+        localaolq1.a(localaolq2.c() + j);
+      }
+    }
+    label608:
+    if (j < i)
+    {
+      localaolq1 = (aolq)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+      if (localaolq1.a() + localaolq1.c() < 0)
+      {
+        localaolq2 = localaolq1.a();
+        if (localaolq2 != null) {
+          break label696;
+        }
+        QLog.e("RaceLine horserace", 2, "leftBro is null " + j + "  index:" + this.b);
+      }
+    }
+    for (;;)
+    {
+      j += 1;
+      break label608;
+      break;
+      label696:
+      paramInt = localaolq2.a();
+      localaolq1.a(localaolq2.c() + paramInt);
+    }
   }
   
-  protected void f()
+  public void a(aolq paramaolq)
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. doSomeThingOnUploadDone entity is null");
-      return;
+      ((aolq)this.jdField_a_of_type_JavaUtilArrayList.get(0)).a(paramaolq);
+      ((aolq)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1)).b(paramaolq);
+      paramaolq.b((aolq)this.jdField_a_of_type_JavaUtilArrayList.get(0));
+      paramaolq.a((aolq)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1));
     }
-    localFileManagerEntity.fProgress = 0.0F;
-    localFileManagerEntity.setCloudType(1);
-    aokk.b(this.jdField_a_of_type_Aokk, 1, 3);
-    aokk.c(this.jdField_a_of_type_Aokk, 1, 3);
-    this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateGotoOffFileProcess)");
-    this.jdField_a_of_type_Aoko = new aola(this.jdField_a_of_type_Aokk);
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramaolq);
+      return;
+      paramaolq.a(paramaolq);
+      paramaolq.b(paramaolq);
+    }
+  }
+  
+  public void b()
+  {
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      aolq localaolq1 = (aolq)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      int j = this.b;
+      if (i == 0)
+      {
+        localaolq1.a(a() + 0);
+        localaolq1.b(this.d * j + (j + 1) * this.e);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        aolq localaolq2 = (aolq)this.jdField_a_of_type_JavaUtilArrayList.get(i - 1);
+        int k = localaolq2.a();
+        localaolq1.a(localaolq2.c() + k);
+        localaolq1.b(this.d * j + (j + 1) * this.e);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aolp
  * JD-Core Version:    0.7.0.1
  */

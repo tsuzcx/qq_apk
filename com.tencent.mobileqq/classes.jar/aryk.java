@@ -1,29 +1,19 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 public class aryk
+  implements aruw
 {
-  public static HashMap<Integer, String> a = new HashMap();
+  public aryk(MapWidget paramMapWidget) {}
   
-  static
+  public void a(LatLng paramLatLng, Double paramDouble, boolean paramBoolean)
   {
-    a.put(Integer.valueOf(10001), BaseApplication.getContext().getString(2131652995));
-    a.put(Integer.valueOf(10002), BaseApplication.getContext().getString(2131652993));
-    a.put(Integer.valueOf(10003), BaseApplication.getContext().getString(2131653850));
-    a.put(Integer.valueOf(10004), BaseApplication.getContext().getString(2131625729));
-    a.put(Integer.valueOf(10005), BaseApplication.getContext().getString(2131652990));
-    a.put(Integer.valueOf(10006), BaseApplication.getContext().getString(2131653007));
-    a.put(Integer.valueOf(10007), BaseApplication.getContext().getString(2131652994));
-  }
-  
-  public static String a(int paramInt)
-  {
-    return (String)a.get(Integer.valueOf(paramInt));
+    this.a.a(paramLatLng, paramDouble, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aryk
  * JD-Core Version:    0.7.0.1
  */

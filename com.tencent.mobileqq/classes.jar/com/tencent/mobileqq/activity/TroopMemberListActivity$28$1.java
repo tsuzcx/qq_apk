@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abzn;
+import acjz;
 
 public class TroopMemberListActivity$28$1
   implements Runnable
 {
-  public TroopMemberListActivity$28$1(abzn paramabzn) {}
+  public TroopMemberListActivity$28$1(acjz paramacjz) {}
   
   public void run()
   {

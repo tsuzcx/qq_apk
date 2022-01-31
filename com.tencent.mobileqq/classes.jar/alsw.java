@@ -1,58 +1,24 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ArkEnvironmentManager.IDataReport;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime;
 
-public class alsw
-  implements alsv
+public final class alsw
+  implements ArkEnvironmentManager.IDataReport
 {
-  private void a(Context paramContext, String paramString)
+  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
   {
-    LaunchParam localLaunchParam = new LaunchParam();
-    localLaunchParam.scene = 1131;
-    MiniAppController.startAppByAppid(paramContext, paramString, null, null, localLaunchParam, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher_colorNote", 2, "startMiniAppByAppId, appId: " + paramString);
+    QQAppInterface localQQAppInterface = null;
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)localAppRuntime;
     }
-  }
-  
-  public void a(Context paramContext, ColorNote paramColorNote)
-  {
-    if (paramColorNote.getServiceType() != 16842752) {
-      return;
-    }
-    String str = paramColorNote.getSubType();
-    paramColorNote = paramColorNote.getReserve();
-    if ((paramColorNote != null) && (paramColorNote.length > 0))
-    {
-      paramColorNote = MiniAppUtils.createFromBuffer(paramColorNote);
-      if ((paramColorNote != null) && (!TextUtils.isEmpty(paramColorNote.desc))) {
-        try
-        {
-          MiniAppController.launchMiniAppByAppInfo(null, paramColorNote, 1131);
-          return;
-        }
-        catch (Exception paramColorNote)
-        {
-          QLog.e("MiniAppLauncher_colorNote", 1, "MiniAppLauncher, launch exception: " + Log.getStackTraceString(paramColorNote));
-          a(paramContext, str);
-          return;
-        }
-      }
-      a(paramContext, str);
-      return;
-    }
-    a(paramContext, str);
+    altd.a(localQQAppInterface, paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alsw
  * JD-Core Version:    0.7.0.1
  */

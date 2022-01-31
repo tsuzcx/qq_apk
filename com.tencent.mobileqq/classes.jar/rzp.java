@@ -1,74 +1,20 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
 
 public class rzp
-  extends rzo<WSRedDotPushMsg, WSPushStrategyInfo>
+  extends rzf
+  implements ryy
 {
-  private int a;
-  
-  public rzp(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt)
+  public rzp(Activity paramActivity, ryt paramryt, VVideoView paramVVideoView)
   {
-    super(paramWSRedDotPushMsg);
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramActivity, paramryt, paramVVideoView);
   }
   
-  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
-  {
-    int i = 2;
-    boolean bool1 = true;
-    if (paramWSPushStrategyInfo == null) {
-      return false;
-    }
-    boolean bool2 = TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme);
-    if (!bool2)
-    {
-      rww.a(paramContext, paramWSPushStrategyInfo.mScheme);
-      paramContext = sam.a();
-      if (paramContext != null) {
-        paramContext.a(null);
-      }
-      sam.a();
-    }
-    if (this.jdField_a_of_type_Int == 2) {
-      if (bool2)
-      {
-        i = 2;
-        if (this.jdField_a_of_type_Rzh != null) {
-          break label93;
-        }
-        paramContext = "";
-        label74:
-        rzw.a(i, 1, paramContext);
-        label80:
-        if (bool2) {
-          break label133;
-        }
-      }
-    }
-    for (;;)
-    {
-      return bool1;
-      i = 1;
-      break;
-      label93:
-      paramContext = ((WSRedDotPushMsg)this.jdField_a_of_type_Rzh).mFeedIds;
-      break label74;
-      if (this.jdField_a_of_type_Int != 6) {
-        break label80;
-      }
-      if (bool2) {}
-      for (;;)
-      {
-        rzw.d(i);
-        break;
-        i = 1;
-      }
-      label133:
-      bool1 = false;
-    }
-  }
+  public void a() {}
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

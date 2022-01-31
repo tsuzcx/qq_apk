@@ -1,33 +1,37 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
 class akrd
-  implements akqm
+  implements ayth
 {
-  akrd(akrc paramakrc) {}
+  akrd(akqx paramakqx, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public void a(akrk paramakrk)
+  public void a(aytj paramaytj, ayti paramayti)
   {
-    akrc.f(this.a, false);
-    if (akrc.a(this.a)) {
+    try
+    {
+      paramaytj = paramaytj.a.getWupBuffer();
+      paramayti = new structmsg.RspSystemMsgRead();
+      paramayti.mergeFrom(paramaytj);
+      int i = paramayti.head.result.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
+      }
       return;
     }
-    if (akrc.a(this.a) != null) {
-      akrc.a(this.a).removeMessages(2);
-    }
-    QLog.i("AREngine_ARCloudControl", 1, "onARCloudLBSLocationCheckComplete. retCode = " + paramakrk.jdField_a_of_type_Int + ", imageId = " + paramakrk.jdField_a_of_type_JavaLangString);
-    if (akrc.a(this.a) != null)
+    catch (Exception paramaytj)
     {
-      aksc.a(this.a.a.recognitions, akrc.a(this.a), paramakrk);
-      akrc.a(this.a).a(0, akrc.a(this.a));
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramaytj);
     }
-    akrc.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akrd
  * JD-Core Version:    0.7.0.1
  */

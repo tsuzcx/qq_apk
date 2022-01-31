@@ -1,23 +1,27 @@
-import android.content.Context;
-import android.view.View;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
-class txn
-  implements begw
+public class txn
+  extends Subscriber.SingleEventSubscriberNoRefect<tch>
 {
-  txn(txm paramtxm, begr parambegr, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
+  txk a;
   
-  public void OnClick(View paramView, int paramInt)
+  public txn(@NonNull txk paramtxk)
   {
-    this.jdField_a_of_type_Begr.e();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_Txm.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
-      return;
+    this.a = paramtxk;
+  }
+  
+  protected void a(@NonNull tch paramtch)
+  {
+    if (paramtch.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      this.a.a(paramtch.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_Txm.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tch.class;
   }
 }
 

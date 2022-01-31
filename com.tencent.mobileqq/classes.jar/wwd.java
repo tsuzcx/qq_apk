@@ -1,101 +1,96 @@
-import android.graphics.Point;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StQQGroup;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class wwd
-  implements wwb
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public float a(Point paramPoint, int paramInt1, int paramInt2)
+  private CertifiedAccountMeta.StQQGroup jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
+  
+  public wwd(RelativePersonalDetailHeadItemView paramRelativePersonalDetailHeadItemView, View paramView)
   {
-    return paramInt1 - paramPoint.x;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378262));
+    this.b = ((TextView)paramView.findViewById(2131378279));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363601));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
-  public int a(int paramInt)
+  public void a(CertifiedAccountMeta.StQQGroup paramStQQGroup)
   {
-    return paramInt;
-  }
-  
-  public int a(int paramInt1, int paramInt2)
-  {
-    return paramInt1;
-  }
-  
-  public void a(int paramInt, wwn paramwwn)
-  {
-    paramwwn.a(paramInt);
-  }
-  
-  public void a(Point paramPoint1, int paramInt, Point paramPoint2)
-  {
-    paramPoint2.set(paramPoint1.x - paramInt, paramPoint1.y);
-  }
-  
-  public void a(wwe paramwwe, int paramInt, Point paramPoint)
-  {
-    paramPoint.set(paramPoint.x + paramwwe.a(paramInt), paramPoint.y);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(Point paramPoint, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    paramInt2 = paramPoint.x;
-    int i = paramPoint.x;
-    return (paramInt2 - paramInt1 < paramInt3 + paramInt4) && (i + paramInt1 > -paramInt4);
-  }
-  
-  public boolean a(wvn paramwvn)
-  {
-    boolean bool = false;
-    View localView1 = paramwvn.a();
-    View localView2 = paramwvn.b();
-    int i = -paramwvn.c();
-    int j = paramwvn.getWidth();
-    int k = paramwvn.c();
-    if ((paramwvn.getDecoratedLeft(localView1) > i) && (paramwvn.getPosition(localView1) > 0))
+    String str;
+    if (paramStQQGroup != null)
     {
-      i = 1;
-      if ((paramwvn.getDecoratedRight(localView2) >= j + k) || (paramwvn.getPosition(localView2) >= paramwvn.getItemCount() - 1)) {
-        break label102;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStQQGroup.name.get());
+      this.b.setText(paramStQQGroup.memberNum.get() + ajyc.a(2131713371));
+      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup = paramStQQGroup;
+      Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
+      if (paramStQQGroup.joinState.get() != 1) {
+        break label143;
+      }
+      str = ajyc.a(2131713367);
+      localButton.setText(str);
+      if (RelativePersonalDetailHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView).user != null)
+      {
+        str = RelativePersonalDetailHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView).user.id.get();
+        if (paramStQQGroup.joinState.get() != 1) {
+          break label152;
+        }
       }
     }
-    label102:
-    for (j = 1;; j = 0)
+    label143:
+    label152:
+    for (paramStQQGroup = "open_butten";; paramStQQGroup = "enter_butten")
     {
-      if ((i != 0) || (j != 0)) {
-        bool = true;
-      }
-      return bool;
-      i = 0;
+      xhe.a(str, "auth_fan", paramStQQGroup, 0, 0, new String[0]);
+      return;
+      str = ajyc.a(2131713366);
       break;
     }
   }
   
-  public int b(int paramInt)
+  public void onClick(View paramView)
   {
-    return 0;
-  }
-  
-  public int b(int paramInt1, int paramInt2)
-  {
-    return paramInt1;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public int c(int paramInt1, int paramInt2)
-  {
-    return paramInt1;
+    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup != null) && (paramView != null) && (paramView.getContext() != null))
+    {
+      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.joinState.get() == 1)
+      {
+        localObject = actn.a(new Intent(paramView.getContext(), SplashActivity.class), new int[] { 2 });
+        ((Intent)localObject).putExtra("uin", String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()));
+        ((Intent)localObject).putExtra("uintype", 1);
+        ((Intent)localObject).putExtra("uinname", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.name.get());
+        paramView.getContext().startActivity((Intent)localObject);
+      }
+    }
+    else {
+      return;
+    }
+    Object localObject = TroopInfoActivity.a(String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()), 4);
+    ((Bundle)localObject).putInt("t_s_f", 1001);
+    bamn.a(paramView.getContext(), (Bundle)localObject, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wwd
  * JD-Core Version:    0.7.0.1
  */

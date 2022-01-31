@@ -51,19 +51,19 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
   public MiniAppDesktopAdapter$PopularityListModuleViewHolder(View paramView)
   {
     super(paramView);
-    this.rootView = paramView.findViewById(2131304544);
-    this.titleIconImg = ((ImageView)paramView.findViewById(2131304552));
-    this.titleTv = ((TextView)paramView.findViewById(2131304551));
-    this.moreAppImg = ((ImageView)paramView.findViewById(2131304543));
-    this.firstAppIconImg = ((ImageView)paramView.findViewById(2131304540));
-    this.secondAppIconImg = ((ImageView)paramView.findViewById(2131304545));
-    this.thirdAppIconImg = ((ImageView)paramView.findViewById(2131304548));
-    this.firstAppTitleTv = ((TextView)paramView.findViewById(2131304542));
-    this.secondAppTitleTv = ((TextView)paramView.findViewById(2131304547));
-    this.thirdAppTitleTv = ((TextView)paramView.findViewById(2131304550));
-    this.firstAppOpenImg = ((ImageView)paramView.findViewById(2131304541));
-    this.secondAppOpenImg = ((ImageView)paramView.findViewById(2131304546));
-    this.thirdAppOpenImg = ((ImageView)paramView.findViewById(2131304549));
+    this.rootView = paramView.findViewById(2131370226);
+    this.titleIconImg = ((ImageView)paramView.findViewById(2131370234));
+    this.titleTv = ((TextView)paramView.findViewById(2131370233));
+    this.moreAppImg = ((ImageView)paramView.findViewById(2131370225));
+    this.firstAppIconImg = ((ImageView)paramView.findViewById(2131370222));
+    this.secondAppIconImg = ((ImageView)paramView.findViewById(2131370227));
+    this.thirdAppIconImg = ((ImageView)paramView.findViewById(2131370230));
+    this.firstAppTitleTv = ((TextView)paramView.findViewById(2131370224));
+    this.secondAppTitleTv = ((TextView)paramView.findViewById(2131370229));
+    this.thirdAppTitleTv = ((TextView)paramView.findViewById(2131370232));
+    this.firstAppOpenImg = ((ImageView)paramView.findViewById(2131370223));
+    this.secondAppOpenImg = ((ImageView)paramView.findViewById(2131370228));
+    this.thirdAppOpenImg = ((ImageView)paramView.findViewById(2131370231));
     this.firstAppIconImg.setOnClickListener(this);
     this.secondAppIconImg.setOnClickListener(this);
     this.thirdAppIconImg.setOnClickListener(this);
@@ -179,7 +179,7 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
       this.titleTv.setText(paramDesktopPopularModuleInfo.title);
     }
     paramActivity = URLDrawable.URLDrawableOptions.obtain();
-    Object localObject = this.itemView.getContext().getResources().getDrawable(2130847234);
+    Object localObject = this.itemView.getContext().getResources().getDrawable(2130847451);
     paramActivity.mFailedDrawable = ((Drawable)localObject);
     paramActivity.mLoadingDrawable = ((Drawable)localObject);
     paramActivity.mPlayGifImage = false;
@@ -196,41 +196,26 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
       this.thirdAppTitleTv.setText(((MiniAppInfo)localList.get(2)).name);
       paramActivity = MiniAppUtils.getAppInterface();
       if (paramActivity == null) {
-        break label523;
+        break label490;
       }
     }
-    label523:
+    label490:
     for (paramActivity = (MiniAppExposureManager)paramActivity.getManager(322);; paramActivity = null)
     {
       if (paramActivity != null)
       {
-        if ((i < localList.size()) && (i < 3))
+        while ((i < localList.size()) && (i < 3))
         {
           localObject = new MiniAppConfig((MiniAppInfo)localList.get(i));
           ((MiniAppConfig)localObject).launchParam.scene = 3010;
           MiniAppExposureManager.MiniAppModuleExposureData localMiniAppModuleExposureData = new MiniAppExposureManager.MiniAppModuleExposureData((MiniAppConfig)localObject, "page_view", "expo");
-          if (paramActivity.getDesktopPullDownState() == 3) {
-            paramActivity.addReportItem(localMiniAppModuleExposureData);
-          }
-          for (;;)
-          {
-            i += 1;
-            break;
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append(((MiniAppConfig)localObject).config.appId).append("_").append(((MiniAppConfig)localObject).config.verType).append("_").append(paramDesktopPopularModuleInfo.getModuleType());
-            paramActivity.putReportDataToMap(localStringBuilder.toString(), localMiniAppModuleExposureData);
-          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(((MiniAppConfig)localObject).config.appId).append("_").append(((MiniAppConfig)localObject).config.verType).append("_").append(paramDesktopPopularModuleInfo.getModuleType());
+          paramActivity.putReportDataToMap(localStringBuilder.toString(), localMiniAppModuleExposureData);
+          i += 1;
         }
-        paramDesktopPopularModuleInfo = new MiniAppExposureManager.CardModuleExposureData("desktop", "ranking", "expo", null);
-        if (paramActivity.getDesktopPullDownState() == 3) {
-          paramActivity.addReportItem(paramDesktopPopularModuleInfo);
-        }
+        paramActivity.putReportDataToMap("ranking", new MiniAppExposureManager.CardModuleExposureData("desktop", "ranking", "expo", null));
       }
-      else
-      {
-        return;
-      }
-      paramActivity.putReportDataToMap("ranking", paramDesktopPopularModuleInfo);
       return;
     }
   }

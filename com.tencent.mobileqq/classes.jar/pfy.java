@@ -1,20 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-class pfy
-  implements View.OnTouchListener
+public class pfy
+  implements phs
 {
-  pfy(pfu parampfu, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    if (paramMotionEvent.getAction() == 0)
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    paramBaseArticleInfo = new pdp().M(paramBaseArticleInfo).C(paramBaseArticleInfo);
+    switch (paramInt)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.b.setDuplicateParentStateEnabled(true);
+    default: 
+      paramBaseArticleInfo.a("ReadInjoy_small_cell");
     }
+    for (;;)
+    {
+      return paramBaseArticleInfo.a();
+      paramBaseArticleInfo.a("ReadInjoy_large_cell");
+    }
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pax parampax, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, pax parampax, ViewBase paramViewBase)
+  {
     return false;
   }
 }

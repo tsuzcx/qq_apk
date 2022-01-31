@@ -1,196 +1,307 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.data.ApolloActionRecentData;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.1;
+import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ajdh
-  extends ajdn
+  implements ajdm
 {
-  public int a;
-  public int b;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Map<String, ajdl> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new LinkedHashMap());
   
-  public int a()
+  public ajdh(int paramInt)
   {
-    return 1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    ThreadManager.excute(new CmGameSubRscHandler.1(this), 64, null, true);
   }
   
-  public View a()
+  private int a(String paramString1, String paramString2)
   {
-    switch (this.c)
+    try
     {
-    case 1: 
-    default: 
-      return new ApolloLinearLayout(this.jdField_b_of_type_AndroidContentContext, null, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    case 0: 
-      return new ApolloLinearLayout(this.jdField_b_of_type_AndroidContentContext, null, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      StringBuilder localStringBuilder = new StringBuilder(100);
+      localStringBuilder.append(ajmu.s).append(this.jdField_a_of_type_Int).append(File.separator).append(paramString2).append(File.separator).append("config.json");
+      paramString2 = new File(localStringBuilder.toString());
+      if (!paramString2.exists()) {
+        return -1;
+      }
+      int i = (int)new JSONObject(bbdj.b(paramString2)).optDouble("version");
+      paramString1 = (ajdl)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
+      if (paramString1 != null) {
+        paramString1.jdField_a_of_type_Int = i;
+      }
+      return i;
     }
-    return LayoutInflater.from(this.jdField_b_of_type_AndroidContentContext).inflate(2131493057, null);
+    catch (Throwable paramString1)
+    {
+      QLog.e("cmgame_process.CmGameSubRscHandler", 1, paramString1, new Object[0]);
+    }
+    return -1;
+  }
+  
+  public String a(int paramInt, String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append(ajmu.s).append(this.jdField_a_of_type_Int).append("/").append(a(paramString));
+    return localStringBuilder.toString();
+  }
+  
+  public String a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
+      a();
+    }
+    Object localObject = (ajdl)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (localObject == null)
+    {
+      localObject = "";
+      return localObject;
+    }
+    String str = ((ajdl)localObject).jdField_b_of_type_JavaLangString;
+    if (TextUtils.isEmpty(str))
+    {
+      a();
+      str = ((ajdl)localObject).jdField_b_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      localObject = str;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "name:", paramString, ",root:", str });
+      return str;
+    }
   }
   
   public void a()
   {
-    this.jdField_b_of_type_AndroidContentContext = null;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    for (;;)
+    try
     {
-      int j;
-      int i;
-      int k;
-      try
-      {
-        Object localObject;
-        ajbz localajbz;
-        int i1;
-        if (this.c == 0)
-        {
-          int m = this.jdField_a_of_type_Int;
-          int n = this.jdField_b_of_type_Int;
-          j = 0;
-          i = 0;
-          if (j < this.jdField_b_of_type_Int)
-          {
-            LinearLayout localLinearLayout = (LinearLayout)((ApolloLinearLayout)paramView).getChildAt(j);
-            k = 0;
-            if (k >= this.jdField_a_of_type_Int) {
-              break label266;
-            }
-            localObject = localLinearLayout.getChildAt(k);
-            localajbz = (ajbz)((View)localObject).getTag();
-            i1 = m * n * paramInt + i;
-            List localList = this.jdField_a_of_type_JavaUtilList;
-            if (localList != null) {
-              continue;
-            }
-          }
-        }
-        return;
-        if (i1 < this.jdField_a_of_type_JavaUtilList.size())
-        {
-          localObject = ((ajbx)this.jdField_a_of_type_JavaUtilList.get(i1)).a;
-          localajbz.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          localajbz.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(((ajbx)this.jdField_a_of_type_JavaUtilList.get(i1)).a(this.jdField_b_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidContentContext.getResources().getDisplayMetrics().density));
-          if ((localObject != null) && (((ApolloActionData)localObject).actionName != null)) {
-            localajbz.jdField_a_of_type_AndroidWidgetTextView.setText(((ApolloActionData)localObject).actionName);
-          }
-          localajbz.jdField_a_of_type_Ajbx = ((ajbx)this.jdField_a_of_type_JavaUtilList.get(i1));
-          localajbz.jdField_a_of_type_Ajbx.c = 1;
-        }
-        else
-        {
-          ((View)localObject).setContentDescription(null);
-          ((View)localObject).setOnClickListener(null);
-        }
+      QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[parseConfig]");
+      Object localObject1 = new StringBuilder(100);
+      ((StringBuilder)localObject1).append(ajmu.s).append(this.jdField_a_of_type_Int).append(File.separator).append("gameConfig.json");
+      localObject1 = new File(((StringBuilder)localObject1).toString());
+      if (!((File)localObject1).exists()) {
+        QLog.w("cmgame_process.CmGameSubRscHandler", 1, "[parsePackRoot], gameConfig.json NOT exist.");
       }
-      finally {}
-      label266:
-      j += 1;
-      continue;
-      k += 1;
-      i += 1;
-    }
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    boolean bool;
-    if (paramQQAppInterface == null) {
-      bool = false;
-    }
-    Object localObject1;
-    label50:
-    int i;
-    for (;;)
-    {
-      return bool;
-      try
-      {
-        localObject1 = (ajal)paramQQAppInterface.getManager(154);
-        if (localObject1 == null)
-        {
-          bool = false;
-        }
-        else
-        {
-          if (paramSessionInfo.jdField_a_of_type_Int == 0) {}
-          for (paramSessionInfo = ((ajal)localObject1).jdField_a_of_type_JavaUtilList;; paramSessionInfo = ((ajal)localObject1).b)
-          {
-            if (paramSessionInfo == null) {
-              break label250;
-            }
-            if (paramSessionInfo.size() != 0) {
-              break;
-            }
-            break label250;
-            if ((paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000)) {
-              break label245;
-            }
-          }
-          if (this.jdField_a_of_type_JavaUtilList != null) {
-            this.jdField_a_of_type_JavaUtilList.clear();
-          }
-          for (;;)
-          {
-            i = paramSessionInfo.size() - 1;
-            break;
-            this.jdField_a_of_type_JavaUtilList = new ArrayList();
-          }
-          localObject1 = new ApolloActionData();
-        }
-      }
-      finally {}
-    }
-    label140:
-    Object localObject2 = (aiyu)paramQQAppInterface.getManager(155);
-    if (localObject2 != null)
-    {
-      localObject2 = ((aiyu)localObject2).a(((ApolloActionRecentData)paramSessionInfo.get(i)).actionId);
-      localObject1 = localObject2;
-      if (localObject2 == null) {}
-    }
-    for (;;)
-    {
-      localObject2 = new ajcd(paramQQAppInterface.c());
-      ((ajcd)localObject2).a = ((ApolloActionData)localObject1);
-      ((ajcd)localObject2).c = 1;
-      this.jdField_a_of_type_JavaUtilList.add(localObject2);
-      label275:
       for (;;)
       {
-        bool = true;
-        break;
-        label245:
-        paramSessionInfo = null;
-        break label50;
-        label250:
-        bool = false;
-        break;
-        for (;;)
+        return;
+        JSONArray localJSONArray = new JSONObject(bbdj.b((File)localObject1)).optJSONArray("subpackages");
+        if (localJSONArray != null)
         {
-          if (i < 0) {
-            break label275;
+          int i = 0;
+          while (i < localJSONArray.length())
+          {
+            localObject1 = localJSONArray.optJSONObject(i);
+            String str1 = ((JSONObject)localObject1).optString("name");
+            String str2 = ((JSONObject)localObject1).optString("root");
+            ajdl localajdl = (ajdl)this.jdField_a_of_type_JavaUtilMap.get(str1);
+            localObject1 = localajdl;
+            if (localajdl == null) {
+              localObject1 = new ajdl();
+            }
+            ((ajdl)localObject1).jdField_a_of_type_JavaLangString = str1;
+            ((ajdl)localObject1).jdField_b_of_type_JavaLangString = str2;
+            this.jdField_a_of_type_JavaUtilMap.put(str1, localObject1);
+            a(str1, str2);
+            i += 1;
           }
-          if (paramQQAppInterface != null) {
-            break label140;
-          }
-          bool = false;
-          break;
-          i -= 1;
+          QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[parseConfig], done.");
         }
       }
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("cmgame_process.CmGameSubRscHandler", 1, localThrowable, new Object[0]);
+      }
+    }
+    finally {}
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("packName", paramString);
+      localJSONObject.put("percentage", paramInt1);
+      paramString = ajae.a();
+      if (paramString != null) {
+        paramString.callbackFromRequest(this.jdField_a_of_type_Long, 0, "sc.load_percentage_nofity.local", localJSONObject.toString());
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmgame_process.CmGameSubRscHandler", 1, paramString, new Object[0]);
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[onStartDownload], gameId:" + paramInt + ",packN:" + paramString);
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    ajdq localajdq;
+    String str;
+    try
+    {
+      this.jdField_a_of_type_Long = paramLong;
+      localajdq = ajae.a();
+      if (localajdq == null)
+      {
+        QLog.w("cmgame_process.CmGameSubRscHandler", 1, "jsState:" + paramLong);
+        return;
+      }
+      str = new JSONObject(paramString).optString("packName");
+      if (TextUtils.isEmpty(str))
+      {
+        c(-10003, "");
+        return;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmgame_process.CmGameSubRscHandler", 1, paramString, new Object[0]);
+      return;
+    }
+    ajcy localajcy = new ajcy();
+    localajcy.jdField_a_of_type_Int = 10001;
+    localajcy.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_Int + "_" + str);
+    paramString = (ajdl)this.jdField_a_of_type_JavaUtilMap.get(str);
+    if (paramString != null)
+    {
+      if ((paramString.jdField_a_of_type_Ajdd != null) && (paramString.jdField_a_of_type_Ajdd.a() == 1))
+      {
+        c(-1004, str);
+        return;
+      }
+      localajcy.jdField_b_of_type_Int = paramString.jdField_a_of_type_Int;
+      paramString.jdField_a_of_type_JavaLangString = str;
+    }
+    while ((paramString.jdField_a_of_type_Boolean) && (!BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 4).getBoolean("apollo_sp_game_rsc_verify_" + localajcy.jdField_a_of_type_JavaLangString, false)))
+    {
+      QLog.i("cmgame_process.CmGameSubRscHandler", 1, "each pack requst only once in game.");
+      b(this.jdField_a_of_type_Int, str);
+      return;
+      paramString = new ajdl();
+      paramString.jdField_a_of_type_JavaLangString = str;
+      localajcy.jdField_b_of_type_Int = 0;
+      this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
+    }
+    QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[cmgame_pack_sub], request, packname:" + str + ",ver:" + localajcy.jdField_b_of_type_Int);
+    paramString = new ArrayList();
+    paramString.add(localajcy);
+    localajdq.a(this.jdField_a_of_type_Int, str, paramString);
+  }
+  
+  public void a(aiwk paramaiwk, long paramLong)
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext == null) && (paramaiwk != null))
+    {
+      QLog.w("cmgame_process.CmGameSubRscHandler", 1, "[onDownloadConfirm], ctx:" + this.jdField_a_of_type_AndroidContentContext);
+      paramaiwk.a(null);
+      return;
+    }
+    ThreadManager.getUIHandler().post(new CmGameSubRscHandler.2(this, paramLong, paramaiwk));
+  }
+  
+  public void a(ajdg paramajdg)
+  {
+    if (paramajdg == null) {}
+    ajdd localajdd = new ajdd(paramajdg, this);
+    ajdl localajdl = (ajdl)this.jdField_a_of_type_JavaUtilMap.get(paramajdg.jdField_b_of_type_JavaLangString);
+    if (localajdl != null) {
+      localajdl.jdField_a_of_type_Ajdd = localajdd;
+    }
+    QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[cmgame_pack_sub], response, isUpdate:" + paramajdg.jdField_a_of_type_Boolean + ",svrVer:" + paramajdg.jdField_a_of_type_Int + ",isPatch:" + paramajdg.jdField_b_of_type_Boolean);
+    if (!localajdd.a()) {
+      b(paramajdg.jdField_b_of_type_Int, paramajdg.jdField_b_of_type_JavaLangString);
+    }
+  }
+  
+  public void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    c(0, paramString);
+    ajdl localajdl = (ajdl)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (localajdl != null)
+    {
+      localajdl.jdField_a_of_type_Boolean = true;
+      paramInt = a(paramString, localajdl.jdField_b_of_type_JavaLangString);
+      QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[onDownloadSuccess], newV:" + paramInt + ",packName:" + paramString);
+    }
+  }
+  
+  public void b(long paramLong, String paramString)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameSubRscHandler", 2, "[verifyRsc]");
+      }
+      paramString = new JSONObject(paramString).optString("packName");
+      Object localObject = (ajdl)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      if (localObject == null) {
+        return;
+      }
+      if (TextUtils.isEmpty(((ajdl)localObject).jdField_b_of_type_JavaLangString)) {
+        a();
+      }
+      localObject = new ajnn(this.jdField_a_of_type_Int, 1, paramString, ((ajdl)localObject).jdField_b_of_type_JavaLangString);
+      ((ajnn)localObject).a(new ajdk(this, paramString));
+      ((ajnn)localObject).a();
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmgame_process.CmGameSubRscHandler", 1, paramString, new Object[0]);
+    }
+  }
+  
+  public void c(int paramInt, String paramString)
+  {
+    try
+    {
+      QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[onDownloadFailure], ret:" + paramInt + ",packName:" + paramString);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("packName", paramString);
+      localJSONObject.put("result", paramInt);
+      paramString = ajae.a();
+      if (paramString != null) {
+        paramString.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.load_subpackage.local", localJSONObject.toString());
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmgame_process.CmGameSubRscHandler", 1, paramString, new Object[0]);
     }
   }
 }

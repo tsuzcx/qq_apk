@@ -5,14 +5,14 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import beog;
-import beoh;
+import bfwa;
+import bfwb;
 
 public class ThemeLabelTextView
   extends TextView
-  implements beoh
+  implements bfwb
 {
-  beog a;
+  bfwa a;
   
   public ThemeLabelTextView(Context paramContext)
   {
@@ -64,10 +64,10 @@ public class ThemeLabelTextView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new beog();
+        this.a = new bfwa();
       }
       this.a.a(true);
-      setMaskShape(beog.c);
+      setMaskShape(bfwa.c);
     }
     while (this.a == null) {
       return;

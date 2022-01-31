@@ -1,34 +1,60 @@
-import android.os.SystemClock;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.data.MessageForScribble;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import java.util.ArrayList;
 
-public class adoa
-  implements begw
+public final class adoa
+  extends Drawable.ConstantState
 {
-  public adoa(ScribbleItemBuilder paramScribbleItemBuilder, View paramView, MessageForScribble paramMessageForScribble, begr parambegr) {}
+  public int a;
+  public final Paint a;
+  public ArrayList<adod> a;
+  public boolean a;
+  public int b;
+  public ArrayList<Bitmap> b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
   
-  public void OnClick(View paramView, int paramInt)
+  public adoa()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      long l;
-      do
-      {
-        return;
-        l = SystemClock.uptimeMillis();
-      } while (l - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.c < 500L);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.c = l;
-      paramView = aclk.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.a);
-      if (paramView != null) {
-        paramView.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder);
-      }
-      avhd.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 160;
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+  }
+  
+  public int getChangingConfigurations()
+  {
+    return 0;
+  }
+  
+  @NonNull
+  public Drawable newDrawable()
+  {
+    return new CustomFrameAnimationDrawable(this, null, null);
+  }
+  
+  public Drawable newDrawable(Resources paramResources)
+  {
+    return new CustomFrameAnimationDrawable(this, paramResources, null);
   }
 }
 

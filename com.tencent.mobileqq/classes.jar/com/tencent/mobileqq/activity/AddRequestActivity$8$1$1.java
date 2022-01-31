@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity;
 
+import aaik;
 import android.widget.TextView;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -7,7 +8,6 @@ import com.tencent.qphone.base.util.QLog;
 import tencent.mobileim.structmsg.structmsg.FriendInfo;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
-import zys;
 
 class AddRequestActivity$8$1$1
   implements Runnable

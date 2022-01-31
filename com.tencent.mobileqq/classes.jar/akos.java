@@ -1,48 +1,51 @@
-public final class akos
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Map;
+import tencent.im.oidb.cmd0x6ef.oidb_cmd0x6ef.RspBody;
+
+class akos
+  extends mxm
 {
-  public static final int A = bajq.a(45.0F);
-  public static final int B = bajq.a(48.0F);
-  public static final int C = bajq.a(60.0F);
-  public static final int D = bajq.a(64.0F);
-  public static final int E = bajq.a(74.0F);
-  public static final int F = bajq.a(76.0F);
-  public static final int G = bajq.a(77.5F);
-  public static final int H = bajq.a(87.5F);
-  public static final int I = bajq.a(92.5F);
-  public static final int J = bajq.a(93.0F);
-  public static final int K = bajq.a(100.0F);
-  public static final int L = bajq.a(105.5F);
-  public static final int M = bajq.a(120.0F);
-  public static final int a = bajq.a(0.5F);
-  public static final int b = bajq.a(1.0F);
-  public static final int c = bajq.a(1.5F);
-  public static final int d = bajq.a(1.75F);
-  public static final int e = bajq.a(2.0F);
-  public static final int f = bajq.a(3.0F);
-  public static final int g = bajq.a(4.0F);
-  public static final int h = bajq.a(5.0F);
-  public static final int i = bajq.a(6.0F);
-  public static final int j = bajq.a(8.0F);
-  public static final int k = bajq.a(10.0F);
-  public static final int l = bajq.a(11.0F);
-  public static final int m = bajq.a(12.0F);
-  public static final int n = bajq.a(14.0F);
-  public static final int o = bajq.a(15.0F);
-  public static final int p = bajq.a(16.0F);
-  public static final int q = bajq.a(16.5F);
-  public static final int r = bajq.a(18.0F);
-  public static final int s = bajq.a(20.0F);
-  public static final int t = bajq.a(25.0F);
-  public static final int u = bajq.a(30.0F);
-  public static final int v = bajq.a(34.0F);
-  public static final int w = bajq.a(35.0F);
-  public static final int x = bajq.a(36.0F);
-  public static final int y = bajq.a(38.0F);
-  public static final int z = bajq.a(40.0F);
+  akos(akor paramakor, boolean paramBoolean, azmj paramazmj, long paramLong1, long paramLong2, RecentUser paramRecentUser, String paramString, MessageRecord paramMessageRecord, Map paramMap)
+  {
+    super(paramBoolean);
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramBundle = new oidb_cmd0x6ef.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if ((paramBundle.is_create.get() == 1) || (paramBundle.is_join.get() == 1))
+        {
+          this.jdField_a_of_type_Azmj.m.a(this.jdField_a_of_type_Long, this.b);
+          if (21 >= this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType = 21;
+            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg = azmj.a(this.jdField_a_of_type_Akor.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Azmj, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, true);
+            this.jdField_a_of_type_JavaUtilMap.put(akpy.a(this.jdField_a_of_type_JavaLangString, 1), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
+            return;
+          }
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akos
  * JD-Core Version:    0.7.0.1
  */

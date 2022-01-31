@@ -1,14 +1,20 @@
-public abstract interface apym
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+
+public class apym
+  implements aptu
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public apym(SendBottomBar paramSendBottomBar) {}
   
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public void a()
+  {
+    this.a.c();
+  }
   
-  public abstract void b(boolean paramBoolean, int paramInt);
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apym
  * JD-Core Version:    0.7.0.1
  */

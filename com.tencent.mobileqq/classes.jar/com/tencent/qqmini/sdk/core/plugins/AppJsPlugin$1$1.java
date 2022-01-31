@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdcy;
-import bdfz;
-import bdgg;
-import bdnw;
+import begy;
+import beka;
+import bekg;
+import besl;
 import com.tencent.qqmini.sdk.core.proxy.ThirdAppProxy.AppDownloadListener;
 import org.json.JSONObject;
 
@@ -22,14 +22,14 @@ class AppJsPlugin$1$1
       localJSONObject1.put("version", this.this$1.val$version);
       localJSONObject1.put("md5", this.this$1.val$md5);
       localJSONObject1.put("state", "onDownloadAppSucceed");
-      this.this$1.val$req.jdField_a_of_type_Bdcy.a("onAppDownloadStateChange", localJSONObject1.toString(), 0);
+      this.this$1.val$req.jdField_a_of_type_Begy.a("onAppDownloadStateChange", localJSONObject1.toString(), 0);
       return;
     }
     catch (Exception localException)
     {
-      bdnw.d("AppJsPlugin", "onDownloadComplete exception, appid: " + this.this$1.val$appid, localException);
-      JSONObject localJSONObject2 = bdgg.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, null);
-      this.this$1.val$req.jdField_a_of_type_Bdcy.a(this.this$1.val$req.b, localJSONObject2.toString());
+      besl.d("AppJsPlugin", "onDownloadComplete exception, appid: " + this.this$1.val$appid, localException);
+      JSONObject localJSONObject2 = bekg.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, null);
+      this.this$1.val$req.jdField_a_of_type_Begy.a(this.this$1.val$req.b, localJSONObject2.toString());
     }
   }
   
@@ -45,14 +45,14 @@ class AppJsPlugin$1$1
       localJSONObject.put("retCode", paramInt1);
       localJSONObject.put("errMsg", paramString);
       localJSONObject.put("state", "onDownloadAppFailed");
-      this.this$1.val$req.jdField_a_of_type_Bdcy.a("onAppDownloadStateChange", localJSONObject.toString(), 0);
+      this.this$1.val$req.jdField_a_of_type_Begy.a("onAppDownloadStateChange", localJSONObject.toString(), 0);
       return;
     }
     catch (Exception paramString)
     {
-      bdnw.d("AppJsPlugin", "onDownloadFailed exception, appid: " + this.this$1.val$appid, paramString);
-      paramString = bdgg.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, null);
-      this.this$1.val$req.jdField_a_of_type_Bdcy.a(this.this$1.val$req.b, paramString.toString());
+      besl.d("AppJsPlugin", "onDownloadFailed exception, appid: " + this.this$1.val$appid, paramString);
+      paramString = bekg.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, null);
+      this.this$1.val$req.jdField_a_of_type_Begy.a(this.this$1.val$req.b, paramString.toString());
     }
   }
   
@@ -69,14 +69,14 @@ class AppJsPlugin$1$1
       localJSONObject1.put("totalSize", paramLong2);
       localJSONObject1.put("progress", paramInt);
       localJSONObject1.put("state", "onDownloadAppProgress");
-      this.this$1.val$req.jdField_a_of_type_Bdcy.a("onAppDownloadStateChange", localJSONObject1.toString(), 0);
+      this.this$1.val$req.jdField_a_of_type_Begy.a("onAppDownloadStateChange", localJSONObject1.toString(), 0);
       return;
     }
     catch (Exception localException)
     {
-      bdnw.d("AppJsPlugin", "onDownloadProgress exception, appid: " + this.this$1.val$appid, localException);
-      JSONObject localJSONObject2 = bdgg.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, null);
-      this.this$1.val$req.jdField_a_of_type_Bdcy.a(this.this$1.val$req.b, localJSONObject2.toString());
+      besl.d("AppJsPlugin", "onDownloadProgress exception, appid: " + this.this$1.val$appid, localException);
+      JSONObject localJSONObject2 = bekg.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, null);
+      this.this$1.val$req.jdField_a_of_type_Begy.a(this.this$1.val$req.b, localJSONObject2.toString());
     }
   }
 }

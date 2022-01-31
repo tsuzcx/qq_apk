@@ -1,60 +1,18 @@
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
 
-public class arrk
-  extends arrp<MessageForMixedMsg>
+public final class arrk
+  implements Parcelable.Creator<ListenTogetherSession>
 {
-  public arrk(MessageForMixedMsg paramMessageForMixedMsg)
+  public ListenTogetherSession a(Parcel paramParcel)
   {
-    super(paramMessageForMixedMsg);
+    return new ListenTogetherSession(paramParcel, null);
   }
   
-  protected int a()
+  public ListenTogetherSession[] a(int paramInt)
   {
-    return 1;
-  }
-  
-  public List<MsgBackupResEntity> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (MessageRecord)localIterator.next();
-      if ((localObject instanceof MessageForPic))
-      {
-        localObject = arpj.a((MessageRecord)localObject);
-        ((arrp)localObject).a(this.a);
-        localArrayList.addAll(((arrp)localObject).a());
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
-    while (localIterator.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      if ((localMessageRecord instanceof MessageForPic)) {
-        arpj.a(localMessageRecord).a();
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (((MessageForMixedMsg)this.a).isSendFromLocal())
-    {
-      ((MessageForMixedMsg)this.a).issend = 2;
-      ((MessageForMixedMsg)this.a).prewrite();
-    }
+    return new ListenTogetherSession[paramInt];
   }
 }
 

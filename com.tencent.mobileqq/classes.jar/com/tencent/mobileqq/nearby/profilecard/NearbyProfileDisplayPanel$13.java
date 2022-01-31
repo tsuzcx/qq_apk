@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import ajjj;
-import aste;
+import ajxn;
+import atpi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 
 public class NearbyProfileDisplayPanel$13
   implements Runnable
 {
-  public NearbyProfileDisplayPanel$13(aste paramaste) {}
+  public NearbyProfileDisplayPanel$13(atpi paramatpi) {}
   
   public void run()
   {
-    Object localObject = (ajjj)this.this$0.a.app.getManager(51);
+    Object localObject = (ajxn)this.this$0.a.app.getManager(51);
     if (localObject == null) {}
-    for (localObject = null;; localObject = ((ajjj)localObject).b(this.this$0.a.getCurrentAccountUin()))
+    for (localObject = null;; localObject = ((ajxn)localObject).b(this.this$0.a.getCurrentAccountUin()))
     {
       this.this$0.a.runOnUiThread(new NearbyProfileDisplayPanel.13.1(this, (Card)localObject));
       return;

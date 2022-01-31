@@ -1,16 +1,73 @@
-public class lgb
-  implements lga
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.service.RecvMsg;
+import com.tencent.qphone.base.util.QLog;
+
+class lgb
+  extends lwu
 {
-  public void a(lfz paramlfz) {}
+  lgb(lga paramlga) {}
   
-  public boolean a(lfz paramlfz)
+  public Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceProxy", 2, "getDataFromVideoProcess cmd = " + paramInt1 + ",subCmd = " + paramInt2 + ",request = " + paramBundle + ",callbackCookie = " + paramString);
+    }
+    switch (paramInt1)
+    {
+    default: 
+      return null;
+    }
+    paramString = new Bundle();
+    paramString.putString("camera_used_desc", lko.a);
+    return paramString;
   }
   
-  public boolean b(lfz paramlfz)
+  public void a(RecvMsg paramRecvMsg)
   {
-    return true;
+    if (paramRecvMsg != null) {
+      this.a.a.a(new Object[] { Integer.valueOf(12), paramRecvMsg });
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte) {}
+  
+  public void a(String paramString, int paramInt, byte[] paramArrayOfByte)
+  {
+    if (TextUtils.equals(paramString, "avChatRoom"))
+    {
+      lkt locallkt = this.a.a.a();
+      if (locallkt != null) {
+        locallkt.a(paramInt, paramArrayOfByte);
+      }
+    }
+    if (QLog.isDevelopLevel())
+    {
+      paramString = new StringBuilder().append("onReceivePushMsg , key[").append(paramString).append("], msgType[").append(paramInt).append("], bytes[");
+      if (paramArrayOfByte != null) {
+        break label96;
+      }
+    }
+    label96:
+    for (paramInt = 0;; paramInt = paramArrayOfByte.length)
+    {
+      QLog.i("ChatRoomMng", 4, paramInt + "]");
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  {
+    this.a.a.a(new Object[] { Integer.valueOf(47), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3 });
+  }
+  
+  public void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
+  {
+    if ((paramArrayOfRecvGVideoLevelInfo != null) && (paramArrayOfRecvGVideoLevelInfo.length > 0)) {
+      this.a.a.a(new Object[] { Integer.valueOf(501), paramArrayOfRecvGVideoLevelInfo });
+    }
   }
 }
 

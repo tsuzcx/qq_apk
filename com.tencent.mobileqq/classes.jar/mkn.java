@@ -1,20 +1,47 @@
-import android.view.View;
-import com.tencent.av.widget.stageview.StageEffectView;
-import java.util.Comparator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class mkn
-  implements Comparator<Integer>
+class mkn
+  extends BroadcastReceiver
 {
-  public mkn(StageEffectView paramStageEffectView) {}
+  mkn(mkm parammkm) {}
   
-  public int a(Integer paramInteger1, Integer paramInteger2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramInteger1 = (mku)this.a.getChildAt(paramInteger1.intValue()).getTag();
-    paramInteger2 = (mku)this.a.getChildAt(paramInteger2.intValue()).getTag();
-    if (paramInteger1.c < paramInteger2.c) {
-      return 1;
+    long l;
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getAction();
+      l = mtm.a(paramIntent);
+      if (!paramContext.equals("tencent.video.invite.accept")) {
+        break label32;
+      }
+      this.a.a(l);
     }
-    return -1;
+    label32:
+    do
+    {
+      return;
+      if (paramContext.equals("tencent.video.invite.refuse"))
+      {
+        this.a.b(l);
+        return;
+      }
+      if (paramContext.equals("tencent.video.invite.gaaccept"))
+      {
+        this.a.d(l);
+        return;
+      }
+      if (paramContext.equals("tencent.video.invite.gaignore"))
+      {
+        this.a.c(l);
+        return;
+      }
+    } while (!paramContext.equals("tencent.video.q2v.sdk.onRequestVideo"));
+    QLog.d("VideoInviteFloatBarUICtr", 1, "onReceive action = " + paramContext);
+    this.a.b();
   }
 }
 

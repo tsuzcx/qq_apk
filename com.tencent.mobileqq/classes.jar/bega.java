@@ -1,21 +1,24 @@
-import android.view.MotionEvent;
-import com.tencent.widget.ARMapHongBaoListView;
-
-public abstract interface bega
+public abstract class bega
 {
-  public abstract int getMode();
+  public abstract void a();
   
-  public abstract int getSpringbackOffset(ARMapHongBaoListView paramARMapHongBaoListView);
+  public abstract void a(int paramInt, String paramString);
   
-  public abstract void onFlingScrollHeader(int paramInt1, int paramInt2);
+  public abstract void a(int paramInt, String[] paramArrayOfString);
   
-  public abstract void onTouchMoving(ARMapHongBaoListView paramARMapHongBaoListView, boolean paramBoolean, MotionEvent paramMotionEvent);
+  public abstract void a(boolean paramBoolean, int paramInt);
   
-  public abstract int onViewCompleteAfterRefresh(ARMapHongBaoListView paramARMapHongBaoListView);
+  public abstract void a(String[] paramArrayOfString);
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void b(boolean paramBoolean, int paramInt);
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bega
  * JD-Core Version:    0.7.0.1
  */

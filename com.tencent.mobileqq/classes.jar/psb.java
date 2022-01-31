@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public final class psb
-  implements Parcelable.Creator<VideoColumnInfo>
+class psb
+  implements View.OnTouchListener
 {
-  public VideoColumnInfo a(Parcel paramParcel)
-  {
-    return new VideoColumnInfo(paramParcel);
-  }
+  psb(prw paramprw, LinearLayout paramLinearLayout) {}
   
-  public VideoColumnInfo[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new VideoColumnInfo[paramInt];
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
   }
 }
 

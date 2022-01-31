@@ -3,6 +3,7 @@ package com.tencent.viola.ui.dom;
 import android.text.TextUtils;
 import com.tencent.viola.ui.dom.style.FlexDirection;
 import com.tencent.viola.utils.ViolaUtils;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -24,6 +25,19 @@ public class DomObjectList
           setFlexDirection(FlexDirection.ROW);
         }
       }
+    }
+  }
+  
+  public void layoutAfter()
+  {
+    super.layoutAfter();
+    float f1 = ViolaUtils.getListContentWidth(this);
+    float f2 = ViolaUtils.getListContentHeight(this);
+    if (((this.mLastLayoutWidth != f1) || (this.mLastLayoutHeight != f2)) && (getEvents().contains("contentSizeChanged")))
+    {
+      ViolaUtils.fireContentSizeChange(this, f1, f2);
+      this.mLastLayoutWidth = f1;
+      this.mLastLayoutHeight = f2;
     }
   }
 }

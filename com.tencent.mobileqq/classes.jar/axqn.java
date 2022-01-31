@@ -1,114 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-class axqn
-  implements BusinessObserver
+public final class axqn
 {
-  axqn(axqm paramaxqm) {}
+  public boolean a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|isSuccess=" + paramBoolean + ",time=" + (System.currentTimeMillis() - axqk.b(this.a.b)));
-    }
-    int j = -1;
-    paramInt = j;
-    int i;
-    if (paramBoolean) {
-      i = j;
+    if (!TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgReporterSwitchConfigProcessor", 2, "MsgReporterSwitch configText : " + paramString);
+      }
     }
     try
     {
-      paramBundle = paramBundle.getByteArray("data");
-      paramInt = j;
-      if (paramBundle != null)
-      {
-        i = j;
-        GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-        i = j;
-        localGetAppinfoResponse.mergeFrom(paramBundle);
-        i = j;
-        j = localGetAppinfoResponse.ret.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          i = j;
-          QLog.i("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|ret=" + j);
-        }
-        paramInt = j;
-        if (j == 0)
-        {
-          i = j;
-          axqk.a(this.a.b).d = xdt.a(localGetAppinfoResponse.iconsURL, 16);
-          i = j;
-          axqk.a(this.a.b).e = xdt.a(localGetAppinfoResponse.iconsURL, 100);
-          i = j;
-          if (localGetAppinfoResponse.androidInfo != null)
-          {
-            i = j;
-            paramBundle = localGetAppinfoResponse.androidInfo;
-            i = j;
-            if (paramBundle.packName.has())
-            {
-              i = j;
-              axqk.a(this.a.b).jdField_a_of_type_JavaLangString = paramBundle.packName.get();
-            }
-            i = j;
-            if (paramBundle.messagetail.has())
-            {
-              i = j;
-              axqk.a(this.a.b).b = paramBundle.messagetail.get();
-            }
-            i = j;
-            if (paramBundle.sourceUrl.has())
-            {
-              i = j;
-              if (axqk.a(this.a.b) != Long.parseLong("1103584836"))
-              {
-                i = j;
-                axqk.a(this.a.b).c = paramBundle.sourceUrl.get();
-              }
-            }
-          }
-          i = j;
-          axqk.a(this.a.b).jdField_a_of_type_Int = 1;
-          i = j;
-          axqm.a(this.a);
-          paramInt = j;
-        }
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      for (;;)
-      {
-        paramInt = i;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("Q.share.ForwardSdkShareProcessor", 2, paramBundle, new Object[0]);
-          paramInt = i;
-        }
-      }
-      axqm.a(this.a).set(true);
-      this.a.b();
-    }
-    if ((axqk.a(this.a.b).jdField_a_of_type_Int != 1) && (axqm.a(this.a) < 2) && (paramInt != 110507) && (paramInt != 110401))
-    {
-      axqm.b(this.a);
-      this.a.d();
+      this.a = new JSONObject(paramString).optBoolean("MsgHopperUpload", false);
       return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("MsgReporterSwitchConfigProcessor", 1, paramString, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axqn
  * JD-Core Version:    0.7.0.1
  */

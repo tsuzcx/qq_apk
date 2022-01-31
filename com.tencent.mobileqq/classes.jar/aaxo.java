@@ -1,18 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class aaxo
-  implements DialogInterface.OnClickListener
+  implements ahpq
 {
-  public aaxo(GeneralSettingActivity paramGeneralSettingActivity, Runnable paramRunnable) {}
+  private final int jdField_a_of_type_Int = -2147483648;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private aaxo(Conversation paramConversation) {}
+  
+  public void a(int paramInt, List<RecentBaseData> paramList) {}
+  
+  public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
-    if ((paramDialogInterface instanceof bafb)) {
-      ((bafb)paramDialogInterface).setOnDismissListener(null);
+    if (paramDragFrameLayout.a() == -1)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b.sendEmptyMessage(10);
+      FrameHelperActivity.c(true);
+      return;
     }
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    FrameHelperActivity.c(false);
   }
 }
 

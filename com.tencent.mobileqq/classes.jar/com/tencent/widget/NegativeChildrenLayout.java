@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bekn;
-import beln;
+import bfsh;
+import bfth;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -22,10 +22,10 @@ public class NegativeChildrenLayout
 {
   int jdField_a_of_type_Int;
   Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new beln(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bfth(this);
   View jdField_a_of_type_AndroidViewView;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  public bekn a;
+  public bfsh a;
   ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
   public NegativeChildrenLayout(Context paramContext)
@@ -44,10 +44,10 @@ public class NegativeChildrenLayout
   
   private void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131494409, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131304073));
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131300683);
-    paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(2131310123);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559979, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131369746));
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131366288);
+    paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(2131375887);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramContext.getLayoutParams();
     localLayoutParams.leftMargin = 0;
     localLayoutParams.rightMargin = 0;
@@ -76,9 +76,9 @@ public class NegativeChildrenLayout
     {
       try
       {
-        ImageView localImageView = (ImageView)paramView.findViewById(2131303431);
-        TextView localTextView1 = (TextView)paramView.findViewById(2131311789);
-        TextView localTextView2 = (TextView)paramView.findViewById(2131302728);
+        ImageView localImageView = (ImageView)paramView.findViewById(2131369099);
+        TextView localTextView1 = (TextView)paramView.findViewById(2131377604);
+        TextView localTextView2 = (TextView)paramView.findViewById(2131368352);
         j = 8;
         str = "";
         if (!paramBoolean) {
@@ -126,14 +126,14 @@ public class NegativeChildrenLayout
     while ((paramDislikeInfo == null) || (TextUtils.isEmpty(paramDislikeInfo.a))) {
       return;
     }
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131494410, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559980, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
     localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     localView.setTag(paramDislikeInfo);
     this.jdField_a_of_type_JavaUtilArrayList.add(localView);
   }
   
-  public void setData(ArrayList<DislikeInfo> paramArrayList, String paramString, bekn parambekn)
+  public void setData(ArrayList<DislikeInfo> paramArrayList, String paramString, bfsh parambfsh)
   {
     if (paramArrayList == null) {
       return;
@@ -161,7 +161,7 @@ public class NegativeChildrenLayout
       a((View)this.jdField_a_of_type_JavaUtilArrayList.get(i), null);
       i += 1;
     }
-    this.jdField_a_of_type_Bekn = parambekn;
+    this.jdField_a_of_type_Bfsh = parambfsh;
   }
   
   public void setLastSeparateLineUnvis()
@@ -171,11 +171,11 @@ public class NegativeChildrenLayout
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
       View localView1 = (View)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      localView2 = localView1.findViewById(2131310123);
+      localView2 = localView1.findViewById(2131375887);
       if (i != this.jdField_a_of_type_Int) {
         break label68;
       }
-      localView1.setBackgroundResource(2130842302);
+      localView1.setBackgroundResource(2130842385);
     }
     label68:
     for (int j = 4;; j = 0)

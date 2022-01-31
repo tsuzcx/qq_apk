@@ -1,21 +1,32 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.apollo.ApolloGameNormalStartHandler.3;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
+import java.util.List;
 
-public class aiff
+class aiff
   implements View.OnClickListener
 {
-  public aiff(ApolloGameNormalStartHandler.3 param3) {}
+  aiff(aife paramaife) {}
   
   public void onClick(View paramView)
   {
-    aife.a(this.a.this$0).dismiss();
-    aife.a(this.a.this$0, true);
+    paramView = (aifg)paramView.getTag();
+    if (this.a.a.a.contains(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups))
+    {
+      this.a.a.a.remove(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, false);
+      return;
+    }
+    this.a.a.a.add(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
+    paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+    this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aiff
  * JD-Core Version:    0.7.0.1
  */

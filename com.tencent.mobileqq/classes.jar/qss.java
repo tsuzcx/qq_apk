@@ -1,29 +1,66 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer;
+import android.util.SparseIntArray;
+import com.tencent.biz.pubaccount.VideoInfo.ECommerceEntranceInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsShuntBarConfigure.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
 
 public class qss
-  extends Handler
 {
-  public qss(ReadInJoySearchTipsContainer paramReadInJoySearchTipsContainer, Looper paramLooper)
+  private static final String jdField_a_of_type_JavaLangString = qss.class.getSimpleName();
+  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private SparseIntArray jdField_b_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
+  private String jdField_b_of_type_JavaLangString;
+  
+  public qss(QQAppInterface paramQQAppInterface)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_b_of_type_JavaLangString = onk.a();
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    super.handleMessage(paramMessage);
-    if (this.a.a != null)
+    ThreadManagerV2.executeOnSubThread(new VideoFeedsShuntBarConfigure.1(this));
+  }
+  
+  public boolean a(VideoInfo.ECommerceEntranceInfo paramECommerceEntranceInfo)
+  {
+    if (paramECommerceEntranceInfo == null) {
+      return false;
+    }
+    try
     {
-      if (paramMessage.obj != null) {
-        this.a.a.a((String)paramMessage.obj);
+      boolean bool = bhvh.v(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (!bool) {
+        bhvh.a(this.jdField_b_of_type_JavaLangString + paramECommerceEntranceInfo.g, Integer.valueOf(0));
+      }
+      if (bool) {}
+      for (int i = ((Integer)bhvh.a(this.jdField_b_of_type_JavaLangString + paramECommerceEntranceInfo.g, Integer.valueOf(0))).intValue();; i = 0)
+      {
+        int k = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramECommerceEntranceInfo.g);
+        int j = this.jdField_b_of_type_AndroidUtilSparseIntArray.get(paramECommerceEntranceInfo.g);
+        if ((i + j >= paramECommerceEntranceInfo.f) || (k >= paramECommerceEntranceInfo.e)) {
+          break;
+        }
+        k += 1;
+        j += 1;
+        this.jdField_a_of_type_AndroidUtilSparseIntArray.put(paramECommerceEntranceInfo.g, k);
+        this.jdField_b_of_type_AndroidUtilSparseIntArray.put(paramECommerceEntranceInfo.g, j);
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "video_source_id: " + paramECommerceEntranceInfo.g + ", one_day_display_counts: " + paramECommerceEntranceInfo.f + ", session_display_counts: " + paramECommerceEntranceInfo.e + ", session_has_display_counts: " + k + ", one_day_has_display_counts: " + (i + j));
+        }
+        return true;
+      }
+      return false;
+    }
+    catch (Exception paramECommerceEntranceInfo)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "解析引流条出现的条件出错: " + paramECommerceEntranceInfo.getMessage());
       }
     }
-    else {
-      return;
-    }
-    this.a.a.a(null);
+    return false;
   }
 }
 

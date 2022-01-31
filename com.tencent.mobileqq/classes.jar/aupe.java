@@ -1,64 +1,86 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
 
 public class aupe
-  implements atpa
+  implements Comparable<aupe>
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<ReceiptMessageDetailFragment> jdField_a_of_type_JavaLangRefWeakReference;
+  public int a;
+  public Drawable a;
+  public String a;
+  public int[] a;
+  public int b;
+  public Drawable b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public aupe(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public int a(aupe paramaupe)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReceiptMessageDetailFragment);
+    if (paramaupe != null) {
+      return this.c - paramaupe.c;
+    }
+    return 0;
   }
   
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(atpb paramatpb)
+  public Drawable a()
   {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localReceiptMessageDetailFragment == null) {
-      return;
-    }
-    if ((paramatpb.b == 0) && (paramatpb.a != null))
+    try
     {
-      MessageRecord localMessageRecord = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_JavaLangString, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_Int, ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment));
-      Object localObject = localMessageRecord;
-      if (localMessageRecord == null)
+      if ((this.a == null) && (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)))
       {
-        localObject = new MessageForStructing();
-        ((MessageRecord)localObject).senderuin = "0";
-        ((MessageRecord)localObject).uniseq = ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment);
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(this.e, (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(this.f, (URLDrawable.URLDrawableOptions)localObject);
+        StateListDrawable localStateListDrawable = new StateListDrawable();
+        localStateListDrawable.addState(new int[] { -16842908, -16842913, -16842919 }, localURLDrawable);
+        localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
+        this.a = localStateListDrawable;
       }
-      paramatpb = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a().a(paramatpb.a, null, (MessageRecord)localObject, null);
-      if ((paramatpb != null) && (!paramatpb.isEmpty()))
-      {
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(10);
-        return;
-      }
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
-      return;
+      return this.a;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "ReceiptMessageDownloadCallBack onDownload, download msg fail with code: " + paramatpb.b);
-    }
-    int i = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = i;
-    if (i <= 3)
+    catch (Throwable localThrowable)
     {
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(0);
-      return;
+      for (;;)
+      {
+        QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
+      }
     }
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
+  }
+  
+  public Drawable b()
+  {
+    try
+    {
+      if ((this.b == null) && (!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.h)))
+      {
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(this.g, (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(this.h, (URLDrawable.URLDrawableOptions)localObject);
+        StateListDrawable localStateListDrawable = new StateListDrawable();
+        localStateListDrawable.addState(new int[] { -16842908, -16842913, -16842919 }, localURLDrawable);
+        localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
+        this.b = localStateListDrawable;
+      }
+      return this.b;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
+      }
+    }
   }
 }
 

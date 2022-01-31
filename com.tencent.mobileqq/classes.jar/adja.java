@@ -1,18 +1,29 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.QWalletAIOLifeCycleHelper.2.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class adja
-  extends acju
+  implements View.OnClickListener
 {
-  public ahpa a;
-  protected ViewGroup a;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected ETTextView a;
-  protected TextView b;
-  public ETTextView b;
+  adja(adiy paramadiy) {}
   
-  public adja(adiu paramadiu) {}
+  public void onClick(View paramView)
+  {
+    try
+    {
+      axqw.b(adiy.a(this.a), "P_CliOper", "Vip_pay_mywallet", "", "500", "idiom.tips.click", 0, 0, "", "", "", "");
+      adiy.a(this.a).a().postDelayed(new QWalletAIOLifeCycleHelper.2.1(this), 200L);
+      this.a.a();
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      QLog.e("QWalletAIOLifeCycleHelper", 1, "onclick  IdiomRedBagTips throw an exception: " + paramView);
+    }
+  }
 }
 
 

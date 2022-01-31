@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry;
 
-import akie;
+import akwq;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class MiniAppDesktop$4
@@ -11,14 +11,14 @@ class MiniAppDesktop$4
   public void run()
   {
     if (this.val$app == null) {}
-    akie localakie;
+    akwq localakwq;
     do
     {
       return;
-      localakie = (akie)this.val$app.a(148);
-    } while (localakie == null);
-    localakie.a();
-    localakie.c();
+      localakwq = (akwq)this.val$app.a(148);
+    } while (localakwq == null);
+    localakwq.a();
+    localakwq.c();
   }
 }
 

@@ -1,16 +1,117 @@
-import android.os.Handler;
-import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04884.1;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qg.loader.QGDownloader.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class bdsl
+public abstract class bdsl
 {
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  public int a;
+  private Map<String, List<bdsm>> a;
+  
+  @NonNull
+  static bdsl a()
   {
-    bdsr.a().a().post(new MiniProgramLpReportDC04884.1(paramString2, paramString1, paramString3));
+    return new bdsq();
+  }
+  
+  private void d(String paramString, boolean paramBoolean)
+  {
+    paramString = (List)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.iterator();
+      while (paramString.hasNext())
+      {
+        bdsm localbdsm = (bdsm)paramString.next();
+        if (paramBoolean) {
+          localbdsm.a();
+        } else {
+          localbdsm.b();
+        }
+      }
+    }
+  }
+  
+  protected void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QGDownloader", 2, "onFail.");
+    }
+    this.jdField_a_of_type_Int = 1;
+    c(paramString, false);
+    d(paramString, false);
+  }
+  
+  protected void a(String paramString, int paramInt) {}
+  
+  protected abstract void a(String paramString, boolean paramBoolean);
+  
+  public final void a(String paramString, boolean paramBoolean, bdsm parambdsm)
+  {
+    if (this.jdField_a_of_type_JavaUtilMap == null) {
+      this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    }
+    if (parambdsm != null)
+    {
+      List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      Object localObject = localList;
+      if (localList == null) {
+        localObject = new ArrayList(1);
+      }
+      parambdsm.a = System.currentTimeMillis();
+      ((List)localObject).add(parambdsm);
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+    }
+    a(paramString, paramBoolean);
+  }
+  
+  protected void b(String paramString, boolean paramBoolean)
+  {
+    boolean bool = bdsn.b.get();
+    if (QLog.isColorLevel()) {
+      QLog.d("QGDownloader", 2, new Object[] { "onSuccess. loadSo=", Boolean.valueOf(paramBoolean), ", soLoaded=", Boolean.valueOf(bool) });
+    }
+    this.jdField_a_of_type_Int = 0;
+    c(paramString, true);
+    if (!paramBoolean)
+    {
+      d(paramString, true);
+      return;
+    }
+    if (!bool)
+    {
+      ThreadManagerV2.excute(new QGDownloader.1(this, paramString), 16, null, true);
+      return;
+    }
+    d(paramString, false);
+  }
+  
+  protected void c(String paramString, boolean paramBoolean)
+  {
+    paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((paramString != null) && (!paramString.isEmpty())) {
+      paramString = (bdsm)paramString.get(0);
+    }
+    for (long l = System.currentTimeMillis() - paramString.a;; l = 0L)
+    {
+      if (paramBoolean) {}
+      for (paramString = "1";; paramString = "0")
+      {
+        vel.b("video_game_tech", "qg_so_download", 0, 0, new String[] { String.valueOf(l), paramString });
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdsl
  * JD-Core Version:    0.7.0.1
  */

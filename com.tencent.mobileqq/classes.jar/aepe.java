@@ -1,19 +1,22 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class aepe
-  extends GridLayoutManager.SpanSizeLookup
+public class aepe
+  implements View.OnClickListener
 {
-  aepe(aepd paramaepd) {}
+  aepe(aeoo paramaeoo) {}
   
-  public int getSpanSize(int paramInt)
+  public void onClick(View paramView)
   {
-    switch (this.a.getItemViewType(paramInt))
-    {
-    case 1: 
-    default: 
-      return 1;
+    if (aeoo.a(this.a).getVisibility() == 0) {
+      ThreadManager.post(new FriendChatPie.7.1(this), 5, null, false);
     }
-    return 3;
+    actn.n = true;
+    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+    acxv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
   }
 }
 

@@ -1,56 +1,89 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.common.app.AppInterface;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class awfq
+  extends awfk
 {
-  public static int a;
-  public static boolean a;
-  public static boolean b = true;
-  
-  static
+  public awfq(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
   {
-    jdField_a_of_type_Int = 18;
+    super(paramContext, paramAppInterface, paramView, paramString);
+    this.e = 0;
   }
   
-  public static void a()
+  public View a(RichStatus paramRichStatus)
   {
-    Object localObject;
-    if (!jdField_a_of_type_Boolean)
-    {
-      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.ShortVideoPlayInAIO.name(), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideo.ShortVideoPlayConfig", 2, "initConfig(), videoPlayConfig=" + (String)localObject);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split("\\|");
-        if ((localObject != null) && (localObject.length >= 2))
-        {
-          if (!TextUtils.isEmpty(localObject[0])) {
-            b = localObject[0].equals("1");
-          }
-          if (TextUtils.isEmpty(localObject[1])) {}
-        }
-      }
+    paramRichStatus = super.a(paramRichStatus);
+    l();
+    return paramRichStatus;
+  }
+  
+  protected CharSequence a(RichStatus paramRichStatus, awft paramawft, int paramInt)
+  {
+    if (paramRichStatus == null) {
+      paramawft = "";
     }
-    try
+    do
     {
-      jdField_a_of_type_Int = Integer.parseInt(localObject[1]);
-      jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideo.ShortVideoPlayConfig", 2, "initVideoPlayConfig(), sReadFromDPC=" + jdField_a_of_type_Boolean + ", sAutoPlayInAIO:" + b + ", sRequestedFPS:" + jdField_a_of_type_Int);
-      }
-      return;
+      return paramawft;
+      localObject1 = paramRichStatus.toSpannableStringWithoutAction(paramawft);
+      paramawft = (awft)localObject1;
+    } while (TextUtils.isEmpty(paramRichStatus.actionText));
+    Object localObject2 = paramRichStatus.actionText;
+    paramawft = (awft)localObject2;
+    if (!TextUtils.isEmpty(paramRichStatus.dataText)) {
+      paramawft = (String)localObject2 + paramRichStatus.dataText;
     }
-    catch (Exception localException)
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130848540);
+    localObject2 = new SpannableStringBuilder((CharSequence)localObject1);
+    ((SpannableStringBuilder)localObject2).insert(0, "[S] ");
+    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130848533);
+    String str = awei.a().a(paramRichStatus.actionId);
+    paramRichStatus = (RichStatus)localObject1;
+    if (!TextUtils.isEmpty(str))
     {
-      for (;;)
-      {
-        jdField_a_of_type_Int = 18;
-      }
+      paramRichStatus = URLDrawable.URLDrawableOptions.obtain();
+      paramRichStatus.mLoadingDrawable = ((Drawable)localObject1);
+      paramRichStatus.mFailedDrawable = ((Drawable)localObject1);
+      paramRichStatus.mRequestWidth = paramInt;
+      paramRichStatus.mRequestHeight = paramInt;
+      paramRichStatus = URLDrawable.getDrawable(str, paramRichStatus);
+      paramRichStatus.setCallback(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView);
     }
+    paramRichStatus.setBounds(0, 0, paramInt, paramInt);
+    int i = Color.parseColor("#ffa8a8a8");
+    if ((Build.VERSION.SDK_INT >= 4) && (Build.VERSION.SDK_INT != 20)) {}
+    for (paramRichStatus = new awcz(paramRichStatus, 1, paramawft, i, localDrawable, paramInt);; paramRichStatus = new awcz(paramRichStatus, 0, paramawft, i, localDrawable, paramInt))
+    {
+      ((SpannableStringBuilder)localObject2).setSpan(paramRichStatus, 0, "[S]".length(), 17);
+      return localObject2;
+    }
+  }
+  
+  protected boolean b()
+  {
+    return false;
+  }
+  
+  protected boolean d()
+  {
+    return false;
+  }
+  
+  protected void e()
+  {
+    int i = jdField_a_of_type_ArrayOfInt[6];
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(i, i, i, i);
   }
 }
 

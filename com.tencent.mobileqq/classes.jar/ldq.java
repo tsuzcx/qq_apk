@@ -1,25 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
-import com.tencent.av.gaudio.GaInviteLockActivity;
 
 public class ldq
-  implements lxu
+  implements DialogInterface.OnClickListener
 {
-  public ldq(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public ldq(VideoController paramVideoController) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!paramBoolean) || (GaInviteLockActivity.b(this.a))) {
-      return;
-    }
-    if ((this.a.a.e) || (this.a.a.l())) {
-      this.a.e();
-    }
-    for (;;)
-    {
-      awqx.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
-      return;
-      this.a.d();
-    }
+    axqw.b(null, "CliOper", "", "", "0x8006994", "0x8006994", 0, 0, "", "", "", "");
   }
 }
 

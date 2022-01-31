@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
-import obz;
+import onk;
 
 public final class KandianSubscribeReportUtils$1
   implements Runnable
@@ -13,7 +13,7 @@ public final class KandianSubscribeReportUtils$1
   public void run()
   {
     this.a.extLong = 0;
-    ((QQAppInterface)obz.a()).a().a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extLong", Integer.valueOf(this.a.extLong));
+    ((QQAppInterface)onk.a()).a().a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extLong", Integer.valueOf(this.a.extLong));
   }
 }
 

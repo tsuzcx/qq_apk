@@ -1,41 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class asto
-  implements View.OnClickListener
+public class asto
+  implements astq
 {
-  asto(aste paramaste, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3) {}
+  QQAppInterface a;
   
-  public void onClick(View paramView)
+  public asto(QQAppInterface paramQQAppInterface)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a(asue paramasue, HashMap<String, ArrayList<MessageRecord>> paramHashMap, astr paramastr) {}
+  
+  public boolean a(int paramInt)
+  {
+    switch (paramInt)
     {
-      aste.a(this.jdField_a_of_type_Aste, 1);
-      new awrb(this.jdField_a_of_type_Aste.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.jdField_a_of_type_Aste.a.a.a).a();
+    default: 
+      return false;
     }
-    for (;;)
-    {
-      aste.b(this.jdField_a_of_type_Aste);
-      return;
-      if (paramView == this.b)
-      {
-        aste.a(this.jdField_a_of_type_Aste, 2);
-        new awrb(this.jdField_a_of_type_Aste.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.jdField_a_of_type_Aste.a.a.a).a();
-      }
-      else if (paramView == this.c)
-      {
-        aste.a(this.jdField_a_of_type_Aste, 3);
-        new awrb(this.jdField_a_of_type_Aste.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.jdField_a_of_type_Aste.a.a.a).a();
-      }
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     asto
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,24 @@
-import android.widget.TextView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 import java.util.List;
+import java.util.Map;
 
 class usi
-  implements vdr<Boolean, vdx>
+  implements bfrx
 {
-  usi(ush paramush) {}
+  usi(ush paramush, StoryHomeHorizontalListView paramStoryHomeHorizontalListView, use paramuse) {}
   
-  public Void a(Boolean paramBoolean, vdx paramvdx)
+  public void onScrollStateChanged(int paramInt)
   {
-    if (paramBoolean.booleanValue())
+    if (paramInt == 4097)
     {
-      urk.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramvdx.b.size(), paramvdx.jdField_a_of_type_JavaUtilList.size())));
-      this.a.a.setEnabled(true);
-    }
-    for (;;)
-    {
-      return null;
-      urk.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramvdx.jdField_a_of_type_Int);
-      bbmy.a(this.a.a(), 1, ajjy.a(2131637858) + paramvdx.jdField_a_of_type_Int, 1);
+      int i = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getFirstVisiblePosition();
+      paramInt = i;
+      if (i < 0) {
+        paramInt = 0;
+      }
+      ush.a(this.jdField_a_of_type_Ush).a.put("2_" + this.jdField_a_of_type_Ush.a.a.feedId, ((StoryVideoItem)this.jdField_a_of_type_Use.a.get(paramInt)).mVid);
     }
   }
 }

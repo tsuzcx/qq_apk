@@ -2,21 +2,21 @@ package com.tencent.biz.pubaccount.Advertisement.manager;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import mxu;
-import mxv;
-import myd;
-import myh;
+import niv;
+import niw;
+import nje;
+import nji;
 
 public class AdvertisementRecentUserManager$1
   implements Runnable
 {
-  public AdvertisementRecentUserManager$1(myd parammyd, mxu parammxu) {}
+  public AdvertisementRecentUserManager$1(nje paramnje, niv paramniv) {}
   
   public void run()
   {
     Iterator localIterator = this.a.a.iterator();
     while (localIterator.hasNext()) {
-      myh.b(((mxv)localIterator.next()).b);
+      nji.b(((niw)localIterator.next()).b);
     }
   }
 }

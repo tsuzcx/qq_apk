@@ -1,38 +1,38 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import acnc;
+import acxv;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.provider.MediaStore.Images.Media;
-import bace;
+import bbdj;
 import com.tencent.qphone.base.util.QLog;
-import ey;
+import gr;
 import java.io.File;
-import uss;
-import usu;
-import uwe;
+import vfo;
+import vfq;
+import vja;
 
 public class EditPicSave$2$1
   implements Runnable
 {
-  public EditPicSave$2$1(usu paramusu, String paramString) {}
+  public EditPicSave$2$1(vfq paramvfq, String paramString) {}
   
   public void run()
   {
     try
     {
-      String str = acnc.a();
+      String str = acxv.a();
       File localFile = new File(str);
-      if (bace.a(new File(this.jdField_a_of_type_JavaLangString), localFile))
+      if (bbdj.a(new File(this.jdField_a_of_type_JavaLangString), localFile))
       {
         Object localObject = new BitmapFactory.Options();
         ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
         BitmapFactory.decodeFile(str, (BitmapFactory.Options)localObject);
         localObject = ((BitmapFactory.Options)localObject).outMimeType;
-        int i = ey.a(str);
+        int i = gr.a(str);
         ContentValues localContentValues = new ContentValues(7);
         localContentValues.put("title", localFile.getName());
         localContentValues.put("_display_name", localFile.getName());
@@ -41,8 +41,8 @@ public class EditPicSave$2$1
         localContentValues.put("orientation", Integer.valueOf(i));
         localContentValues.put("_data", str);
         localContentValues.put("_size", Long.valueOf(localFile.length()));
-        if (this.jdField_a_of_type_Usu.a.a.getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, localContentValues) == null) {
-          MediaStore.Images.Media.insertImage(this.jdField_a_of_type_Usu.a.a.getActivity().getContentResolver(), str, localFile.getName(), null);
+        if (this.jdField_a_of_type_Vfq.a.a.getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, localContentValues) == null) {
+          MediaStore.Images.Media.insertImage(this.jdField_a_of_type_Vfq.a.a.getActivity().getContentResolver(), str, localFile.getName(), null);
         }
       }
       return;

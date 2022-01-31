@@ -1,43 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
-import java.util.List;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
 class afpm
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
-  afpm(afpl paramafpl, TroopLinkElement paramTroopLinkElement, afpn paramafpn) {}
+  afpm(afpl paramafpl, View paramView, BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (!afpl.a(this.jdField_a_of_type_Afpl))
-    {
-      paramView = new Intent(afpl.a(this.jdField_a_of_type_Afpl), QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement.url);
-      afpl.a(this.jdField_a_of_type_Afpl).startActivity(paramView);
-      return;
-    }
-    boolean bool = afpn.a(this.jdField_a_of_type_Afpn).isChecked();
-    if (bool)
-    {
-      afpl.a(this.jdField_a_of_type_Afpl).remove(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
-      paramView = afpn.a(this.jdField_a_of_type_Afpn);
-      if (bool) {
-        break label125;
-      }
-    }
-    label125:
-    for (bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      return;
-      afpl.a(this.jdField_a_of_type_Afpl).add(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
-      break;
-    }
+    bbcv.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    afpl.a(this.jdField_a_of_type_Afpl, this.jdField_a_of_type_AndroidViewView);
   }
 }
 

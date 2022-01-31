@@ -7,12 +7,12 @@ import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import ufp;
+import usl;
 
 public class CardItem$CardVideoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CardVideoInfo> CREATOR = new ufp();
+  public static final Parcelable.Creator<CardVideoInfo> CREATOR = new usl();
   private qqstory_struct.CardVideoInfo a;
   
   public CardItem$CardVideoInfo(Parcel paramParcel)

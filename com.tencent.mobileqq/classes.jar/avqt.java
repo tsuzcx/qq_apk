@@ -1,83 +1,114 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class avqt
-  extends avsc
+  extends avqv
 {
-  public avqt(azwg paramazwg)
+  public avqt(QQAppInterface paramQQAppInterface)
   {
-    super(paramazwg);
+    super(paramQQAppInterface);
   }
   
-  protected avrh<avon, avww> a(azwg paramazwg)
+  private HashMap<String, ArrayList<MessageRecord>> a(List<MessageRecord> paramList, ArrayList<ChatMessage> paramArrayList)
   {
-    return new avqx(paramazwg);
-  }
-  
-  public void a(avol paramavol, avwv paramavwv)
-  {
-    paramavol = (avom)paramavol;
-    LinearLayout localLinearLayout = ((avwo)paramavwv).a();
-    if (localLinearLayout != null)
+    HashMap localHashMap = new HashMap(1);
+    ArrayList localArrayList = new ArrayList(1);
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      List localList = paramavol.a();
-      if (localList != null)
+      MessageRecord localMessageRecord1 = (MessageRecord)paramList.next();
+      if ((localMessageRecord1 instanceof MessageForMixedMsg))
       {
-        localLinearLayout.removeAllViews();
-        int k = Math.min(localList.size(), paramavol.a());
-        int i = 0;
-        if (i < k)
+        Iterator localIterator = ((MessageForMixedMsg)localMessageRecord1).msgElemList.iterator();
+        while (localIterator.hasNext())
         {
-          avon localavon = (avon)localList.get(i);
-          View localView = LayoutInflater.from(paramavwv.a().getContext()).inflate(2131496782, null);
-          avwq localavwq = new avwq(localView);
-          localView.setTag(2131313373, localavon);
-          localView.setTag(2131313378, localavwq);
-          localView.setTag(2131313374, Integer.valueOf(i));
-          localView.setTag(2131313372, Integer.valueOf(localList.size()));
-          localView.setTag(2131313375, this.a);
-          avwi.a(localavon, k, i);
-          int m = localavon.a();
-          int n = localavon.b();
-          if ((localavon instanceof avoo)) {}
-          for (int j = ((avoo)localavon).r;; j = 0)
+          MessageRecord localMessageRecord2 = (MessageRecord)localIterator.next();
+          if (((localMessageRecord2 instanceof MessageForReplyText)) && (((MessageForReplyText)localMessageRecord2).getSourceMessage() != null))
           {
-            avwi.a(m, n, localView, j);
-            localLinearLayout.addView(localView);
-            this.a.a(localavon, localavwq);
-            i += 1;
-            break;
+            localArrayList.add(localMessageRecord2);
+            localHashMap.put(String.valueOf(localMessageRecord1.uniseq), localArrayList);
           }
         }
+        paramArrayList.add((ChatMessage)localMessageRecord1);
       }
     }
-    if (paramavwv.b() != null) {
-      paramavwv.b().setVisibility(8);
-    }
-    if ((paramavol instanceof avnx))
+    return localHashMap;
+  }
+  
+  private void h(asue paramasue)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    for (;;)
     {
-      paramavol = ((avnx)paramavol).a();
-      paramavwv = ((avwo)paramavwv).a();
-      if (paramavwv != null)
+      return;
+      Iterator localIterator = paramasue.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        if (paramavol == null) {
-          break label325;
+        ChatMessage localChatMessage = (ChatMessage)localIterator.next();
+        if ((localChatMessage instanceof MessageForMixedMsg)) {
+          ((asjs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(174)).a(paramasue.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForMixedMsg)localChatMessage, false, ((MessageForMixedMsg)localChatMessage).forwardID);
         }
-        paramavwv.a().setVisibility(0);
-        this.a.a(paramavol, paramavwv);
       }
     }
-    return;
-    label325:
-    paramavwv.a().setVisibility(8);
+  }
+  
+  protected void c(asue paramasue)
+  {
+    h(paramasue);
+  }
+  
+  protected void d(asue paramasue)
+  {
+    int i = 0;
+    Object localObject1 = paramasue.jdField_a_of_type_JavaUtilList;
+    ArrayList localArrayList = new ArrayList(1);
+    Object localObject2 = (HashMap)paramasue.jdField_a_of_type_JavaUtilMap;
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (paramasue.jdField_a_of_type_Int != 2) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramasue.jdField_a_of_type_JavaUtilHashMap = a(a((QQAppInterface)localObject2, (List)localObject1, bool), localArrayList);
+      paramasue.jdField_a_of_type_JavaUtilList = localArrayList;
+      if (paramasue.jdField_a_of_type_JavaUtilHashMap.size() != 0) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReplyMsgController", 2, "preHandleData dstMsgMap is empty");
+      }
+      h(paramasue);
+      return;
+    }
+    if (paramasue.jdField_a_of_type_Int == 0) {}
+    for (;;)
+    {
+      localObject1 = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(i);
+      ((Message)localObject1).obj = paramasue;
+      ((Message)localObject1).sendToTarget();
+      return;
+      if (paramasue.jdField_a_of_type_Int == 2) {
+        i = 1;
+      }
+    }
+  }
+  
+  protected void g(asue paramasue)
+  {
+    h(paramasue);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avqt
  * JD-Core Version:    0.7.0.1
  */

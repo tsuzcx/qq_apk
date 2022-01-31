@@ -1,30 +1,42 @@
-import java.util.ArrayList;
+import android.content.ContentValues;
 
 public class aksw
-  extends akti
 {
-  public long a;
-  public ArrayList<aknz> a;
-  public boolean a;
+  public int a;
+  public akte a;
+  public ContentValues a;
+  public aukm a;
+  public String a;
+  public String[] a;
+  public int b;
+  public String b;
+  public String c;
   
-  public aksw()
+  public aksw(String paramString1, int paramInt1, String paramString2, ContentValues paramContentValues, String paramString3, String[] paramArrayOfString, int paramInt2, akte paramakte)
   {
-    this.b = 4L;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_AndroidContentContentValues = paramContentValues;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Akte = paramakte;
   }
   
-  public String toString()
+  public aksw(String paramString1, int paramInt1, String paramString2, aukm paramaukm, int paramInt2, akte paramakte)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("ARLocalFaceRecogResult{recogType = ").append(this.b).append(",isTimeOut = ").append(this.jdField_a_of_type_Boolean).append(",frameIdx = ").append(this.jdField_a_of_type_Long).append(", faceDatas.size = ");
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
-    for (int i = this.jdField_a_of_type_JavaUtilArrayList.size();; i = 0) {
-      return i + '}';
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Aukm = paramaukm;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Akte = paramakte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aksw
  * JD-Core Version:    0.7.0.1
  */

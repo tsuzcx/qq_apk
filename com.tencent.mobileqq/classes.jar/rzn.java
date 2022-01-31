@@ -1,18 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
-public final class rzn
-  implements Parcelable.Creator<WSRedDotPushMsg>
+class rzn
+  implements ohm
 {
-  public WSRedDotPushMsg a(Parcel paramParcel)
+  rzn(rzk paramrzk) {}
+  
+  public void a()
   {
-    return new WSRedDotPushMsg(paramParcel);
+    if (rzk.a(this.a) != null) {
+      rzk.a(this.a).a();
+    }
   }
   
-  public WSRedDotPushMsg[] a(int paramInt)
+  public void a(int paramInt) {}
+  
+  public void a(boolean paramBoolean)
   {
-    return new WSRedDotPushMsg[paramInt];
+    if (paramBoolean) {
+      return;
+    }
+    this.a.a(true);
+    rzk.a(this.a).c();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    rzk.a(this.a).e();
+    this.a.a(false);
+    rzk.a(this.a).c();
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.portal;
 
-import atsk;
+import auqi;
 import com.tencent.widget.HongBaoListView;
 
 public class ConversationHongBao$1
   implements Runnable
 {
-  public ConversationHongBao$1(atsk paramatsk) {}
+  public ConversationHongBao$1(auqi paramauqi) {}
   
   public void run()
   {

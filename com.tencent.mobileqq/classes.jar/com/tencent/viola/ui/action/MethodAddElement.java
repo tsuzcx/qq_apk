@@ -174,10 +174,10 @@ public class MethodAddElement
     if (!(localVComponentContainer.getRealView() instanceof AdapterView))
     {
       if (!(localVComponent.getRealView() instanceof VScrollView)) {
-        break label315;
+        break label325;
       }
       if (localVComponent.getRealView().getParent() == null) {
-        break label306;
+        break label316;
       }
       localObject = (View)localVComponent.getRealView().getParent();
       localVComponentContainer.getRealView().addView((View)localObject);
@@ -189,11 +189,12 @@ public class MethodAddElement
       localVComponent.applyEvents();
       localVComponent.bindData();
       localVComponent.notifyChange();
+      localVComponent.notifyWhenChange("add", this.mAddDom);
       return;
-      label306:
+      label316:
       dealAddView(localVComponentContainer, localVComponent);
       continue;
-      label315:
+      label325:
       if ((localVComponent.getHostView() instanceof VRecyclerView))
       {
         localObject = (VRecyclerList)localVComponent;

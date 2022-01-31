@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.emosm.cameraemotionroaming;
 
-import ajff;
-import anbh;
-import anbo;
+import ajth;
+import anrs;
+import anrz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
 public class CameraEmoRoamingManager$2
   implements Runnable
 {
-  public CameraEmoRoamingManager$2(anbh paramanbh, ajff paramajff) {}
+  public CameraEmoRoamingManager$2(anrs paramanrs, ajth paramajth) {}
   
   public void run()
   {
-    List localList = ((anbo)anbh.a(this.this$0).getManager(333)).a("needDel");
+    List localList = ((anrz)anrs.a(this.this$0).getManager(333)).a("needDel");
     if (localList.size() > 0) {
       this.a.a(localList, true);
     }

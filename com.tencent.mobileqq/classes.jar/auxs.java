@@ -1,26 +1,19 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.view.Surface;
+import java.util.ArrayList;
+import java.util.List;
 
-@TargetApi(14)
-public class auxs
+public final class auxs
+  implements anyg
 {
-  public int a;
-  public SurfaceTexture a;
-  public Surface a;
-  
-  public auxs(int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
+  public List<aoak> a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new aoak(7, 7, null));
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auxs
  * JD-Core Version:    0.7.0.1
  */

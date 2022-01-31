@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ajed;
-import akaq;
+import ajsf;
+import akpc;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
@@ -29,7 +29,7 @@ public class RecentItemNearbyLiveTipData
       return;
     }
     Object localObject = paramQQAppInterface.a();
-    akaq localakaq = paramQQAppInterface.a();
+    akpc localakpc = paramQQAppInterface.a();
     if (localObject != null) {}
     for (localObject = ((QQMessageFacade)localObject).a(this.mData.senderuin, this.mData.istroop);; localObject = null)
     {
@@ -55,11 +55,11 @@ public class RecentItemNearbyLiveTipData
       this.nearbyLiveTipMsg.parse();
       this.mTitleName = this.nearbyLiveTipMsg.nickName;
       localMsgSummary.strContent = this.nearbyLiveTipMsg.msg;
-      if (localakaq != null)
+      if (localakpc != null)
       {
-        this.mUnreadNum = localakaq.a(((QQMessageFacade.Message)localObject).frienduin, ((QQMessageFacade.Message)localObject).istroop);
+        this.mUnreadNum = localakpc.a(((QQMessageFacade.Message)localObject).frienduin, ((QQMessageFacade.Message)localObject).istroop);
         a(paramQQAppInterface, paramContext, localMsgSummary);
-        if (!AppSetting.c) {
+        if (!AppSetting.d) {
           break;
         }
         paramQQAppInterface = new StringBuilder(24);
@@ -97,9 +97,9 @@ public class RecentItemNearbyLiveTipData
     {
       long l1 = Long.valueOf(str2).longValue();
       String str1 = str2;
-      if (l1 > ajed.l)
+      if (l1 > ajsf.l)
       {
-        long l2 = ajed.l;
+        long l2 = ajsf.l;
         str1 = l1 - l2 + "";
       }
       return str1;

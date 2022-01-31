@@ -1,31 +1,19 @@
-import com.tencent.av.redpacket.ui.RedPacketShareFragment;
-import com.tencent.av.redpacket.ui.RedPacketShareFragment.3;
-import com.tencent.av.redpacket.ui.RedPacketShareFragment.3.1;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
-
-public class lli
-  implements bbsh
+class lli
 {
-  public lli(RedPacketShareFragment.3.1 param1) {}
+  byte jdField_a_of_type_Byte = 0;
+  byte b = 0;
+  byte c = 0;
+  byte d = 0;
+  byte e = 0;
+  byte f = 0;
+  byte g = 0;
+  byte h = 0;
+  byte i = 0;
+  byte j = 0;
+  byte k = 0;
+  byte l = 0;
   
-  public void a(BaseResp paramBaseResp)
-  {
-    if ((RedPacketShareFragment.d(this.a.a.this$0) == null) || (!RedPacketShareFragment.d(this.a.a.this$0).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND_CIRCLE onWXShareResp resp.errCode = " + paramBaseResp.errCode);
-    switch (paramBaseResp.errCode)
-    {
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      RedPacketShareFragment.a("0X8008CF8", 4);
-    }
-  }
+  lli(llh paramllh) {}
 }
 
 

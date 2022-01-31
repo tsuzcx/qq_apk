@@ -1,37 +1,44 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsDebugView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
 
-public final class aosc
-  implements Handler.Callback
+public class aosc
+  extends apvd
 {
-  private final WeakReference<TdsDebugView> a;
+  public aosc(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  private aosc(TdsDebugView paramTdsDebugView)
+  public void a()
   {
-    this.a = new WeakReference(paramTdsDebugView);
+    this.a.a.a().c();
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void b()
   {
-    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
-    if (localTdsDebugView == null) {
-      return true;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    case 1: 
-      TdsDebugView.a(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-      return true;
-    case 2: 
-      TdsDebugView.b(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-      return true;
-    }
-    TdsDebugView.c(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-    return true;
+    this.a.a.a().k();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().l();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().m();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().n();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().o();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().F();
   }
 }
 

@@ -1,37 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactPresenter.3;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class afib
-  implements View.OnClickListener
+  extends akup
 {
-  public afib(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
-  
-  public void onClick(View paramView)
+  public afib(Face2FaceAddContactPresenter.3 param3, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    paramView = this.a.a.iterator();
-    while (paramView.hasNext()) {
-      ((EmoticonFromGroupEntity)paramView.next()).status = -1;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Face2FaceAddContactPresenter", 2, "onLocationFinish errCode = " + paramInt + " info = " + paramSosoLbsInfo);
     }
-    this.a.a.clear();
-    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
-    EmoticonGroupStoreFragment.b(this.a).setVisibility(0);
-    EmoticonGroupStoreFragment.a(this.a).a = false;
-    EmoticonGroupStoreFragment.a(this.a).a(false);
-    EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
-    EmoticonGroupStoreFragment.e(this.a);
-    this.a.a(true);
-    this.a.resetLeftButton();
+    if ((paramInt != 0) || (paramSosoLbsInfo == null)) {
+      if (afhz.a(this.a.this$0) != null) {
+        afhz.a(this.a.this$0).b();
+      }
+    }
+    while ((TextUtils.isEmpty(this.a.a)) || (this.a.a.length() != 4)) {
+      return;
+    }
+    afhz.a(this.a.this$0, paramSosoLbsInfo, this.a.a, this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afib
  * JD-Core Version:    0.7.0.1
  */

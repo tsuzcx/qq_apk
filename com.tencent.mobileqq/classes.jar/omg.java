@@ -1,24 +1,16 @@
-public abstract interface omg
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+
+class omg
+  implements ViewBase.OnClickListener
 {
-  public abstract void D_();
+  omg(olw paramolw) {}
   
-  public abstract void E_();
-  
-  public abstract boolean a();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void setMediaCoverUrl(String paramString);
-  
-  public abstract void setMediaPlayUrl(String paramString);
-  
-  public abstract void setMediaPlayVid(String paramString);
+  public void onClick(ViewBase paramViewBase) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     omg
  * JD-Core Version:    0.7.0.1
  */

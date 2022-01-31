@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abxf;
+import achr;
 
 public class TroopInfoActivity$22$2
   implements Runnable
 {
-  public TroopInfoActivity$22$2(abxf paramabxf) {}
+  public TroopInfoActivity$22$2(achr paramachr) {}
   
   public void run()
   {

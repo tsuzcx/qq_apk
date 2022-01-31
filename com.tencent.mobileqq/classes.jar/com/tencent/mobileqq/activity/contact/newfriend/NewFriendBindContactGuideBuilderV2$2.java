@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aeyk;
-import aicw;
+import afka;
+import aipp;
 
 public class NewFriendBindContactGuideBuilderV2$2
   implements Runnable
 {
-  public NewFriendBindContactGuideBuilderV2$2(aeyk paramaeyk) {}
+  public NewFriendBindContactGuideBuilderV2$2(afka paramafka) {}
   
   public void run()
   {

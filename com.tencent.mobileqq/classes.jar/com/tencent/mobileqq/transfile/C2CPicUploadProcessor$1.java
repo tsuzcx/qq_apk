@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
-import axpc;
-import bbmy;
+import aypj;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class C2CPicUploadProcessor$1
   implements Runnable
 {
-  public C2CPicUploadProcessor$1(axpc paramaxpc) {}
+  public C2CPicUploadProcessor$1(aypj paramaypj) {}
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.sApplication, 2131624391, 1).a();
+    bcpw.a(BaseApplicationImpl.sApplication, 2131689939, 1).a();
   }
 }
 

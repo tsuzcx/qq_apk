@@ -1,14 +1,26 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.view.animation.DecelerateInterpolator;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+
 class aszp
-  implements atab
+  extends AnimatorListenerAdapter
 {
-  aszp(aszm paramaszm, aszr paramaszr) {}
+  aszp(aszo paramaszo, aszs paramaszs, URLDrawable paramURLDrawable) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Aszm.c(paramString);
-    if (this.jdField_a_of_type_Aszr != null) {
-      this.jdField_a_of_type_Aszr.a(paramBoolean, paramString);
+    if (this.jdField_a_of_type_Aszo.a() != null)
+    {
+      this.jdField_a_of_type_Aszs.b.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_Aszs.b, "alpha", new float[] { 0.2F, 1.0F });
+      paramAnimator.setInterpolator(new DecelerateInterpolator());
+      paramAnimator.setDuration(300L).start();
+      return;
     }
+    this.jdField_a_of_type_Aszs.b.setAlpha(1.0F);
   }
 }
 

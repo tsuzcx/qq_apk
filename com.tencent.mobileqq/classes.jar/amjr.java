@@ -1,63 +1,27 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
 
-public class amjr
+class amjr
+  implements DialogInterface.OnClickListener
 {
-  public int a = -1;
-  public int b = -1;
-  public int c = -1;
-  public int d = -1;
+  amjr(amjq paramamjq) {}
   
-  @NonNull
-  public static amjr a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new amjr();
-  }
-  
-  @NonNull
-  public static amjr a(@Nullable String paramString)
-  {
-    amjr localamjr = new amjr();
-    try
+    amju.d(BaseApplicationImpl.getContext());
+    if (this.a.a.getActivity() != null)
     {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = new JSONObject(paramString);
-        localamjr.a = paramString.optInt("kingcard", 0);
-        localamjr.b = paramString.optInt("gldrawable", 0);
-        localamjr.c = paramString.optInt("webso_preload", 0);
-        localamjr.d = paramString.optInt("webso_screenshot", 0);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("QVIP.SDK.ConfigProcessor", 1, " : " + localamjr.toString());
-      }
-      return localamjr;
+      this.a.a.getActivity().finish();
+      this.a.a.getActivity().overridePendingTransition(0, 0);
     }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        QLog.e("QVIP.SDK.ConfigProcessor", 1, "json parse error:" + paramString);
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.b > 0;
-  }
-  
-  public String toString()
-  {
-    return "QVipSDKConfig{kingCard=" + this.a + ", gldrawable=" + this.b + ", webso_preload=" + this.c + ", webso_screenshot=" + this.d + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amjr
  * JD-Core Version:    0.7.0.1
  */

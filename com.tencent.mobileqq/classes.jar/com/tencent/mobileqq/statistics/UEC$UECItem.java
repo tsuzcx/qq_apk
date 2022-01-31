@@ -3,12 +3,12 @@ package com.tencent.mobileqq.statistics;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awsc;
+import axsa;
 
 public class UEC$UECItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<UECItem> CREATOR = new awsc();
+  public static final Parcelable.Creator<UECItem> CREATOR = new axsa();
   public int a;
   public long a;
   public String a;

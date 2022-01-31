@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import akrc;
-import aksp;
+import alfo;
+import alhb;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
 public class ARCloudControl$3
   implements Runnable
 {
-  public ARCloudControl$3(akrc paramakrc, byte[] paramArrayOfByte) {}
+  public ARCloudControl$3(alfo paramalfo, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     if (this.a == null)
     {
-      akrc.a(this.this$0, true);
-      akrc.b(this.this$0, true);
+      alfo.a(this.this$0, true);
+      alfo.b(this.this$0, true);
     }
     while (this.this$0.a.recognitions == null) {
       return;
     }
-    aksp.a().a();
-    aksp.a().a = System.currentTimeMillis();
-    akrc.a(this.this$0, this.a, this.this$0.a.recognitions);
+    alhb.a().a();
+    alhb.a().a = System.currentTimeMillis();
+    alfo.a(this.this$0, this.a, this.this$0.a.recognitions);
   }
 }
 

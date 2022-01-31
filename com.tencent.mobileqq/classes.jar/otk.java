@@ -1,119 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class otk
+class otk
+  extends BroadcastReceiver
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject3 = null;
-    JSONObject localJSONObject = new JSONObject();
-    otl.a(paramBaseArticleInfo, localJSONObject, true);
-    otl.a(paramBaseArticleInfo, localJSONObject);
-    otl.b(paramBaseArticleInfo, localJSONObject);
-    otl.m(paramBaseArticleInfo, localJSONObject);
-    otl.e(paramBaseArticleInfo, localJSONObject);
-    otl.f(paramBaseArticleInfo, localJSONObject);
-    otl.X(paramBaseArticleInfo, localJSONObject);
-    otl.aa(paramBaseArticleInfo, localJSONObject);
-    otl.ab(paramBaseArticleInfo, localJSONObject);
-    localJSONObject.put("style_ID", "ReadInjoy_triple_img_cell");
-    otl.a(localJSONObject, paramBaseArticleInfo);
-    Object localObject1;
-    Object localObject2;
-    label152:
-    Object localObject4;
-    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
+    if (paramIntent == null) {}
+    do
     {
-      localObject3 = qoe.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
-      if ((localObject3 == null) || (((JSONArray)localObject3).length() < 3)) {
-        return localJSONObject;
-      }
-      localObject1 = ((JSONArray)localObject3).optJSONObject(0);
-      if (localObject1 == null)
+      return;
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
       {
-        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject2 = ((JSONArray)localObject3).optJSONObject(1);
-        if (localObject2 != null) {
-          break label261;
-        }
-        localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject3 = ((JSONArray)localObject3).optJSONObject(2);
-        if (localObject3 != null) {
-          break label271;
-        }
+        QLog.d("ReadinjoySPEventReport", 2, "receive screen off broadcast");
+        ota.e(false);
+        return;
       }
-      label261:
-      label271:
-      for (paramBaseArticleInfo = paramBaseArticleInfo.mFirstPagePicUrl;; paramBaseArticleInfo = ((JSONObject)localObject3).optString("picture"))
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
       {
-        localObject3 = localObject2;
-        localObject4 = localObject1;
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url1", localObject4);
-        localJSONObject.put("id_multi_img_1", localObject1);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url2", localObject3);
-        localJSONObject.put("id_multi_img_2", localObject1);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url3", paramBaseArticleInfo);
-        localJSONObject.put("id_multi_img_3", localObject1);
-        return localJSONObject;
-        localObject1 = ((JSONObject)localObject1).optString("picture");
-        break;
-        localObject2 = ((JSONObject)localObject2).optString("picture");
-        break label152;
+        QLog.d("ReadinjoySPEventReport", 2, "receive screen on broadcast");
+        ota.e(true);
+        return;
       }
-    }
-    if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
-    {
-      localObject1 = paramBaseArticleInfo.mSinglePicture;
-      label304:
-      if (localObject1 == null) {
-        break label405;
+      if ("mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction()))
+      {
+        ota.c(false);
+        ota.o();
+        return;
       }
-      localObject1 = ((URL)localObject1).getFile();
-      label313:
-      if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
-        break label410;
-      }
-      localObject2 = paramBaseArticleInfo.mSinglePicture;
-      label336:
-      if (localObject2 == null) {
-        break label420;
-      }
-      localObject2 = ((URL)localObject2).getFile();
-      label345:
-      if ((paramBaseArticleInfo.mPictures.length >= 3) && (paramBaseArticleInfo.mPictures[2] != null)) {
-        break label425;
-      }
-    }
-    label405:
-    label410:
-    label420:
-    label425:
-    for (URL localURL = paramBaseArticleInfo.mSinglePicture;; localURL = paramBaseArticleInfo.mPictures[2])
-    {
-      localObject4 = localObject1;
-      paramBaseArticleInfo = (BaseArticleInfo)localObject3;
-      localObject3 = localObject2;
-      if (localURL == null) {
-        break;
-      }
-      paramBaseArticleInfo = localURL.getFile();
-      localObject4 = localObject1;
-      localObject3 = localObject2;
-      break;
-      localObject1 = paramBaseArticleInfo.mPictures[0];
-      break label304;
-      localObject1 = null;
-      break label313;
-      localObject2 = paramBaseArticleInfo.mPictures[1];
-      break label336;
-      localObject2 = null;
-      break label345;
-    }
+    } while (!"mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()));
+    ota.d(false);
+    ota.o();
   }
 }
 

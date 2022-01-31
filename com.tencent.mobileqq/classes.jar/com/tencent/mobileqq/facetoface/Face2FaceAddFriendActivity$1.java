@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.facetoface;
 
-import ajlf;
-import ajmx;
+import ajzl;
+import akbg;
 import android.text.TextUtils;
-import anvx;
+import aomr;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class Face2FaceAddFriendActivity$1
   implements Runnable
 {
-  Face2FaceAddFriendActivity$1(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, ajmx paramajmx) {}
+  Face2FaceAddFriendActivity$1(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, akbg paramakbg) {}
   
   public void run()
   {

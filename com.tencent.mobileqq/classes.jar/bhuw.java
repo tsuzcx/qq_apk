@@ -1,39 +1,94 @@
-import java.lang.reflect.Method;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.webkit.URLUtil;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class bhuw
+public final class bhuw
+  extends Drawable.ConstantState
 {
-  final int jdField_a_of_type_Int;
-  final Method jdField_a_of_type_JavaLangReflectMethod;
+  int jdField_a_of_type_Int = 30;
+  bhuy jdField_a_of_type_Bhuy;
+  bhvf jdField_a_of_type_Bhvf;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
   
-  bhuw(int paramInt, Method paramMethod)
+  private bhuw(bhus parambhus) {}
+  
+  public int a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangReflectMethod = paramMethod;
-    this.jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
+    if (this.jdField_a_of_type_Bhuy == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_Bhuy.a();
   }
   
-  public boolean equals(Object paramObject)
+  public void a(Rect paramRect)
   {
-    if (this == paramObject) {}
-    do
+    this.jdField_a_of_type_Bhuy.a(paramRect);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_JavaLangString.equals(paramString))) {
+      this.jdField_a_of_type_Boolean = false;
+    }
+    if (this.jdField_a_of_type_Bhuy == null)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      this.jdField_a_of_type_Bhuy = new bhuy(BaseApplicationImpl.getApplication());
+      if (this.jdField_a_of_type_Bhvf == null) {
+        this.jdField_a_of_type_Bhvf = new bhux(this);
       }
-      paramObject = (bhuw)paramObject;
-    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaLangReflectMethod.getName().equals(paramObject.jdField_a_of_type_JavaLangReflectMethod.getName())));
-    return false;
+      this.jdField_a_of_type_Bhuy.a(this.jdField_a_of_type_Bhvf);
+      if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramString)))
+      {
+        if (!URLUtil.isNetworkUrl(paramString)) {
+          break label148;
+        }
+        this.jdField_a_of_type_Bhuy.a(paramString, -1, true);
+      }
+    }
+    for (;;)
+    {
+      if (paramInt > 0) {
+        this.jdField_a_of_type_Int = paramInt;
+      }
+      this.jdField_a_of_type_JavaLangString = paramString;
+      return;
+      if (this.jdField_a_of_type_Boolean) {
+        break;
+      }
+      this.jdField_a_of_type_Bhuy.a();
+      break;
+      label148:
+      this.jdField_a_of_type_Bhuy.a(paramString, true);
+    }
   }
   
-  public int hashCode()
+  public int b()
   {
-    return this.jdField_a_of_type_Int * 31 + this.jdField_a_of_type_JavaLangReflectMethod.getName().hashCode();
+    return a() * 1000 / this.jdField_a_of_type_Int;
+  }
+  
+  public int getChangingConfigurations()
+  {
+    return 0;
+  }
+  
+  public Drawable newDrawable()
+  {
+    return new bhus(this);
+  }
+  
+  public Drawable newDrawable(Resources paramResources)
+  {
+    return new bhus(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhuw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,19 @@
-import com.tencent.image.AbsThirdDataSourceAdapter;
-import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ock
-  extends AbsThirdDataSourceAdapter
+class ock
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 2;
-  private AbsThirdDataSourceAdapter.OnPreparedCallback jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback;
-  private String jdField_a_of_type_JavaLangString = "";
-  private int b = 0;
-  private int c = 0;
+  ock(oci paramoci) {}
   
-  public ock(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int getPlayType()
-  {
-    return this.c;
-  }
-  
-  public int getStaus()
-  {
-    return this.b;
-  }
-  
-  public String getURL()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void requestPrepare(String paramString, AbsThirdDataSourceAdapter.OnPreparedCallback paramOnPreparedCallback)
-  {
-    this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback = paramOnPreparedCallback;
-    this.b = 1;
-    paramOnPreparedCallback = ocm.a();
-    ocl localocl = new ocl(this);
-    if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 6)) {
-      paramOnPreparedCallback.a(paramString, "PubAccountArticleCenter.GetUrlByVid", localocl);
-    }
-    while (this.jdField_a_of_type_Int != 4) {
-      return;
-    }
-    paramOnPreparedCallback.a(paramString, "SQQShopAdSvr.GetUrlByVid", localocl);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ock
  * JD-Core Version:    0.7.0.1
  */

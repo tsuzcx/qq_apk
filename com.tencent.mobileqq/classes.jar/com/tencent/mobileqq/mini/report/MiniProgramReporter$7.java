@@ -7,8 +7,8 @@ class MiniProgramReporter$7
   
   public void run()
   {
-    MiniProgramReporter.access$600(this.this$0);
     MiniProgramReporter.access$700(this.this$0);
+    MiniProgramReporter.access$800(this.this$0);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import agwj;
+import ahiy;
 
 final class b
   implements Runnable
@@ -11,7 +11,7 @@ final class b
   {
     synchronized (a.a(this.a))
     {
-      agwj.a(this.a, a.b(this.a));
+      ahiy.a(this.a, a.b(this.a));
       return;
     }
   }

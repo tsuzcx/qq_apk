@@ -1,28 +1,26 @@
-import android.content.Intent;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
 public class aotb
+  implements View.OnLongClickListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
+  public aotb(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public aotb a(Intent paramIntent)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("targetUin");
-    this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("srcDiscGroup");
-    this.jdField_a_of_type_Int = paramIntent.getIntExtra("peerType", 0);
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("rootEntrace", true);
-    this.jdField_b_of_type_Int = paramIntent.getIntExtra("busiType", 0);
-    this.c = paramIntent.getIntExtra("enterfrom", 0);
-    return this;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
+      return false;
+    }
+    paramView.setSelected(true);
+    bblr localbblr = new bblr();
+    localbblr.a(2131366634, paramView.getContext().getString(2131692752));
+    localbblr.a(2131364979, paramView.getContext().getString(2131691507));
+    ApolloUtil.a(paramView, QfileBaseRecentFileTabView.n(this.a), localbblr);
+    this.a.a = bbcc.a(paramView, localbblr, new aotc(this, paramView), new aote(this, paramView));
+    return true;
   }
 }
 

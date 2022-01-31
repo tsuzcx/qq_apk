@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.RadioButton;
-import azvv;
+import bawz;
 
 public class WebViewTopTabRadioButton
   extends RadioButton
@@ -14,7 +14,7 @@ public class WebViewTopTabRadioButton
   int jdField_a_of_type_Int = 0;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public volatile boolean a;
-  int jdField_b_of_type_Int = azvv.a(super.getContext(), 2.0F);
+  int jdField_b_of_type_Int = bawz.a(super.getContext(), 2.0F);
   Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   
   public WebViewTopTabRadioButton(Context paramContext, AttributeSet paramAttributeSet)
@@ -27,7 +27,7 @@ public class WebViewTopTabRadioButton
     if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {}
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130849053);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130849288);
       return this.jdField_a_of_type_AndroidGraphicsBitmap;
     }
     catch (OutOfMemoryError paramContext)
@@ -56,9 +56,9 @@ public class WebViewTopTabRadioButton
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_b_of_type_AndroidGraphicsBitmap = a(super.getContext());
     if ((this.jdField_b_of_type_AndroidGraphicsBitmap == null) || (this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled())) {}
-    for (paramInt2 = azvv.a(super.getContext(), 9.0F);; paramInt2 = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth())
+    for (paramInt2 = bawz.a(super.getContext(), 9.0F);; paramInt2 = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth())
     {
-      this.jdField_a_of_type_Int = (paramInt1 - paramInt2 - azvv.a(super.getContext(), 3.0F));
+      this.jdField_a_of_type_Int = (paramInt1 - paramInt2 - bawz.a(super.getContext(), 3.0F));
       return;
     }
   }

@@ -1,23 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.LocationInfo;
 
-class athm
-  implements View.OnClickListener
+public final class athm
+  implements Parcelable.Creator<LocationInfo>
 {
-  athm(athi paramathi, athx paramathx) {}
-  
-  public void onClick(View paramView)
+  public LocationInfo a(Parcel paramParcel)
   {
-    athi.a(this.jdField_a_of_type_Athi).removeMessages(101);
-    athi.a(this.jdField_a_of_type_Athi).obtainMessage(101).sendToTarget();
-    this.jdField_a_of_type_Athx.a.a();
+    return new LocationInfo(paramParcel);
+  }
+  
+  public LocationInfo[] a(int paramInt)
+  {
+    return new LocationInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     athm
  * JD-Core Version:    0.7.0.1
  */

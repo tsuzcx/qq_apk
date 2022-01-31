@@ -1,70 +1,43 @@
-import android.content.Context;
 import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
-import com.tencent.mobileqq.mqsafeedit.MD5;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
 
-final class ajjn
-  extends batl
+class ajjn
+  implements aiuk
 {
-  ajjn(String paramString, File paramFile, CustomEmotionData paramCustomEmotionData, boolean paramBoolean1, boolean paramBoolean2, ancg paramancg, IPicDownloadListener paramIPicDownloadListener, List paramList1, List paramList2, Context paramContext, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2) {}
+  ajjn(ajjf paramajjf, int paramInt, String paramString, AppInterface paramAppInterface, File paramFile) {}
   
-  public void onDone(batm parambatm)
+  public void a(boolean paramBoolean, aiuj paramaiuj)
   {
-    super.onDone(parambatm);
-    ajjm.a.remove(this.jdField_a_of_type_JavaLangString);
-    if ((3 == parambatm.a()) && (this.jdField_a_of_type_JavaIoFile.exists()))
+    paramaiuj = aiub.a().a(8, this.jdField_a_of_type_Int);
+    Object localObject = new StringBuilder().append("downloadApolloRes onCheckFinish success:").append(paramBoolean).append(" downloadItem:");
+    if (paramaiuj == null) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath = this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
-      if ("needDownload".equals(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType)) {
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType = "isUpdate";
+      QLog.i("ApolloPluginRscLoader", 1, paramBoolean);
+      localObject = ajjf.a(this.jdField_a_of_type_JavaLangString);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        break;
       }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId = "";
-      }
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath)))
-      {
-        parambatm = MD5.getFileMd5(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath);
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 = HexUtil.bytes2HexStr(parambatm);
-      }
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_Ancg.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onFileDone(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, true);
-      }
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      if (QLog.isColorLevel()) {
-        QLog.d("FunyPicHelper", 2, "update funnyPic eId->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId + " emoPath->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath + " download->sucess");
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) && (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onDone(this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
-      }
+      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
       return;
-      this.jdField_b_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onFileDone(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FunyPicHelper", 2, "update funnyPic eId->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId + " emoPath->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath + " download->faile");
-      }
-      bapm.a("emotionType", "emotionActionFav", "3", "", "", badq.b(this.jdField_a_of_type_AndroidContentContext) + "", parambatm.a + "", "", "", "");
     }
+    if (paramaiuj == null)
+    {
+      this.jdField_a_of_type_Ajjf.a((String)localObject, 2, this.jdField_a_of_type_Int + " json里无此id");
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramaiuj);
+    aiud.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new ajjo(this, (String)localObject), localArrayList, false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajjn
  * JD-Core Version:    0.7.0.1
  */

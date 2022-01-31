@@ -1,16 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.6.1;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class uqi
-  implements und
+class uqi
+  implements TextView.OnEditorActionListener
 {
-  uqi(upw paramupw) {}
+  uqi(uqh paramuqh) {}
   
-  public void a()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    urk.d("NewMyStorySegment", "finish get all data from server steps");
-    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.6.1(this));
+    if (paramInt == 4)
+    {
+      this.a.d();
+      return true;
+    }
+    return false;
   }
 }
 

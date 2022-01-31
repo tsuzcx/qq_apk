@@ -1,17 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class acfd
-  implements DialogInterface.OnClickListener
+  extends bbwf
 {
-  public acfd(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public acfd(TextPreviewActivity paramTextPreviewActivity, String paramString1, String paramString2)
   {
-    this.a.n();
-    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, mpl.a(), "2", "0");
+    super(paramString1, paramString2);
+  }
+  
+  public void onCancel(bbwg parambbwg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambbwg);
+    }
+    super.onCancel(parambbwg);
+  }
+  
+  public void onDone(bbwg parambbwg)
+  {
+    super.onDone(parambbwg);
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onDone| task:" + parambbwg);
+    }
+    if (parambbwg.b()) {}
+    do
+    {
+      return;
+      if (parambbwg.a() == -1)
+      {
+        parambbwg = new Message();
+        parambbwg.what = 17;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambbwg);
+        return;
+      }
+      parambbwg = this.a.jdField_a_of_type_Ho.a(this.a.e);
+    } while (parambbwg == null);
+    Message localMessage = new Message();
+    localMessage.what = 18;
+    localMessage.obj = parambbwg;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean onStart(bbwg parambbwg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onStart| task:" + parambbwg);
+    }
+    return super.onStart(parambbwg);
   }
 }
 

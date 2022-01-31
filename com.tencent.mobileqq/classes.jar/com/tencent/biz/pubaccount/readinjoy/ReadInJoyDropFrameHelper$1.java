@@ -4,20 +4,20 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import nio;
-import niq;
+import nty;
+import nua;
 
 public class ReadInJoyDropFrameHelper$1
   implements Runnable
 {
   public void run()
   {
-    Iterator localIterator = ((List)nio.a(this.this$0).get(Integer.valueOf(nio.a(this.this$0, this.a)))).iterator();
+    Iterator localIterator = ((List)nty.a(this.this$0).get(Integer.valueOf(nty.a(this.this$0, this.a)))).iterator();
     while (localIterator.hasNext())
     {
-      niq localniq = (niq)localIterator.next();
+      nua localnua = (nua)localIterator.next();
       QLog.d("ReadInJoyDropFrameHelper", 2, "updateFeedsFluency UI FluencyVal : " + this.b);
-      localniq.a(this.b);
+      localnua.a(this.b);
     }
   }
 }

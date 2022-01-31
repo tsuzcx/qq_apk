@@ -1,34 +1,23 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
 
 public class bblo
-  implements View.OnClickListener
+  implements NormalConfigHandler.GetConfigListen<QAVFunCallConfig>
 {
-  public bblo(ProfileCardMoreInfoView paramProfileCardMoreInfoView, String paramString, int paramInt, View paramView) {}
+  public bblo(QAVFunCallHandler paramQAVFunCallHandler) {}
   
-  public void onClick(View paramView)
+  public void a(AppInterface paramAppInterface, QAVFunCallConfig paramQAVFunCallConfig)
   {
-    if ((avgf.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int >= 0))
-    {
-      paramView = new Bundle();
-      paramView.putString("key_sign_topic_name", this.jdField_a_of_type_JavaLangString);
-      paramView.putInt("key_sign_topic_id", this.jdField_a_of_type_Int);
-      paramView.putInt("from_type", 2);
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-        SignTextEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, null, paramView, -1);
-      }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      atxr.a().c(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      awqx.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "2", "0", "", "");
-    }
+    this.a.setConfig(paramQAVFunCallConfig);
+    this.a.onGetConfig(paramAppInterface);
+    QAVFunCallHandler.access$000(this.a, "onGetConfig", paramAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bblo
  * JD-Core Version:    0.7.0.1
  */

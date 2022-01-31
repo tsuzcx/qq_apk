@@ -1,46 +1,9 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-
-class qbb
-  implements nwb
+public class qbb
+  extends qbc
 {
-  qbb(qaz paramqaz) {}
-  
-  public void a()
+  public qbb(Long paramLong, Integer paramInteger, String paramString1, String paramString2)
   {
-    if (qaz.a(this.a) != null) {
-      qaz.a(this.a).b();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt < 0) {
-      return;
-    }
-    qaz.a(this.a).e = paramInt;
-    qaz.a(this.a).b(qaz.a(this.a));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    this.a.f();
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    qaz.a(this.a).e();
-    this.a.f();
+    super(paramLong, paramInteger, paramString1, paramString2);
   }
 }
 

@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import azue;
+import bavi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -31,8 +31,8 @@ final class a
     try
     {
       localObject1 = URLDrawable.getDrawable(URLDecoder.decode(LoadingFragment.access$000(this.a).config.icon_url), (URLDrawable.URLDrawableOptions)localObject2);
-      ((URLDrawable)localObject1).setTag(azue.a(i, i));
-      ((URLDrawable)localObject1).setDecodeHandler(azue.a);
+      ((URLDrawable)localObject1).setTag(bavi.a(i, i));
+      ((URLDrawable)localObject1).setDecodeHandler(bavi.a);
       localObject2 = Message.obtain();
       ((Message)localObject2).what = 7;
       ((Message)localObject2).obj = localObject1;

@@ -1,34 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import com.tencent.widget.Switch;
 
 public class aile
-  implements EIPCResultCallback
 {
-  public aile(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameInterfaceProxy", 2, "get_open_key_back");
-      }
-      paramEIPCResult = paramEIPCResult.data.getString("respData");
-      ApolloGameInterfaceProxy.a(this.a, "cs.on_get_open_key.local", paramEIPCResult);
-      return;
-    }
-    catch (Throwable paramEIPCResult)
-    {
-      QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
-    }
-  }
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  AppletItem jdField_a_of_type_ComTencentMobileqqAppletsDataAppletItem;
+  Switch jdField_a_of_type_ComTencentWidgetSwitch;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aile
  * JD-Core Version:    0.7.0.1
  */

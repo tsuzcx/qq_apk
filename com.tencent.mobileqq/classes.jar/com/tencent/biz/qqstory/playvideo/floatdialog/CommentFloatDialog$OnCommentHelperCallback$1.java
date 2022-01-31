@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.playvideo.floatdialog;
 
-import tlf;
+import tyb;
 
 public class CommentFloatDialog$OnCommentHelperCallback$1
   implements Runnable
 {
-  public CommentFloatDialog$OnCommentHelperCallback$1(tlf paramtlf) {}
+  public CommentFloatDialog$OnCommentHelperCallback$1(tyb paramtyb) {}
   
   public void run()
   {
-    this.a.P_();
+    this.a.N_();
   }
 }
 

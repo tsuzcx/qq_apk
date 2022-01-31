@@ -1,42 +1,68 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.lang.ref.WeakReference;
 
-public class bhjj
-  implements bhjh
+final class bhjj
+  implements ServiceConnection
 {
-  private File a;
-  
-  public void a()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if ((this.a == null) || (!this.a.exists()))
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "onServiceConnected");
+    }
+    if (bhji.a() == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("VoiceBgmRecognizer", 2, "recognize: invoked. info: mTargetAudioFile = " + this.a);
+        QLog.i("QZonePluginManger", 2, "return WeakReference<OnPluginInterfaceReadyListener> is null");
       }
+      bhji.a();
       return;
     }
-    bhjl localbhjl = (bhjl)bhfm.a().c(10);
-    localbhjl.a(this.a);
-    try
+    paramComponentName = (bhjk)bhji.a().get();
+    if (paramComponentName == null)
     {
-      bhix.a(this.a.getAbsolutePath(), this.a.getAbsolutePath() + "_8kHz", localbhjl);
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "return OnPluginManagerLoadedListener is null");
+      }
+      bhji.a();
       return;
     }
-    catch (FFmpegCommandAlreadyRunningException localFFmpegCommandAlreadyRunningException)
+    if ((paramIBinder != null) && (paramIBinder.isBinderAlive()) && (paramIBinder.pingBinder()))
     {
-      QLog.d("VoiceBgmRecognizer", 1, String.format("e = %s", new Object[] { localFFmpegCommandAlreadyRunningException }));
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "binder alive");
+      }
+      bhji.a = new bhim(bhju.a(paramIBinder));
+      paramComponentName.onQzonePluginClientReady(bhji.a);
+    }
+    for (;;)
+    {
+      bhji.a();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "binder not alive");
+      }
+      paramComponentName.onQzonePluginClientReady(null);
     }
   }
   
-  public void a(File paramFile)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    this.a = paramFile;
+    if (QLog.isColorLevel()) {
+      QLog.i("plugin_tag", 2, "onServiceDisconnected");
+    }
+    if (bhji.a != null)
+    {
+      bhji.a.b();
+      bhji.a = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhjj
  * JD-Core Version:    0.7.0.1
  */

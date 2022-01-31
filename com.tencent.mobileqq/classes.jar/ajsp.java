@@ -1,32 +1,36 @@
-import com.tencent.mobileqq.data.Stranger;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.List;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
-
 public class ajsp
-  implements ajfe
+  implements ajtg
 {
-  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField) {}
+  protected void a() {}
   
-  public void a(boolean paramBoolean, List<Stranger> paramList) {}
+  protected void a(Object paramObject) {}
   
-  public void b(boolean paramBoolean, List<Stranger> paramList) {}
+  protected void a(boolean paramBoolean) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt == 4) {
-      a(paramBoolean, (PBRepeatMessageField)paramObject);
-    }
-    do
+    switch (paramInt)
     {
+    default: 
       return;
-      if (paramInt == 2)
-      {
-        a(paramBoolean, (List)paramObject);
-        return;
-      }
-    } while (paramInt != 3);
-    b(paramBoolean, (List)paramObject);
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      a(paramObject);
+      return;
+    case 3: 
+      a();
+      return;
+    case 4: 
+      b(paramBoolean, paramObject);
+      return;
+    }
+    a(paramBoolean);
   }
 }
 

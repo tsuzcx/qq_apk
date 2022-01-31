@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aoio;
+import aozi;
 
 public class FileManagerRSWorker$2
   implements Runnable
 {
-  public FileManagerRSWorker$2(aoio paramaoio, long paramLong) {}
+  public FileManagerRSWorker$2(aozi paramaozi, long paramLong) {}
   
   public void run()
   {

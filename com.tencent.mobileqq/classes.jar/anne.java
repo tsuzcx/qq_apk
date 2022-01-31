@@ -1,172 +1,192 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import java.io.File;
-import java.util.List;
+import OnlinePushPack.MsgInfo;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForYanZhi;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import tencent.im.s2c.msgtype0x210.submsgtype0x108.SubMsgType0x108.MsgBody;
 
 public class anne
-  extends BaseAdapter
-  implements URLDrawableDownListener
 {
-  protected Context a;
-  protected Handler a;
-  protected annd a;
-  public List<annd> a;
-  
-  public anne(Context paramContext, Handler paramHandler, annd paramannd)
+  public static MessageRecord a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Annd = paramannd;
-  }
-  
-  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
-  {
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    float f1 = paramInt1 / i;
-    float f2 = paramInt2 / j;
-    Matrix localMatrix = new Matrix();
-    localMatrix.postScale(f1, f2);
-    return Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
-  }
-  
-  public int a(annd paramannd)
-  {
-    return paramannd.a(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public annd a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (annd)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return this.jdField_a_of_type_Annd;
-  }
-  
-  public Long a(int paramInt)
-  {
-    return Long.valueOf(a(paramInt).a());
-  }
-  
-  public List<annd> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(List<annd> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return a(paramInt).a(this.jdField_a_of_type_Annd);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 1;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {
-      paramView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-    }
-    for (;;)
+    if (paramArrayOfByte != null)
     {
-      com.tencent.qphone.base.util.QLog.d("EmotionAdapter", 1, "getView position:" + paramInt);
-      Drawable localDrawable;
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+      try
       {
-        paramViewGroup = (annd)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        localDrawable = paramViewGroup.a(this.jdField_a_of_type_AndroidContentContext);
-        if ((paramViewGroup.a()) || (!paramViewGroup.b())) {
-          break label200;
+        SubMsgType0x108.MsgBody localMsgBody = new SubMsgType0x108.MsgBody();
+        localMsgBody.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (MessageForYanZhi)axaq.a(-2070);
+        paramArrayOfByte.type = localMsgBody.uint32_type.get();
+        paramArrayOfByte.pushUin = localMsgBody.uint64_push_uin.get();
+        paramArrayOfByte.likeCount = localMsgBody.uint32_like_count.get();
+        paramArrayOfByte.pushTime = localMsgBody.push_time.get();
+        paramArrayOfByte.msg = (localMsgBody.uint32_like_count.get() + BaseApplicationImpl.getContext().getString(2131694403));
+        long l2 = localMsgBody.push_time.get();
+        long l1 = l2;
+        if (l2 <= 0L) {
+          l1 = paramMsgInfo.uRealMsgTime;
         }
-        ((URLImageView)paramView).setURLDrawableDownListener(this);
-        label106:
-        if ((!(localDrawable instanceof arfx)) || (((arfx)localDrawable).a() == null)) {
-          break label211;
-        }
-        int i = aciy.a(100.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        paramViewGroup = a(((arfx)localDrawable).a(), i, i);
-        ((ImageView)paramView).setImageBitmap(paramViewGroup);
+        paramArrayOfByte.time = l1;
+        paramArrayOfByte.msgseq = l1;
+        paramArrayOfByte.shmsgseq = paramMsgInfo.shMsgSeq;
+        paramArrayOfByte.msgUid = paramMsgInfo.lMsgUid;
+        paramArrayOfByte.selfuin = paramQQAppInterface.getCurrentAccountUin();
+        paramArrayOfByte.istroop = 1001;
+        paramArrayOfByte.isread = false;
+        paramArrayOfByte.frienduin = ajsf.H;
+        paramArrayOfByte.senderuin = ajsf.ap;
+        paramArrayOfByte.getBytes();
+        a(paramQQAppInterface, paramArrayOfByte);
+        QLog.i("Q.msg_box.YanZhiHelper", 1, "decodePush0x210_0x108 decode error, e=" + paramArrayOfByte.toString());
       }
-      for (;;)
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
-        this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, paramInt, 0, localDrawable).sendToTarget();
-        return paramView;
-        paramViewGroup = this.jdField_a_of_type_Annd;
-        break;
-        label200:
-        ((URLImageView)paramView).setURLDrawableDownListener(null);
-        break label106;
-        label211:
-        ((ImageView)paramView).setImageDrawable(localDrawable);
+        try
+        {
+          if (QLog.isColorLevel())
+          {
+            paramQQAppInterface = new StringBuilder();
+            paramQQAppInterface.append("decodePush0x210_0x108,decode MessageForYanZhi").append("type=").append(localMsgBody.uint32_type.get()).append(",pushUin=").append(localMsgBody.uint64_push_uin.get()).append(",likeCount=").append(localMsgBody.uint32_like_count.get()).append(",pushTime=").append(localMsgBody.push_time.get());
+            QLog.i("Q.msg_box.YanZhiHelper", 2, paramQQAppInterface.toString());
+          }
+          return paramArrayOfByte;
+        }
+        catch (InvalidProtocolBufferMicroException paramMsgInfo)
+        {
+          for (;;)
+          {
+            paramQQAppInterface = paramArrayOfByte;
+            paramArrayOfByte = paramMsgInfo;
+          }
+        }
+        paramArrayOfByte = paramArrayOfByte;
+        paramQQAppInterface = null;
       }
+      return paramQQAppInterface;
+    }
+    else
+    {
+      QLog.i("Q.msg_box.YanZhiHelper", 1, "decodePush0x210_0x108 pbData = null");
+      return null;
     }
   }
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public static MessageRecord a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, msg_comm.Msg paramMsg)
   {
+    if (paramArrayOfByte != null)
+    {
+      try
+      {
+        SubMsgType0x108.MsgBody localMsgBody = new SubMsgType0x108.MsgBody();
+        localMsgBody.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (MessageForYanZhi)axaq.a(-2070);
+        paramArrayOfByte.type = localMsgBody.uint32_type.get();
+        paramArrayOfByte.pushUin = localMsgBody.uint64_push_uin.get();
+        paramArrayOfByte.likeCount = localMsgBody.uint32_like_count.get();
+        paramArrayOfByte.pushTime = localMsgBody.push_time.get();
+        paramArrayOfByte.msg = (localMsgBody.uint32_like_count.get() + BaseApplicationImpl.getContext().getString(2131694403));
+        long l2 = localMsgBody.push_time.get();
+        long l1 = l2;
+        if (l2 <= 0L) {
+          l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
+        }
+        paramArrayOfByte.time = l1;
+        paramArrayOfByte.msgseq = l1;
+        paramArrayOfByte.shmsgseq = paramMsg.msg_head.msg_seq.get();
+        paramArrayOfByte.msgUid = paramMsg.msg_head.msg_uid.get();
+        paramArrayOfByte.selfuin = paramQQAppInterface.getCurrentAccountUin();
+        paramArrayOfByte.istroop = 1001;
+        paramArrayOfByte.isread = false;
+        paramArrayOfByte.frienduin = ajsf.H;
+        paramArrayOfByte.senderuin = ajsf.ap;
+        paramArrayOfByte.getBytes();
+        a(paramQQAppInterface, paramArrayOfByte);
+        QLog.i("Q.msg_box.YanZhiHelper", 1, "decodePull0x210_0x108 decode error, e=" + paramArrayOfByte.toString());
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        try
+        {
+          if (QLog.isColorLevel())
+          {
+            paramQQAppInterface = new StringBuilder();
+            paramQQAppInterface.append("decodePull0x210_0x108,decode MessageForYanZhi").append("type=").append(localMsgBody.uint32_type.get()).append(",pushUin=").append(localMsgBody.uint64_push_uin.get()).append(",likeCount=").append(localMsgBody.uint32_like_count.get()).append(",pushTime=").append(localMsgBody.push_time.get());
+            QLog.i("Q.msg_box.YanZhiHelper", 2, paramQQAppInterface.toString());
+          }
+          return paramArrayOfByte;
+        }
+        catch (InvalidProtocolBufferMicroException paramMsg)
+        {
+          for (;;)
+          {
+            paramQQAppInterface = paramArrayOfByte;
+            paramArrayOfByte = paramMsg;
+          }
+        }
+        paramArrayOfByte = paramArrayOfByte;
+        paramQQAppInterface = null;
+      }
+      return paramQQAppInterface;
+    }
+    else
+    {
+      QLog.i("Q.msg_box.YanZhiHelper", 1, "decodePull0x210_0x108 pbData = null");
+      return null;
+    }
+  }
+  
+  public static String a(AppInterface paramAppInterface)
+  {
+    paramAppInterface = (String)atbg.a(paramAppInterface.getCurrentAccountUin(), "key_banner_enter_items", "");
     try
     {
-      File localFile = paramURLDrawable.getFileInLocal();
-      if (localFile == null) {
-        break label74;
-      }
-      i = bacm.c(localFile.getAbsolutePath());
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      paramAppInterface = new JSONArray(paramAppInterface);
+      int i = 0;
+      while (i < paramAppInterface.length())
       {
-        localException.printStackTrace();
-        label74:
-        int i = 0;
+        Object localObject = paramAppInterface.optJSONObject(i);
+        int j = ((JSONObject)localObject).optInt("id");
+        localObject = ((JSONObject)localObject).optString("jumpUrl");
+        if ((j == 2) && (!TextUtils.isEmpty((CharSequence)localObject)))
+        {
+          paramAppInterface = (String)localObject + "5";
+          return paramAppInterface;
+        }
+        i += 1;
+      }
+      return "http://nearby.qq.com/face_score/index.html?_wv=16781319&_wwv=1&_nav_txtclr=000000&_bid=2543&source=5";
+    }
+    catch (Exception paramAppInterface)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.msg_box.YanZhiHelper", 2, "getYanzhiUrl:" + paramAppInterface.toString());
       }
     }
-    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
-      com.tencent.TMG.utils.QLog.d("EmotionAdapter", 0, "onLoadSuccessed,orientation");
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, MessageForYanZhi paramMessageForYanZhi)
+  {
+    paramMessageForYanZhi = paramQQAppInterface.a().b(paramMessageForYanZhi.senderuin, paramMessageForYanZhi.istroop);
+    if (paramMessageForYanZhi != null) {
+      paramQQAppInterface.a().b(paramMessageForYanZhi.senderuin, paramMessageForYanZhi.istroop, paramMessageForYanZhi.uniseq);
     }
-    AIOGalleryAdapter.a(paramView, paramURLDrawable, i);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
-    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, -1, 1, paramURLDrawable).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anne
  * JD-Core Version:    0.7.0.1
  */

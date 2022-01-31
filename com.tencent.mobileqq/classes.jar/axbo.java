@@ -1,835 +1,374 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
+import MCommon.Sharkfin;
+import MConch.CSPullConchs;
+import MConch.SCPullConchs;
+import MShark.CSGUIDRegist;
+import MShark.SCGUIDRegist;
+import MWIFI.CSGet3rdCloudCheck;
+import MWIFI.SCGet3rdCloudCheck;
+import android.content.Context;
+import android.net.DhcpInfo;
+import android.net.wifi.WifiManager;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.1;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import com.qq.jce.wup.UniPacket;
+import com.qq.jce.wup.WupHexUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import mqq.app.MobileQQ;
 
 public class axbo
+  extends xop
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private axbs jdField_a_of_type_Axbs;
-  private axbt jdField_a_of_type_Axbt;
-  private axbu jdField_a_of_type_Axbu;
-  private axbv jdField_a_of_type_Axbv;
-  private axbw jdField_a_of_type_Axbw;
-  private axbz jdField_a_of_type_Axbz;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  private QQAppInterface a;
   
-  private axaw a(axbc paramaxbc, JSONObject paramJSONObject)
+  public axbo(QQAppInterface paramQQAppInterface)
   {
-    int n;
-    Object localObject1;
+    this.a = paramQQAppInterface;
+  }
+  
+  private Sharkfin a(String paramString)
+  {
+    Sharkfin localSharkfin = new Sharkfin();
+    localSharkfin.sessionId = "";
+    localSharkfin.buildno = 6601;
+    localSharkfin.apn = 0;
+    localSharkfin.netType = 0;
+    localSharkfin.authType = 0;
+    localSharkfin.guid = paramString;
+    localSharkfin.accountId = 0L;
+    localSharkfin.bootType = 0;
+    localSharkfin.wsGuid = "";
+    localSharkfin.ext1 = "";
+    return localSharkfin;
+  }
+  
+  private CSPullConchs a()
+  {
+    CSPullConchs localCSPullConchs = new CSPullConchs();
+    localCSPullConchs.cmdId = -1;
+    return localCSPullConchs;
+  }
+  
+  private CSGet3rdCloudCheck a(Context paramContext, ToServiceMsg paramToServiceMsg)
+  {
+    Object localObject4 = null;
+    Object localObject1 = null;
+    int i = bcwd.b(paramContext);
+    if (i == 0) {
+      if (QLog.isColorLevel()) {
+        QLog.i("WifiSdk", 2, "encodeReqMsg, networkType is none");
+      }
+    }
+    CSGet3rdCloudCheck localCSGet3rdCloudCheck;
     Object localObject3;
-    label38:
     Object localObject2;
-    int i1;
-    int i;
-    Paint localPaint;
-    Object localObject5;
-    int k;
-    Object localObject4;
-    int i4;
-    if ((paramaxbc instanceof SpriteGLView))
-    {
-      n = 4;
-      localObject1 = paramJSONObject.optString("text");
-      if (!(paramaxbc instanceof SpriteGLView)) {
-        break label764;
-      }
-      localObject3 = new axci((SpriteGLView)paramaxbc);
-      ((axaw)localObject3).c(1.0F / n);
-      localObject2 = localObject1;
-      if (this.jdField_a_of_type_Axbv != null) {
-        localObject2 = this.jdField_a_of_type_Axbv.a((axbb)localObject3, (String)localObject1);
-      }
-      i1 = paramJSONObject.optInt("textSize", 20) * n;
-      i = Color.parseColor(paramJSONObject.optString("textColor"));
-      localPaint = new Paint();
-      localPaint.setAntiAlias(true);
-      localPaint.setColor(i);
-      localPaint.setTextSize(i1);
-      localObject5 = paramJSONObject.optJSONObject("size");
-      k = (int)localPaint.measureText((String)localObject2);
-      localObject4 = paramJSONObject.optString("imageRight");
-      i4 = paramJSONObject.optInt("imagePadding") * n;
-      if (TextUtils.isEmpty((CharSequence)localObject4)) {
-        break label961;
-      }
-      if (this.jdField_a_of_type_Axbu == null) {
-        break label955;
-      }
-      localObject1 = this.jdField_a_of_type_Axbu.a((axbb)localObject3, this.jdField_a_of_type_JavaLangString, (String)localObject4);
-      label205:
-      if (localObject1 != null) {
-        break label817;
-      }
-    }
-    label817:
-    label946:
-    label955:
-    label961:
-    for (;;)
-    {
-      int j;
-      int m;
-      int i2;
-      float f2;
-      float f1;
-      float f6;
-      float f3;
-      float f5;
-      try
-      {
-        localObject4 = bacm.a(this.jdField_a_of_type_JavaLangString + "/" + (String)localObject4, null);
-        localObject1 = localObject4;
-        if (localObject1 == null) {
-          break label946;
-        }
-        i = ((Bitmap)localObject1).getWidth();
-        j = ((Bitmap)localObject1).getHeight();
-        j *= n;
-        i *= n;
-        if (localObject5 == null) {
-          break label935;
-        }
-        if (((JSONObject)localObject5).optInt("width") == 0) {
-          break label932;
-        }
-        k = ((JSONObject)localObject5).optInt("width") * n;
-        if (((JSONObject)localObject5).optInt("height") == 0) {
-          break label925;
-        }
-        m = ((JSONObject)localObject5).optInt("height") * n;
-        if (this.jdField_a_of_type_Axbv != null) {
-          this.jdField_a_of_type_Axbv.a(k - i - i4, (String)localObject2, localPaint);
-        }
-        localObject2 = a(k - i - i4, (String)localObject2, localPaint);
-        i2 = m;
-        m = k;
-        if (this.jdField_a_of_type_Axbv == null) {
-          break label919;
-        }
-        k = this.jdField_a_of_type_Axbv.a(m, i, i4, (String)localObject2, localPaint);
-        i3 = k;
-        if (k == 0) {
-          i3 = (int)localPaint.measureText((String)localObject2);
-        }
-        i = i + i3 + i4;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        int i3;
-        float f7;
-        float f4;
-        label764:
-        if (QLog.isColorLevel()) {
-          QLog.e("SceneBuilder", 2, "buildLabel" + QLog.getStackTraceString(localOutOfMemoryError));
-        }
-      }
-      try
-      {
-        localObject4 = Bitmap.createBitmap(m, i2, Bitmap.Config.ARGB_8888);
-        localObject5 = new Canvas((Bitmap)localObject4);
-        ((Canvas)localObject5).drawColor(-16777216, PorterDuff.Mode.CLEAR);
-        f7 = i1 * 0.8F;
-        f2 = 0.0F;
-        f1 = 0.0F;
-        f4 = 0.0F;
-        f6 = 0.0F;
-        f3 = 0.0F;
-        f5 = 0.0F;
-        paramJSONObject = paramJSONObject.optString("gravity");
-        if (paramJSONObject == null) {
-          break label913;
-        }
-        if (!paramJSONObject.contains("left")) {
-          break label858;
-        }
-        f1 = 0.0F;
-        if (!paramJSONObject.contains("top")) {
-          break label877;
-        }
-        f2 = 0.0F;
-        f3 = f5;
-        f4 = f2;
-        if (paramJSONObject.equals("center"))
-        {
-          f1 = (m - i) / 2;
-          f4 = (i2 - i1) / 2;
-          f3 = (i2 - j) / 2;
-        }
-        if (paramJSONObject.contains("center_horizontal")) {
-          f1 = (m - i) / 2;
-        }
-        f2 = f1;
-        if (!paramJSONObject.contains("center_vertical")) {
-          break label913;
-        }
-        f2 = (i2 - i1) / 2;
-        f3 = (i2 - j) / 2;
-        f4 = f2;
-        f2 = f1;
-        f1 = f3;
-        if ((this.jdField_a_of_type_Axbv == null) || (!this.jdField_a_of_type_Axbv.a((Canvas)localObject5, (String)localObject2, f2, f4, f7, m, i2, localPaint))) {
-          ((Canvas)localObject5).drawText((String)localObject2, f2, f4 + f7, localPaint);
-        }
-        if (localObject1 != null)
-        {
-          paramJSONObject = new Matrix();
-          paramJSONObject.postScale(n, n);
-          f3 = i4;
-          paramJSONObject.postTranslate(i3 + (f3 + f2), f1);
-          ((Canvas)localObject5).drawBitmap((Bitmap)localObject1, paramJSONObject, localPaint);
-        }
-        ((axbb)localObject3).a(paramaxbc, (Bitmap)localObject4);
-      }
-      catch (OutOfMemoryError paramaxbc)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("SceneBuilder", 2, "buildLabel" + QLog.getStackTraceString(paramaxbc));
-        return localObject3;
-      }
-      return localObject3;
-      n = 1;
-      break;
-      localObject3 = new axcv((SpriteNativeView)paramaxbc);
-      break label38;
-      continue;
-      label858:
-      if (paramJSONObject.contains("right"))
-      {
-        f1 = m - i;
-        continue;
-        label877:
-        f3 = f5;
-        f2 = f6;
-        if (paramJSONObject.contains("bottom"))
-        {
-          f2 = i2 - i1;
-          f3 = i2 - j;
-          continue;
-          f1 = f3;
-          continue;
-          k = 0;
-          continue;
-          m = i1;
-          continue;
-          continue;
-          i2 = i1;
-          m = k;
-          continue;
-          j = 0;
-          i = 0;
-          continue;
-          localObject1 = null;
-          break label205;
-          localObject1 = null;
-          j = 0;
-          i = 0;
-        }
-      }
-    }
-  }
-  
-  private axaw a(axbc paramaxbc, JSONObject paramJSONObject, axba paramaxba)
-  {
-    Object localObject1 = null;
-    Object localObject3 = paramJSONObject.optString("type");
-    if ("layer".equals(localObject3)) {
-      if ((paramaxbc instanceof SpriteGLView)) {
-        localObject1 = new axcf((SpriteGLView)paramaxbc);
-      }
-    }
-    Object localObject6;
-    label134:
-    int i;
-    int j;
-    label412:
-    label457:
-    Object localObject2;
-    while (localObject1 == null)
-    {
-      localObject3 = null;
-      return localObject3;
-      localObject1 = new axct((SpriteNativeView)paramaxbc);
-      continue;
-      if ("image".equals(localObject3))
-      {
-        localObject1 = null;
-        Object localObject4 = paramJSONObject.optString("path");
-        localObject6 = paramJSONObject.optString("event");
-        if ((paramaxbc instanceof SpriteGLView))
-        {
-          localObject3 = (SpriteGLView)paramaxbc;
-          if (TextUtils.isEmpty((CharSequence)localObject6))
-          {
-            localObject3 = new axci((SpriteGLView)localObject3);
-            if (this.jdField_a_of_type_Axbu != null) {
-              localObject1 = this.jdField_a_of_type_Axbu.a((axbb)localObject3, this.jdField_a_of_type_JavaLangString, (String)localObject4);
-            }
-            if (localObject1 != null) {
-              break label412;
-            }
-          }
-        }
-        for (;;)
-        {
-          for (;;)
-          {
-            try
-            {
-              localObject4 = bacm.a(this.jdField_a_of_type_JavaLangString + "/" + (String)localObject4, null);
-              localObject1 = localObject3;
-              if (localObject4 == null) {
-                break;
-              }
-              localObject1 = paramJSONObject.optJSONObject("size");
-              if (localObject1 == null) {
-                break label457;
-              }
-              i = ((JSONObject)localObject1).optInt("width");
-              j = ((JSONObject)localObject1).optInt("height");
-            }
-            catch (OutOfMemoryError localOutOfMemoryError2)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("SceneBuilder", 2, "buildNode" + QLog.getStackTraceString(localOutOfMemoryError2));
-              }
-            }
-            try
-            {
-              localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject4, i, j, true);
-              ((axbb)localObject3).a(paramaxbc, (Bitmap)localObject1);
-              localObject1 = localObject3;
-            }
-            catch (OutOfMemoryError localOutOfMemoryError1)
-            {
-              if (!QLog.isColorLevel()) {
-                break label457;
-              }
-              QLog.e("SceneBuilder", 2, "buildNode" + QLog.getStackTraceString(localOutOfMemoryError1));
-            }
-          }
-          localObject3 = new axcc((SpriteGLView)localObject3, true, (String)localObject6);
-          ((axcc)localObject3).a(new axbp(this, paramaxba, (String)localObject6));
-          break label134;
-          localObject3 = (SpriteNativeView)paramaxbc;
-          if (TextUtils.isEmpty((CharSequence)localObject6))
-          {
-            localObject3 = new axcv((SpriteNativeView)localObject3);
-            break label134;
-          }
-          localObject3 = new axcs((SpriteNativeView)localObject3, (String)localObject6);
-          ((axcs)localObject3).a(new axbq(this, paramaxba, (axaw)localObject3, (String)localObject6));
-          break label134;
-          localObject5 = localObject1;
-          continue;
-          localObject2 = localObject5;
-        }
-      }
-      if ("video".equals(localObject3))
-      {
-        if ((paramaxbc instanceof SpriteGLView))
-        {
-          localObject3 = (SpriteGLView)paramaxbc;
-          localObject2 = new VideoSprite((SpriteGLView)localObject3, ((SpriteGLView)localObject3).getContext(), true);
-          ((VideoSprite)localObject2).c(this.jdField_a_of_type_JavaLangString + "/" + paramJSONObject.optString("path"));
-          if (paramJSONObject.optBoolean("isKey", false)) {
-            ((SpriteGLView)localObject3).setVideoTimeGetter((VideoSprite)localObject2);
-          }
-          if (paramJSONObject.optBoolean("autoClose", false)) {
-            ((VideoSprite)localObject2).a(this.jdField_a_of_type_Axbz);
-          }
-          ((VideoSprite)localObject2).a(paramJSONObject.optBoolean("isLooping", false));
-        }
-        else
-        {
-          localObject2 = (SpriteNativeView)paramaxbc;
-          localObject3 = this.jdField_a_of_type_JavaLangString + "/" + paramJSONObject.optString("path");
-          localObject2 = new axcw((SpriteNativeView)localObject2, (String)localObject3);
-          ((axcw)localObject2).a((String)localObject3, paramJSONObject.optBoolean("isLooping", false));
-        }
-      }
-      else if ("label".equals(localObject3)) {
-        localObject2 = a(paramaxbc, paramJSONObject);
-      }
-    }
-    ((axaw)localObject2).a(paramJSONObject.optString("name"));
-    ((axaw)localObject2).a(paramJSONObject.optInt("tag"));
-    ((axaw)localObject2).a((float)paramJSONObject.optDouble("x", 0.0D));
-    ((axaw)localObject2).b((float)paramJSONObject.optDouble("y", 0.0D));
-    ((axaw)localObject2).b((int)(paramJSONObject.optDouble("alpha", 1.0D) * 255.0D));
-    ((axaw)localObject2).c(((axaw)localObject2).a() * (float)paramJSONObject.optDouble("scale", 1.0D));
-    ((axaw)localObject2).d((float)paramJSONObject.optDouble("rotate", 0.0D));
-    ((axaw)localObject2).e(((axaw)paramaxba).a());
-    localObject3 = paramJSONObject.optJSONArray("actions");
-    if (localObject3 != null) {
-      ((axaw)localObject2).a(a((JSONArray)localObject3));
-    }
-    Object localObject5 = paramJSONObject.optJSONObject("frames");
-    if (localObject5 != null)
-    {
-      localObject3 = new axax();
-      ((axax)localObject3).jdField_a_of_type_Int = ((JSONObject)localObject5).optInt("fps");
-      localObject5 = ((JSONObject)localObject5).optJSONArray("datas");
-      j = ((JSONArray)localObject5).length();
-      ((axax)localObject3).jdField_a_of_type_ArrayOfAxay = new axay[j];
-      i = 0;
-      while (i < j)
-      {
-        ((axax)localObject3).jdField_a_of_type_ArrayOfAxay[i] = new axay();
-        localObject6 = ((JSONArray)localObject5).optJSONObject(i);
-        localObject3.jdField_a_of_type_ArrayOfAxay[i].jdField_a_of_type_Float = ((JSONObject)localObject6).optInt("x");
-        localObject3.jdField_a_of_type_ArrayOfAxay[i].b = ((JSONObject)localObject6).optInt("y");
-        i += 1;
-      }
-      ((axaw)localObject2).a((axax)localObject3);
-    }
-    localObject3 = paramJSONObject.optString("horizontal_align");
-    if (localObject3 != null)
-    {
-      if (((String)localObject3).equals("left")) {
-        ((axaw)localObject2).c(0);
-      }
-    }
-    else
-    {
-      label1028:
-      localObject3 = paramJSONObject.optString("vertical_align");
-      if (localObject3 != null)
-      {
-        if (!((String)localObject3).equals("top")) {
-          break label1180;
-        }
-        ((axaw)localObject2).d(0);
-      }
-    }
-    for (;;)
-    {
-      localObject3 = localObject2;
-      if (!(localObject2 instanceof axba)) {
-        break;
-      }
-      localObject5 = (axba)localObject2;
-      paramJSONObject = paramJSONObject.optJSONArray("children");
-      j = paramJSONObject.length();
-      i = 0;
-      for (;;)
-      {
-        localObject3 = localObject2;
-        if (i >= j) {
-          break;
-        }
-        localObject3 = a(paramaxbc, paramJSONObject.getJSONObject(i), paramaxba);
-        if (localObject3 != null) {
-          ((axba)localObject5).a((axaw)localObject3);
-        }
-        i += 1;
-      }
-      if (((String)localObject3).equals("right"))
-      {
-        ((axaw)localObject2).c(1);
-        break label1028;
-      }
-      if (!((String)localObject3).equals("center")) {
-        break label1028;
-      }
-      ((axaw)localObject2).c(2);
-      break label1028;
-      label1180:
-      if (((String)localObject3).equals("bottom")) {
-        ((axaw)localObject2).d(1);
-      } else if (((String)localObject3).equals("center")) {
-        ((axaw)localObject2).d(2);
-      }
-    }
-  }
-  
-  private axba a(axbc paramaxbc, String paramString)
-  {
-    Object localObject1;
-    if ((paramaxbc instanceof SpriteGLView))
-    {
-      localObject1 = new axcf((SpriteGLView)paramaxbc);
-      if (paramString != null) {
-        break label43;
-      }
-    }
-    for (;;)
-    {
-      return localObject1;
-      localObject1 = new axct((SpriteNativeView)paramaxbc);
-      break;
-      try
-      {
-        label43:
-        paramString = new JSONObject(paramString);
-        Object localObject2 = paramString.optJSONObject("size");
-        int i = ((JSONObject)localObject2).optInt("width");
-        int j = ((JSONObject)localObject2).optInt("height");
-        this.jdField_a_of_type_Float = (this.jdField_a_of_type_Int / i);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          localObject2 = ((ViewGroup)paramaxbc).getLayoutParams();
-          ((ViewGroup.LayoutParams)localObject2).width = this.jdField_a_of_type_Int;
-          ((ViewGroup.LayoutParams)localObject2).height = ((int)(j * this.jdField_a_of_type_Float));
-          ((ViewGroup)paramaxbc).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-          ((axaw)localObject1).c(this.jdField_a_of_type_Float);
-          if (this.jdField_a_of_type_Axbw != null) {
-            this.jdField_a_of_type_Axbw.a(((ViewGroup.LayoutParams)localObject2).width, ((ViewGroup.LayoutParams)localObject2).height);
-          }
-        }
-        paramString = paramString.optJSONArray("scene");
-        if (paramString != null)
-        {
-          j = paramString.length();
-          i = 0;
-          while (i < j)
-          {
-            localObject2 = a(paramaxbc, paramString.getJSONObject(i), (axba)localObject1);
-            if (localObject2 != null) {
-              ((axba)localObject1).a((axaw)localObject2);
-            }
-            i += 1;
-          }
-          if (!QLog.isColorLevel()) {}
-        }
-      }
-      catch (Exception paramaxbc) {}
-    }
-    QLog.e("SceneBuilder", 2, "buildFromJson" + QLog.getStackTraceString(paramaxbc));
-    return localObject1;
-  }
-  
-  private axbe a(JSONObject paramJSONObject)
-  {
-    Object localObject1 = null;
-    JSONObject localJSONObject = null;
-    Object localObject2 = paramJSONObject.optString("type");
-    String str = paramJSONObject.optString("timeType");
-    int j = paramJSONObject.optInt("duration");
-    if (((String)localObject2).equals("sequence")) {
-      localObject1 = new axbn(a(paramJSONObject.optJSONArray("actions")));
-    }
-    label513:
-    label516:
-    for (;;)
-    {
-      if (localObject1 != null)
-      {
-        ((axbe)localObject1).jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isRepeat");
-        if (str != null)
-        {
-          if (!str.equals("linear")) {
-            break label473;
-          }
-          ((axbe)localObject1).e = 0;
-        }
-        label102:
-        if ((paramJSONObject.optBoolean("autoClose", false)) && (this.jdField_a_of_type_Axbz != null)) {
-          ((axbe)localObject1).a(new axbr(this));
-        }
-      }
-      return localObject1;
-      if (((String)localObject2).equals("delay"))
-      {
-        localObject1 = new axbg(j);
-      }
-      else
-      {
-        if (((String)localObject2).equals("position"))
-        {
-          localJSONObject = paramJSONObject.optJSONObject("from");
-          localObject2 = paramJSONObject.optJSONObject("to");
-          if ((this.jdField_a_of_type_Axbs == null) || (!"$POSITIONX$".equals(((JSONObject)localObject2).optString("x")))) {
-            break label513;
-          }
-          axbd[] arrayOfaxbd = this.jdField_a_of_type_Axbs.a(localJSONObject, (JSONObject)localObject2, this.jdField_a_of_type_Float);
-          if ((arrayOfaxbd == null) || (arrayOfaxbd.length != 2)) {
-            break label513;
-          }
-          localObject1 = new axbi(j, arrayOfaxbd[0].jdField_a_of_type_Float, arrayOfaxbd[0].b, arrayOfaxbd[1].jdField_a_of_type_Float, arrayOfaxbd[1].b);
-        }
-        for (int i = 1;; i = 0)
-        {
-          if (i != 0) {
-            break label516;
-          }
-          localObject1 = new axbi(j, (float)localJSONObject.optDouble("x"), (float)localJSONObject.optDouble("y"), (float)((JSONObject)localObject2).optDouble("x"), (float)((JSONObject)localObject2).optDouble("y"));
-          break;
-          if (((String)localObject2).equals("scale"))
-          {
-            localObject1 = new axbm(j, (float)paramJSONObject.optDouble("from", 1.0D), (float)paramJSONObject.optDouble("to", 1.0D));
-            break;
-          }
-          if (((String)localObject2).equals("alpha"))
-          {
-            localObject1 = new axbk(j, (int)(paramJSONObject.optDouble("from", 1.0D) * 255.0D), (int)(paramJSONObject.optDouble("to", 1.0D) * 255.0D));
-            break;
-          }
-          localObject1 = localJSONObject;
-          if (!((String)localObject2).equals("rotate")) {
-            break;
-          }
-          localObject1 = new axbl(j, paramJSONObject.optInt("from", 0), paramJSONObject.optInt("to", 0));
-          break;
-          label473:
-          if (str.equals("easeIn"))
-          {
-            ((axbe)localObject1).e = 1;
-            break label102;
-          }
-          if (!str.equals("easeOut")) {
-            break label102;
-          }
-          ((axbe)localObject1).e = 2;
-          break label102;
-        }
-      }
-    }
-  }
-  
-  public static String a(int paramInt, String paramString, Paint paramPaint)
-  {
-    String str2 = "";
-    if (paramInt <= 0) {}
-    float f;
     do
     {
-      return paramString;
-      f = paramPaint.measureText("...");
-    } while ((int)Math.ceil(paramPaint.measureText(paramString)) <= paramInt);
-    int i = paramString.length() - 1;
+      do
+      {
+        do
+        {
+          return null;
+          localCSGet3rdCloudCheck = new CSGet3rdCloudCheck();
+          if (i != 1) {
+            break label470;
+          }
+          paramContext = (WifiManager)paramContext.getSystemService("wifi");
+          if (paramContext != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i("WifiSdk", 2, "encodeReqMsg, systmeWifiMgr is null");
+        return null;
+        localObject3 = paramContext.getConnectionInfo();
+        if (localObject3 != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("WifiSdk", 2, "encodeReqMsg, currentWifi is null");
+      return null;
+      localObject2 = ((android.net.wifi.WifiInfo)localObject3).getSSID();
+      localObject3 = ((android.net.wifi.WifiInfo)localObject3).getBSSID();
+      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject3))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("WifiSdk", 2, "encodeReqMsg, ssid or bssid is null");
+    return null;
+    paramToServiceMsg.addAttribute("bssid", localObject3);
+    paramToServiceMsg.addAttribute("ssid", localObject2);
+    localCSGet3rdCloudCheck.networkType = 1;
+    localCSGet3rdCloudCheck.wifiInfo = new MWIFI.WifiInfo();
+    localCSGet3rdCloudCheck.wifiInfo.ssid = ((String)localObject2);
+    localCSGet3rdCloudCheck.wifiInfo.bssid = ((String)localObject3);
     for (;;)
     {
-      String str1 = str2;
-      if (i > 0)
+      try
       {
-        if ((int)Math.ceil(paramPaint.measureText(paramString, 0, i) + f) <= paramInt) {
-          str1 = paramString.substring(0, i) + "...";
+        localObject2 = paramContext.getDhcpInfo();
+        if (localObject2 == null) {
+          break label493;
         }
+        paramContext = bcwd.a(((DhcpInfo)localObject2).dns1);
+        localObject3 = paramContext;
       }
-      else {
-        return str1;
+      catch (Exception localException1)
+      {
+        try
+        {
+          localObject2 = bcwd.a(((DhcpInfo)localObject2).dns2);
+          localObject1 = paramContext;
+          paramContext = (Context)localObject2;
+          localObject3 = localObject1;
+          localObject1 = paramContext;
+          localCSGet3rdCloudCheck.vecDns = new ArrayList(2);
+          if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+            localCSGet3rdCloudCheck.vecDns.add(localObject3);
+          }
+          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+            localCSGet3rdCloudCheck.vecDns.add(localObject1);
+          }
+          paramContext = bfmw.a("f5cc92");
+          if (!TextUtils.isEmpty(paramContext)) {
+            localCSGet3rdCloudCheck.imei = paramContext;
+          }
+          localCSGet3rdCloudCheck.mac = bcwd.a();
+          localCSGet3rdCloudCheck.vid = bcwd.b();
+          paramToServiceMsg.addAttribute("network_type", Integer.valueOf(localCSGet3rdCloudCheck.networkType));
+          if (QLog.isColorLevel()) {
+            QLog.i("WifiSdk", 2, "encodeReqMsg, imei: " + localCSGet3rdCloudCheck.imei + " mac: " + localCSGet3rdCloudCheck.mac + " vid: " + localCSGet3rdCloudCheck.vid);
+          }
+          return localCSGet3rdCloudCheck;
+        }
+        catch (Exception localException2)
+        {
+          break label418;
+        }
+        localException1 = localException1;
+        paramContext = null;
       }
-      i -= 1;
+      label418:
+      localObject1 = localObject4;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("WifiSdk", 2, "encodeReqMsg, get dns info exception: " + localException1.getMessage());
+        localObject3 = paramContext;
+        localObject1 = localObject4;
+        continue;
+        label470:
+        localCSGet3rdCloudCheck.networkType = i;
+        localCSGet3rdCloudCheck.operType = bcwd.a(paramContext);
+        continue;
+        label493:
+        paramContext = null;
+      }
     }
   }
   
-  public static boolean a(File paramFile)
+  private SCGet3rdCloudCheck a(ToServiceMsg paramToServiceMsg, SCGet3rdCloudCheck paramSCGet3rdCloudCheck)
   {
-    StringBuffer localStringBuffer;
-    Object localObject;
-    if (paramFile.exists())
+    if ((paramSCGet3rdCloudCheck == null) || (paramToServiceMsg == null))
     {
-      localStringBuffer = new StringBuffer();
-      localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append("check.ini");
-      localObject = new File(localStringBuffer.toString());
-      if (((File)localObject).exists()) {}
+      if (QLog.isColorLevel()) {
+        QLog.i("WifiSdk", 2, "handleWifiSecurityCheckInfo, response or request is null");
+      }
+      paramToServiceMsg = null;
     }
-    else
+    do
     {
-      return false;
+      return paramToServiceMsg;
+      if (((Integer)paramToServiceMsg.getAttribute("network_type", Integer.valueOf(-1))).intValue() == 1)
+      {
+        Object localObject1 = this.a.getApplication().getApplicationContext();
+        if (bcwd.b((Context)localObject1) != 1)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("WifiSdk", 2, "handleWifiSecurityCheckInfo, networkType is invaild");
+          }
+          return null;
+        }
+        Object localObject2 = ((WifiManager)((Context)localObject1).getSystemService("wifi")).getConnectionInfo();
+        localObject1 = ((android.net.wifi.WifiInfo)localObject2).getSSID();
+        localObject2 = ((android.net.wifi.WifiInfo)localObject2).getBSSID();
+        String str = (String)paramToServiceMsg.getAttribute("ssid", "");
+        paramToServiceMsg = (String)paramToServiceMsg.getAttribute("bssid", "");
+        if ((!TextUtils.equals((CharSequence)localObject1, str)) && (!TextUtils.equals((CharSequence)localObject2, paramToServiceMsg)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("WifiSdk", 2, "handleWifiSecurityCheckInfo, ssid and bssid is not the same");
+          }
+          return null;
+        }
+      }
+      paramToServiceMsg = paramSCGet3rdCloudCheck;
+    } while (!TextUtils.isEmpty(paramSCGet3rdCloudCheck.tips));
+    if (QLog.isColorLevel()) {
+      QLog.i("WifiSdk", 2, "handleWifiSecurityCheckInfo, tips is null");
+    }
+    return null;
+  }
+  
+  public CSGUIDRegist a(Context paramContext)
+  {
+    CSGUIDRegist localCSGUIDRegist = new CSGUIDRegist();
+    localCSGUIDRegist.imei = bfmw.a("f5cc92");
+    localCSGUIDRegist.imsi = bfmw.b("f5cc92");
+    localCSGUIDRegist.mac = bcwd.a();
+    localCSGUIDRegist.lc = "FF4A5386F7B20DCB";
+    localCSGUIDRegist.buildno = 6601;
+    localCSGUIDRegist.channelid = "102769";
+    localCSGUIDRegist.pkgname = paramContext.getPackageName();
+    localCSGUIDRegist.build_brand = Build.BRAND;
+    localCSGUIDRegist.build_version_incremental = Build.VERSION.INCREMENTAL;
+    localCSGUIDRegist.build_version_release = Build.VERSION.RELEASE;
+    localCSGUIDRegist.isbuildin = false;
+    localCSGUIDRegist.platform = 2;
+    localCSGUIDRegist.product = 106;
+    localCSGUIDRegist.subplatform = 201;
+    localCSGUIDRegist.ua = Build.MODEL;
+    return localCSGUIDRegist;
+  }
+  
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    int j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("WifiSdk", 2, "decode, serviceCmd: " + paramToServiceMsg.getServiceCmd());
+    }
+    try
+    {
+      if (!"WifiCloudCheckSvc.req".equals(paramToServiceMsg.getServiceCmd())) {
+        break label492;
+      }
+      k = ((Integer)paramToServiceMsg.getAttribute("request_type", Integer.valueOf(-1))).intValue();
+      localObject1 = paramFromServiceMsg.getWupBuffer();
+      paramFromServiceMsg = new byte[localObject1.length - 4];
+      System.arraycopy(localObject1, 4, paramFromServiceMsg, 0, localObject1.length - 4);
+      if (!QLog.isColorLevel()) {
+        break label463;
+      }
+      localObject1 = WupHexUtil.bytes2HexStr(paramFromServiceMsg);
+      QLog.i("WifiSdk", 2, "decode, full data: " + (String)localObject1);
+      QLog.i("WifiSdk", 2, "decode, requestType: " + k);
+      if (localObject1 == null) {
+        break label463;
+      }
+      localObject1 = ((String)localObject1).toLowerCase();
+      int m = ((String)localObject1).length();
+      localObject2 = new StringBuilder();
+      for (int i = 0; (i < m) && (j < m); i = j)
+      {
+        j = i + 2;
+        ((StringBuilder)localObject2).append(((String)localObject1).substring(i, j)).append(" ");
+      }
+      QLog.i("WifiSdk", 2, "decode, full data: " + ((StringBuilder)localObject2).toString());
+    }
+    catch (Throwable paramToServiceMsg)
+    {
+      int k;
+      Object localObject1;
+      Object localObject2;
+      if (!QLog.isColorLevel()) {
+        break label492;
+      }
+      QLog.i("WifiSdk", 2, "decode exception: " + paramToServiceMsg.getMessage());
+      break label492;
+      switch (k)
+      {
+      }
+    }
+    paramToServiceMsg = new UniPacket(true);
+    paramToServiceMsg.setEncodeName("utf-8");
+    paramToServiceMsg.decode(paramFromServiceMsg);
+    return (SCPullConchs)paramToServiceMsg.get("SCPullConchs", null);
+    paramToServiceMsg = new UniPacket(true);
+    paramToServiceMsg.setEncodeName("utf-8");
+    paramToServiceMsg.decode(paramFromServiceMsg);
+    paramToServiceMsg = (SCGUIDRegist)paramToServiceMsg.get("SCGUIDRegist", null);
+    if (paramToServiceMsg == null) {
+      return null;
+    }
+    return paramToServiceMsg.guid;
+    localObject1 = new UniPacket(true);
+    ((UniPacket)localObject1).setEncodeName("utf-8");
+    ((UniPacket)localObject1).decode(paramFromServiceMsg);
+    paramFromServiceMsg = (SCGet3rdCloudCheck)((UniPacket)localObject1).get("SCGet3rdCloudCheck", null);
+    localObject2 = new bcwe();
+    ((bcwe)localObject2).jdField_a_of_type_MConchSCPullConchs = ((SCPullConchs)((UniPacket)localObject1).get("SCPullConchs", null));
+    ((bcwe)localObject2).jdField_a_of_type_MWIFISCGet3rdCloudCheck = a(paramToServiceMsg, paramFromServiceMsg);
+    return localObject2;
+    label463:
+    label492:
+    return null;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WifiSdk", 2, "encodeReqMsg, serviceCmd: " + paramToServiceMsg.getServiceCmd());
     }
     for (;;)
     {
+      Context localContext;
       int i;
       try
       {
-        localObject = bace.b((File)localObject);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
+        if (!"WifiCloudCheckSvc.req".equals(paramToServiceMsg.getServiceCmd())) {
+          break label241;
         }
-        localObject = ((String)localObject).split("&");
-        if (localObject == null) {
-          break;
-        }
-        i = 0;
-        if (i >= localObject.length) {
-          break label225;
-        }
-        if (localObject[i].startsWith("﻿")) {
-          localObject[i] = localObject[i].replace("﻿", "");
-        }
-        localStringBuffer.setLength(0);
-        localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append(localObject[i]);
-        File localFile = new File(localStringBuffer.toString());
-        if (localFile.exists()) {
-          break label218;
-        }
+        localContext = this.a.getApplication().getApplicationContext();
+        i = ((Integer)paramToServiceMsg.getAttribute("request_type", Integer.valueOf(-1))).intValue();
         if (!QLog.isColorLevel()) {
-          break;
+          break label293;
         }
-        QLog.e("SceneBuilder", 2, "isAnimationPackageValid File not exist:" + localFile.getName());
-        return false;
+        QLog.i("WifiSdk", 2, "encodeReqMsg, requestType: " + i);
       }
-      catch (IOException paramFile) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      catch (Exception paramToServiceMsg)
+      {
+        if (!QLog.isColorLevel()) {
+          break label241;
+        }
+        QLog.i("WifiSdk", 2, "encodeReqMsg exception: " + paramToServiceMsg.getMessage());
       }
-      QLog.e("SceneBuilder", 2, "isAnimationPackageValid IOException");
+      paramUniPacket.setServantName("WifiSdkObj");
+      paramUniPacket.setFuncName("req");
+      paramToServiceMsg = bcwc.a(this.a.getApp(), this.a.getCurrentAccountUin());
+      if (QLog.isColorLevel()) {
+        QLog.i("WifiSdk", 1, "encodeReqMsg, guid: " + paramToServiceMsg);
+      }
+      paramUniPacket.put("Sharkfin", a(paramToServiceMsg));
+      return true;
+      paramUniPacket.put("CSPullConchs", a());
+      continue;
+      label241:
       return false;
-      label218:
-      i += 1;
-    }
-    label225:
-    return true;
-  }
-  
-  private axbe[] a(JSONArray paramJSONArray)
-  {
-    int j = paramJSONArray.length();
-    axbe[] arrayOfaxbe = new axbe[j];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfaxbe[i] = a(paramJSONArray.optJSONObject(i));
-      i += 1;
-    }
-    return arrayOfaxbe;
-  }
-  
-  private static String b(String paramString)
-  {
-    try
-    {
-      localInputStreamReader = new InputStreamReader(new FileInputStream(new File(paramString)));
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        label66:
-        localBufferedReader = null;
-        InputStreamReader localInputStreamReader = null;
+      paramUniPacket.put("CSGUIDRegist", a(localContext));
+      continue;
+      paramToServiceMsg = a(localContext, paramToServiceMsg);
+      if (paramToServiceMsg != null) {
+        paramUniPacket.put("CSGet3rdCloudCheck", paramToServiceMsg);
       }
-    }
-    try
-    {
-      localBufferedReader = new BufferedReader(localInputStreamReader);
-      try
+      paramUniPacket.put("CSPullConchs", a());
+      continue;
+      label293:
+      switch (i)
       {
-        paramString = new StringBuilder();
-        for (;;)
-        {
-          String str = localBufferedReader.readLine();
-          if (str == null) {
-            break;
-          }
-          paramString.append(str);
-          paramString.append('\n');
-        }
-        paramString.printStackTrace();
-      }
-      catch (Exception paramString) {}
-    }
-    catch (Exception paramString)
-    {
-      localBufferedReader = null;
-      break label66;
-    }
-    if (localBufferedReader != null) {}
-    try
-    {
-      localBufferedReader.close();
-      if (localInputStreamReader != null) {}
-      try
-      {
-        localInputStreamReader.close();
-        return null;
-      }
-      catch (IOException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-      localBufferedReader.close();
-      localInputStreamReader.close();
-      paramString = paramString.toString();
-      return paramString;
-    }
-    catch (IOException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
       }
     }
   }
   
-  public axbo a(int paramInt)
+  public String[] a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public axbo a(axbt paramaxbt)
-  {
-    this.jdField_a_of_type_Axbt = paramaxbt;
-    return this;
-  }
-  
-  public axbo a(axbu paramaxbu)
-  {
-    this.jdField_a_of_type_Axbu = paramaxbu;
-    return this;
-  }
-  
-  public axbo a(axbv paramaxbv)
-  {
-    this.jdField_a_of_type_Axbv = paramaxbv;
-    return this;
-  }
-  
-  public axbo a(axbw paramaxbw)
-  {
-    this.jdField_a_of_type_Axbw = paramaxbw;
-    return this;
-  }
-  
-  public axbo a(axbz paramaxbz)
-  {
-    this.jdField_a_of_type_Axbz = paramaxbz;
-    return this;
-  }
-  
-  public axbo a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public void a(axbc paramaxbc, axbx paramaxbx)
-  {
-    ThreadManager.post(new SceneBuilder.1(this, paramaxbc, paramaxbx), 8, null, true);
+    return new String[] { "WifiCloudCheckSvc" };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axbo
  * JD-Core Version:    0.7.0.1
  */

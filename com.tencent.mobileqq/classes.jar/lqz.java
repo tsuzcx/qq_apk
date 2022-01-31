@@ -1,254 +1,93 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.util.Log;
+import com.tencent.aekit.openrender.AEOpenRenderConfig;
+import com.tencent.aekit.openrender.UniformParam.Float4fParam;
+import com.tencent.aekit.openrender.UniformParam.TextureParam;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class lqz
+  extends lrh
 {
-  public static void a()
+  private static String jdField_b_of_type_JavaLangString = "attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\nvoid main() {\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate.xy;\n}";
+  private static String c = "precision mediump float;\nvarying vec2 textureCoordinate;\nuniform vec4 offset;\nuniform vec4 offset1;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture1;\nvoid main() {\n    vec2 newCoordinate;\n    if (textureCoordinate.x <= 0.5) {\n        newCoordinate.x = offset.x + textureCoordinate.x * 2.0 * (1.0 - offset.y - offset.x);\n        newCoordinate.y = offset.y + textureCoordinate.y * (1.0 - offset.w - offset.z);\n        gl_FragColor = texture2D(inputImageTexture, newCoordinate);\n    } else {\n        newCoordinate.x = offset1.x + (textureCoordinate.x - 0.5) * 2.0 * (1.0 - offset1.y - offset1.x);\n        newCoordinate.y = offset1.z + textureCoordinate.y * (1.0 - offset1.w - offset1.z);\n        gl_FragColor = texture2D(inputImageTexture1, newCoordinate);\n    }\n}";
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "CompositeFilter2-" + Integer.toHexString(hashCode());
+  private lra jdField_a_of_type_Lra;
+  private float[] jdField_a_of_type_ArrayOfFloat = new float[4];
+  private int jdField_b_of_type_Int;
+  private float[] jdField_b_of_type_ArrayOfFloat = new float[4];
+  
+  public lqz(int paramInt1, int paramInt2)
   {
-    awqx.b(null, "dc00898", "", "", "0X8006F88", "0X8006F88", 0, 0, "", "", "", "");
+    super(2);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "CompositeFilter2: width=" + paramInt1 + ", height=" + paramInt2);
   }
   
-  static void a(int paramInt1, int paramInt2, long paramLong, String paramString, int paramInt3)
+  private void a(float[] paramArrayOfFloat, int paramInt1, int paramInt2)
   {
-    String str2;
-    Object localObject;
-    String str1;
-    switch (paramInt1)
+    float f = this.jdField_b_of_type_Int / this.jdField_a_of_type_Int * 2.0F;
+    if (paramInt2 / paramInt1 > f)
     {
-    default: 
-      str2 = "0X8008395";
-      localObject = str2;
-      if (PtvTemplateManager.PtvTemplateInfo.isGesture(paramInt3))
-      {
-        str1 = "0X8008396";
-        localObject = str2;
-      }
-      break;
+      paramArrayOfFloat[1] = 0.0F;
+      paramArrayOfFloat[0] = 0.0F;
+      paramArrayOfFloat[2] = ((paramInt2 - f * paramInt1) / paramInt2 / 2.0F);
+      paramArrayOfFloat[3] = paramArrayOfFloat[2];
+      return;
+    }
+    paramArrayOfFloat[0] = ((paramInt1 - paramInt2 / f) / paramInt1 / 2.0F);
+    paramArrayOfFloat[1] = paramArrayOfFloat[0];
+    paramArrayOfFloat[3] = 0.0F;
+    paramArrayOfFloat[2] = 0.0F;
+  }
+  
+  @NotNull
+  protected Frame a(List<lrl> paramList, long paramLong)
+  {
+    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_b_of_type_Int == 0))
+    {
+      Log.e(this.jdField_a_of_type_JavaLangString, "onRender: invalidate composite size");
+      return null;
+    }
+    if (paramList.size() > 2) {
+      Log.w(this.jdField_a_of_type_JavaLangString, "onRender: expect 2 inputs, but got " + paramList.size());
+    }
+    Frame localFrame = ((lrl)paramList.get(0)).a;
+    a(this.jdField_a_of_type_ArrayOfFloat, localFrame.width, localFrame.height);
+    this.jdField_a_of_type_Lra.addParam(new UniformParam.Float4fParam("offset", this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2], this.jdField_a_of_type_ArrayOfFloat[3]));
+    if (paramList.size() > 1)
+    {
+      paramList = ((lrl)paramList.get(1)).a;
+      a(this.jdField_b_of_type_ArrayOfFloat, paramList.width, paramList.height);
+      this.jdField_a_of_type_Lra.addParam(new UniformParam.TextureParam("inputImageTexture1", paramList.getTextureId(), 33985));
+      this.jdField_a_of_type_Lra.addParam(new UniformParam.Float4fParam("offset1", this.jdField_b_of_type_ArrayOfFloat[0], this.jdField_b_of_type_ArrayOfFloat[1], this.jdField_b_of_type_ArrayOfFloat[2], this.jdField_b_of_type_ArrayOfFloat[3]));
     }
     for (;;)
     {
-      str2 = String.valueOf(paramInt3);
-      String str3 = String.valueOf(paramLong);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        awqx.b(null, "dc00898", "", "", (String)localObject, (String)localObject, paramInt2, 0, str2, "", str3, paramString);
-      }
-      if (!TextUtils.isEmpty(str1)) {
-        awqx.b(null, "dc00898", "", "", str1, str1, paramInt2, 0, str2, "", str3, paramString);
-      }
-      return;
-      str1 = "0X8007F37";
-      localObject = str1;
-      if (PtvTemplateManager.PtvTemplateInfo.isGesture(paramInt3))
-      {
-        str2 = "0X80083AA";
-        localObject = str1;
-        str1 = str2;
-        continue;
-        str1 = "0X8007F31";
-        localObject = str1;
-        if (PtvTemplateManager.PtvTemplateInfo.isGesture(paramInt3))
-        {
-          str2 = "0X8008398";
-          localObject = str1;
-          str1 = str2;
-          continue;
-        }
-      }
-      str1 = null;
+      return this.jdField_a_of_type_Lra.RenderProcess(localFrame.getTextureId(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Lra.addParam(new UniformParam.TextureParam("inputImageTexture1", -1, 33985));
     }
   }
   
-  public static void a(int paramInt, long paramLong)
+  protected void a()
   {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "0X8006F87";
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(str)) {
-        awqx.b(null, "dc00898", "", "", str, str, 0, 0, "", "", String.valueOf(paramLong), "");
-      }
-      return;
-      str = "0X8007F2B";
-      continue;
-      str = "0X8007F25";
-    }
+    this.jdField_a_of_type_Lra = new lra(this);
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create filter#" + Integer.toHexString(this.jdField_a_of_type_Lra.hashCode()));
+    this.jdField_a_of_type_Lra.setPositions(AEOpenRenderConfig.ORIGIN_POSITION_COORDS, true);
+    this.jdField_a_of_type_Lra.setTexCords(AEOpenRenderConfig.ORIGIN_TEX_COORDS, true);
+    this.jdField_a_of_type_Lra.ApplyGLSLFilter();
   }
   
-  static void a(long paramLong, boolean paramBoolean)
+  protected void b()
   {
-    Object localObject = lbn.a();
-    if (!lbr.a()) {
-      localObject = "0X80077BF";
-    }
-    for (;;)
+    if (this.jdField_a_of_type_Lra != null)
     {
-      a((String)localObject, paramBoolean, paramLong);
-      return;
-      if (!((lbn)localObject).a()) {
-        localObject = "0X80077C0";
-      } else if (!((lbn)localObject).b) {
-        localObject = "0X80077BE";
-      } else {
-        localObject = "0X80077BD";
-      }
-    }
-  }
-  
-  static void a(Context paramContext, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
-  {
-    String str = null;
-    switch (paramInt1)
-    {
-    default: 
-      if (paramBoolean) {
-        str = "0X8006F8D";
-      }
-      break;
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(str)) {
-        a(str, paramBoolean, paramLong);
-      }
-      return;
-      if (paramInt2 == 4) {
-        if (kxf.a(paramContext))
-        {
-          str = "0X8007F2E";
-        }
-        else
-        {
-          str = "0X8007F2F";
-          continue;
-          if (paramInt2 == 4) {
-            if (kxf.a(paramContext))
-            {
-              str = "0X8007F28";
-            }
-            else
-            {
-              str = "0X8007F29";
-              continue;
-              str = "0X8006F8E";
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  static void a(VideoAppInterface paramVideoAppInterface, long paramLong, boolean paramBoolean)
-  {
-    boolean bool;
-    if (paramVideoAppInterface != null)
-    {
-      paramVideoAppInterface = (kyo)paramVideoAppInterface.a(5);
-      bool = paramVideoAppInterface.a(3, "normal");
-      if (!paramVideoAppInterface.a(3, "interact")) {
-        break label42;
-      }
-      paramVideoAppInterface = "0X8008023";
-    }
-    for (;;)
-    {
-      a(paramVideoAppInterface, paramBoolean, paramLong);
-      return;
-      label42:
-      if (bool) {
-        paramVideoAppInterface = "0X8008024";
-      } else {
-        paramVideoAppInterface = "0X8008132";
-      }
-    }
-  }
-  
-  public static void a(String paramString, boolean paramBoolean, long paramLong)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    if (paramBoolean) {}
-    for (int i = 1;; i = -1)
-    {
-      awqx.b(null, "dc00898", "", "", paramString, paramString, 0, i, "", "", String.valueOf(paramLong), "");
-      return;
-    }
-  }
-  
-  static void b()
-  {
-    awqx.b(null, "dc00898", "", "", "0X8006F8F", "0X8006F8F", 0, 0, "", "", "", "");
-  }
-  
-  static void b(Context paramContext, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
-  {
-    int j = 0;
-    Object localObject = "";
-    int i = j;
-    if (paramBoolean)
-    {
-      i = j;
-      if (kxf.a(paramContext))
-      {
-        i = j;
-        if (awhj.a().c()) {
-          i = 1;
-        }
-      }
-    }
-    switch (paramInt1)
-    {
-    default: 
-      if (paramBoolean)
-      {
-        localObject = "0X8006F89";
-        paramContext = (Context)localObject;
-        if (i == 0) {
-          break label163;
-        }
-        paramContext = "0X8008394";
-      }
-      break;
-    }
-    for (;;)
-    {
-      a((String)localObject, paramBoolean, paramLong);
-      a(paramContext, paramBoolean, paramLong);
-      return;
-      paramContext = (Context)localObject;
-      if (paramInt2 == 4)
-      {
-        paramContext = "0X8007F2C";
-        if (i != 0)
-        {
-          paramContext = "0X80083A9";
-          localObject = "0X8007F2C";
-          continue;
-          paramContext = (Context)localObject;
-          if (paramInt2 == 4)
-          {
-            paramContext = "0X8007F26";
-            if (i != 0)
-            {
-              paramContext = "0X8008397";
-              localObject = "0X8007F26";
-              continue;
-              localObject = "0X8006F8A";
-              break;
-            }
-          }
-        }
-      }
-      label163:
-      String str = "";
-      localObject = paramContext;
-      paramContext = str;
+      this.jdField_a_of_type_Lra.clearGLSLSelf();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: filter#" + Integer.toHexString(this.jdField_a_of_type_Lra.hashCode()));
+      this.jdField_a_of_type_Lra = null;
     }
   }
 }

@@ -1,18 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
 
 class usv
-  implements bbmj
+  implements syt<tmt, tmu>
 {
-  usv(uss paramuss) {}
+  usv(usu paramusu, JobContext paramJobContext, Integer paramInteger) {}
   
-  public void a(bbmh parambbmh)
+  public void a(@NonNull tmt paramtmt, @Nullable tmu paramtmu, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambbmh);
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      veg.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
+      return;
     }
+    if ((paramErrorMessage.isFail()) || (paramtmu == null))
+    {
+      veg.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
+      usu.a(this.jdField_a_of_type_Usu, paramErrorMessage);
+      return;
+    }
+    usu.a(this.jdField_a_of_type_Usu).a(paramtmu.jdField_a_of_type_JavaUtilList, paramtmu.jdField_a_of_type_JavaLangString, paramtmu.jdField_a_of_type_Boolean);
+    ((uwa)tdc.a(11)).a(paramtmu.jdField_a_of_type_JavaUtilList);
+    paramtmt = usu.a(this.jdField_a_of_type_Usu).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    usu.a(this.jdField_a_of_type_Usu, paramtmt);
   }
-  
-  public void a(bbmh parambbmh, int paramInt1, int paramInt2) {}
 }
 
 

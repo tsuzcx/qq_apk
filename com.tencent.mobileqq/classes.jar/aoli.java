@@ -1,19 +1,12 @@
-class aoli
-  extends aokw
+public class aoli
 {
-  public aoli(aokk paramaokk)
-  {
-    super(paramaokk);
-  }
-  
-  protected String a()
-  {
-    return "StateSaveToWeiYunByPC";
-  }
+  public int a;
+  public String a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoli
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,64 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class acvm
-  extends ajmm
+public class acvm
+  implements acvi
 {
-  private WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  public agzf a;
+  public PreloadManager a;
+  private QQAppInterface a;
   
-  private acvm(acvj paramacvj, BaseActivity paramBaseActivity)
+  public acvm(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
+    this.jdField_a_of_type_Agzf = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
+      this.jdField_a_of_type_Agzf = ((agzf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245));
+    }
   }
   
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    super.a(paramBoolean1, paramList, paramBoolean2);
-    if ((acvj.a(this.jdField_a_of_type_Acvj, paramList)) && (paramBoolean1)) {}
-    for (paramBoolean2 = true;; paramBoolean2 = false)
+    ThreadManager.post(new CustomizeStrategyFactory.SkinRedPacketStrategy.1(this, paramRedPacketInfo), 5, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, aelu paramaelu)
+  {
+    if (paramRedPacketInfo != null)
     {
-      paramList = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("MergeForwardRevokeHelper", 2, "onMsgRevokeNotice  hasMsgRevoked:" + paramBoolean2 + "; isSuccess:" + paramBoolean1);
+      if (!(paramaelu instanceof aely)) {
+        break label74;
       }
-      if ((paramBoolean2) && (paramList != null))
+      paramaelu = (aely)paramaelu;
+      paramRedPacketInfo.background = paramaelu.b;
+      paramRedPacketInfo.corner = paramaelu.jdField_a_of_type_AndroidGraphicsBitmap;
+      paramRedPacketInfo.animInfo = paramaelu.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
+      paramRedPacketInfo.title = paramaelu.c;
+      paramRedPacketInfo.icon = paramaelu.a(paramRedPacketInfo);
+      paramRedPacketInfo.isHideTitle = paramaelu.jdField_a_of_type_Int;
+      paramRedPacketInfo.resPath = paramaelu.d;
+    }
+    label74:
+    do
+    {
+      return;
+      if ((paramaelu instanceof aelv))
       {
-        if (!this.jdField_a_of_type_Acvj.a) {
-          break;
-        }
-        paramList.finish();
+        paramaelu = (aelv)paramaelu;
+        paramRedPacketInfo.specailBackgroundAnimInfo = paramaelu.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
+        paramRedPacketInfo.specialBackground = paramaelu.jdField_a_of_type_AndroidGraphicsBitmap;
+        return;
       }
-      return;
-    }
-    if (acvj.a() == paramList)
-    {
-      acvj.a(this.jdField_a_of_type_Acvj, paramList);
-      return;
-    }
-    paramList.finish();
+    } while (!(paramaelu instanceof aelx));
+    paramRedPacketInfo.resPath = ((aelx)paramaelu).b;
   }
 }
 

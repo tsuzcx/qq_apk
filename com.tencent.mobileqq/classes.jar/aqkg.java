@@ -1,21 +1,21 @@
-import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqkg
+class aqkg
+  extends mxm
 {
-  public long a;
-  public Intent a;
-  public String a;
-  public String b = "";
-  public String c = "";
+  aqkg(aqkf paramaqkf) {}
   
-  public aqkg(aqkd paramaqkd)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("sendFriendRelationRedpointClickEvent, errorCode: %d", new Object[] { Integer.valueOf(paramInt) }));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqkg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,14 @@
-import android.view.View;
-import java.util.List;
+import android.content.DialogInterface;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 
-class acxq
-  implements begw
+public class acxq
+  extends bbdf
 {
-  acxq(acxp paramacxp, List paramList, begr parambegr) {}
+  public acxq(PlusPanel paramPlusPanel) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      acxp.a(this.jdField_a_of_type_Acxp, this.jdField_a_of_type_JavaUtilList);
-      continue;
-      this.jdField_a_of_type_Acxp.a(this.jdField_a_of_type_JavaUtilList, 0);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,63 +1,80 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.earlydownload.handler.AppleEmojiHandler.1;
-import com.tencent.mobileqq.earlydownload.xmldata.AppleEmojiData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.qvip.QVipBigClubSVIP9Config;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amyw
-  extends amza
+  extends amyi<QVipBigClubSVIP9Config>
 {
-  public amyw(QQAppInterface paramQQAppInterface)
+  public static QVipBigClubSVIP9Config c()
   {
-    super("qq.android.appleemoji", paramQQAppInterface);
+    QVipBigClubSVIP9Config localQVipBigClubSVIP9Config2 = (QVipBigClubSVIP9Config)ampm.a().a(427);
+    QVipBigClubSVIP9Config localQVipBigClubSVIP9Config1 = localQVipBigClubSVIP9Config2;
+    if (localQVipBigClubSVIP9Config2 == null) {
+      localQVipBigClubSVIP9Config1 = new QVipBigClubSVIP9Config();
+    }
+    return localQVipBigClubSVIP9Config1;
   }
   
   public int a()
   {
-    return 10001;
+    return 427;
   }
   
-  public Class<? extends XmlData> a()
+  @NonNull
+  public QVipBigClubSVIP9Config a()
   {
-    return AppleEmojiData.class;
+    return new QVipBigClubSVIP9Config();
   }
   
-  public String a()
+  @NonNull
+  public QVipBigClubSVIP9Config a(ampi[] paramArrayOfampi)
   {
-    return "AppleMojiHandler";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess:" + paramString);
-    }
-    File localFile = new File(paramString);
-    if (!localFile.exists())
+    boolean bool = true;
+    localQVipBigClubSVIP9Config = new QVipBigClubSVIP9Config();
+    paramArrayOfampi = paramArrayOfampi[0].a;
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess sorse not exists");
+      if (!TextUtils.isEmpty(paramArrayOfampi))
+      {
+        paramArrayOfampi = new JSONObject(paramArrayOfampi);
+        if (paramArrayOfampi.optInt("enable", 1) != 1) {
+          break label93;
+        }
       }
-      return;
+      for (;;)
+      {
+        localQVipBigClubSVIP9Config.mIsEnable = bool;
+        localQVipBigClubSVIP9Config.mAPngIconUrl = paramArrayOfampi.optString("apng_icon_url_pattern", localQVipBigClubSVIP9Config.mAPngIconUrl);
+        localQVipBigClubSVIP9Config.mAPngIconUrlNew_Gray = paramArrayOfampi.optString("apng_gray_icon_url_pattern", localQVipBigClubSVIP9Config.mAPngIconUrlNew_Gray);
+        localQVipBigClubSVIP9Config.mVipIconSettingsUrl = paramArrayOfampi.optString("vipicon_setting_url_pattern", localQVipBigClubSVIP9Config.mVipIconSettingsUrl);
+        return localQVipBigClubSVIP9Config;
+        label93:
+        bool = false;
+      }
+      return localQVipBigClubSVIP9Config;
     }
-    ThreadManager.excute(new AppleEmojiHandler.1(this, localFile, paramString), 64, null, true);
+    catch (JSONException paramArrayOfampi)
+    {
+      veg.e("QVipBigTroopExpiredProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfampi.getMessage());
+    }
   }
   
-  public boolean a()
+  public Class<QVipBigClubSVIP9Config> a()
   {
-    return true;
+    return QVipBigClubSVIP9Config.class;
   }
   
-  public String b()
+  @NonNull
+  public QVipBigClubSVIP9Config b()
   {
-    return null;
+    return new QVipBigClubSVIP9Config();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amyw
  * JD-Core Version:    0.7.0.1
  */

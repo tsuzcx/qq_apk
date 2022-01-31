@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.BaseChatpieHelper;
-import com.tencent.mobileqq.app.BaseActivity;
-
-public class aads
-  implements View.OnClickListener
+public abstract class aads
+  extends aabq
 {
-  public aads(BaseChatPie paramBaseChatPie) {}
+  protected aadt a;
   
-  public void onClick(View paramView)
+  protected void a()
   {
-    arxu.a().a = 0;
-    this.a.a.a(this.a.a(), this.a.a().getIntent());
-    this.a.b(1);
+    this.jdField_a_of_type_Aadt = new aadt(this.jdField_a_of_type_Aabp.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aads
  * JD-Core Version:    0.7.0.1
  */

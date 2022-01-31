@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bgmq;
+import bhvh;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -14,23 +14,23 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import ndn;
-import oab;
-import obz;
-import ogy;
-import oqb;
+import noo;
+import olm;
+import onk;
 import org.json.JSONException;
 import org.json.JSONObject;
-import qvi;
+import osj;
+import pbc;
+import rhu;
 
 public class RecommendFeedsDiandianEntranceManager
 {
   private static int jdField_a_of_type_Int = 600000;
   private static RecommendFeedsDiandianEntranceManager.EntranceIconInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecommendFeedsDiandianEntranceManager$EntranceIconInfo;
   private static RecommendFeedsDiandianEntranceManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecommendFeedsDiandianEntranceManager;
-  private static int b = bgmq.e();
+  private static int b = bhvh.e();
   private long jdField_a_of_type_Long;
-  private List<qvi> jdField_a_of_type_JavaUtilList;
+  private List<rhu> jdField_a_of_type_JavaUtilList;
   private int c = -1;
   
   private RecommendFeedsDiandianEntranceManager()
@@ -72,16 +72,16 @@ public class RecommendFeedsDiandianEntranceManager
     switch ()
     {
     default: 
-      return 2130842451;
+      return 2130842525;
     case 4: 
-      return 2130848190;
+      return 2130848420;
     }
-    return 2130848158;
+    return 2130848390;
   }
   
   private RecommendFeedsDiandianEntranceManager.EntranceIconInfo b()
   {
-    Object localObject = bgmq.a(obz.a().c());
+    Object localObject = bhvh.a(onk.a().c());
     if (localObject != null) {
       try
       {
@@ -115,7 +115,7 @@ public class RecommendFeedsDiandianEntranceManager
   {
     if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecommendFeedsDiandianEntranceManager$EntranceIconInfo != null)
     {
-      SharedPreferences localSharedPreferences = bgmq.a(obz.a().c());
+      SharedPreferences localSharedPreferences = bhvh.a(onk.a().c());
       if (localSharedPreferences != null) {
         try
         {
@@ -153,15 +153,15 @@ public class RecommendFeedsDiandianEntranceManager
     long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
     QLog.d("RecommendFeedsDiandianEntranceManager", 1, "checkAndReqRefreshDianDianIcon | request refresh icon info ,timeinterval : " + l);
     if (l < jdField_a_of_type_Int) {}
-    while ((b != 3) && (b != 4)) {
+    while (((b != 3) && (b != 4)) || (osj.a().a() == null)) {
       return;
     }
-    ogy.a().a().b(b);
+    osj.a().a().b(b);
   }
   
   public void a(int paramInt)
   {
-    ndn.a(null, "CliOper", "", "", "0X80094FE", "0X80094FE", 0, 0, "", "", "", b(paramInt), false);
+    noo.a(null, "CliOper", "", "", "0X80094FE", "0X80094FE", 0, 0, "", "", "", b(paramInt), false);
   }
   
   public void a(long paramLong)
@@ -178,7 +178,7 @@ public class RecommendFeedsDiandianEntranceManager
     if (TextUtils.isEmpty(jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecommendFeedsDiandianEntranceManager$EntranceIconInfo.c)) {
       jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecommendFeedsDiandianEntranceManager$EntranceIconInfo.c = a(paramInt1);
     }
-    obz.a(paramContext, jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecommendFeedsDiandianEntranceManager$EntranceIconInfo.c);
+    onk.a(paramContext, jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecommendFeedsDiandianEntranceManager$EntranceIconInfo.c);
     c();
   }
   
@@ -197,15 +197,15 @@ public class RecommendFeedsDiandianEntranceManager
       paramEntranceIconInfo = this.jdField_a_of_type_JavaUtilList.iterator();
       while (paramEntranceIconInfo.hasNext())
       {
-        qvi localqvi = (qvi)paramEntranceIconInfo.next();
-        ThreadManager.getUIHandler().post(new RecommendFeedsDiandianEntranceManager.1(this, localqvi));
+        rhu localrhu = (rhu)paramEntranceIconInfo.next();
+        ThreadManager.getUIHandler().post(new RecommendFeedsDiandianEntranceManager.1(this, localrhu));
       }
     }
   }
   
   public void a(String paramString)
   {
-    int i = bgmq.e();
+    int i = bhvh.e();
     QLog.d("RecommendFeedsDiandianEntranceManager", 1, "checkAndUpdateIconInfo | reason " + paramString + "; configFeedsType : " + i);
     paramString = b();
     if (paramString != null)
@@ -234,16 +234,16 @@ public class RecommendFeedsDiandianEntranceManager
     QLog.d("RecommendFeedsDiandianEntranceManager", 1, "checkAndUpdateIconInfo | buildIconInfo with configFeedsType : " + i + " ; curIconInfo : " + jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecommendFeedsDiandianEntranceManager$EntranceIconInfo);
   }
   
-  public void a(qvi paramqvi)
+  public void a(rhu paramrhu)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramqvi != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramqvi))) {
-      this.jdField_a_of_type_JavaUtilList.add(paramqvi);
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramrhu != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramrhu))) {
+      this.jdField_a_of_type_JavaUtilList.add(paramrhu);
     }
   }
   
   public boolean a()
   {
-    int i = bgmq.e();
+    int i = bhvh.e();
     return (i == 1) || (i == 2);
   }
   
@@ -260,7 +260,7 @@ public class RecommendFeedsDiandianEntranceManager
         if (this.c == 3) {
           i = 6;
         }
-        str = oab.b();
+        str = olm.b();
         j = i;
       }
       localJSONObject.put("diandianfeeds_type", j);
@@ -285,8 +285,8 @@ public class RecommendFeedsDiandianEntranceManager
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        qvi localqvi = (qvi)localIterator.next();
-        ThreadManager.getUIHandler().post(new RecommendFeedsDiandianEntranceManager.3(this, localqvi));
+        rhu localrhu = (rhu)localIterator.next();
+        ThreadManager.getUIHandler().post(new RecommendFeedsDiandianEntranceManager.3(this, localrhu));
       }
     }
   }
@@ -296,16 +296,16 @@ public class RecommendFeedsDiandianEntranceManager
     this.c = paramInt;
   }
   
-  public void b(qvi paramqvi)
+  public void b(rhu paramrhu)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramqvi != null)) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramqvi);
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramrhu != null)) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramrhu);
     }
   }
   
   public void c()
   {
-    ndn.a(null, "CliOper", "", "", "0X80094FF", "0X80094FF", 0, 0, "", "", "", b(0), false);
+    noo.a(null, "CliOper", "", "", "0X80094FF", "0X80094FF", 0, 0, "", "", "", b(0), false);
   }
 }
 

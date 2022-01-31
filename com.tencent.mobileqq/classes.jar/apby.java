@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class apby
-  implements DialogInterface.OnClickListener
+class apby
+  extends apbq
 {
-  apby(apca paramapca) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public apby(apbe paramapbe)
   {
-    this.a.a();
+    super(paramapbe);
+  }
+  
+  protected String a()
+  {
+    return "StateRefuseByPC";
   }
 }
 

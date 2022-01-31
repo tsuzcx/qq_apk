@@ -1,27 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public final class baod
-  implements EIPCResultCallback
+public class baod
+  implements bame
 {
-  public baod(baoa parambaoa) {}
+  public baod(RobotPanelLayoutBase paramRobotPanelLayoutBase, baog parambaog) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    if (paramEIPCResult.code != 0)
-    {
-      this.a.a(2, "", "");
-      return;
-    }
-    paramEIPCResult = (QuickUpdateIPCModule.Params)paramEIPCResult.data.getSerializable("params");
-    this.a.a(paramEIPCResult.intVal, paramEIPCResult.strVal1, paramEIPCResult.strVal2);
+    if (paramInt == 0) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baod
  * JD-Core Version:    0.7.0.1
  */

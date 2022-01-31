@@ -1,32 +1,34 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.ResultReceiver;
+import android.content.Intent;
+import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.mobileqq.mini.sdk.MiniAppController.ActivityResultListener;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.minigame.manager.GameLoadManager;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.qphone.base.util.QLog;
 
 class RewardedVideoAdPlugin$2
-  extends ResultReceiver
+  implements MiniAppController.ActivityResultListener
 {
-  RewardedVideoAdPlugin$2(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, Handler paramHandler, String paramString1, Activity paramActivity, String paramString2, JsRuntime paramJsRuntime, int paramInt, boolean paramBoolean)
-  {
-    super(paramHandler);
-  }
+  RewardedVideoAdPlugin$2(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, String paramString1, Activity paramActivity, String paramString2, JsRuntime paramJsRuntime, int paramInt) {}
   
-  protected void onReceiveResult(int paramInt, Bundle paramBundle)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    super.onReceiveResult(paramInt, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("[minigame] RewardedVideoAdPlugin", 2, "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
+    if ((paramInt2 == -1) && (paramInt1 == 101))
+    {
+      paramIntent = paramIntent.getExtras();
+      if (paramIntent == null)
+      {
+        QLog.e("[minigame] RewardedVideoAdPlugin", 1, "RewardedAd ActivityResultListener receive b=null");
+        RewardedVideoAdPlugin.access$000(this.this$0, 1003, this.val$compId);
+        return true;
+      }
+      RewardedVideoAdPlugin.access$100(this.this$0, paramInt2, paramIntent, this.val$compId, this.val$activity, this.val$event, this.val$webview, this.val$callbackId);
+      QLog.d("[minigame] RewardedVideoAdPlugin", 1, "removeActivityResultListener");
+      MiniAppController.getInstance().removeActivityResultListener(this);
+      return true;
     }
-    RewardedVideoAdPlugin.access$000(this.this$0, paramInt, paramBundle, this.val$compId, this.val$activity, this.val$event, this.val$webview, this.val$callbackId);
-    if ((this.val$currentIsMiniGame) && (GameLoadManager.g().getGameEngine() != null)) {
-      GameLoadManager.g().getGameEngine().handleFocusGain();
-    }
+    return false;
   }
 }
 

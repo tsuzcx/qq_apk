@@ -1,61 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
 
 public class amei
-  extends alzl<ameh>
+  implements bfoq
 {
-  public int a()
+  public amei(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, bfol parambfol) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    return 419;
-  }
-  
-  @NonNull
-  public ameh a(int paramInt)
-  {
-    return new ameh();
-  }
-  
-  @Nullable
-  public ameh a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return ameh.a(paramArrayOfalzs[0].a);
-    }
-    return null;
-  }
-  
-  public Class<ameh> a()
-  {
-    return ameh.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(ameh paramameh) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.jdField_a_of_type_Bfol.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amei
  * JD-Core Version:    0.7.0.1
  */

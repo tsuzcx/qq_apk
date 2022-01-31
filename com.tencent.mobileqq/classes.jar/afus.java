@@ -1,18 +1,34 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import android.os.AsyncTask;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public class afus
-  implements avgk
+class afus
+  extends AsyncTask<Void, Void, ArrayList<String>>
 {
-  public afus(MiniMsgTabFragment paramMiniMsgTabFragment) {}
+  afus(afur paramafur, List paramList) {}
   
-  public void a(View paramView, int paramInt)
+  protected ArrayList<String> a(Void... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniMsgTabFragment", 2, "ScreenShotInnerAdapter OnItemClickListener : position = " + paramInt + ", view = " + paramView);
+    return this.jdField_a_of_type_Afur.a(this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  protected void a(ArrayList<String> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SDKEmotionSettingManager", 2, " openSetEmotion error pathList = " + paramArrayList);
+      }
+      afur.a(this.jdField_a_of_type_Afur, afur.a(this.jdField_a_of_type_Afur), Long.valueOf(afur.a(this.jdField_a_of_type_Afur)).longValue(), false, "");
+      afur.a(this.jdField_a_of_type_Afur);
+      return;
     }
-    MiniMsgTabFragment.a(this.a, paramInt);
+    int i = paramArrayList.size();
+    axqw.b(null, "dc00898", "", "", "0X8009DC8", "0X8009DC8", 0, 0, i + "", "", "", "");
+    afur.a(this.jdField_a_of_type_Afur).clear();
+    afur.a(this.jdField_a_of_type_Afur).addAll(paramArrayList);
+    this.jdField_a_of_type_Afur.a(paramArrayList);
   }
 }
 

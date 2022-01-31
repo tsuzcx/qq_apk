@@ -1,24 +1,32 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class tpk
-  implements tqh
+public class tpk
+  implements tpj
 {
-  tpk(tpg paramtpg, StoryVideoItem paramStoryVideoItem) {}
+  public void a() {}
   
-  public void a(tqg paramtqg)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Tpg.isCanceled()) {}
-    do
-    {
-      return;
-      urk.a(this.jdField_a_of_type_Tpg.a.jdField_a_of_type_JavaLangString, "onCompletion, [videoView], current state = %s", VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Tpg.a.c]);
-    } while (!VideoViewVideoHolder.b(this.jdField_a_of_type_Tpg.a, 12));
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Tpg.a, 12);
-    this.jdField_a_of_type_Tpg.a.d = 1;
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Tpg.a).a(this.jdField_a_of_type_Tpg.a, paramtqg, VideoViewVideoHolder.b(this.jdField_a_of_type_Tpg.a));
-    urp.c("video_ope", "play_finish", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid, "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    if (paramInt == 6) {
+      bcpw.a(BaseApplicationImpl.getContext(), 2131690042, 0).a();
+    }
   }
+  
+  public void b() {}
+  
+  public void b(int paramInt) {}
+  
+  public void c() {}
+  
+  public void c(int paramInt)
+  {
+    bcpw.a(BaseApplication.getContext(), ajyc.a(2131707841), 0).a();
+  }
+  
+  public void d() {}
+  
+  public void d(int paramInt) {}
 }
 
 

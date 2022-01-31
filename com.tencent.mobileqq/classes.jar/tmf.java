@@ -1,67 +1,82 @@
-import android.animation.Animator.AnimatorListener;
-import android.animation.PropertyValuesHolder;
-import android.animation.ValueAnimator;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetCollectionVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCollectionVideoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class tmf
+  extends syv
 {
-  public static void a(ViewGroup paramViewGroup, @NonNull AnimationParam paramAnimationParam, Animator.AnimatorListener paramAnimatorListener)
+  public static final String a = sxp.a("StorySvc.new_get_date_share_list");
+  public static final String b = sxp.a("StorySvc.get_share_video_info_list");
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public int g;
+  
+  public tmf()
   {
-    urk.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation");
-    View localView = paramViewGroup.findViewById(2131309736);
-    ImageView localImageView2 = (ImageView)paramViewGroup.findViewById(2131297005);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131313316);
-    Drawable localDrawable = paramAnimationParam.a();
-    ImageView localImageView1 = null;
-    if (localDrawable != null)
-    {
-      localImageView1 = new ImageView(paramViewGroup.getContext());
-      localViewGroup.addView(localImageView1, new RelativeLayout.LayoutParams(-1, -1));
-      localImageView1.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      localImageView1.setImageDrawable(localDrawable);
-    }
-    int i = localView.getMeasuredWidth();
-    int j = localView.getMeasuredHeight();
-    float f1 = paramAnimationParam.c * 1.0F / i;
-    float f2 = paramAnimationParam.d * 1.0F / j;
-    paramViewGroup = new ValueAnimator();
-    paramViewGroup.setInterpolator(new DecelerateInterpolator());
-    paramViewGroup.setDuration(250L);
-    paramViewGroup.setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 1.0F, f1 }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 1.0F, f2 }), PropertyValuesHolder.ofInt("width", new int[] { i, paramAnimationParam.c }), PropertyValuesHolder.ofInt("height", new int[] { j, paramAnimationParam.d }), PropertyValuesHolder.ofFloat("translateX", new float[] { 0.0F, paramAnimationParam.a }), PropertyValuesHolder.ofFloat("translateY", new float[] { 0.0F, paramAnimationParam.b }), PropertyValuesHolder.ofFloat("backgroundAlpha", new float[] { 1.0F, 0.0F }) });
-    paramViewGroup.addUpdateListener(new tmg(localViewGroup, localDrawable, localImageView1, localImageView2));
-    paramViewGroup.addListener(new tmh(paramAnimatorListener));
-    paramViewGroup.start();
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_d_of_type_Int = -1;
   }
   
-  public static void b(ViewGroup paramViewGroup, @NonNull AnimationParam paramAnimationParam, Animator.AnimatorListener paramAnimatorListener)
+  public String a()
   {
-    urk.b("Q.qqstory.playernew.AnimationUtils", "doEnterAnimation");
-    Object localObject = paramViewGroup.findViewById(2131309736);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131297005);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131313316);
-    paramViewGroup = new ImageView(paramViewGroup.getContext());
-    localViewGroup.addView(paramViewGroup, 0, new RelativeLayout.LayoutParams(-1, -1));
-    paramViewGroup.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    paramViewGroup.setImageDrawable(paramAnimationParam.a());
-    int i = ((View)localObject).getMeasuredWidth();
-    int j = ((View)localObject).getMeasuredHeight();
-    float f1 = paramAnimationParam.c * 1.0F / i;
-    float f2 = paramAnimationParam.d * 1.0F / j;
-    localObject = new ValueAnimator();
-    ((ValueAnimator)localObject).setInterpolator(new DecelerateInterpolator());
-    ((ValueAnimator)localObject).setDuration(250L);
-    ((ValueAnimator)localObject).setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { f1, 1.0F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { f2, 1.0F }), PropertyValuesHolder.ofInt("width", new int[] { paramAnimationParam.c, i }), PropertyValuesHolder.ofInt("height", new int[] { paramAnimationParam.d, j }), PropertyValuesHolder.ofFloat("translateX", new float[] { paramAnimationParam.a, 0.0F }), PropertyValuesHolder.ofFloat("translateY", new float[] { paramAnimationParam.b, 0.0F }), PropertyValuesHolder.ofFloat("backgroundAlpha", new float[] { 0.0F, 1.0F }) });
-    ((ValueAnimator)localObject).addUpdateListener(new tmi(localViewGroup, paramViewGroup, localImageView));
-    ((ValueAnimator)localObject).addListener(new tmj(paramAnimatorListener, localViewGroup, paramViewGroup));
-    ((ValueAnimator)localObject).start();
+    if (this.jdField_e_of_type_JavaLangString == null) {
+      return a;
+    }
+    return b;
+  }
+  
+  public syq a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetCollectionVideoList localRspGetCollectionVideoList = new qqstory_service.RspGetCollectionVideoList();
+    try
+    {
+      localRspGetCollectionVideoList.mergeFrom(paramArrayOfByte);
+      return new tod(this.jdField_c_of_type_JavaLangString, localRspGetCollectionVideoList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetCollectionVideoList localReqGetCollectionVideoList = new qqstory_service.ReqGetCollectionVideoList();
+    localReqGetCollectionVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_d_of_type_JavaLangString));
+    localReqGetCollectionVideoList.count.set(this.jdField_c_of_type_Int);
+    if (this.jdField_e_of_type_JavaLangString == null)
+    {
+      localReqGetCollectionVideoList.collection_id.set(this.jdField_d_of_type_Int);
+      if (this.jdField_e_of_type_Int != -1) {
+        localReqGetCollectionVideoList.time_zone.set(this.jdField_e_of_type_Int);
+      }
+    }
+    for (;;)
+    {
+      vxs.a(this.jdField_c_of_type_JavaLangString);
+      localReqGetCollectionVideoList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+      localReqGetCollectionVideoList.video_dir.set(this.g);
+      return localReqGetCollectionVideoList.toByteArray();
+      localReqGetCollectionVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_e_of_type_JavaLangString));
+      localReqGetCollectionVideoList.identify.set(this.f);
+    }
+  }
+  
+  public String toString()
+  {
+    return super.toString() + " GetCollectionVideoListRequest{targetUid=" + this.jdField_c_of_type_JavaLangString + ", startCookie='" + this.jdField_d_of_type_JavaLangString + ", count=" + this.jdField_c_of_type_Int + ", collectionId=" + this.jdField_d_of_type_Int + ", timeZoneOffset=" + this.jdField_e_of_type_Int + '\'' + '}';
   }
 }
 

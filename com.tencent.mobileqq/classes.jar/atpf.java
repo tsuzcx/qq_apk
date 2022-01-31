@@ -1,20 +1,23 @@
-import android.content.Intent;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.CompressInfo;
-import java.util.ArrayList;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public abstract interface atpf
+public class atpf
+  implements View.OnClickListener
 {
-  public abstract atpp a(Intent paramIntent);
+  public atpf(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public abstract atpp a(MessageForPic paramMessageForPic, int paramInt, String paramString1, String paramString2, String paramString3);
-  
-  public abstract atqd a(Intent paramIntent);
-  
-  public abstract CompressInfo a(Intent paramIntent);
-  
-  public abstract ArrayList<atpp> a(MessageForMixedMsg paramMessageForMixedMsg, int paramInt, String paramString1, String paramString2, String paramString3);
+  public void onClick(View paramView)
+  {
+    if ((this.a.b != null) && (!this.a.isFinishing()))
+    {
+      this.a.b.dismiss();
+      this.a.b = null;
+    }
+    this.a.a(300L);
+    axqw.b(this.a.app, "CliOper", "", "", "0X8004BB0", "0X8004BB0", 0, 0, "", "", "", "");
+  }
 }
 
 

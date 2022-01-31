@@ -6,6 +6,7 @@ import com.tencent.ad.tangram.analysis.sqlite.d;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForAnalysis;
+import com.tencent.ad.tangram.settings.AdSettingsUtil;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.List;
@@ -17,7 +18,7 @@ class AdAnalysis$2
   
   public void run()
   {
-    gdt_settings.Settings localSettings = com.tencent.ad.tangram.settings.a.INSTANCE.getSettingsCache((Context)this.val$appContext.get());
+    gdt_settings.Settings localSettings = AdSettingsUtil.INSTANCE.getSettingsCache((Context)this.val$appContext.get());
     if (localSettings == null) {
       AdLog.i("AdAnalysis", "handleAsync settings is null");
     }

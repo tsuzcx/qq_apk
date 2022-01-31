@@ -1,24 +1,15 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class vei
-  implements veh
+final class vei
+  implements syt<vej, syq>
 {
-  public vei(EditVideoMusicDialog paramEditVideoMusicDialog) {}
-  
-  public void a()
+  public void a(@NonNull vej paramvej, @Nullable syq paramsyq, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.a.a.c(true);
-  }
-  
-  public void a(ver paramver)
-  {
-    this.a.b(paramver);
-  }
-  
-  public void b()
-  {
-    this.a.a();
+    if (paramErrorMessage.isFail()) {
+      veg.b("Q.qqstory.MonitorReport", "send monitor fail %s", paramErrorMessage);
+    }
   }
 }
 

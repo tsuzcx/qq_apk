@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class quf
-  implements View.OnClickListener
+public abstract interface quf
 {
-  quf(que paramque) {}
-  
-  public void onClick(View paramView)
-  {
-    que.a(true, -1, que.a(this.a));
-    if (que.a(this.a) != null) {
-      que.a(this.a).onClick(paramView);
-    }
-  }
+  public abstract void c(boolean paramBoolean);
 }
 
 

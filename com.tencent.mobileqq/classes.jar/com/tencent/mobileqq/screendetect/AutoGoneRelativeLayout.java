@@ -7,7 +7,7 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.RelativeLayout;
-import avgx;
+import awgq;
 import com.tencent.qphone.base.util.QLog;
 
 public class AutoGoneRelativeLayout
@@ -66,7 +66,7 @@ public class AutoGoneRelativeLayout
           QLog.d("AutoGoneRelativeLayout", 2, "createAccessibilityNodeInfo() isFromAccessibilityService = [" + bool1 + "], cost time = [" + (SystemClock.uptimeMillis() - l) + "]");
         }
         if (bool1) {
-          avgx.a((Activity)getContext());
+          awgq.a((Activity)getContext());
         }
         return super.createAccessibilityNodeInfo();
       }

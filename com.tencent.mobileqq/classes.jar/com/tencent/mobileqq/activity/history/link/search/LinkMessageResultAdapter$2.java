@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.history.link.search;
 
-import afpq;
-import afss;
+import agbq;
+import ager;
 import android.os.Message;
-import beez;
+import bfmt;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -16,12 +16,12 @@ import java.util.List;
 public class LinkMessageResultAdapter$2
   implements Runnable
 {
-  public LinkMessageResultAdapter$2(afpq paramafpq, String paramString, long paramLong, List paramList) {}
+  public LinkMessageResultAdapter$2(agbq paramagbq, String paramString, long paramLong, List paramList) {}
   
   public void run()
   {
     int j = 0;
-    Object localObject = this.this$0.a(afpq.c(this.this$0), this.jdField_a_of_type_JavaLangString);
+    Object localObject = this.this$0.a(agbq.c(this.this$0), this.jdField_a_of_type_JavaLangString);
     int i;
     MessageRecord localMessageRecord;
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null) && (!((ChatHistorySearchData)localObject).mSearchData1.isEmpty()))
@@ -30,23 +30,23 @@ public class LinkMessageResultAdapter$2
       while (i < ((ChatHistorySearchData)localObject).mSearchData1.size())
       {
         localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
-        if (afpq.a(this.this$0, localMessageRecord)) {
-          this.this$0.jdField_a_of_type_JavaUtilList.add(new afss(afpq.b(this.this$0), localMessageRecord));
+        if (agbq.a(this.this$0, localMessageRecord)) {
+          this.this$0.jdField_a_of_type_JavaUtilList.add(new ager(agbq.b(this.this$0), localMessageRecord));
         }
         i += 1;
       }
     }
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData2 != null) && (!((ChatHistorySearchData)localObject).mSearchData2.isEmpty()))
     {
-      localObject = afpq.c(this.this$0).a().a(afpq.d(this.this$0).jdField_a_of_type_JavaLangString, afpq.e(this.this$0).jdField_a_of_type_Int, ((ChatHistorySearchData)localObject).mSearchData2);
+      localObject = agbq.c(this.this$0).a().a(agbq.d(this.this$0).jdField_a_of_type_JavaLangString, agbq.e(this.this$0).jdField_a_of_type_Int, ((ChatHistorySearchData)localObject).mSearchData2);
       if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null))
       {
         i = j;
         while (i < ((ChatHistorySearchData)localObject).mSearchData1.size())
         {
           localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
-          if (afpq.b(this.this$0, localMessageRecord)) {
-            this.this$0.jdField_a_of_type_JavaUtilList.add(new afss(afpq.d(this.this$0), localMessageRecord));
+          if (agbq.b(this.this$0, localMessageRecord)) {
+            this.this$0.jdField_a_of_type_JavaUtilList.add(new ager(agbq.d(this.this$0), localMessageRecord));
           }
           i += 1;
         }
@@ -59,7 +59,7 @@ public class LinkMessageResultAdapter$2
     ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
     ((HashMap)localObject).put("sequence", Long.valueOf(this.jdField_a_of_type_Long));
     ((HashMap)localObject).put("data", this.jdField_a_of_type_JavaUtilList);
-    afpq.c(this.this$0).obtainMessage(6, localObject).sendToTarget();
+    agbq.c(this.this$0).obtainMessage(6, localObject).sendToTarget();
   }
 }
 

@@ -1,51 +1,30 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.qphone.base.util.QLog;
 
 class sbd
-  extends GestureDetector.SimpleOnGestureListener
+  extends akav
 {
-  private sbd(sau paramsau) {}
+  sbd(sbc paramsbc) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.a = true;
-    sau.b(this.a);
-    return false;
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    super.onShowPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if ((!(sau.a(this.a).getTag() instanceof sbb)) || (((sau.a(this.a).getTag() instanceof sbb)) && (!sau.a(this.a).a(sau.a(this.a)).booleanValue()))) {
-      sau.c(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderManager", 2, "onUpdateSendMsgError->uin:" + paramString1 + ", type:" + paramInt1 + ", uniseq:" + paramLong2 + ", errorCode:" + paramInt2);
     }
-    return false;
+    sbc.a(this.a, paramString1);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderManager", 2, "onSendResult->puin:" + paramString + ", isSuccess:" + paramBoolean);
+    }
+    sbc.a(this.a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sbd
  * JD-Core Version:    0.7.0.1
  */

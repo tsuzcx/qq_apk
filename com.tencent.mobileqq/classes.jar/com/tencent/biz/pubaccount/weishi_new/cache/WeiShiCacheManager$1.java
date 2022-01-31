@@ -2,60 +2,60 @@ package com.tencent.biz.pubaccount.weishi_new.cache;
 
 import UserGrowth.stSimpleGetFeedListRsp;
 import java.util.ArrayList;
-import oie;
-import rwy;
-import rxc;
-import rys;
-import sai;
-import sam;
+import otp;
+import sju;
+import sjy;
+import slo;
+import sne;
+import sni;
 
 public class WeiShiCacheManager$1
   implements Runnable
 {
-  public WeiShiCacheManager$1(rxc paramrxc, rwy paramrwy) {}
+  public WeiShiCacheManager$1(sjy paramsjy, sju paramsju) {}
   
   public void run()
   {
-    sai.b("CacheResponseLog", "getCachedRecommendData startTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
+    sne.b("CacheResponseLog", "getCachedRecommendData startTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
     if (!this.this$0.b()) {
       return;
     }
     boolean bool = false;
-    Object localObject = sam.a();
+    Object localObject = sni.a();
     if (localObject != null) {
-      bool = sam.a((oie)localObject);
+      bool = sni.a((otp)localObject);
     }
-    sai.b("WeiShiCacheManager", "isRedDotMsg = " + bool);
+    sne.b("WeiShiCacheManager", "isRedDotMsg = " + bool);
     if (bool) {
       if ((this.this$0.a()) && (this.this$0.a() >= 8))
       {
-        sai.b("WeiShiCacheManager", "仅读取红点缓存");
-        localObject = rxc.a(this.this$0, 2);
+        sne.b("WeiShiCacheManager", "仅读取红点缓存");
+        localObject = sjy.a(this.this$0, 2);
       }
     }
     for (;;)
     {
-      rys.a().a(new WeiShiCacheManager.1.1(this, (stSimpleGetFeedListRsp)localObject));
+      slo.a().a(new WeiShiCacheManager.1.1(this, (stSimpleGetFeedListRsp)localObject));
       return;
-      sai.b("WeiShiCacheManager", "读取红点缓存和瀑布流缓存");
-      localObject = rxc.a(this.this$0, 2);
-      stSimpleGetFeedListRsp localstSimpleGetFeedListRsp2 = rxc.a(this.this$0, 1);
+      sne.b("WeiShiCacheManager", "读取红点缓存和瀑布流缓存");
+      localObject = sjy.a(this.this$0, 2);
+      stSimpleGetFeedListRsp localstSimpleGetFeedListRsp2 = sjy.a(this.this$0, 1);
       stSimpleGetFeedListRsp localstSimpleGetFeedListRsp1 = new stSimpleGetFeedListRsp();
       localstSimpleGetFeedListRsp1.feeds = new ArrayList();
       if (localObject != null)
       {
-        sai.b("WeiShiCacheManager", "红点缓存数量 = " + ((stSimpleGetFeedListRsp)localObject).feeds.size());
+        sne.b("WeiShiCacheManager", "红点缓存数量 = " + ((stSimpleGetFeedListRsp)localObject).feeds.size());
         localstSimpleGetFeedListRsp1.feeds.addAll(((stSimpleGetFeedListRsp)localObject).feeds);
       }
       localObject = localstSimpleGetFeedListRsp1;
       if (localstSimpleGetFeedListRsp2 != null)
       {
-        sai.b("WeiShiCacheManager", "瀑布流缓存数量 = " + localstSimpleGetFeedListRsp2.feeds.size());
+        sne.b("WeiShiCacheManager", "瀑布流缓存数量 = " + localstSimpleGetFeedListRsp2.feeds.size());
         localstSimpleGetFeedListRsp1.feeds.addAll(localstSimpleGetFeedListRsp2.feeds);
         localObject = localstSimpleGetFeedListRsp1;
         continue;
-        sai.b("WeiShiCacheManager", "读取瀑布流缓存数据");
-        localObject = rxc.a(this.this$0, 1);
+        sne.b("WeiShiCacheManager", "读取瀑布流缓存数据");
+        localObject = sjy.a(this.this$0, 1);
       }
     }
   }

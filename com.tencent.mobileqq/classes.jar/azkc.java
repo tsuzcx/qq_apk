@@ -1,8 +1,17 @@
-public class azkc
+import android.view.View;
+
+class azkc
+  implements bfoq
 {
-  public int a;
-  public String a;
-  public String b;
+  azkc(azjy paramazjy) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    azjy.a(this.a);
+    if (paramInt == 0) {
+      azjy.a(this.a, "");
+    }
+  }
 }
 
 

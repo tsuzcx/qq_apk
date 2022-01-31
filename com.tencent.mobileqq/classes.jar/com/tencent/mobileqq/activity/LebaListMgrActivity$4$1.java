@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import abbi;
-import aiat;
+import able;
+import ainm;
 import java.util.List;
 
 public class LebaListMgrActivity$4$1
   implements Runnable
 {
-  public LebaListMgrActivity$4$1(abbi paramabbi, List paramList) {}
+  public LebaListMgrActivity$4$1(able paramable, List paramList) {}
   
   public void run()
   {
-    if (LebaListMgrActivity.a(this.jdField_a_of_type_Abbi.a) != null) {
-      LebaListMgrActivity.a(this.jdField_a_of_type_Abbi.a).a(this.jdField_a_of_type_JavaUtilList);
+    if (LebaListMgrActivity.a(this.jdField_a_of_type_Able.a) != null) {
+      LebaListMgrActivity.a(this.jdField_a_of_type_Able.a).a(this.jdField_a_of_type_JavaUtilList);
     }
   }
 }

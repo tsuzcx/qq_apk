@@ -1,45 +1,69 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class ayhn
-  extends ajuc
+class ayhn
+  extends bfvp
 {
-  public ayhn(TroopCreateLogicActivity paramTroopCreateLogicActivity) {}
-  
-  protected void a(long paramLong, int paramInt1, boolean paramBoolean, String paramString, int paramInt2, int paramInt3)
+  ayhn(ayhl paramayhl, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4, List paramList, int[] paramArrayOfInt5)
   {
-    this.a.app.removeObserver(this.a.a);
-    if (paramInt1 == 0)
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, bfvo parambfvo, View.OnClickListener paramOnClickListener)
+  {
+    parambfvo = super.a(paramInt, paramObject, parambfvo, paramOnClickListener);
+    if (parambfvo != null) {
+      parambfvo.setTag(-10, paramObject);
+    }
+    return parambfvo;
+  }
+  
+  public void a(int paramInt, Object paramObject, bfvo[] paramArrayOfbfvo)
+  {
+    paramInt = 0;
+    Object localObject = this.jdField_a_of_type_Ayhl.a((ayir)paramObject);
+    int i = ((List)localObject).size();
+    paramObject = localObject;
+    if (i > 3)
     {
-      TroopManager localTroopManager = (TroopManager)this.a.app.getManager(52);
-      localObject = null;
-      if (localTroopManager != null) {
-        localObject = localTroopManager.b(Long.toString(paramLong));
-      }
-      if (localObject != null)
+      paramObject = ((List)localObject).subList(i - 2, i);
+      paramObject.add(0, ayhl.a);
+    }
+    i = Math.min(paramObject.size(), 3);
+    if (paramInt < paramArrayOfbfvo.length)
+    {
+      int j;
+      if (paramInt < i)
       {
-        ((TroopInfo)localObject).troopLat = paramInt2;
-        ((TroopInfo)localObject).troopLon = paramInt3;
-        localTroopManager.b((TroopInfo)localObject);
+        localObject = (ayis)paramObject.get(paramInt);
+        j = this.jdField_a_of_type_JavaUtilList.indexOf(localObject);
+        if (j < 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i(this.jdField_a_of_type_JavaLangString, 1, "getRightMenuItemInfo error, can not find the menu， menuId[" + ((ayis)localObject).b() + "]");
+          }
+          paramArrayOfbfvo[paramInt].b = -1;
+          paramArrayOfbfvo[paramInt].a = -1;
+        }
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break;
+        paramArrayOfbfvo[paramInt].b = j;
+        paramArrayOfbfvo[paramInt].a = this.jdField_a_of_type_ArrayOfInt[j];
+        continue;
+        paramArrayOfbfvo[paramInt].b = -1;
+        paramArrayOfbfvo[paramInt].a = -1;
       }
     }
-    Object localObject = new Intent();
-    ((Intent)localObject).putExtra("troopUin", paramLong);
-    ((Intent)localObject).putExtra("errCode", paramInt1);
-    ((Intent)localObject).putExtra("isClear", paramBoolean);
-    ((Intent)localObject).putExtra("location", paramString);
-    ((Intent)localObject).putExtra("lat", paramInt2);
-    ((Intent)localObject).putExtra("lon", paramInt3);
-    this.a.setResult(-1, (Intent)localObject);
-    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayhn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,41 @@
-import org.json.JSONObject;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.subscribe.comment.EmoView;
 
-public class wnh
+class wnh
+  implements wox
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  wnh(wne paramwne) {}
   
-  public wnh(JSONObject paramJSONObject)
+  public void a()
   {
-    if (paramJSONObject.has("title")) {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
+    if (wne.a(this.a))
+    {
+      wne.b(this.a, false);
+      wne.a(this.a).setVisibility(0);
     }
-    if (paramJSONObject.has("tabID")) {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("tabID");
+    for (;;)
+    {
+      wne.a(this.a, false);
+      return;
+      this.a.dismiss();
     }
-    if (paramJSONObject.has("icon")) {
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
+  }
+  
+  public void a(int paramInt)
+  {
+    if (wne.a(this.a) != paramInt)
+    {
+      wne.a(this.a, paramInt);
+      wne.a(this.a);
+      wne.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
+      wne.a(this.a).commit();
     }
-    if (paramJSONObject.has("jumpUrl")) {
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
-    }
-    if (paramJSONObject.has("width")) {
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("width");
-    }
-    if (paramJSONObject.has("height")) {
-      this.jdField_c_of_type_Int = paramJSONObject.optInt("height");
-    }
+    wne.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wnh
  * JD-Core Version:    0.7.0.1
  */

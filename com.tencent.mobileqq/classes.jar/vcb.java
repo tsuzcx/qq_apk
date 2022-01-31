@@ -1,62 +1,22 @@
-import android.graphics.drawable.Drawable;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vcb
+  extends QQUIEventReceiver<vbd, tdm>
 {
-  public Drawable a;
-  public String a;
-  public vcc a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  
-  public vcb()
+  public vcb(@NonNull vbd paramvbd)
   {
-    this.jdField_a_of_type_Vcc = new vcc();
+    super(paramvbd);
   }
   
-  public boolean a()
+  public void a(@NonNull vbd paramvbd, @NonNull tdm paramtdm)
   {
-    if (this.jdField_a_of_type_Vcc == null) {
-      this.jdField_a_of_type_Vcc = new vcc();
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(this.e);
-      int i = localJSONObject.getInt("align");
-      Object localObject = localJSONObject.getJSONArray("picture_margin");
-      int j = ((JSONArray)localObject).getInt(0);
-      int k = ((JSONArray)localObject).getInt(1);
-      int m = ((JSONArray)localObject).getInt(2);
-      int n = ((JSONArray)localObject).getInt(3);
-      localObject = localJSONObject.getString("text_color");
-      int i1 = localJSONObject.getInt("text_size");
-      int i2 = localJSONObject.getInt("picture_width");
-      int i3 = localJSONObject.getInt("picture_height");
-      int i4 = localJSONObject.getInt("standard_width");
-      int i5 = localJSONObject.getInt("standard_height");
-      this.jdField_a_of_type_Vcc.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Vcc.jdField_a_of_type_ArrayOfInt = new int[] { j, k, m, n };
-      this.jdField_a_of_type_Vcc.jdField_a_of_type_JavaLangString = ((String)localObject);
-      this.jdField_a_of_type_Vcc.b = i1;
-      this.jdField_a_of_type_Vcc.c = i2;
-      this.jdField_a_of_type_Vcc.d = i3;
-      this.jdField_a_of_type_Vcc.e = i4;
-      this.jdField_a_of_type_Vcc.f = i5;
-      return true;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return false;
+    paramvbd.i();
   }
   
-  public String toString()
+  public Class acceptEventClass()
   {
-    return "Item{thumbUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", desc='" + this.c + '\'' + ", imageUrl='" + this.d + '\'' + ", imageDrawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", layoutJson='" + this.e + '\'' + ", params=" + this.jdField_a_of_type_Vcc + '}';
+    return tdm.class;
   }
 }
 

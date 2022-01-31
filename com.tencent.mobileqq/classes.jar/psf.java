@@ -1,18 +1,46 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotQuestion;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-public final class psf
-  implements Parcelable.Creator<WeishiRedDotInfo>
+public class psf
+  extends pqt
 {
-  public WeishiRedDotInfo a(Parcel paramParcel)
+  public psf(Context paramContext, baxk parambaxk, rap paramrap)
   {
-    return new WeishiRedDotInfo(paramParcel);
+    super(paramContext, parambaxk, paramrap);
   }
   
-  public WeishiRedDotInfo[] a(int paramInt)
+  public pqt a()
   {
-    return new WeishiRedDotInfo[paramInt];
+    this.jdField_a_of_type_Boolean = true;
+    return g();
+  }
+  
+  public pqt d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(actn.a(150.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    if ((this.jdField_a_of_type_Pqs != null) && ((this.jdField_a_of_type_Pqs instanceof ComponentContentHotQuestion))) {
+      localLinearLayout.addView((ComponentContentHotQuestion)this.jdField_a_of_type_Pqs);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public pqt e()
+  {
+    return null;
+  }
+  
+  public pqt g()
+  {
+    this.jdField_a_of_type_Pqs = new ComponentContentHotQuestion(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

@@ -1,36 +1,54 @@
-import android.app.Activity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
-public class aowy
-  extends aoxw
+class aowy
+  implements aoup
 {
-  public aowy(aovk paramaovk, Activity paramActivity)
+  aowy(aowx paramaowx, String paramString, aoxp paramaoxp) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    super(paramaovk, paramActivity);
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2DiscTaskExcuter faild");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aowx.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild:" + paramInt);
+      }
+      this.jdField_a_of_type_Aoxp.a(aowt.a(this.jdField_a_of_type_Aowx.jdField_a_of_type_Long, bool2), bool1);
+      return;
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
+      }
+    }
   }
   
-  public void a()
+  public void a(String paramString)
   {
-    super.a();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "2");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aowx.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aowx.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aowx.c);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aowx.d);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aowx.e);
+    localBundle.putString("_m_ForwardUuid", paramString);
     if (QLog.isColorLevel()) {
-      QLog.i("SimpleFilePresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = apk simple");
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aowx.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter success");
     }
-    String str = BaseApplicationImpl.getContext().getString(2131627215);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(str, true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d(2130843361);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.e(this.jdField_a_of_type_Aovk.e());
-  }
-  
-  protected void b()
-  {
-    super.b();
-    if (this.jdField_a_of_type_Aovk.i() == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(ajjy.a(2131634495), new aowz(this));
-    }
+    this.jdField_a_of_type_Aoxp.a(paramString, localBundle);
   }
 }
 

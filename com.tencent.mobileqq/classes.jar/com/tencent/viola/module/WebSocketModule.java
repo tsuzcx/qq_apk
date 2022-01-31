@@ -1,13 +1,12 @@
 package com.tencent.viola.module;
 
-import android.os.Looper;
 import com.tencent.viola.adapter.VWebSocketAdapter;
 import com.tencent.viola.adapter.WebSocketCloseCodes;
 import com.tencent.viola.annotation.JSMethod;
 import com.tencent.viola.commons.Destroyable;
 import com.tencent.viola.core.ViolaEnvironment;
+import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.utils.ViolaLogUtils;
-import java.lang.reflect.Constructor;
 
 public class WebSocketModule
   extends BaseModule
@@ -27,12 +26,12 @@ public class WebSocketModule
     if (ViolaEnvironment.isDebugable()) {
       try
       {
-        Object localObject = Class.forName("rjy");
-        if (localObject != null)
-        {
-          localObject = (VWebSocketAdapter)((Class)localObject).getConstructor(new Class[0]).newInstance(new Object[0]);
-          return localObject;
+        VWebSocketAdapter localVWebSocketAdapter = ViolaSDKManager.getInstance().getWebSocketAdapter();
+        if (localVWebSocketAdapter == null) {
+          return null;
         }
+        localVWebSocketAdapter = (VWebSocketAdapter)localVWebSocketAdapter.getClass().newInstance();
+        return localVWebSocketAdapter;
       }
       catch (Exception localException)
       {
@@ -92,13 +91,19 @@ public class WebSocketModule
     }
   }
   
-  public void destroy()
+  public void destroy() {}
+  
+  public void onActivityDestroy()
   {
-    WebSocketModule.1 local1 = new WebSocketModule.1(this);
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      return;
+    super.onActivityDestroy();
+    if (ViolaEnvironment.isDebugable())
+    {
+      if (this.webSocketAdapter != null) {
+        this.webSocketAdapter.destroy();
+      }
+      this.webSocketAdapter = null;
+      this.eventListener = null;
     }
-    local1.run();
   }
   
   @JSMethod(uiThread=false)

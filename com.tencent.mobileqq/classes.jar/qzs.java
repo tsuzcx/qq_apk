@@ -1,15 +1,16 @@
-import android.os.Parcelable;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class qzs
+class qzs
+  implements View.OnClickListener
 {
-  public Parcelable a;
-  public ArticleInfo a;
-  public ItemShowDispatcher a;
-  public String a;
-  public qxm a;
-  public boolean a;
+  qzs(qzr paramqzr, ntu paramntu) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Ntu.j();
+    this.jdField_a_of_type_Qzr.b();
+  }
 }
 
 

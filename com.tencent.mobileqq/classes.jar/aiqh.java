@@ -1,44 +1,122 @@
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class aiqh
-  extends batl
+public class aiqh
+  extends BaseAdapter
 {
-  aiqh(aiqf paramaiqf) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
+  private List<Long> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onDone(batm parambatm)
+  public aiqh(Context paramContext, QQAppInterface paramQQAppInterface, List<Long> paramList)
   {
-    super.onDone(parambatm);
-    QLog.i("cmgame_process.CmGameRscDownloader", 2, "[onDone], status:" + parambatm.a());
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
   }
   
-  public void onDoneFile(batm parambatm)
+  private void a(View paramView, int paramInt1, int paramInt2)
   {
-    if ((parambatm == null) || (aiqf.a(this.a) == null)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopMessageSettingAdapter", 2, "setItemBackground() childPos = " + paramInt1 + ", listSize = " + paramInt2);
     }
-    if (parambatm.a() != 3)
+    if (paramInt2 <= 1)
     {
-      aiqf.a(this.a, 2);
-      if (aiqf.a(this.a) != null) {
-        aiqf.a(this.a).c(-1005, aiqf.a(this.a).jdField_b_of_type_JavaLangString);
-      }
-      QLog.e("cmgame_process.CmGameRscDownloader", 1, "downLoad game res fail retCode: " + parambatm.a());
+      paramView.setBackgroundResource(2130839169);
       return;
     }
-    aiqf.a(this.a);
+    if (paramInt1 == 0)
+    {
+      paramView.setBackgroundResource(2130839185);
+      return;
+    }
+    if (paramInt1 == paramInt2 - 1)
+    {
+      paramView.setBackgroundResource(2130839176);
+      return;
+    }
+    paramView.setBackgroundResource(2130839179);
   }
   
-  public void onProgress(batm parambatm)
+  public void a(List<Long> paramList)
   {
-    int i = (int)parambatm.a;
-    if (aiqf.a(this.a) != null) {
-      aiqf.a(this.a).a(i, aiqf.a(this.a).jdField_b_of_type_Int, aiqf.a(this.a).jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    String str = String.valueOf(this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(str);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    TroopInfo localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(String.valueOf(this.jdField_a_of_type_JavaUtilList.get(paramInt)));
+    Object localObject;
+    if (paramView != null)
+    {
+      localObject = (aiqi)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localTroopInfo.troopuin);
+      if (localObject != null) {
+        break label194;
+      }
+      localObject = bbdr.f();
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
+    }
+    for (;;)
+    {
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopInfo.getTroopName());
+      paramView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      a(paramViewGroup, paramInt, getCount());
+      paramViewGroup.setBackgroundResource(2130839169);
+      return paramViewGroup;
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562424, null);
+      paramView = new aiqi(this);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131367185));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131367230));
+      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131367200));
+      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131375162));
+      paramViewGroup.setTag(paramView);
+      break;
+      label194:
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aiqh
  * JD-Core Version:    0.7.0.1
  */

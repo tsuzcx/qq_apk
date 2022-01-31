@@ -1,60 +1,81 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.widget.XPanelContainer;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.observer.BusinessObserver;
 
-public class aadb
-  implements adzd
+class aadb
+  implements BusinessObserver
 {
-  public aadb(BaseChatPie paramBaseChatPie) {}
+  aadb(aada paramaada, String paramString, boolean paramBoolean) {}
   
-  public void a(Intent paramIntent)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ((acxt)this.a.jdField_a_of_type_Acxb.a(7)).a(this.a.hashCode(), paramIntent);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    Object localObject = ((acxt)this.a.jdField_a_of_type_Acxb.a(7)).a(this.a.hashCode());
-    int i = paramInt;
-    if (localObject != null)
+    Object localObject = paramBundle.getString("ssoAccount");
+    if (!this.jdField_a_of_type_JavaLangString.equals(localObject)) {
+      return;
+    }
+    paramInt = paramBundle.getInt("code");
+    if (paramBoolean)
     {
-      i = paramInt;
-      if (((Intent)localObject).hasExtra("PhotoConst.SELECTED_PATHS"))
+      localObject = new SdkAuthorize.GetAuthApiListResponse();
+      try
       {
-        localObject = ((Intent)localObject).getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
-        i = paramInt;
-        if (localObject != null) {
-          i = ((ArrayList)localObject).size();
+        paramBundle = (SdkAuthorize.GetAuthApiListResponse)((SdkAuthorize.GetAuthApiListResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
+        paramInt = paramBundle.ret.get();
+        localObject = paramBundle.msg.get();
+        if (paramInt != 0)
+        {
+          aaet.a(this.jdField_a_of_type_Aada.jdField_a_of_type_Aabm, paramInt, (String)localObject);
+          return;
         }
       }
-    }
-    PanelIconLinearLayout localPanelIconLinearLayout;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (!this.a.K))
-    {
-      boolean bool = mnf.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      if ((this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) && (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() == 4)) {}
-      localPanelIconLinearLayout = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
-      if (!bool) {
-        break label179;
+      catch (Exception paramBundle)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d(aada.jdField_a_of_type_JavaLangString, 2, "parse auth info error: \n" + paramBundle.getMessage());
+        }
+        aaet.a(this.jdField_a_of_type_Aada.jdField_a_of_type_Aabm, -1, "parse auth info error");
+        return;
       }
-    }
-    label179:
-    for (localObject = aduw.m;; localObject = aduw.l)
-    {
-      localPanelIconLinearLayout.a((int[])localObject, i);
-      if ((i > 0) && (!this.a.B())) {
-        this.a.a(true);
+      localObject = (SdkAuthorize.AuthorizeResponse)paramBundle.auth_response.get();
+      if ((!aaeo.jdField_a_of_type_Boolean) && (aada.a(this.jdField_a_of_type_Aada, paramBundle)) && (localObject != null) && (((SdkAuthorize.AuthorizeResponse)localObject).has()))
+      {
+        paramBundle = new aacz();
+        paramBundle.jdField_a_of_type_JavaLangString = ((SdkAuthorize.AuthorizeResponse)localObject).openid.get().toUpperCase();
+        paramBundle.jdField_b_of_type_JavaLangString = ((SdkAuthorize.AuthorizeResponse)localObject).access_token.get().toUpperCase();
+        paramBundle.jdField_a_of_type_Long = ((SdkAuthorize.AuthorizeResponse)localObject).expires_in.get();
+        paramBundle.jdField_b_of_type_Long = (paramBundle.jdField_a_of_type_Long + System.currentTimeMillis());
+        this.jdField_a_of_type_Aada.jdField_a_of_type_Aacw.a(paramBundle);
+        aaet.a(this.jdField_a_of_type_Aada.jdField_a_of_type_Aabm, paramBundle.a());
+        return;
       }
-      return false;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        aada.a(this.jdField_a_of_type_Aada);
+        return;
+      }
+      paramBundle = "";
+      paramInt = 0;
+      while (paramInt < this.jdField_a_of_type_Aada.jdField_a_of_type_JavaUtilList.size())
+      {
+        localObject = (bczs)this.jdField_a_of_type_Aada.jdField_a_of_type_JavaUtilList.get(paramInt);
+        paramBundle = paramBundle + ((bczs)localObject).jdField_a_of_type_JavaLangString + "\n";
+        paramInt += 1;
+      }
+      aada.a(this.jdField_a_of_type_Aada, paramBundle);
+      return;
     }
+    aaet.a(this.jdField_a_of_type_Aada.jdField_a_of_type_Aabm, paramInt, "get auth info failure");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aadb
  * JD-Core Version:    0.7.0.1
  */

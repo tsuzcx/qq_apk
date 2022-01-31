@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import awqx;
+import axqw;
 
 class NotifyPushSettingActivity$7
   implements Runnable
@@ -9,7 +9,7 @@ class NotifyPushSettingActivity$7
   
   public void run()
   {
-    awqx.b(this.this$0.app, "dc00898", "", "", "0X800A33C", "0X800A33C", this.a, 0, "", "", "", "");
+    axqw.b(this.this$0.app, "dc00898", "", "", "0X800A33C", "0X800A33C", this.a, 0, "", "", "", "");
   }
 }
 

@@ -1,22 +1,23 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class CapsuleButton$6
-  implements MiniAppCmdInterface
+  implements EIPCResultCallback
 {
-  CapsuleButton$6(CapsuleButton paramCapsuleButton) {}
+  CapsuleButton$6(CapsuleButton paramCapsuleButton, MiniAppInfo paramMiniAppInfo) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (paramBoolean)
+    if ((paramEIPCResult != null) && (paramEIPCResult.code == -100))
     {
-      QLog.d("CapsuleButton", 2, "sendSetUserAppTopRequest, success to set top");
+      AppBrandTask.runTaskOnUiThread(new CapsuleButton.6.1(this));
       return;
     }
-    QLog.e("CapsuleButton", 1, "sendSetUserAppTopRequest, fail to set top");
+    CapsuleButton.access$700(this.this$0, this.val$miniAppInfo);
   }
 }
 

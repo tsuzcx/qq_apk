@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.BarrageParcelItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public final class ahlq
-  implements Parcelable.Creator<BarrageParcelItem>
+class ahlq
+  implements View.OnClickListener
 {
-  public BarrageParcelItem a(Parcel paramParcel)
-  {
-    return new BarrageParcelItem(paramParcel);
-  }
+  ahlq(ahkf paramahkf) {}
   
-  public BarrageParcelItem[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new BarrageParcelItem[paramInt];
+    this.a.a(22, 0);
+    this.a.a(-1, null);
+    axqw.b(ahkf.a(this.a).app, "CliOper", "", "", "QQWIFI", "clk_buleClose", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahlq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,17 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class nao
-  implements View.OnClickListener
+public class nao
 {
-  nao(nak paramnak) {}
+  public final int a;
+  public final String a;
   
-  public void onClick(View paramView)
+  private nao(String paramString, int paramInt)
   {
-    this.a.a.dismiss();
-    nak.c(this.a);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     nao
  * JD-Core Version:    0.7.0.1
  */

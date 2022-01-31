@@ -1,17 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
 
-class acrr
-  implements View.OnTouchListener
+public class acrr
+  implements acrk
 {
-  acrr(acrq paramacrq) {}
+  public acrr(BirthdayActivatePage paramBirthdayActivatePage) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt)
   {
-    acrq.a(this.a).a(paramMotionEvent);
-    return true;
+    if (paramInt > 0)
+    {
+      this.a.a.setEnabled(true);
+      return;
+    }
+    this.a.a.setEnabled(false);
   }
 }
 

@@ -1,6 +1,17 @@
-public abstract interface rjp
+import android.database.DataSetObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.qphone.base.util.QLog;
+
+class rjp
+  extends DataSetObserver
 {
-  public abstract void a(int paramInt);
+  rjp(rjo paramrjo) {}
+  
+  public void onChanged()
+  {
+    QLog.d(FastWebActivity.a(this.a.a), 2, "DataSetObserver ");
+    FastWebActivity.a(this.a.a, 100L);
+  }
 }
 
 

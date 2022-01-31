@@ -1,41 +1,66 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 public class aikw
 {
-  public String a;
+  private static aikw a;
   
-  public aikw(String paramString)
+  public static aikw a()
   {
-    this.a = paramString;
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new aikw();
+      }
+      return a;
+    }
+    finally {}
   }
   
-  public void a(aisu paramaisu, Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
+  private String a(int paramInt)
   {
-    int i = aifg.a(paramQQAppInterface);
-    if ((paramaisu == null) || (paramContext == null) || (paramQQAppInterface == null) || (i == 1)) {}
-    SharedPreferences localSharedPreferences;
-    do
+    switch (paramInt)
     {
-      return;
-      paramContext = "apollo_friend_profile_drawer_first" + paramQQAppInterface.getCurrentAccountUin();
-      localSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
-    } while (!localSharedPreferences.getBoolean(paramContext, true));
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileBubble", 2, "onBubbleShow first");
+    default: 
+      return "";
+    case 0: 
+      return "folder_weather_arrive";
+    case 1: 
+      return "folder_weather_expose";
+    case 2: 
+      return "folder_weather_click";
+    case 3: 
+      return "aio_news_click";
+    case 4: 
+      return "aio_othercity_click";
+    case 5: 
+      return "aio_page_arrive";
     }
-    aisl.a(paramaisu, paramString, 3, 0);
-    localSharedPreferences.edit().putBoolean(paramContext, false).commit();
-    bajr.a(paramQQAppInterface, "cmshow", "Apollo", "Guide_bubbles_show", 0, 0, new String[] { "", "", "", this.a });
+    return "aio_search_push";
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    String str = System.currentTimeMillis() + "|" + "QQWeather" + "|" + "QQWeather_native" + "|" + a(paramInt) + "|" + "android";
+    axpw.a(paramQQAppInterface, "dc04698", str);
+    if (QLog.isColorLevel()) {
+      QLog.d("WeatherDCReportHelper", 2, "reportWeather : " + str);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForArkApp)) {
+      a().a(paramQQAppInterface, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aikw
  * JD-Core Version:    0.7.0.1
  */

@@ -23,9 +23,10 @@ public class ViolaBridge
     if (localObject != null)
     {
       if (!ViolaSDKManager.getInstance().isRenderJsEnd()) {
-        break label159;
+        break label173;
       }
       ViolaSDKManager.getInstance().addRunningJsErrorCount();
+      ((IReportDelegate)localObject).reportJsError(ViolaSDKManager.getInstance().isRenderJsEnd(), paramInt, paramString);
     }
     for (;;)
     {
@@ -47,7 +48,7 @@ public class ViolaBridge
       }
       catch (Exception localException)
       {
-        label159:
+        label173:
         ViolaLogUtils.e("ViolaBridge", "callError JSONException e:" + localException.getMessage());
         continue;
       }
@@ -55,7 +56,7 @@ public class ViolaBridge
       return;
       ViolaSDKManager.getInstance().addJsErrorCount();
       ((IReportDelegate)localObject).addReportData(ViolaEnvironment.JS_ERROR_BEFORE_RENDER, Integer.toString(ViolaSDKManager.getInstance().getJsErrorCount()));
-      continue;
+      break;
       paramInt = 0;
     }
   }

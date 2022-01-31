@@ -1,31 +1,18 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-class arbx
-  implements INetInfoHandler
+public abstract interface arbx
 {
-  arbx(arbp paramarbp) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onNetMobile2None()
-  {
-    arbp.c(this.a);
-  }
+  public abstract void a(int paramInt1, TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt2, int paramInt3, int paramInt4, String paramString, Object paramObject);
   
-  public void onNetMobile2Wifi(String paramString) {}
+  public abstract void d(boolean paramBoolean);
   
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    arbp.c(this.a);
-  }
+  public abstract void j();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arbx
  * JD-Core Version:    0.7.0.1
  */

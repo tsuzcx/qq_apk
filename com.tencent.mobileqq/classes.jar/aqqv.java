@@ -1,50 +1,37 @@
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FullPopData;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 
 class aqqv
-  implements HookMethodCallback
+  implements View.OnClickListener
 {
-  private int a;
+  aqqv(aqqu paramaqqu) {}
   
-  public aqqv(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a = paramInt;
-  }
-  
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
-  {
-    if (paramMethodHookParam.throwable == null) {
-      return;
-    }
-    Throwable localThrowable;
-    if (paramMethodHookParam.throwable.getCause() != null) {
-      localThrowable = paramMethodHookParam.throwable.getCause();
-    }
-    while ((localThrowable instanceof OutOfMemoryError))
+    if (!this.a.b) {}
+    do
     {
-      aqqu.b();
-      try
-      {
-        paramMethodHookParam.result = JavaHookBridge.invokeOriginMethod(paramMethodHookParam.method, paramMethodHookParam.thisObject, paramMethodHookParam.args);
-        paramMethodHookParam.throwable = null;
-        aqqu.a(true, this.a);
-        return;
-      }
-      catch (Exception paramMethodHookParam)
-      {
-        aqqu.a(false, this.a);
-        return;
-        localThrowable = paramMethodHookParam.throwable;
-      }
-      catch (Error paramMethodHookParam)
-      {
-        aqqu.a(false, this.a);
-      }
+      return;
+      aqsp.a(aqqu.a(this.a), aqqu.b(this.a), "205928", aqqu.a(this.a));
+    } while (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.jumpUrl));
+    if (this.a.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.jumpUrl.startsWith("mqqapi://miniapp/")) {
+      MiniAppLauncher.startMiniApp(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.jumpUrl, 2016, null);
+    }
+    for (;;)
+    {
+      this.a.c();
+      return;
+      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", this.a.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.jumpUrl);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
     }
   }
-  
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

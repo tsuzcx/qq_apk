@@ -1,27 +1,113 @@
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.widget.AbsListView;
+import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
+import java.util.List;
 
-class mmd
-  implements begh
+public class mmd
+  extends BaseAdapter
 {
-  mmd(mmb parammmb, PoiMapActivity paramPoiMapActivity) {}
+  private int jdField_a_of_type_Int;
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private List<mml> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int b;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public mmd(Context paramContext)
   {
-    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.jdField_a_of_type_Mmb.jdField_a_of_type_Mly.b))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    VideoAppInterface localVideoAppInterface = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    this.b = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
+    this.jdField_a_of_type_Int = actn.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+  }
+  
+  private BitmapDrawable a(String paramString)
+  {
+    Object localObject = null;
+    if (0 == 0)
     {
-      this.jdField_a_of_type_Mmb.b(false);
-      if (!PoiMapActivity.b(this.jdField_a_of_type_Mmb.jdField_a_of_type_ComTencentBizPoiMapActivity)) {
-        this.jdField_a_of_type_Mmb.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "turn_page", this.jdField_a_of_type_Mmb.jdField_a_of_type_ComTencentBizPoiMapActivity.f, this.jdField_a_of_type_Mmb.jdField_a_of_type_ComTencentBizPoiMapActivity.e, "", "");
+      localObject = VideoController.a().a();
+      if ((((lgf)localObject).d != 1) && (((lgf)localObject).d != 2)) {
+        break label71;
       }
     }
+    label71:
+    for (int i = 1; i != 0; i = 0)
+    {
+      localObject = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localObject = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), ((VideoAppInterface)localObject).a(0, paramString, null, true, true));
+      return localObject;
+    }
+    paramString = VideoController.a().a(String.valueOf(paramString), String.valueOf(((lgf)localObject).g), ((lgf)localObject).E, true, true);
+    return new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramString);
+  }
+  
+  private View a(LayoutInflater paramLayoutInflater, int paramInt1, View paramView, ViewGroup paramViewGroup, int paramInt2)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = paramLayoutInflater.inflate(paramInt2, paramViewGroup, false);
+    }
+    paramLayoutInflater = a(paramInt1);
+    paramView = localView.findViewById(2131367376);
+    paramViewGroup = (TextView)localView.findViewById(2131377030);
+    paramView.setVisibility(0);
+    paramView.setBackgroundDrawable(a(paramLayoutInflater.a()));
+    paramViewGroup.setPadding(actn.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    paramViewGroup.setText(paramLayoutInflater.a());
+    paramViewGroup.setTextColor(-1);
+    paramViewGroup.setSpannableFactory(ayki.a);
+    return localView;
+  }
+  
+  public mml a(int paramInt)
+  {
+    return (mml)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(List<mml> paramList, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      mml.a(this.jdField_a_of_type_JavaUtilList);
+    }
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public void a(mml parammml)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(parammml);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return a(this.jdField_a_of_type_AndroidViewLayoutInflater, paramInt, paramView, paramViewGroup, 2131559581);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mmd
  * JD-Core Version:    0.7.0.1
  */

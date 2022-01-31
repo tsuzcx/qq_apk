@@ -1,25 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
-public abstract class apfd
-  implements View.OnClickListener
+public class apfd
+  extends apfk
 {
-  private long a;
-  
-  public abstract void a(View paramView);
-  
-  public void b(View paramView) {}
-  
-  public void onClick(View paramView)
+  public apfd(ViewGroup paramViewGroup)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.a >= 500L)
-    {
-      a(paramView);
-      this.a = l;
-      return;
-    }
-    b(paramView);
+    this.jdField_a_of_type_Int = 2131560478;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
+    a();
   }
 }
 

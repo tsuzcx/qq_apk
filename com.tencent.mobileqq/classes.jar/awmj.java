@@ -1,14 +1,19 @@
-public abstract interface awmj
+import java.util.List;
+
+public class awmj
 {
-  public abstract void a();
+  public List<Long> a;
   
-  public abstract void a(Process paramProcess);
+  public awmj() {}
   
-  public abstract void b();
+  public awmj(List<Long> paramList)
+  {
+    this.a = paramList;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awmj
  * JD-Core Version:    0.7.0.1
  */

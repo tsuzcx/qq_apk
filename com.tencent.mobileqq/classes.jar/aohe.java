@@ -1,56 +1,45 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 
-class aohe
-  extends ajey
+public class aohe
+  extends RecyclerView.OnScrollListener
 {
-  aohe(aohc paramaohc) {}
+  public aohe(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
   
-  protected void a(Object paramObject)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    Object localObject1 = (ayqd)paramObject;
-    if (localObject1 == null) {}
-    apao localapao;
-    do
+    if (paramInt == 0)
     {
-      do
+      URLDrawable.resume();
+      return;
+    }
+    URLDrawable.pause();
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if ((!ExtendFriendGroupFragment.a(this.a)) && (!ExtendFriendGroupFragment.b(this.a)) && (this.a.a != null) && (ExtendFriendGroupFragment.a(this.a) != null) && (ExtendFriendGroupFragment.a(this.a).a() > 0) && (this.a.a.findViewByPosition(ExtendFriendGroupFragment.a(this.a).getItemCount() - 1) != null))
+    {
+      if (bbev.g(ExtendFriendGroupFragment.a(this.a)))
       {
-        return;
-        paramObject = ((ayqd)localObject1).jdField_b_of_type_Long + "";
-        localObject2 = ((ayqd)localObject1).e;
-        localapao = this.a.a("1", paramObject, (String)localObject2);
-      } while (localapao == null);
-      switch (((ayqd)localObject1).jdField_b_of_type_Int)
-      {
-      default: 
-        return;
+        ExtendFriendGroupFragment.a(this.a, true);
+        ExtendFriendGroupFragment.a(this.a).a(0, true);
+        axqw.b(ExtendFriendGroupFragment.a(this.a), "dc00898", "", "", "0X80092D9", "0X80092D9", 0, 0, "", "", "", "");
       }
-    } while (localapao.a() == null);
-    Object localObject2 = new Bundle();
-    int i = (int)((float)((ayqd)localObject1).d * 1.0F / ((float)((ayqd)localObject1).c * 1.0F) * 100.0F);
-    localapao.a().a(0, Integer.parseInt("1"), paramObject, i, (Bundle)localObject2);
-    return;
-    QLog.i("QFileMultiControlManager<QFile>", 1, "troop file download is finish. fileId[" + (String)localObject2 + "]");
-    if (localapao.a() != null)
-    {
-      localObject2 = new Bundle();
-      boolean bool = bace.b(((ayqd)localObject1).a);
-      localapao.a().a(bool, Integer.parseInt("1"), paramObject, (Bundle)localObject2);
     }
-    this.a.b(localapao);
-    return;
-    QLog.i("QFileMultiControlManager<QFile>", 1, "troop file download is stop. fileId[" + (String)localObject2 + "]");
-    if (localapao.a() != null)
-    {
-      localObject1 = new Bundle();
-      localapao.a().a(false, Integer.parseInt("1"), paramObject, (Bundle)localObject1);
+    else {
+      return;
     }
-    this.a.b(localapao);
+    ExtendFriendGroupFragment.a(this.a).a(1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aohe
  * JD-Core Version:    0.7.0.1
  */

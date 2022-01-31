@@ -1,85 +1,39 @@
-import android.content.SharedPreferences;
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public class alig
+class alig
+  implements aljb
 {
-  static SimpleDateFormat a;
-  static SimpleDateFormat b;
+  alig(alie paramalie, alii paramalii, ArCloudConfigInfo paramArCloudConfigInfo) {}
   
-  public static long a(String paramString)
+  public void a()
   {
-    if (a == null)
-    {
-      a = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
-      a.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-    }
-    long l2 = -1L;
-    try
-    {
-      l1 = a.parse(paramString).getTime();
-      if (QLog.isColorLevel()) {
-        QLog.d("ArMapUtil", 2, "data2Millis, date = " + paramString + ",millis = " + l1);
-      }
-      return l1;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        long l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ArMapUtil", 2, "", localException);
-          l1 = l2;
-        }
-      }
+    if (this.jdField_a_of_type_Alii != null) {
+      this.jdField_a_of_type_Alii.e();
     }
   }
   
-  public static SharedPreferences a(AppRuntime paramAppRuntime)
+  public void a(int paramInt)
   {
-    return paramAppRuntime.getApplication().getSharedPreferences(paramAppRuntime.getAccount() + "sp_ar_map", 4);
+    if (this.jdField_a_of_type_Alii != null) {
+      this.jdField_a_of_type_Alii.b(paramInt);
+    }
   }
   
-  public static long b(String paramString)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (b == null)
-    {
-      b = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-      b.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-    }
-    long l2 = -1L;
-    try
-    {
-      l1 = b.parse(paramString).getTime();
-      if (QLog.isColorLevel()) {
-        QLog.d("ArMapUtil", 2, "data2Millis1, date = " + paramString + ",millis = " + l1);
-      }
-      return l1;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        long l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ArMapUtil", 2, "", localException);
-          l1 = l2;
-        }
-      }
+    if (this.jdField_a_of_type_Alii != null) {}
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Alii != null) {
+      this.jdField_a_of_type_Alii.b(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alig
  * JD-Core Version:    0.7.0.1
  */

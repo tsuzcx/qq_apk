@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import axbo;
-import ayqv;
-import ayqy;
-import ayqz;
-import ayra;
-import ayrc;
-import ayre;
-import ayrf;
+import aybq;
+import azrl;
+import azro;
+import azrp;
+import azrq;
+import azrs;
+import azru;
+import azrv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
@@ -15,16 +15,16 @@ import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 public class TroopEnterEffectController$3
   implements Runnable
 {
-  public TroopEnterEffectController$3(ayqv paramayqv, ayre paramayre) {}
+  public TroopEnterEffectController$3(azrl paramazrl, azru paramazru) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
       return;
     }
-    ayqv.b();
+    azrl.b();
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    new axbo().a(this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getWidth()).a(ayqv.jdField_a_of_type_JavaLangString + this.a.a).a(new ayrc(this)).a(new ayrf(this.this$0, localQQAppInterface, this.a)).a(new ayra(this, localQQAppInterface)).a(new ayqz(this)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, new ayqy(this));
+    new aybq().a(this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getWidth()).a(azrl.jdField_a_of_type_JavaLangString + this.a.a).a(new azrs(this)).a(new azrv(this.this$0, localQQAppInterface, this.a)).a(new azrq(this, localQQAppInterface)).a(new azrp(this)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, new azro(this));
   }
 }
 

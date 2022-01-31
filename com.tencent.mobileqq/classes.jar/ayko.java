@@ -1,20 +1,18 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
 
-public class ayko
-  implements View.OnClickListener
+final class ayko
+  implements bfoq
 {
-  public ayko(NewTroopCreateActivity paramNewTroopCreateActivity) {}
+  ayko(bfne parambfne) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.finish();
+    this.a.a(Integer.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayko
  * JD-Core Version:    0.7.0.1
  */

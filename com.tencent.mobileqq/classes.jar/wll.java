@@ -1,103 +1,40 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class wll
-  extends BaseAdapter
-  implements begh
+class wll
+  implements wtk
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  wll(wlj paramwlj, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  private wll(MoveFileActivity paramMoveFileActivity) {}
-  
-  public int getCount()
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null)
+    if (paramBoolean1)
     {
-      paramViewGroup = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getLayoutInflater().inflate(2131494763, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity), false);
-      paramView = new wlm(null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131300899));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131300898));
-      paramView.b = ((TextView)paramViewGroup.findViewById(2131298625));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView = (wlm)paramViewGroup.getTag();
-    ayoq localayoq = (ayoq)MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
-    if (localayoq != null)
-    {
-      if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, paramInt)) {
-        break label162;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localayoq.c);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843032);
-    }
-    while (paramInt == MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity))
-    {
-      paramView.b.setVisibility(0);
-      return paramViewGroup;
-      label162:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131641110));
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843034);
-    }
-    paramView.b.setVisibility(4);
-    return paramViewGroup;
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.b = paramInt3;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      QLog.e("IphoneTitleBarActivity", 4, "onScrollStateChanged=SCROLL_STATE_IDLE");
-      if (this.jdField_a_of_type_Int == this.b - 2)
-      {
-        if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity)) {
-          break label44;
+      xhe.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_unfollow", 0, 0, new String[0]);
+      paramString = this.jdField_a_of_type_Wlj.b().iterator();
+      while (paramString.hasNext()) {
+        if (TextUtils.equals(((CertifiedAccountMeta.StFeed)paramString.next()).poster.id.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get())) {
+          paramString.remove();
         }
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(true);
+      }
+      this.jdField_a_of_type_Wlj.notifyDataSetChanged();
+      bcpw.a(wlj.a(this.jdField_a_of_type_Wlj), 2, ajyc.a(2131690663), 0).a();
+      if (this.jdField_a_of_type_Wlj.b().size() < 5) {
+        this.jdField_a_of_type_Wlj.o();
       }
     }
-    label44:
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(false);
-    } while (azjg.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a) == 0);
-    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a();
+    if (paramBoolean2) {
+      xhe.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_cancel", 0, 0, new String[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wll
  * JD-Core Version:    0.7.0.1
  */

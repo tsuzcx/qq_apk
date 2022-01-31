@@ -1,16 +1,22 @@
-import android.graphics.drawable.Drawable;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class bjkr
+  implements Animator.AnimatorListener
 {
-  public static HashMap<String, WeakReference<Drawable>> a;
-  public static String[] a;
+  public bjkr(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  static
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "Le X620", "Nexus 5X", "ZTE A2017", "PRA-AL00X" };
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.a.c.setVisibility(8);
   }
 }
 

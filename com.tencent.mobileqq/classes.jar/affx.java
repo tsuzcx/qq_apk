@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
 
-public class affx
-  extends ajmm
+public abstract interface affx
 {
-  public affx(TroopFragment paramTroopFragment) {}
+  public abstract void a();
   
-  protected void a()
-  {
-    this.a.h();
-  }
+  public abstract void a(ReadInJoySearchHistoryEntity paramReadInJoySearchHistoryEntity);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     affx
  * JD-Core Version:    0.7.0.1
  */

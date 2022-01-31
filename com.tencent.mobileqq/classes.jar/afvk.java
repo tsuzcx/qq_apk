@@ -1,18 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class afvk
-  extends afuz
+class afvk
+  implements View.OnClickListener
 {
-  public afvk(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
-  }
+  afvk(afvi paramafvi, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  protected void y()
+  public void onClick(View paramView)
   {
-    this.a = "MiniPieForNearby";
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Afvi, 1);
+    }
   }
 }
 

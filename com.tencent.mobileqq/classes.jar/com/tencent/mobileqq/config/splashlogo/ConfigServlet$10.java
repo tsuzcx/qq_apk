@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import agju;
-import agkn;
 import agwj;
-import amnh;
+import agxc;
+import ahiy;
+import ando;
 import android.text.TextUtils;
 import android.util.Base64;
-import azxj;
-import baig;
+import bayn;
+import bbjn;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class ConfigServlet$10
   implements Runnable
 {
-  public ConfigServlet$10(amnh paramamnh, ConfigurationService.Config paramConfig) {}
+  public ConfigServlet$10(ando paramando, ConfigurationService.Config paramConfig) {}
   
   public void run()
   {
@@ -32,7 +32,7 @@ public class ConfigServlet$10
     Object localObject1 = null;
     Object localObject3 = null;
     HashMap localHashMap = new HashMap(8);
-    int m = baig.F(localQQAppInterface.getApp(), amnh.a);
+    int m = bbjn.F(localQQAppInterface.getApp(), ando.a);
     int i;
     int j;
     label127:
@@ -103,7 +103,7 @@ public class ConfigServlet$10
               localObject3 = localObject1;
               localObject4 = localJSONObject.optJSONObject((String)localObject4);
               localObject3 = localObject1;
-              azxj.a().a(localQQAppInterface, (JSONObject)localObject4);
+              bayn.a().a(localQQAppInterface, (JSONObject)localObject4);
             }
             if (!QLog.isColorLevel()) {
               break;
@@ -135,7 +135,7 @@ public class ConfigServlet$10
           localObject4 = localJSONObject.optJSONObject((String)localObject4);
         } while (localObject4 == null);
         localObject3 = localObject2;
-        str2 = amnh.a;
+        str2 = ando.a;
         localObject3 = localObject2;
         if (((JSONObject)localObject4).optInt("F2FRedpackEntry", 0) != 1) {
           break label1727;
@@ -143,9 +143,9 @@ public class ConfigServlet$10
         bool = true;
         label538:
         localObject3 = localObject2;
-        agkn.a(str2, "F2FRedpackEntry", bool);
+        agxc.a(str2, "F2FRedpackEntry", bool);
         localObject3 = localObject2;
-        str2 = amnh.a;
+        str2 = ando.a;
         localObject3 = localObject2;
         if (((JSONObject)localObject4).optInt("F2FRedpackQRCheck", 1) != 1) {
           break label1733;
@@ -153,9 +153,9 @@ public class ConfigServlet$10
         bool = true;
         label579:
         localObject3 = localObject2;
-        agkn.a(str2, "F2FRedpackQRCheck", bool);
+        agxc.a(str2, "F2FRedpackQRCheck", bool);
         localObject3 = localObject2;
-        str2 = amnh.a;
+        str2 = ando.a;
         localObject3 = localObject2;
         if (((JSONObject)localObject4).optInt("F2FRedpackGIF", 1) != 1) {
           break label1739;
@@ -174,18 +174,18 @@ public class ConfigServlet$10
       for (;;)
       {
         localObject3 = localObject2;
-        agkn.a(str2, "F2FRedpackGIF", bool);
+        agxc.a(str2, "F2FRedpackGIF", bool);
         localObject3 = localObject2;
-        long l1 = agwj.b(((JSONObject)localObject4).optString("EntryColorBeginTime"));
+        long l1 = ahiy.b(((JSONObject)localObject4).optString("EntryColorBeginTime"));
         localObject3 = localObject2;
-        long l2 = agwj.b(((JSONObject)localObject4).optString("EntryColorEndTime"));
+        long l2 = ahiy.b(((JSONObject)localObject4).optString("EntryColorEndTime"));
         if ((l1 < 0L) || (l2 < 0L)) {
           break label332;
         }
         localObject3 = localObject2;
-        agkn.a(amnh.a, "F2FRedpack_EntryColorBeginTime", l1 / 1000L);
+        agxc.a(ando.a, "F2FRedpack_EntryColorBeginTime", l1 / 1000L);
         localObject3 = localObject2;
-        agkn.a(amnh.a, "F2FRedpack_EntryColorEndTime", l2 / 1000L);
+        agxc.a(ando.a, "F2FRedpack_EntryColorEndTime", l2 / 1000L);
         break label332;
         label718:
         localObject3 = localObject2;
@@ -204,9 +204,9 @@ public class ConfigServlet$10
           localObject3 = localObject2;
           ((PreloadManager)localQQAppInterface.getManager(151)).a(i1, i2);
           localObject3 = localObject2;
-          agkn.a(amnh.a, "deal_delay_interval", i1);
+          agxc.a(ando.a, "deal_delay_interval", i1);
           localObject3 = localObject2;
-          agkn.a(amnh.a, "need_wait_size", i2);
+          agxc.a(ando.a, "need_wait_size", i2);
           break label332;
         }
         localObject3 = localObject2;
@@ -219,7 +219,7 @@ public class ConfigServlet$10
           localObject3 = localObject2;
           localObject4 = localJSONObject.getString((String)localObject4);
           localObject3 = localObject2;
-          agkn.a(amnh.a, "skin_entry_error_tips", (String)localObject4);
+          agxc.a(ando.a, "skin_entry_error_tips", (String)localObject4);
           break label332;
         }
         localObject3 = localObject2;
@@ -228,7 +228,7 @@ public class ConfigServlet$10
           localObject3 = localObject2;
           localObject4 = localJSONObject.optJSONArray((String)localObject4);
           localObject3 = localObject2;
-          agju.a().a((JSONArray)localObject4, amnh.a);
+          agwj.a().a((JSONArray)localObject4, ando.a);
           break label332;
         }
         localObject3 = localObject2;
@@ -241,7 +241,7 @@ public class ConfigServlet$10
             break label332;
           }
           localObject3 = localObject2;
-          agkn.a("", "strangerchat_ext", Base64.encodeToString(((String)localObject4).getBytes(), 0));
+          agxc.a("", "strangerchat_ext", Base64.encodeToString(((String)localObject4).getBytes(), 0));
           break label332;
         }
         localObject3 = localObject2;
@@ -255,27 +255,27 @@ public class ConfigServlet$10
           localObject3 = localObject2;
           i1 = ((JSONObject)localObject4).optInt("PopWndID");
           localObject3 = localObject2;
-          agkn.a(amnh.a, "redpack_popwnd_id", ((JSONObject)localObject4).optInt("PopWndID"));
+          agxc.a(ando.a, "redpack_popwnd_id", ((JSONObject)localObject4).optInt("PopWndID"));
           localObject3 = localObject2;
-          agkn.a(amnh.a, "redpack_popwnd_group_type_" + i1, ((JSONObject)localObject4).optString("GroupType"));
+          agxc.a(ando.a, "redpack_popwnd_group_type_" + i1, ((JSONObject)localObject4).optString("GroupType"));
           localObject3 = localObject2;
-          agkn.a(amnh.a, "redpack_popwnd_url_" + i1, ((JSONObject)localObject4).optString("URL"));
+          agxc.a(ando.a, "redpack_popwnd_url_" + i1, ((JSONObject)localObject4).optString("URL"));
           localObject3 = localObject2;
-          agkn.a(amnh.a, "redpack_popwnd_state_" + i1, ((JSONObject)localObject4).optString("RedpackState"));
+          agxc.a(ando.a, "redpack_popwnd_state_" + i1, ((JSONObject)localObject4).optString("RedpackState"));
           localObject3 = localObject2;
-          agkn.a(amnh.a, "redpack_popwnd_freq_" + i1, ((JSONObject)localObject4).optInt("PopWndFreq"));
+          agxc.a(ando.a, "redpack_popwnd_freq_" + i1, ((JSONObject)localObject4).optInt("PopWndFreq"));
           localObject3 = localObject2;
-          agkn.a(amnh.a, "redpack_popwnd_total_" + i1, ((JSONObject)localObject4).optInt("PopWndTotalCount"));
+          agxc.a(ando.a, "redpack_popwnd_total_" + i1, ((JSONObject)localObject4).optInt("PopWndTotalCount"));
           localObject3 = localObject2;
-          agkn.a(amnh.a, "redpack_popwnd_network_" + i1, ((JSONObject)localObject4).optString("PopWndNetworkType"));
+          agxc.a(ando.a, "redpack_popwnd_network_" + i1, ((JSONObject)localObject4).optString("PopWndNetworkType"));
           localObject3 = localObject2;
-          l1 = agwj.b(((JSONObject)localObject4).optString("PopWndBeginTime"));
+          l1 = ahiy.b(((JSONObject)localObject4).optString("PopWndBeginTime"));
           localObject3 = localObject2;
-          l2 = agwj.b(((JSONObject)localObject4).optString("PopWndEndTime"));
+          l2 = ahiy.b(((JSONObject)localObject4).optString("PopWndEndTime"));
           localObject3 = localObject2;
-          agkn.a(amnh.a, "redpack_popwnd_begin_time_" + i1, l1 / 1000L);
+          agxc.a(ando.a, "redpack_popwnd_begin_time_" + i1, l1 / 1000L);
           localObject3 = localObject2;
-          agkn.a(amnh.a, "redpack_popwnd_end_time_" + i1, l2 / 1000L);
+          agxc.a(ando.a, "redpack_popwnd_end_time_" + i1, l2 / 1000L);
           break label332;
         }
         localObject3 = localObject2;
@@ -305,7 +305,7 @@ public class ConfigServlet$10
           if ((this.a == null) || (i == m)) {
             break;
           }
-          baig.n(localQQAppInterface.getApp(), amnh.a, i);
+          bbjn.n(localQQAppInterface.getApp(), ando.a, i);
           localObject2 = new JSONObject();
           if (localObject3 != null) {
             ((JSONObject)localObject2).put("hb_normal", localObject3);
@@ -328,11 +328,11 @@ public class ConfigServlet$10
       QLog.e("SPLASH_ConfigServlet", 2, "received QWALLET_SETTING_CONFIG error", localException2);
       return;
       localHashMap.clear();
-      localObject3 = azxj.a();
+      localObject3 = bayn.a();
       if (localException2.length() > 0) {}
       for (String str1 = localException2.toString();; str1 = "")
       {
-        ((azxj)localObject3).a(localQQAppInterface, str1);
+        ((bayn)localObject3).a(localQQAppInterface, str1);
         return;
       }
       break label1724;

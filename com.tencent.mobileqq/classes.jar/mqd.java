@@ -1,94 +1,34 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.res.Resources;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
-final class mqd
-  implements BusinessObserver
+class mqd
+  implements View.OnTouchListener
 {
-  mqd(Context paramContext, QQAppInterface paramQQAppInterface, bbms parambbms, EqqDetail paramEqqDetail, SessionInfo paramSessionInfo, String paramString) {}
+  mqd(mqa parammqa) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CrmUtils", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    mobileqq_mp.FollowResponse localFollowResponse;
-    if (paramBoolean)
+    try
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localFollowResponse = new mobileqq_mp.FollowResponse();
-      }
+      QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getResources().getResourceName(paramView.getId()) + "]");
+      this.a.a("result_root OnTouch");
+      return true;
     }
-    for (;;)
+    catch (Exception paramMotionEvent)
     {
-      try
+      for (;;)
       {
-        localFollowResponse.mergeFrom(paramBundle);
-        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-        if (paramInt == 0)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType = 1;
-          mqb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-          paramBundle = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-          if (paramBundle != null) {
-            paramBundle.a(this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.d("IVR_TS_CrmUtils", 4, "<<<end follow, ts=" + System.currentTimeMillis());
-          }
-          mqb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-          annt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin, true);
-          mqb.a(this.jdField_a_of_type_Bbms);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        mqb.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
-        mqb.a(this.jdField_a_of_type_Bbms);
-        return;
-      }
-      if (paramInt == 58)
-      {
-        mqb.a(this.jdField_a_of_type_AndroidContentContext, 2131629884);
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "PublicAccount_max_limit_false", 0, 0, "", "", "", "");
-      }
-      else if (paramInt == 65)
-      {
-        mqb.a(this.jdField_a_of_type_AndroidContentContext, 2131629857);
-      }
-      else if (paramInt == 20)
-      {
-        mqb.a(this.jdField_a_of_type_AndroidContentContext, 2131629858);
-      }
-      else
-      {
-        mqb.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
-        continue;
-        mqb.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
-        continue;
-        mqb.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+        QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getId() + "]");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mqd
  * JD-Core Version:    0.7.0.1
  */

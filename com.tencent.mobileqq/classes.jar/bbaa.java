@@ -1,71 +1,59 @@
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
-import cooperation.comic.ui.QQComicFragment;
-import cooperation.qqreader.ui.ReaderCommentPageFragment;
-import cooperation.qqreader.ui.ReaderContentPageFragment;
-import cooperation.qqreader.ui.ReaderHomeTabFragment;
-import cooperation.qzone.QzoneTranslucentBrowserFragment;
+import android.graphics.drawable.Drawable;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
 public class bbaa
 {
-  public static WebViewFragment a(bazk parambazk, WebViewTabBarData paramWebViewTabBarData, Intent paramIntent)
+  public static URLDrawable a(ImageView paramImageView, String paramString)
   {
-    paramIntent.putExtra("url", paramWebViewTabBarData.url);
-    int i = paramIntent.getIntExtra("fragmentStyle", 0);
-    if (i == 2) {
-      return QzoneTranslucentBrowserFragment.a(paramIntent);
-    }
-    if (i == 1) {
-      return QQComicFragment.a(paramIntent);
-    }
-    if (i == 3)
+    return a(paramImageView, paramString, bban.a);
+  }
+  
+  public static URLDrawable a(ImageView paramImageView, String paramString, Drawable paramDrawable)
+  {
+    return a(paramImageView, paramString, bban.a, paramDrawable, paramDrawable);
+  }
+  
+  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
+  {
+    return a(paramImageView, paramString, paramDecodeHandler, null);
+  }
+  
+  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable)
+  {
+    return a(paramImageView, paramString, paramDecodeHandler, paramDrawable, paramDrawable);
+  }
+  
+  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable1, Drawable paramDrawable2)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    if (paramImageView.getLayoutParams() != null)
     {
-      if (paramWebViewTabBarData.url.contains("signatureEdit=1")) {
-        return SignatureEditFragment.a(paramIntent);
-      }
-      paramIntent.removeExtra("isTransparentTitle");
-      if (parambazk != null) {
-        return parambazk.a(paramIntent);
-      }
-      return WebViewFragment.b(paramIntent);
+      localURLDrawableOptions.mRequestWidth = paramImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramImageView.getLayoutParams().height;
     }
-    if (i == 4)
+    if ((localURLDrawableOptions.mRequestWidth <= 0) || (localURLDrawableOptions.mRequestHeight <= 0))
     {
-      i = paramIntent.getIntExtra("item_type", 1);
-      if (i == 1)
-      {
-        paramIntent.putExtra("key_tab_id", Integer.valueOf(paramWebViewTabBarData.tag));
-        bfne.c("WebViewFragmentBuilder", "tab_id =" + paramWebViewTabBarData.tag);
-        return ReaderHomeTabFragment.a(paramIntent);
-      }
-      if (i == 4) {
-        return ReaderCommentPageFragment.a(paramIntent);
-      }
-      return ReaderContentPageFragment.a(paramIntent);
+      localURLDrawableOptions.mRequestWidth = Math.max(paramImageView.getWidth(), 0);
+      localURLDrawableOptions.mRequestHeight = Math.max(paramImageView.getHeight(), 0);
     }
-    paramWebViewTabBarData = Uri.parse(paramWebViewTabBarData.url);
-    if ((paramWebViewTabBarData.isHierarchical()) && ("4".equals(paramWebViewTabBarData.getQueryParameter("_webviewtype"))))
-    {
-      paramIntent.putExtra("fragmentStyle", 1);
-      paramIntent.putExtra("tabBarStyle", 1);
-      paramIntent.putExtra("titleBarStyle", 1);
-      paramIntent.putExtra("hide_operation_bar", true);
-      paramIntent.putExtra("hide_more_button", true);
-      paramIntent.putExtra("isScreenOrientationPortrait", true);
-      return QQComicFragment.a(paramIntent);
+    localURLDrawableOptions.mFailedDrawable = paramDrawable2;
+    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
+    if (paramDecodeHandler != null) {
+      localURLDrawableOptions.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
     }
-    if (parambazk != null) {
-      return parambazk.a(paramIntent);
-    }
-    return WebViewFragment.b(paramIntent);
+    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+    paramString.setDecodeHandler(paramDecodeHandler);
+    paramImageView.setImageDrawable(paramString);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbaa
  * JD-Core Version:    0.7.0.1
  */

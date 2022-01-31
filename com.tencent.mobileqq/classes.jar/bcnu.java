@@ -1,30 +1,21 @@
-import android.util.Log;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.ParticipleView;
 
 public class bcnu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void a(String paramString1, String paramString2)
-  {
-    Log.d(paramString1, paramString2);
-  }
+  public bcnu(ParticipleView paramParticipleView) {}
   
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Log.d(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    Log.w(paramString1, paramString2);
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    Log.d(paramString1, paramString2);
+    ParticipleView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcnu
  * JD-Core Version:    0.7.0.1
  */

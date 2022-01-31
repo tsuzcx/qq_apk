@@ -320,6 +320,25 @@ public class ConnManager
     }
   }
   
+  public void onIPV6IllegalUserErr(int paramInt)
+  {
+    Object localObject2 = (IConnection)this.connections.get(Integer.valueOf(paramInt));
+    if (localObject2 != null)
+    {
+      Object localObject1 = ((IConnection)localObject2).getEndPoint();
+      ((IConnection)localObject2).disConnect();
+      localObject2 = this.engine.getAppContext();
+      if ((localObject1 != null) && (localObject2 != null))
+      {
+        localObject1 = ConfigManager.getInstance((Context)localObject2, this.engine);
+        if (localObject1 != null) {
+          ((ConfigManager)localObject1).clearIpv6Cfg((Context)localObject2);
+        }
+      }
+    }
+    createNewConnectionIfNeed(1, false);
+  }
+  
   public void onInit() {}
   
   public void onRecvInvalidData(EndPoint paramEndPoint, IConnection paramIConnection)

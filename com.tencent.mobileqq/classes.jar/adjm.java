@@ -1,10 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qphone.base.util.QLog;
 
-final class adjm
-  implements DialogInterface.OnClickListener
+class adjm
+  extends akfl
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  adjm(adjk paramadjk) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RedpointHandler", 2, "troopChatPie RedpointObserver  onDataChange");
+    }
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((avpq)adjk.a(this.a).a.getManager(36)).a(4, String.valueOf(130500));
+    if (this.a.b == null) {
+      this.a.b = ((ImageView)adjk.a(this.a).c.findViewById(2131375028));
+    }
+    if (this.a.b == null) {
+      return;
+    }
+    if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1))
+    {
+      this.a.b.setVisibility(0);
+      return;
+    }
+    this.a.b.setVisibility(8);
+  }
 }
 
 

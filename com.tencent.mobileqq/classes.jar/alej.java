@@ -1,35 +1,61 @@
-import java.util.HashMap;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
-public class alej
+public abstract class alej
+  extends Binder
+  implements alei
 {
-  private static HashMap<String, alek> a = new HashMap();
-  
-  public static Object a(int paramInt, String paramString, Object paramObject1, Object paramObject2)
+  public alej()
   {
-    paramString = (alek)a.get(paramString);
-    if (paramString != null) {
-      paramObject2 = paramString.a(paramInt, paramObject1);
-    }
-    return paramObject2;
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
   }
   
-  public static void a(String paramString)
+  public static alei a(IBinder paramIBinder)
   {
-    if (paramString != null) {
-      a.remove(paramString);
+    if (paramIBinder == null) {
+      return null;
     }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+    if ((localIInterface != null) && ((localIInterface instanceof alei))) {
+      return (alei)localIInterface;
+    }
+    return new alek(paramIBinder);
   }
   
-  public static void a(String paramString, alek paramalek)
+  public IBinder asBinder()
   {
-    if (paramString != null) {
-      a.put(paramString, paramalek);
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+      return true;
     }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+    paramParcel1 = a();
+    paramParcel2.writeNoException();
+    if (paramParcel1 != null)
+    {
+      paramParcel2.writeInt(1);
+      paramParcel1.writeToParcel(paramParcel2, 1);
+      return true;
+    }
+    paramParcel2.writeInt(0);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alej
  * JD-Core Version:    0.7.0.1
  */

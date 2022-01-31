@@ -1,15 +1,10 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Comparator;
-
-class ssq
-  implements Comparator<tfv>
+public abstract interface ssq<T>
 {
-  ssq(ssp paramssp) {}
+  public abstract void a();
   
-  public int a(tfv paramtfv1, tfv paramtfv2)
-  {
-    return suk.a(paramtfv1.a.mCreateTime, paramtfv2.a.mCreateTime);
-  }
+  public abstract void a(ssr<T> paramssr);
+  
+  public abstract void c();
 }
 
 

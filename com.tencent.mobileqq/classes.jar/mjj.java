@@ -1,64 +1,16 @@
-import android.content.Context;
-import android.view.Window;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class mjj
-  extends begr
+  implements DialogInterface.OnClickListener
 {
-  public static boolean a;
-  boolean b = false;
+  public mjj(VideoControlUI paramVideoControlUI, long paramLong) {}
   
-  protected mjj(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramContext, paramBoolean1, paramBoolean2);
-  }
-  
-  public static mjj a(Context paramContext)
-  {
-    paramContext = new mjj(paramContext, false, false);
-    paramContext.getWindow().setWindowAnimations(2131689682);
-    return paramContext;
-  }
-  
-  public static boolean a()
-  {
-    return a;
-  }
-  
-  public void dismiss()
-  {
-    a = false;
-    this.b = false;
-    super.dismiss();
-  }
-  
-  public void onDetachedFromWindow()
-  {
-    if (this.b)
-    {
-      a = false;
-      this.b = false;
-    }
-    super.onDetachedFromWindow();
-  }
-  
-  public void onStop()
-  {
-    if (this.b)
-    {
-      a = false;
-      this.b = false;
-    }
-    super.onStop();
-  }
-  
-  public void show()
-  {
-    if (a == true) {
-      return;
-    }
-    a = true;
-    this.b = true;
-    super.show();
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "showPermissionNormalDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
   }
 }
 

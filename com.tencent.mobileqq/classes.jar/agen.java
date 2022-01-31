@@ -1,48 +1,75 @@
-import android.app.Activity;
-import android.os.Build.VERSION;
+import android.content.Context;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
 class agen
-  implements begw
+  implements bfob
 {
-  agen(agem paramagem, begr parambegr) {}
+  int jdField_a_of_type_Int = 0;
+  int b;
+  int c = 0;
   
-  public void OnClick(View paramView, int paramInt)
+  agen(agei paramagei)
   {
-    if ((this.jdField_a_of_type_Agem.jdField_a_of_type_ArrayOfInt == null) || (paramInt >= this.jdField_a_of_type_Agem.jdField_a_of_type_ArrayOfInt.length)) {
-      return;
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    this.jdField_b_of_type_Int = paramInt3;
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged, reach bottom, scrollState " + paramInt + " firstVisibleItem: " + this.c + ", lastItem:" + this.jdField_a_of_type_Int + ", totalItemCount = " + this.jdField_b_of_type_Int + ", mIsComplete: " + this.jdField_a_of_type_Agei.d + ", requesting:" + this.jdField_a_of_type_Agei.jdField_c_of_type_Boolean + ", mSearchMode: " + this.jdField_a_of_type_Agei.jdField_b_of_type_Int + ", mCurrentKeyword: " + this.jdField_a_of_type_Agei.jdField_a_of_type_JavaLangString);
     }
-    switch (this.jdField_a_of_type_Agem.jdField_a_of_type_ArrayOfInt[paramInt])
+    if (this.jdField_b_of_type_Int == 0) {}
+    do
     {
-    }
-    for (;;)
-    {
-      try
+      do
       {
-        this.jdField_a_of_type_Begr.dismiss();
         return;
-      }
-      catch (Exception paramView)
+      } while ((this.jdField_a_of_type_Int != this.jdField_b_of_type_Int) || (paramInt != 0));
+      if ((this.c != 0) && (!this.jdField_a_of_type_Agei.jdField_c_of_type_Boolean))
       {
-        paramView.printStackTrace();
-        return;
-      }
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        if (this.jdField_a_of_type_Agem.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.CAMERA") != 0) {
-          ((BaseActivity)this.jdField_a_of_type_Agem.jdField_a_of_type_AndroidAppActivity).requestPermissions(new ageo(this), 1, new String[] { "android.permission.CAMERA" });
-        } else {
-          agem.a(this.jdField_a_of_type_Agem);
+        this.jdField_a_of_type_Agei.jdField_c_of_type_Boolean = true;
+        if (this.jdField_a_of_type_Agei.jdField_b_of_type_Int == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageLocal >>>>> isComplete: " + this.jdField_a_of_type_Agei.d);
+          }
+          this.jdField_a_of_type_Agei.jdField_a_of_type_Agbq.a(this.jdField_a_of_type_Agei.jdField_a_of_type_Long, this.jdField_a_of_type_Agei.jdField_a_of_type_JavaLangString, 2);
+          return;
         }
+        if (QLog.isColorLevel()) {
+          QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageInCloud >>>>> isComplete: " + this.jdField_a_of_type_Agei.d);
+        }
+        if (this.jdField_a_of_type_Agei.d)
+        {
+          this.jdField_a_of_type_Agei.jdField_c_of_type_AndroidWidgetTextView.setText(ajyc.a(2131706109));
+          this.jdField_a_of_type_Agei.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131371996).setVisibility(8);
+          this.jdField_a_of_type_Agei.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          this.jdField_a_of_type_Agei.jdField_b_of_type_AndroidViewView.setVisibility(0);
+          return;
+        }
+        this.jdField_a_of_type_Agei.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Agei.jdField_a_of_type_AndroidContentContext.getString(2131719085));
+        this.jdField_a_of_type_Agei.jdField_b_of_type_AndroidViewView.setVisibility(0);
+        this.jdField_a_of_type_Agei.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131371996).setVisibility(0);
+        this.jdField_a_of_type_Agei.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.jdField_a_of_type_Agei.jdField_a_of_type_Long = System.currentTimeMillis();
+        return;
       }
-      else
-      {
-        agem.a(this.jdField_a_of_type_Agem);
-        continue;
-        ageu.b(this.jdField_a_of_type_Agem.jdField_a_of_type_AndroidAppActivity, ageu.d(this.jdField_a_of_type_Agem.c));
-      }
-    }
+    } while ((this.c != 0) || (this.jdField_a_of_type_Agei.jdField_c_of_type_Boolean) || (!this.jdField_a_of_type_Agei.d) || (this.jdField_a_of_type_Agei.jdField_b_of_type_Int != 1));
+    this.jdField_a_of_type_Agei.jdField_c_of_type_AndroidWidgetTextView.setText(ajyc.a(2131706105));
+    this.jdField_a_of_type_Agei.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131371996).setVisibility(8);
+    this.jdField_a_of_type_Agei.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_Agei.jdField_b_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

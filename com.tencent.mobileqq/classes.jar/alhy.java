@@ -1,57 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.graphics.RectF;
 
 public class alhy
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private HashMap<String, alhz> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public int a;
+  public RectF a;
+  public String a;
+  alhx[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public alhy(QQAppInterface paramQQAppInterface)
+  public alhy()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_c_of_type_Int = -1;
   }
   
-  public alhz a(String paramString)
+  public String toString()
   {
-    if (TextUtils.isEmpty(paramString))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",sessionId:").append(this.jdField_c_of_type_JavaLangString).append(",moreUrl:").append(this.d);
+    int i = 0;
+    while ((this.jdField_a_of_type_ArrayOfAlhx != null) && (i < this.jdField_a_of_type_ArrayOfAlhx.length))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.getPreprocessor in valid param");
-      }
-      return null;
+      localStringBuilder.append("\n{index=").append(i).append(":").append(this.jdField_a_of_type_ArrayOfAlhx[i].toString()).append("}\n");
+      i += 1;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      paramString = (alhz)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      return paramString;
-    }
-  }
-  
-  public void a(String paramString, alhz paramalhz)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramalhz == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.setPreprocessor in valid param");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, new Object[] { "AAShare.setPreprocessor app=", paramString });
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramalhz);
-      return;
-    }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alhy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,10 @@
-class bauh
+public abstract interface bauh
 {
-  private static final baud a = new baud();
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

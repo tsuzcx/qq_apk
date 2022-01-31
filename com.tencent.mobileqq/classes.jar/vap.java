@@ -1,19 +1,15 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class vap
-  implements vit
+class vap
+  implements View.OnClickListener
 {
-  public vap(DoodleLayout paramDoodleLayout) {}
+  vap(vaf paramvaf, vdm paramvdm) {}
   
-  public void a(@NonNull vja paramvja)
+  public void onClick(View paramView)
   {
-    urq.b("0X80075CD");
-    if ((this.a.a != null) && (this.a.a.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 1, 2);
-    }
+    vel.a("home_page", "guide_close", 0, 0, new String[0]);
+    this.jdField_a_of_type_Vdm.dismiss();
   }
 }
 

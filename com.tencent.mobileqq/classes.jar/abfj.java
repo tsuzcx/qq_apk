@@ -1,15 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.widget.AbsListView;
 
 public class abfj
-  implements DialogInterface.OnClickListener
+  implements bfob
 {
-  public abfj(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  public abfj(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.finish();
+    FriendProfileCardActivity.a(this.a, paramInt1);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (this.a.jdField_a_of_type_Int != paramInt) {
+      this.a.jdField_a_of_type_Int = paramInt;
+    }
+    switch (paramInt)
+    {
+    default: 
+      aaad.a().a("vas_profilecard_list");
+    }
+    for (;;)
+    {
+      if (FriendProfileCardActivity.a(this.a) != null) {
+        FriendProfileCardActivity.a(this.a).a(paramInt);
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      return;
+      aaad.a().a("vas_profilecard_list", false);
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import com.tencent.qphone.base.util.QLog;
-import ykd;
+import yte;
 
 class AppBoxPlugin$MiniAppBox$1
   implements Runnable

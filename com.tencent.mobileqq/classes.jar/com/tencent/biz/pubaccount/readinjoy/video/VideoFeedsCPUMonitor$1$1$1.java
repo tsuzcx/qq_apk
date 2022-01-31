@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
-import qax;
+import qmv;
 
 class VideoFeedsCPUMonitor$1$1$1
   implements Runnable
@@ -14,13 +14,13 @@ class VideoFeedsCPUMonitor$1$1$1
     try
     {
       Thread.sleep(30000L);
-      qax.a().set(2);
+      qmv.a().set(2);
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.d(qax.a(), 2, "clockThread InterruptedException");
+      QLog.d(qmv.a(), 2, "clockThread InterruptedException");
     }
   }
 }

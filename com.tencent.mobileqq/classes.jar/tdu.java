@@ -1,15 +1,25 @@
-import java.util.HashMap;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class tdu
-  extends tdb
+public class tdu
+  extends ssk
 {
-  tdu(tdo paramtdo, tes paramtes) {}
+  public long a;
+  public String a;
+  public String b;
   
-  public boolean b()
+  public tdu(String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
-    this.jdField_a_of_type_Tes.a = ((String)localHashMap.get(this.jdField_a_of_type_Tes.a));
-    return true;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramStoryVideoItem.mVideoIndex;
+    this.b = paramStoryVideoItem.mVid;
+    if (this.jdField_a_of_type_Long == 0L) {
+      this.jdField_a_of_type_Long = paramStoryVideoItem.mCreateTime;
+    }
+  }
+  
+  public String toString()
+  {
+    return "ReadStoryVideoEvent{unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", vid='" + this.b + '\'' + '}';
   }
 }
 

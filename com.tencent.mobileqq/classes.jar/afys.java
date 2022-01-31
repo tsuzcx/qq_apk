@@ -1,29 +1,34 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchView;
-import com.tencent.mobileqq.activity.phone.PhoneMatchView.1;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.widget.XListView;
 
 public class afys
-  extends atog
+  extends Handler
 {
-  public afys(PhoneMatchView.1 param1) {}
+  public afys(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.this$0.a(paramBoolean, paramInt, "onUploadContact");
-  }
-  
-  protected void b(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContact");
-  }
-  
-  protected void e(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUploadContactNotBind");
-  }
-  
-  protected void f(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContactNotBind");
+    if ((paramMessage.what != 1) || (ChatHistoryTroopFileFragment.a(this.a) == null)) {}
+    for (;;)
+    {
+      return;
+      int i = ChatHistoryTroopFileFragment.a(this.a).getFirstVisiblePosition();
+      while (i <= ChatHistoryTroopFileFragment.a(this.a).getLastVisiblePosition())
+      {
+        paramMessage = ChatHistoryTroopFileFragment.a(this.a).getChildAt(i);
+        if (paramMessage != null)
+        {
+          paramMessage = paramMessage.getTag();
+          if ((paramMessage != null) && ((paramMessage instanceof azsu))) {
+            ((azsu)paramMessage).a(this.a.a, ChatHistoryTroopFileFragment.a(this.a));
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 

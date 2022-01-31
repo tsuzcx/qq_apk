@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aizu;
+import ajnw;
 import android.os.Bundle;
 
 public class ApolloGameUtil$2$1
   implements Runnable
 {
-  public ApolloGameUtil$2$1(aizu paramaizu, Bundle paramBundle) {}
+  public ApolloGameUtil$2$1(ajnw paramajnw, Bundle paramBundle) {}
   
   public void run()
   {

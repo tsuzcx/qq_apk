@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import abtc;
+import acdo;
 import android.content.IntentFilter;
-import awcz;
-import befx;
+import axch;
+import bfnr;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -18,9 +18,9 @@ public class SplashActivity$1
     {
       QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
       localQQNotificationManager.cancel("SplashActivity", 241);
-      awcz localawcz = (awcz)this.this$0.app.getManager(10);
-      if (localawcz != null) {
-        localawcz.a(1, 0);
+      axch localaxch = (axch)this.this$0.app.getManager(10);
+      if (localaxch != null) {
+        localaxch.a(1, 0);
       }
       localQQNotificationManager.cancel("SplashActivity", 265);
       localQQNotificationManager.cancel("SplashActivity", 267);
@@ -30,8 +30,8 @@ public class SplashActivity$1
       localQQNotificationManager.cancel("SplashActivity", 273);
       localQQNotificationManager.cancel("SplashActivity", 269);
       localQQNotificationManager.cancel("SplashActivity", 239);
-      befx.a(this.this$0.app).a();
-      SplashActivity.a(this.this$0, new abtc(this));
+      bfnr.a(this.this$0.app).a();
+      SplashActivity.a(this.this$0, new acdo(this));
       this.this$0.registerReceiver(SplashActivity.a(this.this$0), new IntentFilter("before_account_change"));
       return;
     }

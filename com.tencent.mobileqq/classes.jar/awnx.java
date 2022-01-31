@@ -1,34 +1,45 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.splashad.SplashADView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.util.List;
 
 public class awnx
-  implements View.OnClickListener
+  implements awof
 {
-  public awnx(SplashADView paramSplashADView) {}
+  private int jdField_a_of_type_Int;
+  private final String jdField_a_of_type_JavaLangString;
+  private final List<awog> jdField_a_of_type_JavaUtilList;
   
-  public void onClick(View paramView)
+  public awnx(List<awog> paramList, String paramString, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute())
-      {
-        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(false);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849084);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(true);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849085);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public String a()
+  {
+    return ajyc.a(2131705384);
+  }
+  
+  public List<awog> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView) {}
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awnx
  * JD-Core Version:    0.7.0.1
  */

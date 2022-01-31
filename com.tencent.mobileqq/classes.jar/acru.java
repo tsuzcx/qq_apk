@@ -1,16 +1,24 @@
-public abstract interface acru
+import android.widget.Button;
+import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+
+public class acru
+  implements acrk
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public acru(PositionActivatePage paramPositionActivatePage) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void i();
-  
-  public abstract void j();
-  
-  public abstract void k();
+  public void a(int paramInt)
+  {
+    if (paramInt > 0) {
+      this.a.a.setEnabled(true);
+    }
+    while (paramInt > 1)
+    {
+      this.a.a.setText(2131689597);
+      return;
+      this.a.a.setEnabled(false);
+    }
+    this.a.a.setText(2131689598);
+  }
 }
 
 

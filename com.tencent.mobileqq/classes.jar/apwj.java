@@ -1,19 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Bundle;
 
-class apwj
-  implements DialogInterface.OnDismissListener
+public abstract interface apwj
 {
-  apwj(apwi paramapwi) {}
+  public abstract int a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    apwh.a(this.a.a).dismiss();
-  }
+  public abstract int a(apwk paramapwk);
+  
+  public abstract int a(String paramString, Bundle paramBundle);
+  
+  public abstract int b();
+  
+  public abstract int c();
+  
+  public abstract int d();
+  
+  public abstract int e();
+  
+  public abstract int f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apwj
  * JD-Core Version:    0.7.0.1
  */

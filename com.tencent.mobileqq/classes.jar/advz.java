@@ -1,16 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
 
 class advz
-  implements DialogInterface.OnClickListener
+  implements bfoq
 {
-  advz(advv paramadvv) {}
+  advz(advu paramadvu, MessageForPic paramMessageForPic, bfol parambfol) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "showSaveFileTips cancel");
+    switch (paramInt)
+    {
+    }
+    label172:
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      long l;
+      do
+      {
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_Advu.d < 500L);
+      this.jdField_a_of_type_Advu.d = l;
+      paramView = this.jdField_a_of_type_Advu.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq);
+      if ((paramView != null) && ((paramView instanceof ayoz)))
+      {
+        paramView = (ayoz)paramView;
+        if ((paramView.c()) && (paramView.d()))
+        {
+          paramInt = 1;
+          this.jdField_a_of_type_Advu.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq));
+        }
+      }
+      for (;;)
+      {
+        if (paramInt != 0) {
+          break label172;
+        }
+        this.jdField_a_of_type_Advu.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+        break;
+        paramInt = 0;
+      }
     }
   }
 }

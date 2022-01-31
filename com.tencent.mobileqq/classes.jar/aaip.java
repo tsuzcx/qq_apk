@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 
 public class aaip
-  implements DialogInterface.OnClickListener
+  implements adlo
 {
-  public aaip(ChatHistoryFileActivity paramChatHistoryFileActivity, aais paramaais) {}
+  public aaip(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(adll paramadll)
   {
-    this.jdField_a_of_type_Aais.a(false);
+    this.a.finish();
+    if (ArkFullScreenAppActivity.a(this.a)) {
+      this.a.overridePendingTransition(2130771997, 2130772001);
+    }
+    return false;
+  }
+  
+  public boolean a(adll paramadll, String paramString1, String paramString2)
+  {
+    return false;
   }
 }
 

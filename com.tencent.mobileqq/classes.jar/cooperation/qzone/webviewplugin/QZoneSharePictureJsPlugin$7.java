@@ -3,10 +3,10 @@ package cooperation.qzone.webviewplugin;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
-import bbac;
-import bfpr;
-import bfqn;
-import bgic;
+import bcdb;
+import bgxy;
+import bgyu;
+import bhqv;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import org.json.JSONObject;
 public class QZoneSharePictureJsPlugin$7
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$7(bgic parambgic, JSONObject paramJSONObject, String paramString, bbac parambbac) {}
+  public QZoneSharePictureJsPlugin$7(bhqv parambhqv, JSONObject paramJSONObject, String paramString, bcdb parambcdb) {}
   
   public void run()
   {
@@ -37,11 +37,11 @@ public class QZoneSharePictureJsPlugin$7
           localBundle.putInt("req_type", 1);
           localBundle.putBoolean("key_need_save_draft", false);
           localBundle.putString("shareSource", str2);
-          int i = bfpr.a(this.this$0.a, this.jdField_a_of_type_Bbac, 5);
+          int i = bgxy.a(this.this$0.a, this.jdField_a_of_type_Bcdb, 5);
           if (!TextUtils.isEmpty(str1)) {
             localBundle.putString("summary", str1);
           }
-          bfqn.a(this.jdField_a_of_type_Bbac.a(), this.jdField_a_of_type_Bbac.a(), localBundle, null, i);
+          bgyu.a(this.jdField_a_of_type_Bcdb.a(), this.jdField_a_of_type_Bcdb.a(), localBundle, null, i);
           return;
         }
       }

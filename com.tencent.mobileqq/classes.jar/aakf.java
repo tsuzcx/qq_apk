@@ -1,28 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aakf
-  implements begw
+  implements DialogInterface.OnClickListener
 {
-  public aakf(ChatSettingForTroop paramChatSettingForTroop, begr parambegr) {}
+  public aakf(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (this.jdField_a_of_type_Begr.a(paramInt).c)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "switchFail -> to LoginActivity which=" + paramInt);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      ChatSettingForTroop.e(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
-      azzx.a("Grp_set_new", "grpData_admin", "clk_quitgrp", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, azzx.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a) });
-      continue;
-      azlj.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app);
-      continue;
-      azlj.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app);
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setPackage(this.a.getPackageName());
+    paramDialogInterface.setClass(this.a, LoginActivity.class);
+    paramDialogInterface.putExtra("is_change_account", true);
+    paramDialogInterface.putExtra("fromsubaccount", true);
+    if (this.a.a != null) {
+      paramDialogInterface.putExtra("uin", this.a.a);
     }
+    paramDialogInterface.putExtra("befault_uin", this.a.app.getCurrentAccountUin());
+    this.a.startActivityForResult(paramDialogInterface, 1011);
+    this.a.a = null;
   }
 }
 

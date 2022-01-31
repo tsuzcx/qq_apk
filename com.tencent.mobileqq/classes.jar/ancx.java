@@ -1,40 +1,89 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ancx
-  extends GestureDetector.SimpleOnGestureListener
+final class ancx
 {
-  ancx(ancw paramancw) {}
+  private int jdField_a_of_type_Int = -1;
+  private final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public static ancx a(ampi[] paramArrayOfampi)
   {
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) && (this.a.d != -1)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setTapPos(this.a.d);
+    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0))
+    {
+      QLog.e("TencentDocUrl2DocConfigBean", 1, "parse error, confFiles is no-valid.");
+      return null;
     }
-    return false;
+    ancx localancx = new ancx();
+    int k = paramArrayOfampi.length;
+    int i = 0;
+    while (i < k)
+    {
+      Object localObject1 = paramArrayOfampi[i];
+      try
+      {
+        localObject1 = new JSONObject(((ampi)localObject1).a);
+        if ((localObject1 != null) && (((JSONObject)localObject1).has("url_2_doc_enable")))
+        {
+          if (((JSONObject)localObject1).optBoolean("url_2_doc_enable"))
+          {
+            j = 1;
+            localancx.jdField_a_of_type_Int = j;
+          }
+        }
+        else
+        {
+          if ((localObject1 == null) || (!((JSONObject)localObject1).has("support_host"))) {
+            break label189;
+          }
+          localObject1 = ((JSONObject)localObject1).optJSONArray("support_host");
+          if (localObject1 == null) {
+            break label189;
+          }
+          j = 0;
+          while (j < ((JSONArray)localObject1).length())
+          {
+            String str = ((JSONArray)localObject1).optString(j);
+            if (!TextUtils.isEmpty(str)) {
+              localancx.jdField_a_of_type_JavaUtilList.add(str);
+            }
+            j += 1;
+          }
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          QLog.e("TencentDocUrl2DocConfigBean", 1, "parse error", localJSONException);
+          Object localObject2 = null;
+          continue;
+          int j = 0;
+        }
+        label189:
+        i += 1;
+      }
+    }
+    return localancx;
   }
   
-  public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public boolean a()
   {
-    return false;
+    return this.jdField_a_of_type_Int == 1;
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public boolean a(String paramString)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) || (Math.abs(paramFloat1) <= Math.abs(paramFloat2)) || (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c()) || (this.a.c) || (Math.abs(paramFloat1) <= this.a.jdField_a_of_type_Float) || ((paramFloat1 < 0.0F) && (this.a.jdField_a_of_type_Int == 2))) {}
-    while ((paramFloat1 > 0.0F) && (this.a.jdField_a_of_type_Int == 1)) {
-      return false;
-    }
-    int i = this.a.d;
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setSrcPos(i);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c();
-    return false;
+    return (!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilList.contains(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ancx
  * JD-Core Version:    0.7.0.1
  */

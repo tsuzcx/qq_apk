@@ -1,33 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 
 class sil
-  extends SimpleJob<Void>
+  extends ajuv
 {
-  sil(sik paramsik, String paramString)
-  {
-    super(paramString);
-  }
+  sil(sik paramsik) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
   {
-    boolean bool = vlm.a(500L);
-    if (this.a.a(bool)) {
-      sik.a(this.a, bool);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(sik.a(this.a))))
+    {
+      paramLong = BaseApplicationImpl.getApplication().getBaseContext();
+      if (paramBoolean) {
+        bcpw.a(BaseApplicationImpl.getApplication(), 2, 2131719264, 0).b(paramLong.getResources().getDimensionPixelSize(2131298865));
+      }
     }
-    return null;
-  }
-  
-  public int getJobType()
-  {
-    return 4;
+    else
+    {
+      return;
+    }
+    bcpw.a(BaseApplicationImpl.getApplication(), 1, 2131719251, 0).b(paramLong.getResources().getDimensionPixelSize(2131298865));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,13 @@
-import android.graphics.drawable.StateListDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-
-class adfo
-  implements URLDrawable.URLDrawableListener
+public class adfo
 {
-  adfo(adfe paramadfe, StateListDrawable paramStateListDrawable) {}
+  public int a;
+  TItemViewHolder jdField_a_of_type_JavaLangObject;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public adfo(int paramInt, TItemViewHolder paramTItemViewHolder)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable.invalidateSelf();
+    this.jdField_a_of_type_Int = paramTItemViewHolder;
+    Object localObject;
+    this.jdField_a_of_type_JavaLangObject = localObject;
   }
 }
 

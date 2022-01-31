@@ -1,34 +1,15 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class rtu
-  implements DialogInterface.OnClickListener
+class rtu
+  implements View.OnClickListener
 {
-  rtu(Activity paramActivity, ProfileParams paramProfileParams, QQAppInterface paramQQAppInterface) {}
+  rtu(rtt paramrtt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        apln.a(this.jdField_a_of_type_AndroidAppActivity, false, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
-      } while ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()));
-      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      return;
-    } while (rtr.a == null);
-    rtr.a.dismiss();
-    rtr.a = null;
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    rtr.d(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
+    rtt.a(this.a).a(rtt.a(this.a), rtt.a(this.a));
+    this.a.dismiss();
   }
 }
 

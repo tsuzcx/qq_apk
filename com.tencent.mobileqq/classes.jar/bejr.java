@@ -1,12 +1,19 @@
-import android.view.View;
-
-public abstract interface bejr
+public class bejr
+  implements beju<beru>
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  public static bejr a()
+  {
+    return new bejr();
+  }
+  
+  public beru a(begw parambegw)
+  {
+    return parambegw.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bejr
  * JD-Core Version:    0.7.0.1
  */

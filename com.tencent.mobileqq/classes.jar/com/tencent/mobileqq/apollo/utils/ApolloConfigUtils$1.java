@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aiyu;
+import ajmw;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class ApolloConfigUtils$1
@@ -10,9 +10,9 @@ public final class ApolloConfigUtils$1
   
   public void run()
   {
-    aiyu localaiyu = (aiyu)this.a.getManager(155);
-    if (localaiyu.a) {
-      localaiyu.a(false);
+    ajmw localajmw = (ajmw)this.a.getManager(155);
+    if (localajmw.a) {
+      localajmw.a(false);
     }
   }
 }

@@ -1,45 +1,16 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Map;
-import tencent.im.oidb.cmd0x6ef.oidb_cmd0x6ef.RspBody;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class akag
-  extends mmn
+  implements BusinessObserver
 {
-  akag(akaf paramakaf, boolean paramBoolean, aylt paramaylt, long paramLong1, long paramLong2, RecentUser paramRecentUser, String paramString, MessageRecord paramMessageRecord, Map paramMap)
-  {
-    super(paramBoolean);
-  }
+  akag(akac paramakac, String paramString) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramBundle = new oidb_cmd0x6ef.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if ((paramBundle.is_create.get() == 1) || (paramBundle.is_join.get() == 1))
-        {
-          this.jdField_a_of_type_Aylt.m.a(this.jdField_a_of_type_Long, this.b);
-          if (21 >= this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType = 21;
-            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg = aylt.a(this.jdField_a_of_type_Akaf.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aylt, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, true);
-            this.jdField_a_of_type_JavaUtilMap.put(akbm.a(this.jdField_a_of_type_JavaLangString, 1), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
-            return;
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("MayknowRecommendManager", 2, "setRecommendTroopDeleted uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
     }
   }
 }

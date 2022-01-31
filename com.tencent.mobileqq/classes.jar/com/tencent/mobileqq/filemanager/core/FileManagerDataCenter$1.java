@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.content.IntentFilter;
-import aoig;
-import aoih;
-import apbo;
+import aoza;
+import aozb;
+import apti;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class FileManagerDataCenter$1
   implements Runnable
 {
-  public FileManagerDataCenter$1(aoig paramaoig) {}
+  public FileManagerDataCenter$1(aoza paramaoza) {}
   
   public void run()
   {
     if ((this.this$0.a != null) && (this.this$0.a.getApp() != null))
     {
-      if (aoig.a(this.this$0) != null) {
-        this.this$0.a.getApp().unregisterReceiver(aoig.a(this.this$0));
+      if (aoza.a(this.this$0) != null) {
+        this.this$0.a.getApp().unregisterReceiver(aoza.a(this.this$0));
       }
-      if (aoig.a(this.this$0) == null) {
-        aoig.a(this.this$0, new aoih(this));
+      if (aoza.a(this.this$0) == null) {
+        aoza.a(this.this$0, new aozb(this));
       }
       IntentFilter localIntentFilter = new IntentFilter("com.opensdk.downloadmanager.renameFilename");
-      this.this$0.a.getApp().registerReceiver(aoig.a(this.this$0), localIntentFilter);
-      apbo.a();
+      this.this$0.a.getApp().registerReceiver(aoza.a(this.this$0), localIntentFilter);
+      apti.a();
     }
   }
 }

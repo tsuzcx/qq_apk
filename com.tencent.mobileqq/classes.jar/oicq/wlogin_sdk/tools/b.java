@@ -1,10 +1,13 @@
 package oicq.wlogin_sdk.tools;
 
 import android.content.Context;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
+import android.util.Log;
+import java.io.File;
 
 public class b
   implements Handler.Callback
@@ -29,19 +32,10 @@ public class b
         this.h = new Handler(this.g.getLooper(), this);
       }
       this.h.sendEmptyMessage(1024);
+      this.h.sendEmptyMessageDelayed(1025, 5000L);
       return;
     }
     catch (Error paramContext) {}
-  }
-  
-  private void a()
-  {
-    try
-    {
-      this.h.sendEmptyMessageDelayed(1024, 2000L);
-      return;
-    }
-    catch (Throwable localThrowable) {}
   }
   
   public static void a(Context arg0, String paramString1, String paramString2)
@@ -78,16 +72,26 @@ public class b
   
   private void b()
   {
+    try
+    {
+      this.h.sendEmptyMessageDelayed(1024, 2000L);
+      return;
+    }
+    catch (Throwable localThrowable) {}
+  }
+  
+  private void c()
+  {
     if (Thread.currentThread() != this.g) {}
     while (this.b) {
       return;
     }
     this.b = true;
-    c();
+    d();
     this.b = false;
   }
   
-  private void c()
+  private void d()
   {
     try
     {
@@ -112,6 +116,42 @@ public class b
     catch (Error localError) {}
   }
   
+  public void a()
+  {
+    try
+    {
+      if (util.ExistSDCard())
+      {
+        Object localObject = Environment.getExternalStorageDirectory();
+        localObject = ((File)localObject).getAbsolutePath() + "/" + "tencent/wtlogin" + "/" + this.f.getPackageName();
+        util.LOGI("oldPath:" + (String)localObject, "");
+        localObject = new File((String)localObject);
+        if (((File)localObject).exists())
+        {
+          File[] arrayOfFile = ((File)localObject).listFiles();
+          if ((arrayOfFile != null) && (arrayOfFile.length > 0))
+          {
+            util.LOGI("oldPath delete " + arrayOfFile.length, "");
+            int i = 0;
+            while (i < arrayOfFile.length)
+            {
+              arrayOfFile[i].delete();
+              i += 1;
+            }
+          }
+          ((File)localObject).delete();
+          return;
+        }
+        util.LOGI("oldPath not exist", "");
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      util.LOGI(Log.getStackTraceString(localThrowable), "");
+    }
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
@@ -120,7 +160,9 @@ public class b
     for (;;)
     {
       return true;
+      c();
       b();
+      continue;
       a();
     }
   }

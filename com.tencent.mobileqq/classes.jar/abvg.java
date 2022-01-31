@@ -1,27 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
 
 public class abvg
-  extends Handler
+  extends acun
 {
-  public abvg(TroopAssisSettingActivity paramTroopAssisSettingActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.jdField_a_of_type_Aidk.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_Aidk.notifyDataSetChanged();
-    this.a.b();
-  }
+  public ImageView a;
+  public BreathAnimationLayout a;
+  public StringBuilder a;
+  public TextView c;
 }
 
 

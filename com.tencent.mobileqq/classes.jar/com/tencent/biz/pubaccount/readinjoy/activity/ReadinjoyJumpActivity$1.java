@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.qphone.base.util.QLog;
-import ohb;
+import osm;
 
 class ReadinjoyJumpActivity$1
   implements Runnable
@@ -11,7 +11,7 @@ class ReadinjoyJumpActivity$1
   public void run()
   {
     QLog.d("ReadinjoyJumpActivity", 1, "timeout ! show error page !");
-    ohb.a().b(ReadinjoyJumpActivity.a(this.this$0));
+    osm.a().b(ReadinjoyJumpActivity.a(this.this$0));
     ReadinjoyJumpActivity.a(this.this$0);
   }
 }

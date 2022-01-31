@@ -1,16 +1,42 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-
-class lpu
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class lpu
 {
-  lpu(lpt paramlpt) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  public mrg a;
+  boolean jdField_a_of_type_Boolean;
+  byte[] jdField_a_of_type_ArrayOfByte;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  int jdField_c_of_type_Int;
+  long jdField_c_of_type_Long;
+  int d;
+  int e;
+  public int f;
+  public int g;
   
-  public void onGlobalLayout()
+  lpu() {}
+  
+  public lpu(long paramLong1, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, long paramLong2, long paramLong3)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    this.a.a(false);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.d = paramInt4;
+    this.e = paramInt5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_b_of_type_Long = paramLong3;
+    this.jdField_c_of_type_Long = paramLong1;
+    this.f = 0;
+    this.g = 0;
+  }
+  
+  lpu(lpu paramlpu)
+  {
+    this(paramlpu.jdField_c_of_type_Long, paramlpu.jdField_a_of_type_ArrayOfByte, paramlpu.jdField_a_of_type_Int, paramlpu.jdField_b_of_type_Int, paramlpu.jdField_c_of_type_Int, paramlpu.d, paramlpu.e, paramlpu.jdField_a_of_type_Boolean, paramlpu.jdField_a_of_type_Long, paramlpu.jdField_b_of_type_Long);
+    this.f = paramlpu.f;
+    this.g = paramlpu.g;
   }
 }
 

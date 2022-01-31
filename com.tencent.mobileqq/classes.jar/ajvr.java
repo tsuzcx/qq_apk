@@ -1,342 +1,519 @@
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import com.tencent.crmqq.structmsg.StructMsg.GetCRMMenuResponse;
+import com.tencent.crmqq.structmsg.StructMsg.GetCrmQQMenuRequest;
+import com.tencent.crmqq.structmsg.StructMsg.RetInfo;
+import com.tencent.crmqq.structmsg.StructMsg.SendMenuEventRequest;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
-import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.mp.mobileqq_mp.CRMSendLBSInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetUserEqqListRequest;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetUserEqqListResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagRequset;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBDoubleField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import mqq.manager.Manager;
+import mqq.app.MobileQQ;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
 public class ajvr
-  implements Manager
+  extends ajtd
 {
-  public static int a;
-  private ajfo jdField_a_of_type_Ajfo = new ajvs(this);
-  private ajjh jdField_a_of_type_Ajjh = new ajvt(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public String a;
-  public List<AddFriendBlockedInfo> a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  private boolean f;
+  public static final Long a = Long.valueOf(2202087152L);
   
   public ajvr(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.f = a(BaseApplicationImpl.getApplication().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("e_add_friend_setting", 101));
-    e("add_friend_blocked_expand_entrance");
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Ajfo);
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Ajjh);
+    super(paramQQAppInterface);
   }
   
-  public static ajvr a(QQAppInterface paramQQAppInterface)
+  private long a()
   {
-    return (ajvr)paramQQAppInterface.getManager(332);
+    return this.app.getApp().getSharedPreferences(this.app.getAccount(), 0).getLong("eqq_data_seq2", 0L);
   }
   
-  public static void a(Activity paramActivity)
-  {
-    NewFriendVerifyBlockedListFragment.a(paramActivity);
-  }
-  
-  private void a(boolean paramBoolean, Bundle paramBundle)
+  private void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.manager", 2, "innerReportAddFriend() isSuccess:" + paramBoolean);
+      QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "getEqqList: start");
     }
-    if ((!paramBoolean) && (a(paramBundle.getInt("friend_setting"))))
+    mobileqq_mp.GetUserEqqListRequest localGetUserEqqListRequest = new mobileqq_mp.GetUserEqqListRequest();
+    localGetUserEqqListRequest.version.set(1);
+    localGetUserEqqListRequest.begin.set(bbbd.a(paramLong1));
+    localGetUserEqqListRequest.limit.set(bbbd.a(paramLong2));
+    localGetUserEqqListRequest.seqno.set(bbbd.a(paramLong3));
+    ToServiceMsg localToServiceMsg = createToServiceMsg("EqqAccountSvc.get_eqq_list");
+    localToServiceMsg.putWupBuffer(localGetUserEqqListRequest.toByteArray());
+    localToServiceMsg.extraData.putLong("begin", paramLong1);
+    localToServiceMsg.extraData.putLong("limit", paramLong2);
+    localToServiceMsg.extraData.putLong("seqno", paramLong3);
+    localToServiceMsg.extraData.putLong("time", paramLong4);
+    sendPbReq(localToServiceMsg);
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("crmtest", 4, "handleGetList, ts=" + System.currentTimeMillis());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handleGetList begin.");
+    }
+    akdq localakdq = new akdq();
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess()) || (paramObject == null))
     {
-      String str = paramBundle.getString("uin");
-      int i = paramBundle.getInt("source_id");
-      int j = paramBundle.getInt("sub_source_id");
-      paramBundle = paramBundle.getString("troop_uin");
+      localakdq.jdField_a_of_type_Int = -1;
+      localakdq.jdField_a_of_type_Boolean = true;
       if (QLog.isColorLevel()) {
-        QLog.d("NewFriendVerification.manager", 2, "innerReportAddFriend  friendUin = " + str + " troopUin = " + paramBundle);
+        QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handleGetList error");
       }
-      a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), str, i, j, paramBundle);
-    }
-  }
-  
-  private boolean a(int paramInt)
-  {
-    return (paramInt == 3) || (paramInt == 4);
-  }
-  
-  private boolean a(String paramString, Object paramObject)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("add_friend_blocked_cfg_sp", 0).edit();
-    if (("add_friend_blocked_show_entrance".equals(paramString)) || ("add_friend_blocked_show_red_point".equals(paramString)) || ("add_friend_blocked_expand_entrance".equals(paramString))) {
-      localEditor.putBoolean(paramString, ((Boolean)paramObject).booleanValue());
-    }
-    for (;;)
-    {
-      return localEditor.commit();
-      if ("add_friend_blocked_recent_uin".equals(paramString)) {
-        localEditor.putString(paramString, (String)paramObject);
-      } else if ("add_friend_blocked_friend_setting".equals(paramString)) {
-        localEditor.putInt(paramString, ((Integer)paramObject).intValue());
-      }
-    }
-  }
-  
-  private void d(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private void e(String paramString)
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("add_friend_blocked_cfg_sp", 4);
-    if ("add_friend_blocked_expand_entrance".equals(paramString)) {
-      this.c = localSharedPreferences.getBoolean(paramString, true);
-    }
-    do
-    {
       return;
-      if ("add_friend_blocked_show_entrance".equals(paramString))
-      {
-        this.d = localSharedPreferences.getBoolean(paramString, false);
-        return;
-      }
-      if ("add_friend_blocked_show_red_point".equals(paramString))
-      {
-        this.e = localSharedPreferences.getBoolean(paramString, false);
-        return;
-      }
-      if ("add_friend_blocked_recent_uin".equals(paramString))
-      {
-        this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString(paramString, "");
-        return;
-      }
-    } while (!"add_friend_blocked_friend_setting".equals(paramString));
-    this.f = a(localSharedPreferences.getInt(paramString, 101));
-  }
-  
-  public int a()
-  {
-    int j = 0;
-    int i;
-    if ((this.d) && (this.c)) {
-      i = 1;
     }
+    int i = paramFromServiceMsg.getResultCode();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handleGetList result=" + i);
+    }
+    if (i != 1000)
+    {
+      localakdq.jdField_a_of_type_Int = -1;
+      localakdq.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    long l1 = paramToServiceMsg.extraData.getLong("begin");
+    paramToServiceMsg.extraData.getLong("seqno");
+    long l2 = paramToServiceMsg.extraData.getLong("time");
+    paramToServiceMsg = new mobileqq_mp.GetUserEqqListResponse();
+    boolean bool;
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("NewFriendVerification.manager", 2, "getEntranceType, type=" + i + ", entrance=" + this.d + ", isEntranceExpand=" + this.c);
-      }
-      return i;
-      i = j;
-      if (this.d)
+      try
       {
-        i = j;
-        if (!this.c) {
-          i = 3;
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if ((!paramToServiceMsg.ret_info.has()) || (!((mobileqq_mp.RetInfo)paramToServiceMsg.ret_info.get()).ret_code.has())) {
+          continue;
         }
+        i = ((mobileqq_mp.RetInfo)paramToServiceMsg.ret_info.get()).ret_code.get();
+        localakdq.jdField_a_of_type_Int = i;
+        if (i == 0) {
+          continue;
+        }
+        localakdq.jdField_a_of_type_Boolean = true;
+        bool = false;
       }
-    }
-  }
-  
-  public ajvq a()
-  {
-    return (ajvq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(158);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.manager", 2, "leaveNewFriend()");
-    }
-    this.e = false;
-    this.c = false;
-    a("add_friend_blocked_expand_entrance", Boolean.valueOf(false));
-    if (jdField_a_of_type_Int > 0) {
-      awqx.b(null, "dc00898", "", "", "0X800A3A3", "0X800A3A3", 0, jdField_a_of_type_Int, 0, "", "", "", "");
-    }
-    jdField_a_of_type_Int = 0;
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.f)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NewFriendVerification.manager", 2, "start -> getAddFriendBlockedList()");
-      }
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      }
-      a().a(paramString, 500, "");
-    }
-  }
-  
-  public void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.manager", 2, "start --> reportAddFriendBlocked() friendUin :" + paramString1 + " friendSetting=" + paramInt1 + " troopUin = " + paramString2);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("friend_setting", paramInt1);
-    localBundle.putString("uin", paramString1);
-    localBundle.putInt("source_id", paramInt2);
-    localBundle.putInt("sub_source_id", paramInt3);
-    localBundle.putString("troop_uin", paramString2);
-    a(false, localBundle);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.manager", 2, " onReportAddFriendBlocked()-->  success=  " + paramBoolean);
-    }
-    this.b = paramBoolean;
-    a().notifyUI(2, paramBoolean, null);
-  }
-  
-  public void a(boolean paramBoolean, List<AddFriendBlockedInfo> paramList, String paramString)
-  {
-    int i;
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel())
+      catch (Exception paramToServiceMsg)
       {
-        StringBuilder localStringBuilder = new StringBuilder().append(" onGetAddFriendBlockedList()--> blockedInfos =  ");
-        if (paramList == null) {
-          break label191;
-        }
-        i = paramList.size();
-        QLog.d("NewFriendVerification.manager", 2, i);
+        long l3;
+        RecentUser localRecentUser;
+        localakdq.jdField_a_of_type_Int = -1;
+        localakdq.jdField_a_of_type_Boolean = true;
+        paramToServiceMsg.printStackTrace();
+        bool = false;
+        continue;
+        continue;
+        i = 0;
+        continue;
+        bool = false;
+        continue;
       }
-      if ((paramList != null) && (paramList.size() > 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NewFriendVerification.manager", 2, " onGetAddFriendBlockedList()--> isRead =  " + ((AddFriendBlockedInfo)paramList.get(0)).jdField_a_of_type_Boolean);
-        }
-        if (((AddFriendBlockedInfo)paramList.get(0)).jdField_a_of_type_Boolean) {
-          break label197;
-        }
-      }
-    }
-    label191:
-    label197:
-    for (boolean bool = true;; bool = false)
-    {
-      this.c = bool;
-      a("add_friend_blocked_expand_entrance", Boolean.valueOf(this.c));
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      a().notifyUI(4, paramBoolean, new Object[] { paramList, paramString });
+      notifyUI(100, bool, localakdq);
+      ((PublicAccountHandler)this.app.a(11)).notifyUI(100, true, localakdq);
       return;
       i = 0;
+      continue;
+      if (paramToServiceMsg.seqno.has())
+      {
+        i = paramToServiceMsg.seqno.get();
+        l3 = bbbd.a(i);
+        paramFromServiceMsg = PublicAccountInfo.createPublicAccountInfoListFromEqq(paramToServiceMsg.accountInfo.get(), l2);
+        localakdq.jdField_a_of_type_JavaUtilList = paramFromServiceMsg;
+        if ((!paramToServiceMsg.is_over.has()) || (!paramToServiceMsg.is_over.get())) {
+          continue;
+        }
+        bool = true;
+        localakdq.jdField_a_of_type_Boolean = bool;
+        paramObject = ((akdi)this.app.getManager(56)).a(paramFromServiceMsg, l2);
+        i = 0;
+        paramFromServiceMsg = this.app.a().a();
+        paramObject = paramObject.iterator();
+        if (paramObject.hasNext())
+        {
+          localRecentUser = paramFromServiceMsg.b(((PublicAccountInfo)paramObject.next()).getUin(), 0);
+          if (localRecentUser != null)
+          {
+            paramFromServiceMsg.b(localRecentUser);
+            i = 1;
+          }
+        }
+        else
+        {
+          paramFromServiceMsg = this.app.getHandler(Conversation.class);
+          if ((i != 0) && (paramFromServiceMsg != null)) {
+            paramFromServiceMsg.sendEmptyMessage(1009);
+          }
+          if (!localakdq.jdField_a_of_type_Boolean) {
+            if (!paramToServiceMsg.next_pos.has()) {
+              break label602;
+            }
+          }
+        }
+      }
+    }
+    label596:
+    label602:
+    for (l1 = paramToServiceMsg.next_pos.get();; l1 += 20L)
+    {
+      a(l1, 20L, 0L, l2);
+      break label596;
+      b(l3);
+      bool = true;
       break;
     }
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  private void b(long paramLong)
   {
-    if (paramBoolean1)
-    {
-      c(paramBoolean2);
-      d(paramString);
-    }
-    a().notifyUI(5, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
+    SharedPreferences.Editor localEditor = this.app.getApp().getSharedPreferences(this.app.getAccount(), 0).edit();
+    localEditor.putLong("eqq_data_seq2", paramLong);
+    localEditor.commit();
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
-  {
-    c(paramBoolean2);
-    d(paramBoolean3);
-    d(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.manager", 2, " onGetAddFriendBlockedRedPoint() --> isShowAddFriendBlockedEntrance =  " + paramBoolean2 + " isShowRedPoint =" + paramBoolean3 + " blockedUin =" + paramString);
-    }
-    a().notifyUI(3, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), paramString });
-  }
-  
-  public boolean a()
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.manager", 2, "isShowRedPoint, isShowRedPoint:" + this.e);
+      QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handlerGetMenu,begin.");
     }
-    return this.e;
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {}
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
     for (;;)
     {
       return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((AddFriendBlockedInfo)localIterator.next()).jdField_a_of_type_Boolean = true;
+      try
+      {
+        int i = paramFromServiceMsg.getResultCode();
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handlerGetMenu. result=" + i);
+        }
+        if (i != 1000) {
+          continue;
+        }
+        i = -1;
+        paramToServiceMsg = new StructMsg.GetCRMMenuResponse();
+        try
+        {
+          paramToServiceMsg.mergeFrom((byte[])paramObject);
+          j = i;
+          if (paramToServiceMsg.ret_info.has())
+          {
+            paramFromServiceMsg = (StructMsg.RetInfo)paramToServiceMsg.ret_info.get();
+            if (paramFromServiceMsg.ret_code.has()) {
+              i = paramFromServiceMsg.ret_code.get();
+            }
+            j = i;
+            if (i != 0)
+            {
+              j = i;
+              if (paramFromServiceMsg.err_info.has())
+              {
+                paramFromServiceMsg.err_info.get();
+                if (i != 0) {
+                  continue;
+                }
+                paramFromServiceMsg = String.valueOf(paramToServiceMsg.uin.get());
+                i = paramToServiceMsg.seqno.get();
+                aoee.a(this.app).a(this.app, paramFromServiceMsg, i, paramToServiceMsg);
+                notifyUI(1, true, paramFromServiceMsg);
+                return;
+              }
+            }
+          }
+        }
+        catch (Exception paramFromServiceMsg)
+        {
+          for (;;)
+          {
+            int j;
+            paramFromServiceMsg.printStackTrace();
+            continue;
+            i = j;
+          }
+        }
+        return;
       }
+      catch (Exception paramToServiceMsg) {}
     }
   }
   
-  public void b(String paramString)
+  /* Error */
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (this.f)
+    // Byte code:
+    //   0: invokestatic 59	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +12 -> 15
+    //   6: ldc 61
+    //   8: iconst_2
+    //   9: ldc_w 387
+    //   12: invokestatic 67	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   15: aload_1
+    //   16: ifnull +7 -> 23
+    //   19: aload_2
+    //   20: ifnonnull +4 -> 24
+    //   23: return
+    //   24: aload_2
+    //   25: invokevirtual 180	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   28: sipush 1000
+    //   31: if_icmpne -8 -> 23
+    //   34: iconst_m1
+    //   35: istore 4
+    //   37: new 389	com/tencent/crmqq/structmsg/StructMsg$SendMenuEventResponse
+    //   40: dup
+    //   41: invokespecial 390	com/tencent/crmqq/structmsg/StructMsg$SendMenuEventResponse:<init>	()V
+    //   44: astore_1
+    //   45: aload_1
+    //   46: aload_3
+    //   47: checkcast 193	[B
+    //   50: checkcast 193	[B
+    //   53: invokevirtual 391	com/tencent/crmqq/structmsg/StructMsg$SendMenuEventResponse:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   56: pop
+    //   57: iload 4
+    //   59: istore 5
+    //   61: aload_1
+    //   62: getfield 392	com/tencent/crmqq/structmsg/StructMsg$SendMenuEventResponse:ret_info	Lcom/tencent/crmqq/structmsg/StructMsg$RetInfo;
+    //   65: invokevirtual 351	com/tencent/crmqq/structmsg/StructMsg$RetInfo:has	()Z
+    //   68: ifeq +76 -> 144
+    //   71: aload_1
+    //   72: getfield 392	com/tencent/crmqq/structmsg/StructMsg$SendMenuEventResponse:ret_info	Lcom/tencent/crmqq/structmsg/StructMsg$RetInfo;
+    //   75: invokevirtual 352	com/tencent/crmqq/structmsg/StructMsg$RetInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   78: checkcast 350	com/tencent/crmqq/structmsg/StructMsg$RetInfo
+    //   81: astore_1
+    //   82: aload_1
+    //   83: getfield 353	com/tencent/crmqq/structmsg/StructMsg$RetInfo:ret_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   86: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   89: ifeq +12 -> 101
+    //   92: aload_1
+    //   93: getfield 353	com/tencent/crmqq/structmsg/StructMsg$RetInfo:ret_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   96: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   99: istore 4
+    //   101: iload 4
+    //   103: istore 5
+    //   105: iload 4
+    //   107: ifeq +37 -> 144
+    //   110: iload 4
+    //   112: istore 5
+    //   114: aload_1
+    //   115: getfield 357	com/tencent/crmqq/structmsg/StructMsg$RetInfo:err_info	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   118: invokevirtual 360	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   121: ifeq +23 -> 144
+    //   124: aload_1
+    //   125: getfield 357	com/tencent/crmqq/structmsg/StructMsg$RetInfo:err_info	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   128: invokevirtual 362	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   131: pop
+    //   132: iload 4
+    //   134: ifne -111 -> 23
+    //   137: return
+    //   138: astore_1
+    //   139: return
+    //   140: astore_2
+    //   141: goto -84 -> 57
+    //   144: iload 5
+    //   146: istore 4
+    //   148: goto -16 -> 132
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	151	0	this	ajvr
+    //   0	151	1	paramToServiceMsg	ToServiceMsg
+    //   0	151	2	paramFromServiceMsg	FromServiceMsg
+    //   0	151	3	paramObject	Object
+    //   35	112	4	i	int
+    //   59	86	5	j	int
+    // Exception table:
+    //   from	to	target	type
+    //   24	34	138	java/lang/Exception
+    //   37	45	138	java/lang/Exception
+    //   61	82	138	java/lang/Exception
+    //   82	101	138	java/lang/Exception
+    //   114	132	138	java/lang/Exception
+    //   45	57	140	java/lang/Exception
+  }
+  
+  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handelCrmSendLBSInfo(): BEGIN");
+      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
+        paramToServiceMsg = new mobileqq_mp.CRMSendLBSInfoResponse();
+      }
+    }
+    else
+    {
+      try
+      {
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if ((paramToServiceMsg.ret_info.has()) && (((mobileqq_mp.RetInfo)paramToServiceMsg.ret_info.get()).ret_code.has()))
+        {
+          i = ((mobileqq_mp.RetInfo)paramToServiceMsg.ret_info.get()).ret_code.get();
+          QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handelCrmSendLBSInfo(): errCode=" + i);
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        for (;;)
+        {
+          paramFromServiceMsg.printStackTrace();
+          continue;
+          int i = -1;
+        }
+      }
+    }
+    QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handelCrmSendLBSInfo(): FAILED");
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("crmtest", 4, "getEqqList, ts=" + System.currentTimeMillis());
+    }
+    a(0L, 20L, a(), paramLong);
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "getMenu: start");
+    }
+    try
+    {
+      long l = Long.valueOf(paramString).longValue();
+      paramString = new StructMsg.GetCrmQQMenuRequest();
+      paramString.seqno.set(0);
+      paramString.uin.set(l);
+      ToServiceMsg localToServiceMsg = createToServiceMsg("mq_crm.get_menu");
+      localToServiceMsg.putWupBuffer(paramString.toByteArray());
+      sendPbReq(localToServiceMsg);
+      return;
+    }
+    catch (Exception paramString)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("NewFriendVerification.manager", 2, "start -> getAddFriendBlockedRedPoint() ");
+        QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "getMenu: arg uin error.");
       }
-      a().b(paramString);
+      paramString.printStackTrace();
     }
   }
   
-  public void b(boolean paramBoolean)
+  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, BusinessObserver paramBusinessObserver)
+  {
+    try
+    {
+      long l = Long.valueOf(paramString).longValue();
+      paramString = new NewIntent(this.app.getApplication().getApplicationContext(), nou.class);
+      paramString.putExtra("cmd", "set_function_flag");
+      mobileqq_mp.SetFunctionFlagRequset localSetFunctionFlagRequset = new mobileqq_mp.SetFunctionFlagRequset();
+      localSetFunctionFlagRequset.luin.set(l);
+      localSetFunctionFlagRequset.type.set(paramInt1);
+      localSetFunctionFlagRequset.value.set(paramInt2);
+      localSetFunctionFlagRequset.account_type.set(paramInt3);
+      localSetFunctionFlagRequset.version.set(1);
+      paramString.putExtra("data", localSetFunctionFlagRequset.toByteArray());
+      paramString.setObserver(paramBusinessObserver);
+      this.app.startServlet(paramString);
+      return;
+    }
+    catch (Exception paramString) {}
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, double paramDouble1, double paramDouble2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.manager", 2, " onClearAddFriendBlockedList()-->  success=  " + paramBoolean);
+      QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "sendMenuEvent: start");
     }
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.clear();
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    a().notifyUI(1, paramBoolean, null);
-  }
-  
-  public void c(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.manager", 2, " start-> clearAddFriendBlockedList() uin = " + paramString);
-    }
-    a().a(paramString);
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.d = paramBoolean;
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    this.e = paramBoolean;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "sendMenuEvent: arg error.");
+      }
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajfo);
-      this.jdField_a_of_type_Ajfo = null;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajjh);
-      this.jdField_a_of_type_Ajjh = null;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+      long l = Long.valueOf(paramString1).longValue();
+      paramString1 = new StructMsg.SendMenuEventRequest();
+      paramString1.uin.set(l);
+      paramString1.key.set(paramString2);
+      paramString1.type.set(paramInt);
+      paramString1.is_need_lbs.set(paramBoolean);
+      if (paramBoolean)
+      {
+        paramString1.latitude.set(paramDouble1);
+        paramString1.longitude.set(paramDouble2);
+      }
+      paramString2 = createToServiceMsg("mq_crm.send_key");
+      paramString2.putWupBuffer(paramString1.toByteArray());
+      sendPbReq(paramString2);
+      return;
     }
+    catch (Exception paramString1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "sendMenuEvent: arg uin error.");
+      }
+      paramString1.printStackTrace();
+    }
+  }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return ajvs.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    if ((str == null) || (str.length() == 0)) {}
+    do
+    {
+      return;
+      if ("mq_crm.get_menu".equalsIgnoreCase(str))
+      {
+        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if ("mq_crm.send_key".equalsIgnoreCase(str))
+      {
+        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if ("EqqAccountSvc.get_eqq_list".equalsIgnoreCase(str))
+      {
+        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if ("CrmSvcEx.ReportLbs".equalsIgnoreCase(str))
+      {
+        d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "cmdfilter error=" + str);
   }
 }
 

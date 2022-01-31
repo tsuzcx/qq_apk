@@ -13,6 +13,7 @@ import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForIMEI;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForIMEI.Item;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo;
+import com.tencent.ad.tangram.settings.AdSettingsUtil;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public final class AdDeviceInfo
   
   public static boolean canUseIMEI(Context paramContext)
   {
-    Object localObject1 = com.tencent.ad.tangram.settings.a.INSTANCE.getSettingsCache(paramContext);
+    Object localObject1 = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
     if ((localObject1 == null) || (((gdt_settings.Settings)localObject1).settingsForIMEI.items == null) || (((gdt_settings.Settings)localObject1).settingsForIMEI.items.length <= 0)) {
       return false;
     }

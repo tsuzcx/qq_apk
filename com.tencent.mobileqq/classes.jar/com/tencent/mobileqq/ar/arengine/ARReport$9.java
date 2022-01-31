@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import akue;
-import awrn;
+import aliq;
+import axrl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARReport$9
   implements Runnable
 {
-  public ARReport$9(akue paramakue, long paramLong, boolean paramBoolean) {}
+  public ARReport$9(aliq paramaliq, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ARReport$9
     }
     for (;;)
     {
-      awrn.a(BaseApplication.getContext()).a("", "ARCloudControlinit", true, 0L, 0L, localHashMap, "");
+      axrl.a(BaseApplication.getContext()).a("", "ARCloudControlinit", true, 0L, 0L, localHashMap, "");
       return;
       localHashMap.put("result", "1");
     }

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry;
 
-import agtk;
-import agtx;
+import ahfz;
+import ahgm;
 import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpakcetPreviewConfBean.BreathLight;
 
 public class SpringHbEntryManager$16
   implements Runnable
 {
-  public SpringHbEntryManager$16(agtk paramagtk, SpringFestivalRedpakcetPreviewConfBean.BreathLight paramBreathLight) {}
+  public SpringHbEntryManager$16(ahfz paramahfz, SpringFestivalRedpakcetPreviewConfBean.BreathLight paramBreathLight) {}
   
   public void run()
   {
-    if (agtk.a(this.this$0) != null) {
-      agtk.a(this.this$0).a(false, this.a);
+    if (ahfz.a(this.this$0) != null) {
+      ahfz.a(this.this$0).a(false, this.a);
     }
   }
 }

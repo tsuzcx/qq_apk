@@ -1,50 +1,59 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.widget.EditText;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class aaem
-  implements atqq
+class aaem
+  extends aaen
 {
-  aaem(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface) {}
+  aaem(aael paramaael) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onSuccess(JSONObject paramJSONObject)
   {
-    return null;
-  }
-  
-  public void a(atqr paramatqr) {}
-  
-  public void b(atqr paramatqr)
-  {
+    super.onSuccess(paramJSONObject);
     try
     {
-      if (paramatqr.jdField_a_of_type_Int == 0)
+      paramJSONObject = paramJSONObject.getJSONArray("appfriends");
+      JSONObject localJSONObject1 = new JSONObject();
+      localJSONObject1.put("rankingID", 11001);
+      JSONArray localJSONArray1 = new JSONArray();
+      int i = 0;
+      int j = paramJSONObject.length();
+      while (i < j)
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.resIDForLongMsg = paramatqr.c;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, null, false);
-        return;
+        Object localObject = paramJSONObject.getJSONObject(i).getString("openid");
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("openid", localObject);
+        localJSONObject2.put("score", (int)Math.floor(Math.random() * 1000.0D));
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("key", "test_key");
+        ((JSONObject)localObject).put("value", (int)Math.floor(Math.random() * 100.0D));
+        ((JSONObject)localObject).put("type", 1);
+        JSONArray localJSONArray2 = new JSONArray();
+        localJSONArray2.put(localObject);
+        localJSONObject2.put("extraList", localJSONArray2);
+        localJSONArray1.put(localJSONObject2);
+        i += 1;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, result.errStr=" + paramatqr.b + ",result.errStr=" + paramatqr.jdField_a_of_type_JavaLangString);
+      localJSONObject1.put("scoreList", localJSONArray1);
+      this.a.a.jdField_a_of_type_Aabp.a("reportScore", localJSONObject1, new aaen(this.a.a.jdField_a_of_type_AndroidWidgetEditText));
+      if (this.a.a.jdField_a_of_type_AndroidWidgetEditText != null) {
+        new AlertDialog.Builder(this.a.a.jdField_a_of_type_AndroidWidgetEditText.getContext()).setTitle("reportScore").setMessage(localJSONObject1.toString()).setNegativeButton("知道了", null).create().show();
       }
-      arxo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
       return;
     }
-    catch (Exception paramatqr)
+    catch (JSONException paramJSONObject)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, catch exception", paramatqr);
-      }
-      arxo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      paramJSONObject.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
 package dov.com.qq.im;
 
-import ajjy;
-import bcec;
-import bhem;
+import ajyc;
+import bdid;
+import bihc;
 
 public class QIMQzoneEffectsCameraCaptureUnit$4
   implements Runnable
 {
-  public QIMQzoneEffectsCameraCaptureUnit$4(bhem parambhem, boolean paramBoolean, String paramString) {}
+  public QIMQzoneEffectsCameraCaptureUnit$4(bihc parambihc, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    bhem.a(this.this$0);
+    bihc.a(this.this$0);
     if (this.jdField_a_of_type_Boolean)
     {
-      bhem.b(this.this$0, this.jdField_a_of_type_JavaLangString);
+      bihc.b(this.this$0, this.jdField_a_of_type_JavaLangString);
       return;
     }
-    bcec.a().a(ajjy.a(2131644047));
+    bdid.a().a(ajyc.a(2131709832));
   }
 }
 

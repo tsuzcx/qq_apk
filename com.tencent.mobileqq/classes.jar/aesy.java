@@ -1,28 +1,80 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
-public class aesy
-  implements View.OnTouchListener
+class aesy
+  extends akwt
 {
-  float jdField_a_of_type_Float = 0.0F;
+  boolean jdField_a_of_type_Boolean;
   
-  public aesy(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
+  aesy(aerv paramaerv) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a()
   {
-    if (paramMotionEvent.getAction() == 0)
+    return 4;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
     {
-      this.jdField_a_of_type_Float = paramView.getAlpha();
-      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
+      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_Aerv.jdField_a_of_type_JavaLangString, 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
+      }
+      noo.a(this.jdField_a_of_type_Aerv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0x8005750", "0x8005750", 0, 0, this.jdField_a_of_type_Aerv.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "", false);
+      paramObject = (akdi)this.jdField_a_of_type_Aerv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+      if (paramObject == null) {
+        break label256;
+      }
+      paramObject = paramObject.a(this.jdField_a_of_type_Aerv.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      if (paramObject == null) {
+        break label240;
+      }
+      if (this.jdField_a_of_type_Aerv.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler == null) {
+        this.jdField_a_of_type_Aerv.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler = ((PublicAccountHandler)this.jdField_a_of_type_Aerv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11));
+      }
+      this.jdField_a_of_type_Aerv.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(paramObject);
     }
     for (;;)
     {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(this.jdField_a_of_type_Float);
+      this.jdField_a_of_type_Aerv.T = true;
+      this.jdField_a_of_type_Aerv.Y = true;
+      this.jdField_a_of_type_Aerv.bq();
+      if ((this.jdField_a_of_type_Aerv.an) && (aerv.c(this.jdField_a_of_type_Aerv) != null)) {
+        aerv.d(this.jdField_a_of_type_Aerv).d();
       }
+      this.jdField_a_of_type_Aerv.c(this.jdField_a_of_type_Aerv.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
+      return;
+      label240:
+      this.jdField_a_of_type_Aerv.D();
+      this.jdField_a_of_type_Boolean = false;
+      continue;
+      label256:
+      this.jdField_a_of_type_Aerv.D();
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void b(Object paramObject)
+  {
+    this.jdField_a_of_type_Aerv.B(2131695568);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Aerv.bp();
     }
   }
 }

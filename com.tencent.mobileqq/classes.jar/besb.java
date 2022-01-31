@@ -1,27 +1,32 @@
-public class besb
+import android.content.Context;
+
+public abstract class besb
 {
-  private besa a = new besa();
+  public static final String TAG = "BaselibLoader";
+  protected besc mBaselibContent;
   
-  public besa a()
+  public besc getBaselib()
   {
-    return this.a;
+    return this.mBaselibContent;
   }
   
-  public besb a(String paramString)
+  public boolean isBaseLibInit()
   {
-    this.a.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    return (this.mBaselibContent != null) && (this.mBaselibContent.a());
   }
   
-  public besb a(boolean paramBoolean)
+  public abstract void loadBaselib(Context paramContext, besd parambesd);
+  
+  public void setBaselib(besc parambesc)
   {
-    this.a.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
+    if ((parambesc != null) && (parambesc.a())) {
+      this.mBaselibContent = parambesc;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     besb
  * JD-Core Version:    0.7.0.1
  */

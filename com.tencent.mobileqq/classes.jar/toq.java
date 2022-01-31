@@ -1,17 +1,36 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupStoryInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class toq
-  extends toz<String>
+  extends syq
 {
-  public toq(VideoViewVideoHolder paramVideoViewVideoHolder)
+  public List<StoryVideoItem> a;
+  
+  public toq(qqstory_service.RspBatchGetVideoInfo paramRspBatchGetVideoInfo)
   {
-    super(paramVideoViewVideoHolder, null);
+    super(paramRspBatchGetVideoInfo.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramRspBatchGetVideoInfo.vid_info_list.has())
+    {
+      paramRspBatchGetVideoInfo = paramRspBatchGetVideoInfo.vid_info_list.get().iterator();
+      while (paramRspBatchGetVideoInfo.hasNext())
+      {
+        qqstory_struct.GroupStoryInfo localGroupStoryInfo = (qqstory_struct.GroupStoryInfo)paramRspBatchGetVideoInfo.next();
+        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+        localStoryVideoItem.convertFrom("Q.qqstory.shareGroup:GetShareGroupVideoInfoResponse", localGroupStoryInfo);
+        this.jdField_a_of_type_JavaUtilList.add(localStoryVideoItem);
+      }
+    }
   }
   
-  public void a(String paramString)
+  public String toString()
   {
-    super.onNext(paramString);
-    VideoViewVideoHolder.a(this.a);
+    return "GetShareGroupVideoInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", mVideoItemList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

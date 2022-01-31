@@ -1,71 +1,30 @@
-import android.text.Editable;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.freshnews.BlockableEditTextView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import java.util.ArrayList;
 
-public class apqi
-  implements TextWatcher
+class apqi
+  implements View.OnClickListener
 {
-  public int a;
-  public CharSequence a;
-  public boolean a;
-  int b = -1;
-  int c = -1;
+  apqi(apqh paramapqh) {}
   
-  public apqi(BlockableEditTextView paramBlockableEditTextView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = "";
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int == 0)) {}
-    while (this.jdField_a_of_type_Int >= 0) {
+    if (!apqh.a(this.a)) {
       return;
     }
-    if (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 2)
+    if ((apue.a()) && (apeh.c() > apee.a()))
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-      this.jdField_a_of_type_Boolean = false;
+      aptr.a(SplashActivity.sTopActivity, 2131692672, 2131692677, new apqj(this));
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(TextUtils.concat(new CharSequence[] { this.jdField_a_of_type_JavaLangCharSequence.subSequence(this.c, this.jdField_a_of_type_JavaLangCharSequence.length()), this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, this.b) }));
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setSelection(this.b);
+    paramView = new ArrayList();
+    paramView.addAll(apeh.a());
+    Intent localIntent = new Intent();
+    localIntent.putParcelableArrayListExtra("sFilesSelected", paramView);
+    apqh.b(this.a, localIntent);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.jdField_a_of_type_Boolean) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0)) {}
-    do
-    {
-      Editable localEditable;
-      apqj[] arrayOfapqj;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            this.jdField_a_of_type_Int = 0;
-          } while (paramInt3 == paramInt2);
-          localEditable = this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getEditableText();
-        } while (localEditable == null);
-        arrayOfapqj = (apqj[])localEditable.getSpans(paramInt1, paramInt1, apqj.class);
-      } while ((arrayOfapqj == null) || (arrayOfapqj.length <= 0));
-      this.b = localEditable.getSpanStart(arrayOfapqj[0]);
-      this.c = localEditable.getSpanEnd(arrayOfapqj[0]);
-    } while ((this.c < 0) || (this.c < this.b) || (paramInt2 <= paramInt3) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0) || (paramInt1 == this.b) || (paramInt1 == this.c));
-    this.jdField_a_of_type_JavaLangCharSequence = new SpannableStringBuilder(paramCharSequence).subSequence(0, paramCharSequence.length());
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

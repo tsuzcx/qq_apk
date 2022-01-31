@@ -1,10 +1,14 @@
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import mqq.os.MqqHandler;
 
-public abstract interface afqh
+class afqh
+  implements afry
 {
-  public abstract void a();
+  afqh(afqe paramafqe) {}
   
-  public abstract void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo);
+  public void a()
+  {
+    this.a.a.sendEmptyMessageDelayed(7, 100L);
+  }
 }
 
 

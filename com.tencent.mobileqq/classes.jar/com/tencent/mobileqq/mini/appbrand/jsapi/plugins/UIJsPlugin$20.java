@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
-import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import org.json.JSONObject;
@@ -10,20 +7,18 @@ import org.json.JSONObject;
 class UIJsPlugin$20
   implements Runnable
 {
-  UIJsPlugin$20(UIJsPlugin paramUIJsPlugin, JsRuntime paramJsRuntime, JSONObject paramJSONObject1, String paramString1, int paramInt1, int paramInt2, String paramString2, Boolean paramBoolean, JSONObject paramJSONObject2, boolean paramBoolean1, String paramString3, JSONObject paramJSONObject3, int paramInt3) {}
+  UIJsPlugin$20(UIJsPlugin paramUIJsPlugin, JsRuntime paramJsRuntime, JSONObject paramJSONObject1, String paramString1, int paramInt1, String paramString2, Boolean paramBoolean, JSONObject paramJSONObject2, String paramString3, JSONObject paramJSONObject3, int paramInt2) {}
   
   public void run()
   {
-    AbsAppBrandPage localAbsAppBrandPage = ((AppBrandPageContainer)this.this$0.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(this.val$webview.getPageWebViewId());
-    WebviewContainer localWebviewContainer = null;
-    if (localAbsAppBrandPage != null) {
-      localWebviewContainer = localAbsAppBrandPage.getCurrentWebviewContainer();
-    }
+    WebviewContainer localWebviewContainer = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
     if (localWebviewContainer != null)
     {
-      localWebviewContainer.insertImageView(this.val$postionObj, this.val$data, this.val$parentId, this.val$viewId, this.val$iconPath, this.val$clickable, this.val$style, this.val$fixed);
+      localWebviewContainer.updateImageView(this.val$postionObj, this.val$data, this.val$viewId, this.val$iconPath, this.val$clickable, this.val$style);
       this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, this.val$result, this.val$callbackId);
+      return;
     }
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, "container is null", this.val$callbackId);
   }
 }
 

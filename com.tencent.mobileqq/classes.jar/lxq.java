@@ -1,54 +1,37 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
+import android.content.Intent;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class lxq
-  implements Animator.AnimatorListener
+public class lxq
+  implements birb
 {
-  lxq(lxo paramlxo, int paramInt, long paramLong) {}
+  final WeakReference<QQServiceForAV> a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  lxq(QQServiceForAV paramQQServiceForAV)
   {
-    int i = 4;
-    if (this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-    {
-      i = this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
-      if (this.jdField_a_of_type_Lxo.jdField_a_of_type_Boolean) {
-        break label173;
-      }
-      this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-      this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout.setTranslationY(0.0F);
-      QLog.w(this.jdField_a_of_type_Lxo.jdField_a_of_type_JavaLangString, 1, "ShowMenuView, onAnimationEnd, isShow[" + this.jdField_a_of_type_Lxo.jdField_a_of_type_Boolean + "], visibility[" + i + "], seq[" + this.jdField_a_of_type_Long + "], \nlastObjectAnimator[" + this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidAnimationObjectAnimator + "], \nanimation[" + paramAnimator + "]");
-      if (this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidAnimationObjectAnimator == paramAnimator) {
-        this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
-      }
-      return;
-      label173:
-      this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      if (this.jdField_a_of_type_Lxo.jdField_a_of_type_Lxr != null) {
-        this.jdField_a_of_type_Lxo.jdField_a_of_type_Lxr.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
-      }
-    }
+    this.a = new WeakReference(paramQQServiceForAV);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void a(int paramInt, long paramLong1, long paramLong2) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    int i = 4;
-    if (this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-    {
-      i = this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
-      this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.i("QQServiceForAV", 2, "PTULibpagDownloadCallback onAEResDownloadResult, package[" + paramInt1 + ", isDownloaded[" + paramBoolean + ", errorType[" + paramInt2 + "]");
     }
-    QLog.w(this.jdField_a_of_type_Lxo.jdField_a_of_type_JavaLangString, 1, "ShowMenuView, onAnimationStart, height[" + this.jdField_a_of_type_Int + "], isShow[" + this.jdField_a_of_type_Lxo.jdField_a_of_type_Boolean + "], visibility[" + i + "], seq[" + this.jdField_a_of_type_Long + "]");
+    Object localObject = (QQServiceForAV)this.a.get();
+    if (localObject != null)
+    {
+      localObject = (QQAppInterface)((QQServiceForAV)localObject).a();
+      Intent localIntent = new Intent("tencent.video.q2v.ptuLibpagDownloadRet");
+      localIntent.putExtra("packageIdx", paramInt1);
+      localIntent.putExtra("isDownloaded", paramBoolean);
+      localIntent.putExtra("errorType", paramInt2);
+      ((QQAppInterface)localObject).getApp().sendBroadcast(localIntent);
+    }
   }
 }
 

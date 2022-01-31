@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bdux;
-import bdvj;
-import bdvk;
+import bfbf;
+import bfbr;
+import bfbs;
 
 public class BrandPageWebview$7
   implements Runnable
 {
-  public BrandPageWebview$7(bdux parambdux) {}
+  public BrandPageWebview$7(bfbf parambfbf) {}
   
   public void run()
   {
-    bdux.a(this.this$0).a().a().a(bdux.a(this.this$0));
+    bfbf.a(this.this$0).a().a().a(bfbf.a(this.this$0));
   }
 }
 

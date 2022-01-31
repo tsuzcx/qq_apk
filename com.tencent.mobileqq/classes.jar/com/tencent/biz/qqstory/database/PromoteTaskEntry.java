@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.database;
 
-import atmo;
+import aukm;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="taskId")
 public class PromoteTaskEntry
-  extends atmo
+  extends aukm
 {
   public long expireTime;
   public String feedId;

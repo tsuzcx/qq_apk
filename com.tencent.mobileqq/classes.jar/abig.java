@@ -1,39 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class abig
-  extends apqw
+  extends BroadcastReceiver
 {
-  public abig(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public abig(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onBandIntimateRelationship");
+    if (paramIntent != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
+      }
+      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
+        this.a.finish();
+      }
     }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
-      QLog.d("intimate_relationship", 1, String.format("onBandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
-    }
-    while (!paramBoolean) {
-      return;
-    }
-    ProfileCardMoreActivity.a(this.a);
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "ProfileCard onDisbandIntimateRelationship");
-    }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
-      QLog.d("intimate_relationship", 1, String.format("ProfileCard onDisbandIntimateRelationship, friendUin: %s", new Object[] { paramString }));
-    }
-    while (!paramBoolean1) {
-      return;
-    }
-    ProfileCardMoreActivity.a(this.a);
   }
 }
 

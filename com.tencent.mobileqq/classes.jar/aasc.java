@@ -1,25 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class aasc
-  implements DialogInterface.OnClickListener
+  implements bfoq
 {
-  public aasc(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public aasc(ChatHistoryFileActivity paramChatHistoryFileActivity, bfol parambfol) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramDialogInterface = ForwardFriendListActivity.a(this.a).getInputValue();
-    if (!TextUtils.isEmpty(paramDialogInterface))
-    {
-      ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
-      Intent localIntent = new Intent();
-      localIntent.putExtras(this.a.getIntent().getExtras());
-      localIntent.putExtra("extra_choose_friend_name", paramDialogInterface);
-      this.a.setResult(-1, localIntent);
-      this.a.finish();
+    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a(3, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.d)) || (this.jdField_a_of_type_Bfol.isShowing())) {
+      this.jdField_a_of_type_Bfol.dismiss();
     }
   }
 }

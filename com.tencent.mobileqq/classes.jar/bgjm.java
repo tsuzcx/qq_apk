@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bgjm
-  implements DialogInterface.OnClickListener
+public class bgjm
 {
-  bgjm(bgjg parambgjg, String[] paramArrayOfString) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bgjm(int paramInt, String paramString1, String paramString2)
   {
-    paramDialogInterface.dismiss();
-    bgjg.a(this.jdField_a_of_type_Bgjg, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
   }
 }
 

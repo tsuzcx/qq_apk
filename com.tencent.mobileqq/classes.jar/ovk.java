@@ -1,21 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
 
-class ovk
-  implements ViewBase.OnClickListener
+public class ovk
+  implements View.OnClickListener
 {
-  ovk(ovi paramovi, opw paramopw, Container paramContainer) {}
+  public ovk(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    paramViewBase = this.jdField_a_of_type_Opw.a();
-    if (paramViewBase != null)
-    {
-      obz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase.mArticleContentUrl, null);
-      qoe.a(paramViewBase, 0);
-      ovi.b(this.jdField_a_of_type_Ovi, true);
+    if (ReadInJoyProteusFamilyFragment.a(this.a) != null) {
+      ReadInJoyProteusFamilyFragment.a(this.a).a(true);
     }
   }
 }

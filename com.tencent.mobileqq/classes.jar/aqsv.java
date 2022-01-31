@@ -1,32 +1,17 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-class aqsv
-  implements wiu
+final class aqsv
+  implements ahbt
 {
-  aqsv(aqst paramaqst) {}
-  
-  public void a(Bundle paramBundle)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    int i = paramBundle.getInt("state", 0);
-    String str = paramBundle.getString("version");
-    long l = paramBundle.getLong("size", 0L);
-    try
-    {
-      paramBundle = new JSONObject();
-      paramBundle.put("status", i);
-      paramBundle.put("versionCode", str);
-      paramBundle.put("fileSize", l);
-      this.a.callJs(this.a.f, new String[] { paramBundle.toString() });
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameHelper", 1, "dowloadFullPopRes complete! rescpde=" + paramInt);
     }
-    catch (Exception paramBundle)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TroopApiPlugin", 2, "previewRewardVideo exp", paramBundle);
-      }
-      this.a.callJs(this.a.f, new String[] { "{\"result\":-10,\"message\":\"request fail\"}" });
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)) && (QLog.isColorLevel())) {
+      QLog.d("QQGameHelper", 1, "dowloadFullPopRes fileUrl=" + paramPathResult.url + " unzipPath=" + paramPathResult.folderPath);
     }
   }
 }

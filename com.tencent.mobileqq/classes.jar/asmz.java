@@ -1,72 +1,44 @@
-import android.graphics.Paint;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.now.model.MedalInfo;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCTransportFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class asmz
+  implements bcsv
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
-  public ImageView d;
+  public asmz(MsgBackupPCTransportFragment paramMsgBackupPCTransportFragment) {}
   
-  public void a(long paramLong)
+  public void a(View paramView, int paramInt)
   {
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(asmp.a(1000L * paramLong));
-  }
-  
-  public void a(MedalInfo paramMedalInfo, int paramInt, Paint paramPaint, boolean paramBoolean)
-  {
-    paramInt = (int)(paramInt - (int)paramPaint.measureText(this.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) - mjg.a(this.jdField_c_of_type_AndroidWidgetTextView.getContext(), 30.0F));
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    if ((paramMedalInfo == null) || (paramMedalInfo.a == null) || (paramMedalInfo.a.size() < 0))
+    int i = askt.a().a();
+    switch (paramInt)
     {
-      this.a.setMaxWidth(paramInt);
-      return;
     }
-    this.a.setMaxWidth(paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if ((paramString1 != null) && (!paramString1.equals("")))
+    do
     {
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-      localSpannableStringBuilder.append("回复");
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-8947849), 0, localSpannableStringBuilder.length(), 17);
-      int i = localSpannableStringBuilder.length();
-      String str = paramString1;
-      if (paramString1.length() > 6)
-      {
-        paramString1 = paramString1.substring(0, 6);
-        str = paramString1 + "...";
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "page is in pc Link page! click cancel! bizType = " + i + ", pcHandler = " + this.a.e);
       }
-      localSpannableStringBuilder.append(str);
-      localSpannableStringBuilder.append(": ");
-      localSpannableStringBuilder.append(paramString2);
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-16777216), i, str.length() + i, 17);
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-8947849), i + str.length(), localSpannableStringBuilder.length(), 17);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
+      this.a.aK_();
       return;
-    }
-    a(paramString2);
+      asle.a = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "backup is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + asle.a + ", curSpeed = " + this.a.a + ", hasFinishedCount = " + this.a.d);
+      }
+      asle.a().a().a(null);
+      asle.a().a(this.a.a, this.a.d, i, this.a.getActivity());
+      if (this.a.b != 1) {
+        break;
+      }
+    } while (!this.a.e);
+    asoe.a("0X800A260");
+    return;
+    asoe.a("0X800A284");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asmz
  * JD-Core Version:    0.7.0.1
  */

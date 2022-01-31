@@ -1,22 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class abgo
-  implements DialogInterface.OnKeyListener
+  implements amng
 {
-  public abgo(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
+  public abgo(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public int a()
   {
-    if (paramInt == 4)
-    {
-      SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
-      this.a.finish();
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 2;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {
+      return this.a.getString(2131694073);
     }
-    return false;
+    return this.a.getString(2131692394);
   }
 }
 

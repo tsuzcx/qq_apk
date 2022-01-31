@@ -1,43 +1,25 @@
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import java.lang.ref.WeakReference;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 
 public class afwr
   extends Handler
 {
-  private WeakReference<BaseActivityView> a;
-  
-  public afwr(BaseActivityView paramBaseActivityView)
-  {
-    this.a = new WeakReference(paramBaseActivityView);
-  }
+  public afwr(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
   public void handleMessage(Message paramMessage)
   {
-    boolean bool = true;
-    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
-    if (localBaseActivityView == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    if (paramMessage.what == 1)
     {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (;;)
-      {
-        localBaseActivityView.b(i, bool);
-        return;
-        bool = false;
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        this.a.a.dismiss();
       }
-    case 2: 
-      localBaseActivityView.f();
-      return;
+      this.a.a = new bcpq(this.a.getActivity(), this.a.getActivity().getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.c(2131691528);
+      this.a.a.show();
     }
-    localBaseActivityView.i();
   }
 }
 

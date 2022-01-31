@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import aavq;
+import abfm;
 
 public class FriendProfileCardActivity$61$1
   implements Runnable
 {
-  public FriendProfileCardActivity$61$1(aavq paramaavq) {}
+  public FriendProfileCardActivity$61$1(abfm paramabfm) {}
   
   public void run()
   {
-    if (this.a.a.f == null) {
+    if (this.a.a.e == null) {
       return;
     }
     this.a.a.b(true);

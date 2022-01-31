@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-
-public class akel
-  extends aken
+class akel
+  implements lxw
 {
-  public akel(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  akel(akej paramakej) {}
+  
+  public void a(lxv paramlxv)
   {
-    super(paramQQAppInterface, paramProxyManager);
-    this.a = DataLineMsgRecord.tableName(1);
+    paramlxv.a(this.a.a.a);
+    paramlxv.a();
   }
 }
 

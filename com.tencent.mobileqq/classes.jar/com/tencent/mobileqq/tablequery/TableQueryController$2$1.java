@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.tablequery;
 
-import axdd;
+import aydf;
 
 public class TableQueryController$2$1
   implements Runnable
 {
-  public TableQueryController$2$1(axdd paramaxdd) {}
+  public TableQueryController$2$1(aydf paramaydf) {}
   
   public void run()
   {
-    axdc.a = true;
+    ayde.a = true;
   }
 }
 

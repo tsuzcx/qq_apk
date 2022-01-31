@@ -1,13 +1,27 @@
-import android.graphics.Canvas;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public abstract interface urz
-  extends uus
+class urz
+  extends tpk
 {
-  public abstract int a(int paramInt);
+  urz(ury paramury) {}
   
-  public abstract boolean a(int paramInt);
+  public void a()
+  {
+    super.a();
+    ury.a(this.a, null);
+  }
   
-  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    vel.a("home_page", "suc_share", 2, paramInt, new String[] { vel.b(ury.a(this.a).a) + "", vel.a(ury.a(this.a).a) + "", ury.a(this.a).a.feedId });
+  }
+  
+  public void b(int paramInt)
+  {
+    super.b(paramInt);
+    vel.a("home_page", "share_chanel", 2, paramInt, new String[] { vel.b(ury.a(this.a).a) + "", vel.a(ury.a(this.a).a) + "", ury.a(this.a).a.feedId });
+  }
 }
 
 

@@ -1,70 +1,56 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
+import java.util.ArrayList;
 
 public class oea
-  implements AladdinConfigHandler
+  implements View.OnClickListener
 {
-  private final String a = "reset_kandian_configuration";
-  private final String b = "reset_version";
+  public oea(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment) {}
   
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    Map localMap = ocx.a(paramString);
-    Object localObject2 = localMap.keySet();
-    Object localObject1 = "";
-    paramString = "";
-    Iterator localIterator = ((Set)localObject2).iterator();
-    String str;
-    if (localIterator.hasNext())
-    {
-      str = (String)localIterator.next();
-      localObject2 = (String)localMap.get(str);
-      QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
-      if (TextUtils.equals(str, "reset_kandian_configuration"))
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.doOnBackPressed();
+    Object localObject2;
+    for (Object localObject1 = paramView.getTag();; localObject2 = null) {
+      for (;;)
       {
-        localObject1 = paramString;
-        paramString = (String)localObject2;
-      }
-    }
-    for (;;)
-    {
-      localObject2 = paramString;
-      paramString = (String)localObject1;
-      localObject1 = localObject2;
-      break;
-      if (TextUtils.equals(str, "reset_version"))
-      {
-        paramString = (String)localObject1;
-        localObject1 = localObject2;
-        continue;
-        if ((TextUtils.equals("1", (CharSequence)localObject1)) && (!TextUtils.isEmpty(paramString))) {}
         try
         {
-          paramInt1 = Integer.valueOf(paramString).intValue();
-          baig.q(BaseApplicationImpl.getApplication(), paramInt1, obz.a());
-          return true;
+          i = Integer.valueOf(localObject1.toString()).intValue();
+          if ((i < 0) || (i >= this.a.jdField_a_of_type_JavaUtilArrayList.size())) {
+            break;
+          }
+          localObject1 = (MultiBiuSameContent)this.a.jdField_a_of_type_JavaUtilArrayList.get(i);
+          switch (paramView.getId())
+          {
+          default: 
+            return;
+          }
         }
-        catch (NumberFormatException paramString)
+        catch (Exception localException)
         {
-          QLog.e("ResetAllConfigHandler", 1, "[onReceiveConfig] e = " + paramString);
-          return true;
+          int i = -1;
+          continue;
+          if (localException == null) {
+            continue;
+          }
+          paramView = ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a);
+          ReadInjoyFriendsBiuComponentFragment.a(this.a, paramView);
+          ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.b, "0X800953D", localException.c);
+          return;
+        }
+        if (localException != null)
+        {
+          paramView = ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.c, localException.b);
+          ReadInjoyFriendsBiuComponentFragment.a(this.a, paramView);
+          ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.b, "0X800953C", localException.c);
+          return;
         }
       }
-      localObject2 = paramString;
-      paramString = (String)localObject1;
-      localObject1 = localObject2;
     }
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("ResetAllConfigHandler", 2, "[onWipeConfig] id=" + paramInt);
   }
 }
 

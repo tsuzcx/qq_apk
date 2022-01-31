@@ -1,88 +1,36 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.widget.SimpleTextView;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnSeekCompleteListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.11.1;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class benv
-  extends bens
+public class benv
+  implements VideoPlayerProxy.OnSeekCompleteListener
 {
-  protected final int a;
-  protected final int[] b;
-  protected final int[] c;
-  protected final int[] d;
-  protected final int[] e;
+  public benv(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public benv(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  public void onSeekComplete(VideoPlayerProxy paramVideoPlayerProxy)
   {
-    super(paramInt1, paramInt2);
-    this.e = paramArrayOfInt1;
-    this.jdField_a_of_type_Int = paramInt3;
-    this.b = paramArrayOfInt2;
-    this.c = paramArrayOfInt3;
-    this.d = paramArrayOfInt4;
-  }
-  
-  public View a(int paramInt, Object paramObject, benu parambenu, View.OnClickListener paramOnClickListener)
-  {
-    Object localObject2 = null;
-    paramObject = null;
-    Object localObject1 = paramObject;
-    if (parambenu != null)
+    beiw.c().post(new MiniAppVideoPlayer.11.1(this));
+    try
     {
-      localObject1 = paramObject;
-      if (parambenu.jdField_a_of_type_Int >= 0)
-      {
-        if (parambenu.b >= 0) {
-          break label35;
-        }
-        localObject1 = paramObject;
-      }
+      paramVideoPlayerProxy = new JSONObject();
+      paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+      this.a.jdField_a_of_type_Begy.a("onVideoSeeked", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+      besl.a("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoSeeked = " + paramVideoPlayerProxy.toString());
+      return;
     }
-    label35:
-    int i;
-    int j;
-    int k;
-    do
+    catch (JSONException paramVideoPlayerProxy)
     {
-      return localObject1;
-      paramObject = localObject2;
-      if ((parambenu.jdField_a_of_type_AndroidViewView instanceof SimpleTextView)) {
-        paramObject = (SimpleTextView)parambenu.jdField_a_of_type_AndroidViewView;
-      }
-      i = this.c[parambenu.b];
-      j = this.d[parambenu.b];
-      k = this.b[parambenu.b];
-      localObject1 = paramObject;
-    } while (paramObject == null);
-    paramObject.setVisibility(0);
-    paramObject.setText(paramObject.getContext().getResources().getString(i));
-    paramObject.setBackgroundResource(j);
-    paramObject.setId(k);
-    paramObject.setTag("tag_swip_icon_menu_item");
-    paramObject.setTag(-2, Integer.valueOf(i));
-    paramObject.setTag(-1, Integer.valueOf(paramInt));
-    paramObject.setContentDescription(paramObject.getResources().getString(i));
-    paramObject.setOnClickListener(paramOnClickListener);
-    parambenu.c = this.e[parambenu.jdField_a_of_type_Int];
-    parambenu.d = this.jdField_a_of_type_Int;
-    return paramObject;
-  }
-  
-  public View a(Context paramContext, int paramInt)
-  {
-    paramContext = new SimpleTextView(paramContext);
-    paramContext.setLayoutParams(new LinearLayout.LayoutParams(this.e[paramInt], this.jdField_a_of_type_Int));
-    paramContext.setGravity(17);
-    paramContext.setTextSize(16.0F);
-    paramContext.setTextColor(-1);
-    return paramContext;
+      paramVideoPlayerProxy.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     benv
  * JD-Core Version:    0.7.0.1
  */

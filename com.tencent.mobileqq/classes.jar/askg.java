@@ -1,46 +1,19 @@
-import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.CustomViewPager;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Pair;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class askg
-  implements asoe
+class askg
+  implements askp<Pair<String, Integer>, EmoticonPackage>
 {
-  public askg(SmallVideoFragment paramSmallVideoFragment) {}
+  askg(askd paramaskd) {}
   
-  public void a(int paramInt)
+  public EmoticonPackage a(Pair<String, Integer> paramPair)
   {
-    Object localObject;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a() != null)
-    {
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a().jdField_a_of_type_JavaLangString;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a() == null) {
-        break label168;
-      }
-    }
-    label168:
-    for (long l = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a().jdField_a_of_type_Long;; l = 0L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Native_ShortVideo_Report", 2, "onClickClose report module=short_video, action=view_click, obj1=6, res2=" + (String)localObject + ", anchor=" + l);
-      }
-      localObject = (VideoPlayerPagerAdapter)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getAdapter();
-      if ((((VideoPlayerPagerAdapter)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getCurrentItem()) instanceof ShortVideoCommentsView)) {
-        ((ShortVideoCommentsView)((VideoPlayerPagerAdapter)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getCurrentItem())).j();
-      }
-      this.a.d();
-      return;
-      localObject = "0";
-      break;
-    }
+    return this.a.c((String)paramPair.first, ((Integer)paramPair.second).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     askg
  * JD-Core Version:    0.7.0.1
  */

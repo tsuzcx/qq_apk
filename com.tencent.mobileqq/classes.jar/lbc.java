@@ -1,52 +1,71 @@
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class lbc
+class lbc
+  extends lao
 {
-  static String jdField_a_of_type_JavaLangString = "smartdevice::sharp";
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-  lbb jdField_a_of_type_Lbb = null;
-  lbd jdField_a_of_type_Lbd = null;
+  lbc(lbb paramlbb, lbr paramlbr, Long paramLong) {}
   
-  public lbc(lbb paramlbb, VideoAppInterface paramVideoAppInterface)
-  {
-    this.jdField_a_of_type_Lbb = paramlbb;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_Lbd = new lbd(this);
-    paramlbb = new IntentFilter();
-    paramlbb.addAction("SmartDevice_ReceiveSharpMsg");
-    paramlbb.addAction("SmartDevice_ReceiveSharpAckMsg");
-    paramlbb.addAction("SmartDevice_DeviceUnBindRst");
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().registerReceiver(this.jdField_a_of_type_Lbd, paramlbb, "com.tencent.smartdevice.permission.broadcast", null);
-  }
-  
-  void a(byte[] paramArrayOfByte, long paramLong)
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONArray paramJSONArray)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "send broadcast : smartdevice send sharp msg");
+      QLog.e("GoogleTranslator", 2, "[ERROR][SHOULD NOT GO HERE][onSuccess] statusCode:" + paramInt);
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("size", paramArrayOfByte.length);
-    localBundle.putLong("uin", paramLong);
-    localBundle.putByteArray("value", paramArrayOfByte);
-    paramArrayOfByte = new Intent();
-    paramArrayOfByte.putExtra("msgData", localBundle);
-    paramArrayOfByte.setAction("SmartDevice_SendSharpMsg");
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(paramArrayOfByte, "com.tencent.smartdevice.permission.broadcast");
   }
   
-  public void b(byte[] paramArrayOfByte, long paramLong)
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    a(paramArrayOfByte, paramLong);
+    paramArrayOfHeader = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      paramJSONObject = paramJSONObject.getJSONObject("data");
+      if (paramJSONObject != null)
+      {
+        paramJSONObject = paramJSONObject.getJSONArray("translations");
+        if (paramJSONObject != null)
+        {
+          paramInt = 0;
+          while (paramInt < paramJSONObject.length())
+          {
+            String str1 = ((JSONObject)paramJSONObject.get(paramInt)).getString("translatedText");
+            String str2 = ((JSONObject)paramJSONObject.get(paramInt)).getString("detectedSourceLanguage");
+            if ((paramArrayOfHeader != null) && (localArrayList != null))
+            {
+              paramArrayOfHeader.add(Language.fromString(str2));
+              localArrayList.add(str1);
+            }
+            paramInt += 1;
+          }
+        }
+      }
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+      this.jdField_a_of_type_Lbr.a(paramArrayOfHeader, localArrayList, this.jdField_a_of_type_JavaLangLong);
+    }
+  }
+  
+  public void a(Throwable paramThrowable, String paramString)
+  {
+    this.jdField_a_of_type_Lbr.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
+    if (QLog.isColorLevel()) {
+      QLog.e("GoogleTranslator", 2, " [onFailure][GoogleTranslateClient] Throwable:" + paramThrowable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     lbc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 public abstract interface lrj
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public abstract void a();
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class QVipUtils$1
@@ -8,7 +8,7 @@ public final class QVipUtils$1
 {
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getContext(), 1, this.a, 0).a();
+    bcpw.a(BaseApplicationImpl.getContext(), 1, this.a, 0).a();
   }
 }
 

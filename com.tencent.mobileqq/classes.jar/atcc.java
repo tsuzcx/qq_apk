@@ -1,149 +1,24 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.widget.RoundCornerLinearLayout;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.AdapterView;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class atcc
-  extends Dialog
+  implements bfpc
 {
-  protected int a;
-  protected Context a;
-  protected Drawable a;
-  protected View.OnClickListener a;
-  protected atcf a;
-  protected int b;
+  public atcc(GameQuickWordsPanel paramGameQuickWordsPanel) {}
   
-  public atcc(Context paramContext, ArrayList<atce> paramArrayList)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super(paramContext, 2131690181);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new atcd(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = azvv.a(paramContext, 34.0F);
-    this.jdField_a_of_type_Int = azvv.a(paramContext, 34.0F);
-    a(paramArrayList);
-  }
-  
-  public void a(int paramInt1, int paramInt2, float paramFloat)
-  {
-    Window localWindow = getWindow();
-    WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-    localLayoutParams.x = paramInt1;
-    localLayoutParams.y = paramInt2;
-    localLayoutParams.gravity = 85;
-    localLayoutParams.dimAmount = paramFloat;
-    localWindow.setAttributes(localLayoutParams);
-    super.show();
-  }
-  
-  protected void a(ImageView paramImageView, String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#f2f2f2"));
-    }
-    Object localObject2 = null;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.jdField_a_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.jdField_b_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        localObject1 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
-      }
-      for (;;)
-      {
-        paramString = (String)localObject1;
-        if (localObject1 == null) {
-          paramString = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        }
-        paramImageView.setImageDrawable(paramString);
-        return;
-        localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("NearbyPublishMenu", 2, "loadImage empty url");
-          localObject1 = localObject2;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("NearbyPublishMenu", 2, "loadImage exp: url=" + paramString, localException);
-          localObject1 = localObject2;
-        }
-      }
-    }
-  }
-  
-  public void a(atcf paramatcf)
-  {
-    this.jdField_a_of_type_Atcf = paramatcf;
-  }
-  
-  protected void a(ArrayList<atce> paramArrayList)
-  {
-    RoundCornerLinearLayout localRoundCornerLinearLayout = new RoundCornerLinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localRoundCornerLinearLayout.setOrientation(1);
-    localRoundCornerLinearLayout.setBackgroundResource(2130844626);
-    int i = azvv.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    localRoundCornerLinearLayout.setPadding(0, i, 0, i);
-    localRoundCornerLinearLayout.setRadius(azvv.a(this.jdField_a_of_type_AndroidContentContext, 8.0F));
-    LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    paramArrayList = paramArrayList.iterator();
-    if (paramArrayList.hasNext())
-    {
-      atce localatce = (atce)paramArrayList.next();
-      ViewGroup localViewGroup = (ViewGroup)localLayoutInflater.inflate(2131493767, localRoundCornerLinearLayout, false);
-      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131302061);
-      TextView localTextView1 = (TextView)localViewGroup.findViewById(2131311534);
-      TextView localTextView2 = (TextView)localViewGroup.findViewById(2131310823);
-      localTextView1.setText(localatce.jdField_b_of_type_JavaLangString);
-      if (TextUtils.isEmpty(localatce.c))
-      {
-        localTextView2.setVisibility(8);
-        label167:
-        if (TextUtils.isEmpty(localatce.a)) {
-          break label227;
-        }
-        a(localImageView, localatce.a);
-      }
-      for (;;)
-      {
-        localViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        localViewGroup.setTag(localatce);
-        localRoundCornerLinearLayout.addView(localViewGroup);
-        break;
-        localTextView2.setText(localatce.c);
-        break label167;
-        label227:
-        if (localatce.jdField_b_of_type_Int > 0) {
-          localImageView.setImageResource(localatce.jdField_b_of_type_Int);
-        }
-      }
-    }
-    setContentView(localRoundCornerLinearLayout);
+    paramAdapterView = (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramView = new aaok();
+    paramView.c = bbev.a(BaseApplication.getContext());
+    paramView.a = System.currentTimeMillis();
+    aaod.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramAdapterView, null, paramView);
+    this.a.jdField_a_of_type_Aepg.aK();
+    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "send_default", 0, 0, "", "", "", "");
   }
 }
 

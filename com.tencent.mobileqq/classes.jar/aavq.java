@@ -1,26 +1,25 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.61.1;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.61.2;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 
 public class aavq
-  implements bbmb
+  implements aaqe
 {
-  public aavq(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aavq(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void a()
   {
-    if ("profile_btn_config".equals(paramString)) {
-      this.a.runOnUiThread(new FriendProfileCardActivity.61.1(this));
-    }
-    while (!"profile_switch_config".equals(paramString)) {
-      return;
-    }
-    this.a.runOnUiThread(new FriendProfileCardActivity.61.2(this));
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aavq
  * JD-Core Version:    0.7.0.1
  */

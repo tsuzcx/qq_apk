@@ -1,80 +1,70 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import javax.annotation.Nullable;
+import mqq.app.AppRuntime;
 
-class bafc
-  extends BaseAdapter
+public class bafc
+  extends ampb<bafb>
 {
-  bafc(bafb parambafb) {}
-  
-  public int getCount()
+  public int a()
   {
-    if (this.a.items != null) {
-      return this.a.items.length;
-    }
-    return 0;
+    return 590;
   }
   
-  public Object getItem(int paramInt)
+  @NonNull
+  public bafb a(int paramInt)
   {
+    QLog.d("TroopShortcutBarConfig.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new bafb();
+  }
+  
+  @Nullable
+  public bafb a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
+      return bafb.a(paramArrayOfampi[0].a);
+    }
     return null;
   }
   
-  public long getItemId(int paramInt)
+  public Class<bafb> a()
   {
-    return 0L;
+    return bafb.class;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void a(int paramInt)
   {
-    if (this.a.inflater == null) {
-      this.a.inflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
+    QLog.d("TroopShortcutBarConfig.config", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public void a(bafb parambafb)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((baff)((QQAppInterface)localAppRuntime).getManager(355)).a(parambafb, false);
     }
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramViewGroup = this.a.inflater.inflate(this.a.getDialogListItemLayout(), null);
-      paramView = new bafo(this.a, null);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131302757));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView = (bafo)paramViewGroup.getTag();
-    int i;
-    int j;
-    int k;
-    int m;
-    if (paramView.a != null)
-    {
-      paramView.a.setText(this.a.items[paramInt]);
-      paramView.a.setOnClickListener(new bafn(this.a, paramInt));
-      i = paramView.a.getPaddingTop();
-      j = paramView.a.getPaddingLeft();
-      k = paramView.a.getPaddingRight();
-      m = paramView.a.getPaddingBottom();
-      if (this.a.items.length != 1) {
-        break label212;
-      }
-      paramView.a.setBackgroundResource(2130839246);
-    }
-    for (;;)
-    {
-      paramView.a.setPadding(j, i, k, m);
-      return paramViewGroup;
-      label212:
-      if (paramInt == 0) {
-        paramView.a.setBackgroundResource(2130839247);
-      } else if (paramInt == this.a.items.length - 1) {
-        paramView.a.setBackgroundResource(2130839245);
-      }
-    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bafc
  * JD-Core Version:    0.7.0.1
  */

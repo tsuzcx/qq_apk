@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
-import nxd;
-import nyf;
-import nyi;
+import oio;
+import ojq;
+import ojt;
 
 public class ReadInJoyCommentDataManager$27
   implements Runnable
 {
-  public ReadInJoyCommentDataManager$27(nxd paramnxd, nyf paramnyf, nyi paramnyi) {}
+  public ReadInJoyCommentDataManager$27(oio paramoio, ojq paramojq, ojt paramojt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Nyf.a(this.jdField_a_of_type_Nyi);
+    this.jdField_a_of_type_Ojq.a(this.jdField_a_of_type_Ojt);
   }
 }
 

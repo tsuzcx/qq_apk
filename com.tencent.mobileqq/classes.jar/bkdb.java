@@ -1,0 +1,12 @@
+public abstract interface bkdb
+{
+  public abstract void a();
+  
+  public abstract void a(Runnable paramRunnable);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     bkdb
+ * JD-Core Version:    0.7.0.1
+ */

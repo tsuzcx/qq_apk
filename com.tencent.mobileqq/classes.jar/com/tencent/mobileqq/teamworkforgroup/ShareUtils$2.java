@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import axip;
+import ayit;
 import com.tencent.biz.widgets.ElasticHorScrView;
 
 public class ShareUtils$2
   implements Runnable
 {
-  public ShareUtils$2(axip paramaxip, int paramInt1, int paramInt2) {}
+  public ShareUtils$2(ayit paramayit, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (axip.a(this.this$0).getWidth() < this.a) {
-      axip.a(this.this$0).setMove(true);
+    if (ayit.a(this.this$0).getWidth() < this.a) {
+      ayit.a(this.this$0).setMove(true);
     }
-    while (axip.b(this.this$0).getWidth() < this.b)
+    while (ayit.b(this.this$0).getWidth() < this.b)
     {
-      axip.b(this.this$0).setMove(true);
+      ayit.b(this.this$0).setMove(true);
       return;
-      axip.a(this.this$0).setMove(false);
+      ayit.a(this.this$0).setMove(false);
     }
-    axip.b(this.this$0).setMove(false);
+    ayit.b(this.this$0).setMove(false);
   }
 }
 

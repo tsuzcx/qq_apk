@@ -1,74 +1,68 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
 public class avxj
-  extends avxd
 {
-  public final ArrayList<avxi> a = new ArrayList();
+  protected int a;
+  protected PublishVideoEntry a;
+  protected int b;
+  protected int c;
+  protected int d = -1;
+  protected int e = -1;
   
-  public avxj(ViewGroup paramViewGroup, int paramInt)
+  public avxj(int paramInt, PublishVideoEntry paramPublishVideoEntry)
   {
-    super(paramViewGroup, paramInt);
-    LinearLayout localLinearLayout = (LinearLayout)a(paramInt);
-    localLinearLayout.setOrientation(0);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    paramInt = azvv.a(paramViewGroup.getContext(), 13.5F);
-    localLayoutParams.rightMargin = paramInt;
-    localLayoutParams.leftMargin = paramInt;
-    localLinearLayout.setLayoutParams(localLayoutParams);
-    localLinearLayout.setBackgroundDrawable(null);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.copy(paramPublishVideoEntry);
+    a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode);
   }
   
-  public void a(avpd paramavpd)
+  private int b(int paramInt)
   {
-    int i = 3;
-    this.a.clear();
-    LinearLayout localLinearLayout = (LinearLayout)a(this.c);
-    localLinearLayout.removeAllViews();
-    if ((paramavpd.a == null) || (paramavpd.a.size() == 0)) {}
-    int j;
-    int k;
-    label90:
-    do
+    switch (paramInt)
     {
-      return;
-      localObject = localLinearLayout.getContext();
-      j = paramavpd.a.size();
-      if (j >= 3) {
-        break;
-      }
-      k = (((Context)localObject).getResources().getDisplayMetrics().widthPixels - azvv.a((Context)localObject, 27.0F)) / i;
-      i = 0;
-    } while (i >= j);
-    Object localObject = (avpc)paramavpd.a.get(i);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(k, -2);
-    switch (((avpc)localObject).a)
-    {
+    default: 
+      return 0;
+    case 7: 
+      return 5;
+    case 8: 
+      return 6;
+    case 9: 
+      return 7;
     }
-    for (localObject = null;; localObject = new avxk((ViewGroup)a(), 0))
+    return 4;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      if (localObject != null)
-      {
-        ((avxi)localObject).a().setLayoutParams(localLayoutParams);
-        localLinearLayout.addView(((avxi)localObject).a());
-        this.a.add(localObject);
-      }
-      i += 1;
-      break label90;
-      i = paramavpd.a.size();
-      break;
+    case 3: 
+    case 4: 
+    default: 
+      return 0;
+    case 1: 
+      return 1;
+    case 2: 
+      return 2;
     }
+    return 3;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.b = b(paramInt);
+    this.c = a(paramInt);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.d = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avxj
  * JD-Core Version:    0.7.0.1
  */

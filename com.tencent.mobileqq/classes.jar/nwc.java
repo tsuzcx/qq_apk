@@ -1,12 +1,28 @@
-import android.view.View;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import java.lang.ref.WeakReference;
 
-public abstract interface nwc
+public class nwc
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void a(View paramView);
+  private WeakReference<ntg> a;
+  
+  public nwc(ntg paramntg)
+  {
+    this.a = new WeakReference(paramntg);
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((ntg)this.a.get()).a(true);
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nwc
  * JD-Core Version:    0.7.0.1
  */

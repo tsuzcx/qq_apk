@@ -1,16 +1,24 @@
-public abstract interface mcs
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
+class mcs
+  extends Handler
 {
-  public abstract void a(int paramInt, Throwable paramThrowable);
+  public mcs(mcr parammcr, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a(String paramString);
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    mcr.a(this.a);
+  }
 }
 
 

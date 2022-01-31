@@ -1,46 +1,21 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.SSOAccountObserver;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class aplk
-  extends SSOAccountObserver
+public class aplk
+  extends apli
 {
-  WeakReference<apld> a;
-  
-  public aplk(apld paramapld)
+  public aplk(apkp paramapkp)
   {
-    this.a = new WeakReference(paramapld);
+    super(paramapkp);
   }
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public boolean a(String paramString)
   {
-    QLog.d("ForwardSdkBaseOption", 1, new Object[] { "-->onFailed--account = ", paramString, ", ret = ", Integer.valueOf(paramInt2) });
-    paramString = (apld)this.a.get();
-    if (paramString != null) {
-      apld.a(paramString, "KEY_SSO_GET_TICKET_NO_PASSWD", false);
+    FileManagerEntity localFileManagerEntity = this.a.a();
+    if (localFileManagerEntity == null) {}
+    while ((localFileManagerEntity.strTroopFilePath == null) || (!localFileManagerEntity.strTroopFilePath.equalsIgnoreCase(paramString))) {
+      return false;
     }
-    if ((paramString != null) && (!paramString.m) && (apld.a(paramString) != null)) {
-      apld.a(paramString).sendEmptyMessage(0);
-    }
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    QLog.d("ForwardSdkBaseOption", 1, new Object[] { "-->onGetTicketNoPasswd--recv g_t_n_p, account = ", paramString });
-    if (paramInt == 4096) {}
-    for (paramString = new String(paramArrayOfByte);; paramString = null)
-    {
-      paramArrayOfByte = (apld)this.a.get();
-      if (paramArrayOfByte != null)
-      {
-        apld.a(paramArrayOfByte, "KEY_SSO_GET_TICKET_NO_PASSWD", true);
-        paramArrayOfByte.k = paramString;
-        paramArrayOfByte.m = true;
-      }
-      return;
-    }
+    return true;
   }
 }
 

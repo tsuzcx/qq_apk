@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo;
 
-import aiwi;
-import aiys;
-import ajam;
+import ajkk;
+import ajmu;
+import ajoo;
 import android.graphics.RectF;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -29,7 +29,7 @@ public class ApolloEngine
   
   static
   {
-    ajam.a("classLoad");
+    ajoo.a("classLoad");
   }
   
   public ApolloEngine()
@@ -52,9 +52,9 @@ public class ApolloEngine
   
   public static boolean a()
   {
-    if (!ajam.a())
+    if (!ajoo.a())
     {
-      ajam.a("other");
+      ajoo.a("other");
       ApolloGameStateMachine.a().a(5, "not load lib");
       return false;
     }
@@ -63,10 +63,10 @@ public class ApolloEngine
   
   private void b()
   {
-    new File(aiys.a, "slave");
-    String str1 = aiys.c + "/def/role/0/script/slave/";
-    String str2 = aiys.c + "/";
-    nativeSetFileHomeDir(aiys.av, aiys.g, aiys.a, aiys.a, aiys.a + "/extension/", str1, str2);
+    new File(ajmu.a, "slave");
+    String str1 = ajmu.c + "/def/role/0/script/slave/";
+    String str2 = ajmu.c + "/";
+    nativeSetFileHomeDir(ajmu.av, ajmu.g, ajmu.a, ajmu.a, ajmu.a + "/extension/", str1, str2);
   }
   
   private void c()
@@ -164,7 +164,7 @@ public class ApolloEngine
     QLog.d("ApolloManager.Engine", 1, "[createDirector],mIsInit:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", isEngineReady:" + a());
     if (a())
     {
-      new File(aiys.i).mkdirs();
+      new File(ajmu.i).mkdirs();
       this.jdField_a_of_type_Long = nativeCreateDirector(paramLong, paramInt1, paramInt2, paramFloat, paramInt3);
       if (this.jdField_a_of_type_Long > 0L)
       {
@@ -235,7 +235,7 @@ public class ApolloEngine
   
   public void a(double paramDouble)
   {
-    a(String.format(aiwi.b(), new Object[] { Double.valueOf(paramDouble) }));
+    a(String.format(ajkk.b(), new Object[] { Double.valueOf(paramDouble) }));
   }
   
   public void a(double paramDouble, int paramInt)

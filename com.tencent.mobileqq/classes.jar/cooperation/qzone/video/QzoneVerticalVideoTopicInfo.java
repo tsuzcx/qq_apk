@@ -5,15 +5,15 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import bghd;
-import bghe;
+import bhpx;
+import bhpy;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class QzoneVerticalVideoTopicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<QzoneVerticalVideoTopicInfo> CREATOR = new bghd();
+  public static final Parcelable.Creator<QzoneVerticalVideoTopicInfo> CREATOR = new bhpx();
   private String a = QzoneVerticalVideoTopicInfo.class.getSimpleName();
   private String b;
   private String c;
@@ -100,9 +100,9 @@ public class QzoneVerticalVideoTopicInfo
   
   public String f()
   {
-    bghe localbghe = new bghe(this);
-    localbghe.a("weishi_feedId", this.b).a("weishi_fileId", this.c).a("weishi_musicId", this.d).a("weishi_musicName", this.e).a("weishi_thumbUrl", this.g).a("weishi_topicID", this.h).a("weishi_topicName", this.i);
-    return localbghe.toString();
+    bhpy localbhpy = new bhpy(this);
+    localbhpy.a("weishi_feedId", this.b).a("weishi_fileId", this.c).a("weishi_musicId", this.d).a("weishi_musicName", this.e).a("weishi_thumbUrl", this.g).a("weishi_topicID", this.h).a("weishi_topicName", this.i);
+    return localbhpy.toString();
   }
   
   public String g()

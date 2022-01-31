@@ -1,28 +1,6 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GatherCardInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-
-public class ufo
+public abstract interface ufo
 {
-  private qqstory_struct.GatherCardInfo a;
-  
-  public ufo(qqstory_struct.GatherCardInfo paramGatherCardInfo)
-  {
-    this.a = paramGatherCardInfo;
-  }
-  
-  public ufo(byte[] paramArrayOfByte)
-  {
-    this.a = new qqstory_struct.GatherCardInfo();
-    try
-    {
-      this.a.mergeFrom(paramArrayOfByte);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      urk.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
-    }
-  }
+  public abstract boolean a_(ufk paramufk, int paramInt1, int paramInt2);
 }
 
 

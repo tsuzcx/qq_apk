@@ -7,7 +7,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.text.TextUtils;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import java.io.File;
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class a
       break label24;
     }
     l2 = System.currentTimeMillis();
-    ac.c("AnalysisUtil_", String.format("%-60s -last modify time:%-30s -time cost: %-5dms\n", new Object[] { paramFile.getAbsolutePath(), GlobalUtil.getDay(l1), Long.valueOf(l2 - l3) }));
+    ab.c("AnalysisUtil_", String.format("%-60s -last modify time:%-30s -time cost: %-5dms\n", new Object[] { paramFile.getAbsolutePath(), GlobalUtil.getDay(l1), Long.valueOf(l2 - l3) }));
     return l1;
   }
   
@@ -47,7 +47,7 @@ public class a
       str = GlobalUtil.getCurrentDay();
       if (TextUtils.equals(GlobalUtil.getDay(paramLong), str))
       {
-        ac.c("AnalysisUtil_", "[findLastModifyTimeInternal] currentLastModifyTime is today:" + str);
+        ab.c("AnalysisUtil_", "[findLastModifyTimeInternal] currentLastModifyTime is today:" + str);
         return paramLong;
       }
       l1 = paramFile.lastModified();
@@ -73,7 +73,7 @@ public class a
     {
       if (TextUtils.equals(GlobalUtil.getDay(l1), str))
       {
-        ac.c("AnalysisUtil_", "[findLastModifyTimeInternal] found today file:" + str);
+        ab.c("AnalysisUtil_", "[findLastModifyTimeInternal] found today file:" + str);
         return l1;
       }
       i += 1;

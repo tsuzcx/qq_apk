@@ -1,91 +1,78 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
 public class sml
-  extends sod
+  extends smk<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  public static final String a;
-  public static final String b = skt.a("StorySvc.del_feed_comment");
-  public static final String c = skt.a("StorySvc.get_comment_list");
-  protected int a;
-  protected smz a;
-  protected boolean a;
-  private String d;
+  private int a;
   
-  static
+  public sml(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = skt.a("StorySvc.add_feed_comment");
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public sml(smz paramsmz)
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
   {
-    this.jdField_a_of_type_Smz = paramsmz;
-  }
-  
-  public static void a(CommentEntry paramCommentEntry, soj paramsoj)
-  {
-    paramCommentEntry = new smp(paramCommentEntry, paramsoj);
-    paramsoj = new smq(paramsoj);
-    sof.a().a(paramCommentEntry, paramsoj);
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    long l = System.currentTimeMillis();
-    Object localObject1 = null;
-    try
-    {
-      Object localObject2 = new JSONObject();
-      ((JSONObject)localObject2).putOpt("vid", paramString3);
-      ((JSONObject)localObject2).putOpt("feedid", paramString4);
-      ((JSONObject)localObject2).putOpt("pvid", paramString5);
-      ((JSONObject)localObject2).putOpt("styles", new JSONArray(paramString6));
-      localObject2 = ((JSONObject)localObject2).toString();
-      localObject1 = localObject2;
+    int i = 2;
+    boolean bool1 = true;
+    if (paramWSPushStrategyInfo == null) {
+      return false;
     }
-    catch (JSONException localJSONException)
+    boolean bool2 = TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme);
+    if (!bool2)
     {
-      for (;;)
+      sjs.a(paramContext, paramWSPushStrategyInfo.mScheme);
+      paramContext = sni.a();
+      if (paramContext != null) {
+        paramContext.a(null);
+      }
+      sni.a();
+    }
+    if (this.jdField_a_of_type_Int == 2) {
+      if (bool2)
       {
-        QLog.e("Q.qqstory:FeedCommentDataProvider", 2, "addGamePKComment jsonException " + localJSONException);
+        i = 2;
+        if (this.jdField_a_of_type_Smd != null) {
+          break label93;
+        }
+        paramContext = "";
+        label74:
+        sms.a(i, 1, paramContext);
+        label80:
+        if (bool2) {
+          break label133;
+        }
       }
     }
-    a(paramString1, null, paramString2, l, paramInt, localObject1, 4, new smm(paramString1, paramInt, l, paramString2, paramString3, paramString4, paramString5, paramString6));
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, String paramString4, int paramInt2, soj paramsoj)
-  {
-    paramString1 = new smn(paramString1, paramString2, paramString3, paramLong, paramInt1, paramString4, paramInt2, paramsoj);
-    paramString2 = new smo(paramsoj);
-    sof.a().a(paramString1, paramString2);
-  }
-  
-  public static void b(CommentEntry paramCommentEntry, soj paramsoj)
-  {
-    paramCommentEntry = new smn(paramCommentEntry, paramsoj);
-    paramsoj = new smo(paramsoj);
-    sof.a().a(paramCommentEntry, paramsoj);
-  }
-  
-  public void a()
-  {
-    a(this.jdField_a_of_type_Smz.a.feedId, 0);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    paramString = new smr(this, paramString, paramInt);
-    sms localsms = new sms(this);
-    sof.a().a(paramString, localsms);
+    for (;;)
+    {
+      return bool1;
+      i = 1;
+      break;
+      label93:
+      paramContext = ((WSRedDotPushMsg)this.jdField_a_of_type_Smd).mFeedIds;
+      break label74;
+      if (this.jdField_a_of_type_Int != 6) {
+        break label80;
+      }
+      if (bool2) {}
+      for (;;)
+      {
+        sms.d(i);
+        break;
+        i = 1;
+      }
+      label133:
+      bool1 = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sml
  * JD-Core Version:    0.7.0.1
  */

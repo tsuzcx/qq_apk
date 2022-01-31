@@ -1,109 +1,71 @@
-import android.os.Build;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.util.ArrayList;
+import java.util.List;
 
 public class balh
 {
-  public static int a;
-  public static boolean a = true;
-  public static boolean b = true;
-  public static boolean c = true;
-  public static boolean d = true;
-  public static boolean e = true;
-  public static boolean f = true;
-  public static boolean g = true;
-  public static boolean h = true;
-  public static boolean i = true;
-  public static boolean j = true;
-  public static boolean k = true;
-  public static boolean l;
-  public static boolean m;
-  
-  static
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, List<String> paramList, long paramLong)
   {
-    String str1 = Build.MODEL;
-    String str2 = Build.MANUFACTURER;
-    if (str2.equalsIgnoreCase("htc")) {
-      bali.a().b(str1);
+    long l = LocalMultiProcConfig.getLong4Uin("aio_qzone_troop_gray_tips", 0L, Long.parseLong(paramString2));
+    if (System.currentTimeMillis() <= l * 1000L) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopGrayTipUtils", 2, "Unable to display gray tips during cool down");
+      }
     }
     do
     {
       return;
-      if ((str2.equalsIgnoreCase("samsung")) || (str2.equalsIgnoreCase("samsng")))
-      {
-        bali.a().a(str1);
-        return;
+      i = QzoneConfig.getInstance().getConfig("aio_qzone_troop_gray_tips", "troop_gray_tips_min_photo_count", 9);
+      if (paramList.size() >= i) {
+        break;
       }
-      if (str2.equalsIgnoreCase("motorola"))
-      {
-        bali.a().c(str1);
-        return;
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopGrayTipUtils", 2, "Unable to display gray tips, current photos count: " + paramList.size() + " required min photos count: " + i);
+    return;
+    Object localObject = ajyc.a(2131720492);
+    String str2 = ajyc.a(2131720490);
+    String str1 = ajyc.a(2131720491);
+    str2 = (String)localObject + " " + str2 + " " + str1;
+    paramString1 = new aquz(paramString1, paramString2, str2, 1, -5040, 131086, System.currentTimeMillis() / 1000L);
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    if (i < paramList.size())
+    {
+      if (i != paramList.size() - 1) {
+        localStringBuilder.append((String)paramList.get(i)).append(",");
       }
-      if (str2.equalsIgnoreCase("huawei"))
+      for (;;)
       {
-        bali.a().d(str1);
-        return;
+        i += 1;
+        break;
+        localStringBuilder.append((String)paramList.get(i));
       }
-      if (str2.equalsIgnoreCase("zte"))
-      {
-        bali.a().e(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("meizu"))
-      {
-        bali.a().f(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("alps"))
-      {
-        bali.a().g(str1);
-        return;
-      }
-      if ((str2.equalsIgnoreCase("k-touch")) || (str2.equalsIgnoreCase("sprd")))
-      {
-        bali.a().h(str1);
-        return;
-      }
-      if ((str2.equalsIgnoreCase("yulong")) || (str2.equalsIgnoreCase("coolpad")))
-      {
-        bali.a().i(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("lenovo"))
-      {
-        bali.a().j(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("bbk"))
-      {
-        bali.a().k(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("gionee"))
-      {
-        bali.a().l(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("eton"))
-      {
-        bali.a().m(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("doov"))
-      {
-        bali.a().n(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("sony ericsson"))
-      {
-        bali.a().o(str1);
-        return;
-      }
-    } while (!"xiaomi".equalsIgnoreCase(str2));
-    bali.a().p(str1);
+    }
+    paramList = new ArrayList();
+    i = BaseApplicationImpl.getApplication().getResources().getColor(2131167109);
+    localObject = new MessageForGrayTips.HightlightItem(0, ((String)localObject).length(), Long.parseLong(paramString2), 0, 50, localStringBuilder.toString(), "", "", "", i);
+    paramString2 = new MessageForGrayTips.HightlightItem(str2.length() - str1.length(), str2.length(), Long.parseLong(paramString2), 0, 51, "", "", "", "", i);
+    paramList.add(localObject);
+    paramList.add(paramString2);
+    paramString1.a = paramList;
+    paramString2 = new MessageForUniteGrayTip();
+    paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
+    paramString2.saveExtInfoToExtStr("grayLastUniseq", paramLong + "");
+    aqva.a(paramQQAppInterface, paramString2);
+    LpReportInfo_pf00064.allReport(40, 3, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     balh
  * JD-Core Version:    0.7.0.1
  */

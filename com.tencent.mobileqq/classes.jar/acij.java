@@ -1,42 +1,20 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
 
-public class acij
+class acij
+  implements DialogInterface.OnClickListener
 {
-  public static BaseChatPie a()
-  {
-    Object localObject = BaseActivity.sTopActivity;
-    if ((localObject instanceof FragmentActivity))
-    {
-      localObject = ((FragmentActivity)localObject).getChatFragment();
-      if (localObject != null) {
-        return ((ChatFragment)localObject).a();
-      }
-    }
-    return null;
-  }
+  acij(acih paramacih) {}
   
-  public static boolean a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = false;
-    BaseChatPie localBaseChatPie = a();
-    if (localBaseChatPie != null) {
-      bool = ((AIOLongShotHelper)localBaseChatPie.a(15)).a();
-    }
-    return bool;
-  }
-  
-  public static boolean b()
-  {
-    return a();
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acij
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,23 @@
-import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
-import java.util.Collection;
-import java.util.Iterator;
+import android.database.DataSetObserver;
 
 class bfto
-  implements ThreadPool.Job<Object>
+  extends DataSetObserver
 {
-  bfto(bftk parambftk, boolean paramBoolean) {}
+  bfto(bftn parambftn) {}
   
-  public Object run(ThreadPool.JobContext paramJobContext)
+  public void onChanged()
   {
-    paramJobContext.setMode(1);
-    paramJobContext = bftk.a(this.jdField_a_of_type_Bftk).a();
-    if (paramJobContext != null)
-    {
-      paramJobContext = paramJobContext.iterator();
-      while (paramJobContext.hasNext())
-      {
-        Object localObject = (bfti)paramJobContext.next();
-        int i = ((bfti)localObject).a(this.jdField_a_of_type_Boolean);
-        localObject = ((bfti)localObject).a();
-        this.jdField_a_of_type_Bftk.a((String)localObject, i);
-      }
-    }
-    return null;
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.a.notifyDataSetInvalidated();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfto
  * JD-Core Version:    0.7.0.1
  */

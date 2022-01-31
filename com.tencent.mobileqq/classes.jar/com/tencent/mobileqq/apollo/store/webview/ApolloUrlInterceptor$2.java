@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import aiwa;
-import aiwf;
+import ajkc;
+import ajkh;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloUrlInterceptor$2
   implements Runnable
 {
-  public ApolloUrlInterceptor$2(aiwa paramaiwa) {}
+  public ApolloUrlInterceptor$2(ajkc paramajkc) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("apollo_client_ApolloUrlInterceptor", 2, "runDataTask in AsyncThread start!");
     }
-    aiwf localaiwf = aiwa.a(this.this$0);
+    ajkh localajkh = ajkc.a(this.this$0);
     long l = System.currentTimeMillis();
-    localaiwf.g = l;
-    aiwa.a(this.this$0);
-    aiwa.b(this.this$0);
+    localajkh.g = l;
+    ajkc.a(this.this$0);
+    ajkc.b(this.this$0);
     if (QLog.isColorLevel()) {
       QLog.d("apollo_client_ApolloUrlInterceptor", 2, "runDataTask use:" + (System.currentTimeMillis() - l));
     }
-    aiwa.a(this.this$0).h = System.currentTimeMillis();
+    ajkc.a(this.this$0).h = System.currentTimeMillis();
   }
 }
 

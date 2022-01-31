@@ -1,96 +1,52 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+
 public class lki
-  extends lka
+  extends Handler
 {
-  public boolean a;
-  
-  public void a(long paramLong)
+  public lki(CameraUtils paramCameraUtils, Looper paramLooper)
   {
-    paramLong -= this.jdField_a_of_type_Long;
-    int k = 0;
-    int j = 0;
-    int i;
-    float f;
-    if (this.jdField_a_of_type_Boolean) {
-      if (paramLong <= 1400L)
-      {
-        i = 255;
-        if (paramLong > 250L) {
-          break label104;
-        }
-        f = -0.0016F * (float)paramLong + 1.0F;
-      }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    long l = mtm.a(paramMessage.obj);
+    if (AudioHelper.e()) {
+      QLog.w("CameraUtils", 1, "CameraHandlerThread, seq[" + l + "], event[" + paramMessage.what + "]");
     }
-    label262:
-    for (;;)
+    switch (paramMessage.what)
     {
-      a(i);
-      b(f);
+    default: 
       return;
-      i = j;
-      if (paramLong <= 1400L) {
-        break;
-      }
-      i = j;
-      if (paramLong >= 1500L) {
-        break;
-      }
-      i = (int)(255L * (paramLong - 1500L) / -100L);
-      break;
-      label104:
-      if ((paramLong > 250L) && (paramLong <= 400L))
+    case 1: 
+      CameraUtils.a(this.a, l);
+      return;
+    case 2: 
+      if (paramMessage.arg1 == 1) {}
+      for (;;)
       {
-        f = 0.004666667F * (float)paramLong - 0.5666665F;
+        CameraUtils.a(this.a, l, bool);
+        return;
+        bool = false;
       }
-      else if ((paramLong > 400L) && (paramLong <= 1250L))
-      {
-        f = 1.3F;
-      }
-      else if ((paramLong > 1250L) && (paramLong <= 1500L))
-      {
-        f = -0.0052F * (float)paramLong + 7.8F;
-      }
-      else
-      {
-        f = 0.0F;
-        continue;
-        if (paramLong <= 800L) {
-          i = 255;
-        }
-        for (;;)
-        {
-          if (paramLong > 250L) {
-            break label262;
-          }
-          f = -0.0016F * (float)paramLong + 1.0F;
-          break;
-          i = k;
-          if (paramLong > 800L)
-          {
-            i = k;
-            if (paramLong < 900L) {
-              i = (int)(255L * (paramLong - 900L) / -100L);
-            }
-          }
-        }
-        if ((paramLong > 250L) && (paramLong <= 400L)) {
-          f = 0.004666667F * (float)paramLong - 0.5666665F;
-        } else if ((paramLong > 400L) && (paramLong <= 650L)) {
-          f = 1.3F;
-        } else if ((paramLong > 650L) && (paramLong <= 900L)) {
-          f = -0.0052F * (float)paramLong + 4.68F;
-        } else {
-          f = 0.0F;
-        }
-      }
+    case 3: 
+      i = paramMessage.arg1;
+      int j = paramMessage.arg2;
+      CameraUtils.a(this.a, l, i, j);
+      return;
+    case 4: 
+      CameraUtils.b(this.a, l);
+      return;
     }
+    int i = paramMessage.arg1;
+    CameraUtils.a(this.a, l, i);
   }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
 }
 
 

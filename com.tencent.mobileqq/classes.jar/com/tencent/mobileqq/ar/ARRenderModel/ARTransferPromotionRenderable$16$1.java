@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akjt;
-import akma;
-import akmc;
-import awqx;
+import akyf;
+import alam;
+import alao;
+import axqw;
 
 class ARTransferPromotionRenderable$16$1
   implements Runnable
@@ -12,8 +12,8 @@ class ARTransferPromotionRenderable$16$1
   
   public void run()
   {
-    akma.a(this.a.this$0).b(false);
-    awqx.b(null, "dc00898", "", "", "0X80098CE", "0X80098CE", 0, 0, akma.a(this.a.this$0).a, "", "", "");
+    alam.a(this.a.this$0).b(false);
+    axqw.b(null, "dc00898", "", "", "0X80098CE", "0X80098CE", 0, 0, alam.a(this.a.this$0).a, "", "", "");
   }
 }
 

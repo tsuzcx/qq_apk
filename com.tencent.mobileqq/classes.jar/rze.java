@@ -1,46 +1,28 @@
-import UserGrowth.stNotificationRsp;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import mqq.util.WeakReference;
-
-class rze
-  implements ryo
+public abstract interface rze
 {
-  rze(rzd paramrzd) {}
+  public abstract void a(rzd paramrzd, int paramInt);
   
-  public void a(ryz paramryz)
-  {
-    sai.b("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse-resultCode:" + paramryz.b + " | resultBean:" + paramryz.jdField_a_of_type_JavaLangObject + " | thread:" + Thread.currentThread().getName());
-    if (rzd.a(this.a) == null)
-    {
-      sai.d("WSRecommendFragmentPresenter", "getNotification onTaskResponse mFragmentReference: null");
-      return;
-    }
-    WSRecommendFragment localWSRecommendFragment = (WSRecommendFragment)rzd.a(this.a).get();
-    if (localWSRecommendFragment == null)
-    {
-      sai.d("WSRecommendFragmentPresenter", "getNotification onTaskResponse wsRecommendFragment: null");
-      return;
-    }
-    if (paramryz.a())
-    {
-      if ((paramryz.jdField_a_of_type_JavaLangObject instanceof stNotificationRsp))
-      {
-        stNotificationRsp localstNotificationRsp = (stNotificationRsp)paramryz.jdField_a_of_type_JavaLangObject;
-        ryp localryp = paramryz.jdField_a_of_type_Ryp;
-        if (localstNotificationRsp.type > 0)
-        {
-          localWSRecommendFragment.a(localstNotificationRsp, localryp);
-          return;
-        }
-        localWSRecommendFragment.a(paramryz.b, paramryz.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      localWSRecommendFragment.a(paramryz.b, paramryz.jdField_a_of_type_JavaLangString);
-      sai.d("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse error:" + paramryz.b + " | " + paramryz.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    localWSRecommendFragment.a(paramryz.jdField_a_of_type_Int, paramryz.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(rzd paramrzd, int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(rzd paramrzd, long paramLong);
+  
+  public abstract void a(rzd paramrzd, boolean paramBoolean);
+  
+  public abstract void b(rzd paramrzd);
+  
+  public abstract void b(rzd paramrzd, int paramInt);
+  
+  public abstract void c(rzd paramrzd);
+  
+  public abstract void d(rzd paramrzd);
+  
+  public abstract void e(rzd paramrzd);
+  
+  public abstract void f(rzd paramrzd);
+  
+  public abstract void g(rzd paramrzd);
+  
+  public abstract void h(rzd paramrzd);
 }
 
 

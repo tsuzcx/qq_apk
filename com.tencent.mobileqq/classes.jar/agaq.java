@@ -1,37 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class agaq
+  implements View.OnClickListener
 {
-  public static boolean a(String paramString)
-  {
-    if (("jpg".equals(paramString)) || ("gif".equals(paramString)) || ("png".equals(paramString)) || ("jpeg".equals(paramString))) {}
-    while ((paramString.lastIndexOf("bmp") != -1) || (paramString.lastIndexOf("bitmap") != -1)) {
-      return true;
-    }
-    return false;
-  }
+  public agaq(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public static String[] a(String paramString)
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    String[] arrayOfString;
-    do
-    {
-      return null;
-      arrayOfString = paramString.split("/");
-      if (arrayOfString.length == 2) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("MimeHelper", 2, "Mimetype error:" + paramString);
-    return null;
-    return arrayOfString;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    return "video/mp4".equals(paramString);
+    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
+    this.a.getActivity().finish();
   }
 }
 

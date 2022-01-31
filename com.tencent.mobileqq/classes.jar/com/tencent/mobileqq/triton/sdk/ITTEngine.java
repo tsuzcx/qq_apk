@@ -42,6 +42,8 @@ public abstract interface ITTEngine
   
   public abstract ITHttp getNativeHttp();
   
+  public abstract boolean getOptionalSoLoadStatus(String paramString);
+  
   public abstract Map<String, String> getResPathCache();
   
   public abstract void getScreenShot(ScreenShotCallback paramScreenShotCallback);
@@ -71,6 +73,8 @@ public abstract interface ITTEngine
   public abstract void setDiskIoExecutor(@NonNull Executor paramExecutor);
   
   public abstract void setEnableCodeCache(boolean paramBoolean);
+  
+  public abstract void setEnableJankCanary(boolean paramBoolean);
   
   public abstract void setEngineListener(ITTEngine.IListener paramIListener);
   

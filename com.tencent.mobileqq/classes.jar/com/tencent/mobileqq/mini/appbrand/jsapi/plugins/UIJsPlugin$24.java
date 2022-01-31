@@ -1,29 +1,24 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
-import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import org.json.JSONObject;
 
 class UIJsPlugin$24
   implements Runnable
 {
-  UIJsPlugin$24(UIJsPlugin paramUIJsPlugin, JsRuntime paramJsRuntime, int paramInt1, String paramString, int paramInt2) {}
+  UIJsPlugin$24(UIJsPlugin paramUIJsPlugin, JsRuntime paramJsRuntime, int paramInt1, String paramString, JSONObject paramJSONObject, int paramInt2) {}
   
   public void run()
   {
-    Object localObject = ((AppBrandPageContainer)this.this$0.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(this.val$webview.getPageWebViewId());
-    if (localObject != null) {}
-    for (localObject = ((AbsAppBrandPage)localObject).getCurrentWebviewContainer();; localObject = null)
+    WebviewContainer localWebviewContainer = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
+    if (localWebviewContainer != null)
     {
-      if (localObject != null)
-      {
-        ((WebviewContainer)localObject).removeCanvas(this.val$canvasId);
-        this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
-      }
+      localWebviewContainer.removeTextArea(this.val$inputId);
+      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, this.val$result, this.val$callbackId);
       return;
     }
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, "container is null", this.val$callbackId);
   }
 }
 

@@ -1,18 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.view.View;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import java.util.ArrayList;
 
-public final class atoz
-  implements Parcelable.Creator<CompressInfo>
+public class atoz
+  implements bfoq
 {
-  public CompressInfo a(Parcel paramParcel)
-  {
-    return new CompressInfo(paramParcel, null);
-  }
+  public atoz(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, bfol parambfol) {}
   
-  public CompressInfo[] a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new CompressInfo[paramInt];
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.e();
+      return;
+      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity) != null) {
+        NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity).a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.size());
+      }
+      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.h();
+      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
+    }
   }
 }
 

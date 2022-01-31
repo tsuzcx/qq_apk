@@ -2,7 +2,7 @@ package com.tencent.mobileqq.highway;
 
 public final class R$menu
 {
-  public static final int main = 2131558403;
+  public static final int main = 2131623939;
 }
 
 

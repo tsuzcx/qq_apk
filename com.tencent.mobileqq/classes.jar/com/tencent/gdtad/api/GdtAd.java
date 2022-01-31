@@ -3,39 +3,40 @@ package com.tencent.gdtad.api;
 import android.content.Context;
 import android.os.Handler;
 import android.os.SystemClock;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
 import java.io.Serializable;
 import java.lang.ref.WeakReference;
-import yjm;
-import yjn;
-import yjo;
-import yjs;
-import yjy;
-import yjz;
-import yka;
-import ykb;
-import yny;
+import ysq;
+import ysr;
+import yss;
+import ysz;
+import yta;
+import ytb;
+import ytc;
+import yxs;
 
 public abstract class GdtAd
   implements Serializable
 {
   private static int jdField_a_of_type_Int;
   private static long jdField_a_of_type_Long = -2147483648L;
-  private WeakReference<yka> listener;
-  private yjn loadListener = new yjy(this);
+  private WeakReference<ytb> listener;
+  private ysr loadListener = new ysz(this);
   private long loadedTimeMillis = -2147483648L;
-  private yjm loader;
+  private ysq loader;
   private int status = 0;
   
-  public GdtAd(ykb paramykb)
+  public GdtAd(ytc paramytc)
   {
-    if (paramykb == null)
+    if (paramytc == null)
     {
-      yny.d("GdtAd", "constructor");
+      yxs.d("GdtAd", "constructor");
       return;
     }
-    yjo localyjo = new yjo();
-    localyjo.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramykb.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet;
-    this.loader = new yjm(localyjo, new WeakReference(this.loadListener));
+    yss localyss = new yss();
+    localyss.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramytc.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet;
+    this.loader = new ysq(localyss, new WeakReference(this.loadListener));
   }
   
   private void a()
@@ -44,16 +45,16 @@ public abstract class GdtAd
     new Handler().post(new GdtAd.2(this, localWeakReference));
   }
   
-  private void a(yjz paramyjz)
+  private void a(yta paramyta)
   {
     WeakReference localWeakReference = new WeakReference(this);
-    new Handler().post(new GdtAd.1(this, localWeakReference, paramyjz));
+    new Handler().post(new GdtAd.1(this, localWeakReference, paramyta));
   }
   
   public com.tencent.gdtad.aditem.GdtAd getAd()
   {
     if (isLoaded()) {
-      return getParams().jdField_a_of_type_Yjs.a;
+      return getParams().jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a;
     }
     return null;
   }
@@ -95,12 +96,12 @@ public abstract class GdtAd
     return 0;
   }
   
-  public yjm getGdtAdLoader()
+  public ysq getGdtAdLoader()
   {
     return this.loader;
   }
   
-  public abstract ykb getParams();
+  public abstract ytc getParams();
   
   public boolean isInvalidated()
   {
@@ -109,7 +110,7 @@ public abstract class GdtAd
   
   public boolean isLoaded()
   {
-    return (isValid()) && (this.status == 2) && (getParams().jdField_a_of_type_Yjs.a != null) && (getParams().jdField_a_of_type_Yjs.a.isValid()) && (this.loadedTimeMillis != -9223372036854775808L);
+    return (isValid()) && (this.status == 2) && (getParams().jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a != null) && (getParams().jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a.isValid()) && (this.loadedTimeMillis != -9223372036854775808L);
   }
   
   public boolean isValid()
@@ -122,7 +123,7 @@ public abstract class GdtAd
     if (paramContext == null) {}
     for (;;)
     {
-      yny.d("GdtAd", String.format("load error, status:%d", new Object[] { Integer.valueOf(this.status) }));
+      yxs.d("GdtAd", String.format("load error, status:%d", new Object[] { Integer.valueOf(this.status) }));
       return false;
       if ((isValid()) && ((this.status == 0) || (this.status == 3)))
       {
@@ -133,7 +134,7 @@ public abstract class GdtAd
           break label114;
         }
         this.status = 3;
-        a(new yjz(2));
+        a(new yta(2));
       }
     }
     jdField_a_of_type_Int = 0;
@@ -151,13 +152,19 @@ public abstract class GdtAd
     new Handler().post(new GdtAd.4(this, localWeakReference));
   }
   
+  protected void notifyClosed()
+  {
+    WeakReference localWeakReference = new WeakReference(this);
+    AdThreadManager.INSTANCE.post(new GdtAd.5(this, localWeakReference), 0);
+  }
+  
   protected void notifyImpression()
   {
     WeakReference localWeakReference = new WeakReference(this);
     new Handler().post(new GdtAd.3(this, localWeakReference));
   }
   
-  public void setListener(WeakReference<yka> paramWeakReference)
+  public void setListener(WeakReference<ytb> paramWeakReference)
   {
     this.listener = paramWeakReference;
   }

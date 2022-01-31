@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import adzf;
+import aeke;
 import java.util.List;
 
 public class PhotoListPanel$PhotoPanelAdapter$2
   implements Runnable
 {
-  public PhotoListPanel$PhotoPanelAdapter$2(adzf paramadzf, List paramList) {}
+  public PhotoListPanel$PhotoPanelAdapter$2(aeke paramaeke, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Adzf.a(this.jdField_a_of_type_JavaUtilList);
+    this.this$0.a(this.a);
   }
 }
 

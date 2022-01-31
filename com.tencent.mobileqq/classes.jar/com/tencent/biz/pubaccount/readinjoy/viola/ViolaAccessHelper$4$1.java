@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
-import rjf;
-import rjh;
+import rwe;
+import rwg;
 
 public class ViolaAccessHelper$4$1
   implements Runnable
 {
-  public ViolaAccessHelper$4$1(rjf paramrjf, long paramLong) {}
+  public ViolaAccessHelper$4$1(rwe paramrwe, long paramLong) {}
   
   public void run()
   {

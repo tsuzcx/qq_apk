@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import nkp;
+import nwa;
 
 public class ReadInJoyFeedsActivity$5$1
   implements Runnable
 {
-  public ReadInJoyFeedsActivity$5$1(nkp paramnkp) {}
+  public ReadInJoyFeedsActivity$5$1(nwa paramnwa) {}
   
   public void run()
   {

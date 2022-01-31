@@ -3,7 +3,7 @@ package com.tencent.mobileqq.minigame.gpkg;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bace;
+import bbdj;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Content;
 import com.tencent.component.network.downloader.DownloadResult.Process;
@@ -26,9 +26,8 @@ import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.utils.DebugUtil;
 import com.tencent.mobileqq.mini.utils.FileUtils;
 import com.tencent.mobileqq.mini.utils.WxapkgUnpacker;
-import com.tencent.mobileqq.triton.sdk.game.MiniGameInfo;
+import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
@@ -210,10 +209,9 @@ public class GpkgManager
     return;
     if (!TextUtils.isEmpty(str2))
     {
-      paramString = ApkgManager.getPkgRoot(localMiniAppInfo) + File.separator + localMiniAppInfo.appId + '_' + localMiniAppInfo.version + ".wxapkg";
+      paramString = ApkgManager.getPkgRoot(localMiniAppInfo) + File.separator + localMiniAppInfo.appId + '_' + localMiniAppInfo.version + "_" + System.nanoTime() + ".wxapkg";
       MiniReportManager.reportEventType(paramMiniGamePkg.appConfig, 613, "1");
-      if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_force_download_in_mainprocess", 0) == 1) {}
-      for (int i = 1; i != 0; i = 0)
+      if (GameWnsUtils.isForceDownloadInMainProcess())
       {
         downloadSubPkgInMainProcess(paramMiniGamePkg.appConfig, paramMiniGamePkg, str2, paramString, str1, paramOnInitGpkgListener);
         return;
@@ -227,19 +225,6 @@ public class GpkgManager
   public static void downloadSubPkgInMainProcess(MiniAppConfig paramMiniAppConfig, MiniGamePkg paramMiniGamePkg, String paramString1, String paramString2, String paramString3, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener)
   {
     downloadPkgInMainProcess(paramMiniAppConfig, paramString1, paramString2, new GpkgManager.7(paramMiniGamePkg, paramString2, paramString3, paramOnInitGpkgListener));
-  }
-  
-  public static String getGpkgFolderPath(MiniGameInfo paramMiniGameInfo)
-  {
-    if ((paramMiniGameInfo == null) || (TextUtils.isEmpty(paramMiniGameInfo.gameId))) {
-      return "";
-    }
-    MiniAppInfo localMiniAppInfo = new MiniAppInfo();
-    localMiniAppInfo.appId = paramMiniGameInfo.gameId;
-    localMiniAppInfo.version = paramMiniGameInfo.version;
-    localMiniAppInfo.verType = paramMiniGameInfo.verType;
-    localMiniAppInfo.setEngineType(1);
-    return ApkgManager.getApkgFolderPath(localMiniAppInfo);
   }
   
   public static void getGpkgInfoByConfig(MiniAppConfig paramMiniAppConfig, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener)
@@ -420,20 +405,24 @@ public class GpkgManager
   
   public static boolean isGpkgValid(MiniAppConfig paramMiniAppConfig)
   {
-    paramMiniAppConfig = getGpkgFolderPath(new MiniGameInfo(paramMiniAppConfig.config.appId, paramMiniAppConfig.config.version, paramMiniAppConfig.config.verType));
-    if (new File(paramMiniAppConfig).exists()) {
-      return checkPkgFolderContent(paramMiniAppConfig);
-    }
-    return false;
+    if (paramMiniAppConfig == null) {}
+    do
+    {
+      return false;
+      paramMiniAppConfig = ApkgManager.getApkgFolderPath(paramMiniAppConfig.config);
+    } while (!new File(paramMiniAppConfig).exists());
+    return checkPkgFolderContent(paramMiniAppConfig);
   }
   
   public static boolean isOfflineResourceReady(MiniAppConfig paramMiniAppConfig)
   {
-    paramMiniAppConfig = getGpkgFolderPath(new MiniGameInfo(paramMiniAppConfig.config.appId, paramMiniAppConfig.config.version, paramMiniAppConfig.config.verType));
-    if ((new File(paramMiniAppConfig).exists()) && (checkPkgFolderContent(paramMiniAppConfig))) {
-      return checkOfflineResourceContent(paramMiniAppConfig);
-    }
-    return false;
+    if (paramMiniAppConfig == null) {}
+    do
+    {
+      return false;
+      paramMiniAppConfig = ApkgManager.getApkgFolderPath(paramMiniAppConfig.config);
+    } while ((!new File(paramMiniAppConfig).exists()) || (!checkPkgFolderContent(paramMiniAppConfig)));
+    return checkOfflineResourceContent(paramMiniAppConfig);
   }
   
   private static void loadGpkgInMiniProcess(MiniAppConfig paramMiniAppConfig, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener)
@@ -459,7 +448,7 @@ public class GpkgManager
         return;
       }
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg] checkPkgFolderContent failed, delete folder:" + paramString);
-      bace.a(paramString, false);
+      bbdj.a(paramString, false);
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg] download gpkg by url1:" + paramMiniAppConfig.config.downloadUrl);
       downloadGpkgByResumableDownloader(paramMiniAppConfig, paramOnInitGpkgListener, paramString);
       return;
@@ -506,13 +495,13 @@ public class GpkgManager
       return;
     }
     QLog.i("[minigame] GpkgManager", 1, "[Gpkg] getGpkgInfoByConfig version:" + paramMiniAppConfig.config.version + ", appid=" + paramMiniAppConfig.config.appId + ",size=" + paramMiniAppConfig.config.fileSize);
-    String str = getGpkgFolderPath(new MiniGameInfo(paramMiniAppConfig.config.appId, paramMiniAppConfig.config.version, paramMiniAppConfig.config.verType));
+    String str = ApkgManager.getApkgFolderPath(paramMiniAppConfig.config);
     QLog.i("[minigame] GpkgManager", 1, "[Gpkg] getGpkgInfoByConfig folderPath:" + str);
     if ((paramMiniAppConfig.config.verType != 3) && ((!paramMiniAppConfig.config.isSupportOffline) || (paramMiniAppConfig.launchParam.scene == 1011)))
     {
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg]verType is not online " + paramMiniAppConfig.config.verType + ", delete path " + str);
       if (new File(str).exists()) {
-        bace.a(str, false);
+        bbdj.a(str, false);
       }
     }
     paramOnInitGpkgListener = new GpkgManager.MergedOnInitListener(paramOnInitGpkgListener);
@@ -538,8 +527,12 @@ public class GpkgManager
   
   public static void setOfflineResourceContent(MiniAppConfig paramMiniAppConfig, boolean paramBoolean)
   {
-    paramMiniAppConfig = getGpkgFolderPath(new MiniGameInfo(paramMiniAppConfig.config.appId, paramMiniAppConfig.config.version, paramMiniAppConfig.config.verType));
-    if (new File(paramMiniAppConfig).exists()) {}
+    if (paramMiniAppConfig == null) {}
+    do
+    {
+      return;
+      paramMiniAppConfig = ApkgManager.getApkgFolderPath(paramMiniAppConfig.config);
+    } while (!new File(paramMiniAppConfig).exists());
     try
     {
       Object localObject = new JSONObject();

@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.newshare.mode.base;
 
-import tdo;
+import tqk;
 
 public class ShareModeBase$23
   implements Runnable
 {
-  public ShareModeBase$23(tdo paramtdo) {}
+  public ShareModeBase$23(tqk paramtqk) {}
   
   public void run()
   {
-    tdo.a(this.this$0, tdo.a(this.this$0));
+    tqk.a(this.this$0, tqk.a(this.this$0));
   }
 }
 

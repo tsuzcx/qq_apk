@@ -32,15 +32,18 @@ public abstract class UPCEANReader
   {
     MIDDLE_PATTERN = new int[] { 1, 1, 1, 1, 1 };
     END_PATTERN = new int[] { 1, 1, 1, 1, 1, 1 };
-    int[] arrayOfInt1 = { 1, 3, 1, 2 };
-    L_PATTERNS = new int[][] { { 3, 2, 1, 1 }, { 2, 2, 2, 1 }, { 2, 1, 2, 2 }, { 1, 4, 1, 1 }, { 1, 1, 3, 2 }, { 1, 2, 3, 1 }, { 1, 1, 1, 4 }, arrayOfInt1, { 1, 2, 1, 3 }, { 3, 1, 1, 2 } };
+    int[] arrayOfInt1 = { 1, 2, 3, 1 };
+    int[] arrayOfInt2 = { 1, 1, 1, 4 };
+    int[] arrayOfInt3 = { 1, 3, 1, 2 };
+    int[] arrayOfInt4 = { 3, 1, 1, 2 };
+    L_PATTERNS = new int[][] { { 3, 2, 1, 1 }, { 2, 2, 2, 1 }, { 2, 1, 2, 2 }, { 1, 4, 1, 1 }, { 1, 1, 3, 2 }, arrayOfInt1, arrayOfInt2, arrayOfInt3, { 1, 2, 1, 3 }, arrayOfInt4 };
     L_AND_G_PATTERNS = new int[20][];
     System.arraycopy(L_PATTERNS, 0, L_AND_G_PATTERNS, 0, 10);
     int i = 10;
     while (i < 20)
     {
       arrayOfInt1 = L_PATTERNS[(i - 10)];
-      int[] arrayOfInt2 = new int[arrayOfInt1.length];
+      arrayOfInt2 = new int[arrayOfInt1.length];
       int j = 0;
       while (j < arrayOfInt1.length)
       {

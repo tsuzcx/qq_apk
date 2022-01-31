@@ -1,42 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
-public class ajpo
-  extends BroadcastReceiver
+class ajpo
+  implements View.OnClickListener
 {
-  public ajpo(QQAppInterface paramQQAppInterface) {}
+  ajpo(ajpn paramajpn) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (this.a.l) {
-      QLog.i("QQAppInterface", 1, "qzoneBrocastReceiver release() has been called  ,return ", null);
+    if (ajpn.a(this.a) != null)
+    {
+      if (ajpn.a(this.a).a != 1036) {
+        break label62;
+      }
+      ((airz)ajpn.a(this.a).a.getManager(153)).a().c(ajpn.a(this.a).c());
     }
+    label62:
     do
     {
-      int i;
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if (!"com.tencent.qzone.cleanunreadcount".equals(paramContext)) {
-          break;
-        }
-        i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
-        paramContext = (awcz)this.a.getManager(10);
-      } while ((paramContext == null) || (i == -1));
-      paramContext.a(i, 0L, new ArrayList(), null, false, false, "");
       return;
-    } while (!"com.tecent.qzone.clearAlbumRedTouch".equals(paramContext));
-    ((aufu)this.a.getManager(104)).b();
+      paramView = (airv)ajpn.a(this.a).getManager(211);
+    } while (paramView == null);
+    paramView.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajpo
  * JD-Core Version:    0.7.0.1
  */

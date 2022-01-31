@@ -1,12 +1,27 @@
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.SecondApiRightInfo;
 
-public abstract interface berq
+public final class berq
+  implements Parcelable.Creator<SecondApiRightInfo>
 {
-  public abstract void a(RecyclerView.Adapter paramAdapter);
+  public SecondApiRightInfo a(Parcel paramParcel)
+  {
+    SecondApiRightInfo localSecondApiRightInfo = new SecondApiRightInfo();
+    localSecondApiRightInfo.apiName = paramParcel.readString();
+    localSecondApiRightInfo.secondName = paramParcel.readString();
+    localSecondApiRightInfo.right = paramParcel.readInt();
+    return localSecondApiRightInfo;
+  }
+  
+  public SecondApiRightInfo[] a(int paramInt)
+  {
+    return new SecondApiRightInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     berq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,16 @@
-public abstract interface sar
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+
+public class sar
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString, int paramInt);
+  public sar(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public abstract void b(String paramString, int paramInt);
-  
-  public abstract void c(String paramString, int paramInt);
+  public void onClick(View paramView)
+  {
+    this.a.doOnBackPressed();
+  }
 }
 
 

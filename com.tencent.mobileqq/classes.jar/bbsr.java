@@ -1,17 +1,26 @@
 public class bbsr
+  extends bbso
 {
-  public bbsl a;
-  public String a;
+  public static final bbsr a = new bbsr();
   
-  public bbsr(String paramString, bbsl parambbsl)
+  public long getBID()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bbsl = parambbsl;
+    return 39L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "musicPlayer";
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "musicPlayer.";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbsr
  * JD-Core Version:    0.7.0.1
  */

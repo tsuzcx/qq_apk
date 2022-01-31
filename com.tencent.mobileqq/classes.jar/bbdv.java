@@ -1,23 +1,22 @@
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LoginActivity;
 
-public class bbdv
-  extends LruCache<String, WebSoService.WebSoState>
+class bbdv
+  implements DialogInterface.OnDismissListener
 {
-  public bbdv(WebSoService paramWebSoService, int paramInt)
-  {
-    super(paramInt);
-  }
+  bbdv(bbds parambbds) {}
   
-  protected WebSoService.WebSoState a(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new WebSoService.WebSoState();
+    if ((this.a.a instanceof LoginActivity)) {
+      ((LoginActivity)this.a.a).finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbdv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,99 +1,166 @@
+import ProfileLogic.QC.readUserInfoRsp;
+import ProfileLogic.QC.setUserFlagRsp;
+import ProfileLogic.QC.setUserProfileRsp;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Vector;
 
-class ausl
-  implements axrt
+public class ausl
+  extends akfz
 {
-  ausl(ausk paramausk, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3) {}
+  public ausl(CustomCoverFragment paramCustomCoverFragment) {}
   
-  public void onResp(axsq paramaxsq)
+  public void e(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager_PTV", 2, "onResp resultcode: " + paramaxsq.c + " threadid=" + Thread.currentThread().getId());
-    }
-    File localFile = new File(ausk.jdField_a_of_type_JavaIoFile, "temp_ptv_template_zip");
-    if (!localFile.exists())
+    boolean bool = true;
+    int i = 0;
+    CustomCoverFragment.a(this.a).b();
+    Object localObject = this.a.getActivity();
+    if (localObject == null) {}
+    label194:
+    label334:
+    label353:
+    label364:
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip !zipfile.exists()");
-      }
-      ahji.a(0);
-      return;
-    }
-    Object localObject = "";
-    try
-    {
-      paramaxsq = bace.c(localFile.getPath());
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramaxsq))) {}
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
+      do
       {
-        try
+        do
         {
-          mpx.a(localFile, this.b);
-          paramaxsq = new File(this.c);
-          if (!paramaxsq.exists()) {
-            break label330;
-          }
-          paramaxsq = ausk.a(paramaxsq);
-          localObject = ausk.a(null, paramaxsq, this.jdField_a_of_type_Ausk.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig);
-          if ((localObject != null) && (!((List)localObject).isEmpty())) {
-            break;
-          }
-          ausk.a(paramaxsq, "ptv_template_new.cfg");
-          if (QLog.isColorLevel()) {
-            QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip null == infos || infos.isEmpty()");
-          }
-          ahji.a(-4);
+          do
+          {
+            do
+            {
+              return;
+              if (!paramBoolean) {
+                break label724;
+              }
+              if (!(paramObject instanceof readUserInfoRsp)) {
+                break label364;
+              }
+              this.a.stopTitleProgress();
+              paramObject = (readUserInfoRsp)paramObject;
+              if (CustomCoverFragment.a(this.a))
+              {
+                localObject = this.a;
+                if (paramObject.flag != 1) {
+                  break;
+                }
+                paramBoolean = true;
+                CustomCoverFragment.a((CustomCoverFragment)localObject, paramBoolean);
+              }
+              CustomCoverFragment.a(this.a, paramObject.itemid);
+              CustomCoverFragment.b(this.a, paramObject.index);
+              CustomCoverFragment.c(this.a, paramObject.listend);
+              if (!TextUtils.isEmpty(paramObject.urlprefix)) {
+                auux.a = paramObject.urlprefix;
+              }
+              CustomCoverFragment.a(this.a, paramObject.itemlist);
+              if (CustomCoverFragment.a(this.a) != null)
+              {
+                if (CustomCoverFragment.a(this.a).size() != 0) {
+                  break label334;
+                }
+                CustomCoverFragment.a(this.a).setVisibility(8);
+                CustomCoverFragment.c(this.a, 2);
+              }
+              if (CustomCoverFragment.a(this.a) != null) {
+                CustomCoverFragment.a(this.a).sendEmptyMessage(101);
+              }
+            } while (!QLog.isColorLevel());
+            localObject = new StringBuilder().append("onDefaultCardRsp: [readUserInfoRsp] selId=").append(CustomCoverFragment.a(this.a)).append(" reqIndex=").append(CustomCoverFragment.b(this.a)).append(" footerState=").append(CustomCoverFragment.c(this.a)).append(" flag=");
+            if (paramObject.flag == 1)
+            {
+              paramBoolean = bool;
+              localObject = ((StringBuilder)localObject).append(paramBoolean).append(" itemList=");
+              if (paramObject.itemlist != null) {
+                break label353;
+              }
+            }
+            for (;;)
+            {
+              QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, i);
+              return;
+              paramBoolean = false;
+              break;
+              CustomCoverFragment.a(this.a).setVisibility(0);
+              break label194;
+              paramBoolean = false;
+              break label293;
+              i = paramObject.itemlist.size();
+            }
+            if (!(paramObject instanceof setUserProfileRsp)) {
+              break;
+            }
+            i = ((setUserProfileRsp)paramObject).ret;
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserProfileRsp] ret=" + i);
+            }
+            if (i == 0)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserProfileRsp] selId=" + CustomCoverFragment.a(this.a));
+              }
+              paramObject = new Intent();
+              paramObject.putExtra("req_code_key", 2002);
+              paramObject.putExtra("card_url_key", this.a.a(CustomCoverFragment.d(this.a)));
+              ((FragmentActivity)localObject).setResult(-1, paramObject);
+              ((FragmentActivity)localObject).finish();
+              return;
+            }
+          } while (this.a.getActivity() == null);
+          bcpw.a(this.a.getActivity(), 1, 2131720533, 0).a();
           return;
-          localUnsatisfiedLinkError = localUnsatisfiedLinkError;
-          paramaxsq = (axsq)localObject;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          localUnsatisfiedLinkError.printStackTrace();
-          paramaxsq = (axsq)localObject;
+        } while (!(paramObject instanceof setUserFlagRsp));
+        i = ((setUserFlagRsp)paramObject).ret;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserFlagRsp] ret=" + i);
         }
-        catch (Exception paramaxsq)
+        if (i != 0) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserFlagRsp] setFlag=" + CustomCoverFragment.b(this.a));
+        }
+        CustomCoverFragment.a(this.a, true);
+        bcpw.a((Context)localObject, 0, 2131720536, 0).a();
+        if (CustomCoverFragment.b(this.a))
         {
-          ahji.a(-3);
-          baig.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          paramaxsq.printStackTrace();
-          continue;
+          ((FragmentActivity)localObject).finish();
+          return;
         }
-        ahji.a(-2);
-      }
-      ausk.a(paramaxsq, "ptv_template_new.cfg");
-      this.jdField_a_of_type_Ausk.c(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip finsh configContent=" + paramaxsq);
-      }
-      ahji.a(1);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(new Intent("action_brocassreceiver_for_ptv"));
+        CustomCoverFragment.a(this.a, CustomCoverFragment.b(this.a));
+      } while (CustomCoverFragment.a(this.a) == null);
+      CustomCoverFragment.a(this.a).sendEmptyMessage(101);
+      return;
+    } while (this.a.getActivity() == null);
+    label293:
+    bcpw.a(this.a.getActivity(), 1, 2131720533, 0).a();
+    return;
+    label724:
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: isSuccess=false, cmd=" + paramObject);
+    }
+    if ("profilelogic.readUserInfo".equals(paramObject))
+    {
+      CustomCoverFragment.c(this.a, 1);
+      this.a.stopTitleProgress();
+      bcpw.a((Context)localObject, 1, 2131720242, 0).a();
       return;
     }
-    label330:
-    if (QLog.isColorLevel()) {
-      QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
-    }
-    baig.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
+    bcpw.a((Context)localObject, 1, 2131720533, 0).a();
   }
-  
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ausl
  * JD-Core Version:    0.7.0.1
  */

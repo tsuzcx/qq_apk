@@ -1,17 +1,17 @@
 package com.tencent.biz.publicAccountImageCollection;
 
 import android.widget.TextView;
-import sbr;
+import son;
 
 public class PublicAccountImageCollectionMainActivity$3$6
   implements Runnable
 {
-  public PublicAccountImageCollectionMainActivity$3$6(sbr paramsbr, boolean paramBoolean, int paramInt) {}
+  public PublicAccountImageCollectionMainActivity$3$6(son paramson, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Sbr.a.a.setText("" + PublicAccountImageCollectionMainActivity.c(this.jdField_a_of_type_Sbr.a));
-    PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Sbr.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Son.a.a.setText("" + PublicAccountImageCollectionMainActivity.c(this.jdField_a_of_type_Son.a));
+    PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Son.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
   }
 }
 

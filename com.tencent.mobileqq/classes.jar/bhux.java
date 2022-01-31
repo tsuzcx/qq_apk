@@ -1,41 +1,23 @@
-import android.support.annotation.RestrictTo;
+import android.os.Handler;
+import cooperation.qzone.zipanimate.ZipAnimationDrawable.ZipAnimationState.1.1;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class bhux
-  implements bhvb
+  implements bhvf
 {
-  private final bhva[] a;
+  bhux(bhuw parambhuw) {}
   
-  bhux(bhva[] paramArrayOfbhva)
+  public void onZipLoaded(boolean paramBoolean)
   {
-    this.a = paramArrayOfbhva;
-  }
-  
-  public void a(bhvg parambhvg, bhvd parambhvd)
-  {
-    int j = 0;
-    bhvi localbhvi = new bhvi();
-    bhva[] arrayOfbhva = this.a;
-    int k = arrayOfbhva.length;
-    int i = 0;
-    while (i < k)
+    if (!this.a.jdField_a_of_type_Boolean)
     {
-      arrayOfbhva[i].a(parambhvg, parambhvd, false, localbhvi);
-      i += 1;
-    }
-    arrayOfbhva = this.a;
-    k = arrayOfbhva.length;
-    i = j;
-    while (i < k)
-    {
-      arrayOfbhva[i].a(parambhvg, parambhvd, true, localbhvi);
-      i += 1;
+      this.a.jdField_a_of_type_Boolean = paramBoolean;
+      this.a.jdField_a_of_type_Bhus.a.post(new ZipAnimationDrawable.ZipAnimationState.1.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhux
  * JD-Core Version:    0.7.0.1
  */

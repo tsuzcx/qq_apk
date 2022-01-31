@@ -1,35 +1,37 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import mqq.app.AppRuntime;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import org.json.JSONObject;
 
 class arhg
-  implements arhl
+  extends BroadcastReceiver
 {
-  arhg(arhf paramarhf) {}
+  arhg(arhb paramarhb) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppRuntime localAppRuntime;
-    if (this.a.jdField_a_of_type_Int == 1)
+    paramContext = paramIntent.getAction();
+    int i;
+    if ((paramContext.equals(arfw.a(arhb.b(this.a)))) || (paramContext.equals(arfw.d(arhb.b(this.a)))))
     {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-        awqx.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbJieshou", "MbWanchengXiaochu", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
-      }
+      i = paramIntent.getIntExtra("key_state", -1);
+      paramContext = arhb.a(this.a, i);
     }
-    do
+    switch (i)
     {
+    default: 
       return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while ((localAppRuntime == null) || (!(localAppRuntime instanceof QQAppInterface)));
-    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    awqx.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbFasong", "MbZhudongChaozuo", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+    case 9: 
+    case 100: 
+      this.a.callJs("notifyJsCallback", new String[] { paramContext.toString() });
+      return;
+    }
+    arhh.a.a = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arhg
  * JD-Core Version:    0.7.0.1
  */

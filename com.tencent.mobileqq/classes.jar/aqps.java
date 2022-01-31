@@ -1,32 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Set;
+import mqq.app.QQPermissionCallback;
 
 class aqps
-  extends ajjh
+  implements QQPermissionCallback
 {
-  aqps(aqpq paramaqpq) {}
+  aqps(aqpr paramaqpr) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QLog.i("FetchOpenIdManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
-    if ((paramBoolean) && (paramObject != null))
-    {
-      long l = ((Long)paramObject).longValue();
-      paramObject = aqpq.a(this.a).keySet().toArray();
-      int i = paramObject.length - 1;
-      while (i >= 0)
-      {
-        Long localLong = (Long)paramObject[i];
-        this.a.a(localLong.longValue(), l);
-        i -= 1;
-      }
-    }
+    bbcv.b(this.a.a);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    aqpr.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqps
  * JD-Core Version:    0.7.0.1
  */

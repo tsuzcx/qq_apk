@@ -1,322 +1,208 @@
-import android.graphics.SurfaceTexture;
-import android.opengl.GLES20;
 import android.text.TextUtils;
-import com.tencent.qg.sdk.video.IMediaPlayer;
-import com.tencent.qg.sdk.video.VideoPlayer;
-import com.tencent.qg.video.videodecoder.MediaDecoder;
-import com.tencent.ttpic.openapi.filter.GPUOESBaseFilter;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bcoy
-  implements IMediaPlayer
+  implements amot
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private bcpi jdField_a_of_type_Bcpi = new bcoz(this);
-  private MediaDecoder jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder;
-  private GPUOESBaseFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter;
-  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private bcoz jdField_a_of_type_Bcoz;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private volatile boolean jdField_d_of_type_Boolean;
-  private int e = -1;
-  private int f = -1;
-  private volatile int g = 0;
+  private final int[] jdField_a_of_type_ArrayOfInt = { 0, 1, 1, 1, 0, 0, 1, 1, 1 };
+  private final Boolean[] jdField_a_of_type_ArrayOfJavaLangBoolean = new Boolean[9];
   
-  private int[] a()
+  public bcoy(QQAppInterface paramQQAppInterface, bcoz parambcoz)
   {
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    GLES20.glBindTexture(36197, arrayOfInt[0]);
-    GLES20.glTexParameterf(36197, 10241, 9729.0F);
-    GLES20.glTexParameterf(36197, 10240, 9729.0F);
-    GLES20.glTexParameteri(36197, 10242, 33071);
-    GLES20.glTexParameteri(36197, 10243, 33071);
-    return arrayOfInt;
-  }
-  
-  private void e()
-  {
-    urk.b("DefaultMediaPlayer", "onVideoPlayEnded");
-    VideoPlayer.nativeEvent(this.jdField_a_of_type_Long, "ended");
-    this.jdField_d_of_type_Boolean = true;
-  }
-  
-  private void f()
-  {
-    urk.b("DefaultMediaPlayer", "onVideoPlayRepeated");
-    this.jdField_d_of_type_Boolean = false;
-  }
-  
-  private void g()
-  {
-    boolean bool2 = true;
-    bcpa.a(hashCode(), "[Player] handle play cmd from qg");
-    urk.a("DefaultMediaPlayer", "handleStartPlay , src = %s", this.jdField_a_of_type_JavaLangString);
-    this.jdField_d_of_type_Int = a()[0];
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, 33984);
-    }
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter == null)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Bcoz = parambcoz;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter = ((GPUOESBaseFilter)avab.a(102));
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter.init();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("profile_btn_config", this);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("profile_switch_config", this);
     }
-    if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) {
-      this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.b();
-    }
-    this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder = new MediaDecoder(this.jdField_a_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_a_of_type_Bcpi, false, hashCode());
-    this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.a();
-    MediaDecoder localMediaDecoder;
-    if (this.f != -1)
+  }
+  
+  private void a(String paramString)
+  {
+    int[] arrayOfInt = new int[9];
+    int i = 0;
+    while (i < 9)
     {
-      localMediaDecoder = this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder;
-      if (this.f == 1)
+      arrayOfInt[i] = this.jdField_a_of_type_ArrayOfInt[i];
+      i += 1;
+    }
+    label269:
+    label424:
+    label429:
+    try
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        break label436;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+        break label269;
+      }
+      localObject = "";
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
       {
-        bool1 = true;
-        localMediaDecoder.a(bool1);
+        Object localObject;
+        localException1 = localException1;
+        QLog.e("ProfileConfigHelper", 1, "initProfileSwitchConfig fail.", localException1);
+        i = 0;
+        if (i < 9)
+        {
+          arrayOfBoolean = this.jdField_a_of_type_ArrayOfJavaLangBoolean;
+          if (arrayOfInt[i] == 1) {}
+          for (bool = true;; bool = false)
+          {
+            arrayOfBoolean[i] = Boolean.valueOf(bool);
+            i += 1;
+            break;
+          }
+        }
       }
     }
-    else if (this.e != -1)
+    finally
     {
-      localMediaDecoder = this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder;
-      if (this.e != 1) {
-        break label218;
+      i = 0;
+      if (i >= 9) {
+        break label429;
+      }
+      Boolean[] arrayOfBoolean = this.jdField_a_of_type_ArrayOfJavaLangBoolean;
+      if (arrayOfInt[i] != 1) {
+        break label424;
+      }
+      for (boolean bool = true;; bool = false)
+      {
+        arrayOfBoolean[i] = Boolean.valueOf(bool);
+        i += 1;
+        break;
       }
     }
-    label218:
-    for (boolean bool1 = bool2;; bool1 = false)
+    localObject = amor.a((String)localObject, "profile_switch_config");
+    paramString = (String)localObject;
+    label436:
+    for (;;) {}
+  }
+  
+  private void b(String paramString)
+  {
+    Object localObject3 = null;
+    Object localObject4 = null;
+    label165:
+    for (;;)
     {
-      localMediaDecoder.b(bool1);
-      this.jdField_d_of_type_Boolean = false;
-      this.g = 0;
-      bcpa.a(hashCode(), "[Player] handle play cmd from qg finish");
-      return;
-      bool1 = false;
-      break;
+      try
+      {
+        if (!TextUtils.isEmpty(paramString)) {
+          break label165;
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+        {
+          str = "";
+          str = amor.a(str, "profile_btn_config");
+          paramString = str;
+        }
+      }
+      catch (Exception localException1)
+      {
+        String str;
+        localException1.printStackTrace();
+        Object localObject1 = localObject4;
+        if (TextUtils.isEmpty(null)) {
+          localObject1 = ajyc.a(2131708444);
+        }
+        this.jdField_a_of_type_JavaLangString = ((String)localObject1);
+        continue;
+      }
+      finally
+      {
+        paramString = (String)localObject3;
+        if (TextUtils.isEmpty(null)) {
+          paramString = ajyc.a(2131708444);
+        }
+        this.jdField_a_of_type_JavaLangString = paramString;
+      }
+      try
+      {
+        str = new JSONObject(paramString).optString("call_wording");
+        localObject3 = str;
+        if (TextUtils.isEmpty(str)) {
+          localObject3 = ajyc.a(2131708444);
+        }
+        this.jdField_a_of_type_JavaLangString = ((String)localObject3);
+        if (QLog.isColorLevel()) {
+          QLog.i("ProfileConfigHelper", 2, String.format("initVoiceBtnConfig [str:%s content:%s]", new Object[] { this.jdField_a_of_type_JavaLangString, paramString }));
+        }
+        return;
+      }
+      catch (Exception localException2)
+      {
+        continue;
+      }
+      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     }
   }
   
-  private void h()
+  public String a()
   {
-    urk.a("DefaultMediaPlayer", "handleResumePlay , src = %s", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.d();
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return ajyc.a(2131708426);
     }
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.setTexId(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter.drawTexture(this.jdField_d_of_type_Int, null, null);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-    if (this.g == 1)
-    {
-      this.g = 2;
-      VideoPlayer.nativeEvent(this.jdField_a_of_type_Long, "ready");
-      bcpa.a(hashCode(), "[Player] render first frame to qg");
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      b(null);
     }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public void a()
   {
-    urk.b("DefaultMediaPlayer", "onResume");
-    if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) {
-      this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.d();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this);
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_Bcoz = null;
   }
   
-  public void a(String paramString)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, amos paramamos)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void b()
-  {
-    urk.b("DefaultMediaPlayer", "onPause");
-    if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) {
-      this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.c();
-    }
-  }
-  
-  public void c()
-  {
-    urk.b("DefaultMediaPlayer", "onStop");
-    if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) {
-      this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.b();
-    }
-  }
-  
-  public void create(long paramLong)
-  {
-    urk.b("DefaultMediaPlayer", "qg -> create");
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_c_of_type_Boolean = false;
-      g();
-    }
-    do
+    if (paramamos == null) {}
+    for (;;)
     {
       return;
-      if (this.jdField_b_of_type_Boolean)
+      if ("profile_btn_config".equals(paramString)) {
+        b(paramamos.jdField_a_of_type_JavaLangString);
+      }
+      while (this.jdField_a_of_type_Bcoz != null)
       {
-        this.jdField_b_of_type_Boolean = false;
-        h();
+        this.jdField_a_of_type_Bcoz.a(paramInt, paramString);
         return;
-      }
-    } while (!isPlaying());
-    i();
-  }
-  
-  public void destroy()
-  {
-    urk.b("DefaultMediaPlayer", "qg -> destroy");
-    c();
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
-    }
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter != null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter.destroy();
-    }
-  }
-  
-  public int getCurrentPosition()
-  {
-    return (int)this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.a();
-  }
-  
-  public int getDuration()
-  {
-    return (int)sjj.a(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean isEnd()
-  {
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public boolean isMuted()
-  {
-    if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) {
-      return this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.c();
-    }
-    return false;
-  }
-  
-  public boolean isPlaying()
-  {
-    if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) {
-      return this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.a();
-    }
-    return false;
-  }
-  
-  public void pause()
-  {
-    urk.b("DefaultMediaPlayer", "qg -> pause");
-    b();
-  }
-  
-  public void play(int paramInt1, int paramInt2, int paramInt3)
-  {
-    urk.a("DefaultMediaPlayer", "qg -> play , texture id = %d , width = %d , height = %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
-    bcpa.a(hashCode(), "[Player] receive play cmd from qg");
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    if ((!this.jdField_c_of_type_Boolean) && (isPlaying())) {
-      return;
-    }
-    if ((!this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) && (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.b()))
-    {
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void seekTo(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.a(paramInt);
-  }
-  
-  public void setLooping(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      this.f = i;
-      if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) {
-        this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.a(paramBoolean);
-      }
-      return;
-    }
-  }
-  
-  public void setMuted(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      this.e = i;
-      if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder != null) {
-        this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.b(paramBoolean);
-      }
-      return;
-    }
-  }
-  
-  public void setSrc(String paramString)
-  {
-    String str = paramString;
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-    {
-      str = paramString;
-      if (!paramString.startsWith(this.jdField_b_of_type_JavaLangString)) {
-        str = this.jdField_b_of_type_JavaLangString + paramString;
+        if ("profile_switch_config".equals(paramString)) {
+          a(paramamos.jdField_a_of_type_JavaLangString);
+        }
       }
     }
-    if (!TextUtils.equals(str, this.jdField_a_of_type_JavaLangString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_c_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = str;
-      urk.a("DefaultMediaPlayer", "qg -> set Src , src = %s , isSrcChanged :%s", str, Boolean.valueOf(this.jdField_c_of_type_Boolean));
-      return;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    while ((paramInt < 0) || (paramInt >= 9)) {
+      return false;
     }
-  }
-  
-  public void setVolume(float paramFloat1, float paramFloat2)
-  {
-    urk.b("DefaultMediaPlayer", "qg -> setVolume , not support yet");
-  }
-  
-  public void stop()
-  {
-    urk.b("DefaultMediaPlayer", "qg -> stop");
-    c();
+    if (this.jdField_a_of_type_ArrayOfJavaLangBoolean[paramInt] == null) {
+      a(null);
+    }
+    return this.jdField_a_of_type_ArrayOfJavaLangBoolean[paramInt].booleanValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcoy
  * JD-Core Version:    0.7.0.1
  */

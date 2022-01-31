@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akje;
-import aklt;
-import akmk;
+import akxq;
+import alaf;
+import alaw;
 
 public class Interactive3DRenderable$1
   implements Runnable
 {
-  public Interactive3DRenderable$1(akmk paramakmk) {}
+  public Interactive3DRenderable$1(alaw paramalaw) {}
   
   public void run()
   {
-    if (akmk.a(this.this$0) != 9) {}
+    if (alaw.a(this.this$0) != 9) {}
     do
     {
       return;
-      if (akmk.a(this.this$0) != null) {
-        akmk.a(this.this$0).b(0, 2);
+      if (alaw.a(this.this$0) != null) {
+        alaw.a(this.this$0).b(0, 2);
       }
-    } while (akmk.a(this.this$0) == null);
-    akmk.a(this.this$0).a(true);
+    } while (alaw.a(this.this$0) == null);
+    alaw.a(this.this$0).a(true);
   }
 }
 

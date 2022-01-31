@@ -1,9 +1,6 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptConstants.1;
-import java.util.Map;
-
-public class row
+public abstract interface row
 {
-  public static final Map<String, String> a = new SubscriptConstants.1();
+  public abstract void a();
 }
 
 

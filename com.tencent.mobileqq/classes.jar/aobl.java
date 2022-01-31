@@ -1,24 +1,16 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class aobl
-  implements View.OnLongClickListener
+class aobl
+  implements asko<EmoticonPackage>
 {
-  public aobl(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  aobl(aobk paramaobk, String paramString) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
-      return false;
+    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.isAPNG == 2)) {
+      URLDrawable.removeMemoryCacheByUrl(this.jdField_a_of_type_JavaLangString);
     }
-    paramView.setSelected(true);
-    bakh localbakh = new bakh();
-    localbakh.a(2131301023, paramView.getContext().getString(2131627114));
-    localbakh.a(2131299411, paramView.getContext().getString(2131625931));
-    this.a.a = baay.a(paramView, localbakh, new aobm(this, paramView), new aobo(this, paramView));
-    return true;
   }
 }
 

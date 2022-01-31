@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view.widget.reddot;
 
-import rik;
+import rva;
 
 class ColorBandVideoEntranceButton$4
   implements Runnable
 {
-  ColorBandVideoEntranceButton$4(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton, rik paramrik) {}
+  ColorBandVideoEntranceButton$4(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton, rva paramrva) {}
   
   public void run()
   {

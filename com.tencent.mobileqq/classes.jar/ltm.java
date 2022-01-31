@@ -1,48 +1,61 @@
-import com.tencent.av.app.VideoAppInterface;
+import android.graphics.Bitmap;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class ltm
-  implements lhn
+public class ltm
+  extends ltl
 {
-  ltm(ltl paramltl, VideoAppInterface paramVideoAppInterface) {}
+  public Bitmap a;
+  public byte[] a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public int f;
+  public String f;
+  int g;
+  int h;
   
-  public void a()
+  public ltm()
   {
-    ltl.c(this.jdField_a_of_type_Ltl);
+    this.jdField_f_of_type_Int = -1;
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  void a(String paramString)
   {
-    int i = ltl.a(paramInt4);
-    if (QLog.isColorLevel()) {
-      QLog.w(ltl.a(this.jdField_a_of_type_Ltl), 1, "onRenderInfoNotify, width[" + this.jdField_a_of_type_Ltl.s + "->" + paramInt1 + "], height[" + this.jdField_a_of_type_Ltl.t + "->" + paramInt2 + "], angle[" + this.jdField_a_of_type_Ltl.r + "->" + paramInt3 + "], rotation[" + ltl.a(this.jdField_a_of_type_Ltl) + "->" + i + "], srcR[" + paramInt4 + "]");
-    }
-    this.jdField_a_of_type_Ltl.s = paramInt1;
-    this.jdField_a_of_type_Ltl.t = paramInt2;
-    this.jdField_a_of_type_Ltl.r = paramInt3;
-    if (paramInt4 != -1) {
-      ltl.a(this.jdField_a_of_type_Ltl, i);
-    }
-    ltl.d(this.jdField_a_of_type_Ltl);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    super.a(paramString);
+    if ((1 == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
     {
-      String str = this.jdField_a_of_type_Ltl.b();
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(130), str, paramArrayOfByte });
+      if (this.jdField_b_of_type_Int != 0) {
+        break label205;
+      }
+      this.jdField_f_of_type_Int = this.jdField_a_of_type_OrgJsonJSONObject.optInt("ismask", -1);
+      this.g = this.jdField_a_of_type_OrgJsonJSONObject.optInt("peer_gender");
+      this.c = bbdm.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_ennick", null));
+      this.d = bbdm.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("ensessionname", null));
+      this.e = this.jdField_a_of_type_OrgJsonJSONObject.optString("headurl", null);
+      if (!this.jdField_a_of_type_OrgJsonJSONObject.optBoolean("oldproto", false)) {
+        break label164;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("RandomWebProtocol", 2, "[1v1] parse method is oldproto");
+      }
+      this.jdField_b_of_type_JavaLangString = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_enuin", null));
+      this.jdField_a_of_type_ArrayOfByte = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("vaskey", null));
     }
-  }
-  
-  public void b()
-  {
-    ltl.b(this.jdField_a_of_type_Ltl);
-  }
-  
-  public void c()
-  {
-    ltl.a(this.jdField_a_of_type_Ltl);
+    label164:
+    label205:
+    while (this.jdField_b_of_type_Int != 1)
+    {
+      return;
+      this.jdField_b_of_type_JavaLangString = ChatActivityUtils.a(RandomWebProtocol.a(), bbdm.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_enuin", null)));
+      this.jdField_a_of_type_ArrayOfByte = bbdm.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("vaskey", null));
+      return;
+    }
+    this.h = Math.max(this.jdField_a_of_type_OrgJsonJSONObject.optInt("waittime"), 200);
+    this.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_OrgJsonJSONObject.optString("uniqkey", null);
   }
 }
 

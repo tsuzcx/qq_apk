@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import badq;
+import bbev;
 import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
 import com.tencent.common.app.BaseApplicationImpl;
 
@@ -9,7 +9,7 @@ public final class ReadinjoySPEventReport$4
 {
   public void run()
   {
-    int i = badq.a(BaseApplicationImpl.getContext());
+    int i = bbev.a(BaseApplicationImpl.getContext());
     String str;
     if ((i == 2) || (i == 3) || (i == 4)) {
       str = "WWAN";

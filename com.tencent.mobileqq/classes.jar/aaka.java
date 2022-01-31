@@ -1,117 +1,159 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 public class aaka
-  extends ajuc
+  extends ajxl
 {
-  public aaka(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aaka(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  protected void a(String paramString1, String paramString2, String paramString3)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((paramString1 == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin))) {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    ChatSettingForTroop.a(this.a, true);
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
-  {
-    if (!paramBoolean) {}
-    String str;
-    do
+    boolean bool = false;
+    paramBoolean = bool;
+    Iterator localIterator;
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      return;
-      str = paramLong1 + "";
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null) || (!str.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)));
-    ChatSettingForTroop.a(this.a, true);
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt, ArrayList<String> paramArrayList, String paramString)
-  {
-    super.a(paramBoolean, paramInt, paramArrayList, paramString);
-    if (!paramBoolean) {
-      if (paramInt == 2) {
-        bbmy.a(this.a, 1, ajjy.a(2131635958), 0).b(this.a.getTitleBarHeight());
-      }
-    }
-    Object localObject1;
-    do
-    {
-      return;
-      localObject2 = "";
-      localObject1 = localObject2;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
+      paramBoolean = bool;
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
       {
-        localObject1 = localObject2;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin != null) {
-          localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin;
+        localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        paramBoolean = false;
+        label55:
+        if (localIterator.hasNext())
+        {
+          if (!TextUtils.equals(paramString, ((SubAccountInfo)localIterator.next()).subuin)) {
+            break label224;
+          }
+          paramBoolean = true;
         }
       }
-    } while (this.a.e == null);
-    Object localObject2 = new HashSet();
-    if ((paramString != null) && (paramString.equals(localObject1)))
+    }
+    label129:
+    label221:
+    label224:
+    for (;;)
     {
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
+      break label55;
+      bool = paramBoolean;
+      if (this.a.b != null)
       {
-        paramString = (String)paramArrayList.next();
-        localObject1 = this.a.e.iterator();
-        while (((Iterator)localObject1).hasNext())
+        bool = paramBoolean;
+        if (this.a.b.size() > 0)
         {
-          oidb_0x899.memberlist localmemberlist = (oidb_0x899.memberlist)((Iterator)localObject1).next();
-          if (paramString.equals(localmemberlist.uint64_member_uin.get() + "")) {
-            ((Collection)localObject2).add(localmemberlist);
+          localIterator = this.a.b.iterator();
+          if (localIterator.hasNext())
+          {
+            if (!TextUtils.equals(paramString, ((SimpleAccount)localIterator.next()).getUin())) {
+              break label221;
+            }
+            paramBoolean = true;
           }
         }
       }
-      paramArrayList = ((Collection)localObject2).iterator();
-      while (paramArrayList.hasNext())
+      for (;;)
       {
-        paramString = (oidb_0x899.memberlist)paramArrayList.next();
-        this.a.e.remove(paramString);
+        break label129;
+        bool = paramBoolean;
+        if (QLog.isColorLevel()) {
+          QLog.d("AssociatedAccountActivity", 2, "onUpdateCustomHead uin = " + paramString + " needUpdate=" + bool);
+        }
+        if (!bool) {
+          break;
+        }
+        this.a.jdField_a_of_type_Ailf.notifyDataSetInvalidated();
+        return;
       }
     }
-    this.a.a(this.a.e);
   }
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((paramString1 == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin))) {}
-    while (paramInt2 != 512) {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    if (paramBoolean)
-    {
-      ajyz.a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "onUpdateFriendInfo  uin = " + paramString + " isSuccess = " + paramBoolean);
     }
-    ChatSettingForTroop.b(this.a);
-  }
-  
-  protected void b(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
-  {
-    if (!paramBoolean) {}
-    String str;
-    do
+    Iterator localIterator = this.a.c.iterator();
+    paramBoolean = false;
+    label66:
+    Object localObject3;
+    boolean bool;
+    Object localObject2;
+    Object localObject1;
+    if (localIterator.hasNext())
     {
-      return;
-      str = paramLong1 + "";
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null) || (!str.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)));
-    ChatSettingForTroop.a(this.a, true);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    super.b(paramBoolean, paramString);
-    ChatSettingForTroop.a(this.a);
+      localObject3 = (ayam)localIterator.next();
+      if ((((ayam)localObject3).jdField_a_of_type_Int == 2) && (((ayam)localObject3).jdField_a_of_type_JavaLangObject != null) && ((((ayam)localObject3).jdField_a_of_type_JavaLangObject instanceof SubAccountInfo)))
+      {
+        bool = paramBoolean;
+        if (paramString.equals(((SubAccountInfo)((ayam)localObject3).jdField_a_of_type_JavaLangObject).subuin))
+        {
+          localObject2 = bbcl.c(this.a.app, paramString, true);
+          localObject1 = localObject2;
+          if (TextUtils.isEmpty((CharSequence)localObject2)) {
+            localObject1 = paramString;
+          }
+          bool = paramBoolean;
+          if (!((String)localObject1).equals(((ayam)localObject3).jdField_a_of_type_JavaLangString))
+          {
+            ((ayam)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject1);
+            bool = true;
+          }
+        }
+      }
+    }
+    for (paramBoolean = bool;; paramBoolean = bool)
+    {
+      break label66;
+      bool = paramBoolean;
+      if (((ayam)localObject3).jdField_a_of_type_Int == 5)
+      {
+        bool = paramBoolean;
+        if (((ayam)localObject3).jdField_a_of_type_JavaLangObject != null)
+        {
+          bool = paramBoolean;
+          if ((((ayam)localObject3).jdField_a_of_type_JavaLangObject instanceof ArrayList))
+          {
+            localObject1 = ((ArrayList)((ayam)localObject3).jdField_a_of_type_JavaLangObject).iterator();
+            for (;;)
+            {
+              bool = paramBoolean;
+              if (!((Iterator)localObject1).hasNext()) {
+                break;
+              }
+              localObject2 = (ayam)((Iterator)localObject1).next();
+              localObject3 = (SimpleAccount)((ayam)localObject2).jdField_a_of_type_JavaLangObject;
+              if (paramString.equals(((SimpleAccount)localObject3).getUin()))
+              {
+                localObject3 = ayao.a(this.a.app, (SimpleAccount)localObject3);
+                if (!((String)localObject3).equals(((ayam)localObject2).jdField_a_of_type_JavaLangString))
+                {
+                  ((ayam)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject3);
+                  paramBoolean = true;
+                }
+              }
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("AssociatedAccountActivity", 2, "onUpdateFriendInfo needUpdate = " + paramBoolean);
+            }
+            if (!paramBoolean) {
+              break;
+            }
+            this.a.jdField_a_of_type_Ailf.notifyDataSetInvalidated();
+            return;
+          }
+        }
+      }
+    }
   }
 }
 

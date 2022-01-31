@@ -5,11 +5,11 @@ import java.util.Map;
 public class HttpRequset
 {
   public static final String DEFAULT_CONTENT_TYPE = "application/json,text/*,*/*";
-  public static final int DEFAULT_TIMEOUT_MS = 3000;
+  public static final int DEFAULT_TIMEOUT_MS = 10000;
   public String body;
   public String method;
   public Map<String, String> paramMap;
-  public int timeoutMs = 3000;
+  public int timeoutMs = 10000;
   public String type;
   public String url;
 }

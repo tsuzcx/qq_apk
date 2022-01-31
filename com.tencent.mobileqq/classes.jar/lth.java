@@ -1,49 +1,76 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.random.RandomWebProtocol;
+import java.util.Random;
+import org.json.JSONObject;
 
 public class lth
-  implements View.OnClickListener
+  extends ltg
 {
-  public lth(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity, begr parambegr) {}
+  int c;
+  int d;
+  int e;
+  String f;
   
-  public void onClick(View paramView)
+  public lth(RandomWebProtocol paramRandomWebProtocol, ltg paramltg, String paramString, int paramInt1, int paramInt2, int paramInt3, String... paramVarArgs)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().U) {
-      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
-        awqx.b(null, "CliOper", "", "", "0X8005C28", "0X8005C28", 0, 0, "", "", "", "");
-      }
+    super(paramRandomWebProtocol, paramltg);
+    this.a = 1;
+    this.c = paramString;
+    this.d = paramInt1;
+    this.c = paramInt2;
+    this.e = paramInt3;
+    if ((this.e == 2) && (paramVarArgs != null) && (paramVarArgs.length == 1)) {
+      this.f = paramVarArgs[0];
     }
+    this.d = "[d] RequestDouble";
+  }
+  
+  String a()
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    Object localObject = localJSONObject1;
     for (;;)
     {
-      if (!this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().U) {
-        bool = true;
-      }
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.b(bool);
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().b("OnClick", bool);
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a();
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.b();
       try
       {
-        this.jdField_a_of_type_Begr.dismiss();
-        return;
-      }
-      catch (Throwable paramView)
-      {
-        paramView.printStackTrace();
-      }
-      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000)
-      {
-        awqx.b(null, "CliOper", "", "", "0X8005C23", "0X8005C23", 0, 0, "", "", "", "");
-        continue;
-        if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
-          awqx.b(null, "CliOper", "", "", "0X8005C27", "0X8005C27", 0, 0, "", "", "", "");
-        } else if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000) {
-          awqx.b(null, "CliOper", "", "", "0X8005C22", "0X8005C22", 0, 0, "", "", "", "");
+        this.a = new JSONObject().put("peer_gender", this.c).put("session_type", this.d).put("reqtype", this.e);
+        localObject = localJSONObject1;
+        if (this.e == 2)
+        {
+          localObject = localJSONObject1;
+          if (this.f != null)
+          {
+            localObject = localJSONObject1;
+            this.a.put("uniqkey", this.f);
+            localObject = localJSONObject1;
+            JSONObject localJSONObject2 = new JSONObject(super.a());
+            localObject = localJSONObject1;
+            if (this.e != 1) {
+              break label178;
+            }
+            localObject = localJSONObject1;
+            i = this.b.a;
+            localObject = localJSONObject1;
+            localJSONObject1 = localJSONObject2.put("rand", i);
+            localObject = localJSONObject1;
+            return localJSONObject1.toString();
+          }
         }
+        localObject = localJSONObject1;
+        if (this.e != 1) {
+          continue;
+        }
+        localObject = localJSONObject1;
+        this.b.a = new Random().nextInt();
+        continue;
+        localObject = localException;
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return ((JSONObject)localObject).toString();
+      }
+      label178:
+      int i = new Random().nextInt();
     }
   }
 }

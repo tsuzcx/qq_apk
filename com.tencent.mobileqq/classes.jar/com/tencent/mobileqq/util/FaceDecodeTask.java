@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.util;
 
-import ajtd;
+import akhn;
 import android.graphics.Bitmap;
 import android.os.Looper;
 import android.text.TextUtils;
-import azwc;
-import azwd;
-import azwe;
-import azwf;
-import azyb;
+import baxg;
+import baxh;
+import baxi;
+import baxj;
+import bazf;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -23,7 +23,7 @@ public abstract class FaceDecodeTask
 {
   public static int a;
   protected static Looper a;
-  private static azwe jdField_a_of_type_Azwe;
+  private static baxi jdField_a_of_type_Baxi;
   protected static Object a;
   protected static ArrayList<FaceDecodeTask> a;
   protected static MqqHandler a;
@@ -34,7 +34,7 @@ public abstract class FaceDecodeTask
   public Bitmap a;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   public FaceInfo a;
-  public WeakReference<azwd> a;
+  public WeakReference<baxh> a;
   public boolean a;
   
   static
@@ -45,17 +45,17 @@ public abstract class FaceDecodeTask
     jdField_b_of_type_JavaUtilArrayList = new ArrayList(100);
   }
   
-  public FaceDecodeTask(AppInterface paramAppInterface, FaceInfo paramFaceInfo, azwd paramazwd)
+  public FaceDecodeTask(AppInterface paramAppInterface, FaceInfo paramFaceInfo, baxh parambaxh)
   {
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo = paramFaceInfo;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramazwd);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambaxh);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
-  public static azwe a()
+  public static baxi a()
   {
-    azwe localazwe = new azwe();
+    baxi localbaxi = new baxi();
     int i = Runtime.getRuntime().availableProcessors();
     if (QLog.isColorLevel()) {
       QLog.i("Q.qqhead.FaceDecodeTask", 2, "processor count:" + i);
@@ -63,24 +63,24 @@ public abstract class FaceDecodeTask
     if (i >= 4) {}
     do
     {
-      return localazwe;
-      localazwe.jdField_a_of_type_Int = (i + 1);
+      return localbaxi;
+      localbaxi.jdField_a_of_type_Int = (i + 1);
     } while (i > 2);
-    localazwe.jdField_b_of_type_Int = 10;
-    return localazwe;
+    localbaxi.jdField_b_of_type_Int = 10;
+    return localbaxi;
   }
   
-  public static FaceDecodeTask a(AppInterface paramAppInterface, FaceInfo paramFaceInfo, azwd paramazwd)
+  public static FaceDecodeTask a(AppInterface paramAppInterface, FaceInfo paramFaceInfo, baxh parambaxh)
   {
     if (paramAppInterface == null) {}
     do
     {
       return null;
       if ((paramAppInterface instanceof QQAppInterface)) {
-        return new azwf((QQAppInterface)paramAppInterface, paramFaceInfo, paramazwd);
+        return new baxj((QQAppInterface)paramAppInterface, paramFaceInfo, parambaxh);
       }
     } while (!(paramAppInterface instanceof NearbyAppInterface));
-    return new azyb((NearbyAppInterface)paramAppInterface, paramFaceInfo, paramazwd);
+    return new bazf((NearbyAppInterface)paramAppInterface, paramFaceInfo, parambaxh);
   }
   
   public static void a(FaceDecodeTask paramFaceDecodeTask)
@@ -169,11 +169,11 @@ public abstract class FaceDecodeTask
           if (jdField_a_of_type_ArrayOfJavaLangThread == null)
           {
             jdField_a_of_type_AndroidOsLooper = Looper.getMainLooper();
-            jdField_a_of_type_MqqOsMqqHandler = new azwc(jdField_a_of_type_AndroidOsLooper);
+            jdField_a_of_type_MqqOsMqqHandler = new baxg(jdField_a_of_type_AndroidOsLooper);
             String str = BaseApplicationImpl.processName;
             d();
-            if (jdField_a_of_type_Azwe.jdField_a_of_type_Int != -2147483648) {
-              jdField_b_of_type_Int = jdField_a_of_type_Azwe.jdField_a_of_type_Int;
+            if (jdField_a_of_type_Baxi.jdField_a_of_type_Int != -2147483648) {
+              jdField_b_of_type_Int = jdField_a_of_type_Baxi.jdField_a_of_type_Int;
             }
             if ((!TextUtils.isEmpty(str)) && (str.equals("com.tencent.mobileqq"))) {
               jdField_b_of_type_Int = 2;
@@ -188,7 +188,7 @@ public abstract class FaceDecodeTask
               {
                 jdField_a_of_type_ArrayOfComTencentMobileqqUtilFaceDecodeTask$FaceDecodeRunnable[i] = new FaceDecodeTask.FaceDecodeRunnable(null);
                 jdField_a_of_type_ArrayOfJavaLangThread[i] = ThreadManager.newFreeThread(jdField_a_of_type_ArrayOfComTencentMobileqqUtilFaceDecodeTask$FaceDecodeRunnable[i], "FaceDecodeThread", 5);
-                if (ajtd.a().c()) {
+                if (akhn.a().c()) {
                   jdField_a_of_type_ArrayOfJavaLangThread[i].setPriority(1);
                 }
                 if (jdField_a_of_type_ArrayOfJavaLangThread[i].getState() != Thread.State.NEW) {
@@ -224,9 +224,9 @@ public abstract class FaceDecodeTask
     {
       return;
       if (BaseApplicationImpl.processName.equals("com.tencent.mobileqq:tool")) {}
-      for (jdField_a_of_type_Azwe = a(); QLog.isColorLevel(); jdField_a_of_type_Azwe = new azwe())
+      for (jdField_a_of_type_Baxi = a(); QLog.isColorLevel(); jdField_a_of_type_Baxi = new baxi())
       {
-        QLog.i("Q.qqhead.FaceDecodeTask", 2, "initFaceDecodeThreadInfo, maxThreadCount=" + jdField_a_of_type_Azwe.jdField_a_of_type_Int + ",priority=" + jdField_a_of_type_Azwe.jdField_b_of_type_Int);
+        QLog.i("Q.qqhead.FaceDecodeTask", 2, "initFaceDecodeThreadInfo, maxThreadCount=" + jdField_a_of_type_Baxi.jdField_a_of_type_Int + ",priority=" + jdField_a_of_type_Baxi.jdField_b_of_type_Int);
         return;
       }
     }

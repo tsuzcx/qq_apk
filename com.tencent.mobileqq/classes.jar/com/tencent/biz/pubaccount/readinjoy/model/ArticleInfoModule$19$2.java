@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import ohb;
+import osm;
 
 class ArticleInfoModule$19$2
   implements Runnable
@@ -10,7 +10,7 @@ class ArticleInfoModule$19$2
   
   public void run()
   {
-    ohb.a().b(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule$19.a, this.jdField_a_of_type_JavaUtilList, false);
+    osm.a().b(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule$19.a, this.jdField_a_of_type_JavaUtilList, false);
   }
 }
 

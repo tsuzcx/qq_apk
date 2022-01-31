@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import abua;
-import axat;
+import acem;
+import ayav;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SubLoginActivity$8$1
   implements Runnable
 {
-  public SubLoginActivity$8$1(abua paramabua, String paramString) {}
+  public SubLoginActivity$8$1(acem paramacem, String paramString) {}
   
   public void run()
   {
-    axat localaxat = (axat)this.jdField_a_of_type_Abua.a.app.getManager(61);
-    if (localaxat != null) {
-      localaxat.a(this.jdField_a_of_type_JavaLangString, 0, "");
+    ayav localayav = (ayav)this.jdField_a_of_type_Acem.a.app.getManager(61);
+    if (localayav != null) {
+      localayav.a(this.jdField_a_of_type_JavaLangString, 0, "");
     }
   }
 }

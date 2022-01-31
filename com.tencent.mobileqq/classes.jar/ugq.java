@@ -1,18 +1,15 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class ugq
-  extends sfo
+class ugq
+  implements DialogInterface.OnDismissListener
 {
-  public String a;
-  public ArrayList<String> a;
-  public List<String> a;
-  public boolean a;
+  ugq(ugn paramugn, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public ugq(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
   }
 }
 

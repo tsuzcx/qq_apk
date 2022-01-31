@@ -1,18 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
-
-public final class qvg
-  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.EntranceIconInfo>
+class qvg
+  implements rcb
 {
-  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo a(Parcel paramParcel)
-  {
-    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo(paramParcel);
-  }
+  qvg(qvd paramqvd) {}
   
-  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo[] a(int paramInt)
+  public void a()
   {
-    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo[paramInt];
+    this.a.e();
   }
 }
 

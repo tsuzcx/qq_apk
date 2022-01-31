@@ -1,25 +1,23 @@
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
-import cooperation.qwallet.plugin.FakeUrl.FakeInfo;
-import cooperation.qwallet.plugin.FakeUrl.FakeListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class achl
-  implements FakeUrl.FakeListener
+  implements View.OnClickListener
 {
-  public achl(QQNotifySettingBaseFragment.2.1 param1) {}
+  public achl(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
   
-  public boolean onBlHandleFakeurl(FakeUrl.FakeInfo paramFakeInfo, int paramInt)
+  public void onClick(View paramView)
   {
-    return false;
-  }
-  
-  public boolean onClickUrl(String paramString)
-  {
-    return false;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     achl
  * JD-Core Version:    0.7.0.1
  */

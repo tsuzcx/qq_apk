@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import aabz;
-import bbms;
+import aals;
+import bcpq;
 
 public class AutoLoginHelper$5
   implements Runnable
 {
-  public AutoLoginHelper$5(aabz paramaabz) {}
+  public AutoLoginHelper$5(aals paramaals) {}
   
   public void run()
   {
     try
     {
-      if ((aabz.a(this.this$0) == null) && (!aabz.a(this.this$0).isFinishing()))
+      if ((aals.a(this.this$0) == null) && (!aals.a(this.this$0).isFinishing()))
       {
-        aabz.a(this.this$0, new bbms(aabz.a(this.this$0), aabz.a(this.this$0).getTitleBarHeight()));
-        aabz.a(this.this$0).c(2131629253);
+        aals.a(this.this$0, new bcpq(aals.a(this.this$0), aals.a(this.this$0).getTitleBarHeight()));
+        aals.a(this.this$0).c(2131694930);
       }
-      if ((aabz.a(this.this$0) != null) && (!aabz.a(this.this$0).isShowing())) {
-        aabz.a(this.this$0).show();
+      if ((aals.a(this.this$0) != null) && (!aals.a(this.this$0).isShowing())) {
+        aals.a(this.this$0).show();
       }
       return;
     }

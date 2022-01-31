@@ -3,14 +3,14 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
-import bdcy;
+import begy;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class SensorJsPlugin$RotationSensorJsPlugin
   implements SensorEventListener
 {
-  private bdcy jsService;
+  private begy jsService;
   
   private SensorJsPlugin$RotationSensorJsPlugin(SensorJsPlugin paramSensorJsPlugin) {}
   
@@ -36,9 +36,9 @@ class SensorJsPlugin$RotationSensorJsPlugin
     }
   }
   
-  public void setJsService(bdcy parambdcy)
+  public void setJsService(begy parambegy)
   {
-    this.jsService = parambdcy;
+    this.jsService = parambegy;
   }
 }
 

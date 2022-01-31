@@ -1,23 +1,22 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment;
-import com.tencent.widget.AdapterView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class nsr
-  implements behi
+class nsr
+  implements ViewBase.OnClickListener
 {
-  public nsr(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment) {}
+  nsr(nsp paramnsp) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.a.a.doOnBackPressed();
-    paramAdapterView = paramView.getTag();
-    if ((paramAdapterView instanceof nst))
-    {
-      paramAdapterView = (nst)paramAdapterView;
-      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.jdField_a_of_type_JavaLangString);
-      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.jdField_a_of_type_Long, paramAdapterView.b, "0X800953C", paramAdapterView.jdField_a_of_type_Int);
+    if (paramViewBase.getEventAttachedData() == null) {
+      return;
     }
+    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramViewBase.getEventAttachedData()));
+    paramViewBase.getNativeView().getContext().startActivity(localIntent);
   }
 }
 

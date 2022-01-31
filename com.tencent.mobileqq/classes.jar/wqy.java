@@ -1,18 +1,33 @@
-import com.tencent.biz.videostory.capture.widgets.AEBottomListScrollView;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.qphone.base.util.QLog;
 
-class wqy
-  implements wpx
+public class wqy
+  implements udh
 {
-  wqy(wqq paramwqq) {}
+  public wqy(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public void a()
+  public void a_(udc paramudc)
   {
-    wqq.a(this.a).setVisibility(0);
+    try
+    {
+      if (QQPlayerService.a()) {
+        QQPlayerService.c(this.a.getActivity());
+      }
+      return;
+    }
+    catch (Exception paramudc)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SubscribeVideoDetailFragment", 2, "QQPlayerService.stopPlayMusic exception!", paramudc);
+      }
+      paramudc.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wqy
  * JD-Core Version:    0.7.0.1
  */

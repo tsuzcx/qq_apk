@@ -1,31 +1,22 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.graphics.drawable.Drawable;
 
-public class anyb
-  implements View.OnLongClickListener
+public abstract interface anyb
 {
-  public anyb(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public abstract void a(anyc paramanyc);
   
-  public boolean onLongClick(View paramView)
-  {
-    if (paramView == null) {
-      return false;
-    }
-    if (!this.a.b())
-    {
-      this.a.jdField_a_of_type_Aonw.a(null);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-      return false;
-    }
-    paramView.setSelected(true);
-    bakh localbakh = new bakh();
-    localbakh.a(2131299411, paramView.getContext().getString(2131625931));
-    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = baay.a(paramView, localbakh, new anyc(this, paramView), new anyd(this, paramView));
-    return true;
-  }
+  public abstract void a(anyc paramanyc1, anyc paramanyc2, Drawable paramDrawable);
+  
+  public abstract boolean a(anyc paramanyc);
+  
+  public abstract void b();
+  
+  public abstract void b(anyc paramanyc);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void setting();
 }
 
 

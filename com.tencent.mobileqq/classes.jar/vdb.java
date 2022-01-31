@@ -1,40 +1,13 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.os.Handler;
 
-public class vdb
-  extends vcz<vda>
+class vdb
+  implements uza
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131303866);
+  vdb(vda paramvda) {}
   
-  vdb(vda paramvda, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public void a(uyf paramuyf)
   {
-    super(paramContext, paramViewGroup);
-  }
-  
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131495745, paramViewGroup, false);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-  }
-  
-  public void a(vda paramvda, int paramInt)
-  {
-    super.a(paramvda, paramInt);
-    if (paramvda != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramvda.a());
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    vcs.a(this.a.a).sendMessage(vcs.a(this.a.a).obtainMessage(0, paramuyf));
   }
 }
 

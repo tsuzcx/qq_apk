@@ -1,33 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.MessageMicro;
+import java.util.Comparator;
 
-public class szf<REQ extends MessageMicro>
-  extends slz<tbd>
+public class szf
+  implements Comparator<szd>
 {
-  public final Bundle a;
-  public final REQ a;
-  public final String a;
+  private szf(sze paramsze) {}
   
-  public szf(String paramString, REQ paramREQ, Bundle paramBundle)
+  public int a(szd paramszd1, szd paramszd2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramREQ;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public slu a(byte[] paramArrayOfByte)
-  {
-    return new tbd(paramArrayOfByte);
-  }
-  
-  protected byte[] a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro.toByteArray();
+    return paramszd2.a - paramszd1.a;
   }
 }
 

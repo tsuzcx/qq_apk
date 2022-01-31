@@ -1,32 +1,45 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class qte
-  implements Handler.Callback
+public abstract interface qte
 {
-  private WeakReference<ReadInJoyXListView> a;
+  public abstract int a();
   
-  public qte(ReadInJoyXListView paramReadInJoyXListView)
-  {
-    this.a = new WeakReference(paramReadInJoyXListView);
-  }
+  public abstract CharSequence a();
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    if ((this.a != null) && (this.a.get() != null))
-    {
-      ((ReadInJoyXListView)this.a.get()).i();
-      return true;
-    }
-    return true;
-  }
+  public abstract String a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(VideoInfo paramVideoInfo);
+  
+  public abstract void a(VideoInfo paramVideoInfo, qms paramqms);
+  
+  public abstract void a(qms paramqms);
+  
+  public abstract void a(qtd paramqtd);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(VideoInfo paramVideoInfo);
+  
+  public abstract boolean a(VideoInfo paramVideoInfo, qms paramqms, double paramDouble, long paramLong);
+  
+  public abstract String b();
+  
+  public abstract void b(qms paramqms);
+  
+  public abstract boolean b();
+  
+  public abstract String c();
+  
+  public abstract void c(qms paramqms);
+  
+  public abstract boolean c();
+  
+  public abstract String d();
+  
+  public abstract void onClick(View paramView);
 }
 
 

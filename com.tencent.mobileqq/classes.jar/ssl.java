@@ -1,12 +1,6 @@
-public class ssl
-  extends sfo
+public abstract interface ssl
 {
-  public final String a;
-  
-  public ssl(String paramString)
-  {
-    this.a = paramString;
-  }
+  public abstract void copy(Object paramObject);
 }
 
 

@@ -1,41 +1,24 @@
-import android.app.Activity;
-import android.view.View;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
 public class bgrp
+  extends bcpq
 {
-  public static void a(Activity paramActivity, View paramView, bgrq parambgrq, bgrr parambgrr)
+  public bgrp(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext, int paramInt)
   {
-    if ((paramActivity == null) || (paramView == null) || (parambgrq == null) || (parambgrr == null)) {}
-    int i;
-    int j;
-    int m;
-    int i1;
-    int i2;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (parambgrr.isShowing());
-        paramActivity = new int[2];
-        paramView.getLocationOnScreen(paramActivity);
-        i = paramActivity[0] + parambgrq.a() + parambgrq.c() / 2;
-        j = paramActivity[1] + parambgrq.b() + parambgrq.d() / 2;
-        int k = bajq.b();
-        m = parambgrr.a();
-        int n = parambgrq.c() / 4;
-        i1 = parambgrq.c() / 4;
-        i2 = parambgrr.b();
-        if (k - j - n < m) {
-          break;
-        }
-      } while (!parambgrr.a(i, j + parambgrq.c() / 4));
-      parambgrr.b();
+    super(paramContext, paramInt);
+  }
+  
+  public void onBackPressed()
+  {
+    if (this.a.a) {
+      super.onBackPressed();
+    }
+    while (!QLog.isColorLevel()) {
       return;
-    } while ((j - i1 - i2 < m) || (!parambgrr.a(i, j - m - parambgrq.c() / 4)));
-    parambgrr.a();
+    }
+    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
   }
 }
 

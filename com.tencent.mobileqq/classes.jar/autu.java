@@ -1,118 +1,75 @@
-import android.app.Application;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qmcf.QmcfManager;
-import com.tencent.mobileqq.qmcf.QmcfSwitchStrategy;
-import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport;
-import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport.BoyItem;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sveffects.SdkContext;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class autu
+class autu
+  extends RecyclerView.OnScrollListener
 {
-  private static autu jdField_a_of_type_Autu;
-  private int jdField_a_of_type_Int = -1;
+  autu(autt paramautt, PersonalityLabelInfo paramPersonalityLabelInfo) {}
   
-  public static autu a()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (jdField_a_of_type_Autu == null) {
-      jdField_a_of_type_Autu = new autu();
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelGalleryActivity", 2, "onScrollStateChanged newState:" + paramInt);
     }
-    return jdField_a_of_type_Autu;
   }
   
-  public void a(BoyDataReport paramBoyDataReport)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    HashMap localHashMap = new HashMap();
-    paramBoyDataReport = paramBoyDataReport.mBoyData.iterator();
-    Object localObject2;
-    while (paramBoyDataReport.hasNext())
-    {
-      localObject1 = (BoyDataReport.BoyItem)paramBoyDataReport.next();
-      if (localHashMap.containsKey(((BoyDataReport.BoyItem)localObject1).mId))
-      {
-        localObject2 = (autv)localHashMap.get(((BoyDataReport.BoyItem)localObject1).mId);
-        ((autv)localObject2).b();
-        if (((BoyDataReport.BoyItem)localObject1).status >= 1) {
-          ((autv)localObject2).a();
-        }
-      }
-      else
-      {
-        localObject2 = ((BoyDataReport.BoyItem)localObject1).mId;
-        if (((BoyDataReport.BoyItem)localObject1).status >= 1) {}
-        for (int i = 1;; i = 0)
-        {
-          localObject2 = new autv(this, (String)localObject2, 1, i);
-          localHashMap.put(((BoyDataReport.BoyItem)localObject1).mId, localObject2);
-          break;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelGalleryActivity", 2, "onScrolled dx:" + paramInt1 + " dy:" + paramInt2);
     }
-    paramBoyDataReport = new HashMap();
-    paramBoyDataReport.put("param_manufacture", Build.MANUFACTURER);
-    paramBoyDataReport.put("param_model", Build.MODEL);
-    paramBoyDataReport.put("param_sdk", String.valueOf(Build.VERSION.SDK_INT));
-    Object localObject1 = localHashMap.keySet().iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = ((Iterator)localObject1).next();
-      paramBoyDataReport.put(localObject2, String.valueOf(((autv)localHashMap.get(localObject2)).a()));
-    }
-    awrn.a(BaseApplicationImpl.getContext()).a(null, "dg_action_match", true, 0L, 0L, paramBoyDataReport, "");
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (this.jdField_a_of_type_Int == -1) {
-      this.jdField_a_of_type_Int = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).getInt("entranceReportAlready", 0);
-    }
-    Object localObject;
     int i;
     int j;
-    awrn localawrn;
-    if (this.jdField_a_of_type_Int == 0)
+    if (paramInt1 > 0)
     {
-      this.jdField_a_of_type_Int = 1;
-      localObject = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).edit();
-      ((SharedPreferences.Editor)localObject).putInt("entranceReportAlready", this.jdField_a_of_type_Int);
-      ((SharedPreferences.Editor)localObject).commit();
-      i = QmcfManager.getInstance().getCurrSwitchStrategy().getEntranceState();
-      j = QmcfManager.getInstance().getCurrFrameType();
-      localObject = new HashMap();
-      ((HashMap)localObject).put("param_hasPoseEntrance", String.valueOf(paramBoolean1));
-      ((HashMap)localObject).put("param_hasFaceEntrance", String.valueOf(paramBoolean2));
-      ((HashMap)localObject).put("param_entanceState", String.valueOf(i));
-      ((HashMap)localObject).put("param_frameType", String.valueOf(j));
-      ((HashMap)localObject).put("param_manufacture", Build.MANUFACTURER);
-      ((HashMap)localObject).put("param_model", Build.MODEL);
-      ((HashMap)localObject).put("param_sdk", String.valueOf(Build.VERSION.SDK_INT));
-      localawrn = awrn.a(BaseApplicationImpl.getContext());
-      if ((!paramBoolean1) || (!paramBoolean2)) {
-        break label283;
+      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
+      paramInt2 = paramRecyclerView.getChildCount();
+      i = paramRecyclerView.getItemCount();
+      j = paramRecyclerView.findLastVisibleItemPositions(null)[0];
+      paramRecyclerView = PersonalityLabelGalleryActivity.c(this.jdField_a_of_type_Autt.a).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id));
+      if (paramRecyclerView == null) {
+        break label271;
       }
+      if (((Integer)paramRecyclerView).intValue() != 1) {
+        break label252;
+      }
+      paramInt1 = 1;
     }
-    label283:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      localawrn.a(null, "dg_entrance_state", bool, 0L, 0L, (HashMap)localObject, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("DanceGameReporter", 2, String.format("reportDGEntranceState, hasPose[%s], hasFace[%s], state[%s], frameTpye[%s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(i), Integer.valueOf(j) }));
+      auub localauub;
+      if ((!PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_Autt.a)) && (paramInt1 == 0) && (paramInt2 > 0) && (j >= i - 1))
+      {
+        PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Autt.a, true);
+        QLog.i("PersonalityLabelGalleryActivity", 2, "load more photos");
+        localauub = (auub)this.jdField_a_of_type_Autt.a.app.a(112);
+        if (!PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Autt.a)) {
+          break label257;
+        }
       }
-      return;
+      label257:
+      for (paramRecyclerView = this.jdField_a_of_type_Autt.a.app.getCurrentAccountUin();; paramRecyclerView = PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Autt.a))
+      {
+        localauub.a(paramRecyclerView, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id, 20, (byte[])PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_Autt.a).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id)));
+        return;
+        label252:
+        paramInt1 = 0;
+        break;
+      }
+      label271:
+      paramInt1 = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     autu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
-import qen;
-import qeq;
+import qql;
+import qqo;
 
 public class VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$1
   implements Runnable
 {
-  public VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$1(qen paramqen, TVK_NetVideoInfo paramTVK_NetVideoInfo) {}
+  public VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$1(qql paramqql, TVK_NetVideoInfo paramTVK_NetVideoInfo) {}
   
   public void run()
   {
-    if ((VideoFeedsPlayManager.b(this.jdField_a_of_type_Qen.a) != null) && (VideoFeedsPlayManager.b(this.jdField_a_of_type_Qen.a).a != null)) {
-      qen.a(this.jdField_a_of_type_Qen, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_NetVideoInfo, VideoFeedsPlayManager.b(this.jdField_a_of_type_Qen.a).a);
+    if ((VideoFeedsPlayManager.b(this.jdField_a_of_type_Qql.a) != null) && (VideoFeedsPlayManager.b(this.jdField_a_of_type_Qql.a).a != null)) {
+      qql.a(this.jdField_a_of_type_Qql, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_NetVideoInfo, VideoFeedsPlayManager.b(this.jdField_a_of_type_Qql.a).a);
     }
   }
 }

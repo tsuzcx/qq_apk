@@ -1,38 +1,30 @@
-import android.os.Bundle;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
-class gb
-  implements EIPCResultCallback
+public class gb
 {
-  gb(fz paramfz) {}
+  public View a;
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public ImageView b;
+  public TextView b;
+  public CircleFileStateView b;
+  public TextView c;
   
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    switch (paramEIPCResult.data.getInt("font_type"))
-    {
-    default: 
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      if (bool1)
-      {
-        fz.b(this.a);
-        this.a.notifyObservers(Integer.valueOf(1));
-      }
-      return;
-      bool1 = fz.a(this.a, false);
-      continue;
-      bool1 = fz.b(this.a, false);
-    }
-  }
+  public gb(fw paramfw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     gb
  * JD-Core Version:    0.7.0.1
  */

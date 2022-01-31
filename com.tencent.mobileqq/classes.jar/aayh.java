@@ -1,24 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aayh
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnCancelListener
 {
-  public aayh(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public aayh(DialogActivity paramDialogActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (!GesturePWDUnlockActivity.a(this.a))
-    {
-      GesturePWDUnlockActivity.a(this.a, true);
-      return;
-    }
-    this.a.e();
-    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
-    awrn.a(this.a.getBaseContext()).a(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
+    this.a.finish();
   }
 }
 

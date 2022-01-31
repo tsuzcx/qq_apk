@@ -1,31 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import java.util.ArrayList;
 
-class apof
-  implements View.OnClickListener
+public class apof
+  extends apoj
 {
-  apof(apoe paramapoe, int paramInt) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private boolean d;
   
-  public void onClick(View paramView)
+  public apof(Context paramContext, FileManagerEntity paramFileManagerEntity)
   {
-    if (apoe.a(this.jdField_a_of_type_Apoe, this.jdField_a_of_type_Int))
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface != null) {
-        awqx.b(localQQAppInterface, "dc00898", "", "", "0X800A612", "0X800A612", 0, 0, "", "", "", "");
-      }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
+    this.d = false;
+  }
+  
+  public Intent a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
+      return null;
     }
-    if (LangSettingFragment.a(this.jdField_a_of_type_Apoe.a) != ((Integer)paramView.getTag()).intValue()) {
-      LangSettingFragment.a(this.jdField_a_of_type_Apoe.a, ((Integer)paramView.getTag()).intValue());
+    ForwardFileInfo localForwardFileInfo = aqce.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    localForwardFileInfo.b(10009);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("fileinfo", localForwardFileInfo);
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      localIntent.putStringArrayListExtra("Aio_SessionId_ImageList", this.jdField_a_of_type_JavaUtilArrayList);
     }
+    localIntent.putExtra("_from_aio_", this.d);
+    return localIntent;
+  }
+  
+  public void a(ArrayList<String> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apof
  * JD-Core Version:    0.7.0.1
  */

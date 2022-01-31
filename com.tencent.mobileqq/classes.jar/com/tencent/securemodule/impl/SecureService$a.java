@@ -1,10 +1,10 @@
 package com.tencent.securemodule.impl;
 
 import android.os.Binder;
+import com.tencent.securemodule.ac;
+import com.tencent.securemodule.ax;
 import com.tencent.securemodule.service.ICallback;
 import com.tencent.securemodule.service.IControlService;
-import sm.ac;
-import sm.az;
 
 public class SecureService$a
   extends Binder
@@ -14,7 +14,7 @@ public class SecureService$a
   
   public void doRemoteTask(String paramString, ICallback paramICallback)
   {
-    if (!az.a(this.a.getApplicationContext(), "sm_mq")) {
+    if (!ax.a(this.a.getApplicationContext(), "sm_mq")) {
       return;
     }
     try

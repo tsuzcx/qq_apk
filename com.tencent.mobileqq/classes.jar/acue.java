@@ -1,68 +1,45 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class acue
+  implements anwc
 {
-  public acud a = new acud();
-  public acud b = new acud();
-  public acud c = new acud();
-  public acud d = new acud();
+  public acue(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  public void a()
+  public void a(View paramView)
   {
-    this.a.a(this.b);
-    this.c.a(this.d);
-    this.b.a(this.d);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    this.a.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.b.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.c.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.a(this.b);
-      this.c.a(this.d);
-      this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
-      this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-      return;
+    String str = bbpp.a("aioEmojiStickerDetail");
+    ViewParent localViewParent = paramView.getParent();
+    if ((localViewParent instanceof ChatXListView)) {
+      EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
     }
-    this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
-    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-  }
-  
-  public void a(acue paramacue)
-  {
-    this.a.a(paramacue.a);
-    this.b.a(paramacue.b);
-    this.c.a(paramacue.c);
-    this.d.a(paramacue.d);
-  }
-  
-  public void b(acue paramacue)
-  {
-    if (paramacue.d == this.c)
-    {
-      this.a = paramacue.a;
-      this.c = paramacue.c;
-      this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
+    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
+    paramView.setFlags(268435456);
+    paramView.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
+    int i;
+    if (EmojiStickerManager.a().a == 0) {
+      i = 1;
     }
-    do
+    for (;;)
     {
+      VasWebviewUtil.reportCommercialDrainage(this.a.a.c(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
       return;
-      if (this.d == paramacue.c)
-      {
-        this.d.a(paramacue.d);
-        this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
-        return;
+      if (EmojiStickerManager.a().a == 1) {
+        i = 2;
+      } else if (EmojiStickerManager.a().a == 3000) {
+        i = 3;
+      } else {
+        i = -1;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("TransPathJob", 2, "TransPathJob merge point error");
+    }
   }
 }
 

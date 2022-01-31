@@ -1,27 +1,34 @@
-import android.text.TextUtils.EllipsizeCallback;
-import android.widget.TextView;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.qphone.base.util.QLog;
 
-public class wle
-  implements TextUtils.EllipsizeCallback
+class wle
+  implements wtn
 {
-  public wle(MoveFileActivity paramMoveFileActivity, TextView paramTextView) {}
+  wle(wkx paramwkx, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public void ellipsized(int paramInt1, int paramInt2)
+  public void a(int paramInt)
   {
-    if (paramInt1 == paramInt2)
+    QLog.d(wkx.jdField_a_of_type_JavaLangString, 2, "count:" + paramInt);
+    if ((wkx.n(this.jdField_a_of_type_Wkx) != null) && (paramInt == 1))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
+      if (wtm.a().a(wkx.o(this.jdField_a_of_type_Wkx), "subscribe_sp_key_show_praise_guide") != 0) {
+        break label90;
+      }
+      if ((this.jdField_a_of_type_Wkx.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) && (!this.jdField_a_of_type_Wkx.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a())) {
+        this.jdField_a_of_type_Wkx.f();
+      }
+    }
+    label90:
+    while ((wtm.a().a(wkx.p(this.jdField_a_of_type_Wkx), "subscribe_sp_key_show_follow_guide") != 0) || (wiw.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed))) {
       return;
     }
-    String str1 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(0, paramInt1);
-    String str2 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(paramInt2, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).length());
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + "..." + str2);
+    this.jdField_a_of_type_Wkx.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wle
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,14 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
 import android.text.TextUtils;
-import bdfz;
-import bdhe;
-import bdnw;
-import bdpp;
-import bdpy;
-import bdqa;
-import bdqb;
+import beka;
+import bekj;
+import belh;
+import besl;
+import beut;
+import bevc;
+import bevi;
+import bevj;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import org.json.JSONArray;
@@ -22,17 +23,17 @@ public class GameDataJsPlugin
   
   private static boolean checkNavigationAppIdListForMiniGame(String paramString)
   {
-    if (bdhe.a(paramString)) {}
+    if (belh.a(paramString)) {}
     for (;;)
     {
       return false;
-      Object localObject = bdqa.a().a();
+      Object localObject = bevi.a().a();
       if (localObject == null) {
         continue;
       }
       try
       {
-        localObject = ((bdpy)localObject).jdField_a_of_type_OrgJsonJSONObject.optJSONArray("navigateToMiniProgramAppIdList");
+        localObject = ((bevc)localObject).jdField_a_of_type_OrgJsonJSONObject.optJSONArray("navigateToMiniProgramAppIdList");
         int i = 0;
         while ((localObject != null) && (i < paramString.length()))
         {
@@ -51,57 +52,57 @@ public class GameDataJsPlugin
     }
   }
   
-  public String getLaunchOptionsSync(bdfz parambdfz)
+  public String getLaunchOptionsSync(beka parambeka)
   {
     Object localObject2 = null;
-    bdqb localbdqb = bdqa.a().a();
+    bevj localbevj = bevi.a().a();
     JSONObject localJSONObject1 = new JSONObject();
     JSONObject localJSONObject2 = new JSONObject();
     try
     {
-      if (TextUtils.isEmpty(localbdqb.c))
+      if (TextUtils.isEmpty(localbevj.c))
       {
         localObject1 = null;
         localJSONObject2.put("appId", localObject1);
-        if (!TextUtils.isEmpty(localbdqb.b)) {
-          break label172;
+        if (!TextUtils.isEmpty(localbevj.b)) {
+          break label175;
         }
         localObject1 = null;
         label63:
         localJSONObject2.put("extraData", localObject1);
-        localJSONObject1.put("scene", localbdqb.jdField_a_of_type_Int);
-        localJSONObject1.put("query", localbdqb.jdField_a_of_type_OrgJsonJSONObject);
-        if (!TextUtils.isEmpty(localbdqb.jdField_a_of_type_JavaLangString)) {
-          break label181;
+        localJSONObject1.put("scene", bekj.a(localbevj.jdField_a_of_type_Int));
+        localJSONObject1.put("query", localbevj.jdField_a_of_type_OrgJsonJSONObject);
+        if (!TextUtils.isEmpty(localbevj.jdField_a_of_type_JavaLangString)) {
+          break label184;
         }
       }
-      label172:
-      label181:
-      for (Object localObject1 = localObject2;; localObject1 = localbdqb.jdField_a_of_type_JavaLangString)
+      label175:
+      label184:
+      for (Object localObject1 = localObject2;; localObject1 = localbevj.jdField_a_of_type_JavaLangString)
       {
         localJSONObject1.put("shareTicket", localObject1);
         localJSONObject1.put("referrerInfo", localJSONObject2);
-        localJSONObject1.put("extendData", bdqa.a().f());
-        localJSONObject1.put("entryDataHash", localbdqb.d);
+        localJSONObject1.put("extendData", bevi.a().f());
+        localJSONObject1.put("entryDataHash", localbevj.d);
         return localJSONObject1.toString();
-        localObject1 = localbdqb.c;
+        localObject1 = localbevj.c;
         break;
-        localObject1 = localbdqb.b;
+        localObject1 = localbevj.b;
         break label63;
       }
-      return parambdfz.b();
+      return parambeka.b();
     }
     catch (JSONException localJSONException)
     {
-      bdnw.d("GameDataJsPlugin", "API_GET_LAUNCH_OPTIONS_SYNC exception: ", localJSONException);
+      besl.d("GameDataJsPlugin", "API_GET_LAUNCH_OPTIONS_SYNC exception: ", localJSONException);
     }
   }
   
-  public void getOpenDataUserInfo(bdfz parambdfz)
+  public void getOpenDataUserInfo(beka parambeka)
   {
     try
     {
-      Object localObject = new JSONObject(parambdfz.b);
+      Object localObject = new JSONObject(parambeka.b);
       JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("openIdList");
       localObject = ((JSONObject)localObject).optString("lang", "en");
       if ((localJSONArray != null) && (localJSONArray.length() > 0))
@@ -113,66 +114,66 @@ public class GameDataJsPlugin
           arrayOfString[i] = localJSONArray.getString(i);
           i += 1;
         }
-        this.mChannelProxy.getUserInfoOpenData(bdqa.a().a(), (String)localObject, arrayOfString, new GameDataJsPlugin.1(this, parambdfz));
+        this.mChannelProxy.getUserInfoOpenData(bevi.a().a(), (String)localObject, arrayOfString, new GameDataJsPlugin.1(this, parambeka));
       }
       return;
     }
     catch (JSONException localJSONException)
     {
-      parambdfz.b();
-      bdnw.d("GameDataJsPlugin", "handle event:" + parambdfz.jdField_a_of_type_JavaLangString + " error , ", localJSONException);
+      parambeka.b();
+      besl.d("GameDataJsPlugin", "handle event:" + parambeka.jdField_a_of_type_JavaLangString + " error , ", localJSONException);
     }
   }
   
-  public String navigateToMiniProgramConfig(bdfz parambdfz)
+  public String navigateToMiniProgramConfig(beka parambeka)
   {
     try
     {
-      boolean bool = checkNavigationAppIdListForMiniGame(new JSONObject(parambdfz.b).optString("appId"));
-      parambdfz = new JSONObject();
+      boolean bool = checkNavigationAppIdListForMiniGame(new JSONObject(parambeka.b).optString("appId"));
+      parambeka = new JSONObject();
       try
       {
-        parambdfz.put("inList", bool);
-        bdnw.a("GameDataJsPlugin", "navigateToMiniProgramConfig, callJs jsonObject = " + parambdfz);
-        return parambdfz.toString();
+        parambeka.put("inList", bool);
+        besl.a("GameDataJsPlugin", "navigateToMiniProgramConfig, callJs jsonObject = " + parambeka);
+        return parambeka.toString();
       }
       catch (JSONException localJSONException)
       {
         for (;;)
         {
-          bdnw.d("GameDataJsPlugin", localJSONException.getMessage(), localJSONException);
+          besl.d("GameDataJsPlugin", localJSONException.getMessage(), localJSONException);
           localJSONException.printStackTrace();
         }
       }
       return "";
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
-      bdnw.d("GameDataJsPlugin", parambdfz.getMessage(), parambdfz);
-      parambdfz.printStackTrace();
+      besl.d("GameDataJsPlugin", parambeka.getMessage(), parambeka);
+      parambeka.printStackTrace();
     }
   }
   
-  public boolean onInterceptJsEvent(bdfz parambdfz)
+  public boolean onInterceptJsEvent(beka parambeka)
   {
     if (!this.mIsMiniGame) {
       return true;
     }
-    return super.onInterceptJsEvent(parambdfz);
+    return super.onInterceptJsEvent(parambeka);
   }
   
-  public void recordOffLineResourceState(bdfz parambdfz)
+  public void recordOffLineResourceState(beka parambeka)
   {
     try
     {
-      boolean bool = new JSONObject(parambdfz.b).optBoolean("isComplete", false);
-      bdpp.a(bdqa.a().a(), bool);
-      parambdfz.a();
+      boolean bool = new JSONObject(parambeka.b).optBoolean("isComplete", false);
+      beut.a(bevi.a().a(), bool);
+      parambeka.a();
       return;
     }
-    catch (Throwable parambdfz)
+    catch (Throwable parambeka)
     {
-      bdnw.d("GameDataJsPlugin", parambdfz.getMessage(), parambdfz);
+      besl.d("GameDataJsPlugin", parambeka.getMessage(), parambeka);
     }
   }
 }

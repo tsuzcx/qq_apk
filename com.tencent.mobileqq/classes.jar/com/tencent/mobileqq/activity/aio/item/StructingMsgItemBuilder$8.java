@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import bawl;
-import bawm;
+import bbzf;
+import bbzg;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class StructingMsgItemBuilder$8
   implements Runnable
 {
-  StructingMsgItemBuilder$8(StructingMsgItemBuilder paramStructingMsgItemBuilder, bawl parambawl, bawm parambawm) {}
+  StructingMsgItemBuilder$8(StructingMsgItemBuilder paramStructingMsgItemBuilder, bbzf parambbzf, bbzg parambbzg) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Bawl.d == 1L) && (this.jdField_a_of_type_Bawl.b.equalsIgnoreCase(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
+    if ((this.jdField_a_of_type_Bbzf.d == 1L) && (this.jdField_a_of_type_Bbzf.b.equalsIgnoreCase(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
     {
-      this.jdField_a_of_type_Bawm.a(6L, this.jdField_a_of_type_Bawl.a);
+      this.jdField_a_of_type_Bbzg.a(6L, this.jdField_a_of_type_Bbzf.a);
       ((BaseActivity)this.this$0.jdField_a_of_type_AndroidContentContext).runOnUiThread(new StructingMsgItemBuilder.8.1(this));
     }
   }

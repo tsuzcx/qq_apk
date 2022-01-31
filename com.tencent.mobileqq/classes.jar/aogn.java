@@ -1,59 +1,58 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 
-class aogn
-  implements aodv
+public class aogn
+  extends aoeu
 {
-  aogn(aogm paramaogm, String paramString, aogv paramaogv) {}
+  public aogn(ExtendFriendBaseFragment paramExtendFriendBaseFragment) {}
   
-  public void a(int paramInt, String paramString)
+  protected void a(boolean paramBoolean, aogh paramaogh, int paramInt)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2DiscTaskExcuter onFaild：");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
-    }
-    for (;;)
+    if (paramInt != ExtendFriendBaseFragment.a(this.a)) {}
+    Object localObject;
+    do
     {
+      do
+      {
+        return;
+      } while ((!paramBoolean) || (paramaogh == null));
+      localObject = ((ajxn)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+    } while (localObject == null);
+    ExtendFriendBaseFragment localExtendFriendBaseFragment = this.a;
+    if (!TextUtils.isEmpty(paramaogh.mDeclaration)) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localExtendFriendBaseFragment.jdField_a_of_type_Boolean = paramBoolean;
+      this.a.b = ((Card)localObject).isShowCard;
       if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aogm.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild:" + paramInt);
+        QLog.d("ExtendFriendBaseFragment", 2, String.format("addMyFeed mProfileComplete=%s mShowCard=%s", new Object[] { Boolean.valueOf(this.a.jdField_a_of_type_Boolean), Boolean.valueOf(this.a.b) }));
       }
-      this.jdField_a_of_type_Aogv.a(aofz.a(this.jdField_a_of_type_Aogm.jdField_a_of_type_Long, bool2), bool1);
+      if (this.a.jdField_a_of_type_Aoiu == null) {
+        break;
+      }
+      localObject = this.a.jdField_a_of_type_Aoiu.a(0);
+      paramaogh.mIsMyFeed = true;
+      if ((localObject != null) && (TextUtils.equals(((aogh)localObject).mUin, paramaogh.mUin))) {
+        this.a.jdField_a_of_type_Aoiu.b(0);
+      }
+      this.a.jdField_a_of_type_Aoiu.a(0, paramaogh);
+      if (!TextUtils.isEmpty(paramaogh.mDeclaration)) {
+        paramaogh.mDeclaration = paramaogh.mDeclaration.replace('\n', ' ').trim();
+      }
+      if ((!this.a.b) || (!this.a.jdField_a_of_type_Boolean)) {
+        this.a.jdField_a_of_type_Aoiu.b(0);
+      }
+      this.a.jdField_a_of_type_Aoiu.notifyDataSetChanged();
       return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
     }
-  }
-  
-  public void a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "2");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aogm.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aogm.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aogm.c);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aogm.e);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aogm.f);
-    localBundle.putString("_m_ForwardUuid", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aogm.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send success");
-    }
-    this.jdField_a_of_type_Aogv.a(paramString, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aogn
  * JD-Core Version:    0.7.0.1
  */

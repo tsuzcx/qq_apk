@@ -145,8 +145,8 @@
         "value": "35"
       },
       "attributes": {
-        "loadQQAvatar:": "$info_avator_uin",
-        "setArticleModel:": "$article_model"
+        "setArticleModel:": "$article_model",
+        "loadAvatarByUin:": "$info_avator_uin"
       }
     },
     {
@@ -235,6 +235,26 @@
               }
             }
           ]
+        },
+        {
+          "view_type": "UILabel",
+          "view_id": "id_biu_time",
+          "right_of_view": "id_info_avator",
+          "below_of_view": "id_nickname_wrapper",
+          "margin_top": "2",
+          "margin_left": "4",
+          "height": {
+            "type": "wrap_content"
+          },
+          "width": {
+            "type": "wrap_content"
+          },
+          "attributes": {
+            "setText:": "$biu_time_text",
+            "setTextColorString:": "#8C000000",
+            "setFontSizeString:": "12",
+            "setNumberOfLinesString:": "1"
+          }
         }
       ]
     }

@@ -1,52 +1,22 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class pqz
+class pqz
+  implements PopupWindow.OnDismissListener
 {
-  public int a;
-  public String a;
-  public ArrayList<pra> a;
-  public pqp a;
-  public boolean a;
-  public int b;
-  public ArrayList<prb> b;
-  public int c = 0;
+  pqz(pqt parampqt, bfsc parambfsc) {}
   
-  public pqz()
+  public void onDismiss()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  private String a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return null;
+    this.jdField_a_of_type_Bfsc.a(1.0F);
+    if (this.jdField_a_of_type_Pqt.a.b)
+    {
+      qtu localqtu = this.jdField_a_of_type_Pqt.a.a();
+      if (localqtu != null)
+      {
+        localqtu.c();
+        this.jdField_a_of_type_Pqt.a.b = false;
+      }
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    pra localpra;
-    for (String str = "["; localIterator.hasNext(); str = str + "{" + localpra.toString() + "},") {
-      localpra = (pra)localIterator.next();
-    }
-    return str + "]";
-  }
-  
-  private String b()
-  {
-    if (this.jdField_b_of_type_JavaUtilArrayList == null) {
-      return null;
-    }
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-    prb localprb;
-    for (String str = "["; localIterator.hasNext(); str = str + "{" + localprb.toString() + "},") {
-      localprb = (prb)localIterator.next();
-    }
-    return str + "]";
-  }
-  
-  public String toString()
-  {
-    return "PGCFeedsInfo{pGCPicInfos=" + a() + ", pGCVideoInfos=" + b() + ", pgc_comments='" + this.jdField_a_of_type_JavaLangString + '\'' + ", follow_count=" + this.jdField_a_of_type_Int + ", follow_status=" + this.jdField_b_of_type_Int + ", isShortContent=" + this.jdField_a_of_type_Boolean + ", pgcFeedsType=" + this.c + ", galleryPGCFeedsInfo=" + this.jdField_a_of_type_Pqp + '}';
   }
 }
 

@@ -2,26 +2,26 @@ package dov.com.qq.im;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import bacm;
-import bajq;
-import bhdi;
-import bhdq;
-import bhzc;
+import bbdr;
+import bbkx;
+import bify;
+import bigg;
+import bjqu;
 
 public class QIMCameraCaptureUnit$1
   implements Runnable
 {
-  public QIMCameraCaptureUnit$1(bhdi parambhdi) {}
+  public QIMCameraCaptureUnit$1(bify parambify) {}
   
   public void run()
   {
     try
     {
-      this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bhdq.a(this.this$0.jdField_a_of_type_Bhzc.a(), true);
+      this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bigg.a(this.this$0.jdField_a_of_type_Bjqu.a(), true);
       if ((this.this$0.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.this$0.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-        this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bacm.b(this.this$0.jdField_a_of_type_AndroidGraphicsBitmap, bajq.a(3.0F), this.this$0.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.this$0.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+        this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bbdr.b(this.this$0.jdField_a_of_type_AndroidGraphicsBitmap, bbkx.a(3.0F), this.this$0.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.this$0.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
       }
-      this.this$0.jdField_a_of_type_Bhzc.a().runOnUiThread(new QIMCameraCaptureUnit.1.1(this));
+      this.this$0.jdField_a_of_type_Bjqu.a().runOnUiThread(new QIMCameraCaptureUnit.1.1(this));
       return;
     }
     catch (Exception localException)

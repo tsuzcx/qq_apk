@@ -1,55 +1,22 @@
-public class bgwf
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class bgwf
+  implements View.OnClickListener
 {
-  private static int a;
-  private static int b;
-  private static int c;
-  private static int d;
+  bgwf(bgwe parambgwe) {}
   
-  public static int a()
+  public void onClick(View paramView)
   {
-    a();
-    return a;
-  }
-  
-  private static void a()
-  {
-    String[] arrayOfString;
-    if (c == 0)
+    if (bgwe.a(this.a))
     {
-      arrayOfString = axub.a().split("\\.");
-      if (arrayOfString.length >= 4) {}
+      if (bgwe.b(this.a)) {
+        this.a.dismiss();
+      }
+      if (bgwe.a(this.a) != null) {
+        bgwe.a(this.a).onClick(paramView);
+      }
     }
-    else
-    {
-      return;
-    }
-    try
-    {
-      a = Integer.valueOf(arrayOfString[0]).intValue();
-      b = Integer.valueOf(arrayOfString[1]).intValue();
-      d = Integer.valueOf(arrayOfString[2]).intValue();
-      c = Integer.valueOf(arrayOfString[3]).intValue();
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException) {}
-  }
-  
-  public static int b()
-  {
-    a();
-    return b;
-  }
-  
-  public static int c()
-  {
-    a();
-    return c;
-  }
-  
-  public static int d()
-  {
-    a();
-    return d;
   }
 }
 

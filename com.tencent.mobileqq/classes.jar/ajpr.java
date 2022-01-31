@@ -1,47 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajpr
-  extends BroadcastReceiver
+class ajpr
+  implements DialogInterface.OnClickListener
 {
-  public ajpr(QQAppInterface paramQQAppInterface) {}
+  ajpr(ajpn paramajpn) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())))
-          {
-            aqdy.a();
-            return;
-          }
-        } while (!paramContext.equals("com.tencent.mobileqq.kickedLogin.otherDevice"));
-        paramContext = paramIntent.getStringExtra("kickedUin");
-      } while ((TextUtils.isEmpty(paramContext)) || (!paramContext.equals(this.a.getAccount())));
-      paramContext = this.a.getKickIntent();
-    } while (paramContext == null);
-    paramContext.putExtra("isSameDevice", false);
-    paramIntent = paramIntent.getStringExtra("msg");
-    if (!TextUtils.isEmpty(paramIntent)) {
-      paramContext.putExtra("msg", paramIntent);
-    }
-    this.a.setKickIntent(paramContext);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajpr
  * JD-Core Version:    0.7.0.1
  */

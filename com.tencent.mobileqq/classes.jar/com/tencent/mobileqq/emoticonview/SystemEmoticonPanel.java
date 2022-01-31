@@ -10,9 +10,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
-import anhs;
-import anmi;
-import anmk;
+import anyb;
+import aocs;
+import aocu;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class SystemEmoticonPanel
 {
   protected Context a;
   protected ViewPager a;
-  private anmi a;
+  private aocs a;
   protected EmoticonPagerAdapter a;
   protected EmoticonPagerRadioGroup a;
   protected boolean a;
@@ -42,12 +42,12 @@ public class SystemEmoticonPanel
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public SystemEmoticonPanel(Context paramContext, anhs paramanhs)
+  public SystemEmoticonPanel(Context paramContext, anyb paramanyb)
   {
-    this(paramContext, paramanhs, false);
+    this(paramContext, paramanyb, false);
   }
   
-  public SystemEmoticonPanel(Context paramContext, anhs paramanhs, boolean paramBoolean)
+  public SystemEmoticonPanel(Context paramContext, anyb paramanyb, boolean paramBoolean)
   {
     super(paramContext);
     if (Build.VERSION.SDK_INT < 24) {}
@@ -58,7 +58,7 @@ public class SystemEmoticonPanel
       ((HashMap)localField.get(LayoutInflater.from(paramContext))).remove("android.support.v4.view.ViewPager");
       this.b = LayoutInflater.from(paramContext).inflate(a(), this);
       this.jdField_a_of_type_Boolean = paramBoolean;
-      a(paramContext, paramanhs);
+      a(paramContext, paramanyb);
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
@@ -86,7 +86,7 @@ public class SystemEmoticonPanel
   
   protected int a()
   {
-    return 2131493468;
+    return 2131559031;
   }
   
   public void a()
@@ -96,14 +96,14 @@ public class SystemEmoticonPanel
     }
   }
   
-  protected void a(Context paramContext, anhs paramanhs)
+  protected void a(Context paramContext, anyb paramanyb)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.b.findViewById(2131308941));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.b.findViewById(2131313312));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.b.findViewById(2131374681));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.b.findViewById(2131379147));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter = new EmoticonPagerAdapter();
     ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(new anmk(paramContext, paramanhs, 0));
+    localArrayList.add(new aocu(paramContext, paramanyb, 0));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.a(localArrayList);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(0);
@@ -112,7 +112,7 @@ public class SystemEmoticonPanel
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((this.jdField_a_of_type_Anmi != null) && (this.jdField_a_of_type_Anmi.a(paramKeyEvent))) {
+    if ((this.jdField_a_of_type_Aocs != null) && (this.jdField_a_of_type_Aocs.a(paramKeyEvent))) {
       return true;
     }
     return super.dispatchKeyEvent(paramKeyEvent);
@@ -143,14 +143,14 @@ public class SystemEmoticonPanel
     }
   }
   
-  public void setCallBack(anhs paramanhs)
+  public void setCallBack(anyb paramanyb)
   {
-    a(this.jdField_a_of_type_AndroidContentContext, paramanhs);
+    a(this.jdField_a_of_type_AndroidContentContext, paramanyb);
   }
   
-  public void setDispatchKeyEventListener(anmi paramanmi)
+  public void setDispatchKeyEventListener(aocs paramaocs)
   {
-    this.jdField_a_of_type_Anmi = paramanmi;
+    this.jdField_a_of_type_Aocs = paramaocs;
   }
 }
 

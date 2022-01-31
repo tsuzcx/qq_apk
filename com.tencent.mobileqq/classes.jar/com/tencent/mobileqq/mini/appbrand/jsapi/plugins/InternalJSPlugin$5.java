@@ -1,19 +1,30 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
-import babr;
-import bafb;
+import android.util.Log;
+import bbcv;
+import bbgg;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.qphone.base.util.QLog;
 
 class InternalJSPlugin$5
   implements Runnable
 {
-  InternalJSPlugin$5(InternalJSPlugin paramInternalJSPlugin, Activity paramActivity, String paramString1, String paramString2, String paramString3, JsRuntime paramJsRuntime, String paramString4, int paramInt) {}
+  InternalJSPlugin$5(InternalJSPlugin paramInternalJSPlugin, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, JsRuntime paramJsRuntime, String paramString5, int paramInt) {}
   
   public void run()
   {
-    babr.a(this.val$activity, 230, ajjy.a(2131640019), String.format(ajjy.a(2131640017), new Object[] { this.val$appName }), ajjy.a(2131640014), ajjy.a(2131640012), new InternalJSPlugin.5.1(this), new InternalJSPlugin.5.2(this)).show();
+    bbgg localbbgg = bbcv.a(this.val$activity, 230, ajyc.a(2131705804), String.format(ajyc.a(2131705802), new Object[] { this.val$appName }), ajyc.a(2131705799), ajyc.a(2131705797), new InternalJSPlugin.5.1(this), new InternalJSPlugin.5.2(this));
+    try
+    {
+      localbbgg.show();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("InternalJSPlugin", 1, "confirmOpenAppDetailPage, Exception: " + Log.getStackTraceString(localException));
+    }
   }
 }
 

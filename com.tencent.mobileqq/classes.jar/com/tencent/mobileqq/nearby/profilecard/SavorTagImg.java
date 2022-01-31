@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import ajjy;
+import ajyc;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -20,8 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import asyf;
-import asyj;
+import atuj;
+import atun;
 import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 import com.tencent.widget.HorizontalListView;
 import java.security.InvalidParameterException;
@@ -35,7 +35,7 @@ public class SavorTagImg
   static final int[] b = { 85, 60, 60 };
   int jdField_a_of_type_Int;
   public TextView a;
-  asyf jdField_a_of_type_Asyf;
+  atuj jdField_a_of_type_Atuj;
   public HorizontalListView a;
   String jdField_a_of_type_JavaLangString;
   boolean jdField_a_of_type_Boolean = true;
@@ -59,10 +59,10 @@ public class SavorTagImg
   private void a()
   {
     removeAllViews();
-    getResources().getDimensionPixelSize(2131166020);
-    int i = getResources().getDimensionPixelSize(2131166021);
+    getResources().getDimensionPixelSize(2131297095);
+    int i = getResources().getDimensionPixelSize(2131297096);
     setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131495326, null));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131560904, null));
     LinearLayout.LayoutParams localLayoutParams = generateDefaultLayoutParams();
     localLayoutParams.width = -1;
     localLayoutParams.height = -2;
@@ -73,14 +73,14 @@ public class SavorTagImg
   
   private void a(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Asyf != null)
+    if (this.jdField_a_of_type_Atuj != null)
     {
-      Object localObject = (asyj)this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getAdapter();
+      Object localObject = (atun)this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getAdapter();
       if (localObject != null)
       {
-        localObject = (InterestTagInfo)((asyj)localObject).getItem(paramInt);
+        localObject = (InterestTagInfo)((atun)localObject).getItem(paramInt);
         if (localObject != null) {
-          this.jdField_a_of_type_Asyf.a(paramView, this.jdField_a_of_type_Int, (InterestTagInfo)localObject);
+          this.jdField_a_of_type_Atuj.a(paramView, this.jdField_a_of_type_Int, (InterestTagInfo)localObject);
         }
       }
     }
@@ -91,7 +91,7 @@ public class SavorTagImg
     if ((this.jdField_a_of_type_ComTencentWidgetHorizontalListView == null) || (this.jdField_a_of_type_JavaLangString == null)) {
       return "";
     }
-    StringBuilder localStringBuilder = new StringBuilder(ajjy.a(2131647714));
+    StringBuilder localStringBuilder = new StringBuilder(ajyc.a(2131713502));
     ListAdapter localListAdapter = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getAdapter();
     if (localListAdapter == null) {
       return "";
@@ -114,14 +114,14 @@ public class SavorTagImg
   }
   
   @TargetApi(9)
-  public void a(String paramString, int paramInt, List<InterestTagInfo> paramList, asyf paramasyf)
+  public void a(String paramString, int paramInt, List<InterestTagInfo> paramList, atuj paramatuj)
   {
     if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView != null) {
       throw new InvalidParameterException("SavorTagImg can not init twice");
     }
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Asyf = paramasyf;
+    this.jdField_a_of_type_Atuj = paramatuj;
     int i = 0;
     int k;
     int j;
@@ -135,28 +135,28 @@ public class SavorTagImg
       if ((paramInt == 10) || (paramInt == 9) || (paramInt == 11)) {
         j = (int)(jdField_a_of_type_ArrayOfInt[i] * f);
       }
-      i = paramString.getDimensionPixelSize(2131167562);
-      int m = paramString.getDimensionPixelSize(2131166021);
+      i = paramString.getDimensionPixelSize(2131298655);
+      int m = paramString.getDimensionPixelSize(2131297096);
       paramString = new GradientDrawable();
       if (this.jdField_a_of_type_Int == 7)
       {
-        paramString.setColor(getResources().getColor(2131100176));
+        paramString.setColor(getResources().getColor(2131165766));
         paramString.setCornerRadius(10.0F * f);
         paramString.setShape(0);
-        int n = getResources().getDimensionPixelSize(2131166174);
+        int n = getResources().getDimensionPixelSize(2131297255);
         paramString.setSize(n, n);
         label214:
-        paramString = new asyj(getContext(), paramString, k, j, paramInt);
+        paramString = new atun(getContext(), paramString, k, j, paramInt);
         paramString.a(0 - i);
         this.jdField_a_of_type_ComTencentWidgetHorizontalListView = new HorizontalListView(getContext());
         this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(i);
-        paramasyf = generateDefaultLayoutParams();
-        paramasyf.width = -1;
-        paramasyf.height = paramString.a();
-        paramasyf.bottomMargin = m;
-        addView(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, paramasyf);
+        paramatuj = generateDefaultLayoutParams();
+        paramatuj.width = -1;
+        paramatuj.height = paramString.a();
+        paramatuj.bottomMargin = m;
+        addView(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, paramatuj);
         this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(paramString);
-        if (this.jdField_a_of_type_Asyf == null) {
+        if (this.jdField_a_of_type_Atuj == null) {
           break label402;
         }
         this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemLongClickListener(this);
@@ -177,7 +177,7 @@ public class SavorTagImg
       break;
       i = 2;
       break;
-      paramString.setColor(getResources().getColor(2131100176));
+      paramString.setColor(getResources().getColor(2131165766));
       paramString.setShape(0);
       paramString.setSize(k, j);
       break label214;
@@ -191,11 +191,11 @@ public class SavorTagImg
     if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView == null) {
       throw new InvalidParameterException("can not updateData before init");
     }
-    asyj localasyj = (asyj)this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getAdapter();
-    if (localasyj == null) {
+    atun localatun = (atun)this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getAdapter();
+    if (localatun == null) {
       return;
     }
-    localasyj.a(paramList);
+    localatun.a(paramList);
     if (paramList == null) {}
     for (int i = 0; i > 0; i = paramList.size())
     {
@@ -248,7 +248,7 @@ public class SavorTagImg
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130838988, 0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839016, 0);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);

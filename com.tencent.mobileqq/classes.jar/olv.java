@@ -1,29 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class olv
-  implements TVK_IMediaPlayer.OnDownloadCallbackListener
+class olv
+  implements ViewBase.OnClickListener
 {
-  public olv(VideoView paramVideoView) {}
+  olv(ols paramols, ViewBase paramViewBase) {}
   
-  public void OnDownloadCallback(String paramString)
+  public void onClick(ViewBase paramViewBase)
   {
-    try
+    if (this.jdField_a_of_type_Ols.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
     {
-      paramString = new JSONObject(paramString);
-      paramString.getInt("callBackType");
-      int i = paramString.getInt("fileSize");
-      this.a.setFileSize(i);
-      return;
+      olr.a(this.jdField_a_of_type_Ols.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.findViewById(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getName()));
+      olr.a(this.jdField_a_of_type_Ols.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
     }
-    catch (JSONException paramString) {}
+    onk.e(this.jdField_a_of_type_Ols.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     olv
  * JD-Core Version:    0.7.0.1
  */

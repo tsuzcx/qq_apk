@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.proxy;
 
-import aken;
-import atmp;
+import aksz;
+import aukn;
 
 public class DataLineMsgProxy$1
   implements Runnable
 {
-  public DataLineMsgProxy$1(aken paramaken, atmp paramatmp, String paramString) {}
+  public DataLineMsgProxy$1(aksz paramaksz, aukn paramaukn, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Atmp.b("create index if not exists " + this.jdField_a_of_type_JavaLangString + "_index ON " + this.jdField_a_of_type_JavaLangString + "(groupId, msgId)");
+    this.jdField_a_of_type_Aukn.b("create index if not exists " + this.jdField_a_of_type_JavaLangString + "_index ON " + this.jdField_a_of_type_JavaLangString + "(groupId, msgId)");
   }
 }
 

@@ -15,9 +15,9 @@ public class StickerFilters
   private boolean isBeforeFaceTransform = false;
   private AIAttr mAIAttr;
   private PTFaceAttr mFaceAttr;
+  private List<String> mRenderOrderList;
   private PTSegAttr mSegAttr;
   private AESticker mSticker = null;
-  private List<String> renderOrderList;
   private StickersMap stickersMap;
   
   public StickerFilters(AESticker paramAESticker, boolean paramBoolean)
@@ -33,6 +33,15 @@ public class StickerFilters
   public void clear()
   {
     this.mSticker = null;
+    this.stickersMap = null;
+  }
+  
+  public boolean isApplied()
+  {
+    if (this.mSticker != null) {
+      return this.mSticker.isApplied();
+    }
+    return false;
   }
   
   public boolean isBeforeFaceTransform()
@@ -40,21 +49,24 @@ public class StickerFilters
     return this.isBeforeFaceTransform;
   }
   
+  public boolean isChangeRenderOrder()
+  {
+    return (this.mRenderOrderList != null) && (this.mRenderOrderList.size() > 0);
+  }
+  
   public Frame render(Frame paramFrame)
   {
     if ((this.mSticker == null) || (!this.mSticker.isValid())) {
       return paramFrame;
     }
-    if (this.mSticker.getVideoMateral() != null) {
-      this.renderOrderList = this.mSticker.getVideoMateral().getRenderOrderList();
+    setRenderOrderList(this.mSticker);
+    if (this.mSticker.isUseStickerPlugin())
+    {
+      this.stickersMap.setRenderOrder(this.mRenderOrderList);
+      return this.stickersMap.chainStickerFilters(this.mSticker, paramFrame, this.mFaceAttr, this.mSegAttr, this.mAIAttr);
     }
     if (isBeforeFaceTransform()) {
       return this.mSticker.processTransformRelatedFilters(paramFrame, this.mFaceAttr, this.mSegAttr, this.mAIAttr);
-    }
-    if ((this.renderOrderList != null) && (this.renderOrderList.size() > 0))
-    {
-      this.stickersMap.setRenderOrder(this.renderOrderList);
-      return this.stickersMap.chainStickerFilters(this.mSticker, paramFrame, this.mFaceAttr, this.mSegAttr, this.mAIAttr);
     }
     return this.mSticker.processStickerFilters(paramFrame, this.mFaceAttr, this.mSegAttr, this.mAIAttr);
   }
@@ -72,6 +84,13 @@ public class StickerFilters
   public void setFaceAttr(PTFaceAttr paramPTFaceAttr)
   {
     this.mFaceAttr = paramPTFaceAttr;
+  }
+  
+  public void setRenderOrderList(AESticker paramAESticker)
+  {
+    if ((paramAESticker != null) && (paramAESticker.getVideoMateral() != null)) {
+      this.mRenderOrderList = paramAESticker.getVideoMateral().getRenderOrderList();
+    }
   }
   
   public void setSegAttr(PTSegAttr paramPTSegAttr)

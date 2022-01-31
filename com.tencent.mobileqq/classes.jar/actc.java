@@ -1,180 +1,90 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.aio.AIOInputTypeHelper.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class actc
-  implements actq
 {
-  public static final actr<actc> a;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private float b;
-  private float c;
-  private float d;
+  public static volatile boolean a;
+  public static boolean b;
+  public static boolean c;
+  private static boolean d;
   
-  static
+  public static SharedPreferences a(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Actr = new actd();
+    return paramQQAppInterface.getApp().getSharedPreferences("sp_aio_input_helper_" + paramQQAppInterface.getAccount(), 0);
   }
   
-  public actc()
+  public static void a()
   {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    DisplayMetrics localDisplayMetrics = localBaseApplication.getResources().getDisplayMetrics();
-    this.jdField_a_of_type_Int = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    float f = this.jdField_a_of_type_Int / 750.0F;
-    this.jdField_a_of_type_Float = (12.0F * f);
-    this.b = (f * 6.0F);
-    this.c = (mjg.a(localBaseApplication, 50.0F) / 1000.0F);
-    this.d = (mjg.a(localBaseApplication, 0.4F) / 1000.0F);
+    c = true;
+    BaseApplication.getContext().getSharedPreferences("sp_upgrade", 0).edit().putBoolean("upgrade", true).commit();
   }
   
-  public actc(acto paramacto)
+  /* Error */
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    paramacto.a();
-    this.jdField_a_of_type_AndroidGraphicsRect = paramacto.a();
-    this.jdField_a_of_type_Float = paramacto.a();
-    this.b = paramacto.a();
-    this.c = paramacto.a();
-    this.d = paramacto.a();
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: aload_0
+    //   4: ifnull +11 -> 15
+    //   7: getstatic 70	actc:d	Z
+    //   10: istore_1
+    //   11: iload_1
+    //   12: ifeq +7 -> 19
+    //   15: ldc 2
+    //   17: monitorexit
+    //   18: return
+    //   19: aload_0
+    //   20: invokestatic 72	actc:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Landroid/content/SharedPreferences;
+    //   23: ldc 74
+    //   25: iconst_1
+    //   26: invokeinterface 78 3 0
+    //   31: putstatic 80	actc:a	Z
+    //   34: iconst_1
+    //   35: putstatic 70	actc:d	Z
+    //   38: goto -23 -> 15
+    //   41: astore_0
+    //   42: ldc 2
+    //   44: monitorexit
+    //   45: aload_0
+    //   46: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	47	0	paramQQAppInterface	QQAppInterface
+    //   10	2	1	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   7	11	41	finally
+    //   19	38	41	finally
   }
   
-  public float a()
+  @TargetApi(9)
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public float a(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    float f = (float)paramLong / 1000.0F;
-    paramFloat1 = (float)Math.sqrt((paramFloat3 - paramFloat1) * (paramFloat3 - paramFloat1) + (paramFloat4 - paramFloat2) * (paramFloat4 - paramFloat2));
-    if (paramFloat1 <= 0.0F)
-    {
-      paramFloat1 = a();
-      return paramFloat1;
+    boolean bool1 = false;
+    if (!d) {
+      a(paramQQAppInterface);
     }
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    paramFloat2 = f / paramFloat1;
-    if (this.jdField_a_of_type_AndroidGraphicsRect.width() > 0) {}
-    for (paramFloat1 = this.jdField_a_of_type_AndroidGraphicsRect.width();; paramFloat1 = this.jdField_a_of_type_Int)
+    if (a)
     {
-      paramFloat2 *= mjg.b(localBaseApplication, paramFloat1);
-      paramFloat3 = c();
-      paramFloat4 = d();
-      f = b();
-      paramFloat1 = a();
-      if (paramFloat2 > paramFloat3) {
-        break;
-      }
-      if (paramFloat2 >= paramFloat4) {
-        break label139;
-      }
-      return f;
-    }
-    label139:
-    return (paramFloat2 - paramFloat4) * (a() - f) / (paramFloat3 - paramFloat4) + f;
-  }
-  
-  public Rect a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRect;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
-  }
-  
-  public void a(actc paramactc)
-  {
-    this.c = paramactc.c();
-    this.d = paramactc.d();
-    this.jdField_a_of_type_Float = paramactc.a();
-    this.b = paramactc.b();
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramactc.a());
-  }
-  
-  public void a(acto paramacto, int paramInt)
-  {
-    paramacto.a(1);
-    paramacto.a(this.jdField_a_of_type_AndroidGraphicsRect);
-    paramacto.a(this.jdField_a_of_type_Float);
-    paramacto.a(this.b);
-    paramacto.a(this.c);
-    paramacto.a(this.d);
-  }
-  
-  public void a(actt paramactt)
-  {
-    if (paramactt == null) {}
-    for (;;)
-    {
-      return;
-      ArrayList localArrayList = paramactt.a();
-      if (localArrayList != null)
+      a = false;
+      ThreadManager.getFileThreadHandler().post(new AIOInputTypeHelper.1(paramQQAppInterface));
+      boolean bool2 = true;
+      bool1 = bool2;
+      if (QLog.isColorLevel())
       {
-        int j = localArrayList.size();
-        if (j == 1)
-        {
-          ((actu)localArrayList.get(0)).c(a());
-          return;
-        }
-        if (j > 1)
-        {
-          ((actu)localArrayList.get(0)).c(a());
-          paramactt = (actu)localArrayList.get(0);
-          int i = 1;
-          while (i < j)
-          {
-            actu localactu = (actu)localArrayList.get(i);
-            localactu.c(a(localactu.a() - paramactt.a(), paramactt.a(), paramactt.b(), localactu.a(), localactu.b()));
-            i += 1;
-            paramactt = localactu;
-          }
-        }
+        QLog.d("Q.aio.BaseChatPie", 2, "inputhelper : need guide");
+        bool1 = bool2;
       }
     }
-  }
-  
-  public float b()
-  {
-    return this.b;
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.b = paramFloat;
-  }
-  
-  public float c()
-  {
-    return this.c;
-  }
-  
-  public void c(float paramFloat)
-  {
-    this.c = paramFloat;
-  }
-  
-  public float d()
-  {
-    return this.d;
-  }
-  
-  public void d(float paramFloat)
-  {
-    this.d = paramFloat;
+    return bool1;
   }
 }
 

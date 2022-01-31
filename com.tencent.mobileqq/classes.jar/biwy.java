@@ -1,82 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment.2.1;
+import mqq.os.MqqHandler;
 
-class biwy
-  implements Animator.AnimatorListener
+public class biwy
+  extends biqh
 {
-  biwy(biwt parambiwt) {}
+  public biwy(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void b(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationCancel: mState:" + biwt.c(this.a) + " isrun:" + biwt.a(this.a));
-    }
-    if (this.a.isRunning())
-    {
-      biwt.e(this.a, biwt.c(this.a));
-      if (biwt.c(this.a) != 2) {
-        break label105;
-      }
-      this.a.a(3);
-    }
-    for (;;)
-    {
-      biwt.a(this.a, false);
-      return;
-      label105:
-      if (biwt.c(this.a) == 4) {
-        this.a.a(5);
-      } else if (biwt.c(this.a) == 5) {
-        this.a.a(1);
-      }
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationEnd: mState:" + biwt.c(this.a) + " isrun:" + biwt.a(this.a));
-    }
-    if (this.a.isRunning())
-    {
-      biwt.d(this.a, biwt.c(this.a));
-      if (biwt.c(this.a) != 2) {
-        break label105;
-      }
-      this.a.a(3);
-    }
-    for (;;)
-    {
-      biwt.a(this.a, false);
-      return;
-      label105:
-      if (biwt.c(this.a) == 4)
-      {
-        this.a.a(0);
-      }
-      else if (biwt.c(this.a) == 5)
-      {
-        this.a.a(1);
-        biwt.a(this.a, 0);
-      }
-      else if (biwt.c(this.a) == 6)
-      {
-        this.a.a(2);
-      }
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationStart: mState:" + biwt.c(this.a) + " isrun:" + biwt.a(this.a));
-    }
-    if (this.a.isRunning()) {
-      biwt.c(this.a, biwt.c(this.a));
-    }
+    AETakeFacePhotoPreviewFragment.a(this.a).removeObserver(this);
+    ThreadManager.getUIHandler().post(new AETakeFacePhotoPreviewFragment.2.1(this, paramBoolean, paramInt));
   }
 }
 

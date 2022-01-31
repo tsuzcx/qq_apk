@@ -1,22 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
 
-public class pls
-  implements sch
+class pls
+  implements pca
 {
-  public pls(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  pls(plp paramplp, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable) {}
-  
-  public void a(URL paramURL, rcs paramrcs)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
+    boolean bool = true;
     if (QLog.isColorLevel()) {
-      QLog.d("ComponentHeaderTopicRecommend", 2, "topic image view download success");
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
     }
-    ComponentHeaderTopicRecommend.a(this.a, paramrcs.a());
+    if (paramBoolean)
+    {
+      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (paramInt == 2) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramString.isFollowed = paramBoolean;
+        plp.a(this.jdField_a_of_type_Plp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+        plp.a(this.jdField_a_of_type_Plp).notifyDataSetChanged();
+        return;
+      }
+    }
+    bcpw.a(plp.a(this.jdField_a_of_type_Plp).getContext(), 1, 2131718502, 0).a();
   }
 }
 

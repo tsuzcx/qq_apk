@@ -1,36 +1,48 @@
-class azwn
-  extends ajjh
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+
+public class azwn
+  extends Handler
 {
-  private azwn(azwk paramazwk) {}
+  private WeakReference<BeginnerGuideFragment> a;
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public azwn(BeginnerGuideFragment paramBeginnerGuideFragment, Looper paramLooper)
   {
-    this.a.a(paramBoolean, 1, paramString, 0);
+    super(paramLooper);
+    this.a = new WeakReference(paramBeginnerGuideFragment);
   }
   
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a(paramBoolean, 11, paramString, 0);
-  }
-  
-  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(paramBoolean1, 16, paramString, paramInt);
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(paramBoolean1, 32, paramString, paramInt);
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(paramBoolean, 4, paramString, 0);
+    super.handleMessage(paramMessage);
+    BeginnerGuideFragment localBeginnerGuideFragment = (BeginnerGuideFragment)this.a.get();
+    if (localBeginnerGuideFragment == null) {}
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 1110: 
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideFragment", 2, "parse config from network success");
+        }
+        break;
+      }
+    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String)));
+    BeginnerGuideFragment.a(localBeginnerGuideFragment, (String)paramMessage.obj, paramMessage.arg1);
+    return;
+    BeginnerGuideFragment.a(localBeginnerGuideFragment, paramMessage.what);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azwn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class uie
-  implements View.OnClickListener
+class uie
+  implements bfoq
 {
-  public uie(StoryMessageListActivity paramStoryMessageListActivity, int paramInt) {}
+  uie(uhz paramuhz, StoryVideoItem paramStoryVideoItem, AtomicBoolean paramAtomicBoolean, bfol parambfol) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_Int);
-    urp.a("play_video", "del_notice", 0, 0, new String[] { "", "", "", "" });
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      uhz.a(this.jdField_a_of_type_Uhz, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    }
   }
 }
 

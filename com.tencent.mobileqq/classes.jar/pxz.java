@@ -1,55 +1,19 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.activity.SplashActivity;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.articlesummary.articlesummary.PackJumpInfo;
 
-class pxz
-  extends OrientationEventListener
+public class pxz
+  implements View.OnClickListener
 {
-  pxz(pxy parampxy, Context paramContext, WeakReference paramWeakReference)
-  {
-    super(paramContext);
-  }
+  public pxz(ComponentJump paramComponentJump, articlesummary.PackJumpInfo paramPackJumpInfo) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    if (!pxy.a(this.jdField_a_of_type_Pxy, paramInt)) {
-      break label11;
-    }
-    label11:
-    label159:
-    for (;;)
-    {
-      return;
-      if (!(this.jdField_a_of_type_Pxy.a() instanceof SplashActivity))
-      {
-        int i = pxy.a(this.jdField_a_of_type_Pxy);
-        if (((paramInt >= 0) && (paramInt <= 30)) || (paramInt > 330)) {
-          paramInt = 1;
-        }
-        for (;;)
-        {
-          if (paramInt == pxy.a(this.jdField_a_of_type_Pxy)) {
-            break label159;
-          }
-          pxy.a(this.jdField_a_of_type_Pxy, paramInt);
-          if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-            break;
-          }
-          ((pya)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt);
-          return;
-          if ((paramInt > 70) && (paramInt <= 110)) {
-            paramInt = 8;
-          } else if ((paramInt > 150) && (paramInt <= 210)) {
-            paramInt = 9;
-          } else if ((paramInt > 250) && (paramInt <= 290)) {
-            paramInt = 0;
-          } else {
-            paramInt = i;
-          }
-        }
-      }
-    }
+    paramView = this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_url.get();
+    onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), paramView);
+    pdb.a(2, this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_wording.get());
   }
 }
 

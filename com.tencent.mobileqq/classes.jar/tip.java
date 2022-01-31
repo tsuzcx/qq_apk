@@ -1,18 +1,60 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.1.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
-public final class tip
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+public class tip
+  extends tiq
 {
-  public void onComplete(String arg1, String paramString2)
+  public tip(ViewGroup paramViewGroup)
   {
-    synchronized ()
-    {
-      paramString2 = tio.a();
-      tio.a().post(new TVKPreloader.1.1(this, paramString2));
-      return;
+    super(paramViewGroup, 2131561302);
+  }
+  
+  private void c(tfi paramtfi)
+  {
+    paramtfi.d = false;
+    tgb.a(QQStoryContext.a()).a(paramtfi);
+    tgq localtgq = new tgq();
+    localtgq.jdField_b_of_type_JavaLangString = paramtfi.jdField_a_of_type_JavaLangString;
+    localtgq.c = paramtfi.jdField_a_of_type_Int;
+    localtgq.d = 4;
+    localtgq.jdField_b_of_type_Long = paramtfi.e;
+    syr.a().a(localtgq, null);
+  }
+  
+  public void a(tfi paramtfi)
+  {
+    super.a(paramtfi);
+    if (!TextUtils.isEmpty(paramtfi.g)) {
+      c(paramtfi.g);
     }
+    if (!TextUtils.isEmpty(paramtfi.j))
+    {
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramtfi.c)) {}
+      for (str = ajyc.a(2131706943);; str = paramtfi.c)
+      {
+        localStoryMsgNodeFrameLayout.setNodeName(str, paramtfi.j);
+        if (paramtfi.d) {
+          c(paramtfi);
+        }
+        return;
+      }
+    }
+    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout = this.a;
+    if (TextUtils.isEmpty(paramtfi.c)) {}
+    for (String str = ajyc.a(2131706942);; str = paramtfi.c)
+    {
+      localStoryMsgNodeFrameLayout.setNodeName(str, 0);
+      break;
+    }
+  }
+  
+  protected void b(tfi paramtfi)
+  {
+    this.a.setDisplayState(6);
+    this.a.a(paramtfi);
   }
 }
 

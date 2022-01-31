@@ -1,36 +1,12 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
-
-public class tqy
-  implements TVK_SDKMgr.OnLogListener
+class tqy
+  extends tpq
 {
-  public int d(String paramString1, String paramString2)
-  {
-    urk.b(paramString1, paramString2);
-    return 0;
-  }
+  tqy(tqk paramtqk, trs paramtrs) {}
   
-  public int e(String paramString1, String paramString2)
+  public boolean b()
   {
-    urk.e(paramString1, paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    urk.c(paramString1, paramString2);
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    urk.b(paramString1, paramString2);
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    urk.d(paramString1, paramString2);
-    return 0;
+    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Trs.d);
+    return true;
   }
 }
 

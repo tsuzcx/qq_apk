@@ -7,24 +7,24 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bbac;
-import bbms;
+import bcdb;
+import bcpq;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
-import mpo;
-import rsv;
-import vvp;
+import nap;
+import sfn;
+import wim;
 
 public class PublicAccountH5AbilityPlugin$20
   implements Runnable
 {
-  public PublicAccountH5AbilityPlugin$20(rsv paramrsv, String paramString, Bundle paramBundle, bbms parambbms) {}
+  public PublicAccountH5AbilityPlugin$20(sfn paramsfn, String paramString, Bundle paramBundle, bcpq parambcpq) {}
   
   public void run()
   {
-    Object localObject = mpo.a(this.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    Object localObject = nap.a(this.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
     int i;
-    if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing()))
+    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing()))
     {
       i = 1;
       if (i != 0)
@@ -44,11 +44,11 @@ public class PublicAccountH5AbilityPlugin$20
         if (WXShareHelper.a().a()) {
           break label153;
         }
-        i = 2131655008;
+        i = 2131720906;
         if (i == -1) {
           break label168;
         }
-        vvp.a(0, i);
+        wim.a(0, i);
         localObject = new Intent(this.this$0.mRuntime.a(), PublicAccountBrowser.class);
         ((Intent)localObject).putExtra("url", "http://weixin.qq.com/download");
         this.this$0.mRuntime.a().startActivity((Intent)localObject);
@@ -64,13 +64,13 @@ public class PublicAccountH5AbilityPlugin$20
       label153:
       if (!WXShareHelper.a().b())
       {
-        i = 2131655009;
+        i = 2131720907;
         continue;
         label168:
         WXShareHelper.a().a(localOutOfMemoryError, localBitmap, 1, true);
         return;
         label179:
-        vvp.a(1, 2131629908);
+        wim.a(1, 2131695589);
       }
       else
       {

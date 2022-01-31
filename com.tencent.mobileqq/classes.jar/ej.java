@@ -1,14 +1,29 @@
-import android.widget.RelativeLayout;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
+import com.dataline.activities.PrinterOptionActivity;
 
 public class ej
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public long a;
-  public RelativeLayout a;
-  public TextView a;
-  public String a;
+  public ej(PrinterOptionActivity paramPrinterOptionActivity) {}
   
-  public ej(ed paramed) {}
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      PrinterOptionActivity.a(this.a).setVisibility(0);
+      PrinterOptionActivity.a(this.a).setText(2131691376);
+      return;
+    }
+    if (PrinterOptionActivity.b(this.a))
+    {
+      PrinterOptionActivity.a(this.a).setVisibility(0);
+      PrinterOptionActivity.a(this.a).setText(2131691356);
+      return;
+    }
+    PrinterOptionActivity.a(this.a).setVisibility(4);
+  }
 }
 
 

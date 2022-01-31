@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aoke;
+import apay;
 
 public class OnlineFileSessionCenter$3
   implements Runnable
 {
-  public OnlineFileSessionCenter$3(aoke paramaoke, int paramInt) {}
+  public OnlineFileSessionCenter$3(apay paramapay, int paramInt) {}
   
   public void run()
   {

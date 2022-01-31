@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import ajjy;
-import bbmy;
+import ajyc;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class PreloadingFragment$9
@@ -11,7 +11,7 @@ class PreloadingFragment$9
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131642613), 1).a();
+    bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131708398), 1).a();
   }
 }
 

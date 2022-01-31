@@ -5,8 +5,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
-import rcv;
-import rcw;
+import rpj;
+import rpk;
 
 class PublicAccountImageCollectionPreloadManager$5
   implements Runnable
@@ -31,9 +31,9 @@ class PublicAccountImageCollectionPreloadManager$5
             localObject1 = new URL((String)localObject1);
             if (localObject1 != null)
             {
-              rcw localrcw = new rcw();
-              localrcw.a = ((URL)localObject1);
-              rcv.a().a(localrcw, null);
+              rpk localrpk = new rpk();
+              localrpk.a = ((URL)localObject1);
+              rpj.a().a(localrpk, null);
             }
           }
           catch (MalformedURLException localMalformedURLException)

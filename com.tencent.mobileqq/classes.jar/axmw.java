@@ -1,24 +1,43 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.io.File;
 
 class axmw
-  extends ajjh
+  implements ahbt
 {
-  axmw(axmt paramaxmt) {}
+  axmw(axmu paramaxmu, axnb paramaxnb) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    QLog.i("TogetherControlManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
-    if (paramBoolean)
-    {
-      Iterator localIterator = axmt.a(this.a).entrySet().iterator();
-      while (localIterator.hasNext()) {
-        ((axne)((Map.Entry)localIterator.next()).getValue()).a(paramObject);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLoadWidget.DownSoLoader", 2, "[handleConfig] download resCode=" + paramInt + ",pathRes=" + paramPathResult);
     }
+    VACDReportUtil.a(axmu.a(this.jdField_a_of_type_Axmu).a, null, "load.item.download.end", "sc=" + paramPathResult.subErrCode, paramInt, null);
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    {
+      axmu.a(this.jdField_a_of_type_Axmu, true);
+      paramPathResult = new File(paramPathResult.folderPath, this.jdField_a_of_type_Axnb.b).getAbsolutePath();
+      axmu.a(this.jdField_a_of_type_Axmu, paramPathResult, this.jdField_a_of_type_Axnb);
+      return;
+    }
+    if (axmu.a(this.jdField_a_of_type_Axmu, this.jdField_a_of_type_Axnb))
+    {
+      axmu.a(this.jdField_a_of_type_Axmu, 0);
+      return;
+    }
+    if (paramInt == 2)
+    {
+      axmu.a(this.jdField_a_of_type_Axmu, 4);
+      return;
+    }
+    if (paramPathResult.subErrCode == 404)
+    {
+      axmu.a(this.jdField_a_of_type_Axmu, 9);
+      return;
+    }
+    axmu.a(this.jdField_a_of_type_Axmu, 3);
   }
 }
 

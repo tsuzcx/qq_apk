@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.emoticonview;
 
-import anly;
-import anmc;
+import aoci;
+import aocm;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
 public class StickerGestureDetector$StickerAnimationListener$1
   implements Runnable
 {
-  public StickerGestureDetector$StickerAnimationListener$1(anmc paramanmc) {}
+  public StickerGestureDetector$StickerAnimationListener$1(aocm paramaocm) {}
   
   public void run()
   {

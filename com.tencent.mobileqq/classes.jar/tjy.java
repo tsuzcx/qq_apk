@@ -1,11 +1,6 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
-
 public abstract interface tjy
 {
-  public abstract void a(ErrorMessage paramErrorMessage, List<tjs> paramList, boolean paramBoolean);
-  
-  public abstract void b(ErrorMessage paramErrorMessage, List<tjt> paramList, boolean paramBoolean);
+  public abstract void a(tjx paramtjx);
 }
 
 

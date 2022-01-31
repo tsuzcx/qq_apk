@@ -1,46 +1,36 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.util.BinderWarpper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aurw
-  implements ServiceConnection
+final class aurw
+  implements ayrz
 {
-  aurw(aurv paramaurv) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a(aysw paramaysw, aysx paramaysx)
   {
-    auru.a("PTV.RichmediaClient", "onServiceConnected");
-    this.a.b = new Messenger(paramIBinder);
-    paramComponentName = Message.obtain(null, 1);
-    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
-    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_Aurr.asBinder());
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
-    paramComponentName.setData(localBundle);
-    try
+    if ((paramaysw == null) || (paramaysx == null)) {}
+    do
     {
-      this.a.b.send(paramComponentName);
-      return;
-    }
-    catch (RemoteException paramComponentName)
-    {
-      auru.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    this.a.b = null;
+      do
+      {
+        return;
+      } while (!(paramaysw instanceof ayrv));
+      paramaysw = (ayrv)paramaysw;
+      paramaysw.jdField_a_of_type_Long += paramaysx.c;
+      paramaysx.c = 0L;
+      paramaysx = "bytes=" + paramaysw.jdField_a_of_type_Long + "-";
+      paramaysw.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysx);
+      paramaysx = paramaysw.jdField_a_of_type_JavaLangString;
+      if (paramaysx.contains("range="))
+      {
+        String str = paramaysx.substring(0, paramaysx.lastIndexOf("range="));
+        paramaysw.jdField_a_of_type_JavaLangString = (str + "range=" + paramaysw.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("PrecoverResDownloader", 2, "IBreakDownFix, " + paramaysx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aurw
  * JD-Core Version:    0.7.0.1
  */

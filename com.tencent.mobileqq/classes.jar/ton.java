@@ -1,94 +1,48 @@
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGroupDateVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupNodeInfo;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ton
-  extends SimpleJob<Object>
+  extends syq
 {
-  public ton(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, boolean paramBoolean1, int paramInt1, Long paramLong, boolean paramBoolean2, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3, int paramInt5, int paramInt6, int paramInt7, tqt paramtqt, long paramLong1, String paramString4, String paramString5)
-  {
-    super(paramString1);
-  }
+  public long a;
+  public String a;
+  public ArrayList<VideoCollectionItem> a;
+  public boolean a;
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public ton(String paramString, qqstory_service.RspGroupDateVideoList paramRspGroupDateVideoList)
   {
-    int i = 0;
-    paramJobContext = "0";
-    int j;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      j = 200;
-      i = this.jdField_a_of_type_Int;
-      paramVarArgs = String.valueOf(i) + "*";
-      paramJobContext = paramVarArgs;
-      i = j;
-      if (this.jdField_a_of_type_JavaLangLong != null)
-      {
-        paramJobContext = paramVarArgs + String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_JavaLangLong.longValue());
-        i = j;
-      }
-      if ((i != 0) && (i != 7) && ((i != 200) || (this.jdField_a_of_type_Int < 6) || (this.jdField_a_of_type_Int > 10))) {
-        break label509;
-      }
-      if (this.jdField_d_of_type_Int != 1) {
-        break label503;
-      }
-      paramVarArgs = "1";
-      label138:
-      if ((!TextUtils.equals(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString)) || (i == 0)) {
-        break label532;
-      }
-      urk.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "reportDevPlayerDone, errorCode=%d, suError=%s => treat as success => 300", new Object[] { Integer.valueOf(i), paramJobContext });
-      j = 300;
-      String str = String.valueOf(i) + "*";
-      paramJobContext = str + paramJobContext;
-    }
+    super(paramRspGroupDateVideoList.result);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (paramRspGroupDateVideoList.is_end.get() == 1) {}
     for (;;)
     {
-      urp.b("play_video", "play_result", this.e, j, new String[] { paramJobContext, paramVarArgs, urp.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
-      urp.b("play_video", "play_buffering", this.e, j, new String[] { String.valueOf(this.f), String.valueOf(this.g), urp.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
-      if (this.jdField_a_of_type_Tqt.jdField_a_of_type_Long > 0L) {
-        urp.b("play_video", "play_bitRate", this.e, j, new String[] { paramJobContext, this.jdField_a_of_type_Tqt.toString(), urp.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        i = 1;
-      }
-      for (;;)
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_JavaLangString = paramRspGroupDateVideoList.next_cookie.get().toStringUtf8();
+      this.jdField_a_of_type_Long = paramRspGroupDateVideoList.seqno.get();
+      paramRspGroupDateVideoList = paramRspGroupDateVideoList.group_node_info.get().iterator();
+      while (paramRspGroupDateVideoList.hasNext())
       {
-        if (i != 0)
-        {
-          long l = 0L;
-          if (this.jdField_a_of_type_Long != 0L) {
-            l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
-          }
-          urp.b("sdk_download_video", "video_download_error", this.e, j, new String[] { this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString, String.valueOf(i), String.valueOf(l) });
-        }
-        return null;
-        if (!this.jdField_b_of_type_Boolean) {
-          break;
-        }
-        i = this.jdField_b_of_type_Int;
-        paramJobContext = String.valueOf(this.jdField_c_of_type_Int);
-        break;
-        label503:
-        paramVarArgs = "2";
-        break label138;
-        label509:
-        paramVarArgs = "0";
-        break label138;
-        if (this.jdField_b_of_type_Boolean) {
-          i = 2;
-        } else {
-          i = 0;
-        }
+        qqstory_struct.GroupNodeInfo localGroupNodeInfo = (qqstory_struct.GroupNodeInfo)paramRspGroupDateVideoList.next();
+        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
+        localVideoCollectionItem.convertFrom("Q.qqstory.shareGroup:GetDateCollectionListResponse", paramString, localGroupNodeInfo);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
       }
-      label532:
-      j = i;
+      bool = false;
     }
+  }
+  
+  public String toString()
+  {
+    return "GetShareGroupDateListResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", isEnd=" + this.jdField_a_of_type_Boolean + ", nextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", seq=" + this.jdField_a_of_type_Long + ", mCollectionItemList=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
   }
 }
 

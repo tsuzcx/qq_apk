@@ -20,7 +20,7 @@ class AddFriendVerifyActivity$5$1
       }
       str = this.jdField_a_of_type_JavaLangString;
       localTextView.setText(str);
-      if (AppSetting.c)
+      if (AppSetting.d)
       {
         localTextView = AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.this$0);
         if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.jdField_a_of_type_JavaLangString)) {

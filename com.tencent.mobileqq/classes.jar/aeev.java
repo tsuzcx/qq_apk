@@ -1,19 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class aeev
-  extends BroadcastReceiver
+  implements View.OnTouchListener
 {
-  aeev(aeeh paramaeeh) {}
+  aeev(aeet paramaeet, acxn paramacxn) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_a_of_type_Asgb != null) {
-      this.a.jdField_a_of_type_Asgb.a(paramContext);
-    }
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+    this.jdField_a_of_type_Acxn.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 

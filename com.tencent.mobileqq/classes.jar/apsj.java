@@ -1,74 +1,125 @@
-import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.filemanager.multisave.QFileMultiSaveReq.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class apsj
 {
-  public apsu a(int paramInt, aptf paramaptf)
+  private apsl jdField_a_of_type_Apsl;
+  private apsm jdField_a_of_type_Apsm;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public ChatMessage a;
+  
+  public apsj(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      return new apsz();
-    case 3: 
-      return new apsy();
-    case 2: 
-      return new aptd();
-    }
-    return new apta();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    this.jdField_a_of_type_Apsl = apsl.a(paramQQAppInterface, paramChatMessage);
   }
   
-  public aptf a(int paramInt)
+  public long a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      return new apti();
-    case 3: 
-      return new aptg();
-    case 2: 
-      return new aptm();
+    if (this.jdField_a_of_type_Apsl != null) {
+      return this.jdField_a_of_type_Apsl.a();
     }
-    return new aptk();
+    return 0L;
   }
   
-  public apul a(Activity paramActivity, int paramInt, aptf paramaptf)
+  public apsi a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      if ((paramaptf instanceof apti)) {
-        return new apux(paramActivity, (apti)paramaptf);
-      }
-      apsm.a().a().a("MVPFactory", 4, "createView type is PIC, presenter is error!");
-      return null;
-    case 3: 
-      if ((paramaptf instanceof aptg)) {
-        return new apur(paramActivity, (aptg)paramaptf);
-      }
-      apsm.a().a().a("MVPFactory", 4, "createView type is FILE_PIC, presenter is error!");
-      return null;
-    case 2: 
-      if ((paramaptf instanceof aptm)) {
-        return new apvq(paramActivity, (aptm)paramaptf);
-      }
-      apsm.a().a().a("MVPFactory", 4, "createView type is VIDEO, presenter is error!");
-      return null;
+    if (this.jdField_a_of_type_Apsl != null) {
+      return this.jdField_a_of_type_Apsl.a();
     }
-    if ((paramaptf instanceof aptk)) {
-      return new apvm(paramActivity, (aptk)paramaptf);
-    }
-    apsm.a().a().a("MVPFactory", 4, "createView type is FILE_VIDEO, presenter is error!");
     return null;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Apsl != null) {
+      return this.jdField_a_of_type_Apsl.b();
+    }
+    return "";
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Apsl != null) {}
+    for (boolean bool = this.jdField_a_of_type_Apsl.a();; bool = false)
+    {
+      if (!bool)
+      {
+        QLog.i("QFileMultiSaveReq<QFile>", 1, "doFileDownload: start fail");
+        if (this.jdField_a_of_type_Apsm != null) {
+          this.jdField_a_of_type_Apsm.a(false);
+        }
+      }
+      return;
+    }
+  }
+  
+  public void a(apsm paramapsm)
+  {
+    this.jdField_a_of_type_Apsm = paramapsm;
+    if (this.jdField_a_of_type_Apsl != null) {
+      this.jdField_a_of_type_Apsl.a(this.jdField_a_of_type_Apsm);
+    }
+  }
+  
+  public void a(String paramString, apsk paramapsk)
+  {
+    if (!bbdj.b(paramString))
+    {
+      if (paramapsk != null) {
+        paramapsk.a(-1, "file is not exist");
+      }
+      return;
+    }
+    ThreadManager.getSubThreadHandler().post(new QFileMultiSaveReq.1(this, paramString, paramapsk));
+  }
+  
+  public boolean a()
+  {
+    return bbdj.b(b());
+  }
+  
+  public String b()
+  {
+    String str = "";
+    if (this.jdField_a_of_type_Apsl != null) {
+      str = this.jdField_a_of_type_Apsl.a();
+    }
+    return str;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Apsl != null) {}
+    for (boolean bool = this.jdField_a_of_type_Apsl.b();; bool = false)
+    {
+      if (!bool)
+      {
+        QLog.i("QFileMultiSaveReq<QFile>", 1, "doFileStopDownload: pause fail");
+        if (this.jdField_a_of_type_Apsm != null) {
+          this.jdField_a_of_type_Apsm.b(false);
+        }
+      }
+      return;
+    }
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_Apsl != null) {
+      this.jdField_a_of_type_Apsl.c();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apsj
  * JD-Core Version:    0.7.0.1
  */

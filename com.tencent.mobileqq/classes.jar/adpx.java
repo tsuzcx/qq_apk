@@ -1,36 +1,69 @@
-import android.animation.TypeEvaluator;
-import android.graphics.PointF;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class adpx
-  implements TypeEvaluator<PointF>
+  implements View.OnClickListener
 {
-  private PointF[] jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
+  public adpx(FlashPicItemBuilder paramFlashPicItemBuilder) {}
   
-  public adpx(SixCombolEffectView paramSixCombolEffectView) {}
-  
-  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
+  public void onClick(View paramView)
   {
-    paramPointF1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0];
-    paramPointF2 = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[1];
-    PointF localPointF = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2];
-    if (paramFloat <= 1.0F)
+    long l = SystemClock.uptimeMillis();
+    if (l - FlashPicItemBuilder.a(this.a) < 800L) {}
+    adqa localadqa;
+    label169:
+    for (;;)
     {
-      float f1 = 1.0F - paramFloat;
-      float f2 = (float)(paramPointF1.x * Math.pow(f1, 2.0D) + 2.0F * paramPointF2.x * paramFloat * f1 + localPointF.x * Math.pow(paramFloat, 2.0D));
-      double d1 = paramPointF1.y;
-      double d2 = Math.pow(f1, 2.0D);
-      return new PointF(f2, (float)(2.0F * paramPointF2.y * paramFloat * f1 + d1 * d2 + localPointF.y * Math.pow(paramFloat, 2.0D)));
+      return;
+      FlashPicItemBuilder.a(this.a, l);
+      localadqa = (adqa)actn.a(paramView);
+      if (localadqa != null)
+      {
+        Object localObject2 = localadqa.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        Object localObject1 = null;
+        paramView = localObject1;
+        if (localObject2 != null)
+        {
+          localObject2 = this.a.a.a().a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq);
+          paramView = localObject1;
+          if ((localObject2 instanceof MessageForPic)) {
+            paramView = (MessageForPic)localObject2;
+          }
+        }
+        if (paramView != null)
+        {
+          if (ajyk.a(paramView)) {}
+          for (boolean bool = ajyk.b(paramView);; bool = ajwd.b(paramView))
+          {
+            if (bool) {
+              break label169;
+            }
+            if (localadqa.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 0) {
+              break label171;
+            }
+            if (localadqa.jdField_a_of_type_ComTencentImageURLDrawable.isDownloadStarted()) {
+              break;
+            }
+            localadqa.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+            return;
+          }
+        }
+      }
     }
-    return this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2];
-  }
-  
-  public void a(PointF... paramVarArgs)
-  {
-    if (paramVarArgs.length != 3) {
-      throw new IllegalArgumentException(ajjy.a(2131648396));
+    label171:
+    if (localadqa.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 2)
+    {
+      localadqa.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+      return;
     }
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = paramVarArgs;
+    FlashPicItemBuilder.a(this.a, paramView, localadqa.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder$FlashPicAIOThumbView);
   }
 }
 

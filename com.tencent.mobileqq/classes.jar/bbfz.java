@@ -1,61 +1,40 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.widget.ADView;
-import com.tencent.mobileqq.widget.WorkSpaceView;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.2.1;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.2.2;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class bbfz
-  extends Handler
+  implements ArkViewImplement.LoadCallback
 {
-  private ADView jdField_a_of_type_ComTencentMobileqqWidgetADView;
-  private WeakReference<ADView> jdField_a_of_type_JavaLangRefWeakReference;
+  bbfz(bbfx parambbfx) {}
   
-  public bbfz(ADView paramADView)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramADView);
+    onLoadState(paramInt1);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadState(int paramInt)
   {
-    switch (paramMessage.what)
+    WeakReference localWeakReference = new WeakReference(this.a);
+    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.1(this, localWeakReference, paramInt));
+    if (paramInt == 0) {}
+    do
     {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetADView = ((ADView)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      } while ((this.jdField_a_of_type_ComTencentMobileqqWidgetADView == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a == null));
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getChildCount() > 1) && (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getWidth() > 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a(this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a() + 1);
+      return;
+      bbfx.a(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQCustomArkDialog", 2, new Object[] { "arkView init finish,load state = ", Integer.valueOf(paramInt), ";outsideShowDialog = ", Boolean.valueOf(bbfx.a(this.a)), ";alreadyShowDialog:", Boolean.valueOf(bbfx.b(this.a)) });
       }
-      try
-      {
-        awuf localawuf = (awuf)this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getChildAt(this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a()).getTag();
-        i = localawuf.a;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetADView.setContentDescription(localawuf.n);
-        i *= 1000;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          int i = 5000;
-        }
-      }
-      sendEmptyMessageDelayed(0, i);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetADView = null;
-      continue;
-      removeMessages(0);
-    }
+    } while (!bbfx.a(this.a));
+    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbfz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,39 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteActivity;
 
-class lob
-  implements bbsh
+public class lob
+  implements DialogInterface.OnClickListener
 {
-  lob(loa paramloa, String paramString, Context paramContext, int paramInt1, int paramInt2) {}
+  int jdField_a_of_type_Int;
   
-  public void a(BaseResp paramBaseResp)
+  public lob(GaInviteActivity paramGaInviteActivity, int paramInt)
   {
-    int i = 2;
-    QLog.w("ShareChat", 1, "onWXShareResp, mWXTransaction[" + this.jdField_a_of_type_JavaLangString + "], transaction[" + paramBaseResp.transaction + "], errCode[" + paramBaseResp.errCode + "], seq[" + this.jdField_a_of_type_Loa.a + "]");
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)) {
-      return;
-    }
-    loa localloa;
-    int j;
-    int k;
-    switch (paramBaseResp.errCode)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (this.jdField_a_of_type_Int)
     {
-    case -1: 
-    default: 
-      bbmy.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131653595), 0).a();
-    case -2: 
-      WXShareHelper.a().b(this);
-      localloa = this.jdField_a_of_type_Loa;
-      j = this.jdField_a_of_type_Int;
-      k = this.b;
-      if (paramBaseResp.errCode != 0) {
-        break;
-      }
     }
     for (;;)
     {
-      localloa.a(j, k, i);
+      paramDialogInterface.dismiss();
       return;
-      bbmy.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_AndroidContentContext.getString(2131653612), 0).a();
-      break;
-      i = 3;
+      if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l()) {
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.h(true);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.d();
+        break;
+        if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.e) {
+          this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.m();
+        }
+      }
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.finish();
     }
   }
 }

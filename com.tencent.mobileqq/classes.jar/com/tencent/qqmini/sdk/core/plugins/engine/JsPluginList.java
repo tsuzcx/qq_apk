@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import bdgw;
-import bdnw;
+import bekz;
+import besl;
 import com.tencent.qqmini.sdk.core.plugins.IJsPlugin;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,9 +14,10 @@ import java.util.Set;
 public class JsPluginList
 {
   private static final String APP_JS_PLUGIN = "com.tencent.qqmini.sdk.core.generated.AppJsPluginScope";
-  private static final String FLUTTER_APP_JS_PLUGIN = "com.tencent.qqmini.sdk.core.generated.FlutterAppJsPluginScope";
-  private static final String MINI_APP_JS_PLUGIN = "com.tencent.qqmini.sdk.core.generated.MiniAppJsPluginScope";
-  private static final String MINI_GAME_JS_PLUGIN = "com.tencent.qqmini.sdk.core.generated.MiniGameJsPluginScope";
+  private static final boolean DEBUG = false;
+  private static final String EXT_JS_PLUGIN = "com.tencent.qqmini.sdk.core.generated.ExtJsPluginScope";
+  private static final String GAME_JS_PLUGIN = "com.tencent.qqmini.sdk.core.generated.GameJsPluginScope";
+  private static final String GENERATED_PACKAGE = "com.tencent.qqmini.sdk.core.generated.";
   private static final String PLUGIN_EVENTS = "PLUGIN_EVENTS";
   private static final String PRELOAD_PLUGINS = "PRELOAD_PLUGINS";
   private static final String SDK_JS_PLUGIN = "com.tencent.qqmini.sdk.core.generated.SdkJsPluginScope";
@@ -30,7 +31,7 @@ public class JsPluginList
   
   private static void fillEventPluginMap(String paramString, Map<String, String> paramMap)
   {
-    Iterator localIterator = getPluginEvents(paramString).entrySet().iterator();
+    Iterator localIterator = getPluginEventsByScope(paramString).entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
@@ -40,7 +41,7 @@ public class JsPluginList
       {
         String str2 = (String)((Iterator)localObject).next();
         if (paramMap.containsKey(str2)) {
-          bdnw.c("JsPluginList", "registerJsPlugin, conflict event:" + str2);
+          besl.c("JsPluginList", "registerJsPlugin, conflict event:" + str2);
         } else {
           paramMap.put(str2, str1);
         }
@@ -51,22 +52,24 @@ public class JsPluginList
   
   private static void fillPreloadPlugins(String paramString, List<String> paramList)
   {
-    paramString = getPreloadPlugins(paramString).iterator();
+    paramString = getPreloadPluginsByScope(paramString).iterator();
     while (paramString.hasNext()) {
       paramList.add((String)paramString.next());
     }
   }
   
-  public static Map<String, String> getEventPluginMap()
+  public static Map<String, String> getEventPluginMap(boolean paramBoolean)
   {
     HashMap localHashMap = new HashMap();
     fillEventPluginMap("com.tencent.qqmini.sdk.core.generated.SdkJsPluginScope", localHashMap);
-    fillEventPluginMap("com.tencent.qqmini.sdk.core.generated.MiniGameJsPluginScope", localHashMap);
-    fillEventPluginMap("com.tencent.qqmini.sdk.core.generated.FlutterAppJsPluginScope", localHashMap);
-    fillEventPluginMap("com.tencent.qqmini.sdk.core.generated.MiniAppJsPluginScope", localHashMap);
-    fillEventPluginMap("com.tencent.qqmini.sdk.core.generated.AppJsPluginScope", localHashMap);
-    bdnw.b("JsPluginList", "Registered events size: " + localHashMap.keySet().size());
-    return localHashMap;
+    if (paramBoolean) {}
+    for (String str = "com.tencent.qqmini.sdk.core.generated.GameJsPluginScope";; str = "com.tencent.qqmini.sdk.core.generated.AppJsPluginScope")
+    {
+      fillEventPluginMap(str, localHashMap);
+      fillEventPluginMap("com.tencent.qqmini.sdk.core.generated.ExtJsPluginScope", localHashMap);
+      besl.b("JsPluginList", "Registered events size: " + localHashMap.keySet().size());
+      return localHashMap;
+    }
   }
   
   public static String getMethodName(IJsPlugin paramIJsPlugin, String paramString)
@@ -75,7 +78,7 @@ public class JsPluginList
       return null;
     }
     String str = "EVENT_HANDLERS_" + paramIJsPlugin.getClass().getSimpleName();
-    paramIJsPlugin = bdgw.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
+    paramIJsPlugin = bekz.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
     if ((paramIJsPlugin instanceof Map))
     {
       paramIJsPlugin = ((Map)paramIJsPlugin).get(paramString);
@@ -86,29 +89,31 @@ public class JsPluginList
     return null;
   }
   
-  private static Map<String, Map> getPluginEvents(String paramString)
+  private static Map<String, Map> getPluginEventsByScope(String paramString)
   {
-    paramString = bdgw.a(paramString, "PLUGIN_EVENTS");
+    paramString = bekz.a(paramString, "PLUGIN_EVENTS");
     if ((paramString instanceof Map)) {
       return (Map)paramString;
     }
     return new HashMap();
   }
   
-  public static List<String> getPreloadPlugins()
+  public static List<String> getPreloadPlugins(boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
     fillPreloadPlugins("com.tencent.qqmini.sdk.core.generated.SdkJsPluginScope", localArrayList);
-    fillPreloadPlugins("com.tencent.qqmini.sdk.core.generated.MiniGameJsPluginScope", localArrayList);
-    fillPreloadPlugins("com.tencent.qqmini.sdk.core.generated.FlutterAppJsPluginScope", localArrayList);
-    fillPreloadPlugins("com.tencent.qqmini.sdk.core.generated.MiniAppJsPluginScope", localArrayList);
-    fillPreloadPlugins("com.tencent.qqmini.sdk.core.generated.AppJsPluginScope", localArrayList);
-    return localArrayList;
+    if (paramBoolean) {}
+    for (String str = "com.tencent.qqmini.sdk.core.generated.GameJsPluginScope";; str = "com.tencent.qqmini.sdk.core.generated.AppJsPluginScope")
+    {
+      fillPreloadPlugins(str, localArrayList);
+      fillPreloadPlugins("com.tencent.qqmini.sdk.core.generated.ExtJsPluginScope", localArrayList);
+      return localArrayList;
+    }
   }
   
-  private static List<String> getPreloadPlugins(String paramString)
+  private static List<String> getPreloadPluginsByScope(String paramString)
   {
-    paramString = bdgw.a(paramString, "PRELOAD_PLUGINS");
+    paramString = bekz.a(paramString, "PRELOAD_PLUGINS");
     if ((paramString instanceof List)) {
       return (List)paramString;
     }
@@ -118,7 +123,7 @@ public class JsPluginList
   public static Map<String, String> getServiceInjectors(IJsPlugin paramIJsPlugin)
   {
     String str = "SERVICE_INJECTORS_" + paramIJsPlugin.getClass().getSimpleName();
-    paramIJsPlugin = bdgw.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
+    paramIJsPlugin = bekz.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
     if ((paramIJsPlugin instanceof Map)) {
       return (Map)paramIJsPlugin;
     }

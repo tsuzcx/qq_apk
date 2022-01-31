@@ -1,19 +1,23 @@
 package cooperation.qzone.share;
 
-import bbms;
+import android.content.res.Resources;
+import bcpq;
 import com.tencent.qphone.base.util.QLog;
 
 class QZoneShareActivity$20
   implements Runnable
 {
-  QZoneShareActivity$20(QZoneShareActivity paramQZoneShareActivity) {}
+  QZoneShareActivity$20(QZoneShareActivity paramQZoneShareActivity, int paramInt) {}
   
   public void run()
   {
-    if ((QZoneShareActivity.a(this.this$0) != null) && (QZoneShareActivity.a(this.this$0).isShowing())) {}
+    if (QZoneShareActivity.a(this.this$0) == null) {
+      QZoneShareActivity.a(this.this$0, new bcpq(this.this$0, this.this$0.getResources().getDimensionPixelSize(2131298865)));
+    }
+    QZoneShareActivity.a(this.this$0).c(this.a);
     try
     {
-      QZoneShareActivity.a(this.this$0).dismiss();
+      QZoneShareActivity.a(this.this$0).show();
       return;
     }
     catch (Exception localException)

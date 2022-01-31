@@ -1,100 +1,50 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class axcf
-  extends axcg
-  implements axba<axcg>, axch
+  extends MSFServlet
 {
-  public List<axaw> b = new ArrayList();
-  
-  public axcf(SpriteGLView paramSpriteGLView)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.a = paramSpriteGLView;
-  }
-  
-  public <N extends axaw> N a(String paramString)
-  {
-    int i = 0;
-    while (i < this.b.size())
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
     {
-      axcg localaxcg = (axcg)this.b.get(i);
-      if (paramString.equals(localaxcg.jdField_a_of_type_JavaLangString)) {
-        return localaxcg;
+      paramIntent = bgxw.a(paramFromServiceMsg.getWupBuffer());
+      if (paramIntent != null)
+      {
+        paramFromServiceMsg = new Bundle();
+        paramFromServiceMsg.putSerializable("data", paramIntent);
+        notifyObserver(null, 1002, true, paramFromServiceMsg, atzo.class);
+        return;
       }
-      if ((localaxcg instanceof axcf)) {
-        return ((axcf)localaxcg).a(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneAlbumListNumServlet", 2, "inform QZoneAlbumListNumServlet isSuccess false");
       }
-      i += 1;
-    }
-    return null;
-  }
-  
-  public List<axaw> a()
-  {
-    return this.b;
-  }
-  
-  public void a()
-  {
-    super.a();
-    int i = 0;
-    while (i < this.b.size())
-    {
-      ((axcg)this.b.get(i)).a();
-      i += 1;
-    }
-    this.b.clear();
-  }
-  
-  public void a(axcg paramaxcg)
-  {
-    if (paramaxcg.jdField_a_of_type_Axba == null)
-    {
-      this.b.add(paramaxcg);
-      paramaxcg.jdField_a_of_type_Axba = this;
+      notifyObserver(null, 1002, false, new Bundle(), atzo.class);
       return;
     }
-    new RuntimeException("the node had another parent");
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneAlbumListNumServlet", 2, "inform QZoneAlbumListNumServlet resultcode fail.");
+    }
+    notifyObserver(null, 1002, false, new Bundle(), atzo.class);
   }
   
-  public boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    Object[] arrayOfObject = this.b.toArray();
-    int i = arrayOfObject.length - 1;
-    while (i >= 0)
-    {
-      if (((arrayOfObject[i] instanceof axch)) && (((axch)arrayOfObject[i]).a(paramMotionEvent, paramInt1, paramInt2))) {
-        return true;
-      }
-      i -= 1;
+    if (paramIntent == null) {
+      return;
     }
-    return false;
-  }
-  
-  protected void aR_()
-  {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
-    {
-      axaw localaxaw = (axaw)localIterator.next();
-      if ((localaxaw instanceof axci)) {
-        ((axci)localaxaw).aR_();
-      }
+    byte[] arrayOfByte = new bgxw(paramIntent.getLongExtra("selfuin", 0L), paramIntent.getStringExtra("refer")).encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null) {
+      paramIntent = new byte[4];
     }
-  }
-  
-  public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
-  {
-    super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
-    int i = 0;
-    while (i < this.b.size())
-    {
-      ((axcg)this.b.get(i)).c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
-      i += 1;
-    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + "getAlbumListNum");
+    paramPacket.putSendData(paramIntent);
   }
 }
 

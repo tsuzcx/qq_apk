@@ -1,27 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import com.tencent.qphone.base.util.QLog;
-import pdu;
-import pep;
+import ppm;
+import pqj;
 
 public class PTSEngineLoader$2
   implements Runnable
 {
-  public PTSEngineLoader$2(pdu parampdu) {}
+  public PTSEngineLoader$2(ppm paramppm) {}
   
   public void run()
   {
-    if (!pep.a.c()) {
+    if (!pqj.a.d()) {
       return;
     }
-    pdu.a(this.this$0);
-    if (pdu.a(this.this$0))
-    {
-      pdu.b(this.this$0);
-      return;
-    }
-    QLog.i("PTSEngineLoader", 1, "[init], handleDownloadPTSEngine.");
-    pdu.c(this.this$0);
+    ppm.a(this.this$0);
+    ppm.b(this.this$0);
   }
 }
 

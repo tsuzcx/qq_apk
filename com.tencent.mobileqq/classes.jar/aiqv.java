@@ -1,23 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class aiqv
-  implements DialogInterface.OnKeyListener
+public class aiqv
+  extends aiqr
 {
-  aiqv(aiqu paramaiqu, airc paramairc) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4) {
-      this.jdField_a_of_type_Aiqu.a(this.jdField_a_of_type_Airc);
-    }
-    return true;
-  }
+  public TextView a;
+  public boolean a;
+  public int b;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public ImageView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aiqv
  * JD-Core Version:    0.7.0.1
  */

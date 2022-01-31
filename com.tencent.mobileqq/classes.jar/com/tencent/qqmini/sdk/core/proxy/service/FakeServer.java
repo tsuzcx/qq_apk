@@ -13,11 +13,11 @@ import NS_MINI_INTERFACE.INTERFACE.StDomainConfig;
 import NS_MINI_INTERFACE.INTERFACE.StExtConfigInfo;
 import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByIdReq;
 import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByIdRsp;
-import NS_MINI_INTERFACE.INTERFACE.StGetCodeRsp;
 import NS_MINI_INTERFACE.INTERFACE.StGetProfileRsp;
 import NS_MINI_INTERFACE.INTERFACE.StMDebugInfo;
 import NS_MINI_INTERFACE.INTERFACE.StMainPageExtInfo;
 import NS_MINI_INTERFACE.INTERFACE.StSubPkgInfo;
+import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.util.Log;
@@ -163,7 +163,7 @@ public class FakeServer
     localStGetAppInfoByIdRsp.appInfo.basicInfo.operationTags.set("精灵收集;进化");
     localStGetAppInfoByIdRsp.appInfo.basicInfo.pkgType.set(1);
     localStGetAppInfoByIdRsp.appInfo.basicInfo.usrFileSizeLimit.set(52428800L);
-    localStGetAppInfoByIdRsp.appInfo.basicInfo.versionUpdateTime.set(1575998639);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.versionUpdateTime.set(1577727128);
     localStGetAppInfoByIdRsp.appInfo.desc.set("小精灵，进化吧！");
     localStGetAppInfoByIdRsp.appInfo.devInfo.name.set("第三方");
     localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("cgiwxmini.88duomi.com");
@@ -213,7 +213,7 @@ public class FakeServer
     localStGetAppInfoByIdRsp.appInfo.domain.uploadFileDomain.add("wx.qlogo.cn");
     localStGetAppInfoByIdRsp.appInfo.domain.uploadFileDomain.add("wxmini.88duomi.com");
     localStGetAppInfoByIdRsp.appInfo.domain.uploadFileDomain.add("proxy.gtimg.cn");
-    localStGetAppInfoByIdRsp.appInfo.donwLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/8a5eef70c93b871bae3bdbc771f2feeb.tqapkg");
+    localStGetAppInfoByIdRsp.appInfo.donwLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/5596c6ec06606e4976702e2556033cd5.tqapkg");
     localObject1 = new INTERFACE.StExtConfigInfo();
     ((INTERFACE.StExtConfigInfo)localObject1).configKey.set("apiscopeconfig");
     ((INTERFACE.StExtConfigInfo)localObject1).configVersion.set("0.0.7");
@@ -227,18 +227,543 @@ public class FakeServer
     localStGetAppInfoByIdRsp.appInfo.mainExt.file_size.set(4140178);
     localStGetAppInfoByIdRsp.appInfo.serviceCategory.add("游戏_角色扮演类");
     localObject1 = new INTERFACE.StSubPkgInfo();
-    ((INTERFACE.StSubPkgInfo)localObject1).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/caad32e3cfa2fea9ce5f48a21ba4c68b.tqapkg");
-    ((INTERFACE.StSubPkgInfo)localObject1).file_size.set(3367965);
-    ((INTERFACE.StSubPkgInfo)localObject1).subPkgName.set("subpack");
+    ((INTERFACE.StSubPkgInfo)localObject1).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/5999b6774148bb43333fc9bd5d98c241.tqapkg");
+    ((INTERFACE.StSubPkgInfo)localObject1).file_size.set(3868486);
+    ((INTERFACE.StSubPkgInfo)localObject1).subPkgName.set("subpackage");
     localObject2 = new INTERFACE.StSubPkgInfo();
-    ((INTERFACE.StSubPkgInfo)localObject2).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/8a5eef70c93b871bae3bdbc771f2feeb.tqapkg");
-    ((INTERFACE.StSubPkgInfo)localObject2).file_size.set(4140178);
+    ((INTERFACE.StSubPkgInfo)localObject2).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/5596c6ec06606e4976702e2556033cd5.tqapkg");
+    ((INTERFACE.StSubPkgInfo)localObject2).file_size.set(3698185);
     ((INTERFACE.StSubPkgInfo)localObject2).subPkgName.set("main");
     localStGetAppInfoByIdRsp.appInfo.subPkgs.add((MessageMicro)localObject1);
     localStGetAppInfoByIdRsp.appInfo.subPkgs.add((MessageMicro)localObject2);
     localStGetAppInfoByIdRsp.appInfo.type.set(3);
-    localStGetAppInfoByIdRsp.appInfo.version.set("1.1.2426");
-    localStGetAppInfoByIdRsp.appInfo.versionId.set("e1cc4d631dcfaa681a1200fc78f93dad");
+    localStGetAppInfoByIdRsp.appInfo.version.set("1.1.2458");
+    localStGetAppInfoByIdRsp.appInfo.versionId.set("8f891584b77ad172dd4182d058ec8440");
+    return localStGetAppInfoByIdRsp.toByteArray();
+  }
+  
+  private static byte[] build1108002511()
+  {
+    INTERFACE.StGetAppInfoByIdRsp localStGetAppInfoByIdRsp = new INTERFACE.StGetAppInfoByIdRsp();
+    Object localObject = new INTERFACE.StApiRightItem();
+    ((INTERFACE.StApiRightItem)localObject).apiName.set("invokeNativePlugin");
+    ((INTERFACE.StApiRightItem)localObject).right.set(1);
+    ((INTERFACE.StApiRightItem)localObject).secondName.set("uploadAvatar");
+    INTERFACE.StApiRightItem localStApiRightItem = new INTERFACE.StApiRightItem();
+    localStApiRightItem.apiName.set("openScheme");
+    localStApiRightItem.right.set(1);
+    localStApiRightItem.secondName.set("mqqapi://card/show_pslcard");
+    localStGetAppInfoByIdRsp.appInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.domain.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.extInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mDebug.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mainExt.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add(localStApiRightItem);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onMessage");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("reportSubmitForm");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateVoIPChatMuteConfig");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatMembersChanged");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestMidasPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("insertHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("joinVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPaymentToBank");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("exitVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("removeHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onWebInvokeAppService");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatInterrupted");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatSpeakersChanged");
+    localStGetAppInfoByIdRsp.appInfo.appId.set("1108002511");
+    localStGetAppInfoByIdRsp.appInfo.appName.set("魔力碎片");
+    localStGetAppInfoByIdRsp.appInfo.appType.set(1);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.operationTags.set("益智;收集");
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.pkgType.set(1);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.usrFileSizeLimit.set(52428800L);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.versionUpdateTime.set(1577274673);
+    localStGetAppInfoByIdRsp.appInfo.desc.set("快来收集魔力碎片吧~");
+    localStGetAppInfoByIdRsp.appInfo.devInfo.name.set("第三方");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("puzzle-static.boomegg.cn");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("puzzletest.jwetech.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("puzzle.boomegg.cn");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("sentry.jwetech.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("magicstore-dev.crosscp.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("magicstore.crosscp.com");
+    localStGetAppInfoByIdRsp.appInfo.donwLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/deec4709c04f5e56961d63d7835294b9.tqapkg");
+    localObject = new INTERFACE.StExtConfigInfo();
+    ((INTERFACE.StExtConfigInfo)localObject).configKey.set("apiscopeconfig");
+    ((INTERFACE.StExtConfigInfo)localObject).configVersion.set("0.0.7");
+    localStGetAppInfoByIdRsp.appInfo.extConfig.add((MessageMicro)localObject);
+    localObject = new COMM.Entry();
+    ((COMM.Entry)localObject).key.set("race_state");
+    ((COMM.Entry)localObject).value.set("2");
+    localStGetAppInfoByIdRsp.extInfo.mapInfo.add((MessageMicro)localObject);
+    localStGetAppInfoByIdRsp.appInfo.icon.set("https://miniapp.gtimg.cn/public/appicon/1a1393c47b6ca3c714919ba72bad7013_200.jpg");
+    localStGetAppInfoByIdRsp.appInfo.mDebug.wsUrl.set("wss://q.qq.com/ws/terminal");
+    localStGetAppInfoByIdRsp.appInfo.mainExt.file_size.set(8435200);
+    localStGetAppInfoByIdRsp.appInfo.serviceCategory.add("游戏_休闲类");
+    localStGetAppInfoByIdRsp.appInfo.type.set(3);
+    localStGetAppInfoByIdRsp.appInfo.version.set("2.3.7");
+    localStGetAppInfoByIdRsp.appInfo.versionId.set("7ad69e8dccef7743d23dd76645c91000");
+    return localStGetAppInfoByIdRsp.toByteArray();
+  }
+  
+  private static byte[] build1108196450()
+  {
+    INTERFACE.StGetAppInfoByIdRsp localStGetAppInfoByIdRsp = new INTERFACE.StGetAppInfoByIdRsp();
+    Object localObject1 = new INTERFACE.StApiRightItem();
+    ((INTERFACE.StApiRightItem)localObject1).apiName.set("invokeNativePlugin");
+    ((INTERFACE.StApiRightItem)localObject1).right.set(1);
+    ((INTERFACE.StApiRightItem)localObject1).secondName.set("uploadAvatar");
+    Object localObject2 = new INTERFACE.StApiRightItem();
+    ((INTERFACE.StApiRightItem)localObject2).apiName.set("openScheme");
+    ((INTERFACE.StApiRightItem)localObject2).right.set(1);
+    ((INTERFACE.StApiRightItem)localObject2).secondName.set("mqqapi://card/show_pslcard");
+    localStGetAppInfoByIdRsp.appInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.domain.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.extInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mDebug.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mainExt.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject2);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("reportSubmitForm");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateVoIPChatMuteConfig");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatMembersChanged");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestMidasPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("insertHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("joinVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPaymentToBank");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("exitVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("removeHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onWebInvokeAppService");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatInterrupted");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatSpeakersChanged");
+    localStGetAppInfoByIdRsp.appInfo.appId.set("1108196450");
+    localStGetAppInfoByIdRsp.appInfo.appName.set("六界飞仙");
+    localStGetAppInfoByIdRsp.appInfo.appType.set(1);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.operationTags.set("Q萌二次元;恋爱仙侠");
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.pkgType.set(1);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.usrFileSizeLimit.set(52428800L);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.versionUpdateTime.set(1574993620);
+    localStGetAppInfoByIdRsp.appInfo.desc.set("仙界问情，修仙路上遇到心动的Ta");
+    localStGetAppInfoByIdRsp.appInfo.devInfo.name.set("第三方");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("static-qccdn-ljpvp.mingchaoyouxi.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("web-reviews-ljpvp.mingchaoyouxi.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("web-ljpvp.mingchaoyouxi.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("cdh-log.mingchaoyouxi.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("static-qccdn-ljpvp.mingchaoyouxi.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("game-ljpvp-tx.mingchaoyouxi.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("cdh-log.mingchao.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("web-reviews-ljpvp.mingchaoyouxi.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("web-ljpvp.mingchaoyouxi.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("tx9991-ljpvp.mingchaoyouxi.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("tx9992-ljpvp.mingchaoyouxi.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("bgp2-uc-ljh5.mingchaoyouxi.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("game-ljpvp-tx.mingchaoyouxi.com");
+    localStGetAppInfoByIdRsp.appInfo.donwLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/40e34b458f9e236f0cf154549e1219c9.tqapkg");
+    localObject1 = new INTERFACE.StExtConfigInfo();
+    ((INTERFACE.StExtConfigInfo)localObject1).configKey.set("apiscopeconfig");
+    ((INTERFACE.StExtConfigInfo)localObject1).configVersion.set("0.0.7");
+    localStGetAppInfoByIdRsp.appInfo.extConfig.add((MessageMicro)localObject1);
+    localObject1 = new COMM.Entry();
+    ((COMM.Entry)localObject1).key.set("race_state");
+    ((COMM.Entry)localObject1).value.set("2");
+    localStGetAppInfoByIdRsp.extInfo.mapInfo.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.icon.set("https://r.photo.store.qq.com/psb?/V1193gcM2HJKFW/GDdkiftF0eUGSyJo0IrF3jjwuUZKwKiKDlVRLMLWois!/o/dE4BAAAAAAAA&bo=yADIAMgAyAADEDU!");
+    localStGetAppInfoByIdRsp.appInfo.mDebug.wsUrl.set("wss://q.qq.com/ws/terminal");
+    localStGetAppInfoByIdRsp.appInfo.mainExt.file_size.set(733762);
+    localStGetAppInfoByIdRsp.appInfo.serviceCategory.add("游戏_角色扮演类");
+    localObject1 = new INTERFACE.StSubPkgInfo();
+    ((INTERFACE.StSubPkgInfo)localObject1).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/40e34b458f9e236f0cf154549e1219c9.tqapkg");
+    ((INTERFACE.StSubPkgInfo)localObject1).file_size.set(733762);
+    ((INTERFACE.StSubPkgInfo)localObject1).subPkgName.set("main");
+    localObject2 = new INTERFACE.StSubPkgInfo();
+    ((INTERFACE.StSubPkgInfo)localObject2).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/bded5e1866a3b2de9566031ce262d684.tqapkg");
+    ((INTERFACE.StSubPkgInfo)localObject2).file_size.set(4075376);
+    ((INTERFACE.StSubPkgInfo)localObject2).subPkgName.set("subPack");
+    INTERFACE.StSubPkgInfo localStSubPkgInfo = new INTERFACE.StSubPkgInfo();
+    localStSubPkgInfo.dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/554a28a6ffa433c1527c533a42230d48.tqapkg");
+    localStSubPkgInfo.file_size.set(571984);
+    localStSubPkgInfo.subPkgName.set("viewPart");
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add((MessageMicro)localObject2);
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add(localStSubPkgInfo);
+    localStGetAppInfoByIdRsp.appInfo.tags.set("a1_a1-3,a2_a2-4,a2_a2-1,a3_a3-5,a3_a3-4");
+    localStGetAppInfoByIdRsp.appInfo.type.set(3);
+    localStGetAppInfoByIdRsp.appInfo.version.set("23514");
+    localStGetAppInfoByIdRsp.appInfo.versionId.set("8be599a43182d2b7babc862b12bebde7");
+    return localStGetAppInfoByIdRsp.toByteArray();
+  }
+  
+  private static byte[] build1108197111()
+  {
+    INTERFACE.StGetAppInfoByIdRsp localStGetAppInfoByIdRsp = new INTERFACE.StGetAppInfoByIdRsp();
+    Object localObject = new INTERFACE.StApiRightItem();
+    ((INTERFACE.StApiRightItem)localObject).apiName.set("invokeNativePlugin");
+    ((INTERFACE.StApiRightItem)localObject).right.set(1);
+    ((INTERFACE.StApiRightItem)localObject).secondName.set("uploadAvatar");
+    INTERFACE.StApiRightItem localStApiRightItem = new INTERFACE.StApiRightItem();
+    localStApiRightItem.apiName.set("openScheme");
+    localStApiRightItem.right.set(1);
+    localStApiRightItem.secondName.set("mqqapi://card/show_pslcard");
+    localStGetAppInfoByIdRsp.appInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.domain.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.extInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mDebug.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mainExt.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add(localStApiRightItem);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("reportSubmitForm");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateVoIPChatMuteConfig");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatMembersChanged");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestMidasPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("insertHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("joinVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPaymentToBank");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("exitVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("removeHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onWebInvokeAppService");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatInterrupted");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatSpeakersChanged");
+    localStGetAppInfoByIdRsp.appInfo.appId.set("1108197111");
+    localStGetAppInfoByIdRsp.appInfo.appName.set("消灭方块");
+    localStGetAppInfoByIdRsp.appInfo.appType.set(1);
+    localStGetAppInfoByIdRsp.appInfo.baselibMiniVersion.set("1.0.14.10008");
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.usrFileSizeLimit.set(52428800L);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.versionUpdateTime.set(1575337021);
+    localStGetAppInfoByIdRsp.appInfo.desc.set("《消灭方块》是一款休闲益智的方块消除游戏。只需拖动方块，让它们在行列填满即可消除得分！");
+    localStGetAppInfoByIdRsp.appInfo.devInfo.name.set("第三方");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("yxweb.bangduonet.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("yxs.bangduonet.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("yxweb.bangduonet.com:10801");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxweb.bangduonet.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxs.bangduonet.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxweb.bangduonet.com:10801");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("pingtas.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.donwLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/4587105293d57ad69123fb1d4e874957.tqapkg");
+    localObject = new INTERFACE.StExtConfigInfo();
+    ((INTERFACE.StExtConfigInfo)localObject).configKey.set("apiscopeconfig");
+    ((INTERFACE.StExtConfigInfo)localObject).configVersion.set("0.0.7");
+    localStGetAppInfoByIdRsp.appInfo.extConfig.add((MessageMicro)localObject);
+    localObject = new COMM.Entry();
+    ((COMM.Entry)localObject).key.set("race_state");
+    ((COMM.Entry)localObject).value.set("2");
+    localStGetAppInfoByIdRsp.appInfo.extInfo.mapInfo.add((MessageMicro)localObject);
+    localStGetAppInfoByIdRsp.appInfo.icon.set("https://miniapp.gtimg.cn/public/appicon/ead43727a1189670a873bf74d1bb6a91_200.jpg");
+    localStGetAppInfoByIdRsp.appInfo.mDebug.wsUrl.set("wss://q.qq.com/ws/terminal");
+    localStGetAppInfoByIdRsp.appInfo.mainExt.file_size.set(2102726);
+    localStGetAppInfoByIdRsp.appInfo.serviceCategory.add("游戏_消除类");
+    localStGetAppInfoByIdRsp.appInfo.type.set(3);
+    localStGetAppInfoByIdRsp.appInfo.version.set("v3.0.20");
+    localStGetAppInfoByIdRsp.appInfo.versionId.set("b7e6afafb0ef788a03202c10258ff8a3");
+    return localStGetAppInfoByIdRsp.toByteArray();
+  }
+  
+  private static byte[] build1108244343()
+  {
+    INTERFACE.StGetAppInfoByIdRsp localStGetAppInfoByIdRsp = new INTERFACE.StGetAppInfoByIdRsp();
+    Object localObject1 = new INTERFACE.StApiRightItem();
+    ((INTERFACE.StApiRightItem)localObject1).apiName.set("invokeNativePlugin");
+    ((INTERFACE.StApiRightItem)localObject1).right.set(1);
+    ((INTERFACE.StApiRightItem)localObject1).secondName.set("uploadAvatar");
+    Object localObject2 = new INTERFACE.StApiRightItem();
+    ((INTERFACE.StApiRightItem)localObject2).apiName.set("openScheme");
+    ((INTERFACE.StApiRightItem)localObject2).right.set(1);
+    ((INTERFACE.StApiRightItem)localObject2).secondName.set("mqqapi://card/show_pslcard");
+    localStGetAppInfoByIdRsp.appInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.domain.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.extInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mDebug.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mainExt.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject2);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("openUrl");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("reportSubmitForm");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateVoIPChatMuteConfig");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatMembersChanged");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestMidasPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("insertHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("joinVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPaymentToBank");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("exitVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("removeHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onWebInvokeAppService");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatInterrupted");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatSpeakersChanged");
+    localStGetAppInfoByIdRsp.appInfo.appId.set("1108244343");
+    localStGetAppInfoByIdRsp.appInfo.appName.set("钢琴块2");
+    localStGetAppInfoByIdRsp.appInfo.appType.set(1);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.operationTags.set("钢琴大师;手速大比拼");
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.pkgType.set(1);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.usrFileSizeLimit.set(52428800L);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.versionUpdateTime.set(1577100963);
+    localStGetAppInfoByIdRsp.appInfo.desc.set("全球超过10亿玩家在玩的音乐小游戏，快来挑战你的钢琴技能吧");
+    localStGetAppInfoByIdRsp.appInfo.devInfo.name.set("第三方");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("piano-weixin-game.cmcm.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("gamecdn.cmcm.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("minigame.cmcm.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("piano-weixin-game.cmcm.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("h5sdk.game.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("test-minigame.cmcm.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("minigame.liebao.cn");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("test-minigame.liebao.cn");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("helpminigame1.ksmobile.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("goplatform.minigame.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("platform.minigame.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("gamecdn.cmcm.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("pianotiles-minigame.cmcm.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("platform.minigame.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("111.230.84.242");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("minigame-gate.cmcm.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("minigame-rc.cmcm.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.uploadFileDomain.add("platform.minigame.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.donwLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/39b894301bca676775c9010cb9815058.tqapkg");
+    localObject1 = new INTERFACE.StExtConfigInfo();
+    ((INTERFACE.StExtConfigInfo)localObject1).configKey.set("apiscopeconfig");
+    ((INTERFACE.StExtConfigInfo)localObject1).configVersion.set("0.0.7");
+    localStGetAppInfoByIdRsp.appInfo.extConfig.add((MessageMicro)localObject1);
+    localObject1 = new COMM.Entry();
+    ((COMM.Entry)localObject1).key.set("race_state");
+    ((COMM.Entry)localObject1).value.set("2");
+    localStGetAppInfoByIdRsp.extInfo.mapInfo.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.icon.set("https://miniapp.gtimg.cn/public/appicon/053d3fd0130e1ce865bb8bbe18ca7760_200.jpg");
+    localStGetAppInfoByIdRsp.appInfo.mDebug.wsUrl.set("wss://q.qq.com/ws/terminal");
+    localStGetAppInfoByIdRsp.appInfo.mainExt.file_size.set(1236781);
+    localStGetAppInfoByIdRsp.appInfo.serviceCategory.add("游戏_音乐舞蹈类");
+    localObject1 = new INTERFACE.StSubPkgInfo();
+    ((INTERFACE.StSubPkgInfo)localObject1).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/39b894301bca676775c9010cb9815058.tqapkg");
+    ((INTERFACE.StSubPkgInfo)localObject1).file_size.set(1236781);
+    ((INTERFACE.StSubPkgInfo)localObject1).subPkgName.set("main");
+    localObject2 = new INTERFACE.StSubPkgInfo();
+    ((INTERFACE.StSubPkgInfo)localObject2).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/12b4cd5c0b555a1ab556ad185e37ba96.tqapkg");
+    ((INTERFACE.StSubPkgInfo)localObject2).file_size.set(877942);
+    ((INTERFACE.StSubPkgInfo)localObject2).subPkgName.set("cocos2d-js-min");
+    INTERFACE.StSubPkgInfo localStSubPkgInfo = new INTERFACE.StSubPkgInfo();
+    localStSubPkgInfo.dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/51a228905db4e5491c977abdb0ea86e1.tqapkg");
+    localStSubPkgInfo.file_size.set(4187361);
+    localStSubPkgInfo.subPkgName.set("project");
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add((MessageMicro)localObject2);
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add(localStSubPkgInfo);
+    localStGetAppInfoByIdRsp.appInfo.type.set(3);
+    localStGetAppInfoByIdRsp.appInfo.version.set("1.3.5.66");
+    localStGetAppInfoByIdRsp.appInfo.versionId.set("c1da50ccf592c26dd86b83a2ec4b775f");
+    return localStGetAppInfoByIdRsp.toByteArray();
+  }
+  
+  private static byte[] build1108805017()
+  {
+    INTERFACE.StGetAppInfoByIdRsp localStGetAppInfoByIdRsp = new INTERFACE.StGetAppInfoByIdRsp();
+    Object localObject1 = new INTERFACE.StApiRightItem();
+    ((INTERFACE.StApiRightItem)localObject1).apiName.set("invokeNativePlugin");
+    ((INTERFACE.StApiRightItem)localObject1).right.set(1);
+    ((INTERFACE.StApiRightItem)localObject1).secondName.set("uploadAvatar");
+    Object localObject2 = new INTERFACE.StApiRightItem();
+    ((INTERFACE.StApiRightItem)localObject2).apiName.set("openScheme");
+    ((INTERFACE.StApiRightItem)localObject2).right.set(1);
+    ((INTERFACE.StApiRightItem)localObject2).secondName.set("mqqapi://card/show_pslcard");
+    localStGetAppInfoByIdRsp.appInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.domain.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.extInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mDebug.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mainExt.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject2);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("reportSubmitForm");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateVoIPChatMuteConfig");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatMembersChanged");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestMidasPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("insertHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("joinVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPaymentToBank");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("exitVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("removeHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onWebInvokeAppService");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatInterrupted");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatSpeakersChanged");
+    localStGetAppInfoByIdRsp.appInfo.appId.set("1108805017");
+    localStGetAppInfoByIdRsp.appInfo.appName.set("世界争霸");
+    localStGetAppInfoByIdRsp.appInfo.appType.set(1);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.operationTags.set("战争策略;沙盘地图");
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.pkgType.set(1);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.usrFileSizeLimit.set(52428800L);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.versionUpdateTime.set(1577263301);
+    localStGetAppInfoByIdRsp.appInfo.desc.set("海陆空三军出击，打造你的专属军队！");
+    localStGetAppInfoByIdRsp.appInfo.devInfo.name.set("第三方");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("knight01.oss-cn-beijing.aliyuncs.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("knightcdn.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("warcdn.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("thirdqq.qlogo.cn");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("bisdk.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("chatapi.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("knight.log-global.aliyuncs.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("knight01.oss-cn-beijing.aliyuncs.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("knightcdn.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("platform.hortorgames.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("platformapi.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("public-bi-cn.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("public-bi-cn.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("knight-platform-gray.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("thirdqq.qlogo.cn");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("knight.cn-beijing.log.aliyuncs.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("knight-us-sh.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("group-push.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("server-knight-s40.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("server-knight-s80.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("server-knight.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("knight-us-sh.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.uploadFileDomain.add("knight-us-sh.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.donwLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/95a01a0ad22018c0b1f3d98b7148c580.tqapkg");
+    localObject1 = new INTERFACE.StExtConfigInfo();
+    ((INTERFACE.StExtConfigInfo)localObject1).configKey.set("apiscopeconfig");
+    ((INTERFACE.StExtConfigInfo)localObject1).configVersion.set("0.0.7");
+    localStGetAppInfoByIdRsp.appInfo.extConfig.add((MessageMicro)localObject1);
+    localObject1 = new COMM.Entry();
+    ((COMM.Entry)localObject1).key.set("race_state");
+    ((COMM.Entry)localObject1).value.set("2");
+    localStGetAppInfoByIdRsp.extInfo.mapInfo.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.icon.set("https://miniapp.gtimg.cn/public/appicon/4be819263a88be6a827855456bc32c50_200.jpg");
+    localStGetAppInfoByIdRsp.appInfo.mDebug.wsUrl.set("wss://q.qq.com/ws/terminal");
+    localStGetAppInfoByIdRsp.appInfo.mainExt.file_size.set(3453039);
+    localStGetAppInfoByIdRsp.appInfo.serviceCategory.add("游戏_策略类");
+    localObject1 = new INTERFACE.StSubPkgInfo();
+    ((INTERFACE.StSubPkgInfo)localObject1).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/f752626285f98e60d46e5b2a7ae23e41.tqapkg");
+    ((INTERFACE.StSubPkgInfo)localObject1).file_size.set(1048403);
+    ((INTERFACE.StSubPkgInfo)localObject1).subPkgName.set("gssubpack");
+    localObject2 = new INTERFACE.StSubPkgInfo();
+    ((INTERFACE.StSubPkgInfo)localObject2).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/95a01a0ad22018c0b1f3d98b7148c580.tqapkg");
+    ((INTERFACE.StSubPkgInfo)localObject2).file_size.set(3453039);
+    ((INTERFACE.StSubPkgInfo)localObject2).subPkgName.set("main");
+    INTERFACE.StSubPkgInfo localStSubPkgInfo = new INTERFACE.StSubPkgInfo();
+    localStSubPkgInfo.dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/8f41fb210347991baed370a227ec69e6.tqapkg");
+    localStSubPkgInfo.file_size.set(2573103);
+    localStSubPkgInfo.subPkgName.set("subpack");
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add((MessageMicro)localObject2);
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add(localStSubPkgInfo);
+    localStGetAppInfoByIdRsp.appInfo.type.set(3);
+    localStGetAppInfoByIdRsp.appInfo.version.set("1.41.0");
+    localStGetAppInfoByIdRsp.appInfo.versionId.set("c92fc20bd39ff8cb2b463de27ff7c4db");
+    return localStGetAppInfoByIdRsp.toByteArray();
+  }
+  
+  private static byte[] build1109149265()
+  {
+    INTERFACE.StGetAppInfoByIdRsp localStGetAppInfoByIdRsp = new INTERFACE.StGetAppInfoByIdRsp();
+    Object localObject1 = new INTERFACE.StApiRightItem();
+    ((INTERFACE.StApiRightItem)localObject1).apiName.set("invokeNativePlugin");
+    ((INTERFACE.StApiRightItem)localObject1).right.set(1);
+    ((INTERFACE.StApiRightItem)localObject1).secondName.set("uploadAvatar");
+    Object localObject2 = new INTERFACE.StApiRightItem();
+    ((INTERFACE.StApiRightItem)localObject2).apiName.set("openScheme");
+    ((INTERFACE.StApiRightItem)localObject2).right.set(1);
+    ((INTERFACE.StApiRightItem)localObject2).secondName.set("mqqapi://card/show_pslcard");
+    localStGetAppInfoByIdRsp.appInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.domain.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.extInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mDebug.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mainExt.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject2);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("reportSubmitForm");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateVoIPChatMuteConfig");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatMembersChanged");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestMidasPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("insertHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("joinVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPaymentToBank");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("exitVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("removeHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onWebInvokeAppService");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatInterrupted");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatSpeakersChanged");
+    localStGetAppInfoByIdRsp.appInfo.appId.set("1109149265");
+    localStGetAppInfoByIdRsp.appInfo.appName.set("神龙猎手");
+    localStGetAppInfoByIdRsp.appInfo.appType.set(1);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.operationTags.set("拯救女神;乘龙破甲");
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.pkgType.set(1);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.usrFileSizeLimit.set(52428800L);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.versionUpdateTime.set(1577325920);
+    localStGetAppInfoByIdRsp.appInfo.desc.set("《神龙猎手》经典魔幻风，驯服巨龙为坐骑，邂逅女神并肩作战加入阵营与同阵营的龙骑士共同作战，举起手中圣剑，成就最强龙骑士！");
+    localStGetAppInfoByIdRsp.appInfo.devInfo.name.set("第三方");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("test-tp-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("cdn-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("test2-tp-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("www.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("test-login-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("h5game.cmge.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("report.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("test-tp-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("login-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("cdn-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("tp1-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("test2-tp-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("test2-login-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("test-gate-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("test-chat-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("gate-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("chat-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("test2-gate-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("test2-chat-slls.8zy.com");
+    localStGetAppInfoByIdRsp.appInfo.donwLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/a381a9d0ae793e44e8f463a3d0a25537.tqapkg");
+    localObject1 = new INTERFACE.StExtConfigInfo();
+    ((INTERFACE.StExtConfigInfo)localObject1).configKey.set("apiscopeconfig");
+    ((INTERFACE.StExtConfigInfo)localObject1).configVersion.set("0.0.7");
+    localStGetAppInfoByIdRsp.appInfo.extConfig.add((MessageMicro)localObject1);
+    localObject1 = new COMM.Entry();
+    ((COMM.Entry)localObject1).key.set("race_state");
+    ((COMM.Entry)localObject1).value.set("2");
+    localStGetAppInfoByIdRsp.extInfo.mapInfo.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.icon.set("https://miniapp.gtimg.cn/public/appicon/03d0d4cc56f90d353148f68b4e8f53e0_200.jpg");
+    localStGetAppInfoByIdRsp.appInfo.mDebug.wsUrl.set("wss://q.qq.com/ws/terminal");
+    localStGetAppInfoByIdRsp.appInfo.mainExt.file_size.set(3036739);
+    localStGetAppInfoByIdRsp.appInfo.serviceCategory.add("游戏_角色扮演类");
+    localObject1 = new INTERFACE.StSubPkgInfo();
+    ((INTERFACE.StSubPkgInfo)localObject1).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/a381a9d0ae793e44e8f463a3d0a25537.tqapkg");
+    ((INTERFACE.StSubPkgInfo)localObject1).file_size.set(3036739);
+    ((INTERFACE.StSubPkgInfo)localObject1).subPkgName.set("main");
+    localObject2 = new INTERFACE.StSubPkgInfo();
+    ((INTERFACE.StSubPkgInfo)localObject2).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/ad01e57d2fbc14ac604c2dd4c45e403c.tqapkg");
+    ((INTERFACE.StSubPkgInfo)localObject2).file_size.set(6880133);
+    ((INTERFACE.StSubPkgInfo)localObject2).subPkgName.set("stage1");
+    INTERFACE.StSubPkgInfo localStSubPkgInfo1 = new INTERFACE.StSubPkgInfo();
+    localStSubPkgInfo1.dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/b148057bcb634a6189852a22c51bafa0.tqapkg");
+    localStSubPkgInfo1.file_size.set(32518);
+    localStSubPkgInfo1.subPkgName.set("stage2");
+    INTERFACE.StSubPkgInfo localStSubPkgInfo2 = new INTERFACE.StSubPkgInfo();
+    localStSubPkgInfo2.dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/ad9e8baa98b1db1d6816ae1618870d91.tqapkg");
+    localStSubPkgInfo2.file_size.set(6899951);
+    localStSubPkgInfo2.subPkgName.set("stage3");
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add((MessageMicro)localObject2);
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add(localStSubPkgInfo1);
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add(localStSubPkgInfo2);
+    localStGetAppInfoByIdRsp.appInfo.type.set(3);
+    localStGetAppInfoByIdRsp.appInfo.version.set("2.3.0");
+    localStGetAppInfoByIdRsp.appInfo.versionId.set("5e0626d1ff10d5f834811d73b51d7ca0");
     return localStGetAppInfoByIdRsp.toByteArray();
   }
   
@@ -385,6 +910,117 @@ public class FakeServer
     return localStGetAppInfoByIdRsp.toByteArray();
   }
   
+  private static byte[] build1109500287()
+  {
+    INTERFACE.StGetAppInfoByIdRsp localStGetAppInfoByIdRsp = new INTERFACE.StGetAppInfoByIdRsp();
+    Object localObject1 = new INTERFACE.StApiRightItem();
+    ((INTERFACE.StApiRightItem)localObject1).apiName.set("invokeNativePlugin");
+    ((INTERFACE.StApiRightItem)localObject1).right.set(1);
+    ((INTERFACE.StApiRightItem)localObject1).secondName.set("uploadAvatar");
+    Object localObject2 = new INTERFACE.StApiRightItem();
+    ((INTERFACE.StApiRightItem)localObject2).apiName.set("openScheme");
+    ((INTERFACE.StApiRightItem)localObject2).right.set(1);
+    ((INTERFACE.StApiRightItem)localObject2).secondName.set("mqqapi://card/show_pslcard");
+    localStGetAppInfoByIdRsp.appInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.domain.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.extInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mDebug.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mainExt.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject2);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("reportSubmitForm");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateVoIPChatMuteConfig");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatMembersChanged");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestMidasPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("insertHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("joinVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPaymentToBank");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("exitVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("removeHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onWebInvokeAppService");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatInterrupted");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatSpeakersChanged");
+    localStGetAppInfoByIdRsp.appInfo.appId.set("1109500287");
+    localStGetAppInfoByIdRsp.appInfo.appName.set("爱江山更爱美人");
+    localStGetAppInfoByIdRsp.appInfo.appType.set(1);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.operationTags.set("古装恋爱;穿越");
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.pkgType.set(1);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.usrFileSizeLimit.set(52428800L);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.versionUpdateTime.set(1577091052);
+    localStGetAppInfoByIdRsp.appInfo.desc.set("《爱江山更爱美人》手游—亿万少女的换装路！唯美实景，高精人物建模，百套绫罗美衣，多重精致古典妆容，带你穿越千百年前的世界");
+    localStGetAppInfoByIdRsp.appInfo.devInfo.name.set("第三方");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("yxgl-cdn.ios.gzyouai.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("yxgl-ncdn.ios.gzyouai.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("yxgl-cdn.guangka.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxgl-ncdn.ios.gzyouai.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxgl-cdn.ios.gzyouai.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxgl-card.ios.gzyouai.com:8006");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxgl-static.ios.gzyouai.com:8007");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxgl-static1.ios.gzyouai.com:8007");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxgl-static2.ios.gzyouai.com:8007");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxgl-custom.ios.gzyouai.com:8005");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxgl-center.ios.gzyouai.com:8004");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("statistic.public.sdk.gzyouai.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("static.public.sdk.gzyouai.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("public.sdk.gzyouai.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("user.ofgame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("pay.ofgame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("log.jishu.legaogame.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("devssluser.ofgame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("static.public.sdk.guangkatf.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("public.sdk.guangkatf.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxgl-cdn.guangka.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxgl-static.guangka.com:7007");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxgl-card.guangka.com:7006");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxgl-custom.guangka.com:7005");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("yxgl-center.guangka.com:7004");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("yxgl-login.ios.gzyouai.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("yxgl-game-proxy.ios.gzyouai.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("yxgl-game-proxy2.ios.gzyouai.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("yxgl-game-proxy3.ios.gzyouai.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("yxgl-gate1.ios.gzyouai.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("yxgl-gate2.ios.gzyouai.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("yxgl-gate3.ios.gzyouai.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("yxgl-login.guangka.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("yxgl-proxy1.guangka.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("yxgl-proxy2.guangka.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("yxgl-proxy3.guangka.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("yxgl-gate1.guangka.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("yxgl-gate2.guangka.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("yxgl-gate3.guangka.com");
+    localStGetAppInfoByIdRsp.appInfo.donwLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/1147e273e5d6bcb6d41d2b7948c6cbfc.tqapkg");
+    localObject1 = new INTERFACE.StExtConfigInfo();
+    ((INTERFACE.StExtConfigInfo)localObject1).configKey.set("apiscopeconfig");
+    ((INTERFACE.StExtConfigInfo)localObject1).configVersion.set("0.0.7");
+    localStGetAppInfoByIdRsp.appInfo.extConfig.add((MessageMicro)localObject1);
+    localObject1 = new COMM.Entry();
+    ((COMM.Entry)localObject1).key.set("race_state");
+    ((COMM.Entry)localObject1).value.set("2");
+    localStGetAppInfoByIdRsp.extInfo.mapInfo.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.icon.set("https://miniapp.gtimg.cn/public/appicon/513fd2e524e788b00a72b3bdd8962225_200.jpg");
+    localStGetAppInfoByIdRsp.appInfo.mDebug.wsUrl.set("wss://q.qq.com/ws/terminal");
+    localStGetAppInfoByIdRsp.appInfo.mainExt.file_size.set(4001846);
+    localStGetAppInfoByIdRsp.appInfo.serviceCategory.add("游戏_换装养成类");
+    localObject1 = new INTERFACE.StSubPkgInfo();
+    ((INTERFACE.StSubPkgInfo)localObject1).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/1147e273e5d6bcb6d41d2b7948c6cbfc.tqapkg");
+    ((INTERFACE.StSubPkgInfo)localObject1).file_size.set(4001846);
+    ((INTERFACE.StSubPkgInfo)localObject1).subPkgName.set("main");
+    localObject2 = new INTERFACE.StSubPkgInfo();
+    ((INTERFACE.StSubPkgInfo)localObject2).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/a22fa1ec210f58510ad3759b35342721.tqapkg");
+    ((INTERFACE.StSubPkgInfo)localObject2).file_size.set(2808435);
+    ((INTERFACE.StSubPkgInfo)localObject2).subPkgName.set("stage");
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add((MessageMicro)localObject2);
+    localStGetAppInfoByIdRsp.appInfo.type.set(3);
+    localStGetAppInfoByIdRsp.appInfo.version.set("1.8.4");
+    localStGetAppInfoByIdRsp.appInfo.versionId.set("0cf5bdae3f5b150c83e700bba31cfdd5");
+    return localStGetAppInfoByIdRsp.toByteArray();
+  }
+  
   private static byte[] build1109508198()
   {
     INTERFACE.StGetAppInfoByIdRsp localStGetAppInfoByIdRsp = new INTERFACE.StGetAppInfoByIdRsp();
@@ -494,31 +1130,128 @@ public class FakeServer
     return localStGetAppInfoByIdRsp.toByteArray();
   }
   
+  private static byte[] build363()
+  {
+    INTERFACE.StGetAppInfoByIdRsp localStGetAppInfoByIdRsp = new INTERFACE.StGetAppInfoByIdRsp();
+    Object localObject1 = new INTERFACE.StApiRightItem();
+    ((INTERFACE.StApiRightItem)localObject1).apiName.set("invokeNativePlugin");
+    ((INTERFACE.StApiRightItem)localObject1).right.set(1);
+    ((INTERFACE.StApiRightItem)localObject1).secondName.set("uploadAvatar");
+    Object localObject2 = new INTERFACE.StApiRightItem();
+    ((INTERFACE.StApiRightItem)localObject2).apiName.set("openScheme");
+    ((INTERFACE.StApiRightItem)localObject2).right.set(1);
+    ((INTERFACE.StApiRightItem)localObject2).secondName.set("mqqapi://card/show_pslcard");
+    localStGetAppInfoByIdRsp.appInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.domain.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.extInfo.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mDebug.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.mainExt.setHasFlag(true);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject2);
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("reportSubmitForm");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateVoIPChatMuteConfig");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatMembersChanged");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("updateHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestMidasPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("insertHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("joinVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPaymentToBank");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("exitVoIPChat");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("removeHTMLWebView");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onWebInvokeAppService");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("requestPayment");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatInterrupted");
+    localStGetAppInfoByIdRsp.appInfo.apiRight.whiteLst.add("onVoIPChatSpeakersChanged");
+    localStGetAppInfoByIdRsp.appInfo.appId.set("363");
+    localStGetAppInfoByIdRsp.appInfo.appName.set("欢乐斗地主");
+    localStGetAppInfoByIdRsp.appInfo.appType.set(1);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.operationTags.set("好友开黑;欢乐");
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.pkgType.set(1);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.usrFileSizeLimit.set(52428800L);
+    localStGetAppInfoByIdRsp.appInfo.basicInfo.versionUpdateTime.set(1577155730);
+    localStGetAppInfoByIdRsp.appInfo.desc.set("国民经典棋牌游戏轻装蜕变，免下载马上玩！ 邀请好友组队pk，残局闯关智胜AI，单机对战轻松休闲，总有一款是你所爱~");
+    localStGetAppInfoByIdRsp.appInfo.devInfo.name.set("腾讯科技(深圳)有限公司");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("hlddz.huanle.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("cgi.huanle.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("cgitest.huanle.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("platform.minigame.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("thirdqq.qlogo.cn");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("q.qlogo.cn");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("thirdwx.qlogo.cn");
+    localStGetAppInfoByIdRsp.appInfo.domain.downloadFileDomain.add("wx.qlogo.cn");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("cgi.huanle.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("auth.huanle.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("hlddz.huanle.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("api.unipay.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("sandbox.api.unipay.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("dev.api.unipay.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("report.url.cn");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("isdspeed.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("api.wetest.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("cgitest.huanle.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("goplatform.minigame.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("wshall.huanle.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("thirdqq.qlogo.cn");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("q.qlogo.cn");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("wx.qlogo.cn");
+    localStGetAppInfoByIdRsp.appInfo.domain.requestDomain.add("thirdwx.qlogo.cn");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("group-push.rivergame.net");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("ws.huanle.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("wshall.huanle.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("wstest.huanle.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.socketDomain.add("hlws.huanle.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.uploadFileDomain.add("cgi.huanle.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.domain.uploadFileDomain.add("api.wetest.qq.com");
+    localStGetAppInfoByIdRsp.appInfo.donwLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/f2dc3b1ee68ed75bb5bbdab7092dbcd2.tqapkg");
+    localObject1 = new INTERFACE.StExtConfigInfo();
+    ((INTERFACE.StExtConfigInfo)localObject1).configKey.set("apiscopeconfig");
+    ((INTERFACE.StExtConfigInfo)localObject1).configVersion.set("0.0.7");
+    localStGetAppInfoByIdRsp.appInfo.extConfig.add((MessageMicro)localObject1);
+    localObject1 = new COMM.Entry();
+    ((COMM.Entry)localObject1).key.set("race_state");
+    ((COMM.Entry)localObject1).value.set("2");
+    localStGetAppInfoByIdRsp.extInfo.mapInfo.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.icon.set("https://miniapp.gtimg.cn/public/appicon/4a5967410b9f70f4c34cecea5d7964cd_200.jpg");
+    localStGetAppInfoByIdRsp.appInfo.mDebug.wsUrl.set("wss://q.qq.com/ws/terminal");
+    localStGetAppInfoByIdRsp.appInfo.mainExt.file_size.set(2326847);
+    localStGetAppInfoByIdRsp.appInfo.serviceCategory.add("游戏_棋牌类");
+    localObject1 = new INTERFACE.StSubPkgInfo();
+    ((INTERFACE.StSubPkgInfo)localObject1).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/06dc17726e661c6c5404dc5264e809a6.tqapkg");
+    ((INTERFACE.StSubPkgInfo)localObject1).file_size.set(2712821);
+    ((INTERFACE.StSubPkgInfo)localObject1).subPkgName.set("gameModle");
+    localObject2 = new INTERFACE.StSubPkgInfo();
+    ((INTERFACE.StSubPkgInfo)localObject2).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/f2dc3b1ee68ed75bb5bbdab7092dbcd2.tqapkg");
+    ((INTERFACE.StSubPkgInfo)localObject2).file_size.set(2326847);
+    ((INTERFACE.StSubPkgInfo)localObject2).subPkgName.set("main");
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add((MessageMicro)localObject1);
+    localStGetAppInfoByIdRsp.appInfo.subPkgs.add((MessageMicro)localObject2);
+    localStGetAppInfoByIdRsp.appInfo.type.set(3);
+    localStGetAppInfoByIdRsp.appInfo.version.set("2.0.35.1.b41");
+    localStGetAppInfoByIdRsp.appInfo.versionId.set("ecd9cfb3671ba9a9a67f3fa5151383b3");
+    return localStGetAppInfoByIdRsp.toByteArray();
+  }
+  
   public static void sendData(byte[] paramArrayOfByte, MiniAppProxy.SenderListener paramSenderListener)
   {
     if (paramArrayOfByte == null)
     {
       Log.e("FakeServer", "no request data");
       paramSenderListener.onReply(-1, null, "no request data");
-      return;
     }
-    Object localObject1 = new PROTOCAL.StQWebReq();
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    localStQWebRsp.retCode.set(0L);
     for (;;)
     {
+      return;
+      PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      localStQWebRsp.retCode.set(0L);
       try
       {
-        ((PROTOCAL.StQWebReq)localObject1).mergeFrom(paramArrayOfByte);
-        if (((PROTOCAL.StQWebReq)localObject1).Cmdname.get().equals("GetCode"))
+        localStQWebReq.mergeFrom(paramArrayOfByte);
+        if ((localStQWebReq.Cmdname.get().equals("GetCode")) || (localStQWebReq.Cmdname.get().equals("GetAdForSdk")) || (localStQWebReq.Cmdname.get().equals("QueryStarCurrency")) || (localStQWebReq.Cmdname.get().equals("GamePay")) || (localStQWebReq.Cmdname.get().equals("AdaptShareInfo")) || (localStQWebReq.Cmdname.get().equals("ThirdDcReport")) || (localStQWebReq.Cmdname.get().equals("DcReport")) || (localStQWebReq.Cmdname.get().equals("DataReport")) || (localStQWebReq.Cmdname.get().equals("GetAppInfoByLink")) || (localStQWebReq.Cmdname.get().equals("GetAppInfoById")) || (localStQWebReq.Cmdname.get().equals("SetAuths")) || (localStQWebReq.Cmdname.get().equals("GetAuthList")) || (localStQWebReq.Cmdname.get().equals("GetNewBaseLib")) || (localStQWebReq.Cmdname.get().equals("UseUserApp")) || (localStQWebReq.Cmdname.get().equals("BatchGetUserInfo")) || (localStQWebReq.Cmdname.get().equals("GetSDKOpenKeyToken")) || (localStQWebReq.Module.get().equals("mini_app_cloudstorage")))
         {
-          paramArrayOfByte = new INTERFACE.StGetCodeRsp();
-          paramArrayOfByte.code.set("abc123456");
-          localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(paramArrayOfByte.toByteArray()));
-          if (paramSenderListener == null) {
-            break;
-          }
-          paramSenderListener.onReply(0, localStQWebRsp.toByteArray(), null);
+          HttpServer.sendData(paramArrayOfByte, paramSenderListener);
           return;
         }
       }
@@ -527,197 +1260,57 @@ public class FakeServer
         paramArrayOfByte.printStackTrace();
         return;
       }
-      if (((PROTOCAL.StQWebReq)localObject1).Cmdname.get().equals("CheckSession"))
+      if (localStQWebReq.Cmdname.get().equals("CheckSession"))
       {
         paramArrayOfByte = new INTERFACE.StCheckSessionRsp();
         localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(paramArrayOfByte.toByteArray()));
       }
-      else if (((PROTOCAL.StQWebReq)localObject1).Cmdname.get().equals("GetProfile"))
+      while (paramSenderListener != null)
       {
-        paramArrayOfByte = new INTERFACE.StGetProfileRsp();
-        paramArrayOfByte.user = new INTERFACE.StApiUserInfo();
-        paramArrayOfByte.user.nick.set("SDK测试");
-        localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(paramArrayOfByte.toByteArray()));
-      }
-      else if (((PROTOCAL.StQWebReq)localObject1).Cmdname.get().equals("GetAppInfoById"))
-      {
-        paramArrayOfByte = new INTERFACE.StGetAppInfoByIdReq();
-        paramArrayOfByte.mergeFrom(((PROTOCAL.StQWebReq)localObject1).busiBuff.get().toByteArray());
-        Object localObject2;
-        if (paramArrayOfByte.appid.get().equals("1108197111"))
+        paramSenderListener.onReply(0, localStQWebRsp.toByteArray(), null);
+        return;
+        if (localStQWebReq.Cmdname.get().equals("GetProfile"))
         {
-          paramArrayOfByte = new INTERFACE.StGetAppInfoByIdRsp();
-          localObject1 = new INTERFACE.StApiRightItem();
-          ((INTERFACE.StApiRightItem)localObject1).apiName.set("invokeNativePlugin");
-          ((INTERFACE.StApiRightItem)localObject1).right.set(1);
-          ((INTERFACE.StApiRightItem)localObject1).secondName.set("uploadAvatar");
-          localObject2 = new INTERFACE.StApiRightItem();
-          ((INTERFACE.StApiRightItem)localObject2).apiName.set("openScheme");
-          ((INTERFACE.StApiRightItem)localObject2).right.set(1);
-          ((INTERFACE.StApiRightItem)localObject2).secondName.set("mqqapi://card/show_pslcard");
-          paramArrayOfByte.appInfo.setHasFlag(true);
-          paramArrayOfByte.appInfo.apiRight.setHasFlag(true);
-          paramArrayOfByte.appInfo.basicInfo.setHasFlag(true);
-          paramArrayOfByte.appInfo.domain.setHasFlag(true);
-          paramArrayOfByte.appInfo.extInfo.setHasFlag(true);
-          paramArrayOfByte.appInfo.mDebug.setHasFlag(true);
-          paramArrayOfByte.appInfo.mainExt.setHasFlag(true);
-          paramArrayOfByte.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject1);
-          paramArrayOfByte.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject2);
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("reportSubmitForm");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("updateVoIPChatMuteConfig");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("onVoIPChatMembersChanged");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("updateHTMLWebView");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("requestMidasPayment");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("insertHTMLWebView");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("joinVoIPChat");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("requestPaymentToBank");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("exitVoIPChat");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("removeHTMLWebView");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("onWebInvokeAppService");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("requestPayment");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("onVoIPChatInterrupted");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("onVoIPChatSpeakersChanged");
-          paramArrayOfByte.appInfo.appId.set("1108197111");
-          paramArrayOfByte.appInfo.appName.set("消灭方块");
-          paramArrayOfByte.appInfo.appType.set(1);
-          paramArrayOfByte.appInfo.baselibMiniVersion.set("1.0.14.10008");
-          paramArrayOfByte.appInfo.basicInfo.usrFileSizeLimit.set(52428800L);
-          paramArrayOfByte.appInfo.basicInfo.versionUpdateTime.set(1575337021);
-          paramArrayOfByte.appInfo.desc.set("《消灭方块》是一款休闲益智的方块消除游戏。只需拖动方块，让它们在行列填满即可消除得分！");
-          paramArrayOfByte.appInfo.devInfo.name.set("第三方");
-          paramArrayOfByte.appInfo.domain.downloadFileDomain.add("yxweb.bangduonet.com");
-          paramArrayOfByte.appInfo.domain.downloadFileDomain.add("yxs.bangduonet.com");
-          paramArrayOfByte.appInfo.domain.downloadFileDomain.add("yxweb.bangduonet.com:10801");
-          paramArrayOfByte.appInfo.domain.requestDomain.add("yxweb.bangduonet.com");
-          paramArrayOfByte.appInfo.domain.requestDomain.add("yxs.bangduonet.com");
-          paramArrayOfByte.appInfo.domain.requestDomain.add("yxweb.bangduonet.com:10801");
-          paramArrayOfByte.appInfo.domain.requestDomain.add("pingtas.qq.com");
-          paramArrayOfByte.appInfo.donwLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/4587105293d57ad69123fb1d4e874957.tqapkg");
-          localObject1 = new INTERFACE.StExtConfigInfo();
-          ((INTERFACE.StExtConfigInfo)localObject1).configKey.set("apiscopeconfig");
-          ((INTERFACE.StExtConfigInfo)localObject1).configVersion.set("0.0.7");
-          paramArrayOfByte.appInfo.extConfig.add((MessageMicro)localObject1);
-          localObject1 = new COMM.Entry();
-          ((COMM.Entry)localObject1).key.set("race_state");
-          ((COMM.Entry)localObject1).value.set("2");
-          paramArrayOfByte.appInfo.extInfo.mapInfo.add((MessageMicro)localObject1);
-          paramArrayOfByte.appInfo.icon.set("https://miniapp.gtimg.cn/public/appicon/ead43727a1189670a873bf74d1bb6a91_200.jpg");
-          paramArrayOfByte.appInfo.mDebug.wsUrl.set("wss://q.qq.com/ws/terminal");
-          paramArrayOfByte.appInfo.mainExt.file_size.set(2102726);
-          paramArrayOfByte.appInfo.serviceCategory.add("游戏_消除类");
-          paramArrayOfByte.appInfo.type.set(3);
-          paramArrayOfByte.appInfo.version.set("v3.0.20");
-          paramArrayOfByte.appInfo.versionId.set("b7e6afafb0ef788a03202c10258ff8a3");
-          paramArrayOfByte.getSerializedSize();
-          paramArrayOfByte.toByteArray();
+          paramArrayOfByte = new INTERFACE.StGetProfileRsp();
+          paramArrayOfByte.user = new INTERFACE.StApiUserInfo();
+          paramArrayOfByte.user.nick.set("SDK测试");
           localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(paramArrayOfByte.toByteArray()));
         }
-        else if (paramArrayOfByte.appid.get().equals("1108196450"))
+        else if (localStQWebReq.Cmdname.get().equals("GetAppInfoById"))
         {
-          paramArrayOfByte = new INTERFACE.StGetAppInfoByIdRsp();
-          localObject1 = new INTERFACE.StApiRightItem();
-          ((INTERFACE.StApiRightItem)localObject1).apiName.set("invokeNativePlugin");
-          ((INTERFACE.StApiRightItem)localObject1).right.set(1);
-          ((INTERFACE.StApiRightItem)localObject1).secondName.set("uploadAvatar");
-          localObject2 = new INTERFACE.StApiRightItem();
-          ((INTERFACE.StApiRightItem)localObject2).apiName.set("openScheme");
-          ((INTERFACE.StApiRightItem)localObject2).right.set(1);
-          ((INTERFACE.StApiRightItem)localObject2).secondName.set("mqqapi://card/show_pslcard");
-          paramArrayOfByte.appInfo.setHasFlag(true);
-          paramArrayOfByte.appInfo.apiRight.setHasFlag(true);
-          paramArrayOfByte.appInfo.basicInfo.setHasFlag(true);
-          paramArrayOfByte.appInfo.domain.setHasFlag(true);
-          paramArrayOfByte.appInfo.extInfo.setHasFlag(true);
-          paramArrayOfByte.appInfo.mDebug.setHasFlag(true);
-          paramArrayOfByte.appInfo.mainExt.setHasFlag(true);
-          paramArrayOfByte.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject1);
-          paramArrayOfByte.appInfo.apiRight.secondApiRights.add((MessageMicro)localObject2);
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("reportSubmitForm");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("updateVoIPChatMuteConfig");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("onVoIPChatMembersChanged");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("updateHTMLWebView");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("requestMidasPayment");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("insertHTMLWebView");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("joinVoIPChat");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("requestPaymentToBank");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("exitVoIPChat");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("removeHTMLWebView");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("onWebInvokeAppService");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("requestPayment");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("onVoIPChatInterrupted");
-          paramArrayOfByte.appInfo.apiRight.whiteLst.add("onVoIPChatSpeakersChanged");
-          paramArrayOfByte.appInfo.appId.set("1108196450");
-          paramArrayOfByte.appInfo.appName.set("六界飞仙");
-          paramArrayOfByte.appInfo.appType.set(1);
-          paramArrayOfByte.appInfo.basicInfo.operationTags.set("Q萌二次元;恋爱仙侠");
-          paramArrayOfByte.appInfo.basicInfo.pkgType.set(1);
-          paramArrayOfByte.appInfo.basicInfo.usrFileSizeLimit.set(52428800L);
-          paramArrayOfByte.appInfo.basicInfo.versionUpdateTime.set(1574993620);
-          paramArrayOfByte.appInfo.desc.set("仙界问情，修仙路上遇到心动的Ta");
-          paramArrayOfByte.appInfo.devInfo.name.set("第三方");
-          paramArrayOfByte.appInfo.domain.downloadFileDomain.add("static-qccdn-ljpvp.mingchaoyouxi.com");
-          paramArrayOfByte.appInfo.domain.requestDomain.add("web-reviews-ljpvp.mingchaoyouxi.com");
-          paramArrayOfByte.appInfo.domain.requestDomain.add("web-ljpvp.mingchaoyouxi.com");
-          paramArrayOfByte.appInfo.domain.requestDomain.add("cdh-log.mingchaoyouxi.com");
-          paramArrayOfByte.appInfo.domain.requestDomain.add("static-qccdn-ljpvp.mingchaoyouxi.com");
-          paramArrayOfByte.appInfo.domain.requestDomain.add("game-ljpvp-tx.mingchaoyouxi.com");
-          paramArrayOfByte.appInfo.domain.requestDomain.add("cdh-log.mingchao.com");
-          paramArrayOfByte.appInfo.domain.requestDomain.add("web-reviews-ljpvp.mingchaoyouxi.com");
-          paramArrayOfByte.appInfo.domain.requestDomain.add("web-ljpvp.mingchaoyouxi.com");
-          paramArrayOfByte.appInfo.domain.socketDomain.add("tx9991-ljpvp.mingchaoyouxi.com");
-          paramArrayOfByte.appInfo.domain.socketDomain.add("tx9992-ljpvp.mingchaoyouxi.com");
-          paramArrayOfByte.appInfo.domain.socketDomain.add("bgp2-uc-ljh5.mingchaoyouxi.com");
-          paramArrayOfByte.appInfo.domain.socketDomain.add("game-ljpvp-tx.mingchaoyouxi.com");
-          paramArrayOfByte.appInfo.donwLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/40e34b458f9e236f0cf154549e1219c9.tqapkg");
-          localObject1 = new INTERFACE.StExtConfigInfo();
-          ((INTERFACE.StExtConfigInfo)localObject1).configKey.set("apiscopeconfig");
-          ((INTERFACE.StExtConfigInfo)localObject1).configVersion.set("0.0.7");
-          paramArrayOfByte.appInfo.extConfig.add((MessageMicro)localObject1);
-          localObject1 = new COMM.Entry();
-          ((COMM.Entry)localObject1).key.set("race_state");
-          ((COMM.Entry)localObject1).value.set("2");
-          paramArrayOfByte.extInfo.mapInfo.add((MessageMicro)localObject1);
-          paramArrayOfByte.appInfo.icon.set("https://r.photo.store.qq.com/psb?/V1193gcM2HJKFW/GDdkiftF0eUGSyJo0IrF3jjwuUZKwKiKDlVRLMLWois!/o/dE4BAAAAAAAA&bo=yADIAMgAyAADEDU!");
-          paramArrayOfByte.appInfo.mDebug.wsUrl.set("wss://q.qq.com/ws/terminal");
-          paramArrayOfByte.appInfo.mainExt.file_size.set(733762);
-          paramArrayOfByte.appInfo.serviceCategory.add("游戏_角色扮演类");
-          localObject1 = new INTERFACE.StSubPkgInfo();
-          ((INTERFACE.StSubPkgInfo)localObject1).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/40e34b458f9e236f0cf154549e1219c9.tqapkg");
-          ((INTERFACE.StSubPkgInfo)localObject1).file_size.set(733762);
-          ((INTERFACE.StSubPkgInfo)localObject1).subPkgName.set("main");
-          localObject2 = new INTERFACE.StSubPkgInfo();
-          ((INTERFACE.StSubPkgInfo)localObject2).dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/bded5e1866a3b2de9566031ce262d684.tqapkg");
-          ((INTERFACE.StSubPkgInfo)localObject2).file_size.set(4075376);
-          ((INTERFACE.StSubPkgInfo)localObject2).subPkgName.set("subPack");
-          INTERFACE.StSubPkgInfo localStSubPkgInfo = new INTERFACE.StSubPkgInfo();
-          localStSubPkgInfo.dowLoadUrl.set("https://miniapp.gtimg.cn/public/pkg/554a28a6ffa433c1527c533a42230d48.tqapkg");
-          localStSubPkgInfo.file_size.set(571984);
-          localStSubPkgInfo.subPkgName.set("viewPart");
-          paramArrayOfByte.appInfo.subPkgs.add((MessageMicro)localObject1);
-          paramArrayOfByte.appInfo.subPkgs.add((MessageMicro)localObject2);
-          paramArrayOfByte.appInfo.subPkgs.add(localStSubPkgInfo);
-          paramArrayOfByte.appInfo.tags.set("a1_a1-3,a2_a2-4,a2_a2-1,a3_a3-5,a3_a3-4");
-          paramArrayOfByte.appInfo.type.set(3);
-          paramArrayOfByte.appInfo.version.set("23514");
-          paramArrayOfByte.appInfo.versionId.set("8be599a43182d2b7babc862b12bebde7");
+          paramArrayOfByte = new INTERFACE.StGetAppInfoByIdReq();
+          paramArrayOfByte.mergeFrom(localStQWebReq.busiBuff.get().toByteArray());
+          if (paramArrayOfByte.appid.get().equals("1108197111")) {
+            localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build1108197111()));
+          } else if (paramArrayOfByte.appid.get().equals("1108196450")) {
+            localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build1108196450()));
+          } else if (paramArrayOfByte.appid.get().equals("1107953026")) {
+            localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build1107953026()));
+          } else if (paramArrayOfByte.appid.get().equals("1107958655")) {
+            localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build1107958655()));
+          } else if (paramArrayOfByte.appid.get().equals("1109508198")) {
+            localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build1109508198()));
+          } else if (paramArrayOfByte.appid.get().equals("1109298876")) {
+            localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build1109298876()));
+          } else if (paramArrayOfByte.appid.get().equals("1109149265")) {
+            localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build1109149265()));
+          } else if (paramArrayOfByte.appid.get().equals("1108244343")) {
+            localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build1108244343()));
+          } else if (paramArrayOfByte.appid.get().equals("1108002511")) {
+            localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build1108002511()));
+          } else if (paramArrayOfByte.appid.get().equals("1109500287")) {
+            localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build1109500287()));
+          } else if (paramArrayOfByte.appid.get().equals("1108805017")) {
+            localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build1108805017()));
+          } else if (paramArrayOfByte.appid.get().equals("363")) {
+            localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build363()));
+          }
+        }
+        else if (localStQWebReq.Cmdname.get().equals("AdaptShareInfo"))
+        {
+          paramArrayOfByte = new MiniProgramShare.StAdaptShareInfoRsp();
+          paramArrayOfByte.jsonData.set("{\"jump_url\":\"https://m.q.qq.com/a/s/fcca723c72ba1bc367bf6e21b001a16e?via=2016_1\"}");
           localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(paramArrayOfByte.toByteArray()));
-        }
-        else if (paramArrayOfByte.appid.get().equals("1107953026"))
-        {
-          localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build1107953026()));
-        }
-        else if (paramArrayOfByte.appid.get().equals("1107958655"))
-        {
-          localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build1107958655()));
-        }
-        else if (paramArrayOfByte.appid.get().equals("1109508198"))
-        {
-          localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build1109508198()));
-        }
-        else if (paramArrayOfByte.appid.get().equals("1109298876"))
-        {
-          localStQWebRsp.busiBuff.set(ByteStringMicro.copyFrom(build1109298876()));
         }
       }
     }

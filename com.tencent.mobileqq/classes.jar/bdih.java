@@ -1,43 +1,35 @@
-import android.app.Activity;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.core.proxy.ShareProxy;
+import android.annotation.SuppressLint;
+import android.os.AsyncTask;
+import android.os.Build.VERSION;
+import java.util.concurrent.Executor;
 
-public class bdih
-  implements bdig
+public abstract class bdih<Param, Progress, Result>
+  extends AsyncTask<Param, Progress, Result>
 {
-  protected bdcz a;
-  protected ShareProxy a;
+  protected String a;
+  protected String b;
   
-  public bdih(bdcz parambdcz)
+  public bdih(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Bdcz = parambdcz;
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyShareProxy = ((ShareProxy)ProxyManager.get(ShareProxy.class));
-  }
-  
-  public void a()
-  {
-    Activity localActivity = this.jdField_a_of_type_Bdcz.a();
-    if ((localActivity != null) && (!localActivity.isFinishing()))
-    {
-      if (!localActivity.moveTaskToBack(true))
-      {
-        bdnw.d("CapsuleButton", "moveTaskToBack failed, finish the activity.");
-        localActivity.finish();
-      }
-      this.jdField_a_of_type_Bdcz.a(bdfl.a(60));
+    this.a = paramString1;
+    if (!paramString1.toLowerCase().startsWith("http")) {
+      this.a = ("https://openmobile.qq.com/" + paramString1);
     }
+    this.b = paramString2;
   }
   
-  public void b()
+  @SuppressLint({"InlinedApi", "NewApi"})
+  public Executor a()
   {
-    ((bdgb)this.jdField_a_of_type_Bdcz.a(bdfr.a())).b = 0;
-    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onCapsuleButtonMoreClick(this.jdField_a_of_type_Bdcz);
+    if (Build.VERSION.SDK_INT >= 11) {
+      return AsyncTask.THREAD_POOL_EXECUTOR;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdih
  * JD-Core Version:    0.7.0.1
  */

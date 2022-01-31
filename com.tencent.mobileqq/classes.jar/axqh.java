@@ -1,36 +1,20 @@
-import java.util.HashMap;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import java.io.File;
+import java.io.FilenameFilter;
 
 public class axqh
-  extends axqg
+  implements FilenameFilter
 {
-  public HashMap<String, String> a = new HashMap();
-  public String b;
-  public String c;
-  public boolean c;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
-  public long f;
+  public axqh(LocalCrashCollector paramLocalCrashCollector) {}
   
-  public String a()
+  public boolean accept(File paramFile, String paramString)
   {
-    if (a())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("{");
-      localStringBuilder.append("elapsed:" + a());
-      localStringBuilder.append(",tryCount:" + this.b);
-      localStringBuilder.append("}");
-      return localStringBuilder.toString();
-    }
-    return "{}";
+    return !paramString.contains("CrashInfoSummary.txt");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axqh
  * JD-Core Version:    0.7.0.1
  */

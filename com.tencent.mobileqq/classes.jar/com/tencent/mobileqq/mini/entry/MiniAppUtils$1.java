@@ -7,27 +7,26 @@ import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.mobileqq.mini.sdk.MiniAppException;
 import com.tencent.qphone.base.util.QLog;
 
 final class MiniAppUtils$1
   implements View.OnClickListener
 {
-  MiniAppUtils$1(int paramInt, MiniAppInfo paramMiniAppInfo) {}
+  MiniAppUtils$1(int paramInt, Activity paramActivity, MiniAppInfo paramMiniAppInfo) {}
   
   public void onClick(View paramView)
   {
-    LaunchParam localLaunchParam = new LaunchParam();
-    localLaunchParam.scene = this.val$scene;
+    paramView = new LaunchParam();
+    paramView.scene = this.val$scene;
     try
     {
-      MiniAppController.launchMiniAppByAppInfo((Activity)paramView.getContext(), this.val$info, localLaunchParam);
+      MiniAppController.launchMiniAppByAppInfo(this.val$activity, this.val$info, paramView);
       if (this.val$scene == 3008) {
         MiniProgramLpReportDC04239.reportAsync("desktop", "featured", "click", null);
       }
       return;
     }
-    catch (MiniAppException paramView)
+    catch (Exception paramView)
     {
       for (;;)
       {

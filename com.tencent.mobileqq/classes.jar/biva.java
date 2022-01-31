@@ -1,6 +1,11 @@
-public abstract interface biva
+import java.util.ArrayList;
+
+public class biva
 {
-  public abstract void a();
+  public ArrayList<String> a = new ArrayList();
+  public ArrayList<String> b = new ArrayList();
+  public ArrayList<String> c = new ArrayList();
+  public ArrayList<Integer> d = new ArrayList();
 }
 
 

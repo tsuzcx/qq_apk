@@ -1,16 +1,15 @@
-import android.os.Bundle;
-import android.os.IInterface;
-
-public abstract interface bgng
-  extends IInterface
+public class bgng
 {
-  public abstract Bundle a(String paramString, Bundle paramBundle);
-  
-  public abstract void a(String paramString, Bundle paramBundle);
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgng
  * JD-Core Version:    0.7.0.1
  */

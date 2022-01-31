@@ -1,36 +1,34 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
 
-public final class tvs
-  extends QQUIEventReceiver<tvd, swv>
+public class tvs
+  implements View.OnTouchListener
 {
-  public tvs(@NonNull tvd paramtvd)
-  {
-    super(paramtvd);
-  }
+  float jdField_a_of_type_Float = -1.0F;
+  float b = -1.0F;
   
-  public void a(@NonNull tvd paramtvd, @NonNull swv paramswv)
+  public tvs(VideoCoverListBar paramVideoCoverListBar, int paramInt) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramswv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramswv.jdField_a_of_type_JavaUtilList != null) && (paramtvd.a != null))
+    switch (paramMotionEvent.getAction())
     {
-      paramswv = paramswv.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramswv.hasNext())
-      {
-        srj localsrj = (srj)paramswv.next();
-        if (TextUtils.equals(paramtvd.a.b, localsrj.a)) {
-          paramtvd.i();
-        }
-      }
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.b = paramMotionEvent.getY();
+      return false;
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return swv.class;
+    if (Math.abs(paramMotionEvent.getY() - this.b) > Math.min(this.jdField_a_of_type_Int, 40)) {
+      vel.a("play_video", "slide_mini", 0, 0, new String[] { "2", "", "", VideoCoverListBar.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar) });
+    }
+    this.jdField_a_of_type_Float = -1.0F;
+    this.b = -1.0F;
+    return false;
   }
 }
 

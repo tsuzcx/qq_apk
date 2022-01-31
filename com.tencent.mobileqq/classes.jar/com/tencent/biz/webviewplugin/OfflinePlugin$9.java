@@ -3,20 +3,20 @@ package com.tencent.biz.webviewplugin;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import java.util.HashMap;
-import rrs;
-import xce;
+import sek;
+import xle;
 
 public class OfflinePlugin$9
   implements Runnable
 {
-  public OfflinePlugin$9(xce paramxce) {}
+  public OfflinePlugin$9(xle paramxle) {}
   
   public void run()
   {
-    if (xce.jdField_a_of_type_JavaUtilHashMap != null)
+    if (xle.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      rrs localrrs = (rrs)xce.jdField_a_of_type_JavaUtilHashMap.get(xce.a(this.this$0));
-      if ((localrrs != null) && (localrrs.b() == 1))
+      sek localsek = (sek)xle.jdField_a_of_type_JavaUtilHashMap.get(xle.a(this.this$0));
+      if ((localsek != null) && (localsek.b() == 1))
       {
         if (this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
           this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -24,7 +24,7 @@ public class OfflinePlugin$9
         if (this.this$0.jdField_a_of_type_AndroidWidgetProgressBar != null) {
           this.this$0.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
         }
-        localrrs.a(2);
+        localsek.a(2);
       }
     }
   }

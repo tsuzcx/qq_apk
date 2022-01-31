@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import aciy;
+import actn;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.qphone.base.util.QLog;
@@ -21,7 +21,7 @@ class RecommendFriendFragment$3
       }
     }
     label252:
-    for (int i = (this.this$0.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - Math.max(this.this$0.b - this.this$0.jdField_a_of_type_Int, 0) - this.this$0.c.getMeasuredHeight()) / 2;; i = aciy.a(68.0F, this.this$0.getResources()))
+    for (int i = (this.this$0.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - Math.max(this.this$0.b - this.this$0.jdField_a_of_type_Int, 0) - this.this$0.c.getMeasuredHeight()) / 2;; i = actn.a(68.0F, this.this$0.getResources()))
     {
       if (i != localLayoutParams.topMargin)
       {

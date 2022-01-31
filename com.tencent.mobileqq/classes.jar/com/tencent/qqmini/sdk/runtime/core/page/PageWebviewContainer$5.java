@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.support.v4.widget.SwipeRefreshLayout;
-import bdfs;
-import bdnw;
+import bejs;
+import besl;
 
 class PageWebviewContainer$5
   implements Runnable
 {
-  PageWebviewContainer$5(PageWebviewContainer paramPageWebviewContainer, boolean paramBoolean, bdfs parambdfs) {}
+  PageWebviewContainer$5(PageWebviewContainer paramPageWebviewContainer, boolean paramBoolean, bejs parambejs) {}
   
   public void run()
   {
@@ -30,8 +30,8 @@ class PageWebviewContainer$5
     label106:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      bdnw.a("PageWebviewContainer", bool1);
-      this.jdField_a_of_type_Bdfs.a();
+      besl.a("PageWebviewContainer", bool1);
+      this.jdField_a_of_type_Bejs.a();
       return;
       bool1 = false;
       break;

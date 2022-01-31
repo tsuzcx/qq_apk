@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.app.Activity;
-import anyj;
+import aopc;
 import java.util.TimerTask;
 
 public class MPFileVerifyPwdView$3$1
   extends TimerTask
 {
-  public MPFileVerifyPwdView$3$1(anyj paramanyj) {}
+  public MPFileVerifyPwdView$3$1(aopc paramaopc) {}
   
   public void run()
   {

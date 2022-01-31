@@ -1,8 +1,15 @@
-public abstract interface pey
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class pey
+  implements View.OnClickListener
 {
-  public abstract void a(Object paramObject);
+  pey(pew parampew, pax parampax) {}
   
-  public abstract void a(pfh parampfh);
+  public void onClick(View paramView)
+  {
+    rap.a(this.jdField_a_of_type_Pax.a(), 0, 1);
+  }
 }
 
 

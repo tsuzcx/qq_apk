@@ -1,15 +1,86 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import SummaryCardTaf.SSummaryCardRsp;
+import android.util.Pair;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.12.1;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.qphone.base.util.QLog;
 
 public class abdo
-  implements View.OnClickListener
+  extends ajtq
 {
-  public abdo(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public abdo(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    MoveToGroupActivity.b(this.a);
+    if ((paramString != null) && (this.a.jdField_a_of_type_Auuw != null) && (this.a.jdField_a_of_type_Auuw.a != null) && (this.a.jdField_a_of_type_Auuw.a.a != null) && (paramString.equals(this.a.jdField_a_of_type_Auuw.a.a))) {
+      if ((paramBoolean1) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(paramBoolean2);
+      }
+    }
+    for (;;)
+    {
+      QLog.d("FriendProfileCardActivity", 2, " isSuccess" + paramBoolean1 + " isAllow" + paramBoolean2);
+      return;
+      QLog.e("FriendProfileCardActivity", 2, "onGetAllowSeeLoginDays uin empty");
+    }
+  }
+  
+  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.a.isFinishing()) {
+          break;
+        }
+        this.a.jdField_b_of_type_Bfnk.removeCallbacks(this.a.jdField_b_of_type_JavaLangRunnable);
+        this.a.B();
+        if ((!paramBoolean) || (paramObject == null)) {
+          break;
+        }
+        if ((paramObject instanceof Card))
+        {
+          ThreadManager.post(new FriendProfileCardActivity.12.1(this, (Card)paramObject), 5, null, true);
+          return;
+        }
+        if (!(paramObject instanceof Pair)) {
+          break;
+        }
+        paramObject = (Pair)paramObject;
+        if (((Integer)paramObject.first).intValue() == 101107)
+        {
+          this.a.d = 1;
+          this.a.C();
+          return;
+        }
+      }
+      catch (Exception paramObject)
+      {
+        paramObject.printStackTrace();
+        return;
+      }
+      if (((Integer)paramObject.first).intValue() == 101108)
+      {
+        this.a.d = 2;
+      }
+      else if (((Integer)paramObject.first).intValue() == 101111)
+      {
+        this.a.d = 3;
+      }
+      else if (((Integer)paramObject.first).intValue() == 12002)
+      {
+        this.a.d = 4;
+      }
+      else
+      {
+        this.a.d = 5;
+        this.a.a((SSummaryCardRsp)paramObject.second);
+      }
+    }
   }
 }
 

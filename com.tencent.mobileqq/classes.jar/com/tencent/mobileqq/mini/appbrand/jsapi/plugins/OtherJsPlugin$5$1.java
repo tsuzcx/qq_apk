@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
@@ -25,7 +25,7 @@ class OtherJsPlugin$5$1
         ((AppBrandPageContainer)this.this$1.this$0.jsPluginEngine.appBrandRuntime.getContainer()).notifyOnAddColorNote();
       }
       OtherJsPlugin.access$300(this.this$1.this$0, this.this$1.val$finalColorNoteController);
-      bbmy.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131625289), 5000).a();
+      bcpw.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690852), 5000).a();
       return;
     }
     catch (Exception paramDialogInterface)

@@ -1,17 +1,20 @@
-class bafx
-  implements baim
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+
+public class bafx
+  implements bank
 {
-  bafx(bafw parambafw) {}
+  public bafx(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
   {
-    bafw.a(this.a, baik.a(paramInt));
-    this.a.a.height = bafw.a(this.a);
+    paramView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bafx
  * JD-Core Version:    0.7.0.1
  */

@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.text.TextUtils;
-import awlw;
-import awqx;
-import bfcz;
-import bfdi;
-import bgnn;
+import axlc;
+import axqw;
+import bgkq;
+import bgkz;
+import bhwf;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.common.app.AppInterface;
@@ -85,7 +85,7 @@ public class NearbyVideoChatProxyActivity
   
   protected static void a(Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString1, AppInterface paramAppInterface, String paramString2, oidb_0x8dd.SelfInfo paramSelfInfo, int paramInt)
   {
-    awlw.a();
+    axlc.a();
     Object localObject = SosoInterface.b();
     long l2 = 0L;
     long l1 = 0L;
@@ -94,27 +94,27 @@ public class NearbyVideoChatProxyActivity
       l2 = Double.valueOf(((SosoInterface.SosoLbsInfo)localObject).a.b * 1000000.0D).longValue();
       l1 = Double.valueOf(((SosoInterface.SosoLbsInfo)localObject).a.a * 1000000.0D).longValue();
     }
-    localObject = new bfdi(1);
-    ((bfdi)localObject).jdField_b_of_type_JavaLangString = "nearby_video_chat_plugin.apk";
-    ((bfdi)localObject).d = PluginInfo.l;
-    ((bfdi)localObject).jdField_a_of_type_JavaLangString = paramAppInterface.getCurrentAccountUin();
-    ((bfdi)localObject).e = paramString1;
-    ((bfdi)localObject).jdField_a_of_type_JavaLangClass = NearbyVideoChatProxyActivity.class;
+    localObject = new bgkz(1);
+    ((bgkz)localObject).jdField_b_of_type_JavaLangString = "nearby_video_chat_plugin.apk";
+    ((bgkz)localObject).d = PluginInfo.l;
+    ((bgkz)localObject).jdField_a_of_type_JavaLangString = paramAppInterface.getCurrentAccountUin();
+    ((bgkz)localObject).e = paramString1;
+    ((bgkz)localObject).jdField_a_of_type_JavaLangClass = NearbyVideoChatProxyActivity.class;
     paramString1 = paramIntent;
     if (paramIntent == null) {
       paramString1 = new Intent();
     }
-    ((bfdi)localObject).jdField_a_of_type_AndroidContentIntent = paramString1;
-    ((bfdi)localObject).jdField_a_of_type_AndroidAppDialog = paramDialog;
-    ((bfdi)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
-    ((bfdi)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("param_plugin_gesturelock", true);
-    ((bfdi)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("sessionType", 2);
-    ((bfdi)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("uinType", 10003);
-    ((bfdi)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("MultiAVType", 0);
-    ((bfdi)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("lon", l2);
-    ((bfdi)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("lat", l1);
+    ((bgkz)localObject).jdField_a_of_type_AndroidContentIntent = paramString1;
+    ((bgkz)localObject).jdField_a_of_type_AndroidAppDialog = paramDialog;
+    ((bgkz)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
+    ((bgkz)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("param_plugin_gesturelock", true);
+    ((bgkz)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("sessionType", 2);
+    ((bgkz)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("uinType", 10003);
+    ((bgkz)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("MultiAVType", 0);
+    ((bgkz)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("lon", l2);
+    ((bgkz)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("lat", l1);
     if (!TextUtils.isEmpty(paramString2)) {
-      ((bfdi)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("nearbyVideoConfig", paramString2);
+      ((bgkz)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("nearbyVideoConfig", paramString2);
     }
     if ((paramAppInterface instanceof QQAppInterface))
     {
@@ -122,10 +122,10 @@ public class NearbyVideoChatProxyActivity
       if ((paramIntent.c()) && (paramIntent.a().k()))
       {
         QLog.e("NearbyVideoChatProxyActivity", 2, "Fromwhere is SmallScreen");
-        ((bfdi)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("Fromwhere", "SmallScreen");
+        ((bgkz)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("Fromwhere", "SmallScreen");
       }
     }
-    paramIntent = ((bfdi)localObject).jdField_a_of_type_AndroidContentIntent;
+    paramIntent = ((bgkz)localObject).jdField_a_of_type_AndroidContentIntent;
     boolean bool;
     int i;
     int j;
@@ -137,9 +137,9 @@ public class NearbyVideoChatProxyActivity
       if (paramSelfInfo == null) {
         break label557;
       }
-      ((bfdi)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("selfInfoLevel", paramSelfInfo.uint32_charm_level.get());
-      ((bfdi)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("selfInfoAge", paramSelfInfo.uint32_age.get());
-      ((bfdi)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("selfInfoGender", paramSelfInfo.uint32_gender.get() + 1);
+      ((bgkz)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("selfInfoLevel", paramSelfInfo.uint32_charm_level.get());
+      ((bgkz)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("selfInfoAge", paramSelfInfo.uint32_age.get());
+      ((bgkz)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("selfInfoGender", paramSelfInfo.uint32_gender.get() + 1);
       i = paramSelfInfo.uint32_charm_level.get();
       j = paramSelfInfo.uint32_gender.get();
       k = paramSelfInfo.uint32_age.get();
@@ -147,15 +147,15 @@ public class NearbyVideoChatProxyActivity
     }
     for (;;)
     {
-      ((bfdi)localObject).jdField_b_of_type_Int = paramInt;
-      ((bfdi)localObject).c = 10000;
-      ((bfdi)localObject).f = null;
+      ((bgkz)localObject).jdField_b_of_type_Int = paramInt;
+      ((bgkz)localObject).c = 10000;
+      ((bgkz)localObject).f = null;
       paramIntent = null;
       if (paramInt == 123987) {
-        paramIntent = new bgnn(paramActivity);
+        paramIntent = new bhwf(paramActivity);
       }
-      bfcz.a(paramActivity, (bfdi)localObject, paramIntent);
-      awqx.b(null, "dc00899", "grp_lbs", "", "video_chat", "num_entry", 0, 0, i + "", j + "", k + "", "");
+      bgkq.a(paramActivity, (bgkz)localObject, paramIntent);
+      axqw.b(null, "dc00899", "grp_lbs", "", "video_chat", "num_entry", 0, 0, i + "", j + "", k + "", "");
       return;
       bool = false;
       break;

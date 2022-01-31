@@ -1,100 +1,94 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.PathMeasure;
-import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+import eipc.EIPCResult;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class lby
+  extends QIPCModule
 {
-  private final ArrayList<lbz> a = new ArrayList(1);
-  
-  public void a(float paramFloat)
+  private lby()
   {
-    int j = this.a.size();
-    int i = 0;
-    while (i < j)
+    super("AioShareMusicIPCMainClient");
+  }
+  
+  public static lby a()
+  {
+    return lca.a();
+  }
+  
+  private void a(Bundle paramBundle)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (localQQAppInterface != null) {}
+    try
     {
-      ((lbz)this.a.get(i)).a(paramFloat);
-      i += 1;
+      ((ListenTogetherManager)localQQAppInterface.getManager(331)).c(new JSONObject(paramBundle.getString("data")));
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle.printStackTrace();
     }
   }
   
-  public void a(Context paramContext, int paramInt1, int paramInt2)
+  public static void a(JSONObject paramJSONObject, String paramString)
   {
-    paramContext = paramContext.getResources();
-    this.a.clear();
-    if (paramInt1 != 0)
+    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
+    if (QLog.isColorLevel()) {
+      QLog.d("AioShareMusic.AioShareMusicIPCMainClient", 2, "callWebClient data:" + paramJSONObject.toString() + "  isToolRunning:" + bool);
+    }
+    if (bool)
     {
-      Object localObject1 = paramContext.openRawResource(paramInt1);
-      try
-      {
-        localObject1 = new BufferedReader(new InputStreamReader((InputStream)localObject1), 512);
-        Object localObject2;
-        do
-        {
-          localObject2 = new lbz((BufferedReader)localObject1);
-          ((BufferedReader)localObject1).readLine();
-          ((BufferedReader)localObject1).readLine();
-          TypedArray localTypedArray = paramContext.obtainTypedArray(paramInt2);
-          int i = localTypedArray.length();
-          BitmapDrawable[] arrayOfBitmapDrawable = new BitmapDrawable[i];
-          paramInt1 = 0;
-          while (paramInt1 < i)
-          {
-            arrayOfBitmapDrawable[paramInt1] = ((BitmapDrawable)localTypedArray.getDrawable(paramInt1));
-            paramInt1 += 1;
-          }
-          ((lbz)localObject2).a(arrayOfBitmapDrawable);
-          localTypedArray.recycle();
-          this.a.add(localObject2);
-          if (((BufferedReader)localObject1).readLine() == null) {
-            return;
-          }
-          localObject2 = ((BufferedReader)localObject1).readLine();
-        } while (localObject2 != null);
-        return;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("data", paramJSONObject.toString());
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "AioShareMusicIPCWebClient", paramString, localBundle, null);
+    }
+  }
+  
+  private void b(Bundle paramBundle)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (localQQAppInterface != null) {}
+    try
+    {
+      ((ListenTogetherManager)localQQAppInterface.getManager(331)).b(new JSONObject(paramBundle.getString("data")));
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("checkAioShareMusic".equals(paramString)) {
+      b(paramBundle);
+    }
+    for (;;)
+    {
+      return null;
+      if ("startListenAioShareMusic".equals(paramString)) {
+        a(paramBundle);
       }
-      catch (IOException paramContext)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ParticleEffect", 2, "WL_DEBUG loadEmitters ex = " + paramContext);
-        }
-      }
-    }
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    int j = this.a.size();
-    int i = 0;
-    while (i < j)
-    {
-      ((lbz)this.a.get(i)).a(paramCanvas);
-      i += 1;
-    }
-  }
-  
-  public void a(PathMeasure paramPathMeasure)
-  {
-    int j = this.a.size();
-    int i = 0;
-    while (i < j)
-    {
-      ((lbz)this.a.get(i)).a(paramPathMeasure);
-      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     lby
  * JD-Core Version:    0.7.0.1
  */

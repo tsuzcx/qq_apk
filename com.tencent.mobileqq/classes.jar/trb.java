@@ -1,21 +1,15 @@
-import android.widget.MediaController;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-
-public class trb
-  implements tsq
+class trb
+  extends tps
 {
-  public trb(TextureVideoView paramTextureVideoView) {}
-  
-  public void a(tso paramtso)
+  trb(tqk paramtqk, String paramString1, String paramString2, boolean paramBoolean, trt paramtrt)
   {
-    this.a.jdField_a_of_type_Int = 5;
-    this.a.b = 5;
-    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
-      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
-    }
-    if (this.a.jdField_a_of_type_Tsq != null) {
-      this.a.jdField_a_of_type_Tsq.a(this.a.jdField_a_of_type_Tso);
-    }
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Trt.d = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 

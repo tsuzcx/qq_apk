@@ -1,118 +1,51 @@
-import android.app.Activity;
-import android.net.Uri;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForGrayTips;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.mobileqq.jsp.QQApiPlugin.3;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class arnf
+  implements wxw
 {
-  public static arng a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return null;
-      paramString = Uri.parse(paramString);
-      if (paramString.isHierarchical())
-      {
-        paramString = paramString.getQueryParameter("_appinfo");
-        if (!TextUtils.isEmpty(paramString)) {
-          try
-          {
-            paramString = Base64.decode(paramString, 10);
-            if (paramString == null)
-            {
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.i("miniAppJump", 2, "appinfo decode error 2");
-              return null;
-            }
-          }
-          catch (Exception paramString)
-          {
-            QLog.e("miniAppJump", 1, "parse miniapp jump url error", paramString);
-            return null;
-          }
-        }
-      }
-    }
-    paramString = new JSONObject(new String(paramString, "UTF-8"));
-    arng localarng = new arng();
-    localarng.jdField_a_of_type_Int = paramString.getInt("type");
-    localarng.jdField_a_of_type_JavaLangString = paramString.getString("appid");
-    localarng.jdField_b_of_type_JavaLangString = paramString.optString("pageName");
-    localarng.jdField_b_of_type_Int = paramString.optInt("from");
-    localarng.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("param");
-    return localarng;
-  }
+  public arnf(QQApiPlugin.3 param3, Bitmap paramBitmap) {}
   
-  public static boolean a(Activity paramActivity, arng paramarng, Bundle paramBundle)
+  public void a(Bundle paramBundle)
   {
-    if (paramarng == null) {}
-    while ((paramarng.jdField_a_of_type_Int == 4) || (paramarng.jdField_a_of_type_Int != 3)) {
-      return false;
-    }
-    armw.a(paramActivity, paramarng.jdField_a_of_type_JavaLangString, paramarng.jdField_a_of_type_Int, null);
-    return true;
-  }
-  
-  public static boolean a(Activity paramActivity, String paramString, Bundle paramBundle)
-  {
-    return a(paramActivity, a(paramString), paramBundle);
-  }
-  
-  public static boolean a(BaseActivity paramBaseActivity, String paramString, MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    Bundle localBundle = new Bundle();
-    QQAppInterface localQQAppInterface = paramBaseActivity.app;
-    localBundle.putString("uin", localQQAppInterface.getCurrentAccountUin());
-    boolean bool;
-    if (paramMessageRecord.istroop == 1)
+    int j = 0;
+    int i = 0;
+    if (paramBundle.getInt("readinjoy_to_wx_config") == 0)
     {
-      localBundle.putString("gc", paramMessageRecord.frienduin);
-      if ((azlj.a(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.c())) || (azlj.b(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.c())))
+      paramBundle = WxShareHelperFromReadInjoy.a();
+      str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.this$0.c;
+      str2 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.d;
+      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      str3 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.e;
+      str4 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.b;
+      if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.a)) {}
+      for (;;)
       {
-        bool = true;
-        localBundle.putBoolean("isAdmin", bool);
+        paramBundle.a(str1, str2, localBitmap, str3, str4, i);
+        return;
+        i = 1;
       }
     }
-    else
+    paramBundle = WXShareHelper.a();
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.this$0.c;
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.d;
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    String str3 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.e;
+    String str4 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.b;
+    if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.a)) {}
+    for (i = j;; i = 1)
     {
-      paramString = a(paramString);
-      bool = a(paramBaseActivity, paramString, localBundle);
-      if ((paramString != null) && (bool) && ((paramMessageRecord instanceof MessageForGrayTips)) && (paramString.jdField_a_of_type_Int == 4) && (paramString.jdField_a_of_type_JavaLangString.equals("101474665")))
-      {
-        if (paramString.jdField_b_of_type_Int != 1) {
-          break label186;
-        }
-        awqx.b(localQQAppInterface, "dc00899", "Grp_idol", "", "idol_follow", "follow_suc_clk", 0, 0, paramMessageRecord.frienduin, "", "", "");
-      }
-    }
-    for (;;)
-    {
-      return bool;
-      bool = false;
-      break;
-      label186:
-      if (paramString.jdField_b_of_type_Int == 2) {
-        azzx.a("Grp_idol", "Grp_AIO", "clk_renwu", 0, 0, new String[] { paramMessageRecord.frienduin });
-      }
+      paramBundle.b(str1, str2, localBitmap, str3, str4, i);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     arnf
  * JD-Core Version:    0.7.0.1
  */

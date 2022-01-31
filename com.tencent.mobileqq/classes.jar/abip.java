@@ -1,61 +1,54 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class abip
-  extends ajfo
+  implements DialogInterface.OnClickListener
 {
-  public abip(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public abip(GroupManagerActivity paramGroupManagerActivity) {}
   
-  protected void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean1) && (paramBoolean2 != this.a.d.a()))
-    {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
+    paramDialogInterface = GroupManagerActivity.a(this.a).getInputValue();
+    if (paramDialogInterface.equals("")) {
+      paramDialogInterface = this.a.getResources().getString(2131693191);
     }
-  }
-  
-  protected void onImpeach(boolean paramBoolean, String paramString)
-  {
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString)) {
-      return;
-    }
-    this.a.f();
-    if (paramBoolean)
-    {
-      this.a.a(2131625063, 2);
-      return;
-    }
-    this.a.a(2131625061, 1);
-  }
-  
-  protected void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2 != this.a.d.a()))
-    {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
-    }
-  }
-  
-  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
-  {
-    if (((paramBoolean) && (paramInt == 0)) || ((!paramBoolean) && (paramInt == 34))) {}
     for (;;)
     {
-      if (this.a.jdField_a_of_type_AndroidOsBundle == null) {
-        this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
+      if (GroupManagerActivity.a(this.a) == 0) {
+        if (this.a.a.size() > 0)
+        {
+          b = (byte)(((Groups)this.a.a.get(this.a.a.size() - 1)).seqid + 1);
+          GroupManagerActivity.a(this.a, this.a.a(b, paramDialogInterface));
+          if (QLog.isColorLevel()) {
+            QLog.d("GroupManagerActivity", 2, "AddFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
+          }
+          if (GroupManagerActivity.a(this.a)) {
+            this.a.a(2131693228);
+          }
+          axqw.b(this.a.app, "CliOper", "", "", "category", "Add_category", 0, 0, "", "", "", "");
+        }
       }
-      if (paramCard != null) {
-        this.a.jdField_a_of_type_AndroidOsBundle.putShort("key_personality_label_switch", paramCard.switch_disable_personality_label);
+      while (1 != GroupManagerActivity.a(this.a)) {
+        for (;;)
+        {
+          return;
+          byte b = 1;
+        }
       }
+      GroupManagerActivity.a(this.a, this.a.b((byte)GroupManagerActivity.a(this.a).group_id, paramDialogInterface));
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupManagerActivity", 2, "EditeFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
+      }
+      if (GroupManagerActivity.a(this.a)) {
+        this.a.a(2131693231);
+      }
+      axqw.b(this.a.app, "CliOper", "", "", "category", "Name_category", 0, 0, "", "", "", "");
       return;
-      this.a.a(2131629765, 1);
     }
   }
 }

@@ -1,11 +1,17 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class ahro
-  extends ajjh
+  implements View.OnClickListener
 {
-  public ahro(SelectMemberActivity paramSelectMemberActivity) {}
+  public ahro(LoginView paramLoginView) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString) {}
+  public void onClick(View paramView)
+  {
+    axqw.a(this.a.a, "dc00898", "", "", "0X800AA2E", "0X800AA2E", 0, 0, "", "", "", "");
+    LoginView.a(this.a).dismiss();
+  }
 }
 
 

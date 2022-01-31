@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aego;
+import aerl;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class NearbyChatPie$3
   implements Runnable
 {
-  public NearbyChatPie$3(aego paramaego) {}
+  public NearbyChatPie$3(aerl paramaerl) {}
   
   public void run()
   {

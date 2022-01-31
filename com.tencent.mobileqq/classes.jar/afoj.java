@@ -1,62 +1,50 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.40.1;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
 public class afoj
-  extends ajhi
+  extends afix<MessageRecord>
 {
-  public afoj(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
-  
-  protected void a(boolean paramBoolean, Long paramLong)
+  public afoj(TroopSuspiciousFragment paramTroopSuspiciousFragment, Context paramContext, int paramInt)
   {
-    if (this.a.c != null) {
-      this.a.c.dismiss();
-    }
+    super(paramContext, paramInt);
   }
   
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  protected void a(afjh paramafjh, MessageRecord paramMessageRecord, int paramInt)
   {
-    if (paramBoolean)
-    {
-      awqx.b(this.a.b, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
-      this.a.a(paramLong2 + "");
-      if (this.a.jdField_a_of_type_Afow != null) {
-        this.a.jdField_a_of_type_Afow.a();
-      }
-      if (this.a.k)
-      {
-        this.a.d(paramLong2 + "");
-        if (this.a.jdField_a_of_type_Afoy != null) {
-          this.a.jdField_a_of_type_Afoy.notifyDataSetChanged();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.a.c != null) {
-        this.a.c.dismiss();
-      }
-      return;
-      bbmy.a(this.a.getActivity(), 1, this.a.getString(2131628069), 0).b(this.a.getActivity().getTitleBarHeight());
-    }
+    TroopSuspiciousFragment.a(this.a, paramafjh, paramMessageRecord, paramInt);
   }
   
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
+  protected afjh b(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
-    this.a.getActivity().runOnUiThread(new ChatHistoryTroopMemberFragment.40.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
-  }
-  
-  protected void b(boolean paramBoolean, Long paramLong)
-  {
-    if (this.a.c != null) {
-      this.a.c.dismiss();
-    }
+    paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
+    paramContext = new afnl(paramContext, paramViewGroup);
+    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131372551));
+    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131372541));
+    paramContext.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131372548));
+    paramContext.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131372555));
+    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372546));
+    paramContext.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372552));
+    paramContext.c = ((TextView)paramViewGroup.findViewById(2131372554));
+    paramContext.d = ((TextView)paramViewGroup.findViewById(2131372547));
+    paramContext.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131372550));
+    paramContext.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramViewGroup.findViewById(2131377869));
+    paramViewGroup = (Button)paramViewGroup.findViewById(2131377868);
+    afoq.a(paramContext.a(), false);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afoj
  * JD-Core Version:    0.7.0.1
  */

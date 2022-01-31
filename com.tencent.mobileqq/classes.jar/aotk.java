@@ -1,72 +1,44 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
 
 public class aotk
+  extends apvd
 {
-  protected int a;
-  protected QQAppInterface a;
-  protected FileManagerEntity a;
-  protected List<aotf> a;
-  private int b;
+  public aotk(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
   
-  public aotk(QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a.a.a().b();
   }
   
-  public int a()
+  public void b()
   {
-    return this.jdField_a_of_type_Int;
+    this.a.a.a().p();
   }
   
-  public aoqz a(BaseActivity paramBaseActivity)
+  public void c()
   {
-    return new aotl(this, paramBaseActivity);
+    this.a.a.a().q();
   }
   
-  public List<aotf> a()
+  public void d()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    this.a.a.a().r();
   }
   
-  public boolean a(Intent paramIntent, Activity paramActivity)
+  public void e()
   {
-    Object localObject = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
-    if (localObject == null) {
-      return false;
-    }
-    if (paramIntent.getBooleanExtra("from_webview", false))
-    {
-      ayqd localayqd = azjg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((ForwardFileInfo)localObject).a(), ((ForwardFileInfo)localObject).b(), ((ForwardFileInfo)localObject).e(), ((ForwardFileInfo)localObject).d(), ((ForwardFileInfo)localObject).d(), paramIntent.getIntExtra("bisId", 0));
-      l1 = ((ForwardFileInfo)localObject).a();
-      localObject = paramIntent.getStringExtra("sender_uin");
-      long l2 = paramIntent.getLongExtra("last_time", 0L);
-      apdq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramActivity, null, null, l1, localayqd, (String)localObject, l2, -1, 0, null, false, false);
-      paramActivity.finish();
-      return false;
-    }
-    long l1 = ((ForwardFileInfo)localObject).b();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l1);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-      return false;
-    }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime = paramIntent.getLongExtra("last_time", 0L);
-    this.jdField_a_of_type_JavaUtilList.add(aosy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity));
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0)
-    {
-      this.jdField_a_of_type_Int = 1;
-      return true;
-    }
-    this.jdField_a_of_type_Int = 3;
-    return true;
+    this.a.a.a().s();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

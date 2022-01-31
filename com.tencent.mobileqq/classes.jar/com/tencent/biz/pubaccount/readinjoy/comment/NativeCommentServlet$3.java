@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
 import android.os.Bundle;
-import aync;
+import azns;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -12,11 +12,11 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import mpl;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
-import nun;
+import nam;
+import ofy;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -46,7 +46,7 @@ public final class NativeCommentServlet$3
               ((Map)localObject3).put("feedsType", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType));
               String str1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
               str2 = ((TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2)).getSkey(str1);
-              ((Map)localObject3).put("g_tk", String.valueOf(aync.a(str2)));
+              ((Map)localObject3).put("g_tk", String.valueOf(azns.a(str2)));
               if (this.jdField_a_of_type_OrgJsonJSONArray != null) {
                 ((Map)localObject3).put("comment_gif_urls", URLEncoder.encode(this.jdField_a_of_type_OrgJsonJSONArray.toString()));
               }
@@ -74,7 +74,7 @@ public final class NativeCommentServlet$3
         QLog.d("NativeCommentServlet", 2, "feed_comment_request_url_with_params " + localObject2);
         Object localObject3 = new Bundle();
         ((Bundle)localObject3).putString("cookie", "uin=o" + localException + ";skey=" + str2);
-        localObject1 = mpl.a(BaseApplicationImpl.getContext(), ((StringBuilder)localObject2).toString(), "GET", null, (Bundle)localObject3);
+        localObject1 = nam.a(BaseApplicationImpl.getContext(), ((StringBuilder)localObject2).toString(), "GET", null, (Bundle)localObject3);
         if (localObject1 == null)
         {
           QLog.d("NativeCommentServlet", 2, "feed_comment_response byte is null");
@@ -88,7 +88,7 @@ public final class NativeCommentServlet$3
       str2 = ((JSONObject)localObject1).getString("retmsg");
       if (i != 0)
       {
-        this.jdField_a_of_type_Nun.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.b, i, str2);
+        this.jdField_a_of_type_Ofy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.b, i, str2);
         return;
       }
       localObject1 = ((JSONObject)localObject1).getJSONObject("result");

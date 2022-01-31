@@ -1,36 +1,65 @@
-import android.os.Handler;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnSeekCompleteListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.11.1;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class bdjs
-  implements VideoPlayerProxy.OnSeekCompleteListener
+  extends SQLiteOpenHelper
 {
-  public bdjs(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
+  protected static bdjs a;
+  protected String a;
+  protected String b = "CREATE TABLE IF NOT EXISTS table_old_data( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
+  protected String c = "CREATE TABLE IF NOT EXISTS table_appcircle_setting(_id INTEGER PRIMARY KEY AUTOINCREMENT,uin TEXT,key TEXT,value TEXT,data BLOB);";
+  protected String d = "CREATE TABLE IF NOT EXISTS table_appcircle_report( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
   
-  public void onSeekComplete(VideoPlayerProxy paramVideoPlayerProxy)
+  protected bdjs(Context paramContext)
   {
-    bdew.c().post(new MiniAppVideoPlayer.11.1(this));
+    super(paramContext, "open_report.db", null, 3);
+    this.jdField_a_of_type_JavaLangString = "CREATE TABLE IF NOT EXISTS table_new_data( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
+  }
+  
+  public static bdjs a(Context paramContext)
+  {
     try
     {
-      paramVideoPlayerProxy = new JSONObject();
-      paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_Bdcy.a("onVideoSeeked", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
-      bdnw.a("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoSeeked = " + paramVideoPlayerProxy.toString());
-      return;
+      if (jdField_a_of_type_Bdjs == null) {
+        jdField_a_of_type_Bdjs = new bdjs(paramContext);
+      }
+      paramContext = jdField_a_of_type_Bdjs;
+      return paramContext;
     }
-    catch (JSONException paramVideoPlayerProxy)
-    {
-      paramVideoPlayerProxy.printStackTrace();
-    }
+    finally {}
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  {
+    bdht.b("opensdk", "sql1:" + this.jdField_a_of_type_JavaLangString);
+    bdht.b("opensdk", "sql2:" + this.b);
+    paramSQLiteDatabase.execSQL(this.jdField_a_of_type_JavaLangString);
+    paramSQLiteDatabase.execSQL(this.b);
+    Log.i("ReportSqliteHelper", "circleTest create table:" + this.c);
+    paramSQLiteDatabase.execSQL(this.c);
+  }
+  
+  public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_new_data");
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_old_data");
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_appcircle_setting");
+    onCreate(paramSQLiteDatabase);
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_new_data");
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_old_data");
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_appcircle_setting");
+    onCreate(paramSQLiteDatabase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdjs
  * JD-Core Version:    0.7.0.1
  */

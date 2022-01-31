@@ -1,19 +1,34 @@
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class acpm
-  implements OnCompositionLoadedListener
+public class acpm
+  extends aume
 {
-  acpm(acpj paramacpj) {}
+  public acpm(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    acpj.a(this.a, paramLottieComposition);
+    if (QLog.isColorLevel()) {
+      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
+    }
+    this.a.a();
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        VerifyPhoneNumActivity.a(this.a, true);
+        VerifyPhoneNumActivity.c(this.a);
+        return;
+      }
+      VerifyPhoneNumActivity.c(this.a);
+      return;
+    }
+    VerifyPhoneNumActivity.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acpm
  * JD-Core Version:    0.7.0.1
  */

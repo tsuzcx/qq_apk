@@ -1,21 +1,23 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Point;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFloatWindowDragLayout;
 
-class qnk
-  implements View.OnClickListener
+public class qnk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  qnk(qni paramqni, Activity paramActivity) {}
+  public qnk(VideoFeedsFloatWindowDragLayout paramVideoFeedsFloatWindowDragLayout, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
-    {
-      QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to recommend feeds");
-      qpt.a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2130772288);
-      this.jdField_a_of_type_Qni.b();
+    WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout.getLayoutParams();
+    int i = this.jdField_a_of_type_Int;
+    localLayoutParams.x = (((Point)paramValueAnimator.getAnimatedValue()).x + i);
+    i = this.b;
+    localLayoutParams.y = (((Point)paramValueAnimator.getAnimatedValue()).y + i);
+    if (VideoFeedsFloatWindowDragLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout) != null) {
+      VideoFeedsFloatWindowDragLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout).a();
     }
   }
 }

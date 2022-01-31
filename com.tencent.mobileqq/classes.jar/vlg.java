@@ -1,13 +1,28 @@
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-final class vlg
-  extends ThreadLocal<DateFormat>
+class vlg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  protected DateFormat a()
+  vlg(vlf paramvlf) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+    if (vld.a(this.a.a) == null) {
+      return;
+    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.l = (this.a.d + this.a.f * f);
+    this.a.m = (this.a.e + this.a.g * f);
+    this.a.j = (this.a.b + this.a.h * f);
+    this.a.k = (this.a.c + this.a.i * f);
+    if (this.a.a.a != null) {
+      this.a.a.a.a(f);
+    }
+    if (f == 1.0F) {
+      vld.a(this.a.a, null);
+    }
+    vld.a(this.a.a);
   }
 }
 

@@ -1,48 +1,28 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
 
-public class tzd
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, syv>
+final class tzd
+  extends AnimatorListenerAdapter
 {
-  public tzd(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  tzd(Animator.AnimatorListener paramAnimatorListener) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super.onAnimationCancel(paramAnimator);
+    this.a.onAnimationCancel(paramAnimator);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull syv paramsyv)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!paramQQStoryShareGroupProfileActivity.g) {}
-    tzq localtzq;
-    Object localObject1;
-    do
-    {
-      return;
-      Object localObject2 = null;
-      localtzq = paramQQStoryShareGroupProfileActivity.a.a;
-      Iterator localIterator = paramQQStoryShareGroupProfileActivity.a.a.a.iterator();
-      do
-      {
-        localObject1 = localObject2;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject1 = (HotSortVideoEntry)localIterator.next();
-      } while (!((HotSortVideoEntry)localObject1).storyId.equals(paramsyv.a));
-    } while (localObject1 == null);
-    ((HotSortVideoEntry)localObject1).viewCount += 1;
-    ((spn)sqg.a(25)).a((HotSortVideoEntry)localObject1);
-    localtzq.a((HotSortVideoEntry)localObject1);
-    paramQQStoryShareGroupProfileActivity.d = true;
+    veg.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation, onAnimationEnd");
+    this.a.onAnimationEnd(paramAnimator);
   }
   
-  public Class acceptEventClass()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return syv.class;
+    super.onAnimationStart(paramAnimator);
+    this.a.onAnimationStart(paramAnimator);
   }
 }
 

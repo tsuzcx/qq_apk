@@ -3,42 +3,47 @@ package com.tencent.qqmini.sdk.ipc;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import bdct;
-import bdkt;
-import bdnw;
+import android.os.Messenger;
+import begs;
+import beox;
+import bepk;
+import besf;
+import besl;
 
 public class AppMainService
   extends Service
 {
   public IBinder onBind(Intent paramIntent)
   {
-    paramIntent = paramIntent.getStringExtra("mini_process_name");
-    bdnw.c("minisdk-start_AppMainService", "AppBrandMainService Service Binded. pName=" + paramIntent);
-    return new bdkt(this, paramIntent);
+    String str = paramIntent.getStringExtra("mini_process_name");
+    paramIntent = (Messenger)paramIntent.getParcelableExtra("mini_process_messenger");
+    besl.c("minisdk-start_AppMainService", "AppBrandMainService Service Binded. pName=" + str + " messenger:" + paramIntent);
+    bepk.a().a().registerClientMessenger(str, paramIntent);
+    return new beox(this, str);
   }
   
   public void onCreate()
   {
-    bdnw.c("minisdk-start_AppMainService", "AppMainService Service onCreate~~~");
-    bdct.a(getApplicationContext(), null);
+    besl.c("minisdk-start_AppMainService", "AppMainService Service onCreate~~~");
+    begs.a(getApplicationContext());
     super.onCreate();
   }
   
   public void onDestroy()
   {
-    bdnw.c("minisdk-start_AppMainService", "AppMainService Service onDestroy~~~");
+    besl.c("minisdk-start_AppMainService", "AppMainService Service onDestroy~~~");
     super.onDestroy();
   }
   
   public void onStart(Intent paramIntent, int paramInt)
   {
-    bdnw.c("minisdk-start_AppMainService", "AppMainService Service onStart~~~");
+    besl.c("minisdk-start_AppMainService", "AppMainService Service onStart~~~");
     super.onStart(paramIntent, paramInt);
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
-    bdnw.c("minisdk-start_AppMainService", "AppMainService Service onUnbind~~~");
+    besl.c("minisdk-start_AppMainService", "AppMainService Service onUnbind~~~");
     return super.onUnbind(paramIntent);
   }
 }

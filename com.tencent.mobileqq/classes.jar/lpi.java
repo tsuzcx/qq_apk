@@ -1,62 +1,93 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.so.DownloadInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class lpi
-  extends BroadcastReceiver
+public class lpi
 {
-  lpi(lph paramlph) {}
+  private static lpi jdField_a_of_type_Lpi;
+  int jdField_a_of_type_Int = 0;
   
-  public void onReceive(Context arg1, Intent paramIntent)
+  public static lpi a()
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    for (;;)
+    try
     {
-      return;
-      if (!"tencent.video.somgr.notify".equals(paramIntent.getAction())) {
-        continue;
-      }
-      int i = paramIntent.getIntExtra("Event_Progress", 0);
-      if ((i == 100) || (i < 0))
+      lpi locallpi;
+      if (jdField_a_of_type_Lpi != null)
       {
-        this.a.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
-        int j = this.a.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_Int = lpj.a(this.a.jdField_a_of_type_ComTencentAvSoDownloadInfo);
-        boolean bool;
-        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11))
-        {
-          bool = true;
-          QLog.i("QavSo", 1, String.format("receive notify, lastStatus[%s], progress[%s], mStatusSo[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentAvSoDownloadInfo }));
-          paramIntent = new ArrayList();
-        }
-        synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-        {
-          paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-          ??? = paramIntent.iterator();
-          while (???.hasNext()) {
-            ((lpd)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
-          }
-          bool = false;
-        }
+        locallpi = jdField_a_of_type_Lpi;
+        return locallpi;
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavSo", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
-      }
-      paramIntent = new ArrayList();
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-      {
-        paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-        ??? = paramIntent.iterator();
-        if (!???.hasNext()) {
-          continue;
-        }
-        ((lpd)???.next()).a(i);
-      }
+      return null;
     }
+    finally
+    {
+      try
+      {
+        jdField_a_of_type_Lpi = new lpi();
+        locallpi = jdField_a_of_type_Lpi;
+        return locallpi;
+      }
+      catch (Exception localException) {}
+      localObject = finally;
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    if (lgo.a(BaseApplicationImpl.getContext()).a("sharp/EffectFilterDeviceConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean b()
+  {
+    boolean bool = false;
+    if (lgo.a(BaseApplicationImpl.getContext()).a("sharp/qavGestureConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean c()
+  {
+    boolean bool = false;
+    if (lgo.a(BaseApplicationImpl.getContext()).a("sharp/qavRedbagConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean d()
+  {
+    boolean bool = false;
+    if (lgo.a(BaseApplicationImpl.getContext()).a("sharp/qavScreenRecoder/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean e()
+  {
+    boolean bool = false;
+    if (lgo.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean f()
+  {
+    return lgo.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/enable", 0) == 1;
+  }
+  
+  public boolean g()
+  {
+    return lgo.a(BaseApplicationImpl.getContext()).a("sharp/CameraFocusMethod/isUseSelfDev", 0) == 1;
+  }
+  
+  public boolean h()
+  {
+    return 1 == lgo.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDetectInversion/Inversion", 0);
   }
 }
 

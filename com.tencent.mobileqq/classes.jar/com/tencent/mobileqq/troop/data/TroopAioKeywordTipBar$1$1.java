@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.data;
 
-import ayme;
-import aymf;
+import azmu;
+import azmv;
 
 public class TroopAioKeywordTipBar$1$1
   implements Runnable
 {
-  public TroopAioKeywordTipBar$1$1(aymf paramaymf) {}
+  public TroopAioKeywordTipBar$1$1(azmv paramazmv) {}
   
   public void run()
   {
-    ayme.a(this.a.a, false);
+    azmu.a(this.a.a, false);
   }
 }
 

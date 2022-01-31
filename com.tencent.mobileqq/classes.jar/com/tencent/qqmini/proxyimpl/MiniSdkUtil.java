@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bdfx;
+import bejy;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.qphone.base.util.QLog;
@@ -20,12 +20,12 @@ public class MiniSdkUtil
   private static String sCurrentAppid;
   private static boolean sIsLoad;
   
-  public static ApkgInfo convert(bdfx parambdfx, MiniAppConfig paramMiniAppConfig)
+  public static ApkgInfo convert(bejy parambejy, MiniAppConfig paramMiniAppConfig)
   {
-    if ((parambdfx == null) || (paramMiniAppConfig == null)) {
+    if ((parambejy == null) || (paramMiniAppConfig == null)) {
       return null;
     }
-    return new ApkgInfo(parambdfx.jdField_a_of_type_JavaLangString, paramMiniAppConfig);
+    return new ApkgInfo(parambejy.jdField_a_of_type_JavaLangString, paramMiniAppConfig);
   }
   
   public static com.tencent.mobileqq.mini.apkg.ExtConfigInfo convert(com.tencent.qqmini.sdk.launcher.model.ExtConfigInfo paramExtConfigInfo)
@@ -578,26 +578,28 @@ public class MiniSdkUtil
   {
     boolean bool = true;
     int i;
-    label200:
+    label218:
     do
     {
       for (;;)
       {
         try
         {
-          Object localObject = QzoneConfig.getInstance().getConfig("qqtriton", "newsdkgrayappid", "1108197111|1108196450|1109298876|1109149265").split("\\|");
+          Object localObject = QzoneConfig.getInstance().getConfig("qqtriton", "newsdkgrayappid", "1108197111|1108196450|1109298876|1109149265|1108149561|1109836759|363|1108996570|1109609286").split("\\|");
           ArrayList localArrayList = new ArrayList();
           localArrayList.addAll(Arrays.asList((Object[])localObject));
           localArrayList.add("1108327904");
           localArrayList.add("1105821066");
           localArrayList.add("1108617468");
+          localArrayList.add("1108802591");
+          localArrayList.add("1108136456");
           localObject = localArrayList.iterator();
           i = 0;
           if (!((Iterator)localObject).hasNext()) {
             break;
           }
           if (!paramString.equals((String)((Iterator)localObject).next())) {
-            break label200;
+            break label218;
           }
           i = 1;
         }

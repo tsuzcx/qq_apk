@@ -1,77 +1,27 @@
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
+import java.lang.ref.WeakReference;
 
 public class aaxq
-  extends awnt
+  extends akfl
 {
-  public aaxq(GeneralSettingActivity paramGeneralSettingActivity) {}
+  private WeakReference<Conversation> a;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public aaxq(Conversation paramConversation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("GeneralSettingActivity", 2, String.format("%s onReqGetSimpleUISwitch suc=%b [%b,%d]", new Object[] { "SimpleUILog", Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt) }));
-    }
-    if ((!paramBoolean1) || (!this.a.app.getCurrentAccountUin().equals(paramString))) {}
-    while ((GeneralSettingActivity.a(this.a, this.a.a)) || (!this.a.a())) {
-      return;
-    }
+    this.a = new WeakReference(paramConversation);
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
+  public void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("GeneralSettingActivity", 2, String.format("%s onSwitchSimpleUICallback suc=%b bSwitchElsePref=%b hasChange=%b statusCode=%d", new Object[] { "SimpleUILog", Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean3), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt) }));
+      QLog.d("Q.recent", 2, "cameraRedTouchObserver notify dataChanged");
     }
-    Object localObject;
-    label177:
-    String str;
-    if (paramBoolean3)
+    Conversation localConversation = (Conversation)this.a.get();
+    if (localConversation != null)
     {
-      paramBoolean2 = this.a.a.a().isChecked();
-      if (paramBoolean1)
-      {
-        if (paramBoolean2) {
-          this.a.a(this.a.getString(2131653567, new Object[] { ajjy.a(2131639458) }), 2);
-        }
-        GeneralSettingActivity.a(this.a, false, this.a.a);
-        this.a.a(awnu.b(), awnu.c());
-        if (paramBoolean1) {
-          bgfw.a();
-        }
-        return;
-      }
-      this.a.a(this.a.a.a(), awnu.b());
-      if (paramBoolean2)
-      {
-        localObject = ajjy.a(2131639456);
-        str = this.a.getString(2131653566, new Object[] { localObject });
-        if (1 != paramInt) {
-          break label259;
-        }
-        localObject = ajjy.a(2131639453) + (String)localObject + ajjy.a(2131639454);
-      }
-    }
-    for (;;)
-    {
-      this.a.a((String)localObject, 1);
-      break;
-      localObject = ajjy.a(2131639457);
-      break label177;
-      label259:
-      if (6 == paramInt)
-      {
-        localObject = str + ajjy.a(2131639452);
-        continue;
-        if (paramBoolean1) {
-          break;
-        }
-        this.a.a(2131653564, 1);
-        break;
-      }
-      localObject = str;
+      localConversation.f(false);
+      Conversation.g(localConversation);
     }
   }
 }

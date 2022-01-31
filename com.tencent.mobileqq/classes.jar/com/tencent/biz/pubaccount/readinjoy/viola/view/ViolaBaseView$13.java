@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import rno;
+import saf;
 
 class ViolaBaseView$13
   implements Runnable
@@ -9,7 +9,7 @@ class ViolaBaseView$13
   
   public void run()
   {
-    ViolaBaseView.a(this.this$0).a(this.a);
+    ViolaBaseView.a(this.this$0).b(this.a);
   }
 }
 

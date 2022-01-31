@@ -1,29 +1,19 @@
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
-import java.net.URL;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class nag
-  implements sch
+class nag
+  implements DialogInterface.OnCancelListener
 {
-  public nag(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  nag(nae paramnae) {}
   
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    ReadInJoyNativeAdFragment.b(this.a, 3);
-  }
-  
-  public void a(URL paramURL, rcs paramrcs)
-  {
-    ReadInJoyNativeAdFragment.b(this.a, 2);
-    ReadInJoyNativeAdFragment.a(this.a).setPublicAccountImageDownListener(null);
-    ReadInJoyNativeAdFragment.a(this.a, null);
+    nae.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     nag
  * JD-Core Version:    0.7.0.1
  */

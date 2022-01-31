@@ -1,28 +1,74 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.EditText;
 
-class bhla
-  implements begh
+final class bhla
+  implements anyb
 {
-  int jdField_a_of_type_Int = 0;
+  bhla(EditText paramEditText) {}
   
-  bhla(bhkz parambhkz) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(anyc paramanyc)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    if ((paramanyc == null) || (this.a == null)) {}
+    int i;
+    int j;
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramanyc instanceof aocr));
+      i = this.a.getSelectionStart();
+      j = this.a.getSelectionEnd();
+    } while ((i < 0) || (j < 0) || (j < i) || (this.a == null) || (this.a.getEditableText() == null));
+    this.a.getEditableText().replace(i, j, ayla.c(((aocr)paramanyc).a));
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(anyc paramanyc1, anyc paramanyc2, Drawable paramDrawable) {}
+  
+  public boolean a(anyc paramanyc)
   {
-    if ((paramInt == 0) && (bhkz.a(this.jdField_a_of_type_Bhkz).a() != null) && (this.jdField_a_of_type_Int == bhkz.a(this.jdField_a_of_type_Bhkz).a().size() - 1)) {
-      bhkz.a(this.jdField_a_of_type_Bhkz).a();
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a == null) {}
+    for (;;)
+    {
+      return;
+      if (this.a.getSelectionStart() != 0) {
+        try
+        {
+          Editable localEditable = this.a.getText();
+          int i = this.a.getSelectionStart();
+          int j = TextUtils.getOffsetBefore(this.a.getText(), i);
+          if (i != j)
+          {
+            localEditable.delete(Math.min(i, j), Math.max(i, j));
+            return;
+          }
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
+      }
     }
   }
+  
+  public void b(anyc paramanyc) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhla
  * JD-Core Version:    0.7.0.1
  */

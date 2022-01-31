@@ -1,55 +1,19 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class xcm
-  extends WebViewPlugin
+  implements xdj
 {
-  public xcm()
-  {
-    this.mPluginNameSpace = "openToAppDetail";
-  }
+  public xcm(TroopGiftPanel paramTroopGiftPanel, long paramLong1, long paramLong2) {}
   
-  public void a(String paramString1, String paramString2)
-  {
-    a(paramString1, paramString2, null);
-  }
+  public void a(int paramInt) {}
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public void a(List<bald> paramList)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("uin", this.mRuntime.a().getCurrentAccountUin());
-    localBundle.putString("sid", this.mRuntime.a().getIntent().getStringExtra("vkey"));
-    localBundle.putString("via", "ANDROIDQQ.STORE.APPDETAIL.SHARE2QQ");
-    if ((paramString2 != null) && (paramString2.equals("true"))) {
-      localBundle.putBoolean("autoDownload", true);
-    }
-    if (paramString3 != null) {
-      localBundle.putString("packageName", paramString3);
-    }
-    bcau.a(this.mRuntime.a(), paramString1, 2470, localBundle);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (!"openToAppDetail".equals(paramString2)) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (!"openAppDetailPage".equals(paramString3));
-      if (paramVarArgs.length == 2)
-      {
-        a(paramVarArgs[0], paramVarArgs[1]);
-        return true;
-      }
-    } while (paramVarArgs.length != 3);
-    a(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2]);
-    return true;
+    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.a(paramList);
+    long l = System.currentTimeMillis();
+    QLog.d("TroopGiftPanel.time", 1, "setGiftData, reqTime=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.b));
   }
 }
 

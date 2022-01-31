@@ -1,21 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
-
-public class aglz
-  implements DialogInterface.OnClickListener
+final class aglz
+  extends aglx
 {
-  public aglz(TransactionActivity paramTransactionActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(String paramString)
   {
-    this.a.a(TransactionActivity.b(this.a), 128, "transfer.amount.go", "", "", TransactionActivity.b(this.a), "");
-    this.a.b();
+    if (!super.a(paramString)) {}
+    String[] arrayOfString;
+    do
+    {
+      return false;
+      arrayOfString = agmo.a(paramString);
+    } while ((arrayOfString != null) && ((("image".equals(arrayOfString[0])) && (agmo.a(arrayOfString[1]))) || (agmo.b(paramString))));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aglz
  * JD-Core Version:    0.7.0.1
  */

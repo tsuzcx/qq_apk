@@ -1,29 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewImplement;
-import com.tencent.ark.ArkViewModel;
-import com.tencent.mobileqq.search.rich.ArkAppView;
-
 class avte
-  implements View.OnClickListener
 {
-  avte(avtd paramavtd) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int b;
   
-  public void onClick(View paramView)
+  public avte(avtd paramavtd, String paramString, int paramInt1, int paramInt2)
   {
-    paramView = null;
-    if (avtd.a(this.a) != null) {
-      paramView = avtd.a(this.a).mViewImpl.getViewModel();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      return this.b * 100 / this.jdField_a_of_type_Int;
     }
-    if (paramView == null) {
-      return;
-    }
-    paramView.reinitArkContainer();
+    return 0;
+  }
+  
+  public void a()
+  {
+    this.b += 1;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int += 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avte
  * JD-Core Version:    0.7.0.1
  */

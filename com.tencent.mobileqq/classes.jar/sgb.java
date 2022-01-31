@@ -1,25 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.5;
 
 class sgb
-  extends SimpleJob<Object>
+  implements DialogInterface.OnClickListener
 {
-  sgb(sga paramsga, String paramString, boolean paramBoolean)
-  {
-    super(paramString);
-  }
+  sgb(sga paramsga) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Sga.b(this.jdField_a_of_type_Boolean);
-    return null;
+    ajwe.a();
+    this.a.a.this$0.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sgb
  * JD-Core Version:    0.7.0.1
  */

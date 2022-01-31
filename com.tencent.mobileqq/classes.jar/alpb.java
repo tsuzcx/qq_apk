@@ -1,25 +1,42 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
 
-public class alpb
-  implements View.OnClickListener
+final class alpb
+  implements alvo
 {
-  public alpb(BusinessCardEditActivity paramBusinessCardEditActivity) {}
-  
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()))
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp", 2, "ArkSafe.report onDisableReport");
+    }
+    alvk.a().a(null);
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp", 2, new Object[] { "ArkSafe.report onReportUrlCheck content=", paramString });
+    }
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localObject instanceof QQAppInterface)) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
     {
-      this.a.a.dismiss();
-      this.a.a = null;
+      if (localObject != null)
+      {
+        localObject = ((ArkAppCenter)((QQAppInterface)localObject).getManager(121)).a();
+        if (localObject != null) {
+          ((alsc)localObject).a(paramString);
+        }
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alpb
  * JD-Core Version:    0.7.0.1
  */

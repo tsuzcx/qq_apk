@@ -177,9 +177,9 @@ class VipProfileCardDiyActivity$11
     //   352: astore 6
     //   354: aload_0
     //   355: getfield 14	com/tencent/mobileqq/activity/VipProfileCardDiyActivity$11:this$0	Lcom/tencent/mobileqq/activity/VipProfileCardDiyActivity;
-    //   358: getfield 172	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:jdField_a_of_type_Befq	Lbefq;
+    //   358: getfield 172	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:jdField_a_of_type_Bfnk	Lbfnk;
     //   361: iconst_3
-    //   362: invokevirtual 178	befq:obtainMessage	(I)Landroid/os/Message;
+    //   362: invokevirtual 178	bfnk:obtainMessage	(I)Landroid/os/Message;
     //   365: invokevirtual 183	android/os/Message:sendToTarget	()V
     //   368: aload 7
     //   370: ifnull -232 -> 138

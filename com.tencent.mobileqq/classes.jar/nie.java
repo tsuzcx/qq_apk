@@ -1,16 +1,19 @@
+import android.os.AsyncTask;
+
 class nie
-  implements ohx
+  extends AsyncTask<Void, Void, Void>
 {
-  nie(nia paramnia) {}
+  nie(nid paramnid, abgm paramabgm) {}
   
-  public void l()
+  protected Void a(Void... paramVarArgs)
   {
-    nia.d(this.a);
+    this.jdField_a_of_type_Nid.a.a(this.jdField_a_of_type_Abgm);
+    return null;
   }
   
-  public void m()
+  protected void a(Void paramVoid)
   {
-    nia.e(this.a);
+    this.jdField_a_of_type_Nid.a.a(-1);
   }
 }
 

@@ -1,12 +1,16 @@
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 class adlj
+  extends acun
 {
-  public int a;
-  public long a;
+  public LinearLayout a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  adlj(adlh paramadlh)
-  {
-    this.jdField_a_of_type_Long = -1L;
-  }
+  adlj(adli paramadli) {}
 }
 
 

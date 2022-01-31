@@ -1,20 +1,21 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
 
-class aqhq
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+public class aqhq
+  implements View.OnClickListener
 {
-  aqhq(aqhl paramaqhl) {}
+  public aqhq(LangSettingFragment paramLangSettingFragment) {}
   
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(View paramView)
   {
-    this.a.a.start();
-    this.a.c = 2;
+    LangSettingFragment.a(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqhq
  * JD-Core Version:    0.7.0.1
  */

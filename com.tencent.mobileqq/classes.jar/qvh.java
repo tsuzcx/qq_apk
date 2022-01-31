@@ -1,18 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.ExtraInfo;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class qvh
-  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.ExtraInfo>
+class qvh
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public RecommendFeedsDiandianEntranceManager.ExtraInfo a(Parcel paramParcel)
-  {
-    return new RecommendFeedsDiandianEntranceManager.ExtraInfo(paramParcel);
-  }
+  qvh(qvd paramqvd) {}
   
-  public RecommendFeedsDiandianEntranceManager.ExtraInfo[] a(int paramInt)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    return new RecommendFeedsDiandianEntranceManager.ExtraInfo[paramInt];
+    int i = paramSeekBar.getProgress();
+    int j = qvd.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoUIManager", 2, "onStopTrackingTouch(): progress=" + i + ", playState=" + qua.a(j));
+    }
+    if (j == 3) {
+      qvd.a(this.a).a(i * 1000, qvd.a(this.a));
+    }
+    while (j != 5) {
+      return;
+    }
+    qvd.a(this.a).c(i * 1000);
   }
 }
 

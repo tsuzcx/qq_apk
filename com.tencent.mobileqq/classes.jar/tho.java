@@ -1,35 +1,22 @@
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import com.tencent.widget.AbsListView;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tho
-  implements begh
+  extends QQUIEventReceiver<thk, tch>
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  int c = 0;
-  
-  public tho(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public tho(@NonNull thk paramthk)
   {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
+    super(paramthk);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(@NonNull thk paramthk, @NonNull tch paramtch)
   {
-    if ((paramInt == 0) && (this.c + this.jdField_a_of_type_Int >= this.b))
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.b) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(3);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(1);
-    thq.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a);
+    paramthk.a.b(paramtch);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tch.class;
   }
 }
 

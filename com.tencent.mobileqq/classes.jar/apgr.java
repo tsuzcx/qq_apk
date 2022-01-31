@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.flashchat.FlashChatItem;
-
-public class apgr
+public abstract interface apgr
 {
-  public int a;
-  public FlashChatItem a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
+  public abstract void a();
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(Object paramObject, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apgr
  * JD-Core Version:    0.7.0.1
  */

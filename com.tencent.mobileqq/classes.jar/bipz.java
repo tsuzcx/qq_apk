@@ -1,93 +1,52 @@
-import android.animation.TimeInterpolator;
-import android.animation.TypeEvaluator;
-import java.util.ArrayList;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.view.OrientationListener;
 
-public class bipz
-  implements TypeEvaluator<ArrayList<Integer>>
+class bipz
+  implements SensorEventListener
 {
-  private long jdField_a_of_type_Long;
-  private ArrayList<biqa> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ArrayList<Integer> b = new ArrayList();
-  private ArrayList<Integer> c = new ArrayList();
-  private ArrayList<Integer> d = new ArrayList();
-  private ArrayList<TimeInterpolator> e = new ArrayList();
+  bipz(bipy parambipy) {}
   
-  public int a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, TimeInterpolator paramTimeInterpolator)
-  {
-    int i = this.c.size();
-    paramString = new biqa(paramLong1, paramLong2, i);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-    this.c.add(Integer.valueOf(paramInt1));
-    this.d.add(Integer.valueOf(paramInt2));
-    this.e.add(paramTimeInterpolator);
-    if (paramLong1 + paramLong2 > this.jdField_a_of_type_Long) {
-      this.jdField_a_of_type_Long = (paramLong1 + paramLong2);
-    }
-    return i;
-  }
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
-  public long a()
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public ArrayList<Integer> a()
-  {
-    return this.d;
-  }
-  
-  public ArrayList<Integer> a(float paramFloat, ArrayList<Integer> paramArrayList1, ArrayList<Integer> paramArrayList2)
-  {
-    if ((paramArrayList1.isEmpty()) || (paramArrayList2.isEmpty())) {
-      return null;
-    }
-    if (paramArrayList1.size() != paramArrayList2.size()) {
-      return null;
-    }
-    int j = paramArrayList1.size();
-    if (this.b == null) {
-      this.b = new ArrayList();
-    }
-    this.b.clear();
-    int i = 0;
-    if (i < j)
+    float[] arrayOfFloat = paramSensorEvent.values;
+    int j = -1;
+    float f1 = -arrayOfFloat[0];
+    float f2 = -arrayOfFloat[1];
+    float f3 = -arrayOfFloat[2];
+    if ((f1 * f1 + f2 * f2) * 35.0F >= f3 * f3)
     {
-      int k = ((Integer)paramArrayList1.get(i)).intValue();
-      int m = ((Integer)paramArrayList2.get(i)).intValue();
-      long l1 = ((biqa)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Long;
-      long l2 = ((biqa)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b;
-      int n = (int)((float)this.jdField_a_of_type_Long * paramFloat);
-      if (n < l1) {
-        this.b.add(Integer.valueOf(0));
+      j = 90 - Math.round(57.29578F * (float)Math.atan2(-f2, f1));
+      int i;
+      for (;;)
+      {
+        i = j;
+        if (j < 360) {
+          break;
+        }
+        j -= 360;
       }
       for (;;)
       {
-        i += 1;
-        break;
-        if (n > l1 + l2)
-        {
-          this.b.add(Integer.valueOf(m));
+        j = i;
+        if (i >= 0) {
+          break;
         }
-        else
-        {
-          float f1 = ((TimeInterpolator)this.e.get(i)).getInterpolation((float)(n - l1) / (float)l2);
-          ArrayList localArrayList = this.b;
-          float f2 = k;
-          localArrayList.add(Integer.valueOf((int)(f1 * (m - k) + f2)));
-        }
+        i += 360;
       }
     }
-    return this.b;
-  }
-  
-  public ArrayList<Integer> a(long paramLong)
-  {
-    return a((float)paramLong / (float)this.jdField_a_of_type_Long, this.c, this.d);
-  }
-  
-  public ArrayList<Integer> b()
-  {
-    return this.c;
+    if (bipy.a(this.a) != null) {
+      bipy.a(this.a).onSensorChanged(1, paramSensorEvent.values);
+    }
+    if (j != bipy.a(this.a))
+    {
+      bipy.a(this.a, j);
+      this.a.a(j);
+    }
+    this.a.a((f1 + 9.8F) * 180.0F / 19.6F, (f2 + 9.8F) * 180.0F / 19.6F, (f3 + 9.8F) * 180.0F / 19.6F);
   }
 }
 

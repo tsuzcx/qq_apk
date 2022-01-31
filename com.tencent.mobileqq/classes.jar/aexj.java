@@ -1,10 +1,11 @@
-public abstract interface aexj<T>
+import java.util.List;
+
+public class aexj
 {
-  public abstract int a();
-  
-  public abstract void a(aexr paramaexr, T paramT, int paramInt);
-  
-  public abstract boolean a(T paramT, int paramInt);
+  public String a;
+  public List<? extends aewh> a;
+  public String b;
+  public List<? extends aewh> b;
 }
 
 

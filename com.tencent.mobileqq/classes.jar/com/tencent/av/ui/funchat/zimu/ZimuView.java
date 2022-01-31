@@ -21,11 +21,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import krx;
-import kws;
-import kxb;
-import kze;
-import mdb;
+import lcl;
+import lhh;
+import lhq;
+import lju;
+import moa;
 
 public abstract class ZimuView
   extends RelativeLayout
@@ -37,8 +37,8 @@ public abstract class ZimuView
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   protected Typeface a;
   protected VideoAppInterface a;
-  protected final List<mdb> a;
-  protected kze a;
+  protected final List<moa> a;
+  protected lju a;
   protected int b;
   protected long b;
   private Rect b;
@@ -58,10 +58,10 @@ public abstract class ZimuView
     paramContext = new DisplayMetrics();
     paramVideoAppInterface.getDefaultDisplay().getMetrics(paramContext);
     this.jdField_a_of_type_Float = paramContext.density;
-    setId(2131306822);
-    this.jdField_a_of_type_Kze = ((kze)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0));
+    setId(2131372532);
+    this.jdField_a_of_type_Lju = ((lju)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0));
     paramVideoAppInterface = a();
-    this.jdField_a_of_type_Kze.a(paramLong, paramVideoAppInterface);
+    this.jdField_a_of_type_Lju.a(paramLong, paramVideoAppInterface);
   }
   
   private long a(long paramLong)
@@ -77,7 +77,7 @@ public abstract class ZimuView
     }
     for (;;)
     {
-      krx.c("ZimuView", " Render Interval: " + l1 + "|" + (paramLong - this.jdField_b_of_type_Long));
+      lcl.c("ZimuView", " Render Interval: " + l1 + "|" + (paramLong - this.jdField_b_of_type_Long));
       l2 = l1;
       this.jdField_b_of_type_Long = paramLong;
       return l2;
@@ -90,70 +90,70 @@ public abstract class ZimuView
   
   public abstract String a();
   
-  protected abstract List<mdb> a(kws paramkws, boolean paramBoolean);
+  protected abstract List<moa> a(lhh paramlhh, boolean paramBoolean);
   
   void a()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      mdb localmdb = (mdb)localIterator.next();
+      moa localmoa = (moa)localIterator.next();
       localIterator.remove();
-      localmdb.b();
+      localmoa.b();
     }
   }
   
-  public void a(kws paramkws)
+  public void a(lhh paramlhh)
   {
-    if ((paramkws == null) || (TextUtils.isEmpty(paramkws.jdField_a_of_type_JavaLangCharSequence)) || (TextUtils.isEmpty(paramkws.jdField_a_of_type_JavaLangString)))
+    if ((paramlhh == null) || (TextUtils.isEmpty(paramlhh.jdField_a_of_type_JavaLangCharSequence)) || (TextUtils.isEmpty(paramlhh.jdField_a_of_type_JavaLangString)))
     {
       StringBuilder localStringBuilder = new StringBuilder().append("updateText error:");
-      if (paramkws == null) {}
-      for (paramkws = null;; paramkws = paramkws.toString())
+      if (paramlhh == null) {}
+      for (paramlhh = null;; paramlhh = paramlhh.toString())
       {
-        krx.e("ZimuView", paramkws);
+        lcl.e("ZimuView", paramlhh);
         return;
       }
     }
-    krx.e("ZimuView", "updateText :" + paramkws.toString());
-    if (!this.jdField_a_of_type_Kze.a())
+    lcl.e("ZimuView", "updateText :" + paramlhh.toString());
+    if (!this.jdField_a_of_type_Lju.a())
     {
       g();
-      this.jdField_a_of_type_Kze.b("updateText2", true);
+      this.jdField_a_of_type_Lju.b("updateText2", true);
     }
-    a(paramkws, false);
+    a(paramlhh, false);
   }
   
-  protected void a(kws paramkws, boolean paramBoolean)
+  protected void a(lhh paramlhh, boolean paramBoolean)
   {
-    setContentDescription(paramkws.jdField_a_of_type_JavaLangCharSequence);
+    setContentDescription(paramlhh.jdField_a_of_type_JavaLangCharSequence);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int j;
     for (int i = 0; localIterator.hasNext(); i = j)
     {
-      mdb localmdb = (mdb)localIterator.next();
+      moa localmoa = (moa)localIterator.next();
       j = i;
-      if (!localmdb.a.a())
+      if (!localmoa.a.a())
       {
         j = i;
-        if (localmdb.a.jdField_a_of_type_JavaLangString.equals(paramkws.jdField_a_of_type_JavaLangString))
+        if (localmoa.a.jdField_a_of_type_JavaLangString.equals(paramlhh.jdField_a_of_type_JavaLangString))
         {
           j = 1;
-          localmdb.a(paramkws);
+          localmoa.a(paramlhh);
         }
       }
     }
     if (i == 0)
     {
-      paramkws = a(paramkws, paramBoolean);
-      if (paramkws != null) {
-        this.jdField_a_of_type_JavaUtilList.addAll(paramkws);
+      paramlhh = a(paramlhh, paramBoolean);
+      if (paramlhh != null) {
+        this.jdField_a_of_type_JavaUtilList.addAll(paramlhh);
       }
     }
     e();
   }
   
-  protected void a(mdb parammdb) {}
+  protected void a(moa parammoa) {}
   
   public void a(boolean paramBoolean)
   {
@@ -164,32 +164,32 @@ public abstract class ZimuView
   
   protected int b()
   {
-    return 2131630106;
+    return 2131695793;
   }
   
   public void b()
   {
-    if (!this.jdField_a_of_type_Kze.a()) {
+    if (!this.jdField_a_of_type_Lju.a()) {
       f();
     }
   }
   
-  protected void b(mdb parammdb)
+  protected void b(moa parammoa)
   {
-    parammdb.c();
+    parammoa.c();
   }
   
   protected void c()
   {
     String str;
     Object localObject;
-    if ((this.jdField_a_of_type_AndroidGraphicsTypeface == null) && (this.jdField_a_of_type_Kze != null))
+    if ((this.jdField_a_of_type_AndroidGraphicsTypeface == null) && (this.jdField_a_of_type_Lju != null))
     {
       str = a();
-      localObject = (ZimuItem)this.jdField_a_of_type_Kze.a(str);
+      localObject = (ZimuItem)this.jdField_a_of_type_Lju.a(str);
       if (localObject != null)
       {
-        localObject = this.jdField_a_of_type_Kze.b((kxb)localObject);
+        localObject = this.jdField_a_of_type_Lju.b((lhq)localObject);
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
           localObject = new File((String)localObject + "font.ttf");
@@ -227,30 +227,30 @@ public abstract class ZimuView
     boolean bool1 = false;
     while (localIterator.hasNext())
     {
-      mdb localmdb = (mdb)localIterator.next();
-      localmdb.a(l2);
-      if (!localmdb.a())
+      moa localmoa = (moa)localIterator.next();
+      localmoa.a(l2);
+      if (!localmoa.a())
       {
-        if (localmdb.b())
+        if (localmoa.b())
         {
-          krx.c("ZimuView", "recycle barrage:" + localmdb);
-          localmdb.c();
-          b(localmdb);
+          lcl.c("ZimuView", "recycle barrage:" + localmoa);
+          localmoa.c();
+          b(localmoa);
         }
       }
       else
       {
         boolean bool2 = true;
         bool1 = bool2;
-        if (!localmdb.c()) {
+        if (!localmoa.c()) {
           continue;
         }
-        Bitmap localBitmap = localmdb.a();
+        Bitmap localBitmap = localmoa.a();
         if ((localBitmap != null) && (!localBitmap.isRecycled()))
         {
           paramCanvas.save();
-          int i = localmdb.a();
-          int j = localmdb.b();
+          int i = localmoa.a();
+          int j = localmoa.b();
           int k = localBitmap.getWidth();
           int m = localBitmap.getHeight();
           paramCanvas.clipRect(i, j, i + k, j + m);
@@ -260,17 +260,17 @@ public abstract class ZimuView
           paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
           paramCanvas.restore();
         }
-        krx.c("ZimuView", "onDraw: " + localmdb.toString());
+        lcl.c("ZimuView", "onDraw: " + localmoa.toString());
         bool1 = bool2;
         continue;
       }
-      krx.c("ZimuView", "remove barrage:" + localmdb);
+      lcl.c("ZimuView", "remove barrage:" + localmoa);
       localIterator.remove();
-      a(localmdb);
-      localmdb.b();
+      a(localmoa);
+      localmoa.b();
     }
     l2 = System.currentTimeMillis();
-    krx.c("ZimuView", "onDraw needRefresh: " + bool1 + "|" + (l2 - l1));
+    lcl.c("ZimuView", "onDraw needRefresh: " + bool1 + "|" + (l2 - l1));
     if (bool1) {
       d();
     }
@@ -280,22 +280,22 @@ public abstract class ZimuView
   {
     super.invalidate();
     long l = System.currentTimeMillis();
-    krx.c("ZimuView", "Refresh interval:" + (l - this.jdField_a_of_type_Long));
+    lcl.c("ZimuView", "Refresh interval:" + (l - this.jdField_a_of_type_Long));
     this.jdField_a_of_type_Long = l;
   }
   
   void f()
   {
     String str1 = getContext().getResources().getString(b());
-    String str2 = getContext().getResources().getString(2131630107);
-    a(new kws(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount(), str1, str2, 2), true);
+    String str2 = getContext().getResources().getString(2131695794);
+    a(new lhh(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount(), str1, str2, 2), true);
   }
   
   void g()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((mdb)localIterator.next()).a(false);
+      ((moa)localIterator.next()).a(false);
     }
   }
   

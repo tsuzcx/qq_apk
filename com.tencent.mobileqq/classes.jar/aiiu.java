@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiiu
-  implements Comparator<aiiy>
+  extends akfb
 {
-  public aiiu(ApolloCmdChannel paramApolloCmdChannel) {}
+  public aiiu(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
   
-  public int a(aiiy paramaiiy1, aiiy paramaiiy2)
+  public void a(Object paramObject)
   {
-    return paramaiiy1.a() - paramaiiy2.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
+    }
+    if (paramObject != null) {
+      this.a.stopTitleProgress();
+    }
+    switch (((Integer)paramObject).intValue())
+    {
+    default: 
+      return;
+    }
+    QQSpecialCareSettingActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aiiu
  * JD-Core Version:    0.7.0.1
  */

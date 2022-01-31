@@ -1,74 +1,34 @@
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
+import java.lang.ref.WeakReference;
 
-public abstract class xfp
+public class xfp
+  extends Handler
 {
-  public HashMap<String, Integer> a = new HashMap();
+  private WeakReference<SquareRoundImageView> a;
   
-  public static long a(long paramLong)
+  private xfp(Looper paramLooper, SquareRoundImageView paramSquareRoundImageView)
   {
-    Object localObject = new ByteArrayOutputStream(8);
-    DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
-    try
+    super(paramLooper);
+    this.a = new WeakReference(paramSquareRoundImageView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1)
     {
-      localDataOutputStream.writeLong(paramLong);
-      localObject = ((ByteArrayOutputStream)localObject).toByteArray();
-      localObject[0] = 0;
-      localObject[1] = 0;
-      paramLong = new DataInputStream(new ByteArrayInputStream((byte[])localObject)).readLong();
-      return paramLong;
+      paramMessage = (SquareRoundImageView)this.a.get();
+      if (paramMessage != null) {
+        SquareRoundImageView.a(paramMessage);
+      }
     }
-    catch (IOException localIOException) {}
-    return 0L;
   }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    return null;
-  }
-  
-  public final <T> T a(byte[] paramArrayOfByte, String paramString, T paramT)
-  {
-    UniPacket localUniPacket = new UniPacket(true);
-    try
-    {
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      return localUniPacket.getByClass(paramString, paramT);
-    }
-    catch (Exception paramArrayOfByte) {}
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public abstract boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket);
-  
-  public byte[] a(ToServiceMsg paramToServiceMsg)
-  {
-    return null;
-  }
-  
-  public abstract String[] a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xfp
  * JD-Core Version:    0.7.0.1
  */

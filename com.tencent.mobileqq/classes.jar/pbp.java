@@ -1,18 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import java.util.List;
 
-public class pbp
-  implements sch
+public abstract interface pbp
 {
-  public void a(URL paramURL, int paramInt) {}
+  public abstract void a(SelectPositionModule.PositionData paramPositionData);
   
-  public void a(URL paramURL, Throwable paramThrowable) {}
-  
-  public void a(URL paramURL, rcs paramrcs)
-  {
-    QLog.d("NativeReadInjoyImageView", 2, "setImageDrawable: url is " + paramURL);
-    paramrcs.a();
-  }
+  public abstract void a(List<pcp> paramList);
 }
 
 

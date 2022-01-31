@@ -1,35 +1,88 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.biz.qqstory.takevideo.EditGifImage;
-import com.tencent.image.NativeGifImage;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.widget.FastAnimationDrawable;
+import android.content.Context;
+import android.text.SpannableStringBuilder;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView;
+import java.util.List;
 
-class usc
-  implements SeekBar.OnSeekBarChangeListener
+public class usc
+  extends wcr<ups>
 {
-  usc(usb paramusb) {}
+  public static final String KEY = "DetailLikeListSegment";
+  private upc jdField_a_of_type_Upc;
+  private ups jdField_a_of_type_Ups;
+  private urs jdField_a_of_type_Urs = new urs(2);
+  private urt jdField_a_of_type_Urt = new urt();
+  private boolean b;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public usc(Context paramContext)
   {
-    if (paramBoolean)
+    super(paramContext);
+  }
+  
+  public void R_()
+  {
+    if (((StoryDetailListView)a()).a())
     {
-      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
-      if (this.a.jdField_a_of_type_Uut.a.a != null) {
-        this.a.jdField_a_of_type_Uut.a.a.a(NativeGifImage.QZONE_DELAY);
-      }
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.e = NativeGifImage.QZONE_DELAY;
-      this.a.d = paramInt;
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
-      }
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ups != null) && (this.jdField_a_of_type_Ups.b(this.b).size() > 0)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, vas paramvas, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (TextView)paramvas.a(2131369189);
+    SpannableStringBuilder localSpannableStringBuilder = upz.a(this.jdField_a_of_type_Ups.a, this.jdField_a_of_type_Ups.b(this.b), this.jdField_a_of_type_Urs);
+    if (localSpannableStringBuilder.length() == 0)
+    {
+      paramViewGroup.setVisibility(8);
+      return paramvas.a();
+    }
+    if ((this.jdField_a_of_type_Ups.b(this.b) >= 30) && (this.jdField_a_of_type_Ups.b(this.b) > this.jdField_a_of_type_Ups.b(this.b).size())) {
+      localSpannableStringBuilder.append(String.format("等%s人赞了", new Object[] { vzo.a(this.jdField_a_of_type_Ups.b(this.b)) }));
+    }
+    for (;;)
+    {
+      paramViewGroup.setVisibility(0);
+      paramViewGroup.setText(localSpannableStringBuilder);
+      paramViewGroup.setOnTouchListener(this.jdField_a_of_type_Urt);
+      break;
+      localSpannableStringBuilder.append("赞了");
     }
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  public String a()
+  {
+    return "DetailLikeListSegment";
+  }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
+  public vas a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new vas(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561220, paramViewGroup, false));
+  }
+  
+  public void a(upc paramupc)
+  {
+    this.jdField_a_of_type_Upc = paramupc;
+    this.jdField_a_of_type_Urs.a(paramupc);
+  }
+  
+  public void a(ups paramups, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Ups = paramups;
+    this.b = paramBoolean;
+  }
 }
 
 

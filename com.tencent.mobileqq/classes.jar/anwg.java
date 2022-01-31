@@ -1,20 +1,9 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class anwg
-  implements Animation.AnimationListener
+public abstract class anwg
 {
-  public anwg(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.b();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle) {}
 }
 
 

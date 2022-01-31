@@ -1,83 +1,74 @@
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import org.json.JSONObject;
 
 public class obf
-  extends RecyclerView.Adapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<oqa> jdField_a_of_type_JavaUtilList = new ArrayList();
-  rfb jdField_a_of_type_Rfb;
-  private List<oqa> b = new ArrayList();
-  
-  public obf(Context paramContext, List<oqa> paramList1, List<oqa> paramList2)
+  public static void a(qqo paramqqo, Context paramContext, qub paramqub)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList1;
-    this.b = paramList2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void a(int paramInt, oqa paramoqa)
-  {
-    if (paramInt == 0) {
-      bgmq.a("readinjoy_show_recommend_reason_in_title_b", paramoqa.c);
-    }
-  }
-  
-  public int getItemCount()
-  {
-    int j = 0;
-    if (this.jdField_a_of_type_JavaUtilList != null) {}
-    for (int i = this.jdField_a_of_type_JavaUtilList.size();; i = 0)
+    boolean bool2 = true;
+    label57:
+    int i;
+    label114:
+    int j;
+    if (paramqub.e() == 0L)
     {
-      if (this.b != null) {
-        j = this.b.size();
+      paramqqo.jdField_a_of_type_Qbw.d = paramqqo.jdField_a_of_type_Qbw.e;
+      paramqqo.jdField_a_of_type_Qbw.e = ((int)paramqub.b());
+      qbw localqbw = paramqqo.jdField_a_of_type_Qbw;
+      if (paramqqo.jdField_a_of_type_Qbw.d != 0) {
+        break label268;
       }
-      return i + 0 + j;
+      bool1 = true;
+      localqbw.b = bool1;
+      paramqqo.jdField_a_of_type_Qbw.c = true;
+      localqbw = paramqqo.jdField_a_of_type_Qbw;
+      AdvertisementInfo localAdvertisementInfo = nmf.a(paramqqo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+      int k = localqbw.d;
+      int m = localqbw.e;
+      if (!localqbw.b) {
+        break label274;
+      }
+      i = 1;
+      if (!localqbw.c) {
+        break label279;
+      }
+      j = 1;
+      label125:
+      JSONObject localJSONObject = nmf.a(k, m, i, j, localqbw.f, 1, 0, nmf.aE, 0);
+      nmf.a(new nyg().a(paramContext).a(nmf.f).b(localqbw.g).a(localAdvertisementInfo).a(paramqqo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(localJSONObject).a());
+      paramqub.o();
+      paramqqo.jdField_a_of_type_Qbw.d = 0;
+      paramqqo.jdField_a_of_type_Qbw.e = 0;
+      paramContext = paramqqo.jdField_a_of_type_Qbw;
+      if (paramqqo.jdField_a_of_type_Qbw.d != 0) {
+        break label285;
+      }
     }
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt < this.b.size()) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    obi localobi = (obi)paramViewHolder;
-    if (paramInt >= this.b.size())
+    label268:
+    label274:
+    label279:
+    label285:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      paramInt -= this.b.size();
-      paramViewHolder = (oqa)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      localobi.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      localobi.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewHolder.b);
-      localobi.b.setText(paramViewHolder.d);
-      localobi.itemView.setOnClickListener(new obg(this, localobi, paramViewHolder, paramInt));
+      paramContext.b = bool1;
+      paramqqo.jdField_a_of_type_Qbw.c = false;
       return;
-      paramViewHolder = (oqa)this.b.get(paramInt);
-      localobi.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      paramqqo.jdField_a_of_type_Qbw.d = ((int)paramqub.e());
+      break;
+      bool1 = false;
+      break label57;
+      i = 0;
+      break label114;
+      j = 0;
+      break label125;
     }
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new obi(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131494380, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     obf
  * JD-Core Version:    0.7.0.1
  */

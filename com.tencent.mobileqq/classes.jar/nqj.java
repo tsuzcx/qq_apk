@@ -1,22 +1,73 @@
-import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-class nqj
-  extends qhx
+public class nqj
+  extends ampb<nqi>
 {
-  nqj(nqi paramnqi) {}
-  
-  public void a(qhw paramqhw)
+  public int a()
   {
-    super.a(paramqhw);
-    QLog.d("KandianAdPandent", 2, "onCompletion");
-    nqi.a(this.a).sendEmptyMessage(2);
+    return 32;
   }
   
-  public void a(qhw paramqhw, Object paramObject)
+  public Class<nqi> a()
   {
-    QLog.d("KandianAdPandent", 2, "onVideoPrepared");
-    nqi.a(this.a).f();
+    return nqi.class;
+  }
+  
+  @NonNull
+  public nqi a(int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        return nqi.a(bbjn.e(((QQAppInterface)localAppRuntime).getApplication()));
+      }
+    }
+    return new nqi();
+  }
+  
+  @Nullable
+  public nqi a(ampi[] paramArrayOfampi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountConfProcessor", 2, "[onParsed]");
+    }
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
+      return nqi.a(paramArrayOfampi);
+    }
+    return null;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(nqi paramnqi)
+  {
+    paramnqi.b();
+    paramnqi.a();
+  }
+  
+  public int b()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return bbjn.n(((QQAppInterface)localAppRuntime).getApp());
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

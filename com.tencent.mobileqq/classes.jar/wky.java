@@ -1,23 +1,22 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
 
 class wky
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  wky(wku paramwku) {}
+  wky(wkx paramwkx) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    int i = this.a.c.getMeasuredWidth();
-    i = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - i - bacc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 5.0F));
-    this.a.b.setMaxWidth(i);
-    this.a.b.setText(new axjq(this.a.jdField_a_of_type_Ayoo.g, 16).a());
+    if ((this.a.a() instanceof SubscribeBaseFragment)) {
+      ((SubscribeBaseFragment)this.a.a()).a(this.a.a(2));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wky
  * JD-Core Version:    0.7.0.1
  */

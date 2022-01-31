@@ -1,14 +1,28 @@
-public abstract interface bhlc
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import cooperation.qzone.share.QZoneShareActivity;
+
+public class bhlc
+  implements View.OnTouchListener
 {
-  public abstract void b();
+  public bhlc(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public abstract void bc_();
-  
-  public abstract void c();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.a.a();
+    if ((!this.a.c) && (this.a.a != null))
+    {
+      this.a.a.setHint("");
+      this.a.c = true;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhlc
  * JD-Core Version:    0.7.0.1
  */

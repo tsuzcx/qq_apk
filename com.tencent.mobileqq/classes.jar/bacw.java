@@ -1,34 +1,29 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class bacw
-  implements tfj
+  implements akig
 {
-  bacw(bacn parambacn) {}
+  bacw(bacv parambacv, String paramString1, String paramString2, bacx parambacx) {}
   
-  public void a(tav paramtav, bbms parambbms)
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    if ((parambbms != null) && (parambbms.isShowing())) {
-      parambbms.dismiss();
+    List localList = null;
+    if (paramTroopMemberInfo != null) {
+      localList = this.jdField_a_of_type_Bacv.a(paramTroopMemberInfo.honorList);
     }
-    tfh.a(this.a.a);
-    if ((paramtav != null) && (paramtav.jdField_a_of_type_Int == 0))
-    {
-      tfh.a(paramtav.jdField_a_of_type_JavaLangString, this.a.a);
-      bacn.a(this.a);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHonor.manager", 2, String.format("getTroopHonorList, troopUin: %s, memberUin: %s, honorList: %s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b, localList }));
     }
-    if (!badq.g(BaseApplicationImpl.getContext()))
-    {
-      bbmy.a(BaseApplicationImpl.getApplication(), 1, 2131628949, 1).a();
-      return;
+    if (this.jdField_a_of_type_Bacx != null) {
+      this.jdField_a_of_type_Bacx.a(localList);
     }
-    this.a.c = "open";
-    bacn.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bacw
  * JD-Core Version:    0.7.0.1
  */

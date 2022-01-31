@@ -1,59 +1,77 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.text.TextUtils;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class trj
-  implements TVK_SDKMgr.OnLogListener
+public abstract class trj
 {
-  public int a;
+  public ConcurrentHashMap<String, Object> a;
+  public trk a;
+  public boolean a;
+  public final String b;
+  public boolean b;
   
-  public int d(String paramString1, String paramString2)
+  public trj()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
+    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.share" + getClass().getSimpleName());
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  public int e(String paramString1, String paramString2)
+  public <T> T a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if ((paramString2 != null) && (paramString2.contains("INFO_TRY_AGAIN_LATER"))) {}
-    try
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)))
     {
-      this.a = Integer.parseInt(paramString2.substring(paramString2.lastIndexOf("=") + 1));
-      label32:
-      if (QLog.isColorLevel()) {
-        QLog.w(paramString1, 2, paramString2);
-      }
-      return 0;
+      Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      veg.a(this.jdField_b_of_type_JavaLangString, "getResult key %s, result %s, stack = %s", String.valueOf(paramString), String.valueOf(localObject), vyg.a(7));
+      return localObject;
     }
-    catch (Exception localException)
-    {
-      break label32;
+    veg.a(this.jdField_b_of_type_JavaLangString, "getResult key %s, result null, stack = %s", String.valueOf(paramString), vyg.a(7));
+    return null;
+  }
+  
+  public final trj a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    return this;
+  }
+  
+  public abstract void a();
+  
+  public void a(String paramString, Object paramObject)
+  {
+    veg.a(this.jdField_b_of_type_JavaLangString, "putResult key %s, value %s, stack = %s", String.valueOf(paramString), String.valueOf(paramObject), vyg.a(7));
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString))) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramObject);
     }
+  }
+  
+  protected abstract void a(Map<String, Object> paramMap);
+  
+  public final void a(boolean paramBoolean)
+  {
+    veg.a(this.jdField_b_of_type_JavaLangString, "onJobFinish %b, stack = %s", Boolean.valueOf(paramBoolean), vyg.a(7));
+    if (this.jdField_a_of_type_Trk != null) {
+      this.jdField_a_of_type_Trk.b(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  protected final void b(boolean paramBoolean)
+  {
+    veg.a(this.jdField_b_of_type_JavaLangString, "onRunFinish %b, stack = %s", Boolean.valueOf(paramBoolean), vyg.a(7));
+    if (this.jdField_a_of_type_Trk != null) {
+      this.jdField_a_of_type_Trk.a(paramBoolean);
+    }
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 

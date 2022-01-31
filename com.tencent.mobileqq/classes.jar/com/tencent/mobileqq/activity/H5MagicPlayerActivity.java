@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import aayx;
-import aayy;
-import aayz;
-import aaza;
-import ajrw;
-import anah;
+import abiu;
+import abiv;
+import abiw;
+import abix;
+import akgg;
 import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,11 +25,12 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import anfc;
-import anjd;
-import awqx;
-import azvv;
-import baan;
+import anqp;
+import anvl;
+import anzm;
+import axqw;
+import bawz;
+import bbbr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
@@ -56,7 +56,7 @@ public class H5MagicPlayerActivity
 {
   float jdField_a_of_type_Float;
   public int a;
-  ajrw jdField_a_of_type_Ajrw = new aaza(this);
+  akgg jdField_a_of_type_Akgg = new abix(this);
   public SoundPool a;
   Vibrator jdField_a_of_type_AndroidOsVibrator;
   SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
@@ -148,15 +148,15 @@ public class H5MagicPlayerActivity
   private void a()
   {
     this.jdField_a_of_type_ComTencentSmttSdkWebView = new WebView(this);
-    FrameLayout localFrameLayout = (FrameLayout)super.findViewById(2131309736);
+    FrameLayout localFrameLayout = (FrameLayout)super.findViewById(2131375491);
     localFrameLayout.addView(this.jdField_a_of_type_ComTencentSmttSdkWebView, 0, new FrameLayout.LayoutParams(-1, -1));
     Button localButton = new Button(this);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(azvv.a(this, 24.0F), azvv.a(this, 24.0F));
-    localLayoutParams.setMargins(0, azvv.a(this, 9.0F), azvv.a(this, 10.0F), 0);
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(bawz.a(this, 24.0F), bawz.a(this, 24.0F));
+    localLayoutParams.setMargins(0, bawz.a(this, 9.0F), bawz.a(this, 10.0F), 0);
     localLayoutParams.gravity = 53;
     localButton.setLayoutParams(localLayoutParams);
-    localButton.setBackgroundDrawable(getResources().getDrawable(2130846077));
-    localButton.setOnClickListener(new aayx(this));
+    localButton.setBackgroundDrawable(getResources().getDrawable(2130846258));
+    localButton.setOnClickListener(new abiu(this));
     localFrameLayout.addView(localButton);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setBackgroundColor(0);
     if (this.jdField_a_of_type_ComTencentSmttSdkWebView.getBackground() != null) {
@@ -179,7 +179,7 @@ public class H5MagicPlayerActivity
       {
         return;
       } while (this.jdField_a_of_type_Int == -1);
-      baan.a(BaseApplicationImpl.getContext(), true);
+      bbbr.a(BaseApplicationImpl.getContext(), true);
       if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {
         this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(5, 3, 0);
       }
@@ -192,7 +192,7 @@ public class H5MagicPlayerActivity
     return;
     if (Build.VERSION.SDK_INT >= 8)
     {
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new aayz(this, paramString));
+      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new abiw(this, paramString));
       return;
     }
     ThreadManager.getTimer().schedule(new H5MagicPlayerActivity.4(this, paramString), 200L);
@@ -250,7 +250,7 @@ public class H5MagicPlayerActivity
     ((WebSettings)localObject).setJavaScriptEnabled(true);
     ((WebSettings)localObject).setAllowContentAccess(true);
     ((WebSettings)localObject).setRenderPriority(WebSettings.RenderPriority.HIGH);
-    this.jdField_a_of_type_ComTencentSmttSdkWebViewClient = new aayy(this);
+    this.jdField_a_of_type_ComTencentSmttSdkWebViewClient = new abiv(this);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(this.jdField_a_of_type_ComTencentSmttSdkWebViewClient);
     localObject = Build.MANUFACTURER + "_" + Build.MODEL;
     if ((Build.VERSION.SDK_INT > 10) && (!"Meizu_M040".equals(localObject))) {
@@ -269,7 +269,7 @@ public class H5MagicPlayerActivity
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Boolean = true;
     paramString = (SensorManager)getSystemService("sensor");
-    paramString.registerListener(this.jdField_a_of_type_Ajrw, paramString.getDefaultSensor(1), 0);
+    paramString.registerListener(this.jdField_a_of_type_Akgg, paramString.getDefaultSensor(1), 0);
   }
   
   private void b(JSONObject paramJSONObject)
@@ -291,7 +291,7 @@ public class H5MagicPlayerActivity
     this.jdField_a_of_type_ComTencentSmttSdkWebView.destroy();
     g();
     h();
-    anfc.a().a().doUnbindService(getApplicationContext());
+    anvl.a().a().doUnbindService(getApplicationContext());
   }
   
   private void c(JSONObject paramJSONObject)
@@ -350,7 +350,7 @@ public class H5MagicPlayerActivity
           }
         }
         else {
-          this.jdField_b_of_type_JavaLangString = (anjd.v.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId) + str);
+          this.jdField_b_of_type_JavaLangString = (anzm.v.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId) + str);
         }
       }
     }
@@ -429,7 +429,7 @@ public class H5MagicPlayerActivity
       localIntent.putExtra("extra_data", localJSONObject.toString());
       localIntent.putExtra("vacreport_key_seq", VACDReportUtil.a(null, "qqwallet", "makeHongbao", "click", "groupType=" + i, 0, null));
       super.startActivity(localIntent);
-      awqx.b(null, "CliOper", "", "", "ep_mall", "0X8005FE5", 0, 0, "", "", "", "");
+      axqw.b(null, "CliOper", "", "", "ep_mall", "0X8005FE5", 0, 0, "", "", "", "");
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000) {
         i = 2;
@@ -450,7 +450,7 @@ public class H5MagicPlayerActivity
       if (paramJSONObject.has("click")) {
         i = paramJSONObject.getInt("click");
       }
-      awqx.b(null, "CliOper", "", "", "ep_mall", "itemclick", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, i + "", "", "");
+      axqw.b(null, "CliOper", "", "", "ep_mall", "itemclick", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, i + "", "", "");
       return;
     }
     catch (JSONException paramJSONObject)
@@ -470,14 +470,14 @@ public class H5MagicPlayerActivity
   {
     if (this.jdField_b_of_type_ComTencentMobileqqDataEmoticon != null)
     {
-      Object localObject = anjd.w.replace("[epId]", this.jdField_b_of_type_ComTencentMobileqqDataEmoticon.epId);
+      Object localObject = anzm.w.replace("[epId]", this.jdField_b_of_type_ComTencentMobileqqDataEmoticon.epId);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("file://" + (String)localObject);
       localStringBuilder.append("?sender_uin=" + this.jdField_c_of_type_JavaLangString);
       localStringBuilder.append("&self_uin=" + this.d);
       localStringBuilder.append("&auto_play=0");
       localStringBuilder.append("&platform=android");
-      localStringBuilder.append("&version=8.2.6");
+      localStringBuilder.append("&version=8.2.8");
       localStringBuilder.append("&start_time=" + System.currentTimeMillis());
       localStringBuilder.append("&width=" + this.jdField_b_of_type_Float);
       localStringBuilder.append("&height=" + this.jdField_c_of_type_Float);
@@ -487,13 +487,13 @@ public class H5MagicPlayerActivity
         QLog.d("H5MagicPlayerActivity", 2, "reply url = " + (String)localObject);
       }
       this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl((String)localObject);
-      if (anfc.a().a())
+      if (anvl.a().a())
       {
         localObject = new Bundle();
         ((Bundle)localObject).putSerializable("emoticon", this.jdField_b_of_type_ComTencentMobileqqDataEmoticon);
         ((Bundle)localObject).putParcelable("sessionInfo", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-        localObject = anah.a("ipc_h5magic_sendmsg", "", -1, (Bundle)localObject);
-        anfc.a().a((Bundle)localObject);
+        localObject = anqp.a("ipc_h5magic_sendmsg", "", -1, (Bundle)localObject);
+        anvl.a().a((Bundle)localObject);
         if (QLog.isColorLevel()) {
           QLog.d("H5MagicPlayerActivity", 2, "send childEmoticon: childEmotcionEpid = " + this.jdField_b_of_type_ComTencentMobileqqDataEmoticon.epId);
         }
@@ -502,7 +502,7 @@ public class H5MagicPlayerActivity
     }
     for (;;)
     {
-      awqx.b(null, "CliOper", "", "", "ep_mall", "0X8005FE6", 0, 0, "", "", "", "");
+      axqw.b(null, "CliOper", "", "", "ep_mall", "0X8005FE6", 0, 0, "", "", "", "");
       return;
       if (QLog.isColorLevel()) {
         QLog.d("H5MagicPlayerActivity", 2, "send childEmoticon: service not bind");
@@ -520,7 +520,7 @@ public class H5MagicPlayerActivity
   {
     if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
     {
-      baan.a(BaseApplicationImpl.getContext(), false);
+      bbbr.a(BaseApplicationImpl.getContext(), false);
       this.jdField_a_of_type_AndroidMediaSoundPool.stop(this.jdField_b_of_type_Int);
       this.jdField_a_of_type_AndroidMediaSoundPool.release();
     }
@@ -529,7 +529,7 @@ public class H5MagicPlayerActivity
   private void h()
   {
     this.jdField_a_of_type_Boolean = false;
-    ((SensorManager)getSystemService("sensor")).unregisterListener(this.jdField_a_of_type_Ajrw);
+    ((SensorManager)getSystemService("sensor")).unregisterListener(this.jdField_a_of_type_Akgg);
   }
   
   public boolean a(String paramString)
@@ -619,11 +619,11 @@ public class H5MagicPlayerActivity
   {
     this.mActNeedImmersive = false;
     super.onCreate(paramBundle);
-    super.setContentView(2131495916);
+    super.setContentView(2131561508);
     a();
     b();
-    if (!anfc.a().a()) {
-      anfc.a().a().doBindService(getApplicationContext());
+    if (!anvl.a().a()) {
+      anvl.a().a().doBindService(getApplicationContext());
     }
     paramBundle = getApplication().getSharedPreferences("h5magic_sp_name", 4);
     if (paramBundle != null) {
@@ -644,14 +644,14 @@ public class H5MagicPlayerActivity
       this.jdField_b_of_type_ComTencentMobileqqDataEmoticon = ((Emoticon)((Intent)localObject).getSerializableExtra("childEmoticon"));
     }
     this.d = ((Intent)localObject).getStringExtra("selfUin");
-    localObject = anjd.w.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
+    localObject = anzm.w.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("file://" + (String)localObject);
     localStringBuilder.append("?sender_uin=" + this.jdField_c_of_type_JavaLangString);
     localStringBuilder.append("&self_uin=" + this.d);
     localStringBuilder.append("&auto_play=" + paramBundle);
     localStringBuilder.append("&platform=android");
-    localStringBuilder.append("&version=8.2.6");
+    localStringBuilder.append("&version=8.2.8");
     localStringBuilder.append("&start_time=" + l);
     localStringBuilder.append("&width=" + this.jdField_b_of_type_Float);
     localStringBuilder.append("&height=" + this.jdField_c_of_type_Float);

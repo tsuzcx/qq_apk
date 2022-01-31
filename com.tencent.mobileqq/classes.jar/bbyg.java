@@ -1,49 +1,66 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.SimpleTextView;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class bbyg
-  extends benv
+public class bbyg
 {
-  bbyg(bbye parambbye, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  public int a;
+  public String a;
+  public List<bbyi> a;
+  public boolean a;
+  public String b;
+  public String c;
+  
+  public bbyg()
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    this.jdField_a_of_type_Int = -30009;
   }
   
-  public View a(int paramInt, Object paramObject, benu parambenu, View.OnClickListener paramOnClickListener)
+  public bbyg(JSONObject paramJSONObject)
   {
-    parambenu = super.a(paramInt, paramObject, parambenu, paramOnClickListener);
-    if ((parambenu instanceof SimpleTextView)) {
-      parambenu.setTag(paramObject);
+    this.jdField_a_of_type_Int = -30009;
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("msg");
+    if (paramJSONObject.optInt("openflag") == 1)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
+      this.c = paramJSONObject.optString("content");
+      this.b = paramJSONObject.optString("url");
+      paramJSONObject = paramJSONObject.optString("list");
+      if (!TextUtils.isEmpty(paramJSONObject)) {
+        break label96;
+      }
     }
-    return parambenu;
-  }
-  
-  public void a(int paramInt, Object paramObject, benu[] paramArrayOfbenu)
-  {
-    paramInt = 0;
-    if ((paramArrayOfbenu == null) || (paramArrayOfbenu.length <= 0)) {}
     for (;;)
     {
       return;
-      if (paramArrayOfbenu.length < 0)
+      bool = false;
+      break;
+      label96:
+      paramJSONObject = new JSONArray(paramJSONObject);
+      int j = paramJSONObject.length();
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      while (i < j)
       {
-        paramArrayOfbenu[0].b = 0;
-        paramArrayOfbenu[0].a = 0;
-        paramInt = 1;
-      }
-      while (paramInt < paramArrayOfbenu.length)
-      {
-        paramArrayOfbenu[paramInt].b = -1;
-        paramArrayOfbenu[paramInt].a = -1;
-        paramInt += 1;
+        JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
+        if (localJSONObject != null) {
+          this.jdField_a_of_type_JavaUtilList.add(new bbyi(localJSONObject.optString("num"), localJSONObject.optString("light")));
+        }
+        i += 1;
       }
     }
+  }
+  
+  public String toString()
+  {
+    return "LiangHaoRsp{openFlag=" + this.jdField_a_of_type_Boolean + ", ret=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", moreUrl='" + this.b + '\'' + ", content='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbyg
  * JD-Core Version:    0.7.0.1
  */

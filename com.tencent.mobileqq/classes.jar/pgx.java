@@ -1,12 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import java.util.ArrayList;
 
 class pgx
-  implements View.OnClickListener
+  implements pvq
 {
-  pgx(pgw parampgw) {}
+  pgx(pgs parampgs, pax parampax, Container paramContainer, int paramInt) {}
   
-  public void onClick(View paramView) {}
+  public void a(int paramInt)
+  {
+    Object localObject = this.jdField_a_of_type_Pax.a().mSocialFeedInfo.a;
+    ArrayList localArrayList = ((qcy)localObject).a;
+    if ((localArrayList == null) || (localArrayList.size() == 0)) {
+      return;
+    }
+    localObject = (qcz)((qcy)localObject).a.get(paramInt);
+    pgs.a(this.jdField_a_of_type_Pgs, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pax.a(), (int)((qcz)localObject).a, this.jdField_a_of_type_Pax.a().innerUniqueID, this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Pax.a());
+  }
 }
 
 

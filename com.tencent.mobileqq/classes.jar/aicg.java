@@ -1,28 +1,54 @@
-import com.tencent.widget.AbsListView;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class aicg
-  implements begh
+public abstract interface aicg
 {
-  aicg(aicc paramaicc) {}
+  public abstract int a();
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  public abstract int a(int paramInt1, int paramInt2);
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    aicc.a(this.a, paramInt);
-    if (paramInt == 0)
-    {
-      aicc.a(this.a, null, null);
-      aicc.a(this.a).b();
-      return;
-    }
-    aicc.a(this.a).c();
-    aicc.a(this.a).a();
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(@NonNull aici paramaici);
+  
+  public abstract void a(ChatMessage paramChatMessage);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract void b(@ColorInt int paramInt);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract void c(@ColorInt int paramInt);
+  
+  public abstract boolean c();
+  
+  public abstract int d();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aicg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,53 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import java.util.Comparator;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONObject;
 
-class pvv
-  implements Comparator<pvt>
+public class pvv
+  implements View.OnClickListener
 {
-  public int a(pvt parampvt)
-  {
-    if (parampvt.jdField_a_of_type_Int != -1) {
-      return parampvt.jdField_a_of_type_Int;
-    }
-    Friends localFriends = parampvt.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = babh.a(localFriends.detalStatusFlag, localFriends.iTermType);
-    int j;
-    int i;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label132;
-      }
-      i = 4096;
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        label64:
-        i = j | i | (int)localFriends.getLastLoginType();
-      }
-    }
-    for (;;)
-    {
-      parampvt.jdField_a_of_type_Int = i;
-      return i;
-      j = 131072;
-      break;
-      label132:
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
-      {
-        i = 8192;
-        break label64;
-      }
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
-      {
-        i = 12288;
-        break label64;
-      }
-      i = 16384;
-      break label64;
-      i = j | i | 0x1;
-      continue;
-      i = j | i | 0x2;
-      continue;
-      i = j | i | 0x3;
-    }
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  qbg jdField_a_of_type_Qbg;
+  TextView b;
   
-  public int a(pvt parampvt1, pvt parampvt2)
+  protected pvv(ComponentContentHotSearch paramComponentContentHotSearch) {}
+  
+  public void onClick(View paramView)
   {
-    return a(parampvt1) - a(parampvt2);
+    paramView = new Intent(this.b.getContext(), PublicAccountBrowser.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Qbg.b);
+    this.b.getContext().startActivity(paramView);
+    paramView = onk.a(this.jdField_a_of_type_Qbg.a, ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).innerUniqueID, ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).hotWordInfo.a.indexOf(this.jdField_a_of_type_Qbg) + 1);
+    try
+    {
+      noo.a(null, "CliOper", "", "", "0X80096DD", "0X80096DD", 0, 0, "", "", "", paramView.toString(), false);
+      onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch.getContext(), ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch), ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch), (int)ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).mChannelID);
+      paramView = new ArrayList();
+      ReportInfo localReportInfo = new ReportInfo();
+      localReportInfo.mUin = onk.a();
+      localReportInfo.mOperation = 53;
+      localReportInfo.mInnerId = ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).innerUniqueID;
+      localReportInfo.mHotWord = this.jdField_a_of_type_Qbg.a;
+      paramView.add(localReportInfo);
+      osj.a().a(paramView);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        QLog.e(ComponentContentHotSearch.a, 1, "onClick, e = " + paramView);
+      }
+    }
   }
 }
 

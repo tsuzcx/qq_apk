@@ -1,55 +1,90 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import javax.crypto.Cipher;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import org.json.JSONObject;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.Map;
 
-final class bajm
-  extends batl
+class bajm
+  extends ajta
 {
-  bajm(QQAppInterface paramQQAppInterface) {}
-  
-  public void onDone(batm parambatm)
+  static
   {
-    super.onDone(parambatm);
-    parambatm = new File(bajl.jdField_a_of_type_JavaLangString);
-    if (parambatm.exists())
+    if (!bajk.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      parambatm = bace.a(parambatm, -1);
-      if (!TextUtils.isEmpty(parambatm)) {}
-      try
-      {
-        parambatm = Base64.decode(parambatm, 0);
-        SecretKeySpec localSecretKeySpec = new SecretKeySpec("xydata3456789012xydata3456789012".getBytes(), "AES");
-        IvParameterSpec localIvParameterSpec = new IvParameterSpec("xydata3456789012".getBytes());
-        Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
-        localCipher.init(2, localSecretKeySpec, localIvParameterSpec);
-        parambatm = new JSONObject(new String(localCipher.doFinal(parambatm)));
-        if (QLog.isColorLevel()) {
-          QLog.d("VasResourceCheckUtil", 2, "decode json success, content = " + parambatm.toString());
-        }
-        bajl.a(this.a);
-        bajl.jdField_a_of_type_AndroidOsHandler.sendMessage(bajl.jdField_a_of_type_AndroidOsHandler.obtainMessage(257));
-        return;
-      }
-      catch (Exception parambatm)
-      {
-        QLog.e("VasResourceCheckUtil", 1, "decode json fail: " + parambatm.getMessage());
-        bajl.jdField_a_of_type_AndroidOsHandler.sendMessage(bajl.jdField_a_of_type_AndroidOsHandler.obtainMessage(259));
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  bajm(bajk parambajk) {}
+  
+  protected void a(Object arg1)
+  {
+    boolean bool = true;
+    if ((??? == null) || (!(??? instanceof azqt))) {
+      return;
+    }
+    Object localObject2 = (azqt)???;
+    synchronized (this.jdField_a_of_type_Bajk)
+    {
+      if (((azqt)localObject2).jdField_b_of_type_Long != this.jdField_a_of_type_Bajk.jdField_a_of_type_Long) {
         return;
       }
     }
-    bajl.jdField_a_of_type_AndroidOsHandler.sendMessage(bajl.jdField_a_of_type_AndroidOsHandler.obtainMessage(258));
+    azpg localazpg1 = (azpg)this.jdField_a_of_type_Bajk.b.get(((azqt)localObject2).a);
+    if ((!jdField_a_of_type_Boolean) && (localazpg1 == null)) {
+      throw new AssertionError();
+    }
+    if (localazpg1 == null) {
+      return;
+    }
+    int i = localazpg1.e;
+    if ((localazpg1.b == null) && (((azqt)localObject2).e != null)) {
+      this.jdField_a_of_type_Bajk.c.put(((azqt)localObject2).e, localazpg1);
+    }
+    localazpg1.a((azqt)localObject2, this.jdField_a_of_type_Bajk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (((azqt)localObject2).jdField_b_of_type_Int == 12)
+    {
+      localObject2 = (azpg)this.jdField_a_of_type_Bajk.c.get(localazpg1.f);
+      if (localObject2 != null) {
+        ((azpg)localObject2).a(localazpg1);
+      }
+      this.jdField_a_of_type_Bajk.d(localazpg1);
+      return;
+    }
+    if (localazpg1.jdField_a_of_type_Boolean) {
+      if (((azqt)localObject2).jdField_b_of_type_Int != 11) {
+        break label399;
+      }
+    }
+    for (;;)
+    {
+      for (localazpg1.jdField_a_of_type_Boolean = bool;; localazpg1.jdField_a_of_type_Boolean = true) {
+        do
+        {
+          if (!"/".equals(localazpg1.f))
+          {
+            azpg localazpg2 = (azpg)this.jdField_a_of_type_Bajk.c.get(localazpg1.f);
+            if ((localazpg2 != null) && ((localazpg1.e == 9) || (localazpg1.e == 10) || (localazpg1.e == 11))) {
+              localazpg2.a(localazpg1);
+            }
+          }
+          if ((((azqt)localObject2).jdField_b_of_type_Int == 6) && (i != 6))
+          {
+            localazpg1.a((int)NetConnInfoCenter.getServerTime());
+            localazpg1.b((int)NetConnInfoCenter.getServerTime());
+            this.jdField_a_of_type_Bajk.e(localazpg1);
+          }
+          this.jdField_a_of_type_Bajk.d(localazpg1);
+          return;
+        } while ((((azqt)localObject2).jdField_b_of_type_Int != 11) || (localazpg1.e == 11));
+      }
+      label399:
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bajm
  * JD-Core Version:    0.7.0.1
  */

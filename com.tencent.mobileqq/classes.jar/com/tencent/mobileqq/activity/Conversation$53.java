@@ -1,18 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import axam;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import ahra;
+import android.view.View;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 
-public class Conversation$53
+class Conversation$53
   implements Runnable
 {
-  Conversation$53(Conversation paramConversation) {}
+  Conversation$53(Conversation paramConversation, int paramInt) {}
   
   public void run()
   {
-    if ((Conversation.c(this.this$0)) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a != null) && (!this.this$0.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.b()) && (axam.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sub.uin.all"))) {
-      this.this$0.a(new Conversation.53.1(this));
+    View localView = Conversation.a(this.this$0).getChildAt(this.a - Conversation.a(this.this$0).getFirstVisiblePosition());
+    if (localView != null)
+    {
+      localView = localView.findViewById(2131375095);
+      this.this$0.jdField_a_of_type_Ahra.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localView);
     }
   }
 }

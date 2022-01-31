@@ -7,13 +7,13 @@ import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import pph;
+import qbd;
 import tencent.im.oidb.articlesummary.articlesummary.FusionBiuInfo;
 
 public class FusionBiuInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<FusionBiuInfo> CREATOR = new pph();
+  public static final Parcelable.Creator<FusionBiuInfo> CREATOR = new qbd();
   public int a;
   public long a;
   public boolean a;

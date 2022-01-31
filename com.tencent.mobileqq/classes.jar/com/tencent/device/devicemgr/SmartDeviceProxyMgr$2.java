@@ -2,7 +2,7 @@ package com.tencent.device.devicemgr;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bace;
+import bbdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
@@ -10,21 +10,21 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import xrh;
-import xxi;
-import xxj;
+import yak;
+import ygm;
+import ygn;
 
 public class SmartDeviceProxyMgr$2
   implements Runnable
 {
-  public SmartDeviceProxyMgr$2(xrh paramxrh, ConfigurationService.Config paramConfig) {}
+  public SmartDeviceProxyMgr$2(yak paramyak, ConfigurationService.Config paramConfig) {}
   
   public void run()
   {
     if ((this.a.content_list != null) && (this.a.content_list.size() > 0))
     {
       localObject1 = (String)this.a.content_list.get(0);
-      localObject2 = xxj.a((String)localObject1);
+      localObject2 = ygn.a((String)localObject1);
       if (QLog.isColorLevel()) {
         QLog.i("QFind", 2, "config0 " + (String)localObject1);
       }
@@ -42,16 +42,16 @@ public class SmartDeviceProxyMgr$2
         if (QLog.isColorLevel()) {
           QLog.d("SPLASH_ConfigServlet", 2, "receiveAllConfigs|type: 65,content: " + str + ",version: " + this.a.version.get());
         }
-        xxi localxxi = xxj.a(str);
+        ygm localygm = ygn.a(str);
         Object localObject4 = localObject2;
         localObject3 = localObject1;
-        if (localxxi != null)
+        if (localygm != null)
         {
           localObject4 = localObject2;
           localObject3 = localObject1;
-          if (localxxi.a > ((xxi)localObject2).a)
+          if (localygm.a > ((ygm)localObject2).a)
           {
-            localObject4 = localxxi;
+            localObject4 = localygm;
             localObject3 = str;
           }
         }
@@ -60,9 +60,9 @@ public class SmartDeviceProxyMgr$2
         localObject1 = localObject3;
       }
       Object localObject3 = BaseApplication.getContext().getSharedPreferences("mobileQQ", 4).edit();
-      ((SharedPreferences.Editor)localObject3).putString("qfind_assist" + this.this$0.app.getCurrentAccountUin(), String.valueOf(((xxi)localObject2).b));
+      ((SharedPreferences.Editor)localObject3).putString("qfind_assist" + this.this$0.app.getCurrentAccountUin(), String.valueOf(((ygm)localObject2).b));
       ((SharedPreferences.Editor)localObject3).commit();
-      bace.a(BaseApplicationImpl.getApplication().getFilesDir() + "/qfindconfig", (String)localObject1);
+      bbdj.a(BaseApplicationImpl.getApplication().getFilesDir() + "/qfindconfig", (String)localObject1);
       this.this$0.a(null, false);
       return;
     }

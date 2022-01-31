@@ -1,43 +1,38 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import org.json.JSONObject;
 
 public class bauy
-  implements DownloadParams.DecodeHandler
 {
-  private int a;
-  private int b;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public bauy(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+  public bauy(baus parambaus) {}
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public JSONObject a()
   {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-      return null;
-    }
-    paramDownloadParams = Bitmap.createBitmap(this.a, this.b, Bitmap.Config.ARGB_8888);
-    Paint localPaint = new Paint();
-    localPaint.setStyle(Paint.Style.STROKE);
-    localPaint.setAntiAlias(true);
-    Canvas localCanvas = new Canvas(paramDownloadParams);
-    localCanvas.drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth() / 5, paramBitmap.getHeight()), new Rect(0, 0, paramBitmap.getWidth() / 5, paramDownloadParams.getHeight()), localPaint);
-    localCanvas.drawBitmap(paramBitmap, new Rect(paramBitmap.getWidth() / 5, 0, paramBitmap.getWidth() - paramBitmap.getWidth() / 5, paramBitmap.getHeight()), new Rect(paramBitmap.getWidth() / 5, 0, paramDownloadParams.getWidth() - paramBitmap.getWidth() / 5, paramDownloadParams.getHeight()), localPaint);
-    localCanvas.drawBitmap(paramBitmap, new Rect(paramBitmap.getWidth() - paramBitmap.getWidth() / 5, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(paramDownloadParams.getWidth() - paramBitmap.getWidth() / 5, 0, paramDownloadParams.getWidth(), paramDownloadParams.getHeight()), localPaint);
-    return paramDownloadParams;
-  }
-  
-  public String toString()
-  {
-    return "TitleDrawableDecoderHandler{reqW=" + this.a + ", reqH=" + this.b + '}';
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("mobile_mode", this.jdField_a_of_type_JavaLangString);
+    localJSONObject.put("os_version", this.jdField_b_of_type_JavaLangString);
+    localJSONObject.put("app_version", this.c);
+    localJSONObject.put("net_type", this.d);
+    localJSONObject.put("carrier_type", this.e);
+    localJSONObject.put("cpu_num", this.jdField_a_of_type_Int);
+    localJSONObject.put("cpu_freq", this.jdField_a_of_type_Long);
+    localJSONObject.put("total_ram", this.jdField_b_of_type_Long);
+    localJSONObject.put("cpu_type", this.f);
+    localJSONObject.put("is_proxy", this.jdField_a_of_type_Boolean);
+    localJSONObject.put("is_X5_support", this.jdField_b_of_type_Boolean);
+    localJSONObject.put("X5_version", this.jdField_b_of_type_Int);
+    return localJSONObject;
   }
 }
 

@@ -1,49 +1,59 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
 
 public class muz
-  implements begw
 {
-  muz(mut parammut, nbu paramnbu, begr parambegr) {}
+  public static String a;
+  public static String b = jdField_a_of_type_JavaLangString + "test/";
+  public static String c = "min_sdk";
+  public static String d = "disable_sdk";
+  public static String e = "flag";
+  public static String f = b + c;
+  public static String g = b + d;
+  public static String h = b + e;
+  @Deprecated
+  lle a;
   
-  public void OnClick(View paramView, int paramInt)
+  static
   {
-    int i = 1;
-    if (this.jdField_a_of_type_Mut.f) {
-      return;
+    jdField_a_of_type_JavaLangString = "sharp/video_effect/";
+  }
+  
+  public muz()
+  {
+    this.jdField_a_of_type_Lle = null;
+  }
+  
+  public int a(lle paramlle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoEffectConfigParser", 2, "getVideoEffectTestFlag sdk: " + Build.VERSION.SDK_INT);
     }
-    this.jdField_a_of_type_Mut.f = true;
-    if (paramInt + 1 == 1)
+    try
     {
-      if (!ajed.aQ.equals(this.jdField_a_of_type_Mut.jdField_a_of_type_JavaLangString)) {
-        break label209;
-      }
-      ndn.a(null, "", "0X8009947", "0X8009947", 0, 0, "", "", "", "", false);
-      i = 1;
-    }
-    label209:
-    for (;;)
-    {
-      this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Mut.jdField_a_of_type_Akig);
-      this.jdField_a_of_type_Mut.jdField_a_of_type_Akig = new akig(new mva(this, i));
-      this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Mut.jdField_a_of_type_Akig);
-      akil.a(this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, paramInt);
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      int j = 3;
-      i = j;
-      if (ajed.aQ.equals(this.jdField_a_of_type_Mut.jdField_a_of_type_JavaLangString))
+      int[] arrayOfInt = paramlle.a(h);
+      if (arrayOfInt != null)
       {
-        ndn.a(null, "", "0X8009943", "0X8009943", 0, 0, "", "", "", "", false);
-        i = j;
+        if ((arrayOfInt[0] & 0x1) != 1) {
+          return 0;
+        }
+        arrayOfInt = paramlle.a(f);
+        if ((arrayOfInt != null) && (Build.VERSION.SDK_INT >= arrayOfInt[0]))
+        {
+          boolean bool = mqs.a(paramlle.a(g), Build.VERSION.SDK_INT);
+          if (!bool) {
+            return 1;
+          }
+        }
       }
     }
+    catch (Exception paramlle) {}
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     muz
  * JD-Core Version:    0.7.0.1
  */

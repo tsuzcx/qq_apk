@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ocr.activity;
 
-import ajjy;
-import akiu;
-import akna;
-import aknp;
-import akrc;
+import ajyc;
+import akxg;
+import albm;
+import alcb;
+import alfo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import atdp;
-import bbms;
+import atzt;
+import bcpq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,7 +27,7 @@ public class ScanBaseActivity
   extends FragmentActivity
 {
   protected TextView a;
-  private bbms a;
+  private bcpq a;
   public AppInterface a;
   public QQAppInterface a;
   public OcrConfig a;
@@ -44,10 +44,10 @@ public class ScanBaseActivity
       QLog.d("ScanBaseActivity", 1, "checkOcrEnable config is null");
       return false;
     }
-    boolean bool1 = atdp.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0);
+    boolean bool1 = atzt.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0);
     if (bool1)
     {
-      boolean bool2 = akrc.a();
+      boolean bool2 = alfo.a();
       if (!bool2)
       {
         QLog.d("ScanBaseActivity", 1, "checkOcrEnable load so failed!");
@@ -55,16 +55,16 @@ public class ScanBaseActivity
       }
       return bool1 & bool2;
     }
-    Object localObject = ((akiu)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(220)).a(true);
+    Object localObject = ((akxg)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(220)).a(true);
     if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0))
     {
       new ArrayList();
       new ArrayList();
       ArrayList localArrayList = ((ARCommonConfigInfo)localObject).nativeSoResList;
       localObject = ((ARCommonConfigInfo)localObject).nativeSoResList;
-      aknp localaknp = new aknp(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (!akna.a()) {
-        localaknp.a(localArrayList, (ArrayList)localObject, "arcloud");
+      alcb localalcb = new alcb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (!albm.a()) {
+        localalcb.a(localArrayList, (ArrayList)localObject, "arcloud");
       }
     }
     return bool1;
@@ -82,7 +82,7 @@ public class ScanBaseActivity
     {
       localObject = localOcrConfig;
       if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-        localObject = ((atdp)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(228)).a(false);
+        localObject = ((atzt)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(228)).a(false);
       }
     }
     if (QLog.isColorLevel()) {
@@ -93,18 +93,18 @@ public class ScanBaseActivity
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131302804));
-    this.b = ((TextView)findViewById(2131302847));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368429));
+    this.b = ((TextView)findViewById(2131368472));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       int i = ImmersiveUtils.getStatusBarHeight(this);
-      View localView = findViewById(2131311549);
+      View localView = findViewById(2131377365);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       localLayoutParams.topMargin = i;
       localView.setLayoutParams(localLayoutParams);
     }
-    if (AppSetting.c) {
-      findViewById(2131302804).setContentDescription(ajjy.a(2131647716));
+    if (AppSetting.d) {
+      findViewById(2131368429).setContentDescription(ajyc.a(2131713504));
     }
   }
   
@@ -123,8 +123,8 @@ public class ScanBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bbms != null) {
-      this.jdField_a_of_type_Bbms.dismiss();
+    if (this.jdField_a_of_type_Bcpq != null) {
+      this.jdField_a_of_type_Bcpq.dismiss();
     }
   }
   

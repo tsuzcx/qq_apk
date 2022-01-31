@@ -2,24 +2,24 @@ package com.tencent.av.ui.funchat.record;
 
 import android.os.HandlerThread;
 import android.os.Looper;
-import auzg;
-import befo;
+import avyz;
+import bfni;
 import com.tencent.qphone.base.util.QLog;
-import mcw;
+import mnv;
 
 public class QavVideoAudioRecorder$1
   implements Runnable
 {
-  public QavVideoAudioRecorder$1(mcw parammcw, auzg paramauzg, HandlerThread paramHandlerThread) {}
+  public QavVideoAudioRecorder$1(mnv parammnv, avyz paramavyz, HandlerThread paramHandlerThread) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Auzg != null) {
-      this.jdField_a_of_type_Auzg.a();
+    if (this.jdField_a_of_type_Avyz != null) {
+      this.jdField_a_of_type_Avyz.a();
     }
     try
     {
-      if (befo.h())
+      if (bfni.i())
       {
         this.jdField_a_of_type_AndroidOsHandlerThread.getLooper().quitSafely();
         QLog.i("QavVideoAudioRecorder", 1, "onDestroy quitSafely");

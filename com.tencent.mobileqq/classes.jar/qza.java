@@ -1,24 +1,18 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.Map;
+import org.json.JSONObject;
 
-public class qza
-  implements qxs
+final class qza
+  extends qzb
 {
-  public int a(BaseData paramBaseData)
+  qza(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map paramMap)
   {
-    return 5;
+    super(paramBaseArticleInfo, paramInt1, paramInt2, paramMap);
   }
   
-  public qxr a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  public void a(JSONObject paramJSONObject)
   {
-    return new qzb(LayoutInflater.from(paramContext).inflate(2131494359, null), paramBaseData);
-  }
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.p == 5;
+    qyz.a(this, paramJSONObject);
   }
 }
 

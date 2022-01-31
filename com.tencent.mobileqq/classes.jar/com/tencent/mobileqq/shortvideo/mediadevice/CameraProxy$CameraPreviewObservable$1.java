@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import awix;
+import axid;
 
 public class CameraProxy$CameraPreviewObservable$1
   implements Runnable
 {
-  public CameraProxy$CameraPreviewObservable$1(awix paramawix, int paramInt, Object[] paramArrayOfObject) {}
+  public CameraProxy$CameraPreviewObservable$1(axid paramaxid, int paramInt, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    awix.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    axid.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

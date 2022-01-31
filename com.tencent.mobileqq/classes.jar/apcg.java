@@ -1,8 +1,30 @@
-public abstract interface apcg
+import com.tencent.qphone.base.util.QLog;
+
+class apcg
+  extends apbi
 {
-  public abstract void a(String paramString);
+  public apcg(apbe paramapbe)
+  {
+    super(paramapbe);
+  }
   
-  public abstract void b(String paramString);
+  protected String a()
+  {
+    return "StateSenderCancelSendWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    apbe.b(this.jdField_a_of_type_Apbe, 11, 8);
+    apbe.c(this.jdField_a_of_type_Apbe, 11, 8);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateSenderCancelSend)");
+    this.jdField_a_of_type_Apbi = new apcf(this.jdField_a_of_type_Apbe);
+  }
 }
 
 

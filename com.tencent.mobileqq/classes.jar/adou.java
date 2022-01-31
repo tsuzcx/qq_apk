@@ -1,26 +1,27 @@
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.data.MessageForShortVideo;
 
 class adou
-  implements begw
+  extends ClickableSpan
 {
-  adou(adot paramadot, MessageForShortVideo paramMessageForShortVideo, adoz paramadoz, begr parambegr) {}
+  adou(ador paramador) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (!bbev.d(this.a.a))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
+      bcpw.a(this.a.a, ajyc.a(2131703225), 2000).a();
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
-        this.jdField_a_of_type_Adot.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Adoz);
-      } else {
-        this.jdField_a_of_type_Adot.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Adoz);
-      }
     }
+    paramView = new Intent();
+    paramView.setFlags(268435456);
+    paramView.setAction("android.intent.action.VIEW");
+    paramView.putExtra("devlock_open_source", "SmartDeviceMsg");
+    paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
+    this.a.a.startActivity(paramView);
   }
 }
 

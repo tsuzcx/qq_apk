@@ -1,23 +1,23 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
 
 public class alul
-  extends OrientationEventListener
+  implements bcez
 {
-  public alul(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public alul(ArkBrowserFragment paramArkBrowserFragment) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void a(String paramString)
   {
-    this.a.a();
+    this.a.a = paramString;
+    paramString = this.a.getWebView();
+    if (paramString != null) {
+      paramString.callJs("NativeApi.lightappGetShareData();");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alul
  * JD-Core Version:    0.7.0.1
  */

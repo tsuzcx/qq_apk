@@ -1,87 +1,132 @@
-import android.app.Activity;
-import android.content.res.Resources;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.open.agent.BindGroupConfirmActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class bbvf
-  implements azgl
+  extends WebViewPlugin
 {
-  public bbvf(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
+  protected anql a;
+  public final String a;
+  public String b;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public bbvf()
   {
-    switch (paramInt)
-    {
+    this.jdField_a_of_type_JavaLangString = "VideoApiPlugin";
+    this.jdField_a_of_type_Anql = new bbvg(this);
+    this.mPluginNameSpace = "video";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoApiPlugin", 2, "handleJsRequest, url=" + paramString1);
     }
+    boolean bool1;
+    if ((!"video".equals(paramString2)) || (paramString1 == null) || (paramString3 == null)) {
+      bool1 = false;
+    }
+    label154:
     do
     {
-      for (;;)
+      do
       {
-        return;
-        if (paramJSONObject != null) {
-          try
+        do
+        {
+          return bool1;
+          for (;;)
           {
-            paramJSONObject = (JSONObject)paramJSONObject.get("data");
-            if (paramJSONObject != null)
+            try
             {
-              paramJSONObject = (JSONObject)paramJSONObject.get("key");
-              if (paramJSONObject != null)
+              paramString1 = new JSONObject(paramVarArgs[0]);
+              if (paramString1.has("callback"))
               {
-                paramInt = ((Integer)paramJSONObject.get("retCode")).intValue();
-                paramBundle = (String)paramJSONObject.get("retMsg");
-                if (paramInt != 0) {
-                  break label336;
+                paramJsBridgeListener = paramString1.getString("callback");
+                if (!"isInstalled".equals(paramString3)) {
+                  break label154;
                 }
-                if (this.a.jdField_a_of_type_Xez == null)
-                {
-                  this.a.jdField_a_of_type_Xez = new xez(this.a);
-                  this.a.jdField_a_of_type_Xez.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131624920));
-                  this.a.jdField_a_of_type_Xez.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131624919, new Object[] { this.a.e }), this.a);
-                  this.a.jdField_a_of_type_Xez.a(this.a);
+                bool1 = bool2;
+                if (!anvl.a().a()) {
+                  break;
                 }
-                if (!this.a.jdField_a_of_type_Xez.isShowing()) {
-                  this.a.jdField_a_of_type_Xez.show();
-                }
-                awqx.b(this.a.app, "CliOper", "", "", "0x80084B1", "0x80084B1", 0, 0, "", "", "", "");
-                if (QLog.isColorLevel())
-                {
-                  QLog.i("BindGroupConfirmActivity", 2, "bindGroup onResult retCode = " + paramInt + " retMsg = " + paramBundle);
-                  return;
-                }
+                paramString1 = new Bundle();
+                paramJsBridgeListener = anqp.a("ipc_video_isinstalled", paramJsBridgeListener, this.jdField_a_of_type_Anql.key, paramString1);
+                anvl.a().a(paramJsBridgeListener);
+                return true;
               }
             }
+            catch (Exception paramJsBridgeListener)
+            {
+              paramJsBridgeListener.printStackTrace();
+              return true;
+            }
+            paramJsBridgeListener = "";
           }
-          catch (Exception paramJSONObject)
-          {
-            BindGroupConfirmActivity.a(this.a, this.a.getActivity().getResources().getString(2131654570));
+          if (!"installPlugin".equals(paramString3)) {
+            break;
           }
-        }
+          bool1 = bool2;
+        } while (!anvl.a().a());
+        paramString1 = new Bundle();
+        paramJsBridgeListener = anqp.a("ipc_video_install_plugin", paramJsBridgeListener, this.jdField_a_of_type_Anql.key, paramString1);
+        anvl.a().a(paramJsBridgeListener);
+        return true;
+        bool1 = bool2;
+      } while (!"playVideo".equals(paramString3));
+      paramString2 = paramString1.optString("vid", "");
+      paramString3 = paramString1.optString("format", "");
+      int i = paramString1.optInt("playType", 0);
+      paramString1 = paramString1.optString("screenOrientation", "landscape");
+      if (!TextUtils.isEmpty(paramJsBridgeListener)) {
+        this.b = paramJsBridgeListener;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("BindGroupConfirmActivity", 2, "bindGroup onResult " + paramJSONObject.toString());
-    return;
-    label336:
-    paramJSONObject = this.a.getActivity().getResources().getString(2131654570);
-    switch (paramInt)
-    {
+      if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (i > 0))
+      {
+        paramJsBridgeListener = new Intent(this.mRuntime.a(), VipVideoPlayActivity.class);
+        paramJsBridgeListener.putExtra("vid", paramString2);
+        paramJsBridgeListener.putExtra("videoFormat", paramString3);
+        paramJsBridgeListener.putExtra("vtype", i);
+        paramJsBridgeListener.putExtra("screenOrientation", paramString1);
+        startActivityForResult(paramJsBridgeListener, (byte)100);
+        return true;
+      }
+      bool1 = bool2;
+    } while (TextUtils.isEmpty(this.b));
+    callJs(this.b, new String[] { String.valueOf(4) });
+    return true;
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoApiPlugin", 2, "vip video api plugin on activity result requestCode=" + paramByte + ",resultCode=" + paramInt);
     }
-    for (;;)
-    {
-      BindGroupConfirmActivity.a(this.a, paramJSONObject);
-      break;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131654573);
-      continue;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131654572);
-      continue;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131654568);
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if ((paramByte == 100) && (!TextUtils.isEmpty(this.b))) {
+      callJs(this.b, new String[] { String.valueOf(paramInt) });
     }
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    anvl.a().a(this.jdField_a_of_type_Anql);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    anvl.a().b(this.jdField_a_of_type_Anql);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbvf
  * JD-Core Version:    0.7.0.1
  */

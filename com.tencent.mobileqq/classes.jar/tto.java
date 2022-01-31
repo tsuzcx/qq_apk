@@ -1,12 +1,19 @@
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
 
-public abstract interface tto
+public class tto
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  public tto(FollowCaptureLauncher paramFollowCaptureLauncher) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    FollowCaptureLauncher.a(this.a, true);
+    FollowCaptureLauncher.a(this.a);
+    FollowCaptureLauncher.a(this.a, false);
+    vel.a("FollowLaunchCancel", true, System.currentTimeMillis() - FollowCaptureLauncher.a(this.a), new String[] { "dialog_cancel" });
+  }
 }
 
 

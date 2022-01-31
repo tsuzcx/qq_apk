@@ -1,49 +1,27 @@
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.filter.BaseFilter;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class bhrw
-  extends BaseFilter
+class bhrw
+  implements bhdj
 {
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private List<Frame> jdField_a_of_type_JavaUtilList = new ArrayList();
+  bhrw(bhrv parambhrv) {}
   
-  public bhrw()
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-  }
-  
-  public Frame a()
-  {
-    float f1 = 2.0F / this.jdField_a_of_type_JavaUtilList.size();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      float f2 = -1.0F + i * f1;
-      float f3 = f2 + f1;
-      setPositions(new float[] { f2, -1.0F, f2, 1.0F, f3, 1.0F, f3, -1.0F });
-      Frame localFrame = (Frame)this.jdField_a_of_type_JavaUtilList.get(i);
-      RenderProcess(localFrame.getTextureId(), localFrame.width, localFrame.height, this.jdField_a_of_type_JavaUtilList.size() * 64, 64, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-      i += 1;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzonePersonalizeJsPlugin", 4, "FontInterface.TrueTypeResult font:" + paramInt + ", fontPath:" + paramString1);
     }
-    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  }
-  
-  public void a(List<Frame> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void clearGLSLSelf()
-  {
-    super.clearGLSLSelf();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    if (TextUtils.isEmpty(paramString1))
+    {
+      bhrv.a(this.a, paramString2, -2, "font download failed.");
+      return;
+    }
+    bhrv.a(this.a, paramString2, 0, "success");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhrw
  * JD-Core Version:    0.7.0.1
  */

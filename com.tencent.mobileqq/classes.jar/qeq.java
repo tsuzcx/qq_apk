@@ -1,55 +1,25 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 
 public class qeq
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public View a;
-  public ViewGroup a;
-  public VideoInfo a;
-  public pqa a;
-  public pqb a;
-  public pxw a;
-  public qhw a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public qeq(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public qeq()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    try
+    if (ReadInJoyDeliverUGCActivity.c(this.a))
     {
-      this.jdField_a_of_type_AndroidOsBundle.putBoolean(paramString, paramBoolean);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    try
-    {
-      paramBoolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean(paramString, paramBoolean);
-      return paramBoolean;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
+      ReadInJoyDeliverUGCActivity.c(this.a, false);
+      ReadInJoyDeliverUGCActivity.e(this.a);
+      if (!ReadInJoyDeliverUGCActivity.g(this.a)) {
+        ReadInJoyDeliverUGCActivity.g(this.a, 1, this.a.getString(2131718413));
+      }
+      if (ReadInJoyDeliverUGCActivity.a(this.a) != null) {
+        ReadInJoyDeliverUGCActivity.a(this.a).removeCallbacksAndMessages(null);
+      }
     }
   }
 }

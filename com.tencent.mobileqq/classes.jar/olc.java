@@ -1,51 +1,72 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 
 public class olc
-  extends GestureDetector.SimpleOnGestureListener
 {
-  public olc(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public static long a(BaseArticleInfo paramBaseArticleInfo)
   {
-    if (paramMotionEvent1.getY() - paramMotionEvent2.getY() > 100.0F) {}
-    for (int i = 1;; i = 0)
+    long l1;
+    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.mSocialFeedInfo == null)) {
+      l1 = 0L;
+    }
+    long l2;
+    do
     {
-      if ((i != 0) && (!ReadInjoyIMAXAdFragment.a(this.a)))
-      {
-        ReadInjoyIMAXAdFragment.a(this.a, true);
-        ReadInjoyIMAXAdFragment.a(this.a);
-        ReadInjoyIMAXAdFragment.a(this.a, this.a.getActivity().app, nbe.q);
+      return l1;
+      if (paramBaseArticleInfo.mSocialFeedInfo.a == null) {
+        break;
       }
-      return true;
+      l2 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
+      l1 = l2;
+    } while (l2 != 0L);
+    for (;;)
+    {
+      try
+      {
+        l1 = Long.parseLong(paramBaseArticleInfo.mSubscribeID);
+        return l1;
+      }
+      catch (NumberFormatException paramBaseArticleInfo)
+      {
+        paramBaseArticleInfo.printStackTrace();
+        return l2;
+      }
+      l2 = 0L;
     }
   }
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public static boolean a(ArticleInfo paramArticleInfo)
   {
-    if (ReadInjoyIMAXAdFragment.a(this.a)) {
-      return true;
+    if ((paramArticleInfo == null) || (paramArticleInfo.mSocialFeedInfo == null)) {}
+    while ((!paramArticleInfo.mSocialFeedInfo.a()) || (rap.f(paramArticleInfo)) || (b(paramArticleInfo))) {
+      return false;
     }
-    ReadInjoyIMAXAdFragment.a(this.a, true);
-    ReadInjoyIMAXAdFragment.a(this.a);
-    if (ReadInjoyIMAXAdFragment.a(this.a) != null) {
-      ReadInjoyIMAXAdFragment.a(this.a, (int)ReadInjoyIMAXAdFragment.a(this.a).getCurrentPostion());
-    }
-    ReadInjoyIMAXAdFragment.a(this.a, ReadInjoyIMAXAdFragment.a(this.a), nbe.s);
-    ReadInjoyIMAXAdFragment.b(this.a, 2);
-    if (ReadInjoyIMAXAdFragment.a(this.a) != null) {
-      ReadInjoyIMAXAdFragment.c(this.a, (int)ReadInjoyIMAXAdFragment.a(this.a).getCurrentPostion());
-    }
-    ReadInjoyIMAXAdFragment.d(this.a, 0);
     return true;
+  }
+  
+  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.a()))
+    {
+      if (rap.f((ArticleInfo)paramBaseArticleInfo)) {
+        return true;
+      }
+      if (!b(paramBaseArticleInfo)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
+  {
+    return a(paramBaseArticleInfo) == onk.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     olc
  * JD-Core Version:    0.7.0.1
  */

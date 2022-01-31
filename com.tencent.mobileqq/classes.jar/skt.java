@@ -1,78 +1,291 @@
+import UserGrowth.stSimpleMetaFeed;
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import com.tencent.biz.pubaccount.weishi_new.download.wsapp.WSPicMonitorEvent;
+import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 public class skt
+  implements wpy<WSPicMonitorEvent>
 {
-  public static int a(int paramInt)
+  private static skt jdField_a_of_type_Skt;
+  private static boolean jdField_c_of_type_Boolean;
+  private volatile int jdField_a_of_type_Int;
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private List<Object> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private sku jdField_a_of_type_Sku;
+  private boolean jdField_a_of_type_Boolean;
+  private volatile int jdField_b_of_type_Int;
+  private final Object jdField_b_of_type_JavaLangObject = new Object();
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private final Object jdField_c_of_type_JavaLangObject = new Object();
+  private int d = 99;
+  
+  @NonNull
+  private WSDownloadParams a()
   {
-    return BaseApplicationImpl.getApplication().getResources().getInteger(paramInt);
+    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
+    localWSDownloadParams.mScene = 1;
+    localWSDownloadParams.mLinkStrategyType = this.jdField_c_of_type_Int;
+    localWSDownloadParams.mEventId = this.d;
+    localWSDownloadParams.mTestId = sms.b();
+    localWSDownloadParams.mScheme = this.jdField_a_of_type_JavaLangString;
+    return localWSDownloadParams;
   }
   
-  public static Boolean a(int paramInt)
+  private String a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    return Boolean.valueOf(BaseApplicationImpl.getApplication().getResources().getBoolean(paramInt));
+    if (paramstSimpleMetaFeed != null)
+    {
+      String str = "weishi://feed?feed_id=" + paramstSimpleMetaFeed.id;
+      if (!TextUtils.isEmpty(paramstSimpleMetaFeed.weishi_jump_url)) {
+        str = paramstSimpleMetaFeed.weishi_jump_url;
+      }
+      return str;
+    }
+    return null;
   }
   
-  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
+  public static skt a()
   {
-    return slg.a(paramClass, paramVarArgs);
+    if (jdField_a_of_type_Skt == null) {}
+    try
+    {
+      if (jdField_a_of_type_Skt == null) {
+        jdField_a_of_type_Skt = new skt();
+      }
+      return jdField_a_of_type_Skt;
+    }
+    finally {}
   }
   
-  public static String a(int paramInt)
+  public static void a(int paramInt)
   {
-    return BaseApplicationImpl.getApplication().getResources().getString(paramInt);
+    if (jdField_c_of_type_Boolean)
+    {
+      sne.b("WSFallKeyPicMonitor", "sendStartEvent");
+      wpw.a().a(new WSPicMonitorEvent(paramInt, 1, ""));
+    }
   }
   
-  public static String a(int paramInt, Object... paramVarArgs)
+  public static <T> void a(int paramInt, T paramT)
   {
-    return BaseApplicationImpl.getApplication().getResources().getString(paramInt, paramVarArgs);
+    if (jdField_c_of_type_Boolean)
+    {
+      sne.b("WSFallKeyPicMonitor", "sendStartEvent");
+      wpw.a().a(new WSPicMonitorEvent(paramInt, 1, paramT));
+    }
   }
   
-  public static String a(String paramString)
+  private void a(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt1, int paramInt2)
   {
-    return paramString;
+    if (paramstSimpleMetaFeed != null)
+    {
+      sne.b("WSFallKeyPicMonitor", "recommendReportForDlOpenWeiShi");
+      smq.a(1, 115, 0, paramstSimpleMetaFeed, skq.a(1, paramInt1, paramInt2));
+      return;
+    }
+    sne.b("WSFallKeyPicMonitor", "recommendReportForDlOpenWeiShi failure : feed == null");
   }
   
-  public static <T extends Activity> slc<T> a(Class<? extends slc<T>> paramClass, Class<slc<T>> paramClass1, Object... paramVarArgs)
+  public static void a(wpy paramwpy)
   {
-    return (slc)slg.a(paramClass, paramClass1, paramVarArgs);
+    sne.b("WSFallKeyPicMonitor", "registerReceiver");
+    wpw.a().a(paramwpy);
   }
   
-  public static vpv a(Context paramContext, int paramInt)
+  public static void b(int paramInt)
   {
-    return slj.a(paramContext, paramInt);
+    if (jdField_c_of_type_Boolean)
+    {
+      sne.b("WSFallKeyPicMonitor", "sendFinishEvent");
+      wpw.a().a(new WSPicMonitorEvent(paramInt, -1, ""));
+    }
   }
   
-  public static void a(Context paramContext, int paramInt, long paramLong)
+  public static <T> void b(int paramInt, T paramT)
   {
-    slm.a(paramContext, paramInt, paramLong);
+    if (jdField_c_of_type_Boolean)
+    {
+      sne.b("WSFallKeyPicMonitor", "sendFinishEvent");
+      wpw.a().a(new WSPicMonitorEvent(paramInt, -1, paramT));
+    }
   }
   
-  public static void a(Context paramContext, int paramInt, String paramString)
+  public static void b(wpy paramwpy)
   {
-    slm.a(paramContext, paramInt, paramString);
+    sne.b("WSFallKeyPicMonitor", "unRegisterReceiver");
+    wpw.a().b(paramwpy);
   }
   
-  public static void a(Object paramObject)
+  private void c()
   {
-    slk.a(paramObject);
+    if (jdField_c_of_type_Boolean)
+    {
+      jdField_c_of_type_Boolean = false;
+      sne.b("WSFallKeyPicMonitor", "release");
+      if (this.jdField_a_of_type_Sku != null) {
+        this.jdField_a_of_type_Sku.removeMessages(1);
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+      b(this);
+    }
   }
   
-  public static boolean a()
+  private void d()
   {
-    return sll.a();
+    sne.b("WSFallKeyPicMonitor", "startPreDownLoadWeiShi");
+    WSDownloadParams localWSDownloadParams = a();
+    skq.a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localWSDownloadParams);
   }
   
-  public static String[] a(int paramInt)
+  private void e()
   {
-    return BaseApplicationImpl.getApplication().getResources().getStringArray(paramInt);
+    sne.b("WSFallKeyPicMonitor", "performSilentDownload");
+    WSDownloadParams localWSDownloadParams = a();
+    skq.a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localWSDownloadParams, true, 2);
+    sms.a(115, Integer.valueOf(4));
+    a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, this.jdField_c_of_type_Int, this.d);
+  }
+  
+  public ArrayList<Class<WSPicMonitorEvent>> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(WSPicMonitorEvent.class);
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    sne.b("WSFallKeyPicMonitor", "immediatelyPreload");
+    if (this.jdField_a_of_type_Sku != null)
+    {
+      this.jdField_a_of_type_Sku.removeMessages(1);
+      this.jdField_a_of_type_Sku.sendEmptyMessage(1);
+    }
+  }
+  
+  public void a(Activity paramActivity, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    if (vzz.a(paramActivity)) {
+      return;
+    }
+    sne.b("WSFallKeyPicMonitor", "init , linkType = " + paramInt + "; feed = " + paramstSimpleMetaFeed);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = paramstSimpleMetaFeed;
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = a(paramstSimpleMetaFeed);
+    if (paramInt == 4) {}
+    for (paramInt = 300;; paramInt = 99)
+    {
+      this.d = paramInt;
+      if (this.jdField_a_of_type_Sku != null) {
+        break;
+      }
+      this.jdField_a_of_type_Sku = new sku(this, this);
+      this.jdField_a_of_type_Sku.sendEmptyMessageDelayed(1, 3000L);
+      return;
+    }
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (vzz.a(paramContext)) {
+      sne.d("WSFallKeyPicMonitor", "本地已经安装微视app");
+    }
+    while (jdField_c_of_type_Boolean) {
+      return;
+    }
+    jdField_c_of_type_Boolean = true;
+    a(this);
+  }
+  
+  public void a(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    sne.b("WSFallKeyPicMonitor", "onReceiveEvent");
+    int i;
+    if ((paramSimpleBaseEvent instanceof WSPicMonitorEvent))
+    {
+      paramSimpleBaseEvent = (WSPicMonitorEvent)paramSimpleBaseEvent;
+      switch (paramSimpleBaseEvent.getType())
+      {
+      default: 
+        sne.b("WSFallKeyPicMonitor", "type = " + paramSimpleBaseEvent.getType() + "; OperateType = " + paramSimpleBaseEvent.getOperateType() + ", content = " + paramSimpleBaseEvent.getContent());
+        if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList.size() == 0))
+        {
+          i = 1;
+          if ((!this.jdField_b_of_type_Boolean) || (this.jdField_b_of_type_Int > 0)) {
+            break label344;
+          }
+        }
+        break;
+      }
+    }
+    label344:
+    for (int j = 1;; j = 0)
+    {
+      for (;;)
+      {
+        for (;;)
+        {
+          if ((i != 0) && (j != 0) && (this.jdField_a_of_type_Int <= 0))
+          {
+            jdField_c_of_type_Boolean = false;
+            this.jdField_a_of_type_Boolean = false;
+            this.jdField_b_of_type_Boolean = false;
+            this.jdField_a_of_type_Sku.removeMessages(1);
+            this.jdField_a_of_type_Sku.sendEmptyMessage(1);
+            sne.b("WSFallKeyPicMonitor", "非超时触发下载");
+          }
+          return;
+          do
+          {
+            synchronized (this.jdField_a_of_type_JavaLangObject)
+            {
+              if (paramSimpleBaseEvent.getOperateType() == 1)
+              {
+                this.jdField_a_of_type_Boolean = true;
+                this.jdField_a_of_type_JavaUtilList.add(paramSimpleBaseEvent.getContent());
+              }
+            }
+          } while (this.jdField_a_of_type_JavaUtilList.remove(paramSimpleBaseEvent.getContent()));
+          return;
+          this.jdField_b_of_type_Boolean = true;
+          synchronized (this.jdField_b_of_type_JavaLangObject)
+          {
+            this.jdField_b_of_type_Int += paramSimpleBaseEvent.getOperateType();
+          }
+        }
+        synchronized (this.jdField_c_of_type_JavaLangObject)
+        {
+          this.jdField_a_of_type_Int += paramSimpleBaseEvent.getOperateType();
+        }
+      }
+      i = 0;
+      break;
+    }
+  }
+  
+  public void b()
+  {
+    if (jdField_c_of_type_Boolean) {
+      c();
+    }
+    jdField_a_of_type_Skt = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     skt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,21 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 
-public class bcks
-  extends bcke
+final class bcks
+  implements bcjg
 {
-  private List<String> a;
-  
-  public bcks()
+  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public void a(String paramString)
-  {
-    super.a(paramString);
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramString = new JSONObject(paramString).getJSONArray(this.jdField_a_of_type_JavaLangString);
-        int j = paramString.length();
-        int i = 0;
-        while (i < j)
-        {
-          this.jdField_a_of_type_JavaUtilList.add(paramString.getString(i));
-          i += 1;
-        }
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-      }
+    Matrix localMatrix = new Matrix();
+    if (paramDrawable == null) {
+      return localMatrix;
     }
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    float f = Math.max(paramInt1 / i, paramInt2 / j);
+    localMatrix.setScale(f, f);
+    localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.0F + 0.5F));
+    return localMatrix;
   }
 }
 

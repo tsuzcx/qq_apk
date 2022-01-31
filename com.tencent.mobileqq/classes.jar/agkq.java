@@ -1,47 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment.3.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.phone.PhoneMatchView;
+import com.tencent.mobileqq.activity.phone.PhoneMatchView.1;
 
 public class agkq
-  implements agpf
+  extends aume
 {
-  public agkq(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  public agkq(PhoneMatchView.1 param1) {}
   
-  private boolean a(HashMap<String, PreloadManager.PathResult> paramHashMap)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    if (RedPacketEmojiFragment.a(this.a))
-    {
-      if (paramHashMap == null) {}
-      do
-      {
-        return false;
-        paramHashMap = (PreloadManager.PathResult)paramHashMap.get(this.a.c);
-      } while (paramHashMap == null);
-      this.a.d = paramHashMap.filePath;
-      if (QLog.isColorLevel()) {
-        QLog.i("RedPacketEmojiFragment", 2, "doLoading faceConfigPath:" + this.a.d);
-      }
-      if (!TextUtils.isEmpty(this.a.d)) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
-    }
-    return true;
+    this.a.this$0.a(paramBoolean, paramInt, "onUploadContact");
   }
   
-  public void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap)
+  protected void b(boolean paramBoolean, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new RedPacketEmojiFragment.3.1(this, paramInt, paramHashMap));
+    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContact");
+  }
+  
+  protected void e(boolean paramBoolean, int paramInt)
+  {
+    this.a.this$0.a(paramBoolean, paramInt, "onUploadContactNotBind");
+  }
+  
+  protected void f(boolean paramBoolean, int paramInt)
+  {
+    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContactNotBind");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agkq
  * JD-Core Version:    0.7.0.1
  */

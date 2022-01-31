@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aclw;
-import acmh;
+import acwp;
+import acxa;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.RequiresApi;
@@ -18,13 +18,13 @@ class IntimateInfoView$16$1
   @RequiresApi(api=16)
   public void run()
   {
-    if ((aclw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$16.this$0) != null) && (acmh.a(aclw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$16.this$0)) != null))
+    if ((acwp.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$16.this$0) != null) && (acxa.a(acwp.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$16.this$0)) != null))
     {
-      int i = acmh.a(aclw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$16.this$0)).indexOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$16.a);
-      RelativeLayout localRelativeLayout = (RelativeLayout)aclw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$16.this$0).getChild(i);
+      int i = acxa.a(acwp.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$16.this$0)).indexOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$16.a);
+      RelativeLayout localRelativeLayout = (RelativeLayout)acwp.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$16.this$0).getChild(i);
       if (localRelativeLayout != null)
       {
-        ImageView localImageView = (ImageView)localRelativeLayout.findViewById(2131301188);
+        ImageView localImageView = (ImageView)localRelativeLayout.findViewById(2131366798);
         if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
           localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
         }

@@ -1,30 +1,18 @@
-public abstract class aklv
+import com.tencent.mobileqq.app.automator.step.GetCheckUpdate;
+
+public class aklv
+  extends ajsg
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
+  private aklv(GetCheckUpdate paramGetCheckUpdate) {}
   
-  public aklv(String paramString, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
+    this.a.a(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aklv
  * JD-Core Version:    0.7.0.1
  */

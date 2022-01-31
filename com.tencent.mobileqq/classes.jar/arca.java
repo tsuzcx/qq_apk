@@ -1,25 +1,79 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class arca
-  implements View.OnClickListener
+  implements INetInfoHandler
 {
-  arca(arbz paramarbz, arbp paramarbp) {}
+  arca(arbz paramarbz) {}
   
-  public void onClick(View paramView)
+  public void onNetMobile2None()
   {
-    if (this.jdField_a_of_type_Arbz.jdField_a_of_type_Arbp.a()) {
-      return;
+    Iterator localIterator = arbz.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((arcc)localIterator.next()).a(5);
     }
-    arbp.a(this.jdField_a_of_type_Arbz.jdField_a_of_type_Arbp).c(true);
-    arbp.a(this.jdField_a_of_type_Arbz.jdField_a_of_type_Arbp);
-    awqx.b(null, "CliOper", "", "", "0X800A973", "0X800A973", 0, 0, "0", "0", "0", "");
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoItemEventManager", 2, "onNetMobile2None onConnClose");
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    paramString = arbz.a(this.a).iterator();
+    while (paramString.hasNext()) {
+      ((arcc)paramString.next()).a(4);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoItemEventManager", 2, "onNetMobile2Wifi onConnOK");
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    paramString = arbz.a(this.a).iterator();
+    while (paramString.hasNext()) {
+      ((arcc)paramString.next()).a(3);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoItemEventManager", 2, "onNetNone2Mobile onConnOK");
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    paramString = arbz.a(this.a).iterator();
+    while (paramString.hasNext()) {
+      ((arcc)paramString.next()).a(2);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoItemEventManager", 2, "onNetNone2Wifi onConnOK");
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    paramString = arbz.a(this.a).iterator();
+    while (paramString.hasNext()) {
+      ((arcc)paramString.next()).a(1);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    Iterator localIterator = arbz.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((arcc)localIterator.next()).a(0);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoItemEventManager", 2, "onNetWifi2None onConnClose");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arca
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
 import NS_COMM.COMM.StCommonExt;
-import ajjy;
-import bbmy;
+import ajyc;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
@@ -27,7 +27,7 @@ class MiniAppUserAppInfoListManager$4
       return;
     }
     QLog.e("MiniAppUserAppInfoListManager", 1, "sendSetUserAppTopRequest, failed to set top!");
-    bbmy.a(BaseApplicationImpl.getApplication(), ajjy.a(2131641048), 0).a();
+    bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131706833), 0).a();
   }
 }
 

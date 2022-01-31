@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.dataline.util.file.SendInfo;
-
-public final class ez
-  implements Parcelable.Creator<SendInfo>
+public abstract interface ez
 {
-  public SendInfo a(Parcel paramParcel)
-  {
-    return new SendInfo(paramParcel, null);
-  }
-  
-  public SendInfo[] a(int paramInt)
-  {
-    return new SendInfo[paramInt];
-  }
+  public abstract void a(int paramInt);
 }
 
 

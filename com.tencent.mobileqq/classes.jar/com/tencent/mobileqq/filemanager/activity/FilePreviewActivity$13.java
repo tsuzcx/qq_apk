@@ -2,8 +2,8 @@ package com.tencent.mobileqq.filemanager.activity;
 
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
-import apdf;
-import apdg;
+import apuz;
+import apva;
 
 class FilePreviewActivity$13
   implements Runnable
@@ -16,16 +16,16 @@ class FilePreviewActivity$13
       return;
     }
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0 - this.this$0.jdField_a_of_type_AndroidViewViewGroup.getHeight(), 0.0F);
-    if (this.this$0.jdField_a_of_type_Apdf == null) {
-      this.this$0.jdField_a_of_type_Apdf = new apdf(this.this$0.jdField_a_of_type_AndroidViewViewGroup);
+    if (this.this$0.jdField_a_of_type_Apuz == null) {
+      this.this$0.jdField_a_of_type_Apuz = new apuz(this.this$0.jdField_a_of_type_AndroidViewViewGroup);
     }
-    apdg localapdg = new apdg();
-    localapdg.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
-    localapdg.jdField_a_of_type_Boolean = true;
-    localapdg.jdField_a_of_type_Int = apdf.b;
-    localapdg.b = 250;
-    this.this$0.jdField_a_of_type_Apdf.a(localapdg);
-    this.this$0.jdField_a_of_type_Apdf.a();
+    apva localapva = new apva();
+    localapva.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
+    localapva.jdField_a_of_type_Boolean = true;
+    localapva.jdField_a_of_type_Int = apuz.b;
+    localapva.b = 250;
+    this.this$0.jdField_a_of_type_Apuz.a(localapva);
+    this.this$0.jdField_a_of_type_Apuz.a();
     this.this$0.d = false;
   }
 }

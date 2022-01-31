@@ -1,41 +1,39 @@
-import NearbyGroup.GroupInfo;
-import NearbyGroup.GroupLabel;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aylx
-  extends aiac
+  extends bbqu
 {
-  public int a;
-  public GroupInfo a;
-  public View a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public TroopLabelLayout a;
-  public ArrayList<GroupLabel> a;
-  public int b = 2;
-  public ImageView b;
-  public LinearLayout b;
-  public TextView b;
-  public TroopLabelLayout b;
-  public String b;
-  public TextView c;
-  public int d;
-  public TextView d;
-  public TextView e;
+  aylx(aylv paramaylv) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if ((paramInt == 36) && ((paramObject instanceof Integer)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FloatViewSkin", 2, "mMusicBusinessObserver: isSuccess" + paramBoolean + "  music player id:" + paramObject);
+      }
+      paramInt = ((Integer)paramObject).intValue();
+      aylv.a(this.a, paramInt);
+      if (paramInt > 0)
+      {
+        this.a.a = true;
+        bbsr.a.download(null, aylv.a(this.a), aylv.a(this.a), false);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.a = false;
+    ThreadManagerV2.getUIHandlerV2().post(new FloatViewSkin.2.1(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aylx
  * JD-Core Version:    0.7.0.1
  */

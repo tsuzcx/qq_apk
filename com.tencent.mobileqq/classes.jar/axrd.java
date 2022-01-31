@@ -1,31 +1,7 @@
-import com.tencent.qphone.base.util.QLog;
-
-class axrd
-  extends ajmm
-{
-  axrd(axra paramaxra) {}
-  
-  public void a(boolean paramBoolean, long paramLong, ajmn paramajmn)
-  {
-    if ((this.a.a.a == 1026) && (QLog.isColorLevel())) {
-      QLog.i("PttShow", 2, "onNotifyResultAfterSendRich, UIN_TYPE_HOTCHAT_TOPIC  " + paramBoolean);
-    }
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramajmn);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    if (paramajmn != null) {
-      this.a.v = paramajmn.d;
-    }
-    this.a.d();
-  }
-}
+class axrd {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axrd
  * JD-Core Version:    0.7.0.1
  */

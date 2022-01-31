@@ -1,8 +1,8 @@
-import com.tencent.mobileqq.remind.widget.WheelView;
-
-public abstract interface aurh
+public class aurh
 {
-  public abstract long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt);
+  public int a;
+  public String a;
+  public int b;
 }
 
 

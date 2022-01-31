@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.doodle.control;
 
-import aciy;
-import acte;
-import acuj;
-import acuk;
-import acul;
-import acum;
-import ajjy;
+import actn;
+import addx;
+import adfc;
+import adfd;
+import adfe;
+import adff;
+import ajyc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -18,8 +18,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import avhl;
-import awqx;
+import awhe;
+import axqw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -29,10 +29,10 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ColorPicker
-  extends RDBaseListLayout<acuk, acum>
-  implements View.OnClickListener, avhl
+  extends RDBaseListLayout<adfd, adff>
+  implements View.OnClickListener, awhe
 {
-  private acul jdField_a_of_type_Acul;
+  private adfe jdField_a_of_type_Adfe;
   private final int[] jdField_a_of_type_ArrayOfInt = { -16777216, -5789785, -845543, -27392, -274353, -10233288, -9576193, -6989057 };
   
   public ColorPicker(Context paramContext)
@@ -60,27 +60,27 @@ public class ColorPicker
     default: 
       return "";
     case -16777216: 
-      return ajjy.a(2131636367);
+      return ajyc.a(2131702151);
     case -5789785: 
-      return ajjy.a(2131636359);
+      return ajyc.a(2131702143);
     case -2148308: 
     case -845543: 
-      return ajjy.a(2131636363);
+      return ajyc.a(2131702147);
     case -1009097: 
     case -27392: 
-      return ajjy.a(2131636366);
+      return ajyc.a(2131702150);
     case -274353: 
-      return ajjy.a(2131636358);
+      return ajyc.a(2131702142);
     case -10233288: 
     case -8136876: 
-      return ajjy.a(2131636364);
+      return ajyc.a(2131702148);
     case -13338378: 
     case -9576193: 
-      return ajjy.a(2131636365);
+      return ajyc.a(2131702149);
     case -6989057: 
-      return ajjy.a(2131636360);
+      return ajyc.a(2131702144);
     }
-    return ajjy.a(2131636361);
+    return ajyc.a(2131702145);
   }
   
   private void d()
@@ -88,14 +88,14 @@ public class ColorPicker
     int i = 0;
     while (i < this.jdField_a_of_type_ArrayOfInt.length)
     {
-      a(new acuk(0, -1, this.jdField_a_of_type_ArrayOfInt[i]), false);
+      a(new adfd(0, -1, this.jdField_a_of_type_ArrayOfInt[i]), false);
       i += 1;
     }
   }
   
   private void e()
   {
-    Object localObject = acte.a().a(0);
+    Object localObject = addx.a().a(0);
     if (localObject == null) {}
     for (;;)
     {
@@ -104,107 +104,107 @@ public class ColorPicker
       while (((Iterator)localObject).hasNext())
       {
         Integer localInteger = (Integer)((Iterator)localObject).next();
-        if (!acte.a().c(0, localInteger.intValue()))
+        if (!addx.a().c(0, localInteger.intValue()))
         {
-          acte.a().a(0, localInteger.intValue(), this, this);
-          acte.a().b(0, localInteger.intValue(), this, this);
+          addx.a().a(0, localInteger.intValue(), this, this);
+          addx.a().b(0, localInteger.intValue(), this, this);
         }
         else
         {
-          a(new acuk(1, localInteger.intValue(), -1), false);
+          a(new adfd(1, localInteger.intValue(), -1), false);
         }
       }
     }
   }
   
-  public acum a(int paramInt, acuk paramacuk)
+  public adff a(int paramInt, adfd paramadfd)
   {
-    acum localacum = new acum();
+    adff localadff = new adff();
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
-    localRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(aciy.a(32.0F, getResources()), -1));
-    paramInt = aciy.a(4.0F, getResources());
-    int i = aciy.a(9.5F, getResources());
+    localRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(actn.a(32.0F, getResources()), -1));
+    paramInt = actn.a(4.0F, getResources());
+    int i = actn.a(9.5F, getResources());
     localRelativeLayout.setPadding(paramInt, i, paramInt, i);
-    localacum.a(localRelativeLayout);
+    localadff.a(localRelativeLayout);
     localRelativeLayout.setOnClickListener(this);
-    localacum.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    Object localObject = getContext().getResources().getDrawable(2130837680);
-    localacum.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
+    localadff.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
+    Object localObject = getContext().getResources().getDrawable(2130837690);
+    localadff.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
     localObject = new RelativeLayout.LayoutParams(-1, -1);
-    localacum.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    if (paramacuk.a()) {
-      localacum.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    localadff.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    if (paramadfd.a()) {
+      localadff.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
     for (;;)
     {
-      localacum.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView = new ColorView(getContext(), null);
-      localObject = new RelativeLayout.LayoutParams(aciy.a(18.0F, getResources()), aciy.a(18.0F, getResources()));
-      paramInt = aciy.a(3.0F, getResources());
+      localadff.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView = new ColorView(getContext(), null);
+      localObject = new RelativeLayout.LayoutParams(actn.a(18.0F, getResources()), actn.a(18.0F, getResources()));
+      paramInt = actn.a(3.0F, getResources());
       ((RelativeLayout.LayoutParams)localObject).setMargins(paramInt, paramInt, paramInt, paramInt);
-      ((RelativeLayout)localacum.a()).addView(localacum.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView);
-      localRelativeLayout.addView(localacum.jdField_a_of_type_AndroidWidgetImageView);
-      localacum.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setListener(new acuj(this, localacum));
-      localacum.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      if (paramacuk.a != 0) {
+      ((RelativeLayout)localadff.a()).addView(localadff.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView);
+      localRelativeLayout.addView(localadff.jdField_a_of_type_AndroidWidgetImageView);
+      localadff.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setListener(new adfc(this, localadff));
+      localadff.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      if (paramadfd.a != 0) {
         break;
       }
-      localacum.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setColor(paramacuk.c);
-      return localacum;
-      localacum.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      localadff.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setColor(paramadfd.c);
+      return localadff;
+      localadff.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     }
-    paramacuk = acte.a().b(0, paramacuk.b);
-    localacum.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setBtmap(paramacuk);
-    return localacum;
+    paramadfd = addx.a().b(0, paramadfd.b);
+    localadff.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setBtmap(paramadfd);
+    return localadff;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Acul = null;
+    this.jdField_a_of_type_Adfe = null;
   }
   
-  public void a(int paramInt, acuk paramacuk)
+  public void a(int paramInt, adfd paramadfd)
   {
-    if ((paramacuk != null) && (this.jdField_a_of_type_Acul != null)) {
-      this.jdField_a_of_type_Acul.a(paramacuk);
+    if ((paramadfd != null) && (this.jdField_a_of_type_Adfe != null)) {
+      this.jdField_a_of_type_Adfe.a(paramadfd);
     }
   }
   
-  public void a(int paramInt, acuk paramacuk, acum paramacum)
+  public void a(int paramInt, adfd paramadfd, adff paramadff)
   {
-    if ((paramacum == null) || (paramacuk == null)) {}
+    if ((paramadff == null) || (paramadfd == null)) {}
     label137:
     label146:
     for (;;)
     {
       return;
       Object localObject = "";
-      if (paramacuk.a == 0)
+      if (paramadfd.a == 0)
       {
-        paramacum.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setColor(paramacuk.c);
-        localObject = a(paramacuk.c);
-        if (paramacum.jdField_a_of_type_AndroidWidgetImageView != null)
+        paramadff.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setColor(paramadfd.c);
+        localObject = a(paramadfd.c);
+        if (paramadff.jdField_a_of_type_AndroidWidgetImageView != null)
         {
-          if (!paramacuk.a()) {
+          if (!paramadfd.a()) {
             break label137;
           }
-          paramacum.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          paramadff.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         }
       }
       for (;;)
       {
-        if (!AppSetting.c) {
+        if (!AppSetting.d) {
           break label146;
         }
-        paramacum.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setContentDescription((CharSequence)localObject);
+        paramadff.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setContentDescription((CharSequence)localObject);
         return;
-        if (paramacuk.a != 1) {
+        if (paramadfd.a != 1) {
           break;
         }
-        localObject = acte.a().b(0, paramacuk.b);
-        paramacum.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setBtmap((Bitmap)localObject);
-        localObject = ajjy.a(2131636362) + (paramInt + 1);
+        localObject = addx.a().b(0, paramadfd.b);
+        paramadff.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setBtmap((Bitmap)localObject);
+        localObject = ajyc.a(2131702146) + (paramInt + 1);
         break;
-        paramacum.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+        paramadff.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
       }
     }
   }
@@ -247,7 +247,7 @@ public class ColorPicker
   {
     int i = a(paramView);
     a(i, false);
-    paramView = (acuk)a(i);
+    paramView = (adfd)a(i);
     QQAppInterface localQQAppInterface;
     if (paramView != null)
     {
@@ -255,18 +255,18 @@ public class ColorPicker
       if (1 != paramView.a) {
         break label74;
       }
-      awqx.b(localQQAppInterface, "dc00898", "", "", "0X80081BA", "0X80081BA", 1, paramView.b, "", "", "", "");
+      axqw.b(localQQAppInterface, "dc00898", "", "", "0X80081BA", "0X80081BA", 1, paramView.b, "", "", "", "");
     }
     label74:
     while (paramView.a != 0) {
       return;
     }
-    awqx.b(localQQAppInterface, "dc00898", "", "", "0X80081BA", "0X80081BA", 1, paramView.c, "", "", "", "");
+    axqw.b(localQQAppInterface, "dc00898", "", "", "0X80081BA", "0X80081BA", 1, paramView.c, "", "", "", "");
   }
   
-  public void setListener(acul paramacul)
+  public void setListener(adfe paramadfe)
   {
-    this.jdField_a_of_type_Acul = paramacul;
+    this.jdField_a_of_type_Adfe = paramadfe;
   }
 }
 

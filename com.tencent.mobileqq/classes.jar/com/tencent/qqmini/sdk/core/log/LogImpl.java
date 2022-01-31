@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.log;
 
-import bdnv;
+import besk;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 
 public class LogImpl
-  implements bdnv
+  implements besk
 {
   private MiniAppProxy miniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
   

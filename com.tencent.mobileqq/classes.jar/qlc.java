@@ -1,65 +1,105 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.qphone.base.util.QLog;
+import java.math.RoundingMode;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class qlc
-  implements Handler.Callback
+public class qlc
 {
-  qlc(qla paramqla) {}
+  public static HashMap<Integer, Long> a = new HashMap();
+  public static HashMap<Integer, ArrayList<qld>> b = new HashMap();
   
-  public boolean handleMessage(Message paramMessage)
+  public static JSONArray a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(qla.a(), 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
-    }
-    switch (paramMessage.what)
+    try
     {
-    default: 
-    case 0: 
-      label175:
-      label181:
-      do
+      a();
+      JSONArray localJSONArray1 = new JSONArray();
+      Iterator localIterator = b.keySet().iterator();
+      NumberFormat localNumberFormat = NumberFormat.getInstance(Locale.US);
+      localNumberFormat.setMaximumFractionDigits(2);
+      localNumberFormat.setMinimumFractionDigits(2);
+      localNumberFormat.setRoundingMode(RoundingMode.HALF_UP);
+      localNumberFormat.setGroupingUsed(false);
+      while (localIterator.hasNext())
       {
-        return false;
-        qla.a(this.a).sendEmptyMessageDelayed(0, 3000L);
-        long l2 = this.a.jdField_a_of_type_Qme.a();
-        long l1;
-        if (this.a.jdField_a_of_type_Boolean)
+        Object localObject = (Integer)localIterator.next();
+        localObject = ((ArrayList)b.get(localObject)).iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          l1 = qla.a(this.a).a();
-          if (l1 <= l2) {
-            break label175;
+          qld localqld = (qld)((Iterator)localObject).next();
+          JSONObject localJSONObject = new JSONObject();
+          try
+          {
+            localJSONObject.put("downloadTime", new Float(localNumberFormat.format(Math.round(localqld.jdField_a_of_type_Float * 100.0F) / 100.0F)));
+            localJSONObject.put("speedList", localqld.b);
+            localJSONArray1.put(localJSONObject);
+          }
+          catch (JSONException localJSONException)
+          {
+            localJSONException.printStackTrace();
           }
         }
-        for (;;)
-        {
-          l1 = 3000L - (System.currentTimeMillis() - l1);
-          if (l1 <= 0L) {
-            break label181;
-          }
-          qla.a(this.a).removeMessages(0);
-          qla.a(this.a).sendEmptyMessageDelayed(0, l1);
-          return false;
-          l1 = this.a.jdField_a_of_type_Qlm.a();
-          break;
-          l1 = l2;
-        }
-      } while (this.a.jdField_a_of_type_Qlp.a() == null);
-      if (this.a.jdField_a_of_type_Qlp.a().c())
-      {
-        qla.a(this.a, false);
-        return false;
       }
-      qla.b(this.a, true);
-      return false;
     }
-    qcn.b(qla.a(this.a), 0);
-    qla.a(this.a).setAlpha(0.2F);
-    return false;
+    finally {}
+    return localJSONArray2;
+  }
+  
+  public static void a()
+  {
+    Iterator localIterator = a.keySet().iterator();
+    long l = System.currentTimeMillis();
+    while (localIterator.hasNext())
+    {
+      Integer localInteger = (Integer)localIterator.next();
+      if (((Long)a.get(localInteger)).longValue() < l - 60000L)
+      {
+        b.remove(localInteger);
+        localIterator.remove();
+      }
+    }
+  }
+  
+  public static void a(int paramInt, long paramLong)
+  {
+    if (paramLong == 0L) {
+      return;
+    }
+    for (;;)
+    {
+      long l;
+      try
+      {
+        l = System.currentTimeMillis();
+        a.put(Integer.valueOf(paramInt), Long.valueOf(l));
+        if (b.get(Integer.valueOf(paramInt)) != null)
+        {
+          ArrayList localArrayList1 = (ArrayList)b.get(Integer.valueOf(paramInt));
+          localqld1 = (qld)localArrayList1.get(0);
+          qld localqld2 = new qld();
+          localqld2.b = paramLong;
+          localqld2.jdField_a_of_type_Long = l;
+          localqld2.jdField_a_of_type_Float = ((float)(l - localqld1.jdField_a_of_type_Long) / 1000.0F);
+          localArrayList1.add(localqld2);
+          b.put(Integer.valueOf(paramInt), localArrayList1);
+          a();
+          return;
+        }
+      }
+      finally {}
+      ArrayList localArrayList2 = new ArrayList();
+      qld localqld1 = new qld();
+      localqld1.b = paramLong;
+      localqld1.jdField_a_of_type_Long = l;
+      localqld1.jdField_a_of_type_Float = 0.0F;
+      localArrayList2.add(localqld1);
+    }
   }
 }
 

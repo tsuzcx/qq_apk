@@ -1,61 +1,71 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
-import java.util.ArrayList;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
 
-public final class adcy
-  extends Drawable.ConstantState
+public abstract class adcy
 {
-  public int a;
-  public final Paint a;
-  public ArrayList<addb> a;
-  public boolean a;
-  public int b;
-  public ArrayList<Bitmap> b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
+  protected Context a;
+  protected Rect a;
+  protected DoodleView a;
   
-  public adcy()
+  public adcy(DoodleView paramDoodleView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 160;
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    if (paramDoodleView == null) {
+      throw new IllegalStateException("DoodleView can not be null.");
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView = paramDoodleView;
   }
   
-  public int getChangingConfigurations()
+  public void a()
   {
-    return 0;
+    c();
   }
   
-  @NonNull
-  public Drawable newDrawable()
+  public void a(int paramInt1, int paramInt2)
   {
-    return new CustomFrameAnimationDrawable(this, null, null);
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
   }
   
-  public Drawable newDrawable(Resources paramResources)
+  public final void a(Canvas paramCanvas)
   {
-    return new CustomFrameAnimationDrawable(this, paramResources, null);
+    b(paramCanvas);
   }
+  
+  public boolean a()
+  {
+    return b();
+  }
+  
+  public final boolean a(MotionEvent paramMotionEvent)
+  {
+    b();
+    return b(paramMotionEvent);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.invalidate();
+    }
+  }
+  
+  protected abstract void b(Canvas paramCanvas);
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  protected abstract boolean b(MotionEvent paramMotionEvent);
+  
+  public void c() {}
 }
 
 

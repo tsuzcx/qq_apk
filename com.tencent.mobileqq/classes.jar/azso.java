@@ -1,26 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troopreward.OrientationAdapterImageView;
-import com.tencent.qphone.base.util.QLog;
-
-public class azso
-  extends Handler
+class azso
 {
-  public azso(OrientationAdapterImageView paramOrientationAdapterImageView) {}
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
+  int c = 0;
   
-  public void handleMessage(Message paramMessage)
+  public azso(azsm paramazsm)
   {
-    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.a.invalidate();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("OrientationAdapterImageView", 2, "handleMessage:" + this.a.jdField_a_of_type_Int + "," + this.a.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+    this.c = 0;
+  }
+  
+  public String toString()
+  {
+    return " retryInfo[AutoR-" + this.jdField_a_of_type_Int + " EofR-" + this.b + " SvrErrR-" + this.c + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azso
  * JD-Core Version:    0.7.0.1
  */

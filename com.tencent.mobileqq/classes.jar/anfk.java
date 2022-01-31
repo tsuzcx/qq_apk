@@ -1,57 +1,108 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.os.HandlerThread;
 
-class anfk
-  extends batl
+public class anfk
 {
-  anfk(anfj paramanfj, String paramString1, String paramString2)
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private final anhh jdField_a_of_type_Anhh = new anhh();
+  
+  public int a()
   {
-    super(paramString1, paramString2);
+    return this.jdField_a_of_type_Anhh.a();
   }
   
-  public void onDone(batm parambatm)
+  public Bitmap a(anfv paramanfv, ange paramange)
   {
-    Bundle localBundle;
-    EmoticonPackage localEmoticonPackage;
+    if (paramanfv == null) {
+      throw new RuntimeException("fetchBitmapCache NullPointException, BaseDanmaku is null");
+    }
     try
     {
-      localBundle = parambatm.a();
-      localEmoticonPackage = (EmoticonPackage)localBundle.getSerializable("emoticonPackage");
-      if (localEmoticonPackage == null) {
-        return;
-      }
-      if ((QLog.isColorLevel()) && (localEmoticonPackage != null)) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "jsonDownloadListener : onDone epid = " + localEmoticonPackage.epId + ";task status = " + parambatm.a());
-      }
-      if (parambatm.a() != 3) {
-        break label189;
-      }
-      boolean bool = localBundle.getBoolean("isSmallEmotion");
-      String str = anfy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, parambatm, bool);
-      if (str != null)
+      if (paramanfv.f())
       {
-        QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "jsonDownloadListener : parse json error : = " + str);
-        this.a.a(localEmoticonPackage, 11008, 0L, parambatm.d);
-        return;
+        Object localObject2 = paramanfv.a();
+        Object localObject1;
+        if (localObject2 == null) {
+          localObject1 = this.jdField_a_of_type_Anhh.a((int)paramanfv.f(), (int)paramanfv.g());
+        }
+        for (;;)
+        {
+          paramanfv.a((Bitmap)localObject1);
+          if (localObject1 != null) {
+            break;
+          }
+          return null;
+          if (((Bitmap)localObject2).getWidth() >= (int)paramanfv.f())
+          {
+            localObject1 = localObject2;
+            if (((Bitmap)localObject2).getHeight() >= (int)paramanfv.g()) {}
+          }
+          else
+          {
+            this.jdField_a_of_type_Anhh.a((Bitmap)localObject2);
+            localObject1 = this.jdField_a_of_type_Anhh.a((int)paramanfv.f(), (int)paramanfv.g());
+          }
+        }
+        localObject2 = paramanfv.a();
+        if (localObject2 == null)
+        {
+          localObject2 = new Canvas((Bitmap)localObject1);
+          paramanfv.a((Canvas)localObject2);
+        }
+        for (;;)
+        {
+          ((Bitmap)localObject1).eraseColor(0);
+          paramanfv.c(false);
+          paramange.a(paramanfv).a((Canvas)localObject2, paramanfv, paramange, ange.a().g(), ange.a().c());
+          return localObject1;
+          ((Canvas)localObject2).setBitmap((Bitmap)localObject1);
+        }
       }
+      paramanfv = paramanfv.a();
     }
-    catch (Exception parambatm)
-    {
-      QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "json download fail", parambatm);
+    finally {}
+    return paramanfv;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
       return;
     }
-    anfj.jdField_a_of_type_Anfi.a(localEmoticonPackage, 0, localBundle);
-    return;
-    label189:
-    QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "jsonDownloadListener : ondone error , reportCode = " + parambatm.a);
-    anfj.jdField_a_of_type_Anfi.a(localEmoticonPackage, -1, localBundle);
-    bapm.a("emotionType", "emotionActionDownload", "3", localEmoticonPackage.epId, "", "", parambatm.a + "", "", "", "");
+    if (anhv.a())
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_Anhh.a(paramBitmap);
+  }
+  
+  public void a(anfv paramanfv, ange paramange) {}
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Anhh.c();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Anhh.a();
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Anhh.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anfk
  * JD-Core Version:    0.7.0.1
  */

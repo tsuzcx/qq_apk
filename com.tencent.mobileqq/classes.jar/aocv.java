@@ -1,44 +1,28 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.NativeGifFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class aocv
-  extends apdj
 {
-  public aocv(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView) {}
-  
-  public void a()
+  public static AbstractGifImage a(File paramFile, int paramInt, boolean paramBoolean)
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().s();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
+    try
+    {
+      if (NativeGifFactory.isUseNewGif()) {
+        return new aocx(paramFile, paramInt, paramBoolean);
+      }
+      paramFile = new aocw(paramFile, paramInt, paramBoolean);
+      return paramFile;
+    }
+    catch (IOException paramFile)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("VoiceGifFactory", 2, "getVoiceGifObject exception. msg:" + paramFile.getMessage());
+      }
+    }
+    return null;
   }
 }
 

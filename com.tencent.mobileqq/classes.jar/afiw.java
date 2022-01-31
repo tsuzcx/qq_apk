@@ -1,25 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-class afiw
-  implements DialogInterface.OnClickListener
+public class afiw
+  implements View.OnClickListener
 {
-  afiw(afiu paramafiu) {}
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected afiw(afit paramafit) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramInt == 1) {
-      afiu.a(this.a, afiu.b(this.a));
+    if (afit.a(this.jdField_a_of_type_Afit) != null) {
+      afit.a(this.jdField_a_of_type_Afit).a(this.jdField_a_of_type_JavaLangString);
     }
-    while (paramInt != 0) {
-      return;
-    }
-    afiu.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afiw
  * JD-Core Version:    0.7.0.1
  */

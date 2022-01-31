@@ -1,34 +1,27 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.io.IOException;
-import java.io.InputStream;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
 
-class aqbs
-  implements DialogInterface.OnClickListener
+public class aqbs
+  extends aqbc
 {
-  aqbs(aqbr paramaqbr, InputStream paramInputStream) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aqbs(Intent paramIntent)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaIoInputStream.close();
-      aqbr.a(this.jdField_a_of_type_Aqbr).finish();
-      return;
-    }
-    catch (IOException paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
-    }
+    super(paramIntent);
+  }
+  
+  protected boolean c()
+  {
+    Intent localIntent = actn.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
+    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqbs
  * JD-Core Version:    0.7.0.1
  */

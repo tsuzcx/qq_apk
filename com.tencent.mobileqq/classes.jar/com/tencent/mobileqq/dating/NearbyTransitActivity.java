@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.dating;
 
-import aciy;
-import ajkc;
-import ajkn;
-import amvy;
-import amwp;
+import actn;
+import ajyi;
+import ajyt;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -16,12 +14,14 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import asfl;
-import awqx;
-import babk;
-import badq;
-import bbmv;
-import bbmy;
+import anmg;
+import anmx;
+import atbp;
+import axqw;
+import bbco;
+import bbev;
+import bcpt;
+import bcpw;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -45,8 +45,8 @@ public class NearbyTransitActivity
   private static long jdField_b_of_type_Long;
   protected int a;
   long jdField_a_of_type_Long;
-  private ajkn jdField_a_of_type_Ajkn = new amwp(this);
-  public bbmv a;
+  private ajyt jdField_a_of_type_Ajyt = new anmx(this);
+  public bcpt a;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
@@ -60,12 +60,12 @@ public class NearbyTransitActivity
   
   static
   {
-    jdField_a_of_type_JavaLangString = ajkc.jdField_c_of_type_JavaLangString;
+    jdField_a_of_type_JavaLangString = ajyi.jdField_c_of_type_JavaLangString;
   }
   
   private void a()
   {
-    amvy.a("NearbyTransitActivity", new Object[] { "parseParams" });
+    anmg.a("NearbyTransitActivity", new Object[] { "parseParams" });
     Intent localIntent = getIntent();
     Bundle localBundle = localIntent.getExtras();
     this.jdField_b_of_type_JavaLangString = localBundle.getString("from");
@@ -84,10 +84,10 @@ public class NearbyTransitActivity
       this.e = 1;
     }
     this.jdField_a_of_type_Long = localIntent.getLongExtra("enter_time", System.currentTimeMillis());
-    this.jdField_a_of_type_Bbmv = new bbmv(this, 2131495446);
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131167766);
+    this.jdField_a_of_type_Bcpt = new bcpt(this, 2131561033);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298865);
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqOsMqqHandler = new babk(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new bbco(Looper.getMainLooper(), this);
   }
   
   public static void a(Context paramContext, String paramString)
@@ -213,7 +213,7 @@ public class NearbyTransitActivity
     a("enterAIO", 1);
     if (this.jdField_b_of_type_Int > 0)
     {
-      localIntent = aciy.a(new Intent(this, SplashActivity.class), null);
+      localIntent = actn.a(new Intent(this, SplashActivity.class), null);
       localIntent.putExtra("uin", paramString1);
       localIntent.putExtra("uintype", 1);
       localIntent.putExtra("troop_uin", paramString2);
@@ -255,7 +255,7 @@ public class NearbyTransitActivity
   public static void a(String paramString, boolean paramBoolean, long paramLong, int paramInt)
   {
     if (QLog.isDevelopLevel()) {
-      asfl.a("NearbyTransitActivity", "reportResult", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+      atbp.a("NearbyTransitActivity", "reportResult", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), Integer.valueOf(paramInt) });
     }
     ThreadManager.getSubThreadHandler().post(new NearbyTransitActivity.4(paramInt, paramString, paramBoolean, paramLong));
   }
@@ -263,7 +263,7 @@ public class NearbyTransitActivity
   private boolean a(HotChatInfo paramHotChatInfo)
   {
     HotChatInfo localHotChatInfo = ((HotChatManager)this.app.getManager(60)).a();
-    awqx.b(this.app, "CliOper", "", "", "0X8004412", "0X8004412", 1, 0, "", "", "", "");
+    axqw.b(this.app, "CliOper", "", "", "0X8004412", "0X8004412", 1, 0, "", "", "", "");
     if (localHotChatInfo == null)
     {
       a(paramHotChatInfo);
@@ -287,21 +287,21 @@ public class NearbyTransitActivity
     int k = 0;
     int i = 0;
     a("doAction", 1);
-    amvy.a("NearbyTransitActivity", new Object[] { "doAction", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    anmg.a("NearbyTransitActivity", new Object[] { "doAction", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
     Object localObject;
-    if (badq.d(BaseApplication.getContext()))
+    if (bbev.d(BaseApplication.getContext()))
     {
-      this.app.addObserver(this.jdField_a_of_type_Ajkn, true);
+      this.app.addObserver(this.jdField_a_of_type_Ajyt, true);
       if (this.jdField_c_of_type_Int == 1)
       {
-        localObject = (ajkc)this.app.a(35);
+        localObject = (ajyi)this.app.a(35);
         if ((localObject != null) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
           if (this.jdField_b_of_type_Int > 0)
           {
-            if (!((ajkc)localObject).a(this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_b_of_type_Boolean, 0, this.jdField_b_of_type_Int)) {
+            if (!((ajyi)localObject).a(this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_b_of_type_Boolean, 0, this.jdField_b_of_type_Int)) {
               i = 1;
             }
             j = i;
@@ -332,7 +332,7 @@ public class NearbyTransitActivity
           this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed((Message)localObject, 200L);
           return;
           i = j;
-          if (!((ajkc)localObject).a(this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_b_of_type_Boolean)) {
+          if (!((ajyi)localObject).a(this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_b_of_type_Boolean)) {
             i = 1;
           }
           j = i;
@@ -376,7 +376,7 @@ public class NearbyTransitActivity
           continue;
         }
         QLog.d("NearbyTransitActivity", 2, "", localJSONException);
-        this.app.removeObserver(this.jdField_a_of_type_Ajkn);
+        this.app.removeObserver(this.jdField_a_of_type_Ajyt);
         k = 7;
         int m = 1;
         continue;
@@ -411,7 +411,7 @@ public class NearbyTransitActivity
         Message localMessage = Message.obtain();
         localMessage.what = 1;
         localMessage.arg1 = 2;
-        localMessage.obj = getString(2131627672);
+        localMessage.obj = getString(2131693313);
         break label182;
         label460:
         localMessage = null;
@@ -435,7 +435,7 @@ public class NearbyTransitActivity
   
   protected void a(Common.WifiPOIInfo paramWifiPOIInfo)
   {
-    if (badq.d(BaseApplication.getContext()))
+    if (bbev.d(BaseApplication.getContext()))
     {
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(2);
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(5);
@@ -447,7 +447,7 @@ public class NearbyTransitActivity
     paramWifiPOIInfo = Message.obtain();
     paramWifiPOIInfo.what = 1;
     paramWifiPOIInfo.arg1 = 2;
-    paramWifiPOIInfo.obj = getString(2131627672);
+    paramWifiPOIInfo.obj = getString(2131693313);
     this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramWifiPOIInfo);
   }
   
@@ -467,16 +467,16 @@ public class NearbyTransitActivity
   
   public void doOnDestroy()
   {
-    amvy.a("NearbyTransitActivity", new Object[] { "doOnDestroy" });
+    anmg.a("NearbyTransitActivity", new Object[] { "doOnDestroy" });
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-    this.app.removeObserver(this.jdField_a_of_type_Ajkn);
+    this.app.removeObserver(this.jdField_a_of_type_Ajyt);
     super.doOnDestroy();
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    amvy.a("NearbyTransitActivity", new Object[] { "handleMessage", Integer.valueOf(paramMessage.what) });
+    anmg.a("NearbyTransitActivity", new Object[] { "handleMessage", Integer.valueOf(paramMessage.what) });
     switch (paramMessage.what)
     {
     }
@@ -484,25 +484,25 @@ public class NearbyTransitActivity
     do
     {
       return false;
-      if (this.jdField_a_of_type_Bbmv != null) {
-        this.jdField_a_of_type_Bbmv.b();
+      if (this.jdField_a_of_type_Bcpt != null) {
+        this.jdField_a_of_type_Bcpt.b();
       }
       long l;
       if ((paramMessage.what == 2) || ((paramMessage.obj instanceof String)))
       {
         if (paramMessage.what == 2)
         {
-          str1 = getString(2131627672);
+          str1 = getString(2131693313);
           if ((paramMessage.obj instanceof String)) {
             str1 = (String)paramMessage.obj;
           }
-          bbmy.a(BaseApplication.getContext(), str1, 0).b(this.jdField_a_of_type_Int);
+          bcpw.a(BaseApplication.getContext(), str1, 0).b(this.jdField_a_of_type_Int);
         }
       }
       else
       {
         this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-        this.app.removeObserver(this.jdField_a_of_type_Ajkn);
+        this.app.removeObserver(this.jdField_a_of_type_Ajyt);
         l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
         if (l > 0L)
         {
@@ -520,20 +520,20 @@ public class NearbyTransitActivity
         str1 = jdField_a_of_type_JavaLangString;
         break;
       }
-      if (this.jdField_a_of_type_Bbmv != null) {
-        this.jdField_a_of_type_Bbmv.b();
+      if (this.jdField_a_of_type_Bcpt != null) {
+        this.jdField_a_of_type_Bcpt.b();
       }
       paramMessage = (Object[])paramMessage.obj;
       a((String)paramMessage[0], (String)paramMessage[1], (String)paramMessage[2]);
       this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-      this.app.removeObserver(this.jdField_a_of_type_Ajkn);
+      this.app.removeObserver(this.jdField_a_of_type_Ajyt);
       finish();
       return false;
       a((Common.WifiPOIInfo)paramMessage.obj);
       return false;
-    } while (this.jdField_a_of_type_Bbmv == null);
+    } while (this.jdField_a_of_type_Bcpt == null);
     if (this.e == 1) {}
-    for (String str1 = getString(2131627660);; str1 = getString(2131627659))
+    for (String str1 = getString(2131693301);; str1 = getString(2131693300))
     {
       String str2 = str1;
       if (paramMessage.obj != null)
@@ -542,10 +542,10 @@ public class NearbyTransitActivity
         if ((paramMessage.obj instanceof String))
         {
           str2 = (String)paramMessage.obj;
-          asfl.a("NearbyTransitActivity", new Object[] { "handleMessage MSG_SHOW_LOADING ", str2 });
+          atbp.a("NearbyTransitActivity", new Object[] { "handleMessage MSG_SHOW_LOADING ", str2 });
         }
       }
-      this.jdField_a_of_type_Bbmv.a(0, str2, 0, this);
+      this.jdField_a_of_type_Bcpt.a(0, str2, 0, this);
       return false;
     }
   }

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import naa;
+import nlb;
 
 public class VerticleViewPager
   extends ViewPager
@@ -31,7 +31,7 @@ public class VerticleViewPager
   
   private void a()
   {
-    setPageTransformer(true, new naa(this, null));
+    setPageTransformer(true, new nlb(this, null));
     setOverScrollMode(2);
   }
   

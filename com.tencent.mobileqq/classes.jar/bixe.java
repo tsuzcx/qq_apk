@@ -1,37 +1,46 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayer;
+import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayerListener;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import java.lang.ref.WeakReference;
 
 public class bixe
-  implements Animator.AnimatorListener
+  implements IVideoShelfPlayerListener
 {
-  public bixe(PickerContainer paramPickerContainer) {}
+  private WeakReference<AETemplateInfoFragment> a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public bixe(AETemplateInfoFragment paramAETemplateInfoFragment)
   {
-    if (PickerContainer.a(this.a))
-    {
-      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
-        this.a.setVisibility(4);
-      }
-      PickerContainer.a(this.a, false);
+    this.a = new WeakReference(paramAETemplateInfoFragment);
+  }
+  
+  public void onChangVideoSize(int paramInt1, int paramInt2) {}
+  
+  public void onCompletion()
+  {
+    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---PlayerListener onCompletion");
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((AETemplateInfoFragment)this.a.get()).a();
     }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onError(int paramInt, String paramString, Object paramObject)
   {
-    if (PickerContainer.a(this.a))
-    {
-      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
-        this.a.setVisibility(4);
-      }
-      PickerContainer.a(this.a, false);
+    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---PlayerListener onError errCode=" + paramInt + ", msg=" + paramString);
+    if ((this.a != null) && (this.a.get() != null)) {
+      AETemplateInfoFragment.b((AETemplateInfoFragment)this.a.get());
     }
+    return true;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void onPrepared(IVideoShelfPlayer paramIVideoShelfPlayer) {}
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onUpdateRate(long paramLong)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((AETemplateInfoFragment)this.a.get()).a(paramLong);
+    }
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import agwj;
+import ahiy;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.io.Serializable;
 import mqq.app.AppRuntime;
@@ -34,7 +34,7 @@ public class PreloadFlowControlConfig
     String str = getConfigPath(paramString, paramAppRuntime);
     try
     {
-      paramString = (PreloadFlowControlConfig)agwj.a(str);
+      paramString = (PreloadFlowControlConfig)ahiy.a(str);
       paramAppRuntime = paramString;
       if (paramString == null) {
         paramAppRuntime = new PreloadFlowControlConfig(str);

@@ -1,176 +1,126 @@
 import android.content.Context;
-import android.view.SurfaceHolder;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.Button;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.FaceItem;
-import com.tencent.av.ui.funchat.magicface.MagicfaceViewForAV;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoControlUI;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class mcd
-  implements kxa<FaceItem>
 {
-  protected RelativeLayout a;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  FaceItem jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem;
-  protected MagicfaceViewForAV a;
-  WeakReference<ViewGroup> jdField_a_of_type_JavaLangRefWeakReference;
-  private kxi jdField_a_of_type_Kxi;
-  boolean jdField_a_of_type_Boolean;
+  Resources jdField_a_of_type_AndroidContentResResources = null;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup = null;
+  Button jdField_a_of_type_AndroidWidgetButton = null;
+  VideoController jdField_a_of_type_ComTencentAvVideoController = null;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
+  VideoControlUI jdField_a_of_type_ComTencentAvUiVideoControlUI;
+  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference = null;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public mcd(VideoAppInterface paramVideoAppInterface, Context paramContext)
+  mcd(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity, VideoControlUI paramVideoControlUI, ViewGroup paramViewGroup)
   {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ChildGuideUi", 2, "ChildGuideUi");
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAVActivity);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI = paramVideoControlUI;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
   }
   
-  private void a()
+  void a()
   {
-    if (this.jdField_a_of_type_Kxi == null) {
-      this.jdField_a_of_type_Kxi = ((kxi)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3));
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ChildGuideUi", 2, "initUI");
     }
-  }
-  
-  private void a(long paramLong, ViewGroup paramViewGroup, boolean paramBoolean, FaceItem paramFaceItem, int paramInt)
-  {
-    if (paramFaceItem.isSameType("face")) {
-      b(paramViewGroup);
-    }
-    for (;;)
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
     {
-      this.jdField_a_of_type_Kxi.a(paramLong, paramFaceItem, paramFaceItem.getId(), paramBoolean, this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV);
-      return;
-      if ((paramFaceItem.isSameType("pendant")) || (paramFaceItem.isSameType("creativecop"))) {
-        a(paramViewGroup);
-      } else if (paramFaceItem.isSameType("voicesticker")) {
-        b(paramViewGroup);
-      }
-    }
-  }
-  
-  private void b(ViewGroup paramViewGroup)
-  {
-    Object localObject = new StringBuilder().append("realyShowView : ");
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      krx.e("MagicfaceViewProxy", bool);
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
+      AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localAVActivity != null)
       {
-        localObject = View.inflate(BaseApplicationImpl.getContext(), 2131493969, null);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131304046));
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV = ((MagicfaceViewForAV)((View)localObject).findViewById(2131304044));
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV.setZOrderMediaOverlay(true);
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV.getHolder().setFormat(-2);
-        localObject = paramViewGroup.findViewById(2131306822);
-        int i = -1;
-        if (localObject != null) {
-          i = paramViewGroup.indexOfChild((View)localObject);
-        }
-        paramViewGroup.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, i);
+        localAVActivity.getLayoutInflater().inflate(2131559499, this.jdField_a_of_type_AndroidViewViewGroup);
+        this.jdField_a_of_type_AndroidContentResResources = localAVActivity.getResources();
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      return;
     }
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372227));
   }
   
-  public void a(long paramLong, ViewGroup paramViewGroup, lrz paramlrz)
+  public void a(View paramView)
   {
-    boolean bool2 = false;
-    Object localObject = new StringBuilder().append("showView, requestPlayMagicFace[").append(paramlrz).append("], mRootView[");
-    if (paramViewGroup != null) {}
-    for (boolean bool1 = true;; bool1 = false)
+    switch (paramView.getId())
     {
-      QLog.w("MagicfaceViewProxy", 1, bool1 + "], mItem[" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem + "], seq[" + paramLong + "]");
-      if (paramViewGroup != null) {
-        break;
-      }
+    default: 
       return;
     }
-    a();
-    this.jdField_a_of_type_Kxi.a(paramLong, this);
-    localObject = (FaceItem)this.jdField_a_of_type_Kxi.a(paramlrz.c);
-    bool1 = bool2;
-    if (localObject != null)
-    {
-      kyo localkyo = (kyo)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(5);
-      bool1 = localkyo.a(3, "normal");
-      bool2 = localkyo.a(3, "interact");
-      if ((bool1) && ((bool2) || (!((FaceItem)localObject).isInteract()))) {
-        break label253;
-      }
-      bool1 = true;
-      if (bool1) {
-        break label300;
-      }
-      if (!((FaceItem)localObject).isUsable()) {
-        break label259;
-      }
-      a(paramLong, paramViewGroup, paramlrz.jdField_a_of_type_Boolean, (FaceItem)localObject, paramlrz.jdField_a_of_type_Int);
-    }
-    label259:
-    label300:
-    for (;;)
-    {
-      QLog.w("MagicfaceViewProxy", 1, "showView, dimmed[" + bool1 + "], item[" + localObject + "]");
-      return;
-      label253:
-      bool1 = false;
-      break;
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramViewGroup);
-      this.jdField_a_of_type_Boolean = paramlrz.jdField_a_of_type_Boolean;
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem = ((FaceItem)localObject);
-      this.jdField_a_of_type_Kxi.a(paramlrz.a(), (kxb)localObject);
-    }
+    b();
   }
   
-  public void a(long paramLong, FaceItem paramFaceItem) {}
-  
-  public void a(long paramLong, FaceItem paramFaceItem, boolean paramBoolean)
+  public boolean a()
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (paramFaceItem != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem.getId().equalsIgnoreCase(paramFaceItem.getId())))
-    {
-      ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localViewGroup != null)
-      {
-        QLog.w("MagicfaceViewProxy", 1, "onDownloadFinish, prepareShow, seq[" + paramLong + "], FaceItem[" + paramFaceItem + "]");
-        a(paramLong, localViewGroup, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem, 6);
-      }
-    }
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public void a(ViewGroup paramViewGroup)
+  public void b()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("realyHideView : ");
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      krx.c("MagicfaceViewProxy", bool);
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-      {
-        paramViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV = null;
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-      }
-      return;
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
+    this.jdField_a_of_type_ComTencentAvVideoController = null;
+    this.jdField_a_of_type_AndroidViewViewGroup = null;
+    this.jdField_a_of_type_AndroidContentResResources = null;
+    this.jdField_a_of_type_AndroidWidgetButton = null;
   }
   
-  public void a(ViewGroup paramViewGroup, String paramString, boolean paramBoolean)
+  public boolean b()
   {
-    if (paramViewGroup == null) {}
-    while (!this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3)) {
-      return;
-    }
-    a();
-    this.jdField_a_of_type_Kxi.b(-1048L, this);
-    this.jdField_a_of_type_Kxi.a(0, paramString, paramBoolean);
-    a(paramViewGroup);
+    f();
+    return true;
   }
   
-  public void a(FaceItem paramFaceItem, int paramInt) {}
+  public void c() {}
+  
+  boolean c()
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("com.tencent.av.count", 0);
+    String str = "DoubleVideoChildLock_ShowGuide";
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+      str = "DoubleVideoChildLock_ShowGuide" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
+    }
+    if (localSharedPreferences.getInt(str, 0) == 0)
+    {
+      localSharedPreferences.edit().putInt(str, 1).commit();
+      return true;
+    }
+    return false;
+  }
+  
+  public void d() {}
+  
+  void e()
+  {
+    if ((this.jdField_a_of_type_AndroidContentResResources == null) || (this.jdField_a_of_type_AndroidWidgetButton == null)) {
+      a();
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.I();
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+  }
+  
+  void f()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.J();
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+  }
 }
 
 

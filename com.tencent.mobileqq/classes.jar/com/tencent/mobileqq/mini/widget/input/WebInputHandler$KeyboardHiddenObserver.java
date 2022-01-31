@@ -22,26 +22,27 @@ public class WebInputHandler$KeyboardHiddenObserver
     try
     {
       if (!(paramObject instanceof String)) {
-        break label208;
+        break label226;
       }
       if ("hideKeyboard".equals((String)paramObject))
       {
-        if (WebInputHandler.access$300(this.this$0) == null) {
+        if (WebInputHandler.access$400(this.this$0) == null) {
           return;
         }
-        if (WebInputHandler.access$300(this.this$0).getContext() == null) {
+        if (WebInputHandler.access$400(this.this$0).getContext() == null) {
           return;
         }
-        if (WebInputHandler.access$400(this.this$0) != 0) {
-          EditAreaAnimatorUtil.editAreaAnimator(WebInputHandler.access$300(this.this$0), WebInputHandler.access$400(this.this$0), 0.0F, 1.0F, 1.0F);
+        if (WebInputHandler.access$500(this.this$0) != 0) {
+          EditAreaAnimatorUtil.editAreaAnimator(WebInputHandler.access$400(this.this$0), WebInputHandler.access$500(this.this$0), 0.0F, 1.0F, 1.0F);
         }
-        paramObservable = (InputMethodManager)WebInputHandler.access$300(this.this$0).getContext().getSystemService("input_method");
+        paramObservable = (InputMethodManager)WebInputHandler.access$400(this.this$0).getContext().getSystemService("input_method");
         if (paramObservable == null) {
           return;
         }
-        paramObservable.hideSoftInputFromWindow(WebInputHandler.access$300(this.this$0).getWindowToken(), 0);
-        WebInputHandler.access$402(this.this$0, 0);
+        paramObservable.hideSoftInputFromWindow(WebInputHandler.access$400(this.this$0).getWindowToken(), 0);
         WebInputHandler.access$502(this.this$0, 0);
+        WebInputHandler.access$602(this.this$0, 0);
+        WebInputHandler.access$202(this.this$0, false);
         return;
       }
     }
@@ -52,25 +53,26 @@ public class WebInputHandler$KeyboardHiddenObserver
     }
     if ("hideInput".equals((String)paramObject))
     {
-      if (WebInputHandler.access$400(this.this$0) != 0) {
-        EditAreaAnimatorUtil.editAreaAnimator(WebInputHandler.access$300(this.this$0), WebInputHandler.access$400(this.this$0), 0.0F, 1.0F, 1.0F);
+      if (WebInputHandler.access$500(this.this$0) != 0) {
+        EditAreaAnimatorUtil.editAreaAnimator(WebInputHandler.access$400(this.this$0), WebInputHandler.access$500(this.this$0), 0.0F, 1.0F, 1.0F);
       }
       this.this$0.hideCurrentInput(true);
-      WebInputHandler.access$402(this.this$0, 0);
       WebInputHandler.access$502(this.this$0, 0);
+      WebInputHandler.access$602(this.this$0, 0);
+      WebInputHandler.access$202(this.this$0, false);
       return;
-      label208:
-      if (((paramObject instanceof Integer)) && (WebInputHandler.access$300(this.this$0) != null) && (WebInputHandler.access$300(this.this$0).getCurrentPageWebview() != null) && (WebInputHandler.access$300(this.this$0).getCurrentWebviewContainer().appBrandRuntime != null) && (WebInputHandler.access$300(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity != null))
+      label226:
+      if (((paramObject instanceof Integer)) && (WebInputHandler.access$400(this.this$0) != null) && (WebInputHandler.access$400(this.this$0).getCurrentPageWebview() != null) && (WebInputHandler.access$400(this.this$0).getCurrentWebviewContainer().appBrandRuntime != null) && (WebInputHandler.access$400(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity != null))
       {
-        WebInputHandler.access$602(this.this$0, (int)(Integer.valueOf(String.valueOf(paramObject)).intValue() * DisplayUtil.getDensity(WebInputHandler.access$300(this.this$0).getContext())));
-        if ((DisplayUtil.hasNavBar(WebInputHandler.access$300(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity)) && (DisplayUtil.isNavigationBarExist(WebInputHandler.access$300(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity))) {
-          WebInputHandler.access$602(this.this$0, WebInputHandler.access$600(this.this$0) + DisplayUtil.getNavigationBarHeight(WebInputHandler.access$300(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity));
+        WebInputHandler.access$202(this.this$0, true);
+        WebInputHandler.access$302(this.this$0, (int)(Integer.valueOf(String.valueOf(paramObject)).intValue() * DisplayUtil.getDensity(WebInputHandler.access$400(this.this$0).getContext())));
+        if ((DisplayUtil.hasNavBar(WebInputHandler.access$400(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity)) && (DisplayUtil.isNavigationBarExist(WebInputHandler.access$400(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity))) {
+          WebInputHandler.access$302(this.this$0, WebInputHandler.access$300(this.this$0) + DisplayUtil.getNavigationBarHeight(WebInputHandler.access$400(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity));
         }
-        WebInputHandler.access$200(this.this$0);
         paramObservable = new JSONObject();
         paramObservable.put("inputId", WebInputHandler.access$000(this.this$0));
         paramObservable.put("height", paramObject);
-        WebInputHandler.access$300(this.this$0).getCurrentPageWebview().evaluateSubcribeJS("onKeyboardShow", paramObservable.toString(), WebInputHandler.access$300(this.this$0).getCurrentPageWebview().pageWebviewId);
+        WebInputHandler.access$400(this.this$0).getCurrentPageWebview().evaluateSubcribeJS("onKeyboardShow", paramObservable.toString(), WebInputHandler.access$400(this.this$0).getCurrentPageWebview().pageWebviewId);
       }
     }
   }

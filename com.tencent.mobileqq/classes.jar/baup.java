@@ -1,51 +1,17 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.util.QZLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.unifiedebug.SnapshotService;
 
 public class baup
-  extends bgpr
 {
-  private MQLruCache<String, Object> a;
+  public long a;
+  public ResultReceiver a;
+  public bauo a;
+  public String a;
+  public long b;
+  public String b;
+  private long c;
   
-  public baup(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
-  
-  public MQLruCache<String, Object> a()
-  {
-    return this.a;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = new bauq(this, paramInt);
-    this.a.setLargeSize(1);
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.a != null)
-    {
-      Iterator localIterator = this.a.getLargeCache().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Object localObject = this.a.get(str);
-        if ((localObject != null) && ((localObject instanceof Bitmap)))
-        {
-          ((Bitmap)localObject).recycle();
-          QZLog.i("DIYProfileTemplate.DIYLottieLoader", 4, "recycle bitmap key = " + str);
-        }
-      }
-      this.a.releaseLargeCache();
-    }
-  }
+  public baup(SnapshotService paramSnapshotService) {}
 }
 
 

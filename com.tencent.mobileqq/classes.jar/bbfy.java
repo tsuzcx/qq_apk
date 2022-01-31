@@ -1,63 +1,26 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.widget.ADView;
-
-public class bbfy
-  implements bbpe
+class bbfy
+  implements adlo
 {
-  public bbfy(ADView paramADView, LinearLayout paramLinearLayout) {}
+  bbfy(bbfx parambbfx) {}
   
-  public void a(int paramInt)
+  public boolean a(adll paramadll)
   {
-    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    int i = 0;
-    View localView;
-    while (i < j)
+    if (this.a.isShowing())
     {
-      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if (localView != null) {
-        localView.setEnabled(false);
-      }
-      i += 1;
+      this.a.dismiss();
+      return true;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.f) {
-      if (paramInt == -1) {
-        i = j - 1;
-      }
-    }
-    for (;;)
-    {
-      if ((i > -1) && (i < j))
-      {
-        localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-        if (localView != null) {
-          localView.setEnabled(true);
-        }
-      }
-      return;
-      i = paramInt;
-      if (paramInt == j)
-      {
-        i = 0;
-        continue;
-        if (paramInt == -1)
-        {
-          i = 0;
-        }
-        else
-        {
-          i = paramInt;
-          if (paramInt == j) {
-            i = j - 1;
-          }
-        }
-      }
-    }
+    return false;
+  }
+  
+  public boolean a(adll paramadll, String paramString1, String paramString2)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbfy
  * JD-Core Version:    0.7.0.1
  */

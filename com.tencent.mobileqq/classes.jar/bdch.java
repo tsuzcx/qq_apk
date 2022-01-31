@@ -1,32 +1,21 @@
-import android.text.Editable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.qqconnect.wtlogin.Login;
-
 public class bdch
-  implements View.OnTouchListener
 {
-  public bdch(Login paramLogin) {}
+  public long a;
+  String a;
+  public boolean a;
+  String b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bdch(long paramLong, String paramString1, String paramString2)
   {
-    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText) {
-      if ((paramMotionEvent.getAction() == 0) && (this.a.jdField_b_of_type_AndroidWidgetEditText.getText().length() > 0)) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      }
-    }
-    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramMotionEvent.getAction() != 0) || (this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length() <= 0)) {
-      return false;
-    }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    return false;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString1;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdch
  * JD-Core Version:    0.7.0.1
  */

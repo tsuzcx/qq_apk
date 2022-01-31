@@ -1,225 +1,312 @@
-import android.util.Pair;
-import cooperation.qzone.util.QZLog;
-import java.io.Closeable;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.channels.FileChannel;
-import java.nio.charset.Charset;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdDislikeInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.NegativeChildrenLayout;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.Iterator;
 
 public class bfsi
-  implements Closeable
+  extends bfsc
+  implements View.OnClickListener
 {
-  public bfsk a;
-  private final FileInputStream jdField_a_of_type_JavaIoFileInputStream;
-  private final Map<String, bfsm> jdField_a_of_type_JavaUtilMap = new HashMap();
-  public bfsl[] a;
-  public bfsm[] a;
+  private bfsl jdField_a_of_type_Bfsl;
+  HashMap<Integer, DislikeInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  bfsh b;
+  View jdField_g_of_type_AndroidViewView;
+  ArrayList<DislikeInfo> jdField_g_of_type_JavaUtilArrayList = new ArrayList();
+  View jdField_h_of_type_AndroidViewView;
+  ArrayList<DislikeInfo> jdField_h_of_type_JavaUtilArrayList = new ArrayList();
+  View jdField_i_of_type_AndroidViewView;
+  ArrayList<DislikeInfo> jdField_i_of_type_JavaUtilArrayList = new ArrayList();
+  View jdField_j_of_type_AndroidViewView;
+  ArrayList<DislikeInfo> jdField_j_of_type_JavaUtilArrayList = new ArrayList();
   
-  public bfsi(File paramFile)
+  public bfsi(Context paramContext)
   {
-    this.jdField_a_of_type_JavaIoFileInputStream = new FileInputStream(paramFile);
-    Object localObject = this.jdField_a_of_type_JavaIoFileInputStream.getChannel();
-    this.jdField_a_of_type_Bfsk = new bfsk((FileChannel)localObject, null);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(128);
-    localByteBuffer.limit(this.jdField_a_of_type_Bfsk.d);
-    if (this.jdField_a_of_type_Bfsk.a[5] == 1) {}
-    for (paramFile = ByteOrder.LITTLE_ENDIAN;; paramFile = ByteOrder.BIG_ENDIAN)
-    {
-      localByteBuffer.order(paramFile);
-      ((FileChannel)localObject).position(this.jdField_a_of_type_Bfsk.b);
-      this.jdField_a_of_type_ArrayOfBfsl = new bfsl[this.jdField_a_of_type_Bfsk.e];
-      i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfBfsl.length)
-      {
-        a((FileChannel)localObject, localByteBuffer, "failed to read phdr.");
-        this.jdField_a_of_type_ArrayOfBfsl[i] = new bfsl(localByteBuffer, this.jdField_a_of_type_Bfsk.a[4], null);
-        i += 1;
-      }
-    }
-    ((FileChannel)localObject).position(this.jdField_a_of_type_Bfsk.c);
-    localByteBuffer.limit(this.jdField_a_of_type_Bfsk.f);
-    this.jdField_a_of_type_ArrayOfBfsm = new bfsm[this.jdField_a_of_type_Bfsk.g];
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfBfsm.length)
-    {
-      a((FileChannel)localObject, localByteBuffer, "failed to read shdr.");
-      this.jdField_a_of_type_ArrayOfBfsm[i] = new bfsm(localByteBuffer, this.jdField_a_of_type_Bfsk.a[4], null);
-      i += 1;
-    }
-    if (this.jdField_a_of_type_Bfsk.h > 0)
-    {
-      paramFile = a(this.jdField_a_of_type_ArrayOfBfsm[this.jdField_a_of_type_Bfsk.h]);
-      localObject = this.jdField_a_of_type_ArrayOfBfsm;
-      int k = localObject.length;
-      i = j;
-      while (i < k)
-      {
-        localByteBuffer = localObject[i];
-        paramFile.position(localByteBuffer.jdField_a_of_type_Int);
-        localByteBuffer.jdField_a_of_type_JavaLangString = a(paramFile);
-        this.jdField_a_of_type_JavaUtilMap.put(localByteBuffer.jdField_a_of_type_JavaLangString, localByteBuffer);
-        i += 1;
-      }
-    }
-  }
-  
-  public static Pair<Integer, Throwable> a(File paramFile)
-  {
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        paramFile = new bfsi(paramFile);
-        if (paramFile == null) {}
-      }
-      catch (IOException paramFile)
-      {
-        Object localObject1 = paramFile.getMessage();
-        if (localObject1 == null) {
-          continue;
-        }
-        if (!((String)localObject1).startsWith("bad elf magic")) {
-          continue;
-        }
-        i = -1;
-        localObject1 = new Pair(Integer.valueOf(i), paramFile);
-        paramFile = (File)localObject1;
-        if (0 == 0) {
-          continue;
-        }
-        try
-        {
-          throw new NullPointerException();
-        }
-        catch (IOException paramFile)
-        {
-          QZLog.e("ShareElfFile", "", paramFile);
-          return localObject1;
-        }
-        if (!((String)localObject1).startsWith("bad elf class")) {
-          continue;
-        }
-        i = -2;
-        continue;
-        if (!((String)localObject1).startsWith("bad elf data encoding")) {
-          continue;
-        }
-        i = -3;
-        continue;
-        if (!((String)localObject1).startsWith("failed to read rest part of ehdr")) {
-          continue;
-        }
-        i = -4;
-        continue;
-        if (!((String)localObject1).startsWith("bad elf version")) {
-          continue;
-        }
-        i = -5;
-        continue;
-        if (!((String)localObject1).startsWith("Unexpected elf class")) {
-          continue;
-        }
-        i = -6;
-        continue;
-        if (!((String)localObject1).startsWith("failed to read phdr")) {
-          continue;
-        }
-        i = -7;
-        continue;
-        boolean bool = ((String)localObject1).startsWith("failed to read shdr");
-        if (!bool) {
-          continue;
-        }
-        i = -8;
-        continue;
-        i = -1000;
-        continue;
-      }
-      finally
-      {
-        if (0 == 0) {
-          break label232;
-        }
-      }
-      try
-      {
-        paramFile.close();
-        paramFile = new Pair(Integer.valueOf(0), null);
-        return paramFile;
-      }
-      catch (IOException paramFile)
-      {
-        QZLog.e("ShareElfFile", "", paramFile);
-      }
-    }
+    super(paramContext);
+    this.jdField_b_of_type_Bfsh = new bfsj(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559982, null);
+    setContentView(this.jdField_a_of_type_AndroidViewView);
+    setHeight(-2);
+    setTouchable(true);
+    setFocusable(true);
+    setOutsideTouchable(false);
     try
     {
-      throw new NullPointerException();
-      label232:
-      throw localObject2;
+      a(this.jdField_a_of_type_AndroidViewView);
+      return;
     }
-    catch (IOException paramFile)
+    catch (Exception paramContext) {}
+  }
+  
+  protected int a()
+  {
+    int m = this.jdField_g_of_type_JavaUtilArrayList.size();
+    int k = m;
+    if (this.jdField_h_of_type_JavaUtilArrayList.size() > m) {
+      k = this.jdField_h_of_type_JavaUtilArrayList.size();
+    }
+    m = k;
+    if (this.jdField_i_of_type_JavaUtilArrayList.size() > k) {
+      m = this.jdField_i_of_type_JavaUtilArrayList.size();
+    }
+    k = m;
+    if (this.jdField_j_of_type_JavaUtilArrayList.size() > m) {
+      k = this.jdField_j_of_type_JavaUtilArrayList.size();
+    }
+    m = k;
+    if (k > 6) {
+      m = 6;
+    }
+    return m;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, ArrayList<AdDislikeInfo> paramArrayList)
+  {
+    b();
+    this.o = paramInt1;
+    this.p = paramInt2;
+    this.q = paramInt3;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
-      for (;;)
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
       {
-        QZLog.e("ShareElfFile", "", paramFile);
+        AdDislikeInfo localAdDislikeInfo = (AdDislikeInfo)paramArrayList.next();
+        if (localAdDislikeInfo != null)
+        {
+          if (localAdDislikeInfo.a != 0) {
+            this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localAdDislikeInfo.a), localAdDislikeInfo);
+          }
+          for (;;)
+          {
+            localStringBuilder.append(localAdDislikeInfo.toString());
+            localStringBuilder.append("\n");
+            break;
+            switch (localAdDislikeInfo.b)
+            {
+            default: 
+              break;
+            case 1: 
+              this.jdField_g_of_type_JavaUtilArrayList.add(localAdDislikeInfo);
+              break;
+            case 2: 
+              this.jdField_h_of_type_JavaUtilArrayList.add(localAdDislikeInfo);
+              break;
+            case 3: 
+              this.jdField_i_of_type_JavaUtilArrayList.add(localAdDislikeInfo);
+            }
+          }
+        }
       }
     }
-  }
-  
-  public static String a(ByteBuffer paramByteBuffer)
-  {
-    byte[] arrayOfByte = paramByteBuffer.array();
-    int i = paramByteBuffer.position();
-    while ((paramByteBuffer.hasRemaining()) && (arrayOfByte[paramByteBuffer.position()] != 0)) {
-      paramByteBuffer.position(paramByteBuffer.position() + 1);
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(1)))
+    {
+      paramArrayList = (DislikeInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(1));
+      boolean bool = true;
+      if (this.jdField_g_of_type_JavaUtilArrayList.isEmpty())
+      {
+        this.jdField_g_of_type_JavaUtilArrayList.add(paramArrayList);
+        bool = false;
+      }
+      a(this.jdField_g_of_type_JavaUtilArrayList, this.jdField_g_of_type_AndroidViewView, 2130841226, paramArrayList.a, bool);
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(2))) {
+        break label563;
+      }
+      paramArrayList = (DislikeInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2));
+      bool = true;
+      if (this.jdField_h_of_type_JavaUtilArrayList.isEmpty())
+      {
+        this.jdField_h_of_type_JavaUtilArrayList.add(paramArrayList);
+        bool = false;
+      }
+      a(this.jdField_h_of_type_JavaUtilArrayList, this.jdField_h_of_type_AndroidViewView, 2130841228, paramArrayList.a, bool);
+      label352:
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(3))) {
+        break label589;
+      }
+      paramArrayList = (DislikeInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
+      bool = true;
+      if (this.jdField_i_of_type_JavaUtilArrayList.isEmpty())
+      {
+        this.jdField_i_of_type_JavaUtilArrayList.add(paramArrayList);
+        bool = false;
+      }
+      a(this.jdField_i_of_type_JavaUtilArrayList, this.jdField_i_of_type_AndroidViewView, 2130841219, paramArrayList.a, bool);
     }
-    paramByteBuffer.position(paramByteBuffer.position() + 1);
-    return new String(arrayOfByte, i, paramByteBuffer.position() - i - 1, Charset.forName("ASCII"));
-  }
-  
-  public static void a(FileChannel paramFileChannel, ByteBuffer paramByteBuffer, String paramString)
-  {
-    paramByteBuffer.rewind();
-    int i = paramFileChannel.read(paramByteBuffer);
-    if (i != paramByteBuffer.limit()) {
-      throw new IOException(paramString + " Rest bytes insufficient, expect to read " + paramByteBuffer.limit() + " bytes but only " + i + " bytes were read.");
+    for (;;)
+    {
+      paramArrayList = new DislikeInfo();
+      paramArrayList.a = ajyc.a(2131705931);
+      paramArrayList.c = 0;
+      this.jdField_j_of_type_JavaUtilArrayList.add(paramArrayList);
+      a(this.jdField_j_of_type_JavaUtilArrayList, this.jdField_j_of_type_AndroidViewView, 2130841210, paramArrayList.a, false);
+      this.jdField_j_of_type_AndroidViewView.findViewById(2131368368).setVisibility(0);
+      a();
+      if (QLog.isColorLevel()) {
+        QLog.d("KandianNegativeWindowForAd", 1, "setData:" + localStringBuilder.toString());
+      }
+      return;
+      a(new ArrayList(), this.jdField_g_of_type_AndroidViewView, 2130841226, ajyc.a(2131705915), false);
+      break;
+      label563:
+      a(new ArrayList(), this.jdField_h_of_type_AndroidViewView, 2130841228, ajyc.a(2131705918), false);
+      break label352;
+      label589:
+      a(new ArrayList(), this.jdField_i_of_type_AndroidViewView, 2130841219, ajyc.a(2131705919), false);
     }
-    paramByteBuffer.flip();
   }
   
-  private static void b(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public void a(View paramView)
   {
-    if ((paramInt1 < paramInt2) || (paramInt1 > paramInt3)) {
-      throw new IOException(paramString);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131364692));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369745));
+    this.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout = ((NegativeChildrenLayout)paramView.findViewById(2131364203));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370714));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370715));
+    this.jdField_g_of_type_AndroidViewView = paramView.findViewById(2131370708);
+    this.jdField_h_of_type_AndroidViewView = paramView.findViewById(2131370716);
+    this.jdField_i_of_type_AndroidViewView = paramView.findViewById(2131370712);
+    this.jdField_j_of_type_AndroidViewView = paramView.findViewById(2131370706);
+    this.jdField_g_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_h_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_i_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_j_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_j_of_type_AndroidViewView.findViewById(2131375887).setVisibility(4);
+    setBackgroundDrawable(new ColorDrawable());
+    ((ImageView)paramView.findViewById(2131366288).findViewById(2131369099)).setOnClickListener(this);
+    this.jdField_i_of_type_Int = ((int)bbct.i());
+    this.jdField_j_of_type_Int = ((int)bbct.j());
+    this.l = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298591));
+    this.k = (this.jdField_i_of_type_Int - this.l * 2);
+    setWidth(this.k);
+    this.m = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298568));
+    setOnDismissListener(new bfsk(this));
+  }
+  
+  public void a(bfsl parambfsl)
+  {
+    this.jdField_a_of_type_Bfsl = parambfsl;
+  }
+  
+  protected int b()
+  {
+    if (this.jdField_h_of_type_Int <= 0)
+    {
+      b(this.jdField_b_of_type_AndroidWidgetImageView);
+      this.jdField_h_of_type_Int = this.jdField_b_of_type_AndroidWidgetImageView.getMeasuredHeight();
+    }
+    int k = (a() + 1) * this.m + this.jdField_h_of_type_Int;
+    b(this.jdField_g_of_type_AndroidViewView);
+    int m = this.jdField_g_of_type_AndroidViewView.getMeasuredHeight() * this.n + this.jdField_h_of_type_Int;
+    if (k > m) {
+      return k;
+    }
+    return m;
+  }
+  
+  protected void b()
+  {
+    super.b();
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.jdField_g_of_type_JavaUtilArrayList.clear();
+    this.jdField_h_of_type_JavaUtilArrayList.clear();
+    this.jdField_i_of_type_JavaUtilArrayList.clear();
+    this.jdField_j_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public void b(pbi parampbi, ArrayList<AdDislikeInfo> paramArrayList)
+  {
+    int n = 0;
+    Object localObject = null;
+    int m;
+    int k;
+    if (parampbi != null)
+    {
+      m = parampbi.b;
+      k = parampbi.a;
+    }
+    for (parampbi = parampbi.a();; parampbi = localObject)
+    {
+      if (parampbi != null) {
+        n = onk.a(parampbi);
+      }
+      a(m, k, n, paramArrayList);
+      return;
+      k = 0;
+      m = 0;
     }
   }
   
-  public ByteBuffer a(bfsm parambfsm)
+  protected void d()
   {
-    ByteBuffer localByteBuffer = ByteBuffer.allocate((int)parambfsm.d);
-    this.jdField_a_of_type_JavaIoFileInputStream.getChannel().position(parambfsm.c);
-    a(this.jdField_a_of_type_JavaIoFileInputStream.getChannel(), localByteBuffer, "failed to read section: " + parambfsm.jdField_a_of_type_JavaLangString);
-    return localByteBuffer;
+    this.f.clear();
+    a(this.jdField_g_of_type_JavaUtilArrayList.size(), this.jdField_g_of_type_AndroidViewView);
+    a(this.jdField_h_of_type_JavaUtilArrayList.size(), this.jdField_h_of_type_AndroidViewView);
+    a(this.jdField_i_of_type_JavaUtilArrayList.size(), this.jdField_i_of_type_AndroidViewView);
+    a(this.jdField_j_of_type_JavaUtilArrayList.size(), this.jdField_j_of_type_AndroidViewView);
   }
   
-  public void close()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaIoFileInputStream.close();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_ArrayOfBfsl = null;
-    this.jdField_a_of_type_ArrayOfBfsm = null;
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131370708: 
+      if (paramView.getTag() != null)
+      {
+        c(paramView);
+        c();
+        return;
+      }
+      this.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.jdField_g_of_type_JavaUtilArrayList, ((DislikeInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(1))).a, this.jdField_b_of_type_Bfsh);
+      a(true);
+      return;
+    case 2131370716: 
+      if (paramView.getTag() != null)
+      {
+        c(paramView);
+        c();
+        return;
+      }
+      this.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.jdField_g_of_type_JavaUtilArrayList, ((DislikeInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2))).a, this.jdField_b_of_type_Bfsh);
+      a(true);
+      return;
+    case 2131370712: 
+      if (paramView.getTag() != null)
+      {
+        c(paramView);
+        c();
+        return;
+      }
+      this.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.jdField_g_of_type_JavaUtilArrayList, ((DislikeInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3))).a, this.jdField_b_of_type_Bfsh);
+      a(true);
+      return;
+    case 2131370706: 
+      if (this.jdField_a_of_type_Bfsl != null) {
+        this.jdField_a_of_type_Bfsl.a();
+      }
+      dismiss();
+      return;
+    }
+    a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfsi
  * JD-Core Version:    0.7.0.1
  */

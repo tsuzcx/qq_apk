@@ -1,25 +1,24 @@
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class acjp
-  implements ajub
+  implements View.OnClickListener
 {
-  public acjp(BaseBubbleBuilder paramBaseBubbleBuilder, Intent paramIntent) {}
+  public acjp(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a(Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramObject instanceof String))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-    }
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acjp
  * JD-Core Version:    0.7.0.1
  */

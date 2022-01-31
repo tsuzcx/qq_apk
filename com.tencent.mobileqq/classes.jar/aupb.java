@@ -1,29 +1,53 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public class aupb
-  implements View.OnLongClickListener
+public abstract class aupb
+  extends ampb<aupd>
 {
-  private WeakReference<ReceiptMessageDetailFragment> a;
-  
-  private aupb(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public int a()
   {
-    this.a = new WeakReference(paramReceiptMessageDetailFragment);
+    return c();
   }
   
-  public boolean onLongClick(View paramView)
+  @NonNull
+  public aupd a(int paramInt)
   {
-    paramView = (ReceiptMessageDetailFragment)this.a.get();
-    if ((paramView == null) || (!paramView.isAdded())) {
-      return false;
+    return new aupd();
+  }
+  
+  @Nullable
+  public aupd a(ampi[] paramArrayOfampi)
+  {
+    aupd localaupd = new aupd();
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null)) {
+      aupd.a(localaupd, paramArrayOfampi[0].a);
     }
-    begr localbegr = begr.a(paramView.getActivity());
-    localbegr.b(2131625727);
-    localbegr.c(2131625035);
-    localbegr.a(new aupc(this, paramView, localbegr));
-    localbegr.show();
+    return localaupd;
+  }
+  
+  public Class<aupd> a()
+  {
+    return aupd.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aupd paramaupd) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  abstract int c();
+  
+  public boolean c()
+  {
     return true;
   }
 }

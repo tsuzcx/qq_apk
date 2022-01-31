@@ -1,27 +1,25 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import org.json.JSONObject;
 
 class UIJsPlugin$26
-  implements Animator.AnimatorListener
+  implements Runnable
 {
-  UIJsPlugin$26(UIJsPlugin paramUIJsPlugin, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
+  UIJsPlugin$26(UIJsPlugin paramUIJsPlugin, JsRuntime paramJsRuntime, JSONObject paramJSONObject, String paramString, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
+    WebviewContainer localWebviewContainer = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
+    if (localWebviewContainer != null)
+    {
+      localWebviewContainer.insertTextView(this.val$jsonObject);
+      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
+      return;
+    }
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, "container is null", this.val$callbackId);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

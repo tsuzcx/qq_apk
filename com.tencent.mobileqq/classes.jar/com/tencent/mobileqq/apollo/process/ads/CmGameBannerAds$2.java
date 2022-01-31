@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.ads;
 
-import ainj;
-import ainl;
+import ajah;
+import ajaj;
 import android.app.Activity;
 import android.widget.FrameLayout;
 import com.tencent.qphone.base.util.QLog;
@@ -10,21 +10,21 @@ import java.util.HashMap;
 public class CmGameBannerAds$2
   implements Runnable
 {
-  public CmGameBannerAds$2(ainj paramainj, int paramInt) {}
+  public CmGameBannerAds$2(ajah paramajah, int paramInt) {}
   
   public void run()
   {
     try
     {
-      ainl localainl = (ainl)ainj.a(this.this$0).get(Integer.valueOf(this.a));
-      Activity localActivity = ainj.a(this.this$0);
-      if ((localainl != null) && (localainl.a != null))
+      ajaj localajaj = (ajaj)ajah.a(this.this$0).get(Integer.valueOf(this.a));
+      Activity localActivity = ajah.a(this.this$0);
+      if ((localajaj != null) && (localajaj.a != null))
       {
         if (localActivity == null) {
           return;
         }
-        ((FrameLayout)localActivity.findViewById(2131297497)).removeView(localainl.a);
-        ainj.a(this.this$0).remove(Integer.valueOf(this.a));
+        ((FrameLayout)localActivity.findViewById(2131363038)).removeView(localajaj.a);
+        ajah.a(this.this$0).remove(Integer.valueOf(this.a));
         return;
       }
     }

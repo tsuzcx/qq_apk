@@ -2,9 +2,9 @@ package com.tencent.mobileqq.surfaceviewaction.gl;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import axbz;
-import axcq;
-import axcr;
+import aycb;
+import aycs;
+import ayct;
 
 public class SpriteVideoView
   extends SpriteGLView
@@ -29,16 +29,16 @@ public class SpriteVideoView
     this.a.j();
   }
   
-  public void a(String paramString, int paramInt, axbz paramaxbz)
+  public void a(String paramString, int paramInt, aycb paramaycb)
   {
     this.a.a(paramString, paramInt);
-    this.a.a(paramaxbz);
+    this.a.a(paramaycb);
   }
   
-  public void a(String paramString, axbz paramaxbz)
+  public void a(String paramString, aycb paramaycb)
   {
     this.a.c(paramString);
-    this.a.a(paramaxbz);
+    this.a.a(paramaycb);
   }
   
   protected void a(boolean paramBoolean)
@@ -64,14 +64,14 @@ public class SpriteVideoView
     this.a.a(paramBoolean);
   }
   
-  public void setOnPlayedListener(axcq paramaxcq)
+  public void setOnPlayedListener(aycs paramaycs)
   {
-    this.a.a(paramaxcq);
+    this.a.a(paramaycs);
   }
   
-  public void setOnProgressChangedListener(axcr paramaxcr)
+  public void setOnProgressChangedListener(ayct paramayct)
   {
-    this.a.a(paramaxcr);
+    this.a.a(paramayct);
   }
 }
 

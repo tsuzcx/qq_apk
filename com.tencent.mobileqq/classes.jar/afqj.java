@@ -1,15 +1,11 @@
-import android.os.Bundle;
-
 class afqj
-  extends atdl
+  implements aftp
 {
-  afqj(afqi paramafqi) {}
+  afqj(afqe paramafqe) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public long a()
   {
-    if ((paramInt == 0) && (paramBoolean == true)) {
-      afqi.a(this.a);
-    }
+    return afqe.a(this.a);
   }
 }
 

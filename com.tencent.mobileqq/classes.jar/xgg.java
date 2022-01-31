@@ -1,49 +1,28 @@
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public abstract class xgg
-  implements xgv
+class xgg
+  implements Animation.AnimationListener
 {
-  protected long a;
-  protected ArrayList<xgv> a;
-  protected boolean a;
-  public boolean b = true;
-  public boolean c;
+  xgg(xge paramxge) {}
   
-  public xgg()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Long = 350L;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 350L;
-  }
-  
-  public void a(xgv paramxgv)
-  {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramxgv)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramxgv);
+    if (xge.a(this.a) != null)
+    {
+      xge.a(this.a).clearAnimation();
+      xge.a(this.a).startAnimation(xge.a(this.a));
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xgg
  * JD-Core Version:    0.7.0.1
  */

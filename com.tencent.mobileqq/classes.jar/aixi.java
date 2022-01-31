@@ -1,14 +1,17 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
+
 public class aixi
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public String a;
-  public String b;
+  public aixi(CmGameDebugToolFragment paramCmGameDebugToolFragment) {}
   
-  public aixi(int paramInt, String paramString1, String paramString2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    CmGameDebugToolFragment.a(this.a).edit().putBoolean("game_storage_switch", paramBoolean).commit();
   }
 }
 

@@ -1,30 +1,24 @@
-public class bdfw
-  implements bdft<Boolean>
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+class bdfw
+  implements INetEventHandler
 {
-  private int a;
+  bdfw(bdfv parambdfv) {}
   
-  public static bdfw a(int paramInt)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    bdfw localbdfw = new bdfw();
-    localbdfw.a = paramInt;
-    return localbdfw;
-  }
-  
-  public Boolean a(bdcw parambdcw)
-  {
-    switch (this.a)
-    {
-    default: 
-      return Boolean.valueOf(false);
-    case 2: 
-      return Boolean.valueOf(parambdcw.c());
+    int i = nam.a();
+    Iterator localIterator = bdfv.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bdfy)localIterator.next()).a(i);
     }
-    return Boolean.valueOf(parambdcw.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdfw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,56 @@
-import java.util.ArrayList;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.flashchat.FlashChatItem;
 
-class apzb
-  extends baox
+public class apzb
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  apzb(apza paramapza) {}
+  public int a;
+  public apyu a;
+  apzc a;
+  public ArkAppLoadLayout a;
+  public ArkAppView a;
+  public MessageForArkFlashChat a;
+  public FlashChatItem a;
+  public int b;
+  int c;
   
-  protected void onGetGameCenterPubAccountGetFriends(boolean paramBoolean, Object paramObject)
+  public apzb(View paramView, apzc paramapzc, int paramInt)
   {
-    super.onGetGameCenterPubAccountGetFriends(paramBoolean, paramObject);
-    if (paramObject == null) {
-      return;
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat = null;
+    if (paramapzc != null) {
+      this.jdField_a_of_type_Apzc = paramapzc;
     }
-    apza.a(this.a, (ArrayList)paramObject);
-    apza.a(this.a).a(apza.a(this.a));
-    apza.a(this.a).notifyDataSetChanged();
+    this.c = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramView.findViewById(2131362769));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)paramView.findViewById(2131369477));
+    this.itemView.setOnClickListener(this);
+    this.itemView.setOnTouchListener(paramapzc);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Apzc != null) {
+      this.jdField_a_of_type_Apzc.a(paramView, getPosition(), this.c);
+    }
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    boolean bool = false;
+    if (this.jdField_a_of_type_Apzc != null)
+    {
+      this.jdField_a_of_type_Apzc.b(paramView, getPosition(), this.c);
+      bool = true;
+    }
+    return bool;
   }
 }
 

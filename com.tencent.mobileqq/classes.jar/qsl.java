@@ -1,9 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-public class qsl
-  extends ohe
+class qsl
+  implements bfot
 {
-  public qsl(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
+  qsl(qsk paramqsk) {}
+  
+  public void ak_()
+  {
+    qrw.a(this.a.a).c();
+  }
 }
 
 

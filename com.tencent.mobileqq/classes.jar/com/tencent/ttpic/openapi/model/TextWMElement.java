@@ -82,7 +82,7 @@ public class TextWMElement
     if ((this.userValue != null) && (!this.userValue.equals("")) && (!isDateWatermark())) {
       return this.userValue;
     }
-    localObject3 = "";
+    Object localObject3 = "";
     Object localObject1 = localObject3;
     if ((this.fmtstr == null) || ((this.numberSource != null) && (!this.numberSource.equals("")))) {}
     for (;;)
@@ -91,15 +91,14 @@ public class TextWMElement
       {
         int i = Integer.parseInt((String)LogicDataManager.getInstance().mFollowData.get(this.numberSource));
         if (((!this.showCaseMin.equals("")) || (!this.showCaseMax.equals(""))) && ((i < Integer.parseInt(this.showCaseMin)) || (i > Integer.parseInt(this.showCaseMax)))) {
-          continue;
+          break label349;
         }
         localObject1 = new String(this.fmtstr);
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        Object localObject2 = localObject3;
-        continue;
-        localObject2 = "";
+        localNumberFormatException.printStackTrace();
+        localObject2 = localObject3;
         continue;
       }
       localObject3 = localObject1;
@@ -109,7 +108,10 @@ public class TextWMElement
         LogicDataManager.getInstance().mFollowData.put(this.id, String.valueOf(this.logic.getDays()));
       }
       return LogicDataManager.getInstance().replaceWithData((String)localObject3, this.dataKeys, this);
-      localObject1 = new String(this.fmtstr);
+      Object localObject2 = new String(this.fmtstr);
+      continue;
+      label349:
+      localObject2 = "";
     }
   }
   

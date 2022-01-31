@@ -1,25 +1,6 @@
-class ued
-  implements uei
+public abstract interface ued
 {
-  ued(uec paramuec) {}
-  
-  public void a(int paramInt)
-  {
-    if (uec.a(this.a) == null) {
-      return;
-    }
-    if (paramInt == 1) {
-      uec.a(this.a);
-    }
-    for (;;)
-    {
-      this.a.h();
-      return;
-      if (paramInt == 2) {
-        uec.b(this.a);
-      }
-    }
-  }
+  public abstract void b();
 }
 
 

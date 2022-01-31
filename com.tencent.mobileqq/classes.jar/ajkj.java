@@ -1,17 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.io.ByteArrayOutputStream;
 
-final class ajkj
-  implements DialogInterface.OnClickListener
+public abstract interface ajkj
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(boolean paramBoolean, ByteArrayOutputStream paramByteArrayOutputStream);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajkj
  * JD-Core Version:    0.7.0.1
  */

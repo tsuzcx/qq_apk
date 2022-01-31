@@ -23,7 +23,23 @@
         "$includeComponet": "componet/label.geojson"
       },
       {
-        "$includeComponet": "componet/social_header.geojson"
+        "$includeComponet": "componet/social_header_without_biu_time.geojson"
+      },
+      {
+        "view_type": "QQRIJOutsideLinkView",
+        "view_id": "id_article_outside_link",
+        "margin_left": "12",
+        "margin_bottom": "10",
+        "attributes": {
+          "setArticleModel:": "-1"
+        },
+        "height": {
+          "type": "wrap_content"
+        },
+        "width": {
+          "type": "relative",
+          "value": "351"
+        }
       },
       {
         "view_type": "ReadInJoyCommentView",
@@ -45,6 +61,9 @@
         "$includeComponet": "componet/read_article.geojson"
       },
       {
+        "$includeComponet": "componet/pgc_video_content.geojson"
+      },
+      {
         "view_type": "ReadInJoyMiddleBodyView",
         "view_id": "id_middle_body_content",
         "margin_bottom": "10",
@@ -60,7 +79,7 @@
         }
       },
       {
-        "$includeComponet": "componet/social_bottom.geojson"
+        "$includeComponet": "componet/social_bottom_share.geojson"
       },
       {
         "view_type":"UIView",

@@ -1,106 +1,83 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin.1;
-import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin.2;
-import java.util.Map;
-import org.json.JSONException;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import mqq.manager.Manager;
 import org.json.JSONObject;
+import tencent.im.cs.cmd0x388.cmd0x388.ExtensionCommPicTryUp;
 
 public class bghk
-  extends bgix
+  implements Manager
 {
-  private void a(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
+  private auoo jdField_a_of_type_Auoo = new bghl(this);
+  private ayvv jdField_a_of_type_Ayvv;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public RemoteCommand.OnInvokeFinishLinstener a;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bghk(QQAppInterface paramQQAppInterface)
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-      paramWebViewPlugin = paramArrayOfString.optString("host");
-      paramArrayOfString = paramArrayOfString.optString("callback");
-      if (TextUtils.isEmpty(paramArrayOfString))
-      {
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is empty.");
-        return;
-      }
-    }
-    catch (JSONException paramWebViewPlugin)
-    {
-      paramWebViewPlugin.printStackTrace();
-      return;
-    }
-    if (TextUtils.isEmpty(paramWebViewPlugin))
-    {
-      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "host is empty.");
-      return;
-    }
-    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneDNSAnalyzeJsPlugin.1(this, paramWebViewPlugin, paramArrayOfString));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Ayvv = paramQQAppInterface.a();
+    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.c();
   }
   
-  private void a(String paramString1, int paramInt, String paramString2)
+  public void a(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is null");
-    }
+    if (paramBundle == null) {}
     for (;;)
     {
       return;
-      JSONObject localJSONObject = new JSONObject();
+      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener = paramOnInvokeFinishLinstener;
+      paramOnInvokeFinishLinstener = new aywa();
+      paramOnInvokeFinishLinstener.jdField_b_of_type_Int = 24;
+      paramOnInvokeFinishLinstener.jdField_c_of_type_Int = 20;
+      paramOnInvokeFinishLinstener.jdField_a_of_type_JavaLangString = "actQqComicPicUpload";
+      paramOnInvokeFinishLinstener.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      paramOnInvokeFinishLinstener.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      paramOnInvokeFinishLinstener.jdField_a_of_type_Boolean = true;
+      paramOnInvokeFinishLinstener.i = paramBundle.getString("localPath");
+      paramOnInvokeFinishLinstener.jdField_a_of_type_Auoo = this.jdField_a_of_type_Auoo;
+      Object localObject = paramBundle.getString("comicId");
+      String str1 = paramBundle.getString("picMd5");
+      String str2 = paramBundle.getString("actionData");
+      paramBundle = new JSONObject();
       try
       {
-        localJSONObject.put("ret", paramInt);
-        localJSONObject.put("host_ip", paramString2);
-        paramString2 = localJSONObject.toString();
-        if ((this.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null))
+        paramBundle.put("comicId", localObject);
+        paramBundle.put("picMd5", str1);
+        paramBundle.put("actionData", str2);
+        localObject = new cmd0x388.ExtensionCommPicTryUp();
+        ((cmd0x388.ExtensionCommPicTryUp)localObject).rpt_bytes_extinfo.add(ByteStringMicro.copyFrom(paramBundle.toString().getBytes()));
+        paramOnInvokeFinishLinstener.jdField_a_of_type_ArrayOfByte = ((cmd0x388.ExtensionCommPicTryUp)localObject).toByteArray();
+        if (this.jdField_a_of_type_Ayvv == null) {
+          continue;
+        }
+        this.jdField_a_of_type_Ayvv.a(paramOnInvokeFinishLinstener);
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
         {
-          this.a.mRuntime.a().callJs(paramString1, new String[] { paramString2 });
-          return;
+          localException.printStackTrace();
         }
       }
-      catch (Exception paramString1)
-      {
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, paramString1.getMessage());
-      }
     }
   }
   
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void onDestroy()
   {
-    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
-    while (!paramString3.equalsIgnoreCase("getHostIpAddress")) {
-      return false;
-    }
-    a(this.a, paramVarArgs);
-    return true;
-  }
-  
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if ((paramLong == 8589934595L) && (paramMap != null))
-    {
-      paramString = paramMap.get("errorCode");
-      if ((paramString != null) && ((paramString instanceof Integer)))
-      {
-        int i = ((Integer)paramString).intValue();
-        QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneDNSAnalyzeJsPlugin.2(this, i));
-      }
-    }
-    return false;
+    this.jdField_a_of_type_Ayvv = null;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bghk
  * JD-Core Version:    0.7.0.1
  */

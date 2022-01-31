@@ -1,33 +1,48 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.core.ViolaEnvironment;
 
 public class rzq
+  implements osv
 {
-  public static rzo a(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
+  public rzq(ViolaBaseView paramViolaBaseView, int paramInt) {}
+  
+  public void onError(int paramInt)
   {
-    if (paramWSRedDotPushMsg == null) {}
-    do
+    if (this.jdField_a_of_type_Int == ViolaBaseView.b())
     {
-      return null;
-      if (paramWSRedDotPushMsg.mStrategyInfo != null) {}
-      for (int i = paramWSRedDotPushMsg.mStrategyInfo.getType(); (paramInt == 2) && (i == 1); i = 0) {
-        return new rzr(paramWSRedDotPushMsg);
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, System.currentTimeMillis());
+      ViolaBaseView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
+    }
+    for (;;)
+    {
+      QLog.e(ViolaBaseView.a(), 2, "loadSoIfNeed error,code=" + paramInt + ",isActivityDestroy:" + ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView));
+      return;
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, 100);
+    }
+  }
+  
+  public void onFinish(int paramInt)
+  {
+    if (paramInt == ost.g) {
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_END_EXIT);
+    }
+    for (;;)
+    {
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
+      ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
+      return;
+      if (this.jdField_a_of_type_Int == ViolaBaseView.b())
+      {
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_END_NET);
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_SO, Long.toString(System.currentTimeMillis() - ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView)));
       }
-      if (i == 2) {
-        return new rzs(paramWSRedDotPushMsg, paramInt, paramIntent);
+      else
+      {
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_END_OFFLINE);
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_SO, Long.toString(System.currentTimeMillis() - ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView)));
       }
-      if (i == 3) {
-        return new rzt(paramWSRedDotPushMsg, paramInt, paramIntent);
-      }
-      if (i == 4) {
-        return new rzp(paramWSRedDotPushMsg, paramInt);
-      }
-      if (paramInt == 2) {
-        return new rzr(paramWSRedDotPushMsg);
-      }
-    } while (paramInt != 6);
-    return new rzs(paramWSRedDotPushMsg, paramInt, paramIntent);
+    }
   }
 }
 

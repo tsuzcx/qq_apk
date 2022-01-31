@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.forward;
 
 import android.widget.ScrollView;
-import apkw;
+import aqej;
 
 public class ForwardQQStoryMsgOption$1
   implements Runnable
 {
-  public ForwardQQStoryMsgOption$1(apkw paramapkw) {}
+  public ForwardQQStoryMsgOption$1(aqej paramaqej) {}
   
   public void run()
   {

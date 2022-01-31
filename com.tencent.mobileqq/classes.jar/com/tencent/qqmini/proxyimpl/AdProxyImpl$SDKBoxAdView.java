@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBoxAdView;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IBoxADLisener;
 import java.lang.ref.WeakReference;
-import ykd;
+import yte;
 
 class AdProxyImpl$SDKBoxAdView
   extends AdProxy.AbsBoxAdView
@@ -18,7 +18,7 @@ class AdProxyImpl$SDKBoxAdView
   AdProxy.IBoxADLisener mBoxListener;
   int mDeviceOrientation;
   String mEntryPath;
-  ykd mGdtBoxView;
+  yte mGdtBoxView;
   String mGdtCookie;
   String mPosid;
   String mRefer;

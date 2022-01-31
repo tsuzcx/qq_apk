@@ -1,29 +1,26 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment.17;
 
-class bafu
-  implements View.OnClickListener
+public class bafu
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
+  public bafu(VisitorTroopCardFragment.17 param17) {}
   
-  public bafu(bafp parambafp, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Bafp.a != null)
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_Bafp.a.onClick(this.jdField_a_of_type_Bafp, this.jdField_a_of_type_Bafp.a(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_Bafp.dismiss();
+      this.a.this$0.a.cancel();
+      this.a.this$0.getActivity().finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bafu
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import ayvw;
-import ayxg;
+import azwm;
+import azxy;
 import com.tencent.biz.troopgift.absMultiViewPager;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
@@ -24,7 +24,7 @@ public class GuideViewPager
   extends absMultiViewPager
   implements View.OnClickListener, GifDrawable.OnGIFPlayOnceListener
 {
-  private ayxg a;
+  private azxy a;
   
   public GuideViewPager(Context paramContext)
   {
@@ -58,40 +58,40 @@ public class GuideViewPager
   
   public View a(int paramInt)
   {
-    ayvw localayvw = (ayvw)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131495557, null);
-    Object localObject = (ImageView)localRelativeLayout.findViewById(2131301261);
-    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131297602);
-    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131301233);
-    ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131296359);
-    if (localayvw.jdField_a_of_type_Boolean) {
-      if (!TextUtils.isEmpty(localayvw.jdField_a_of_type_JavaLangString))
+    azwm localazwm = (azwm)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561146, null);
+    Object localObject = (ImageView)localRelativeLayout.findViewById(2131366870);
+    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131363152);
+    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131366842);
+    ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131361895);
+    if (localazwm.jdField_a_of_type_Boolean) {
+      if (!TextUtils.isEmpty(localazwm.jdField_a_of_type_JavaLangString))
       {
-        setBitmapByPath((ImageView)localObject, localayvw.jdField_a_of_type_JavaLangString);
+        setBitmapByPath((ImageView)localObject, localazwm.jdField_a_of_type_JavaLangString);
         ((ImageView)localObject).setVisibility(0);
       }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(localayvw.c))
+      if (!TextUtils.isEmpty(localazwm.c))
       {
-        localImageView2.setImageDrawable(a(localayvw.c));
+        localImageView2.setImageDrawable(a(localazwm.c));
         localImageView2.setVisibility(0);
         localImageView2.setOnClickListener(this);
       }
       return localRelativeLayout;
-      if (!TextUtils.isEmpty(localayvw.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(localazwm.jdField_a_of_type_JavaLangString))
       {
-        setBitmapByPath(localImageView3, localayvw.jdField_a_of_type_JavaLangString);
+        setBitmapByPath(localImageView3, localazwm.jdField_a_of_type_JavaLangString);
         localImageView3.setVisibility(0);
       }
-      if (!TextUtils.isEmpty(localayvw.b))
+      if (!TextUtils.isEmpty(localazwm.b))
       {
-        localObject = a(localayvw.b);
+        localObject = a(localazwm.b);
         if ((((URLDrawable)localObject).getCurrDrawable() instanceof GifDrawable)) {
           ((GifDrawable)((URLDrawable)localObject).getCurrDrawable()).setGIFPlayOnceListener(this);
         }
-        localImageView1.setImageDrawable(a(localayvw.b));
+        localImageView1.setImageDrawable(a(localazwm.b));
         localImageView1.setVisibility(0);
       }
     }
@@ -105,8 +105,8 @@ public class GuideViewPager
     do
     {
       return;
-    } while (this.jdField_a_of_type_Ayxg == null);
-    this.jdField_a_of_type_Ayxg.a();
+    } while (this.jdField_a_of_type_Azxy == null);
+    this.jdField_a_of_type_Azxy.a();
   }
   
   public void onPlayOnce()
@@ -114,9 +114,9 @@ public class GuideViewPager
     ThreadManager.getUIHandler().post(new GuideViewPager.2(this));
   }
   
-  public void setOnActionBtnClickListener(ayxg paramayxg)
+  public void setOnActionBtnClickListener(azxy paramazxy)
   {
-    this.jdField_a_of_type_Ayxg = paramayxg;
+    this.jdField_a_of_type_Azxy = paramazxy;
   }
 }
 

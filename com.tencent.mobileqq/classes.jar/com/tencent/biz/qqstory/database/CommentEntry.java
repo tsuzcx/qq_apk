@@ -2,23 +2,23 @@ package com.tencent.biz.qqstory.database;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import atmo;
-import atnz;
+import aukm;
+import aulx;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import mnz;
+import myy;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sfp;
-import urk;
+import ssl;
+import veg;
 
 public class CommentEntry
-  extends atmo
-  implements sfp
+  extends aukm
+  implements ssl
 {
   public static final int COMMENT_TYPE_CAPTURE_TOGETHER = 5;
   public static final int COMMENT_TYPE_COMMON = 0;
@@ -45,7 +45,7 @@ public class CommentEntry
   public int commentId = (int)(this.fakeId / 1000L - 1400000000.0D);
   public int commentType = 0;
   public String content;
-  @atnz
+  @aulx
   private JSONObject extraJson;
   public String extras;
   public long fakeId = System.currentTimeMillis();
@@ -149,7 +149,7 @@ public class CommentEntry
     {
       for (;;)
       {
-        urk.c("CommentEntry", "getExtraJson error", localException);
+        veg.c("CommentEntry", "getExtraJson error", localException);
         this.extraJson = new JSONObject();
       }
     }
@@ -163,7 +163,7 @@ public class CommentEntry
   
   public boolean isReply()
   {
-    return ((!TextUtils.isEmpty(this.replierUnionId)) && (!this.replierUnionId.equals("0"))) || (mnz.a(this.replyUin));
+    return ((!TextUtils.isEmpty(this.replierUnionId)) && (!this.replierUnionId.equals("0"))) || (myy.a(this.replyUin));
   }
   
   public boolean putExtra(String paramString, Object paramObject)
@@ -177,7 +177,7 @@ public class CommentEntry
     }
     catch (JSONException paramString)
     {
-      urk.c("PublishVideoEntry", "putStringExtra error", paramString);
+      veg.c("PublishVideoEntry", "putStringExtra error", paramString);
     }
     return false;
   }

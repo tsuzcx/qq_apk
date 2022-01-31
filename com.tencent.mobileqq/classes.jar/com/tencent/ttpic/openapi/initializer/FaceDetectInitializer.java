@@ -24,6 +24,7 @@ public class FaceDetectInitializer
   private int initFaceDetect()
   {
     String str = getFinalResourcesDir();
+    printMD5s(str);
     LogUtils.i(TAG, "initCommon, modelDir = " + str);
     int i = initCommon(str);
     LogUtils.i(TAG, "[FaceDetector] [Global] initCommon, ret = " + i);
@@ -44,6 +45,35 @@ public class FaceDetectInitializer
       i = initPictureFaceTrack(str);
       LogUtils.i(TAG, "[FaceDetector] [Global] initPictureFaceTrack, result = " + i);
     }
+  }
+  
+  private void printMD5s(String paramString)
+  {
+    int j = 0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    ModelInfo[] arrayOfModelInfo = COMMON_MODEL;
+    int k = arrayOfModelInfo.length;
+    int i = 0;
+    ModelInfo localModelInfo;
+    String str;
+    while (i < k)
+    {
+      localModelInfo = arrayOfModelInfo[i];
+      str = FileUtils.getMD5(FileUtils.genSeperateFileDir(paramString) + File.separator + localModelInfo.fileName, "aekit");
+      localStringBuilder.append(" " + localModelInfo.fileName + " = " + str + ",\n");
+      i += 1;
+    }
+    arrayOfModelInfo = VIDEO_FACE_DET_MODEL;
+    k = arrayOfModelInfo.length;
+    i = j;
+    while (i < k)
+    {
+      localModelInfo = arrayOfModelInfo[i];
+      str = FileUtils.getMD5(FileUtils.genSeperateFileDir(paramString) + File.separator + localModelInfo.fileName, "aekit");
+      localStringBuilder.append(" " + localModelInfo.fileName + " = " + str + ",\n");
+      i += 1;
+    }
+    LogUtils.i(TAG, "printMD5s : [" + localStringBuilder + "]");
   }
   
   protected boolean destroyImpl()

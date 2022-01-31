@@ -1,42 +1,94 @@
-import android.location.Location;
-import android.location.LocationListener;
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTodayStoryVidList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTodayStoryVidList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 class uzd
-  implements LocationListener
+  implements syt<tmb, tnz>
 {
-  uzd(uyz paramuyz) {}
+  uzd(uzc paramuzc, qqstory_service.ReqTodayStoryVidList paramReqTodayStoryVidList, String paramString) {}
   
-  public void onLocationChanged(Location paramLocation)
+  public void a(@NonNull tmb paramtmb, @Nullable tnz paramtnz, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (paramLocation != null)
+    if (paramErrorMessage.isFail())
     {
-      urk.a("DoodleEmojiManager", "onLocationChanged, location : %s", paramLocation);
-      if (this.a.b.size() >= 10)
-      {
-        this.a.b.remove(0);
-        urk.b("DoodleEmojiManager", "onLocationChanged, LocationList size > 5, remove the first location.");
+      if (this.jdField_a_of_type_Uzc.jdField_a_of_type_Vac != null) {
+        this.jdField_a_of_type_Uzc.jdField_a_of_type_Vac.a(paramErrorMessage);
       }
-      this.a.b.add(new Location(paramLocation));
       return;
     }
-    urk.d("DoodleEmojiManager", "onLocationChanged, location is null.");
-  }
-  
-  public void onProviderDisabled(String paramString)
-  {
-    urk.a("DoodleEmojiManager", "onProviderDisabled, provider: %s .", paramString);
-  }
-  
-  public void onProviderEnabled(String paramString)
-  {
-    urk.a("DoodleEmojiManager", "onProviderEnabled, provider: %s .", paramString);
-  }
-  
-  public void onStatusChanged(String paramString, int paramInt, Bundle paramBundle)
-  {
-    urk.a("DoodleEmojiManager", "onStatusChanged, provider: %s , status: %s .", paramString, Integer.valueOf(paramInt));
+    if (paramtnz == null)
+    {
+      this.jdField_a_of_type_Uzc.jdField_a_of_type_Uze.jdField_a_of_type_Int = paramErrorMessage.errorCode;
+      if (this.jdField_a_of_type_Uzc.jdField_a_of_type_Vad != null)
+      {
+        this.jdField_a_of_type_Uzc.jdField_a_of_type_Vad.a(this.jdField_a_of_type_Uzc.a());
+        return;
+      }
+      veg.d("GetMyStoryVideoListStep", "finish callBack is null");
+      return;
+    }
+    paramtmb = new qqstory_service.RspTodayStoryVidList();
+    for (;;)
+    {
+      try
+      {
+        paramtmb.mergeFrom(paramtnz.a);
+        paramtnz = paramtmb.vid_list.get().listIterator();
+        paramErrorMessage = paramtmb.feed_id.get().toStringUtf8();
+        if (!TextUtils.isEmpty(paramErrorMessage)) {
+          this.jdField_a_of_type_Uzc.jdField_a_of_type_Uze.jdField_a_of_type_JavaLangString = paramErrorMessage;
+        }
+        paramErrorMessage = this.jdField_a_of_type_Uzc.jdField_a_of_type_Uze;
+        if (paramtmb.share_to_discover.get() == 1)
+        {
+          bool = true;
+          paramErrorMessage.jdField_a_of_type_Boolean = bool;
+          ((tcv)tdc.a(10)).b("qqstory_my_story_have_contributed", Integer.valueOf(paramtmb.share_to_discover.get()));
+          if (!paramtnz.hasNext()) {
+            break;
+          }
+          this.jdField_a_of_type_Uzc.jdField_a_of_type_Uze.jdField_a_of_type_JavaUtilArrayList.add(((ByteStringMicro)paramtnz.next()).toStringUtf8());
+          continue;
+        }
+        boolean bool = false;
+      }
+      catch (InvalidProtocolBufferMicroException paramtmb)
+      {
+        veg.c("GetMyStoryVideoListStep", "协议返回错误, RspGetBatchUserVidList", paramtmb);
+        if (this.jdField_a_of_type_Uzc.jdField_a_of_type_Vad != null)
+        {
+          this.jdField_a_of_type_Uzc.jdField_a_of_type_Vad.a(this.jdField_a_of_type_Uzc.a());
+          return;
+        }
+        veg.d("GetMyStoryVideoListStep", "finish callBack is null");
+        return;
+      }
+    }
+    if ((!paramtmb.is_end.has()) || (paramtmb.is_end.get() == 1))
+    {
+      if (this.jdField_a_of_type_Uzc.jdField_a_of_type_Vad != null)
+      {
+        this.jdField_a_of_type_Uzc.jdField_a_of_type_Vad.a(this.jdField_a_of_type_Uzc.a());
+        return;
+      }
+      veg.d("GetMyStoryVideoListStep", "finish callBack is null");
+      return;
+    }
+    paramtnz = new qqstory_service.ReqTodayStoryVidList();
+    paramtnz.date.set(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$ReqTodayStoryVidList.date.get());
+    paramtnz.cookie.set(paramtmb.cookie.get());
+    syr.a().a(new tmb(this.jdField_a_of_type_JavaLangString, paramtnz, null), this);
   }
 }
 

@@ -1,13 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
-public abstract interface azxs
+public class azxs
+  implements bfot
 {
-  public abstract void a(View paramView, Drawable paramDrawable);
+  public azxs(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  
+  public void ak_()
+  {
+    this.a.a.a();
+    this.a.i();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azxs
  * JD-Core Version:    0.7.0.1
  */

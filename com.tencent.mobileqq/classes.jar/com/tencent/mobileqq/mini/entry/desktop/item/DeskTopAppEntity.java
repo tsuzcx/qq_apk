@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 
 public class DeskTopAppEntity
-  extends atmo
+  extends aukm
 {
   public static final String TAG = "DeskTopAppInfoEntity";
   public String appId;
   public byte[] appInfo;
   public String name;
-  @atoc
+  @auma
   public String uniqueId;
   public int verType;
   

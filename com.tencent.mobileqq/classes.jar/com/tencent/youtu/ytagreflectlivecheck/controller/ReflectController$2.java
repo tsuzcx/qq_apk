@@ -3,6 +3,7 @@ package com.tencent.youtu.ytagreflectlivecheck.controller;
 import android.graphics.ColorMatrixColorFilter;
 import com.tencent.youtu.ytagreflectlivecheck.jni.JNIUtils;
 import com.tencent.youtu.ytagreflectlivecheck.jni.YTAGReflectLiveCheckJNIInterface;
+import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.Timeval;
 import com.tencent.youtu.ytagreflectlivecheck.manager.ProcessManager.ProcessResult;
 import com.tencent.youtu.ytagreflectlivecheck.worker.TimerWorker;
 import com.tencent.youtu.ytcommon.tools.YTException;
@@ -32,13 +33,13 @@ class ReflectController$2
       ReflectController.access$1400(this.this$0, 1);
       YTLogger.i("mCountDownTimer", "changeState:" + (System.currentTimeMillis() - ReflectController.access$1300(this.this$0)));
       new Timer().schedule(new ReflectController.2.1(this), 400L);
-      ReflectController.access$1500(this.this$0);
+      ReflectController.access$1600(this.this$0);
       return;
     }
     catch (Exception localException)
     {
       YTException.report(localException);
-      ReflectController.access$1800(this.this$0).onFailed(ReflectController.access$1600(), "Finish check failed. ", "Check error report to get more information.", ReflectController.access$1700(this.this$0));
+      ReflectController.access$1900(this.this$0).onFailed(ReflectController.access$1700(), "Finish check failed. ", "Check error report to get more information.", ReflectController.access$1800(this.this$0));
     }
   }
   
@@ -58,18 +59,18 @@ class ReflectController$2
         YTLogger.d("YoutuLightLiveCheck", "startTimer.onTick. mFrame: " + ReflectController.access$300(this.this$0));
         if (ReflectController.access$300(this.this$0) == ReflectController.access$400(this.this$0))
         {
+          Object localObject = JNIUtils.getTimeval();
           YTLogger.i("YoutuLightLiveCheck", "change color begin. mFrame: " + ReflectController.access$300(this.this$0));
-          YTAGReflectLiveCheckJNIInterface.getInstance().FRSetBegin(JNIUtils.getTimeval());
-          JSONObject localJSONObject = this.val$jsonArray.getJSONObject(ReflectController.access$300(this.this$0));
-          f1 = (float)localJSONObject.getDouble("R");
-          f2 = (float)localJSONObject.getDouble("G");
-          f3 = (float)localJSONObject.getDouble("B");
-          f4 = (float)localJSONObject.getDouble("A");
+          YTAGReflectLiveCheckJNIInterface.getInstance().FRSetBegin((Timeval)localObject);
+          localObject = this.val$jsonArray.getJSONObject(ReflectController.access$300(this.this$0));
+          f1 = (float)((JSONObject)localObject).getDouble("R");
+          f2 = (float)((JSONObject)localObject).getDouble("G");
+          f3 = (float)((JSONObject)localObject).getDouble("B");
+          f4 = (float)((JSONObject)localObject).getDouble("A");
           ReflectController.access$702(this.this$0, 0);
           if ((f1 != ReflectController.access$800(this.this$0)) || (f2 != ReflectController.access$900(this.this$0)) || (f3 != ReflectController.access$1000(this.this$0)) || (f4 != ReflectController.access$1100(this.this$0))) {
-            break label419;
+            break label416;
           }
-          YTLogger.i("YoutuLightLiveCheck", "[ReflectController.onTick] rgba: keep bef");
           ReflectController.access$308(this.this$0);
           return;
         }
@@ -91,8 +92,7 @@ class ReflectController$2
       YTLogger.i("YoutuLightLiveCheck", "change color point. mFrame: " + ReflectController.access$300(this.this$0));
       YTAGReflectLiveCheckJNIInterface.getInstance().FRSetChangePointTime(JNIUtils.getTimeval());
       continue;
-      label419:
-      YTLogger.i("YoutuLightLiveCheck", "[ReflectController.onTick] rgba: " + f1 + " " + f2 + " " + f3 + " " + f4);
+      label416:
       ReflectController.access$1200(this.this$0, new ColorMatrixColorFilter(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f1, 0.0F, 0.0F, 0.0F, 0.0F, f2, 0.0F, 0.0F, 0.0F, 0.0F, f3, 0.0F, 0.0F, 0.0F, f4, 0.0F }));
       ReflectController.access$802(this.this$0, f1);
       ReflectController.access$902(this.this$0, f2);

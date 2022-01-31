@@ -1,20 +1,37 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
-import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.util.WeakReference;
 
 class rov
-  implements web
+  implements GifDrawable.OnGIFPlayOnceListener
 {
-  rov(rou paramrou) {}
+  AbstractGifImage a;
   
-  public void a(boolean paramBoolean)
+  rov(AbstractGifImage paramAbstractGifImage)
   {
-    if (paramBoolean)
+    this.a = paramAbstractGifImage;
+  }
+  
+  public void onPlayOnce()
+  {
+    Object localObject = (List)rou.a().get(this.a);
+    if (localObject != null)
     {
-      rot.a(this.a.a).c();
-      this.a.a.a(false);
-      this.a.a.a.c();
-      wye.a("", "auth_discover", "fold", 0, 0, new String[0]);
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+        if (localWeakReference.get() != null) {
+          ((row)localWeakReference.get()).a();
+        }
+      }
     }
+    this.a.setGIFPlayOnceListener(null);
+    rou.b().remove(this.a);
+    rou.a().remove(this.a);
   }
 }
 

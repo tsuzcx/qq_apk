@@ -1,30 +1,30 @@
 package cooperation.qzone;
 
-import bfss;
+import bhaz;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class UploadSoDownloader$1
   implements Runnable
 {
-  public UploadSoDownloader$1(bfss parambfss) {}
+  public UploadSoDownloader$1(bhaz parambhaz) {}
   
   public void run()
   {
-    boolean bool = bfss.a(this.this$0, bfss.a().getAbsolutePath());
+    boolean bool = bhaz.a(this.this$0, bhaz.a().getAbsolutePath());
     QLog.d("UploadEnv", 1, "check so md5 result: " + bool);
     if (bool)
     {
-      bfss.a(true);
+      bhaz.a(true);
       return;
     }
     try
     {
-      if (bfss.a().exists()) {
-        bfss.a().delete();
+      if (bhaz.a().exists()) {
+        bhaz.a().delete();
       }
-      bfss.a(this.this$0, false);
-      bfss.a(false);
+      bhaz.a(this.this$0, false);
+      bhaz.a(false);
       return;
     }
     catch (Throwable localThrowable)

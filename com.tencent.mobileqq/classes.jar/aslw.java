@@ -1,20 +1,7 @@
-import android.os.Bundle;
-
-class aslw
-  extends mmm
-{
-  aslw(aslv paramaslv, asmc paramasmc) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Asmc != null) {
-      this.jdField_a_of_type_Asmc.a(paramInt, paramArrayOfByte, paramBundle);
-    }
-  }
-}
+class aslw {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aslw
  * JD-Core Version:    0.7.0.1
  */

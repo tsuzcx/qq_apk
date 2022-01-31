@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark.API;
 
-import albg;
+import alpu;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class ArkAppMusicModule$1
   implements Runnable
 {
-  public ArkAppMusicModule$1(albg paramalbg, SongInfo paramSongInfo) {}
+  public ArkAppMusicModule$1(alpu paramalpu, SongInfo paramSongInfo) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class ArkAppMusicModule$1
     {
       QQPlayerService.a(new Intent(BaseApplication.getContext(), MusicPlayerActivity.class));
       QQPlayerService.a(101);
-      QQPlayerService.a(localBaseActivity, albg.a(), new SongInfo[] { this.a });
+      QQPlayerService.a(localBaseActivity, alpu.a(), new SongInfo[] { this.a });
     }
   }
 }

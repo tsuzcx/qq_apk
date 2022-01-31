@@ -1,34 +1,69 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.Switch;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nlt
-  implements CompoundButton.OnCheckedChangeListener
+  extends nll
 {
-  public nlt(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public long a;
+  public nlu a;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static nlt a(JSONObject paramJSONObject)
   {
-    paramCompoundButton = this.a;
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false)
+    if (paramJSONObject == null) {}
+    nlt localnlt;
+    Object localObject;
+    for (;;)
     {
-      ReadInJoySettingActivity.a(paramCompoundButton, bool);
-      if ((!ReadInJoySettingActivity.a(this.a).isPressed()) || (this.a.c)) {
-        break label75;
+      return null;
+      localnlt = new nlt();
+      try
+      {
+        localObject = paramJSONObject.optJSONObject("video");
+        if (localObject != null)
+        {
+          localnlt.e = ((JSONObject)localObject).optString("coverUrl");
+          localnlt.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("videoUrl");
+          if (TextUtils.isEmpty(localnlt.jdField_d_of_type_JavaLangString))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("AdModuleVideo", 2, "video url is null");
+            return null;
+          }
+        }
       }
-      if (paramBoolean) {
-        break;
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return null;
       }
-      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
-      return;
     }
-    ReadInJoySettingActivity.a(this.a).show();
-    return;
-    label75:
-    this.a.c = false;
+    localnlt.jdField_a_of_type_Long = paramJSONObject.optLong("duration");
+    localnlt.jdField_d_of_type_Int = paramJSONObject.optInt("mixType");
+    localnlt.f = paramJSONObject.optString("linkUrl");
+    paramJSONObject = paramJSONObject.optString("appInfo");
+    if (!TextUtils.isEmpty(paramJSONObject))
+    {
+      paramJSONObject = new JSONObject(paramJSONObject);
+      localObject = new nlu();
+      ((nlu)localObject).a = paramJSONObject.optString("appid");
+      ((nlu)localObject).b = paramJSONObject.optString("scheme");
+      ((nlu)localObject).c = paramJSONObject.optString("packageName");
+      ((nlu)localObject).jdField_d_of_type_JavaLangString = paramJSONObject.optString("androidDownloadUrl");
+      ((nlu)localObject).e = paramJSONObject.optString("appName");
+      localnlt.jdField_a_of_type_Nlu = ((nlu)localObject);
+    }
+    return localnlt;
   }
+  
+  public void b() {}
 }
 
 

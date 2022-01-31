@@ -1,19 +1,10 @@
-public class akta
+public abstract interface akta
 {
-  public float a;
-  public boolean a;
-  public float b = 0.0F;
-  public float c = 0.0F;
-  
-  public akta()
-  {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akta
  * JD-Core Version:    0.7.0.1
  */

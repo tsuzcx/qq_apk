@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,9 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anmo;
-import anmp;
-import awqx;
+import aocy;
+import aocz;
+import axqw;
+import bbje;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
@@ -38,25 +39,27 @@ public abstract class AIOEmotionBaseFragment
   
   public abstract void a();
   
+  protected abstract void a(int paramInt, bbje parambbje);
+  
   protected void a(View paramView)
   {
     paramView.setFitsSystemWindows(true);
-    TextView localTextView = (TextView)paramView.findViewById(2131302804);
-    localTextView.setText(ajjy.a(2131634227));
-    localTextView.setOnClickListener(new anmo(this));
+    TextView localTextView = (TextView)paramView.findViewById(2131368429);
+    localTextView.setText(ajyc.a(2131700015));
+    localTextView.setOnClickListener(new aocy(this));
     if (a())
     {
-      paramView = (ImageView)paramView.findViewById(2131302816);
-      paramView.setImageResource(2130837729);
+      paramView = (ImageView)paramView.findViewById(2131368441);
+      paramView.setImageResource(2130837739);
       paramView.setVisibility(0);
-      paramView.setContentDescription(ajjy.a(2131634226));
-      paramView.setOnClickListener(new anmp(this));
+      paramView.setContentDescription(ajyc.a(2131700014));
+      paramView.setOnClickListener(new aocz(this));
     }
   }
   
   public void a(String paramString)
   {
-    awqx.b(null, "dc00898", "", "", paramString, paramString, this.jdField_a_of_type_Int, 0, "", "", "", "");
+    axqw.b(null, "dc00898", "", "", paramString, paramString, this.jdField_a_of_type_Int, 0, "", "", "", "");
   }
   
   public boolean a()
@@ -65,8 +68,6 @@ public abstract class AIOEmotionBaseFragment
   }
   
   protected abstract void b(View paramView);
-  
-  protected abstract void c(int paramInt);
   
   public boolean needImmersive()
   {

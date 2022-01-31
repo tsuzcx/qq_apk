@@ -5,15 +5,15 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.TextView;
-import azvv;
-import vgy;
-import vhb;
-import wmt;
+import bawz;
+import vtu;
+import vtx;
+import xbw;
 
 public class SlideShowAdapter$3
   implements Runnable
 {
-  public SlideShowAdapter$3(vgy paramvgy, vhb paramvhb) {}
+  public SlideShowAdapter$3(vtu paramvtu, vtx paramvtx) {}
   
   public void run()
   {
@@ -22,14 +22,14 @@ public class SlideShowAdapter$3
     if ((i == 0) || (j == 0)) {
       return;
     }
-    if (vgy.a(this.this$0) == null)
+    if (vtu.a(this.this$0) == null)
     {
-      int k = azvv.a(vgy.a(this.this$0), 1.0F);
-      new Paint().setTextSize(azvv.a(vgy.a(this.this$0), 11.0F));
-      int m = azvv.a(vgy.a(this.this$0), 2.0F);
-      vgy.a(this.this$0, wmt.a(i, j, k, 0.0F, m, Color.parseColor("#12B7F5")));
+      int k = bawz.a(vtu.a(this.this$0), 1.0F);
+      new Paint().setTextSize(bawz.a(vtu.a(this.this$0), 11.0F));
+      int m = bawz.a(vtu.a(this.this$0), 2.0F);
+      vtu.a(this.this$0, xbw.a(i, j, k, 0.0F, m, Color.parseColor("#12B7F5")));
     }
-    this.a.a.setBackgroundDrawable(new BitmapDrawable(vgy.a(this.this$0).getResources(), vgy.a(this.this$0)));
+    this.a.a.setBackgroundDrawable(new BitmapDrawable(vtu.a(this.this$0).getResources(), vtu.a(this.this$0)));
   }
 }
 

@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
-import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import org.json.JSONObject;
@@ -14,11 +11,7 @@ class LivePusherJsPlugin$1
   
   public void run()
   {
-    AbsAppBrandPage localAbsAppBrandPage = ((AppBrandPageContainer)this.this$0.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(this.val$webview.getPageWebViewId());
-    WebviewContainer localWebviewContainer = null;
-    if (localAbsAppBrandPage != null) {
-      localWebviewContainer = localAbsAppBrandPage.getCurrentWebviewContainer();
-    }
+    WebviewContainer localWebviewContainer = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
     if (localWebviewContainer != null)
     {
       localWebviewContainer.insertLivePusher(this.val$livePusherId, this.val$jsonObject);

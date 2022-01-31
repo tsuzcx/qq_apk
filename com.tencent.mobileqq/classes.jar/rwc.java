@@ -1,13 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.2;
+import com.tencent.qphone.base.util.QLog;
 
-final class rwc
-  implements DialogInterface.OnClickListener
+public class rwc
+  implements rwg
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public rwc(ViolaAccessHelper.2 param2) {}
+  
+  public void a()
   {
-    paramDialogInterface.dismiss();
-    bcgo.a().a(rwb.a());
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk error");
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk succ");
+    }
   }
 }
 

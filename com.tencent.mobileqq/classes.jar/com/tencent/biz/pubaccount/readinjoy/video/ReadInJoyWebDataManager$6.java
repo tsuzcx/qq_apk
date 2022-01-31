@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.os.Bundle;
-import azgl;
-import azgm;
+import baho;
+import bahp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
-import pye;
-import pyg;
+import qke;
+import qkg;
 
 public final class ReadInJoyWebDataManager$6
   implements Runnable
@@ -26,7 +26,7 @@ public final class ReadInJoyWebDataManager$6
       Object localObject3 = this.jdField_a_of_type_MqqAppAppRuntime.getAccount();
       localObject2 = ((TicketManager)localObject2).getSkey(this.jdField_a_of_type_MqqAppAppRuntime.getAccount());
       ((Bundle)localObject1).putString("Cookie", "uin=o" + (String)localObject3 + "; skey=" + (String)localObject2);
-      ((Bundle)localObject1).putString("User-Agent", pye.c());
+      ((Bundle)localObject1).putString("User-Agent", qke.c());
       ((Bundle)localObject1).putString("qq", this.jdField_a_of_type_MqqAppAppRuntime.getAccount());
       ((Bundle)localObject1).putString("bid", "2");
       ((Bundle)localObject1).putString("logArray", this.jdField_a_of_type_JavaLangString);
@@ -36,8 +36,8 @@ public final class ReadInJoyWebDataManager$6
       if (QLog.isColorLevel()) {
         QLog.w("ReadInJoyWebDataManager", 2, "sendLog :content :" + this.jdField_a_of_type_JavaLangString);
       }
-      localObject1 = new pyg(this);
-      new azgm("https://node.kandian.qq.com/cgi/stats/multy?g_tk=" + pye.a((String)localObject2), "POST", (azgl)localObject1, 0, null).executeOnExecutor(ThreadManagerV2.getNetExcutor(), new HashMap[] { localObject3 });
+      localObject1 = new qkg(this);
+      new bahp("https://node.kandian.qq.com/cgi/stats/multy?g_tk=" + qke.a((String)localObject2), "POST", (baho)localObject1, 0, null).executeOnExecutor(ThreadManagerV2.getNetExcutor(), new HashMap[] { localObject3 });
       return;
     }
     catch (Exception localException)

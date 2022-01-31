@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import atmo;
+import aukm;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class LbsReportInfo
-  extends atmo
+  extends aukm
 {
   public float accuracy;
   public double alt;

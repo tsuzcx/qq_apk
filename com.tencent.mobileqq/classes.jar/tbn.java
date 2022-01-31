@@ -1,85 +1,171 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFriendStoryFeedVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.MultiRecommendItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tbn
-  extends slu
+  extends myz
 {
-  public String a;
-  public ArrayList<StoryVideoItem> a;
+  public static tbp a;
+  public SparseArray<tbq> a;
   public boolean a;
+  public int b;
+  public SparseArray<tbo> b;
+  public String b;
+  public boolean b;
+  public int c;
   public String c;
   
-  public tbn(qqstory_service.RspFriendStoryFeedVideoList paramRspFriendStoryFeedVideoList)
+  public tbn(Context paramContext, String paramString)
   {
-    super(paramRspFriendStoryFeedVideoList.result);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramRspFriendStoryFeedVideoList.next_cookie.get().toStringUtf8();
-    this.c = paramRspFriendStoryFeedVideoList.union_id.get().toStringUtf8();
-    if (paramRspFriendStoryFeedVideoList.is_end.get() == 1) {}
-    Object localObject1;
+    super(paramContext, paramString);
+  }
+  
+  public String a()
+  {
+    return "key_for_text_filter_cfg";
+  }
+  
+  public void a(String paramString)
+  {
+    int j = 0;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    Object localObject1 = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.StoryCfg.name(), "1|1");
+    this.jdField_b_of_type_Boolean = true;
     Object localObject2;
-    for (;;)
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      this.jdField_a_of_type_Boolean = bool;
-      if (!paramRspFriendStoryFeedVideoList.share_group_video_info_list.has()) {
-        break;
-      }
-      paramRspFriendStoryFeedVideoList = paramRspFriendStoryFeedVideoList.share_group_video_info_list.get().iterator();
-      while (paramRspFriendStoryFeedVideoList.hasNext())
-      {
-        localObject1 = (qqstory_struct.ShareGroupVideoInfo)paramRspFriendStoryFeedVideoList.next();
-        localObject2 = new StoryVideoItem();
-        ((StoryVideoItem)localObject2).convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.ShareGroupVideoInfo)localObject1);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-      }
-      bool = false;
-    }
-    if (paramRspFriendStoryFeedVideoList.multi_rcmd_feed_info_list.has())
-    {
-      localObject1 = (sqs)sqg.a(2);
-      paramRspFriendStoryFeedVideoList = paramRspFriendStoryFeedVideoList.multi_rcmd_feed_info_list.get().iterator();
-      while (paramRspFriendStoryFeedVideoList.hasNext())
-      {
-        localObject2 = (qqstory_struct.MultiRecommendItem)paramRspFriendStoryFeedVideoList.next();
-        if (((qqstory_struct.MultiRecommendItem)localObject2).feed_video_info_list.has())
-        {
-          String str = ((qqstory_struct.MultiRecommendItem)localObject2).feed_id.get().toStringUtf8();
-          Iterator localIterator = ((qqstory_struct.MultiRecommendItem)localObject2).feed_video_info_list.get().iterator();
-          while (localIterator.hasNext())
-          {
-            Object localObject3 = (qqstory_struct.FeedVideoInfo)localIterator.next();
-            StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-            localStoryVideoItem.convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.FeedVideoInfo)localObject3);
-            localStoryVideoItem.mAttachedFeedId = str;
-            this.jdField_a_of_type_JavaUtilArrayList.add(localStoryVideoItem);
-            localObject3 = new QQUserUIItem();
-            ((QQUserUIItem)localObject3).convertFrom(((qqstory_struct.MultiRecommendItem)localObject2).user);
-            localObject3 = ((sqs)localObject1).a((QQUserUIItem)localObject3);
-            localStoryVideoItem.mOwnerUid = ((QQUserUIItem)localObject3).uid;
-            localStoryVideoItem.mOwnerName = ((QQUserUIItem)localObject3).getDisplayName();
-          }
+      localObject2 = new Integer[2];
+      if (DeviceProfileManager.a((String)localObject1, (Object[])localObject2, new ajvg()) > 1) {
+        if (localObject2[1].intValue() != 1) {
+          break label115;
         }
       }
     }
-    paramRspFriendStoryFeedVideoList = paramRspFriendStoryFeedVideoList.feed_video_info_list.get().iterator();
-    while (paramRspFriendStoryFeedVideoList.hasNext())
+    label115:
+    for (boolean bool = true;; bool = false)
     {
-      localObject1 = (qqstory_struct.FeedVideoInfo)paramRspFriendStoryFeedVideoList.next();
-      localObject2 = new StoryVideoItem();
-      ((StoryVideoItem)localObject2).convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.FeedVideoInfo)localObject1);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+      this.jdField_b_of_type_Boolean = bool;
+      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+      this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
+      if (!TextUtils.isEmpty(paramString)) {
+        break;
+      }
+      this.jdField_a_of_type_Boolean = false;
+      return;
     }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (paramString.optInt("is_enable", 0) != 1) {
+          break label644;
+        }
+        bool = true;
+        this.jdField_a_of_type_Boolean = bool;
+        this.jdField_b_of_type_Int = paramString.optInt("bid");
+        this.jdField_c_of_type_JavaLangString = paramString.optString("template_manager", "TemplateManager");
+        this.jdField_c_of_type_Int = paramString.optInt("bg_alpha", 80);
+        localObject1 = paramString.optJSONArray("template");
+        if (localObject1 != null)
+        {
+          i = 0;
+          if (i < ((JSONArray)localObject1).length())
+          {
+            localObject2 = ((JSONArray)localObject1).optJSONObject(i);
+            if (localObject2 == null) {
+              break label637;
+            }
+            tbq localtbq = new tbq();
+            localtbq.jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("id");
+            localtbq.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("report_id");
+            localtbq.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("name");
+            localtbq.jdField_b_of_type_Int = ((JSONObject)localObject2).optInt("color_template_id");
+            if (((JSONObject)localObject2).optInt("is_support_other_color") != 1) {
+              break label650;
+            }
+            bool = true;
+            localtbq.jdField_a_of_type_Boolean = bool;
+            localtbq.jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).optString("text_color");
+            localtbq.e = ((JSONObject)localObject2).optString("background_color");
+            localtbq.jdField_c_of_type_Int = ((JSONObject)localObject2).optInt("max_text_count");
+            if (((JSONObject)localObject2).optInt("is_dynamictmp") != 1) {
+              break label656;
+            }
+            bool = true;
+            localtbq.jdField_b_of_type_Boolean = bool;
+            localtbq.jdField_d_of_type_JavaLangString = ((JSONObject)localObject2).optString("res_name");
+            localtbq.jdField_d_of_type_Int = ((JSONObject)localObject2).optInt("bid", 0);
+            localtbq.f = ((JSONObject)localObject2).optString("music_file");
+            localtbq.g = ((JSONObject)localObject2).optString("pcm_music_file");
+            localtbq.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject2).optJSONObject("hint");
+            localtbq.h = ((JSONObject)localObject2).optString("image_url");
+            localtbq.jdField_b_of_type_OrgJsonJSONObject = ((JSONObject)localObject2).optJSONObject("extra_json_config");
+            this.jdField_a_of_type_AndroidUtilSparseArray.put(localtbq.jdField_a_of_type_Int, localtbq);
+            break label637;
+          }
+        }
+        paramString = paramString.optJSONArray("color_template");
+        if (paramString != null)
+        {
+          i = j;
+          if (i < paramString.length())
+          {
+            localObject1 = paramString.optJSONObject(i);
+            if (localObject1 != null)
+            {
+              localObject2 = new tbo();
+              ((tbo)localObject2).jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("id");
+              ((tbo)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("report_id");
+              ((tbo)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color");
+              ((tbo)localObject2).jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color2");
+              ((tbo)localObject2).jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color3");
+              ((tbo)localObject2).e = ((JSONObject)localObject1).optString("text_color");
+              ((tbo)localObject2).jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject1).optJSONObject("extra_json_config");
+              this.jdField_b_of_type_AndroidUtilSparseArray.put(((tbo)localObject2).jdField_a_of_type_Int, localObject2);
+            }
+            i += 1;
+            continue;
+          }
+        }
+        if (!this.jdField_b_of_type_Boolean) {
+          break;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("read TextFilter Config", 2, paramString.getMessage());
+        }
+      }
+      if (!this.jdField_a_of_type_Boolean) {
+        break;
+      }
+      return;
+      label637:
+      i += 1;
+      continue;
+      label644:
+      bool = false;
+      continue;
+      label650:
+      bool = false;
+      continue;
+      label656:
+      bool = false;
+    }
+  }
+  
+  public String b()
+  {
+    return "key_for_text_filter_cfg_version";
   }
 }
 

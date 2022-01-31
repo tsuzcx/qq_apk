@@ -1,10 +1,19 @@
-import java.util.List;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
-public abstract interface akdg
+public class akdg
+  extends RecyclablePool.Recyclable
 {
-  public abstract void a();
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public long c;
+  public long d;
   
-  public abstract void a(List<akda> paramList);
+  public void recycle()
+  {
+    super.recycle();
+  }
 }
 
 

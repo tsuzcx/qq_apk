@@ -1,18 +1,36 @@
-import mqq.os.MqqHandler;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
 
-class afek
-  implements afgb
+public class afek
+  extends ajzm
 {
-  afek(afeh paramafeh) {}
+  public afek(AddContactsView paramAddContactsView) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    this.a.a.sendEmptyMessageDelayed(7, 100L);
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ArrayOfJavaLangString = paramLBSInfo.a();
+    }
+    if ((this.a.jdField_a_of_type_ArrayOfJavaLangString == null) || (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 4)) {
+      this.a.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "-1", "-1", "-1", "-1" };
+    }
+    if (this.a.c) {
+      this.a.f();
+    }
+    if (!"-1".equals(this.a.jdField_a_of_type_ArrayOfJavaLangString[0]))
+    {
+      this.a.jdField_a_of_type_ArrayOfJavaLangString[3] = "0";
+      this.a.jdField_a_of_type_Ajty.a(this.a.jdField_a_of_type_ArrayOfJavaLangString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onGetUserLocation|isSuccess : " + paramBoolean + ", autoReqLocation : " + this.a.c + ", locationCodes[0] : " + this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afek
  * JD-Core Version:    0.7.0.1
  */

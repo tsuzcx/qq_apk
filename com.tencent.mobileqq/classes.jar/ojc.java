@@ -1,33 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 import java.util.List;
 
-public abstract interface ojc<DataType>
+class ojc
+  extends ojq
 {
-  public abstract DataType a(int paramInt);
+  ojc(oio paramoio, boolean paramBoolean1, boolean paramBoolean2, List paramList)
+  {
+    super(paramoio, null);
+  }
   
-  public abstract List<DataType> a();
-  
-  public abstract void a();
-  
-  public abstract void a(DataType paramDataType, int paramInt);
-  
-  public abstract void a(List<DataType> paramList);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b();
-  
-  public abstract void b(List<DataType> paramList);
-  
-  public abstract void c();
-  
-  public abstract void c(List<ChannelCoverInfo> paramList);
+  void a(ojt paramojt)
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      paramojt.onCommentLoadMore(2, this.b, this.jdField_a_of_type_JavaUtilList, oio.e(this.jdField_a_of_type_Oio), 4);
+      return;
+    }
+    paramojt.onCommentListLoad(2, this.b, this.jdField_a_of_type_JavaUtilList, oio.e(this.jdField_a_of_type_Oio), 4, 4);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ojc
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,14 @@ public final class cell_decorate
 {
   static stcustomPraise cache_customPraise = new stcustomPraise();
   static s_HighFive cache_highFive;
+  static ArrayList<s_KapuPraise> cache_kapuPraise;
   static Map<String, byte[]> cache_mapInfoData;
   static ArrayList<s_PolyPraise> cache_pokePraise;
   static s_PolyPraise cache_polyPraise = new s_PolyPraise();
   static s_PrdData cache_sprdData;
   public stcustomPraise customPraise;
   public s_HighFive highFive;
+  public ArrayList<s_KapuPraise> kapuPraise;
   public Map<String, byte[]> mapInfoData;
   public ArrayList<s_PolyPraise> pokePraise;
   public s_PolyPraise polyPraise;
@@ -34,11 +36,14 @@ public final class cell_decorate
     cache_pokePraise = new ArrayList();
     localObject = new s_PolyPraise();
     cache_pokePraise.add(localObject);
+    cache_kapuPraise = new ArrayList();
+    localObject = new s_KapuPraise();
+    cache_kapuPraise.add(localObject);
   }
   
   public cell_decorate() {}
   
-  public cell_decorate(stcustomPraise paramstcustomPraise, s_PolyPraise params_PolyPraise, s_HighFive params_HighFive, Map<String, byte[]> paramMap, s_PrdData params_PrdData, ArrayList<s_PolyPraise> paramArrayList)
+  public cell_decorate(stcustomPraise paramstcustomPraise, s_PolyPraise params_PolyPraise, s_HighFive params_HighFive, Map<String, byte[]> paramMap, s_PrdData params_PrdData, ArrayList<s_PolyPraise> paramArrayList, ArrayList<s_KapuPraise> paramArrayList1)
   {
     this.customPraise = paramstcustomPraise;
     this.polyPraise = params_PolyPraise;
@@ -46,6 +51,7 @@ public final class cell_decorate
     this.mapInfoData = paramMap;
     this.sprdData = params_PrdData;
     this.pokePraise = paramArrayList;
+    this.kapuPraise = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -56,6 +62,7 @@ public final class cell_decorate
     this.mapInfoData = ((Map)paramJceInputStream.read(cache_mapInfoData, 3, false));
     this.sprdData = ((s_PrdData)paramJceInputStream.read(cache_sprdData, 4, false));
     this.pokePraise = ((ArrayList)paramJceInputStream.read(cache_pokePraise, 5, false));
+    this.kapuPraise = ((ArrayList)paramJceInputStream.read(cache_kapuPraise, 6, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -77,6 +84,9 @@ public final class cell_decorate
     }
     if (this.pokePraise != null) {
       paramJceOutputStream.write(this.pokePraise, 5);
+    }
+    if (this.kapuPraise != null) {
+      paramJceOutputStream.write(this.kapuPraise, 6);
     }
   }
 }

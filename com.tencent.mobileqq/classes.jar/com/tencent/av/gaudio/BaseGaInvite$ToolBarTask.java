@@ -1,7 +1,7 @@
 package com.tencent.av.gaudio;
 
 import java.util.TimerTask;
-import ldg;
+import lnx;
 
 class BaseGaInvite$ToolBarTask
   extends TimerTask

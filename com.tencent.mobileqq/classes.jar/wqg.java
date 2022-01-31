@@ -1,21 +1,25 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
 
 public class wqg
+  extends amgr
 {
-  public int a;
-  public MetaMaterial a;
-  public int b;
+  public wqg(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  public wqg(MetaMaterial paramMetaMaterial, int paramInt1, int paramInt2)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = paramMetaMaterial;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    super.onAddColorNote(paramBundle, paramBoolean);
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wqg
  * JD-Core Version:    0.7.0.1
  */

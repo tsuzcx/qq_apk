@@ -1,25 +1,6 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.List;
-
-public class ucs
-  extends JobSegment<String, ucw>
+public abstract interface ucs
 {
-  private szd jdField_a_of_type_Szd = new szd();
-  
-  public ucs(ucr paramucr, @NonNull String paramString)
-  {
-    this.jdField_a_of_type_Szd.a = new ArrayList();
-    paramucr = new uiw(paramString, 0, "", "");
-    this.jdField_a_of_type_Szd.a.add(paramucr);
-  }
-  
-  protected void a(JobContext paramJobContext, String paramString)
-  {
-    slv.a().a(this.jdField_a_of_type_Szd, new uct(this, paramJobContext));
-  }
+  public abstract boolean a();
 }
 
 

@@ -1,72 +1,46 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class aent
+class aent
+  extends akav
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  protected int c;
-  long jdField_c_of_type_Long;
-  String jdField_c_of_type_JavaLangString;
-  int jdField_d_of_type_Int = 0;
-  public long d;
-  String jdField_d_of_type_JavaLangString;
-  int e = 0;
+  aent(aeno paramaeno) {}
   
-  public aent(JSONObject paramJSONObject)
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2, int paramInt3)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    if (paramJSONObject != null)
+    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) || (paramInt3 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e))
     {
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("puin");
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("type");
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("show_tab");
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("content");
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("url");
-      this.jdField_b_of_type_Long = paramJSONObject.optLong("begin");
-      this.jdField_c_of_type_Long = paramJSONObject.optLong("end");
-      this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("shool_id");
-      this.jdField_c_of_type_Int = paramJSONObject.optInt("times");
-      this.jdField_d_of_type_Long = paramJSONObject.optLong("msg_seqno");
-      this.jdField_d_of_type_Long = paramJSONObject.optLong("msg_seqno");
-      this.jdField_d_of_type_Int = paramJSONObject.optInt("tid");
-      this.e = paramJSONObject.optInt("clicked");
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError_confess err uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2 + " topicId " + paramInt3);
+      }
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError_confess uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2 + " errorCode " + paramInt2 + " topicId " + paramInt3);
+    }
+    this.a.e(196608);
   }
   
-  boolean a()
+  protected void a(boolean paramBoolean, String paramString, int paramInt1, long paramLong, int paramInt2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Long > 0L)
+    if ((paramString == null) || (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) || (paramInt2 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e))
     {
-      bool1 = bool2;
-      if (this.jdField_c_of_type_Int >= 0) {
-        bool1 = true;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onSendResult_confess err uin " + paramString + " type " + paramInt1 + " uniseq " + paramLong + " topicId " + paramInt2);
       }
+      return;
     }
-    return bool1;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onSendResult_confess uin " + paramString + " type " + paramInt1 + " uniseq " + paramLong + " topicId " + paramInt2);
+    }
+    this.a.u = true;
+    this.a.a(262144, null, paramLong);
   }
   
-  public boolean b()
+  protected void c(boolean paramBoolean, String paramString)
   {
-    boolean bool2 = true;
-    long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    boolean bool1 = bool2;
-    if (l >= this.jdField_b_of_type_Long)
-    {
-      bool1 = bool2;
-      if (l <= this.jdField_c_of_type_Long) {
-        bool1 = false;
-      }
-    }
-    return bool1;
+    this.a.e(65536);
   }
 }
 

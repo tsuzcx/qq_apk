@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.sdk;
 
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import org.json.JSONObject;
 
@@ -14,10 +14,10 @@ class MiniAppLauncher$1$1
     if (this.val$ret != null)
     {
       String str = this.val$ret.optString("errMsg");
-      bbmy.a(BaseApplicationImpl.getContext(), 1, str, 0).a();
+      bcpw.a(BaseApplicationImpl.getContext(), 1, str, 0).a();
       return;
     }
-    bbmy.a(BaseApplicationImpl.getContext(), 1, 2131629528, 0).a();
+    bcpw.a(BaseApplicationImpl.getContext(), 1, 2131695209, 0).a();
   }
 }
 

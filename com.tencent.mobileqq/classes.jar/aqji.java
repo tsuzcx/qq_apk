@@ -1,28 +1,15 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
 
 class aqji
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
-  aqji(aqjh paramaqjh, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
+  aqji(aqjh paramaqjh, String paramString, View paramView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap onLoadCanceled");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap FAILED, no more action ...");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = asmd.a(paramURLDrawable);
-    aqjh.a(this.jdField_a_of_type_Aqjh, this.jdField_a_of_type_JavaLangString, this.b, this.c, paramURLDrawable, this.d, this.jdField_a_of_type_Int);
+    SDKSetEmotionPreviewFragment.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqjh.a.getActivity(), this.jdField_a_of_type_AndroidViewView);
   }
 }
 

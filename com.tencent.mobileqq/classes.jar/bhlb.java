@@ -1,69 +1,69 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import dov.com.qq.im.capture.poi.FacePoiUI.3.1;
-import dov.com.qq.im.capture.poi.FacePoiUI.3.2;
+import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bhlb
-  implements belq
+  implements TextWatcher
 {
-  bhlb(bhkz parambhkz) {}
+  public bhlb(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
-  {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.a == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.a)
-    {
-      paramView.c(l);
-      return;
-    }
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramListView = (PullRefreshHeader)paramView;
-    long l;
-    if (this.a.a == 0L)
-    {
-      l = System.currentTimeMillis();
-      paramListView.a(l);
-      if (!badq.g(this.a.e.getContext())) {
-        break label114;
+    if (((paramInt2 == 1) || (paramInt2 == 2)) && (paramInt3 == 0)) {
+      try
+      {
+        QZoneShareActivity.b(this.a, QZoneShareActivity.a(this.a, paramCharSequence, paramInt1 + paramInt2));
+        if (QZoneShareActivity.b(this.a) == -1)
+        {
+          QZoneShareActivity.g(this.a);
+          return;
+        }
+        QZoneShareActivity.c(this.a, paramInt1);
+        QZoneShareActivity.a(this.a, paramCharSequence.toString().substring(QZoneShareActivity.b(this.a), QZoneShareActivity.c(this.a) + paramInt2));
+        return;
       }
-      bhkz.a(this.a).d();
-      bhkz.a(this.a).a();
-      new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.3.1(this), 300L);
-    }
-    for (;;)
-    {
-      ((aamg)paramView.getTag()).a = true;
-      return true;
-      l = this.a.a;
-      break;
-      label114:
-      new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.3.2(this), 300L);
+      catch (Exception paramCharSequence)
+      {
+        QZoneShareActivity.g(this.a);
+      }
     }
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.a == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.a)
+    this.a.a.removeTextChangedListener(this);
+    if (paramCharSequence == null)
     {
-      paramView.b(l);
+      this.a.a.addTextChangedListener(this);
+      QZoneShareActivity.g(this.a);
       return;
     }
+    if ((paramInt3 == 1) && (paramInt2 == 0) && (paramCharSequence.toString().substring(paramInt1, paramInt1 + 1).equals("@")))
+    {
+      this.a.a(false);
+      this.a.g = true;
+      paramCharSequence = new Intent(BaseApplication.getContext(), SelectMemberActivity.class);
+      paramCharSequence.putExtra("param_only_friends", true);
+      paramCharSequence.putExtra("param_min", 1);
+      this.a.startActivityForResult(paramCharSequence, 1000);
+    }
+    if (QZoneShareActivity.a(this.a, QZoneShareActivity.a(this.a), false)) {
+      this.a.a.getEditableText().delete(QZoneShareActivity.b(this.a), QZoneShareActivity.c(this.a));
+    }
+    QZoneShareActivity.g(this.a);
+    this.a.i();
+    this.a.a.addTextChangedListener(this);
   }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhlb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,146 +1,82 @@
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppContentView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.smtt.sdk.WebView;
 
 public class nmo
+  extends zbu
 {
-  public int a;
-  public String a;
-  public nmq a;
-  public String b = "";
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
-  public String o;
-  public String p;
-  public String q;
-  public String r;
-  public String s;
-  public String t;
-  public String u;
-  public String v;
-  public String w;
-  public String x;
-  
-  public nmo()
+  public nmo(ReadInJoyNativeAdAppContentView paramReadInJoyNativeAdAppContentView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Nmq = new nmq();
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
   }
   
-  public static nmo a(String paramString, nmo paramnmo)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (TextUtils.isEmpty(paramString))
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    paramWebView = this.a.findViewById(2131362654);
+    if ((paramWebView != null) && (ReadInJoyNativeAdAppContentView.a(this.a) != null))
     {
-      paramString = null;
-      return paramString;
-    }
-    if (paramnmo == null) {
-      paramnmo = new nmo();
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        paramnmo.l = paramString.optString("button_desc", "");
-        paramnmo.s = paramString.optString("word_content_no_wifi", "");
-        paramnmo.t = paramString.optString("word_content_wifi", "");
-        paramnmo.u = paramString.optString("word_highlight", "");
-        paramnmo.v = paramString.optString("word_highlight_color", "");
-        paramnmo.w = paramString.optString("word_title", "");
-        paramnmo.m = paramString.optString("detail_url", "");
-        paramnmo.n = paramString.optString("activity_url", "");
-        paramnmo.k = paramString.optString("game_icon", "");
-        paramnmo.x = paramString.optString("component_type", "");
-        String str = paramString.optString("gift_info", "");
-        paramString = paramnmo;
-        if (TextUtils.isEmpty(str)) {
-          break;
-        }
-        paramnmo.jdField_a_of_type_Nmq = nmq.a(str);
-        return paramnmo;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return paramnmo;
-      }
+      ReadInJoyNativeAdAppContentView.a(this.a).setVisibility(8);
+      paramWebView.setVisibility(0);
     }
   }
   
-  public static nmo a(String paramString, nmo paramnmo, nmn paramnmn)
+  public void onReceivedTitle(WebView paramWebView, String paramString)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramString = null;
-      return paramString;
-    }
-    if (paramnmo == null) {
-      paramnmo = new nmo();
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        paramnmo.jdField_a_of_type_Int = paramString.optInt("id", 0);
-        paramnmo.jdField_a_of_type_JavaLangString = paramString.optString("game_name", "");
-        paramnmo.b = paramString.optString("package_name", "");
-        paramnmo.c = paramString.optString("business_type", "");
-        paramnmo.d = paramString.optString("plat_form", "");
-        paramnmo.e = paramString.optString("appid", "");
-        paramnmo.f = paramString.optString("oper_type", "");
-        paramnmo.r = paramString.optString("game_stage", "");
-        paramnmo.g = paramString.optString("game_status", "");
-        paramnmo.h = paramString.optString("game_kind", "");
-        paramnmo.i = paramString.optString("game_sub_kind", "");
-        paramnmo.j = paramString.optString("play_nums", "");
-        paramnmo.o = paramString.optString("game_tags", "");
-        paramnmo.p = paramString.optString("game_download_url", "");
-        paramnmo.q = paramString.optString("game_size", "");
-        if (!TextUtils.isEmpty(paramnmo.b)) {
-          paramnmn.b = paramnmo.b;
-        }
-        if (!TextUtils.isEmpty(paramnmo.p)) {
-          paramnmn.e = paramnmo.p;
-        }
-        paramString = paramnmo;
-        if (TextUtils.isEmpty(paramnmo.e)) {
-          break;
-        }
-        paramnmn.c = paramnmo.e;
-        return paramnmo;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return paramnmo;
-      }
-    }
+    super.onReceivedTitle(paramWebView, paramString);
   }
   
-  public void a(JSONObject paramJSONObject, nmo paramnmo, nmn paramnmn)
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if (paramJSONObject.has("game_component_info")) {
-      a(paramJSONObject.optString("game_component_info"), paramnmo, paramnmn);
-    }
-    if (paramJSONObject.has("game_component_real_info")) {
-      a(paramJSONObject.optString("game_component_real_info"), paramnmo);
-    }
-    if ((paramJSONObject.has("delivery_mode")) && (paramnmn.jdField_a_of_type_Int > 0) && (paramJSONObject.optString("delivery_mode", "").equals("3")) && (TextUtils.isEmpty(paramnmo.b)))
+    yxs.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
+    Object localObject;
+    do
     {
-      paramnmo.b = paramnmn.b;
-      paramnmo.x = String.valueOf(paramnmn.jdField_a_of_type_Int);
+      return true;
+      localObject = ((CustomWebView)paramWebView).getPluginEngine();
+      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      {
+        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
+        for (boolean bool = true;; bool = false) {
+          return bool;
+        }
+      }
+      paramString = Uri.parse(paramString);
+      localObject = paramString.getScheme();
+    } while (!mvv.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
+    paramWebView = new Intent("android.intent.action.VIEW", paramString);
+    paramWebView.addFlags(268435456);
+    try
+    {
+      this.mContext.startActivity(paramWebView);
+      return true;
     }
+    catch (ActivityNotFoundException paramWebView)
+    {
+      yxs.d("AbsWebView", paramWebView.toString());
+    }
+    return true;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import awkk;
+import axjq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ class SplashActivity$5
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      awkk.a((QQAppInterface)localAppRuntime);
+      axjq.a((QQAppInterface)localAppRuntime);
     }
   }
 }

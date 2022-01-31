@@ -1,71 +1,23 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qidian.proto.mobileqq_qidian.ConfigCorpSimpleInfo;
-import com.tencent.qidian.proto.mobileqq_qidian.ConfigInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.widget.SlideDownFrameLayout;
 
 public class bcrd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public bcrb a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
+  public bcrd(SlideDownFrameLayout paramSlideDownFrameLayout) {}
   
-  public bcrd()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  public bcrd(mobileqq_qidian.ConfigInfo paramConfigInfo)
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    if (paramConfigInfo.uint32_type.has()) {
-      this.jdField_a_of_type_Int = paramConfigInfo.uint32_type.get();
-    }
-    if (paramConfigInfo.uint32_event.has()) {
-      this.jdField_b_of_type_Int = paramConfigInfo.uint32_event.get();
-    }
-    if (paramConfigInfo.str_title.has()) {
-      this.jdField_a_of_type_JavaLangString = paramConfigInfo.str_title.get();
-    }
-    if (paramConfigInfo.str_content.has()) {
-      this.jdField_b_of_type_JavaLangString = paramConfigInfo.str_content.get();
-    }
-    if (paramConfigInfo.str_action.has()) {
-      this.c = paramConfigInfo.str_action.get();
-    }
-    if (paramConfigInfo.str_aaction.has()) {
-      this.d = paramConfigInfo.str_aaction.get();
-    }
-    if (paramConfigInfo.msg_corp_simple.has()) {
-      this.jdField_a_of_type_Bcrb = new bcrb(paramConfigInfo.msg_corp_simple);
-    }
-    if (paramConfigInfo.str_url.has()) {
-      this.e = paramConfigInfo.str_url.get();
-    }
-    if (paramConfigInfo.str_lat.has()) {
-      this.f = paramConfigInfo.str_lat.get();
-    }
-    if (paramConfigInfo.str_log.has()) {
-      this.g = paramConfigInfo.str_log.get();
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    SlideDownFrameLayout.a(this.a).a().setY(f);
+    SlideDownFrameLayout.a(this.a).a(f, SlideDownFrameLayout.a(this.a).a().getHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcrd
  * JD-Core Version:    0.7.0.1
  */

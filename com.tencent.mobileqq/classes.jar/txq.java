@@ -1,40 +1,30 @@
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
+import java.util.ArrayList;
+import java.util.List;
+
 public class txq
+  extends twc<SingleFeedPlayInfo>
 {
-  public static void a(String paramString1, String paramString2)
+  public txq(SingleFeedPlayInfo paramSingleFeedPlayInfo)
   {
-    urk.b(paramString1, paramString2);
+    super(paramSingleFeedPlayInfo);
   }
   
-  public static void a(String paramString1, String paramString2, Object paramObject)
+  public uvs a(String paramString)
   {
-    urk.a(paramString1, paramString2, paramObject);
+    paramString = new uvs(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
+    paramString.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
+    return paramString;
   }
   
-  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2) {}
-  
-  public static void b(String paramString1, String paramString2)
+  public void a(boolean paramBoolean, int paramInt, twu paramtwu)
   {
-    urk.d(paramString1, paramString2);
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject)
-  {
-    urk.a(paramString1, paramString2, paramObject);
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    urk.a(paramString1, paramString2, paramObject1, paramObject2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    urk.e(paramString1, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    urk.a(paramString1, paramString2, paramObject1, paramObject2);
+    ArrayList localArrayList = new ArrayList();
+    twd localtwd = new twd(((SingleFeedPlayInfo)this.a).mFeedFeedId, new uvs(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
+    localtwd.a.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
+    localArrayList.add(localtwd);
+    paramtwu.a(new ErrorMessage(), localArrayList, true);
   }
 }
 

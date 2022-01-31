@@ -1,137 +1,180 @@
 import android.content.Context;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForEnterTroop;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class addv
-  extends acjb
+  implements adej
 {
-  public addv(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  public static final adek<addv> a;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private float b;
+  private float c;
+  private float d;
+  
+  static
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+    jdField_a_of_type_Adek = new addw();
   }
   
-  protected acjc a()
+  public addv()
   {
-    return new addw(this);
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    DisplayMetrics localDisplayMetrics = localBaseApplication.getResources().getDisplayMetrics();
+    this.jdField_a_of_type_Int = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    float f = this.jdField_a_of_type_Int / 750.0F;
+    this.jdField_a_of_type_Float = (12.0F * f);
+    this.b = (f * 6.0F);
+    this.c = (muf.a(localBaseApplication, 50.0F) / 1000.0F);
+    this.d = (muf.a(localBaseApplication, 0.4F) / 1000.0F);
   }
   
-  protected View a(MessageRecord paramMessageRecord, acjc paramacjc, View paramView, LinearLayout paramLinearLayout, acmv paramacmv)
+  public addv(adeh paramadeh)
   {
-    int j = 0;
-    paramacmv = (addw)paramacjc;
-    paramacjc = paramView;
-    Object localObject1;
-    Object localObject2;
-    if (paramView == null)
+    paramadeh.a();
+    this.jdField_a_of_type_AndroidGraphicsRect = paramadeh.a();
+    this.jdField_a_of_type_Float = paramadeh.a();
+    this.b = paramadeh.a();
+    this.c = paramadeh.a();
+    this.d = paramadeh.a();
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public float a(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    float f = (float)paramLong / 1000.0F;
+    paramFloat1 = (float)Math.sqrt((paramFloat3 - paramFloat1) * (paramFloat3 - paramFloat1) + (paramFloat4 - paramFloat2) * (paramFloat4 - paramFloat2));
+    if (paramFloat1 <= 0.0F)
     {
-      paramacjc = new LinearLayout(paramLinearLayout.getContext());
-      paramacjc.setOrientation(1);
-      paramView = new LinearLayout.LayoutParams(-1, -2);
-      paramView.topMargin = aciy.a(9.0F, paramLinearLayout.getContext().getResources());
-      paramacjc.setLayoutParams(paramView);
-      localObject1 = new LinearLayout(paramacjc.getContext());
-      ((LinearLayout)localObject1).setOrientation(0);
-      ((LinearLayout)localObject1).setGravity(1);
-      paramacmv.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localObject1);
-      paramView = new LinearLayout(paramacjc.getContext());
-      paramView.setOrientation(0);
-      localObject2 = new LinearLayout.LayoutParams(-1, -2);
-      ((LinearLayout.LayoutParams)localObject2).leftMargin = aciy.a(52.0F, paramLinearLayout.getContext().getResources());
-      ((LinearLayout.LayoutParams)localObject2).rightMargin = aciy.a(52.0F, paramLinearLayout.getContext().getResources());
-      ((LinearLayout.LayoutParams)localObject2).topMargin = aciy.a(4.0F, paramLinearLayout.getContext().getResources());
-      paramacjc.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-      paramacjc.addView(paramView, (ViewGroup.LayoutParams)localObject2);
-      paramacmv.b = new TextView(paramView.getContext());
-      localObject1 = new LinearLayout.LayoutParams(-1, -2);
-      paramView.addView(paramacmv.b, (ViewGroup.LayoutParams)localObject1);
-      paramacmv.b.setTextColor(-8355712);
-      paramacmv.b.setGravity(1);
-      paramacmv.b.setSingleLine();
-      paramacmv.b.setEllipsize(TextUtils.TruncateAt.END);
-      paramacmv.jdField_a_of_type_JavaUtilList = new ArrayList();
+      paramFloat1 = a();
+      return paramFloat1;
     }
-    int i;
-    if ((paramMessageRecord instanceof MessageForEnterTroop))
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    paramFloat2 = f / paramFloat1;
+    if (this.jdField_a_of_type_AndroidGraphicsRect.width() > 0) {}
+    for (paramFloat1 = this.jdField_a_of_type_AndroidGraphicsRect.width();; paramFloat1 = this.jdField_a_of_type_Int)
     {
-      localObject1 = (MessageForEnterTroop)paramMessageRecord;
-      paramMessageRecord = this.jdField_a_of_type_AndroidContentContext.getString(2131631767);
-      localObject2 = ((MessageForEnterTroop)localObject1).mList.iterator();
-      for (i = 1; ((Iterator)localObject2).hasNext(); i = 0)
-      {
-        amso localamso = (amso)((Iterator)localObject2).next();
-        paramView = paramMessageRecord;
-        if (i == 0) {
-          paramView = paramMessageRecord + ",";
-        }
-        paramMessageRecord = paramView + localamso.b;
+      paramFloat2 *= muf.b(localBaseApplication, paramFloat1);
+      paramFloat3 = c();
+      paramFloat4 = d();
+      f = b();
+      paramFloat1 = a();
+      if (paramFloat2 > paramFloat3) {
+        break;
       }
-      paramacmv.b.setText(paramMessageRecord);
-      i = ((MessageForEnterTroop)localObject1).mList.size();
-      if (i <= 5) {
-        break label727;
+      if (paramFloat2 >= paramFloat4) {
+        break label139;
       }
-      i = 5;
+      return f;
     }
-    label727:
+    label139:
+    return (paramFloat2 - paramFloat4) * (a() - f) / (paramFloat3 - paramFloat4) + f;
+  }
+  
+  public Rect a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRect;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
+  }
+  
+  public void a(addv paramaddv)
+  {
+    this.c = paramaddv.c();
+    this.d = paramaddv.d();
+    this.jdField_a_of_type_Float = paramaddv.a();
+    this.b = paramaddv.b();
+    this.jdField_a_of_type_AndroidGraphicsRect.set(paramaddv.a());
+  }
+  
+  public void a(adeh paramadeh, int paramInt)
+  {
+    paramadeh.a(1);
+    paramadeh.a(this.jdField_a_of_type_AndroidGraphicsRect);
+    paramadeh.a(this.jdField_a_of_type_Float);
+    paramadeh.a(this.b);
+    paramadeh.a(this.c);
+    paramadeh.a(this.d);
+  }
+  
+  public void a(adem paramadem)
+  {
+    if (paramadem == null) {}
     for (;;)
     {
-      int k = paramacmv.jdField_a_of_type_JavaUtilList.size();
-      if (k < i) {
-        while (j < i - k)
+      return;
+      ArrayList localArrayList = paramadem.a();
+      if (localArrayList != null)
+      {
+        int j = localArrayList.size();
+        if (j == 1)
         {
-          paramMessageRecord = new ImageView(paramacmv.jdField_a_of_type_AndroidWidgetLinearLayout.getContext());
-          paramMessageRecord.setScaleType(ImageView.ScaleType.FIT_XY);
-          int m = aciy.a(26.0F, paramLinearLayout.getContext().getResources());
-          paramView = new LinearLayout.LayoutParams(m, m);
-          paramView.leftMargin = aciy.a(4.0F, paramLinearLayout.getContext().getResources());
-          paramView.rightMargin = aciy.a(4.0F, paramLinearLayout.getContext().getResources());
-          paramacmv.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramMessageRecord, paramView);
-          paramacmv.jdField_a_of_type_JavaUtilList.add(paramMessageRecord);
-          j += 1;
+          ((aden)localArrayList.get(0)).c(a());
+          return;
+        }
+        if (j > 1)
+        {
+          ((aden)localArrayList.get(0)).c(a());
+          paramadem = (aden)localArrayList.get(0);
+          int i = 1;
+          while (i < j)
+          {
+            aden localaden = (aden)localArrayList.get(i);
+            localaden.c(a(localaden.a() - paramadem.a(), paramadem.a(), paramadem.b(), localaden.a(), localaden.b()));
+            i += 1;
+            paramadem = localaden;
+          }
         }
       }
-      if (k > i)
-      {
-        j = k;
-        while (j > i)
-        {
-          paramacmv.jdField_a_of_type_AndroidWidgetLinearLayout.removeView((View)paramacmv.jdField_a_of_type_JavaUtilList.get(j - 1));
-          paramacmv.jdField_a_of_type_JavaUtilList.remove(j - 1);
-          j -= 1;
-        }
-      }
-      paramMessageRecord = paramacmv.jdField_a_of_type_JavaUtilList.iterator();
-      paramView = ((MessageForEnterTroop)localObject1).mList.iterator();
-      while ((paramMessageRecord.hasNext()) && (paramView.hasNext()))
-      {
-        paramLinearLayout = (ImageView)paramMessageRecord.next();
-        paramacmv = (amso)paramView.next();
-        paramLinearLayout.setImageDrawable(azwp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramacmv.a));
-      }
-      return paramacjc;
     }
   }
   
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public bakj[] a(View paramView)
+  public float b()
   {
-    return null;
+    return this.b;
+  }
+  
+  public void b(float paramFloat)
+  {
+    this.b = paramFloat;
+  }
+  
+  public float c()
+  {
+    return this.c;
+  }
+  
+  public void c(float paramFloat)
+  {
+    this.c = paramFloat;
+  }
+  
+  public float d()
+  {
+    return this.d;
+  }
+  
+  public void d(float paramFloat)
+  {
+    this.d = paramFloat;
   }
 }
 

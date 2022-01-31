@@ -1,42 +1,42 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aciq;
-import acir;
+import aabk;
+import actf;
+import actg;
 import android.os.Build;
-import awrn;
-import baio;
+import axrl;
+import bbjv;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import zrr;
 
 public class AIOTimeReporter$1
   implements Runnable
 {
-  public AIOTimeReporter$1(acir paramacir) {}
+  public AIOTimeReporter$1(actg paramactg) {}
   
   public void run()
   {
-    Object localObject = aciq.a();
-    acir.a(this.this$0, ((aciq)localObject).a());
-    if (baio.a <= 0L)
+    Object localObject = actf.a();
+    actg.a(this.this$0, ((actf)localObject).a());
+    if (bbjv.a <= 0L)
     {
-      acir.a(this.this$0);
+      actg.a(this.this$0);
       return;
     }
     String str = "";
-    switch (acir.a(this.this$0))
+    switch (actg.a(this.this$0))
     {
     default: 
       return;
     case 1: 
-      switch (((aciq)localObject).a)
+      switch (((actf)localObject).a)
       {
       default: 
-        if (zrr.a().a())
+        if (aabk.a().a())
         {
           localObject = new HashMap();
-          ((HashMap)localObject).put("hcState", String.valueOf(zrr.a().a()));
+          ((HashMap)localObject).put("hcState", String.valueOf(aabk.a().a()));
           ((HashMap)localObject).put("model", Build.MODEL);
         }
         break;
@@ -45,65 +45,65 @@ public class AIOTimeReporter$1
     }
     for (;;)
     {
-      awrn.a(BaseApplication.getContext()).a(null, str, true, baio.a, 0L, (HashMap)localObject, "");
+      axrl.a(BaseApplication.getContext()).a(null, str, true, bbjv.a, 0L, (HashMap)localObject, "");
       if (QLog.isDevelopLevel()) {
-        QLog.d(this.this$0.a, 4, "reportAIOTime: " + str + " cost : " + baio.a);
+        QLog.d(this.this$0.a, 4, "reportAIOTime: " + str + " cost : " + bbjv.a);
       }
-      acir.a(this.this$0);
+      actg.a(this.this$0);
       return;
-      if (!acir.a(this.this$0).equalsIgnoreCase("0"))
+      if (!actg.a(this.this$0).equalsIgnoreCase("0"))
       {
-        str = acir.a();
+        str = actg.a();
         break;
       }
-      str = acir.b();
+      str = actg.b();
       break;
-      if (!acir.a(this.this$0).equalsIgnoreCase("0"))
+      if (!actg.a(this.this$0).equalsIgnoreCase("0"))
       {
-        str = acir.c();
+        str = actg.c();
         break;
       }
-      str = acir.d();
+      str = actg.d();
       break;
-      switch (((aciq)localObject).a)
+      switch (((actf)localObject).a)
       {
       }
       for (;;)
       {
         break;
-        if (!acir.a(this.this$0).equalsIgnoreCase("0"))
+        if (!actg.a(this.this$0).equalsIgnoreCase("0"))
         {
-          str = acir.e();
+          str = actg.e();
         }
         else
         {
-          str = acir.f();
+          str = actg.f();
           continue;
-          if (!acir.a(this.this$0).equalsIgnoreCase("0")) {
-            str = acir.g();
+          if (!actg.a(this.this$0).equalsIgnoreCase("0")) {
+            str = actg.g();
           } else {
-            str = acir.h();
+            str = actg.h();
           }
         }
       }
-      switch (((aciq)localObject).a)
+      switch (((actf)localObject).a)
       {
       }
       for (;;)
       {
         break;
-        if (!acir.a(this.this$0).equalsIgnoreCase("0"))
+        if (!actg.a(this.this$0).equalsIgnoreCase("0"))
         {
-          str = acir.i();
+          str = actg.i();
         }
         else
         {
-          str = acir.j();
+          str = actg.j();
           continue;
-          if (!acir.a(this.this$0).equalsIgnoreCase("0")) {
-            str = acir.k();
+          if (!actg.a(this.this$0).equalsIgnoreCase("0")) {
+            str = actg.k();
           } else {
-            str = acir.l();
+            str = actg.l();
           }
         }
       }

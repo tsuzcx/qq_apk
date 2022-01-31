@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import alkc;
+import alyq;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -8,7 +8,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 public class DynamicAvatarDownloadManager$2
   implements Runnable
 {
-  public DynamicAvatarDownloadManager$2(alkc paramalkc, long paramLong) {}
+  public DynamicAvatarDownloadManager$2(alyq paramalyq, long paramLong) {}
   
   public void run()
   {

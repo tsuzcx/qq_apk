@@ -1,9 +1,9 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import awlw;
-import bjib;
-import bjje;
-import bjjf;
+import axlc;
+import bkym;
+import bkzp;
+import bkzq;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import java.io.File;
 
@@ -12,10 +12,10 @@ public final class PendantVersionManager$1
 {
   public void run()
   {
-    String str1 = awlw.a(VideoEnvironment.a());
-    String str2 = bjib.a();
+    String str1 = axlc.a(VideoEnvironment.a());
+    String str2 = bkym.a();
     File[] arrayOfFile = new File(str1).listFiles();
-    int i = bjib.a().length;
+    int i = bkym.a().length;
     int j;
     Object localObject1;
     Object localObject2;
@@ -35,10 +35,10 @@ public final class PendantVersionManager$1
           k += 1;
           break;
           localObject2 = arrayOfFile[k].getName();
-          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!bjib.a((String)localObject2)))
+          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!bkym.a((String)localObject2)))
           {
-            localObject3 = bjje.a((String)localObject2);
-            m = ((bjjf)localObject3).a();
+            localObject3 = bkzp.a((String)localObject2);
+            m = ((bkzq)localObject3).a();
             if (m == 0) {
               break label218;
             }
@@ -50,7 +50,7 @@ public final class PendantVersionManager$1
           }
         }
         label218:
-        localObject3 = ((bjjf)localObject3).a();
+        localObject3 = ((bkzq)localObject3).a();
       }
     }
     label418:

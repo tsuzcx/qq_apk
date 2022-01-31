@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aycs;
+import azdc;
 
 public class AbsPublishActivity$8$3
   implements Runnable
 {
-  public AbsPublishActivity$8$3(aycs paramaycs) {}
+  public AbsPublishActivity$8$3(azdc paramazdc) {}
   
   public void run()
   {

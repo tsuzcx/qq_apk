@@ -3,8 +3,8 @@ package com.tencent.mobileqq.utils.confighandler;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bake;
-import bavz;
+import bblo;
+import bbyt;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Collection;
@@ -14,12 +14,14 @@ import java.util.TreeMap;
 public class QAVFunCallHandler
   extends NormalConfigHandler<QAVFunCallConfig>
 {
-  NormalConfigHandler.GetConfigListen<QAVFunCallConfig> mGetConfigListen = new bake(this);
+  NormalConfigHandler.GetConfigListen<QAVFunCallConfig> mGetConfigListen = new bblo(this);
   
   public QAVFunCallHandler(String paramString)
   {
     super("QAVConfig_382", paramString, null, null, null);
   }
+  
+  private void requestPreDownload(String paramString, AppInterface paramAppInterface) {}
   
   public void doOnReconnect(QQAppInterface paramQQAppInterface)
   {
@@ -60,7 +62,7 @@ public class QAVFunCallHandler
           int i = localFCItem.fcid;
           if ((i != 0) && (!TextUtils.isEmpty(localFCItem.media)))
           {
-            Object localObject = bavz.a(paramAppInterface, 0, String.valueOf(i));
+            Object localObject = bbyt.a(paramAppInterface, 0, String.valueOf(i));
             if ((localObject != null) && ((((SharedPreferences)localObject).getLong("local_version", 0L) != localQAVFunCallConfig.serverVer) || (TextUtils.isEmpty(((SharedPreferences)localObject).getString("_6", null)))))
             {
               localObject = ((SharedPreferences)localObject).edit();
@@ -88,8 +90,6 @@ public class QAVFunCallHandler
     onGetConfig(paramQQAppInterface);
     requestPreDownload("onGetConfigFinish", paramQQAppInterface);
   }
-  
-  public void requestPreDownload(String paramString, AppInterface paramAppInterface) {}
 }
 
 

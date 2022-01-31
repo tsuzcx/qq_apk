@@ -1,52 +1,33 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
-import java.util.List;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 
 public class arpz
+  extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private List<Integer> jdField_a_of_type_JavaUtilList;
-  private String b;
-  private String c;
-  
-  public arpz a(int paramInt)
+  public int getCount()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    return 0;
   }
   
-  public arpz a(String paramString)
+  public Object getItem(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    return null;
   }
   
-  public arpz a(List<Integer> paramList)
+  public long getItemId(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    return this;
+    return 0L;
   }
   
-  public MsgBackupUserData a()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return new MsgBackupUserData(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b, this.c, this.jdField_a_of_type_Int, null);
-  }
-  
-  public arpz b(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
-  
-  public arpz c(String paramString)
-  {
-    this.c = paramString;
-    return this;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arpz
  * JD-Core Version:    0.7.0.1
  */

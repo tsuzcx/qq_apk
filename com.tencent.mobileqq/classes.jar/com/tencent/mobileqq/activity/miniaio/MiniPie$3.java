@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import afuz;
+import aggy;
 import com.tencent.qphone.base.util.QLog;
 
 public class MiniPie$3
   implements Runnable
 {
-  public MiniPie$3(afuz paramafuz) {}
+  public MiniPie$3(aggy paramaggy) {}
   
   public void run()
   {
     if (!this.this$0.jdField_a_of_type_Boolean) {
-      afuz.a(this.this$0);
+      aggy.a(this.this$0);
     }
     while (!QLog.isColorLevel()) {
       return;

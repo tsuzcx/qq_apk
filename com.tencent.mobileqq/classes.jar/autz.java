@@ -1,36 +1,61 @@
+import android.view.View;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
 class autz
-  implements ahju
+  implements bfoq
 {
-  autz(auty paramauty, int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3) {}
+  autz(auty paramauty, autc paramautc) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "1";; str = "0")
+    switch (paramInt)
     {
-      awqx.b(null, "dc00898", "", "", "0X80085A1", "0X80085A1", i, 0, str, "", "", "");
-      this.jdField_a_of_type_Auty.a.dismiss();
-      this.jdField_a_of_type_Auty.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    default: 
+    case 0: 
+      for (;;)
+      {
+        this.jdField_a_of_type_Auty.a.jdField_a_of_type_Bfol.e();
+        return;
+        this.jdField_a_of_type_Auty.a.jdField_a_of_type_Autb.a(auty.a(this.jdField_a_of_type_Auty), this.jdField_a_of_type_Autc.a);
+      }
+    }
+    paramView = (PersonalityLabelInfo)PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Auty.a).get(Long.valueOf(auty.a(this.jdField_a_of_type_Auty)));
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Auty.a.jdField_a_of_type_Bfol.e();
       return;
     }
-  }
-  
-  public void b()
-  {
-    int i = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "1";; str = "0")
+    paramInt = 0;
+    label115:
+    if (paramInt < paramView.personalityLabelPhotos.size()) {
+      if (((PersonalityLabelPhoto)paramView.personalityLabelPhotos.get(paramInt)).uniseq == this.jdField_a_of_type_Autc.a.uniseq) {
+        paramView.personalityLabelPhotos.remove(paramInt);
+      }
+    }
+    for (;;)
     {
-      awqx.b(null, "dc00898", "", "", "0X80085A2", "0X80085A2", i, 0, str, "", "", "");
-      this.jdField_a_of_type_Auty.a.dismiss();
-      return;
+      if (paramInt < 0)
+      {
+        this.jdField_a_of_type_Auty.a.jdField_a_of_type_Bfol.e();
+        return;
+        paramInt += 1;
+        break label115;
+      }
+      paramView.photoCount -= 1;
+      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Auty.a, auty.a(this.jdField_a_of_type_Auty), paramView);
+      this.jdField_a_of_type_Auty.a.jdField_a_of_type_Autb.b(auty.a(this.jdField_a_of_type_Auty), this.jdField_a_of_type_Autc.a);
+      break;
+      paramInt = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     autz
  * JD-Core Version:    0.7.0.1
  */

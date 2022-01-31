@@ -1,31 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
 
-class aufy
-  extends BroadcastReceiver
+public class aufy
+  implements View.OnClickListener
 {
-  aufy(aufx paramaufx) {}
+  public aufy(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((paramIntent != null) && ("com.qzonex.localalbum.new_photo_notification_feedback_action".equals(paramIntent.getAction())))
+    switch (paramView.getId())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzonePhotoGuideNotifyServlet", 2, "QzonePhotoGuideNotifyServlet onReceive");
-      }
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      }
+    default: 
+      return;
+    case 2131375603: 
       this.a.b();
+      return;
+    case 2131375598: 
+      this.a.c();
+      return;
+    case 2131375592: 
+      this.a.d();
+      return;
     }
+    this.a.doOnBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aufy
  * JD-Core Version:    0.7.0.1
  */

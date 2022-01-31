@@ -1,269 +1,427 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Message;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.SendPhotoTask;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.doutu.DoutuData;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class anny
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public static int a = 1;
-  public static int b = 2;
-  public static int c = 3;
-  public static int d = 4;
+  public static int a;
+  private float jdField_a_of_type_Float;
+  public long a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable();
+  public anoc a;
+  URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener = new annz(this);
+  public SessionInfo a;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public DoutuData a;
+  public HashMap<String, String> a;
+  public List<DoutuData> a;
+  public MqqHandler a;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private DoutuData jdField_b_of_type_ComTencentMobileqqDoutuDoutuData = new DoutuData("abababababababababababab", null);
+  public List<DoutuData> b;
+  private int c;
+  private int d;
+  private int e;
+  private int f = -1;
   
-  private static Intent a(Activity paramActivity, AppInterface paramAppInterface, int paramInt)
+  static
   {
-    if (paramActivity == null) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("EquipLockWebEntrance", 4, "getEntranceIntent actCaller is null");
+    jdField_a_of_type_Int = 4;
+  }
+  
+  public anny(Context paramContext, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, SessionInfo paramSessionInfo, MqqHandler paramMqqHandler, boolean paramBoolean, anoc paramanoc, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.jdField_a_of_type_Anoc = paramanoc;
+    if ((paramBoolean) && (this.jdField_a_of_type_Anoc != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Anoc.b))) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      if ((paramInt > 0) && (this.jdField_a_of_type_Boolean)) {
+        jdField_a_of_type_Int = paramInt;
+      }
+      if (!this.jdField_a_of_type_Boolean) {
+        jdField_a_of_type_Int = 9;
+      }
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      paramInt = i;
+      while (paramInt < jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_JavaUtilList.add(new DoutuData());
+        paramInt += 1;
       }
     }
-    do
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
+    this.jdField_b_of_type_Int = actn.a(80.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.c = actn.a(80.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.d = actn.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.e = actn.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public void a()
+  {
+    int k = 0;
+    int j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("DoutuEmotionAdapter", 2, "[doutu]resetData");
+    }
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    for (;;)
     {
-      return null;
-      if (paramAppInterface != null) {
+      i = k;
+      if (this.jdField_b_of_type_JavaUtilList == null) {
         break;
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("EquipLockWebEntrance", 4, "getEntranceIntent app is null");
-    return null;
-    String str = paramAppInterface.getCurrentAccountUin();
-    paramAppInterface = a(a(paramInt), paramAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebEntrance", 2, "AuthDevUgAct url=" + paramAppInterface);
-    }
-    paramActivity = new Intent(paramActivity, QQBrowserActivity.class);
-    paramActivity.putExtra("portraitOnly", true);
-    paramActivity.putExtra("url", paramAppInterface);
-    paramActivity.putExtra("uin", str);
-    paramActivity.putExtra("hide_operation_bar", true);
-    paramActivity.putExtra("hide_more_button", true);
-    return paramActivity;
-  }
-  
-  private static String a(int paramInt)
-  {
-    Object localObject = anoc.a().a();
-    if ((localObject != null) && (((String)localObject).length() > 0)) {
-      if (!((String)localObject).startsWith("http")) {}
-    }
-    for (;;)
-    {
-      localObject = new StringBuilder((String)localObject);
-      ((StringBuilder)localObject).append("?");
-      ((StringBuilder)localObject).append("type=" + Integer.toString(paramInt));
-      ((StringBuilder)localObject).append("&plat=1");
-      ((StringBuilder)localObject).append("&app=1");
-      ((StringBuilder)localObject).append("&version=8.2.6.4370");
-      ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
-      ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
-      ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
-      return ((StringBuilder)localObject).toString();
-      localObject = "http://" + (String)localObject;
-      continue;
-      localObject = "http://aq.qq.com/cn2/manage/mobile_h5/mobile_index";
-    }
-  }
-  
-  private static String a(String paramString, AppInterface paramAppInterface)
-  {
-    Object localObject = null;
-    String str = null;
-    if (paramString == null) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("EquipLockWebEntrance", 4, "handlePhoneContact url is null");
-      }
-    }
-    for (;;)
-    {
-      return paramString;
-      if (paramAppInterface != null)
-      {
-        paramAppInterface = (aroh)paramAppInterface.getManager(11);
-        if (paramAppInterface != null)
-        {
-          paramAppInterface = paramAppInterface.a();
-          if (paramAppInterface == null)
-          {
-            if (!QLog.isColorLevel()) {
-              break label250;
-            }
-            QLog.d("EquipLockWebEntrance", 2, "mgr can't find stat");
-            paramAppInterface = null;
-          }
-        }
-      }
-      while ((str != null) && (str.length() > 0) && (paramAppInterface != null) && (paramAppInterface.length() > 0))
-      {
-        paramString = new StringBuilder(paramString);
-        paramString.append("&area=" + str);
-        paramString.append("&mob=" + paramAppInterface);
-        return paramString.toString();
-        if (QLog.isColorLevel()) {
-          QLog.d("EquipLockWebEntrance", 2, "mgr find stat, nationCode=" + paramAppInterface.nationCode + " no.=" + paramAppInterface.mobileNo);
-        }
-        str = paramAppInterface.nationCode;
-        paramAppInterface = paramAppInterface.mobileNo;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("EquipLockWebEntrance", 2, "mgr is null");
-        }
-        for (;;)
-        {
-          str = null;
-          paramAppInterface = localObject;
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.d("EquipLockWebEntrance", 2, "getEntranceIntent:app is null");
-          }
-        }
-        label250:
-        paramAppInterface = null;
-      }
-    }
-  }
-  
-  public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt)
-  {
-    if (paramActivity == null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("EquipLockWebEntrance", 4, "enter actCaller is null");
-      }
-      return;
-    }
-    paramAppInterface = a(paramActivity, paramAppInterface, paramInt);
-    try
-    {
-      VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, paramAppInterface, false, -1);
-      return;
-    }
-    catch (SecurityException paramActivity) {}
-  }
-  
-  public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString)
-  {
-    if (paramActivity == null) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("EquipLockWebEntrance", 4, "enterForResult actCaller is null");
-      }
-    }
-    do
-    {
-      return;
-      if (paramAppInterface != null) {
+      i = k;
+      if (this.jdField_b_of_type_JavaUtilList.size() <= 0) {
         break;
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("EquipLockWebEntrance", 4, "enterForResult app is null");
-    return;
-    paramAppInterface = a(paramActivity, paramAppInterface, paramInt1);
-    if (paramString != null) {
-      paramAppInterface.putExtra("tag", paramString);
+      i = j;
+      while ((i < jdField_a_of_type_Int) && (i < this.jdField_b_of_type_JavaUtilList.size()))
+      {
+        this.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_JavaUtilList.get(i));
+        i += 1;
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
     }
-    paramAppInterface.putExtra("needResult", true);
-    try
+    while (i < 9)
     {
-      VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, paramAppInterface, true, paramInt2);
+      this.jdField_a_of_type_JavaUtilList.add(new DoutuData());
+      i += 1;
+    }
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > 0)) {
+      if (this.jdField_b_of_type_JavaUtilList.size() < jdField_a_of_type_Int) {
+        break label235;
+      }
+    }
+    label235:
+    for (int i = jdField_a_of_type_Int;; i = this.jdField_b_of_type_JavaUtilList.size())
+    {
+      this.f = i;
+      this.jdField_b_of_type_JavaUtilList.add(this.f, this.jdField_b_of_type_ComTencentMobileqqDoutuDoutuData);
+      this.jdField_a_of_type_JavaUtilList.add(this.f, this.jdField_b_of_type_ComTencentMobileqqDoutuDoutuData);
       return;
     }
-    catch (SecurityException paramActivity) {}
   }
   
-  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
+  public void a(long paramLong)
   {
-    boolean bool = true;
-    if (paramActivity == null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("EquipLockWebEntrance", 4, "subaccountEnter actCaller is null");
-      }
-      return;
-    }
-    String str = a(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebEntrance", 2, "AuthDevUgAct url=" + str);
-    }
-    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    localIntent.putExtra("portraitOnly", true);
-    localIntent.putExtra("url", str);
-    localIntent.putExtra("subAccountUin", paramString2);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    if ((paramString1 != null) && (!paramString1.equals(paramString2))) {}
-    for (;;)
+    if (paramLong != this.jdField_a_of_type_Long)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("EquipLockWebEntrance", 2, "globalEnter currentUin=" + paramString1 + " reqUin=" + paramString2 + " isSubaccount=" + bool);
+        QLog.e("DoutuEmotionAdapter", 2, "removeLoading key:" + paramLong + ", timeKey:" + this.jdField_a_of_type_Long);
       }
-      localIntent.putExtra("isSubaccount", bool);
-      localIntent.putExtra("avoidLoginWeb", bool);
-      try
+      return;
+    }
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList != null))
+    {
+      int j = this.jdField_a_of_type_JavaUtilList.size();
+      this.jdField_b_of_type_JavaUtilList.remove(this.jdField_b_of_type_ComTencentMobileqqDoutuDoutuData);
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while ((i < j) && (i < this.jdField_b_of_type_JavaUtilList.size()))
       {
-        VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, localIntent, false, -1);
-        return;
+        localArrayList.add(this.jdField_b_of_type_JavaUtilList.get(i));
+        i += 1;
       }
-      catch (SecurityException paramActivity)
-      {
-        return;
-      }
-      bool = false;
+      a(localArrayList);
+    }
+    this.f = -1;
+  }
+  
+  public void a(List<DoutuData> paramList)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    if (paramList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
     }
   }
   
-  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  public void a(List<DoutuData> paramList, boolean paramBoolean, long paramLong)
   {
-    if (paramActivity == null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("EquipLockWebEntrance", 4, "subaccountEnter actCaller is null");
-      }
-      return;
-    }
-    String str = a(paramInt1);
     if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebEntrance", 2, "AuthDevUgAct url=" + str);
+      QLog.i("DoutuEmotionAdapter", 2, "addSmartPicList removeEmptyData:" + paramBoolean);
     }
-    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    localIntent.putExtra("portraitOnly", true);
-    localIntent.putExtra("url", str);
-    localIntent.putExtra("subAccountUin", paramString2);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramString1 != null)
-    {
-      bool1 = bool2;
-      if (!paramString1.equals(paramString2)) {
-        bool1 = true;
+    if (paramLong != this.jdField_a_of_type_Long) {
+      if (QLog.isColorLevel()) {
+        QLog.e("DoutuEmotionAdapter", 2, "addSmartPicList key:" + paramLong + ", timeKey:" + this.jdField_a_of_type_Long);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebEntrance", 2, "globalEnter currentUin=" + paramString1 + " reqUin=" + paramString2 + " isSubaccount=" + bool1);
-    }
-    localIntent.putExtra("isSubaccount", bool1);
-    localIntent.putExtra("avoidLoginWeb", bool1);
-    if (paramString3 != null) {
-      localIntent.putExtra("tag", paramString3);
-    }
-    localIntent.putExtra("needResult", true);
-    try
+    do
     {
-      VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, localIntent, true, paramInt2);
+      return;
+      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList != null) && (paramList != null)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("DoutuEmotionAdapter", 2, "addSmartPicList list:" + this.jdField_a_of_type_JavaUtilList + ", listAll:" + this.jdField_b_of_type_JavaUtilList);
+    return;
+    int j = paramList.size();
+    if (this.f > 0)
+    {
+      this.jdField_b_of_type_JavaUtilList.addAll(this.f, paramList);
+      this.f += paramList.size();
+    }
+    int k = this.jdField_a_of_type_JavaUtilList.size();
+    paramList = new ArrayList();
+    int i = 0;
+    while ((i < k + j) && (i < this.jdField_b_of_type_JavaUtilList.size()))
+    {
+      if ((!paramBoolean) || (!((DoutuData)this.jdField_b_of_type_JavaUtilList.get(i)).pic_md5.equalsIgnoreCase("abababababababababababab"))) {
+        paramList.add(this.jdField_b_of_type_JavaUtilList.get(i));
+      }
+      i += 1;
+    }
+    if (paramBoolean)
+    {
+      this.jdField_b_of_type_JavaUtilList.remove(this.jdField_b_of_type_ComTencentMobileqqDoutuDoutuData);
+      this.f = -1;
+    }
+    a(paramList);
+  }
+  
+  public void b()
+  {
+    int j;
+    int k;
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList != null))
+    {
+      j = this.jdField_a_of_type_JavaUtilList.size();
+      k = this.jdField_b_of_type_JavaUtilList.size();
+      if (j < k) {}
+    }
+    else
+    {
       return;
     }
-    catch (SecurityException paramActivity) {}
+    this.jdField_a_of_type_JavaUtilList.clear();
+    int i = 0;
+    while ((i < k) && (i < jdField_a_of_type_Int + j))
+    {
+      this.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_JavaUtilList.get(i));
+      i += 1;
+    }
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramInt >= this.jdField_a_of_type_JavaUtilList.size())
+    {
+      QLog.e("DoutuEmotionAdapter", 2, "get view position exception , position = " + paramInt + ",size = " + this.jdField_a_of_type_JavaUtilList.size());
+      return null;
+    }
+    DoutuData localDoutuData = (DoutuData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (localDoutuData == null)
+    {
+      QLog.e("DoutuEmotionAdapter", 1, "getView emoticon empty position = " + paramInt);
+      return null;
+    }
+    if ((paramView == null) || (paramView.getTag() == null))
+    {
+      paramViewGroup = new anoa(null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      paramView = new ViewGroup.LayoutParams(this.jdField_b_of_type_Int, this.c);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+      paramView = new RelativeLayout.LayoutParams(this.d, this.e);
+      paramView.addRule(13, -1);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView, paramView);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839140));
+      paramView = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 30.0F), (int)(this.jdField_a_of_type_Float * 30.0F));
+      paramView.addRule(13, -1);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar, paramView);
+      paramView = paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      paramView.setTag(paramViewGroup);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData = localDoutuData;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+      if (localDoutuData.thumb_down_url == null) {
+        break label631;
+      }
+    }
+    label644:
+    for (;;)
+    {
+      Object localObject2;
+      try
+      {
+        localObject1 = localDoutuData.thumb_down_url;
+        if (!((String)localObject1).startsWith("https")) {
+          break label644;
+        }
+        localObject1 = ((String)localObject1).replaceFirst("https", "http");
+        localObject1 = new URL((String)localObject1);
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        Object localObject1;
+        QLog.e("DoutuEmotionAdapter", 1, "getView url exception e = " + localMalformedURLException.getMessage());
+        localObject2 = null;
+        continue;
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+        localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+        localURLDrawableOptions.mPlayGifImage = true;
+        localURLDrawableOptions.mExtraInfo = localDoutuData;
+        localObject2 = URLDrawable.getDrawable((URL)localObject2, localURLDrawableOptions);
+        if (((URLDrawable)localObject2).getStatus() == 1) {
+          break label584;
+        }
+      }
+      if (localObject1 == null)
+      {
+        QLog.e("DoutuEmotionAdapter", 1, "getView url = null");
+        return null;
+        paramViewGroup = (anoa)paramView.getTag();
+        break;
+      }
+      ((URLDrawable)localObject2).setTag(localDoutuData);
+      ((URLDrawable)localObject2).addHeader("my_uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      if ((((URLDrawable)localObject2).getStatus() == 2) || (((URLDrawable)localObject2).getStatus() == 3)) {
+        ((URLDrawable)localObject2).restartDownload();
+      }
+      for (;;)
+      {
+        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
+        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener);
+        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setTag(paramViewGroup);
+        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setFocusable(true);
+        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setFocusableInTouchMode(true);
+        paramView.setOnClickListener(this);
+        return paramView;
+        label584:
+        paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+        }
+        this.jdField_a_of_type_JavaUtilHashMap.put(localDoutuData.pic_md5, localDoutuData.pic_down_url);
+      }
+      label631:
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable);
+      return paramView;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof anoa))) {}
+    for (paramView = (anoa)paramView;; paramView = null)
+    {
+      if (paramView == null) {}
+      do
+      {
+        DoutuData localDoutuData;
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              localDoutuData = paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData;
+            } while ((localDoutuData == null) || (localDoutuData.thumb_down_url == null));
+            paramView = (URLDrawable)paramView.jdField_a_of_type_ComTencentImageURLImageView.getDrawable();
+          } while (paramView == null);
+          paramView = paramView.getFileInLocal();
+        } while (paramView == null);
+        paramView = paramView.getPath();
+        Intent localIntent = new Intent();
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(paramView);
+        localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+        localIntent.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1044);
+        localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        localIntent.putExtra("uintype", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        localIntent.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+        localIntent.putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+        localIntent.putExtra("send_in_background", true);
+        localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
+        localIntent.putExtra("doutuBigFileSize", localDoutuData.pic_size);
+        localIntent.putExtra("doutuBigMd5", localDoutuData.pic_md5);
+        localIntent.putExtra("doutuThumbMD5", localDoutuData.thumb_md5);
+        localIntent.putExtra("doutuSupplierName", localDoutuData.suppliers_name);
+        localIntent.putExtra("PicContants.NEED_COMPRESS", false);
+        ThreadManager.post(new SendPhotoTask(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localIntent, null), 8, null, false);
+        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007FAB", "0X8007FAB", 0, 0, "", "", "", "");
+        this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData = localDoutuData;
+      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+      this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(80).sendToTarget();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anny
  * JD-Core Version:    0.7.0.1
  */

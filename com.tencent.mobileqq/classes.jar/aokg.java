@@ -1,73 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.view.View;
 
-class aokg
-  extends aodp
+public class aokg
 {
-  aokg(aoke paramaoke) {}
-  
-  protected void a(long paramLong)
+  public static void a(View paramView, Drawable paramDrawable)
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileProgressDirectDone sessionid error.return");
-    }
-    aokk localaokk;
-    do
+    if (Build.VERSION.SDK_INT >= 16)
     {
+      aokh.a(paramView, paramDrawable);
       return;
-      localaokk = this.a.a(paramLong);
-      if (localaokk == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileProgressDirectDone");
-        return;
-      }
-      localaokk.h();
-    } while (!localaokk.c());
-    this.a.c(paramLong);
+    }
+    paramView.setBackgroundDrawable(paramDrawable);
   }
   
-  protected void b(long paramLong)
+  public static void a(View paramView, Runnable paramRunnable)
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileRecvButSenderReplayTimeOut sessionid error.return");
-    }
-    aokk localaokk;
-    do
+    if (Build.VERSION.SDK_INT >= 16)
     {
+      aokh.a(paramView, paramRunnable);
       return;
-      localaokk = this.a.a(paramLong);
-      if (localaokk == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileRecvButSenderReplayTimeOut");
-        return;
-      }
-      localaokk.j();
-    } while (!localaokk.c());
-    this.a.c(paramLong);
-  }
-  
-  protected void c(long paramLong)
-  {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileQueryUpProgressTimeOut sessionid error.return");
     }
-    aokk localaokk;
-    do
-    {
-      return;
-      localaokk = this.a.a(paramLong);
-      if (localaokk == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileQueryUpProgressTimeOut");
-        return;
-      }
-      localaokk.l();
-    } while (!localaokk.c());
-    this.a.c(paramLong);
+    paramView.postDelayed(paramRunnable, 16L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aokg
  * JD-Core Version:    0.7.0.1
  */

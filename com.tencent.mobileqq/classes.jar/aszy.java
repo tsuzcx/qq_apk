@@ -1,45 +1,74 @@
 import android.os.Bundle;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_write.DelFeedRsp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.HashMap;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cmd0x8c1.oidb_0x8c1.RspBody;
+import tencent.im.oidb.cmd0x8c1.oidb_0x8c1.SelfCardInfo;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-final class aszy
-  implements aslt
+public class aszy
+  implements BusinessObserver
 {
-  aszy(atab paramatab, String paramString) {}
+  public aszy(NearbyJsInterface paramNearbyJsInterface, String paramString, boolean paramBoolean) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    boolean bool = true;
-    if (paramInt == 0) {
-      paramBundle = new ilive_feeds_write.DelFeedRsp();
+    paramInt = 1;
+    int i = 0;
+    Object localObject;
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localObject = new oidb_sso.OIDBSSOPkg();
+      }
     }
     for (;;)
     {
       try
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramInt = paramBundle.ret.get();
-        if (paramInt == 0)
+        paramBundle = (oidb_sso.OIDBSSOPkg)((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
+        if ((paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()) && (paramBundle.bytes_bodybuffer.get() != null))
         {
-          if (this.jdField_a_of_type_Atab != null) {
-            this.jdField_a_of_type_Atab.a(bool, this.jdField_a_of_type_JavaLangString);
+          localObject = new oidb_0x8c1.RspBody();
+          ((oidb_0x8c1.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
+          paramBundle = (oidb_0x8c1.SelfCardInfo)((oidb_0x8c1.RspBody)localObject).msg_card_info.get();
+          if (!paramBundle.int32_friend_flag.has()) {
+            break label257;
           }
-          return;
+          if (paramBundle.int32_friend_flag.get() != 1) {
+            continue;
+          }
+          break label264;
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.jdField_a_of_type_Wxu.a(paramBundle.bytes_xml_msg.get().toByteArray(), String.valueOf(paramBundle.uint64_uin.get()), 2, paramInt);
+          paramBundle = new atab(String.valueOf(paramBundle.uint64_uin.get()), paramBundle.int32_direction_flag.get());
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(this.jdField_a_of_type_JavaLangString), paramBundle);
+          if (this.jdField_a_of_type_Boolean) {
+            NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface, paramBundle);
+          }
         }
-        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, ret=" + paramInt + ",msg=" + paramBundle.err_msg.get().toStringUtf8());
+        return;
+        paramInt = 0;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      catch (Exception paramBundle)
       {
-        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, e=" + paramArrayOfByte.toString());
-        continue;
+        paramBundle.printStackTrace();
+        return;
       }
-      bool = false;
+      paramInt = 1001;
       continue;
-      QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
+      label257:
+      paramInt = 1001;
+      continue;
+      label264:
+      if (paramInt != 0) {
+        paramInt = i;
+      }
     }
   }
 }

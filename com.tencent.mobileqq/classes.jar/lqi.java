@@ -1,22 +1,25 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.AVActivity.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class lqi
-  implements MessageQueue.IdleHandler
+class lqi
+  extends Handler
 {
-  public lqi(AVActivity paramAVActivity) {}
+  WeakReference<lqh> a;
   
-  public boolean queueIdle()
+  lqi(Looper paramLooper, lqh paramlqh)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.b, 1, "call IdleHandler mPeerUin:=" + this.a.c);
+    super(paramLooper);
+    this.a = new WeakReference(paramlqh);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    lqh locallqh = (lqh)this.a.get();
+    if (locallqh != null) {
+      locallqh.a(paramMessage);
     }
-    ThreadManager.getSubThreadHandler().postDelayed(new AVActivity.1.1(this), 2000L);
-    return false;
   }
 }
 

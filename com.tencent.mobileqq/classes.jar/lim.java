@@ -1,26 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.random.RandomController;
+import com.tencent.ttpic.util.Coffee;
+import com.tencent.ttpic.util.DecryptListener;
 
-public class lim
-  implements DialogInterface.OnClickListener
+final class lim
+  implements DecryptListener
 {
-  public lim(RandomController paramRandomController) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public byte[] decrypt(byte[] paramArrayOfByte)
   {
-    if (RandomController.a(this.a) == 1) {
-      awqx.b(null, "CliOper", "", "", "0X80053B5", "0X80053B5", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      this.a.b();
-      RandomController.d(this.a, false);
-      return;
-      if (RandomController.a(this.a) == 2) {
-        awqx.b(null, "CliOper", "", "", "0X80053C1", "0X80053C1", 0, 0, "", "", "", "");
-      }
-    }
+    return Coffee.drink(paramArrayOfByte, Coffee.getDefaultSign());
   }
 }
 

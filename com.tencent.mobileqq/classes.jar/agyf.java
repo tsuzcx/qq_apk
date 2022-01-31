@@ -1,29 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TopayManager.5.1;
 
-class agyf
-  implements View.OnClickListener
+public class agyf
+  implements DialogInterface.OnClickListener
 {
-  agyf(agxq paramagxq) {}
+  public agyf(TopayManager.5.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (akgo.a().a() == 4) {
-      awqx.b(agxq.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, akgn.b(), akgo.b(), akgo.a(), "0");
-    }
-    for (;;)
+    switch (paramInt)
     {
-      this.a.a(12, 0);
-      this.a.a(-1, null);
+    default: 
       return;
-      awqx.b(agxq.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, akgn.b(), akgo.b(), akgo.a(), "0");
     }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agyf
  * JD-Core Version:    0.7.0.1
  */

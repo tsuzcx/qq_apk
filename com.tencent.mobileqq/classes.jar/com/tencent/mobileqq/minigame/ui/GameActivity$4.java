@@ -10,7 +10,7 @@ class GameActivity$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GameActivity.access$200(this.this$0);
+    this.this$0.performMiniGameClose();
   }
 }
 

@@ -63,6 +63,7 @@ public abstract class AppRuntime
   public static final int VERIFYDEVLOCK_MANAGER = 7;
   public static final int WTLOGIN_MANAGER = 1;
   protected static final String tag = "mqq";
+  private int batteryCapacity;
   private ConcurrentHashMap<String, String> businessRootFilePaths = new ConcurrentHashMap();
   private CountDownLatch countDownLatch;
   public boolean isBackground_Pause;
@@ -86,6 +87,7 @@ public abstract class AppRuntime
   private final List<Reference<BusinessObserver>> observers = new Vector();
   private AppRuntime.Status onlineStatus = AppRuntime.Status.offline;
   public AppRuntime parentRuntime;
+  private int powerConnect = -1;
   ConcurrentHashMap<String, AppRuntime> subRuntimeMap = new ConcurrentHashMap();
   private long uExtOnlineStatus = -1L;
   byte[] uinSign = null;
@@ -248,6 +250,43 @@ public abstract class AppRuntime
     return MobileQQ.sMobileQQ;
   }
   
+  /* Error */
+  public int getBatteryCapacity()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
+    //   6: ifnull +15 -> 21
+    //   9: aload_0
+    //   10: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
+    //   13: invokevirtual 394	mqq/app/AppRuntime:getBatteryCapacity	()I
+    //   16: istore_1
+    //   17: aload_0
+    //   18: monitorexit
+    //   19: iload_1
+    //   20: ireturn
+    //   21: aload_0
+    //   22: getfield 396	mqq/app/AppRuntime:batteryCapacity	I
+    //   25: istore_1
+    //   26: goto -9 -> 17
+    //   29: astore_2
+    //   30: aload_0
+    //   31: monitorexit
+    //   32: aload_2
+    //   33: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	34	0	this	AppRuntime
+    //   16	10	1	i	int
+    //   29	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	17	29	finally
+    //   21	26	29	finally
+  }
+  
   public Intent getDevLockIntent()
   {
     if (this.parentRuntime != null) {
@@ -263,18 +302,18 @@ public abstract class AppRuntime
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 276	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
+    //   3: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
     //   6: ifnull +15 -> 21
     //   9: aload_0
-    //   10: getfield 276	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
-    //   13: invokevirtual 397	mqq/app/AppRuntime:getExtOnlineStatus	()J
+    //   10: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
+    //   13: invokevirtual 406	mqq/app/AppRuntime:getExtOnlineStatus	()J
     //   16: lstore_1
     //   17: aload_0
     //   18: monitorexit
     //   19: lload_1
     //   20: lreturn
     //   21: aload_0
-    //   22: getfield 106	mqq/app/AppRuntime:uExtOnlineStatus	J
+    //   22: getfield 108	mqq/app/AppRuntime:uExtOnlineStatus	J
     //   25: lstore_1
     //   26: goto -9 -> 17
     //   29: astore_3
@@ -386,18 +425,18 @@ public abstract class AppRuntime
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 276	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
+    //   3: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
     //   6: ifnull +15 -> 21
     //   9: aload_0
-    //   10: getfield 276	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
-    //   13: invokevirtual 447	mqq/app/AppRuntime:getOnlineStatus	()Lmqq/app/AppRuntime$Status;
+    //   10: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
+    //   13: invokevirtual 456	mqq/app/AppRuntime:getOnlineStatus	()Lmqq/app/AppRuntime$Status;
     //   16: astore_1
     //   17: aload_0
     //   18: monitorexit
     //   19: aload_1
     //   20: areturn
     //   21: aload_0
-    //   22: getfield 104	mqq/app/AppRuntime:onlineStatus	Lmqq/app/AppRuntime$Status;
+    //   22: getfield 106	mqq/app/AppRuntime:onlineStatus	Lmqq/app/AppRuntime$Status;
     //   25: astore_1
     //   26: goto -9 -> 17
     //   29: astore_1
@@ -410,6 +449,43 @@ public abstract class AppRuntime
     //   0	34	0	this	AppRuntime
     //   16	10	1	localStatus	AppRuntime.Status
     //   29	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	17	29	finally
+    //   21	26	29	finally
+  }
+  
+  /* Error */
+  public int getPowerConnect()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
+    //   6: ifnull +15 -> 21
+    //   9: aload_0
+    //   10: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
+    //   13: invokevirtual 459	mqq/app/AppRuntime:getPowerConnect	()I
+    //   16: istore_1
+    //   17: aload_0
+    //   18: monitorexit
+    //   19: iload_1
+    //   20: ireturn
+    //   21: aload_0
+    //   22: getfield 110	mqq/app/AppRuntime:powerConnect	I
+    //   25: istore_1
+    //   26: goto -9 -> 17
+    //   29: astore_2
+    //   30: aload_0
+    //   31: monitorexit
+    //   32: aload_2
+    //   33: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	34	0	this	AppRuntime
+    //   16	10	1	i	int
+    //   29	4	2	localObject	Object
     // Exception table:
     //   from	to	target	type
     //   2	17	29	finally
@@ -870,6 +946,11 @@ public abstract class AppRuntime
       localNewIntent.putExtra("kick", paramBoolean1);
       localNewIntent.putExtra("K_SEQ", paramLong1);
       localNewIntent.putExtra("isUserSet", paramBoolean2);
+      if ((paramStatus == AppRuntime.Status.online) && (paramLong2 == 1000L))
+      {
+        localNewIntent.putExtra("batteryCapacity", getBatteryCapacity());
+        localNewIntent.putExtra("powerConnect", getPowerConnect());
+      }
       localNewIntent.runNow = true;
       startServlet(localNewIntent);
       setOnlineStatus(paramStatus);
@@ -919,6 +1000,19 @@ public abstract class AppRuntime
     if (this.parentRuntime != null) {
       this.parentRuntime.setAutoLogin(paramBoolean);
     }
+  }
+  
+  public void setBatteryCapacity(int paramInt)
+  {
+    try
+    {
+      if (this.parentRuntime != null) {
+        this.parentRuntime.setBatteryCapacity(paramInt);
+      }
+      this.batteryCapacity = paramInt;
+      return;
+    }
+    finally {}
   }
   
   public void setCmdCallbacker()
@@ -991,6 +1085,19 @@ public abstract class AppRuntime
         this.parentRuntime.setOnlineStatus(paramStatus);
       }
       this.onlineStatus = paramStatus;
+      return;
+    }
+    finally {}
+  }
+  
+  public void setPowerConnect(int paramInt)
+  {
+    try
+    {
+      if (this.parentRuntime != null) {
+        this.parentRuntime.setPowerConnect(paramInt);
+      }
+      this.powerConnect = paramInt;
       return;
     }
     finally {}
@@ -1197,6 +1304,21 @@ public abstract class AppRuntime
       return;
     }
     this.observers.remove(new WeakReference(paramBusinessObserver));
+  }
+  
+  public void updateBatteryStatus(int paramInt1, int paramInt2)
+  {
+    NewIntent localNewIntent = new NewIntent(getApplication(), BuiltInServlet.class);
+    localNewIntent.putExtra("action", 2214);
+    localNewIntent.putExtra("batteryCapacity", paramInt1);
+    localNewIntent.putExtra("powerConnect", paramInt2);
+    localNewIntent.runNow = true;
+    startServlet(localNewIntent);
+    setBatteryCapacity(paramInt1);
+    setPowerConnect(paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d("mqq", 2, new Object[] { "updateBatteryStatus ", Integer.valueOf(paramInt1), " powerStatus:", Integer.valueOf(paramInt2) });
+    }
   }
   
   public void updateSubAccountLogin(String paramString, boolean paramBoolean)

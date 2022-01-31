@@ -6,9 +6,9 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import aphp;
-import bfpr;
-import bfpy;
+import aqbc;
+import bgxy;
+import bgyf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -44,30 +44,23 @@ public class ShareUtils
     paramString = new Intent();
     paramString.putExtras(localBundle);
     MiniAppController.getInstance().setActivityResultListener(new ShareUtils.1(paramActivity));
-    aphp.a(paramActivity, paramString, 1010);
+    aqbc.a(paramActivity, paramString, 1010);
   }
   
-  public static void startSharePicToQzone(Activity paramActivity, String paramString1, String paramString2, ApkgInfo paramApkgInfo)
+  public static void startSharePicToQzone(Activity paramActivity, String paramString, ApkgInfo paramApkgInfo)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 2, "startSharePicToQzone. content=" + paramString1 + ",localPicPath=" + paramString2);
+      QLog.d("AppBrandRuntime", 2, "startSharePicToQzone. localPicPath=" + paramString);
     }
-    if (TextUtils.isEmpty(paramString1)) {
-      paramString1 = paramApkgInfo.appConfig.config.desc;
-    }
-    for (;;)
-    {
-      bfpy localbfpy = bfpy.a();
-      localbfpy.a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      bfpr.a(paramActivity, localbfpy, paramString2, paramApkgInfo.apkgName, paramString1, -1);
-      paramActivity = new Bundle();
-      paramActivity.putString("key_mini_report_event_action_type", "user_click");
-      paramActivity.putString("key_mini_report_event_sub_action_type", "custom_button");
-      paramActivity.putString("key_mini_report_event_reserves", "share_QZ");
-      paramActivity.putString("key_mini_report_event_reserves2", "success");
-      QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_report_event", paramActivity, null);
-      return;
-    }
+    bgyf localbgyf = bgyf.a();
+    localbgyf.a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    bgxy.a(paramActivity, localbgyf, paramString, paramApkgInfo.apkgName, "", -1);
+    paramActivity = new Bundle();
+    paramActivity.putString("key_mini_report_event_action_type", "user_click");
+    paramActivity.putString("key_mini_report_event_sub_action_type", "custom_button");
+    paramActivity.putString("key_mini_report_event_reserves", "share_QZ");
+    paramActivity.putString("key_mini_report_event_reserves2", "success");
+    QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_report_event", paramActivity, null);
   }
   
   public static void startSharePicToWeChat(Activity paramActivity, String paramString, boolean paramBoolean)

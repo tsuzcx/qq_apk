@@ -1,19 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
 
 public class rvk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public final int a;
-  public long a;
-  public BaseArticleInfo a;
+  public rvk(TickerView paramTickerView) {}
   
-  public rvk(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo + "_duration : " + this.jdField_a_of_type_Long;
+    TickerView.a(this.a).a(paramValueAnimator.getAnimatedFraction());
+    TickerView.a(this.a);
+    this.a.invalidate();
   }
 }
 

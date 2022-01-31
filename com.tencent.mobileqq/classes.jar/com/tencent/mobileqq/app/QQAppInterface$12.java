@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import baan;
+import bajk;
 
 class QQAppInterface$12
   implements Runnable
 {
-  public void run()
-  {
-    baan.a(2131230758, false);
-  }
+  QQAppInterface$12(QQAppInterface paramQQAppInterface) {}
+  
+  public void run() {}
 }
 
 

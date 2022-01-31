@@ -1,34 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
-class aogs
-  implements aofo
+public class aogs
+  implements DialogInterface.OnClickListener
 {
-  aogs(aogr paramaogr, String paramString) {}
+  public aogs(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogq.jdField_a_of_type_JavaLangString + " start upload Discfile success");
-      }
-      aogq.a(this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogq).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogv.a(this.jdField_a_of_type_JavaLangString, aogq.a(this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogq));
-    }
-    for (;;)
-    {
-      aofz.a(this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogq.jdField_a_of_type_Aofz).a().a(aogq.a(this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogq));
-      return;
-      QLog.e("FileMultiMsg", 1, this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogq.jdField_a_of_type_JavaLangString + " sendDiscFile faild");
-      this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogv.a(aofz.a(this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogq.jdField_a_of_type_Long, false), true);
-    }
+    paramDialogInterface.dismiss();
+    ExtendFriendEditFragment.a(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aogs
  * JD-Core Version:    0.7.0.1
  */

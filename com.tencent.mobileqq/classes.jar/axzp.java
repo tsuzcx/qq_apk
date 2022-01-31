@@ -1,17 +1,69 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
 public class axzp
-  extends axxu
+  extends axun
 {
-  protected void a(axtb paramaxtb)
+  public int k;
+  
+  public axzp()
   {
-    paramaxtb.a = "LongConn.SharePic2Wechat";
+    this.a = "type";
   }
   
-  protected void a(cmd0x352.TryUpImgReq paramTryUpImgReq)
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    paramTryUpImgReq.uint32_bu_type.set(96);
+    return null;
+  }
+  
+  public String a()
+  {
+    return "type";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.k = paramObjectInput.readInt();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.k);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "type");
+    paramXmlSerializer.text(this.k + "");
+    paramXmlSerializer.endTag(null, "type");
+  }
+  
+  public boolean a(axwe paramaxwe)
+  {
+    if (paramaxwe == null) {
+      return false;
+    }
+    try
+    {
+      this.k = Integer.valueOf(axas.a(axuy.a(paramaxwe), false)).intValue();
+      return true;
+    }
+    catch (Exception paramaxwe)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("StructMsgItemType", 2, paramaxwe, new Object[0]);
+        }
+      }
+    }
   }
 }
 

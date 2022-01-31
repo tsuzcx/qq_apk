@@ -17,7 +17,7 @@ final class MiniAppUtils$10
     String str1;
     if ((this.val$appConfig != null) && (this.val$appConfig.config != null))
     {
-      bool = MiniAppUtils.access$100(this.val$appConfig);
+      bool = MiniAppUtils.isFromPullDownEntry(this.val$appConfig);
       if (!bool) {
         break label121;
       }

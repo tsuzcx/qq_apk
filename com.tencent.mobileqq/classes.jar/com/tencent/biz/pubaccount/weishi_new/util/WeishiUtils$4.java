@@ -8,11 +8,11 @@ import android.text.TextUtils;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import rcv;
-import rcw;
-import sai;
-import sam;
-import saq;
+import rpj;
+import rpk;
+import sne;
+import sni;
+import snm;
 
 public final class WeishiUtils$4
   implements Runnable
@@ -37,21 +37,21 @@ public final class WeishiUtils$4
     label279:
     for (Object localObject1 = ((stImgReplacement)localstSimpleMetaFeed.imgReplacements.get(0)).img;; localObject1 = "")
     {
-      Object localObject2 = sam.a((String)localObject1);
+      Object localObject2 = sni.a((String)localObject1);
       if (localObject2 == null)
       {
         localObject2 = ((stMetaUgcImage)localstSimpleMetaFeed.images.get(0)).url;
-        localObject1 = sam.a((String)localObject2);
-        sai.b("PreloadCoverImgLog", "预加载默认的图片格式： " + (String)localObject2);
+        localObject1 = sni.a((String)localObject2);
+        sne.b("PreloadCoverImgLog", "预加载默认的图片格式： " + (String)localObject2);
       }
       for (;;)
       {
-        localObject2 = new rcw();
-        ((rcw)localObject2).a = ((URL)localObject1);
-        ((rcw)localObject2).b = true;
-        rcv.a().a((rcw)localObject2, new saq(this));
+        localObject2 = new rpk();
+        ((rpk)localObject2).a = ((URL)localObject1);
+        ((rpk)localObject2).b = true;
+        rpj.a().a((rpk)localObject2, new snm(this));
         break;
-        sai.b("PreloadCoverImgLog", "预加载图片webp： " + (String)localObject1);
+        sne.b("PreloadCoverImgLog", "预加载图片webp： " + (String)localObject1);
         localObject1 = localObject2;
       }
       return;

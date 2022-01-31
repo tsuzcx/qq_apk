@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import ausk;
-import ausq;
+import avrt;
+import avrz;
 
 public class CapturePtvTemplateManager$6
   implements Runnable
 {
-  public CapturePtvTemplateManager$6(ausk paramausk) {}
+  public CapturePtvTemplateManager$6(avrt paramavrt) {}
   
   public void run()
   {
-    ausk.a(this.this$0);
+    avrt.a(this.this$0);
     if (this.this$0.a != null) {
       this.this$0.a.a();
     }

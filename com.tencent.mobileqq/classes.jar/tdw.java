@@ -1,15 +1,25 @@
-class tdw
-  extends tcw
+import com.tencent.biz.qqstory.model.filter.FilterItem;
+import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
+
+public class tdw
 {
-  tdw(tdo paramtdo, String paramString1, String paramString2, boolean paramBoolean, tew paramtew)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public boolean b()
+  public FilterItem a()
   {
-    this.jdField_a_of_type_Tew.c = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    try
+    {
+      FilterItem localFilterItem = new FilterItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c, null);
+      return localFilterItem;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      throw new FilterItem.FilterItemIllegalException("create FilterItem instance failed", localIllegalArgumentException);
+    }
   }
 }
 

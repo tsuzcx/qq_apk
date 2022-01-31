@@ -1,6 +1,13 @@
-public abstract interface atab
+public class atab
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public int a;
+  public String a;
+  
+  public atab(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

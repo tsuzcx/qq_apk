@@ -1,23 +1,16 @@
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView;
 
-class aqis
-  implements EIPCResultCallback
+public class aqis
+  implements xem
 {
-  aqis(aqir paramaqir) {}
+  public aqis(NowLiveFragment paramNowLiveFragment) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a()
   {
-    aqip.a(paramEIPCResult, "action");
-    switch (paramEIPCResult.code)
-    {
-    default: 
-      return;
-    case -102: 
-      aqir.a(this.a).a(2, paramEIPCResult.data);
-      return;
-    }
-    aqir.a(this.a).a(1, paramEIPCResult.data);
+    this.a.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment$NowLiveWebView.refresh();
+    this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
   }
 }
 

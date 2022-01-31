@@ -1,60 +1,38 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
 
-public class afil
-  extends Drawable
+class afil
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<Drawable> jdField_a_of_type_JavaUtilList;
-  private int b;
+  public int a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public PressEffectImageView a;
+  public View b;
   
-  public afil(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
+  afil(afij paramafij) {}
   
-  public void a(List<Drawable> paramList, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = (paramInt * 2);
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    String str = this.jdField_a_of_type_Afij.a(this.jdField_a_of_type_Int);
+    if (paramView == this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView)
     {
-      Drawable localDrawable = (Drawable)localIterator.next();
-      localDrawable = ((baov)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).a.a(localDrawable, this.jdField_a_of_type_Int);
-      if (localDrawable != null)
-      {
-        localDrawable.setBounds(0, 0, this.b, this.b);
-        localDrawable.draw(paramCanvas);
-        paramCanvas.translate(this.jdField_a_of_type_Int, 0.0F);
-      }
+      afim.a().b(afij.a(this.jdField_a_of_type_Afij), str);
+      this.jdField_a_of_type_Afij.a();
     }
+    while ((paramView != this.jdField_a_of_type_AndroidViewView) || (afij.a(this.jdField_a_of_type_Afij) == null)) {
+      return;
+    }
+    afij.a(this.jdField_a_of_type_Afij).a(str);
   }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afil
  * JD-Core Version:    0.7.0.1
  */

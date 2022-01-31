@@ -1,15 +1,14 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.MessageForFile;
+import android.graphics.Bitmap;
+import java.lang.ref.WeakReference;
 
 class addy
-  implements bbrx
 {
-  addy(addx paramaddx, MessageForFile paramMessageForFile, Context paramContext) {}
+  int jdField_a_of_type_Int;
+  WeakReference<Bitmap> jdField_a_of_type_JavaLangRefWeakReference;
+  boolean jdField_a_of_type_Boolean;
+  int b;
   
-  public void a(int paramInt)
-  {
-    apck.a(this.jdField_a_of_type_Addx.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
-  }
+  addy(addx paramaddx) {}
 }
 
 

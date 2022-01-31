@@ -1,44 +1,46 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import java.net.URL;
 
-public class snw
-  implements TextView.OnEditorActionListener
+class snw
+  implements spd
 {
-  public snw(StoryInputBarView paramStoryInputBarView) {}
+  snw(snq paramsnq, boolean paramBoolean, long paramLong, ImageProgressCircle paramImageProgressCircle) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(URL paramURL, int paramInt)
   {
-    if (paramInt == 4)
-    {
-      paramTextView = paramTextView.getText().toString();
-      if (paramTextView.length() <= 0) {
-        break label140;
-      }
-      this.a.setKeyBoardState(false);
-      if (this.a.jdField_a_of_type_Smz != null) {
-        this.a.jdField_a_of_type_Smz.a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      }
-      this.a.c();
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-      if (StoryInputBarView.a(this.a) != null) {
-        StoryInputBarView.a(this.a).a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory:StoryInputBarView", 2, "onEditorAction vaule=" + paramTextView);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadProgressed");
     }
-    return false;
-    label140:
-    return true;
+    snq.a(this.jdField_a_of_type_Snq, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle, paramInt);
+  }
+  
+  public void a(URL paramURL, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadFailed");
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      PublicAccountImageCollectionPreloadManager.a().b(false, this.jdField_a_of_type_Long);
+    }
+    snq.a(this.jdField_a_of_type_Snq, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+  }
+  
+  public void a(URL paramURL, rpg paramrpg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadSuccessed");
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      PublicAccountImageCollectionPreloadManager.a().b(true, this.jdField_a_of_type_Long);
+    }
+    snq.a(this.jdField_a_of_type_Snq, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     snw
  * JD-Core Version:    0.7.0.1
  */

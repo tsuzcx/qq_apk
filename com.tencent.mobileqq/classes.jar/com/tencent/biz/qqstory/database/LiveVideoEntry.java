@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.database;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.LiveVideoDes;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class LiveVideoEntry
-  extends atmo
+  extends aukm
 {
   public String coverUrl;
   public int fromId;
-  @atoc
+  @auma
   public int roomId;
   public long startTime;
   public String unionId;

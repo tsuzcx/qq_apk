@@ -1,92 +1,52 @@
-import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import java.util.Comparator;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahst
-  implements Comparator<TroopMemberInfo>
+  implements MediaPlayer.OnPreparedListener
 {
-  private ahst(TroopAddFrdsInnerFrame paramTroopAddFrdsInnerFrame) {}
+  public ahst(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    int j = 0;
-    int k = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("EditLocalVideoActivity", 2, "onPrepared, duration:" + paramMediaPlayer.getDuration());
+    }
+    EditLocalVideoActivity.a(this.a).removeMessages(9999);
+    EditLocalVideoActivity.h(this.a);
+    EditLocalVideoActivity.a(this.a).a(EditLocalVideoActivity.a(this.a), EditLocalVideoActivity.a(this.a));
+    EditLocalVideoActivity.a(this.a).a(EditLocalVideoActivity.c(this.a), EditLocalVideoActivity.d(this.a));
+    EditLocalVideoActivity.a(this.a).a(paramMediaPlayer.getDuration());
     int i;
-    if (this.a.f == TroopAddFrdsInnerFrame.e)
+    int j;
+    if (!EditLocalVideoActivity.a(this.a).a())
     {
-      i = paramTroopMemberInfo1.addState - paramTroopMemberInfo2.addState;
-      if (i == 0) {
-        if (paramTroopMemberInfo1.commonFrdCnt == -2147483648)
-        {
-          i = 0;
-          if (paramTroopMemberInfo2.commonFrdCnt != -2147483648) {
-            break label189;
-          }
-          j = 0;
-          label56:
-          if ((i != 0) || (j != 0) || (TroopAddFrdsInnerFrame.a(this.a) == null)) {
-            break label257;
-          }
-          if ((!TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo1.memberuin)) && (!TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo1.memberuin))) {
-            break label252;
-          }
-          i = 1;
-          label111:
-          if (!TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo2.memberuin))
-          {
-            j = k;
-            if (!TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo2.memberuin)) {}
-          }
-          else
-          {
-            j = 1;
-          }
-          j -= i;
-          i = j;
-          if (j == 0) {
-            i = Long.signum(paramTroopMemberInfo2.last_active_time - paramTroopMemberInfo1.last_active_time);
-          }
-        }
+      EditLocalVideoActivity.d(this.a, paramMediaPlayer.getDuration());
+      if ((bhnq.a(EditLocalVideoActivity.b(this.a)) / EditLocalVideoActivity.a(this.a).getDuration() * 15000L > this.a.a(EditLocalVideoActivity.a())) && (QLog.isColorLevel())) {
+        QLog.d("EditLocalVideoActivity", 2, "prepared, there is not enough space on sdcard");
+      }
+      i = paramMediaPlayer.getVideoWidth();
+      j = paramMediaPlayer.getVideoHeight();
+      if ((i <= 0) || (j <= 0)) {
+        Toast.makeText(this.a.getApplicationContext(), ajyc.a(2131703638), 1).show();
       }
     }
-    for (;;)
+    else
     {
-      return i;
-      i = paramTroopMemberInfo1.commonFrdCnt;
-      break;
-      label189:
-      j = paramTroopMemberInfo2.commonFrdCnt;
-      break label56;
-      return i;
-      i = j;
-      if (this.a.f == TroopAddFrdsInnerFrame.d)
-      {
-        i = j;
-        if (paramTroopMemberInfo1 != null)
-        {
-          i = j;
-          if (paramTroopMemberInfo1.displayedNamePinyinFirst != null)
-          {
-            i = j;
-            if (paramTroopMemberInfo2 != null)
-            {
-              return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
-              label252:
-              i = 0;
-              break label111;
-              label257:
-              i = j - i;
-            }
-          }
-        }
-      }
+      return;
     }
+    EditLocalVideoActivity.e(this.a, i);
+    EditLocalVideoActivity.f(this.a, j);
+    EditLocalVideoActivity.a(this.a, i, j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahst
  * JD-Core Version:    0.7.0.1
  */

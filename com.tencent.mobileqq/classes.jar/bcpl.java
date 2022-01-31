@@ -1,16 +1,14 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.os.Bundle;
 
-class bcpl
+public abstract interface bcpl
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public abstract void a(Bundle paramBundle);
   
-  bcpl(bcpk parambcpk) {}
+  public abstract void b(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcpl
  * JD-Core Version:    0.7.0.1
  */

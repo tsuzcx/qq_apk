@@ -1,108 +1,148 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ListAdapter;
-import android.widget.TextView;
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.image.JobQueue;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.SingleLineTextView;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.text.QQText.SmallEmojiSpan.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aykr
-  extends begr
-  implements View.OnClickListener
+  extends aykp
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  aynk jdField_a_of_type_Aynk = (aynk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(32);
-  aynt jdField_a_of_type_Aynt;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-  XListView jdField_a_of_type_ComTencentWidgetXListView;
+  boolean b;
+  int d;
+  public int e;
+  public int f;
   
-  public aykr(Activity paramActivity, aynt paramaynt)
+  public aykr(char[] paramArrayOfChar, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Aynt = paramaynt;
+    super(-1, paramInt, 2);
+    this.d = paramInt;
+    this.b = paramBoolean1;
+    this.a = paramBoolean2;
+    paramArrayOfChar = anqu.a(paramArrayOfChar);
+    if ((paramArrayOfChar != null) && (paramArrayOfChar.length == 2))
+    {
+      this.e = paramArrayOfChar[0];
+      this.f = paramArrayOfChar[1];
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQText", 2, "mEpId:" + this.e + ",mEId:" + this.f);
+    }
   }
   
-  public void onClick(View paramView)
+  private void a()
   {
-    if (paramView.getTag() != null)
+    QQText.SmallEmojiSpan.1 local1 = new QQText.SmallEmojiSpan.1(this);
+    try
     {
-      paramView = (aykt)paramView.getTag();
-      this.jdField_a_of_type_Aynk.a(paramView.a);
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_create_new", "", "create_page", "clk_fuyong", 0, 0, "" + this.jdField_a_of_type_Aynk.a().d, "" + this.jdField_a_of_type_Int, "", "");
-      this.jdField_a_of_type_Aynk.a();
-    }
-    do
-    {
-      return;
-      if (2131299272 == paramView.getId())
-      {
-        if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 1500L)
-        {
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          this.jdField_a_of_type_Aynk.a((BaseActivity)this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aynt);
-        }
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_create_new", "", "create_page", "clk_fuyong_new", 0, 0, "" + this.jdField_a_of_type_Aynk.a().d, "" + this.jdField_a_of_type_Int, "", "");
-        return;
+      anvs localanvs = (anvs)((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(ayki.d())).getManager(43);
+      if (localanvs != null) {
+        localanvs.a.execute(local1, 128, true);
       }
-    } while (2131298711 != paramView.getId());
-    this.jdField_a_of_type_Aynk.a();
-    dismiss();
-  }
-  
-  public void show()
-  {
-    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131494748, null);
-    if ("1103".equals(ThemeUtil.curThemeId)) {
-      localLinearLayout.setBackgroundColor(-15921907);
-    }
-    a(localLinearLayout);
-    Object localObject = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localLinearLayout.findViewById(2131309972));
-    localObject = (aynk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(32);
-    if ((((aynk)localObject).a == null) || (((aynk)localObject).a.size() == 0))
-    {
-      dismiss();
-      ((aynk)localObject).a();
-      this.jdField_a_of_type_AndroidAppActivity.finish();
       return;
     }
-    localObject = new ayks(this, ((aynk)localObject).a);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter((ListAdapter)localObject);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setMaxHeight(aciy.a(200.0F, getContext().getResources()));
-    this.jdField_a_of_type_AndroidViewView = localLinearLayout.findViewById(2131299272);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    int i = this.jdField_a_of_type_Aynk.a.size();
-    localObject = String.format(ajjy.a(2131641780), new Object[] { Integer.valueOf(i) });
-    ((TextView)localLinearLayout.findViewById(2131309465)).setText((CharSequence)localObject);
-    localObject = this.jdField_a_of_type_Aynk.a();
-    this.jdField_a_of_type_Int = (((aynu)localObject).a.size() - 1);
-    String str = String.format(ajjy.a(2131641786), new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131310041)).setText(str);
-    ((SingleLineTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131312042)).setText(((aynu)localObject).c);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localLinearLayout.findViewById(2131298711));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    super.show();
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_create_new", "", "create_page", "exp_fuyong", 0, 0, "" + ((aynu)localObject).d, "" + this.jdField_a_of_type_Int, "", "");
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Object localObject = null;
+      }
+    }
+  }
+  
+  public int a()
+  {
+    return this.e;
+  }
+  
+  public String a()
+  {
+    String str = ayki.c;
+    Emoticon localEmoticon = null;
+    askd localaskd = anzm.a();
+    if (localaskd != null) {
+      localEmoticon = localaskd.a(Integer.toString(this.e), Integer.toString(this.f));
+    }
+    if (localEmoticon != null) {
+      str = localEmoticon.character;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQText", 2, "descp:" + str);
+    }
+    return str;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("tag.vasFont.enlarge", 2, "SmallEmojiSpan setSize size: " + paramInt);
+    }
+    this.d = paramInt;
+    this.b = paramInt;
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage)
+  {
+    if ((!this.a) && (paramEmoticonPackage != null) && (paramEmoticonPackage.isAPNG == 2))
+    {
+      this.a = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQText", 2, "updateApngFlag mIsAPNG = true");
+      }
+    }
+  }
+  
+  protected Drawable b()
+  {
+    Object localObject = new aocb(ayki.d());
+    Emoticon localEmoticon = new Emoticon();
+    localEmoticon.eId = String.valueOf(this.f);
+    localEmoticon.epId = String.valueOf(this.e);
+    if (!this.b)
+    {
+      localEmoticon.jobType = 3;
+      ((aocb)localObject).a = localEmoticon;
+      localObject = ((aocb)localObject).a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density);
+    }
+    for (;;)
+    {
+      if (localObject != null) {
+        ((Drawable)localObject).setBounds(0, 0, this.d, this.d);
+      }
+      return localObject;
+      localEmoticon.jobType = 3;
+      ((aocb)localObject).a = localEmoticon;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQText", 2, "SmallEmojiSpan doGetDrawable: epid = " + this.e + " eid = " + this.f + " isAPNG = " + this.a);
+      }
+      ((aocb)localObject).b = this.a;
+      localObject = ((aocb)localObject).b(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density);
+      a();
+    }
+  }
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    if (paramFontMetricsInt != null)
+    {
+      paramFontMetricsInt.ascent = (-this.d);
+      paramFontMetricsInt.descent = 0;
+      paramFontMetricsInt.top = paramFontMetricsInt.ascent;
+      paramFontMetricsInt.bottom = 0;
+    }
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aykr
  * JD-Core Version:    0.7.0.1
  */

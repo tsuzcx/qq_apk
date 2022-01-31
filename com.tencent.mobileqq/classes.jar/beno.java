@@ -1,16 +1,10 @@
-import android.view.View;
-
 public abstract interface beno
 {
-  public abstract void a_(View paramView);
-  
-  public abstract void e();
-  
-  public abstract void e(boolean paramBoolean);
+  public abstract void onDismiss();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beno
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,15 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.mobileqq.gamecenter.view.QQGameIndicator;
-
 public class apze
-  extends RadioButton
 {
-  public apze(QQGameIndicator paramQQGameIndicator, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public long b = 1000L;
+  public String b;
   
-  public boolean performClick()
+  public apze()
   {
-    return true;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 1000L;
   }
 }
 

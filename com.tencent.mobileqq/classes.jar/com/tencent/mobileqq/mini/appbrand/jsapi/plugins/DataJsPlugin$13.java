@@ -18,41 +18,59 @@ class DataJsPlugin$13
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
+    Object localObject;
     if ((paramBoolean) && (paramJSONObject != null))
     {
       QLog.d("[mini] DataJsPlugin", 1, "getSetting-getAuthList suc, ret:" + paramJSONObject.toString());
-      Object localObject = paramJSONObject.opt("authList");
-      if (!(localObject instanceof byte[])) {
-        return;
-      }
-      paramJSONObject = new INTERFACE.StGetAuthListRsp();
-      try
-      {
-        paramJSONObject.mergeFrom((byte[])localObject);
-        localObject = paramJSONObject.auths.get();
-        paramJSONObject = paramJSONObject.settings.get();
-        this.val$authorizeCenter.updateAuthList((List)localObject, paramJSONObject);
-        this.val$authorizeCenter.setAuthorizeSynchronized();
-        int i = this.val$authorizeCenter.getAuthFlagFromAuthorize(this.val$finalScopeName);
-        if (BaseJsPluginEngine.isAuthWhiteAppId(this.this$0.jsPluginEngine.appBrandRuntime.appId)) {
-          i = 2;
-        }
-        if (i == 2)
-        {
-          this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
-          return;
-        }
-        this.this$0.jsPluginEngine.reqAuthorize(this.val$event, this.val$jsonParams, this.val$webview, this.val$callbackId);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramJSONObject)
-      {
-        QLog.e("[mini] DataJsPlugin", 1, "getSetting, InvalidProtocolBufferMicroException:" + paramJSONObject);
-        paramJSONObject.printStackTrace();
-        return;
+      localObject = paramJSONObject.opt("authList");
+      if ((localObject instanceof byte[])) {
+        paramJSONObject = new INTERFACE.StGetAuthListRsp();
       }
     }
-    QLog.e("[mini] DataJsPlugin", 1, "getSetting-getAuthList failed");
+    else
+    {
+      for (;;)
+      {
+        try
+        {
+          paramJSONObject.mergeFrom((byte[])localObject);
+          localObject = paramJSONObject.auths.get();
+          paramJSONObject = paramJSONObject.settings.get();
+          this.val$authorizeCenter.updateAuthList((List)localObject, paramJSONObject);
+          this.val$authorizeCenter.setAuthorizeSynchronized();
+          int j = this.val$authorizeCenter.getAuthFlagFromAuthorize(this.val$finalScopeName);
+          i = j;
+          if (j == 1)
+          {
+            if (this.this$0.jsPluginEngine.apiAuthoritySilent()) {
+              break label271;
+            }
+            paramJSONObject = this.this$0.jsPluginEngine;
+            i = j;
+            if (BaseJsPluginEngine.isAuthWhiteAppId(this.this$0.jsPluginEngine.appBrandRuntime.appId)) {
+              break label271;
+            }
+          }
+          if (i == 2)
+          {
+            this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
+            return;
+          }
+          this.this$0.jsPluginEngine.reqAuthorize(this.val$event, this.val$jsonParams, this.val$webview, this.val$callbackId);
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException paramJSONObject)
+        {
+          QLog.e("[mini] DataJsPlugin", 1, "getSetting, InvalidProtocolBufferMicroException:" + paramJSONObject);
+          paramJSONObject.printStackTrace();
+          return;
+        }
+        QLog.e("[mini] DataJsPlugin", 1, "getSetting-getAuthList failed");
+        return;
+        label271:
+        int i = 2;
+      }
+    }
   }
 }
 

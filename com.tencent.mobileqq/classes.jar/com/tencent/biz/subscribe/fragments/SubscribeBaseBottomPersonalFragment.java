@@ -9,7 +9,7 @@ import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.component.base.ComponentPageView;
 import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
 import com.tencent.biz.subscribe.widget.StatusView;
-import wcm;
+import wpz;
 
 public abstract class SubscribeBaseBottomPersonalFragment
   extends Fragment
@@ -17,7 +17,7 @@ public abstract class SubscribeBaseBottomPersonalFragment
   protected View a;
   protected ComponentPageView a;
   protected StatusView a;
-  public wcm a;
+  public wpz a;
   
   abstract ExtraTypeInfo a();
   
@@ -25,13 +25,13 @@ public abstract class SubscribeBaseBottomPersonalFragment
   
   public abstract void a(int paramInt);
   
-  public abstract void a(String paramString, wcm paramwcm);
+  public abstract void a(String paramString, wpz paramwpz);
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131493128, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView = ((ComponentPageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131305699));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = ((StatusView)this.jdField_a_of_type_AndroidViewView.findViewById(2131310681));
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131558679, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView = ((ComponentPageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371395));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = ((StatusView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376474));
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a().setNestedScrollingEnabled(true);
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setEnableRefresh(false);
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setEnableLoadMore(true);

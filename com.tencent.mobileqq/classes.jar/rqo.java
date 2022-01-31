@@ -1,37 +1,55 @@
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
-import java.util.Comparator;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
-class rqo
-  implements Comparator<TroopBarData>
+public class rqo
 {
-  rqo(rqn paramrqn) {}
+  private Map<String, String[]> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private final String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
   
-  public int a(TroopBarData paramTroopBarData1, TroopBarData paramTroopBarData2)
+  public rqo(Context paramContext, String paramString)
   {
-    long l1 = Math.max(paramTroopBarData1.mLastMsgTime, paramTroopBarData1.mLastDraftTime);
-    long l2 = Math.max(paramTroopBarData2.mLastMsgTime, paramTroopBarData2.mLastDraftTime);
-    if ((paramTroopBarData2.mIsSticky) && (!paramTroopBarData1.mIsSticky)) {}
-    do
+    a(paramContext, paramString);
+  }
+  
+  private void a(Context paramContext, String paramString)
+  {
+    b(paramContext, paramString);
+  }
+  
+  private boolean a(String paramString)
+  {
+    return (paramString == null) || (paramString.endsWith(".geojson")) || (paramString.equals("manifest"));
+  }
+  
+  private void b(Context paramContext, String paramString)
+  {
+    try
     {
-      do
+      String[] arrayOfString = paramContext.getAssets().list(paramString);
+      if (arrayOfString != null)
       {
-        return 1;
-        if ((!paramTroopBarData2.mIsSticky) && (paramTroopBarData1.mIsSticky)) {
-          return -1;
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, arrayOfString);
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          String str = arrayOfString[i];
+          if (!a(str)) {
+            b(paramContext, paramString + "/" + str);
+          }
+          i += 1;
         }
-        if ((!paramTroopBarData2.mIsSticky) || (!paramTroopBarData1.mIsSticky)) {
-          break;
-        }
-      } while (paramTroopBarData2.mLastStickyTime > paramTroopBarData1.mLastStickyTime);
-      if (paramTroopBarData2.mLastStickyTime == paramTroopBarData1.mLastStickyTime) {
-        return 0;
       }
-      return -1;
-    } while (l1 < l2);
-    if (l1 == l2) {
-      return 0;
+      return;
     }
-    return -1;
+    catch (IOException paramContext)
+    {
+      QLog.e("Q.readinjoy.proteus", 1, "addFolderChild", paramContext);
+    }
   }
 }
 

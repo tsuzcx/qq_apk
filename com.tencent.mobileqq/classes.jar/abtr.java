@@ -1,41 +1,22 @@
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class abtr
-  extends ajmm
+  implements TextWatcher
 {
-  public abtr(SubAccountUgActivity paramSubAccountUgActivity) {}
+  public abtr(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void a(boolean paramBoolean, String paramString, axau paramaxau)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.i("IphoneTitleBarActivity", 2, "onPushSubAccountMsg() isSuccess=" + paramBoolean + "  subAccount=" + paramString);
-      if (paramaxau != null) {
-        QLog.i("IphoneTitleBarActivity", 2, "onPushSubAccountMsg() data.errorType=" + paramaxau.jdField_a_of_type_Int + "  errorMsg=" + paramaxau.jdField_a_of_type_JavaLangString + " mainAccount=" + paramaxau.jdField_b_of_type_JavaLangString + "  subAccount=" + paramaxau.c + " isNeedStartGetMsg=" + paramaxau.jdField_b_of_type_Boolean);
-      }
-    }
-    if ((paramaxau == null) || (paramString == null) || (paramString.length() < 5)) {}
-    axam localaxam;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.a.isFinishing());
-        localaxam = (axam)this.a.app.getManager(62);
-        if (paramaxau.jdField_a_of_type_Int != 1) {
-          break;
-        }
-      } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString)));
-      SubAccountUgActivity.a(this.a, localaxam, paramString);
-      return;
-    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString)));
-    localaxam.a(this.a.jdField_a_of_type_JavaLangString, 1, true);
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

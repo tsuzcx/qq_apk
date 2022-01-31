@@ -1,56 +1,34 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.smtt.sdk.WebView;
+import org.json.JSONObject;
 
-class xck
-  implements mpp
+public class xck
 {
-  xck(xce paramxce) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public void a()
+  public xck(JSONObject paramJSONObject)
   {
-    Object localObject = this.a.mRuntime.a();
-    if (localObject == null) {}
-    for (;;)
-    {
-      return;
-      bazo localbazo = this.a.mRuntime.a(this.a.mRuntime.a());
-      if ((localbazo != null) && ((localbazo instanceof bbej)) && (((bbej)localbazo).b() != localObject))
-      {
-        localObject = this.a.mRuntime.a();
-        if (localObject != null) {
-          try
-          {
-            localbazo = this.a.mRuntime.a(this.a.mRuntime.a());
-            if ((localbazo instanceof bbev))
-            {
-              ((WebView)localObject).loadUrl(((bbev)localbazo).b());
-              return;
-            }
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-          }
-        }
-      }
+    if (paramJSONObject.has("title")) {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
     }
-  }
-  
-  public void loaded(String paramString, int paramInt)
-  {
-    paramString = this.a.a.obtainMessage();
-    paramString.arg1 = 5;
-    paramString.arg2 = paramInt;
-    this.a.a.sendMessage(paramString);
-  }
-  
-  public void progress(int paramInt)
-  {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.arg1 = 4;
-    localMessage.arg2 = paramInt;
-    this.a.a.sendMessage(localMessage);
+    if (paramJSONObject.has("tabID")) {
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("tabID");
+    }
+    if (paramJSONObject.has("icon")) {
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
+    }
+    if (paramJSONObject.has("jumpUrl")) {
+      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
+    }
+    if (paramJSONObject.has("width")) {
+      this.jdField_b_of_type_Int = paramJSONObject.optInt("width");
+    }
+    if (paramJSONObject.has("height")) {
+      this.jdField_c_of_type_Int = paramJSONObject.optInt("height");
+    }
   }
 }
 

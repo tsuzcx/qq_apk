@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount;
 
 import android.graphics.drawable.Drawable;
-import mtc;
+import ned;
 
 class AccountDetailActivity$25$1
   implements Runnable

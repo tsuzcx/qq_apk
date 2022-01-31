@@ -16,10 +16,10 @@ class m
       this.a.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
       this.a.e = 0;
       this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
-      this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.e = false;
+      this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.isFounderAnimating = false;
       this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.invalidate();
-      if (this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.jdField_a_of_type_Fs != null) {
-        this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.jdField_a_of_type_Fs.a(this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
+      if (this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mAnimationListener != null) {
+        this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mAnimationListener.a(this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mMessage, this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
       }
     }
     while (i <= this.a.e) {

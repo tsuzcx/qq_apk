@@ -1,25 +1,17 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multicard.MultiCardRootLayout;
 
-public class asta
-  implements View.OnClickListener
+public abstract interface asta
 {
-  public asta(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public abstract void a(MultiCardRootLayout paramMultiCardRootLayout);
   
-  public void onClick(View paramView)
-  {
-    if ((this.a.b != null) && (!this.a.isFinishing()))
-    {
-      this.a.b.dismiss();
-      this.a.b = null;
-    }
-  }
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asta
  * JD-Core Version:    0.7.0.1
  */

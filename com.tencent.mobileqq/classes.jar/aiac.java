@@ -1,15 +1,13 @@
-import android.widget.ImageView;
+import android.graphics.Bitmap;
 
 public class aiac
-  extends bent
 {
-  public String a;
-  public int c = 1;
-  public ImageView c;
+  public int a;
+  public Bitmap a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aiac
  * JD-Core Version:    0.7.0.1
  */

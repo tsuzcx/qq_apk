@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adnx;
-import adny;
+import adyw;
+import adyx;
 import java.lang.ref.WeakReference;
 
 public class SSODataRequest$1$1
   implements Runnable
 {
-  public SSODataRequest$1$1(adny paramadny, int paramInt1, int paramInt2, String paramString) {}
+  public SSODataRequest$1$1(adyx paramadyx, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
-    adnx localadnx = (adnx)this.jdField_a_of_type_Adny.a.get();
-    if (localadnx == null) {
+    adyw localadyw = (adyw)this.jdField_a_of_type_Adyx.a.get();
+    if (localadyw == null) {
       return;
     }
-    localadnx.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    localadyw.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

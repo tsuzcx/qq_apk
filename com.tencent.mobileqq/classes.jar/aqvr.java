@@ -1,43 +1,52 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.net.Uri;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class aqvr
-  implements EIPCResultCallback
+  implements aqvz
 {
-  aqvr(aqvq paramaqvq) {}
+  aqvr(aqvq paramaqvq, int paramInt, String paramString) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(Uri paramUri)
   {
-    int i = 0;
-    JSONObject localJSONObject;
-    if (!TextUtils.isEmpty(aqvq.a(this.a))) {
-      localJSONObject = new JSONObject();
-    }
+    QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFaild= " + paramUri);
+    this.jdField_a_of_type_Aqvq.a.finish();
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong)
+  {
+    QLog.d("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFinish= " + paramString1);
     try
     {
-      if (paramEIPCResult.data.getBoolean("result")) {}
-      for (;;)
+      if (this.jdField_a_of_type_Int == 2)
       {
-        localJSONObject.put("result", i);
-        this.a.callJs(aqvq.a(this.a), new String[] { localJSONObject.toString() });
+        paramString2 = new ArrayList();
+        paramString2.add(paramString1);
+        this.jdField_a_of_type_Aqvq.a(paramString2, this.jdField_a_of_type_JavaLangString);
         return;
-        i = 1;
       }
+      if (this.jdField_a_of_type_Int == 4)
+      {
+        paramString2 = new ArrayList();
+        paramString2.add(paramString1);
+        this.jdField_a_of_type_Aqvq.b(paramString2, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq exception=", paramString1);
       return;
     }
-    catch (JSONException paramEIPCResult)
-    {
-      paramEIPCResult.printStackTrace();
+    if (this.jdField_a_of_type_Int == 3) {
+      this.jdField_a_of_type_Aqvq.a(paramString1, this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqvr
  * JD-Core Version:    0.7.0.1
  */

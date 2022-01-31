@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import amvi;
-import amvk;
 import android.widget.TextView;
+import anlq;
+import anls;
 import java.util.ArrayList;
 
 class DataReportViewer$3
@@ -16,13 +16,13 @@ class DataReportViewer$3
     {
       this.this$0.jdField_a_of_type_JavaUtilArrayList.remove(0);
       this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.this$0.jdField_a_of_type_JavaUtilArrayList.size()));
-      this.this$0.jdField_a_of_type_Amvi.notifyDataSetChanged();
+      this.this$0.jdField_a_of_type_Anlq.notifyDataSetChanged();
       this.this$0.a();
     }
-    while (!amvk.a) {
+    while (!anls.a) {
       return;
     }
-    amvk.a().b();
+    anls.a().b();
   }
 }
 

@@ -1,22 +1,25 @@
-import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-class wui
-  implements bhwg<wsh>
+public class wui
+  implements View.OnClickListener
 {
-  wui(wuh paramwuh) {}
+  public wui(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(@Nullable wsh paramwsh)
+  public void onClick(View paramView)
   {
-    if (paramwsh == null) {
-      return;
+    if (VideoPlayerView.a(this.a) != null) {
+      VideoPlayerView.a(this.a).setVisibility(8);
     }
-    wuh.a(this.a, paramwsh);
-    wuh.b(this.a, paramwsh);
+    VideoPlayerView.a(this.a, false);
+    VideoPlayerView.a(true);
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wui
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,20 @@
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
 
 public class qmu
+  implements Animation.AnimationListener
 {
-  private JSONObject a;
+  public qmu(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
   
-  public qmu(String paramString)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    try
-    {
-      if (TextUtils.isEmpty(paramString))
-      {
-        this.a = new JSONObject();
-        return;
-      }
-      this.a = new JSONObject(paramString);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    VideoFeedsAioGuideView.b(this.a).setStartOffset(360L);
   }
   
-  public qmu(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    this.a = new JSONObject();
-    new.a(paramString1, paramString2, paramString3, paramString4, this.a);
-  }
-  
-  public qmu(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    this(paramString1);
-    new.a(paramString2, paramString3, paramString4, paramString5, this.a);
-  }
-  
-  public String a()
-  {
-    return this.a.toString();
-  }
-  
-  protected void a(String paramString, Object paramObject)
-  {
-    try
-    {
-      this.a.put(paramString, paramObject);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,6 +1,9 @@
-class sqi
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
+
+public abstract interface sqi
 {
-  public static final sqg a = new sqg(null);
+  public abstract void a(ErrorMessage paramErrorMessage, List<String> paramList);
 }
 
 

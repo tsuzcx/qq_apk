@@ -1,109 +1,32 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class tno
-  extends tnn
+  extends syv<toz>
 {
-  private tnn a;
-  
-  public Activity a()
+  public String a()
   {
-    return this.a.a();
+    return sxp.a("StorySvc.video_apply_authkey");
   }
   
-  public OpenPlayerBuilder.Data a()
+  public toz a(byte[] paramArrayOfByte)
   {
-    return this.a.a();
-  }
-  
-  public XViewPager a()
-  {
-    return this.a.a();
-  }
-  
-  public String a(String paramString)
-  {
-    return this.a.a(paramString);
-  }
-  
-  public tjs a()
-  {
-    return this.a.a();
-  }
-  
-  public tjv a()
-  {
-    return this.a.a();
-  }
-  
-  public tnf a()
-  {
-    return this.a.a();
-  }
-  
-  public tnn a()
-  {
-    return this.a;
-  }
-  
-  public tny a()
-  {
-    return this.a.a();
-  }
-  
-  public void a()
-  {
-    this.a.a();
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    this.a.a(paramIntent);
-  }
-  
-  public void a(sgc paramsgc)
-  {
-    this.a.a(paramsgc);
-  }
-  
-  public void a(tmd paramtmd)
-  {
-    this.a.a(paramtmd);
-  }
-  
-  public void a(tnn paramtnn)
-  {
-    if (this.a != null) {
-      throw new IllegalStateException("Base context already set");
+    qqstory_service.RspAuthKey localRspAuthKey = new qqstory_service.RspAuthKey();
+    try
+    {
+      localRspAuthKey.mergeFrom(paramArrayOfByte);
+      return new toz(localRspAuthKey);
     }
-    this.a = paramtnn;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      veg.d("Q.qqstory:RefreshVideoFileKeyRequest", "" + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public void a(tog paramtog)
+  protected byte[] a()
   {
-    this.a.a(paramtog);
-  }
-  
-  public boolean a()
-  {
-    return this.a.a();
-  }
-  
-  public void b(sgc paramsgc)
-  {
-    this.a.b(paramsgc);
-  }
-  
-  public void b(tmd paramtmd)
-  {
-    this.a.b(paramtmd);
-  }
-  
-  public boolean b()
-  {
-    return this.a.b();
+    return new byte[0];
   }
 }
 

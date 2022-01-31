@@ -1,38 +1,38 @@
-import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
-import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.HWDecodeListener;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
 
 public class auvp
-  implements HWDecodeListener
 {
-  public auvp(FollowCaptureView paramFollowCaptureView) {}
+  public String a;
+  public String b;
   
-  public void onDecodeCancel() {}
-  
-  public void onDecodeError(int paramInt, Throwable paramThrowable) {}
-  
-  public void onDecodeFinish() {}
-  
-  public void onDecodeFrame(long paramLong1, long paramLong2)
+  public String a()
   {
-    FollowCaptureView.a(this.a, paramLong1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.a);
+    return localStringBuilder.toString();
   }
   
-  public void onDecodeRepeat()
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FollowCaptureView", 2, "onDecodeRepeat");
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
-    FollowCaptureView.a(this.a);
+    paramString = paramString.split(" ");
+    if ((paramString != null) && (paramString.length == 2))
+    {
+      this.b = paramString[0];
+      this.a = paramString[1];
+      return;
+    }
+    this.b = "";
+    this.a = "";
   }
-  
-  public void onDecodeSeekTo(long paramLong) {}
-  
-  public void onDecodeStart() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvp
  * JD-Core Version:    0.7.0.1
  */

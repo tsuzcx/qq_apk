@@ -1,21 +1,19 @@
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class appe
-  implements wpj
+class appe
+  implements View.OnClickListener
 {
-  public appe(NowLiveFragment paramNowLiveFragment) {}
+  appe(appd paramappd) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment$NowLiveWebView.refresh();
-    this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
+    appd.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     appe
  * JD-Core Version:    0.7.0.1
  */

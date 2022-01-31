@@ -1,28 +1,59 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.hardware.display.DisplayManager;
+import android.hardware.display.DisplayManager.DisplayListener;
+import android.os.Handler;
+import android.view.Display;
+import android.view.WindowManager;
 
-class alfc
-  implements ArkAppCacheMgr.OnGetAppIcon
+@TargetApi(17)
+public class alfc
+  implements DisplayManager.DisplayListener
 {
-  alfc(alfb paramalfb, alff paramalff) {}
+  private int jdField_a_of_type_Int;
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final Display jdField_a_of_type_AndroidViewDisplay;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  @TargetApi(23)
+  public alfc(Context paramContext)
   {
-    if (paramBitmap != null)
-    {
-      this.jdField_a_of_type_Alff.b.setVisibility(0);
-      this.jdField_a_of_type_Alff.a.setVisibility(0);
-      this.jdField_a_of_type_Alff.a.setImageBitmap(paramBitmap);
-      return;
-    }
-    this.jdField_a_of_type_Alff.a.setVisibility(8);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService(WindowManager.class)).getDefaultDisplay();
   }
+  
+  @TargetApi(23)
+  public void a()
+  {
+    ((DisplayManager)this.jdField_a_of_type_AndroidContentContext.getSystemService(DisplayManager.class)).registerDisplayListener(this, new Handler());
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  @TargetApi(23)
+  public void b()
+  {
+    ((DisplayManager)this.jdField_a_of_type_AndroidContentContext.getSystemService(DisplayManager.class)).unregisterDisplayListener(this);
+  }
+  
+  public void onDisplayAdded(int paramInt) {}
+  
+  public void onDisplayChanged(int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void onDisplayRemoved(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alfc
  * JD-Core Version:    0.7.0.1
  */

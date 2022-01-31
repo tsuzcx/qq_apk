@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.Advertisement.util;
 
 import java.util.ArrayList;
-import myb;
+import njc;
 
 public final class PublicAccountAdUtil$1
   implements Runnable
@@ -10,7 +10,7 @@ public final class PublicAccountAdUtil$1
   
   public void run()
   {
-    myb.a().a(this.a);
+    njc.a().a(this.a);
   }
 }
 

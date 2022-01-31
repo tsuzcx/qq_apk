@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import arpa;
-import arrt;
+import asle;
+import asnx;
 
 class MsgBackupNotifier$10
   implements Runnable
 {
-  MsgBackupNotifier$10(MsgBackupNotifier paramMsgBackupNotifier, long paramLong1, String paramString, long paramLong2, long paramLong3, int paramInt1, long paramLong4, int paramInt2, int paramInt3, long paramLong5) {}
+  MsgBackupNotifier$10(MsgBackupNotifier paramMsgBackupNotifier, long paramLong1, long paramLong2, long paramLong3) {}
   
   public void run()
   {
-    arpa.a().a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, this.jdField_a_of_type_Int, this.d, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.e);
+    asle.a().a().a(this.a, this.b, this.c);
   }
 }
 

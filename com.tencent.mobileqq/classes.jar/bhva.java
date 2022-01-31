@@ -1,13 +1,17 @@
-import android.support.annotation.RestrictTo;
+import android.graphics.drawable.AnimationDrawable;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public abstract interface bhva
+public class bhva
 {
-  public abstract void a(bhvg parambhvg, bhvd parambhvd, boolean paramBoolean, bhvi parambhvi);
+  public QzoneZipCacheHelperCallBack mCallBack;
+  
+  public void onLoadedFailed() {}
+  
+  public void onLoadedSuccess(AnimationDrawable paramAnimationDrawable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhva
  * JD-Core Version:    0.7.0.1
  */

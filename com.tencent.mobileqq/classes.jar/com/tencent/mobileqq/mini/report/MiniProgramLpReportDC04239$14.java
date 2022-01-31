@@ -8,13 +8,13 @@ final class MiniProgramLpReportDC04239$14
 {
   public void run()
   {
-    if (MiniProgramLpReportDC04239.access$500() != null)
+    if (MiniProgramLpReportDC04239.access$400() != null)
     {
       Bundle localBundle = new Bundle();
-      localBundle.putParcelable("app_config", MiniProgramLpReportDC04239.access$500());
-      localBundle.putLong("add_duration_ms", MiniProgramLpReportDC04239.access$600());
+      localBundle.putParcelable("app_config", MiniProgramLpReportDC04239.access$400());
+      localBundle.putLong("add_duration_ms", MiniProgramLpReportDC04239.access$500());
       QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "record_duration", localBundle);
-      MiniProgramLpReportDC04239.access$700();
+      MiniProgramLpReportDC04239.access$600();
     }
   }
 }

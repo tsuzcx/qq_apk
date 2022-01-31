@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import agph;
+import ahbw;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
@@ -23,11 +23,11 @@ final class h
         QLog.d("ApkgManager", 2, "initApkgByConfig - base lib is not ready");
       }
       long l = System.currentTimeMillis();
-      agph localagph = agph.a(BaseApplicationImpl.getApplication().getRuntime());
+      ahbw localahbw = ahbw.a(BaseApplicationImpl.getApplication().getRuntime());
       DownloadParam localDownloadParam = new DownloadParam();
       localDownloadParam.filePos = 1;
       localDownloadParam.url = this.a.baseLibInfo.baseLibUrl;
-      localagph.a(localDownloadParam, new i(this, paramd, l));
+      localahbw.a(localDownloadParam, new i(this, paramd, l));
       return;
     }
     g.a(this.b, paramd, 1, null, "miniConfig not valid");

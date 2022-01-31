@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.model;
 
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import sqd;
+import tcz;
 
 public class StoryManager$3
   implements Runnable
 {
-  public StoryManager$3(sqd paramsqd, String paramString) {}
+  public StoryManager$3(tcz paramtcz, String paramString) {}
   
   public void run()
   {

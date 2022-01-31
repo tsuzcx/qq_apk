@@ -1,36 +1,19 @@
-import android.graphics.Bitmap;
-import android.widget.LinearLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class apot
-  extends asju
+class apot
+  implements View.OnClickListener
 {
-  public apot(NearbyHybridFragment paramNearbyHybridFragment) {}
+  apot(apos paramapos) {}
   
-  protected void a(int paramInt, String paramString) {}
-  
-  protected void a(int paramInt, String paramString, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if ((this.a.d != null) && (this.a.d.equals(paramString)) && (paramBitmap != null) && (this.a.b != null) && (this.a.b.getVisibility() == 0)) {
-      this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(paramBitmap);
-    }
-  }
-  
-  protected void b()
-  {
-    if (this.a.jdField_a_of_type_Asdk != null) {
-      this.a.jdField_a_of_type_Asdk.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
-    }
-    this.a.l();
     this.a.m();
   }
-  
-  protected void b(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apot
  * JD-Core Version:    0.7.0.1
  */

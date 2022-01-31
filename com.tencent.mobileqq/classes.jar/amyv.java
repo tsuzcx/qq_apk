@@ -1,119 +1,76 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.ApolloLibData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amyv
-  extends amza
+  extends amyi<amyu>
 {
-  public static final String[] a = { "libjsc.so" };
-  
-  public amyv(QQAppInterface paramQQAppInterface)
+  public static amyu c()
   {
-    super("android.qq.apollo.js.818g1", paramQQAppInterface);
-  }
-  
-  public static void a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (amyp)((QQAppInterface)localObject).getManager(77);
-      if (localObject != null)
-      {
-        localObject = (amyv)((amyp)localObject).a("android.qq.apollo.js.818g1");
-        if (localObject != null)
-        {
-          ((amyv)localObject).a(true);
-          QLog.i("ApolloSoLoader_libHandler", 1, "restartDownload savaLib");
-        }
-      }
+    amyu localamyu2 = (amyu)ampm.a().a(498);
+    amyu localamyu1 = localamyu2;
+    if (localamyu2 == null) {
+      localamyu1 = new amyu();
     }
+    return localamyu1;
   }
   
   public int a()
   {
-    return 10038;
+    return 498;
   }
   
-  public Class<? extends XmlData> a()
+  @NonNull
+  public amyu a()
   {
-    return ApolloLibData.class;
+    return new amyu();
   }
   
-  public String a()
+  @NonNull
+  public amyu a(@NonNull ampi[] paramArrayOfampi)
   {
-    return "ApolloSoLoader_libHandler";
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("ApolloSoLoader_libHandler", 1, "[doOnDownloadSuccess] sava:" + paramString);
-    Object localObject = a();
-    if (localObject != null) {
-      QLog.i("ApolloSoLoader_libHandler", 1, "version:" + ((XmlData)localObject).Version);
-    }
-    int i;
-    if (BaseApplicationImpl.sProcessId == 1)
-    {
-      i = 1;
-      if (i != 0) {
-        aixo.a(10, null, new int[] { 1 });
-      }
-      if (new File(paramString).exists())
-      {
-        if (beff.a(paramString, 1)) {
-          break label189;
-        }
-        if (localObject != null)
-        {
-          ((XmlData)localObject).loadState = 0;
-          ((XmlData)localObject).Version = 0;
-          amyo.a((XmlData)localObject, new String[] { "loadState", "Version" });
-        }
-        QLog.e("ApolloSoLoader_libHandler", 1, "[doOnDownloadSuccess],unzip apollo lib failed!");
-        if (i != 0)
-        {
-          aixo.a(10, 200, 1001, new Object[] { "unzip sava lib failed" });
-          ajam.a = true;
-        }
-      }
-    }
+    amyu localamyu = new amyu();
+    paramArrayOfampi = paramArrayOfampi[0].jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty(paramArrayOfampi)) {}
     for (;;)
     {
-      super.a(paramString);
-      return;
-      i = 0;
-      break;
-      label189:
-      localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
-      if (localObject != null) {
-        ((SharedPreferences)localObject).edit().putString("res_name", "android.qq.apollo.js.818g1").commit();
+      return localamyu;
+      try
+      {
+        paramArrayOfampi = new JSONObject(paramArrayOfampi);
+        localamyu.jdField_a_of_type_Int = paramArrayOfampi.optInt("stage");
+        localamyu.jdField_a_of_type_JavaLangString = paramArrayOfampi.optString("pay_url");
+        if (QLog.isColorLevel())
+        {
+          QLog.d("vip_ptt.ConfigProcessor", 1, "json parse config.stage:" + localamyu.jdField_a_of_type_Int + " url=" + localamyu.jdField_a_of_type_JavaLangString);
+          return localamyu;
+        }
       }
-      if (i != 0) {
-        aixo.a(10, 200, 0, new Object[] { "libsava so download success" });
+      catch (JSONException paramArrayOfampi)
+      {
+        QLog.e("vip_ptt.ConfigProcessor", 1, "json parse error:" + paramArrayOfampi);
+        localamyu.b = paramArrayOfampi.toString();
       }
-      ajam.a("after_ApolloSo_downloaded");
     }
+    return localamyu;
   }
   
-  public boolean a()
+  public Class<amyu> a()
   {
-    return true;
+    return amyu.class;
   }
   
-  public String b()
+  @NonNull
+  public amyu b()
   {
-    return null;
+    return new amyu();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amyv
  * JD-Core Version:    0.7.0.1
  */

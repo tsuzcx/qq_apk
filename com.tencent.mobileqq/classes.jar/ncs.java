@@ -1,21 +1,66 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.os.Bundle;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
 
 public class ncs
-  implements DialogInterface.OnCancelListener
+  implements ajtg
 {
-  public ncs(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
+  public ncs(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
+    if (paramObject == null) {
+      return;
+    }
+    paramObject = (Bundle)paramObject;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 17: 
+      paramBoolean = paramObject.getBoolean("result");
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (paramBoolean)
+      {
+        paramObject = this.a.getString(2131696285);
+        localStringBuilder.append(paramObject);
+        localStringBuilder.append(this.a.getString(2131696283));
+        localStringBuilder.append(this.a.c);
+        if (!paramBoolean) {
+          break label233;
+        }
+        paramInt = 2;
+        label104:
+        bcpw.a(this.a, paramInt, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+        paramObject = this.a;
+        if (!paramBoolean) {
+          break label238;
+        }
+      }
+      break;
+    }
+    label233:
+    label238:
+    for (paramInt = -1;; paramInt = 0)
+    {
+      paramObject.setResult(paramInt);
+      return;
+      this.a.a = paramObject.getBoolean("isOpen");
+      this.a.c = paramObject.getString("name");
+      if (this.a.c != null) {
+        this.a.b = this.a.getString(2131696345, new Object[] { this.a.c });
+      }
+      LebaSearchMoreInfoActivity.a(this.a);
+      return;
+      paramObject = this.a.getString(2131696284);
+      break;
+      paramInt = 1;
+      break label104;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ncs
  * JD-Core Version:    0.7.0.1
  */

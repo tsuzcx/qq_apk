@@ -1,32 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class atjl
-  implements DialogInterface.OnClickListener
+public class atjl
+  implements bfoq
 {
-  atjl(atjj paramatjj) {}
+  public atjl(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bfol parambfol) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPanel", 2, "onAccoutChangeFailed -> LoginActivity");
+    switch (paramInt)
+    {
     }
-    paramDialogInterface = new Intent(atjj.a(this.a), LoginActivity.class);
-    paramDialogInterface.putExtra("is_change_account", true);
-    paramDialogInterface.putExtra("uin", atjj.a(this.a));
-    paramDialogInterface.putExtra("befault_uin", atjj.a(this.a).getCurrentAccountUin());
-    atjj.a(this.a).startActivity(paramDialogInterface);
-    atjj.a(this.a, null);
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bfol != null) {
+        this.jdField_a_of_type_Bfol.dismiss();
+      }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjl
  * JD-Core Version:    0.7.0.1
  */

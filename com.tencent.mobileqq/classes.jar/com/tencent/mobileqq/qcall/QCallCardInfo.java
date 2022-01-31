@@ -4,35 +4,35 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.OnClickListener;
-import atmo;
-import atnz;
-import atoc;
-import aufa;
-import auft;
-import baip;
+import aukm;
+import aulx;
+import auma;
+import aveg;
+import avez;
+import bbjw;
 
 public class QCallCardInfo
-  extends atmo
+  extends aukm
   implements Parcelable, Cloneable
 {
   public static final int CARD_BLACK = 2;
   public static final int CARD_FREE = 1;
-  public static final Parcelable.Creator<QCallCardInfo> CREATOR = new aufa();
+  public static final Parcelable.Creator<QCallCardInfo> CREATOR = new aveg();
   public static int HIDE = 1;
   public static final int NONE = 0;
   public static int SHOW;
   public String autoRemark;
   public int birthday;
-  @atnz
+  @aulx
   public int card_type;
-  @atnz
+  @aulx
   public int contact_qq_status;
-  @atnz
+  @aulx
   public int freeStatus;
   public int gender;
   public int identity;
   public int in_use_flag;
-  @atnz
+  @aulx
   public int isPopup;
   public int is_ever_pstn;
   public View.OnClickListener mOnClickListener;
@@ -43,9 +43,9 @@ public class QCallCardInfo
   public int phone_mask;
   public String phonenum;
   public int pre_recycle_flag;
-  @atnz
+  @aulx
   public int pstn_freeStatus;
-  @atnz
+  @aulx
   public int qid_qq_status;
   public String qq;
   @Deprecated
@@ -57,7 +57,7 @@ public class QCallCardInfo
   public String reg_ip;
   public int reg_time;
   public String remark;
-  @atoc
+  @auma
   public String uin;
   public int used_free_time;
   public int vip_all_free_time;
@@ -92,13 +92,13 @@ public class QCallCardInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[ qid=").append(auft.a(this.uin));
-    localStringBuilder.append(",nickname=").append(baip.g(this.nickname));
+    localStringBuilder.append("[ qid=").append(avez.a(this.uin));
+    localStringBuilder.append(",nickname=").append(bbjw.g(this.nickname));
     localStringBuilder.append(",in_use_flag=").append(this.in_use_flag);
-    localStringBuilder.append(",phoneNum=").append(auft.a(this.phonenum));
+    localStringBuilder.append(",phoneNum=").append(avez.a(this.phonenum));
     localStringBuilder.append(",phone_mask=").append(this.phone_mask);
-    localStringBuilder.append(",qqUin=").append(auft.a(this.qq));
-    localStringBuilder.append(",qqUin2=").append(auft.a(this.qqUin2));
+    localStringBuilder.append(",qqUin=").append(avez.a(this.qq));
+    localStringBuilder.append(",qqUin2=").append(avez.a(this.qqUin2));
     localStringBuilder.append(",remark=").append(this.remark);
     localStringBuilder.append(",network=").append(this.netstatus);
     localStringBuilder.append(",autoRemark=").append(this.autoRemark);

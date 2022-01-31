@@ -42,6 +42,7 @@ public class ParticleFilter3D
   private List<PointF> mPreviousBodyPoints = null;
   private long mPreviousLostTime = System.currentTimeMillis();
   private long mTimesForLostProtect = 2000L;
+  private float[] mvpMat = new float[16];
   private boolean needRender;
   private BasePaticleEmitter particleEmitter;
   private ParticleParam particleParam = new ParticleParam();
@@ -409,7 +410,8 @@ public class ParticleFilter3D
       }
       addParam(new UniformParam.IntParam("isPartical2", 1));
       addAttribParam(new AttributeParam("aColor", arrayOfFloat, 4));
-      addParam(new UniformParam.Mat4Param("u_MVPMatrix", MatrixUtil.getMVPMatrix(this.width, this.height)));
+      MatrixUtil.getMVPMatrix(this.mvpMat, this.width, this.height);
+      addParam(new UniformParam.Mat4Param("u_MVPMatrix", this.mvpMat));
       addAttribParam(new AttributeParam("position", paramParticleEmitterParam, 3));
       setTexCords((float[])localObject1);
       if (this.particleEmitter.opacityModifyRGB)
@@ -428,20 +430,20 @@ public class ParticleFilter3D
           this.particleParam.blendFuncDst = this.particleEmitter.blendFuncDestination;
           localObject2 = this.particleParam;
           if ((this.particleEmitter.textures == null) || (this.particleEmitter.textures.length <= 0)) {
-            break label1117;
+            break label1126;
           }
           i = this.particleEmitter.textures[0];
-          label1008:
+          label1017:
           ((ParticleParam)localObject2).texture = i;
           this.particleParam.isPartical2 = 1;
           localObject2 = this.particleParam;
           if (!this.particleEmitter.opacityModifyRGB) {
-            break label1123;
+            break label1132;
           }
         }
       }
-      label1117:
-      label1123:
+      label1126:
+      label1132:
       for (i = 1;; i = 0)
       {
         ((ParticleParam)localObject2).uOpacityModifyRGB = i;
@@ -453,7 +455,7 @@ public class ParticleFilter3D
         i = 0;
         break;
         i = 0;
-        break label1008;
+        break label1017;
       }
     }
     resetParams();

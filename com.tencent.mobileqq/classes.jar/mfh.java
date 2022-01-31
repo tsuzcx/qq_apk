@@ -1,6 +1,20 @@
-abstract interface mfh
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.MultiMembersVideoUI;
+
+public class mfh
+  implements View.OnTouchListener
 {
-  public abstract void a();
+  public mfh(MultiMembersVideoUI paramMultiMembersVideoUI) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+    return paramMotionEvent.getAction() == 2;
+  }
 }
 
 

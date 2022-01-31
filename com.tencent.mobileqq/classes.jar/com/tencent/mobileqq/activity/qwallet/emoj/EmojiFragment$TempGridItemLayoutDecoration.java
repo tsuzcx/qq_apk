@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView.ItemDecoration;
 import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import vms;
+import vzo;
 
 public class EmojiFragment$TempGridItemLayoutDecoration
   extends RecyclerView.ItemDecoration
@@ -44,7 +44,7 @@ public class EmojiFragment$TempGridItemLayoutDecoration
         i = 1;
       }
       if (i == 0) {
-        paramRect.top = vms.a(this.mContext, 11.0F);
+        paramRect.top = vzo.a(this.mContext, 11.0F);
       }
       return;
       if (k % this.mNumColumns == m - 1)

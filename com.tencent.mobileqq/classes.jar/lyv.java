@@ -1,20 +1,18 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.VideoControlUI;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class lyv
-  implements View.OnTouchListener
+class lyv
+  implements DialogInterface.OnDismissListener
 {
-  public lyv(VideoControlUI paramVideoControlUI) {}
+  lyv(lys paramlys, long paramLong) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.a != null) {
-      return this.a.a.onTouchEvent(paramMotionEvent);
+    QLog.w("ShareChat", 1, "ActionSheet.onDismiss, mChoosedLinkType[" + this.jdField_a_of_type_Lys.b + "], mIHandle[" + this.jdField_a_of_type_Lys.jdField_a_of_type_Lyx + "], seq[" + this.jdField_a_of_type_Long + "]");
+    if ((this.jdField_a_of_type_Lys.b == -1) && (this.jdField_a_of_type_Lys.jdField_a_of_type_Lyx != null)) {
+      this.jdField_a_of_type_Lys.a(this.jdField_a_of_type_Lys.jdField_a_of_type_Int, this.jdField_a_of_type_Lys.b, 1);
     }
-    return false;
   }
 }
 

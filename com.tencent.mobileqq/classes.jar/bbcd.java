@@ -1,78 +1,25 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.widget.BubblePopupWindow;
 
-public class bbcd
+final class bbcd
+  extends TextView
 {
-  public static final ArrayList<String> a()
+  bbcd(Context paramContext, BubblePopupWindow paramBubblePopupWindow)
   {
-    ArrayList localArrayList = new ArrayList();
-    for (;;)
-    {
-      try
-      {
-        Object localObject = (amgt)alzw.a().a(361);
-        if ((localObject != null) && (!TextUtils.isEmpty(((amgt)localObject).d)))
-        {
-          localObject = ((amgt)localObject).d;
-          localObject = ((String)localObject).split(";");
-          int j = localObject.length;
-          int i = 0;
-          if (i < j)
-          {
-            localArrayList.add(localObject[i]);
-            i += 1;
-            continue;
-          }
-          return localArrayList;
-        }
-      }
-      catch (Throwable localThrowable) {}
-      String str = "QQ";
-    }
+    super(paramContext);
   }
   
-  public static final boolean a(int paramInt, boolean paramBoolean)
+  public boolean performClick()
   {
-    amgt localamgt = (amgt)alzw.a().a(361);
-    if (localamgt != null) {}
-    switch (paramInt)
-    {
-    default: 
-      return paramBoolean;
-    case 1: 
-      return localamgt.jdField_a_of_type_Boolean;
-    case 2: 
-      return localamgt.jdField_b_of_type_Boolean;
-    }
-    return localamgt.jdField_c_of_type_Boolean;
-  }
-  
-  public static final boolean b(int paramInt, boolean paramBoolean)
-  {
-    amgt localamgt = (amgt)alzw.a().a(361);
-    if (localamgt != null) {
-      switch (paramInt)
-      {
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return paramBoolean;
-        } while (Math.random() >= Float.valueOf(localamgt.jdField_a_of_type_JavaLangString).floatValue());
-        return true;
-      } while (Math.random() >= Float.valueOf(localamgt.jdField_b_of_type_JavaLangString).floatValue());
-      return true;
-    } while (Math.random() >= Float.valueOf(localamgt.jdField_c_of_type_JavaLangString).floatValue());
-    return true;
+    boolean bool = super.performClick();
+    this.a.b();
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbcd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,8 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
+import com.tribe.async.dispatch.IEventReceiver;
 
-public class tce
-  extends slu
-{
-  public tce(qqstory_service.RspReportEvil paramRspReportEvil)
-  {
-    super(paramRspReportEvil.result);
-  }
-}
+public abstract class tce
+  implements IEventReceiver
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

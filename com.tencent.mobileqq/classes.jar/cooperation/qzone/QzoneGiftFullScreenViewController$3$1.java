@@ -1,20 +1,20 @@
 package cooperation.qzone;
 
 import android.view.View;
-import argn;
-import bfre;
-import bfrg;
+import ascp;
+import bgzl;
+import bgzn;
 import com.tencent.image.URLDrawable;
 
 public class QzoneGiftFullScreenViewController$3$1
   implements Runnable
 {
-  public QzoneGiftFullScreenViewController$3$1(bfrg parambfrg, argn paramargn) {}
+  public QzoneGiftFullScreenViewController$3$1(bgzn parambgzn, ascp paramascp) {}
   
   public void run()
   {
     URLDrawable.pause();
-    ((View)this.jdField_a_of_type_Bfrg.a.a).setBackgroundColor(this.jdField_a_of_type_Argn.a);
+    ((View)this.jdField_a_of_type_Bgzn.a.a).setBackgroundColor(this.jdField_a_of_type_Ascp.a);
   }
 }
 

@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class aedb
-  implements DialogInterface.OnClickListener
+public class aedb
 {
-  aedb(aecw paramaecw) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aedb(int paramInt1, String paramString, int paramInt2)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
   }
 }
 

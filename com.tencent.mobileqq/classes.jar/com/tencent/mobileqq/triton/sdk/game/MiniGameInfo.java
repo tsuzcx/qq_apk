@@ -15,37 +15,40 @@ public class MiniGameInfo
   public GameConfig gameConfig;
   public JSONObject gameConfigJson;
   public String gameId;
+  private String gamePath;
   public List<GamePluginInfo> gamePluginInfo;
   public String openDataPath;
   public JSONObject permissions;
   public HashMap<String, String> subPackRoots = new HashMap();
-  public int verType;
-  public String version;
   public String workersPath;
   
-  public MiniGameInfo(String paramString1, String paramString2, int paramInt)
+  public MiniGameInfo(String paramString1, String paramString2)
   {
-    this(paramString1, paramString2, paramInt, null);
+    this(paramString1, paramString2, null);
   }
   
-  public MiniGameInfo(String paramString1, String paramString2, int paramInt, GameConfig paramGameConfig)
+  public MiniGameInfo(String paramString1, String paramString2, GameConfig paramGameConfig)
   {
-    this(paramString1, paramString2, paramInt, paramGameConfig, null);
+    this(paramString1, paramString2, paramGameConfig, null);
   }
   
-  public MiniGameInfo(String paramString1, String paramString2, int paramInt, GameConfig paramGameConfig, GameDebugInfo paramGameDebugInfo)
+  public MiniGameInfo(String paramString1, String paramString2, GameConfig paramGameConfig, GameDebugInfo paramGameDebugInfo)
   {
-    this(paramString1, paramString2, paramInt, paramGameConfig, paramGameDebugInfo, null);
+    this(paramString1, paramString2, paramGameConfig, paramGameDebugInfo, null);
   }
   
-  public MiniGameInfo(String paramString1, String paramString2, int paramInt, GameConfig paramGameConfig, GameDebugInfo paramGameDebugInfo, List<GamePluginInfo> paramList)
+  public MiniGameInfo(String paramString1, String paramString2, GameConfig paramGameConfig, GameDebugInfo paramGameDebugInfo, List<GamePluginInfo> paramList)
   {
     this.gameId = paramString1;
-    this.version = paramString2;
-    this.verType = paramInt;
+    this.gamePath = paramString2;
     this.gameConfig = paramGameConfig;
     this.debugInfo = paramGameDebugInfo;
     this.gamePluginInfo = paramList;
+  }
+  
+  public String getGamePath()
+  {
+    return this.gamePath;
   }
   
   public boolean isOrientationLandscape()

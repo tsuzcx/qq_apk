@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
 
-public class akxo
-  implements DialogInterface.OnClickListener
+class akxo
+  implements View.OnClickListener
 {
-  public akxo(ARScanEntryView paramARScanEntryView) {}
+  akxo(akxm paramakxm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+    paramView = new Intent(paramView.getContext(), PoiMapActivity.class).putExtra("lat", Double.toString(this.a.jdField_a_of_type_Alfx.a * 1.0D / 1000000.0D)).putExtra("lon", Double.toString(this.a.jdField_a_of_type_Alfx.b * 1.0D / 1000000.0D));
+    this.a.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
+  }
 }
 
 

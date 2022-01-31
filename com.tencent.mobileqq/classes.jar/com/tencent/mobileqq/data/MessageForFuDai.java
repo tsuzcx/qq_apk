@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import adcz;
-import amsq;
-import amsr;
+import adob;
+import anix;
+import aniy;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForFuDai
   extends ChatMessage
-  implements adcz
+  implements adob
 {
   private static final String TAG = "MessageForFuDai";
   public String aioTails = "";
@@ -27,7 +27,7 @@ public class MessageForFuDai
   
   protected void doParse()
   {
-    amsq.a(this.msgData, this);
+    anix.a(this.msgData, this);
   }
   
   public int getState()
@@ -78,7 +78,7 @@ public class MessageForFuDai
   
   public void prewrite()
   {
-    this.msgData = amsr.a(this);
+    this.msgData = aniy.a(this);
   }
   
   public String toString()

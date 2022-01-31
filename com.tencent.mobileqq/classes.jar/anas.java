@@ -1,27 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
 import java.util.ArrayList;
-import java.util.List;
 
-class anas
-  implements anaf
+public class anas
 {
-  anas(anao paramanao) {}
+  private anat jdField_a_of_type_Anat;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(List<anht> paramList)
+  public anas()
   {
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList();
-    }
-    if (anao.a(this.a) != null) {
-      anao.a(this.a).obtainMessage(206, localObject).sendToTarget();
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Anat = new anat();
+  }
+  
+  public anas(String paramString, anat paramanat)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Anat = paramanat;
+  }
+  
+  public anat a()
+  {
+    return this.jdField_a_of_type_Anat;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Anat == null) || (this.jdField_a_of_type_Anat.a == null) || (this.jdField_a_of_type_Anat.a.size() <= 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anas
  * JD-Core Version:    0.7.0.1
  */

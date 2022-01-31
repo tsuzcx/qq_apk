@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import acwm;
-import ajmp;
+import adhi;
+import akay;
 import android.os.Bundle;
 
 public class AIOSearchBarHelper$1
   implements Runnable
 {
-  public AIOSearchBarHelper$1(acwm paramacwm, Bundle paramBundle) {}
+  public AIOSearchBarHelper$1(adhi paramadhi, Bundle paramBundle) {}
   
   public void run()
   {
-    acwm.a(this.this$0).a(this.a.getString("uin"));
-    acwm.a(this.this$0).b(hashCode());
+    adhi.a(this.this$0).a(this.a.getString("uin"));
+    adhi.a(this.this$0).b(hashCode());
   }
 }
 

@@ -1,32 +1,26 @@
-import com.dataline.util.file.DLFileInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
+import android.os.Build.VERSION;
+import com.dataline.activities.LiteActivity;
+import com.tencent.widget.XListView;
 
-class dn
-  implements apca
+public class dn
+  implements akta
 {
-  dn(dm paramdm, DataLineMsgRecord paramDataLineMsgRecord, do paramdo) {}
+  public dn(LiteActivity paramLiteActivity) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
-    DataLineMsgSet localDataLineMsgSet = dk.a(this.jdField_a_of_type_Dm.a).a(i).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
-    if (localDataLineMsgSet != null) {
-      localDataLineMsgSet.setPaused(false);
-    }
-    if (this.jdField_a_of_type_Do.a.a != 1)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.fileMsgStatus == 1L) && (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.strMoloKey != null)) {
-        dj.e(dk.a(this.jdField_a_of_type_Dm.a));
-      }
-      dk.a(this.jdField_a_of_type_Dm.a, this.jdField_a_of_type_Do, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
+    if (this.a.isFinishing()) {}
+    while ((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) {
       return;
     }
-    dk.b(this.jdField_a_of_type_Dm.a, this.jdField_a_of_type_Do, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
+    if (paramInt > 0)
+    {
+      this.a.jdField_a_of_type_Fk.b();
+      this.a.jdField_a_of_type_Fk.notifyDataSetChanged();
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setSelectionFromBottom(paramInt, 0);
+    }
+    this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
   }
-  
-  public void b() {}
 }
 
 

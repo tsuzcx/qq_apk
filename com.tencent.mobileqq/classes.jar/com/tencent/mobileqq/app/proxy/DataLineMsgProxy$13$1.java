@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.proxy;
 
-import aken;
-import akeo;
+import aksz;
+import akta;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSetList;
 import java.util.Iterator;
@@ -19,14 +19,14 @@ class DataLineMsgProxy$13$1
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
       i = j;
-      if (aken.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0) != null)
+      if (aksz.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0) != null)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
         i = 0;
         if (localIterator.hasNext())
         {
           DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-          if (!aken.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0).insertFrontToList(localDataLineMsgRecord)) {
+          if (!aksz.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0).insertFrontToList(localDataLineMsgRecord)) {
             break label107;
           }
           i += 1;

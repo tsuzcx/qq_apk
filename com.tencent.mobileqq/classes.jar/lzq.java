@@ -1,27 +1,47 @@
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.content.Context;
+import android.view.Display;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.smallscreen.SmallScreenVideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
 class lzq
-  implements lxc
+  extends mbv
 {
-  lzq(lzo paramlzo) {}
-  
-  public void a()
+  public lzq(lzm paramlzm, Context paramContext, int paramInt)
   {
-    if (this.a.a.a != null)
-    {
-      this.a.a.a.setViewEnable(2131306670, false);
-      this.a.a.a.setViewEnable(2131297382, false);
-      this.a.a.a.setViewEnable(2131297394, false);
-      this.a.a.a.setViewEnable(2131297393, false);
-    }
+    super(paramContext, paramInt);
   }
   
-  public void b()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.a.a.e = true;
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 2130772163);
+    int j = 0;
+    try
+    {
+      i = (this.a.jdField_a_of_type_AndroidViewDisplay.getRotation() * 90 + paramInt) % 360;
+      if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI != null) {
+        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI.b(i);
+      }
+      if (this.a.jdField_a_of_type_Lzr != null) {
+        this.a.jdField_a_of_type_Lzr.a(paramInt, paramBoolean);
+      }
+      if (this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils != null) {
+        this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a(paramInt);
+      }
+      this.a.g = paramInt;
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("SmallScreenVideoController", 2, "onVideoOrientationChanged e = " + localException);
+          i = j;
+        }
+      }
+    }
   }
 }
 

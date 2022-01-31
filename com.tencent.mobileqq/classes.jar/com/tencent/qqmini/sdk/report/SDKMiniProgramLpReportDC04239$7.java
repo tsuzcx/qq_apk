@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.report;
 
-import bdnw;
-import bdsx;
+import besl;
+import beyu;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import org.json.JSONObject;
@@ -22,13 +22,13 @@ public final class SDKMiniProgramLpReportDC04239$7
     label106:
     for (String str1 = this.jdField_a_of_type_OrgJsonJSONObject.toString();; str1 = "empty")
     {
-      bdnw.a("MiniProgramLpReportDC04239", str1);
+      besl.a("MiniProgramLpReportDC04239", str1);
       if (this.jdField_a_of_type_OrgJsonJSONObject != null)
       {
         str1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("actiontype");
         localObject = this.jdField_a_of_type_OrgJsonJSONObject.optString("sub_actiontype");
         String str2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("reserves_action");
-        bdsx.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, "1", null, str1, (String)localObject, str2);
+        beyu.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, "1", null, str1, (String)localObject, str2);
       }
       return;
     }

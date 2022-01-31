@@ -1,14 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
+import com.tencent.widget.Switch;
 
-class abhj
-  implements DialogInterface.OnClickListener
+public class abhj
+  implements CompoundButton.OnCheckedChangeListener
 {
-  abhj(abhe paramabhe) {}
+  public abhj(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    boolean bool1 = this.a.a.a().isChecked();
+    boolean bool2 = ThemeUtil.isNowThemeIsNight(this.a.app, false, null);
+    int j = axmt.c();
+    int i;
+    if ((bool1) && (bool2)) {
+      i = axmt.b;
+    }
+    while (paramBoolean)
+    {
+      String str = axmo.b[i];
+      if (!aylf.a(this.a, str, new abhk(this, paramCompoundButton, bool1, i))) {
+        GeneralSettingActivity.a(this.a, paramCompoundButton, true, bool1, i);
+      }
+      return;
+      i = j;
+      if (bool1)
+      {
+        i = j;
+        if (ThemeUtil.isNowThemeIsNight(this.a.app, false, axmo.b[j])) {
+          i = axmt.d();
+        }
+      }
+    }
+    GeneralSettingActivity.a(this.a, paramCompoundButton, false, bool1, i);
   }
 }
 

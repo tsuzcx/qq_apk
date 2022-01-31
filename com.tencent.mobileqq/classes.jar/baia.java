@@ -1,15 +1,13 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
 
 public class baia
 {
-  public ImageView a;
-  public TextView a;
-  public bahx a;
+  public RollangleImageView a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baia
  * JD-Core Version:    0.7.0.1
  */

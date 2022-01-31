@@ -1,25 +1,18 @@
-class aejy
-  implements azna
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qphone.base.util.QLog;
+
+public class aejy
+  implements DialogInterface.OnClickListener
 {
-  aejy(aejb paramaejb) {}
+  public aejy(PhotoListPanel paramPhotoListPanel) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (this.a.g.equals(paramString)))
-    {
-      aejb.b(this.a, true);
-      paramString = (acyp)this.a.a(23);
-      if (paramString != null) {
-        paramString.a(true);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
-    do
-    {
-      return;
-      aejb.b(this.a, false);
-      paramString = (acyp)this.a.a(23);
-    } while (paramString == null);
-    paramString.a(false);
   }
 }
 

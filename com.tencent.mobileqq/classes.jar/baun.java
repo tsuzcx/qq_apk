@@ -1,24 +1,12 @@
-import android.view.ViewGroup;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.vip.diy.TemplateLikeView;
+import java.util.ArrayList;
 
 public class baun
-  implements URLDrawable.URLDrawableListener
 {
-  public baun(TemplateLikeView paramTemplateLikeView) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.a.a.invalidate();
-    this.a.b.invalidate();
-  }
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<String> a;
+  public int b;
 }
 
 

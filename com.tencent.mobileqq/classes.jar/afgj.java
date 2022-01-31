@@ -1,59 +1,22 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
 public class afgj
+  extends ajxl
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public afgj(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public JSONObject a()
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    try
-    {
-      localJSONObject = new JSONObject();
-      localJSONException1.printStackTrace();
-    }
-    catch (JSONException localJSONException1)
-    {
-      try
-      {
-        localJSONObject.put("entryID", this.jdField_a_of_type_Int);
-        localJSONObject.put("redDotVersion", this.jdField_b_of_type_Int);
-        localJSONObject.put("showRedDot", this.jdField_a_of_type_Boolean);
-        localJSONObject.put("userCanceled", this.jdField_b_of_type_Boolean);
-        localJSONObject.put("lastCancelTime", this.jdField_a_of_type_Long);
-        return localJSONObject;
-      }
-      catch (JSONException localJSONException2)
-      {
-        JSONObject localJSONObject;
-        break label68;
-      }
-      localJSONException1 = localJSONException1;
-      localJSONObject = null;
-    }
-    label68:
-    return localJSONObject;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryID");
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("redDotVersion");
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("showRedDot");
-      this.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("userCanceled");
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("lastCancelTime");
+    if ((paramBoolean) && (paramObject != null) && (SearchBaseFragment.a(this.a) != null) && (SearchBaseFragment.a(this.a).uin.get() == ((Long)paramObject).longValue())) {
+      SearchBaseFragment.a(this.a).relation.set(SearchBaseFragment.a(this.a).relation.get() & 0x10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afgj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,166 +1,74 @@
 import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class arvg
-  extends arvm
 {
-  private aclw jdField_a_of_type_Aclw;
-  boolean jdField_a_of_type_Boolean = false;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public arvg(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, ViewGroup paramViewGroup)
+  public arvg(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie)
   {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramViewGroup);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    b();
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
+    {
+      this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+    }
+  }
+  
+  private void c()
+  {
+    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1);
+    axqw.b(null, "CliOper", "", "", "0X800A763", "0X800A763", 0, 0, "", "0", "0", "");
+  }
+  
+  private void d()
+  {
+    acxv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().setCanLock(false);
+    }
+    aefv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800407F", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
   }
   
   public void a()
   {
-    super.a();
-    if (this.jdField_a_of_type_Aclw != null)
-    {
-      this.jdField_a_of_type_Aclw.a(null);
-      this.jdField_a_of_type_Aclw = null;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    if (this.jdField_a_of_type_Aclw == null) {
-      return;
-    }
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_Aclw.c(true);
-      this.jdField_a_of_type_Aclw.b(true);
-      this.jdField_a_of_type_Aclw.d();
-      this.jdField_a_of_type_Aclw.a(3);
-      return;
-    }
-    this.jdField_a_of_type_Aclw.b(false);
-    this.jdField_a_of_type_Aclw.c(false);
-    this.jdField_a_of_type_Aclw.a(4);
-  }
-  
-  public void a(arve paramarve)
-  {
-    super.a(paramarve);
-    if (this.jdField_a_of_type_Aclw != null)
-    {
-      if (a() != 0) {
-        this.jdField_a_of_type_Aclw.b(false);
-      }
-      this.jdField_a_of_type_Aclw.a(a(), a());
-      this.jdField_a_of_type_Aclw.b();
-    }
-  }
-  
-  public boolean a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    if (this.jdField_a_of_type_Aclw == null)
-    {
-      paramBundle = null;
-      Bundle localBundle = a();
-      if (localBundle != null) {
-        paramBundle = localBundle.getString("uin");
-      }
-      this.jdField_a_of_type_Aclw = new aclw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, paramBundle);
-      this.jdField_a_of_type_Aclw.a(this);
-      b(1);
-      a(this.jdField_a_of_type_Aclw.a());
-    }
-    b(this.jdField_a_of_type_Aclw.a());
-    if (a() != null) {
-      this.jdField_a_of_type_Aclw.a(a(), a());
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Aclw.h();
-    }
-    return true;
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
     if (QLog.isColorLevel()) {
-      QLog.d("IntimateInfoViewDelegete", 2, "doOnResume() called");
+      QLog.d("LocationSheet", 2, new Object[] { "show: invoked. ", " sessionInfo: ", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo });
     }
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Aclw == null) {
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {
       return;
     }
-    if (a() == 0)
+    Object localObject = (ajxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    if (((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aeoe)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && (!((ajxn)localObject).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
     {
-      this.jdField_a_of_type_Aclw.b(true);
-      this.jdField_a_of_type_Aclw.d();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aclw.o();
-      this.jdField_a_of_type_Aclw.h();
-      return;
-      this.jdField_a_of_type_Aclw.b(false);
-    }
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("IntimateInfoViewDelegete", 2, "doOnPause() called");
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Aclw == null) {
+      d();
       return;
     }
-    this.jdField_a_of_type_Aclw.g();
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Aclw == null) {
-      return;
-    }
-    this.jdField_a_of_type_Aclw.a(true);
-    this.jdField_a_of_type_Aclw.b();
-  }
-  
-  public void f() {}
-  
-  public void g()
-  {
-    super.g();
-    if (this.jdField_a_of_type_Aclw == null) {
-      return;
-    }
-    this.jdField_a_of_type_Aclw.i();
-  }
-  
-  public void h() {}
-  
-  public void i()
-  {
-    super.i();
-    if (this.jdField_a_of_type_Aclw != null) {
-      this.jdField_a_of_type_Aclw.q();
-    }
-  }
-  
-  public void j()
-  {
-    super.j();
-    if (this.jdField_a_of_type_Aclw != null) {
-      this.jdField_a_of_type_Aclw.r();
-    }
+    localObject = bfol.a(this.jdField_a_of_type_AndroidContentContext);
+    ((bfol)localObject).a(2131719257, 0);
+    ((bfol)localObject).a(2131719489, 0);
+    ((bfol)localObject).c(2131690596);
+    ((bfol)localObject).a(new arvh(this, (bfol)localObject));
+    ((bfol)localObject).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arvg
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ class LogicDataManager$73
   
   public String getValue()
   {
-    return "我在这里";
+    return "中国";
   }
 }
 

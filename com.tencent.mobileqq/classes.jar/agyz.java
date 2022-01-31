@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
 class agyz
-  implements View.OnClickListener
+  extends agyv
 {
-  agyz(agxq paramagxq) {}
+  agyz(agyy paramagyy) {}
   
-  public void onClick(View paramView) {}
+  public void a(int paramInt)
+  {
+    if (((paramInt == 1) || (paramInt == 10)) && (this.a.a.a != null)) {
+      this.a.a.a.dismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agyz
  * JD-Core Version:    0.7.0.1
  */

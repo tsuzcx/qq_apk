@@ -1,98 +1,96 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import android.view.ViewStub;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import java.io.ByteArrayInputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class amvr
-  implements Handler.Callback
+  extends ampb<amvs>
 {
-  public amvr(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public int a()
   {
-    switch (paramMessage.what)
-    {
+    return 252;
+  }
+  
+  @NonNull
+  public amvs a(int paramInt)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    String str = bbjn.m(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin());
+    return new amvs(bbjn.n(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin()), str);
+  }
+  
+  @Nullable
+  public amvs a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi == null) || (paramArrayOfampi.length == 0)) {
+      return null;
     }
-    label192:
-    do
+    paramArrayOfampi = paramArrayOfampi[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onParsed, content:" + paramArrayOfampi);
+    }
+    try
     {
-      return false;
-      if ((!this.a.a()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (paramMessage.obj != null))
+      paramArrayOfampi = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramArrayOfampi.getBytes("utf-8")));
+      NodeList localNodeList = paramArrayOfampi.getElementsByTagName("video_redbag_config");
+      if ((localNodeList != null) && (localNodeList.getLength() > 0))
       {
-        paramMessage = (List)paramMessage.obj;
-        this.a.jdField_a_of_type_Ahai.a(paramMessage);
-        this.a.jdField_a_of_type_JavaUtilList.clear();
-        this.a.jdField_a_of_type_JavaUtilList.addAll(paramMessage);
-        this.a.b();
-        int j = this.a.a(paramMessage);
-        asfc.a(this.a.app.getCurrentAccountUin(), "nearby_msg_tab_last_num", Integer.valueOf(j));
-        Object localObject;
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder().append("BaseMsgBoxActivity, MSG_REFRESH_LIST_UI, lastUnReadNum=").append(this.a.jdField_c_of_type_Int).append(", newUnReadNum=").append(j).append(", msgList.size=");
-          if (paramMessage == null)
-          {
-            i = 0;
-            QLog.d("nearby.msgbox.tab", 2, i + ", showRedDot=" + this.a.e);
-          }
-        }
-        else if (this.a.d)
-        {
-          localObject = this.a.jdField_b_of_type_MqqOsMqqHandler.obtainMessage(1);
-          this.a.jdField_b_of_type_MqqOsMqqHandler.removeMessages(1);
-          ((Message)localObject).arg1 = j;
-          this.a.jdField_b_of_type_MqqOsMqqHandler.sendMessageDelayed((Message)localObject, 500L);
-          if (paramMessage.size() != 0) {
-            break label403;
-          }
-          this.a.jdField_c_of_type_AndroidViewView.setVisibility(0);
-          if (!BaseMsgBoxActivity.a(this.a)) {
-            break label418;
-          }
-          this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        }
-        while (!this.a.jdField_a_of_type_Boolean)
-        {
-          this.a.jdField_a_of_type_AndroidViewViewStub.setVisibility(8);
-          this.a.jdField_a_of_type_Boolean = true;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("Q.msg_box", 2, "init ui cost time : " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
-          return false;
-          i = paramMessage.size();
-          break label192;
-          this.a.jdField_c_of_type_AndroidViewView.setVisibility(8);
-          break label298;
-          this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        }
+        paramArrayOfampi = new amvs(paramArrayOfampi.getElementsByTagName("resUrl").item(0).getFirstChild().getNodeValue(), paramArrayOfampi.getElementsByTagName("resMd5").item(0).getFirstChild().getNodeValue());
+        return paramArrayOfampi;
       }
-      this.a.jdField_b_of_type_Boolean = true;
-      return false;
-      this.a.e = true;
-      int i = paramMessage.arg1;
-      this.a.jdField_c_of_type_Int = i;
-      if (this.a.jdField_c_of_type_Int < 0) {
-        this.a.e = false;
-      }
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch == null) || (!this.a.e));
-    label298:
-    NearbyActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.a.jdField_c_of_type_Int);
-    label403:
-    label418:
+    }
+    catch (Exception paramArrayOfampi)
+    {
+      QLog.e("RedBagVideoResProcessor", 1, "handleVideoRedbagConfig failed" + paramArrayOfampi);
+    }
+    return null;
+  }
+  
+  public Class<amvs> a()
+  {
+    return amvs.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onReqFailed");
+    }
+  }
+  
+  public void a(amvs paramamvs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onUpdate");
+    }
+  }
+  
+  public int b()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    return bbjn.am(localQQAppInterface.getApp(), localQQAppInterface.c());
+  }
+  
+  public boolean b()
+  {
     return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amvr
  * JD-Core Version:    0.7.0.1
  */

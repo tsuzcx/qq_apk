@@ -1,44 +1,51 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimPluginProxyService;
-
-public class bfks
-  implements bfky
+public final class bfks
+  implements Cloneable
 {
-  public bfks(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC) {}
+  private int a;
   
-  public void a()
+  public bfks(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bfkr.a, 2, "QQPimGetTipsInfoIPC.hasInstalled() ");
-    }
-    QQPimPluginProxyService.a(QQPimGetTipsInfoIPC.a(this.a));
+    this.a = paramInt;
   }
   
-  public void a(float paramFloat)
+  public bfks(byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bfkr.a, 2, "QQPimGetTipsInfoIPC.downloading() " + paramFloat);
-    }
+    this(paramArrayOfByte, 0);
   }
   
-  public void a(int paramInt)
+  public bfks(byte[] paramArrayOfByte, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bfkr.a, 2, "QQPimGetTipsInfoIPC.downloadError() " + paramInt);
-    }
+    this.a = (paramArrayOfByte[(paramInt + 1)] << 8 & 0xFF00);
+    this.a += (paramArrayOfByte[paramInt] & 0xFF);
   }
   
-  public void b()
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bfkr.a, 2, "QQPimGetTipsInfoIPC.downloadBegin()");
+    return this.a;
+  }
+  
+  public byte[] a()
+  {
+    return new byte[] { (byte)(this.a & 0xFF), (byte)((this.a & 0xFF00) >> 8) };
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof bfks))) {}
+    while (this.a != ((bfks)paramObject).a()) {
+      return false;
     }
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfks
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,23 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedRecord;
-import com.tencent.qqinterface.CommonCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.gallery.presenter.AIOGalleryBasePresenter;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 class aqof
-  implements CustomizedRecord
+  implements DialogInterface.OnDismissListener
 {
-  aqof(aqod paramaqod) {}
+  aqof(aqoe paramaqoe) {}
   
-  public void getRecordInfo(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    aqpc.a().b(paramBundle, paramCommonCallback);
+    if (ImmersiveUtils.isSupporImmersive() == 1) {
+      this.a.a.aG_();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqof
  * JD-Core Version:    0.7.0.1
  */

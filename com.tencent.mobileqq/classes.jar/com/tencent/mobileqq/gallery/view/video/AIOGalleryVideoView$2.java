@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.gallery.view.video;
 
-import apvq;
+import aqnm;
+import aqpr;
 
 public class AIOGalleryVideoView$2
   implements Runnable
 {
-  public AIOGalleryVideoView$2(apvq paramapvq) {}
+  public AIOGalleryVideoView$2(aqpr paramaqpr) {}
   
   public void run()
   {
-    this.this$0.j();
+    this.this$0.a(this.this$0.jdField_a_of_type_Aqnm.c(), "", "", this.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
   }
 }
 

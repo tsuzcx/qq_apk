@@ -1,6 +1,5 @@
 package com.dataline.util.widget;
 
-import amyk;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -9,13 +8,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import apck;
-import axwd;
+import anos;
+import apue;
+import aywk;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
-import fa;
+import gt;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -68,7 +68,7 @@ public class AsyncImageView
       }
       String str2;
       String str1;
-      if (apck.a(paramString) == 2)
+      if (apue.a(paramString) == 2)
       {
         str2 = "videothumb";
         str1 = paramString;
@@ -134,7 +134,7 @@ public class AsyncImageView
     {
       paramString = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
       setImageDrawable(paramString);
-      paramString.setURLDrawableListener(new fa(this));
+      paramString.setURLDrawableListener(new gt(this));
       return;
       if (this.jdField_b_of_type_Boolean)
       {
@@ -165,17 +165,17 @@ public class AsyncImageView
     int i = this.jdField_a_of_type_Int;
     int j = this.jdField_b_of_type_Int;
     Resources localResources = getResources();
-    if ((axwd.b() instanceof SkinnableBitmapDrawable))
+    if ((aywk.b() instanceof SkinnableBitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new amyk(localResources, ((SkinnableBitmapDrawable)axwd.b()).getBitmap(), i, j, -921103);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new anos(localResources, ((SkinnableBitmapDrawable)aywk.b()).getBitmap(), i, j, -921103);
       return;
     }
-    if ((axwd.b() instanceof BitmapDrawable))
+    if ((aywk.b() instanceof BitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new amyk(localResources, ((BitmapDrawable)axwd.b()).getBitmap(), i, j, -921103);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new anos(localResources, ((BitmapDrawable)aywk.b()).getBitmap(), i, j, -921103);
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = axwd.b();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = aywk.b();
   }
   
   public void setImageDrawableDefault()

@@ -1,30 +1,40 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
 class adkb
-  implements bbgb
+  implements adke
 {
-  adkb(adjz paramadjz) {}
+  adkb(adka paramadka) {}
   
-  public void a(View paramView)
+  public void a(View paramView, IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
   {
-    aciy.n = true;
-    if (this.a.a()) {
-      return;
-    }
-    Object localObject = (FragmentActivity)paramView.getContext();
-    if (localObject != null) {}
-    for (localObject = ((FragmentActivity)localObject).getChatFragment();; localObject = null)
+    int j;
+    int i;
+    if (adka.a(this.a) != null)
     {
-      if (localObject == null)
+      j = adka.a(this.a).getChildCount();
+      if (j > 0) {
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      if (i < j)
       {
-        ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+        paramView = adka.a(this.a).getChildAt(i).getTag();
+        if (((paramView instanceof IntimateInfo.MemoryDayInfo)) && (((IntimateInfo.MemoryDayInfo)paramView).dateType == paramMemoryDayInfo.dateType)) {
+          adka.a(this.a).removeViewAt(i);
+        }
+      }
+      else
+      {
+        if (adka.a(this.a).getChildCount() <= 0) {
+          adka.a(this.a).setVisibility(8);
+        }
         return;
       }
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      return;
+      i += 1;
     }
   }
 }

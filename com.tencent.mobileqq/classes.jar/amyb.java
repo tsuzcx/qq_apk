@@ -1,56 +1,108 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
+@Deprecated
 public class amyb
+  extends ampb<amya>
 {
-  public amyc a;
-  public String a;
-  
-  public JSONObject a()
+  public int a()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("user_id", this.jdField_a_of_type_Amyc.jdField_a_of_type_JavaLangString);
-      localJSONObject2.put("source_md5", this.jdField_a_of_type_Amyc.jdField_b_of_type_JavaLangString);
-      localJSONObject2.put("source_url", this.jdField_a_of_type_Amyc.c);
-      localJSONArray = new JSONArray();
-      localIterator = this.jdField_a_of_type_Amyc.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        localJSONArray.put((String)localIterator.next());
+    return 533;
+  }
+  
+  @NonNull
+  public amya a(int paramInt)
+  {
+    return new amya();
+  }
+  
+  @Nullable
+  public amya a(ampi[] paramArrayOfampi)
+  {
+    QLog.i("QFileExcitingConfigProcessor<FileAssistant>", 1, "onParsed");
+    if (paramArrayOfampi != null) {
+      try
+      {
+        if (paramArrayOfampi.length > 0)
+        {
+          paramArrayOfampi = (amya)ampw.a(paramArrayOfampi[0].a, amya.class);
+          return paramArrayOfampi;
+        }
       }
-      localException.put("expose_md5s", localJSONArray);
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("DoutuReportData", 2, "convert error:" + localException);
+      catch (QStorageInstantiateException paramArrayOfampi)
+      {
+        QLog.e("QFileExcitingConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfampi.getMessage());
       }
-      return localJSONObject1;
     }
-    JSONArray localJSONArray = new JSONArray();
-    Iterator localIterator = this.jdField_a_of_type_Amyc.jdField_b_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      localJSONArray.put((String)localIterator.next());
+    return null;
+  }
+  
+  public Class<amya> a()
+  {
+    return amya.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.i("QFileExcitingConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
+  }
+  
+  public void a(amya paramamya)
+  {
+    if (paramamya != null)
+    {
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localObject instanceof QQAppInterface)) {
+        break label152;
+      }
     }
-    localException.put("expose_urls", localJSONArray);
-    localException.put("click_md5", this.jdField_a_of_type_Amyc.d);
-    localException.put("click_url", this.jdField_a_of_type_Amyc.e);
-    localException.put("aio_type", this.jdField_a_of_type_Amyc.f);
-    localException.put("mobile_type", this.jdField_a_of_type_Amyc.g);
-    localException.put("to_user_id", this.jdField_a_of_type_Amyc.h);
-    localJSONObject1.put("dcId", this.jdField_a_of_type_JavaLangString);
-    localJSONObject1.put("data", localException);
-    return localJSONObject1;
+    label152:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject != null)
+      {
+        if (TextUtils.isEmpty(paramamya.a)) {
+          paramamya.a = "{}";
+        }
+        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("file_exciting_" + ((QQAppInterface)localObject).c(), 0).edit();
+        localEditor.putString("qfile_file_exciting", paramamya.a);
+        localEditor.apply();
+        QLog.i("QFileExcitingConfigProcessor<FileAssistant>", 1, "save download config [" + paramamya.a + "]");
+        localObject = (aows)((QQAppInterface)localObject).getManager(317);
+        if (localObject != null) {
+          ((aows)localObject).a(paramamya);
+        }
+      }
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amyb
  * JD-Core Version:    0.7.0.1
  */

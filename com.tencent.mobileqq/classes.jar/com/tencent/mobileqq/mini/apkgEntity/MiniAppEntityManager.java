@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.mini.apkgEntity;
 
-import atmp;
-import atmr;
+import aukn;
+import aukp;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import mqq.manager.Manager;
 
@@ -13,7 +12,7 @@ public class MiniAppEntityManager
   private static final long APPINFO_DELETE_TIME = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_appinfoentity_interval_time", 172800000L);
   private static final long OTHER_DELETE_TIME = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_otherentity_interval_time", 345600000L);
   private static final String TAG = "MiniAppEntityManager";
-  private atmp mEntityManager = this.miniAppEntityManagerFactory.createEntityManager();
+  private aukn mEntityManager = this.miniAppEntityManagerFactory.createEntityManager();
   private MiniAppEntityManagerFactory miniAppEntityManagerFactory = getEntityManagerFactory(paramString);
   
   public MiniAppEntityManager(String paramString) {}
@@ -39,25 +38,123 @@ public class MiniAppEntityManager
     finally {}
   }
   
+  /* Error */
   public void checkDB()
   {
-    try
-    {
-      QLog.d("miniapp-db", 1, "checkDB");
-      long l1 = System.currentTimeMillis() - APPINFO_DELETE_TIME;
-      long l2 = System.currentTimeMillis();
-      long l3 = OTHER_DELETE_TIME;
-      execSQL(String.format("DELETE FROM %s WHERE timeStamp < '%s';", new Object[] { MiniAppInfoEntity.class.getSimpleName(), Long.valueOf(l1) }));
-      execSQL(String.format("DELETE FROM %s WHERE timeStamp < '%s';", new Object[] { MiniAppByIdEntity.class.getSimpleName(), Long.valueOf(l1) }));
-      execSQL(String.format("DELETE FROM %s WHERE timeStamp < '%s';", new Object[] { MiniAppByLinkEntity.class.getSimpleName(), Long.valueOf(l1) }));
-      execSQL(String.format("DELETE FROM %s WHERE timeStamp < '%s';", new Object[] { MiniAppShowInfoEntity.class.getSimpleName(), Long.valueOf(l2 - l3) }));
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 85
+    //   4: iconst_1
+    //   5: ldc 86
+    //   7: invokestatic 92	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   10: invokestatic 98	java/lang/System:currentTimeMillis	()J
+    //   13: getstatic 37	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:APPINFO_DELETE_TIME	J
+    //   16: lsub
+    //   17: lstore_1
+    //   18: invokestatic 98	java/lang/System:currentTimeMillis	()J
+    //   21: lstore_3
+    //   22: getstatic 43	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:OTHER_DELETE_TIME	J
+    //   25: lstore 5
+    //   27: aload_0
+    //   28: ldc 100
+    //   30: iconst_2
+    //   31: anewarray 4	java/lang/Object
+    //   34: dup
+    //   35: iconst_0
+    //   36: ldc 102
+    //   38: invokevirtual 108	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   41: aastore
+    //   42: dup
+    //   43: iconst_1
+    //   44: lload_1
+    //   45: invokestatic 114	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   48: aastore
+    //   49: invokestatic 120	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   52: invokevirtual 124	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
+    //   55: pop
+    //   56: aload_0
+    //   57: ldc 100
+    //   59: iconst_2
+    //   60: anewarray 4	java/lang/Object
+    //   63: dup
+    //   64: iconst_0
+    //   65: ldc 126
+    //   67: invokevirtual 108	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   70: aastore
+    //   71: dup
+    //   72: iconst_1
+    //   73: lload_1
+    //   74: invokestatic 114	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   77: aastore
+    //   78: invokestatic 120	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   81: invokevirtual 124	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
+    //   84: pop
+    //   85: aload_0
+    //   86: ldc 100
+    //   88: iconst_2
+    //   89: anewarray 4	java/lang/Object
+    //   92: dup
+    //   93: iconst_0
+    //   94: ldc 128
+    //   96: invokevirtual 108	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   99: aastore
+    //   100: dup
+    //   101: iconst_1
+    //   102: lload_1
+    //   103: invokestatic 114	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   106: aastore
+    //   107: invokestatic 120	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   110: invokevirtual 124	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
+    //   113: pop
+    //   114: aload_0
+    //   115: ldc 100
+    //   117: iconst_2
+    //   118: anewarray 4	java/lang/Object
+    //   121: dup
+    //   122: iconst_0
+    //   123: ldc 130
+    //   125: invokevirtual 108	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   128: aastore
+    //   129: dup
+    //   130: iconst_1
+    //   131: lload_3
+    //   132: lload 5
+    //   134: lsub
+    //   135: invokestatic 114	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   138: aastore
+    //   139: invokestatic 120	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   142: invokevirtual 124	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
+    //   145: pop
+    //   146: aload_0
+    //   147: monitorexit
+    //   148: return
+    //   149: astore 7
+    //   151: ldc 13
+    //   153: iconst_1
+    //   154: ldc 132
+    //   156: aload 7
+    //   158: invokestatic 136	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   161: goto -15 -> 146
+    //   164: astore 7
+    //   166: aload_0
+    //   167: monitorexit
+    //   168: aload 7
+    //   170: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	171	0	this	MiniAppEntityManager
+    //   17	86	1	l1	long
+    //   21	111	3	l2	long
+    //   25	108	5	l3	long
+    //   149	8	7	localThrowable	java.lang.Throwable
+    //   164	5	7	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   27	146	149	java/lang/Throwable
+    //   2	27	164	finally
+    //   27	146	164	finally
+    //   151	161	164	finally
   }
   
   /* Error */
@@ -67,7 +164,7 @@ public class MiniAppEntityManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Latmp;
+    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Laukn;
     //   6: astore_3
     //   7: aload_3
     //   8: ifnonnull +9 -> 17
@@ -78,16 +175,16 @@ public class MiniAppEntityManager
     //   15: iload_2
     //   16: ireturn
     //   17: aload_0
-    //   18: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Latmp;
-    //   21: new 131	java/lang/StringBuilder
+    //   18: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Laukn;
+    //   21: new 139	java/lang/StringBuilder
     //   24: dup
-    //   25: invokespecial 132	java/lang/StringBuilder:<init>	()V
-    //   28: ldc 134
-    //   30: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   28: ldc 142
+    //   30: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   33: aload_1
-    //   34: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   40: invokevirtual 146	atmp:b	(Ljava/lang/String;)Z
+    //   34: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   40: invokevirtual 154	aukn:b	(Ljava/lang/String;)Z
     //   43: istore_2
     //   44: goto -31 -> 13
     //   47: astore_1
@@ -100,7 +197,7 @@ public class MiniAppEntityManager
     //   0	52	0	this	MiniAppEntityManager
     //   0	52	1	paramString	String
     //   12	32	2	bool	boolean
-    //   6	2	3	localatmp	atmp
+    //   6	2	3	localaukn	aukn
     // Exception table:
     //   from	to	target	type
     //   2	7	47	finally
@@ -114,7 +211,7 @@ public class MiniAppEntityManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Latmp;
+    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Laukn;
     //   6: astore_3
     //   7: aload_3
     //   8: ifnonnull +9 -> 17
@@ -125,9 +222,9 @@ public class MiniAppEntityManager
     //   15: iload_2
     //   16: ireturn
     //   17: aload_0
-    //   18: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Latmp;
+    //   18: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Laukn;
     //   21: aload_1
-    //   22: invokevirtual 146	atmp:b	(Ljava/lang/String;)Z
+    //   22: invokevirtual 154	aukn:b	(Ljava/lang/String;)Z
     //   25: istore_2
     //   26: goto -13 -> 13
     //   29: astore_1
@@ -140,7 +237,7 @@ public class MiniAppEntityManager
     //   0	34	0	this	MiniAppEntityManager
     //   0	34	1	paramString	String
     //   12	14	2	bool	boolean
-    //   6	2	3	localatmp	atmp
+    //   6	2	3	localaukn	aukn
     // Exception table:
     //   from	to	target	type
     //   2	7	29	finally
@@ -148,13 +245,13 @@ public class MiniAppEntityManager
   }
   
   /* Error */
-  public atmo find(Class<? extends atmo> paramClass, String paramString, String[] paramArrayOfString)
+  public aukm find(java.lang.Class<? extends aukm> paramClass, String paramString, String[] paramArrayOfString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Latmp;
+    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Laukn;
     //   6: astore 4
     //   8: aload 4
     //   10: ifnonnull +9 -> 19
@@ -165,7 +262,7 @@ public class MiniAppEntityManager
     //   17: aload_1
     //   18: areturn
     //   19: aload_0
-    //   20: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Latmp;
+    //   20: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Laukn;
     //   23: aload_1
     //   24: iconst_1
     //   25: aload_2
@@ -173,15 +270,15 @@ public class MiniAppEntityManager
     //   27: aconst_null
     //   28: aconst_null
     //   29: aconst_null
-    //   30: ldc 150
-    //   32: invokevirtual 154	atmp:a	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   30: ldc 158
+    //   32: invokevirtual 162	aukn:a	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
     //   35: astore_1
     //   36: aload_1
     //   37: ifnull +17 -> 54
     //   40: aload_1
     //   41: iconst_0
-    //   42: invokeinterface 160 2 0
-    //   47: checkcast 162	atmo
+    //   42: invokeinterface 168 2 0
+    //   47: checkcast 170	aukm
     //   50: astore_1
     //   51: goto -36 -> 15
     //   54: aconst_null
@@ -195,10 +292,10 @@ public class MiniAppEntityManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	64	0	this	MiniAppEntityManager
-    //   0	64	1	paramClass	Class<? extends atmo>
+    //   0	64	1	paramClass	java.lang.Class<? extends aukm>
     //   0	64	2	paramString	String
     //   0	64	3	paramArrayOfString	String[]
-    //   6	3	4	localatmp	atmp
+    //   6	3	4	localaukn	aukn
     // Exception table:
     //   from	to	target	type
     //   2	8	59	finally
@@ -206,7 +303,7 @@ public class MiniAppEntityManager
     //   40	51	59	finally
   }
   
-  public atmr getTransaction()
+  public aukp getTransaction()
   {
     if (this.mEntityManager == null) {
       return null;
@@ -215,7 +312,7 @@ public class MiniAppEntityManager
   }
   
   /* Error */
-  public boolean insertOrReplaceEntity(atmo paramatmo)
+  public boolean insertOrReplaceEntity(aukm paramaukm)
   {
     // Byte code:
     //   0: iconst_0
@@ -223,7 +320,7 @@ public class MiniAppEntityManager
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Latmp;
+    //   5: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Laukn;
     //   8: astore_3
     //   9: aload_3
     //   10: ifnonnull +7 -> 17
@@ -232,32 +329,32 @@ public class MiniAppEntityManager
     //   15: iload_2
     //   16: ireturn
     //   17: aload_1
-    //   18: invokevirtual 174	atmo:getStatus	()I
+    //   18: invokevirtual 182	aukm:getStatus	()I
     //   21: sipush 1000
     //   24: if_icmpne +26 -> 50
     //   27: aload_0
-    //   28: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Latmp;
+    //   28: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Laukn;
     //   31: aload_1
-    //   32: invokevirtual 177	atmp:b	(Latmo;)V
+    //   32: invokevirtual 185	aukn:b	(Laukm;)V
     //   35: aload_1
-    //   36: invokevirtual 174	atmo:getStatus	()I
+    //   36: invokevirtual 182	aukm:getStatus	()I
     //   39: sipush 1001
     //   42: if_icmpne -29 -> 13
     //   45: iconst_1
     //   46: istore_2
     //   47: goto -34 -> 13
     //   50: aload_1
-    //   51: invokevirtual 174	atmo:getStatus	()I
+    //   51: invokevirtual 182	aukm:getStatus	()I
     //   54: sipush 1001
     //   57: if_icmpeq +13 -> 70
     //   60: aload_1
-    //   61: invokevirtual 174	atmo:getStatus	()I
+    //   61: invokevirtual 182	aukm:getStatus	()I
     //   64: sipush 1002
     //   67: if_icmpne -54 -> 13
     //   70: aload_0
-    //   71: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Latmp;
+    //   71: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Laukn;
     //   74: aload_1
-    //   75: invokevirtual 179	atmp:a	(Latmo;)Z
+    //   75: invokevirtual 187	aukn:a	(Laukm;)Z
     //   78: istore_2
     //   79: goto -66 -> 13
     //   82: astore_1
@@ -268,9 +365,9 @@ public class MiniAppEntityManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	87	0	this	MiniAppEntityManager
-    //   0	87	1	paramatmo	atmo
+    //   0	87	1	paramaukm	aukm
     //   1	78	2	bool	boolean
-    //   8	2	3	localatmp	atmp
+    //   8	2	3	localaukn	aukn
     // Exception table:
     //   from	to	target	type
     //   4	9	82	finally
@@ -292,13 +389,13 @@ public class MiniAppEntityManager
   }
   
   /* Error */
-  public java.util.List<? extends atmo> queryEntity(Class<? extends atmo> paramClass, boolean paramBoolean, String paramString1, String[] paramArrayOfString, String paramString2, String paramString3, String paramString4, String paramString5)
+  public java.util.List<? extends aukm> queryEntity(java.lang.Class<? extends aukm> paramClass, boolean paramBoolean, String paramString1, String[] paramArrayOfString, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Latmp;
+    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Laukn;
     //   6: astore 9
     //   8: aload 9
     //   10: ifnonnull +9 -> 19
@@ -309,7 +406,7 @@ public class MiniAppEntityManager
     //   17: aload_1
     //   18: areturn
     //   19: aload_0
-    //   20: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Latmp;
+    //   20: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Laukn;
     //   23: aload_1
     //   24: iload_2
     //   25: aload_3
@@ -318,7 +415,7 @@ public class MiniAppEntityManager
     //   30: aload 6
     //   32: aload 7
     //   34: aload 8
-    //   36: invokevirtual 154	atmp:a	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   36: invokevirtual 162	aukn:a	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
     //   39: astore_1
     //   40: goto -25 -> 15
     //   43: astore_1
@@ -329,7 +426,7 @@ public class MiniAppEntityManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	48	0	this	MiniAppEntityManager
-    //   0	48	1	paramClass	Class<? extends atmo>
+    //   0	48	1	paramClass	java.lang.Class<? extends aukm>
     //   0	48	2	paramBoolean	boolean
     //   0	48	3	paramString1	String
     //   0	48	4	paramArrayOfString	String[]
@@ -337,7 +434,7 @@ public class MiniAppEntityManager
     //   0	48	6	paramString3	String
     //   0	48	7	paramString4	String
     //   0	48	8	paramString5	String
-    //   6	3	9	localatmp	atmp
+    //   6	3	9	localaukn	aukn
     // Exception table:
     //   from	to	target	type
     //   2	8	43	finally
@@ -345,7 +442,7 @@ public class MiniAppEntityManager
   }
   
   /* Error */
-  public boolean removeEntity(atmo paramatmo)
+  public boolean removeEntity(aukm paramaukm)
   {
     // Byte code:
     //   0: iconst_0
@@ -353,7 +450,7 @@ public class MiniAppEntityManager
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Latmp;
+    //   5: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Laukn;
     //   8: astore_3
     //   9: aload_3
     //   10: ifnonnull +7 -> 17
@@ -364,9 +461,9 @@ public class MiniAppEntityManager
     //   17: aload_1
     //   18: ifnull -5 -> 13
     //   21: aload_0
-    //   22: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Latmp;
+    //   22: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Laukn;
     //   25: aload_1
-    //   26: invokevirtual 190	atmp:b	(Latmo;)Z
+    //   26: invokevirtual 198	aukn:b	(Laukm;)Z
     //   29: istore_2
     //   30: goto -17 -> 13
     //   33: astore_1
@@ -377,9 +474,9 @@ public class MiniAppEntityManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	38	0	this	MiniAppEntityManager
-    //   0	38	1	paramatmo	atmo
+    //   0	38	1	paramaukm	aukm
     //   1	29	2	bool	boolean
-    //   8	2	3	localatmp	atmp
+    //   8	2	3	localaukn	aukn
     // Exception table:
     //   from	to	target	type
     //   4	9	33	finally

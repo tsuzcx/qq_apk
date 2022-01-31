@@ -1,70 +1,261 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.SendWebPicActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class axlj
-  extends Binder
-  implements axli
+public class axlj
 {
-  private static final String DESCRIPTOR = "com.tencent.mobileqq.theme.ISwitchCallback";
-  static final int TRANSACTION_beginSwitch = 1;
-  static final int TRANSACTION_doSwitch = 3;
-  static final int TRANSACTION_onProgress = 2;
-  static final int TRANSACTION_postSwitch = 4;
+  private static int jdField_a_of_type_Int;
+  public static String a;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "N1T", "ZTE A2015" };
+  private static String jdField_b_of_type_JavaLangString;
+  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = new String[0];
+  private static String c = "";
   
-  public axlj()
+  static
   {
-    attachInterface(this, "com.tencent.mobileqq.theme.ISwitchCallback");
+    jdField_a_of_type_JavaLangString = "ShortVideoGuideUtil";
   }
   
-  public static axli asInterface(IBinder paramIBinder)
+  public static void a(Activity paramActivity)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof axli))) {
-      return (axli)localIInterface;
-    }
-    return new axlk(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    if (!TextUtils.isEmpty(c))
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.theme.ISwitchCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-      beginSwitch();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-      onProgress(paramParcel1.readLong(), paramParcel1.readLong());
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-      doSwitch(paramParcel1.readString(), paramParcel1.readString());
-      return true;
+      Intent localIntent = new Intent();
+      localIntent.setClassName("com.tencent.mobileqq", SendWebPicActivity.class.getName());
+      localIntent.putExtra("shareto_web_mode", jdField_a_of_type_Int);
+      localIntent.putExtra("edit_video_call_back", jdField_b_of_type_JavaLangString);
+      localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", c);
+      localIntent.setFlags(536870912);
+      paramActivity.startActivity(localIntent);
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-    postSwitch(paramParcel1.readInt());
+  }
+  
+  public static void a(AppInterface paramAppInterface, Activity paramActivity, int paramInt)
+  {
+    paramAppInterface = new Intent(paramActivity, StoryTransitionActivity.class);
+    paramAppInterface.putExtra("jump_action", 6);
+    paramAppInterface.putExtra("web_target_type", paramInt);
+    paramActivity.startActivity(paramAppInterface);
+  }
+  
+  public static boolean a(AppInterface paramAppInterface)
+  {
+    if (!b(paramAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "isGuideReaded isPubicSo= false");
+      }
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "isGuideReaded isPubicSo= true");
+    }
+    return true;
+  }
+  
+  public static boolean a(AppInterface paramAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, String paramString19, String paramString20, String paramString21, bihl parambihl)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "startPTVActivity , supportVideo:" + paramString1 + ", supportPhoto:" + paramString2 + ", cameramode:" + paramString3 + ", beauty:" + paramString4 + ", unfoldDDStr:" + paramString6 + ", dDCategoryName:" + paramString7 + ", dDItemID:" + paramString8 + ", unfoldFilter:" + paramString10 + ", filterCategoryName:" + paramString11 + ", filterItemID:" + paramString12 + ", dealtype:" + paramString14 + ", activityType:" + paramString15 + ", activityId:" + paramString16 + ", callback:" + paramString17 + " subtitle:" + paramString13 + ", callerType:" + paramString18 + ", topicId:" + paramString19 + ", topicName:" + paramString20 + ", adTag=" + paramString21);
+    }
+    boolean bool1 = "1".equals(paramString1);
+    boolean bool2 = "1".equals(paramString2);
+    int i;
+    boolean bool3;
+    boolean bool4;
+    boolean bool5;
+    boolean bool6;
+    boolean bool7;
+    if ("1".equals(paramString3))
+    {
+      i = 2;
+      bool3 = "1".equals(paramString4);
+      bool4 = "1".equals(paramString5);
+      bool5 = "1".equals(paramString9);
+      bool6 = "1".equals(paramString6);
+      bool7 = "1".equals(paramString10);
+      "1".equals(paramString13);
+      if (!"1".equals(paramString14)) {
+        break label400;
+      }
+    }
+    label400:
+    for (int j = 1;; j = 0)
+    {
+      if (parambihl != null)
+      {
+        parambihl.jdField_a_of_type_Boolean = "1".equals(parambihl.jdField_a_of_type_JavaLangString);
+        parambihl.jdField_b_of_type_Boolean = "1".equals(parambihl.jdField_b_of_type_JavaLangString);
+        parambihl.c = "1".equals(parambihl.e);
+        parambihl.d = "1".equals(parambihl.f);
+      }
+      if (avtc.a()) {
+        break label406;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "supportMediaCodec = false");
+      }
+      return false;
+      i = 1;
+      break;
+    }
+    label406:
+    paramAppInterface = bihm.a(bool1, bool2, i, bool3, bool4, bool6, paramString7, paramString8, bool5, bool7, paramString11, paramString12, j, paramString15, paramString16, paramString17, paramString18, paramString19, paramString20, paramString21, parambihl);
+    paramString1 = new Intent(paramActivity, StoryTransitionActivity.class);
+    paramString1.putExtras(paramAppInterface);
+    paramString1.putExtra("jump_action", 7);
+    paramActivity.startActivity(paramString1);
+    return true;
+  }
+  
+  public static boolean b(AppInterface paramAppInterface)
+  {
+    boolean bool2 = axlc.c();
+    boolean bool1;
+    if (!bool2)
+    {
+      bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "ispublicResReady iissupportFilterSo is false");
+        bool1 = bool2;
+      }
+    }
+    do
+    {
+      return bool1;
+      if (VideoEnvironment.b(paramAppInterface)) {
+        break;
+      }
+      bool1 = false;
+    } while (!QLog.isColorLevel());
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "ispublicResReady isVersion fasle");
+    return false;
+    return true;
+  }
+  
+  public static boolean c(AppInterface paramAppInterface)
+  {
+    boolean bool = true;
+    if (paramAppInterface.getCurrentAccountUin() == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "isAccLoginSucdess false.");
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+          if (a(paramAppInterface)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "isGuideReaded false.");
+        return false;
+        if (axlc.a(BaseApplicationImpl.getContext()) == 1) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "ispublicResReady iissupportFilterSo is false");
+      return false;
+    } while (!avtc.a());
+    if (ShortVideoUtils.a()) {}
+    for (;;)
+    {
+      return bool;
+      ShortVideoUtils.a(paramAppInterface);
+      if (!ShortVideoUtils.a()) {
+        bool = false;
+      }
+    }
+  }
+  
+  public static boolean d(AppInterface paramAppInterface)
+  {
+    if (!ShortVideoUtils.a())
+    {
+      ShortVideoUtils.a(paramAppInterface);
+      if (!ShortVideoUtils.a()) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public static boolean e(AppInterface paramAppInterface)
+  {
+    boolean bool = VideoEnvironment.b(paramAppInterface);
+    if ((!bool) && (QLog.isColorLevel())) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "isMobileSupportPTV fasle");
+    }
+    return bool;
+  }
+  
+  public static boolean f(AppInterface paramAppInterface)
+  {
+    boolean bool = axlc.c();
+    if ((!bool) && (QLog.isColorLevel())) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "issupportFilterSo false");
+    }
+    return bool;
+  }
+  
+  public static boolean g(AppInterface paramAppInterface)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (Build.VERSION.SDK_INT < 21) {
+      bool2 = bool1;
+    }
+    do
+    {
+      return bool2;
+      bool1 = bool2;
+      if (e(paramAppInterface))
+      {
+        bool1 = bool2;
+        if (f(paramAppInterface)) {
+          bool1 = true;
+        }
+      }
+      bool2 = bool1;
+    } while (!bool1);
+    return axgm.c();
+  }
+  
+  public static boolean h(AppInterface paramAppInterface)
+  {
+    if ((e(paramAppInterface)) && (f(paramAppInterface))) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        if (axkg.b()) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "isSupportDanceGame false");
+        }
+      }
+      return false;
+    }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axlj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aoig;
+import aoza;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class FileManagerDataCenter$3
   implements Runnable
 {
-  public FileManagerDataCenter$3(aoig paramaoig) {}
+  public FileManagerDataCenter$3(aoza paramaoza) {}
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.getApp() != null) && (aoig.a(this.this$0) != null)) {
-      this.this$0.a.getApp().unregisterReceiver(aoig.a(this.this$0));
+    if ((this.this$0.a != null) && (this.this$0.a.getApp() != null) && (aoza.a(this.this$0) != null)) {
+      this.this$0.a.getApp().unregisterReceiver(aoza.a(this.this$0));
     }
-    aoig.a(this.this$0, null);
+    aoza.a(this.this$0, null);
   }
 }
 

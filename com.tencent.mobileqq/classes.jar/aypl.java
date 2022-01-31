@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
 
 class aypl
-  implements bbrx
+  implements ITransCallbackForReport
 {
-  aypl(aypd paramaypd, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
+  aypl(aypj paramaypj) {}
   
-  public void a(int paramInt)
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
-    }
+    this.a.a(false, this.a.j, paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aypl
  * JD-Core Version:    0.7.0.1
  */

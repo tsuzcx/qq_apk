@@ -1,75 +1,25 @@
-import android.content.Context;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
-import com.tencent.ttpic.openapi.initializer.Voice2TextInitializer;
-import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
-import com.tencent.ttpic.util.SSRC;
-import com.tencent.ttpic.voicechanger.common.audio.VoiceTextRecognizer;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.animation.Transformation;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class bjji
+  implements bbkq<Float>
 {
-  private static String jdField_a_of_type_JavaLangString = "wx7d02f7e92ea2884d";
-  private AudioCapture jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture;
-  private boolean jdField_a_of_type_Boolean;
+  public bjji(AdvancedProviderView paramAdvancedProviderView, QIMProviderContainerView paramQIMProviderContainerView, View paramView) {}
   
-  public void a()
+  @TargetApi(11)
+  public void a(bbkk<Float> parambbkk, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.c(false);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.b();
-      VoiceTextRecognizer.getInstance().destroy();
+    paramFloat = paramFloat1.floatValue();
+    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) {
+      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setBackGroundAlpha(paramFloat);
     }
-  }
-  
-  public void a(Context paramContext, AudioCapture paramAudioCapture)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = true;
-    FeatureManager.Features.VOICE_TO_TEXT.init();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture = paramAudioCapture;
-    VoiceTextRecognizer.setWxVoiceRecognizerAppid(jdField_a_of_type_JavaLangString);
-    VoiceTextRecognizer.getInstance().init(paramContext, false);
-    VoiceTextRecognizer.getInstance().setVRErrorListener(new bjjj(this));
-    VoiceTextRecognizer.getInstance().start();
-    paramAudioCapture.c(true);
-    paramAudioCapture.c();
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream;
-    if ((this.jdField_a_of_type_Boolean) && (paramInt2 > 0))
-    {
-      paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte, 0, paramInt2);
-      localByteArrayOutputStream = new ByteArrayOutputStream(Math.max((int)Math.ceil(paramInt2 * 16000 / this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a()), 1));
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
     }
-    try
-    {
-      new SSRC(paramArrayOfByte, localByteArrayOutputStream, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a(), 16000, 2, 2, 1, paramInt2, 0.0D, 0, true);
-      byte[] arrayOfByte = localByteArrayOutputStream.toByteArray();
-      VoiceTextRecognizer.getInstance().recognizeFromPCMBuffer(arrayOfByte, arrayOfByte.length);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        try
-        {
-          paramArrayOfByte.close();
-          localByteArrayOutputStream.close();
-          return;
-        }
-        catch (Exception paramArrayOfByte)
-        {
-          paramArrayOfByte.printStackTrace();
-        }
-        localException = localException;
-        localException.printStackTrace();
-      }
-    }
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, paramFloat);
   }
 }
 

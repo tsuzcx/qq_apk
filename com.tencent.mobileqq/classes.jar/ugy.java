@@ -1,51 +1,36 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-public class ugy
-  implements IEventReceiver
+public final class ugy
+  extends QQUIEventReceiver<ugn, tjr>
 {
-  public int a;
-  public QQUserUIItem a;
-  private StoryMemoriesFragment jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment;
-  public String a;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  protected sgc a;
-  private uha jdField_a_of_type_Uha;
-  private uhb jdField_a_of_type_Uhb;
-  
-  public ugy(int paramInt, String paramString, StoryMemoriesFragment paramStoryMemoriesFragment)
+  public ugy(@NonNull ugn paramugn)
   {
-    this.jdField_a_of_type_Sgc = new ugz(this);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment = paramStoryMemoriesFragment;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramugn);
   }
   
-  public void a()
+  public void a(@NonNull ugn paramugn, @NonNull tjr paramtjr)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((sqs)sqg.a(2)).b(this.jdField_a_of_type_JavaLangString);
-    tfy.a().addObserver(this.jdField_a_of_type_Sgc);
-    this.jdField_a_of_type_Uha = new uha(this);
-    sgi.a().registerSubscriber(this.jdField_a_of_type_Uha);
-    this.jdField_a_of_type_Uhb = new uhb(this);
-    sgi.a().registerSubscriber(this.jdField_a_of_type_Uhb);
+    if ((paramtjr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtjr.jdField_a_of_type_JavaUtilList != null) && (paramugn.a != null))
+    {
+      paramtjr = paramtjr.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramtjr.hasNext())
+      {
+        tef localtef = (tef)paramtjr.next();
+        if (TextUtils.equals(paramugn.a.b, localtef.a)) {
+          paramugn.i();
+        }
+      }
+    }
   }
   
-  public void b()
+  public Class acceptEventClass()
   {
-    tfy.a().removeObserver(this.jdField_a_of_type_Sgc);
-    sgi.a().unRegisterSubscriber(this.jdField_a_of_type_Uha);
-    sgi.a().unRegisterSubscriber(this.jdField_a_of_type_Uhb);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-  }
-  
-  public boolean isValidate()
-  {
-    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return tjr.class;
   }
 }
 

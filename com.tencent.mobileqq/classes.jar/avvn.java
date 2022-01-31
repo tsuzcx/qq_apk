@@ -1,38 +1,32 @@
-import android.os.Bundle;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
 
 public class avvn
+  implements Animator.AnimatorListener
 {
-  public Bundle a;
-  public String a;
-  public byte[] a;
+  public avvn(ProviderContainerView paramProviderContainerView) {}
   
-  public avvn(String paramString)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a.c.setVisibility(0);
   }
   
-  public avvn(String paramString, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public avvn(String paramString, byte[] paramArrayOfByte)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public avvn(String paramString, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    if (ProviderContainerView.a(this.a) != null) {
+      ProviderContainerView.a(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avvn
  * JD-Core Version:    0.7.0.1
  */

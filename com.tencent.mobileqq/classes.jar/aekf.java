@@ -1,31 +1,16 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.InputOnGlobalLayoutListener.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.XEditTextEx;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import mqq.util.WeakReference;
 
-public class aekf
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class aekf
+  implements View.OnClickListener
 {
-  private aekf(aejb paramaejb) {}
+  aekf(aeke paramaeke, int paramInt) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
-    {
-      if (!this.a.ab)
-      {
-        this.a.ab = true;
-        ThreadManager.getSubThreadHandler().postDelayed(new TroopChatPie.InputOnGlobalLayoutListener.1(this), 1500L);
-      }
-      return;
-      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
+    ((PhotoListPanel)this.jdField_a_of_type_Aeke.a.get()).a(paramView, this.jdField_a_of_type_Int);
   }
 }
 

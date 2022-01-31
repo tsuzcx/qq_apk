@@ -1,40 +1,14 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
 public class rwl
-  extends RecyclerView.ItemDecoration
+  implements rxd
 {
-  private final int a = aciy.a(4.0F, BaseApplicationImpl.getApplication().getResources());
+  public rwl(ViolaFragment paramViolaFragment) {}
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void a(int paramInt)
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    paramView = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
-    int i = paramView.getSpanIndex();
-    if (paramView.isFullSpan())
-    {
-      paramRect.left = 0;
-      paramRect.right = 0;
-    }
-    for (;;)
-    {
-      paramRect.bottom = this.a;
-      return;
-      if (i % 2 == 0)
-      {
-        paramRect.left = 0;
-        paramRect.right = (this.a / 2);
-      }
-      else
-      {
-        paramRect.left = (this.a / 2);
-        paramRect.right = 0;
-      }
+    if (ViolaFragment.a(this.a) != null) {
+      ViolaFragment.a(this.a).a(paramInt);
     }
   }
 }

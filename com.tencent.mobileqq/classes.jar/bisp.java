@@ -1,6 +1,16 @@
-public abstract interface bisp<ERROR_TYPE, DATA_TYPE>
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+
+class bisp
+  extends RecyclerView.OnScrollListener
 {
-  public abstract Void a(ERROR_TYPE paramERROR_TYPE, DATA_TYPE paramDATA_TYPE);
+  bisp(biso parambiso) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    biso.a(this.a).notifyDataSetChanged();
+  }
 }
 
 

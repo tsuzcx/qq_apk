@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import akpl;
-import alig;
+import aldx;
+import alwu;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -17,7 +17,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class ARScanStarFaceConfigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARScanStarFaceConfigInfo> CREATOR = new akpl();
+  public static final Parcelable.Creator<ARScanStarFaceConfigInfo> CREATOR = new aldx();
   static boolean a;
   static String b;
   public String a;
@@ -463,7 +463,7 @@ public class ARScanStarFaceConfigInfo
     //   185: invokevirtual 206	java/io/BufferedOutputStream:flush	()V
     //   188: aload 7
     //   190: aload 6
-    //   192: invokestatic 211	bace:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   192: invokestatic 211	bbdj:b	(Ljava/io/File;Ljava/io/File;)Z
     //   195: istore 4
     //   197: aload_1
     //   198: ifnull +7 -> 205
@@ -656,9 +656,9 @@ public class ARScanStarFaceConfigInfo
             } else if (localNumberFormatException.equalsIgnoreCase("adImgUrl")) {
               ((ARScanStarFaceActInfo)localObject).f = localException.nextText();
             } else if (localNumberFormatException.equalsIgnoreCase("beginTime")) {
-              ((ARScanStarFaceActInfo)localObject).jdField_a_of_type_Long = alig.a(localException.nextText());
+              ((ARScanStarFaceActInfo)localObject).jdField_a_of_type_Long = alwu.a(localException.nextText());
             } else if (localNumberFormatException.equalsIgnoreCase("endTime")) {
-              ((ARScanStarFaceActInfo)localObject).jdField_b_of_type_Long = alig.a(localException.nextText());
+              ((ARScanStarFaceActInfo)localObject).jdField_b_of_type_Long = alwu.a(localException.nextText());
             }
           }
           else if ((i == 3) && (localException.getName().equalsIgnoreCase("Activity")))

@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import opw;
-import pmu;
+import pax;
+import pyp;
 
 public class ComponentContentSmallVideo
   extends ComponentContentSmall
@@ -31,28 +31,28 @@ public class ComponentContentSmallVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131494291, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559862, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.a = ((TextView)paramView.findViewById(2131299841));
+    this.a = ((TextView)paramView.findViewById(2131365421));
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof opw))
+    if ((paramObject instanceof pax))
     {
-      paramObject = ((opw)paramObject).a();
+      paramObject = ((pax)paramObject).a();
       if (paramObject != null) {}
     }
     else
     {
       return;
     }
-    this.a.setText(pmu.a(paramObject.mVideoDuration));
+    this.a.setText(pyp.a(paramObject.mVideoDuration));
   }
   
   public void b()

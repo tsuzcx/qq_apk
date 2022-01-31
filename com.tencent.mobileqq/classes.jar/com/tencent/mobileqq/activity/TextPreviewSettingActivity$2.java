@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import almr;
+import ambf;
 
 class TextPreviewSettingActivity$2
   implements Runnable
 {
-  TextPreviewSettingActivity$2(TextPreviewSettingActivity paramTextPreviewSettingActivity, almr paramalmr, String paramString) {}
+  TextPreviewSettingActivity$2(TextPreviewSettingActivity paramTextPreviewSettingActivity, ambf paramambf, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Almr.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, null);
+    this.jdField_a_of_type_Ambf.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, null);
   }
 }
 

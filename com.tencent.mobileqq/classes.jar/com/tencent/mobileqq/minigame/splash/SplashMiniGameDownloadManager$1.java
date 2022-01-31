@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.minigame.splash;
 
-import axro;
-import axss;
-import axxg;
+import ayrv;
+import aysz;
+import ayxn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 final class SplashMiniGameDownloadManager$1
-  extends axxg
+  extends ayxn
 {
   SplashMiniGameDownloadManager$1(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
@@ -22,12 +22,12 @@ final class SplashMiniGameDownloadManager$1
   public void realStart()
   {
     QLog.i("SplashMiniGameDownloadMgr", 1, "downloadPicAGifAVideoRes appid" + this.val$appid);
-    axro localaxro = new axro();
-    localaxro.jdField_a_of_type_Axrt = new SplashMiniGameDownloadManager.DownLoadNetEngine(this.app, this.val$appid, this.val$contentType, this.val$path, this.val$downloadUrl);
-    localaxro.jdField_a_of_type_JavaLangString = this.val$downloadUrl;
-    localaxro.jdField_a_of_type_Int = 0;
-    localaxro.c = this.val$path;
-    ((axss)this.app.getNetEngine(0)).a(localaxro);
+    ayrv localayrv = new ayrv();
+    localayrv.jdField_a_of_type_Aysa = new SplashMiniGameDownloadManager.DownLoadNetEngine(this.app, this.val$appid, this.val$contentType, this.val$path, this.val$downloadUrl);
+    localayrv.jdField_a_of_type_JavaLangString = this.val$downloadUrl;
+    localayrv.jdField_a_of_type_Int = 0;
+    localayrv.c = this.val$path;
+    ((aysz)this.app.getNetEngine(0)).a(localayrv);
   }
 }
 

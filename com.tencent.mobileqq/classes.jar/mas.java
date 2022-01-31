@@ -1,71 +1,20 @@
-import com.tencent.av.gaudio.AVPhoneUserInfo;
-
-public class mas
+public abstract interface mas
 {
-  public int a;
-  public long a;
-  public AVPhoneUserInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
+  public abstract void a();
   
-  public mas()
-  {
-    this.jdField_b_of_type_Long = 4L;
-    this.jdField_b_of_type_Int = 0;
-  }
+  public abstract boolean a();
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public abstract boolean a(mav parammav);
   
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
+  public abstract void b();
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
+  public abstract boolean b();
   
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
+  public abstract boolean b(mav parammav);
   
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Int == 2;
-  }
+  public abstract void c();
   
-  public boolean c()
-  {
-    return this.e;
-  }
-  
-  public boolean d()
-  {
-    return (this.jdField_b_of_type_Boolean) && (!this.c);
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin:=").append(this.jdField_a_of_type_Long).append(',');
-    localStringBuilder.append("isVideoIn:=").append(this.e).append(',');
-    localStringBuilder.append("isAttened:=").append(this.jdField_a_of_type_Boolean).append(',');
-    localStringBuilder.append("isSpeaking:=").append(this.jdField_b_of_type_Boolean).append(',');
-    return localStringBuilder.toString();
-  }
+  public abstract void d();
 }
 
 

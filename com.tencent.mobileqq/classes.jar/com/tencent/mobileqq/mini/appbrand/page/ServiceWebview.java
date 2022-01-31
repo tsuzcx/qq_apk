@@ -6,8 +6,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
-import bfpj;
-import bfpk;
+import bgxq;
+import bgxr;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -28,6 +28,7 @@ import com.tencent.smtt.sdk.JsVirtualMachine;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.utils.TbsLog;
+import common.config.service.QzoneConfig;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -105,7 +106,7 @@ public class ServiceWebview
           }
         }
       }
-      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + bfpj.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
+      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + bgxq.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
       str1 = str2;
       if (StorageUtil.getPreference().getBoolean(paramApkgInfo.appId + "_debug", false)) {
         str1 = str2 + "__qqConfig.debug=true;";
@@ -158,27 +159,40 @@ public class ServiceWebview
   
   public String getJsDefaultConfig(boolean paramBoolean)
   {
-    try
+    for (;;)
     {
-      JSONObject localJSONObject = new JSONObject();
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("USER_DATA_PATH", MiniAppGlobal.STR_WXFILE + "usr");
-      localJSONObject.put("env", localObject);
-      localJSONObject.put("preload", paramBoolean);
-      StringBuilder localStringBuilder = new StringBuilder().append("var window = window || {}; window.__webview_engine_version__ = 0.02; if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s');Object.assign(__qqConfig, __tempConfig);__qqConfig.appContactInfo = {};");
-      if (this.mEnableNativeBuffer) {}
-      for (localObject = "__qqConfig.nativeBufferEnabled = true;";; localObject = "")
+      try
       {
-        localObject = String.format((String)localObject + "__qqConfig.appContactInfo.operationInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo.apiAvailable = {'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'share':0,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0};__qqConfig.platform = 'android';__qqConfig.QUA='" + bfpk.a() + "';", new Object[] { localJSONObject });
-        localObject = (String)localObject + "__qqConfig.useXWebVideo=" + this.enableEmbeddedVideo + ";";
-        QLog.d("miniapp-embedded", 1, "service enableEmbeddedVideo : " + this.enableEmbeddedVideo);
-        return localObject;
+        JSONObject localJSONObject = new JSONObject();
+        Object localObject = new JSONObject();
+        ((JSONObject)localObject).put("USER_DATA_PATH", MiniAppGlobal.STR_WXFILE + "usr");
+        localJSONObject.put("env", localObject);
+        localJSONObject.put("preload", paramBoolean);
+        int i = QzoneConfig.getInstance().getConfig("qqminiapp", "xprof_api_report", 0);
+        StringBuilder localStringBuilder = new StringBuilder().append("var window = window || {}; window.__webview_engine_version__ = 0.02; if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s');Object.assign(__qqConfig, __tempConfig);__qqConfig.appContactInfo = {};");
+        if (this.mEnableNativeBuffer)
+        {
+          localObject = "__qqConfig.nativeBufferEnabled = true;";
+          localStringBuilder = localStringBuilder.append((String)localObject).append("__qqConfig.appContactInfo.operationInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo.apiAvailable = {'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'share':0,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0};__qqConfig.platform = 'android';__qqConfig.QUA='").append(bgxr.a()).append("';__qqConfig.frameworkInfo = {};__qqConfig.frameworkInfo.isAlpha=");
+          if (i == 0)
+          {
+            localObject = "false";
+            localObject = String.format((String)localObject + ";", new Object[] { localJSONObject });
+            localObject = (String)localObject + "__qqConfig.useXWebVideo=" + this.enableEmbeddedVideo + ";";
+            QLog.d("miniapp-embedded", 1, "service enableEmbeddedVideo : " + this.enableEmbeddedVideo);
+            QLog.d("miniapp-start", 2, "getJsDefaultConfig ServiceWebview String: " + (String)localObject);
+            return localObject;
+          }
+          localObject = "true";
+          continue;
+        }
+        String str = "";
       }
-      return "";
-    }
-    catch (Exception localException)
-    {
-      QLog.e("miniapp-start", 2, "getJsDefaultConfig failed: " + localException);
+      catch (Exception localException)
+      {
+        QLog.e("miniapp-start", 2, "getJsDefaultConfig failed: " + localException);
+        return "";
+      }
     }
   }
   

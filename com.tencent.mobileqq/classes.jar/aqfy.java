@@ -1,38 +1,29 @@
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class aqfy
-  extends MSFServlet
+class aqfy
+  implements DialogInterface.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface))) {
-      aqfa.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
-    }
-  }
+  aqfy(aqft paramaqft, int paramInt, String paramString) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent == null)
+    if (paramInt == 1)
     {
-      QLog.e("HotPicServlet", 1, "onSend : req is null");
-      return;
+      aqft.a(aqft.a(this.jdField_a_of_type_Aqft), "shareToQQ", aqft.a(this.jdField_a_of_type_Aqft), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      nax.a(aqft.a(this.jdField_a_of_type_Aqft), 0, "", "");
+      if (aqft.a(this.jdField_a_of_type_Aqft) != null) {
+        aqft.a(this.jdField_a_of_type_Aqft).b(1);
+      }
+      aqft.a(this.jdField_a_of_type_Aqft).moveTaskToBack(true);
     }
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
-    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
-    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqfy
  * JD-Core Version:    0.7.0.1
  */

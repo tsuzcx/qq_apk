@@ -1,58 +1,35 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class sxd
+  extends SimpleObserver<ErrorMessage>
 {
-  private static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
+  private sxd(BasePublishTask paramBasePublishTask) {}
   
-  @Nullable
-  public static taj a(String paramString, List<taj> paramList)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramErrorMessage.isSuccess())
     {
-      taj localtaj = (taj)paramList.next();
-      if (paramString.equals(localtaj.a)) {
-        return localtaj;
-      }
-    }
-    return null;
-  }
-  
-  public static void a(@NonNull List<String> paramList, boolean paramBoolean)
-  {
-    urk.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "send request : %s", paramList.toString());
-    if (paramBoolean)
-    {
-      localObject = paramList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        Long localLong = (Long)a.get(str);
-        if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() < 60000L))
-        {
-          ((Iterator)localObject).remove();
-          urk.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "remove same request for feed info:%s", str);
-        }
-        else
-        {
-          a.put(str, Long.valueOf(System.currentTimeMillis()));
-        }
-      }
-    }
-    if (paramList.size() == 0) {
+      this.a.a(new ErrorMessage());
       return;
     }
-    urk.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "request for feed info:%s", paramList);
-    Object localObject = new tai(paramList);
-    slv.a().a((slz)localObject, new sxe(paramList));
+    this.a.a(paramErrorMessage);
+  }
+  
+  public void onCancel() {}
+  
+  public void onComplete() {}
+  
+  public void onError(@NonNull Error paramError)
+  {
+    if ((paramError instanceof ErrorMessage))
+    {
+      this.a.a((ErrorMessage)paramError);
+      return;
+    }
+    this.a.a(new ErrorMessage(940005, "upload file fail:" + paramError));
   }
 }
 

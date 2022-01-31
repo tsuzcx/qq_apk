@@ -1,57 +1,34 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aajn
-  extends ajmm
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aajn(ChatSettingActivity paramChatSettingActivity) {}
+  public aajn(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.g(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "onInsertIntoBlackList, isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
+    boolean bool = false;
+    if (!bbev.d(this.a))
     {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, true);
+      AssistantSettingActivity.a(this.a, 2131694670, 1);
+      paramCompoundButton = this.a;
+      if (!paramBoolean) {
+        bool = true;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "onInsertIntoBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
+      AssistantSettingActivity.b(paramCompoundButton, bool);
       return;
     }
-    ChatSettingActivity.a(this.a, 2131653636, 1);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "onRemoveFromBlackList, isSuccess=" + paramBoolean);
-    }
-    ChatSettingActivity.g(this.a);
-    if (paramBoolean)
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (paramCompoundButton = "1";; paramCompoundButton = "2")
     {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "onRemoveFromBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
+      axqw.b(localQQAppInterface, "dc00898", "", "", "0X800A5D5", "0X800A5D5", 0, 0, paramCompoundButton, "", "", "");
+      this.a.a.b(paramBoolean);
       return;
     }
-    ChatSettingActivity.a(this.a, 2131653636, 1);
   }
 }
 

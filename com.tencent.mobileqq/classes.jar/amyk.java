@@ -1,73 +1,67 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
-import android.util.DisplayMetrics;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amyk
-  extends BitmapDrawable
+  extends amyi<amyj>
 {
-  private float jdField_a_of_type_Float = 1920.0F;
-  private int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private int b;
-  private int c;
-  
-  public amyk(Resources paramResources, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3)
+  public int a()
   {
-    super(paramResources, paramBitmap);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Float = (12.0F * (paramResources.getDisplayMetrics().densityDpi / 160.0F));
-    super.setGravity(17);
+    return 479;
   }
   
-  public void draw(Canvas paramCanvas)
+  @NonNull
+  public amyj a()
   {
-    if (this.c >>> 24 != 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomOnlineStatusManager", 2, "migrateDefaultContent");
+    }
+    return new amyj();
+  }
+  
+  @NonNull
+  public amyj a(@NonNull ampi[] paramArrayOfampi)
+  {
+    boolean bool = false;
+    amyj localamyj = new amyj();
+    try
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
-      paramCanvas.drawRoundRect(new RectF(getBounds()), this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if (paramArrayOfampi[0].a != null)
+      {
+        if (new JSONObject(paramArrayOfampi[0].a).optInt("show_custom_online_state", 1) == 1) {
+          bool = true;
+        }
+        localamyj.a = bool;
+        if (QLog.isColorLevel()) {
+          QLog.d("CustomOnlineStatusManager", 2, "parsed showVipIcon: " + localamyj.a);
+        }
+      }
+      return localamyj;
     }
-    super.draw(paramCanvas);
+    catch (Exception paramArrayOfampi)
+    {
+      QLog.e("CustomOnlineStatusManager", 1, "parsed failed: ", paramArrayOfampi);
+    }
+    return localamyj;
   }
   
-  public int getIntrinsicHeight()
+  public Class<amyj> a()
   {
-    if (this.b > 0) {
-      return this.b;
-    }
-    return super.getIntrinsicHeight();
+    return amyj.class;
   }
   
-  public int getIntrinsicWidth()
+  @NonNull
+  public amyj b()
   {
-    if (this.jdField_a_of_type_Int > 0) {
-      return this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomOnlineStatusManager", 2, "migrateOldContent");
     }
-    return super.getIntrinsicWidth();
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha()) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-    }
-    super.setAlpha(paramInt);
-  }
-  
-  public void setTargetDensity(int paramInt)
-  {
-    this.jdField_a_of_type_Float = (12.0F * (paramInt / 160.0F));
-    super.setTargetDensity(paramInt);
+    return new amyj();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amyk
  * JD-Core Version:    0.7.0.1
  */

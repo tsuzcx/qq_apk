@@ -1,29 +1,65 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.os.Bundle;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.mobileqq.data.ChatBackgroundInfo;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.QLog;
 
-final class anug
-  implements View.OnClickListener
+public class anug
+  extends bbwm
 {
-  anug(Context paramContext, Dialog paramDialog) {}
+  public anug(MessengerService paramMessengerService) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong, int paramInt, Bundle paramBundle)
   {
-    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://ti.qq.com/extend-friend/?_wv=536870912");
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    awqx.b(null, "dc00898", "", "", "kuolie", "0X80097DE", 0, 0, "", "", "", "");
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (this.a.a != null) {}
+    try
+    {
+      Message localMessage = Message.obtain(null, 5);
+      if ((paramBundle.get("chatbgInfo") instanceof ChatBackgroundInfo))
+      {
+        ChatBackgroundInfo localChatBackgroundInfo = (ChatBackgroundInfo)paramBundle.get("chatbgInfo");
+        paramBundle.putString("name", localChatBackgroundInfo.name);
+        paramBundle.putString("url", localChatBackgroundInfo.url);
+      }
+      paramBundle.putInt("type", 2);
+      paramBundle.putInt("id", (int)paramLong);
+      paramBundle.putInt("result", paramInt);
+      localMessage.setData(paramBundle);
+      this.a.a.send(localMessage);
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    Message localMessage;
+    if (this.a.a != null)
+    {
+      localMessage = Message.obtain(null, 5);
+      localMessage.setData(paramBundle);
+    }
+    try
+    {
+      this.a.a.send(localMessage);
+      return;
+    }
+    catch (RemoteException paramBundle)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anug
  * JD-Core Version:    0.7.0.1
  */

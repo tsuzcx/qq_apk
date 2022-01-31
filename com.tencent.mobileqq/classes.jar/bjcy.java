@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class bjcy
-  implements DialogInterface.OnClickListener
+class bjcy
+  implements View.OnTouchListener
 {
-  public bjcy(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bjcy(bjcx parambjcx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    return true;
   }
 }
 

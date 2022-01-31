@@ -1,17 +1,15 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
-class aejw
-  implements ViewPager.OnPageChangeListener
+public class aejw
+  implements bcvx
 {
-  aejw(aejb paramaejb) {}
+  public aejw(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void a(int paramInt)
   {
-    aejb.a(this.a, paramInt);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

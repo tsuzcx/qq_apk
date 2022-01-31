@@ -1,44 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import cooperation.qzone.contentbox.MsgPhotoView;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView;
 
 public class bftv
   implements View.OnClickListener
 {
-  public bftv(MsgPhotoView paramMsgPhotoView) {}
+  public bftv(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView1, PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView2) {}
   
   public void onClick(View paramView)
   {
-    if (MsgPhotoView.a(this.a) != null)
-    {
-      if (paramView == MsgPhotoView.a(this.a)) {
-        MsgPhotoView.a(this.a).a(this.a.a, paramView, 1);
-      }
+    if (this.b.jdField_a_of_type_Bftx != null) {
+      this.b.jdField_a_of_type_Bftx.a(this.a, this.b.jdField_a_of_type_AndroidViewView, this.b.f);
     }
-    else {
-      return;
-    }
-    if (paramView == MsgPhotoView.b(this.a))
-    {
-      MsgPhotoView.a(this.a).a(this.a.a, paramView, 2);
-      return;
-    }
-    if (paramView == MsgPhotoView.c(this.a))
-    {
-      MsgPhotoView.a(this.a).a(this.a.a, paramView, 3);
-      return;
-    }
-    if (paramView == MsgPhotoView.d(this.a))
-    {
-      MsgPhotoView.a(this.a).a(this.a.a, paramView, 4);
-      return;
-    }
-    MsgPhotoView.a(this.a).a(this.a.a, paramView, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bftv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,54 @@
-import android.support.annotation.NonNull;
+import android.graphics.drawable.Drawable;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class amip
-  extends amie<amji>
 {
-  @NonNull
-  public static amji c()
+  public static Drawable a(String paramString)
   {
-    amji localamji2 = (amji)alzw.a().a(527);
-    amji localamji1 = localamji2;
-    if (localamji2 == null) {
-      localamji1 = new amji();
+    String[] arrayOfString1 = paramString.split("&");
+    paramString = "";
+    int m = arrayOfString1.length;
+    int i = 0;
+    int j = 1;
+    if (i < m)
+    {
+      String[] arrayOfString2 = arrayOfString1[i].split("=");
+      if ((arrayOfString2.length == 2) || (arrayOfString2[0].equals("type"))) {}
+      for (;;)
+      {
+        try
+        {
+          k = Integer.parseInt(arrayOfString2[1]);
+          i += 1;
+          j = k;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          QLog.e("UinToDrawableUtil", 1, "type wrong", localNumberFormatException);
+          k = j;
+          continue;
+        }
+        int k = j;
+        if (localNumberFormatException[0].equals("uin"))
+        {
+          paramString = localNumberFormatException[1];
+          k = j;
+        }
+      }
     }
-    return localamji1;
+    return a(paramString, j);
   }
   
-  public int a()
+  public static Drawable a(String paramString, int paramInt)
   {
-    return 527;
-  }
-  
-  @NonNull
-  public amji a()
-  {
-    return new amji();
-  }
-  
-  @NonNull
-  public amji a(@NonNull alzs[] paramArrayOfalzs)
-  {
-    return amji.a(paramArrayOfalzs[0].a);
-  }
-  
-  public Class<amji> a()
-  {
-    return amji.class;
-  }
-  
-  @NonNull
-  public amji b()
-  {
-    return new amji();
+    return baxt.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramInt, 4, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amip
  * JD-Core Version:    0.7.0.1
  */

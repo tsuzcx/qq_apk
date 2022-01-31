@@ -45,7 +45,7 @@ public class AEMaterialParser
     //   9: aload_3
     //   10: ldc 73
     //   12: invokevirtual 79	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   15: ifne +329 -> 344
+    //   15: ifne +328 -> 343
     //   18: iconst_1
     //   19: istore 5
     //   21: aload_2
@@ -91,16 +91,16 @@ public class AEMaterialParser
     //   109: ifne +19 -> 128
     //   112: aload 10
     //   114: invokevirtual 106	java/io/File:exists	()Z
-    //   117: ifeq +287 -> 404
+    //   117: ifeq +286 -> 403
     //   120: aload 10
     //   122: invokevirtual 109	java/io/File:isFile	()Z
-    //   125: ifeq +279 -> 404
+    //   125: ifeq +278 -> 403
     //   128: aload_3
     //   129: invokevirtual 106	java/io/File:exists	()Z
-    //   132: ifeq +218 -> 350
+    //   132: ifeq +217 -> 349
     //   135: aload_3
     //   136: invokevirtual 109	java/io/File:isFile	()Z
-    //   139: ifeq +211 -> 350
+    //   139: ifeq +210 -> 349
     //   142: new 111	java/io/FileInputStream
     //   145: dup
     //   146: aload_3
@@ -109,7 +109,7 @@ public class AEMaterialParser
     //   151: aload_1
     //   152: astore 8
     //   154: iload 5
-    //   156: ifne +241 -> 397
+    //   156: ifne +240 -> 396
     //   159: aload_0
     //   160: aload 8
     //   162: aload 4
@@ -143,167 +143,167 @@ public class AEMaterialParser
     //   217: new 87	java/lang/StringBuilder
     //   220: dup
     //   221: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   224: astore_2
-    //   225: aload 8
-    //   227: astore 12
-    //   229: aload_3
-    //   230: astore 11
-    //   232: aload_1
-    //   233: astore 10
-    //   235: aload 4
-    //   237: astore 9
-    //   239: aload_1
-    //   240: invokevirtual 132	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   243: astore 13
-    //   245: aload 13
-    //   247: ifnull +268 -> 515
-    //   250: aload 8
-    //   252: astore 12
-    //   254: aload_3
-    //   255: astore 11
-    //   257: aload_1
-    //   258: astore 10
-    //   260: aload 4
-    //   262: astore 9
-    //   264: aload_2
-    //   265: aload 13
-    //   267: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   270: pop
-    //   271: goto -46 -> 225
-    //   274: astore_2
-    //   275: aload 8
-    //   277: astore 12
-    //   279: aload_3
-    //   280: astore 11
-    //   282: aload_1
-    //   283: astore 10
-    //   285: aload 4
-    //   287: astore 9
-    //   289: getstatic 26	com/tencent/ttpic/openapi/ttpicmodule/AEMaterialParser:TAG	Ljava/lang/String;
-    //   292: aload_2
-    //   293: invokevirtual 135	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   296: aload_2
-    //   297: iconst_0
-    //   298: anewarray 4	java/lang/Object
-    //   301: invokestatic 141	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
-    //   304: aload_1
-    //   305: ifnull +7 -> 312
-    //   308: aload_1
-    //   309: invokevirtual 144	java/io/BufferedReader:close	()V
-    //   312: aload_3
-    //   313: ifnull +7 -> 320
-    //   316: aload_3
-    //   317: invokevirtual 145	java/io/InputStreamReader:close	()V
-    //   320: aload 4
-    //   322: ifnull +8 -> 330
-    //   325: aload 4
-    //   327: invokevirtual 148	java/io/InputStream:close	()V
-    //   330: aload 8
-    //   332: ifnull +8 -> 340
-    //   335: aload 8
-    //   337: invokevirtual 149	java/io/FileInputStream:close	()V
-    //   340: aconst_null
-    //   341: astore_1
-    //   342: aload_1
-    //   343: areturn
-    //   344: iconst_0
-    //   345: istore 5
-    //   347: goto -326 -> 21
-    //   350: aload 10
-    //   352: invokevirtual 106	java/io/File:exists	()Z
-    //   355: ifeq +606 -> 961
-    //   358: aload 10
-    //   360: invokevirtual 109	java/io/File:isFile	()Z
-    //   363: ifeq +598 -> 961
-    //   366: new 111	java/io/FileInputStream
-    //   369: dup
-    //   370: aload 10
-    //   372: invokespecial 114	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   375: astore_1
-    //   376: iload 5
-    //   378: ifne +13 -> 391
-    //   381: iload 7
-    //   383: istore 5
-    //   385: aload_1
-    //   386: astore 8
-    //   388: goto -234 -> 154
-    //   391: iconst_0
-    //   392: istore 5
-    //   394: goto -9 -> 385
-    //   397: aload 8
-    //   399: astore 4
-    //   401: goto -225 -> 176
-    //   404: aload_1
-    //   405: invokevirtual 155	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   408: aload_2
-    //   409: invokevirtual 161	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   412: astore_3
-    //   413: iload 5
-    //   415: ifne +26 -> 441
-    //   418: aload_0
-    //   419: aload_3
-    //   420: aload 4
-    //   422: invokespecial 116	com/tencent/ttpic/openapi/ttpicmodule/AEMaterialParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
-    //   425: astore_2
-    //   426: aload_3
-    //   427: invokestatic 120	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   430: aload_2
-    //   431: astore_1
-    //   432: aconst_null
-    //   433: astore 8
-    //   435: aload_1
-    //   436: astore 4
-    //   438: goto -262 -> 176
-    //   441: aload_3
-    //   442: astore_1
-    //   443: goto -11 -> 432
-    //   446: astore_2
-    //   447: aconst_null
-    //   448: astore_2
-    //   449: aload_1
-    //   450: invokevirtual 155	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   453: aload 9
-    //   455: invokevirtual 161	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   458: astore_3
-    //   459: iload 5
-    //   461: ifne +33 -> 494
-    //   464: iload 6
-    //   466: istore 5
-    //   468: iload 5
-    //   470: ifne +30 -> 500
-    //   473: aload_0
-    //   474: aload_3
-    //   475: aload 4
-    //   477: invokespecial 116	com/tencent/ttpic/openapi/ttpicmodule/AEMaterialParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
-    //   480: astore_1
-    //   481: aload_3
-    //   482: invokestatic 120	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   485: aconst_null
-    //   486: astore 8
-    //   488: aload_1
-    //   489: astore 4
-    //   491: goto -315 -> 176
-    //   494: iconst_0
-    //   495: istore 5
-    //   497: goto -29 -> 468
-    //   500: aload_3
-    //   501: astore_1
-    //   502: goto -17 -> 485
-    //   505: astore_1
-    //   506: aconst_null
-    //   507: astore 8
-    //   509: aload_2
-    //   510: astore 4
-    //   512: goto -336 -> 176
-    //   515: aload 8
-    //   517: astore 12
-    //   519: aload_3
-    //   520: astore 11
-    //   522: aload_1
-    //   523: astore 10
-    //   525: aload 4
-    //   527: astore 9
-    //   529: aload_2
+    //   224: astore 13
+    //   226: aload 8
+    //   228: astore 12
+    //   230: aload_3
+    //   231: astore 11
+    //   233: aload_1
+    //   234: astore 10
+    //   236: aload 4
+    //   238: astore 9
+    //   240: aload_1
+    //   241: invokevirtual 132	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   244: astore_2
+    //   245: aload_2
+    //   246: ifnull +268 -> 514
+    //   249: aload 8
+    //   251: astore 12
+    //   253: aload_3
+    //   254: astore 11
+    //   256: aload_1
+    //   257: astore 10
+    //   259: aload 4
+    //   261: astore 9
+    //   263: aload 13
+    //   265: aload_2
+    //   266: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   269: pop
+    //   270: goto -44 -> 226
+    //   273: astore_2
+    //   274: aload 8
+    //   276: astore 12
+    //   278: aload_3
+    //   279: astore 11
+    //   281: aload_1
+    //   282: astore 10
+    //   284: aload 4
+    //   286: astore 9
+    //   288: getstatic 26	com/tencent/ttpic/openapi/ttpicmodule/AEMaterialParser:TAG	Ljava/lang/String;
+    //   291: aload_2
+    //   292: invokevirtual 135	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   295: aload_2
+    //   296: iconst_0
+    //   297: anewarray 4	java/lang/Object
+    //   300: invokestatic 141	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
+    //   303: aload_1
+    //   304: ifnull +7 -> 311
+    //   307: aload_1
+    //   308: invokevirtual 144	java/io/BufferedReader:close	()V
+    //   311: aload_3
+    //   312: ifnull +7 -> 319
+    //   315: aload_3
+    //   316: invokevirtual 145	java/io/InputStreamReader:close	()V
+    //   319: aload 4
+    //   321: ifnull +8 -> 329
+    //   324: aload 4
+    //   326: invokevirtual 148	java/io/InputStream:close	()V
+    //   329: aload 8
+    //   331: ifnull +8 -> 339
+    //   334: aload 8
+    //   336: invokevirtual 149	java/io/FileInputStream:close	()V
+    //   339: aconst_null
+    //   340: astore_1
+    //   341: aload_1
+    //   342: areturn
+    //   343: iconst_0
+    //   344: istore 5
+    //   346: goto -325 -> 21
+    //   349: aload 10
+    //   351: invokevirtual 106	java/io/File:exists	()Z
+    //   354: ifeq +607 -> 961
+    //   357: aload 10
+    //   359: invokevirtual 109	java/io/File:isFile	()Z
+    //   362: ifeq +599 -> 961
+    //   365: new 111	java/io/FileInputStream
+    //   368: dup
+    //   369: aload 10
+    //   371: invokespecial 114	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   374: astore_1
+    //   375: iload 5
+    //   377: ifne +13 -> 390
+    //   380: iload 7
+    //   382: istore 5
+    //   384: aload_1
+    //   385: astore 8
+    //   387: goto -233 -> 154
+    //   390: iconst_0
+    //   391: istore 5
+    //   393: goto -9 -> 384
+    //   396: aload 8
+    //   398: astore 4
+    //   400: goto -224 -> 176
+    //   403: aload_1
+    //   404: invokevirtual 155	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   407: aload_2
+    //   408: invokevirtual 161	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   411: astore_3
+    //   412: iload 5
+    //   414: ifne +26 -> 440
+    //   417: aload_0
+    //   418: aload_3
+    //   419: aload 4
+    //   421: invokespecial 116	com/tencent/ttpic/openapi/ttpicmodule/AEMaterialParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
+    //   424: astore_2
+    //   425: aload_3
+    //   426: invokestatic 120	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   429: aload_2
+    //   430: astore_1
+    //   431: aconst_null
+    //   432: astore 8
+    //   434: aload_1
+    //   435: astore 4
+    //   437: goto -261 -> 176
+    //   440: aload_3
+    //   441: astore_1
+    //   442: goto -11 -> 431
+    //   445: astore_2
+    //   446: aconst_null
+    //   447: astore_2
+    //   448: aload_1
+    //   449: invokevirtual 155	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   452: aload 9
+    //   454: invokevirtual 161	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   457: astore_3
+    //   458: iload 5
+    //   460: ifne +33 -> 493
+    //   463: iload 6
+    //   465: istore 5
+    //   467: iload 5
+    //   469: ifne +30 -> 499
+    //   472: aload_0
+    //   473: aload_3
+    //   474: aload 4
+    //   476: invokespecial 116	com/tencent/ttpic/openapi/ttpicmodule/AEMaterialParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
+    //   479: astore_1
+    //   480: aload_3
+    //   481: invokestatic 120	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   484: aconst_null
+    //   485: astore 8
+    //   487: aload_1
+    //   488: astore 4
+    //   490: goto -314 -> 176
+    //   493: iconst_0
+    //   494: istore 5
+    //   496: goto -29 -> 467
+    //   499: aload_3
+    //   500: astore_1
+    //   501: goto -17 -> 484
+    //   504: astore_1
+    //   505: aconst_null
+    //   506: astore 8
+    //   508: aload_2
+    //   509: astore 4
+    //   511: goto -335 -> 176
+    //   514: aload 8
+    //   516: astore 12
+    //   518: aload_3
+    //   519: astore 11
+    //   521: aload_1
+    //   522: astore 10
+    //   524: aload 4
+    //   526: astore 9
+    //   528: aload 13
     //   530: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   533: astore_2
     //   534: aload_1
@@ -321,7 +321,7 @@ public class AEMaterialParser
     //   560: aload_2
     //   561: astore_1
     //   562: aload 8
-    //   564: ifnull -222 -> 342
+    //   564: ifnull -223 -> 341
     //   567: aload 8
     //   569: invokevirtual 149	java/io/FileInputStream:close	()V
     //   572: aload_2
@@ -353,10 +353,10 @@ public class AEMaterialParser
     //   621: aload 4
     //   623: invokevirtual 148	java/io/InputStream:close	()V
     //   626: aload 8
-    //   628: ifnull -288 -> 340
+    //   628: ifnull -289 -> 339
     //   631: aload 8
     //   633: invokevirtual 149	java/io/FileInputStream:close	()V
-    //   636: goto -296 -> 340
+    //   636: goto -297 -> 339
     //   639: astore_1
     //   640: getstatic 26	com/tencent/ttpic/openapi/ttpicmodule/AEMaterialParser:TAG	Ljava/lang/String;
     //   643: aload_1
@@ -365,7 +365,7 @@ public class AEMaterialParser
     //   648: iconst_0
     //   649: anewarray 4	java/lang/Object
     //   652: invokestatic 141	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
-    //   655: goto -315 -> 340
+    //   655: goto -316 -> 339
     //   658: astore_1
     //   659: getstatic 26	com/tencent/ttpic/openapi/ttpicmodule/AEMaterialParser:TAG	Ljava/lang/String;
     //   662: aload_1
@@ -374,7 +374,7 @@ public class AEMaterialParser
     //   667: iconst_0
     //   668: anewarray 4	java/lang/Object
     //   671: invokestatic 141	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
-    //   674: goto -334 -> 340
+    //   674: goto -335 -> 339
     //   677: astore_1
     //   678: aconst_null
     //   679: astore_2
@@ -488,7 +488,7 @@ public class AEMaterialParser
     //   854: astore_1
     //   855: aconst_null
     //   856: astore 4
-    //   858: goto -583 -> 275
+    //   858: goto -584 -> 274
     //   861: astore_2
     //   862: aconst_null
     //   863: astore_3
@@ -496,7 +496,7 @@ public class AEMaterialParser
     //   865: astore_1
     //   866: aconst_null
     //   867: astore 4
-    //   869: goto -594 -> 275
+    //   869: goto -595 -> 274
     //   872: astore_2
     //   873: aconst_null
     //   874: astore_3
@@ -504,7 +504,7 @@ public class AEMaterialParser
     //   876: astore 4
     //   878: aconst_null
     //   879: astore_1
-    //   880: goto -605 -> 275
+    //   880: goto -606 -> 274
     //   883: astore 9
     //   885: aconst_null
     //   886: astore 8
@@ -516,7 +516,7 @@ public class AEMaterialParser
     //   894: astore_3
     //   895: aload 9
     //   897: astore_2
-    //   898: goto -623 -> 275
+    //   898: goto -624 -> 274
     //   901: astore 9
     //   903: aconst_null
     //   904: astore 8
@@ -528,7 +528,7 @@ public class AEMaterialParser
     //   912: astore_1
     //   913: aload 9
     //   915: astore_2
-    //   916: goto -641 -> 275
+    //   916: goto -642 -> 274
     //   919: astore_2
     //   920: aconst_null
     //   921: astore_3
@@ -540,23 +540,23 @@ public class AEMaterialParser
     //   929: astore 8
     //   931: aload 9
     //   933: astore_1
-    //   934: goto -659 -> 275
+    //   934: goto -660 -> 274
     //   937: astore_2
     //   938: aconst_null
     //   939: astore_3
     //   940: aconst_null
     //   941: astore_1
-    //   942: goto -667 -> 275
+    //   942: goto -668 -> 274
     //   945: astore_2
     //   946: aconst_null
     //   947: astore_1
-    //   948: goto -673 -> 275
+    //   948: goto -674 -> 274
     //   951: astore_2
     //   952: aload_1
     //   953: astore_2
-    //   954: goto -448 -> 506
+    //   954: goto -449 -> 505
     //   957: astore_3
-    //   958: goto -509 -> 449
+    //   958: goto -510 -> 448
     //   961: aconst_null
     //   962: astore 8
     //   964: goto -810 -> 154
@@ -567,11 +567,11 @@ public class AEMaterialParser
     //   0	967	2	paramString1	String
     //   0	967	3	paramString2	String
     //   0	967	4	paramDecryptListener	DecryptListener
-    //   19	477	5	i	int
-    //   1	464	6	j	int
-    //   4	378	7	k	int
+    //   19	476	5	i	int
+    //   1	463	6	j	int
+    //   4	377	7	k	int
     //   7	956	8	localObject1	Object
-    //   25	503	9	localObject2	Object
+    //   25	502	9	localObject2	Object
     //   753	10	9	localObject3	Object
     //   781	8	9	localObject4	Object
     //   794	10	9	localObject5	Object
@@ -580,19 +580,19 @@ public class AEMaterialParser
     //   901	13	9	localException2	java.lang.Exception
     //   923	9	9	localObject7	Object
     //   96	742	10	localObject8	Object
-    //   208	627	11	str1	String
+    //   208	627	11	str	String
     //   205	626	12	localObject9	Object
-    //   243	23	13	str2	String
+    //   224	305	13	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   217	225	274	java/lang/Exception
-    //   239	245	274	java/lang/Exception
-    //   264	271	274	java/lang/Exception
-    //   529	534	274	java/lang/Exception
-    //   404	413	446	java/io/IOException
-    //   418	426	446	java/io/IOException
-    //   449	459	505	java/io/IOException
-    //   473	481	505	java/io/IOException
+    //   217	226	273	java/lang/Exception
+    //   240	245	273	java/lang/Exception
+    //   263	270	273	java/lang/Exception
+    //   528	534	273	java/lang/Exception
+    //   403	412	445	java/io/IOException
+    //   417	425	445	java/io/IOException
+    //   448	458	504	java/io/IOException
+    //   472	480	504	java/io/IOException
     //   538	542	574	java/io/IOException
     //   546	550	574	java/io/IOException
     //   555	560	574	java/io/IOException
@@ -601,49 +601,49 @@ public class AEMaterialParser
     //   608	616	639	java/io/IOException
     //   621	626	639	java/io/IOException
     //   631	636	639	java/io/IOException
-    //   308	312	658	java/io/IOException
-    //   316	320	658	java/io/IOException
-    //   325	330	658	java/io/IOException
-    //   335	340	658	java/io/IOException
+    //   307	311	658	java/io/IOException
+    //   315	319	658	java/io/IOException
+    //   324	329	658	java/io/IOException
+    //   334	339	658	java/io/IOException
     //   78	112	677	finally
     //   112	128	677	finally
     //   128	151	677	finally
-    //   350	376	677	finally
-    //   404	413	677	finally
-    //   418	426	677	finally
+    //   349	375	677	finally
+    //   403	412	677	finally
+    //   417	425	677	finally
     //   689	693	723	java/io/IOException
     //   697	701	723	java/io/IOException
     //   706	711	723	java/io/IOException
     //   716	721	723	java/io/IOException
     //   159	168	742	finally
     //   168	173	753	finally
-    //   426	430	768	finally
-    //   449	459	779	finally
-    //   473	481	779	finally
-    //   481	485	794	finally
+    //   425	429	768	finally
+    //   448	458	779	finally
+    //   472	480	779	finally
+    //   480	484	794	finally
     //   181	191	809	finally
     //   191	203	817	finally
-    //   217	225	829	finally
-    //   239	245	829	finally
-    //   264	271	829	finally
-    //   289	304	829	finally
-    //   529	534	829	finally
+    //   217	226	829	finally
+    //   240	245	829	finally
+    //   263	270	829	finally
+    //   288	303	829	finally
+    //   528	534	829	finally
     //   78	112	847	java/lang/Exception
     //   112	128	847	java/lang/Exception
     //   128	151	847	java/lang/Exception
-    //   350	376	847	java/lang/Exception
-    //   404	413	847	java/lang/Exception
-    //   418	426	847	java/lang/Exception
+    //   349	375	847	java/lang/Exception
+    //   403	412	847	java/lang/Exception
+    //   417	425	847	java/lang/Exception
     //   159	168	861	java/lang/Exception
     //   168	173	872	java/lang/Exception
-    //   426	430	883	java/lang/Exception
-    //   449	459	901	java/lang/Exception
-    //   473	481	901	java/lang/Exception
-    //   481	485	919	java/lang/Exception
+    //   425	429	883	java/lang/Exception
+    //   448	458	901	java/lang/Exception
+    //   472	480	901	java/lang/Exception
+    //   480	484	919	java/lang/Exception
     //   181	191	937	java/lang/Exception
     //   191	203	945	java/lang/Exception
-    //   481	485	951	java/io/IOException
-    //   426	430	957	java/io/IOException
+    //   480	484	951	java/io/IOException
+    //   425	429	957	java/io/IOException
   }
   
   public void parse(Context paramContext, String paramString1, Class paramClass, String paramString2, AEMaterialParser.ParseCallback paramParseCallback)

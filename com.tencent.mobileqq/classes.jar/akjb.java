@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import pb.unite.search.RequestSearchWord.Rcmd;
 
-class akjb
-  implements View.OnClickListener
+public abstract interface akjb
 {
-  akjb(akja paramakja) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.b();
-  }
+  public abstract void a(PBRepeatMessageField<RequestSearchWord.Rcmd> paramPBRepeatMessageField, PBStringField paramPBStringField);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akjb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,27 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
-public abstract interface afeg
+class afeg
+  implements Animator.AnimatorListener
 {
-  public abstract void a(List<MayKnowRecommend> paramList);
+  afeg(afec paramafec) {}
   
-  public abstract boolean a();
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a.findViewById(16908290).setBackgroundDrawable(null);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afeg
  * JD-Core Version:    0.7.0.1
  */

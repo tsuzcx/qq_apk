@@ -1,22 +1,18 @@
-public class akhg
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+
+class akhg
+  extends aymm
 {
-  public long a;
-  public String a;
-  public long b = -1L;
-  public long c = -1L;
+  akhg(akhf paramakhf) {}
   
-  public akhg(long paramLong)
+  public boolean a(aymh paramaymh)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = Long.toString(paramLong);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.c = -1L;
-    this.b = -1L;
+    String str = ThemeUtil.getCurrentThemeId();
+    if (!paramaymh.a().equals(str)) {
+      bcpw.a(this.a.app.getApplication(), ajyc.a(2131714912), 4000).a();
+    }
+    return false;
   }
 }
 

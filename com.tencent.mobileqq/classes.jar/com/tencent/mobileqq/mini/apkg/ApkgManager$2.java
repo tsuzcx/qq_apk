@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import bdfi;
+import beji;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +23,7 @@ class ApkgManager$2
   {
     try
     {
-      boolean bool = bdfi.a(this.val$savePath, this.val$folderPath);
+      boolean bool = beji.a(this.val$savePath, this.val$folderPath);
       QLog.d("ApkgManager", 1, "preloadFlutterPkg unpack appid:" + this.val$miniConfig.config.appId + " name:" + this.val$miniConfig.config.name + " folder:" + this.val$folderPath + " hasUnpack:" + bool);
       return;
     }

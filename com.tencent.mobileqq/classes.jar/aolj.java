@@ -1,34 +1,35 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView.1;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView.1.1.1;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class aolj
-  extends aoko
+public class aolj
+  implements OnCompositionLoadedListener
 {
-  public aolj(aokk paramaokk)
-  {
-    super(paramaokk);
-  }
+  public aolj(MatchingView.1 param1) {}
   
-  protected String a()
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    return "StateSaveToWeiYunByPCWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    if (paramLottieComposition == null)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      QLog.e("MatchingView", 1, "onCompositionLoaded lottieComposition is null");
       return;
     }
-    aokk.b(this.jdField_a_of_type_Aokk, 11, 7);
-    aokk.c(this.jdField_a_of_type_Aokk, 11, 7);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateSaveToWeiYunByPC)");
-    this.jdField_a_of_type_Aoko = new aoli(this.jdField_a_of_type_Aokk);
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    MatchingView.a(this.a.this$0, localLottieDrawable);
+    ThreadManager.getUIHandler().post(new MatchingView.1.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aolj
  * JD-Core Version:    0.7.0.1
  */

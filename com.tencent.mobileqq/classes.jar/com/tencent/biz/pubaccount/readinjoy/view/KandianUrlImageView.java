@@ -1,12 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
+import android.view.View;
+import rai;
 
 public class KandianUrlImageView
   extends ResizeURLImageView
 {
-  private boolean a;
+  private rai jdField_a_of_type_Rai;
+  private boolean jdField_a_of_type_Boolean;
   
   public KandianUrlImageView(Context paramContext)
   {
@@ -25,14 +29,27 @@ public class KandianUrlImageView
   
   public void onDetachedFromWindow()
   {
-    if (!this.a) {
+    if (!this.jdField_a_of_type_Boolean) {
       super.onDetachedFromWindow();
+    }
+  }
+  
+  protected void onVisibilityChanged(@NonNull View paramView, int paramInt)
+  {
+    super.onVisibilityChanged(paramView, paramInt);
+    if (this.jdField_a_of_type_Rai != null) {
+      this.jdField_a_of_type_Rai.a(paramView, paramInt);
     }
   }
   
   public void setIsRecyclerView(boolean paramBoolean)
   {
-    this.a = paramBoolean;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void setVisibilityChangedListener(rai paramrai)
+  {
+    this.jdField_a_of_type_Rai = paramrai;
   }
 }
 

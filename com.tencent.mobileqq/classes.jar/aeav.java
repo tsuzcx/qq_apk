@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class aeav
+  implements Animator.AnimatorListener
 {
-  public String a;
+  public aeav(SixCombolEffectView paramSixCombolEffectView, aeay paramaeay) {}
   
-  public aeav(String paramString)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = paramString;
+    if (!SixCombolEffectView.a) {
+      return;
+    }
+    this.jdField_a_of_type_Aeay.b.start();
   }
   
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public boolean a()
-  {
-    return false;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

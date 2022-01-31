@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.model;
 
-import sqm;
+import tdi;
 
 public class TrimmableManager$1
   implements Runnable
 {
-  public TrimmableManager$1(sqm paramsqm, int paramInt) {}
+  public TrimmableManager$1(tdi paramtdi, int paramInt) {}
   
   public void run()
   {
-    sqm.a(this.this$0, this.a);
+    tdi.a(this.this$0, this.a);
   }
 }
 

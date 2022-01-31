@@ -1,13 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.ColorNickTextView;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 
 public class afrk
+  extends ajxl
 {
-  public ImageView a;
-  public TextView a;
-  public ColorNickTextView a;
-  public TextView b;
+  public afrk(PublicAccountFragment paramPublicAccountFragment) {}
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      this.a.i();
+    }
+  }
 }
 
 

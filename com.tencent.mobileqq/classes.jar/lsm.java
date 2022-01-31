@@ -1,22 +1,16 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
 class lsm
-  implements ViewTreeObserver.OnPreDrawListener
+  implements Comparator<lsh>
 {
-  lsm(lsl paramlsl, TextView paramTextView) {}
+  lsm(lsk paramlsk) {}
   
-  public boolean onPreDraw()
+  public int a(lsh paramlsh1, lsh paramlsh2)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeOnPreDrawListener(this);
-    this.jdField_a_of_type_Lsl.a.a().a().at = true;
-    mjg.a(this.jdField_a_of_type_Lsl.a);
-    QLog.d("qav_face_guide", 1, "onPreDraw");
-    return false;
+    if (paramlsh1.d() >= paramlsh2.d()) {
+      return 1;
+    }
+    return -1;
   }
 }
 

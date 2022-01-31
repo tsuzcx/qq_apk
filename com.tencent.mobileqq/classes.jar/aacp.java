@@ -1,24 +1,28 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class aacp
-  implements View.OnClickListener
+class aacp
+  extends mxm
 {
-  public aacp(BaseChatPie paramBaseChatPie) {}
+  aacp(aacn paramaacn, aacz paramaacz, JSONObject paramJSONObject, aabm paramaabm) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.dismissDialog(230);
-    xbq.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    if (QLog.isColorLevel()) {
+      QLog.i(aacn.a, 2, "onResult appid=" + aacn.b(this.jdField_a_of_type_Aacn).a + ", openid=" + this.jdField_a_of_type_Aacz.a + ", openkey=" + this.jdField_a_of_type_Aacz.b + ", code=" + paramInt + ", req param=" + this.jdField_a_of_type_OrgJsonJSONObject);
+    }
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      aaet.a(this.jdField_a_of_type_Aabm, paramInt, "reportScore result error, try again");
+      return;
+    }
+    aaet.a(this.jdField_a_of_type_Aabm, aabo.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aacp
  * JD-Core Version:    0.7.0.1
  */

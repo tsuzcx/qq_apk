@@ -1,27 +1,46 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
-import org.json.JSONObject;
+import cooperation.wadl.ipc.WadlResult;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-class bdor
-  implements AsyncResult
+public class bdor
+  extends bdok
 {
-  bdor(bdop parambdop, int paramInt, EngineChannel paramEngineChannel) {}
+  private WeakReference<bdos> a;
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public bdor()
   {
-    bdnw.b("EngineManager", "[MiniEng] updateBaseLib response. isSuc=" + paramBoolean + " rsp=" + paramJSONObject);
-    if ((paramBoolean) && (paramJSONObject != null))
-    {
-      paramJSONObject = BaseLibInfo.fromJSON(paramJSONObject.optJSONObject(BaseLibInfo.getKey(this.jdField_a_of_type_Int)));
-      bdnw.b("EngineManager", "[MiniEng] engineLibInfo " + paramJSONObject);
-      bdom.c(this.jdField_a_of_type_Bdop.a, paramJSONObject, this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel);
+    super(false, null);
+  }
+  
+  public void a(bdos parambdos)
+  {
+    this.a = new WeakReference(parambdos);
+  }
+  
+  public void onQueryCallback(ArrayList<WadlResult> paramArrayList)
+  {
+    super.onQueryCallback(paramArrayList);
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((bdos)this.a.get()).a(paramArrayList);
     }
+  }
+  
+  public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
+  {
+    super.onWadlTaskStatusChanged(paramWadlResult);
+    if ((paramWadlResult == null) || (paramWadlResult.a == null)) {}
+    int i;
+    do
+    {
+      return;
+      i = bdop.a(paramWadlResult.b);
+    } while ((this.a == null) || (this.a.get() == null));
+    ((bdos)this.a.get()).a(i, paramWadlResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdor
  * JD-Core Version:    0.7.0.1
  */

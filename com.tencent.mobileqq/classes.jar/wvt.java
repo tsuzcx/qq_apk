@@ -1,15 +1,12 @@
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 
-public abstract interface wvt<T extends RecyclerView.ViewHolder>
+public abstract interface wvt
 {
-  public abstract void a(@Nullable T paramT, int paramInt);
-  
-  public abstract void a(@Nullable T paramT, boolean paramBoolean);
+  public abstract void b(CertifiedAccountMeta.StFeed paramStFeed);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wvt
  * JD-Core Version:    0.7.0.1
  */

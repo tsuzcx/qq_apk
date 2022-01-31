@@ -1,6 +1,6 @@
 package dov.com.qq.im;
 
-import bhff;
+import bizx;
 import com.tencent.qphone.base.util.QLog;
 
 class QIMEffectCameraCaptureUnit$4

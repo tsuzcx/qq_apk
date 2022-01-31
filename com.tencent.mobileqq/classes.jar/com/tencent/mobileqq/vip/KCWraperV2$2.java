@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vip;
 
-import batv;
-import baue;
+import bbwp;
+import bbwy;
 import com.tencent.mobileqq.app.ThreadManager;
 import dualsim.common.IKingCardInterface;
 import dualsim.common.OrderCheckResult;
@@ -11,7 +11,7 @@ import tmsdk.common.KcSdkShellManager;
 public class KCWraperV2$2
   implements Runnable
 {
-  public KCWraperV2$2(batv parambatv, baue parambaue, boolean paramBoolean) {}
+  public KCWraperV2$2(bbwp parambbwp, bbwy parambbwy, boolean paramBoolean) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class KCWraperV2$2
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Baue != null)
+      if (this.jdField_a_of_type_Bbwy != null)
       {
         if (!this.jdField_a_of_type_Boolean) {
           break;
@@ -38,9 +38,9 @@ public class KCWraperV2$2
         bool = true;
       }
       i = ((OrderCheckResult)localObject).product;
-      batv.a(this.this$0, (OrderCheckResult)localObject);
+      bbwp.a(this.this$0, (OrderCheckResult)localObject);
     }
-    this.jdField_a_of_type_Baue.a(true, bool, i);
+    this.jdField_a_of_type_Bbwy.a(true, bool, i);
   }
 }
 

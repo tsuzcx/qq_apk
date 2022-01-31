@@ -1,42 +1,115 @@
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo;
+import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo.ImageItem;
+import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo.VideoItem;
 
 class adnh
-  extends acjc
+  implements View.OnClickListener
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String a;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  CornerImageView jdField_b_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String b;
-  View jdField_c_of_type_AndroidViewView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  CornerImageView jdField_c_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  View jdField_d_of_type_AndroidViewView;
-  ImageView jdField_d_of_type_AndroidWidgetImageView;
-  TextView jdField_d_of_type_AndroidWidgetTextView;
-  CornerImageView jdField_d_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  View jdField_e_of_type_AndroidViewView;
-  TextView jdField_e_of_type_AndroidWidgetTextView;
-  View jdField_f_of_type_AndroidViewView;
-  TextView jdField_f_of_type_AndroidWidgetTextView;
-  View jdField_g_of_type_AndroidViewView;
-  TextView jdField_g_of_type_AndroidWidgetTextView;
-  View jdField_h_of_type_AndroidViewView;
-  TextView jdField_h_of_type_AndroidWidgetTextView;
-  View jdField_i_of_type_AndroidViewView;
-  TextView jdField_i_of_type_AndroidWidgetTextView;
-  TextView j;
-  TextView k;
+  adnh(adng paramadng) {}
   
-  adnh(adnd paramadnd) {}
+  public void onClick(View paramView)
+  {
+    int j = 1;
+    paramView = paramView.getTag();
+    if (!(paramView instanceof adni)) {}
+    adni localadni;
+    label42:
+    do
+    {
+      do
+      {
+        return;
+        localadni = (adni)paramView;
+        paramView = adni.a(localadni);
+        if (!TextUtils.isEmpty(paramView)) {
+          break;
+        }
+        Log.i("AutoVideoItemBuilder", "onClick: empty schema");
+        paramView = bbej.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.a.jdField_a_of_type_AndroidContentContext, paramView);
+        if (paramView != null) {
+          paramView.c();
+        }
+      } while (!(localadni.a instanceof MessageForStructing));
+      paramView = (MessageForStructing)localadni.a;
+    } while (!(paramView.structingMsg instanceof StructMsgSubImageVideo));
+    paramView = (StructMsgSubImageVideo)paramView.structingMsg;
+    label125:
+    int i;
+    label195:
+    label213:
+    int k;
+    if (paramView.getVideoItem() != null)
+    {
+      paramView = paramView.getVideoItem().title;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+        break label461;
+      }
+      axqw.b(null, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "auth_aio", "clk_content", 0, 0, "", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramView);
+      return;
+      if ((!paramView.contains("&width=")) && (!paramView.contains("?width=")))
+      {
+        i = 1;
+        if ((paramView.contains("&height=")) || (paramView.contains("?height="))) {
+          break label308;
+        }
+        if ((i == 0) && (j == 0)) {
+          break label469;
+        }
+        k = paramView.indexOf("?");
+        if (k >= 0) {
+          break label313;
+        }
+        paramView = paramView + "?width=" + localadni.e + "&height=" + localadni.f;
+      }
+    }
+    label275:
+    label308:
+    label313:
+    label461:
+    label469:
+    for (;;)
+    {
+      Log.i("AutoVideoItemBuilder", "onClick: " + paramView);
+      break label42;
+      i = 0;
+      break label195;
+      j = 0;
+      break label213;
+      if (k == paramView.length() - 1)
+      {
+        paramView = paramView + "width=" + localadni.e + "&height=" + localadni.f;
+      }
+      else
+      {
+        if (i != 0) {}
+        for (Object localObject = paramView + "&width=" + localadni.e;; localObject = paramView)
+        {
+          paramView = (View)localObject;
+          if (j == 0) {
+            break label275;
+          }
+          paramView = (String)localObject + "&height=" + localadni.f;
+          break label275;
+          if (paramView.getImageItem() != null)
+          {
+            paramView = paramView.getImageItem().title;
+            break label125;
+          }
+          paramView = null;
+          break label125;
+          break;
+        }
+      }
+    }
+  }
 }
 
 

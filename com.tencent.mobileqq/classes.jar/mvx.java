@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class mvx
-  implements View.OnClickListener
+  implements WtTicketPromise
 {
-  mvx(mut parammut, String paramString, nbu paramnbu) {}
+  mvx(mvv parammvv) {}
   
-  public void onClick(View paramView)
+  public void Done(Ticket paramTicket)
   {
-    mut.c(this.jdField_a_of_type_Mut, this.jdField_a_of_type_JavaLangString);
-    mut.a(this.jdField_a_of_type_Mut, this.jdField_a_of_type_Nbu.jdField_a_of_type_JavaLangString);
+    mvv.a(this.a, false);
+    this.a.h();
   }
+  
+  public void Failed(ErrMsg paramErrMsg) {}
+  
+  public void Timeout(ErrMsg paramErrMsg) {}
 }
 
 

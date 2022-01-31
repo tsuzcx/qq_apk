@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class agel
-  implements Parcelable.Creator<TroopClipPic>
+class agel
+  implements View.OnClickListener
 {
-  public TroopClipPic a(Parcel paramParcel)
-  {
-    return new TroopClipPic(paramParcel);
-  }
+  agel(agei paramagei) {}
   
-  public TroopClipPic[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new TroopClipPic[paramInt];
+    this.a.a = null;
+    this.a.dismiss();
   }
 }
 

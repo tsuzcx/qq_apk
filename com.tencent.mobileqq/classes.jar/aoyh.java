@@ -1,19 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.4.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-
-public class aoyh
-  implements TVK_IMediaPlayer.OnInfoListener
+class aoyh
+  implements aptu
 {
-  aoyh(aoyb paramaoyb) {}
+  aoyh(aoye paramaoye) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public void a()
   {
-    new Handler(Looper.getMainLooper()).post(new VideoFilePresenter.4.1(this, paramInt));
-    return false;
+    apue.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, aoye.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
   }
+  
+  public void b() {}
 }
 
 

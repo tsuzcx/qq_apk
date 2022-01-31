@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public final class prt
-  implements Parcelable.Creator<TopicInfo>
+class prt
+  implements View.OnTouchListener
 {
-  public TopicInfo a(Parcel paramParcel)
-  {
-    return new TopicInfo(paramParcel);
-  }
+  prt(prp paramprp, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
   
-  public TopicInfo[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new TopicInfo[paramInt];
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+      this.b.setDuplicateParentStateEnabled(true);
+    }
+    return false;
   }
 }
 

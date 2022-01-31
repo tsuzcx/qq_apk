@@ -1,38 +1,42 @@
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.viola.core.ViolaInstance;
 
-@SuppressLint({"HandlerLeak"})
-class rxy
-  extends Handler
+public class rxy
+  implements rzo
 {
-  WeakReference<rxx> jdField_a_of_type_JavaLangRefWeakReference;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  rxy(rxx paramrxx1, rxx paramrxx2)
-  {
-    sai.b("WSFallKeyPicMonitor", "init DownloadHandler");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramrxx2);
-  }
+  public rxy(BridgeModule paramBridgeModule) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    super.handleMessage(paramMessage);
-    sai.b("WSFallKeyPicMonitor", "handleMessage to download");
-    if (paramMessage.what == 1)
+    ViolaFragment localViolaFragment;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance() != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment() instanceof ViolaFragment)))
     {
-      if (rxx.a(this.jdField_a_of_type_Rxx) != 4) {
-        break label46;
+      localViolaFragment = (ViolaFragment)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment();
+      if (!paramBoolean) {
+        break label85;
       }
-      rxx.a(this.jdField_a_of_type_Rxx);
+      this.jdField_a_of_type_JavaLangString = localViolaFragment.b();
+      this.jdField_a_of_type_Boolean = localViolaFragment.a().booleanValue();
+      localViolaFragment.a("#FF000000");
+      localViolaFragment.b("#FF000000");
+      localViolaFragment.a(Boolean.valueOf(true), true);
     }
-    for (;;)
+    label85:
+    do
     {
-      this.jdField_a_of_type_Rxx.b();
       return;
-      label46:
-      rxx.b(this.jdField_a_of_type_Rxx);
-    }
+      localViolaFragment.a(this.jdField_a_of_type_JavaLangString);
+      localViolaFragment.b(this.jdField_a_of_type_JavaLangString);
+      localViolaFragment.a(Boolean.valueOf(this.jdField_a_of_type_Boolean), true);
+    } while ((!localViolaFragment.a()) || (localViolaFragment.a() == null));
+    localViolaFragment.a().f();
   }
 }
 

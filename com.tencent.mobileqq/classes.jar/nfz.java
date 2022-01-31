@@ -1,34 +1,14 @@
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class nfz
+class nfz
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
+  nfz(nfu paramnfu) {}
   
-  public String toString()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return azxx.a(this).toString();
+    this.a.f = false;
   }
 }
 

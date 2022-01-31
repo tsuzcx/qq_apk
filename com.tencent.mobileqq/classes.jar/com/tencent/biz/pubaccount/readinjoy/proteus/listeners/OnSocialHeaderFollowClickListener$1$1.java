@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.listeners;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import ohb;
-import oxh;
-import oxi;
+import osm;
+import piz;
+import pja;
 
 public class OnSocialHeaderFollowClickListener$1$1
   implements Runnable
 {
-  public OnSocialHeaderFollowClickListener$1$1(oxi paramoxi) {}
+  public OnSocialHeaderFollowClickListener$1$1(pja parampja) {}
   
   public void run()
   {
-    oxh.a(this.a.a).invalidateProteusTemplateBean();
-    ohb.a().b();
-    ohb.a().a(oxh.a(this.a.a), true);
+    piz.a(this.a.a).invalidateProteusTemplateBean();
+    osm.a().b();
+    osm.a().a(piz.a(this.a.a), true);
   }
 }
 

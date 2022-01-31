@@ -27,6 +27,24 @@ public class TissueWnsConfig
     }
     return null;
   }
+  
+  public static BaseLibInfo getQFlutterSoInfo()
+  {
+    Object localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "tissue_qflutter_url", QzoneConfig.DEFAULT_QFLUTTER_URL);
+    QLog.i("TissueWnsConfig", 1, "getQFlutterSoInfo " + (String)localObject);
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      try
+      {
+        localObject = BaseLibInfo.fromJSON(new JSONObject((String)localObject));
+        return localObject;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("TissueWnsConfig", 1, "getWnsQFlutterSoUrl failed", localException);
+      }
+    }
+    return null;
+  }
 }
 
 

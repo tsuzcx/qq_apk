@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import bbmy;
+import bcpw;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class QQUtils$1
@@ -10,7 +10,7 @@ public final class QQUtils$1
   
   public void run()
   {
-    bbmy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+    bcpw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
   }
 }
 

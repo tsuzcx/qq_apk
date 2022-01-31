@@ -1,53 +1,47 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.widget.ScrollView;
+import com.tencent.widget.XEditTextEx;
 
-class auxp
-  implements auzr
+public class auxp
+  implements View.OnTouchListener
 {
-  auxp(auxo paramauxo, int[] paramArrayOfInt) {}
+  public auxp(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.w("MergeEditVideo", 1, "mp4ReEncoder start!");
-  }
-  
-  public void a(String arg1)
-  {
-    urp.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { ??? });
-    synchronized (auxo.a(this.jdField_a_of_type_Auxo))
+    if (StickyNotePublishFragment.a(this.a))
     {
-      auxo.a(this.jdField_a_of_type_Auxo, true);
-      auxo.a(this.jdField_a_of_type_Auxo).notifyAll();
-      QLog.w("MergeEditVideo", 1, "mp4ReEncoder encode finish!");
-      return;
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      bfmr.b(StickyNotePublishFragment.a(this.a));
+      return false;
     }
-  }
-  
-  public void a_(int paramInt, Throwable arg2)
-  {
-    String str;
-    if (??? != null) {
-      str = ???.getMessage();
-    }
-    for (;;)
+    if (StickyNotePublishFragment.a(this.a) == 0)
     {
-      urp.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { "", str });
-      urk.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + ???);
-      auxo.a(this.jdField_a_of_type_Auxo, paramInt);
-      synchronized (auxo.a(this.jdField_a_of_type_Auxo))
-      {
-        auxo.a(this.jdField_a_of_type_Auxo, true);
-        auxo.a(this.jdField_a_of_type_Auxo).notifyAll();
-        return;
-        str = "UNKNOWN ERROR";
-      }
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(0);
+      StickyNotePublishFragment.a(this.a).requestFocus();
+      bfmr.a(StickyNotePublishFragment.a(this.a));
+      return false;
     }
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a, 0);
+    this.a.a(false);
+    this.a.b(false);
+    this.a.c(true);
+    this.a.c(0, 0);
+    return false;
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auxp
  * JD-Core Version:    0.7.0.1
  */

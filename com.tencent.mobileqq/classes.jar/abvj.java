@@ -1,16 +1,10 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.widget.ExpandableListView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class abvj
-  implements bejj
 {
-  public abvj(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
-  
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
-  {
-    return true;
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

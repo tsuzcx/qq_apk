@@ -1,22 +1,17 @@
-import android.text.TextUtils;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
 import com.tencent.qphone.base.util.QLog;
 
 class bgjd
-  implements bfuz
+  extends AVAudioCtrl.EnableSpeakerCompleteCallback
 {
-  bgjd(bgjc parambgjc) {}
+  bgjd(bgiz parambgiz) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzonePersonalizeJsPlugin", 4, "FontInterface.TrueTypeResult font:" + paramInt + ", fontPath:" + paramString1);
+    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.b(paramBoolean, paramInt);
     }
-    if (TextUtils.isEmpty(paramString1))
-    {
-      bgjc.a(this.a, paramString2, -2, "font download failed.");
-      return;
-    }
-    bgjc.a(this.a, paramString2, 0, "success");
   }
 }
 

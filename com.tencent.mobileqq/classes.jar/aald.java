@@ -1,15 +1,97 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import QQService.DeviceItemDes;
+import QQService.SvcDevLoginInfo;
+import android.os.Bundle;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import java.util.Arrays;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class aald
-  implements DialogInterface.OnClickListener
+public class aald
+  extends akgf
 {
-  aald(aalc paramaalc, boolean paramBoolean) {}
+  public aald(AuthDevActivity paramAuthDevActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(int paramInt, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      awqx.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (paramBundle == null) {
+      return;
+    }
+    paramInt = paramBundle.getInt("cmd", 1);
+    int i = paramBundle.getInt("opt", 2);
+    int j = paramBundle.getInt("ret", -1);
+    paramBundle = (String)paramBundle.get("wording");
+    FormSwitchItem localFormSwitchItem;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      if (j == 0)
+      {
+        AuthDevActivity.a(this.a).setVisibility(0);
+        AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
+        localFormSwitchItem = AuthDevActivity.a(this.a);
+        if (i == 1) {}
+        for (;;)
+        {
+          localFormSwitchItem.setChecked(bool1);
+          AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+          AuthDevActivity.b(this.a).setVisibility(0);
+          AuthDevActivity.b(this.a).setText(paramBundle);
+          return;
+          bool1 = false;
+        }
+      }
+      AuthDevActivity.a(this.a).setVisibility(8);
+      AuthDevActivity.b(this.a).setVisibility(8);
+      return;
+    }
+    if (j == 0)
+    {
+      AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
+      localFormSwitchItem = AuthDevActivity.a(this.a);
+      if (i == 1) {}
+      for (bool1 = bool2;; bool1 = false)
+      {
+        localFormSwitchItem.setChecked(bool1);
+        AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+        AuthDevActivity.b(this.a).setText(paramBundle);
+        return;
+      }
+    }
+    AuthDevActivity.a(this.a).setVisibility(8);
+    AuthDevActivity.b(this.a).setVisibility(8);
+    bcpw.a(this.a, paramBundle, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
+  {
+    if ((paramBoolean) && (AuthDevActivity.a(this.a) != null) && (paramInt >= 0) && (paramInt < AuthDevActivity.a(this.a).size()))
+    {
+      Object localObject = (SvcDevLoginInfo)AuthDevActivity.a(this.a).get(paramInt);
+      if (Arrays.equals(((SvcDevLoginInfo)localObject).stDeviceItemDes.vecItemDes, paramArrayOfByte))
+      {
+        ((SvcDevLoginInfo)localObject).strDeviceName = paramString;
+        AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
+      }
+      localObject = this.a.app.getHandler(LoginInfoActivity.class);
+      if (localObject != null)
+      {
+        localObject = ((MqqHandler)localObject).obtainMessage(1);
+        Bundle localBundle = new Bundle();
+        localBundle.putString(AuthDevRenameActivity.f, paramString);
+        localBundle.putByteArray(AuthDevRenameActivity.h, paramArrayOfByte);
+        ((Message)localObject).setData(localBundle);
+        ((Message)localObject).sendToTarget();
+      }
     }
   }
 }

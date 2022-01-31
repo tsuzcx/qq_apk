@@ -1,71 +1,128 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tencent.im.oidb.articlesummary.articlesummary.PGCPicInfo;
+import tencent.im.oidb.articlesummary.articlesummary.PGCVideoInfo;
 
 public class qag
-  extends qae
 {
-  public ViewGroup a;
-  SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  VideoFeedsGestureLayout jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout;
-  public pxs a;
-  public qeq a;
-  qhf jdField_a_of_type_Qhf;
-  ViewGroup jdField_b_of_type_AndroidViewViewGroup;
-  SeekBar jdField_b_of_type_AndroidWidgetSeekBar;
-  public URLImageView b;
-  ViewGroup c;
-  public ViewGroup d;
-  ViewGroup jdField_e_of_type_AndroidViewViewGroup;
-  ImageView jdField_e_of_type_AndroidWidgetImageView;
-  ViewGroup jdField_f_of_type_AndroidViewViewGroup;
-  ImageView jdField_f_of_type_AndroidWidgetImageView;
-  ViewGroup jdField_g_of_type_AndroidViewViewGroup;
-  ImageView jdField_g_of_type_AndroidWidgetImageView;
-  ViewGroup h;
-  TextView o;
-  TextView p;
-  TextView q;
-  TextView r;
-  View jdField_s_of_type_AndroidViewView;
-  TextView jdField_s_of_type_AndroidWidgetTextView;
-  TextView t;
-  TextView u;
-  TextView v;
-  
-  public qag(View paramView, int paramInt)
+  public static void a(BaseArticleInfo paramBaseArticleInfo)
   {
-    super(paramView, paramInt);
-    this.jdField_b_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131302554));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131298974));
-    paramView = this.jdField_a_of_type_AndroidViewViewGroup;
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131313175));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout = ((VideoFeedsGestureLayout)paramView.findViewById(2131301388));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131299247));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131306042));
-    this.d = ((ViewGroup)paramView.findViewById(2131313115));
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131310016));
-    this.o = ((TextView)paramView.findViewById(2131299307));
-    this.q = ((TextView)paramView.findViewById(2131311816));
-    this.c = ((ViewGroup)paramView.findViewById(2131306043));
-    this.r = ((TextView)paramView.findViewById(2131300138));
-    this.jdField_g_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131297811));
-    this.h = ((ViewGroup)paramView.findViewById(2131301264));
-    this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131301265));
-    this.jdField_s_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131305411));
-    this.t = ((TextView)paramView.findViewById(2131300642));
-    this.u = ((TextView)paramView.findViewById(2131303181));
-    this.p = ((TextView)paramView.findViewById(2131310324));
-    this.jdField_e_of_type_AndroidViewViewGroup = ((LinearLayout)paramView.findViewById(2131301263));
-    this.jdField_f_of_type_AndroidViewViewGroup = ((LinearLayout)paramView.findViewById(2131298714));
-    this.v = ((TextView)paramView.findViewById(2131301266));
-    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131313293));
-    this.jdField_s_of_type_AndroidViewView = paramView.findViewById(2131313137);
+    if ((paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr != null)) {}
+    try
+    {
+      Object localObject;
+      switch (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr.jdField_a_of_type_Int)
+      {
+      case 1: 
+        paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int = 1;
+        paramBaseArticleInfo.mTitle = paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr.jdField_a_of_type_Qch.jdField_b_of_type_JavaLangString;
+        if (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcy != null) {
+          paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcy.jdField_a_of_type_Boolean = true;
+        }
+        try
+        {
+          paramBaseArticleInfo.mSinglePicture = new URL(((articlesummary.PGCPicInfo)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr.jdField_a_of_type_Qch.jdField_a_of_type_JavaUtilArrayList.get(0)).bytes_pic_url.get().toStringUtf8());
+          return;
+        }
+        catch (MalformedURLException paramBaseArticleInfo)
+        {
+          paramBaseArticleInfo.printStackTrace();
+          return;
+        }
+        catch (IndexOutOfBoundsException paramBaseArticleInfo)
+        {
+          paramBaseArticleInfo.printStackTrace();
+          return;
+        }
+      case 3: 
+        paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int = 1;
+        paramBaseArticleInfo.mTitle = paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr.jdField_a_of_type_Qda.g;
+        if (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcy != null)
+        {
+          paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcy.jdField_a_of_type_Boolean = true;
+          localObject = paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr.jdField_a_of_type_Qda;
+          paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcy.b = new ArrayList();
+          paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcy.b.add(localObject);
+          try
+          {
+            paramBaseArticleInfo.mSinglePicture = new URL(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr.jdField_a_of_type_Qda.d);
+            return;
+          }
+          catch (MalformedURLException paramBaseArticleInfo)
+          {
+            paramBaseArticleInfo.printStackTrace();
+            return;
+          }
+        }
+        break;
+      case 4: 
+        paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int = 3;
+        if (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcy != null)
+        {
+          paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcy.jdField_a_of_type_Boolean = true;
+          if ((paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr.jdField_a_of_type_Qch != null) && (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr.jdField_a_of_type_Qch.jdField_a_of_type_JavaUtilArrayList != null))
+          {
+            paramBaseArticleInfo.mTitle = paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr.jdField_a_of_type_Qch.jdField_b_of_type_JavaLangString;
+            paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcy.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+            localObject = paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr.jdField_a_of_type_Qch.jdField_a_of_type_JavaUtilArrayList.iterator();
+          }
+        }
+        break;
+      case 2: 
+      case 5: 
+        while (((Iterator)localObject).hasNext())
+        {
+          articlesummary.PGCPicInfo localPGCPicInfo = (articlesummary.PGCPicInfo)((Iterator)localObject).next();
+          qcz localqcz = new qcz();
+          localqcz.jdField_b_of_type_JavaLangString = localPGCPicInfo.bytes_pic_url.get().toStringUtf8();
+          localqcz.jdField_c_of_type_JavaLangString = localPGCPicInfo.bytes_thumbnail_url.get().toStringUtf8();
+          localqcz.jdField_a_of_type_Int = localPGCPicInfo.uint32_pic_width.get();
+          localqcz.jdField_b_of_type_Int = localPGCPicInfo.uint32_pic_height.get();
+          localqcz.jdField_a_of_type_JavaLangString = localPGCPicInfo.bytes_pic_md5.get().toStringUtf8();
+          localqcz.jdField_c_of_type_Int = localPGCPicInfo.is_animation.get();
+          localqcz.d = localPGCPicInfo.bytes_pic_desc.get().toStringUtf8();
+          localqcz.jdField_a_of_type_Long = localPGCPicInfo.uint64_gallery_index.get();
+          localqcz.jdField_a_of_type_Qda = new qda((articlesummary.PGCVideoInfo)localPGCPicInfo.msg_video_info.get());
+          paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcy.jdField_a_of_type_JavaUtilArrayList.add(localqcz);
+          continue;
+          paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int = 6;
+          if (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcy != null) {
+            paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcy.jdField_a_of_type_Boolean = true;
+          }
+          if (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr.jdField_a_of_type_Qda != null)
+          {
+            paramBaseArticleInfo.mTitle = paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr.jdField_a_of_type_Qda.g;
+            paramBaseArticleInfo.mVideoVid = paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr.jdField_a_of_type_Qda.e;
+          }
+          try
+          {
+            paramBaseArticleInfo.mVideoCoverUrl = new URL(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr.jdField_a_of_type_Qda.d);
+            return;
+          }
+          catch (MalformedURLException paramBaseArticleInfo)
+          {
+            paramBaseArticleInfo.printStackTrace();
+            return;
+          }
+          paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int = 19191924;
+          if (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcy != null) {
+            paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcy.jdField_a_of_type_Boolean = true;
+          }
+          paramBaseArticleInfo.mTitle = paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcr.jdField_a_of_type_Qcx.jdField_a_of_type_JavaLangString;
+          return;
+        }
+      }
+      return;
+    }
+    catch (NullPointerException paramBaseArticleInfo) {}
   }
 }
 

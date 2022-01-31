@@ -1,10 +1,14 @@
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+
 public abstract interface oep
 {
-  public abstract void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3);
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString);
+  
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oep
  * JD-Core Version:    0.7.0.1
  */

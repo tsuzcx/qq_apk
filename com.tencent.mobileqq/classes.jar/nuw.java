@@ -1,77 +1,30 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import android.os.Bundle;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.emosm.Client;
 
 public class nuw
-  implements anhs
+  implements MessageQueue.IdleHandler
 {
-  public nuw(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  public nuw(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
   
-  public void a(anht paramanht)
+  public boolean queueIdle()
   {
-    if ((paramanht instanceof anla))
+    if (!anvl.a().a())
     {
-      paramanht = (anla)paramanht;
-      Context localContext = ReadInJoyCommentComponentFragment.a(this.a).getApplicationContext();
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramanht.a(localContext, localContext.getResources().getDisplayMetrics().density));
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      ReadInJoyCommentComponentFragment.a(this.a);
-      return;
+      anvl.a().a().doBindService(BaseApplicationImpl.getApplication());
+      anvl.a().a(new nux(this));
+      return false;
     }
-    ReadInJoyBaseDeliverActivity.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramanht, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText);
+    Bundle localBundle = anqp.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
+    anvl.a().a(localBundle);
+    return false;
   }
-  
-  public void a(anht paramanht1, anht paramanht2, Drawable paramDrawable) {}
-  
-  public boolean a(anht paramanht)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart() == 0) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Editable localEditable = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText();
-        int i = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void b(anht paramanht) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nuw
  * JD-Core Version:    0.7.0.1
  */

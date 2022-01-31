@@ -2,18 +2,18 @@ package com.tencent.biz.subscribe.comment;
 
 import android.view.View;
 import android.widget.LinearLayout;
-import vyw;
+import wmf;
 
 public class ActionSheetDialog$1
   implements Runnable
 {
-  public ActionSheetDialog$1(vyw paramvyw) {}
+  public ActionSheetDialog$1(wmf paramwmf) {}
   
   public void run()
   {
-    vyw.a(this.this$0).setVisibility(0);
-    vyw.a(this.this$0).setVisibility(0);
-    vyw.a(this.this$0);
+    wmf.a(this.this$0).setVisibility(0);
+    wmf.a(this.this$0).setVisibility(0);
+    wmf.a(this.this$0);
   }
 }
 

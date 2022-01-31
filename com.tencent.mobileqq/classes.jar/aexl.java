@@ -1,308 +1,70 @@
 import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
-import android.util.SparseArray;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class aexl<T>
-  extends RecyclerView.Adapter<aexr>
+public class aexl
+  implements aeyv
 {
-  private int jdField_a_of_type_Int;
-  protected aexk a;
-  protected aexp a;
-  private aexq jdField_a_of_type_Aexq;
-  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  protected View a;
-  protected List<T> a;
-  protected boolean a;
-  protected int b;
-  protected Context b;
-  private SparseArray<View> jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-  private View jdField_b_of_type_AndroidViewView;
-  protected int c = -1;
+  private long jdField_a_of_type_Long = -1L;
+  private aeyx jdField_a_of_type_Aeyx;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public aexl(Context paramContext)
+  public aexl(aeyx paramaeyx, Context paramContext)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aexk = new aexk();
-  }
-  
-  private aexl<T> a(aexq paramaexq)
-  {
-    if (paramaexq != null) {
-      this.jdField_a_of_type_Aexq = paramaexq;
-    }
-    return this;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Aeyx = paramaeyx;
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return 55;
   }
   
-  public aexl a(int paramInt)
+  public View a(Object... paramVarArgs)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public aexl a(aexj<T> paramaexj)
-  {
-    this.jdField_a_of_type_Aexk.a(paramaexj);
-    return this;
-  }
-  
-  public aexr a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
-  {
-    return aexr.a(paramContext, paramViewGroup, paramInt);
-  }
-  
-  public aexr a(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (paramInt == 2147483646)
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        return aexr.a(paramViewGroup.getContext(), this.jdField_a_of_type_AndroidViewView);
-      }
-      return aexr.a(paramViewGroup.getContext(), paramViewGroup, this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558528, null);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362376));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aexm(this));
     }
-    if ((paramInt == 2147483645) && (a()))
+    if ((paramVarArgs != null) && (paramVarArgs.length > 1) && ((paramVarArgs[0] instanceof CharSequence)) && ((paramVarArgs[1] instanceof Long)))
     {
-      if (this.jdField_b_of_type_AndroidViewView != null) {
-        return aexr.a(paramViewGroup.getContext(), this.jdField_b_of_type_AndroidViewView);
-      }
-      return aexr.a(paramViewGroup.getContext(), paramViewGroup, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramVarArgs[0]);
+      this.jdField_a_of_type_Long = ((Long)paramVarArgs[1]).longValue();
     }
-    if ((paramInt >= 1000000) && (this.jdField_a_of_type_AndroidUtilSparseArray != null) && (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null)) {
-      return aexr.a(paramViewGroup.getContext(), (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
-    }
-    if ((paramInt >= 2000000) && (this.jdField_b_of_type_AndroidUtilSparseArray != null) && (this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt) != null)) {
-      return aexr.a(paramViewGroup.getContext(), (View)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt));
-    }
-    int i = this.jdField_a_of_type_Aexk.a(paramInt).a();
-    aexr localaexr = a(this.jdField_b_of_type_AndroidContentContext, paramViewGroup, i);
-    a(localaexr, localaexr.a());
-    a(paramViewGroup, localaexr, paramInt);
-    return localaexr;
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  protected T a(int paramInt)
+  public void a(int paramInt, Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    do
+    if (paramInt != 1000) {}
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      return null;
-      paramInt -= b();
-    } while (paramInt >= this.jdField_a_of_type_JavaUtilList.size());
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    notifyDataSetChanged();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(aexp paramaexp)
-  {
-    this.jdField_a_of_type_Aexp = paramaexp;
-  }
-  
-  public void a(aexq paramaexq)
-  {
-    if (a()) {
-      return;
-    }
-    a(paramaexq);
-    this.jdField_a_of_type_Boolean = true;
-    notifyDataSetChanged();
-  }
-  
-  public void a(aexr paramaexr)
-  {
-    super.onViewAttachedToWindow(paramaexr);
-    if ((a(paramaexr.getLayoutPosition())) || (b(paramaexr.getLayoutPosition())) || (c(paramaexr.getLayoutPosition())) || (b()))
-    {
-      paramaexr = paramaexr.itemView.getLayoutParams();
-      if ((paramaexr != null) && ((paramaexr instanceof StaggeredGridLayoutManager.LayoutParams))) {
-        ((StaggeredGridLayoutManager.LayoutParams)paramaexr).setFullSpan(true);
+      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362374);
+      if (localImageView != null) {
+        localImageView.setImageDrawable(paramDrawable);
       }
     }
   }
   
-  public void a(aexr paramaexr, int paramInt)
+  public int[] a()
   {
-    if ((a(paramInt)) || (b(paramInt)) || (b())) {}
-    do
-    {
-      return;
-      if (!c(paramInt)) {
-        break;
-      }
-    } while (this.jdField_a_of_type_Aexq == null);
-    this.jdField_a_of_type_Aexq.a();
-    return;
-    a(paramaexr, a(paramInt));
-  }
-  
-  public void a(aexr paramaexr, View paramView) {}
-  
-  public void a(aexr paramaexr, T paramT)
-  {
-    this.jdField_a_of_type_Aexk.a(paramaexr, paramT, paramaexr.getAdapterPosition());
-  }
-  
-  protected void a(ViewGroup paramViewGroup, aexr paramaexr, int paramInt)
-  {
-    if (!d(paramInt)) {
-      return;
-    }
-    paramaexr.a().setOnClickListener(new aexn(this, paramaexr));
-    paramaexr.a().setOnLongClickListener(new aexo(this, paramaexr));
-  }
-  
-  public void a(List<T> paramList)
-  {
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      if (b()) {
-        notifyItemRemoved(this.c);
-      }
-      int i = b();
-      int j = a();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyItemRangeInserted(i + j, paramList.size());
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) && ((this.jdField_b_of_type_AndroidViewView != null) || (this.jdField_a_of_type_Int != 0));
-  }
-  
-  protected boolean a(int paramInt)
-  {
-    return paramInt < b();
+    return null;
   }
   
   public int b()
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
-      return this.jdField_a_of_type_AndroidUtilSparseArray.size();
-    }
-    return 0;
-  }
-  
-  public void b()
-  {
-    if (a())
-    {
-      a(null);
-      this.jdField_a_of_type_Boolean = false;
-      notifyDataSetChanged();
-    }
-  }
-  
-  protected boolean b()
-  {
-    return ((this.jdField_a_of_type_AndroidViewView != null) || (this.jdField_b_of_type_Int != 0)) && (a() == 0);
-  }
-  
-  protected boolean b(int paramInt)
-  {
-    return (paramInt >= a() + b() + e()) && (paramInt < a() + b() + e() + c());
-  }
-  
-  public int c()
-  {
-    if (this.jdField_b_of_type_AndroidUtilSparseArray != null) {
-      return this.jdField_b_of_type_AndroidUtilSparseArray.size();
-    }
-    return 0;
-  }
-  
-  protected boolean c()
-  {
-    return this.jdField_a_of_type_Aexk.a() > 0;
-  }
-  
-  protected boolean c(int paramInt)
-  {
-    return (a()) && (paramInt == a() + b() + e() + c());
-  }
-  
-  protected int d()
-  {
-    if (a()) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  protected boolean d(int paramInt)
-  {
-    return true;
-  }
-  
-  protected int e()
-  {
-    if (b()) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public int getItemCount()
-  {
-    return b() + c() + a() + e() + d();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (a(paramInt)) {
-      return this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(paramInt);
-    }
-    if ((b()) && ((this.c == -1) || (paramInt == this.c)))
-    {
-      this.c = paramInt;
-      return 2147483646;
-    }
-    if (b(paramInt)) {
-      return this.jdField_b_of_type_AndroidUtilSparseArray.keyAt(paramInt - b() - a() - e());
-    }
-    if (c(paramInt)) {
-      return 2147483645;
-    }
-    if (c()) {
-      return this.jdField_a_of_type_Aexk.a(a(paramInt), paramInt);
-    }
-    return super.getItemViewType(paramInt);
-  }
-  
-  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onAttachedToRecyclerView(paramRecyclerView);
-    paramRecyclerView = paramRecyclerView.getLayoutManager();
-    if ((paramRecyclerView instanceof GridLayoutManager))
-    {
-      paramRecyclerView = (GridLayoutManager)paramRecyclerView;
-      paramRecyclerView.setSpanSizeLookup(new aexm(this, paramRecyclerView));
-      paramRecyclerView.setSpanCount(paramRecyclerView.getSpanCount());
-    }
+    return 16;
   }
 }
 

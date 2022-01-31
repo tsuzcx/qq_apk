@@ -1,23 +1,27 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 class aetd
-  implements View.OnClickListener
+  extends nqv
 {
-  aetd(aetc paramaetc) {}
+  aetd(aerv paramaerv) {}
   
-  public void onClick(View paramView)
+  protected void d(boolean paramBoolean, Object paramObject)
   {
-    awqx.b(null, "dc00899", "Grp_find_new", "", "grptab", "seach_clk", 0, 0, this.a.a.c, this.a.a.a, "", "");
-    paramView = new Intent(this.a.a.getActivity(), SearchContactsActivity.class);
-    paramView.putExtra("from_key", 1);
-    paramView.putExtra("fromType", 13);
-    this.a.a.getActivity().startActivity(paramView);
-    this.a.a.getActivity().overridePendingTransition(0, 0);
+    if ((paramBoolean) && (aerv.a(this.a).getVisibility() != 0))
+    {
+      if (maz.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+      {
+        aerv.b(this.a).setVisibility(0);
+        aerv.c(this.a).setOnClickListener(this.a);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130846174, 2130846175);
+      }
+    }
+    else {
+      return;
+    }
+    aerv.d(this.a).setVisibility(8);
   }
 }
 

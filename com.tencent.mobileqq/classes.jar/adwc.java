@@ -1,12 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-
-class adwc
-  implements DialogInterface.OnCancelListener
+public abstract interface adwc
 {
-  adwc(advv paramadvv) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public abstract void a(int paramInt);
 }
 
 

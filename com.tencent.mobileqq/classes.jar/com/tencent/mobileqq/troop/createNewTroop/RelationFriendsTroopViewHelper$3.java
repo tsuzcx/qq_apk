@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import ayku;
-import ayky;
-import ayla;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import azlk;
+import azlo;
+import azlq;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.PinnedFooterExpandableListView;
@@ -12,56 +11,56 @@ import java.util.ArrayList;
 public class RelationFriendsTroopViewHelper$3
   implements Runnable
 {
-  public RelationFriendsTroopViewHelper$3(ayky paramayky, String paramString) {}
+  public RelationFriendsTroopViewHelper$3(azlo paramazlo, String paramString) {}
   
   public void run()
   {
-    ArrayList localArrayList1 = this.this$0.jdField_a_of_type_Ayku.a(this.a);
-    if (localArrayList1 == null)
-    {
+    ArrayList localArrayList1 = this.this$0.jdField_a_of_type_Azlk.a(this.a);
+    if (localArrayList1 == null) {
       QLog.i("RelationFriendsTroopViewHelper", 1, "updateRelationFriends searchend result null,uin:" + this.a);
-      return;
     }
-    QLog.i("RelationFriendsTroopViewHelper", 1, "updateRelationFriends startsearch uin:" + this.a + ",resultsize:" + localArrayList1.size());
-    ArrayList localArrayList2 = new ArrayList();
-    int j = 0;
-    int i = 0;
+    ArrayList localArrayList2;
+    ArrayList localArrayList3;
+    int i;
+    int j;
     Friends localFriends;
-    if (j < localArrayList1.size())
+    do
     {
-      localFriends = (Friends)localArrayList1.get(j);
-      if (i < 5) {}
-    }
-    else
-    {
-      this.this$0.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.post(new RelationFriendsTroopViewHelper.3.1(this, localArrayList2));
       return;
-    }
-    int k = 0;
-    label153:
-    if (k < ayky.a(this.this$0).a().size()) {
-      if (!((ResultRecord)ayky.a(this.this$0).a().get(k)).a.equals(localFriends.uin)) {}
-    }
-    for (k = 1;; k = 0)
+      QLog.i("RelationFriendsTroopViewHelper", 1, "updateRelationFriends startsearch uin:" + this.a + ",resultsize:" + localArrayList1.size());
+      localArrayList2 = new ArrayList();
+      localArrayList3 = new ArrayList();
+      localArrayList3.addAll(azlo.a(this.this$0).b());
+      i = 0;
+      j = 0;
+      if (i < localArrayList1.size())
+      {
+        localFriends = (Friends)localArrayList1.get(i);
+        if (j < 5) {
+          break;
+        }
+      }
+    } while (this.this$0.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView == null);
+    this.this$0.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.post(new RelationFriendsTroopViewHelper.3.1(this, localArrayList2));
+    return;
+    if (localArrayList3.contains(localFriends.uin)) {}
+    for (int m = 1;; m = 0)
     {
-      if (k == 0)
+      int k = j;
+      if (m == 0)
       {
         localArrayList2.add(localFriends);
-        k = i + 1;
-        i = k;
+        j += 1;
+        k = j;
         if (QLog.isColorLevel())
         {
           QLog.i("RelationFriendsTroopViewHelper", 2, "updateRelationFriends relationuin:" + localFriends.uin);
-          i = k;
+          k = j;
         }
       }
-      for (;;)
-      {
-        j += 1;
-        break;
-        k += 1;
-        break label153;
-      }
+      i += 1;
+      j = k;
+      break;
     }
   }
 }

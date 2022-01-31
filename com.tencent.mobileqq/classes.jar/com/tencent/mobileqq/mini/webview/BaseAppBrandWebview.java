@@ -3,8 +3,7 @@ package com.tencent.mobileqq.mini.webview;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build.VERSION;
-import bfpj;
-import bfpk;
+import bgxq;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -14,7 +13,6 @@ import com.tencent.mobileqq.mini.appbrand.page.embedded.EmbeddedWidgetClientFact
 import com.tencent.mobileqq.mini.appbrand.page.embedded.VideoEmbeddedWidgetClient;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.util.StorageUtil;
-import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebSettingsExtension;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
@@ -214,21 +212,6 @@ public class BaseAppBrandWebview
   
   public String getJsDefaultConfig(boolean paramBoolean)
   {
-    try
-    {
-      Object localObject = new JSONObject();
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("USER_DATA_PATH", MiniAppGlobal.STR_WXFILE + "usr");
-      ((JSONObject)localObject).put("env", localJSONObject);
-      ((JSONObject)localObject).put("preload", paramBoolean);
-      localObject = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = %1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.QUA='" + bfpk.a() + "';", new Object[] { localObject });
-      QLog.d("miniapp-start", 1, "getJsDefaultConfig BaseAppBrandWebview String: " + (String)localObject);
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("miniapp-start", 2, "getJsDefaultConfig failed: " + localException);
-    }
     return "";
   }
   
@@ -282,7 +265,7 @@ public class BaseAppBrandWebview
           }
         }
       }
-      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + bfpj.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { this.apkgInfo.mConfigStr, localJSONObject.toString() });
+      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + bgxq.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { this.apkgInfo.mConfigStr, localJSONObject.toString() });
       str1 = str2;
       if (StorageUtil.getPreference().getBoolean(this.apkgInfo.appId + "_debug", false)) {
         str1 = str2 + "__qqConfig.debug=true;";

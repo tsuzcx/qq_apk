@@ -3,20 +3,20 @@ package com.tencent.open.appstore.dl;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbtm;
-import bccu;
-import bccy;
-import bcdn;
-import bcds;
-import bcgg;
-import bcgl;
+import bcxm;
+import bdgv;
+import bdgz;
+import bdho;
+import bdht;
+import bdkh;
+import bdkm;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 public class DownloadProxy$3
   implements Runnable
 {
-  public DownloadProxy$3(bccy parambccy, Bundle paramBundle, String paramString, int paramInt, Activity paramActivity, ApkUpdateDetail paramApkUpdateDetail) {}
+  public DownloadProxy$3(bdgz parambdgz, Bundle paramBundle, String paramString, int paramInt, Activity paramActivity, ApkUpdateDetail paramApkUpdateDetail) {}
   
   public void run()
   {
@@ -25,24 +25,24 @@ public class DownloadProxy$3
     if (this.jdField_a_of_type_AndroidAppActivity == null) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      bcds.b("DownloadResolver", bool1);
+      bdht.b("DownloadResolver", bool1);
       if (this.jdField_a_of_type_AndroidOsBundle != null) {
         break;
       }
-      bcds.b("DownloadResolver", "[doDownloadAction] pParams == null return");
+      bdht.b("DownloadResolver", "[doDownloadAction] pParams == null return");
       return;
     }
-    bccu.a().a();
-    this.jdField_a_of_type_AndroidOsBundle.getString(bcgl.b);
-    this.jdField_a_of_type_AndroidOsBundle.putString(bcgl.s, this.jdField_a_of_type_JavaLangString);
+    bdgv.a().a();
+    this.jdField_a_of_type_AndroidOsBundle.getString(bdkm.b);
+    this.jdField_a_of_type_AndroidOsBundle.putString(bdkm.s, this.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_AndroidOsBundle.putString("big_brother_source_key", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putInt(bcgl.E, 1);
-    localObject = this.jdField_a_of_type_AndroidOsBundle.getString(bcgl.B);
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString(bcgl.i);
+    this.jdField_a_of_type_AndroidOsBundle.putInt(bdkm.E, 1);
+    localObject = this.jdField_a_of_type_AndroidOsBundle.getString(bdkm.B);
+    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString(bdkm.i);
     if ((TextUtils.isEmpty((CharSequence)localObject)) || (((String)localObject).equals("0"))) {
-      this.jdField_a_of_type_AndroidOsBundle.putString(bcgl.B, "");
+      this.jdField_a_of_type_AndroidOsBundle.putString(bdkm.B, "");
     }
-    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString(bcgl.j);
+    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString(bdkm.j);
     localObject = str1;
     if (this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail != null)
     {
@@ -55,69 +55,72 @@ public class DownloadProxy$3
           localObject = str1;
           if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url))
           {
-            this.jdField_a_of_type_AndroidOsBundle.putString(bcgl.j, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url);
+            this.jdField_a_of_type_AndroidOsBundle.putString(bdkm.j, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url);
             localObject = this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url;
           }
         }
       }
     }
-    localObject = bccu.a().b((String)localObject);
-    if ((localObject == null) && ("biz_src_yyb".equals(this.jdField_a_of_type_JavaLangString)) && (bcgg.e()))
+    localObject = bdgv.a().b((String)localObject);
+    if ((localObject == null) && ("biz_src_yyb".equals(this.jdField_a_of_type_JavaLangString)) && (bdkh.e()))
     {
-      int i = this.jdField_a_of_type_AndroidOsBundle.getInt(bcgl.k);
-      str1 = this.jdField_a_of_type_AndroidOsBundle.getString(bcgl.f);
+      int i = this.jdField_a_of_type_AndroidOsBundle.getInt(bdkm.k);
+      str1 = this.jdField_a_of_type_AndroidOsBundle.getString(bdkm.f);
       if ((i == 5) && ("com.tencent.android.qqdownloader".equals(str1))) {
-        bccy.a(this.jdField_a_of_type_AndroidOsBundle);
+        bdgz.a(this.jdField_a_of_type_AndroidOsBundle);
       }
     }
     else if ((localObject != null) && (!TextUtils.isEmpty(str2)))
     {
       ((DownloadInfo)localObject).h = str2;
     }
-    if (bccy.a(this.jdField_a_of_type_AndroidOsBundle))
+    if (bdgz.a(this.jdField_a_of_type_AndroidOsBundle))
     {
-      bcds.a("DownloadResolver", "[doDownloadAction] installApp");
+      bdht.a("DownloadResolver", "[doDownloadAction] installApp");
       return;
+    }
+    if (this.jdField_a_of_type_AndroidOsBundle.getInt(bdkm.k) == 5) {
+      this.jdField_a_of_type_AndroidOsBundle.putInt(bdkm.k, 2);
     }
     if (this.jdField_a_of_type_Int == 0)
     {
       if ((localObject != null) && (((DownloadInfo)localObject).c == 1))
       {
-        bccy.a(this.this$0, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
+        bdgz.a(this.this$0, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
         return;
       }
-      boolean bool3 = bcdn.d(bbtm.a().a());
-      boolean bool4 = bcdn.c(bbtm.a().a());
+      boolean bool3 = bdho.d(bcxm.a().a());
+      boolean bool4 = bdho.c(bcxm.a().a());
       if ((localObject == null) || (((DownloadInfo)localObject).a() == 1))
       {
         bool1 = true;
         if (this.jdField_a_of_type_AndroidAppActivity != null) {
-          break label615;
+          break label640;
         }
       }
       for (;;)
       {
-        bcds.a("DownloadResolver", "check wifi dialog isWifiActive=" + bool4 + " isFirstDownload=" + bool1 + " acIsNull=" + bool2);
-        if ((!bool3) || (bool2) || (bool4) || (!bool1) || (!this.jdField_a_of_type_AndroidOsBundle.getBoolean(bcgl.r))) {
-          break label620;
+        bdht.a("DownloadResolver", "check wifi dialog isWifiActive=" + bool4 + " isFirstDownload=" + bool1 + " acIsNull=" + bool2);
+        if ((!bool3) || (bool2) || (bool4) || (!bool1) || (!this.jdField_a_of_type_AndroidOsBundle.getBoolean(bdkm.r))) {
+          break label645;
         }
-        bccu.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
+        bdgv.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
         return;
         bool1 = false;
         break;
-        label615:
+        label640:
         bool2 = false;
       }
-      label620:
-      bccy.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+      label645:
+      bdgz.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
       return;
     }
     if ((localObject == null) || (((DownloadInfo)localObject).c == 1))
     {
-      bccy.a(this.this$0, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
+      bdgz.a(this.this$0, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
       return;
     }
-    bccy.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    bdgz.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
   }
 }
 

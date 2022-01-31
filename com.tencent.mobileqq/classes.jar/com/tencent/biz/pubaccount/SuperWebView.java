@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount;
 
-import acio;
+import actd;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
@@ -53,7 +53,7 @@ public abstract class SuperWebView
   
   public void loadUrl(String paramString)
   {
-    acio.a(this.mIntent, paramString);
+    actd.a(this.mIntent, paramString);
     if (this.mReadyForLoadJs) {
       if ((Build.VERSION.SDK_INT >= 19) && (paramString != null) && (paramString.startsWith("javascript:"))) {
         super.evaluateJavascript(paramString.substring("javascript:".length()), null);

@@ -1,90 +1,98 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class umt
-  extends slu
+  extends umg
 {
-  public String a;
-  public int b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
+  public Context a;
+  public View a;
+  public TextView a;
+  protected final umm a;
+  public TextView b;
+  public TextView c;
   
-  public umt(qqstory_service.RspGetUserSelfInfo paramRspGetUserSelfInfo)
+  public umt(View paramView, umm paramumm)
   {
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    Object localObject = paramRspGetUserSelfInfo.result;
-    this.jdField_a_of_type_Int = ((qqstory_struct.ErrorInfo)localObject).error_code.get();
-    this.jdField_b_of_type_JavaLangString = ((qqstory_struct.ErrorInfo)localObject).error_desc.get().toStringUtf8();
-    int i;
-    if (paramRspGetUserSelfInfo.is_vip.has())
+    this.jdField_a_of_type_Umm = paramumm;
+    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379559));
+    this.b = ((TextView)paramView.findViewById(2131378942));
+    this.c = ((TextView)paramView.findViewById(2131379079));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369207);
+    QQStoryContext.a();
+    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
     {
-      i = paramRspGetUserSelfInfo.is_vip.get();
-      this.jdField_b_of_type_Int = i;
-      if (!paramRspGetUserSelfInfo.union_id.has()) {
-        break label233;
+      if (this.b != null) {
+        this.b.setTextColor(Color.parseColor("#44608a"));
       }
-      localObject = paramRspGetUserSelfInfo.union_id.get().toStringUtf8();
-      label96:
-      this.jdField_a_of_type_JavaLangString = ((String)localObject);
-      if (!paramRspGetUserSelfInfo.fans_count.has()) {
-        break label240;
-      }
-      i = paramRspGetUserSelfInfo.fans_count.get();
-      label120:
-      this.jdField_c_of_type_Int = i;
-      if (!paramRspGetUserSelfInfo.video_count.has()) {
-        break label245;
-      }
-      i = paramRspGetUserSelfInfo.video_count.get();
-      label143:
-      this.jdField_d_of_type_Int = i;
-      i = j;
-      if (paramRspGetUserSelfInfo.visit_total_count.has()) {
-        i = paramRspGetUserSelfInfo.visit_total_count.get();
-      }
-      this.e = i;
-      if (!paramRspGetUserSelfInfo.newest_video_cover.has()) {
-        break label250;
-      }
-      localObject = paramRspGetUserSelfInfo.newest_video_cover.get().toStringUtf8();
-      label195:
-      this.jdField_c_of_type_JavaLangString = ((String)localObject);
-      if (!paramRspGetUserSelfInfo.newest_video_vid.has()) {
-        break label257;
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991b8"));
+      this.c.setTextColor(Color.parseColor("#6991b8"));
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#0c284e"));
       }
     }
-    label257:
-    for (paramRspGetUserSelfInfo = paramRspGetUserSelfInfo.newest_video_vid.get().toStringUtf8();; paramRspGetUserSelfInfo = "")
+    this.c.setOnClickListener(new umu(this));
+  }
+  
+  public void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt)
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_Umm.a)
     {
-      this.jdField_d_of_type_JavaLangString = paramRspGetUserSelfInfo;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131713938));
+      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(vzo.a(this.jdField_a_of_type_AndroidContentContext, 3.0F), 0, 0, 0);
+      this.b.setText("");
+      if (paramInt != 1) {
+        break label174;
+      }
+      this.c.setVisibility(0);
+      a(this.jdField_a_of_type_Umm.a);
+    }
+    for (;;)
+    {
+      paramVideoCollectionItem = this.jdField_a_of_type_AndroidViewView;
+      if (paramInt == 1) {
+        i = 4;
+      }
+      paramVideoCollectionItem.setVisibility(i);
       return;
-      i = 0;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(vyb.c(paramVideoCollectionItem.collectionTime));
+      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, 0, 0, 0);
+      if (paramVideoCollectionItem.collectionCount <= 0)
+      {
+        this.b.setText("");
+        break;
+      }
+      this.b.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131699539, new Object[] { Integer.valueOf(paramVideoCollectionItem.collectionCount) }));
       break;
-      label233:
-      localObject = "";
-      break label96;
-      label240:
-      i = 0;
-      break label120;
-      label245:
-      i = 0;
-      break label143;
-      label250:
-      localObject = "";
-      break label195;
+      label174:
+      this.c.setVisibility(8);
     }
   }
   
-  public String toString()
+  protected void a(boolean paramBoolean)
   {
-    return uls.a(new Object[] { "Response{ isVip=", Integer.valueOf(this.jdField_b_of_type_Int), " fansCount=", Integer.valueOf(this.jdField_c_of_type_Int), " myVideoCount=", Integer.valueOf(this.jdField_d_of_type_Int), " myVisitTotalCount=", Integer.valueOf(this.e), " newestVideoCover=", this.jdField_c_of_type_JavaLangString, " newestVideoVid=", this.jdField_d_of_type_JavaLangString });
+    int i = vzo.a(this.jdField_a_of_type_AndroidContentContext, 17.0F);
+    if (paramBoolean)
+    {
+      this.c.setText(ajyc.a(2131713917));
+      localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845988);
+      localDrawable.setBounds(0, 0, i, i);
+      this.c.setCompoundDrawables(localDrawable, null, null, null);
+      return;
+    }
+    this.c.setText(ajyc.a(2131713928));
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845987);
+    localDrawable.setBounds(0, 0, i, i);
+    this.c.setCompoundDrawables(localDrawable, null, null, null);
   }
 }
 

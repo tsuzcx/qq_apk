@@ -8,10 +8,10 @@ import com.tencent.tmassistant.common.jce.StatReportRequest;
 import com.tencent.tmassistant.common.jce.StatReportResponse;
 import com.tencent.tmassistantbase.network.INetworkChangedObserver;
 import com.tencent.tmassistantbase.network.NetworkMonitorReceiver;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.k;
 import com.tencent.tmassistantbase.util.l;
-import com.tencent.tmassistantbase.util.m;
-import com.tencent.tmassistantbase.util.t;
+import com.tencent.tmassistantbase.util.s;
 import com.tencent.tmdownloader.internal.storage.b;
 import java.util.ArrayList;
 import java.util.ArrayList<Lcom.tencent.tmassistant.common.jce.StatItem;>;
@@ -38,10 +38,10 @@ public class SDKReportManager2
   
   private SDKReportManager2()
   {
-    ac.c("SDKReportManager2", "<init>SDKReportManager2() process : " + t.e());
-    if (!t.a())
+    ab.c("SDKReportManager2", "<init>SDKReportManager2() process : " + s.e());
+    if (!s.a())
     {
-      l.a().post(new e(this));
+      k.a().post(new e(this));
       return;
     }
     this.mStatReportEngine = new h();
@@ -74,7 +74,7 @@ public class SDKReportManager2
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (StatItem)((Iterator)localObject1).next();
-        ac.c("SDKReportManager2", "batchReport type = " + ((StatItem)localObject2).type + " records = " + com.tencent.tmdownloader.internal.notification.g.a(((StatItem)localObject2).records));
+        ab.c("SDKReportManager2", "batchReport type = " + ((StatItem)localObject2).type + " records = " + com.tencent.tmdownloader.internal.notification.g.a(((StatItem)localObject2).records));
       }
     }
     this.mPostHandler.sendEmptyMessageDelayed(2, this.mBatchReportInterval);
@@ -82,7 +82,7 @@ public class SDKReportManager2
   
   private void cacheDataOnFailed(ArrayList<StatItem> paramArrayList)
   {
-    ac.c("SDKReportManager2", ">>cacheDataOnFailed enter");
+    ab.c("SDKReportManager2", ">>cacheDataOnFailed enter");
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
       SparseArray localSparseArray = new SparseArray();
@@ -111,12 +111,12 @@ public class SDKReportManager2
         while (((Iterator)localObject).hasNext()) {
           paramArrayList.add((String)((Iterator)localObject).next());
         }
-        ac.c("SDKReportManager2", ">>cacheDataOnFailed saveReportItemToDB type = " + k + " saveData = " + com.tencent.tmdownloader.internal.notification.g.a(paramArrayList));
+        ab.c("SDKReportManager2", ">>cacheDataOnFailed saveReportItemToDB type = " + k + " saveData = " + com.tencent.tmdownloader.internal.notification.g.a(paramArrayList));
         com.tencent.tmdownloader.internal.storage.table.a.a(String.valueOf(k), paramArrayList);
         i += 1;
       }
     }
-    ac.c("SDKReportManager2", ">>cacheDataOnFailed exit");
+    ab.c("SDKReportManager2", ">>cacheDataOnFailed exit");
   }
   
   public static SDKReportManager2 getInstance()
@@ -138,7 +138,7 @@ public class SDKReportManager2
     BatchReportConfig localBatchReportConfig = b.a().b();
     if ((localBatchReportConfig != null) && (localBatchReportConfig.batchReportInterval > 0L))
     {
-      ac.c("SDKReportManager2", ">>BatchReportConfig != null BatchReportConfig.batchReportInterval = " + localBatchReportConfig.batchReportInterval + " BatchReportConfig.batchReportMaxCount = " + localBatchReportConfig.batchReportMaxCount);
+      ab.c("SDKReportManager2", ">>BatchReportConfig != null BatchReportConfig.batchReportInterval = " + localBatchReportConfig.batchReportInterval + " BatchReportConfig.batchReportMaxCount = " + localBatchReportConfig.batchReportMaxCount);
       this.mBatchReportInterval = localBatchReportConfig.batchReportInterval;
       this.mBatchReportMaxCount = localBatchReportConfig.batchReportMaxCount;
       this.mReportRetryCount = localBatchReportConfig.reportRetryCount;
@@ -147,7 +147,7 @@ public class SDKReportManager2
   
   private void initHandler()
   {
-    this.mPostHandler = new f(this, l.a(m.a));
+    this.mPostHandler = new f(this, k.a(l.a));
     this.mPostHandler.sendEmptyMessage(2);
   }
   
@@ -180,7 +180,7 @@ public class SDKReportManager2
       if (localArrayList.size() > 0)
       {
         i = this.mStatReportEngine.a(localArrayList);
-        ac.c("SDKReportManager2", "timelyReport");
+        ab.c("SDKReportManager2", "timelyReport");
         this.mTimelyStatListCache.put(i, localArrayList);
       }
     }
@@ -188,12 +188,12 @@ public class SDKReportManager2
   
   public void onNetworkChanged()
   {
-    l.a().post(new g(this));
+    k.a().post(new g(this));
   }
   
   public void onStatReportFinish(int paramInt1, StatReportRequest paramStatReportRequest, StatReportResponse paramStatReportResponse, int paramInt2)
   {
-    ac.c("SDKReportManager2", ">>onStatReportFinish reportLog onReportFinish errorCode = " + paramInt2);
+    ab.c("SDKReportManager2", ">>onStatReportFinish reportLog onReportFinish errorCode = " + paramInt2);
     paramStatReportRequest = (ArrayList)this.mTimelyStatListCache.get(paramInt1);
     if (paramInt2 != 0) {
       cacheDataOnFailed(paramStatReportRequest);
@@ -207,7 +207,7 @@ public class SDKReportManager2
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 87	com/tencent/tmassistantbase/util/t:a	()Z
+    //   2: invokestatic 87	com/tencent/tmassistantbase/util/s:a	()Z
     //   5: ifne +41 -> 46
     //   8: ldc 17
     //   10: new 61	java/lang/StringBuilder
@@ -215,10 +215,10 @@ public class SDKReportManager2
     //   14: invokespecial 62	java/lang/StringBuilder:<init>	()V
     //   17: ldc_w 346
     //   20: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: invokestatic 74	com/tencent/tmassistantbase/util/t:e	()Ljava/lang/String;
+    //   23: invokestatic 74	com/tencent/tmassistantbase/util/s:e	()Ljava/lang/String;
     //   26: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokestatic 83	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   32: invokestatic 83	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   35: invokestatic 351	com/tencent/tmdownloader/f:a	()Lcom/tencent/tmdownloader/f;
     //   38: iload_1
     //   39: aload_2
@@ -240,10 +240,10 @@ public class SDKReportManager2
     //   72: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   75: ldc_w 359
     //   78: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: invokestatic 74	com/tencent/tmassistantbase/util/t:e	()Ljava/lang/String;
+    //   81: invokestatic 74	com/tencent/tmassistantbase/util/s:e	()Ljava/lang/String;
     //   84: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   87: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   90: invokestatic 83	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   90: invokestatic 83	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   93: iload_1
     //   94: iflt +85 -> 179
     //   97: aload_2
@@ -287,7 +287,7 @@ public class SDKReportManager2
     //   178: pop
     //   179: ldc 17
     //   181: ldc_w 375
-    //   184: invokestatic 83	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   184: invokestatic 83	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   187: goto -144 -> 43
     //   190: astore_2
     //   191: aload_0

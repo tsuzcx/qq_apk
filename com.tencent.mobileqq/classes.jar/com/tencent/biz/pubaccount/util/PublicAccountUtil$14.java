@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.net.Uri;
-import ndn;
+import noo;
 
 public final class PublicAccountUtil$14
   implements Runnable
@@ -12,7 +12,7 @@ public final class PublicAccountUtil$14
   {
     try
     {
-      ndn.a(null, "dc00899", "Pb_account_lifeservice", "", "0X8006510", "0X8006510", 0, 0, this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id"), this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, "", false);
+      noo.a(null, "dc00899", "Pb_account_lifeservice", "", "0X8006510", "0X8006510", 0, 0, this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id"), this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, "", false);
       return;
     }
     catch (Exception localException) {}

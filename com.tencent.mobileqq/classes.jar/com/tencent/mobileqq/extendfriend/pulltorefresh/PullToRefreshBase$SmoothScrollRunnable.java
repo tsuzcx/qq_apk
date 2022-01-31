@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.extendfriend.pulltorefresh;
 
 import android.view.animation.Interpolator;
-import antq;
-import antu;
+import aokc;
+import aokg;
 
 final class PullToRefreshBase$SmoothScrollRunnable
   implements Runnable
@@ -10,19 +10,19 @@ final class PullToRefreshBase$SmoothScrollRunnable
   private final int jdField_a_of_type_Int;
   private final long jdField_a_of_type_Long;
   private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private antq jdField_a_of_type_Antq;
+  private aokc jdField_a_of_type_Aokc;
   private boolean jdField_a_of_type_Boolean = true;
   private final int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long = -1L;
   private int c = -1;
   
-  public PullToRefreshBase$SmoothScrollRunnable(PullToRefreshBase paramPullToRefreshBase, int paramInt1, int paramInt2, long paramLong, antq paramantq)
+  public PullToRefreshBase$SmoothScrollRunnable(PullToRefreshBase paramPullToRefreshBase, int paramInt1, int paramInt2, long paramLong, aokc paramaokc)
   {
     this.jdField_b_of_type_Int = paramInt1;
     this.jdField_a_of_type_Int = paramInt2;
     this.jdField_a_of_type_AndroidViewAnimationInterpolator = PullToRefreshBase.a(paramPullToRefreshBase);
     this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Antq = paramantq;
+    this.jdField_a_of_type_Aokc = paramaokc;
   }
   
   public void a()
@@ -39,10 +39,10 @@ final class PullToRefreshBase$SmoothScrollRunnable
       if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int == this.c)) {
         break label128;
       }
-      antu.a(this.this$0, this);
+      aokg.a(this.this$0, this);
     }
     label128:
-    while (this.jdField_a_of_type_Antq == null)
+    while (this.jdField_a_of_type_Aokc == null)
     {
       return;
       long l = Math.max(Math.min((System.currentTimeMillis() - this.jdField_b_of_type_Long) * 1000L / this.jdField_a_of_type_Long, 1000L), 0L);
@@ -52,7 +52,7 @@ final class PullToRefreshBase$SmoothScrollRunnable
       this.this$0.a(this.c);
       break;
     }
-    this.jdField_a_of_type_Antq.a();
+    this.jdField_a_of_type_Aokc.a();
   }
 }
 

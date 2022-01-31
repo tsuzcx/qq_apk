@@ -1,22 +1,24 @@
-import android.widget.ImageView;
+import android.text.TextUtils;
 
-public final class awpl
-  implements awny
+public class awpl
 {
-  public awpl(ImageView paramImageView1, ImageView paramImageView2) {}
+  public String a;
+  public String b;
   
-  public void a()
+  public awpl(String paramString1, String paramString2)
   {
-    if ((this.a != null) && (this.b != null))
-    {
-      this.a.setVisibility(8);
-      this.b.setVisibility(8);
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpl
  * JD-Core Version:    0.7.0.1
  */

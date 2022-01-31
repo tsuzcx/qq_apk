@@ -1,17 +1,16 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
 final class amwk
-  extends mmm
+  implements Comparator<ayni>
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public int a(ayni paramayni1, ayni paramayni2)
   {
-    QLog.i("reportMsgBoxMomentRead", 1, " reportMsgBoxMomentRead code:" + paramInt);
+    return paramayni1.c - paramayni2.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amwk
  * JD-Core Version:    0.7.0.1
  */

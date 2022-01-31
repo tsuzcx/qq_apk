@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfwb;
+import bhem;
 
 public class DynamicPhotoData
   implements Parcelable
 {
-  public static final Parcelable.Creator<DynamicPhotoData> CREATOR = new bfwb();
+  public static final Parcelable.Creator<DynamicPhotoData> CREATOR = new bhem();
   public String a = "";
   public String b = "";
   public String c = "";

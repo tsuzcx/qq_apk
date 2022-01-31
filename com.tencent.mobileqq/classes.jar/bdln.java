@@ -1,20 +1,19 @@
-import com.tencent.qqmini.sdk.launcher.AppUIProxy;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 
 public class bdln
-  extends bdlh
 {
-  public bdln(AppUIProxy paramAppUIProxy) {}
+  public int a;
+  public DialogInterface.OnClickListener a;
+  public Bundle a;
+  public boolean a;
+  public boolean b;
   
-  public void a(bdlg parambdlg)
-  {
-    if (parambdlg.a == 11) {
-      AppUIProxy.access$200(this.a, false, null);
-    }
-  }
+  public bdln(bdlc parambdlc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdln
  * JD-Core Version:    0.7.0.1
  */

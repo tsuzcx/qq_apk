@@ -1,114 +1,52 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.database.DataSetObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat.TabLayoutOnPageChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 
-final class rua
-  implements BusinessObserver
+public class rua
+  extends DataSetObserver
 {
-  rua(ajpe paramajpe, String paramString, boolean paramBoolean, Context paramContext, Object paramObject, QQAppInterface paramQQAppInterface) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public rua(TabLayoutCompat paramTabLayoutCompat) {}
+  
+  void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean)
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a != null) && (TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) != null))
     {
-      if (this.jdField_a_of_type_Ajpe != null) {
-        this.jdField_a_of_type_Ajpe.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        rtr.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
+      int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a.getCurrentItem();
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b() == i) {
+        TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat).b(i, 300);
       }
     }
-    label220:
-    label374:
-    do
+    if (TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) != null) {
+      TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat).a();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onChanged()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      do
-      {
-        do
-        {
-          return;
-          if (!paramBoolean) {
-            break label412;
-          }
-          for (;;)
-          {
-            try
-            {
-              paramBundle = paramBundle.getByteArray("data");
-              if (paramBundle == null) {
-                break label374;
-              }
-              mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
-              localUnFollowResponse.mergeFrom(paramBundle);
-              if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() != 0) {
-                break label336;
-              }
-              if (this.jdField_a_of_type_JavaLangObject == null) {
-                break label220;
-              }
-              paramBundle = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-              if (paramBundle != null) {
-                paramBundle.a(this.jdField_a_of_type_JavaLangObject);
-              }
-              if (this.jdField_a_of_type_Ajpe == null) {
-                break;
-              }
-              this.jdField_a_of_type_Ajpe.onUpdate(102, true, this.jdField_a_of_type_JavaLangString);
-              return;
-            }
-            catch (Exception paramBundle)
-            {
-              if (this.jdField_a_of_type_Ajpe != null) {
-                this.jdField_a_of_type_Ajpe.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-              }
-            }
-            if (!this.jdField_a_of_type_Boolean) {
-              break;
-            }
-            rtr.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
-            return;
-            paramBundle = (ajoy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
-            paramBundle.b(this.jdField_a_of_type_JavaLangString);
-            paramBundle.a(this.jdField_a_of_type_JavaLangString);
-            StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, 1008);
-            rqn.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle.a());
-            rol.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-            paramBundle = (nfp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(88);
-            if (paramBundle != null) {
-              paramBundle.a(this.jdField_a_of_type_JavaLangString, "unfollow");
-            }
-          }
-          if (this.jdField_a_of_type_Ajpe != null) {
-            this.jdField_a_of_type_Ajpe.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-          }
-        } while (!this.jdField_a_of_type_Boolean);
-        rtr.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
-        return;
-        if (this.jdField_a_of_type_Ajpe != null) {
-          this.jdField_a_of_type_Ajpe.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-        }
-      } while (!this.jdField_a_of_type_Boolean);
-      rtr.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b();
       return;
-      if (this.jdField_a_of_type_Ajpe != null) {
-        this.jdField_a_of_type_Ajpe.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-      }
-    } while (!this.jdField_a_of_type_Boolean);
-    label336:
-    rtr.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
-    label412:
+    }
+    a();
+  }
+  
+  public void onInvalidated()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b();
+      return;
+    }
+    a();
   }
 }
 

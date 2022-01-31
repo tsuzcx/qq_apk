@@ -1,26 +1,39 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class ahhg
-  implements begw
+class ahhg
+  implements ahbt
 {
-  public ahhg(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  ahhg(ahhd paramahhd) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    switch (paramInt)
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("springHb_SpringHbEntryPendantHolder", 2, "tryLoadLogoRes resCode:" + paramInt + ",pathRes:" + paramPathResult);
+    }
+    if (paramInt == 0)
     {
-    default: 
+      paramInt = 1;
+      if (paramPathResult == null) {
+        break label154;
+      }
+    }
+    for (;;)
+    {
+      if (((i & paramInt) != 0) && (!bbjw.a(paramPathResult.folderPath)))
+      {
+        ahhd.b(this.a, paramPathResult.folderPath + File.separator + "logo" + File.separator);
+        ahhd.e(this.a);
+      }
+      QLog.i("springHb_SpringHbEntryPendantHolder", 2, "tryLoadLogoRes -->mLogoDrawableLoaded：" + ahhd.b(this.a));
       return;
+      paramInt = 0;
+      break;
+      label154:
+      i = 0;
     }
-    if (this.a.a.b.get() == 4) {
-      this.a.a(false);
-    }
-    this.a.a.a("FlowCameraActivity");
-    this.a.b();
-    ahhk.b("", "0X800656F", "0");
   }
 }
 

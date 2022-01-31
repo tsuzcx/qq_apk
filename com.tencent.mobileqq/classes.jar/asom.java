@@ -1,19 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+
 class asom
-  implements asox
+  implements DialogInterface.OnClickListener
 {
-  asom(asoi paramasoi) {}
+  asom(asoh paramasoh) {}
   
-  public boolean a(asot paramasot, int paramInt, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 21) {
-      asms.f();
-    }
-    return false;
+    this.a.e();
+    asoh.a(this.a).a(false, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asom
  * JD-Core Version:    0.7.0.1
  */

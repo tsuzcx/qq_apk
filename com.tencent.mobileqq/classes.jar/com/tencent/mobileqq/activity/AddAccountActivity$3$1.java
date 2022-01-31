@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
+import aagh;
 import com.tencent.mobileqq.widget.CustomSafeEditText;
-import zwp;
 
 public class AddAccountActivity$3$1
   implements Runnable
 {
-  public AddAccountActivity$3$1(zwp paramzwp) {}
+  public AddAccountActivity$3$1(aagh paramaagh) {}
   
   public void run()
   {

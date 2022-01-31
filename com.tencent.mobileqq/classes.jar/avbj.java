@@ -1,54 +1,25 @@
-import android.media.MediaCodec.BufferInfo;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
+import com.tencent.mobileqq.ptt.LSRecordPanel.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class avbj
+  extends avbg
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private String jdField_b_of_type_JavaLangString;
-  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  public avbj(LSRecordPanel paramLSRecordPanel) {}
   
-  public avbj(String paramString, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "segment" + paramInt + ".mp4");
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(0)).longValue();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS stopRecordingBarAnimation onAnimationEnd");
     }
-    return 0L;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a(auzi paramauzi)
-  {
-    paramauzi = paramauzi.a;
-    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramauzi.presentationTimeUs));
-    this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(paramauzi.flags));
-  }
-  
-  public String toString()
-  {
-    return "SegmentInfo{mSegmentPath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mFrames=" + this.jdField_a_of_type_JavaUtilArrayList + ", mFlags=" + this.jdField_b_of_type_JavaUtilArrayList + '}';
+    LSRecordPanel.a(this.a).post(new LSRecordPanel.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avbj
  * JD-Core Version:    0.7.0.1
  */

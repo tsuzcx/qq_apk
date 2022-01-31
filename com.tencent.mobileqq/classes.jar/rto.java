@@ -1,38 +1,26 @@
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.BiuObserver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyScrollViewSwitcher;
+import java.lang.ref.WeakReference;
 
 public class rto
-  extends ohe
+  extends Handler
 {
-  final int jdField_a_of_type_Int;
-  final String jdField_a_of_type_JavaLangString;
+  private WeakReference a;
   
-  public rto(rsv paramrsv, String paramString, int paramInt)
+  public rto(ReadInJoyScrollViewSwitcher paramReadInJoyScrollViewSwitcher)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramReadInJoyScrollViewSwitcher);
   }
   
-  public void a(long paramLong, int paramInt, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    super.a(paramLong, paramInt, paramString);
-    QLog.d("PublicAccountH5AbilityPlugin", 2, "[onBiuResult] " + paramLong + " " + paramInt + " errorMsg");
-    try
+    super.handleMessage(paramMessage);
+    paramMessage = (ReadInJoyScrollViewSwitcher)this.a.get();
+    if (paramMessage != null)
     {
-      paramString = new JSONObject();
-      paramString.put("feedsId", String.valueOf(paramLong));
-      paramString.put("retCode", paramInt);
-      paramString.put("feedsType", this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Rsv.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-      ThreadManager.getUIHandler().post(new PublicAccountH5AbilityPlugin.BiuObserver.1(this));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("PublicAccountH5AbilityPlugin", 1, "[onBiuResult] ", paramString);
+      paramMessage.a();
+      paramMessage.b();
     }
   }
 }

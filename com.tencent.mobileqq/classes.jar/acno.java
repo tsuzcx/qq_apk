@@ -1,21 +1,21 @@
-import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class acno
+  implements View.OnClickListener
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
+  public acno(TroopTransferActivity paramTroopTransferActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.setText("");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acno
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,14 @@
-class bhgr
-  implements bjab
+public abstract interface bhgr
 {
-  bhgr(bhgp parambhgp) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.b();
-      return;
-    }
-    this.a.a(4);
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(float paramFloat1, float paramFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhgr
  * JD-Core Version:    0.7.0.1
  */

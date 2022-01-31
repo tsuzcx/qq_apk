@@ -1,12 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.limitchat.TopicTextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 class adim
-  extends acjc
+  extends arzs
 {
-  public long a;
-  TopicTextView a;
-  View b;
+  adim(adik paramadik) {}
+  
+  public void a() {}
+  
+  public void a(aruk paramaruk)
+  {
+    if ((adik.a(this.a) != null) && (adik.a(this.a).equals(paramaruk)) && (adik.a(this.a) == adik.a(this.a).a().a())) {
+      adik.a(this.a).a().a();
+    }
+  }
 }
 
 

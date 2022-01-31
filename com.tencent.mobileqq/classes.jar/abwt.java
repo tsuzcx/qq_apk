@@ -1,43 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class abwt
-  extends BroadcastReceiver
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abwt(TroopInfoActivity paramTroopInfoActivity) {}
+  public abwt(QQSettingMe paramQQSettingMe) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onGlobalLayout()
   {
-    if (paramIntent == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!"changeGroupTribe".equals(paramIntent.getStringExtra("event")));
-      paramContext = paramIntent.getStringExtra("data");
-    } while (paramContext == null);
-    try
-    {
-      paramContext = new JSONObject(paramContext);
-      this.a.a.tribeId = paramContext.optInt("bid");
-      this.a.a.tribeName = paramContext.optString("bname");
-      this.a.d = true;
-      paramContext = new ArrayList();
-      if (!TextUtils.isEmpty(this.a.a.tribeName)) {
-        paramContext.add(this.a.a.tribeName);
-      }
-      this.a.a(9, paramContext, true, 1, true);
-      return;
+    if (QQSettingMe.a(this.a)) {
+      QQSettingMe.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
-    catch (JSONException paramContext) {}
   }
 }
 

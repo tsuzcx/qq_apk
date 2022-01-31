@@ -1,11 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
 
 public class ppi
+  extends RecyclerView.OnScrollListener
 {
-  public String a;
-  public List<RecommendFollowInfo> a = new ArrayList();
+  public ppi(PTSFragment paramPTSFragment) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      aaad.a().a("list_kandian_daily_new", false);
+      return;
+    }
+    aaad.a().a("list_kandian_daily_new");
+  }
 }
 
 

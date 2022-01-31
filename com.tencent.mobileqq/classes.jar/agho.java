@@ -1,12 +1,27 @@
-class agho
-  implements bbrx
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+
+public class agho
+  implements View.OnClickListener
 {
-  agho(aghn paramaghn, Runnable paramRunnable) {}
+  public agho(AvatarPendantActivity paramAvatarPendantActivity, int paramInt, String paramString1, String paramString2) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+    bbqw.a(null, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, "mvip.gxh.android.faceaddon_nati_dft", this.jdField_a_of_type_Int, "1450000515", this.jdField_a_of_type_JavaLangString, this.b, "");
+    paramView = "0";
+    if (!TextUtils.isEmpty(this.b)) {
+      if (!"QQ会员".equals(this.b)) {
+        break label84;
+      }
+    }
+    label84:
+    for (paramView = "0";; paramView = "1")
+    {
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD2", "0X8005FD2", 0, 0, paramView, "", "", "");
+      return;
     }
   }
 }

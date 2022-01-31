@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import ohb;
-import opy;
-import ppq;
+import osm;
+import paz;
+import qbm;
 
 public class KingShareReadInjoyModule$1
   implements Runnable
 {
-  public KingShareReadInjoyModule$1(opy paramopy, int paramInt, ppq paramppq) {}
+  public KingShareReadInjoyModule$1(paz parampaz, int paramInt, qbm paramqbm) {}
   
   public void run()
   {
-    ohb.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Ppq);
+    osm.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Qbm);
   }
 }
 

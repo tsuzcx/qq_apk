@@ -1,63 +1,71 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
+import android.view.View;
+import com.tencent.mobileqq.search.activity.ContactSearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
+import java.util.List;
 
-class awns
-  extends axmg
+public class awns
+  implements awof
 {
-  awns(awnq paramawnq) {}
+  public static final String a;
+  private int a;
+  public List<awog> a;
+  private String b;
   
-  public boolean a(int paramInt)
+  static
   {
-    boolean bool = false;
-    QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("postSwitch %d", new Object[] { Integer.valueOf(paramInt) }));
-    switch (paramInt)
+    jdField_a_of_type_JavaLangString = ajyc.a(2131705379);
+  }
+  
+  public awns(List<awog> paramList, String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return awil.a("fts_native_contactor_maxnum", 3);
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<awog> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    ContactSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int, 197437, 2);
+    awvy.a(this.b, 20, 0, paramView);
+    if ((paramView.getContext() instanceof UniteSearchActivity))
     {
-    default: 
-      paramInt = 3;
-    }
-    while (paramInt == 0) {
-      if (!AppNetConnInfo.isNetSupport())
-      {
-        this.a.notifyUI(3, false, new Object[] { Boolean.valueOf(true), Boolean.valueOf(this.a.a), Integer.valueOf(6) });
-        bool = awnq.a(this.a, false, "211", awnu.b(), false, awnp.b[awnu.c()]);
-        if (!bool)
-        {
-          awnq.a(this.a).set(-2147483648);
-          awnq.b(this.a).set(-2147483648);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("postSwitch net_err revert theme bStartSwtich=%b", new Object[] { Boolean.valueOf(bool) }));
-        }
-        return true;
-        paramInt = 0;
-        continue;
-        paramInt = 3;
-        continue;
-        paramInt = 1;
+      awvy.a("all_result", "more_contact", new String[] { "" + this.b });
+      if (SearchConfigManager.needSeparate) {
+        awvy.a("search", "group", "more", 0, 0, new String[] { awvy.a(this.jdField_a_of_type_Int) });
       }
-      else
-      {
-        awnq localawnq = (awnq)this.a.app.a(154);
-        if (awnq.a(this.a).get() == 1) {
-          bool = true;
-        }
-        long l = localawnq.a(bool, awnq.b(this.a).get(), this.a.a);
-        awnq.a(this.a).set(l);
-        return true;
-      }
+      awso.a(null, 0, this.jdField_a_of_type_Int, "0X8009D3D", 0, 0, null, null);
     }
-    awnq.a(this.a).set(-2147483648);
-    awnq.b(this.a).set(-2147483648);
-    this.a.notifyUI(3, false, new Object[] { Boolean.valueOf(false), Boolean.valueOf(this.a.a), Integer.valueOf(paramInt) });
-    return true;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awns
  * JD-Core Version:    0.7.0.1
  */

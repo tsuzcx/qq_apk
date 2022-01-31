@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.filemanager.data.search.troop;
 
-import aoor;
-import aoov;
-import aysl;
+import apfm;
+import apge;
+import aztb;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopFileSearchEngine$2
   implements Runnable
 {
-  public TroopFileSearchEngine$2(aoov paramaoov) {}
+  public TroopFileSearchEngine$2(apge paramapge) {}
   
   public void run()
   {
-    aysl localaysl = aysl.a();
-    aoov.a(this.this$0, localaysl.a(aoov.a(this.this$0), aoov.a(this.this$0), 0));
-    if (aoov.b(this.this$0))
+    aztb localaztb = aztb.a();
+    apge.a(this.this$0, localaztb.a(apge.a(this.this$0), apge.a(this.this$0), 0));
+    if (apge.b(this.this$0))
     {
       QLog.i("TroopFileSearchEngine<QFile>", 4, "collectContactInfos. need do search. execSearch.");
-      aoov.a(this.this$0);
-      aoov.a(this.this$0, aoov.a(this.this$0).a_());
-      aoov.a(this.this$0, aoov.a(this.this$0));
+      apge.a(this.this$0);
+      apge.a(this.this$0, apge.a(this.this$0).b());
+      apge.a(this.this$0, apge.a(this.this$0));
     }
   }
 }

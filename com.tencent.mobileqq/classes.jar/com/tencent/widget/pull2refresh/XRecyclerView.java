@@ -8,26 +8,26 @@ import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import bera;
-import berc;
-import berk;
-import bert;
-import beru;
-import berv;
+import bfyu;
+import bfyw;
+import bfze;
+import bfzn;
+import bfzo;
+import bfzp;
 import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
 import com.tencent.qphone.base.util.QLog;
-import rec;
+import rqq;
 
 public class XRecyclerView
   extends AbsPullToRefreshView2
-  implements berc, berk
+  implements bfyw, bfze
 {
   private int jdField_a_of_type_Int = 0;
-  private bera jdField_a_of_type_Bera;
-  private berv jdField_a_of_type_Berv;
+  private bfyu jdField_a_of_type_Bfyu;
+  private bfzp jdField_a_of_type_Bfzp;
   protected RecyclerViewWithHeaderFooter a;
   private XLoadMoreLayout jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout;
-  private ThreadLocal<Boolean> jdField_a_of_type_JavaLangThreadLocal = new bert(this);
+  private ThreadLocal<Boolean> jdField_a_of_type_JavaLangThreadLocal = new bfzn(this);
   private int b;
   private int c;
   
@@ -52,36 +52,36 @@ public class XRecyclerView
   private void e()
   {
     a(this);
-    LayoutInflater.from(getContext()).inflate(2131497049, this, true);
+    LayoutInflater.from(getContext()).inflate(2131562646, this, true);
     this.jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout = new XLoadMoreLayout(getContext());
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter = ((RecyclerViewWithHeaderFooter)findViewById(2131307380));
-    this.jdField_a_of_type_Bera = new bera(this.jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout, getContext());
-    this.jdField_a_of_type_Bera.a(true);
-    this.jdField_a_of_type_Bera.a(this);
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter = ((RecyclerViewWithHeaderFooter)findViewById(2131373091));
+    this.jdField_a_of_type_Bfyu = new bfyu(this.jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout, getContext());
+    this.jdField_a_of_type_Bfyu.a(true);
+    this.jdField_a_of_type_Bfyu.a(this);
     this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter.c(this.jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter.addOnScrollListener(new beru(this));
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter.addOnScrollListener(new bfzo(this));
   }
   
   protected int a()
   {
-    return this.jdField_a_of_type_Rec.a();
+    return this.jdField_a_of_type_Rqq.a();
   }
   
   protected View a()
   {
-    View localView = this.jdField_a_of_type_Rec.a(this);
-    if ((this.jdField_a_of_type_Rec instanceof ReadInJoySkinAnimManager))
+    View localView = this.jdField_a_of_type_Rqq.a(this);
+    if ((this.jdField_a_of_type_Rqq instanceof ReadInJoySkinAnimManager))
     {
       setPullHeaderBgDrawable(new ColorDrawable(Color.parseColor("#F7F7F7")));
       return localView;
     }
-    setPullHeaderBgDrawable(getResources().getDrawable(2130839107));
+    setPullHeaderBgDrawable(getResources().getDrawable(2130839135));
     return localView;
   }
   
-  public bera a()
+  public bfyu a()
   {
-    return this.jdField_a_of_type_Bera;
+    return this.jdField_a_of_type_Bfyu;
   }
   
   public RecyclerViewWithHeaderFooter a()
@@ -91,15 +91,15 @@ public class XRecyclerView
   
   public void a(View paramView)
   {
-    if ((this.jdField_a_of_type_Rec != null) && (paramView == this.jdField_a_of_type_Rec.a(this))) {
-      this.jdField_a_of_type_Rec.a(100, this.jdField_a_of_type_Boolean);
+    if ((this.jdField_a_of_type_Rqq != null) && (paramView == this.jdField_a_of_type_Rqq.a(this))) {
+      this.jdField_a_of_type_Rqq.a(100, this.jdField_a_of_type_Boolean);
     }
   }
   
   public void a(View paramView, int paramInt)
   {
-    if ((this.jdField_a_of_type_Rec != null) && (paramView == this.jdField_a_of_type_Rec.a(this))) {
-      this.jdField_a_of_type_Rec.a(paramInt, this.jdField_a_of_type_Boolean);
+    if ((this.jdField_a_of_type_Rqq != null) && (paramView == this.jdField_a_of_type_Rqq.a(this))) {
+      this.jdField_a_of_type_Rqq.a(paramInt, this.jdField_a_of_type_Boolean);
     }
   }
   
@@ -108,11 +108,11 @@ public class XRecyclerView
   public void a(boolean paramBoolean)
   {
     super.a(paramBoolean);
-    if (this.jdField_a_of_type_Rec != null) {
-      this.jdField_a_of_type_Rec.a(paramBoolean, "");
+    if (this.jdField_a_of_type_Rqq != null) {
+      this.jdField_a_of_type_Rqq.a(paramBoolean, "");
     }
-    if (this.jdField_a_of_type_Berv != null) {
-      this.jdField_a_of_type_Berv.a();
+    if (this.jdField_a_of_type_Bfzp != null) {
+      this.jdField_a_of_type_Bfzp.a();
     }
   }
   
@@ -121,8 +121,8 @@ public class XRecyclerView
     if (QLog.isColorLevel()) {
       QLog.d("XRecyclerView", 2, "loadMoreComplete(): hasMoreData=" + paramBoolean2);
     }
-    this.jdField_a_of_type_Bera.a(paramBoolean1, paramBoolean2);
-    this.jdField_a_of_type_Bera.a(paramBoolean2);
+    this.jdField_a_of_type_Bfyu.a(paramBoolean1, paramBoolean2);
+    this.jdField_a_of_type_Bfyu.a(paramBoolean2);
   }
   
   @TargetApi(14)
@@ -135,11 +135,11 @@ public class XRecyclerView
   {
     boolean bool = ((Boolean)this.jdField_a_of_type_JavaLangThreadLocal.get()).booleanValue();
     this.jdField_a_of_type_JavaLangThreadLocal.set(Boolean.valueOf(false));
-    if ((this.jdField_a_of_type_Rec != null) && (paramView == this.jdField_a_of_type_Rec.a(this)))
+    if ((this.jdField_a_of_type_Rqq != null) && (paramView == this.jdField_a_of_type_Rqq.a(this)))
     {
-      this.jdField_a_of_type_Rec.a(bool);
-      if (this.jdField_a_of_type_Berv != null) {
-        this.jdField_a_of_type_Berv.a(this, bool);
+      this.jdField_a_of_type_Rqq.a(bool);
+      if (this.jdField_a_of_type_Bfzp != null) {
+        this.jdField_a_of_type_Bfzp.a(this, bool);
       }
     }
     return true;
@@ -147,8 +147,8 @@ public class XRecyclerView
   
   public boolean a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Berv != null) {
-      this.jdField_a_of_type_Berv.a(this, 0);
+    if (this.jdField_a_of_type_Bfzp != null) {
+      this.jdField_a_of_type_Bfzp.a(this, 0);
     }
     return true;
   }
@@ -183,9 +183,9 @@ public class XRecyclerView
     this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter.scrollToPosition(0);
   }
   
-  public void setRefreshCallback(berv paramberv)
+  public void setRefreshCallback(bfzp parambfzp)
   {
-    this.jdField_a_of_type_Berv = paramberv;
+    this.jdField_a_of_type_Bfzp = parambfzp;
   }
 }
 

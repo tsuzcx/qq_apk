@@ -1,49 +1,43 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Date;
 
 final class bfhp
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+  extends bfht
 {
-  bfhp(Runnable paramRunnable) {}
-  
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  bfhp(bfho parambfho)
   {
-    if (paramPluginManagerClient == null) {}
-    try
+    super(null);
+  }
+  
+  public boolean a(String paramString, bfim parambfim)
+  {
+    if (this.a.size() >= this.a.maxSize())
     {
-      ThreadManager.post(this.a, 5, null, false);
-      return;
+      bfho.a(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, "Cache not load completely.");
+      }
+      return false;
     }
-    catch (Exception paramPluginManagerClient) {}
-    if (paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
+    if (parambfim.a > new Date().getTime())
     {
       if (QLog.isColorLevel()) {
-        QLog.i("qqfav", 2, "qqfav.apk already installed.");
+        QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, parambfim.toString() }));
       }
-      bfhn.a().set(true);
-      try
-      {
-        ThreadManager.post(this.a, 5, null, false);
-        return;
-      }
-      catch (Exception paramPluginManagerClient)
-      {
-        return;
+      this.a.put(paramString, parambfim);
+    }
+    for (;;)
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, parambfim.toString() }));
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "installing plugin qqfav.apk");
-    }
-    paramPluginManagerClient.installPlugin("qqfav.apk", new bfhq(this));
-    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfhp
  * JD-Core Version:    0.7.0.1
  */

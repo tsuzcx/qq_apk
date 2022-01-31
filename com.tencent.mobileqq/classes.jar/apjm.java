@@ -1,49 +1,37 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsDebugView;
+import java.lang.ref.WeakReference;
 
-class apjm
-  extends mmn
+public final class apjm
+  implements Handler.Callback
 {
-  apjm(apjj paramapjj) {}
+  private final WeakReference<TdsDebugView> a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private apjm(TdsDebugView paramTdsDebugView)
   {
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      apmt.a("KEY_STAGE_2_IMAGE_DC2", bool);
-      if (paramBundle == null) {
-        break;
-      }
-      long l = paramBundle.getLong("0xdc2_9_sendTime", -1L);
-      if (QLog.isColorLevel()) {
-        QLog.d(apjj.a(), 2, new Object[] { "notifyImageSendMessage onResult currentRequestTime =", Long.valueOf(apjj.a(this.a)), ", sendStamp = ", Long.valueOf(l) });
-      }
-      if ((l != -1L) && (l == apjj.a(this.a))) {
-        break;
-      }
-      apjj.a(this.a);
-      return;
-    }
-    paramArrayOfByte = ForwardUtils.a(paramArrayOfByte);
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      QLog.e(apjj.a(), 1, new Object[] { "notifyImageSendMessage onResult error errorCode != 0 || result == null, errorCode=", Integer.valueOf(paramInt) });
-      apjj.a(this.a);
-      return;
-    }
-    apjj.a(this.a, paramArrayOfByte);
-    ForwardUtils.a(apjj.a(this.a), apjj.a(this.a), apjj.a(this.a).getString("share_comment_message_for_server"));
+    this.a = new WeakReference(paramTdsDebugView);
   }
   
-  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      QLog.e(apjj.a(), 1, "notifyImageSendMessage onError msg =" + paramString);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return true;
     }
-    return super.a(paramInt, paramString, paramBundle);
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    case 1: 
+      TdsDebugView.a(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
+      return true;
+    case 2: 
+      TdsDebugView.b(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
+      return true;
+    }
+    TdsDebugView.c(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
+    return true;
   }
 }
 

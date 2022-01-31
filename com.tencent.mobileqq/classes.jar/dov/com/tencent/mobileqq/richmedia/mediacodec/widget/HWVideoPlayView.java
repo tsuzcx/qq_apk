@@ -13,15 +13,15 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
-import avan;
-import bhnt;
-import bhnu;
-import bjgq;
-import bjgy;
-import bjhv;
-import bjhw;
-import bjlh;
-import bjli;
+import awag;
+import bjil;
+import bjim;
+import bkxb;
+import bkxj;
+import bkyg;
+import bkyh;
+import blbs;
+import blbt;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodeConfig;
@@ -35,9 +35,9 @@ import dov.com.tencent.mobileqq.richmedia.mediacodec.AudioDecoder;
 import java.lang.ref.WeakReference;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-import sjj;
-import urp;
-import vnb;
+import swf;
+import vel;
+import vzx;
 
 @TargetApi(11)
 public class HWVideoPlayView
@@ -47,14 +47,14 @@ public class HWVideoPlayView
   protected int a;
   public long a;
   protected SurfaceTexture a;
-  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new bjhv(this);
-  protected final bjgq a;
+  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new bkyg(this);
+  protected final bkxb a;
   private final DecodeConfig jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig = new DecodeConfig();
   private HWDecodeListener jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderHWDecodeListener;
   protected HWVideoDecoder a;
   private GPUOESBaseFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter;
   protected AudioDecoder a;
-  private WeakReference<bjhw> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<bkyh> jdField_a_of_type_JavaLangRefWeakReference;
   public boolean a;
   protected int b;
   protected long b;
@@ -86,7 +86,7 @@ public class HWVideoPlayView
     setEGLContextClientVersion(2);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderHWVideoDecoder = new HWVideoDecoder();
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecAudioDecoder = new AudioDecoder();
-    this.jdField_a_of_type_Bjgq = new bjgq();
+    this.jdField_a_of_type_Bkxb = new bkxb();
     setRenderer(this);
     setRenderMode(0);
   }
@@ -104,7 +104,7 @@ public class HWVideoPlayView
   
   public int a(LocalMediaInfo paramLocalMediaInfo)
   {
-    if (vnb.a(paramLocalMediaInfo)) {}
+    if (vzx.a(paramLocalMediaInfo)) {}
     for (this.g = (paramLocalMediaInfo.rotation + 90);; this.g = paramLocalMediaInfo.rotation)
     {
       if (QLog.isColorLevel()) {
@@ -130,9 +130,9 @@ public class HWVideoPlayView
     c();
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bjhw localbjhw = (bjhw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbjhw != null) {
-        localbjhw.j();
+      bkyh localbkyh = (bkyh)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbkyh != null) {
+        localbkyh.j();
       }
     }
   }
@@ -169,8 +169,8 @@ public class HWVideoPlayView
       QLog.d("HWVideoPlayView", 2, new Object[] { "startPlay, mCurrentStat:", Integer.valueOf(this.h) });
     }
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderHWVideoDecoder.startDecode(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig, this.k, this, this);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bjgq.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecAudioDecoder.a(this.jdField_a_of_type_Bjgq);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bkxb.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecAudioDecoder.a(this.jdField_a_of_type_Bkxb);
     }
   }
   
@@ -222,19 +222,19 @@ public class HWVideoPlayView
   
   protected void g()
   {
-    if (bhnt.jdField_c_of_type_Boolean)
+    if (bjil.jdField_c_of_type_Boolean)
     {
       long l1 = System.currentTimeMillis();
-      bhnt.f.a(2, l1);
-      if (bhnt.f.a())
+      bjil.f.a(2, l1);
+      if (bjil.f.a())
       {
-        l1 -= bhnt.f.jdField_a_of_type_ArrayOfLong[0];
-        long l2 = bhnt.f.jdField_a_of_type_ArrayOfLong[1] - bhnt.f.jdField_a_of_type_ArrayOfLong[0];
-        long l3 = bhnt.f.jdField_a_of_type_ArrayOfLong[2] - bhnt.f.jdField_a_of_type_ArrayOfLong[1];
-        if ((urp.a(l1, 0L, 10000L)) && (urp.a(l2, 0L, 10000L)) && (urp.a(l3, 0L, 10000L))) {
-          urp.a("OpenEditCost", true, l1, new String[] { String.valueOf(bhnt.f.jdField_a_of_type_Int), String.valueOf(l2), String.valueOf(l3) });
+        l1 -= bjil.f.jdField_a_of_type_ArrayOfLong[0];
+        long l2 = bjil.f.jdField_a_of_type_ArrayOfLong[1] - bjil.f.jdField_a_of_type_ArrayOfLong[0];
+        long l3 = bjil.f.jdField_a_of_type_ArrayOfLong[2] - bjil.f.jdField_a_of_type_ArrayOfLong[1];
+        if ((vel.a(l1, 0L, 10000L)) && (vel.a(l2, 0L, 10000L)) && (vel.a(l3, 0L, 10000L))) {
+          vel.a("OpenEditCost", true, l1, new String[] { String.valueOf(bjil.f.jdField_a_of_type_Int), String.valueOf(l2), String.valueOf(l3) });
         }
-        bhnt.f.c();
+        bjil.f.c();
       }
     }
   }
@@ -255,7 +255,7 @@ public class HWVideoPlayView
   public void onDecodeError(int paramInt, Throwable paramThrowable)
   {
     QLog.e("HWVideoPlayView", 4, "onDecodeError errorCode = " + paramInt, paramThrowable);
-    avan.a(paramThrowable);
+    awag.a(paramThrowable);
   }
   
   public void onDecodeFinish()
@@ -322,9 +322,9 @@ public class HWVideoPlayView
           this.jdField_d_of_type_Long = l1;
         }
         l1 = 0L;
-        if (bhnt.jdField_b_of_type_Boolean)
+        if (bjil.jdField_b_of_type_Boolean)
         {
-          bhnt.d.b();
+          bjil.d.b();
           l1 = SystemClock.elapsedRealtime();
         }
         this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
@@ -332,12 +332,12 @@ public class HWVideoPlayView
         this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(paramGL10);
         a(paramGL10, GPUBaseFilter.caculateCenterCropMvpMatrix(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
         this.i += 1;
-        if (bhnt.d.a())
+        if (bjil.d.a())
         {
           long l2 = SystemClock.elapsedRealtime();
-          bhnt.d.a(new Integer[] { Integer.valueOf((int)(l2 - l1)) });
-          if (bhnt.d.a(8000)) {
-            bhnt.b();
+          bjil.d.a(new Integer[] { Integer.valueOf((int)(l2 - l1)) });
+          if (bjil.d.a(8000)) {
+            bjil.b();
           }
         }
       }
@@ -375,7 +375,7 @@ public class HWVideoPlayView
       this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter.onOutputSizeChanged(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
       if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
-        paramGL10 = (bjhw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramGL10 = (bkyh)this.jdField_a_of_type_JavaLangRefWeakReference.get();
         if (paramGL10 != null) {
           paramGL10.d();
         }
@@ -390,15 +390,15 @@ public class HWVideoPlayView
     if (QLog.isColorLevel()) {
       QLog.d("HWVideoPlayView", 4, "onSurfaceCreated");
     }
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter = ((GPUOESBaseFilter)bjgy.a(102));
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter = ((GPUOESBaseFilter)bkxj.a(102));
     this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter.init();
     this.jdField_c_of_type_Boolean = false;
   }
   
   public void setBgmFilePath(String paramString)
   {
-    this.jdField_a_of_type_Bjgq.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bjgq.jdField_b_of_type_Awkz = AudioEncoder.a(paramString, null, 0);
+    this.jdField_a_of_type_Bkxb.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bkxb.jdField_b_of_type_Axkf = AudioEncoder.a(paramString, null, 0);
   }
   
   public void setDecodeListener(HWDecodeListener paramHWDecodeListener)
@@ -409,8 +409,8 @@ public class HWVideoPlayView
   public void setFilePath(String paramString1, String paramString2)
   {
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig.inputFilePath = paramString1;
-    this.jdField_a_of_type_Bjgq.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Bjgq.jdField_a_of_type_Awkz = AudioEncoder.a(paramString2, null, 0);
+    this.jdField_a_of_type_Bkxb.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Bkxb.jdField_a_of_type_Axkf = AudioEncoder.a(paramString2, null, 0);
     if (QLog.isColorLevel()) {
       QLog.d("HWVideoPlayView", 2, "setFilePath: videoFilePath = " + this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig.inputFilePath + " ; audioFilePath = " + paramString2);
     }
@@ -419,10 +419,10 @@ public class HWVideoPlayView
     int n;
     if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_c_of_type_Int == 0) || (this.jdField_d_of_type_Int == 0))
     {
-      this.jdField_a_of_type_Long = sjj.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig.inputFilePath);
-      this.jdField_a_of_type_Bjgq.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
-      paramString2 = new bjli();
-      i2 = bjlh.a(paramString1, paramString2);
+      this.jdField_a_of_type_Long = swf.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig.inputFilePath);
+      this.jdField_a_of_type_Bkxb.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
+      paramString2 = new blbt();
+      i2 = blbs.a(paramString1, paramString2);
       m = paramString2.a[0];
       n = paramString2.a[1];
       if ((this.g != 90) && (this.g != 270)) {
@@ -447,7 +447,7 @@ public class HWVideoPlayView
   public void setMediaInfo(LocalMediaInfo paramLocalMediaInfo)
   {
     this.jdField_a_of_type_Long = paramLocalMediaInfo.mDuration;
-    this.jdField_a_of_type_Bjgq.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_Bkxb.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
     int m = paramLocalMediaInfo.mediaWidth;
     int n = paramLocalMediaInfo.mediaHeight;
     if ((this.g == 90) || (this.g == 270)) {}
@@ -469,7 +469,7 @@ public class HWVideoPlayView
   
   public void setMuteAudio(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bjgq.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Bkxb.jdField_b_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecAudioDecoder.a(paramBoolean);
   }
   
@@ -480,10 +480,10 @@ public class HWVideoPlayView
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig.startTimeMillSecond = paramInt1;
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig.endTimeMillSecond = paramInt2;
     }
-    if (this.jdField_a_of_type_Bjgq != null)
+    if (this.jdField_a_of_type_Bkxb != null)
     {
-      this.jdField_a_of_type_Bjgq.jdField_a_of_type_Long = paramInt1;
-      this.jdField_a_of_type_Bjgq.jdField_b_of_type_Long = paramInt2;
+      this.jdField_a_of_type_Bkxb.jdField_a_of_type_Long = paramInt1;
+      this.jdField_a_of_type_Bkxb.jdField_b_of_type_Long = paramInt2;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderHWVideoDecoder != null) {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderHWVideoDecoder.setPlayRange(paramInt1, paramInt2);
@@ -493,14 +493,14 @@ public class HWVideoPlayView
     }
   }
   
-  public void setPlayViewListener(bjhw parambjhw)
+  public void setPlayViewListener(bkyh parambkyh)
   {
-    if (parambjhw == null)
+    if (parambkyh == null)
     {
       this.jdField_a_of_type_JavaLangRefWeakReference = null;
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambjhw);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambkyh);
   }
   
   public void setProlong(long paramLong)
@@ -512,13 +512,13 @@ public class HWVideoPlayView
   public void setRepeat(boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig.repeat = paramBoolean;
-    this.jdField_a_of_type_Bjgq.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Bkxb.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public void setSpeedType(int paramInt)
   {
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig.speedType = paramInt;
-    this.jdField_a_of_type_Bjgq.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bkxb.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderHWVideoDecoder.setSpeedType(paramInt);
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecAudioDecoder.a(paramInt);
   }
@@ -530,7 +530,7 @@ public class HWVideoPlayView
   
   public void setVolume(float paramFloat)
   {
-    this.jdField_a_of_type_Bjgq.jdField_a_of_type_Awkz.a = paramFloat;
+    this.jdField_a_of_type_Bkxb.jdField_a_of_type_Axkf.a = paramFloat;
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajjy;
+import ajyc;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,7 +13,7 @@ class FlowCameraActivity2$22
   {
     if (!this.this$0.b)
     {
-      this.this$0.a.a(2002, ajjy.a(2131638861), false);
+      this.this$0.a.a(2002, ajyc.a(2131704646), false);
       if (QLog.isColorLevel()) {
         QLog.d("FlowCameraActivity", 2, "[@] ERR_CODE_CAMERA_CREATE  黑名单机型,2秒还没有获取到预览帧,可能没有权限");
       }

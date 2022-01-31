@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class abxa
-  implements DialogInterface.OnDismissListener
+  implements bbrv
 {
-  public abxa(TroopInfoActivity paramTroopInfoActivity) {}
+  public abxa(QQSettingMe paramQQSettingMe) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    if (this.a.a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "enterWordListener");
+      }
+      this.a.c(this.a.a.getAccount());
     }
   }
 }

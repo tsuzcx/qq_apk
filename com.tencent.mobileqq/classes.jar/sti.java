@@ -1,67 +1,118 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class sti
-  extends sgc
+public class sti
+  extends tby
 {
-  sti(stg paramstg) {}
+  public long a;
+  protected INetEventHandler a;
+  public final Object a;
+  public AtomicBoolean a;
+  public stm a;
+  public final Object b;
+  public AtomicBoolean b;
   
-  public void a(byte paramByte)
+  public sti()
   {
-    boolean bool = true;
-    this.a.a = paramByte;
-    stg.c(this.a, true);
-    stg localstg;
-    if (paramByte != -1)
-    {
-      if (paramByte == 0) {
-        stg.b(this.a);
-      }
-      localstg = this.a;
-      if (paramByte != 2) {
-        break label88;
-      }
+    this.jdField_a_of_type_Stm = new stm();
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_b_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler = new stl(this, null);
+  }
+  
+  private boolean a()
+  {
+    if (this.jdField_a_of_type_Stm.b()) {
+      d();
     }
-    for (;;)
+    return this.jdField_a_of_type_Stm.a();
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true))
     {
-      localstg.a(bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryOIDBReceived:" + this.a.c);
-      }
+      veg.b("Q.qqstory.publish:VideoServerInfoManager", "task is running");
       return;
-      label88:
-      bool = false;
     }
+    veg.a("Q.qqstory.publish:VideoServerInfoManager", "start get server info", this.jdField_a_of_type_Stm);
+    tno localtno = new tno();
+    syr.a().a(localtno, new stk(this));
+  }
+  
+  public String a()
+  {
+    byte[] arrayOfByte = a();
+    if (arrayOfByte == null) {
+      return null;
+    }
+    return bbdm.a(arrayOfByte);
+  }
+  
+  public void a()
+  {
+    super.a();
+    AppNetConnInfo.registerNetChangeReceiver(QQStoryContext.a().a(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler);
+    Bosses.get().postJob(new stj(this, "Q.qqstory.publish:VideoServerInfoManager"));
+  }
+  
+  public byte[] a()
+  {
+    if (a()) {
+      return this.jdField_a_of_type_Stm.a;
+    }
+    d();
+    veg.d("Q.qqstory.publish:VideoServerInfoManager", "wait start");
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      try
+      {
+        this.jdField_a_of_type_JavaLangObject.wait(30000L);
+        veg.d("Q.qqstory.publish:VideoServerInfoManager", "wait end");
+        ??? = this.jdField_a_of_type_Stm;
+        if (((stm)???).a()) {
+          return ((stm)???).a;
+        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          veg.b("Q.qqstory.publish:VideoServerInfoManager", "wait exception", localInterruptedException);
+        }
+      }
+    }
+    veg.d("Q.qqstory.publish:VideoServerInfoManager", "return auth key with invalidate");
+    return ((stm)???).a;
+  }
+  
+  public String b()
+  {
+    if (!this.jdField_a_of_type_Stm.b())
+    {
+      byte[] arrayOfByte = this.jdField_a_of_type_Stm.a;
+      if (arrayOfByte != null) {
+        return bbdm.a(arrayOfByte);
+      }
+    }
+    return null;
   }
   
   public void b()
   {
-    spz localspz = (spz)sqg.a(10);
-    this.a.b = ((Boolean)localspz.b("key_story_msg_tab_show", Boolean.valueOf(false))).booleanValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "commonConfigReceived:" + this.a.b);
-    }
-    stg.a(this.a);
-    stg.a(this.a, true);
-    stg.a(this.a, true);
-    stg.b(this.a);
+    super.b();
+    AppNetConnInfo.unregisterNetEventHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler);
   }
   
-  public void f(boolean paramBoolean)
+  public void c()
   {
-    if (!stg.a(this.a))
-    {
-      if (paramBoolean)
-      {
-        this.a.c = this.a.a();
-        stg.a(this.a);
-        stg.a(this.a, true);
-      }
-      stg.b(this.a, true);
-      stg.b(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryDPCCfgHasContentReceived:" + this.a.c);
-    }
+    a();
   }
 }
 

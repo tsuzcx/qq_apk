@@ -1,10 +1,27 @@
-public abstract interface acss
+import java.io.File;
+import java.util.Comparator;
+
+class acss
+  implements Comparator<File>
 {
-  public abstract void a(int paramInt);
+  acss(acsr paramacsr) {}
   
-  public abstract void f();
+  public int a(File paramFile1, File paramFile2)
+  {
+    long l = acsr.a(this.a, paramFile1) - acsr.a(this.a, paramFile2);
+    if (l > 0L) {
+      return 1;
+    }
+    if (l == 0L) {
+      return 0;
+    }
+    return -1;
+  }
   
-  public abstract void g();
+  public boolean equals(Object paramObject)
+  {
+    return true;
+  }
 }
 
 

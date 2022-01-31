@@ -1,29 +1,40 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.videostory.capture.widgets.AEPlayShowPageView;
-import com.tencent.image.ApngImage;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class wvw
-  extends RecyclerView.OnScrollListener
+  implements View.OnClickListener
 {
-  public wvw(AEPlayShowPageView paramAEPlayShowPageView) {}
+  public wvw(RelativeFeedItemView paramRelativeFeedItemView) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      ApngImage.resumeAll();
-    }
-    for (;;)
+    paramView = (CertifiedAccountMeta.StFeed)this.a.a();
+    wiv.a(this.a.getContext(), paramView, 0, wrt.a(this.a.a, paramView.cover.width.get(), paramView.cover.height.get()));
+    ExtraTypeInfo localExtraTypeInfo = this.a.a();
+    if ((localExtraTypeInfo != null) && (paramView != null))
     {
-      super.onScrollStateChanged(paramRecyclerView, paramInt);
-      return;
-      ApngImage.pauseAll();
+      if (localExtraTypeInfo.pageType != 7003) {
+        break label133;
+      }
+      xhe.a(paramView.poster.id.get(), "auth_follow", "new_c_clk", 0, 0, new String[] { "", "", paramView.id.get(), paramView.title.get() });
     }
+    label133:
+    while (localExtraTypeInfo.pageType != 7004) {
+      return;
+    }
+    xhe.a(paramView.poster.id.get(), "auth_discover", "clk_content", 0, 0, new String[] { "", "", paramView.id.get(), paramView.title.get() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wvw
  * JD-Core Version:    0.7.0.1
  */

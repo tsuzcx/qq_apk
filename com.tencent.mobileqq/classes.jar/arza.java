@@ -1,50 +1,98 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.location.window.CanBackFrameLayout;
+import com.tencent.mobileqq.location.window.GlobalFloatDialogEventReceiver;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class arza
-  extends awfs
+public class arza
 {
-  arza(aryq paramaryq, String paramString, aryl paramaryl) {}
+  private final View jdField_a_of_type_AndroidViewView = View.inflate(BaseApplicationImpl.context, 2131558889, null);
+  private WindowManager jdField_a_of_type_AndroidViewWindowManager = (WindowManager)BaseApplicationImpl.context.getSystemService("window");
+  private final TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365136);
+  private CanBackFrameLayout jdField_a_of_type_ComTencentMobileqqLocationWindowCanBackFrameLayout = (CanBackFrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365171);
+  private GlobalFloatDialogEventReceiver jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver;
+  private final TextView b;
+  private final TextView c;
   
-  public void a(int paramInt)
+  public arza()
   {
-    if (this.jdField_a_of_type_Aryl.a != null)
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new arzb(this));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365142));
+    this.b.setOnClickListener(new arzc(this));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365151));
+    this.c.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver = new GlobalFloatDialogEventReceiver();
+  }
+  
+  public void a()
+  {
+    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
+    if (Build.VERSION.SDK_INT >= 26) {}
+    for (localLayoutParams.type = 2038;; localLayoutParams.type = 2002)
     {
-      String str = this.jdField_a_of_type_Aryq.a(this.jdField_a_of_type_Aryl.a.a);
-      arym localarym = this.jdField_a_of_type_Aryq.a(str);
-      if ((localarym != null) && (!localarym.a))
-      {
-        localarym.c = (paramInt / 100);
-        this.jdField_a_of_type_Aryq.a(str, localarym);
-        aryq.a(this.jdField_a_of_type_Aryq, localarym, paramInt / 100);
-      }
+      localLayoutParams.format = -3;
+      localLayoutParams.height = bbkx.b();
+      localLayoutParams.width = bbkx.a();
+      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
+      this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver.a(this);
+      return;
     }
   }
   
-  public void a(int paramInt, awfk paramawfk)
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadShortVideo key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
-    }
-    int j = 0;
-    String str2 = "";
-    String str1 = str2;
-    int i = j;
-    if (paramawfk != null)
-    {
-      str1 = str2;
-      i = j;
-      if (paramawfk.a != null)
-      {
-        i = paramawfk.a.a;
-        str1 = paramawfk.a.b;
-      }
-    }
-    this.jdField_a_of_type_Aryq.a(this.jdField_a_of_type_Aryl, paramInt, i, str1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new arzd(this, paramOnClickListener));
+  }
+  
+  public void a(String paramString)
+  {
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365147)).setText(paramString);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver.a();
+  }
+  
+  public void b(View.OnClickListener paramOnClickListener)
+  {
+    this.b.setOnClickListener(new arze(this, paramOnClickListener));
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void c(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowCanBackFrameLayout.setBackKeyListener(new arzf(this, paramOnClickListener));
+  }
+  
+  public void c(String paramString)
+  {
+    this.b.setText(paramString);
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arza
  * JD-Core Version:    0.7.0.1
  */

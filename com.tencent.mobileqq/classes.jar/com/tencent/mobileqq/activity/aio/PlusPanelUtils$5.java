@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio;
 
-import bace;
+import bbdj;
 
 public final class PlusPanelUtils$5
   implements Runnable
 {
   public void run()
   {
-    bace.c(this.a + ".nomedia");
+    bbdj.c(this.a + ".nomedia");
   }
 }
 

@@ -1,27 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
-class acal
+public class acal
   implements View.OnClickListener
 {
-  acal(acak paramacak) {}
+  public acal(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.jdField_d_of_type_Boolean = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131626377);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.a.findViewById(2131302804));
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.b);
-    if (this.a.a.jdField_a_of_type_Acao != null) {
-      this.a.a.jdField_a_of_type_Acao.a();
-    }
+    this.a.a.setText("");
   }
 }
 

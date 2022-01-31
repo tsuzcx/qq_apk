@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar;
 
-import akoh;
-import akoi;
+import alct;
+import alcu;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class FramePerformanceMonitor
 {
   private int jdField_a_of_type_Int = 1000;
-  private akoh jdField_a_of_type_Akoh;
-  private akoi jdField_a_of_type_Akoi = new akoi(100);
+  private alct jdField_a_of_type_Alct;
+  private alcu jdField_a_of_type_Alcu = new alcu(100);
   private FramePerformanceMonitor.CurrentRunnable jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$CurrentRunnable;
   
   public void a()
   {
     b();
-    if (this.jdField_a_of_type_Akoh == null) {
+    if (this.jdField_a_of_type_Alct == null) {
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$CurrentRunnable = new FramePerformanceMonitor.CurrentRunnable(this, null);
@@ -27,14 +27,14 @@ public class FramePerformanceMonitor
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(akoh paramakoh)
+  public void a(alct paramalct)
   {
-    this.jdField_a_of_type_Akoh = paramakoh;
+    this.jdField_a_of_type_Alct = paramalct;
   }
   
   public boolean a(long paramLong)
   {
-    return this.jdField_a_of_type_Akoi.a(paramLong);
+    return this.jdField_a_of_type_Alcu.a(paramLong);
   }
   
   public void b()

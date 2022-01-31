@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import akue;
+import aliq;
 import android.os.Build;
-import awrn;
+import axrl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -12,17 +12,17 @@ public class ARReport$1
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    if (akue.a(this.this$0, this.a)) {
+    if (aliq.a(this.this$0, this.a)) {
       localHashMap.put("total_render_all_time", String.valueOf(this.a));
     }
-    if (akue.a(this.this$0, this.b)) {
+    if (aliq.a(this.this$0, this.b)) {
       localHashMap.put("total_render_success_time", String.valueOf(this.b));
     }
     localHashMap.put("buildmodel", Build.MODEL);
-    localHashMap.put("cpuNumber", String.valueOf(akue.a()));
-    localHashMap.put("totalram", akue.a(BaseApplication.getContext()));
+    localHashMap.put("cpuNumber", String.valueOf(aliq.a()));
+    localHashMap.put("totalram", aliq.a(BaseApplication.getContext()));
     localHashMap.put("cpuname", this.this$0.a());
-    awrn.a(BaseApplication.getContext()).a("", "AndroidactARTotal", true, this.a, 0L, localHashMap, "");
+    axrl.a(BaseApplication.getContext()).a("", "AndroidactARTotal", true, this.a, 0L, localHashMap, "");
   }
 }
 

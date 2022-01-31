@@ -1,6 +1,15 @@
-public abstract interface lxe
+import android.graphics.Bitmap;
+
+class lxe
+  implements lxw
 {
-  public abstract void a(long paramLong, String paramString, boolean paramBoolean);
+  lxe(lxd paramlxd, String paramString, Bitmap paramBitmap) {}
+  
+  public void a(lxv paramlxv)
+  {
+    paramlxv.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramlxv.a();
+  }
 }
 
 

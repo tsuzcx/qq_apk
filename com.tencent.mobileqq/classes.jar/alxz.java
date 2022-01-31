@@ -1,81 +1,94 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
 
 public class alxz
+  extends alyc
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public int g;
+  private float jdField_a_of_type_Float = -1.0F;
+  boolean jdField_a_of_type_Boolean = false;
+  private float b = -1.0F;
+  private float c = -1.0F;
+  private float[] d = new float[3];
+  private float[] e = new float[3];
+  private float[] f = new float[3];
+  private float[] g = new float[3];
+  private float[] h = new float[16];
+  private float[] i = new float[3];
   
-  public static alxz a(String paramString)
+  public alxz(Context paramContext, int paramInt, SensorManager paramSensorManager, alxu paramalxu)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    alxz localalxz = new alxz();
-    try
+    super(paramContext, paramInt, paramSensorManager, paramalxu);
+    paramContext = paramSensorManager.getDefaultSensor(1);
+    paramSensorManager = paramSensorManager.getDefaultSensor(2);
+    if ((paramContext != null) && (paramSensorManager != null))
     {
-      paramString = new JSONObject(paramString);
-      localalxz.jdField_a_of_type_Int = paramString.optInt("nTopicId");
-      localalxz.jdField_b_of_type_Int = paramString.optInt("nBGType");
-      localalxz.jdField_c_of_type_Int = paramString.optInt("nConfessorSex");
-      localalxz.jdField_a_of_type_JavaLangString = paramString.optString("strRecNick");
-      localalxz.jdField_b_of_type_JavaLangString = paramString.optString("strRecUin");
-      localalxz.jdField_c_of_type_JavaLangString = paramString.optString("strConfessorUin");
-      localalxz.jdField_d_of_type_JavaLangString = paramString.optString("strConfessorDesc");
-      localalxz.jdField_e_of_type_JavaLangString = paramString.optString("strConfessorNick");
-      localalxz.g = paramString.optInt("flag");
-      localalxz.jdField_a_of_type_Long = paramString.optInt("confessTime");
-      localalxz.jdField_d_of_type_Int = paramString.optInt("nConfessNum");
-      localalxz.jdField_e_of_type_Int = paramString.optInt("nGetConfessSex");
-      localalxz.f = paramString.optInt("nBizType");
-      return localalxz;
+      this.jdField_a_of_type_JavaUtilList.add(paramContext);
+      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager);
+      return;
     }
-    catch (Exception paramString) {}
-    return null;
+    throw new OrientationProviderNotFound("1,2");
   }
   
-  public String a()
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    try
-    {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("nTopicId", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("nBGType", this.jdField_b_of_type_Int);
-      ((JSONObject)localObject).put("nConfessorSex", this.jdField_c_of_type_Int);
-      ((JSONObject)localObject).put("strRecNick", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strRecUin", this.jdField_b_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strConfessorUin", this.jdField_c_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strConfessorDesc", this.jdField_d_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strConfessorNick", this.jdField_e_of_type_JavaLangString);
-      ((JSONObject)localObject).put("flag", this.g);
-      ((JSONObject)localObject).put("confessTime", this.jdField_a_of_type_Long);
-      ((JSONObject)localObject).put("nConfessNum", this.jdField_d_of_type_Int);
-      ((JSONObject)localObject).put("nGetConfessSex", this.jdField_e_of_type_Int);
-      ((JSONObject)localObject).put("nBizType", this.f);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+    if (this.jdField_a_of_type_Alxu == null) {
+      return;
     }
-    catch (Exception localException)
+    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 2.0F)
     {
-      localException.printStackTrace();
+      this.jdField_a_of_type_Float = paramFloat1;
+      this.jdField_a_of_type_Alxu.updateAzimuth(paramFloat1);
     }
-    return "";
+    if (Math.abs(paramFloat2 - this.b) > 2.0F)
+    {
+      this.b = paramFloat2;
+      this.jdField_a_of_type_Alxu.updatePitch(paramFloat2);
+    }
+    if (Math.abs(paramFloat3 - this.c) > 2.0F)
+    {
+      this.c = paramFloat3;
+      this.jdField_a_of_type_Alxu.updateRoll(paramFloat3);
+    }
+    this.jdField_a_of_type_Alxu.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if (paramSensorEvent.sensor.getType() == 2)
+    {
+      System.arraycopy(paramSensorEvent.values, 0, this.d, 0, 3);
+      alxv.a(this.d, this.g);
+      System.arraycopy(this.d, 0, this.g, 0, 3);
+      this.jdField_a_of_type_Boolean = true;
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_Boolean) && (SensorManager.getRotationMatrix(this.h, null, this.e, this.d)))
+      {
+        SensorManager.getOrientation(this.h, this.i);
+        if (this.jdField_a_of_type_Int == 1) {
+          break;
+        }
+        super.a(this.h);
+      }
+      return;
+      if (paramSensorEvent.sensor.getType() == 1)
+      {
+        System.arraycopy(paramSensorEvent.values, 0, this.e, 0, 3);
+        alxv.a(this.e, this.f);
+        System.arraycopy(this.e, 0, this.f, 0, 3);
+      }
+    }
+    a((float)(Math.toDegrees(this.i[0] + a()) + 360.0D) % 360.0F, (float)(this.i[1] * 180.0F / 3.141592653589793D), (float)(this.i[2] * 180.0F / 3.141592653589793D));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alxz
  * JD-Core Version:    0.7.0.1
  */

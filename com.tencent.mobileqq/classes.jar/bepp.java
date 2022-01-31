@@ -1,87 +1,20 @@
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
-import android.graphics.drawable.shapes.Shape;
-
-public class bepp
+class bepp
+  extends bepn
 {
-  private int jdField_a_of_type_Int;
-  private bepo jdField_a_of_type_Bepo;
-  private int b;
-  private int c = 12;
-  private int d = 8;
+  bepp(bepo parambepo) {}
   
-  public bepp(bepo parambepo)
+  public void a(bepm parambepm)
   {
-    this.jdField_a_of_type_Bepo = parambepo;
-  }
-  
-  private int a(float paramFloat)
-  {
-    return azvv.a(bepo.a(this.jdField_a_of_type_Bepo), paramFloat);
-  }
-  
-  private static int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 32;
-    case 49: 
-      return 33;
-    case 50: 
-      return 34;
-    case 51: 
-      return 36;
+    if ((parambepm == null) || (parambepm.a == null)) {
+      return;
     }
-    return 35;
-  }
-  
-  private static Drawable a(float paramFloat, int paramInt)
-  {
-    ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat }, null, null));
-    localShapeDrawable.getPaint().setColor(paramInt);
-    return localShapeDrawable;
-  }
-  
-  private static Drawable a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    Object localObject = new bepr(a(paramInt3));
-    ((bepr)localObject).resize(paramInt1, paramInt2);
-    localObject = new ShapeDrawable((Shape)localObject);
-    ((ShapeDrawable)localObject).setIntrinsicWidth(paramInt1);
-    ((ShapeDrawable)localObject).setIntrinsicHeight(paramInt2);
-    ((ShapeDrawable)localObject).getPaint().setColor(paramInt4);
-    return localObject;
-  }
-  
-  public bepo a()
-  {
-    Drawable localDrawable1 = a(a(this.jdField_a_of_type_Int), this.b);
-    this.jdField_a_of_type_Bepo.c(localDrawable1);
-    localDrawable1 = a(a(this.c), a(this.d), 49, this.b);
-    Drawable localDrawable2 = a(a(this.d), a(this.c), 51, this.b);
-    this.jdField_a_of_type_Bepo.b(localDrawable2);
-    this.jdField_a_of_type_Bepo.a(localDrawable1);
-    return this.jdField_a_of_type_Bepo;
-  }
-  
-  public bepp a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bepp b(int paramInt)
-  {
-    this.b = paramInt;
-    return this;
+    besl.b("minisdk-start_AppRuntimeLoaderManager", "OnRuntimeEvent message:" + parambepm);
+    bepo.a(this.a, parambepm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bepp
  * JD-Core Version:    0.7.0.1
  */

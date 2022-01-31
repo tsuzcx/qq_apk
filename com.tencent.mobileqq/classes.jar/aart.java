@@ -1,21 +1,14 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class aart
-  extends MqqHandler
 {
-  public aart(FontSettingActivity paramFontSettingActivity) {}
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  public String a;
+  boolean jdField_a_of_type_Boolean;
+  public String b;
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (16711697 == paramMessage.what)
-    {
-      ajia.a(this.a, FontSettingActivity.a(this.a), false);
-      this.a.c = true;
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  protected aart(ChatHistory paramChatHistory) {}
 }
 
 

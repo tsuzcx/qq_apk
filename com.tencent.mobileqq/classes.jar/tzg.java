@@ -1,24 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.widget.ImageView;
 
 class tzg
-  extends SimpleJob<Object>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  tzg(tzf paramtzf, String paramString)
-  {
-    super(paramString);
-  }
+  tzg(tzf paramtzf) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.a == null) {
-      this.a.a = new tzi(this.a, this.a.c);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      this.a.a.setImageAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+      return;
     }
-    this.a.d = "";
-    tzf.a(this.a);
-    return null;
+    this.a.a.setImageResource(2130849549);
   }
 }
 

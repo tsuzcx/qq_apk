@@ -1,44 +1,94 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.content.res.Configuration;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
-public class ntd
+class ntd
+  extends osp
 {
-  private ntf jdField_a_of_type_Ntf;
-  private sjj jdField_a_of_type_Sjj = new sjj();
+  ntd(ntb paramntb) {}
   
-  private void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Ntf != null) {
-      this.jdField_a_of_type_Ntf.a(paramPublishVideoEntry, paramInt, paramString);
+    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntb.a(this.a)).a(paramInt);
     }
   }
   
-  private void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  public void a(int paramInt, ArticleInfo paramArticleInfo, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Ntf != null) {
-      this.jdField_a_of_type_Ntf.a(paramPublishVideoEntry, paramString);
+    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntb.a(this.a)).a(paramInt, paramArticleInfo, paramString1, paramString2);
     }
   }
   
-  public void a(String paramString)
+  public void a(int paramInt, List<Long> paramList)
   {
-    sjj.a(sjj.a(paramString));
+    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntb.a(this.a)).a(paramInt, paramList);
+    }
   }
   
-  public void a(String paramString1, String paramString2)
+  public void a(Configuration paramConfiguration)
   {
-    paramString1 = sjj.a(paramString1);
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_Sjj.a(paramString1, paramString2 + ".tmp.mp4", false, true, new nte(this, l, paramString1));
+    if (ntb.a(this.a) != null)
+    {
+      ntb.a(this.a).d();
+      ntb.a(this.a).e();
+    }
+    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntb.a(this.a)).a(paramConfiguration);
+    }
   }
   
-  public void a(ntf paramntf)
+  public void a(TopBannerInfo paramTopBannerInfo)
   {
-    this.jdField_a_of_type_Ntf = paramntf;
+    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntb.a(this.a)).a(paramTopBannerInfo);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntb.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void ap_()
+  {
+    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntb.a(this.a)).q();
+    }
+  }
+  
+  public void b(int paramInt, List<Long> paramList)
+  {
+    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntb.a(this.a)).c(paramInt, paramList);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntb.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void c(int paramInt, List<Long> paramList)
+  {
+    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup)))
+    {
+      ((ReadInJoyListViewGroup)ntb.a(this.a)).b(paramInt, paramList);
+      ntb.a(this.a, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ntd
  * JD-Core Version:    0.7.0.1
  */

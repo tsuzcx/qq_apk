@@ -1,21 +1,30 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajjy;
-import android.content.Context;
-import bbms;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Intent;
+import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.mobileqq.mini.sdk.MiniAppController.ActivityResultListener;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
 
 class DataJsPlugin$29
-  implements Runnable
+  implements MiniAppController.ActivityResultListener
 {
-  DataJsPlugin$29(DataJsPlugin paramDataJsPlugin, Context paramContext, String paramString1, String paramString2, int paramInt) {}
+  DataJsPlugin$29(DataJsPlugin paramDataJsPlugin, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
   
-  public void run()
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    bbms localbbms = new bbms(this.val$context);
-    localbbms.a(ajjy.a(2131636947));
-    localbbms.show();
-    ThreadManager.excute(new DataJsPlugin.29.1(this, localbbms), 128, null, true);
+    if (paramInt1 == 9)
+    {
+      if (paramInt2 == 0) {
+        this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
+      }
+      for (;;)
+      {
+        MiniAppController.getInstance().removeActivityResultListener(this);
+        return true;
+        this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
+      }
+    }
+    return false;
   }
 }
 

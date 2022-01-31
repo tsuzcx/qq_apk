@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.widget.media;
 
 import android.view.View;
-import bdjz;
+import beoc;
 
 public class MiniAppVideoPlayer$7$1
   implements Runnable
 {
-  public MiniAppVideoPlayer$7$1(bdjz parambdjz) {}
+  public MiniAppVideoPlayer$7$1(beoc parambeoc) {}
   
   public void run()
   {

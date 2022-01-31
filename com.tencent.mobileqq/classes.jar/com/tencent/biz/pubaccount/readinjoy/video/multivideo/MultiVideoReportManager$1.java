@@ -3,17 +3,17 @@ package com.tencent.biz.pubaccount.readinjoy.video.multivideo;
 import android.content.Intent;
 import com.tencent.biz.pubaccount.VideoInfo;
 import java.util.List;
-import qeq;
-import qmd;
+import qqo;
+import qyi;
 
 public class MultiVideoReportManager$1
   implements Runnable
 {
-  public MultiVideoReportManager$1(qmd paramqmd, Intent paramIntent, VideoInfo paramVideoInfo, List paramList, qeq paramqeq, long paramLong, int paramInt) {}
+  public MultiVideoReportManager$1(qyi paramqyi, Intent paramIntent, VideoInfo paramVideoInfo, List paramList, qqo paramqqo, long paramLong, int paramInt) {}
   
   public void run()
   {
-    qmd.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Qeq.a, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    qyi.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Qqo.a, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
   }
 }
 

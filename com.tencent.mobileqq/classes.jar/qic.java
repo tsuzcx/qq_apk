@@ -1,45 +1,79 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.view.View;
 
-class qic
-  implements TVK_SDKMgr.OnLogListener
+public class qic
+  implements awog
 {
-  public int d(String paramString1, String paramString2)
+  private String jdField_a_of_type_JavaLangString;
+  private qbc jdField_a_of_type_Qbc;
+  
+  public qic(qbc paramqbc)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
+    this.jdField_a_of_type_Qbc = paramqbc;
+  }
+  
+  public int a()
+  {
     return 0;
   }
   
-  public int e(String paramString1, String paramString2)
+  public CharSequence a()
   {
-    QLog.e(paramString1, 1, paramString2);
+    return awvy.b(this.jdField_a_of_type_Qbc.a(), this.jdField_a_of_type_JavaLangString, 6, true);
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public qbc a()
+  {
+    return this.jdField_a_of_type_Qbc;
+  }
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(View paramView) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this.jdField_a_of_type_Qbc.a().contains(paramString);
+  }
+  
+  public int b()
+  {
     return 0;
   }
   
-  public int i(String paramString1, String paramString2)
+  public CharSequence b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
+    return "";
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_Qbc.a().toString();
+  }
+  
+  public int c()
+  {
     return 0;
   }
   
-  public int v(String paramString1, String paramString2)
+  public CharSequence c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
+    return ajyc.a(2131704668);
   }
   
-  public int w(String paramString1, String paramString2)
+  public CharSequence d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
-    return 0;
+    return null;
   }
 }
 

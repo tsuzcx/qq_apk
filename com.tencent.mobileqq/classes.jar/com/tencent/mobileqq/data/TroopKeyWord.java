@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
+import aukm;
 
 public class TroopKeyWord
-  extends atmo
+  extends aukm
 {
   public boolean enable;
   public int expiredFlag;

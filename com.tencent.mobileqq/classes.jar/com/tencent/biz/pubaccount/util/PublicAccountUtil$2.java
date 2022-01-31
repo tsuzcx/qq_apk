@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.util;
 
 import android.content.Context;
 import android.content.res.Resources;
-import bbmy;
+import bcpw;
 
 public final class PublicAccountUtil$2
   implements Runnable
@@ -11,7 +11,7 @@ public final class PublicAccountUtil$2
   
   public void run()
   {
-    bbmy.a(this.a.getApplicationContext(), this.a.getResources().getString(2131629853), 0).a();
+    bcpw.a(this.a.getApplicationContext(), this.a.getResources().getString(2131695534), 0).a();
   }
 }
 

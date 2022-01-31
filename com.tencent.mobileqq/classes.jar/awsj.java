@@ -1,107 +1,51 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class awsj
-  extends QIPCModule
+class awsj
+  implements View.OnClickListener
 {
-  private static awsj jdField_a_of_type_Awsj;
-  private ConcurrentHashMap<Integer, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  awsj(awsa paramawsa, Context paramContext, awpf paramawpf) {}
   
-  public awsj(String paramString)
+  public void onClick(View paramView)
   {
-    super(paramString);
-  }
-  
-  public static awsj a()
-  {
-    if (jdField_a_of_type_Awsj == null) {}
+    paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    awvy.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Awpf.a.jdField_a_of_type_JavaLangString);
+    awiv localawiv;
+    JSONObject localJSONObject;
+    if (awiu.b.containsKey(this.jdField_a_of_type_Awpf))
+    {
+      localawiv = (awiv)awiu.b.get(this.jdField_a_of_type_Awpf);
+      localJSONObject = new JSONObject();
+    }
     try
     {
-      if (jdField_a_of_type_Awsj == null) {
-        jdField_a_of_type_Awsj = new awsj("BatteryModule");
-      }
-      return jdField_a_of_type_Awsj;
+      localJSONObject.put("project", awso.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("obj_lct", localawiv.jdField_a_of_type_Int);
+      localJSONObject.put("get_src", "web");
+      awso.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localawiv.jdField_a_of_type_Long + "").obj2(localawiv.b).ver1(localawiv.jdField_a_of_type_JavaLangString).ver2(awso.a(this.jdField_a_of_type_Awpf.c)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + awiu.jdField_a_of_type_Long));
+      return;
     }
-    finally {}
-  }
-  
-  void a()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("key_process_id", BaseApplicationImpl.sProcessId);
-    QIPCClientHelper.getInstance().callServer("BatteryModule", "action_monitor", localBundle, new awsk(this));
-  }
-  
-  void a(Bundle paramBundle)
-  {
-    paramBundle.putString("key_process_name", BaseApplicationImpl.getApplication().getQQProcessName());
-    QIPCClientHelper.getInstance().getClient().callServer("BatteryModule", "action_report", paramBundle, null);
-  }
-  
-  void a(String... paramVarArgs)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArray("key_message", paramVarArgs);
-    QIPCClientHelper.getInstance().getClient().callServer("BatteryModule", "action_record", localBundle);
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("BatteryStats.Module", 2, "action = " + paramString);
-    }
-    int i;
-    if ("action_monitor".equals(paramString))
+    catch (JSONException localJSONException)
     {
-      i = awso.a().a();
-      if ((i == 0) || (i == 1))
+      for (;;)
       {
-        paramString = new Bundle();
-        if (i == 1) {}
-        for (;;)
-        {
-          paramString.putBoolean("key_monitor", bool);
-          callbackResult(paramInt, EIPCResult.createSuccessResult(paramString));
-          return null;
-          bool = false;
-        }
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramBundle.getInt("key_process_id")), Integer.valueOf(paramInt));
-      return null;
-    }
-    if ("action_record".equals(paramString))
-    {
-      awso.a().a(paramBundle.getInt("key_process_id"), paramBundle.getStringArray("key_message"));
-      return EIPCResult.createSuccessResult(null);
-    }
-    if ("action_alarm".equals(paramString))
-    {
-      paramInt = paramBundle.getInt("monitor_type", -1);
-      i = paramBundle.getInt("except_type", -1);
-      int j = paramBundle.getInt("key_level", -1);
-      paramString = paramBundle.getString("key_message");
-      paramBundle = paramBundle.getString("key_description");
-      awso.a().a(paramInt, i, j, paramString, paramBundle);
-    }
-    for (;;)
-    {
-      return null;
-      if ("action_report".equals(paramString)) {
-        awso.a().a(paramBundle);
+        QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, "e = " + localJSONException);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awsj
  * JD-Core Version:    0.7.0.1
  */

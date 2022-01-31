@@ -3,13 +3,13 @@ package com.tencent.qqmini.sdk.launcher.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdne;
+import berq;
 import java.io.Serializable;
 
 public class SecondApiRightInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<SecondApiRightInfo> CREATOR = new bdne();
+  public static final Parcelable.Creator<SecondApiRightInfo> CREATOR = new berq();
   public String apiName;
   public int right;
   public String secondName;

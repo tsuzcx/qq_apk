@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.util;
 
 import android.graphics.Bitmap;
-import apdh;
+import apvb;
 import com.tencent.qphone.base.util.QLog;
-import ey;
+import gr;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -14,19 +14,19 @@ public final class FileManagerUtil$10
   
   public void run()
   {
-    if (apdh.b(this.jdField_a_of_type_JavaLangString)) {}
+    if (apvb.b(this.jdField_a_of_type_JavaLangString)) {}
     Bitmap localBitmap;
     do
     {
       return;
-      localBitmap = ey.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      localBitmap = gr.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
     } while (localBitmap == null);
     try
     {
-      apdh.a(localBitmap, this.jdField_a_of_type_JavaLangString);
+      apvb.a(localBitmap, this.jdField_a_of_type_JavaLangString);
       localBitmap.recycle();
-      int i = ey.a(this.jdField_b_of_type_JavaLangString);
-      ey.a(this.jdField_a_of_type_JavaLangString, i);
+      int i = gr.a(this.jdField_b_of_type_JavaLangString);
+      gr.a(this.jdField_a_of_type_JavaLangString, i);
       return;
     }
     catch (FileNotFoundException localFileNotFoundException)

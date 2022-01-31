@@ -1,8 +1,12 @@
+import android.os.IInterface;
+import com.tencent.av.service.AVRedPacketConfig;
+
 public abstract interface lwk
+  extends IInterface
 {
-  public abstract void a(long paramLong);
+  public abstract void a(boolean paramBoolean, AVRedPacketConfig paramAVRedPacketConfig);
   
-  public abstract void a(long paramLong, lxf paramlxf);
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
 }
 
 

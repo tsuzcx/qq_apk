@@ -1,18 +1,18 @@
 package dov.com.qq.im;
 
 import android.os.Bundle;
-import bhec;
-import bhgs;
+import bigs;
+import bjbk;
 import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
 
 public class QIMEmojiRedPacketCameraCaptureUnit$13
   implements Runnable
 {
-  public QIMEmojiRedPacketCameraCaptureUnit$13(bhec parambhec, bhgs parambhgs, QIMFilterCategoryItem paramQIMFilterCategoryItem, Bundle paramBundle) {}
+  public QIMEmojiRedPacketCameraCaptureUnit$13(bigs parambigs, bjbk parambjbk, QIMFilterCategoryItem paramQIMFilterCategoryItem, Bundle paramBundle) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bhgs.a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem, this.this$0.a(), this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Bjbk.a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem, this.this$0.a(), this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

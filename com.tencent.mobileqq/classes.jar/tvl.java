@@ -1,26 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.1.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
 
-class tvl
-  implements DialogInterface.OnClickListener
+public final class tvl
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  tvl(tvd paramtvd, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onComplete(String arg1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
-    switch (paramInt)
+    synchronized ()
     {
-    case 0: 
-    default: 
+      paramString2 = tvk.a();
+      tvk.a().post(new TVKPreloader.1.1(this, paramString2));
       return;
     }
-    sis.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-    urp.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
   }
 }
 

@@ -1,35 +1,31 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public abstract interface qlm
+class qlm
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public abstract long a();
+  qlm(qlj paramqlj) {}
   
-  public abstract qln a(int paramInt);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(View paramView, int paramInt, FrameLayout.LayoutParams paramLayoutParams);
-  
-  public abstract void a(qlk<qln> paramqlk);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(qlj.a(), 2, "播放器状态回调 onVideoPrepared");
+    }
+    qlj.a(this.a, System.currentTimeMillis());
+    paramTVK_IMediaPlayer = new HashSet();
+    Iterator localIterator = qlj.a(this.a).entrySet().iterator();
+    while (localIterator.hasNext()) {
+      paramTVK_IMediaPlayer.add(((Map.Entry)localIterator.next()).getKey());
+    }
+    qlj.a(this.a).setExtractFrameModeInfo(true, paramTVK_IMediaPlayer);
+    qlj.a(this.a).start();
+  }
 }
 
 

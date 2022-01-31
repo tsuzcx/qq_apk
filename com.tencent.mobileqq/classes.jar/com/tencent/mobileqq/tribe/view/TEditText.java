@@ -3,12 +3,12 @@ package com.tencent.mobileqq.tribe.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import ayca;
+import azck;
 
 public class TEditText
   extends EditText
 {
-  private ayca a;
+  private azck a;
   
   public TEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,9 +23,9 @@ public class TEditText
     }
   }
   
-  public void setOnSelectionChangedListener(ayca paramayca)
+  public void setOnSelectionChangedListener(azck paramazck)
   {
-    this.a = paramayca;
+    this.a = paramazck;
   }
 }
 

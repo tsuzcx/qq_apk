@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class astq
-  implements DialogInterface.OnClickListener
+public abstract interface astq
 {
-  astq(aste paramaste) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(asue paramasue, HashMap<String, ArrayList<MessageRecord>> paramHashMap, astr paramastr);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     astq
  * JD-Core Version:    0.7.0.1
  */

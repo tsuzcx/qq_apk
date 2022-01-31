@@ -1,72 +1,120 @@
-import appoint.define.appoint_define.Elem;
-import appoint.define.appoint_define.Face;
-import appoint.define.appoint_define.RichText;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
 
 public class apqk
+  extends apxf
 {
-  public static String a(appoint_define.RichText paramRichText)
+  private int jdField_a_of_type_Int;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new apql(this);
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private boolean jdField_b_of_type_Boolean;
+  
+  public apqk(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
   {
-    if (paramRichText == null) {
-      return "";
-    }
-    if (paramRichText.rpt_msg_elems.has()) {}
-    for (paramRichText = paramRichText.rpt_msg_elems.get(); (paramRichText == null) || (paramRichText.isEmpty()); paramRichText = null) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramRichText.iterator();
-    label135:
-    label196:
-    label199:
-    label201:
-    label204:
-    while (localIterator.hasNext())
+    super(paramQQAppInterface, paramContext, paramQFileSendBottomView);
+    c();
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131375830));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131370887));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+  }
+  
+  private void d()
+  {
+    if ((this.jdField_a_of_type_AndroidOsBundle == null) || (!this.jdField_a_of_type_AndroidOsBundle.containsKey("qfile_search_param_exparams_qlink_state")))
     {
-      appoint_define.Elem localElem = (appoint_define.Elem)localIterator.next();
-      if (localElem != null)
+      a(null);
+      return;
+    }
+    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    Object localObject2 = apeh.a();
+    ArrayList localArrayList = new ArrayList();
+    localObject2 = ((Set)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      localArrayList.add(((FileInfo)((Iterator)localObject2).next()).c());
+    }
+    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_qlink_state");
+    localObject2 = new Intent();
+    if (222 == i)
+    {
+      ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
+      i = -1;
+    }
+    for (;;)
+    {
+      a(i, (Intent)localObject2);
+      return;
+      if ((333 == i) || (666 == i) || (3333 == i) || (6666 == i))
       {
-        if (localElem.str_content.has())
+        ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
+      }
+      else
+      {
+        if ((444 == i) || (555 == i))
         {
-          paramRichText = localElem.str_content.get();
-          label106:
-          localStringBuilder.append(paramRichText);
-          if (!localElem.msg_face_info.has()) {
-            break label196;
-          }
-          paramRichText = (appoint_define.Face)localElem.msg_face_info.get();
-          if (paramRichText == null) {
-            break label199;
-          }
-          if (!paramRichText.uint32_index.has()) {
-            break label201;
+          if (444 == i) {}
+          for (boolean bool = true;; bool = false)
+          {
+            ((Intent)localObject2).putExtra("_INIT_SEND_IOS_", bool);
+            ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
+            break;
           }
         }
-        for (int i = paramRichText.uint32_index.get();; i = -1)
+        if ((777 == i) || (888 == i))
         {
-          if ((i < 0) || (i >= awbk.b.length)) {
-            break label204;
-          }
-          localStringBuilder.append('\024');
-          localStringBuilder.append((char)awbk.b[i]);
-          break;
-          paramRichText = "";
-          break label106;
-          paramRichText = null;
-          break label135;
-          break;
+          localObject1 = new Bundle();
+          ((Bundle)localObject1).putStringArrayList("string_filepaths", localArrayList);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+          bgmt.a(this.jdField_a_of_type_AndroidContentContext, 16, (Bundle)localObject1);
+          i = -1;
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject1, localArrayList);
+          ((Intent)localObject2).putExtra("_UIN_", (String)localObject1);
+          ((Intent)localObject2).putExtra("_SEND_QLINK_FILE_", true);
+          i = -1;
         }
       }
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FreshNewsUtil", 4, "getStringFromRichText, result=" + localStringBuilder.toString());
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131698382);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131713787));
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (apeh.b() > 0L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localTextView.setEnabled(bool);
+      return;
     }
-    return localStringBuilder.toString();
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("qfile_search_param_ex_params_target_uin");
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_qlink_state");
+      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean("qfile_search_param_exparams_qlink_ap_created");
+    }
   }
 }
 

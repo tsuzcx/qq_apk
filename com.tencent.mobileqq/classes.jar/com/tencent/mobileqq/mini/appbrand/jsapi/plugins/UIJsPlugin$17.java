@@ -1,14 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajjy;
-import android.app.Activity;
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
-import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
@@ -22,34 +16,40 @@ class UIJsPlugin$17
   
   public void run()
   {
+    JSONObject localJSONObject = null;
     for (;;)
     {
-      String str;
-      int j;
       try
       {
-        Object localObject = new JSONObject(this.val$jsonParams);
-        boolean bool = ((JSONObject)localObject).optBoolean("__skipDomainCheck__", false);
-        int i = ((JSONObject)localObject).optInt("htmlId");
-        str = ((JSONObject)localObject).optString("src", "");
-        j = this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().getURLOpenType(str);
-        if (j == 0)
+        Object localObject2 = new JSONObject(this.val$jsonParams);
+        int i = ((JSONObject)localObject2).optInt("htmlId");
+        if (!((JSONObject)localObject2).has("src")) {
+          break label272;
+        }
+        String str = ((JSONObject)localObject2).optString("src", "");
+        if (((JSONObject)localObject2).has("position")) {
+          localJSONObject = ((JSONObject)localObject2).optJSONObject("position");
+        }
+        boolean bool = ((JSONObject)localObject2).optBoolean("__skipDomainCheck__", false);
+        localObject2 = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
+        if (localObject2 != null)
         {
-          localObject = ((AppBrandPageContainer)this.this$0.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(this.val$webview.getPageWebViewId());
-          if (localObject == null) {
-            break label325;
-          }
-          localObject = ((AbsAppBrandPage)localObject).getCurrentWebviewContainer();
-          if (localObject == null) {
-            break;
-          }
-          if ((!TextUtils.isEmpty(str)) && (this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().isDomainValid(bool, str, 4)))
+          if (!TextUtils.isEmpty(str))
           {
-            ((WebviewContainer)localObject).updateHTMLWebView(i, str);
+            if (this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().isDomainValid(bool, str, 4)) {
+              ((WebviewContainer)localObject2).updateHTMLWebView(i, str);
+            }
+          }
+          else
+          {
+            if (localJSONObject != null) {
+              ((WebviewContainer)localObject2).updateHTMLWebView(i, localJSONObject);
+            }
             this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
             return;
           }
-          this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, ajjy.a(2131650063), this.val$callbackId);
+          QLog.e("[mini] UIJsPlugin", 1, "updateHTMLWebView domain valid : " + str);
+          this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, "domain valid", this.val$callbackId);
           return;
         }
       }
@@ -58,18 +58,10 @@ class UIJsPlugin$17
         QLog.e("[mini] UIJsPlugin", 1, this.val$event + " error.", localJSONException);
         return;
       }
-      if (1 != j) {
-        break;
-      }
-      Intent localIntent = new Intent(this.this$0.jsPluginEngine.appBrandRuntime.activity, QQBrowserActivity.class);
-      localIntent.putExtra("selfSet_leftViewText", ajjy.a(2131650060));
-      localIntent.putExtra("hide_more_button", true);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("url", str);
-      this.this$0.jsPluginEngine.appBrandRuntime.activity.startActivity(localIntent);
+      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
       return;
-      label325:
-      localIntent = null;
+      label272:
+      Object localObject1 = null;
     }
   }
 }

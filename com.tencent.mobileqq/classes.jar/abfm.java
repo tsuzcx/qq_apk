@@ -1,47 +1,21 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.61.1;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.61.2;
 
 public class abfm
-  implements CompoundButton.OnCheckedChangeListener
+  implements bcoz
 {
-  public abfm(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public abfm(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(int paramInt, String paramString)
   {
-    int i = 1;
-    if (AppSetting.c) {
-      NotifyPushSettingActivity.c(this.a).setContentDescription(ajjy.a(2131653024));
+    if ("profile_btn_config".equals(paramString)) {
+      this.a.runOnUiThread(new FriendProfileCardActivity.61.1(this));
     }
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131653024), "qqsetting_notify_blncontrol_key", paramBoolean);
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
-    {
-      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 1);
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label147;
-      }
-      label89:
-      if (!paramBoolean) {
-        break label152;
-      }
-    }
-    label147:
-    label152:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      awqx.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Led_blinking", 0, i, paramCompoundButton, "", "", "");
+    while (!"profile_switch_config".equals(paramString)) {
       return;
-      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 0);
-      break;
-      i = 0;
-      break label89;
     }
+    this.a.runOnUiThread(new FriendProfileCardActivity.61.2(this));
   }
 }
 

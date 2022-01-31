@@ -1,15 +1,19 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aami
+public class aami
   implements View.OnClickListener
 {
-  aami(aamh paramaamh) {}
+  public aami(BaseChatPie paramBaseChatPie) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.onClick(this.a.a.a);
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.dismissDialog(230);
+    xkq.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
   }
 }
 

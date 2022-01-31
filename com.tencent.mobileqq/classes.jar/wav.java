@@ -1,39 +1,44 @@
-import android.text.Editable;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import com.tencent.biz.subscribe.comment.EmoView;
+import java.io.File;
 
-public class wav
-  implements waw
+final class wav
+  extends wad
 {
-  public wav(EmoView paramEmoView) {}
+  wav(wad paramwad, String paramString, long paramLong) {}
   
-  public boolean a()
+  public void onFailure(String paramString)
   {
-    if (EmoView.a(this.a) == null) {
-      return false;
-    }
-    EmoView.a(this.a).dispatchKeyEvent(new KeyEvent(0L, 0L, 0, 67, 0, 0));
-    return true;
+    vel.a("music_composite", "video_music_composite", 0, 1, new String[0]);
+    this.jdField_a_of_type_Wad.onFailure(paramString);
   }
   
-  public boolean a(String paramString)
+  public void onFinish(boolean paramBoolean)
   {
-    if (EmoView.a(this.a) == null) {
-      return false;
+    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      localFile.delete();
     }
-    if ((EmoView.b(this.a) > 0) && (EmoView.a(this.a).getText().length() + paramString.length() > EmoView.b(this.a)))
-    {
-      bbmy.a(this.a.getContext(), 0, ajjy.a(2131638336), 0);
-      return false;
+    this.jdField_a_of_type_Wad.onFinish(paramBoolean);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+    this.jdField_a_of_type_Wad.onStart();
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    vel.a("music_composite", "video_music_composite", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.b) });
+    if (bjil.c) {
+      bjil.g.a(1, System.currentTimeMillis() - this.jdField_a_of_type_Long);
     }
-    EmoView.a(EmoView.a(this.a), paramString);
-    return true;
+    this.jdField_a_of_type_Wad.onSuccess(paramString);
+    veg.c("Q.qqstory.ffmpeg.FFmpegCmd", "[vs_publish_flow]   recordVideo combinBackgroundMusic success end");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wav
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import ajfi;
-import ajjj;
+import ajtk;
+import ajxn;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
@@ -27,7 +27,7 @@ public final class ChatActivityFacade$5
     for (;;)
     {
       return;
-      localObject = ((ajjj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      localObject = ((ajxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
       long l1;
       if (localObject == null)
       {
@@ -41,7 +41,7 @@ public final class ChatActivityFacade$5
         if (l1 <= l2) {
           break label126;
         }
-        ((ajfi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l2);
+        ((ajtk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l2);
         return;
         l1 = ((ExtensionInfo)localObject).medalUpdateTimestamp;
         break;

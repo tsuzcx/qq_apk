@@ -1,21 +1,18 @@
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 
-class tza
-  extends tco
+public final class tza
+  implements Parcelable.Creator<AnimationParam>
 {
-  tza(tyz paramtyz) {}
-  
-  public void a()
+  public AnimationParam a(Parcel paramParcel)
   {
-    super.a();
-    tyz.a(this.a).jdField_a_of_type_Tci = null;
+    return new AnimationParam(paramParcel);
   }
   
-  public void a(int paramInt)
+  public AnimationParam[] a(int paramInt)
   {
-    super.a(paramInt);
-    urp.a("share_story", "day_suc", 0, paramInt, new String[] { tyz.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
+    return new AnimationParam[paramInt];
   }
 }
 

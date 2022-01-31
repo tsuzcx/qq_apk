@@ -1,6 +1,11 @@
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import java.util.List;
+
 public abstract interface pcs
 {
-  public abstract void a();
+  public abstract void a(List<pcp> paramList);
+  
+  public abstract void b(SelectPositionModule.PositionData paramPositionData);
 }
 
 

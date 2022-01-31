@@ -1,36 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.videostory.capture.widgets.AEBottomListScrollView;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
 
-class wqu
-  implements Animation.AnimationListener
+public class wqu
+  implements wrh<Object>
 {
-  wqu(wqq paramwqq) {}
+  public wqu(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, xgx paramxgx) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(Object... paramVarArgs)
   {
-    if ((wqq.a(this.a) != null) && (!wqq.a(this.a)))
-    {
-      wqq.a(this.a).setAlpha(1.0F);
-      wqq.a(this.a).setVisibility(4);
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      this.jdField_a_of_type_Xgx.a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (CertifiedAccountRead.StGetMainPageRsp)paramVarArgs[3]);
     }
-    if (this.a.a != null)
-    {
-      this.a.a.a(327683, new Object[0]);
-      this.a.a.a(196612, new Object[0]);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    wqq.a(this.a).a().a(true, 150);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wqu
  * JD-Core Version:    0.7.0.1
  */

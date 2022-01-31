@@ -1,27 +1,94 @@
-import android.content.Intent;
-import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import android.view.View.OnTouchListener;
+import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 
-public class aufi
-  implements begw
+class aufi
+  implements View.OnTouchListener
 {
-  public aufi(QCallDetailActivity paramQCallDetailActivity, String paramString, begr parambegr) {}
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private float b;
   
-  public void OnClick(View paramView, int paramInt)
+  aufi(aufh paramaufh) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == null) || (paramInt >= QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).length)) {
-      return;
+    aufx localaufx;
+    float f2;
+    float f1;
+    if (aufh.a(this.jdField_a_of_type_Aufh) != null)
+    {
+      paramView = (aufw)aufh.a(this.jdField_a_of_type_Aufh).getTag(2131362745);
+      localaufx = (aufx)aufh.a(this.jdField_a_of_type_Aufh).getTag();
+      if ((paramView != null) && (localaufx != null))
+      {
+        f2 = paramMotionEvent.getX();
+        f1 = paramMotionEvent.getY();
+      }
     }
-    switch (QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity)[paramInt])
+    switch (paramMotionEvent.getAction())
     {
     default: 
-      return;
+    case 0: 
+    case 2: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return true;
+            this.jdField_a_of_type_Float = f2;
+            this.b = f1;
+            this.jdField_a_of_type_Long = System.currentTimeMillis();
+          } while ((paramView.jdField_a_of_type_Int != 1) || (paramView.b != 2));
+          localaufx.a.setPressed(true);
+          return true;
+        } while ((paramView.jdField_a_of_type_Int != 1) || (paramView.b != 2));
+        f2 -= this.jdField_a_of_type_Float;
+        f1 -= this.b;
+      } while ((float)Math.sqrt(f2 * f2 + f1 * f1) < aufh.a(this.jdField_a_of_type_Aufh).getScaledTouchSlop());
+      localaufx.a.setPressed(false);
+      return true;
+    case 1: 
+      f2 -= this.jdField_a_of_type_Float;
+      f1 -= this.b;
+      f2 = (float)Math.sqrt(f2 * f2 + f1 * f1);
+      long l1 = System.currentTimeMillis();
+      long l2 = this.jdField_a_of_type_Long;
+      if (f2 < aufh.a(this.jdField_a_of_type_Aufh).getScaledTouchSlop()) {
+        if (paramView.b == 2)
+        {
+          aufh.a(this.jdField_a_of_type_Aufh).removeMessages(101);
+          aufh.a(this.jdField_a_of_type_Aufh).obtainMessage(101).sendToTarget();
+          if (paramView.jdField_a_of_type_Auft != null) {
+            paramView.jdField_a_of_type_Auft.a();
+          }
+        }
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Float = 0.0F;
+        this.b = 0.0F;
+        this.jdField_a_of_type_Long = 0L;
+        localaufx.a.setPressed(false);
+        return true;
+        if ((f2 > aufh.a(this.jdField_a_of_type_Aufh).getScaledTouchSlop()) && (f1 > 50.0F) && ((float)(l1 - l2) < 300.0F) && (paramView.jdField_a_of_type_Int == 1))
+        {
+          aufh.a(this.jdField_a_of_type_Aufh).removeMessages(101);
+          aufh.a(this.jdField_a_of_type_Aufh).obtainMessage(101).sendToTarget();
+        }
+      }
     }
-    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.startActivity(paramView);
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8005AF9", "0X8005AF9", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_Begr.dismiss();
+    this.jdField_a_of_type_Float = 0.0F;
+    this.b = 0.0F;
+    this.jdField_a_of_type_Long = 0L;
+    localaufx.a.setPressed(false);
+    return true;
   }
 }
 

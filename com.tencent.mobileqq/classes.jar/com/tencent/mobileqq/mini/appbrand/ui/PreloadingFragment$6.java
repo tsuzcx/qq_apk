@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import bbtm;
+import bcxm;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -38,7 +38,7 @@ class PreloadingFragment$6
       }
     }
     label733:
-    for (paramJSONObject = this.this$0.getString(2131652912);; paramJSONObject = (JSONObject)localObject1)
+    for (paramJSONObject = this.this$0.getString(2131718737);; paramJSONObject = (JSONObject)localObject1)
     {
       if (PreloadingFragment.access$300(this.this$0) != null)
       {
@@ -75,7 +75,7 @@ class PreloadingFragment$6
           }
           if (((MiniAppInfo)localObject2).clearAuths == 1)
           {
-            long l2 = bbtm.a().a();
+            long l2 = bcxm.a().a();
             if (l2 > 0L)
             {
               AuthorizeCenter.clearAuth(((MiniAppInfo)localObject2).appId, String.valueOf(l2));

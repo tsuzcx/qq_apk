@@ -23,13 +23,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import ogy;
-import oph;
 import org.json.JSONObject;
-import qxh;
-import qxl;
-import qzt;
-import ray;
+import osj;
+import pai;
+import rjz;
+import rkd;
+import rml;
+import rnq;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.Article;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ArticleCommonInfo;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ArticleCover;
@@ -40,14 +40,14 @@ import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.RspBody;
 public class FastWebArticleInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FastWebArticleInfo> CREATOR = new qzt();
+  public static final Parcelable.Creator<FastWebArticleInfo> CREATOR = new rml();
   public int a;
   public long a;
-  public SparseArray<ray> a;
+  public SparseArray<rnq> a;
   public FusionBiuInfo a;
   public RelatedSearchData a;
   public String a;
-  public List<qxh> a;
+  public List<rjz> a;
   private Map<String, JSONObject> a;
   public boolean a;
   public int b;
@@ -71,9 +71,10 @@ public class FastWebArticleInfo
   public String l;
   public String m;
   public String n;
-  public String o = "";
-  public String p;
+  public String o;
+  public String p = "";
   public String q;
+  public String r;
   
   public FastWebArticleInfo()
   {
@@ -88,28 +89,28 @@ public class FastWebArticleInfo
     // Byte code:
     //   0: iconst_0
     //   1: istore_3
-    //   2: invokestatic 80	java/lang/System:currentTimeMillis	()J
+    //   2: invokestatic 81	java/lang/System:currentTimeMillis	()J
     //   5: lstore 4
-    //   7: new 82	java/io/ByteArrayInputStream
+    //   7: new 83	java/io/ByteArrayInputStream
     //   10: dup
     //   11: aload_1
-    //   12: invokespecial 85	java/io/ByteArrayInputStream:<init>	([B)V
+    //   12: invokespecial 86	java/io/ByteArrayInputStream:<init>	([B)V
     //   15: astore 7
-    //   17: new 87	java/io/ByteArrayOutputStream
+    //   17: new 88	java/io/ByteArrayOutputStream
     //   20: dup
-    //   21: invokespecial 88	java/io/ByteArrayOutputStream:<init>	()V
+    //   21: invokespecial 89	java/io/ByteArrayOutputStream:<init>	()V
     //   24: astore 6
-    //   26: new 90	java/util/zip/GZIPInputStream
+    //   26: new 91	java/util/zip/GZIPInputStream
     //   29: dup
     //   30: aload 7
-    //   32: invokespecial 93	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   32: invokespecial 94	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
     //   35: astore 7
     //   37: sipush 1024
     //   40: newarray byte
     //   42: astore 8
     //   44: aload 7
     //   46: aload 8
-    //   48: invokevirtual 97	java/util/zip/GZIPInputStream:read	([B)I
+    //   48: invokevirtual 98	java/util/zip/GZIPInputStream:read	([B)I
     //   51: istore_2
     //   52: iload_2
     //   53: iconst_m1
@@ -118,48 +119,48 @@ public class FastWebArticleInfo
     //   59: aload 8
     //   61: iconst_0
     //   62: iload_2
-    //   63: invokevirtual 101	java/io/ByteArrayOutputStream:write	([BII)V
+    //   63: invokevirtual 102	java/io/ByteArrayOutputStream:write	([BII)V
     //   66: goto -22 -> 44
     //   69: astore 6
     //   71: aload 6
-    //   73: invokevirtual 104	java/io/IOException:printStackTrace	()V
+    //   73: invokevirtual 105	java/io/IOException:printStackTrace	()V
     //   76: iconst_0
     //   77: newarray byte
     //   79: astore 6
-    //   81: invokestatic 80	java/lang/System:currentTimeMillis	()J
+    //   81: invokestatic 81	java/lang/System:currentTimeMillis	()J
     //   84: lload 4
     //   86: lsub
     //   87: lstore 4
-    //   89: new 57	java/util/HashMap
+    //   89: new 58	java/util/HashMap
     //   92: dup
-    //   93: invokespecial 58	java/util/HashMap:<init>	()V
+    //   93: invokespecial 59	java/util/HashMap:<init>	()V
     //   96: astore 7
     //   98: aload 7
-    //   100: ldc 106
-    //   102: invokestatic 111	obz:a	()Ljava/lang/String;
-    //   105: invokevirtual 115	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   100: ldc 107
+    //   102: invokestatic 112	onk:a	()Ljava/lang/String;
+    //   105: invokevirtual 116	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   108: pop
     //   109: aload 7
-    //   111: ldc 117
+    //   111: ldc 118
     //   113: aload_0
-    //   114: getfield 119	com/tencent/biz/pubaccount/readinjoy/view/fastweb/util/FastWebArticleInfo:j	Ljava/lang/String;
-    //   117: invokevirtual 115	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   114: getfield 120	com/tencent/biz/pubaccount/readinjoy/view/fastweb/util/FastWebArticleInfo:j	Ljava/lang/String;
+    //   117: invokevirtual 116	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   120: pop
     //   121: aload 7
-    //   123: ldc 121
-    //   125: new 123	java/lang/StringBuilder
+    //   123: ldc 122
+    //   125: new 124	java/lang/StringBuilder
     //   128: dup
-    //   129: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   129: invokespecial 125	java/lang/StringBuilder:<init>	()V
     //   132: lload 4
-    //   134: invokevirtual 128	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   137: ldc 62
-    //   139: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   142: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   145: invokevirtual 115	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   134: invokevirtual 129	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   137: ldc 63
+    //   139: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   142: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   145: invokevirtual 116	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   148: pop
     //   149: aload 7
-    //   151: ldc 136
-    //   153: ldc 138
+    //   151: ldc 137
+    //   153: ldc 139
     //   155: iconst_1
     //   156: anewarray 4	java/lang/Object
     //   159: dup
@@ -167,48 +168,48 @@ public class FastWebArticleInfo
     //   161: aload_1
     //   162: arraylength
     //   163: i2d
-    //   164: ldc2_w 139
+    //   164: ldc2_w 140
     //   167: dmul
     //   168: aload 6
     //   170: arraylength
     //   171: i2d
     //   172: ddiv
-    //   173: invokestatic 146	java/lang/Double:valueOf	(D)Ljava/lang/Double;
+    //   173: invokestatic 147	java/lang/Double:valueOf	(D)Ljava/lang/Double;
     //   176: aastore
-    //   177: invokestatic 152	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   180: invokevirtual 115	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   177: invokestatic 153	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   180: invokevirtual 116	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   183: pop
     //   184: iload_3
     //   185: ifeq +66 -> 251
     //   188: iconst_1
     //   189: istore_2
     //   190: aload 7
-    //   192: ldc 154
+    //   192: ldc 155
     //   194: iload_2
-    //   195: invokestatic 157	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   198: invokevirtual 115	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   195: invokestatic 158	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   198: invokevirtual 116	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   201: pop
-    //   202: invokestatic 163	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   205: invokestatic 168	awrn:a	(Landroid/content/Context;)Lawrn;
+    //   202: invokestatic 164	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   205: invokestatic 169	axrl:a	(Landroid/content/Context;)Laxrl;
     //   208: aconst_null
-    //   209: ldc 170
+    //   209: ldc 171
     //   211: iload_3
     //   212: lload 4
     //   214: lconst_0
     //   215: aload 7
     //   217: aconst_null
-    //   218: invokevirtual 173	awrn:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   218: invokevirtual 174	axrl:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   221: aload 6
     //   223: areturn
     //   224: aload 6
-    //   226: invokevirtual 177	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   226: invokevirtual 178	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   229: astore 6
     //   231: iconst_1
     //   232: istore_3
     //   233: goto -152 -> 81
     //   236: astore 6
     //   238: aload 6
-    //   240: invokevirtual 178	java/lang/Throwable:printStackTrace	()V
+    //   240: invokevirtual 179	java/lang/Throwable:printStackTrace	()V
     //   243: iconst_0
     //   244: newarray byte
     //   246: astore 6
@@ -264,8 +265,8 @@ public class FastWebArticleInfo
     {
       localAuthorData.jdField_d_of_type_JavaLangString = this.f;
       localAuthorData.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      localAuthorData.jdField_a_of_type_Boolean = ogy.a().a(paramArticleInfo.getSubscribeUin());
-      localAuthorData.V = this.p;
+      localAuthorData.jdField_a_of_type_Boolean = osj.a().a(paramArticleInfo.getSubscribeUin());
+      localAuthorData.V = this.q;
       localAuthorData.t = 1;
       localAuthorData.jdField_b_of_type_Float = 1.0F;
       return localAuthorData;
@@ -284,7 +285,7 @@ public class FastWebArticleInfo
     TitleData localTitleData = new TitleData();
     localTitleData.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
     localTitleData.b = paramArticleInfo;
-    localTitleData.V = this.p;
+    localTitleData.V = this.q;
     localTitleData.t = 1;
     localTitleData.s = 1;
     return localTitleData;
@@ -363,12 +364,15 @@ public class FastWebArticleInfo
         this.i = localArticleCommonInfo.bytes_share_words.get().toStringUtf8();
         this.j = localArticleCommonInfo.bytes_row_key.get().toStringUtf8();
         this.jdField_b_of_type_Int = localArticleCommonInfo.uint32_article_flag.get();
-        this.k = localArticleCommonInfo.bytes_tags.get().toStringUtf8();
-        this.n = localArticleCommonInfo.bytes_article_id.get().toStringUtf8();
+        this.l = localArticleCommonInfo.bytes_tags.get().toStringUtf8();
+        this.o = localArticleCommonInfo.bytes_article_id.get().toStringUtf8();
         this.jdField_d_of_type_Long = localArticleCommonInfo.uint64_public_uin.get();
-        this.p = localArticleCommonInfo.bytes_proteus_json_data.get().toStringUtf8();
+        this.q = localArticleCommonInfo.bytes_proteus_json_data.get().toStringUtf8();
         if ((localArticleCommonInfo.msg_cover.has()) && (((oidb_cmd0xad6.ArticleCover)localArticleCommonInfo.msg_cover.get()).bytes_cover_url.has())) {
-          this.q = ((oidb_cmd0xad6.ArticleCover)localArticleCommonInfo.msg_cover.get()).bytes_cover_url.get().toStringUtf8();
+          this.r = ((oidb_cmd0xad6.ArticleCover)localArticleCommonInfo.msg_cover.get()).bytes_cover_url.get().toStringUtf8();
+        }
+        if (localArticleCommonInfo.bytes_original_url.has()) {
+          this.k = localArticleCommonInfo.bytes_original_url.get().toStringUtf8();
         }
         paramRspBody = (oidb_cmd0xad6.ArticleExtInfo)paramRspBody.msg_ext_info.get();
         if (((oidb_cmd0xad6.Article)localObject).uint32_zip.get() == 1)
@@ -389,7 +393,7 @@ public class FastWebArticleInfo
           }
           else
           {
-            QLog.d(oph.jdField_a_of_type_JavaLangString, 1, "uncompress article content data error !");
+            QLog.d(pai.jdField_a_of_type_JavaLangString, 1, "uncompress article content data error !");
             return false;
           }
         }
@@ -439,7 +443,7 @@ public class FastWebArticleInfo
     localStringBuilder1.append("shareWord : ").append(this.i).append("\n");
     localStringBuilder1.append("readCnt : ").append(this.jdField_a_of_type_Long).append("\n");
     localStringBuilder1.append("flag : ").append(this.jdField_b_of_type_Int).append("\n");
-    localStringBuilder1.append("tags : ").append(this.k).append("\n");
+    localStringBuilder1.append("tags : ").append(this.l).append("\n");
     localStringBuilder1.append("content : ").append(this.jdField_a_of_type_JavaLangString).append("\n");
     StringBuilder localStringBuilder2 = localStringBuilder1.append("isFavorite : ");
     if (this.jdField_c_of_type_Boolean) {}
@@ -447,8 +451,8 @@ public class FastWebArticleInfo
     {
       localStringBuilder2.append(i1).append("\n");
       localStringBuilder1.append("cashFlag : ").append(this.jdField_c_of_type_Int).append("\n");
-      localStringBuilder1.append("cashInfo : ").append(this.o).append("\n");
-      localStringBuilder1.append("proteusJsonData : ").append(this.p).append("\n");
+      localStringBuilder1.append("cashInfo : ").append(this.p).append("\n");
+      localStringBuilder1.append("proteusJsonData : ").append(this.q).append("\n");
       return localStringBuilder1.toString();
     }
   }
@@ -469,12 +473,12 @@ public class FastWebArticleInfo
     paramParcel.writeString(this.j);
     paramParcel.writeString(this.i);
     paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.k);
+    paramParcel.writeString(this.l);
     if (this.jdField_b_of_type_Boolean)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.n);
+      paramParcel.writeString(this.o);
       paramParcel.writeLong(this.jdField_d_of_type_Long);
       if (!this.jdField_c_of_type_Boolean) {
         break label254;
@@ -486,7 +490,7 @@ public class FastWebArticleInfo
     for (paramInt = i1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.p);
+      paramParcel.writeString(this.q);
       if (this.jdField_a_of_type_JavaUtilList == null) {
         break label259;
       }
@@ -494,10 +498,10 @@ public class FastWebArticleInfo
       localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (qxh)localIterator.next();
-        paramParcel.writeString(((qxh)localObject).jdField_a_of_type_JavaLangString);
-        paramParcel.writeLong(((qxh)localObject).jdField_a_of_type_Long);
-        paramParcel.writeString(((qxh)localObject).jdField_b_of_type_JavaLangString);
+        localObject = (rjz)localIterator.next();
+        paramParcel.writeString(((rjz)localObject).jdField_a_of_type_JavaLangString);
+        paramParcel.writeLong(((rjz)localObject).jdField_a_of_type_Long);
+        paramParcel.writeString(((rjz)localObject).jdField_b_of_type_JavaLangString);
       }
       paramInt = 0;
       break;
@@ -511,12 +515,12 @@ public class FastWebArticleInfo
         localIterator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator.hasNext())
         {
-          localObject = (qxl)localIterator.next();
-          paramParcel.writeString(((qxl)localObject).jdField_a_of_type_JavaLangString);
-          paramParcel.writeString(((qxl)localObject).jdField_b_of_type_JavaLangString);
-          paramParcel.writeFloat(((qxl)localObject).jdField_a_of_type_Float);
-          paramParcel.writeString(((qxl)localObject).jdField_c_of_type_JavaLangString);
-          paramParcel.writeInt(((qxl)localObject).jdField_a_of_type_Int);
+          localObject = (rkd)localIterator.next();
+          paramParcel.writeString(((rkd)localObject).jdField_a_of_type_JavaLangString);
+          paramParcel.writeString(((rkd)localObject).jdField_b_of_type_JavaLangString);
+          paramParcel.writeFloat(((rkd)localObject).jdField_a_of_type_Float);
+          paramParcel.writeString(((rkd)localObject).jdField_c_of_type_JavaLangString);
+          paramParcel.writeInt(((rkd)localObject).jdField_a_of_type_Int);
         }
         paramParcel.writeString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData.jdField_a_of_type_JavaLangString);
       }
@@ -524,7 +528,7 @@ public class FastWebArticleInfo
     for (;;)
     {
       paramParcel.writeInt(this.jdField_c_of_type_Int);
-      paramParcel.writeString(this.o);
+      paramParcel.writeString(this.p);
       return;
       paramParcel.writeInt(0);
       continue;

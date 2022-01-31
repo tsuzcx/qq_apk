@@ -1,19 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
 
-public class mhk
-  implements DialogInterface.OnClickListener
+class mhk
+  implements Animator.AnimatorListener
 {
-  public mhk(PopupDialog paramPopupDialog) {}
+  mhk(mhf parammhf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (PopupDialog.a.a != null) {
-      PopupDialog.a.a.onClick(paramDialogInterface, paramInt);
-    }
-    paramDialogInterface.dismiss();
-    PopupDialog.a();
+    mhf.a(this.a).setAlpha(0.0F);
+    mhf.a(this.a).setVisibility(0);
   }
 }
 

@@ -1,85 +1,65 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.VideoViewGroup;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo.DefnInfo;
+import QQService.EVIPSPEC;
+import com.tencent.mobileqq.data.Friends;
+import java.util.Comparator;
 
-public class qht
-  extends pxn
+class qht
+  implements Comparator<qhr>
 {
-  public View a;
-  public BaseArticleInfo a;
-  public VideoViewGroup a;
-  public TVK_NetVideoInfo.DefnInfo a;
-  public pqb a;
-  boolean a;
-  public int b;
-  public View b;
-  public boolean b;
-  public int c;
-  public long c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e = -1;
-  public long e;
-  public String e;
-  public boolean e;
-  public int f;
-  public long f;
-  public String f;
-  public int g;
-  public long g = -1L;
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
-  public int m;
-  public String m;
-  public int n = 0;
-  public String n;
-  
-  public qht()
+  public int a(qhr paramqhr)
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public VideoInfo a()
-  {
-    return pxq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getInnerUniqueID();
+    if (paramqhr.jdField_a_of_type_Int != -1) {
+      return paramqhr.jdField_a_of_type_Int;
     }
-    return "";
+    Friends localFriends = paramqhr.jdField_a_of_type_ComTencentMobileqqDataFriends;
+    int k = bbcl.a(localFriends.detalStatusFlag, localFriends.iTermType);
+    int j;
+    int i;
+    if ((k != 6) && (k != 0))
+    {
+      j = 65536;
+      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
+        break label132;
+      }
+      i = 4096;
+      switch (k)
+      {
+      case 5: 
+      case 6: 
+      default: 
+        label64:
+        i = j | i | (int)localFriends.getLastLoginType();
+      }
+    }
+    for (;;)
+    {
+      paramqhr.jdField_a_of_type_Int = i;
+      return i;
+      j = 131072;
+      break;
+      label132:
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
+      {
+        i = 8192;
+        break label64;
+      }
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
+      {
+        i = 12288;
+        break label64;
+      }
+      i = 16384;
+      break label64;
+      i = j | i | 0x1;
+      continue;
+      i = j | i | 0x2;
+      continue;
+      i = j | i | 0x3;
+    }
   }
   
-  public String toString()
+  public int a(qhr paramqhr1, qhr paramqhr2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("VideoPlayParam[");
-    localStringBuilder.append(" articleID:").append(this.jdField_c_of_type_Long);
-    localStringBuilder.append(", videoVid:").append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(", busitype:").append(this.f);
-    localStringBuilder.append(", videoDuration:").append(this.b);
-    localStringBuilder.append(", position:").append(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
-      localStringBuilder.append(", title:").append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mTitle);
-    }
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
+    return a(paramqhr1) - a(paramqhr2);
   }
 }
 

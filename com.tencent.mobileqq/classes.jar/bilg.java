@@ -1,18 +1,40 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.4.1;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.4.2;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.4.3;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import mqq.os.MqqHandler;
 
-class bilg
-  implements View.OnFocusChangeListener
+public class bilg
+  implements biqy
 {
-  bilg(bila parambila) {}
+  bilg(bile parambile) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void a(biqn parambiqn, int paramInt)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.a(this.a.a.b(), true);
+    ThreadManager.getUIHandler().post(new AEBottomListAdapter.4.3(this, parambiqn, paramInt));
+  }
+  
+  public void a(biqn parambiqn, boolean paramBoolean)
+  {
+    if ((!paramBoolean) || (bile.a(this.a) == null))
+    {
+      ThreadManager.getUIHandler().post(new AEBottomListAdapter.4.1(this, parambiqn));
+      if (!paramBoolean) {
+        break label126;
+      }
     }
-    urk.b("EditTextDialog", "onFocusChange:" + paramBoolean);
+    label126:
+    for (int i = 0;; i = 1)
+    {
+      xhe.a("record_decoration_download", xhe.a(i, System.currentTimeMillis() - parambiqn.jdField_a_of_type_Long, parambiqn.d, parambiqn.b, parambiqn.jdField_a_of_type_JavaLangString));
+      return;
+      if (this.a.a(bile.a(this.a).a()) == bile.a(this.a)) {
+        bile.a(this.a, bile.a(this.a));
+      }
+      ThreadManager.getUIHandler().post(new AEBottomListAdapter.4.2(this, parambiqn));
+      break;
+    }
   }
 }
 

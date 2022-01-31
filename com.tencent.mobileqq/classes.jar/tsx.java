@@ -1,8 +1,18 @@
-import android.graphics.SurfaceTexture;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public abstract interface tsx
+final class tsx
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(SurfaceTexture paramSurfaceTexture);
+  tsx(StoryVideoItem paramStoryVideoItem, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    veg.d("Q.qqstory.player.PlayModeUtils", "onClick delete =%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem });
+    svo.a(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

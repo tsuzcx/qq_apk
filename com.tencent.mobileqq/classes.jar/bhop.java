@@ -1,24 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public class bhop
-  implements View.OnClickListener
+public final class bhop
 {
-  public bhop(AdvancedProviderView paramAdvancedProviderView) {}
+  public int a;
+  public Map<String, String> a;
   
-  public void onClick(View paramView)
+  public bhop()
   {
-    paramView = bjim.a().a();
-    if (paramView.size() > 1) {
-      vnd.a(this.a.a, paramView.get(1));
-    }
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public String toString()
+  {
+    return "ctrl:[cmd = " + this.jdField_a_of_type_Int + ", data = " + this.jdField_a_of_type_JavaUtilMap + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhop
  * JD-Core Version:    0.7.0.1
  */

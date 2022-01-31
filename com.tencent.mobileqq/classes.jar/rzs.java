@@ -1,40 +1,22 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1.1.1;
+import com.tencent.viola.core.ViolaEnvironment;
 
 public class rzs
-  extends rzo<WSRedDotPushMsg, WSPushStrategyInfo>
+  implements baxe
 {
-  private int jdField_a_of_type_Int;
-  private Intent jdField_a_of_type_AndroidContentIntent;
+  public rzs(ViolaBaseView.10.1 param1) {}
   
-  public rzs(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
+  public void onInfo(long paramLong, double paramDouble)
   {
-    super(paramWSRedDotPushMsg);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-  }
-  
-  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Int == 2)
+    if (ViolaBaseView.a(this.a.a.a) == 0.0D)
     {
-      sam.a(paramContext, null, 0, null, null, (WSRedDotPushMsg)this.jdField_a_of_type_Rzh, 2);
-      paramWSPushStrategyInfo = sam.a();
-      if ((paramWSPushStrategyInfo != null) && ((paramContext instanceof Activity))) {
-        paramWSPushStrategyInfo.a((Activity)paramContext);
-      }
-      sam.a();
-      bool = true;
+      ViolaBaseView.a(this.a.a.a, paramDouble);
+      ViolaBaseView.a(this.a.a.a).addReportData(ViolaEnvironment.KEY_FRAME_PAGE, String.format("%.2f", new Object[] { Double.valueOf(ViolaBaseView.a(this.a.a.a)) }));
     }
-    while (this.jdField_a_of_type_Int != 6) {
-      return bool;
-    }
-    rww.a((Activity)paramContext, this.jdField_a_of_type_AndroidContentIntent, (WSRedDotPushMsg)this.jdField_a_of_type_Rzh);
-    return true;
+    new Handler().postDelayed(new ViolaBaseView.10.1.1.1(this), 500L);
   }
 }
 

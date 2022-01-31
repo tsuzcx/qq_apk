@@ -1,19 +1,12 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.graphics.Path;
+import java.util.List;
 
 public class adey
-  extends acju
 {
-  public ImageView a;
-  public TextView a;
-  public URLDrawable a;
-  public FlashPicItemBuilder.FlashPicAIOThumbView a;
-  public BubbleImageView a;
+  public int a;
+  public Path a;
+  public List<ades> a;
   public boolean a;
-  public boolean b;
 }
 
 

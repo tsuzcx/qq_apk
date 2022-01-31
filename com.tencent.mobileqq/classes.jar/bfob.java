@@ -1,27 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.util.Pair;
-import cooperation.qqreader.net.BusinessTask;
+import com.tencent.widget.AbsListView;
 
-public final class bfob
+public abstract interface bfob
 {
-  public static final Pair<Integer, Integer> a = new Pair(Integer.valueOf(1154), Integer.valueOf(1));
-  public static final Pair<Integer, Integer> b = new Pair(Integer.valueOf(1201), Integer.valueOf(1));
+  public abstract void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3);
   
-  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull bfmg parambfmg)
-  {
-    a(paramPair, parambfmg, false);
-  }
-  
-  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull bfmg parambfmg, boolean paramBoolean)
-  {
-    paramPair = new BusinessTask("ZzConfigDataTask", paramPair);
-    paramPair.a(parambfmg, paramBoolean);
-    paramPair.a();
-  }
+  public abstract void onScrollStateChanged(AbsListView paramAbsListView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfob
  * JD-Core Version:    0.7.0.1
  */

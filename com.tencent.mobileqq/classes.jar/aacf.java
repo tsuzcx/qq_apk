@@ -1,32 +1,49 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment.UrlNotauthorizedError;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class aacf
-  implements View.OnClickListener
+class aacf
+  extends SimpleObserver<asiu>
 {
-  public aacf(AutoRemarkActivity paramAutoRemarkActivity) {}
+  aacf(aacb paramaacb, aacl paramaacl) {}
   
-  public void onClick(View paramView)
+  public void a(asiu paramasiu)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {}
-    try
+    aacl localaacl = this.jdField_a_of_type_Aacl;
+    if (paramasiu.c == 1) {}
+    for (int i = 2;; i = 3)
     {
-      this.a.a.dismiss();
-      label46:
-      this.a.a = null;
+      localaacl.a(paramasiu, i);
       return;
     }
-    catch (Throwable paramView)
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
+    }
+    int i;
+    if ((paramError instanceof VerifyUrlJobSegment.UrlNotauthorizedError)) {
+      i = 4;
+    }
+    for (;;)
     {
-      break label46;
+      this.jdField_a_of_type_Aacl.a(null, i);
+      return;
+      if ((paramError instanceof AppInfoError)) {
+        i = ((AppInfoError)paramError).type;
+      } else {
+        i = 0;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aacf
  * JD-Core Version:    0.7.0.1
  */

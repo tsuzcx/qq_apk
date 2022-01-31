@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import oox;
+import ozy;
 
 public class BannerInfoModule$3
   implements Runnable

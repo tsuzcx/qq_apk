@@ -1,53 +1,65 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
 
 public class affo
-  extends ajpe
+  extends Dialog
 {
-  public affo(PublicAccountFragment paramPublicAccountFragment) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public affo(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onUnfollowPublicAccount errCode: " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.i();
-    }
+    super(paramContext, 2131755382);
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public affo(Context paramContext, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onUpdateUserFollowList errCode: " + paramInt + " isFinish:" + paramBoolean);
+    super(paramContext, 2131755382);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public View a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
     }
-    if (paramBoolean)
+    return null;
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = LayoutInflater.from(getContext()).inflate(2131561187, null);
+    Object localObject = getWindow();
+    ((Window)localObject).setContentView(paramBundle);
+    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
+    localLayoutParams.width = -2;
+    localLayoutParams.height = -2;
+    localLayoutParams.gravity = 48;
+    localLayoutParams.y += getContext().getResources().getDimensionPixelOffset(2131298939);
+    ((Window)localObject).setAttributes(localLayoutParams);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (PublicAccountFragment.a(this.a))
-      {
-        if (this.a.a != null) {
-          this.a.a.a(this.a.b(), true, null);
-        }
-        PublicAccountFragment.a(this.a, false);
+      localObject = (TextView)paramBundle.findViewById(2131370458);
+      if (localObject != null) {
+        ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
       }
-      this.a.i();
     }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onFollowPublicAccount errCode: " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.i();
-    }
+    this.jdField_a_of_type_AndroidViewView = paramBundle;
+    setCanceledOnTouchOutside(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     affo
  * JD-Core Version:    0.7.0.1
  */

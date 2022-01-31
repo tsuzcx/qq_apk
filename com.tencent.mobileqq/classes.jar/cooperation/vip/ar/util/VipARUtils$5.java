@@ -1,7 +1,7 @@
 package cooperation.vip.ar.util;
 
 import android.text.TextUtils;
-import awqm;
+import axql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Properties;
@@ -22,7 +22,7 @@ public final class VipARUtils$5
       {
         Properties localProperties = new Properties();
         localProperties.put(this.b, this.c);
-        awqm.a(BaseApplicationImpl.getContext()).reportTimeKVEvent(this.jdField_a_of_type_JavaLangString, localProperties, this.jdField_a_of_type_Int);
+        axql.a(BaseApplicationImpl.getContext()).reportTimeKVEvent(this.jdField_a_of_type_JavaLangString, localProperties, this.jdField_a_of_type_Int);
       }
       return;
     }

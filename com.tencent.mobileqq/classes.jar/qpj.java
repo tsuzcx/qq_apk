@@ -1,9 +1,23 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
-public abstract interface qpj
+class qpj
+  extends ajxl
 {
-  public abstract void a(View paramView, ArticleInfo paramArticleInfo, int paramInt);
+  qpj(qpg paramqpg, QQAppInterface paramQQAppInterface) {}
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("VALUE_USER_UIN_TO_GET_NICK_NAME", paramString);
+      localBundle.putString("VALUE_USER_NICK_NAME", bbcl.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, true));
+      QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_GET_NICK_NAME_BY_UIN", localBundle, null);
+    }
+  }
 }
 
 

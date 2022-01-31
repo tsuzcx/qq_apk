@@ -1,31 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.26.1;
 
 public class aesn
-  extends aesj
+  implements Animation.AnimationListener
 {
-  public aesn(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, aesm paramaesm)
+  aesn(aerv paramaerv) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramQQAppInterface, paramContext, paramXListView, paramaesm);
+    aerv.e(this.a).post(new PublicAccountChatPie.26.1(this));
   }
   
-  protected aese a()
-  {
-    return new aesi(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected void a()
-  {
-    super.a();
-    awqx.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
-  }
-  
-  public void b()
-  {
-    super.b();
-    awqx.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

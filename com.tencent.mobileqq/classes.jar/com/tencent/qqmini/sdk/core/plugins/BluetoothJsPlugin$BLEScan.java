@@ -5,7 +5,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothAdapter.LeScanCallback;
 import android.bluetooth.BluetoothDevice;
 import android.os.Handler;
-import bdnw;
+import besl;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -29,7 +29,7 @@ class BluetoothJsPlugin$BLEScan
   
   public void onBluetoothDeviceFound()
   {
-    bdnw.a("BluetoothJsPlugin", "BLEScan.onBluetoothDeviceFound foundDevices size =" + this.foundDevices.size());
+    besl.a("BluetoothJsPlugin", "BLEScan.onBluetoothDeviceFound foundDevices size =" + this.foundDevices.size());
     JSONArray localJSONArray;
     if (this.hasNewDevice)
     {
@@ -56,18 +56,18 @@ class BluetoothJsPlugin$BLEScan
     label128:
     localObject.put("devices", localJSONArray);
     String str = localObject.toString();
-    bdnw.a("BluetoothJsPlugin", "BLEScan.onBluetoothDeviceFound callback data =" + str);
+    besl.a("BluetoothJsPlugin", "BLEScan.onBluetoothDeviceFound callback data =" + str);
     this.this$0.sendSubscribeEvent("onBluetoothDeviceFound", str);
   }
   
   public void onLeScan(BluetoothDevice arg1, int paramInt, byte[] paramArrayOfByte)
   {
-    bdnw.a("BluetoothJsPlugin", "BLEScan.onLeScan device =" + ??? + ",rssi=" + paramInt + ",scanRecord=" + paramArrayOfByte);
+    besl.a("BluetoothJsPlugin", "BLEScan.onLeScan device =" + ??? + ",rssi=" + paramInt + ",scanRecord=" + paramArrayOfByte);
     if ((??? == null) || (paramArrayOfByte == null) || (!this.isDiscovering)) {}
     for (;;)
     {
       return;
-      paramArrayOfByte = BluetoothJsPlugin.access$500(this.this$0, ???, paramInt, paramArrayOfByte);
+      paramArrayOfByte = BluetoothJsPlugin.access$600(this.this$0, ???, paramInt, paramArrayOfByte);
       if (paramArrayOfByte == null) {
         continue;
       }
@@ -83,10 +83,10 @@ class BluetoothJsPlugin$BLEScan
           if (!this.hasNewDevice) {
             break;
           }
-          synchronized (BluetoothJsPlugin.access$600(this.this$0))
+          synchronized (BluetoothJsPlugin.access$700(this.this$0))
           {
-            if (!BluetoothJsPlugin.access$600(this.this$0).containsKey(paramArrayOfByte.mDevicesId)) {
-              BluetoothJsPlugin.access$600(this.this$0).put(paramArrayOfByte.mDevicesId, paramArrayOfByte);
+            if (!BluetoothJsPlugin.access$700(this.this$0).containsKey(paramArrayOfByte.mDevicesId)) {
+              BluetoothJsPlugin.access$700(this.this$0).put(paramArrayOfByte.mDevicesId, paramArrayOfByte);
             }
             return;
           }
@@ -106,15 +106,15 @@ class BluetoothJsPlugin$BLEScan
   
   public boolean startDiscovery(BluetoothAdapter paramBluetoothAdapter, UUID[] paramArrayOfUUID, boolean paramBoolean, long paramLong)
   {
-    bdnw.a("BluetoothJsPlugin", "BLEScan.startDiscovery serviceUUID=" + paramArrayOfUUID + ",allowDuplicatesKey=" + paramBoolean + ",timeout=" + paramLong);
+    besl.a("BluetoothJsPlugin", "BLEScan.startDiscovery serviceUUID=" + paramArrayOfUUID + ",allowDuplicatesKey=" + paramBoolean + ",timeout=" + paramLong);
     boolean bool;
     if ((this.isDiscovering) || (paramBluetoothAdapter == null))
     {
       bool = false;
       return bool;
     }
-    BluetoothJsPlugin.access$300(this.this$0).removeMessages(2);
-    BluetoothJsPlugin.access$300(this.this$0).removeMessages(1);
+    BluetoothJsPlugin.access$400(this.this$0).removeMessages(2);
+    BluetoothJsPlugin.access$400(this.this$0).removeMessages(1);
     for (;;)
     {
       synchronized (this.foundDevices)
@@ -130,9 +130,9 @@ class BluetoothJsPlugin$BLEScan
             break;
           }
           this.isDiscovering = true;
-          BluetoothJsPlugin.access$400(this.this$0);
-          BluetoothJsPlugin.access$300(this.this$0).sendEmptyMessageDelayed(1, 15000L);
-          BluetoothJsPlugin.access$300(this.this$0).sendEmptyMessageDelayed(2, this.mInterval);
+          BluetoothJsPlugin.access$500(this.this$0);
+          BluetoothJsPlugin.access$400(this.this$0).sendEmptyMessageDelayed(1, 15000L);
+          BluetoothJsPlugin.access$400(this.this$0).sendEmptyMessageDelayed(2, this.mInterval);
           return paramBoolean;
         }
       }
@@ -142,17 +142,17 @@ class BluetoothJsPlugin$BLEScan
   
   public void stopDiscovery(String arg1)
   {
-    bdnw.a("BluetoothJsPlugin", "BLEScan.stopDiscovery......from=" + ???);
-    BluetoothJsPlugin.access$300(this.this$0).removeMessages(1);
-    BluetoothJsPlugin.access$300(this.this$0).removeMessages(2);
-    if (BluetoothJsPlugin.access$000(this.this$0) != null) {
-      BluetoothJsPlugin.access$000(this.this$0).stopLeScan(this);
+    besl.a("BluetoothJsPlugin", "BLEScan.stopDiscovery......from=" + ???);
+    BluetoothJsPlugin.access$400(this.this$0).removeMessages(1);
+    BluetoothJsPlugin.access$400(this.this$0).removeMessages(2);
+    if (BluetoothJsPlugin.access$100(this.this$0) != null) {
+      BluetoothJsPlugin.access$100(this.this$0).stopLeScan(this);
     }
     synchronized (this.foundDevices)
     {
       this.foundDevices.clear();
       this.isDiscovering = false;
-      BluetoothJsPlugin.access$400(this.this$0);
+      BluetoothJsPlugin.access$500(this.this$0);
       return;
     }
   }

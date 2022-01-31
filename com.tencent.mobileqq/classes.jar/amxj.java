@@ -1,129 +1,98 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public final class amxj
+public class amxj
+  extends ampb<amxh>
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private final WebViewPlugin jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public amxj(WebViewPlugin paramWebViewPlugin)
+  public static amxh a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin = paramWebViewPlugin;
+    amxh localamxh2 = (amxh)ampm.a().a(583);
+    amxh localamxh1 = localamxh2;
+    if (localamxh2 == null) {
+      localamxh1 = new amxh();
+    }
+    return localamxh1;
   }
   
-  private AppActivity a()
+  public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null)
-    {
-      localObject = null;
-      if (localObject != null) {
-        break label38;
-      }
+    return 583;
+  }
+  
+  @NonNull
+  public amxh a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ExtendFriendBannerProcessor", 2, "migrateOldOrDefaultContent ");
     }
-    label38:
-    for (Object localObject = null;; localObject = ((bbac)localObject).a())
-    {
-      if (!(localObject instanceof AppActivity)) {
-        break label46;
-      }
-      return (AppActivity)localObject;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime;
-      break;
+    return new amxh();
+  }
+  
+  @Nullable
+  public amxh a(ampi[] paramArrayOfampi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendBannerProcessor", 2, "onParsed start");
     }
-    label46:
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ExtendFriendBannerProcessor", 2, "onParsed " + paramArrayOfampi.length);
+      }
+      return amxh.a(paramArrayOfampi[0]);
+    }
     return null;
   }
   
-  private void a(boolean paramBoolean, int paramInt)
+  public Class<amxh> a()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
-    Object localObject1;
-    if (!TextUtils.isEmpty(str)) {
-      localObject1 = "";
+    return amxh.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ExtendFriendBannerProcessor", 2, "onReqFailed " + paramInt);
     }
-    try
+  }
+  
+  public void a(amxh paramamxh)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      Object localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("granted", paramBoolean);
-      ((JSONObject)localObject2).put("errorCode", paramInt);
-      ((JSONObject)localObject2).put("cmd", "onPermissionResult");
-      localObject2 = ((JSONObject)localObject2).toString();
-      localObject1 = localObject2;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("CameraHelper", 1, "onPermissionResult error", localJSONException);
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramamxh == null) {
+        break label43;
       }
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(str, new String[] { localObject1 });
-    }
-  }
-  
-  private boolean a()
-  {
-    AppActivity localAppActivity = a();
-    return (Build.VERSION.SDK_INT < 23) || (localAppActivity == null) || (localAppActivity.checkSelfPermission("android.permission.CAMERA") == 0);
-  }
-  
-  private void b()
-  {
-    AppActivity localAppActivity = a();
-    if (localAppActivity == null) {
+    label43:
+    for (paramamxh = paramamxh.toString();; paramamxh = " empty")
+    {
+      QLog.d("ExtendFriendBannerProcessor", 2, paramamxh);
       return;
     }
-    localAppActivity.requestPermissions(new amxk(this), 1819, new String[] { "android.permission.CAMERA" });
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new amxl(this, Looper.getMainLooper());
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 10000L);
   }
   
-  private void c()
+  public int b()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    }
+    return 0;
   }
   
-  public void a()
+  public boolean b()
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    c();
-    this.jdField_a_of_type_AndroidOsHandler = null;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("CameraHelper", 1, "checkPermission failed, callback is invalid.");
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) {
-      return false;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (a())
-    {
-      a(true, 0);
-      return true;
-    }
-    b();
     return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amxj
  * JD-Core Version:    0.7.0.1
  */

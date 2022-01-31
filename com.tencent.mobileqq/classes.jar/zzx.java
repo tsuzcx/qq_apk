@@ -1,33 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class zzx
-  implements DialogInterface.OnClickListener
+public abstract class zzx
 {
-  public zzx(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public long a;
+  public String a;
+  public ConcurrentHashMap<Integer, Long> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public zzx()
   {
-    QLog.e("vip_ptt.AssistantSettingActivity", 1, "click pay for auto ptt");
-    paramDialogInterface = amir.c();
-    if (TextUtils.isEmpty(paramDialogInterface.a)) {
-      bahl.a(this.a, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&type=!svip&aid=mvip.n.a.zdzwz");
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_Long = 9223372036854775807L;
+  }
+  
+  public abstract void a();
+  
+  public void a(int paramInt, long paramLong)
+  {
+    long l = paramLong;
+    if (paramLong != 9223372036854775807L) {
+      l = paramLong + (System.currentTimeMillis() - this.jdField_a_of_type_Long);
     }
-    for (;;)
-    {
-      this.a.b();
-      return;
-      paramDialogInterface = paramDialogInterface.a.replace("{aid}", "mvip.n.a.zdzwz");
-      bahl.a(this.a, paramDialogInterface);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), Long.valueOf(l));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    Long localLong = (Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.i("MagnifierSDK", 2, "canReportWith validTime" + localLong + getClass().getSimpleName());
     }
+    if (localLong != null) {
+      return System.currentTimeMillis() - this.jdField_a_of_type_Long < localLong.longValue();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zzx
  * JD-Core Version:    0.7.0.1
  */

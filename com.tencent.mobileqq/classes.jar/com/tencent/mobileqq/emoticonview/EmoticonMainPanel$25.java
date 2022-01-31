@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emoticonview;
 
-import ance;
-import ancg;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import ansp;
+import ansr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -20,15 +20,15 @@ class EmoticonMainPanel$25
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      ancg localancg = (ancg)this.this$0.a.getManager(149);
-      List localList1 = localancg.a();
-      if ((localList1 != null) && (localList1.size() > ance.a))
+      ansr localansr = (ansr)this.this$0.a.getManager(149);
+      List localList1 = localansr.a();
+      if ((localList1 != null) && (localList1.size() > ansp.a))
       {
-        List localList2 = localList1.subList(0, localList1.size() - ance.a);
+        List localList2 = localList1.subList(0, localList1.size() - ansp.a);
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonMainPanel", 2, "delListOverflow=" + localList2.toString() + "emolist.size=" + localList1.size());
         }
-        localancg.b(localList2);
+        localansr.b(localList2);
         this.this$0.p();
       }
       this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("local_overflow" + this.jdField_a_of_type_JavaLangString, true).apply();

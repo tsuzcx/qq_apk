@@ -1,104 +1,22 @@
-import android.text.Editable.Factory;
-import android.text.SpannableStringBuilder;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.12.1;
 
 public class axjt
-  extends SpannableStringBuilder
+  implements adnz
 {
-  public static Editable.Factory a;
-  private int a;
+  axjt(axjq paramaxjq) {}
   
-  static
+  public void a()
   {
-    jdField_a_of_type_AndroidTextEditable$Factory = new axju();
-  }
-  
-  public axjt(CharSequence paramCharSequence, int paramInt)
-  {
-    super(a(paramCharSequence, paramInt));
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private static CharSequence a(CharSequence paramCharSequence, int paramInt)
-  {
-    if ((paramCharSequence instanceof axjq)) {
-      return ((axjq)paramCharSequence).a();
+    if (axjq.a(this.a) == null) {
+      axjq.a(this.a, new Handler());
     }
-    return new axjq(paramCharSequence, paramInt).a();
-  }
-  
-  public SpannableStringBuilder replace(int paramInt1, int paramInt2, CharSequence paramCharSequence, int paramInt3, int paramInt4)
-  {
-    if (paramInt1 < 0) {
-      j = 0;
-    }
-    for (;;)
-    {
-      try
-      {
-        k = length();
-        if (paramInt2 > k)
-        {
-          paramInt1 = k;
-          paramInt2 = paramInt1;
-          if (paramInt1 < 0) {
-            i = paramInt1;
-          }
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        int k;
-        Object localObject;
-        QLog.e("ColorNick.EmoticonBuilder", 1, "QQTextBuilder.replace caused crash..text:" + toString() + ", replace text:" + paramCharSequence + " , " + j + "-" + paramInt2 + " , " + paramInt3 + "-" + paramInt4, localThrowable1);
-        return new SpannableStringBuilder();
-      }
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          break label255;
-        }
-        i = paramInt1;
-        QLog.w("ColorNick.EmoticonBuilder", 2, "selection error, start = " + j + " end = " + paramInt1 + " length = " + k);
-      }
-      catch (Throwable localThrowable2)
-      {
-        paramInt2 = i;
-        continue;
-        continue;
-        paramInt2 = 0;
-        continue;
-      }
-      i = paramInt2;
-      if (paramCharSequence.length() <= 0) {
-        break label252;
-      }
-      i = paramInt2;
-      localObject = new axjq(paramCharSequence, this.jdField_a_of_type_Int).a();
-      paramCharSequence = (CharSequence)localObject;
-      try
-      {
-        localObject = super.replace(j, paramInt2, paramCharSequence, paramInt3, paramInt4);
-        return localObject;
-      }
-      catch (Throwable localThrowable3)
-      {
-        continue;
-      }
-      j = paramInt1;
-      continue;
-      paramInt1 = paramInt2;
-    }
-  }
-  
-  public CharSequence subSequence(int paramInt1, int paramInt2)
-  {
-    return super.subSequence(paramInt1, paramInt2);
+    axjq.a(this.a).postDelayed(new RedBagVideoManager.12.1(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axjt
  * JD-Core Version:    0.7.0.1
  */

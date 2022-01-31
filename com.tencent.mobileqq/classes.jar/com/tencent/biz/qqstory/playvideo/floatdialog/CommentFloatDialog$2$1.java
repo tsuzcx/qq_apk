@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.playvideo.floatdialog;
 
-import tla;
-import tlc;
+import txw;
+import txy;
 
 public class CommentFloatDialog$2$1
   implements Runnable
 {
-  public CommentFloatDialog$2$1(tlc paramtlc) {}
+  public CommentFloatDialog$2$1(txy paramtxy) {}
   
   public void run()
   {

@@ -1,16 +1,15 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagConfig.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class meb
-  extends kvw
+  implements DialogInterface.OnDismissListener
 {
-  meb(mdz parammdz) {}
+  public meb(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  protected void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ThreadManager.post(new AVRedBagConfig.2.1(this), 10, null, true);
-    this.a.a.b(this);
+    this.a.b();
   }
 }
 

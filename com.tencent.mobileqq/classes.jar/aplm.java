@@ -1,31 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class aplm
-  implements View.OnClickListener
+  extends aowe
 {
-  aplm(apll paramapll) {}
+  aplm(apll paramapll, apab paramapab) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg == null) {
-      return;
+    QLog.i("VideoForC2C<QFile>", 2, "[" + this.jdField_a_of_type_Apll.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "],[getOnlinePlay]  ID[" + paramLong2 + "]onUpdateGetOfflineDownloadInfo");
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_Apll.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5)) && (!TextUtils.isEmpty(paramString6))) {
+      this.jdField_a_of_type_Apll.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 = paramString6;
     }
-    paramView = this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl.trim();
-    if (QLog.isColorLevel()) {
-      QLog.e("ForwardOption.ForwardSdkBaseOption", 2, "gotoWeb " + paramView);
-    }
-    Intent localIntent = new Intent(this.a.a.jdField_a_of_type_AndroidAppActivity, QQBrowserDelegationActivity.class);
-    localIntent.putExtra("param_force_internal_browser", true);
-    localIntent.putExtra("reqType", 7);
-    localIntent.putExtra("hide_more_button", true);
-    localIntent.putExtra("url", paramView);
-    acgk.a(this.a.a.jdField_a_of_type_AndroidAppActivity, localIntent, paramView);
-    this.a.a.D();
+    apue.a(this.jdField_a_of_type_Apll.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_Apll.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new apln(this, paramLong1, paramBoolean, paramString3, paramString2, paramShort, paramString4));
   }
 }
 

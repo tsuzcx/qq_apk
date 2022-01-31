@@ -1,30 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
 
-class sag
-  extends bfzr
+public class sag
+  implements View.OnClickListener
 {
-  sag(saf paramsaf) {}
+  public sag(ViolaLazyFragment paramViolaLazyFragment) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    saf.a = 1;
-    saf.a(this.a);
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallBegin  STATE_PRELOAD_BEGIN sPreloadPluginState = " + saf.a);
-  }
-  
-  public void a(String paramString, float paramFloat, long paramLong) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    saf.a = -1;
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallError  STATE_PRELOAD_ERR sPreloadPluginState = " + saf.a);
-  }
-  
-  public void b(String paramString)
-  {
-    saf.a = 2;
-    saf.a(this.a);
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallFinish  STATE_PRELOAD_FINISH sPreloadPluginState = " + saf.a);
+    this.a.c();
   }
 }
 

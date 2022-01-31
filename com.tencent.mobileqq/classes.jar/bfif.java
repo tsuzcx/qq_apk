@@ -1,20 +1,20 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.net.Uri;
+import android.util.Pair;
 
-public abstract interface bfif
+final class bfif
+  implements bfig
 {
-  public abstract int delete(Uri paramUri, String paramString, String[] paramArrayOfString);
-  
-  public abstract Uri insert(Uri paramUri, ContentValues paramContentValues);
-  
-  public abstract Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2);
-  
-  public abstract int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString);
+  public Pair<String, String> a(String paramString)
+  {
+    int i = paramString.indexOf(':');
+    if ((i <= 0) || (i >= paramString.length())) {
+      return null;
+    }
+    return new Pair(paramString.substring(0, i).trim(), paramString.substring(i + 1).trim());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfif
  * JD-Core Version:    0.7.0.1
  */

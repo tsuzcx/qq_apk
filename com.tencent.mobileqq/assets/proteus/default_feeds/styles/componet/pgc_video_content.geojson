@@ -1,0 +1,182 @@
+{
+  "view_type": "UIView",
+  "layout_type": "layout_relative",
+  "view_id": "id_pgc_video_content",
+  "height": {
+    "type": "relative",
+    "value": "195"
+  },
+  "width": {
+    "type": "relative",
+    "value": "375"
+  },
+  "visible_depend_on_children": "YES",
+  "subviews": [
+    {
+      "view_type": "ReadInJoyVideoView",
+      "view_id": "id_pgc_short_content_video_view",
+      "event_type": "pgc_video_jump_url",
+      "height": {
+        "type": "relative",
+        "value": "195"
+      },
+      "width": {
+        "type": "relative",
+        "value": "351"
+      },
+      "margin_left": "12",
+      "attributes": {
+        "setVideoId:busiType:": ["$pgc_video_content_vid", "$pgc_video_content_busitype"],
+        "setCoverImageUrl:": "$pgc_video_content_cover",
+        "setPlayMode:" : "1",
+        "setShouldRepeat:": "NO",
+        "setVideoScaleType:": "2",
+        "setPlayIconUrl:": "http://qqpublic.qpic.cn/qq_public/0/0-2652434506-F059E11DBA4D14791005FEBF4164D972/0",
+        "setPlayIconWidth:height:": ["50", "50"],
+        "setPlayIconVisible:": "YES",
+        "setAttachInfo:": "$pgc_video_content_jump"
+      },
+      "data_attributes": {
+        "setLocalInfo:": {
+          "click_area": "11"
+        }
+      }
+    },
+    {
+      "view_type": "UIView",
+      "view_id": "id_pgc_float_contain",
+      "visible_depend_on_children": "YES",
+      "layout_type": "layout_relative",
+      "height": {
+        "type": "match_parent"
+      },
+      "width": {
+        "type": "match_parent"
+      },
+      "margin_left": "12",
+      "margin_right": "12",
+      "subviews": [
+        {
+          "view_type": "UIView",
+          "view_id": "id_upper_cover",
+          "visible_depend_on_brother": "id_pgc_short_content_video_title",
+          "height": {
+            "type": "relative",
+            "value": "90"
+          },
+          "width": {
+            "type": "match_parent"
+          },
+          "attributes": {
+            "setGradientWithStartAlpha:endAlpha:color:direction:": [
+              "0.6",
+              "0",
+              "#000000",
+              "1"
+            ]
+          }
+        },
+        {
+          "view_type": "UIView",
+          "view_id": "id_down_cover",
+          "margin_bottom": "0",
+          "align_parent_bottom": "YES",
+          "visible_depend_on_brother": "id_pgc_short_content_video_title",
+          "height": {
+            "type": "relative",
+            "value": "55"
+          },
+          "width": {
+            "type": "match_parent"
+          },
+          "attributes": {
+            "setGradientWithStartAlpha:endAlpha:color:direction:": [
+              "0",
+              "0.6",
+              "#000000",
+              "1"
+            ]
+          }
+        },
+        {
+          "view_type": "UILabel",
+          "view_id": "id_pgc_short_content_video_title",
+          "height": {
+            "type": "wrap_content"
+          },
+          "width": {
+            "type": "relative",
+            "value": "375"
+          },
+          "default_visible": "NO",
+          "margin_left": "8",
+          "margin_right": "8",
+          "margin_top": "8",
+          "attributes": {
+            "setText:": "$pgc_video_content_title",
+            "setTextColorString:": "#FFFFFFFF",
+            "setBoldFontSizeString:": "16",
+            "setNumberOfLinesString:":"2"
+          }
+        },
+        {
+          "view_type": "UILabel",
+          "view_id": "id_pgc_short_content_video_play_count",
+          "height": {
+            "type": "wrap_content"
+          },
+          "width": {
+            "type": "wrap_content"
+          },
+          "margin_left": "8",
+          "margin_right": "8",
+          "margin_top": "4",
+          "below_of_view": "id_pgc_short_content_video_title",
+          "attributes": {
+            "setText:": "$pgc_video_content_play_count",
+            "setTextColorString:": "#FFFFFFFF",
+            "setFontSizeString:": "12"
+          }
+        },
+        {
+          "view_type": "UILabel",
+          "view_id": "id_pgc_short_content_video_duration",
+          "height": {
+            "type": "wrap_content"
+          },
+          "width": {
+            "type": "wrap_content"
+          },
+          "margin_right":"8",
+          "margin_bottom":"8",
+          "align_parent_right":"YES",
+          "align_parent_bottom":"YES",
+          "attributes": {
+            "setText:": "$pgc_video_content_duration",
+            "setTextColorString:": "#FFFFFFFF",
+            "setFontSizeString:": "12"
+          }
+        }
+      ]
+    },
+    {
+      "view_type": "UIImageView",
+      "view_id": "id_pgc_short_content_video_audio_icon",
+      "event_type": "pgc_video_content_audio_click",
+      "height": {
+        "type": "relative",
+        "value": "20"
+      },
+      "width": {
+        "type": "relative",
+        "value": "20"
+      },
+      "align_parent_bottom": "YES",
+      "margin_left": "22",
+      "margin_bottom": "8",
+      "attributes": {
+        "loadImageWithPath:": "$pgc_video_content_audio_icon"
+      }
+    }
+  ]
+}

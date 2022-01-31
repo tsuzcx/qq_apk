@@ -1,25 +1,19 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
 class oip
-  implements Animation.AnimationListener
+  extends ojq
 {
-  oip(oio paramoio) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  oip(oio paramoio)
   {
-    this.a.a.clearAnimation();
-    this.a.a.setVisibility(8);
+    super(paramoio, null);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  void a(ojt paramojt)
+  {
+    paramojt.onCommentListLoad(1, true, this.a.a(), oio.a(this.a), 3, 3);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oip
  * JD-Core Version:    0.7.0.1
  */

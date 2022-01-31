@@ -1,44 +1,38 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.CommunityConfigInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.OnCommunityItemListener.1;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class roj
-  extends akih
+public class roj
+  implements View.OnClickListener
 {
-  roj(rog paramrog, rof paramrof) {}
+  public int a;
   
-  public int a()
-  {
-    return 5;
-  }
+  private roj(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
   
-  public void a(Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeedAdapter", 2, "unfollow success");
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    String str;
+    if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.a.size())
+    {
+      CommunityConfigInfo localCommunityConfigInfo = (CommunityConfigInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.a.get(this.jdField_a_of_type_Int);
+      str = localCommunityConfigInfo.jumpUrl;
+      paramView.postDelayed(new ReadInJoyDiandianHeaderController.OnCommunityItemListener.1(this, paramView), 300L);
+      noo.a(null, "", "0X8009B9F", "0X8009B9F", 0, 0, localQQAppInterface.getCurrentAccountUin(), localCommunityConfigInfo.bid + "", this.jdField_a_of_type_Int + 1 + "", "", false);
     }
-    rog.b(this.jdField_a_of_type_Rog, this.jdField_a_of_type_Rof);
-    StructLongMessageDownloadProcessor.a(rog.a(this.jdField_a_of_type_Rog), this.jdField_a_of_type_Rof.a);
-    ((azhx)rog.a(this.jdField_a_of_type_Rog).getManager(132)).a(this.jdField_a_of_type_Rof.a);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeedAdapter", 2, "do unfollow->uin:" + this.jdField_a_of_type_Rof.a + ", success:" + String.valueOf(paramBoolean));
-    }
-    if ((rog.a(this.jdField_a_of_type_Rog) != null) && (rog.a(this.jdField_a_of_type_Rog).isResume())) {
-      rog.a(this.jdField_a_of_type_Rog).b(false);
+    for (;;)
+    {
+      onk.a(paramView.getContext(), str);
+      return;
+      str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.d;
+      noo.a(null, "", "0X8009BA3", "0X8009BA3", 0, 0, localQQAppInterface.getCurrentAccountUin(), "", "", "", false);
     }
   }
-  
-  public void b(Object paramObject)
-  {
-    rog.a(this.jdField_a_of_type_Rog);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

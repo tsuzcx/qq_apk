@@ -1,20 +1,17 @@
-import android.database.DataSetObserver;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import android.view.View.OnClickListener;
 
-public class pun
-  extends DataSetObserver
+class pun
+  implements View.OnClickListener
 {
-  public pun(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  pun(pum parampum) {}
   
-  public void onChanged()
+  public void onClick(View paramView)
   {
-    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
-    {
-      ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(0);
-      return;
+    paramView = this.a.jdField_a_of_type_Rap.a();
+    if (paramView != null) {
+      paramView.a(null, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-    ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(8);
   }
 }
 

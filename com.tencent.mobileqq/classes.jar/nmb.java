@@ -1,20 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class nmb
-  extends qix
+class nmb
+  implements bfot
 {
-  public nmb(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  nmb(nma paramnma) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public void ak_()
   {
-    if (!paramBoolean1) {
-      ReadInJoyVideoSubChannelActivity.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeAdDislikeHelper", 2, "onDismissOperations");
     }
-    while (!ReadInJoyVideoSubChannelActivity.a(this.a)) {
-      return;
-    }
-    ReadInJoyVideoSubChannelActivity.a(this.a).c();
-    ReadInJoyVideoSubChannelActivity.a(this.a, false);
   }
 }
 

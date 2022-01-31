@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.magicface.drawable;
 
-import adjt;
-import anjd;
-import anla;
-import arga;
-import argd;
-import argg;
-import arnz;
-import batm;
-import batr;
+import aduu;
+import anzm;
+import aobk;
+import ascc;
+import ascf;
+import asci;
+import askd;
+import bbwg;
+import bbwl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
@@ -22,15 +22,15 @@ import java.util.Map;
 public class PngFrameManager$4
   implements Runnable
 {
-  public PngFrameManager$4(arga paramarga, argg paramargg) {}
+  public PngFrameManager$4(ascc paramascc, asci paramasci) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("PngFrameManager", 2, "func showPngFrame, zip NOT exist, download from Server.");
     }
-    Object localObject3 = (arnz)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
-    Object localObject2 = ((arnz)localObject3).a(this.a.jdField_a_of_type_JavaLangString);
+    Object localObject3 = (askd)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
+    Object localObject2 = ((askd)localObject3).a(this.a.jdField_a_of_type_JavaLangString);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -39,21 +39,21 @@ public class PngFrameManager$4
       ((EmoticonPackage)localObject1).aio = true;
     }
     ((EmoticonPackage)localObject1).rscType = 1;
-    ((arnz)localObject3).a((EmoticonPackage)localObject1);
-    String str = this.a.jdField_a_of_type_Adjt.a.a.eId;
-    localObject2 = anjd.f.replace("[eIdSub]", str.substring(0, 2)).replace("[eId]", str);
-    localObject1 = anjd.s.replace("[epId]", this.a.jdField_a_of_type_JavaLangString).replace("[eId]", str);
-    localObject3 = anjd.j.replace("[eIdSub]", str.substring(0, 2)).replace("[eId]", str).replace("[width]", "200").replace("[height]", "200");
-    str = anjd.q.replace("[epId]", this.a.jdField_a_of_type_JavaLangString).replace("[eId]", str);
+    ((askd)localObject3).a((EmoticonPackage)localObject1);
+    String str = this.a.jdField_a_of_type_Aduu.a.a.eId;
+    localObject2 = anzm.f.replace("[eIdSub]", str.substring(0, 2)).replace("[eId]", str);
+    localObject1 = anzm.s.replace("[epId]", this.a.jdField_a_of_type_JavaLangString).replace("[eId]", str);
+    localObject3 = anzm.j.replace("[eIdSub]", str.substring(0, 2)).replace("[eId]", str).replace("[width]", "200").replace("[height]", "200");
+    str = anzm.q.replace("[epId]", this.a.jdField_a_of_type_JavaLangString).replace("[eId]", str);
     ArrayList localArrayList = new ArrayList();
     HashMap localHashMap = new HashMap();
     localArrayList.add(localObject2);
     localHashMap.put(localObject2, new File((String)localObject1));
     localArrayList.add(localObject3);
     localHashMap.put(localObject3, new File(str));
-    localObject2 = new batm(localArrayList, localHashMap, "random_magicface_" + this.a.jdField_a_of_type_JavaLangString);
-    ((batm)localObject2).n = true;
-    this.this$0.jdField_a_of_type_Batr.a((batm)localObject2, new argd(this, (String)localObject1), null);
+    localObject2 = new bbwg(localArrayList, localHashMap, "random_magicface_" + this.a.jdField_a_of_type_JavaLangString);
+    ((bbwg)localObject2).n = true;
+    this.this$0.jdField_a_of_type_Bbwl.a((bbwg)localObject2, new ascf(this, (String)localObject1), null);
   }
 }
 

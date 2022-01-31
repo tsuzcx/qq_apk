@@ -1,150 +1,175 @@
-import android.content.Context;
-import android.os.Handler;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.util.ADFeedsVideoAppDownlodManager.1;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlResult;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.UnsupportedEncodingException;
 
 public class naw
-  extends nav
 {
-  private ListView a;
-  
-  public naw(Context paramContext, boolean paramBoolean, ReadInJoyListViewGroup paramReadInJoyListViewGroup, qoe paramqoe)
+  public static int a(String paramString)
   {
-    super(paramContext);
-    this.jdField_a_of_type_ComTencentWidgetListView = paramReadInJoyListViewGroup.a();
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo, int paramInt)
-  {
-    super.a(paramDownloadInfo, paramInt);
-    try
+    int j = 0;
+    if (paramString == null) {
+      return 0;
+    }
+    paramString = paramString.toCharArray();
+    int i = 0;
+    while (j < paramString.length)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        pxh localpxh = (pxh)localIterator.next();
-        if ((localpxh.d != null) && (localpxh.d.equals(paramDownloadInfo.e)) && (localpxh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null))
-        {
-          localpxh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.downloadState = paramInt;
-          localpxh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.progress = paramDownloadInfo.f;
-          a(localpxh, paramInt, paramDownloadInfo.f);
-        }
+      int k = i + 1;
+      i = k;
+      if (!a(paramString[j])) {
+        i = k + 1;
       }
-      return;
+      j += 1;
     }
-    catch (Exception paramDownloadInfo)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ADFeedsVideoAppDownlodManager", 2, "notifyState error " + paramDownloadInfo.getMessage());
-    }
+    return i;
   }
   
-  public void a(WadlResult paramWadlResult, int paramInt)
+  public static final int a(String paramString1, String paramString2)
   {
-    super.a(paramWadlResult, paramInt);
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        pxh localpxh = (pxh)localIterator.next();
-        if ((localpxh.d != null) && (localpxh.jdField_a_of_type_JavaLangString.equals(paramWadlResult.a.jdField_a_of_type_JavaLangString)) && (localpxh.d.equals(paramWadlResult.a.j)) && (localpxh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null))
-        {
-          localpxh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.downloadState = paramInt;
-          localpxh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.progress = paramWadlResult.d;
-          if (!TextUtils.isEmpty(paramWadlResult.b)) {
-            localpxh.i = paramWadlResult.b;
-          }
-          a(localpxh, paramInt, paramWadlResult.d);
-        }
-      }
-      return;
+    if (TextUtils.isEmpty(paramString1)) {
+      return 0;
     }
-    catch (Exception paramWadlResult)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ADFeedsVideoAppDownlodManager", 2, "notifyState error " + paramWadlResult.getMessage());
-    }
-  }
-  
-  public void a(pxh parampxh, int paramInt1, int paramInt2)
-  {
-    super.a(parampxh, paramInt1, paramInt2);
-    if ((parampxh == null) || (parampxh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null)) {}
-    label297:
-    label347:
+    if (!TextUtils.isEmpty(paramString2)) {}
     for (;;)
     {
-      return;
-      int i = 0;
+      try
+      {
+        int i = paramString1.getBytes(paramString2).length;
+        return i;
+      }
+      catch (UnsupportedEncodingException paramString2)
+      {
+        return paramString1.length() * 3;
+      }
+      paramString2 = "UTF-8";
+    }
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    int k = 0;
+    for (;;)
+    {
+      int i;
+      int j;
+      try
+      {
+        paramString = paramString.getBytes("Unicode");
+        i = 2;
+        if ((i >= paramString.length) || (k >= paramInt)) {
+          break label92;
+        }
+        if (i % 2 != 1) {
+          break label75;
+        }
+        j = k + 1;
+      }
+      catch (UnsupportedEncodingException paramString)
+      {
+        return "";
+      }
+      paramString = new String(paramString, 0, paramInt, "Unicode");
+      return paramString;
+      paramInt = i + 1;
+      continue;
       for (;;)
       {
-        if (i >= this.jdField_a_of_type_ComTencentWidgetListView.getChildCount()) {
-          break label347;
+        i += 1;
+        k = j;
+        break;
+        label75:
+        j = k;
+        if (paramString[i] != 0) {
+          j = k + 1;
         }
-        View localView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i);
-        Object localObject = localView.getTag(2131313373);
-        if ((localObject != null) && ((localObject instanceof oqh)) && (((oqh)localObject).a() != null) && ((((oqh)localObject).a() instanceof AdvertisementInfo)))
+      }
+      label92:
+      paramInt = i;
+      if (i % 2 == 1) {
+        if (paramString[(i - 1)] != 0) {
+          paramInt = i - 1;
+        }
+      }
+    }
+  }
+  
+  public static String a(String paramString1, int paramInt, String paramString2)
+  {
+    if (a(paramString1) < paramInt) {
+      return paramString1;
+    }
+    return a(paramString1, paramInt) + paramString2;
+  }
+  
+  public static final String a(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    if (TextUtils.isEmpty(paramString1))
+    {
+      paramString2 = "";
+      return paramString2;
+    }
+    if (!TextUtils.isEmpty(paramString2)) {}
+    for (String str = paramString2;; str = "UTF-8")
+    {
+      paramString2 = paramString1;
+      if (a(paramString1, str) <= paramInt) {
+        break;
+      }
+      int i = 0;
+      int j = 0;
+      for (;;)
+      {
+        paramString2 = paramString1;
+        if (i >= paramString1.length()) {
+          break;
+        }
+        int k = a(paramString1.substring(i, i + 1), str);
+        if (j + k > paramInt)
         {
-          AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)((oqh)localObject).a();
-          String str = "";
-          localObject = "";
-          for (;;)
-          {
-            try
-            {
-              if (npj.a(localAdvertisementInfo) != 2) {
-                break label297;
-              }
-              str = new JSONObject(localAdvertisementInfo.mAdExtInfo).optString("game_app_id");
-              localObject = npj.b(localAdvertisementInfo);
-              if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty((CharSequence)localObject)) || (!str.equals(parampxh.jdField_a_of_type_JavaLangString)) || (!((String)localObject).equals(parampxh.d)) || (!(localView instanceof ProteusItemView))) {
-                break;
-              }
-              localAdvertisementInfo.progress = parampxh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.progress;
-              localAdvertisementInfo.downloadState = parampxh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.downloadState;
-              parampxh = ((ProteusItemView)localView).a().getVirtualView().findViewBaseByName("id_view_AdDownloadView");
-              this.b.post(new ADFeedsVideoAppDownlodManager.1(this, parampxh, paramInt1, paramInt2));
-              return;
-            }
-            catch (JSONException parampxh) {}
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            parampxh.printStackTrace();
-            QLog.d("ADFeedsVideoAppDownlodManager", 1, "updateUIState exception :" + parampxh.toString());
-            return;
-            if (localAdvertisementInfo.mAdExt != null)
-            {
-              localObject = new JSONObject(localAdvertisementInfo.mAdExt);
-              str = ((JSONObject)localObject).optString("appid");
-              localObject = ((JSONObject)localObject).optString("pkg_name");
-            }
+          paramString2 = paramString1.substring(0, i);
+          paramString1 = paramString2;
+          if (!TextUtils.isEmpty(paramString3)) {
+            paramString1 = paramString2 + paramString3;
           }
+          return paramString1;
         }
+        j += k;
         i += 1;
       }
     }
   }
+  
+  public static String a(byte[] paramArrayOfByte, int paramInt)
+  {
+    if (paramArrayOfByte == null) {}
+    int j;
+    do
+    {
+      return null;
+      int i = paramInt - 1;
+      j = 0;
+      while ((i >= 0) && (paramArrayOfByte[i] < 0))
+      {
+        j += 1;
+        i -= 1;
+      }
+      if (j % 3 == 0) {
+        return new String(paramArrayOfByte, 0, paramInt, "utf-8");
+      }
+      if (j % 3 == 1) {
+        return new String(paramArrayOfByte, 0, paramInt - 1, "utf-8");
+      }
+    } while (j % 3 != 2);
+    return new String(paramArrayOfByte, 0, paramInt - 2, "utf-8");
+  }
+  
+  public static boolean a(char paramChar)
+  {
+    return paramChar / '' == 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     naw
  * JD-Core Version:    0.7.0.1
  */

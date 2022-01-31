@@ -1,77 +1,111 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import PUSH_COMM_STRUCT.BinaryPushInfo;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.util.QZLog;
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.zip.Inflater;
 
-class bhnw
-  implements axrt
+public class bhnw
 {
-  bhnw(bhnv parambhnv, String paramString1, String paramString2, bhny parambhny, String paramString3, String paramString4, bhnx parambhnx) {}
-  
-  public void onResp(axsq paramaxsq)
+  public static <T extends JceStruct> T a(T paramT, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfigSimplifier_PTV", 2, "onResp resultcode: " + paramaxsq.c + " threadid=" + Thread.currentThread().getId());
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
     }
-    File localFile = new File(this.jdField_a_of_type_JavaLangString, this.b);
-    if (!localFile.exists()) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !zipfile.exists()");
-      }
-    }
-    label249:
-    do
+    try
     {
-      for (;;)
-      {
-        return;
-        paramaxsq = "";
-        try
-        {
-          String str = bace.c(localFile.getPath());
-          paramaxsq = str;
-          if ((TextUtils.isEmpty(this.jdField_a_of_type_Bhny.c)) || (!this.jdField_a_of_type_Bhny.c.equalsIgnoreCase(paramaxsq))) {}
-        }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-        {
-          for (;;)
-          {
-            try
-            {
-              mpx.a(localFile, this.c);
-              paramaxsq = new File(this.d);
-              if (!paramaxsq.exists()) {
-                break label249;
-              }
-              paramaxsq = bjin.a(paramaxsq);
-              if ((this.jdField_a_of_type_Bhnx == null) || (paramaxsq == null)) {
-                break;
-              }
-              this.jdField_a_of_type_Bhnx.a(paramaxsq);
-              return;
-              localUnsatisfiedLinkError = localUnsatisfiedLinkError;
-              QLog.e("ConfigSimplifier_PTV", 1, "onResp error, ", localUnsatisfiedLinkError);
-            }
-            catch (IOException paramaxsq)
-            {
-              QLog.e("ConfigSimplifier_PTV", 1, "onResp error, ", paramaxsq);
-              continue;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.e("ConfigSimplifier_PTV", 2, new Object[] { "parseFilterConfigZip error, md5:", this.jdField_a_of_type_Bhny.c, " ", paramaxsq });
-            }
-          }
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+      paramArrayOfByte.setServerEncoding("utf8");
+      paramT.readFrom(paramArrayOfByte);
+      return paramT;
+    }
+    catch (Exception paramT)
+    {
+      paramT.printStackTrace();
+    }
+    return null;
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
+  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    try
+    {
+      paramClass = (JceStruct)paramClass.newInstance();
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+      paramArrayOfByte.setServerEncoding("utf8");
+      paramClass.readFrom(paramArrayOfByte);
+      return paramClass;
+    }
+    catch (Exception paramClass)
+    {
+      paramClass.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static byte[] a(JceStruct paramJceStruct)
+  {
+    JceOutputStream localJceOutputStream = new JceOutputStream();
+    localJceOutputStream.setServerEncoding("utf8");
+    paramJceStruct.writeTo(localJceOutputStream);
+    return localJceOutputStream.toByteArray();
+  }
+  
+  public static byte[] a(ArrayList paramArrayList)
+  {
+    JceOutputStream localJceOutputStream = new JceOutputStream();
+    localJceOutputStream.setServerEncoding("utf8");
+    localJceOutputStream.write(paramArrayList, 0);
+    return localJceOutputStream.toByteArray();
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte)
+  {
+    Object localObject1 = paramArrayOfByte;
+    Object localObject2;
+    if (paramArrayOfByte != null)
+    {
+      localObject2 = (BinaryPushInfo)a(BinaryPushInfo.class, paramArrayOfByte);
+      if (((BinaryPushInfo)localObject2).compressType != 0L) {
+        break label32;
+      }
+      localObject1 = ((BinaryPushInfo)localObject2).pushBuffer;
+    }
+    label32:
+    do
+    {
+      return localObject1;
+      localObject1 = paramArrayOfByte;
+    } while (((BinaryPushInfo)localObject2).compressType != 2L);
+    ByteArrayOutputStream localByteArrayOutputStream;
+    try
+    {
+      localObject1 = new Inflater();
+      ((Inflater)localObject1).setInput(((BinaryPushInfo)localObject2).pushBuffer, 0, ((BinaryPushInfo)localObject2).pushBuffer.length);
+      localObject2 = new byte[4096];
+      localByteArrayOutputStream = new ByteArrayOutputStream();
+      while (!((Inflater)localObject1).finished()) {
+        localByteArrayOutputStream.write((byte[])localObject2, 0, ((Inflater)localObject1).inflate((byte[])localObject2));
+      }
+      localException.end();
+    }
+    catch (Exception localException)
+    {
+      QZLog.e("JceUtils.inflateByte", "Push Buf decompresse error!", localException);
+      return paramArrayOfByte;
+    }
+    byte[] arrayOfByte = localByteArrayOutputStream.toByteArray();
+    return arrayOfByte;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhnw
  * JD-Core Version:    0.7.0.1
  */

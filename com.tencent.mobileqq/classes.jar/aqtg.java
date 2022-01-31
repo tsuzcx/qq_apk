@@ -1,21 +1,18 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import org.json.JSONObject;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.mobileqq.gamecenter.view.QQGameIndicator;
 
 public class aqtg
-  implements View.OnClickListener
+  extends RadioButton
 {
-  public aqtg(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
-  
-  public void onClick(View paramView)
+  public aqtg(QQGameIndicator paramQQGameIndicator, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.b(this.jdField_a_of_type_OrgJsonJSONObject);
-    paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
-    if (!TextUtils.isEmpty(paramView)) {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(paramView, new String[] { String.valueOf(0) });
-    }
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
   }
 }
 

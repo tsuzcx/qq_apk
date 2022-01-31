@@ -1,59 +1,78 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.QzoneCommonIntent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
 
-public final class amtn
-  implements amto
+public class amtn
+  extends ampb<amtm>
 {
-  public void a(MSFServlet paramMSFServlet, QzoneCommonIntent paramQzoneCommonIntent, FromServiceMsg paramFromServiceMsg)
+  public int a()
   {
-    bfpm localbfpm = paramQzoneCommonIntent.getRequest();
-    Object localObject2 = localbfpm.uniKey();
-    int i = localbfpm.a();
-    int[] arrayOfInt = new int[1];
-    String[] arrayOfString = new String[1];
-    Object localObject1 = null;
-    if (!paramFromServiceMsg.isSuccess())
+    return 578;
+  }
+  
+  @NonNull
+  public amtm a(int paramInt)
+  {
+    return new amtm();
+  }
+  
+  @Nullable
+  public amtm a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null))
     {
-      arrayOfInt[0] = (paramFromServiceMsg.getResultCode() + 300000);
-      arrayOfString[0] = paramFromServiceMsg.getBusinessFailMsg();
-      paramFromServiceMsg = (FromServiceMsg)localObject1;
+      amtm localamtm = amtm.a(paramArrayOfampi[0].a);
       if (QLog.isColorLevel()) {
-        QLog.i("QzoneCommonIntent", 2, String.format("cmd :%s, success:%b,code:%d, msg:%s", new Object[] { localbfpm.getCmdString(), Boolean.valueOf(QzoneCommonIntent.succeeded(arrayOfInt[0])), Integer.valueOf(arrayOfInt[0]), arrayOfString[0] }));
+        QLog.d("OnlineStatusConfProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
       }
-      localObject2 = paramQzoneCommonIntent.getExtras();
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new Bundle();
-      }
-      ((Bundle)localObject1).putSerializable("key_response", paramFromServiceMsg);
-      ((Bundle)localObject1).putInt("key_response_code", arrayOfInt[0]);
-      ((Bundle)localObject1).putString("key_response_msg", arrayOfString[0]);
-      if (paramQzoneCommonIntent.getObserver() == null) {
-        QLog.e("QzoneCommonIntent", 1, "observer ==null,无法回调，请检查是否有调用setObserver");
-      }
-      if ((paramFromServiceMsg == null) || (!QzoneCommonIntent.succeeded(arrayOfInt[0]))) {
-        break label260;
-      }
+      return localamtm;
     }
-    label260:
-    for (boolean bool = true;; bool = false)
-    {
-      paramMSFServlet.notifyObserver(paramQzoneCommonIntent, i, bool, (Bundle)localObject1, null);
-      if (arrayOfInt[0] != 1000006) {
-        QzoneCommonIntent.access$000(localbfpm, arrayOfInt[0], arrayOfString[0]);
-      }
-      return;
-      paramFromServiceMsg = bgfq.a(paramFromServiceMsg.getWupBuffer(), (String)localObject2, arrayOfInt, arrayOfString);
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineStatusConfProcessor", 2, "onParsed is null");
     }
+    return null;
+  }
+  
+  public Class<amtm> a()
+  {
+    return amtm.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineStatusConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(amtm paramamtm)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineStatusConfProcessor", 2, "onUpdate " + paramamtm.toString());
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineStatusConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amtn
  * JD-Core Version:    0.7.0.1
  */

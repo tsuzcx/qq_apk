@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import acdf;
-import acdg;
+import acnu;
+import acnv;
 import android.text.TextUtils;
-import azzz;
+import bbbd;
 import com.tencent.mobileqq.data.TroopMemberCardInfo;
 import com.tencent.mobileqq.utils.ChnToSpell;
 import java.util.ArrayList;
@@ -18,83 +18,83 @@ class TroopTransferActivity$14
     int i = 0;
     boolean bool = false;
     Object localObject;
-    acdf localacdf;
+    acnu localacnu;
     if (i < this.a.size())
     {
       localObject = (TroopMemberCardInfo)this.a.get(i);
-      localacdf = this.this$0.a.a(((TroopMemberCardInfo)localObject).memberuin);
-      if (localacdf != null) {}
+      localacnu = this.this$0.a.a(((TroopMemberCardInfo)localObject).memberuin);
+      if (localacnu != null) {}
     }
     for (;;)
     {
       i += 1;
       break;
-      if (!azzz.a(((TroopMemberCardInfo)localObject).name, localacdf.m))
+      if (!bbbd.a(((TroopMemberCardInfo)localObject).name, localacnu.m))
       {
-        localacdf.m = ((TroopMemberCardInfo)localObject).name;
-        if (!TextUtils.isEmpty(localacdf.m))
+        localacnu.m = ((TroopMemberCardInfo)localObject).name;
+        if (!TextUtils.isEmpty(localacnu.m))
         {
-          localacdf.n = ChnToSpell.a(localacdf.m, 2);
-          localacdf.o = ChnToSpell.a(localacdf.m, 1);
+          localacnu.n = ChnToSpell.a(localacnu.m, 2);
+          localacnu.o = ChnToSpell.a(localacnu.m, 1);
         }
       }
       else
       {
         label118:
-        if (!azzz.a(((TroopMemberCardInfo)localObject).nick, localacdf.g))
+        if (!bbbd.a(((TroopMemberCardInfo)localObject).nick, localacnu.g))
         {
-          localacdf.g = ((TroopMemberCardInfo)localObject).nick;
-          if (TextUtils.isEmpty(localacdf.g)) {
+          localacnu.g = ((TroopMemberCardInfo)localObject).nick;
+          if (TextUtils.isEmpty(localacnu.g)) {
             break label277;
           }
-          localacdf.h = ChnToSpell.a(localacdf.g, 2);
-          localacdf.i = ChnToSpell.a(localacdf.g, 1);
+          localacnu.h = ChnToSpell.a(localacnu.g, 2);
+          localacnu.i = ChnToSpell.a(localacnu.g, 1);
         }
         label181:
-        if (TextUtils.isEmpty(localacdf.j)) {
+        if (TextUtils.isEmpty(localacnu.j)) {
           break label294;
         }
-        localObject = localacdf.j;
+        localObject = localacnu.j;
       }
       for (;;)
       {
-        if (!azzz.a(localObject, localacdf.b))
+        if (!bbbd.a(localObject, localacnu.b))
         {
-          localacdf.b = ((String)localObject);
-          if (!TextUtils.isEmpty(localacdf.b))
+          localacnu.b = ((String)localObject);
+          if (!TextUtils.isEmpty(localacnu.b))
           {
-            localacdf.c = ChnToSpell.a(localacdf.b, 2);
-            localacdf.d = ChnToSpell.a(localacdf.b, 1);
+            localacnu.c = ChnToSpell.a(localacnu.b, 2);
+            localacnu.d = ChnToSpell.a(localacnu.b, 1);
             bool = true;
             break;
-            localacdf.n = "";
-            localacdf.o = "";
+            localacnu.n = "";
+            localacnu.o = "";
             break label118;
             label277:
-            localacdf.h = "";
-            localacdf.i = "";
+            localacnu.h = "";
+            localacnu.i = "";
             break label181;
             label294:
-            if (!TextUtils.isEmpty(localacdf.m))
+            if (!TextUtils.isEmpty(localacnu.m))
             {
-              localObject = localacdf.m;
+              localObject = localacnu.m;
               continue;
             }
-            if (!TextUtils.isEmpty(localacdf.g))
+            if (!TextUtils.isEmpty(localacnu.g))
             {
-              localObject = localacdf.g;
+              localObject = localacnu.g;
               continue;
             }
-            if (!TextUtils.isEmpty(localacdf.a))
+            if (!TextUtils.isEmpty(localacnu.a))
             {
-              localObject = localacdf.a;
+              localObject = localacnu.a;
               continue;
             }
             localObject = "";
             continue;
           }
-          localacdf.c = "";
-          localacdf.d = "";
+          localacnu.c = "";
+          localacnu.d = "";
           bool = true;
           break;
           this.this$0.a(bool);

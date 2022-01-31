@@ -1,47 +1,57 @@
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import java.util.Map;
 
-class aqjc
-  implements TVK_SDKMgr.OnLogListener
+public class aqjc
+  extends ajxl
 {
-  aqjc(aqjb paramaqjb) {}
+  public aqjc(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
   
-  public int d(String paramString1, String paramString2)
+  protected void onSetGeneralSettingsC2CRoaming(boolean paramBoolean, Map<String, Integer> paramMap)
   {
+    boolean bool = true;
     if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
+      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
     }
-    return 0;
+    this.a.a();
+    paramMap = this.a.getActivity();
+    if (paramMap == null)
+    {
+      QLog.e("QQSettingChatOperationFragment", 1, "onSetGeneralSettingsC2CRoaming: activity is null");
+      return;
+    }
+    if (paramBoolean)
+    {
+      bcpw.a(paramMap.getApplicationContext(), 2, 2131695346, 0).b(this.a.getActivity().getTitleBarHeight());
+      return;
+    }
+    FormSwitchItem localFormSwitchItem;
+    if (QQSettingChatOperationFragment.a(this.a) != null)
+    {
+      QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(null);
+      localFormSwitchItem = QQSettingChatOperationFragment.a(this.a);
+      if (QQSettingChatOperationFragment.a(this.a).e() != 1) {
+        break label176;
+      }
+    }
+    label176:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      localFormSwitchItem.setChecked(paramBoolean);
+      QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(this.a);
+      bcpw.a(paramMap.getApplicationContext(), 2131695344, 0).b(paramMap.getTitleBarHeight());
+      return;
+    }
   }
   
-  public int e(String paramString1, String paramString2)
+  protected void onSetMessageRaoam(boolean paramBoolean)
   {
-    QLog.e(paramString1, 1, paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
+    if (paramBoolean) {
+      QQSettingChatOperationFragment.a(this.a);
     }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
-    return 0;
   }
 }
 

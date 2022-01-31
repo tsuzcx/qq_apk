@@ -1,21 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-
-class algl
-  implements DialogInterface.OnDismissListener
+public class algl
 {
-  algl(algk paramalgk, begr parambegr) {}
+  public int a = 3000;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public String toString()
   {
-    this.jdField_a_of_type_Begr.dismiss();
-    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearApp actionsheet is closed", new Object[0]));
+    return "ARCloudRecogReqObjectClassifyInfo{timeout = " + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     algl
  * JD-Core Version:    0.7.0.1
  */

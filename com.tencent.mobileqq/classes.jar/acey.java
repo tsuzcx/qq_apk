@@ -1,26 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class acey
-  extends VasQuickUpdateManager.CallBacker
+  implements View.OnLongClickListener
 {
-  public acey(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public acey(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public boolean onLongClick(View paramView)
   {
-    if ((paramLong == 15L) && (paramString1.startsWith("card.")))
+    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a("web_view_long_click", true))
     {
-      if ((paramInt1 == 0) && (!TextUtils.isEmpty(this.a.g))) {
-        this.a.c(this.a.g);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
       }
+      return true;
     }
-    else {
-      return;
+    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.b(this.a).a("image_long_click", false))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
+      }
+      return false;
     }
-    QLog.e("VipProfileCardDiyActivity", 1, "download card background failed. errorCode=" + paramInt1 + ", url=" + this.a.b);
+    bced localbced = (bced)this.a.a.a(8);
+    if ((localbced != null) && (localbced.a(paramView))) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
   }
 }
 

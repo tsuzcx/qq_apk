@@ -4,14 +4,14 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.media.MediaMetadataRetriever;
 import android.os.Build.VERSION;
-import apck;
-import apcx;
+import apue;
+import apur;
 import com.tencent.qphone.base.util.QLog;
 
 public final class FileManagerUtil$12
   implements Runnable
 {
-  public FileManagerUtil$12(String paramString, int paramInt1, boolean paramBoolean, apcx paramapcx, int paramInt2, int paramInt3) {}
+  public FileManagerUtil$12(String paramString, int paramInt1, boolean paramBoolean, apur paramapur, int paramInt2, int paramInt3) {}
   
   public void run()
   {
@@ -96,9 +96,9 @@ public final class FileManagerUtil$12
         localException5.release();
         label138:
         throw localBitmap2;
-        if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Apcx != null))
+        if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Apur != null))
         {
-          this.jdField_a_of_type_Apcx.a(localBitmap2);
+          this.jdField_a_of_type_Apur.a(localBitmap2);
           return;
         }
         float f;
@@ -114,11 +114,11 @@ public final class FileManagerUtil$12
         {
           try
           {
-            localBitmap3 = apck.a(localMatrix, localBitmap2, this.b, this.c);
-            if (this.jdField_a_of_type_Apcx == null) {
+            localBitmap3 = apue.a(localMatrix, localBitmap2, this.b, this.c);
+            if (this.jdField_a_of_type_Apur == null) {
               break;
             }
-            this.jdField_a_of_type_Apcx.a(localBitmap3);
+            this.jdField_a_of_type_Apur.a(localBitmap3);
             return;
           }
           catch (Exception localException4)

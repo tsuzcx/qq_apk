@@ -1,63 +1,114 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
-import mqq.app.AppRuntime;
+import android.app.Activity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
 public class bjer
-  implements SeekBar.OnSeekBarChangeListener
+  extends bjbf
 {
-  public bjer(BeautyBar paramBeautyBar) {}
+  private float jdField_a_of_type_Float = 0.0F;
+  private bkyv jdField_a_of_type_Bkyv = new bjes(this);
+  private bkyy jdField_a_of_type_Bkyy = (bkyy)bjae.a(3);
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = bjae.a();
+  private PtvTemplateManager.PtvTemplateInfo jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo = this.jdField_a_of_type_Bkyy.a(paramString);
+  private int d = 2;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public bjer(String paramString)
   {
-    BeautyBar.a(this.a, paramInt);
-    if (paramBoolean) {
-      BeautyBar.a(this.a, BeautyBar.a(this.a), false);
+    super(null);
+    if ((this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null) && (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable)) {
+      this.d = 3;
     }
-    if (BeautyBar.a(this.a) != BeautyBar.b(this.a))
+    while (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null) {
+      return;
+    }
+    this.d = 3;
+  }
+  
+  public float a()
+  {
+    try
     {
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).b(BeautyBar.a(this.a));
-      }
-      BeautyBar.b(this.a, BeautyBar.a(this.a));
+      float f = this.jdField_a_of_type_Float;
+      return f;
     }
-    if (paramBoolean) {
-      BeautyBar.a(this.a).setContentDescription(ajjy.a(2131635288) + BeautyBar.a(this.a) + "%");
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public int a()
   {
-    BeautyBar.a(this.a).removeMessages(1011);
-    if (BeautyBar.a(this.a) != null) {
-      BeautyBar.a(this.a).setVisibility(0);
+    try
+    {
+      int i = this.d;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public int a(Activity paramActivity, int paramInt)
   {
-    if (BeautyBar.b(this.a) >= 0)
+    paramActivity = (EffectsCameraCaptureView)paramActivity.findViewById(2131363833);
+    if ((this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null) && (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) && (paramActivity != null))
     {
-      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      localSharedPreferences.edit().putFloat("beauty_radius" + str, BeautyBar.b(this.a));
-      localSharedPreferences.edit().putFloat("beauty_whitenmag" + str, BeautyBar.b(this.a));
-      localSharedPreferences.edit().putInt("beauty_level" + str, paramSeekBar.getProgress());
-      localSharedPreferences.edit().commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("beauty", 2, "onStopTrackingTouch mBeautyValue" + BeautyBar.b(this.a) + " mBeautyProcess=" + paramSeekBar.getProgress());
+      String str = bkyy.a + this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name;
+      paramActivity.setFaceEffect(str);
+      this.jdField_a_of_type_Bkyy.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, 111);
+      this.jdField_a_of_type_Bkyy.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.categoryId, str);
+      return 0;
+    }
+    return -1;
+  }
+  
+  public void a(Activity paramActivity, int paramInt)
+  {
+    paramActivity = (EffectsCameraCaptureView)paramActivity.findViewById(2131363833);
+    if ((paramActivity != null) && (!paramActivity.k()))
+    {
+      paramActivity.setFaceEffect("");
+      this.jdField_a_of_type_Bkyy.a("0", 0, "");
+      bjan.c = 0;
+    }
+  }
+  
+  public int b()
+  {
+    for (;;)
+    {
+      try
+      {
+        int i;
+        if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo == null)
+        {
+          this.d = 3;
+          i = this.d;
+          return i;
+        }
+        if (!this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable)
+        {
+          this.jdField_a_of_type_Bkyy.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_Bkyv);
+          a();
+          this.d = 1;
+          i = this.d;
+          continue;
+        }
+        if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.downloading)
+        {
+          this.d = 1;
+          continue;
+        }
+        this.jdField_a_of_type_Float = 1.0F;
       }
-      BeautyBar.a(this.a).removeMessages(1011);
-      BeautyBar.a(this.a).sendEmptyMessageDelayed(1011, BeautyBar.a);
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).setVisibility(4);
-      }
+      finally {}
+      this.d = 3;
+      b();
     }
   }
 }

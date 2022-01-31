@@ -1,31 +1,46 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
+import android.support.v7.widget.RecyclerView.Adapter;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract interface wpa
+public abstract class wpa<E>
+  extends RecyclerView.Adapter
 {
-  public abstract long a();
+  public final ArrayList<E> a = new ArrayList();
   
-  public abstract View a();
+  public void a()
+  {
+    this.a.clear();
+  }
   
-  public abstract void a(int paramInt);
+  public void a(ArrayList<E> paramArrayList)
+  {
+    this.a.clear();
+    notifyDataSetChanged();
+    if (paramArrayList == null) {
+      return;
+    }
+    this.a.addAll(paramArrayList);
+    notifyDataSetChanged();
+  }
   
-  public abstract void a(int paramInt, String paramString);
+  public void a(List<E> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    this.a.addAll(paramList);
+    notifyItemRangeInserted(this.a.size(), paramList.size());
+  }
   
-  public abstract void a(long paramLong);
+  public ArrayList<E> b()
+  {
+    return this.a;
+  }
   
-  public abstract void ar_();
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void c(long paramLong);
-  
-  public abstract void setHeaderBgColor(int paramInt);
-  
-  public abstract void setHeaderBgDrawable(Drawable paramDrawable);
-  
-  public abstract void setHeaderBgRes(int paramInt);
-  
-  public abstract void setTextColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  public int getItemCount()
+  {
+    return this.a.size();
+  }
 }
 
 

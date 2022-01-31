@@ -22,13 +22,13 @@ public class SharpPPathDecoder
     this.mInfo = null;
   }
   
-  public void closeDecoder(int paramInt)
+  public void closeDecoder(long paramLong)
   {
-    this.mDecoder.closeDecoderInNative(paramInt);
+    this.mDecoder.closeDecoderInNative(paramLong);
     closeDecoder();
   }
   
-  public int createDecoder()
+  public long createDecoder()
   {
     if (this.mInfo == null)
     {
@@ -50,25 +50,27 @@ public class SharpPPathDecoder
     return this.mDecoder.decodeSharpPInNative(this.mPath, this.mInfo.getFeatureInfo(), paramInt1, paramInt2, paramConfig);
   }
   
-  public Bitmap decodeSharpP2GifFrame(int paramInt1, int paramInt2, int paramInt3, int paramInt4, SharpPDecoderWrapper.WriteableInteger paramWriteableInteger, Bitmap paramBitmap)
+  public Bitmap decodeSharpP2GifFrame(long paramLong, int paramInt1, int paramInt2, int paramInt3, SharpPDecoderWrapper.WriteableInteger paramWriteableInteger, Bitmap paramBitmap)
   {
-    if ((this.mInfo == null) && (parseHeader() != 0)) {
-      return null;
+    Bitmap localBitmap;
+    if ((this.mInfo == null) && (parseHeader() != 0))
+    {
+      localBitmap = null;
+      return localBitmap;
     }
     if (this.mInfo.getImageMode() == 4) {
-      paramBitmap = this.mDecoder.decodeOneFrameWithAlphaInNative(paramInt1, paramInt2, paramInt3, paramInt4, paramWriteableInteger, paramBitmap);
+      return this.mDecoder.decodeOneFrameWithAlphaInNative(paramLong, paramInt1, paramInt2, paramInt3, paramWriteableInteger, paramBitmap);
+    }
+    if (paramBitmap == null) {
+      paramBitmap = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
     }
     for (;;)
     {
-      return paramBitmap;
-      Bitmap localBitmap = paramBitmap;
-      if (paramBitmap == null) {
-        localBitmap = Bitmap.createBitmap(paramInt3, paramInt4, Bitmap.Config.ARGB_8888);
+      localBitmap = paramBitmap;
+      if (this.mDecoder.decodeOneFrameInNative(paramLong, paramInt1, paramBitmap, paramWriteableInteger) == 0) {
+        break;
       }
-      paramBitmap = localBitmap;
-      if (this.mDecoder.decodeOneFrameInNative(paramInt1, paramInt2, localBitmap, paramWriteableInteger) != 0) {
-        paramBitmap = null;
-      }
+      return null;
     }
   }
   

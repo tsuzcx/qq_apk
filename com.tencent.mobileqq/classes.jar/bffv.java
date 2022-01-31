@@ -1,73 +1,264 @@
-import java.util.HashMap;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.utils.DomainUtil.1;
+import com.tencent.qqmini.sdk.utils.DomainUtil.2;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-class bffv
+public class bffv
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
+  private static String jdField_a_of_type_JavaLangString;
+  private static ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private static ConcurrentHashMap<Integer, ArrayList<beqy>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "Request", "Websocket", "Download", "Upload", "Webview" };
   
-  public bffv(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap)
+  private static ArrayList<String> a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    try
+    {
+      if (jdField_a_of_type_JavaUtilArrayList == null)
+      {
+        String str1 = belj.a("MiniGame", "MiniGameDomainWhiteList", "\\S*\\.qq\\.com,thirdqq\\.qlogo\\.cn,c\\d{4}\\.myh5\\.90wmoyu\\.com,\\S*\\.gtimg\\.cn");
+        if ((str1 != null) && (!str1.equals(jdField_a_of_type_JavaLangString)))
+        {
+          besl.b("[mini] http.", "Default white domain:" + str1);
+          jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+          try
+          {
+            String[] arrayOfString = str1.split(",");
+            if (arrayOfString != null)
+            {
+              int j = arrayOfString.length;
+              int i = 0;
+              while (i < j)
+              {
+                String str2 = arrayOfString[i];
+                if (!TextUtils.isEmpty(str2)) {
+                  jdField_a_of_type_JavaUtilArrayList.add(str2);
+                }
+                i += 1;
+              }
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            localThrowable.printStackTrace();
+            jdField_a_of_type_JavaLangString = str1;
+          }
+        }
+      }
+      return jdField_a_of_type_JavaUtilArrayList;
+    }
+    finally {}
   }
   
-  public long a()
+  private static void a(beqy parambeqy, int paramInt)
   {
-    return this.jdField_a_of_type_Long;
+    if (parambeqy == null) {}
+    ArrayList localArrayList1;
+    do
+    {
+      return;
+      if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+      }
+      ArrayList localArrayList2 = (ArrayList)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+      localArrayList1 = localArrayList2;
+      if (localArrayList2 == null)
+      {
+        localArrayList1 = new ArrayList();
+        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localArrayList1);
+      }
+    } while (localArrayList1.contains(parambeqy));
+    localArrayList1.add(parambeqy);
   }
   
-  public String a()
+  private static boolean a(beqy parambeqy, int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (parambeqy == null) {
+      return false;
+    }
+    Object localObject = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localObject == null) {
+      return false;
+    }
+    localObject = (ArrayList)((Map)localObject).get(Integer.valueOf(paramInt));
+    return (localObject != null) && (((ArrayList)localObject).contains(parambeqy));
   }
   
-  public HashMap<String, String> a()
+  private static boolean a(MiniAppInfo paramMiniAppInfo)
   {
-    return this.jdField_a_of_type_JavaUtilHashMap;
+    return (paramMiniAppInfo != null) && (paramMiniAppInfo.verType == 3);
   }
   
-  public boolean a()
+  public static boolean a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean, String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_Boolean;
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    if (paramBoolean)
+    {
+      besl.a("[mini] http.domainValid", jdField_a_of_type_ArrayOfJavaLangString[paramInt] + ":域名检查 skipDomainCheckFromJs:" + paramString);
+      return true;
+    }
+    if (paramMiniAppInfo.skipDomainCheck == 1) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      besl.a("[mini] http.domainValid", jdField_a_of_type_ArrayOfJavaLangString[paramInt] + ":域名检查 skip:" + paramString);
+      return true;
+    }
+    Object localObject1 = paramString.toLowerCase();
+    if ((!a(paramMiniAppInfo)) && (a(paramMiniAppInfo.appId)))
+    {
+      if (!a((String)localObject1, true))
+      {
+        besl.a("[mini] http.domainValid", jdField_a_of_type_ArrayOfJavaLangString[paramInt] + "域名不合法，需使用https或wss协议:" + paramString);
+        return false;
+      }
+      besl.a("[mini] http.domainValid", "debug opened and not online version, skip:" + paramString);
+      return true;
+    }
+    if ((((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) && (paramString.startsWith(belj.a("MiniApp", "MiniAppRMDDomainWhiteList", "https://www.urlshare.cn/"))))
+    {
+      besl.a("[mini] http.domainValid", "rdm mode, https://www.urlshare.cn/ is valid, current Url is: " + paramString);
+      return true;
+    }
+    if (!a((String)localObject1, false))
+    {
+      besl.d("[mini] http.domainValid", jdField_a_of_type_ArrayOfJavaLangString[paramInt] + ":请求域名不合法，请使用https或wss协议,reqeustUrl:" + paramString);
+      if (!a(paramMiniAppInfo))
+      {
+        beiw.c().post(new DomainUtil.1(paramInt, (String)localObject1));
+        return false;
+      }
+      return false;
+    }
+    beqy localbeqy = beqy.a((String)localObject1);
+    if (a(localbeqy, paramInt)) {
+      return true;
+    }
+    if ((localbeqy != null) && (!TextUtils.isEmpty(localbeqy.jdField_a_of_type_JavaLangString)))
+    {
+      localObject1 = a().iterator();
+      for (;;)
+      {
+        if (((Iterator)localObject1).hasNext())
+        {
+          Pattern localPattern = Pattern.compile((String)((Iterator)localObject1).next(), 2);
+          if (localPattern == null) {
+            continue;
+          }
+          try
+          {
+            paramBoolean = localPattern.matcher(localbeqy.jdField_a_of_type_JavaLangString).matches();
+            if (paramBoolean)
+            {
+              a(localbeqy, paramInt);
+              return true;
+            }
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              besl.d("[mini] http.domainValid", "", localException);
+              paramBoolean = false;
+            }
+          }
+        }
+      }
+      if (paramMiniAppInfo != null)
+      {
+        localObject1 = paramMiniAppInfo.requestDomainList;
+        switch (paramInt)
+        {
+        default: 
+          if (localObject1 != null) {
+            localObject1 = ((List)localObject1).iterator();
+          }
+          break;
+        case 1: 
+        case 2: 
+        case 3: 
+        case 4: 
+          for (;;)
+          {
+            for (;;)
+            {
+              if (!((Iterator)localObject1).hasNext()) {
+                break label660;
+              }
+              Object localObject2 = (String)((Iterator)localObject1).next();
+              try
+              {
+                if (!TextUtils.isEmpty((CharSequence)localObject2))
+                {
+                  localObject2 = beqy.a(((String)localObject2).toLowerCase());
+                  if (beqy.a((beqy)localObject2, localbeqy))
+                  {
+                    a(localbeqy, paramInt);
+                    return true;
+                    localObject1 = paramMiniAppInfo.socketDomainList;
+                    break;
+                    localObject1 = paramMiniAppInfo.downloadFileDomainList;
+                    break;
+                    localObject1 = paramMiniAppInfo.uploadFileDomainList;
+                    break;
+                    localObject1 = paramMiniAppInfo.businessDomainList;
+                    break;
+                  }
+                  besl.b("[mini] http.domainValid", "request:" + localbeqy + ",allow:" + localObject2);
+                }
+              }
+              catch (Throwable localThrowable)
+              {
+                besl.d("[mini] http.domainValid", "check domainValid error, requestUrl:" + paramString, localThrowable);
+              }
+            }
+          }
+        }
+      }
+    }
+    label660:
+    besl.d("[mini] http.domainValid", jdField_a_of_type_ArrayOfJavaLangString[paramInt] + ":请求域名不合法，请配置，requestUrl:" + paramString);
+    if (!a(paramMiniAppInfo))
+    {
+      beiw.c().post(new DomainUtil.2(paramInt, localbeqy));
+      return false;
+    }
+    return false;
   }
   
-  public long b()
+  private static boolean a(String paramString)
   {
-    return this.jdField_b_of_type_Long;
+    return bfgv.a().getBoolean(paramString + "_debug", false);
   }
   
-  public String b()
+  private static boolean a(String paramString, boolean paramBoolean)
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("], tagName[");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("], success[");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("], size[");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append("]");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    return localStringBuilder.toString();
+    if (paramBoolean) {
+      if ((TextUtils.isEmpty(paramString)) || ((!paramString.startsWith("https://")) && (!paramString.startsWith("wss://")) && (!paramString.startsWith("http://")))) {}
+    }
+    while ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("https://")) || (paramString.startsWith("wss://"))))
+    {
+      return true;
+      return false;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bffv
  * JD-Core Version:    0.7.0.1
  */

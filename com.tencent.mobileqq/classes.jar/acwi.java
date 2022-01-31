@@ -1,28 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
 
-class acwi
-  implements begw
+public final class acwi
+  implements Parcelable.Creator<ForwardUtils.SectionBase>
 {
-  acwi(acwe paramacwe, ChatMessage paramChatMessage, begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ForwardUtils.SectionBase a(Parcel paramParcel)
   {
-    if (paramInt == 0)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 3000) {
-        break label41;
-      }
-      apci.a("0X8005E4F");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Acwe.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      label41:
-      apci.a("0X8005E4D");
-    }
+    return new ForwardUtils.SectionBase(paramParcel);
+  }
+  
+  public ForwardUtils.SectionBase[] a(int paramInt)
+  {
+    return new ForwardUtils.SectionBase[paramInt];
   }
 }
 

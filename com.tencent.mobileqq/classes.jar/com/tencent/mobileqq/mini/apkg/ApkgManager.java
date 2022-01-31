@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import ajjy;
+import ajyc;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bdyv;
+import bfgc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -135,7 +135,7 @@ public class ApkgManager
       localObject = str;
     } while (new File(str).exists());
     if (paramMiniAppInfo.verType == 3) {
-      return getPkgRoot(paramMiniAppInfo) + MD5.toMD5(paramMiniAppInfo.appId) + "_" + paramMiniAppInfo.version;
+      return getPkgRoot(paramMiniAppInfo) + MD5.toMD5(paramMiniAppInfo.appId) + "_" + paramMiniAppInfo.versionId;
     }
     return getPkgRoot(paramMiniAppInfo) + paramMiniAppInfo.appId + "_debug";
   }
@@ -328,7 +328,7 @@ public class ApkgManager
       paramOnGetApkgInfoListener.onGetApkgInfo(paramString1, 0, "");
       return;
     }
-    paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, ajjy.a(2131634489));
+    paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, ajyc.a(2131700277));
   }
   
   private void onInitApkgInfo(ApkgManager.OnInitApkgListener paramOnInitApkgListener, int paramInt, ApkgInfo paramApkgInfo, String paramString)
@@ -440,7 +440,7 @@ public class ApkgManager
     QLog.i("ApkgManager", 1, "preloadFlutterPkg appid:" + paramMiniAppConfig.config.appId + " name:" + paramMiniAppConfig.config.name + " url:" + paramString);
     Object localObject = MiniSdkLauncher.convert(paramMiniAppConfig.config);
     if (((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject).verType == 3) {}
-    for (localObject = new StringBuilder(PATH_APKG_TISSUE_ROOT).append(bdyv.c(((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject).appId)).append("_").append(((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject).version).toString() + "_maintmp"; new File((String)localObject).exists(); localObject = new StringBuilder(PATH_APKG_TISSUE_ROOT).append(((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject).appId).append("_debug").toString() + "_maintmp") {
+    for (localObject = new StringBuilder(PATH_APKG_TISSUE_ROOT).append(bfgc.c(((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject).appId)).append("_").append(((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject).version).toString() + "_maintmp"; new File((String)localObject).exists(); localObject = new StringBuilder(PATH_APKG_TISSUE_ROOT).append(((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject).appId).append("_debug").toString() + "_maintmp") {
       return;
     }
     String str = PATH_WXAPKG_ROOT + File.separator + paramMiniAppConfig.config.appId + '_' + paramMiniAppConfig.config.version + "_flutter1" + ".qapkg";

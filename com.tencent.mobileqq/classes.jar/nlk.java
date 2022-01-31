@@ -1,23 +1,16 @@
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
 public class nlk
-  implements begw
+  implements View.OnClickListener
 {
-  public nlk(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public nlk(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadInJoySettingActivity.b(this.a).cancel();
-      return;
-      ReadInJoySettingActivity.d(this.a, false);
-      ReadInJoySettingActivity.c(this.a, ReadInJoySettingActivity.c(this.a));
-    }
+    ReadInJoyNativeAdFragment.a(this.a).dismiss();
   }
 }
 

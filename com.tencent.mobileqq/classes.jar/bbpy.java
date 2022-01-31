@@ -1,20 +1,28 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.os.Bundle;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
+import eipc.EIPCResult;
 
 public class bbpy
-  extends StateListDrawable
+  implements bbpw
 {
-  public bbpy(int paramInt1, int paramInt2)
+  public bbpy(QuickUpdateIPCModule paramQuickUpdateIPCModule, int paramInt) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    ColorDrawable localColorDrawable = new ColorDrawable(paramInt1);
-    addState(new int[] { 16842919 }, localColorDrawable);
-    localColorDrawable = new ColorDrawable(paramInt2);
-    addState(new int[] { 16842921 }, localColorDrawable);
+    QuickUpdateIPCModule.Params localParams = new QuickUpdateIPCModule.Params(null);
+    localParams.intVal = paramInt;
+    localParams.strVal1 = paramString1;
+    localParams.strVal2 = paramString2;
+    paramString1 = new Bundle();
+    paramString1.putSerializable("params", localParams);
+    paramString1 = EIPCResult.createResult(0, paramString1);
+    this.jdField_a_of_type_ComTencentMobileqqVasQuickUpdateIPCModule.callbackResult(this.jdField_a_of_type_Int, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbpy
  * JD-Core Version:    0.7.0.1
  */

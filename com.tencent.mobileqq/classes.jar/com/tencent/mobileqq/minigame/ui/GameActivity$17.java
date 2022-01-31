@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
+import android.os.Process;
+
 class GameActivity$17
   implements Runnable
 {
@@ -7,9 +9,7 @@ class GameActivity$17
   
   public void run()
   {
-    if (GameActivity.access$700(this.this$0) == null) {
-      GameActivity.access$900(this.this$0);
-    }
+    Process.killProcess(Process.myPid());
   }
 }
 

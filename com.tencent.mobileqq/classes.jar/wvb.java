@@ -1,21 +1,20 @@
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.subscribe.event.SharePanelShowStateEvent;
 
 class wvb
-  implements bhwg<wvz>
+  implements DialogInterface.OnDismissListener
 {
-  wvb(wut paramwut) {}
+  wvb(wva paramwva) {}
   
-  public void a(@Nullable wvz paramwvz)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    wut.a(this.a, paramwvz);
-    if (wut.a(this.a) != null) {
-      wut.a(this.a).a(wut.a(this.a).a(), this.a.a);
-    }
+    wpw.a().a(new SharePanelShowStateEvent(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wvb
  * JD-Core Version:    0.7.0.1
  */

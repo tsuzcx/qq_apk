@@ -1,54 +1,23 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
-class bamv
-  implements AudioManager.OnAudioFocusChangeListener
+final class bamv
+  extends bbwf
 {
-  bamv(bamt parambamt) {}
+  bamv(WeakReference paramWeakReference, File paramFile, aycb paramaycb) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void onDone(bbwg parambbwg)
   {
-    if (paramInt == -2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "transient focus loss.");
-      }
-      synchronized (this.a.a)
-      {
-        if (this.a.a.a == 4) {
-          this.a.a();
-        }
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoAnimationUtils", 2, "onDone:" + parambbwg.a);
     }
-    if (paramInt == 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "gained focus");
-      }
-      if (this.a.b)
-      {
-        this.a.c();
-        this.a.b = false;
-      }
-    }
-    else if (paramInt == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "Audio focus Loss");
-      }
-      this.a.b();
-      synchronized (this.a.a)
-      {
-        this.a.a.a = 6;
-        return;
-      }
-    }
+    bamu.a(this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Aycb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bamv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,21 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
 
-public class rsr
-  implements abbf
+class rsr
+  implements bfoq
 {
-  String jdField_a_of_type_JavaLangString = "";
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference = null;
-  rsq jdField_a_of_type_Rsq = null;
+  rsr(rsm paramrsm, bfol parambfol) {}
   
-  public rsr(rsq paramrsq, QQAppInterface paramQQAppInterface, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Rsq = paramrsq;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(int paramInt, String paramString, Drawable paramDrawable, Object... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder IDownloadListener fail, status: " + paramInt + " | icon: " + paramDrawable + " | mFolder: " + this.jdField_a_of_type_Rsq);
-    }
-    if ((paramInt == 2) && (paramDrawable != null) && (this.jdField_a_of_type_Rsq != null)) {
-      this.jdField_a_of_type_Rsq.a = paramDrawable;
-    }
-    try
+    this.jdField_a_of_type_Bfol.dismiss();
+    switch (paramInt)
     {
-      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(1).notifyUI(4, true, new Object[] { this.jdField_a_of_type_JavaLangString });
+    }
+    do
+    {
       return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder IDownloadListener fail", paramString);
-    }
+    } while ((!rsm.b(this.jdField_a_of_type_Rsm)) || (!rsm.a(this.jdField_a_of_type_Rsm, "deleteFeeds")));
+    rmu.a(rsm.a(this.jdField_a_of_type_Rsm), rsm.a(this.jdField_a_of_type_Rsm));
   }
 }
 

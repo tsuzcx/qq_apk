@@ -5,8 +5,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
-import ohp;
-import rtr;
+import ota;
+import sgj;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class ReadinjoySPEventReport$15
@@ -21,10 +21,10 @@ public final class ReadinjoySPEventReport$15
     ArrayList localArrayList;
     oidb_cmd0x80a.AttributeList localAttributeList;
     PBStringField localPBStringField;
-    if (ohp.b(60))
+    if (ota.b(60))
     {
-      long l1 = ohp.b();
-      l2 = ohp.a(l1 * 1000L) / 1000L;
+      long l1 = ota.b();
+      l2 = ota.a(l1 * 1000L) / 1000L;
       int k = this.jdField_a_of_type_JavaUtilList.size() - 1;
       int i = 0;
       if (k >= 0)
@@ -55,7 +55,7 @@ public final class ReadinjoySPEventReport$15
       localObject = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(1);
       ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("aiotype");
-      ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(String.valueOf(ohp.a(this.jdField_a_of_type_Int)));
+      ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(String.valueOf(ota.a(this.jdField_a_of_type_Int)));
       localArrayList.add(localObject);
       localObject = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(2);
@@ -91,7 +91,7 @@ public final class ReadinjoySPEventReport$15
       ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("costtime");
       ((oidb_cmd0x80a.AttributeList)localObject).att_value.set("" + l2);
       localArrayList.add(localObject);
-      rtr.a(60, localArrayList);
+      sgj.a(60, localArrayList);
       return;
       localObject = "0";
       break;

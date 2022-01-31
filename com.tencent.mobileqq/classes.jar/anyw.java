@@ -1,28 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.widget.QQViewPager;
 
 public class anyw
-  implements DialogInterface.OnKeyListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public anyw(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public anyw(EmoticonMainPanel paramEmoticonMainPanel, ImageView paramImageView) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onGlobalLayout()
   {
-    boolean bool = false;
-    if (paramInt == 4)
-    {
-      if (this.a.a != null)
-      {
-        this.a.a.dismiss();
-        this.a.a = null;
-      }
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-      bool = true;
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-    return bool;
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a.getMeasuredHeight() != 0)
+      {
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+        localLayoutParams.height = ((int)(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a.getMeasuredHeight() * 0.6F));
+        localLayoutParams.width = ((int)(localLayoutParams.height * 1.3F));
+        localLayoutParams.topMargin = ((int)(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a.getMeasuredHeight() * 0.08F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

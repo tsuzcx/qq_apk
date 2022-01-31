@@ -62,7 +62,7 @@ public class MapViewJsPlugin
       return "";
     }
     if ("getMapCenterLocation".equals(paramString1)) {
-      AppBrandTask.runTaskOnUiThread(new MapViewJsPlugin.6(this, paramString2, paramString1, paramJsRuntime, paramInt));
+      AppBrandTask.runTaskOnUiThread(new MapViewJsPlugin.6(this, paramString2, paramJsRuntime, paramString1, paramInt));
     }
     for (;;)
     {
@@ -73,15 +73,15 @@ public class MapViewJsPlugin
       }
       else if ("getMapScale".equals(paramString1))
       {
-        AppBrandTask.runTaskOnUiThread(new MapViewJsPlugin.8(this, paramString2, paramString1, paramJsRuntime, paramInt));
+        AppBrandTask.runTaskOnUiThread(new MapViewJsPlugin.8(this, paramString2, paramJsRuntime, paramString1, paramInt));
       }
       else if ("translateMapMarker".equals(paramString1))
       {
-        AppBrandTask.runTaskOnUiThread(new MapViewJsPlugin.9(this, paramString2, paramString1, paramJsRuntime, paramInt));
+        AppBrandTask.runTaskOnUiThread(new MapViewJsPlugin.9(this, paramString2, paramJsRuntime, paramString1, paramInt));
       }
       else if ("includeMapPoints".equals(paramString1))
       {
-        AppBrandTask.runTaskOnUiThread(new MapViewJsPlugin.10(this, paramString2, paramString1, paramJsRuntime, paramInt));
+        AppBrandTask.runTaskOnUiThread(new MapViewJsPlugin.10(this, paramString2, paramJsRuntime, paramString1, paramInt));
       }
       else if ("getMapRegion".equals(paramString1))
       {

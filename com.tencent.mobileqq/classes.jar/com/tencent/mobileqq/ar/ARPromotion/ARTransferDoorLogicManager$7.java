@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import akjt;
-import akjx;
+import akyf;
+import akyj;
 import android.widget.RelativeLayout;
 
 public class ARTransferDoorLogicManager$7
   implements Runnable
 {
-  public ARTransferDoorLogicManager$7(akjt paramakjt) {}
+  public ARTransferDoorLogicManager$7(akyf paramakyf) {}
   
   public void run()
   {
-    if ((akjt.a(this.this$0) != null) && (akjt.a(this.this$0) != null))
+    if ((akyf.a(this.this$0) != null) && (akyf.a(this.this$0) != null))
     {
-      akjt.a(this.this$0).b(akjt.a(this.this$0));
-      akjt.a(this.this$0).setVisibility(8);
+      akyf.a(this.this$0).b(akyf.a(this.this$0));
+      akyf.a(this.this$0).setVisibility(8);
     }
   }
 }

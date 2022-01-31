@@ -9,17 +9,17 @@ class OrientationDetector$3
   
   public void run()
   {
-    synchronized (OrientationDetector.access$400(this.this$0))
+    synchronized (OrientationDetector.access$600(this.this$0))
     {
-      if (OrientationDetector.access$500(this.this$0) == null) {
+      if (OrientationDetector.access$700(this.this$0) == null) {
         return;
       }
     }
     try
     {
       if (this.val$enable) {
-        if (OrientationDetector.access$500(this.this$0).canDetectOrientation()) {
-          OrientationDetector.access$500(this.this$0).enable();
+        if (OrientationDetector.access$700(this.this$0).canDetectOrientation()) {
+          OrientationDetector.access$700(this.this$0).enable();
         }
       }
       for (;;)
@@ -28,7 +28,7 @@ class OrientationDetector$3
         return;
         localObject2 = finally;
         throw localObject2;
-        OrientationDetector.access$500(this.this$0).disable();
+        OrientationDetector.access$700(this.this$0).disable();
       }
     }
     catch (Throwable localThrowable)

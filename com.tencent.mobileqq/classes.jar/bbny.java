@@ -1,24 +1,41 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-public class bbny
-  implements Animation.AnimationListener
+public abstract class bbny
+  extends RecyclerView.OnScrollListener
 {
-  public bbny(ShaderAnimLayout paramShaderAnimLayout) {}
+  private boolean a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public abstract void a();
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.a.setVisibility(8);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
+    if (paramInt == 0)
+    {
+      paramInt = localGridLayoutManager.findLastCompletelyVisibleItemPosition();
+      if ((((bbnv)paramRecyclerView.getAdapter()).a(paramInt).a == 4) && (this.a)) {
+        a();
+      }
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt2 > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.a = bool;
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbny
  * JD-Core Version:    0.7.0.1
  */

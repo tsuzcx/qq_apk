@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
 class tuo
-  implements DialogInterface.OnDismissListener
+  extends AnimatorListenerAdapter
 {
-  tuo(tun paramtun, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  tuo(tun paramtun) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    super.onAnimationEnd(paramAnimator);
+    this.a.a.a = false;
   }
 }
 

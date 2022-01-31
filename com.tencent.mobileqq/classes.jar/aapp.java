@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
 
-public class aapp
-  extends ajjh
+public final class aapp
+  implements View.OnClickListener
 {
-  public aapp(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public aapp(Toast paramToast) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
+    this.a.cancel();
   }
 }
 

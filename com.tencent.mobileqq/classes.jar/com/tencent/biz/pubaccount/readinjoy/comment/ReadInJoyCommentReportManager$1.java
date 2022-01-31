@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import ndn;
-import nvu;
-import nvx;
+import noo;
+import ohf;
+import ohi;
 
 public class ReadInJoyCommentReportManager$1
   implements Runnable
 {
-  public ReadInJoyCommentReportManager$1(nvu paramnvu, String paramString1, String paramString2) {}
+  public ReadInJoyCommentReportManager$1(ohf paramohf, String paramString1, String paramString2) {}
   
   public void run()
   {
-    ndn.a(nvu.a(this.this$0), nvx.a(nvu.a(this.this$0)), this.a, this.a, 0, 0, String.valueOf(nvu.a(this.this$0).innerUniqueID), String.valueOf(nvu.a(this.this$0).mStrategyId), nvu.a(this.this$0).innerUniqueID, this.b, false);
+    noo.a(ohf.a(this.this$0), ohi.a(ohf.a(this.this$0)), this.a, this.a, 0, 0, String.valueOf(ohf.a(this.this$0).innerUniqueID), String.valueOf(ohf.a(this.this$0).mStrategyId), ohf.a(this.this$0).innerUniqueID, this.b, false);
   }
 }
 

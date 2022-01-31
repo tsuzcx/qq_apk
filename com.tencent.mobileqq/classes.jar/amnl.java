@@ -1,524 +1,380 @@
-import android.content.Intent;
-import android.os.Message;
-import android.text.TextUtils;
+import android.os.Bundle;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.splashlogo.KandianConfigServlet.1;
-import com.tencent.mobileqq.config.splashlogo.KandianConfigServlet.2;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.ConfigSeq;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.ReqGetConfig;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.RespGetConfig;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.confess.ConfessInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
-import java.util.List;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
+import java.util.HashSet;
+import java.util.Set;
 import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import tencent.im.oidb.cmd0xb67.oidb_0xb67.ReqBody;
+import tencent.im.oidb.cmd0xb67.oidb_0xb67.RspBody;
+import tencent.im.oidb.cmd0xbc3.oidb_0xbc3.ReqBody;
+import tencent.im.oidb.cmd0xbc3.oidb_0xbc3.RspBody;
 
 public class amnl
-  extends MSFServlet
+  extends ajtd
 {
-  private static Class<?> jdField_a_of_type_JavaLangClass;
-  private static boolean jdField_a_of_type_Boolean;
-  private static long b;
-  private static long c;
-  private static long d;
-  private static long e;
-  private long jdField_a_of_type_Long;
-  
-  private void a(long paramLong, QQAppInterface paramQQAppInterface)
+  public amnl(QQAppInterface paramQQAppInterface)
   {
-    long l = System.currentTimeMillis();
-    e = l - paramLong;
-    Object localObject;
-    if (jdField_a_of_type_JavaLangClass != null)
-    {
-      localObject = paramQQAppInterface.getHandler(jdField_a_of_type_JavaLangClass);
-      if ((localObject == null) || (e > 800L)) {
-        break label194;
-      }
-      Message localMessage = Message.obtain();
-      localMessage.what = 20140326;
-      ((MqqHandler)localObject).sendMessage(localMessage);
-      QLog.d("KandianConfigServlet", 1, "send msg notify login activity!");
-    }
+    super(paramQQAppInterface);
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
     for (;;)
     {
-      jdField_a_of_type_JavaLangClass = null;
-      QLog.d("KandianConfigServlet", 1, paramQQAppInterface.getAccount() + " notifyLoginNext, all cost:" + e + "  nowTime:" + l + "  startTime:" + paramLong);
-      localObject = new JSONObject();
+      return;
+      String str = paramToServiceMsg.extraData.getString("frdUin", "");
+      int j = paramToServiceMsg.extraData.getInt("shieldHours", 0);
+      int k = paramToServiceMsg.extraData.getInt("uinType", 0);
+      int m = paramToServiceMsg.extraData.getInt("topicId", 0);
+      oidb_0xb67.RspBody localRspBody = null;
       try
       {
-        ((JSONObject)localObject).put("totalCost", String.valueOf(e));
-        bgmq.a((JSONObject)localObject);
-        ndn.a(null, paramQQAppInterface.getAccount(), "0X800965D", "0X800965D", 0, 0, String.valueOf(b), String.valueOf(c), String.valueOf(d), ((JSONObject)localObject).toString(), false);
-        return;
-      }
-      catch (JSONException paramQQAppInterface)
-      {
-        label194:
-        QLog.d("KandianConfigServlet", 2, "only kandian tab switch, report error:" + paramQQAppInterface.toString());
-      }
-      QLog.d("KandianConfigServlet", 1, "give up send login next msg!");
-    }
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface, Intent paramIntent, int[] paramArrayOfInt, Packet paramPacket)
-  {
-    ConfigurationService.ReqGetConfig localReqGetConfig = new ConfigurationService.ReqGetConfig();
-    int j = paramArrayOfInt.length;
-    ArrayList localArrayList = new ArrayList(j);
-    int i = 0;
-    if (i < j)
-    {
-      ConfigurationService.ConfigSeq localConfigSeq = new ConfigurationService.ConfigSeq();
-      int k = paramArrayOfInt[i];
-      localConfigSeq.type.set(k);
-      switch (k)
-      {
-      }
-      for (;;)
-      {
-        localArrayList.add(localConfigSeq);
-        i += 1;
-        break;
-        String str = paramQQAppInterface.getCurrentAccountUin();
-        k = baig.M(paramQQAppInterface.getApp(), str);
-        localConfigSeq.version.set(k);
-        if (paramIntent.getBooleanExtra("configkandiantab", false))
+        paramToServiceMsg = (ConfessInfo)paramToServiceMsg.extraData.getSerializable("confessInfo");
+        localRspBody = new oidb_0xb67.RspBody();
+        int n = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+        if (n == 0)
         {
-          paramPacket.addAttribute("_attr_disable_merge", Boolean.valueOf(true));
-          QLog.e("KandianConfigServlet", 1, "addAllConfigs version : " + k + "  mCurrentUin : " + str);
-          a("1");
-        }
-      }
-    }
-    localReqGetConfig.setHasFlag(true);
-    localReqGetConfig.seq_list.addAll(localArrayList);
-    if (paramIntent != null)
-    {
-      boolean bool = paramIntent.getBooleanExtra("key_is_page_req", false);
-      paramQQAppInterface = localReqGetConfig.is_page_req;
-      if (!bool) {
-        break label293;
-      }
-    }
-    label293:
-    for (i = 1;; i = 0)
-    {
-      paramQQAppInterface.set(i);
-      paramQQAppInterface = paramIntent.getByteArrayExtra("key_cookies");
-      if (paramQQAppInterface != null) {
-        localReqGetConfig.cookies.set(ByteStringMicro.copyFrom(paramQQAppInterface));
-      }
-      paramQQAppInterface = a(localReqGetConfig);
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 0)) {
-        paramPacket.putSendData(paramQQAppInterface);
-      }
-      paramPacket.setSSOCommand("ConfigurationService.ReqGetConfig");
-      return;
-    }
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    paramQQAppInterface = (Boolean)bgmq.a("local_kd_tab_has_set");
-    boolean bool = TextUtils.equals("1", paramString);
-    int i;
-    if ((paramQQAppInterface != null) && (!paramQQAppInterface.booleanValue())) {
-      if (bgmq.a(bool))
-      {
-        if (System.currentTimeMillis() - paramLong > 800L) {
-          break label118;
-        }
-        if (!bool) {
-          break label112;
-        }
-        i = 1;
-        bgmq.e(i);
-      }
-    }
-    for (;;)
-    {
-      paramLong = System.currentTimeMillis();
-      QLog.d("KandianConfigServlet", 1, "updateKandianTabConfigSwitch, tabSwitch = " + bool + "write sp cost:" + (paramLong - l));
-      return;
-      label112:
-      i = 0;
-      break;
-      label118:
-      if ((!obz.d()) && (!obz.l()))
-      {
-        QLog.d("KandianConfigServlet", 1, "receive kandian tab config is delay, but not in kandian , update now !");
-        bgmq.c();
-        ohb.a().a(0, null);
-        continue;
-        QLog.d("KandianConfigServlet", 1, "updateKandianTabConfigSwitch user has set switch, give up !");
-      }
-    }
-  }
-  
-  private void a(ConfigurationService.RespGetConfig paramRespGetConfig, QQAppInterface paramQQAppInterface, Intent paramIntent, int[] paramArrayOfInt, boolean paramBoolean)
-  {
-    int i = 0;
-    if ((!paramBoolean) || (paramRespGetConfig.result.get() != 0) || (paramRespGetConfig.config_list == null) || (paramRespGetConfig.config_list.size() == 0))
-    {
-      if (!paramBoolean) {
-        i = 1;
-      }
-      for (;;)
-      {
-        QLog.d("KandianConfigServlet", 1, "receiveAllConfig fail, errorType : " + i);
-        if ((paramIntent.getBooleanExtra("configkandiantab", false)) && (paramIntent.getBooleanExtra("needNotifyNext", false))) {
-          a(paramIntent.getLongExtra("startTime", 0L), paramQQAppInterface);
-        }
-        a("0X8009680", "1", String.valueOf(i));
-        return;
-        if (paramRespGetConfig.result.get() != 0)
-        {
-          i = 2;
-        }
-        else
-        {
-          if ((paramRespGetConfig.config_list != null) && (paramRespGetConfig.config_list.size() != 0)) {
-            break;
-          }
-          i = 3;
-        }
-      }
-    }
-    long l1 = System.currentTimeMillis();
-    int j = paramRespGetConfig.config_list.size();
-    label171:
-    if (i < j)
-    {
-      paramArrayOfInt = (ConfigurationService.Config)paramRespGetConfig.config_list.get(i);
-      if (paramArrayOfInt != null) {}
-    }
-    for (;;)
-    {
-      i += 1;
-      break label171;
-      if (paramArrayOfInt.type.has())
-      {
-        Integer localInteger = Integer.valueOf(paramArrayOfInt.type.get());
-        QLog.d("KandianConfigServlet", 1, "receiveAllConfigs|receive type: " + localInteger + ", length: " + j);
-        try
-        {
-          switch (localInteger.intValue())
+          int i;
+          if (localRspBody.uint32_result.has())
           {
-          case 92: 
-            l2 = paramIntent.getLongExtra("startTime", 0L);
-            if (!paramIntent.getBooleanExtra("configkandiantab", false)) {
-              continue;
+            i = localRspBody.uint32_result.get();
+            label118:
+            if (!localRspBody.bytes_err_msg.has()) {
+              break label274;
             }
-            a(paramArrayOfInt, l2);
-            if (!paramIntent.getBooleanExtra("needNotifyNext", false)) {
-              continue;
-            }
-            a(l2, paramQQAppInterface);
-          }
-        }
-        catch (Exception paramArrayOfInt)
-        {
-          QLog.d("KandianConfigServlet", 1, "receiveAllConfig..parse error:" + paramArrayOfInt.getMessage());
-        }
-        continue;
-        long l2 = System.currentTimeMillis();
-        QLog.d("KandianConfigServlet", 1, "receiveAllConfigs|executeSpendTime: " + (l2 - l1));
-        return;
-        i = 0;
-        break;
-      }
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    a("0X800967F", paramString, null);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    ThreadManager.executeOnSubThread(new KandianConfigServlet.2(paramString1, paramString2, paramString3));
-  }
-  
-  public static void a(String paramString, int[] paramArrayOfInt, int paramInt)
-  {
-    int i;
-    if (paramArrayOfInt != null) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < paramArrayOfInt.length)
-      {
-        if (paramArrayOfInt[i] == 92) {
-          a("0X8009680", paramString, String.valueOf(paramInt));
-        }
-      }
-      else
-      {
-        QLog.d("KandianConfigServlet", 1, "reportKDConfigNetFailed isOnly92:" + paramString + "  cmds:" + paramArrayOfInt + "   resultCode:" + paramInt);
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime, Class<?> paramClass, long paramLong)
-  {
-    QLog.d("KandianConfigServlet", 1, "getKandianTabConfig,need notify");
-    return a(paramAppRuntime, paramClass, paramLong, true);
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime, Class<?> paramClass, long paramLong, boolean paramBoolean)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int i;
-    if (paramAppRuntime != null)
-    {
-      bool1 = bool2;
-      if ((paramAppRuntime instanceof AppInterface))
-      {
-        paramAppRuntime = (AppInterface)paramAppRuntime;
-        BaseApplication localBaseApplication = paramAppRuntime.getApp();
-        String str = paramAppRuntime.getAccount();
-        bool1 = bool2;
-        if (localBaseApplication != null)
-        {
-          bool1 = bool2;
-          if (!TextUtils.isEmpty(str))
-          {
-            i = baig.M(localBaseApplication, str);
+            paramFromServiceMsg = localRspBody.bytes_err_msg.get().toStringUtf8();
+            label141:
             if (i != 0) {
-              break label251;
+              break label297;
             }
-            jdField_a_of_type_JavaLangClass = paramClass;
-            paramClass = new NewIntent(localBaseApplication, amnl.class);
-            paramClass.putExtra("k_cmd_type", new int[] { 92 });
-            paramClass.putExtra("configkandiantab", true);
-            paramClass.putExtra("startTime", paramLong);
-            paramClass.putExtra("needNotifyNext", paramBoolean);
-            if (!baip.a(str)) {
-              paramClass.putExtra("key_uin", str);
+            if (j != -1) {
+              break label280;
             }
-            b = System.currentTimeMillis() - paramLong;
-            QLog.d("KandianConfigServlet", 1, "getKandianTabConfig, currentUin : " + str + "  cost time：" + b);
-            paramAppRuntime.startServlet(paramClass);
+            amns.a(this.app, str, amnk.e, k, m, paramToServiceMsg);
+            label169:
+            notifyUI(3, true, new Object[] { str, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j), null, paramToServiceMsg });
+          }
+          while (QLog.isColorLevel())
+          {
+            QLog.i("ConfessHandler", 2, String.format("handleSetShieldFlag result:%d rspResult:%d frdUin:%s hours:%d", new Object[] { Integer.valueOf(n), Integer.valueOf(i), str, Integer.valueOf(j) }));
+            return;
+            i = 0;
+            break label118;
+            label274:
+            paramFromServiceMsg = "";
+            break label141;
+            label280:
+            amns.a(this.app, str, k, m, paramToServiceMsg);
+            break label169;
+            label297:
+            notifyUI(3, false, new Object[] { str, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j), paramFromServiceMsg, null });
           }
         }
-      }
-    }
-    for (bool1 = true;; bool1 = bool2)
-    {
-      QLog.d("KandianConfigServlet", 1, obz.a() + " getKandianTabConfig executed:" + bool1 + "  startTime:" + paramLong);
-      return bool1;
-      label251:
-      QLog.d("KandianConfigServlet", 1, "getKandianTabConfig local config exist, version : " + i);
-    }
-  }
-  
-  private static byte[] a(ConfigurationService.ReqGetConfig paramReqGetConfig)
-  {
-    paramReqGetConfig = paramReqGetConfig.toByteArray();
-    long l = paramReqGetConfig.length;
-    byte[] arrayOfByte = new byte[(int)l + 4];
-    bakz.a(arrayOfByte, 0, 4L + l);
-    bakz.a(arrayOfByte, 4, paramReqGetConfig, (int)l);
-    return arrayOfByte;
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte)
-  {
-    int i = paramArrayOfByte.length - 4;
-    byte[] arrayOfByte = new byte[i];
-    bakz.a(arrayOfByte, 0, paramArrayOfByte, 4, i);
-    return arrayOfByte;
-  }
-  
-  public void a(ConfigurationService.Config paramConfig, long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    try
-    {
-      localQQAppInterface = (QQAppInterface)getAppRuntime();
-      if ((!paramConfig.content_list.has()) || (paramConfig.content_list.size() <= 0)) {
-        break label328;
-      }
-      k = 0;
-      i = 0;
-    }
-    catch (Exception paramConfig)
-    {
-      for (;;)
-      {
-        QQAppInterface localQQAppInterface;
-        int k;
-        int j;
-        QLog.e("KandianConfigServlet", 1, "handleReadTabConfig has exception : " + paramConfig);
-        continue;
-        int i = j;
-        continue;
-        k += 1;
-      }
-    }
-    j = paramConfig.content_list.size();
-    if (k < j) {}
-    for (;;)
-    {
-      String str2;
-      try
-      {
-        localObject = ((String)paramConfig.content_list.get(k)).trim();
-        j = i;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
+        paramFromServiceMsg = localRspBody.bytes_err_msg.get().toStringUtf8();
+        if (QLog.isColorLevel()) {
+          if (paramFromServiceMsg != null) {
+            break label449;
+          }
         }
-        j = i;
-        if (!((String)localObject).contains("kandian_tab_switch")) {
-          break;
-        }
-        localObject = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(((String)localObject).getBytes("utf-8"))).getElementsByTagName("configs").item(0).getFirstChild();
-        j = i;
-        if (localObject == null) {
-          break;
-        }
-        if (((Node)localObject).getFirstChild() != null)
+        label449:
+        for (paramToServiceMsg = "";; paramToServiceMsg = paramFromServiceMsg)
         {
-          String str1 = ((Node)localObject).getNodeName();
-          str2 = ((Node)localObject).getFirstChild().getNodeValue();
-          if (TextUtils.equals(str1, "kandian_tab_switch")) {
-            a(localQQAppInterface, str2, paramLong);
-          }
+          QLog.i("ConfessHandler", 2, String.format("handleSetShieldFlag failed result:%d msg:%s", new Object[] { Integer.valueOf(n), paramToServiceMsg }));
+          notifyUI(3, false, new Object[] { str, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j), paramFromServiceMsg, null });
+          return;
         }
       }
-      catch (Exception localException1) {}
-      try
-      {
-        QLog.d("KandianConfigServlet", 1, "handleReadTabConfig receive config, value : " + str2);
-        i = 1;
-        if (i == 0) {
-          break label385;
-        }
-        d = System.currentTimeMillis() - l;
-        QLog.d("KandianConfigServlet", 1, "handleReadTabConfig parse cost : " + d);
-        return;
-      }
-      catch (Exception localException2)
+      catch (Exception paramToServiceMsg)
       {
         for (;;)
         {
-          i = 1;
+          paramToServiceMsg = localRspBody;
         }
       }
-      Object localObject = ((Node)localObject).getNextSibling();
-      continue;
-      QLog.d("KandianConfigServlet", 1, "handleReadTabConfig parse has exception " + localException1);
-      j = i;
-      break;
-      label328:
-      QLog.d("KandianConfigServlet", 1, "handleReadTabConfig receive config is empty!");
     }
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private void b(QQAppInterface paramQQAppInterface, amnk paramamnk)
   {
-    long l = System.currentTimeMillis();
-    c = l - this.jdField_a_of_type_Long;
-    QLog.i("KandianConfigServlet", 1, "onReceive  request cost:" + c);
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    int[] arrayOfInt = paramIntent.getIntArrayExtra("k_cmd_type");
-    boolean bool = paramFromServiceMsg.isSuccess();
-    QLog.d("KandianConfigServlet", 1, obz.a() + " onReceive   nowTime:" + l + "   requestCost:" + c + " success:" + bool + "  code" + paramFromServiceMsg.getResultCode());
-    if ((arrayOfInt == null) || (arrayOfInt.length == 0)) {
+    int i = 0;
+    long l1 = awzw.a();
+    long l2 = amnk.a(paramQQAppInterface, "redpoint_box_show");
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfessHandler", 2, String.format("onNeedShowBoxRedPoint oldRedPointTs:%d", new Object[] { Long.valueOf(l2) }));
+    }
+    amnk.a(paramQQAppInterface, "redpoint_box_show", l1);
+    amns.a(paramQQAppInterface, false, true);
+    paramQQAppInterface.a().a().d(ajsf.aM, 1032);
+    aktg localaktg = paramQQAppInterface.a().a();
+    RecentUser localRecentUser = localaktg.b(ajsf.aM, 1032);
+    if (localRecentUser == null)
+    {
+      paramQQAppInterface = new RecentUser(ajsf.aM, 1032);
+      paramQQAppInterface.lastmsgtime = l1;
+      i = 1;
+    }
+    for (;;)
+    {
+      if (i != 0)
+      {
+        localaktg.a(paramQQAppInterface);
+        paramQQAppInterface = this.mApp.getHandler(Conversation.class);
+        if (paramQQAppInterface != null) {
+          paramQQAppInterface.sendEmptyMessage(1009);
+        }
+      }
+      notifyUI(4, true, paramamnk);
+      return;
+      paramQQAppInterface = localRecentUser;
+      if (localRecentUser.lastmsgtime < l1)
+      {
+        localRecentUser.lastmsgtime = l1;
+        i = 1;
+        paramQQAppInterface = localRecentUser;
+      }
+    }
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
       return;
     }
-    Object localObject = paramFromServiceMsg.getWupBuffer();
-    if ((localObject == null) || (localObject.length < 4))
+    long l1 = paramToServiceMsg.extraData.getLong("fromUin", 0L);
+    long l2 = paramToServiceMsg.extraData.getLong("toUin", 0L);
+    int i = paramToServiceMsg.extraData.getInt("topicId", 0);
+    int j = paramToServiceMsg.extraData.getInt("type", 0);
+    boolean bool = paramToServiceMsg.extraData.getBoolean("isConfessor", false);
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfessHandler", 2, "handleGetHolmesProgress fUin:" + l1 + " tUin:" + l2 + " topicid:" + i + " type:" + j + " isConfessor:" + bool);
+    }
+    paramToServiceMsg = new oidb_0xbc3.RspBody();
+    int k = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    if (k == 0)
     {
-      QLog.d("KandianConfigServlet", 1, "wup buf is null!!!");
-      a("1", arrayOfInt, paramFromServiceMsg.getResultCode());
+      if ((paramToServiceMsg.uint32_cur_count.has()) && (paramToServiceMsg.uint32_total_count.has()))
+      {
+        k = paramToServiceMsg.uint32_cur_count.get();
+        int m = paramToServiceMsg.uint32_total_count.get();
+        if (QLog.isColorLevel()) {
+          QLog.i("ConfessHandler", 2, "handleGetHolmesProgress curCount:" + k + " totalCount:" + m);
+        }
+        notifyUI(8, true, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("ConfessHandler", 2, "handleGetHolmesProgress failed no msg");
+      }
+      notifyUI(8, false, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(bool) });
       return;
     }
-    paramFromServiceMsg.putWupBuffer(a((byte[])localObject));
-    localObject = new ConfigurationService.RespGetConfig();
-    try
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfessHandler", 2, "handleGetHolmesProgress failed result:" + k);
+    }
+    notifyUI(8, false, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(bool) });
+  }
+  
+  private void c(QQAppInterface paramQQAppInterface, amnk paramamnk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfessHandler", 2, "onNeedShowLebaRedPoint");
+    }
+    amnk.a(paramQQAppInterface, "redpoint_leba_show", awzw.a());
+  }
+  
+  public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfessHandler", 2, "getHolmesCurrentProgress fUin:" + paramLong1 + " tUin:" + paramLong2 + " topicid:" + paramInt1 + " isConfessor:" + paramBoolean);
+    }
+    Object localObject = new oidb_0xbc3.ReqBody();
+    ((oidb_0xbc3.ReqBody)localObject).uint64_from.set(paramLong1);
+    ((oidb_0xbc3.ReqBody)localObject).uint64_to.set(paramLong2);
+    ((oidb_0xbc3.ReqBody)localObject).uint32_topic_id.set(paramInt1);
+    PBUInt32Field localPBUInt32Field = ((oidb_0xbc3.ReqBody)localObject).uint32_is_confessor;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      ((ConfigurationService.RespGetConfig)localObject).mergeFrom(paramFromServiceMsg.getWupBuffer());
+      localPBUInt32Field.set(i);
+      localObject = makeOIDBPkg("OidbSvc.cmd0xbc3", 3011, 0, ((oidb_0xbc3.ReqBody)localObject).toByteArray());
+      ((ToServiceMsg)localObject).extraData.putLong("fromUin", paramLong1);
+      ((ToServiceMsg)localObject).extraData.putLong("toUin", paramLong2);
+      ((ToServiceMsg)localObject).extraData.putInt("topicId", paramInt1);
+      ((ToServiceMsg)localObject).extraData.putInt("type", paramInt2);
+      ((ToServiceMsg)localObject).extraData.putBoolean("isConfessor", paramBoolean);
+      super.sendPbReq((ToServiceMsg)localObject);
+      return;
+    }
+  }
+  
+  public void a(amoa paramamoa)
+  {
+    if (this.app == null) {
+      return;
+    }
+    if (this.app.a().a().b(ajsf.aM, 1032) != null)
+    {
+      MqqHandler localMqqHandler = this.mApp.getHandler(Conversation.class);
+      if (localMqqHandler != null) {
+        localMqqHandler.sendEmptyMessage(1009);
+      }
+    }
+    notifyUI(2, true, paramamoa);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, amnk paramamnk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfessHandler", 2, String.format("onGetNewConfig boxEntry:%d contactEntry:%d", new Object[] { Integer.valueOf(paramamnk.h), Integer.valueOf(paramamnk.i) }));
+    }
+    if (paramamnk.h == 2) {
+      b(paramQQAppInterface, paramamnk);
+    }
+    if (paramamnk.i == 2) {
+      c(paramQQAppInterface, paramamnk);
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, ConfessInfo paramConfessInfo, int paramInt3)
+  {
+    if (paramConfessInfo == null) {}
+    for (;;)
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("ConfessHandler", 2, String.format("setSetShieldFlag frdUin:%s uinType:%d topicId:%d hours:%d confessinfo:%s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramConfessInfo.toString() }));
+      }
+      long l1 = 0L;
       try
       {
-        yte.a(((ConfigurationService.RespGetConfig)localObject).min_req_interval_for_reconnect.get());
-        a((ConfigurationService.RespGetConfig)localObject, localQQAppInterface, paramIntent, arrayOfInt, bool);
-        return;
+        l2 = Long.parseLong(paramString);
+        l1 = l2;
+        boolean bool = Friends.isValidUin(l2);
+        if (!bool) {}
       }
-      catch (Exception paramIntent)
+      catch (Exception localException)
       {
-        QLog.w("KandianConfigServlet", 1, paramIntent.toString());
-        return;
+        for (;;)
+        {
+          Object localObject;
+          if (QLog.isColorLevel()) {
+            QLog.i("ConfessHandler", 2, "setSetShieldFlag parseUin error return");
+          }
+          long l2 = l1;
+          continue;
+          String str = "0X80091A2";
+        }
       }
-      return;
     }
-    catch (InvalidProtocolBufferMicroException paramIntent)
+    if (paramInt3 == -1)
     {
-      QLog.d("KandianConfigServlet", 1, "error: " + paramIntent.toString());
-      paramIntent.printStackTrace();
+      localObject = "0X80091A3";
+      axqw.b(this.app, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+      localObject = new oidb_0xb67.ReqBody();
+      ((oidb_0xb67.ReqBody)localObject).uint64_shield_uin.set(l2);
+      ((oidb_0xb67.ReqBody)localObject).int64_expire_time.set(paramInt3);
+      localObject = makeOIDBPkg("OidbSvc.cmd0xb67", 2919, 1, ((oidb_0xb67.ReqBody)localObject).toByteArray());
+      ((ToServiceMsg)localObject).extraData.putString("frdUin", paramString);
+      ((ToServiceMsg)localObject).extraData.putInt("uinType", paramInt1);
+      ((ToServiceMsg)localObject).extraData.putInt("topicId", paramInt2);
+      ((ToServiceMsg)localObject).extraData.putInt("shieldHours", paramInt3);
+      ((ToServiceMsg)localObject).extraData.putSerializable("confessInfo", paramConfessInfo);
+      super.sendPbReq((ToServiceMsg)localObject);
+      return;
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void b(amoa paramamoa)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    int[] arrayOfInt = paramIntent.getIntArrayExtra("k_cmd_type");
-    if ((arrayOfInt == null) || (arrayOfInt.length == 0)) {
+    if (this.app == null) {
       return;
     }
-    a(localQQAppInterface, paramIntent, arrayOfInt, paramPacket);
-    if (!jdField_a_of_type_Boolean) {
-      jdField_a_of_type_Boolean = false;
-    }
-    try
+    aktg localaktg;
+    RecentUser localRecentUser2;
+    int i;
+    RecentUser localRecentUser1;
+    if ((paramamoa != null) && (paramamoa.a()))
     {
-      ThreadManager.executeOnSubThread(new KandianConfigServlet.1(this));
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      QLog.d("KandianConfigServlet", 1, obz.a() + " onSend   mRequestStartTime:" + this.jdField_a_of_type_Long + "  cmds:" + arrayOfInt);
-      return;
+      localaktg = this.app.a().a();
+      localRecentUser2 = localaktg.b(ajsf.aM, 1032);
+      i = 0;
+      if (localRecentUser2 != null) {
+        break label123;
+      }
+      localRecentUser1 = new RecentUser();
+      localRecentUser1.uin = ajsf.aM;
+      localRecentUser1.setType(1032);
+      localRecentUser1.lastmsgtime = paramamoa.a;
+      i = 1;
     }
-    catch (Exception paramIntent)
+    for (;;)
     {
-      for (;;)
+      if (i != 0)
       {
-        QLog.i("KandianConfigServlet", 1, "sSpHasRead error:" + paramIntent.toString());
+        localaktg.a(localRecentUser1);
+        paramamoa = this.mApp.getHandler(Conversation.class);
+        if (paramamoa != null) {
+          paramamoa.sendEmptyMessage(1009);
+        }
+      }
+      notifyUI(1, true, null);
+      return;
+      label123:
+      localRecentUser1 = localRecentUser2;
+      if (localRecentUser2.lastmsgtime < paramamoa.a)
+      {
+        localRecentUser2.lastmsgtime = paramamoa.a;
+        i = 1;
+        localRecentUser1 = localRecentUser2;
       }
     }
+  }
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OidbSvc.cmd0xb67");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return amnt.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    if ("OidbSvc.cmd0xb67".equals(str)) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    while (!"OidbSvc.cmd0xbc3".equals(str)) {
+      return;
+    }
+    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amnl
  * JD-Core Version:    0.7.0.1
  */

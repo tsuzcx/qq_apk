@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.history;
 
-import afka;
-import afkb;
-import afkc;
-import afkk;
-import afmn;
-import afpf;
-import afps;
-import afpv;
-import ahpg;
+import afvx;
+import afvy;
+import afvz;
+import afwh;
+import afyk;
+import agbf;
+import agbs;
+import agbv;
+import aiby;
 import android.app.Dialog;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
@@ -20,8 +20,8 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import babr;
-import bafb;
+import bbcv;
+import bbgg;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -31,16 +31,16 @@ public abstract class ChatHistoryBaseFragment
   extends Fragment
 {
   private int jdField_a_of_type_Int;
-  protected afkk a;
-  afmn jdField_a_of_type_Afmn = new afkc(this);
-  public afpf a;
-  public afps a;
-  afpv jdField_a_of_type_Afpv = new afkb(this);
-  public ahpg a;
+  protected afwh a;
+  afyk jdField_a_of_type_Afyk = new afvz(this);
+  public agbf a;
+  public agbs a;
+  agbv jdField_a_of_type_Agbv = new afvy(this);
+  public aiby a;
   Dialog jdField_a_of_type_AndroidAppDialog;
   protected Handler a;
   protected View a;
-  bafb jdField_a_of_type_Bafb;
+  bbgg jdField_a_of_type_Bbgg;
   protected ChatHistoryBaseFragment.ProgressView a;
   public BaseActivity a;
   public QQAppInterface a;
@@ -73,9 +73,9 @@ public abstract class ChatHistoryBaseFragment
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void a(afkk paramafkk)
+  public void a(afwh paramafwh)
   {
-    this.jdField_a_of_type_Afkk = paramafkk;
+    this.jdField_a_of_type_Afwh = paramafwh;
   }
   
   public void a(BaseActivity paramBaseActivity)
@@ -153,23 +153,23 @@ public abstract class ChatHistoryBaseFragment
   
   public void c(String paramString)
   {
-    if (this.jdField_a_of_type_Bafb == null)
+    if (this.jdField_a_of_type_Bbgg == null)
     {
-      this.jdField_a_of_type_Bafb = babr.a(getActivity(), 230);
-      this.jdField_a_of_type_Bafb.setNegativeButton(2131653656, new afka(this));
+      this.jdField_a_of_type_Bbgg = bbcv.a(getActivity(), 230);
+      this.jdField_a_of_type_Bbgg.setNegativeButton(2131719540, new afvx(this));
     }
-    if (!this.jdField_a_of_type_Bafb.isShowing()) {
-      this.jdField_a_of_type_Bafb.setMessage(paramString);
+    if (!this.jdField_a_of_type_Bbgg.isShowing()) {
+      this.jdField_a_of_type_Bbgg.setMessage(paramString);
     }
     for (;;)
     {
       try
       {
-        this.jdField_a_of_type_Bafb.show();
+        this.jdField_a_of_type_Bbgg.show();
         return;
       }
       catch (Throwable paramString) {}
-      this.jdField_a_of_type_Bafb.dismiss();
+      this.jdField_a_of_type_Bbgg.dismiss();
     }
   }
   
@@ -180,37 +180,37 @@ public abstract class ChatHistoryBaseFragment
     localArrayList.add(Integer.valueOf(2));
     localArrayList.add(Integer.valueOf(3));
     localArrayList.add(Integer.valueOf(4));
-    this.jdField_a_of_type_Afps.a(localArrayList);
+    this.jdField_a_of_type_Agbs.a(localArrayList);
   }
   
   public void e()
   {
-    this.jdField_a_of_type_Afkk.a(this.jdField_a_of_type_Afmn);
-    this.jdField_a_of_type_Afkk.a(c());
-    this.jdField_a_of_type_Afkk.a(true);
-    this.jdField_a_of_type_Ahpg.a(4);
+    this.jdField_a_of_type_Afwh.a(this.jdField_a_of_type_Afyk);
+    this.jdField_a_of_type_Afwh.a(c());
+    this.jdField_a_of_type_Afwh.a(true);
+    this.jdField_a_of_type_Aiby.a(4);
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Afps != null) {
-      this.jdField_a_of_type_Afps.b();
+    if (this.jdField_a_of_type_Agbs != null) {
+      this.jdField_a_of_type_Agbs.b();
     }
-    this.jdField_a_of_type_Ahpg.a(8);
+    this.jdField_a_of_type_Aiby.a(8);
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_Afps != null) {
-      this.jdField_a_of_type_Afps.b();
+    if (this.jdField_a_of_type_Agbs != null) {
+      this.jdField_a_of_type_Agbs.b();
     }
     c();
   }
   
   public void h()
   {
-    this.jdField_a_of_type_Afpf.a();
-    this.jdField_a_of_type_Afkk.e();
+    this.jdField_a_of_type_Agbf.a();
+    this.jdField_a_of_type_Afwh.e();
     this.c = false;
   }
   
@@ -218,12 +218,12 @@ public abstract class ChatHistoryBaseFragment
   {
     if (this.jdField_a_of_type_AndroidAppDialog == null)
     {
-      this.jdField_a_of_type_AndroidAppDialog = new Dialog(getActivity(), 2131690181);
+      this.jdField_a_of_type_AndroidAppDialog = new Dialog(getActivity(), 2131755791);
       this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131493818);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559386);
     }
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131305861);
-    localTextView.setText(localTextView.getResources().getString(2131624384));
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371557);
+    localTextView.setText(localTextView.getResources().getString(2131689932));
     if (!this.jdField_a_of_type_AndroidAppDialog.isShowing()) {}
     try
     {
@@ -252,8 +252,8 @@ public abstract class ChatHistoryBaseFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Afpf = new afpf();
-    this.jdField_a_of_type_Ahpg = new ahpg(this);
+    this.jdField_a_of_type_Agbf = new agbf();
+    this.jdField_a_of_type_Aiby = new aiby(this);
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -271,8 +271,8 @@ public abstract class ChatHistoryBaseFragment
     if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) {
       return;
     }
-    this.jdField_a_of_type_Afps = new afps(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (ViewGroup)getView());
-    this.jdField_a_of_type_Afps.a(this.jdField_a_of_type_Afpv);
+    this.jdField_a_of_type_Agbs = new agbs(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (ViewGroup)getView());
+    this.jdField_a_of_type_Agbs.a(this.jdField_a_of_type_Agbv);
     d();
   }
   

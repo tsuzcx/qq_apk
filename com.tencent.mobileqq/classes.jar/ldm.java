@@ -1,21 +1,35 @@
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.gaudio.GaInviteLockActivity.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.media.MediaPlayer;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 
 public class ldm
-  extends kvg
+  extends ldx
 {
-  public ldm(GaInviteLockActivity paramGaInviteLockActivity) {}
-  
-  protected void a(long paramLong1, long paramLong2, ArrayList<ldv> paramArrayList)
+  public ldm(VideoController paramVideoController)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onReceiveMemberList mMemberChangeEventReceiver size:" + paramArrayList.size());
+    super(paramVideoController);
+  }
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    lcl.d(VideoController.jdField_a_of_type_JavaLangString, "onCompletion onCloseDoubleVideoMeeting");
+    if (this.jdField_a_of_type_ComTencentAvVideoController.a().J)
+    {
+      if (paramMediaPlayer != null) {
+        paramMediaPlayer.release();
+      }
+      long l = this.jdField_a_of_type_ComTencentAvVideoController.a().g;
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), String.valueOf(l), Boolean.valueOf(true) });
+      this.jdField_a_of_type_ComTencentAvVideoController.a(3, l, 85);
+      this.jdField_a_of_type_ComTencentAvVideoController.a().J = false;
+      this.jdField_a_of_type_ComTencentAvVideoController.a().I = false;
     }
-    ThreadManager.getUIHandler().post(new GaInviteLockActivity.1.1(this, paramArrayList));
+    for (;;)
+    {
+      this.jdField_a_of_type_Long = 0L;
+      return;
+      lcl.e(VideoController.jdField_a_of_type_JavaLangString, "mOnCloseDoubleVideoMeetingListener-->Is not in doubleMeetingRoom");
+    }
   }
 }
 

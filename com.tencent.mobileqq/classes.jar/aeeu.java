@@ -1,34 +1,37 @@
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForWantGiftMsg;
 
 class aeeu
-  implements bbfj<oidb_0x8ed.RspBody>
+  implements View.OnClickListener
 {
-  aeeu(aeet paramaeet) {}
+  aeeu(aeet paramaeet, ChatMessage paramChatMessage, MessageForWantGiftMsg paramMessageForWantGiftMsg) {}
   
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a.jdField_a_of_type_JavaLangString, 2, "exitRoom: errorCode = " + paramInt);
-    }
-    if ((paramInt == 0) || (paramInt == 1285))
+    if (paramView.getId() == 2131372750)
     {
-      if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
-        this.a.a.d.dismiss();
+      new axra(this.jdField_a_of_type_Aeet.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_flower").c("grp_aio").d("clk_send_him").a(0).a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + "", "29" }).a();
+      paramView = bbjn.i(this.jdField_a_of_type_Aeet.jdField_a_of_type_AndroidContentContext, "url");
+      if (TextUtils.isEmpty(paramView)) {
+        break label216;
       }
-      new Intent().putExtra("isNeedFinish", true);
-      baig.e(this.a.a.a(), this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-      asgb.a().d();
-      this.a.a.ab = true;
-      this.a.a.b(1);
+    }
+    for (;;)
+    {
+      paramView = paramView.replace("{troopUin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.frienduin).replace("{uin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.senderuin).replace("{from}", "29");
+      Intent localIntent = new Intent(this.jdField_a_of_type_Aeet.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_Aeet.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
       return;
+      label216:
+      paramView = "https://qun.qq.com/qunpay/gifts/index.html?_bid=2204&troopUin={troopUin}&uin={uin}&from={from}&_wv=1031";
     }
-    if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
-      this.a.a.d.dismiss();
-    }
-    bbmy.a(this.a.a.a(), 1, ajjy.a(2131639284), 0).b(this.a.a.a());
   }
 }
 

@@ -10,13 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import bhfc;
-import bhpp;
-import bimt;
+import bizu;
+import bjkh;
+import bkdo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import vms;
+import vzo;
 
 public abstract class ProviderView
   extends FrameLayout
@@ -25,8 +25,8 @@ public abstract class ProviderView
   protected View a;
   protected ViewGroup a;
   protected RelativeLayout a;
-  public bhpp a;
-  protected bimt a;
+  public bjkh a;
+  protected bkdo a;
   protected AppInterface a;
   protected QIMSlidingTabView a;
   protected Handler b;
@@ -72,23 +72,23 @@ public abstract class ProviderView
   
   public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = bhfc.a();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = bizu.a();
     if (this.jdField_b_of_type_AndroidViewView == null)
     {
-      paramBundle = LayoutInflater.from(getContext()).inflate(2131494959, this, false);
+      paramBundle = LayoutInflater.from(getContext()).inflate(2131560533, this, false);
       addView(paramBundle);
-      this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131306355));
+      this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131372052));
       if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
       {
-        this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)LayoutInflater.from(getContext()).inflate(2131494960, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false));
+        this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)LayoutInflater.from(getContext()).inflate(2131560534, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false));
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView);
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131306352));
+        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131372049));
       }
     }
     else
     {
       paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-      paramBundle.height = vms.a(getContext(), this.f);
+      paramBundle.height = vzo.a(getContext(), this.f);
       this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramBundle);
       if (this.e != 1) {
         break label221;
@@ -102,7 +102,7 @@ public abstract class ProviderView
         if (this.e != 1) {
           break label229;
         }
-        findViewById(2131306356).setVisibility(0);
+        findViewById(2131372053).setVisibility(0);
       }
     }
     for (;;)
@@ -112,7 +112,7 @@ public abstract class ProviderView
         QLog.i("ProviderView", 2, "oncreate");
       }
       return;
-      this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131306350));
+      this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131372047));
       break;
       label221:
       paramBundle = this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView;
@@ -147,21 +147,21 @@ public abstract class ProviderView
     if (this.jdField_a_of_type_AndroidViewView == null) {
       try
       {
-        paramBundle = LayoutInflater.from(getContext()).inflate(2131494959, this, false);
+        paramBundle = LayoutInflater.from(getContext()).inflate(2131560533, this, false);
         addView(paramBundle);
         if (this.jdField_b_of_type_AndroidViewView == null)
         {
           this.jdField_b_of_type_AndroidViewView = paramBundle;
-          this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131306355));
+          this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131372052));
           if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
             break label143;
           }
-          this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)LayoutInflater.from(getContext()).inflate(2131494960, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false));
+          this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)LayoutInflater.from(getContext()).inflate(2131560534, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false));
           this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView);
         }
         for (;;)
         {
-          this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewView.findViewById(2131306352));
+          this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewView.findViewById(2131372049));
           paramBundle = LayoutInflater.from(getContext()).inflate(a(), this, false);
           if (this.jdField_a_of_type_AndroidViewView != null) {
             break;
@@ -169,7 +169,7 @@ public abstract class ProviderView
           this.jdField_a_of_type_AndroidViewView = paramBundle;
           return;
           label143:
-          this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131306350));
+          this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131372047));
         }
         return;
       }
@@ -228,8 +228,8 @@ public abstract class ProviderView
   
   protected void k()
   {
-    if (this.jdField_a_of_type_Bhpp != null) {
-      this.jdField_a_of_type_Bhpp.h();
+    if (this.jdField_a_of_type_Bjkh != null) {
+      this.jdField_a_of_type_Bjkh.h();
     }
   }
   
@@ -262,9 +262,9 @@ public abstract class ProviderView
     this.g = paramInt;
   }
   
-  public void setDoodleEventListener(bimt parambimt)
+  public void setDoodleEventListener(bkdo parambkdo)
   {
-    this.jdField_a_of_type_Bimt = parambimt;
+    this.jdField_a_of_type_Bkdo = parambkdo;
   }
   
   public void setLiuHaiParentView(RelativeLayout paramRelativeLayout)
@@ -277,9 +277,9 @@ public abstract class ProviderView
     this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
-  public void setProviderViewListener(bhpp parambhpp)
+  public void setProviderViewListener(bjkh parambjkh)
   {
-    this.jdField_a_of_type_Bhpp = parambhpp;
+    this.jdField_a_of_type_Bjkh = parambjkh;
   }
   
   public void setTabBarPosition(int paramInt)

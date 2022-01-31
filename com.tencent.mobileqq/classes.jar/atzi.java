@@ -1,46 +1,35 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.upload.uinterface.IUploadService;
-import com.tencent.upload.uinterface.UploadServiceBuilder;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.data.QIMFollwerAdd;
 
 public class atzi
-  implements Manager
+  extends atyy
 {
-  public atzi(QQAppInterface paramQQAppInterface) {}
+  public QIMFollwerAdd a;
   
-  private void b(QQAppInterface paramQQAppInterface, atze paramatze)
+  public atzi(QIMFollwerAdd paramQIMFollwerAdd)
   {
-    bfsq localbfsq = new bfsq();
-    if (paramatze != null)
-    {
-      UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), paramatze, null, null, localbfsq, localbfsq);
-      return;
-    }
-    paramatze = new atzj(this, Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
-    UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), paramatze, null, null, localbfsq, localbfsq);
+    this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd = paramQIMFollwerAdd;
+    this.jdField_a_of_type_Long = paramQIMFollwerAdd.upTime;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, atze paramatze)
+  public String a()
   {
-    if (!UploadServiceBuilder.getInstance().isInitialized()) {
-      b(paramQQAppInterface, paramatze);
-    }
+    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.uin);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, atzf paramatzf, atze paramatze)
+  public String a(QQAppInterface paramQQAppInterface)
   {
-    if (!UploadServiceBuilder.getInstance().isInitialized()) {
-      b(paramQQAppInterface, paramatze);
-    }
-    paramatzf.a();
+    return "getMessage";
   }
   
-  public void onDestroy() {}
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.isRead;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     atzi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.widget.RelativeLayout;
-import anyr;
+import aopk;
 
 public class UniformDownloadActivity$10$4
   implements Runnable
 {
-  public UniformDownloadActivity$10$4(anyr paramanyr) {}
+  public UniformDownloadActivity$10$4(aopk paramaopk) {}
   
   public void run()
   {

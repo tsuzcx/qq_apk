@@ -1,22 +1,23 @@
-public abstract interface bbil
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+
+public final class bbil
+  implements Parcelable.Creator<QQRecorder.RecorderParam>
 {
-  public abstract void a(int paramInt);
+  public QQRecorder.RecorderParam a(Parcel paramParcel)
+  {
+    return new QQRecorder.RecorderParam(paramParcel);
+  }
   
-  public abstract void a(int paramInt, float paramFloat);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
+  public QQRecorder.RecorderParam[] a(int paramInt)
+  {
+    return new QQRecorder.RecorderParam[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,31 @@
-import android.graphics.Paint;
-import android.support.annotation.NonNull;
+import com.tencent.mobileqq.qipc.QIPCModule;
 
-public abstract class axkc
+public class axkc
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  private static volatile axkc jdField_a_of_type_Axkc;
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new axkd(this, "Module_VideoPlayIPCServer");
   
-  public axkc(int paramInt, @NonNull String paramString)
+  public static axkc a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (jdField_a_of_type_Axkc == null) {}
+    try
+    {
+      if (jdField_a_of_type_Axkc == null) {
+        jdField_a_of_type_Axkc = new axkc();
+      }
+      return jdField_a_of_type_Axkc;
+    }
+    finally {}
   }
   
-  abstract float a(@NonNull Paint paramPaint);
-  
-  int a()
+  public QIPCModule a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axkc
  * JD-Core Version:    0.7.0.1
  */

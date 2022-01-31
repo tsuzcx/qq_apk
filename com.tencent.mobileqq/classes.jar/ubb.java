@@ -1,61 +1,42 @@
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class ubb
-  implements ubl
+  extends ubc
+  implements View.OnClickListener
 {
-  public ubb(QQStoryMainActivity paramQQStoryMainActivity) {}
+  private long a;
   
-  public View a()
+  public ubb(@NonNull ViewGroup paramViewGroup)
   {
-    return QQStoryMainActivity.a(this.a);
+    super(paramViewGroup);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
   }
   
-  public ImageView a()
+  protected View a(ViewGroup paramViewGroup)
   {
-    return this.a.rightViewImg;
+    return paramViewGroup;
   }
   
-  public TextView a()
+  public void onClick(View paramView)
   {
-    return this.a.rightViewText;
-  }
-  
-  public void a()
-  {
-    this.a.onBackEvent();
-  }
-  
-  public void a(String paramString)
-  {
-    QQStoryMainActivity.a(this.a, paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.startTitleProgress();
+    if (this.jdField_a_of_type_Uav == null) {}
+    while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
       return;
     }
-    this.a.stopTitleProgress();
-  }
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramView = this.jdField_a_of_type_Uav.a().getVideoLinkInfo();
+    if ((paramView != null) && (paramView.a()) && (paramView.a.a()))
     {
-      QQStoryMainActivity.a(this.a, sfm.a, ajjy.a(2131645158));
+      tvf.a(a(), paramView.a.c, paramView.a.b, 1010);
+      vel.a("play_video", "clk_tips", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_Uav.a });
       return;
     }
-    a(sfm.a);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
-  
-  public void c() {}
 }
 
 

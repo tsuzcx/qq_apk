@@ -1,37 +1,82 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.XListView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aakb
-  implements arok<baqz>
+  extends akhc
 {
-  public aakb(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aakb(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void a(baqz parambaqz)
+  protected void a(boolean paramBoolean, ayaw paramayaw)
   {
-    if (this.a.f) {
-      return;
+    int j = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "onGetBindSubAccount() isSuccess=" + paramBoolean);
     }
-    FormSimpleItem localFormSimpleItem = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
-    localFormSimpleItem.setRightText(parambaqz.jdField_a_of_type_JavaLangString);
-    localFormSimpleItem.setTag(2131307962, parambaqz);
-    if (parambaqz.jdField_a_of_type_Boolean)
+    if ((paramayaw == null) || (!TextUtils.equals(paramayaw.b, this.a.app.c()))) {}
+    do
     {
-      localFormSimpleItem.setRightIcon(this.a.getResources().getDrawable(2130840934));
-      if (!baub.a(this.a.app, "troop_keyword_scrolled", false))
+      do
       {
-        baub.b(this.a.app, "troop_keyword_scrolled", true);
-        this.a.jdField_a_of_type_ComTencentWidgetXListView.addOnLayoutChangeListener(ChatSettingForTroop.a(this.a));
+        return;
+      } while (!paramBoolean);
+      paramayaw = paramayaw.c();
+    } while ((paramayaw == null) || (this.a.a == null));
+    Iterator localIterator = this.a.a.iterator();
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+    } while (paramayaw.contains(((SubAccountInfo)localIterator.next()).subuin));
+    for (int i = 1;; i = 0)
+    {
+      if (paramayaw.size() != this.a.a.size()) {
+        i = j;
+      }
+      while (i != 0)
+      {
+        AssociatedAccountActivity.d(this.a, false);
+        return;
+      }
+      break;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, ayaw paramayaw)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("AssociatedAccountActivity", 2, "onBindSubAccount() isSuccess=" + paramBoolean);
+      if (paramayaw != null) {
+        QLog.d("AssociatedAccountActivity", 2, "onBindSubAccount() mainAccount=" + paramayaw.b + " subAccount=" + paramayaw.c + " errType=" + paramayaw.jdField_a_of_type_Int + " errMsg=" + paramayaw.jdField_a_of_type_JavaLangString);
       }
     }
-    for (;;)
-    {
-      awqx.b(null, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "qq_vip", "0X800A8F7", parambaqz.c, 1, 0, "", "", "", "");
+    if ((paramayaw == null) || (!TextUtils.equals(paramayaw.b, this.a.app.c()))) {}
+    while (!paramBoolean) {
       return;
-      localFormSimpleItem.setRightIcon(null);
     }
+    AssociatedAccountActivity.d(this.a, false);
+  }
+  
+  protected void c(boolean paramBoolean, ayaw paramayaw)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("AssociatedAccountActivity", 2, "onUnBindSubAccount() isSuccess=" + paramBoolean);
+      if (paramayaw != null) {
+        QLog.d("AssociatedAccountActivity", 2, "onUnBindSubAccount() mainAccount=" + paramayaw.b + " subAccount=" + paramayaw.c + " errType=" + paramayaw.jdField_a_of_type_Int + " errMsg=" + paramayaw.jdField_a_of_type_JavaLangString);
+      }
+    }
+    if ((paramayaw == null) || (!TextUtils.equals(paramayaw.b, this.a.app.c()))) {}
+    while (!paramBoolean) {
+      return;
+    }
+    AssociatedAccountActivity.d(this.a, false);
   }
 }
 

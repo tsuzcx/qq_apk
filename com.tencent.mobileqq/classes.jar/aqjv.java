@@ -1,44 +1,45 @@
-import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
-import java.io.File;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.fragment.TroopRobotFragment;
+import com.tencent.mobileqq.fragment.TroopRobotFragment.1.1;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aqjv
-  implements PluginManagerUpdater
+public class aqjv
+  extends akim
 {
-  private final File a;
+  public aqjv(TroopRobotFragment paramTroopRobotFragment) {}
   
-  public aqjv(String paramString)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
   {
-    this.a = new File("/data/local/tmp/" + paramString + "PluginManager.apk");
-  }
-  
-  public File getLatest()
-  {
-    if (this.a.exists()) {
-      return this.a;
+    String str = String.valueOf(paramLong1);
+    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
+    {
+      TroopRobotFragment.a(this.a, paramLong1);
+      return;
     }
-    return null;
+    QLog.i("TroopRobotFragment", 2, "onAddRobot  net troopuin" + paramLong1 + " cur " + TroopRobotFragment.a(this.a));
   }
   
-  public Future<Boolean> isAvailable(File paramFile)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, balu parambalu)
   {
-    return ajtb.a(16).submit(new aqjx(this, paramFile));
-  }
-  
-  public Future<File> update()
-  {
-    return ajtb.a(16).submit(new aqjw(this));
-  }
-  
-  public boolean wasUpdating()
-  {
-    return false;
+    String str = String.valueOf(paramLong);
+    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
+    {
+      if ((paramBoolean) && (parambalu != null) && (this.a.getActivity() != null))
+      {
+        QLog.d("TroopRobotFragment", 2, "onGetAllRobots");
+        this.a.getActivity().runOnUiThread(new TroopRobotFragment.1.1(this, parambalu));
+        return;
+      }
+      QLog.e("TroopRobotFragment", 2, "onGetAllRobots err " + paramInt + " :" + paramLong);
+      TroopRobotFragment.a(this.a, paramLong);
+      return;
+    }
+    QLog.i("TroopRobotFragment", 2, "onGetAllRobots  net troopuin" + paramLong + " cur " + TroopRobotFragment.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqjv
  * JD-Core Version:    0.7.0.1
  */

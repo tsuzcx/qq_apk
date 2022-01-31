@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.app;
 
-import ajjy;
-import ajsv;
-import bbmy;
+import ajyc;
+import akhf;
+import bcpw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class ThemeHandler$1
   implements Runnable
 {
-  public ThemeHandler$1(ajsv paramajsv) {}
+  public ThemeHandler$1(akhf paramakhf) {}
   
   public void run()
   {
-    bbmy.a(this.this$0.mApp.getApplication(), ajjy.a(2131649124), 4000).a();
+    bcpw.a(this.this$0.mApp.getApplication(), ajyc.a(2131714913), 4000).a();
     QLog.e("Theme.ThemeHandler", 1, "handleThemeAuth Error, QQToast.makeText: set default theme");
   }
 }

@@ -1,12 +1,37 @@
-class uvz
-  implements vqo
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
+
+public class uvz
+  extends SimpleObserver<T>
 {
-  uvz(uvy paramuvy) {}
+  public uvz(uvu paramuvu) {}
   
-  public void a()
+  public void a(T paramT)
   {
-    uwb localuwb = uvy.a(this.a);
-    uvy.a(this.a, uvy.a(this.a)).a(localuwb);
+    super.onNext(paramT);
+    this.a.b();
+    veg.b("Q.qqstory.home.data.FeedListPageLoaderBase", "refresh data finish %s", paramT);
+    paramT.d = this.a.jdField_a_of_type_Boolean;
+    this.a.a(paramT.a, paramT.c);
+    this.a.jdField_a_of_type_Uvw.b();
+    this.a.jdField_a_of_type_Uvy.a(paramT);
+    this.a.a("Q.qqstory.home.data.FeedListPageLoaderBase");
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    veg.d("Q.qqstory.home.data.FeedListPageLoaderBase", "refresh data cancel");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    paramError = (ErrorMessage)paramError;
+    paramError = this.a.a(paramError);
+    paramError.d = this.a.jdField_a_of_type_Boolean;
+    this.a.jdField_a_of_type_Uvy.a(paramError);
   }
 }
 

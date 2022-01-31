@@ -1,23 +1,23 @@
 package dov.com.qq.im.story.mode;
 
-import bhzq;
-import bhzu;
+import bjrh;
+import bjrl;
 import java.util.Set;
 
 public class StoryEffectTextMode$13$2
   implements Runnable
 {
-  public StoryEffectTextMode$13$2(bhzu parambhzu, int paramInt) {}
+  public StoryEffectTextMode$13$2(bjrl parambjrl, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bhzu.jdField_a_of_type_Bhzq.c) {}
+    if (this.jdField_a_of_type_Bjrl.jdField_a_of_type_Bjrh.c) {}
     do
     {
       return;
-      bhzq.a(this.jdField_a_of_type_Bhzu.jdField_a_of_type_Bhzq).remove(this.jdField_a_of_type_Bhzu.jdField_a_of_type_JavaLangString);
-    } while (!this.jdField_a_of_type_Bhzu.jdField_a_of_type_Boolean);
-    bhzq.a(this.jdField_a_of_type_Bhzu.jdField_a_of_type_Bhzq, this.jdField_a_of_type_Bhzu.jdField_a_of_type_Sou, this.jdField_a_of_type_Int);
+      bjrh.a(this.jdField_a_of_type_Bjrl.jdField_a_of_type_Bjrh).remove(this.jdField_a_of_type_Bjrl.jdField_a_of_type_JavaLangString);
+    } while (!this.jdField_a_of_type_Bjrl.jdField_a_of_type_Boolean);
+    bjrh.a(this.jdField_a_of_type_Bjrl.jdField_a_of_type_Bjrh, this.jdField_a_of_type_Bjrl.jdField_a_of_type_Tbq, this.jdField_a_of_type_Int);
   }
 }
 

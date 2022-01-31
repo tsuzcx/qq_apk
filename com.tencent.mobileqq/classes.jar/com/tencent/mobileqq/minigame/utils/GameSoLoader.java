@@ -6,7 +6,7 @@ import com.tencent.mobileqq.minigame.manager.InstalledEngine;
 import com.tencent.mobileqq.triton.sdk.ITSoLoader;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
-import lbk;
+import lmb;
 
 public class GameSoLoader
   implements ITSoLoader
@@ -46,7 +46,7 @@ public class GameSoLoader
     {
       if (paramString.contains("png-armeabi-v7a"))
       {
-        if (lbk.f() > 2) {}
+        if (lmb.f() > 2) {}
         for (paramString = "/txlib/libpng-armeabi-v7a.so";; paramString = "/txlib/libpng-armeabi.so") {
           return BaseApplicationImpl.getContext().getFilesDir().getParent() + paramString;
         }

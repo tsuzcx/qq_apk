@@ -1,109 +1,88 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.widget.SimpleTextView;
 
-public class bfvp
+public abstract class bfvp
+  extends bfvm
 {
-  final int jdField_a_of_type_Int;
-  final String jdField_a_of_type_JavaLangString;
-  final int jdField_b_of_type_Int;
-  final String jdField_b_of_type_JavaLangString;
-  final String c;
-  final String d;
+  protected final int a;
+  protected final int[] b;
+  protected final int[] c;
+  protected final int[] d;
+  protected final int[] e;
   
-  private bfvp(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4)
+  public bfvp(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramString3;
-    this.d = paramString4;
+    super(paramInt1, paramInt2);
+    this.e = paramArrayOfInt1;
+    this.jdField_a_of_type_Int = paramInt3;
+    this.b = paramArrayOfInt2;
+    this.c = paramArrayOfInt3;
+    this.d = paramArrayOfInt4;
   }
   
-  public static bfvp a(@NonNull BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public View a(int paramInt, Object paramObject, bfvo parambfvo, View.OnClickListener paramOnClickListener)
   {
-    int j = 0;
-    Object localObject1 = "0";
-    Object localObject2 = "0";
-    Object localObject4 = paramAppInfo.buffer.get();
-    Object localObject3;
-    if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-      localObject3 = localObject1;
-    }
-    for (;;)
+    Object localObject2 = null;
+    paramObject = null;
+    Object localObject1 = paramObject;
+    if (parambfvo != null)
     {
-      try
+      localObject1 = paramObject;
+      if (parambfvo.jdField_a_of_type_Int >= 0)
       {
-        localObject4 = new JSONObject((String)localObject4);
-        localObject3 = localObject1;
-        localObject1 = ((JSONObject)localObject4).getString("trace_id");
-        localObject3 = localObject1;
-        i = ((JSONObject)localObject4).getInt("trace_num");
-        i += 1;
-        int k;
-        paramAppInfo.printStackTrace();
-      }
-      catch (Exception paramAppInfo)
-      {
-        try
-        {
-          localObject3 = ((JSONObject)localObject4).getString("ad_id");
-          localObject2 = localObject3;
-          k = paramAppInfo.uiAppId.get();
-          j = k;
-          localObject2 = localObject3;
-          return new bfvp((String)localObject1, i, (String)localObject2, j, "vab_red", "vab_red");
+        if (parambfvo.b >= 0) {
+          break label35;
         }
-        catch (Exception paramAppInfo)
-        {
-          break label123;
-        }
-        paramAppInfo = paramAppInfo;
-        i = 0;
-        localObject1 = localObject3;
+        localObject1 = paramObject;
       }
-      label123:
-      continue;
-      int i = 0;
     }
-  }
-  
-  public String a()
-  {
-    return "trace_detail_ad_id=" + this.jdField_b_of_type_JavaLangString + "&trace_detail_app_id=" + this.jdField_b_of_type_Int;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
+    label35:
+    int i;
+    int j;
+    int k;
     do
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      return localObject1;
+      paramObject = localObject2;
+      if ((parambfvo.jdField_a_of_type_AndroidViewView instanceof SimpleTextView)) {
+        paramObject = (SimpleTextView)parambfvo.jdField_a_of_type_AndroidViewView;
       }
-      paramObject = (bfvp)paramObject;
-    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) && (this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) && (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int));
-    return false;
+      i = this.c[parambfvo.b];
+      j = this.d[parambfvo.b];
+      k = this.b[parambfvo.b];
+      localObject1 = paramObject;
+    } while (paramObject == null);
+    paramObject.setVisibility(0);
+    paramObject.setText(paramObject.getContext().getResources().getString(i));
+    paramObject.setBackgroundResource(j);
+    paramObject.setId(k);
+    paramObject.setTag("tag_swip_icon_menu_item");
+    paramObject.setTag(-2, Integer.valueOf(i));
+    paramObject.setTag(-1, Integer.valueOf(paramInt));
+    paramObject.setContentDescription(paramObject.getResources().getString(i));
+    paramObject.setOnClickListener(paramOnClickListener);
+    parambfvo.c = this.e[parambfvo.jdField_a_of_type_Int];
+    parambfvo.d = this.jdField_a_of_type_Int;
+    return paramObject;
   }
   
-  public int hashCode()
+  public View a(Context paramContext, int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString.hashCode();
-  }
-  
-  public String toString()
-  {
-    return "ReportKey{traceId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", traceNum=" + this.jdField_a_of_type_Int + ", adId=" + this.jdField_b_of_type_JavaLangString + ", appId=" + this.jdField_b_of_type_Int + '}';
+    paramContext = new SimpleTextView(paramContext);
+    paramContext.setLayoutParams(new LinearLayout.LayoutParams(this.e[paramInt], this.jdField_a_of_type_Int));
+    paramContext.setGravity(17);
+    paramContext.setTextSize(16.0F);
+    paramContext.setTextColor(-1);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfvp
  * JD-Core Version:    0.7.0.1
  */

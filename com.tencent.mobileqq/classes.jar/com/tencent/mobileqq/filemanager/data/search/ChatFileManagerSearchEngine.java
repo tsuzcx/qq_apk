@@ -2,12 +2,12 @@ package com.tencent.mobileqq.filemanager.data.search;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import aoig;
-import aons;
-import aoof;
-import avuz;
-import avva;
-import avvn;
+import aoza;
+import apen;
+import apfa;
+import awus;
+import awut;
+import awvg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class ChatFileManagerSearchEngine
-  implements avuz<aoof>
+  implements awus<apfa>
 {
   private int jdField_a_of_type_Int = 0;
   private Bundle jdField_a_of_type_AndroidOsBundle;
@@ -48,28 +48,28 @@ public class ChatFileManagerSearchEngine
     return localArrayList;
   }
   
-  public List<aoof> a(avvn paramavvn)
+  public List<apfa> a(awvg paramawvg)
   {
     ArrayList localArrayList1 = new ArrayList();
     Object localObject1;
     Object localObject2;
     Object localObject3;
-    aoof localaoof;
+    apfa localapfa;
     if (this.b == 1)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramavvn.jdField_a_of_type_JavaLangString);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramawvg.jdField_a_of_type_JavaLangString);
       localObject2 = ((Map)localObject1).keySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (String)((Iterator)localObject2).next();
-        localaoof = new aoof();
-        localaoof.jdField_a_of_type_JavaUtilList.addAll((Collection)((Map)localObject1).get(localObject3));
-        localaoof.jdField_a_of_type_JavaLangString = paramavvn.jdField_a_of_type_JavaLangString;
-        localaoof.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        localapfa = new apfa();
+        localapfa.jdField_a_of_type_JavaUtilList.addAll((Collection)((Map)localObject1).get(localObject3));
+        localapfa.jdField_a_of_type_JavaLangString = paramawvg.jdField_a_of_type_JavaLangString;
+        localapfa.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
         if (this.jdField_a_of_type_AndroidOsBundle != null) {
-          localaoof.b = this.jdField_a_of_type_AndroidOsBundle.getString("qfile_search_param_uin", "");
+          localapfa.b = this.jdField_a_of_type_AndroidOsBundle.getString("qfile_search_param_uin", "");
         }
-        localArrayList1.add(localaoof);
+        localArrayList1.add(localapfa);
       }
     }
     ArrayList localArrayList2;
@@ -96,14 +96,14 @@ public class ChatFileManagerSearchEngine
             while (((Iterator)localObject1).hasNext())
             {
               localObject3 = (FileManagerEntity)((Iterator)localObject1).next();
-              localaoof = new aoof();
+              localapfa = new apfa();
               localArrayList2 = new ArrayList(1);
               localArrayList2.add(localObject3);
-              localaoof.jdField_a_of_type_JavaUtilList.addAll(localArrayList2);
-              localaoof.jdField_a_of_type_JavaLangString = paramavvn.jdField_a_of_type_JavaLangString;
-              localaoof.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-              localaoof.b = ((String)localObject2);
-              localArrayList1.add(localaoof);
+              localapfa.jdField_a_of_type_JavaUtilList.addAll(localArrayList2);
+              localapfa.jdField_a_of_type_JavaLangString = paramawvg.jdField_a_of_type_JavaLangString;
+              localapfa.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+              localapfa.b = ((String)localObject2);
+              localArrayList1.add(localapfa);
             }
           }
         }
@@ -114,18 +114,18 @@ public class ChatFileManagerSearchEngine
       localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("qfile_search_param_uin", "");
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramavvn.jdField_a_of_type_JavaLangString, (String)localObject1, false).iterator();
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramawvg.jdField_a_of_type_JavaLangString, (String)localObject1, false).iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (FileManagerEntity)((Iterator)localObject2).next();
-          localaoof = new aoof();
+          localapfa = new apfa();
           localArrayList2 = new ArrayList(1);
           localArrayList2.add(localObject3);
-          localaoof.jdField_a_of_type_JavaUtilList.addAll(localArrayList2);
-          localaoof.jdField_a_of_type_JavaLangString = paramavvn.jdField_a_of_type_JavaLangString;
-          localaoof.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-          localaoof.b = ((String)localObject1);
-          localArrayList1.add(localaoof);
+          localapfa.jdField_a_of_type_JavaUtilList.addAll(localArrayList2);
+          localapfa.jdField_a_of_type_JavaLangString = paramawvg.jdField_a_of_type_JavaLangString;
+          localapfa.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+          localapfa.b = ((String)localObject1);
+          localArrayList1.add(localapfa);
         }
       }
     }
@@ -143,15 +143,15 @@ public class ChatFileManagerSearchEngine
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public void a(avvn paramavvn, avva<aoof> paramavva)
+  public void a(awvg paramawvg, awut<apfa> paramawut)
   {
-    if ((paramavvn == null) || (paramavvn.jdField_a_of_type_JavaLangString == null) || (TextUtils.isEmpty(paramavvn.jdField_a_of_type_JavaLangString.trim()))) {
+    if ((paramawvg == null) || (paramawvg.jdField_a_of_type_JavaLangString == null) || (TextUtils.isEmpty(paramawvg.jdField_a_of_type_JavaLangString.trim()))) {
       return;
     }
     synchronized (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchChatFileManagerSearchEngine$SearchRunnable)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchChatFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Avvn = paramavvn;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchChatFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Avva = paramavva;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchChatFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Awvg = paramawvg;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchChatFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Awut = paramawut;
       ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchChatFileManagerSearchEngine$SearchRunnable, 64);
       ThreadManager.executeOnFileThread(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchChatFileManagerSearchEngine$SearchRunnable);
       return;
@@ -162,8 +162,8 @@ public class ChatFileManagerSearchEngine
   {
     synchronized (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchChatFileManagerSearchEngine$SearchRunnable)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchChatFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Avvn = null;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchChatFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Avva = null;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchChatFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Awvg = null;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchChatFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Awut = null;
       ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchChatFileManagerSearchEngine$SearchRunnable, 64);
       return;
     }

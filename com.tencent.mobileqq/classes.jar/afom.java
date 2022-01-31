@@ -1,45 +1,120 @@
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class afom
   implements View.OnClickListener
 {
-  public afom(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, String paramString) {}
+  public afom(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.i) && (!ChatHistoryTroopMemberFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment)))
+    Object localObject1;
+    if ((paramView.getTag() instanceof afnl))
     {
-      if (((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.a > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 3))
-      {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().getIntent();
-        paramView.putExtra("member_uin", "0");
-        paramView.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().setResult(-1, paramView);
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().finish();
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) {
-          awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
-        }
-        return;
+      localObject1 = (afnl)paramView.getTag();
+      if (localObject1 != null) {
+        break label25;
       }
-      bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), ajjy.a(2131635870), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
-      return;
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h))
+    label25:
+    Object localObject2;
+    int i;
+    label187:
+    do
     {
-      bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
+      return;
+      localObject2 = ((afnl)localObject1).jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg;
+      i = ((afnl)localObject1).jdField_a_of_type_Int;
+      if (afnu.a(i) == 0)
+      {
+        paramView = TroopInfoActivity.a(String.valueOf(((afnl)localObject1).jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get()), 4);
+        paramView.putInt("t_s_f", 1001);
+        bamn.a(this.a.getActivity(), paramView, 2);
+        if ((i == 2) || (i == 10) || (i == 12))
+        {
+          i = 1;
+          localObject2 = TroopSuspiciousFragment.a(this.a);
+          localObject1 = ((afnl)localObject1).jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "";
+          if (i == 0) {
+            break label187;
+          }
+        }
+        for (paramView = "0";; paramView = "1")
+        {
+          axqw.b((QQAppInterface)localObject2, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, (String)localObject1, paramView, "", "");
+          return;
+          i = 0;
+          break;
+        }
+      }
+    } while ((((afnl)localObject1).jdField_a_of_type_Int == 2) && (TroopInfo.isQidianPrivateTroop(((afnl)localObject1).jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.uint32_group_flagext3.get())));
+    if (((afnl)localObject1).jdField_a_of_type_Int == 82)
+    {
+      paramView = new Intent(this.a.a, AccountDetailActivity.class);
+      paramView.putExtra("uin", ((afnl)localObject1).jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
+      paramView.putExtra("source", 112);
+      this.a.startActivity(paramView);
       return;
     }
-    bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), ajjy.a(2131635808), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
+    long l = ((structmsg.StructMsg)localObject2).req_uin.get();
+    switch (afnu.a(i))
+    {
+    default: 
+      paramView = String.valueOf(l);
+      label345:
+      if (((ajxn)TroopSuspiciousFragment.a(this.a).getManager(51)).b(paramView)) {
+        paramView = new ProfileActivity.AllInOne(paramView, 1);
+      }
+      break;
+    }
+    for (;;)
+    {
+      l = ((structmsg.StructMsg)localObject2).msg.uint32_group_flagext3.get();
+      boolean bool = TroopInfo.isQidianPrivateTroop(l);
+      i = ((structmsg.StructMsg)localObject2).msg.group_msg_type.get();
+      if (QLog.isColorLevel()) {
+        QLog.d(".troop.qidian_private_troop", 2, "notification headView onClick: msgType=" + i + ", isQidianPrivateTroop=" + bool + ", flagExt3=" + l);
+      }
+      if ((bool) && (i == 2)) {
+        break;
+      }
+      ProfileActivity.b(this.a.getActivity(), paramView);
+      axqw.b(TroopSuspiciousFragment.a(this.a), "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, ((afnl)localObject1).jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "", "3", "", "");
+      return;
+      paramView = ((afnl)localObject1).jdField_a_of_type_JavaLangString;
+      break label345;
+      paramView = String.valueOf(((afnl)localObject1).jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.action_uin.get());
+      break label345;
+      if ((((structmsg.StructMsg)localObject2).msg.group_msg_type.get() == 2) && (((structmsg.StructMsg)localObject2).msg.sub_type.get() == 3))
+      {
+        paramView = new ProfileActivity.AllInOne(paramView, 26);
+        paramView.d = 1;
+      }
+      else
+      {
+        paramView = new ProfileActivity.AllInOne(paramView, 24);
+        bamn.a((structmsg.StructMsg)localObject2, paramView);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afom
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.profile.VipProfileCardPhotoHandlerActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 public class auwe
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
-  public auwe(QQSlidingTabView paramQQSlidingTabView, int paramInt) {}
+  public auwe(VipProfileCardPhotoHandlerActivity paramVipProfileCardPhotoHandlerActivity) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("qqBaseActivity", 2, "takePhoto requestPermission user denied");
+    }
+    bbcv.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("qqBaseActivity", 2, "takePhoto requestPermission user grant");
+    }
+    VipProfileCardPhotoHandlerActivity.a(this.a, ProfileActivity.a(this.a, 5));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auwe
  * JD-Core Version:    0.7.0.1
  */

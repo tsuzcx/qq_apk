@@ -1,6 +1,6 @@
 package com.tencent.open.wadl;
 
-import bcki;
+import bdoj;
 import java.util.Map;
 
 public final class WadlJsBridgeCall$1
@@ -10,7 +10,7 @@ public final class WadlJsBridgeCall$1
   
   public void run()
   {
-    bcki.a().put(this.a, new Boolean(false));
+    bdoj.a().put(this.a, new Boolean(false));
   }
 }
 

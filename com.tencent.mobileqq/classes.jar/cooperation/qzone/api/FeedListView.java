@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
-import bfsy;
+import bhbf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.XListView;
 
@@ -30,7 +30,7 @@ public class FeedListView
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void a(bfsy parambfsy) {}
+  public void a(bhbf parambhbf) {}
   
   public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, long paramLong) {}
   

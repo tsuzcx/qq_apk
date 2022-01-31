@@ -1,24 +1,31 @@
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.activity.qwallet.voice.KSongMicView;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class agkv
-  extends bbpo
+class agkv
+  extends aume
 {
-  public agkv(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  agkv(agku paramagku) {}
   
-  public void a()
+  protected void c(boolean paramBoolean)
   {
-    super.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView.a();
-    this.a.a(ajjy.a(2131647532));
-    if (this.a.jdField_a_of_type_Agwx != null) {
-      this.a.jdField_a_of_type_Agwx.b();
+    if (QLog.isColorLevel()) {
+      QLog.i("SettingActivity2", 2, "onDisableMobileMatch suc[" + paramBoolean + "]");
     }
+    this.a.a.a.b();
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
+    {
+      this.a.a.a.a();
+      this.a.a.a.setResult(-1);
+      return;
+    }
+    this.a.a.a.a(1, ajyc.a(2131713857));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agkv
  * JD-Core Version:    0.7.0.1
  */

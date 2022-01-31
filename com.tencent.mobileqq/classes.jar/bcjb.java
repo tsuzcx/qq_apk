@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.AppInfo;
+import android.view.View;
 
-public final class bcjb
-  implements Parcelable.Creator<AppInfo>
+public abstract interface bcjb
 {
-  public AppInfo a(Parcel paramParcel)
-  {
-    return new AppInfo(paramParcel);
-  }
-  
-  public AppInfo[] a(int paramInt)
-  {
-    return new AppInfo[paramInt];
-  }
+  public abstract void a(View paramView);
 }
 
 

@@ -10,7 +10,7 @@ class LogicDataManager$78
   
   public String getValue()
   {
-    return LogicDataManager.access$5000(this.this$0, 1);
+    return LogicDataManager.access$5000(this.this$0, 0);
   }
 }
 

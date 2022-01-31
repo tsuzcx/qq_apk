@@ -110,7 +110,7 @@ public class u
       break label168;
       localObject = new tlv_t(1313);
       byte[] arrayOfByte = new byte[6];
-      util.int32_to_buf(arrayOfByte, 0, t.ax);
+      util.int32_to_buf(arrayOfByte, 0, t.az);
       util.int16_to_buf(arrayOfByte, 4, 0);
       ((tlv_t)localObject).set_data(arrayOfByte, 6);
       localObject = ((tlv_t)localObject).get_buf();

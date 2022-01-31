@@ -1,18 +1,20 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
-final class bcoo
-  implements FilenameFilter
+public class bcoo
+  implements View.OnClickListener
 {
-  public boolean accept(File paramFile, String paramString)
+  public bcoo(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
+  
+  public void onClick(View paramView)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.endsWith(".so"));
+    ProfileCardMoreInfoView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcoo
  * JD-Core Version:    0.7.0.1
  */

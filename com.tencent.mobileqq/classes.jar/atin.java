@@ -1,38 +1,34 @@
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class atin
-  implements akkl
+final class atin
+  implements bcwh
 {
-  atin(atik paramatik, AppInterface paramAppInterface) {}
+  atin(String paramString, atis paramatis) {}
   
-  public void a() {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void a(BaseResp paramBaseResp)
   {
-    akkc localakkc = this.jdField_a_of_type_Atik.a();
-    if ((localakkc == null) || (!TextUtils.equals(paramString, localakkc.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    if (paramInt1 < this.jdField_a_of_type_Atik.jdField_a_of_type_ArrayOfInt.length) {
-      this.jdField_a_of_type_Atik.jdField_a_of_type_ArrayOfInt[paramInt1] = paramInt2;
-    }
-    if ((paramInt2 >= 0) && (paramInt2 <= 99))
+    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
     {
-      atik.a(this.jdField_a_of_type_Atik, "onDownloadProgress", true);
+      WXShareHelper.a().b(this);
+      if (paramBaseResp.errCode != 0) {
+        break label50;
+      }
+      if (this.jdField_a_of_type_Atis != null) {
+        this.jdField_a_of_type_Atis.a(true);
+      }
+    }
+    label50:
+    while (this.jdField_a_of_type_Atis == null) {
       return;
     }
-    QLog.w(atik.jdField_a_of_type_JavaLangString, 1, "onDownloadProgress, index[" + paramInt1 + "], progress[" + paramInt2 + "]");
-    if ((paramInt2 == 100) && (paramInt1 == 0)) {
-      atik.a(this.jdField_a_of_type_Atik, "onDownloadProgress", this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    }
-    atik.a(this.jdField_a_of_type_Atik, "onDownloadProgress2", this.jdField_a_of_type_ComTencentCommonAppAppInterface, false);
+    this.jdField_a_of_type_Atis.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atin
  * JD-Core Version:    0.7.0.1
  */

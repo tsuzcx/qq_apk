@@ -1,30 +1,7 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ImageView;
-
-class apjr
-  implements View.OnTouchListener
+public final class apjr
+  implements bbmh
 {
-  apjr(apjo paramapjo) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    apjo.a(this.a).setImageResource(2130839571);
-    apjo.a(this.a).setTag(Integer.valueOf(2130839571));
-    if (apjo.a(this.a))
-    {
-      apjo.a(this.a);
-      apjo.a(this.a).removeView(apjo.a(this.a));
-      apjo.a(this.a, false);
-      paramView = this.a.getWindow().getAttributes();
-      paramView.y = 0;
-      this.a.getWindow().setAttributes(paramView);
-    }
-    return false;
-  }
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
-import azaf;
-import azah;
-import azai;
-import azbg;
+import baax;
+import baaz;
+import baba;
+import baby;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import java.lang.ref.WeakReference;
@@ -11,23 +11,23 @@ import java.lang.ref.WeakReference;
 public class ImageInfo$UploadMediaSegment$MediaUploadCallback$2
   implements Runnable
 {
-  public ImageInfo$UploadMediaSegment$MediaUploadCallback$2(azai paramazai, int paramInt) {}
+  public ImageInfo$UploadMediaSegment$MediaUploadCallback$2(baba parambaba, int paramInt) {}
   
   public void run()
   {
-    azah.a(this.jdField_a_of_type_Azai.a).e = this.jdField_a_of_type_Int;
-    Object localObject = (XMediaEditor)azah.a(this.jdField_a_of_type_Azai.a).get();
+    baaz.a(this.jdField_a_of_type_Baba.a).e = this.jdField_a_of_type_Int;
+    Object localObject = (XMediaEditor)baaz.a(this.jdField_a_of_type_Baba.a).get();
     if (localObject != null)
     {
-      localObject = ((XMediaEditor)localObject).findViewHolderForLayoutPosition(azah.a(this.jdField_a_of_type_Azai.a).c);
-      if ((localObject instanceof azbg))
+      localObject = ((XMediaEditor)localObject).findViewHolderForLayoutPosition(baaz.a(this.jdField_a_of_type_Baba.a).c);
+      if ((localObject instanceof baby))
       {
-        localObject = (azbg)localObject;
-        if (azah.a(this.jdField_a_of_type_Azai.a).d.equals(((azbg)localObject).a.getTag()))
+        localObject = (baby)localObject;
+        if (baaz.a(this.jdField_a_of_type_Baba.a).d.equals(((baby)localObject).a.getTag()))
         {
-          ((azbg)localObject).a.setVisibility(0);
-          ((azbg)localObject).a.setDrawStatus(1);
-          ((azbg)localObject).a.setAnimProgress(azah.a(this.jdField_a_of_type_Azai.a).e, azah.a(this.jdField_a_of_type_Azai.a).d);
+          ((baby)localObject).a.setVisibility(0);
+          ((baby)localObject).a.setDrawStatus(1);
+          ((baby)localObject).a.setAnimProgress(baaz.a(this.jdField_a_of_type_Baba.a).e, baaz.a(this.jdField_a_of_type_Baba.a).d);
         }
       }
     }

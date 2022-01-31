@@ -3,12 +3,12 @@ package com.tencent.mobileqq.emotionintegrate;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import annr;
+import aoec;
 
 public class SearchEmoticonWebBean
   implements Parcelable
 {
-  public static final Parcelable.Creator<SearchEmoticonWebBean> CREATOR = new annr();
+  public static final Parcelable.Creator<SearchEmoticonWebBean> CREATOR = new aoec();
   public int a;
   public String a;
   public int b;

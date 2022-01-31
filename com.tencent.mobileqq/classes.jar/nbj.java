@@ -1,110 +1,91 @@
-import android.graphics.Color;
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.CharBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CoderResult;
 
 public class nbj
 {
-  public static double a(String paramString, double paramDouble)
+  public static final ThreadLocal<Charset> a;
+  private static final ThreadLocal<CharsetDecoder> b = new nbk();
+  private static final ThreadLocal<CharBuffer> c = new ThreadLocal();
+  protected ByteBuffer a;
+  protected int c;
+  
+  static
   {
-    double d = paramDouble;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        d = Double.valueOf(paramString.trim()).doubleValue();
-      }
-      return d;
-    }
-    catch (Exception paramString)
-    {
-      do
-      {
-        d = paramDouble;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseDouble error message=" + paramString.getMessage());
-    }
-    return paramDouble;
+    jdField_a_of_type_JavaLangThreadLocal = new nbl();
   }
   
-  public static float a(String paramString, float paramFloat)
+  protected int a(int paramInt)
   {
-    float f = paramFloat;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        f = Float.valueOf(paramString.trim()).floatValue();
-      }
-      return f;
+    if (a(paramInt, 4)) {
+      return this.jdField_a_of_type_JavaNioByteBuffer.getInt(paramInt) + paramInt;
     }
-    catch (Exception paramString)
-    {
-      do
-      {
-        f = paramFloat;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseFloat error message=" + paramString.getMessage());
-    }
-    return paramFloat;
+    return -1;
   }
   
-  public static int a(String paramString, int paramInt)
+  protected String a(int paramInt, boolean paramBoolean)
   {
+    CharsetDecoder localCharsetDecoder = (CharsetDecoder)b.get();
+    localCharsetDecoder.reset();
     int i = paramInt;
+    if (!paramBoolean)
+    {
+      if (!a(paramInt, 4)) {
+        return null;
+      }
+      i = paramInt + this.jdField_a_of_type_JavaNioByteBuffer.getInt(paramInt);
+    }
+    if (!a(i, 4)) {
+      return null;
+    }
+    ByteBuffer localByteBuffer = this.jdField_a_of_type_JavaNioByteBuffer.duplicate().order(ByteOrder.LITTLE_ENDIAN);
+    paramInt = localByteBuffer.getInt(i);
+    if (!a(i, paramInt + 4)) {
+      return null;
+    }
+    localByteBuffer.position(i + 4);
+    localByteBuffer.limit(i + 4 + paramInt);
+    paramInt = (int)(paramInt * localCharsetDecoder.maxCharsPerByte());
+    Object localObject2 = (CharBuffer)c.get();
+    Object localObject1;
+    if (localObject2 != null)
+    {
+      localObject1 = localObject2;
+      if (((CharBuffer)localObject2).capacity() >= paramInt) {}
+    }
+    else
+    {
+      localObject1 = CharBuffer.allocate(paramInt);
+      c.set(localObject1);
+    }
+    ((CharBuffer)localObject1).clear();
     try
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        i = Integer.valueOf(paramString.trim()).intValue();
+      localObject2 = localCharsetDecoder.decode(localByteBuffer, (CharBuffer)localObject1, true);
+      if (!((CoderResult)localObject2).isUnderflow()) {
+        ((CoderResult)localObject2).throwException();
       }
-      return i;
+      return ((CharBuffer)localObject1).flip().toString();
     }
-    catch (Exception paramString)
+    catch (Throwable localThrowable)
     {
-      do
-      {
-        i = paramInt;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseInteger error message=" + paramString.getMessage());
+      QLog.e("FlatBuffersParser", 1, "convertString error", localThrowable);
     }
-    return paramInt;
+    return null;
   }
   
-  public static int a(String paramString1, String paramString2)
+  public boolean a(int paramInt1, int paramInt2)
   {
-    try
-    {
-      if (!TextUtils.isEmpty(paramString1))
-      {
-        int i = Color.parseColor(paramString1.trim());
-        return i;
-      }
-    }
-    catch (Exception paramString1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ParseUtil", 2, " parseColor error message=" + paramString1.getMessage());
-      }
-    }
-    return Color.parseColor(paramString2);
+    return (paramInt1 >= 0) && (paramInt1 + paramInt2 <= this.jdField_a_of_type_JavaNioByteBuffer.capacity());
   }
   
-  public static long a(String paramString, long paramLong)
+  protected String b(int paramInt)
   {
-    long l = paramLong;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        l = Long.valueOf(paramString.trim()).longValue();
-      }
-      return l;
-    }
-    catch (Exception paramString)
-    {
-      do
-      {
-        l = paramLong;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseLong error message=" + paramString.getMessage());
-    }
-    return paramLong;
+    return a(paramInt, false);
   }
 }
 

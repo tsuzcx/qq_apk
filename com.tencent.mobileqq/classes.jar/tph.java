@@ -1,40 +1,34 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-
 class tph
-  implements tqk
+  implements try
 {
-  tph(tpg paramtpg) {}
+  tph(tpe paramtpe) {}
   
-  public boolean a(tqg paramtqg, int paramInt, Object paramObject)
+  public void a()
   {
-    if (this.a.isCanceled()) {
-      return false;
+    if (tpe.a(this.a) != null) {
+      tpe.a(this.a).c();
     }
-    urk.a(this.a.a.jdField_a_of_type_JavaLangString, "onInfo, [videoView=%d, what=%d, extra=%s]", Integer.valueOf(System.identityHashCode(paramtqg)), Integer.valueOf(paramInt), paramObject);
-    switch (paramInt)
-    {
+  }
+  
+  public void a(int paramInt)
+  {
+    tpe.a(this.a).a(paramInt);
+    if (tpe.a(this.a) != null) {
+      tpe.a(this.a).b(paramInt);
     }
-    for (;;)
-    {
-      VideoViewVideoHolder.a(this.a.a).a(this.a.a, paramtqg, paramInt, paramObject);
-      return false;
-      urk.d(this.a.a.jdField_a_of_type_JavaLangString, "PLAYER_INFO_HW_DECODE_FAILED. extra=%s", new Object[] { paramObject });
-      continue;
-      VideoViewVideoHolder.d(this.a.a, ((Integer)paramObject).intValue());
-      continue;
-      VideoViewVideoHolder.a(this.a.a, 0L, "rendering-Start");
-      continue;
-      urk.d(this.a.a.jdField_a_of_type_JavaLangString, "start buffering, show loading view");
-      VideoViewVideoHolder.e(this.a.a, VideoViewVideoHolder.c(this.a.a) + 1);
-      VideoViewVideoHolder.a(this.a.a, SystemClock.uptimeMillis());
-      VideoViewVideoHolder.a(this.a.a, 8);
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-      continue;
-      VideoViewVideoHolder.f(this.a.a, (int)(VideoViewVideoHolder.d(this.a.a) + (SystemClock.uptimeMillis() - VideoViewVideoHolder.a(this.a.a))));
-      urk.d(this.a.a.jdField_a_of_type_JavaLangString, "end buffering, hide loading view");
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
+  }
+  
+  public void b()
+  {
+    if (tpe.a(this.a) != null) {
+      tpe.a(this.a).d();
+    }
+  }
+  
+  public void c()
+  {
+    if (tpe.a(this.a) != null) {
+      tpe.a(this.a).d(-1);
     }
   }
 }

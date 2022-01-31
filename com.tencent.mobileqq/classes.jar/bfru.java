@@ -1,64 +1,32 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.util.Vector;
+import android.database.DataSetObserver;
+import com.tencent.widget.HorizontalListView;
 
-class bfru
-  implements Downloader.DownloadListener
+public class bfru
+  extends DataSetObserver
 {
-  bfru(bfrt parambfrt, bfrv parambfrv) {}
+  public bfru(HorizontalListView paramHorizontalListView) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void onChanged()
   {
-    bfrt.a(this.jdField_a_of_type_Bfrt, false);
-    if (bfrt.a(this.jdField_a_of_type_Bfrt).size() > 0)
-    {
-      bfrv localbfrv = (bfrv)bfrt.a(this.jdField_a_of_type_Bfrt).get(0);
-      bfrt.a(this.jdField_a_of_type_Bfrt).remove(0);
-      bfrt.a(this.jdField_a_of_type_Bfrt, localbfrv);
-    }
-    if (this.jdField_a_of_type_Bfrv.a != null) {
-      this.jdField_a_of_type_Bfrv.a.onDownloadCanceled(paramString);
-    }
+    this.a.mDataChanged = true;
+    HorizontalListView.access$402(this.a, false);
+    HorizontalListView.access$100(this.a);
+    this.a.invalidate();
+    this.a.requestLayout();
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public void onInvalidated()
   {
-    bfrt.a(this.jdField_a_of_type_Bfrt, false);
-    if (bfrt.a(this.jdField_a_of_type_Bfrt).size() > 0)
-    {
-      bfrv localbfrv = (bfrv)bfrt.a(this.jdField_a_of_type_Bfrt).get(0);
-      bfrt.a(this.jdField_a_of_type_Bfrt).remove(0);
-      bfrt.a(this.jdField_a_of_type_Bfrt, localbfrv);
-    }
-    if (this.jdField_a_of_type_Bfrv.a != null) {
-      this.jdField_a_of_type_Bfrv.a.onDownloadFailed(paramString, paramDownloadResult);
-    }
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
-  {
-    if (this.jdField_a_of_type_Bfrv.a != null) {
-      this.jdField_a_of_type_Bfrv.a.onDownloadProgress(paramString, paramLong, paramFloat);
-    }
-  }
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    bfrt.a(this.jdField_a_of_type_Bfrt, false);
-    if (bfrt.a(this.jdField_a_of_type_Bfrt).size() > 0)
-    {
-      bfrv localbfrv = (bfrv)bfrt.a(this.jdField_a_of_type_Bfrt).get(0);
-      bfrt.a(this.jdField_a_of_type_Bfrt).remove(0);
-      bfrt.a(this.jdField_a_of_type_Bfrt, localbfrv);
-    }
-    if (this.jdField_a_of_type_Bfrv.a != null) {
-      this.jdField_a_of_type_Bfrv.a.onDownloadSucceed(paramString, paramDownloadResult);
-    }
+    HorizontalListView.access$402(this.a, false);
+    HorizontalListView.access$100(this.a);
+    this.a.reset(true);
+    this.a.invalidate();
+    this.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfru
  * JD-Core Version:    0.7.0.1
  */

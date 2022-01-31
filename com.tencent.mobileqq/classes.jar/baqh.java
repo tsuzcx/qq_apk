@@ -1,37 +1,28 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.mobileqq.remind.widget.WheelView;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import com.tencent.widget.VerticalGallery;
 
-class baqh
-  implements Observer
+public class baqh
+  implements bfwk
 {
-  baqh(baqg parambaqg) {}
+  private int jdField_a_of_type_Int;
   
-  public void update(Observable paramObservable, Object paramObject)
+  public baqh(WheelPickerLayout paramWheelPickerLayout, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignatureFontAdapter", 2, "SignatureFontAdapter type = " + paramObject);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(VerticalGallery paramVerticalGallery)
+  {
+    int i = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout)[this.jdField_a_of_type_Int].getSelectedItemPosition();
+    if (WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout) != null) {
+      WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.jdField_a_of_type_Int, i);
     }
-    if ((paramObject instanceof Integer))
-    {
-      switch (((Integer)paramObject).intValue())
-      {
-      default: 
-        return;
-      case 1: 
-        baqg.a(this.a).a().sendEmptyMessage(10003);
-        return;
-      }
-      baqg.a(this.a).a().sendEmptyMessage(10002);
-      return;
-    }
-    baqg.a(this.a).a().sendEmptyMessage(10003);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baqh
  * JD-Core Version:    0.7.0.1
  */

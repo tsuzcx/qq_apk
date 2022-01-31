@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import ajjy;
+import ajyc;
 import android.content.SharedPreferences;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
@@ -18,8 +18,8 @@ class QfileLocalFilePicTabView$2
   public void run()
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    localLinkedHashMap.put(ajjy.a(2131643890), new ArrayList());
-    localLinkedHashMap.put(ajjy.a(2131643889), new ArrayList());
+    localLinkedHashMap.put(ajyc.a(2131709675), new ArrayList());
+    localLinkedHashMap.put(ajyc.a(2131709674), new ArrayList());
     try
     {
       Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -35,11 +35,11 @@ class QfileLocalFilePicTabView$2
         }
         else
         {
-          localObject1 = ajjy.a(2131643881);
+          localObject1 = ajyc.a(2131709666);
         }
         localObject3 = localObject1;
         if (((String)localObject1).equalsIgnoreCase("camera") == true) {
-          localObject3 = ajjy.a(2131643905);
+          localObject3 = ajyc.a(2131709690);
         }
         if (!localLinkedHashMap.containsKey(localObject3)) {
           localLinkedHashMap.put(localObject3, new ArrayList());

@@ -1,28 +1,24 @@
-import android.os.Handler;
 import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.widget.ExpandableListAdapter;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.widget.ExpandableListView;
 
 public class acfw
-  extends beem
+  implements bfrc
 {
-  public acfw(VisitorsActivity paramVisitorsActivity) {}
+  public acfw(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong)
   {
-    if (this.a.c > 0)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
-      return;
+    if (((aiqd)paramExpandableListView.a()).getChildType(paramInt1, paramInt2) == 1) {
+      return true;
     }
-    this.a.f.setVisibility(4);
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = this.a;
-    paramAnimation.c -= 1;
-    this.a.f.setVisibility(0);
+    axru.b(this.a.getActivity(), this.a.app.getCurrentAccountUin());
+    paramExpandableListView = (TroopInfo)paramExpandableListView.a().getChild(paramInt1, paramInt2);
+    this.a.a(paramExpandableListView);
+    return true;
   }
 }
 

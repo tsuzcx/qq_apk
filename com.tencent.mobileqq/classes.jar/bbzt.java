@@ -1,33 +1,17 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import com.tencent.mobileqq.voicechange.QQVoiceChangerThread;
 
 public class bbzt
-  extends BaseAdapter
 {
-  public int getCount()
-  {
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return null;
-  }
+  int jdField_a_of_type_Int;
+  bbzm jdField_a_of_type_Bbzm;
+  bbzr jdField_a_of_type_Bbzr;
+  bbzu jdField_a_of_type_Bbzu;
+  QQVoiceChangerThread jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread;
+  boolean jdField_a_of_type_Boolean;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbzt
  * JD-Core Version:    0.7.0.1
  */

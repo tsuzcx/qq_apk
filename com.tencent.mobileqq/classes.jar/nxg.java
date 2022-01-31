@@ -1,21 +1,28 @@
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
-class nxg
-  extends nyf
+public class nxg
+  implements bfoq
 {
-  nxg(nxd paramnxd, boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt)
-  {
-    super(paramnxd, null);
-  }
+  public nxg(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  void a(nyi paramnyi)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramnyi.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return;
+      ReadInJoySettingActivity.a(this.a, false);
+      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nxg
  * JD-Core Version:    0.7.0.1
  */

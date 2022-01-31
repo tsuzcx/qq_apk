@@ -1,80 +1,151 @@
-import android.support.annotation.Nullable;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import org.jetbrains.annotations.NotNull;
+import android.os.SystemClock;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.ProtocolDownloader.Adapter;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import com.tencent.mobileqq.hotpic.HotPicSendData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class aqyu
+  extends ProtocolDownloader.Adapter
 {
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int = -1;
-  private LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
-  private String jdField_a_of_type_JavaLangString;
+  public static final String a = bbuv.a(ajsf.aW + "hotpic/");
   
-  public aqyu(String paramString, LatLng paramLatLng, double paramDouble)
+  public static File a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
-    this.jdField_a_of_type_Double = paramDouble;
-  }
-  
-  public double a()
-  {
-    return this.jdField_a_of_type_Double;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public LatLng a()
-  {
-    return this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(LatLng paramLatLng, Double paramDouble)
-  {
-    if (paramLatLng != null) {
-      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
-    }
-    if (paramDouble != null) {
-      this.jdField_a_of_type_Double = paramDouble.doubleValue();
-    }
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject instanceof aqyu))
+    try
     {
-      paramObject = (aqyu)paramObject;
-      return this.jdField_a_of_type_JavaLangString.equals(paramObject.a());
+      paramString = Utils.Crc64String(paramString);
+      paramString = new File(a + paramString);
+      return paramString;
     }
-    return super.equals(paramObject);
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
-  @NotNull
-  public String toString()
+  public static URL a(String paramString)
   {
-    return "LocationItem{mUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLatLng=" + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", mRotation=" + this.jdField_a_of_type_Double + '}';
+    try
+    {
+      paramString = new URL("hot_pic", "", paramString);
+      return paramString;
+    }
+    catch (MalformedURLException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return a(paramString).exists();
+  }
+  
+  protected int a(String paramString, File paramFile)
+  {
+    paramString = new bbwg(paramString.replaceFirst("https", "http"), paramFile);
+    paramString.e = 20000;
+    paramString.n = true;
+    paramString.b = 2;
+    return bbwi.a(paramString, null, null);
+  }
+  
+  protected String a(HotPicData paramHotPicData)
+  {
+    return paramHotPicData.url;
+  }
+  
+  public boolean hasDiskFile(DownloadParams paramDownloadParams)
+  {
+    try
+    {
+      paramDownloadParams = a((HotPicData)paramDownloadParams.mExtraInfo);
+      return a(paramDownloadParams);
+    }
+    catch (Exception paramDownloadParams)
+    {
+      paramDownloadParams.printStackTrace();
+    }
+    return false;
+  }
+  
+  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramDownloadParams = (HotPicData)paramDownloadParams.mExtraInfo;
+    String str = a(paramDownloadParams);
+    int i = 0;
+    if ((paramDownloadParams instanceof HotPicSendData)) {
+      i = 1;
+    }
+    File localFile1 = a(str);
+    if (localFile1.exists())
+    {
+      if ((i == 0) && (paramURLDrawableHandler != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("HotPicManager.HotPicDownLoader", 2, "onFileDownloadSucceed:" + paramDownloadParams.picIndex);
+        }
+        paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.picIndex);
+      }
+      return localFile1;
+    }
+    localFile1.getParentFile().mkdirs();
+    if ((bbbd.a()) && (bbbd.b() < 20971520L)) {
+      throw new IOException("SD card free space is " + bbbd.b());
+    }
+    File localFile2 = new File(a);
+    if (!localFile2.exists()) {
+      localFile2.mkdir();
+    }
+    SystemClock.uptimeMillis();
+    int j = a(str, localFile1);
+    if (j == 0)
+    {
+      str = aurl.a(localFile1.getAbsolutePath());
+      if (!paramDownloadParams.md5.equalsIgnoreCase(str))
+      {
+        localFile1.delete();
+        if (QLog.isColorLevel()) {
+          QLog.d("HotPicManager.HotPicDownLoader", 2, "onFileDownloadFailed:" + paramDownloadParams.picIndex + " " + j);
+        }
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadFailed(paramDownloadParams.picIndex);
+        }
+        return null;
+      }
+      if (i == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("HotPicManager.HotPicDownLoader", 2, "onFileDownloadSucceed download:" + paramDownloadParams.picIndex + localFile1.getAbsolutePath());
+        }
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.picIndex);
+        }
+      }
+      return localFile1;
+    }
+    if (paramURLDrawableHandler != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManager.HotPicDownLoader", 2, "onFileDownloadFailed:" + paramDownloadParams.picIndex + " " + j);
+      }
+      paramURLDrawableHandler.onFileDownloadFailed(paramDownloadParams.picIndex);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aqyu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
+import android.view.View;
+import android.widget.TextView;
 
-public final class xcd
-  implements Parcelable.Creator<NewerGuidePlugin.RecommendedListResp>
+public class xcd
 {
-  public NewerGuidePlugin.RecommendedListResp a(Parcel paramParcel)
-  {
-    return new NewerGuidePlugin.RecommendedListResp(paramParcel);
-  }
-  
-  public NewerGuidePlugin.RecommendedListResp[] a(int paramInt)
-  {
-    return new NewerGuidePlugin.RecommendedListResp[paramInt];
-  }
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
 }
 
 

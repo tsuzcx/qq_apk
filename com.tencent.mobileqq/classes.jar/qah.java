@@ -1,228 +1,654 @@
-import android.text.TextPaint;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAccessibilityHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.articlesummary.articlesummary.UrlJumpInfo;
+import tencent.im.oidb.articlesummary.articlesummary.WeishiUGInfo;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.BackOffGroupInfo;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ReqChannelPara;
 
-public abstract class qah
-  extends qaf
+public class qah
+  implements qae
 {
-  private qaq a;
+  public static String a;
+  public static String b;
+  public static String c;
+  private static String jdField_d_of_type_JavaLangString = "UGRuleManager";
+  private static int f;
+  private static int g;
+  private final int jdField_a_of_type_Int = 3;
+  private Map<String, qai> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private final int b;
+  private final int c;
+  private final int jdField_d_of_type_Int = 109;
+  private final int e = 110;
   
-  public qah(pzs parampzs, qaq paramqaq)
+  static
   {
-    super(parampzs, paramqaq);
-    this.a = paramqaq;
+    jdField_a_of_type_JavaLangString = "readinjoy_sp_update_one_day";
+    jdField_b_of_type_JavaLangString = "readinjoy_sp_clcik_times_one_day";
+    jdField_c_of_type_JavaLangString = "readinjoy_sp_remain_times_one_day";
   }
   
-  int a(boolean paramBoolean)
+  public qah()
   {
-    if (paramBoolean) {
-      return 2130842446;
+    this.jdField_b_of_type_Int = 108;
+    this.jdField_c_of_type_Int = 7;
+  }
+  
+  public static int a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (!a(paramBaseArticleInfo)) {}
+    while (!paramBaseArticleInfo.weishiUGInfo.msg_url_jump_info.uint32_jump_src.has()) {
+      return 1;
     }
-    return 2130842365;
+    return paramBaseArticleInfo.weishiUGInfo.msg_url_jump_info.uint32_jump_src.get();
   }
   
-  public void a(int paramInt1, int paramInt2, boolean paramBoolean) {}
-  
-  public void a(VideoInfo paramVideoInfo) {}
-  
-  public void a(VideoInfo paramVideoInfo, boolean paramBoolean)
+  public static int a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean)
   {
-    super.a(paramVideoInfo, paramBoolean);
-    this.a.w.setVisibility(0);
-    if (((this.a.jdField_c_of_type_Int == 0) && (this.a.b == 0) && ((pzs.a(this.c) instanceof VideoFeedsPlayActivity)) && (paramBoolean)) || (paramVideoInfo.jdField_c_of_type_Boolean))
+    if (!a(paramBaseArticleInfo)) {
+      return 0;
+    }
+    if (!paramBoolean) {
+      return 2;
+    }
+    return f;
+  }
+  
+  private int a(qai paramqai, String paramString1, String paramString2)
+  {
+    try
     {
-      this.a.w.setText("");
-      this.a.v.setText("");
+      Object localObject = (String)bhvh.a(jdField_b_of_type_JavaLangString, "");
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return paramqai.jdField_c_of_type_Int;
+      }
+      localObject = new JSONObject((String)localObject);
+      String str = ((JSONObject)localObject).optString("time", "");
+      int j = ((JSONObject)localObject).optInt("clickTimes" + paramString2 + paramString1, 0);
+      if (!str.equals(qad.a())) {
+        return paramqai.jdField_c_of_type_Int;
+      }
+      int i = j;
+      if (j == 0) {
+        i = paramqai.jdField_c_of_type_Int;
+      }
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "getChannelClickTimes :" + i);
+      return i;
     }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return paramqai.jdField_c_of_type_Int;
+  }
+  
+  public static long a(int paramInt)
+  {
+    if (paramInt != 0) {}
     for (;;)
     {
-      this.a.w.getPaint().setFakeBoldText(true);
-      this.a.v.getPaint().setFakeBoldText(true);
-      pzs.a(this.c, this.a, paramVideoInfo);
-      a(true);
-      if (this.a.r != null) {
-        this.a.r.setVisibility(8);
-      }
-      return;
-      this.a.w.setText(paramVideoInfo.jdField_c_of_type_JavaLangString);
-      this.a.v.setText(paramVideoInfo.jdField_c_of_type_JavaLangString);
-    }
-  }
-  
-  protected void a(qaq paramqaq, VideoInfo paramVideoInfo)
-  {
-    paramqaq.z.setOnClickListener(this.c);
-    paramqaq.z.setTag(paramqaq);
-    paramqaq.p.setTag(paramqaq);
-    paramqaq.p.setOnClickListener(this.c);
-    paramqaq.p.setVisibility(0);
-    paramqaq.h.setTag(paramqaq);
-    paramqaq.h.setOnClickListener(this.c);
-    paramqaq.h.setOnLongClickListener(this.c);
-    if (paramqaq.jdField_c_of_type_AndroidWidgetLinearLayout != null)
-    {
-      paramqaq.jdField_c_of_type_AndroidWidgetLinearLayout.setOnClickListener(this.c);
-      paramqaq.jdField_c_of_type_AndroidWidgetLinearLayout.setOnLongClickListener(this.c);
-      paramqaq.jdField_c_of_type_AndroidWidgetLinearLayout.setTag(paramqaq);
-    }
-    if (paramqaq.j != null)
-    {
-      paramqaq.j.setOnClickListener(this.c);
-      paramqaq.j.setTag(paramqaq);
-    }
-    if (!paramVideoInfo.jdField_c_of_type_Boolean) {
-      paramqaq.h.setVisibility(0);
-    }
-    for (;;)
-    {
-      paramqaq.i.setTag(paramqaq);
-      paramqaq.i.setOnClickListener(this.c);
-      if (!qzk.a().b()) {
-        paramqaq.i.setVisibility(0);
-      }
-      b(paramVideoInfo);
-      return;
-      paramqaq.h.setVisibility(8);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a.q != null)
-    {
-      if ((pzs.c(this.c) == 10) && (this.a.b == 0))
+      try
       {
-        this.a.q.setVisibility(8);
-        this.a.w.setVisibility(0);
+        if (oox.b(paramInt))
+        {
+          Object localObject = ooc.a(String.valueOf(paramInt));
+          if (localObject == null) {
+            break label235;
+          }
+          l1 = ((ooc)localObject).a(false);
+          localObject = (String)bhvh.a(jdField_c_of_type_JavaLangString, "");
+          if (TextUtils.isEmpty((CharSequence)localObject))
+          {
+            QLog.d(jdField_d_of_type_JavaLangString, 1, "getNowRemainTime time is" + l1 / 1000L);
+            return l1 / 1000L;
+          }
+          localObject = new JSONObject((String)localObject);
+          String str = ((JSONObject)localObject).optString("time", "");
+          long l2 = ((JSONObject)localObject).optLong("remainTime" + paramInt, 0L);
+          if (!str.equals(qad.a()))
+          {
+            QLog.d(jdField_d_of_type_JavaLangString, 1, "getNowRemainTime time is" + l1 / 1000L);
+            return l1 / 1000L;
+          }
+          QLog.d(jdField_d_of_type_JavaLangString, 1, "getNowRemainTime time is" + (l1 + l2) / 1000L);
+          l1 = (l1 + l2) / 1000L;
+          return l1;
+        }
       }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      return 0L;
+      label235:
+      long l1 = 0L;
     }
-    else {
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.a.q.setVisibility(0);
-      this.a.w.setVisibility(0);
-      return;
-    }
-    this.a.q.setVisibility(8);
-    this.a.w.setVisibility(8);
   }
   
-  public void b(VideoInfo paramVideoInfo)
+  private BaseArticleInfo a(BaseArticleInfo paramBaseArticleInfo)
   {
-    FusionBiuInfo localFusionBiuInfo;
-    if (paramVideoInfo.e > 0)
+    if ((paramBaseArticleInfo.viewRowkey != null) && (!paramBaseArticleInfo.viewRowkey.equals(paramBaseArticleInfo.innerUniqueID)) && (paramBaseArticleInfo.mSubArtilceList != null) && (paramBaseArticleInfo.mSubArtilceList.size() > 0) && (paramBaseArticleInfo.mSubArtilceList.get(0) != null) && (paramBaseArticleInfo.viewRowkey.equals(((ArticleInfo)paramBaseArticleInfo.mSubArtilceList.get(0)).innerUniqueID))) {
+      return (BaseArticleInfo)paramBaseArticleInfo.mSubArtilceList.get(0);
+    }
+    return paramBaseArticleInfo;
+  }
+  
+  private String a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (!a(paramBaseArticleInfo)) {}
+    while (!paramBaseArticleInfo.weishiUGInfo.bytes_back_off_group.has()) {
+      return null;
+    }
+    return paramBaseArticleInfo.weishiUGInfo.bytes_back_off_group.get().toStringUtf8();
+  }
+  
+  public static List<String> a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (!a(paramBaseArticleInfo)) {
+      return null;
+    }
+    if ((!paramBaseArticleInfo.weishiUGInfo.rpt_bytes_report_base_url.has()) || (paramBaseArticleInfo.weishiUGInfo.rpt_bytes_report_base_url.get() == null))
     {
-      this.a.y.setVisibility(0);
-      qcn.b(this.a.y, paramVideoInfo.e, "0");
-      this.a.k.setImageResource(2130842444);
-      VideoFeedsAccessibilityHelper.a(this.a.y, paramVideoInfo.e);
-      this.a.i.setImageDrawable(pzs.a(this.c, a(paramVideoInfo.l)));
-      localFusionBiuInfo = null;
-      if (paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
-        localFusionBiuInfo = paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.fusionBiuInfo;
-      }
-      if ((qzk.a().b()) && (localFusionBiuInfo != null))
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "getReportUrl is null");
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramBaseArticleInfo = paramBaseArticleInfo.weishiUGInfo.rpt_bytes_report_base_url.get().iterator();
+    while (paramBaseArticleInfo.hasNext())
+    {
+      ByteStringMicro localByteStringMicro = (ByteStringMicro)paramBaseArticleInfo.next();
+      localArrayList.add(localByteStringMicro.toStringUtf8());
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "getReportUrl is " + localByteStringMicro.toStringUtf8());
+    }
+    return localArrayList;
+  }
+  
+  private qai a(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      paramString1 = null;
+    }
+    String str;
+    do
+    {
+      return paramString1;
+      str = paramString2 + paramString1;
+      paramString2 = (qai)this.jdField_a_of_type_JavaUtilMap.get(str);
+      paramString1 = paramString2;
+    } while (paramString2 != null);
+    paramString1 = new qai(this);
+    this.jdField_a_of_type_JavaUtilMap.put(str, paramString1);
+    return paramString1;
+  }
+  
+  public static void a()
+  {
+    b(g);
+  }
+  
+  public static void a(int paramInt)
+  {
+    if (g != paramInt)
+    {
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "wakeUpTimeCalculate change channel channel id is " + paramInt);
+      b(g);
+    }
+    if ((paramInt == 0) || (oox.b(paramInt)))
+    {
+      g = paramInt;
+      ooc localooc2 = ooc.a(String.valueOf(paramInt));
+      ooc localooc1 = localooc2;
+      if (localooc2 == null)
       {
-        paramVideoInfo = this.a.h;
-        if (!localFusionBiuInfo.b) {
-          break label181;
+        localooc1 = new ooc();
+        ooc.a(String.valueOf(paramInt), localooc1);
+      }
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "wakeUpTimeCalculate channel id is " + paramInt);
+      localooc1.a();
+    }
+  }
+  
+  private void a(List<ArticleInfo> paramList, qai paramqai, qak paramqak)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
+      if (paramqai.jdField_a_of_type_JavaLangString.equals(a(localArticleInfo))) {
+        paramqak.jdField_a_of_type_JavaUtilList.add(localArticleInfo.innerUniqueID);
+      }
+      if ((localArticleInfo.mSubArtilceList != null) && (localArticleInfo.mSubArtilceList.size() > 0)) {
+        a(localArticleInfo.mSubArtilceList, paramqai, paramqak);
+      }
+    }
+  }
+  
+  private void a(qai paramqai, String paramString1, String paramString2)
+  {
+    try
+    {
+      Object localObject = (String)bhvh.a(jdField_b_of_type_JavaLangString, "");
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "start saveChannelClickToSP :" + (String)localObject);
+      String str1;
+      int i;
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = new JSONObject();
+        String str2 = ((JSONObject)localObject).optString("time", "");
+        int j = ((JSONObject)localObject).optInt("clickTimes" + paramString2 + paramString1, 0);
+        str1 = qad.a();
+        i = j;
+        if (j == 0) {
+          i = paramqai.jdField_c_of_type_Int;
+        }
+        if (str2.equals(str1)) {
+          break label258;
+        }
+        localObject = new JSONObject();
+        i = 0;
+      }
+      for (;;)
+      {
+        i += 1;
+        paramqai.jdField_c_of_type_Int = i;
+        ((JSONObject)localObject).put("time", str1);
+        ((JSONObject)localObject).put("clickTimes" + paramString2 + paramString1, i);
+        QLog.d(jdField_d_of_type_JavaLangString, 1, "end saveChannelClickToSP :" + ((JSONObject)localObject).toString());
+        bhvh.a(jdField_b_of_type_JavaLangString, ((JSONObject)localObject).toString());
+        return;
+        localObject = new JSONObject((String)localObject);
+        break;
+      }
+    }
+    catch (JSONException paramqai)
+    {
+      paramqai.printStackTrace();
+      return;
+    }
+  }
+  
+  private void a(qaj paramqaj)
+  {
+    if ((paramqaj != null) && (paramqaj.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      Iterator localIterator = paramqaj.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        oidb_cmd0x68b.BackOffGroupInfo localBackOffGroupInfo = (oidb_cmd0x68b.BackOffGroupInfo)localIterator.next();
+        if ((localBackOffGroupInfo.bytes_back_off_group.has()) || (localBackOffGroupInfo.bytes_back_off_group.get() == null)) {
+          a(localBackOffGroupInfo, paramqaj.b);
         }
       }
     }
-    label181:
-    for (int i = 2130841140;; i = 2130842442)
+  }
+  
+  private void a(oidb_cmd0x68b.BackOffGroupInfo paramBackOffGroupInfo, List<ArticleInfo> paramList)
+  {
+    int j = 0;
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    qai localqai;
+    do
     {
-      paramVideoInfo.setImageResource(i);
-      if ((this.a instanceof qap)) {
-        localFusionBiuInfo.jdField_c_of_type_Boolean = true;
-      }
       return;
-      this.a.y.setVisibility(8);
-      this.a.k.setImageResource(2130842445);
+      long l = ((ArticleInfo)paramList.get(0)).mChannelID;
+      localqai = a(paramBackOffGroupInfo.bytes_back_off_group.get().toStringUtf8(), String.valueOf(l));
+    } while (localqai == null);
+    localqai.jdField_a_of_type_JavaLangString = paramBackOffGroupInfo.bytes_back_off_group.get().toStringUtf8();
+    if (paramBackOffGroupInfo.uint32_max_evoke_count.has()) {}
+    for (int i = paramBackOffGroupInfo.uint32_max_evoke_count.get();; i = 0)
+    {
+      localqai.jdField_a_of_type_Int = i;
+      i = j;
+      if (paramBackOffGroupInfo.uint32_max_fresh_evoke_count.has()) {
+        i = paramBackOffGroupInfo.uint32_max_fresh_evoke_count.get();
+      }
+      localqai.jdField_b_of_type_Int = i;
+      paramBackOffGroupInfo = new qak(this);
+      a(paramList, localqai, paramBackOffGroupInfo);
+      localqai.a(paramBackOffGroupInfo);
+      return;
+    }
+  }
+  
+  public static void a(oidb_cmd0x68b.ReqChannelPara paramReqChannelPara, String paramString)
+  {
+    try
+    {
+      Object localObject = (String)bhvh.a(jdField_a_of_type_JavaLangString, "");
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "start addFreshTimesToUGAndSaveToSp : " + (String)localObject);
+      int i;
+      String str1;
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = new JSONObject();
+        String str2 = ((JSONObject)localObject).optString("time", "");
+        i = ((JSONObject)localObject).optInt("freshTimes" + paramString, 0);
+        str1 = qad.a();
+        if (str2.equals(str1)) {
+          break label221;
+        }
+        localObject = new JSONObject();
+        i = 0;
+      }
+      for (;;)
+      {
+        i += 1;
+        ((JSONObject)localObject).put("time", str1);
+        ((JSONObject)localObject).put("freshTimes" + paramString, i);
+        QLog.d(jdField_d_of_type_JavaLangString, 1, "end addFreshTimesToUGAndSaveToSp : " + ((JSONObject)localObject).toString());
+        bhvh.a(jdField_a_of_type_JavaLangString, ((JSONObject)localObject).toString());
+        paramReqChannelPara.uint32_update_times_one_day.set(i);
+        return;
+        localObject = new JSONObject((String)localObject);
+        break;
+      }
+    }
+    catch (JSONException paramReqChannelPara)
+    {
+      paramReqChannelPara.printStackTrace();
+      return;
+    }
+  }
+  
+  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (b(paramBaseArticleInfo)) {}
+    while ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.weishiUGInfo != null) && (paramBaseArticleInfo.weishiUGInfo.uint32_use_ug.has()) && (paramBaseArticleInfo.weishiUGInfo.uint32_use_ug.get() > 0) && (paramBaseArticleInfo.weishiUGInfo.msg_url_jump_info.has()) && (paramBaseArticleInfo.weishiUGInfo.msg_url_jump_info.get() != null)) {
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if ((paramString.startsWith("http://clientui.3g.qq.com/mqqapi/")) || (paramString.startsWith("http://clientui.3g.qq.com/mqq/")) || (paramString.startsWith("http://qm.qq.com/cgi-bin/")) || (paramString.startsWith("https://buluo.qq.com/cgi-bin/bar/jump?jump_type=xqquncard"))) {}
+    for (int i = 1;; i = 0) {
+      return (i == 0) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://")));
+    }
+  }
+  
+  public static void b(int paramInt)
+  {
+    if ((paramInt == 0) || (oox.b(paramInt)))
+    {
+      ooc localooc = ooc.a(String.valueOf(paramInt));
+      if ((localooc != null) && (localooc.a()))
+      {
+        c(paramInt);
+        localooc.b();
+        localooc.c();
+        QLog.d(jdField_d_of_type_JavaLangString, 1, "stopTimeCalculate channel id is " + paramInt);
+      }
+    }
+  }
+  
+  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
+  {
+    return (paramBaseArticleInfo != null) && (paramBaseArticleInfo.weishiUGInfo != null) && (paramBaseArticleInfo.weishiUGInfo.uint32_is_with_angle_sign.has()) && (paramBaseArticleInfo.weishiUGInfo.uint32_is_with_angle_sign.get() > 0) && (paramBaseArticleInfo.weishiUGInfo.msg_url_jump_info.has()) && (paramBaseArticleInfo.weishiUGInfo.msg_url_jump_info.get() != null);
+  }
+  
+  private static void c(int paramInt)
+  {
+    if (paramInt != 0) {}
+    for (;;)
+    {
+      try
+      {
+        if (!oox.b(paramInt)) {
+          break;
+        }
+        Object localObject = ooc.a(String.valueOf(paramInt));
+        if (localObject != null)
+        {
+          l1 = ((ooc)localObject).a(false);
+          localObject = (String)bhvh.a(jdField_c_of_type_JavaLangString, "");
+          QLog.d(jdField_d_of_type_JavaLangString, 1, "start saveRemainTimeToSP string is " + (String)localObject);
+          if (TextUtils.isEmpty((CharSequence)localObject))
+          {
+            localObject = new JSONObject();
+            long l2 = ((JSONObject)localObject).optLong("remainTime" + paramInt, 0L);
+            String str2 = ((JSONObject)localObject).optString("time", "");
+            String str1 = qad.a();
+            if (!str2.equals(str1))
+            {
+              localObject = new JSONObject();
+              l2 = 0L;
+              ((JSONObject)localObject).put("time", str1);
+              ((JSONObject)localObject).put("remainTime" + paramInt, l2 + l1);
+              QLog.d(jdField_d_of_type_JavaLangString, 1, "end saveRemainTimeToSP string is " + ((JSONObject)localObject).toString());
+              bhvh.a(jdField_c_of_type_JavaLangString, ((JSONObject)localObject).toString());
+            }
+          }
+          else
+          {
+            localObject = new JSONObject((String)localObject);
+            continue;
+          }
+          continue;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        return;
+      }
+      long l1 = 0L;
+    }
+  }
+  
+  public static boolean c(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (!a(paramBaseArticleInfo))
+    {
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "judgeIsAgreement is not isUgCard");
+      return false;
+    }
+    int i = paramBaseArticleInfo.weishiUGInfo.uint32_use_ug.get();
+    paramBaseArticleInfo = paramBaseArticleInfo.weishiUGInfo.msg_url_jump_info;
+    if (paramBaseArticleInfo.bytes_jump_bundle.has())
+    {
+      paramBaseArticleInfo = paramBaseArticleInfo.bytes_jump_bundle.get().toStringUtf8();
+      bool = bbfd.a(BaseApplicationImpl.getApplication(), paramBaseArticleInfo);
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "judgeIsAgreement isappInstall " + paramBaseArticleInfo + " :" + bool + " useUg: " + i);
+      if (((!bool) || (i != 2)) && ((bool) || (i != 1))) {
+        break label142;
+      }
+    }
+    label142:
+    for (boolean bool = true;; bool = false)
+    {
+      return bool;
+      paramBaseArticleInfo = "";
       break;
     }
   }
   
-  public void b(boolean paramBoolean)
+  public String a(BaseArticleInfo paramBaseArticleInfo, TemplateBean paramTemplateBean, ViewBase paramViewBase)
   {
-    if (this.a.m != null)
+    if (!a(paramBaseArticleInfo)) {
+      return null;
+    }
+    paramViewBase = a(paramBaseArticleInfo);
+    paramTemplateBean = paramViewBase.weishiUGInfo.msg_url_jump_info;
+    if (paramTemplateBean.bytes_jump_schema.has())
     {
-      if ((this.a.a.a.jdField_a_of_type_Int == 0) || ((pzs.c(this.c) == 10) && (this.a.b == 0))) {
-        this.a.m.setVisibility(8);
+      paramBaseArticleInfo = paramTemplateBean.bytes_jump_schema.get().toStringUtf8();
+      if (!paramTemplateBean.bytes_jump_url.has()) {
+        break label144;
+      }
+      paramTemplateBean = paramTemplateBean.bytes_jump_url.get().toStringUtf8();
+      label65:
+      if (!paramViewBase.weishiUGInfo.msg_url_jump_info.uint32_jump_type.has()) {
+        break label150;
       }
     }
-    else {
-      return;
-    }
-    if (paramBoolean)
+    int j;
+    label144:
+    label150:
+    for (int i = paramViewBase.weishiUGInfo.msg_url_jump_info.uint32_jump_type.get();; i = 0)
     {
-      this.a.m.setVisibility(0);
-      return;
+      j = paramViewBase.weishiUGInfo.uint32_use_ug.get();
+      if ((!TextUtils.isEmpty(paramBaseArticleInfo)) || (!TextUtils.isEmpty(paramTemplateBean))) {
+        break label156;
+      }
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "getJumpUrl schema & h5 is null");
+      f = 3;
+      return null;
+      paramBaseArticleInfo = "";
+      break;
+      paramTemplateBean = "";
+      break label65;
     }
-    this.a.m.setVisibility(8);
-  }
-  
-  public void d()
-  {
-    if (pzs.a(this.c) == null)
+    label156:
+    if (!c(paramViewBase))
     {
-      ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F);
-      localScaleAnimation.setDuration(200L);
-      localScaleAnimation.setRepeatCount(1);
-      localScaleAnimation.setRepeatMode(2);
-      localScaleAnimation.setInterpolator(new DecelerateInterpolator());
-      pzs.a(this.c, localScaleAnimation);
+      if ((j == 2) && (i == 2) && (!TextUtils.isEmpty(paramTemplateBean)))
+      {
+        QLog.d(jdField_d_of_type_JavaLangString, 1, "getJumpUrl return is h5:" + paramTemplateBean);
+        f = 108;
+        return paramTemplateBean;
+      }
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "getJumpUrl judgeIsAgreement is false");
+      f = 109;
+      return null;
     }
-    pzs.a(this.c).setAnimationListener(new qai(this));
-    this.a.i.startAnimation(pzs.a(this.c));
-  }
-  
-  public void e(boolean paramBoolean)
-  {
-    super.e(paramBoolean);
-    if (paramBoolean)
+    if (j == 1)
     {
-      this.a.w.setVisibility(8);
-      a(false);
-      b(false);
-      j(false);
-      return;
-    }
-    this.a.w.setVisibility(0);
-    a(true);
-    b(true);
-    j(true);
-  }
-  
-  public void j(boolean paramBoolean)
-  {
-    if (this.a.o != null)
-    {
-      if (!this.a.a.a.a()) {
-        this.a.o.setVisibility(8);
+      if ((i == 1) && (!TextUtils.isEmpty(paramTemplateBean)))
+      {
+        QLog.d(jdField_d_of_type_JavaLangString, 1, "getJumpUrl return is h5:" + paramTemplateBean);
+        f = 108;
+        return paramTemplateBean;
       }
     }
-    else {
-      return;
-    }
-    if (paramBoolean)
+    else if (j == 2)
     {
-      this.a.o.setVisibility(0);
+      if ((i == 2) && (!TextUtils.isEmpty(paramBaseArticleInfo)))
+      {
+        QLog.d(jdField_d_of_type_JavaLangString, 1, "getJumpUrl return is schema:" + paramBaseArticleInfo);
+        f = 7;
+        return paramBaseArticleInfo;
+      }
+      if ((i == 1) && (!TextUtils.isEmpty(paramTemplateBean)))
+      {
+        QLog.d(jdField_d_of_type_JavaLangString, 1, "getJumpUrl return is h5:" + paramTemplateBean);
+        f = 108;
+        return paramTemplateBean;
+      }
+    }
+    f = 3;
+    QLog.d(jdField_d_of_type_JavaLangString, 1, "getJumpUrl return is null");
+    return null;
+  }
+  
+  public void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int j = a(paramBaseArticleInfo, paramBoolean2);
+    if (j != 0)
+    {
+      int i = j;
+      if (!paramBoolean1)
+      {
+        i = j;
+        if (j != 110) {
+          i = 3;
+        }
+      }
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "UGRuleManager getUGSchema action is:" + i);
+      sfc.a(paramBaseArticleInfo, i);
+    }
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (!(paramObject instanceof qaj)) {
       return;
     }
-    this.a.o.setVisibility(8);
+    QLog.d(jdField_d_of_type_JavaLangString, 1, "handleRules");
+    a((qaj)paramObject);
+  }
+  
+  public boolean a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if (b(paramBaseArticleInfo))
+    {
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "judgeHitRule isWithAngleSign");
+      bool1 = true;
+      return bool1;
+    }
+    if (!a(paramBaseArticleInfo))
+    {
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "judgeHitRule isNotUgCard");
+      return false;
+    }
+    String str2 = paramBaseArticleInfo.weishiUGInfo.bytes_back_off_group.get().toStringUtf8();
+    String str1 = paramBaseArticleInfo.innerUniqueID;
+    if (paramBaseArticleInfo.viewRowkey != null) {
+      str1 = paramBaseArticleInfo.viewRowkey;
+    }
+    for (;;)
+    {
+      qai localqai = a(str2, String.valueOf(paramBaseArticleInfo.mChannelID));
+      if (localqai == null)
+      {
+        QLog.d(jdField_d_of_type_JavaLangString, 1, "judgeHitRule backOffGroup is null");
+        return false;
+      }
+      if (paramBaseArticleInfo.weishiUGInfo.uint32_residence_threshold.has()) {}
+      for (int i = paramBaseArticleInfo.weishiUGInfo.uint32_residence_threshold.get(); i > a((int)paramBaseArticleInfo.mChannelID); i = 0)
+      {
+        QLog.d(jdField_d_of_type_JavaLangString, 1, "judgeHitRule is not reach minTime");
+        f = 110;
+        return false;
+      }
+      localqai.jdField_c_of_type_Int = a(localqai, str2, String.valueOf(paramBaseArticleInfo.mChannelID));
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "judgeHitRule backOffGroup.clickTime is " + localqai.jdField_c_of_type_Int + " backOffGroup.maxEvokeCount is " + localqai.jdField_a_of_type_Int + " groupid is " + localqai.jdField_a_of_type_JavaLangString);
+      if (localqai.jdField_c_of_type_Int >= localqai.jdField_a_of_type_Int)
+      {
+        QLog.d(jdField_d_of_type_JavaLangString, 1, "judgeHitRule over groupClick");
+        return false;
+      }
+      Iterator localIterator = localqai.jdField_a_of_type_JavaUtilDeque.iterator();
+      qak localqak;
+      do
+      {
+        bool1 = bool2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localqak = (qak)localIterator.next();
+      } while (!localqak.jdField_a_of_type_JavaUtilList.contains(str1));
+      QLog.d(jdField_d_of_type_JavaLangString, 1, "judgeHitRule freshInfo.clickTime is " + localqak.jdField_a_of_type_Int + " backOffGroup.maxFreshEvokeCount is " + localqai.jdField_b_of_type_Int);
+      bool1 = bool2;
+      if (localqak.jdField_a_of_type_Int >= localqai.jdField_b_of_type_Int) {
+        break;
+      }
+      if ((paramBoolean) && (!TextUtils.isEmpty(a(paramBaseArticleInfo, null, null))))
+      {
+        localqak.jdField_a_of_type_Int += 1;
+        a(localqai, str2, String.valueOf(paramBaseArticleInfo.mChannelID));
+      }
+      return true;
+    }
   }
 }
 

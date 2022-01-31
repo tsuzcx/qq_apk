@@ -1,18 +1,26 @@
 package com.tencent.qqmini.proxyimpl;
 
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingReq;
+import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
+import NS_MINI_INTERFACE.INTERFACE.StReportExecuteReq;
+import NS_MINI_INTERFACE.INTERFACE.StReportExecuteRsp;
 import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
-import ajrf;
+import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
+import akfp;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bddn;
-import bddp;
+import beho;
+import behq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
+import com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
@@ -29,7 +37,32 @@ public class ChannelProxyImpl
   
   private static MiniAppCmdInterface createCmdInterface(AsyncResult paramAsyncResult)
   {
-    return new ChannelProxyImpl.2(paramAsyncResult);
+    return new ChannelProxyImpl.4(paramAsyncResult);
+  }
+  
+  public void JudgeTiming(String paramString1, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4, String paramString2, int paramInt5, String paramString3, AsyncResult paramAsyncResult)
+  {
+    INTERFACE.StJudgeTimingReq localStJudgeTimingReq = new INTERFACE.StJudgeTimingReq();
+    localStJudgeTimingReq.appid.set(paramString1);
+    localStJudgeTimingReq.appType.set(paramInt1);
+    localStJudgeTimingReq.scene.set(paramInt2);
+    localStJudgeTimingReq.factType.set(paramInt3);
+    localStJudgeTimingReq.reportTime.set(paramLong);
+    localStJudgeTimingReq.totalTime.set(paramInt4);
+    localStJudgeTimingReq.launchId.set(paramString2);
+    localStJudgeTimingReq.afterCertify.set(paramInt5);
+    localStJudgeTimingReq.via.set(paramString3);
+    MiniAppSSOCmdHelper.sendSSOCmdRequest("LightAppSvc.mini_app_growguard.JudgeTiming", paramString1, localStJudgeTimingReq, INTERFACE.StJudgeTimingRsp.class, new ChannelProxyImpl.2(this, paramAsyncResult));
+  }
+  
+  public void ReportExecute(String paramString1, int paramInt, String paramString2, String paramString3, AsyncResult paramAsyncResult)
+  {
+    INTERFACE.StReportExecuteReq localStReportExecuteReq = new INTERFACE.StReportExecuteReq();
+    localStReportExecuteReq.appid.set(paramString1);
+    localStReportExecuteReq.execTime.set(paramInt);
+    localStReportExecuteReq.instrTraceId.set(paramString2);
+    localStReportExecuteReq.ruleName.set(paramString3);
+    MiniAppSSOCmdHelper.sendSSOCmdRequest("LightAppSvc.mini_app_growguard.ReportExecute", paramString1, localStReportExecuteReq, INTERFACE.StReportExecuteRsp.class, new ChannelProxyImpl.3(this, paramAsyncResult));
   }
   
   public void batchGetContact(ArrayList<String> paramArrayList, AsyncResult paramAsyncResult)
@@ -82,6 +115,8 @@ public class ChannelProxyImpl
     MiniAppCmdUtil.getInstance().getFriendCloudStorage(paramString, paramArrayOfString, createCmdInterface(paramAsyncResult));
   }
   
+  public void getGdtAd(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, AsyncResult paramAsyncResult) {}
+  
   public void getGroupCloudStorage(String paramString1, String paramString2, String[] paramArrayOfString, AsyncResult paramAsyncResult)
   {
     MiniAppCmdUtil.getInstance().getGroupCloudStorage(paramString1, paramString2, paramArrayOfString, createCmdInterface(paramAsyncResult));
@@ -112,9 +147,21 @@ public class ChannelProxyImpl
     MiniAppCmdUtil.getInstance().getPhoneNumber(paramString, createCmdInterface(paramAsyncResult));
   }
   
+  public void getPotentialFriendList(COMM.StCommonExt paramStCommonExt, String paramString, AsyncResult paramAsyncResult)
+  {
+    MiniAppCmdUtil.getInstance().getPotentialFriendList(paramStCommonExt, paramString, createCmdInterface(paramAsyncResult));
+  }
+  
   public void getRobotUin(String paramString, AsyncResult paramAsyncResult)
   {
     MiniAppCmdUtil.getInstance().getRobotUin(paramString, createCmdInterface(paramAsyncResult));
+  }
+  
+  public void getSDKOpenKeyToken(COMM.StCommonExt paramStCommonExt, AsyncResult paramAsyncResult) {}
+  
+  public void getShareInfo(MiniProgramShare.StAdaptShareInfoReq paramStAdaptShareInfoReq, AsyncResult paramAsyncResult)
+  {
+    MiniAppCmdUtil.getInstance().getShareInfo(paramStAdaptShareInfoReq, createCmdInterface(paramAsyncResult));
   }
   
   public void getTcbTicket(String paramString1, String paramString2, AsyncResult paramAsyncResult)
@@ -147,6 +194,11 @@ public class ChannelProxyImpl
     MiniAppCmdUtil.getInstance().getUserInfoOpenData(paramString1, paramString2, paramArrayOfString, createCmdInterface(paramAsyncResult));
   }
   
+  public void getUserInteractiveStorage(COMM.StCommonExt paramStCommonExt, String paramString, String[] paramArrayOfString, AsyncResult paramAsyncResult)
+  {
+    MiniAppCmdUtil.getInstance().getUserInteractiveStorage(paramStCommonExt, paramString, paramArrayOfString, createCmdInterface(paramAsyncResult));
+  }
+  
   public void getUserSetting(String paramString1, String paramString2, String paramString3, AsyncResult paramAsyncResult)
   {
     MiniAppCmdUtil.getInstance().getUserSetting(paramString1, paramString2, paramString3, createCmdInterface(paramAsyncResult));
@@ -159,9 +211,9 @@ public class ChannelProxyImpl
       Object localObject = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject instanceof QQAppInterface))
       {
-        localObject = (ajrf)((QQAppInterface)localObject).a(5);
+        localObject = (akfp)((QQAppInterface)localObject).a(5);
         if (localObject != null) {
-          ((ajrf)localObject).a(paramBundle);
+          ((akfp)localObject).a(paramBundle);
         }
       }
     }
@@ -170,6 +222,11 @@ public class ChannelProxyImpl
   public void login(String paramString, AsyncResult paramAsyncResult)
   {
     MiniAppCmdUtil.getInstance().getLoginCode(paramString, createCmdInterface(paramAsyncResult));
+  }
+  
+  public void modifyFriendInteractiveStorage(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, HashMap<String, String> paramHashMap, AsyncResult paramAsyncResult)
+  {
+    MiniAppCmdUtil.getInstance().modifyFriendInteractiveStorage(paramStCommonExt, paramString1, paramString2, paramString3, paramInt, paramString4, paramHashMap, createCmdInterface(paramAsyncResult));
   }
   
   public void queryCurrency(String paramString1, String paramString2, int paramInt1, int paramInt2, AsyncResult paramAsyncResult)
@@ -187,14 +244,14 @@ public class ChannelProxyImpl
     MiniAppCmdUtil.getInstance().performReport(paramArrayOfByte, createCmdInterface(paramAsyncResult), "LightAppSvc." + paramString1 + "." + paramString2);
   }
   
-  public void setAuth(String paramString, bddn parambddn, AsyncResult paramAsyncResult)
+  public void setAuth(String paramString, beho parambeho, AsyncResult paramAsyncResult)
   {
     INTERFACE.StUserAuthInfo localStUserAuthInfo = new INTERFACE.StUserAuthInfo();
-    localStUserAuthInfo.scope.set(parambddn.jdField_a_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(parambddn.b)) {
-      localStUserAuthInfo.desc.set(parambddn.b);
+    localStUserAuthInfo.scope.set(parambeho.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(parambeho.b)) {
+      localStUserAuthInfo.desc.set(parambeho.b);
     }
-    localStUserAuthInfo.authState.set(parambddn.jdField_a_of_type_Int);
+    localStUserAuthInfo.authState.set(parambeho.jdField_a_of_type_Int);
     MiniAppCmdUtil.getInstance().setAuth(null, paramString, localStUserAuthInfo, createCmdInterface(paramAsyncResult));
   }
   
@@ -218,13 +275,18 @@ public class ChannelProxyImpl
     return MiniAppCmdUtil.getInstance().updateBaseLibForSDK(paramString, paramBoolean1, paramBoolean2, createCmdInterface(paramAsyncResult));
   }
   
-  public void updateUserSetting(String paramString, bddp parambddp, AsyncResult paramAsyncResult)
+  public void updateUserSetting(String paramString, behq parambehq, AsyncResult paramAsyncResult)
   {
     INTERFACE.StUserSettingInfo localStUserSettingInfo = new INTERFACE.StUserSettingInfo();
-    localStUserSettingInfo.settingItem.set(parambddp.jdField_a_of_type_JavaLangString);
-    localStUserSettingInfo.authState.set(parambddp.jdField_a_of_type_Int);
-    localStUserSettingInfo.desc.set(parambddp.b);
+    localStUserSettingInfo.settingItem.set(parambehq.jdField_a_of_type_JavaLangString);
+    localStUserSettingInfo.authState.set(parambehq.jdField_a_of_type_Int);
+    localStUserSettingInfo.desc.set(parambehq.b);
     MiniAppCmdUtil.getInstance().updateUserSetting(null, paramString, localStUserSettingInfo, createCmdInterface(paramAsyncResult));
+  }
+  
+  public void useUserApp(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, COMM.StCommonExt paramStCommonExt, AsyncResult paramAsyncResult)
+  {
+    MiniAppCmdUtil.getInstance().useUserApp(paramString1, paramInt1, paramInt2, paramString2, paramString3, paramStCommonExt, createCmdInterface(paramAsyncResult));
   }
   
   public void verifyPlugin(String paramString, ArrayList<com.tencent.qqmini.sdk.launcher.model.PluginInfo> paramArrayList, AsyncResult paramAsyncResult)

@@ -1,68 +1,25 @@
+import android.text.Editable;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class azge
+  implements TextWatcher
 {
-  public static String a(String paramString)
-  {
-    if (a(paramString)) {
-      return paramString + 140;
-    }
-    return null;
-  }
+  public azge(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public static String a(String paramString1, String paramString2, int paramInt)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (TextUtils.isEmpty(paramString2)) {
-      QLog.d("AvatarTroopUtil", 1, "getAvatarAddress troopUin is empty");
-    }
-    do
+    if ((!TextUtils.isEmpty(this.a.a.b)) && (paramInt1 > 0) && (paramInt1 < this.a.a.b.length() + this.a.a.c.length() + this.a.a.a.length() + this.a.J.length()) && (paramInt2 > paramInt3))
     {
-      return "http://p.qlogo.cn/gh/dir/file/";
-      if (1 == paramInt) {
-        return "http://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2).replace("file", paramString2 + "_" + paramString1);
-      }
-    } while (paramInt != 0);
-    return "http://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2).replace("file", paramString2);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (paramString == null) {
-      return false;
+      this.a.e(false);
+      return;
     }
-    return paramString.startsWith("http://p.qlogo.cn/gh/");
-  }
-  
-  public static String b(String paramString)
-  {
-    if (a(paramString)) {
-      return paramString + 0;
-    }
-    return null;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    if (((paramString.length() > 1) && (paramString.startsWith("+"))) || (paramString.startsWith("-"))) {}
-    for (int i = 1;; i = 0)
-    {
-      int j = paramString.length();
-      int k;
-      do
-      {
-        k = j - 1;
-        if (k < i) {
-          break;
-        }
-        j = k;
-      } while (Character.isDigit(paramString.charAt(k)));
-      return false;
-      return true;
-    }
+    TroopBarPublishActivity.b(this.a);
   }
 }
 

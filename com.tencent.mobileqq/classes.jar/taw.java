@@ -1,66 +1,40 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCollectionViewCount;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
 public class taw
-  extends slz<tcf>
+  implements anyb
 {
-  public static final String a;
-  public List<syn> a;
-  public String b;
+  public taw(StoryInputBarView paramStoryInputBarView) {}
   
-  static
+  public void a(anyc paramanyc)
   {
-    jdField_a_of_type_JavaLangString = skt.a("StorySvc.get_colleciton_view_count");
-  }
-  
-  public taw()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public slu a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspCollectionViewCount localRspCollectionViewCount = new qqstory_service.RspCollectionViewCount();
-    try
-    {
-      localRspCollectionViewCount.mergeFrom(paramArrayOfByte);
-      return new tcf(this.b, localRspCollectionViewCount);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        urk.d("Q.qqstory:UpdateCollectionViewCountRequest", paramArrayOfByte.toString());
-      }
+    if (((paramanyc instanceof aocp)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
+      ((aocp)paramanyc).a(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
     }
   }
   
-  protected byte[] a()
+  public void a(anyc paramanyc1, anyc paramanyc2, Drawable paramDrawable) {}
+  
+  public boolean a(anyc paramanyc)
   {
-    qqstory_service.ReqCollectionViewCount localReqCollectionViewCount = new qqstory_service.ReqCollectionViewCount();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      syn localsyn = (syn)localIterator.next();
-      localReqCollectionViewCount.collection_id.add(localsyn.a());
-    }
-    return localReqCollectionViewCount.toByteArray();
+    return false;
   }
   
-  public String toString()
+  public void b()
   {
-    return "UpdateCollectionViewCountRequest{mIdList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
+      ayla.a(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    }
   }
+  
+  public void b(anyc paramanyc) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

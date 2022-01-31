@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import ajoz;
+import akdj;
 
 public class PublicAccountHandler$4$1
   implements Runnable
 {
-  public PublicAccountHandler$4$1(ajoz paramajoz) {}
+  public PublicAccountHandler$4$1(akdj paramakdj) {}
   
   public void run()
   {

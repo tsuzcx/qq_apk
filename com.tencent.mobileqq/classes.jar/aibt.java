@@ -1,193 +1,184 @@
-import android.app.Activity;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import android.graphics.Color;
+import android.view.View;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.KplRoleInfo.WZRYUIinfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFoldMsg;
+import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageForWantGiftMsg;
 
-class aibt
-  extends ajmm
+public class aibt
 {
-  aibt(aibm paramaibm) {}
+  private static final int b = Color.rgb(123, 113, 30);
+  private static final int c = Color.rgb(38, 87, 178);
+  private static final int d = Color.argb(64, 125, 113, 30);
+  private static final int e = Color.argb(64, 6, 59, 156);
+  private static final int f = Color.rgb(162, 116, 4);
+  private static final int g = Color.argb(64, 213, 185, 118);
+  private static final int h = Color.argb(102, 213, 185, 118);
+  public int a;
+  private final acut a;
+  public QQAppInterface a;
   
-  protected void a(String paramString)
+  public aibt(acut paramacut, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "onSendSystemMsgActionError execute");
-    }
-    aibm.d(this.a);
-    paramString = aibm.a(this.a).getResources().getString(2131654104);
-    bbmy.a(aibm.a(this.a), 1, paramString, 0).b(aibm.b(this.a));
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Acut = paramacut;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  private aice a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "onSendSystemMsgActionFin|isSuccess : " + paramBoolean + ",logStr : " + paramString1 + ",actionType : " + paramInt1 + ", msgDetail : " + paramString2 + ",resultCode : " + paramInt2 + ", respType : " + paramInt3 + "msgFail : " + paramString3 + "msgInvalidDecided : " + paramString4 + ",remarkRet : " + paramInt4);
-    }
-    aibm.d(this.a);
-    this.a.notifyDataSetChanged();
-    long l1 = axcy.a().b();
-    if (!TextUtils.isEmpty(paramString1)) {}
-    for (;;)
+    if (paramView == null) {}
+    do
     {
-      structmsg.StructMsg localStructMsg;
-      try
-      {
-        l2 = Long.parseLong(paramString1);
-        l1 = l2;
-        localStructMsg = axcy.a().a(Long.valueOf(l1));
-        if (paramBoolean) {
-          break label239;
-        }
-        if (TextUtils.isEmpty(paramString3)) {
-          break label219;
-        }
-        bbmy.a(aibm.a(this.a), 1, paramString3, 0).b(aibm.b(this.a));
-        axda.a(localStructMsg, paramInt3, paramString2, paramString4);
-        return;
+      return null;
+      if ((paramView.getParent() instanceof aice)) {
+        return (aice)paramView.getParent();
       }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-      }
-      continue;
-      label219:
-      paramString3 = aibm.a(this.a).getResources().getString(2131653422);
-      continue;
-      label239:
-      paramString1 = aibm.a(this.a).getResources().getString(2131627143);
-      bbmy.a(aibm.a(this.a), 2, paramString1, 0).b(aibm.b(this.a));
-      long l2 = axcy.a().a();
-      axda.a(localStructMsg, paramInt1, paramString2, paramInt2);
-      if ((l2 != 0L) && (localStructMsg != null)) {}
-      try
-      {
-        this.a.a.a().a(ajed.M, 0, l2, localStructMsg.toByteArray());
-        if ((paramInt1 != 0) || (localStructMsg == null)) {
-          continue;
-        }
-        paramString3 = new Bundle();
-        paramString3.putString("base_uin", String.valueOf(localStructMsg.req_uin.get()));
-        paramString2 = localStructMsg.msg.req_uin_nick.get();
-        paramString1 = paramString2;
-        if (TextUtils.isEmpty(paramString2)) {
-          paramString1 = String.valueOf(localStructMsg.req_uin.get());
-        }
-        paramString3.putString("base_nick", paramString1);
-        paramString3.putInt("verfy_type", localStructMsg.msg.sub_type.get());
-        paramString3.putString("verfy_msg", localStructMsg.msg.msg_additional.get());
-        if (atcp.a(this.a.a, String.valueOf(localStructMsg.req_uin.get()), localStructMsg, false))
-        {
-          paramString4 = new String(localStructMsg.msg.bytes_game_nick.get().toByteArray());
-          paramString2 = paramString1;
-          if (!TextUtils.isEmpty(paramString4)) {
-            paramString2 = KplRoleInfo.WZRYUIinfo.buildNickName(paramString1, paramString4);
-          }
-          paramString3.putString("base_nick", paramString2);
-          paramString3.putBoolean("isFromWzry", true);
-        }
-        AutoRemarkActivity.a(aibm.a(this.a), 0, String.valueOf(localStructMsg.req_uin.get()), l1, paramString3);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          paramString1.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.i("NewFriendMoreSysMsgAdapter", 2, "onSendSystemMsgActionFin Exception!");
-          }
-        }
-      }
-    }
+    } while (!(paramView instanceof aice));
+    return (aice)paramView;
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(View paramView, aibw paramaibw)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "onGetDelSystemMsgFin|isSuccess : " + paramBoolean1 + ", bTimeOut : " + paramBoolean2);
-    }
-    aibm.d(this.a);
-    if (paramBoolean1) {
-      aibm.c(this.a);
-    }
-    while ((!paramBoolean2) || (!aibm.a(this.a))) {
+    aice localaice = a(paramView);
+    if (localaice == null) {}
+    aicg localaicg;
+    ChatMessage localChatMessage;
+    do
+    {
       return;
-    }
-    String str = aibm.a(this.a).getResources().getString(2131654092);
-    bbmy.a(aibm.a(this.a), 1, str, 0).b(aibm.b(this.a));
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "onGetSystemMsgFin|isSuccess : " + paramBoolean1 + ", bTimeOut : " + paramBoolean2);
-    }
-    if (aibm.a(this.a).isFinishing()) {
-      return;
-    }
-    if (paramBoolean1) {
-      aibm.c(this.a);
+      localaicg = localaice.delegate();
+      localChatMessage = actn.a(paramView);
+    } while ((localaicg == null) || (!localaicg.b()) || (localaice.hasSelected()) || (localChatMessage == null));
+    if (this.jdField_a_of_type_Int == 2) {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localChatMessage.selfuin))
+      {
+        localaicg.c(f);
+        localaicg.b(g);
+      }
     }
     for (;;)
     {
-      aibm.e(this.a);
+      localaicg.a(paramaibw);
+      localaice.doSelecting(localChatMessage);
       return;
-      if ((paramBoolean2) && (aibm.a(this.a)))
+      localaicg.c(f);
+      localaicg.b(h);
+      continue;
+      if (this.jdField_a_of_type_Int != 1) {
+        break;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localChatMessage.selfuin))
       {
-        paramList = aibm.a(this.a).getResources().getString(2131654099);
-        bbmy.a(aibm.a(this.a), 1, paramList, 0).b(aibm.b(this.a));
+        localaicg.c(b);
+        localaicg.b(d);
+      }
+      else
+      {
+        localaicg.c(c);
+        localaicg.b(e);
       }
     }
-  }
-  
-  protected void b(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "onDeleteAllSysMsg " + paramBoolean + " " + paramInt);
+    paramView = paramView.getResources();
+    int j;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localChatMessage.selfuin)) {
+      j = paramView.getColorStateList(2131166831).getDefaultColor();
     }
-    aibm.d(this.a);
-    if (paramBoolean)
+    for (int i = paramView.getColorStateList(2131166833).getDefaultColor();; i = paramView.getColorStateList(2131166832).getDefaultColor())
     {
-      if (aibm.a(this.a) != null) {
-        aibm.a(this.a).finish();
+      localaicg.c(j);
+      localaicg.b(i);
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      return;
+      QLog.d("ChatAdapterSelectableHelper", 0, "Load Select color, cursor=" + j + ", component=" + i);
+      break;
+      j = paramView.getColorStateList(2131166830).getDefaultColor();
     }
-    bbmy.a(aibm.a(this.a), 2131633761, 0).a();
   }
   
-  public void c(String paramString)
+  public boolean a(View paramView)
   {
-    aibm.c(this.a);
-  }
-  
-  protected void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "onGetDelSystemMsgError");
+    boolean bool2 = false;
+    ChatMessage localChatMessage = actn.a(paramView);
+    boolean bool1;
+    if (AppSetting.d)
+    {
+      bool1 = false;
+      if (!bool1) {
+        break label173;
+      }
+      paramView = a(paramView);
+      if (paramView == null) {
+        break label154;
+      }
+      if (paramView.contentLength() <= 0) {
+        break label135;
+      }
+      bool1 = true;
     }
-    aibm.d(this.a);
-    String str = aibm.a(this.a).getResources().getString(2131654092);
-    bbmy.a(aibm.a(this.a), 1, str, 0).b(aibm.b(this.a));
+    label135:
+    label154:
+    label173:
+    do
+    {
+      do
+      {
+        do
+        {
+          return bool1;
+          if ((localChatMessage instanceof MessageForText))
+          {
+            if ((!(localChatMessage instanceof MessageForWantGiftMsg)) && (!(localChatMessage instanceof MessageForFoldMsg)))
+            {
+              bool1 = true;
+              break;
+            }
+            bool1 = false;
+            break;
+          }
+          if ((localChatMessage instanceof MessageForMixedMsg))
+          {
+            bool1 = ((MessageForMixedMsg)localChatMessage).canSelectable();
+            break;
+          }
+          if ((localChatMessage instanceof MessageForReplyText))
+          {
+            bool1 = true;
+            break;
+          }
+          if ((localChatMessage instanceof MessageForLongMsg))
+          {
+            bool1 = ((MessageForLongMsg)localChatMessage).canSelectable();
+            break;
+          }
+          bool1 = false;
+          break;
+          bool1 = bool2;
+        } while (!aibp.a().c());
+        aibp.a().d();
+        return false;
+        bool1 = bool2;
+      } while (!aibp.a().c());
+      aibp.a().d();
+      return false;
+      bool1 = bool2;
+    } while (!aibp.a().c());
+    aibp.a().d();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aibt
  * JD-Core Version:    0.7.0.1
  */

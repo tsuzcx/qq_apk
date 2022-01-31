@@ -2,8 +2,8 @@ package com.tencent.mobileqq.data;
 
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_rsp;
 import android.os.Parcel;
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.model.CoverCacheData;
 import java.util.ArrayList;
@@ -14,11 +14,11 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class QZoneCover
-  extends atmo
+  extends aukm
 {
   public int jigsaw;
   public String type;
-  @atoc
+  @auma
   public String uin;
   public byte[] vCoverInfo;
   public byte[] vPhotoInfo;

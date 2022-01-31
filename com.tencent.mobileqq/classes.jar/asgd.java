@@ -1,39 +1,59 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class asgd
-  implements ServiceConnection
+class asgd
+  implements AdapterView.OnItemClickListener
 {
-  private WeakReference<asgc> jdField_a_of_type_JavaLangRefWeakReference;
+  asgd(asgc paramasgc) {}
   
-  public asgd(asgb paramasgb, asgc paramasgc)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramasgc);
-  }
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    asgb.a(this.jdField_a_of_type_Asgb, llz.a(paramIBinder));
-    paramComponentName = (asgc)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramComponentName != null) {
-      paramComponentName.br();
+    if (this.a.a.a().isShowing()) {
+      this.a.a.a().dismiss();
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    asgb.a(this.jdField_a_of_type_Asgb, null);
-    paramComponentName = (asgc)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramComponentName != null) {
-      paramComponentName.bs();
+    if ((paramLong == 2L) || (paramLong == 3L)) {
+      if (!WXShareHelper.a().a()) {
+        paramInt = 2131720906;
+      }
+    }
+    for (;;)
+    {
+      if (paramInt != -1)
+      {
+        wim.a(1, paramInt);
+        return;
+        if (!WXShareHelper.a().b()) {
+          paramInt = 2131720907;
+        }
+      }
+      else
+      {
+        switch ((int)paramLong)
+        {
+        default: 
+          return;
+        case 0: 
+          asgc.a(this.a);
+          return;
+        case 1: 
+          asgc.b(this.a);
+          return;
+        case 2: 
+          asgc.c(this.a);
+          return;
+        }
+        asgc.d(this.a);
+        return;
+      }
+      paramInt = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asgd
  * JD-Core Version:    0.7.0.1
  */

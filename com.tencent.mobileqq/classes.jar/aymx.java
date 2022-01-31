@@ -1,33 +1,38 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.theme.effect.QEffectLottieImageView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.effect.engine.QEffectData;
 
-class aymx
-  extends GestureDetector.SimpleOnGestureListener
+public class aymx
+  implements OnCompositionLoadedListener
 {
-  aymx(aymw paramaymw) {}
+  public aymx(QEffectLottieImageView paramQEffectLottieImageView) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ScrollTest", 4, "velocityY = " + paramFloat2);
+    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
+      QLog.e(QEffectLottieImageView.a(this.a), 1, "onCompositionLoaded: composition= " + paramLottieComposition);
     }
-    if (paramFloat2 < -10.0F) {}
-    for (;;)
+    if (paramLottieComposition == null) {
+      return;
+    }
+    if (QEffectLottieImageView.a(this.a))
     {
-      return false;
-      if (paramFloat2 <= 10.0F) {}
+      QLog.e(QEffectLottieImageView.a(this.a), 1, "onCompositionLoaded: mIsStop " + QEffectLottieImageView.a(this.a));
+      return;
     }
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
+    this.a.cancelAnimation();
+    this.a.setComposition(paramLottieComposition);
+    this.a.setProgress(0.0F);
+    this.a.setRepeatCount(QEffectLottieImageView.a(this.a).repeat);
+    this.a.setVisibility(0);
+    this.a.playAnimation();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aymx
  * JD-Core Version:    0.7.0.1
  */

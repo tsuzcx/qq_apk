@@ -1,15 +1,22 @@
-import android.graphics.Bitmap;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
-public class axwo
+class axwo
+  implements agws
 {
-  axwn a;
+  axwo(axwn paramaxwn, StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext) {}
   
-  protected Bitmap b(Bitmap paramBitmap)
+  public void a(Bundle paramBundle)
   {
-    if (this.a == null) {
-      return paramBitmap;
-    }
-    return this.a.a(paramBitmap);
+    int i = paramBundle.getInt("retCode");
+    String str = paramBundle.getString("retMsg");
+    int j = paramBundle.getInt("payTime");
+    paramBundle = paramBundle.getString("orderId");
+    this.jdField_a_of_type_Axwn.a.b(i);
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.savePayInfo(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Axwn.a.aj, i);
+    VACDReportUtil.a("ret_code=" + i + "|ret_str=" + str + "|pay_time=" + j + "|order_id=" + paramBundle, "qqwallet", "publicpaymsg.pay.result", null, null, 0, null);
   }
 }
 

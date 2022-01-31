@@ -1,21 +1,36 @@
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import java.util.Comparator;
 
-class nxq
-  extends nyf
+public class nxq
+  implements Comparator<nxv>
 {
-  nxq(nxd paramnxd, boolean paramBoolean, List paramList)
-  {
-    super(paramnxd, null);
-  }
+  public nxq(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
   
-  void a(nyi paramnyi)
+  public int a(nxv paramnxv1, nxv paramnxv2)
   {
-    paramnyi.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, nxd.c(this.jdField_a_of_type_Nxd), 6);
+    int j = 2147483647;
+    int i;
+    if (TextUtils.isEmpty(nxv.a(paramnxv1)))
+    {
+      i = 2147483647;
+      if (!TextUtils.isEmpty(nxv.a(paramnxv2))) {
+        break label44;
+      }
+    }
+    for (;;)
+    {
+      return i - j;
+      i = nxv.a(paramnxv1).codePointAt(0);
+      break;
+      label44:
+      j = nxv.a(paramnxv2).codePointAt(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nxq
  * JD-Core Version:    0.7.0.1
  */

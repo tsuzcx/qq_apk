@@ -1,24 +1,46 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.ThemeImageView;
+import android.widget.EditText;
 
 public class ahba
-  extends ahbl
+  extends aham
 {
-  public ImageView a;
-  public TextView a;
-  public DragTextView a;
-  public ThemeImageView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  private int a;
+  
+  public ahba(EditText paramEditText)
+  {
+    super(paramEditText);
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    CharSequence localCharSequence = paramCharSequence;
+    if (paramCharSequence.toString().contains("."))
+    {
+      localCharSequence = paramCharSequence;
+      if (paramCharSequence.length() - 1 - paramCharSequence.toString().indexOf(".") > this.jdField_a_of_type_Int)
+      {
+        localCharSequence = paramCharSequence.toString().subSequence(0, paramCharSequence.toString().indexOf(".") + this.jdField_a_of_type_Int + 1);
+        this.jdField_a_of_type_AndroidWidgetEditText.setText(localCharSequence);
+        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(localCharSequence.length());
+      }
+    }
+    paramCharSequence = localCharSequence;
+    if (localCharSequence.toString().trim().substring(0).equals("."))
+    {
+      paramCharSequence = "0" + localCharSequence;
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
+      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(2);
+    }
+    if ((paramCharSequence.toString().startsWith("0")) && (paramCharSequence.toString().trim().length() > 1) && (!paramCharSequence.toString().substring(1, 2).equals(".")))
+    {
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, 1));
+      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(1);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahba
  * JD-Core Version:    0.7.0.1
  */

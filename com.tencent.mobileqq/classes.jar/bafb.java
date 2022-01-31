@@ -1,1010 +1,126 @@
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.text.method.LinkMovementMethod;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.Window;
-import android.view.accessibility.AccessibilityEvent;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.widget.ListView;
-import java.util.List;
+import java.util.ArrayList;
 
 public class bafb
-  extends Dialog
 {
-  public static final int WHICH_CANCEL = 2;
-  public static final int WHICH_NEGATIVE = 0;
-  public static final int WHICH_POSITIVE = 1;
-  private BaseAdapter adapter = new bafc(this);
-  protected LinearLayout bodyLayout;
-  CheckBox checkBox;
-  TextView checkTxt;
-  protected TextView countText;
-  protected EditText dialogEdit;
-  TextView dummyFirstPreviewImage;
-  TextView editPicTag;
-  View framePreview;
-  public ImageView framePreviewImage;
-  LayoutInflater inflater;
-  String[] items;
-  protected TextView lBtn;
-  ListView list;
-  private bafm mBrandColorManager = new bafm(null);
-  FormSwitchItem mSwitch;
-  private ImageView mVideoIcon;
-  private TextView mVideoSize;
-  private TextView mVideoTime;
-  DialogInterface.OnClickListener onArrayItemClick;
-  ImageView operateImage;
-  TextView previewImage;
-  ProgressBar progressBar;
-  public TextView rBtn;
-  ViewGroup rootView;
-  Object tag;
-  protected TextView text;
-  protected TextView title;
+  public static boolean a;
+  public ArrayList<Integer> a;
   
-  @TargetApi(14)
-  public bafb(Context paramContext)
+  public bafb()
   {
-    super(paramContext);
-    super.getWindow().setWindowAnimations(2131689588);
-    if (Build.VERSION.SDK_INT >= 14) {
-      getWindow().setDimAmount(0.5F);
-    }
-  }
-  
-  @TargetApi(14)
-  public bafb(Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-    super.getWindow().setWindowAnimations(2131689588);
-    if (Build.VERSION.SDK_INT >= 14) {
-      getWindow().setDimAmount(0.5F);
-    }
-  }
-  
-  @TargetApi(14)
-  protected bafb(Context paramContext, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
-  {
-    super(paramContext, paramBoolean, paramOnCancelListener);
-    super.getWindow().setWindowAnimations(2131689588);
-    if (Build.VERSION.SDK_INT >= 14) {
-      getWindow().setDimAmount(0.5F);
-    }
-  }
-  
-  public static void showPermissionSettingDialog(Activity paramActivity, String paramString)
-  {
-    showPermissionSettingDialog(paramActivity, null, paramString);
-  }
-  
-  public static void showPermissionSettingDialog(Activity paramActivity, String paramString1, String paramString2)
-  {
-    bafd localbafd = new bafd(paramActivity);
-    showPermissionSettingDialog(paramActivity, paramString1, paramString2, localbafd, localbafd, null);
-  }
-  
-  public static void showPermissionSettingDialog(Activity paramActivity, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
-  {
-    bafb localbafb = babr.a(paramActivity, 230);
-    if (paramString1 != null)
-    {
-      paramActivity = paramString1;
-      if (!paramString1.equals("")) {}
-    }
-    else
-    {
-      paramActivity = ajjy.a(2131644418);
-    }
-    localbafb.setTitle(paramActivity);
-    if (paramString2 != null)
-    {
-      paramActivity = paramString2;
-      if (!paramString2.equals("")) {}
-    }
-    else
-    {
-      paramActivity = ajjy.a(2131644410);
-    }
-    localbafb.setMessage(paramActivity);
-    localbafb.setNegativeButton(ajjy.a(2131644417), paramOnClickListener1);
-    localbafb.setPositiveButton(ajjy.a(2131644402), paramOnClickListener2);
-    localbafb.setOnCancelListener(paramOnCancelListener);
-    localbafb.show();
-  }
-  
-  public bafb addCenterView(View paramView, LinearLayout.LayoutParams paramLayoutParams)
-  {
-    this.text.setVisibility(8);
-    this.countText.setVisibility(8);
-    this.bodyLayout.addView(paramView, paramLayoutParams);
-    this.bodyLayout.setGravity(17);
-    return this;
-  }
-  
-  public void addPreviewView(View paramView)
-  {
-    if (paramView == null) {}
-    while (this.rootView == null) {
-      return;
-    }
-    int i = 0;
-    int j = this.rootView.getChildCount();
-    while (i < j)
-    {
-      View localView = this.rootView.getChildAt(i);
-      if ((localView != null) && (localView.getVisibility() == 0)) {
-        localView.setVisibility(4);
-      }
-      i += 1;
-    }
-    this.rootView.addView(paramView);
-    paramView.setTag(Integer.valueOf(1001));
-  }
-  
-  public bafb addView(View paramView)
-  {
-    this.text.setVisibility(8);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    this.countText.setVisibility(8);
-    this.bodyLayout.addView(paramView, localLayoutParams);
-    return this;
-  }
-  
-  public bafb addView(View paramView, LinearLayout.LayoutParams paramLayoutParams)
-  {
-    this.text.setVisibility(8);
-    this.countText.setVisibility(8);
-    this.bodyLayout.addView(paramView, paramLayoutParams);
-    return this;
-  }
-  
-  public void adjustMessageBottomMargin(float paramFloat)
-  {
-    if (this.bodyLayout != null)
-    {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
-      localLayoutParams.bottomMargin = awmc.a(paramFloat);
-      this.bodyLayout.setLayoutParams(localLayoutParams);
-    }
-  }
-  
-  public void adjustMessageLayout(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (this.text.getLineCount() > 1)
-      {
-        this.text.setGravity(3);
-        return;
-      }
-      this.text.setGravity(17);
-      return;
-    }
-    this.text.setGravity(3);
-  }
-  
-  public void adjustMessageTopBottomMargin(float paramFloat1, float paramFloat2)
-  {
-    if (this.bodyLayout != null)
-    {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
-      localLayoutParams.bottomMargin = awmc.a(paramFloat2);
-      localLayoutParams.topMargin = awmc.a(paramFloat1);
-      this.bodyLayout.setLayoutParams(localLayoutParams);
-    }
-  }
-  
-  public void adjustTitle()
-  {
-    this.title.setGravity(3);
-  }
-  
-  protected int customWhichToCallBack(int paramInt)
-  {
-    return paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_Boolean = false;
   }
   
   /* Error */
-  public void dismiss()
+  public static bafb a(java.lang.String paramString)
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 265	android/app/Dialog:dismiss	()V
-    //   4: aload_0
-    //   5: invokestatic 270	zqa:a	(Landroid/app/Dialog;)V
-    //   8: return
-    //   9: astore_1
-    //   10: aload_0
-    //   11: invokestatic 270	zqa:a	(Landroid/app/Dialog;)V
-    //   14: return
-    //   15: astore_1
-    //   16: aload_0
-    //   17: invokestatic 270	zqa:a	(Landroid/app/Dialog;)V
-    //   20: aload_1
-    //   21: athrow
+    //   1: invokestatic 29	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: ifeq +5 -> 9
+    //   7: aconst_null
+    //   8: areturn
+    //   9: new 14	java/util/ArrayList
+    //   12: dup
+    //   13: invokespecial 15	java/util/ArrayList:<init>	()V
+    //   16: astore 5
+    //   18: new 31	org/json/JSONObject
+    //   21: dup
+    //   22: aload_0
+    //   23: invokespecial 34	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   26: astore_0
+    //   27: aload_0
+    //   28: ldc 36
+    //   30: iconst_0
+    //   31: invokevirtual 40	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   34: istore_1
+    //   35: aload_0
+    //   36: ldc 42
+    //   38: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   41: astore_0
+    //   42: iload_1
+    //   43: istore_3
+    //   44: aload_0
+    //   45: ifnull +54 -> 99
+    //   48: iload_1
+    //   49: istore_3
+    //   50: aload_0
+    //   51: invokevirtual 52	org/json/JSONArray:length	()I
+    //   54: ifle +45 -> 99
+    //   57: iconst_0
+    //   58: istore_2
+    //   59: iload_1
+    //   60: istore_3
+    //   61: iload_2
+    //   62: aload_0
+    //   63: invokevirtual 52	org/json/JSONArray:length	()I
+    //   66: if_icmpge +33 -> 99
+    //   69: aload 5
+    //   71: aload_0
+    //   72: iload_2
+    //   73: invokevirtual 56	org/json/JSONArray:getInt	(I)I
+    //   76: invokestatic 62	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   79: invokevirtual 66	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   82: pop
+    //   83: iload_2
+    //   84: iconst_1
+    //   85: iadd
+    //   86: istore_2
+    //   87: goto -28 -> 59
+    //   90: astore_0
+    //   91: iconst_0
+    //   92: istore_1
+    //   93: aload_0
+    //   94: invokevirtual 69	org/json/JSONException:printStackTrace	()V
+    //   97: iload_1
+    //   98: istore_3
+    //   99: new 2	bafb
+    //   102: dup
+    //   103: invokespecial 70	bafb:<init>	()V
+    //   106: astore_0
+    //   107: aload_0
+    //   108: ifnull +22 -> 130
+    //   111: iload_3
+    //   112: iconst_1
+    //   113: if_icmpne +19 -> 132
+    //   116: iconst_1
+    //   117: istore 4
+    //   119: iload 4
+    //   121: putstatic 19	bafb:jdField_a_of_type_Boolean	Z
+    //   124: aload_0
+    //   125: aload 5
+    //   127: putfield 17	bafb:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   130: aload_0
+    //   131: areturn
+    //   132: iconst_0
+    //   133: istore 4
+    //   135: goto -16 -> 119
+    //   138: astore_0
+    //   139: goto -46 -> 93
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	22	0	this	bafb
-    //   9	1	1	localException	java.lang.Exception
-    //   15	6	1	localObject	Object
+    //   0	142	0	paramString	java.lang.String
+    //   34	64	1	i	int
+    //   58	29	2	j	int
+    //   43	71	3	k	int
+    //   117	17	4	bool	boolean
+    //   16	110	5	localArrayList	ArrayList
     // Exception table:
     //   from	to	target	type
-    //   0	4	9	java/lang/Exception
-    //   0	4	15	finally
+    //   18	35	90	org/json/JSONException
+    //   35	42	138	org/json/JSONException
+    //   50	57	138	org/json/JSONException
+    //   61	83	138	org/json/JSONException
   }
   
-  public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
+  public boolean a(int paramInt)
   {
-    if (paramAccessibilityEvent.getEventType() == 32) {
-      paramAccessibilityEvent.getText().add(getContext().getString(2131625536));
-    }
-    super.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent);
-    paramAccessibilityEvent.setClassName(Dialog.class.getName());
-    return false;
-  }
-  
-  public TextView getBtnLeft()
-  {
-    return this.lBtn;
-  }
-  
-  public TextView getBtnight()
-  {
-    return this.rBtn;
-  }
-  
-  public boolean getCheckBoxState()
-  {
-    if ((this.checkBox != null) && (this.checkBox.getVisibility() == 0)) {
-      return this.checkBox.isChecked();
-    }
-    return false;
-  }
-  
-  protected int getDialogListItemLayout()
-  {
-    return 2131493333;
-  }
-  
-  public String getEditString()
-  {
-    Object localObject;
-    if (this.dialogEdit == null) {
-      localObject = null;
-    }
-    String str;
-    do
-    {
-      return localObject;
-      str = this.dialogEdit.getText().toString();
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    return this.dialogEdit.getHint().toString();
-  }
-  
-  public EditText getEditText()
-  {
-    return null;
-  }
-  
-  public String getInputValue()
-  {
-    return null;
-  }
-  
-  public TextView getMessageTextView()
-  {
-    return this.text;
-  }
-  
-  public TextView getMessageTextView_Plain_Text()
-  {
-    return (TextView)findViewById(2131299581);
-  }
-  
-  public int getRootViewHeight()
-  {
-    if (this.rootView == null) {
-      return -1;
-    }
-    return this.rootView.getMeasuredHeight();
-  }
-  
-  public boolean getSwitchState()
-  {
-    if ((this.mSwitch != null) && (this.mSwitch.getVisibility() == 0)) {
-      return this.mSwitch.a();
-    }
-    return false;
-  }
-  
-  public Object getTag()
-  {
-    return this.tag;
-  }
-  
-  public TextView getTitleTextView()
-  {
-    return this.title;
-  }
-  
-  public boolean hasPreViewInDialog()
-  {
-    if (this.rootView == null) {
-      return false;
-    }
-    int i = this.rootView.getChildCount() - 1;
-    if (i < 0) {
-      return false;
-    }
-    View localView = this.rootView.getChildAt(i);
-    if (localView == null) {
-      return false;
-    }
-    return ((localView.getTag() instanceof Integer)) && (((Integer)localView.getTag()).intValue() == 1001);
-  }
-  
-  public void hideSoftInputFromWindow()
-  {
-    if (this.dialogEdit != null) {
-      ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.dialogEdit.getWindowToken(), 0);
-    }
-  }
-  
-  public void removePreviewView()
-  {
-    if (this.rootView == null) {
-      return;
-    }
-    int i = this.rootView.getChildCount() - 1;
-    if (i >= 0) {
-      this.rootView.removeViewAt(i);
-    }
-    i -= 1;
-    label34:
-    View localView;
-    if (i >= 0)
-    {
-      localView = this.rootView.getChildAt(i);
-      if (localView != null) {
-        break label58;
-      }
-    }
-    for (;;)
-    {
-      i -= 1;
-      break label34;
-      break;
-      label58:
-      if (((localView.getTag() instanceof Integer)) && (((Integer)localView.getTag()).intValue() == 1001))
-      {
-        localView.setVisibility(0);
-        return;
-      }
-      localView.setVisibility(0);
-    }
-  }
-  
-  public void setBodyLayoutNoMargin()
-  {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
-    localLayoutParams.setMargins(0, localLayoutParams.topMargin, 0, 0);
-    this.bodyLayout.setLayoutParams(localLayoutParams);
-  }
-  
-  public bafb setCheckBox(String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    findViewById(2131303262).setVisibility(0);
-    this.checkTxt.setText(paramString);
-    if (this.checkBox != null) {
-      this.checkBox.setOnCheckedChangeListener(new baff(this, paramOnClickListener));
-    }
-    setSeperatorState();
-    return this;
-  }
-  
-  public void setContentView(int paramInt)
-  {
-    super.setContentView(paramInt);
-    this.title = ((TextView)findViewById(2131299583));
-    this.text = ((TextView)findViewById(2131299579));
-    this.dialogEdit = ((EditText)findViewById(2131299564));
-    this.countText = ((TextView)findViewById(2131299557));
-    this.dummyFirstPreviewImage = ((TextView)findViewById(2131299839));
-    this.previewImage = ((TextView)findViewById(2131306210));
-    this.operateImage = ((ImageView)findViewById(2131305388));
-    this.framePreviewImage = ((ImageView)findViewById(2131301079));
-    this.framePreview = findViewById(2131301078);
-    this.mVideoIcon = ((ImageView)findViewById(2131313167));
-    this.mVideoSize = ((TextView)findViewById(2131303913));
-    this.mVideoTime = ((TextView)findViewById(2131303914));
-    this.lBtn = ((TextView)findViewById(2131299568));
-    this.rBtn = ((TextView)findViewById(2131299574));
-    this.editPicTag = ((TextView)findViewById(2131299565));
-    this.progressBar = ((ProgressBar)findViewById(2131299609));
-    this.lBtn.setVisibility(8);
-    this.rBtn.setVisibility(8);
-    this.bodyLayout = ((LinearLayout)findViewById(2131297765));
-    this.checkBox = ((CheckBox)findViewById(2131311804));
-    this.mSwitch = ((FormSwitchItem)findViewById(2131311806));
-    this.checkTxt = ((TextView)findViewById(2131312628));
-    this.list = ((ListView)findViewById(2131303596));
-    this.rootView = ((ViewGroup)findViewById(2131299575));
-    if ((this.list != null) && (Build.VERSION.SDK_INT >= 9)) {
-      this.list.setOverScrollMode(2);
-    }
-    this.mBrandColorManager.a(findViewById(2131299542));
-  }
-  
-  public void setEditLint(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (this.dialogEdit.getVisibility() != 0) {
-        this.dialogEdit.setVisibility(0);
-      }
-      this.dialogEdit.setHint(paramString);
-      return;
-    }
-    this.dialogEdit.setVisibility(8);
-  }
-  
-  public bafb setFirstDummyPreviewImage(Drawable paramDrawable)
-  {
-    this.dummyFirstPreviewImage.setPadding(0, 0, 0, 0);
-    this.dummyFirstPreviewImage.setCompoundDrawablePadding(0);
-    this.dummyFirstPreviewImage.setCompoundDrawables(null, null, null, paramDrawable);
-    if (paramDrawable != null)
-    {
-      this.dummyFirstPreviewImage.setVisibility(0);
-      return this;
-    }
-    this.dummyFirstPreviewImage.setVisibility(8);
-    return this;
-  }
-  
-  public bafb setImageOnClickListener(View.OnClickListener paramOnClickListener)
-  {
-    if ((paramOnClickListener != null) && (this.framePreviewImage != null))
-    {
-      this.framePreviewImage.setOnClickListener(paramOnClickListener);
-      this.countText.setVisibility(8);
-    }
-    return this;
-  }
-  
-  public bafb setItems(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    Object localObject = null;
-    try
-    {
-      String[] arrayOfString = getContext().getResources().getStringArray(paramInt);
-      localObject = arrayOfString;
-    }
-    catch (Resources.NotFoundException localNotFoundException)
-    {
-      for (;;)
-      {
-        localNotFoundException.printStackTrace();
-      }
-    }
-    return setItems(localObject, paramOnClickListener);
-  }
-  
-  public bafb setItems(String[] paramArrayOfString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    this.items = paramArrayOfString;
-    this.text.setVisibility(8);
-    this.countText.setVisibility(8);
-    this.lBtn.setVisibility(8);
-    this.rBtn.setVisibility(8);
-    this.bodyLayout.setVisibility(8);
-    this.onArrayItemClick = paramOnClickListener;
-    this.list.setVisibility(0);
-    this.list.setAdapter(this.adapter);
-    this.list.setDivider(null);
-    this.list.setDividerHeight(0);
-    return this;
-  }
-  
-  public bafb setMessage(int paramInt)
-  {
-    this.text.setText(paramInt);
-    this.text.setContentDescription(getContext().getString(paramInt));
-    this.text.setVisibility(0);
-    return this;
-  }
-  
-  public bafb setMessage(CharSequence paramCharSequence)
-  {
-    if (!TextUtils.isEmpty(paramCharSequence))
-    {
-      this.text.setText(paramCharSequence);
-      this.text.setContentDescription(paramCharSequence);
-      this.text.setVisibility(0);
-      return this;
-    }
-    this.text.setVisibility(8);
-    return this;
-  }
-  
-  public bafb setMessageCount(String paramString)
-  {
-    if (paramString != null)
-    {
-      this.countText.setText(paramString);
-      this.countText.setContentDescription(paramString);
-      this.countText.setVisibility(0);
-      return this;
-    }
-    this.countText.setVisibility(8);
-    return this;
-  }
-  
-  public bafb setMessageMaxLine(int paramInt)
-  {
-    if (this.text != null)
-    {
-      this.text.setMaxLines(paramInt);
-      this.text.setEllipsize(TextUtils.TruncateAt.END);
-    }
-    return this;
-  }
-  
-  public void setMessageTextColor(int paramInt)
-  {
-    ColorStateList localColorStateList = getContext().getResources().getColorStateList(paramInt);
-    if ((this.text != null) && (this.text.getVisibility() == 0)) {
-      this.text.setTextColor(localColorStateList);
-    }
-  }
-  
-  public void setMessageTextSize(float paramFloat)
-  {
-    if ((this.text != null) && (this.text.getVisibility() == 0)) {
-      this.text.setTextSize(paramFloat);
-    }
-  }
-  
-  public bafb setMessageWithEmo(String paramString, float paramFloat)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.text.setText(new axkd(paramString, 3));
-      this.text.setContentDescription(paramString);
-      this.text.setVisibility(0);
-      return this;
-    }
-    this.text.setVisibility(8);
-    return this;
-  }
-  
-  public bafb setMessageWithUrl(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.text.setAutoLinkMask(1);
-      this.text.setMovementMethod(LinkMovementMethod.getInstance());
-      this.text.setText(paramString);
-      this.text.setContentDescription(paramString);
-      this.text.setLinkTextColor(getContext().getResources().getColor(2131100112));
-      this.text.setVisibility(0);
-      return this;
-    }
-    this.text.setVisibility(8);
-    return this;
-  }
-  
-  public bafb setMessageWithoutAutoLink(CharSequence paramCharSequence)
-  {
-    if (!TextUtils.isEmpty(paramCharSequence))
-    {
-      this.text.setMovementMethod(LinkMovementMethod.getInstance());
-      this.text.setText(paramCharSequence);
-      this.text.setContentDescription(paramCharSequence);
-      this.text.setVisibility(0);
-      return this;
-    }
-    this.text.setVisibility(8);
-    return this;
-  }
-  
-  public bafb setMsgMaxLineWithEnd(String paramString, int paramInt)
-  {
-    if (this.text != null)
-    {
-      this.text.setMaxLines(paramInt);
-      this.text.getViewTreeObserver().addOnGlobalLayoutListener(new bafe(this, paramInt, paramString));
-    }
-    return this;
-  }
-  
-  public bafb setNegativeButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.lBtn.setVisibility(8);
-      return this;
-    }
-    this.lBtn.setText(paramInt);
-    this.lBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131625533));
-    this.lBtn.setVisibility(0);
-    this.lBtn.setOnClickListener(new bafk(this, paramOnClickListener));
-    setSeperatorState();
-    return this;
-  }
-  
-  public bafb setNegativeButton(String paramString, int paramInt, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.lBtn.setVisibility(8);
-      return this;
-    }
-    this.lBtn.setTextColor(paramInt);
-    return setNegativeButton(paramString, paramOnClickListener);
-  }
-  
-  public bafb setNegativeButton(String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.lBtn.setVisibility(8);
-      return this;
-    }
-    this.lBtn.setText(paramString);
-    this.lBtn.setContentDescription(paramString + getContext().getString(2131625533));
-    this.lBtn.setVisibility(0);
-    this.lBtn.setOnClickListener(new bafh(this, paramOnClickListener));
-    setSeperatorState();
-    return this;
-  }
-  
-  public void setNegativeButtonContentDescription(String paramString)
-  {
-    this.lBtn.setContentDescription(paramString);
-  }
-  
-  public bafb setOperateImage(Drawable paramDrawable)
-  {
-    if (this.operateImage != null)
-    {
-      this.operateImage.setImageDrawable(paramDrawable);
-      if (paramDrawable == null) {
-        break label45;
-      }
-      this.operateImage.setVisibility(0);
-      if (this.operateImage != null) {
-        this.operateImage.setVisibility(8);
-      }
-    }
-    label45:
-    do
-    {
-      return this;
-      this.operateImage.setVisibility(8);
-    } while (this.operateImage == null);
-    this.operateImage.setVisibility(0);
-    return this;
-  }
-  
-  public bafb setPositiveButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.rBtn.setVisibility(8);
-      return this;
-    }
-    this.rBtn.setText(paramInt);
-    this.rBtn.setContentDescription(getContext().getString(paramInt));
-    this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new bafl(this, paramOnClickListener));
-    setSeperatorState();
-    return this;
-  }
-  
-  public bafb setPositiveButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.rBtn.setVisibility(8);
-      return this;
-    }
-    this.rBtn.setText(paramInt);
-    this.rBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131625533));
-    this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new bafj(this, paramOnClickListener, paramBoolean));
-    setSeperatorState();
-    return this;
-  }
-  
-  public bafb setPositiveButton(String paramString, int paramInt, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.rBtn.setVisibility(8);
-      return this;
-    }
-    this.rBtn.setTextColor(paramInt);
-    return setPositiveButton(paramString, paramOnClickListener);
-  }
-  
-  public bafb setPositiveButton(String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.rBtn.setVisibility(8);
-      return this;
-    }
-    this.rBtn.setText(paramString);
-    this.rBtn.setContentDescription(paramString + getContext().getString(2131625533));
-    this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new bafi(this, paramOnClickListener));
-    setSeperatorState();
-    return this;
-  }
-  
-  public void setPositiveButtonContentDescription(String paramString)
-  {
-    this.rBtn.setContentDescription(paramString);
-  }
-  
-  public bafb setPreviewFixDimension(int paramInt1, int paramInt2)
-  {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.framePreview.getLayoutParams();
-    localMarginLayoutParams.width = paramInt1;
-    localMarginLayoutParams.height = paramInt2;
-    localMarginLayoutParams.topMargin = aciy.a(12.0F, this.framePreview.getResources());
-    this.framePreviewImage.getLayoutParams().width = paramInt1;
-    this.framePreviewImage.getLayoutParams().height = paramInt2;
-    return this;
-  }
-  
-  public bafb setPreviewImage(Drawable paramDrawable)
-  {
-    return setPreviewImage(paramDrawable, false, 0);
-  }
-  
-  public bafb setPreviewImage(Drawable paramDrawable, boolean paramBoolean, int paramInt)
-  {
-    return setPreviewImage(paramDrawable, paramBoolean, paramInt, false);
-  }
-  
-  public bafb setPreviewImage(Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
-  {
-    if (paramDrawable == null) {
-      return this;
-    }
-    if (paramBoolean1)
-    {
-      this.framePreview.setVisibility(0);
-      this.previewImage.setVisibility(8);
-      RelativeLayout.LayoutParams localLayoutParams;
-      if (!paramBoolean2)
-      {
-        localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        this.framePreviewImage.setLayoutParams(localLayoutParams);
-      }
-      for (;;)
-      {
-        this.framePreviewImage.setImageDrawable(paramDrawable);
-        if (paramInt >= 2) {
-          break;
-        }
-        this.framePreview.setBackgroundDrawable(null);
-        return this;
-        localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        this.framePreviewImage.setLayoutParams(localLayoutParams);
-      }
-      if (paramInt == 2)
-      {
-        this.framePreview.setBackgroundResource(2130839580);
-        return this;
-      }
-      this.framePreview.setBackgroundResource(2130839581);
-      return this;
-    }
-    this.framePreview.setVisibility(8);
-    this.previewImage.setVisibility(0);
-    this.previewImage.setCompoundDrawablePadding(0);
-    this.previewImage.setCompoundDrawables(paramDrawable, null, null, null);
-    if (paramDrawable != null)
-    {
-      this.previewImage.setVisibility(0);
-      return this;
-    }
-    this.previewImage.setVisibility(8);
-    return this;
-  }
-  
-  public bafb setPreviewImageScaleType(boolean paramBoolean)
-  {
-    ImageView localImageView = this.framePreviewImage;
-    if (paramBoolean) {}
-    for (ImageView.ScaleType localScaleType = ImageView.ScaleType.CENTER_INSIDE;; localScaleType = ImageView.ScaleType.CENTER_CROP)
-    {
-      localImageView.setScaleType(localScaleType);
-      return this;
-    }
-  }
-  
-  public void setProgress(int paramInt)
-  {
-    if (this.progressBar != null) {
-      this.progressBar.setProgress(paramInt);
-    }
-  }
-  
-  public void setProgressBarVisibility(int paramInt)
-  {
-    if (this.progressBar != null) {
-      this.progressBar.setVisibility(paramInt);
-    }
-  }
-  
-  protected void setSeperatorState() {}
-  
-  public bafb setSwitch(String paramString, boolean paramBoolean, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (this.mSwitch != null)
-    {
-      this.mSwitch.setVisibility(0);
-      this.mSwitch.setText(paramString);
-      this.mSwitch.setChecked(paramBoolean);
-      if (paramOnClickListener != null) {
-        this.mSwitch.setOnCheckedChangeListener(new bafg(this, paramOnClickListener));
-      }
-    }
-    return this;
-  }
-  
-  public void setTag(Object paramObject)
-  {
-    this.tag = paramObject;
-  }
-  
-  public bafb setText(String paramString, int paramInt)
-  {
-    if ((findViewById(paramInt) instanceof TextView))
-    {
-      TextView localTextView = (TextView)findViewById(paramInt);
-      if (localTextView != null)
-      {
-        localTextView.setText(paramString);
-        localTextView.setContentDescription(paramString);
-      }
-    }
-    return this;
-  }
-  
-  public void setTextContentDescription(String paramString)
-  {
-    this.text.setContentDescription(paramString);
-  }
-  
-  public bafb setTitle(String paramString)
-  {
-    if (paramString != null)
-    {
-      this.title.setText(paramString);
-      this.title.setContentDescription(paramString);
-      this.title.setVisibility(0);
-      if (this.items == null) {}
-      return this;
-    }
-    this.title.setVisibility(8);
-    return this;
-  }
-  
-  public void setTitle(int paramInt)
-  {
-    this.title.setText(paramInt);
-    this.title.setVisibility(0);
-  }
-  
-  public void setTitleMutiLine()
-  {
-    this.title.setSingleLine(false);
-  }
-  
-  public bafb setTitleWithEmo(CharSequence paramCharSequence)
-  {
-    if (paramCharSequence != null)
-    {
-      this.title.setText(paramCharSequence);
-      this.title.setVisibility(0);
-      return this;
-    }
-    this.title.setVisibility(8);
-    return this;
-  }
-  
-  public bafb setVideoFormat(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
-  {
-    if ((paramBoolean1) && (this.mVideoIcon != null))
-    {
-      this.mVideoIcon.setVisibility(0);
-      if ((!paramBoolean2) || (this.editPicTag == null)) {
-        break label125;
-      }
-      this.editPicTag.setVisibility(0);
-      label38:
-      if ((TextUtils.isEmpty(paramString1)) || (this.mVideoSize == null)) {
-        break label148;
-      }
-      this.mVideoSize.setVisibility(0);
-      this.mVideoSize.setText(paramString1);
-      label68:
-      if ((TextUtils.isEmpty(paramString2)) || (this.mVideoTime == null)) {
-        break label174;
-      }
-      this.mVideoTime.setVisibility(0);
-      this.mVideoTime.setText(paramString2);
-    }
-    label125:
-    while ((!TextUtils.isEmpty(paramString2)) || (this.mVideoTime == null))
-    {
-      return this;
-      if ((paramBoolean1) || (this.mVideoIcon == null)) {
-        break;
-      }
-      this.mVideoIcon.setVisibility(8);
-      break;
-      if ((paramBoolean2) || (this.editPicTag == null)) {
-        break label38;
-      }
-      this.editPicTag.setVisibility(8);
-      break label38;
-      if ((!TextUtils.isEmpty(paramString1)) || (this.mVideoSize == null)) {
-        break label68;
-      }
-      this.mVideoSize.setVisibility(8);
-      break label68;
-    }
-    label148:
-    label174:
-    this.mVideoTime.setVisibility(8);
-    return this;
-  }
-  
-  public bafb setView(View paramView)
-  {
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    this.bodyLayout.addView(paramView, localLayoutParams);
-    return this;
+    return (true == jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bafb
  * JD-Core Version:    0.7.0.1
  */

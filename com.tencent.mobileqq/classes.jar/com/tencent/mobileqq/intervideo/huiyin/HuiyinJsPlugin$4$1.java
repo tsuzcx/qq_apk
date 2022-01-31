@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.huiyin;
 
 import android.util.Log;
-import aqmw;
-import aqna;
+import arhb;
+import arhf;
 import java.io.File;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public class HuiyinJsPlugin$4$1
   implements Runnable
 {
-  public HuiyinJsPlugin$4$1(aqna paramaqna, int paramInt, String paramString) {}
+  public HuiyinJsPlugin$4$1(arhf paramarhf, int paramInt, String paramString) {}
   
   public void run()
   {
@@ -18,14 +18,14 @@ public class HuiyinJsPlugin$4$1
     try
     {
       if (this.jdField_a_of_type_Int == 0) {
-        aqmw.a(this.jdField_a_of_type_Aqna.jdField_a_of_type_Aqmw, this.jdField_a_of_type_Int, this.jdField_a_of_type_Aqna.jdField_a_of_type_Long, this.jdField_a_of_type_Aqna.jdField_a_of_type_JavaLangString, null, new JSONObject(this.jdField_a_of_type_JavaLangString));
+        arhb.a(this.jdField_a_of_type_Arhf.jdField_a_of_type_Arhb, this.jdField_a_of_type_Int, this.jdField_a_of_type_Arhf.jdField_a_of_type_Long, this.jdField_a_of_type_Arhf.jdField_a_of_type_JavaLangString, null, new JSONObject(this.jdField_a_of_type_JavaLangString));
       }
       for (;;)
       {
-        new File(aqmw.a(this.jdField_a_of_type_Aqna.jdField_a_of_type_Aqmw)).delete();
-        aqmw.a(this.jdField_a_of_type_Aqna.jdField_a_of_type_Aqmw, null);
+        new File(arhb.a(this.jdField_a_of_type_Arhf.jdField_a_of_type_Arhb)).delete();
+        arhb.a(this.jdField_a_of_type_Arhf.jdField_a_of_type_Arhb, null);
         return;
-        aqmw.a(this.jdField_a_of_type_Aqna.jdField_a_of_type_Aqmw, this.jdField_a_of_type_Int, this.jdField_a_of_type_Aqna.jdField_a_of_type_Long, this.jdField_a_of_type_Aqna.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, null);
+        arhb.a(this.jdField_a_of_type_Arhf.jdField_a_of_type_Arhb, this.jdField_a_of_type_Int, this.jdField_a_of_type_Arhf.jdField_a_of_type_Long, this.jdField_a_of_type_Arhf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, null);
       }
       return;
     }

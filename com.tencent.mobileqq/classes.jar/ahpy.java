@@ -1,40 +1,109 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ahpy
-  extends atog
 {
-  public ahpy(ContactsInnerFrame paramContactsInnerFrame) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public static Object a(int paramInt, byte[] paramArrayOfByte)
   {
-    this.a.a.unRegistObserver(this);
-    switch (ContactsInnerFrame.a(this.a).d())
+    Object localObject = null;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
+      return null;
+    }
+    String str;
+    switch (paramInt)
     {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
+    case 15: 
+    case 18: 
+    case 19: 
+    case 25: 
+    case 28: 
     default: 
-      ContactsInnerFrame.c(this.a);
-      return;
-    case 0: 
-    case 7: 
-    case 9: 
-      ContactsInnerFrame.a(this.a);
-      return;
-    case 1: 
-    case 5: 
-      ContactsInnerFrame.b(this.a);
-      return;
+      str = null;
     }
-    if (ContactsInnerFrame.a(this.a).a().lastUsedFlag == 2L)
+    while (localObject != null)
     {
-      ContactsInnerFrame.a(this.a);
-      return;
+      ((ahpx)localObject).a(paramArrayOfByte);
+      return localObject;
+      localObject = new ahqr(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ahqj(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ahqd(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ahql(BaseApplication.getContext(), false);
+      str = null;
+      continue;
+      localObject = new ahqa(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ahpz(BaseApplication.getContext());
+      str = null;
+      continue;
+      str = new String(paramArrayOfByte);
+      continue;
+      localObject = new bhxj(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ahqo(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ahqh(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ahqp(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ahqk(BaseApplication.getContext(), 1);
+      str = null;
+      continue;
+      localObject = new ahqk(BaseApplication.getContext(), 0);
+      str = null;
+      continue;
+      localObject = new ahqc(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ahqm(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ahql(BaseApplication.getContext(), false);
+      str = null;
+      continue;
+      localObject = new ahqi(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ahqs(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ahqn(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ahqf(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ahpw(BaseApplication.getContext(), "");
+      str = null;
+      continue;
+      localObject = new ahqq(BaseApplication.getContext());
+      str = null;
     }
-    ContactsInnerFrame.b(this.a);
+    return str;
+  }
+  
+  public static byte[] a(int paramInt, Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      return null;
+      switch (paramInt)
+      {
+      }
+    } while (!(paramObject instanceof ahpx));
+    return ((ahpx)paramObject).a();
+    return ((String)paramObject).getBytes();
+    return ((ahqp)paramObject).a();
   }
 }
 

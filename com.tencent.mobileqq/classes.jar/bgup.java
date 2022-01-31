@@ -1,58 +1,137 @@
-import android.text.TextUtils;
+import java.util.ArrayList;
 
 public class bgup
-  implements Cloneable
 {
-  public final int a;
-  public final long a;
-  public bgur a;
-  public final String a;
-  public final int b;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
-  public String f;
-  public final String g;
+  public int a;
+  public String a;
+  public ArrayList<String> a;
+  public int b;
+  public String b;
+  public String c;
   
-  private bgup(int paramInt1, String paramString1, String paramString2, String paramString3, long paramLong, int paramInt2, String paramString4, String paramString5, String paramString6)
+  public bgup()
   {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public bgup(int paramInt1, String paramString1, String paramString2, String paramString3, ArrayList<String> paramArrayList, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_b_of_type_JavaLangString = paramString2;
     this.c = paramString3;
-    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     this.jdField_b_of_type_Int = paramInt2;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.g = paramString6;
   }
   
-  public static bgup a(int paramInt1, String paramString1, String paramString2, String paramString3, long paramLong, int paramInt2, String paramString4, String paramString5, String paramString6)
+  public boolean equals(Object paramObject)
   {
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString5)) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3)) || (paramLong < 0L)) {
-      throw new IllegalArgumentException("The params fileName, pDirKey, fileId, sha and fileSize should be valid.");
+    boolean bool2 = true;
+    boolean bool3 = false;
+    boolean bool1;
+    if (this == paramObject) {
+      bool1 = true;
     }
-    return new bgup(paramInt1, paramString1, paramString2, paramString3.toLowerCase(), paramLong, paramInt2, paramString4, paramString5, paramString6);
-  }
-  
-  public bgup a()
-  {
-    try
+    label116:
+    do
     {
-      bgup localbgup = (bgup)super.clone();
-      return localbgup;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return bool1;
+                  bool1 = bool3;
+                } while (paramObject == null);
+                bool1 = bool3;
+              } while (getClass() != paramObject.getClass());
+              paramObject = (bgup)paramObject;
+              bool1 = bool3;
+            } while (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int);
+            bool1 = bool3;
+          } while (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int);
+          if (this.jdField_a_of_type_JavaLangString == null) {
+            break;
+          }
+          bool1 = bool3;
+        } while (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
+        if (this.jdField_b_of_type_JavaLangString == null) {
+          break label170;
+        }
+        bool1 = bool3;
+      } while (!this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString));
+      if (this.c == null) {
+        break label179;
+      }
+      bool1 = bool3;
+    } while (!this.c.equals(paramObject.c));
+    label140:
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      bool1 = this.jdField_a_of_type_JavaUtilArrayList.equals(paramObject.jdField_a_of_type_JavaUtilArrayList);
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
+    for (;;)
+    {
+      return bool1;
+      if (paramObject.jdField_a_of_type_JavaLangString == null) {
+        break;
+      }
+      return false;
+      label170:
+      if (paramObject.jdField_b_of_type_JavaLangString == null) {
+        break label116;
+      }
+      return false;
+      label179:
+      if (paramObject.c == null) {
+        break label140;
+      }
+      return false;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_JavaUtilArrayList != null) {
+        bool1 = false;
+      }
+    }
   }
   
-  public void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  public int hashCode()
   {
-    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString3)) && (TextUtils.isEmpty(paramString4))) {
-      return;
+    int m = 0;
+    int n = this.jdField_a_of_type_Int;
+    int i;
+    int j;
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      i = this.jdField_a_of_type_JavaLangString.hashCode();
+      if (this.jdField_b_of_type_JavaLangString == null) {
+        break label107;
+      }
+      j = this.jdField_b_of_type_JavaLangString.hashCode();
+      label39:
+      if (this.c == null) {
+        break label112;
+      }
     }
-    this.jdField_a_of_type_Bgur = new bgur(this, paramString1, paramInt, paramString2, paramString3, paramString4, paramString5, null);
+    label107:
+    label112:
+    for (int k = this.c.hashCode();; k = 0)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        m = this.jdField_a_of_type_JavaUtilArrayList.hashCode();
+      }
+      return ((k + (j + (i + n * 31) * 31) * 31) * 31 + m) * 31 + this.jdField_b_of_type_Int;
+      i = 0;
+      break;
+      j = 0;
+      break label39;
+    }
   }
 }
 

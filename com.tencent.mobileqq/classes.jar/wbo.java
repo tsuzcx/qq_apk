@@ -1,17 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
 
 public class wbo
-  extends RecyclerView.ViewHolder
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public wbo(wbn paramwbn, View paramView)
+  public wbo(NeoVideoRecordButton paramNeoVideoRecordButton) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramView);
+    this.a.c.a(((Integer)paramValueAnimator.getAnimatedValue("radius")).intValue(), 0.0F);
+    this.a.c.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
+    NeoVideoRecordButton.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wbo
  * JD-Core Version:    0.7.0.1
  */

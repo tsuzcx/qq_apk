@@ -1,63 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Toast;
-import com.tencent.open.base.ToastUtil.1;
-import com.tencent.open.base.ToastUtil.2;
-import com.tencent.open.base.ToastUtil.3;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
+import mqq.app.TicketManagerListener;
 
 public class bcec
+  implements TicketManagerListener
 {
-  protected static bcec a;
-  protected Handler a;
-  public Toast a;
-  public Toast b;
-  
-  public bcec()
+  public void onTicketRefreshed()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
-  
-  public static bcec a()
-  {
-    if (jdField_a_of_type_Bcec == null) {
-      jdField_a_of_type_Bcec = new bcec();
-    }
-    return jdField_a_of_type_Bcec;
-  }
-  
-  public void a(int paramInt)
-  {
-    a(paramInt, 0);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.2(this, paramInt1, paramInt2));
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.3(this, paramView, paramInt));
-  }
-  
-  public void a(String paramString)
-  {
-    a(paramString, 0);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.1(this, paramString, paramInt));
+    QLog.i("SwiftBrowserCookieMonster", 1, "TicketManager invoke onTicketRefreshed");
+    SwiftBrowserCookieMonster.d();
+    SwiftBrowserCookieMonster.b(MobileQQ.sMobileQQ.waitAppRuntime(null), new Intent());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcec
  * JD-Core Version:    0.7.0.1
  */

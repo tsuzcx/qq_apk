@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vip.lianghao.fragment;
 
-import abju;
-import ajjy;
+import abtu;
+import ajyc;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -10,16 +10,16 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.Window;
-import badq;
-import bauz;
-import bavd;
-import bavo;
-import bavp;
-import bavq;
-import bavr;
-import bavw;
-import bbms;
-import bbmy;
+import bbev;
+import bbxt;
+import bbxx;
+import bbyi;
+import bbyj;
+import bbyk;
+import bbyl;
+import bbyq;
+import bcpq;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
@@ -35,8 +35,8 @@ public class LiangHaoBuyFragment
   private int jdField_a_of_type_Int = 1;
   private Dialog jdField_a_of_type_AndroidAppDialog;
   private Intent jdField_a_of_type_AndroidContentIntent;
-  private bavo jdField_a_of_type_Bavo;
-  private bbms jdField_a_of_type_Bbms;
+  private bbyi jdField_a_of_type_Bbyi;
+  private bcpq jdField_a_of_type_Bcpq;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 1;
   private boolean jdField_b_of_type_Boolean;
@@ -80,44 +80,44 @@ public class LiangHaoBuyFragment
     if (localFragmentActivity == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidAppDialog = new bavw().a(localFragmentActivity, this.jdField_a_of_type_Bavo, new bavp(this));
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new bavq(this));
+    this.jdField_a_of_type_AndroidAppDialog = new bbyq().a(localFragmentActivity, this.jdField_a_of_type_Bbyi, new bbyj(this));
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new bbyk(this));
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
   
-  public static void a(Activity paramActivity, Intent paramIntent, bavo parambavo)
+  public static void a(Activity paramActivity, Intent paramIntent, bbyi parambbyi)
   {
     Intent localIntent = new Intent();
     localIntent.putExtras(paramIntent);
     localIntent.putExtra("lh_request_code", 2);
-    localIntent.putExtra("lh_uin", parambavo.a);
-    localIntent.putExtra("lh_light", parambavo.b);
-    abju.a(paramActivity, localIntent, PublicTransFragmentActivity.class, LiangHaoBuyFragment.class, 2);
+    localIntent.putExtra("lh_uin", parambbyi.a);
+    localIntent.putExtra("lh_light", parambbyi.b);
+    abtu.a(paramActivity, localIntent, PublicTransFragmentActivity.class, LiangHaoBuyFragment.class, 2);
   }
   
-  public static void a(Context paramContext, Intent paramIntent, bavo parambavo)
+  public static void a(Context paramContext, Intent paramIntent, bbyi parambbyi)
   {
     Intent localIntent = new Intent();
     localIntent.putExtras(paramIntent);
     localIntent.putExtra("lh_request_code", 1);
-    localIntent.putExtra("lh_uin", parambavo.a);
-    localIntent.putExtra("lh_light", parambavo.b);
-    abju.a(paramContext, localIntent, PublicTransFragmentActivity.class, LiangHaoBuyFragment.class);
+    localIntent.putExtra("lh_uin", parambbyi.a);
+    localIntent.putExtra("lh_light", parambbyi.b);
+    abtu.a(paramContext, localIntent, PublicTransFragmentActivity.class, LiangHaoBuyFragment.class);
   }
   
   private void a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      bbmy.a(BaseApplicationImpl.sApplication, 1, paramString, 0).a();
+      bcpw.a(BaseApplicationImpl.sApplication, 1, paramString, 0).a();
       return;
     }
-    if (!badq.g(BaseApplicationImpl.sApplication))
+    if (!bbev.g(BaseApplicationImpl.sApplication))
     {
-      bbmy.a(BaseApplicationImpl.sApplication, 1, 2131628130, 0).a();
+      bcpw.a(BaseApplicationImpl.sApplication, 1, 2131693771, 0).a();
       return;
     }
-    bbmy.a(BaseApplicationImpl.sApplication, 1, 2131628122, 0).a();
+    bcpw.a(BaseApplicationImpl.sApplication, 1, 2131693763, 0).a();
   }
   
   private void a(String paramString, byte[] paramArrayOfByte)
@@ -144,7 +144,7 @@ public class LiangHaoBuyFragment
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("unit", ajjy.a(2131640231));
+        localJSONObject.put("unit", ajyc.a(2131706016));
         localJSONObject.put("userId", paramString);
         localJSONObject.put("openMonth", "1");
         localJSONObject.put("offerId", "1450000833");
@@ -183,28 +183,28 @@ public class LiangHaoBuyFragment
     if (getActivity() == null) {
       return;
     }
-    if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing())) {
-      this.jdField_a_of_type_Bbms.dismiss();
+    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing())) {
+      this.jdField_a_of_type_Bcpq.dismiss();
     }
-    this.jdField_a_of_type_Bbms = new bbms(getActivity(), getActivity().getTitleBarHeight());
-    this.jdField_a_of_type_Bbms.c(2131629253);
-    this.jdField_a_of_type_Bbms.show();
+    this.jdField_a_of_type_Bcpq = new bcpq(getActivity(), getActivity().getTitleBarHeight());
+    this.jdField_a_of_type_Bcpq.c(2131694930);
+    this.jdField_a_of_type_Bcpq.show();
   }
   
-  public static void b(Context paramContext, Intent paramIntent, bavo parambavo)
+  public static void b(Context paramContext, Intent paramIntent, bbyi parambbyi)
   {
     Intent localIntent = new Intent();
     localIntent.putExtras(paramIntent);
     localIntent.putExtra("lh_request_code", 3);
-    localIntent.putExtra("lh_uin", parambavo.a);
-    localIntent.putExtra("lh_light", parambavo.b);
-    abju.a(paramContext, localIntent, PublicTransFragmentActivity.class, LiangHaoBuyFragment.class);
+    localIntent.putExtra("lh_uin", parambbyi.a);
+    localIntent.putExtra("lh_light", parambbyi.b);
+    abtu.a(paramContext, localIntent, PublicTransFragmentActivity.class, LiangHaoBuyFragment.class);
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bbms != null) {
-      this.jdField_a_of_type_Bbms.dismiss();
+    if (this.jdField_a_of_type_Bcpq != null) {
+      this.jdField_a_of_type_Bcpq.dismiss();
     }
   }
   
@@ -215,10 +215,10 @@ public class LiangHaoBuyFragment
       return;
     }
     if (QLog.isDevelopLevel()) {
-      QLog.i("LiangHaoBuyFragment", 4, "lockLiangHao uin=" + this.jdField_a_of_type_Bavo.a);
+      QLog.i("LiangHaoBuyFragment", 4, "lockLiangHao uin=" + this.jdField_a_of_type_Bbyi.a);
     }
     b();
-    new bauz(localFragmentActivity.app).a(localFragmentActivity.getIntent(), this.jdField_a_of_type_Bavo.a, new bavr(this));
+    new bbxt(localFragmentActivity.app).a(localFragmentActivity.getIntent(), this.jdField_a_of_type_Bbyi.a, new bbyl(this));
   }
   
   private void e()
@@ -255,9 +255,9 @@ public class LiangHaoBuyFragment
       return;
       localFragmentActivity.setResult(4660);
       break;
-      bavd.a(localFragmentActivity, true, this.jdField_a_of_type_Bavo.a, this.jdField_a_of_type_Bavo.b, localIntent1);
+      bbxx.a(localFragmentActivity, true, this.jdField_a_of_type_Bbyi.a, this.jdField_a_of_type_Bbyi.b, localIntent1);
       continue;
-      bavd.a(localFragmentActivity, false, this.jdField_a_of_type_Bavo.a, this.jdField_a_of_type_Bavo.b, localIntent1);
+      bbxx.a(localFragmentActivity, false, this.jdField_a_of_type_Bbyi.a, this.jdField_a_of_type_Bbyi.b, localIntent1);
     }
   }
   
@@ -288,9 +288,9 @@ public class LiangHaoBuyFragment
     }
     paramBundle = paramBundle.getIntent();
     this.jdField_b_of_type_Int = paramBundle.getIntExtra("lh_request_code", 1);
-    this.jdField_a_of_type_Bavo = new bavo(paramBundle.getStringExtra("lh_uin"), paramBundle.getStringExtra("lh_light"));
+    this.jdField_a_of_type_Bbyi = new bbyi(paramBundle.getStringExtra("lh_uin"), paramBundle.getStringExtra("lh_light"));
     if (QLog.isDevelopLevel()) {
-      QLog.i("LiangHaoBuyFragment", 4, "onActivityCreated from=" + this.jdField_b_of_type_Int + ",lh=" + this.jdField_a_of_type_Bavo.toString());
+      QLog.i("LiangHaoBuyFragment", 4, "onActivityCreated from=" + this.jdField_b_of_type_Int + ",lh=" + this.jdField_a_of_type_Bbyi.toString());
     }
     switch (this.jdField_b_of_type_Int)
     {
@@ -301,7 +301,7 @@ public class LiangHaoBuyFragment
       a();
       return;
     }
-    a(this.jdField_a_of_type_Bavo.a, paramBundle.getByteArrayExtra("key_register_lhsig"));
+    a(this.jdField_a_of_type_Bbyi.a, paramBundle.getByteArrayExtra("key_register_lhsig"));
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)

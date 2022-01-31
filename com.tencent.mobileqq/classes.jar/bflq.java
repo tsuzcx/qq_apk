@@ -1,46 +1,47 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqreader.QReaderHelper.1;
-import mqq.app.MobileQQ;
+import com.tencent.sveffects.Logger;
 
 public class bflq
-  implements moc
+  implements Logger
 {
-  public bflq(QReaderHelper.1 param1) {}
-  
-  public void loaded(String paramString, int paramInt)
+  public void d(String paramString1, String paramString2)
   {
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.e("QReaderHelper", 2, "Load offline package finish, code = " + paramInt);
-    }
-    switch (paramInt)
-    {
-    }
-    for (int i = 0;; i = 1)
-    {
-      paramString = this.a.a.getApplication().getSharedPreferences("qr_offline_fail", 0);
-      int k = paramString.getInt("offlinePkgDownloadFailCount", 0);
-      if (i != 0) {
-        j = k + 1;
-      }
-      if (j != k) {
-        paramString.edit().putInt("offlinePkgDownloadFailCount", j).commit();
-      }
-      if ((i != 0) && (QLog.isColorLevel())) {
-        QLog.e("QReaderHelper", 2, "offline package update failed:" + paramInt);
-      }
-      return;
-    }
+    QLog.d(paramString1, 2, paramString2);
   }
   
-  public void progress(int paramInt) {}
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 2, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, 2, paramString2, paramThrowable);
+  }
+  
+  public void e(String paramString, Throwable paramThrowable)
+  {
+    QLog.e(paramString, 2, paramThrowable, new Object[0]);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 2, paramString2);
+  }
+  
+  public boolean isEnable()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 2, paramString2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bflq
  * JD-Core Version:    0.7.0.1
  */

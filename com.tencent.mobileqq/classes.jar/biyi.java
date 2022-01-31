@@ -1,14 +1,35 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.graphics.Bitmap;
 
-class biyi
-  implements CompoundButton.OnCheckedChangeListener
+public class biyi
 {
-  biyi(biyh parambiyh) {}
+  public final int a;
+  public final Bitmap a;
+  public final String a;
+  public final Throwable a;
+  public final boolean a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private biyi(boolean paramBoolean, int paramInt, String paramString, Throwable paramThrowable, Bitmap paramBitmap)
   {
-    biyh.a(this.a).g = paramBoolean;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  private static biyi b(int paramInt, String paramString)
+  {
+    return new biyi(false, paramInt, paramString, null, null);
+  }
+  
+  private static biyi b(Bitmap paramBitmap)
+  {
+    return new biyi(true, 0, null, null, paramBitmap);
+  }
+  
+  public String toString()
+  {
+    return "ChangeFaceResult{isSuccess=" + this.jdField_a_of_type_Boolean + ", errCode=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", exception=" + this.jdField_a_of_type_JavaLangThrowable + ", data=" + this.jdField_a_of_type_AndroidGraphicsBitmap + '}';
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import addx;
-import aded;
+import adoz;
+import adpf;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 public class FileItemBuilder$6$1
   implements Runnable
 {
-  public FileItemBuilder$6$1(aded paramaded) {}
+  public FileItemBuilder$6$1(adpf paramadpf) {}
   
   public void run()
   {
-    ChatActivityUtils.a(this.a.a.a, 2131653423, 1);
+    ChatActivityUtils.a(this.a.a.a, 2131719252, 1);
   }
 }
 

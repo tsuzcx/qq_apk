@@ -1,20 +1,12 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import android.view.MotionEvent;
 
-class pnp
-  extends pnc
+public abstract interface pnp
 {
-  pnp(pnn parampnn, AppInterface paramAppInterface) {}
-  
-  public Drawable a()
-  {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_mine_selected");
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pnp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,10 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-
-public class xeb
-  extends WebViewPlugin
+public abstract interface xeb
 {
-  public static String[] a = { "http://htdata.qq.com/cgi-bin/httpconn?htcmd=0x6ff0080", "http://htdata2.qq.com/cgi-bin/httpconn?htcmd=0x6ff0080" };
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xeb
  * JD-Core Version:    0.7.0.1
  */

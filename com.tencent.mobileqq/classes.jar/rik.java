@@ -1,18 +1,22 @@
-public abstract interface rik
+import android.graphics.drawable.ColorDrawable;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+
+public class rik
+  implements InvocationHandler
 {
-  public abstract void a(String paramString);
+  public rik(FastWebActivity.1 param1) {}
   
-  public abstract boolean b();
-  
-  public abstract String c();
-  
-  public abstract boolean c();
-  
-  public abstract String d();
-  
-  public abstract boolean d();
-  
-  public abstract String e();
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  {
+    this.a.this$0.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    FastWebActivity.a(this.a.this$0).setMaskBackGroundDrawable(new ColorDrawable(0));
+    return null;
+  }
 }
 
 

@@ -12,28 +12,29 @@ import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.URLUtil;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bdcy;
-import bdcz;
-import bdew;
-import bdfx;
-import bdfz;
-import bdgg;
-import bdgi;
-import bdnw;
-import bdyg;
-import bdyj;
-import bdza;
-import bdzh;
+import begy;
+import begz;
+import beiw;
+import bejy;
+import beka;
+import bekg;
+import beki;
+import besl;
+import beuc;
+import bffm;
+import bffp;
+import bfgq;
+import bfgx;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBannerAdView;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -44,7 +45,7 @@ import org.json.JSONObject;
 public class BannerAdPlugin
   extends BaseJsPlugin
 {
-  private static final HashMap<Integer, String> AD_ERROR_MSG = bdza.a;
+  private static final HashMap<Integer, String> AD_ERROR_MSG = bfgq.a;
   public static final String API_AD_CREATE_BANNER_AD = "createBannerAd";
   public static final String API_AD_OPERATE_BANNER_AD = "operateBannerAd";
   public static final String API_AD_UPDATE_BANNER_AD_SIZE = "updateBannerAdSize";
@@ -52,16 +53,16 @@ public class BannerAdPlugin
   public static final String EVENT_BANNER_AD_STATE_CHANGE = "onBannerAdStateChange";
   private static final String TAG = "BannerAdPlugin";
   private FrameLayout mBannerAdContainer;
-  private bdyj mBannerAdPosInfo;
+  private bffp mBannerAdPosInfo;
   private AdProxy.AbsBannerAdView mBannerAdView;
   private float mGameDensity = -1.0F;
   private int mGameHeight;
   private int mGameWidth;
   private boolean mHasNewAd;
   
-  private void bannerErrorStateCallbackDelay(bdfz parambdfz, int paramInt1, String paramString, int paramInt2)
+  private void bannerErrorStateCallbackDelay(beka parambeka, int paramInt1, String paramString, int paramInt2)
   {
-    bdgi.a(new BannerAdPlugin.7(this, paramString, paramInt1, parambdfz), paramInt2);
+    beki.a(new BannerAdPlugin.7(this, paramString, paramInt1, parambeka), paramInt2);
   }
   
   private void destroyBannerAd()
@@ -88,9 +89,9 @@ public class BannerAdPlugin
     return Math.round(this.mGameDensity * paramFloat);
   }
   
-  private void informJs(bdfz parambdfz, JSONObject paramJSONObject, String paramString)
+  private void informJs(beka parambeka, JSONObject paramJSONObject, String paramString)
   {
-    parambdfz.jdField_a_of_type_Bdcy.a(paramString, paramJSONObject.toString(), 0);
+    parambeka.jdField_a_of_type_Begy.a(paramString, paramJSONObject.toString(), 0);
   }
   
   private boolean makeSureContainerAdded()
@@ -98,10 +99,10 @@ public class BannerAdPlugin
     if ((this.mBannerAdContainer != null) && (this.mBannerAdContainer.getParent() != null)) {
       return true;
     }
-    ViewGroup localViewGroup = (ViewGroup)this.mMiniAppContext.a().findViewById(16908290);
+    ViewGroup localViewGroup = (ViewGroup)this.mMiniAppContext.a().getWindow().getDecorView();
     if (localViewGroup == null)
     {
-      bdnw.d("BannerAdPlugin", "makeSureContainerAdded, root view is null");
+      besl.d("BannerAdPlugin", "makeSureContainerAdded, root view is null");
       return false;
     }
     if (this.mBannerAdContainer == null) {
@@ -121,11 +122,11 @@ public class BannerAdPlugin
   
   private void reportBannerAd(String paramString)
   {
-    bdnw.b("BannerAdPlugin", "reportBannerAd reportUrl = " + paramString);
+    besl.b("BannerAdPlugin", "reportBannerAd reportUrl = " + paramString);
     if ((TextUtils.isEmpty(paramString)) || (!URLUtil.isNetworkUrl(paramString))) {
       return;
     }
-    bdew.a(new BannerAdPlugin.5(this, paramString), 16, null, false);
+    beiw.a(new BannerAdPlugin.5(this, paramString), 16, null, false);
   }
   
   private boolean showBannerAd()
@@ -137,12 +138,12 @@ public class BannerAdPlugin
       {
         if ((this.mBannerAdView == null) || (this.mBannerAdView.getView() == null) || (this.mBannerAdPosInfo == null))
         {
-          bdnw.d("BannerAdPlugin", "showBannerAd error, data is null");
+          besl.d("BannerAdPlugin", "showBannerAd error, data is null");
           return bool;
         }
         if (!this.mBannerAdPosInfo.a())
         {
-          bdnw.d("BannerAdPlugin", "showBannerAd error, adPosInfo is invalid." + this.mBannerAdPosInfo);
+          besl.d("BannerAdPlugin", "showBannerAd error, adPosInfo is invalid." + this.mBannerAdPosInfo);
           continue;
         }
         if (this.mMiniAppContext == null) {
@@ -153,7 +154,7 @@ public class BannerAdPlugin
       if (this.mMiniAppContext.a() == null)
       {
         label103:
-        bdnw.d("BannerAdPlugin", "showBannerAd error, mGdtBannerView == null");
+        besl.d("BannerAdPlugin", "showBannerAd error, mGdtBannerView == null");
       }
       else
       {
@@ -161,7 +162,6 @@ public class BannerAdPlugin
         if ((!this.mHasNewAd) && (this.mBannerAdContainer.getChildCount() > 0))
         {
           this.mBannerAdContainer.setVisibility(0);
-          bdnw.b("BannerAdPlugin", "showBannerAd, just set visible");
           bool = true;
         }
         else
@@ -183,26 +183,26 @@ public class BannerAdPlugin
           }
           else
           {
-            bdnw.d("BannerAdPlugin", "showBannerAd error, mGdtBannerView is null");
+            besl.d("BannerAdPlugin", "showBannerAd error, mGdtBannerView is null");
           }
         }
       }
     }
   }
   
-  private void updateBannerSize(bdfz parambdfz)
+  private void updateBannerSize(beka parambeka)
   {
     int n = 1;
     int i;
     int j;
     float f1;
-    bdyj localbdyj;
+    bffp localbffp;
     int k;
     int m;
     float f2;
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambdfz.b);
+      JSONObject localJSONObject = new JSONObject(parambeka.b);
       if (localJSONObject.has("left"))
       {
         i = localJSONObject.getInt("left");
@@ -218,10 +218,10 @@ public class BannerAdPlugin
       if (!localJSONObject.has("width")) {
         break label531;
       }
-      f1 = bdzh.a();
-      i = bdzh.a();
-      j = bdzh.b();
-      localbdyj = this.mBannerAdPosInfo;
+      f1 = bfgx.a();
+      i = bfgx.a();
+      j = bfgx.b();
+      localbffp = this.mBannerAdPosInfo;
       Activity localActivity = this.mMiniAppContext.a();
       if (localActivity == null) {
         break label519;
@@ -245,42 +245,42 @@ public class BannerAdPlugin
         k = i;
       }
       i1 = localJSONObject.getInt("width");
-      i = bdyj.a(i1, m, f2, k, j);
-      if ((localbdyj == null) || (i1 == localbdyj.d) || (i != localbdyj.f)) {
+      i = bffp.a(i1, m, f2, k, j);
+      if ((localbffp == null) || (i1 == localbffp.d) || (i != localbffp.f)) {
         break label513;
       }
-      localbdyj.d = i1;
+      localbffp.d = i1;
       try
       {
         localJSONObject = new JSONObject();
         localJSONObject.put("state", "resize");
-        localJSONObject.put("width", localbdyj.f);
-        localJSONObject.put("height", localbdyj.g);
-        informJs(parambdfz, localJSONObject, "onBannerAdStateChange");
+        localJSONObject.put("width", localbffp.f);
+        localJSONObject.put("height", localbffp.g);
+        informJs(parambeka, localJSONObject, "onBannerAdStateChange");
         return;
       }
-      catch (JSONException parambdfz)
+      catch (JSONException parambeka)
       {
-        bdnw.d("BannerAdPlugin", "updateBannerAd informJs error", parambdfz);
+        besl.d("BannerAdPlugin", "updateBannerAd informJs error", parambeka);
         return;
       }
       if (i >= 0) {
         break label367;
       }
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
-      bdnw.d("BannerAdPlugin", "handle updateBannerAdSize parse json error", parambdfz);
+      besl.d("BannerAdPlugin", "handle updateBannerAdSize parse json error", parambeka);
       return;
     }
     label337:
-    bannerErrorStateCallbackDelay(parambdfz, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
+    bannerErrorStateCallbackDelay(parambeka, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
     return;
     label367:
     if ((j != -1) && (this.mIsMiniGame))
     {
-      localbdyj = this.mBannerAdPosInfo;
-      if (localbdyj != null) {
+      localbffp = this.mBannerAdPosInfo;
+      if (localbffp != null) {
         switch (j)
         {
         }
@@ -290,23 +290,23 @@ public class BannerAdPlugin
     {
       if (k == 0)
       {
-        if (bdnw.a())
+        if (besl.a())
         {
-          bdnw.b("BannerAdPlugin", "updateBannerAd no need to resize");
+          besl.b("BannerAdPlugin", "updateBannerAd no need to resize");
           return;
-          if (localbdyj.b == i) {
+          if (localbffp.b == i) {
             break label554;
           }
           k = 1;
           break label551;
           k = n;
-          if (localbdyj.c != i) {
+          if (localbffp.c != i) {
             continue;
           }
           k = 0;
           continue;
           k = n;
-          if (localbdyj.f != i) {
+          if (localbffp.f != i) {
             continue;
           }
           k = 0;
@@ -314,7 +314,7 @@ public class BannerAdPlugin
       }
       else
       {
-        bdgi.a(new BannerAdPlugin.6(this, j, i, parambdfz));
+        beki.a(new BannerAdPlugin.6(this, j, i, parambeka));
         return;
         label513:
         j = 3;
@@ -344,26 +344,26 @@ public class BannerAdPlugin
     }
   }
   
-  public String createBannerAd(bdfz parambdfz)
+  public String createBannerAd(beka parambeka)
   {
     int i = 90;
     Object localObject1;
     for (;;)
     {
-      label161:
-      label210:
+      label155:
+      label204:
       try
       {
-        bdnw.b("BannerAdPlugin", "receive createBannerAd event");
+        besl.b("BannerAdPlugin", "receive createBannerAd event");
         try
         {
-          localObject1 = bdyj.a(parambdfz.b);
+          localObject1 = bffp.a(parambeka.b);
           if (localObject1 != null) {
             continue;
           }
-          bannerErrorStateCallbackDelay(parambdfz, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
-          bdnw.b("BannerAdPlugin", "handle createBannerAd error params, " + parambdfz.b);
-          parambdfz = "";
+          bannerErrorStateCallbackDelay(parambeka, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
+          besl.b("BannerAdPlugin", "handle createBannerAd error params, " + parambeka.b);
+          parambeka = "";
         }
         catch (Exception localException)
         {
@@ -373,38 +373,38 @@ public class BannerAdPlugin
           int k;
           String str4;
           Object localObject2;
-          bdyj localbdyj;
+          bffp localbffp;
           String str5;
           Object localObject4;
-          localObject1 = bdgg.b(parambdfz.jdField_a_of_type_JavaLangString, null);
+          localObject1 = bekg.b(parambeka.jdField_a_of_type_JavaLangString, null);
           if (localObject1 == null) {
             continue;
           }
           localObject1 = ((JSONObject)localObject1).toString();
-          bannerErrorStateCallbackDelay(parambdfz, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
-          bdnw.b("BannerAdPlugin", "handle createBannerAd parse json error" + parambdfz.b, localException);
+          bannerErrorStateCallbackDelay(parambeka, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
+          besl.b("BannerAdPlugin", "handle createBannerAd parse json error" + parambeka.b, localException);
           if (localObject1 == null) {
             continue;
           }
-          parambdfz = (bdfz)localObject1;
+          parambeka = (beka)localObject1;
           continue;
           localObject1 = "";
           continue;
         }
-        return parambdfz;
+        return parambeka;
       }
       finally {}
-      str3 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAccount();
-      f = bdzh.a();
-      j = bdzh.a();
-      k = bdzh.a();
+      str3 = beuc.a().a();
+      f = bfgx.a();
+      j = bfgx.a();
+      k = bfgx.a();
       str4 = this.mApkgInfo.d;
       localObject2 = this.mMiniAppContext.a();
       if (localObject2 == null) {
-        break label728;
+        break label722;
       }
       if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation != 2) {
-        break label737;
+        break label731;
       }
       initActivitySize((Activity)localObject2);
       if (this.mGameDensity > 0.0F) {
@@ -414,37 +414,37 @@ public class BannerAdPlugin
         j = this.mGameWidth;
       }
       if (this.mGameHeight <= 0) {
-        break label734;
+        break label728;
       }
       k = this.mGameHeight;
-      break label734;
-      bdnw.b("BannerAdPlugin", "handle createBannerAd appId = " + str4);
+      break label728;
+      besl.b("BannerAdPlugin", "handle createBannerAd appId = " + str4);
       if (TextUtils.isEmpty(str4))
       {
-        bannerErrorStateCallbackDelay(parambdfz, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
-        parambdfz = "";
+        bannerErrorStateCallbackDelay(parambeka, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
+        parambeka = "";
       }
       else
       {
-        localbdyj = bdyj.a((bdyj)localObject1, i, f, j, k);
-        if ((localbdyj == null) || (!localbdyj.a()))
+        localbffp = bffp.a((bffp)localObject1, i, f, j, k);
+        if ((localbffp == null) || (!localbffp.a()))
         {
-          bannerErrorStateCallbackDelay(parambdfz, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
-          bdnw.b("BannerAdPlugin", "handle createBannerAd invalid adInfo = " + localbdyj);
-          parambdfz = "";
+          bannerErrorStateCallbackDelay(parambeka, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
+          besl.b("BannerAdPlugin", "handle createBannerAd invalid adInfo = " + localbffp);
+          parambeka = "";
         }
         else
         {
-          this.mBannerAdPosInfo = localbdyj;
-          str5 = bdyg.a(0);
+          this.mBannerAdPosInfo = localbffp;
+          str5 = bffm.a(0);
           localObject4 = this.mMiniAppInfo;
           if ((localObject4 != null) && (((MiniAppInfo)localObject4).launchParam != null)) {
             if (((MiniAppInfo)localObject4).launchParam.c != null)
             {
               localObject1 = ((MiniAppInfo)localObject4).launchParam.c;
-              label414:
+              label408:
               if (((MiniAppInfo)localObject4).launchParam == null) {
-                break label742;
+                break label736;
               }
             }
           }
@@ -452,10 +452,10 @@ public class BannerAdPlugin
       }
     }
     String str1;
+    label722:
     label728:
-    label734:
-    label737:
-    label742:
+    label731:
+    label736:
     for (localObject2 = MiniAppInfo.getReportDataString(((MiniAppInfo)localObject4).launchParam.jdField_a_of_type_JavaUtilMap);; str1 = "")
     {
       j = ((MiniAppInfo)localObject4).launchParam.jdField_a_of_type_Int;
@@ -475,20 +475,20 @@ public class BannerAdPlugin
           ((Bundle)localObject4).putString(AdProxy.KEY_REPORT_DATA, (String)localObject2);
           ((Bundle)localObject4).putString(AdProxy.KEY_REFER, (String)localObject1);
           ((Bundle)localObject4).putString(AdProxy.KEY_VIA, str2);
-          bdgi.a(new BannerAdPlugin.1(this, str4, localbdyj, parambdfz, (Bundle)localObject4));
-          parambdfz = "";
+          beki.a(new BannerAdPlugin.1(this, str4, localbffp, parambeka, (Bundle)localObject4));
+          parambeka = "";
           break;
           localObject1 = "";
-          break label414;
+          break label408;
         }
         localObject3 = "";
         str1 = "";
       }
       i = 90;
-      break label210;
-      break label210;
+      break label204;
+      break label204;
       i = 0;
-      break label161;
+      break label155;
     }
   }
   
@@ -504,8 +504,8 @@ public class BannerAdPlugin
     //   5: getfield 63	com/tencent/qqmini/sdk/core/plugins/BannerAdPlugin:mBannerAdView	Lcom/tencent/qqmini/sdk/core/proxy/AdProxy$AbsBannerAdView;
     //   8: ifnonnull +17 -> 25
     //   11: ldc 26
-    //   13: ldc_w 525
-    //   16: invokestatic 173	bdnw:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   13: ldc_w 524
+    //   16: invokestatic 178	besl:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   19: iload_2
     //   20: istore_1
     //   21: aload_0
@@ -526,12 +526,12 @@ public class BannerAdPlugin
     //   44: istore_1
     //   45: aload_0
     //   46: getfield 108	com/tencent/qqmini/sdk/core/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
-    //   49: invokevirtual 528	android/widget/FrameLayout:getVisibility	()I
+    //   49: invokevirtual 527	android/widget/FrameLayout:getVisibility	()I
     //   52: ifne -31 -> 21
     //   55: aload_0
     //   56: getfield 108	com/tencent/qqmini/sdk/core/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
     //   59: bipush 8
-    //   61: invokevirtual 253	android/widget/FrameLayout:setVisibility	(I)V
+    //   61: invokevirtual 257	android/widget/FrameLayout:setVisibility	(I)V
     //   64: iconst_1
     //   65: istore_1
     //   66: goto -45 -> 21
@@ -568,7 +568,7 @@ public class BannerAdPlugin
     this.mGameDensity = localDisplayMetrics.density;
     this.mGameWidth = localDisplayMetrics.widthPixels;
     this.mGameHeight = localDisplayMetrics.heightPixels;
-    bdnw.b("BannerAdPlugin", "density = " + localDisplayMetrics.density + ", ViewUtils.density = " + bdzh.a() + ", screenW = " + localDisplayMetrics.widthPixels + ", screenH = " + localDisplayMetrics.heightPixels);
+    besl.b("BannerAdPlugin", "density = " + localDisplayMetrics.density + ", ViewUtils.density = " + bfgx.a() + ", screenW = " + localDisplayMetrics.widthPixels + ", screenH = " + localDisplayMetrics.heightPixels);
   }
   
   public void onDestroy()
@@ -576,6 +576,11 @@ public class BannerAdPlugin
     if ((this.mBannerAdView != null) && (this.mMiniAppContext != null) && (this.mMiniAppContext.a() != null)) {
       this.mBannerAdView.destroy(this.mMiniAppContext.a());
     }
+    AdProxy localAdProxy = (AdProxy)ProxyManager.get(AdProxy.class);
+    if (localAdProxy != null) {
+      localAdProxy.destroy();
+    }
+    super.onDestroy();
   }
   
   public void onPause()
@@ -592,15 +597,15 @@ public class BannerAdPlugin
     }
   }
   
-  public String operateBannerAd(bdfz parambdfz)
+  public String operateBannerAd(beka parambeka)
   {
-    bdnw.b("BannerAdPlugin", "receive operateBannerAd event");
+    besl.b("BannerAdPlugin", "receive operateBannerAd event");
     try
     {
-      str = new JSONObject(parambdfz.b).getString("type");
-      bdnw.b("BannerAdPlugin", "handle operateBannerAd type = " + str);
+      str = new JSONObject(parambeka.b).getString("type");
+      besl.b("BannerAdPlugin", "handle operateBannerAd type = " + str);
       if ("show".equals(str)) {
-        bdgi.a(new BannerAdPlugin.2(this, parambdfz), 300L);
+        beki.a(new BannerAdPlugin.2(this, parambeka), 300L);
       }
       for (;;)
       {
@@ -608,20 +613,20 @@ public class BannerAdPlugin
         if (!"hide".equals(str)) {
           break;
         }
-        bdgi.a(new BannerAdPlugin.3(this));
+        beki.a(new BannerAdPlugin.3(this));
       }
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
       for (;;)
       {
         String str;
-        bdnw.b("BannerAdPlugin", "handle operateBannerAd parse json error", parambdfz);
+        besl.b("BannerAdPlugin", "handle operateBannerAd parse json error", parambeka);
         continue;
         if ("destroy".equals(str)) {
-          bdgi.a(new BannerAdPlugin.4(this));
+          beki.a(new BannerAdPlugin.4(this));
         } else {
-          bdnw.b("BannerAdPlugin", "handle operateBannerAd not define type = " + str);
+          besl.b("BannerAdPlugin", "handle operateBannerAd not define type = " + str);
         }
       }
     }
@@ -634,10 +639,10 @@ public class BannerAdPlugin
     {
       try
       {
-        bdnw.b("BannerAdPlugin", "updateBannerAdPosition");
+        besl.b("BannerAdPlugin", "updateBannerAdPosition");
         if ((this.mBannerAdView == null) || (this.mBannerAdPosInfo == null))
         {
-          bdnw.d("BannerAdPlugin", "updateBannerAdPosition error, no data");
+          besl.d("BannerAdPlugin", "updateBannerAdPosition error, no data");
           return bool;
         }
         switch (paramInt1)
@@ -662,17 +667,17 @@ public class BannerAdPlugin
       this.mBannerAdPosInfo.c = paramInt2;
       continue;
       this.mBannerAdPosInfo.f = paramInt2;
-      this.mBannerAdPosInfo.g = bdyj.a(paramInt2);
+      this.mBannerAdPosInfo.g = bffp.a(paramInt2);
       continue;
       label261:
       bool = true;
     }
   }
   
-  public void updateBannerAdSize(bdfz parambdfz)
+  public void updateBannerAdSize(beka parambeka)
   {
-    bdnw.b("BannerAdPlugin", "updateBannerAdSize " + parambdfz.b);
-    updateBannerSize(parambdfz);
+    besl.b("BannerAdPlugin", "updateBannerAdSize " + parambeka.b);
+    updateBannerSize(parambeka);
   }
 }
 

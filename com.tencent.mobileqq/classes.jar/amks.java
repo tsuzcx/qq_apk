@@ -1,55 +1,56 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.Display;
+import android.view.MotionEvent;
+import android.view.WindowManager;
 
 public class amks
 {
-  private String jdField_a_of_type_JavaLangString = ajjy.a(2131649046);
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private String b = "";
+  private static double jdField_a_of_type_Double = 0.25D;
+  private static float jdField_a_of_type_Float;
+  private static double jdField_b_of_type_Double = 0.5D;
+  private static float jdField_b_of_type_Float;
+  private static float c;
+  private int jdField_a_of_type_Int;
+  private int jdField_b_of_type_Int;
   
-  public static amks a(alzs[] paramArrayOfalzs)
+  public amks(Context paramContext)
   {
-    int i = 0;
-    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length <= 0)) {
-      return null;
-    }
-    amks localamks = new amks();
-    try
-    {
-      paramArrayOfalzs = new JSONObject(paramArrayOfalzs[0].jdField_a_of_type_JavaLangString);
-      JSONArray localJSONArray = paramArrayOfalzs.getJSONArray("suffix");
-      while (i < localJSONArray.length())
-      {
-        localamks.jdField_a_of_type_JavaUtilList.add(localJSONArray.getString(i));
-        i += 1;
-      }
-      localamks.jdField_a_of_type_JavaLangString = paramArrayOfalzs.getString("title");
-      localamks.b = paramArrayOfalzs.getString("desc");
-      return localamks;
-    }
-    catch (JSONException paramArrayOfalzs)
-    {
-      paramArrayOfalzs.printStackTrace();
-    }
-    return localamks;
+    a(paramContext);
+    paramContext = paramContext.getResources();
+    jdField_a_of_type_Float = paramContext.getDimensionPixelSize(2131297356);
+    jdField_b_of_type_Float = paramContext.getDimensionPixelSize(2131297357);
+    c = paramContext.getDimensionPixelSize(2131297355);
   }
   
-  public String a()
+  private void a(Context paramContext)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    paramContext = (WindowManager)paramContext.getSystemService("window");
+    this.jdField_a_of_type_Int = paramContext.getDefaultDisplay().getWidth();
+    this.jdField_b_of_type_Int = paramContext.getDefaultDisplay().getHeight();
   }
   
-  public List<String> a()
+  public double a(MotionEvent paramMotionEvent)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    float f = paramMotionEvent.getRawX();
+    paramMotionEvent.getRawY();
+    if (f <= jdField_a_of_type_Double * this.jdField_a_of_type_Int) {
+      return 0.0D;
+    }
+    if (f >= jdField_b_of_type_Double * this.jdField_a_of_type_Int) {
+      return 1.0D;
+    }
+    return (f - jdField_a_of_type_Double * this.jdField_a_of_type_Int) / ((jdField_b_of_type_Double - jdField_a_of_type_Double) * this.jdField_a_of_type_Int);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent, Context paramContext)
+  {
+    return (a(paramMotionEvent) + 1.0E-008D > 1.0D) && (paramMotionEvent.getRawX() > this.jdField_a_of_type_Int - jdField_b_of_type_Float) && (paramMotionEvent.getRawY() > this.jdField_b_of_type_Int - jdField_a_of_type_Float - c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amks
  * JD-Core Version:    0.7.0.1
  */

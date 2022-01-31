@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import aoyb;
-import aozd;
+import appp;
+import apqx;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class VideoFilePresenter$12
   implements Runnable
 {
-  public VideoFilePresenter$12(aoyb paramaoyb) {}
+  public VideoFilePresenter$12(appp paramappp) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
     {
-      aoyb.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration());
-      this.this$0.jdField_a_of_type_Aozd.a(aoyb.a(this.this$0));
-      this.this$0.jdField_a_of_type_Aozd.b(false);
-      this.this$0.jdField_a_of_type_Aozd.g(true);
+      appp.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration());
+      this.this$0.jdField_a_of_type_Apqx.a(appp.a(this.this$0));
+      this.this$0.jdField_a_of_type_Apqx.b(false);
+      this.this$0.jdField_a_of_type_Apqx.g(true);
     }
   }
 }

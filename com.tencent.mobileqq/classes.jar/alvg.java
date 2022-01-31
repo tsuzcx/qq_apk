@@ -1,252 +1,362 @@
-import android.graphics.Paint;
+import android.content.Context;
 import android.text.TextUtils;
-import android.util.LruCache;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
+import android.util.Pair;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.comment.DanmuItemBean;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.JSDebuggerSoLoader.2;
+import com.tencent.mobileqq.ark.debug.JSDebuggerSoLoader.3;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.List<Ltencent.im.oidb.oidb_0xdea.Comment;>;
-import tencent.im.msg.im_msg_body.AnonymousGroupMsg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.MsgBody;
-import tencent.im.msg.im_msg_body.RichText;
-import tencent.im.oidb.oidb_0xdea.Comment;
+import java.util.Map;
 
 public class alvg
 {
-  private static alvg jdField_a_of_type_Alvg;
-  public int a;
-  private alvn jdField_a_of_type_Alvn;
-  public Paint a;
-  private LruCache<String, alvh> jdField_a_of_type_AndroidUtilLruCache;
-  private awbd jdField_a_of_type_Awbd;
+  private static int jdField_a_of_type_Int;
+  private static alvi jdField_a_of_type_Alvi;
+  private static Object jdField_a_of_type_JavaLangObject;
+  private static Runnable jdField_a_of_type_JavaLangRunnable = new JSDebuggerSoLoader.3();
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static Map<String, Pair<String, String>> jdField_a_of_type_JavaUtilMap;
+  private static boolean jdField_a_of_type_Boolean;
+  private static boolean b;
   
-  private alvg()
+  static
   {
-    this.jdField_a_of_type_Int = bajq.a(150.0F);
-    if (this.jdField_a_of_type_AndroidUtilLruCache == null) {
-      this.jdField_a_of_type_AndroidUtilLruCache = new LruCache(10485760);
-    }
-    if (BaseApplicationImpl.sProcessId == 1)
+    jdField_a_of_type_JavaLangObject = new Object();
+    jdField_a_of_type_Int = 1;
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public static String a()
+  {
+    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
     {
-      if (this.jdField_a_of_type_Alvn == null) {
-        this.jdField_a_of_type_Alvn = new alvn();
+      Object localObject = BaseApplicationImpl.getContext();
+      if (localObject == null) {
+        break label60;
       }
-      if (this.jdField_a_of_type_Awbd == null) {
-        this.jdField_a_of_type_Awbd = new awbd();
+      localObject = ((Context)localObject).getFilesDir();
+      if (localObject != null) {
+        jdField_a_of_type_JavaLangString = ((File)localObject).getParent() + "/txlib/" + "arkdebugger/";
       }
-      b();
-    }
-  }
-  
-  public static alvg a()
-  {
-    if (jdField_a_of_type_Alvg == null) {
-      jdField_a_of_type_Alvg = new alvg();
-    }
-    return jdField_a_of_type_Alvg;
-  }
-  
-  public alvh a(String paramString)
-  {
-    return (alvh)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
-  }
-  
-  public QQAppInterface a()
-  {
-    if (BaseApplicationImpl.sProcessId == 1) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    return null;
-  }
-  
-  public String a(long paramLong1, long paramLong2)
-  {
-    return String.valueOf(paramLong1) + paramLong2;
-  }
-  
-  public List<DanmuItemBean> a(List<oidb_0xdea.Comment> paramList, long paramLong)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    if (this.jdField_a_of_type_Awbd == null) {
-      this.jdField_a_of_type_Awbd = new awbd();
-    }
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    Iterator localIterator = paramList.iterator();
-    Object localObject1;
-    if (localIterator.hasNext()) {
-      localObject1 = (oidb_0xdea.Comment)localIterator.next();
     }
     for (;;)
     {
-      long l1;
-      long l2;
-      int i;
-      try
-      {
-        paramList = new im_msg_body.MsgBody();
-        paramList.mergeFrom(((oidb_0xdea.Comment)localObject1).bytes_comment_msg.get().toByteArray());
-        Object localObject2 = new im_msg_body.RichText();
-        ((im_msg_body.RichText)localObject2).mergeFrom(((im_msg_body.RichText)paramList.rich_text.get()).toByteArray());
-        localObject2 = ((im_msg_body.RichText)localObject2).elems.get();
-        l1 = ((oidb_0xdea.Comment)localObject1).uint64_comment_uin.get();
-        l2 = ((oidb_0xdea.Comment)localObject1).uint64_seq.get();
-        long l3 = ((oidb_0xdea.Comment)localObject1).uint32_comment_ctime.get();
-        long l4 = ((oidb_0xdea.Comment)localObject1).uint64_comment_location.get();
-        paramList = new aylt();
-        paramList.jdField_a_of_type_JavaLangString = String.valueOf(paramLong);
-        paramList.jdField_a_of_type_Int = 1;
-        Object localObject3 = this.jdField_a_of_type_Awbd.a((List)localObject2, new StringBuilder(), l2, paramList);
-        if (TextUtils.isEmpty(((awbe)localObject3).jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-        if ((TextUtils.isEmpty(((awbe)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mAnonymousNickName)) && (((awbe)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageForText$AtTroopMemberInfo != null) && (!TextUtils.isEmpty(((awbe)localObject3).jdField_a_of_type_JavaLangString)) && (((awbe)localObject3).jdField_a_of_type_JavaLangString.length() > ((awbe)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageForText$AtTroopMemberInfo.textLen + 1) && (((awbe)localObject3).jdField_a_of_type_JavaLangString.startsWith(((awbe)localObject3).b)))
-        {
-          paramList = ((awbe)localObject3).jdField_a_of_type_JavaLangString.substring(((awbe)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageForText$AtTroopMemberInfo.textLen + 1);
-          if (!TextUtils.isEmpty(paramList)) {
-            ((awbe)localObject3).jdField_a_of_type_JavaLangString = paramList;
-          }
-        }
-        paramList = ((oidb_0xdea.Comment)localObject1).bytes_nick.get().toStringUtf8();
-        i = ((oidb_0xdea.Comment)localObject1).uint32_source.get();
-        if (TextUtils.isEmpty(paramList))
-        {
-          localObject1 = babh.h(localQQAppInterface, String.valueOf(paramLong), String.valueOf(l1));
-          paramList = (List<oidb_0xdea.Comment>)localObject1;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("DanmuDataHolder", 2, new Object[] { "decodeCommentList, use local nickname, seq:", Long.valueOf(l2) });
-            paramList = (List<oidb_0xdea.Comment>)localObject1;
-          }
-          paramList = alvp.a(this.jdField_a_of_type_AndroidGraphicsPaint, paramList, this.jdField_a_of_type_Int);
-          localObject1 = new DanmuItemBean(l1, l2, l3, l4, ((awbe)localObject3).jdField_a_of_type_JavaLangString, paramList);
-          localArrayList.add(localObject1);
-          localObject2 = ((List)localObject2).iterator();
-          if (!((Iterator)localObject2).hasNext()) {
-            break;
-          }
-          paramList = (im_msg_body.Elem)((Iterator)localObject2).next();
-          if (!paramList.anon_group_msg.has()) {
-            continue;
-          }
-          localObject3 = (im_msg_body.AnonymousGroupMsg)paramList.anon_group_msg.get();
-          paramList = ((im_msg_body.AnonymousGroupMsg)localObject3).str_anon_nick.get().toByteArray();
-          if (((im_msg_body.AnonymousGroupMsg)localObject3).uint32_flags.get() <= 0) {
-            break label797;
-          }
-          bool = true;
-          ((DanmuItemBean)localObject1).jdField_a_of_type_Boolean = bool;
-          if (paramList != null) {
-            break label742;
-          }
-          paramList = "";
-          ((DanmuItemBean)localObject1).c = paramList;
-          ((DanmuItemBean)localObject1).jdField_a_of_type_Int = ((im_msg_body.AnonymousGroupMsg)localObject3).uint32_head_portrait.get();
-          QLog.d("DanmuDataHolder", 1, new Object[] { "decodeCommentList, 匿名消息,", localObject1 });
-          continue;
-        }
-      }
-      catch (Exception paramList)
-      {
-        QLog.d("DanmuDataHolder", 1, "decodeCommentList, e:" + paramList);
-      }
-      if (i == 4)
-      {
-        localObject1 = ((ajjj)localQQAppInterface.getManager(51)).b(String.valueOf(l1));
-        if ((localObject1 != null) && (((Friends)localObject1).isFriend()) && (!TextUtils.isEmpty(((Friends)localObject1).remark)))
-        {
-          localObject1 = ((Friends)localObject1).remark;
-          paramList = (List<oidb_0xdea.Comment>)localObject1;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("DanmuDataHolder", 2, new Object[] { "decodeCommentList, use local remake, seq:", Long.valueOf(l2) });
-          paramList = (List<oidb_0xdea.Comment>)localObject1;
-          continue;
-          label742:
-          paramList = new String(paramList);
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("DanmuDataHolder", 2, "decodeCommentList, " + localArrayList.toString());
-          }
-          return localArrayList;
-        }
-      }
-      continue;
-      label797:
-      boolean bool = false;
+      return jdField_a_of_type_JavaLangString;
+      label60:
+      QLog.w("JSDebuggerSoLoader", 2, "getLibDirPath but context is null");
     }
   }
   
-  public void a()
+  public static void a(int paramInt, alvi paramalvi)
   {
-    this.jdField_a_of_type_AndroidUtilLruCache.evictAll();
-    this.jdField_a_of_type_Awbd = null;
+    try
+    {
+      c();
+      jdField_a_of_type_Alvi = paramalvi;
+      jdField_a_of_type_Int = paramInt;
+      ThreadManager.remove(jdField_a_of_type_JavaLangRunnable);
+      ThreadManager.post(jdField_a_of_type_JavaLangRunnable, 5, null, true);
+      return;
+    }
+    finally
+    {
+      paramalvi = finally;
+      throw paramalvi;
+    }
   }
   
-  public void a(alvf paramalvf, alvl paramalvl)
+  private static String b()
   {
-    if ((paramalvf.a == 0L) || (paramalvf.b == 0L))
+    String str = a();
+    if (!TextUtils.isEmpty(str)) {
+      return str + "temp/";
+    }
+    return "";
+  }
+  
+  private static void b()
+  {
+    b = false;
+  }
+  
+  private static void b(int paramInt)
+  {
+    if (jdField_a_of_type_Alvi != null) {
+      jdField_a_of_type_Alvi.a(paramInt);
+    }
+  }
+  
+  private static void b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        Object localObject = new File(paramString);
+        if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+        {
+          localObject = ((File)localObject).list();
+          int j = localObject.length;
+          int i = 0;
+          while (i < j)
+          {
+            File localFile = new File(paramString, localObject[i]);
+            if ((localFile.exists()) && (localFile.isFile())) {
+              localFile.delete();
+            }
+            i += 1;
+          }
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("JSDebuggerSoLoader", 1, paramString, new Object[0]);
+      }
+    }
+  }
+  
+  private static void b(String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      ArkAppCenter.a(new JSDebuggerSoLoader.2(paramString1, paramString2));
+    }
+  }
+  
+  private static boolean b()
+  {
+    boolean bool3 = false;
+    boolean bool1 = false;
+    boolean bool2 = true;
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DanmuDataHolder", 2, String.format("request, bad parameter, topicUin:%s, groupUin:%s", new Object[] { Long.valueOf(paramalvf.a), Long.valueOf(paramalvf.b) }));
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_Boolean)
+        {
+          QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.sync failed");
+          return bool1;
+        }
+        if (b)
+        {
+          b(2);
+          QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.has succeed");
+          bool1 = true;
+        }
+      }
+      b(0);
+    }
+    finally {}
+    String str1 = a();
+    String str2 = b();
+    Object localObject5;
+    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
+    {
+      c(str1);
+      localObject5 = new File(str1 + "libarkDebuggerJSImpl.so");
+      if (((File)localObject5).exists())
+      {
+        QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.js debugger so exists:" + localObject5);
+        b(str1, "libarkDebuggerJSImpl.so");
+        b(2);
+        bool1 = bool2;
+        break label564;
+      }
+    }
+    label564:
+    for (;;)
+    {
+      b = bool1;
+      break;
+      localObject5 = (Pair)jdField_a_of_type_JavaUtilMap.get("");
+      if ((localObject5 != null) && (!TextUtils.isEmpty((CharSequence)((Pair)localObject5).second)))
+      {
+        c(str2);
+        String str3 = str2 + (String)((Pair)localObject5).second;
+        if ((new File(str3).exists()) && (b(str2, (String)((Pair)localObject5).second, (String)((Pair)localObject5).second, str1)))
+        {
+          QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.testZipAndUnzip 1 succeed");
+          b(3);
+          b(str1, "libarkDebuggerJSImpl.so");
+          bool1 = true;
+          break label567;
+        }
+        if (!TextUtils.isEmpty((CharSequence)((Pair)localObject5).first))
+        {
+          ??? = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+          if (??? != null)
+          {
+            ??? = (ArkAppCenter)((QQAppInterface)???).getManager(121);
+            if (??? != null)
+            {
+              alsc localalsc = ((ArkAppCenter)???).a();
+              if (localalsc != null)
+              {
+                String str4 = (String)((Pair)localObject5).second;
+                b(str2);
+                for (;;)
+                {
+                  synchronized (jdField_a_of_type_JavaLangObject)
+                  {
+                    if (!jdField_a_of_type_Boolean)
+                    {
+                      b(1);
+                      localalsc.b((String)((Pair)localObject5).first, 0L, new alvh(str3, str2, str4, str1));
+                      jdField_a_of_type_Boolean = true;
+                      QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.downloadArkJSDebugger");
+                      bool1 = true;
+                    }
+                  }
+                  QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.downloadArkJSDebugger.sync failed");
+                  bool1 = false;
+                }
+              }
+              QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.ArkAppCGI is null");
+              break label570;
+            }
+            QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.ArkAppCenter is null");
+            break label570;
+          }
+          QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.QQAppInterface is null");
+          break label570;
+        }
+        b(7);
+        QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.manage URL is null");
+        break label570;
+      }
+      b(7);
+      QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.manage MD5 is null");
+      bool1 = false;
+      break label564;
+      b(9);
+      QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.necessary dir path is null");
+      bool1 = bool3;
+    }
+    for (;;)
+    {
+      label567:
+      break;
+      label570:
+      bool1 = false;
+    }
+  }
+  
+  private static boolean b(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    int i;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString4))) {
+      try
+      {
+        b(paramString4);
+        paramString2 = new File(paramString1 + paramString2);
+        if (paramString2.exists())
+        {
+          String str = bfjx.a(paramString2);
+          if ((!TextUtils.isEmpty(str)) && (str.equals(paramString3)))
+          {
+            bbdj.a(paramString2.getAbsolutePath(), paramString1, false);
+            paramString2 = new File(paramString1 + "libarkDebuggerJSImpl.so");
+            if ((paramString2 == null) || (!paramString2.exists())) {
+              break label406;
+            }
+            if (bbdj.d(paramString1 + "libarkDebuggerJSImpl.so", paramString4 + "libarkDebuggerJSImpl.so")) {
+              QLog.i("JSDebuggerSoLoader", 2, "testZipAndUnzip.copyFile succeed:" + "libarkDebuggerJSImpl.so");
+            }
+            for (i = 0;; i = 1)
+            {
+              paramString2 = new File(paramString1 + "libjsc_ark.so");
+              if ((paramString2 == null) || (!paramString2.exists())) {
+                break label404;
+              }
+              if (!bbdj.d(paramString1 + "libjsc_ark.so", paramString4 + "libjsc_ark.so")) {
+                break;
+              }
+              QLog.i("JSDebuggerSoLoader", 2, "testZipAndUnzip.copyFile succeed:" + "libjsc_ark.so");
+              break label412;
+              QLog.i("JSDebuggerSoLoader", 2, "testZipAndUnzip.copyFile failed:" + "libarkDebuggerJSImpl.so");
+            }
+            QLog.i("JSDebuggerSoLoader", 2, "testZipAndUnzip.copyFile failed:" + "libjsc_ark.so");
+            i = 1;
+          }
+        }
+      }
+      catch (Exception paramString1)
+      {
+        QLog.e("JSDebuggerSoLoader", 1, paramString1, new Object[0]);
+      }
+    }
+    label404:
+    label406:
+    label412:
+    do
+    {
+      return false;
+      i = 0;
+      break;
+    } while (i != 0);
+    return true;
+  }
+  
+  private static void c()
+  {
+    Object localObject1 = amqr.b(186).a();
+    if (localObject1 == null) {
+      ArkAppCenter.c("JSDebuggerSoLoader", "updateJSDebuggerConfig, confBean is null");
+    }
+    do
+    {
+      return;
+      localObject1 = ((amqn)localObject1).a();
+      if (localObject1 == null)
+      {
+        ArkAppCenter.c("JSDebuggerSoLoader", String.format("updateJSDebuggerConfig, aiKeywordConfig is null", new Object[0]));
+        return;
+      }
+      localObject1 = ((amre)localObject1).d;
+    } while (localObject1 == null);
+    jdField_a_of_type_JavaUtilMap.clear();
+    localObject1 = ((ArrayList)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (amrh)((Iterator)localObject1).next();
+      if (localObject2 != null)
+      {
+        String str1 = ((amrh)localObject2).jdField_a_of_type_JavaLangString;
+        String str2 = ((amrh)localObject2).b;
+        localObject2 = ((amrh)localObject2).c;
+        if ((str1 != null) && (!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(str2))) {
+          jdField_a_of_type_JavaUtilMap.put(str1, new Pair(str2, localObject2));
+        }
+      }
+    }
+    ArkAppCenter.c("JSDebuggerSoLoader", String.format("updateJSDebuggerConfig success.", new Object[0]));
+  }
+  
+  private static void c(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = new File(paramString);
+      if (!paramString.exists()) {
+        paramString.mkdirs();
       }
       return;
     }
-    Object localObject = a().a(paramalvf.b, paramalvf.a);
-    alvh localalvh = a().a((String)localObject);
-    localObject = localalvh;
-    if (localalvh == null)
+    catch (Exception paramString)
     {
-      localObject = new alvh(this).a(paramalvf).d(0).e(0).a(paramalvl).a();
-      QLog.d("DanmuDataHolder", 2, "request start, reqHolder is null, create it");
-    }
-    this.jdField_a_of_type_Alvn.a((alvh)localObject);
-  }
-  
-  public void a(String paramString, alvh paramalvh)
-  {
-    this.jdField_a_of_type_AndroidUtilLruCache.put(paramString, paramalvh);
-  }
-  
-  public alvh b(String paramString)
-  {
-    alvh localalvh = new alvh(this);
-    a(paramString, localalvh);
-    return localalvh;
-  }
-  
-  public void b()
-  {
-    QQAppInterface localQQAppInterface = a();
-    if ((this.jdField_a_of_type_AndroidGraphicsPaint == null) && (localQQAppInterface != null)) {
-      this.jdField_a_of_type_AndroidGraphicsPaint = ((TextView)LayoutInflater.from(localQQAppInterface.getApp()).inflate(2131493259, null).findViewById(2131298878)).getPaint();
+      QLog.e("JSDebuggerSoLoader", 1, paramString, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alvg
  * JD-Core Version:    0.7.0.1
  */

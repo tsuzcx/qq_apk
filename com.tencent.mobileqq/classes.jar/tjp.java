@@ -1,26 +1,21 @@
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
+import java.util.ArrayList;
 
-public abstract interface tjp
+public class tjp
+  extends ssk
 {
-  public abstract tjq a(@Nullable tjs paramtjs, int paramInt);
+  public final int a;
+  public ArrayList<tjo> a;
   
-  @UiThread
-  public abstract tjv a();
+  public tjp(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public abstract void a();
-  
-  @UiThread
-  public abstract void a(@Nullable tjs paramtjs, int paramInt1, int paramInt2, String paramString);
-  
-  @UiThread
-  public abstract void a(@Nullable tjs paramtjs, String paramString);
-  
-  public abstract void a(tju paramtju);
-  
-  public abstract void b();
-  
-  public abstract void b(tju paramtju);
+  public String toString()
+  {
+    return "UpdateMemoriesEvent{dateList=" + this.jdField_a_of_type_JavaUtilArrayList + ", source=" + this.jdField_a_of_type_Int + '}';
+  }
 }
 
 

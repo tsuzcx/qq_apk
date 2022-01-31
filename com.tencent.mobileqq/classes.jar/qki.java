@@ -1,26 +1,8 @@
-class qki
-  extends qkk
+import org.json.JSONObject;
+
+public abstract interface qki
 {
-  private final float a;
-  
-  public qki(float paramFloat)
-  {
-    this.a = paramFloat;
-  }
-  
-  public long a(long paramLong)
-  {
-    long l = paramLong;
-    if (this.b > 0L) {
-      l = (this.a * (float)paramLong + (1.0F - this.a) * (float)this.b);
-    }
-    return l;
-  }
-  
-  public String toString()
-  {
-    return "ExponentialPredictor(" + this.a + ')';
-  }
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 

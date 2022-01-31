@@ -1,35 +1,31 @@
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.av.gaudio.AVPhoneUserInfo;
 
 public class ldw
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  long b = 0L;
-  
-  public ldw(String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangString = ("EventCountLog_" + paramString);
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  void a()
-  {
-    if (!AudioHelper.e()) {}
-    long l1;
-    do
-    {
-      return;
-      l1 = System.currentTimeMillis();
-      this.jdField_a_of_type_Int += 1;
-    } while (this.b >= l1);
-    long l2 = this.jdField_a_of_type_Long;
-    long l3 = this.b;
-    this.b = (l1 + this.jdField_a_of_type_Long);
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "EventCountLog, eventCount[" + this.jdField_a_of_type_Int + "], intervalMS[" + (l2 + l1 - l3) + "]");
-    this.jdField_a_of_type_Int = 0;
-  }
+  public int a;
+  public long a;
+  public Bitmap a;
+  public AVPhoneUserInfo a;
+  public String a;
+  public boolean a;
+  public int b = -1;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c = 2000L;
+  public String c;
+  public boolean c;
+  public int d = -1;
+  public long d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f = 0;
+  public boolean f;
+  public boolean g;
+  public boolean h = true;
 }
 
 

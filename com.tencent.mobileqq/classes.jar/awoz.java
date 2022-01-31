@@ -1,111 +1,74 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.startup.step.ProcessInfoUtil.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class awoz
+  extends awop
 {
-  public static int a(Context paramContext, String paramString)
+  public static final String a;
+  public List<awom> a;
+  public String b;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  
+  static
   {
-    if (paramContext != null)
+    jdField_a_of_type_JavaLangString = awoz.class.getSimpleName();
+  }
+  
+  public awoz(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public awoz(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      paramContext = (ActivityManager)paramContext.getSystemService("activity");
-      if (paramContext != null)
+      paramString = new JSONObject(paramString);
+      this.b = paramString.optString("leftIconUrl");
+      this.j = paramString.optString("title");
+      this.k = paramString.optString("summary");
+      this.l = paramString.optString("rightIconUrl");
+      this.m = paramString.optString("jumpUrl");
+      paramString = paramString.optJSONArray("pageInfo");
+      if (paramString != null)
       {
-        paramContext = paramContext.getRunningAppProcesses();
-        if (paramContext != null)
+        this.jdField_a_of_type_JavaUtilList = new ArrayList(paramString.length());
+        int i = 0;
+        while (i < paramString.length())
         {
-          paramContext = paramContext.iterator();
-          while (paramContext.hasNext())
-          {
-            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-            if (paramString.compareTo(localRunningAppProcessInfo.processName) == 0) {
-              return localRunningAppProcessInfo.pid;
-            }
-          }
+          Object localObject = paramString.optJSONObject(i);
+          localObject = new awom(((JSONObject)localObject).optString("leftIconUrl"), ((JSONObject)localObject).optString("wording"));
+          this.jdField_a_of_type_JavaUtilList.add(localObject);
+          i += 1;
         }
       }
+      return;
     }
-    return -1;
-  }
-  
-  public static int a(String paramString)
-  {
-    int i = -1;
-    SharedPreferences localSharedPreferences = b();
-    if (localSharedPreferences != null) {
-      i = localSharedPreferences.getInt("pid" + paramString, -1);
-    }
-    return i;
-  }
-  
-  public static long a(String paramString)
-  {
-    long l2 = 0L;
-    int i = a(BaseApplicationImpl.getContext(), paramString);
-    long l1;
-    if (i == -1) {
-      l1 = l2;
-    }
-    do
+    catch (JSONException paramString)
     {
-      long l3;
-      do
-      {
-        int j;
-        do
-        {
-          do
-          {
-            return l1;
-            j = a(paramString);
-            l1 = l2;
-          } while (j == -1);
-          l1 = l2;
-        } while (i != j);
-        l3 = b(paramString);
-        l1 = l2;
-      } while (l3 == -1L);
-      l2 = System.currentTimeMillis() - l3;
-      l1 = l2;
-    } while (!QLog.isColorLevel());
-    QLog.d("ProcessUtils", 2, "getProcessRunningTime - " + paramString + ":" + l2);
-    return l2;
-  }
-  
-  public static void a(String paramString)
-  {
-    ThreadManager.post(new ProcessInfoUtil.1(paramString), 5, null, true);
-  }
-  
-  public static long b(String paramString)
-  {
-    long l = -1L;
-    SharedPreferences localSharedPreferences = b();
-    if (localSharedPreferences != null) {
-      l = localSharedPreferences.getLong("start_time" + paramString, -1L);
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+      }
     }
-    return l;
-  }
-  
-  private static SharedPreferences b()
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      return localBaseApplicationImpl.getSharedPreferences("process_info_pref", 4);
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awoz
  * JD-Core Version:    0.7.0.1
  */

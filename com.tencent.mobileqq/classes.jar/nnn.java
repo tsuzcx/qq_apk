@@ -1,16 +1,16 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
-class nnn
-  implements ViewFactory.FoundClickableViewListener
+public class nnn
+  implements DialogInterface.OnClickListener
 {
-  nnn(nnm paramnnm, BaseData paramBaseData, Context paramContext, ViewBase paramViewBase) {}
+  public nnn(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, long paramLong, String paramString2, String paramString3) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramViewBase.setOnClickListener(new nno(this));
+    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+    PublicAccountJavascriptInterface.setLocationPermissionGrant(this.b, this.c, 1);
   }
 }
 

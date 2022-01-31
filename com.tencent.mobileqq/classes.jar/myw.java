@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
 
 public class myw
-  implements View.OnClickListener
+  implements ajtg
 {
-  public myw(VideoCoverView paramVideoCoverView) {}
+  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
   
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    VideoCoverView.a(this.a, true);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, (BmqqUserSimpleInfo)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     myw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class anyx
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public anyx(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public anyx(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.a != null)
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
-    }
-    if (UniformDownloadActivity.a(this.a)) {
-      bcfn.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3009", false);
-    }
-    for (;;)
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-      return;
-      bcfn.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3006", false);
+    com.tencent.widget.XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (this.a.getParent() != null) {
+      this.a.getParent().requestLayout();
     }
   }
 }

@@ -1,20 +1,20 @@
 package com.tencent.device.msg.activities;
 
-import aweg;
-import awey;
+import axdo;
+import axeg;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
-import xuu;
+import ydx;
 
 public class DevLittleVideoItemBuilder$5
   implements Runnable
 {
-  public DevLittleVideoItemBuilder$5(xuu paramxuu, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
+  public DevLittleVideoItemBuilder$5(ydx paramydx, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
   
   public void run()
   {
-    awey localawey = aweg.a(0, 4);
-    localawey.a(aweg.a(this.a, localawey));
-    aweg.a(localawey, this.this$0.a);
+    axeg localaxeg = axdo.a(0, 4);
+    localaxeg.a(axdo.a(this.a, localaxeg));
+    axdo.a(localaxeg, this.this$0.a);
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdcy;
-import bdey;
-import bdfd;
-import bdfz;
-import bdgg;
-import bdnw;
+import begy;
+import beiy;
+import bejd;
+import beka;
+import bekg;
+import besl;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class VoIPJsPlugin$2$1
-  implements bdfd
+  implements bejd
 {
   VoIPJsPlugin$2$1(VoIPJsPlugin.2 param2) {}
   
@@ -21,14 +21,14 @@ class VoIPJsPlugin$2$1
     try
     {
       localJSONObject.put("errCode", paramInt);
-      this.this$1.val$req.jdField_a_of_type_Bdcy.a(this.this$1.val$req.b, bdgg.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, localJSONObject).toString());
+      this.this$1.val$req.jdField_a_of_type_Begy.a(this.this$1.val$req.b, bekg.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, localJSONObject).toString());
       return;
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        bdnw.d("[mini] VoIPJsPlugin", "JSONException", localJSONException);
+        besl.d("[mini] VoIPJsPlugin", "JSONException", localJSONException);
       }
     }
   }
@@ -39,15 +39,15 @@ class VoIPJsPlugin$2$1
     try
     {
       localJSONObject.put("openIdList", paramJSONArray);
-      this.this$1.val$req.jdField_a_of_type_Bdcy.a(this.this$1.val$req.b, bdgg.a(this.this$1.val$req.jdField_a_of_type_JavaLangString, localJSONObject).toString());
-      bdey.a().a(new VoIPJsPlugin.2.1.1(this));
+      this.this$1.val$req.jdField_a_of_type_Begy.a(this.this$1.val$req.b, bekg.a(this.this$1.val$req.jdField_a_of_type_JavaLangString, localJSONObject).toString());
+      beiy.a().a(new VoIPJsPlugin.2.1.1(this));
       return;
     }
     catch (JSONException paramJSONArray)
     {
       for (;;)
       {
-        bdnw.d("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
+        besl.d("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
       }
     }
   }

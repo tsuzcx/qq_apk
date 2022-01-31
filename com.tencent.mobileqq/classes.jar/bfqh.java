@@ -1,45 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.1;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.2;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.widget.DynamicGridView;
 
 public class bfqh
-  extends bfzo
+  extends AnimatorListenerAdapter
 {
-  public bfqh(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
+  public bfqh(DynamicGridView paramDynamicGridView, View paramView) {}
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1000;
-    localMessage.arg1 = 1;
-    this.a.a.sendMessage(localMessage);
-    int i = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginDownloadSoTimeout", 60000);
-    this.a.a.sendEmptyMessageDelayed(1009, i);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, false);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, this.jdField_a_of_type_AndroidViewView);
   }
   
-  public void a(float paramFloat)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.1(this, paramFloat));
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, true);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
   }
-  
-  public void a(int paramInt)
-  {
-    this.a.a.obtainMessage(1008).sendToTarget();
-  }
-  
-  public void b()
-  {
-    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.2(this));
-  }
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfqh
  * JD-Core Version:    0.7.0.1
  */

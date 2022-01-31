@@ -1,6 +1,14 @@
-public abstract interface bjmn
+import android.support.annotation.CallSuper;
+
+public class bjmn
+  extends bjof
 {
-  public abstract void a(boolean paramBoolean);
+  @CallSuper
+  public void b()
+  {
+    super.b();
+    bjmo.a().a(this);
+  }
 }
 
 

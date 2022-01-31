@@ -1,7 +1,7 @@
 package com.tencent.open.appcommon.js;
 
 import android.os.Bundle;
-import bchb;
+import bdlc;
 
 class BaseJsCallBack$4
   implements Runnable
@@ -10,7 +10,7 @@ class BaseJsCallBack$4
   
   public void run()
   {
-    bchb.a().b(this.this$0.activity, this.a);
+    bdlc.a().b(this.this$0.activity, this.a);
   }
 }
 

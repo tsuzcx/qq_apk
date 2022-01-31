@@ -1,24 +1,41 @@
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+
 public class ooz
+  implements AladdinConfigHandler
 {
-  public int a;
-  public long a;
-  public boolean a;
-  
-  public ooz(long paramLong, int paramInt)
+  public static String a()
   {
-    this(paramLong, paramInt, false);
+    return (String)bhvh.a("double_short_video_font_size", "14");
   }
   
-  public ooz(long paramLong, int paramInt, boolean paramBoolean)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    QLog.d("DoubleShortVideoFontSize", 2, "[onReceiveConfig] " + paramString);
+    paramString = ooi.a(paramString);
+    try
+    {
+      paramString = (String)paramString.get("double_videocard_textsize");
+      if (!TextUtils.isEmpty(paramString)) {
+        bhvh.a("double_short_video_font_size", paramString);
+      }
+      label55:
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      break label55;
+    }
   }
   
-  public String toString()
+  public void onWipeConfig(int paramInt)
   {
-    return "BatchFollowModel{followUin=" + this.jdField_a_of_type_Long + ", accountType=" + this.jdField_a_of_type_Int + ", isFollowed=" + this.jdField_a_of_type_Boolean + '}';
+    bhvh.a("double_short_video_font_size", "14");
+    if (QLog.isColorLevel()) {
+      QLog.d("DoubleShortVideoFontSize", 2, "font size: " + paramInt);
+    }
   }
 }
 

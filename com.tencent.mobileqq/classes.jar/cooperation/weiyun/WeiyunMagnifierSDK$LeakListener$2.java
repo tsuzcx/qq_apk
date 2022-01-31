@@ -1,23 +1,23 @@
 package cooperation.weiyun;
 
-import ajjy;
-import bbmy;
-import bgtz;
+import ajyc;
+import bcpw;
+import bidb;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class WeiyunMagnifierSDK$LeakListener$2
   implements Runnable
 {
-  public WeiyunMagnifierSDK$LeakListener$2(bgtz parambgtz, String paramString1, boolean paramBoolean, String paramString2) {}
+  public WeiyunMagnifierSDK$LeakListener$2(bidb parambidb, String paramString1, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
     StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append(" dump");
     if (this.jdField_a_of_type_Boolean) {}
-    for (String str = ajjy.a(2131651135) + this.b;; str = ajjy.a(2131651134))
+    for (String str = ajyc.a(2131716926) + this.b;; str = ajyc.a(2131716925))
     {
-      bbmy.a(localBaseApplicationImpl, str, 2000).a();
+      bcpw.a(localBaseApplicationImpl, str, 2000).a();
       return;
     }
   }

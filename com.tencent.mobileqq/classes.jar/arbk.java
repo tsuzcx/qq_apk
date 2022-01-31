@@ -1,44 +1,43 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.View;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
 
-public class arbk
-  implements TextWatcher
+class arbk
+  extends RecyclerView.AdapterDataObserver
 {
-  public arbk(LocationPickFragment paramLocationPickFragment, View paramView1, View paramView2, View paramView3) {}
+  arbk(arbj paramarbj) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onChanged()
   {
-    if (paramEditable.length() > 0)
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.b.setVisibility(0);
-      this.c.setVisibility(0);
-    }
-    for (;;)
-    {
-      paramEditable = paramEditable.toString().trim();
-      if (TextUtils.isEmpty(paramEditable)) {
-        break;
-      }
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(paramEditable);
-      return;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.b.setVisibility(8);
-      this.c.setVisibility(8);
-    }
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a("");
+    super.onChanged();
+    this.a.notifyDataSetChanged();
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  {
+    super.onItemRangeChanged(paramInt1, paramInt2);
+    this.a.notifyItemRangeChanged(paramInt1, paramInt2);
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  {
+    super.onItemRangeInserted(paramInt1, paramInt2);
+    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
+  }
+  
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  {
+    super.onItemRangeMoved(paramInt1, paramInt2, paramInt3);
+    this.a.notifyItemRangeChanged(paramInt1, paramInt2 + paramInt3);
+  }
+  
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  {
+    super.onItemRangeRemoved(paramInt1, paramInt2);
+    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arbk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,60 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.DcReportUtil.1;
-import com.tencent.mobileqq.statistics.DcReportUtil.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicLong;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import java.util.List;
 
 public class awpy
+  extends awpz
 {
-  private static AtomicLong a = new AtomicLong(0L);
+  String a = null;
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  awof a(afgx paramafgx, List<awog> paramList, String paramString1, boolean paramBoolean, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    awng localawng;
+    if (paramList != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DcReportUtil", 2, "reportDCEvent tag or detail is null: " + paramString1 + ", " + paramString2);
-      }
-      return;
-    }
-    if (paramQQAppInterface == null)
-    {
-      ThreadManager.post(new DcReportUtil.2(paramString1, paramString2), 5, null, true);
-      return;
-    }
-    a(paramQQAppInterface, paramString1, paramString2, 1);
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    if (paramString2 != null)
-    {
-      awqx localawqx = paramQQAppInterface.a();
-      if (localawqx != null)
+      localawng = (awng)paramList.get(0);
+      if ((localawng != null) && (localawng.a() != null))
       {
-        String str = paramString2;
-        if (paramString2.contains("${uin_unknown}")) {
-          str = paramString2.replace("${uin_unknown}", paramQQAppInterface.getCurrentAccountUin());
-        }
-        localawqx.a(paramString1, str, paramInt);
+        String str = localawng.a().hotword.get();
+        noo.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F74", "0X8006F74", 0, 0, localawng.a(), str, String.valueOf(localawng.a().hotword_type.get()), "");
+      }
+      if ((localawng == null) || (localawng.a() == null)) {
+        break label166;
+      }
+    }
+    for (;;)
+    {
+      if ((localawng != null) && (localawng.a() != null)) {
+        noo.a(null, "CliOper", "", "", "0X8006535", "0X8006535", 0, 0, "", "", paramString1, String.valueOf(localawng.a().account_id.get()));
+      }
+      awvx.a(110);
+      this.a = paramString2;
+      return new awnf(paramafgx, paramList, paramString1, paramString2);
+      label166:
+      if (paramList.size() > 1) {
+        localawng = (awng)paramList.get(1);
+      } else {
+        localawng = null;
       }
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean)
+  awog a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    String str = "${count_unknown}|" + paramString2;
-    paramString2 = str;
-    if (!paramBoolean)
-    {
-      long l = a.incrementAndGet();
-      paramString2 = "${report_seq_prefix}" + l + "|" + str;
-    }
-    if (paramQQAppInterface == null)
-    {
-      ThreadManager.post(new DcReportUtil.1(paramString1, paramString2), 5, null, true);
-      return;
-    }
-    a(paramQQAppInterface, paramString1, paramString2, 1);
+    return new awng(paramhotwordrecord, paramString1, paramCharSequence1, paramString2, paramCharSequence2);
+  }
+  
+  awog a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  {
+    return new awng(paramrecord, paramString, paramCharSequence);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpy
  * JD-Core Version:    0.7.0.1
  */

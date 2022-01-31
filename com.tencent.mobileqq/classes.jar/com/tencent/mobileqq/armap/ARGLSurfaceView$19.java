@@ -3,13 +3,11 @@ package com.tencent.mobileqq.armap;
 class ARGLSurfaceView$19
   implements Runnable
 {
-  ARGLSurfaceView$19(ARGLSurfaceView paramARGLSurfaceView, float[] paramArrayOfFloat) {}
+  ARGLSurfaceView$19(ARGLSurfaceView paramARGLSurfaceView, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((this.val$quaternion != null) && (this.val$quaternion.length >= 4)) {
-      this.this$0.native_updateQuaternion(this.val$quaternion[0], this.val$quaternion[1], this.val$quaternion[2], this.val$quaternion[3]);
-    }
+    this.this$0.native_setSensorSupport(this.val$type, this.val$isSupport);
   }
 }
 

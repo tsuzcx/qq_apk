@@ -1,21 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.hardware.Camera;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
-class axiq
-  implements View.OnClickListener
+public class axiq
+  extends PreviewContext
+  implements SurfaceHolder.Callback, axie
 {
-  axiq(axip paramaxip) {}
-  
-  public void onClick(View paramView)
+  public axiq(axhx paramaxhx, int paramInt1, int paramInt2)
   {
-    if (axip.a(this.a).isShowing()) {
-      axip.a(this.a).dismiss();
+    super(paramaxhx, paramInt1, paramInt2);
+  }
+  
+  public void a(byte[] paramArrayOfByte, Camera paramCamera)
+  {
+    getPreviewFrame(paramArrayOfByte, paramCamera);
+  }
+  
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.mCamera.a(paramInt1, paramInt2, paramInt3);
+    this.mCamera.a(null, paramSurfaceHolder, this, true);
+  }
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    this.mCamera.a();
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (this.mCamera != null)
+    {
+      this.mCamera.b();
+      this.mCamera.b(true);
+      if (this.mActivtiyDestory) {
+        this.mCamera = null;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axiq
  * JD-Core Version:    0.7.0.1
  */

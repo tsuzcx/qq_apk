@@ -3,8 +3,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import awqx;
-import bant;
+import axqw;
+import bbpp;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 class IndividuationPlugin$1
@@ -18,8 +18,8 @@ class IndividuationPlugin$1
     paramView.putExtra("hide_left_button", false);
     paramView.putExtra("show_right_close_button", false);
     paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-    VasWebviewUtil.openQQBrowserWithoutAD(this.this$0.mActivity, bant.a("myFont"), 67108864L, paramView, false, -1);
-    awqx.b(null, "CliOper", "", "", "font_switch", "clk_swtich", 0, 0, "", "", "", "");
+    VasWebviewUtil.openQQBrowserWithoutAD(this.this$0.mActivity, bbpp.a("myFont"), 67108864L, paramView, false, -1);
+    axqw.b(null, "CliOper", "", "", "font_switch", "clk_swtich", 0, 0, "", "", "", "");
   }
 }
 

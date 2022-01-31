@@ -1,17 +1,27 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
 
 public class aaqi
-  implements View.OnClickListener
 {
-  public aaqi(EditActivity paramEditActivity) {}
+  public aaqi(ChatFragment paramChatFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
-      EditActivity.a(this.a).dismiss();
+    if ((ChatFragment.b()) && (this.a.jdField_a_of_type_Boolean))
+    {
+      bbjv.b("AIO_Start_cost", null);
+      SuspendThreadManager.a().c();
+      bbjv.a("AIO_onDrawView", "AIO_SysMsgCost");
+      ChatFragment.a(this.a);
+      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("uintype", -1) == 1008)
+      {
+        String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
+        bbfc.a("pubAcc_aio_open", null, str);
+        bbfc.a("pubAcc_structMsg_display", null, str);
+      }
+      ChatFragment.a(false);
     }
   }
 }

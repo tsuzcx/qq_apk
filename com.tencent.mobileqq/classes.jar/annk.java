@@ -1,10 +1,27 @@
-public abstract interface annk
+import android.content.Context;
+
+public class annk
+  extends lza
 {
-  public abstract void b();
+  public static int a(Context paramContext, String paramString)
+  {
+    return a(paramContext, "TencentDocGrayTips_ShowTimes_" + paramString, 0);
+  }
   
-  public abstract void b(float paramFloat);
+  public static long a(Context paramContext, String paramString)
+  {
+    return a(paramContext, "TencentDocGrayTips_LastShowTime_" + paramString, 0L);
+  }
   
-  public abstract void c(float paramFloat);
+  public static void b(Context paramContext, String paramString, int paramInt)
+  {
+    a(paramContext, "TencentDocGrayTips_ShowTimes_" + paramString, paramInt);
+  }
+  
+  public static void b(Context paramContext, String paramString, long paramLong)
+  {
+    a(paramContext, "TencentDocGrayTips_LastShowTime_" + paramString, paramLong);
+  }
 }
 
 

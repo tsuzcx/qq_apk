@@ -1,126 +1,125 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBFloatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.util.DisplayMetrics;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.mutualmark.mutualmark.MutualMark;
-import tencent.im.mutualmark.mutualmark.ResourceInfo_17;
 
 public class asbz
+  extends Drawable
+  implements asby
 {
-  public float a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public long f;
-  public long g;
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private ascb jdField_a_of_type_Ascb;
+  private asck jdField_a_of_type_Asck;
   
-  public asbz()
+  private asbz(ascb paramascb, Resources paramResources)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-  }
-  
-  public static asbz a(mutualmark.MutualMark paramMutualMark)
-  {
-    asbz localasbz = new asbz();
-    localasbz.jdField_a_of_type_Long = paramMutualMark.uint64_type.get();
-    localasbz.jdField_b_of_type_Long = paramMutualMark.uint64_level.get();
-    localasbz.jdField_a_of_type_Float = paramMutualMark.float_count.get();
-    localasbz.jdField_c_of_type_Long = paramMutualMark.uint64_day.get();
-    localasbz.jdField_d_of_type_Long = paramMutualMark.uint64_time.get();
-    localasbz.f = paramMutualMark.uint64_icon_status.get();
-    if (localasbz.f != 2L)
+    this.jdField_a_of_type_Ascb = paramascb;
+    if (paramResources != null) {}
+    for (this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;; this.jdField_a_of_type_Int = paramascb.d)
     {
-      localasbz.g = 0L;
-      if (paramMutualMark.uint32_close_flag.has()) {
-        if (paramMutualMark.uint32_close_flag.get() == 0) {
-          break label302;
-        }
-      }
-    }
-    label302:
-    for (boolean bool = true;; bool = false)
-    {
-      localasbz.jdField_a_of_type_Boolean = bool;
-      mutualmark.ResourceInfo_17 localResourceInfo_17;
-      if (paramMutualMark.bytes_resource_info.has()) {
-        localResourceInfo_17 = new mutualmark.ResourceInfo_17();
-      }
-      try
-      {
-        localResourceInfo_17.mergeFrom(paramMutualMark.bytes_resource_info.get().toByteArray());
-        paramMutualMark = localResourceInfo_17;
-      }
-      catch (Throwable paramMutualMark)
-      {
-        for (;;)
-        {
-          QLog.i("MutualMarkPullInfo", 1, "parseFrom error:" + paramMutualMark.getMessage());
-          paramMutualMark = null;
-        }
-      }
-      if (paramMutualMark != null)
-      {
-        if (paramMutualMark.bytes_static_url.has()) {
-          localasbz.jdField_a_of_type_JavaLangString = paramMutualMark.bytes_static_url.get().toStringUtf8();
-        }
-        if (paramMutualMark.bytes_dynamic_url.has()) {
-          localasbz.jdField_b_of_type_JavaLangString = paramMutualMark.bytes_dynamic_url.get().toStringUtf8();
-        }
-        if (paramMutualMark.bytes_cartoon_url.has()) {
-          localasbz.jdField_c_of_type_JavaLangString = paramMutualMark.bytes_cartoon_url.get().toStringUtf8();
-        }
-        if (paramMutualMark.bytes_cartoon_md5.has()) {
-          localasbz.jdField_d_of_type_JavaLangString = paramMutualMark.bytes_cartoon_md5.get().toStringUtf8();
-        }
-        if (paramMutualMark.bytes_word.has()) {
-          localasbz.jdField_e_of_type_JavaLangString = paramMutualMark.bytes_word.get().toStringUtf8();
-        }
-      }
-      return localasbz;
-      if (!paramMutualMark.uint64_icon_status_end_time.has()) {
-        break;
-      }
-      localasbz.g = paramMutualMark.uint64_icon_status_end_time.get();
-      break;
+      a();
+      return;
     }
   }
   
-  @NonNull
-  public String toString()
+  public asbz(ascm paramascm, Resources paramResources)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("MutualMarkPullInfo{");
-    localStringBuilder.append("type:").append(this.jdField_a_of_type_Long).append(", ");
-    localStringBuilder.append("level:").append(this.jdField_b_of_type_Long).append(", ");
-    localStringBuilder.append("count:").append(this.jdField_a_of_type_Float).append(", ");
-    localStringBuilder.append("continue_days:").append(this.jdField_c_of_type_Long).append(", ");
-    localStringBuilder.append("last_action_time:").append(this.jdField_d_of_type_Long).append(", ");
-    localStringBuilder.append("last_change_time:").append(this.jdField_e_of_type_Long).append(", ");
-    localStringBuilder.append("icon_status:").append(this.f).append(", ");
-    localStringBuilder.append("icon_status_end_time:").append(this.g).append(", ");
-    localStringBuilder.append("icon_static_url:").append(this.jdField_a_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_dynamic_url:").append(this.jdField_b_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_cartoon_url:").append(this.jdField_c_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_cartoon_md5:").append(this.jdField_d_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_name:").append(this.jdField_e_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("user_close_flag:").append(this.jdField_a_of_type_Boolean).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    this(new ascb(paramascm), paramResources);
+  }
+  
+  private void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameDrawable", 2, "func initGifEngine");
+    }
+    ascl localascl = new ascl();
+    localascl.jdField_a_of_type_Asby = this;
+    localascl.jdField_a_of_type_Int = this.jdField_a_of_type_Ascb.jdField_b_of_type_Int;
+    localascl.jdField_b_of_type_Int = this.jdField_a_of_type_Ascb.jdField_a_of_type_Int;
+    if (!this.jdField_a_of_type_Ascb.jdField_a_of_type_Boolean) {}
+    for (localascl.jdField_a_of_type_ArrayOfJavaLangString = null;; localascl.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_Ascb.jdField_a_of_type_ArrayOfJavaLangString)
+    {
+      this.jdField_a_of_type_Asck = new asck();
+      this.jdField_a_of_type_Asck.a(localascl);
+      return;
+    }
+  }
+  
+  public Bitmap a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Asck == null) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Ascb.jdField_b_of_type_ArrayOfJavaLangString != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_Ascb.jdField_b_of_type_ArrayOfJavaLangString.length)) {
+      this.jdField_a_of_type_Asck.a(this.jdField_a_of_type_Ascb.jdField_b_of_type_ArrayOfJavaLangString[paramInt]);
+    }
+    this.jdField_a_of_type_Asck.a();
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameDrawable", 2, "func onBitmapReady,bitmap:" + paramBitmap);
+    }
+    if (paramBitmap == null) {
+      return;
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    invalidateSelf();
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled());
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameDrawable", 2, "func draw,bitmap:" + this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, getBounds(), this.jdField_a_of_type_Ascb.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+  }
+  
+  public Drawable.ConstantState getConstantState()
+  {
+    return this.jdField_a_of_type_Ascb;
+  }
+  
+  public int getOpacity()
+  {
+    return 0;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_Ascb.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    {
+      this.jdField_a_of_type_Ascb.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      invalidateSelf();
+    }
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_Ascb.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    invalidateSelf();
   }
 }
 

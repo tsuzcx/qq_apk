@@ -2,15 +2,15 @@ package dov.com.qq.im.ptv;
 
 import android.app.Activity;
 import android.view.WindowManager.BadTokenException;
-import bafb;
-import bhxh;
-import bhzc;
+import bbgg;
+import bjoz;
+import bjqu;
 import com.tencent.qphone.base.util.QLog;
 
 public class LightWeightCameraCaptureUnit$2
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$2(bhxh parambhxh, String paramString) {}
+  public LightWeightCameraCaptureUnit$2(bjoz parambjoz, String paramString) {}
   
   public void run()
   {
@@ -20,11 +20,11 @@ public class LightWeightCameraCaptureUnit$2
     }
     try
     {
-      bhxh.a(this.this$0);
-      if (!bhxh.a(this.this$0).isShowing())
+      bjoz.a(this.this$0);
+      if (!bjoz.a(this.this$0).isShowing())
       {
-        bhxh.a(this.this$0).setCancelable(false);
-        bhxh.a(this.this$0).show();
+        bjoz.a(this.this$0).setCancelable(false);
+        bjoz.a(this.this$0).show();
       }
       QLog.e("LightWeightCameraCaptureUnit", 2, "onCameraStarted error = " + this.a);
       return;

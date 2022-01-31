@@ -1,60 +1,17 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.FutureListener.SimpleFutureListener;
+import com.tribe.async.async.JobController.DoneEvent;
+import com.tribe.async.async.Worker;
+import com.tribe.async.dispatch.Dispatcher;
 
 class stb
-  implements tft
+  extends FutureListener.SimpleFutureListener<Progress, Result>
 {
-  stb(ssz paramssz, List paramList) {}
+  stb(sta paramsta, Worker paramWorker) {}
   
-  public void a()
+  public void onFutureDone(@Nullable Result paramResult)
   {
-    QLog.e("Q.qqstory.msgTab.jobPullBasicInfo", 1, "pull video info failed");
-    ssz.b(this.jdField_a_of_type_Ssz, new ErrorMessage(102, "pull video info failed"));
-  }
-  
-  public void a(ArrayList<StoryVideoItem> paramArrayList)
-  {
-    if (paramArrayList == null)
-    {
-      urk.e("Q.qqstory.msgTab.jobPullBasicInfo", "video list empty !");
-      ssz.a(this.jdField_a_of_type_Ssz, new ErrorMessage(102, "video list empty !"));
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    paramArrayList = paramArrayList.iterator();
-    Object localObject;
-    while (paramArrayList.hasNext())
-    {
-      localObject = (StoryVideoItem)paramArrayList.next();
-      localHashMap.put(((StoryVideoItem)localObject).mVid, localObject);
-    }
-    paramArrayList = new ArrayList();
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i = 0;
-    if (i < j)
-    {
-      localObject = (tfv)this.jdField_a_of_type_JavaUtilList.get(i);
-      StoryVideoItem localStoryVideoItem = (StoryVideoItem)localHashMap.get(((tfv)localObject).b);
-      if (localStoryVideoItem == null) {
-        urk.e("Q.qqstory.msgTab.jobPullBasicInfo", "not found video!");
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        ((tfv)localObject).a = localStoryVideoItem;
-        paramArrayList.add(localObject);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info succeed, info");
-    }
-    ssz.a(this.jdField_a_of_type_Ssz, paramArrayList);
+    ste.a().dispatch(new JobController.DoneEvent(this.jdField_a_of_type_ComTribeAsyncAsyncWorker));
   }
 }
 

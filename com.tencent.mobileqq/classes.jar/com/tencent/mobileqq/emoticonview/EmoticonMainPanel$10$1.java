@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import anir;
+import anza;
 
 class EmoticonMainPanel$10$1
   implements Runnable

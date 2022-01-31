@@ -1,30 +1,101 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.GridView;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Typeface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
 
-public class ahyv
+class ahyv
+  extends ahys
 {
-  public int a;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  GridView jdField_a_of_type_ComTencentWidgetGridView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
+  int jdField_a_of_type_Int = -1;
+  ahzk jdField_a_of_type_Ahzk = null;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  ahzk b = null;
   
-  public ahyv(ahyo paramahyo) {}
+  public ahyv(long paramLong1, long paramLong2, boolean paramBoolean, String paramString, float paramFloat1, int paramInt, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, Typeface paramTypeface)
+  {
+    super(paramLong1, paramLong2, paramBoolean);
+    a(6, paramFloat3);
+    a(7, paramFloat4);
+    this.jdField_a_of_type_Ahzk = new ahzk(paramString, paramFloat1, paramInt, paramFloat5, paramFloat6, 2, -1.0F, paramTypeface);
+    this.b = new ahzk(paramString, paramFloat1, -16777216, paramFloat5, paramFloat6, 2, paramFloat2, paramTypeface);
+    a(3, this.b.jdField_a_of_type_Float);
+    paramInt = this.b.a();
+    paramFloat1 = this.b.b * 2.0F / paramInt;
+    if (paramInt == 1) {
+      paramFloat1 = this.b.b;
+    }
+    a(4, paramFloat1);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.b.jdField_a_of_type_Float, paramFloat1);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.b.a(paramString, 0.0F, paramFloat1 - this.b.b);
+      this.jdField_a_of_type_Ahzk.a(paramString, 0.0F, paramFloat1 - this.b.b);
+    }
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      this.b.a(paramCanvas, a(6), a(7) + a(4) - this.b.b);
+      this.jdField_a_of_type_Ahzk.a(paramCanvas, a(6), a(7) + a(4) - this.b.b);
+      return;
+    }
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, a(6), a(7), null);
+  }
+  
+  public void a(RenderBuffer paramRenderBuffer)
+  {
+    if ((this.jdField_a_of_type_Int < 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
+      this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+    if (this.jdField_a_of_type_Int >= 0) {
+      a(paramRenderBuffer, this.jdField_a_of_type_Int, a(3), a(4), null, a(6), a(7));
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (a()))
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    float f;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramString.equals(this.jdField_a_of_type_Ahzk.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_Ahzk.a(paramString);
+      this.b.a(paramString);
+      int i = this.b.a();
+      f = this.b.b * 2.0F / i;
+      if (i == 1) {
+        f = this.b.b;
+      }
+      a(4, f);
+      a(3, this.b.jdField_a_of_type_Float);
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.b.jdField_a_of_type_Float, f);
+    } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
+    paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.b.a(paramString, 0.0F, f - this.b.b);
+    this.jdField_a_of_type_Ahzk.a(paramString, 0.0F, f - this.b.b);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahyv
  * JD-Core Version:    0.7.0.1
  */

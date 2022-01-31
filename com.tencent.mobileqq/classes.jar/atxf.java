@@ -1,7 +1,11 @@
-public class atxf
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import java.util.List;
+
+abstract interface atxf
 {
-  public int a;
-  public atxe a;
+  public abstract void a(RedTouchItem paramRedTouchItem, int paramInt);
+  
+  public abstract void a(List<RedTouchItem> paramList);
 }
 
 

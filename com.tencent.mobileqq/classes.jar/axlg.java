@@ -1,62 +1,83 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class axlg
-  extends Binder
-  implements axlf
+public class axlg
 {
-  private static final String DESCRIPTOR = "com.tencent.mobileqq.theme.IDownloadListener";
-  static final int TRANSACTION_onComplete = 2;
-  static final int TRANSACTION_onProgress = 1;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private axlh jdField_a_of_type_Axlh = new axlh(0);
+  private axlh b = new axlh(1);
   
-  public axlg()
+  public axlh a()
   {
-    attachInterface(this, "com.tencent.mobileqq.theme.IDownloadListener");
-  }
-  
-  public static axlf asInterface(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
+    if (axlh.a(this.jdField_a_of_type_Axlh).getAndSet(1) == 0) {
+      return this.jdField_a_of_type_Axlh;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.theme.IDownloadListener");
-    if ((localIInterface != null) && ((localIInterface instanceof axlf))) {
-      return (axlf)localIInterface;
+    if (axlh.a(this.b).getAndSet(1) == 0) {
+      return this.b;
     }
-    return new axlh(paramIBinder);
+    return null;
   }
   
-  public IBinder asBinder()
+  public void a()
   {
-    return this;
+    axlh.a(this.jdField_a_of_type_Axlh).getAndSet(0);
+    axlh.a(this.b).getAndSet(0);
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void a(Runnable paramRunnable)
   {
-    switch (paramInt1)
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (axlh.a(this.jdField_a_of_type_Axlh).getAndAdd(0) == 0)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.theme.IDownloadListener");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.IDownloadListener");
-      onProgress(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
-      paramParcel2.writeNoException();
-      return true;
+      bool1 = bool2;
+      if (axlh.a(this.b).getAndAdd(0) == 0) {
+        bool1 = true;
+      }
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.theme.IDownloadListener");
-    onComplete(paramParcel1.readString(), paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    return bool1;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("SharedMemoryCacheProcessor");
+      this.jdField_a_of_type_AndroidOsHandlerThread.start();
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    {
+      PtvFilterUtils.a(this.jdField_a_of_type_AndroidOsHandlerThread);
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axlg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,37 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.upload.common.UploadConfiguration.NetworkStateObserver;
+import android.app.Activity;
+import android.os.IBinder;
+import android.widget.Button;
 
-class bfsr
-  implements bgfk
+public class bfsr
+  extends bfsm
 {
-  bfsr(bfsq parambfsq, UploadConfiguration.NetworkStateObserver paramNetworkStateObserver) {}
+  public boolean b = true;
   
-  public void onNetworkConnect(boolean paramBoolean)
+  public bfsr(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadEnv", 2, "upload2: onNetworkConnect registerNetworkStateObserver|onNetworkConnect：" + paramBoolean);
+    super(paramActivity);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
+      this.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131705933));
     }
-    bfsq.a(this.jdField_a_of_type_Bfsq, paramBoolean);
-    this.jdField_a_of_type_ComTencentUploadCommonUploadConfiguration$NetworkStateObserver.onStateChanged(paramBoolean);
+    b();
+  }
+  
+  protected void a(IBinder paramIBinder)
+  {
+    if (this.b) {
+      super.a(paramIBinder);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfsr
  * JD-Core Version:    0.7.0.1
  */

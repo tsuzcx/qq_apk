@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import amua;
-import amuj;
+import anki;
+import ankr;
 
 public class DBFixDialogUI$8
   implements Runnable
 {
-  public DBFixDialogUI$8(amua paramamua, int paramInt) {}
+  public DBFixDialogUI$8(anki paramanki, int paramInt) {}
   
   public void run()
   {
-    if (this.a == amuj.d) {
-      amua.c(this.this$0);
+    if (this.a == ankr.d) {
+      anki.c(this.this$0);
     }
-    while (this.a != amuj.e) {
+    while (this.a != ankr.e) {
       return;
     }
-    amua.d(this.this$0);
+    anki.d(this.this$0);
   }
 }
 

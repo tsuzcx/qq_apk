@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.widget;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
@@ -31,9 +32,9 @@ public class OCRBottomTabView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(paramContext).inflate(2131495347, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131312182));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131302781));
+    LayoutInflater.from(paramContext).inflate(2131560925, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378004));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368406));
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.OCRBottomTabView);
     paramAttributeSet = paramContext.getString(1);
     Drawable localDrawable = paramContext.getDrawable(0);
@@ -44,6 +45,11 @@ public class OCRBottomTabView
     if (localDrawable != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
     }
+  }
+  
+  public CharSequence a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView.getText();
   }
   
   public void setEnabled(boolean paramBoolean)
@@ -58,6 +64,19 @@ public class OCRBottomTabView
     if (paramDrawable != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
     }
+  }
+  
+  public void setTabText(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+  }
+  
+  public void setTabTextColor(int paramInt)
+  {
+    ColorStateList localColorStateList = ColorStateList.valueOf(paramInt);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
   }
 }
 

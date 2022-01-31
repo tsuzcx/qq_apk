@@ -1,22 +1,36 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aejb;
-import atqg;
+import aezc;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.PicPreDownloader;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class TroopChatPie$8
+class TroopChatPie$8
   implements Runnable
 {
-  public TroopChatPie$8(aejb paramaejb) {}
+  TroopChatPie$8(TroopChatPie paramTroopChatPie, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+    try
     {
-      String str = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a.b(str);
+      Thread.sleep(700L);
+      if ((!this.this$0.aj) && (!this.a) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) == 3) && ((this.this$0.jdField_a_of_type_Aezc == null) || (!this.this$0.jdField_a_of_type_Aezc.a())))
+      {
+        this.this$0.aj = true;
+        TroopChatPie.a(this.this$0).post(new TroopChatPie.8.1(this));
+      }
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, QLog.getStackTraceString(localInterruptedException));
+        }
+      }
     }
   }
 }

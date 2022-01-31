@@ -1,37 +1,22 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.1.1;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.ImageView;
 
-public class adbd
-  extends akgd
+class adbd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  adbd(adbc paramadbc, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  adbd(adbc paramadbc) {}
   
-  protected void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ArkAppCenter.a().post(this.a.a, new ArkAppLocationManager.1.1(this, bool, paramSosoLbsInfo));
-      return;
+    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
+    if (adbc.a(this.a) != null) {
+      adbc.a(this.a).setAlpha((float)d);
     }
-  }
-  
-  public void onConsecutiveFailure(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 < 3) {
-      return;
+    if (adbc.a(this.a) != null) {
+      adbc.a(this.a).setAlpha((float)d * 2.0F);
     }
-    a(paramInt1, null);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    a(paramInt, paramSosoLbsInfo);
   }
 }
 

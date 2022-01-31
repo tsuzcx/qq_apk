@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import acdg;
+import acnv;
 
 class TroopTransferActivity$13
   implements Runnable

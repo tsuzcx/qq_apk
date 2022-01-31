@@ -7,22 +7,22 @@ import com.tencent.image.AbstractGifImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import java.lang.ref.WeakReference;
-import yri;
-import yrk;
-import yrl;
-import yrm;
+import zba;
+import zbc;
+import zbd;
+import zbe;
 
 public class GdtGifImageView
   extends URLImageView
 {
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<yrm> jdField_a_of_type_JavaLangRefWeakReference;
-  yrk jdField_a_of_type_Yrk;
+  private WeakReference<zbe> jdField_a_of_type_JavaLangRefWeakReference;
+  zbc jdField_a_of_type_Zbc;
   private boolean jdField_a_of_type_Boolean;
   private String jdField_b_of_type_JavaLangString;
-  yrk jdField_b_of_type_Yrk;
+  zbc jdField_b_of_type_Zbc;
   
-  public GdtGifImageView(Context paramContext, String paramString1, String paramString2, WeakReference<yrm> paramWeakReference)
+  public GdtGifImageView(Context paramContext, String paramString1, String paramString2, WeakReference<zbe> paramWeakReference)
   {
     super(paramContext);
     this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
@@ -31,11 +31,11 @@ public class GdtGifImageView
     this.jdField_b_of_type_JavaLangString = paramString2;
     if (!TextUtils.isEmpty(paramString2))
     {
-      this.jdField_a_of_type_Yrk = new yrl(this);
-      new yri(paramString2, new WeakReference(this.jdField_a_of_type_Yrk)).a();
+      this.jdField_a_of_type_Zbc = new zbd(this);
+      new zba(paramString2, new WeakReference(this.jdField_a_of_type_Zbc)).a();
     }
-    this.jdField_b_of_type_Yrk = new yrl(this);
-    paramContext = new yri(paramString1, new WeakReference(this.jdField_b_of_type_Yrk));
+    this.jdField_b_of_type_Zbc = new zbd(this);
+    paramContext = new zba(paramString1, new WeakReference(this.jdField_b_of_type_Zbc));
     paramContext.a();
     setImageDrawable(paramContext.a());
     URLDrawable.resume();

@@ -1,33 +1,79 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-class atxc
-  implements AdapterView.OnItemClickListener
+public class atxc
 {
-  atxc(atxa paramatxa) {}
+  public static HashMap<Integer, Integer> a;
+  public int a;
+  public String a;
+  public List<String> a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  static
   {
-    if (atxa.a(this.a).a()) {
-      atxa.a(this.a).b();
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(3), Integer.valueOf(40));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(5), Integer.valueOf(60));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(0), Integer.valueOf(80));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-1), Integer.valueOf(100));
+  }
+  
+  public atxc()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (((Integer)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).intValue() < ((Integer)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int))).intValue()) {
+      this.jdField_a_of_type_Int = paramInt;
     }
-    paramInt = -1;
-    switch ((int)paramLong)
+  }
+  
+  public void a(String paramString)
+  {
+    int i = 0;
+    try
     {
+      int j = Integer.valueOf(paramString).intValue();
+      i = j;
     }
-    for (;;)
+    catch (NumberFormatException localNumberFormatException)
     {
-      if (atxa.a(this.a) != null) {
-        atxa.a(this.a).a(paramInt, atxa.a(this.a));
+      for (;;)
+      {
+        QLog.e("NearbyRedInfo", 1, localNumberFormatException, new Object[0]);
+        this.jdField_a_of_type_JavaLangString = paramString;
       }
-      return;
-      atxa.a(this.a);
-      paramInt = 0;
-      continue;
-      atxa.b(this.a);
-      paramInt = 2;
     }
+    this.b = (i + this.b);
+  }
+  
+  public void a(List<String> paramList, boolean paramBoolean)
+  {
+    if (paramList == null) {
+      return;
+    }
+    if (paramBoolean) {
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.b += paramInt;
+  }
+  
+  public String toString()
+  {
+    return "[redType=" + this.jdField_a_of_type_Int + ", redNum=" + this.b + ", redTxt=" + this.jdField_a_of_type_JavaLangString + ", redAppIdType=" + this.d + ", url=" + this.jdField_a_of_type_JavaUtilList + "]";
   }
 }
 

@@ -1,12 +1,6 @@
-import android.content.DialogInterface;
-
-final class aybv
-  extends baca
+public abstract interface aybv
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(aybc paramaybc, aybd paramaybd, String paramString);
 }
 
 

@@ -10,14 +10,19 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
-import bcau;
-import bfpk;
+import bcpw;
+import bdev;
+import bdki;
+import bdkm;
+import bdko;
+import bgxr;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.report.InnerAppReportDc4239;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
@@ -38,20 +43,43 @@ public class InternalJSPlugin
   private static final Set<String> S_EVENT_MAP = new InternalJSPlugin.1();
   public static final String TAG = "InternalJSPlugin";
   public Set<String> eventMap;
+  private bdko mDownloadListener = new InternalJSPlugin.6(this);
+  private String mDownloadNativeAppId;
+  private String mDownloadPackageName;
+  private String mDownloadUrl;
   
-  private void confirmOpenAppDetailPage(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, JsRuntime paramJsRuntime, int paramInt)
+  private void confirmOpenAppDetailPage(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, JsRuntime paramJsRuntime, int paramInt)
   {
-    paramActivity.runOnUiThread(new InternalJSPlugin.5(this, paramActivity, paramString3, paramString1, paramString2, paramJsRuntime, paramString4, paramInt));
+    paramActivity.runOnUiThread(new InternalJSPlugin.5(this, paramActivity, paramString3, paramString4, paramString1, paramString2, paramJsRuntime, paramString5, paramInt));
   }
   
-  private void onOpenThridApp(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, JsRuntime paramJsRuntime, int paramInt2)
+  private void downloadByDownloadApi(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    this.mDownloadUrl = paramString4;
+    this.mDownloadNativeAppId = paramString1;
+    this.mDownloadPackageName = paramString2;
+    Bundle localBundle = new Bundle();
+    localBundle.putString(bdkm.b, paramString1);
+    localBundle.putString(bdkm.j, paramString4);
+    localBundle.putString(bdkm.f, paramString2);
+    localBundle.putInt(bdkm.k, 2);
+    localBundle.putString(bdkm.i, "MiniApp");
+    localBundle.putString(bdkm.l, paramString3);
+    localBundle.putInt(bdkm.H, 1);
+    bdki.a(this.mDownloadListener);
+    bdki.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
+    bcpw.a(paramActivity, "开始下载", 1).a();
+    InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "qqdownload");
+  }
+  
+  private void onOpenThridApp(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, String paramString5, String paramString6, JsRuntime paramJsRuntime, int paramInt2)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("InternalJSPlugin", 2, "onOpenThridApp - appid : " + paramString1 + "; packageName : " + paramString2 + "; appName : " + paramString3);
       }
-      this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString5, null, "invalid parameter", paramInt2);
+      this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString6, null, "invalid parameter", paramInt2);
       return;
     }
     PackageManager localPackageManager = paramActivity.getPackageManager();
@@ -59,20 +87,20 @@ public class InternalJSPlugin
     {
       if (localPackageManager.getPackageInfo(paramString2, 1) != null)
       {
-        paramActivity.runOnUiThread(new InternalJSPlugin.4(this, paramActivity, paramString3, paramString4, localPackageManager, paramString2, paramJsRuntime, paramString5, paramInt2));
+        paramActivity.runOnUiThread(new InternalJSPlugin.4(this, paramActivity, paramString3, paramString5, localPackageManager, paramString2, paramJsRuntime, paramString6, paramInt2));
         return;
       }
     }
-    catch (PackageManager.NameNotFoundException paramString4)
+    catch (PackageManager.NameNotFoundException paramString5)
     {
       if (paramInt1 == 1) {
-        break label220;
+        break label224;
       }
-      confirmOpenAppDetailPage(paramActivity, paramString1, paramString2, paramString3, paramString5, paramJsRuntime, paramInt2);
+      confirmOpenAppDetailPage(paramActivity, paramString1, paramString2, paramString3, paramString4, paramString6, paramJsRuntime, paramInt2);
       return;
       if (paramInt1 != 1)
       {
-        confirmOpenAppDetailPage(paramActivity, paramString1, paramString2, paramString3, paramString5, paramJsRuntime, paramInt2);
+        confirmOpenAppDetailPage(paramActivity, paramString1, paramString2, paramString3, paramString4, paramString6, paramJsRuntime, paramInt2);
         return;
       }
     }
@@ -84,16 +112,16 @@ public class InternalJSPlugin
     if (QLog.isColorLevel()) {
       QLog.d("InternalJSPlugin", 2, "only open");
     }
-    this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString5, null, "app not installed", paramInt2);
+    this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString6, null, "app not installed", paramInt2);
     return;
-    label220:
+    label224:
     if (QLog.isColorLevel()) {
       QLog.d("InternalJSPlugin", 2, "only open");
     }
-    this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString5, null, "app not installed", paramInt2);
+    this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString6, null, "app not installed", paramInt2);
   }
   
-  private static void openAppDetailPage(Context paramContext, String paramString1, String paramString2)
+  private void openAppDetailPage(Context paramContext, String paramString1, String paramString2)
   {
     if ((TextUtils.isEmpty(paramString1)) || (paramContext == null)) {
       return;
@@ -104,12 +132,14 @@ public class InternalJSPlugin
     localBundle.putString("big_brother_source_key", "biz_src_miniapp");
     if ((paramContext instanceof BasePluginActivity))
     {
-      bcau.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
+      bdev.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
+      InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
     if ((paramContext instanceof Activity))
     {
-      bcau.b((Activity)paramContext, localBundle);
+      bdev.b((Activity)paramContext, localBundle);
+      InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
     QLog.e("InternalJSPlugin", 2, "onOpenThridApp mContext 必现是一个Activity");
@@ -135,7 +165,7 @@ public class InternalJSPlugin
         {
           localObject = paramJSONObject.optString("url");
           if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!"null".equals(localObject))) {
-            break label146;
+            break label153;
           }
           if (paramopenUrlCallback == null) {
             continue;
@@ -152,11 +182,11 @@ public class InternalJSPlugin
         paramopenUrlCallback.openResult(false, "openUrl error");
         continue;
         if (!paramJSONObject.has("target")) {
-          break label337;
+          break label349;
         }
       }
       finally {}
-      label146:
+      label153:
       int i = paramJSONObject.optInt("target");
       if ((i < 0) || (i > 1))
       {
@@ -176,7 +206,10 @@ public class InternalJSPlugin
             paramBaseJsPluginEngine.getActivityContext().startActivity((Intent)localObject);
           }
         }
-        label250:
+        label262:
+        label296:
+        label347:
+        label349:
         Bundle localBundle;
         switch (paramJSONObject.optInt("animation"))
         {
@@ -186,15 +219,15 @@ public class InternalJSPlugin
           for (;;)
           {
             if (paramopenUrlCallback == null) {
-              break label335;
+              break label347;
             }
             paramopenUrlCallback.openResult(true, null);
             break;
             QLog.d("InternalJSPlugin", 2, "openUrl by system webview error.");
-            break label250;
+            break label262;
             paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(0, 0);
             continue;
-            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772277, 0);
+            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772278, 0);
           }
           continue;
           localBundle = new Bundle();
@@ -202,7 +235,7 @@ public class InternalJSPlugin
           {
             i = paramJSONObject.optInt("style");
             if ((i >= 0) && (i <= 2)) {
-              break label790;
+              break label803;
             }
             QLog.e("InternalJSPlugin", 2, "style error, return.");
             if (paramopenUrlCallback == null) {
@@ -217,11 +250,8 @@ public class InternalJSPlugin
         default: 
           for (;;)
           {
-            label284:
-            label335:
-            label337:
+            label411:
             localBundle.putBoolean("hide_title_left_arrow", paramJSONObject.optBoolean("hideLeftArrow", false));
-            label399:
             Intent localIntent = new Intent(paramBaseJsPluginEngine.getActivityContext(), QQBrowserActivity.class);
             localIntent.putExtra("articalChannelId", 0);
             if ((paramBaseJsPluginEngine == null) || (paramBaseJsPluginEngine.appBrandRuntime == null) || (paramBaseJsPluginEngine.appBrandRuntime.getApkgInfo() == null) || (paramBaseJsPluginEngine.appBrandRuntime.getApkgInfo().appConfig == null) || (!paramBaseJsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.isInternalApp())) {
@@ -241,42 +271,42 @@ public class InternalJSPlugin
               break;
               localBundle.putBoolean("hide_more_button", false);
               localBundle.putBoolean("hide_operation_bar", true);
-              break label399;
+              break label411;
               localBundle.putBoolean("hide_more_button", true);
               localBundle.putBoolean("hide_operation_bar", true);
-              break label399;
+              break label411;
               localBundle.putBoolean("hide_more_button", false);
               localBundle.putBoolean("hide_operation_bar", false);
               localBundle.putString("webStyle", "");
-              break label399;
+              break label411;
               localBundle.putBoolean("hide_more_button", true);
               localBundle.putBoolean("hide_operation_bar", false);
               localBundle.putString("webStyle", "");
-              break label399;
+              break label411;
               localBundle.putBoolean("hide_left_button", true);
               localBundle.putBoolean("show_right_close_button", true);
-              break label399;
+              break label411;
               localBundle.putBoolean("isTransparentTitleAndClickable", true);
               continue;
             }
             paramBaseJsPluginEngine.getActivityContext().startActivity(localIntent);
             if (paramopenUrlCallback == null) {
-              break label830;
+              break label846;
             }
             paramopenUrlCallback.openResult(true, null);
-            break label830;
+            break label846;
             paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(0, 0);
             break;
-            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772277, 0);
+            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772278, 0);
             break;
-            break label284;
-            label790:
+            break label296;
+            label803:
             switch (i)
             {
             }
-            break label399;
+            break label411;
           }
-          label830:
+          label846:
           switch (i)
           {
           }
@@ -349,7 +379,7 @@ public class InternalJSPlugin
                 {
                   j = this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.launchParam.scene;
                   if (!this.jsPluginEngine.appBrandRuntime.canLaunchApp()) {
-                    break label806;
+                    break label808;
                   }
                   i = this.jsPluginEngine.appBrandRuntime.getLaunchAppScene();
                 }
@@ -383,7 +413,7 @@ public class InternalJSPlugin
       {
         try
         {
-          ((JSONObject)localObject1).put("qua", bfpk.a());
+          ((JSONObject)localObject1).put("qua", bgxr.a());
           this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, (JSONObject)localObject1, paramInt);
           return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
         }
@@ -429,7 +459,7 @@ public class InternalJSPlugin
           MiniAppUtils.getMiniAppStoreAppList(paramString2, paramJsRuntime, paramString1, paramInt, this.jsPluginEngine);
         }
       }
-      label806:
+      label808:
       int i = j;
     }
   }

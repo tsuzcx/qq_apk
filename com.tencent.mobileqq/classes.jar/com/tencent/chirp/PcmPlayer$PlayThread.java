@@ -41,11 +41,11 @@ class PcmPlayer$PlayThread
     //   60: ifne +36 -> 96
     //   63: aload_0
     //   64: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   67: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxfn;
+    //   67: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxon;
     //   70: ifnull +16 -> 86
     //   73: aload_0
     //   74: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   77: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxfn;
+    //   77: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxon;
     //   80: iconst_1
     //   81: invokeinterface 78 2 0
     //   86: aload_0
@@ -95,11 +95,11 @@ class PcmPlayer$PlayThread
     //   179: invokevirtual 112	java/io/FileInputStream:close	()V
     //   182: aload_0
     //   183: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   186: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxfn;
+    //   186: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxon;
     //   189: ifnull +16 -> 205
     //   192: aload_0
     //   193: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   196: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxfn;
+    //   196: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxon;
     //   199: iconst_0
     //   200: invokeinterface 78 2 0
     //   205: aload_0
@@ -144,11 +144,11 @@ class PcmPlayer$PlayThread
     //   287: invokevirtual 112	java/io/FileInputStream:close	()V
     //   290: aload_0
     //   291: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   294: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxfn;
+    //   294: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxon;
     //   297: ifnull +16 -> 313
     //   300: aload_0
     //   301: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   304: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxfn;
+    //   304: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxon;
     //   307: iconst_2
     //   308: invokeinterface 78 2 0
     //   313: aload_0
@@ -181,11 +181,11 @@ class PcmPlayer$PlayThread
     //   366: invokevirtual 112	java/io/FileInputStream:close	()V
     //   369: aload_0
     //   370: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   373: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxfn;
+    //   373: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxon;
     //   376: ifnull +26 -> 402
     //   379: aload_0
     //   380: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   383: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxfn;
+    //   383: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lxon;
     //   386: astore 5
     //   388: iload_1
     //   389: ifeq +34 -> 423

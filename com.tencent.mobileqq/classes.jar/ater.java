@@ -1,76 +1,49 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ocr.OcrControl.5.1;
-import com.tencent.mobileqq.ocr.OcrControl.5.2;
-import com.tencent.mobileqq.ocr.OcrControl.5.3;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class ater
-  implements akql
+  extends ayvz
 {
-  ater(ateq paramateq) {}
+  public ater(NearbyGuideActivity paramNearbyGuideActivity) {}
   
-  public void a(int paramInt, String paramString, aksc paramaksc)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.ocr.control", 2, "retCode:" + paramInt + ",sessionId:" + paramString + ",recogResult:" + paramaksc);
+    if (paramMessage == null) {
+      return;
     }
-    paramString = ateq.a(this.a, paramString);
-    long l = 0L;
-    if (paramString != null) {
-      l = System.currentTimeMillis() - paramString.c;
-    }
-    int k = -1;
-    int m = -1;
-    int i = m;
-    int j = k;
-    if (paramString != null)
+    ayqm localayqm = (ayqm)paramMessage.obj;
+    switch (paramMessage.what)
     {
-      i = m;
-      j = k;
-      if (paramString.a != null)
-      {
-        if ((paramInt != 0) || (paramaksc == null) || (paramaksc.a == null)) {
-          break label282;
-        }
-        paramaksc = paramaksc.a;
-        OcrRecogResult localOcrRecogResult = paramaksc.a();
-        if (ateq.a(this.a) != null) {
-          ateq.a(this.a).a(0, localOcrRecogResult, paramString.a.b, l);
-        }
-        if ((localOcrRecogResult != null) && ((this.a.a == 1) || (this.a.a == 2))) {
-          ThreadManager.postImmediately(new OcrControl.5.1(this, localOcrRecogResult, paramString), null, false);
-        }
-        if (paramaksc.a == null) {
-          break label334;
-        }
-        i = paramaksc.a.a;
-        j = paramaksc.a.b;
+    case 1004: 
+    default: 
+      return;
+    case 1002: 
+      if (localayqm.a <= 0L) {
+        break;
       }
     }
-    for (;;)
+    for (int i = (int)(localayqm.e * 100L / localayqm.a); QLog.isColorLevel(); i = 0)
     {
-      k = j;
-      j = i;
-      i = k;
-      for (;;)
-      {
-        ThreadManager.postImmediately(new OcrControl.5.2(this, paramString), null, false);
-        ThreadManager.post(new OcrControl.5.3(this, j, i, paramInt), 5, null, false);
-        return;
-        label282:
-        i = m;
-        j = k;
-        if (ateq.a(this.a) != null)
-        {
-          ateq.a(this.a).a(3, null, paramString.a.b, l);
-          i = m;
-          j = k;
-        }
+      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity .mPicUploadHandler.handleMessage, send process : " + i);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload success. photo_id = " + ayst.a);
       }
-      label334:
-      j = -1;
-      i = -1;
+      i = ayst.a;
+      if (i >= 0) {
+        this.a.a.set(0, Integer.valueOf(i));
+      }
+      this.a.a(this.a.a);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload fail.");
+      }
+      this.a.l();
+      this.a.c(ajyc.a(2131707183));
+      this.a.a(true, null);
+      return;
     }
   }
 }

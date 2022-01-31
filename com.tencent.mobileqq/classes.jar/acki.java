@@ -1,63 +1,231 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.ChatItemAnimLayout;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Dialog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class acki
-  extends Handler
+  implements View.OnClickListener
 {
-  public acki(ChatItemAnimLayout paramChatItemAnimLayout) {}
+  public acki(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof String))) {}
+    String str;
+    label93:
     do
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemAnimLayout", 2, "ANIMATION_START");
-      }
-      this.a.b.mMsgAnimTime = System.currentTimeMillis();
-      this.a.e = 0.0F;
-      this.a.f = 0.0F;
-      sendMessageDelayed(ChatItemAnimLayout.a(this.a).obtainMessage(1), 10L);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemAnimLayout", 2, "ANIMATION_UPDADE");
-      }
-      this.a.b.mMsgAnimTime = System.currentTimeMillis();
-      float f2 = (float)(this.a.b.mMsgAnimTime - this.a.jdField_a_of_type_Long) / 300.0F;
-      float f1 = f2;
-      if (f2 > 1.0F) {
-        f1 = 1.0F;
-      }
-      this.a.e = (1.0F - (1.0F - f1) * (1.0F - f1) * (1.0F - f1));
-      this.a.f = f1;
-      if (this.a.e < 1.0F) {
-        sendMessageDelayed(ChatItemAnimLayout.a(this.a).obtainMessage(1), 10L);
-      }
-      for (;;)
+      do
       {
-        this.a.invalidate();
+        do
+        {
+          int j;
+          do
+          {
+            do
+            {
+              int i;
+              do
+              {
+                do
+                {
+                  return;
+                  if (QLog.isColorLevel()) {
+                    QLog.d("TroopMemberListActivityget_troop_member", 2, "mOnKickOutBtnClickListener onclick");
+                  }
+                  j = paramView.getId();
+                  str = (String)paramView.getTag();
+                  bool1 = str.equals(this.a.e);
+                  if ((this.a.f != null) && (this.a.f.contains(str)))
+                  {
+                    i = 1;
+                    boolean bool4 = this.a.app.getCurrentAccountUin().equals(this.a.e);
+                    if (((!bool4) || (str.equals(this.a.app.getCurrentAccountUin()))) && ((bool4) || (bool1) || (i != 0))) {
+                      break label292;
+                    }
+                  }
+                  for (i = 1;; i = 0)
+                  {
+                    if (j != 2131364983) {
+                      break label551;
+                    }
+                    paramView = paramView.findViewById(2131364984);
+                    bool1 = bool2;
+                    if (paramView.getTag() != null)
+                    {
+                      bool1 = bool2;
+                      if ((paramView.getTag() instanceof Boolean)) {
+                        bool1 = ((Boolean)paramView.getTag()).booleanValue();
+                      }
+                    }
+                    paramView = this.a.a(str, bool1);
+                    if (this.a.jdField_d_of_type_Int != 20) {
+                      break label297;
+                    }
+                    if (paramView == null) {
+                      break;
+                    }
+                    paramView = paramView.a.getTag();
+                    if ((paramView == null) || (!(paramView instanceof Integer))) {
+                      break;
+                    }
+                    i = ((Integer)paramView).intValue();
+                    if (i < 0) {
+                      break;
+                    }
+                    paramView = (acky)this.a.jdField_a_of_type_Acla.getItem(i);
+                    this.a.a(paramView);
+                    return;
+                    i = 0;
+                    break label93;
+                  }
+                  if (this.a.jdField_d_of_type_Boolean)
+                  {
+                    if (this.a.jdField_a_of_type_Acla.jdField_b_of_type_JavaUtilList.contains(str)) {
+                      this.a.jdField_a_of_type_Acla.jdField_b_of_type_JavaUtilList.remove(str);
+                    }
+                    for (;;)
+                    {
+                      TroopMemberListActivity.a(this.a);
+                      this.a.jdField_a_of_type_Acla.notifyDataSetChanged();
+                      return;
+                      if (i != 0) {
+                        this.a.jdField_a_of_type_Acla.jdField_b_of_type_JavaUtilList.add(str);
+                      }
+                    }
+                  }
+                  if (!bool1) {
+                    break;
+                  }
+                } while (this.a.u.equals(str));
+                if (paramView != null) {
+                  paramView.a.a(true);
+                }
+                if (!TextUtils.isEmpty(this.a.u))
+                {
+                  paramView = this.a.a(this.a.u, bool1);
+                  if (paramView != null) {
+                    paramView.a.b(true);
+                  }
+                }
+                this.a.u = str;
+                return;
+              } while (this.a.t.equals(str));
+              if (paramView != null) {
+                paramView.a.a(true);
+              }
+              if (!TextUtils.isEmpty(this.a.t))
+              {
+                paramView = this.a.a(this.a.t, bool1);
+                if (paramView != null) {
+                  paramView.a.b(true);
+                }
+              }
+              this.a.t = str;
+              return;
+              if (j != 2131376268) {
+                break;
+              }
+              paramView = paramView.findViewById(2131378256);
+              boolean bool1 = bool3;
+              if (paramView.getTag() != null)
+              {
+                bool1 = bool3;
+                if ((paramView.getTag() instanceof Boolean)) {
+                  bool1 = ((Boolean)paramView.getTag()).booleanValue();
+                }
+              }
+              if (this.a.jdField_d_of_type_Boolean)
+              {
+                if (!this.a.jdField_a_of_type_Acla.jdField_b_of_type_JavaUtilList.contains(str)) {
+                  break label720;
+                }
+                this.a.jdField_a_of_type_Acla.jdField_b_of_type_JavaUtilList.remove(str);
+              }
+              for (;;)
+              {
+                TroopMemberListActivity.a(this.a);
+                this.a.jdField_a_of_type_Acla.notifyDataSetChanged();
+                if (!bool1) {
+                  break;
+                }
+                paramView = this.a.a(this.a.u, bool1);
+                if (paramView != null)
+                {
+                  paramView.a.b(true);
+                  this.a.u = "";
+                }
+                this.a.jdField_a_of_type_Aclc.notifyDataSetChanged();
+                return;
+                if (i != 0) {
+                  this.a.jdField_a_of_type_Acla.jdField_b_of_type_JavaUtilList.add(str);
+                }
+              }
+              paramView = this.a.a(this.a.t, bool1);
+            } while (paramView == null);
+            paramView.a.b(true);
+            this.a.t = "";
+            return;
+          } while ((j != 2131363572) || (!this.a.c));
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopMemberListActivityget_troop_member", 2, "delBtn onClick, uin=" + str);
+          }
+          if (bbev.d(BaseApplication.getContext())) {
+            break;
+          }
+        } while (!this.a.isResume());
+        bcpw.a(this.a, this.a.getString(2131694609), 0).b(this.a.getTitleBarHeight());
         return;
-        this.a.e = 1.0F;
-        sendMessageDelayed(ChatItemAnimLayout.a(this.a).obtainMessage(2), 0L);
+        if (this.a.jdField_d_of_type_Int == 1)
+        {
+          this.a.d(str);
+          return;
+        }
+        if (this.a.jdField_d_of_type_Int != 13) {
+          break;
+        }
+        paramView = this.a.a(str);
+        this.a.jdField_a_of_type_JavaUtilArrayList.add(str);
+        this.a.jdField_a_of_type_Acla.a();
+      } while (!this.a.jdField_b_of_type_AndroidAppDialog.isShowing());
+      if (paramView != null) {
+        this.a.jdField_b_of_type_JavaUtilList.remove(paramView);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemAnimLayout", 2, "ANIMATION_END");
+      this.a.jdField_a_of_type_Aclc.notifyDataSetChanged();
+      return;
+      if (this.a.jdField_d_of_type_Int != 21) {
+        break;
       }
-      this.a.e = 1.0F;
-      this.a.invalidate();
-    } while (this.a.jdField_a_of_type_Ackj == null);
-    this.a.jdField_a_of_type_Ackj.f(this.a.b);
+      paramView = this.a.a(str);
+      this.a.jdField_a_of_type_JavaUtilArrayList.add(str);
+      this.a.jdField_a_of_type_Acla.a();
+    } while (!this.a.jdField_b_of_type_AndroidAppDialog.isShowing());
+    label292:
+    label297:
+    label720:
+    if (paramView != null) {
+      this.a.jdField_b_of_type_JavaUtilList.remove(paramView);
+    }
+    label551:
+    this.a.jdField_a_of_type_Aclc.notifyDataSetChanged();
+    return;
+    paramView = new ArrayList();
+    paramView.add(Long.valueOf(Long.parseLong(str)));
+    TroopMemberListActivity.a(this.a, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acki
  * JD-Core Version:    0.7.0.1
  */

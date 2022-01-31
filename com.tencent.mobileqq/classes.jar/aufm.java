@@ -1,11 +1,18 @@
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class aufm
-  extends ajjh
+  implements View.OnClickListener
 {
-  aufm(aufl paramaufl) {}
+  aufm(aufh paramaufh, aufw paramaufw) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    this.a.a(String.valueOf(paramObject));
+    aufh.a(this.jdField_a_of_type_Aufh).removeMessages(101);
+    aufh.a(this.jdField_a_of_type_Aufh).obtainMessage(101).sendToTarget();
+    this.jdField_a_of_type_Aufw.a.b();
   }
 }
 

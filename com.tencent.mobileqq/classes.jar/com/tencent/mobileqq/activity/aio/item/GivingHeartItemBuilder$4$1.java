@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adfe;
-import adfl;
+import adqg;
+import adqn;
 
 public class GivingHeartItemBuilder$4$1
   implements Runnable
 {
-  public GivingHeartItemBuilder$4$1(adfl paramadfl) {}
+  public GivingHeartItemBuilder$4$1(adqn paramadqn) {}
   
   public void run()
   {
-    adfe.a(this.a.a);
+    adqg.a(this.a.a);
   }
 }
 

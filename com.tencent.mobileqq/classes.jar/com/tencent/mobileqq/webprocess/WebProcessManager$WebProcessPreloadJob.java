@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webprocess;
 
-import baxq;
+import bcak;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -8,32 +8,32 @@ class WebProcessManager$WebProcessPreloadJob
   implements Runnable
 {
   int jdField_a_of_type_Int;
-  WeakReference<baxq> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<bcak> jdField_a_of_type_JavaLangRefWeakReference;
   
-  WebProcessManager$WebProcessPreloadJob(int paramInt, baxq parambaxq)
+  WebProcessManager$WebProcessPreloadJob(int paramInt, bcak parambcak)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambaxq);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambcak);
   }
   
   public void run()
   {
-    baxq localbaxq = (baxq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    bcak localbcak = (bcak)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (!WebProcessManager.c())
     {
       WebProcessManager.b(true);
       WebProcessManager.a(false);
       WebProcessManager.b(this.jdField_a_of_type_Int);
-      if (localbaxq != null) {
-        localbaxq.a(true);
+      if (localbcak != null) {
+        localbcak.a(true);
       }
     }
     for (;;)
     {
       WebProcessManager.a().set(false);
       return;
-      if (localbaxq != null) {
-        localbaxq.a(false);
+      if (localbcak != null) {
+        localbcak.a(false);
       }
     }
   }

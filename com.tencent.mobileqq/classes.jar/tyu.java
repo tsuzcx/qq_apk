@@ -1,47 +1,63 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
+import android.view.View;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import java.util.List;
 
 public class tyu
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, sxh>
+  extends uyl
 {
-  public tyu(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public tyu(tyr paramtyr) {}
+  
+  public void a(int paramInt, View paramView, Object paramObject, vas paramvas)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    if ((paramInt < 0) || (paramInt > this.a.a.a(tyr.a(this.a)).size())) {}
+    do
+    {
+      return;
+      paramObject = (CommentEntry)this.a.a.a(tyr.a(this.a)).get(paramInt);
+      switch (paramView.getId())
+      {
+      default: 
+        return;
+      }
+    } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
+    sxp.a(paramView.getContext(), 12, paramObject.authorUnionId);
+    return;
+    if (tyr.a(this.a) != null) {
+      tyr.a(this.a).a(paramObject, paramInt, tyr.a(this.a).a());
+    }
+    tyr.a(this.a).a(tyr.a(this.a).a());
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull sxh paramsxh)
+  public void b(int paramInt, View paramView, Object paramObject, vas paramvas)
   {
-    if ((TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.b)) && (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.c)) && (paramsxh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (!paramsxh.jdField_a_of_type_JavaUtilList.isEmpty()))
-    {
-      paramsxh = paramsxh.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramsxh.hasNext())
-      {
-        uab localuab = (uab)paramsxh.next();
-        if (paramQQStoryShareGroupProfileActivity.c.equals(localuab.a))
-        {
-          paramQQStoryShareGroupProfileActivity.b = localuab.b;
-          if (QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity)) {
-            break label111;
-          }
-        }
-      }
-    }
-    label111:
-    for (boolean bool = true;; bool = false)
-    {
-      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, bool);
+    if ((paramInt < 0) || (paramInt > this.a.a.a(tyr.a(this.a)).size())) {
       return;
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return sxh.class;
+    paramObject = (CommentEntry)this.a.a.a(tyr.a(this.a)).get(paramInt);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131364470: 
+      paramView = tyr.a(this.a).a();
+      if ((paramView != null) && (paramView.a != null)) {
+        if (!paramView.a.getOwner().isMe()) {
+          break label194;
+        }
+      }
+      label194:
+      for (paramView = "2";; paramView = "1")
+      {
+        vel.a("home_page", "press_reply", 0, 0, new String[] { paramView, vel.a(tyr.a(this.a)) });
+        if (tyr.a(this.a) == null) {
+          break;
+        }
+        tyr.a(this.a).b(paramObject, paramInt, tyr.a(this.a).a());
+        return;
+      }
+    }
+    tyr.a(this.a).a(tyr.a(this.a).a());
   }
 }
 

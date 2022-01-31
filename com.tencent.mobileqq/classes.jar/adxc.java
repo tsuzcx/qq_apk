@@ -1,49 +1,22 @@
-import android.app.Activity;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-final class adxc
-  extends AsyncTask<Void, Void, Boolean>
+public class adxc
+  extends adxa
 {
-  adxc(File paramFile1, File paramFile2, Activity paramActivity, adxe paramadxe) {}
+  public ProgressBar a;
+  public RelativeLayout a;
+  public AsyncImageView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public int e;
   
-  protected Boolean a(Void... paramVarArgs)
+  public adxc(adxb paramadxb)
   {
-    try
-    {
-      if (ew.a(this.jdField_a_of_type_JavaIoFile, this.b))
-      {
-        bacm.a(this.jdField_a_of_type_AndroidAppActivity, this.b.getAbsolutePath());
-        return Boolean.valueOf(true);
-      }
-      return Boolean.valueOf(false);
-    }
-    catch (OutOfMemoryError paramVarArgs)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("AIOGalleryUtils", 2, "savePhoto  OOM ");
-      }
-    }
-    return Boolean.valueOf(false);
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {}
-    for (int i = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight();; i = 0)
-    {
-      if (paramBoolean.booleanValue()) {}
-      for (String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131629482);; str = this.jdField_a_of_type_AndroidAppActivity.getString(2131629508))
-      {
-        bbmy.a(this.jdField_a_of_type_AndroidAppActivity, 2, str, 0).b(i);
-        if (this.jdField_a_of_type_Adxe != null) {
-          this.jdField_a_of_type_Adxe.a(paramBoolean.booleanValue());
-        }
-        return;
-      }
-    }
+    super(paramadxb);
   }
 }
 

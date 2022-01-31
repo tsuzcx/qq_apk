@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
-import atmo;
-import sfp;
+import aukm;
+import ssl;
 
 public class TagEntry
-  extends atmo
-  implements sfp
+  extends aukm
+  implements ssl
 {
   public String desc;
   public String feedId;

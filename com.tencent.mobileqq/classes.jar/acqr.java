@@ -1,46 +1,30 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class acqr
-  extends Handler
+  extends bfmg
 {
-  public acqr(CommonRecordSoundPanel paramCommonRecordSoundPanel, Looper paramLooper)
+  public acqr(VisitorsActivity paramVisitorsActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramLooper);
+    if ((paramAnimation == this.a.b) && (this.a.d)) {
+      this.a.centerView.setText("");
+    }
+    this.a.centerView.clearAnimation();
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 16711687: 
-      this.a.b(102);
-      return;
-    case 16711686: 
-      if (QLog.isColorLevel()) {
-        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
-      }
-      CommonRecordSoundPanel.a(this.a).c();
-      baan.b(2131230744, false);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(16711686);
-      baan.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
-      return;
+    if (paramAnimation == this.a.a) {
+      this.a.centerView.setText(2131694550);
     }
-    this.a.b(1);
-    this.a.b();
-    bbmy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131632807), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acqr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajed;
-import bace;
-import java.io.File;
+import ajyc;
+import android.content.Context;
+import bcpq;
+import com.tencent.mobileqq.app.ThreadManager;
 
 class DataJsPlugin$30
   implements Runnable
 {
-  DataJsPlugin$30(DataJsPlugin paramDataJsPlugin, File paramFile, String paramString) {}
+  DataJsPlugin$30(DataJsPlugin paramDataJsPlugin, Context paramContext, String paramString1, String paramString2, int paramInt) {}
   
   public void run()
   {
-    File localFile = new File(ajed.ba);
-    localFile.mkdirs();
-    if (this.val$localPic.exists())
-    {
-      localFile = new File(localFile, this.val$fileName);
-      bace.a(this.val$localPic, localFile);
-    }
+    bcpq localbcpq = new bcpq(this.val$context);
+    localbcpq.a(ajyc.a(2131702731));
+    localbcpq.show();
+    ThreadManager.excute(new DataJsPlugin.30.1(this, localbcpq), 128, null, true);
   }
 }
 

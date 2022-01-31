@@ -1,22 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bdrm
-  implements DialogInterface.OnClickListener
+public abstract interface bdrm
 {
-  bdrm(bdrk parambdrk, DialogInterface.OnClickListener paramOnClickListener) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
-    }
-  }
+  public abstract void a(long paramLong1, long paramLong2, byte[] paramArrayOfByte);
+  
+  public abstract void a(bdrk parambdrk);
+  
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdrm
  * JD-Core Version:    0.7.0.1
  */

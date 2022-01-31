@@ -1,57 +1,51 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public class tgu
-  extends Handler
+class tgu
+  extends SimpleJob<Void>
 {
-  WeakReference<FollowCaptureLauncher> a;
-  
-  public tgu(FollowCaptureLauncher paramFollowCaptureLauncher)
+  tgu(tgs paramtgs, String paramString, List paramList)
   {
-    this.a = new WeakReference(paramFollowCaptureLauncher);
+    super(paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    int i = 0;
-    FollowCaptureLauncher localFollowCaptureLauncher = (FollowCaptureLauncher)this.a.get();
-    if (localFollowCaptureLauncher == null) {}
-    for (;;)
+    paramJobContext = new ArrayList();
+    paramVarArgs = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramVarArgs.hasNext())
     {
-      return;
-      switch (paramMessage.what)
+      Object localObject = (StoryVideoItem)paramVarArgs.next();
+      sul localsul = sul.a(((StoryVideoItem)localObject).mVid, 2);
+      if (!TextUtils.isEmpty(localsul.c))
       {
-      }
-      while (i != 0)
-      {
-        FollowCaptureLauncher.f(localFollowCaptureLauncher);
-        return;
-        FollowCaptureLauncher.b(localFollowCaptureLauncher);
-        continue;
-        FollowCaptureLauncher.a(localFollowCaptureLauncher, (String)paramMessage.obj);
-        i = 1;
-        continue;
-        FollowCaptureLauncher.c(localFollowCaptureLauncher);
-        i = 1;
-        continue;
-        FollowCaptureLauncher.d(localFollowCaptureLauncher);
-        i = 1;
-        continue;
-        FollowCaptureLauncher.b(localFollowCaptureLauncher, (String)paramMessage.obj);
-        i = 1;
-        continue;
         if (QLog.isColorLevel()) {
-          QLog.d("FollowCaptureLauncher", 2, new Object[] { "showFollowCaptureError, ", Integer.valueOf(paramMessage.what) });
+          QLog.i("MsgTabStoryVideoPreloader", 2, "download thumb url=" + localsul.c);
         }
-        urp.a("FollowLaunchEvent", false, System.currentTimeMillis() - FollowCaptureLauncher.a(localFollowCaptureLauncher), new String[] { String.valueOf(paramMessage.what) });
-        FollowCaptureLauncher.e(localFollowCaptureLauncher);
-        continue;
-        localFollowCaptureLauncher.a();
+        this.jdField_a_of_type_Tgs.b.add(localsul.c);
+        paramJobContext.add(localsul);
       }
+      localObject = sul.a(((StoryVideoItem)localObject).mVid, 1);
+      if (!TextUtils.isEmpty(((sul)localObject).c))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("MsgTabStoryVideoPreloader", 2, "download mask url=" + ((sul)localObject).c);
+        }
+        this.jdField_a_of_type_Tgs.b.add(((sul)localObject).c);
+        paramJobContext.add(localObject);
+      }
+      this.jdField_a_of_type_Tgs.a.a(paramJobContext, false);
     }
+    return null;
   }
 }
 

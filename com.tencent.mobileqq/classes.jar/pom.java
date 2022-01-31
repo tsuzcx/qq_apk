@@ -1,23 +1,16 @@
-import java.util.Deque;
-import java.util.LinkedList;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
-class pom
+public class pom
+  extends RecyclerView.ViewHolder
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  Deque<poo> jdField_a_of_type_JavaUtilDeque = new LinkedList();
-  int b;
-  int c = 0;
-  private final int d = 50;
+  public TemplateBean a;
   
-  pom(pol parampol) {}
-  
-  boolean a(poo parampoo)
+  public pom(pob parampob, Container paramContainer, TemplateBean paramTemplateBean)
   {
-    if (this.jdField_a_of_type_JavaUtilDeque.size() >= 50) {
-      this.jdField_a_of_type_JavaUtilDeque.poll();
-    }
-    return this.jdField_a_of_type_JavaUtilDeque.offer(parampoo);
+    super(paramContainer);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = paramTemplateBean;
   }
 }
 

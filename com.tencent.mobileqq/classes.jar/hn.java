@@ -1,90 +1,40 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
+import android.graphics.Typeface;
+import com.etrump.mixlayout.ETFont;
 
 public class hn
-  implements BusinessObserver
 {
-  public void a(double paramDouble1, double paramDouble2)
+  public int a;
+  public Typeface a;
+  public ETFont a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  
+  public hn() {}
+  
+  public hn(int paramInt1, int paramInt2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "handleChangeMapViewAngle= " + paramDouble1 + "|" + paramDouble2);
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList) {}
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public hn(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "onGetLBSPoiList, isSuccess  = " + paramBoolean);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void b(boolean paramBoolean, Bundle paramBundle)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "onGetRedPackPage, isSuccess  = " + paramBoolean);
-    }
-  }
-  
-  public void c(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void d(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void e(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void f(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    int i = -1;
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, new Object[] { "onUpdata, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
-    }
-    switch (paramInt)
-    {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-      do
-      {
-        return;
-        c(paramBoolean, paramBundle);
-        return;
-        d(paramBoolean, paramBundle);
-        return;
-        e(paramBoolean, paramBundle);
-        return;
-        f(paramBoolean, paramBundle);
-        return;
-        b(paramBoolean, paramBundle);
-        return;
-        a(paramBoolean, paramBundle);
-        return;
-      } while (paramBundle == null);
-      a(paramBundle.getDouble("latitude"), paramBundle.getDouble("longitude"));
-      return;
-    }
-    ArrayList localArrayList = null;
-    paramInt = i;
-    if (paramBundle != null)
-    {
-      localArrayList = paramBundle.getStringArrayList("key_lbs_template_ids");
-      paramInt = paramBundle.getInt("key_lbs_template_cookie", -1);
-    }
-    a(paramInt, paramBoolean, localArrayList);
+    return "[id=" + this.jdField_a_of_type_Int + ",path=" + this.jdField_a_of_type_JavaLangString + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     hn
  * JD-Core Version:    0.7.0.1
  */

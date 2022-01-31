@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class avrz
-  implements View.OnClickListener
+public abstract interface avrz
 {
-  avrz(avry paramavry, avom paramavom) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Avom.a(paramView);
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avrz
  * JD-Core Version:    0.7.0.1
  */

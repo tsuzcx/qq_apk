@@ -1,18 +1,18 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGradientMaskView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
-public class qal
-  extends qaq
+public final class qal
+  implements Parcelable.Creator<AdvertisementInfo>
 {
-  VideoFeedsGradientMaskView a;
-  VideoFeedsGradientMaskView b;
-  
-  public qal(View paramView, Activity paramActivity)
+  public AdvertisementInfo a(Parcel paramParcel)
   {
-    super(paramView, 1, paramActivity);
-    this.a = ((VideoFeedsGradientMaskView)paramView.findViewById(2131302561));
-    this.b = ((VideoFeedsGradientMaskView)paramView.findViewById(2131302558));
+    return new AdvertisementInfo(paramParcel);
+  }
+  
+  public AdvertisementInfo[] a(int paramInt)
+  {
+    return new AdvertisementInfo[paramInt];
   }
 }
 

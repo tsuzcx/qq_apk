@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.b;
 
-import baip;
+import bbjw;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -25,7 +25,7 @@ public final class d
     e locale;
     if ((this.c != null) && (this.c.a()))
     {
-      if (!baip.a(this.c.f))
+      if (!bbjw.a(this.c.f))
       {
         if (this.c.d == null) {
           this.c.d = new HashMap();

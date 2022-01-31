@@ -1,6 +1,13 @@
-public abstract interface aiwq
+public class aiwq
 {
-  public abstract void d();
+  public int a;
+  public int b;
+  
+  public aiwq(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

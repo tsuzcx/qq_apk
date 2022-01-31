@@ -1,43 +1,34 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Matrix;
+import android.graphics.Path;
 
 public class voq
-  implements ViewPager.OnPageChangeListener
+  extends voe
 {
-  public voq(EmptySupportViewPager paramEmptySupportViewPager) {}
+  public Path a;
+  public int b;
+  public int c;
   
-  public void onPageScrollStateChanged(int paramInt)
+  public voq(Path paramPath, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.a != null)
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
-      }
-    }
+    super(paramInt1);
+    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public voq(voe paramvoe, float paramFloat)
   {
-    if (this.a.a != null)
+    super(paramvoe.jdField_a_of_type_Int);
+    if ((paramvoe instanceof voq))
     {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
-      }
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (this.a.a != null)
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
-      }
+      paramvoe = (voq)paramvoe;
+      Matrix localMatrix = new Matrix();
+      localMatrix.postScale(paramFloat, paramFloat);
+      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramvoe.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
+      this.jdField_a_of_type_Int = paramvoe.jdField_a_of_type_Int;
+      this.b = paramvoe.b;
+      this.c = ((int)(paramvoe.c * paramFloat));
     }
   }
 }

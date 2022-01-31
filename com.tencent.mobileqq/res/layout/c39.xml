@@ -9,7 +9,6 @@
         </RelativeLayout>
         <ImageView android:id="@id/kum" android:background="@drawable/hfp" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
     </RelativeLayout>
-    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/ku8" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="2.0dip" android:src="@drawable/f7u" />
     <ImageView android:layout_gravity="center|right|top" android:id="@id/kus" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/f6x" />
     <ProgressBar android:layout_gravity="center" android:id="@id/kur" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminateOnly="true" android:indeterminateDrawable="@drawable/al4" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
 </FrameLayout>

@@ -1,33 +1,74 @@
-import android.content.Context;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoControlUI;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-public class lyo
-  extends lru
+class lyo
+  implements lyx
 {
-  public lyo(VideoControlUI paramVideoControlUI, long paramLong1, long paramLong2) {}
+  lyo(lyn paramlyn, long paramLong) {}
   
-  protected void a(long paramLong, boolean paramBoolean, String paramString)
+  public Bitmap a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g()) {
-      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this);
-      }
+    if (this.jdField_a_of_type_Lyn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return null;
     }
+    return this.jdField_a_of_type_Lyn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Lyn.jdField_a_of_type_JavaLangString, (byte)3, false, false);
+  }
+  
+  public TroopInfoData a()
+  {
+    return this.jdField_a_of_type_Lyn.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData;
+  }
+  
+  public String a()
+  {
+    return lyn.a(this.jdField_a_of_type_Lyn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Lyn.jdField_a_of_type_JavaLangString);
+  }
+  
+  public String a(int paramInt)
+  {
+    return null;
+  }
+  
+  public String a(long paramLong, int paramInt)
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_Lyn.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) {
+      localObject = null;
+    }
+    String str;
     do
     {
-      do
-      {
-        return;
-        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "onNotify_ScreenShot_Finish, flag[" + this.jdField_a_of_type_Long + "], _flag[" + paramLong + "], path[" + paramString + "], ret[" + paramBoolean + "], seq[" + this.b + "]");
-      } while (this.jdField_a_of_type_Long != paramLong);
-      if (paramBoolean) {
-        avgx.a((Context)this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString);
-      }
-    } while (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null);
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this);
+      return localObject;
+      str = lyn.a(this.jdField_a_of_type_Lyn, paramInt);
+      localObject = str;
+    } while (!TextUtils.isEmpty(str));
+    this.jdField_a_of_type_Lyn.a(paramLong, this.jdField_a_of_type_Lyn.jdField_a_of_type_Long, this.jdField_a_of_type_Lyn.jdField_a_of_type_Int);
+    return str;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    QLog.w("ShareChat", 1, "onFinish, choosedChannel[" + paramInt1 + "], choosedLinkType[" + paramInt2 + "], result[" + paramInt3 + "], seq[" + this.jdField_a_of_type_Long + "]");
+    mrb.a(paramInt1, paramInt2);
+    if (paramInt3 == 2) {
+      mrb.a(paramInt1, paramInt2, 99, null);
+    }
+  }
+  
+  public String b()
+  {
+    return lyn.a(this.jdField_a_of_type_Lyn.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    QLog.w("ShareChat", 1, "onQRForward, choosedChannel[" + paramInt1 + "], choosedLinkType[" + paramInt2 + "], result[" + paramInt3 + "], seq[" + this.jdField_a_of_type_Long + "]");
+    if (paramInt3 == 2) {
+      mrb.a(paramInt1, paramInt2, 99, null);
+    }
   }
 }
 

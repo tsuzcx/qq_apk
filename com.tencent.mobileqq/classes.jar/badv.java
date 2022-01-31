@@ -1,43 +1,24 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 class badv
   implements View.OnClickListener
 {
-  badv(badr parambadr) {}
+  badv(badu parambadu) {}
   
   public void onClick(View paramView)
   {
-    switch (badr.a(this.a))
-    {
-    default: 
-      return;
-    case 1: 
-      bcds.c("NewUpgradeDialog", "onclick right btn  state = STATE_INIT");
-      badr.a(this.a);
-      return;
-    case 4: 
-      badr.b(this.a);
-      bcds.c("NewUpgradeDialog", "onclick right btn  state = STATE_COMPLETE");
-      return;
-    case 10: 
-      bcds.c("NewUpgradeDialog", "onclick right btn  state = STATE_CANCEL");
-      return;
-    case 3: 
-      badr.c(this.a);
-      bcds.c("NewUpgradeDialog", "onclick right btn  state = STATE_PAUSE");
-      return;
-    case 2: 
-      this.a.c();
-      bcds.c("NewUpgradeDialog", "onclick right btn  state = STATE_DOWNLOADING");
-      return;
-    }
-    bcds.c("NewUpgradeDialog", "onclick right btn  state = STATE_WAIT");
+    paramView = new Intent(badu.a(this.a), QQBrowserActivity.class);
+    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    badu.a(this.a).startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     badv
  * JD-Core Version:    0.7.0.1
  */

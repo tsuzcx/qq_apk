@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import afrn;
+import agdm;
 import android.os.Bundle;
 import android.os.Message;
-import baci;
-import beez;
+import bbdn;
+import bfmt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatHistorySearchData;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class C2CLinkMessageResultAdapter$1
   implements Runnable
 {
-  public C2CLinkMessageResultAdapter$1(afrn paramafrn, String paramString, int paramInt, long paramLong) {}
+  public C2CLinkMessageResultAdapter$1(agdm paramagdm, String paramString, int paramInt, long paramLong) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class C2CLinkMessageResultAdapter$1
     if (this.jdField_a_of_type_Int == 1)
     {
       ??? = this.this$0.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-      baci.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+      bbdn.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
       localObject2 = new ArrayList();
       localObject4 = this.this$0.b((ChatHistorySearchData)???, (ArrayList)localObject2);
       if (QLog.isColorLevel()) {
@@ -43,12 +43,12 @@ public class C2CLinkMessageResultAdapter$1
           if (this.jdField_a_of_type_Int != 1) {
             continue;
           }
-          localafrn = this.this$0;
+          localagdm = this.this$0;
           if (((ArrayList)localObject2).size() < 20)
           {
-            localafrn.jdField_a_of_type_Boolean = bool;
+            localagdm.jdField_a_of_type_Boolean = bool;
             this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
-            localObject2 = this.this$0.jdField_a_of_type_Beez.obtainMessage(2, localObject2);
+            localObject2 = this.this$0.jdField_a_of_type_Bfmt.obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 1;
             localObject4 = new Bundle();
             ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
@@ -71,13 +71,13 @@ public class C2CLinkMessageResultAdapter$1
         if (this.jdField_a_of_type_Int != 2) {
           continue;
         }
-        afrn localafrn = this.this$0;
+        agdm localagdm = this.this$0;
         if (((ArrayList)localObject2).size() < 20)
         {
           bool = true;
-          localafrn.jdField_a_of_type_Boolean = bool;
+          localagdm.jdField_a_of_type_Boolean = bool;
           this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
-          localObject2 = this.this$0.jdField_a_of_type_Beez.obtainMessage(2, localObject2);
+          localObject2 = this.this$0.jdField_a_of_type_Bfmt.obtainMessage(2, localObject2);
           ((Message)localObject2).arg1 = 2;
           localObject4 = new Bundle();
           ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);

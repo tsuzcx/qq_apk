@@ -1,78 +1,309 @@
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richstatus.ActionListActivity;
-import java.util.ArrayList;
+import android.content.Context;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class avbu
-  extends BaseAdapter
+  implements INetInfoHandler
 {
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  public String a;
+  private boolean a;
+  public String b;
+  public String c;
+  private String d;
   
-  public avbu(ArrayList<Integer> paramArrayList)
+  public avbu()
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilArrayList = localObject;
+    this.jdField_a_of_type_Boolean = true;
+    AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getApplication(), this);
+    a();
   }
   
-  public int getCount()
+  public static String a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return "XGIdentifier";
   }
   
-  public Object getItem(int paramInt)
+  public static String a(Context paramContext)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null)
+    try
     {
-      localView = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getLayoutInflater().inflate(2131496859, paramViewGroup, false);
-      paramView = new avbt(null);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131310814));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131310815));
-      localView.setTag(paramView);
-    }
-    paramView = (avbt)localView.getTag();
-    paramViewGroup = ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue());
-    if ((paramViewGroup != null) && (paramView.jdField_a_of_type_Int != paramViewGroup.jdField_a_of_type_Int))
-    {
-      paramView.jdField_a_of_type_Int = paramViewGroup.jdField_a_of_type_Int;
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new bboi(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources(), ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(paramViewGroup.jdField_a_of_type_Int, 201), false, false));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup.c);
-      if (paramViewGroup.b != 1) {
-        break label205;
+      long l = System.nanoTime();
+      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getBSSID();
+        if (QLog.isColorLevel()) {
+          QLog.e("PttIpSaver", 2, "getWifiMac " + paramContext + " time=" + (System.nanoTime() - l) / 1000000L);
+        }
+        return paramContext;
       }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
     }
-    for (;;)
+    catch (Throwable paramContext) {}
+    return null;
+  }
+  
+  public String a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("PttIpSaver", 2, "getIp:" + paramInt);
+    }
+    if (paramInt == 0) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    if (paramInt == 1) {
+      return this.b;
+    }
+    if (paramInt == 2) {
+      return this.c;
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    try
     {
-      localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity);
-      return localView;
-      label205:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources().getDrawable(2130838988), null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
+      this.d = a(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_Boolean = true;
+      if (this.d == null)
+      {
+        this.d = a();
+        this.jdField_a_of_type_Boolean = false;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetMobile2Wifi  " + this.d);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("PttIpSaver", 2, "clear ip:" + paramInt);
+    }
+    if (paramInt == -1)
+    {
+      this.jdField_a_of_type_JavaLangString = null;
+      this.b = null;
+      this.c = null;
+    }
+    do
+    {
+      return;
+      if (paramInt == 0)
+      {
+        this.jdField_a_of_type_JavaLangString = null;
+        return;
+      }
+      if (paramInt == 1)
+      {
+        this.b = null;
+        return;
+      }
+    } while (paramInt != 2);
+    this.c = null;
+  }
+  
+  public void a(ayuo paramayuo, int paramInt)
+  {
+    Object localObject = null;
+    if (paramayuo != null)
+    {
+      localObject = new StringBuffer(200);
+      ((StringBuffer)localObject).append("http://").append(paramayuo.jdField_a_of_type_JavaLangString);
+      if (paramayuo.jdField_a_of_type_Int != 80) {
+        ((StringBuffer)localObject).append(":").append(paramayuo.jdField_a_of_type_Int);
+      }
+      ((StringBuffer)localObject).append("/");
+      localObject = ((StringBuffer)localObject).toString();
+    }
+    a((String)localObject, paramInt);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (paramString == null) {}
+    do
+    {
+      return;
+      String str = paramString;
+      if (!paramString.startsWith("http://")) {
+        str = "http://" + paramString;
+      }
+      paramString = str;
+      if (!str.endsWith("/")) {
+        paramString = str + "/";
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "saveIp:" + paramInt + " " + paramString);
+      }
+      if (paramInt == 0)
+      {
+        this.jdField_a_of_type_JavaLangString = paramString;
+        return;
+      }
+      if (paramInt == 1)
+      {
+        this.b = paramString;
+        return;
+      }
+    } while (paramInt != 2);
+    this.c = paramString;
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public String b()
+  {
+    try
+    {
+      String str = this.d;
+      return str;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void b()
+  {
+    try
+    {
+      AppNetConnInfo.unregisterNetInfoHandler(this);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public void onNetMobile2None()
+  {
+    try
+    {
+      a(-1);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    try
+    {
+      this.d = a(BaseApplicationImpl.getContext());
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetMobile2Wifi  " + this.d);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    try
+    {
+      this.d = a();
+      this.jdField_a_of_type_Boolean = false;
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetNone2Mobile  " + this.d);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    try
+    {
+      this.d = a(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_Boolean = true;
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetNone2Wifi  " + this.d);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    try
+    {
+      this.d = a();
+      this.jdField_a_of_type_Boolean = false;
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetWifi2Mobile  " + this.d);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    try
+    {
+      a(-1);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avbu
  * JD-Core Version:    0.7.0.1
  */

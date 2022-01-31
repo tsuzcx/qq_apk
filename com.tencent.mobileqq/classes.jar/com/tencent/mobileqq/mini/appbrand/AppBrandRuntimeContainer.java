@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
@@ -201,7 +201,7 @@ public final class AppBrandRuntimeContainer
     {
       return localObject;
       if (QLog.isColorLevel()) {
-        QLog.d("miniapp-start_AppBrandRuntimeContainer", 2, "getAppBrandRunTime appId=" + paramMiniAppInfo.appId + ", versionType=" + paramMiniAppInfo.verType + " version=" + paramMiniAppInfo.version);
+        QLog.d("miniapp-start_AppBrandRuntimeContainer", 2, "getAppBrandRunTime appId=" + paramMiniAppInfo.appId + ", versionType=" + paramMiniAppInfo.verType + " version=" + paramMiniAppInfo.version + "  versionId=" + paramMiniAppInfo.versionId);
       }
       try
       {
@@ -211,7 +211,7 @@ public final class AppBrandRuntimeContainer
           if (localIterator.hasNext())
           {
             AppBrandRuntime localAppBrandRuntime = (AppBrandRuntime)localIterator.next();
-            if ((localAppBrandRuntime.apkgInfo != null) && (localAppBrandRuntime.apkgInfo.appConfig != null) && (localAppBrandRuntime.apkgInfo.appConfig.config.appId.equals(paramMiniAppInfo.appId)) && (localAppBrandRuntime.apkgInfo.appConfig.config.version.equals(paramMiniAppInfo.version)))
+            if ((localAppBrandRuntime.apkgInfo != null) && (localAppBrandRuntime.apkgInfo.appConfig != null) && (localAppBrandRuntime.apkgInfo.appConfig.config.appId.equals(paramMiniAppInfo.appId)) && (localAppBrandRuntime.apkgInfo.appConfig.config.versionId.equals(paramMiniAppInfo.versionId)))
             {
               localObject = localAppBrandRuntime;
               if (localAppBrandRuntime.apkgInfo.appConfig.config.verType == paramMiniAppInfo.verType) {
@@ -339,7 +339,7 @@ public final class AppBrandRuntimeContainer
         if (this.mDebugLayout.getParent() != null) {
           ((ViewGroup)this.mDebugLayout.getParent()).removeView(this.mDebugLayout);
         }
-        this.mDebugText.setText(ajjy.a(2131634801));
+        this.mDebugText.setText(ajyc.a(2131700585));
         paramFrameLayout.addView(this.mDebugLayout, new ViewGroup.LayoutParams(-1, -1));
         this.mDebugLayout.setVisibility(4);
       }

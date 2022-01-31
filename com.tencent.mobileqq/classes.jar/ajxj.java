@@ -1,7 +1,24 @@
-public class ajxj
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
+
+public final class ajxj
+  implements Parcelable.Creator<FriendListHandler.QQHeadDetails>
 {
-  public int a;
-  public String a;
+  public FriendListHandler.QQHeadDetails a(Parcel paramParcel)
+  {
+    FriendListHandler.QQHeadDetails localQQHeadDetails = new FriendListHandler.QQHeadDetails(null);
+    localQQHeadDetails.jdField_a_of_type_Int = paramParcel.readInt();
+    localQQHeadDetails.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQQHeadDetails.jdField_a_of_type_Long = paramParcel.readLong();
+    localQQHeadDetails.jdField_a_of_type_Byte = paramParcel.readByte();
+    return localQQHeadDetails;
+  }
+  
+  public FriendListHandler.QQHeadDetails[] a(int paramInt)
+  {
+    return new FriendListHandler.QQHeadDetails[paramInt];
+  }
 }
 
 

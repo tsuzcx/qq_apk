@@ -1,22 +1,29 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.addcontact.BubbleLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.AccountDetail;
 
 class aesw
-  extends RecyclerView.ViewHolder
+  implements non
 {
-  public ImageView a;
-  public TextView a;
-  public BubbleLayout a;
+  aesw(aerv paramaerv) {}
   
-  public aesw(View paramView)
+  public void a(boolean paramBoolean)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131306148));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131306147));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactBubbleLayout = ((BubbleLayout)paramView.findViewById(2131306146));
+    this.a.bp();
+    if (!paramBoolean)
+    {
+      this.a.B(2131695568);
+      return;
+    }
+    aukn localaukn = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    AccountDetail localAccountDetail = (AccountDetail)localaukn.a(AccountDetail.class, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    if (localAccountDetail != null) {
+      localaukn.b(localAccountDetail);
+    }
+    localaukn.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1008);
+    this.a.H();
   }
 }
 

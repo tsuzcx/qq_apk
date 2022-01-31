@@ -1,25 +1,58 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class wgl
-  implements View.OnClickListener
+  implements bfoq
 {
-  public wgl(CommodityListView paramCommodityListView, CertifiedAccountMeta.StUser paramStUser) {}
+  public wgl(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    wye.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + wfz.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView.a()), "clk_shop", 0, 0, new String[0]);
-    vvy.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
+    if (this.a.f) {
+      return;
+    }
+    this.a.f = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.b.dismiss();
+      return;
+      if (!this.a.jdField_a_of_type_Boolean)
+      {
+        this.a.e();
+        if ((this.a.g & 0x1) != 0)
+        {
+          axqw.b(this.a.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
+          continue;
+          if (!this.a.jdField_a_of_type_Boolean)
+          {
+            this.a.f();
+            if ((this.a.g & 0x1) != 0)
+            {
+              axqw.b(this.a.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
+              continue;
+              if (!this.a.jdField_a_of_type_Boolean)
+              {
+                this.a.d();
+                if ((this.a.g & 0x1) != 0) {
+                  axqw.b(this.a.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
+                }
+                if (this.a.jdField_c_of_type_Int == 2) {
+                  axqw.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_save", 0, 0, this.a.jdField_c_of_type_JavaLangString, "", "", String.valueOf(this.a.jdField_a_of_type_Int));
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wgl
  * JD-Core Version:    0.7.0.1
  */

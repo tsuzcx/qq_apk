@@ -1,7 +1,7 @@
 package com.tencent.tmdownloader.internal.downloadservice.a;
 
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmdownloader.internal.downloadservice.ApkDownloadManager;
 import com.tencent.tmdownloader.internal.downloadservice.h;
 import com.tencent.tmdownloader.internal.storage.d;
@@ -45,7 +45,7 @@ public class c
     localTMAssistantDownloadTaskInfo.mEndTime = paramc.u;
     localTMAssistantDownloadTaskInfo.showNotification = paramc.K;
     localTMAssistantDownloadTaskInfo.isAutoInstallBySDK = paramc.F;
-    ac.c("ServiceDownloadTaskManager", "TMAssistantDownloadTaskInfo pkg is: " + localTMAssistantDownloadTaskInfo.mTaskPackageName + ", mAppName is: " + localTMAssistantDownloadTaskInfo.mAppName + " dt mAppName is: " + paramc.E + ", isAutoInstallBySDK is: " + localTMAssistantDownloadTaskInfo.isAutoInstallBySDK);
+    ab.c("ServiceDownloadTaskManager", "TMAssistantDownloadTaskInfo pkg is: " + localTMAssistantDownloadTaskInfo.mTaskPackageName + ", mAppName is: " + localTMAssistantDownloadTaskInfo.mAppName + " dt mAppName is: " + paramc.E + ", isAutoInstallBySDK is: " + localTMAssistantDownloadTaskInfo.isAutoInstallBySDK);
     return localTMAssistantDownloadTaskInfo;
   }
   
@@ -67,13 +67,13 @@ public class c
     if ((paramString1 == null) || (paramString2 == null)) {
       return 3;
     }
-    ac.c("ServiceDownloadTaskManager", "clientKey:" + paramString1);
+    ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1);
     if (e(paramString1, paramString2) != null)
     {
-      ac.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is not null");
+      ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is not null");
       return ApkDownloadManager.getInstance().startDownload(paramString2, paramInt, paramString3, paramString4, paramMap);
     }
-    ac.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is null");
+    ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is null");
     Object localObject2 = c(paramString2);
     b localb = new b(paramString1, paramString2);
     localb.c = 1;
@@ -85,7 +85,7 @@ public class c
       synchronized (this.a)
       {
         this.a.add(localb);
-        ac.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",add newTask");
+        ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",add newTask");
         ??? = ((ArrayList)localObject2).iterator();
         j = 0;
         i = 0;
@@ -119,14 +119,14 @@ public class c
             if (this.b != null) {
               this.b.OnDownloadStateChanged(paramString1, paramString2, localb.c, 0, null);
             }
-            ac.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",newTask is downloading");
+            ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",newTask is downloading");
             return 0;
             if (i == 1) {
               localb.c = 1;
             }
           }
         }
-        ac.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",start newTask download");
+        ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",start newTask download");
         return ApkDownloadManager.getInstance().startDownload(paramString2, paramInt, paramString3, paramString4, paramMap);
       }
       else
@@ -151,7 +151,7 @@ public class c
       paramString1 = d.a((String)localObject);
       localObject = new d((String)localObject, (String)localObject);
       paramString1 = new TMAssistantDownloadTaskInfo(paramString2, paramString1, 4, ((d)localObject).a(), ((d)localObject).a(), "application/vnd.android.package-archive");
-      ac.c("ServiceDownloadTaskManager", "getDownloadTaskInfo downloadTaskInfo savePath | " + paramString1.mSavePath);
+      ab.c("ServiceDownloadTaskManager", "getDownloadTaskInfo downloadTaskInfo savePath | " + paramString1.mSavePath);
       return paramString1;
     }
     if (com.tencent.tmdownloader.internal.downloadservice.b.b(paramString2, "application/tm.android.apkdiff"))
@@ -192,7 +192,7 @@ public class c
         while (((Iterator)localObject).hasNext())
         {
           b localb = (b)((Iterator)localObject).next();
-          ac.c("ServiceDownloadTaskManager", "clientKey:" + localb.a + ",state:" + paramInt1 + ",errorcode:" + paramInt2 + ",url:" + paramString1.hashCode());
+          ab.c("ServiceDownloadTaskManager", "clientKey:" + localb.a + ",state:" + paramInt1 + ",errorcode:" + paramInt2 + ",url:" + paramString1.hashCode());
           localb.c = paramInt1;
           this.b.OnDownloadStateChanged(localb.a, paramString1, paramInt1, paramInt2, paramString2);
         }
@@ -216,7 +216,7 @@ public class c
           b localb = (b)((Iterator)localObject).next();
           if (localb.a(paramLong1, paramLong2, l) == true)
           {
-            ac.c("ServiceDownloadTaskManager", "clientKey:" + localb.a + ",receivedLen:" + paramLong1 + ",url:" + paramString.hashCode());
+            ab.c("ServiceDownloadTaskManager", "clientKey:" + localb.a + ",receivedLen:" + paramLong1 + ",url:" + paramString.hashCode());
             this.b.OnDownloadProgressChanged(localb.a, paramString, paramLong1, paramLong2);
           }
         }
@@ -238,13 +238,13 @@ public class c
   
   public void b(String paramString1, String paramString2)
   {
-    ac.c("ServiceDownloadTaskManager", "enter");
+    ab.c("ServiceDownloadTaskManager", "enter");
     if ((paramString1 == null) || (paramString2 == null)) {
       return;
     }
-    ac.c("ServiceDownloadTaskManager", "pauseDownload clientKey:" + paramString1 + "; url: " + paramString2);
+    ab.c("ServiceDownloadTaskManager", "pauseDownload clientKey:" + paramString1 + "; url: " + paramString2);
     b localb = e(paramString1, paramString2);
-    ac.c("ServiceDownloadTaskManager", "pauseDownload taskItem:" + localb);
+    ab.c("ServiceDownloadTaskManager", "pauseDownload taskItem:" + localb);
     if (localb != null) {
       localb.c = 3;
     }
@@ -253,20 +253,20 @@ public class c
       synchronized (this.a)
       {
         this.a.remove(localb);
-        ac.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",remove taskItem");
+        ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",remove taskItem");
         ??? = c(paramString2);
         if ((??? == null) || (((ArrayList)???).size() == 0))
         {
-          ac.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is the only on pauseAll");
+          ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is the only on pauseAll");
           ApkDownloadManager.getInstance().pauseDownload(paramString2);
         }
         if (this.b != null) {
           this.b.OnDownloadStateChanged(paramString1, paramString2, localb.c, 0, null);
         }
-        ac.c("ServiceDownloadTaskManager", "exit");
+        ab.c("ServiceDownloadTaskManager", "exit");
         return;
       }
-      ac.d("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is null");
+      ab.d("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is null");
     }
   }
   
@@ -301,9 +301,9 @@ public class c
     if ((paramString1 == null) || (paramString2 == null)) {
       return;
     }
-    ac.c("ServiceDownloadTaskManager", "cancelDownload clientKey:" + paramString1);
+    ab.c("ServiceDownloadTaskManager", "cancelDownload clientKey:" + paramString1);
     b localb = e(paramString1, paramString2);
-    ac.c("ServiceDownloadTaskManager", "cancelDownload taskItem:" + localb);
+    ab.c("ServiceDownloadTaskManager", "cancelDownload taskItem:" + localb);
     if (localb != null) {
       localb.c = 6;
     }
@@ -312,12 +312,12 @@ public class c
       synchronized (this.a)
       {
         this.a.remove(localb);
-        ac.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",remove taskItem");
+        ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",remove taskItem");
         ??? = c(paramString2);
         if ((??? != null) && (((ArrayList)???).size() != 0)) {
           break label245;
         }
-        ac.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is the only on cancelAll");
+        ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is the only on cancelAll");
         ApkDownloadManager.getInstance().cancelDownload(paramString2);
         if (this.b == null) {
           break;
@@ -325,10 +325,10 @@ public class c
         this.b.OnDownloadStateChanged(paramString1, paramString2, 6, 0, null);
         return;
       }
-      ac.d("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is null");
+      ab.d("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is null");
     }
     label245:
-    ac.d("ServiceDownloadTaskManager", "cancelDownload clientKey:" + paramString1 + ",taskItem is null");
+    ab.d("ServiceDownloadTaskManager", "cancelDownload clientKey:" + paramString1 + ",taskItem is null");
   }
   
   protected void d(String arg1)
@@ -369,9 +369,9 @@ public class c
     if ((paramString1 == null) || (paramString2 == null)) {
       return;
     }
-    ac.c("ServiceDownloadTaskManager", "deleteDownload clientKey:" + paramString1);
+    ab.c("ServiceDownloadTaskManager", "deleteDownload clientKey:" + paramString1);
     b localb = e(paramString1, paramString2);
-    ac.c("ServiceDownloadTaskManager", "deleteDownload taskItem:" + localb);
+    ab.c("ServiceDownloadTaskManager", "deleteDownload taskItem:" + localb);
     if (localb != null) {
       localb.c = 6;
     }
@@ -380,12 +380,12 @@ public class c
       synchronized (this.a)
       {
         this.a.remove(localb);
-        ac.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",remove taskItem");
+        ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",remove taskItem");
         ??? = c(paramString2);
         if ((??? != null) && (((ArrayList)???).size() != 0)) {
           break label245;
         }
-        ac.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is the only on deleteAll");
+        ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is the only on deleteAll");
         ApkDownloadManager.getInstance().deleteDownload(paramString2);
         if (this.b == null) {
           break;
@@ -393,10 +393,10 @@ public class c
         this.b.OnDownloadStateChanged(paramString1, paramString2, 6, 0, null);
         return;
       }
-      ac.d("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is null");
+      ab.d("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is null");
     }
     label245:
-    ac.d("ServiceDownloadTaskManager", "deleteDownload clientKey:" + paramString1 + ",taskItem is null");
+    ab.d("ServiceDownloadTaskManager", "deleteDownload clientKey:" + paramString1 + ",taskItem is null");
   }
   
   protected b e(String paramString1, String paramString2)
@@ -413,7 +413,7 @@ public class c
           while (localIterator.hasNext())
           {
             b localb = (b)localIterator.next();
-            ac.b("ServiceDownloadTaskManager", "taskItem mClientKey is: " + localb.a + " mUrl is: " + localb.b);
+            ab.b("ServiceDownloadTaskManager", "taskItem mClientKey is: " + localb.a + " mUrl is: " + localb.b);
             if ((localb.a != null) && (localb.a.equals(paramString1)) && (localb.b.equals(paramString2))) {
               paramString1 = localb;
             }

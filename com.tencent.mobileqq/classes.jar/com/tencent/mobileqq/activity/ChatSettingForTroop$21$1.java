@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
 import android.widget.ImageView;
-import azwp;
+import baxt;
 
 class ChatSettingForTroop$21$1
   implements Runnable
 {
-  ChatSettingForTroop$21$1(ChatSettingForTroop.21 param21, ImageView paramImageView, azwp paramazwp) {}
+  ChatSettingForTroop$21$1(ChatSettingForTroop.21 param21, ImageView paramImageView, baxt parambaxt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_Azwp);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_Baxt);
   }
 }
 

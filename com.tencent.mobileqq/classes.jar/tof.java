@@ -1,41 +1,54 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoTarget;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tof
-  extends tog
-  implements View.OnClickListener
+  extends syq
 {
-  private long a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public int b;
+  public List<String> b;
   
-  public tof(@NonNull ViewGroup paramViewGroup)
+  public tof(qqstory_service.RspBannerVideoList paramRspBannerVideoList)
   {
-    super(paramViewGroup);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-  }
-  
-  protected View a(ViewGroup paramViewGroup)
-  {
-    return paramViewGroup;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Tnz == null) {}
-    while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
-      return;
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    paramView = this.jdField_a_of_type_Tnz.a().getVideoLinkInfo();
-    if ((paramView != null) && (paramView.a()) && (paramView.a.a()))
+    super(paramRspBannerVideoList.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    if ((paramRspBannerVideoList.video_list.has()) && (!paramRspBannerVideoList.video_list.isEmpty()))
     {
-      tij.a(a(), paramView.a.c, paramView.a.b, 1010);
-      urp.a("play_video", "clk_tips", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_Tnz.a });
+      Iterator localIterator = paramRspBannerVideoList.video_list.get().iterator();
+      while (localIterator.hasNext())
+      {
+        qqstory_struct.VideoTarget localVideoTarget = (qqstory_struct.VideoTarget)localIterator.next();
+        this.jdField_a_of_type_JavaUtilList.add(localVideoTarget.vid.get().toStringUtf8());
+        this.jdField_b_of_type_JavaUtilList.add(localVideoTarget.feed_id.get().toStringUtf8());
+      }
+    }
+    if (paramRspBannerVideoList.is_end.has()) {
+      if (paramRspBannerVideoList.is_end.get() != 1) {
+        break label202;
+      }
+    }
+    label202:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      if (paramRspBannerVideoList.next_cookie.has()) {
+        this.jdField_a_of_type_JavaLangString = paramRspBannerVideoList.next_cookie.get().toStringUtf8();
+      }
+      if (paramRspBannerVideoList.total_count.has()) {
+        this.jdField_b_of_type_Int = paramRspBannerVideoList.total_count.get();
+      }
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 

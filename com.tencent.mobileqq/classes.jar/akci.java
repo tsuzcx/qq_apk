@@ -1,16 +1,97 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
 import java.util.Comparator;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
 
-class akci
-  implements Comparator<msg_comm.Msg>
+public class akci
+  implements Comparator<PhoneContact>
 {
-  akci(akch paramakch) {}
+  public akci(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
+    int n = 0;
+    Object localObject2 = paramPhoneContact1.pinyinFirst;
+    String str = paramPhoneContact2.pinyinFirst;
+    Object localObject1 = localObject2;
+    if (((String)localObject2).endsWith("#")) {
+      localObject1 = "Za";
+    }
+    localObject2 = str;
+    if (str.endsWith("#")) {
+      localObject2 = "Za";
+    }
+    int j = ((String)localObject1).compareTo((String)localObject2);
+    int i = j;
+    int k;
+    label99:
+    label112:
+    int m;
+    if (j == 0)
+    {
+      if (TextUtils.isEmpty(paramPhoneContact1.uin)) {
+        break label176;
+      }
+      i = 1;
+      if ((i == 0) || (paramPhoneContact1.uin.equals("0"))) {
+        break label181;
+      }
+      k = 1;
+      if (TextUtils.isEmpty(paramPhoneContact2.uin)) {
+        break label187;
+      }
+      j = 1;
+      if ((j == 0) || (paramPhoneContact2.uin.equals("0"))) {
+        break label193;
+      }
+      m = 1;
+      label132:
+      if (k == 0) {
+        break label199;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      label139:
+      if (m != 0) {
+        j = n;
+      }
+      for (;;)
+      {
+        i -= j;
+        j = i;
+        if (i == 0) {
+          j = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+        }
+        return j;
+        label176:
+        i = 0;
+        break;
+        label181:
+        k = 0;
+        break label99;
+        label187:
+        j = 0;
+        break label112;
+        label193:
+        m = 0;
+        break label132;
+        label199:
+        if (i == 0) {
+          break label225;
+        }
+        i = 1;
+        break label139;
+        if (j != 0) {
+          j = 1;
+        } else {
+          j = 2;
+        }
+      }
+      label225:
+      i = 2;
+    }
   }
 }
 

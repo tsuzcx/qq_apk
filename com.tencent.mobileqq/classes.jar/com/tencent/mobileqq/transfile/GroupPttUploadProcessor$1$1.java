@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.transfile;
 
-import axra;
-import axrb;
+import ayrh;
+import ayri;
 
 public class GroupPttUploadProcessor$1$1
   implements Runnable
 {
-  public GroupPttUploadProcessor$1$1(axrb paramaxrb, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public GroupPttUploadProcessor$1$1(ayri paramayri, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Axrb.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
+    this.jdField_a_of_type_Ayri.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
   }
 }
 

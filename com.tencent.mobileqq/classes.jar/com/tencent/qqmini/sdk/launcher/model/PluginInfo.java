@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.launcher.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdnb;
+import berm;
 
 public class PluginInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PluginInfo> CREATOR = new bdnb();
+  public static final Parcelable.Creator<PluginInfo> CREATOR = new berm();
   private String a;
   private String b;
   

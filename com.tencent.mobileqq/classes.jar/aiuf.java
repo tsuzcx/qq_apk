@@ -1,6 +1,8 @@
+import java.util.List;
+
 public abstract interface aiuf
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public abstract void a(boolean paramBoolean, String paramString1, List<aiuc> paramList, String paramString2);
 }
 
 

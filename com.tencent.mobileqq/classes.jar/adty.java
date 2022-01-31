@@ -1,16 +1,15 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForLongMsg;
 
-public class adty
-  implements adcz
+class adty
+  implements DialogInterface.OnClickListener
 {
-  public adty(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  adty(adtw paramadtw, MessageForLongMsg paramMessageForLongMsg) {}
   
-  public void onUpdate(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 23) {
-      UnlimitedBladeWorks.a(this.a).start();
-    }
+    aaod.a(this.jdField_a_of_type_Adtw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adtw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adtw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongMsg);
   }
 }
 

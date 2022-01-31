@@ -1,337 +1,88 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.widget.ImageButton;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoReaderConf;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
-import java.util.ArrayList;
-import java.util.ArrayList<Ljava.lang.String;>;
-import java.util.Iterator;
-import java.util.List;
-
 public class bigh
-  extends bifz
+  extends bizw
 {
-  private int jdField_a_of_type_Int;
-  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public int a;
   private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[2];
+  private int jdField_b_of_type_Int = 1;
+  private String[] jdField_b_of_type_ArrayOfJavaLangString = new String[2];
+  private int c;
   
-  public bigh(@NonNull bigb parambigb)
+  public bigh()
   {
-    super(parambigb);
+    this.jdField_a_of_type_Int = 2;
   }
   
-  private int a()
+  public int a()
   {
-    return 10000;
+    return this.jdField_b_of_type_Int;
   }
   
-  @NonNull
-  private static List<Long> a(@NonNull List<String> paramList)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      String str = (String)paramList.next();
-      try
-      {
-        localArrayList.add(Long.valueOf(Long.valueOf(str).longValue()));
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        urk.e("Q.qqstory.publish.edit.EditVideoPermission", "can't format uin:%s", new Object[] { str });
-      }
-    }
-    return localArrayList;
+    this.jdField_b_of_type_Int = paramInt;
   }
   
-  private void a(int paramInt)
+  public void a(String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      paramInt = 1;
-    }
-    for (;;)
-    {
-      urp.a("pub_control", "clk_change", 0, 0, new String[] { String.valueOf(paramInt) });
-      return;
-      paramInt = 2;
-      continue;
-      paramInt = 3;
-      continue;
-      paramInt = 4;
-      continue;
-      paramInt = 5;
-    }
+    this.jdField_a_of_type_ArrayOfJavaLangString[this.c] = paramString;
   }
   
-  public static void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString, ArrayList<String> paramArrayList, List<String> paramList)
+  public void a(boolean paramBoolean)
   {
-    if (paramList.contains(paramString)) {
-      paramList.remove(paramString);
-    }
-    Object localObject = new ArrayList();
-    switch (paramInt)
-    {
-    default: 
-      paramArrayList = (ArrayList<String>)localObject;
-      paramInt = 0;
-    }
-    try
-    {
-      for (;;)
-      {
-        long l = Long.valueOf(paramString).longValue();
-        if (paramArrayList.contains(Long.valueOf(l))) {
-          paramArrayList.remove(Long.valueOf(l));
-        }
-        urk.b("Q.qqstory.publish.edit.EditVideoPermission", "permissionType:" + paramInt);
-        urk.b("Q.qqstory.publish.edit.EditVideoPermission", "permissionUinList:" + paramArrayList.toString());
-        urk.b("Q.qqstory.publish.edit.EditVideoPermission", "atUinList:" + paramList.toString());
-        paramString = new qqstory_struct.VideoReaderConf();
-        paramString.ban_type.set(paramInt);
-        paramString.user_list.set(paramArrayList);
-        paramString.setHasFlag(true);
-        paramPublishVideoEntry.readerConfBytes = paramString.toByteArray();
-        return;
-        paramInt = 1000;
-        paramArrayList = (ArrayList<String>)localObject;
-        continue;
-        paramArrayList = (ArrayList<String>)localObject;
-        paramInt = 0;
-        continue;
-        String str;
-        if (!paramList.isEmpty())
-        {
-          paramArrayList = paramList.iterator();
-          while (paramArrayList.hasNext())
-          {
-            str = (String)paramArrayList.next();
-            try
-            {
-              ((List)localObject).add(Long.valueOf(Long.valueOf(str).longValue()));
-            }
-            catch (NumberFormatException localNumberFormatException2)
-            {
-              urk.e("Q.qqstory.publish.edit.EditVideoPermission", "PERMISSION_TYPE_ONLY_ME , can't format uin:%s", new Object[] { str });
-            }
-          }
-          paramArrayList = (ArrayList<String>)localObject;
-          paramInt = 2;
-        }
-        else
-        {
-          paramArrayList = (ArrayList<String>)localObject;
-          paramInt = 1;
-          continue;
-          paramArrayList = a(paramArrayList);
-          localObject = paramList.iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            str = (String)((Iterator)localObject).next();
-            try
-            {
-              l = Long.valueOf(str).longValue();
-              if (!paramArrayList.contains(Long.valueOf(l))) {
-                paramArrayList.add(Long.valueOf(l));
-              }
-            }
-            catch (NumberFormatException localNumberFormatException3)
-            {
-              urk.e("Q.qqstory.publish.edit.EditVideoPermission", "PERMISSION_TYPE_CAN_SEE , can't format uin:%s", new Object[] { str });
-            }
-          }
-          paramInt = 2;
-          continue;
-          paramArrayList = a(paramArrayList);
-          localObject = paramList.iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            str = (String)((Iterator)localObject).next();
-            try
-            {
-              l = Long.valueOf(str).longValue();
-              if (paramArrayList.contains(Long.valueOf(l))) {
-                paramArrayList.remove(Long.valueOf(l));
-              }
-            }
-            catch (NumberFormatException localNumberFormatException4)
-            {
-              urk.e("Q.qqstory.publish.edit.EditVideoPermission", "PERMISSION_TYPE_CANNOT_SEE , can't format uin:%s", new Object[] { str });
-            }
-          }
-          paramInt = 3;
-        }
-      }
-    }
-    catch (NumberFormatException localNumberFormatException1)
-    {
-      for (;;)
-      {
-        urk.e("Q.qqstory.publish.edit.EditVideoPermission", "MyUin , can't format uin:%s", new Object[] { paramString });
-      }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (paramInt == 1) || ((this.jdField_b_of_type_Int & paramInt) != 0);
+  }
+  
+  public String[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString;
+  }
+  
+  public void b() {}
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_ArrayOfJavaLangString[this.c] = paramString;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int == 14;
+  }
+  
+  public String[] b()
+  {
+    return this.jdField_b_of_type_ArrayOfJavaLangString;
+  }
+  
+  public void c(int paramInt)
+  {
+    if ((paramInt > -1) && (paramInt < 2)) {
+      this.c = paramInt;
     }
   }
   
-  private void b(int paramInt)
+  public void d(int paramInt)
   {
-    int i = 3;
-    switch (paramInt)
-    {
-    default: 
-      urk.e("Q.qqstory.publish.edit.EditVideoPermission", "unKnown type:%s", new Object[] { Integer.valueOf(paramInt) });
-      paramInt = 1;
-      switch (this.jdField_a_of_type_Bigb.a.c())
-      {
-      case 2: 
-      default: 
-        urk.e("Q.qqstory.publish.edit.EditVideoPermission", "unKnown entrance:%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Bigb.a.c()) });
-        i = 99;
-      }
-      break;
-    }
-    for (;;)
-    {
-      urk.a("Q.qqstory.publish.edit.EditVideoPermission", "report select permission, permissionType:%s, entranceType:%s", Integer.valueOf(paramInt), Integer.valueOf(i));
-      urp.a("pub_control", "clk_done", 0, 0, new String[] { String.valueOf(i), String.valueOf(paramInt) });
-      return;
-      paramInt = 1;
-      break;
-      paramInt = 2;
-      break;
-      paramInt = 3;
-      break;
-      paramInt = 4;
-      break;
-      i = 1;
-      continue;
-      i = 2;
-    }
-  }
-  
-  private void d()
-  {
-    Activity localActivity = a().getActivity();
-    if (localActivity != null)
-    {
-      Intent localIntent = new Intent(localActivity, PermissionSettingActivity.class);
-      localIntent.putExtra("PERMISSION_TYPE_KEY", this.b);
-      localIntent.putStringArrayListExtra("PERMISSION_UIN_LIST_KEY", this.jdField_a_of_type_JavaUtilArrayList);
-      localActivity.startActivityForResult(localIntent, 1);
-    }
-  }
-  
-  private void j()
-  {
-    switch (this.b)
-    {
-    default: 
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130845609);
-      return;
-    case 10004: 
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130845613);
-      return;
-    case 10000: 
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130845609);
-      return;
-    case 10001: 
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130845619);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130845617);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)a(2131305680));
-    this.jdField_a_of_type_Int = a();
-    this.b = this.jdField_a_of_type_Int;
-    j();
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    String str;
-    Object localObject;
-    if (paramInt1 == 1) {
-      if ((paramInt2 == 1) && (paramIntent != null))
-      {
-        paramInt1 = paramIntent.getIntExtra("PERMISSION_TYPE_KEY", -2147483648);
-        str = paramIntent.getStringExtra("PERMISSION_CURRENT_UIN_KEY");
-        localObject = null;
-        switch (paramInt1)
-        {
-        }
-      }
-    }
-    for (paramIntent = localObject;; paramIntent = paramIntent.getStringArrayListExtra("PERMISSION_UIN_LIST_KEY"))
-    {
-      this.b = paramInt1;
-      this.jdField_a_of_type_JavaLangString = str;
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      if (paramIntent != null) {
-        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramIntent);
-      }
-      b(paramInt1);
-      j();
-      this.jdField_a_of_type_Bigb.a(0);
-      return;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, Object paramObject)
-  {
-    super.a(paramInt1, paramInt2, paramObject);
-  }
-  
-  public void a(int paramInt, @NonNull bitz parambitz)
-  {
-    super.a(paramInt, parambitz);
-    urk.b("Q.qqstory.publish.edit.EditVideoPermission", "EditVideoPermission editVideoPrePublish....");
-    ArrayList localArrayList = new ArrayList();
-    bidp localbidp = (bidp)a(bidp.class);
-    if (localbidp != null) {
-      localArrayList.addAll(localbidp.a(paramInt));
-    }
-    a(parambitz.a, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, localArrayList);
-    if ((paramInt == 0) && (this.b != this.jdField_a_of_type_Int))
-    {
-      urk.b("Q.qqstory.publish.edit.EditVideoPermission", "user has changed permission during editing session. default permission is %d, new permission is %d.", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b));
-      a(this.b);
-    }
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 1;; paramInt = 2)
-    {
-      urp.a("pub_control", "clk_entry", 0, 0, new String[] { String.valueOf(paramInt) });
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        ((spz)sqg.a(10)).b("key_has_show_publish_permission_red_dot", Boolean.valueOf(true));
-        urp.a("pub_control", "clk_buble_guide", 0, 0, new String[0]);
-      }
-      d();
-      return;
-    }
+    this.jdField_a_of_type_ArrayOfJavaLangString[paramInt] = null;
+    this.jdField_b_of_type_ArrayOfJavaLangString[paramInt] = null;
   }
 }
 

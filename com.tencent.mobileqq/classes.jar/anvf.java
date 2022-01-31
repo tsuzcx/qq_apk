@@ -1,35 +1,29 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.profile.like.PraiseManager;
+import java.lang.ref.WeakReference;
 
-public class anvf
-  implements View.OnClickListener
+class anvf
+  implements auww
 {
-  public anvf(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
+  anvf(anul paramanul) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
-    if (badq.d(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity))
+    MessengerService localMessengerService = (MessengerService)this.a.a.get();
+    if (localMessengerService != null)
     {
-      long l = System.currentTimeMillis();
-      if ((l - this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b < Face2FaceAddFriendActivity.jdField_a_of_type_Long) && (l > this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "click too offen,please try again later ");
-        }
-        return;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("id", paramInt2);
+      localBundle.putInt("code", paramInt1);
+      localBundle.putString("url", paramString);
+      paramBundle.putBundle("response", localBundle);
+      localMessengerService.a(paramBundle);
+      if ((paramInt1 == 0) && (MessengerService.e(localMessengerService) != null) && ((MessengerService.f(localMessengerService) instanceof QQAppInterface))) {
+        ((PraiseManager)((QQAppInterface)MessengerService.g(localMessengerService)).getManager(209)).a(paramInt2, true, "from_praise_mall");
       }
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b = l;
-      Face2FaceAddFriendActivity.b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendDetailView.d();
-      awqx.b(null, "CliOper", "", "", "0X80050EF", "0X80050EF", 1, 0, "", "", "", "");
-      return;
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getResources().getString(2131626684);
-    bbmy.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, paramView, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
   }
 }
 

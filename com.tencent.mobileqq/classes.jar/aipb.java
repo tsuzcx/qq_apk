@@ -1,26 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-final class aipb
-  implements EIPCResultCallback
+class aipb
 {
-  aipb(long paramLong, String paramString) {}
+  balv jdField_a_of_type_Balv;
+  Boolean jdField_a_of_type_JavaLangBoolean;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public aipb(aiov paramaiov, balv parambalv)
   {
-    paramEIPCResult = paramEIPCResult.data.getString("resData");
-    aing.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, paramEIPCResult);
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_DRESS_PATH onCallback resJson:" + paramEIPCResult);
-    }
+    this.jdField_a_of_type_Balv = parambalv;
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aipb
  * JD-Core Version:    0.7.0.1
  */

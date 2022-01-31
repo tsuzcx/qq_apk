@@ -1,21 +1,20 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
-public final class aaey
-  implements DialogInterface.OnClickListener
+public class aaey
+  implements View.OnClickListener
 {
-  public aaey(aagn paramaagn, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, aagm paramaagm) {}
+  public aaey(AboutActivity paramAboutActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aagn.d = false;
-    this.jdField_a_of_type_Aagn.e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aagm, this.jdField_a_of_type_Aagn);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).a != null))
+    {
+      axqw.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", akva.a(), "");
+      UpgradeDetailActivity.a(this.a, akva.a().a(), false, false, true);
     }
   }
 }

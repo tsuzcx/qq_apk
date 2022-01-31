@@ -1,49 +1,110 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.1;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.2;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import java.util.LinkedList;
 
-class awad
-  extends WtloginListener
+public class awad
+  extends GPUBaseFilter
 {
-  awad(awab paramawab, String paramString, WtloginHelper paramWtloginHelper, int paramInt, Context paramContext) {}
+  private float jdField_a_of_type_Float;
+  private avzw jdField_a_of_type_Avzw;
+  private final LinkedList<Runnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private avzw b;
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  private void a(@NonNull Runnable paramRunnable)
   {
-    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d(getClass().getSimpleName(), 2, "geta1 OnException " + paramErrMsg);
-    }
-    awab.a = false;
-    this.jdField_a_of_type_Awab.b.removeMessages(0);
-  }
-  
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_Awab.b.removeMessages(0);
-    awab.a = false;
-    if (paramInt2 != 0)
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "geta1 failed " + paramInt2);
-      }
+      this.jdField_a_of_type_JavaUtilLinkedList.add(paramRunnable);
       return;
     }
-    paramArrayOfByte1 = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    paramArrayOfByte1.putExtras(this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo));
-    paramArrayOfByte1.setFlags(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte1);
+  }
+  
+  private void a(@NonNull LinkedList<Runnable> paramLinkedList)
+  {
+    try
+    {
+      while (!paramLinkedList.isEmpty())
+      {
+        Runnable localRunnable = (Runnable)paramLinkedList.poll();
+        if (localRunnable != null) {
+          localRunnable.run();
+        }
+      }
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    a(this.jdField_a_of_type_JavaUtilLinkedList);
+  }
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5)
+  {
+    a(new GpuImagePartsFilterGroup.2(this, paramInt1, paramInt4, paramInt5, paramInt2, paramInt3, paramFloat));
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!avzu.a(paramInt1)) {
+      throw new IllegalArgumentException("filterType " + paramInt1 + " is invalid color filter type");
+    }
+    a(new GpuImagePartsFilterGroup.1(this, paramInt1, paramInt2, paramInt3));
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Avzw != null) || (this.b != null);
+  }
+  
+  public void destroy()
+  {
+    if (this.jdField_a_of_type_Avzw != null) {
+      this.jdField_a_of_type_Avzw.destroy();
+    }
+    if (this.b != null) {
+      this.b.destroy();
+    }
+  }
+  
+  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    if (!a())
+    {
+      veg.e("Q.qqstory.publish.edit GpuImagePartsFilterGroup", "must set filters before draw texture");
+      return;
+    }
+    if (this.jdField_a_of_type_Avzw != null) {
+      this.jdField_a_of_type_Avzw.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
+    }
+    this.b.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
+  }
+  
+  public void init()
+  {
+    if ((this.jdField_a_of_type_Avzw != null) && (!this.jdField_a_of_type_Avzw.isInitialized())) {
+      this.jdField_a_of_type_Avzw.init();
+    }
+    if ((this.b != null) && (!this.b.isInitialized())) {
+      this.b.init();
+    }
+  }
+  
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Avzw != null) {
+      this.jdField_a_of_type_Avzw.onOutputSizeChanged(paramInt1, paramInt2);
+    }
+    if (this.b != null) {
+      this.b.onOutputSizeChanged(paramInt1, paramInt2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awad
  * JD-Core Version:    0.7.0.1
  */

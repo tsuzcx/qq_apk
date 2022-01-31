@@ -1,31 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-
 public class arjp
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ajtg
 {
-  public arjp(MedalGuideView paramMedalGuideView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    MedalGuideView.a(this.a, f);
-    if (this.a.a != null)
-    {
-      this.a.a.a(f);
-      if (f <= 0.05F) {
-        this.a.a.b();
-      }
-    }
-    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
-    }
-  }
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arjp
  * JD-Core Version:    0.7.0.1
  */

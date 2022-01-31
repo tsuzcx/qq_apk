@@ -1,30 +1,36 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.biz.videostory.capture.AEPlayShowTabView;
-import com.tencent.image.ApngImage;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.FrameLayout;
 
 class wrw
-  extends ViewPager.SimpleOnPageChangeListener
+  implements Animator.AnimatorListener
 {
-  wrw(wru paramwru) {}
+  wrw(wrt paramwrt) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramInt == 0)
-    {
-      ApngImage.resumeAll();
-      return;
+    wrt.a(this.a, null);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (wrt.a(this.a) != null) {
+      wrt.a(this.a).a(3);
     }
-    ApngImage.pauseAll();
+    if (wrt.a(this.a) != null)
+    {
+      wrt.a(this.a).setAlpha(0.0F);
+      wrt.a(this.a, null);
+    }
   }
   
-  public void onPageSelected(int paramInt)
-  {
-    wru.a(this.a).a(paramInt);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wrw
  * JD-Core Version:    0.7.0.1
  */

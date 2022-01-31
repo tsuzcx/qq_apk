@@ -1,33 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.QQLSActivity.20.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.33.1;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class abkt
-  implements Animation.AnimationListener
+  extends aszi
 {
-  public abkt(QQLSActivity paramQQLSActivity) {}
+  public abkt(Leba paramLeba) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a.removeMessages(99);
-    if (befo.g())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "do SmoothFinish");
-      }
-      QQLSActivity.g(this.a);
-      this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.redpoint", 2, "NearbyEnterUpdateObserver onReceive");
+    }
+    if (Leba.a(this.a) == null) {
       return;
     }
-    this.a.a.postAtFrontOfQueue(new QQLSActivity.20.1(this));
+    this.a.a.post(new Leba.33.1(this));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

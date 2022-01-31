@@ -1,7 +1,7 @@
 package com.tencent.tmassistantsdk.internal.logreport;
 
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
 import com.tencent.tmassistantsdk.internal.protocol.jce.StatStdReport;
 
@@ -16,7 +16,7 @@ public class b
     if (paramTMAssistantCallYYBParamStruct != null) {
       localStringBuffer.append(GlobalUtil.getAppPackageName(GlobalUtil.getInstance().getContext())).append("_").append(String.valueOf(GlobalUtil.getAppVersionCode(GlobalUtil.getInstance().getContext()))).append("_").append(paramTMAssistantCallYYBParamStruct.channelId).append("_").append(paramTMAssistantCallYYBParamStruct.via).append("_").append(paramTMAssistantCallYYBParamStruct.uin).append("_").append(paramTMAssistantCallYYBParamStruct.taskAppId).append("_").append(paramTMAssistantCallYYBParamStruct.taskPackageName).append("_").append(paramTMAssistantCallYYBParamStruct.taskVersion);
     }
-    ac.c("BusinessReportManager", "logStr=" + localStringBuffer);
+    ab.c("BusinessReportManager", "logStr=" + localStringBuffer);
     return localStringBuffer.toString();
   }
   
@@ -35,7 +35,7 @@ public class b
   
   public StatStdReport a(String paramString1, String paramString2, String paramString3)
   {
-    ac.c("BusinessReportManager", "createTipsInfoLog");
+    ab.c("BusinessReportManager", "createTipsInfoLog");
     StatStdReport localStatStdReport = new StatStdReport();
     localStatStdReport.name = paramString3;
     localStatStdReport.time = System.currentTimeMillis();

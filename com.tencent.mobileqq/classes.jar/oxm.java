@@ -1,75 +1,86 @@
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 public class oxm
-  implements ViewBase.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  
-  public oxm(ArticleInfo paramArticleInfo, Context paramContext)
+  private static String a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void a()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData))) {}
     try
     {
-      Object localObject = new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData);
-      QLog.d("OnSuperTopicClickListener", 2, new Object[] { "mArticleInfo.proteusItemsData = ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData });
-      Iterator localIterator = ((JSONObject)localObject).keys();
-      while (localIterator.hasNext())
+      InetAddress localInetAddress;
+      do
       {
-        String str = (String)localIterator.next();
-        if ("id_super_topic".equals(str))
+        localObject = NetworkInterface.getNetworkInterfaces();
+        Enumeration localEnumeration;
+        while (!localEnumeration.hasMoreElements())
         {
-          localObject = ((JSONObject)localObject).getJSONObject(str).getString("super_topic_jump_url");
-          QLog.d("OnSuperTopicClickListener", 2, new Object[] { "jumpToSuperTopic, jumpUrl = ", localObject });
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            obz.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, null);
+          if (!((Enumeration)localObject).hasMoreElements()) {
+            break;
           }
+          localEnumeration = ((NetworkInterface)((Enumeration)localObject).nextElement()).getInetAddresses();
         }
+        localInetAddress = (InetAddress)localEnumeration.nextElement();
+      } while ((localInetAddress.isLoopbackAddress()) || (!(localInetAddress instanceof Inet4Address)));
+      Object localObject = localInetAddress.getHostAddress();
+      return localObject;
+    }
+    catch (SocketException localSocketException) {}
+    return "0.0.0.0";
+  }
+  
+  private static String a(int paramInt)
+  {
+    return (paramInt & 0xFF) + "." + (paramInt >> 8 & 0xFF) + "." + (paramInt >> 16 & 0xFF) + "." + (paramInt >> 24 & 0xFF);
+  }
+  
+  public static String a(Context paramContext)
+  {
+    Object localObject = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+    if ((localObject != null) && (((NetworkInfo)localObject).isConnected()))
+    {
+      if (((NetworkInfo)localObject).getType() != 0) {
+        break label104;
       }
-      return;
+      try
+      {
+        InetAddress localInetAddress;
+        do
+        {
+          paramContext = NetworkInterface.getNetworkInterfaces();
+          while (!((Enumeration)localObject).hasMoreElements())
+          {
+            if (!paramContext.hasMoreElements()) {
+              break;
+            }
+            localObject = ((NetworkInterface)paramContext.nextElement()).getInetAddresses();
+          }
+          localInetAddress = (InetAddress)((Enumeration)localObject).nextElement();
+        } while ((localInetAddress.isLoopbackAddress()) || (!(localInetAddress instanceof Inet4Address)));
+        paramContext = localInetAddress.getHostAddress();
+        return paramContext;
+      }
+      catch (SocketException paramContext)
+      {
+        paramContext.printStackTrace();
+      }
     }
-    catch (JSONException localJSONException)
+    label104:
+    do
     {
-      QLog.d("OnSuperTopicClickListener", 2, "jumpToSuperTopic", localJSONException);
-    }
-  }
-  
-  public static void a(ArticleInfo paramArticleInfo, Context paramContext)
-  {
-    paramArticleInfo = paramArticleInfo.mSocialFeedInfo.a;
-    if (paramArticleInfo != null)
-    {
-      paramArticleInfo = paramArticleInfo.d;
-      obz.c(paramContext, paramArticleInfo);
-      QLog.i("OnSuperTopicClickListener", 2, "jumpToWendaRefer jumpUrl +" + paramArticleInfo);
-    }
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if ((obz.l(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (obz.m(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)))
-    {
-      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_AndroidContentContext);
-      ndn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      return;
-    }
-    a();
-    ndn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      return null;
+      if (((NetworkInfo)localObject).getType() == 1) {
+        return a(((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getIpAddress());
+      }
+    } while (((NetworkInfo)localObject).getType() != 9);
+    return a();
   }
 }
 

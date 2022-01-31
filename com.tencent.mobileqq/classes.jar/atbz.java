@@ -1,14 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class atbz
-  implements View.OnClickListener
+  implements athy
 {
-  atbz(atby paramatby) {}
+  atbz(atbx paramatbx) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    this.a.dismiss();
+    QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. errorCode=" + paramInt);
   }
 }
 

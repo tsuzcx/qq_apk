@@ -1,17 +1,4 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-
-class apff
-  extends AnimatorListenerAdapter
-{
-  apff(apfe paramapfe) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a.setVisibility(8);
-  }
-}
+public class apff {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry;
 
-import agtk;
+import ahfz;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.common.app.AppInterface;
@@ -15,7 +15,7 @@ class QQMessagePageMiniAppEntryManager$2
   {
     try
     {
-      ((agtk)MiniAppUtils.getAppInterface().getManager(342)).a(2);
+      ((ahfz)MiniAppUtils.getAppInterface().getManager(342)).a(2);
       return;
     }
     catch (Throwable paramView)

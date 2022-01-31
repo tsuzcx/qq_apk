@@ -1,25 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class afjk
-  implements DialogInterface.OnKeyListener
+public abstract interface afjk
 {
-  afjk(afiu paramafiu) {}
+  public abstract QQAppInterface a();
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4)
-    {
-      afiu.a(this.a, afiu.a(this.a), Long.valueOf(afiu.a(this.a)).longValue());
-      afiu.a(this.a);
-    }
-    return true;
-  }
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract Activity getActivity();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afjk
  * JD-Core Version:    0.7.0.1
  */

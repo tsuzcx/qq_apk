@@ -1,109 +1,259 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.Context;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.Arrays;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-public class umf
-  implements slx<szp, tbm>, unf
+public abstract class umf
+  extends BaseAdapter
 {
-  protected umi a;
-  protected ung a;
-  protected unh a;
+  private final int a;
+  protected Context a;
+  protected ArrayList<VideoCollectionItem> a;
+  protected umj a;
+  protected uue a;
+  protected uuh a;
   
-  public Object a()
+  public umf(Context paramContext)
   {
-    return this.jdField_a_of_type_Umi;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Uue = new uue();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = (paramContext.getResources().getDisplayMetrics().heightPixels - vzo.a(this.jdField_a_of_type_AndroidContentContext, 60.0F));
+    a(true);
   }
   
-  public String a()
+  private VideoCollectionItem a(int paramInt)
   {
-    return getClass().getSimpleName();
+    veg.c("Q.qqstory.home.BaseStoryTimeLineAdapter", "getSimpleFakeItem");
+    VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
+    localVideoCollectionItem.collectionId = String.valueOf(paramInt);
+    localVideoCollectionItem.collectionTime = -1L;
+    localVideoCollectionItem.key = "local_empty_item";
+    localVideoCollectionItem.isEmptyFakeItem = true;
+    return localVideoCollectionItem;
+  }
+  
+  protected abstract View a(int paramInt, ViewGroup paramViewGroup);
+  
+  public VideoCollectionItem a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    {
+      VideoCollectionItem localVideoCollectionItem2 = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+      VideoCollectionItem localVideoCollectionItem1;
+      if (localVideoCollectionItem2.isEmptyFakeItem)
+      {
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 2)
+        {
+          localVideoCollectionItem1 = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 2);
+          if (TextUtils.isEmpty(localVideoCollectionItem1.collectionId)) {}
+        }
+      }
+      else {
+        do
+        {
+          return localVideoCollectionItem1;
+          localVideoCollectionItem1 = localVideoCollectionItem2;
+        } while (!TextUtils.isEmpty(localVideoCollectionItem2.collectionId));
+      }
+    }
+    return null;
+  }
+  
+  public ArrayList<VideoCollectionItem> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
   public void a()
   {
-    urk.c("GetMyStoryFeatureDataStep", "GetMyStoryFeatureDataStep");
-    if ((this.jdField_a_of_type_Umi == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Umi.jdField_a_of_type_JavaLangString)))
+    b();
+    a(VideoCollectionItem.getProfilePlaceholderItem(QQStoryContext.a().b()));
+  }
+  
+  protected void a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    veg.a("Q.qqstory.home.BaseStoryTimeLineAdapter", "bindview. postion=%d", Integer.valueOf(paramInt));
+    paramViewGroup = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    ((umg)paramView.getTag()).a(paramViewGroup, paramView, paramInt);
+  }
+  
+  protected void a(VideoCollectionItem paramVideoCollectionItem)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramVideoCollectionItem) > 0) {
+      veg.b("Q.qqstory.home.BaseStoryTimeLineAdapter", "data already exist, id=%s, time=%d", paramVideoCollectionItem.collectionId, Long.valueOf(paramVideoCollectionItem.collectionTime));
+    }
+    do
     {
-      if (this.jdField_a_of_type_Unh != null)
+      return;
+      i = Collections.binarySearch(this.jdField_a_of_type_JavaUtilArrayList, paramVideoCollectionItem, this.jdField_a_of_type_Uue);
+    } while (i >= 0);
+    int i = -i;
+    this.jdField_a_of_type_JavaUtilArrayList.add(i - 1, paramVideoCollectionItem);
+  }
+  
+  public abstract void a(String paramString, List<uuf> paramList);
+  
+  public void a(List<VideoCollectionItem> paramList, boolean paramBoolean)
+  {
+    veg.a("Q.qqstory.home.BaseStoryTimeLineAdapter", "setData, dataList size=%d", Integer.valueOf(paramList.size()));
+    b();
+    b(paramList, paramBoolean);
+    notifyDataSetChanged();
+  }
+  
+  public void a(uuh paramuuh, umj paramumj)
+  {
+    this.jdField_a_of_type_Uuh = paramuuh;
+    this.jdField_a_of_type_Umj = paramumj;
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    a(VideoCollectionItem.getProfilePlaceholderItem(QQStoryContext.a().b()));
+    if ((a()) && (paramBoolean))
+    {
+      a(VideoCollectionItem.getCurrentYearFakeItem(QQStoryContext.a().b()));
+      a(VideoCollectionItem.getTodayFakeItem(QQStoryContext.a().b()));
+      int i = this.jdField_a_of_type_Int;
+      int j = vzo.a(this.jdField_a_of_type_AndroidContentContext, 100.0F);
+      int k = vzo.a(this.jdField_a_of_type_AndroidContentContext, 65.0F);
+      int m = vzo.a(this.jdField_a_of_type_AndroidContentContext, 150.0F);
+      this.jdField_a_of_type_JavaUtilArrayList.add(a(i - j - k - m));
+    }
+  }
+  
+  protected abstract boolean a();
+  
+  public abstract boolean a(boolean paramBoolean);
+  
+  protected void b()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  protected void b(List<VideoCollectionItem> paramList, boolean paramBoolean)
+  {
+    if (paramList.size() == 0) {
+      a(true);
+    }
+    int j;
+    int i;
+    do
+    {
+      return;
+      a(false);
+      j = this.jdField_a_of_type_Int - vzo.a(this.jdField_a_of_type_AndroidContentContext, 100.0F);
+      Iterator localIterator = paramList.iterator();
+      i = j;
+      while (localIterator.hasNext())
       {
-        this.jdField_a_of_type_Unh.a(a());
-        return;
+        VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)localIterator.next();
+        a(localVideoCollectionItem);
+        if (paramList.size() <= 3)
+        {
+          if (localVideoCollectionItem.collectionType == 0) {
+            i -= vzo.a(this.jdField_a_of_type_AndroidContentContext, 65.0F);
+          }
+          for (;;)
+          {
+            break;
+            if (!TextUtils.isEmpty(vyb.a(localVideoCollectionItem.collectionTime)[0])) {
+              i -= vzo.a(this.jdField_a_of_type_AndroidContentContext, 190.0F);
+            } else {
+              i -= vzo.a(this.jdField_a_of_type_AndroidContentContext, 150.0F);
+            }
+          }
+        }
       }
-      urk.d("GetMyStoryFeatureDataStep", "finish callBack is null");
-      return;
-    }
-    szp localszp = new szp();
-    localszp.a = Arrays.asList(new String[] { this.jdField_a_of_type_Umi.jdField_a_of_type_JavaLangString });
-    slv.a().a(localszp, this);
+    } while ((a(paramBoolean)) || (i == j) || (i <= 0));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(i));
   }
   
-  public void a(Object paramObject)
+  public void c(List<VideoCollectionItem> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Umi = ((umi)paramObject);
+    d(paramList, paramBoolean);
+    notifyDataSetChanged();
   }
   
-  public void a(@NonNull szp paramszp, @Nullable tbm paramtbm, @NonNull ErrorMessage paramErrorMessage)
+  protected void d(List<VideoCollectionItem> paramList, boolean paramBoolean)
   {
-    if ((paramtbm != null) && (paramErrorMessage.isSuccess()) && (paramtbm.a != null) && (paramtbm.a.size() > 0))
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
     {
-      this.jdField_a_of_type_Umi.jdField_a_of_type_Srj = ((srj)paramtbm.a.get(0));
-      paramszp = (spz)sqg.a(10);
-      paramszp.b("qqstory_key_story_latest_feed_feature_feed_id", this.jdField_a_of_type_Umi.jdField_a_of_type_Srj.jdField_a_of_type_JavaLangString);
-      paramszp.b("qqstory_key_story_latest_feed_feature_total_like_count", Integer.valueOf(this.jdField_a_of_type_Umi.jdField_a_of_type_Srj.jdField_a_of_type_Int));
-      paramszp.b("qqstory_key_story_latest_feed_feature_total_comment_count", Integer.valueOf(this.jdField_a_of_type_Umi.jdField_a_of_type_Srj.b));
-      paramszp.b("qqstory_key_story_latest_feed_feature_total_view_count", Integer.valueOf(this.jdField_a_of_type_Umi.jdField_a_of_type_Srj.c));
-      if (this.jdField_a_of_type_Unh != null)
+      VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+      localObject1 = localObject2;
+      if (localVideoCollectionItem.isEmptyFakeItem)
       {
-        this.jdField_a_of_type_Unh.a(a());
-        return;
+        veg.d("Q.qqstory.home.BaseStoryTimeLineAdapter", "addData, has fake");
+        this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+        localObject1 = localVideoCollectionItem;
       }
-      urk.d("GetMyStoryFeatureDataStep", "finish callBack is null");
-      return;
     }
-    int i = paramErrorMessage.errorCode;
-    if (paramtbm == null) {
-      paramszp = "rsp is null";
+    veg.a("Q.qqstory.home.BaseStoryTimeLineAdapter", "addData, new dataList=%s", paramList);
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      a((VideoCollectionItem)paramList.next());
     }
-    for (;;)
+    if (localObject1 != null)
     {
-      urk.e("GetMyStoryFeatureDataStep", "请求Features失败 errorCode: %d %s", new Object[] { Integer.valueOf(i), paramszp });
-      this.jdField_a_of_type_Umi.jdField_a_of_type_Srj = new srj();
-      this.jdField_a_of_type_Umi.jdField_a_of_type_Srj.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Umi.jdField_a_of_type_JavaLangString;
-      if (this.jdField_a_of_type_Unh == null) {
-        break;
-      }
-      this.jdField_a_of_type_Unh.a(a());
-      return;
-      if (paramtbm.a == null) {
-        paramszp = "features is null";
-      } else {
-        paramszp = "invalid rsp";
-      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+      veg.b("Q.qqstory.home.BaseStoryTimeLineAdapter", "add fake item.");
     }
-    urk.d("GetMyStoryFeatureDataStep", "finish callBack is null");
+    a(paramBoolean);
   }
   
-  public void a(ung paramung)
+  public int getCount()
   {
-    this.jdField_a_of_type_Ung = paramung;
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public void a(unh paramunh)
+  public Object getItem(int paramInt)
   {
-    this.jdField_a_of_type_Unh = paramunh;
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
   }
   
-  public boolean a()
+  public long getItemId(int paramInt)
   {
-    return false;
+    return paramInt;
   }
   
-  public void b() {}
+  public int getItemViewType(int paramInt)
+  {
+    return ((VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).collectionType;
+  }
   
-  public void c() {}
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = a(paramInt, paramViewGroup);
+    }
+    if (localView != null) {
+      a(paramInt, localView, paramViewGroup);
+    }
+    return localView;
+  }
+  
+  public int getViewTypeCount()
+  {
+    return VideoCollectionItem.TYPE_ORDER.length;
+  }
+  
+  public boolean isEmpty()
+  {
+    return getCount() <= 1;
+  }
 }
 
 

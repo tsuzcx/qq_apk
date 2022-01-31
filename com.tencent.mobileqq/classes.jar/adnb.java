@@ -1,21 +1,23 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.QQWalletTransferBubbleView;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import java.lang.ref.WeakReference;
 
-public class adnb
-  extends acju
+class adnb
+  implements admv
 {
-  public long a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public QQWalletTransferBubbleView a;
-  public TextView b;
-  public QQWalletTransferBubbleView b;
-  public TextView c;
+  adnb(admz paramadmz, MessageForArkFlashChat paramMessageForArkFlashChat) {}
   
-  public adnb(admy paramadmy) {}
+  public void a()
+  {
+    AutoStartProgressBar localAutoStartProgressBar = (AutoStartProgressBar)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.mSendingProgress.get();
+    if ((localAutoStartProgressBar.getTag() == this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat) && (localAutoStartProgressBar != null))
+    {
+      localAutoStartProgressBar.b();
+      localAutoStartProgressBar.setVisibility(8);
+    }
+  }
+  
+  public void b() {}
 }
 
 

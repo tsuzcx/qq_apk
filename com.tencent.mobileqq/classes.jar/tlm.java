@@ -1,48 +1,63 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tlm
-  extends sgl<tlj, snl>
+  extends tjg
+  implements syt<tna, toq>
 {
-  public tlm(tlj paramtlj)
-  {
-    super(paramtlj);
-  }
+  protected String a;
+  protected List<String> a;
   
-  public void a(@NonNull tlj paramtlj, @NonNull snl paramsnl)
+  public tlm(String paramString, List<String> paramList)
   {
-    if ((paramsnl.jdField_a_of_type_Int == 2) || (!paramsnl.jdField_a_of_type_JavaLangString.equals(tlj.a(paramtlj))) || (tlj.a(paramtlj) == null) || (tlj.a(paramtlj).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null)) {
-      urk.b(this.TAG, "ignore this feed info change event. %s.", paramsnl.toString());
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
-    tls localtls;
-    do
-    {
-      return;
-      urk.a(this.TAG, "receive feed info change event. %s.", paramsnl.toString());
-      localtls = paramtlj.a();
-      switch (paramsnl.b)
-      {
-      default: 
-        return;
-      }
-      if (paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
-      {
-        tlj.a(paramtlj).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
-        tlj.a(paramtlj).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
-        tlj.a(paramtlj).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
-      }
-      tlj.a(paramtlj).a(paramsnl.c);
-    } while (localtls == null);
-    localtls.a(tlj.a(paramtlj), paramsnl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
   }
   
-  public Class acceptEventClass()
+  public void a()
   {
-    return snl.class;
+    tna localtna = new tna();
+    localtna.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    syr.a().a(localtna, this);
   }
   
-  public void b(@NonNull tlj paramtlj, @NonNull snl paramsnl) {}
+  public void a(@NonNull tna paramtna, @Nullable toq paramtoq, @NonNull ErrorMessage paramErrorMessage)
+  {
+    tlo localtlo = new tlo();
+    if ((paramtoq == null) || (paramErrorMessage.isFail()))
+    {
+      c();
+      ste.a().dispatch(localtlo);
+      return;
+    }
+    veg.b("Q.qqstory.net:VidToShareGroupVideoInfoHandler", "onCmdRespond: request.count=" + paramtna.jdField_a_of_type_JavaUtilList.size() + ",content=" + paramtna.jdField_a_of_type_JavaUtilList.toString());
+    veg.b("Q.qqstory.net:VidToShareGroupVideoInfoHandler", "onCmdRespond: count=" + paramtoq.jdField_a_of_type_JavaUtilList.size() + ",content=" + paramtoq.toString());
+    b();
+    paramtoq.jdField_a_of_type_JavaUtilList = ((tcz)tdc.a(5)).a(paramtoq.jdField_a_of_type_JavaUtilList);
+    localtlo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramtna = paramtoq.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramtna.hasNext())
+    {
+      paramtoq = (StoryVideoItem)paramtna.next();
+      paramtoq = new uuf(paramtoq.mVid, paramtoq);
+      localtlo.jdField_a_of_type_JavaUtilList.add(paramtoq);
+    }
+    ste.a().dispatch(localtlo);
+  }
+  
+  public String toString()
+  {
+    return "VidToShareGroupVideoInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+  }
 }
 
 

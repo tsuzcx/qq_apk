@@ -1,20 +1,23 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
 
 class altl
-  extends GestureDetector.SimpleOnGestureListener
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  altl(altj paramaltj) {}
+  altl(altk paramaltk, String paramString) {}
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    altj.a(this.a);
-    return true;
+    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload onGetAppPathByName app=" + this.jdField_a_of_type_JavaLangString + ",retcode=" + paramInt + ",msg=" + paramString);
+    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null)) {
+      alti.a(this.jdField_a_of_type_Altk.a, this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path, alti.a(this.jdField_a_of_type_Altk.a), 2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     altl
  * JD-Core Version:    0.7.0.1
  */

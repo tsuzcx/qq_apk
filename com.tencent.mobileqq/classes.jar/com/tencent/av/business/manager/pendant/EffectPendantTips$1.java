@@ -1,20 +1,20 @@
 package com.tencent.av.business.manager.pendant;
 
 import android.text.TextUtils;
-import kyc;
-import lqb;
+import liu;
+import mat;
 
 public class EffectPendantTips$1
   implements Runnable
 {
-  public EffectPendantTips$1(kyc paramkyc, String paramString) {}
+  public EffectPendantTips$1(liu paramliu, String paramString) {}
   
   public void run()
   {
     try
     {
       if (!TextUtils.isEmpty(this.a)) {
-        lqb.a(kyc.a(this.this$0), 1016, this.a);
+        mat.a(liu.a(this.this$0), 1016, this.a);
       }
       return;
     }

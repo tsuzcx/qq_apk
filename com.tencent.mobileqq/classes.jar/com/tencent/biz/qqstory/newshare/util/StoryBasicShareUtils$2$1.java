@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.newshare.util;
 
-import tcp;
+import tpl;
 
 class StoryBasicShareUtils$2$1
   implements Runnable
@@ -9,8 +9,8 @@ class StoryBasicShareUtils$2$1
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Tcp != null) {
-      this.this$0.jdField_a_of_type_Tcp.a(this.this$0.jdField_a_of_type_Tew);
+    if (this.this$0.jdField_a_of_type_Tpl != null) {
+      this.this$0.jdField_a_of_type_Tpl.a(this.this$0.jdField_a_of_type_Trs);
     }
   }
 }

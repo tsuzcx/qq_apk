@@ -1,40 +1,37 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import android.app.Activity;
-import android.os.Bundle;
-import bdfz;
-import com.tencent.qqmini.sdk.core.proxy.AdProxy;
-import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsRewardVideoAdView;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import android.text.TextUtils;
+import beka;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class RewardedVideoAdPlugin$2
   implements Runnable
 {
-  RewardedVideoAdPlugin$2(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, Activity paramActivity, String paramString1, String paramString2, bdfz parambdfz, String paramString3, Bundle paramBundle) {}
+  RewardedVideoAdPlugin$2(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, String paramString, boolean paramBoolean, beka parambeka) {}
   
   public void run()
   {
-    AdProxy localAdProxy = (AdProxy)ProxyManager.get(AdProxy.class);
-    if (localAdProxy == null)
-    {
-      RewardedVideoAdPlugin.access$102(this.this$0, false);
-      return;
-    }
-    RewardedVideoAdPlugin.access$202(this.this$0, localAdProxy.createRewardVideoAdView(this.val$activity, this.val$appid, this.val$pos_id, new RewardedVideoAdPlugin.2.1(this), this.val$ext));
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      if (RewardedVideoAdPlugin.access$200(this.this$0) != null)
+      localJSONObject.put("state", "load");
+      if (!TextUtils.isEmpty(this.val$compId)) {
+        localJSONObject.put("compId", this.val$compId);
+      }
+      if (this.val$isSucc) {}
+      for (String str = "ok";; str = "error")
       {
-        RewardedVideoAdPlugin.access$200(this.this$0).loadAD();
+        localJSONObject.put("status", str);
+        RewardedVideoAdPlugin.access$800(this.this$0, this.val$req, localJSONObject, "onRewardedVideoShowDone");
         return;
       }
-    }
-    catch (Exception localException)
-    {
-      RewardedVideoAdPlugin.access$102(this.this$0, false);
       return;
     }
-    RewardedVideoAdPlugin.access$102(this.this$0, false);
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
   }
 }
 

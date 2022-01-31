@@ -1,22 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class aqbf
-  implements DialogInterface.OnClickListener
+  extends ajvl
 {
-  aqbf(aqbe paramaqbe) {}
+  aqbf(aqbc paramaqbc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable.a(2);
-    JefsClass.a(this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardBaseOption", 2, "updateDiscussionInfo start: isSuccess=" + paramBoolean);
+    }
+    String str = this.a.jdField_a_of_type_AndroidOsBundle.getString("uin");
+    paramObject = (ArrayList)paramObject;
+    int i = paramObject.indexOf(str);
+    if (i != -1)
+    {
+      paramObject = (Boolean)paramObject.get(i + 1);
+      if ((paramBoolean) && (paramObject.booleanValue()))
+      {
+        paramObject = ((ajvk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(str);
+        if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.discussionName)) && (this.a.jdField_a_of_type_Bbgg != null)) {
+          this.a.jdField_a_of_type_Bbgg.setTitle(ajyc.a(2131704732) + aqbt.g + paramObject.discussionName);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqbf
  * JD-Core Version:    0.7.0.1
  */

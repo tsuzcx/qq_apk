@@ -1,50 +1,35 @@
-import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
-import com.qq.taf.jce.JceStruct;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.widget.AuthorizationItem;
 
-public class bfpn
-  extends bfpm
+public final class bfpn
 {
-  newest_feeds_req a = new newest_feeds_req();
+  public final int a;
+  public final String a;
+  public final String b;
   
-  public bfpn(long paramLong, Map<Long, Long> paramMap)
+  public bfpn(String paramString1, String paramString2, int paramInt)
   {
-    this.a.cmd = 4;
-    this.a.login_uin = paramLong;
-    this.a.strQua = bfpk.a();
-    this.a.mapUinTimes = new HashMap();
-    this.a.mapUinTimes.putAll(paramMap);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public int a()
+  public static bfpn a(int paramInt)
   {
-    return 1000;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.getMsgNewestFeeds";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    return String.format("reqetuest ,cmd:%d,loginUin;%d,qua;%s,mapUintimes:%s ", new Object[] { Integer.valueOf(this.a.cmd), Long.valueOf(this.a.login_uin), this.a.strQua, String.valueOf(this.a.mapUinTimes) });
-  }
-  
-  public String uniKey()
-  {
-    return "getMsgNewestFeeds";
+    switch (paramInt)
+    {
+    default: 
+      return AuthorizationItem.d;
+    case 0: 
+      return AuthorizationItem.a;
+    case 1: 
+      return AuthorizationItem.b;
+    }
+    return AuthorizationItem.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfpn
  * JD-Core Version:    0.7.0.1
  */

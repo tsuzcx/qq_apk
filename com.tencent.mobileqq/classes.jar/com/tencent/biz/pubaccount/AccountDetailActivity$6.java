@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount;
 
-import badx;
+import bbfc;
 import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.qphone.base.util.QLog;
 
@@ -18,12 +18,10 @@ class AccountDetailActivity$6
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
     this.this$0.d();
     if (this.this$0.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams == null) {}
-    for (int i = 1;; i = 0)
+    for (boolean bool = true;; bool = false)
     {
-      badx.a("pubAcc_follow_confirm", null, this.this$0.d);
-      if ((i != 0) && (!AccountDetailActivity.a(this.this$0))) {
-        AccountDetailActivity.a(this.this$0, new AccountDetailActivity.6.1(this));
-      }
+      bbfc.a("pubAcc_follow_confirm", null, this.this$0.d);
+      AccountDetailActivity.a(this.this$0, new AccountDetailActivity.6.1(this, bool));
       return;
     }
   }

@@ -1,23 +1,72 @@
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharp.jni.TraeAudioSession;
+import com.tencent.widget.AdapterView;
 
-public class mtu
+class mtu
+  implements bfpc
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public ImageView b;
-  TextView b;
-  public ImageView c;
-  TextView c;
-  public ImageView d;
+  mtu(mtt parammtt, Button paramButton, long paramLong, bfol parambfol) {}
   
-  mtu(mtc parammtc) {}
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if (mtt.a(this.jdField_a_of_type_Mtt) != null)
+    {
+      paramAdapterView = (mua)mtt.a(this.jdField_a_of_type_Mtt).getItem(paramInt);
+      if ((paramAdapterView != null) && (!TextUtils.isEmpty(paramAdapterView.a)) && (this.jdField_a_of_type_Mtt.a != null))
+      {
+        if (!"DEVICE_BLUETOOTHHEADSET".equals(paramAdapterView.a)) {
+          break label199;
+        }
+        mat.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 3012);
+        if (this.jdField_a_of_type_AndroidWidgetButton != null) {
+          this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D20 at: " + System.currentTimeMillis());
+        }
+        axqw.b(null, "CliOper", "", "", "0X8008D20", "0X8008D20", 0, 0, "", "", "", "");
+      }
+    }
+    for (;;)
+    {
+      mtt.a(this.jdField_a_of_type_Mtt, true);
+      this.jdField_a_of_type_Mtt.a.a(msq.a());
+      this.jdField_a_of_type_Mtt.a.a(this.jdField_a_of_type_Long, paramAdapterView.a);
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      label199:
+      if ("DEVICE_SPEAKERPHONE".equals(paramAdapterView.a))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D1F at: " + System.currentTimeMillis());
+        }
+        axqw.b(null, "CliOper", "", "", "0X8008D1F", "0X8008D1F", 0, 0, "", "", "", "");
+      }
+      else if ("DEVICE_EARPHONE".equals(paramAdapterView.a))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-1 at: " + System.currentTimeMillis());
+        }
+        axqw.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 1, 0, "", "", "", "");
+      }
+      else if ("DEVICE_WIREDHEADSET".equals(paramAdapterView.a))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-2 at: " + System.currentTimeMillis());
+        }
+        axqw.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 2, 0, "", "", "", "");
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mtu
  * JD-Core Version:    0.7.0.1
  */

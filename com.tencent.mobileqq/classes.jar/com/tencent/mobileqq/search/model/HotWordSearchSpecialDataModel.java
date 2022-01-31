@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.model;
 
-import avpu;
+import awpn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -21,7 +21,7 @@ import pb.unite.search.DynamicDiscovery.TopicImage;
 import pb.unite.search.DynamicDiscovery.TopicItem;
 
 public class HotWordSearchSpecialDataModel
-  extends avpu
+  extends awpn
 {
   public final HotWordSearchSpecialDataModel.SpecialTopic a;
   

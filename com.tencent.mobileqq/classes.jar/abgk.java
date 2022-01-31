@@ -1,16 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class abgk
-  implements View.OnClickListener
+public abstract class abgk
 {
-  abgk(abgi paramabgi) {}
+  protected abgl a;
+  protected abgm a;
+  public QQAppInterface a;
+  protected int b = -1;
+  public String b;
   
-  public void onClick(View paramView)
+  public abgk(QQAppInterface paramQQAppInterface)
   {
-    if (abgi.a(this.a) != null) {
-      abgi.a(this.a).m();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public abstract int a();
+  
+  public abgm a()
+  {
+    return this.jdField_a_of_type_Abgm;
+  }
+  
+  public abstract abgm a(int paramInt);
+  
+  public Drawable a()
+  {
+    return null;
+  }
+  
+  public abstract void a(int paramInt);
+  
+  public void a(abgl paramabgl)
+  {
+    this.jdField_a_of_type_Abgl = paramabgl;
+  }
+  
+  public abstract void a(abgm paramabgm);
+  
+  public abstract void a(BaseActivity paramBaseActivity);
+  
+  public abstract void a(BaseActivity paramBaseActivity, abgm paramabgm);
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public abstract void b(BaseActivity paramBaseActivity);
+  
+  public void c(abgm paramabgm)
+  {
+    if ((paramabgm == this.jdField_a_of_type_Abgm) && (this.jdField_a_of_type_Abgl != null)) {
+      this.jdField_a_of_type_Abgl.a(paramabgm);
     }
   }
 }

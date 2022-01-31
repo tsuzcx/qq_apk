@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import abnj;
+import abxl;
 
 public class QQSettingSettingActivity$7$1
   implements Runnable
 {
-  public QQSettingSettingActivity$7$1(abnj paramabnj, String paramString) {}
+  public QQSettingSettingActivity$7$1(abxl paramabxl, String paramString) {}
   
   public void run()
   {
-    QQSettingSettingActivity.a(this.jdField_a_of_type_Abnj.a, this.jdField_a_of_type_JavaLangString);
+    QQSettingSettingActivity.a(this.jdField_a_of_type_Abxl.a, this.jdField_a_of_type_JavaLangString);
   }
 }
 

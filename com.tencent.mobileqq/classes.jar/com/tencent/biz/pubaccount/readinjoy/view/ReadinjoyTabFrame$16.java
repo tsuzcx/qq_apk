@@ -1,13 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import ohi;
+import android.view.View;
+import android.view.animation.AnimationUtils;
+import bbjn;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class ReadinjoyTabFrame$16
   implements Runnable
 {
   ReadinjoyTabFrame$16(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void run() {}
+  public void run()
+  {
+    if (ReadinjoyTabFrame.b(this.this$0) != null)
+    {
+      ReadinjoyTabFrame.b(this.this$0).setAnimation(AnimationUtils.loadAnimation(this.this$0.a(), 2130772302));
+      ReadinjoyTabFrame.b(this.this$0).setVisibility(8);
+      bbjn.A(this.this$0.a(), this.this$0.a.getCurrentAccountUin());
+    }
+  }
 }
 
 

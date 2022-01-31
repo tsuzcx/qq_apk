@@ -1,15 +1,312 @@
-final class bajf
-  implements bajk<Number>
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopFileError.1;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.app.MobileQQ;
+
+public class bajf
 {
-  public Float a(float paramFloat, Number paramNumber1, Number paramNumber2)
+  public static WeakReference<bajj> a = new WeakReference(null);
+  
+  private static String a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    float f = paramNumber1.floatValue();
-    return Float.valueOf(f + (paramNumber2.floatValue() - f) * paramFloat);
+    return paramQQAppInterface.getApplication().getResources().getString(paramInt);
+  }
+  
+  private static String a(QQAppInterface paramQQAppInterface, int paramInt, Object... paramVarArgs)
+  {
+    return String.format(a(paramQQAppInterface, paramInt), paramVarArgs);
+  }
+  
+  private static void a(Context paramContext, long paramLong)
+  {
+    bajg localbajg = new bajg(paramLong);
+    bbcv.a(paramContext, 230, paramContext.getResources().getString(2131697851), paramContext.getResources().getString(2131697852), 2131697904, 2131697549, localbajg, localbajg).show();
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, 0);
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    int i;
+    try
+    {
+      i = paramContext.getResources().getDimensionPixelSize(2131298865);
+      if (Looper.getMainLooper() != Looper.myLooper())
+      {
+        new Handler(Looper.getMainLooper()).post(new TroopFileError.1(paramContext, paramInt, paramString, i));
+        return;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("TroopFileError", 1, "showTipsToast error!", paramContext);
+      return;
+    }
+    bcpw.a(paramContext, paramInt, paramString, 0).b(i);
+  }
+  
+  public static void a(bajh parambajh, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    if ((parambajh == null) || (paramContext == null)) {
+      return;
+    }
+    if (!TextUtils.isEmpty(parambajh.jdField_b_of_type_JavaLangString))
+    {
+      a(paramContext, parambajh.jdField_b_of_type_JavaLangString, 1);
+      return;
+    }
+    String str = bakj.a(parambajh.jdField_a_of_type_JavaLangString);
+    int i;
+    switch (parambajh.jdField_a_of_type_Int)
+    {
+    default: 
+      str = null;
+      i = 0;
+    }
+    for (;;)
+    {
+      if ((parambajh.jdField_a_of_type_Int != 602) && (parambajh.jdField_a_of_type_Int != 604) && (parambajh.jdField_a_of_type_Int != 605)) {
+        break label1264;
+      }
+      if (BaseActivity.sTopActivity == null) {
+        break;
+      }
+      bide.a(paramQQAppInterface, BaseActivity.sTopActivity, BaseActivity.sTopActivity.getTitleBarHeight());
+      return;
+      str = a(paramQQAppInterface, 2131697928);
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131697853);
+      i = 0;
+      continue;
+      a(paramContext, paramLong);
+      str = null;
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131698018, new Object[] { str });
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131698016, new Object[] { str });
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131698017);
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131698015);
+      i = 1;
+      continue;
+      str = a(paramQQAppInterface, 2131698019);
+      i = 2;
+      continue;
+      str = a(paramQQAppInterface, 2131697565, new Object[] { str });
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131697563);
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131697564);
+      i = 1;
+      continue;
+      str = a(paramQQAppInterface, 2131698011);
+      i = 1;
+      continue;
+      str = a(paramQQAppInterface, 2131698039);
+      axqw.b(paramQQAppInterface, "P_CliOper", "Grp_files", "", "power", "nopower_upload", 0, 0, String.format("%d", new Object[] { Long.valueOf(paramLong) }), "2", "", "");
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131698037, new Object[] { str });
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131698032, new Object[] { str });
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131697975, new Object[] { str });
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131698034, new Object[] { str });
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131698033, new Object[] { str });
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131697928);
+      i = 1;
+      continue;
+      str = a(paramQQAppInterface, 2131697621);
+      i = 1;
+      continue;
+      str = a(paramQQAppInterface, 2131697622);
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131697582);
+      i = 1;
+      continue;
+      str = a(paramQQAppInterface, 2131697578);
+      i = 1;
+      continue;
+      str = a(paramQQAppInterface, 2131697580, new Object[] { str });
+      i = 1;
+      continue;
+      str = a(paramQQAppInterface, 2131697581, new Object[] { str });
+      i = 1;
+      continue;
+      str = a(paramQQAppInterface, 2131697579, new Object[] { str });
+      i = 0;
+      continue;
+      if (azph.a(parambajh.jdField_b_of_type_Int))
+      {
+        str = a(paramQQAppInterface, 2131698031, new Object[] { str });
+        i = 1;
+      }
+      else
+      {
+        str = a(paramQQAppInterface, 2131697577, new Object[] { str });
+        i = 1;
+        continue;
+        str = a(paramQQAppInterface, 2131698011);
+        i = 1;
+        continue;
+        str = a(paramQQAppInterface, 2131697635);
+        i = 0;
+        continue;
+        str = a(paramQQAppInterface, 2131697636);
+        i = 0;
+        continue;
+        str = a(paramQQAppInterface, 2131697639);
+        i = 2;
+        continue;
+        str = a(paramQQAppInterface, 2131697640);
+        i = 1;
+        continue;
+        str = parambajh.jdField_b_of_type_JavaLangString;
+        i = 0;
+        continue;
+        str = a(paramQQAppInterface, 2131697641);
+        i = 1;
+        continue;
+        str = a(paramQQAppInterface, 2131697643);
+        i = 0;
+        continue;
+        str = a(paramQQAppInterface, 2131697642);
+        i = 0;
+        continue;
+        str = a(paramQQAppInterface, 2131697644);
+        i = 1;
+        continue;
+        if (!TextUtils.isEmpty(parambajh.jdField_b_of_type_JavaLangString))
+        {
+          str = parambajh.jdField_b_of_type_JavaLangString;
+          i = 0;
+        }
+        else
+        {
+          str = a(paramQQAppInterface, 2131697645);
+          i = 0;
+          continue;
+          str = a(paramQQAppInterface, 2131697638);
+          i = 2;
+          continue;
+          str = a(paramQQAppInterface, 2131697637);
+          i = 0;
+        }
+      }
+    }
+    label1264:
+    if ((parambajh.jdField_a_of_type_Int == 601) || (parambajh.jdField_a_of_type_Int == 605) || (parambajh.jdField_a_of_type_Int == 802) || (parambajh.jdField_a_of_type_Int == 604) || (parambajh.jdField_a_of_type_Int == 702))
+    {
+      a(paramQQAppInterface, paramContext, str, i);
+      return;
+    }
+    a(paramContext, str, i);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  {
+    a(paramQQAppInterface, paramLong, 7, paramInt);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2)
+  {
+    a(paramQQAppInterface, paramLong, null, paramInt1, paramInt2);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, int paramInt1, int paramInt2)
+  {
+    if ((paramQQAppInterface == null) || (paramInt2 == 0)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder("reportSimpleError==> troopUin:");
+        localStringBuilder.append(paramLong).append(",filename:").append(paramString).append(",status:").append(paramInt1).append(",errorCode:").append(paramInt2);
+        QLog.e("TroopFileError", 2, localStringBuilder.toString());
+      }
+      paramQQAppInterface = (ajsz)paramQQAppInterface.a(22);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.b(new bajh(paramString, paramLong, paramInt1, paramInt2));
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
+  {
+    if (bici.a())
+    {
+      if (bici.b()) {
+        bici.a(paramQQAppInterface);
+      }
+    }
+    else {
+      return;
+    }
+    a(paramContext, paramString, paramInt);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, bajh parambajh)
+  {
+    if ((paramQQAppInterface == null) || (parambajh == null) || (parambajh.jdField_a_of_type_Int == 0)) {}
+    do
+    {
+      return;
+      paramQQAppInterface = (ajsz)paramQQAppInterface.a(22);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.b(parambajh);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, bajj parambajj)
+  {
+    if ((a != null) && (a.get() != null))
+    {
+      paramQQAppInterface.removeObserver((ajtg)a.get());
+      a = null;
+    }
+    a = new WeakReference(parambajj);
+    paramQQAppInterface.addObserver(parambajj);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, bajj parambajj)
+  {
+    paramQQAppInterface.removeObserver(parambajj);
+    if ((a != null) && (a.get() == parambajj)) {
+      a = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bajf
  * JD-Core Version:    0.7.0.1
  */

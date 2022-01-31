@@ -1,29 +1,8 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import cooperation.liveroom.LiveRoomGiftCallback;
+import android.graphics.Bitmap.Config;
 
-class baxf
-  implements MediaPlayer.OnCompletionListener
+public abstract interface baxf
 {
-  baxf(baxe parambaxe) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    if (baxe.a(this.a)) {
-      this.a.a.start();
-    }
-    for (;;)
-    {
-      if (baxe.a(this.a) != null) {
-        baxe.a(this.a).onCall(7, "");
-      }
-      return;
-      baxe.a(this.a, false);
-      if (baxe.a(this.a) != null) {
-        baxe.a(this.a).onCompletion(this.a.a);
-      }
-    }
-  }
+  public static final Bitmap.Config a = Bitmap.Config.ARGB_8888;
 }
 
 

@@ -1,29 +1,81 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewStub;
 
-class wkl
-  extends vnh
+public abstract class wkl<T>
+  extends wkk<T>
 {
-  wkl(wkf paramwkf, wkp paramwkp) {}
+  protected int c = -1;
   
-  public void onFailure(String paramString)
+  public wkl(Context paramContext, boolean paramBoolean)
   {
-    QLog.w(".troop.VideoCombineHelper", 1, "concatMediaByTs change ts onSuccess: " + paramString);
-    this.jdField_a_of_type_Wkp.onFailure(paramString);
+    super(paramContext, paramBoolean);
   }
   
-  public void onSuccess(String paramString)
+  protected abstract View a();
+  
+  protected View a(int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.w(".troop.trace_video_combine", 2, "concatMediaByTs change ts onSuccess: " + paramString);
-      QLog.d(".troop.trace_video_combine", 2, "convertToTsTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Wkf.a.a));
+    if (this.a != null) {
+      return this.a.findViewById(paramInt);
     }
-    this.jdField_a_of_type_Wkf.a.a = System.currentTimeMillis();
+    return null;
   }
+  
+  protected void a()
+  {
+    this.a = a();
+    g();
+  }
+  
+  public void a(View paramView)
+  {
+    if ((paramView != null) && (a())) {
+      ((ViewGroup)this.a).addView(paramView);
+    }
+  }
+  
+  public void a(ViewStub paramViewStub)
+  {
+    if (paramViewStub == null) {
+      return;
+    }
+    if (this.c != -1)
+    {
+      a(paramViewStub, this.c);
+      return;
+    }
+    paramViewStub.setLayoutResource(b());
+    this.a = paramViewStub.inflate();
+    if (b() == 2131562067) {
+      a(a());
+    }
+    g();
+  }
+  
+  public void a(ViewStub paramViewStub, int paramInt)
+  {
+    if (paramViewStub != null)
+    {
+      paramViewStub.setLayoutResource(paramInt);
+      this.a = paramViewStub.inflate();
+      g();
+    }
+  }
+  
+  protected boolean a()
+  {
+    return (this.a != null) && ((this.a instanceof ViewGroup));
+  }
+  
+  protected abstract int b();
+  
+  protected abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wkl
  * JD-Core Version:    0.7.0.1
  */

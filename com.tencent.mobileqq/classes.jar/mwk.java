@@ -1,29 +1,29 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
 
 public class mwk
-  implements begw
+  implements Animation.AnimationListener
 {
-  public mwk(AccountDetailActivity paramAccountDetailActivity) {}
+  public mwk(PoiMapActivity paramPoiMapActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.o) {
-      return;
+    paramAnimation = (FrameLayout.LayoutParams)PoiMapActivity.c(this.a).getLayoutParams();
+    paramAnimation.bottomMargin = (this.a.p + this.a.q);
+    PoiMapActivity.c(this.a).setLayoutParams(paramAnimation);
+    if ((this.a.e != null) && (this.a.e.getVisibility() != 8)) {
+      this.a.e.setVisibility(8);
     }
-    this.a.o = true;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      this.a.q();
-      continue;
-      this.a.E();
-    }
+    PoiMapActivity.d(this.a).clearAnimation();
+    this.a.a = true;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

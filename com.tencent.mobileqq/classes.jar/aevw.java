@@ -1,22 +1,8 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-
-public class aevw
-  implements aexf
+public abstract interface aevw
 {
-  public aevw(SearchContactsFragment paramSearchContactsFragment) {}
+  public abstract void a();
   
-  public void a(String paramString)
-  {
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = 80000001;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_label", 0, 0, "", "", paramString, "");
-      this.a.d = false;
-      this.a.a(paramString, false);
-    }
-  }
+  public abstract void b();
 }
 
 

@@ -1,148 +1,48 @@
-import android.app.Activity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.content.Context;
 
 public class wsj
-  extends wug
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bhcw jdField_a_of_type_Bhcw;
-  private wsr jdField_a_of_type_Wsr;
-  private RecyclerView jdField_b_of_type_AndroidSupportV7WidgetRecyclerView;
-  private CheckBox jdField_b_of_type_AndroidWidgetCheckBox;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private wsr jdField_b_of_type_Wsr;
-  private RecyclerView jdField_c_of_type_AndroidSupportV7WidgetRecyclerView;
-  private CheckBox jdField_c_of_type_AndroidWidgetCheckBox;
-  private wsr jdField_c_of_type_Wsr;
-  private RecyclerView jdField_d_of_type_AndroidSupportV7WidgetRecyclerView;
-  private CheckBox jdField_d_of_type_AndroidWidgetCheckBox;
-  private wsr jdField_d_of_type_Wsr;
-  
-  public wsj(Activity paramActivity, View paramView, wus paramwus)
+  public static void a(Context paramContext, int paramInt, wsq paramwsq)
   {
-    super(paramActivity, paramView, paramwus);
-    this.jdField_a_of_type_Bhcw = ((bhcw)paramwus.a(65537, new Object[0]));
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new wsl(this));
-    this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new wsm(this));
-    this.jdField_c_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new wsn(this));
-    this.jdField_d_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new wso(this));
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_Wsr = new wsr(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_b_of_type_Wsr = new wsr(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_c_of_type_Wsr = new wsr(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_d_of_type_Wsr = new wsr(this.jdField_a_of_type_AndroidAppActivity);
-    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 1, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Wsr);
-    localLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 1, false);
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_b_of_type_Wsr);
-    localLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 1, false);
-    this.jdField_c_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    this.jdField_c_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_c_of_type_Wsr);
-    localLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 1, false);
-    this.jdField_d_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    this.jdField_d_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_d_of_type_Wsr);
-  }
-  
-  private void g()
-  {
-    QIPCClientHelper.getInstance().callServer("AECameraGetInfoServer", "ACTION_GET_ENV_INFO", null, new wsp(this));
-  }
-  
-  private void j()
-  {
-    bgxl.a().a(this.jdField_a_of_type_Bhcw, new wsq(this));
-  }
-  
-  protected void a()
-  {
-    View localView = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131296613)).inflate();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131296618));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131296619));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131296616));
-    this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131296621));
-    this.jdField_c_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131296624));
-    this.jdField_d_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131296623));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131296615));
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131296620));
-    this.jdField_c_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131296614));
-    this.jdField_d_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131296622));
-    e();
-    f();
-    g();
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new wsk(this));
-    j();
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    Object localObject2;
-    Object localObject3;
-    if (paramInt == 720897)
-    {
-      localObject2 = (List)paramVarArgs[0];
-      localObject1 = (List)paramVarArgs[1];
-      paramVarArgs = new LinkedList();
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (bgxo)((Iterator)localObject2).next();
-        localwst = new wst(null);
-        localwst.a = wsv.a((bgxo)localObject3);
-        paramVarArgs.add(localwst);
-      }
-      localObject2 = new LinkedList();
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject3 = (bgxn)((Iterator)localObject1).next();
-        localwst = new wst(null);
-        localwst.a = ((bgxn)localObject3).toString();
-        ((List)localObject2).add(localwst);
-      }
-      this.jdField_a_of_type_Wsr.a(paramVarArgs);
-      this.jdField_c_of_type_Wsr.a((List)localObject2);
+    bfol localbfol = bfol.a(paramContext);
+    localbfol.a(String.format(paramContext.getString(2131719946), new Object[] { Integer.valueOf(paramInt) }));
+    localbfol.b(2131719945);
+    localbfol.c(2131690596);
+    localbfol.a(new wsn(paramwsq, localbfol));
+    localbfol.a(new wso(paramwsq, localbfol));
+    if (!localbfol.isShowing()) {
+      localbfol.show();
     }
-    while (paramInt != 720898)
-    {
-      wst localwst;
-      return;
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, wsq paramwsq, wsp paramwsp)
+  {
+    a(paramContext, null, paramStFeed, paramwsq, paramwsp);
+  }
+  
+  private static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, wsq paramwsq, wsp paramwsp)
+  {
+    bfol localbfol = bfol.a(paramContext);
+    localbfol.a(paramContext.getString(2131719947));
+    localbfol.a(2131719948, 3);
+    localbfol.c(2131690596);
+    localbfol.a(new wsk(localbfol, paramwsp));
+    localbfol.a(new wsl(paramStUser, paramStFeed, paramwsq, paramwsp, localbfol));
+    if (!localbfol.isShowing()) {
+      localbfol.show();
     }
-    Object localObject1 = bgxl.a.a();
-    paramVarArgs = new LinkedList();
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (String)((Iterator)localObject1).next();
-      localObject3 = new wst(null);
-      ((wst)localObject3).a = ((CharSequence)localObject2);
-      paramVarArgs.add(localObject3);
-    }
-    this.jdField_d_of_type_Wsr.a(paramVarArgs);
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, wsq paramwsq, wsp paramwsp)
+  {
+    a(paramContext, paramStUser, null, paramwsq, paramwsp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wsj
  * JD-Core Version:    0.7.0.1
  */

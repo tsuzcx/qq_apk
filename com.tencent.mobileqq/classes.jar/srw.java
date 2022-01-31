@@ -1,21 +1,29 @@
-public class srw
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+
+class srw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  @vlq(a="unionID")
-  public String a;
-  @vlq(a="feedID")
-  public String b;
-  @vlq(a="vid")
-  public String c;
-  @vlq(a="fwReason")
-  public String d;
-  @vlq(a="isNewFw")
-  public String e;
-  public String f;
-  public String g;
+  srw(srv paramsrv) {}
   
-  public boolean a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return "1".equals(this.e);
+    if (paramBoolean)
+    {
+      srv.a(this.a);
+      if (srv.a(this.a)) {
+        vel.a("video_shoot_slides", "clk_setting_on", 0, 0, new String[0]);
+      }
+    }
+    for (;;)
+    {
+      srv.a(this.a, paramBoolean);
+      return;
+      srv.b(this.a);
+      if (srv.a(this.a)) {
+        vel.a("video_shoot_slides", "clk_setting_close", 0, 0, new String[0]);
+      }
+    }
   }
 }
 

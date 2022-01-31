@@ -31,6 +31,8 @@ import com.tencent.ttpic.openapi.model.NodeItemJava;
 import com.tencent.ttpic.openapi.model.Point3D;
 import com.tencent.ttpic.openapi.model.StarParam;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.TriggerActionItem;
+import com.tencent.ttpic.openapi.model.TriggerExpression;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.model.VideoMaterialMetaData;
 import com.tencent.ttpic.openapi.model.WMElementConfig;
@@ -1486,7 +1488,7 @@ public class VideoMaterialUtil
     return (paramVideoMaterial != null) && (paramVideoMaterial.getFilamentParticleList() != null) && (!paramVideoMaterial.getFilamentParticleList().isEmpty());
   }
   
-  private static boolean isGameplayMaterial(VideoMaterial paramVideoMaterial)
+  public static boolean isGameplayMaterial(VideoMaterial paramVideoMaterial)
   {
     if (paramVideoMaterial == null) {}
     while (paramVideoMaterial.getGameParams() == null) {
@@ -1645,6 +1647,15 @@ public class VideoMaterialUtil
     return true;
   }
   
+  public static boolean isHotAreaTriggerItem(StickerItem paramStickerItem)
+  {
+    if (paramStickerItem == null) {}
+    while ((paramStickerItem.triggerArea == null) || (paramStickerItem.triggerArea.size() <= 0)) {
+      return false;
+    }
+    return true;
+  }
+  
   public static boolean isMeshUsed(VideoMaterial paramVideoMaterial)
   {
     return (paramVideoMaterial != null) && (paramVideoMaterial.isUseMesh());
@@ -1662,29 +1673,47 @@ public class VideoMaterialUtil
     {
       Object localObject2 = paramVideoMaterial.getItemList();
       Object localObject1 = paramVideoMaterial.getItemList3D();
-      paramVideoMaterial = paramVideoMaterial.getHeadCropItemList();
+      Object localObject3 = paramVideoMaterial.getHeadCropItemList();
       ArrayList localArrayList = new ArrayList();
       if (localObject2 != null) {
         localArrayList.addAll((Collection)localObject2);
       }
-      if (paramVideoMaterial != null) {
-        localArrayList.addAll(paramVideoMaterial);
+      if (localObject3 != null) {
+        localArrayList.addAll((Collection)localObject3);
       }
-      paramVideoMaterial = localArrayList.iterator();
-      while (paramVideoMaterial.hasNext())
+      localObject2 = localArrayList.iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        localObject2 = (StickerItem)paramVideoMaterial.next();
-        if (((((StickerItem)localObject2).type == VideoFilterFactory.POSITION_TYPE.GESTURE.type) || (isGestureTriggerType(((StickerItem)localObject2).getTriggerTypeInt()))) && (isContainHandBonePoint(((StickerItem)localObject2).alignFacePoints))) {
+        localObject3 = (StickerItem)((Iterator)localObject2).next();
+        if (((((StickerItem)localObject3).type == VideoFilterFactory.POSITION_TYPE.GESTURE.type) || (isGestureTriggerType(((StickerItem)localObject3).getTriggerTypeInt()))) && (isContainHandBonePoint(((StickerItem)localObject3).alignFacePoints))) {
+          return true;
+        }
+        if ((((StickerItem)localObject3).triggerArea != null) && (((StickerItem)localObject3).triggerArea.size() > 0)) {
           return true;
         }
       }
       if (localObject1 != null)
       {
-        paramVideoMaterial = ((List)localObject1).iterator();
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (StickerItem3D)((Iterator)localObject1).next();
+          if (((((StickerItem3D)localObject2).type == VideoFilterFactory.POSITION_TYPE.GESTURE.type) || (isGestureTriggerType(((StickerItem3D)localObject2).getTriggerTypeInt()))) && (isContainHandBonePoint(((StickerItem3D)localObject2).alignFacePoints))) {
+            return true;
+          }
+          if ((((StickerItem3D)localObject2).triggerArea != null) && (((StickerItem3D)localObject2).triggerArea.size() > 0)) {
+            return true;
+          }
+        }
+      }
+      paramVideoMaterial = paramVideoMaterial.getTriggerActionItemList();
+      if (paramVideoMaterial != null)
+      {
+        paramVideoMaterial = paramVideoMaterial.iterator();
         while (paramVideoMaterial.hasNext())
         {
-          localObject1 = (StickerItem3D)paramVideoMaterial.next();
-          if (((((StickerItem3D)localObject1).type == VideoFilterFactory.POSITION_TYPE.GESTURE.type) || (isGestureTriggerType(((StickerItem3D)localObject1).getTriggerTypeInt()))) && (isContainHandBonePoint(((StickerItem3D)localObject1).alignFacePoints))) {
+          localObject1 = (TriggerActionItem)paramVideoMaterial.next();
+          if ((localObject1 != null) && (((TriggerActionItem)localObject1).mTriggerExpression != null) && (((TriggerActionItem)localObject1).mTriggerExpression.triggerArea != null) && (((TriggerActionItem)localObject1).mTriggerExpression.triggerArea.size() > 0)) {
             return true;
           }
         }

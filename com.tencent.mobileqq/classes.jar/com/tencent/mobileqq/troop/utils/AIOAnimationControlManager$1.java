@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.utils;
 
-import azfo;
+import bagr;
 import com.tencent.qphone.base.util.QLog;
 
 public class AIOAnimationControlManager$1
   implements Runnable
 {
-  public AIOAnimationControlManager$1(azfo paramazfo) {}
+  public AIOAnimationControlManager$1(bagr parambagr) {}
   
   public void run()
   {
-    azfo.a(this.this$0);
+    bagr.a(this.this$0);
     try
     {
       this.this$0.a();

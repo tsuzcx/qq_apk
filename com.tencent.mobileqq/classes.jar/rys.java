@@ -1,142 +1,217 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Build;
 import android.text.TextUtils;
-import common.config.service.QzoneConfig;
+import android.util.Base64;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.mini.util.DisplayUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.ui.dom.style.FlexConvertUtils;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class rys
-  implements Handler.Callback
 {
-  private static final bgdp<rys, Void> jdField_a_of_type_Bgdp = new ryt();
-  private static String jdField_a_of_type_JavaLangString;
-  public Handler a;
+  public static String a = "ViolaBizUtils";
+  private static String b = "8.0.6";
   
-  public static rys a()
+  public static String a()
   {
-    return (rys)jdField_a_of_type_Bgdp.b(null);
-  }
-  
-  private static void c(ryz paramryz)
-  {
-    if ((paramryz == null) || (paramryz.jdField_a_of_type_Ryw == null) || (TextUtils.isEmpty(paramryz.jdField_a_of_type_Ryw.c()))) {}
+    int j = 1;
+    JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
-      return;
       try
       {
-        if (jdField_a_of_type_JavaLangString == null) {
-          jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "LinkReportCmds", "getVisitorNotify,getWidget,getActiveFeeds,getFeedAlert,getMainPage,getHostHBInfo,getProfileFeeds,applist.shuoshuo,applist.photo,detail.shuoshuo,detail.photo,getPassiveFeeds,getPhotoListEx,like,addComment,forward,Operation.shareOutsite");
+        localJSONObject.put("platform", "Android");
+        localJSONObject.put("osVersion", bbct.e());
+        localJSONObject.put("appName", bbct.c());
+        localJSONObject.put("appVersion", "8.2.8.4440");
+        DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
+        i = (int)(FlexConvertUtils.getScreenHeight(BaseApplication.getContext()) / localDisplayMetrics.density);
+        int k = (int)(FlexConvertUtils.getScreenWidth(BaseApplication.getContext()) / localDisplayMetrics.density);
+        float f = localDisplayMetrics.density;
+        localJSONObject.put("deviceWidth", k);
+        localJSONObject.put("deviceHeight", i);
+        localJSONObject.put("dpToPxRatio", f);
+        localJSONObject.put("deviceModel", Build.MODEL);
+        localJSONObject.put("violaVersion", b);
+        localJSONObject.put("statusBarHeight", ImmersiveUtils.getStatusBarHeight(BaseApplication.getContext()) / localDisplayMetrics.density);
+        localJSONObject.put("appID", "1");
+        localJSONObject.put("isDebug", 0);
+        localJSONObject.put("navBarHeight", DisplayUtil.getNavigationBarHeight(BaseApplication.getContext()) / localDisplayMetrics.density);
+        localJSONObject.put("deviceBrand", Build.BRAND);
+        localJSONObject.put("appVersionId", AppSetting.a());
+        bkur.a(BaseActivity.sTopActivity);
+        if (!bkur.b()) {
+          continue;
         }
-        String str = paramryz.jdField_a_of_type_Ryw.c();
-        if ((jdField_a_of_type_JavaLangString.contains(str)) && (paramryz.b != 0))
-        {
-          sai.d("WeishiBusinessLooper", "cmd error report! cmd=" + str + " retCode=" + paramryz.b + " msg=" + paramryz.jdField_a_of_type_JavaLangString + " duration=" + (System.currentTimeMillis() - paramryz.jdField_a_of_type_Long));
-          return;
+        i = 1;
+        localJSONObject.put("isLiuHai", i);
+        if (bbwc.a() != 1) {
+          continue;
         }
+        i = j;
+        localJSONObject.put("isKinCard", i);
+        localJSONObject.put("netType", nam.a());
       }
-      catch (Exception paramryz)
+      catch (JSONException localJSONException)
       {
-        sai.d("weishi-BusinessLooper", "reportRequest Exception:" + paramryz.getLocalizedMessage());
+        int i;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d(a, 2, "env JSONException");
+        continue;
+      }
+      return localJSONObject.toString();
+      i = 0;
+      continue;
+      i = 0;
+    }
+  }
+  
+  public static String a(String paramString)
+  {
+    String str = Uri.parse(paramString).getQueryParameter("v_bid");
+    paramString = str;
+    if (TextUtils.isEmpty(str)) {
+      paramString = "-1";
+    }
+    return paramString;
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    String str = mzk.a(paramString1);
+    if (TextUtils.isEmpty(str)) {}
+    do
+    {
+      return null;
+      paramString1 = str + paramString1;
+      paramString2 = mze.d(paramString2);
+    } while (TextUtils.isEmpty(paramString2));
+    return paramString1 + "/" + paramString2;
+  }
+  
+  public static JSONObject a()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("viewDidAppear", 1);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException) {}
+    return new JSONObject();
+  }
+  
+  public static JSONObject a(int paramInt)
+  {
+    try
+    {
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("type", paramInt);
+      localJSONObject1.put("pageRefresh", localJSONObject2);
+      return localJSONObject1;
+    }
+    catch (JSONException localJSONException) {}
+    return new JSONObject();
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      String str;
+      do
+      {
+        return false;
+        str = Uri.parse(paramString).getQueryParameter("v_bid");
+      } while (TextUtils.isEmpty(str));
+      paramString = a(str, paramString);
+    } while ((TextUtils.isEmpty(paramString)) || (!new File(paramString).exists()));
+    return true;
+  }
+  
+  public static String b()
+  {
+    long l = System.currentTimeMillis();
+    return "&time=" + String.valueOf(l).substring(0, 7);
+  }
+  
+  public static String b(String paramString)
+  {
+    String str = Uri.parse(paramString).getQueryParameter("v_bid");
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+    return a(str, paramString);
+  }
+  
+  public static JSONObject b()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("viewDidDisappear", 1);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException) {}
+    return new JSONObject();
+  }
+  
+  public static String c(String paramString)
+  {
+    SharedPreferences localSharedPreferences;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localSharedPreferences = bhvh.a(BaseApplicationImpl.getApplication().getRuntime(), true, true);
+      if (localSharedPreferences == null) {
+        QLog.d(a, 1, "failed to getItem");
       }
     }
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-  }
-  
-  public void a(Runnable paramRunnable, long paramLong)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, paramLong);
-  }
-  
-  public void a(ryz paramryz)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 0;
-    localMessage.obj = paramryz;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void b(Runnable paramRunnable)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramRunnable);
-    }
-  }
-  
-  public void b(ryz paramryz)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    localMessage.obj = paramryz;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (paramMessage == null)
+    else
     {
-      sai.d("weishi-BusinessLooper", "WeishiBusinessLooper handleMessage, msg is null");
-      return true;
+      return null;
     }
-    switch (paramMessage.what)
+    return localSharedPreferences.getString(paramString, null);
+  }
+  
+  public static JSONObject c()
+  {
+    try
     {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("pageDestroy", 1);
+      return localJSONObject;
     }
-    ryz localryz;
+    catch (JSONException localJSONException) {}
+    return new JSONObject();
+  }
+  
+  public static String d(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    String str;
     do
     {
       do
       {
-        return false;
-        localryz = (ryz)paramMessage.obj;
-      } while (localryz == null);
-      localStringBuilder = new StringBuilder().append("runTask cmd=");
-      if (localryz.jdField_a_of_type_Ryw != null) {}
-      for (paramMessage = localryz.jdField_a_of_type_Ryw.getCmdString();; paramMessage = "mRequest is null")
-      {
-        sai.c("weishi-BusinessLooper", paramMessage);
-        localryz.a();
-        break;
-      }
-      localryz = (ryz)paramMessage.obj;
-    } while (localryz == null);
-    StringBuilder localStringBuilder = new StringBuilder().append("completeTask resultCode:").append(localryz.b).append(", cmd=");
-    if (localryz.jdField_a_of_type_Ryw != null) {}
-    for (paramMessage = localryz.jdField_a_of_type_Ryw.getCmdString();; paramMessage = "mRequest is null")
-    {
-      for (;;)
-      {
-        sai.d("weishi-BusinessLooper", paramMessage);
-        if (localryz.jdField_a_of_type_Ryo == null) {
-          break;
-        }
-        try
-        {
-          c(localryz);
-          localryz.jdField_a_of_type_Ryo.a(localryz);
-        }
-        catch (Exception paramMessage)
-        {
-          sai.d("weishi-BusinessLooper", "handleMessage MSG_COMPLETE_TASK:" + paramMessage.getLocalizedMessage());
-        }
-      }
-      break;
-    }
+        return paramString;
+      } while (!paramString.contains("v_url_base64"));
+      str = Uri.parse(paramString).getQueryParameter("v_url_base64");
+    } while (TextUtils.isEmpty(str));
+    return new String(Base64.decode(str, 0));
   }
 }
 

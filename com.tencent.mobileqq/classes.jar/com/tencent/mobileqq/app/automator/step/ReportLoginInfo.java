@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import awqx;
+import axqw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -20,7 +20,7 @@ public class ReportLoginInfo
       if (str2 == null) {
         str1 = "";
       }
-      awqx.a(this.a.app, "dc00899", "TSTViewTime", str1, "AChanged", "2", 0, 0, SecUtil.toHexString(NetConnInfoCenter.GUID), "", "", "");
+      axqw.a(this.a.app, "dc00899", "TSTViewTime", str1, "AChanged", "2", 0, 0, SecUtil.toHexString(NetConnInfoCenter.GUID), "", "", "");
       if (QLog.isColorLevel()) {
         QLog.d("ReportLoginInfo", 2, "---> report login! --- uin: " + str1 + " Guid: " + SecUtil.toHexString(NetConnInfoCenter.GUID));
       }

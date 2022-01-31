@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingFragment;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
 
-class aiyz
-  implements Comparator<ApolloActionData>
+public class aiyz
+  extends aizf
 {
-  aiyz(aiyu paramaiyu) {}
+  public aiyz(CmGameLoadingFragment paramCmGameLoadingFragment) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void a(boolean paramBoolean, long paramLong, Object paramObject)
   {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
+    if (CmGameLoadingFragment.a(this.a) != null) {
+      CmGameLoadingFragment.a(this.a).a(paramBoolean, paramLong);
     }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
-    }
-    return -1;
   }
 }
 

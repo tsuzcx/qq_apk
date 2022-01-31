@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aciy;
-import ajjy;
+import actn;
+import ajyc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -12,20 +12,20 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import badq;
-import bati;
+import bbev;
+import bbwc;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KanDianRoundCornerTextView;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import obj;
-import obz;
-import opw;
-import ppu;
-import qcn;
-import qoe;
+import omu;
+import onk;
+import pax;
+import qbq;
+import qol;
+import rap;
 
 public class ComponentContentBigImageVideo
   extends ComponentContentBig
@@ -51,31 +51,31 @@ public class ComponentContentBigImageVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131494280, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559851, this, true);
   }
   
-  public URL a(opw paramopw)
+  public URL a(pax parampax)
   {
-    Object localObject1 = paramopw.a();
+    Object localObject1 = parampax.a();
     Object localObject2;
-    if (paramopw.a() == 51)
+    if (parampax.a() == 51)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ComponentContentBigImageVideo", 2, "PolymericArticle use first page url");
       }
-      if ((obz.s((BaseArticleInfo)localObject1)) && (((ArticleInfo)localObject1).mSinglePicture != null) && (((ArticleInfo)localObject1).mNewPolymericInfo != null) && (!((ArticleInfo)localObject1).mNewPolymericInfo.b))
+      if ((onk.s((BaseArticleInfo)localObject1)) && (((ArticleInfo)localObject1).mSinglePicture != null) && (((ArticleInfo)localObject1).mNewPolymericInfo != null) && (!((ArticleInfo)localObject1).mNewPolymericInfo.b))
       {
-        paramopw = ((ArticleInfo)localObject1).mSinglePicture.getFile();
-        localObject2 = obj.f();
-        paramopw = obz.a(paramopw, ((Integer)((Pair)localObject2).first).intValue(), ((Integer)((Pair)localObject2).second).intValue());
-        ((ArticleInfo)localObject1).mSinglePicture = obz.a(paramopw);
+        parampax = ((ArticleInfo)localObject1).mSinglePicture.getFile();
+        localObject2 = omu.f();
+        parampax = onk.a(parampax, ((Integer)((Pair)localObject2).first).intValue(), ((Integer)((Pair)localObject2).second).intValue());
+        ((ArticleInfo)localObject1).mSinglePicture = onk.a(parampax);
         ((ArticleInfo)localObject1).mNewPolymericInfo.b = true;
         if (QLog.isColorLevel()) {
-          QLog.e("ComponentContentBigImageVideo", 2, " handled url = " + paramopw);
+          QLog.e("ComponentContentBigImageVideo", 2, " handled url = " + parampax);
         }
       }
-      paramopw = ((ArticleInfo)localObject1).mSinglePicture;
-      return paramopw;
+      parampax = ((ArticleInfo)localObject1).mSinglePicture;
+      return parampax;
     }
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams() != null))
     {
@@ -90,7 +90,7 @@ public class ComponentContentBigImageVideo
         if (localObject1 == null) {
           break label306;
         }
-        paramopw = (opw)localObject1;
+        parampax = (pax)localObject1;
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -104,62 +104,62 @@ public class ComponentContentBigImageVideo
       }
     }
     label306:
-    return super.a(paramopw);
+    return super.a(parampax);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.b = ((TextView)paramView.findViewById(2131299841));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131306050));
-    this.c = ((TextView)paramView.findViewById(2131313708));
+    this.b = ((TextView)paramView.findViewById(2131365421));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371747));
+    this.c = ((TextView)paramView.findViewById(2131379543));
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof opw))
+    if ((paramObject instanceof pax))
     {
-      paramObject = ((opw)paramObject).a();
+      paramObject = ((pax)paramObject).a();
       if (paramObject != null) {
-        if (((qoe.a(paramObject)) || (qoe.i(paramObject)) || (qoe.j(paramObject)) || (qoe.k(paramObject))) && ((qoe.q(paramObject)) && (!qoe.a(paramObject)) && (!qoe.d(paramObject)))) {
+        if (((rap.a(paramObject)) || (rap.i(paramObject)) || (rap.j(paramObject)) || (rap.k(paramObject))) && ((rap.q(paramObject)) && (!rap.a(paramObject)) && (!rap.d(paramObject)))) {
           break label102;
         }
       }
     }
-    while (badq.h(getContext()))
+    while (bbev.h(getContext()))
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       this.c.setVisibility(4);
       return;
       label102:
-      if (obz.s(paramObject))
+      if (onk.s(paramObject))
       {
         this.b.setVisibility(8);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setVisibility(8);
       }
       else
       {
-        this.b.setText(obj.a(paramObject.mVideoDuration));
+        this.b.setText(omu.a(paramObject.mVideoDuration));
       }
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     this.c.setVisibility(0);
-    Drawable localDrawable = getContext().getResources().getDrawable(2130842494);
+    Drawable localDrawable = getContext().getResources().getDrawable(2130842576);
     this.c.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
-    this.c.setCompoundDrawablePadding(aciy.a(6.0F, getContext().getResources()));
+    this.c.setCompoundDrawablePadding(actn.a(6.0F, getContext().getResources()));
     this.c.setVisibility(0);
-    if (bati.a() == 1)
+    if (bbwc.a() == 1)
     {
-      this.c.setText(ajjy.a(2131636467));
+      this.c.setText(ajyc.a(2131702251));
       return;
     }
     if (paramObject.mXGFileSize > 0L)
     {
-      this.c.setText(qcn.b(paramObject.mXGFileSize) + ajjy.a(2131636520));
+      this.c.setText(qol.b(paramObject.mXGFileSize) + ajyc.a(2131702304));
       return;
     }
-    this.c.setText(ajjy.a(2131636552));
+    this.c.setText(ajyc.a(2131702336));
   }
   
   public void b()

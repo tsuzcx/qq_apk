@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard.data;
 
-import alqa;
+import ameq;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -15,7 +15,7 @@ import org.json.JSONException;
 public class CardMobileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CardMobileInfo> CREATOR = new alqa();
+  public static final Parcelable.Creator<CardMobileInfo> CREATOR = new ameq();
   public String a;
   public boolean a;
   public String b;

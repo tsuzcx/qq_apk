@@ -1,37 +1,78 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.confess.ConfessPlugin;
-import com.tencent.mobileqq.confess.ConfessPlugin.5;
-import com.tencent.mobileqq.confess.ConfessPlugin.5.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
 
 public class alyg
-  implements bbsh
+  extends alyc
 {
-  public alyg(ConfessPlugin.5.1 param1) {}
+  private float a;
+  private float b = -1.0F;
+  private float c = -1.0F;
+  float[] d = new float[3];
+  private float[] e = new float[16];
   
-  public void a(BaseResp paramBaseResp)
+  public alyg(Context paramContext, int paramInt, SensorManager paramSensorManager, alxu paramalxu)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfessPlugin", 2, "onWXShareResp resp.errCode=" + paramBaseResp.errCode);
-    }
-    switch (paramBaseResp.errCode)
+    super(paramContext, paramInt, paramSensorManager, paramalxu);
+    this.jdField_a_of_type_Float = -1.0F;
+    if (paramSensorManager.getDefaultSensor(3) != null)
     {
-    case -1: 
-    default: 
-      ConfessPlugin.a(this.a.a.this$0, false);
-      ConfessPlugin.a(this.a.a.this$0, 1, 2131653595);
-      return;
-    case 0: 
-      ConfessPlugin.a(this.a.a.this$0, true);
-      ConfessPlugin.a(this.a.a.this$0, 2, 2131653612);
+      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager.getDefaultSensor(3));
       return;
     }
-    ConfessPlugin.a(this.a.a.this$0, false);
+    throw new OrientationProviderNotFound(String.valueOf(3));
+  }
+  
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (this.jdField_a_of_type_Alxu == null) {
+      return;
+    }
+    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
+    {
+      this.jdField_a_of_type_Float = paramFloat1;
+      this.jdField_a_of_type_Alxu.updateAzimuth(paramFloat1);
+    }
+    if (Math.abs(paramFloat2 - this.b) > 1.0F)
+    {
+      this.b = paramFloat2;
+      this.jdField_a_of_type_Alxu.updatePitch(paramFloat2);
+    }
+    if (Math.abs(paramFloat3 - this.c) > 1.0F)
+    {
+      this.c = paramFloat3;
+      this.jdField_a_of_type_Alxu.updateRoll(paramFloat3);
+    }
+    this.jdField_a_of_type_Alxu.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if (paramSensorEvent.sensor.getType() == 3)
+    {
+      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
+      if (this.jdField_a_of_type_Int != 1)
+      {
+        this.d[0] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[0]));
+        this.d[1] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[1]));
+        this.d[2] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[2]));
+        alxw.a(alxw.a(this.d), this.e);
+        super.a(this.e);
+      }
+    }
+    else
+    {
+      return;
+    }
+    a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alyg
  * JD-Core Version:    0.7.0.1
  */

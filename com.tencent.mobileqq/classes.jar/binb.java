@@ -1,47 +1,21 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class binb
-  implements bikd
+class binb
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ArrayList<bika> a = null;
+  binb(bimz parambimz) {}
   
-  public binb(bika... paramVarArgs)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      throw new IllegalArgumentException("layers should not be null or empty");
-    }
-    this.a = new ArrayList(paramVarArgs.length);
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
+    paramCompoundButton = bimz.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-      bika localbika = paramVarArgs[i];
-      if (localbika != null) {
-        this.a.add(localbika);
-      }
-      i += 1;
+      paramCompoundButton.setVisibility(i);
+      return;
     }
-  }
-  
-  public bika a(String paramString)
-  {
-    int j = this.a.size();
-    int i = 0;
-    while (i < j)
-    {
-      if (((bika)this.a.get(i)).a().equals(paramString)) {
-        return (bika)this.a.get(i);
-      }
-      i += 1;
-    }
-    return null;
-  }
-  
-  public void a(List<bika> paramList, DoodleView paramDoodleView)
-  {
-    paramList.addAll(this.a);
   }
 }
 

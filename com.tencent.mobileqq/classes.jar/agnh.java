@@ -1,19 +1,20 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
 public class agnh
-  extends agnn
+  implements bcvx
 {
-  public agnh(QzoneHbFragment paramQzoneHbFragment) {}
+  public agnh(PhotoListActivity paramPhotoListActivity, Runnable paramRunnable) {}
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt)
   {
-    QzoneHbFragment.a(this.a).setEnabled(QzoneHbFragment.a(this.a));
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agnh
  * JD-Core Version:    0.7.0.1
  */

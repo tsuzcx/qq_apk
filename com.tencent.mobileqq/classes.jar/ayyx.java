@@ -1,60 +1,38 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
-
 public class ayyx
-  extends BaseAdapter
+  extends ayyy
 {
-  public ayyy a;
-  protected List<String> a = new ArrayList();
+  public int a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public String a(int paramInt)
+  public ayyx()
   {
-    return (String)this.a.get(paramInt);
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(String paramString)
+  public String toString()
   {
-    this.a.add(paramString);
-  }
-  
-  public int getCount()
-  {
-    return this.a.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131494796, null, false);
-      paramViewGroup = new ayyz(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312543));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramViewGroup);
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      String str = a(paramInt);
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      return paramView;
-      paramViewGroup = (ayyz)paramView.getTag();
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" name:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" size:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" voiceLength:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" autoToText:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" type:").append(this.c).append(" audioPanel:").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayyx
  * JD-Core Version:    0.7.0.1
  */

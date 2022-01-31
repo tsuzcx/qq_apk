@@ -1,41 +1,24 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.qzonevip.gift.QzoneGiftUtil.1;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import java.util.ArrayList;
 
-public class auol
-  implements QzoneZipCacheHelperCallBack
+public abstract interface auol
 {
-  public auol(QzoneGiftUtil.1 param1) {}
+  public abstract void a(int paramInt);
   
-  public void onResult(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      QzoneGiftUtil.1.a(this.a);
-      QLog.i("QzoneGiftUtil", 1, "downloadGiftZip onResult mLoadSuccessTimes = " + QzoneGiftUtil.1.c(this.a) + " mLoadFailTimes = " + QzoneGiftUtil.1.d(this.a));
-      if (this.a.a != null)
-      {
-        if (QzoneGiftUtil.1.c(this.a) != 3) {
-          break label103;
-        }
-        this.a.a.a();
-      }
-    }
-    label103:
-    while (QzoneGiftUtil.1.c(this.a) + QzoneGiftUtil.1.d(this.a) != 3)
-    {
-      return;
-      QzoneGiftUtil.1.b(this.a);
-      break;
-    }
-    this.a.a.b();
-  }
+  public abstract void a(int paramInt, aunu paramaunu);
   
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
+  public abstract void a(int paramInt, ArrayList<aunu> paramArrayList);
+  
+  public abstract void a_(int paramInt, boolean paramBoolean);
+  
+  public abstract void b(int paramInt, aunu paramaunu);
+  
+  public abstract void c(int paramInt, aunu paramaunu);
+  
+  public abstract void d(int paramInt, aunu paramaunu);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auol
  * JD-Core Version:    0.7.0.1
  */

@@ -1,114 +1,393 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.LRULinkedHashMap;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ailm
+  extends BaseAdapter
 {
-  private static long jdField_a_of_type_Long = -1L;
-  private static SparseArray<Long> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  List<bbno> jdField_a_of_type_JavaUtilList;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
   
-  public static void a()
+  public ailm(ailh paramailh) {}
+  
+  public void a(bbnp parambbnp)
   {
-    if (jdField_a_of_type_AndroidUtilSparseArray != null) {
-      jdField_a_of_type_AndroidUtilSparseArray.clear();
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
-    jdField_a_of_type_AndroidUtilSparseArray = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameTimeReporter", 2, "[destroy]");
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (parambbnp.jdField_a_of_type_JavaUtilList == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = parambbnp.d;
+    this.jdField_a_of_type_Int = parambbnp.jdField_c_of_type_Int;
+    this.jdField_b_of_type_Int = parambbnp.jdField_b_of_type_Int;
+    this.jdField_b_of_type_JavaLangString = parambbnp.jdField_c_of_type_JavaLangString;
+    if (this.jdField_b_of_type_JavaLangString == null) {
+      this.jdField_b_of_type_JavaLangString = "";
+    }
+    if ((parambbnp.e != null) && (parambbnp.e.equals("actLiTpl"))) {
+      this.jdField_b_of_type_Int = 3;
+    }
+    if ((!parambbnp.jdField_a_of_type_Boolean) && (parambbnp.jdField_a_of_type_JavaUtilList.size() > 4) && ((parambbnp.e == null) || (parambbnp.e.equals("")))) {
+      this.jdField_a_of_type_JavaUtilList.addAll(parambbnp.jdField_a_of_type_JavaUtilList.subList(0, 4));
+    }
+    for (;;)
+    {
+      super.notifyDataSetChanged();
+      return;
+      this.jdField_a_of_type_JavaUtilList.addAll(parambbnp.jdField_a_of_type_JavaUtilList);
     }
   }
   
-  public static void a(CmGameStartChecker.StartCheckParam arg0)
+  public int getCount()
   {
-    if (??? != null)
-    {
-      int i = ???.gameId;
-      if (i == 0) {
-        return;
-      }
-      try
-      {
-        if (jdField_a_of_type_AndroidUtilSparseArray == null) {
-          jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-        }
-        synchronized (jdField_a_of_type_AndroidUtilSparseArray)
-        {
-          long l = System.currentTimeMillis();
-          jdField_a_of_type_AndroidUtilSparseArray.put(i, Long.valueOf(l));
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloGameTimeReporter", 2, "[reportStart] set time " + i + " # " + l);
-          }
-          return;
-        }
-        QLog.e("ApolloGameTimeReporter", 1, "[reportStart] no para");
-      }
-      catch (Throwable ???)
-      {
-        QLog.e("ApolloGameTimeReporter", 1, ???, new Object[] { "[reportStart]" });
-        return;
-      }
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
+    return 0;
   }
   
-  public static void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  public Object getItem(int paramInt)
   {
-    int i;
-    if (paramStartCheckParam != null)
-    {
-      i = paramStartCheckParam.gameId;
-      if (i == 0) {}
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    else
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1;
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      localObject1 = paramView;
+    }
+    Object localObject2;
+    label186:
+    label208:
+    bbno localbbno;
+    do
     {
-      label301:
+      return localObject1;
+      if (paramView != null) {
+        break label663;
+      }
+      localObject1 = new ailn(this);
+      localObject2 = LayoutInflater.from(this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidContentContext).inflate(2131561475, paramViewGroup, false);
+      ((ailn)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject2).findViewById(2131371348));
+      ((ailn)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject2).findViewById(2131371347));
+      ((ailn)localObject1).b = ((ImageView)((View)localObject2).findViewById(2131371358));
+      ((ailn)localObject1).c = ((ImageView)((View)localObject2).findViewById(2131371360));
+      ((ailn)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject2).findViewById(2131371356));
+      ((ailn)localObject1).d = ((ImageView)((View)localObject2).findViewById(2131371349));
+      ((ailn)localObject1).e = ((ImageView)((View)localObject2).findViewById(2131371359));
+      paramView = ((ailn)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      if (paramView == null) {
+        break;
+      }
+      paramView.width = this.jdField_a_of_type_Ailh.g;
+      paramView.height = this.jdField_a_of_type_Ailh.h;
+      ((ailn)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+      ((View)localObject2).setTag(localObject1);
+      paramViewGroup = (ViewGroup)localObject1;
+      paramView = (View)localObject2;
+      localbbno = (bbno)getItem(paramInt);
+      localObject1 = paramView;
+    } while (localbbno == null);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setTag(localbbno);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localbbno.jdField_a_of_type_JavaLangString);
+    paramView.setContentDescription(localbbno.jdField_a_of_type_JavaLangString);
+    switch (localbbno.e)
+    {
+    default: 
+      paramViewGroup.d.setVisibility(8);
+      label293:
+      switch (localbbno.f)
+      {
+      case 7: 
+      case 8: 
+      default: 
+        paramViewGroup.e.setVisibility(8);
+        label341:
+        localObject1 = localbbno.jdField_b_of_type_JavaLangString;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          localObject1 = this.jdField_a_of_type_JavaLangString;
+        }
+        break;
+      }
+      break;
+    }
+    for (;;)
+    {
       for (;;)
       {
+        if ((localObject1 != null) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+        {
+          localObject2 = (URLDrawable)ailh.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(localObject1);
+          if (localObject2 == null) {
+            break label1529;
+          }
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+          if ((((URLDrawable)localObject2).getStatus() != 1) && (((URLDrawable)localObject2).getStatus() != 0)) {
+            ((URLDrawable)localObject2).restartDownload();
+          }
+        }
+        label424:
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localbbno);
+        if (this.jdField_a_of_type_Int == paramInt)
+        {
+          paramView.setBackgroundDrawable(this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846481));
+          label460:
+          if (localbbno.jdField_a_of_type_Int == 0) {
+            break label1749;
+          }
+          if (localbbno.jdField_a_of_type_Int != this.jdField_a_of_type_Ailh.jdField_a_of_type_Long) {
+            break label1701;
+          }
+          paramViewGroup.c.setVisibility(0);
+          if (this.jdField_a_of_type_Ailh.jdField_a_of_type_Boolean) {
+            break label1739;
+          }
+        }
         try
         {
-          if (jdField_a_of_type_AndroidUtilSparseArray == null) {
-            break;
-          }
-          synchronized (jdField_a_of_type_AndroidUtilSparseArray)
+          for (;;)
           {
-            int j = paramStartCheckParam.gameMode;
-            long l1 = paramStartCheckParam.roomId;
-            long l2 = ((Long)jdField_a_of_type_AndroidUtilSparseArray.get(i, Long.valueOf(jdField_a_of_type_Long))).longValue();
-            paramStartCheckParam = aing.a(i);
-            if (paramStartCheckParam == null) {
-              break label301;
+            localObject2 = new URL("protocol_pendant_image", "AIO_STATIC", String.valueOf(localbbno.jdField_a_of_type_Int));
+            localObject1 = paramView;
+            if (localObject2 == null) {
+              break;
             }
-            paramStartCheckParam = paramStartCheckParam.a();
-            if (paramStartCheckParam == null) {
-              break label301;
+            localObject1 = URLDrawable.URLDrawableOptions.obtain();
+            ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.jdField_a_of_type_Ailh.k;
+            ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.jdField_a_of_type_Ailh.l;
+            ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+            ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+            localObject2 = URLDrawable.getDrawable((URL)localObject2, (URLDrawable.URLDrawableOptions)localObject1);
+            paramViewGroup.b.setImageDrawable((Drawable)localObject2);
+            localObject1 = paramView;
+            if (((URLDrawable)localObject2).getStatus() != 2) {
+              break;
             }
-            l1 = paramStartCheckParam.mRoomId;
-            if (l2 != jdField_a_of_type_Long)
+            ((URLDrawable)localObject2).restartDownload();
+            return paramView;
+            if (QLog.isColorLevel()) {
+              QLog.d("AvatarPendantAdapter", 2, "getLayoutParams null, it's sad");
+            }
+            paramView = new ViewGroup.LayoutParams(this.jdField_a_of_type_Ailh.g, this.jdField_a_of_type_Ailh.h);
+            break label186;
+            label663:
+            paramViewGroup = (ailn)paramView.getTag();
+            break label208;
+            Object localObject4 = new File(bbby.jdField_c_of_type_JavaLangString + "/new.png");
+            if ((((File)localObject4).exists()) && (!this.jdField_b_of_type_JavaLangString.equals("1")))
             {
-              long l3 = System.currentTimeMillis() - l2;
-              bajr.a(null, "cmshow", "Apollo", "game_time", 0, 0, new String[] { i + "", String.valueOf(j), String.valueOf(l3), String.valueOf(l1) });
-              jdField_a_of_type_AndroidUtilSparseArray.remove(i);
-              if (QLog.isColorLevel()) {
-                QLog.d("ApolloGameTimeReporter", 2, new Object[] { "[reportEnd] report: id:", Integer.valueOf(i), "# roomId:", Long.valueOf(l1), "# mode:", Integer.valueOf(j), "# [", Long.valueOf(l3), "] #", Long.valueOf(l2), " => ", Long.valueOf(System.currentTimeMillis()) });
+              paramViewGroup.d.setVisibility(0);
+              localObject2 = (URLDrawable)ailh.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_new.png");
+              localObject1 = localObject2;
+              if (localObject2 == null)
+              {
+                localObject1 = URLDrawable.URLDrawableOptions.obtain();
+                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                localObject2 = URLDrawable.getDrawable((File)localObject4, (URLDrawable.URLDrawableOptions)localObject1);
+                localObject1 = localObject2;
+                if (((URLDrawable)localObject2).getStatus() == 1)
+                {
+                  ailh.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_new.png", localObject2);
+                  localObject1 = localObject2;
+                }
+              }
+              paramViewGroup.d.setImageDrawable((Drawable)localObject1);
+              break label293;
+            }
+            paramViewGroup.d.setVisibility(8);
+            break label293;
+            localObject4 = new File(bbby.jdField_c_of_type_JavaLangString + "/hot.png");
+            if ((((File)localObject4).exists()) && (!this.jdField_b_of_type_JavaLangString.equals("3")))
+            {
+              paramViewGroup.d.setVisibility(0);
+              localObject2 = (URLDrawable)ailh.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_hot.png");
+              localObject1 = localObject2;
+              if (localObject2 == null)
+              {
+                localObject1 = URLDrawable.URLDrawableOptions.obtain();
+                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                localObject2 = URLDrawable.getDrawable((File)localObject4, (URLDrawable.URLDrawableOptions)localObject1);
+                localObject1 = localObject2;
+                if (((URLDrawable)localObject2).getStatus() == 1)
+                {
+                  ailh.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_hot.png", localObject2);
+                  localObject1 = localObject2;
+                }
+              }
+              paramViewGroup.d.setImageDrawable((Drawable)localObject1);
+              break label293;
+            }
+            paramViewGroup.d.setVisibility(8);
+            break label293;
+            localObject4 = new File(bbby.jdField_c_of_type_JavaLangString + "/activity.png");
+            if ((((File)localObject4).exists()) && (this.jdField_b_of_type_Int != 3) && (this.jdField_b_of_type_Int != 5))
+            {
+              paramViewGroup.e.setVisibility(0);
+              localObject2 = (URLDrawable)ailh.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_activity.png");
+              localObject1 = localObject2;
+              if (localObject2 == null)
+              {
+                localObject1 = URLDrawable.URLDrawableOptions.obtain();
+                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                localObject2 = URLDrawable.getDrawable((File)localObject4, (URLDrawable.URLDrawableOptions)localObject1);
+                localObject1 = localObject2;
+                if (((URLDrawable)localObject2).getStatus() == 1)
+                {
+                  ailh.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_activity.png", localObject2);
+                  localObject1 = localObject2;
+                }
+              }
+              paramViewGroup.e.setImageDrawable((Drawable)localObject1);
+              break label341;
+            }
+            paramViewGroup.e.setVisibility(8);
+            break label341;
+            localObject4 = new File(bbby.jdField_c_of_type_JavaLangString + "/limit.png");
+            if (((File)localObject4).exists())
+            {
+              paramViewGroup.e.setVisibility(0);
+              localObject2 = (URLDrawable)ailh.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_limit.png");
+              localObject1 = localObject2;
+              if (localObject2 == null)
+              {
+                localObject1 = URLDrawable.URLDrawableOptions.obtain();
+                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                localObject2 = URLDrawable.getDrawable((File)localObject4, (URLDrawable.URLDrawableOptions)localObject1);
+                localObject1 = localObject2;
+                if (((URLDrawable)localObject2).getStatus() == 1)
+                {
+                  ailh.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_limit.png", localObject2);
+                  localObject1 = localObject2;
+                }
+              }
+              paramViewGroup.e.setImageDrawable((Drawable)localObject1);
+              break label341;
+            }
+            paramViewGroup.e.setVisibility(8);
+            break label341;
+            localObject4 = new File(bbby.jdField_c_of_type_JavaLangString + "/rare.png");
+            if ((((File)localObject4).exists()) && (this.jdField_b_of_type_Int != 5))
+            {
+              paramViewGroup.e.setVisibility(0);
+              localObject2 = (URLDrawable)ailh.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_rare.png");
+              localObject1 = localObject2;
+              if (localObject2 == null)
+              {
+                localObject1 = URLDrawable.URLDrawableOptions.obtain();
+                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                localObject2 = URLDrawable.getDrawable((File)localObject4, (URLDrawable.URLDrawableOptions)localObject1);
+                localObject1 = localObject2;
+                if (((URLDrawable)localObject2).getStatus() == 1)
+                {
+                  ailh.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_rare.png", localObject2);
+                  localObject1 = localObject2;
+                }
+              }
+              paramViewGroup.e.setImageDrawable((Drawable)localObject1);
+              break label341;
+            }
+            paramViewGroup.e.setVisibility(8);
+            break label341;
+            try
+            {
+              label1529:
+              localObject2 = new URL("protocol_pendant_image", "DEFAULT_HEAD", (String)localObject1);
+              if (localObject2 == null) {
+                break label424;
+              }
+              localObject4 = URLDrawable.URLDrawableOptions.obtain();
+              ((URLDrawable.URLDrawableOptions)localObject4).mRequestWidth = this.jdField_a_of_type_Ailh.k;
+              ((URLDrawable.URLDrawableOptions)localObject4).mRequestHeight = this.jdField_a_of_type_Ailh.l;
+              ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+              ((URLDrawable.URLDrawableOptions)localObject4).mUseMemoryCache = true;
+              ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+              localObject2 = URLDrawable.getDrawable((URL)localObject2, (URLDrawable.URLDrawableOptions)localObject4);
+              paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+              if (((URLDrawable)localObject2).getStatus() == 2) {
+                ((URLDrawable)localObject2).restartDownload();
               }
             }
-            return;
+            catch (MalformedURLException localMalformedURLException2)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("AvatarPendantAdapter", 2, localMalformedURLException2.getMessage());
+                }
+                localObject3 = null;
+              }
+            }
           }
-          QLog.e("ApolloGameTimeReporter", 1, "[reportEnd] no para");
+          if (localObject3.getStatus() != 1) {
+            break label424;
+          }
+          ailh.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(localObject1, localObject3);
+          break label424;
+          paramView.setBackgroundDrawable(null);
+          break label460;
+          label1701:
+          paramViewGroup.c.setVisibility(8);
         }
-        catch (Throwable paramStartCheckParam)
+        catch (MalformedURLException localMalformedURLException1)
         {
-          QLog.e("ApolloGameTimeReporter", 1, paramStartCheckParam, new Object[] { "[reportEnd]" });
-          return;
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("AvatarPendantAdapter", 2, localMalformedURLException1.getMessage());
+            }
+            Object localObject3 = null;
+          }
         }
-        return;
       }
+      label1739:
+      paramViewGroup.b.setImageDrawable(null);
+      return paramView;
+      label1749:
+      paramViewGroup.b.setImageDrawable(null);
+      return paramView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ailm
  * JD-Core Version:    0.7.0.1
  */

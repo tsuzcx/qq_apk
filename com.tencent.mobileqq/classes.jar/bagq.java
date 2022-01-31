@@ -1,28 +1,22 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class bagq
-  implements TextWatcher
+public class bagq
 {
-  bagq(bagn parambagn, int paramInt) {}
+  public View a;
+  public ImageView a;
+  TextView a;
+  public String a;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public bagq(View paramView)
   {
-    if ((this.jdField_a_of_type_Bagn.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
-    {
-      this.jdField_a_of_type_Bagn.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
-      this.jdField_a_of_type_Bagn.a.setSelection(this.jdField_a_of_type_Int - 1);
-    }
+    this.a = paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bagq
  * JD-Core Version:    0.7.0.1
  */

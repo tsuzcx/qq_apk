@@ -1,47 +1,10 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
-public class ajod
-  extends ContentObserver
+public abstract interface ajod
 {
-  WeakReference<PhoneContactManagerImp> a;
-  
-  public ajod(Handler paramHandler)
-  {
-    super(paramHandler);
-  }
-  
-  public void a(PhoneContactManagerImp paramPhoneContactManagerImp)
-  {
-    if (this.a != null) {
-      this.a.clear();
-    }
-    if (paramPhoneContactManagerImp != null) {
-      this.a = new WeakReference(paramPhoneContactManagerImp);
-    }
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "Contact changed.");
-    }
-    if (this.a == null) {}
-    for (PhoneContactManagerImp localPhoneContactManagerImp = null;; localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.get())
-    {
-      if (localPhoneContactManagerImp != null) {
-        localPhoneContactManagerImp.g = true;
-      }
-      return;
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajod
  * JD-Core Version:    0.7.0.1
  */

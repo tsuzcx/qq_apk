@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.startup.step;
 
-import ajjy;
-import awok;
-import bbmy;
+import ajyc;
+import axoh;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class InitMagnifierSDK$LeakListener$2
   implements Runnable
 {
-  public InitMagnifierSDK$LeakListener$2(awok paramawok, String paramString1, boolean paramBoolean, String paramString2) {}
+  public InitMagnifierSDK$LeakListener$2(axoh paramaxoh, String paramString1, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
     StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append(" dump");
     if (this.jdField_a_of_type_Boolean) {}
-    for (String str = ajjy.a(2131639993) + this.b;; str = ajjy.a(2131639996))
+    for (String str = ajyc.a(2131705778) + this.b;; str = ajyc.a(2131705781))
     {
-      bbmy.a(localBaseApplicationImpl, str, 2000).a();
+      bcpw.a(localBaseApplicationImpl, str, 2000).a();
       return;
     }
   }

@@ -1,22 +1,11 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
+import android.widget.TextView;
 
-public class advg
-  implements apca
+class advg
+  extends actr
 {
-  public advg(AIOFileVideoData paramAIOFileVideoData, Context paramContext, agez paramagez) {}
+  TextView b;
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.e = true;
-      this.jdField_a_of_type_Agez.b();
-      this.jdField_a_of_type_Agez.f();
-    }
-  }
-  
-  public void b() {}
+  advg(advf paramadvf) {}
 }
 
 

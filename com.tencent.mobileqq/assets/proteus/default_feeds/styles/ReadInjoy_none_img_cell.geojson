@@ -19,7 +19,8 @@
                 "jump_type": "$jump_type",
                 "partner_id": "$partner_id",
                 "feeds_content": "$feeds_content",
-                "feeds_type": "$feeds_type"
+                "feeds_type": "$feeds_type",
+                "novel_corner_mark": "$novel_corner_mark"
             }
         },
         "subviews":[
@@ -48,13 +49,13 @@
             },
             {"$includeComponet":"componet/article_main_body.geojson"},
             {"$includeComponet":"componet/info_bar.geojson"},
-            
+
             {
                 "view_type":"UIView",
                 "view_id":"id_separator",
                 "margin_left":"6",
                 "margin_top":"6.5",
-                
+
                 "height":{
                     "type":"absolutely","value":"0.5"
                 },
@@ -67,7 +68,7 @@
                     "setBackgroundColorString:":"#E5E5E5"
                 }
             }
-            
+
         ]
     }
 }

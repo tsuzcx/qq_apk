@@ -1,12 +1,23 @@
-public class batn
+import android.os.Bundle;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import com.tencent.qphone.base.util.QLog;
+
+class batn
+  extends mxm
 {
-  public int a;
-  public long a;
+  batn(batm parambatm, TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
   
-  public batn()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = 1000277;
-    this.jdField_a_of_type_Long = -1L;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopPicEffectsEditActivity", 2, "payForPhoto. onResult. errorCode=" + paramInt);
+    }
+    if (paramInt == 0)
+    {
+      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity, 2, ajyc.a(2131715699), 0).a();
+      return;
+    }
+    bcpw.a(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity, 1, ajyc.a(2131715706), 0).a();
   }
 }
 

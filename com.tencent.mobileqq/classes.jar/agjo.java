@@ -1,53 +1,30 @@
-import Wallet.BroadCastInfo;
-import Wallet.GetBroadCastHbIdiomRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
 
-class agjo
-  implements BusinessObserver
+public class agjo
+  implements Animation.AnimationListener
 {
-  agjo(agjn paramagjn) {}
+  public agjo(CountryActivity paramCountryActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 28)
+    if (!this.a.isFinishing())
     {
-      paramBundle = (GetBroadCastHbIdiomRsp)paramBundle.getSerializable("rsp");
-      if (paramBundle != null) {
-        break label21;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label21:
-      if (paramBoolean)
-      {
-        this.a.jdField_a_of_type_Agjk.a = false;
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          BroadCastInfo localBroadCastInfo = (BroadCastInfo)paramBundle.sendlistIdiomInfoDict.get(str);
-          if ((this.a.jdField_a_of_type_Agjk.a(str) != null) && (localBroadCastInfo != null)) {
-            if (localBroadCastInfo.isFinished == 1) {
-              this.a.jdField_a_of_type_Agjk.a(str);
-            } else {
-              this.a.jdField_a_of_type_Agjk.a(str, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localBroadCastInfo.idiomSeq, localBroadCastInfo.hbIdiom, localBroadCastInfo.hbIdiomLastPY);
-            }
-          }
-        }
-      }
+      this.a.jdField_a_of_type_Agjv.show();
+      this.a.b.setAnimation(null);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agjo
  * JD-Core Version:    0.7.0.1
  */

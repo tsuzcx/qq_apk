@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import ajgm;
-import akau;
-import aken;
-import amlk;
-import awao;
-import awqx;
-import axhd;
+import ajuo;
+import akpg;
+import aksz;
+import anbo;
+import awzw;
+import axqw;
+import ayhh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
@@ -18,11 +18,11 @@ import java.util.Set;
 public class DataLineMessageSpreadManager$2
   implements Runnable
 {
-  public DataLineMessageSpreadManager$2(axhd paramaxhd, DataLineMsgRecord paramDataLineMsgRecord, String paramString1, amlk paramamlk, String paramString2, String paramString3) {}
+  public DataLineMessageSpreadManager$2(ayhh paramayhh, DataLineMsgRecord paramDataLineMsgRecord, String paramString1, anbo paramanbo, String paramString2, String paramString3) {}
   
   public void run()
   {
-    Object localObject2 = axhd.a(this.this$0).a().a(axhd.a(this.this$0)).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
+    Object localObject2 = ayhh.a(this.this$0).a().a(ayhh.a(this.this$0)).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
     if (localObject2 == null)
     {
       if (QLog.isColorLevel()) {
@@ -34,17 +34,17 @@ public class DataLineMessageSpreadManager$2
     {
       HashMap localHashMap = new HashMap();
       Object localObject1 = this.jdField_a_of_type_JavaLangString;
-      if ((this.jdField_a_of_type_JavaLangString.contains("%s")) && (this.jdField_a_of_type_Amlk != null)) {}
+      if ((this.jdField_a_of_type_JavaLangString.contains("%s")) && (this.jdField_a_of_type_Anbo != null)) {}
       DataLineMsgRecord localDataLineMsgRecord;
       for (;;)
       {
         try
         {
-          localObject3 = String.format(this.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_Amlk.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Amlk.jdField_a_of_type_JavaLangString });
+          localObject3 = String.format(this.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_Anbo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anbo.jdField_a_of_type_JavaLangString });
           localObject1 = localObject3;
           localHashMap.put("tim_aio_file_tips", localObject3);
           localObject1 = localObject3;
-          localHashMap.put("tim_aio_file_link", String.format(this.b, new Object[] { this.jdField_a_of_type_Amlk.jdField_a_of_type_JavaLangString }));
+          localHashMap.put("tim_aio_file_link", String.format(this.b, new Object[] { this.jdField_a_of_type_Anbo.jdField_a_of_type_JavaLangString }));
           localObject1 = localObject3;
         }
         catch (Exception localException)
@@ -56,30 +56,30 @@ public class DataLineMessageSpreadManager$2
         }
         localHashMap.put("tim_aio_file_msg_uiniseq", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid));
         localHashMap.put("tim_aio_tips_type", this.c);
-        if (this.jdField_a_of_type_Amlk != null)
+        if (this.jdField_a_of_type_Anbo != null)
         {
-          localHashMap.put("tim_aio_tips_template_id", String.valueOf(this.jdField_a_of_type_Amlk.jdField_a_of_type_Int));
-          localHashMap.put("tim_aio_tips_template_type", String.valueOf(this.jdField_a_of_type_Amlk.b));
-          localHashMap.put("tim_aio_tips_keyword", String.valueOf(this.jdField_a_of_type_Amlk.jdField_a_of_type_JavaLangString));
-          localHashMap.put("tim_aio_tips_type", String.valueOf(this.jdField_a_of_type_Amlk.b));
+          localHashMap.put("tim_aio_tips_template_id", String.valueOf(this.jdField_a_of_type_Anbo.jdField_a_of_type_Int));
+          localHashMap.put("tim_aio_tips_template_type", String.valueOf(this.jdField_a_of_type_Anbo.b));
+          localHashMap.put("tim_aio_tips_keyword", String.valueOf(this.jdField_a_of_type_Anbo.jdField_a_of_type_JavaLangString));
+          localHashMap.put("tim_aio_tips_type", String.valueOf(this.jdField_a_of_type_Anbo.b));
         }
-        localObject3 = (ajgm)axhd.a(this.this$0).a(8);
-        localLong = ((ajgm)localObject3).a(0, axhd.a(this.this$0));
+        localObject3 = (ajuo)ayhh.a(this.this$0).a(8);
+        localLong = ((ajuo)localObject3).a(0, ayhh.a(this.this$0));
         localDataLineMsgRecord = new DataLineMsgRecord();
         localDataLineMsgRecord.msgId = localLong.longValue();
         localDataLineMsgRecord.sessionid = localLong.longValue();
         localDataLineMsgRecord.msgtype = -5041;
-        localDataLineMsgRecord.time = awao.a();
-        localDataLineMsgRecord.selfuin = axhd.a(this.this$0).getCurrentAccountUin();
+        localDataLineMsgRecord.time = awzw.a();
+        localDataLineMsgRecord.selfuin = ayhh.a(this.this$0).getCurrentAccountUin();
         localDataLineMsgRecord.frienduin = ((DataLineMsgRecord)localObject2).frienduin;
-        localDataLineMsgRecord.senderuin = axhd.a(this.this$0).getCurrentAccountUin();
+        localDataLineMsgRecord.senderuin = ayhh.a(this.this$0).getCurrentAccountUin();
         localDataLineMsgRecord.msg = ((String)localObject1);
         localDataLineMsgRecord.isread = true;
         localDataLineMsgRecord.issend = 0;
         localDataLineMsgRecord.msgseq = ((DataLineMsgRecord)localObject2).shmsgseq;
         localDataLineMsgRecord.shmsgseq = ((DataLineMsgRecord)localObject2).shmsgseq;
         localDataLineMsgRecord.msgUid = ((DataLineMsgRecord)localObject2).msgUid;
-        localDataLineMsgRecord.time = awao.a();
+        localDataLineMsgRecord.time = awzw.a();
         if ((localHashMap == null) || (localHashMap.size() <= 0)) {
           break;
         }
@@ -94,8 +94,8 @@ public class DataLineMessageSpreadManager$2
         localHashMap.put("tim_aio_file_link", this.b);
       }
       localDataLineMsgRecord.extraflag |= 0xFFFF7FFF;
-      awqx.b(axhd.a(this.this$0), "dc00898", "", "", "0X80098F7", "0X80098F7", 0, 0, "", "", "", "");
-      axhd.a(this.this$0).a(axhd.a(this.this$0)).b(localDataLineMsgRecord);
+      axqw.b(ayhh.a(this.this$0), "dc00898", "", "", "0X80098F7", "0X80098F7", 0, 0, "", "", "", "");
+      ayhh.a(this.this$0).a(ayhh.a(this.this$0)).b(localDataLineMsgRecord);
       localException.a(11, true, null);
       return;
     }

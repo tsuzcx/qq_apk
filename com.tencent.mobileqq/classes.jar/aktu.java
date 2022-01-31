@@ -1,39 +1,25 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend.VideoInfo;
+import java.util.ArrayList;
 
 class aktu
-  implements akup
+  implements View.OnClickListener
 {
-  aktu(akts paramakts, aktw paramaktw, ArCloudConfigInfo paramArCloudConfigInfo) {}
+  aktu(akts paramakts, ArrayList paramArrayList, QIMNotifyAddFriend.VideoInfo paramVideoInfo) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Aktw != null) {
-      this.jdField_a_of_type_Aktw.e();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Aktw != null) {
-      this.jdField_a_of_type_Aktw.b(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Aktw != null) {}
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Aktw != null) {
-      this.jdField_a_of_type_Aktw.b(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-    }
+    paramView = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend$VideoInfo.videoVid), 120);
+    paramView.a();
+    tvf.a(this.jdField_a_of_type_Akts.a, paramView.a(), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aktu
  * JD-Core Version:    0.7.0.1
  */

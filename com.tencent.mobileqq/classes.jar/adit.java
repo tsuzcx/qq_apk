@@ -1,11 +1,12 @@
-import android.widget.TextView;
-
 class adit
-  extends acju
+  implements amcj
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
   adit(adis paramadis) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    adis.a(this.a);
+  }
 }
 
 

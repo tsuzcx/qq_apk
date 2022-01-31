@@ -1,31 +1,67 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import java.util.Iterator;
-import java.util.List;
-import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
+import org.json.JSONObject;
 
 public class amwf
-  extends amwn
 {
-  public amwf(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
+  private String jdField_a_of_type_JavaLangString = "1108338344";
+  private boolean jdField_a_of_type_Boolean;
+  private String b = "pages/list/list";
+  private String c = "";
   
-  public void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle)
+  public static amwf a(JSONObject paramJSONObject)
   {
-    if (paramBoolean)
-    {
-      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramBundle.hasNext())
-      {
-        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
-        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
+    boolean bool = true;
+    amwf localamwf = new amwf();
+    if (paramJSONObject.has("enableOpenMiniCode")) {
+      if (paramJSONObject.getInt("enableOpenMiniCode") != 1) {
+        break label93;
       }
     }
+    for (;;)
+    {
+      localamwf.jdField_a_of_type_Boolean = bool;
+      if (paramJSONObject.has("miniCodeAppid")) {
+        localamwf.jdField_a_of_type_JavaLangString = paramJSONObject.getString("miniCodeAppid");
+      }
+      if (paramJSONObject.has("miniCodePage")) {
+        localamwf.b = paramJSONObject.getString("miniCodePage");
+      }
+      if (paramJSONObject.has("miniCodeEnvVersion")) {
+        localamwf.c = paramJSONObject.getString("miniCodeEnvVersion");
+      }
+      return localamwf;
+      label93:
+      bool = false;
+    }
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amwf
  * JD-Core Version:    0.7.0.1
  */

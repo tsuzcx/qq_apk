@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ahmp;
-import autf;
+import ahzh;
+import avso;
 
 public class SubtitleDataManager$3
   implements Runnable
 {
-  public SubtitleDataManager$3(ahmp paramahmp, String paramString, autf paramautf) {}
+  public SubtitleDataManager$3(ahzh paramahzh, String paramString, avso paramavso) {}
   
   public void run()
   {
-    if (ahmp.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Autf)) {
+    if (ahzh.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Avso)) {
       return;
     }
-    this.jdField_a_of_type_Autf.jdField_c_of_type_Int = this.this$0.a(this.jdField_a_of_type_Autf.jdField_c_of_type_JavaLangString, ahmp.a(this.this$0) + this.jdField_a_of_type_Autf.d, this.jdField_a_of_type_Autf.d, ahmp.a(this.this$0));
+    this.jdField_a_of_type_Avso.jdField_c_of_type_Int = this.this$0.a(this.jdField_a_of_type_Avso.jdField_c_of_type_JavaLangString, ahzh.a(this.this$0) + this.jdField_a_of_type_Avso.d, this.jdField_a_of_type_Avso.d, ahzh.a(this.this$0));
   }
 }
 

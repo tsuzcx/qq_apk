@@ -1,79 +1,26 @@
-import android.view.View;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class pwe
-  implements avon
+  implements pca
 {
-  private String jdField_a_of_type_JavaLangString;
-  private ppg jdField_a_of_type_Ppg;
+  public pwe(ComponentContentRecommend paramComponentContentRecommend, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public pwe(ppg paramppg)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Ppg = paramppg;
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public CharSequence a()
-  {
-    return avwf.b(this.jdField_a_of_type_Ppg.a(), this.jdField_a_of_type_JavaLangString, 6, true);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public ppg a()
-  {
-    return this.jdField_a_of_type_Ppg;
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(View paramView) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this.jdField_a_of_type_Ppg.a().contains(paramString);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public CharSequence b()
-  {
-    return "";
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_Ppg.a().toString();
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public CharSequence c()
-  {
-    return ajjy.a(2131638883);
-  }
-  
-  public CharSequence d()
-  {
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d(ComponentContentRecommend.a, 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      ComponentContentRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend).notifyDataSetChanged();
+      return;
+    }
+    bcpw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.getContext(), 1, 2131718502, 0).a();
   }
 }
 

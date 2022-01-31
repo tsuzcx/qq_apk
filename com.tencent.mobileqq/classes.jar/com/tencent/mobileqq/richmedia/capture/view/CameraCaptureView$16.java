@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
 import android.graphics.Bitmap;
-import auuv;
-import auuy;
-import bace;
-import bacm;
+import avuj;
+import avum;
+import bbdj;
+import bbdr;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.File;
 import java.io.IOException;
@@ -17,13 +17,13 @@ class CameraCaptureView$16
   public void run()
   {
     String str = this.this$0.a.b + "/" + System.currentTimeMillis() + ".jpg";
-    bace.c(str);
+    bbdj.c(str);
     File localFile = new File(str);
     try
     {
-      bacm.a(this.a, localFile);
-      bacm.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
-      this.this$0.a(new auuy(0, 0, str, null, this.this$0.u));
+      bbdr.a(this.a, localFile);
+      bbdr.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
+      this.this$0.a(new avum(0, 0, str, null, this.this$0.u));
       this.a.recycle();
       return;
     }
@@ -32,7 +32,7 @@ class CameraCaptureView$16
       for (;;)
       {
         localIOException.printStackTrace();
-        this.this$0.a(new auuy(0, -1, str, null, this.this$0.u));
+        this.this$0.a(new avum(0, -1, str, null, this.this$0.u));
       }
     }
   }

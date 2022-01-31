@@ -1,38 +1,22 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
 
 public class abzm
-  extends azjp
+  implements Handler.Callback
 {
-  public abzm(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public abzm(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList error");
-    }
-    TroopMemberListActivity.a(this.a, true);
-    if (TroopMemberListActivity.b(this.a))
+    switch (paramMessage.what)
     {
-      paramString = this.a.a.obtainMessage(12, null);
-      this.a.a.sendMessage(paramString);
     }
-  }
-  
-  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList");
-    }
-    TroopMemberListActivity.a(this.a, paramArrayOfLong1);
-    TroopMemberListActivity.b(this.a, paramArrayOfLong2);
-    TroopMemberListActivity.c(this.a, paramArrayOfLong3);
-    TroopMemberListActivity.a(this.a, true);
-    if (TroopMemberListActivity.b(this.a))
+    for (;;)
     {
-      paramArrayOfLong1 = this.a.a.obtainMessage(12, null);
-      this.a.a.sendMessage(paramArrayOfLong1);
+      return true;
+      paramMessage = new abzn(this);
+      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
     }
   }
 }

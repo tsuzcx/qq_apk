@@ -100,11 +100,6 @@ public class ReuseBitmapPool
     }
   }
   
-  public void clear()
-  {
-    this.bitmapItemSetLruCache.evictAll();
-  }
-  
   /* Error */
   public Bitmap getBitmapFromPool(int paramInt)
   {
@@ -141,7 +136,7 @@ public class ReuseBitmapPool
     //   47: goto -20 -> 27
     //   50: aload_0
     //   51: aload_2
-    //   52: invokespecial 162	com/tencent/component/media/image/ReuseBitmapPool:removeFromPoolInternal	(Ljava/lang/Integer;)Landroid/graphics/Bitmap;
+    //   52: invokespecial 158	com/tencent/component/media/image/ReuseBitmapPool:removeFromPoolInternal	(Ljava/lang/Integer;)Landroid/graphics/Bitmap;
     //   55: astore_3
     //   56: aload_3
     //   57: astore_2
@@ -160,8 +155,8 @@ public class ReuseBitmapPool
     //   76: astore_2
     //   77: ldc 8
     //   79: aload_2
-    //   80: invokestatic 168	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   83: invokestatic 171	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   80: invokestatic 164	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   83: invokestatic 167	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   86: aconst_null
     //   87: astore_3
     //   88: goto -32 -> 56

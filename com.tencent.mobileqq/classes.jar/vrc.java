@@ -1,35 +1,40 @@
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.FlowMusic;
+import com.tencent.qphone.base.util.QLog;
 
-public class vrc
-  extends ImageSpan
+class vrc
+  implements bjbd
 {
-  public vrc(Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  vrc(vra paramvra) {}
   
-  public vrc(Drawable paramDrawable)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    super(paramDrawable);
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    paramCharSequence = getDrawable();
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
-    paramInt2 = paramCharSequence.getBounds().bottom / 2;
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+    String str = vra.a(this.a).getResources().getString(2131698318);
+    Object localObject = str;
+    if (paramBoolean)
+    {
+      paramObject = (FlowMusic)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("MusicCache", 2, "onGetSingleMusicInfo flowMusic:" + paramObject.toString());
+      }
+      if ((paramObject.playable == 1) && (!TextUtils.isEmpty(paramObject.url)))
+      {
+        localObject = new vrn();
+        ((vrn)localObject).jdField_b_of_type_JavaLangString = paramObject.songName;
+        ((vrn)localObject).d = paramObject.url;
+        ((vrn)localObject).jdField_b_of_type_Int = 2;
+        ((vrn)localObject).a = String.valueOf(paramObject.songId);
+        this.a.a(12, localObject);
+        return;
+      }
+      localObject = str;
+      if (paramObject.playable != 1) {
+        localObject = vra.a(this.a).getResources().getString(2131698319);
+      }
+    }
+    this.a.a(7, localObject);
   }
 }
 

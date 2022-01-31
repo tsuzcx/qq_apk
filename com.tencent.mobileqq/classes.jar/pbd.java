@@ -1,29 +1,18 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
 
-public class pbd
-  extends ClickableSpan
+public final class pbd
+  implements Parcelable.Creator<ReadInJoyDraftboxItem>
 {
-  public pbd(NativeAwesomeCommentView paramNativeAwesomeCommentView) {}
-  
-  public void onClick(View paramView)
+  public ReadInJoyDraftboxItem a(Parcel paramParcel)
   {
-    if (NativeAwesomeCommentView.a(this.a) != null)
-    {
-      long l = NativeAwesomeCommentView.a(this.a).a;
-      NativeAwesomeCommentView.a(this.a, true);
-      nvx.a(l + "", this.a.getContext());
-    }
+    return new ReadInJoyDraftboxItem(paramParcel);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public ReadInJoyDraftboxItem[] a(int paramInt)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
-    paramTextPaint.setUnderlineText(false);
+    return new ReadInJoyDraftboxItem[paramInt];
   }
 }
 

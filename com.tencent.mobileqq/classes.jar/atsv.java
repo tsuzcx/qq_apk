@@ -1,39 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.portal.FormalView;
-import com.tencent.mobileqq.portal.ImageShakeAnimView;
-
-public class atsv
-  implements ValueAnimator.AnimatorUpdateListener
+class atsv
+  implements bfos
 {
-  public atsv(FormalView paramFormalView) {}
+  atsv(atsa paramatsa) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDismiss()
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {
-      return;
-    }
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-    int i = -(int)(FormalView.a(this.a) * f);
-    int j = -(int)((1.0F - f) * FormalView.b(this.a));
-    ((RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams()).topMargin = j;
-    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams();
-    paramValueAnimator.leftMargin = i;
-    FormalView.a(this.a).setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.b(this.a).getLayoutParams();
-    paramValueAnimator.rightMargin = i;
-    FormalView.b(this.a).setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams();
-    paramValueAnimator.topMargin = ((int)((1.0F - f) * FormalView.c(this.a)));
-    FormalView.a(this.a).setLayoutParams(paramValueAnimator);
+    atsa.a(this.a, this.a.c, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsv
  * JD-Core Version:    0.7.0.1
  */

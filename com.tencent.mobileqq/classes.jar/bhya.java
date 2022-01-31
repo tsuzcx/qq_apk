@@ -1,34 +1,32 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.SystemClock;
+import com.tencent.qg.sdk.invoke.BaseJsModule;
+import com.tencent.qg.sdk.invoke.InvokeCallback;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import org.json.JSONObject;
 
 public class bhya
-  extends AnimatorListenerAdapter
+  extends BaseJsModule
 {
-  public bhya(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public bhya(bhxy parambhxy) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public String getModuleName()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation deleteView 140ms translate end");
-    }
-    this.a.a.d = 4;
+    return "VipQGModel";
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
   {
-    this.a.a.a = SystemClock.uptimeMillis();
-    this.a.a.b = 140L;
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation deleteView begin");
+    if ("notifyJsInvokeFinish".equalsIgnoreCase(paramString))
+    {
+      QLog.i("VipQGModel", 1, "handleJsRequest: notifyJsInvokeFinish");
+      this.a.a("getDeviceSize", new float[] { bbkx.a(), bbkx.b() });
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhya
  * JD-Core Version:    0.7.0.1
  */

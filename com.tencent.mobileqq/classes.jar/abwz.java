@@ -1,18 +1,18 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class abwz
-  implements View.OnClickListener
+  extends akfz
 {
-  public abwz(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
+  public abwz(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoChangedObserver");
     }
+    this.a.c(this.a.a.getCurrentAccountUin());
   }
 }
 

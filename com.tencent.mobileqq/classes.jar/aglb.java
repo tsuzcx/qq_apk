@@ -1,27 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.9.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.widget.AnimationView;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.AlbumListActivity;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import mqq.app.AppRuntime;
 
 public class aglb
-  implements agpe
+  extends atzo
 {
-  public aglb(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  public aglb(AlbumListActivity paramAlbumListActivity) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((!this.a.c()) && (paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof get_albumlist_num_rsp)))
     {
-      paramPathResult = AnimationView.AnimationInfo.loadFromFolder(paramPathResult.folderPath);
-      this.a.a.post(new RedPacketKSongFragment.9.1(this, paramPathResult));
+      this.a.jdField_a_of_type_Long = ((get_albumlist_num_rsp)paramBundle).album_num;
+      if (this.a.jdField_a_of_type_Aglc != null)
+      {
+        this.a.jdField_a_of_type_Aglc.a(this.a.jdField_a_of_type_Long);
+        this.a.jdField_a_of_type_Aglc.a();
+        if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.q)) {
+          LpReportInfo_pf00064.allReport(96, 1, 1);
+        }
+      }
     }
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(AlbumListActivity.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aglb
  * JD-Core Version:    0.7.0.1
  */

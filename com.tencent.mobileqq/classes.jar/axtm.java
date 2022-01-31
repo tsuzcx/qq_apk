@@ -1,12 +1,16 @@
-public abstract interface axtm
+import android.content.Context;
+
+public class axtm
 {
-  public abstract void a(int paramInt, String paramString);
+  public static void a() {}
   
-  public abstract void a(String paramString);
+  public static void a(Context paramContext) {}
+  
+  public static void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axtm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
 package com.tencent.qqmini.sdk.report;
 
 import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.SingleDcData;
-import bdsr;
+import beyo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.List;
 
 public class MiniProgramReporter$4
   implements Runnable
 {
-  public MiniProgramReporter$4(bdsr parambdsr, APP_REPORT_TRANSFER.SingleDcData paramSingleDcData) {}
+  public MiniProgramReporter$4(beyo parambeyo, APP_REPORT_TRANSFER.SingleDcData paramSingleDcData) {}
   
   public void run()
   {
     if (this.a.dcid.get() == 7) {
-      bdsr.c(this.this$0).add(this.a);
+      beyo.c(this.this$0).add(this.a);
     }
     for (;;)
     {
-      bdsr.a(this.this$0);
+      beyo.a(this.this$0);
       return;
-      bdsr.d(this.this$0).add(this.a);
+      beyo.d(this.this$0).add(this.a);
     }
   }
 }

@@ -2,7 +2,7 @@ package cooperation.qzone.util;
 
 import android.content.Intent;
 import android.os.SystemClock;
-import bgfm;
+import bhoe;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -179,16 +179,16 @@ public final class PerfTracer
     traceEnd("click2LoadActivityCreate");
   }
   
-  public static void traceClick2Completed(bgfm parambgfm)
+  public static void traceClick2Completed(bhoe parambhoe)
   {
     traceEnd("click2LoadCompleted");
     TimeCostTrace localTimeCostTrace = TimeCostTrace.getTrace("qzone_launch");
     if (localTimeCostTrace == null) {
       return;
     }
-    if ((localTimeCostTrace.getTimeCost() > 0L) && (parambgfm != null))
+    if ((localTimeCostTrace.getTimeCost() > 0L) && (parambhoe != null))
     {
-      parambgfm.reportPerfTime(localTimeCostTrace);
+      parambhoe.reportPerfTime(localTimeCostTrace);
       return;
     }
     localTimeCostTrace.destroy();

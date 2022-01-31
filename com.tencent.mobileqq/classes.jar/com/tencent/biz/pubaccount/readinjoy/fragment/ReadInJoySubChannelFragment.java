@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import nhx;
-import nia;
+import nth;
+import ntk;
 
 public class ReadInJoySubChannelFragment
   extends ReadInJoyBaseFragment
@@ -18,7 +18,7 @@ public class ReadInJoySubChannelFragment
   public static final String a;
   protected int a;
   protected View a;
-  protected nhx a;
+  protected nth a;
   protected int b;
   protected String b;
   
@@ -46,17 +46,17 @@ public class ReadInJoySubChannelFragment
   private void a()
   {
     Object localObject = jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Nhx != null) {}
+    if (this.jdField_a_of_type_Nth != null) {}
     for (boolean bool = true;; bool = false)
     {
       QLog.d((String)localObject, 2, new Object[] { "initUI, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
-      localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131309089);
-      this.jdField_a_of_type_Nhx = new nhx(getActivity());
-      this.jdField_a_of_type_Nhx.a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Nhx.b(this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_Nhx.a((ViewGroup)localObject);
-      this.jdField_a_of_type_Nhx.a();
-      localObject = (ViewGroup)this.jdField_a_of_type_Nhx.a();
+      localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131374831);
+      this.jdField_a_of_type_Nth = new nth(getActivity());
+      this.jdField_a_of_type_Nth.a(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Nth.b(this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Nth.a((ViewGroup)localObject);
+      this.jdField_a_of_type_Nth.a();
+      localObject = (ViewGroup)this.jdField_a_of_type_Nth.a();
       int i = b();
       if (i > 0) {
         ((ViewGroup)localObject).setPadding(0, i, 0, 0);
@@ -73,26 +73,26 @@ public class ReadInJoySubChannelFragment
   public void a(int paramInt)
   {
     super.a(paramInt);
-    if (this.jdField_a_of_type_Nhx != null)
+    if (this.jdField_a_of_type_Nth != null)
     {
-      this.jdField_a_of_type_Nhx.a(true);
+      this.jdField_a_of_type_Nth.a(true);
       return;
     }
-    nia.e(a());
+    ntk.e(a());
   }
   
   public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
   {
     super.a(paramBoolean, paramActivity, paramBundle);
-    if (this.jdField_a_of_type_Nhx != null)
+    if (this.jdField_a_of_type_Nth != null)
     {
-      this.jdField_a_of_type_Nhx.h();
+      this.jdField_a_of_type_Nth.h();
       paramActivity = (KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(162);
       if (paramActivity != null)
       {
         paramBundle = paramActivity.a();
         if ((paramActivity.b()) && (paramBundle != null)) {
-          this.jdField_a_of_type_Nhx.a(true);
+          this.jdField_a_of_type_Nth.a(true);
         }
       }
     }
@@ -100,31 +100,31 @@ public class ReadInJoySubChannelFragment
   
   public void f()
   {
-    if (this.jdField_a_of_type_Nhx != null) {
-      this.jdField_a_of_type_Nhx.a(true);
+    if (this.jdField_a_of_type_Nth != null) {
+      this.jdField_a_of_type_Nth.a(true);
     }
   }
   
   public void g()
   {
     super.g();
-    if (this.jdField_a_of_type_Nhx != null) {
-      this.jdField_a_of_type_Nhx.g();
+    if (this.jdField_a_of_type_Nth != null) {
+      this.jdField_a_of_type_Nth.g();
     }
   }
   
   public void i()
   {
-    if (this.jdField_a_of_type_Nhx != null) {
-      this.jdField_a_of_type_Nhx.k();
+    if (this.jdField_a_of_type_Nth != null) {
+      this.jdField_a_of_type_Nth.k();
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.jdField_a_of_type_Nhx != null) {
-      this.jdField_a_of_type_Nhx.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Nth != null) {
+      this.jdField_a_of_type_Nth.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
@@ -139,7 +139,7 @@ public class ReadInJoySubChannelFragment
       this.jdField_b_of_type_JavaLangString = ((Bundle)localObject).getString("channel_name");
     }
     localObject = jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Nhx != null) {
+    if (this.jdField_a_of_type_Nth != null) {
       bool = true;
     }
     QLog.d((String)localObject, 2, new Object[] { "onCreate, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
@@ -150,10 +150,10 @@ public class ReadInJoySubChannelFragment
   {
     boolean bool = false;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getActivity());
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131494361, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559931, paramViewGroup, false);
     a();
     paramLayoutInflater = jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Nhx != null) {
+    if (this.jdField_a_of_type_Nth != null) {
       bool = true;
     }
     QLog.d(paramLayoutInflater, 2, new Object[] { "onCreateView, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
@@ -164,22 +164,22 @@ public class ReadInJoySubChannelFragment
   {
     boolean bool = false;
     String str = jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Nhx != null) {
+    if (this.jdField_a_of_type_Nth != null) {
       bool = true;
     }
     QLog.d(str, 2, new Object[] { "onDestroy, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
     super.onDestroy();
-    if (this.jdField_a_of_type_Nhx != null) {
-      this.jdField_a_of_type_Nhx.d();
+    if (this.jdField_a_of_type_Nth != null) {
+      this.jdField_a_of_type_Nth.d();
     }
-    this.jdField_a_of_type_Nhx = null;
+    this.jdField_a_of_type_Nth = null;
   }
   
   public void onDestroyView()
   {
     boolean bool = false;
     String str = jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Nhx != null) {
+    if (this.jdField_a_of_type_Nth != null) {
       bool = true;
     }
     QLog.d(str, 2, new Object[] { "onDestroyView, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
@@ -191,13 +191,13 @@ public class ReadInJoySubChannelFragment
   {
     boolean bool = false;
     String str = jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Nhx != null) {
+    if (this.jdField_a_of_type_Nth != null) {
       bool = true;
     }
     QLog.d(str, 2, new Object[] { "onPause, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int), ", mIsShowingSelf = ", Boolean.valueOf(this.c) });
     super.onPause();
-    if ((this.jdField_a_of_type_Nhx != null) && (this.c)) {
-      this.jdField_a_of_type_Nhx.g();
+    if ((this.jdField_a_of_type_Nth != null) && (this.c)) {
+      this.jdField_a_of_type_Nth.g();
     }
   }
   
@@ -205,13 +205,13 @@ public class ReadInJoySubChannelFragment
   {
     boolean bool = false;
     String str = jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Nhx != null) {
+    if (this.jdField_a_of_type_Nth != null) {
       bool = true;
     }
     QLog.d(str, 2, new Object[] { "onResume, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int), ", mIsShowingSelf = ", Boolean.valueOf(this.c) });
     super.onResume();
-    if ((this.jdField_a_of_type_Nhx != null) && (this.c)) {
-      this.jdField_a_of_type_Nhx.h();
+    if ((this.jdField_a_of_type_Nth != null) && (this.c)) {
+      this.jdField_a_of_type_Nth.h();
     }
   }
   
@@ -219,13 +219,13 @@ public class ReadInJoySubChannelFragment
   {
     boolean bool = false;
     String str = jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Nhx != null) {
+    if (this.jdField_a_of_type_Nth != null) {
       bool = true;
     }
     QLog.d(str, 2, new Object[] { "onStart, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
     super.onStart();
-    if (this.jdField_a_of_type_Nhx != null) {
-      this.jdField_a_of_type_Nhx.e();
+    if (this.jdField_a_of_type_Nth != null) {
+      this.jdField_a_of_type_Nth.e();
     }
   }
   
@@ -233,13 +233,13 @@ public class ReadInJoySubChannelFragment
   {
     boolean bool = false;
     String str = jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Nhx != null) {
+    if (this.jdField_a_of_type_Nth != null) {
       bool = true;
     }
     QLog.d(str, 2, new Object[] { "onStop, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
     super.onStop();
-    if (this.jdField_a_of_type_Nhx != null) {
-      this.jdField_a_of_type_Nhx.f();
+    if (this.jdField_a_of_type_Nth != null) {
+      this.jdField_a_of_type_Nth.f();
     }
   }
 }

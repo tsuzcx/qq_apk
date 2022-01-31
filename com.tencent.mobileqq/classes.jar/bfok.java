@@ -1,56 +1,53 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
 
 public class bfok
 {
-  public static final List<String> a = new ArrayList(Arrays.asList(new String[] { "4", "5", "7" }));
-  public static final List<String> b = new ArrayList(Arrays.asList(new String[] { "1", "4", "5", "7" }));
-  public static final List<String> c = new ArrayList(Arrays.asList(new String[] { "2", "3", "6", "", null }));
-  public static final List<String> d = new ArrayList(Arrays.asList(new String[] { "2", "3", "", null }));
-  public static final List<String> e = new ArrayList(Arrays.asList(new String[] { "2", "3" }));
-  public static final List<String> f = new ArrayList(Arrays.asList(new String[] { "6" }));
+  public int a;
+  public String a;
+  public HashMap<String, Object> a;
+  public int b;
+  public int c;
+  public int d;
   
-  public static void a(Bundle paramBundle, bfol parambfol)
+  public bfok(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    ArrayList localArrayList = new ArrayList();
-    for (Object localObject = parambfol.getClass(); localObject != null; localObject = ((Class)localObject).getSuperclass()) {
-      localArrayList.addAll(Arrays.asList(((Class)localObject).getDeclaredFields()));
-    }
-    int i = 0;
-    if (i < localArrayList.size())
-    {
-      localObject = (Field)localArrayList.get(i);
-      String str1 = ((Field)localObject).getName();
-      String str2 = ((Field)localObject).getType().getSimpleName();
-      QLog.i("HbInfo", 2, "key = " + str1 + " tname = " + str2);
-      String str3 = paramBundle.getString(str1);
-      if (str3 == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        try
-        {
-          QLog.i("HbInfo", 2, "set " + str1 + " = " + str3);
-          if (str2.equals("String")) {
-            ((Field)localObject).set(parambfol, str3);
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
-    }
+    this(paramInt1, paramString, paramInt2, paramInt3, 1);
+  }
+  
+  public bfok(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.b = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramInt2;
+    this.d = paramInt3;
+    this.jdField_a_of_type_Int = paramInt4;
+  }
+  
+  public bfok(String paramString, int paramInt1, int paramInt2)
+  {
+    this(0, paramString, paramInt1, paramInt2);
+  }
+  
+  public Object a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfok
  * JD-Core Version:    0.7.0.1
  */

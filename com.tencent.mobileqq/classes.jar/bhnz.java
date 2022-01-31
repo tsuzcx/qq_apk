@@ -1,82 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import mqq.app.QQPermissionCallback;
 
-public class bhnz
+final class bhnz
+  implements QQPermissionCallback
 {
-  private static bhnz jdField_a_of_type_Bhnz;
-  private WeakReference<DoodleLayout> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<DoodleLayout> b;
+  bhnz(Bitmap paramBitmap, int paramInt, String paramString, Activity paramActivity) {}
   
-  public static bhnz a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (jdField_a_of_type_Bhnz == null) {
-      jdField_a_of_type_Bhnz = new bhnz();
-    }
-    return jdField_a_of_type_Bhnz;
+    bbcv.b(bhnx.a(this.jdField_a_of_type_AndroidAppActivity));
   }
   
-  public DoodleLayout a(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Object localObject2 = null;
-    Object localObject1;
-    if (paramInt == 0)
-    {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        localObject1 = localObject2;
-        if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-          localObject1 = (DoodleLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        }
-      }
-    }
-    for (;;)
-    {
-      if ((localObject1 == null) && (QLog.isColorLevel())) {
-        QLog.e("DoodleLayoutConnector", 2, "getDoodleLayout null, not init yet");
-      }
-      return localObject1;
-      localObject1 = localObject2;
-      if (this.b != null)
-      {
-        localObject1 = localObject2;
-        if (this.b.get() != null) {
-          localObject1 = (DoodleLayout)this.b.get();
-        }
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoodleLayoutConnector", 2, "unbind " + paramInt);
-    }
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      return;
-    }
-    this.b = null;
-  }
-  
-  public void a(int paramInt, DoodleLayout paramDoodleLayout)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoodleLayoutConnector", 2, "bind " + paramInt);
-    }
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDoodleLayout);
-      return;
-    }
-    this.b = new WeakReference(paramDoodleLayout);
+    bhnx.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhnz
  * JD-Core Version:    0.7.0.1
  */

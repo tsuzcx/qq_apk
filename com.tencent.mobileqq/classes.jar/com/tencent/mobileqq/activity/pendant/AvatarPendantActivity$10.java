@@ -2,9 +2,9 @@ package com.tencent.mobileqq.activity.pendant;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
-import azvq;
-import azyk;
-import bacm;
+import bawu;
+import bazo;
+import bbdr;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vas.avatar.AvatarLayout;
@@ -24,7 +24,7 @@ class AvatarPendantActivity$10
   {
     localObject2 = null;
     localObject1 = null;
-    if (azyk.a()) {}
+    if (bazo.a()) {}
     for (;;)
     {
       Object localObject3;
@@ -32,15 +32,15 @@ class AvatarPendantActivity$10
       boolean bool;
       try
       {
-        localObject1 = azyk.b();
+        localObject1 = bazo.b();
         localObject3 = new File((String)localObject1);
         localOptions = new BitmapFactory.Options();
         localObject3 = new BufferedInputStream(new FileInputStream((File)localObject3));
         if (this.this$0.b.get())
         {
-          localOptions.inSampleSize = ((int)bacm.a((InputStream)localObject3, this.this$0.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.getWidth(), this.this$0.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.getHeight()));
+          localOptions.inSampleSize = ((int)bbdr.a((InputStream)localObject3, this.this$0.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.getWidth(), this.this$0.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.getHeight()));
           ((BufferedInputStream)localObject3).close();
-          localObject1 = azvq.a((String)localObject1, localOptions);
+          localObject1 = bawu.a((String)localObject1, localOptions);
           localObject2 = localObject1;
           if (localObject1 == null) {}
         }
@@ -75,7 +75,7 @@ class AvatarPendantActivity$10
           localObject2 = localObject1;
         }
       }
-      localOptions.inSampleSize = ((int)bacm.a((InputStream)localObject3, 120, 120));
+      localOptions.inSampleSize = ((int)bbdr.a((InputStream)localObject3, 120, 120));
       continue;
       localObject1 = localObject2;
       if (QLog.isColorLevel())

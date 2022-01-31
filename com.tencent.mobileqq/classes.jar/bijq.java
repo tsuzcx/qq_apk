@@ -1,24 +1,13 @@
-import android.graphics.PointF;
+import com.tencent.ttpic.filter.MaterialLoadFinishListener;
 
-public class bijq
+class bijq
+  implements MaterialLoadFinishListener
 {
-  public final float a;
-  public final PointF a;
-  public final float b;
-  public final float c;
-  public final float d;
-  public final float e;
-  public final float f;
+  bijq(bijp parambijp) {}
   
-  public bijq(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8)
+  public void onLoadFinish(long paramLong)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_Float = paramFloat3;
-    this.b = paramFloat4;
-    this.c = paramFloat5;
-    this.d = paramFloat6;
-    this.e = paramFloat7;
-    this.f = paramFloat8;
+    bizc.a().a(bijp.a(this.a), paramLong);
   }
 }
 

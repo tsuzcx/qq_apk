@@ -1,71 +1,79 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.miniapp.MiniAppInfoManager.1;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import cooperation.liveroom.LiveRoomHelper;
+import cooperation.liveroom.LiveRoomProxyActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arms
+  extends WebViewPlugin
 {
-  Map<String, armr> a = new ConcurrentHashMap();
-  
-  armr a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  public arms()
   {
-    armr localarmr = (armr)this.a.get(paramString);
-    if ((localarmr != null) && (paramBoolean)) {
-      if (!a(localarmr, paramInt1, paramInt2)) {}
-    }
-    while (!QLog.isColorLevel())
-    {
-      return localarmr;
-      return null;
-    }
-    QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache invalid. cacheKey=", paramString });
-    return localarmr;
+    this.mPluginNameSpace = "gflivesdk";
   }
   
-  void a(armr paramarmr, int paramInt, armu paramarmu)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    ThreadManagerV2.excute(new MiniAppInfoManager.1(this, paramarmu, paramarmr, paramInt), 128, null, true);
-  }
-  
-  boolean a(armr paramarmr)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyAppInfo. appState=", Integer.valueOf(paramarmr.jdField_c_of_type_Int) });
-    }
-    return (paramarmr != null) && (paramarmr.jdField_c_of_type_Int == 1);
-  }
-  
-  boolean a(armr paramarmr, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache valid. cacheKey=", paramarmr.h });
-    }
-    if (paramInt2 == 1)
-    {
-      if (paramarmr.jdField_c_of_type_Long <= NetConnInfoCenter.getServerTimeMillis()) {}
-    }
-    else {
-      while ((paramInt2 == 0) && (((paramInt1 == 1) && (paramarmr.a > NetConnInfoCenter.getServerTimeMillis())) || ((paramInt1 == 2) && (paramarmr.b > NetConnInfoCenter.getServerTimeMillis())))) {
+    if ("openView".equals(paramString3)) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LiveRoomBusinessPlugin", 2, "openView");
+        }
+        paramString1 = new JSONObject(paramVarArgs[0]);
+        paramString2 = paramString1.optString("viewType");
+        paramJsBridgeListener = paramString1.optString("callback");
+        if ("activity".equals(paramString2))
+        {
+          paramString1 = paramString1.optString("url");
+          paramString2 = this.mRuntime.a();
+          if ((paramString2 != null) && (paramString1 != null) && (!paramString1.isEmpty()))
+          {
+            LiveRoomProxyActivity.open(paramString2, paramString1, "BusinessPlugin openView");
+            callJs(paramJsBridgeListener, new String[] { "{\"result\":0}" });
+          }
+        }
         return true;
       }
+      catch (JSONException paramJsBridgeListener)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+        }
+      }
     }
-    return false;
-  }
-  
-  boolean b(armr paramarmr)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyDownloadUrl. downloadUrl=", paramarmr.f });
+    for (;;)
+    {
+      return false;
+      if ("checkSDKInstalled".equals(paramString3))
+      {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+          if ((!LiveRoomHelper.getPluginInstalledInTool()) || (TextUtils.isEmpty(LiveRoomHelper.getPluginVersionInTool()))) {
+            break;
+          }
+          callJs(paramJsBridgeListener, new String[] { "{\"result\":0,\"version\":\"" + LiveRoomHelper.getPluginVersionInTool() + "\"}" });
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+        }
+      }
     }
-    return !TextUtils.isEmpty(paramarmr.f);
+    PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), new armt(this, paramJsBridgeListener));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     arms
  * JD-Core Version:    0.7.0.1
  */

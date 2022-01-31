@@ -1,82 +1,54 @@
-import android.graphics.Bitmap;
-import android.graphics.Typeface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneShareData;
+import java.util.ArrayList;
+import java.util.Map;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bhlq
+  extends MSFServlet
 {
-  int a;
-  public Bitmap a;
-  public Typeface a;
-  int b = 0;
-  int c = 0;
-  int d = 0;
-  public int e;
-  public int f;
-  public int g = 2;
-  
-  public bhlq()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Int = 0;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    {
+      QLog.e("QzoneShare.QzoneShareServlet", 1, "QzoneShareServlet onReceive success.");
+      return;
+    }
+    QLog.e("QzoneShare.QzoneShareServlet", 1, "QzoneShareServlet onReceive fail.");
   }
   
-  public int a(float paramFloat)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return aciy.a(paramFloat, BaseApplicationImpl.getApplication().getResources());
-  }
-  
-  public bhlp a()
-  {
-    bhlp localbhlp = new bhlp();
-    a(localbhlp);
-    return localbhlp;
-  }
-  
-  public bhlq a(float paramFloat1, float paramFloat2)
-  {
-    this.e = a(paramFloat1);
-    this.f = a(paramFloat2);
-    return this;
-  }
-  
-  public bhlq a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
-  {
-    this.c = a(paramFloat1);
-    this.d = a(paramFloat2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    return this;
-  }
-  
-  public bhlq a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    return this;
-  }
-  
-  public bhlq a(Typeface paramTypeface)
-  {
-    this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
-    return this;
-  }
-  
-  void a(bhlp parambhlp)
-  {
-    parambhlp.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    parambhlp.e = this.e;
-    parambhlp.f = this.f;
-    parambhlp.c = this.c;
-    parambhlp.d = this.d;
-    parambhlp.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    parambhlp.b = this.b;
-    parambhlp.jdField_a_of_type_AndroidGraphicsTypeface = this.jdField_a_of_type_AndroidGraphicsTypeface;
-    parambhlp.g = parambhlp.a(parambhlp.jdField_a_of_type_Int);
-    parambhlp.h = parambhlp.a(parambhlp.b);
-    parambhlp.i = this.g;
+    paramIntent = paramIntent.getExtras();
+    Object localObject1 = (QZoneShareData)paramIntent.get("sharedata");
+    long l = ((QZoneShareData)localObject1).jdField_a_of_type_Long;
+    Object localObject2 = ((QZoneShareData)localObject1).e;
+    String str1 = ((QZoneShareData)localObject1).jdField_b_of_type_JavaLangString;
+    String str2 = ((QZoneShareData)localObject1).c;
+    String str3 = ((QZoneShareData)localObject1).d;
+    String str4 = ((QZoneShareData)localObject1).g;
+    ArrayList localArrayList = ((QZoneShareData)localObject1).jdField_a_of_type_JavaUtilArrayList;
+    int i = ((QZoneShareData)localObject1).jdField_a_of_type_Int;
+    Map localMap = ((QZoneShareData)localObject1).jdField_a_of_type_JavaUtilMap;
+    String str5 = paramIntent.getString("reason");
+    localObject2 = new bhlp((String)localObject2, str3, 2020014, paramIntent.getLong("uin"), str1, str2, str5, localArrayList, l, str4, i, localMap, ((QZoneShareData)localObject1).jdField_b_of_type_JavaUtilMap);
+    localObject1 = ((bhlp)localObject2).encode();
+    paramIntent = (Intent)localObject1;
+    if (localObject1 == null) {
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + ((bhlp)localObject2).uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhlq
  * JD-Core Version:    0.7.0.1
  */

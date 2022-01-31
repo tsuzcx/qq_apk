@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-class baze
-  implements View.OnClickListener
-{
-  baze(bazb parambazb) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(false, 0, 0);
-  }
-}
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface baze {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     baze
  * JD-Core Version:    0.7.0.1
  */

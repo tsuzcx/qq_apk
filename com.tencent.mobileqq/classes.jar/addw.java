@@ -1,16 +1,10 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
-
-class addw
-  extends acjc
+final class addw
+  implements adek<addv>
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  List<ImageView> jdField_a_of_type_JavaUtilList;
-  TextView b;
-  
-  addw(addv paramaddv) {}
+  public addv a(adeh paramadeh)
+  {
+    return new addv(paramadeh);
+  }
 }
 
 

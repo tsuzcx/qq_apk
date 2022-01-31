@@ -171,7 +171,7 @@ public class ArkAppMessage
     if (!TextUtils.isEmpty(this.promptText)) {
       return this.promptText;
     }
-    return BaseApplicationImpl.getApplication().getString(2131624686);
+    return BaseApplicationImpl.getApplication().getString(2131690240);
   }
   
   public void reset()

@@ -1,17 +1,81 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public final class ajbt
+class ajbt
+  implements aabm
 {
-  View jdField_a_of_type_AndroidViewView;
-  ViewGroup[] jdField_a_of_type_ArrayOfAndroidViewViewGroup = new ViewGroup[3];
-  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[3];
-  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[3];
-  URLImageView[] jdField_a_of_type_ArrayOfComTencentImageURLImageView = new URLImageView[3];
-  ImageView[] b = new ImageView[3];
+  ajbt(ajbq paramajbq, CmGameInitParams paramCmGameInitParams, long paramLong) {}
+  
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
+  {
+    QLog.w("cmgame_process.CmGameSubProcessHandler", 1, "[onFailure], code:" + paramInt + ",msg:" + paramString);
+    try
+    {
+      paramString = ajae.a();
+      if (paramString != null)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("ret", paramInt);
+        localJSONObject.put("type", "failure");
+        paramString.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_login.local", localJSONObject.toString());
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmgame_process.CmGameSubProcessHandler", 1, paramString, new Object[0]);
+    }
+  }
+  
+  public void onPermission(int paramInt)
+  {
+    QLog.w("cmgame_process.CmGameSubProcessHandler", 1, "[onPermission], code:" + paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 2;
+    }
+    try
+    {
+      ApolloCmdChannel localApolloCmdChannel = ajae.a();
+      if (localApolloCmdChannel != null)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("ret", paramInt);
+        localJSONObject.put("type", "unauthorized");
+        localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_login.local", localJSONObject.toString());
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.CmGameSubProcessHandler", 1, localThrowable, new Object[0]);
+    }
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    try
+    {
+      ApolloCmdChannel localApolloCmdChannel = ajae.a();
+      if (localApolloCmdChannel != null)
+      {
+        paramJSONObject.put("ret", 0);
+        paramJSONObject.put("type", "success");
+        ajbq.a(this.jdField_a_of_type_Ajbq, paramJSONObject.optString("access_token"));
+        localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_login.local", paramJSONObject.toString());
+      }
+      return;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      QLog.e("cmgame_process.CmGameSubProcessHandler", 1, paramJSONObject, new Object[0]);
+    }
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

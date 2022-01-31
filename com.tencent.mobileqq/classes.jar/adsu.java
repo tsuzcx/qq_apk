@@ -1,29 +1,16 @@
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
 
 public class adsu
-  extends adsm
+  implements View.OnTouchListener
 {
-  public adsu(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
-  {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
-  }
+  public adsu(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
   
-  public acju a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new adsw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public View a(BaseChatItemLayout paramBaseChatItemLayout)
-  {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131496934, paramBaseChatItemLayout, false);
+    return true;
   }
 }
 

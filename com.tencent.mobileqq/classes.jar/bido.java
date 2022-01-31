@@ -1,111 +1,97 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.widget.RelativeLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import cooperation.weiyun.channel.pb.WeiyunPB.MsgBody;
+import cooperation.weiyun.channel.pb.WeiyunPB.RspMsgBody;
 
-public class bido
-  implements bikb<biis>
+class bido<T>
+  implements bidm
 {
-  private final float jdField_a_of_type_Float = 1.5F;
-  private final int jdField_a_of_type_Int = aciy.a(40.0F, bidl.a(this.jdField_a_of_type_Bidl).getResources());
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private final int jdField_b_of_type_Int = 5;
-  private float c;
+  private static final String jdField_a_of_type_JavaLangString = ajyc.a(2131700942);
+  private final int jdField_a_of_type_Int;
+  private final bidp<T> jdField_a_of_type_Bidp;
   
-  public bido(bidl parambidl) {}
-  
-  public boolean a(biis parambiis, MotionEvent paramMotionEvent)
+  bido(int paramInt, bidp<T> parambidp)
   {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bidp = parambidp;
+  }
+  
+  public void a(int paramInt, String paramString, byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Bidp == null) {
+      return;
+    }
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      this.jdField_a_of_type_Bidp.a(paramInt, paramString, null);
+      return;
+    }
+    try
+    {
+      paramString = (WeiyunPB.MsgBody)new WeiyunPB.MsgBody().mergeFrom(paramArrayOfByte);
+      paramString = (WeiyunPB.RspMsgBody)paramString.RspMsg_body.get();
+      if (paramString == null)
+      {
+        bifp.a().w("BaseCallback", "rspMsgBody is null.");
+        paramString = jdField_a_of_type_JavaLangString;
+        this.jdField_a_of_type_Bidp.a(1828003, paramString, null);
+        return;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      bifp.a().w("BaseCallback", "decode Rsp Body failed.", paramString);
+      paramString = jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Bidp.a(1828003, paramString, null);
+      return;
+    }
+    switch (this.jdField_a_of_type_Int)
     {
     default: 
-    case 0: 
-    case 2: 
-      label97:
-      do
-      {
-        return false;
-        this.c = f1;
-        this.jdField_b_of_type_Float = f2;
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        return false;
-        float f3 = Math.abs(f2 - this.jdField_b_of_type_Float);
-        float f4 = Math.abs(f1 - this.c);
-        int i;
-        if (f3 > 5.0F)
-        {
-          i = 1;
-          if (f4 <= 5.0F) {
-            break label324;
-          }
-        }
-        for (int j = 1; (j | i) != 0; j = 0)
-        {
-          this.c = f1;
-          this.jdField_b_of_type_Float = f2;
-          if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true))
-          {
-            bidl.a(this.jdField_a_of_type_Bidl).setVisibility(0);
-            this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-            bidl.a(this.jdField_a_of_type_Bidl).getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
-            parambiis = this.jdField_a_of_type_AndroidGraphicsRect;
-            parambiis.left -= this.jdField_a_of_type_Int;
-            parambiis = this.jdField_a_of_type_AndroidGraphicsRect;
-            parambiis.top -= this.jdField_a_of_type_Int;
-            parambiis = this.jdField_a_of_type_AndroidGraphicsRect;
-            parambiis.right += this.jdField_a_of_type_Int;
-            parambiis = this.jdField_a_of_type_AndroidGraphicsRect;
-            parambiis.bottom += this.jdField_a_of_type_Int;
-            bidl.a(this.jdField_a_of_type_Bidl, 9);
-          }
-          if (!this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f2)) {
-            break label330;
-          }
-          urk.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "the at label enter rubbish area.");
-          this.jdField_a_of_type_Boolean = true;
-          bidl.a(this.jdField_a_of_type_Bidl).a(1.5F);
-          bidl.a(this.jdField_a_of_type_Bidl).getDrawable().setColorFilter(Color.parseColor("#F31919"), PorterDuff.Mode.MULTIPLY);
-          return false;
-          i = 0;
-          break label97;
-        }
-      } while (!this.jdField_a_of_type_Boolean);
-      label324:
-      label330:
-      urk.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "the face leave rubbish area.");
-      this.jdField_a_of_type_Boolean = false;
-      bidl.a(this.jdField_a_of_type_Bidl).a(1.0F);
-      bidl.a(this.jdField_a_of_type_Bidl).getDrawable().clearColorFilter();
-      return false;
+      paramString = jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Bidp.a(1828001, paramString, null);
+      return;
+    case 26113: 
+      this.jdField_a_of_type_Bidp.a(paramString.LibInfoListGetMsgRsp_body);
+      return;
+    case 2402: 
+      this.jdField_a_of_type_Bidp.a(paramString.DiskFileBatchDownloadMsgRsp_body);
+      return;
+    case 2414: 
+      this.jdField_a_of_type_Bidp.a(paramString.DiskFileDocDownloadAbsMsgRsp_body);
+      return;
+    case 2509: 
+      this.jdField_a_of_type_Bidp.a(paramString.DiskDirFileBatchDeleteExMsgRsp_body);
+      return;
+    case 2803: 
+      this.jdField_a_of_type_Bidp.a(paramString.DiskPicBackupRsp_body);
+      return;
+    case 2804: 
+      this.jdField_a_of_type_Bidp.a(paramString.DiskAlbumStatusReportRsp_body);
+      return;
+    case 11001: 
+      this.jdField_a_of_type_Bidp.a(paramString.PwdQueryMsgRsp_body);
+      return;
+    case 11005: 
+      this.jdField_a_of_type_Bidp.a(paramString.PwdVerifyMsgRsp_body);
+      return;
+    case 245700: 
+      this.jdField_a_of_type_Bidp.a(paramString.CrossBidProxyCopyFileToOtherBidMsgRsp_body);
+      return;
+    case 245706: 
+      this.jdField_a_of_type_Bidp.a(paramString.CrossBidProxyOfflineFileGetListMsgRsp_body);
+      return;
+    case 246000: 
+      this.jdField_a_of_type_Bidp.a(paramString.QqSdkFileUploadMsgRsp_body);
+      return;
+    case 246001: 
+      this.jdField_a_of_type_Bidp.a(paramString.AioPicAndVideoCopyToWeiyunMsgRsp_body);
+      return;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f2)))
-      {
-        urk.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "remove at label.");
-        bidl.a(this.jdField_a_of_type_Bidl).a(1.0F);
-        bidl.a(this.jdField_a_of_type_Bidl).getDrawable().clearColorFilter();
-        bidl.a(this.jdField_a_of_type_Bidl).be_();
-      }
-      bidl.a(this.jdField_a_of_type_Bidl, 0);
-    }
-    bidl.a(this.jdField_a_of_type_Bidl).setVisibility(4);
-    return false;
+    this.jdField_a_of_type_Bidp.a(paramString.WeiyunShareAddFromMobileQQMsgRsp_body);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bido
  * JD-Core Version:    0.7.0.1
  */

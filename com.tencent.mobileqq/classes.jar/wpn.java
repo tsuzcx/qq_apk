@@ -1,22 +1,82 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class wpn
-  implements View.OnClickListener
+public class wpn
 {
-  wpn(wpm paramwpm, wpp paramwpp) {}
+  private volatile int jdField_a_of_type_Int = 4;
+  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  private String jdField_a_of_type_JavaLangString;
+  private volatile boolean jdField_a_of_type_Boolean = true;
   
-  public void onClick(View paramView)
+  public COMM.StCommonExt a()
   {
-    if (wpl.a(wpm.class.getName() + "clickFeed")) {
-      return;
+    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_JavaLangString = bbaj.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache");
     }
-    wpm.a(this.jdField_a_of_type_Wpm).a(this.jdField_a_of_type_Wpp);
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(COMM.StCommonExt paramStCommonExt)
+  {
+    this.jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString != null) {
+      bbaj.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache", paramString);
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public COMM.StCommonExt b()
+  {
+    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int != 4;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Int == 2;
+  }
+  
+  public boolean e()
+  {
+    return this.jdField_a_of_type_Int == 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wpn
  * JD-Core Version:    0.7.0.1
  */

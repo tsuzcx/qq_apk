@@ -1,20 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class qaw
-  implements Animation.AnimationListener
 {
-  public qaw(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    VideoFeedsAioGuideView.b(this.a).setStartOffset(360L);
-  }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<DislikeInfo> a;
+  public List<Long> a;
+  public long b;
+  public long c;
+  public long d;
 }
 
 

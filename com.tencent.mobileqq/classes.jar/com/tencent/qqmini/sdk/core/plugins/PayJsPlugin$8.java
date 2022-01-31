@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bdfz;
-import bdgq;
-import bdnw;
+import beka;
+import beks;
+import besl;
 import com.tencent.qqmini.sdk.core.proxy.PayProxy.IPayResultCallBack;
 import com.tencent.qqmini.sdk.core.proxy.PayProxy.PayResponse;
 import org.json.JSONException;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 class PayJsPlugin$8
   implements PayProxy.IPayResultCallBack
 {
-  PayJsPlugin$8(PayJsPlugin paramPayJsPlugin, bdfz parambdfz) {}
+  PayJsPlugin$8(PayJsPlugin paramPayJsPlugin, beka parambeka) {}
   
   public void onPayCallBack(PayProxy.PayResponse paramPayResponse)
   {
@@ -21,7 +21,7 @@ class PayJsPlugin$8
     {
       localJSONObject.put("resultCode", paramPayResponse.getResultCode());
       String str = paramPayResponse.getExtendInfo();
-      if ((!TextUtils.isEmpty(str)) && (bdgq.a(str))) {
+      if ((!TextUtils.isEmpty(str)) && (beks.a(str))) {
         localJSONObject.put("data", new JSONObject(str).optJSONObject("data"));
       }
       label58:
@@ -30,7 +30,7 @@ class PayJsPlugin$8
       }
       for (;;)
       {
-        bdnw.b("PayJsPlugin", "handleMidasGoodsPay onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
+        besl.b("PayJsPlugin", "handleMidasGoodsPay onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
         return;
         if ((paramPayResponse.getResultCode() == 2) || (paramPayResponse.getPayState() == 1))
         {
@@ -51,7 +51,7 @@ class PayJsPlugin$8
   
   public void payNeedLogin()
   {
-    bdnw.d("PayJsPlugin", "handleMidasMonthCardPay payNeedLogin");
+    besl.d("PayJsPlugin", "handleMidasMonthCardPay payNeedLogin");
     PayJsPlugin.access$200(this.this$0, this.val$req, null, "payNeedLogin");
   }
 }

@@ -1,33 +1,21 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
-class nxa
-  extends ClickableSpan
+public class nxa
+  implements CompoundButton.OnCheckedChangeListener
 {
-  nxa(nwx paramnwx, SubCommentData paramSubCommentData) {}
+  public nxa(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    nvx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin, BaseActivity.sTopActivity);
-    paramView = new nuj(this.jdField_a_of_type_Nwx).a().a();
-    ndn.a(null, nvx.a(this.jdField_a_of_type_Nwx.a), "0X800955B", "0X800955B", 0, 0, String.valueOf(this.jdField_a_of_type_Nwx.a.mArticleID), String.valueOf(this.jdField_a_of_type_Nwx.a.mAlgorithmID), this.jdField_a_of_type_Nwx.a.innerUniqueID, paramView, false);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
-    paramTextPaint.setUnderlineText(false);
+    ReadInJoySettingActivity.b(this.a, paramBoolean);
+    ReadInJoySettingActivity.a(this.a, ReadInJoySettingActivity.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nxa
  * JD-Core Version:    0.7.0.1
  */

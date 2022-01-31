@@ -1,23 +1,28 @@
-import android.view.animation.Animation;
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
 
-class rfz
-  extends beem
+public class rfz
+  implements Animator.AnimatorListener
 {
-  rfz(rfx paramrfx) {}
+  public rfz(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super.onAnimationEnd(paramAnimation);
-    if (rfw.a(this.a.a) != null)
-    {
-      paramAnimation = new ArrayList();
-      paramAnimation.add(rfw.a(this.a.a));
-      rfw.a(this.a.a).a(paramAnimation, rfw.a(this.a.a));
-      bbmy.a(this.a.a.a, 2, 2131652631, 0).a();
+    this.a.setScaleX(1.0F);
+    this.a.setScaleY(1.0F);
+    this.a.setRotation(0.0F);
+    this.a.setAlpha(1.0F);
+    if (ReadInjoyTabDragAnimationView.a(this.a) != 0) {
+      this.a.a(0);
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

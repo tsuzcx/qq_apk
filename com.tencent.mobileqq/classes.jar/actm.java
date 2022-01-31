@@ -1,6 +1,6 @@
-public abstract interface actm
+class actm
 {
-  public abstract void a(int paramInt, actx paramactx);
+  private static actk a = new actk("aio_client_module", null);
 }
 
 

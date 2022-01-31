@@ -1,17 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class afti
-  implements View.OnTouchListener
+public abstract interface afti
 {
-  afti(afth paramafth) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    afth.a(this.a, paramView);
-    return false;
-  }
+  public abstract void b(int paramInt);
 }
 
 

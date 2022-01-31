@@ -1,8 +1,16 @@
-public abstract interface rjh
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+
+public class rjh
+  implements MessageQueue.IdleHandler
 {
-  public abstract void a();
+  public rjh(FastWebActivity paramFastWebActivity) {}
   
-  public abstract void a(long paramLong);
+  public boolean queueIdle()
+  {
+    FastWebActivity.e(this.a);
+    return false;
+  }
 }
 
 

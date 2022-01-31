@@ -1,12 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.capture.mode.CaptureModeController;
 
-class bjco
-  implements DialogInterface.OnClickListener
+public class bjco
+  extends bjcl
 {
-  bjco(bjcm parambjcm) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public bjco(CaptureModeController paramCaptureModeController)
+  {
+    super(paramCaptureModeController);
+  }
 }
 
 

@@ -1,6 +1,13 @@
-public abstract interface apyu
+import com.tencent.mobileqq.flashchat.FlashChatItem;
+
+public class apyu
 {
-  public abstract void d();
+  public int a;
+  public FlashChatItem a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 

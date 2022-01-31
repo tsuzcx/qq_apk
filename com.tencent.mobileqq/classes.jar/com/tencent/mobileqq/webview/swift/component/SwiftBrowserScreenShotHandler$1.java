@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bbbo;
+import bceo;
 
 public class SwiftBrowserScreenShotHandler$1
   implements Runnable
 {
-  public SwiftBrowserScreenShotHandler$1(bbbo parambbbo) {}
+  public SwiftBrowserScreenShotHandler$1(bceo parambceo) {}
   
   public void run()
   {

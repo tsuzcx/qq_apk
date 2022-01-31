@@ -1,231 +1,190 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.lang.ref.WeakReference;
-import java.util.Collection;
-import java.util.Iterator;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.text.InputFilter;
+import android.text.InputFilter.LengthFilter;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import mqq.app.AppRuntime;
 
-class bgrk
-  implements Downloader.DownloadListener
+public class bgrk
+  extends bbgg
+  implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener, View.OnClickListener, bbll
 {
-  bgrk(bgrj parambgrj) {}
+  private int jdField_a_of_type_Int;
+  protected Context a;
+  private AnimationDrawable jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private EditText jdField_a_of_type_AndroidWidgetEditText;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  protected bblk a;
+  protected bgrl a;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public bgrk(Context paramContext, AppRuntime paramAppRuntime, int paramInt, bgrl parambgrl)
   {
-    paramString = bgrj.a(this.a, paramString, true).iterator();
-    while (paramString.hasNext())
+    super(paramContext, 2131755791);
+    this.jdField_a_of_type_Bgrl = parambgrl;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    super.setContentView(2131558919);
+    super.setNegativeButton(2131690596, this);
+    super.setPositiveButton(2131692324, this);
+    super.setTitle(2131689693);
+    ((TextView)super.findViewById(2131365151)).setGravity(3);
+    paramInt = bbkx.a(6.0F);
+    int i = bbkx.a(16.0F);
+    int j = bbkx.a(40.0F);
+    int k = bbkx.a(50.0F);
+    paramContext = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    paramContext.setOrientation(0);
+    paramContext.setGravity(16);
+    paramAppRuntime = new LinearLayout.LayoutParams(j, j);
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    paramContext.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramAppRuntime);
+    this.jdField_a_of_type_AndroidWidgetButton = new Button(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidWidgetButton.setId(2131372061);
+    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130843353);
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130772197));
+    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(2130843358, 0, 0, 0);
+    this.jdField_a_of_type_AndroidWidgetButton.setHeight(k);
+    paramContext.addView(this.jdField_a_of_type_AndroidWidgetButton);
+    super.findViewById(2131365147).setVisibility(8);
+    paramAppRuntime = (RelativeLayout)super.findViewById(2131365143);
+    parambgrl = new RelativeLayout.LayoutParams(0, -2);
+    parambgrl.addRule(3, 2131365151);
+    parambgrl.addRule(5, 2131365151);
+    parambgrl.addRule(7, 2131365151);
+    parambgrl.bottomMargin = i;
+    parambgrl.topMargin = paramInt;
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131368186));
+    this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131692330);
+    Object localObject = new InputFilter.LengthFilter(60);
+    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { localObject });
+    localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetEditText.getLayoutParams();
+    paramContext.setId(2131364702);
+    ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131364702);
+    paramAppRuntime.addView(paramContext, parambgrl);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    super.setOnDismissListener(this);
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(2130843358, 0, 0, 0);
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2) {}
+  
+  public boolean a(String paramString, int paramInt, Bitmap paramBitmap, Drawable paramDrawable)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramDownloadResult = (bgrl)paramString.next();
-      bgrm localbgrm = (bgrm)paramDownloadResult.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbgrm != null) {
-        localbgrm.onFailed(paramDownloadResult.b, paramDownloadResult.jdField_a_of_type_Int, paramDownloadResult.d);
+      bool1 = bool2;
+      if (apvb.a(paramString))
+      {
+        bool1 = bool2;
+        if (paramInt > 0)
+        {
+          this.jdField_a_of_type_AndroidWidgetButton.setText(adwr.a(paramInt));
+          this.jdField_a_of_type_AndroidWidgetButton.setPadding(bbkx.a(20.0F), 0, Math.min(adwr.a(this.jdField_a_of_type_AndroidContentContext, paramInt, null, null, 0), bbkx.a(200.0F)), 0);
+          if (paramDrawable == null) {
+            break label107;
+          }
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+        }
       }
-      paramDownloadResult.a();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.b = paramInt;
+      bool1 = true;
+      return bool1;
+      label107:
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
     }
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  public void b(String paramString, int paramInt1, int paramInt2) {}
   
-  /* Error */
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: invokestatic 79	bgrj:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   4: astore_3
-    //   5: aload_3
-    //   6: invokestatic 81	bgrj:b	(Ljava/lang/String;)V
-    //   9: aload_0
-    //   10: getfield 12	bgrk:a	Lbgrj;
-    //   13: aload_1
-    //   14: iconst_1
-    //   15: invokestatic 25	bgrj:a	(Lbgrj;Ljava/lang/String;Z)Ljava/util/Collection;
-    //   18: invokeinterface 31 1 0
-    //   23: astore 5
-    //   25: aload 5
-    //   27: invokeinterface 37 1 0
-    //   32: ifeq +325 -> 357
-    //   35: aload 5
-    //   37: invokeinterface 41 1 0
-    //   42: checkcast 43	bgrl
-    //   45: astore 6
-    //   47: aload 6
-    //   49: getfield 46	bgrl:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   52: invokevirtual 51	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   55: checkcast 53	bgrm
-    //   58: astore 4
-    //   60: aload 4
-    //   62: ifnull +190 -> 252
-    //   65: aload 6
-    //   67: getfield 60	bgrl:jdField_a_of_type_Int	I
-    //   70: sipush 999
-    //   73: if_icmpne +26 -> 99
-    //   76: aload 4
-    //   78: aload 6
-    //   80: getfield 57	bgrl:b	Ljava/lang/String;
-    //   83: aload 6
-    //   85: getfield 60	bgrl:jdField_a_of_type_Int	I
-    //   88: aload_3
-    //   89: invokestatic 83	bgrj:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   92: aconst_null
-    //   93: invokevirtual 87	bgrm:onDownloaded	(Ljava/lang/String;ILjava/lang/String;Landroid/graphics/drawable/Drawable;)V
-    //   96: goto -71 -> 25
-    //   99: aload 6
-    //   101: getfield 57	bgrl:b	Ljava/lang/String;
-    //   104: aload 6
-    //   106: getfield 63	bgrl:d	Ljava/lang/String;
-    //   109: invokestatic 90	bgrj:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
-    //   112: astore 7
-    //   114: aload 7
-    //   116: invokestatic 93	bgrj:b	(Ljava/io/File;)Z
-    //   119: ifeq +210 -> 329
-    //   122: aload_0
-    //   123: monitorenter
-    //   124: aload_0
-    //   125: getfield 12	bgrk:a	Lbgrj;
-    //   128: invokestatic 96	bgrj:a	(Lbgrj;)Landroid/support/v4/util/LruCache;
-    //   131: aload 6
-    //   133: getfield 98	bgrl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   136: invokevirtual 103	android/support/v4/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   139: checkcast 105	android/graphics/Bitmap
-    //   142: astore_1
-    //   143: aload_1
-    //   144: astore_2
-    //   145: aload_1
-    //   146: ifnonnull +13 -> 159
-    //   149: aload 7
-    //   151: invokevirtual 111	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   154: aconst_null
-    //   155: invokestatic 116	bgra:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   158: astore_2
-    //   159: aload_2
-    //   160: astore_1
-    //   161: aload_0
-    //   162: monitorexit
-    //   163: aload_1
-    //   164: ifnull +137 -> 301
-    //   167: aload_0
-    //   168: getfield 12	bgrk:a	Lbgrj;
-    //   171: invokestatic 96	bgrj:a	(Lbgrj;)Landroid/support/v4/util/LruCache;
-    //   174: aload 6
-    //   176: getfield 98	bgrl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   179: aload_1
-    //   180: invokevirtual 120	android/support/v4/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   183: pop
-    //   184: aload 4
-    //   186: ifnull +66 -> 252
-    //   189: aload 4
-    //   191: monitorenter
-    //   192: aload 4
-    //   194: aload 4
-    //   196: getfield 123	bgrm:mCount	I
-    //   199: iconst_1
-    //   200: isub
-    //   201: putfield 123	bgrm:mCount	I
-    //   204: aload 4
-    //   206: monitorexit
-    //   207: aload_1
-    //   208: sipush 320
-    //   211: invokevirtual 127	android/graphics/Bitmap:setDensity	(I)V
-    //   214: new 129	android/graphics/drawable/BitmapDrawable
-    //   217: dup
-    //   218: aload_1
-    //   219: invokespecial 132	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/graphics/Bitmap;)V
-    //   222: astore_1
-    //   223: aload_1
-    //   224: invokestatic 138	bajq:c	()F
-    //   227: f2i
-    //   228: invokevirtual 141	android/graphics/drawable/BitmapDrawable:setTargetDensity	(I)V
-    //   231: aload 4
-    //   233: aload 6
-    //   235: getfield 57	bgrl:b	Ljava/lang/String;
-    //   238: aload 6
-    //   240: getfield 60	bgrl:jdField_a_of_type_Int	I
-    //   243: aload 6
-    //   245: getfield 63	bgrl:d	Ljava/lang/String;
-    //   248: aload_1
-    //   249: invokevirtual 87	bgrm:onDownloaded	(Ljava/lang/String;ILjava/lang/String;Landroid/graphics/drawable/Drawable;)V
-    //   252: aload 6
-    //   254: invokevirtual 69	bgrl:a	()V
-    //   257: goto -232 -> 25
-    //   260: astore_2
-    //   261: aconst_null
-    //   262: astore_1
-    //   263: ldc 143
-    //   265: aload_2
-    //   266: invokevirtual 146	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
-    //   269: invokestatic 152	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   272: goto -111 -> 161
-    //   275: astore_1
-    //   276: aload_0
-    //   277: monitorexit
-    //   278: aload_1
-    //   279: athrow
-    //   280: astore_2
-    //   281: aconst_null
-    //   282: astore_1
-    //   283: ldc 143
-    //   285: aload_2
-    //   286: invokevirtual 153	java/lang/Exception:toString	()Ljava/lang/String;
-    //   289: invokestatic 152	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   292: goto -131 -> 161
-    //   295: astore_1
-    //   296: aload 4
-    //   298: monitorexit
-    //   299: aload_1
-    //   300: athrow
-    //   301: aload 4
-    //   303: ifnull -51 -> 252
-    //   306: aload 4
-    //   308: aload 6
-    //   310: getfield 57	bgrl:b	Ljava/lang/String;
-    //   313: aload 6
-    //   315: getfield 60	bgrl:jdField_a_of_type_Int	I
-    //   318: aload 6
-    //   320: getfield 63	bgrl:d	Ljava/lang/String;
-    //   323: invokevirtual 67	bgrm:onFailed	(Ljava/lang/String;ILjava/lang/String;)V
-    //   326: goto -74 -> 252
-    //   329: aload 4
-    //   331: ifnull -79 -> 252
-    //   334: aload 4
-    //   336: aload 6
-    //   338: getfield 57	bgrl:b	Ljava/lang/String;
-    //   341: aload 6
-    //   343: getfield 60	bgrl:jdField_a_of_type_Int	I
-    //   346: aload 6
-    //   348: getfield 63	bgrl:d	Ljava/lang/String;
-    //   351: invokevirtual 67	bgrm:onFailed	(Ljava/lang/String;ILjava/lang/String;)V
-    //   354: goto -102 -> 252
-    //   357: return
-    //   358: astore_2
-    //   359: goto -76 -> 283
-    //   362: astore_2
-    //   363: goto -100 -> 263
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	366	0	this	bgrk
-    //   0	366	1	paramString	String
-    //   0	366	2	paramDownloadResult	DownloadResult
-    //   4	85	3	str	String
-    //   58	277	4	localbgrm	bgrm
-    //   23	13	5	localIterator	Iterator
-    //   45	302	6	localbgrl	bgrl
-    //   112	38	7	localFile	java.io.File
-    // Exception table:
-    //   from	to	target	type
-    //   124	143	260	java/lang/OutOfMemoryError
-    //   124	143	275	finally
-    //   149	159	275	finally
-    //   161	163	275	finally
-    //   263	272	275	finally
-    //   276	278	275	finally
-    //   283	292	275	finally
-    //   124	143	280	java/lang/Exception
-    //   192	207	295	finally
-    //   296	299	295	finally
-    //   149	159	358	java/lang/Exception
-    //   149	159	362	java/lang/OutOfMemoryError
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      super.cancel();
+      return;
+      if (this.jdField_a_of_type_Bgrl != null) {
+        this.jdField_a_of_type_Bgrl.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+      }
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    if ((this.jdField_a_of_type_Bblk != null) && (this.jdField_a_of_type_Bblk.a() == 2))
+    {
+      this.jdField_a_of_type_Bblk.e();
+      this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(2130843358, 0, 0, 0);
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
+      return;
+    }
+    if (this.jdField_a_of_type_Bblk != null) {
+      this.jdField_a_of_type_Bblk.f();
+    }
+    this.jdField_a_of_type_Bblk = new bblk(this.jdField_a_of_type_JavaLangString, new Handler(), this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bblk.a(super.getContext());
+    this.jdField_a_of_type_Bblk.b();
+    this.jdField_a_of_type_Bblk.a(this);
+    this.jdField_a_of_type_Bblk.c();
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
+    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable, null, null, null);
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
+    if (this.jdField_a_of_type_Bblk != null) {
+      this.jdField_a_of_type_Bblk.f();
+    }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      super.dismiss();
+    }
   }
 }
 

@@ -1,29 +1,69 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.mobileqq.datareportviewer.ReportData;
-import java.util.HashMap;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class amvm
-  extends BroadcastReceiver
+public class amvm
+  extends ampb<amvl>
 {
-  amvm(amvk paramamvk) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static amvl a()
   {
-    paramContext = (ReportData)paramIntent.getSerializableExtra("reportData");
-    paramIntent = (amvn)amvk.a(this.a).get(paramContext.actionName);
-    if ((paramIntent != null) && (paramIntent.b()))
-    {
-      this.a.a();
-      amvk.a(this.a).a(paramContext);
+    return (amvl)ampm.a().a(292);
+  }
+  
+  public int a()
+  {
+    return 292;
+  }
+  
+  @NonNull
+  public amvl a(int paramInt)
+  {
+    return new amvl();
+  }
+  
+  @Nullable
+  public amvl a(ampi[] paramArrayOfampi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoySearchJumpurlConfProcessor", 2, "[onParsed] confFiles = " + paramArrayOfampi);
     }
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoySearchJumpurlConfProcessor", 2, "[onParsed] confFiles[0].content= " + paramArrayOfampi[0].a);
+      }
+      return amvl.a(paramArrayOfampi[0].a);
+    }
+    return null;
+  }
+  
+  public Class<amvl> a()
+  {
+    return amvl.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amvl paramamvl) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amvm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-class aebl
-  extends Handler
+public class aebl
+  implements DialogInterface.OnClickListener
 {
-  aebl(aebk paramaebk) {}
+  public aebl(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.p.isShown()) {
-      this.a.p.setVisibility(8);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

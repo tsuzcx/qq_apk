@@ -1,89 +1,59 @@
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.LocationPoiDataHelper.1.1;
+import com.tencent.mobileqq.mini.out.CommonObserver;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.proto.lbsshare.LBSShare.LocationResp;
+import com.tencent.proto.lbsshare.LBSShare.POI;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.os.MqqHandler;
 
 public class arxf
+  extends CommonObserver
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  public void onGetPoiList(boolean paramBoolean, LBSShare.LocationResp paramLocationResp)
   {
-    awqx.b(paramQQAppInterface, "dc00898", "", "", "frd_recom", "grp_card_tab_exp", 0, 0, "", "", "", "");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, RecommendPerson paramRecommendPerson)
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramRecommendPerson);
-    a("grp_card_add", paramInt2, paramQQAppInterface, paramRecommendPerson.cardTypeID, paramRecommendPerson.uin, paramInt1, localArrayList);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, List<RecommendPerson> paramList)
-  {
-    a("grp_card_exp", 0, paramQQAppInterface, paramInt1, "", paramInt2, paramList);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, RecommendPerson paramRecommendPerson)
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramRecommendPerson);
-    a("grp_card_clk", 0, paramQQAppInterface, paramRecommendPerson.cardTypeID, paramRecommendPerson.uin, paramInt, localArrayList);
-  }
-  
-  private static void a(String paramString1, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString2, int paramInt3, List<RecommendPerson> paramList)
-  {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    StringBuilder localStringBuilder3 = new StringBuilder();
-    StringBuilder localStringBuilder4 = new StringBuilder();
-    JSONObject localJSONObject = new JSONObject();
-    int i = 0;
-    if (i < paramList.size())
+    arxe.a(this.a, false);
+    Object localObject1;
+    if (paramBoolean)
     {
-      if (paramList.get(i) == null) {}
-      for (;;)
+      arxe.a(this.a);
+      localObject1 = paramLocationResp.poilist.get().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        i += 1;
-        break;
-        if (i > 0)
-        {
-          localStringBuilder1.append(",");
-          localStringBuilder2.append(",");
-          localStringBuilder3.append(",");
-          localStringBuilder4.append(",");
-        }
-        localStringBuilder1.append(((RecommendPerson)paramList.get(i)).uin);
-        localStringBuilder2.append(((RecommendPerson)paramList.get(i)).recommendReason);
-        localStringBuilder3.append(((RecommendPerson)paramList.get(i)).recommendALghrithm);
-        localStringBuilder4.append(((RecommendPerson)paramList.get(i)).recommendRecall);
+        Object localObject2 = (LBSShare.POI)((Iterator)localObject1).next();
+        localObject2 = LocationRoom.Venue.a(arxe.a(this.a).app.c(), (LBSShare.POI)localObject2);
+        arxe.a(this.a).add(localObject2);
+      }
+      localObject1 = this.a;
+      if (paramLocationResp.next.get() <= 0) {
+        break label198;
       }
     }
-    try
+    label198:
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      if ("grp_card_exp".equals(paramString1)) {
-        localJSONObject.put("exp_uin", localStringBuilder1.toString());
+      arxe.b((arxe)localObject1, paramBoolean);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("LocationPoiDataHelper", 4, "[venue][poi-data] onGetPoiList next: mVenueList size = " + arxe.a(this.a).size() + ", mHashMore = " + arxe.a(this.a));
       }
-      localJSONObject.put("exp_reason", localStringBuilder2.toString());
-      localJSONObject.put("algh_id", localStringBuilder3.toString());
-      localJSONObject.put("recall_id", localStringBuilder4.toString());
-    }
-    catch (JSONException paramList)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopMemberRecommend.Report", 2, "reportRecommend error: " + paramList.getMessage());
-        }
+      if (arxe.a(this.a) != null) {
+        ThreadManager.getUIHandler().post(new LocationPoiDataHelper.1.1(this));
       }
+      return;
     }
-    awqx.b(paramQQAppInterface, "dc00898", "", paramString2, "frd_recom", paramString1, paramInt2, paramInt1, String.valueOf(paramInt3), "", localJSONObject.toString(), "");
   }
+  
+  public void onGetStreetUrl(boolean paramBoolean, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arxf
  * JD-Core Version:    0.7.0.1
  */

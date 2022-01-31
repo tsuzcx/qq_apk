@@ -1,29 +1,15 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class tut
-  extends sgl<tun, snl>
+class tut
+  extends AnimatorListenerAdapter
 {
-  public tut(tun paramtun)
-  {
-    super(paramtun);
-  }
+  tut(tus paramtus) {}
   
-  public void a(@NonNull tun paramtun, @NonNull snl paramsnl)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramtun.a != null) && (TextUtils.equals(paramtun.a.b, paramsnl.a)))
-    {
-      urk.a(this.TAG, "receive feed info change event. %s.", paramsnl.toString());
-      paramtun.i();
-    }
+    super.onAnimationEnd(paramAnimator);
   }
-  
-  public Class acceptEventClass()
-  {
-    return snl.class;
-  }
-  
-  public void b(@NonNull tun paramtun, @NonNull snl paramsnl) {}
 }
 
 

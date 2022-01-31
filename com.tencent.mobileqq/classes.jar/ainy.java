@@ -1,67 +1,27 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class ainy
-  implements SoundPool.OnLoadCompleteListener
+  implements Animation.AnimationListener
 {
-  ainy(ainx paramainx, float paramFloat, int paramInt, String paramString, aioq paramaioq, JSONObject paramJSONObject) {}
+  ainy(ainv paramainv, View paramView) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    float f = 1.0F;
-    if (ainx.a(this.jdField_a_of_type_Ainx) != null)
-    {
-      try
-      {
-        if (-1.0F == this.jdField_a_of_type_Float) {}
-        for (;;)
-        {
-          paramInt1 = ainx.a(this.jdField_a_of_type_Ainx).play(paramInt1, f, f, 0, this.jdField_a_of_type_Int, 1.0F);
-          if (paramInt1 != 0) {
-            break;
-          }
-          QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "fail to play, musicPath:" + this.jdField_a_of_type_JavaLangString);
-          return;
-          f = this.jdField_a_of_type_Float;
-        }
-        paramSoundPool = this.jdField_a_of_type_Aioq;
-        if (paramSoundPool == null) {
-          break label159;
-        }
-        try
-        {
-          if (this.jdField_a_of_type_OrgJsonJSONObject != null)
-          {
-            this.jdField_a_of_type_OrgJsonJSONObject.put("id", paramInt1);
-            this.jdField_a_of_type_Aioq.a(this.jdField_a_of_type_OrgJsonJSONObject);
-            return;
-          }
-        }
-        catch (Throwable paramSoundPool)
-        {
-          QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, paramSoundPool, new Object[0]);
-          return;
-        }
-        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "result is null");
-      }
-      catch (Throwable paramSoundPool)
-      {
-        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "pool play failed", paramSoundPool);
-        return;
-      }
-      return;
-      label159:
-      QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "handler is null");
-      return;
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getTag() instanceof aiob))) {
+      ((aiob)this.jdField_a_of_type_AndroidViewView.getTag()).a = true;
     }
-    QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "soundpool is null");
+    ainv.a(this.jdField_a_of_type_Ainv);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ainy
  * JD-Core Version:    0.7.0.1
  */

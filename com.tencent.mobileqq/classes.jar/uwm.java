@@ -1,18 +1,51 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
 
-public class uwm
-  implements tst
+class uwm
+  implements syt<tlt, tlu>
 {
-  public uwm(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  uwm(uwk paramuwk, JobContext paramJobContext, uvx paramuvx) {}
   
-  public void a_(tso paramtso)
+  public void a(@NonNull tlt paramtlt, @Nullable tlu arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    urk.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).c();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      veg.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
+      return;
+    }
+    if (??? == null)
+    {
+      paramErrorMessage = new tlu(paramErrorMessage);
+      synchronized (this.jdField_a_of_type_Uwk)
+      {
+        uwk.a(this.jdField_a_of_type_Uwk, paramErrorMessage);
+        uwk.a(this.jdField_a_of_type_Uwk).remove(paramtlt);
+        uwk.a(this.jdField_a_of_type_Uwk, this.jdField_a_of_type_Uvx);
+        return;
+      }
+    }
+    if (paramErrorMessage.isFail()) {
+      veg.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for comment request");
+    }
+    tbz localtbz = (tbz)tdc.a(17);
+    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
+    for (;;)
+    {
+      paramErrorMessage = ???;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      paramErrorMessage = (tlv)localIterator.next();
+      localtbz.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
+      if (paramErrorMessage.b == 1) {
+        paramErrorMessage.jdField_a_of_type_JavaUtilList.addAll(localtbz.b(paramErrorMessage.jdField_a_of_type_JavaLangString, false));
+      }
+    }
   }
 }
 

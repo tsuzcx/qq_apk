@@ -1,64 +1,68 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable.SerialExecutor.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.json.JSONArray;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 
 public class amcx
+  implements Executor
 {
-  private List<String> a = new ArrayList(Arrays.asList(new String[] { "requestPayment", "updateHTMLWebView", "insertHTMLWebView", "removeHTMLWebView", "insertMap", "wnsRequest", "getQua", "openUrl", "notifyNative", "launchApplication", "getUserInfoExtra", "updateShareMenu", "showShareMenu", "hideShareMenu", "getShareInfo", "shareAppMessage" }));
+  final amcy<Runnable> jdField_a_of_type_Amcy = new amcy(30);
+  Runnable jdField_a_of_type_JavaLangRunnable;
   
-  public static amcx a(alzs[] paramArrayOfalzs)
+  public void a()
   {
-    amcx localamcx = new amcx();
-    int i = 0;
-    Object localObject;
-    for (;;)
+    try
     {
-      localObject = localamcx;
-      try
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_Amcy.a();
+      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
+      if (localRunnable != null)
       {
-        if (i < paramArrayOfalzs.length)
-        {
-          localamcx.a.clear();
-          localObject = paramArrayOfalzs[i].a;
-          if (!TextUtils.isEmpty((CharSequence)localObject))
-          {
-            localObject = new JSONArray((String)localObject);
-            int j = 0;
-            while (j < ((JSONArray)localObject).length())
-            {
-              localamcx.a.add(((JSONArray)localObject).getString(j));
-              j += 1;
-            }
-          }
-          i += 1;
-        }
+        QLog.d("QQAnimationDrawable", 2, "scheduleNext start");
+        QQAnimationDrawable.a.execute(this.jdField_a_of_type_JavaLangRunnable);
       }
-      catch (Throwable paramArrayOfalzs)
-      {
-        QLog.d("MiniAppApiReportProcessor", 2, "parse, failed!", paramArrayOfalzs);
-        localObject = null;
-      }
+      return;
     }
-    return localObject;
+    finally {}
   }
   
-  public List<String> a()
+  public void b()
   {
-    return this.a;
+    try
+    {
+      this.jdField_a_of_type_Amcy.a();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public String toString()
+  public void execute(Runnable paramRunnable)
   {
-    new StringBuilder().append("getApiReportList:").append(TextUtils.join(",", a()));
-    return super.toString();
+    try
+    {
+      QLog.d("QQAnimationDrawable", 2, "SerialExecutor excute");
+      this.jdField_a_of_type_Amcy.a(new QQAnimationDrawable.SerialExecutor.1(this, paramRunnable));
+      if (this.jdField_a_of_type_JavaLangRunnable == null)
+      {
+        QLog.d("QQAnimationDrawable", 2, "SerialExecutor mActive == null scheduleNext");
+        a();
+      }
+      return;
+    }
+    finally
+    {
+      paramRunnable = finally;
+      throw paramRunnable;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amcx
  * JD-Core Version:    0.7.0.1
  */

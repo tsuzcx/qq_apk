@@ -1,14 +1,15 @@
-import android.text.style.CharacterStyle;
+import android.os.Build.VERSION;
 
-class fj
+public class fj
 {
-  int jdField_a_of_type_Int;
-  CharacterStyle jdField_a_of_type_AndroidTextStyleCharacterStyle;
-  int b;
+  public static int a()
+  {
+    return Build.VERSION.SDK_INT;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     fj
  * JD-Core Version:    0.7.0.1
  */

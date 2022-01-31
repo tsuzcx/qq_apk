@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import android.app.Activity;
-import bbbd;
-import bbms;
-import bbmy;
+import bced;
+import bcpq;
+import bcpw;
 
 public class SwiftBrowserLongClickHandler$6
   implements Runnable
 {
-  public SwiftBrowserLongClickHandler$6(bbbd parambbbd) {}
+  public SwiftBrowserLongClickHandler$6(bced parambced) {}
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Bbms != null) && (this.this$0.jdField_a_of_type_Bbms.isShowing())) {
-      this.this$0.jdField_a_of_type_Bbms.dismiss();
+    if ((this.this$0.jdField_a_of_type_Bcpq != null) && (this.this$0.jdField_a_of_type_Bcpq.isShowing())) {
+      this.this$0.jdField_a_of_type_Bcpq.dismiss();
     }
-    bbmy.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, 2131651443, 1).b(this.this$0.jdField_a_of_type_Int);
+    bcpw.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, 2131717235, 1).b(this.this$0.jdField_a_of_type_Int);
   }
 }
 

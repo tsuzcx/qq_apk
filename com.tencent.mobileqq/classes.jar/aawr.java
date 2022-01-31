@@ -1,26 +1,47 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class aawr
-  implements alxq
+  extends ajuv
 {
-  public aawr(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aawr(Conversation paramConversation) {}
   
-  public int a()
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {
-      return this.a.getString(2131628431);
+    super.a(paramBoolean, paramLong, paramString);
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+    if (i == 0) {
+      this.a.a(8, ajsf.z, 6000);
     }
-    return this.a.getString(2131626792);
+    while (i != 1) {
+      return;
+    }
+    this.a.a(8, ajsf.A, 6000);
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
+  {
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
+    if (i == 0) {
+      this.a.a(9, ajsf.z, 6003);
+    }
+    while (i != 1) {
+      return;
+    }
+    this.a.a(8, ajsf.A, 6003);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.b(paramBoolean, paramLong, paramString);
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+    if (i == 0) {
+      this.a.a(8, ajsf.z, 6000);
+    }
+    while (i != 1) {
+      return;
+    }
+    this.a.a(8, ajsf.A, 6003);
   }
 }
 

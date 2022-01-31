@@ -1,39 +1,13 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.ValueAnimator;
+import android.widget.ProgressBar;
 
 public class afvm
-  extends afuz
 {
-  public afvm(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  public static ValueAnimator a(ProgressBar paramProgressBar, int paramInt)
   {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
-  }
-  
-  protected boolean b()
-  {
-    return true;
-  }
-  
-  protected void g()
-  {
-    this.e = true;
-    super.g();
-  }
-  
-  protected void u()
-  {
-    super.u();
-  }
-  
-  protected void v()
-  {
-    super.v();
-  }
-  
-  protected void y()
-  {
-    this.a = "MiniPieForTroop";
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, paramInt }).setDuration(500L);
+    localValueAnimator.addUpdateListener(new afvn(paramProgressBar));
+    return localValueAnimator;
   }
 }
 

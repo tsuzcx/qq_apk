@@ -1,42 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class oss
+  implements ThreadFactory
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private final String jdField_a_of_type_JavaLangString;
+  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+  
+  public oss()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    Object localObject;
-    if (paramBaseArticleInfo.mSinglePicture != null)
+    Object localObject = System.getSecurityManager();
+    if (localObject != null) {}
+    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
     {
-      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
-      localJSONObject2.put("article_large_imge_url", localObject);
-      localJSONObject1.put("id_article_large_imge", localJSONObject2);
-      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label103;
-      }
+      this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
+      this.jdField_a_of_type_JavaLangString = "readinjoy-common-";
+      return;
     }
-    for (;;)
-    {
-      otl.a(paramBaseArticleInfo, localJSONObject1, true, "3");
-      otl.m(paramBaseArticleInfo, localJSONObject1);
-      otl.e(paramBaseArticleInfo, localJSONObject1);
-      npj.b(paramBaseArticleInfo, localJSONObject1);
-      npj.a(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_ad_pk_cell");
-      otl.a(localJSONObject1, paramBaseArticleInfo);
-      return localJSONObject1;
-      localObject = null;
-      break;
-      label103:
-      localObject = (AdvertisementInfo)paramBaseArticleInfo;
-      if (((AdvertisementInfo)localObject).mAdvertisementExtInfo != null) {
-        npj.a(localJSONObject1, ((AdvertisementInfo)localObject).mAdvertisementExtInfo);
-      }
+  }
+  
+  public Thread newThread(Runnable paramRunnable)
+  {
+    paramRunnable = new Thread(this.jdField_a_of_type_JavaLangThreadGroup, paramRunnable, this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement(), 0L);
+    if (paramRunnable.isDaemon()) {
+      paramRunnable.setDaemon(false);
     }
+    if (paramRunnable.getPriority() != 5) {
+      paramRunnable.setPriority(5);
+    }
+    return paramRunnable;
   }
 }
 

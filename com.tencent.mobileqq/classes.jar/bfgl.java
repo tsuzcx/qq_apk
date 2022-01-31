@@ -1,23 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qlink.QlAndQQInterface.DailogClickInfo;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qqmini.sdk.utils.MiniLog.WriteHandler.1;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class bfgl
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public bfgl(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private bfgl(Looper paramLooper)
   {
-    this.a.app.a().a(new QlAndQQInterface.DailogClickInfo(4));
-    this.a.finish();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (bfgi.a().isEmpty());
+    beiw.a(new MiniLog.WriteHandler.1(this), 64, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfgl
  * JD-Core Version:    0.7.0.1
  */

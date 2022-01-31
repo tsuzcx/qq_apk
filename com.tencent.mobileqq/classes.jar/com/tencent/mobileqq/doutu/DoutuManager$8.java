@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.doutu;
 
-import amxv;
+import anod;
 
 public class DoutuManager$8
   implements Runnable
 {
-  public DoutuManager$8(amxv paramamxv) {}
+  public DoutuManager$8(anod paramanod) {}
   
   public void run()
   {

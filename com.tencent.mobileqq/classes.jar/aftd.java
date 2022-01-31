@@ -1,14 +1,6 @@
-import android.view.View;
-
-class aftd
-  implements behy
+public abstract interface aftd
 {
-  aftd(aftc paramaftc, View paramView) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,21 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class pmo
-  implements Animation.AnimationListener
+  implements ViewBase.IBuilder
 {
-  public pmo(ComponentSocialOperation paramComponentSocialOperation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public ViewBase build(VafContext paramVafContext)
   {
-    this.a.a.startAnimation(this.a.c);
+    return new pmn(paramVafContext);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

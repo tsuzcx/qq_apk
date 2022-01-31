@@ -2,19 +2,19 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.qphone.base.util.QLog;
-import obz;
-import par;
-import pas;
+import onk;
+import pmj;
+import pmk;
 
 public class ReadInjoyTextView$1$1
   implements Runnable
 {
-  public ReadInjoyTextView$1$1(pas parampas, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
+  public ReadInjoyTextView$1$1(pmk parampmk, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
   
   public void run()
   {
     QLog.d("ReadInjoyTextView", 2, new Object[] { "setContentWithNickName callback, nick = ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo.nick });
-    this.jdField_a_of_type_Pas.a.setText(par.a(this.jdField_a_of_type_Pas.a, this.jdField_a_of_type_Pas.b, obz.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo.nick)));
+    this.jdField_a_of_type_Pmk.a.setText(pmj.a(this.jdField_a_of_type_Pmk.a, this.jdField_a_of_type_Pmk.b, onk.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo.nick)));
   }
 }
 

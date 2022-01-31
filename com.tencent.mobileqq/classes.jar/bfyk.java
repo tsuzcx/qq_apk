@@ -1,191 +1,62 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
-import android.view.VelocityTracker;
+import android.graphics.Canvas;
+import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
-import android.view.ViewParent;
-import cooperation.qzone.panorama.controller.TouchController.1;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class bfyk
-  implements View.OnTouchListener
+  extends bfyj
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ScaleGestureDetector.OnScaleGestureListener jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener = new bfyl(this);
-  private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private View jdField_a_of_type_AndroidViewView;
-  private bfyg jdField_a_of_type_Bfyg;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float d;
-  private float e;
-  private float f;
-  private float g;
-  private float h;
-  private float i;
-  private float j;
-  private float k = 1.0F;
-  
-  public bfyk(View paramView, Context paramContext, bfyg parambfyg, bfyu parambfyu)
+  private float a(RecyclerView paramRecyclerView, View paramView)
   {
-    this.jdField_a_of_type_Bfyg = parambfyg;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = parambfyu.a();
-    this.jdField_b_of_type_Int = parambfyu.b();
-    this.jdField_c_of_type_Int = parambfyu.d();
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, this.jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener);
-    if (this.jdField_a_of_type_Int == 0)
+    int j = paramRecyclerView.getChildCount();
+    int i = 0;
+    float f1 = 0.0F;
+    if (i < j)
     {
-      this.jdField_a_of_type_Float = 0.35F;
-      this.jdField_b_of_type_Float = 0.057F;
-      this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float / this.jdField_b_of_type_Float);
-      this.d = 0.162F;
-    }
-    while (this.jdField_b_of_type_Int == 1) {
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        this.k = 0.4142652F;
-        return;
-        this.jdField_a_of_type_Float = 0.122F;
-        this.jdField_b_of_type_Float = 0.01F;
-        this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float / this.jdField_b_of_type_Float);
-        this.d = 0.08F;
+      View localView = paramRecyclerView.getChildAt(i);
+      float f2;
+      if (localView == paramView) {
+        f2 = f1;
       }
-      else
+      for (;;)
       {
-        this.k = 0.5228754F;
-        return;
+        i += 1;
+        f1 = f2;
+        break;
+        float f3 = ViewCompat.getElevation(localView);
+        f2 = f1;
+        if (f3 > f1) {
+          f2 = f3;
+        }
       }
     }
-    this.k = 1.0F;
+    return f1;
   }
   
-  private void a(float paramFloat1, float paramFloat2)
+  public void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bfyg != null) {
-      this.jdField_a_of_type_Bfyg.a(paramFloat1, paramFloat2);
+    if ((paramBoolean) && (paramView.getTag(2131368384) == null))
+    {
+      float f = ViewCompat.getElevation(paramView);
+      ViewCompat.setElevation(paramView, 1.0F + a(paramRecyclerView, paramView));
+      paramView.setTag(2131368384, Float.valueOf(f));
     }
-    this.g += paramFloat1;
-    this.h += paramFloat2;
-    if (this.g > 90.0F) {
-      this.g = 90.0F;
-    }
-    while (this.g >= -90.0F) {
-      return;
-    }
-    this.g = -90.0F;
+    super.a(paramCanvas, paramRecyclerView, paramView, paramFloat1, paramFloat2, paramInt, paramBoolean);
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(View paramView)
   {
-    int m = 40;
-    int n = 1;
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.getParent().requestDisallowInterceptTouchEvent(true);
+    Object localObject = paramView.getTag(2131368384);
+    if ((localObject != null) && ((localObject instanceof Float))) {
+      ViewCompat.setElevation(paramView, ((Float)localObject).floatValue());
     }
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-    }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    boolean bool = this.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
-    if (paramMotionEvent.getActionMasked() == 6) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    if ((!this.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress()) && (paramMotionEvent.getPointerCount() == 1) && (!this.jdField_a_of_type_Boolean))
-    {
-      if (paramMotionEvent.getAction() != 0) {
-        break label341;
-      }
-      this.i = f1;
-      this.j = f2;
-      if (this.jdField_a_of_type_JavaUtilTimer != null) {
-        this.jdField_a_of_type_JavaUtilTimer.cancel();
-      }
-      if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
-        this.jdField_a_of_type_JavaUtilTimerTask.cancel();
-      }
-    }
-    int i1;
-    label278:
-    label283:
-    label341:
-    while (paramMotionEvent.getAction() != 2)
-    {
-      this.e = f2;
-      this.f = f1;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        m = ViewConfiguration.get(this.jdField_a_of_type_AndroidContentContext).getScaledTouchSlop();
-        if ((Math.abs(f1 - this.i) <= m) && (Math.abs(f2 - this.j) <= m) && (this.jdField_a_of_type_Bfyg != null)) {
-          this.jdField_a_of_type_Bfyg.a();
-        }
-        this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(10);
-        i1 = (int)this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity();
-        int i2 = (int)this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity();
-        if (i1 <= 0) {
-          break;
-        }
-        m = 1;
-        if (i2 <= 0) {
-          break label499;
-        }
-        this.jdField_a_of_type_JavaUtilTimer = new Timer();
-        this.jdField_a_of_type_JavaUtilTimerTask = new TouchController.1(this, m, new int[] { i1, i2 }, n);
-        this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, 0L, 15L);
-      }
-      return bool;
-    }
-    float f3 = this.f;
-    float f4 = this.e;
-    float f5;
-    float f6;
-    if (this.jdField_c_of_type_Int != 4)
-    {
-      f5 = f2 - this.j;
-      f6 = f1 - this.i;
-      i1 = ViewConfiguration.get(this.jdField_a_of_type_AndroidContentContext).getScaledTouchSlop() * 2;
-      if (i1 >= 40) {
-        break label505;
-      }
-    }
-    for (;;)
-    {
-      if (((f5 / f6 >= 1.0F) || (f5 / f6 <= -1.0F)) && (Math.abs(f5) <= m) && (Math.abs(f6) <= m))
-      {
-        this.jdField_a_of_type_AndroidViewView.getParent().requestDisallowInterceptTouchEvent(false);
-        return true;
-      }
-      a(this.d * (f2 - f4), this.d * (f1 - f3));
-      break;
-      m = 0;
-      break label278;
-      label499:
-      n = 0;
-      break label283;
-      label505:
-      m = i1;
-    }
+    paramView.setTag(2131368384, null);
+    super.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfyk
  * JD-Core Version:    0.7.0.1
  */

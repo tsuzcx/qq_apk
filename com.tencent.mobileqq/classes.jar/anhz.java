@@ -1,39 +1,25 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkBabyqCardInfo;
+import com.tencent.mobileqq.data.MessageForArkBabyqReply;
+import java.lang.ref.WeakReference;
 
 public class anhz
-  implements TextWatcher
+  implements admn
 {
-  public anhz(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public anhz(ArkBabyqCardInfo paramArkBabyqCardInfo) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a()
   {
-    ImageButton localImageButton;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter != null) && (this.a.jdField_a_of_type_JavaUtilList != null) && (EmoticonMainPanel.c >= 0) && (EmoticonMainPanel.c < this.a.jdField_a_of_type_JavaUtilList.size()))
+    if ((this.a.mBabyQReplyMsg != null) && (this.a.mBabyQReplyMsg.get() != null))
     {
-      localImageButton = this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a(EmoticonMainPanel.c);
-      if (localImageButton != null) {
-        if (TextUtils.isEmpty(paramEditable)) {
-          break label77;
-        }
+      Object localObject = (MessageForArkBabyqReply)this.a.mBabyQReplyMsg.get();
+      localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      if (localObject != null) {
+        localObject = (altg)((QQAppInterface)localObject).a(95);
       }
     }
-    label77:
-    for (boolean bool = true;; bool = false)
-    {
-      localImageButton.setEnabled(bool);
-      return;
-    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

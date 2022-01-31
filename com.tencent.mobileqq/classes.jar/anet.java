@@ -1,24 +1,66 @@
-class anet
-  extends batl
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.text.TextUtils;
+
+public abstract class anet
 {
-  anet(aned paramaned) {}
-  
-  public void onCancel(batm parambatm) {}
-  
-  public void onDone(batm parambatm)
+  public static int a(Context paramContext)
   {
-    super.onDone(parambatm);
+    try
+    {
+      int i = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
+      return i;
+    }
+    catch (Exception paramContext) {}
+    return 0;
   }
   
-  public void onDoneFile(batm parambatm) {}
+  public static int a(Context paramContext, String paramString)
+  {
+    try
+    {
+      int i = paramContext.getPackageManager().getPackageInfo(paramString, 0).versionCode;
+      return i;
+    }
+    catch (Exception paramContext) {}
+    return 0;
+  }
   
-  public void onPause(batm parambatm) {}
+  public static String a(Context paramContext)
+  {
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
+      return paramContext;
+    }
+    catch (Exception paramContext) {}
+    return "";
+  }
   
-  public void onProgress(batm parambatm) {}
+  public static boolean a(String paramString, Context paramContext)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    for (;;)
+    {
+      return false;
+      paramContext = paramContext.getPackageManager();
+      try
+      {
+        paramString = paramContext.getApplicationInfo(paramString, 0);
+        if (paramString != null) {
+          return true;
+        }
+      }
+      catch (PackageManager.NameNotFoundException paramString) {}
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anet
  * JD-Core Version:    0.7.0.1
  */

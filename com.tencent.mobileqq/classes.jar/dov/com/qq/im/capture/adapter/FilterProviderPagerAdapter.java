@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.adapter;
 
-import aciy;
+import actn;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.view.PagerAdapter;
@@ -8,8 +8,8 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
-import behi;
-import bhfs;
+import bfpc;
+import bjak;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.GridView;
@@ -20,16 +20,16 @@ public class FilterProviderPagerAdapter
   extends PagerAdapter
 {
   public static final int a;
-  public static final int b = aciy.a(0.0F, BaseApplication.getContext().getResources());
+  public static final int b = actn.a(0.0F, BaseApplication.getContext().getResources());
   private Context jdField_a_of_type_AndroidContentContext;
   public SparseArray<GridView> a;
-  private behi jdField_a_of_type_Behi;
+  private bfpc jdField_a_of_type_Bfpc;
   private ArrayList<FilterCategory> jdField_a_of_type_JavaUtilArrayList;
   public int c;
   
   static
   {
-    jdField_a_of_type_Int = aciy.a(7.0F, BaseApplication.getContext().getResources());
+    jdField_a_of_type_Int = actn.a(7.0F, BaseApplication.getContext().getResources());
   }
   
   public FilterProviderPagerAdapter(Context paramContext, int paramInt)
@@ -39,9 +39,9 @@ public class FilterProviderPagerAdapter
     this.c = paramInt;
   }
   
-  public void a(behi parambehi)
+  public void a(bfpc parambfpc)
   {
-    this.jdField_a_of_type_Behi = parambehi;
+    this.jdField_a_of_type_Bfpc = parambfpc;
   }
   
   public void a(ArrayList<FilterCategory> paramArrayList)
@@ -74,12 +74,12 @@ public class FilterProviderPagerAdapter
       ((GridView)localObject1).setVerticalSpacing(b);
       ((GridView)localObject1).setHorizontalSpacing(b);
       ((GridView)localObject1).setClipToPadding(false);
-      ((GridView)localObject1).setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int + jdField_a_of_type_Int + aciy.a(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      ((GridView)localObject1).setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int + jdField_a_of_type_Int + actn.a(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       ((GridView)localObject1).setVerticalScrollBarEnabled(false);
-      localObject2 = new bhfs(this.jdField_a_of_type_AndroidContentContext, this.c);
-      ((bhfs)localObject2).a(((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a);
+      localObject2 = new bjak(this.jdField_a_of_type_AndroidContentContext, this.c);
+      ((bjak)localObject2).a(((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a);
       ((GridView)localObject1).setAdapter((ListAdapter)localObject2);
-      ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_Behi);
+      ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_Bfpc);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
     }
     paramViewGroup.addView((View)localObject1, -1, -1);

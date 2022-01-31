@@ -1,18 +1,58 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
+import com.tencent.biz.pubaccount.readinjoy.download.ReadInJoyDownloader.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import com.tencent.tmdownloader.TMAssistantDownloadManager;
+import mqq.os.MqqHandler;
 
-public final class oqc
-  implements Parcelable.Creator<ReadInJoyDraftboxItem>
+public class oqc
 {
-  public ReadInJoyDraftboxItem a(Parcel paramParcel)
+  private static volatile oqc jdField_a_of_type_Oqc;
+  private TMAssistantDownloadClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(BaseApplication.getContext()).getDownloadSDKClient("ReadInJoyDownloader");
+  private final oqb jdField_a_of_type_Oqb = new oqb();
+  
+  private oqc()
   {
-    return new ReadInJoyDraftboxItem(paramParcel);
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.registerDownloadTaskListener(this.jdField_a_of_type_Oqb);
   }
   
-  public ReadInJoyDraftboxItem[] a(int paramInt)
+  public static oqc a()
   {
-    return new ReadInJoyDraftboxItem[paramInt];
+    if (jdField_a_of_type_Oqc != null) {
+      return jdField_a_of_type_Oqc;
+    }
+    try
+    {
+      if (jdField_a_of_type_Oqc == null) {
+        jdField_a_of_type_Oqc = new oqc();
+      }
+      return jdField_a_of_type_Oqc;
+    }
+    finally {}
+  }
+  
+  private void a(oqd paramoqd)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(new ReadInJoyDownloader.1(this, paramoqd), 15000L);
+  }
+  
+  public void a(DownloadInfo paramDownloadInfo)
+  {
+    QLog.d("ReadInJoyDownloader", 2, "[startDownload] ");
+    bdme.a().a(paramDownloadInfo);
+    a(new oqd(paramDownloadInfo, null));
+  }
+  
+  public void a(oqa paramoqa)
+  {
+    this.jdField_a_of_type_Oqb.a(paramoqa);
+  }
+  
+  public void b(oqa paramoqa)
+  {
+    this.jdField_a_of_type_Oqb.b(paramoqa);
   }
 }
 

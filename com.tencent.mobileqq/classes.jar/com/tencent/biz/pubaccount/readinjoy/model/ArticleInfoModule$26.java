@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import atmp;
+import aukn;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
 import java.util.List;
-import ooq;
+import ozr;
 
 public class ArticleInfoModule$26
   implements Runnable
 {
-  public ArticleInfoModule$26(ooq paramooq) {}
+  public ArticleInfoModule$26(ozr paramozr) {}
   
   public void run()
   {

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import android.content.SharedPreferences;
-import atoi;
+import aumg;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.NewIntent;
 
@@ -30,7 +30,7 @@ class PhoneContactManagerImp$4
       }
     } while ((PhoneContactManagerImp.f(this.this$0)) || (!this.this$0.c()) || (Math.abs(System.currentTimeMillis() - l1) < l2));
     PhoneContactManagerImp.a(this.this$0, true);
-    Object localObject = new NewIntent(PhoneContactManagerImp.a(this.this$0).getApplication(), atoi.class);
+    Object localObject = new NewIntent(PhoneContactManagerImp.a(this.this$0).getApplication(), aumg.class);
     ((NewIntent)localObject).putExtra("req_type", 32);
     long l1 = this.this$0.a.getLong("key_login_info_timestamp", 0L);
     ((NewIntent)localObject).putExtra("next_flag", 0);

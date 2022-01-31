@@ -1,72 +1,24 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.content.Context;
+import android.net.Uri;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class acdc
-  extends aiab
+  implements View.OnClickListener
 {
-  private List<acdf> jdField_a_of_type_JavaUtilList;
+  public acdc(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public acdc(List<acdf> paramList)
+  public void onClick(View paramView)
   {
-    super(paramList, paramList.app, paramList.b, 1, true);
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    acdf localacdf;
-    if (paramView == null)
+    this.a.b(1);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230721);
+    if (this.a.a().booleanValue())
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getLayoutInflater().inflate(2131496812, paramViewGroup, false);
-      paramViewGroup = new acdh(null);
-      paramViewGroup.c = ((ImageView)paramView.findViewById(2131302951));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312436));
-      ((TextView)paramView.findViewById(2131312528)).setText("");
-      paramView.setTag(paramViewGroup);
-      localacdf = (acdf)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if ((TextUtils.isEmpty(localacdf.e)) || (localacdf.e.equals(localacdf.b))) {
-        break label203;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localacdf.b + "(" + localacdf.e + ")");
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_JavaLangString = localacdf.jdField_a_of_type_JavaLangString;
-      paramViewGroup.jdField_a_of_type_Acdf = localacdf;
-      paramViewGroup.c.setImageBitmap(a(1, localacdf.jdField_a_of_type_JavaLangString));
-      return paramView;
-      paramViewGroup = (acdh)paramView.getTag();
-      break;
-      label203:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localacdf.b);
+      this.a.b();
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
     }
   }
 }

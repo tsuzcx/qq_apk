@@ -1,61 +1,17 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.handlers.FrameworkHandler.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class oyd
-  extends TextBase
+  implements View.OnClickListener
 {
-  private final int jdField_a_of_type_Int = -654311424;
-  private NativeCommentView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView;
-  private final int b = 5;
+  oyd(oyc paramoyc) {}
   
-  public oyd(VafContext paramVafContext)
+  public void onClick(View paramView)
   {
-    super(paramVafContext);
-    this.mTextSize = Utils.dp2px(16.0D);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView = new NativeCommentView(paramVafContext.getContext());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setTextColor(-654311424);
-  }
-  
-  public void a(opw paramopw)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setModel(paramopw);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setBackgroundColor(this.mBackground);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setTextSize(0, this.mTextSize);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setLineSpacing(Utils.rp2px(5.0D), 1.0F);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setIncludeFontPadding(false);
+    this.a.a(false);
+    ThreadManager.executeOnSubThread(new FrameworkHandler.1.1(this));
   }
 }
 

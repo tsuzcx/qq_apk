@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.subaccount.datamanager;
 
-import axat;
+import ayav;
 import com.tencent.mobileqq.data.SubAccountInfo;
 
 public class SubAccountManager$2
   implements Runnable
 {
-  public SubAccountManager$2(axat paramaxat, SubAccountInfo paramSubAccountInfo) {}
+  public SubAccountManager$2(ayav paramayav, SubAccountInfo paramSubAccountInfo) {}
   
   public void run()
   {

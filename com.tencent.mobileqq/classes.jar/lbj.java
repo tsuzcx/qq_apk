@@ -1,22 +1,13 @@
-import com.tencent.av.core.VcControllerImpl;
-
-public class lbj
+class lbj
 {
-  public int a;
   public long a;
   public String a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public byte[] b;
-  public long c;
-  public long d;
   
-  public lbj(VcControllerImpl paramVcControllerImpl) {}
+  private lbj(lbf paramlbf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     lbj
  * JD-Core Version:    0.7.0.1
  */

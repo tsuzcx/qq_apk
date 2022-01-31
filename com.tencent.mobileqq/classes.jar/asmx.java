@@ -1,22 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import java.util.List;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
 
-class asmx
-  implements View.OnClickListener
+public class asmx
+  implements askw
 {
-  asmx(asmv paramasmv) {}
+  public asmx(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    asmv.a(this.a).a.clear();
-    asmv.a(this.a).a();
+    this.a.a(this.a.a, this.a.getString(2131690436));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asmx
  * JD-Core Version:    0.7.0.1
  */

@@ -15,6 +15,7 @@ public class QzoneHandlerThreadFactory
   public static final String IpcProxyThread = "QZone_IpcProxyThread";
   public static final String LocalPhotoThread = "QZone_LocalPhotoThread";
   public static final String NormalThread = "Normal_HandlerThread";
+  public static final String ParticleThread = "Particle_HandlerThread";
   public static final String PreLoadThread = "Preload_HandlerThread";
   public static final String RealTimeThread = "RealTime_HandlerThread";
   public static final String ReportThread = "Report_HandlerThread";

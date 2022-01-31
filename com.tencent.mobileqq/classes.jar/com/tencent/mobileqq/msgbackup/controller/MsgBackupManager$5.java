@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
-import arot;
-import arpa;
+import askx;
+import asle;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import java.util.List;
@@ -9,13 +9,13 @@ import java.util.List;
 public class MsgBackupManager$5
   implements Runnable
 {
-  public MsgBackupManager$5(arpa paramarpa) {}
+  public MsgBackupManager$5(asle paramasle) {}
   
   public void run()
   {
-    List localList = arpa.a(this.this$0).a().b();
-    if (arpa.a(this.this$0) != null) {
-      arpa.a(this.this$0).a(localList);
+    List localList = asle.a(this.this$0).a().b();
+    if (asle.a(this.this$0) != null) {
+      asle.a(this.this$0).a(localList);
     }
   }
 }

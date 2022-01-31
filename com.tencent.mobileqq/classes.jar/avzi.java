@@ -1,309 +1,244 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.CameraConfig;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCameraConfigRsp;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeRsp;
-import com.google.gson.Gson;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.annotation.TargetApi;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodeConfig;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.log.LogUtils;
-import com.tencent.ttpic.util.GsonUtils;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
+@TargetApi(18)
 public class avzi
-  extends ajfb
 {
-  private static final String jdField_a_of_type_JavaLangString = avzi.class.getSimpleName();
-  public static final Type a;
-  private atmp jdField_a_of_type_Atmp;
-  protected Map<String, Long> a;
+  private int jdField_a_of_type_Int = 1024;
+  private long jdField_a_of_type_Long;
+  private final MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
+  private avzj jdField_a_of_type_Avzj;
+  private final avzr jdField_a_of_type_Avzr;
+  private final DecodeConfig jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig;
+  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
+  private boolean b;
+  private volatile boolean c;
+  private volatile boolean d;
   
   static
   {
-    jdField_a_of_type_JavaLangReflectType = new avzj().getType();
-  }
-  
-  public avzi(AppInterface paramAppInterface)
-  {
-    super(paramAppInterface);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    LogUtils.setEnable(false);
-    this.jdField_a_of_type_Atmp = paramAppInterface.getEntityManagerFactory().createEntityManager();
-  }
-  
-  private void b(FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    paramObject = (GetCategoryMaterialRsp)paramObject;
-    if ((paramObject != null) && (paramObject.Code == 0) && (!paramObject.Categories.isEmpty()))
+    if (!avzi.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (bgxl.a()) {
-        bgxl.a().a(new bgxp("CameraModuleSvc.GetCompressedCategoryMaterial.MqStoryCamera", "response", "succeeded with content"));
-      }
-      bgxb.a().a("CameraModuleSvc.GetCompressedCategoryMaterialMqStoryCamera", paramObject.ETag, 4);
-      paramObject = new Gson().toJson(paramObject);
-      bace.a(bgxx.a(), paramObject);
-      paramObject = (bgxx)bhfm.a().c(18);
-      if (paramObject != null)
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  public avzi(DecodeConfig paramDecodeConfig, avzr paramavzr)
+  {
+    this.jdField_a_of_type_Avzr = paramavzr;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig = paramDecodeConfig;
+    this.jdField_a_of_type_Long = (paramDecodeConfig.endTimeMillSecond * 1000L);
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(paramDecodeConfig.inputFilePath);
+      this.jdField_a_of_type_Avzj = a(this.jdField_a_of_type_AndroidMediaMediaExtractor);
+      if (this.jdField_a_of_type_Avzj.jdField_a_of_type_Int >= 0)
       {
-        paramObject.b();
-        paramObject.f();
+        if (QLog.isColorLevel()) {
+          QLog.d("HWAudioRecoder", 1, "audio track normal");
+        }
+        this.jdField_a_of_type_Avzr.a(1, this.jdField_a_of_type_Avzj.jdField_a_of_type_AndroidMediaMediaFormat);
+        this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(this.jdField_a_of_type_Avzj.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_Avzj.jdField_a_of_type_AndroidMediaMediaFormat.containsKey("max-input-size")) {
+          this.jdField_a_of_type_Int = this.jdField_a_of_type_Avzj.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("max-input-size");
+        }
+        if (this.jdField_a_of_type_Avzj.jdField_b_of_type_Int >= 0)
+        {
+          this.jdField_a_of_type_Avzr.a(2);
+          this.jdField_a_of_type_Avzr.a(2, this.jdField_a_of_type_Avzj.jdField_b_of_type_AndroidMediaMediaFormat);
+          this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(this.jdField_a_of_type_Avzj.jdField_b_of_type_Int);
+          if (this.jdField_a_of_type_Avzj.jdField_b_of_type_AndroidMediaMediaFormat.containsKey("max-input-size"))
+          {
+            int i = this.jdField_a_of_type_Avzj.jdField_b_of_type_AndroidMediaMediaFormat.getInteger("max-input-size");
+            if (i > this.jdField_a_of_type_Int) {
+              this.jdField_a_of_type_Int = i;
+            }
+          }
+        }
       }
-      avzk.b().a(Boolean.valueOf(true));
-      ((bgxx)bhfm.a(18)).a(avzg.jdField_a_of_type_JavaLangString);
-      if ((this.jdField_a_of_type_JavaUtilMap == null) || (!this.jdField_a_of_type_JavaUtilMap.containsKey("CameraModuleSvc.GetCompressedCategoryMaterial.MqStoryCamera"))) {
-        break label235;
+      for (;;)
+      {
+        this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(this.jdField_a_of_type_Int).order(ByteOrder.nativeOrder());
+        this.jdField_a_of_type_AndroidMediaMediaExtractor.seekTo(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig.startTimeMillSecond * 1000L, 0);
+        return;
+        this.jdField_a_of_type_Avzr.a(0);
+        this.jdField_a_of_type_Avzr.a(1, null);
+        if (QLog.isColorLevel()) {
+          QLog.d("HWAudioRecoder", 1, "no audio track");
+        }
       }
-    }
-    label235:
-    for (paramObject = "" + (System.currentTimeMillis() - ((Long)this.jdField_a_of_type_JavaUtilMap.get("CameraModuleSvc.GetCompressedCategoryMaterial.MqStoryCamera")).longValue());; paramObject = "-1")
-    {
-      bhci.a().a(paramFromServiceMsg.getResultCode(), paramObject, "CameraModuleSvc.GetCompressedCategoryMaterial.MqStoryCamera");
       return;
-      if (!bgxl.a()) {
-        break;
-      }
-      bgxl.a().a(new bgxp("CameraModuleSvc.GetCompressedCategoryMaterial.MqStoryCamera", "response", "failed / without content"));
-      break;
+    }
+    catch (Exception paramDecodeConfig)
+    {
+      QLog.e("HWAudioRecoder", 1, "getAudioTrack,", paramDecodeConfig);
     }
   }
   
-  private void c(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public avzj a(MediaExtractor paramMediaExtractor)
   {
-    paramObject = (GetCategoryMaterialRsp)paramObject;
-    if ((paramObject != null) && (paramObject.Code == 0) && (!paramObject.Categories.isEmpty()))
+    avzj localavzj = new avzj();
+    int j = paramMediaExtractor.getTrackCount();
+    long l2 = 0L;
+    int i = 0;
+    MediaFormat localMediaFormat;
+    String str;
+    long l1;
+    if (i < j)
     {
-      if (bgxl.a()) {
-        bgxl.a().a(new bgxp("CameraModuleSvc.GetCompressedCategoryMaterial.MqEmoCamera", "response", "succeeded with content"));
+      localMediaFormat = paramMediaExtractor.getTrackFormat(i);
+      str = localMediaFormat.getString("mime");
+      l1 = l2;
+      if (localavzj.jdField_a_of_type_Int >= 0) {
+        break label206;
       }
-      bgxb.a().a("CameraModuleSvc.GetCompressedCategoryMaterialMqEmoCamera", paramObject.ETag, 4);
-      paramObject = new Gson().toJson(paramObject);
-      bace.a(avzg.b, paramObject);
-      avzk.a().a(Boolean.valueOf(true));
-      if ((this.jdField_a_of_type_JavaUtilMap == null) || (!this.jdField_a_of_type_JavaUtilMap.containsKey("CameraModuleSvc.GetCompressedCategoryMaterial.MqEmoCamera"))) {
-        break label197;
+      l1 = l2;
+      if (!str.startsWith("audio/")) {
+        break label206;
+      }
+      l2 += 1L;
+      if (l2 == 1L)
+      {
+        localavzj.jdField_a_of_type_Int = i;
+        localavzj.jdField_a_of_type_JavaLangString = str;
+        localavzj.jdField_a_of_type_AndroidMediaMediaFormat = localMediaFormat;
+        label99:
+        l1 = l2;
+        if (l2 < 2L) {
+          break label206;
+        }
       }
     }
-    label197:
-    for (paramObject = "" + (System.currentTimeMillis() - ((Long)this.jdField_a_of_type_JavaUtilMap.get("CameraModuleSvc.GetCompressedCategoryMaterial.MqEmoCamera")).longValue());; paramObject = "-1")
+    else
     {
-      bhci.a().a(paramFromServiceMsg.getResultCode(), paramObject, "CameraModuleSvc.GetCompressedCategoryMaterial.MqEmoCamera");
-      return;
-      if (!bgxl.a()) {
-        break;
-      }
-      bgxl.a().a(new bgxp("CameraModuleSvc.GetCompressedCategoryMaterial.MqEmoCamera", "response", "failed / without content"));
-      break;
-    }
-  }
-  
-  private void d(FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isDebugVersion()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "[handlePlayShowCategoryMaterials] start");
-    }
-    paramObject = (GetPlayShowCatMatTreeRsp)paramObject;
-    if ((paramObject != null) && (paramObject.Code == 0) && (!paramObject.Categories.isEmpty()))
-    {
-      if (QLog.isDebugVersion()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "[handlePlayShowCategoryMaterials] response=" + paramObject);
-      }
-      if (bgxl.a()) {
-        bgxl.a().a(new bgxp("CameraModuleSvc.GetPlayShowCatMatTree", "response", "succeeded with content"));
-      }
-      bgxb.a().a("CameraModuleSvc.GetPlayShowCatMatTree", paramObject.ETag, 4);
-      paramObject = GsonUtils.obj2Json(paramObject, jdField_a_of_type_JavaLangReflectType);
-      bace.a(avzg.d, paramObject);
-      avzk.c().a(Boolean.valueOf(true));
-      if ((this.jdField_a_of_type_JavaUtilMap == null) || (!this.jdField_a_of_type_JavaUtilMap.containsKey("CameraModuleSvc.GetPlayShowCatMatTree"))) {
-        break label272;
+      if (localavzj.jdField_a_of_type_Int < 0) {
+        break label217;
       }
     }
-    label272:
-    for (paramObject = "" + (System.currentTimeMillis() - ((Long)this.jdField_a_of_type_JavaUtilMap.get("CameraModuleSvc.GetPlayShowCatMatTree")).longValue());; paramObject = "-1")
+    label206:
+    label217:
+    for (boolean bool = true;; bool = false)
     {
-      bhci.a().a(paramFromServiceMsg.getResultCode(), paramObject, "CameraModuleSvc.GetPlayShowCatMatTree");
-      if (QLog.isDebugVersion()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "[handlePlayShowCategoryMaterials] end");
+      this.b = bool;
+      QLog.d("HWAudioRecoder", 1, new Object[] { "getAudioTrack, ", Integer.valueOf(localavzj.jdField_a_of_type_Int), " ", Integer.valueOf(localavzj.jdField_b_of_type_Int) });
+      return localavzj;
+      if (l2 != 2L) {
+        break label99;
       }
-      return;
-      if (QLog.isDebugVersion()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "[handlePlayShowCategoryMaterials] response=empty");
-      }
-      if (!bgxl.a()) {
-        break;
-      }
-      bgxl.a().a(new bgxp("CameraModuleSvc.GetPlayShowCatMatTree", "response", "failed / without content"));
+      localavzj.jdField_b_of_type_Int = i;
+      localavzj.jdField_b_of_type_JavaLangString = str;
+      localavzj.jdField_b_of_type_AndroidMediaMediaFormat = localMediaFormat;
+      break label99;
+      i += 1;
+      l2 = l1;
       break;
     }
   }
   
   public void a()
   {
-    if (!badq.a())
+    QLog.d("HWAudioRecoder", 1, "stopRecording audio");
+    while ((!a()) && (b())) {}
+    QLog.d("HWAudioRecoder", 1, "stopRecording audio, indeed");
+    this.jdField_a_of_type_Avzr.a();
+    if (this.jdField_a_of_type_AndroidMediaMediaExtractor != null)
     {
-      LogUtils.w(jdField_a_of_type_JavaLangString, "[reqCameraConfig] no network....");
-      return;
-    }
-    if (bgxl.a()) {
-      bgxl.a().a(new bgxp("CameraModuleSvc.GetCameraConfig", "request", "null"));
-    }
-    bhcs.a(jdField_a_of_type_JavaLangString, 1, "【REQUEST】reqCameraConfig");
-    this.jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetCameraConfig", Long.valueOf(System.currentTimeMillis()));
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("CameraModuleSvc", this.mApp.getCurrentAccountUin(), "CameraModuleSvc.GetCameraConfig");
-    localToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", false);
-    send(localToServiceMsg);
-  }
-  
-  protected void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    bhcs.a(jdField_a_of_type_JavaLangString, 1, "【Handle】handleCameraConfig:" + paramFromServiceMsg.isSuccess());
-    if (!paramFromServiceMsg.isSuccess())
-    {
-      if (bgxl.a()) {
-        bgxl.a().a(new bgxp("CameraModuleSvc.GetCameraConfig", "response", "failed"));
-      }
-      return;
-    }
-    paramFromServiceMsg = (GetCameraConfigRsp)paramObject;
-    String str2;
-    String str1;
-    label132:
-    CameraConfig localCameraConfig;
-    if (paramFromServiceMsg.ConfigMap != null)
-    {
-      if (bgxl.a()) {
-        bgxl.a().a(new bgxp("CameraModuleSvc.GetCameraConfig", "response", "succeeded with content"));
-      }
-      paramObject = "";
-      Iterator localIterator = paramFromServiceMsg.ConfigMap.entrySet().iterator();
-      str2 = "";
-      paramFromServiceMsg = "";
-      str1 = "";
-      if (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        localCameraConfig = (CameraConfig)localEntry.getValue();
-        if (TextUtils.isEmpty(paramFromServiceMsg))
-        {
-          paramFromServiceMsg = localCameraConfig.ExpId;
-          label179:
-          if ("app_alg_entrance_id".equals(localEntry.getKey())) {
-            str2 = localCameraConfig.ConfigContent;
-          }
-          if ("app_ui_playshow_ad_id".equals(localEntry.getKey())) {
-            str1 = localCameraConfig.ConfigContent;
-          }
-          if (!"app_alg_aio_camera_type_id".equals(localEntry.getKey())) {
-            break label389;
-          }
-          paramObject = localCameraConfig.ConfigContent;
-        }
-      }
-    }
-    label389:
-    for (;;)
-    {
-      break label132;
-      paramFromServiceMsg = paramFromServiceMsg + "," + localCameraConfig.ExpId;
-      break label179;
-      bgxb.a().a("CameraModuleSvc.GetCameraConfig", paramFromServiceMsg, 4);
-      bgxb.a().a("app_alg_entrance_id", str2, 4);
-      bgxb.a().a("app_ui_playshow_ad_id", str1, 4);
-      bgxb.a().a("app_alg_aio_camera_type_id", paramObject, 4);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "[handleCameraConfig], app_alg_entrance_id=" + str2);
-      return;
-      if (!bgxl.a()) {
-        break;
-      }
-      bgxl.a().a(new bgxp("CameraModuleSvc.GetCameraConfig", "response", "succeeded without content"));
-      return;
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
+      this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
     }
   }
   
-  public void a(String paramString)
+  public boolean a()
   {
-    if (!badq.a())
-    {
-      LogUtils.w(jdField_a_of_type_JavaLangString, "[reqCompressedMaterials] no network....");
-      return;
-    }
-    bhcs.a(jdField_a_of_type_JavaLangString, 1, "【REQUEST】requestCompressedMaterials" + paramString);
-    if (bgxl.a()) {
-      bgxl.a().a(new bgxp("CameraModuleSvc.GetCompressedCategoryMaterial." + paramString, "request", "null"));
-    }
-    this.jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetCompressedCategoryMaterial." + paramString, Long.valueOf(System.currentTimeMillis()));
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("CameraModuleSvc", this.mApp.getCurrentAccountUin(), "CameraModuleSvc.GetCompressedCategoryMaterial");
-    localToServiceMsg.extraData.putString("ServiceId", paramString);
-    send(localToServiceMsg);
-  }
-  
-  public void b()
-  {
-    if (!badq.a())
-    {
-      if (QLog.isDebugVersion())
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "[reqPlayShowCategoryMaterials] no network....");
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "[reqPlayShowCategoryMaterials] end");
-      }
-      return;
-    }
-    bhcs.a(jdField_a_of_type_JavaLangString, 1, "【REQUEST】reqPlayShowCategoryMaterials");
-    if (bgxl.a()) {
-      bgxl.a().a(new bgxp("CameraModuleSvc.GetPlayShowCatMatTree", "request", "null"));
-    }
-    this.jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetPlayShowCatMatTree", Long.valueOf(System.currentTimeMillis()));
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("CameraModuleSvc", this.mApp.getCurrentAccountUin(), "CameraModuleSvc.GetPlayShowCatMatTree");
-    localToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", false);
-    send(localToServiceMsg);
-  }
-  
-  protected Class<? extends ajfe> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (paramFromServiceMsg.getServiceCmd().equals("CameraModuleSvc.GetCompressedCategoryMaterial"))
-    {
-      paramToServiceMsg = paramToServiceMsg.extraData.getString("ServiceId");
-      if (paramToServiceMsg.endsWith("MqStoryCamera")) {
-        b(paramFromServiceMsg, paramObject);
-      }
-    }
+    if (!this.b) {}
     do
     {
-      do
-      {
-        return;
-      } while (!paramToServiceMsg.endsWith("MqEmoCamera"));
-      c(paramFromServiceMsg, paramObject);
-      return;
-      if (paramFromServiceMsg.getServiceCmd().equals("CameraModuleSvc.GetCameraConfig"))
-      {
-        a(paramFromServiceMsg, paramObject);
-        return;
+      return true;
+      if (this.jdField_a_of_type_Avzj.jdField_b_of_type_Int < 0) {
+        return this.c;
       }
-    } while (!paramToServiceMsg.getServiceCmd().equals("CameraModuleSvc.GetPlayShowCatMatTree"));
-    d(paramFromServiceMsg, paramObject);
+    } while ((this.c) && (this.d));
+    return false;
+  }
+  
+  public boolean b()
+  {
+    int i = 2;
+    if ((!this.b) || (a())) {
+      return false;
+    }
+    int j = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTrackIndex();
+    if (j < 0)
+    {
+      this.jdField_a_of_type_JavaNioByteBuffer.clear();
+      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.set(0, 0, 0L, 4);
+      this.jdField_a_of_type_Avzr.a(1, this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+      this.jdField_a_of_type_Avzr.a(2, this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+      this.c = true;
+      this.d = true;
+      return true;
+    }
+    if (j == this.jdField_a_of_type_Avzj.jdField_a_of_type_Int) {
+      i = 1;
+    }
+    int k;
+    long l;
+    while (j == this.jdField_a_of_type_Avzj.jdField_b_of_type_Int)
+    {
+      this.jdField_a_of_type_JavaNioByteBuffer.clear();
+      k = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_JavaNioByteBuffer, 0);
+      l = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
+      if ((jdField_a_of_type_Boolean) || (k <= this.jdField_a_of_type_Int)) {
+        break;
+      }
+      throw new AssertionError();
+    }
+    return false;
+    if ((k < 0) || ((this.jdField_a_of_type_Long > 0L) && (l > this.jdField_a_of_type_Long)))
+    {
+      this.jdField_a_of_type_JavaNioByteBuffer.clear();
+      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.set(0, 0, 0L, 4);
+      this.jdField_a_of_type_Avzr.a(i, this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+      if (j == this.jdField_a_of_type_Avzj.jdField_a_of_type_Int)
+      {
+        this.c = true;
+        return true;
+      }
+      this.d = true;
+      return true;
+    }
+    if ((this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleFlags() & 0x1) != 0)
+    {
+      j = 1;
+      if (j == 0) {
+        break label322;
+      }
+    }
+    label322:
+    for (j = 1;; j = 0)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.set(0, k, this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime(), j);
+      this.jdField_a_of_type_Avzr.a(i, this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
+      return true;
+      j = 0;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avzi
  * JD-Core Version:    0.7.0.1
  */

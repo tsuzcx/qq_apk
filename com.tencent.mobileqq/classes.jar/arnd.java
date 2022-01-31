@@ -1,194 +1,80 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Process;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.tfs.AsyncTask;
-import com.tencent.mobileqq.minigame.manager.EngineChannel;
-import com.tencent.mobileqq.minigame.manager.EngineChannel.Receiver;
-import com.tencent.mobileqq.minigame.manager.InstalledEngine;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.jsp.QQApiPlugin.3;
 
 public class arnd
-  extends AsyncTask
-  implements EngineChannel.Receiver
+  implements bcwh
 {
-  private int jdField_a_of_type_Int = 3;
-  private arnc jdField_a_of_type_Arnc;
-  private MiniAppInfo jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo;
-  private EngineChannel jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel;
-  private InstalledEngine jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine;
-  private int b;
+  public arnd(QQApiPlugin.3 param3) {}
   
-  public arnd(Context paramContext)
+  public void a(BaseResp paramBaseResp)
   {
-    super(paramContext);
-  }
-  
-  private void a(int paramInt, Bundle paramBundle)
-  {
-    paramBundle.putInt("baseLibType", this.jdField_a_of_type_Int);
-    paramBundle.putInt("enginePid", Process.myPid());
-    QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]installEngineRequestCount " + this.b);
-    if (this.b >= 2)
-    {
-      QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]GET_INSTALLED_ENGINE_LIST requestCount reaches max 2");
-      onTaskFailed(103, ajjy.a(2131641020));
-    }
-    do
-    {
+    if ((this.a.this$0.c == null) || (!this.a.this$0.c.equals(paramBaseResp.transaction))) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel.send(paramInt, paramBundle);
-    } while (paramInt != 3);
-    this.b += 1;
-  }
-  
-  private void a(InstalledEngine paramInstalledEngine)
-  {
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine == null)
-        {
-          QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]mEngine == null, loadEngineTask is reset?");
-          return;
-        }
-        long l = System.currentTimeMillis();
-        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]initEngine");
-        if (paramInstalledEngine != null) {
-          arne.a().a(paramInstalledEngine);
-        }
-        if (!arne.a().a())
-        {
-          QLog.e("MiniAppEngineLoadTask", 1, "[MiniEng]initEngine fail");
-          onTaskFailed();
-          continue;
-        }
-        QLog.e("MiniAppEngineLoadTask", 1, "[MiniEng]loadSo cost time " + (System.currentTimeMillis() - l));
-      }
-      finally {}
-      onTaskSucceed();
     }
-  }
-  
-  private boolean a(InstalledEngine paramInstalledEngine, MiniAppInfo paramMiniAppInfo)
-  {
-    boolean bool = true;
-    if (paramInstalledEngine == null) {
+    boolean bool;
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      wim.a(1, 2131719476);
       bool = false;
     }
-    while (paramMiniAppInfo != null) {
-      return bool;
-    }
-    return true;
-  }
-  
-  public void a(arnc paramarnc)
-  {
-    this.jdField_a_of_type_Arnc = paramarnc;
-  }
-  
-  public void a(EngineChannel paramEngineChannel)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel = paramEngineChannel;
-  }
-  
-  public void executeAsync()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel == null)
+    for (;;)
     {
-      onTaskFailed(1, ajjy.a(2131641015));
-      return;
-    }
-    EngineChannel localEngineChannel = new EngineChannel();
-    localEngineChannel.setName("AppEngine(" + Process.myPid() + ")");
-    localEngineChannel.setReceiver(this);
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("engineChannel", localEngineChannel);
-    a(1, localBundle);
-  }
-  
-  public void onReceiveData(int paramInt, Bundle paramBundle)
-  {
-    QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] onReceiveData what=" + paramInt);
-    if (paramBundle != null) {
-      paramBundle.setClassLoader(getClass().getClassLoader());
-    }
-    if (paramInt == 51) {
-      if (paramBundle != null)
+      if (!TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_JavaLangString))
       {
-        paramBundle = paramBundle.getParcelableArrayList("installedEngineList");
-        if (paramBundle != null)
+        this.a.this$0.callJs(this.a.this$0.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(bool) });
+        return;
+        wim.a(2, 2131719495);
+        if ((this.a.this$0.jdField_a_of_type_Bchs != null) && (this.a.this$0.jdField_a_of_type_Bchv != null))
         {
-          paramInt = paramBundle.size();
-          QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] getInstalledEngineList success " + paramInt);
-          if (paramInt > 0)
+          int i;
+          label171:
+          String str1;
+          String str2;
+          String str3;
+          if ("2".equals(this.a.jdField_a_of_type_JavaLangString))
           {
-            paramBundle = (InstalledEngine)paramBundle.get(0);
-            if (a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo))
-            {
-              this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine = paramBundle;
-              a(paramBundle);
+            i = 1009;
+            paramBaseResp = this.a.this$0.jdField_a_of_type_Bchs.f();
+            str1 = this.a.this$0.jdField_a_of_type_Bchs.g();
+            str2 = this.a.b;
+            str3 = AccountDetailActivity.a(this.a.this$0.jdField_a_of_type_Bchv.b());
+            String str4 = this.a.this$0.jdField_a_of_type_Bchs.h();
+            if ((str4 == null) || ("".equals(str4))) {
+              break label314;
             }
+            noo.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, paramBaseResp, this.a.this$0.jdField_a_of_type_Bchv.b(), str3, false);
           }
+          for (;;)
+          {
+            bool = true;
+            break;
+            i = 1004;
+            break label171;
+            label314:
+            if ("2".equals(this.a.jdField_a_of_type_JavaLangString)) {
+              i = 1003;
+            }
+            noo.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str1, paramBaseResp, str2, str3, false);
+          }
+          bool = false;
         }
       }
-    }
-    do
-    {
-      do
+      else
       {
+        this.a.this$0.callJs4OpenApiIfNeeded("shareMsg", 0, String.valueOf(bool));
         return;
-        onTaskFailed(101, ajjy.a(2131641017));
-        return;
-        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] no engine installed, send cmd WHAT_INSTALL_LATEST_ENGINE");
-        a(3, new Bundle());
-        return;
-        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] getInstalledEngineList miniAppEngineList is null");
-        onTaskFailed(102, ajjy.a(2131641013));
-        return;
-        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] getInstalledEngineList data is null");
-        onTaskFailed(102, ajjy.a(2131641012));
-        return;
-        if (paramInt == 52)
-        {
-          QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_BEGIN");
-          return;
-        }
-        if (paramInt != 53) {
-          break;
-        }
-      } while (paramBundle == null);
-      paramBundle = paramBundle.getString("engineInstallerMessage");
-      QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_PROCESS " + paramBundle);
-      return;
-    } while (paramInt != 54);
-    QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_FINISH");
-    a(1, new Bundle());
-  }
-  
-  public void reset()
-  {
-    try
-    {
-      QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]" + this + " reset ");
-      this.b = 0;
-      this.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo = null;
-      this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine = null;
-      super.reset();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+      }
+      bool = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     arnd
  * JD-Core Version:    0.7.0.1
  */

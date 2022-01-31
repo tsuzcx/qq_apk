@@ -1,20 +1,34 @@
-import android.os.Bundle;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class asma
-  extends mmm
+public class asma
 {
-  asma(aslv paramaslv, asmc paramasmc) {}
+  public int a;
+  public long a;
+  public String a;
+  public ConcurrentHashMap<Long, asmb> a;
+  public AtomicBoolean a;
+  public boolean a;
+  public String b;
+  public ConcurrentHashMap<Long, asmb> b = new ConcurrentHashMap();
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public asma()
   {
-    if (this.jdField_a_of_type_Asmc != null) {
-      this.jdField_a_of_type_Asmc.a(paramInt, paramArrayOfByte, paramBundle);
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asma
  * JD-Core Version:    0.7.0.1
  */

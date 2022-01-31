@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajjy;
+import ajyc;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.graphics.Rect;
 import android.text.TextUtils;
 import android.view.View;
-import bdit;
+import bemw;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
 import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
@@ -40,14 +40,13 @@ public class UIJsPlugin
   private static final String EVENT_GET_REGION_DATA = "getRegionData";
   private static final String EVENT_HIDE_HOME_BUTTON = "hideHomeButton";
   public static final String EVENT_HIDE_LOADING = "hideLoading";
+  private static final String EVENT_HIDE_MINIAIO_ENTRANCE = "hideMiniAIOEntrance";
   public static final String EVENT_HIDE_TOAST = "hideToast";
-  private static final String EVENT_INSERT_CANVAS = "insertCanvas";
   private static final String EVENT_INSERT_IMAGEVIEW = "insertImageView";
   private static final String EVENT_INSERT_SCROLLVIEW = "insertScrollView";
   private static final String EVENT_INSERT_TEXTAREA = "insertTextArea";
   private static final String EVENT_INSERT_TEXTVIEW = "insertTextView";
   private static final String EVENT_PAGE_SCROLL_TO = "scrollWebviewTo";
-  private static final String EVENT_REMOVE_CANVAS = "removeCanvas";
   private static final String EVENT_REMOVE_IMAGEVIEW = "removeImageView";
   private static final String EVENT_REMOVE_SCROLLVIEW = "removeScrollView";
   private static final String EVENT_REMOVE_TEXTAREA = "removeTextArea";
@@ -57,6 +56,7 @@ public class UIJsPlugin
   public static final String EVENT_SHOW_ACTION_SHEET = "showActionSheet";
   private static final String EVENT_SHOW_DATA_PICKER_VIEW = "showDatePickerView";
   public static final String EVENT_SHOW_LOADING = "showLoading";
+  private static final String EVENT_SHOW_MINIAIO_ENTRANCE = "showMiniAIOEntrance";
   public static final String EVENT_SHOW_MODAL = "showModal";
   private static final String EVENT_SHOW_MUTI_PICKER_VIEW = "showMultiPickerView";
   private static final String EVENT_SHOW_PICKER_VIEW = "showPickerView";
@@ -64,7 +64,6 @@ public class UIJsPlugin
   private static final String EVENT_START_PULLDOWN_REFRESH = "startPullDownRefresh";
   private static final String EVENT_STOP_PULLDOWN_REFRESH = "stopPullDownRefresh";
   private static final String EVENT_UPDATA_SCROLLVIEW = "updateScrollView";
-  private static final String EVENT_UPDATE_CANVAS = "updateCanvas";
   private static final String EVENT_UPDATE_IMAGEVIEW = "updateImageView";
   private static final String EVENT_UPDATE_MULTI_PICKER_VIEW = "updateMultiPickerView";
   private static final String EVENT_UPDATE_TEXTAREA = "updateTextArea";
@@ -77,7 +76,7 @@ public class UIJsPlugin
   private Rect menuButtonRect = new Rect(267, 34, 347, 64);
   private int menuButtonWidth = 80;
   private MutiPickerView mutiPickerView;
-  private bdit toast;
+  private bemw toast;
   private ToastView toastView;
   
   private String getMenuButtonDefaultValue()
@@ -113,15 +112,15 @@ public class UIJsPlugin
     int k;
     for (;;)
     {
-      Object localObject6;
+      Object localObject5;
       boolean bool;
       try
       {
         JSONObject localJSONObject1 = new JSONObject(paramString2);
-        localObject6 = localJSONObject1.optString("title", "");
+        localObject5 = localJSONObject1.optString("title", "");
         i = localJSONObject1.optInt("duration", 1500);
         bool = localJSONObject1.optBoolean("mask", false);
-        AppBrandTask.runTaskOnUiThread(new UIJsPlugin.2(this, paramJsRuntime, localJSONObject1.optString("icon", "success"), localJSONObject1.optString("image", ""), (String)localObject6, i, bool, paramString1, paramInt));
+        AppBrandTask.runTaskOnUiThread(new UIJsPlugin.2(this, paramJsRuntime, localJSONObject1.optString("icon", "success"), localJSONObject1.optString("image", ""), (String)localObject5, i, bool, paramString1, paramInt));
         return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
       }
       catch (JSONException localJSONException1)
@@ -169,17 +168,17 @@ public class UIJsPlugin
       }
       else
       {
-        Object localObject8;
         Object localObject7;
+        Object localObject6;
         if ("showDatePickerView".equals(paramString1))
         {
           try
           {
-            localObject8 = new JSONObject(paramString2);
-            localObject7 = ((JSONObject)localObject8).optJSONObject("range");
-            localObject6 = ((JSONObject)localObject8).optString("current");
-            Object localObject1 = localObject6;
-            if (TextUtils.isEmpty((CharSequence)localObject6))
+            localObject7 = new JSONObject(paramString2);
+            localObject6 = ((JSONObject)localObject7).optJSONObject("range");
+            localObject5 = ((JSONObject)localObject7).optString("current");
+            Object localObject1 = localObject5;
+            if (TextUtils.isEmpty((CharSequence)localObject5))
             {
               localObject1 = Calendar.getInstance();
               i = ((Calendar)localObject1).get(1);
@@ -187,10 +186,10 @@ public class UIJsPlugin
               k = ((Calendar)localObject1).get(5);
               localObject1 = i + "-" + (j + 1) + "" + k;
             }
-            localObject6 = ((JSONObject)localObject8).optString("mode");
-            localObject8 = ((JSONObject)localObject8).optString("fields");
-            if (!"date".equals(localObject6)) {
-              break label650;
+            localObject5 = ((JSONObject)localObject7).optString("mode");
+            localObject7 = ((JSONObject)localObject7).optString("fields");
+            if (!"date".equals(localObject5)) {
+              break label648;
             }
             localObject1 = DateUtils.getSmartDateByTime((String)localObject1);
             if (localObject1 == null)
@@ -198,16 +197,16 @@ public class UIJsPlugin
               this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
               return "";
             }
-            AppBrandTask.runTaskOnUiThread(new UIJsPlugin.7(this, (Date)localObject1, (String)localObject8, paramJsRuntime, paramString1, paramInt, (JSONObject)localObject7));
+            AppBrandTask.runTaskOnUiThread(new UIJsPlugin.7(this, (Date)localObject1, (String)localObject7, paramJsRuntime, paramString1, paramInt, (JSONObject)localObject6));
           }
           catch (JSONException localJSONException4)
           {
             QLog.e("[mini] UIJsPlugin", 2, localJSONException4, new Object[0]);
           }
           continue;
-          label650:
-          if ("time".equals(localObject6)) {
-            AppBrandTask.runTaskOnUiThread(new UIJsPlugin.8(this, DateUtils.getTimeByStrTime(localJSONException4), paramJsRuntime, paramString1, paramInt, (JSONObject)localObject7));
+          label648:
+          if ("time".equals(localObject5)) {
+            AppBrandTask.runTaskOnUiThread(new UIJsPlugin.8(this, DateUtils.getTimeByStrTime(localJSONException4), paramJsRuntime, paramString1, paramInt, (JSONObject)localObject6));
           }
         }
         else if ("startPullDownRefresh".equals(paramString1))
@@ -235,18 +234,18 @@ public class UIJsPlugin
         }
         else
         {
-          Object localObject9;
+          Object localObject8;
           if ("showModal".equals(paramString1))
           {
             try
             {
               JSONObject localJSONObject5 = new JSONObject(paramString2);
-              localObject6 = localJSONObject5.optString("title", "");
-              localObject7 = localJSONObject5.optString("content", "");
+              localObject5 = localJSONObject5.optString("title", "");
+              localObject6 = localJSONObject5.optString("content", "");
               bool = localJSONObject5.optBoolean("showCancel", true);
-              localObject8 = localJSONObject5.optString("cancelText", ajjy.a(2131650062));
-              localObject9 = localJSONObject5.optString("cancelColor", "#000000");
-              AppBrandTask.runTaskOnUiThread(new UIJsPlugin.12(this, (String)localObject6, (String)localObject7, localJSONObject5.optString("confirmText", ajjy.a(2131650061)), localJSONObject5.optString("confirmColor", "#3CC51F"), paramJsRuntime, paramString1, paramInt, bool, (String)localObject8, (String)localObject9));
+              localObject7 = localJSONObject5.optString("cancelText", ajyc.a(2131715853));
+              localObject8 = localJSONObject5.optString("cancelColor", "#000000");
+              AppBrandTask.runTaskOnUiThread(new UIJsPlugin.12(this, (String)localObject5, (String)localObject6, localJSONObject5.optString("confirmText", ajyc.a(2131715852)), localJSONObject5.optString("confirmColor", "#3CC51F"), paramJsRuntime, paramString1, paramInt, bool, (String)localObject7, (String)localObject8));
             }
             catch (JSONException localJSONException5)
             {
@@ -283,280 +282,197 @@ public class UIJsPlugin
             }
             else
             {
-              label1363:
-              Object localObject2;
-              if ("insertCamera".equals(paramString1)) {
-                for (;;)
-                {
-                  try
-                  {
-                    localObject8 = new JSONObject(paramString2);
-                    i = ((JSONObject)localObject8).optInt("cameraId");
-                    j = ((JSONObject)localObject8).optInt("parentId");
-                    localObject6 = ((JSONObject)localObject8).optJSONObject("position");
-                    String str1 = ((JSONObject)localObject8).optString("flash");
-                    localObject7 = ((JSONObject)localObject8).optString("devicePosition");
-                    if (!str1.equals("on")) {
-                      break label1363;
-                    }
-                    str1 = "on";
-                    bool = ((JSONObject)localObject8).optBoolean("fixed", false);
-                    localObject8 = ((JSONObject)localObject8).optString("mode");
-                    localObject9 = new JSONObject();
-                    ((JSONObject)localObject9).put("containerId", i);
-                    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.19(this, paramJsRuntime, i, j, (String)localObject7, (JSONObject)localObject6, paramString1, (JSONObject)localObject9, paramInt, str1, bool, (String)localObject8));
-                  }
-                  catch (JSONException localJSONException6)
-                  {
-                    QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException6);
-                  }
-                  break;
-                  if (localJSONException6.equals("auto")) {
-                    localObject2 = "auto";
-                  } else {
-                    localObject2 = "off";
-                  }
-                }
-              }
-              JSONObject localJSONObject11;
-              label1593:
-              Boolean localBoolean;
+              JSONObject localJSONObject9;
+              label1369:
+              Boolean localBoolean2;
               if ("insertImageView".equals(paramString1)) {
-                for (;;)
-                {
-                  try
-                  {
-                    localObject9 = new JSONObject(paramString2);
-                    i = ((JSONObject)localObject9).optInt("viewId");
-                    j = ((JSONObject)localObject9).optInt("parentId");
-                    localObject6 = ((JSONObject)localObject9).optString("iconPath");
-                    localObject7 = ((JSONObject)localObject9).optString("data");
-                    localObject8 = ((JSONObject)localObject9).optJSONObject("position");
-                    if (!((JSONObject)localObject9).has("clickable")) {
-                      break label1593;
-                    }
-                    localObject2 = Boolean.valueOf(((JSONObject)localObject9).optBoolean("clickable"));
-                    localJSONObject11 = ((JSONObject)localObject9).optJSONObject("style");
-                    bool = ((JSONObject)localObject9).optBoolean("fixed", false);
-                    localObject9 = new JSONObject();
-                    ((JSONObject)localObject9).put("viewId", i);
-                    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.20(this, paramJsRuntime, (JSONObject)localObject8, (String)localObject7, j, i, (String)localObject6, (Boolean)localObject2, localJSONObject11, bool, paramString1, (JSONObject)localObject9, paramInt));
-                  }
-                  catch (JSONException localJSONException7)
-                  {
-                    QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException7);
-                  }
-                  break;
-                  localBoolean = null;
-                }
-              }
-              label1777:
-              JSONObject localJSONObject6;
-              if ("updateImageView".equals(paramString1)) {
                 for (;;)
                 {
                   try
                   {
                     localObject8 = new JSONObject(paramString2);
                     i = ((JSONObject)localObject8).optInt("viewId");
-                    localObject6 = ((JSONObject)localObject8).optString("iconPath");
+                    j = ((JSONObject)localObject8).optInt("parentId");
+                    localObject5 = ((JSONObject)localObject8).optString("iconPath");
+                    localObject6 = ((JSONObject)localObject8).optString("data");
                     localObject7 = ((JSONObject)localObject8).optJSONObject("position");
                     if (!((JSONObject)localObject8).has("clickable")) {
-                      break label1777;
+                      break label1369;
                     }
-                    localBoolean = Boolean.valueOf(((JSONObject)localObject8).optBoolean("clickable"));
-                    localObject9 = ((JSONObject)localObject8).optJSONObject("style");
-                    localObject8 = ((JSONObject)localObject8).optString("data");
-                    localJSONObject11 = new JSONObject();
-                    localJSONObject11.put("viewId", i);
-                    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.21(this, paramJsRuntime, (JSONObject)localObject7, (String)localObject8, i, (String)localObject6, localBoolean, (JSONObject)localObject9, paramString1, localJSONObject11, paramInt));
+                    Boolean localBoolean1 = Boolean.valueOf(((JSONObject)localObject8).optBoolean("clickable"));
+                    localJSONObject9 = ((JSONObject)localObject8).optJSONObject("style");
+                    bool = ((JSONObject)localObject8).optBoolean("fixed", false);
+                    localObject8 = new JSONObject();
+                    ((JSONObject)localObject8).put("viewId", i);
+                    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.19(this, paramJsRuntime, (JSONObject)localObject7, (String)localObject6, j, i, (String)localObject5, localBoolean1, localJSONObject9, bool, paramString1, (JSONObject)localObject8, paramInt));
                   }
-                  catch (JSONException localJSONException8)
+                  catch (JSONException localJSONException6)
                   {
-                    QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException8);
+                    QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException6);
+                  }
+                  break;
+                  localBoolean2 = null;
+                }
+              }
+              label1553:
+              Object localObject2;
+              if ("updateImageView".equals(paramString1)) {
+                for (;;)
+                {
+                  try
+                  {
+                    localObject7 = new JSONObject(paramString2);
+                    i = ((JSONObject)localObject7).optInt("viewId");
+                    localObject5 = ((JSONObject)localObject7).optString("iconPath");
+                    localObject6 = ((JSONObject)localObject7).optJSONObject("position");
+                    if (!((JSONObject)localObject7).has("clickable")) {
+                      break label1553;
+                    }
+                    localBoolean2 = Boolean.valueOf(((JSONObject)localObject7).optBoolean("clickable"));
+                    localObject8 = ((JSONObject)localObject7).optJSONObject("style");
+                    localObject7 = ((JSONObject)localObject7).optString("data");
+                    localJSONObject9 = new JSONObject();
+                    localJSONObject9.put("viewId", i);
+                    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.20(this, paramJsRuntime, (JSONObject)localObject6, (String)localObject7, i, (String)localObject5, localBoolean2, (JSONObject)localObject8, paramString1, localJSONObject9, paramInt));
+                  }
+                  catch (JSONException localJSONException7)
+                  {
+                    QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException7);
+                  }
+                  break;
+                  localObject2 = null;
+                }
+              }
+              label1769:
+              JSONObject localJSONObject6;
+              if ("scrollWebviewTo".equals(paramString1)) {
+                for (;;)
+                {
+                  try
+                  {
+                    localObject2 = new JSONObject(paramString2);
+                    long l = ((JSONObject)localObject2).optLong("duration", 300L);
+                    float f = DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext());
+                    i = (int)(((JSONObject)localObject2).optInt("scrollTop") * f + 0.5F);
+                    localObject2 = ((AppBrandPageContainer)this.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(paramJsRuntime.getPageWebViewId());
+                    if (localObject2 == null) {
+                      break label1769;
+                    }
+                    localObject2 = ((AbsAppBrandPage)localObject2).getCurrentPageWebview();
+                    if (localObject2 == null) {
+                      break;
+                    }
+                    localObject5 = ValueAnimator.ofInt(new int[] { ((PageWebview)localObject2).getView().getScrollY(), i }).setDuration(l);
+                    ((ValueAnimator)localObject5).addUpdateListener(new UIJsPlugin.21(this, (PageWebview)localObject2));
+                    ((Animator)localObject5).addListener(new UIJsPlugin.22(this, paramJsRuntime, paramString1, paramInt));
+                    ((Animator)localObject5).start();
+                  }
+                  catch (Exception localException2)
+                  {
+                    MiniLog.e("[mini] UIJsPlugin", 4, localException2.getMessage(), localException2, new Object[0]);
+                    this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
                   }
                   break;
                   localJSONObject6 = null;
                 }
               }
-              if ("insertCanvas".equals(paramString1))
+              if ("insertTextArea".equals(paramString1))
               {
                 try
                 {
                   localJSONObject6 = new JSONObject(paramString2);
-                  i = localJSONObject6.optInt("canvasId");
-                  j = localJSONObject6.optInt("parentId");
-                  localObject6 = localJSONObject6.optJSONObject("position");
-                  localObject7 = new JSONObject();
-                  ((JSONObject)localObject7).put("containerId", i);
-                  AppBrandTask.runTaskOnUiThread(new UIJsPlugin.22(this, paramJsRuntime, localJSONObject6, i, j, (JSONObject)localObject6, localJSONObject6.optString("data"), paramString1, (JSONObject)localObject7, paramInt));
+                  i = localJSONObject6.optInt("inputId");
+                  localObject5 = new JSONObject();
+                  ((JSONObject)localObject5).put("inputId", i);
+                  localObject6 = localJSONObject6.optString("data");
+                  if (!TextUtils.isEmpty((CharSequence)localObject6)) {
+                    ((JSONObject)localObject5).put("data", localObject6);
+                  }
+                  AppBrandTask.runTaskOnUiThread(new UIJsPlugin.23(this, paramJsRuntime, i, localJSONObject6, paramString1, (JSONObject)localObject5, paramInt));
+                }
+                catch (JSONException localJSONException8)
+                {
+                  QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException8);
+                }
+              }
+              else if ("removeTextArea".equals(paramString1))
+              {
+                try
+                {
+                  i = new JSONObject(paramString2).optInt("inputId");
+                  JSONObject localJSONObject7 = new JSONObject();
+                  localJSONObject7.put("inputId", i);
+                  AppBrandTask.runTaskOnUiThread(new UIJsPlugin.24(this, paramJsRuntime, i, paramString1, localJSONObject7, paramInt));
                 }
                 catch (JSONException localJSONException9)
                 {
                   QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException9);
                 }
               }
-              else if ("updateCanvas".equals(paramString1))
+              else if ("updateTextArea".equals(paramString1))
               {
                 try
                 {
-                  localObject6 = new JSONObject(paramString2);
-                  i = ((JSONObject)localObject6).optInt("canvasId");
-                  JSONObject localJSONObject7 = ((JSONObject)localObject6).optJSONObject("position");
-                  bool = ((JSONObject)localObject6).optBoolean("hide", false);
-                  localObject6 = new JSONObject();
-                  ((JSONObject)localObject6).put("containerId", i);
-                  AppBrandTask.runTaskOnUiThread(new UIJsPlugin.23(this, paramJsRuntime, i, localJSONObject7, bool, paramString1, (JSONObject)localObject6, paramInt));
+                  JSONObject localJSONObject8 = new JSONObject(paramString2);
+                  i = localJSONObject8.optInt("inputId");
+                  localObject5 = new JSONObject();
+                  ((JSONObject)localObject5).put("inputId", i);
+                  localObject6 = localJSONObject8.optString("data");
+                  if (!TextUtils.isEmpty((CharSequence)localObject6)) {
+                    ((JSONObject)localObject5).put("data", localObject6);
+                  }
+                  AppBrandTask.runTaskOnUiThread(new UIJsPlugin.25(this, paramJsRuntime, localJSONObject8, paramString1, (JSONObject)localObject5, paramInt));
                 }
                 catch (JSONException localJSONException10)
                 {
                   QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException10);
                 }
               }
-              else if ("removeCanvas".equals(paramString1))
+              else if ("insertTextView".equals(paramString1))
               {
                 try
                 {
-                  AppBrandTask.runTaskOnUiThread(new UIJsPlugin.24(this, paramJsRuntime, new JSONObject(paramString2).optInt("canvasId"), paramString1, paramInt));
+                  AppBrandTask.runTaskOnUiThread(new UIJsPlugin.26(this, paramJsRuntime, new JSONObject(paramString2), paramString1, paramInt));
                 }
                 catch (JSONException localJSONException11)
                 {
                   QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException11);
                 }
               }
+              else if ("updateTextView".equals(paramString1))
+              {
+                try
+                {
+                  AppBrandTask.runTaskOnUiThread(new UIJsPlugin.27(this, paramJsRuntime, new JSONObject(paramString2), paramString1, paramInt));
+                }
+                catch (JSONException localJSONException12)
+                {
+                  QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException12);
+                }
+              }
+              else if ("removeTextView".equals(paramString1))
+              {
+                try
+                {
+                  AppBrandTask.runTaskOnUiThread(new UIJsPlugin.28(this, paramJsRuntime, new JSONObject(paramString2), paramString1, paramInt));
+                }
+                catch (JSONException localJSONException13)
+                {
+                  QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException13);
+                }
+              }
               else
               {
-                label2334:
-                JSONObject localJSONObject8;
-                if ("scrollWebviewTo".equals(paramString1)) {
-                  for (;;)
-                  {
-                    try
-                    {
-                      Object localObject3 = new JSONObject(paramString2);
-                      long l = ((JSONObject)localObject3).optLong("duration", 300L);
-                      float f = DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext());
-                      i = (int)(((JSONObject)localObject3).optInt("scrollTop") * f + 0.5F);
-                      localObject3 = ((AppBrandPageContainer)this.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(paramJsRuntime.getPageWebViewId());
-                      if (localObject3 == null) {
-                        break label2334;
-                      }
-                      localObject3 = ((AbsAppBrandPage)localObject3).getCurrentPageWebview();
-                      if (localObject3 == null) {
-                        break;
-                      }
-                      localObject6 = ValueAnimator.ofInt(new int[] { ((PageWebview)localObject3).getView().getScrollY(), i }).setDuration(l);
-                      ((ValueAnimator)localObject6).addUpdateListener(new UIJsPlugin.25(this, (PageWebview)localObject3));
-                      ((Animator)localObject6).addListener(new UIJsPlugin.26(this, paramJsRuntime, paramString1, paramInt));
-                      ((Animator)localObject6).start();
-                    }
-                    catch (Exception localException2)
-                    {
-                      MiniLog.e("[mini] UIJsPlugin", 4, localException2.getMessage(), localException2, new Object[0]);
-                      this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
-                    }
-                    break;
-                    localJSONObject8 = null;
-                  }
+                if (!"removeImageView".equals(paramString1)) {
+                  break;
                 }
-                if ("insertTextArea".equals(paramString1))
+                try
                 {
-                  try
-                  {
-                    localJSONObject8 = new JSONObject(paramString2);
-                    i = localJSONObject8.optInt("inputId");
-                    localObject6 = new JSONObject();
-                    ((JSONObject)localObject6).put("inputId", i);
-                    localObject7 = localJSONObject8.optString("data");
-                    if (!TextUtils.isEmpty((CharSequence)localObject7)) {
-                      ((JSONObject)localObject6).put("data", localObject7);
-                    }
-                    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.27(this, paramJsRuntime, i, localJSONObject8, paramString1, (JSONObject)localObject6, paramInt));
-                  }
-                  catch (JSONException localJSONException12)
-                  {
-                    QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException12);
-                  }
+                  AppBrandTask.runTaskOnUiThread(new UIJsPlugin.29(this, paramJsRuntime, new JSONObject(paramString2), paramString1, paramInt));
                 }
-                else if ("removeTextArea".equals(paramString1))
+                catch (JSONException localJSONException14)
                 {
-                  try
-                  {
-                    i = new JSONObject(paramString2).optInt("inputId");
-                    JSONObject localJSONObject9 = new JSONObject();
-                    localJSONObject9.put("inputId", i);
-                    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.28(this, paramJsRuntime, i, paramString1, localJSONObject9, paramInt));
-                  }
-                  catch (JSONException localJSONException13)
-                  {
-                    QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException13);
-                  }
-                }
-                else if ("updateTextArea".equals(paramString1))
-                {
-                  try
-                  {
-                    JSONObject localJSONObject10 = new JSONObject(paramString2);
-                    i = localJSONObject10.optInt("inputId");
-                    localObject6 = new JSONObject();
-                    ((JSONObject)localObject6).put("inputId", i);
-                    localObject7 = localJSONObject10.optString("data");
-                    if (!TextUtils.isEmpty((CharSequence)localObject7)) {
-                      ((JSONObject)localObject6).put("data", localObject7);
-                    }
-                    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.29(this, paramJsRuntime, localJSONObject10, paramString1, (JSONObject)localObject6, paramInt));
-                  }
-                  catch (JSONException localJSONException14)
-                  {
-                    QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException14);
-                  }
-                }
-                else if ("insertTextView".equals(paramString1))
-                {
-                  try
-                  {
-                    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.30(this, paramJsRuntime, new JSONObject(paramString2), paramString1, paramInt));
-                  }
-                  catch (JSONException localJSONException15)
-                  {
-                    QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException15);
-                  }
-                }
-                else if ("updateTextView".equals(paramString1))
-                {
-                  try
-                  {
-                    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.31(this, paramJsRuntime, new JSONObject(paramString2), paramString1, paramInt));
-                  }
-                  catch (JSONException localJSONException16)
-                  {
-                    QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException16);
-                  }
-                }
-                else if ("removeTextView".equals(paramString1))
-                {
-                  try
-                  {
-                    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.32(this, paramJsRuntime, new JSONObject(paramString2), paramString1, paramInt));
-                  }
-                  catch (JSONException localJSONException17)
-                  {
-                    QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException17);
-                  }
-                }
-                else
-                {
-                  if (!"removeImageView".equals(paramString1)) {
-                    break;
-                  }
-                  try
-                  {
-                    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.33(this, paramJsRuntime, new JSONObject(paramString2), paramString1, paramInt));
-                  }
-                  catch (JSONException localJSONException18)
-                  {
-                    QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException18);
-                  }
+                  QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException14);
                 }
               }
             }
@@ -573,138 +489,159 @@ public class UIJsPlugin
         {
           for (;;)
           {
-            try
+            for (;;)
             {
-              if (this.isGameRuntime)
+              try
               {
-                localObject4 = getGameBrandRuntime();
-                if ((localObject4 == null) || (!(((GameBrandRuntime)localObject4).activity instanceof GameActivity))) {
-                  break label3834;
-                }
-                localObject4 = ((GameActivity)((GameBrandRuntime)localObject4).activity).getNavBar();
-                if (localObject4 == null) {
-                  break label3834;
-                }
-                localObject4 = ((NavigatorBarForMiniGame)localObject4).getCapsuleButton();
-                if (localObject4 == null) {
-                  break label3542;
-                }
-                i = (int)(((View)localObject4).getWidth() / DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext()));
-                j = (int)(((View)localObject4).getHeight() / DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext()));
-                k = (int)(((View)localObject4).getLeft() / DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext()));
-                int m = (int)(((View)localObject4).getTop() / DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext()));
-                int n = (int)(((View)localObject4).getRight() / DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext()));
-                int i1 = (int)(((View)localObject4).getBottom() / DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext()));
-                if (i != 0)
+                if (this.isGameRuntime)
                 {
-                  this.menuButtonWidth = i;
-                  this.menuButtonHeight = j;
-                  this.menuButtonRect = new Rect(k, m, n, i1);
+                  localObject3 = getGameBrandRuntime();
+                  if ((localObject3 == null) || (!(((GameBrandRuntime)localObject3).activity instanceof GameActivity))) {
+                    break label3341;
+                  }
+                  localObject3 = ((GameActivity)((GameBrandRuntime)localObject3).activity).getNavBar();
+                  if (localObject3 == null) {
+                    break label3341;
+                  }
+                  localObject3 = ((NavigatorBarForMiniGame)localObject3).getCapsuleButton();
+                  if (localObject3 == null) {
+                    break label2977;
+                  }
+                  i = (int)(((View)localObject3).getWidth() / DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext()));
+                  j = (int)(((View)localObject3).getHeight() / DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext()));
+                  k = (int)(((View)localObject3).getLeft() / DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext()));
+                  int m = (int)(((View)localObject3).getTop() / DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext()));
+                  int n = (int)(((View)localObject3).getRight() / DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext()));
+                  int i1 = (int)(((View)localObject3).getBottom() / DisplayUtil.getDensity(this.jsPluginEngine.getActivityContext()));
+                  if (i != 0)
+                  {
+                    this.menuButtonWidth = i;
+                    this.menuButtonHeight = j;
+                    this.menuButtonRect = new Rect(k, m, n, i1);
+                  }
                 }
+                try
+                {
+                  localObject3 = new JSONObject();
+                  ((JSONObject)localObject3).put("width", this.menuButtonWidth);
+                  ((JSONObject)localObject3).put("height", this.menuButtonHeight);
+                  ((JSONObject)localObject3).put("top", this.menuButtonRect.top);
+                  ((JSONObject)localObject3).put("right", this.menuButtonRect.right);
+                  ((JSONObject)localObject3).put("bottom", this.menuButtonRect.bottom);
+                  ((JSONObject)localObject3).put("left", this.menuButtonRect.left);
+                  QLog.d("[mini] UIJsPlugin", 1, "");
+                  this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, (JSONObject)localObject3, paramInt);
+                  QLog.d("[mini] UIJsPlugin", 1, "getMenuButtonBoundingClientRect : " + ((JSONObject)localObject3).toString());
+                  localObject3 = ((JSONObject)localObject3).toString();
+                  return localObject3;
+                }
+                catch (JSONException localJSONException15)
+                {
+                  QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException15);
+                }
+                Object localObject3 = ((AppBrandPageContainer)this.jsPluginEngine.appBrandRuntime.getContainer()).getCurrentPage();
+                if (localObject3 != null)
+                {
+                  localObject3 = ((AbsAppBrandPage)localObject3).getNavBar();
+                  if (localObject3 != null) {
+                    localObject3 = ((NavigationBar)localObject3).getCapsuleButton();
+                  }
+                }
+                else
+                {
+                  QLog.e("[mini] UIJsPlugin", 1, "EVENT_GET_MENU_BUTTON_RECT page is null.");
+                  this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, " page is null", paramInt);
+                  return getMenuButtonDefaultValue();
+                }
+                QLog.e("[mini] UIJsPlugin", 1, "EVENT_GET_MENU_BUTTON_RECT navBar is null.");
+                this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "navBar is null", paramInt);
+                return getMenuButtonDefaultValue();
+              }
+              catch (Exception localException3)
+              {
+                QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localException3);
+                this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "exception", paramInt);
+              }
+              break;
+              break;
+              label2977:
+              QLog.e("[mini] UIJsPlugin", 1, "EVENT_GET_MENU_BUTTON_RECT menuButtonCantainer is null.");
+              this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "json error", paramInt);
+              String str = getMenuButtonDefaultValue();
+              return str;
+              if ("updateMultiPickerView".equals(paramString1))
+              {
+                AppBrandTask.runTaskOnUiThread(new UIJsPlugin.30(this, paramString2, paramJsRuntime, paramString1, paramInt));
+                break;
+              }
+              if (!"insertScrollView".equals(paramString1)) {
+                break label3106;
               }
               try
               {
-                localObject4 = new JSONObject();
-                ((JSONObject)localObject4).put("width", this.menuButtonWidth);
-                ((JSONObject)localObject4).put("height", this.menuButtonHeight);
-                ((JSONObject)localObject4).put("top", this.menuButtonRect.top);
-                ((JSONObject)localObject4).put("right", this.menuButtonRect.right);
-                ((JSONObject)localObject4).put("bottom", this.menuButtonRect.bottom);
-                ((JSONObject)localObject4).put("left", this.menuButtonRect.left);
-                QLog.d("[mini] UIJsPlugin", 1, "");
-                this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, (JSONObject)localObject4, paramInt);
-                QLog.d("[mini] UIJsPlugin", 1, "getMenuButtonBoundingClientRect : " + ((JSONObject)localObject4).toString());
-                localObject4 = ((JSONObject)localObject4).toString();
-                return localObject4;
+                AppBrandTask.runTaskOnUiThread(new UIJsPlugin.31(this, paramJsRuntime, new JSONObject(paramString2), paramString1, paramInt));
               }
-              catch (JSONException localJSONException19)
+              catch (JSONException localJSONException16)
               {
-                QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException19);
+                QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException16);
               }
-              Object localObject4 = ((AppBrandPageContainer)this.jsPluginEngine.appBrandRuntime.getContainer()).getCurrentPage();
-              if (localObject4 != null)
-              {
-                localObject4 = ((AbsAppBrandPage)localObject4).getNavBar();
-                if (localObject4 != null) {
-                  localObject4 = ((NavigationBar)localObject4).getCapsuleButton();
-                }
-              }
-              else
-              {
-                QLog.e("[mini] UIJsPlugin", 1, "EVENT_GET_MENU_BUTTON_RECT page is null.");
-                this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, " page is null", paramInt);
-                return getMenuButtonDefaultValue();
-              }
-              QLog.e("[mini] UIJsPlugin", 1, "EVENT_GET_MENU_BUTTON_RECT navBar is null.");
-              this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "navBar is null", paramInt);
-              return getMenuButtonDefaultValue();
-            }
-            catch (Exception localException3)
-            {
-              QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localException3);
-              this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "exception", paramInt);
             }
             break;
-            break;
-            label3542:
-            QLog.e("[mini] UIJsPlugin", 1, "EVENT_GET_MENU_BUTTON_RECT menuButtonCantainer is null.");
-            this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "json error", paramInt);
-            String str2 = getMenuButtonDefaultValue();
-            return str2;
-            if ("updateMultiPickerView".equals(paramString1))
-            {
-              AppBrandTask.runTaskOnUiThread(new UIJsPlugin.34(this, paramString2, paramJsRuntime, paramString1, paramInt));
-              break;
-            }
-            if (!"insertScrollView".equals(paramString1)) {
-              break label3671;
+            label3106:
+            if (!"updateScrollView".equals(paramString1)) {
+              break label3174;
             }
             try
             {
-              AppBrandTask.runTaskOnUiThread(new UIJsPlugin.35(this, paramJsRuntime, new JSONObject(paramString2), paramString1, paramInt));
+              AppBrandTask.runTaskOnUiThread(new UIJsPlugin.32(this, paramJsRuntime, new JSONObject(paramString2), paramString1, paramInt));
             }
-            catch (JSONException localJSONException20)
+            catch (JSONException localJSONException17)
             {
-              QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException20);
+              QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException17);
             }
           }
           break;
-          label3671:
-          if (!"updateScrollView".equals(paramString1)) {
-            break label3739;
+          label3174:
+          if (!"removeScrollView".equals(paramString1)) {
+            break label3242;
           }
           try
           {
-            AppBrandTask.runTaskOnUiThread(new UIJsPlugin.36(this, paramJsRuntime, new JSONObject(paramString2), paramString1, paramInt));
+            AppBrandTask.runTaskOnUiThread(new UIJsPlugin.33(this, paramJsRuntime, new JSONObject(paramString2), paramString1, paramInt));
           }
-          catch (JSONException localJSONException21)
+          catch (JSONException localJSONException18)
           {
-            QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException21);
+            QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException18);
           }
         }
         break;
-        label3739:
-        if (!"removeScrollView".equals(paramString1)) {
-          break label3807;
+        label3242:
+        if ("hideHomeButton".equals(paramString1))
+        {
+          AppBrandTask.runTaskOnUiThread(new UIJsPlugin.34(this, paramJsRuntime, paramString1, paramInt));
+          break;
+        }
+        if (!"showMiniAIOEntrance".equals(paramString1)) {
+          break label3314;
         }
         try
         {
-          AppBrandTask.runTaskOnUiThread(new UIJsPlugin.37(this, paramJsRuntime, new JSONObject(paramString2), paramString1, paramInt));
+          AppBrandTask.runTaskOnUiThread(new UIJsPlugin.35(this, new JSONObject(paramString2), paramJsRuntime, paramString1, paramInt));
         }
-        catch (JSONException localJSONException22)
+        catch (JSONException localJSONException19)
         {
-          QLog.e("[mini] UIJsPlugin", 1, paramString1 + " error.", localJSONException22);
+          localJSONException19.printStackTrace();
         }
       }
       break;
-      label3807:
-      if (!"hideHomeButton".equals(paramString1)) {
+      label3314:
+      if (!"hideMiniAIOEntrance".equals(paramString1)) {
         break;
       }
-      AppBrandTask.runTaskOnUiThread(new UIJsPlugin.38(this, paramJsRuntime, paramString1, paramInt));
+      AppBrandTask.runTaskOnUiThread(new UIJsPlugin.36(this, paramJsRuntime, paramString1, paramInt));
       break;
-      label3834:
-      Object localObject5 = null;
+      label3341:
+      Object localObject4 = null;
     }
   }
   

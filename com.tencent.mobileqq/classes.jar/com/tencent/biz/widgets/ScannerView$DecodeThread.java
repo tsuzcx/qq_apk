@@ -2,7 +2,7 @@ package com.tencent.biz.widgets;
 
 import android.os.HandlerThread;
 import android.os.Process;
-import bcof;
+import bdsg;
 import com.tencent.qphone.base.util.QLog;
 
 class ScannerView$DecodeThread
@@ -23,7 +23,7 @@ class ScannerView$DecodeThread
     }
     try
     {
-      bcof.b();
+      bdsg.b();
       return super.quit();
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
@@ -42,12 +42,12 @@ class ScannerView$DecodeThread
     Process.setThreadPriority(-20);
     try
     {
-      int i = bcof.b(2, 0, "ANY", "UTF-8");
+      int i = bdsg.b(0, "ANY", "UTF-8");
       Object localObject = new int[2];
       localObject[0] = 2;
-      localObject[1] = 0;
-      int j = bcof.b((int[])localObject, localObject.length);
-      localObject = bcof.a();
+      localObject[1] = 1;
+      int j = bdsg.b((int[])localObject, localObject.length);
+      localObject = bdsg.a();
       if (QLog.isDevelopLevel())
       {
         QLog.d("ScannerView", 4, "init for camera init_result1:" + i + ",init_result2:" + j);

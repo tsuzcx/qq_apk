@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import asvw;
+import atsa;
 
 class NearbyProfileEditPanel$22$1
   implements Runnable
@@ -9,7 +9,7 @@ class NearbyProfileEditPanel$22$1
   
   public void run()
   {
-    asvw.c(this.a.this$0);
+    atsa.d(this.a.this$0);
   }
 }
 

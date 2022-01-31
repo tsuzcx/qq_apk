@@ -19,8 +19,14 @@ class UIJsPlugin$3
   {
     if ((this.val$webview instanceof GameJsRuntime))
     {
-      if (UIJsPlugin.access$000(this.this$0) == null) {
-        UIJsPlugin.access$002(this.this$0, new ToastView(this.this$0.jsPluginEngine.getActivityContext(), (ViewGroup)this.this$0.jsPluginEngine.getActivityContext().findViewById(16908290)));
+      if (UIJsPlugin.access$000(this.this$0) == null)
+      {
+        ViewGroup localViewGroup2 = (ViewGroup)this.this$0.jsPluginEngine.getActivityContext().findViewById(2131370270);
+        ViewGroup localViewGroup1 = localViewGroup2;
+        if (localViewGroup2 == null) {
+          localViewGroup1 = (ViewGroup)this.this$0.jsPluginEngine.getActivityContext().findViewById(16908290);
+        }
+        UIJsPlugin.access$002(this.this$0, new ToastView(this.this$0.jsPluginEngine.getActivityContext(), localViewGroup1));
       }
       for (;;)
       {

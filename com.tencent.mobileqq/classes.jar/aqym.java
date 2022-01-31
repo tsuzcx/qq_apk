@@ -1,21 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.listentogether.ui.BaseListenTogetherPanel.9;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
 
-public class aqym
-  implements View.OnClickListener
+public abstract interface aqym
 {
-  public aqym(BaseListenTogetherPanel.9 param9) {}
+  public abstract void a(Animation paramAnimation);
   
-  public void onClick(View paramView)
-  {
-    this.a.this$0.a.dismiss();
-  }
+  public abstract void a(HeartLayout paramHeartLayout, float paramFloat1, float paramFloat2);
+  
+  public abstract void b(Animation paramAnimation);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqym
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.ad.multiVideo.MultiVideoAdFooterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class nol
+class nol
+  implements DialogInterface.OnClickListener
 {
-  public Activity a;
-  public VideoInfo a;
-  public MultiVideoAdFooterView a;
+  nol(nnx paramnnx) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

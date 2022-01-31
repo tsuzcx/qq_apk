@@ -1,70 +1,49 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-final class azcg
-  implements View.OnTouchListener
+public class azcg
+  extends sxa
 {
-  long jdField_a_of_type_Long = 0L;
+  public String a;
+  public swe a;
   
-  azcg(boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString, Activity paramActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public azcg(String paramString)
   {
-    if ((this.jdField_a_of_type_Boolean) || (!(paramView instanceof ImageView))) {
-      return false;
-    }
-    int i = paramMotionEvent.getAction();
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof asbx))) {}
-    for (paramMotionEvent = (asbx)paramView.getTag();; paramMotionEvent = null)
+    this.jdField_a_of_type_Swe = new swe();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  private void c()
+  {
+    aywa localaywa = new aywa();
+    localaywa.jdField_a_of_type_Auoo = new azch(this);
+    localaywa.i = this.jdField_a_of_type_JavaLangString;
+    localaywa.jdField_a_of_type_Boolean = true;
+    localaywa.jdField_b_of_type_Int = 327681;
+    QQStoryContext.a();
+    localaywa.jdField_b_of_type_JavaLangString = QQStoryContext.a().c();
+    localaywa.c = "";
+    localaywa.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+    QQStoryContext.a();
+    QQStoryContext.a().a().a(localaywa);
+  }
+  
+  protected void a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!vyi.c(this.jdField_a_of_type_JavaLangString)))
     {
-      switch (i)
-      {
-      }
-      for (;;)
-      {
-        return true;
-        if (paramMotionEvent != null)
-        {
-          paramView.setAlpha(paramMotionEvent.a() * 0.5F);
-        }
-        else
-        {
-          paramView.setAlpha(0.5F);
-          continue;
-          if (paramMotionEvent != null) {
-            paramView.setAlpha(paramMotionEvent.a());
-          }
-          while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 800L)
-          {
-            return true;
-            paramView.setAlpha(1.0F);
-          }
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800A852", "0X800A852", 0, 0, "" + paramMotionEvent.jdField_a_of_type_Long, "", "", "");
-          paramView = azkf.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-          paramMotionEvent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-          paramMotionEvent.putExtra("url", paramView);
-          this.jdField_a_of_type_AndroidAppActivity.startActivity(paramMotionEvent);
-          continue;
-          if (paramMotionEvent != null) {
-            paramView.setAlpha(paramMotionEvent.a());
-          } else {
-            paramView.setAlpha(1.0F);
-          }
-        }
-      }
+      veg.d("tribe_publish_TribeVideoFileObject", "end composite success but file not exist:%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+      super.notifyResult(new ErrorMessage(940006, String.format("end composite success but file not exist:%s", new Object[] { this.jdField_a_of_type_JavaLangString })));
+      return;
     }
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azcg
  * JD-Core Version:    0.7.0.1
  */

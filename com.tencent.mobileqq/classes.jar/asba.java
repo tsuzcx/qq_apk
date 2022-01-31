@@ -1,258 +1,219 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Paint;
+import android.util.Log;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.List;
 
 public class asba
 {
-  public static int a(long paramLong1, long paramLong2)
+  public int a;
+  private asbc a;
+  public ArrayList<asbc> a;
+  @Deprecated
+  public int b;
+  public ArrayList<asbe> b;
+  private int c;
+  private int d;
+  
+  public asba(int paramInt1, int paramInt2, ArrayList<asbc> paramArrayList)
   {
-    if ((paramLong1 > 0L) && (paramLong2 >= 0L)) {
-      return asbg.a(paramLong1, paramLong2);
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.size();
     }
     return 0;
   }
   
-  public static int a(acle paramacle)
+  public int a(int paramInt)
   {
-    long l1 = paramacle.a();
-    long l2 = paramacle.b();
-    if (l1 == 17L)
+    return b(paramInt);
+  }
+  
+  public List<asbc> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(Paint paramPaint1, Paint paramPaint2, int paramInt)
+  {
+    a(paramPaint1, paramPaint2, paramInt, false, false);
+  }
+  
+  public void a(Paint paramPaint1, Paint paramPaint2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_b_of_type_JavaUtilArrayList.clear();
+    this.c = 0;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      if (paramacle.a()) {
-        return 999;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        asbc localasbc = (asbc)localIterator.next();
+        localasbc.a(paramPaint1, paramPaint2, paramInt, paramBoolean1, paramBoolean2);
+        this.c += localasbc.a();
+        this.jdField_b_of_type_JavaUtilArrayList.addAll(localasbc.jdField_a_of_type_JavaUtilArrayList);
       }
+    }
+  }
+  
+  public void a(asba paramasba)
+  {
+    this.jdField_a_of_type_Int = paramasba.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = paramasba.jdField_b_of_type_Int;
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    for (;;)
+    {
+      Iterator localIterator = paramasba.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        asbc localasbc = (asbc)localIterator.next();
+        this.jdField_a_of_type_JavaUtilArrayList.add(localasbc.a());
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    }
+    this.c = paramasba.b();
+    Log.d("Lyric", "copy -> mType : " + this.jdField_a_of_type_Int);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0);
+  }
+  
+  public int b()
+  {
+    return this.c;
+  }
+  
+  public int b(int paramInt)
+  {
+    if (paramInt < 0)
+    {
+      Log.w("Lyric", "findLineNoByStartTime -> illegal time");
+      return -1;
+    }
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0))
+    {
+      Log.w("Lyric", "findLineNoByStartTime -> lyric is empty");
+      return -1;
+    }
+    if ((this.jdField_a_of_type_Asbc != null) && (this.jdField_a_of_type_Asbc.jdField_a_of_type_Long < paramInt) && (this.jdField_a_of_type_Asbc.jdField_a_of_type_Long + this.jdField_a_of_type_Asbc.b > paramInt)) {
+      return this.d;
+    }
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    int k = localArrayList.size();
+    int j = 0;
+    if (j < k)
+    {
+      asbc localasbc = (asbc)localArrayList.get(j);
+      if (localasbc == null) {}
+      while (localasbc.jdField_a_of_type_Long <= paramInt)
+      {
+        j += 1;
+        break;
+      }
+    }
+    for (paramInt = j - 1;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (paramInt < 0) {
+        i = 0;
+      }
+      if (j == k) {}
+      for (paramInt = k - 1;; paramInt = i)
+      {
+        this.d = paramInt;
+        this.jdField_a_of_type_Asbc = ((asbc)localArrayList.get(paramInt));
+        return paramInt;
+      }
+    }
+  }
+  
+  public int c()
+  {
+    if (a()) {
       return 0;
     }
-    return a(l1, l2);
+    asbc localasbc = (asbc)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    long l = localasbc.jdField_a_of_type_Long;
+    return (int)(localasbc.b + l);
   }
   
-  public static ArrayList<asbc> a(QQAppInterface paramQQAppInterface, String paramString, StringBuilder paramStringBuilder)
+  public int c(int paramInt)
   {
-    Object localObject = Pattern.compile("#(name|icon)_(\\d+)").matcher(paramStringBuilder);
-    ArrayList localArrayList = new ArrayList();
-    asbc localasbc;
     int i;
-    if (((Matcher)localObject).find())
+    if (paramInt < 0)
     {
-      localasbc = new asbc();
-      localasbc.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localasbc.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localasbc.jdField_b_of_type_JavaLangString = ((Matcher)localObject).group(2);
-      if (localasbc.a()) {}
-      for (i = 2;; i = 1)
+      Log.w("Lyric", "findEndLineByStartTime -> illegal time");
+      i = 0;
+      return i;
+    }
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localArrayList == null)
+    {
+      Log.w("Lyric", "findEndLineByStartTime -> sentence data not found");
+      return -1;
+    }
+    int k = localArrayList.size();
+    int j = 0;
+    if (j < k)
+    {
+      asbc localasbc = (asbc)localArrayList.get(j);
+      if (localasbc == null) {}
+      while (paramInt > localasbc.jdField_a_of_type_Long)
       {
-        localasbc.jdField_a_of_type_Int = i;
-        localArrayList.add(localasbc);
+        j += 1;
         break;
       }
     }
-    localObject = Pattern.compile("\\((.+?)\\)\\[([^\\)]+?)\\]").matcher(paramStringBuilder);
-    while (((Matcher)localObject).find())
+    for (paramInt = j - 1;; paramInt = 0)
     {
-      localasbc = new asbc();
-      localasbc.jdField_a_of_type_Int = 3;
-      localasbc.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localasbc.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localasbc.jdField_c_of_type_JavaLangString = ((Matcher)localObject).group(1);
-      localasbc.jdField_d_of_type_JavaLangString = ((Matcher)localObject).group(2);
-      localArrayList.add(localasbc);
-    }
-    localObject = Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramStringBuilder);
-    while (((Matcher)localObject).find())
-    {
-      localasbc = new asbc();
-      localasbc.jdField_a_of_type_Int = 4;
-      localasbc.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localasbc.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localasbc.jdField_d_of_type_JavaLangString = ((Matcher)localObject).group(1);
-      localasbc.jdField_c_of_type_JavaLangString = localasbc.jdField_a_of_type_JavaLangString;
-      localArrayList.add(localasbc);
-    }
-    Collections.sort(localArrayList, new asbb());
-    localObject = localArrayList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      localasbc = (asbc)((Iterator)localObject).next();
-      if (!TextUtils.isEmpty(localasbc.jdField_a_of_type_JavaLangString))
-      {
-        i = paramStringBuilder.indexOf(localasbc.jdField_a_of_type_JavaLangString);
-        int j = localasbc.jdField_a_of_type_JavaLangString.length() + i;
-        if ((i >= 0) && (j <= paramStringBuilder.length()))
-        {
-          switch (localasbc.jdField_a_of_type_Int)
-          {
-          }
-          for (;;)
-          {
-            if (localasbc.jdField_c_of_type_JavaLangString == null) {
-              localasbc.jdField_c_of_type_JavaLangString = localasbc.jdField_a_of_type_JavaLangString;
-            }
-            localasbc.jdField_c_of_type_Int = i;
-            localasbc.jdField_d_of_type_Int = (localasbc.jdField_c_of_type_JavaLangString.length() + i);
-            paramStringBuilder.replace(i, j, localasbc.jdField_c_of_type_JavaLangString);
-            break;
-            localasbc.jdField_c_of_type_JavaLangString = asav.a(paramQQAppInterface, localasbc.jdField_b_of_type_JavaLangString);
-            continue;
-            localasbc.jdField_c_of_type_JavaLangString = asav.a(paramQQAppInterface, paramString, localasbc.jdField_b_of_type_JavaLangString);
-          }
-        }
+      i = paramInt;
+      if (paramInt < 0) {
+        i = 0;
       }
-    }
-    return localArrayList;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, acle paramacle, akcb paramakcb)
-  {
-    int i = 2097153;
-    aclg localaclg = paramacle.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkGrayTipsHelper", 2, "checkAndInsertGrayTips grayInfo:" + localaclg + " onlinePush:" + paramakcb.a);
-    }
-    int j;
-    if ((localaclg != null) && (localaclg.a()))
-    {
-      j = 0;
-      paramakcb = paramacle.jdField_b_of_type_JavaLangString + "_" + paramacle.jdField_a_of_type_Int + "_" + paramakcb.b + "_" + localaclg.jdField_a_of_type_Long;
-      switch (paramacle.jdField_a_of_type_Int)
-      {
-      default: 
-        i = 2097155;
-      }
-    }
-    for (;;)
-    {
-      a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramacle, localaclg.jdField_a_of_type_JavaLangString, -5040, i, j, paramakcb);
-      return;
-      j = a(paramacle);
-      continue;
-      i = 2097154;
-      continue;
-      if ((paramacle.jdField_a_of_type_Aclh == null) || (paramacle.jdField_b_of_type_Aclh == null)) {
+      if (j != k) {
         break;
       }
-      if (paramacle.jdField_a_of_type_Aclh.a() > paramacle.jdField_b_of_type_Aclh.a())
-      {
-        i = 2097154;
-      }
-      else
-      {
-        if (paramacle.jdField_a_of_type_Aclh.a() >= paramacle.jdField_b_of_type_Aclh.a()) {
-          break;
-        }
-        j = a(paramacle);
-      }
+      return k - 1;
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, acle paramacle, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkGrayTipsHelper", 2, "insertGrayTips friendUin:" + paramacle.jdField_b_of_type_JavaLangString + " grayType:" + paramInt1 + " grayID:" + paramInt2 + " subType:" + paramInt3 + " grayTipKey:" + paramString2 + " _grayTipTemplate:" + paramString1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return null;
     }
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    Object localObject = paramString1;
-    if (paramString1.contains("#nick")) {
-      localObject = paramString1.replaceAll("#nick", babh.m(paramQQAppInterface, paramacle.jdField_b_of_type_JavaLangString));
-    }
-    localObject = new StringBuilder((String)localObject);
-    asbr.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramacle, (StringBuilder)localObject);
-    paramString1 = a(paramQQAppInterface, paramacle.jdField_b_of_type_JavaLangString, (StringBuilder)localObject);
-    localObject = ((StringBuilder)localObject).toString();
-    aqax localaqax = new aqax(paramacle.jdField_b_of_type_JavaLangString, paramacle.jdField_b_of_type_JavaLangString, (String)localObject, 0, paramInt1, paramInt2, awao.a());
-    MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-    localMessageForUniteGrayTip.hasRead = 0;
-    localMessageForUniteGrayTip.subType = paramInt3;
-    localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, localaqax);
-    localMessageForUniteGrayTip.tipParam.jdField_d_of_type_JavaLangString = paramString2;
-    if (paramInt3 == 998) {
-      localMessageForUniteGrayTip.caidanAnimUrl = paramacle.a();
-    }
-    for (;;)
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      a(paramQQAppInterface, (String)localObject, localaqax, paramString1);
-      localMessageForUniteGrayTip.saveExtInfoToExtStr("mutualmark_id", asbg.a(paramacle.a(), paramacle.b()));
-      asbr.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramacle, (String)localObject, localaqax, paramString1);
-      aqay.a(paramQQAppInterface, localMessageForUniteGrayTip);
-      asau.a(paramQQAppInterface, localMessageForUniteGrayTip, localMessageForUniteGrayTip.tipParam.jdField_b_of_type_Int);
-      return;
-      if (paramInt3 == 999)
-      {
-        localMessageForUniteGrayTip.caidanAnimUrl = paramacle.b();
-        localMessageForUniteGrayTip.caidanAnimUrlMd5 = paramacle.c();
-      }
+      asbc localasbc = (asbc)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      localStringBuilder.append(i);
+      localStringBuilder.append(":");
+      localStringBuilder.append(localasbc.jdField_a_of_type_Long);
+      localStringBuilder.append(":");
+      localStringBuilder.append(localasbc.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(":");
+      localStringBuilder.append(localasbc.b + localasbc.jdField_a_of_type_Long);
+      localStringBuilder.append("\n");
+      i += 1;
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, aqax paramaqax, ArrayList<asbc> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
-    for (;;)
-    {
-      return;
-      paramQQAppInterface = paramArrayList.iterator();
-      while (paramQQAppInterface.hasNext())
-      {
-        paramString = (asbc)paramQQAppInterface.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("MutualMarkGrayTipsHelper", 2, "handleHighlightInfo item=" + paramString);
-        }
-        switch (paramString.jdField_a_of_type_Int)
-        {
-        default: 
-          break;
-        case 1: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putInt("key_action", 11);
-            paramArrayList.putString("key_action_DATA", paramString.jdField_c_of_type_JavaLangString);
-            paramaqax.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
-        case 2: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putString("image_resource", paramString.jdField_c_of_type_JavaLangString);
-            paramaqax.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
-        case 3: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putInt("key_action", 1);
-            paramArrayList.putString("key_action_DATA", paramString.jdField_d_of_type_JavaLangString);
-            paramaqax.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
-        case 4: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putString("image_resource", paramString.jdField_c_of_type_JavaLangString);
-            paramaqax.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
-        }
-      }
-    }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     asba
  * JD-Core Version:    0.7.0.1
  */

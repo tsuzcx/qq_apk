@@ -36,7 +36,7 @@ public class MiniAppGameDebugSettingFragment
   
   public int getContentLayoutId()
   {
-    return 2131496371;
+    return 2131561970;
   }
   
   public void onAttach(Activity paramActivity)
@@ -48,10 +48,10 @@ public class MiniAppGameDebugSettingFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    paramBundle = (FormSwitchItem)paramView.findViewById(2131304649);
+    paramBundle = (FormSwitchItem)paramView.findViewById(2131370318);
     paramBundle.setChecked(this.sharedPreferences.getBoolean("pref_key_use_system_webview", false));
     paramBundle.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.1(this));
-    paramView = (FormSwitchItem)paramView.findViewById(2131304648);
+    paramView = (FormSwitchItem)paramView.findViewById(2131370317);
     paramView.setChecked(this.sharedPreferences.getBoolean("pref_key_use_old_desktop", false));
     paramView.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.2(this));
   }

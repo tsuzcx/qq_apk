@@ -1,29 +1,21 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
-import com.tencent.mobileqq.widget.AutoFitTextView;
+import java.util.List;
 
-public class oiu
-  implements bbgi
+class oiu
+  extends ojq
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
-  AutoFitTextView jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView;
-  ImageView b;
-  
-  public oiu(ois paramois) {}
-  
-  public int a()
+  oiu(oio paramoio, boolean paramBoolean1, List paramList, boolean paramBoolean2)
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth();
+    super(paramoio, null);
+  }
+  
+  void a(ojt paramojt)
+  {
+    paramojt.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oiu
  * JD-Core Version:    0.7.0.1
  */

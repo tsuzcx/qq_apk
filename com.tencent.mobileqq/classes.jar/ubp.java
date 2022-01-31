@@ -1,25 +1,27 @@
 import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-class ubp
-  extends SimpleObserver<Void>
+public class ubp
+  extends ubv<StoryVideoItem>
 {
-  ubp(ubn paramubn, ubr paramubr) {}
-  
-  public void a(Void paramVoid)
+  public ubp(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    super.onNext(paramVoid);
-    urk.b("QQStoryTakeVideoHelper", "generate video manifest success.");
-    this.jdField_a_of_type_Ubn.a = 2;
-    this.jdField_a_of_type_Ubr.a();
+    super(paramVideoViewVideoHolder, null);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
   }
   
   public void onError(@NonNull Error paramError)
   {
     super.onError(paramError);
-    urk.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
-    this.jdField_a_of_type_Ubn.a = -1;
-    this.jdField_a_of_type_Ubr.b();
+    veg.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 

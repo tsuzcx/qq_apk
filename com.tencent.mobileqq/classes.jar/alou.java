@@ -1,12 +1,11 @@
 public abstract interface alou
+  extends alow
 {
-  public abstract int a(int paramInt1, String paramString, int paramInt2, alor paramalor);
-  
-  public abstract void a(int paramInt);
+  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alou
  * JD-Core Version:    0.7.0.1
  */

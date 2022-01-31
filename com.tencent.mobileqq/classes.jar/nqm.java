@@ -1,34 +1,48 @@
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 
-class nqm
-  implements URLDrawable.URLDrawableListener
+public class nqm
+  implements TouchWebView.OnScrollChangedListener
 {
-  nqm(nqi paramnqi) {}
+  public nqm(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    QLog.e("KandianAdPandent", 2, "urlDrawable is onLoadCanceled ");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("KandianAdPandent", 2, "urlDrawable is fialed ");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    QLog.e("KandianAdPandent", 2, "urlDrawable is onLoadProgressed ");
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
-    if ((nqi.a(this.a).getCurrDrawable() instanceof ApngDrawable)) {
-      ((ApngDrawable)nqi.a(this.a).getCurrDrawable()).setOnPlayRepeatListener(nqi.a(this.a));
+    paramInt1 = paramInt2 - paramInt4;
+    if (paramInt1 > 0)
+    {
+      if (this.a.jdField_b_of_type_Int < 0) {
+        this.a.jdField_b_of_type_Int = 0;
+      }
+      paramView = this.a;
+      paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
+      if ((this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int) && (this.a.jdField_c_of_type_Boolean))
+      {
+        this.a.jdField_c_of_type_Boolean = false;
+        if (this.a.jdField_a_of_type_AndroidViewView != null)
+        {
+          this.a.a(this.a.jdField_b_of_type_AndroidViewView, 0);
+          this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+          this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
+        }
+      }
     }
+    do
+    {
+      do
+      {
+        return;
+        if (this.a.jdField_b_of_type_Int > 0) {
+          this.a.jdField_b_of_type_Int = 0;
+        }
+        paramView = this.a;
+        paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
+      } while ((-this.a.jdField_b_of_type_Int <= this.a.jdField_c_of_type_Int) || (this.a.jdField_c_of_type_Boolean));
+      this.a.jdField_c_of_type_Boolean = true;
+    } while (this.a.jdField_a_of_type_AndroidViewView == null);
+    this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
 }
 

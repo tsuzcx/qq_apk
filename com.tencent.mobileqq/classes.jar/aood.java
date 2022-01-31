@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
-public abstract class aood
+public class aood
+  implements View.OnClickListener
 {
-  public abstract int a();
+  public aood(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public abstract String a();
-  
-  public abstract HashMap<String, ArrayList<MessageRecord>> a();
-  
-  public abstract void a(int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2);
-  
-  public abstract void a(String paramString, List<MessageRecord> paramList, MessageRecord paramMessageRecord, int paramInt);
-  
-  protected void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap1, HashMap<String, ArrayList<MessageRecord>> paramHashMap2) {}
-  
-  public abstract String b();
+  public void onClick(View paramView)
+  {
+    this.a.setResult(0, new Intent());
+    this.a.finish();
+    this.a.overridePendingTransition(2130771977, 2130771978);
+  }
 }
 
 

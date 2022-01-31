@@ -1,19 +1,23 @@
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher.Event;
+
 public class ssk
+  implements Dispatcher.Event
 {
-  public final long a;
-  public final ssi a;
-  public final long b;
+  public ErrorMessage a = new ErrorMessage();
   
-  public ssk(ssi paramssi, long paramLong1, long paramLong2)
+  public String a()
   {
-    this.jdField_a_of_type_Ssi = paramssi;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
+    return this.a.getErrorMessage();
   }
   
   public String toString()
   {
-    return "Progress{intput=" + this.jdField_a_of_type_Ssi + ", downloadBytes=" + this.jdField_a_of_type_Long + ", totalBytes=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder().append("{\"_class\":\"SimpleBaseEvent\", \"errorInfo\":");
+    if (this.a == null) {}
+    for (String str = "null";; str = "\"" + this.a + "\"") {
+      return str + "}";
+    }
   }
 }
 

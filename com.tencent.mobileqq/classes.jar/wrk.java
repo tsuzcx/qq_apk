@@ -1,24 +1,29 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.videostory.network.request.SubscribePersonalDetailRequest;
 
-class wrk
-  implements Animation.AnimationListener
+public class wrk
+  extends wra
 {
-  wrk(wrj paramwrj) {}
+  private String a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public wrk(String paramString)
   {
-    wrj.a(this.a).setVisibility(4);
+    this.a = paramString;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a() {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(wrg paramwrg)
+  {
+    SubscribePersonalDetailRequest localSubscribePersonalDetailRequest = new SubscribePersonalDetailRequest(this.a, null);
+    paramwrg = new wrl(this, paramwrg);
+    localSubscribePersonalDetailRequest.setEnableCache(true);
+    VSNetworkHelper.a().a(localSubscribePersonalDetailRequest, paramwrg);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wrk
  * JD-Core Version:    0.7.0.1
  */

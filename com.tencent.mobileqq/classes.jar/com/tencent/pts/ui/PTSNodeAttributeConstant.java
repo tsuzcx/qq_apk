@@ -2,6 +2,7 @@ package com.tencent.pts.ui;
 
 public final class PTSNodeAttributeConstant
 {
+  public static final String ATTRIBUTE_ID = "id";
   public static final String EVENT_TYPE_TAP = "bindtap";
   public static final String IMAGE_URL = "src";
   public static final String PTS_CELL_TYPE = "pts:cell-type";

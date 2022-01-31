@@ -1,57 +1,69 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
+import VIP.AIOKeyWordReq;
+import VIP.AIOSendReq;
+import VIP.AIOSendRes;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class awyv
-  implements View.OnClickListener
+public class awyv
+  extends xop
 {
-  awyv(awyu paramawyu) {}
-  
-  public void onClick(View paramView)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if (TextUtils.isEmpty(this.a.W)) {
-      return;
+    if ((akjd.a.equals(paramToServiceMsg.getServiceCmd())) || (akjd.b.equals(paramToServiceMsg.getServiceCmd())))
+    {
+      if (paramFromServiceMsg == null) {
+        return null;
+      }
+      paramToServiceMsg = new UniPacket(true);
+      try
+      {
+        paramToServiceMsg.setEncodeName("utf-8");
+        paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+        paramToServiceMsg = (AIOSendRes)paramToServiceMsg.getByClass("response", new AIOSendRes());
+        return paramToServiceMsg;
+      }
+      catch (RuntimeException paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
+        return null;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        return null;
+      }
+    }
+    return null;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramUniPacket.setServantName("VIP.AIOSendTipsServer.AIOSendTipsObj");
+    if (akjd.a.equals(paramToServiceMsg.getServiceCmd()))
+    {
+      paramUniPacket.setFuncName("CheckPopGrayStips");
+      paramUniPacket.put("request", (AIOSendReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
     }
     for (;;)
     {
-      String str;
-      try
+      return true;
+      if (akjd.b.equals(paramToServiceMsg.getServiceCmd()))
       {
-        str = axsu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.V);
-        if (TextUtils.isEmpty(str))
-        {
-          this.a.a();
-          this.a.a(this.a.W, paramView);
-          awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9B", "0X8005C9B", 0, 1, 0, this.a.W, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.U, this.a.V);
-          return;
-        }
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-        return;
-      }
-      if (new File(str).exists())
-      {
-        if (this.a.jdField_a_of_type_Boolean) {
-          this.a.d();
-        } else {
-          this.a.c();
-        }
-      }
-      else
-      {
-        this.a.a();
-        this.a.a(this.a.W, paramView);
+        paramUniPacket.setFuncName("getUserKeyWordStips");
+        paramUniPacket.put("request", (AIOKeyWordReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
       }
     }
+  }
+  
+  public String[] a()
+  {
+    return new String[] { "AIOSendSvc" };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awyv
  * JD-Core Version:    0.7.0.1
  */

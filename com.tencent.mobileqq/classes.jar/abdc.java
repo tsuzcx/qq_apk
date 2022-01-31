@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.activity.MainFragment;
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
 public class abdc
-  implements bboo
+  implements abcx
 {
-  public abdc(MainFragment paramMainFragment) {}
+  public abdc(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void a()
+  public void a(View paramView)
   {
-    MainFragment.c(this.a);
+    ForwardTroopListFragment.a(this.a, paramView);
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    return ForwardTroopListFragment.a(this.a, paramString, paramInt);
   }
 }
 

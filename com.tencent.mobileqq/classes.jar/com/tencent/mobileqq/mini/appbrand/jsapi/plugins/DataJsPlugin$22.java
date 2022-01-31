@@ -2,25 +2,35 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 class DataJsPlugin$22
   implements MiniAppCmdInterface
 {
-  DataJsPlugin$22(DataJsPlugin paramDataJsPlugin, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
+  DataJsPlugin$22(DataJsPlugin paramDataJsPlugin, JSONObject paramJSONObject, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (paramBoolean)
-    {
-      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, paramJSONObject, this.val$callbackId);
-      return;
+    if (paramBoolean) {
+      try
+      {
+        paramJSONObject = paramJSONObject.optString("extra_json_data");
+        this.val$resultObj.put("extInfo", paramJSONObject);
+        this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, this.val$resultObj, this.val$callbackId);
+        return;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return;
+      }
     }
-    long l = paramJSONObject.optLong("retCode");
-    String str = paramJSONObject.optString("errMsg");
-    QLog.e("[mini] DataJsPlugin", 1, "getTcbTicket fail, retCode: " + l + "; errMsg : " + str);
-    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, paramJSONObject, this.val$callbackId);
+    String str = "getUserGroupInfo failed.";
+    if (paramJSONObject != null) {
+      str = paramJSONObject.optString("errMsg");
+    }
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, paramJSONObject, str, this.val$callbackId);
   }
 }
 

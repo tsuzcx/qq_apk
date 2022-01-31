@@ -27,15 +27,12 @@ public class TritonSurfaceView
     this.mRenderContext = paramRenderContext;
     this.mRenderContext.setFixedSizeListener(this);
     getHolder().addCallback(this);
-    getHolder().setFixedSize((int)(this.mRenderContext.getScreenWidth() / this.mRenderContext.getScreenScale()), (int)(this.mRenderContext.getScreenHeight() / this.mRenderContext.getScreenScale()));
   }
   
   public void onFixedSize(int paramInt1, int paramInt2)
   {
-    if (ThreadUtil.isMainThread())
-    {
+    if (ThreadUtil.isMainThread()) {
       TTLog.i("TritonSurfaceView", "setFixedSize canvasWidth=" + paramInt1 + ", canvasHeight=" + paramInt2);
-      getHolder().setFixedSize(paramInt1, paramInt2);
     }
     while (this.mUIHandler == null) {
       return;

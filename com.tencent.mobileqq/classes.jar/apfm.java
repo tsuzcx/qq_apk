@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-
-public class apfm
-  implements apca
+public abstract interface apfm
 {
-  public apfm(QfileEditBottomBar paramQfileEditBottomBar) {}
-  
-  public void a()
-  {
-    QfileEditBottomBar.a(this.a);
-  }
-  
-  public void b() {}
+  public abstract String b();
 }
 
 

@@ -1,32 +1,44 @@
-import android.app.Activity;
-import android.app.PendingIntent;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 class aplp
-  implements DialogInterface.OnClickListener
+  extends aowe
 {
-  aplp(apln paramapln) {}
+  aplp(aplo paramaplo, apab paramapab) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle)
   {
-    if (this.a.c) {
-      bcad.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "52", "0", false);
+    QLog.i("VideoForDisc<QFile>", 2, "[" + this.jdField_a_of_type_Aplo.a.nSessionId + "],[getOnlinePlay Url]  ID[" + paramLong2 + "] OnDiscDownloadInfo");
+    if (paramLong1 == -100001L) {}
+    while ((paramString3 == null) || (paramString3.length() == 0))
+    {
+      paramLong2 = 9360L;
+      if (paramLong1 == 0L) {
+        paramLong2 = 9048L;
+      }
+      this.jdField_a_of_type_Apab.a((int)paramLong2, BaseApplication.getContext().getResources().getString(2131690922));
+      return;
+      if ((paramLong1 == -25081L) || (paramLong1 == -6101L) || (paramLong1 == -7003L))
+      {
+        this.jdField_a_of_type_Aplo.a(true);
+        this.jdField_a_of_type_Apab.a((int)paramLong1, BaseApplication.getContext().getResources().getString(2131692888));
+        return;
+      }
+      if (!paramBoolean)
+      {
+        this.jdField_a_of_type_Aplo.a(false);
+        this.jdField_a_of_type_Apab.a((int)0L, BaseApplication.getContext().getResources().getString(2131690922));
+        return;
+      }
     }
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_Long), "addToQQFavorites" })));
-    paramDialogInterface.setPackage(this.a.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("pkg_name"));
-    paramDialogInterface = PendingIntent.getActivity(this.a.jdField_a_of_type_AndroidAppActivity, 0, paramDialogInterface, 268435456);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("is_share_flag", true);
-    if (this.a.jdField_a_of_type_Long > 0L) {
-      localIntent.putExtra("activity_finish_run_pendingIntent", paramDialogInterface);
+    paramString1 = "http://" + paramString3 + ":" + String.valueOf(paramInt1) + "/ftn_handler/" + paramString4;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoForDisc<QFile>", 1, paramString1);
     }
-    bfhn.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, -1, true);
-    bfhz.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, 0);
+    this.jdField_a_of_type_Apab.a(paramString1, paramString5);
   }
 }
 

@@ -1,42 +1,50 @@
 package com.tencent.qqmini.sdk.ipc;
 
+import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import bdkr;
-import bdku;
-import bdkz;
-import bdle;
-import bdnw;
+import android.os.Handler;
+import android.os.ResultReceiver;
+import beou;
+import besl;
+import com.tencent.qqmini.sdk.core.MiniAppEnv;
 
 public class AppBrandProxyImpl$5
-  implements Runnable
+  extends ResultReceiver
 {
-  public AppBrandProxyImpl$5(bdkr parambdkr, String paramString, bdkz parambdkz, Bundle paramBundle) {}
-  
-  public void run()
+  public AppBrandProxyImpl$5(beou parambeou, Handler paramHandler, ResultReceiver paramResultReceiver, Activity paramActivity)
   {
-    if (this.this$0.a() == null)
+    super(paramHandler);
+  }
+  
+  protected void onReceiveResult(int paramInt, Bundle paramBundle)
+  {
+    super.onReceiveResult(paramInt, paramBundle);
+    if (paramInt == 1)
     {
-      bdnw.d("minisdk-start_AppBrandProxy", "sendCmd IAppBrandService Connection is Null 1. cmd=" + this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Bdkz != null) {}
+      Intent localIntent = new Intent();
+      localIntent.addFlags(805371904);
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      localIntent.setComponent((ComponentName)paramBundle.getParcelable("Activity"));
+      paramBundle.remove("receiver");
+      paramBundle.putParcelable("receiver", this.jdField_a_of_type_AndroidOsResultReceiver);
+      localIntent.putExtras(paramBundle);
       try
       {
-        this.jdField_a_of_type_Bdkz.a(false, new Bundle());
+        if (this.jdField_a_of_type_AndroidAppActivity != null)
+        {
+          this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+          return;
+        }
+        MiniAppEnv.g().getContext().startActivity(localIntent);
         return;
       }
-      catch (Throwable localThrowable1)
+      catch (Throwable paramBundle)
       {
-        bdnw.d("minisdk-start_AppBrandProxy", "sendCmd exception.", localThrowable1);
-        return;
+        besl.d("minisdk-start_AppBrandProxy", "startMiniApp startActivity exception!", paramBundle);
       }
-    }
-    try
-    {
-      bdkr.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, bdle.a().a(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bdkz);
-      return;
-    }
-    catch (Throwable localThrowable2)
-    {
-      bdnw.d("minisdk-start_AppBrandProxy", "sendCmd exception.", localThrowable2);
     }
   }
 }

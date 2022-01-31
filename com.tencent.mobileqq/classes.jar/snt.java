@@ -1,19 +1,19 @@
-public class snt
-  extends sfo
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class snt
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  snt(snq paramsnq) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     snt
  * JD-Core Version:    0.7.0.1
  */

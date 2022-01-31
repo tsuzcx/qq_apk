@@ -1,51 +1,67 @@
-import android.os.Handler;
-import android.view.MotionEvent;
+import android.graphics.Bitmap;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.1;
+import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.2;
+import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.3;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class auui
-  implements View.OnTouchListener
+  implements AdapterView.OnItemClickListener
 {
-  public auui(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  auui(auuh paramauuh) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "touch action:" + (paramMotionEvent.getAction() & 0xFF) + ", shortVideoShot:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", actionUp:" + this.a.b.get() + ", isOver:" + CameraCaptureButtonLayout.a(this.a));
+    if (this.a.jdField_a_of_type_Bbjc.a().isShowing()) {
+      this.a.jdField_a_of_type_Bbjc.a().dismiss();
     }
-    this.a.a();
-    GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, true, this.a.jdField_a_of_type_AndroidWidgetImageView, CameraCaptureButtonLayout.a(this.a));
-    if (CameraCaptureButtonLayout.a(this.a)) {}
-    do
-    {
-      return false;
-      switch (paramMotionEvent.getAction() & 0xFF)
-      {
-      case 2: 
-      default: 
-        return false;
+    if ((paramLong == 2L) || (paramLong == 3L)) {
+      if (!WXShareHelper.a().a()) {
+        paramInt = 2131720906;
       }
-    } while (CameraCaptureButtonLayout.b(this.a));
-    if ((CameraCaptureButtonLayout.a(this.a) != null) && (!CameraCaptureButtonLayout.a(this.a).a())) {
-      return true;
     }
-    this.a.b();
-    if ((CameraCaptureButtonLayout.a(this.a) == 3) || (CameraCaptureButtonLayout.a(this.a) == 1)) {
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessageDelayed(1, 100L);
+    for (;;)
+    {
+      if (paramInt != -1)
+      {
+        wim.a(1, paramInt);
+        return;
+        if (!WXShareHelper.a().b()) {
+          paramInt = 2131720907;
+        }
+      }
+      else
+      {
+        if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+        {
+          wim.a(1, 2131699282);
+          return;
+        }
+        this.a.jdField_a_of_type_Auuk.a(true);
+        switch ((int)paramLong)
+        {
+        default: 
+          return;
+        case 0: 
+          ThreadManager.postImmediately(new ShareHelper.1.1(this), null, true);
+          return;
+        case 1: 
+          ThreadManager.postImmediately(new ShareHelper.1.2(this), null, true);
+          return;
+        }
+        ThreadManager.postImmediately(new ShareHelper.1.3(this, paramLong), null, true);
+        return;
+      }
+      paramInt = -1;
     }
-    CameraCaptureButtonLayout.a(this.a, true);
-    return true;
-    CameraCaptureButtonLayout.b(this.a);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auui
  * JD-Core Version:    0.7.0.1
  */

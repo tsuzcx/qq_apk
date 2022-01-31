@@ -1,67 +1,19 @@
-import android.annotation.TargetApi;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import mqq.app.QQPermissionCallback;
 
 public class aanq
-  implements agzw
+  implements QQPermissionCallback
 {
-  public aanq(Conversation paramConversation) {}
+  public aanq(BaseChatPie paramBaseChatPie) {}
   
-  public void a(int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.a.jdField_a_of_type_Ahai != null) {
-      this.a.jdField_a_of_type_Ahai.e();
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.v();
-    }
-    if (this.a.jdField_a_of_type_Svc != null) {
-      this.a.jdField_a_of_type_Svc.f();
-    }
+    bbcv.b(this.a.a());
   }
   
-  @TargetApi(11)
-  public void a(int paramInt, float paramFloat) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.jdField_a_of_type_Atsk.i();
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        alij localalij = (alij)localIterator.next();
-        if (localalij != null) {
-          localalij.l();
-        }
-      }
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.H();
-    }
-    if (this.a.jdField_a_of_type_Svc != null) {
-      this.a.jdField_a_of_type_Svc.g();
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    Conversation.h(this.a);
-    this.a.jdField_a_of_type_Atsk.j();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.G();
-    }
-    if (this.a.jdField_a_of_type_Svc != null) {
-      this.a.jdField_a_of_type_Svc.k();
-    }
-    if (this.a.jdField_a_of_type_Ahek != null) {
-      this.a.jdField_a_of_type_Ahek.f();
-    }
+    this.a.aO();
   }
 }
 

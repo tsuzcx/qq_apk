@@ -1,23 +1,28 @@
-public class vli
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+
+class vli
+  extends AnimatorListenerAdapter
 {
-  public static String a(String paramString, int paramInt)
+  vli(vlf paramvlf) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramString.getBytes().length <= paramInt) {
-      return paramString;
-    }
-    int k = paramString.length();
-    int j = 0;
-    for (int i = 0;; i = j) {
-      if (j < k)
-      {
-        j += Character.charCount(paramString.codePointAt(j));
-        if (paramString.substring(0, j).getBytes().length <= paramInt) {}
-      }
-      else
-      {
-        return paramString.substring(0, i);
-      }
-    }
+    veg.b("TextLayer", "scaleAnimator cancel!");
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    veg.b("TextLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.a.g();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    veg.b("TextLayer", "scaleAnimator start!");
+    this.a.c = true;
   }
 }
 

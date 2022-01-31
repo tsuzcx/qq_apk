@@ -1,6 +1,10 @@
+import android.graphics.Bitmap;
+
 public abstract interface adda
 {
-  public abstract String a(int paramInt1, int paramInt2, int paramInt3);
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString, long paramLong, Bitmap paramBitmap);
 }
 
 

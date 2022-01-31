@@ -1,348 +1,689 @@
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import android.util.SparseArray;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.QQLSUnlockActivity;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNoticeData;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.NearbyProcessMonitor.1;
-import com.tencent.mobileqq.nearby.NearbyReceiver;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.managers.PushNoticeManager.1;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AccountNotMatchException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.manager.Manager;
+import tencent.im.oidb.cmd0x935.FriendRecommendPushExtData.LockScreenPushExtData;
+import tencent.im.pushsvr.pushsvrExt.ExtData;
+import tencent.im.s2c.msgtype0x210.submsgtype0x101.SubMsgType0x27.ClientReport;
+import tencent.im.s2c.msgtype0x210.submsgtype0x101.SubMsgType0x27.MsgBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0x101.SubMsgType0x27.PushPlatform;
 
 public class aseo
+  implements Handler.Callback, Manager
 {
-  public static int a;
-  static aqeb[] jdField_a_of_type_ArrayOfAqeb = new aqeb[3];
-  static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "nearby_leba", "nearby_msgbox", "nearby_guide" };
+  private long jdField_a_of_type_Long;
+  final SparseArray<Integer> jdField_a_of_type_AndroidUtilSparseArray;
+  private bfnk jdField_a_of_type_Bfnk = new bfnk(ThreadManagerV2.getSubThreadLooper(), this);
+  private RecentItemNoticeData jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MessageForText jdField_a_of_type_ComTencentMobileqqDataMessageForText;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private short jdField_a_of_type_Short;
+  private long b;
   
-  public static void a()
+  public aseo(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      asfl.a("preloadNearbyProcess", new Object[0]);
-    }
-    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), NearbyReceiver.class);
-    localIntent.putExtra("nearby_preload_from", 1);
-    BaseApplicationImpl.getContext().sendBroadcast(localIntent);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  public static void a(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if ((paramInt >= 0) && (paramInt < 3)) {
-      try
-      {
-        if (jdField_a_of_type_ArrayOfAqeb[paramInt] == null) {
-          jdField_a_of_type_ArrayOfAqeb[paramInt] = new aqeb(jdField_a_of_type_ArrayOfJavaLangString[paramInt], "com.tencent.mobileqq:tool");
-        }
-        for (;;)
-        {
-          jdField_a_of_type_ArrayOfAqeb[paramInt].a();
-          return;
-          jdField_a_of_type_ArrayOfAqeb[paramInt].d();
-        }
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        if (QLog.isDevelopLevel()) {
-          asfl.a("NearbyProcessMonitor", "preloadHitSession", new Object[] { localThrowable.toString() });
-        }
-      }
-    }
+    axqr localaxqr = new axqr();
+    localaxqr.e = paramString4;
+    localaxqr.d = paramString5;
+    localaxqr.f = paramString1;
+    localaxqr.i = paramString2;
+    axqq.a(paramString3, localaxqr);
+    axqq.a(paramQQAppInterface, localaxqr);
   }
   
-  public static void a(String paramString)
+  private boolean a(SubMsgType0x27.PushPlatform paramPushPlatform, Bundle paramBundle, int paramInt)
   {
-    Object localObject5 = null;
-    if (QLog.isColorLevel()) {
-      asfl.a("NearbyProcessMonitor", new Object[] { "dataUpgrade" });
+    byte[] arrayOfByte;
+    switch (paramInt)
+    {
+    default: 
+      return true;
+    case 1041: 
+      arrayOfByte = a(paramPushPlatform);
+      paramPushPlatform = new pushsvrExt.ExtData();
+      if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
+        break;
+      }
     }
-    if (((Boolean)asfc.a(paramString, "nearby_sp_upgrade_flag", Boolean.valueOf(false))).booleanValue()) {}
     for (;;)
     {
-      return;
       try
       {
-        localObject1 = BaseApplicationImpl.getApplication().getAppRuntime(paramString);
-      }
-      catch (AccountNotMatchException localException1)
-      {
-        try
+        paramPushPlatform.mergeFrom(arrayOfByte);
+        if (paramPushPlatform.uint64_to_uin.has())
         {
-          Object localObject1;
-          if ((localObject1 instanceof QQAppInterface))
+          l = paramPushPlatform.uint64_to_uin.get();
+          if ((l <= 0L) || (!paramPushPlatform.str_remark.has())) {
+            break label565;
+          }
+          paramBundle.putString("uinname", paramPushPlatform.str_remark.get().toStringUtf8());
+          paramBundle.putString("param_fromuin", String.valueOf(l));
+          paramBundle.putString("param_push_fromuin", String.valueOf(l));
+          paramBundle.putInt("param_push_uinType", paramInt);
+          paramBundle.putString("param_push_fromuin", String.valueOf(l));
+          bool1 = true;
+          bool2 = bool1;
+          if (QLog.isColorLevel())
           {
-            Object localObject2 = (QQAppInterface)localObject1;
-            Object localObject4 = localObject1;
-            localObject1 = localObject2;
-            while (localObject1 != null)
+            if (!paramPushPlatform.str_remark.has()) {
+              continue;
+            }
+            paramPushPlatform = paramPushPlatform.str_remark.get().toStringUtf8();
+            QLog.i("PushNoticeManager", 2, String.format("handleExtData uin=%d nick=%s", new Object[] { Long.valueOf(l), paramPushPlatform }));
+            bool2 = bool1;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("PushNoticeManager", 2, String.format("handleExtData uinType=%d valid=%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool2) }));
+          }
+          return bool2;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        continue;
+        long l = 0L;
+        continue;
+        paramPushPlatform = "";
+        continue;
+      }
+      Object localObject = (afsa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(295);
+      if (localObject != null)
+      {
+        bool2 = ((afsa)localObject).b();
+        bool1 = bool2;
+        if (bool2)
+        {
+          bool1 = bool2;
+          if (QLog.isColorLevel()) {
+            QLog.i("PushNoticeManager", 2, "getSPSwitchState user closed");
+          }
+        }
+      }
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        if (!bool1)
+        {
+          paramPushPlatform = a(paramPushPlatform);
+          localObject = new FriendRecommendPushExtData.LockScreenPushExtData();
+          if ((paramPushPlatform != null) && (paramPushPlatform.length > 0)) {
+            try
             {
-              if (!asfc.a(paramString, "self_gender"))
+              ((FriendRecommendPushExtData.LockScreenPushExtData)localObject).mergeFrom(paramPushPlatform);
+              if (((FriendRecommendPushExtData.LockScreenPushExtData)localObject).rpt_msg_persons.has())
               {
-                localObject2 = ((ajjj)((QQAppInterface)localObject4).getManager(51)).b(paramString);
-                if (localObject2 != null)
-                {
-                  localObject4 = (ascz)((QQAppInterface)localObject1).getManager(106);
-                  if (QLog.isColorLevel()) {
-                    asfl.a("NearbyProcessMonitor", new Object[] { "gender", Short.valueOf(((Card)localObject2).shGender) });
-                  }
-                  if (localObject4 != null) {
-                    ((ascz)localObject4).b(((Card)localObject2).shGender);
-                  }
+                paramPushPlatform = ((FriendRecommendPushExtData.LockScreenPushExtData)localObject).rpt_msg_persons.get();
+                if (!((FriendRecommendPushExtData.LockScreenPushExtData)localObject).uint32_push_timestamp.has()) {
+                  break label524;
                 }
-              }
-              if (!asfc.a(paramString, "hotchat_tab_switch")) {}
-              try
-              {
-                i = ((QQAppInterface)localObject1).getPreferences().getInt("hotchat_tab_switch", 0);
-                if (QLog.isColorLevel())
-                {
-                  if (i == 0)
-                  {
-                    bool = true;
-                    asfl.a("NearbyProcessMonitor", new Object[] { "hotchat_tab_swtich", Boolean.valueOf(bool) });
-                  }
+                i = ((FriendRecommendPushExtData.LockScreenPushExtData)localObject).uint32_push_timestamp.get();
+                localObject = MayKnowRecommend.covServerDataToLocal(paramPushPlatform, i);
+                if (((ArrayList)localObject).size() <= 0) {
+                  break label547;
                 }
-                else
-                {
-                  if (i != 0) {
-                    break label644;
-                  }
-                  bool = true;
-                  asfc.a(paramString, "hotchat_tab_switch", Boolean.valueOf(bool));
-                  if (asfc.a(paramString, "supportHotChatDemo")) {}
+                paramBundle.putSerializable("may_know_recmmds", (Serializable)localObject);
+                paramBundle.putInt("param_push_uinType", paramInt);
+                bool1 = true;
+                label446:
+                bool2 = bool1;
+                if (!QLog.isColorLevel()) {
+                  break label544;
                 }
-              }
-              catch (Exception localException1)
-              {
-                try
+                paramPushPlatform = new StringBuilder("handleExtData pushfrds:");
+                paramBundle = ((ArrayList)localObject).iterator();
+                while (paramBundle.hasNext())
                 {
-                  for (;;)
-                  {
-                    i = ((QQAppInterface)localObject1).getPreferences().getInt("supportHotChatDemo", 0);
-                    if (QLog.isColorLevel())
-                    {
-                      if (i != 1) {
-                        break label661;
-                      }
-                      bool = true;
-                      asfl.a("NearbyProcessMonitor", new Object[] { "hotchat_demo_switch", Boolean.valueOf(bool) });
-                    }
-                    if (i != 1) {
-                      break label666;
-                    }
-                    bool = true;
-                    asfc.a(paramString, "supportHotChatDemo", Boolean.valueOf(bool));
-                    if (!asfc.a(paramString, "ShowFreshNews"))
-                    {
-                      bool = BaseApplicationImpl.getApplication().getSharedPreferences("FRESHNEWS_SP", 0).getBoolean(paramString + "ShowFreshNews", true);
-                      if (QLog.isColorLevel()) {
-                        asfl.a("NearbyProcessMonitor", new Object[] { "freshnews_tab_switch", Boolean.valueOf(bool) });
-                      }
-                      asfc.a(paramString, "ShowFreshNews", Boolean.valueOf(bool));
-                    }
-                    if (!asfc.a(paramString, "nearby_enter_time"))
-                    {
-                      long l = BaseApplicationImpl.getApplication().getSharedPreferences("sp_nearbyrecommender", 0).getLong(paramString + "_key_enter_nearby_time", 0L);
-                      if (QLog.isColorLevel()) {
-                        asfl.a("NearbyProcessMonitor", new Object[] { "entry_time", Long.valueOf(l) });
-                      }
-                      asfc.a(paramString, "nearby_enter_time", Long.valueOf(l));
-                    }
-                    if (!asfc.a(paramString, "self_god_flag"))
-                    {
-                      bool = ((QQAppInterface)localObject1).getApp().getSharedPreferences("dating_pref" + paramString, 0).getBoolean("toplist_self_is_god", false);
-                      if (QLog.isColorLevel()) {
-                        asfl.a("NearbyProcessMonitor", new Object[] { "god", Boolean.valueOf(bool) });
-                      }
-                      asfc.a(paramString, "self_god_flag", Boolean.valueOf(bool));
-                    }
-                    if (!asfc.a(paramString, "nearby_people_disclaimer_ok_5.8.0")) {
-                      asfc.a(paramString, "nearby_people_disclaimer_ok_5.8.0", Boolean.valueOf(((QQAppInterface)localObject1).getPreferences().getBoolean("nearby_people_disclaimer_ok_5.8.0", false)));
-                    }
-                    asfc.a(paramString, "nearby_sp_upgrade_flag", Boolean.valueOf(true));
-                    return;
-                    localAccountNotMatchException1 = localAccountNotMatchException1;
-                    localObject1 = null;
-                    localAccountNotMatchException1.printStackTrace();
-                    localObject4 = localObject1;
-                    localObject1 = localObject5;
-                    break;
-                    localException1 = localException1;
-                    i = 0;
-                    continue;
-                    bool = false;
-                  }
-                  label644:
-                  bool = false;
-                }
-                catch (Exception localException2)
-                {
-                  for (;;)
-                  {
-                    localException2.printStackTrace();
-                    int i = 0;
-                    continue;
-                    label661:
-                    boolean bool = false;
-                    continue;
-                    label666:
-                    bool = false;
-                  }
+                  localObject = (MayKnowRecommend)paramBundle.next();
+                  paramPushPlatform.append(" ").append(((MayKnowRecommend)localObject).uin);
                 }
               }
             }
+            catch (Exception paramPushPlatform)
+            {
+              for (;;)
+              {
+                paramPushPlatform.printStackTrace();
+                continue;
+                paramPushPlatform = null;
+                continue;
+                label524:
+                int i = 0;
+              }
+              QLog.i("PushNoticeManager", 2, paramPushPlatform.toString());
+              bool2 = bool1;
+            }
           }
         }
-        catch (AccountNotMatchException localAccountNotMatchException2)
+        for (;;)
         {
-          for (;;)
-          {
-            continue;
-            Object localObject3 = null;
-          }
+          label544:
+          break;
+          label547:
+          bool1 = false;
+          break label446;
+          bool2 = false;
+        }
+      }
+      label565:
+      bool1 = false;
+      continue;
+      boolean bool2 = false;
+    }
+  }
+  
+  private byte[] a(SubMsgType0x27.PushPlatform paramPushPlatform)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    try
+    {
+      if (paramPushPlatform.bytes_ext_data.has()) {
+        localObject1 = paramPushPlatform.bytes_ext_data.get().toByteArray();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("PushNoticeManager", 2, String.format("getExtBytes extBytes=%s", new Object[] { Arrays.toString((byte[])localObject1) }));
+      }
+      return localObject1;
+    }
+    catch (Exception paramPushPlatform)
+    {
+      for (;;)
+      {
+        localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("PushNoticeManager", 2, paramPushPlatform.getMessage(), paramPushPlatform);
+          localObject1 = localObject2;
         }
       }
     }
   }
   
-  public static void a(String paramString, int paramInt)
+  private void b(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      asfl.a("startNearbyProcess", new Object[] { Integer.valueOf(paramInt) });
+    if (paramIntent.getBooleanExtra("push_notice_unlock", false)) {
+      paramContext.startActivity(new Intent(paramContext, QQLSUnlockActivity.class));
     }
-    a(paramInt);
-    if (aqeb.a("com.tencent.mobileqq:tool")) {
-      if (QLog.isColorLevel()) {
-        asfl.a("NearbyProcess is exist", new Object[0]);
+  }
+  
+  public RecentBaseData a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData;
+  }
+  
+  public MessageForText a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData == null) {
+      return null;
+    }
+    RecentItemNoticeData localRecentItemNoticeData = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText = ((MessageForText)axaq.a(-1000));
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msgtype = -1000;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.type;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.isread = false;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.senderuin = (this.jdField_a_of_type_Long + "");
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.frienduin = (this.jdField_a_of_type_Long + "");
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = localRecentItemNoticeData.wording;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = localRecentItemNoticeData.time;
+    }
+    if (localRecentItemNoticeData.type == 1035) {}
+    for (String str = localRecentItemNoticeData.mTitleName;; str = localRecentItemNoticeData.wording)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg.equals(str))) {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = str;
       }
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time != localRecentItemNoticeData.time) {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = localRecentItemNoticeData.time;
+      }
+      return this.jdField_a_of_type_ComTencentMobileqqDataMessageForText;
     }
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PushNoticeManager", 2, "nothing to show");
+      }
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData == null)
+    {
+      QLog.w("PushNoticeManager", 1, "recent data is null");
+      return;
+    }
+    this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1, 30000L);
+  }
+  
+  public void a(long paramLong, String arg3, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, Bundle paramBundle)
+  {
+    if (!QQNotificationManager.getInstance().areNotificationsEnabled(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
+      QLog.i("PushNoticeManager", 1, "notifications are disabled");
+    }
+    Intent localIntent;
     do
     {
       do
       {
-        do
-        {
-          return;
-          if ((paramInt < 0) || (paramInt >= 3)) {
-            break label140;
-          }
-          if (!"1".equals(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.disable_preload_nearby_process.name(), "0"))) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        asfl.a("dpc disable preload nearby process", new Object[0]);
         return;
-      } while (!asfc.e(paramString));
-      if (jdField_a_of_type_Int <= 10) {
+        if (SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), null, "qqsetting_show_push_message", true)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("PushNoticeManager", 2, "show push notice switch off");
+      return;
+      if (FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
+      {
+        QLog.i("PushNoticeManager", 1, "do not disturb");
+        return;
+      }
+      localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SplashActivity.class);
+      localIntent.putExtra("fragment_id", 1);
+      localIntent.putExtra("main_tab_id", 4);
+      localIntent.setFlags(603979776);
+      localIntent.putExtra("forward", paramInt1);
+      paramInt1 = (Integer.valueOf(paramString4).intValue() - 1000) % 30;
+      if (paramInt1 >= 0) {}
+      for (;;)
+      {
+        paramInt1 += 482;
+        localIntent.putExtra("url", paramString2);
+        localIntent.putExtra("from", "push_notice");
+        localIntent.putExtra("uintype", paramInt2);
+        localIntent.putExtra("param_fromuin", String.valueOf(paramLong));
+        localIntent.putExtra("param_uinType", paramInt2);
+        localIntent.putExtra("param_notifyid", paramInt1);
+        localIntent.putExtra("push_notice_tag", "push_notification_tag");
+        localIntent.putExtra("param_push_notifyid", paramInt1);
+        localIntent.putExtra("push_notice_service_id", paramString4);
+        localIntent.putExtra("push_notice_content_id", paramString5);
+        if (paramBundle != null) {
+          localIntent.putExtras(paramBundle);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNoticeManager", 2, new Object[] { "onReceiveNotice notifyid" + paramInt1 + "notifyUI url:", paramString2 });
+        }
+        paramString2 = BaseApplicationImpl.getContext();
+        boolean bool = bbio.a(paramString2);
+        if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Stop) || (bool))
+        {
+          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData != null) {
+            this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.a(localIntent);
+          }
+          paramString4 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "CMD_SHOW_NOTIFIYCATION");
+          paramString4.extraData.putStringArray("cmds", new String[] { ???, paramString3, ??? });
+          paramString4.extraData.putParcelable("intent", localIntent);
+          paramString4.extraData.putParcelable("bitmap", null);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService(paramString4);
+          synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+          {
+            this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt1, Integer.valueOf(paramInt2));
+            if (bool)
+            {
+              ??? = (aseq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(72);
+              if (SettingCloneUtil.readValue(paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString2.getString(2131694019), "qqsetting_lock_screen_whenexit_key", true))
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("PushNoticeManager", 2, "push notice start lsActivity from appinterface ");
+                }
+                ???.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong + "", paramInt2, false, paramInt1);
+              }
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyObservers(a());
+            }
+            avdf.a(paramInt2, 1);
+            return;
+            paramInt1 = 0;
+          }
+        }
+      }
+      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet() <= 3) {
         break;
       }
     } while (!QLog.isColorLevel());
-    asfl.a("cation: preload  to much times, ", new Object[] { Integer.valueOf(jdField_a_of_type_Int) });
+    QLog.i("PushNoticeManager", 2, "delay push notice reach the max retry");
     return;
-    label140:
-    ThreadManager.post(new NearbyProcessMonitor.1(paramString), 10, null, false);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.a(localIntent);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
   
-  public static void b(int paramInt)
+  public void a(Context paramContext, Intent paramIntent)
   {
-    if ((paramInt >= 0) && (paramInt < 3)) {}
-    try
+    int i = paramIntent.getIntExtra("forward", -1);
+    int j = paramIntent.getIntExtra("param_push_uinType", -1);
+    int k = paramIntent.getIntExtra("param_push_notifyid", -1);
+    String str1 = paramIntent.getStringExtra("param_push_fromuin");
+    a(null, j);
+    Intent localIntent;
+    switch (i)
     {
-      if (jdField_a_of_type_ArrayOfAqeb[paramInt] != null) {
-        jdField_a_of_type_ArrayOfAqeb[paramInt].b();
+    default: 
+      i = j;
+    case 3: 
+      for (;;)
+      {
+        ThreadManager.post(new PushNoticeManager.1(this, i), 5, null, true);
+        return;
+        str1 = paramIntent.getStringExtra("url");
+        localIntent = new Intent(paramContext, QQBrowserActivity.class);
+        i = paramIntent.getIntExtra("uintype", -1);
+        localIntent.putExtra("uintype", i);
+        String str2 = paramIntent.getStringExtra("push_notice_service_id");
+        String str3 = paramIntent.getStringExtra("push_notice_content_id");
+        a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2, str3, str1, "0X8009241", "点击业务Push");
+        localIntent.putExtra("push_notice_service_id", str2);
+        localIntent.putExtra("push_notice_content_id", str3);
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNoticeManager", 2, "remove push notice");
+        }
+        localIntent.putExtra("url", str1);
+        paramContext.startActivity(localIntent);
+        b(paramContext, paramIntent);
+        paramIntent.removeExtra("forward");
+      }
+    }
+    if (j == 1041)
+    {
+      localIntent = actn.a(new Intent(paramContext, SplashActivity.class), null);
+      localIntent.putExtra("uin", str1);
+      localIntent.putExtra("uintype", 0);
+      localIntent.putExtra("uinname", paramIntent.getStringExtra("uinname"));
+      localIntent.putExtra("param_notifyid", k);
+      localIntent.putExtra("enterchatwin", true);
+      paramContext.startActivity(localIntent);
+    }
+    for (;;)
+    {
+      b(paramContext, paramIntent);
+      paramIntent.removeExtra("forward");
+      i = j;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("PushNoticeManager", 2, String.format("forward [uinType,notifyId,uin]=[%d,%d,%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), str1 }));
+      i = j;
+      break;
+      if (j == 1042)
+      {
+        localIntent = new Intent(paramContext, RecommendFriendActivity.class);
+        localIntent.putExtra("EntranceId", 9);
+        localIntent.putExtra("param_notifyid", k);
+        localIntent.putExtra("may_know_recmmds", paramIntent.getSerializableExtra("may_know_recmmds"));
+        paramContext.startActivity(localIntent);
+      }
+    }
+  }
+  
+  public void a(QQNotificationManager paramQQNotificationManager, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PushNoticeManager", 2, "setRead " + paramInt);
+    }
+    this.jdField_a_of_type_Bfnk.removeMessages(1);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData = null;
+    QQNotificationManager localQQNotificationManager = paramQQNotificationManager;
+    if (paramQQNotificationManager == null) {}
+    for (;;)
+    {
+      int i;
+      try
+      {
+        localQQNotificationManager = QQNotificationManager.getInstance();
+        paramQQNotificationManager = this.jdField_a_of_type_AndroidUtilSparseArray;
+        i = 0;
+        try
+        {
+          if (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+          {
+            Integer localInteger1 = Integer.valueOf(this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i));
+            Integer localInteger2 = (Integer)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+            if ((localInteger1 == null) || ((paramInt >= 0) && (localInteger2 != null) && (localInteger2.intValue() != paramInt))) {
+              break label233;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("PushNoticeManager", 2, String.format(Locale.getDefault(), "cancel push_notice [%d, %s]", new Object[] { Integer.valueOf(localInteger1.intValue()), "push_notification_tag" }));
+            }
+            localQQNotificationManager.cancelUseTag("PushNoticeManager_removeNotification", "push_notification_tag", localInteger1.intValue());
+          }
+        }
+        finally {}
+        this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+      }
+      catch (Exception paramQQNotificationManager)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNoticeManager", 2, "setRead", paramQQNotificationManager);
+        }
+        return;
       }
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isDevelopLevel()) {}
-      asfl.a("NearbyProcessMonitor", "reportSessionHit", new Object[] { localThrowable.toString() });
+      label233:
+      i += 1;
     }
   }
   
-  public static void b(String paramString)
+  public void a(SubMsgType0x27.MsgBody paramMsgBody, short paramShort, long paramLong)
   {
-    if (!asfc.a(paramString, "self_school_name")) {
-      for (;;)
+    if ((paramMsgBody == null) || (paramMsgBody.msg_push_platform == null)) {
+      return;
+    }
+    if ((paramShort == this.jdField_a_of_type_Short) && (paramLong == this.b))
+    {
+      QLog.w("PushNoticeManager", 1, "skip duplicated msg: " + paramShort + ", " + paramLong);
+      return;
+    }
+    this.jdField_a_of_type_Short = paramShort;
+    this.b = paramLong;
+    Object localObject4 = paramMsgBody.msg_push_platform;
+    int i = ((SubMsgType0x27.PushPlatform)localObject4).uint32_forward_type.get();
+    if (i == 0) {
+      i = 3;
+    }
+    while (i == 0)
+    {
+      QLog.w("PushNoticeManager", 1, "unknown forward type: " + i);
+      return;
+      if (i == 1) {
+        i = 4;
+      } else {
+        i = 0;
+      }
+    }
+    Object localObject3 = paramMsgBody.msg_client_report;
+    paramLong = ((SubMsgType0x27.PushPlatform)localObject4).uint64_from_uin.get();
+    this.jdField_a_of_type_Long = paramLong;
+    String str = null;
+    if (((SubMsgType0x27.PushPlatform)localObject4).str_desc.has()) {
+      str = ((SubMsgType0x27.PushPlatform)localObject4).str_desc.get();
+    }
+    paramMsgBody = null;
+    if (((SubMsgType0x27.PushPlatform)localObject4).str_target_url.has())
+    {
+      paramMsgBody = ((SubMsgType0x27.PushPlatform)localObject4).str_target_url.get();
+      if (TextUtils.isEmpty(paramMsgBody)) {
+        break label817;
+      }
+    }
+    label809:
+    label817:
+    for (;;)
+    {
+      Object localObject1;
+      Object localObject2;
+      long l;
+      try
+      {
+        paramMsgBody = new String(aswx.a(paramMsgBody), "UTF-8");
+        localObject1 = null;
+        if (((SubMsgType0x27.PushPlatform)localObject4).str_title.has()) {
+          localObject1 = ((SubMsgType0x27.PushPlatform)localObject4).str_title.get();
+        }
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = "";
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("PushNoticeManager", 2, String.format(Locale.getDefault(), "onReceiveNotice [uin: %d wording: %s url: %s from: %s oriUrl:%s", new Object[] { Long.valueOf(paramLong), str, paramMsgBody, localObject2, ((SubMsgType0x27.PushPlatform)localObject4).str_target_url.get() }));
+        }
+        if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramMsgBody))) {
+          break;
+        }
+        j = 1035;
+        if (4 != i) {
+          break label809;
+        }
+        if (TextUtils.equals(paramMsgBody, "newfrd_add")) {
+          j = 1041;
+        }
+        if (TextUtils.equals(paramMsgBody, "newfrd_recommand")) {
+          j = 1042;
+        }
+        avdf.a(j, 0);
+        localObject1 = new Bundle();
+        bool2 = false;
+      }
+      catch (Exception paramMsgBody)
       {
         try
         {
-          Object localObject1 = BaseApplicationImpl.getApplication().getAppRuntime(paramString);
-          if (!(localObject1 instanceof QQAppInterface)) {
-            break label147;
+          bool1 = a((SubMsgType0x27.PushPlatform)localObject4, (Bundle)localObject1, j);
+          if (!bool1) {
+            break;
           }
-          localObject1 = (QQAppInterface)localObject1;
-          localObject2 = ((ajjj)((QQAppInterface)localObject1).getManager(51)).c(paramString);
-          if (localObject2 != null)
+          if (j == 1041)
           {
-            localObject1 = ((Card)localObject2).strSchool;
-            localObject2 = localObject1;
-            if (localObject1 != null)
-            {
-              asfc.a(paramString, "self_school_name", localObject1);
-              localObject2 = localObject1;
-            }
-            if (!asfl.b()) {
-              break;
-            }
-            asfl.a("NearbyProcessMonitor", new Object[] { "checkSchoolName", localObject2 });
+            paramLong = Long.valueOf(((Bundle)localObject1).getString("param_fromuin")).longValue();
+            this.jdField_a_of_type_Long = paramLong;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("PushNoticeManager", 2, String.format("onReceiveNotice [uinType,uin]=[%d,%d]", new Object[] { Integer.valueOf(j), Long.valueOf(paramLong) }));
+          }
+          this.jdField_a_of_type_Bfnk.removeMessages(1);
+          localObject4 = new axqr();
+          ((axqr)localObject4).e = "0X800923D";
+          ((axqr)localObject4).d = "收到Push协议";
+          ((axqr)localObject4).f = (((SubMsgType0x27.ClientReport)localObject3).uint32_service_id.get() + "");
+          ((axqr)localObject4).i = ((SubMsgType0x27.ClientReport)localObject3).str_content_id.get();
+          axqq.a(paramMsgBody, (axqr)localObject4);
+          axqq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (axqr)localObject4);
+          l = awzw.a();
+          localObject3 = new RecentUser();
+          ((RecentUser)localObject3).uin = (paramLong + "");
+          ((RecentUser)localObject3).msgType = j;
+          ((RecentUser)localObject3).setType(j);
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData == null)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData = new RecentItemNoticeData((RecentUser)localObject3);
+            this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.a(j, paramLong, str, paramMsgBody, (String)localObject2, l);
+            a(paramLong, str, paramMsgBody, (String)localObject2, i, j, ((axqr)localObject4).f, ((axqr)localObject4).i, (Bundle)localObject1);
             return;
+            paramMsgBody = paramMsgBody;
+            QLog.e("PushNoticeManager", 1, paramMsgBody, new Object[0]);
+            paramMsgBody = null;
           }
-          localObject1 = (NearbyPeopleCard)((QQAppInterface)localObject1).getEntityManagerFactory().createEntityManager().a(NearbyPeopleCard.class, "uin=?", new String[] { paramString });
-          if (localObject1 != null)
-          {
-            localObject1 = ((NearbyPeopleCard)localObject1).college;
+        }
+        catch (Exception localException)
+        {
+          boolean bool2;
+          boolean bool1 = bool2;
+          if (!QLog.isColorLevel()) {
             continue;
           }
-          localObject1 = null;
+          QLog.i("PushNoticeManager", 2, localException.getMessage(), localException);
+          bool1 = bool2;
+          continue;
         }
-        catch (Throwable paramString)
-        {
-          paramString.printStackTrace();
-          return;
-        }
-        continue;
-        label147:
-        Object localObject2 = null;
       }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.a(j, paramLong, str, paramMsgBody, (String)localObject2, l)) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.a(j, paramLong, str, paramMsgBody, (String)localObject2, l);
+      a(paramLong, str, paramMsgBody, (String)localObject2, i, j, localException.f, localException.i, (Bundle)localObject1);
+      return;
+      int j = 1035;
     }
   }
   
-  public static void b(String paramString, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    awrn localawrn = awrn.a(BaseApplicationImpl.getContext());
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramMessage.what)
     {
-      localawrn.a(paramString, "actCheckHasUnreadMsg", bool, paramInt, 0L, null, "");
-      return;
+    default: 
+      return false;
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData == null)
+    {
+      QLog.e("PushNoticeManager", 1, "recent data is null");
+      return true;
+    }
+    a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.uin, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.wording, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.url, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.from, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.intent.getIntExtra("forward", -1), 0, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.intent.getStringExtra("push_notice_service_id"), this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.intent.getStringExtra("push_notice_content_id"), null);
+    return true;
   }
   
-  public static void c(int paramInt)
+  public void onDestroy()
   {
-    if ((paramInt >= 0) && (paramInt < 3)) {}
-    try
-    {
-      if (jdField_a_of_type_ArrayOfAqeb[paramInt] != null) {
-        jdField_a_of_type_ArrayOfAqeb[paramInt].d();
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("PushNoticeManager", 2, "onDestroy");
     }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isDevelopLevel()) {}
-      asfl.a("NearbyProcessMonitor", "reportSessionEnd", new Object[] { localThrowable.toString() });
-    }
+    a(null, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aseo
  * JD-Core Version:    0.7.0.1
  */

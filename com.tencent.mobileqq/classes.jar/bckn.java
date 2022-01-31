@@ -1,41 +1,54 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.open.wadl.WadlJsBridgeService;
-import cooperation.wadl.ipc.WadlParams;
+import android.content.Context;
+import android.graphics.PointF;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
+import com.tencent.widget.BubblePopupWindow;
 
-public final class bckn
-  extends Handler
+public class bckn
+  implements View.OnLongClickListener, View.OnTouchListener
 {
-  public bckn(WadlJsBridgeService paramWadlJsBridgeService, Looper paramLooper)
+  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  
+  private bckn(ContextMenuTextView paramContextMenuTextView) {}
+  
+  protected void a(View paramView)
   {
-    super(paramLooper);
+    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
+    paramView.dispatchTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-1);
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean onLongClick(View paramView)
   {
-    String str = (String)paramMessage.obj;
-    bckd.b(WadlJsBridgeService.a(), "The obj field of msg:" + paramMessage.what + "," + paramMessage.obj);
-    switch (paramMessage.what)
+    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-7829368);
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
     {
-    case 2: 
-    case 3: 
-    default: 
-    case 0: 
-    case 4: 
-      for (;;)
-      {
-        this.a.stopSelf(paramMessage.arg1);
-        return;
-        bgsw.a().b(4, str);
-      }
-    case 5: 
-      bgsw.a().a(4, str);
-      return;
+      a(paramView);
+      return false;
     }
-    paramMessage = new WadlParams(str, "");
-    paramMessage.d = 4;
-    bgsw.a().b(paramMessage);
+    bblr localbblr = new bblr();
+    localbblr.a(2131364825, ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView).getString(2131691307), 2130838597);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bbcc.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, (int)this.jdField_a_of_type_AndroidGraphicsPointF.y, localbblr, this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_AndroidViewView$OnClickListener);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new bckm(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView));
+    }
+    a(paramView);
+    return true;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
+    }
+    return false;
   }
 }
 

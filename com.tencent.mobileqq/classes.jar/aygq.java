@@ -1,107 +1,55 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.util.SparseArray;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 
 public class aygq
-  extends beot
+  implements bfoq
 {
-  protected LayoutInflater a;
-  protected boolean a;
+  public aygq(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, aydz paramaydz, SparseArray paramSparseArray, bfol parambfol) {}
   
-  public aygq(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity, Context paramContext, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a == null) {
-      return 0;
+    TimDocSSOMsg.UinRightInfo localUinRightInfo = this.jdField_a_of_type_Aydz.a;
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null) {
+      paramInt = -1;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    TroopBarPOI localTroopBarPOI;
-    int i;
-    if (paramView == null)
+    switch (paramInt)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131496215, null);
-      paramViewGroup = new aygr(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131303410));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131310057));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131303399));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131303395));
-      paramView.setTag(paramViewGroup);
-      localTroopBarPOI = (TroopBarPOI)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.get(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopBarPOI.c);
-      ImageView localImageView = paramViewGroup.jdField_b_of_type_AndroidWidgetImageView;
-      if (!localTroopBarPOI.equals(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.c)) {
-        break label228;
+    default: 
+    case 2131720090: 
+    case 2131720091: 
+      for (;;)
+      {
+        TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.a.notifyDataSetChanged();
+        if (this.jdField_a_of_type_Bfol.isShowing()) {
+          this.jdField_a_of_type_Bfol.dismiss();
+        }
+        return;
+        paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
+        break;
+        localUinRightInfo.uint32_right.set(1);
+        continue;
+        localUinRightInfo.uint32_right.set(2);
       }
-      i = 0;
-      label133:
-      localImageView.setVisibility(i);
-      if (TextUtils.isEmpty(localTroopBarPOI.d)) {
-        break label235;
-      }
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localTroopBarPOI.d);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      label171:
-      if (paramInt != 0) {
-        break label247;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      label183:
-      if (!this.jdField_a_of_type_Boolean) {
-        break label258;
-      }
-      paramView.setBackgroundResource(17170445);
     }
-    for (;;)
+    if ((localUinRightInfo.uint32_right.get() == 1) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.b == 1)) {}
+    for (paramView = this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getString(2131720087);; paramView = this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getString(2131720086))
     {
-      paramView.setContentDescription(localTroopBarPOI.c);
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-      return paramView;
-      paramViewGroup = (aygr)paramView.getTag();
+      bbcv.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getActivity(), 230, ajyc.a(2131714757), paramView, 2131690596, 2131691507, new aygr(this, localUinRightInfo), new aygs(this)).show();
+      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.b != 1) {
+        break;
+      }
+      axqw.b(TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment), "dc00898", "", "", "0x8007CFC", "0x8007CFC", 0, 0, "", "", "", "");
       break;
-      label228:
-      i = 8;
-      break label133;
-      label235:
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      break label171;
-      label247:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      break label183;
-      label258:
-      paramView.setBackgroundResource(2130847195);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aygq
  * JD-Core Version:    0.7.0.1
  */

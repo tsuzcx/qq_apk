@@ -1,17 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
-import bgbz;
-import bgcb;
-import bgjv;
+import bhkl;
+import bhkn;
+import bhsp;
 
 public class QzoneUiJsPlugin$3
   implements Runnable
 {
-  public QzoneUiJsPlugin$3(bgjv parambgjv, String paramString) {}
+  public QzoneUiJsPlugin$3(bhsp parambhsp, String paramString) {}
   
   public void run()
   {
-    bgbz.a().a().f(this.a);
+    bhkl.a().a().f(this.a);
   }
 }
 

@@ -5,14 +5,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bdmw;
+import berg;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public class MiniGamePluginInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<MiniGamePluginInfo> CREATOR = new bdmw();
+  public static final Parcelable.Creator<MiniGamePluginInfo> CREATOR = new berg();
   public final int a;
   public final String a;
   public final String b;

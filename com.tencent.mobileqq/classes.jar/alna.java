@@ -1,45 +1,42 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
 import com.tencent.qphone.base.util.QLog;
 
-class alna
-  extends AnimatorListenerAdapter
+public class alna
+  implements View.OnTouchListener
 {
-  alna(almv paramalmv, alnc paramalnc) {}
+  public alna(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
   
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "animHolder.animView.startPassiveAnimator!");
+      QLog.d("ScanEntryProviderContainerView", 2, String.format("dispatchTouchEvent onTabClickListener", new Object[0]));
     }
-    if ((this.jdField_a_of_type_Alnc != null) && (this.jdField_a_of_type_Alnc.b != null))
+    long l = System.currentTimeMillis();
+    if (l - ScanEntryProviderContainerView.a(this.a) <= 1000L) {
+      QLog.i("ScanEntryProviderContainerView", 1, "avoid user fast click");
+    }
+    do
     {
-      paramAnimator = "";
-      if (this.jdField_a_of_type_Alnc.b.istroop != 0) {
-        break label84;
+      return false;
+      ScanEntryProviderContainerView.a(this.a, l);
+      switch (paramMotionEvent.getAction())
+      {
+      default: 
+        return false;
       }
-      paramAnimator = "1";
-    }
-    for (;;)
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "Bubble", "Passive_dync", paramAnimator, 1, 0, 0, "", String.valueOf(ajrm.a(this.jdField_a_of_type_Alnc.b.vipBubbleID)), "");
-      return;
-      label84:
-      if (this.jdField_a_of_type_Alnc.b.istroop == 1) {
-        paramAnimator = "2";
-      } else if (this.jdField_a_of_type_Alnc.b.istroop == 3000) {
-        paramAnimator = "3";
-      }
-    }
+      paramView = (Integer)paramView.getTag();
+      ScanEntryProviderContainerView.a(this.a).a(paramView.intValue(), new alnb(this, paramView));
+    } while (paramView.intValue() != 2);
+    axqw.b(null, "dc00898", "", "", "0X800A9CE", "0X800A9CE", 0, 0, "", "0", "0", "");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alna
  * JD-Core Version:    0.7.0.1
  */

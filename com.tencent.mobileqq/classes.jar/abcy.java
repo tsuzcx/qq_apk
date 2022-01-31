@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class abcy
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public abcy(MainFragment paramMainFragment) {}
+  public abcy(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.e();
+    paramView = new Intent();
+    paramView.putParcelableArrayListExtra("selected_target_list", new ArrayList(ForwardTroopListFragment.a(this.a).values()));
+    this.a.getActivity().setResult(0, paramView);
+    this.a.getActivity().finish();
   }
 }
 

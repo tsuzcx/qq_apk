@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import ajjy;
-import bbmy;
+import ajyc;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class ReadinjoyNativeArticleAdDownloadView$1$2
@@ -11,7 +11,7 @@ class ReadinjoyNativeArticleAdDownloadView$1$2
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getApplication(), 1, ajjy.a(2131647230), 0).a();
+    bcpw.a(BaseApplicationImpl.getApplication(), 1, ajyc.a(2131713018), 0).a();
   }
 }
 

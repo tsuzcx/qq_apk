@@ -1,0 +1,28 @@
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.minigame.manager.JsApiUpdateManager.2.1;
+
+public final class bevp
+  implements bevb
+{
+  bevp(beue parambeue) {}
+  
+  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong) {}
+  
+  public void onInitGpkgInfo(int paramInt, bevc parambevc, String paramString)
+  {
+    if ((paramInt == 0) && (parambevc != null))
+    {
+      beiu.a().a(parambevc, true);
+      beiw.a(new JsApiUpdateManager.2.1(this), 16, null, true);
+      bevn.b(this.a, true);
+      return;
+    }
+    bevn.b(this.a, false);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     bevp
+ * JD-Core Version:    0.7.0.1
+ */

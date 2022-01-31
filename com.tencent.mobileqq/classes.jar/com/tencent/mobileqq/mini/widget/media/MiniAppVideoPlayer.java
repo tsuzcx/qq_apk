@@ -35,10 +35,10 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import axwd;
-import badq;
-import baip;
-import bajq;
+import aywk;
+import bbev;
+import bbjw;
+import bbkx;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
@@ -118,6 +118,7 @@ public class MiniAppVideoPlayer
   private boolean hasSetUp;
   private boolean hasShowDanmuBtnSet;
   public boolean hide;
+  public boolean hideTimeDesc;
   public int initialTime;
   public boolean isBarrageOpen;
   private boolean isBufferStart;
@@ -417,7 +418,7 @@ public class MiniAppVideoPlayer
     this.mVideoPlayer.setXYaxis(0);
     if (!this.autoplay)
     {
-      if (baip.a(this.poster)) {
+      if (bbjw.a(this.poster)) {
         break label582;
       }
       setPoster();
@@ -470,7 +471,7 @@ public class MiniAppVideoPlayer
       paramContext = new FrameLayout.LayoutParams(DisplayUtil.dip2px(this.mContext, 100.0F), DisplayUtil.dip2px(this.mContext, 100.0F));
       paramContext.gravity = 17;
       this.video_container.addView(this.mVideoGestureLayout, paramContext);
-      if ((this.mCurrPos > 0L) && (badq.h(this.mContext)))
+      if ((this.mCurrPos > 0L) && (bbev.h(this.mContext)))
       {
         if (QLog.isColorLevel()) {
           QLog.d("MiniAppVideoPlayer", 2, "play current pos is: " + this.mCurrPos);
@@ -490,7 +491,7 @@ public class MiniAppVideoPlayer
       }
       paramContext.setXYaxis(i);
       return;
-      if (!baip.a(this.mUrls)) {
+      if (!bbjw.a(this.mUrls)) {
         MediaUtils.getImageForVideo(this.mUrls, new MiniAppVideoPlayer.6(this));
       }
     }
@@ -593,7 +594,7 @@ public class MiniAppVideoPlayer
   {
     ImageView localImageView = this.barrageIv;
     if (this.isBarrageOpen) {}
-    for (int i = 2130846593;; i = 2130846592)
+    for (int i = 2130846781;; i = 2130846780)
     {
       localImageView.setImageResource(i);
       return;
@@ -604,12 +605,12 @@ public class MiniAppVideoPlayer
   {
     if (paramBoolean)
     {
-      this.controlIv.setImageResource(2130846594);
-      this.centerControlIv.setImageResource(2130846594);
+      this.controlIv.setImageResource(2130846782);
+      this.centerControlIv.setImageResource(2130846782);
       return;
     }
-    this.controlIv.setImageResource(2130846596);
-    this.centerControlIv.setImageResource(2130846596);
+    this.controlIv.setImageResource(2130846784);
+    this.centerControlIv.setImageResource(2130846784);
   }
   
   private void resetMuteImage()
@@ -622,7 +623,7 @@ public class MiniAppVideoPlayer
     }
     ImageView localImageView = this.muteIv;
     if (this.mVideoPlayer.getOutputMute()) {}
-    for (int i = 2130840827;; i = 2130840828)
+    for (int i = 2130840892;; i = 2130840893)
     {
       localImageView.setImageResource(i);
       this.muteIv.setVisibility(0);
@@ -642,7 +643,7 @@ public class MiniAppVideoPlayer
   {
     ImageView localImageView = this.windowIv;
     if (this.isFullScreen) {}
-    for (int i = 2130847453;; i = 2130847455)
+    for (int i = 2130847679;; i = 2130847681)
     {
       localImageView.setImageResource(i);
       return;
@@ -659,8 +660,8 @@ public class MiniAppVideoPlayer
   private void setPoster()
   {
     Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = axwd.a;
-    ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = axwd.a;
+    ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = aywk.a;
+    ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = aywk.a;
     try
     {
       if (URLUtil.isNetworkUrl(this.poster)) {}
@@ -706,28 +707,28 @@ public class MiniAppVideoPlayer
     this.hasSetUp = true;
     setTag("MiniAppVideoPlayer");
     this.mContext = paramContext;
-    this.view = LayoutInflater.from(paramContext).inflate(2131493702, null);
-    this.video_container = ((VideoGestureRelativeLayout)this.view.findViewById(2131303390));
+    this.view = LayoutInflater.from(paramContext).inflate(2131559270, null);
+    this.video_container = ((VideoGestureRelativeLayout)this.view.findViewById(2131369057));
     this.video_container.setContentDescription("video_container");
-    this.video_pop_container = ((FrameLayout)this.view.findViewById(2131313225));
-    this.video_img = ((ImageView)this.view.findViewById(2131313168));
-    this.play_status_img = ((ImageView)this.view.findViewById(2131306059));
+    this.video_pop_container = ((FrameLayout)this.view.findViewById(2131379061));
+    this.video_img = ((ImageView)this.view.findViewById(2131379003));
+    this.play_status_img = ((ImageView)this.view.findViewById(2131371756));
     this.play_status_img.setOnClickListener(this);
-    this.playingPopView = this.view.findViewById(2131313220);
-    this.nowTimeTv = ((TextView)this.view.findViewById(2131313222));
-    this.totalTimeTv = ((TextView)this.view.findViewById(2131313223));
-    this.controlIv = ((ImageView)this.view.findViewById(2131313215));
-    this.centerControlIv = ((ImageView)this.view.findViewById(2131313216));
-    this.controlBar = this.view.findViewById(2131313212);
-    this.windowIv = ((ImageView)this.view.findViewById(2131313218));
-    this.playerSeekBar = ((SeekBar)this.view.findViewById(2131313211));
-    this.loadingView = this.view.findViewById(2131313185);
-    this.barrageIv = ((ImageView)this.view.findViewById(2131313214));
-    this.seekTv = ((TextView)this.view.findViewById(2131313221));
-    this.backIv = ((ImageView)this.view.findViewById(2131313213));
-    this.titleTv = ((TextView)this.view.findViewById(2131313224));
-    this.muteIv = ((ImageView)this.view.findViewById(2131313217));
-    this.actionVg = ((FrameLayout)this.view.findViewById(2131313078));
+    this.playingPopView = this.view.findViewById(2131379056);
+    this.nowTimeTv = ((TextView)this.view.findViewById(2131379058));
+    this.totalTimeTv = ((TextView)this.view.findViewById(2131379059));
+    this.controlIv = ((ImageView)this.view.findViewById(2131379051));
+    this.centerControlIv = ((ImageView)this.view.findViewById(2131379052));
+    this.controlBar = this.view.findViewById(2131379048);
+    this.windowIv = ((ImageView)this.view.findViewById(2131379054));
+    this.playerSeekBar = ((SeekBar)this.view.findViewById(2131379047));
+    this.loadingView = this.view.findViewById(2131379020);
+    this.barrageIv = ((ImageView)this.view.findViewById(2131379050));
+    this.seekTv = ((TextView)this.view.findViewById(2131379057));
+    this.backIv = ((ImageView)this.view.findViewById(2131379049));
+    this.titleTv = ((TextView)this.view.findViewById(2131379060));
+    this.muteIv = ((ImageView)this.view.findViewById(2131379053));
+    this.actionVg = ((FrameLayout)this.view.findViewById(2131378902));
     paramContext = this.barrageIv;
     if (this.showDanmuBtn) {}
     for (int i = 0;; i = 4)
@@ -792,7 +793,7 @@ public class MiniAppVideoPlayer
     {
       this.isPause = false;
       return;
-      play();
+      play(this.initialTime * 1000);
     }
   }
   
@@ -1025,7 +1026,7 @@ public class MiniAppVideoPlayer
           this.videoWidth = ((JSONObject)localObject).optInt("width", this.videoWidth);
           this.videoHeight = ((JSONObject)localObject).optInt("height", this.videoHeight);
         }
-        if (baip.a(this.poster)) {
+        if (bbjw.a(this.poster)) {
           this.poster = paramJSONObject.optString("poster", this.poster);
         }
         if (this.mVideoPlayer != null)
@@ -1065,9 +1066,9 @@ public class MiniAppVideoPlayer
           if (this.webviewContainer != null) {
             break label1106;
           }
-          paramJSONObject = new RelativeLayout.LayoutParams(bajq.b(this.videoWidth), bajq.b(this.videoHeight));
-          paramJSONObject.leftMargin = bajq.b(this.videoX);
-          paramJSONObject.topMargin = bajq.b(this.videoY);
+          paramJSONObject = new RelativeLayout.LayoutParams(bbkx.b(this.videoWidth), bbkx.b(this.videoHeight));
+          paramJSONObject.leftMargin = bbkx.b(this.videoX);
+          paramJSONObject.topMargin = bbkx.b(this.videoY);
           ((CoverVideoView)getParent()).setLayoutParams(paramJSONObject);
         }
         return;
@@ -1105,9 +1106,9 @@ public class MiniAppVideoPlayer
         }
       }
       label1106:
-      paramJSONObject = new FrameLayout.LayoutParams(bajq.b(this.videoWidth), bajq.b(this.videoHeight));
-      paramJSONObject.leftMargin = bajq.b(this.videoX);
-      paramJSONObject.topMargin = bajq.b(this.videoY);
+      paramJSONObject = new FrameLayout.LayoutParams(bbkx.b(this.videoWidth), bbkx.b(this.videoHeight));
+      paramJSONObject.leftMargin = bbkx.b(this.videoX);
+      paramJSONObject.topMargin = bbkx.b(this.videoY);
       ((CoverVideoView)getParent()).setLayoutParams(paramJSONObject);
     }
   }
@@ -1147,7 +1148,7 @@ public class MiniAppVideoPlayer
       do
       {
         return;
-        if (paramView.getId() != 2131306059) {
+        if (paramView.getId() != 2131371756) {
           break;
         }
       } while (this.play_status_img.getVisibility() != 0);
@@ -1271,7 +1272,7 @@ public class MiniAppVideoPlayer
     {
       return;
       Log.i("MiniAppVideoPlayer", "play: " + paramLong + " /" + this.mVideoPlayer.getDuration(), new Throwable());
-    } while (baip.a(this.mUrls));
+    } while (bbjw.a(this.mUrls));
     this.isBufferStart = true;
     updateBufferProgress(false);
     avoidLockScreen();
@@ -1354,12 +1355,16 @@ public class MiniAppVideoPlayer
       this.mVideoPlayer.seekTo(0);
       return true;
     }
-    if (paramInt > this.mVideoPlayer.getDuration())
+    long l = this.mVideoPlayer.getDuration();
+    if ((l > 0L) && (paramInt > l))
     {
-      this.mVideoPlayer.seekTo((int)this.mVideoPlayer.getDuration());
+      this.mVideoPlayer.seekTo((int)l);
       return true;
     }
-    this.mVideoPlayer.seekTo(paramInt);
+    this.initialTime = paramInt;
+    if (l > 0L) {
+      this.mVideoPlayer.seekTo(paramInt);
+    }
     return true;
   }
   
@@ -1388,245 +1393,199 @@ public class MiniAppVideoPlayer
   public void setVideoPath(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: ldc 25
-    //   5: new 774	java/lang/StringBuilder
-    //   8: dup
-    //   9: invokespecial 775	java/lang/StringBuilder:<init>	()V
-    //   12: ldc_w 1679
-    //   15: invokevirtual 781	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   18: aload_1
-    //   19: invokevirtual 781	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   22: invokevirtual 785	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   25: invokestatic 1452	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   28: pop
-    //   29: aload_0
-    //   30: iconst_0
-    //   31: invokevirtual 1681	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:stop	(Z)V
-    //   34: aload_0
-    //   35: getfield 253	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:showCenterPlayBtn	Z
-    //   38: ifeq +212 -> 250
-    //   41: aload_0
-    //   42: getfield 415	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:play_status_img	Landroid/widget/ImageView;
-    //   45: iconst_0
-    //   46: invokevirtual 946	android/widget/ImageView:setVisibility	(I)V
-    //   49: aload_0
-    //   50: getfield 295	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:playingPopView	Landroid/view/View;
-    //   53: bipush 8
-    //   55: invokevirtual 852	android/view/View:setVisibility	(I)V
-    //   58: aload_0
-    //   59: getfield 235	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:handler	Landroid/os/Handler;
-    //   62: sipush 2002
-    //   65: invokevirtual 1238	android/os/Handler:removeMessages	(I)V
-    //   68: aload_1
-    //   69: ldc_w 1683
-    //   72: invokevirtual 1587	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   75: ifeq +187 -> 262
-    //   78: aload_0
-    //   79: invokestatic 1688	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
-    //   82: aload_1
-    //   83: invokevirtual 1691	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   86: putfield 985	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:mUrls	Ljava/lang/String;
-    //   89: aload_0
-    //   90: getfield 269	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:isResetPath	Z
-    //   93: ifne +10 -> 103
-    //   96: aload_0
-    //   97: getfield 857	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:autoplay	Z
-    //   100: ifeq +22 -> 122
-    //   103: aload_0
-    //   104: getfield 235	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:handler	Landroid/os/Handler;
-    //   107: new 1693	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer$1
-    //   110: dup
-    //   111: aload_0
-    //   112: invokespecial 1694	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer$1:<init>	(Lcom/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer;)V
-    //   115: ldc2_w 1695
-    //   118: invokevirtual 685	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   121: pop
-    //   122: aload_0
-    //   123: iconst_1
-    //   124: putfield 269	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:isResetPath	Z
-    //   127: aload_0
-    //   128: iconst_0
-    //   129: putfield 454	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:rotation	I
-    //   132: getstatic 647	android/os/Build$VERSION:SDK_INT	I
-    //   135: bipush 15
-    //   137: if_icmple +112 -> 249
-    //   140: new 1698	java/io/FileInputStream
-    //   143: dup
-    //   144: aload_0
-    //   145: getfield 985	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:mUrls	Ljava/lang/String;
-    //   148: invokespecial 1700	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   151: astore_3
-    //   152: new 1702	android/media/MediaExtractor
-    //   155: dup
-    //   156: invokespecial 1703	android/media/MediaExtractor:<init>	()V
-    //   159: astore 5
-    //   161: aload 5
-    //   163: aload_3
-    //   164: invokevirtual 1707	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   167: invokevirtual 1711	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
-    //   170: aload 5
-    //   172: invokestatic 1717	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/VideoJsPlugin:getAndSelectVideoTrackIndex	(Landroid/media/MediaExtractor;)I
-    //   175: istore_2
-    //   176: iload_2
-    //   177: iconst_m1
-    //   178: if_icmple +53 -> 231
-    //   181: aload 5
-    //   183: iload_2
-    //   184: invokevirtual 1721	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
-    //   187: astore_1
-    //   188: aload_1
-    //   189: ldc_w 1723
-    //   192: invokevirtual 1728	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
-    //   195: ifeq +14 -> 209
-    //   198: aload_0
-    //   199: aload_1
-    //   200: ldc_w 1723
-    //   203: invokevirtual 1732	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   206: putfield 454	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:rotation	I
-    //   209: aload_0
-    //   210: aload_1
-    //   211: ldc_w 1442
-    //   214: invokevirtual 1732	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   217: putfield 448	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:originWidth	I
-    //   220: aload_0
-    //   221: aload_1
-    //   222: ldc_w 1444
-    //   225: invokevirtual 1732	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   228: putfield 451	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:originHeight	I
+    //   0: ldc 25
+    //   2: new 775	java/lang/StringBuilder
+    //   5: dup
+    //   6: invokespecial 776	java/lang/StringBuilder:<init>	()V
+    //   9: ldc_w 1676
+    //   12: invokevirtual 782	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: aload_1
+    //   16: invokevirtual 782	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   19: invokevirtual 786	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   22: invokestatic 1451	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
+    //   25: pop
+    //   26: aload_0
+    //   27: iconst_0
+    //   28: invokevirtual 1678	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:stop	(Z)V
+    //   31: aload_0
+    //   32: getfield 254	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:showCenterPlayBtn	Z
+    //   35: ifeq +205 -> 240
+    //   38: aload_0
+    //   39: getfield 416	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:play_status_img	Landroid/widget/ImageView;
+    //   42: iconst_0
+    //   43: invokevirtual 947	android/widget/ImageView:setVisibility	(I)V
+    //   46: aload_0
+    //   47: getfield 296	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:playingPopView	Landroid/view/View;
+    //   50: bipush 8
+    //   52: invokevirtual 853	android/view/View:setVisibility	(I)V
+    //   55: aload_0
+    //   56: getfield 236	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:handler	Landroid/os/Handler;
+    //   59: sipush 2002
+    //   62: invokevirtual 1239	android/os/Handler:removeMessages	(I)V
+    //   65: aload_1
+    //   66: ldc_w 1680
+    //   69: invokevirtual 1586	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   72: ifeq +180 -> 252
+    //   75: aload_0
+    //   76: invokestatic 1685	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
+    //   79: aload_1
+    //   80: invokevirtual 1688	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   83: putfield 986	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:mUrls	Ljava/lang/String;
+    //   86: aload_0
+    //   87: getfield 270	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:isResetPath	Z
+    //   90: ifne +10 -> 100
+    //   93: aload_0
+    //   94: getfield 858	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:autoplay	Z
+    //   97: ifeq +22 -> 119
+    //   100: aload_0
+    //   101: getfield 236	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:handler	Landroid/os/Handler;
+    //   104: new 1690	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer$1
+    //   107: dup
+    //   108: aload_0
+    //   109: invokespecial 1691	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer$1:<init>	(Lcom/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer;)V
+    //   112: ldc2_w 1692
+    //   115: invokevirtual 686	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   118: pop
+    //   119: aload_0
+    //   120: iconst_1
+    //   121: putfield 270	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:isResetPath	Z
+    //   124: aload_0
+    //   125: iconst_0
+    //   126: putfield 455	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:rotation	I
+    //   129: getstatic 648	android/os/Build$VERSION:SDK_INT	I
+    //   132: bipush 15
+    //   134: if_icmple +105 -> 239
+    //   137: new 1695	android/media/MediaExtractor
+    //   140: dup
+    //   141: invokespecial 1696	android/media/MediaExtractor:<init>	()V
+    //   144: astore_3
+    //   145: aload_3
+    //   146: astore_1
+    //   147: aload_3
+    //   148: aload_0
+    //   149: getfield 986	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:mUrls	Ljava/lang/String;
+    //   152: invokevirtual 1699	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
+    //   155: aload_3
+    //   156: astore_1
+    //   157: aload_3
+    //   158: invokestatic 1705	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/VideoJsPlugin:getAndSelectVideoTrackIndex	(Landroid/media/MediaExtractor;)I
+    //   161: istore_2
+    //   162: iload_2
+    //   163: iconst_m1
+    //   164: if_icmple +67 -> 231
+    //   167: aload_3
+    //   168: astore_1
+    //   169: aload_3
+    //   170: iload_2
+    //   171: invokevirtual 1709	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   174: astore 4
+    //   176: aload_3
+    //   177: astore_1
+    //   178: aload 4
+    //   180: ldc_w 1711
+    //   183: invokevirtual 1716	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   186: ifeq +17 -> 203
+    //   189: aload_3
+    //   190: astore_1
+    //   191: aload_0
+    //   192: aload 4
+    //   194: ldc_w 1711
+    //   197: invokevirtual 1720	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   200: putfield 455	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:rotation	I
+    //   203: aload_3
+    //   204: astore_1
+    //   205: aload_0
+    //   206: aload 4
+    //   208: ldc_w 1441
+    //   211: invokevirtual 1720	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   214: putfield 449	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:originWidth	I
+    //   217: aload_3
+    //   218: astore_1
+    //   219: aload_0
+    //   220: aload 4
+    //   222: ldc_w 1443
+    //   225: invokevirtual 1720	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   228: putfield 452	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:originHeight	I
     //   231: aload_3
     //   232: ifnull +7 -> 239
     //   235: aload_3
-    //   236: invokevirtual 1735	java/io/FileInputStream:close	()V
-    //   239: aload 5
-    //   241: ifnull +8 -> 249
-    //   244: aload 5
-    //   246: invokevirtual 1736	android/media/MediaExtractor:release	()V
-    //   249: return
-    //   250: aload_0
-    //   251: getfield 415	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:play_status_img	Landroid/widget/ImageView;
-    //   254: bipush 8
-    //   256: invokevirtual 946	android/widget/ImageView:setVisibility	(I)V
-    //   259: goto -210 -> 49
+    //   236: invokevirtual 1721	android/media/MediaExtractor:release	()V
+    //   239: return
+    //   240: aload_0
+    //   241: getfield 416	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:play_status_img	Landroid/widget/ImageView;
+    //   244: bipush 8
+    //   246: invokevirtual 947	android/widget/ImageView:setVisibility	(I)V
+    //   249: goto -203 -> 46
+    //   252: aload_1
+    //   253: ldc_w 1583
+    //   256: invokevirtual 1586	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   259: ifne +13 -> 272
     //   262: aload_1
-    //   263: ldc_w 1584
-    //   266: invokevirtual 1587	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   269: ifne +13 -> 282
-    //   272: aload_1
-    //   273: ldc_w 1589
-    //   276: invokevirtual 1587	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   279: ifeq -190 -> 89
-    //   282: aload_0
-    //   283: aload_1
-    //   284: putfield 985	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:mUrls	Ljava/lang/String;
-    //   287: goto -198 -> 89
-    //   290: astore 4
-    //   292: aconst_null
-    //   293: astore_3
-    //   294: aload 6
-    //   296: astore_1
-    //   297: ldc 25
-    //   299: ldc_w 1679
-    //   302: aload 4
-    //   304: invokestatic 1738	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   307: pop
-    //   308: aload_3
-    //   309: ifnull +7 -> 316
-    //   312: aload_3
-    //   313: invokevirtual 1735	java/io/FileInputStream:close	()V
-    //   316: aload_1
-    //   317: ifnull -68 -> 249
-    //   320: aload_1
-    //   321: invokevirtual 1736	android/media/MediaExtractor:release	()V
-    //   324: return
-    //   325: astore_1
-    //   326: aconst_null
-    //   327: astore 4
-    //   329: aconst_null
-    //   330: astore_3
-    //   331: aload 4
-    //   333: ifnull +8 -> 341
-    //   336: aload 4
-    //   338: invokevirtual 1735	java/io/FileInputStream:close	()V
-    //   341: aload_3
-    //   342: ifnull +7 -> 349
-    //   345: aload_3
-    //   346: invokevirtual 1736	android/media/MediaExtractor:release	()V
-    //   349: aload_1
-    //   350: athrow
-    //   351: astore_1
-    //   352: goto -113 -> 239
-    //   355: astore_3
-    //   356: goto -40 -> 316
-    //   359: astore 4
-    //   361: goto -20 -> 341
-    //   364: astore_1
-    //   365: aconst_null
-    //   366: astore 5
-    //   368: aload_3
-    //   369: astore 4
-    //   371: aload 5
-    //   373: astore_3
-    //   374: goto -43 -> 331
-    //   377: astore_1
-    //   378: aload_3
-    //   379: astore 4
-    //   381: aload 5
-    //   383: astore_3
-    //   384: goto -53 -> 331
-    //   387: astore 4
-    //   389: aload_1
-    //   390: astore 5
-    //   392: aload 4
-    //   394: astore_1
-    //   395: aload_3
-    //   396: astore 4
-    //   398: aload 5
-    //   400: astore_3
-    //   401: goto -70 -> 331
-    //   404: astore 4
-    //   406: aload 6
-    //   408: astore_1
-    //   409: goto -112 -> 297
-    //   412: astore 4
-    //   414: aload 5
-    //   416: astore_1
-    //   417: goto -120 -> 297
+    //   263: ldc_w 1588
+    //   266: invokevirtual 1586	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   269: ifeq -183 -> 86
+    //   272: aload_0
+    //   273: aload_1
+    //   274: putfield 986	com/tencent/mobileqq/mini/widget/media/MiniAppVideoPlayer:mUrls	Ljava/lang/String;
+    //   277: goto -191 -> 86
+    //   280: astore 4
+    //   282: aconst_null
+    //   283: astore_3
+    //   284: aload_3
+    //   285: astore_1
+    //   286: ldc 25
+    //   288: ldc_w 1676
+    //   291: aload 4
+    //   293: invokestatic 1723	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   296: pop
+    //   297: aload_3
+    //   298: ifnull -59 -> 239
+    //   301: aload_3
+    //   302: invokevirtual 1721	android/media/MediaExtractor:release	()V
+    //   305: return
+    //   306: astore_3
+    //   307: aconst_null
+    //   308: astore_1
+    //   309: aload_1
+    //   310: ifnull +7 -> 317
+    //   313: aload_1
+    //   314: invokevirtual 1721	android/media/MediaExtractor:release	()V
+    //   317: aload_3
+    //   318: athrow
+    //   319: astore_3
+    //   320: goto -11 -> 309
+    //   323: astore 4
+    //   325: goto -41 -> 284
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	420	0	this	MiniAppVideoPlayer
-    //   0	420	1	paramString	String
-    //   175	9	2	i	int
-    //   151	195	3	localFileInputStream	java.io.FileInputStream
-    //   355	14	3	localIOException1	java.io.IOException
-    //   373	28	3	localObject1	Object
-    //   290	13	4	localThrowable1	Throwable
-    //   327	10	4	localObject2	Object
-    //   359	1	4	localIOException2	java.io.IOException
-    //   369	11	4	localObject3	Object
-    //   387	6	4	localObject4	Object
-    //   396	1	4	localObject5	Object
-    //   404	1	4	localThrowable2	Throwable
-    //   412	1	4	localThrowable3	Throwable
-    //   159	256	5	localObject6	Object
-    //   1	406	6	localObject7	Object
+    //   0	328	0	this	MiniAppVideoPlayer
+    //   0	328	1	paramString	String
+    //   161	10	2	i	int
+    //   144	158	3	localMediaExtractor	android.media.MediaExtractor
+    //   306	12	3	localObject1	Object
+    //   319	1	3	localObject2	Object
+    //   174	47	4	localMediaFormat	android.media.MediaFormat
+    //   280	12	4	localThrowable1	Throwable
+    //   323	1	4	localThrowable2	Throwable
     // Exception table:
     //   from	to	target	type
-    //   140	152	290	java/lang/Throwable
-    //   140	152	325	finally
-    //   235	239	351	java/io/IOException
-    //   312	316	355	java/io/IOException
-    //   336	341	359	java/io/IOException
-    //   152	161	364	finally
-    //   161	176	377	finally
-    //   181	209	377	finally
-    //   209	231	377	finally
-    //   297	308	387	finally
-    //   152	161	404	java/lang/Throwable
-    //   161	176	412	java/lang/Throwable
-    //   181	209	412	java/lang/Throwable
-    //   209	231	412	java/lang/Throwable
+    //   137	145	280	java/lang/Throwable
+    //   137	145	306	finally
+    //   147	155	319	finally
+    //   157	162	319	finally
+    //   169	176	319	finally
+    //   178	189	319	finally
+    //   191	203	319	finally
+    //   205	217	319	finally
+    //   219	231	319	finally
+    //   286	297	319	finally
+    //   147	155	323	java/lang/Throwable
+    //   157	162	323	java/lang/Throwable
+    //   169	176	323	java/lang/Throwable
+    //   178	189	323	java/lang/Throwable
+    //   191	203	323	java/lang/Throwable
+    //   205	217	323	java/lang/Throwable
+    //   219	231	323	java/lang/Throwable
   }
   
   public void smallScreen()

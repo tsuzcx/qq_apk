@@ -1,22 +1,15 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
 
-class tkw
-  implements slx<tal, tam>
+public class tkw
+  implements syt<tnp, tpa>
 {
-  tkw(tkv paramtkv, tjy paramtjy) {}
-  
-  public void a(@NonNull tal paramtal, @Nullable tam paramtam, @NonNull ErrorMessage paramErrorMessage)
+  public void a(@NonNull tnp paramtnp, @Nullable tpa paramtpa, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramErrorMessage.isFail()) || (paramtam == null))
-    {
-      urk.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      this.jdField_a_of_type_Tjy.a(paramErrorMessage, null, false);
-      return;
-    }
-    this.jdField_a_of_type_Tkv.a.a(paramtam.jdField_a_of_type_JavaUtilList, paramtam.jdField_a_of_type_JavaLangString, paramtam.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Tjy.a(paramErrorMessage, tjg.b(paramtam.jdField_a_of_type_JavaUtilList), paramtam.jdField_a_of_type_Boolean);
+    paramtnp = new tkx(this, paramErrorMessage, paramtnp.b, paramtnp.jdField_c_of_type_JavaLangString, paramtnp.jdField_c_of_type_Int);
+    ste.a().dispatch(paramtnp);
   }
 }
 

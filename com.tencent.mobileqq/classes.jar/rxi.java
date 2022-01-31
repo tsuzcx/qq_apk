@@ -1,56 +1,37 @@
-import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.lang.ref.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class rxi
+class rxi
+  implements bfoq
 {
-  public rxk a;
-  public rxl a;
+  rxi(rxh paramrxh, String paramString) {}
   
-  public rxi()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Rxl = new rxl(null);
-    this.jdField_a_of_type_Rxk = new rxk(null);
-  }
-  
-  private static JSONObject a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
+    paramView = new JSONObject();
+    for (;;)
+    {
       try
       {
-        paramString = new JSONObject(paramString);
-        return paramString;
+        paramView.put("index", paramInt);
+        if ((!this.jdField_a_of_type_Rxh.a) || (paramInt != 0)) {
+          continue;
+        }
+        paramView.put("type", 2);
+        if (rxh.a(this.jdField_a_of_type_Rxh) != null) {
+          ((BridgeModule)rxh.a(this.jdField_a_of_type_Rxh).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramView);
+        }
       }
-      catch (JSONException paramString)
+      catch (JSONException paramView)
       {
-        paramString.printStackTrace();
+        continue;
       }
-    }
-    return null;
-  }
-  
-  public static rxi a()
-  {
-    return (rxi)alzw.a().a(447);
-  }
-  
-  public void a(String paramString)
-  {
-    sai.b("WeSeeConfigBean", "WeSeeConfigBean content = " + paramString);
-    paramString = a(paramString);
-    if (paramString == null) {
+      rxh.a(this.jdField_a_of_type_Rxh).dismiss();
       return;
-    }
-    this.jdField_a_of_type_Rxl = rxl.a(paramString.optJSONObject("video_plugin_threshold"));
-    this.jdField_a_of_type_Rxk = rxk.a(paramString.optJSONObject("trends_tab_strategy"));
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("WeSeeConfigBean{mPluginConfigInfo=").append(this.jdField_a_of_type_Rxl).append(", mStrategyConfig=");
-    if (this.jdField_a_of_type_Rxk != null) {}
-    for (String str = this.jdField_a_of_type_Rxk.a;; str = "null") {
-      return str + '}';
+      paramView.put("type", 0);
     }
   }
 }

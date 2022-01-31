@@ -1,17 +1,23 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
 
-class rga
-  implements PopupWindow.OnDismissListener
+public class rga
+  implements Animator.AnimatorListener
 {
-  rga(rfw paramrfw) {}
+  public rga(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
   
-  public void onDismiss()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a(1.0F);
-    if (rfw.a(this.a)) {
-      rfw.a(this.a, "0X80095D4", 8);
-    }
+    this.a.setRotation(0.0F);
+    this.a.setAlpha(1.0F);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

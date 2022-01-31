@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ahcw;
+import ahpl;
 import android.content.Context;
 import android.content.Intent;
-import azzz;
+import bbbd;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
@@ -35,7 +35,7 @@ public class RecentItemNoticeData
     this.time = paramLong2;
     this.mDisplayTime = paramLong2;
     this.mTitleName = String.format(Locale.getDefault(), "%s:%s", new Object[] { paramString3, paramString1 });
-    this.mShowTime = ahcw.a().a(a(), this.mDisplayTime);
+    this.mShowTime = ahpl.a().a(a(), this.mDisplayTime);
   }
   
   public void a(Intent paramIntent)
@@ -46,7 +46,7 @@ public class RecentItemNoticeData
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super.a(paramQQAppInterface, paramContext);
-    if (AppSetting.c)
+    if (AppSetting.d)
     {
       paramQQAppInterface = new StringBuilder(24);
       paramQQAppInterface.append(this.mTitleName);
@@ -76,7 +76,7 @@ public class RecentItemNoticeData
   public boolean a(int paramInt, long paramLong1, String paramString1, String paramString2, String paramString3, long paramLong2)
   {
     if (this.type != paramInt) {}
-    while ((this.uin != paramLong1) || (this.time != paramLong2) || (!azzz.a(this.wording, paramString1)) || (!azzz.a(this.url, paramString2)) || (!azzz.a(this.from, paramString3))) {
+    while ((this.uin != paramLong1) || (this.time != paramLong2) || (!bbbd.a(this.wording, paramString1)) || (!bbbd.a(this.url, paramString2)) || (!bbbd.a(this.from, paramString3))) {
       return false;
     }
     return true;

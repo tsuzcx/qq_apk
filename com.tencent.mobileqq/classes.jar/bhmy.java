@@ -1,26 +1,14 @@
-import android.graphics.RectF;
-
-public class bhmy
-  extends bhln
+final class bhmy
+  extends bhmc<bhmx, Void>
 {
-  private int a;
-  
-  public bhmy(int paramInt)
+  protected bhmx a(Void paramVoid)
   {
-    this.a = paramInt;
-  }
-  
-  void a(int paramInt, bhlo parambhlo)
-  {
-    RectF localRectF = parambhlo.a;
-    localRectF.top += this.a * paramInt;
-    parambhlo = parambhlo.a;
-    parambhlo.bottom += this.a * paramInt;
+    return new bhmx();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhmy
  * JD-Core Version:    0.7.0.1
  */

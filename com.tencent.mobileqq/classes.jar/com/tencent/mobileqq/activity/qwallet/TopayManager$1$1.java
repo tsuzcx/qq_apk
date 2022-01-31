@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet;
 
 import Wallet.PfaFriendRsp;
-import agln;
+import agyc;
 
 class TopayManager$1$1
   implements Runnable
@@ -13,9 +13,9 @@ class TopayManager$1$1
     if (this.a != null) {}
     for (boolean bool = true;; bool = false)
     {
-      agln.a(bool, this.a, true);
+      agyc.a(bool, this.a, true);
       if (this.this$0.jdField_a_of_type_Boolean) {
-        agln.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
+        agyc.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
       }
       return;
     }

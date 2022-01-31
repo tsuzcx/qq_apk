@@ -1,32 +1,53 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.freshnews.BlockableEditTextView;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
 
 public class apqh
-  implements ActionMode.Callback
+  extends apxf
 {
-  public apqh(BlockableEditTextView paramBlockableEditTextView) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new apqi(this);
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public apqh(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
   {
-    return false;
+    super(paramQQAppInterface, paramContext, paramQFileSendBottomView);
+    c();
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  private void c()
   {
-    if (BlockableEditTextView.a(this.a) == 0) {
-      return true;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131375830));
+    this.b = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131370887));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+  }
+  
+  public void a()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131692402) + this.jdField_a_of_type_AndroidContentContext.getString(2131692643) + apeh.b() + this.jdField_a_of_type_AndroidContentContext.getString(2131692644);
+    long l = apeh.d();
+    String str = "";
+    if (l > 0L) {
+      str = this.jdField_a_of_type_AndroidContentContext.getString(2131692466) + apvb.a(l);
     }
-    return BlockableEditTextView.a(this.a);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (apeh.b() > 0L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ((TextView)localObject).setEnabled(bool);
+      this.b.setText(str);
+      return;
+    }
   }
   
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public void a(Bundle paramBundle)
   {
-    return false;
+    super.a(paramBundle);
+    if (this.jdField_a_of_type_Boolean) {}
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import aciy;
-import alij;
+import actn;
+import alwx;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -25,7 +25,7 @@ public class SpringHbEntrySplashView
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
-  public alij a;
+  public alwx a;
   private Context jdField_a_of_type_AndroidContentContext;
   View jdField_a_of_type_AndroidViewView;
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
@@ -54,7 +54,7 @@ public class SpringHbEntrySplashView
     super(paramContext, paramAttributeSet, paramInt);
     try
     {
-      LayoutInflater.from(paramContext).inflate(2131496068, this, true);
+      LayoutInflater.from(paramContext).inflate(2131561660, this, true);
       setBackgroundColor(-1);
       this.jdField_a_of_type_AndroidContentContext = paramContext;
       e();
@@ -93,29 +93,29 @@ public class SpringHbEntrySplashView
     try
     {
       int i = getResources().getDisplayMetrics().widthPixels;
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiEntryBgView = ((EntryBgView)findViewById(2131301241));
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131307307);
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131309309));
-      this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131307306));
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131309312);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiEntryBgView = ((EntryBgView)findViewById(2131366850));
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131373017);
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131375054));
+      this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131373016));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131375058);
       this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setInnerTextColor(Color.parseColor("#f7e5c3"));
       this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeColor(Color.parseColor("#b1162e"));
-      this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeSize(aciy.a(1.5F, getResources()));
+      this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeSize(actn.a(1.5F, getResources()));
       this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setTextSize(1, 16.0F);
       this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeEnable(true);
-      float f1 = getResources().getDimension(2131165927);
-      float f2 = getResources().getDimension(2131165926);
-      float f3 = getResources().getDimension(2131165925);
-      int j = aciy.a(50.0F, getResources());
+      float f1 = getResources().getDimension(2131297002);
+      float f2 = getResources().getDimension(2131297001);
+      float f3 = getResources().getDimension(2131297000);
+      int j = actn.a(50.0F, getResources());
       this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setMaxWidth(i - (int)(f1 * 2.0F + f2 + f3 + j));
-      FrameLayout localFrameLayout = (FrameLayout)findViewById(2131301240);
-      this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131165921);
-      this.jdField_b_of_type_Int = getResources().getDimensionPixelSize(2131165922);
+      FrameLayout localFrameLayout = (FrameLayout)findViewById(2131366849);
+      this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131296996);
+      this.jdField_b_of_type_Int = getResources().getDimensionPixelSize(2131296997);
       this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiEntryBgView.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
       this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772247);
+      this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772248);
       return;
     }
     catch (Throwable localThrowable)
@@ -175,10 +175,10 @@ public class SpringHbEntrySplashView
       if (this.jdField_a_of_type_AndroidViewView == null) {
         return;
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130848289);
-      if ((this.jdField_a_of_type_Alij != null) && (!this.jdField_a_of_type_Alij.c))
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130848521);
+      if ((this.jdField_a_of_type_Alwx != null) && (!this.jdField_a_of_type_Alwx.c))
       {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130848288);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130848520);
         return;
       }
     }
@@ -218,13 +218,13 @@ public class SpringHbEntrySplashView
         return;
       }
       if (this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView != null) {
-        this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setText(getResources().getString(2131653910));
+        this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setText(getResources().getString(2131719794));
       }
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
       h();
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      if (this.jdField_a_of_type_Alij != null) {
-        this.jdField_a_of_type_Alij.a(0, 300L);
+      if (this.jdField_a_of_type_Alwx != null) {
+        this.jdField_a_of_type_Alwx.a(0, 300L);
       }
       this.jdField_a_of_type_Boolean = false;
       return;
@@ -235,9 +235,9 @@ public class SpringHbEntrySplashView
     }
   }
   
-  public void a(alij paramalij)
+  public void a(alwx paramalwx)
   {
-    this.jdField_a_of_type_Alij = paramalij;
+    this.jdField_a_of_type_Alwx = paramalwx;
   }
   
   public void a(boolean paramBoolean)
@@ -260,7 +260,7 @@ public class SpringHbEntrySplashView
       removeCallbacks(null);
       this.jdField_a_of_type_Boolean = true;
       if (this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView != null) {
-        this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setText(getResources().getString(2131653906));
+        this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setText(getResources().getString(2131719790));
       }
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(4);

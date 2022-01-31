@@ -1,46 +1,48 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicBoolean;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RspBody;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
-final class pzg
-  implements ocp
+class pzg
+  extends mxm
 {
-  pzg(pzi parampzi, HashMap paramHashMap) {}
+  pzg(pzf parampzf) {}
   
-  public void a(ocs paramocs)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoExtractFrame", 2, "换链回包 mHasDestory = " + pzf.a().get() + ", vid = " + paramocs.jdField_b_of_type_JavaLangString);
-    }
-    if ((pzf.a().get()) || (!this.jdField_a_of_type_Pzi.jdField_a_of_type_JavaLangString.equals(paramocs.jdField_b_of_type_JavaLangString))) {}
-    for (;;)
+    boolean bool = true;
+    paramBundle = new oidb_0x5bd.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      return;
-      paramocs = paramocs.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramocs.hasNext())
-      {
-        ocs localocs = (ocs)paramocs.next();
-        if ((localocs.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(localocs.jdField_c_of_type_JavaLangString)) && (localocs.jdField_c_of_type_JavaLangString.equals(String.valueOf(this.jdField_a_of_type_Pzi.jdField_a_of_type_Long))))
-        {
-          this.jdField_a_of_type_Pzi.jdField_b_of_type_Int = localocs.jdField_b_of_type_Int;
-          this.jdField_a_of_type_Pzi.jdField_c_of_type_Int = localocs.jdField_c_of_type_Int;
-          pzf.a(this.jdField_a_of_type_Pzi, localocs.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_Pzi.jdField_b_of_type_Long);
-        }
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoySkinHandler", 2, "errorCode = " + paramInt + ", rspBody.msg_next_guide_info.has = " + paramBundle.msg_next_guide_info.has());
       }
-      for (int i = 1; (i == 0) && (QLog.isColorLevel()); i = 0)
+      int i = paramBundle.uint32_source.get();
+      paramArrayOfByte = this.a;
+      if (paramInt == 0) {}
+      for (;;)
       {
-        QLog.d("VideoExtractFrame", 2, "no found videoInfo.tag = " + this.jdField_a_of_type_Pzi.jdField_b_of_type_JavaLangString);
+        paramArrayOfByte.notifyUI(1, bool, new Object[] { paramBundle.msg_now_skin_info.get(), paramBundle.msg_next_guide_info.get(), paramBundle.msg_operation_guide_info.get(), paramBundle.msg_operation_refresh_info.get(), Integer.valueOf(i) });
         return;
+        bool = false;
       }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pzg
  * JD-Core Version:    0.7.0.1
  */

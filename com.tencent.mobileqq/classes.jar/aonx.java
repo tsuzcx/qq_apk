@@ -1,27 +1,36 @@
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class aonx
-  implements Cloneable
+  implements View.OnClickListener
 {
-  public int a;
-  public CheckBox a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public FileInfo a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public aonx(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  public aonx(aonw paramaonw) {}
+  public void onClick(View paramView)
+  {
+    if (!this.a.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.i(FMLocalFileActivity.g, 2, "click too fast , wait a minute.");
+      }
+    }
+    do
+    {
+      return;
+      this.a.e();
+      paramView = (apek)paramView.getTag();
+    } while (paramView.a == 0);
+    int i = paramView.a;
+    paramView = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
+    paramView.putBoolean("last_select_All", true);
+    paramView.commit();
+    FMLocalFileActivity.a(this.a, i);
+  }
 }
 
 

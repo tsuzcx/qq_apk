@@ -1,24 +1,21 @@
-import android.view.animation.Animation;
-
-class apuj
-  extends beem
+final class apuj
+  implements bbwe
 {
-  apuj(apui paramapui) {}
+  apuj(aptu paramaptu) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void callback(int paramInt)
   {
-    this.a.a().c();
-    this.a.a().a();
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a().b();
+    if ((paramInt == 1) || (paramInt == 2))
+    {
+      this.a.a();
+      return;
+    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apuj
  * JD-Core Version:    0.7.0.1
  */

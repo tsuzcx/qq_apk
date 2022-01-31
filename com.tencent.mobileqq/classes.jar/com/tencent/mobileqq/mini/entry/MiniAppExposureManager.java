@@ -13,7 +13,6 @@ public class MiniAppExposureManager
   implements Manager
 {
   public static final String TAG = "MiniAppExposureManager";
-  private int desktopPullDownState = 1;
   private Map<String, MiniAppExposureManager.BaseExposureReport> duplicateItemMap = new HashMap();
   private List<MiniAppExposureManager.BaseExposureReport> reportItemList = new ArrayList();
   
@@ -42,11 +41,6 @@ public class MiniAppExposureManager
     this.duplicateItemMap.clear();
   }
   
-  public int getDesktopPullDownState()
-  {
-    return this.desktopPullDownState;
-  }
-  
   public Map<String, MiniAppExposureManager.BaseExposureReport> getDuplicateItemMap()
   {
     return this.duplicateItemMap;
@@ -66,12 +60,9 @@ public class MiniAppExposureManager
   
   public void putReportDataToMap(String paramString, MiniAppExposureManager.BaseExposureReport paramBaseExposureReport)
   {
-    this.duplicateItemMap.put(paramString, paramBaseExposureReport);
-  }
-  
-  public void setDesktopPullDownState(int paramInt)
-  {
-    this.desktopPullDownState = paramInt;
+    if (this.duplicateItemMap.get(paramString) == null) {
+      this.duplicateItemMap.put(paramString, paramBaseExposureReport);
+    }
   }
 }
 

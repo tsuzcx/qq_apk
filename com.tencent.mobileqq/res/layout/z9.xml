@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gb3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/gb3" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/gb2" android:layout_width="@dimen/a47" android:layout_height="@dimen/a47">
         <com.tencent.av.funchat.AVListImageView android:id="@id/g81" android:layout_width="@dimen/a47" android:layout_height="@dimen/a47" android:src="@drawable/c4k" />
         <com.tencent.mobileqq.widget.CircleProgress android:id="@id/g83" android:layout_width="16.0dip" android:layout_height="16.0dip" android:scaleType="fitXY" android:layout_centerInParent="true" />
         <ImageView android:id="@id/g7x" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="3.0dip" android:layout_marginBottom="3.0dip" android:src="@drawable/f7u" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
     </RelativeLayout>
+    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/hid" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" />
 </LinearLayout>

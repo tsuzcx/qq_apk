@@ -1,22 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.ttpic.openapi.model.WMElement;
+import java.util.concurrent.CountDownLatch;
 
 class bgzt
-  implements DialogInterface.OnClickListener
 {
-  bgzt(bgzn parambgzn, bgzv parambgzv, WMElement paramWMElement) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private final CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch;
+  private volatile String b;
+  private volatile String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private bgzt(String paramString)
   {
-    this.jdField_a_of_type_Bgzv.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bgzv.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMElement.getCheckInResetString());
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgzt
  * JD-Core Version:    0.7.0.1
  */

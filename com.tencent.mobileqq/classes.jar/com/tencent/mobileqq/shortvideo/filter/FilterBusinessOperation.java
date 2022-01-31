@@ -784,7 +784,7 @@ public class FilterBusinessOperation
           this.movieFilterGesture = new MovieFilterGesture(this.mCommonOperation, GLGestureProxy.getInstance());
         }
         GLGestureProxy.getInstance().removeListener(this.movieFilterGesture);
-        GLGestureProxy.getInstance().setListener(this.movieFilterGesture);
+        GLGestureProxy.getInstance().addListener(this.movieFilterGesture);
       }
     }
     while (this.movieFilterGesture == null) {

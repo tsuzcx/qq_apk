@@ -24,8 +24,8 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import baip;
-import bajq;
+import bbjw;
+import bbkx;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -52,7 +52,7 @@ import com.tencent.mobileqq.mini.widget.CoverTextView;
 import com.tencent.mobileqq.mini.widget.CoverView;
 import com.tencent.mobileqq.mini.widget.CoverView.OnPageChangeListener;
 import com.tencent.mobileqq.mini.widget.MapContext;
-import com.tencent.mobileqq.mini.widget.MiniAppTextArea;
+import com.tencent.mobileqq.mini.widget.MiniAppTextArea1;
 import com.tencent.mobileqq.mini.widget.media.CameraSurfaceView.CameraSurfaceViewCallBack;
 import com.tencent.mobileqq.mini.widget.media.CoverCameraView;
 import com.tencent.mobileqq.mini.widget.media.CoverLiveView;
@@ -68,6 +68,7 @@ import common.config.service.QzoneConfig;
 import java.lang.ref.WeakReference;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -80,16 +81,19 @@ public class WebviewContainer
   private static final int MSG_WHAT_HIDE_CTR_VIEW = 942301;
   public static final String TAG = "WebViewContainer";
   private static String mCurWhiteListConfig;
+  private static String mWhiteHostConfig;
   private static ArrayList<String> needCookieAppIdList;
+  private static ArrayList<String> needCookieHostList;
   protected ApkgInfo apkgInfo;
   public AppBrandRuntime appBrandRuntime;
-  private SparseArray<MiniAppTextArea> appTextAreaSparseArray = new SparseArray();
+  private SparseArray<MiniAppTextArea1> appTextAreaSparseArray = new SparseArray();
   private FrameLayout componentLayout;
   protected float density;
   private boolean disableScroll;
   private boolean enableRefresh;
   private ProgressWebView innerWebView;
   private SparseArray<CoverView> mCoverViewSparseArray = new SparseArray();
+  public int mScrollY;
   private SparseArray<MapContext> mapContextArray;
   private boolean needSeetPadding = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappcovertextviewpadding", true);
   protected PageInfo pageInfo;
@@ -108,11 +112,12 @@ public class WebviewContainer
     this.swipeRefreshLayout.setOnRefreshListener(this);
     addView(this.swipeRefreshLayout, new FrameLayout.LayoutParams(-1, -1));
     getNeedCookieAppIdList();
+    getNeedCookieHostList();
   }
   
   private String getActualColor(String paramString)
   {
-    if (baip.a(paramString)) {
+    if (bbjw.a(paramString)) {
       return "";
     }
     String str = paramString.substring(paramString.length() - 2);
@@ -158,6 +163,64 @@ public class WebviewContainer
       return needCookieAppIdList;
     }
     finally {}
+  }
+  
+  private void getNeedCookieHostList()
+  {
+    if (needCookieHostList == null)
+    {
+      String str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappcovertextviewpadding", "https://open.mp.qq.com");
+      if ((str1 != null) && (!str1.equals(mWhiteHostConfig)))
+      {
+        QLog.i("WebViewContainer", 1, "Default white host:" + str1);
+        needCookieHostList = new ArrayList();
+        try
+        {
+          String[] arrayOfString = str1.split(",");
+          if (arrayOfString != null)
+          {
+            int j = arrayOfString.length;
+            int i = 0;
+            while (i < j)
+            {
+              String str2 = arrayOfString[i];
+              if (!TextUtils.isEmpty(str2)) {
+                needCookieHostList.add(str2);
+              }
+              i += 1;
+            }
+          }
+          return;
+        }
+        catch (Throwable localThrowable)
+        {
+          localThrowable.printStackTrace();
+          mWhiteHostConfig = str1;
+        }
+      }
+    }
+  }
+  
+  private boolean isTextAreaFocused()
+  {
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < this.appTextAreaSparseArray.size())
+      {
+        MiniAppTextArea1 localMiniAppTextArea1 = (MiniAppTextArea1)this.appTextAreaSparseArray.valueAt(i);
+        if ((localMiniAppTextArea1 != null) && (localMiniAppTextArea1.isTextAreaFocused())) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        return bool1;
+      }
+      i += 1;
+    }
   }
   
   private boolean isVideoFullScreen()
@@ -228,8 +291,6 @@ public class WebviewContainer
       }
       CookieManager localCookieManager = CookieManager.getInstance();
       localCookieManager.setAcceptCookie(true);
-      localCookieManager.removeSessionCookie();
-      localCookieManager.removeAllCookie();
       localObject = ((String)localObject).split(";");
       int j = localObject.length;
       int i = 0;
@@ -381,7 +442,7 @@ public class WebviewContainer
         paramJSONObject = paramJSONObject.optJSONObject("label");
         if (paramJSONObject != null)
         {
-          if (!baip.a(paramJSONObject.optString("color")))
+          if (!bbjw.a(paramJSONObject.optString("color")))
           {
             localObject1 = getActualColor(paramJSONObject.optString("color"));
             if (!TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -398,7 +459,7 @@ public class WebviewContainer
           }
           paramCoverTextView.setGravity(3);
           localObject1 = paramJSONObject.optString("content");
-          if (!baip.a((String)localObject1)) {
+          if (!bbjw.a((String)localObject1)) {
             paramCoverTextView.setText((String)localObject1);
           }
           if ("bold".equals(paramJSONObject.optString("fontWeight"))) {
@@ -482,9 +543,9 @@ public class WebviewContainer
   
   public void callbackLineChange(int paramInt)
   {
-    MiniAppTextArea localMiniAppTextArea = getTextArea(paramInt);
-    if (localMiniAppTextArea != null) {
-      localMiniAppTextArea.callbackLineChange();
+    MiniAppTextArea1 localMiniAppTextArea1 = getTextArea(paramInt);
+    if (localMiniAppTextArea1 != null) {
+      localMiniAppTextArea1.callbackLineChange();
     }
   }
   
@@ -602,6 +663,11 @@ public class WebviewContainer
     return (MapContext)this.mapContextArray.get(paramInt);
   }
   
+  public int getNativeScrollY()
+  {
+    return this.mScrollY;
+  }
+  
   public FrameLayout getNativeViewLayout()
   {
     return this.componentLayout;
@@ -617,13 +683,13 @@ public class WebviewContainer
     return this.pageWebview;
   }
   
-  public MiniAppTextArea getTextArea(int paramInt)
+  public MiniAppTextArea1 getTextArea(int paramInt)
   {
     if ((this.appTextAreaSparseArray != null) && (this.appTextAreaSparseArray.size() > 0))
     {
-      MiniAppTextArea localMiniAppTextArea = (MiniAppTextArea)this.appTextAreaSparseArray.get(paramInt);
-      if (localMiniAppTextArea != null) {
-        return localMiniAppTextArea;
+      MiniAppTextArea1 localMiniAppTextArea1 = (MiniAppTextArea1)this.appTextAreaSparseArray.get(paramInt);
+      if (localMiniAppTextArea1 != null) {
+        return localMiniAppTextArea1;
       }
     }
     return null;
@@ -670,7 +736,7 @@ public class WebviewContainer
   
   public void hideLoading()
   {
-    AppBrandTask.runTaskOnUiThread(new WebviewContainer.5(this));
+    AppBrandTask.runTaskOnUiThread(new WebviewContainer.6(this));
   }
   
   public void init(String paramString)
@@ -829,7 +895,7 @@ public class WebviewContainer
             paramInt2 = paramInt4;
             if (this.appBrandRuntime.pageContainer.getCurrentPage().getNavBar().getNavbarStyle().equals("custom"))
             {
-              paramInt2 = paramInt4 - (bajq.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext()));
+              paramInt2 = paramInt4 - (bbkx.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext()));
               this.appBrandRuntime.pageContainer.getCurrentPage().updateViewStyle("default");
               this.appBrandRuntime.pageContainer.getCurrentPage().getNavBar().setBarStyle("default");
             }
@@ -930,7 +996,7 @@ public class WebviewContainer
           ((CoverView)localObject).setPadding(paramJSONObject1.optInt(3, 0), paramJSONObject1.optInt(0, 0), paramJSONObject1.optInt(1, 0), paramJSONObject1.optInt(2, 0));
         }
         ((CoverView)localObject).setBorderRadius((float)paramJSONObject2.optDouble("borderRadius", 0.0D) * this.density);
-        if ((baip.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https"))))
+        if ((bbjw.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https"))))
         {
           try
           {
@@ -953,7 +1019,7 @@ public class WebviewContainer
           if (paramBoolean != null) {
             ((CoverImageView)localObject).setClickable(paramBoolean.booleanValue());
           }
-          ((CoverImageView)localObject).setOnClickListener(new WebviewContainer.3(this, paramString1));
+          ((CoverImageView)localObject).setOnClickListener(new WebviewContainer.4(this, paramString1));
           return;
           this.componentLayout.addView(localCoverImageView);
           localObject = localCoverImageView;
@@ -975,7 +1041,7 @@ public class WebviewContainer
           i = j;
           continue;
           paramJSONObject1 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
-          if (!baip.a(paramJSONObject1)) {
+          if (!bbjw.a(paramJSONObject1)) {
             try
             {
               paramJSONObject1 = ImageUtil.getLocalBitmap(paramJSONObject1);
@@ -1059,7 +1125,6 @@ public class WebviewContainer
     if ((localObject1 instanceof CoverPusherView))
     {
       localObject1 = (CoverPusherView)localObject1;
-      ((CoverPusherView)localObject1).setWebviewContainer(this);
       ((CoverPusherView)localObject1).initLivePusherSettings(paramJSONObject);
       localObject2 = paramJSONObject.optJSONObject("position");
       if (localObject2 != null)
@@ -1178,30 +1243,30 @@ public class WebviewContainer
   
   public void insertTextArea(int paramInt, JSONObject paramJSONObject)
   {
-    Object localObject2 = (MiniAppTextArea)this.appTextAreaSparseArray.get(paramInt);
+    Object localObject2 = (MiniAppTextArea1)this.appTextAreaSparseArray.get(paramInt);
     int i = paramJSONObject.optInt("parentId");
     boolean bool = paramJSONObject.optBoolean("fixed", false);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = new MiniAppTextArea(getContext());
-      ((MiniAppTextArea)localObject1).setFixed(bool);
+      localObject1 = new MiniAppTextArea1(getContext(), paramInt, this);
+      ((MiniAppTextArea1)localObject1).setFixed(bool);
       this.appTextAreaSparseArray.put(paramInt, localObject1);
       if (i == 0) {
-        break label114;
+        break label115;
       }
       localObject2 = (FrameLayout)this.mCoverViewSparseArray.get(i);
       if (localObject2 != null)
       {
         ((FrameLayout)localObject2).addView((View)localObject1);
-        ((MiniAppTextArea)localObject1).setParentId(i);
+        ((MiniAppTextArea1)localObject1).setParentId(i);
       }
     }
     for (;;)
     {
-      ((MiniAppTextArea)localObject1).setAttributes(paramInt, paramJSONObject, this);
+      ((MiniAppTextArea1)localObject1).setAttributes(paramJSONObject, false);
       return;
-      label114:
+      label115:
       if (bool) {
         addView((View)localObject1);
       } else {
@@ -1379,12 +1444,31 @@ public class WebviewContainer
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
+  public void onPause()
+  {
+    if (this.innerWebView != null)
+    {
+      QLog.d("WebViewContainer", 1, "innerWebView pause");
+      this.innerWebView.onPause();
+    }
+  }
+  
   public void onRefresh()
   {
     if (QLog.isColorLevel()) {
       QLog.d("WebViewContainer", 2, "onRefresh");
     }
     this.appBrandRuntime.evaluateServiceSubcribeJS("onPullDownRefresh", "{}", this.pageWebview.pageWebviewId);
+  }
+  
+  public void onResume()
+  {
+    if (this.innerWebView != null)
+    {
+      QLog.d("WebViewContainer", 1, "innerWebView resume & requestFocus");
+      this.innerWebView.onResume();
+      AppBrandTask.runTaskOnUiThread(new WebviewContainer.3(this));
+    }
   }
   
   public void operateCamera(String paramString, int paramInt, JSONObject paramJSONObject)
@@ -1739,26 +1823,25 @@ public class WebviewContainer
   
   public void removeTextArea(int paramInt)
   {
-    MiniAppTextArea localMiniAppTextArea = (MiniAppTextArea)this.appTextAreaSparseArray.get(paramInt);
-    if (localMiniAppTextArea == null) {
+    MiniAppTextArea1 localMiniAppTextArea1 = (MiniAppTextArea1)this.appTextAreaSparseArray.get(paramInt);
+    if (localMiniAppTextArea1 == null) {
       return;
     }
-    localMiniAppTextArea.removeLayoutListener();
     this.appTextAreaSparseArray.remove(paramInt);
-    int i = localMiniAppTextArea.getParentId();
+    int i = localMiniAppTextArea1.getParentId();
     if (i != 0) {
       if (this.mCoverViewSparseArray.get(i) != null) {
-        ((CoverView)this.mCoverViewSparseArray.get(i)).removeView(localMiniAppTextArea);
+        ((CoverView)this.mCoverViewSparseArray.get(i)).removeView(localMiniAppTextArea1);
       }
     }
     for (;;)
     {
       this.appTextAreaSparseArray.remove(paramInt);
       return;
-      if (localMiniAppTextArea.isFixed()) {
-        removeView(localMiniAppTextArea);
+      if (localMiniAppTextArea1.isFixed()) {
+        removeView(localMiniAppTextArea1);
       } else {
-        this.componentLayout.removeView(localMiniAppTextArea);
+        this.componentLayout.removeView(localMiniAppTextArea1);
       }
     }
   }
@@ -1887,7 +1970,7 @@ public class WebviewContainer
         paramPageWebview.getView().getViewTreeObserver().addOnScrollChangedListener(new WebviewContainer.1(this, paramPageWebview));
       }
     }
-    paramPageWebview.setOnWebviewScrollListener(new WebviewContainer.2(this));
+    paramPageWebview.setOnWebviewScrollListener(new WebviewContainer.2(this, paramPageWebview));
     paramPageWebview.setContentDescription("");
     paramPageWebview.addView(this, this.componentLayout, new FrameLayout.LayoutParams(-1, -1));
     this.swipeRefreshLayout.addView(paramPageWebview, new ViewGroup.LayoutParams(-1, -1));
@@ -1895,7 +1978,7 @@ public class WebviewContainer
   
   public void showLoading(String paramString)
   {
-    AppBrandTask.runTaskOnUiThread(new WebviewContainer.4(this, paramString));
+    AppBrandTask.runTaskOnUiThread(new WebviewContainer.5(this, paramString));
   }
   
   public void startPullDownRefresh()
@@ -1953,12 +2036,23 @@ public class WebviewContainer
       if ((needCookieAppIdList != null) && (needCookieAppIdList.contains(this.appBrandRuntime.appId))) {
         setCookie(paramString);
       }
+      Object localObject;
+      if (needCookieHostList != null)
+      {
+        localObject = needCookieHostList.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str = (String)((Iterator)localObject).next();
+          QLog.i("WebViewContainer", 1, "setCookie : " + str);
+          setCookie(str);
+        }
+      }
       this.innerWebView.init(this.appBrandRuntime);
       this.innerWebView.setVisibility(0);
       if (QLog.isDebugVersion())
       {
-        String str = CookieManager.getInstance().getCookie(paramString);
-        QLog.e("WebViewContainer", 1, "cookie : " + str);
+        localObject = CookieManager.getInstance().getCookie(paramString);
+        QLog.e("WebViewContainer", 1, "cookie : " + (String)localObject);
       }
       this.innerWebView.loadUrl(paramString);
       try
@@ -1977,6 +2071,24 @@ public class WebviewContainer
         QLog.e("WebViewContainer", 1, "innerWebView requestFocuserror,", paramString);
       }
     }
+  }
+  
+  public void updateHTMLWebView(int paramInt, JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewContainer", 2, "updateHTMLWebView htmlId=" + paramInt + ",innerWebView=" + this.innerWebView + ",position=" + paramJSONObject);
+    }
+    if ((this.innerWebView == null) || (this.innerWebView.htmlId != paramInt) || (paramJSONObject == null) || (this.appBrandRuntime == null)) {
+      return;
+    }
+    paramInt = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
+    int i = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
+    int j = (int)(this.density * paramJSONObject.optInt("left") + 0.5F);
+    int k = (int)(this.density * paramJSONObject.optInt("top") + 0.5F);
+    paramJSONObject = new FrameLayout.LayoutParams(paramInt, i);
+    paramJSONObject.leftMargin = j;
+    paramJSONObject.topMargin = k;
+    this.innerWebView.setLayoutParams(paramJSONObject);
   }
   
   public void updateImageView(JSONObject paramJSONObject1, String paramString1, int paramInt, String paramString2, Boolean paramBoolean, JSONObject paramJSONObject2)
@@ -2011,7 +2123,7 @@ public class WebviewContainer
         }
         paramString1.setBorderRadius((float)paramJSONObject2.optDouble("borderRadius", 0.0D) * this.density);
       }
-      if ((!baip.a(paramString2)) && ((!paramString2.startsWith("http")) && (!paramString2.startsWith("https")))) {
+      if ((!bbjw.a(paramString2)) && ((!paramString2.startsWith("http")) && (!paramString2.startsWith("https")))) {
         break label405;
       }
     }
@@ -2045,7 +2157,7 @@ public class WebviewContainer
       return;
       label405:
       paramJSONObject1 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
-      if (!baip.a(paramJSONObject1)) {
+      if (!bbjw.a(paramJSONObject1)) {
         try
         {
           paramJSONObject1 = ImageUtil.getLocalBitmap(paramJSONObject1);
@@ -2135,11 +2247,11 @@ public class WebviewContainer
     try
     {
       int i = paramJSONObject.optInt("inputId");
-      MiniAppTextArea localMiniAppTextArea = (MiniAppTextArea)this.appTextAreaSparseArray.get(i);
-      if (localMiniAppTextArea == null) {
+      MiniAppTextArea1 localMiniAppTextArea1 = (MiniAppTextArea1)this.appTextAreaSparseArray.get(i);
+      if (localMiniAppTextArea1 == null) {
         return;
       }
-      localMiniAppTextArea.updateAttributes(paramJSONObject);
+      localMiniAppTextArea1.setAttributes(paramJSONObject, true);
       return;
     }
     catch (Exception paramJSONObject)
@@ -2163,7 +2275,7 @@ public class WebviewContainer
     {
       ((CoverVideoView)localCoverView).updateVideoPlayerSettings(paramJSONObject);
       paramJSONObject = paramJSONObject.optString("filePath");
-      if (!baip.a(paramJSONObject)) {
+      if (!bbjw.a(paramJSONObject)) {
         ((CoverVideoView)localCoverView).setVideoPath(paramJSONObject);
       }
     }

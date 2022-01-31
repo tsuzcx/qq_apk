@@ -1,10 +1,30 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import dov.com.qq.im.capture.data.ComboLockManager;
 
 public class bjby
+  extends QQUIEventReceiver<ComboLockManager, svy>
 {
-  public int a;
+  boolean a = false;
   
-  private bjby(GLVideoClipUtil paramGLVideoClipUtil) {}
+  public bjby(@NonNull ComboLockManager paramComboLockManager)
+  {
+    super(paramComboLockManager);
+  }
+  
+  public void a(@NonNull ComboLockManager paramComboLockManager, @NonNull svy paramsvy)
+  {
+    if (!this.a)
+    {
+      paramComboLockManager.b();
+      this.a = true;
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return svy.class;
+  }
 }
 
 

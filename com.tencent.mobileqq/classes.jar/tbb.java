@@ -1,34 +1,38 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspAddGroupVideo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.AppInterface;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class tbb
-  extends slu
 {
-  private final qqstory_group.RspAddGroupVideo a;
+  public static tbb a;
   
-  public tbb(qqstory_group.RspAddGroupVideo paramRspAddGroupVideo)
+  public static tbb a()
   {
-    super(paramRspAddGroupVideo.result);
-    this.a = paramRspAddGroupVideo;
-  }
-  
-  public List<tbc> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.group_feed_list.get().iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(new tbc((qqstory_group.GroupFeed)localIterator.next()));
+    if (a == null) {
+      a = new tbb();
     }
-    return localArrayList;
+    return a;
   }
   
-  public String toString()
+  private void a(String paramString, byte[] paramArrayOfByte, BusinessObserver paramBusinessObserver)
   {
-    return "AddGroupVideoResponse{mRspAddGroupVideo=" + a() + '}';
+    QQStoryContext.a();
+    AppInterface localAppInterface = QQStoryContext.a();
+    NewIntent localNewIntent = new NewIntent(localAppInterface.getApp(), mxh.class);
+    localNewIntent.putExtra("cmd", paramString);
+    localNewIntent.putExtra("data", paramArrayOfByte);
+    localNewIntent.putExtra("isResend", false);
+    localNewIntent.setObserver(paramBusinessObserver);
+    localAppInterface.startServlet(localNewIntent);
+  }
+  
+  public void a(tbd paramtbd, tbe paramtbe)
+  {
+    byte[] arrayOfByte = paramtbd.a();
+    String str = paramtbd.a();
+    long l = System.currentTimeMillis();
+    a(paramtbd.a(), arrayOfByte, new tbc(this, l, paramtbd, str, paramtbe));
   }
 }
 

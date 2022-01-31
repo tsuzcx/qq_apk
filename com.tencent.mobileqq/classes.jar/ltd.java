@@ -1,24 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController;
 
 public class ltd
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public ltd(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  public ltd(RandomController paramRandomController) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (RandomController.a(this.a) == 1) {
+      axqw.b(null, "CliOper", "", "", "0X80053B5", "0X80053B5", 0, 0, "", "", "", "");
     }
     for (;;)
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      this.a.b();
+      RandomController.d(this.a, false);
+      return;
+      if (RandomController.a(this.a) == 2) {
+        axqw.b(null, "CliOper", "", "", "0X80053C1", "0X80053C1", 0, 0, "", "", "", "");
+      }
     }
   }
 }

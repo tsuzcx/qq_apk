@@ -2,25 +2,25 @@ package com.tencent.mobileqq.gallery.view.video;
 
 import android.widget.SeekBar;
 import android.widget.TextView;
-import apsm;
-import apsp;
-import apsr;
-import aptk;
-import apvm;
+import aqmb;
+import aqme;
+import aqmg;
+import aqnk;
+import aqpn;
 import com.tencent.mobileqq.gallery.model.GalleryBaseData;
 import com.tencent.mobileqq.gallery.model.video.AIOFileVideoData;
 
 public class AIOGalleryFileVideoView$2
   implements Runnable
 {
-  public AIOGalleryFileVideoView$2(apvm paramapvm, long paramLong, float paramFloat, String paramString) {}
+  public AIOGalleryFileVideoView$2(aqpn paramaqpn, long paramLong, float paramFloat, String paramString) {}
   
   public void run()
   {
     Object localObject = this.this$0.a.a();
-    if ((localObject != null) && (((apsr)localObject).a != null) && (this.jdField_a_of_type_Long == ((apsr)localObject).a.jdField_a_of_type_Long) && (((apsr)localObject).a.a() == 4))
+    if ((localObject != null) && (((aqmg)localObject).a != null) && (this.jdField_a_of_type_Long == ((aqmg)localObject).a.jdField_a_of_type_Long) && (((aqmg)localObject).a.a() == 4))
     {
-      localObject = (AIOFileVideoData)((apsr)localObject).a;
+      localObject = (AIOFileVideoData)((aqmg)localObject).a;
       ((AIOFileVideoData)localObject).i = true;
       ((AIOFileVideoData)localObject).j = true;
       ((AIOFileVideoData)localObject).e = 1;
@@ -28,8 +28,8 @@ public class AIOGalleryFileVideoView$2
       this.this$0.d.setText(this.jdField_a_of_type_JavaLangString);
       int i = (int)(10000.0F * this.jdField_a_of_type_Float);
       this.this$0.b.setProgress(i);
-      apsm.a().a().a("AIOGalleryFileVideoView", 4, "onDownlodProgress progress = " + this.jdField_a_of_type_Float);
-      apsm.a().a().a("AIOGalleryFileVideoView", 4, "onDownlodProgress pos = " + i);
+      aqmb.a().a().a("AIOGalleryFileVideoView", 4, "onDownlodProgress progress = " + this.jdField_a_of_type_Float);
+      aqmb.a().a().a("AIOGalleryFileVideoView", 4, "onDownlodProgress pos = " + i);
     }
   }
 }

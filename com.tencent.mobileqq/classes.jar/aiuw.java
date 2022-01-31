@@ -1,653 +1,239 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
+import android.opengl.GLDebugHelper;
+import android.util.Log;
+import com.tencent.mobileqq.apollo.GLTextureView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.LRULinkedHashMap;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import mqq.app.NewIntent;
-import mqq.manager.TicketManager;
-import mqq.observer.BusinessObserver;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.Writer;
+import java.lang.ref.WeakReference;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
+import javax.microedition.khronos.opengles.GL;
 
 public class aiuw
-  implements BusinessObserver
 {
-  private aiux jdField_a_of_type_Aiux;
-  private LRULinkedHashMap<String, String> jdField_a_of_type_ComTencentUtilLRULinkedHashMap;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  private WeakReference<GLTextureView> jdField_a_of_type_JavaLangRefWeakReference;
+  EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
+  public EGLConfig a;
+  EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+  EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
+  EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
   
-  public aiuw(aiux paramaiux)
+  public aiuw(WeakReference<GLTextureView> paramWeakReference)
   {
-    this.jdField_a_of_type_Aiux = paramaiux;
-    this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(32);
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return b(paramInt);
+    case 12288: 
+      return "EGL_SUCCESS";
+    case 12289: 
+      return "EGL_NOT_INITIALIZED";
+    case 12290: 
+      return "EGL_BAD_ACCESS";
+    case 12291: 
+      return "EGL_BAD_ALLOC";
+    case 12292: 
+      return "EGL_BAD_ATTRIBUTE";
+    case 12293: 
+      return "EGL_BAD_CONFIG";
+    case 12294: 
+      return "EGL_BAD_CONTEXT";
+    case 12295: 
+      return "EGL_BAD_CURRENT_SURFACE";
+    case 12296: 
+      return "EGL_BAD_DISPLAY";
+    case 12297: 
+      return "EGL_BAD_MATCH";
+    case 12298: 
+      return "EGL_BAD_NATIVE_PIXMAP";
+    case 12299: 
+      return "EGL_BAD_NATIVE_WINDOW";
+    case 12300: 
+      return "EGL_BAD_PARAMETER";
+    case 12301: 
+      return "EGL_BAD_SURFACE";
+    }
+    return "EGL_CONTEXT_LOST";
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    return paramString + " failed: " + a(paramInt);
+  }
+  
+  private void a(String paramString)
+  {
+    a(paramString, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    throw new RuntimeException(a(paramString, paramInt));
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt)
+  {
+    Log.w(paramString1, a(paramString2, paramInt));
+  }
+  
+  private static String b(int paramInt)
+  {
+    return "0x" + Integer.toHexString(paramInt);
+  }
+  
+  private void d()
+  {
+    if ((this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface != EGL10.EGL_NO_SURFACE))
+    {
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+      GLTextureView localGLTextureView = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localGLTextureView != null) {
+        GLTextureView.access$700(localGLTextureView).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
+      }
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
+    }
+  }
+  
+  public int a()
+  {
+    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglSwapBuffers(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface)) {
+      return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError();
+    }
+    return 12288;
+  }
+  
+  public GL a()
+  {
+    GL localGL2 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext.getGL();
+    GLTextureView localGLTextureView = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = localGL2;
+    GL localGL1;
+    int i;
+    if (localGLTextureView != null)
+    {
+      localGL1 = localGL2;
+      if (GLTextureView.access$800(localGLTextureView) != null) {
+        localGL1 = GLTextureView.access$800(localGLTextureView).a(localGL2);
+      }
+      localObject = localGL1;
+      if ((GLTextureView.access$900(localGLTextureView) & 0x3) != 0)
+      {
+        i = 0;
+        if ((GLTextureView.access$900(localGLTextureView) & 0x1) != 0) {
+          i = 1;
+        }
+        if ((GLTextureView.access$900(localGLTextureView) & 0x2) == 0) {
+          break label106;
+        }
+      }
+    }
+    label106:
+    for (localObject = new aiuz();; localObject = null)
+    {
+      localObject = GLDebugHelper.wrap(localGL1, i, (Writer)localObject);
+      return localObject;
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Aiux = null;
-  }
-  
-  public void a(Context paramContext, long paramLong, AppInterface paramAppInterface, String paramString1, String paramString2)
-  {
-    if ((paramAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = ((EGL10)EGLContext.getEGL());
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay == EGL10.EGL_NO_DISPLAY) {
+      throw new RuntimeException("eglGetDisplay failed");
+    }
+    Object localObject = new int[2];
+    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (int[])localObject)) {
+      throw new RuntimeException("eglInitialize failed");
+    }
+    localObject = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null)
+    {
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = null;
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
     }
     for (;;)
     {
+      if ((this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext == null) || (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext == EGL10.EGL_NO_CONTEXT))
+      {
+        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
+        if (localObject != null) {
+          GLTextureView.access$602((GLTextureView)localObject, true);
+        }
+      }
       try
       {
-        Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.2.6");
-        WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-        localUniSsoServerReq.comm.set((MessageMicro)localObject);
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("cmd", "apollo_interact.thank_zan");
-        if (!TextUtils.isEmpty(paramString1)) {
-          break label232;
-        }
-        paramString1 = "android";
-        ((JSONObject)localObject).put("from", paramString1);
-        ((JSONObject)localObject).put("touin", Long.parseLong(paramString2));
-        ((JSONObject)localObject).put("chestid", paramLong);
-        localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-        paramContext = new NewIntent(paramContext, aquf.class);
-        paramContext.putExtra("extra_cmd", "apollo_interact.thank_zan");
-        paramContext.putExtra("extra_callbackid", paramString2);
-        paramContext.putExtra("extra_data", localUniSsoServerReq.toByteArray());
-        paramContext.setObserver(this);
-        paramAppInterface.startServlet(paramContext);
+        a("createContext");
+        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
         return;
+        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = GLTextureView.access$400((GLTextureView)localObject).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
+        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = GLTextureView.access$500((GLTextureView)localObject).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig);
       }
-      catch (Exception paramContext) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("BoxCardHandler", 2, "addFlower failed ", paramContext);
-      return;
-      label232:
-      paramString1 = "android." + paramString1;
-    }
-  }
-  
-  public void a(Context paramContext, String paramString1, String paramString2, AppInterface paramAppInterface)
-  {
-    if ((paramContext == null) || (paramAppInterface == null) || (paramString1 == null)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramAppInterface.getCurrentAccountUin();
-    for (;;)
-    {
-      try
+      catch (Exception localException)
       {
-        Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.2.6");
-        WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-        localUniSsoServerReq.comm.set((MessageMicro)localObject);
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("cmd", "apollo_interact.take_chips");
-        if (!TextUtils.isEmpty(paramString2)) {
-          break label246;
-        }
-        paramString2 = "android";
-        ((JSONObject)localObject).put("from", paramString2);
-        ((JSONObject)localObject).put("dstuin", Long.parseLong(paramString1));
-        ((JSONObject)localObject).put("skey", ((TicketManager)paramAppInterface.getManager(2)).getSkey(this.jdField_b_of_type_JavaLangString));
-        localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-        paramContext = new NewIntent(paramContext, aquf.class);
-        paramContext.putExtra("extra_cmd", "apollo_interact.take_chips");
-        paramContext.putExtra("extra_data", localUniSsoServerReq.toByteArray());
-        paramContext.putExtra("extra_callbackid", paramString1);
-        paramContext.setObserver(this);
-        paramAppInterface.startServlet(paramContext);
-        return;
-      }
-      catch (Exception paramContext) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("BoxCardHandler", 2, "OpenPandora failed ", paramContext);
-      return;
-      label246:
-      paramString2 = "android." + paramString2;
-    }
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBundle == null) {}
-    String str1;
-    String str2;
-    long l2;
-    label236:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              for (;;)
-              {
-                return;
-                i = paramBundle.getInt("extra_result_code");
-                str1 = paramBundle.getString("extra_callbackid");
-                str2 = paramBundle.getString("extra_cmd");
-                if (QLog.isColorLevel()) {
-                  QLog.d("BoxCardHandler", 2, "OpenPandora onReceive type:" + paramInt + ", isSuccess: " + paramBoolean + ", svrRet: " + i + ", uin:" + str1);
-                }
-                l2 = -9223372036854775808L;
-                if (!paramBoolean) {
-                  break label2493;
-                }
-                l1 = l2;
-                try
-                {
-                  paramBundle = paramBundle.getByteArray("extra_data");
-                  l1 = l2;
-                  localObject1 = new WebSSOAgent.UniSsoServerRsp();
-                  l1 = l2;
-                  ((WebSSOAgent.UniSsoServerRsp)localObject1).mergeFrom(paramBundle);
-                  l1 = l2;
-                  l2 = ((WebSSOAgent.UniSsoServerRsp)localObject1).ret.get();
-                  l1 = l2;
-                  if (!"apollo_interact.thank_zan".equals(str2)) {
-                    break label236;
-                  }
-                  l1 = l2;
-                  if (this.jdField_a_of_type_Aiux != null)
-                  {
-                    l1 = l2;
-                    this.jdField_a_of_type_Aiux.a("apollo_interact.thank_zan", paramBoolean, l2, null, str1);
-                    return;
-                  }
-                }
-                catch (Exception paramBundle)
-                {
-                  if (this.jdField_a_of_type_Aiux != null) {
-                    this.jdField_a_of_type_Aiux.a(str2, false, l1, null, str1);
-                  }
-                }
-              }
-            } while (!QLog.isColorLevel());
-            QLog.e("BoxCardHandler", 2, paramBundle.getMessage());
-            return;
-            l1 = l2;
-            if (!"apollo_core.get_user_info".equals(str2)) {
-              break;
-            }
-            l1 = l2;
-            paramBundle = ((WebSSOAgent.UniSsoServerRsp)localObject1).rspdata.get();
-            l1 = l2;
-            if (QLog.isColorLevel())
-            {
-              l1 = l2;
-              QLog.d("BoxCardHandler", 2, "get Url onReceive retCode->" + l2 + " respStr->" + paramBundle);
-            }
-            l1 = l2;
-            paramBundle = new JSONObject(paramBundle).optJSONObject("data").optString("qq_head");
-            l1 = l2;
-            if (!TextUtils.isEmpty(paramBundle))
-            {
-              l1 = l2;
-              this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(str1, paramBundle);
-            }
-            l1 = l2;
-          } while (this.jdField_a_of_type_Aiux == null);
-          l1 = l2;
-          this.jdField_a_of_type_Aiux.a("apollo_core.get_user_info", true, 0L, paramBundle, str1);
-          return;
-          l1 = l2;
-        } while (!"apollo_interact.take_chips".equals(str2));
-        l1 = l2;
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-        l1 = l2;
-      } while (!this.jdField_a_of_type_JavaLangString.equals(str1));
-      if (l2 != -501028L) {
-        break;
-      }
-      l1 = l2;
-    } while (this.jdField_a_of_type_Aiux == null);
-    long l1 = l2;
-    this.jdField_a_of_type_Aiux.a("apollo_interact.take_chips", paramBoolean, l2, null, str1);
-    return;
-    l1 = l2;
-    paramBundle = ((WebSSOAgent.UniSsoServerRsp)localObject1).rspdata.get();
-    l1 = l2;
-    if (QLog.isColorLevel())
-    {
-      l1 = l2;
-      QLog.d("BoxCardHandler", 2, "onReceive retCode->" + l2 + " respStr->" + paramBundle);
-    }
-    l1 = l2;
-    Object localObject2 = new JSONObject(paramBundle).optJSONObject("data");
-    l1 = l2;
-    ((JSONObject)localObject2).optLong("checkpoint");
-    l1 = l2;
-    long l3 = ((JSONObject)localObject2).optLong("master");
-    l1 = l2;
-    long l4 = ((JSONObject)localObject2).optLong("chestid");
-    l1 = l2;
-    short s = (short)((JSONObject)localObject2).optInt("chipnum");
-    l1 = l2;
-    int i = ((JSONObject)localObject2).optInt("mine_chipnum");
-    l1 = l2;
-    int j = ((JSONObject)localObject2).optInt("goldNum");
-    l1 = l2;
-    Object localObject3 = ((JSONObject)localObject2).optString("back_color");
-    l1 = l2;
-    Object localObject1 = ((JSONObject)localObject2).optString("card_mask_color");
-    l1 = l2;
-    paramBundle = ((JSONObject)localObject2).optString("nick");
-    l1 = l2;
-    if (TextUtils.isEmpty(paramBundle)) {}
-    label708:
-    aiuq localaiuq;
-    ArrayList localArrayList;
-    label888:
-    JSONObject localJSONObject;
-    for (paramBundle = "TA";; paramBundle = paramBundle + "...")
-    {
-      l1 = l2;
-      localaiuq = new aiuq();
-      l1 = l2;
-      localaiuq.jdField_c_of_type_JavaLangString = paramBundle;
-      l1 = l2;
-      localaiuq.jdField_b_of_type_Long = ((JSONObject)localObject2).optLong("firstcode");
-      l1 = l2;
-      localArrayList = new ArrayList(4);
-      l1 = l2;
-      localaiuq.jdField_b_of_type_JavaLangString = str1;
-      l1 = l2;
-      localaiuq.jdField_c_of_type_Long = l4;
-      l1 = l2;
-      localaiuq.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      l1 = l2;
-      localaiuq.jdField_a_of_type_Long = l2;
-      l1 = l2;
-      localaiuq.jdField_a_of_type_Int = ApolloUtil.a((String)localObject3);
-      l1 = l2;
-      localaiuq.jdField_d_of_type_JavaLangString = ((JSONObject)localObject2).optString("topUrl");
-      l1 = l2;
-      localaiuq.jdField_e_of_type_JavaLangString = ((JSONObject)localObject2).optString("bottomUrl");
-      l1 = l2;
-      localObject3 = ((JSONObject)localObject2).optJSONArray("giftTotalList");
-      if (localObject3 == null) {
-        break label1133;
-      }
-      l1 = l2;
-      int k = ((JSONArray)localObject3).length();
-      paramInt = 0;
-      if (paramInt >= k) {
-        break label1133;
-      }
-      l1 = l2;
-      localJSONObject = ((JSONArray)localObject3).optJSONObject(paramInt);
-      if (localJSONObject != null) {
-        break;
-      }
-      break label2525;
-      l1 = l2;
-      if (mfy.a(paramBundle) <= 20) {
-        break label2522;
-      }
-      l1 = l2;
-      paramBundle = mfy.a(paramBundle, 0, 20);
-      l1 = l2;
-    }
-    l1 = l2;
-    Object localObject4 = new aius();
-    l1 = l2;
-    ((aius)localObject4).jdField_a_of_type_Int = localJSONObject.optInt("giftType");
-    l1 = l2;
-    ((aius)localObject4).jdField_b_of_type_Int = localJSONObject.optInt("giftTotal");
-    l1 = l2;
-    ((aius)localObject4).jdField_a_of_type_JavaLangString = localJSONObject.optString("iconUrl");
-    l1 = l2;
-    ((aius)localObject4).jdField_b_of_type_JavaLangString = localJSONObject.optString("jumpUrl");
-    l1 = l2;
-    boolean bool;
-    if (localJSONObject.optInt("isShow") == 1)
-    {
-      bool = true;
-      label1067:
-      l1 = l2;
-      ((aius)localObject4).jdField_a_of_type_Boolean = bool;
-      l1 = l2;
-      if (((aius)localObject4).jdField_a_of_type_Boolean)
-      {
-        l1 = l2;
-        localaiuq.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(((aius)localObject4).jdField_a_of_type_Int), localObject4);
-        l1 = l2;
-        localaiuq.jdField_a_of_type_JavaUtilList.add(localObject4);
-        break label2525;
-        label1133:
-        l1 = l2;
-        localObject3 = (aius)localaiuq.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
-        if (localObject3 != null)
-        {
-          l1 = l2;
-          if (((aius)localObject3).jdField_b_of_type_Int == 0)
-          {
-            l1 = l2;
-            ((aius)localObject3).jdField_b_of_type_Int = i;
-          }
-        }
-        l1 = l2;
-        localObject3 = (aius)localaiuq.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(7));
-        if (localObject3 != null)
-        {
-          l1 = l2;
-          if (((aius)localObject3).jdField_b_of_type_Int == 0)
-          {
-            l1 = l2;
-            ((aius)localObject3).jdField_b_of_type_Int = j;
-          }
-        }
-        l1 = l2;
-        localObject3 = ((JSONObject)localObject2).optJSONArray("tooklist");
-        l1 = l2;
-        localObject2 = ((JSONObject)localObject2).optJSONArray("tookGiftList");
-        i = -1;
-        l1 = l2;
-        if (localaiuq.jdField_b_of_type_Long != 0L) {
-          break label2538;
-        }
-        l1 = l2;
-        if (localaiuq.jdField_a_of_type_Long != -501031L) {
-          break label2556;
-        }
-        break label2538;
-        label1296:
-        j = i;
-        if (l2 == -501040L) {
-          break label2571;
-        }
-        paramInt = i;
-        if (localObject3 != null)
-        {
-          l1 = l2;
-          paramInt = i;
-          if (((JSONArray)localObject3).length() > 0)
-          {
-            j = 0;
-            label1335:
-            l1 = l2;
-            paramInt = i;
-            if (j < ((JSONArray)localObject3).length())
-            {
-              l1 = l2;
-              localJSONObject = (JSONObject)((JSONArray)localObject3).get(j);
-              l1 = l2;
-              localObject4 = new aiur();
-              l1 = l2;
-              ((aiur)localObject4).jdField_a_of_type_JavaLangString = localJSONObject.optString("name");
-              l1 = l2;
-              ((aiur)localObject4).jdField_a_of_type_Long = localJSONObject.optLong("uin");
-              l1 = l2;
-              ((aiur)localObject4).jdField_e_of_type_Long = localJSONObject.optLong("finishts");
-              l1 = l2;
-              ((aiur)localObject4).jdField_d_of_type_Long = localJSONObject.optLong("redeemts");
-              l1 = l2;
-              ((aiur)localObject4).jdField_a_of_type_Int = localJSONObject.optInt("id");
-              l1 = l2;
-              ((aiur)localObject4).jdField_c_of_type_Long = localJSONObject.optLong("ts");
-              l1 = l2;
-              ((aiur)localObject4).jdField_b_of_type_JavaLangString = localJSONObject.optString("grade");
-              l1 = l2;
-              ((aiur)localObject4).jdField_g_of_type_JavaLangString = localJSONObject.optString("gradeUrl");
-              l1 = l2;
-              ((aiur)localObject4).jdField_c_of_type_JavaLangString = localJSONObject.optString("nick");
-              l1 = l2;
-              ((aiur)localObject4).jdField_d_of_type_JavaLangString = localJSONObject.optString("head");
-              l1 = l2;
-              ((aiur)localObject4).jdField_b_of_type_Int = localJSONObject.optInt("viplevel");
-              l1 = l2;
-              ((aiur)localObject4).jdField_c_of_type_Int = localJSONObject.optInt("chiptotal");
-              l1 = l2;
-              ((aiur)localObject4).jdField_d_of_type_Int = localJSONObject.optInt("minenum");
-              l1 = l2;
-              ((aiur)localObject4).jdField_e_of_type_JavaLangString = localJSONObject.optString("picUrl");
-              l1 = l2;
-              ((aiur)localObject4).jdField_f_of_type_JavaLangString = localJSONObject.optString("picDesc");
-              l1 = l2;
-              ((aiur)localObject4).h = localJSONObject.optInt("isSquare");
-              l1 = l2;
-              ((aiur)localObject4).jdField_f_of_type_Int = localJSONObject.optInt("giftNum", 1);
-              l1 = l2;
-              if (((aiur)localObject4).jdField_b_of_type_Long == ((aiur)localObject4).jdField_a_of_type_Long)
-              {
-                l1 = l2;
-                if (TextUtils.isEmpty(((aiur)localObject4).jdField_c_of_type_JavaLangString))
-                {
-                  l1 = l2;
-                  ((aiur)localObject4).jdField_c_of_type_JavaLangString = paramBundle;
-                }
-              }
-              l1 = l2;
-              if (TextUtils.isEmpty(((aiur)localObject4).jdField_c_of_type_JavaLangString))
-              {
-                l1 = l2;
-                ((aiur)localObject4).jdField_c_of_type_JavaLangString = "TA";
-              }
-              l1 = l2;
-              ((aiur)localObject4).jdField_a_of_type_Short = ((short)localJSONObject.optInt("type"));
-              l1 = l2;
-              ((aiur)localObject4).jdField_b_of_type_Short = s;
-              l1 = l2;
-              ((aiur)localObject4).jdField_b_of_type_Long = l3;
-              l1 = l2;
-              ((aiur)localObject4).jdField_b_of_type_Boolean = bool;
-              l1 = l2;
-              ((aiur)localObject4).jdField_e_of_type_Int = ApolloUtil.a((String)localObject1);
-              l1 = l2;
-              paramInt = i;
-              if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-              {
-                l1 = l2;
-                paramInt = i;
-                if (this.jdField_b_of_type_JavaLangString.equals(String.valueOf(((aiur)localObject4).jdField_a_of_type_Long)))
-                {
-                  l1 = l2;
-                  paramInt = i;
-                  if (localJSONObject.optInt("zanmark") == 0) {
-                    paramInt = 0;
-                  }
-                }
-              }
-              l1 = l2;
-              ((aiur)localObject4).jdField_g_of_type_Int = 0;
-              l1 = l2;
-              if (localJSONObject.has("layoutStyle"))
-              {
-                l1 = l2;
-                ((aiur)localObject4).jdField_g_of_type_Int = localJSONObject.optInt("layoutStyle");
-              }
-              l1 = l2;
-              ((aiur)localObject4).jdField_a_of_type_Boolean = ((aiur)localObject4).a(this.jdField_b_of_type_JavaLangString);
-              l1 = l2;
-              if (((aiur)localObject4).jdField_a_of_type_Boolean)
-              {
-                l1 = l2;
-                localArrayList.add(0, localObject4);
-                break label2544;
-              }
-              l1 = l2;
-              localArrayList.add(localObject4);
-              break label2544;
-            }
-          }
-        }
-        j = paramInt;
-        if (localObject2 == null) {
-          break label2571;
-        }
-        l1 = l2;
-        j = paramInt;
-        if (((JSONArray)localObject2).length() <= 0) {
-          break label2571;
-        }
-        i = 0;
-        label2000:
-        l1 = l2;
-        j = paramInt;
-        if (i >= ((JSONArray)localObject2).length()) {
-          break label2571;
-        }
-        l1 = l2;
-        paramBundle = ((JSONArray)localObject2).getJSONObject(i);
-        l1 = l2;
-        localObject1 = new aiur();
-        l1 = l2;
-        ((aiur)localObject1).jdField_a_of_type_Long = paramBundle.optLong("uin");
-        l1 = l2;
-        ((aiur)localObject1).jdField_c_of_type_Long = paramBundle.optLong("ts");
-        l1 = l2;
-        ((aiur)localObject1).jdField_a_of_type_Short = ((short)paramBundle.optInt("giftType"));
-        l1 = l2;
-        if (((aiur)localObject1).jdField_a_of_type_Short == 7)
-        {
-          l1 = l2;
-          ((aiur)localObject1).jdField_g_of_type_Int = 2;
-        }
         for (;;)
         {
-          l1 = l2;
-          if (paramBundle.has("layoutStyle"))
-          {
-            l1 = l2;
-            ((aiur)localObject1).jdField_g_of_type_Int = paramBundle.optInt("layoutStyle");
-          }
-          l1 = l2;
-          localObject3 = (aius)localaiuq.jdField_a_of_type_JavaUtilHashMap.get(Short.valueOf(((aiur)localObject1).jdField_a_of_type_Short));
-          if (localObject3 == null) {
-            break;
-          }
-          l1 = l2;
-          if (((aius)localObject3).jdField_a_of_type_Boolean) {
-            break;
-          }
-          break label2562;
-          l1 = l2;
-          if (((aiur)localObject1).jdField_a_of_type_Short == 15)
-          {
-            l1 = l2;
-            ((aiur)localObject1).jdField_g_of_type_Int = 3;
-          }
-        }
-        l1 = l2;
-        ((aiur)localObject1).jdField_f_of_type_Int = paramBundle.optInt("giftNum");
-        l1 = l2;
-        ((aiur)localObject1).jdField_c_of_type_JavaLangString = paramBundle.optString("nick");
-        l1 = l2;
-        ((aiur)localObject1).jdField_d_of_type_JavaLangString = paramBundle.optString("head");
-        l1 = l2;
-        ((aiur)localObject1).jdField_b_of_type_JavaLangString = paramBundle.optString("grade");
-        l1 = l2;
-        ((aiur)localObject1).jdField_g_of_type_JavaLangString = paramBundle.optString("gradeUrl");
-        l1 = l2;
-        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-        {
-          l1 = l2;
-          if (this.jdField_b_of_type_JavaLangString.equals(String.valueOf(((aiur)localObject1).jdField_a_of_type_Long)))
-          {
-            l1 = l2;
-            if (paramBundle.optInt("zanmark") == 0)
-            {
-              paramInt = 0;
-              label2349:
-              l1 = l2;
-              ((aiur)localObject1).jdField_a_of_type_Boolean = ((aiur)localObject1).a(this.jdField_b_of_type_JavaLangString);
-              l1 = l2;
-              if (((aiur)localObject1).jdField_a_of_type_Boolean)
-              {
-                l1 = l2;
-                localArrayList.add(0, localObject1);
-                break label2562;
-              }
-              l1 = l2;
-              localArrayList.add(localObject1);
-              break label2562;
-            }
-          }
+          QLog.e("GLTextureView", 1, localException, new Object[0]);
         }
       }
     }
-    for (;;)
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 == null) {
+      throw new RuntimeException("egl not initialized");
+    }
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay == null) {
+      throw new RuntimeException("eglDisplay not initialized");
+    }
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig == null) {
+      throw new RuntimeException("mEglConfig not initialized");
+    }
+    d();
+    GLTextureView localGLTextureView = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localGLTextureView != null) && (localGLTextureView.getSurfaceTexture() != null)) {}
+    for (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = GLTextureView.access$700(localGLTextureView).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig, localGLTextureView.getSurfaceTexture()); (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface == null) || (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface == EGL10.EGL_NO_SURFACE); this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null)
     {
-      label2413:
-      l1 = l2;
-      localaiuq.jdField_a_of_type_Boolean = bool;
-      l1 = l2;
-      Collections.sort(localArrayList);
-      l1 = l2;
-      localaiuq.jdField_b_of_type_JavaUtilList = localArrayList;
-      l1 = l2;
-      localaiuq.a();
-      l1 = l2;
-      if (this.jdField_a_of_type_Aiux == null) {
-        break;
+      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError() == 12299) {
+        Log.e("EglHelper", "createWindowSurface returned EGL_BAD_NATIVE_WINDOW.");
       }
-      l1 = l2;
-      this.jdField_a_of_type_Aiux.a("apollo_interact.take_chips", paramBoolean, l2, localaiuq, str1);
-      return;
-      label2493:
-      label2522:
-      label2525:
-      label2538:
-      label2544:
-      label2556:
-      do
-      {
-        bool = false;
-        break label2413;
-        if (this.jdField_a_of_type_Aiux == null) {
-          break;
-        }
-        this.jdField_a_of_type_Aiux.a(str2, false, -9223372036854775808L, null, str1);
-        return;
-        break label2349;
-        break label708;
-        paramInt += 1;
-        break label888;
-        bool = false;
-        break label1067;
-        bool = true;
-        break label1296;
-        j += 1;
-        i = paramInt;
-        break label1335;
-        bool = false;
-        break label1296;
-        i += 1;
-        break label2000;
-      } while (j != 0);
-      label2562:
-      label2571:
-      bool = true;
+      return false;
+    }
+    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext))
+    {
+      a("EGLHelper", "eglMakeCurrent", this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
+      return false;
+    }
+    return true;
+  }
+  
+  public void b()
+  {
+    d();
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != null)
+    {
+      GLTextureView localGLTextureView = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localGLTextureView != null) {
+        GLTextureView.access$500(localGLTextureView).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+      }
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
+    }
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay != null)
+    {
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglTerminate(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
     }
   }
 }

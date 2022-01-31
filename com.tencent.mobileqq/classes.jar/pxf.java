@@ -1,54 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class pxf
+  implements pca
 {
-  public static void a(long paramLong, KandianUrlImageView paramKandianUrlImageView)
-  {
-    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, new pxg(paramLong, paramKandianUrlImageView));
-    if (localReadInJoyUserInfo != null) {
-      b(localReadInJoyUserInfo, paramKandianUrlImageView);
-    }
-  }
+  public pxf(ComponentHeaderPolymeric paramComponentHeaderPolymeric, ArticleInfo paramArticleInfo) {}
   
-  private static void b(ReadInJoyUserInfo paramReadInJoyUserInfo, KandianUrlImageView paramKandianUrlImageView)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (paramReadInJoyUserInfo == null) {
-      QLog.d("ReadInJoyVIconHelper", 2, "[setVIconWithUserInfo], userInfo is null.");
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentHeaderPolymeric", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean + " followStatus = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.e);
     }
-    do
+    if (!paramString.equals(ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric).getTag())) {
+      return;
+    }
+    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, true);
+    if (paramBoolean)
     {
-      do
-      {
-        return;
-      } while (paramKandianUrlImageView == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("ReadInJoyVIconHelper", 2, "[refreshVIcon], userInfo = " + paramReadInJoyUserInfo);
-      }
-      try
-      {
-        if (!TextUtils.isEmpty(paramReadInJoyUserInfo.smallIconUrl))
-        {
-          paramKandianUrlImageView.setImageResource(2130841183);
-          paramKandianUrlImageView.setVisibility(0);
-          paramKandianUrlImageView.a(new URL(paramReadInJoyUserInfo.smallIconUrl));
-          return;
-        }
-      }
-      catch (MalformedURLException paramReadInJoyUserInfo)
-      {
-        QLog.e("ReadInJoyVIconHelper", 1, "[refreshVIcon], e = " + paramReadInJoyUserInfo);
-        return;
-      }
-    } while (TextUtils.isEmpty(paramReadInJoyUserInfo.largeIconUrl));
-    paramKandianUrlImageView.setImageResource(2130841183);
-    paramKandianUrlImageView.setVisibility(0);
-    paramKandianUrlImageView.a(new URL(paramReadInJoyUserInfo.largeIconUrl));
+      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, true);
+      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2);
+      return;
+    }
+    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, 1);
   }
 }
 

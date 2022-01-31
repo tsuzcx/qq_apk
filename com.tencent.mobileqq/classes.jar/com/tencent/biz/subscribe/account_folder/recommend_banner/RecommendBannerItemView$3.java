@@ -1,13 +1,13 @@
 package com.tencent.biz.subscribe.account_folder.recommend_banner;
 
-import bbmy;
+import bcpw;
 
 class RecommendBannerItemView$3
   implements Runnable
 {
   public void run()
   {
-    bbmy.a(this.this$0.getContext(), this.a, 0).a();
+    bcpw.a(this.this$0.getContext(), this.a, 0).a();
   }
 }
 

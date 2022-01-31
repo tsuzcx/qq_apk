@@ -1,28 +1,55 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.SingleLineTextView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class ahcv
-  extends ahbl
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public DragTextView a;
-  public SingleLineTextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
+  public static int a(String paramString, int paramInt1, int paramInt2)
+  {
+    SharedPreferences localSharedPreferences = a(paramInt2);
+    paramInt2 = paramInt1;
+    if (localSharedPreferences != null)
+    {
+      paramInt2 = paramInt1;
+      if (!TextUtils.isEmpty(paramString)) {
+        paramInt2 = localSharedPreferences.getInt("url_down_scene" + paramString, paramInt1);
+      }
+    }
+    return paramInt2;
+  }
+  
+  private static SharedPreferences a(int paramInt)
+  {
+    if (BaseApplicationImpl.getApplication() != null)
+    {
+      if (paramInt == 1) {
+        return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_utilinner", 4);
+      }
+      return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_util", 4);
+    }
+    return null;
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
+      localSharedPreferences.edit().remove("url_down_scene" + paramString).apply();
+    }
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2)
+  {
+    SharedPreferences localSharedPreferences = a(paramInt2);
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
+      localSharedPreferences.edit().putInt("url_down_scene" + paramString, paramInt1).apply();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahcv
  * JD-Core Version:    0.7.0.1
  */

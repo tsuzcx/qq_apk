@@ -1,29 +1,12 @@
-import android.view.SurfaceView;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class agco
-  implements basu
+class agco
+  implements DialogInterface.OnCancelListener
 {
-  public agco(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  agco(agcm paramagcm) {}
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      this.a.a.setVisibility(0);
-      this.a.e();
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
-      }
-      return;
-      this.a.a.setVisibility(8);
-      this.a.f();
-    }
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

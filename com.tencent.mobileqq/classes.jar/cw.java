@@ -1,157 +1,34 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
+import com.dataline.activities.LiteActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-class cw
-  extends AsyncTask<Integer, Integer, String>
+public class cw
+  extends aouj
 {
-  cw(cv paramcv, ArrayList paramArrayList, int paramInt) {}
+  public cw(LiteActivity paramLiteActivity) {}
   
-  DataLineMsgRecord a(ajgm paramajgm, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d(LiteActivity.a, 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
     }
-    int i = paramInt1;
-    if (paramInt1 == 0) {
-      switch (apck.a(paramString))
-      {
-      default: 
-        i = 0;
+    paramString1 = this.a.app.a().a(paramLong2);
+    if (paramString1 == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e(LiteActivity.a, 2, "OnFileTransferEnd faild, get entity is faild, sessionId[" + String.valueOf(paramLong2) + "]");
       }
     }
-    for (;;)
-    {
-      DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-      localDataLineMsgRecord.msgtype = ajgm.a(i);
-      localDataLineMsgRecord.sessionid = paramajgm.a(0, this.jdField_a_of_type_Int).longValue();
-      localDataLineMsgRecord.path = paramString;
-      localDataLineMsgRecord.thumbPath = null;
-      localDataLineMsgRecord.groupId = paramInt2;
-      localDataLineMsgRecord.groupSize = paramInt3;
-      localDataLineMsgRecord.groupIndex = paramInt4;
-      return localDataLineMsgRecord;
-      i = 3;
-      continue;
-      i = 2;
-    }
-  }
-  
-  protected String a(Integer... paramVarArgs)
-  {
-    int i = paramVarArgs[0].intValue();
-    a(this.jdField_a_of_type_JavaUtilArrayList, i);
-    return null;
-  }
-  
-  void a(List<String> paramList, int paramInt)
-  {
-    if (paramList == null) {}
-    ajgm localajgm;
-    int j;
-    int i;
-    Object localObject;
-    for (;;)
+    do
     {
       return;
-      localajgm = (ajgm)this.jdField_a_of_type_Cv.a.a(8);
-      j = paramList.size();
-      if (j > 3) {
-        break;
-      }
-      i = 0;
-      while (i < j)
+      if (paramBoolean)
       {
-        localObject = a(localajgm, (String)paramList.get(i), paramInt, 0, 0, 0);
-        if (localObject != null) {
-          localajgm.a((DataLineMsgRecord)localObject, false);
-        }
-        i += 1;
+        apue.a(paramLong2);
+        return;
       }
-    }
-    label117:
-    DataLineMsgRecord localDataLineMsgRecord;
-    if ((j > 3) && (j < 50))
-    {
-      localObject = new ArrayList();
-      int k = localajgm.a();
-      i = 0;
-      if (i < j)
-      {
-        localDataLineMsgRecord = a(localajgm, (String)paramList.get(i), paramInt, k, j, i);
-        if (localDataLineMsgRecord != null) {
-          ((ArrayList)localObject).add(localDataLineMsgRecord);
-        }
-        if (!DataLineMsgSet.isSingle(paramInt, k)) {
-          break label408;
-        }
-        if (localDataLineMsgRecord != null)
-        {
-          localDataLineMsgRecord.groupId = 0;
-          localDataLineMsgRecord.groupIndex = 0;
-          localDataLineMsgRecord.groupSize = 0;
-        }
-        if (((ArrayList)localObject).size() > 0) {
-          localajgm.a((ArrayList)localObject, false);
-        }
-        localObject = new ArrayList();
-      }
-    }
-    label259:
-    label405:
-    label408:
-    for (;;)
-    {
-      i += 1;
-      break label117;
-      if (((ArrayList)localObject).size() <= 0) {
-        break;
-      }
-      localajgm.a((ArrayList)localObject, false);
-      return;
-      localObject = new ArrayList();
-      j = localajgm.a();
-      i = 0;
-      if (i < 50)
-      {
-        localDataLineMsgRecord = a(localajgm, (String)paramList.get(i), paramInt, j, 50, i);
-        if (localDataLineMsgRecord != null) {
-          ((ArrayList)localObject).add(localDataLineMsgRecord);
-        }
-        if (!DataLineMsgSet.isSingle(paramInt, j)) {
-          break label405;
-        }
-        if (localDataLineMsgRecord != null)
-        {
-          localDataLineMsgRecord.groupId = 0;
-          localDataLineMsgRecord.groupIndex = 0;
-          localDataLineMsgRecord.groupSize = 0;
-        }
-        if (((ArrayList)localObject).size() > 0) {
-          localajgm.a((ArrayList)localObject, false);
-        }
-        localObject = new ArrayList();
-      }
-      for (;;)
-      {
-        i += 1;
-        break label259;
-        if (((ArrayList)localObject).size() > 0) {
-          localajgm.a((ArrayList)localObject, false);
-        }
-        i = 0;
-        while (i < 50)
-        {
-          paramList.remove(0);
-          i += 1;
-        }
-        break;
-      }
-    }
+    } while ((paramString1.nOpType != 4) && (paramString1.nOpType != 6));
+    apue.a(paramLong2, paramInt2, paramString2);
   }
 }
 

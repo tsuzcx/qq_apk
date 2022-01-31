@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import org.json.JSONObject;
 
 class bhsm
-  implements View.OnClickListener
+  implements bhsn
 {
-  bhsm(bhsk parambhsk) {}
+  bhsm(bhsj parambhsj) {}
   
-  public void onClick(View paramView)
+  public void a(JSONObject paramJSONObject, Bundle paramBundle)
   {
-    this.a.d();
+    paramJSONObject.put("event_video_album_state", paramBundle.getString("event_video_album_state"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhsm
  * JD-Core Version:    0.7.0.1
  */

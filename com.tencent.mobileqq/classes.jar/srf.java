@@ -1,76 +1,179 @@
-import java.io.File;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
-class srf
-  extends ssg
+public class srf
 {
-  srf(sre paramsre, shd paramshd)
-  {
-    super(paramshd);
-  }
+  private static String jdField_a_of_type_JavaLangString = "0123456789bcdefghjkmnpqrstuvwxyz";
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "b", "c", "d", "e", "f", "g", "h", "j", "k", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
   
-  protected ssj a(ssi... paramVarArgs)
+  public static String a(double paramDouble1, double paramDouble2, int paramInt)
   {
-    ssj localssj = super.a(paramVarArgs);
-    paramVarArgs = paramVarArgs[0];
-    String str;
-    if (localssj.jdField_a_of_type_Int == 0) {
-      str = paramVarArgs.b.substring(0, paramVarArgs.b.length() - 4);
-    }
-    try
+    StringBuilder localStringBuilder = new StringBuilder();
+    double d5 = 90.0D;
+    double d3 = -90.0D;
+    double d2 = 0.0D;
+    double d6 = 180.0D;
+    double d4 = -180.0D;
+    double d1 = 0.0D;
+    int i = 1;
+    int k = 0;
+    while (k < paramInt)
     {
-      vlm.d(str);
-      label42:
-      int i = mpx.a(paramVarArgs.b, str);
-      if (i == 0)
+      int m = 0;
+      int n = 0;
+      int j = i;
+      i = n;
+      if (m < 5)
       {
-        if (sre.a(str, false)) {
-          try
+        double d8;
+        double d7;
+        if (j != 0)
+        {
+          i <<= 1;
+          if (paramDouble2 >= d1)
           {
-            paramVarArgs = this.a.a(new File(str, "config.json"));
-            if (paramVarArgs != null)
-            {
-              urk.d("FileDownloadTask", "parse config file success !");
-              this.a.a.put(str, paramVarArgs);
-              return localssj;
+            d8 = (d6 + d1) / 2.0D;
+            i += 1;
+            d4 = d6;
+            d7 = d2;
+            d2 = d3;
+            d6 = d5;
+            d5 = d7;
+            d3 = d1;
+            d1 = d8;
+            label131:
+            if (j != 0) {
+              break label309;
             }
-          }
-          catch (Exception paramVarArgs)
-          {
-            for (;;)
-            {
-              urk.c("FileDownloadTask", "parse config failed", paramVarArgs);
-              paramVarArgs = null;
-            }
-            urk.e("FileDownloadTask", "parse config failed : %s, %s", new Object[] { str, "config.json" });
-            return new ssj(localssj.jdField_a_of_type_Ssi, -1, "illegal config file");
           }
         }
-        urk.e("FileDownloadTask", "unzip success, but this is an illegal filter folder : %s", new Object[] { str });
-        return new ssj(localssj.jdField_a_of_type_Ssi, -1, "illegal folder");
+        label309:
+        for (j = 1;; j = 0)
+        {
+          m += 1;
+          d7 = d6;
+          d8 = d2;
+          d2 = d5;
+          d6 = d4;
+          d4 = d3;
+          d3 = d8;
+          d5 = d7;
+          break;
+          d8 = (d1 + d4) / 2.0D;
+          d6 = d3;
+          d7 = d5;
+          d3 = d4;
+          d4 = d1;
+          d1 = d8;
+          d5 = d2;
+          d2 = d6;
+          d6 = d7;
+          break label131;
+          i <<= 1;
+          if (paramDouble1 >= d2)
+          {
+            d3 = (d5 + d2) / 2.0D;
+            i += 1;
+            d7 = d5;
+            d5 = d3;
+            d3 = d4;
+            d4 = d6;
+            d6 = d7;
+            break label131;
+          }
+          d5 = (d2 + d3) / 2.0D;
+          d7 = d2;
+          d2 = d3;
+          d3 = d4;
+          d4 = d6;
+          d6 = d7;
+          break label131;
+        }
       }
-      urk.e("FileDownloadTask", "download success, but unzip failed : %d", new Object[] { Integer.valueOf(i) });
-      return new ssj(localssj.jdField_a_of_type_Ssi, i, "unzip failed");
+      localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[i]);
+      k += 1;
+      i = j;
     }
-    catch (Exception localException)
-    {
-      break label42;
-    }
+    return localStringBuilder.toString();
   }
   
-  protected void a(ssj arg1)
+  public static List<srg> a(String paramString)
   {
-    urk.a("FileDownloadTask", "downloadConfigFile onPostExecute : %s", ???);
-    if (???.jdField_a_of_type_Int == 0) {
-      urk.d("FileDownloadTask", "get filter resource success : %s", new Object[] { ???.jdField_a_of_type_Ssi.jdField_a_of_type_JavaLangString });
+    if ((paramString == null) || (paramString.length() == 0)) {
+      throw new Error("Invalid geoHash");
     }
-    synchronized (this.a.b)
+    paramString = paramString.toLowerCase();
+    int i = 1;
+    double d3 = -90.0D;
+    double d4 = 90.0D;
+    double d1 = -180.0D;
+    double d2 = 180.0D;
+    int j = 0;
+    while (j < paramString.length())
     {
-      sre.a(this.a, null);
-      this.a.d();
-      return;
-      urk.d("FileDownloadTask", "get filter resource failed : %d : %s : %s", new Object[] { Integer.valueOf(???.jdField_a_of_type_Int), ???.jdField_a_of_type_JavaLangString, ???.jdField_a_of_type_Ssi.jdField_a_of_type_JavaLangString });
+      int k = paramString.charAt(j);
+      int m = jdField_a_of_type_JavaLangString.indexOf(k);
+      if (m == -1) {
+        throw new Error("Invalid geoHash");
+      }
+      k = 4;
+      if (k >= 0)
+      {
+        double d6 = m >> k & 0x1;
+        double d5;
+        if (i != 0)
+        {
+          d5 = (d1 + d2) / 2.0D;
+          if (d6 == 1.0D)
+          {
+            d1 = d5;
+            label135:
+            if (i != 0) {
+              break label190;
+            }
+          }
+        }
+        label190:
+        for (i = 1;; i = 0)
+        {
+          k -= 1;
+          break;
+          d2 = d5;
+          break label135;
+          d5 = (d3 + d4) / 2.0D;
+          if (d6 == 1.0D)
+          {
+            d3 = d5;
+            break label135;
+          }
+          d4 = d5;
+          break label135;
+        }
+      }
+      j += 1;
     }
+    paramString = new srg(d3, d1);
+    srg localsrg = new srg(d4, d2);
+    ArrayList localArrayList = new ArrayList(2);
+    localArrayList.add(paramString);
+    localArrayList.add(localsrg);
+    return localArrayList;
+  }
+  
+  public static srg a(String paramString)
+  {
+    Object localObject = a(paramString);
+    srg localsrg = (srg)((List)localObject).get(0);
+    localObject = (srg)((List)localObject).get(1);
+    double d3 = srg.a(localsrg);
+    double d1 = srg.b(localsrg);
+    double d4 = srg.a((srg)localObject);
+    double d2 = srg.b((srg)localObject);
+    d3 = (d3 + d4) / 2.0D;
+    d1 = (d2 + d1) / 2.0D;
+    localsrg = new srg(d3, d1);
+    veg.a("Q.qqstory.recommendAlbum.logic.decodeGeoHash", " geoHash=%s, lat=%s, lon=%s", paramString, Double.valueOf(d3), Double.valueOf(d1));
+    return localsrg;
   }
 }
 

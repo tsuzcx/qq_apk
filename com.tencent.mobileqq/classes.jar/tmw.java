@@ -1,27 +1,29 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.YearNodeInfo;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tmw
-  extends QQUIEventReceiver<tmv, tna>
+  extends syq
 {
-  public tmw(@NonNull tmv paramtmv)
-  {
-    super(paramtmv);
-  }
+  public List<MomeriesYearNode> a = new ArrayList();
   
-  public void a(@NonNull tmv paramtmv, @NonNull tna paramtna)
+  public tmw() {}
+  
+  public tmw(qqstory_service.RspProfileYearNodeList paramRspProfileYearNodeList)
   {
-    if (paramtna.a.isSuccess())
+    super(paramRspProfileYearNodeList.result);
+    paramRspProfileYearNodeList = paramRspProfileYearNodeList.year_node_list.get().iterator();
+    while (paramRspProfileYearNodeList.hasNext())
     {
-      urk.a("Q.qqstory.playernew.LoadingMoreWidget", "PlayVideoChangeReceiver. %s.", paramtna.toString());
-      paramtmv.e();
+      qqstory_struct.YearNodeInfo localYearNodeInfo = (qqstory_struct.YearNodeInfo)paramRspProfileYearNodeList.next();
+      MomeriesYearNode localMomeriesYearNode = new MomeriesYearNode();
+      localMomeriesYearNode.convertFrom(localYearNodeInfo);
+      this.a.add(localMomeriesYearNode);
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tna.class;
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.biz.subscribe.component.base;
 
-import wbp;
-import wbq;
-import wbs;
+import wpc;
+import wpd;
+import wpf;
 
 public class ComponentAdapter$1$2
   implements Runnable
 {
-  public ComponentAdapter$1$2(wbq paramwbq, int paramInt1, int paramInt2) {}
+  public ComponentAdapter$1$2(wpd paramwpd, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Wbq.a.a().notifyItemRangeChanged(this.jdField_a_of_type_Wbq.a.c(this.jdField_a_of_type_Int), this.b);
+    this.jdField_a_of_type_Wpd.a.a().notifyItemRangeChanged(this.jdField_a_of_type_Wpd.a.c(this.jdField_a_of_type_Int), this.b);
   }
 }
 

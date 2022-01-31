@@ -1,68 +1,68 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bdew
 {
-  private static volatile Handler jdField_a_of_type_AndroidOsHandler;
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private static volatile Handler jdField_b_of_type_AndroidOsHandler;
-  private static HandlerThread jdField_b_of_type_AndroidOsHandlerThread;
-  private static volatile Handler c;
+  protected static volatile bdew a;
+  protected List<bdex> a;
+  protected boolean a;
   
-  public static Handler a()
+  public bdew()
   {
-    if (jdField_b_of_type_AndroidOsHandler == null) {}
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public static bdew a()
+  {
+    if (jdField_a_of_type_Bdew == null) {
+      jdField_a_of_type_Bdew = new bdew();
+    }
+    return jdField_a_of_type_Bdew;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
     try
     {
-      if (jdField_b_of_type_AndroidOsHandler == null)
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      b(paramBoolean);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      bdex[] arrayOfbdex = new bdex[this.jdField_a_of_type_JavaUtilList.size()];
+      this.jdField_a_of_type_JavaUtilList.toArray(arrayOfbdex);
+      if (arrayOfbdex != null)
       {
-        jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MINIAPP_SUB", 0);
-        jdField_a_of_type_AndroidOsHandlerThread.start();
-        jdField_b_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+        int j = arrayOfbdex.length;
+        int i = 0;
+        if (i < j)
+        {
+          arrayOfbdex[i].a(paramBoolean);
+          i += 1;
+        }
       }
-      return jdField_b_of_type_AndroidOsHandler;
     }
-    finally {}
-  }
-  
-  public static void a(Runnable paramRunnable, int paramInt, bdex parambdex, boolean paramBoolean)
-  {
-    new Thread(paramRunnable).start();
-  }
-  
-  public static Handler b()
-  {
-    if (c == null) {}
-    try
-    {
-      if (c == null)
-      {
-        jdField_b_of_type_AndroidOsHandlerThread = new HandlerThread("MINIAPP_FILE", 0);
-        jdField_b_of_type_AndroidOsHandlerThread.start();
-        c = new Handler(jdField_b_of_type_AndroidOsHandlerThread.getLooper());
-      }
-      return c;
-    }
-    finally {}
-  }
-  
-  public static Handler c()
-  {
-    if (jdField_a_of_type_AndroidOsHandler == null) {}
-    try
-    {
-      if (jdField_a_of_type_AndroidOsHandler == null) {
-        jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-      }
-      return jdField_a_of_type_AndroidOsHandler;
-    }
-    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdew
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import agff;
-import agfg;
-import agfh;
-import agfi;
-import agfj;
-import agfk;
-import agfp;
-import agih;
+import agrd;
+import agrf;
+import agrg;
+import agrh;
+import agri;
+import agrj;
+import agro;
+import agus;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,10 +28,10 @@ import com.tencent.widget.XListView;
 public class AlbumListFragment
   extends Fragment
 {
-  agff jdField_a_of_type_Agff;
-  public agfj a;
-  public agfk a;
-  public agfp a;
+  agrd jdField_a_of_type_Agrd;
+  public agri a;
+  public agrj a;
+  public agro a;
   FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   XFrameLayout jdField_a_of_type_ComTencentWidgetXFrameLayout;
@@ -40,20 +40,20 @@ public class AlbumListFragment
   @TargetApi(14)
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296933));
-    this.jdField_a_of_type_ComTencentWidgetXFrameLayout = ((XFrameLayout)paramView.findViewById(2131303624));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362474));
+    this.jdField_a_of_type_ComTencentWidgetXFrameLayout = ((XFrameLayout)paramView.findViewById(2131369294));
     this.jdField_a_of_type_ComTencentWidgetXFrameLayout.setCornerRadiusAndMode(20, 5);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramView.findViewById(2131296903));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramView.findViewById(2131362444));
     this.jdField_a_of_type_ComTencentWidgetXListView.setWrapByScroll(true);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Agfp);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new agfi(this, null));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Agro);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new agrh(this, null));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131296934));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new agfg(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362475));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new agrf(this));
     int i = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_index", 0);
     int j = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_y", 0);
-    Looper.myQueue().addIdleHandler(new agfh(this, i, j));
-    this.jdField_a_of_type_Agfk.b();
+    Looper.myQueue().addIdleHandler(new agrg(this, i, j));
+    this.jdField_a_of_type_Agrj.b();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -73,12 +73,12 @@ public class AlbumListFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131495065, paramViewGroup, false);
-    this.jdField_a_of_type_Agfk = agih.a(getActivity().getIntent().getIntExtra("enter_from", 0), this);
-    this.jdField_a_of_type_Agff = this.jdField_a_of_type_Agfk.jdField_a_of_type_Agff;
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560640, paramViewGroup, false);
+    this.jdField_a_of_type_Agrj = agus.a(getActivity().getIntent().getIntExtra("enter_from", 0), this);
+    this.jdField_a_of_type_Agrd = this.jdField_a_of_type_Agrj.jdField_a_of_type_Agrd;
     paramViewGroup = getActivity().getIntent();
-    this.jdField_a_of_type_Agfj = ((agfj)getActivity());
-    this.jdField_a_of_type_Agfk.a(paramViewGroup);
+    this.jdField_a_of_type_Agri = ((agri)getActivity());
+    this.jdField_a_of_type_Agrj.a(paramViewGroup);
     a(paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -91,8 +91,8 @@ public class AlbumListFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    if (this.jdField_a_of_type_Agfk != null) {
-      this.jdField_a_of_type_Agfk.a();
+    if (this.jdField_a_of_type_Agrj != null) {
+      this.jdField_a_of_type_Agrj.a();
     }
   }
 }

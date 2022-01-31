@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.entry;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 
 public class MiniAppExposureManager$MiniAppExposureData
-  implements MiniAppExposureManager.BaseExposureReport
+  extends MiniAppExposureManager.BaseExposureReport
 {
   private MiniAppConfig appConfig;
   private int position;

@@ -1,36 +1,20 @@
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.viola.core.ViolaInstance;
+import java.util.List;
 
 public class rxl
-  extends rxe
+  implements quk
 {
-  public long a;
-  public boolean a;
+  public rxl(BridgeModule paramBridgeModule, List paramList) {}
   
-  public rxl(JSONObject paramJSONObject)
+  public List<qul> a(int paramInt, boolean paramBoolean)
   {
-    super(paramJSONObject);
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public static rxl a(JSONObject paramJSONObject)
+  public boolean a()
   {
-    return new rxl(paramJSONObject);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isPreloadVideoPlugin");
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("queryPluginTimeInterval");
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = 3600L;
-  }
-  
-  public String toString()
-  {
-    return "WeSeeVideoPluginConfigInfo{mIsPreloadPluginInWsRecommend=" + this.jdField_a_of_type_Boolean + ", mQueryPluginTimeInterval=" + this.jdField_a_of_type_Long + '}';
+    return bbev.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getActivity());
   }
 }
 

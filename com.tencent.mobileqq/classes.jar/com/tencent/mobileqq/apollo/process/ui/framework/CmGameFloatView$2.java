@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.ui.framework;
 
-import ajjy;
-import begr;
+import ajyc;
+import bfol;
 import com.tencent.mobileqq.apollo.view.FrameGifView;
 
 class CmGameFloatView$2
@@ -21,18 +21,18 @@ class CmGameFloatView$2
     while (CmGameFloatView.b(this.this$0) == -1)
     {
       return;
-      CmGameFloatView.a(this.this$0).setImageResource(2130838935);
+      CmGameFloatView.a(this.this$0).setImageResource(2130838956);
       return;
       CmGameFloatView.a(this.this$0).c();
-      CmGameFloatView.a(this.this$0).setImageResource(2130838933);
+      CmGameFloatView.a(this.this$0).setImageResource(2130838954);
       return;
     }
     if (this.a)
     {
-      CmGameFloatView.a(this.this$0).a(CmGameFloatView.b(this.this$0), ajjy.a(2131636278));
+      CmGameFloatView.a(this.this$0).a(CmGameFloatView.b(this.this$0), ajyc.a(2131702062));
       return;
     }
-    CmGameFloatView.a(this.this$0).a(CmGameFloatView.b(this.this$0), ajjy.a(2131636276));
+    CmGameFloatView.a(this.this$0).a(CmGameFloatView.b(this.this$0), ajyc.a(2131702060));
   }
 }
 

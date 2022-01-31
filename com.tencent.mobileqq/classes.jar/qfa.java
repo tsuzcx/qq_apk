@@ -1,19 +1,26 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity.2.1;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity.2.2;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class qfa
-  extends ohe
+  implements oep
 {
-  private qfa(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  public qfa(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void j()
+  public void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
   {
-    if ((this.a.getActivity() instanceof VideoFeedsPlayActivity))
-    {
-      ((VideoFeedsPlayActivity)this.a.getActivity()).d();
-      this.a.getActivity().overridePendingTransition(0, 0);
-    }
+    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onError: code - " + paramInt + " msg - " + paramString);
+    ReadInJoyDeliverVideoActivity.a(this.a).post(new ReadInJoyDeliverVideoActivity.2.2(this));
+  }
+  
+  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  {
+    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onSuccess: outputPath - " + paramString);
+    ReadInJoyDeliverVideoActivity.b(this.a, paramString);
+    ReadInJoyDeliverVideoActivity.a(this.a).post(new ReadInJoyDeliverVideoActivity.2.1(this));
   }
 }
 

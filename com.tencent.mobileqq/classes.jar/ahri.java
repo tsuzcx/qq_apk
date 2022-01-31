@@ -1,52 +1,47 @@
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import java.util.Comparator;
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Rect;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.qphone.base.util.QLog;
+import java.io.InputStream;
 
 public class ahri
-  implements Comparator<ResultRecord>
+  implements ImageAssetDelegate
 {
-  public int a(ResultRecord paramResultRecord1, ResultRecord paramResultRecord2)
+  private Context a;
+  
+  public ahri(Context paramContext)
   {
-    int j = -1;
-    long l1;
-    long l2;
-    label17:
-    int i;
-    if (paramResultRecord1 == null)
+    this.a = paramContext;
+  }
+  
+  @Nullable
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  {
+    try
     {
-      l1 = 0L;
-      if (paramResultRecord2 != null) {
-        break label38;
-      }
-      l2 = 0L;
-      if (l1 != l2) {
-        break label47;
-      }
-      i = 0;
+      paramLottieImageAsset = this.a.getAssets().open("login_btn_lottie_images/" + paramLottieImageAsset.getFileName());
+      Object localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inScaled = false;
+      localObject = BitmapFactory.decodeStream(paramLottieImageAsset, (Rect)null, (BitmapFactory.Options)localObject);
+      paramLottieImageAsset.close();
+      return localObject;
     }
-    label38:
-    label47:
-    do
+    catch (Throwable paramLottieImageAsset)
     {
-      do
-      {
-        return i;
-        l1 = paramResultRecord1.a;
-        break;
-        l2 = paramResultRecord2.a;
-        break label17;
-        i = j;
-      } while (l1 == 0L);
-      if (l2 == 0L) {
-        return 1;
-      }
-      i = j;
-    } while (l1 < l2);
-    return 1;
+      QLog.i("LoginBtnImageAssetDelegate", 2, "fetchBitmap error " + paramLottieImageAsset.getMessage());
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahri
  * JD-Core Version:    0.7.0.1
  */

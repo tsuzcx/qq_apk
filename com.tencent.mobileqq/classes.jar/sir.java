@@ -1,83 +1,39 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import java.io.File;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.util.SwipeBackLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class sir
-  extends sii
+  extends Handler
 {
-  public sir(@NonNull String[] paramArrayOfString)
-  {
-    super(paramArrayOfString);
-  }
+  public sir(SwipeBackLayout paramSwipeBackLayout) {}
   
-  protected void a(String[] paramArrayOfString, sij paramsij)
+  public void handleMessage(Message paramMessage)
   {
-    int k = paramArrayOfString.length;
-    int i = 0;
-    for (;;)
+    switch (paramMessage.what)
     {
-      if (i < k)
+    default: 
+      super.handleMessage(paramMessage);
+    }
+    do
+    {
+      do
       {
-        paramsij = new File(paramArrayOfString[i]).listFiles();
-        if (paramsij == null)
-        {
-          i += 1;
-        }
-        else
-        {
-          int m = paramsij.length;
-          int j = 0;
-          while (j < m)
-          {
-            if (j % 150 == 0) {}
-            try
-            {
-              Thread.sleep(100L);
-              File localFile = paramsij[j];
-              if (a(localFile)) {
-                a(localFile);
-              }
-              j += 1;
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              for (;;)
-              {
-                urk.e("Q.qqstory.cleaner:UploadTmpVideoCleanStep", "sleep error ,InterruptedException");
-              }
-            }
-          }
-        }
-      }
+        return;
+      } while (SwipeBackLayout.a(this.a));
+      SwipeBackLayout.a(this.a, true);
+    } while (!(this.a.a instanceof Activity));
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
     }
-  }
-  
-  protected boolean a(File paramFile)
-  {
-    if (!paramFile.isDirectory()) {}
-    while (System.currentTimeMillis() - paramFile.lastModified() <= 86400000L) {
-      return false;
-    }
-    paramFile = paramFile.listFiles();
-    int j = paramFile.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= j) {
-        break label60;
-      }
-      if (TextUtils.equals(paramFile[i].getName(), "dont_delete.txt")) {
-        break;
-      }
-      i += 1;
-    }
-    label60:
-    return true;
+    this.a.c = true;
+    ((Activity)this.a.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sir
  * JD-Core Version:    0.7.0.1
  */

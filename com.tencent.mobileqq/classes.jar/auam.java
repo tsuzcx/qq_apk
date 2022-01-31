@@ -1,27 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.view.ProfileQVipDiyView;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import java.util.List;
 
 public class auam
-  implements View.OnClickListener
+  implements bfoq
 {
-  public auam(ProfileQVipDiyView paramProfileQVipDiyView) {}
+  public auam(OCRResultActivity paramOCRResultActivity) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramView.getId())
+    if ((OCRResultActivity.a(this.a) != null) && (paramInt < OCRResultActivity.a(this.a).size()))
     {
-    default: 
-      return;
-    case 2131307942: 
-      ProfileQVipDiyView.a(this.a, ProfileQVipDiyView.a(this.a));
-      bahl.a(this.a.jdField_a_of_type_Atwx.a, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qvip", "0X8009E7B", 0, 0, "", "", "", "");
-      return;
+      paramView = (String)OCRResultActivity.a(this.a).get(paramInt);
+      OCRResultActivity.a(this.a, OCRResultActivity.a(this.a), paramView, false, true);
     }
-    ProfileQVipDiyView.a(this.a, ProfileQVipDiyView.a(this.a));
-    azyk.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qvip", "0X8009E7C", 0, 0, "", "", "", "");
+    if ((OCRResultActivity.a(this.a) != null) && (OCRResultActivity.a(this.a).isShowing())) {
+      OCRResultActivity.a(this.a).dismiss();
+    }
+    OCRResultActivity.a(this.a, null);
   }
 }
 

@@ -1,15 +1,25 @@
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.provider.ContactsContract.RawContacts;
+import android.graphics.Rect;
+import java.util.Comparator;
 
 class amog
+  implements Comparator<Rect>
 {
-  public static final String[] a = { "_id", "sourceid", "contact_id" };
-  public static final String[] b = { "sync1", "sync2", "sync3" };
+  amog(amoe paramamoe) {}
   
-  public static final Uri a(String paramString)
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    return ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", paramString).appendQueryParameter("account_type", "com.tencent.mobileqq.account").appendQueryParameter("caller_is_syncadapter", amoa.b()).build();
+    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
+    do
+    {
+      return 1;
+      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
+        return -1;
+      }
+    } while (paramRect1.width() > paramRect2.width());
+    if (paramRect1.width() < paramRect2.width()) {
+      return -1;
+    }
+    return 0;
   }
 }
 

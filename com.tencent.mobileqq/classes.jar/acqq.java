@@ -1,128 +1,60 @@
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.audiopanel.ChangeVoiceView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class acqq
-  extends BaseAdapter
+  implements View.OnTouchListener
 {
-  public int a;
-  Context a;
-  public View.OnClickListener a;
-  public ArrayList<bawt> a;
-  public boolean a;
-  public int b;
+  public acqq(VisitorsActivity paramVisitorsActivity) {}
   
-  public acqq(Context paramContext)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = 4;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return (this.jdField_a_of_type_JavaUtilArrayList.size() + this.jdField_a_of_type_Int - 1) / this.jdField_a_of_type_Int;
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt)) {
-      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int j = this.jdField_a_of_type_Int;
-    Object localObject1;
-    int i;
-    Object localObject2;
-    if (paramView == null)
+    switch (paramMotionEvent.getAction())
     {
-      localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
-      ((LinearLayout)localObject1).setOrientation(0);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-      i = 0;
-      while (i < this.jdField_a_of_type_Int)
-      {
-        localObject2 = new LinearLayout.LayoutParams(-1, -2);
-        ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
-        paramViewGroup = paramView;
-        if (paramView == null) {
-          paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-        }
-        ((LinearLayout)localObject1).addView(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495037, null), (ViewGroup.LayoutParams)localObject2);
-        i += 1;
-        paramView = paramViewGroup;
-      }
-      paramView = (View)localObject1;
     }
     for (;;)
     {
-      localObject1 = (ViewGroup)paramView;
-      if (paramInt == 0) {
-        ((ViewGroup)localObject1).setPadding(aciy.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      }
-      int k;
-      for (;;)
+      return true;
+      if (Build.VERSION.SDK_INT >= 16)
       {
-        i = 0;
-        for (;;)
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+        this.a.b.setAlpha(127);
+        continue;
+        if (Build.VERSION.SDK_INT >= 16)
         {
-          if (i >= this.jdField_a_of_type_Int) {
-            break label397;
-          }
-          k = j * paramInt + i;
-          localObject2 = (ChangeVoiceView)((ViewGroup)localObject1).getChildAt(i);
-          if (localObject2 != null) {
-            break;
-          }
-          QLog.e("ChangeVoiceListAdapter", 1, "getView view == null,view=" + ((ViewGroup)localObject1).getChildAt(i));
-          i += 1;
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+          this.a.b.setAlpha(255);
         }
-        ((ViewGroup)localObject1).setPadding(aciy.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      }
-      ((ChangeVoiceView)localObject2).b = this.b;
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (k < this.jdField_a_of_type_JavaUtilArrayList.size())) {}
-      for (paramViewGroup = (bawt)this.jdField_a_of_type_JavaUtilArrayList.get(k);; paramViewGroup = null)
-      {
-        ((ChangeVoiceView)localObject2).a(paramViewGroup);
-        if (this.jdField_a_of_type_Boolean) {
-          ((ChangeVoiceView)localObject2).a();
-        }
-        if (paramViewGroup != null)
+        axqw.b(this.a.app, "dc00898", "", "", "0X8007611", "0X8007611", 0, 0, "", "", "", "");
+        paramView = new Intent(this.a, LikeRankingListActivity.class);
+        this.a.startActivity(paramView);
+        this.a.d.setVisibility(8);
+        this.a.f.clearAnimation();
+        this.a.c = 0;
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        continue;
+        if (Build.VERSION.SDK_INT >= 16)
         {
-          ((ChangeVoiceView)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-          break;
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+          this.a.b.setAlpha(255);
         }
-        ((ChangeVoiceView)localObject2).setOnClickListener(null);
-        break;
-        label397:
-        return paramView;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acqq
  * JD-Core Version:    0.7.0.1
  */

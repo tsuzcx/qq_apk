@@ -1,21 +1,28 @@
-import com.tencent.biz.videostory.capture.VideoStoryCapturePart.6.1;
-import dov.com.qq.im.AECamera.View.AECameraGLSurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import java.lang.ref.WeakReference;
 
 public class wun
-  implements wur
+  implements View.OnClickListener
 {
-  wun(wuh paramwuh) {}
+  public wun(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    wuh.a(this.a).setOnSurfaceChangedListener(null);
-    wuh.a(this.a).f();
-    wuh.a(this.a).setOnFrameDraw(new VideoStoryCapturePart.6.1(this));
+    if (xeq.a("mLLSkipForwardWrapper", 500L))
+    {
+      VideoPlayerView.e(this.a);
+      VideoPlayerView.a(this.a, new WeakReference(VideoPlayerView.c(this.a)), 0, 1, true);
+      if (VideoPlayerView.a(this.a) != null) {
+        this.a.a(VideoPlayerView.a(this.a).a() + 10000L);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wun
  * JD-Core Version:    0.7.0.1
  */

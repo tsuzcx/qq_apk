@@ -1,56 +1,26 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.content.Context;
+import android.view.View;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-public abstract class adyl
-  extends Binder
-  implements adyk
+final class adyl
+  implements adys
 {
-  public adyl()
-  {
-    attachInterface(this, "com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-  }
+  adyl(MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, BubbleImageView paramBubbleImageView, ETTextView paramETTextView1, ETTextView paramETTextView2, int paramInt, String paramString, MessageRecord paramMessageRecord) {}
   
-  public static adyk a(IBinder paramIBinder)
+  public void a(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, String paramString)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-    if ((localIInterface != null) && ((localIInterface instanceof adyk))) {
-      return (adyk)localIInterface;
-    }
-    return new adym(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    if ((paramMessageRecord2 != null) && (adyh.b(paramMessageRecord2)))
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      a((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      b((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
-      return true;
+      if (((paramMessageRecord1 instanceof MessageForReplyText)) && (((MessageForReplyText)paramMessageRecord1).getSourceMessage() == null)) {
+        ((MessageForReplyText)paramMessageRecord1).setSourceMessageRecord(paramMessageRecord2);
+      }
+      adyh.a(paramMessageRecord2, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramContext, paramQQAppInterface, paramString);
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-    c((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
-    return true;
   }
 }
 

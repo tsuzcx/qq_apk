@@ -1,23 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class toc
-  implements tix
+public class toc
+  extends syq
 {
-  toc(tob paramtob) {}
+  public int b;
+  public int c;
   
-  public void a(String paramString)
+  public toc(qqstory_service.RspGetBlackList paramRspGetBlackList)
   {
-    int i = 0;
-    while (i < this.a.a.size())
-    {
-      if (TextUtils.equals(paramString, ((tnz)this.a.a.get(i)).a)) {
-        ((StoryPlayerGroupHolder)this.a.a()).a.setCurrentItem(i);
-      }
-      i += 1;
-    }
+    super(paramRspGetBlackList.result);
+    this.b = paramRspGetBlackList.black_status.get();
+    this.c = paramRspGetBlackList.update_interval.get();
+  }
+  
+  public String toString()
+  {
+    return "GetBlackListStatusResponse{blackStatus=" + this.b + ", updateInterval=" + this.c + '}';
   }
 }
 

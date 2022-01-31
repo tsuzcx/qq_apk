@@ -1,17 +1,36 @@
-public class vmv
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class vmv
+  implements View.OnTouchListener
 {
-  bbms a;
+  private final int jdField_a_of_type_Int = 10;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  vmv(bbms parambbms)
-  {
-    this.a = parambbms;
-  }
+  vmv(vmt paramvmt) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a != null) && (this.a.isShowing())) {
-      this.a.dismiss();
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+    case 0: 
+    case 2: 
+      do
+      {
+        return false;
+        this.b = ((int)f);
+        this.jdField_a_of_type_Boolean = false;
+        return false;
+      } while (Math.abs(f - this.b) <= 10.0F);
+      this.jdField_a_of_type_Boolean = true;
+      return false;
     }
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

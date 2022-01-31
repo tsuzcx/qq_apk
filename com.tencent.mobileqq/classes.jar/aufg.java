@@ -1,17 +1,18 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.widget.AdapterView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.olympic.ShuayishuaConfig;
 
-public class aufg
-  implements behi
+public final class aufg
+  implements Parcelable.Creator<ShuayishuaConfig>
 {
-  public aufg(QCallDetailActivity paramQCallDetailActivity) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public ShuayishuaConfig a(Parcel paramParcel)
   {
-    paramAdapterView = ajnr.a(((TextView)paramView.findViewById(2131307289)).getText().toString());
-    this.a.a(this.a.getActivity(), paramAdapterView);
+    return new ShuayishuaConfig(paramParcel);
+  }
+  
+  public ShuayishuaConfig[] a(int paramInt)
+  {
+    return new ShuayishuaConfig[paramInt];
   }
 }
 

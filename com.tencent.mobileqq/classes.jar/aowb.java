@@ -1,20 +1,35 @@
-import java.util.List;
-
-class aowb
-  implements wlx
+public class aowb
 {
-  aowb(aowa paramaowa, boolean paramBoolean, String paramString, short paramShort) {}
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b = "";
+  public short b;
+  public byte[] b;
+  public int c;
+  public long c;
+  public String c;
+  public byte[] c;
+  public int d;
+  public String d = "";
+  public byte[] d;
+  public String e = "";
   
-  public void a(List<aoys> paramList)
+  public aowb(aovy paramaovy)
   {
-    if (this.jdField_a_of_type_Aowa.a.jdField_a_of_type_Aovp != null) {
-      this.jdField_a_of_type_Aowa.a.jdField_a_of_type_Aovp.a(paramList, this.jdField_a_of_type_Aowa.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aowa.a.b, this.jdField_a_of_type_Aowa.a.c, this.jdField_a_of_type_Aowa.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_c_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aowb
  * JD-Core Version:    0.7.0.1
  */

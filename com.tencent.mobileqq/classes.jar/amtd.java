@@ -1,93 +1,47 @@
-import com.tencent.mobileqq.data.MessageForStarLeague;
 import com.tencent.qphone.base.util.QLog;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import org.json.JSONObject;
 
 public class amtd
-  extends DefaultHandler
 {
-  MessageForStarLeague a;
-  public String a;
+  public int a = 1;
   
-  public amtd()
+  public static amtd a(ampi[] paramArrayOfampi)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague = ((MessageForStarLeague)awbi.a(-2069));
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public MessageForStarLeague a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-    if (paramArrayOfChar.equals("\n")) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_JavaLangString.equals("title"))
-      {
-        localMessageForStarLeague = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName == null) {}
-        for (;;)
-        {
-          localMessageForStarLeague.starName = paramArrayOfChar;
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName.trim();
-          return;
-          paramArrayOfChar = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName.concat(paramArrayOfChar);
-        }
-      }
-    } while (!this.jdField_a_of_type_JavaLangString.equals("summary"));
-    MessageForStarLeague localMessageForStarLeague = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle == null) {}
+    amtd localamtd = new amtd();
     for (;;)
     {
-      localMessageForStarLeague.subTitle = paramArrayOfChar;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle.trim();
-      return;
-      paramArrayOfChar = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle.concat(paramArrayOfChar);
-    }
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    if (paramString3.equals("msg")) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.actionUrl = paramAttributes.getValue("url");
-    }
-    do
-    {
+      int i;
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.levelStatus = Integer.parseInt(paramAttributes.getValue("levelStatus"));
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.brief = paramAttributes.getValue("brief");
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
+        int j = paramArrayOfampi.length;
+        i = 0;
+        if (i < j)
         {
-          QLog.e("StructMsg", 1, "levelStatus parse failed!", paramString1);
+          JSONObject localJSONObject = new JSONObject(paramArrayOfampi[i].a);
+          if (localJSONObject.has("cameraSwitchOnMessageTab")) {
+            localamtd.a = Integer.valueOf(localJSONObject.optString("cameraSwitchOnMessageTab")).intValue();
+          }
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MsgTabCameraConfBean", 2, "onParsed switch= " + localamtd.a);
+          }
+          return localamtd;
         }
       }
-      if (paramString3.equals("picture"))
+      catch (Throwable paramArrayOfampi)
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starAvatar = paramAttributes.getValue("cover");
-        return;
+        QLog.e("MsgTabCameraConfBean", 1, "MsgTabCameraConfBean parse error, ", paramArrayOfampi);
+        return localamtd;
       }
-      if (paramString3.equals("title"))
-      {
-        this.jdField_a_of_type_JavaLangString = "title";
-        return;
-      }
-    } while (!paramString3.equals("summary"));
-    this.jdField_a_of_type_JavaLangString = "summary";
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amtd
  * JD-Core Version:    0.7.0.1
  */

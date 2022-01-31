@@ -1,89 +1,77 @@
+import android.graphics.Matrix;
+
 public class aueq
 {
-  public int a;
-  public String a;
-  private boolean a;
-  private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString = "";
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString = "";
+  private static final Matrix a = new Matrix();
+  private static final Matrix b = new Matrix();
   
-  public aueq()
+  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    return Math.max(paramFloat2, Math.min(paramFloat1, paramFloat3));
   }
   
-  public auep a()
+  public static void a(auen paramauen1, auen paramauen2, float paramFloat1, float paramFloat2, auen paramauen3, float paramFloat3, float paramFloat4, float paramFloat5)
   {
-    return new auep(this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    paramauen1.a(paramauen2);
+    if (!auen.a(paramauen2.c(), paramauen3.c())) {
+      paramauen1.b(b(paramauen2.c(), paramauen3.c(), paramFloat5), paramFloat1, paramFloat2);
+    }
+    float f2 = paramauen2.d();
+    float f3 = paramauen3.d();
+    float f1;
+    if (Math.abs(f2 - f3) <= 180.0F)
+    {
+      if (auen.a(f2, f3)) {
+        break label189;
+      }
+      f1 = b(f2, f3, paramFloat5);
+    }
+    for (;;)
+    {
+      if (!Float.isNaN(f1)) {
+        paramauen1.d(f1, paramFloat1, paramFloat2);
+      }
+      paramauen1.a(b(0.0F, paramFloat3 - paramFloat1, paramFloat5), b(0.0F, paramFloat4 - paramFloat2, paramFloat5));
+      return;
+      f1 = f2;
+      if (f2 < 0.0F) {
+        f1 = f2 + 360.0F;
+      }
+      f2 = f3;
+      if (f3 < 0.0F) {
+        f2 = f3 + 360.0F;
+      }
+      if (!auen.a(f1, f2)) {
+        f1 = b(f1, f2, paramFloat5);
+      } else {
+        label189:
+        f1 = (0.0F / 0.0F);
+      }
+    }
   }
   
-  public aueq a(int paramInt)
+  public static void a(auen paramauen1, auen paramauen2, auen paramauen3, float paramFloat)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
+    a(paramauen1, paramauen2, paramauen2.a(), paramauen2.b(), paramauen3, paramauen3.a(), paramauen3.b(), paramFloat);
   }
   
-  public aueq a(String paramString)
+  public static void a(float[] paramArrayOfFloat, auen paramauen1, auen paramauen2)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
+    paramauen1.a(a);
+    a.invert(b);
+    b.mapPoints(paramArrayOfFloat);
+    paramauen2.a(a);
+    a.mapPoints(paramArrayOfFloat);
   }
   
-  public aueq a(boolean paramBoolean)
+  public static float b(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public aueq b(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public aueq b(String paramString)
-  {
-    this.jdField_d_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public aueq b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public aueq c(int paramInt)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public aueq c(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public aueq d(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public aueq d(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    return (paramFloat2 - paramFloat1) * paramFloat3 + paramFloat1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aueq
  * JD-Core Version:    0.7.0.1
  */

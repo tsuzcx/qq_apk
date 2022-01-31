@@ -8,8 +8,8 @@ import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import apdh;
-import azlj;
+import apvb;
+import bamn;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -104,7 +104,7 @@ public class SingleLineHotwordTextView
       return null;
     }
     paramString = new SpannableString(paramString);
-    if (azlj.a(paramArrayList)) {
+    if (bamn.a(paramArrayList)) {
       return paramString;
     }
     String str1 = paramString.toString().toLowerCase();
@@ -420,7 +420,7 @@ public class SingleLineHotwordTextView
     String str1;
     if (paramInt1 == 1)
     {
-      str1 = apdh.a(str2);
+      str1 = apvb.a(str2);
       if (!TextUtils.isEmpty(str1))
       {
         paramInt1 = str2.toLowerCase().lastIndexOf(str1.toLowerCase());

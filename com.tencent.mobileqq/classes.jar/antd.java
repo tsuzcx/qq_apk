@@ -1,63 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class antd
 {
-  private int a;
-  private int b;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View jdField_b_of_type_AndroidViewView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  ImageView d;
+  ImageView e;
+  ImageView f;
   
-  public static antd a(alzs paramalzs)
-  {
-    antd localantd = new antd();
-    if (paramalzs != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("limitChatOnPlusConfBean", 2, "parse taskid->" + paramalzs.jdField_a_of_type_Int + " content->" + paramalzs.jdField_a_of_type_JavaLangString);
-      }
-    }
-    try
-    {
-      paramalzs = new JSONObject(paramalzs.jdField_a_of_type_JavaLangString);
-      localantd.a(paramalzs.optInt("business_switch", 0));
-      localantd.b(paramalzs.optInt("showInRecentView", 0));
-      return localantd;
-    }
-    catch (JSONException paramalzs)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("limitChatOnPlusConfBean", 2, "parse error->" + paramalzs.toString());
-    }
-    return localantd;
-  }
-  
-  void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public boolean b()
-  {
-    return this.b == 1;
-  }
-  
-  public String toString()
-  {
-    return String.format("mBusinessSwitch:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-  }
+  public antd(antc paramantc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     antd
  * JD-Core Version:    0.7.0.1
  */

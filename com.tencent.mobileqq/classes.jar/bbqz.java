@@ -1,50 +1,19 @@
-import android.content.Context;
-
-public class bbqz
+class bbqz<E>
 {
-  private bbqs[] a = new bbqs[2];
+  public bbqy<E> a;
+  public Object a;
+  public String a;
   
-  public bbqs a(Context paramContext, int paramInt)
+  public bbqz(bbqy<E> parambbqy, Object paramObject, String paramString)
   {
-    Object localObject1;
-    if ((paramInt < 0) || (paramInt > 2)) {
-      localObject1 = null;
-    }
-    do
-    {
-      do
-      {
-        return localObject1;
-        ??? = this.a[paramInt];
-        localObject1 = ???;
-      } while (??? != null);
-      localObject1 = ???;
-    } while (paramContext == null);
-    synchronized (this.a)
-    {
-      localObject1 = this.a[paramInt];
-      if (localObject1 != null) {
-        return localObject1;
-      }
-    }
-    switch (paramInt)
-    {
-    default: 
-      paramContext = (Context)localObject1;
-    }
-    for (;;)
-    {
-      this.a[paramInt] = paramContext;
-      return paramContext;
-      paramContext = new bbqv(paramContext);
-      continue;
-      paramContext = new bbqt(paramContext);
-    }
+    this.jdField_a_of_type_Bbqy = parambbqy;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbqz
  * JD-Core Version:    0.7.0.1
  */

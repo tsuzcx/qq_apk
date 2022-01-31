@@ -1,80 +1,55 @@
-import android.content.res.Resources;
-import android.os.Message;
-import android.widget.Button;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.model.GetVirtualListResult;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import cooperation.qqfav.util.HandlerPlus;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Path.FillType;
+import android.graphics.Rect;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
 public class bbxo
-  implements bcjx
+  implements DownloadParams.DecodeHandler
 {
-  public bbxo(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  private int jdField_a_of_type_Int;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a()
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (!OpenAuthorityFragment.b(this.a))
-    {
-      QLog.e("OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess for activity is finished");
-      return;
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    Object localObject1 = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
-    QLog.d("OpenAuthorityFragment", 1, new Object[] { "updatePreAuthFromServer use cached appid=", OpenAuthorityFragment.a(this.a), ", appInfo=", ((aphd)localObject1).toString() });
-    Object localObject2 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-    ((Message)localObject2).what = 3;
-    ((Message)localObject2).obj = localObject1;
-    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
-    localObject1 = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
-    boolean bool;
-    if (localObject1 != null)
+    Bitmap localBitmap;
+    Path localPath;
+    Canvas localCanvas;
+    do
     {
-      QLog.d("OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess null != virtualResult");
-      localObject2 = this.a.jdField_a_of_type_Bcjw;
-      if (((GetVirtualListResult)localObject1).a == 0)
-      {
-        bool = true;
-        ((bcjw)localObject2).a(bool, (GetVirtualListResult)localObject1);
-      }
-    }
-    for (;;)
-    {
-      if (!this.a.b) {
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      }
-      localObject1 = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
-      localObject2 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-      ((Message)localObject2).what = 0;
-      ((Message)localObject2).obj = localObject1;
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
-      return;
-      bool = false;
-      break;
-      QLog.d("OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess null == virtualResult");
-      this.a.jdField_a_of_type_Bcjw.a(false, null);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    QLog.d("OpenAuthorityFragment", 1, new Object[] { "updatePreAuthFromServer | onFail: | uin : *" + bcam.a(this.a.jdField_a_of_type_Bciz.a), ", errorCode=", Integer.valueOf(paramInt), ", errorMsg=", paramString });
-    if (!OpenAuthorityFragment.b(this.a))
-    {
-      QLog.e("OpenAuthorityFragment", 1, "updatePreAuthFromServer onFail for activity is finished");
-      return;
-    }
-    this.a.jdField_a_of_type_Bcjw.a(false, null);
-    this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse = null;
-    paramString = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-    paramString.what = 6;
-    paramString.arg1 = 3001;
-    paramString.obj = this.a.getResources().getString(2131629219);
-    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramString);
+      return paramDownloadParams;
+      paramBitmap.setDensity((int)bbkx.c());
+      localBitmap = bban.a(paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, Bitmap.Config.ARGB_8888);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int * 2);
+      localPath = new Path();
+      localCanvas = new Canvas(localBitmap);
+      localCanvas.save();
+      localPath.moveTo(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+      localPath.lineTo(localBitmap.getWidth() - this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+      localPath.lineTo(localBitmap.getWidth() - this.jdField_a_of_type_Int, localBitmap.getHeight() - this.jdField_a_of_type_Int);
+      localPath.lineTo(this.jdField_a_of_type_Int, localBitmap.getHeight() - this.jdField_a_of_type_Int);
+      localPath.close();
+      localPath.setFillType(Path.FillType.EVEN_ODD);
+      localCanvas.clipPath(localPath);
+      localCanvas.drawBitmap(paramBitmap, new Rect(0, (paramBitmap.getHeight() - paramBitmap.getWidth()) / 2, paramBitmap.getWidth(), (paramBitmap.getWidth() + paramBitmap.getHeight()) / 2), new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight()), this.jdField_a_of_type_AndroidGraphicsPaint);
+      localCanvas.restore();
+      paramDownloadParams = localBitmap;
+    } while (this.jdField_a_of_type_Boolean);
+    localCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    return localBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbxo
  * JD-Core Version:    0.7.0.1
  */

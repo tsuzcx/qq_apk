@@ -1,38 +1,14 @@
 import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
-import com.tencent.qphone.base.util.QLog;
 
-class aqyl
-  implements Animation.AnimationListener
+public abstract interface aqyl
 {
-  aqyl(aqyg paramaqyg) {}
+  public abstract void a(Animation paramAnimation);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("BaseListenTogetherPanel", 2, "hidePanelView, onAnimationEnd, isDodingAnimation=" + this.a.jdField_a_of_type_Boolean);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.clearAnimation();
-    paramAnimation.setAnimationListener(null);
-    aqyg.a(this.a, false);
-    this.a.a();
-    this.a.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("BaseListenTogetherPanel", 2, "hidePanelView, onAnimationStart, isDodingAnimation=" + this.a.jdField_a_of_type_Boolean);
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-  }
+  public abstract void b(Animation paramAnimation);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqyl
  * JD-Core Version:    0.7.0.1
  */

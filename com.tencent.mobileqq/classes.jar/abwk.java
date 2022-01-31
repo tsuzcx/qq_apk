@@ -1,22 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
-class abwk
-  implements DialogInterface.OnClickListener
+public class abwk
+  implements aylk
 {
-  abwk(abwj paramabwj, bafb parambafb) {}
+  public abwk(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel() {}
+  
+  public void onConfirm()
   {
-    awqx.b(this.jdField_a_of_type_Abwj.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Abwj.a.a, "", "", "");
-    paramDialogInterface = new Intent(this.jdField_a_of_type_Abwj.a, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", "http://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
-    paramDialogInterface.putExtra("webStyle", "noBottomBar");
-    this.jdField_a_of_type_Abwj.a.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_Bafb.cancel();
+    QQSettingMe.d(this.a);
   }
 }
 

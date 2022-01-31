@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.content.Context;
 import android.content.res.Resources;
-import bbmy;
+import bcpw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.XEditTextEx;
 
@@ -14,7 +14,7 @@ class BaseChatPie$52
   public void run()
   {
     this.this$0.e(true);
-    this.this$0.aT();
+    this.this$0.aV();
     this.this$0.m(0);
     this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx.setEnabled(true);
     if (this.a)
@@ -22,7 +22,7 @@ class BaseChatPie$52
       this.this$0.ad();
       return;
     }
-    bbmy.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131624468, 1).b(this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131167766));
+    bcpw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131690022, 1).b(this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865));
   }
 }
 

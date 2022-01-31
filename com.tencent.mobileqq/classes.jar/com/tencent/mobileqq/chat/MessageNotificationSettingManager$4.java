@@ -1,16 +1,21 @@
 package com.tencent.mobileqq.chat;
 
-import alrm;
-import baan;
+import amgc;
+import bbbr;
 
 public class MessageNotificationSettingManager$4
   implements Runnable
 {
-  public MessageNotificationSettingManager$4(alrm paramalrm, String paramString) {}
+  public MessageNotificationSettingManager$4(amgc paramamgc, String paramString) {}
   
   public void run()
   {
-    baan.a(this.a, false);
+    try
+    {
+      bbbr.a(this.a, false);
+      return;
+    }
+    catch (Throwable localThrowable) {}
   }
 }
 

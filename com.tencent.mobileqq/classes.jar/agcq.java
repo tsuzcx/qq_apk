@@ -1,28 +1,17 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agcq
-  implements View.OnClickListener
+class agcq
+  extends atzm
 {
-  public agcq(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  agcq(agch paramagch) {}
   
-  public void onClick(View paramView)
+  protected void a(Object paramObject)
   {
-    if (!this.a.jdField_b_of_type_AndroidWidgetCheckBox.isChecked())
-    {
-      if (baaf.a(this.a.jdField_b_of_type_JavaUtilArrayList, PhotoPreviewActivity.a, PhotoListActivity.a, this.a.E, this.a.g) > 0)
-      {
-        bbmy.a(this.a, this.a.getResources().getString(2131629431), 0).b(this.a.getResources().getDimensionPixelSize(2131167766));
-        return;
-      }
-      this.a.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(true);
-      return;
+    this.a.g();
+    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a.app.a() != null)) {
+      this.a.a.app.a().e();
     }
-    this.a.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(false);
   }
 }
 

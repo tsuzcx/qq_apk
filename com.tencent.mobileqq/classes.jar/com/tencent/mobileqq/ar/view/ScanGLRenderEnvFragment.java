@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.view;
 
-import akkz;
-import aklk;
-import akwu;
+import akzl;
+import akzw;
+import allg;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,33 +27,33 @@ public class ScanGLRenderEnvFragment
   
   private void c()
   {
-    boolean bool = aklk.a();
+    boolean bool = akzw.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("initVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = new VideoRecordController(getActivity());
-        akkz.a().a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+        akzl.a().a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
       }
-      akwu localakwu = this.jdField_a_of_type_Akwu;
-      if (localakwu != null) {
-        localakwu.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+      allg localallg = this.jdField_a_of_type_Allg;
+      if (localallg != null) {
+        localallg.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
       }
     }
   }
   
   private void d()
   {
-    boolean bool = aklk.a();
+    boolean bool = akzw.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("unInitVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
-      akwu localakwu = this.jdField_a_of_type_Akwu;
-      if (localakwu != null) {
-        localakwu.a(null);
+      allg localallg = this.jdField_a_of_type_Allg;
+      if (localallg != null) {
+        localallg.a(null);
       }
-      akkz.a().b(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+      akzl.a().b(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
       if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController != null) {
         this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = null;
       }

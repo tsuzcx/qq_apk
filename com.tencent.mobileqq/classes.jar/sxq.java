@@ -1,6 +1,27 @@
-public abstract interface sxq
+public class sxq
 {
-  public abstract void a(sxr paramsxr);
+  public static int a;
+  public static boolean a;
+  public static boolean b;
+  public static boolean c;
+  
+  static
+  {
+    jdField_a_of_type_Boolean = false;
+    b = false;
+    c = false;
+    jdField_a_of_type_Int = 725;
+  }
+  
+  public static boolean a()
+  {
+    return false;
+  }
+  
+  public static boolean b()
+  {
+    return true;
+  }
 }
 
 

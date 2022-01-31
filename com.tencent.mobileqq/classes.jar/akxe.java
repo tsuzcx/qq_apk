@@ -1,15 +1,8 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import android.view.MotionEvent;
 
-public class akxe
-  extends akxc
+public abstract interface akxe
 {
-  public String a;
-  
-  public void a(AppInterface paramAppInterface, Bundle paramBundle)
-  {
-    this.a = paramBundle.getString("PromotionDescription", "");
-  }
+  public abstract void a(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
 }
 
 

@@ -22,6 +22,7 @@ public class NativePluginManager
     pluginList.add(new NativePluginManager.PluginInfo("tdoc_channel", "com.tencent.mobileqq.mini.out.nativePlugins.TenDocChannelPlugin"));
     pluginList.add(new NativePluginManager.PluginInfo("openTenpayView", TenpayPlugin.class.getName()));
     initQQPublicAccountPlugin();
+    pluginList.add(new NativePluginManager.PluginInfo("tim_space", "com.tencent.mobileqq.mini.out.nativePlugins.TimTeamPlugin"));
   }
   
   public static Set<NativePluginManager.PluginInfo> getPluginInfo()

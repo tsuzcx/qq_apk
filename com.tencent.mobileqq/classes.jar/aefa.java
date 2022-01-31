@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import com.immersion.stickersampleapp.HapticManager;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
-class aefa
-  implements bbfj<oidb_0x8ed.RspBody>
+public class aefa
+  implements adnz
 {
-  aefa(aeeh paramaeeh) {}
+  public aefa(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
+  public void a()
   {
-    if ((paramInt == 0) && (this.a.ac))
+    UnlimitedBladeWorks.a(this.a).b = true;
+    UnlimitedBladeWorks.a(this.a).a = false;
+    if (UnlimitedBladeWorks.a(this.a) != null)
     {
-      bbmy.a(this.a.jdField_a_of_type_AndroidContentContext, 2, ajjy.a(2131639331), 0).a();
-      baig.e(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-      this.a.jdField_a_of_type_Asgb.a(this.a.jdField_a_of_type_AndroidContentContext);
+      UnlimitedBladeWorks.a(this.a).a();
+      if (UnlimitedBladeWorks.b(this.a))
+      {
+        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
+        UnlimitedBladeWorks.a(this.a, 0);
+      }
     }
   }
 }

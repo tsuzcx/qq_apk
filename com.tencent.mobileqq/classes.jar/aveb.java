@@ -1,39 +1,76 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.Button;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.content.Context;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.List;
 
 public class aveb
-  implements TextWatcher
+  extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private int b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<PhoneContact> jdField_a_of_type_JavaUtilList;
   
-  public aveb(SignatureHistoryFragment paramSignatureHistoryFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public aveb(Context paramContext, List<PhoneContact> paramList)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (axku.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 50))
-    {
-      bbmy.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), 1, 2131624751, 0).a();
-      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
-    }
-    if ((paramEditable == null) || (paramEditable.length() == 0))
-    {
-      SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(false);
-      return;
-    }
-    SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(true);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  private View a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = (paramInt1 + paramInt3);
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560681, null);
+    aved localaved = new aved(null);
+    localaved.a = ((TextView)paramViewGroup.findViewById(2131373001));
+    localaved.b = ((TextView)paramViewGroup.findViewById(2131373000));
+    paramViewGroup.setTag(localaved);
+    return paramViewGroup;
+  }
+  
+  private void a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (aved)paramView.getTag();
+    PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramInt = localPhoneContact.type;
+    paramView = null;
+    if (paramInt == 0) {
+      paramView = localPhoneContact.label;
+    }
+    paramView = (String)ContactsContract.CommonDataKinds.Phone.getTypeLabel(this.jdField_a_of_type_AndroidContentContext.getResources(), paramInt, paramView);
+    paramViewGroup.a.setText(paramView);
+    paramViewGroup.b.setText(localPhoneContact.mobileNo);
+  }
+  
+  public int getCount()
+  {
+    int i = this.jdField_a_of_type_JavaUtilList.size();
+    if (i > 20) {
+      return 20;
+    }
+    return i;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = a(paramInt, paramViewGroup);
+    }
+    a(paramInt, localView, paramViewGroup);
+    return localView;
   }
 }
 

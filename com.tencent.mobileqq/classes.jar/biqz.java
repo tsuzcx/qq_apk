@@ -1,427 +1,543 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.capture.data.DynamicStickerData;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import com.tencent.mobileqq.richmedia.capture.data.TrackerStickerParam;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
+import com.tencent.qphone.base.util.BaseApplication;
+import dov.com.qq.im.ae.download.AEResDownloader.1;
+import dov.com.qq.im.ae.download.AEResDownloader.2;
+import dov.com.qq.im.ae.download.AEResDownloader.3;
+import java.util.HashMap;
 import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class biqz
+  implements axeo, axeq
 {
-  private static int a(@NonNull String paramString, int paramInt1, int paramInt2)
+  private static final biqz jdField_a_of_type_Biqz = new biqz();
+  private static final HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("AEResDownloader");
+  private List<ShortVideoResourceManager.SVConfigItem> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private Map<Integer, Long> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private ConcurrentLinkedQueue<Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private boolean jdField_a_of_type_Boolean;
+  private List<birb> jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private Map<Integer, Integer> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
+  
+  static
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0) || (baip.a(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoodleUtil", 2, "getLineHeight quit:" + paramInt1 + " " + paramInt2 + " " + paramString);
-      }
-      return 1;
-    }
-    Object localObject = new TextPaint();
-    ((TextPaint)localObject).setTextSize(paramInt1);
-    paramString = new StaticLayout(paramString, (TextPaint)localObject, paramInt2, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false);
-    localObject = new Rect();
-    paramString.getLineBounds(0, (Rect)localObject);
-    return ((Rect)localObject).height();
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(0), "new_qq_android_native_short_filter_");
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1), "new_qq_android_native_ptu_res_");
   }
   
-  public static biiv a(Context paramContext, @NonNull Drawable paramDrawable, @NonNull String paramString, int paramInt)
+  private biqz()
   {
-    int i = aciy.a(47.0F, paramContext.getResources());
-    int k = aciy.a(27.0F, paramContext.getResources());
-    int m = aciy.a(14.0F, paramContext.getResources());
-    Paint localPaint = new Paint();
-    localPaint.setTextSize(m);
-    int j = (int)localPaint.measureText(paramString) + (aciy.a(10.0F, paramContext.getResources()) + paramDrawable.getBounds().width() + aciy.a(6.0F, paramContext.getResources())) + aciy.a(8.0F, paramContext.getResources());
-    if (j < i) {}
-    for (;;)
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    Looper localLooper = this.jdField_a_of_type_AndroidOsHandlerThread.getLooper();
+    if (localLooper != null)
     {
-      paramContext = new biiv(i, k, -1, m, paramInt);
-      urk.b("DoodleUtil", "LayerParams:" + paramContext.toString());
-      return paramContext;
-      i = j;
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(localLooper);
+      return;
     }
+    bizq.d("AEResDownloader", "[HandlerThread init error:loop = null]");
+    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
   }
   
-  public static bijg a(bikj parambikj, float paramFloat1, float paramFloat2, float paramFloat3)
+  public static biqz a()
   {
-    return new bijg(paramFloat1, paramFloat2, paramFloat3, 0.0F, 0.0F, 0.0F, parambikj.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), parambikj.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+    return jdField_a_of_type_Biqz;
   }
   
-  public static bijg a(biov parambiov, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  private List<ShortVideoResourceManager.SVConfigItem> a(List<ShortVideoResourceManager.SVConfigItem> paramList)
   {
-    if (!a(parambiov)) {
-      return null;
-    }
-    urk.b("DoodleUtil", "item:" + parambiov.toString());
-    int i = 0;
-    paramInt2 = 0;
-    if (parambiov.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList();
+    if (paramList != null)
     {
-      i = parambiov.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds().width();
-      paramInt2 = parambiov.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds().height();
-    }
-    float f2 = parambiov.jdField_a_of_type_Biow.c;
-    float f1 = parambiov.jdField_a_of_type_Biow.d;
-    float f3 = parambiov.jdField_a_of_type_Biow.e;
-    f2 = f2 * (paramInt1 / f3) / i;
-    paramInt1 = (int)(parambiov.jdField_a_of_type_Biow.b / f1 * paramInt2);
-    parambiov = new bijg(paramFloat1, paramFloat2, f2, 0.0F, 0.0F, 0.0F, i, paramInt2 + a(parambiov.b, paramInt1, i) * 2 + 32, parambiov.b, Color.parseColor(parambiov.jdField_a_of_type_Biow.a), paramInt1);
-    urk.b("DoodleUtil", "LayerParams:" + parambiov.toString());
-    return parambiov;
-  }
-  
-  public static bijg a(biov parambiov, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (!a(parambiov)) {
-      return null;
-    }
-    urk.b("DoodleUtil", "item:" + parambiov.toString());
-    int i = 0;
-    paramInt2 = 0;
-    if (parambiov.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      i = parambiov.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds().width();
-      paramInt2 = parambiov.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds().height();
-    }
-    float f = parambiov.jdField_a_of_type_Biow.c;
-    f = parambiov.jdField_a_of_type_Biow.d;
-    paramFloat3 = paramInt1 * paramFloat3 / i;
-    paramInt1 = (int)(parambiov.jdField_a_of_type_Biow.b / f * paramInt2);
-    parambiov = new bijg(paramFloat1, paramFloat2, paramFloat3, 0.0F, 0.0F, 0.0F, i, paramInt2 + a(parambiov.b, paramInt1, i) * 2 + 32, parambiov.b, Color.parseColor(parambiov.jdField_a_of_type_Biow.a), paramInt1);
-    urk.b("DoodleUtil", "LayerParams:" + parambiov.toString());
-    return parambiov;
-  }
-  
-  public static String a(ArrayList<DynamicStickerData> paramArrayList)
-  {
-    if (paramArrayList.isEmpty()) {
-      return null;
-    }
-    JSONArray localJSONArray = new JSONArray();
-    try
-    {
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        Object localObject = (DynamicStickerData)paramArrayList.next();
-        if (localObject != null)
-        {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("centerP_x", ((DynamicStickerData)localObject).centerP.x);
-          localJSONObject.put("centerP_y", ((DynamicStickerData)localObject).centerP.y);
-          localJSONObject.put("scale", ((DynamicStickerData)localObject).scale);
-          localJSONObject.put("rotate", ((DynamicStickerData)localObject).rotate);
-          localJSONObject.put("translateX", ((DynamicStickerData)localObject).translateX);
-          localJSONObject.put("translateY", ((DynamicStickerData)localObject).translateY);
-          localJSONObject.put("width", ((DynamicStickerData)localObject).width);
-          localJSONObject.put("height", ((DynamicStickerData)localObject).height);
-          localJSONObject.put("path", ((DynamicStickerData)localObject).path);
-          localJSONObject.put("type", ((DynamicStickerData)localObject).type);
-          localJSONObject.put("data", ((DynamicStickerData)localObject).data);
-          localJSONObject.put("layerWidth", ((DynamicStickerData)localObject).layerWidth);
-          localJSONObject.put("layerHeight", ((DynamicStickerData)localObject).layerHeight);
-          localJSONObject.put("motionTrack", TrackerStickerParam.motionMapToJarray(((DynamicStickerData)localObject).mapMotionTrack));
-          localObject = ((DynamicStickerData)localObject).mSegmentKeeper.toJSONObject();
-          if (localObject != null) {
-            localJSONObject.put("segmentdata", localObject);
-          }
-          localJSONArray.put(localJSONObject);
-        }
+        ShortVideoResourceManager.SVConfigItem localSVConfigItem1 = (ShortVideoResourceManager.SVConfigItem)paramList.next();
+        ShortVideoResourceManager.SVConfigItem localSVConfigItem2 = new ShortVideoResourceManager.SVConfigItem();
+        localSVConfigItem2.name = localSVConfigItem1.name;
+        localSVConfigItem2.arm_url = localSVConfigItem1.arm_url;
+        localSVConfigItem2.armv7a_url = localSVConfigItem1.armv7a_url;
+        localSVConfigItem2.x86_url = localSVConfigItem1.x86_url;
+        localSVConfigItem2.arm64v8a_url = localSVConfigItem1.arm64v8a_url;
+        localSVConfigItem2.arm_md5 = localSVConfigItem1.arm_md5;
+        localSVConfigItem2.armv7a_md5 = localSVConfigItem1.armv7a_md5;
+        localSVConfigItem2.x86_md5 = localSVConfigItem1.x86_md5;
+        localSVConfigItem2.arm64v8a_md5 = localSVConfigItem1.arm64v8a_md5;
+        localSVConfigItem2.versionCode = localSVConfigItem1.versionCode;
+        localSVConfigItem2.predownload = localSVConfigItem1.predownload;
+        localSVConfigItem2.extend1 = localSVConfigItem1.extend1;
+        localSVConfigItem2.extend2 = localSVConfigItem1.extend2;
+        localCopyOnWriteArrayList.add(localSVConfigItem2);
       }
-      paramArrayList = new JSONObject();
+      return localCopyOnWriteArrayList;
     }
-    catch (JSONException paramArrayList)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoodleUtil", 2, "e= " + paramArrayList);
-      }
-      return null;
-    }
-    paramArrayList.put("list", localJSONArray);
-    if (QLog.isColorLevel()) {
-      QLog.d("DoodleUtil", 2, "DynamicStickersToJson result= " + paramArrayList.toString());
-    }
-    paramArrayList = paramArrayList.toString();
-    return paramArrayList;
+    return null;
   }
   
-  public static ArrayList<DynamicStickerData> a(String paramString)
+  private void a()
   {
-    int i = 0;
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    Object localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
     }
-    for (;;)
+    bizq.b("AEResDownloader", "【onConfigResult】mDownLoadListItem.size :" + this.jdField_a_of_type_JavaUtilList.size());
+    int i;
+    if (this.jdField_a_of_type_JavaUtilList.size() < 1)
     {
-      ArrayList localArrayList;
-      DynamicStickerData localDynamicStickerData;
+      i = ShortVideoResourceManager.a(null, this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_b_of_type_JavaUtilMap == null)
+      {
+        bizq.d("AEResDownloader", "【AEDownLoad Error】: mStatusMap NULL");
+        this.jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
+      }
+      if (i != 0) {
+        break label209;
+      }
+      this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(-1), Integer.valueOf(4));
+      bizq.b("AEResDownloader", "【onConfigResult Info】download config success");
+      a(a(this.jdField_a_of_type_JavaUtilList), (QQAppInterface)localObject1);
+    }
+    Object localObject2;
+    label209:
+    do
+    {
+      return;
+      localObject2 = new CopyOnWriteArrayList();
+      int j = ShortVideoResourceManager.a(null, (List)localObject2);
+      i = j;
+      if (j != 0) {
+        break;
+      }
+      i = j;
+      if (((List)localObject2).size() <= 0) {
+        break;
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList = null;
+      this.jdField_a_of_type_JavaUtilList = ((List)localObject2);
+      i = j;
+      break;
+      if (ShortVideoResourceManager.a("[{\n        \"name\": \"new_qq_android_native_short_filter_62\",\n        \"arm_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_62.zip\",\n        \"armv7a_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_62.zip\",\n        \"x86_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_62.zip\",\n        \"arm64v8a_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_62_64bit.zip\",\n        \"arm_md5\": \"124a724c15ec4750ba2c7c839d0940e7\",\n        \"armv7a_md5\": \"124a724c15ec4750ba2c7c839d0940e7\",\n        \"x86_md5\": \"124a724c15ec4750ba2c7c839d0940e7\",\n        \"arm64v8a_md5\": \"c2389ffc9a539aeac0a6921ad6321ee2\",\n        \"versionCode\": \"62\",\n        \"predownload\": false\n    },{\n        \"name\": \"new_qq_android_native_ptu_res_70\",\n        \"arm_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_70.zip\",\n        \"armv7a_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_70.zip\",\n        \"x86_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_70.zip\",\n        \"arm64v8a_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_70_64bit.zip\",\n        \"arm_md5\": \"68611e650a7057e4cca3fe9091c589c8\",\n        \"armv7a_md5\": \"68611e650a7057e4cca3fe9091c589c8\",\n        \"x86_md5\": \"68611e650a7057e4cca3fe9091c589c8\",\n        \"arm64v8a_md5\": \"858d312925b6e2edcaa44e92a104d92c\",\n        \"versionCode\": \"70\",\n        \"predownload\": false\n    }]", this.jdField_a_of_type_JavaUtilList) == 0)
+      {
+        this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(-1), Integer.valueOf(4));
+        bizq.b("AEResDownloader", "【onConfigResult Info】Use Local to Download package");
+        a(a(this.jdField_a_of_type_JavaUtilList), (QQAppInterface)localObject1);
+        return;
+      }
+      this.jdField_b_of_type_JavaUtilMap.remove(Integer.valueOf(-1));
+      bizq.d("AEResDownloader", "【Error】Local Config is not useful！！！！");
+    } while ((this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.size() <= 0));
+    localObject1 = jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      i = ((Integer)((Iterator)localObject1).next()).intValue();
+      localObject2 = this.jdField_b_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        ((birb)((Iterator)localObject2).next()).a(i, false, -102);
+      }
+    }
+  }
+  
+  private void a(@Nullable List<ShortVideoResourceManager.SVConfigItem> paramList, @Nullable QQAppInterface paramQQAppInterface)
+  {
+    if ((paramList == null) || (paramQQAppInterface == null)) {
+      bizq.d("AEResDownloader", "【SERIOUS ERROR】startDownLoad: listItem == null || appInterface == null");
+    }
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
+    {
+      int i;
+      int j;
       try
       {
-        if (TextUtils.isEmpty(paramString)) {
-          break;
-        }
-        localArrayList = new ArrayList();
-        paramString = new JSONObject(paramString).optJSONArray("list");
-        if (paramString == null) {
-          break;
-        }
-        if (i >= paramString.length()) {
-          break label400;
-        }
-        JSONObject localJSONObject = paramString.getJSONObject(i);
-        if (localJSONObject == null) {
-          break label434;
-        }
-        localDynamicStickerData = new DynamicStickerData();
-        localDynamicStickerData.centerP = new PointF((float)localJSONObject.optDouble("centerP_x"), (float)localJSONObject.optDouble("centerP_y"));
-        localDynamicStickerData.scale = ((float)localJSONObject.optDouble("scale"));
-        localDynamicStickerData.rotate = ((float)localJSONObject.optDouble("rotate"));
-        localDynamicStickerData.translateX = ((float)localJSONObject.optDouble("translateX"));
-        localDynamicStickerData.translateY = ((float)localJSONObject.optDouble("translateY"));
-        localDynamicStickerData.width = ((float)localJSONObject.optDouble("width"));
-        localDynamicStickerData.height = ((float)localJSONObject.optDouble("height"));
-        localDynamicStickerData.layerWidth = localJSONObject.optInt("layerWidth");
-        localDynamicStickerData.layerHeight = localJSONObject.optInt("layerHeight");
-        localDynamicStickerData.path = localJSONObject.optString("path");
-        localDynamicStickerData.type = localJSONObject.optInt("type", 0);
-        localDynamicStickerData.data = localJSONObject.optString("data", "");
-        if (1 == localDynamicStickerData.type)
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek() == null)
         {
-          localDynamicStickerData.mGifDecoder = new bhjq(localDynamicStickerData.path);
-          localDynamicStickerData.mapMotionTrack = TrackerStickerParam.mapMotionFromJarray(localJSONObject.getJSONArray("motionTrack"));
-          if (localJSONObject.has("segmentdata")) {
-            localDynamicStickerData.mSegmentKeeper.fromJSONObject(localJSONObject.getJSONObject("segmentdata"));
+          bizq.d("AEResDownloader", "[Download Queue empty]");
+          return;
+        }
+        i = ((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek()).intValue();
+        if ((this.jdField_b_of_type_JavaUtilMap != null) && (this.jdField_b_of_type_JavaUtilMap.containsKey(Integer.valueOf(i))))
+        {
+          j = ((Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(i))).intValue();
+          bizq.a("AEResDownloader", "[ready to Download] res_to_download:" + i);
+          bizq.a("AEResDownloader", "[ready to Download] status:" + j);
+          if (!a()) {
+            break label265;
           }
-          localArrayList.add(localDynamicStickerData);
-          break label434;
-        }
-        if (3 != localDynamicStickerData.type) {
-          break label380;
-        }
-        localDynamicStickerData.mGifDecoder = new bhjp(localDynamicStickerData.type, localDynamicStickerData.data);
-        continue;
-        if (!QLog.isColorLevel()) {
-          break;
+          if (j == 3) {
+            return;
+          }
+          this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(i), Integer.valueOf(3));
+          if (j == 2) {
+            a(paramList, paramQQAppInterface, i);
+          }
+          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), Long.valueOf(System.currentTimeMillis()));
+          bizq.b("AEResDownloader", "【AEResDownloader】follow doUserDownloadResourceFilterAsync");
+          ShortVideoResourceManager.a(paramQQAppInterface, paramList, this, (String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i)));
+          return;
         }
       }
-      catch (Exception paramString) {}
-      QLog.d("DoodleUtil", 2, "e= " + paramString);
-      return null;
-      label380:
-      localDynamicStickerData.mGifDecoder = new bhjq(localDynamicStickerData.path);
-      continue;
-      label400:
-      if (QLog.isColorLevel()) {
-        QLog.d("DoodleUtil", 2, "getDynamicStickersFromJson= " + localArrayList);
+      catch (NoSuchElementException paramList)
+      {
+        bizq.d("AEResDownloader", "【SERIOUS ERROR】LinkedList.getFirst():NoSuchElementException ");
+        return;
       }
-      return localArrayList;
-      label434:
-      i += 1;
+      bizq.d("AEResDownloader", "[SERIOUS ERROR] cant find mission");
+      return;
+      label265:
+      if ((j != 3) && (j != 2))
+      {
+        if (!a(paramList, this, paramQQAppInterface, i))
+        {
+          bizq.b("AEResDownloader", "【AEResDownloader】follow doUserDownloadResourceFilterAsync");
+          a(paramList, paramQQAppInterface, i);
+          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), Long.valueOf(System.currentTimeMillis()));
+          ShortVideoResourceManager.a(paramQQAppInterface, paramList, this, (String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i)));
+          this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(i), Integer.valueOf(3));
+          return;
+        }
+        this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(i), Integer.valueOf(2));
+      }
     }
   }
   
-  public static void a(Bitmap paramBitmap, int paramInt)
+  private void a(@Nullable List<ShortVideoResourceManager.SVConfigItem> paramList, @Nullable QQAppInterface paramQQAppInterface, @Nullable int paramInt)
   {
-    int[] arrayOfInt = new int[paramInt * paramInt];
-    int i3 = paramBitmap.getHeight() / paramInt;
-    int i4 = paramBitmap.getWidth() / paramInt;
-    int i5 = paramBitmap.getHeight() % paramInt;
-    int i6 = paramBitmap.getWidth() % paramInt;
-    int i = 0;
+    if ((paramList == null) || (paramQQAppInterface == null) || (jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)) == null)) {}
+    for (;;)
+    {
+      return;
+      paramQQAppInterface = (ayxq)paramQQAppInterface.getManager(193);
+      Iterator localIterator = paramList.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        paramList = (ShortVideoResourceManager.SVConfigItem)localIterator.next();
+      } while (!paramList.name.startsWith((String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))));
+      while ((paramQQAppInterface.a()) && (paramList != null))
+      {
+        if ((axfp.a()) && (paramList.check64BitReady()))
+        {
+          paramQQAppInterface.a(paramList.arm64v8a_url);
+          return;
+        }
+        paramQQAppInterface.a(paramList.armv7a_url);
+        return;
+        paramList = null;
+      }
+    }
+  }
+  
+  private boolean a(@Nullable List<ShortVideoResourceManager.SVConfigItem> paramList, @Nullable axeo paramaxeo, @Nullable QQAppInterface paramQQAppInterface, @Nullable int paramInt)
+  {
+    if ((paramList == null) || (paramQQAppInterface == null) || (jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)) == null)) {
+      return false;
+    }
+    ayxq localayxq = (ayxq)paramQQAppInterface.getManager(193);
+    Iterator localIterator = paramList.iterator();
+    ShortVideoResourceManager.SVConfigItem localSVConfigItem;
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localSVConfigItem = (ShortVideoResourceManager.SVConfigItem)localIterator.next();
+    } while (!localSVConfigItem.name.startsWith((String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))));
+    for (;;)
+    {
+      if (localayxq.a())
+      {
+        paramaxeo = new bira(this, paramQQAppInterface, "ae_camera_res", new AEResDownloader.3(this, paramInt, paramQQAppInterface, paramList, paramaxeo), 4000L);
+        if (localSVConfigItem != null)
+        {
+          if ((axfp.a()) && (localSVConfigItem.check64BitReady())) {}
+          for (paramList = localSVConfigItem.arm64v8a_url;; paramList = localSVConfigItem.armv7a_url)
+          {
+            boolean bool = localayxq.a(10091, null, localSVConfigItem.name, 0, paramList, ShortVideoResourceManager.a(localSVConfigItem.name), 4, 0, true, paramaxeo);
+            bizq.b("AEResDownloader", "【onConfigResult】ctrl.requestPreDownload :" + bool);
+            return bool;
+          }
+        }
+        return false;
+      }
+      return false;
+      localSVConfigItem = null;
+    }
+  }
+  
+  private void b(int paramInt1, int paramInt2)
+  {
+    bizj.a().a("key_ae_res_" + paramInt2, paramInt1, 4);
+  }
+  
+  private void b(int paramInt, @Nullable birb parambirb, boolean paramBoolean)
+  {
+    bizq.b("AEResDownloader", "【START】[requestAEKitDownload] + BEGIN, index = " + paramInt);
+    if (this.jdField_b_of_type_JavaUtilMap == null)
+    {
+      bizq.d("AEResDownloader", "【AEDownLoad Error】: mStatusMap NULL");
+      this.jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
+    }
+    if (!this.jdField_b_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt))) {
+      this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Integer.valueOf(0));
+    }
+    int i = ((Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).intValue();
+    if (i == 4)
+    {
+      if (parambirb != null) {
+        parambirb.a(paramInt, true, 0);
+      }
+      bizq.b("AEResDownloader", "【AEDownLoad Ready】: package_index :" + paramInt);
+    }
+    do
+    {
+      return;
+      if (i == 3)
+      {
+        a(parambirb);
+        bizq.b("AEResDownloader", "【AEDownLoad DOWNLOADING】: package_index :" + paramInt);
+        return;
+      }
+      if ((bbev.g(null)) && ((!paramBoolean) || (bbev.h(null)))) {}
+      for (i = 1; i == 0; i = 0)
+      {
+        if (parambirb != null) {
+          parambirb.a(paramInt, false, -6);
+        }
+        bizq.d("AEResDownloader", "【AEDownLoad Error】: NetWork Error");
+        return;
+      }
+      a(parambirb);
+      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Integer.valueOf(paramInt)))
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(Integer.valueOf(paramInt));
+        this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Integer.valueOf(1));
+      }
+      if (!this.jdField_b_of_type_JavaUtilMap.containsKey(Integer.valueOf(-1)))
+      {
+        this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(-1), Integer.valueOf(3));
+        ShortVideoResourceManager.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this);
+        return;
+      }
+    } while ((this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(-1)) == null) || (((Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(-1))).intValue() != 4));
+    a(1, 0);
+  }
+  
+  public void G_()
+  {
+    bizq.d("AEResDownloader", ajyc.a(2131699995));
+    axds.a(3, -1500);
+  }
+  
+  public int a(int paramInt)
+  {
+    if (this.jdField_b_of_type_JavaUtilMap != null)
+    {
+      Integer localInteger = (Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      if (localInteger != null) {
+        return localInteger.intValue();
+      }
+      return 0;
+    }
+    return 0;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.post(new AEResDownloader.2(this));
+      return;
+    }
+    a();
+  }
+  
+  public void a(int paramInt, @Nullable birb parambirb, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.post(new AEResDownloader.1(this, paramInt, parambirb, paramBoolean));
+      return;
+    }
+    b(paramInt, parambirb, paramBoolean);
+  }
+  
+  public void a(@Nullable birb parambirb)
+  {
+    if (parambirb == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        if ((this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.contains(parambirb))) {
+          continue;
+        }
+        this.jdField_b_of_type_JavaUtilList.add(parambirb);
+      }
+      finally {}
+    }
+  }
+  
+  public void a(@Nullable String paramString1, int paramInt, String paramString2)
+  {
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
+    }
+    int i;
+    if ((paramInt == 0) || (paramInt == 1))
+    {
+      i = 0;
+      if (this.jdField_b_of_type_JavaUtilMap == null)
+      {
+        bizq.d("AEResDownloader", "【AEDownLoad Error】: mStatusMap NULL");
+        this.jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
+      }
+      paramString1 = jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    }
     int j;
-    int i7;
-    int i8;
-    int k;
-    int m;
-    int n;
-    int i1;
-    int i2;
-    while (i < i3)
+    label268:
+    label297:
+    label380:
+    long l;
+    for (;;)
     {
-      j = 0;
-      while (j < i4)
+      if (paramString1.hasNext())
       {
-        i7 = i * paramInt;
-        i8 = j * paramInt;
-        paramBitmap.getPixels(arrayOfInt, 0, paramInt, i8, i7, paramInt, paramInt);
-        k = 0;
-        m = 0;
-        n = 0;
-        i1 = 0;
-        while (k < paramInt)
+        j = ((Integer)paramString1.next()).intValue();
+        if (str.startsWith((String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(j))))
         {
-          i2 = 0;
-          while (i2 < paramInt)
+          bizq.b("AEResDownloader", "【onDownloadFinish】 result = " + paramInt + ", name = " + str + ", filePath = " + paramString2);
+          if (i == 0)
           {
-            int i9 = arrayOfInt[(k * paramInt + i2)];
-            i1 += (i9 >> 16 & 0xFF);
-            n += (i9 >> 8 & 0xFF);
-            m += (i9 & 0xFF);
-            i2 += 1;
+            this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(j), Integer.valueOf(4));
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(Integer.valueOf(j));
+            paramString1 = new Intent();
+            paramString1.setAction((String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(j)));
+            paramString1.setPackage(BaseApplicationImpl.getContext().getPackageName());
+            BaseApplicationImpl.getContext().sendBroadcast(paramString1);
+            b(Integer.valueOf(str.substring(((String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(j))).length())).intValue(), j);
+            if ((this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.size() <= 0)) {
+              break label386;
+            }
+            paramString1 = this.jdField_b_of_type_JavaUtilList.iterator();
+            if (!paramString1.hasNext()) {
+              break label386;
+            }
+            paramString2 = (birb)paramString1.next();
+            if (i != 0) {
+              break label380;
+            }
           }
-          k += 1;
-        }
-        i1 = i1 / paramInt / paramInt;
-        n = n / paramInt / paramInt;
-        i2 = m / paramInt / paramInt;
-        k = 0;
-        while (k < paramInt)
-        {
-          m = 0;
-          while (m < paramInt)
+          for (bool = true;; bool = false)
           {
-            arrayOfInt[(k * paramInt + m)] = (0xFF000000 | i1 << 16 | n << 8 | i2);
-            m += 1;
+            paramString2.a(j, bool, i);
+            break label297;
+            i = paramInt;
+            break;
+            this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(j), Integer.valueOf(0));
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(Integer.valueOf(j));
+            break label268;
           }
-          k += 1;
-        }
-        paramBitmap.setPixels(arrayOfInt, 0, paramInt, i8, i7, paramInt, paramInt);
-        j += 1;
-      }
-      i += 1;
-    }
-    if (i6 > 0)
-    {
-      i = 0;
-      while (i < i3)
-      {
-        i2 = i * paramInt;
-        i7 = i4 * paramInt;
-        n = 0;
-        m = 0;
-        k = 0;
-        j = 0;
-        while (j < paramInt)
-        {
-          i1 = 0;
-          while (i1 < i6)
+          label386:
+          if (paramInt != 1)
           {
-            i8 = paramBitmap.getPixel(i7 + i1, i2 + j);
-            n += (i8 >> 16 & 0xFF);
-            m += (i8 >> 8 & 0xFF);
-            k += (i8 & 0xFF);
-            i1 += 1;
+            l = -1L;
+            if (this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(j)) != null) {
+              l = System.currentTimeMillis() - ((Long)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(j))).longValue();
+            }
+            paramString1 = bizc.a();
+            if (paramInt != 0) {
+              break label493;
+            }
           }
-          j += 1;
         }
-        n = n / paramInt / i6;
-        m = m / paramInt / i6;
-        i1 = k / paramInt / i6;
-        j = 0;
-        while (j < paramInt)
-        {
-          k = 0;
-          while (k < i6)
-          {
-            paramBitmap.setPixel(i7 + k, i2 + j, 0xFF000000 | n << 16 | m << 8 | i1);
-            k += 1;
-          }
-          j += 1;
-        }
-        i += 1;
       }
     }
-    if (i5 > 0)
+    label493:
+    for (boolean bool = true;; bool = false)
     {
-      i = 0;
-      while (i < i4)
+      paramString1.a(bool, j, paramInt, l);
+      bizq.b("AEResDownloader", "【On DownLoadFinish】start download next");
+      paramString1 = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      a(a(this.jdField_a_of_type_JavaUtilList), paramString1);
+      return;
+    }
+  }
+  
+  public void a(@Nullable String paramString, long paramLong1, long paramLong2)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    if (this.jdField_b_of_type_JavaUtilMap == null)
+    {
+      bizq.d("AEResDownloader", "【AEDownLoad Error】: mStatusMap NULL");
+      this.jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
+    }
+    bizq.a("AEResDownloader", "[onUpdateProgress] name = " + str + ", totalLen = " + paramLong2 + ", curOffset = " + paramLong1);
+    paramString = jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (paramString.hasNext())
+    {
+      int i = ((Integer)paramString.next()).intValue();
+      if (str.startsWith((String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i))))
       {
-        i2 = i3 * paramInt;
-        i6 = i * paramInt;
-        n = 0;
-        m = 0;
-        k = 0;
-        j = 0;
-        while (j < i5)
+        this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(i), Integer.valueOf(3));
+        if ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > 0))
         {
-          i1 = 0;
-          while (i1 < paramInt)
-          {
-            i7 = paramBitmap.getPixel(i6 + i1, i2 + j);
-            n += (i7 >> 16 & 0xFF);
-            m += (i7 >> 8 & 0xFF);
-            k += (i7 & 0xFF);
-            i1 += 1;
+          Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+          while (localIterator.hasNext()) {
+            ((birb)localIterator.next()).a(i, paramLong1, paramLong2);
           }
-          j += 1;
         }
-        n = n / paramInt / i5;
-        m = m / paramInt / i5;
-        i1 = k / paramInt / i5;
-        j = 0;
-        while (j < i5)
-        {
-          k = 0;
-          while (k < paramInt)
-          {
-            paramBitmap.setPixel(i6 + k, i2 + j, 0xFF000000 | n << 16 | m << 8 | i1);
-            k += 1;
-          }
-          j += 1;
-        }
-        i += 1;
       }
     }
   }
   
-  public static boolean a(biov parambiov)
+  public void a(boolean paramBoolean)
   {
-    if (parambiov == null)
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b(@Nullable birb parambirb)
+  {
+    if (parambirb == null) {}
+    for (;;)
     {
-      urk.e("DoodleUtil", "item is null.");
-      return false;
+      return;
+      try
+      {
+        if (this.jdField_b_of_type_JavaUtilList == null) {
+          continue;
+        }
+        this.jdField_b_of_type_JavaUtilList.remove(parambirb);
+      }
+      finally {}
     }
-    if (TextUtils.isEmpty(parambiov.e))
-    {
-      urk.e("DoodleUtil", "item layoutJson is empty,can't parse.");
-      return false;
-    }
-    if (!parambiov.a())
-    {
-      urk.e("DoodleUtil", "parseJson error:" + parambiov.e);
-      return false;
-    }
-    if (parambiov.jdField_a_of_type_Biow.b < 0)
-    {
-      urk.e("DoodleUtil", "item textSize < 0. textSize:" + parambiov.jdField_a_of_type_Biow.b);
-      return false;
-    }
-    if ((parambiov.jdField_a_of_type_Biow.c <= 0) || (parambiov.jdField_a_of_type_Biow.d <= 0))
-    {
-      urk.e("DoodleUtil", "item pictureWidth <= 0 or item pictureHeight <= 0. pictureWidth:" + parambiov.jdField_a_of_type_Biow.c + ",pictureHeight:" + parambiov.jdField_a_of_type_Biow.d);
-      return false;
-    }
-    if ((parambiov.jdField_a_of_type_Biow.e <= 0) || (parambiov.jdField_a_of_type_Biow.f <= 0))
-    {
-      urk.e("DoodleUtil", "item standardWidth <= 0 or item standardHeight <= 0. standardWidth:" + parambiov.jdField_a_of_type_Biow.e + ",standardHeight:" + parambiov.jdField_a_of_type_Biow.f);
-      return false;
-    }
-    try
-    {
-      Color.parseColor(parambiov.jdField_a_of_type_Biow.a);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      urk.e("DoodleUtil", "item color is illegal:" + parambiov.jdField_a_of_type_Biow.a);
-      localException.printStackTrace();
-    }
-    return false;
   }
 }
 

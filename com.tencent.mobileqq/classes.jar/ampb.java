@@ -1,62 +1,54 @@
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.reflect.Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public class ampb
-  implements ampa
+public abstract class ampb<T>
 {
-  private Handler a;
+  public abstract int a();
   
-  public Resources a()
+  public abstract Class<T> a();
+  
+  @NonNull
+  public abstract T a(int paramInt);
+  
+  public void a()
   {
-    return BaseApplicationImpl.getApplication().getResources();
+    if (QLog.isColorLevel()) {
+      QLog.d("IQConfigProcessor", 2, "onReqNoReceive: type=" + a());
+    }
   }
   
-  public Handler a()
-  {
-    if (this.a == null) {
-      this.a = new Handler(Looper.getMainLooper());
-    }
-    return this.a;
-  }
+  public abstract void a(int paramInt);
   
-  public Object a(Class<?> paramClass, String paramString, Object paramObject)
-  {
-    try
-    {
-      paramClass = paramClass.getDeclaredField(paramString);
-      paramClass.setAccessible(true);
-      paramClass = paramClass.get(paramObject);
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
-  }
+  public abstract void a(T paramT);
   
   public boolean a()
   {
+    return true;
+  }
+  
+  public abstract int b();
+  
+  public int b(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @Nullable
+  public abstract T b(ampi[] paramArrayOfampi);
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public boolean d()
+  {
     return false;
-  }
-  
-  public boolean b()
-  {
-    return Build.VERSION.SDK_INT >= 26;
-  }
-  
-  public boolean c()
-  {
-    return Build.VERSION.SDK_INT >= 11;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampb
  * JD-Core Version:    0.7.0.1
  */

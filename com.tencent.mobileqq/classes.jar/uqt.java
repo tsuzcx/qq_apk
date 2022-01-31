@@ -1,14 +1,38 @@
+import android.graphics.Rect;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 class uqt
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  uqt(uqq paramuqq) {}
+  private int jdField_a_of_type_Int;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  uqt(uqs paramuqs) {}
+  
+  public void onGlobalLayout()
   {
-    this.a.dismiss();
+    uqs.a(this.jdField_a_of_type_Uqs).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
+    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
+    if (i != this.jdField_a_of_type_Int)
+    {
+      int j = uqs.a(this.jdField_a_of_type_Uqs).getRootView().getHeight();
+      if (j - i <= j / 4) {
+        break label79;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      uqs.a(this.jdField_a_of_type_Uqs);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+      label79:
+      if (this.jdField_a_of_type_Boolean) {
+        uqs.b(this.jdField_a_of_type_Uqs);
+      }
+    }
   }
 }
 

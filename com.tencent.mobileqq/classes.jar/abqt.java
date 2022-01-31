@@ -1,23 +1,30 @@
-import android.os.Handler;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper.6.1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abqt
-  implements INetEventHandler
+  extends ajzm
 {
-  abqt(abqn paramabqn) {}
+  public abqt(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    if (!paramBoolean)
-    {
-      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131628955), 1).show();
-      SendMultiPictureHelper.6.1 local1 = new SendMultiPictureHelper.6.1(this);
-      new Handler().postDelayed(local1, 3000L);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
     }
+    if ((paramBoolean1) && (paramInt == 64)) {
+      this.a.a(paramBoolean2);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
+    }
+    if (!paramBoolean1) {
+      this.a.a(2131719375, 1);
+    }
+    this.a.a(paramBoolean2);
   }
 }
 

@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import bbpx;
+import bcsw;
 
 public class PressEffectTextView
   extends TextView
@@ -26,10 +26,10 @@ public class PressEffectTextView
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bbpx.a(this);
+      bcsw.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bbpx.b(this);
+      bcsw.b(this);
     }
   }
 }

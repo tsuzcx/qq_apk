@@ -1,10 +1,13 @@
-public abstract interface bdft<T>
+import com.tencent.smtt.sdk.WebView;
+
+class bdft
 {
-  public abstract T a(bdcw parambdcw);
+  WebView jdField_a_of_type_ComTencentSmttSdkWebView;
+  String jdField_a_of_type_JavaLangString;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdft
  * JD-Core Version:    0.7.0.1
  */

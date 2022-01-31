@@ -1,18 +1,16 @@
 package cooperation.qzone.share;
 
-import bbmy;
-import bgcx;
+import bhlj;
 
 public class QZoneShareActivity$4$1
   implements Runnable
 {
-  public QZoneShareActivity$4$1(bgcx parambgcx) {}
+  public QZoneShareActivity$4$1(bhlj parambhlj) {}
   
   public void run()
   {
+    QZoneShareActivity.d(this.a.a);
     this.a.a.k();
-    bbmy.a(this.a.a, 1, 2131628632, 1).a();
-    this.a.a.finish();
   }
 }
 

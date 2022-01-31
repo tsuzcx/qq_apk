@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
-import upm;
+import vci;
 
 class LocalVideoPushSegment$1$3
   implements Runnable
@@ -9,7 +9,7 @@ class LocalVideoPushSegment$1$3
   
   public void run()
   {
-    upm.a(this.a.this$0);
+    vci.a(this.a.this$0);
   }
 }
 

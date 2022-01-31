@@ -1,6 +1,7 @@
 package com.tencent.gdtad.views.canvas;
 
 import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentData;
 import com.tencent.gdtad.views.canvas.components.appbutton.GdtCanvasAppBtnComponentData;
 import com.tencent.gdtad.views.canvas.components.button.GdtCanvasButtonComponentData;
 import com.tencent.gdtad.views.canvas.components.fixedbutton.GdtCanvasFixedButtonComponentData;
@@ -9,7 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import yny;
+import yxs;
 
 public class GdtCanvasData
   implements Serializable
@@ -43,7 +44,7 @@ public class GdtCanvasData
   {
     if ((!isValid()) || (paramInt < 0) || (paramInt > getSize()))
     {
-      yny.d("GdtCanvasData", "getPage error");
+      yxs.d("GdtCanvasData", "getPage error");
       return null;
     }
     return (GdtCanvasPageData)this.pages.get(paramInt);
@@ -95,6 +96,40 @@ public class GdtCanvasData
       }
     }
     return i;
+  }
+  
+  public boolean isPageWithoutButton()
+  {
+    int j;
+    if ((getPage(0) != null) && (getPage(0).components != null)) {
+      if (getPage(0).components.size() == 0) {
+        j = 1;
+      }
+    }
+    for (;;)
+    {
+      if ((j != 0) && (this.fixedButtonComponentDataList.size() == 0) && (this.webFixedButtonComponentDataList.size() == 0) && (this.appFixedButtonComponentDataList.size() == 0))
+      {
+        return true;
+        Iterator localIterator = getPage(0).components.iterator();
+        int i = 1;
+        j = i;
+        if (!localIterator.hasNext()) {
+          continue;
+        }
+        if (!((GdtCanvasComponentData)localIterator.next() instanceof GdtCanvasButtonComponentData)) {
+          break label122;
+        }
+        i = 0;
+      }
+      label122:
+      for (;;)
+      {
+        break;
+        return false;
+      }
+      j = 1;
+    }
   }
   
   public boolean isValid()

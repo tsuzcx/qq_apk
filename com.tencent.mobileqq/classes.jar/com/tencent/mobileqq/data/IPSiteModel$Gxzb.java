@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import ajjy;
-import amse;
+import ajyc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anil;
 
 public class IPSiteModel$Gxzb
   implements Parcelable
@@ -12,8 +12,8 @@ public class IPSiteModel$Gxzb
   public static final String BACKGROUND;
   public static final String BUBBLE;
   public static final String CARD;
-  public static final Parcelable.Creator<Gxzb> CREATOR = new amse();
-  public static final String EMOJI = ajjy.a(2131640060);
+  public static final Parcelable.Creator<Gxzb> CREATOR = new anil();
+  public static final String EMOJI = ajyc.a(2131705845);
   public static final String FONT;
   public static final String FUNCALL;
   public static final String PENDANT;
@@ -28,14 +28,14 @@ public class IPSiteModel$Gxzb
   
   static
   {
-    BUBBLE = ajjy.a(2131640057);
-    THEME = ajjy.a(2131640053);
-    PENDANT = ajjy.a(2131640056);
-    FONT = ajjy.a(2131640058);
-    BACKGROUND = ajjy.a(2131640059);
-    FUNCALL = ajjy.a(2131640052);
-    CARD = ajjy.a(2131640054);
-    REDPACKT = ajjy.a(2131640055);
+    BUBBLE = ajyc.a(2131705842);
+    THEME = ajyc.a(2131705838);
+    PENDANT = ajyc.a(2131705841);
+    FONT = ajyc.a(2131705843);
+    BACKGROUND = ajyc.a(2131705844);
+    FUNCALL = ajyc.a(2131705837);
+    CARD = ajyc.a(2131705839);
+    REDPACKT = ajyc.a(2131705840);
   }
   
   public IPSiteModel$Gxzb() {}

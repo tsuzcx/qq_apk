@@ -1,20 +1,23 @@
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerViewNew;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
 public class vwy
-  implements vwl
+  implements View.OnLongClickListener
 {
-  public vwy(RecommendBannerViewNew paramRecommendBannerViewNew) {}
+  public vwy(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    if (paramBoolean) {
-      RecommendBannerViewNew.a(this.a, paramInt);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
+      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vwy
  * JD-Core Version:    0.7.0.1
  */

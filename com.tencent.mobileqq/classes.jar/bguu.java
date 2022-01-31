@@ -1,52 +1,37 @@
-public final class bguu
-  implements Cloneable
+import android.os.Bundle;
+import cooperation.qqreader.proxy.ReaderInterfacePluginProxy;
+
+public class bguu
 {
-  public volatile int a;
-  public long a;
-  public bgut a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c = "";
-  public String d = "";
+  private static bguu a;
   
-  public bguu()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  public bguu a()
+  public static bguu a()
   {
     try
     {
-      bguu localbguu = (bguu)super.clone();
+      if (a == null) {
+        a = new bguu();
+      }
+      bguu localbguu = a;
       return localbguu;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
+    finally {}
   }
   
-  public boolean a()
+  public boolean a(String paramString, Bundle paramBundle)
   {
-    return (this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_Int == 3) || ((this.jdField_a_of_type_Int == 1) && ((this.jdField_b_of_type_Int == 1810003) || (this.jdField_b_of_type_Int == 1810004)));
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2);
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_Int == 1) && (this.jdField_b_of_type_Int != 1810003) && (this.jdField_b_of_type_Int != 1810004);
-  }
-  
-  public boolean d()
-  {
-    return (this.jdField_a_of_type_Int == 1) && ((this.jdField_b_of_type_Int == 1810003) || (this.jdField_b_of_type_Int == 1810004));
+    if (!bgtf.a().a())
+    {
+      bgvo.d("ReaderInterfacePlugin", "plugin is not Ready, launch it");
+      bgtf.a().a();
+    }
+    ReaderInterfacePluginProxy localReaderInterfacePluginProxy;
+    do
+    {
+      return false;
+      localReaderInterfacePluginProxy = bgtf.a().a();
+    } while (localReaderInterfacePluginProxy == null);
+    return localReaderInterfacePluginProxy.handleEvent(paramString, paramBundle);
   }
 }
 

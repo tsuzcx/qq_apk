@@ -1,13 +1,13 @@
-import java.util.List;
+import android.os.IInterface;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
-public class atgc
+public abstract interface atgc
+  extends IInterface
 {
-  public int a;
-  public String a;
-  public List<ateh> a;
-  public boolean a;
-  public int b;
-  public String b;
+  public abstract Message a(Message paramMessage);
+  
+  public abstract BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel);
 }
 
 

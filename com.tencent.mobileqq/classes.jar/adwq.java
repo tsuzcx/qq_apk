@@ -1,12 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
 
-class adwq
-  implements DialogInterface.OnClickListener
+public abstract interface adwq
 {
-  adwq(adwo paramadwo) {}
+  public abstract void a(PttAudioWaveView paramPttAudioWaveView);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(PttAudioWaveView paramPttAudioWaveView, float paramFloat);
 }
 
 

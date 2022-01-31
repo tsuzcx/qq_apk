@@ -1,30 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import android.text.TextUtils;
 
 public class ansp
-  implements View.OnTouchListener
 {
-  public ansp(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
+  public static int a = 300;
+  public static int b = 300;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static String a(String paramString)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+    return ajsf.bh + akvu.a(paramString);
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
+      return null;
     }
+    StringBuilder localStringBuilder = new StringBuilder("https://p.qpic.cn/");
+    localStringBuilder.append(paramString2).append("/").append(paramString3).append("/").append(paramString1).append("/0");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ansp
  * JD-Core Version:    0.7.0.1
  */

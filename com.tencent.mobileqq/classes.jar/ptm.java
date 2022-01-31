@@ -1,119 +1,18 @@
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.hotpic.HotPicData;
-import java.io.File;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallGallery;
 
 public class ptm
-  extends rgk
-  implements View.OnTouchListener
+  extends ptn
 {
-  private ptp jdField_a_of_type_Ptp;
-  private ptq jdField_a_of_type_Ptq;
-  
-  public ptm(Context paramContext, int paramInt)
+  public ptm(Context paramContext, baxk parambaxk, rap paramrap)
   {
-    super(paramContext, paramInt);
+    super(paramContext, parambaxk, paramrap);
   }
   
-  private Drawable a(String paramString)
+  public pqt g()
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      File localFile = new File(paramString);
-      if (localFile.exists())
-      {
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mPlayGifImage = atra.a(paramString);
-        localURLDrawableOptions.mLoadingDrawable = ReadInJoyDeliverUGCActivity.a;
-        localURLDrawableOptions.mFailedDrawable = ReadInJoyDeliverUGCActivity.a;
-        localURLDrawableOptions.mUseAutoScaleParams = false;
-        localURLDrawableOptions.mRequestWidth = bajq.b(114.0F);
-        localURLDrawableOptions.mRequestHeight = bajq.b(114.0F);
-        return URLDrawable.getDrawable(localFile, localURLDrawableOptions);
-      }
-    }
-    return null;
-  }
-  
-  public void a(ptp paramptp)
-  {
-    this.jdField_a_of_type_Ptp = paramptp;
-  }
-  
-  public void a(ptq paramptq)
-  {
-    this.jdField_a_of_type_Ptq = paramptq;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131494470, null);
-      paramViewGroup = new pto(this, null);
-      paramViewGroup.a = ((ImageView)paramView.findViewById(2131312736));
-      paramViewGroup.b = ((ImageView)paramView.findViewById(2131312733));
-      paramView.setTag(paramViewGroup);
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      if (!(localObject instanceof HotPicData)) {
-        break label177;
-      }
-      localObject = ReadInJoyDeliverUGCActivity.a((HotPicData)localObject);
-      if (localObject != null)
-      {
-        paramViewGroup.b.setImageDrawable((Drawable)localObject);
-        paramViewGroup.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        paramViewGroup.a.setVisibility(0);
-      }
-    }
-    for (;;)
-    {
-      paramViewGroup.b.setTag(Integer.valueOf(paramInt));
-      paramViewGroup.a.setTag(Integer.valueOf(paramInt));
-      paramViewGroup.b.setOnTouchListener(this);
-      paramViewGroup.a.setOnClickListener(new ptn(this));
-      return paramView;
-      paramViewGroup = (pto)paramView.getTag();
-      break;
-      label177:
-      if ("".equals(localObject))
-      {
-        paramViewGroup.b.setImageResource(2130841202);
-        paramViewGroup.b.setScaleType(ImageView.ScaleType.CENTER);
-        paramViewGroup.a.setVisibility(8);
-      }
-      else
-      {
-        localObject = a((String)localObject);
-        if (localObject != null)
-        {
-          paramViewGroup.b.setImageDrawable((Drawable)localObject);
-          paramViewGroup.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-          paramViewGroup.a.setVisibility(0);
-        }
-      }
-    }
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_Ptq != null) {
-      return this.jdField_a_of_type_Ptq.a(paramView, paramMotionEvent);
-    }
-    return false;
+    this.jdField_a_of_type_Pqs = new ComponentContentSmallGallery(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

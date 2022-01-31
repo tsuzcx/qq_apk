@@ -1,9 +1,26 @@
-public class annv
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
+
+class annv
 {
-  public String a;
-  public String b;
+  annv(annu paramannu) {}
   
-  annv(annt paramannt) {}
+  @QQPermissionDenied(1818)
+  public void denied()
+  {
+    QLog.e("VoiceInputHelper", 1, "checkPermission user denied");
+    annu.a(this.a);
+    this.a.onGetError(1830001);
+  }
+  
+  @QQPermissionGrant(1818)
+  public void grant()
+  {
+    QLog.d("VoiceInputHelper", 1, "checkPermission user grant");
+    annu.a(this.a);
+    annu.b(this.a);
+  }
 }
 
 

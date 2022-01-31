@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
 
-public final class bdmv
-  implements Parcelable.Creator<MiniAppInfo>
+public class bdmv
+  implements DialogInterface.OnClickListener
 {
-  public MiniAppInfo a(Parcel paramParcel)
-  {
-    return new MiniAppInfo(paramParcel);
-  }
+  public bdmv(ApkFileDownloadButton paramApkFileDownloadButton) {}
   
-  public MiniAppInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new MiniAppInfo[paramInt];
+    this.a.b(false, true);
+    paramDialogInterface.dismiss();
+    bdhk.b(bdhm.a().a("203").k(this.a.a.a).j("5").l(this.a.a.c).m(this.a.a.d).a(this.a.a.h).b(this.a.a.f).g(this.a.a.e));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdmv
  * JD-Core Version:    0.7.0.1
  */

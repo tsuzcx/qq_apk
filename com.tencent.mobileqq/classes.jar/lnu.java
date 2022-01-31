@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
-
-class lnu
-  implements DialogInterface.OnClickListener
+public class lnu
 {
-  lnu(lnt paramlnt) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c = 2;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    this.a.a.a.b();
+    return "AVUserInfo{account=" + this.jdField_a_of_type_Long + ", openId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", accountType=" + this.jdField_a_of_type_Int + ", pstnStatus=" + this.b + ", micAuthByAdmin=" + this.c + '}';
   }
 }
 

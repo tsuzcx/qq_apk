@@ -1,176 +1,32 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class sor
-  extends moa
+  extends nnb
 {
-  public static sot a;
-  public SparseArray<sou> a;
-  public boolean a;
-  public int b;
-  public SparseArray<sos> b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
+  public sor(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, long paramLong) {}
   
-  public sor(Context paramContext, String paramString)
+  public void a(boolean paramBoolean, soz paramsoz, byte[] paramArrayOfByte, String paramString)
   {
-    super(paramContext, paramString);
-  }
-  
-  public String a()
-  {
-    return "key_for_text_filter_cfg";
-  }
-  
-  public void a(String paramString)
-  {
-    int j = 0;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    Object localObject1 = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.StoryCfg.name(), "1|1");
-    this.jdField_b_of_type_Boolean = true;
-    Object localObject2;
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    if (paramBoolean)
     {
-      localObject2 = new Integer[2];
-      if (DeviceProfileManager.a((String)localObject1, (Object[])localObject2, new ajhd()) > 1) {
-        if (localObject2[1].intValue() != 1) {
-          break label115;
-        }
-      }
-    }
-    label115:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_b_of_type_Boolean = bool;
-      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-      this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-      if (!TextUtils.isEmpty(paramString)) {
-        break;
-      }
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.optInt("is_enable", 0) != 1) {
-          break label644;
-        }
-        bool = true;
-        this.jdField_a_of_type_Boolean = bool;
-        this.jdField_b_of_type_Int = paramString.optInt("bid");
-        this.jdField_c_of_type_JavaLangString = paramString.optString("template_manager", "TemplateManager");
-        this.jdField_c_of_type_Int = paramString.optInt("bg_alpha", 80);
-        localObject1 = paramString.optJSONArray("template");
-        if (localObject1 != null)
-        {
-          i = 0;
-          if (i < ((JSONArray)localObject1).length())
-          {
-            localObject2 = ((JSONArray)localObject1).optJSONObject(i);
-            if (localObject2 == null) {
-              break label637;
-            }
-            sou localsou = new sou();
-            localsou.jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("id");
-            localsou.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("report_id");
-            localsou.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("name");
-            localsou.jdField_b_of_type_Int = ((JSONObject)localObject2).optInt("color_template_id");
-            if (((JSONObject)localObject2).optInt("is_support_other_color") != 1) {
-              break label650;
-            }
-            bool = true;
-            localsou.jdField_a_of_type_Boolean = bool;
-            localsou.jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).optString("text_color");
-            localsou.e = ((JSONObject)localObject2).optString("background_color");
-            localsou.jdField_c_of_type_Int = ((JSONObject)localObject2).optInt("max_text_count");
-            if (((JSONObject)localObject2).optInt("is_dynamictmp") != 1) {
-              break label656;
-            }
-            bool = true;
-            localsou.jdField_b_of_type_Boolean = bool;
-            localsou.jdField_d_of_type_JavaLangString = ((JSONObject)localObject2).optString("res_name");
-            localsou.jdField_d_of_type_Int = ((JSONObject)localObject2).optInt("bid", 0);
-            localsou.f = ((JSONObject)localObject2).optString("music_file");
-            localsou.g = ((JSONObject)localObject2).optString("pcm_music_file");
-            localsou.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject2).optJSONObject("hint");
-            localsou.h = ((JSONObject)localObject2).optString("image_url");
-            localsou.jdField_b_of_type_OrgJsonJSONObject = ((JSONObject)localObject2).optJSONObject("extra_json_config");
-            this.jdField_a_of_type_AndroidUtilSparseArray.put(localsou.jdField_a_of_type_Int, localsou);
-            break label637;
-          }
-        }
-        paramString = paramString.optJSONArray("color_template");
-        if (paramString != null)
-        {
-          i = j;
-          if (i < paramString.length())
-          {
-            localObject1 = paramString.optJSONObject(i);
-            if (localObject1 != null)
-            {
-              localObject2 = new sos();
-              ((sos)localObject2).jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("id");
-              ((sos)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("report_id");
-              ((sos)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color");
-              ((sos)localObject2).jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color2");
-              ((sos)localObject2).jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color3");
-              ((sos)localObject2).e = ((JSONObject)localObject1).optString("text_color");
-              ((sos)localObject2).jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject1).optJSONObject("extra_json_config");
-              this.jdField_b_of_type_AndroidUtilSparseArray.put(((sos)localObject2).jdField_a_of_type_Int, localObject2);
-            }
-            i += 1;
-            continue;
-          }
-        }
-        if (!this.jdField_b_of_type_Boolean) {
-          break;
-        }
-      }
-      catch (JSONException paramString)
+      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(true, this.jdField_a_of_type_Long);
+      if (paramsoz != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("read TextFilter Config", 2, paramString.getMessage());
+          QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean + " ;articleID = " + paramsoz.a);
         }
-      }
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
+        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(paramsoz, paramArrayOfByte);
+        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.b(paramsoz);
       }
       return;
-      label637:
-      i += 1;
-      continue;
-      label644:
-      bool = false;
-      continue;
-      label650:
-      bool = false;
-      continue;
-      label656:
-      bool = false;
     }
-  }
-  
-  public String b()
-  {
-    return "key_for_text_filter_cfg_version";
+    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(false, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     sor
  * JD-Core Version:    0.7.0.1
  */

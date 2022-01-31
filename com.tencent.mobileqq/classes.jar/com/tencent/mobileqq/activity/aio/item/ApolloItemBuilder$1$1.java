@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adac;
+import adle;
 import android.widget.ImageView;
 
 class ApolloItemBuilder$1$1

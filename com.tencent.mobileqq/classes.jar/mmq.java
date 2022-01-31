@@ -1,106 +1,63 @@
-import android.text.TextUtils;
-import android.util.SparseIntArray;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import com.tencent.av.chatroom.ChatRoomInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public class mmq
+class mmq
+  implements lkw
 {
-  public static final SparseIntArray a = new SparseIntArray();
+  private final WeakReference<mmn> a;
   
-  static
+  mmq(mmn parammmn)
   {
-    a.put(35, 3);
-    a.put(11, 2);
-    a.put(8, 1);
-    a.put(37, 4);
-    a.put(52, 5);
+    this.a = new WeakReference(parammmn);
   }
   
-  public static int a(oidb_0x791.RedDotInfo paramRedDotInfo1, oidb_0x791.RedDotInfo paramRedDotInfo2)
+  public void a(int paramInt, ChatRoomInfo paramChatRoomInfo)
   {
-    if (paramRedDotInfo1 == null)
+    int i;
+    mmn localmmn;
+    if ((paramInt & 0x4) == 4)
     {
-      if (paramRedDotInfo2 == null) {
-        return 0;
+      i = 1;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomMsgUpdate, flag[" + paramInt + "], room[" + paramChatRoomInfo + "]");
       }
-      return -1;
+      localmmn = (mmn)this.a.get();
+      if (localmmn != null) {
+        break label77;
+      }
     }
-    if (paramRedDotInfo2 == null) {
-      return 1;
-    }
-    return a.get(paramRedDotInfo1.uint32_appid.get()) - a.get(paramRedDotInfo2.uint32_appid.get());
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 8) || (paramInt == 35) || (paramInt == 11) || (paramInt == 37);
-  }
-  
-  public static boolean a(oidb_0x791.RedDotInfo paramRedDotInfo)
-  {
-    boolean bool = true;
-    int i = paramRedDotInfo.uint32_appid.get();
-    if (i == 35)
+    label77:
+    do
     {
-      paramRedDotInfo = paramRedDotInfo.str_custom_buffer.get().toStringUtf8();
-      if (!TextUtils.isEmpty(paramRedDotInfo)) {
-        try
-        {
-          long l = new JSONObject(paramRedDotInfo).optLong("image_red_display_780", 1L);
-          if (l == 0L) {
-            bool = false;
-          }
-          return bool;
-        }
-        catch (JSONException paramRedDotInfo)
-        {
-          urk.c("TroopRedTouchConfigure", "isStoryDisplayRedDot() APPID_STORY_IMG: Error parse json: ", paramRedDotInfo);
-          return true;
-        }
+      return;
+      i = 0;
+      break;
+      if (localmmn.a())
+      {
+        mmn.a(localmmn, paramChatRoomInfo);
+        return;
       }
-      urk.b("TroopRedTouchConfigure", "isStoryDisplayRedDot() APPID_STORY_IMG: str_custom_buffer is null");
-      return true;
+    } while (i == 0);
+    mmn.a(localmmn, 0);
+  }
+  
+  public void a(lkv paramlkv)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomSendMsgResult, msg[" + paramlkv + "]");
     }
-    return b(i);
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (a(paramInt)) || (paramInt == 52);
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return (d(paramInt)) || (e(paramInt)) || (f(paramInt)) || (g(paramInt)) || (paramInt == 40) || (paramInt == 39) || (paramInt == 41) || (paramInt == 42) || (paramInt == 58) || (paramInt == 56) || (paramInt == 57) || (paramInt == 59) || (paramInt == 60) || (paramInt == 61) || (paramInt == 65) || (paramInt == 63);
-  }
-  
-  public static boolean d(int paramInt)
-  {
-    return paramInt == 25;
-  }
-  
-  public static boolean e(int paramInt)
-  {
-    return (paramInt == 23) || (paramInt == 26);
-  }
-  
-  public static boolean f(int paramInt)
-  {
-    return (paramInt == 24) || (paramInt == 27);
-  }
-  
-  public static boolean g(int paramInt)
-  {
-    return paramInt == 38;
+    mmn localmmn = (mmn)this.a.get();
+    if ((paramlkv == null) || (localmmn == null)) {}
+    while (!localmmn.a()) {
+      return;
+    }
+    mmn.a(localmmn, paramlkv.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mmq
  * JD-Core Version:    0.7.0.1
  */

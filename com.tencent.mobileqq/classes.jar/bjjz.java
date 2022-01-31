@@ -1,13 +1,20 @@
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.widget.AdapterView;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class bjjz
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public int b = 0;
+  public bjjz(MusicProviderView paramMusicProviderView, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong) {}
   
-  public bjjz(SVHwEncoder.HwEncode paramHwEncode)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
+    paramDialogInterface.dismiss();
+    MusicProviderView.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_Bjkh.k();
+    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.onItemClick(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
   }
 }
 

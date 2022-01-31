@@ -1,11 +1,11 @@
 package cooperation.troop;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import bfcz;
-import bfdi;
+import bgkq;
+import bgkz;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import java.util.ArrayList;
@@ -29,20 +29,20 @@ public class TroopFileProxyActivity
   
   public static void a(Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString1, String paramString2, int paramInt)
   {
-    bfdi localbfdi = new bfdi(0);
-    localbfdi.jdField_b_of_type_JavaLangString = "troop_plugin.apk";
-    localbfdi.d = ajjy.a(2131649540);
-    localbfdi.jdField_a_of_type_JavaLangString = paramString2;
-    localbfdi.e = paramString1;
-    localbfdi.jdField_a_of_type_JavaLangClass = TroopFileProxyActivity.class;
-    localbfdi.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbfdi.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    bgkz localbgkz = new bgkz(0);
+    localbgkz.jdField_b_of_type_JavaLangString = "troop_plugin.apk";
+    localbgkz.d = ajyc.a(2131715330);
+    localbgkz.jdField_a_of_type_JavaLangString = paramString2;
+    localbgkz.e = paramString1;
+    localbgkz.jdField_a_of_type_JavaLangClass = TroopFileProxyActivity.class;
+    localbgkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbgkz.jdField_a_of_type_AndroidAppDialog = paramDialog;
     paramIntent.putExtra("userQqResources", 1);
     paramIntent.putExtra("param_plugin_gesturelock", true);
-    localbfdi.jdField_b_of_type_Int = paramInt;
-    localbfdi.c = 10000;
-    localbfdi.f = null;
-    bfcz.a(paramActivity, localbfdi);
+    localbgkz.jdField_b_of_type_Int = paramInt;
+    localbgkz.c = 10000;
+    localbgkz.f = null;
+    bgkq.a(paramActivity, localbgkz);
   }
   
   public static void a(Activity paramActivity, Intent paramIntent, String paramString)

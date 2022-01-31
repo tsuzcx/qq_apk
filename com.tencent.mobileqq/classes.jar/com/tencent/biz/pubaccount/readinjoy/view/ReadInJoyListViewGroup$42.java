@@ -1,10 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
-import mqq.app.AppRuntime;
-import obz;
-
 class ReadInJoyListViewGroup$42
   implements Runnable
 {
@@ -12,13 +7,12 @@ class ReadInJoyListViewGroup$42
   
   public void run()
   {
-    KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo = ((KandianMergeManager)obz.a().getManager(162)).a();
-    if (localKandianMsgBoxRedPntInfo == null)
+    if (this.this$0.a != null)
     {
-      ReadInJoyListViewGroup.b(this.this$0);
-      return;
+      int i = this.this$0.a.getFirstVisiblePosition();
+      this.this$0.a.setAdapter(ReadInJoyListViewGroup.a(this.this$0));
+      this.this$0.a.post(new ReadInJoyListViewGroup.42.1(this, i));
     }
-    ReadInJoyListViewGroup.a(this.this$0, localKandianMsgBoxRedPntInfo);
   }
 }
 

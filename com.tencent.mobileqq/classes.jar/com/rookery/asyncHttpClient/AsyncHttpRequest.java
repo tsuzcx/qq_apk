@@ -6,7 +6,7 @@ import java.net.ConnectException;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
-import kpy;
+import lam;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -17,18 +17,18 @@ public class AsyncHttpRequest
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  private final kpy jdField_a_of_type_Kpy;
+  private final lam jdField_a_of_type_Lam;
   private final HttpUriRequest jdField_a_of_type_OrgApacheHttpClientMethodsHttpUriRequest;
   private final AbstractHttpClient jdField_a_of_type_OrgApacheHttpImplClientAbstractHttpClient;
   private final HttpContext jdField_a_of_type_OrgApacheHttpProtocolHttpContext;
   private boolean jdField_a_of_type_Boolean;
   
-  public AsyncHttpRequest(AbstractHttpClient paramAbstractHttpClient, HttpContext paramHttpContext, HttpUriRequest paramHttpUriRequest, kpy paramkpy)
+  public AsyncHttpRequest(AbstractHttpClient paramAbstractHttpClient, HttpContext paramHttpContext, HttpUriRequest paramHttpUriRequest, lam paramlam)
   {
     this.jdField_a_of_type_OrgApacheHttpImplClientAbstractHttpClient = paramAbstractHttpClient;
     this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext = paramHttpContext;
     this.jdField_a_of_type_OrgApacheHttpClientMethodsHttpUriRequest = paramHttpUriRequest;
-    this.jdField_a_of_type_Kpy = paramkpy;
+    this.jdField_a_of_type_Lam = paramlam;
   }
   
   private void a()
@@ -37,8 +37,8 @@ public class AsyncHttpRequest
     try
     {
       HttpResponse localHttpResponse = this.jdField_a_of_type_OrgApacheHttpImplClientAbstractHttpClient.execute(this.jdField_a_of_type_OrgApacheHttpClientMethodsHttpUriRequest, this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext);
-      if ((!Thread.currentThread().isInterrupted()) && (this.jdField_a_of_type_Kpy != null)) {
-        this.jdField_a_of_type_Kpy.a(localHttpResponse);
+      if ((!Thread.currentThread().isInterrupted()) && (this.jdField_a_of_type_Lam != null)) {
+        this.jdField_a_of_type_Lam.a(localHttpResponse);
       }
       return;
     }
@@ -68,20 +68,20 @@ public class AsyncHttpRequest
       }
       catch (UnknownHostException localUnknownHostException)
       {
-        while (this.jdField_a_of_type_Kpy == null) {}
-        this.jdField_a_of_type_Kpy.b(localUnknownHostException, "can't resolve host");
+        while (this.jdField_a_of_type_Lam == null) {}
+        this.jdField_a_of_type_Lam.b(localUnknownHostException, "can't resolve host");
         return;
       }
       catch (SocketException localSocketException)
       {
-        while (this.jdField_a_of_type_Kpy == null) {}
-        this.jdField_a_of_type_Kpy.b(localSocketException, "can't resolve host");
+        while (this.jdField_a_of_type_Lam == null) {}
+        this.jdField_a_of_type_Lam.b(localSocketException, "can't resolve host");
         return;
       }
       catch (SocketTimeoutException localSocketTimeoutException)
       {
-        while (this.jdField_a_of_type_Kpy == null) {}
-        this.jdField_a_of_type_Kpy.b(localSocketTimeoutException, "socket time out");
+        while (this.jdField_a_of_type_Lam == null) {}
+        this.jdField_a_of_type_Lam.b(localSocketTimeoutException, "socket time out");
         return;
       }
       catch (IOException localIOException1)
@@ -116,25 +116,25 @@ public class AsyncHttpRequest
   {
     try
     {
-      if (this.jdField_a_of_type_Kpy != null) {
-        this.jdField_a_of_type_Kpy.c();
+      if (this.jdField_a_of_type_Lam != null) {
+        this.jdField_a_of_type_Lam.c();
       }
       b();
-      if (this.jdField_a_of_type_Kpy != null) {
-        this.jdField_a_of_type_Kpy.d();
+      if (this.jdField_a_of_type_Lam != null) {
+        this.jdField_a_of_type_Lam.d();
       }
       return;
     }
     catch (IOException localIOException)
     {
-      while (this.jdField_a_of_type_Kpy == null) {}
-      this.jdField_a_of_type_Kpy.d();
+      while (this.jdField_a_of_type_Lam == null) {}
+      this.jdField_a_of_type_Lam.d();
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Kpy.a(localIOException, (byte[])null);
+        this.jdField_a_of_type_Lam.a(localIOException, (byte[])null);
         return;
       }
-      this.jdField_a_of_type_Kpy.b(localIOException, (String)null);
+      this.jdField_a_of_type_Lam.b(localIOException, (String)null);
     }
   }
 }

@@ -1,61 +1,33 @@
-public class awfm
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+class awfm
+  implements Observer
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  awfm(awfk paramawfk) {}
   
-  awfm(String paramString)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
-      return -3;
+    if ((paramObject instanceof Integer)) {
+      switch (((Integer)paramObject).intValue())
+      {
+      }
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\_");
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      return -1;
+    do
+    {
+      return;
+      paramObservable = this.a.a();
+    } while ((paramObservable == null) || (paramObservable.a.get()) || (this.a.b != true) || (this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus == null) || (this.a.c) || (this.a.d));
+    if (QLog.isColorLevel()) {
+      QLog.i("BaseSignViewHolder", 2, "update tplId=" + this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
     }
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
-      return -2;
-    }
-    return 0;
-  }
-  
-  int a(char paramChar)
-  {
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
-      return -3;
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\" + paramChar);
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
-      return -2;
-    }
-    return 0;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[0].trim();
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
-  }
-  
-  String c()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[0].trim();
-  }
-  
-  String d()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
+    ThreadManager.getUIHandlerV2().removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    ThreadManager.getUIHandlerV2().post(this.a.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

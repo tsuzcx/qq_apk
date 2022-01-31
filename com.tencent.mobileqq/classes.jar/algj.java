@@ -1,30 +1,19 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-
 public class algj
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public algj(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  public String a;
+  public byte[] a;
+  public String b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public algj(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    if (paramBoolean)
-    {
-      this.a.b();
-      this.a.a("");
-      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is open", new Object[0]));
-      return;
-    }
-    this.a.c();
-    this.a.a("close");
-    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is close", new Object[0]));
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     algj
  * JD-Core Version:    0.7.0.1
  */

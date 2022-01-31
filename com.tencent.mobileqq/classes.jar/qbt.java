@@ -1,67 +1,26 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
-class qbt
-  implements Application.ActivityLifecycleCallbacks
+public class qbt
+  implements Cloneable
 {
-  private qbt(qbq paramqbq) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  protected Object clone()
   {
-    if ((!qbq.b(this.a)) && ((paramActivity instanceof VideoFeedsPlayActivity))) {
-      this.a.f();
-    }
-  }
-  
-  public void onActivityDestroyed(Activity paramActivity)
-  {
-    if (((paramActivity instanceof SplashActivity)) || ((paramActivity instanceof ReadInJoyNewFeedsActivity)))
+    try
     {
-      this.a.f();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsFloatWindowManager", 2, "onDestroyFloatingWindow");
-      }
+      qbt localqbt = (qbt)super.clone();
+      return localqbt;
     }
-  }
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsFloatWindowManager", 2, "onActivityResumed: ");
-    }
-    if (((qbq.a(this.a, paramActivity)) && (qbq.c(this.a))) || (qbq.b(this.a, paramActivity)) || (qbq.c(this.a, paramActivity)))
+    catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      this.a.d();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsFloatWindowManager", 2, "onShowFloatingWindow");
-      }
+      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
     }
-  }
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsFloatWindowManager", 2, "onActivityStopped: ");
-    }
-    if ((qbq.a(this.a, paramActivity)) || (qbq.b(this.a, paramActivity)) || ((!BaseActivity.mAppForground) && (qbq.c(this.a))))
-    {
-      this.a.e();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsFloatWindowManager", 2, "onHideFloatingWindow");
-      }
-    }
+    return null;
   }
 }
 

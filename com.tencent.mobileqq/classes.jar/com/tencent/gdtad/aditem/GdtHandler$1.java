@@ -1,19 +1,18 @@
 package com.tencent.gdtad.aditem;
 
 import android.content.Context;
-import bbqo;
+import bctn;
 import java.lang.ref.WeakReference;
-import yjs;
 
-public final class GdtHandler$1
+final class GdtHandler$1
   implements Runnable
 {
-  public GdtHandler$1(yjs paramyjs) {}
+  GdtHandler$1(GdtHandler.Params paramParams) {}
   
   public void run()
   {
     if ((this.a != null) && (this.a.a != null) && (this.a.a.get() != null)) {
-      bbqo.a((Context)this.a.a.get());
+      bctn.a((Context)this.a.a.get());
     }
   }
 }

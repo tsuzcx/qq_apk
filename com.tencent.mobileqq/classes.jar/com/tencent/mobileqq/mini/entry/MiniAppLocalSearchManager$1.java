@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
-import atmp;
-import atmq;
-import atmr;
+import aukn;
+import auko;
+import aukp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -18,31 +18,31 @@ class MiniAppLocalSearchManager$1
     if (localObject1 == null) {
       QLog.e("MiniAppLocalSearchManager", 2, "getLocalSearchData, app is null.");
     }
-    atmp localatmp;
+    aukn localaukn;
     do
     {
       return;
       QLog.i("MiniAppLocalSearchManager", 1, "removeAllLocalSearchData");
-      localatmp = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-    } while (localatmp == null);
-    localObject1 = localatmp.a();
+      localaukn = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+    } while (localaukn == null);
+    localObject1 = localaukn.a();
     try
     {
-      ((atmr)localObject1).a();
-      localatmp.b(" DELETE FROM MiniAppLocalSearchEntity ");
-      ((atmr)localObject1).c();
+      ((aukp)localObject1).a();
+      localaukn.b(" DELETE FROM MiniAppLocalSearchEntity ");
+      ((aukp)localObject1).c();
     }
     catch (Exception localException)
     {
       for (;;)
       {
         localException.printStackTrace();
-        ((atmr)localObject1).b();
+        ((aukp)localObject1).b();
       }
     }
     finally
     {
-      ((atmr)localObject1).b();
+      ((aukp)localObject1).b();
     }
     MiniAppLocalSearchManager.access$100(this.this$0, this.val$entities);
   }

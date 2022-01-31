@@ -1,17 +1,19 @@
-class vnl
-  extends vnh
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+
+public class vnl
+  implements vvp
 {
-  vnl(vni paramvni, vnq paramvnq) {}
+  public vnl(DoodleLayout paramDoodleLayout) {}
   
-  public void onFailure(String paramString)
+  public void a(@NonNull vvw paramvvw)
   {
-    urk.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onFail: " + paramString);
-    this.jdField_a_of_type_Vnq.onFailure(paramString);
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    urk.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onSuccess: " + paramString);
+    vem.b("0X80075CD");
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 2);
+    }
   }
 }
 

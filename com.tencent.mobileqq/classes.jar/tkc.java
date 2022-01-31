@@ -1,35 +1,43 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.List;
 
-class tkc
-  extends QQUIEventReceiver<tkb, swq>
+public class tkc
+  extends tjg
+  implements syt<tke, tkf>
 {
-  public tkc(@NonNull tkb paramtkb)
+  public List<String> a = new ArrayList();
+  
+  public tkc(String paramString)
   {
-    super(paramtkb);
+    this.a.add(paramString);
   }
   
-  public void a(@NonNull tkb paramtkb, @NonNull swq paramswq)
+  public void a()
   {
-    if ((!TextUtils.equals(tkb.a(paramtkb).mContext, paramswq.jdField_a_of_type_JavaLangString)) || (tkb.a(paramtkb) == null)) {
-      return;
-    }
-    if (paramswq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    tke localtke = new tke();
+    localtke.c = 1;
+    localtke.a = this.a;
+    syr.a().a(localtke, this);
+  }
+  
+  public void a(@NonNull tke paramtke, @Nullable tkf paramtkf, @NonNull ErrorMessage paramErrorMessage)
+  {
+    paramtke = new tkd(paramErrorMessage);
+    if ((paramErrorMessage.isSuccess()) && (paramtkf != null) && (paramtkf.a != null))
     {
-      urk.a(this.TAG, "pull feedId list fail %s", paramswq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg);
-      tkb.a(paramtkb).a(new ErrorMessage(paramswq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, paramswq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg), null, false);
-      return;
+      paramtke.a = paramtkf.a;
+      b();
     }
-    tkb.a(paramtkb).mIsEnd = paramswq.jdField_a_of_type_Boolean;
-    tkb.a(paramtkb).b(new ErrorMessage(), tkb.b(paramswq.jdField_a_of_type_JavaUtilList), paramswq.jdField_a_of_type_Boolean);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return swq.class;
+    for (;;)
+    {
+      ste.a().dispatch(paramtke);
+      return;
+      c();
+    }
   }
 }
 

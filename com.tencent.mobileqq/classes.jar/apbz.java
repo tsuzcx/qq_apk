@@ -1,15 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-final class apbz
-  implements DialogInterface.OnClickListener
+class apbz
+  extends apbi
 {
-  apbz(apca paramapca) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public apbz(apbe paramapbe)
   {
-    this.a.b();
-    paramDialogInterface.dismiss();
+    super(paramapbe);
+  }
+  
+  protected String a()
+  {
+    return "StateRefuseByPCWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    apbe.b(this.jdField_a_of_type_Apbe, 11, 6);
+    apbe.c(this.jdField_a_of_type_Apbe, 11, 6);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateRefuseByPC)");
+    this.jdField_a_of_type_Apbi = new apby(this.jdField_a_of_type_Apbe);
   }
 }
 

@@ -1,54 +1,30 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusBookData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import org.json.JSONObject;
+import org.jetbrains.annotations.NotNull;
 
 class qyr
-  extends qxr
 {
-  private Container a;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
   
-  public qyr(View paramView, BaseData paramBaseData)
+  qyr(qyp paramqyp, String paramString1, String paramString2, int paramInt1, long paramLong, int paramInt2)
   {
-    super(paramView, paramBaseData);
-    if ((paramView instanceof Container)) {
-      this.a = ((Container)paramView);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  private JSONObject a(ProteusBookData paramProteusBookData)
+  @NotNull
+  public String toString()
   {
-    if (paramProteusBookData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo != null) {
-      return paramProteusBookData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a(paramProteusBookData.b);
+    StringBuilder localStringBuilder = new StringBuilder().append("PlayParams{vid='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", url='").append(this.jdField_b_of_type_JavaLangString).append('\'').append(", playType=");
+    if (this.jdField_a_of_type_Int == 2) {}
+    for (String str = "VOD";; str = "LIVE") {
+      return str + '}';
     }
-    return null;
-  }
-  
-  private void b()
-  {
-    ViewFactory.findClickableViewListener(this.a.getVirtualView(), new qys(this));
-  }
-  
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    switch (paramBaseData2.p)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.a == null);
-    paramBaseData1 = (ProteusBookData)paramBaseData2;
-    if (paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
-    {
-      paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.putDynamicJson(a(paramBaseData1));
-      oag.a(this.a.getVirtualView(), paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getViewBean());
-    }
-    b();
   }
 }
 

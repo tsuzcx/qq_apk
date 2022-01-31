@@ -1,22 +1,12 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import android.graphics.Bitmap;
 
-public class aywx
-  implements View.OnClickListener
+public abstract interface aywx
 {
-  public aywx(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    beex.b(paramView);
-    this.a.getActivity().doOnBackPressed();
-  }
+  public abstract Bitmap a(Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aywx
  * JD-Core Version:    0.7.0.1
  */

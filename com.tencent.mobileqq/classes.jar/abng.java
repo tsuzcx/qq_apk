@@ -1,23 +1,53 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class abng
-  extends ajfo
+  extends abni
 {
-  public abng(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  protected View a;
+  protected String a;
+  protected boolean a;
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public abng(View paramView, String paramString)
   {
-    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
-      QQSettingSettingActivity.a(this.a, (Card)paramObject);
-    }
+    super(null);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean1) {
-      this.a.a(this.a.app.getCurrentAccountUin());
+    super.onClick(paramView);
+    try
+    {
+      if (QSecFramework.a().a(1001).booleanValue()) {
+        if (this.jdField_a_of_type_Boolean)
+        {
+          paramView = this.jdField_a_of_type_AndroidViewView;
+          QSecFramework.a().a(5, 0, 1, new Object[] { Integer.valueOf(80), paramView }, null);
+          this.jdField_a_of_type_Boolean = false;
+          if (QLog.isColorLevel()) {
+            QLog.i("MainFragment", 2, "附近人机上报: lebaView onCreate, from=" + this.jdField_a_of_type_JavaLangString);
+          }
+        }
+        else
+        {
+          QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(80), Integer.valueOf(1), Integer.valueOf(6), "lebaClick", null }, null);
+          if (QLog.isColorLevel())
+          {
+            QLog.i("MainFragment", 2, "附近人机上报: lebaView onClick, from=" + this.jdField_a_of_type_JavaLangString);
+            return;
+          }
+        }
+      }
+    }
+    catch (Exception paramView)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("MainFragment", 2, "ABotDragClickListener onClick exp=", paramView);
+      }
     }
   }
 }

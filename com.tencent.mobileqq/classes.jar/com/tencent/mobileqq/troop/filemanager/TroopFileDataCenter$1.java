@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import ayrl;
+import azsb;
 
 public class TroopFileDataCenter$1
   implements Runnable
 {
   public void run()
   {
-    ayrl.a(this.this$0);
+    azsb.a(this.this$0);
   }
 }
 

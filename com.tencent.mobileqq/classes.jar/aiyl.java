@@ -1,89 +1,157 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
+import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiyl
-  implements Handler.Callback
+  extends aiwj
 {
-  private int jdField_a_of_type_Int;
-  private final aiym jdField_a_of_type_Aiym;
-  private aiyn jdField_a_of_type_Aiyn;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
-  
-  public aiyl(aiym paramaiym)
+  public aiyl(ApolloWebGameActivity paramApolloWebGameActivity, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Aiym = paramaiym;
-    this.jdField_a_of_type_AndroidOsHandler = new befq(ThreadManager.getSubThreadLooper(), this);
+    super(paramAppInterface, false);
   }
   
-  public void a()
+  public void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, aiwk paramaiwk, long paramLong)
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(int paramInt, aiyn paramaiyn)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Aiyn = paramaiyn;
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.b = false;
+    if (ApolloWebGameActivity.a(this.a)) {}
     do
     {
-      while (!this.b) {
-        switch (this.jdField_a_of_type_Aiym.a(paramBundle))
+      do
+      {
+        do
         {
-        case 0: 
-        default: 
-          break;
-        case -1: 
-          if (this.jdField_a_of_type_Aiyn != null)
-          {
-            paramBundle = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
-            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramBundle, this.jdField_a_of_type_Int);
+          return;
+          if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
+            break;
           }
+        } while (!QLog.isColorLevel());
+        QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onDownloadConfirm mStartCheckParam == null || mStartCheckParam.game == null");
+        return;
+        if ((ApolloWebGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloWebGameActivity.a(this.a).requestCode)) {
           break;
         }
-      }
+      } while (!QLog.isColorLevel());
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onDownloadConfirm startCheckParam.requestCode != mStartCheckParam.requestCode");
       return;
-    } while (!this.jdField_a_of_type_Boolean);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-    localMessage.setData(paramBundle);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    } while (paramaiwk == null);
+    paramaiwk.a(paramStartCheckParam);
   }
   
-  public void b()
+  public void onDownloadGameResFail(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    this.b = true;
-    this.jdField_a_of_type_Aiyn = null;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    QLog.d("cmgame_process.ApolloWebGameActivity", 1, "[onDownloadGameResFail]");
+    paramStartCheckParam = ApolloWebGameActivity.a(this.a).obtainMessage(17);
+    paramStartCheckParam.obj = ajyc.a(2131700575);
+    ApolloWebGameActivity.a(this.a).sendMessage(paramStartCheckParam);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void onGameCheckFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
   {
-    switch (paramMessage.what)
+    if (ApolloWebGameActivity.a(this.a)) {}
+    do
     {
+      do
+      {
+        do
+        {
+          return;
+          QLog.d("cmgame_process.ApolloWebGameActivity", 1, new Object[] { "[onGameCheckFinish] resultCode=", Long.valueOf(paramLong) });
+          if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onGameCheckFinish mStartCheckParam == null || mStartCheckParam.game == null");
+        return;
+        if ((ApolloWebGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloWebGameActivity.a(this.a).requestCode)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onGameCheckFinish startCheckParam.requestCode != mStartCheckParam.requestCode");
+      return;
+    } while (paramLong == 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onGameCheckFinish resultCode != 0");
+    }
+    paramCmGameInitParams = ApolloWebGameActivity.a(this.a).obtainMessage(17);
+    paramCmGameInitParams.obj = paramStartCheckParam.wordingV2;
+    ApolloWebGameActivity.a(this.a).sendMessage(paramCmGameInitParams);
+  }
+  
+  public void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if (ApolloWebGameActivity.a(this.a)) {
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      if (paramStartCheckParam != null) {
+        break label39;
+      }
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "showGameLifeTip mStartCheckParam is null");
     }
     for (;;)
     {
-      return false;
-      if (!this.b) {
-        a(paramMessage.getData());
-      }
-      return true;
-      if (this.jdField_a_of_type_Aiyn != null)
-      {
-        this.jdField_a_of_type_Aiyn.b();
-        this.jdField_a_of_type_Aiyn = null;
-      }
+      onGameCheckFinish(-1L, paramStartCheckParam, null);
+      return;
+      label39:
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, new Object[] { "showGameLifeTip mStartCheckParam:", paramStartCheckParam });
     }
+  }
+  
+  public void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    super.onGetGameData(paramStartCheckParam);
+    if ((paramStartCheckParam == null) || (paramStartCheckParam.game == null)) {
+      QLog.e("cmgame_process.ApolloWebGameActivity", 1, "onGetGameData startCheckParam == null or game is null");
+    }
+    do
+    {
+      return;
+      ApolloWebGameActivity.a(this.a).game = paramStartCheckParam.game;
+    } while (ApolloWebGameActivity.a(this.a) == null);
+    ApolloWebGameActivity.a(this.a).a(ApolloWebGameActivity.a(this.a));
+  }
+  
+  public void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
+  {
+    if (ApolloWebGameActivity.a(this.a)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          QLog.d("cmgame_process.ApolloWebGameActivity", 1, new Object[] { "[onVerifyGameFinish] resultCode=", Long.valueOf(paramLong) });
+          if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onVerifyGameFinish mStartCheckParam == null || mStartCheckParam.game == null");
+        return;
+        if ((ApolloWebGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloWebGameActivity.a(this.a).requestCode)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onVerifyGameFinish startCheckParam.requestCode != mStartCheckParam.requestCode");
+      return;
+      if (paramLong != 0L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onVerifyGameFinish resultCode != 0");
+        }
+        paramCmGameInitParams = ApolloWebGameActivity.a(this.a).obtainMessage(17);
+        paramCmGameInitParams.obj = paramStartCheckParam.wordingV2;
+        ApolloWebGameActivity.a(this.a).sendMessage(paramCmGameInitParams);
+        return;
+      }
+      ApolloWebGameActivity.a(this.a).startCallEngine = System.currentTimeMillis();
+      ApolloGameStateMachine.a().a(1, "ApolloWebGameActivity.openGame");
+      ApolloGameStateMachine.a().a(2, "ApolloWebGameActivity.openGame");
+    } while (ApolloWebGameActivity.a(this.a) == null);
+    ApolloWebGameActivity.a(this.a).a(this.a, paramCmGameInitParams);
   }
 }
 

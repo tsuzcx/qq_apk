@@ -1,19 +1,10 @@
-class aeec
-  implements acit
+import android.view.View;
+
+public abstract interface aeec
 {
-  aeec(aedo paramaedo) {}
+  public abstract void a(View paramView);
   
-  public void a(aenz paramaenz)
-  {
-    ((aqyp)this.a.a(32)).c(1);
-    ((acyj)this.a.a(43)).b(1, paramaenz);
-  }
-  
-  public void b(aenz paramaenz)
-  {
-    ((aqyp)this.a.a(32)).d(1);
-    ((acyj)this.a.a(43)).a(1, paramaenz);
-  }
+  public abstract void b(View paramView);
 }
 
 

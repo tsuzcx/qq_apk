@@ -1,171 +1,593 @@
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.bubble.BubbleDiyEntity;
+import com.tencent.mobileqq.bubble.BubbleDiyFetcher.1;
+import com.tencent.mobileqq.bubble.BubbleDiyFetcher.2;
+import com.tencent.mobileqq.bubble.BubbleDiyFetcher.3;
+import com.tencent.mobileqq.bubble.BubbleDiyFetcher.4;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.LRULinkedHashMap;
+import java.io.File;
 import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CopyOnWriteArraySet;
+import mqq.app.AppRuntime;
 
 public class ambf
-  extends ambr
-  implements alzn<String>
 {
-  protected String a;
-  public ArrayList<ambp> a;
+  public static volatile long a;
+  public static ambf a;
+  public static boolean a;
+  public final int a;
+  public final Handler a;
+  public final Runnable a;
+  public final Map<String, String> a;
+  public final ConcurrentHashMap<Integer, HashMap<String, amcm>> a;
+  public final CopyOnWriteArrayList<amcz> a;
+  public final CopyOnWriteArraySet<String> a;
+  public final Map<String, HashMap<String, String>> b;
+  public final CopyOnWriteArraySet<String> b;
+  public final CopyOnWriteArraySet<String> c = new CopyOnWriteArraySet();
   
-  public ambf()
+  private ambf()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 64;
+    this.jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new LRULinkedHashMap(32));
+    this.jdField_b_of_type_JavaUtilMap = Collections.synchronizedMap(new LRULinkedHashMap(64));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+    this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_JavaLangRunnable = new BubbleDiyFetcher.1(this);
   }
   
-  private static aldi a(JSONObject paramJSONObject)
+  public static ambf a()
   {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    aldi localaldi = new aldi();
-    localaldi.jdField_a_of_type_Int = paramJSONObject.optInt("type", -1);
-    localaldi.d = paramJSONObject.optString("md5", null);
-    localaldi.jdField_b_of_type_JavaLangString = paramJSONObject.optString("url", null);
-    localaldi.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name", null);
-    localaldi.c = paramJSONObject.optString("identifier", null);
-    if (!localaldi.a())
+    if (jdField_a_of_type_Ambf == null) {}
+    try
     {
-      QLog.i("AIDictConfig", 1, "getDictInfoFromJSON, invalid dict info");
-      return null;
-    }
-    QLog.i("AIDictConfig", 1, "onParse getDictInfoFromJSON  info.type=" + localaldi.jdField_a_of_type_Int + ", info.md5=" + localaldi.d + ", info.url=" + localaldi.jdField_b_of_type_JavaLangString + ",  info.name =" + localaldi.jdField_a_of_type_JavaLangString + ",  info.identifier =" + localaldi.c);
-    paramJSONObject = paramJSONObject.optJSONObject("diff");
-    if (paramJSONObject != null)
-    {
-      localaldi.e = paramJSONObject.optString("url");
-      localaldi.f = paramJSONObject.optString("diff-md5");
-      localaldi.g = paramJSONObject.optString("source-md5");
-      if (!localaldi.b()) {
-        localaldi.a();
+      if (jdField_a_of_type_Ambf == null) {
+        jdField_a_of_type_Ambf = new ambf();
       }
-      QLog.i("AIDictConfig", 1, "onParse getDictInfoFromJSON info.diffURL=" + localaldi.e + ", info.diffMD5=" + localaldi.f + ", info.diffSourceMD5=" + localaldi.g);
+      return jdField_a_of_type_Ambf;
     }
-    return localaldi;
+    finally {}
   }
   
-  public String a()
+  public Bitmap a(amcz paramamcz, amcn paramamcn)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if ((paramamcz == null) || (paramamcn == null)) {
+      return null;
+    }
+    paramamcz = "BubbleDiyFetcher_" + paramamcn.jdField_a_of_type_Int + "_" + paramamcn.jdField_a_of_type_JavaLangString.toUpperCase() + "_" + "chartlet";
+    paramamcn = (Bitmap)BaseApplicationImpl.sImageCache.get(paramamcz);
+    if (paramamcn != null)
+    {
+      this.c.remove(paramamcz);
+      return paramamcn;
+    }
+    this.c.add(paramamcz);
+    paramamcz = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramamcz instanceof QQAppInterface)) {
+      a((QQAppInterface)paramamcz, 500);
+    }
+    return null;
+  }
+  
+  public String a(amcz paramamcz, String paramString)
+  {
+    Object localObject;
+    if ((paramamcz == null) || (TextUtils.isEmpty(paramString))) {
+      localObject = "";
+    }
+    String str;
+    do
+    {
+      return localObject;
+      str = (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      localObject = str;
+    } while (str != null);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleDiyFetcher", 2, "fetchDiyText: put VipBubbleDrawable into mNotRefreshAIODrawables and post delay 0.5s to load bubble diy!");
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramamcz);
+    paramamcz = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramamcz instanceof QQAppInterface)) {
+      a((QQAppInterface)paramamcz, 500);
+    }
+    return null;
+  }
+  
+  @TargetApi(11)
+  public void a()
+  {
+    HashSet localHashSet = new HashSet(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      amcz localamcz = (amcz)localIterator.next();
+      if ((localamcz != null) && (localamcz.getCallback() != null) && (a(localamcz.jdField_a_of_type_JavaLangString))) {
+        localHashSet.add(localamcz.jdField_a_of_type_JavaLangString);
+      }
+    }
+    if (localHashSet.size() > 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleDiyFetcher", 2, "refreshDrawableOnUiThread: " + TextUtils.join(",", localHashSet));
+      }
+      this.jdField_a_of_type_AndroidOsHandler.post(new BubbleDiyFetcher.3(this, localHashSet));
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (!jdField_a_of_type_Boolean)
+    {
+      jdField_a_of_type_Boolean = true;
+      ThreadManager.post(new BubbleDiyFetcher.2(this, paramQQAppInterface), 5, null, false);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) && (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) && (this.c.isEmpty()));
+      if (paramInt <= 0)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+        b(paramQQAppInterface);
+        return;
+      }
+    } while (System.currentTimeMillis() <= jdField_a_of_type_Long);
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleDiyFetcher", 2, "postLoadBubbleDiyTexts delay:  " + paramInt);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramInt);
+    jdField_a_of_type_Long = System.currentTimeMillis() + paramInt;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, ajtg paramajtg)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.i("BubbleDiyFetcher", 2, String.format("uinAndDiyId %s, text cache is %b, diy paster cache is %b", new Object[] { paramString, Boolean.valueOf(this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)), Boolean.valueOf(this.jdField_b_of_type_JavaUtilMap.containsKey(paramString)) }));
+        }
+        if ((!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) || (!this.jdField_b_of_type_JavaUtilMap.containsKey(paramString))) {
+          break;
+        }
+        paramQQAppInterface = new BubbleDiyEntity();
+        paramQQAppInterface.uinAndDiyId = paramString;
+        paramQQAppInterface.diyText = ((String)this.jdField_a_of_type_JavaUtilMap.get(paramQQAppInterface.uinAndDiyId));
+        BubbleDiyEntity.parsePasterMap(paramQQAppInterface, (HashMap)this.jdField_b_of_type_JavaUtilMap.get(paramString));
+        paramString = new ArrayList();
+        paramString.add(paramQQAppInterface);
+      } while (paramajtg == null);
+      paramajtg.onUpdate(1, true, paramString);
+      return;
+      localObject = (BubbleDiyEntity)paramQQAppInterface.getEntityManagerFactory().createEntityManager().a(BubbleDiyEntity.class, " uinAndDiyId=? ", new String[] { paramString });
+      if (localObject == null) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleDiyFetcher", 2, "query bubbleDiy from database, uinAndDiyId: " + paramString);
+      }
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, ((BubbleDiyEntity)localObject).diyText);
+      this.jdField_b_of_type_JavaUtilMap.put(paramString, ((BubbleDiyEntity)localObject).convertToPasterMap());
+      paramQQAppInterface = new ArrayList();
+      paramQQAppInterface.add(localObject);
+    } while (paramajtg == null);
+    paramajtg.onUpdate(1, true, paramQQAppInterface);
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleDiyFetcher", 2, "start request diy id " + paramString);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramString);
+    Object localObject = new ArrayList();
+    ((List)localObject).add(paramString);
+    ((ambg)paramQQAppInterface.a(70)).a((List)localObject, paramajtg);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, List<BubbleDiyEntity> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      BubbleDiyEntity localBubbleDiyEntity = (BubbleDiyEntity)paramList.next();
+      if (paramBoolean) {
+        paramQQAppInterface.getEntityManagerFactory().createEntityManager().b(localBubbleDiyEntity);
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localBubbleDiyEntity.uinAndDiyId);
+      this.jdField_a_of_type_JavaUtilMap.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.diyText);
+      this.jdField_b_of_type_JavaUtilMap.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.convertToPasterMap());
+      if (!TextUtils.isEmpty(localBubbleDiyEntity.topLeftId)) {
+        a(localBubbleDiyEntity.topLeftId);
+      }
+      if (!TextUtils.isEmpty(localBubbleDiyEntity.topRightId)) {
+        a(localBubbleDiyEntity.topRightId);
+      }
+      if (!TextUtils.isEmpty(localBubbleDiyEntity.bottomLeftId)) {
+        a(localBubbleDiyEntity.bottomLeftId);
+      }
+      if (!TextUtils.isEmpty(localBubbleDiyEntity.bottomRightId)) {
+        a(localBubbleDiyEntity.bottomRightId);
+      }
+    }
+    a();
   }
   
   public void a(String paramString)
   {
-    int k = 0;
-    if (TextUtils.isEmpty(paramString))
+    if (!TextUtils.isEmpty(paramString))
     {
-      ArkAppCenter.c("AIDictConfig", "onParse,fileOrRes is null");
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    Object localObject1;
-    int i;
-    Object localObject2;
-    Object localObject3;
-    Object localObject5;
-    int j;
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.c = paramString.optString("environment");
-      this.jdField_b_of_type_JavaLangString = paramString.optString("timestamp");
-      this.d = paramString.optString("ark_dict_init");
-      this.e = paramString.optString("netType", "");
-      localObject1 = paramString.optJSONArray("conditional_dict_list");
-      if (localObject1 == null) {
-        break label420;
-      }
-      i = 0;
-      if (i >= ((JSONArray)localObject1).length()) {
-        break label420;
-      }
-      localObject2 = ((JSONArray)localObject1).optJSONObject(i);
-      if (localObject2 == null) {
-        break label517;
-      }
-      localObject3 = ((JSONObject)localObject2).optJSONObject("condition");
-      Object localObject4 = ((JSONObject)localObject2).optJSONObject("dict");
-      if ((localObject3 == null) || (localObject4 == null)) {
-        break label517;
-      }
-      localObject2 = new ambp();
-      localObject5 = new ambo();
-      ((ambo)localObject5).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("date", "");
-      ((ambp)localObject2).jdField_a_of_type_Ambo = ((ambo)localObject5);
-      localObject3 = new ambr();
-      ((ambr)localObject3).c = ((JSONObject)localObject4).optString("environment");
-      ((ambr)localObject3).jdField_b_of_type_JavaLangString = ((JSONObject)localObject4).optString("timestamp");
-      ((ambr)localObject3).d = ((JSONObject)localObject4).optString("ark_dict_init");
-      ((ambr)localObject3).e = ((JSONObject)localObject4).optString("netType", "");
-      QLog.i("AIDictConfig", 1, "onParse conditional_dict_list tDict.environment=" + ((ambr)localObject3).c + ", tDict.mTimestamp =" + ((ambr)localObject3).jdField_b_of_type_JavaLangString + ", tDict.mArkDictInit =" + ((ambr)localObject3).d + ", tDict.mNetType =" + ((ambr)localObject3).e + ", tCondition.mData =" + ((ambo)localObject5).jdField_a_of_type_JavaLangString);
-      localObject4 = ((JSONObject)localObject4).optJSONArray("word_dict_list");
-      if (localObject4 == null) {
-        break label400;
-      }
-      localObject5 = new ArrayList();
-      j = 0;
-      label343:
-      if (j < ((JSONArray)localObject4).length())
+      Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+      while (localIterator.hasNext())
       {
-        JSONObject localJSONObject = ((JSONArray)localObject4).optJSONObject(j);
-        if (localJSONObject == null) {
-          break label524;
+        String str = (String)localIterator.next();
+        if (str.endsWith(paramString)) {
+          d(str);
         }
-        ((ArrayList)localObject5).add(a(localJSONObject));
       }
     }
-    catch (JSONException paramString)
+  }
+  
+  public boolean a(String paramString)
+  {
+    Iterator localIterator;
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) && (this.jdField_b_of_type_JavaUtilMap.containsKey(paramString)))
     {
-      QLog.e("AIDictConfig", 1, "onParse error e = ", paramString);
-      return;
+      paramString = (HashMap)this.jdField_b_of_type_JavaUtilMap.get(paramString);
+      localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
     }
-    ((ambr)localObject3).jdField_b_of_type_JavaUtilArrayList = ((ArrayList)localObject5);
-    label400:
-    ((ambp)localObject2).jdField_a_of_type_Ambr = ((ambr)localObject3);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-    break label517;
-    label420:
-    paramString = paramString.optJSONArray("word_dict_list");
-    if (paramString != null)
+    while (localIterator.hasNext())
     {
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-      i = k;
-    }
-    for (;;)
-    {
-      if (i < paramString.length())
+      String[] arrayOfString = ((String)localIterator.next()).split("_");
+      if ((arrayOfString.length == 4) && (paramString.containsValue(arrayOfString[3])))
       {
-        localObject1 = paramString.optJSONObject(i);
-        if (localObject1 != null)
+        return false;
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public Bitmap b(amcz paramamcz, amcn paramamcn)
+  {
+    if ((paramamcz == null) || (paramamcn == null) || (TextUtils.isEmpty(paramamcz.jdField_a_of_type_JavaLangString))) {
+      return null;
+    }
+    if (this.jdField_b_of_type_JavaUtilMap.containsKey(paramamcz.jdField_a_of_type_JavaLangString))
+    {
+      Object localObject = (HashMap)this.jdField_b_of_type_JavaUtilMap.get(paramamcz.jdField_a_of_type_JavaLangString);
+      if ((localObject != null) && (((HashMap)localObject).containsKey(paramamcn.jdField_a_of_type_JavaLangString.toUpperCase())))
+      {
+        localObject = (String)((HashMap)localObject).get(paramamcn.jdField_a_of_type_JavaLangString.toUpperCase());
+        if (TextUtils.isEmpty((CharSequence)localObject))
         {
-          localObject1 = a((JSONObject)localObject1);
-          this.jdField_b_of_type_JavaUtilArrayList.add(localObject1);
+          if (QLog.isColorLevel()) {
+            QLog.i("BubbleDiyFetcher", 2, "diy id " + paramamcz.jdField_a_of_type_JavaLangString + " has no pasterId for align: " + paramamcn.jdField_a_of_type_JavaLangString.toUpperCase());
+          }
+          return null;
         }
       }
       else
       {
-        QLog.d("AIDictConfig", 1, new Object[] { "mWordDictList list size =", Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()) });
-        return;
-        label517:
-        i += 1;
-        break;
-        label524:
-        j += 1;
-        break label343;
+        return null;
       }
-      i += 1;
+      paramamcn = "BubbleDiyFetcher_" + paramamcn.jdField_a_of_type_Int + "_" + paramamcn.jdField_a_of_type_JavaLangString.toUpperCase() + "_" + (String)localObject;
+      localObject = (Bitmap)BaseApplicationImpl.sImageCache.get(paramamcn);
+      if (localObject != null)
+      {
+        this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramamcn);
+        return localObject;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleDiyFetcher", 2, "can not found bitmap cache in BaseApplicationImpl.sImageCache! " + paramamcn);
+      }
+      this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramamcn);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleDiyFetcher", 2, "fetchDiyPaster: put VipBubbleDrawable into mNotRefreshAIODrawables and post delay 0.5s to load bubble diy!");
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramamcz);
+      paramamcz = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramamcz instanceof QQAppInterface)) {
+        a((QQAppInterface)paramamcz, 500);
+      }
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleDiyFetcher", 2, "can not found cache in diyPasterCache! " + paramamcz.jdField_a_of_type_JavaLangString);
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramamcz.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void b()
+  {
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    VasQuickUpdateManager localVasQuickUpdateManager;
+    Object localObject2;
+    if ((localObject1 instanceof QQAppInterface))
+    {
+      c();
+      if (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) {
+        break label231;
+      }
+      localVasQuickUpdateManager = (VasQuickUpdateManager)((AppRuntime)localObject1).getManager(184);
+      localObject2 = null;
+      ArrayList localArrayList = new ArrayList(this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet);
+      Iterator localIterator = localArrayList.iterator();
+      int i = 0;
+      if (localIterator.hasNext())
+      {
+        String[] arrayOfString = ((String)localIterator.next()).split("_");
+        if (arrayOfString.length != 4) {
+          break label247;
+        }
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = new String[localArrayList.size()];
+        }
+        localObject2 = arrayOfString[3];
+        int j = i + 1;
+        localObject1[i] = ("bubble.paster." + (String)localObject2 + ".png");
+        i = j;
+      }
+    }
+    for (;;)
+    {
+      localObject2 = localObject1;
+      break;
+      if ((localObject2 != null) && (localObject2.length > 0))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("BubbleDiyFetcher", 2, "now download from VasQuickUpdateManager list: " + TextUtils.join(",", (Object[])localObject2));
+        }
+        localVasQuickUpdateManager.downloadGatherItem(2L, localObject2[0], (String[])localObject2, "0");
+      }
+      label231:
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.i("BubbleDiyFetcher", 2, "all paster has decode!");
+      return;
+      label247:
+      localObject1 = localObject2;
+    }
+  }
+  
+  @TargetApi(11)
+  public void b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      a(paramQQAppInterface);
+    } while ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) && (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()) && (this.c.isEmpty()));
+    ThreadManager.post(new BubbleDiyFetcher.4(this, paramQQAppInterface), 5, null, false);
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleDiyFetcher", 2, "notifyPasterDownloadComplete " + paramString);
+    }
+    if (!TextUtils.isEmpty(paramString))
+    {
+      a(paramString);
+      a();
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size() > 0)
+    {
+      Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+      while (localIterator.hasNext()) {
+        d((String)localIterator.next());
+      }
+      a();
+    }
+  }
+  
+  public void c(QQAppInterface paramQQAppInterface)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size() == 0) {
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleDiyFetcher", 2, "mUnCacheDiyId size is 0!");
+      }
+    }
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      localArrayList = new ArrayList();
+      Object localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet);
+      int j = ((ArrayList)localObject1).size();
+      Object localObject2 = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+      int i = 0;
+      while (i < j)
+      {
+        BubbleDiyEntity localBubbleDiyEntity = (BubbleDiyEntity)((aukn)localObject2).a(BubbleDiyEntity.class, (String)((ArrayList)localObject1).get(i));
+        if (localBubbleDiyEntity != null) {
+          localArrayList.add(localBubbleDiyEntity);
+        }
+        i += 1;
+      }
+      localObject1 = localArrayList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (BubbleDiyEntity)((Iterator)localObject1).next();
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(((BubbleDiyEntity)localObject2).uinAndDiyId);
+      }
+    } while (localArrayList.isEmpty());
+    a(paramQQAppInterface, false, localArrayList);
+  }
+  
+  public void c(String paramString)
+  {
+    Object localObject1 = (BubbleManager)BaseApplicationImpl.getApplication().getRuntime().getManager(44);
+    Object localObject2 = paramString.split("_");
+    Object localObject5;
+    Object localObject4;
+    if (localObject2.length == 4)
+    {
+      localObject5 = localObject2[1];
+      localObject4 = localObject2[2];
+      if (BaseApplicationImpl.sImageCache.get(paramString) == null)
+      {
+        localObject1 = new File(((BubbleManager)localObject1).a(), String.valueOf(localObject5)).getAbsolutePath();
+        Object localObject6 = (String)localObject1 + File.separatorChar + "chartlet" + File.separatorChar + "chartlet.png";
+        localObject2 = (Bitmap)BaseApplicationImpl.sImageCache.get("BubbleDiyFetcher_" + localObject5 + "_" + "chartlet");
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject6 = new File((String)localObject6);
+          localObject1 = localObject2;
+          if (((File)localObject6).exists())
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("BubbleDiyFetcher", 2, "createStaticBitmapCache: decode and put scale bitmap into BaseApplicationImpl.sImageCache, " + ((File)localObject6).getAbsolutePath());
+            }
+            localObject2 = bawu.a(((File)localObject6).getAbsolutePath());
+            localObject1 = localObject2;
+            if (localObject2 != null)
+            {
+              BaseApplicationImpl.sImageCache.put("BubbleDiyFetcher_" + localObject5 + "_" + "chartlet", localObject2);
+              localObject1 = localObject2;
+            }
+          }
+        }
+        if (localObject1 == null) {}
+      }
+    }
+    try
+    {
+      localObject2 = (HashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(Integer.parseInt(localObject5)));
+      if ((localObject2 != null) && (((HashMap)localObject2).containsKey(localObject4)))
+      {
+        localObject2 = (amcm)((HashMap)localObject2).get(localObject4);
+        localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, localObject2.a[2], localObject2.a[3], true);
+        BaseApplicationImpl.sImageCache.put(paramString, localObject1);
+        this.c.remove(paramString);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("BubbleDiyFetcher", 1, "createStaticBitmapCache error!", localException);
+        Object localObject3 = null;
+      }
+    }
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+  }
+  
+  public void d(String paramString)
+  {
+    File localFile = ((BubbleManager)BaseApplicationImpl.getApplication().getRuntime().getManager(44)).b();
+    Object localObject1 = paramString.split("_");
+    String str2;
+    Object localObject4;
+    Object localObject2;
+    if (localObject1.length == 4)
+    {
+      String str1 = localObject1[3];
+      str2 = localObject1[1];
+      localObject4 = localObject1[2];
+      if (BaseApplicationImpl.sImageCache.get(paramString) == null)
+      {
+        localObject2 = (Bitmap)BaseApplicationImpl.sImageCache.get("BubbleDiyFetcher_" + str1);
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localFile = new File(localFile, str1 + ".png");
+          localObject1 = localObject2;
+          if (localFile.exists())
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("BubbleDiyFetcher", 2, "decode and put scale bitmap into BaseApplicationImpl.sImageCache, " + localFile.getAbsolutePath());
+            }
+            localObject2 = bawu.a(localFile.getAbsolutePath());
+            localObject1 = localObject2;
+            if (localObject2 != null)
+            {
+              BaseApplicationImpl.sImageCache.put("BubbleDiyFetcher_" + str1, localObject2);
+              localObject1 = localObject2;
+            }
+          }
+        }
+        if (localObject1 == null) {}
+      }
+    }
+    try
+    {
+      localObject2 = (HashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(Integer.parseInt(str2)));
+      if ((localObject2 != null) && (((HashMap)localObject2).containsKey(localObject4)))
+      {
+        localObject2 = (amcm)((HashMap)localObject2).get(localObject4);
+        localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, localObject2.a[2], localObject2.a[3], true);
+        BaseApplicationImpl.sImageCache.put(paramString, localObject1);
+        this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramString);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("BubbleDiyFetcher", 2, "", localException);
+        }
+        Object localObject3 = null;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambf
  * JD-Core Version:    0.7.0.1
  */

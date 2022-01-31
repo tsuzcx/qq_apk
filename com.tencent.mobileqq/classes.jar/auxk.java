@@ -1,38 +1,25 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.widget.XEditTextEx;
 
 public class auxk
+  extends Editable.Factory
 {
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  static String jdField_a_of_type_JavaLangString = "DataCollector";
-  Handler jdField_a_of_type_AndroidOsHandler = new auxl(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-  public boolean a;
+  public auxk(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  static
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Colloector-Tasker");
-    jdField_a_of_type_AndroidOsHandlerThread.start();
+    if ((paramCharSequence instanceof aykx)) {
+      return (Editable)paramCharSequence;
+    }
+    return new aykx(paramCharSequence, 3, (int)(StickyNotePublishFragment.a(this.a).getTextSize() / StickyNotePublishFragment.a(this.a).getPaint().density));
   }
-  
-  public auxk(Context paramContext)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-  }
-  
-  static Looper a()
-  {
-    return jdField_a_of_type_AndroidOsHandlerThread.getLooper();
-  }
-  
-  protected void a(Message paramMessage) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auxk
  * JD-Core Version:    0.7.0.1
  */

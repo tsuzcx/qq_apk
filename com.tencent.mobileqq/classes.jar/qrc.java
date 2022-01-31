@@ -1,17 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-
-public class qrc
-  extends omr
+public abstract interface qrc
+  extends qrq
 {
-  public qrc(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
-  {
-    super(paramString);
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public void a(oml paramoml)
-  {
-    paramoml.c();
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
 }
 
 

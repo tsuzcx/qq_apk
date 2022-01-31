@@ -1,32 +1,21 @@
 import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
 
-public class wic
-  implements TouchWebView.OnScrollChangedListener
+class wic
+  implements View.OnClickListener
 {
-  public wic(TribeVideoPlugin paramTribeVideoPlugin) {}
+  wic(wia paramwia, wig paramwig) {}
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, "onWebViewCreated onScrollChanged before every thing t = " + paramInt2 + " oldt = " + paramInt4);
-    }
-    if (TribeVideoPlugin.a(this.a) != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TribeVideoPlugin", 2, "onWebViewCreated onScrollChanged t = " + paramInt2 + " oldt = " + paramInt4);
-      }
-      TribeVideoPlugin.a(this.a).scrollBy(0, paramInt2 - paramInt4);
-      TribeVideoPlugin.a(this.a);
+    if (wia.a(this.jdField_a_of_type_Wia) != null) {
+      wia.a(this.jdField_a_of_type_Wia).b(this.jdField_a_of_type_Wig);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wic
  * JD-Core Version:    0.7.0.1
  */

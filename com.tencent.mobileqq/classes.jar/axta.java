@@ -1,6 +1,16 @@
-public abstract interface axta
+import android.util.Pair;
+import java.util.HashSet;
+
+class axta
 {
-  public abstract void a(axtc paramaxtc, axtb paramaxtb);
+  public String a;
+  public HashSet<Pair<Long, Long>> a;
+  public String b;
+  
+  private axta(axsz paramaxsz)
+  {
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  }
 }
 
 

@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.widget.SwipListView;
 
 class afen
-  implements afhb
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  afen(afeh paramafeh) {}
+  afen(afem paramafem) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onGlobalLayout()
   {
-    if (afeh.a(this.a) != null) {
-      afeh.a(this.a).a(paramInt1, paramInt2);
-    }
+    this.a.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.a.setListViewHeightBasedOnChildren(this.a.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afen
  * JD-Core Version:    0.7.0.1
  */

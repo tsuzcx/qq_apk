@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.richstatus;
 
-import ajoy;
+import akdi;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import aqre;
-import atmp;
-import atmq;
-import avet;
-import aveu;
-import bbmy;
+import arlw;
+import aukn;
+import auko;
+import awem;
+import awen;
+import bcpw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -25,21 +25,21 @@ import com.tencent.smtt.sdk.WebView;
 import java.lang.ref.WeakReference;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
-import ndn;
-import ndt;
+import noo;
+import nou;
 
 public class StatusJsHandler
-  extends aqre
+  extends arlw
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
   public AccountDetail a;
   public String a;
   public WeakReference<BaseActivity> a;
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new avet(this);
+  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new awem(this);
   boolean jdField_a_of_type_Boolean = false;
   String jdField_b_of_type_JavaLangString;
   WeakReference<WebView> jdField_b_of_type_JavaLangRefWeakReference;
-  private BusinessObserver jdField_b_of_type_MqqObserverBusinessObserver = new aveu(this);
+  private BusinessObserver jdField_b_of_type_MqqObserverBusinessObserver = new awen(this);
   boolean jdField_b_of_type_Boolean = false;
   public String c;
   
@@ -56,11 +56,11 @@ public class StatusJsHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.richstatus.", 2, "sendDetailInfoRequest");
     }
-    NewIntent localNewIntent = new NewIntent(paramBaseActivity, ndt.class);
+    NewIntent localNewIntent = new NewIntent(paramBaseActivity, nou.class);
     localNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
     localGetPublicAccountDetailInfoRequest.version.set(1);
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.2.6,3,4370");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.2.8,3,4440");
     localGetPublicAccountDetailInfoRequest.seqno.set(0);
     try
     {
@@ -84,7 +84,7 @@ public class StatusJsHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.richstatus.", 2, "follow");
     }
-    NewIntent localNewIntent = new NewIntent(paramBaseActivity, ndt.class);
+    NewIntent localNewIntent = new NewIntent(paramBaseActivity, nou.class);
     localNewIntent.putExtra("cmd", "follow");
     mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
     try
@@ -94,7 +94,7 @@ public class StatusJsHandler
       localNewIntent.putExtra("data", localFollowRequest.toByteArray());
       localNewIntent.setObserver(this.jdField_b_of_type_MqqObserverBusinessObserver);
       paramBaseActivity.app.startServlet(localNewIntent);
-      ndn.a(paramBaseActivity.app, paramString, 0);
+      noo.a(paramBaseActivity.app, paramString, 0);
       if (QLog.isColorLevel()) {
         QLog.d("Q.richstatus.", 2, "follow exit");
       }
@@ -112,32 +112,32 @@ public class StatusJsHandler
     if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {
       return;
     }
-    bbmy.a(localBaseActivity, paramInt, 0).b(localBaseActivity.getTitleBarHeight());
+    bcpw.a(localBaseActivity, paramInt, 0).b(localBaseActivity.getTitleBarHeight());
   }
   
   public void a(BaseActivity paramBaseActivity, AccountDetail paramAccountDetail)
   {
-    atmp localatmp = paramBaseActivity.app.getEntityManagerFactory().createEntityManager();
+    aukn localaukn = paramBaseActivity.app.getEntityManagerFactory().createEntityManager();
     if ((this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.getId() != -1L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.richstatus.", 2, paramAccountDetail.name);
       }
       this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.clone(paramAccountDetail);
-      if (!localatmp.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail)) {
-        localatmp.a(AccountDetail.class);
+      if (!localaukn.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail)) {
+        localaukn.a(AccountDetail.class);
       }
     }
     for (;;)
     {
-      localatmp.a();
-      paramBaseActivity = (ajoy)paramBaseActivity.app.getManager(56);
+      localaukn.a();
+      paramBaseActivity = (akdi)paramBaseActivity.app.getManager(56);
       if (paramBaseActivity != null) {
         paramBaseActivity.a(paramAccountDetail);
       }
       return;
       this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = paramAccountDetail;
-      localatmp.a(paramAccountDetail);
+      localaukn.a(paramAccountDetail);
     }
   }
   
@@ -192,8 +192,8 @@ public class StatusJsHandler
     if (localObject == null) {
       return false;
     }
-    localObject = (ajoy)((BaseActivity)localObject).app.getManager(56);
-    return (localObject != null) && (((ajoy)localObject).b(paramString) != null);
+    localObject = (akdi)((BaseActivity)localObject).app.getManager(56);
+    return (localObject != null) && (((akdi)localObject).b(paramString) != null);
   }
   
   public void setData(String paramString1, String paramString2)

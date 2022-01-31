@@ -1,29 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-class apup
-  implements Animation.AnimationListener
+final class apup
+  extends ClickableSpan
 {
-  apup(apuo paramapuo) {}
+  apup(aput paramaput) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+    if (this.a != null) {
+      this.a.onClick(paramView);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (!this.a.jdField_a_of_type_Apui.g()) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
+    paramTextPaint.setColor(-12541697);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apup
  * JD-Core Version:    0.7.0.1
  */

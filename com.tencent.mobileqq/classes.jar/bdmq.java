@@ -1,23 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.EntryModel;
-
-public final class bdmq
-  implements Parcelable.Creator<EntryModel>
+public class bdmq
 {
-  public EntryModel a(Parcel paramParcel)
+  public static final bdmq a;
+  public static final bdmq b;
+  public static final bdmq c = new bdmq("ANDROID.QQ.NEWYYBAPK", "7001");
+  public String a;
+  public String b;
+  
+  static
   {
-    return new EntryModel(paramParcel, null);
+    jdField_a_of_type_Bdmq = new bdmq("ANDROID.QQ.WLISTAPK", "7003");
+    jdField_b_of_type_Bdmq = new bdmq("ANDROID.QQ.YYBAPK", "7002");
   }
   
-  public EntryModel[] a(int paramInt)
+  bdmq(String paramString1, String paramString2)
   {
-    return new EntryModel[paramInt];
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdmq
  * JD-Core Version:    0.7.0.1
  */

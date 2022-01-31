@@ -1,52 +1,71 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSImageView;
+import com.tencent.pts.core.PTSAppInstance;
+import com.tencent.pts.ui.PTSNodeInfo;
+import com.tencent.pts.ui.PTSNodeStyle;
+import com.tencent.pts.ui.vnode.PTSNodeVirtual;
+import com.tencent.pts.utils.PTSLog;
+import com.tencent.pts.utils.PTSTimeCostUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public final class pqc
-  implements Parcelable.Creator<RecommendFollowInfo>
+public class pqc
+  extends PTSNodeVirtual<PTSImageView>
 {
-  public RecommendFollowInfo a(Parcel paramParcel)
+  public final String a = "PTSNodeImage";
+  
+  private pqc(PTSAppInstance paramPTSAppInstance)
   {
-    boolean bool2 = true;
-    RecommendFollowInfo localRecommendFollowInfo = new RecommendFollowInfo();
-    localRecommendFollowInfo.uin = paramParcel.readLong();
-    localRecommendFollowInfo.type = paramParcel.readInt();
-    localRecommendFollowInfo.recommendReason = paramParcel.readString();
-    localRecommendFollowInfo.nickName = paramParcel.readString();
-    localRecommendFollowInfo.headUrl = paramParcel.readString();
-    if (paramParcel.readInt() == 1)
-    {
-      bool1 = true;
-      localRecommendFollowInfo.isVip = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label139;
-      }
-      bool1 = true;
-      label82:
-      localRecommendFollowInfo.isStar = bool1;
-      localRecommendFollowInfo.algorithmId = paramParcel.readLong();
-      localRecommendFollowInfo.strategyId = paramParcel.readInt();
-      if (paramParcel.readInt() != 1) {
-        break label144;
-      }
-    }
-    label139:
-    label144:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localRecommendFollowInfo.isFollowed = bool1;
-      localRecommendFollowInfo.className = paramParcel.readString();
-      return localRecommendFollowInfo;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label82;
-    }
+    super(paramPTSAppInstance);
   }
   
-  public RecommendFollowInfo[] a(int paramInt)
+  private String a(String paramString)
   {
-    return new RecommendFollowInfo[paramInt];
+    int i = getNodeInfo().getStyle().getWidth();
+    int j = getNodeInfo().getStyle().getHeight();
+    String str = paramString;
+    if (i > 0)
+    {
+      str = paramString;
+      if (j > 0) {
+        str = onk.a(paramString, i, j);
+      }
+    }
+    return str;
+  }
+  
+  private void a(String paramString)
+  {
+    PTSTimeCostUtil.start("image-" + paramString);
+    if ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("http")) || (paramString.startsWith("pubaccount"))))
+    {
+      String str = a(paramString);
+      PTSLog.i("PTSNodeImage", "[setImageSrc], cropUrl = " + str);
+      ((PTSImageView)getView()).setImageSrc(str);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PTSNodeImage", 2, "[setImageSrc], path = " + paramString);
+    }
+    PTSTimeCostUtil.end("image-" + paramString);
+  }
+  
+  public PTSImageView a()
+  {
+    return new PTSImageView(this);
+  }
+  
+  public void resetAll() {}
+  
+  public boolean setAttribute(String paramString, Object paramObject)
+  {
+    if (super.setAttribute(paramString, paramObject)) {
+      return true;
+    }
+    if (("src".equals(paramString)) && ((paramObject instanceof String)))
+    {
+      a((String)paramObject);
+      return true;
+    }
+    return false;
   }
 }
 

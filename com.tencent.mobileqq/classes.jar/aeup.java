@@ -1,120 +1,47 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 public class aeup
+  implements Animation.AnimationListener
 {
-  public static final String a;
-  private static int[] jdField_a_of_type_ArrayOfInt = { 80000000 };
-  private static int[] jdField_b_of_type_ArrayOfInt = { 80000001 };
-  private static int[] jdField_c_of_type_ArrayOfInt = { 80000002 };
-  private static int[] d = { 80000003 };
-  private static int[] e = { 80000000, 80000001, 80000002, 80000004, 80000003 };
-  private static int[] f = { 80000002, 80000003 };
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private aeur jdField_a_of_type_Aeur;
-  ajjh jdField_a_of_type_Ajjh = new aeuq(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString = null;
-  private String jdField_c_of_type_JavaLangString;
+  public aeup(TroopChatPie paramTroopChatPie) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_JavaLangString = aeup.class.getName();
+    this.a.q.setVisibility(8);
+    this.a.r.setVisibility(8);
   }
   
-  public aeup(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_c_of_type_JavaLangString = baee.a(paramQQAppInterface.getApplication());
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public int a()
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  final void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajjh, true);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(aeur paramaeur)
-  {
-    this.jdField_a_of_type_Aeur = paramaeur;
-  }
-  
-  public void a(String paramString, int[] paramArrayOfInt, double paramDouble1, double paramDouble2, boolean paramBoolean, int paramInt)
-  {
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(paramString, this.jdField_c_of_type_JavaLangString, 3, this.jdField_a_of_type_Int, paramArrayOfInt, paramDouble1, paramDouble2, paramBoolean, paramInt, this.jdField_a_of_type_Long);
-  }
-  
-  public boolean a(String paramString, int paramInt1, double paramDouble1, double paramDouble2, int paramInt2)
-  {
-    a();
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt1;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    switch (paramInt1)
+    this.a.d.setBackgroundDrawable(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.a);
+    if (!this.a.I)
     {
-    default: 
-      localObject1 = localObject2;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundResource(2130849026);
+      this.a.o.setVisibility(8);
+      paramAnimation = this.a.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131166851);
+      this.a.e.setTextColor(paramAnimation);
     }
-    while (localObject1 == null)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "warning! wrong request type = " + paramInt1);
-      }
-      return false;
-      localObject1 = jdField_a_of_type_ArrayOfInt;
-      continue;
-      localObject1 = jdField_b_of_type_ArrayOfInt;
-      continue;
-      localObject1 = jdField_c_of_type_ArrayOfInt;
-      continue;
-      localObject1 = d;
-      continue;
-      localObject1 = e;
-      continue;
-      localObject1 = f;
+      actn.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout, 2130848770);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundResource(2130849027);
+      this.a.o.setVisibility(8);
+      paramAnimation = this.a.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131166852);
+      this.a.e.setTextColor(paramAnimation);
     }
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(paramString, this.jdField_c_of_type_JavaLangString, 3, this.jdField_a_of_type_Int, (int[])localObject1, paramDouble1, paramDouble2, true, paramInt2, this.jdField_a_of_type_Long);
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "searchFriend nextPage = " + this.jdField_a_of_type_Int);
-    }
-    return true;
-  }
-  
-  final void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajjh);
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Aeur = null;
-    this.jdField_a_of_type_Int = 0;
-    b();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 

@@ -1,32 +1,35 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qidian.proto.mobileqq_qidian.ConfigCorpSimpleInfo;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.widget.AbsListView;
 
 public class bcrb
+  implements bfob
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
+  public bcrb(SlideDetectListView paramSlideDetectListView) {}
   
-  public bcrb(mobileqq_qidian.ConfigCorpSimpleInfo paramConfigCorpSimpleInfo)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramConfigCorpSimpleInfo.str_corp_name.has()) {
-      this.a = paramConfigCorpSimpleInfo.str_corp_name.get();
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
-    if (paramConfigCorpSimpleInfo.str_short_name.has()) {
-      this.b = paramConfigCorpSimpleInfo.str_short_name.get();
+    if (SlideDetectListView.b(this.a) != null) {
+      SlideDetectListView.b(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
-    if (paramConfigCorpSimpleInfo.str_detail_desc.has()) {
-      this.c = paramConfigCorpSimpleInfo.str_detail_desc.get();
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.a.c = paramInt;
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
     }
-    if (paramConfigCorpSimpleInfo.str_click_url.has()) {
-      this.d = paramConfigCorpSimpleInfo.str_click_url.get();
+    if (SlideDetectListView.b(this.a) != null) {
+      SlideDetectListView.b(this.a).onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcrb
  * JD-Core Version:    0.7.0.1
  */

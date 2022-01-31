@@ -1,14 +1,8 @@
-import com.tencent.av.ui.VideoLayerUI;
+import java.io.File;
 
 public class mag
-  implements lic
 {
-  public mag(VideoLayerUI paramVideoLayerUI) {}
-  
-  public void a()
-  {
-    mfr.a("switch_camera", "onAnimationEnd", 2, new Object[0]);
-  }
+  public static String a = lhw.d + "huanlian" + File.separator + "allgray.png";
 }
 
 

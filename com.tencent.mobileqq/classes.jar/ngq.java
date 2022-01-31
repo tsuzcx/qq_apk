@@ -1,48 +1,60 @@
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class ngq
-  extends akgd
+class ngq
+  implements Handler.Callback
 {
-  public ngq(ShopWebViewFragment paramShopWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  ngq(nfu paramnfu) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((this.a.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (this.a.jdField_a_of_type_JavaUtilList == null)) {}
-    ArrayList localArrayList;
-    double d1;
-    double d2;
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramMessage.what)
+    {
+    default: 
+      bool1 = false;
+    }
     do
     {
       do
       {
-        return;
-      } while ((paramInt != 0) || (paramSosoLbsInfo == null));
-      localArrayList = new ArrayList();
-      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        RecentShopParcel localRecentShopParcel = (RecentShopParcel)localIterator.next();
-        if (localRecentShopParcel.c != 1) {
-          try
-          {
-            localArrayList.add(Long.valueOf(Long.valueOf(localRecentShopParcel.a).longValue()));
-          }
-          catch (Exception localException) {}
+        return bool1;
+        if (QLog.isColorLevel()) {
+          QLog.i("AccountDetailGroupListContainer", 2, "refresh recent list, from_handle");
         }
+        bool1 = bool2;
+      } while (!this.a.b);
+      bool1 = bool2;
+    } while (this.a.jdField_a_of_type_AndroidViewView == null);
+    this.a.jdField_a_of_type_AndroidContentSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("public_account_detail_setting_status", 0);
+    int i;
+    if (this.a.jdField_a_of_type_AndroidContentSharedPreferences != null)
+    {
+      i = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_result_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -10000);
+      this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_status_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1);
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i != 0) {
+        break;
       }
-      d1 = paramSosoLbsInfo.a.a;
-      d2 = paramSosoLbsInfo.a.b;
-    } while (this.a.jdField_a_of_type_Ngf == null);
-    this.a.jdField_a_of_type_Ngf.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, localArrayList, d2, d1);
+      bool1 = bool2;
+      if (this.a.jdField_a_of_type_Int <= -1) {
+        break;
+      }
+      nfu.b(this.a, this.a.jdField_a_of_type_Int);
+      this.a.jdField_a_of_type_AndroidViewView.setOnClickListener(new ngr(this));
+      return true;
+      i = -10000;
+    }
   }
 }
 

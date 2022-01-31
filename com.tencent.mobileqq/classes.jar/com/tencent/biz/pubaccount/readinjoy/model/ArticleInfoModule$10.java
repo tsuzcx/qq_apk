@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import ohb;
-import ooq;
+import osm;
+import ozr;
 
 public class ArticleInfoModule$10
   implements Runnable
 {
-  public ArticleInfoModule$10(ooq paramooq, boolean paramBoolean, int paramInt, List paramList) {}
+  public ArticleInfoModule$10(ozr paramozr, boolean paramBoolean, int paramInt, List paramList) {}
   
   public void run()
   {
@@ -15,8 +15,8 @@ public class ArticleInfoModule$10
       return;
     }
     this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
-    List localList = ooq.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
-    ohb.a().c(this.jdField_a_of_type_Int, localList);
+    List localList = ozr.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
+    osm.a().c(this.jdField_a_of_type_Int, localList);
   }
 }
 

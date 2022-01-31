@@ -1,13 +1,8 @@
-public class akyt
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+
+public abstract interface akyt
 {
-  public int a;
-  public String a;
-  
-  public akyt(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(PromotionConfigInfo paramPromotionConfigInfo);
 }
 
 

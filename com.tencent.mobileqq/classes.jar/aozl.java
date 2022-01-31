@@ -1,32 +1,9 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.os.Bundle;
 
-public abstract interface aozl
+class aozl
+  implements aozr
 {
-  public abstract int a();
-  
-  public abstract long a();
-  
-  public abstract aozm a();
-  
-  public abstract BaseActivity a();
-  
-  public abstract FileManagerEntity a();
-  
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract boolean a(Bitmap paramBitmap, int paramInt, String paramString);
-  
-  public abstract String b();
-  
-  public abstract void b();
-  
-  public abstract String c();
+  aozl(aozj paramaozj, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle) {}
 }
 
 

@@ -1,53 +1,23 @@
-public abstract class avbi
+import android.view.animation.Animation;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
+import com.tencent.qphone.base.util.QLog;
+
+public class avbi
+  extends avbg
 {
-  public static final String a;
-  public long a;
-  private String b;
+  public avbi(LSRecordPanel paramLSRecordPanel) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_JavaLangString = auuv.jdField_a_of_type_JavaLangString;
-  }
-  
-  public avbi(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  private void a()
-  {
-    if (this.b == null) {
-      this.b = (jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long + "/");
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS startRecordingBarAnimation onAnimationEnd");
     }
-  }
-  
-  public final String a()
-  {
-    a();
-    return this.b + "thumb.jpg";
-  }
-  
-  public final String b()
-  {
-    a();
-    return this.b + "combine.mp4";
-  }
-  
-  public final String c()
-  {
-    a();
-    return this.b + "audio.mp4";
-  }
-  
-  public String d()
-  {
-    a();
-    return this.b;
+    this.a.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avbi
  * JD-Core Version:    0.7.0.1
  */

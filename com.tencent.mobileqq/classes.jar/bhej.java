@@ -1,27 +1,34 @@
-import com.tencent.mobileqq.activity.qwallet.emoj.IBaseRecognizer;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMEmojiRedPacketCameraCaptureUnit.6.1;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
 
-public class bhej
-  implements IBaseRecognizer
+public final class bhej
+  implements Parcelable.Creator<CoverCacheData.GameCoverInfo>
 {
-  bhej(bhec parambhec) {}
-  
-  public void OnInitResultCallback(boolean paramBoolean)
+  public CoverCacheData.GameCoverInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "init recoginzer result =" + paramBoolean);
+    CoverCacheData.GameCoverInfo localGameCoverInfo = new CoverCacheData.GameCoverInfo();
+    if (paramParcel != null)
+    {
+      localGameCoverInfo.jdField_a_of_type_Double = paramParcel.readDouble();
+      localGameCoverInfo.jdField_b_of_type_Double = paramParcel.readDouble();
+      localGameCoverInfo.c = paramParcel.readDouble();
+      localGameCoverInfo.d = paramParcel.readDouble();
+      localGameCoverInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      localGameCoverInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localGameCoverInfo.jdField_a_of_type_Int = paramParcel.readInt();
     }
-    if (!paramBoolean) {
-      ThreadManager.getUIHandler().post(new QIMEmojiRedPacketCameraCaptureUnit.6.1(this));
-    }
+    return localGameCoverInfo;
+  }
+  
+  public CoverCacheData.GameCoverInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhej
  * JD-Core Version:    0.7.0.1
  */

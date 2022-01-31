@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.persistence.NoColumnError;
-import com.tencent.qphone.base.util.QLog;
-
-class akas
-  implements atmz
+public class akas
 {
-  akas(akar paramakar) {}
-  
-  public void a(NoColumnError paramNoColumnError)
-  {
-    if ((paramNoColumnError != null) && (("unreadGiftCount".equals(paramNoColumnError.mColumnName)) || ("unreadMark".equals(paramNoColumnError.mColumnName))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.unread.Proxy", 2, paramNoColumnError.getMessage(), paramNoColumnError);
-      }
-      akar.a(this.a, true);
-    }
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public long c;
+  public boolean c;
+  public long d;
+  public long e;
 }
 
 

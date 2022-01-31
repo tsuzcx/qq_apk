@@ -1,76 +1,91 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import java.util.Map;
 
-public class akuh
+final class akuh
+  extends akup
 {
-  protected static axrs a;
-  private axrr jdField_a_of_type_Axrr;
-  public AppInterface a;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList<akul> jdField_a_of_type_JavaUtilArrayList;
-  
-  static
+  akuh(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, akuj paramakuj)
   {
-    jdField_a_of_type_Axrs = new akuj();
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public akuh(AppInterface paramAppInterface)
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Axrr = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public void a()
-  {
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-    int i = 0;
-    try
+    boolean bool = false;
+    for (;;)
     {
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      synchronized (akug.a())
       {
-        QLog.i("AREngine_ARResourceDownload", 1, "cancelDownloadTask. url = " + ((akul)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Axrr.b(((akul)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Axro);
-        i += 1;
+        if (akug.b().containsKey(this))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("SOSO.LBS.LbsManagerService", 0, "onConsecutiveFailure reverseListenerMap contains. business id: " + this.tag + " fail count: " + paramInt2);
+          }
+          if (paramInt2 > 5)
+          {
+            localakuj = (akuj)akug.b().remove(this);
+            akug.a().remove(localakuj);
+            if (paramInt2 > 5) {
+              SosoInterface.b(this);
+            }
+            return;
+          }
+          akuj localakuj = (akuj)akug.b().get(this);
+          if (paramInt2 == 5) {
+            bool = true;
+          }
+          localakuj.onConsecutiveFailure(paramInt1, paramInt2, bool);
+        }
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      if (QLog.isColorLevel()) {
+        QLog.i("SOSO.LBS.LbsManagerService", 0, "onConsecutiveFailure reverseListenerMap not contains. business id: " + this.tag + " fail count: " + paramInt2);
+      }
+    }
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    for (;;)
+    {
+      synchronized ()
+      {
+        if (akug.b().containsKey(this))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("SOSO.LBS.LbsManagerService", 0, "onLocationFinish reverseListenerMap contains. business id: " + this.tag);
+          }
+          if (this.goonListener)
+          {
+            localakuj = (akuj)akug.b().get(this);
+            localakuj.onLocationFinish(paramInt, akug.a(paramSosoLbsInfo, this.a.businessId));
+            return;
+          }
+          akuj localakuj = (akuj)akug.b().remove(this);
+          akug.a().remove(localakuj);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("SOSO.LBS.LbsManagerService", 0, "onLocationFinish reverseListenerMap not contains. business id: " + this.tag + " this is: " + this);
+      }
+    }
+  }
+  
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2)
+  {
+    synchronized ()
+    {
+      if (akug.b().containsKey(this)) {
+        ((akuj)akug.b().get(this)).onStatusUpdate(paramString1, paramInt, paramString2);
+      }
       return;
     }
-    finally {}
-  }
-  
-  public boolean a(akul paramakul, akuk arg2)
-  {
-    if ((paramakul == null) || (??? == null)) {
-      return false;
-    }
-    ??? = new akui(this, paramakul, ???);
-    axro localaxro = new axro();
-    localaxro.jdField_a_of_type_Axrt = ???;
-    localaxro.jdField_a_of_type_JavaLangString = paramakul.jdField_a_of_type_JavaLangString;
-    localaxro.jdField_a_of_type_Int = 0;
-    localaxro.c = paramakul.c;
-    localaxro.e = 1;
-    localaxro.jdField_a_of_type_Axrs = jdField_a_of_type_Axrs;
-    this.jdField_a_of_type_Axrr.a(localaxro);
-    paramakul.jdField_a_of_type_Axro = localaxro;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramakul);
-      QLog.i("AREngine_ARResourceDownload", 1, "submitDownloadTask. url = " + paramakul.jdField_a_of_type_JavaLangString);
-      return true;
-    }
-  }
-  
-  public void b()
-  {
-    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akuh
  * JD-Core Version:    0.7.0.1
  */

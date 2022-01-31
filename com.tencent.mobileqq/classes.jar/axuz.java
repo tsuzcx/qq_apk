@@ -1,22 +1,72 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare.1.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AccountNotMatchException;
+import mqq.os.MqqHandler;
 
-public class axuz
-  extends ajmm
+public final class axuz
+  implements View.OnClickListener
 {
-  public axuz(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
-  
-  public void a(boolean paramBoolean, long paramLong, ajmn paramajmn)
+  public void onClick(View paramView)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    badi.a(String.valueOf(this.a.a.jdField_a_of_type_Long), "message", "sendMsgFinish isSuccess:" + paramBoolean + ",mr = " + this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.toString());
-    this.a.a(this.a.c, false, paramBoolean, paramajmn);
-    if (paramBoolean)
+    Object localObject2 = paramView.findViewById(2131376583);
+    if (localObject2 == null) {}
+    for (;;)
     {
-      this.a.e();
       return;
+      Object localObject1 = ((View)localObject2).getTag(2131376583);
+      if ((localObject1 != null) && ((localObject1 instanceof StructMsgForAudioShare)))
+      {
+        localObject1 = (StructMsgForAudioShare)localObject1;
+        paramView = paramView.getTag();
+        if ((paramView != null) && ((paramView instanceof aebw)))
+        {
+          paramView = (aebw)paramView;
+          localObject2 = ((View)localObject2).getContext();
+        }
+      }
+      try
+      {
+        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(((StructMsgForAudioShare)localObject1).currentAccountUin);
+        if (((StructMsgForAudioShare)localObject1).msgId > 0L)
+        {
+          axqw.b(localQQAppInterface, "P_CliOper", "Pb_account_lifeservice", ((StructMsgForAudioShare)localObject1).uin, "mp_msg_msgpic_click", "aio_morpic_click", 0, 0, "", "", Long.toString(((StructMsgForAudioShare)localObject1).msgId), "");
+          ThreadManager.getSubThreadHandler().postDelayed(new StructMsgForAudioShare.1.1(this, (StructMsgForAudioShare)localObject1, localQQAppInterface), 0L);
+          AbsShareMsg.doReport(localQQAppInterface, (AbsShareMsg)localObject1);
+          if (localQQAppInterface == null) {
+            continue;
+          }
+          nax.a(localQQAppInterface, "", "click", ((StructMsgForAudioShare)localObject1).mSourceAppid, ((StructMsgForAudioShare)localObject1).mMsgServiceID, nax.a(paramView.a.a));
+          MediaPlayerManager.a(localQQAppInterface).a(true);
+        }
+      }
+      catch (AccountNotMatchException paramView)
+      {
+        for (;;)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.d("StructMsg", 4, paramView.getStackTrace().toString());
+          }
+        }
+      }
     }
-    this.a.d();
+    axqw.b(null, "CliOper", "", "", "0X800567A", "0X800567A", 0, 0, ((StructMsgForAudioShare)localObject1).mMsgServiceID + "", "", "", "");
+    axqw.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
+    axqw.b(null, "dc00898", "", "", "0X800A630", "0X800A630", 0, 0, "2", ForwardUtils.b(((StructMsgForAudioShare)localObject1).uinType), ((StructMsgForAudioShare)localObject1).mContentTitle, "");
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsg", 2, new Object[] { "音乐分享内容点击=", "0X800A630", ", mContentTitle=" + ((StructMsgForAudioShare)localObject1).mContentTitle, ", uinType=", ForwardUtils.b(((StructMsgForAudioShare)localObject1).uinType) });
+    }
+    StructMsgForAudioShare.onClickEvent((Context)localObject2, (StructMsgForAudioShare)localObject1);
   }
 }
 

@@ -1,23 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
 
-class npq
-  extends AnimatorListenerAdapter
+public final class npq
+  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
 {
-  npq(npo paramnpo, ReadInjoyCutImageView paramReadInjoyCutImageView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setVisibility(4);
-    npo.a(this.jdField_a_of_type_Npo).a();
+    return new VideoInfo.DownloadBarInfo(paramParcel);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public VideoInfo.DownloadBarInfo[] a(int paramInt)
   {
-    super.onAnimationStart(paramAnimator);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setVisibility(0);
+    return new VideoInfo.DownloadBarInfo[paramInt];
   }
 }
 

@@ -1,42 +1,85 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import com.tencent.biz.ProtoUtils.StoryProtocolObserver.1;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
-public class mxk
-  implements begw
+public abstract class mxk
+  implements BusinessObserver
 {
-  public mxk(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public final long a;
+  public WeakReference<QQAppInterface> a;
+  public boolean a;
   
-  public void OnClick(View paramView, int paramInt)
+  public mxk()
   {
-    PublicAccountAdvertisementActivity.a(this.a).dismiss();
-    if (paramView != null)
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  private void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    String str = paramBundle.getString("cmd");
+    if (paramBoolean)
     {
-      paramView = PublicAccountAdvertisementActivity.a(this.a).a(paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
-      }
-      if (!TextUtils.isEmpty(paramView))
+      localObject = paramBundle.getByteArray("data");
+      if ((localObject != null) && (localObject.length > 0))
       {
-        if (!paramView.equals(this.a.getResources().getString(2131627103))) {
-          break label91;
+        paramBundle = a(0, (byte[])localObject, paramBundle);
+        if (paramBundle != null)
+        {
+          paramInt = paramBundle.error_code.get();
+          paramBundle = paramBundle.error_desc.get().toStringUtf8();
+          if (paramInt == 0) {
+            veg.a("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s success take time:%d data length=%d", str, Long.valueOf(l), Integer.valueOf(localObject.length));
+          }
+          for (;;)
+          {
+            vel.b("story_net", str, 0, paramInt, new String[] { paramBundle, String.valueOf(l), vel.a(BaseApplication.getContext()) });
+            return;
+            veg.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s error:%d msg:%s take time:%d data length%d", new Object[] { str, Integer.valueOf(paramInt), paramBundle, Long.valueOf(l), Integer.valueOf(localObject.length) });
+          }
         }
-        PublicAccountAdvertisementActivity.d(this.a);
+        veg.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s error. response is null", new Object[] { str });
+        vel.b("story_net", str, 0, 940002, new String[] { "response is null", String.valueOf(l), vel.a(BaseApplication.getContext()) });
+        return;
       }
-    }
-    label91:
-    while (!paramView.equals(this.a.getResources().getString(2131627727))) {
+      a(-1, null, paramBundle);
+      veg.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:" + str + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
+      vel.b("story_net", str, 0, 940002, new String[] { "rsp data error", String.valueOf(l), vel.a(BaseApplication.getContext()) });
       return;
     }
-    aqiw.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
-    awqx.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
+    paramInt = paramBundle.getInt("data_error_code");
+    Object localObject = paramBundle.getString("data_error_msg");
+    a(paramInt, null, paramBundle);
+    veg.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:" + str + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
+    vel.b("story_net", str, 0, paramInt, new String[] { localObject, String.valueOf(l), vel.a(BaseApplication.getContext()) });
+  }
+  
+  public abstract qqstory_struct.ErrorInfo a(int paramInt, @Nullable byte[] paramArrayOfByte, Bundle paramBundle);
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      a(paramInt, paramBoolean, paramBundle);
+      return;
+    }
+    ThreadManager.post(new ProtoUtils.StoryProtocolObserver.1(this, paramInt, paramBoolean, paramBundle), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     mxk
  * JD-Core Version:    0.7.0.1
  */

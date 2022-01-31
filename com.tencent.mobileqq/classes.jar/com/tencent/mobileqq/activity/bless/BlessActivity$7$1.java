@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.bless;
 
-import aepw;
+import afas;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.mobileqq.widget.QQVideoView;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class BlessActivity$7$1
   implements Runnable
 {
-  public BlessActivity$7$1(aepw paramaepw) {}
+  public BlessActivity$7$1(afas paramafas) {}
   
   public void run()
   {
@@ -22,8 +22,8 @@ public class BlessActivity$7$1
     if (BlessActivity.a(this.a.a) != null) {
       BlessActivity.a(this.a.a).bringToFront();
     }
-    this.a.a.findViewById(2131302847).bringToFront();
-    this.a.a.findViewById(2131311534).bringToFront();
+    this.a.a.findViewById(2131368472).bringToFront();
+    this.a.a.findViewById(2131377350).bringToFront();
   }
 }
 

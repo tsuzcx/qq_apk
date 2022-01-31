@@ -1,33 +1,115 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.miniapp.MiniAppInfoManager.1;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.oidb_0xb61.GetAppinfoRsp;
+import tencent.im.oidb.oidb_0xb61.GetPkgUrlRsp;
+import tencent.im.oidb.oidb_0xb61.RspBody;
+import tencent.im.oidb.qqconnect.Appinfo;
 
 public class asiw
-  implements asjn
+  extends mxj
 {
-  public asiw(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public asiw(MiniAppInfoManager.1 param1) {}
   
-  public void a(long paramLong)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    int i = 0;
-    while (i < ChooseInterestTagActivity.a(this.a).getChildCount())
-    {
-      InterestTagInfo localInterestTagInfo = (InterestTagInfo)ChooseInterestTagActivity.a(this.a).getChildAt(i).getTag();
-      if ((localInterestTagInfo != null) && (paramLong == localInterestTagInfo.tagId))
-      {
-        ChooseInterestTagActivity.a(this.a).remove(localInterestTagInfo);
-        ChooseInterestTagActivity.a(this.a, localInterestTagInfo);
-        ChooseInterestTagActivity.b(this.a, localInterestTagInfo);
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniAppInfoManager", 2, "onResult type=" + this.a.jdField_a_of_type_Asiu.jdField_a_of_type_Int + ", appid=" + this.a.jdField_a_of_type_Asiu.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
+    }
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {
+      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
+        break label798;
       }
-      i += 1;
+    }
+    label798:
+    for (;;)
+    {
+      try
+      {
+        paramBundle = ((oidb_0xb61.RspBody)new oidb_0xb61.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
+        StringBuilder localStringBuilder = new StringBuilder().append("req error code=").append(paramInt);
+        if (paramArrayOfByte == null)
+        {
+          paramArrayOfByte = ", data=null";
+          QLog.i("MiniAppInfoManager", 2, paramArrayOfByte);
+          if ((this.a.jdField_a_of_type_Asix != null) && (this.a.jdField_a_of_type_Asix.a != null)) {
+            this.a.jdField_a_of_type_Asix.a(this.a.jdField_a_of_type_Asix.a.get(), false, this.a.jdField_a_of_type_Asiu);
+          }
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        paramBundle = "";
+        continue;
+        paramArrayOfByte = ", msg=" + paramBundle;
+        continue;
+      }
+      paramBundle = new oidb_0xb61.RspBody();
+      for (;;)
+      {
+        try
+        {
+          paramBundle.mergeFrom(paramArrayOfByte);
+          if (paramBundle.wording.has()) {
+            this.a.jdField_a_of_type_Asiu.g = paramBundle.wording.get();
+          }
+          if ((this.a.jdField_a_of_type_Int != 1) || (!paramBundle.get_appinfo_rsp.appinfo.has())) {
+            break label637;
+          }
+          this.a.jdField_a_of_type_Asiu.jdField_b_of_type_Int = paramBundle.get_appinfo_rsp.appinfo.platform.get();
+          this.a.jdField_a_of_type_Asiu.jdField_b_of_type_JavaLangString = paramBundle.get_appinfo_rsp.appinfo.app_name.get();
+          this.a.jdField_a_of_type_Asiu.jdField_c_of_type_Int = paramBundle.get_appinfo_rsp.appinfo.app_state.get();
+          this.a.jdField_a_of_type_Asiu.jdField_c_of_type_JavaLangString = paramBundle.get_appinfo_rsp.appinfo.icon_url.get();
+          this.a.jdField_a_of_type_Asiu.e = paramBundle.get_appinfo_rsp.appinfo.icon_small_url.get();
+          this.a.jdField_a_of_type_Asiu.jdField_d_of_type_JavaLangString = paramBundle.get_appinfo_rsp.appinfo.icon_middle_url.get();
+          if (paramBundle.next_req_duration.has()) {
+            this.a.jdField_a_of_type_Asiu.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.next_req_duration.get() * 1000L, 300000L));
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("MiniAppInfoManager", 2, "receive appInfo: " + this.a.jdField_a_of_type_Asiu);
+          }
+          asiz.a().a(this.a.jdField_a_of_type_Asiu);
+          if ((this.a.jdField_a_of_type_Asix == null) || (this.a.jdField_a_of_type_Asix.a == null)) {
+            break;
+          }
+          this.a.jdField_a_of_type_Asix.a(this.a.jdField_a_of_type_Asix.a.get(), true, this.a.jdField_a_of_type_Asiu);
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+        if ((this.a.jdField_a_of_type_Asix == null) || (this.a.jdField_a_of_type_Asix.a == null)) {
+          break;
+        }
+        this.a.jdField_a_of_type_Asix.a(this.a.jdField_a_of_type_Asix.a.get(), false, this.a.jdField_a_of_type_Asiu);
+        return;
+        label637:
+        if ((this.a.jdField_a_of_type_Int != 2) || (!paramBundle.get_mqqapp_url_rsp.has())) {
+          break label743;
+        }
+        this.a.jdField_a_of_type_Asiu.jdField_d_of_type_Int = paramBundle.get_mqqapp_url_rsp.app_version.get();
+        this.a.jdField_a_of_type_Asiu.f = paramBundle.get_mqqapp_url_rsp.pkg_url.get();
+        if (paramBundle.next_req_duration.has()) {
+          this.a.jdField_a_of_type_Asiu.jdField_b_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.next_req_duration.get() * 1000L, 300000L));
+        }
+      }
+      label743:
+      if ((this.a.jdField_a_of_type_Asix != null) && (this.a.jdField_a_of_type_Asix.a != null))
+      {
+        this.a.jdField_a_of_type_Asix.a(this.a.jdField_a_of_type_Asix.a.get(), false, this.a.jdField_a_of_type_Asiu);
+        return;
+        paramBundle = "";
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     asiw
  * JD-Core Version:    0.7.0.1
  */

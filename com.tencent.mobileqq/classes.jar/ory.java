@@ -1,10 +1,20 @@
-import android.graphics.Bitmap;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 
-public abstract interface ory
+public class ory
+  extends BroadcastReceiver
 {
-  public abstract void a(qtb paramqtb, opw paramopw, int paramInt);
+  public ory(KandianMergeManager paramKandianMergeManager) {}
   
-  public abstract void a(qtb paramqtb, opw paramopw, long paramLong, Bitmap paramBitmap);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = osj.a().a();
+    if (paramContext != null) {
+      paramContext.a();
+    }
+  }
 }
 
 

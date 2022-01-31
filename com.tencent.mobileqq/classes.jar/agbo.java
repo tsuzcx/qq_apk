@@ -1,13 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import java.util.List;
 
-public class agbo
-  implements DialogInterface.OnClickListener
+public abstract interface agbo
 {
-  public agbo(PhotoListActivity paramPhotoListActivity) {}
+  public abstract void a(boolean paramBoolean, @NonNull List<TroopLinkElement> paramList);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void q();
 }
 
 

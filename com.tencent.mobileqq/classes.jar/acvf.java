@@ -1,19 +1,12 @@
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class acvf
-  extends arvh
+public abstract interface acvf
 {
-  acvf(acve paramacve, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, String paramString)
-  {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
-  }
+  public abstract void a(int paramInt, Context paramContext, ChatMessage paramChatMessage);
   
-  public void a(boolean paramBoolean)
-  {
-    this.a.a(true);
-  }
+  public abstract bblt[] a(View paramView);
 }
 
 

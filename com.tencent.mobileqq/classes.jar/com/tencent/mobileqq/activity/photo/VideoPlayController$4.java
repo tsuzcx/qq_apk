@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agew;
-import agey;
+import agqu;
+import agqw;
 
 public class VideoPlayController$4
   implements Runnable
 {
-  public VideoPlayController$4(agew paramagew) {}
+  public VideoPlayController$4(agqu paramagqu) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Agey != null) {
-      this.this$0.jdField_a_of_type_Agey.a(this.this$0.jdField_a_of_type_Agfe);
+    if (this.this$0.jdField_a_of_type_Agqw != null) {
+      this.this$0.jdField_a_of_type_Agqw.a(this.this$0.jdField_a_of_type_Agrc);
     }
-    agew.a(this.this$0, 1);
+    agqu.a(this.this$0, 1);
     this.this$0.b(8);
   }
 }

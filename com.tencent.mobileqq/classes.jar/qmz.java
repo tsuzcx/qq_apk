@@ -1,8 +1,47 @@
-public abstract interface qmz
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+
+class qmz
+  implements ohm
 {
-  public abstract void a(int paramInt);
+  qmz(qmx paramqmx) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void a()
+  {
+    if (qmx.a(this.a) != null) {
+      qmx.a(this.a).b();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt < 0) {
+      return;
+    }
+    qmx.a(this.a).e = paramInt;
+    qmx.a(this.a).b(qmx.a(this.a));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    this.a.f();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    qmx.a(this.a).e();
+    this.a.f();
+  }
 }
 
 

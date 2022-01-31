@@ -1,33 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.confess.data.TroopConfessMsg;
+import com.tencent.mobileqq.data.MessageForTroopConfess;
+import java.util.List;
 
-public class amol
+class amol
+  implements View.OnClickListener
 {
-  public SQLiteDatabase a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
+  amol(amok paramamok, MessageForTroopConfess paramMessageForTroopConfess) {}
+  
+  public void onClick(View paramView)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramAppRuntime != null)
-    {
-      localObject1 = localObject2;
-      if ((paramAppRuntime instanceof QQAppInterface))
-      {
-        paramAppRuntime = (QQAppInterface)paramAppRuntime;
-        if (!paramBoolean) {
-          break label41;
-        }
-        localObject1 = paramAppRuntime.b(paramString);
-      }
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items.isEmpty())) {
+      amon.a(this.jdField_a_of_type_Amok.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Amok.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_Amok.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessTopicId(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.confessorUin), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessToUin()));
     }
-    return localObject1;
-    label41:
-    return paramAppRuntime.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amol
  * JD-Core Version:    0.7.0.1
  */

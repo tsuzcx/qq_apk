@@ -1,36 +1,16 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.nearby.widget.GradientAnimTextView;
 
 public class atxy
-  extends Handler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public atxy(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public atxy(GradientAnimTextView paramGradientAnimTextView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!this.a.a(paramMessage)) {}
-    switch (paramMessage.what)
-    {
-    case 5: 
-    case 8: 
-    default: 
-      return;
-    case 6: 
-      if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)))
-      {
-        Toast.makeText(this.a.a.getApplicationContext(), (String)paramMessage.obj, 0).show();
-        return;
-      }
-      Toast.makeText(this.a.a.getApplicationContext(), 2131629798, 0).show();
-      return;
-    case 7: 
-      Toast.makeText(this.a.a.getApplicationContext(), 2131629752, 0).show();
-      return;
-    }
-    this.a.d();
+    GradientAnimTextView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 

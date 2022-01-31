@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import affy;
+import afrv;
 
 public class TroopFragment$MyTroopObserver$1
   implements Runnable
 {
-  public TroopFragment$MyTroopObserver$1(affy paramaffy) {}
+  public TroopFragment$MyTroopObserver$1(afrv paramafrv) {}
   
   public void run()
   {

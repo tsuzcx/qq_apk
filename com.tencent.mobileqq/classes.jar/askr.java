@@ -1,16 +1,28 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.data.TroopMessageNavigateInfo;
+import java.util.Comparator;
 
-public abstract interface askr
+public class askr
+  implements Comparator<TroopMessageNavigateInfo>
 {
-  public abstract void a(int paramInt, askt paramaskt);
-  
-  public abstract void a(Comments.Comment paramComment, asks paramasks);
-  
-  public abstract void a(Comments.Comment paramComment, asku paramasku);
+  public int a(TroopMessageNavigateInfo paramTroopMessageNavigateInfo1, TroopMessageNavigateInfo paramTroopMessageNavigateInfo2)
+  {
+    if (paramTroopMessageNavigateInfo1.type == paramTroopMessageNavigateInfo2.type)
+    {
+      int i = 0;
+      if (paramTroopMessageNavigateInfo1.msgseq > paramTroopMessageNavigateInfo2.msgseq) {
+        i = -1;
+      }
+      while (paramTroopMessageNavigateInfo1.msgseq >= paramTroopMessageNavigateInfo2.msgseq) {
+        return i;
+      }
+      return 1;
+    }
+    return -(paramTroopMessageNavigateInfo1.getMsgBizType() - paramTroopMessageNavigateInfo2.getMsgBizType());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     askr
  * JD-Core Version:    0.7.0.1
  */

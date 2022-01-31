@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.OverloadTipsActivity;
-
-public class abgl
-  implements DialogInterface.OnClickListener
+public abstract interface abgl
 {
-  public abgl(OverloadTipsActivity paramOverloadTipsActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+  public abstract void a(abgm paramabgm);
 }
 
 

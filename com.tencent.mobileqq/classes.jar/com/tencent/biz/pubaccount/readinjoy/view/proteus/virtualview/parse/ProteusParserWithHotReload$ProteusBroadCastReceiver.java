@@ -16,6 +16,59 @@ class ProteusParserWithHotReload$ProteusBroadCastReceiver
 {
   ProteusParserWithHotReload$ProteusBroadCastReceiver(ProteusParserWithHotReload paramProteusParserWithHotReload) {}
   
+  private void getNewPathAndHotReload(Context paramContext, String paramString, ArrayList<String> paramArrayList)
+  {
+    Object localObject = paramString.replace("^#^", "/");
+    ProteusParserWithHotReload.access$300(this.this$0).put(localObject, paramString);
+    if (((String)localObject).endsWith("style_map.geojson")) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        if (!ProteusParserWithHotReload.access$400(this.this$0).containsKey(localObject)) {
+          break;
+        }
+        localObject = ((ArrayList)ProteusParserWithHotReload.access$400(this.this$0).get(localObject)).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str = (String)((Iterator)localObject).next();
+          if (!paramArrayList.contains(str))
+          {
+            paramArrayList.add(str);
+            try
+            {
+              hotReloadByFilePath(paramContext, str);
+            }
+            catch (JSONException localJSONException)
+            {
+              LogUtil.QLog.e("readinjoy.proteus", 2, " proteus hot-reload json error: " + localJSONException.toString());
+            }
+            catch (IOException localIOException)
+            {
+              LogUtil.QLog.e("readinjoy.proteus", 2, " proteus hot-reload file not found error: " + ProteusParserWithHotReload.access$500() + paramString);
+            }
+          }
+        }
+      }
+    } while (paramArrayList.contains(localObject));
+    paramArrayList.add(localObject);
+    try
+    {
+      hotReloadByFilePath(paramContext, (String)localObject);
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      LogUtil.QLog.e("readinjoy.proteus", 2, " proteus hot-reload json error: " + paramContext.toString());
+      return;
+    }
+    catch (IOException paramContext)
+    {
+      LogUtil.QLog.e("readinjoy.proteus", 2, " proteus hot-reload file not found error: " + ProteusParserWithHotReload.access$500() + paramString);
+    }
+  }
+  
   private void hotReloadByFilePath(Context paramContext, String paramString)
   {
     Object localObject = new JSONObject(this.this$0.getJsonStringFromFile(paramContext, paramString));
@@ -34,50 +87,18 @@ class ProteusParserWithHotReload$ProteusBroadCastReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     if (!ProteusParserWithHotReload.access$200(this.this$0)) {}
-    Object localObject;
     for (;;)
     {
       return;
-      paramIntent = paramIntent.getStringExtra("file_path");
-      localObject = paramIntent.replace("^#^", "/");
-      ProteusParserWithHotReload.access$300(this.this$0).put(localObject, paramIntent);
-      if (!((String)localObject).endsWith("style_map.geojson"))
+      paramIntent = paramIntent.getStringExtra("file_path").split(";");
+      ArrayList localArrayList = new ArrayList();
+      int j = paramIntent.length;
+      int i = 0;
+      while (i < j)
       {
-        if (!ProteusParserWithHotReload.access$400(this.this$0).containsKey(localObject)) {
-          break;
-        }
-        localObject = ((ArrayList)ProteusParserWithHotReload.access$400(this.this$0).get(localObject)).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String str = (String)((Iterator)localObject).next();
-          try
-          {
-            hotReloadByFilePath(paramContext, str);
-          }
-          catch (JSONException localJSONException)
-          {
-            LogUtil.QLog.e("readinjoy.proteus", 2, " proteus hot-reload json error: " + localJSONException.toString());
-          }
-          catch (IOException localIOException)
-          {
-            LogUtil.QLog.e("readinjoy.proteus", 2, " proteus hot-reload file not found error: " + ProteusParserWithHotReload.access$500() + paramIntent);
-          }
-        }
+        getNewPathAndHotReload(paramContext, paramIntent[i], localArrayList);
+        i += 1;
       }
-    }
-    try
-    {
-      hotReloadByFilePath(paramContext, (String)localObject);
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      LogUtil.QLog.e("readinjoy.proteus", 2, " proteus hot-reload json error: " + paramContext.toString());
-      return;
-    }
-    catch (IOException paramContext)
-    {
-      LogUtil.QLog.e("readinjoy.proteus", 2, " proteus hot-reload file not found error: " + ProteusParserWithHotReload.access$500() + paramIntent);
     }
   }
 }

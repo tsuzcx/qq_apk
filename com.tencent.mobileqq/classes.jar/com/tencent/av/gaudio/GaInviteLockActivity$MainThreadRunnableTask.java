@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 import android.widget.TextView;
-import mjg;
+import muf;
 
 class GaInviteLockActivity$MainThreadRunnableTask
   implements Runnable
@@ -33,9 +33,9 @@ class GaInviteLockActivity$MainThreadRunnableTask
     }
     if (this.this$0.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      float f = this.this$0.getResources().getDimensionPixelSize(2131165946);
-      String str = mjg.a(this.this$0.getApplicationContext(), this.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_AndroidWidgetTextView, f);
-      str = String.format(this.this$0.getApplicationContext().getString(2131627327), new Object[] { String.valueOf(str) });
+      float f = this.this$0.getResources().getDimensionPixelSize(2131297021);
+      String str = muf.a(this.this$0.getApplicationContext(), this.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_AndroidWidgetTextView, f);
+      str = String.format(this.this$0.getApplicationContext().getString(2131692965), new Object[] { String.valueOf(str) });
       this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(str);
     }
   }

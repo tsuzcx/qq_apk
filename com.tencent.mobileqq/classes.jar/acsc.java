@@ -1,31 +1,18 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
 
-class acsc
-  implements wiu
+public class acsc
+  implements View.OnClickListener
 {
-  acsc(acsb paramacsb) {}
+  public acsc(ReminderListFragment paramReminderListFragment) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    boolean bool;
-    if (paramBundle.getInt("type") == 73)
-    {
-      bool = paramBundle.getBoolean("isSuccess");
-      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.i)) {}
+    if (ReminderListFragment.a(this.a) != null) {
+      ReminderListFragment.a(this.a).dismiss();
     }
-    else
-    {
-      return;
-    }
-    if (Boolean.valueOf(bool).booleanValue())
-    {
-      bbmy.a(BaseApplicationImpl.getApplication(), 2, 2131654503, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
-      return;
-    }
-    bbmy.a(BaseApplicationImpl.getApplication(), 1, 2131654500, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
   }
 }
 

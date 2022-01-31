@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class ShortVideoUpInfo
-  extends atmo
+  extends aukm
 {
-  @atoc
+  @auma
   public String key;
   public long lastIp;
   public long timeStamp;

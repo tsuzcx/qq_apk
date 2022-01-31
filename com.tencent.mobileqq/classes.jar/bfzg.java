@@ -1,179 +1,217 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
-import com.tencent.mobileqq.pluginsdk.PluginProxyService;
-import com.tencent.mobileqq.pluginsdk.SplashDialogWrapper;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.IQZonePluginManager.4;
-import cooperation.qzone.plugin.PluginRecord;
-import java.io.File;
-import mqq.app.AppRuntime;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class bfzg
-  extends bgbj
+public class bfzg<T extends RecyclerView.Adapter>
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  public static void a(Activity paramActivity, bfzm parambfzm)
+  private final T jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
+  private bfzk jdField_a_of_type_Bfzk;
+  private bfzl jdField_a_of_type_Bfzl;
+  private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final List<View> b = new ArrayList();
+  
+  public bfzg(T paramT)
   {
-    if (parambfzm.f != null)
-    {
-      localObject = Toast.makeText(BaseApplicationImpl.getContext(), parambfzm.f, 0);
-      ((Toast)localObject).setGravity(17, 0, 0);
-      ((Toast)localObject).show();
-    }
-    Object localObject = new bfzh();
-    if ((parambfzm.jdField_a_of_type_AndroidAppDialog != null) && (!paramActivity.isFinishing())) {
-      new SplashDialogWrapper(paramActivity, parambfzm.jdField_a_of_type_AndroidAppDialog, parambfzm.d, parambfzm.jdField_b_of_type_JavaLangString, parambfzm.jdField_a_of_type_Boolean, parambfzm.c).show();
-    }
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if (!(localAppRuntime instanceof QQAppInterface))
-    {
-      b(paramActivity, parambfzm, (bfzl)localObject);
-      return;
-    }
-    ((bfzg)((QQAppInterface)localAppRuntime).getManager(175)).a(paramActivity, parambfzm, (bfzl)localObject);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramT;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(new bfzh(this));
   }
   
-  public static void a(Context paramContext, bfzm parambfzm)
+  public int a()
   {
-    bfzi localbfzi = new bfzi();
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if (!(localAppRuntime instanceof QQAppInterface))
-    {
-      b(paramContext, parambfzm, localbfzi);
-      return;
-    }
-    ((bfzg)((QQAppInterface)localAppRuntime).getManager(175)).a(paramContext, parambfzm, localbfzi);
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  static void b(Activity paramActivity, bfzm parambfzm)
+  public T a()
   {
-    if ((parambfzm == null) || (paramActivity == null) || (parambfzm.jdField_a_of_type_AndroidContentIntent == null)) {}
-    for (;;)
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
+  }
+  
+  public bfzg a(bfzk parambfzk)
+  {
+    this.jdField_a_of_type_Bfzk = parambfzk;
+    return this;
+  }
+  
+  protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (this.jdField_a_of_type_Bfzl != null) {
+      this.jdField_a_of_type_Bfzl.a(paramViewHolder, paramInt);
+    }
+  }
+  
+  public void a(@NonNull View paramView)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramView);
+  }
+  
+  public void a(bfzl parambfzl)
+  {
+    this.jdField_a_of_type_Bfzl = parambfzl;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return paramInt < this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public boolean a(View paramView)
+  {
+    return this.jdField_a_of_type_JavaUtilList.contains(paramView);
+  }
+  
+  public void b(@NonNull View paramView)
+  {
+    this.jdField_a_of_type_JavaUtilList.remove(paramView);
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return paramInt >= getItemCount() - this.b.size();
+  }
+  
+  public void c(@NonNull View paramView)
+  {
+    this.b.add(paramView);
+  }
+  
+  public boolean c(int paramInt)
+  {
+    return (paramInt >= -1000) && (paramInt < this.jdField_a_of_type_JavaUtilList.size() - 1000);
+  }
+  
+  public boolean d(int paramInt)
+  {
+    return (paramInt >= -2000) && (paramInt < this.b.size() - 2000);
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount() + this.b.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      return ((View)this.jdField_a_of_type_JavaUtilList.get(paramInt)).hashCode();
+    }
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount()) {
+      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemId(paramInt - this.jdField_a_of_type_JavaUtilList.size());
+    }
+    return ((View)this.b.get(paramInt - this.jdField_a_of_type_JavaUtilList.size() - this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount())).hashCode();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      return paramInt - 1000;
+    }
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount()) {
+      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemViewType(paramInt - this.jdField_a_of_type_JavaUtilList.size());
+    }
+    return paramInt - 2000 - this.jdField_a_of_type_JavaUtilList.size() - this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
     {
-      return;
-      parambfzm.jdField_a_of_type_AndroidContentIntent.setClass(paramActivity, parambfzm.jdField_a_of_type_JavaLangClass);
-      if (TextUtils.isEmpty(parambfzm.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin")))
+      if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
+        localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null)
       {
-        parambfzm.jdField_a_of_type_AndroidContentIntent.putExtra("uin", parambfzm.jdField_a_of_type_JavaLangString);
-        parambfzm.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", parambfzm.jdField_a_of_type_JavaLangString);
+        localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
+        paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
-      parambfzm.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", parambfzm.jdField_a_of_type_JavaLangString);
-      parambfzm.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", awqq.class.getName());
-      try
-      {
-        File localFile = new File(bgbf.a(paramActivity), parambfzm.jdField_b_of_type_JavaLangString);
-        PluginProxyActivity.openActivityForResult(paramActivity, parambfzm.d, parambfzm.jdField_b_of_type_JavaLangString, localFile.getCanonicalPath(), parambfzm.e, parambfzm.jdField_a_of_type_AndroidContentIntent, parambfzm.jdField_b_of_type_Int);
-        if ((parambfzm.jdField_a_of_type_AndroidAppDialog != null) && ((parambfzm.jdField_a_of_type_AndroidAppDialog instanceof bbni)) && (paramActivity != null))
-        {
-          paramActivity.overridePendingTransition(2130772097, 2130772097);
-          return;
-        }
-      }
-      catch (Exception paramActivity)
-      {
-        QLog.e("feilongzou", 1, paramActivity, new Object[0]);
-      }
-    }
-  }
-  
-  public static void b(Context paramContext, bfzm parambfzm)
-  {
-    bfzj localbfzj = new bfzj();
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if (!(localAppRuntime instanceof QQAppInterface))
-    {
-      b(paramContext, parambfzm, localbfzj);
+      ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
+      a(paramViewHolder, paramInt);
       return;
     }
-    ((bfzg)((QQAppInterface)localAppRuntime).getManager(175)).a(paramContext, parambfzm, localbfzj);
-  }
-  
-  private static void b(Context paramContext, bfzm parambfzm, bfzl parambfzl)
-  {
-    bgax.a(paramContext, new bfzk(paramContext, parambfzm, parambfzl));
-  }
-  
-  static void c(Context paramContext, bfzm parambfzm)
-  {
-    if ((TextUtils.isEmpty(parambfzm.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin"))) && (!TextUtils.isEmpty(parambfzm.jdField_a_of_type_JavaLangString)))
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount())
     {
-      parambfzm.jdField_a_of_type_AndroidContentIntent.putExtra("uin", parambfzm.jdField_a_of_type_JavaLangString);
-      parambfzm.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", parambfzm.jdField_a_of_type_JavaLangString);
-    }
-    parambfzm.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", parambfzm.jdField_a_of_type_JavaLangString);
-    parambfzm.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", awqq.class.getName());
-    Object localObject = parambfzm.jdField_b_of_type_JavaLangString;
-    localObject = new File(bgbf.a(paramContext), (String)localObject);
-    try
-    {
-      PluginProxyBroadcastReceiver.sendBroadcastReceiver(paramContext, parambfzm.d, parambfzm.jdField_b_of_type_JavaLangString, ((File)localObject).getCanonicalPath(), parambfzm.e, parambfzm.jdField_a_of_type_AndroidContentIntent);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - this.jdField_a_of_type_JavaUtilList.size());
       return;
     }
-    catch (Exception paramContext)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("PluginDebug", 2, "doLaunchPluginBroadcast", paramContext);
+    localObject1 = localObject2;
+    if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
+      localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
     }
+    localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
+      paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    }
+    ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
   }
   
-  static void d(Context paramContext, bfzm parambfzm)
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt, List<Object> paramList)
   {
-    if ((TextUtils.isEmpty(parambfzm.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin"))) && (!TextUtils.isEmpty(parambfzm.jdField_a_of_type_JavaLangString)))
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
     {
-      parambfzm.jdField_a_of_type_AndroidContentIntent.putExtra("uin", parambfzm.jdField_a_of_type_JavaLangString);
-      parambfzm.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", parambfzm.jdField_a_of_type_JavaLangString);
-    }
-    parambfzm.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", parambfzm.jdField_a_of_type_JavaLangString);
-    parambfzm.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", awqq.class.getName());
-    Object localObject = parambfzm.jdField_b_of_type_JavaLangString;
-    localObject = new File(bgbf.a(paramContext), (String)localObject);
-    try
-    {
-      localObject = ((File)localObject).getCanonicalPath();
-      if (parambfzm.jdField_a_of_type_AndroidContentServiceConnection != null)
-      {
-        PluginProxyService.bindService(paramContext, parambfzm.d, parambfzm.jdField_b_of_type_JavaLangString, (String)localObject, parambfzm.e, parambfzm.jdField_a_of_type_AndroidContentIntent, parambfzm.jdField_a_of_type_AndroidContentServiceConnection);
-        return;
-      }
-      ThreadManager.post(new IQZonePluginManager.4(paramContext, parambfzm, (String)localObject), 5, null, false);
+      super.onBindViewHolder(paramViewHolder, paramInt, paramList);
       return;
     }
-    catch (Exception paramContext)
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount())
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PluginDebug", 2, "doLaunchPluginService", paramContext);
-      }
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - this.jdField_a_of_type_JavaUtilList.size(), paramList);
+      return;
+    }
+    super.onBindViewHolder(paramViewHolder, paramInt, paramList);
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (c(paramInt))
+    {
+      paramInt = Math.abs(paramInt + 1000);
+      return new bfzi(this, (View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    }
+    if (d(paramInt))
+    {
+      paramInt = Math.abs(paramInt + 2000);
+      return new bfzj(this, (View)this.b.get(paramInt));
+    }
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
+  }
+  
+  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.onViewAttachedToWindow(paramViewHolder);
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter != null) && ((paramViewHolder instanceof bfyo))) {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onViewAttachedToWindow(paramViewHolder);
     }
   }
   
-  public abstract PluginRecord a(String paramString);
+  public void onViewDetachedFromWindow(RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.onViewDetachedFromWindow(paramViewHolder);
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter != null) && ((paramViewHolder instanceof bfyo))) {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onViewDetachedFromWindow(paramViewHolder);
+    }
+  }
   
-  public abstract void a();
-  
-  public abstract void a(Context paramContext, bfzm parambfzm, bfzl parambfzl);
-  
-  public abstract void a(bfzn parambfzn, int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract boolean a(String paramString, bfzq parambfzq, int paramInt);
-  
-  public abstract boolean b(String paramString);
-  
-  public abstract boolean c(String paramString);
+  public void onViewRecycled(RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.onViewRecycled(paramViewHolder);
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter != null) && ((paramViewHolder instanceof bfyo))) {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onViewRecycled(paramViewHolder);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfzg
  * JD-Core Version:    0.7.0.1
  */

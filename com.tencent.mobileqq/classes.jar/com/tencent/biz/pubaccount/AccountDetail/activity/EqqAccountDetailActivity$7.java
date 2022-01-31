@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.AccountDetail.activity;
 
-import annt;
+import aoee;
 import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.data.EqqDetail;
 import com.tencent.qphone.base.util.QLog;
@@ -21,7 +21,7 @@ class EqqAccountDetailActivity$7
       this.this$0.b(this.this$0.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
       EqqAccountDetailActivity.b(this.this$0).a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
       this.this$0.d();
-      annt.a(EqqAccountDetailActivity.g(this.this$0)).a(EqqAccountDetailActivity.f(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin, true);
+      aoee.a(EqqAccountDetailActivity.g(this.this$0)).a(EqqAccountDetailActivity.f(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin, true);
       if (EqqAccountDetailActivity.a(this.this$0) != null) {
         break label130;
       }

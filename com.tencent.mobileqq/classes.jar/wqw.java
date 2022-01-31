@@ -1,36 +1,38 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.videostory.capture.widgets.AEBottomListScrollView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-class wqw
-  implements Animation.AnimationListener
+public class wqw
+  implements View.OnClickListener
 {
-  wqw(wqq paramwqq) {}
+  public wqw(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if ((wqq.a(this.a) != null) && (!wqq.a(this.a)))
+    boolean bool2 = true;
+    if ((SubscribeVideoDetailFragment.a(this.a) != null) && (SubscribeVideoDetailFragment.a(this.a) != null))
     {
-      wqq.a(this.a).setAlpha(1.0F);
-      wqq.a(this.a).setVisibility(4);
+      paramView = SubscribeVideoDetailFragment.a(this.a).a(1);
+      bool1 = bool2;
+      if (SubscribeVideoDetailFragment.a(this.a).d()) {
+        if (SubscribeVideoDetailFragment.a(this.a).f()) {
+          break label78;
+        }
+      }
     }
-    if (this.a.a != null)
+    label78:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.a.a.a(327684, new Object[0]);
-      this.a.a.a(196612, new Object[0]);
+      paramView.c = bool1;
+      this.a.a(paramView);
+      return;
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    wqq.a(this.a).a().a(true, 150);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wqw
  * JD-Core Version:    0.7.0.1
  */

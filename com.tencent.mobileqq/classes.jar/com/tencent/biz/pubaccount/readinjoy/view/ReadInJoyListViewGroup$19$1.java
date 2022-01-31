@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import odm;
-import ohp;
-import oid;
+import oox;
+import ota;
+import oto;
 
 class ReadInJoyListViewGroup$19$1
   implements Runnable
@@ -11,8 +11,8 @@ class ReadInJoyListViewGroup$19$1
   
   public void run()
   {
-    if (((this.a.this$0.a() == 0) || (odm.c(this.a.this$0.a()))) && (!this.a.a)) {
-      ohp.a().a.a(8, this.a.this$0.a);
+    if (((this.a.this$0.a() == 0) || (oox.c(this.a.this$0.a()))) && (!this.a.a)) {
+      ota.a().a.a(8, this.a.this$0.a);
     }
   }
 }

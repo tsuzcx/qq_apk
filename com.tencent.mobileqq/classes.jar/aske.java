@@ -1,24 +1,19 @@
-public class aske
-  implements ajfe
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.List;
+
+class aske
+  implements askp<Integer, List<EmoticonPackage>>
 {
-  protected void a(boolean paramBoolean, String paramString) {}
+  aske(askd paramaskd) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public List<EmoticonPackage> a(Integer paramInteger)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (!paramBoolean);
-    paramObject = (Object[])paramObject;
-    a(((Boolean)paramObject[0]).booleanValue(), (String)paramObject[1]);
+    return this.a.a(paramInteger.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aske
  * JD-Core Version:    0.7.0.1
  */

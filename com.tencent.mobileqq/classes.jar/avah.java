@@ -1,78 +1,100 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.opengl.GLES20;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.MD5;
+import java.util.Map;
 
 public class avah
-  extends avad
 {
-  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230753);
-  private int jdField_a_of_type_Int = -1;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private int b;
+  public int a;
+  public String a;
+  public Map<Integer, String> a;
+  public int b;
+  public int c;
+  public int d;
   
-  public avah()
+  public avah(int paramInt1, int paramInt2, Map<Integer, String> paramMap)
   {
-    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
-    this.mFilterType = 5;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Int != -1) {
-      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-    }
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.d = paramInt2;
+    if (this.jdField_a_of_type_JavaUtilMap != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      urk.b("Q.qqstory.publish.edit GPULordKelvinFilter", "mosaic bitmap recycle");
-    }
-  }
-  
-  public void onDrawTexture()
-  {
-    super.onDrawTexture();
-    GLES20.glActiveTexture(33985);
-    if (this.jdField_a_of_type_Int == -1)
-    {
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+      paramMap = new StringBuilder();
+      paramMap.append(paramInt1);
+      paramInt1 = 0;
+      while (paramInt1 <= 4)
       {
-        QLog.w("Q.qqstory.publish.edit GPULordKelvinFilter", 1, "bitmap error");
-        return;
+        String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt1));
+        if (str != null) {
+          paramMap.append(str);
+        }
+        paramInt1 += 1;
       }
-      this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
-    GLES20.glBindTexture(3553, this.jdField_a_of_type_Int);
-    GLES20.glUniform1i(this.b, 1);
-  }
-  
-  public void onInitialized()
-  {
-    super.onInitialized();
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeStream(BaseApplicationImpl.getContext().getResources().openRawResource(2130845177));
-      this.b = GLES20.glGetUniformLocation(getProgram(), "sTexture2");
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        urk.e("Q.qqstory.publish.edit GPULordKelvinFilter", "OutOfMemoryError:%s", new Object[] { localOutOfMemoryError.getMessage() });
+      this.jdField_a_of_type_JavaLangString = paramMap.toString();
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaLangString = MD5.toMD5(this.jdField_a_of_type_JavaLangString);
       }
     }
+  }
+  
+  private String b(int paramInt)
+  {
+    Object localObject = null;
+    int i = 1;
+    while ((TextUtils.isEmpty((CharSequence)localObject)) && (i < 5))
+    {
+      localObject = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf((paramInt + i) % 5));
+      i += 1;
+    }
+    return localObject;
+  }
+  
+  public String a()
+  {
+    Object localObject = null;
+    if (this.jdField_a_of_type_JavaUtilMap != null)
+    {
+      String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1));
+      localObject = str;
+      if (TextUtils.isEmpty(str)) {
+        localObject = b(1);
+      }
+    }
+    return localObject;
+  }
+  
+  public String a(int paramInt)
+  {
+    Object localObject = null;
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      if (paramInt > 100) {
+        break label51;
+      }
+    }
+    label51:
+    for (paramInt = 3;; paramInt = 2)
+    {
+      String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      localObject = str;
+      if (TextUtils.isEmpty(str)) {
+        localObject = b(paramInt);
+      }
+      return localObject;
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool = false;
+    if ((paramObject instanceof avah)) {
+      bool = bbbd.a(((avah)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avah
  * JD-Core Version:    0.7.0.1
  */

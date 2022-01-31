@@ -1,376 +1,201 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.av.ui.VideoLayerUIBase;
-import com.tencent.av.ui.guide.GuideHelper;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.opengl.GLES20;
+import com.tencent.av.opengl.program.TextureProgram;
+import com.tencent.av.opengl.texture.YUVTexture;
+import com.tencent.av.opengl.utils.AVGLUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
 public class mak
-  extends GestureDetector.SimpleOnGestureListener
 {
-  public mak(VideoLayerUI paramVideoLayerUI) {}
+  private int jdField_a_of_type_Int;
+  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
+  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
+  private int jdField_b_of_type_Int;
+  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
+  private int c = -1;
   
-  public boolean onDoubleTap(MotionEvent arg1)
+  public mak()
   {
-    int i;
-    int j;
-    if ((this.a.q == 0) && ((this.a.o == 0) || (this.a.n == 0)) && (2 == this.a.jdField_a_of_type_ArrayOfLtl[0].h()) && (!VideoLayerUIBase.b(this.a.jdField_a_of_type_ComTencentAvVideoController.a())))
-    {
-      i = (int)???.getX();
-      j = (int)???.getY();
-      float f = this.a.jdField_a_of_type_ArrayOfLtl[0].c();
-      ??? = this.a;
-      ???.p += 1;
-      if (this.a.p % 2 == 1)
-      {
-        f = this.a.jdField_a_of_type_ArrayOfLtl[0].b() / f;
-        this.a.jdField_a_of_type_ArrayOfLtl[0].a(f, i, j);
-      }
-      for (;;)
-      {
-        return true;
-        f = this.a.jdField_a_of_type_ArrayOfLtl[0].a() / f;
-        i = this.a.jdField_a_of_type_ArrayOfLtl[0].b() / 2;
-        j = this.a.jdField_a_of_type_ArrayOfLtl[0].c() / 2;
-        this.a.jdField_a_of_type_ArrayOfLtl[0].a(f, i, j);
-        this.a.jdField_a_of_type_ArrayOfLtl[0].a(i, j, true);
-      }
-    }
-    if ((this.a.jdField_a_of_type_Lyf != null) && (this.a.jdField_a_of_type_Lyf.a() == 3))
-    {
-      Object localObject1;
-      Object localObject3;
-      if (QLog.isColorLevel())
-      {
-        ??? = this.a.jdField_a_of_type_JavaLangString;
-        localObject1 = new StringBuilder().append("GestureListener-->onDoubleTap in STYLE_MULTI_GRID_SCREEN  Index=").append(this.a.q).append(",visibility:=");
-        localObject3 = this.a.jdField_a_of_type_ArrayOfLtl;
-        if (this.a.q >= 0) {
-          break label420;
-        }
-      }
-      label420:
-      for (i = 0;; i = this.a.q)
-      {
-        QLog.d(???, 2, localObject3[i].a());
-        if ((VideoLayerUI.c(this.a)) && (this.a.q != -1) && (this.a.q < this.a.jdField_a_of_type_ArrayOfLtl.length) && (this.a.jdField_a_of_type_ArrayOfLtl[this.a.q].a() != 1) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.size() > 0)) {
-          break;
-        }
-        return true;
-      }
-      if (this.a.q != 0)
-      {
-        long l = Long.parseLong(this.a.jdField_a_of_type_ArrayOfLtl[this.a.q].b());
-        j = this.a.jdField_a_of_type_ArrayOfLtl[this.a.q].h();
-        localObject1 = (leb)this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.get(0);
-        i = 0;
-        if (i < this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.size())
-        {
-          localObject3 = (leb)this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.get(i);
-          if ((l != ((leb)localObject3).jdField_a_of_type_Long) || (j != ((leb)localObject3).jdField_a_of_type_Int)) {
-            break label757;
-          }
-          ((leb)localObject1).jdField_a_of_type_Boolean = false;
-          ((leb)localObject3).jdField_a_of_type_Boolean = true;
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.set(0, localObject3);
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.set(i, localObject1);
-        }
-      }
-      for (;;)
-      {
-        synchronized (this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaUtilArrayList)
-        {
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaUtilArrayList.set(0, localObject3);
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaUtilArrayList.set(i, localObject1);
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a().c();
-          this.a.b(0, this.a.q);
-          awqx.b(null, "CliOper", "", "", "0X8009F61", "0X8009F61", 0, 0, "", "", "", "");
-          ((AVActivity)this.a.jdField_a_of_type_AndroidContentContext).a(4, false);
-          return true;
-        }
-        label757:
-        i += 1;
-        break;
-        if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.size() > 0) && (!((leb)this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.get(0)).jdField_a_of_type_Boolean))
-        {
-          ((leb)this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.get(0)).jdField_a_of_type_Boolean = true;
-          if (QLog.isColorLevel()) {
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "VideoUiLayer onLayoutModeChange --> displayList  not has big one");
-          }
-        }
-      }
-    }
-    if ((this.a.jdField_a_of_type_Lyf != null) && (this.a.jdField_a_of_type_Lyf.a() == 4))
-    {
-      if (!VideoLayerUI.c(this.a)) {
-        return true;
-      }
-      awqx.b(null, "CliOper", "", "", "0X8009F60", "0X8009F60", 0, 0, "", "", "", "");
-      ((AVActivity)this.a.jdField_a_of_type_AndroidContentContext).a(3, false);
-    }
-    return super.onDoubleTap(???);
+    c();
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  private void a(int paramInt1, int paramInt2)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return false;
+    if ((paramInt1 == 0) || (paramInt2 == 0) || ((this.jdField_a_of_type_Int == paramInt1) && (this.jdField_b_of_type_Int == paramInt2))) {
+      return;
     }
-    if (this.a.jdField_a_of_type_Long > paramMotionEvent2.getDownTime()) {}
-    for (boolean bool3 = true; bool3; bool3 = false)
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    if (this.jdField_a_of_type_JavaNioByteBuffer != null) {
+      this.jdField_a_of_type_JavaNioByteBuffer.clear();
+    }
+    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
+    if (this.c != -1)
     {
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onFling, lastHandledEventTime[" + this.a.jdField_a_of_type_Long + "], e1[" + paramMotionEvent1 + "], e2[" + paramMotionEvent2 + "]");
-      return false;
+      GLES20.glDeleteFramebuffers(0, new int[] { this.c }, 0);
+      this.c = -1;
     }
-    AVActivity localAVActivity = this.a.a();
-    if ((localAVActivity == null) || (localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI == null) || (localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI.a() == null) || (localAVActivity.jdField_a_of_type_Mbo == null)) {
-      return false;
+    this.c = AVGLUtils.initFrameBuffer(paramInt2, paramInt1, this.jdField_b_of_type_ArrayOfInt[0]);
+    c();
+  }
+  
+  private void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < this.jdField_a_of_type_Int * this.jdField_b_of_type_Int * 3 / 2) || (this.jdField_a_of_type_JavaNioByteBuffer == null) || (this.jdField_a_of_type_JavaNioByteBuffer.capacity() < this.jdField_a_of_type_Int * this.jdField_b_of_type_Int * 3 / 2)) {
+      return;
     }
-    boolean bool8 = localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI.h();
-    int i;
-    int j;
-    label209:
-    boolean bool1;
-    int k;
-    label252:
-    long l;
-    label270:
-    label281:
-    label309:
-    float f1;
-    float f2;
-    if (!localAVActivity.jdField_a_of_type_Mbo.a())
+    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    this.jdField_a_of_type_JavaNioByteBuffer.put(paramArrayOfByte, 0, this.jdField_a_of_type_Int * this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    GLES20.glBindFramebuffer(36160, 0);
+    lqu.a(false);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[0]);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameterf(3553, 10242, 33071.0F);
+    GLES20.glTexParameterf(3553, 10243, 33071.0F);
+    GLES20.glTexImage2D(3553, 0, 6409, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0, 6409, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    this.jdField_a_of_type_JavaNioByteBuffer.put(paramArrayOfByte, this.jdField_a_of_type_Int * this.jdField_b_of_type_Int, this.jdField_a_of_type_Int * this.jdField_b_of_type_Int / 2);
+    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    lru[] arrayOflru;
+    if (paramInt1 == 0)
     {
-      i = 1;
-      kvq localkvq = localAVActivity.jdField_a_of_type_ComTencentAvVideoController.a();
-      if (localkvq.jdField_d_of_type_Int != 4) {
-        break label613;
-      }
-      j = 1;
-      bool1 = localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI instanceof DoubleVideoMeetingCtrlUI;
-      if ((!this.a.jdField_a_of_type_ArrayOfLtl[0].b) && (!this.a.jdField_a_of_type_ArrayOfLtl[1].b)) {
-        break label619;
-      }
-      k = 1;
-      if ((j == 0) || (!bool1) || (k == 0)) {
-        break label625;
-      }
-      j = 1;
-      if (localkvq.c()) {
-        break label631;
-      }
-      k = 1;
-      if ((localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI.a().b(2)) || (j != 0) || (k == 0)) {
-        break label637;
-      }
-      j = 1;
-      l = AudioHelper.b();
-      f1 = Math.abs(paramMotionEvent1.getX() - paramMotionEvent2.getX());
-      f2 = Math.abs(paramMotionEvent1.getY() - paramMotionEvent2.getY());
-      if (f1 >= f2) {
-        break label655;
-      }
-      if (paramMotionEvent1.getY() - paramMotionEvent2.getY() < this.a.m) {
-        break label643;
-      }
-      bool1 = true;
-      label374:
-      if (paramMotionEvent2.getY() - paramMotionEvent1.getY() < this.a.m) {
-        break label649;
-      }
-    }
-    boolean bool5;
-    boolean bool4;
-    label643:
-    label649:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      boolean bool6 = false;
-      boolean bool7 = false;
-      bool5 = bool1;
-      bool4 = bool2;
-      bool2 = bool6;
-      bool1 = bool7;
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onFling, e1[" + paramMotionEvent1 + "], e2[" + paramMotionEvent2 + "], velocityX[" + paramFloat1 + "], velocityY[" + paramFloat2 + "], xOffset[" + f1 + "], yOffset[" + f2 + "], up[" + bool5 + "], down[" + bool4 + "], left[" + bool1 + "], right[" + bool2 + "], handle[" + bool3 + "], lastHandledEventTime[" + this.a.jdField_a_of_type_Long + "], seq[" + l + "]");
-      if ((bool8) || ((!bool5) && (!bool4))) {
-        break label724;
-      }
-      return false;
-      i = 0;
-      break;
-      label613:
-      j = 0;
-      break label209;
-      label619:
-      k = 0;
-      break label252;
-      label625:
-      j = 0;
-      break label270;
-      label631:
-      k = 0;
-      break label281;
-      label637:
-      j = 0;
-      break label309;
-      bool1 = false;
-      break label374;
-    }
-    label655:
-    if (paramMotionEvent1.getX() - paramMotionEvent2.getX() >= this.a.m)
-    {
-      bool1 = true;
-      label679:
-      if (paramMotionEvent2.getX() - paramMotionEvent1.getX() < this.a.m) {
-        break label718;
-      }
-    }
-    label718:
-    for (bool2 = true;; bool2 = false)
-    {
-      bool4 = false;
-      bool5 = false;
-      break;
-      bool1 = false;
-      break label679;
-    }
-    label724:
-    if ((bool5) && (i != 0))
-    {
-      if ((localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI.a().b(0)) && (localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI.d(l)))
+      GLES20.glActiveTexture(33985);
+      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[1]);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLES20.glTexImage2D(3553, 0, 6409, this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2, 0, 6409, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+      this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+      this.jdField_a_of_type_JavaNioByteBuffer.put(paramArrayOfByte, this.jdField_a_of_type_Int * this.jdField_b_of_type_Int + this.jdField_a_of_type_Int * this.jdField_b_of_type_Int / 4, this.jdField_a_of_type_Int * this.jdField_b_of_type_Int / 4);
+      this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+      GLES20.glActiveTexture(33986);
+      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[2]);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLES20.glTexImage2D(3553, 0, 6409, this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2, 0, 6409, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+      GLES20.glBindFramebuffer(36160, this.c);
+      GLES20.glViewport(0, 0, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
+      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+      GLES20.glClear(16640);
+      paramArrayOfByte = lrs.a(1);
+      arrayOflru = paramArrayOfByte.a();
+      GLES20.glUseProgram(paramArrayOfByte.a());
+      GLES20.glUniform1f(arrayOflru[2].jdField_a_of_type_Int, 1.0F);
+      GLES20.glUniform1f(arrayOflru[7].jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+      GLES20.glUniform1f(arrayOflru[8].jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      GLES20.glUniformMatrix4fv(arrayOflru[9].jdField_a_of_type_Int, 1, false, YUVTexture.a, 0);
+      GLES20.glUniform1i(arrayOflru[10].jdField_a_of_type_Int, paramInt1);
+      GLES20.glUniform1i(arrayOflru[11].jdField_a_of_type_Int, 0);
+      GLES20.glDisable(3042);
+      GLES20.glActiveTexture(33984);
+      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[0]);
+      GLES20.glUniform1i(arrayOflru[4].jdField_a_of_type_Int, 0);
+      GLES20.glActiveTexture(33985);
+      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[1]);
+      GLES20.glUniform1i(arrayOflru[5].jdField_a_of_type_Int, 1);
+      if (paramInt1 == 0)
       {
-        mgd.a(true);
-        localAVActivity.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a(l, localAVActivity, 0, 0);
-        localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI.a().a(l, -1);
-        return true;
+        GLES20.glActiveTexture(33986);
+        GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[2]);
+        GLES20.glUniform1i(arrayOflru[6].jdField_a_of_type_Int, 2);
       }
-    }
-    else if ((bool4) && (i != 0))
-    {
-      if (localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI.a().b(2))
-      {
-        mgd.a(false);
-        localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI.a().a(l, 0, true);
-        return true;
+      if (paramInt2 % 4 != 1) {
+        break label925;
       }
-    }
-    else
-    {
-      if ((!bool2) || (j == 0)) {
-        break label869;
-      }
-      localAVActivity.jdField_a_of_type_Mbo.c(1);
-      lah.a("0X800A8D2");
+      GLES20.glUniformMatrix4fv(arrayOflru[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixVRotate90, 0);
     }
     for (;;)
     {
-      return false;
-      label869:
-      if ((bool1) && (j != 0))
-      {
-        localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI.a().a(l, 0, false);
-        localAVActivity.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a(l, localAVActivity, 0, 1);
-        localAVActivity.jdField_a_of_type_Mbo.a(2);
-        if (!bool8) {
-          localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI.O();
-        }
-        lah.a("0X800A8D1");
+      GLES20.glUniformMatrix4fv(arrayOflru[3].jdField_a_of_type_Int, 1, false, AVGLUtils.matrix, 0);
+      GLES20.glVertexAttribPointer(arrayOflru[0].jdField_a_of_type_Int, 2, 5126, false, 8, this.jdField_a_of_type_JavaNioFloatBuffer);
+      GLES20.glEnableVertexAttribArray(arrayOflru[0].jdField_a_of_type_Int);
+      GLES20.glDrawArrays(5, 0, 4);
+      GLES20.glDisableVertexAttribArray(arrayOflru[0].jdField_a_of_type_Int);
+      GLES20.glBindFramebuffer(36160, 0);
+      return;
+      if ((paramInt1 != 1) && (paramInt1 != 2) && (paramInt1 != 3)) {
+        break;
       }
+      GLES20.glActiveTexture(33985);
+      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[1]);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLES20.glTexImage2D(3553, 0, 6410, this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2, 0, 6410, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+      break;
+      label925:
+      GLES20.glUniformMatrix4fv(arrayOflru[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixVRotate270, 0);
     }
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  private void c()
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController == null)) {
-      bool1 = false;
+    if (this.jdField_a_of_type_JavaNioFloatBuffer != null) {
+      return;
     }
-    long l;
-    do
+    float[] arrayOfFloat = new float[8];
+    arrayOfFloat[0] = (-0.5F + 0.0F);
+    arrayOfFloat[1] = (-0.5F + 0.0F);
+    arrayOfFloat[2] = (0.5F + 0.0F);
+    arrayOfFloat[3] = (-0.5F + 0.0F);
+    arrayOfFloat[4] = (-0.5F + 0.0F);
+    arrayOfFloat[5] = (0.5F + 0.0F);
+    arrayOfFloat[6] = (0.5F + 0.0F);
+    arrayOfFloat[7] = (0.5F + 0.0F);
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(arrayOfFloat.length * 4);
+    localByteBuffer.order(ByteOrder.nativeOrder());
+    this.jdField_a_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
+    this.jdField_a_of_type_JavaNioFloatBuffer.put(arrayOfFloat);
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+  }
+  
+  int a()
+  {
+    return this.jdField_b_of_type_ArrayOfInt[0];
+  }
+  
+  public void a()
+  {
+    GLES20.glGenTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
+    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, int paramInt4)
+  {
+    if (paramArrayOfByte != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                boolean bool3;
-                do
-                {
-                  do
-                  {
-                    return bool1;
-                    try
-                    {
-                      l = AudioHelper.b();
-                      bool1 = this.a.i();
-                      bool3 = this.a.h();
-                      if (QLog.isColorLevel()) {
-                        QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onSingleTapConfirmed, mTargetIndex[" + this.a.q + "], isDoubleScreen[" + bool1 + "], canMove[" + bool3 + "], seq[" + l + "]");
-                      }
-                      if ((!VideoLayerUI.b(this.a)) && (this.a.q > 0) && (!bool1)) {
-                        break;
-                      }
-                      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(110), Long.valueOf(l) });
-                      return true;
-                    }
-                    catch (Exception paramMotionEvent)
-                    {
-                      bool1 = bool2;
-                    }
-                  } while (!QLog.isColorLevel());
-                  QLog.e(this.a.jdField_a_of_type_JavaLangString, 2, "onSingleTapConfirmed --> Exception = " + paramMotionEvent);
-                  return true;
-                  if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int != 2) {
-                    break;
-                  }
-                  bool1 = bool2;
-                } while (!this.a.jdField_a_of_type_Lyf.a());
-                this.a.a(0, this.a.q);
-                return true;
-                if (!bool3) {
-                  break;
-                }
-                bool1 = bool2;
-              } while (this.a.jdField_a_of_type_ArrayOfLtl == null);
-              bool1 = bool2;
-            } while (this.a.q <= 0);
-            bool1 = bool2;
-          } while (this.a.q >= this.a.jdField_a_of_type_ArrayOfLtl.length);
-          if (!this.a.jdField_a_of_type_Lyf.a()) {
-            break;
-          }
-          localObject = this.a.jdField_a_of_type_ArrayOfLtl[0];
-          paramMotionEvent = this.a.jdField_a_of_type_ArrayOfLtl[this.a.q];
-          bool1 = bool2;
-        } while (localObject == null);
-        bool1 = bool2;
-      } while (paramMotionEvent == null);
-      String str = ((ltl)localObject).b();
-      int i = Integer.valueOf(((ltl)localObject).h()).intValue();
-      Object localObject = paramMotionEvent.b();
-      int j = Integer.valueOf(paramMotionEvent.h()).intValue();
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(115), str, Integer.valueOf(i), localObject, Integer.valueOf(j) });
-      return true;
-      bool1 = bool2;
-    } while (this.a.jdField_a_of_type_Lyf.a() != 3);
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(110), Long.valueOf(l) });
-    return true;
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(110), Long.valueOf(l) });
-    return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("SwitchFaceYUVRender", 2, "WL_DEBUG onDrawFrame width = " + paramInt1 + ", height = " + paramInt2 + ", frameFormat = " + paramInt3 + ", data.length = " + paramArrayOfByte.length + ", inFrameAngle = " + paramInt4);
+      }
+      a(paramInt1, paramInt2);
+      a(paramInt3, paramArrayOfByte, paramInt4);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaNioByteBuffer != null)
+    {
+      this.jdField_a_of_type_JavaNioByteBuffer.clear();
+      this.jdField_a_of_type_JavaNioByteBuffer = null;
+    }
+    if (this.c != -1)
+    {
+      GLES20.glDeleteFramebuffers(0, new int[] { this.c }, 0);
+      this.c = -1;
+    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import java.util.List;
-import ogy;
+import osj;
 
 class ReadInJoyArticleDetailActivity$2
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyArticleDetailActivity$2
   
   public void run()
   {
-    ogy.a().a(this.a);
+    osj.a().a(this.a);
   }
 }
 

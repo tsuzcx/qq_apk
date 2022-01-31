@@ -1,18 +1,18 @@
 package cooperation.qlink;
 
-import bffc;
+import bgmt;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQProxyForQlink$1
   implements Runnable
 {
-  public QQProxyForQlink$1(bffc parambffc) {}
+  public QQProxyForQlink$1(bgmt parambgmt) {}
   
   public void run()
   {
     QLog.i("QQProxyForQlink", 1, "[QLINK]-QQ UI_LOG:QQProxyForQlink. onAppInit....");
-    bffc.a(this.this$0);
-    bffc.b(this.this$0);
+    bgmt.a(this.this$0);
+    bgmt.b(this.this$0);
   }
 }
 

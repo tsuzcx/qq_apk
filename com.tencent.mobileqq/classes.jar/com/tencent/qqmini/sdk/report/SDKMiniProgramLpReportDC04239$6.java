@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.report;
 
-import bdsx;
+import beyu;
 
 public final class SDKMiniProgramLpReportDC04239$6
   implements Runnable
 {
   public void run()
   {
-    bdsx.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
+    beyu.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
   }
 }
 

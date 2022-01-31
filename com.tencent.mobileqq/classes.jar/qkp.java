@@ -1,40 +1,25 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.view.View;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 class qkp
-  extends View
+  implements URLDrawable.URLDrawableListener
 {
-  private int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private int b;
-  private int c;
+  qkp(qko paramqko) {}
   
-  public qkp(qko paramqko, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  protected void onDraw(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    localPath.reset();
-    localPath.moveTo(this.c, 0.0F);
-    localPath.lineTo(0.0F, getHeight());
-    localPath.lineTo(getWidth(), getHeight());
-    localPath.close();
-    paramCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    setMeasuredDimension(this.jdField_a_of_type_Int, this.b);
+    if ((qko.a(this.a) != null) && (qko.a(this.a).getStatus() == 1) && ((qko.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    {
+      paramURLDrawable = (RegionDrawable)qko.a(this.a).getCurrDrawable();
+      qko.a(this.a, paramURLDrawable.getBitmap());
+    }
   }
 }
 

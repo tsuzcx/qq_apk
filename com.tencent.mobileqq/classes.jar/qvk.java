@@ -1,35 +1,75 @@
-import android.support.v7.widget.RecyclerView.RecycledViewPool;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
-import java.util.List;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
+import mqq.manager.Manager;
 
 public class qvk
-  extends RecyclerView.RecycledViewPool
+  implements Manager
 {
-  public qvk(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix) {}
+  public static int a;
+  public static int b;
+  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  HashMap<Long, Bundle> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean = true;
+  HashMap<Long, Bundle> b;
   
-  public RecyclerView.ViewHolder getRecycledView(int paramInt)
+  static
   {
-    Object localObject = this.a.getAdapter();
-    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
-    if ((localViewHolder != null) && ((localObject instanceof berm)))
-    {
-      localObject = (berm)localObject;
-      if (((berm)localObject).d(paramInt))
-      {
-        if (!RecyclerViewWithHeaderFooterFix.a(this.a).contains(localViewHolder.itemView))
-        {
-          putRecycledView(localViewHolder);
-          return null;
-        }
-      }
-      else if ((((berm)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooterFix.b(this.a).contains(localViewHolder.itemView)))
-      {
-        putRecycledView(localViewHolder);
-        return null;
-      }
+    jdField_b_of_type_Int = 1;
+  }
+  
+  public qvk(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private void a(int paramInt) {}
+  
+  public void a(TroopMemberApiService paramTroopMemberApiService)
+  {
+    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService == null) {
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
     }
-    return localViewHolder;
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return;
+    }
+    if ((TextUtils.isEmpty(paramString)) || (!vyi.b(paramString))) {}
+    for (;;)
+    {
+      qvl localqvl = new qvl(this);
+      aywa localaywa = new aywa();
+      localaywa.jdField_a_of_type_Auoo = new qvm(this);
+      ayvv localayvv = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+      localqvl.addFilter(new Class[] { ayos.class });
+      localayvv.a(localqvl);
+      localaywa.i = paramString;
+      localaywa.jdField_a_of_type_Boolean = true;
+      localaywa.jdField_b_of_type_Int = 24;
+      localaywa.jdField_c_of_type_Int = 54;
+      localaywa.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+      localaywa.jdField_c_of_type_JavaLangString = "0";
+      localaywa.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+      localayvv.a(localaywa);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localaywa.jdField_a_of_type_Long), paramBundle);
+      this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(localaywa.jdField_a_of_type_Long), paramBundle);
+      return;
+      a(jdField_a_of_type_Int);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService != null) {
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = null;
+    }
   }
 }
 

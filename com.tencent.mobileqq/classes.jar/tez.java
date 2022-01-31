@@ -1,40 +1,20 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-class tez
-  implements AdapterView.OnItemClickListener
+public abstract class tez
+  extends akup
 {
-  tez(tey paramtey) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public tez(String paramString)
   {
-    if (tey.a(this.a).a().isShowing()) {
-      tey.a(this.a).a().dismiss();
-    }
-    int i = ((baia)paramView.getTag()).a.c;
-    if ((i == 9) || (i == 10)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131655008;
-      }
-    }
-    for (;;)
+    super(0, true, false, 300000L, false, false, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      if (paramInt != -1)
-      {
-        vvp.a(1, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131655009;
-        }
-      }
-      else
-      {
-        this.a.a(i);
-        return;
-      }
-      paramInt = -1;
+      tev.a = new teu((int)(paramSosoLbsInfo.a.a * 1000000.0D), (int)(paramSosoLbsInfo.a.b * 1000000.0D));
+      veg.b("LbsManager", "onLocationFinish success : " + tev.a);
     }
   }
 }

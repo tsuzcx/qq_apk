@@ -3,8 +3,8 @@ package com.tencent.mobileqq.filemanager.activity;
 import android.view.animation.AlphaAnimation;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import apdf;
-import apdg;
+import apuz;
+import apva;
 import com.tencent.qphone.base.util.QLog;
 
 class FilePreviewActivity$14
@@ -14,20 +14,20 @@ class FilePreviewActivity$14
   
   public void run()
   {
-    if (this.this$0.jdField_c_of_type_Apdf == null) {
-      this.this$0.jdField_c_of_type_Apdf = new apdf(this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout);
+    if (this.this$0.jdField_c_of_type_Apuz == null) {
+      this.this$0.jdField_c_of_type_Apuz = new apuz(this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout);
     }
     this.this$0.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    this.this$0.jdField_c_of_type_AndroidWidgetTextView.setText(2131629115);
+    this.this$0.jdField_c_of_type_AndroidWidgetTextView.setText(2131694792);
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
     localAlphaAnimation.setFillAfter(true);
-    apdg localapdg = new apdg();
-    localapdg.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-    localapdg.jdField_a_of_type_Boolean = true;
-    localapdg.jdField_a_of_type_Int = apdf.jdField_a_of_type_Int;
-    localapdg.b = 1000;
-    this.this$0.jdField_c_of_type_Apdf.a(localapdg);
-    this.this$0.jdField_c_of_type_Apdf.a();
+    apva localapva = new apva();
+    localapva.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
+    localapva.jdField_a_of_type_Boolean = true;
+    localapva.jdField_a_of_type_Int = apuz.jdField_a_of_type_Int;
+    localapva.b = 1000;
+    this.this$0.jdField_c_of_type_Apuz.a(localapva);
+    this.this$0.jdField_c_of_type_Apuz.a();
     if (QLog.isColorLevel()) {
       QLog.i("<FileAssistant>FilePreviewActivity", 2, "showGetmore(1000)");
     }

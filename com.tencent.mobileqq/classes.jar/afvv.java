@@ -1,86 +1,99 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.widget.Scroller;
+import com.tencent.mobileqq.activity.fling.TopContentLayout;
+import com.tencent.mobileqq.activity.fling.TopContentLayout.OnOutScreenListener;
 
 public class afvv
-  extends baox
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public afvv(AvatarPendantActivity paramAvatarPendantActivity) {}
+  private float jdField_a_of_type_Float;
   
-  protected void handlePendantAuth(boolean paramBoolean, Object paramObject)
+  public afvv(TopContentLayout paramTopContentLayout, Context paramContext)
   {
-    paramObject = (Bundle)paramObject;
-    long l = paramObject.getLong("pendantId");
-    paramObject.getInt("seriesId");
-    Object localObject = paramObject.getString("uin");
-    int i = paramObject.getInt("result");
-    if ((l == -1L) || (localObject == null)) {}
-    do
+    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, 50.0F, paramContext.getResources().getDisplayMetrics());
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    int i;
+    int j;
+    if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
     {
-      return;
-      if (!paramBoolean) {
-        break label472;
+      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, false);
+      i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getWidth();
+      j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
+      if (paramFloat1 <= 0.0F) {
+        break label96;
       }
-      if (l != 0L) {
-        break;
-      }
-      this.a.b.setVisibility(4);
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      if (this.a.jdField_a_of_type_Balt != null) {
-        this.a.jdField_a_of_type_Balt.c = -1;
-      }
-      awqx.b(this.a.app, "CliOper", "", "", "0X8005FD4", "0X8005FD4", 0, 0, "", "", "", "");
-      if ((this.a.jdField_a_of_type_Ahyo != null) && (this.a.jdField_a_of_type_JavaUtilList != null))
+      i -= j;
+    }
+    for (;;)
+    {
+      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startScroll((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, i, 0, 350);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.invalidate();
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label96:
+      i = -j;
+    }
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    float f1;
+    if (!TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
+    {
+      f1 = Math.abs(paramFloat2 / paramFloat1);
+      float f2 = Math.abs(paramMotionEvent1.getX() - paramMotionEvent2.getX());
+      if ((paramFloat1 < 0.0F) && (f1 < 0.5F) && (f2 > this.jdField_a_of_type_Float))
       {
-        paramObject = ((AvatarPendantManager)this.a.app.getManager(46)).a();
-        this.a.jdField_a_of_type_Ahyo.a(paramObject, this.a.jdField_a_of_type_JavaUtilList);
+        TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, true);
+        if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) != null) {
+          TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startDrag();
+        }
+        return true;
       }
-    } while ((this.a.jdField_a_of_type_Bals == null) || (!this.a.jdField_a_of_type_Bals.jdField_a_of_type_Boolean));
-    localObject = bant.a("linkPendantSet");
-    paramObject = localObject;
-    if (localObject != null) {
-      paramObject = ((String)localObject).replace("[id]", String.valueOf(this.a.jdField_a_of_type_Bals.jdField_a_of_type_Int));
+      f1 = paramFloat1;
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, f1, paramFloat2);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("AvatarPendantActivity", 2, "handlePendantAuth, mPendantInfo.isLink == true, jump to url =" + paramObject);
+    int i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewWidth();
+    int j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
+    if ((paramFloat1 < 0.0F) && (j < i)) {
+      if (Math.abs(paramFloat1) > i - j) {
+        paramFloat1 = i - j;
+      }
     }
-    localObject = new Intent(this.a, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramObject);
-    ((Intent)localObject).putExtra("hide_more_button", true);
-    ((Intent)localObject).putExtra("webStyle", "noBottomBar");
-    this.a.startActivity((Intent)localObject);
-    awqx.b(this.a.app, "CliOper", "", "", "0X8006517", "0X8006517", 0, 0, "", "", "", "");
-    return;
-    this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131653528);
-    this.a.b.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    localObject = this.a.app;
-    if (this.a.d) {}
-    for (paramObject = "1";; paramObject = "0")
+    for (;;)
     {
-      awqx.b((QQAppInterface)localObject, "CliOper", "", "", "0X8005FD6", "0X8005FD6", 0, 0, paramObject, "", "", "");
-      if (!this.a.d) {
+      f1 = paramFloat1;
+      if (Math.abs(paramFloat1) <= 0.0F) {
         break;
       }
-      this.a.d = false;
+      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.movingViewTransBy((int)paramFloat1, 0.0F);
+      f1 = paramFloat1;
+      if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) == null) {
+        break;
+      }
+      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).outing((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout);
+      f1 = paramFloat1;
       break;
+      paramFloat1 = -paramFloat1;
+      continue;
+      if ((paramFloat1 > 0.0F) && (j > 0))
+      {
+        if (Math.abs(paramFloat1) > j) {
+          paramFloat1 = -j;
+        } else {
+          paramFloat1 = -paramFloat1;
+        }
+      }
+      else {
+        paramFloat1 = 0.0F;
+      }
     }
-    label472:
-    paramObject = (PendantTipsInfo)paramObject.getSerializable("tipsInfo");
-    if (paramObject != null)
-    {
-      this.a.a(paramObject, l, i);
-      return;
-    }
-    QLog.e("AvatarPendantActivity", 1, "handlePendantAuth, tipsInfo == null, pendantId = " + l);
   }
 }
 

@@ -1,15 +1,25 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.vip.KCWraperV2.1;
+import com.tencent.qphone.base.util.QLog;
+import dualsim.common.ILogPrint;
 
 public class bbwq
+  implements ILogPrint
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public bbwq(KCWraperV2.1 param1) {}
+  
+  public void print(String paramString)
+  {
+    String str2 = this.a.this$0.a();
+    String str1 = paramString;
+    if (paramString == null) {
+      str1 = "\n";
+    }
+    QLog.e(str2, 1, str1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbwq
  * JD-Core Version:    0.7.0.1
  */

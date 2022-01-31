@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.apollo;
 
-import aifg;
-import atmp;
+import airz;
+import aukn;
 import com.tencent.mobileqq.DrawerPushItem;
 import java.util.List;
 
 public class ApolloManager$16
   implements Runnable
 {
-  public ApolloManager$16(aifg paramaifg, DrawerPushItem paramDrawerPushItem) {}
+  public ApolloManager$16(airz paramairz, DrawerPushItem paramDrawerPushItem) {}
   
   public void run()
   {
     if (this.a == null) {
       return;
     }
-    synchronized (aifg.a(this.this$0))
+    synchronized (airz.a(this.this$0))
     {
-      if ((aifg.a(this.this$0) != null) && (this.a != null) && (aifg.a(this.this$0).contains(this.a))) {
-        aifg.a(this.this$0).remove(this.a);
+      if ((airz.a(this.this$0) != null) && (this.a != null) && (airz.a(this.this$0).contains(this.a))) {
+        airz.a(this.this$0).remove(this.a);
       }
-      if (aifg.a(this.this$0) != null)
+      if (airz.a(this.this$0) != null)
       {
-        aifg.a(this.this$0).b(this.a);
-        aifg.a(this.this$0).a();
+        airz.a(this.this$0).b(this.a);
+        airz.a(this.this$0).a();
       }
       return;
     }

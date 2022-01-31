@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.enterpriseqq;
 
-import annt;
-import annv;
+import aoee;
+import aoeg;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,33 +9,33 @@ import java.util.Iterator;
 public class EnterpriseQQManager$1
   implements Runnable
 {
-  public EnterpriseQQManager$1(annt paramannt) {}
+  public EnterpriseQQManager$1(aoee paramaoee) {}
   
   public void run()
   {
-    if ((annt.a(this.this$0) != null) && (annt.a(this.this$0) != null))
+    if ((aoee.a(this.this$0) != null) && (aoee.a(this.this$0) != null))
     {
       SosoInterface.a(this.this$0.a);
       return;
     }
-    synchronized (annt.a())
+    synchronized (aoee.a())
     {
-      if ((annt.a(this.this$0) == null) || (annt.a(this.this$0).size() <= 0)) {
+      if ((aoee.a(this.this$0) == null) || (aoee.a(this.this$0).size() <= 0)) {
         break label144;
       }
-      Iterator localIterator = annt.a(this.this$0).iterator();
+      Iterator localIterator = aoee.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        annv localannv = (annv)localIterator.next();
-        if (localannv != null) {
-          this.this$0.a(annt.a(this.this$0), annt.a(this.this$0), localannv.a, localannv.b, false, 0.0D, 0.0D);
+        aoeg localaoeg = (aoeg)localIterator.next();
+        if (localaoeg != null) {
+          this.this$0.a(aoee.a(this.this$0), aoee.a(this.this$0), localaoeg.a, localaoeg.b, false, 0.0D, 0.0D);
         }
       }
     }
-    annt.a(this.this$0).clear();
+    aoee.a(this.this$0).clear();
     label144:
-    annt.a(this.this$0, null);
-    annt.a(this.this$0, null);
+    aoee.a(this.this$0, null);
+    aoee.a(this.this$0, null);
   }
 }
 

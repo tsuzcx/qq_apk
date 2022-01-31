@@ -1,26 +1,16 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.43.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class aawx
-  implements ajga
+  extends abxr
 {
-  public aawx(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aawx(Conversation paramConversation) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  protected void a()
   {
-    if ((this.a.a == 1) || (this.a.a == 2))
-    {
-      if (paramBoolean) {
-        break label55;
-      }
-      FriendProfileMoreInfoActivity.a(this.a);
-      bbmy.a(this.a, 2131625456, 0).b(this.a.getTitleBarHeight());
-    }
-    label55:
-    while (paramInt != 2) {
-      return;
-    }
-    FriendProfileMoreInfoActivity.a(this.a);
-    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
+    ThreadManagerV2.getUIHandlerV2().post(new Conversation.43.1(this));
   }
 }
 

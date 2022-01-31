@@ -1,30 +1,40 @@
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.ocr.ui.SearchSougouResultItemBuilder.UrlDownloadListener.1;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+
 public class audf
+  implements URLDrawable.URLDrawableListener
 {
-  public int a;
-  public final int[] a;
+  audf(aude paramaude) {}
   
-  public audf()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ArrayOfInt = new int[6];
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public String toString()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
+    if ((this.a.a == null) || (paramURLDrawable == null) || (paramURLDrawable.getURL() == null)) {}
+    do
     {
-      localStringBuilder.append('#').append(i).append('_').append(this.jdField_a_of_type_ArrayOfInt[i]);
-      i += 1;
-    }
-    return localStringBuilder.toString();
+      return;
+      paramThrowable = this.a.a.findViewWithTag(paramURLDrawable.getURL().toString());
+      if ((paramThrowable != null) && ((paramThrowable instanceof ImageView))) {
+        paramThrowable.post(new SearchSougouResultItemBuilder.UrlDownloadListener.1(this, paramThrowable));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "UrlDownloadListener image fail," + paramURLDrawable.getURL());
   }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     audf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import amnh;
+import ando;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;

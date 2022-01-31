@@ -1,35 +1,10 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.widget.TextView;
 
-public class bbgt
-  implements TextWatcher
+class bbgt
 {
-  public bbgt(ClearableEditText paramClearableEditText) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramCharSequence = this.a.getText().toString();
-    if (this.a.isFocused())
-    {
-      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
-        this.a.setClearButtonVisible(false);
-      }
-    }
-    else {
-      return;
-    }
-    if ((ClearableEditText.a(this.a)) || (ClearableEditText.b(this.a)))
-    {
-      this.a.setClearButtonVisible(true);
-      return;
-    }
-    this.a.setClearButtonVisible(false);
-  }
+  private bbgt(bbgg parambbgg) {}
 }
 
 

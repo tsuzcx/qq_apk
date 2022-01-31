@@ -1,14 +1,39 @@
-public final class aevj
+import android.graphics.Bitmap;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
+
+public class aevj
+  extends NativeGifImage
 {
-  public static String a(int paramInt)
+  public aevj(File paramFile, boolean paramBoolean)
   {
-    if (paramInt == 0) {
-      return "1";
-    }
-    if (paramInt == 1) {
-      return "2";
-    }
-    return "";
+    super(paramFile, paramBoolean);
+  }
+  
+  public int a()
+  {
+    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
+  }
+  
+  public Bitmap a()
+  {
+    return this.mCurrentFrameBitmap;
+  }
+  
+  public void a()
+  {
+    getNextFrame();
+    applyNextFrame();
+  }
+  
+  public int b()
+  {
+    return this.mMetaData[FRAME_COUNT_INDEX];
+  }
+  
+  public int c()
+  {
+    return this.mCurrentFrameIndex;
   }
 }
 

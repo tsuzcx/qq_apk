@@ -1,15 +1,29 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class bilb
-  implements View.OnTouchListener
+  implements Animation.AnimationListener
 {
-  bilb(bila parambila) {}
+  bilb(biku parambiku, boolean paramBoolean, int paramInt, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return true;
+    biku.a(this.jdField_a_of_type_Biku, false);
+    biku.b(this.jdField_a_of_type_Biku).setVisibility(8);
+    biku.a(this.jdField_a_of_type_Biku).setVisibility(8);
+    if ((this.jdField_a_of_type_Boolean) && (!biku.a(this.jdField_a_of_type_Biku).get())) {
+      biku.a(this.jdField_a_of_type_Biku, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    biku.a(this.jdField_a_of_type_Biku, true);
   }
 }
 

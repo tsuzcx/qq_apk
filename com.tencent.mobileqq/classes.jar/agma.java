@@ -1,24 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-
-public class agma
-  implements View.OnClickListener
+final class agma
+  extends aglx
 {
-  public agma(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
-  
-  public void onClick(View paramView)
+  public boolean a(String paramString)
   {
-    TroopUnAccalimedRedPacketList.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
+    if (!super.a(paramString)) {}
+    do
+    {
+      return false;
+      paramString = agmo.a(paramString);
+    } while ((paramString != null) && ("image".equals(paramString[0])) && (agmo.a(paramString[1])));
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean d()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agma
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,54 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class amxg
 {
-  public static int a(AppInterface paramAppInterface, Context paramContext)
+  private String a = "";
+  private String b = "";
+  private String c = "";
+  private String d = "";
+  
+  public static amxg a(JSONObject paramJSONObject)
   {
-    int i = 0;
-    if ((paramAppInterface == null) || (paramContext == null)) {
-      QLog.e("TencentDocGuideHelper", 1, "getShownTimes sth is null");
+    if (paramJSONObject == null) {
+      return null;
     }
-    int j;
-    do
-    {
-      return i;
-      j = paramContext.getSharedPreferences("tencent_doc", 4).getInt("shown_" + paramAppInterface.getCurrentAccountUin(), 0);
-      i = j;
-    } while (!QLog.isColorLevel());
-    QLog.i("TencentDocGuideHelper", 2, "getShownTimes " + j);
-    return j;
+    amxg localamxg = new amxg();
+    localamxg.a = paramJSONObject.getString("tips");
+    localamxg.b = paramJSONObject.getString("buttonText");
+    localamxg.c = paramJSONObject.getString("url");
+    localamxg.d = paramJSONObject.getString("icon");
+    return localamxg;
   }
   
-  public static void a(AppInterface paramAppInterface, Context paramContext, int paramInt)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TencentDocGuideHelper", 2, "setShownTimes " + paramInt);
-    }
-    if ((paramAppInterface == null) || (paramContext == null))
-    {
-      QLog.e("TencentDocGuideHelper", 1, "setShownTimes sth is null");
-      return;
-    }
-    paramContext.getSharedPreferences("tencent_doc", 4).edit().putInt("shown_" + paramAppInterface.getCurrentAccountUin(), paramInt).commit();
+    return this.a;
+  }
+  
+  public boolean a()
+  {
+    return (TextUtils.isEmpty(this.a)) && (TextUtils.isEmpty(this.b)) && (TextUtils.isEmpty(this.c)) && (TextUtils.isEmpty(this.d));
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amxg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
-
 public abstract interface qtx
 {
-  public abstract void a(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, int paramInt);
-  
-  public abstract void a(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, boolean paramBoolean);
-  
-  public abstract void m();
+  public abstract void a(qty paramqty, qub paramqub, int paramInt1, int paramInt2, Object paramObject);
 }
 
 

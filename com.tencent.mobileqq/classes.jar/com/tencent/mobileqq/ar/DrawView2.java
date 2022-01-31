@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import aknz;
+import alcl;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -25,7 +25,7 @@ public class DrawView2
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   Handler jdField_a_of_type_AndroidOsHandler;
   HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  List<aknz> jdField_a_of_type_JavaUtilList;
+  List<alcl> jdField_a_of_type_JavaUtilList;
   private Paint b;
   
   static
@@ -52,7 +52,7 @@ public class DrawView2
   
   protected void onDraw(Canvas paramCanvas)
   {
-    aknz localaknz;
+    alcl localalcl;
     int i;
     label60:
     float f1;
@@ -62,17 +62,17 @@ public class DrawView2
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       if (localIterator.hasNext())
       {
-        localaknz = (aknz)localIterator.next();
+        localalcl = (alcl)localIterator.next();
         paramCanvas.save();
         i = 0;
         if (i < 90) {
           if (jdField_a_of_type_Float != 1.0F)
           {
-            f1 = localaknz.jdField_a_of_type_ArrayOfFloat[(i * 2)];
+            f1 = localalcl.jdField_a_of_type_ArrayOfFloat[(i * 2)];
             f2 = jdField_a_of_type_Int / 2;
             float f3 = c / 2 / (jdField_a_of_type_Int / 2 / jdField_a_of_type_Float);
             f2 = c / 2 + (f1 - f2) * f3;
-            f1 = localaknz.jdField_a_of_type_ArrayOfFloat[(i * 2 + 1)] * d / jdField_b_of_type_Int;
+            f1 = localalcl.jdField_a_of_type_ArrayOfFloat[(i * 2 + 1)] * d / jdField_b_of_type_Int;
           }
         }
       }
@@ -80,15 +80,15 @@ public class DrawView2
     for (;;)
     {
       paramCanvas.drawPoint(f2, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if ((!TextUtils.isEmpty(localaknz.jdField_a_of_type_JavaLangString)) && (i == 87)) {
-        paramCanvas.drawText(localaknz.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
+      if ((!TextUtils.isEmpty(localalcl.jdField_a_of_type_JavaLangString)) && (i == 87)) {
+        paramCanvas.drawText(localalcl.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
       }
       i += 1;
       break label60;
       if (jdField_b_of_type_Float != 1.0F)
       {
-        f2 = localaknz.jdField_a_of_type_ArrayOfFloat[(i * 2)] * c / jdField_a_of_type_Int;
-        f1 = (localaknz.jdField_a_of_type_ArrayOfFloat[(i * 2 + 1)] - jdField_b_of_type_Int / 2) * (d / 2 / (jdField_b_of_type_Int / 2 / jdField_b_of_type_Float)) + d / 2;
+        f2 = localalcl.jdField_a_of_type_ArrayOfFloat[(i * 2)] * c / jdField_a_of_type_Int;
+        f1 = (localalcl.jdField_a_of_type_ArrayOfFloat[(i * 2 + 1)] - jdField_b_of_type_Int / 2) * (d / 2 / (jdField_b_of_type_Int / 2 / jdField_b_of_type_Float)) + d / 2;
         continue;
         paramCanvas.restore();
         break;
@@ -99,7 +99,7 @@ public class DrawView2
     }
   }
   
-  public void setFaceData(List<aknz> paramList)
+  public void setFaceData(List<alcl> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     postInvalidate();

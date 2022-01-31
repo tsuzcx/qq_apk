@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.5;
+import com.tencent.mobileqq.activity.Leba.5.1;
 
 public class abkx
-  implements Comparator<ChatMessage>
+  implements bcak
 {
-  public abkx(QQLSActivity paramQQLSActivity) {}
+  public abkx(Leba.5.1 param1) {}
   
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  public void a(boolean paramBoolean)
   {
-    if (paramChatMessage1.time == paramChatMessage2.time) {
-      return 0;
+    if (paramBoolean) {
+      Leba.b(this.a.a.this$0).a();
     }
-    if (paramChatMessage1.time > paramChatMessage2.time) {
-      return 1;
-    }
-    return -1;
   }
 }
 

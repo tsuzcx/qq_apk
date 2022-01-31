@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aklt;
-import akmn;
+import alaf;
+import alaz;
 
 public class MultiFragmentAnimRenderable$4
   implements Runnable
@@ -9,8 +9,8 @@ public class MultiFragmentAnimRenderable$4
   public void run()
   {
     this.this$0.f();
-    if (akmn.a(this.this$0) != null) {
-      akmn.a(this.this$0).b(1, 0);
+    if (alaz.a(this.this$0) != null) {
+      alaz.a(this.this$0).b(1, 0);
     }
   }
 }

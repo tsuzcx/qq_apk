@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import acpd;
+import aczw;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class XBubbleAnimation$3
   implements Runnable
 {
-  public XBubbleAnimation$3(acpd paramacpd, Object[] paramArrayOfObject) {}
+  public XBubbleAnimation$3(aczw paramaczw, Object[] paramArrayOfObject) {}
   
   public void run()
   {

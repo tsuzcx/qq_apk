@@ -1,14 +1,20 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
 
 public class wqk
+  implements View.OnClickListener
 {
-  public int a;
-  public MetaMaterial a;
-  public String a;
+  public wqk(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.onBackEvent();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wqk
  * JD-Core Version:    0.7.0.1
  */

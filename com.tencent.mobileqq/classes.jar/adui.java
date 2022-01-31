@@ -1,11 +1,16 @@
-import android.widget.RelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class adui
-  extends acju
+  implements DialogInterface.OnClickListener
 {
-  public RelativeLayout a;
+  adui(adug paramadug, aduu paramaduu) {}
   
-  private adui(adug paramadug) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    aaod.a(this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adug.b, this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Aduu.jdField_a_of_type_Aobk.a, this.jdField_a_of_type_Aduu.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+  }
 }
 
 

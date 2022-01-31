@@ -1,17 +1,19 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class awrs
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
+  awrs(awrr paramawrr, awof paramawof) {}
   
-  awrs(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    this.jdField_a_of_type_Awof.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awrs
  * JD-Core Version:    0.7.0.1
  */

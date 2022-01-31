@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.util;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import mpl;
+import nam;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -32,7 +32,7 @@ public final class ProteusReportUtil$1
           try
           {
             Object localObject1;
-            mpl.a(BaseActivity.sTopActivity, (String)localObject1, "GET", null, null);
+            nam.a(BaseActivity.sTopActivity, (String)localObject1, "GET", null, null);
             i += 1;
             continue;
             localJSONException = localJSONException;

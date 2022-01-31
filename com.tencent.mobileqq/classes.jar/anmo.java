@@ -1,21 +1,25 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.dating.MsgBoxListActivity.6.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class anmo
-  implements View.OnClickListener
+  implements atig
 {
-  public anmo(AIOEmotionBaseFragment paramAIOEmotionBaseFragment) {}
+  public anmo(MsgBoxListActivity paramMsgBoxListActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.getActivity().finish();
+    if (QLog.isColorLevel()) {
+      QLog.i("MsgBoxListActivity", 2, "follow onReceive errorCode = [" + paramInt + "]");
+    }
+    this.a.b.post(new MsgBoxListActivity.6.1(this, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anmo
  * JD-Core Version:    0.7.0.1
  */

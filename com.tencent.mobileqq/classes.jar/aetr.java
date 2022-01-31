@@ -1,17 +1,17 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.widget.SwipListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class aetr
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  aetr(aetq paramaetq) {}
+  aetr(aetp paramaetp) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    this.a.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.a.a.setListViewHeightBasedOnChildren(this.a.a.a);
+    if (!this.a.N) {
+      bahx.a(this.a.jdField_a_of_type_AndroidContentContext, null, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    }
   }
 }
 

@@ -1,19 +1,12 @@
-public class baam
+import android.view.View;
+
+public abstract interface baam
 {
-  public int a;
-  public boolean a;
-  public int b;
-  
-  public baam(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract void a(View paramView, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baam
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class DateUtils
 {
@@ -21,15 +20,6 @@ public class DateUtils
     DEFAULT_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     SERVER_DATE_FORMAT = new SimpleDateFormat("yyyyMMddHHmm");
     EXIF_DATE_FORMAT = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
-  }
-  
-  public static String buildClockFormatString(long paramLong)
-  {
-    if (paramLong < 0L) {
-      return "0.0s";
-    }
-    double d = (float)paramLong / 1000.0F;
-    return String.format(Locale.US, "%.1fs", new Object[] { Double.valueOf(d) });
   }
   
   public static long calcTimeCost(long paramLong)
@@ -78,11 +68,6 @@ public class DateUtils
     }
   }
   
-  public static int getCurrentYear()
-  {
-    return Calendar.getInstance().get(1);
-  }
-  
   public static Date getDefaultDate(String paramString)
   {
     try
@@ -125,73 +110,6 @@ public class DateUtils
     {
       paramString = finally;
       throw paramString;
-    }
-  }
-  
-  public static boolean isDateExpired(long paramLong1, long paramLong2)
-  {
-    Date localDate1 = getServerDate(String.valueOf(paramLong1));
-    Date localDate2 = getServerDate(String.valueOf(paramLong2));
-    Date localDate3 = new Date();
-    return (localDate1 == null) || (localDate2 == null) || (!localDate3.after(localDate1)) || (!localDate3.before(localDate2));
-  }
-  
-  public static boolean isDateExpired(String paramString1, String paramString2)
-  {
-    paramString1 = getDefaultDate(paramString1);
-    paramString2 = getDefaultDate(paramString2);
-    Date localDate = new Date();
-    return (paramString1 == null) || (paramString2 == null) || (!localDate.after(paramString1)) || (!localDate.before(paramString2));
-  }
-  
-  public static boolean isDateOverOneDay(String paramString1, String paramString2)
-  {
-    boolean bool = false;
-    paramString1 = getServerDate(paramString1);
-    paramString2 = getServerDate(paramString2);
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTime(paramString1);
-    long l = localCalendar.getTimeInMillis();
-    localCalendar.setTime(paramString2);
-    if (localCalendar.getTimeInMillis() - l > 86400000L) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public static boolean isDuringHallow()
-  {
-    boolean bool2 = true;
-    Calendar localCalendar = Calendar.getInstance();
-    int i = localCalendar.get(1);
-    int j = localCalendar.get(2);
-    int k = localCalendar.get(5);
-    LogUtils.d(TAG, "[isDuringHallow] year = " + i);
-    LogUtils.d(TAG, "[isDuringHallow] month = " + j);
-    LogUtils.d(TAG, "[isDuringHallow] date = " + k);
-    boolean bool1;
-    if (i == 2018) {
-      if (9 == j)
-      {
-        bool1 = bool2;
-        if (k >= 26) {}
-      }
-      else
-      {
-        if ((10 != j) || (k > 1)) {
-          break label167;
-        }
-        bool1 = bool2;
-      }
-    }
-    for (;;)
-    {
-      LogUtils.d(TAG, "[isDuringHallow] hallow = " + bool1);
-      return bool1;
-      label167:
-      bool1 = false;
-      continue;
-      bool1 = false;
     }
   }
   

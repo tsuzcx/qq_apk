@@ -1,145 +1,48 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.mp.mobileqq_mp.JSApiWebServerResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Collection;
+import android.widget.BaseAdapter;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
-import mqq.observer.BusinessObserver;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
-class rsz
-  implements BusinessObserver
+public abstract class rsz
+  extends BaseAdapter
+  implements rtc
 {
-  rsz(rsv paramrsv, String paramString) {}
+  private int jdField_a_of_type_Int;
+  private HashMap<Object, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void a(Object paramObject)
   {
-    Object localObject1;
-    if (paramBoolean)
-    {
-      localObject1 = paramBundle.getByteArray("data");
-      if (localObject1 != null) {
-        paramBundle = new mobileqq_mp.JSApiWebServerResponse();
-      }
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    localHashMap.put(paramObject, Integer.valueOf(i));
+  }
+  
+  protected void a(List<?> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      a(paramList.next());
     }
-    for (;;)
-    {
-      try
-      {
-        paramBundle.mergeFrom((byte[])localObject1);
-        localObject1 = (mobileqq_mp.RetInfo)paramBundle.ret_info.get();
-        Object localObject2 = paramBundle.body.get();
-        int i = ((mobileqq_mp.RetInfo)localObject1).ret_code.get();
-        paramBundle = ((mobileqq_mp.RetInfo)localObject1).err_info.get();
-        localObject1 = new JSONObject();
-        paramInt = i;
-        if (i == 0)
-        {
-          localObject2 = new JSONObject((String)localObject2);
-          i = ((JSONObject)localObject2).optInt("ret");
-          paramBundle = ((JSONObject)localObject2).optString("msg");
-          this.jdField_a_of_type_Rsv.k = ((JSONObject)localObject2).optString("puin");
-          if (i == -1)
-          {
-            paramInt = ((JSONObject)localObject2).optInt("refuseSec");
-            if (paramInt > 0)
-            {
-              this.jdField_a_of_type_Rsv.jdField_a_of_type_Boolean = true;
-              this.jdField_a_of_type_Rsv.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, paramInt * 1000);
-            }
-          }
-          localObject2 = ((JSONObject)localObject2).optJSONArray("bitmap");
-          Object localObject3 = new ArrayList();
-          if (localObject2 != null)
-          {
-            paramInt = 0;
-            if (paramInt < ((JSONArray)localObject2).length())
-            {
-              ((ArrayList)localObject3).add(Integer.valueOf(((JSONArray)localObject2).getInt(paramInt)));
-              paramInt += 1;
-              continue;
-            }
-          }
-          localObject2 = new ArrayList();
-          localObject3 = ((ArrayList)localObject3).iterator();
-          if (((Iterator)localObject3).hasNext())
-          {
-            localObject4 = rsv.a(((Integer)((Iterator)localObject3).next()).intValue());
-            int j = localObject4.length;
-            paramInt = 0;
-            if (paramInt < j)
-            {
-              ((ArrayList)localObject2).add(Integer.valueOf(localObject4[paramInt]));
-              paramInt += 1;
-              continue;
-            }
-            continue;
-          }
-          localObject3 = new ArrayList();
-          Object localObject4 = (ArrayList)rsv.b.get(this.jdField_a_of_type_JavaLangString);
-          paramInt = 0;
-          if (paramInt < ((ArrayList)localObject2).size())
-          {
-            String str = (String)rsv.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-            if ((str != null) && (((Integer)((ArrayList)localObject2).get(paramInt)).intValue() == 1) && (rsv.a((ArrayList)localObject4, str))) {
-              ((ArrayList)localObject3).add(str);
-            }
-          }
-          else
-          {
-            rsv.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_JavaLangString, localObject3);
-            rsv.b.remove(this.jdField_a_of_type_JavaLangString);
-            localObject2 = new ArrayList();
-            if (localObject4 != null)
-            {
-              paramInt = 0;
-              if (paramInt < ((ArrayList)localObject4).size())
-              {
-                if (rsv.a((ArrayList)localObject3, (String)((ArrayList)localObject4).get(paramInt))) {
-                  break label583;
-                }
-                ((ArrayList)localObject2).add(Integer.valueOf(paramInt));
-                break label583;
-              }
-            }
-            ((JSONObject)localObject1).put("forbidden", new JSONArray((Collection)localObject2));
-            paramInt = i;
-          }
-        }
-        else
-        {
-          ((JSONObject)localObject1).put("msg", paramBundle);
-          ((JSONObject)localObject1).put("retCode", paramInt);
-          paramBundle = ((JSONObject)localObject1).toString();
-          if (this.jdField_a_of_type_Rsv.m != null) {
-            this.jdField_a_of_type_Rsv.callJs(this.jdField_a_of_type_Rsv.m, new String[] { paramBundle });
-          }
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-      catch (JSONException paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-      paramInt += 1;
-      continue;
-      label583:
-      paramInt += 1;
+  }
+  
+  protected void b(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.remove(paramObject);
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
+      return -1L;
     }
+    Object localObject = getItem(paramInt);
+    return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
+  }
+  
+  public final boolean hasStableIds()
+  {
+    return true;
   }
 }
 

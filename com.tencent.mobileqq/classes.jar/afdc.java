@@ -1,28 +1,17 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
-public class afdc
-  extends ajjh
+class afdc
+  implements View.OnClickListener
 {
-  public afdc(TroopView paramTroopView) {}
+  afdc(afda paramafda) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean1) {
-      this.a.j();
-    }
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    this.a.j();
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.j();
-    }
+    paramView = (RecommendTroopItem)paramView.getTag(-1);
+    bamn.a(afda.a(this.a), paramView, this.a.b(), this.a.c());
+    this.a.a(paramView);
   }
 }
 

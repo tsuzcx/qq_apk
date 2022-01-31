@@ -2,23 +2,23 @@ package com.tencent.biz.pubaccount.readinjoy;
 
 import android.view.View;
 import android.view.ViewGroup;
-import nia;
+import ntk;
 
 public class ReadInJoyChannelViewPagerController$5
   implements Runnable
 {
-  public ReadInJoyChannelViewPagerController$5(nia paramnia, float paramFloat, int paramInt, ViewGroup paramViewGroup, View paramView) {}
+  public ReadInJoyChannelViewPagerController$5(ntk paramntk, float paramFloat, int paramInt, ViewGroup paramViewGroup, View paramView) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Float >= nia.a(this.this$0))
+    if (this.jdField_a_of_type_Float >= ntk.a(this.this$0))
     {
-      nia.a(this.this$0, this.jdField_a_of_type_Int);
-      nia.a(this.this$0, this.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_AndroidViewView);
+      ntk.a(this.this$0, this.jdField_a_of_type_Int);
+      ntk.a(this.this$0, this.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_AndroidViewView);
       return;
     }
-    nia.a(this.this$0, this.jdField_a_of_type_Int - 1);
-    nia.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewViewGroup);
+    ntk.a(this.this$0, this.jdField_a_of_type_Int - 1);
+    ntk.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewViewGroup);
   }
 }
 

@@ -1,160 +1,153 @@
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.messagesearch.BaseMessageSearchDialog.1;
+import com.tencent.mobileqq.activity.messagesearch.BaseMessageSearchDialog.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharpP.SharpPUtils;
-import com.tencent.widget.AbsListView.LayoutParams;
-import com.tencent.widget.ListView;
-import cooperation.qzone.util.QZLog;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.util.ArrayList;
+import com.tencent.widget.BubblePopupWindow;
+import com.tencent.widget.XListView;
+import mqq.os.MqqHandler;
 
 public class agdk
-  extends BaseAdapter
+  extends Dialog
+  implements Handler.Callback
 {
-  private final String jdField_a_of_type_JavaLangString = "VerticalPictureAdapter";
+  protected int a;
+  ager jdField_a_of_type_Ager;
+  protected Context a;
+  EditText jdField_a_of_type_AndroidWidgetEditText;
+  bcpq jdField_a_of_type_Bcpq;
+  protected bfmt a;
+  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected MessageRecord a;
+  BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  public XListView a;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new BaseMessageSearchDialog.2(this);
+  boolean jdField_a_of_type_Boolean = false;
   
-  public agdk(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity, Context paramContext)
+  public agdk(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    a();
+    super(paramContext, 16973834);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_Bfmt = new bfmt(Looper.getMainLooper(), this);
+    requestWindowFeature(1);
+    getWindow().setSoftInputMode(2);
+    getWindow().setBackgroundDrawable(new ColorDrawable());
+    setContentView(2131559211);
+    paramContext = getWindow().getAttributes();
+    paramContext.x = 0;
+    paramContext.y = 0;
+    paramContext.width = -1;
+    paramContext.windowAnimations = 16973824;
+    paramContext.gravity = 51;
+    e();
   }
   
-  private void a()
+  private void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.a.setRecyclerListener(new agdl(this));
-  }
-  
-  private void a(agdm paramagdm, int paramInt)
-  {
-    agdj localagdj = (agdj)getItem(paramInt);
-    if (localagdj == null)
+    View localView;
+    if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration().orientation == 1))
     {
-      QZLog.e("VerticalPictureAdapter", "photoInfo == null");
-      return;
-    }
-    AbsListView.LayoutParams localLayoutParams2 = (AbsListView.LayoutParams)paramagdm.a.getLayoutParams();
-    AbsListView.LayoutParams localLayoutParams1 = localLayoutParams2;
-    if (localLayoutParams2 == null) {
-      localLayoutParams1 = new AbsListView.LayoutParams(-1, -2);
-    }
-    QZLog.d("VerticalPictureAdapter", 1, new Object[] { "photoInfo.heightWeightProportion:", Float.valueOf(localagdj.jdField_a_of_type_Float) });
-    if (localagdj.jdField_a_of_type_Float != 0.0F)
-    {
-      float f = bajq.a();
-      localLayoutParams1.height = ((int)(localagdj.jdField_a_of_type_Float * f));
-    }
-    paramagdm.a.setLayoutParams(localLayoutParams1);
-    paramagdm.a.setImageDrawable(null);
-  }
-  
-  private void b(agdm paramagdm, int paramInt)
-  {
-    Object localObject = (agdj)getItem(paramInt);
-    if ((localObject == null) || (TextUtils.isEmpty(((agdj)localObject).jdField_a_of_type_JavaLangString))) {
-      QZLog.e("VerticalPictureAdapter", "loadImageData: bigUrl is empty");
-    }
-    for (;;)
-    {
-      return;
-      File localFile = new File(((agdj)localObject).jdField_a_of_type_JavaLangString);
-      if (localFile.exists())
-      {
-        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = bajq.a();
-        float f = bajq.a();
-        localURLDrawableOptions.mRequestHeight = ((int)(((agdj)localObject).jdField_a_of_type_Float * f));
-        localURLDrawableOptions.mLoadingDrawable = axwd.a;
-        try
-        {
-          localObject = localFile.toURI().toURL();
-          if (localObject != null)
-          {
-            localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
-            if (localObject != null) {
-              switch (((URLDrawable)localObject).getStatus())
-              {
-              default: 
-                ((URLDrawable)localObject).startDownload();
-              }
-            }
-            if (localObject != null)
-            {
-              paramagdm.a.setImageDrawable((Drawable)localObject);
-              return;
-            }
-          }
-        }
-        catch (MalformedURLException localMalformedURLException)
-        {
-          for (;;)
-          {
-            localMalformedURLException.printStackTrace();
-            localURLDrawable = null;
-          }
-        }
+      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
+      localView = findViewById(2131369523);
+      if (bkur.b(localActivity)) {
+        localView.post(new BaseMessageSearchDialog.1(this, localView, localActivity));
       }
     }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = bajq.a();
-    localURLDrawableOptions.mRequestHeight = ((int)(bajq.a() * localURLDrawable.jdField_a_of_type_Float));
-    localURLDrawableOptions.mLoadingDrawable = axwd.a;
-    URLDrawable localURLDrawable = URLDrawable.getDrawable(SharpPUtils.getWebpUrl(localURLDrawable.jdField_a_of_type_JavaLangString), localURLDrawableOptions);
-    if (localURLDrawable == null) {
-      QLog.w("PEAK", 2, "drawable == null");
-    }
-    paramagdm.a.setImageDrawable(localURLDrawable);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b != null)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VerticalPictureAdapter", 2, "wywy getCount =" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.size());
-      }
-      return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.size();
+      return;
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b != null) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.size()) && (paramInt >= 0)) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.get(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseMessageSearchDialog", 2, "has no Notch, setPaddingTop 0");
     }
-    return null;
+    localView.setPadding(localView.getPaddingLeft(), 0, localView.getPaddingRight(), localView.getPaddingBottom());
+    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
   }
   
-  public long getItemId(int paramInt)
+  public int a()
   {
-    return paramInt;
+    return this.jdField_a_of_type_Int;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  protected void a() {}
+  
+  protected void a(int paramInt)
   {
-    agdm localagdm = new agdm(this, null);
-    if (paramView == null)
+    if (this.jdField_a_of_type_Bcpq == null) {
+      this.jdField_a_of_type_Bcpq = new bcpq(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865));
+    }
+    this.jdField_a_of_type_Bcpq.setCancelable(false);
+    this.jdField_a_of_type_Bcpq.setCanceledOnTouchOutside(false);
+    this.jdField_a_of_type_Bcpq.c(paramInt);
+    this.jdField_a_of_type_Bcpq.show();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  protected void b()
+  {
+    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing())) {
+      this.jdField_a_of_type_Bcpq.dismiss();
+    }
+  }
+  
+  protected void c()
+  {
+    if (getContext().getResources().getConfiguration().orientation == 2) {
+      this.jdField_a_of_type_Bfmt.sendEmptyMessageDelayed(1, 0L);
+    }
+  }
+  
+  protected void d()
+  {
+    if (isShowing())
     {
-      localagdm.a = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
-      localagdm.a.setTag(localagdm);
+      long l = SystemClock.uptimeMillis();
+      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 0, 0.0F, 0.0F, 0);
+      this.jdField_a_of_type_AndroidWidgetEditText.dispatchTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+      localMotionEvent = MotionEvent.obtain(l, l, 1, 0.0F, 0.0F, 0);
+      this.jdField_a_of_type_AndroidWidgetEditText.dispatchTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
     }
-    for (paramView = localagdm;; paramView = (agdm)paramView.getTag())
-    {
-      a(paramView, paramInt);
-      b(paramView, paramInt);
-      return paramView.a;
-    }
+  }
+  
+  public void dismiss()
+  {
+    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    super.dismiss();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    return false;
   }
 }
 

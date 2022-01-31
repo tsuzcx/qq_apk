@@ -1,8 +1,21 @@
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
 
-public abstract interface pyj
+public class pyj
+  implements Animation.AnimationListener
 {
-  public abstract void a(JSONObject paramJSONObject);
+  public pyj(ComponentSocialOperation paramComponentSocialOperation) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.startAnimation(this.a.c);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

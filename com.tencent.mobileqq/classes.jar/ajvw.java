@@ -1,20 +1,13 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.FaceDownloader;
 
 public class ajvw
-  extends MqqHandler
 {
-  public ajvw(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
+  public int a;
+  public int b = -2147483648;
   
-  public void handleMessage(Message paramMessage)
+  public ajvw(FaceDownloader paramFaceDownloader)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    NewFriendVerifyBlockedListFragment.a(this.a);
+    this.jdField_a_of_type_Int = -2147483648;
   }
 }
 

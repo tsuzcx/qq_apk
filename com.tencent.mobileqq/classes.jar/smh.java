@@ -1,36 +1,23 @@
-import android.text.TextUtils;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushPreloadModel;
 
-public class smh
+public final class smh
+  implements Parcelable.Creator<WSPushPreloadModel>
 {
-  public int a;
-  public final long a;
-  public final String a;
-  public final String b;
-  
-  public boolean equals(Object paramObject)
+  public WSPushPreloadModel a(Parcel paramParcel)
   {
-    if ((paramObject instanceof smh)) {
-      return TextUtils.equals(((smh)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-    }
-    return false;
+    return new WSPushPreloadModel(paramParcel);
   }
   
-  public String toString()
+  public WSPushPreloadModel[] a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_JavaLangString));
-    localStringBuilder.append("\n");
-    localStringBuilder.append("-t ");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append("  -dt ");
-    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_Long));
-    localStringBuilder.append("\n");
-    return localStringBuilder.toString();
+    return new WSPushPreloadModel[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     smh
  * JD-Core Version:    0.7.0.1
  */

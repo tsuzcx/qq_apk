@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ark.debug;
 
-import ajed;
-import ajjy;
-import akeu;
-import alck;
-import algi;
-import algj;
-import algk;
-import algn;
-import algq;
-import algr;
-import algs;
+import ajsf;
+import ajyc;
+import aktg;
+import alqy;
+import aluw;
+import alux;
+import aluy;
+import alvb;
+import alve;
+import alvf;
+import alvg;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import azzf;
-import bbmy;
+import bbaj;
+import bcpw;
 import com.tencent.ark.open.ArkAppConfigMgr;
 import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -47,7 +47,7 @@ public class ArkIDESettingFragment
   
   private void a(int paramInt)
   {
-    algs.a(paramInt, new algr(this));
+    alvg.a(paramInt, new alvf(this));
   }
   
   protected QQAppInterface a()
@@ -68,14 +68,14 @@ public class ArkIDESettingFragment
   
   void a()
   {
-    FormSwitchItem localFormSwitchItem1 = (FormSwitchItem)this.mContentView.findViewById(2131298108);
-    FormSwitchItem localFormSwitchItem2 = (FormSwitchItem)this.mContentView.findViewById(2131298110);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131303117));
-    View localView1 = this.mContentView.findViewById(2131297949);
-    View localView2 = this.mContentView.findViewById(2131297948);
-    View localView3 = this.mContentView.findViewById(2131298141);
+    FormSwitchItem localFormSwitchItem1 = (FormSwitchItem)this.mContentView.findViewById(2131363660);
+    FormSwitchItem localFormSwitchItem2 = (FormSwitchItem)this.mContentView.findViewById(2131363662);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131368757));
+    View localView1 = this.mContentView.findViewById(2131363496);
+    View localView2 = this.mContentView.findViewById(2131363495);
+    View localView3 = this.mContentView.findViewById(2131363694);
     localFormSwitchItem1.setChecked(true);
-    localFormSwitchItem1.setOnCheckedChangeListener(new algi(this));
+    localFormSwitchItem1.setOnCheckedChangeListener(new aluw(this));
     if ((!TextUtils.isEmpty(b())) && (b().equals("close")))
     {
       localFormSwitchItem2.setChecked(false);
@@ -83,10 +83,10 @@ public class ArkIDESettingFragment
     }
     for (;;)
     {
-      localFormSwitchItem2.setOnCheckedChangeListener(new algj(this));
-      localView1.setOnClickListener(new algk(this));
-      localView2.setOnClickListener(new algn(this));
-      localView3.setOnClickListener(new algq(this));
+      localFormSwitchItem2.setOnCheckedChangeListener(new alux(this));
+      localView1.setOnClickListener(new aluy(this));
+      localView2.setOnClickListener(new alvb(this));
+      localView3.setOnClickListener(new alve(this));
       return;
       localFormSwitchItem2.setChecked(true);
       b();
@@ -96,12 +96,12 @@ public class ArkIDESettingFragment
   
   public void a(String paramString)
   {
-    azzf.a(BaseApplication.getContext(), "ark_ide_state_" + a(), paramString);
+    bbaj.a(BaseApplication.getContext(), "ark_ide_state_" + a(), paramString);
   }
   
   public String b()
   {
-    return azzf.a(BaseApplication.getContext(), "ark_ide_state_" + a()).toString();
+    return bbaj.a(BaseApplication.getContext(), "ark_ide_state_" + a()).toString();
   }
   
   public void b()
@@ -114,20 +114,20 @@ public class ArkIDESettingFragment
       return;
     }
     localObject = ((QQAppInterface)localObject).a().a();
-    RecentUser localRecentUser = ((akeu)localObject).a(ajed.aK, 1031);
+    RecentUser localRecentUser = ((aktg)localObject).a(ajsf.aL, 1031);
     if (localRecentUser.lastmsgtime < l) {
       localRecentUser.lastmsgtime = l;
     }
     localRecentUser.showUpTime = (System.currentTimeMillis() / 1000L);
-    ((akeu)localObject).a(localRecentUser);
-    ((akeu)localObject).b(localRecentUser);
+    ((aktg)localObject).a(localRecentUser);
+    ((aktg)localObject).b(localRecentUser);
     a(1);
   }
   
   public void b(String paramString)
   {
     int i = this.mContentView.getHeight();
-    bbmy.a(BaseApplication.getContext(), paramString, 0).b(i - 20);
+    bcpw.a(BaseApplication.getContext(), paramString, 0).b(i - 20);
   }
   
   public void c()
@@ -140,12 +140,12 @@ public class ArkIDESettingFragment
       return;
     }
     localObject = ((QQAppInterface)localObject).a().a();
-    RecentUser localRecentUser = ((akeu)localObject).a(ajed.aK, 1031);
+    RecentUser localRecentUser = ((aktg)localObject).a(ajsf.aL, 1031);
     if (localRecentUser.lastmsgtime < l) {
       localRecentUser.lastmsgtime = l;
     }
-    ((akeu)localObject).b(localRecentUser);
-    ((akeu)localObject).c(localRecentUser);
+    ((aktg)localObject).b(localRecentUser);
+    ((aktg)localObject).c(localRecentUser);
   }
   
   public void d()
@@ -156,7 +156,7 @@ public class ArkIDESettingFragment
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    setTitle(ajjy.a(2131634905));
+    setTitle(ajyc.a(2131700689));
     a();
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
   }
@@ -183,13 +183,13 @@ public class ArkIDESettingFragment
   
   public int getContentLayoutId()
   {
-    return 2131495077;
+    return 2131560652;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    algs.a(1, null);
+    alvg.a(1, null);
   }
 }
 

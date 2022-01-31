@@ -1,31 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import abai;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import atxb;
+import axqw;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 
-public class Leba$25
+class Leba$25
   implements Runnable
 {
-  public Leba$25(abai paramabai, String paramString, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
+  Leba$25(Leba paramLeba) {}
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("web_process_preload_file", 4);
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    int i = localSharedPreferences.getInt("key_web_plugin_click_num" + this.jdField_a_of_type_JavaLangString + this.this$0.a.getCurrentAccountUin(), 0);
-    localEditor.putInt("key_web_plugin_click_num" + this.jdField_a_of_type_JavaLangString + this.this$0.a.getCurrentAccountUin(), i + 1);
-    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() != 0)
-    {
-      i = localSharedPreferences.getInt("key_web_plugin_click_red_num" + this.jdField_a_of_type_JavaLangString + this.this$0.a.getCurrentAccountUin(), 0);
-      localEditor.putInt("key_web_plugin_click_red_num" + this.jdField_a_of_type_JavaLangString + this.this$0.a.getCurrentAccountUin(), i + 1);
+    atxb localatxb = (atxb)this.this$0.a.getManager(160);
+    if (localatxb.a(localatxb.a(10013))) {
+      localatxb.a(10013);
     }
-    localEditor.putLong("key_come_webview_time" + this.this$0.a.getCurrentAccountUin(), System.currentTimeMillis());
-    localEditor.commit();
+    axqw.b(this.this$0.a, "dc00898", "", "", "0X8008823", "0X8008823", 0, 0, "", "", "", "");
   }
 }
 

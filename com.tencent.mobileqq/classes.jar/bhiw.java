@@ -1,12 +1,15 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import cooperation.qzone.plugin.PluginRecord;
 
-public abstract interface bhiw
+class bhiw
 {
-  public abstract void a(MusicItemInfo paramMusicItemInfo);
+  private int jdField_a_of_type_Int;
+  private bhix jdField_a_of_type_Bhix;
+  private PluginRecord jdField_a_of_type_CooperationQzonePluginPluginRecord;
+  private String jdField_a_of_type_JavaLangString;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhiw
  * JD-Core Version:    0.7.0.1
  */

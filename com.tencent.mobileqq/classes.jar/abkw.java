@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.Leba.37;
 
 public class abkw
-  implements Comparator<ChatMessage>
+  implements DialogInterface.OnClickListener
 {
-  public abkw(QQLSActivity paramQQLSActivity) {}
+  public abkw(Leba.37 param37) {}
   
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramChatMessage1.shmsgseq == paramChatMessage2.shmsgseq) {
-      return 0;
-    }
-    if (paramChatMessage1.shmsgseq > paramChatMessage2.shmsgseq) {
-      return 1;
-    }
-    return -1;
+    this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.b, true).apply();
+    this.a.jdField_a_of_type_Abky.a();
   }
 }
 

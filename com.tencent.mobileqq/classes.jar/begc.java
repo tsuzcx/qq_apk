@@ -1,44 +1,12 @@
-import android.content.Context;
-import android.view.KeyEvent;
-import android.view.inputmethod.InputConnection;
-import android.view.inputmethod.InputConnectionWrapper;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.widget.AbsListView;
-
-public class begc
-  extends InputConnectionWrapper
+public abstract interface begc
 {
-  public begc(AbsListView paramAbsListView, InputConnection paramInputConnection, boolean paramBoolean)
-  {
-    super(paramInputConnection, paramBoolean);
-  }
+  public abstract void a(int paramInt, String paramString);
   
-  public boolean performEditorAction(int paramInt)
-  {
-    if (paramInt == 6)
-    {
-      InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getContext().getSystemService("input_method");
-      if (localInputMethodManager != null) {
-        localInputMethodManager.hideSoftInputFromWindow(this.a.getWindowToken(), 0);
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean reportFullscreenMode(boolean paramBoolean)
-  {
-    return AbsListView.access$3400(this.a).reportFullscreenMode(paramBoolean);
-  }
-  
-  public boolean sendKeyEvent(KeyEvent paramKeyEvent)
-  {
-    return AbsListView.access$3400(this.a).sendKeyEvent(paramKeyEvent);
-  }
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     begc
  * JD-Core Version:    0.7.0.1
  */

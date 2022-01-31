@@ -1,31 +1,48 @@
 package com.tencent.mobileqq.activity;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bbcj;
+import bcfj;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.widget.WebViewProgressBar;
 
 public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
   extends WebViewFragment
 {
+  public int a(Bundle paramBundle)
+  {
+    int i = super.a(paramBundle);
+    if ((getActivity() == null) || (getActivity().getIntent() == null)) {}
+    while (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("key_dialog_type", -1) == -1) {
+      return i;
+    }
+    getActivity().getWindow().setFlags(1024, 1024);
+    this.jdField_a_of_type_Bcfj.a.setVisibility(8);
+    this.jdField_a_of_type_Bcfm.a = true;
+    D();
+    g(false);
+    return i;
+  }
+  
   @TargetApi(11)
   public int d(Bundle paramBundle)
   {
     int i = super.d(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131101491);
-    if ((this.jdField_a_of_type_Bbcj.c instanceof RefreshView)) {
-      ((RefreshView)this.jdField_a_of_type_Bbcj.c).a(false);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131167087);
+    if ((this.jdField_a_of_type_Bcfj.c instanceof RefreshView)) {
+      ((RefreshView)this.jdField_a_of_type_Bcfj.c).a(false);
     }
-    if (this.jdField_a_of_type_Bbcj.b != null) {
-      this.jdField_a_of_type_Bbcj.b.setVisibility(8);
+    if (this.jdField_a_of_type_Bcfj.b != null) {
+      this.jdField_a_of_type_Bcfj.b.setVisibility(8);
     }
     if (this.jdField_a_of_type_ComTencentBizUiTouchWebView.getX5WebViewExtension() != null) {}
     for (;;)

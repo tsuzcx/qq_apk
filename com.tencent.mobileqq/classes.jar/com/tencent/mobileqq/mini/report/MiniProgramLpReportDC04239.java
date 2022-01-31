@@ -28,6 +28,9 @@ public class MiniProgramLpReportDC04239
   public static final String DROP_DOWN_SUB_ACTION_CONTACT = "contact";
   public static final String DROP_DOWN_SUB_ACTION_MESSAGE = "message";
   public static final String DROP_DOWN_SUB_ACTION_MORE = "more";
+  public static final String DROP_DOWN_SUB_ACTION_NOTIFICATION = "notification";
+  public static final String DROP_DOWN_SUB_ACTION_PULLDOWN = "pulldown";
+  public static final String DROP_DOWN_SUB_ACTION_REFRESH = "refresh";
   public static final String GAME_INNER_ACTION = "game_inner";
   public static final String INNER_SUB_ACTION_LOGIN = "login";
   public static final String INNER_SUB_ACTION_REGISTER = "regist";
@@ -173,10 +176,10 @@ public class MiniProgramLpReportDC04239
   
   private static void report(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    report(paramMiniAppConfig, paramString1, paramString2, paramString3, paramString4, paramString5, "");
+    report(paramMiniAppConfig, paramString1, paramString2, paramString3, paramString4, paramString5, "", null, null, null);
   }
   
-  private static void report(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  public static void report(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
   {
     if (isLifeCycle(paramString4))
     {
@@ -185,12 +188,12 @@ public class MiniProgramLpReportDC04239
         MiniProgramReporter.getInstance().flush();
       }
       if (!"show".equals(paramString4)) {
-        break label208;
+        break label211;
       }
       showMiniAppConfig = paramMiniAppConfig;
       sendRecordDurationMsg();
     }
-    label208:
+    label211:
     while ((!"unload".equals(paramString4)) && (!"hide".equals(paramString4)) && (!"close".equals(paramString4)))
     {
       return;
@@ -200,7 +203,7 @@ public class MiniProgramLpReportDC04239
       if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null)) {}
       for (paramString2 = String.valueOf(paramMiniAppConfig.launchParam.scene);; paramString2 = null)
       {
-        localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppConfig, str, paramString2, paramString3, paramString4, paramString5, paramString6, null, null, null, paramString1, null));
+        localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppConfig, str, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString1, null));
         localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
         paramString1 = MiniProgramReportHelper.newSingleReportData(2, localArrayList, null);
         MiniProgramReporter.getInstance().addData(paramString1);

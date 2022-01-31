@@ -1,24 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.VideoInfo;
-import java.util.List;
 
 class qmb
-  extends pxo<VideoInfo>
+  implements View.OnClickListener
 {
-  qmb(qma paramqma) {}
+  qmb(qly paramqly, VideoInfo paramVideoInfo) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return 1;
-  }
-  
-  protected List<VideoInfo> a()
-  {
-    return qma.a(this.a);
-  }
-  
-  protected qig a(VideoInfo paramVideoInfo)
-  {
-    return new qig(paramVideoInfo.jdField_a_of_type_JavaLangString, paramVideoInfo.g, paramVideoInfo.jdField_a_of_type_Int, paramVideoInfo.d);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.c)
+    {
+      paramView = oay.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+      oau.a(paramView, 2005, qls.a(this.jdField_a_of_type_Qly.a));
+      qls.a(this.jdField_a_of_type_Qly.a, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, paramView, 2005);
+    }
   }
 }
 

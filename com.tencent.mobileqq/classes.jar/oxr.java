@@ -1,12 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class oxr
-  implements DialogInterface.OnDismissListener
+public class oxr
+  implements oxo
 {
-  oxr(oxq paramoxq) {}
+  private static oxr a = new oxr();
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public static oxr a()
+  {
+    return a;
+  }
+  
+  public void a(String paramString, oxp paramoxp)
+  {
+    onx.a().a(paramString, "PubAccountArticleCenter.GetUrlByVid", new oxs(this, paramoxp));
+  }
 }
 
 

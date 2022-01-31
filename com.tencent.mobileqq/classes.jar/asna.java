@@ -1,72 +1,42 @@
-import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.MagazinePlayerView.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
 
 public class asna
-  extends asoi
+  implements DialogInterface.OnClickListener
 {
-  public askc a;
-  public VideoData a;
-  private String b = "MagazinePlayerView";
-  private long d;
+  public asna(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
   
-  public asna(Context paramContext, askc paramaskc, QQAppInterface paramQQAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramContext, paramQQAppInterface);
-    this.jdField_a_of_type_Askc = paramaskc;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null)
+    asog.a("MsgBackup_MsgBackupPcBaseFragment", "showDisConnDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)), Boolean.valueOf(this.a.e) });
+    asle.a().a().c();
+    asle.a().d();
+    if (this.a.jdField_a_of_type_Boolean) {
+      if ((!this.a.e) && (this.a.b == 1)) {
+        this.a.a(this.a.getActivity());
+      }
+    }
+    do
     {
-      QLog.w(this.b, 2, "pasue mShortVideoInfo is null!!");
       return;
-    }
-    super.a();
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout, VideoData paramVideoData, asnb paramasnb)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(this.b, 2, "play() called with: rootView = [" + paramRelativeLayout + "], videoData = [" + paramVideoData + "]");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
-    this.jdField_a_of_type_Asnb = paramasnb;
-    if (paramVideoData.a == 1)
-    {
-      a(paramRelativeLayout);
-      this.d = 0L;
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      d();
-      asmq.a().a(this.jdField_a_of_type_AndroidWidgetImageView, paramVideoData.c, new ColorDrawable(0), new ColorDrawable(0), null);
-      this.jdField_a_of_type_AndroidOsHandler.post(new MagazinePlayerView.1(this));
+      this.a.m();
       return;
-    }
-    super.a(paramRelativeLayout, paramVideoData, paramasnb);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a == 1) {
-      return;
-    }
-    if (this.jdField_a_of_type_Askc != null) {
-      this.jdField_a_of_type_Askc.a();
-    }
-    super.b();
+      if (!this.a.e) {
+        break;
+      }
+    } while (this.a.getActivity() == null);
+    this.a.getActivity().setResult(1001);
+    this.a.getActivity().finish();
+    return;
+    this.a.a(this.a.getActivity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asna
  * JD-Core Version:    0.7.0.1
  */

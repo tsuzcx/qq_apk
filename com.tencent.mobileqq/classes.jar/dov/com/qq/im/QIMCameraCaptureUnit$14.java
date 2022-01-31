@@ -1,26 +1,26 @@
 package dov.com.qq.im;
 
-import bhdi;
-import bhzc;
-import bjeh;
+import bify;
+import bjqu;
+import bkur;
 
 public class QIMCameraCaptureUnit$14
   implements Runnable
 {
-  public QIMCameraCaptureUnit$14(bhdi parambhdi) {}
+  public QIMCameraCaptureUnit$14(bify parambify) {}
   
   public void run()
   {
-    bjeh.a();
-    bjeh.a(this.this$0.a.a());
-    if (bjeh.c()) {
-      bjeh.b(this.this$0.a.a());
+    bkur.a();
+    bkur.a(this.this$0.a.a());
+    if (bkur.c()) {
+      bkur.b(this.this$0.a.a());
     }
     for (;;)
     {
-      this.this$0.V();
+      this.this$0.T();
       return;
-      bjeh.c(this.this$0.a.a());
+      bkur.c(this.this$0.a.a());
     }
   }
 }

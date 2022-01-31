@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class ahrl
-  implements aagm
+  implements Animator.AnimatorListener
 {
-  public ahrl(SelectMemberActivity paramSelectMemberActivity) {}
+  public ahrl(LoginView paramLoginView) {}
   
-  public void a() {}
-  
-  public void b() {}
-  
-  public void c()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.e = 2;
-    this.a.finish();
+    LoginView.b(this.a, false);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    LoginView.a(this.a, LoginView.b(this.a), LoginView.d(this.a), LoginView.f(this.a), LoginView.h(this.a), 1.0F);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+    LoginView.b(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,52 +1,11 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import java.io.File;
-import java.io.OutputStream;
-
-public class adab
-  extends axoa
+class adab
+  implements aycf
 {
-  public static final String a(int paramInt)
-  {
-    return aiys.d + paramInt + "/panelGif.gif";
-  }
+  adab(adaa paramadaa) {}
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void a(ayck paramayck)
   {
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadStarted();
-    }
-    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof Integer)))
-    {
-      paramDownloadParams = (Integer)paramDownloadParams.tag;
-      paramOutputStream = new File(a(paramDownloadParams.intValue()));
-      if (paramOutputStream.exists())
-      {
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
-        }
-        return paramOutputStream;
-      }
-      paramOutputStream.getParentFile().mkdirs();
-      if ((BaseApplicationImpl.sApplication != null) && (!badq.g(BaseApplicationImpl.sApplication)) && (paramURLDrawableHandler != null)) {
-        paramURLDrawableHandler.onFileDownloadFailed(0);
-      }
-      paramDownloadParams = new batm("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_" + paramDownloadParams + "/preview.gif", paramOutputStream);
-      paramDownloadParams.b = 1;
-      paramDownloadParams.p = false;
-      if (bato.a(paramDownloadParams, null) == 0)
-      {
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
-        }
-        return paramOutputStream;
-      }
-    }
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadFailed(0);
-    }
-    return null;
+    this.a.b();
   }
 }
 

@@ -1,15 +1,12 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
-
-public abstract interface uyr
+public class uyr
+  extends ssk
 {
-  public abstract void a();
+  public int a;
   
-  public abstract boolean a();
-  
-  public abstract void b(Canvas paramCanvas);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public uyr(int paramInt)
+  {
+    this.a = paramInt;
+  }
 }
 
 

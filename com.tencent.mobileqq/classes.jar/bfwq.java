@@ -1,23 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiFeedCommInfo;
+import android.view.KeyEvent;
 
-public final class bfwq
-  implements Parcelable.Creator<WeishiFeedCommInfo>
+public abstract interface bfwq
 {
-  public WeishiFeedCommInfo a(Parcel paramParcel)
-  {
-    return new WeishiFeedCommInfo(paramParcel);
-  }
-  
-  public WeishiFeedCommInfo[] a(int paramInt)
-  {
-    return new WeishiFeedCommInfo[paramInt];
-  }
+  public abstract boolean a(KeyEvent paramKeyEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfwq
  * JD-Core Version:    0.7.0.1
  */

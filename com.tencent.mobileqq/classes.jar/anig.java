@@ -1,15 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Comic;
+import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
+import java.util.ArrayList;
+import java.util.List;
 
-public class anig
-  implements DialogInterface.OnClickListener
+public final class anig
+  implements Parcelable.Creator
 {
-  public anig(EmoticonMainPanel paramEmoticonMainPanel) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public IPSiteModel.Comic a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
+    IPSiteModel.Comic localComic = new IPSiteModel.Comic();
+    localComic.comicType = paramParcel.readInt();
+    localComic.cover = paramParcel.readString();
+    localComic.desc = paramParcel.readString();
+    localComic.id = paramParcel.readString();
+    localComic.jumpUrl = paramParcel.readString();
+    localComic.name = paramParcel.readString();
+    localComic.recommDesc = paramParcel.readString();
+    localComic.typeName = paramParcel.readString();
+    if (localComic.comicRiches == null) {
+      localComic.comicRiches = new ArrayList();
+    }
+    localComic.comicRiches.clear();
+    paramParcel.readList(localComic.comicRiches, IPSiteModel.ComicRich.class.getClassLoader());
+    return localComic;
+  }
+  
+  public IPSiteModel.Comic[] a(int paramInt)
+  {
+    return new IPSiteModel.Comic[paramInt];
   }
 }
 

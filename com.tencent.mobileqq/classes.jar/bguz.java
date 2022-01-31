@@ -1,38 +1,51 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import org.json.JSONObject;
 
 class bguz
-  implements INetInfoHandler
+  extends bgur
 {
-  bguz(bguw parambguw) {}
+  bguz(bguy parambguy) {}
   
-  public void onNetMobile2None()
+  public void b(@NonNull bgus parambgus)
   {
-    this.a.a(false, false);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    this.a.a(true, true);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    this.a.a(false, true);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    this.a.a(true, true);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    this.a.a(false, true);
-  }
-  
-  public void onNetWifi2None()
-  {
-    this.a.a(false, false);
+    int i = 1;
+    for (;;)
+    {
+      try
+      {
+        parambgus = parambgus.a();
+        bgvo.c("ReaderShadowGrayManager", "onReceiveDataOnSubThread: jsonResult:" + parambgus);
+        if (parambgus == null) {
+          break;
+        }
+        if (parambgus.length() == 0) {
+          return;
+        }
+        if ((parambgus.getInt("ret") == 0) && (parambgus.getJSONObject("data").getBoolean("isGrayUser")))
+        {
+          bool = true;
+          bguy.a(true);
+          parambgus = bguy.a().edit();
+          if (!bool) {
+            break label140;
+          }
+          parambgus.putInt("KEY_SHADOW_GRAY", i).apply();
+          bgvo.c("ReaderShadowGrayManager", "onReceiveDataOnSubThread: result=" + bool);
+          return;
+        }
+      }
+      catch (Exception parambgus)
+      {
+        bgvo.a("ReaderShadowGrayManager", "onReceiveDataOnSubThread: Exception happened ---> ", parambgus);
+        return;
+      }
+      boolean bool = false;
+      continue;
+      label140:
+      i = 0;
+    }
   }
 }
 

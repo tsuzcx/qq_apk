@@ -1,45 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
-public class wfa
-  implements SeekBar.OnSeekBarChangeListener
+class wfa
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public wfa(VideoPlayerView paramVideoPlayerView) {}
+  wfa(wez paramwez, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    localMessage.arg1 = paramSeekBar.getProgress();
-    localMessage.arg2 = ((int)this.a.a().b());
-    localMessage.obj = Boolean.valueOf(false);
-    this.a.a().sendMessage(localMessage);
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    VideoPlayerView.a(this.a, true);
-    VideoPlayerView.b(this.a, true);
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (this.a.a() != null)
-    {
-      QLog.d("VideoPlayerView", 1, "seek onStopTrackingTouch seekBar progress" + paramSeekBar.getProgress());
-      this.a.a((int)(paramSeekBar.getProgress() / (this.a.a.getMax() * 1.0F) * (float)this.a.a().b()));
-    }
-    VideoPlayerView.a(this.a, false);
-    VideoPlayerView.b(this.a, false);
+    paramValueAnimator = (wfc)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setRevealClip(paramValueAnimator.a, paramValueAnimator.b, paramValueAnimator.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wfa
  * JD-Core Version:    0.7.0.1
  */

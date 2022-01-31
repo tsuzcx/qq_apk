@@ -518,6 +518,9 @@ public class FaceGestureDetGLThread
     this.inputHeight = localFrame.height;
     j = (int)(localFrame.width * paramDouble);
     k = (int)(localFrame.height * paramDouble);
+    if (localFrame.height > 2560) {
+      LogUtils.d("GetHistogram", "faceDetectFrame [" + localFrame.width + "x" + localFrame.height + "] faceDetectScale = " + paramDouble);
+    }
     paramFrame.mTexFrame = localFrame;
     arrayOfByte = RetrieveDataManager.getInstance().retrieveData(RetrieveDataManager.DATA_TYPE.RGBA.value, localFrame.getTextureId(), j, k);
     try
@@ -588,7 +591,7 @@ public class FaceGestureDetGLThread
       localCountDownLatch2 = new CountDownLatch(1);
       i = 0;
       if (this.mLastBrightnessTime > 0L) {
-        break label648;
+        break label713;
       }
       this.mLastBrightnessTime = (l2 - 2000L + 2000L);
       if (i == 0) {

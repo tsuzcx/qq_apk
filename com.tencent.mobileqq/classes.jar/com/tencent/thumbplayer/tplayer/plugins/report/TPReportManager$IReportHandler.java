@@ -1,0 +1,14 @@
+package com.tencent.thumbplayer.tplayer.plugins.report;
+
+import android.support.annotation.NonNull;
+
+abstract interface TPReportManager$IReportHandler
+{
+  public abstract void handleReportEvent(int paramInt, @NonNull ITPReportProperties paramITPReportProperties);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+ * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportManager.IReportHandler
+ * JD-Core Version:    0.7.0.1
+ */

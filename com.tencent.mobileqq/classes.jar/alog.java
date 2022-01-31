@@ -1,49 +1,43 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.5;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.wadl.ipc.WadlParams;
 
 public class alog
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  private QQAnimationDrawable b;
+  public alog(ArkAppDownloadModule.5 param5) {}
   
-  public alog(QQAnimationDrawable paramQQAnimationDrawable1, QQAnimationDrawable paramQQAnimationDrawable2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.b = paramQQAnimationDrawable2;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("InternalHandler handleMessage msg.what:").append(paramMessage.what).append(" main:");
-    if (Looper.myLooper() == Looper.getMainLooper()) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool = false;
+    alob.a(this.a.this$0, true);
+    biby.a().a(this.a.jdField_a_of_type_CooperationWadlIpcWadlParams);
+    axqw.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "7", "", this.a.jdField_a_of_type_CooperationWadlIpcWadlParams.a, "");
+    if ((paramDialogInterface instanceof bbgg))
     {
-      QLog.d("QQAnimationDrawable", 2, bool);
-      if (!(paramMessage.obj instanceof Long)) {
-        break label170;
+      if (!((bbgg)paramDialogInterface).getCheckBoxState()) {
+        bool = true;
       }
-      QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj + " android.os.SystemClock.uptimeMillis():" + SystemClock.uptimeMillis());
-      paramMessage = (Long)paramMessage.obj;
-      if (paramMessage.longValue() >= SystemClock.uptimeMillis()) {
-        break;
-      }
-      QLog.d("QQAnimationDrawable", 2, "time < android.os.SystemClock.uptimeMillis()");
-      this.a.scheduleSelf(this.b, SystemClock.uptimeMillis());
+      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences == null) {}
+    }
+    try
+    {
+      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.b, bool).apply();
       return;
     }
-    QLog.d("QQAnimationDrawable", 2, "time > android.os.SystemClock.uptimeMillis()");
-    this.a.scheduleSelf(this.b, paramMessage.longValue());
-    return;
-    label170:
-    QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj);
+    catch (Exception paramDialogInterface)
+    {
+      QLog.e("ark.download.module", 1, "start download sp error : ", paramDialogInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alog
  * JD-Core Version:    0.7.0.1
  */

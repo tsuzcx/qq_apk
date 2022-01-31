@@ -1,21 +1,22 @@
 import android.view.View;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import java.util.List;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
-public class azfl
-  implements begw
+class azfl
+  implements bfoq
 {
-  public azfl(BulkSendMessageFragment paramBulkSendMessageFragment, begr parambegr) {}
+  azfl(azfk paramazfk, bfol parambfol) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (paramInt < this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaUtilList.size())
+    switch (paramInt)
     {
-      paramView = (String)this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaUtilList.get(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramView);
     }
-    this.jdField_a_of_type_Begr.dismiss();
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      this.jdField_a_of_type_Azfk.a.a(this.jdField_a_of_type_Azfk.a.a);
+    }
   }
 }
 

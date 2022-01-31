@@ -1,113 +1,42 @@
-import android.content.Context;
-import android.content.Intent;
-import android.hardware.Camera;
-import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.ytposedetect.YTPoseDetectInterface;
-import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectOnFrame;
-import com.tencent.youtufacetrack.YoutuFaceTracker;
-import com.tencent.youtufacetrack.YoutuFaceTracker.FaceStatus;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aqij
-  extends aqie
-  implements YTPoseDetectInterface.PoseDetectOnFrame
+  implements bfoq
 {
-  @RequiresApi(api=18)
-  public aqij(Intent paramIntent, aqit paramaqit)
-  {
-    this.jdField_a_of_type_Aqit = paramaqit;
-    this.jdField_a_of_type_Aqib = new aqir(paramIntent, paramaqit);
-  }
+  public aqij(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public int a(Context paramContext, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    int j = 1;
-    YoutuFaceTracker.nativeInit();
-    boolean bool = YoutuFaceTracker.GlobalInit(paramString);
-    this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker = new YoutuFaceTracker();
-    int i = j;
-    if (bool)
+    switch (paramInt)
     {
-      int k = YTPoseDetectInterface.initModel("");
-      i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-      QLog.d("qq_Identification.Model", 1, "pose detect init result: " + k + ",pdCount:" + i);
-      i = j;
-      if (k == 0) {
-        i = 0;
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Bfol != null) {
+        this.a.jdField_a_of_type_Bfol.dismiss();
+      }
+      this.a.o();
+      return;
+      this.a.p();
+      continue;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a() == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.b();
+      }
+      if ((bbev.d(BaseApplication.getContext())) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.isFinishing()))
+      {
+        aqhu.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
+      }
+      else
+      {
+        bcpw.a(BaseApplication.getContext(), 1, this.a.getString(2131694607), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getTitleBarHeight());
       }
     }
-    return i;
   }
-  
-  public void a()
-  {
-    super.a();
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet() == 0) {
-      YTPoseDetectInterface.releaseModel();
-    }
-  }
-  
-  public void a(QQIdentiferActivity paramQQIdentiferActivity, Camera paramCamera, int paramInt)
-  {
-    try
-    {
-      YTPoseDetectInterface.start(paramQQIdentiferActivity, paramCamera, paramInt, new aqik(this));
-      return;
-    }
-    catch (Exception paramQQIdentiferActivity)
-    {
-      QLog.d("qq_Identification.Model", 1, "startPoseDetect happened error:" + paramQQIdentiferActivity.getMessage());
-    }
-  }
-  
-  public void a(YoutuFaceTracker.FaceStatus paramFaceStatus, int paramInt, byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    if ((YTPoseDetectInterface.isDetecting()) && (paramFaceStatus != null)) {
-      YTPoseDetectInterface.poseDetect(paramFaceStatus.xys, paramInt, paramArrayOfByte, paramCamera, paramFaceStatus.pitch, paramFaceStatus.yaw, paramFaceStatus.roll, this);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    int i = 0;
-    if (TextUtils.isEmpty(paramString)) {}
-    while (!new File(paramString).exists()) {
-      return false;
-    }
-    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    while (i < j)
-    {
-      String str = arrayOfString[i];
-      System.load(paramString + str);
-      i += 1;
-    }
-    return true;
-  }
-  
-  public void onFailed(int paramInt, String paramString1, String paramString2) {}
-  
-  public void onRecordingDone(byte[][] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("qq_Identification.Model", 2, "onRecordingDone -收到视频上传通知，帧数：" + paramArrayOfByte.length + "*" + paramArrayOfByte[0].length + " 每帧width：" + paramInt1 + " 每帧height: " + paramInt2);
-    }
-    YTPoseDetectInterface.stop();
-    int i = 1;
-    if (this.jdField_a_of_type_Aqit != null)
-    {
-      i = this.jdField_a_of_type_Aqit.a().getInt("params_pose", 1);
-      this.jdField_a_of_type_Aqit.a();
-    }
-    this.jdField_a_of_type_Aqib.a(paramArrayOfByte, paramInt1, paramInt2, i);
-  }
-  
-  public void onSuccess(int paramInt) {}
 }
 
 

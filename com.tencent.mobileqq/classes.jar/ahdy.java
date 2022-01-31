@@ -1,17 +1,34 @@
-import android.content.Context;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
 
 public class ahdy
-  extends ahdm
+  implements aheb
 {
-  public ahdy(Context paramContext)
+  public ahdy(DoodleLayout paramDoodleLayout) {}
+  
+  public void a()
   {
-    this.a = paramContext.getString(2131632780);
-    this.b = this.a;
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
+    }
+  }
+  
+  public void b()
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(this.a.a(true, false));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahdy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSActivity.20.1;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class abuu
-  extends batl
+  implements Animation.AnimationListener
 {
-  public abuu(TextPreviewSettingActivity paramTextPreviewSettingActivity, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public abuu(QQLSActivity paramQQLSActivity) {}
   
-  public void onCancel(batm parambatm)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambatm);
-    }
-    super.onCancel(parambatm);
-  }
-  
-  public void onDone(batm parambatm)
-  {
-    super.onDone(parambatm);
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onDone| task:" + parambatm);
-    }
-    if (parambatm.b()) {}
-    do
+    this.a.a.removeMessages(99);
+    if (bfni.g())
     {
-      return;
-      if (parambatm.a() == -1)
-      {
-        parambatm = new Message();
-        parambatm.what = 17;
-        TextPreviewSettingActivity.a(this.a).sendMessage(parambatm);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQLSActivity", 2, "do SmoothFinish");
       }
-      parambatm = TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a));
-    } while (parambatm == null);
-    Message localMessage = new Message();
-    localMessage.what = 18;
-    localMessage.obj = parambatm;
-    TextPreviewSettingActivity.a(this.a).sendMessage(localMessage);
+      QQLSActivity.g(this.a);
+      this.a.finish();
+      return;
+    }
+    this.a.a.postAtFrontOfQueue(new QQLSActivity.20.1(this));
   }
   
-  public boolean onStart(batm parambatm)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onStart| task:" + parambatm);
-    }
-    return super.onStart(parambatm);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,16 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class rjk
-  implements View.OnClickListener
+  implements amkj
 {
-  public rjk(ViolaFragment paramViolaFragment) {}
+  public rjk(FastWebActivity paramFastWebActivity) {}
   
-  public void onClick(View paramView)
+  public void onColorNoteAnimFinish()
   {
-    this.a.a.d();
-    this.a.a();
+    FastWebActivity.a(this.a);
+    FastWebActivity.c(this.a);
+    if ((FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a).c())) {
+      this.a.overridePendingTransition(0, 0);
+    }
+    QLog.d(FastWebActivity.a(this.a), 2, "mColorNoteController ：onColorNoteAnimFinish");
   }
 }
 

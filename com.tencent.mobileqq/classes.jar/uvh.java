@@ -1,23 +1,31 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class uvh
-  implements begh
+public class uvh
+  extends QQUIEventReceiver<StoryMessageListActivity, tkn>
 {
-  int jdField_a_of_type_Int = 0;
-  
-  uvh(uvg paramuvg) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public uvh(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    super(paramStoryMessageListActivity);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull tkn paramtkn)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Uvg.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_Uvg.a.size() - 1)) {
-      this.jdField_a_of_type_Uvg.f();
+    if (paramtkn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramtkn.jdField_a_of_type_JavaUtilList);
+      }
+      paramStoryMessageListActivity.g();
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tkn.class;
   }
 }
 

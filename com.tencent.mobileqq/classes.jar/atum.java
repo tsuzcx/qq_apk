@@ -1,46 +1,96 @@
-import ProfileLogic.QC.setUserProfileRsp;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.profile.CoverDetailFragment;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
-public class atum
-  extends ajrp
+class atum
+  implements BusinessObserver
 {
-  public atum(CoverDetailFragment paramCoverDetailFragment) {}
+  atum(atuk paramatuk, String paramString, Context paramContext, int paramInt) {}
   
-  public void e(boolean paramBoolean, Object paramObject)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (localFragmentActivity == null) {}
-    do
+    new Bundle();
+    String str = this.jdField_a_of_type_JavaLangString;
+    Object localObject = str;
+    if (paramBoolean) {
+      localObject = paramBundle.getByteArray("data");
+    }
+    try
     {
-      do
+      paramBundle = new FastAuthorize.AuthorizeResponse();
+      paramBundle.mergeFrom((byte[])localObject);
+      this.jdField_a_of_type_Atuk.jdField_a_of_type_AndroidOsHandler.removeMessages(6);
+      if ((paramBundle.ret.get().equals("0")) && (paramBundle.apk_name.has()))
       {
-        return;
-        if (!paramBoolean) {
-          break;
+        if (paramBundle.access_token.has())
+        {
+          localObject = paramBundle.access_token.get();
+          this.jdField_a_of_type_Atuk.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Atuk.jdField_a_of_type_JavaLangString.replace("$AT$", (CharSequence)localObject);
         }
-      } while (!(paramObject instanceof setUserProfileRsp));
-      int i = ((setUserProfileRsp)paramObject).ret;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.FrdProfileCard.CoverDetailFragment", 0, "onDefaultCardRsp: [setUserProfileRsp] ret=" + i);
+        if (paramBundle.pay_token.has())
+        {
+          localObject = paramBundle.pay_token.get();
+          this.jdField_a_of_type_Atuk.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Atuk.jdField_a_of_type_JavaLangString.replace("$PT$", (CharSequence)localObject);
+        }
+        if (paramBundle.openid.has())
+        {
+          localObject = paramBundle.openid.get();
+          this.jdField_a_of_type_Atuk.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Atuk.jdField_a_of_type_JavaLangString.replace("$OPID$", (CharSequence)localObject);
+        }
+        if (paramBundle.pfkey.has())
+        {
+          localObject = paramBundle.pfkey.get();
+          this.jdField_a_of_type_Atuk.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Atuk.jdField_a_of_type_JavaLangString.replace("$PF$", (CharSequence)localObject);
+        }
+        if (paramBundle.encrykey.has())
+        {
+          localObject = paramBundle.encrykey.get();
+          this.jdField_a_of_type_Atuk.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Atuk.jdField_a_of_type_JavaLangString.replace("$ESK$", (CharSequence)localObject);
+        }
+        localObject = paramBundle.apk_name.get();
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          return;
+        }
+        paramBundle = (Bundle)localObject;
+        if (((String)localObject).contains(this.jdField_a_of_type_JavaLangString)) {}
       }
-      if (i == 0)
+      else
       {
-        paramObject = new Intent();
-        paramObject.putExtra("cover_id_key", CoverDetailFragment.a(this.a));
-        localFragmentActivity.setResult(-1, paramObject);
-        localFragmentActivity.finish();
-        return;
+        QLog.d(this.jdField_a_of_type_Atuk.getClass().getSimpleName(), 4, "start without login state");
+        paramBundle = str;
       }
-      CoverDetailFragment.a(this.a, localFragmentActivity);
+      localObject = paramBundle;
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      for (;;)
+      {
+        localObject = str;
+        if (QLog.isColorLevel())
+        {
+          QLog.d(this.jdField_a_of_type_Atuk.getClass().getSimpleName(), 2, paramBundle.getMessage());
+          localObject = str;
+        }
+      }
+    }
+    paramBundle = awzj.a(this.jdField_a_of_type_Atuk.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d(getClass().getSimpleName(), 2, "lauchApp now");
+    }
+    bdiw.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, paramBundle, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Atuk.jdField_a_of_type_MqqAppNewIntent != null)
+    {
+      this.jdField_a_of_type_Atuk.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+      this.jdField_a_of_type_Atuk.jdField_a_of_type_MqqAppNewIntent = null;
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.FrdProfileCard.CoverDetailFragment", 0, "onDefaultCardRsp: isSuccess=false, cmd=" + paramObject);
-      }
-    } while (!"profilelogic.setUserProfile".equals(paramObject));
-    CoverDetailFragment.a(this.a, localFragmentActivity);
+    }
   }
 }
 

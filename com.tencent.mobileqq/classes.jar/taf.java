@@ -1,55 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqSimpleInfoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class taf
-  extends slz
+class taf
+  extends tpk
 {
-  public List<String> a = new ArrayList();
+  taf(tac paramtac) {}
   
-  public String a()
+  public void a()
   {
-    return skt.a("StorySvc.get_date_video_list");
+    super.a();
+    tab.a(this.a.a, null);
   }
   
-  public slu a(byte[] paramArrayOfByte)
+  public void a(int paramInt)
   {
-    qqstory_service.RspSimpleInfoList localRspSimpleInfoList = new qqstory_service.RspSimpleInfoList();
-    try
-    {
-      localRspSimpleInfoList.mergeFrom(paramArrayOfByte);
-      return new tbv(localRspSimpleInfoList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      urk.b("Q.qqstory.net:GetSimpleInfoListResponse", a(), paramArrayOfByte);
-    }
-    return null;
+    super.a(paramInt);
+    vel.a("home_page", "suc_share", 1, paramInt, new String[] { vel.b(this.a.a.a) + "", vel.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
   
-  protected byte[] a()
+  public void b(int paramInt)
   {
-    qqstory_service.ReqSimpleInfoList localReqSimpleInfoList = new qqstory_service.ReqSimpleInfoList();
-    ArrayList localArrayList = new ArrayList();
-    if (this.a != null)
-    {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(ByteStringMicro.copyFromUtf8((String)localIterator.next()));
-      }
-    }
-    localReqSimpleInfoList.vid_list.addAll(localArrayList);
-    return localReqSimpleInfoList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetSimpleInfoListResponse{vidList='" + this.a + '\'' + '}';
+    super.b(paramInt);
+    vel.a("home_page", "share_chanel", 1, paramInt, new String[] { vel.b(this.a.a.a) + "", vel.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 

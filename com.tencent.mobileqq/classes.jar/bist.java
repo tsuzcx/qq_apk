@@ -1,15 +1,42 @@
-public class bist
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.util.Set;
+
+class bist
+  implements View.OnClickListener
 {
-  public int a;
-  public bisp<Boolean, bisu> a;
-  public String a;
-  public boolean a;
-  public int b;
-  public bisp<Boolean, bisv> b;
-  public String b;
-  public boolean b;
-  public int c;
-  public int d;
+  bist(biss parambiss, bisj parambisj, int paramInt, bisy parambisy) {}
+  
+  public void onClick(View paramView)
+  {
+    boolean bool;
+    if (this.jdField_a_of_type_Bisj.jdField_a_of_type_Int == 13)
+    {
+      if (this.jdField_a_of_type_Bisj.a()) {
+        break label73;
+      }
+      bool = true;
+      if (!bool) {
+        break label78;
+      }
+      biss.a(this.jdField_a_of_type_Biss).add(Integer.valueOf(this.jdField_a_of_type_Int));
+      biss.a(this.jdField_a_of_type_Biss, true);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bisj.a(bool);
+      this.jdField_a_of_type_Bisy.a(bool);
+      return;
+      label73:
+      bool = false;
+      break;
+      label78:
+      biss.a(this.jdField_a_of_type_Biss).remove(Integer.valueOf(this.jdField_a_of_type_Int));
+      if (biss.a(this.jdField_a_of_type_Biss).size() < 1) {
+        biss.a(this.jdField_a_of_type_Biss, false);
+      }
+    }
+  }
 }
 
 

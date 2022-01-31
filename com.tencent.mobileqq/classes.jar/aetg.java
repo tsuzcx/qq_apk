@@ -1,46 +1,15 @@
-import android.animation.ValueAnimator;
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class aetg
-  implements aeuo
+class aetg
+  implements bfwv
 {
-  public aetg(AddContactsActivity paramAddContactsActivity) {}
-  
-  public Activity a()
-  {
-    return this.a;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
+  aetg(aerv paramaerv) {}
   
   public void a()
   {
-    if (this.a.a) {
-      return;
+    if ((!this.a.al) && (this.a.am))
+    {
+      this.a.al = true;
+      sgx.a("SUBSCRIPT_AIO_COST", null);
     }
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, -(this.a.getTitleBarHeight() + 0 + AddContactsActivity.a(this.a).a()) });
-    localValueAnimator.setDuration(250L);
-    localValueAnimator.addUpdateListener(new aeth(this));
-    localValueAnimator.addListener(new aeti(this));
-    localValueAnimator.start();
-    azzv.a(true);
-  }
-  
-  public void b()
-  {
-    this.a.findViewById(2131309690).setVisibility(0);
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -(this.a.getTitleBarHeight() + 0 + AddContactsActivity.a(this.a).a()), 0 });
-    localValueAnimator.setDuration(250L);
-    localValueAnimator.addUpdateListener(new aetj(this));
-    localValueAnimator.addListener(new aetk(this));
-    localValueAnimator.start();
   }
 }
 

@@ -1,16 +1,13 @@
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFollowManager;
+
 class qyh
-  extends ohe
+  implements qxp<qxs>
 {
-  qyh(qyg paramqyg, qyf paramqyf) {}
+  qyh(qyf paramqyf) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString)
+  public void a(qxs paramqxs)
   {
-    qyg.a(this.jdField_a_of_type_Qyg, paramBoolean, paramInt, paramString);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
-  {
-    qyg.a(this.jdField_a_of_type_Qyg, paramBoolean, paramLong, paramInt, paramString);
+    qyf.a(this.a).b(paramqxs.a());
   }
 }
 

@@ -1,42 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.ims.AlertReport.ButtonAction;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
 
-public class abeq
-  implements DialogInterface.OnClickListener
+class abeq
+  implements agjx
 {
-  public abeq(NotificationActivity paramNotificationActivity, int paramInt, String paramString) {}
+  abeq(abel paramabel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    try
+    if (paramBoolean)
     {
-      paramDialogInterface = new AlertReport.ButtonAction();
-      paramDialogInterface.uint32_cmd.set(1);
-      paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
-      paramDialogInterface.str_package_name.set(bdzl.c());
-      paramDialogInterface.uint32_app_id.set(AppSetting.a());
-      mmj.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
-      awqx.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007535", "0X8007535", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      bcpw.a(this.a.a.getApplicationContext(), 1, ajyc.a(2131704890), 0).a();
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
-    }
+    paramContext = new Intent(this.a.a, GuideBindPhoneActivity.class);
+    paramContext.putExtra("fromKeyForContactBind", 5);
+    paramContext.putExtra("key_contact_name", this.a.a.a.a.k);
+    paramContext.putExtra("key_contact_phone", this.a.a.a.a.a);
+    this.a.a.startActivity(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abeq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import bfpj;
-import bfpk;
+import bgxq;
+import bgxr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.NetworkState;
@@ -241,6 +241,15 @@ public class LpReportInfo_pf00064
     LpReportManager.getInstance().reportToPF00064(localLpReportInfo_pf00064, false, paramBoolean);
   }
   
+  public static void allReport(int paramInt1, int paramInt2, String paramString)
+  {
+    LpReportInfo_pf00064 localLpReportInfo_pf00064 = new LpReportInfo_pf00064();
+    localLpReportInfo_pf00064.actionType = paramInt1;
+    localLpReportInfo_pf00064.subactionType = paramInt2;
+    localLpReportInfo_pf00064.reserves4 = paramString;
+    LpReportManager.getInstance().reportToPF00064(localLpReportInfo_pf00064, true, false);
+  }
+  
   public static void report(int paramInt1, int paramInt2)
   {
     LpReportInfo_pf00064 localLpReportInfo_pf00064 = new LpReportInfo_pf00064();
@@ -281,13 +290,14 @@ public class LpReportInfo_pf00064
   
   public static void report(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3)
   {
-    paramString1 = new LpReportInfo_pf00064();
-    paramString1.actionType = paramInt1;
-    paramString1.subactionType = paramInt2;
-    paramString1.reserves = paramInt3;
-    paramString1.reserves6 = paramString2;
-    paramString1.reserves7 = paramString3;
-    LpReportManager.getInstance().reportToPF00064(paramString1, false, false);
+    LpReportInfo_pf00064 localLpReportInfo_pf00064 = new LpReportInfo_pf00064();
+    localLpReportInfo_pf00064.actionType = paramInt1;
+    localLpReportInfo_pf00064.subactionType = paramInt2;
+    localLpReportInfo_pf00064.reserves = paramInt3;
+    localLpReportInfo_pf00064.reserves4 = paramString1;
+    localLpReportInfo_pf00064.reserves6 = paramString2;
+    localLpReportInfo_pf00064.reserves7 = paramString3;
+    LpReportManager.getInstance().reportToPF00064(localLpReportInfo_pf00064, false, false);
   }
   
   public static void report(int paramInt, String paramString)
@@ -311,8 +321,8 @@ public class LpReportInfo_pf00064
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("qua", bfpk.a());
-    localHashMap.put("device_info", bfpj.a().c());
+    localHashMap.put("qua", bgxr.a());
+    localHashMap.put("device_info", bgxq.a().c());
     if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null)) {
       localHashMap.put("uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
     }

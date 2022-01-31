@@ -1,91 +1,92 @@
 import android.content.Intent;
-import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.widget.AutoCompleteTextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Locale;
+import mqq.app.WtloginManagerImpl;
+import oicq.wlogin_sdk.tools.MD5;
+import oicq.wlogin_sdk.tools.util;
 
 public class ahrn
-  extends ajuc
+  implements bfoq
 {
-  public ahrn(SelectMemberActivity paramSelectMemberActivity) {}
+  public ahrn(LoginView paramLoginView) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramInt1 == 8)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "add troop member fail");
-      }
-      SelectMemberActivity.a(this.a, paramInt2);
-    }
-  }
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (paramInt1 == 8)
-    {
-      if (paramInt2 == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SelectMemberActivity", 2, "add troop member success");
-        }
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-        if (!this.a.jdField_c_of_type_Boolean)
-        {
-          paramInt1 = this.a.b();
-          this.a.a(paramInt1 + 1);
-          awqx.b(this.a.app, "CliOper", "", "", "Grp", "Send_invite", 0, 0, "", "", "", "");
-        }
-        ArrayList localArrayList = this.a.a();
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", Long.parseLong(paramString));
-        this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set", this.a.e);
-        this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set_for_out_Member ", localArrayList);
-        this.a.setResult(-1);
-      }
-    }
-    else {
+    LoginView.g(this.a, false);
+    if (LoginView.g(this.a)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "add troop member fail, troopUin: " + paramString + " result: " + paramInt2);
-    }
-    SelectMemberActivity.a(this.a, paramInt2);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
-  {
-    String str = String.valueOf(paramLong1);
-    if ((paramBoolean) && (str.equals(this.a.jdField_c_of_type_JavaLangString)))
+    if (paramInt == 0)
     {
-      this.a.jdField_a_of_type_Long = paramLong2;
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "troop" + str + " get inviteNoAuthLimitNum = " + paramLong2);
-      }
-      if ((this.a.i >= this.a.jdField_a_of_type_Long) && (this.a.jdField_a_of_type_Long > 0L))
-      {
-        this.a.d.setVisibility(0);
-        awqx.b(this.a.app, "dc00899", "invite_friend", "", "friend_list", "exp_needagree", 0, 0, str, mje.a(this.a.app, this.a.app.getCurrentAccountUin(), str) + "", "", "");
-      }
+      axqw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007353", "0X8007353", 0, 0, "", "", "", "");
+      axqw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007365", "0X8007365", 0, 0, "", "", "", "");
+      axqw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007365", "0X8007365", 3, 0, "", "", "", "");
+      axqw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "new_reg_805", "log_page", "re_clk", "", 1, "");
+      axqw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA2C", "0X800AA2C", 0, 0, "", "", "", "");
+      paramView = null;
+      if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView == null) {}
     }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong, List<Long> paramList)
-  {
-    paramLong = String.valueOf(paramLong);
-    if ((paramBoolean) && (paramLong.equals(this.a.jdField_c_of_type_JavaLangString)))
-    {
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
+    for (paramView = this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString();; paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756") {
+      for (;;)
       {
-        Long localLong = (Long)localIterator.next();
-        this.a.jdField_a_of_type_JavaUtilList.add(String.valueOf(localLong));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "troop" + paramLong + " get invitedUinList = " + paramList.toString());
+        try
+        {
+          Long.parseLong(paramView);
+          if (TextUtils.isEmpty(paramView)) {
+            break;
+          }
+          paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });
+          paramView = new StringBuilder(paramView);
+          localObject = ((WtloginManagerImpl)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(1)).getGUID();
+          byte[] arrayOfByte = util.get_bssid_addr(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+          if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {
+            paramView.append("&bssid=").append(MD5.toMD5(arrayOfByte));
+          }
+          paramView.append("&guid=").append(util.buf_to_string((byte[])localObject)).append("&appid=").append(AppSetting.a());
+          paramView = paramView.toString();
+          QLog.d("LoginActivity.LoginView", 1, new Object[] { "forgetpwd url is ", paramView });
+          localObject = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+          ((Intent)localObject).putExtra("uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          ((Intent)localObject).putExtra("reqType", 3);
+          ((Intent)localObject).putExtra("url", paramView);
+          this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject);
+          LoginView.f(this.a, true);
+          LoginView.a(this.a).dismiss();
+          return;
+        }
+        catch (Exception paramView)
+        {
+          paramView.printStackTrace();
+          Object localObject = null;
+          paramView = (View)localObject;
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          QLog.i("LoginActivity.LoginView", 4, String.format(Locale.getDefault(), "forget pwd %s", new Object[] { this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString() }));
+          paramView = (View)localObject;
+          continue;
+        }
+        if (paramInt == 1)
+        {
+          axqw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007354", "0X8007354", 0, 0, "", "", "", "");
+          axqw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007365", "0X8007365", 0, 0, "", "", "", "");
+          axqw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007365", "0X8007365", 2, 0, "", "", "", "");
+          axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Mobile_signup", "Clk_ems_login", 0, 0, "", "", "", "");
+          axqw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA2D", "0X800AA2D", 0, 0, "", "", "", "");
+          boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getBooleanExtra("login_from_account_change", false);
+          paramView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, LoginPhoneNumActivity.class);
+          paramView.putExtra("login_from_account_change", bool);
+          this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramView);
+        }
       }
     }
   }

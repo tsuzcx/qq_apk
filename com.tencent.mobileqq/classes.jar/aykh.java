@@ -1,18 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import android.graphics.Paint;
+import android.support.annotation.NonNull;
 
-public class aykh
-  implements bbmn
+public abstract class aykh
 {
-  public aykh(NewTroopContactView paramNewTroopContactView) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(Bundle paramBundle) {}
+  public aykh(int paramInt, @NonNull String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
-  public void b(Bundle paramBundle) {}
+  abstract float a(@NonNull Paint paramPaint);
+  
+  int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aykh
  * JD-Core Version:    0.7.0.1
  */

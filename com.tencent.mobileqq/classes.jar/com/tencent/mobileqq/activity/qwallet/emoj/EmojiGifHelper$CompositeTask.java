@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import android.os.Environment;
+import ahiy;
 import android.text.TextUtils;
-import awjg;
+import axim;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -22,15 +22,15 @@ public class EmojiGifHelper$CompositeTask
   
   private String getGifPath()
   {
-    String str = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DCIM + File.separator + "Camera";
-    File localFile = new File(str + File.separator + "gif");
+    String str = ahiy.a(null) + "Camera/";
+    File localFile = new File(str + "gif");
     if ((localFile.exists()) && (!localFile.isDirectory())) {
       localFile.delete();
     }
     if (!localFile.exists()) {
       localFile.mkdir();
     }
-    return str + File.separator + "gif" + File.separator + System.currentTimeMillis() + ".gif";
+    return str + "gif" + File.separator + System.currentTimeMillis() + ".gif";
   }
   
   public void cancel()
@@ -47,7 +47,7 @@ public class EmojiGifHelper$CompositeTask
     boolean bool = false;
     try
     {
-      int i = awjg.a(paramConvertParam.inPath, paramConvertParam.videoWidth, paramConvertParam.videoHeight, paramConvertParam.videoDuration, paramString, 7, 30, 100);
+      int i = axim.a(paramConvertParam.inPath, paramConvertParam.videoWidth, paramConvertParam.videoHeight, paramConvertParam.videoDuration, paramString, 7, 30, 100);
       if (QLog.isColorLevel()) {
         QLog.i("EmojiGifHelper", 2, "Video2GifConverter: convert retCode=" + i);
       }

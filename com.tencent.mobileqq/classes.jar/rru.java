@@ -1,8 +1,21 @@
-abstract interface rru
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+
+public class rru
+  implements TypeEvaluator<Rect>
 {
-  public abstract void a();
+  public rru(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
   
-  public abstract void b();
+  public int a(int paramInt1, int paramInt2, float paramFloat)
+  {
+    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+  }
+  
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  {
+    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
+  }
 }
 
 

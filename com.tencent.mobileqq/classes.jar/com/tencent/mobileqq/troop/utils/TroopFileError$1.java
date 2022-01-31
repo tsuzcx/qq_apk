@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.content.Context;
-import bbmy;
+import bcpw;
 
 public final class TroopFileError$1
   implements Runnable
@@ -10,7 +10,7 @@ public final class TroopFileError$1
   
   public void run()
   {
-    bbmy.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0).b(this.b);
+    bcpw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0).b(this.b);
   }
 }
 

@@ -1,12 +1,18 @@
-class aolv
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+
+public class aolv
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  boolean jdField_b_of_type_Boolean = false;
-  boolean c = false;
+  public aolv(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  aolv(aokk paramaokk) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a = false;
+    this.a.doOnBackPressed();
+    axqw.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_admin", "Clk_quit", 0, 0, this.a.d, "", "", "");
+  }
 }
 
 

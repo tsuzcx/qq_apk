@@ -1,16 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
 
 public class atbo
-  implements ValueAnimator.AnimatorUpdateListener
+  extends banh
 {
-  public atbo(AutoScrollImageView paramAutoScrollImageView) {}
+  private NearbyAppInterface a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public atbo(NearbyAppInterface paramNearbyAppInterface, String paramString1, String paramString2, String paramString3)
   {
-    AutoScrollImageView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    super(paramString1, paramString2, paramString3);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
+  }
+  
+  public UsingTimeReportManager a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface == null) {
+      return null;
+    }
+    return (UsingTimeReportManager)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(221);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.reportClickEvent("dc00899", this.jdField_a_of_type_JavaLangString, "", this.b, this.c, 0, 0, String.valueOf(paramLong), "", "", "");
+    }
   }
 }
 

@@ -1,41 +1,64 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.webview.WebViewTitleStyle;
+import org.json.JSONObject;
 
 public class bcfm
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
+  public boolean A;
+  public boolean B;
+  public boolean C;
+  public boolean D;
+  public boolean E;
+  public boolean F;
+  public int a;
+  public long a;
+  public WebViewTitleStyle a;
+  public Boolean a;
+  public String a;
+  public JSONObject a;
+  public boolean a;
+  public int b = -1;
+  public long b;
+  public boolean b;
+  public int c;
+  public long c;
+  public boolean c;
+  public int d;
+  public long d;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
+  public boolean l;
+  public boolean m;
+  public boolean n;
+  public boolean o;
+  public boolean p;
+  public boolean q;
+  public boolean r;
+  public boolean s;
+  public boolean t;
+  public boolean u;
+  public boolean v;
+  public boolean w;
+  public boolean x;
+  public boolean y;
+  public boolean z;
   
-  public String a()
+  public bcfm()
   {
-    if (TextUtils.isEmpty(this.f)) {
-      return bcdn.a(bbtm.a().a());
-    }
-    return this.f;
-  }
-  
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.b));
-  }
-  
-  public String toString()
-  {
-    return this.d + "_" + this.a + "_" + this.b + "_" + this.c + "_" + this.f + "_" + this.g;
+    this.jdField_a_of_type_Long = 4L;
+    this.jdField_c_of_type_Long = 5L;
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+    this.jdField_c_of_type_Int = 50;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcfm
  * JD-Core Version:    0.7.0.1
  */

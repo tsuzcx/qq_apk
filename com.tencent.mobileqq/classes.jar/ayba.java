@@ -1,13 +1,7 @@
-import android.view.View;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-
 public class ayba
-  extends ayaz
 {
-  public ayba(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
-  {
-    super(paramTribeVideoListPlayerFragment, paramView);
-  }
+  public float a;
+  public float b;
 }
 
 

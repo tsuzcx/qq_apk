@@ -1,30 +1,6 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-
-class bgwu
-  extends Handler
+public class bgwu
 {
-  public bgwu(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 3000: 
-      bgwq.c((Activity)paramMessage.obj, paramMessage.arg1);
-      return;
-    }
-    bgwq.a(null);
-    bgwq.a(SystemClock.uptimeMillis());
-  }
+  public static bgwt a = new bgwt(null);
 }
 
 

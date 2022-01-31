@@ -1,95 +1,87 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
 
 public class amkr
-  extends alzl<amko>
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public static amko a()
+  public amkr(SwipePostTableLayout paramSwipePostTableLayout) {}
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    amko localamko = (amko)alzw.a().a(529);
-    if (localamko != null) {
-      return localamko;
+    int i = 0;
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    return new amko();
-  }
-  
-  public int a()
-  {
-    return 529;
-  }
-  
-  @NonNull
-  public amko a(int paramInt)
-  {
-    return new amko();
-  }
-  
-  @Nullable
-  public amko a(alzs[] paramArrayOfalzs)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    String str;
-    if (paramArrayOfalzs != null)
+    ColorNote localColorNote;
+    if ((SwipePostTableLayout.a(this.a) != null) && (SwipePostTableLayout.a(this.a).getColorNote() != null)) {
+      localColorNote = SwipePostTableLayout.a(this.a).getColorNote();
+    }
+    for (boolean bool = SwipePostTableLayout.a(this.a).a(localColorNote.getServiceType(), localColorNote.getSubType());; bool = false)
     {
-      localObject1 = localObject2;
-      if (paramArrayOfalzs.length > 0)
+      float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+      float f2 = paramMotionEvent1.getY();
+      float f3 = paramMotionEvent2.getY();
+      if ((f1 == 0.0F) || (!this.a.jdField_a_of_type_Boolean) || (paramFloat1 < 200.0F)) {
+        return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      }
+      f2 = Math.abs((f2 - f3) / f1);
+      if ((SwipePostTableLayout.a(this.a) == null) || (SwipePostTableLayout.a(this.a).a())) {
+        i = 1;
+      }
+      if ((f1 < 0.0F) && (f2 < 0.5F))
       {
-        str = paramArrayOfalzs[0].a;
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(str)) {
-          if (QLog.isColorLevel()) {
-            QLog.e("SigTopicConfProcessor", 1, "SigTopic.[onParsed] type=" + a() + ", content = " + str);
+        if (!bool) {
+          break label276;
+        }
+        if (i == 0) {
+          break label254;
+        }
+        this.a.jdField_a_of_type_Amkm.sendEmptyMessage(1);
+        this.a.postInvalidate();
+      }
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_Amkq != null) {
+          this.a.jdField_a_of_type_Amkq.a();
+        }
+        return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+        label254:
+        SwipePostTableLayout.a(this.a, true);
+        SwipePostTableLayout.a(this.a).a();
+        break;
+        label276:
+        if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+        {
+          this.a.c = true;
+          if (i != 0)
+          {
+            this.a.d();
           }
+          else
+          {
+            SwipePostTableLayout.b(this.a, true);
+            SwipePostTableLayout.a(this.a).a();
+          }
+        }
+        else if (i != 0)
+        {
+          this.a.d();
+        }
+        else
+        {
+          SwipePostTableLayout.b(this.a, true);
+          SwipePostTableLayout.a(this.a).a();
         }
       }
     }
-    try
-    {
-      paramArrayOfalzs = (amkp)amaf.a(str, amkp.class);
-      localObject1 = new amko(str, paramArrayOfalzs);
-      return localObject1;
-    }
-    catch (QStorageInstantiateException paramArrayOfalzs)
-    {
-      for (;;)
-      {
-        QLog.e("SigTopicConfProcessor", 1, "readJsonOrXml failed", paramArrayOfalzs);
-        paramArrayOfalzs = null;
-      }
-    }
-  }
-  
-  public Class<amko> a()
-  {
-    return amko.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amko paramamko) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkr
  * JD-Core Version:    0.7.0.1
  */

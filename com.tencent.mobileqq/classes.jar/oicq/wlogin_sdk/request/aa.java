@@ -60,7 +60,7 @@ public class aa
                 break label355;
               }
               paramTransReqContext.requestEm = oicq_request.EncryptionMethod.EM_ECDH;
-              t.aq.attr_api(2413503);
+              t.as.attr_api(2413503);
               util.LOGI("using wt st encrypt body but no st key", "" + paramLong1);
               break label355;
               a(paramLong1, a((byte[])localObject, bool, paramArrayOfByte1, paramLong2, paramLong3, paramTransReqContext), paramTransReqContext.requestEm);
@@ -179,10 +179,10 @@ public class aa
         i = t.w;
         long l1 = System.currentTimeMillis() / 1000L;
         long l2 = t.ae;
-        t.aq.commit(Build.VERSION.RELEASE, new String(t.G), "", util.buf_to_string(util.get_ksid(t.t)), new String(t.E), new String(t.Q), new String(t.I), new String(t.H), util.get_release_time(), "6.0.0.2425");
+        t.as.commit(Build.VERSION.RELEASE, new String(t.G), "", util.buf_to_string(util.get_ksid(t.t)), new String(t.E), new String(t.Q), new String(t.I), new String(t.H), util.get_release_time(), "6.0.0.2423");
         try
         {
-          paramArrayOfByte1 = t.aq.toJasonObj().toString().getBytes();
+          paramArrayOfByte1 = t.as.toJasonObj().toString().getBytes();
           if (paramArrayOfByte1 != null)
           {
             int j = paramArrayOfByte1.length;
@@ -225,7 +225,7 @@ public class aa
           if (i == 0) {
             break label335;
           }
-          report_t.write_tofile(t.aq, t.t);
+          report_t.write_tofile(t.as, t.t);
           continue;
         }
         i = b();
@@ -233,7 +233,7 @@ public class aa
       finally {}
       continue;
       label335:
-      t.aq.clear_t2();
+      t.as.clear_t2();
       continue;
       label344:
       int i = 0;
@@ -291,7 +291,7 @@ public class aa
           i = j;
           if (j < 0)
           {
-            t.aq.attr_api(2494911);
+            t.as.attr_api(2494911);
             util.LOGI("use session key decrypt_body failed", "");
             i = -1025;
           }
@@ -340,7 +340,7 @@ public class aa
   
   public void a(Socket paramSocket)
   {
-    this.x.an = paramSocket;
+    this.x.ap = paramSocket;
   }
   
   byte[] a(long paramLong1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, int paramInt, long paramLong5, byte[] paramArrayOfByte5)
@@ -488,12 +488,12 @@ public class aa
   
   public Socket d()
   {
-    if (this.x.an != null) {
-      util.LOGD("_transport_sk", "_transport_sk" + this.x.an.toString());
+    if (this.x.ap != null) {
+      util.LOGD("_transport_sk", "_transport_sk" + this.x.ap.toString());
     }
     for (;;)
     {
-      return this.x.an;
+      return this.x.ap;
       util.LOGD("_transport_sk", "_transport_sk null");
     }
   }

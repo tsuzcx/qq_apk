@@ -1,15 +1,28 @@
-import UserGrowth.stReportItem;
-import UserGrowth.stWeishiReportReq;
-import UserGrowth.stWeishiReportRsp;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
 public class sad
-  extends ryw<stWeishiReportRsp>
+  extends Handler
 {
-  public sad(ArrayList<stReportItem> paramArrayList)
+  private sad(ViolaBaseView paramViolaBaseView) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    super("WeishiReport");
-    this.a = new stWeishiReportReq(paramArrayList);
+    switch (paramMessage.what)
+    {
+    case 1: 
+    default: 
+      return;
+    case 0: 
+      ViolaBaseView.d(this.a);
+      return;
+    case 3: 
+      ViolaBaseView.a(this.a);
+      return;
+    }
+    ViolaBaseView.a(this.a, true);
+    ViolaBaseView.d(this.a);
   }
 }
 

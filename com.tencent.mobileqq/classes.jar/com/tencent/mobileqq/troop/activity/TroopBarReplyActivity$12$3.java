@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.activity;
 
 import android.os.Handler;
-import ayhc;
+import azhp;
 
 public class TroopBarReplyActivity$12$3
   implements Runnable
 {
-  public TroopBarReplyActivity$12$3(ayhc paramayhc) {}
+  public TroopBarReplyActivity$12$3(azhp paramazhp) {}
   
   public void run()
   {

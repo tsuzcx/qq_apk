@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.filter;
 
-import kxb;
+import lhq;
 
 public class FilterItem
-  extends kxb
+  extends lhq
 {
   private String desc;
   private String filterid;

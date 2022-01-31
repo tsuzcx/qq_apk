@@ -1,30 +1,38 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView.3;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyGiftView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
 
 public class ahfi
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public ahfi(LoginView.3 param3) {}
+  public ahfi(SpecifyGiftView paramSpecifyGiftView, aycb paramaycb, View.OnClickListener paramOnClickListener) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.this$0.c.setVisibility(0);
-    this.a.this$0.c.clearAnimation();
-    this.a.this$0.c.setAnimation(null);
-    this.a.this$0.a.invalidate();
+    SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView).a();
+    if (this.jdField_a_of_type_Aycb != null) {
+      this.jdField_a_of_type_Aycb.a();
+    }
+    QQAppInterface localQQAppInterface = ahiy.a();
+    if (localQQAppInterface != null)
+    {
+      bagr localbagr = (bagr)localQQAppInterface.getManager(223);
+      if (localbagr != null) {
+        localbagr.a(SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView).frienduin);
+      }
+    }
+    ahiy.a(localQQAppInterface, "212", "only.animation.close");
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahfi
  * JD-Core Version:    0.7.0.1
  */

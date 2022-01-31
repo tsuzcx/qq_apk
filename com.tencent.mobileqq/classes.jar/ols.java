@@ -1,30 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class ols
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+final class ols
+  implements ViewFactory.FoundClickableViewListener
 {
-  public ols(VideoView paramVideoView) {}
+  ols(VafContext paramVafContext, TemplateBean paramTemplateBean) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onFound(ViewBase paramViewBase)
   {
-    if ((VideoView.a(this.a) != null) && (VideoView.a(this.a).getDuration() >= 200L))
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
     {
-      VideoView.a(this.a, 6);
-      VideoView.a(this.a, VideoView.a(this.a));
-      VideoView.b(this.a, "");
-      VideoView.b(this.a);
+    default: 
+      paramViewBase.setOnClickListener(new olv(this, paramViewBase));
+      return;
+    case 1122: 
+      paramViewBase.setOnClickListener(new olt(this));
       return;
     }
-    QLog.d("gifvideo.VideoView", 1, "invalid video");
-    this.a.F_();
+    paramViewBase.setOnClickListener(new olu(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ols
  * JD-Core Version:    0.7.0.1
  */

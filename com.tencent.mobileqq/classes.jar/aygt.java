@@ -1,20 +1,17 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
-public final class aygt
-  extends Editable.Factory
+public class aygt
+  implements DialogInterface.OnClickListener
 {
-  public Editable newEditable(CharSequence paramCharSequence)
-  {
-    if ((paramCharSequence instanceof axkn)) {
-      return (Editable)paramCharSequence;
-    }
-    return new axkn(paramCharSequence, 3, 20);
-  }
+  public aygt(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aygt
  * JD-Core Version:    0.7.0.1
  */

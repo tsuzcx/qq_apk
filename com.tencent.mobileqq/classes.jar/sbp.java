@@ -1,25 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
 
 public class sbp
-  extends Handler
+  implements bfwv
 {
-  public sbp(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public sbp(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
+    if ((!this.a.c) && (this.a.d))
     {
-    default: 
-      return;
+      this.a.c = true;
+      sgx.a("SUBSCRIPT_FEEDS_COST", null);
     }
-    PublicAccountImageCollectionMainActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sbp
  * JD-Core Version:    0.7.0.1
  */

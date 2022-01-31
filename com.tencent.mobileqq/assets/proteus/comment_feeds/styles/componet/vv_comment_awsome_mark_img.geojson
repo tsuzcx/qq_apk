@@ -1,0 +1,17 @@
+{
+    "view_type": "UIImageView",
+    "view_id": "id_vv_awsome_postmark",
+    "align_parent_right": "YES",
+    "margin_right": "70",
+    "height": {
+        "type": "relative",
+        "value":"60"
+    },
+    "width": {
+        "type": "relative",
+        "value":"60"
+    },
+    "attributes":{
+        "loadImageWithPath:": "$vv_awsome_postmark_img"
+    }
+}

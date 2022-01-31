@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount;
 
-import mzv;
+import nkw;
 
 public class EncryptUinHandler$1
   implements Runnable
 {
   public void run()
   {
-    mzv.a(this.this$0, this.a, 0);
+    nkw.a(this.this$0, this.a, 0);
   }
 }
 

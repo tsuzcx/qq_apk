@@ -13,7 +13,7 @@ import com.tencent.mobileqq.R.styleable;
 public class VideoFeedsGradientMaskView
   extends View
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 1;
   LinearGradient jdField_a_of_type_AndroidGraphicsLinearGradient;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private int b;
@@ -34,6 +34,7 @@ public class VideoFeedsGradientMaskView
     paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.VideoFeedsGradientMaskView);
     this.b = paramContext.getInt(0, 0);
     paramContext.recycle();
+    this.jdField_a_of_type_Int = ((int)(getAlpha() * 255.0F));
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -112,10 +113,13 @@ public class VideoFeedsGradientMaskView
                       continue;
                       if (this.jdField_a_of_type_AndroidGraphicsLinearGradient == null)
                       {
-                        this.jdField_a_of_type_Int = 255;
                         f = getHeight();
                         localTileMode = Shader.TileMode.CLAMP;
-                        this.jdField_a_of_type_AndroidGraphicsLinearGradient = new LinearGradient(0.0F, 0.0F, 0.0F, f, new int[] { 0, -1291845632 }, new float[] { 0.0F, 1.0F }, localTileMode);
+                        this.jdField_a_of_type_AndroidGraphicsLinearGradient = new LinearGradient(0.0F, 0.0F, 0.0F, f, new int[] { 0, -16777216 }, new float[] { 0.0F, 1.0F }, localTileMode);
+                        continue;
+                        if (this.jdField_a_of_type_AndroidGraphicsLinearGradient == null) {
+                          this.jdField_a_of_type_AndroidGraphicsLinearGradient = new LinearGradient(0.0F, 0.0F, getWidth(), 0.0F, 0, -16777216, Shader.TileMode.CLAMP);
+                        }
                       }
                     }
                   }
@@ -128,7 +132,7 @@ public class VideoFeedsGradientMaskView
     }
   }
   
-  public void setAlpha(int paramInt)
+  public void setMaskAlpha(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
     invalidate();

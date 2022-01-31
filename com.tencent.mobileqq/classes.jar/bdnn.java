@@ -1,38 +1,97 @@
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import java.lang.ref.WeakReference;
+import java.net.URL;
 
 public class bdnn
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  protected static bdnn a;
+  protected static final String a;
+  protected volatile WeakReference<SharedPreferences> a;
   
-  public bdnn a()
+  static
   {
-    bdnn localbdnn = new bdnn();
-    localbdnn.a = this.a;
-    localbdnn.b = this.b;
-    localbdnn.c = this.c;
-    localbdnn.d = this.d;
-    localbdnn.e = this.e;
-    localbdnn.f = this.f;
-    localbdnn.g = this.g;
-    localbdnn.h = this.h;
-    return localbdnn;
+    jdField_a_of_type_JavaLangString = bdnn.class.getName();
   }
   
-  public boolean a()
+  public static bdnn a()
   {
-    return (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.e));
+    try
+    {
+      if (jdField_a_of_type_Bdnn == null) {
+        jdField_a_of_type_Bdnn = new bdnn();
+      }
+      bdnn localbdnn = jdField_a_of_type_Bdnn;
+      return localbdnn;
+    }
+    finally {}
+  }
+  
+  public String a(String paramString)
+  {
+    return a(paramString, null);
+  }
+  
+  public String a(String paramString, Bundle paramBundle)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(bdnm.a(bcxm.a().a(), "OpenSettings"));
+    }
+    String str1 = paramString;
+    String str2;
+    SharedPreferences localSharedPreferences;
+    String str3;
+    try
+    {
+      str2 = new URL(paramString).getHost();
+      if (str2 == null)
+      {
+        str1 = paramString;
+        bdht.e(jdField_a_of_type_JavaLangString, "Get host error. url=" + paramString);
+        return paramString;
+      }
+      str1 = paramString;
+      localSharedPreferences = (SharedPreferences)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      str1 = paramString;
+      if (localSharedPreferences == null) {
+        return str1;
+      }
+      str1 = paramString;
+      str3 = localSharedPreferences.getString(str2, null);
+      if (str3 != null)
+      {
+        str1 = paramString;
+        if (!str2.equals(str3)) {}
+      }
+      else
+      {
+        str1 = paramString;
+        bdht.c(jdField_a_of_type_JavaLangString, "host=" + str2 + ", envHost=" + str3);
+        return paramString;
+      }
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      bdht.e(jdField_a_of_type_JavaLangString, "getEnvUrl error. url=" + str1);
+      return str1;
+    }
+    if (paramBundle != null)
+    {
+      str1 = paramString;
+      paramBundle.putString("env", localSharedPreferences.getString("OpenEnvironment", "formal"));
+    }
+    str1 = paramString;
+    paramString = paramString.replace(str2, str3);
+    str1 = paramString;
+    bdht.c(jdField_a_of_type_JavaLangString, "return environment url : " + paramString);
+    str1 = paramString;
+    return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdnn
  * JD-Core Version:    0.7.0.1
  */

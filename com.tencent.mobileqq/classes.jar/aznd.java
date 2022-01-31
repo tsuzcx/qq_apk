@@ -1,55 +1,33 @@
-import android.graphics.Color;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0x934.cmd0x934.ItemInfo;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.2;
+import java.util.Iterator;
+import java.util.List;
 
 public class aznd
+  extends akhu
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public aznd(TroopAioKeywordTipManager.2 param2) {}
   
-  public aznd()
+  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -16777216;
-    this.jdField_c_of_type_Int = -7829368;
-  }
-  
-  public static aznd a(String paramString1, String paramString2)
-  {
-    aznd localaznd = new aznd();
-    localaznd.jdField_a_of_type_JavaLangString = paramString1;
-    localaznd.jdField_b_of_type_JavaLangString = "";
-    localaznd.jdField_c_of_type_JavaLangString = paramString2;
-    try
+    SparseArray localSparseArray;
+    if (paramBoolean)
     {
-      localaznd.jdField_a_of_type_Int = 0;
-      localaznd.jdField_b_of_type_Int = 0;
-      localaznd.jdField_c_of_type_Int = 0;
-      return localaznd;
+      localSparseArray = this.a.this$0.b;
+      if (paramList != null) {
+        try
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
+          {
+            TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)paramList.next();
+            this.a.this$0.b.put(localTroopAioKeywordTipInfo.ruleId, localTroopAioKeywordTipInfo);
+          }
+        }
+        finally {}
+      }
     }
-    catch (Exception paramString1) {}
-    return localaznd;
-  }
-  
-  public static aznd a(cmd0x934.ItemInfo paramItemInfo)
-  {
-    aznd localaznd = new aznd();
-    localaznd.jdField_a_of_type_JavaLangString = paramItemInfo.title.get();
-    localaznd.jdField_b_of_type_JavaLangString = paramItemInfo.icon.get();
-    localaznd.jdField_c_of_type_JavaLangString = paramItemInfo.url.get();
-    try
-    {
-      localaznd.jdField_a_of_type_Int = Color.parseColor(paramItemInfo.color.get());
-      localaznd.jdField_b_of_type_Int = Color.parseColor(paramItemInfo.font_color.get());
-      localaznd.jdField_c_of_type_Int = Color.parseColor(paramItemInfo.border_color.get());
-      return localaznd;
-    }
-    catch (Exception paramItemInfo) {}
-    return localaznd;
   }
 }
 

@@ -1,18 +1,49 @@
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
+import com.tencent.mobileqq.data.AppShareID;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aana
-  extends aodp
+  extends ajuh
 {
-  public aana(Conversation paramConversation) {}
+  public aana(BaseChatPie paramBaseChatPie) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected void a(String paramString, int paramInt, ArrayList<QQOperationViopTipTask> paramArrayList)
   {
-    this.a.a(8, paramString, -2147483648);
+    if (this.a.A()) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (QLog.isDevelopLevel()) {
+            QLog.d("QQOperateVoIP", 4, "on showTips, chatactivity upadte ui");
+          }
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == paramInt)) {
+            break;
+          }
+        } while (!QLog.isDevelopLevel());
+        QLog.d("QQOperateVoIP", 4, "on showTips, uin dosenot equal");
+        return;
+        if ((paramArrayList != null) && (paramArrayList.size() != 0)) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.d("QQOperateVoIP", 4, "on showTips,tasklist is null");
+      return;
+    } while (this.a.jdField_a_of_type_Aeyq == null);
+    this.a.jdField_a_of_type_Aeyq.a(paramArrayList);
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
   {
-    this.a.a(8, paramString1, -2147483648);
+    if ((paramBoolean) && (this.a.jdField_a_of_type_Acut != null)) {
+      this.a.jdField_a_of_type_Acut.notifyDataSetChanged();
+    }
   }
 }
 

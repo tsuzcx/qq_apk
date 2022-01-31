@@ -1,31 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
 
-public final class aaew
-  implements DialogInterface.OnClickListener
+public class aaew
+  implements View.OnClickListener
 {
-  public aaew(aagn paramaagn, int paramInt, aagm paramaagm) {}
+  public aaew(AboutActivity paramAboutActivity, asfa paramasfa) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Aagn.a)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Asfa.d))
     {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label59;
-      }
-      awqx.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "2", "", "", "");
+      ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, this.jdField_a_of_type_Asfa.d);
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X800865C", "0X800865C", 0, 0, "", "", "", "");
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Aagm != null) {
-        this.jdField_a_of_type_Aagm.a();
-      }
-      return;
-      label59:
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
-        awqx.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "2", "", "", "");
-      }
-    }
+    this.jdField_a_of_type_Asfa.a();
+    AboutActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, null);
   }
 }
 

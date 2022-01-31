@@ -1,43 +1,26 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.text.TextUtils;
 
-class aurq
-  extends Handler
+public class aurq
 {
-  public aurq(Looper paramLooper)
+  public String a;
+  public String b;
+  
+  public boolean a()
   {
-    super(paramLooper);
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    auru.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
-    switch (paramMessage.what)
-    {
-    case 1: 
-    default: 
-      return;
-    case 2: 
-      i = paramMessage.arg1;
-      paramMessage = paramMessage.getData();
-      auru.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
-      return;
-    }
-    int i = paramMessage.arg1;
-    switch (paramMessage.arg1)
-    {
-    default: 
-      return;
-    }
-    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-    auru.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
+    StringBuilder localStringBuilder = new StringBuilder("PrecoverBusinessInfo:");
+    localStringBuilder.append("businessId=").append(this.a);
+    localStringBuilder.append(", name=").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aurq
  * JD-Core Version:    0.7.0.1
  */

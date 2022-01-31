@@ -1,16 +1,11 @@
 package com.tencent.mobileqq.startup.step;
 
-import ahca;
-import awnu;
-import awoa;
+import ahop;
+import axnv;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzonePluginProxyActivity;
-import java.io.File;
 import mqq.app.AppActivity;
 import mqq.app.AppRuntime;
-import xfs;
+import xos;
 
 public class LoadData
   extends Step
@@ -20,38 +15,25 @@ public class LoadData
     boolean bool2 = true;
     AppActivity localAppActivity = this.mDirector.a;
     long l = System.currentTimeMillis();
-    xfs.a = l;
-    if ((!awnu.a()) || (BaseApplicationImpl.isCurrentVersionFirstLaunch) || (PluginUtils.getInstalledPluginPath(localAppActivity, "qzone_plugin.apk").exists())) {}
-    for (;;)
+    xos.a = l;
+    if (localAppActivity != null)
     {
-      try
-      {
-        QzonePluginProxyActivity.a(localAppActivity);
-        if (localAppActivity != null)
-        {
-          if (!xfs.a(BaseApplicationImpl.sApplication)) {
-            break;
-          }
-          ahca.a(BaseApplicationImpl.sApplication, true);
-        }
-        return false;
+      if (xos.a(BaseApplicationImpl.sApplication)) {
+        ahop.a(BaseApplicationImpl.sApplication, true);
       }
-      catch (Exception localException)
-      {
-        QLog.e("LoadData", 1, "getQZonePluginClassLoader" + localException);
-        continue;
-      }
-      QLog.e("LoadData", 1, "file == null");
+    }
+    else {
+      return false;
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.waitAppRuntime(null);
     if (this.mId == 18)
     {
       bool1 = true;
       if ((!localAppActivity.preloadData(localAppRuntime, bool1)) || (System.currentTimeMillis() - l >= 550L)) {
-        break label167;
+        break label94;
       }
     }
-    label167:
+    label94:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       return bool1;

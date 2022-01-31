@@ -1,32 +1,32 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
-import dov.com.qq.im.ptv.LightWeightProgress;
+import android.support.annotation.NonNull;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
 
 public class bhyc
-  extends AnimatorListenerAdapter
 {
-  public bhyc(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public int a;
+  public String a;
+  public EGLConfig a;
+  public EGLContext a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public bhyc()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation mProgressView 50ms end");
-    }
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  @NonNull
+  public String toString()
   {
-    this.a.a.setStatus(true);
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation mProgressView begin");
-    }
+    return " width = " + this.jdField_a_of_type_Int + " height = " + this.jdField_b_of_type_Int + " isNeedOffScreen = " + this.jdField_a_of_type_Boolean + " resUrl = " + this.jdField_a_of_type_JavaLangString + " resFilePath = " + this.jdField_b_of_type_JavaLangString + " resMD5 = " + this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhyc
  * JD-Core Version:    0.7.0.1
  */

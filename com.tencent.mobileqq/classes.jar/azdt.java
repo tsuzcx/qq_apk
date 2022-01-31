@@ -1,33 +1,24 @@
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.ThemeLabelTextView;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import com.tencent.widget.AdapterView;
 
 public class azdt
-  extends aiac
+  implements bfpd
 {
-  int jdField_a_of_type_Int;
-  final View jdField_a_of_type_AndroidViewView;
-  final CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public final TextView a;
-  private final ThemeLabelTextView jdField_a_of_type_ComTencentWidgetThemeLabelTextView;
-  TextView b;
+  public azdt(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  azdt(View paramView)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.c = ((ImageView)paramView.findViewById(2131302951));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131302722));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312436));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131304872));
-    this.jdField_a_of_type_ComTencentWidgetThemeLabelTextView = ((ThemeLabelTextView)paramView.findViewById(2131312429));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131312503);
-    this.b = ((TextView)paramView.findViewById(2131312526));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131296974));
+    if (this.a.a != null)
+    {
+      paramAdapterView = this.a.a.a(paramInt);
+      if ((paramAdapterView == null) || (paramAdapterView.a != 1)) {
+        return false;
+      }
+    }
+    MediaPreviewActivity.a(this.a);
+    return true;
   }
 }
 

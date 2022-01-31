@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfx;
-import bdfz;
+import bejy;
+import beka;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 
 public class CustomerJsPlugin
@@ -10,9 +10,9 @@ public class CustomerJsPlugin
   private static final String TAG = "CustomerJsPlugin";
   private ChannelProxy mChannelProxy;
   
-  public void openCustomerServiceConversation(bdfz parambdfz)
+  public void openCustomerServiceConversation(beka parambeka)
   {
-    this.mChannelProxy.getRobotUin(this.mApkgInfo.d, new CustomerJsPlugin.1(this, parambdfz));
+    this.mChannelProxy.getRobotUin(this.mApkgInfo.d, new CustomerJsPlugin.1(this, parambeka));
   }
 }
 

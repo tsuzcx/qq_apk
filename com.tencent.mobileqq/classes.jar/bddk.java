@@ -1,139 +1,86 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.open.agent.SwitchAccountActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bddk
+class bddk
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private static final bddk jdField_a_of_type_Bddk = new bddk();
-  private bddl jdField_a_of_type_Bddl;
-  private Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  private Map<String, bddj> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<String, bddj> b = new HashMap();
-  private Map<String, bddi> c = new HashMap();
-  private Map<String, String> d = new HashMap();
-  private Map<String, String> e = new HashMap();
+  bddk(bddj parambddj) {}
   
-  public static bddk a()
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    return jdField_a_of_type_Bddk;
-  }
-  
-  private void b(bddm... paramVarArgs)
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.b.clear();
-    this.c.clear();
-    this.d.clear();
-    this.e.clear();
-    int j = paramVarArgs.length;
-    int i = 0;
-    Object localObject;
-    if (i < j)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (Math.abs(paramFloat1) > Math.abs(paramFloat2))
     {
-      localObject = paramVarArgs[i];
-      if (!((bddm)localObject).a()) {}
-      for (;;)
+      bool1 = bool2;
+      if (Math.abs(paramFloat1) > 20.0F)
       {
-        i += 1;
-        break;
-        this.jdField_a_of_type_JavaUtilMap.putAll(((bddm)localObject).a());
-        this.b.putAll(((bddm)localObject).b());
-        this.c.putAll(((bddm)localObject).c());
-      }
-    }
-    paramVarArgs = this.c.values().iterator();
-    while (paramVarArgs.hasNext())
-    {
-      localObject = (bddi)paramVarArgs.next();
-      Iterator localIterator = ((bddi)localObject).jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (a(str))
+        bool1 = bool2;
+        if (!this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a)
         {
-          this.d.put(str, ((bddi)localObject).jdField_a_of_type_JavaLangString);
-          this.e.put(((bddi)localObject).jdField_a_of_type_JavaLangString, str);
+          this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = true;
+          if (this.a.jdField_a_of_type_AndroidViewView != null) {
+            this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
+          }
+          if ((paramFloat1 < -20.0F) && (this.a.jdField_a_of_type_JavaLangRefWeakReference != null))
+          {
+            paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+            if (paramMotionEvent1 != null)
+            {
+              paramMotionEvent1 = paramMotionEvent1.findViewById(2131375996);
+              if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
+                ((ShaderAnimLayout)paramMotionEvent1).e();
+              }
+            }
+            this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
+          }
+          if (paramFloat1 > 20.0F)
+          {
+            if ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+              break label245;
+            }
+            paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+            if (paramMotionEvent1 != this.a.jdField_a_of_type_AndroidViewView)
+            {
+              paramMotionEvent1 = paramMotionEvent1.findViewById(2131375996);
+              if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
+                ((ShaderAnimLayout)paramMotionEvent1).e();
+              }
+            }
+            this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
+          }
         }
       }
     }
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-    if (this.jdField_a_of_type_Bddl != null) {
-      this.jdField_a_of_type_Bddl.a();
-    }
-  }
-  
-  public bddi a(String paramString)
-  {
-    return (bddi)this.c.get(paramString);
-  }
-  
-  public bddj a(String paramString)
-  {
-    return (bddj)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public String a(String paramString)
-  {
-    paramString = a(paramString);
-    if (paramString != null)
+    for (;;)
     {
-      paramString = paramString.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramString.hasNext())
+      bool1 = true;
+      return bool1;
+      label245:
+      if (this.a.jdField_a_of_type_AndroidViewView != null)
       {
-        String str = (String)paramString.next();
-        if (this.b.containsKey(str)) {
-          return str;
+        paramMotionEvent1 = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131375996);
+        if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() != 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("AccountManage", 2, "show current selectedAccountView");
+          }
+          ((ShaderAnimLayout)paramMotionEvent1).a();
+          this.a.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.a.jdField_a_of_type_AndroidViewView);
+          this.a.jdField_a_of_type_AndroidViewView = null;
         }
       }
     }
-    return null;
-  }
-  
-  public List<String> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(this.jdField_a_of_type_JavaUtilMap.keySet());
-    localArrayList.addAll(this.jdField_a_of_type_JavaUtilMap.keySet());
-    return localArrayList;
-  }
-  
-  public void a(String paramString, bddj parambddj)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, parambddj);
-  }
-  
-  public void a(bddm... paramVarArgs)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangBoolean)
-    {
-      if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-        b(paramVarArgs);
-      }
-      return;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
-  }
-  
-  public String b(String paramString)
-  {
-    return (String)this.d.get(paramString);
-  }
-  
-  public String c(String paramString)
-  {
-    return (String)this.e.get(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bddk
  * JD-Core Version:    0.7.0.1
  */

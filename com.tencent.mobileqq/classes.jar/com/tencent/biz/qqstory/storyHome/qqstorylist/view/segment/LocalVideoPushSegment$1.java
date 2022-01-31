@@ -2,29 +2,29 @@ package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import upm;
-import upq;
-import upr;
-import urk;
+import vci;
+import vcm;
+import vcn;
+import veg;
 
 public class LocalVideoPushSegment$1
   implements Runnable
 {
-  public LocalVideoPushSegment$1(upm paramupm) {}
+  public LocalVideoPushSegment$1(vci paramvci) {}
   
   public void run()
   {
-    urk.b("Q.qqstory.home.LocalVideoPushSegment", "loadAlbumOrPhoto..");
-    Object localObject = upm.a(this.this$0);
+    veg.b("Q.qqstory.home.LocalVideoPushSegment", "loadAlbumOrPhoto..");
+    Object localObject = vci.a(this.this$0);
     if (localObject != null)
     {
-      ThreadManager.getUIHandler().post(new LocalVideoPushSegment.1.1(this, (upq)localObject));
+      ThreadManager.getUIHandler().post(new LocalVideoPushSegment.1.1(this, (vcm)localObject));
       return;
     }
-    localObject = upm.a(this.this$0);
+    localObject = vci.a(this.this$0);
     if (localObject != null)
     {
-      ThreadManager.getUIHandler().post(new LocalVideoPushSegment.1.2(this, (upr)localObject));
+      ThreadManager.getUIHandler().post(new LocalVideoPushSegment.1.2(this, (vcn)localObject));
       return;
     }
     ThreadManager.getUIHandler().post(new LocalVideoPushSegment.1.3(this));

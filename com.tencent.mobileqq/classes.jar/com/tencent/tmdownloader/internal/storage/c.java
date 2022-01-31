@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.tmassistant.common.ProtocolPackage;
 import com.tencent.tmassistantbase.util.Settings;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import java.util.Map;
 
 class c
@@ -22,15 +22,15 @@ class c
         {
           b.a(this.d).put(this.a, localJceStruct);
           Settings.getInstance().setBlob(this.a, this.b);
-          ac.c("JceCacheManager", "<save> " + this.a + " success!");
+          ab.c("JceCacheManager", "<save> " + this.a + " success!");
           return;
         }
-        ac.c("JceCacheManager", "<save> value of " + this.a + " is null !");
+        ab.c("JceCacheManager", "<save> value of " + this.a + " is null !");
         return;
       }
       catch (Exception localException)
       {
-        ac.e("JceCacheManager", "<save> type cast error!");
+        ab.e("JceCacheManager", "<save> type cast error!");
       }
     }
   }

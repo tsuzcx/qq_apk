@@ -1,24 +1,47 @@
-import android.os.Looper;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-
 public class bavf
-  implements bavk
 {
-  public bavf(RegisterLHAssistant.2 param2) {}
+  public int a;
+  public String a;
   
-  public void a(boolean paramBoolean)
+  public bavf() {}
+  
+  public bavf(int paramInt, String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(bavd.a, 4, String.format(Locale.getDefault(), "checkVipQQStatus, needShow: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(bavf parambavf)
+  {
+    if (parambavf != null)
+    {
+      this.jdField_a_of_type_Int = parambavf.jdField_a_of_type_Int;
+      this.jdField_a_of_type_JavaLangString = parambavf.jdField_a_of_type_JavaLangString;
     }
-    bavd.a(this.a.this$0, paramBoolean);
-    if ((bavd.a(this.a.this$0)) && (bavd.a(this.a.this$0).isEnabled()) && (Thread.currentThread() == Looper.getMainLooper().getThread()) && (bavd.a(this.a.this$0).getVisibility() == 8)) {
-      this.a.this$0.b(true);
+  }
+  
+  public Object clone()
+  {
+    return new bavf(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof bavf))
+    {
+      paramObject = (bavf)paramObject;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int)
+      {
+        bool1 = bool2;
+        if (bbbd.a(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)) {
+          bool1 = true;
+        }
+      }
     }
+    return bool1;
   }
 }
 

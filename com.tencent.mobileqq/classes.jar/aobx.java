@@ -1,24 +1,14 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import java.util.List;
 
-public class aobx
-  implements Cloneable
+class aobx
+  implements asko<List<aoah>>
 {
-  public int a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public int b;
-  public TextView b;
-  public int c;
+  aobx(aobu paramaobu) {}
   
-  public aobx(aobv paramaobv) {}
+  public void a(List<aoah> paramList)
+  {
+    this.a.a(paramList);
+  }
 }
 
 

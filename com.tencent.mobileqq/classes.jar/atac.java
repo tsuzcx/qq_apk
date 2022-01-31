@@ -1,9 +1,19 @@
-import com.tencent.pb.now.ilive_feeds_read.FeedsInfo;
-import java.util.List;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
 
-public abstract interface atac
+public class atac
+  implements INetEventHandler
 {
-  public abstract void a(boolean paramBoolean1, List<ilive_feeds_read.FeedsInfo> paramList, boolean paramBoolean2, int paramInt);
+  private int jdField_a_of_type_Int = -1;
+  
+  public atac(NearbyJsInterface paramNearbyJsInterface) {}
+  
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    int i = nam.a();
+    NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface, this.jdField_a_of_type_Int, i);
+    this.jdField_a_of_type_Int = i;
+  }
 }
 
 

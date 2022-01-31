@@ -6,16 +6,16 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdcy;
-import bdgg;
-import bdgi;
-import bdhg;
-import bdnw;
-import bdyg;
+import begy;
+import bekg;
+import beki;
+import belj;
+import besl;
+import beuc;
+import bffm;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBoxAdView;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -36,15 +36,15 @@ class AppBoxPlugin$MiniAppBox
   private String appId;
   private WeakReference<Activity> mActivity;
   private volatile boolean mIsRequestingAd;
-  private bdcy mJsService;
+  private begy mJsService;
   
-  AppBoxPlugin$MiniAppBox(AppBoxPlugin paramAppBoxPlugin, Activity paramActivity, int paramInt, String paramString1, String paramString2, bdcy parambdcy)
+  AppBoxPlugin$MiniAppBox(AppBoxPlugin paramAppBoxPlugin, Activity paramActivity, int paramInt, String paramString1, String paramString2, begy parambegy)
   {
     this.mActivity = new WeakReference(paramActivity);
     this.appBoxId = paramInt;
     this.adUnitId = paramString1;
     this.appId = paramString2;
-    this.mJsService = parambdcy;
+    this.mJsService = parambegy;
   }
   
   private void callbackJs(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -55,10 +55,10 @@ class AppBoxPlugin$MiniAppBox
       }
     }
     label75:
-    for (paramString = bdgg.a(paramString, getResultObj(paramInt1, paramInt2));; paramString = bdgg.a(paramString, getResultObj(paramInt1, paramInt2), (String)AppBoxPlugin.S_CodeMsg_Map.get(Integer.valueOf(paramInt2))))
+    for (paramString = bekg.a(paramString, getResultObj(paramInt1, paramInt2));; paramString = bekg.a(paramString, getResultObj(paramInt1, paramInt2), (String)AppBoxPlugin.S_CodeMsg_Map.get(Integer.valueOf(paramInt2))))
     {
       paramString = paramString.toString();
-      bdnw.b("SDK_MiniAppBox", "evaluateCallbackJs callbackId: " + paramInt3 + " content:" + paramString);
+      besl.b("SDK_MiniAppBox", "evaluateCallbackJs callbackId: " + paramInt3 + " content:" + paramString);
       this.mJsService.a(paramInt3, paramString);
       return;
     }
@@ -78,7 +78,7 @@ class AppBoxPlugin$MiniAppBox
     catch (Throwable localThrowable)
     {
       localThrowable = localThrowable;
-      bdnw.d("SDK_MiniAppBox", "getResultObj e:", localThrowable);
+      besl.d("SDK_MiniAppBox", "getResultObj e:", localThrowable);
       return localJSONObject;
     }
     finally {}
@@ -87,50 +87,50 @@ class AppBoxPlugin$MiniAppBox
   
   private boolean initAdParam(int paramInt1, int paramInt2)
   {
-    String str3 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAccount();
+    String str3 = beuc.a().a();
     if (TextUtils.isEmpty(this.appId))
     {
-      bdnw.d("SDK_MiniAppBox", "TextUtils.isEmpty(appid)");
+      besl.d("SDK_MiniAppBox", "TextUtils.isEmpty(appid)");
       return false;
     }
     int i;
-    label60:
+    label55:
     int j;
-    label122:
+    label117:
+    label126:
     Object localObject3;
-    label131:
     Object localObject1;
-    label174:
+    label169:
     String str1;
-    label195:
+    label190:
     String str2;
     Object localObject2;
     if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation == 2)
     {
       i = 1;
       if (i == 0) {
-        break label424;
+        break label419;
       }
       i = 90;
-      bdnw.b("SDK_MiniAppBox", "handle initAdParam appId = " + this.appId + "， deviceOrient = " + i);
+      besl.b("SDK_MiniAppBox", "handle initAdParam appId = " + this.appId + "， deviceOrient = " + i);
       if ((this.this$0.mMiniAppInfo == null) || (!this.this$0.mMiniAppInfo.isEngineTypeMiniApp())) {
-        break label429;
+        break label424;
       }
       j = 0;
       if (j != 0) {
-        break label435;
+        break label430;
       }
       j = 7;
       localObject3 = this.this$0.mMiniAppInfo;
       if ((localObject3 == null) || (((MiniAppInfo)localObject3).launchParam == null)) {
-        break label472;
+        break label467;
       }
       if (((MiniAppInfo)localObject3).launchParam.c == null) {
-        break label442;
+        break label437;
       }
       localObject1 = ((MiniAppInfo)localObject3).launchParam.c;
       if (((MiniAppInfo)localObject3).launchParam == null) {
-        break label450;
+        break label445;
       }
       str1 = MiniAppInfo.getReportDataString(((MiniAppInfo)localObject3).launchParam.jdField_a_of_type_JavaUtilMap);
       str2 = String.valueOf(((MiniAppInfo)localObject3).launchParam.jdField_a_of_type_Int);
@@ -139,27 +139,27 @@ class AppBoxPlugin$MiniAppBox
     }
     for (;;)
     {
-      label236:
+      label231:
       String str4;
       if ((localObject3 != null) && (((MiniAppInfo)localObject3).via != null))
       {
         str2 = ((MiniAppInfo)localObject3).via;
-        str4 = bdyg.a(j);
-        bdhg.a("QZoneSetting", "MiniGameShareRate", 53);
+        str4 = bffm.a(j);
+        belj.a("QZoneSetting", "MiniGameShareRate", 53);
         if (this.mActivity == null) {
-          break label466;
+          break label461;
         }
       }
+      label419:
       label424:
-      label429:
-      label435:
-      label442:
-      label450:
-      label466:
+      label430:
+      label437:
+      label445:
+      label461:
       for (localObject3 = (Activity)this.mActivity.get();; localObject3 = null)
       {
         if (localObject3 == null) {
-          break label470;
+          break label465;
         }
         Bundle localBundle = new Bundle();
         localBundle.putString(AdProxy.KEY_ACCOUNT, str3);
@@ -178,21 +178,21 @@ class AppBoxPlugin$MiniAppBox
         i = 0;
         break;
         i = 0;
-        break label60;
+        break label55;
         j = 1;
-        break label122;
+        break label117;
         j = 8;
-        break label131;
+        break label126;
         localObject1 = "";
-        break label174;
+        break label169;
         str1 = "";
-        break label195;
+        break label190;
         str2 = "";
-        break label236;
+        break label231;
       }
-      label470:
+      label465:
       break;
-      label472:
+      label467:
       localObject1 = "";
       str1 = "";
       localObject2 = "";
@@ -225,9 +225,9 @@ class AppBoxPlugin$MiniAppBox
     this.mActivity = new WeakReference(paramActivity);
   }
   
-  void setJsService(bdcy parambdcy)
+  void setJsService(begy parambegy)
   {
-    this.mJsService = parambdcy;
+    this.mJsService = parambegy;
   }
   
   boolean show(int paramInt1, int paramInt2)
@@ -235,7 +235,7 @@ class AppBoxPlugin$MiniAppBox
     if (this.adBox == null) {
       return false;
     }
-    bdgi.a(new AppBoxPlugin.MiniAppBox.1(this, paramInt1, paramInt2));
+    beki.a(new AppBoxPlugin.MiniAppBox.1(this, paramInt1, paramInt2));
     return true;
   }
 }

@@ -1,30 +1,36 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
+import com.tencent.widget.AbsListView;
 
 public class tuk
-  extends sgl<tuj, sxf>
+  implements bfob
 {
-  public tuk(tuj paramtuj)
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
+  int c = 0;
+  
+  public tuk(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramtuj);
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
   }
   
-  public void a(@NonNull tuj paramtuj, @NonNull sxf paramsxf)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((tuj.a(paramtuj) != null) && (paramsxf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramsxf.jdField_a_of_type_JavaUtilList.contains(tuj.a(paramtuj).a)))
+    if ((paramInt == 0) && (this.c + this.jdField_a_of_type_Int >= this.b))
     {
-      urk.a("CaptureTogetherBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramsxf.b.toString());
-      paramtuj.a.i();
+      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.b) {
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(3);
+      }
     }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(1);
+    tum.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a);
   }
-  
-  public Class acceptEventClass()
-  {
-    return sxf.class;
-  }
-  
-  public void b(@NonNull tuj paramtuj, @NonNull sxf paramsxf) {}
 }
 
 

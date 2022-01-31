@@ -1,372 +1,113 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.report.ReportModel;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import android.opengl.GLSurfaceView;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import java.math.BigDecimal;
 
 public class avsv
+  implements GLGestureListener
 {
-  public static final String a = avsv.class.getSimpleName();
-  public static String b = "";
+  public float a;
+  public GLSurfaceView a;
+  private float b;
+  private float c;
   
-  public static String a()
+  public avsv(GLSurfaceView paramGLSurfaceView)
   {
-    return "old_search";
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
   }
   
-  public static String a(int paramInt)
+  public int onGetPriority()
   {
-    if (paramInt == 1) {
-      return "message";
-    }
-    if (paramInt == 2) {
-      return "contact";
-    }
-    if ((paramInt == 21) || (paramInt == 3)) {
-      return "dongtai";
-    }
-    if ((paramInt == 25) || (paramInt == 10)) {
-      return "kandian";
-    }
-    return "unknown";
+    return 0;
   }
   
-  public static void a(int paramInt1, int paramInt2, avnu paramavnu)
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    if ((paramavnu == null) || (paramavnu.a() == null)) {}
-    do
-    {
-      do
+    int i = paramMotionEvent.getPointerCount();
+    int j = paramMotionEvent.getAction() & 0xFF;
+    if ((j != 3) || ((i == 1) && (paramBoolean))) {
+      switch (j)
       {
-        return;
-      } while (!paramavnu.a());
-      if (paramavnu.a().equals(avoa.a)) {
-        a(null, 0, paramInt2, "0X8009D4E", 0, 0, null, null);
       }
-      if (paramavnu.a().equals(avnx.a)) {
-        a(null, 0, paramInt2, "0X8009D38", 0, 0, null, null);
-      }
-      if (paramavnu.a().equals(avnz.a)) {
-        a(null, 0, paramInt2, "0X8009D3C", 0, 0, null, null);
-      }
-    } while (!paramavnu.a().equals(ajjy.a(2131650114)));
-    a(null, 0, paramInt2, "0X8009D52", 0, 0, null, null);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2)
-  {
-    if (paramQQAppInterface == null)
-    {
-      paramQQAppInterface = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(paramQQAppInterface instanceof QQAppInterface))
-      {
-        QLog.e(a, 1, "app is null");
-        return;
-      }
-      paramQQAppInterface = (QQAppInterface)paramQQAppInterface;
     }
+    float f4;
+    float f2;
+    float f3;
     for (;;)
     {
-      int i = 0;
-      if (paramInt1 != 0) {
-        switch (paramInt1)
+      return false;
+      this.c = this.jdField_a_of_type_Float;
+      continue;
+      if (paramMotionEvent.getY() >= this.jdField_a_of_type_Float)
+      {
+        this.c = this.jdField_a_of_type_Float;
+      }
+      else
+      {
+        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
+        if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
         {
-        default: 
-          paramInt1 = i;
-        }
-      }
-      for (;;)
-      {
-        String str2 = "" + paramInt3;
-        String str1 = "" + paramInt4;
-        try
-        {
-          Integer.valueOf(str2);
-          awqx.b(paramQQAppInterface, "dc00898", "", "", "qqsearch", paramString1, paramInt1, 0, str2, str1, paramString2, "");
-          return;
-        }
-        catch (Exception localException)
-        {
-          awqx.b(paramQQAppInterface, "dc00898", "", "", "qqsearch", paramString1, paramInt1, 0, "0", str1, paramString2, "");
-          return;
-        }
-        paramInt1 = 1;
-        continue;
-        paramInt1 = 2;
-        continue;
-        paramInt1 = 3;
-        continue;
-        switch (paramInt2)
-        {
-        default: 
-          paramInt1 = 0;
-          break;
-        case 1: 
-          paramInt1 = 1;
-          break;
-        case 2: 
-          paramInt1 = 2;
-          break;
-        case 21: 
-          paramInt1 = 3;
-        }
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2, String paramString3)
-  {
-    int i = 0;
-    if (paramInt1 != 0) {
-      switch (paramInt1)
-      {
-      default: 
-        if (paramString2 == null) {
-          paramString2 = "";
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      if (paramString3 == null) {
-        paramString3 = "";
-      }
-      for (;;)
-      {
-        awqx.b(paramQQAppInterface, "dc00898", "", "", "qqsearch", paramString1, i, 0, paramInt3 + "", paramInt4 + "", paramString2, paramString3);
-        QLog.d("searchReportClick898", 2, " source: " + paramInt1 + " from: " + paramInt2 + "  sopName: " + paramString1 + " r1: " + paramInt3 + " r2: " + paramInt4 + " r3: " + paramString2 + " r4: " + paramString3);
-        return;
-        i = 1;
-        break;
-        i = 2;
-        break;
-        i = 3;
-        break;
-        if (paramInt2 != 0) {}
-        switch (paramInt2)
-        {
-        default: 
-          i = 0;
-          break;
-        case 1: 
-          i = 1;
-          break;
-        case 2: 
-          i = 2;
-          break;
-        case 21: 
-          i = 3;
-          break;
-        case 25: 
-          i = 4;
-          break;
-        }
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, ReportModelDC02528 paramReportModelDC02528)
-  {
-    a("dc02528", paramQQAppInterface, paramReportModelDC02528);
-    if (QLog.isColorLevel()) {}
-  }
-  
-  public static void a(Object paramObject, String paramString, int paramInt)
-  {
-    if ((paramObject instanceof avnu)) {
-      a(0, paramInt, (avnu)paramObject);
-    }
-    if ((paramObject instanceof avod)) {
-      a(null, 0, paramInt, "0X8009D30", 0, 0, null, null);
-    }
-    Object localObject;
-    int i;
-    label137:
-    label270:
-    label533:
-    if ((paramObject instanceof avnx))
-    {
-      localObject = (avnx)paramObject;
-      if (((avnx)localObject).a() == null) {
-        break label611;
-      }
-      i = ((avnx)localObject).a().size();
-      if (i > ((avnx)localObject).a())
-      {
-        i = ((avnx)localObject).a();
-        avwf.a("all_result", "exp_contact", new String[] { "" + paramString, "" + i });
-        a(null, 0, paramInt, "0X8009D36", 0, 0, null, null);
-      }
-    }
-    else
-    {
-      if ((paramObject instanceof avnz)) {
-        a(null, 0, paramInt, "0X8009D3A", 0, 0, null, null);
-      }
-      if ((paramObject instanceof avmf))
-      {
-        localObject = (avmf)paramObject;
-        if (((avmf)localObject).a() == null) {
-          break label655;
-        }
-        i = ((avmf)localObject).a().size();
-        if (i <= ((avmf)localObject).a()) {
-          break label652;
-        }
-        i = ((avmf)localObject).a();
-        label215:
-        avwf.a("all_result", "exp_talk", new String[] { "" + paramString, "" + i });
-        a(null, 0, paramInt, "0X8009D4C", 0, 0, null, null);
-      }
-      if ((paramObject instanceof bfim))
-      {
-        localObject = (bfim)paramObject;
-        if (((bfim)localObject).a() == null) {
-          break label699;
-        }
-        i = ((bfim)localObject).a().size();
-        if (i <= ((bfim)localObject).a()) {
-          break label696;
-        }
-        i = ((bfim)localObject).a();
-        label329:
-        avwf.a("all_result", "exp_collect", new String[] { "" + paramString, "" + i });
-      }
-      if ((paramObject instanceof aooq))
-      {
-        localObject = (aooq)paramObject;
-        if (((aooq)localObject).a() == null) {
-          break label743;
-        }
-        i = ((aooq)localObject).a().size();
-        if (i <= ((aooq)localObject).a()) {
-          break label740;
-        }
-        i = ((aooq)localObject).a();
-        label431:
-        avwf.a("all_result", "exp_file", new String[] { "" + paramString, "" + i });
-      }
-      label486:
-      if ((paramObject instanceof avoe))
-      {
-        localObject = (avoe)paramObject;
-        if (((avoe)localObject).a() == null) {
-          break label787;
-        }
-        i = ((avoe)localObject).a().size();
-        if (i <= ((avoe)localObject).a()) {
-          break label784;
-        }
-        i = ((avoe)localObject).a();
-        avwf.a("all_result", "exp_discuss", new String[] { "" + paramString, "" + i });
-      }
-    }
-    for (;;)
-    {
-      label384:
-      if ((paramObject instanceof avof)) {
-        a(null, 0, paramInt, "0X8009D50", 0, 0, null, null);
-      }
-      return;
-      break;
-      label611:
-      avwf.a("all_result", "exp_contact", new String[] { "" + paramString, "0" });
-      break label137;
-      label652:
-      break label215;
-      label655:
-      avwf.a("all_result", "exp_talk", new String[] { "" + paramString, "0" });
-      break label270;
-      label696:
-      break label329;
-      label699:
-      avwf.a("all_result", "exp_collect", new String[] { "" + paramString, "0" });
-      break label384;
-      label740:
-      break label431;
-      label743:
-      avwf.a("all_result", "exp_file", new String[] { "" + paramString, "0" });
-      break label486;
-      label784:
-      break label533;
-      label787:
-      avwf.a("all_result", "exp_discuss", new String[] { "" + paramString, "0" });
-    }
-  }
-  
-  public static void a(String paramString, QQAppInterface paramQQAppInterface, ReportModel paramReportModel)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      if (!QLog.isColorLevel()) {}
-    }
-    do
-    {
-      return;
-      if (paramReportModel != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    return;
-    QQAppInterface localQQAppInterface = paramQQAppInterface;
-    if (paramQQAppInterface == null)
-    {
-      localQQAppInterface = paramQQAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
-      {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-        localQQAppInterface = paramQQAppInterface;
-        if (localAppRuntime != null)
-        {
-          localQQAppInterface = paramQQAppInterface;
-          if ((localAppRuntime instanceof QQAppInterface)) {
-            localQQAppInterface = (QQAppInterface)localAppRuntime;
+          if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraCaptureView)) {
+            ((CameraCaptureView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
+          }
+          for (;;)
+          {
+            this.c = paramMotionEvent.getY();
+            break;
+            if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof AECameraGLSurfaceView)) {
+              ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
+            }
+          }
+          if ((i == 2) && (!paramBoolean))
+          {
+            veg.a("CameraZoomGesture", "onTouchEvent %s", new Object[] { paramMotionEvent });
+            if (i != 2) {
+              break;
+            }
+            f4 = paramMotionEvent.getX(0);
+            f2 = paramMotionEvent.getY(0);
+            f3 = paramMotionEvent.getX(1);
+            f1 = paramMotionEvent.getY(1);
+            label254:
+            switch (j)
+            {
+            }
           }
         }
       }
     }
-    if (localQQAppInterface == null)
+    float f1 = vjr.a(f4, f2, f3, f1);
+    i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
+    if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
     {
-      paramQQAppInterface = new Intent();
-      paramQQAppInterface.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramQQAppInterface.putExtra("reporting_tag", paramString);
-      paramQQAppInterface.putExtra("reporting_detail", paramReportModel);
-      paramQQAppInterface.putExtra("reporting_count", paramReportModel.report_count);
-      paramQQAppInterface.putExtra("is_runtime", 1);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface);
-      return;
+      if (!(this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraCaptureView)) {
+        break label421;
+      }
+      ((CameraCaptureView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
     }
-    b(paramString, localQQAppInterface, paramReportModel);
-  }
-  
-  protected static void b(String paramString, QQAppInterface paramQQAppInterface, ReportModel paramReportModel)
-  {
-    if ((paramReportModel == null) || (paramQQAppInterface == null)) {
-      if (!QLog.isColorLevel()) {}
-    }
-    do
+    for (;;)
     {
-      return;
-      paramReportModel.uin = paramQQAppInterface.getCurrentAccountUin();
-      paramReportModel.version = "8.2.6";
-      NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), awdl.class);
-      localNewIntent.putExtra("sendType", 2);
-      localNewIntent.putExtra("tag", paramString);
-      localNewIntent.putExtra("content", paramReportModel.toReportString());
-      localNewIntent.setWithouLogin(true);
-      paramQQAppInterface.startServlet(localNewIntent);
-    } while (!QLog.isColorLevel());
-    QLog.d(a, 2, "reportEventRuntime, tag = " + paramString + ", model = " + paramReportModel);
+      this.b = f1;
+      return true;
+      f4 = paramMotionEvent.getX(1);
+      f2 = paramMotionEvent.getY(1);
+      f3 = paramMotionEvent.getX(2);
+      f1 = paramMotionEvent.getY(2);
+      break label254;
+      this.b = vjr.a(f4, f2, f3, f1);
+      break;
+      label421:
+      if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof AECameraGLSurfaceView)) {
+        ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avsv
  * JD-Core Version:    0.7.0.1
  */

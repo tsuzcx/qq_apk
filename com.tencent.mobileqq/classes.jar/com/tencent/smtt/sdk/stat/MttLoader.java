@@ -866,16 +866,16 @@ public class MttLoader
     //   222: ireturn
     //   223: astore_0
     //   224: aconst_null
-    //   225: astore_3
+    //   225: astore_0
     //   226: aload 5
-    //   228: astore_0
-    //   229: aload_3
+    //   228: astore_3
+    //   229: aload_0
     //   230: ifnull +7 -> 237
-    //   233: aload_3
+    //   233: aload_0
     //   234: invokevirtual 603	java/io/InputStream:close	()V
-    //   237: aload_0
+    //   237: aload_3
     //   238: ifnull -184 -> 54
-    //   241: aload_0
+    //   241: aload_3
     //   242: invokevirtual 592	java/util/jar/JarFile:close	()V
     //   245: iconst_0
     //   246: ireturn
@@ -908,7 +908,7 @@ public class MttLoader
     //   289: goto -91 -> 198
     //   292: astore_3
     //   293: goto -83 -> 210
-    //   296: astore_3
+    //   296: astore_0
     //   297: goto -60 -> 237
     //   300: astore_3
     //   301: goto -39 -> 262
@@ -918,15 +918,21 @@ public class MttLoader
     //   310: goto -56 -> 254
     //   313: astore_3
     //   314: aconst_null
-    //   315: astore_3
-    //   316: goto -87 -> 229
-    //   319: astore_3
-    //   320: aload 4
-    //   322: astore_3
-    //   323: goto -94 -> 229
+    //   315: astore 4
+    //   317: aload_0
+    //   318: astore_3
+    //   319: aload 4
+    //   321: astore_0
+    //   322: goto -93 -> 229
+    //   325: astore_3
+    //   326: aload_0
+    //   327: astore_3
+    //   328: aload 4
+    //   330: astore_0
+    //   331: goto -102 -> 229
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	326	0	paramFile	File
+    //   0	334	0	paramFile	File
     //   119	4	1	i	int
     //   175	2	2	bool	boolean
     //   1	258	3	localObject1	Object
@@ -934,16 +940,16 @@ public class MttLoader
     //   280	1	3	localIOException2	java.io.IOException
     //   284	1	3	localIOException3	java.io.IOException
     //   292	1	3	localIOException4	java.io.IOException
-    //   296	1	3	localIOException5	java.io.IOException
-    //   300	1	3	localIOException6	java.io.IOException
+    //   300	1	3	localIOException5	java.io.IOException
     //   313	1	3	localThrowable1	Throwable
-    //   315	1	3	localObject2	Object
-    //   319	1	3	localThrowable2	Throwable
-    //   322	1	3	localObject3	Object
+    //   318	1	3	localFile1	File
+    //   325	1	3	localThrowable2	Throwable
+    //   327	1	3	localFile2	File
     //   3	203	4	localInputStream	java.io.InputStream
-    //   250	21	4	localObject4	Object
-    //   308	13	4	localObject5	Object
-    //   6	221	5	localObject6	Object
+    //   250	21	4	localObject2	Object
+    //   308	1	4	localObject3	Object
+    //   315	14	4	localObject4	Object
+    //   6	221	5	localObject5	Object
     //   27	80	6	localJarEntry	java.util.jar.JarEntry
     // Exception table:
     //   from	to	target	type
@@ -973,17 +979,17 @@ public class MttLoader
     //   20	29	313	java/lang/Throwable
     //   59	66	313	java/lang/Throwable
     //   69	77	313	java/lang/Throwable
-    //   80	95	319	java/lang/Throwable
-    //   98	103	319	java/lang/Throwable
-    //   106	113	319	java/lang/Throwable
-    //   116	120	319	java/lang/Throwable
-    //   151	160	319	java/lang/Throwable
-    //   168	176	319	java/lang/Throwable
+    //   80	95	325	java/lang/Throwable
+    //   98	103	325	java/lang/Throwable
+    //   106	113	325	java/lang/Throwable
+    //   116	120	325	java/lang/Throwable
+    //   151	160	325	java/lang/Throwable
+    //   168	176	325	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.smtt.sdk.stat.MttLoader
  * JD-Core Version:    0.7.0.1
  */

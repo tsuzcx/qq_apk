@@ -1,91 +1,90 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
+import com.tencent.component.network.downloader.strategy.IPConfigStrategy;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import common.config.service.QzoneConfig;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public class bhir
-  extends BroadcastReceiver
+class bhir
+  extends IPConfigStrategy
+  implements bgft
 {
-  public bhir(QIMMusicConfigManager paramQIMMusicConfigManager) {}
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private ReadWriteLock jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock = new ReentrantReadWriteLock();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bhir()
   {
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
-    {
-      paramContext = paramIntent.getStringExtra("data");
-      paramIntent = paramIntent.getStringExtra("event");
-      if ((!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("kTribeSelectMusic"))) {
-        break label43;
-      }
-    }
-    for (;;)
-    {
+    a();
+    QzoneConfig.getInstance().addListener(this);
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "DownloadDirectIP");
+    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist");
+    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadDirectIP_a");
+    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist_a");
+    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadDirectIP_b");
+    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist_b");
+    a(this.jdField_a_of_type_JavaUtilMap, "VideoSvrList", "DownloadDirectIPVideo");
+    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "video_masterIplist");
+    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "optimumip_qzvv", "video_host_qzvv", "qzvv.video.qq.com");
+    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "qzpb.qq.com", "video_host_qzpb", "qzpb.qq.com");
+    super.setConfig(this.jdField_a_of_type_JavaUtilMap);
+  }
+  
+  private void a(Map<String, String> paramMap, String paramString1, String paramString2)
+  {
+    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
       return;
-      label43:
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMMusicConfigManager", 2, "onReceive:" + paramContext);
-      }
-      try
-      {
-        localJSONObject = new JSONObject(paramContext);
-        int i = localJSONObject.optInt("id");
-        paramContext = this.a.a(i);
-      }
-      catch (JSONException paramIntent)
-      {
-        for (;;)
-        {
-          for (;;)
-          {
-            try
-            {
-              boolean bool = localJSONObject.optBoolean("is_from_story", false);
-              if (paramContext != null) {
-                continue;
-              }
-              paramIntent = QIMMusicConfigManager.a(this.a, localJSONObject, bool);
-              paramContext = paramIntent;
-            }
-            catch (JSONException paramIntent)
-            {
-              JSONObject localJSONObject;
-              continue;
-              continue;
-            }
-            try
-            {
-              paramContext.mSongMid = localJSONObject.optString("mid");
-              if (QIMMusicConfigManager.a(this.a) == null) {
-                break;
-              }
-              paramIntent = QIMMusicConfigManager.a(this.a).iterator();
-              if (!paramIntent.hasNext()) {
-                break;
-              }
-              ((bhis)paramIntent.next()).a(paramContext);
-              continue;
-              paramIntent = paramIntent;
-              paramContext = null;
-            }
-            catch (JSONException paramIntent) {}
-          }
-          if (QLog.isColorLevel()) {
-            QLog.e("QIMMusicConfigManager", 2, QLog.getStackTraceString(paramIntent));
-          }
-        }
+    }
+    String str = paramString1 + "||" + paramString2;
+    paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePluginDownloadIPStracyConfig", 2, "addConfigItem, key=" + str + ", content=" + paramString1);
+    }
+    paramMap.put(str, paramString1);
+  }
+  
+  private void a(Map<String, String> paramMap, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
+      return;
+    }
+    Object localObject = null;
+    paramString4 = QzoneConfig.getInstance().getConfig(paramString1, paramString3, paramString4);
+    paramString3 = paramString1 + "||" + paramString2;
+    paramString2 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
+    paramString1 = localObject;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = localObject;
+      if (!TextUtils.isEmpty(paramString4)) {
+        paramString1 = paramString2.replace("ips", paramString4);
       }
     }
+    if (TextUtils.isEmpty(paramString1))
+    {
+      paramMap.put(paramString3, paramString2);
+      return;
+    }
+    paramMap.put(paramString3, paramString1);
+  }
+  
+  public void onConfigChange()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneIPStracyConfig", 2, "QzoneIPStracyConfig receive change");
+    }
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhir
  * JD-Core Version:    0.7.0.1
  */

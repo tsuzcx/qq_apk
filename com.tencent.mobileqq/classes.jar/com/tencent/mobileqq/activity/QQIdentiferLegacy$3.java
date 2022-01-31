@@ -17,15 +17,21 @@ class QQIdentiferLegacy$3
   public void onClick(View paramView)
   {
     Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("title", this.a.getString(2131628118));
-    localIntent.putExtra("selfSet_leftViewText", this.a.getString(2131625011));
+    localIntent.putExtra("title", this.a.getString(2131693759));
+    localIntent.putExtra("selfSet_leftViewText", this.a.getString(2131690572));
+    if ("setFaceData".equals(QQIdentiferLegacy.a(this.a)))
+    {
+      paramView = getURL() + "?appname=qq_safety";
+      localIntent.putExtra("url", paramView);
+      this.a.startActivity(localIntent);
+      return;
+    }
     StringBuilder localStringBuilder = new StringBuilder().append(getURL());
     if ((QQIdentiferLegacy.a(this.a) == null) || (TextUtils.isEmpty(QQIdentiferLegacy.a(this.a).appName))) {}
     for (paramView = "";; paramView = "?appname=" + QQIdentiferLegacy.a(this.a).appName)
     {
-      localIntent.putExtra("url", paramView);
-      this.a.startActivity(localIntent);
-      return;
+      paramView = paramView;
+      break;
     }
   }
 }

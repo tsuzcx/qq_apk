@@ -1,30 +1,29 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class vks
-  extends JobSegment<Integer, ujb>
+  implements Animator.AnimatorListener
 {
-  private uja a;
+  vks(vkq paramvkq) {}
   
-  public vks(@NonNull uja paramuja)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a = paramuja;
+    this.a.a = false;
   }
   
-  protected void a(JobContext paramJobContext, Integer paramInteger)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((ujb)localObject).a.size() > 0) || (((ujb)localObject).b))
-    {
-      urk.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
-      notifyResult(localObject);
-      return;
-    }
-    localObject = new tal();
-    ((tal)localObject).a = this.a.a();
-    slv.a().a((slz)localObject, new vkt(this, paramJobContext, paramInteger));
+    this.a.a = false;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.a.a = true;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
   }
 }
 

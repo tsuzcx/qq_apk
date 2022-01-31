@@ -60,6 +60,8 @@ public class DittoUIEngine
   private final HashMap<String, JSONObject> jsonCache = new HashMap();
   private Context mContext;
   private DittoResources mDittoResources;
+  private Map<String, String> mJsonContentMap;
+  private Map<String, String> mJsonMd5Map;
   private Class mRClass;
   private DittoUIEngine.IReporter mReporter;
   private final Map<String, Integer> resourceIdCache = new ConcurrentHashMap();
@@ -114,21 +116,21 @@ public class DittoUIEngine
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 47	com/tencent/ditto/shell/DittoUIEngine:sInstance	Lcom/tencent/ditto/shell/DittoUIEngine;
+    //   3: getstatic 49	com/tencent/ditto/shell/DittoUIEngine:sInstance	Lcom/tencent/ditto/shell/DittoUIEngine;
     //   6: ifnonnull +27 -> 33
-    //   9: getstatic 49	com/tencent/ditto/shell/DittoUIEngine:INSTANCE_LOCK	[B
+    //   9: getstatic 51	com/tencent/ditto/shell/DittoUIEngine:INSTANCE_LOCK	[B
     //   12: astore_0
     //   13: aload_0
     //   14: monitorenter
-    //   15: getstatic 47	com/tencent/ditto/shell/DittoUIEngine:sInstance	Lcom/tencent/ditto/shell/DittoUIEngine;
+    //   15: getstatic 49	com/tencent/ditto/shell/DittoUIEngine:sInstance	Lcom/tencent/ditto/shell/DittoUIEngine;
     //   18: ifnonnull +13 -> 31
     //   21: new 2	com/tencent/ditto/shell/DittoUIEngine
     //   24: dup
-    //   25: invokespecial 159	com/tencent/ditto/shell/DittoUIEngine:<init>	()V
-    //   28: putstatic 47	com/tencent/ditto/shell/DittoUIEngine:sInstance	Lcom/tencent/ditto/shell/DittoUIEngine;
+    //   25: invokespecial 161	com/tencent/ditto/shell/DittoUIEngine:<init>	()V
+    //   28: putstatic 49	com/tencent/ditto/shell/DittoUIEngine:sInstance	Lcom/tencent/ditto/shell/DittoUIEngine;
     //   31: aload_0
     //   32: monitorexit
-    //   33: getstatic 47	com/tencent/ditto/shell/DittoUIEngine:sInstance	Lcom/tencent/ditto/shell/DittoUIEngine;
+    //   33: getstatic 49	com/tencent/ditto/shell/DittoUIEngine:sInstance	Lcom/tencent/ditto/shell/DittoUIEngine;
     //   36: astore_0
     //   37: ldc 2
     //   39: monitorexit
@@ -204,24 +206,28 @@ public class DittoUIEngine
               localObject3 = FileUtils.getMd5ByFile((File)localObject2);
               DittoLog.w("DITTO_UI", "Layout File from sd card:" + ((File)localObject2).getName() + " md5:" + (String)localObject3);
               if (TextUtils.isEmpty((CharSequence)localObject3)) {
-                break label278;
+                break label288;
               }
               localConcurrentHashMap.put(((File)localObject2).getName(), localObject3);
-              break label278;
+              break label288;
             }
           }
         }
-        localObject1 = DittoConfig.jsonMd5Map.entrySet().iterator();
-        if (((Iterator)localObject1).hasNext())
+        localObject1 = this.mJsonMd5Map;
+        if (localObject1 != null)
         {
-          localObject3 = (Map.Entry)((Iterator)localObject1).next();
-          localObject2 = (String)((Map.Entry)localObject3).getKey();
-          localObject3 = (String)((Map.Entry)localObject3).getValue();
-          if ((TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty((CharSequence)localObject3))) {
+          localObject1 = ((Map)localObject1).entrySet().iterator();
+          if (((Iterator)localObject1).hasNext())
+          {
+            localObject3 = (Map.Entry)((Iterator)localObject1).next();
+            localObject2 = (String)((Map.Entry)localObject3).getKey();
+            localObject3 = (String)((Map.Entry)localObject3).getValue();
+            if ((TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty((CharSequence)localObject3))) {
+              continue;
+            }
+            localConcurrentHashMap.put(localObject2, localObject3);
             continue;
           }
-          localConcurrentHashMap.put(localObject2, localObject3);
-          continue;
         }
         return localConcurrentHashMap;
       }
@@ -229,7 +235,7 @@ public class DittoUIEngine
       {
         DittoLog.e("DITTO_UI", "", localException);
       }
-      label278:
+      label288:
       i += 1;
     }
   }
@@ -306,10 +312,10 @@ public class DittoUIEngine
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 64	com/tencent/ditto/shell/DittoUIEngine:jsonCache	Ljava/util/HashMap;
+    //   1: getfield 66	com/tencent/ditto/shell/DittoUIEngine:jsonCache	Ljava/util/HashMap;
     //   4: aload_1
-    //   5: invokevirtual 372	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   8: checkcast 163	org/json/JSONObject
+    //   5: invokevirtual 371	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   8: checkcast 165	org/json/JSONObject
     //   11: astore_2
     //   12: aload_2
     //   13: astore_3
@@ -317,39 +323,39 @@ public class DittoUIEngine
     //   15: ifnonnull +37 -> 52
     //   18: aload_0
     //   19: aload_1
-    //   20: invokespecial 375	com/tencent/ditto/shell/DittoUIEngine:loadLayoutContent	(Ljava/lang/String;)Ljava/lang/String;
+    //   20: invokespecial 374	com/tencent/ditto/shell/DittoUIEngine:loadLayoutContent	(Ljava/lang/String;)Ljava/lang/String;
     //   23: astore 4
     //   25: aload_2
     //   26: astore_3
     //   27: aload 4
     //   29: ifnull +23 -> 52
-    //   32: new 163	org/json/JSONObject
+    //   32: new 165	org/json/JSONObject
     //   35: dup
     //   36: aload 4
-    //   38: invokespecial 165	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   38: invokespecial 167	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   41: astore_3
     //   42: aload_0
-    //   43: getfield 64	com/tencent/ditto/shell/DittoUIEngine:jsonCache	Ljava/util/HashMap;
+    //   43: getfield 66	com/tencent/ditto/shell/DittoUIEngine:jsonCache	Ljava/util/HashMap;
     //   46: aload_1
     //   47: aload_3
-    //   48: invokevirtual 376	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   48: invokevirtual 375	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   51: pop
     //   52: aload_3
     //   53: areturn
     //   54: astore_3
     //   55: aconst_null
     //   56: astore_2
-    //   57: ldc 153
-    //   59: new 104	java/lang/StringBuilder
+    //   57: ldc 155
+    //   59: new 106	java/lang/StringBuilder
     //   62: dup
-    //   63: invokespecial 105	java/lang/StringBuilder:<init>	()V
+    //   63: invokespecial 107	java/lang/StringBuilder:<init>	()V
     //   66: aload_1
-    //   67: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   70: ldc_w 378
-    //   73: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   67: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: ldc_w 377
+    //   73: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   76: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   79: aload_3
-    //   80: invokestatic 156	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   80: invokestatic 158	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   83: aload_2
     //   84: areturn
     //   85: astore_3
@@ -385,214 +391,236 @@ public class DittoUIEngine
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
-    //   3: new 102	java/io/File
-    //   6: dup
-    //   7: new 104	java/lang/StringBuilder
-    //   10: dup
-    //   11: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   14: invokestatic 205	com/tencent/ditto/shell/DittoUIEngine:g	()Lcom/tencent/ditto/shell/DittoUIEngine;
-    //   17: getfield 91	com/tencent/ditto/shell/DittoUIEngine:mContext	Landroid/content/Context;
-    //   20: invokevirtual 111	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   23: invokevirtual 114	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   26: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: getstatic 121	java/io/File:separator	Ljava/lang/String;
-    //   32: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: aload_0
-    //   36: getfield 59	com/tencent/ditto/shell/DittoUIEngine:subDirectoryPath	Ljava/lang/String;
-    //   39: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: getstatic 121	java/io/File:separator	Ljava/lang/String;
-    //   45: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: aload_1
-    //   52: invokespecial 127	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   55: astore_2
-    //   56: aload_2
-    //   57: invokevirtual 134	java/io/File:exists	()Z
-    //   60: ifeq +167 -> 227
-    //   63: aload_2
-    //   64: invokevirtual 381	java/io/File:isFile	()Z
-    //   67: ifeq +160 -> 227
-    //   70: new 104	java/lang/StringBuilder
-    //   73: dup
-    //   74: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   77: astore 5
-    //   79: new 383	java/io/FileInputStream
-    //   82: dup
-    //   83: aload_2
-    //   84: invokespecial 386	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   87: astore_1
-    //   88: new 388	java/io/BufferedReader
-    //   91: dup
-    //   92: new 390	java/io/InputStreamReader
-    //   95: dup
-    //   96: aload_1
-    //   97: invokespecial 393	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   100: invokespecial 396	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   103: astore_2
-    //   104: aload_2
-    //   105: astore 4
-    //   107: aload_1
-    //   108: astore_3
-    //   109: aload_2
-    //   110: invokevirtual 399	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   113: astore 6
-    //   115: aload 6
-    //   117: ifnull +55 -> 172
-    //   120: aload_2
-    //   121: astore 4
-    //   123: aload_1
-    //   124: astore_3
-    //   125: aload 5
-    //   127: aload 6
-    //   129: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: pop
-    //   133: goto -29 -> 104
-    //   136: astore 5
-    //   138: aload_2
-    //   139: astore 4
-    //   141: aload_1
-    //   142: astore_3
-    //   143: ldc 153
-    //   145: ldc 57
-    //   147: aload 5
-    //   149: invokestatic 156	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   152: aload_2
-    //   153: ifnull +7 -> 160
-    //   156: aload_2
-    //   157: invokevirtual 402	java/io/BufferedReader:close	()V
-    //   160: aload_1
-    //   161: ifnull +7 -> 168
-    //   164: aload_1
-    //   165: invokevirtual 405	java/io/InputStream:close	()V
-    //   168: aconst_null
-    //   169: astore_2
-    //   170: aload_2
-    //   171: areturn
-    //   172: aload_2
-    //   173: astore 4
-    //   175: aload_1
-    //   176: astore_3
-    //   177: aload 5
-    //   179: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   182: invokevirtual 408	java/lang/String:trim	()Ljava/lang/String;
-    //   185: astore 5
-    //   187: aload 5
-    //   189: astore 4
-    //   191: aload_1
-    //   192: astore_3
-    //   193: aload 4
-    //   195: astore_1
-    //   196: aload_2
-    //   197: ifnull +7 -> 204
-    //   200: aload_2
-    //   201: invokevirtual 402	java/io/BufferedReader:close	()V
-    //   204: aload_1
-    //   205: astore_2
-    //   206: aload_3
-    //   207: ifnull -37 -> 170
-    //   210: aload_3
-    //   211: invokevirtual 405	java/io/InputStream:close	()V
-    //   214: aload_1
-    //   215: areturn
-    //   216: astore_2
-    //   217: ldc 153
-    //   219: ldc 57
-    //   221: aload_2
-    //   222: invokestatic 156	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   225: aload_1
-    //   226: areturn
-    //   227: getstatic 411	com/tencent/ditto/shell/DittoConfig:jsonContentMap	Ljava/util/Map;
+    //   3: aconst_null
+    //   4: astore_2
+    //   5: new 104	java/io/File
+    //   8: dup
+    //   9: new 106	java/lang/StringBuilder
+    //   12: dup
+    //   13: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   16: invokestatic 207	com/tencent/ditto/shell/DittoUIEngine:g	()Lcom/tencent/ditto/shell/DittoUIEngine;
+    //   19: getfield 93	com/tencent/ditto/shell/DittoUIEngine:mContext	Landroid/content/Context;
+    //   22: invokevirtual 113	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   25: invokevirtual 116	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   28: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: getstatic 123	java/io/File:separator	Ljava/lang/String;
+    //   34: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: aload_0
+    //   38: getfield 61	com/tencent/ditto/shell/DittoUIEngine:subDirectoryPath	Ljava/lang/String;
+    //   41: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: getstatic 123	java/io/File:separator	Ljava/lang/String;
+    //   47: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   53: aload_1
+    //   54: invokespecial 129	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   57: astore_3
+    //   58: aload_3
+    //   59: invokevirtual 136	java/io/File:exists	()Z
+    //   62: ifeq +170 -> 232
+    //   65: aload_3
+    //   66: invokevirtual 380	java/io/File:isFile	()Z
+    //   69: ifeq +163 -> 232
+    //   72: new 106	java/lang/StringBuilder
+    //   75: dup
+    //   76: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   79: astore 5
+    //   81: new 382	java/io/FileInputStream
+    //   84: dup
+    //   85: aload_3
+    //   86: invokespecial 385	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   89: astore_1
+    //   90: new 387	java/io/BufferedReader
+    //   93: dup
+    //   94: new 389	java/io/InputStreamReader
+    //   97: dup
+    //   98: aload_1
+    //   99: invokespecial 392	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   102: invokespecial 395	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   105: astore_2
+    //   106: aload_2
+    //   107: astore 4
+    //   109: aload_1
+    //   110: astore_3
+    //   111: aload_2
+    //   112: invokevirtual 398	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   115: astore 6
+    //   117: aload 6
+    //   119: ifnull +55 -> 174
+    //   122: aload_2
+    //   123: astore 4
+    //   125: aload_1
+    //   126: astore_3
+    //   127: aload 5
+    //   129: aload 6
+    //   131: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: pop
+    //   135: goto -29 -> 106
+    //   138: astore 5
+    //   140: aload_2
+    //   141: astore 4
+    //   143: aload_1
+    //   144: astore_3
+    //   145: ldc 155
+    //   147: ldc 59
+    //   149: aload 5
+    //   151: invokestatic 158	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   154: aload_2
+    //   155: ifnull +7 -> 162
+    //   158: aload_2
+    //   159: invokevirtual 401	java/io/BufferedReader:close	()V
+    //   162: aload_1
+    //   163: ifnull +7 -> 170
+    //   166: aload_1
+    //   167: invokevirtual 404	java/io/InputStream:close	()V
+    //   170: aconst_null
+    //   171: astore_3
+    //   172: aload_3
+    //   173: areturn
+    //   174: aload_2
+    //   175: astore 4
+    //   177: aload_1
+    //   178: astore_3
+    //   179: aload 5
+    //   181: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   184: invokevirtual 407	java/lang/String:trim	()Ljava/lang/String;
+    //   187: astore 5
+    //   189: aload 5
+    //   191: astore_3
+    //   192: aload_2
+    //   193: astore 4
+    //   195: aload_1
+    //   196: astore_2
+    //   197: aload_3
+    //   198: astore_1
+    //   199: aload 4
+    //   201: ifnull +8 -> 209
+    //   204: aload 4
+    //   206: invokevirtual 401	java/io/BufferedReader:close	()V
+    //   209: aload_1
+    //   210: astore_3
+    //   211: aload_2
+    //   212: ifnull -40 -> 172
+    //   215: aload_2
+    //   216: invokevirtual 404	java/io/InputStream:close	()V
+    //   219: aload_1
+    //   220: areturn
+    //   221: astore_2
+    //   222: ldc 155
+    //   224: ldc 59
+    //   226: aload_2
+    //   227: invokestatic 158	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   230: aload_1
-    //   231: invokeinterface 412 2 0
-    //   236: checkcast 141	java/lang/String
-    //   239: astore_1
-    //   240: aconst_null
-    //   241: astore_2
-    //   242: aconst_null
-    //   243: astore_3
-    //   244: goto -48 -> 196
-    //   247: astore_1
-    //   248: ldc 153
-    //   250: ldc 57
-    //   252: aload_1
-    //   253: invokestatic 156	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   256: aconst_null
-    //   257: areturn
+    //   231: areturn
+    //   232: aload_0
+    //   233: getfield 409	com/tencent/ditto/shell/DittoUIEngine:mJsonContentMap	Ljava/util/Map;
+    //   236: astore_3
+    //   237: aload_3
+    //   238: ifnull +96 -> 334
+    //   241: aload_3
+    //   242: aload_1
+    //   243: invokeinterface 410 2 0
+    //   248: checkcast 143	java/lang/String
+    //   251: astore_1
+    //   252: aconst_null
+    //   253: astore_3
+    //   254: aload_2
+    //   255: astore 4
+    //   257: aload_3
     //   258: astore_2
-    //   259: aconst_null
-    //   260: astore_1
-    //   261: aload 4
-    //   263: ifnull +8 -> 271
-    //   266: aload 4
-    //   268: invokevirtual 402	java/io/BufferedReader:close	()V
-    //   271: aload_1
-    //   272: ifnull +7 -> 279
-    //   275: aload_1
-    //   276: invokevirtual 405	java/io/InputStream:close	()V
-    //   279: aload_2
-    //   280: athrow
-    //   281: astore_1
-    //   282: ldc 153
-    //   284: ldc 57
+    //   259: goto -60 -> 199
+    //   262: astore_1
+    //   263: ldc 155
+    //   265: ldc 59
+    //   267: aload_1
+    //   268: invokestatic 158	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   271: aconst_null
+    //   272: areturn
+    //   273: astore_2
+    //   274: aconst_null
+    //   275: astore_1
+    //   276: aload 4
+    //   278: ifnull +8 -> 286
+    //   281: aload 4
+    //   283: invokevirtual 401	java/io/BufferedReader:close	()V
     //   286: aload_1
-    //   287: invokestatic 156	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   290: goto -11 -> 279
-    //   293: astore_2
-    //   294: goto -33 -> 261
-    //   297: astore_2
-    //   298: aload_3
-    //   299: astore_1
-    //   300: goto -39 -> 261
-    //   303: astore 5
-    //   305: aconst_null
-    //   306: astore_2
-    //   307: aconst_null
-    //   308: astore_1
-    //   309: goto -171 -> 138
-    //   312: astore 5
-    //   314: aconst_null
-    //   315: astore_2
-    //   316: goto -178 -> 138
+    //   287: ifnull +7 -> 294
+    //   290: aload_1
+    //   291: invokevirtual 404	java/io/InputStream:close	()V
+    //   294: aload_2
+    //   295: athrow
+    //   296: astore_1
+    //   297: ldc 155
+    //   299: ldc 59
+    //   301: aload_1
+    //   302: invokestatic 158	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   305: goto -11 -> 294
+    //   308: astore_2
+    //   309: goto -33 -> 276
+    //   312: astore_2
+    //   313: aload_3
+    //   314: astore_1
+    //   315: goto -39 -> 276
+    //   318: astore 5
+    //   320: aconst_null
+    //   321: astore_2
+    //   322: aconst_null
+    //   323: astore_1
+    //   324: goto -184 -> 140
+    //   327: astore 5
+    //   329: aconst_null
+    //   330: astore_2
+    //   331: goto -191 -> 140
+    //   334: aconst_null
+    //   335: astore_3
+    //   336: aconst_null
+    //   337: astore_1
+    //   338: aload_2
+    //   339: astore 4
+    //   341: aload_3
+    //   342: astore_2
+    //   343: goto -144 -> 199
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	319	0	this	DittoUIEngine
-    //   0	319	1	paramString	String
-    //   55	151	2	localObject1	Object
-    //   216	6	2	localException	Exception
-    //   241	1	2	localObject2	Object
-    //   258	22	2	localObject3	Object
-    //   293	1	2	localObject4	Object
-    //   297	1	2	localObject5	Object
-    //   306	10	2	localObject6	Object
-    //   108	191	3	str1	String
-    //   1	266	4	localObject7	Object
-    //   77	49	5	localStringBuilder	java.lang.StringBuilder
-    //   136	42	5	localIOException1	IOException
-    //   185	3	5	str2	String
-    //   303	1	5	localIOException2	IOException
-    //   312	1	5	localIOException3	IOException
-    //   113	15	6	str3	String
+    //   0	346	0	this	DittoUIEngine
+    //   0	346	1	paramString	String
+    //   4	212	2	localObject1	Object
+    //   221	34	2	localException	Exception
+    //   258	1	2	localObject2	Object
+    //   273	22	2	localObject3	Object
+    //   308	1	2	localObject4	Object
+    //   312	1	2	localObject5	Object
+    //   321	22	2	localObject6	Object
+    //   57	285	3	localObject7	Object
+    //   1	339	4	localObject8	Object
+    //   79	49	5	localStringBuilder	java.lang.StringBuilder
+    //   138	42	5	localIOException1	IOException
+    //   187	3	5	str1	String
+    //   318	1	5	localIOException2	IOException
+    //   327	1	5	localIOException3	IOException
+    //   115	15	6	str2	String
     // Exception table:
     //   from	to	target	type
-    //   109	115	136	java/io/IOException
-    //   125	133	136	java/io/IOException
-    //   177	187	136	java/io/IOException
-    //   200	204	216	java/lang/Exception
-    //   210	214	216	java/lang/Exception
-    //   156	160	247	java/lang/Exception
-    //   164	168	247	java/lang/Exception
-    //   3	88	258	finally
-    //   227	240	258	finally
-    //   266	271	281	java/lang/Exception
-    //   275	279	281	java/lang/Exception
-    //   88	104	293	finally
-    //   109	115	297	finally
-    //   125	133	297	finally
-    //   143	152	297	finally
-    //   177	187	297	finally
-    //   3	88	303	java/io/IOException
-    //   227	240	303	java/io/IOException
-    //   88	104	312	java/io/IOException
+    //   111	117	138	java/io/IOException
+    //   127	135	138	java/io/IOException
+    //   179	189	138	java/io/IOException
+    //   204	209	221	java/lang/Exception
+    //   215	219	221	java/lang/Exception
+    //   158	162	262	java/lang/Exception
+    //   166	170	262	java/lang/Exception
+    //   5	90	273	finally
+    //   232	237	273	finally
+    //   241	252	273	finally
+    //   281	286	296	java/lang/Exception
+    //   290	294	296	java/lang/Exception
+    //   90	106	308	finally
+    //   111	117	312	finally
+    //   127	135	312	finally
+    //   145	154	312	finally
+    //   179	189	312	finally
+    //   5	90	318	java/io/IOException
+    //   232	237	318	java/io/IOException
+    //   241	252	318	java/io/IOException
+    //   90	106	327	java/io/IOException
   }
   
   private void modifyInflatedArea(DittoArea paramDittoArea, DittoHost paramDittoHost, DittoUIEngine.DittoUIEngineInflateListener paramDittoUIEngineInflateListener)
@@ -628,6 +656,11 @@ public class DittoUIEngine
   public void addResourceIdCache(String paramString, int paramInt)
   {
     this.resourceIdCache.put(paramString, Integer.valueOf(paramInt));
+  }
+  
+  public void clearAllAreaCache()
+  {
+    new DittoArea(new DittoUIEngine.FakeHost(this), null).clearAllAreaCache();
   }
   
   public void clearCache()
@@ -987,7 +1020,7 @@ public class DittoUIEngine
     SCREEN_HEIGHT = paramContext.heightPixels;
   }
   
-  public void initExtra(DittoResources paramDittoResources, DittoUIEngine.IReporter paramIReporter, String paramString1, String paramString2, Class paramClass)
+  public void initExtra(DittoResources paramDittoResources, DittoUIEngine.IReporter paramIReporter, String paramString1, String paramString2, Class paramClass, Map<String, String> paramMap1, Map<String, String> paramMap2)
   {
     Context localContext = this.mContext;
     if (localContext == null)
@@ -1008,6 +1041,8 @@ public class DittoUIEngine
       createVersionFile(paramString1);
     }
     this.mRClass = paramClass;
+    this.mJsonContentMap = paramMap1;
+    this.mJsonMd5Map = paramMap2;
     preloadJsonObjects();
   }
   

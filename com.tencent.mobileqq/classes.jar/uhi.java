@@ -1,23 +1,48 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.lang.ref.WeakReference;
 
 public class uhi
-  implements Comparator<VideoCollectionItem>
+  extends QQUIEventReceiver<uhf, uat>
 {
-  public int a(VideoCollectionItem paramVideoCollectionItem1, VideoCollectionItem paramVideoCollectionItem2)
+  private WeakReference<ugm> a;
+  
+  public uhi(@NonNull uhf paramuhf)
   {
-    if ((paramVideoCollectionItem1.collectionType != paramVideoCollectionItem2.collectionType) && (vlf.a(paramVideoCollectionItem1.collectionTime, paramVideoCollectionItem2.collectionTime))) {
-      if (VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem1.collectionType] >= VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem2.collectionType]) {}
+    super(paramuhf);
+  }
+  
+  public void a(ugm paramugm)
+  {
+    this.a = new WeakReference(paramugm);
+  }
+  
+  public void a(@NonNull uhf paramuhf, @NonNull uat paramuat)
+  {
+    if (paramuat.jdField_a_of_type_Boolean) {
+      if ((paramuat.jdField_a_of_type_JavaLangString != null) && (this.a != null))
+      {
+        paramuhf = (ugm)this.a.get();
+        if (paramuhf != null) {
+          paramuhf.b(paramuat.jdField_a_of_type_JavaLangString);
+        }
+      }
     }
     do
     {
-      return -1;
-      return 1;
-      if (paramVideoCollectionItem1.collectionTime < paramVideoCollectionItem2.collectionTime) {
-        return 1;
-      }
-    } while (paramVideoCollectionItem1.collectionTime > paramVideoCollectionItem2.collectionTime);
-    return 0;
+      do
+      {
+        return;
+        veg.e(this.TAG, "StoryVideoDownloadResultReceiver, onEvent download failed, vid:%s", new Object[] { paramuat.jdField_a_of_type_JavaLangString });
+      } while (this.a == null);
+      paramuhf = (ugm)this.a.get();
+    } while (paramuhf == null);
+    paramuhf.d();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uat.class;
   }
 }
 

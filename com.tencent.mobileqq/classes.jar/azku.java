@@ -1,24 +1,23 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.webkit.URLUtil;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Handler;
+import android.os.Message;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
 
-final class azku
-  extends ClickableSpan
+public class azku
+  extends Handler
 {
-  azku(String paramString, MessageRecord paramMessageRecord) {}
+  public azku(NewTroopContactView paramNewTroopContactView) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
-    arsq.a(paramView.getContext(), str, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
   }
 }
 

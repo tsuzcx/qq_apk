@@ -1,30 +1,26 @@
 package com.tencent.qqmini.sdk.ipc;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.ResultReceiver;
-import bdkr;
-import bdku;
-import bdnw;
+import android.os.RemoteException;
+import beou;
+import beoy;
+import besl;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class AppBrandProxyImpl$3
   implements Runnable
 {
-  public AppBrandProxyImpl$3(bdkr parambdkr, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver, Activity paramActivity) {}
+  public AppBrandProxyImpl$3(beou parambeou, beoy parambeoy, MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {
     try
     {
-      bdkr.a(this.this$0).a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.jdField_a_of_type_AndroidOsBundle, new AppBrandProxyImpl.3.1(this, new Handler(Looper.getMainLooper())));
+      this.jdField_a_of_type_Beoy.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
       return;
     }
-    catch (Throwable localThrowable)
+    catch (RemoteException localRemoteException)
     {
-      bdnw.d("minisdk-start_AppBrandProxy", "startMiniApp exception.", localThrowable);
+      besl.d("minisdk-start_AppBrandProxy", "preloadPackage exception.", localRemoteException);
     }
   }
 }

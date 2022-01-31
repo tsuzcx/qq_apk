@@ -1,21 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-
 class axji
-  implements View.OnClickListener
 {
-  axji(axjb paramaxjb) {}
+  float jdField_a_of_type_Float = 0.0F;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  boolean jdField_a_of_type_Boolean = false;
+  float b = 0.0F;
   
-  public void onClick(View paramView)
-  {
-    this.a.a.setText("");
-    this.a.c();
-  }
+  private axji(axjf paramaxjf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axji
  * JD-Core Version:    0.7.0.1
  */

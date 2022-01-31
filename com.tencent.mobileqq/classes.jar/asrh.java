@@ -1,55 +1,65 @@
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.now.view.widget.LabelViewItem;
-import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
-import java.util.List;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
 
 public class asrh
-  extends BaseAdapter
+  implements asqn
 {
-  public asrh(TopicLabelListView paramTopicLabelListView) {}
+  public static float a = 0.85F;
+  private static float b = 1.0F;
+  private static float c = 0.75F;
+  private float d = 3.4028235E+38F;
+  private float e = 3.4028235E+38F;
   
-  public int getCount()
+  public void a(@NonNull View paramView, float paramFloat)
   {
-    if ((TopicLabelListView.a(this.a) == null) || (TopicLabelListView.a(this.a).size() == 0)) {
-      return 0;
-    }
-    return TopicLabelListView.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    paramView.getWidth();
+    paramView.getHeight();
+    Object localObject1 = (MultiAIOBaseViewPager)paramView.getParent();
+    int i = ((MultiAIOBaseViewPager)localObject1).getMeasuredWidth() - ((MultiAIOBaseViewPager)localObject1).getPaddingLeft() - ((MultiAIOBaseViewPager)localObject1).getPaddingRight();
+    float f1 = ((MultiAIOBaseViewPager)localObject1).getPaddingLeft() / i;
+    float f2 = (((MultiAIOBaseViewPager)localObject1).getPaddingLeft() - i - ((MultiAIOBaseViewPager)localObject1).b()) / i;
+    int j = ((MultiAIOBaseViewPager)localObject1).getPaddingLeft();
+    float f3 = (((MultiAIOBaseViewPager)localObject1).b() + (j + i)) / i;
+    if (paramFloat < f2)
     {
-      paramViewGroup = new asri(this.a, null);
-      paramView = new LabelViewItem(TopicLabelListView.a(this.a));
-      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-      paramView.setTag(paramViewGroup);
+      paramFloat = this.d;
+      f1 = this.e;
     }
     for (;;)
     {
-      paramViewGroup.a = ((String)TopicLabelListView.a(this.a).get(paramInt));
-      ((LabelViewItem)paramView).setText(paramViewGroup.a);
-      return paramView;
-      paramViewGroup = (asri)paramView.getTag();
+      paramView.setScaleX(paramFloat);
+      paramView.setScaleY(paramFloat);
+      Object localObject2 = paramView.getTag(2131370544);
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = paramView.findViewById(2131370544);
+        paramView.setTag(2131370544, localObject1);
+      }
+      paramView = (View)localObject1;
+      paramView.setAlpha(1.0F - f1);
+      paramView.setBackgroundColor(-16777216);
+      return;
+      if (paramFloat <= f3)
+      {
+        f1 = Math.abs(paramFloat - f1);
+        paramFloat = (float)(a + Math.cos(f1 * 1.570796326794897D) * (b - a));
+        this.d = Math.min(paramFloat, this.d);
+        f1 = (float)(c + Math.cos(f1 * 1.570796326794897D) * (1.0F - c));
+        this.e = Math.min(f1, this.e);
+      }
+      else
+      {
+        paramFloat = this.d;
+        f1 = this.e;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asrh
  * JD-Core Version:    0.7.0.1
  */

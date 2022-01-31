@@ -1,104 +1,99 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class svq
-  extends svu
+final class svq
+  implements syt<tls, tnx>
 {
-  public static final String a;
-  public QQUserUIItem a;
-  private boolean a;
+  svq(VideoListFeedItem paramVideoListFeedItem, List paramList, tcz paramtcz) {}
   
-  static
+  public void a(@NonNull tls paramtls, @Nullable tnx paramtnx, @NonNull ErrorMessage paramErrorMessage)
   {
-    jdField_a_of_type_JavaLangString = skt.a(2131633887);
-  }
-  
-  public svq(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup, 2131495711);
-  }
-  
-  protected String a(QQUserUIItem paramQQUserUIItem)
-  {
-    if ((paramQQUserUIItem == null) || (!paramQQUserUIItem.isAvailable())) {
-      return null;
+    boolean bool = false;
+    if ((paramtnx == null) || (paramErrorMessage.isFail())) {
+      bool = true;
     }
-    if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
-      return paramQQUserUIItem.nickName;
-    }
-    return paramQQUserUIItem.getDisplayName();
-  }
-  
-  protected void a(String paramString)
-  {
-    b(vmp.b(paramString));
-  }
-  
-  protected void a(String paramString, boolean paramBoolean, ssm paramssm)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramString, paramBoolean);
-  }
-  
-  public void a(ssm paramssm)
-  {
-    super.a(paramssm);
-    urk.a("FollowNodeViewHolder", "bindData %s", paramssm);
-    this.itemView.setTag(paramssm.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((sqs)sqg.a(2)).a(paramssm.jdField_a_of_type_JavaLangString, false);
-    this.jdField_a_of_type_Boolean = true;
-    boolean bool;
-    Object localObject2;
-    Object localObject1;
-    if (svc.h)
-    {
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVipButNoFriend()))
-      {
-        bool = true;
-        this.jdField_a_of_type_Boolean = bool;
-      }
-    }
-    else
-    {
-      localObject2 = a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label194;
-      }
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = ajjy.a(2131638884);
-      }
+    if ((!bool) && (paramtnx.a() != null) && (paramtnx.a().size() != 1)) {
+      bool = true;
     }
     for (;;)
     {
-      localObject2 = localObject1;
-      if (localObject1 == null)
+      veg.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "add share group fail:%b", new Object[] { Boolean.valueOf(bool) });
+      paramtls = new svy(false);
+      paramtls.b = false;
+      paramtls.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+      paramErrorMessage = new svx();
+      paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem;
+      Object localObject;
+      label176:
+      StoryVideoItem localStoryVideoItem1;
+      if (!bool)
       {
-        localObject1 = jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(paramssm.c)) {
-          localObject1 = paramssm.c;
+        localObject = (tny)paramtnx.a().get(0);
+        if (((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem instanceof ShareGroupFeedItem)) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.feedId.equals(((tny)localObject).b))) {
+          paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem = ((ShareGroupFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
         }
-        urk.a("FollowNodeViewHolder", "bindData() with fallback nickname %s, unionId = %s", localObject1, paramssm.jdField_a_of_type_JavaLangString);
-        sgi.a().dispatch(new ssl(paramssm.jdField_a_of_type_JavaLangString));
-        localObject2 = localObject1;
       }
-      a((String)localObject2, this.jdField_a_of_type_Boolean, paramssm);
-      a(paramssm.g);
+      else
+      {
+        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (!((Iterator)localObject).hasNext()) {
+          break label501;
+        }
+        localStoryVideoItem1 = (StoryVideoItem)((Iterator)localObject).next();
+        if (!bool) {
+          break label495;
+        }
+      }
+      label495:
+      for (int i = 6;; i = 5)
+      {
+        localStoryVideoItem1.mUploadStatus = i;
+        svw localsvw = new svw();
+        localsvw.a = this.jdField_a_of_type_Tcz.a(localStoryVideoItem1);
+        paramErrorMessage.jdField_a_of_type_JavaUtilArrayList.add(localsvw);
+        if (bool) {
+          break label176;
+        }
+        StoryVideoItem localStoryVideoItem2 = new StoryVideoItem();
+        localStoryVideoItem2.copy(localStoryVideoItem1);
+        List localList = paramtnx.a();
+        localStoryVideoItem2.mVid = ((String)((tny)localList.get(0)).a.get(localStoryVideoItem1.sourceVid));
+        localStoryVideoItem2.mVideoIndex = 0L;
+        if (TextUtils.isEmpty(localStoryVideoItem2.mVid))
+        {
+          veg.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "cannot find true vid for sourceVid=%s, %s", new Object[] { localStoryVideoItem1.sourceVid, localList });
+          vxs.a(localStoryVideoItem2.mVid);
+          localStoryVideoItem2.mVid = StoryVideoItem.makeFakeVid();
+        }
+        localsvw.b = this.jdField_a_of_type_Tcz.a(localStoryVideoItem2);
+        break label176;
+        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem = new ShareGroupFeedItem();
+        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.copy(paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
+        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.feedId = ((tny)localObject).b;
+        if (paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.videoCount == 0) {
+          paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.videoCount = 1;
+        }
+        vxs.a(((tny)localObject).b);
+        localObject = (uwa)tdc.a(11);
+        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem = ((ShareGroupFeedItem)((uwa)localObject).a(paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem));
+        ((uwa)localObject).a(paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.ownerId, paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.date, paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.feedId);
+        break;
+      }
+      label501:
+      paramtls.jdField_a_of_type_JavaUtilArrayList.add(paramErrorMessage);
+      ste.a().dispatch(paramtls);
+      veg.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "add shareGroup video return: %s", new Object[] { paramtls });
       return;
-      bool = false;
-      break;
-      label194:
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)
-      {
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq;
-        }
-      }
     }
   }
 }

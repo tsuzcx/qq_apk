@@ -1,43 +1,19 @@
-import android.os.RemoteException;
-import com.tencent.av.service.LBSInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class lmx
-  extends ajlg
 {
-  private List<lmh> a = new ArrayList();
-  
-  public int a()
+  public static int a(String paramString)
   {
-    return this.a.size();
-  }
-  
-  public void a(lmh paramlmh)
-  {
-    if (paramlmh != null) {
-      this.a.add(paramlmh);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    if ((paramString == null) || (paramString.equals("point"))) {}
+    do
     {
-      lmh locallmh = (lmh)localIterator.next();
-      try
-      {
-        locallmh.a(paramBoolean, paramLBSInfo);
+      return 0;
+      if (paramString.equals("line")) {
+        return 1;
       }
-      catch (RemoteException localRemoteException) {}
-      if (QLog.isColorLevel()) {
-        QLog.e("QQServiceForAV", 2, "Call onGetUserLocation fail", localRemoteException);
+      if (paramString.equals("square")) {
+        return 2;
       }
-    }
-    this.a.clear();
+    } while (!paramString.equals("ellipse"));
+    return 3;
   }
 }
 

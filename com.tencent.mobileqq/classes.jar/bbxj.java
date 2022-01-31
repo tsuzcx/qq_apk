@@ -1,29 +1,55 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import cooperation.qqfav.util.HandlerPlus;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.util.QZLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bbxj
-  implements bbyb
+  extends bhyo
 {
-  public bbxj(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  private MQLruCache<String, Object> a;
   
-  public void a(long paramLong)
+  public bbxj(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    QLog.d("OpenAuthorityFragment", 1, new Object[] { "-->onDeleteVirtual vid=", Long.valueOf(paramLong) });
-    if (!badq.g(BaseApplicationImpl.getApplication()))
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public MQLruCache<String, Object> a()
+  {
+    return this.a;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a = new bbxk(this, paramInt);
+    this.a.setLargeSize(1);
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.a != null)
     {
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.post(this.a.jdField_a_of_type_JavaLangRunnable);
-      return;
+      Iterator localIterator = this.a.getLargeCache().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        Object localObject = this.a.get(str);
+        if ((localObject != null) && ((localObject instanceof Bitmap)))
+        {
+          ((Bitmap)localObject).recycle();
+          QZLog.i("DIYProfileTemplate.DIYLottieLoader", 4, "recycle bitmap key = " + str);
+        }
+      }
+      this.a.releaseLargeCache();
     }
-    this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a), paramLong, this.a.jdField_a_of_type_Bcjw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbxj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,40 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class abpq
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abpq(ScoreQAVFragment paramScoreQAVFragment) {}
+  public abpq(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a();
-    long l2 = 0L;
-    long l1 = l2;
-    if (this.a.jdField_b_of_type_JavaLangString != null)
+    if (AppSetting.d) {
+      NotifyPushSettingActivity.f(this.a).setContentDescription(ajyc.a(2131707650));
+    }
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131718625), "qqsetting_receivemsg_whenexit_key", paramBoolean);
+    SyncService.a(this.a, paramBoolean);
+    QQAppInterface localQQAppInterface = this.a.app;
+    int i;
+    if (paramBoolean)
     {
-      l1 = l2;
-      if (!this.a.jdField_b_of_type_JavaLangString.isEmpty()) {
-        l1 = mic.a(this.a.jdField_b_of_type_JavaLangString);
+      i = 1;
+      if (!paramBoolean) {
+        break label107;
       }
     }
-    paramView = baig.e(this.a.jdField_d_of_type_JavaLangString);
-    l2 = paramView.getLong("qav_roomid", 0L);
-    long l3 = paramView.getLong(kst.g, 0L);
-    awrk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_Long, this.a.jdField_b_of_type_Long, this.a.jdField_c_of_type_Long, this.a.jdField_d_of_type_Long, this.a.e, this.a.jdField_a_of_type_Int, l3, l1, l2, this.a.jdField_c_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("ScoreActivity", 2, "reportEvent beginTime: " + this.a.jdField_a_of_type_Long + ", endTime: " + this.a.jdField_b_of_type_Long + ", sdkVersion: " + this.a.jdField_a_of_type_Int + ", peerSdkVersion: " + l3 + ", bussinessType: " + this.a.jdField_c_of_type_Long + ", bussinessFlag: " + this.a.jdField_d_of_type_Long + ", ip: " + this.a.jdField_b_of_type_JavaLangString + ", toUin: " + this.a.jdField_c_of_type_JavaLangString + ", score: " + this.a.e + ", problems: " + this.a.jdField_a_of_type_JavaLangString);
-    }
-    paramView.edit().putBoolean(kst.l, true).commit();
-    if (this.a.f != 0L) {}
-    try
+    label107:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_c_of_type_JavaLangString, this.a.jdField_b_of_type_Int, this.a.f);
-      this.a.getActivity().finish();
+      axqw.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Logout_msg", 0, i, paramCompoundButton, "", "", "");
       return;
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("ScoreActivity", 2, "removeMsgByUniseq : " + paramView);
-        }
-      }
+      i = 0;
+      break;
     }
   }
 }

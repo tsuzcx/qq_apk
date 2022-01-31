@@ -1,34 +1,87 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.core.proxy.WnsConfigProxy;
 
 public class belj
-  extends ImageSpan
 {
-  public belj(Drawable paramDrawable, int paramInt)
+  public static int a(String paramString1, String paramString2, int paramInt)
   {
-    super(paramDrawable, paramInt);
+    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
+    if (localWnsConfigProxy == null) {}
+    do
+    {
+      return paramInt;
+      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
+    } while (paramString1 == null);
+    try
+    {
+      int i = Integer.valueOf(paramString1).intValue();
+      return i;
+    }
+    catch (Exception paramString1) {}
+    return paramInt;
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public static long a(String paramString1, String paramString2, long paramLong)
   {
-    paramCharSequence = getDrawable();
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
-    paramInt2 = paramCharSequence.getBounds().bottom / 2;
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
+    if (localWnsConfigProxy == null) {}
+    do
+    {
+      return paramLong;
+      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
+    } while (paramString1 == null);
+    try
+    {
+      long l = Long.valueOf(paramString1).longValue();
+      return l;
+    }
+    catch (Exception paramString1) {}
+    return paramLong;
+  }
+  
+  public static final String a(String paramString1, String paramString2)
+  {
+    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
+    if (localWnsConfigProxy == null) {
+      return null;
+    }
+    return localWnsConfigProxy.getConfig(paramString1, paramString2);
+  }
+  
+  public static final String a(String paramString1, String paramString2, String paramString3)
+  {
+    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
+    if (localWnsConfigProxy == null) {}
+    do
+    {
+      return paramString3;
+      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
+    } while (TextUtils.isEmpty(paramString1));
+    return paramString1;
+  }
+  
+  public static boolean a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
+    if (localWnsConfigProxy == null) {}
+    do
+    {
+      return paramBoolean;
+      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
+    } while (paramString1 == null);
+    try
+    {
+      boolean bool = Boolean.parseBoolean(paramString1);
+      return bool;
+    }
+    catch (Exception paramString1) {}
+    return paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     belj
  * JD-Core Version:    0.7.0.1
  */

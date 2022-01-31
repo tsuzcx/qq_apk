@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.fragment;
 
-import azkq;
+import balu;
 
 class TroopRobotFragment$2
   implements Runnable
 {
-  TroopRobotFragment$2(TroopRobotFragment paramTroopRobotFragment, azkq paramazkq) {}
+  TroopRobotFragment$2(TroopRobotFragment paramTroopRobotFragment, balu parambalu) {}
   
   public void run()
   {

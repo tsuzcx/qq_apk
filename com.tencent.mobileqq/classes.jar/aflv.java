@@ -1,26 +1,31 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.widget.QQViewPager;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationClidFragment;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
 
-class aflv
-  extends ViewPager.SimpleOnPageChangeListener
+public class aflv
+  implements bfvg
 {
-  aflv(aflu paramaflu) {}
+  public aflv(ConnectionsExplorationClidFragment paramConnectionsExplorationClidFragment) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void a(View paramView)
   {
-    if (paramInt == 1) {
-      this.a.b = this.a.a.getCurrentItem();
+    paramView = this.a.getParentFragment();
+    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
+      ((ConnectionsExplorationFragment)paramView).a(false);
     }
   }
   
-  public void onPageSelected(int paramInt)
+  public void b(View paramView)
   {
-    aflu.a(this.a, paramInt);
+    paramView = this.a.getParentFragment();
+    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
+      ((ConnectionsExplorationFragment)paramView).a(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aflv
  * JD-Core Version:    0.7.0.1
  */

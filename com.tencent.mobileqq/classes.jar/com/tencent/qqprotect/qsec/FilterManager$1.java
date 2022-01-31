@@ -1,12 +1,12 @@
 package com.tencent.qqprotect.qsec;
 
-import beam;
-import beax;
+import bfic;
+import bfin;
 
 public class FilterManager$1
   implements Runnable
 {
-  public FilterManager$1(beam parambeam, beax parambeax) {}
+  public FilterManager$1(bfic parambfic, bfin parambfin) {}
   
   public void run()
   {

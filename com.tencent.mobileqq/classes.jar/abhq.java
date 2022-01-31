@@ -1,20 +1,17 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
 
 public class abhq
-  implements begw
+  implements View.OnClickListener
 {
-  public abhq(PhoneUnityChangeActivity paramPhoneUnityChangeActivity) {}
+  public abhq(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Begr.cancel();
-    if (this.a.jdField_a_of_type_Bafb == null) {
-      this.a.jdField_a_of_type_Bafb = babr.a(this.a, 230, ajjy.a(2131642254), ajjy.a(2131642244), ajjy.a(2131642232), ajjy.a(2131642235), new abhr(this), new abhs(this));
-    }
-    if ((this.a.jdField_a_of_type_Bafb != null) && (!this.a.jdField_a_of_type_Bafb.isShowing()) && (!this.a.isFinishing())) {
-      this.a.jdField_a_of_type_Bafb.show();
-    }
+    PublicFragmentActivity.a(this.a, LangSettingFragment.class);
   }
 }
 

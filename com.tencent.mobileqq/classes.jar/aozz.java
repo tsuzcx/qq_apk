@@ -1,32 +1,15 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aozz
-  implements apca
+  implements DialogInterface.OnClickListener
 {
-  aozz(aozy paramaozy, List paramList, aodw paramaodw, apad paramapad) {}
+  aozz(aozx paramaozx, Context paramContext, apac paramapac) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        this.jdField_a_of_type_Aodw.b(localFileManagerEntity);
-      }
-    }
-    if (this.jdField_a_of_type_Apad != null) {
-      this.jdField_a_of_type_Apad.a(1, 0);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Apad != null) {
-      this.jdField_a_of_type_Apad.a(1, 1);
-    }
+    aozx.b(this.jdField_a_of_type_Aozx, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Apac);
   }
 }
 

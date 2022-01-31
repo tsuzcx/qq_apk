@@ -1,26 +1,66 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import android.os.ResultReceiver;
+import android.annotation.TargetApi;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.Window;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.widget.immersive.SystemBarCompact;
 
-class apid
-  implements DialogInterface.OnClickListener
+public class apid
+  implements apkn
 {
-  apid(apic paramapic, int paramInt, Bundle paramBundle) {}
+  public apid(FileBrowserActivity paramFileBrowserActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @TargetApi(14)
+  public void a()
   {
-    if (this.jdField_a_of_type_Apic.jdField_a_of_type_AndroidOsResultReceiver != null)
+    if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-      paramDialogInterface = this.jdField_a_of_type_Apic.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_Apic.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramDialogInterface);
+      RelativeLayout localRelativeLayout = (RelativeLayout)this.a.findViewById(2131375492);
+      localRelativeLayout.setFitsSystemWindows(true);
+      localRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this.a), 0, 0);
     }
-    if (this.jdField_a_of_type_Apic.jdField_a_of_type_AndroidAppActivity != null)
+  }
+  
+  public void a(int paramInt)
+  {
+    FileBrowserActivity.a(this.a, (TextView)this.a.findViewById(2131368472));
+    FileBrowserActivity.a(this.a).setTextSize(1, 19.0F);
+    FileBrowserActivity.a(this.a).setText(this.a.a.a());
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    FileBrowserActivity.a(this.a, paramBoolean);
+    View localView = this.a.findViewById(2131375330);
+    if (!FileBrowserActivity.a(this.a))
     {
-      this.jdField_a_of_type_Apic.jdField_a_of_type_AndroidAppActivity.setResult(1);
-      this.jdField_a_of_type_Apic.jdField_a_of_type_AndroidAppActivity.finish();
+      localView.setVisibility(0);
+      if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.mSystemBarComp != null))
+      {
+        int i = this.a.getResources().getColor(2131166910);
+        this.a.mSystemBarComp.setStatusColor(i);
+        this.a.mSystemBarComp.setStatusBarColor(i);
+        if (ThemeUtil.isDefaultOrDIYTheme(false)) {
+          this.a.mSystemBarComp.setStatusBarDrawable(this.a.getResources().getDrawable(2130845303));
+        }
+      }
+      this.a.getWindow().setFlags(0, 1024);
+      return;
     }
+    localView.setVisibility(8);
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.mSystemBarComp != null))
+    {
+      this.a.mSystemBarComp.setStatusColor(0);
+      this.a.mSystemBarComp.setStatusBarColor(0);
+      if (ThemeUtil.isDefaultOrDIYTheme(false)) {
+        this.a.mSystemBarComp.setStatusBarDrawable(null);
+      }
+    }
+    this.a.getWindow().setFlags(1024, 1024);
   }
 }
 

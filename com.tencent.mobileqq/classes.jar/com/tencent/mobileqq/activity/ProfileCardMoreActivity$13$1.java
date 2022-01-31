@@ -8,18 +8,18 @@ class ProfileCardMoreActivity$13$1
   public void run()
   {
     if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity$13.this$0.b(2131624136, 2);
+      this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity$13.this$0.b(2131689676, 2);
     }
     do
     {
       return;
       if (this.jdField_a_of_type_Int == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity$13.this$0.b(2131624983, 2);
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity$13.this$0.b(2131690544, 2);
         return;
       }
     } while (this.jdField_a_of_type_Int != -1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity$13.this$0.b(2131624982, 1);
+    this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity$13.this$0.b(2131690543, 1);
   }
 }
 

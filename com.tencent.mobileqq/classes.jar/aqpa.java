@@ -1,52 +1,32 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.1;
-import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.2;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import java.util.concurrent.ExecutorService;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.gallery.model.pic.AIOPicData;
+import com.tencent.mobileqq.gallery.view.GalleryUrlImageView;
 
-public class aqpa
-  implements IShadow
+class aqpa
+  implements aqlz
 {
-  private aqkc a;
+  aqpa(aqox paramaqox, aqmg paramaqmg, String paramString, URLDrawable paramURLDrawable, AIOPicData paramAIOPicData, GalleryUrlImageView paramGalleryUrlImageView) {}
   
-  private void a(String paramString)
+  public void a(int paramInt, URLDrawable paramURLDrawable) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    try
+    this.jdField_a_of_type_Aqox.b.setVisibility(8);
+    if (paramBoolean)
     {
-      aqpc.a().a().b("enter_shadow_err").c(paramString).b();
-      ThreadManagerV2.getUIHandlerV2().post(new NowShadowImpl.2(this));
+      aqox.a(this.jdField_a_of_type_Aqox, this.jdField_a_of_type_Aqmg, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
       return;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+    if ((!aqox.a(this.jdField_a_of_type_Aqox, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOPicData, this.jdField_a_of_type_ComTencentMobileqqGalleryViewGalleryUrlImageView)) && (!aqox.b(this.jdField_a_of_type_Aqox, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOPicData, this.jdField_a_of_type_ComTencentMobileqqGalleryViewGalleryUrlImageView)) && (!aqox.c(this.jdField_a_of_type_Aqox, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOPicData, this.jdField_a_of_type_ComTencentMobileqqGalleryViewGalleryUrlImageView))) {
+      aqox.a(this.jdField_a_of_type_Aqox, this.jdField_a_of_type_ComTencentMobileqqGalleryViewGalleryUrlImageView);
     }
+    aqox.a(this.jdField_a_of_type_Aqox, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOPicData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOPicData.jdField_a_of_type_Int, 2);
   }
-  
-  public aqkc a(Context paramContext, String paramString1, String paramString2)
-  {
-    return aqkl.a(paramContext, paramString1, paramString2);
-  }
-  
-  public void enter(Context paramContext, long paramLong, String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
-  {
-    ajtb.b(192).execute(new NowShadowImpl.1(this, paramContext, paramString1, paramString2, paramLong, paramBundle, paramEnterCallback));
-  }
-  
-  public boolean hasPluginManager()
-  {
-    return this.a != null;
-  }
-  
-  public void setILoggerFactory() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqpa
  * JD-Core Version:    0.7.0.1
  */

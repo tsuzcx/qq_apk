@@ -4,6 +4,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.SystemClock;
+import com.tencent.mobileqq.highway.config.ConfigManager;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.DataHighwayHead;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.LoginSigHead;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.ReqDataHighwayHead;
@@ -80,6 +81,7 @@ public class TcpProtocolDataCodec
         {
           for (;;)
           {
+            int i;
             Object localObject1;
             localUnsupportedEncodingException2.printStackTrace();
           }
@@ -88,6 +90,10 @@ public class TcpProtocolDataCodec
         {
           localDataHighwayHead.locale_id.set(paramHwRequest.localeId);
           BdhLogUtil.LogEvent("R", "buildHWHead,locale_id = " + paramHwRequest.localeId);
+        }
+        i = ConfigManager.getCustomEnvId();
+        if (i > 0) {
+          localDataHighwayHead.env_id.set(i);
         }
         return localDataHighwayHead;
         localDataHighwayHead.uint32_version.set(1);

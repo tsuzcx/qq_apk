@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
 
-public class vfc
-  implements View.OnClickListener
+public final class vfc
+  implements Parcelable.Creator<EditLocalPhotoSource>
 {
-  public vfc(PermissionSettingActivity paramPermissionSettingActivity) {}
-  
-  public void onClick(View paramView)
+  public EditLocalPhotoSource a(Parcel paramParcel)
   {
-    paramView = PermissionSettingActivity.a(this.a).a();
-    if (paramView != null)
-    {
-      PermissionSettingActivity.a(this.a, paramView);
-      this.a.finish();
-    }
+    return new EditLocalPhotoSource(paramParcel);
+  }
+  
+  public EditLocalPhotoSource[] a(int paramInt)
+  {
+    return new EditLocalPhotoSource[paramInt];
   }
 }
 

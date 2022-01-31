@@ -1,73 +1,65 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import java.util.ArrayList;
-import java.util.Map;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAdLoader.1;
+import com.tencent.gdtad.aditem.GdtAdLoader.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.lang.ref.WeakReference;
+import tencent.gdt.qq_ad_get.QQAdGet;
+import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo;
 
 public class ysq
-  extends WebViewPlugin
 {
-  private ArrayList<yso> a = new ArrayList();
+  private WeakReference<ysr> jdField_a_of_type_JavaLangRefWeakReference;
+  private yss jdField_a_of_type_Yss;
   
-  public ysq()
+  public ysq(yss paramyss, WeakReference<ysr> paramWeakReference)
   {
-    this.mPluginNameSpace = "GdtWebReportPlugin";
-    ysp localysp = new ysp(this);
-    ysr localysr = new ysr(this);
-    nop localnop = new nop();
-    this.a.add(localysp);
-    this.a.add(localysr);
-    this.a.add(localnop);
+    this.jdField_a_of_type_Yss = paramyss;
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
   }
   
-  public Activity a()
+  private void a()
   {
-    if (this.mRuntime != null) {}
-    for (Activity localActivity1 = this.mRuntime.a();; localActivity1 = null)
+    new Handler(Looper.getMainLooper()).post(new GdtAdLoader.2(this));
+  }
+  
+  private void b(WeakReference<Context> paramWeakReference)
+  {
+    if ((this.jdField_a_of_type_Yss == null) || (this.jdField_a_of_type_Yss.a == null))
     {
-      Activity localActivity2 = localActivity1;
-      if ((localActivity1 instanceof BasePluginActivity)) {
-        localActivity2 = ((BasePluginActivity)BasePluginActivity.class.cast(localActivity1)).getOutActivity();
-      }
-      return localActivity2;
+      yxs.d("GdtAdLoader", "reportForAnalysis error");
+      return;
     }
-  }
-  
-  public void callJs(String paramString)
-  {
-    super.callJs(paramString);
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
     int i = 0;
-    while (i < this.a.size())
-    {
-      ((yso)this.a.get(i)).a(paramString, paramLong, paramMap);
-      i += 1;
+    label27:
+    if (i < this.jdField_a_of_type_Yss.a.position_info.size()) {
+      if (paramWeakReference == null) {
+        break label90;
+      }
     }
-    return false;
+    label90:
+    for (Context localContext = (Context)paramWeakReference.get();; localContext = null)
+    {
+      AdReporterForAnalysis.reportForLoadAd(localContext, ((qq_ad_get.QQAdGet.PositionInfo)this.jdField_a_of_type_Yss.a.position_info.get(i)).pos_id.get());
+      i += 1;
+      break label27;
+      break;
+    }
   }
   
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  public yss a()
   {
-    return super.handleSchemaRequest(paramString1, paramString2);
+    return this.jdField_a_of_type_Yss;
   }
   
-  public void onActivityReady()
+  public void a(WeakReference<Context> paramWeakReference)
   {
-    super.onActivityReady();
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-  }
-  
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
-  {
-    super.onWebViewCreated(paramCustomWebView);
+    ThreadManager.post(new GdtAdLoader.1(this, paramWeakReference), 5, null, true);
+    b(paramWeakReference);
   }
 }
 

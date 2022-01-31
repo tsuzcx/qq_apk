@@ -1,48 +1,45 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.content.Context;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.view.widget.StoryNickNameView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
 public class wdu
+  extends QQUIEventReceiver<StoryNickNameView, tkn>
 {
-  public static void a(Context paramContext, int paramInt, web paramweb)
+  public wdu(@NonNull StoryNickNameView paramStoryNickNameView)
   {
-    begr localbegr = begr.a(paramContext);
-    localbegr.a(String.format(paramContext.getString(2131654058), new Object[] { Integer.valueOf(paramInt) }));
-    localbegr.b(2131654057);
-    localbegr.c(2131625035);
-    localbegr.a(new wdy(paramweb, localbegr));
-    localbegr.a(new wdz(paramweb, localbegr));
-    if (!localbegr.isShowing()) {
-      localbegr.show();
-    }
+    super(paramStoryNickNameView);
   }
   
-  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, web paramweb, wea paramwea)
+  public void a(@NonNull StoryNickNameView paramStoryNickNameView, @NonNull tkn paramtkn)
   {
-    a(paramContext, null, paramStFeed, paramweb, paramwea);
+    if ((paramtkn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null) && (paramtkn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {}
+    do
+    {
+      return;
+      if ((paramtkn.jdField_a_of_type_JavaUtilList == null) || (paramtkn.jdField_a_of_type_JavaUtilList.size() == 0))
+      {
+        veg.e("Q.qqstoryStoryNickNameView", "we receiver the error info form GetUserInfoHandler!!");
+        return;
+      }
+      if (TextUtils.equals(paramtkn.b, "Q.qqstoryStoryNickNameView")) {
+        StoryNickNameView.a(paramStoryNickNameView, (QQUserUIItem)paramtkn.jdField_a_of_type_JavaUtilList.get(0));
+      }
+    } while (!TextUtils.equals(paramtkn.jdField_a_of_type_JavaLangString, paramStoryNickNameView.a()));
+    paramStoryNickNameView.a((QQUserUIItem)paramtkn.jdField_a_of_type_JavaUtilList.get(0));
   }
   
-  private static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, web paramweb, wea paramwea)
+  public Class acceptEventClass()
   {
-    begr localbegr = begr.a(paramContext);
-    localbegr.a(paramContext.getString(2131654059));
-    localbegr.a(2131654060, 3);
-    localbegr.c(2131625035);
-    localbegr.a(new wdv(localbegr, paramwea));
-    localbegr.a(new wdw(paramStUser, paramStFeed, paramweb, paramwea, localbegr));
-    if (!localbegr.isShowing()) {
-      localbegr.show();
-    }
-  }
-  
-  public static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, web paramweb, wea paramwea)
-  {
-    a(paramContext, paramStUser, null, paramweb, paramwea);
+    return tkn.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wdu
  * JD-Core Version:    0.7.0.1
  */

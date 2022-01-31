@@ -8,7 +8,7 @@ import com.tencent.tmassistant.common.jce.Request;
 import com.tencent.tmassistant.common.jce.Response;
 import com.tencent.tmassistantbase.network.PostHttpRequest;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 
 public class d
   extends PostHttpRequest
@@ -22,7 +22,7 @@ public class d
   
   public boolean a(byte paramByte, b paramb)
   {
-    ac.c("LogReportHttpRequest", "sendLogDataToServer logType:" + paramByte + " logDataWrapper:" + paramb);
+    ab.c("LogReportHttpRequest", "sendLogDataToServer logType:" + paramByte + " logDataWrapper:" + paramb);
     if (paramb == null) {
       return false;
     }
@@ -60,15 +60,15 @@ public class d
         return;
       }
       this.a.a(this, false);
-      ac.c("LogReportHttpRequest", "response ret:" + paramArrayOfByte1.ret);
+      ab.c("LogReportHttpRequest", "response ret:" + paramArrayOfByte1.ret);
       return;
     }
-    ac.c("LogReportHttpRequest", "response isn't instanceof ReportLogResponse !");
+    ab.c("LogReportHttpRequest", "response isn't instanceof ReportLogResponse !");
     return;
     this.a.a(this, false);
     return;
     label177:
-    ac.c("LogReportHttpRequest", "mListener is null !");
+    ab.c("LogReportHttpRequest", "mListener is null !");
   }
 }
 

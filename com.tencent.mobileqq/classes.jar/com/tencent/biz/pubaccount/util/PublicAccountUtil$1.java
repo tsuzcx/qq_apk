@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.util;
 
 import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
-import rtr;
+import sgj;
 
 public final class PublicAccountUtil$1
   implements Runnable
@@ -11,7 +11,7 @@ public final class PublicAccountUtil$1
   
   public void run()
   {
-    rtr.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    sgj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
   }
 }
 

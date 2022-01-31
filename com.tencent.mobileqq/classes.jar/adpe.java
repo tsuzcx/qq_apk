@@ -1,18 +1,9 @@
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class adpe
-  implements QQPermissionCallback
+class adpe
+  implements ajos
 {
-  public adpe(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, AppActivity paramAppActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    babr.b(this.jdField_a_of_type_MqqAppAppActivity);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  adpe(adoz paramadoz, FileManagerEntity paramFileManagerEntity) {}
 }
 
 

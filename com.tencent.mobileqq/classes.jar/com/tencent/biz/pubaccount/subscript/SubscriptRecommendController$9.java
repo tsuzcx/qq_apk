@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.subscript;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import rqc;
+import scu;
 
 public class SubscriptRecommendController$9
   implements Runnable
 {
-  public SubscriptRecommendController$9(rqc paramrqc) {}
+  public SubscriptRecommendController$9(scu paramscu) {}
   
   public void run()
   {

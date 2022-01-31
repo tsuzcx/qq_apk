@@ -1,47 +1,39 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
+import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mm.vfs.VFSFileOp;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
-import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import java.io.IOException;
+import com.tencent.qphone.base.util.QLog;
+import nay;
 
 class FileJsPlugin$15
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$15(FileJsPlugin paramFileJsPlugin, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt, String paramString3, String paramString4, byte[] paramArrayOfByte) {}
+  FileJsPlugin$15(FileJsPlugin paramFileJsPlugin, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt, String paramString3, long paramLong) {}
   
   public String run()
   {
-    if (!FileJsPlugin.access$300(this.this$0, this.val$encoding)) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "invalid encoding " + this.val$encoding, this.val$callbackId);
+    if ((MiniAppFileManager.getInstance().getWxFileType(this.val$zipFilePath) == 9999) && (!MiniAppFileManager.getInstance().isPackageRelativePath(this.val$zipFilePath))) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "permission denied, open " + this.val$zipFilePath, this.val$callbackId);
     }
-    if (MiniAppFileManager.getInstance().getWxFileType(this.val$filePath) != 2) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "permission denied, open " + this.val$filePath, this.val$callbackId);
+    if (MiniAppFileManager.getInstance().getWxFileType(this.val$targetPath) != 2) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "permission denied, open " + this.val$targetPath, this.val$callbackId);
     }
-    String str = MiniAppFileManager.getInstance().getUsrPath(this.val$filePath);
-    if (!TextUtils.isEmpty(str))
-    {
-      if (str.contains("miniprogramLog"))
-      {
-        MiniLog.writeMiniLog(this.this$0.jsPluginEngine.appBrandRuntime.appId, this.val$data);
-        return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, this.val$callbackId);
-      }
-      try
-      {
-        if (FileJsPlugin.access$400(this.this$0, this.val$nativeBufferBytes, this.val$data, this.val$encoding, str, true))
-        {
-          str = FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, this.val$callbackId);
-          return str;
-        }
-      }
-      catch (IOException localIOException)
-      {
-        return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, localIOException.getMessage(), this.val$callbackId);
-      }
+    String str2 = MiniAppFileManager.getInstance().getAbsolutePath(this.val$zipFilePath);
+    String str1 = MiniAppFileManager.getInstance().getUsrPath(this.val$targetPath);
+    if ((TextUtils.isEmpty(str2)) || (!new VFSFile(str2).exists())) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "no such file or directory, open " + this.val$zipFilePath, this.val$callbackId);
     }
-    return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "no such file or directory, open ", this.val$callbackId);
+    str2 = VFSFileOp.exportExternalPath(str2, true);
+    str1 = VFSFileOp.exportExternalPath(str1, true);
+    int i = nay.a(str2, str1);
+    QLog.d("[mini] FileJsPlugin", 1, "unzip [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], zipPath:" + str2 + ", target:" + str1);
+    if (i == 0) {
+      return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, this.val$callbackId);
+    }
+    return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "read zip data", this.val$callbackId);
   }
 }
 

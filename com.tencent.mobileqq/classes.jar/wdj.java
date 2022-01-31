@@ -1,33 +1,44 @@
-import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
 public class wdj
-  implements tql
+  extends Handler
 {
-  public wdj(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
-  
-  public void a_(tqg paramtqg)
+  public wdj(QQStoryLoadingView paramQQStoryLoadingView, Looper paramLooper)
   {
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      if (QQPlayerService.a()) {
-        QQPlayerService.c(this.a.getActivity());
-      }
+    default: 
       return;
     }
-    catch (Exception paramtqg)
+    Object localObject = paramMessage.obj;
+    String str;
+    if (paramMessage.what == 8) {
+      str = "GONE";
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("SubscribeVideoDetailFragment", 2, "QQPlayerService.stopPlayMusic exception!", paramtqg);
+      veg.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
+      this.a.setVisibility(paramMessage.what);
+      return;
+      if (paramMessage.what == 0) {
+        str = "VISIBLE";
+      } else {
+        str = "INVISIBLE";
       }
-      paramtqg.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wdj
  * JD-Core Version:    0.7.0.1
  */

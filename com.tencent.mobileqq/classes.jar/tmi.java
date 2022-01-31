@@ -1,55 +1,68 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetEmoticonPackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetEmoticonPackList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-final class tmi
-  implements ValueAnimator.AnimatorUpdateListener
+public class tmi
+  extends syv<tog>
 {
-  tmi(ViewGroup paramViewGroup, ImageView paramImageView1, ImageView paramImageView2) {}
+  public final String a;
+  public final int c;
+  public final int d;
+  public final int e;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public tmi(String paramString, int paramInt)
   {
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue("scaleX")).floatValue();
-    float f2 = ((Float)paramValueAnimator.getAnimatedValue("scaleY")).floatValue();
-    this.jdField_a_of_type_AndroidViewViewGroup.setPivotX(0.5F);
-    this.jdField_a_of_type_AndroidViewViewGroup.setScaleX(f1);
-    this.jdField_a_of_type_AndroidViewViewGroup.setPivotY(0.5F);
-    this.jdField_a_of_type_AndroidViewViewGroup.setScaleY(f2);
-    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(((Float)paramValueAnimator.getAnimatedValue("translateX")).floatValue());
-    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationY(((Float)paramValueAnimator.getAnimatedValue("translateY")).floatValue());
-    int i = this.jdField_a_of_type_AndroidViewViewGroup.getWidth();
-    int j = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
-    float f3;
-    if (f1 < f2)
-    {
-      f1 = f2 / f1;
-      f2 = i;
-      f3 = i;
-      this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(f1);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX((f2 - f3 * f1) * 0.5F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(1.0F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY(0.0F);
+    this(paramString, paramInt, 0, 0);
+  }
+  
+  public tmi(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramString == null) {
+      throw new IllegalArgumentException("mCookie should not be null");
     }
-    for (;;)
-    {
-      this.b.setAlpha(((Float)paramValueAnimator.getAnimatedValue("backgroundAlpha")).floatValue());
-      return;
-      if (f2 < f1)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
-        f1 /= f2;
-        f2 = j;
-        f3 = j;
-        this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(f1);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY((f2 - f3 * f1) * 0.5F);
-      }
+    if (paramInt1 <= 0) {
+      throw new IllegalArgumentException("mCount should not be less than 0 : " + paramInt1);
     }
+    this.a = paramString;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+  }
+  
+  public String a()
+  {
+    return sxp.a("StorySvc.video_emoticon_get");
+  }
+  
+  public syq a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetEmoticonPackList localRspGetEmoticonPackList = new qqstory_service.RspGetEmoticonPackList();
+    try
+    {
+      localRspGetEmoticonPackList.mergeFrom(paramArrayOfByte);
+      return new tog(localRspGetEmoticonPackList, paramArrayOfByte, System.currentTimeMillis());
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      veg.e("GetEmojiPackInfoListRequest", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetEmoticonPackList localReqGetEmoticonPackList = new qqstory_service.ReqGetEmoticonPackList();
+    localReqGetEmoticonPackList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    localReqGetEmoticonPackList.count.set(this.c);
+    return localReqGetEmoticonPackList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetEmojiPackInfoListRequest{mCookie='" + this.a + '\'' + ", mCount=" + this.c + ", latitude=" + this.d + ", longitude=" + this.e + '}';
   }
 }
 

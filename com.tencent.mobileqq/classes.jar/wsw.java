@@ -1,135 +1,100 @@
-import android.support.annotation.Nullable;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaCategory;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.biz.videostory.capture.AEVideoStoryGIFTplViewModel.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
-
 public class wsw
-  extends bhwk
 {
-  private bhwf<List<wqk>> jdField_a_of_type_Bhwf = new bhwf();
-  private Map<String, wqj> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private bhwf<wqg> b = new bhwf();
-  private bhwf<String> c = new bhwf();
-  private bhwf<String> d = new bhwf();
-  
-  private void c()
+  /* Error */
+  public static Object a(byte[] paramArrayOfByte)
   {
-    Object localObject1 = avzk.a();
-    if ((localObject1 == null) || (((GetCategoryMaterialRsp)localObject1).Categories == null)) {}
-    for (;;)
-    {
-      return;
-      Object localObject2 = ((GetCategoryMaterialRsp)localObject1).Categories.iterator();
-      do
-      {
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
-        localObject1 = (MetaCategory)((Iterator)localObject2).next();
-      } while (!((MetaCategory)localObject1).name.equals(ajjy.a(2131634215)));
-      while ((localObject1 != null) && (((MetaCategory)localObject1).materials != null))
-      {
-        localObject2 = new ArrayList();
-        localObject1 = ((MetaCategory)localObject1).materials.iterator();
-        if (((Iterator)localObject1).hasNext())
-        {
-          MetaMaterial localMetaMaterial = (MetaMaterial)((Iterator)localObject1).next();
-          wqk localwqk = new wqk();
-          localwqk.jdField_a_of_type_JavaLangString = localMetaMaterial.id;
-          localwqk.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = localMetaMaterial;
-          if (wqh.a().a(localMetaMaterial)) {}
-          for (int i = 2;; i = 0)
-          {
-            localwqk.jdField_a_of_type_Int = i;
-            ((List)localObject2).add(localwqk);
-            break;
-          }
-        }
-        this.jdField_a_of_type_Bhwf.a(localObject2);
-        return;
-        localObject1 = null;
-      }
-    }
+    // Byte code:
+    //   0: new 10	java/io/ByteArrayInputStream
+    //   3: dup
+    //   4: aload_0
+    //   5: invokespecial 14	java/io/ByteArrayInputStream:<init>	([B)V
+    //   8: astore_1
+    //   9: new 16	java/io/ObjectInputStream
+    //   12: dup
+    //   13: aload_1
+    //   14: invokespecial 19	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   17: astore_2
+    //   18: aload_2
+    //   19: invokevirtual 23	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   22: astore_0
+    //   23: aload_1
+    //   24: invokevirtual 27	java/io/ByteArrayInputStream:close	()V
+    //   27: aload_2
+    //   28: invokevirtual 28	java/io/ObjectInputStream:close	()V
+    //   31: aload_0
+    //   32: areturn
+    //   33: astore_1
+    //   34: aconst_null
+    //   35: astore_0
+    //   36: aload_1
+    //   37: invokevirtual 31	java/lang/Exception:printStackTrace	()V
+    //   40: aload_0
+    //   41: areturn
+    //   42: astore_1
+    //   43: goto -7 -> 36
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	46	0	paramArrayOfByte	byte[]
+    //   8	16	1	localByteArrayInputStream	java.io.ByteArrayInputStream
+    //   33	4	1	localException1	java.lang.Exception
+    //   42	1	1	localException2	java.lang.Exception
+    //   17	11	2	localObjectInputStream	java.io.ObjectInputStream
+    // Exception table:
+    //   from	to	target	type
+    //   0	23	33	java/lang/Exception
+    //   23	31	42	java/lang/Exception
   }
   
-  public bhwf<List<wqk>> a()
+  /* Error */
+  public static byte[] a(Object paramObject)
   {
-    return this.jdField_a_of_type_Bhwf;
-  }
-  
-  public void a()
-  {
-    this.c.a(this.c.a());
-  }
-  
-  public void a(bhcw parambhcw)
-  {
-    ThreadManager.getSubThreadHandler().post(new AEVideoStoryGIFTplViewModel.1(this));
-    avzk.a().a(parambhcw, new wsx(this));
-  }
-  
-  public void a(AppInterface paramAppInterface, wqk paramwqk)
-  {
-    wsy localwsy = new wsy(this);
-    this.jdField_a_of_type_JavaUtilMap.put(paramwqk.jdField_a_of_type_JavaLangString, localwsy);
-    wqh.a().a(paramAppInterface, paramwqk.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, localwsy);
-  }
-  
-  public void a(@Nullable wqk paramwqk)
-  {
-    if (paramwqk != null)
-    {
-      paramwqk = wqh.a().a(paramwqk.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
-      this.c.a(paramwqk);
-      return;
-    }
-    this.c.a(null);
-  }
-  
-  public bhwf<wqg> b()
-  {
-    return this.b;
-  }
-  
-  protected void b()
-  {
-    super.b();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-  }
-  
-  public void b(@Nullable wqk paramwqk)
-  {
-    if (paramwqk != null)
-    {
-      paramwqk = (String)paramwqk.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename");
-      this.d.a(paramwqk);
-      return;
-    }
-    this.d.a(null);
-  }
-  
-  public bhwf<String> c()
-  {
-    return this.c;
-  }
-  
-  public bhwf<String> d()
-  {
-    return this.d;
+    // Byte code:
+    //   0: new 35	java/io/ByteArrayOutputStream
+    //   3: dup
+    //   4: invokespecial 37	java/io/ByteArrayOutputStream:<init>	()V
+    //   7: astore_1
+    //   8: new 39	java/io/ObjectOutputStream
+    //   11: dup
+    //   12: aload_1
+    //   13: invokespecial 42	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   16: astore_2
+    //   17: aload_2
+    //   18: aload_0
+    //   19: invokevirtual 46	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   22: aload_1
+    //   23: invokevirtual 50	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   26: astore_0
+    //   27: aload_1
+    //   28: invokevirtual 51	java/io/ByteArrayOutputStream:close	()V
+    //   31: aload_2
+    //   32: invokevirtual 52	java/io/ObjectOutputStream:close	()V
+    //   35: aload_0
+    //   36: areturn
+    //   37: astore_1
+    //   38: aconst_null
+    //   39: astore_0
+    //   40: aload_1
+    //   41: invokevirtual 31	java/lang/Exception:printStackTrace	()V
+    //   44: aload_0
+    //   45: areturn
+    //   46: astore_1
+    //   47: goto -7 -> 40
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	50	0	paramObject	Object
+    //   7	21	1	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   37	4	1	localException1	java.lang.Exception
+    //   46	1	1	localException2	java.lang.Exception
+    //   16	16	2	localObjectOutputStream	java.io.ObjectOutputStream
+    // Exception table:
+    //   from	to	target	type
+    //   0	27	37	java/lang/Exception
+    //   27	35	46	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wsw
  * JD-Core Version:    0.7.0.1
  */

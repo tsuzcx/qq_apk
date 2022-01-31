@@ -1,22 +1,12 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class anqn
-  extends ajrb
+public abstract interface anqn
 {
-  public anqn(ExtendFriendFragment paramExtendFriendFragment) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ExtendFriendFragment", 2, "RedpointObserver  onDataChange");
-    }
-    ExtendFriendFragment.b(this.a);
-  }
+  public abstract void a(List<anyc> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anqn
  * JD-Core Version:    0.7.0.1
  */

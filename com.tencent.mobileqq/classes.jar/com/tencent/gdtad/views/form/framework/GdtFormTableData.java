@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import yny;
-import yqq;
+import yxs;
+import zai;
 
 public class GdtFormTableData
   implements Serializable
@@ -58,12 +58,12 @@ public class GdtFormTableData
     return true;
   }
   
-  public yqq validate()
+  public zai validate()
   {
     if (!isValid())
     {
-      yny.d("GdtFormTableData", "validate error");
-      return new yqq(3, -1, null);
+      yxs.d("GdtFormTableData", "validate error");
+      return new zai(3, -1, null);
     }
     int i = 0;
     while (i < getSize())
@@ -71,23 +71,23 @@ public class GdtFormTableData
       GdtFormItemData localGdtFormItemData = getItem(i);
       if (localGdtFormItemData == null)
       {
-        yny.d("GdtFormTableData", "validate error " + i);
-        return new yqq(3, i, null);
+        yxs.d("GdtFormTableData", "validate error " + i);
+        return new zai(3, i, null);
       }
-      yqq localyqq = localGdtFormItemData.validate();
-      if (localyqq == null)
+      zai localzai = localGdtFormItemData.validate();
+      if (localzai == null)
       {
-        yny.d("GdtFormTableData", "validate error " + i);
-        return new yqq(3, i, localGdtFormItemData.title.text);
+        yxs.d("GdtFormTableData", "validate error " + i);
+        return new zai(3, i, localGdtFormItemData.title.text);
       }
-      localyqq.b = i;
-      if (localyqq.a == 2) {
+      localzai.b = i;
+      if (localzai.a == 2) {
         i += 1;
       } else {
-        return localyqq;
+        return localzai;
       }
     }
-    return new yqq(2, -1, null);
+    return new zai(2, -1, null);
   }
 }
 

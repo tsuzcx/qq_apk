@@ -1,79 +1,25 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.observer.SubAccountObserver;
 
 class akqh
-  implements akqf
+  extends SubAccountObserver
 {
-  private IBinder a;
+  akqh(akqf paramakqf, ayav paramayav) {}
   
-  akqh(IBinder paramIBinder)
+  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    this.a = paramIBinder;
-  }
-  
-  public void a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
+    if ((paramString3 == null) || (this.jdField_a_of_type_Akqf.a == null) || (paramString1 == null)) {}
+    while (!paramString1.equalsIgnoreCase(this.jdField_a_of_type_Akqf.a.getAccount())) {
       return;
     }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    this.jdField_a_of_type_Ayav.a(paramString2, paramString3, true);
+    ayao.a(this.jdField_a_of_type_Akqf.a, (byte)1, paramString2);
+    ayao.a(this.jdField_a_of_type_Akqf.a, paramString2, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akqh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,27 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import bdfz;
-import bdqa;
-import bdrb;
+import beka;
+import bevi;
+import bewt;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class OpenDataJsPlugin$3
   implements AsyncResult
 {
-  OpenDataJsPlugin$3(OpenDataJsPlugin paramOpenDataJsPlugin, bdfz parambdfz) {}
+  OpenDataJsPlugin$3(OpenDataJsPlugin paramOpenDataJsPlugin, beka parambeka) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    bdrb localbdrb = bdrb.a();
-    StringBuilder localStringBuilder = new StringBuilder().append("getFriendCloudStorage callback appid:").append(bdqa.a().a()).append(", isSuc:").append(paramBoolean).append(", ret:");
+    bewt localbewt = bewt.a();
+    StringBuilder localStringBuilder = new StringBuilder().append("getFriendCloudStorage callback appid:").append(bevi.a().a()).append(", isSuc:").append(paramBoolean).append(", ret:");
     Object localObject;
     if (paramJSONObject != null) {
       localObject = paramJSONObject.toString();
     }
     for (;;)
     {
-      localbdrb.i("OpenDataJsPlugin", (String)localObject);
+      localbewt.i("OpenDataJsPlugin", (String)localObject);
       localObject = new JSONObject();
       if (paramBoolean) {
         try
@@ -42,7 +42,7 @@ class OpenDataJsPlugin$3
         }
         catch (Throwable paramJSONObject)
         {
-          bdrb.a().e("OpenDataJsPlugin", "getFriendCloudStorage error " + paramJSONObject.getMessage());
+          bewt.a().e("OpenDataJsPlugin", "getFriendCloudStorage error " + paramJSONObject.getMessage());
           this.val$req.b();
           return;
         }

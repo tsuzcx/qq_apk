@@ -1,30 +1,15 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.Friends;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.BaseVMPeakActivity;
 
-public class bitl
+class bitl
+  implements View.OnClickListener
 {
-  @NonNull
-  protected final Friends a;
-  protected boolean a;
+  bitl(bitj parambitj) {}
   
-  public bitl(@NonNull Friends paramFriends)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    bitj.a(this.a).finish();
   }
 }
 

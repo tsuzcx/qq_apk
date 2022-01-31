@@ -1,19 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.content.Context;
+import com.tencent.mobileqq.data.MessageForFile;
 
-public class adpm
-  implements Animator.AnimatorListener
+class adpm
+  implements aptu
 {
-  public adpm(SixCombolEffectView paramSixCombolEffectView) {}
+  adpm(adpi paramadpi, MessageForFile paramMessageForFile, Context paramContext) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public void a()
+  {
+    apue.a(this.jdField_a_of_type_Adpi.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
+  }
   
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void b() {}
 }
 
 

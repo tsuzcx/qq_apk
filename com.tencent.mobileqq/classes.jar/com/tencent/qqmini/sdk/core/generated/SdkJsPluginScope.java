@@ -20,9 +20,13 @@ public final class SdkJsPluginScope
   public static final Map EVENT_HANDLERS_FileJsPlugin;
   public static final Map EVENT_HANDLERS_ImageJsPlugin;
   public static final Map EVENT_HANDLERS_InputJsPlugin;
+  public static final Map EVENT_HANDLERS_InternalJSPlugin;
+  public static final Map EVENT_HANDLERS_InterstitialAdPlugin;
   public static final Map EVENT_HANDLERS_LogJsPlugin;
   public static final Map EVENT_HANDLERS_MapJsPlugin;
   public static final Map EVENT_HANDLERS_MiscJsPlugin;
+  public static final Map EVENT_HANDLERS_NativeFeatureJsPlugin;
+  public static final Map EVENT_HANDLERS_NavigationJsPlugin;
   public static final Map EVENT_HANDLERS_NetworkJsPlugin;
   public static final Map EVENT_HANDLERS_PayJsPlugin;
   public static final Map EVENT_HANDLERS_PersonalizeJsPlugin;
@@ -58,6 +62,7 @@ public final class SdkJsPluginScope
   static
   {
     PLUGIN_EVENTS = new HashMap();
+    EVENT_HANDLERS_InternalJSPlugin = new HashMap();
     EVENT_HANDLERS_VoIPJsPlugin = new HashMap();
     EVENT_HANDLERS_ImageJsPlugin = new HashMap();
     SERVICE_INJECTORS_ImageJsPlugin = new HashMap();
@@ -87,9 +92,11 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS_NetworkJsPlugin = new HashMap();
     EVENT_HANDLERS_MapJsPlugin = new HashMap();
     EVENT_HANDLERS_DebugJsPlugin = new HashMap();
+    EVENT_HANDLERS_NativeFeatureJsPlugin = new HashMap();
     EVENT_HANDLERS_PersonalizeJsPlugin = new HashMap();
     SERVICE_INJECTORS_PersonalizeJsPlugin = new HashMap();
     EVENT_HANDLERS_AppBoxPlugin = new HashMap();
+    EVENT_HANDLERS_InterstitialAdPlugin = new HashMap();
     EVENT_HANDLERS_DataJsPlugin = new HashMap();
     SERVICE_INJECTORS_DataJsPlugin = new HashMap();
     EVENT_HANDLERS_WifiJsPlugin = new HashMap();
@@ -103,7 +110,15 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS_QQFriendJsPlugin = new HashMap();
     SERVICE_INJECTORS_QQFriendJsPlugin = new HashMap();
     EVENT_HANDLERS_BannerAdPlugin = new HashMap();
+    EVENT_HANDLERS_NavigationJsPlugin = new HashMap();
     PRELOAD_PLUGINS.add("com.tencent.qqmini.sdk.core.plugins.NetworkJsPlugin");
+    EVENT_HANDLERS_InternalJSPlugin.put("notifyNative", "notifyNative");
+    EVENT_HANDLERS_InternalJSPlugin.put("getStoreAppList", "getStoreAppList");
+    EVENT_HANDLERS_InternalJSPlugin.put("getQua", "getQua");
+    EVENT_HANDLERS_InternalJSPlugin.put("openUrl", "openUrl");
+    EVENT_HANDLERS_InternalJSPlugin.put("private_openUrl", "private_openUrl");
+    EVENT_HANDLERS_InternalJSPlugin.put("launchApplication", "launchApplication");
+    PLUGIN_EVENTS.put("com.tencent.qqmini.sdk.core.plugins.InternalJSPlugin", EVENT_HANDLERS_InternalJSPlugin);
     EVENT_HANDLERS_VoIPJsPlugin.put("updateVoIPChatMuteConfig", "updateVoIPChatMuteConfig");
     EVENT_HANDLERS_VoIPJsPlugin.put("joinVoIPChat", "joinVoIPChat");
     EVENT_HANDLERS_VoIPJsPlugin.put("exitVoIPChat", "exitVoIPChat");
@@ -145,12 +160,13 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS_UIJsPlugin.put("insertTextArea", "doInterceptJsEvent");
     EVENT_HANDLERS_UIJsPlugin.put("updateTextArea", "doInterceptJsEvent");
     EVENT_HANDLERS_UIJsPlugin.put("removeTextArea", "doInterceptJsEvent");
+    EVENT_HANDLERS_UIJsPlugin.put("getMenuButtonBoundingClientRect", "doInterceptJsEvent");
     PLUGIN_EVENTS.put("com.tencent.qqmini.sdk.core.plugins.UIJsPlugin", EVENT_HANDLERS_UIJsPlugin);
+    EVENT_HANDLERS_ShareJsPlugin.put("shareAppMessageDirectly", "shareAppMessageDirectly");
+    EVENT_HANDLERS_ShareJsPlugin.put("shareAppPictureMessageDirectly", "shareAppPictureMessageDirectly");
     EVENT_HANDLERS_ShareJsPlugin.put("shareAppMessage", "shareAppMessage");
-    EVENT_HANDLERS_ShareJsPlugin.put("shareAppMessageDirectly", "shareAppMessage");
     EVENT_HANDLERS_ShareJsPlugin.put("shareAppMessageDirectlyToFriendList", "shareAppMessage");
     EVENT_HANDLERS_ShareJsPlugin.put("shareAppPictureMessage", "shareAppPictureMessage");
-    EVENT_HANDLERS_ShareJsPlugin.put("shareAppPictureMessageDirectly", "shareAppPictureMessage");
     EVENT_HANDLERS_ShareJsPlugin.put("hideShareMenu", "hideShareMenu");
     EVENT_HANDLERS_ShareJsPlugin.put("showShareMenu", "showShareMenu");
     EVENT_HANDLERS_ShareJsPlugin.put("showShareMenuWithShareTicket", "showShareMenu");
@@ -166,7 +182,6 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS_FileJsPlugin.put("operateDownloadTask", "operateDownloadTask");
     EVENT_HANDLERS_FileJsPlugin.put("createUploadTask", "createUploadTask");
     EVENT_HANDLERS_FileJsPlugin.put("operateUploadTask", "operateUploadTask");
-    EVENT_HANDLERS_FileJsPlugin.put("createLoadSubPackageTask", "createLoadSubPackageTask");
     EVENT_HANDLERS_FileJsPlugin.put("access", "access");
     EVENT_HANDLERS_FileJsPlugin.put("accessSync", "access");
     EVENT_HANDLERS_FileJsPlugin.put("fs_appendFile", "appendFile");
@@ -274,11 +289,15 @@ public final class SdkJsPluginScope
     PLUGIN_EVENTS.put("com.tencent.qqmini.sdk.core.plugins.MapJsPlugin", EVENT_HANDLERS_MapJsPlugin);
     EVENT_HANDLERS_DebugJsPlugin.put("setEnableDebug", "setEnableDebug");
     PLUGIN_EVENTS.put("com.tencent.qqmini.sdk.core.plugins.DebugJsPlugin", EVENT_HANDLERS_DebugJsPlugin);
+    EVENT_HANDLERS_NativeFeatureJsPlugin.put("invokeNativePlugin", "invokeNativePlugin");
+    PLUGIN_EVENTS.put("com.tencent.qqmini.sdk.core.plugins.NativeFeatureJsPlugin", EVENT_HANDLERS_NativeFeatureJsPlugin);
     EVENT_HANDLERS_PersonalizeJsPlugin.put("Personalize", "personalize");
     PLUGIN_EVENTS.put("com.tencent.qqmini.sdk.core.plugins.PersonalizeJsPlugin", EVENT_HANDLERS_PersonalizeJsPlugin);
     SERVICE_INJECTORS_PersonalizeJsPlugin.put("mChannelProxy", "com.tencent.qqmini.sdk.core.proxy.ChannelProxy");
     EVENT_HANDLERS_AppBoxPlugin.put("operateAppBox", "operateAppBox");
     PLUGIN_EVENTS.put("com.tencent.qqmini.sdk.core.plugins.AppBoxPlugin", EVENT_HANDLERS_AppBoxPlugin);
+    EVENT_HANDLERS_InterstitialAdPlugin.put("operateInterstitialAd", "operateInterstitialAd");
+    PLUGIN_EVENTS.put("com.tencent.qqmini.sdk.core.plugins.InterstitialAdPlugin", EVENT_HANDLERS_InterstitialAdPlugin);
     EVENT_HANDLERS_DataJsPlugin.put("scanCode", "scanCode");
     EVENT_HANDLERS_DataJsPlugin.put("invokeGroupJSApi", "invokeGroupJSApi");
     EVENT_HANDLERS_DataJsPlugin.put("getNativeWeRunData", "getNativeWeRunData");
@@ -308,6 +327,7 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS_RewardedVideoAdPlugin.put("createRewardedVideoAd", "createRewardedVideoAd");
     EVENT_HANDLERS_RewardedVideoAdPlugin.put("operateRewardedAd", "operateRewardedAd");
     PLUGIN_EVENTS.put("com.tencent.qqmini.sdk.core.plugins.RewardedVideoAdPlugin", EVENT_HANDLERS_RewardedVideoAdPlugin);
+    EVENT_HANDLERS_ReportPlugin.put("reportDC", "reportDC");
     EVENT_HANDLERS_ReportPlugin.put("api_report", "apiReport");
     EVENT_HANDLERS_ReportPlugin.put("reportKeyValue", "reportKeyValue");
     EVENT_HANDLERS_ReportPlugin.put("reportDataToDC", "reportDataToDC");

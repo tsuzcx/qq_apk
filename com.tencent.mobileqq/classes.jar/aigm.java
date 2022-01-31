@@ -1,35 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aigm
-  implements zrt
+class aigm
+  implements swm
 {
-  public aigm(View paramView, zrw paramzrw, long paramLong, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6) {}
+  aigm(aigl paramaigl, PublishVideoEntry paramPublishVideoEntry, String paramString, long paramLong) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed");
+    if (aigl.a(this.jdField_a_of_type_Aigl)) {}
+    for (int i = -24;; i = paramInt)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("EncodeVideoTask", 2, "onVideoCompositeFinish isCancel:" + aigl.a(this.jdField_a_of_type_Aigl) + ", errCode:" + paramInt);
+      }
+      this.jdField_a_of_type_Aigl.a = true;
+      aigl.a(this.jdField_a_of_type_Aigl).a(i, paramString1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+      return;
+    }
   }
-  
-  public void onPermission(int paramInt)
-  {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed permission");
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    paramJSONObject = paramJSONObject.optString("city", "");
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, paramJSONObject, 0, "location success");
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aigm
  * JD-Core Version:    0.7.0.1
  */

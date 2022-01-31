@@ -1,22 +1,27 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class aplu
-  extends Handler
+  implements aple
 {
-  aplu(apln paramapln) {}
+  aplu(apls paramapls) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    if (paramMessage.what == 0) {
-      bbmy.a(this.a.a, ajjy.a(2131639030), 0).a();
-    }
-    while (1 != paramMessage.what) {
+    this.a.a(false, apsz.a(this.a.a.a()), this.a.c(), new aplv(this));
+  }
+  
+  public void b()
+  {
+    this.a.e();
+    int i = this.a.d();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (i == 0)
+    {
+      localQQAppInterface.a().a(this.a.d());
       return;
     }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    localQQAppInterface.a().a(this.a.a.a());
   }
 }
 

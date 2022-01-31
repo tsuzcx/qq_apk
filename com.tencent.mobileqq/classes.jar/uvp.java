@@ -1,28 +1,21 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.List;
 
 class uvp
-  implements TextWatcher
+  extends JobSegment<uvr, upb>
 {
-  uvp(uvm paramuvm) {}
+  private int jdField_a_of_type_Int;
+  private List<CommentEntry> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private uoy jdField_a_of_type_Uoy;
   
-  public void afterTextChanged(Editable paramEditable)
+  protected void a(JobContext paramJobContext, uvr paramuvr)
   {
-    uut localuut = this.a.a;
-    if (this.a.a.a()) {}
-    for (paramEditable = "2";; paramEditable = "1")
-    {
-      localuut.a("search_poi", 0, 0, new String[] { paramEditable });
-      urq.a("0X80076D1");
-      urq.b("0X80075E6");
-      uvm.a(this.a);
-      return;
-    }
+    this.jdField_a_of_type_Uoy = new uoy(paramuvr, new uvq(this, paramJobContext, paramuvr));
+    this.jdField_a_of_type_Uoy.c();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

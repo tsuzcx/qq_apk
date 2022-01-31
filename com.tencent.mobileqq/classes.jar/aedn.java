@@ -1,24 +1,58 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.data.MessageForTroopGift;
+import com.tencent.qphone.base.util.QLog;
 
 class aedn
-  implements DialogInterface.OnClickListener
+  implements URLDrawable.DownloadListener
 {
-  aedn(aedl paramaedl, String paramString) {}
+  aedn(aedl paramaedl, URLDrawable paramURLDrawable, MessageForTroopGift paramMessageForTroopGift, aeds paramaeds) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFileDownloadFailed(int paramInt)
   {
-    ((ajhh)this.jdField_a_of_type_Aedl.a.a.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Aedl.a.a.a().a();
-    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.b(localRecentUser);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.isFromNearby)
+    {
+      akbk.a("gift_aio", "fail_obj", this.jdField_a_of_type_Aedl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+      return;
     }
-    ((ajhf)this.jdField_a_of_type_Aedl.a.a.a(6)).a();
-    this.jdField_a_of_type_Aedl.a.H();
+    if (mye.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift)) {}
+    for (paramInt = 2;; paramInt = 1)
+    {
+      axqw.b(this.jdField_a_of_type_Aedl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_flower", "", "grp_aio", "objicon_fail", paramInt, 0, this.jdField_a_of_type_Aedl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "0", "" + mud.a(this.jdField_a_of_type_Aedl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aedl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Aedl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
+      return;
+    }
+  }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    int i;
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable))
+    {
+      i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.objColor;
+      if (i != 0) {
+        break label136;
+      }
+      i = -2138570752;
+    }
+    label136:
+    for (;;)
+    {
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.interactId)) {
+        this.jdField_a_of_type_Aedl.a(((RegionDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getBitmap(), i, this.jdField_a_of_type_Aeds.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.giftPicId + "");
+      }
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.e("TroopGiftMsgItemBuilder", 2, "drawable.getCurrDrawable() instanceof  RegionDrawable = " + (this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable));
+      return;
+    }
   }
 }
 

@@ -1,22 +1,21 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
 
 class ankp
-  implements anka
+  implements DialogInterface.OnClickListener
 {
-  ankp(ankm paramankm) {}
+  ankp(anki paramanki) {}
   
-  public void a(List<anjy> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramList != null)
-    {
-      this.a.a(paramList);
-      this.a.notifyDataSetChanged();
-    }
+    paramDialogInterface.cancel();
+    anki.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ankp
  * JD-Core Version:    0.7.0.1
  */

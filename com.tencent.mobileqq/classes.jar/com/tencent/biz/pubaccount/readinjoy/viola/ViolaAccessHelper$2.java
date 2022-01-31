@@ -1,37 +1,37 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
 import android.text.TextUtils;
-import bace;
+import bbdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.viola.utils.ViolaUtils;
 import java.io.File;
 import mqq.app.AppRuntime;
-import rjb;
-import rjd;
-import rmb;
+import rwa;
+import rwc;
+import rys;
 
 public final class ViolaAccessHelper$2
   implements Runnable
 {
   public void run()
   {
-    rjb.a(Integer.toString(3256));
-    rjb.a(rmb.a("https://sqimg.qq.com/qq_product_operations/kan/violaLibs/Viola.min.0.3.10.js?v_bid=3547"));
+    rwa.a(Integer.toString(3256));
+    rwa.a(rys.a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547"));
     Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
     if (localObject1 != null)
     {
-      localObject1 = bace.a("viola_cache_file_viola_qq_page_data_main_js_" + ((AppRuntime)localObject1).getAccount());
+      localObject1 = bbdj.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ((AppRuntime)localObject1).getAccount());
       if ((localObject1 instanceof String)) {
         localObject1 = (String)localObject1;
       }
     }
-    while ((rjb.a()) && (rjb.b()) && (((!TextUtils.isEmpty(null)) && (new File(null).exists())) || (!TextUtils.isEmpty((CharSequence)localObject1)))) {
+    while ((rwa.a()) && (rwa.b()) && (((!TextUtils.isEmpty(null)) && (new File(null).exists())) || (!TextUtils.isEmpty((CharSequence)localObject1)))) {
       try
       {
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
         for (;;)
         {
-          rjb.a((String)localObject1, new rjd(this));
+          rwa.a((String)localObject1, new rwc(this));
           return;
           localObject1 = ViolaUtils.readFile(new File(null));
         }

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import abwo;
-import abwq;
-import abwr;
-import ajty;
+import acha;
+import achc;
+import achd;
+import akii;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,14 +21,14 @@ class TroopGagActivity$2$1$1
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        ajty localajty = (ajty)localIterator.next();
-        abwq localabwq = new abwq();
-        localabwq.jdField_a_of_type_JavaLangString = localajty.jdField_a_of_type_JavaLangString;
-        localabwq.jdField_a_of_type_Long = localajty.jdField_a_of_type_Long;
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$2$1.a.a.jdField_a_of_type_JavaUtilList.add(localabwq);
+        akii localakii = (akii)localIterator.next();
+        achc localachc = new achc();
+        localachc.jdField_a_of_type_JavaLangString = localakii.jdField_a_of_type_JavaLangString;
+        localachc.jdField_a_of_type_Long = localakii.jdField_a_of_type_Long;
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$2$1.a.a.jdField_a_of_type_JavaUtilList.add(localachc);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$2$1.a.a.jdField_a_of_type_Abwr.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$2$1.a.a.jdField_a_of_type_Achd.notifyDataSetChanged();
   }
 }
 

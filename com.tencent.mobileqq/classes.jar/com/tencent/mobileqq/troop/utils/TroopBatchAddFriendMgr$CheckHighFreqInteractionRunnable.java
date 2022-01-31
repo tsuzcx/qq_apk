@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aejb;
-import ajtg;
-import akhd;
+import akhq;
+import akvp;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
@@ -19,13 +19,13 @@ import mqq.util.WeakReference;
 public class TroopBatchAddFriendMgr$CheckHighFreqInteractionRunnable
   implements Runnable
 {
-  WeakReference<aejb> jdField_a_of_type_MqqUtilWeakReference;
+  WeakReference<TroopChatPie> jdField_a_of_type_MqqUtilWeakReference;
   volatile boolean jdField_a_of_type_Boolean;
   WeakReference<QQAppInterface> b;
   
-  public TroopBatchAddFriendMgr$CheckHighFreqInteractionRunnable(aejb paramaejb, QQAppInterface paramQQAppInterface)
+  public TroopBatchAddFriendMgr$CheckHighFreqInteractionRunnable(TroopChatPie paramTroopChatPie, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramaejb);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramTroopChatPie);
     this.b = new WeakReference(paramQQAppInterface);
   }
   
@@ -42,23 +42,23 @@ public class TroopBatchAddFriendMgr$CheckHighFreqInteractionRunnable
     if (QLog.isColorLevel()) {
       QLog.d("CheckHighFreqInteractionRunnable", 2, "checkHighFreqInteractionUinTask start");
     }
-    Object localObject = (aejb)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    Object localObject = (TroopChatPie)this.jdField_a_of_type_MqqUtilWeakReference.get();
     QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
     if ((localObject == null) || (localQQAppInterface == null) || (this.jdField_a_of_type_Boolean)) {}
     long l1;
     do
     {
       return;
-      String str = ((aejb)localObject).a.jdField_a_of_type_JavaLangString;
-      int i = ((aejb)localObject).a.jdField_a_of_type_Int;
+      String str = ((TroopChatPie)localObject).a.jdField_a_of_type_JavaLangString;
+      int i = ((TroopChatPie)localObject).a.jdField_a_of_type_Int;
       l1 = ((TroopManager)localQQAppInterface.getManager(52)).a().i * 60;
       long l2 = NetConnInfoCenter.getServerTime();
-      localObject = TroopBatchAddFriendMgr.a(localQQAppInterface.a().a(str, i, ((aejb)localObject).h, 250, String.format("time>=%d", new Object[] { Long.valueOf(l2 - l1) })), localQQAppInterface);
+      localObject = TroopBatchAddFriendMgr.a(localQQAppInterface.a().a(str, i, ((TroopChatPie)localObject).h, 250, String.format("time>=%d", new Object[] { Long.valueOf(l2 - l1) })), localQQAppInterface);
       if (QLog.isColorLevel()) {
         QLog.d("CheckHighFreqInteractionRunnable", 2, "checkHighFreqInteractionUinTask uins = " + Arrays.toString(((ArrayList)localObject).toArray()));
       }
       if ((((ArrayList)localObject).size() > 0) && (!this.jdField_a_of_type_Boolean)) {
-        ((ajtg)localQQAppInterface.a(20)).a().a(str, (List)localObject, 3);
+        ((akhq)localQQAppInterface.a(20)).a().a(str, (List)localObject, 3);
       }
     } while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) || (this.b.get() == null));
     ThreadManager.getSubThreadHandler().postDelayed(this, 1000L * l1);

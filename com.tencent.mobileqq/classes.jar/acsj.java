@@ -1,95 +1,29 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class acsj
+  extends RecyclerView.ItemDecoration
 {
-  private long jdField_a_of_type_Long;
-  private actc jdField_a_of_type_Actc = new actc();
-  private ArrayList<actt> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private acsj(ReminderListFragment paramReminderListFragment) {}
   
-  public long a()
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public actc a()
-  {
-    return this.jdField_a_of_type_Actc;
-  }
-  
-  public String a()
-  {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-    {
-      actt localactt = (actt)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      if (localactt != null)
-      {
-        if (localactt.a > 0) {
-          return String.valueOf(localactt.a());
-        }
-        return String.valueOf(localactt.b());
-      }
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    paramRect.left = actn.a(16.0F, this.a.getResources());
+    paramRect.right = actn.a(16.0F, this.a.getResources());
+    int i = paramRecyclerView.getChildAdapterPosition(paramView);
+    int j = ReminderListFragment.a(this.a).getItemCount();
+    if (QLog.isColorLevel()) {
+      QLog.i(ReminderListFragment.a(), 2, "position: " + i + ", totalCnt: " + j);
     }
-    return "";
-  }
-  
-  public ArrayList<actt> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(actt paramactt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramactt == null) {}
-    do
-    {
-      return;
-      if (paramBoolean1) {
-        this.jdField_a_of_type_Actc.a(paramactt);
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramactt);
-    } while (!paramBoolean2);
-    this.jdField_a_of_type_Long += paramactt.a();
-  }
-  
-  public void a(List<actt> paramList, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    long l;
-    if (paramList != null)
-    {
-      l = 0L;
-      if ((paramBoolean1) || (paramBoolean2))
-      {
-        Iterator localIterator = paramList.iterator();
-        l = 0L;
-        if (localIterator.hasNext())
-        {
-          actt localactt = (actt)localIterator.next();
-          if (paramBoolean1) {
-            this.jdField_a_of_type_Actc.a(localactt);
-          }
-          if (!paramBoolean2) {
-            break label103;
-          }
-          l = localactt.a() + l;
-        }
-      }
-    }
-    label103:
-    for (;;)
-    {
-      break;
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      if (paramBoolean2) {
-        this.jdField_a_of_type_Long = (l + this.jdField_a_of_type_Long);
-      }
-      return;
+    paramRect.top = actn.a(12.0F, this.a.getResources());
+    if (i == j - 1) {
+      paramRect.bottom = actn.a(12.0F, this.a.getResources());
     }
   }
 }

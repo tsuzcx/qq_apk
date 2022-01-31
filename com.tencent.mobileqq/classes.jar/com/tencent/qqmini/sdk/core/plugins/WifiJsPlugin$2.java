@@ -2,14 +2,14 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
-import bdfz;
+import beka;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class WifiJsPlugin$2
   implements WifiJsPlugin.LocationPermissionListener
 {
-  WifiJsPlugin$2(WifiJsPlugin paramWifiJsPlugin, bdfz parambdfz) {}
+  WifiJsPlugin$2(WifiJsPlugin paramWifiJsPlugin, beka parambeka) {}
   
   public void onExecute(boolean paramBoolean)
   {

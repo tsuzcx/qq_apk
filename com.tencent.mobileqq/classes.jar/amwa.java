@@ -1,70 +1,99 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amwa
-  extends adyi
 {
-  public amwa(HotChatFlashPicActivity paramHotChatFlashPicActivity) {}
+  private amwb[] a = new amwb[0];
   
-  public void a() {}
-  
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
+  public static amwa a(String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.hotchat", 4, "notifyImageProgress progress:" + paramInt3);
+    int i = 0;
+    amwa localamwa = new amwa();
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SingTogetherConfigBean", 0, "parse content is empty");
+      }
     }
-    if ((HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Long == paramLong1) && (HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Int == paramInt1)) {
-      HotChatFlashPicActivity.a(this.a, paramInt3 / 100);
+    for (;;)
+    {
+      return localamwa;
+      try
+      {
+        paramString = new JSONObject(paramString).getJSONArray("array");
+        if ((paramString != null) && (paramString.length() > 0))
+        {
+          localamwa.a = new amwb[paramString.length()];
+          while (i < paramString.length())
+          {
+            amwb localamwb = amwb.a(paramString.getJSONObject(i));
+            localamwa.a[i] = localamwb;
+            i += 1;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d("SingTogetherConfigBean", 0, "parse config=" + localamwa);
+            return localamwa;
+          }
+        }
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
+    return localamwa;
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  public amwb a(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.hotchat", 4, "notifyImageResult type:" + paramInt2 + ",resultStr:" + paramString + ",result:" + paramInt3 + ",isPart:" + paramBoolean);
-    }
-    if ((HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Long == paramLong) && (HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Int == paramInt1) && (paramInt2 == 2))
+    Object localObject;
+    if ((this.a == null) || (this.a.length <= 0))
     {
-      HotChatFlashPicActivity.a(this.a, false);
-      if (paramInt3 != 1) {
-        break label228;
-      }
-      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_JavaLangString = paramString;
-      HotChatFlashPicActivity.a(this.a).d = paramBoolean;
-      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_Boolean = false;
-      HotChatFlashPicActivity.a(this.a, HotChatFlashPicActivity.a(this.a));
-      if ((HotChatFlashPicActivity.b(this.a) == null) || (HotChatFlashPicActivity.b(this.a).equals("I:E"))) {
-        break label242;
-      }
-      babo.b(HotChatFlashPicActivity.b(this.a), HotChatFlashPicActivity.c(this.a));
-      HotChatFlashPicActivity.b(this.a, true);
-      HotChatFlashPicActivity.a(this.a, HotChatFlashPicActivity.b(this.a));
+      localObject = null;
+      return localObject;
     }
-    label228:
-    label242:
-    while (HotChatFlashPicActivity.b(this.a) == null)
+    amwb[] arrayOfamwb = this.a;
+    int j = arrayOfamwb.length;
+    int i = 0;
+    for (;;)
     {
-      return;
-      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_Boolean = true;
-      break;
+      if (i >= j) {
+        break label64;
+      }
+      amwb localamwb = arrayOfamwb[i];
+      localObject = localamwb;
+      if (localamwb.a == paramInt) {
+        break;
+      }
+      i += 1;
     }
-    HotChatFlashPicActivity.a(this.a).sendEmptyMessage(1);
+    label64:
+    return null;
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3) {}
-  
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
-  
-  public void b() {}
-  
-  public void c() {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(super.toString()).append(" ");
+    if ((this.a != null) && (this.a.length > 0))
+    {
+      amwb[] arrayOfamwb = this.a;
+      int j = arrayOfamwb.length;
+      int i = 0;
+      while (i < j)
+      {
+        localStringBuilder.append(arrayOfamwb[i]).append(" ");
+        i += 1;
+      }
+    }
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amwa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class acaj
-  implements View.OnClickListener
 {
-  public acaj(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 

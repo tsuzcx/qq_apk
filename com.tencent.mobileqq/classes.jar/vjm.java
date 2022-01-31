@@ -1,41 +1,74 @@
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.LayoutInflater.Factory;
-import java.lang.reflect.Field;
+import android.view.MotionEvent;
+import java.math.BigDecimal;
 
 public class vjm
 {
-  public static void a(@NonNull LayoutInflater paramLayoutInflater, @NonNull LayoutInflater.Factory paramFactory)
+  public float a;
+  private float b;
+  private float c;
+  
+  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    try
-    {
-      paramLayoutInflater.setFactory(paramFactory);
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      vjo.c("LayoutModifier", "LayoutInflater.setFactory IllegalStateException " + localIllegalStateException);
-      try
+    int i = paramMotionEvent.getPointerCount();
+    int j = paramMotionEvent.getAction() & 0xFF;
+    if ((i == 1) && (paramBoolean)) {
+      switch (j)
       {
-        Field localField1 = LayoutInflater.class.getDeclaredField("mFactory");
-        localField1.setAccessible(true);
-        Field localField2 = LayoutInflater.class.getDeclaredField("mFactory2");
-        localField2.setAccessible(true);
-        localField1.set(paramLayoutInflater, paramFactory);
-        localField2.set(paramLayoutInflater, paramFactory);
-        if ((paramLayoutInflater.getFactory() == paramFactory) && (paramLayoutInflater.getFactory2() == paramFactory))
+      }
+    }
+    while (((i != 2) || (paramBoolean)) && ((i != 3) || (!paramBoolean)))
+    {
+      do
+      {
+        return false;
+        this.c = this.a;
+        return false;
+        if (paramMotionEvent.getY() >= this.a)
         {
-          vjo.b("LayoutModifier", "hookLayoutInflaterFactory success");
-          return;
+          this.c = this.a;
+          return false;
         }
-      }
-      catch (Exception paramLayoutInflater)
-      {
-        vjo.d("LayoutModifier", "hook setFactory " + paramLayoutInflater);
-        return;
-      }
-      vjo.b("LayoutModifier", "hookLayoutInflaterFactory failed");
+        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
+      } while (i == 0);
+      axhp.a().b(i);
+      this.c = paramMotionEvent.getY();
+      return false;
     }
+    veg.a("NewStoryCameraZoom", "onTouchEvent %s", new Object[] { paramMotionEvent });
+    float f4;
+    float f2;
+    float f3;
+    if (i == 2)
+    {
+      f4 = paramMotionEvent.getX(0);
+      f2 = paramMotionEvent.getY(0);
+      f3 = paramMotionEvent.getX(1);
+    }
+    for (float f1 = paramMotionEvent.getY(1);; f1 = paramMotionEvent.getY(2)) {
+      switch (j)
+      {
+      case 6: 
+      case 3: 
+      case 4: 
+      default: 
+        return false;
+      case 2: 
+        f1 = vjr.a(f4, f2, f3, f1);
+        i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
+        if (i != 0)
+        {
+          veg.a("NewStoryCameraZoom", "set camera zoom increase value %d", new Object[] { Integer.valueOf(i) });
+          axhp.a().b(i);
+          this.b = f1;
+        }
+        return true;
+        f4 = paramMotionEvent.getX(1);
+        f2 = paramMotionEvent.getY(1);
+        f3 = paramMotionEvent.getX(2);
+      }
+    }
+    this.b = vjr.a(f4, f2, f3, f1);
+    return false;
   }
 }
 

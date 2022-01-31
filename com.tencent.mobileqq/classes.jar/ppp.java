@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.3;
+import com.tencent.qphone.base.util.QLog;
 
 public class ppp
+  extends ppr
 {
-  public int a;
-  public long a;
-  public MessageRecord a;
-  public String a = "";
-  public long b;
-  public String b = "";
-  public String c = "";
+  public ppp(PTSJSCLoader.3 param3) {}
+  
+  public void loaded(String paramString, int paramInt)
+  {
+    super.loaded(paramString, paramInt);
+    QLog.i("PTSJSCLoader", 1, "[updatePTSJSC], asyncBack code = " + paramInt + ", param = " + paramString);
+    if ((paramInt == 0) && (paramString == null))
+    {
+      QLog.i("PTSJSCLoader", 1, "[updatePTSJSC], handleDownloadPTSJSC, download succeed.");
+      ppo.b(this.a.this$0);
+    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    super.progress(paramInt);
+  }
 }
 
 

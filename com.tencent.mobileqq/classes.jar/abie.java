@@ -1,68 +1,24 @@
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
-public final class abie
-  implements Parcelable.Creator<ProfileActivity.AllInOne>
+public class abie
+  implements DialogInterface.OnDismissListener
 {
-  public ProfileActivity.AllInOne a(Parcel paramParcel)
-  {
-    boolean bool = true;
-    ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(null);
-    localAllInOne.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localAllInOne.jdField_a_of_type_Int = paramParcel.readInt();
-    localAllInOne.jdField_b_of_type_Int = paramParcel.readInt();
-    localAllInOne.jdField_a_of_type_Byte = paramParcel.readByte();
-    localAllInOne.jdField_a_of_type_Short = ((short)paramParcel.readInt());
-    localAllInOne.jdField_b_of_type_Byte = paramParcel.readByte();
-    localAllInOne.jdField_c_of_type_Int = paramParcel.readInt();
-    localAllInOne.jdField_c_of_type_Byte = paramParcel.readByte();
-    localAllInOne.jdField_a_of_type_ArrayOfByte = paramParcel.createByteArray();
-    localAllInOne.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localAllInOne.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localAllInOne.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localAllInOne.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localAllInOne.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    paramParcel.readTypedList(localAllInOne.jdField_a_of_type_JavaUtilArrayList, ProfileActivity.CardContactInfo.CREATOR);
-    localAllInOne.jdField_d_of_type_Int = paramParcel.readInt();
-    if (paramParcel.readByte() == 1) {}
-    for (;;)
-    {
-      localAllInOne.jdField_a_of_type_Boolean = bool;
-      localAllInOne.jdField_f_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.jdField_e_of_type_Int = paramParcel.readInt();
-      localAllInOne.jdField_h_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.jdField_i_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.jdField_j_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.jdField_k_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.jdField_l_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.m = paramParcel.readString();
-      localAllInOne.n = paramParcel.readString();
-      localAllInOne.g = paramParcel.readInt();
-      localAllInOne.jdField_h_of_type_Int = paramParcel.readInt();
-      localAllInOne.jdField_i_of_type_Int = paramParcel.readInt();
-      localAllInOne.jdField_b_of_type_ArrayOfByte = paramParcel.createByteArray();
-      localAllInOne.jdField_j_of_type_Int = paramParcel.readInt();
-      localAllInOne.jdField_k_of_type_Int = paramParcel.readInt();
-      localAllInOne.o = paramParcel.readString();
-      localAllInOne.p = paramParcel.readString();
-      localAllInOne.jdField_a_of_type_Long = paramParcel.readLong();
-      localAllInOne.jdField_l_of_type_Int = paramParcel.readInt();
-      localAllInOne.q = paramParcel.readString();
-      localAllInOne.jdField_b_of_type_AndroidOsBundle = ((Bundle)paramParcel.readParcelable(Bundle.class.getClassLoader()));
-      localAllInOne.jdField_f_of_type_Int = paramParcel.readInt();
-      localAllInOne.jdField_a_of_type_AndroidOsBundle = ((Bundle)paramParcel.readParcelable(Bundle.class.getClassLoader()));
-      return localAllInOne;
-      bool = false;
-    }
-  }
+  public abie(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public ProfileActivity.AllInOne[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new ProfileActivity.AllInOne[paramInt];
+    if (!GesturePWDUnlockActivity.a(this.a))
+    {
+      GesturePWDUnlockActivity.a(this.a, true);
+      return;
+    }
+    this.a.e();
+    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
+    axrl.a(this.a.getBaseContext()).a(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
   }
 }
 

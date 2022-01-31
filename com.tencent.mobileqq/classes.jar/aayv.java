@@ -1,43 +1,33 @@
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
 public class aayv
-  implements andk
+  implements bfoq
 {
-  public aayv(GroupManagerActivity paramGroupManagerActivity) {}
+  public aayv(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bfol parambfol) {}
   
-  public void a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "RemoveListener which = " + paramInt);
-    }
-    paramInt -= 1;
-    byte b;
-    if ((paramInt >= 0) && (paramInt < this.a.a.size()))
+    switch (paramInt)
     {
-      Object localObject = (Groups)this.a.a.get(paramInt);
-      b = (byte)((Groups)localObject).group_id;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("GroupManagerActivity", 2, "RemoveListener remove groupId :" + b);
-        QLog.d("GroupManagerActivity", 2, "RemoveListener remove friend_count :" + ((Groups)localObject).group_friend_count);
-      }
-      if (b == 0)
-      {
-        localObject = new bbmy(this.a);
-        ((bbmy)localObject).d(2000);
-        ((bbmy)localObject).c(2131654435);
-        ((bbmy)localObject).a();
-      }
     }
-    else
+    for (;;)
     {
+      this.jdField_a_of_type_Bfol.dismiss();
       return;
+      if (bbev.d(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getActivity()))
+      {
+        axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, "", "", "", "");
+        axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006669", "0X8006669", 0, 0, "", "", "", "");
+        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).c(Long.valueOf(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity)).longValue());
+        this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131692213));
+        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).show();
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(1, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131694672));
+      }
     }
-    GroupManagerActivity.a(this.a, b);
-    awqx.b(this.a.app, "CliOper", "", "", "category", "Delete_category", 0, 0, "", "", "", "");
   }
 }
 

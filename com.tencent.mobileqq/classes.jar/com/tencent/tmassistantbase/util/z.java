@@ -1,6 +1,9 @@
 package com.tencent.tmassistantbase.util;
 
-class z {}
+class z
+{
+  public static Settings a = new Settings(null);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

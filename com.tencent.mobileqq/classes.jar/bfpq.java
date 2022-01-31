@@ -1,48 +1,32 @@
-import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_req;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.view.View;
+import android.view.ViewTreeObserver.OnScrollChangedListener;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.widget.BubblePopupWindow;
+import java.lang.ref.WeakReference;
 
 public class bfpq
-  extends QzoneExternalRequest
+  implements ViewTreeObserver.OnScrollChangedListener
 {
-  public JceStruct a;
+  public bfpq(BubblePopupWindow paramBubblePopupWindow) {}
   
-  public bfpq(long paramLong1, long paramLong2, String paramString)
+  public void onScrollChanged()
   {
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong2);
-    mobile_sub_get_photo_wall_req localmobile_sub_get_photo_wall_req = new mobile_sub_get_photo_wall_req();
-    localmobile_sub_get_photo_wall_req.uin = paramLong1;
-    localmobile_sub_get_photo_wall_req.attachInfo = paramString;
-    this.a = localmobile_sub_get_photo_wall_req;
-  }
-  
-  public static JceStruct a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    if (BubblePopupWindow.a(this.a) != null) {}
+    for (View localView = (View)BubblePopupWindow.a(this.a).get();; localView = null)
+    {
+      if ((localView != null) && (BubblePopupWindow.a(this.a) != null))
+      {
+        WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)BubblePopupWindow.a(this.a).getLayoutParams();
+        BubblePopupWindow.a(this.a, localView, localLayoutParams, BubblePopupWindow.a(this.a), BubblePopupWindow.b(this.a));
+        this.a.a(localLayoutParams.x, localLayoutParams.y, -1, -1, true);
+      }
+      return;
     }
-    return decode(paramArrayOfByte, "getPhotoWall");
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.getPhotoWall";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getPhotoWall";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfpq
  * JD-Core Version:    0.7.0.1
  */

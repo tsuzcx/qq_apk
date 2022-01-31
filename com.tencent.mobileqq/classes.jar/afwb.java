@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class afwb
-  extends VasQuickUpdateManager.CallBacker
+  implements Cloneable
 {
-  public afwb(AvatarPendantActivity paramAvatarPendantActivity) {}
-  
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
-  {
-    if ((paramLong == 1000L) && (paramString1.equals("pendant_market_json.android.v2"))) {
-      if (paramInt1 == 0) {
-        this.a.e();
-      }
-    }
-    while ((paramLong != 23L) || (!paramString1.equals("avatarInPendant_json")) || (paramInt1 != 0)) {
-      return;
-    }
-    this.a.f();
-  }
+  public CheckBox a;
+  public TextView a;
+  public TencentDocItem a;
+  public AsyncImageView a;
+  public TextView b;
 }
 
 

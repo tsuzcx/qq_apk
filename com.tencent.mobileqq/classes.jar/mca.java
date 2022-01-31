@@ -1,53 +1,53 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.filter.FilterItem;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager.FilterTextAdapter;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.av.ui.BeautyToolbar;
+import com.tencent.av.ui.EffectSettingUi;
 
 public class mca
-  implements ViewPager.OnPageChangeListener
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private WeakReference<mcc> jdField_a_of_type_JavaLangRefWeakReference;
+  public mca(BeautyToolbar paramBeautyToolbar) {}
   
-  public mca(EffectFilterTextPager paramEffectFilterTextPager, mcc parammcc)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammcc);
-  }
-  
-  public void onPageScrollStateChanged(int paramInt)
-  {
-    long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.w("EffectFilterTextPager", 1, "onPageScrollStateChanged, arg0[" + paramInt + "], seq[" + l + "]");
-    }
-    if (paramInt == 0)
+    if (this.a.mBeautyValue != paramInt)
     {
-      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.a(1300);
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(110), Long.valueOf(l) });
+      this.a.updateTip(paramInt);
+      if ((paramInt != 0) || (this.a.mBeautyValue <= 0)) {
+        break label125;
+      }
+      this.a.mSeek.setThumb(this.a.mThumb_0);
+    }
+    for (;;)
+    {
+      if (paramBoolean) {
+        this.a.mSeek.setContentDescription(paramInt + "%");
+      }
+      this.a.mBeautyValue = paramInt;
+      this.a.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, false);
+      EffectSettingUi.a(this.a.mApp, -1003L);
+      return;
+      label125:
+      if ((paramInt > 0) && (paramInt <= 30) && ((this.a.mBeautyValue <= 0) || (this.a.mBeautyValue > 30))) {
+        this.a.mSeek.setThumb(this.a.mThumb_30);
+      } else if ((paramInt > 30) && (paramInt <= 60) && ((this.a.mBeautyValue <= 30) || (this.a.mBeautyValue > 60))) {
+        this.a.mSeek.setThumb(this.a.mThumb_60);
+      } else if ((paramInt > 60) && (paramInt <= 100) && ((this.a.mBeautyValue <= 60) || (this.a.mBeautyValue > 100))) {
+        this.a.mSeek.setThumb(this.a.mThumb_100);
       }
     }
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    long l = AudioHelper.b();
-    if (AudioHelper.e()) {
-      QLog.w("EffectFilterTextPager", 1, "onPageSelected, pos[" + paramInt + "], mProgramingPos[" + EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager) + "], seq[" + l + "]");
-    }
-    if ((EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager) != paramInt) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-    {
-      FilterItem localFilterItem = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter.a(paramInt);
-      if (localFilterItem != null) {
-        ((mcc)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(l, paramInt, localFilterItem.getId());
-      }
-      EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager, -1);
-    }
+    EffectSettingUi.a(this.a.mApp, -1004L);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    this.a.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, true);
+    EffectSettingUi.a(this.a.mApp, -1005L);
   }
 }
 

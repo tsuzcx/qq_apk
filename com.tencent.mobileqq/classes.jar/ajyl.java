@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class ajyl
-  implements ajyq
+final class ajyl
+  implements View.OnClickListener
 {
-  ajyl(ajyk paramajyk) {}
+  ajyl(Dialog paramDialog) {}
   
-  public void a(FullMessageSearchResult paramFullMessageSearchResult)
+  public void onClick(View paramView)
   {
-    ajyk.a(this.a);
-    this.a.notifyObservers(paramFullMessageSearchResult);
+    this.a.dismiss();
   }
 }
 

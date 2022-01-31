@@ -1,42 +1,26 @@
+import android.widget.TextView;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.6.1;
+
 public class alvf
+  extends alvi
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  boolean jdField_a_of_type_Boolean;
-  long b;
-  long c;
-  long d;
+  public alvf(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public alvf(long paramLong1, long paramLong2, int paramInt, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    this.b = paramLong1;
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof alvf))
+    if (ArkIDESettingFragment.a(this.a) != null)
     {
-      paramObject = (alvf)paramObject;
-      bool1 = bool2;
-      if (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)
-      {
-        bool1 = bool2;
-        if (paramObject.b == this.b) {
-          bool1 = true;
-        }
-      }
+      TextView localTextView = ArkIDESettingFragment.a(this.a);
+      ArkAppCenter.a().postToMainThread(new ArkIDESettingFragment.6.1(this, paramInt, localTextView));
     }
-    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alvf
  * JD-Core Version:    0.7.0.1
  */

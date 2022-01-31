@@ -1,55 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadinjoyFixPosArticleManager.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
 
 public class onu
+  implements SensorEventListener
 {
   private static volatile onu jdField_a_of_type_Onu;
-  private HashMap<Integer, WeakReference<qoe>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private onv jdField_a_of_type_Onv = new onv(this, 1);
-  
-  private int a(int paramInt1, List<BaseArticleInfo> paramList, int paramInt2)
-  {
-    paramInt1 = 0;
-    while (paramInt1 < paramList.size())
-    {
-      if (paramInt2 == 0)
-      {
-        paramList = (BaseArticleInfo)paramList.get(paramInt1);
-        paramInt2 = paramInt1;
-        if (paramList != null)
-        {
-          paramInt2 = paramInt1;
-          if (paramList.mGroupId != -1L)
-          {
-            paramInt2 = paramInt1;
-            if (paramList.mGroupCount != 1L)
-            {
-              QLog.d("ReadinjoyFixPosArticleManager", 2, "position " + paramInt1 + " is group article , groupCount : " + paramList.mGroupCount + ", nowGroupIndex : " + paramList.mFeedIndexInGroup + ", groupID : " + paramList.mGroupId);
-              paramInt2 = paramInt1 + (int)(paramList.mGroupCount - paramList.mFeedIndexInGroup);
-            }
-          }
-        }
-        return paramInt2;
-      }
-      paramInt2 -= 1;
-      paramInt1 += 1;
-    }
-    return -1;
-  }
-  
-  private static int a(long paramLong)
-  {
-    return (int)(-paramLong & 0xFFFFFFFF);
-  }
+  private final float jdField_a_of_type_Float = 0.8F;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Sensor jdField_a_of_type_AndroidHardwareSensor;
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  private boolean jdField_a_of_type_Boolean = false;
+  private double[] jdField_a_of_type_ArrayOfDouble = new double[3];
+  private float[] jdField_a_of_type_ArrayOfFloat = new float[3];
+  private float jdField_b_of_type_Float;
+  private Sensor jdField_b_of_type_AndroidHardwareSensor;
+  private boolean jdField_b_of_type_Boolean;
+  private final double[] jdField_b_of_type_ArrayOfDouble = new double[4];
+  private boolean c;
   
   public static onu a()
   {
@@ -64,161 +36,99 @@ public class onu
     finally {}
   }
   
-  public static boolean a(long paramLong)
+  public void a()
   {
-    return paramLong <= 0L;
-  }
-  
-  private static long b(int paramInt1, int paramInt2)
-  {
-    return -(paramInt1 << 32 | paramInt2);
-  }
-  
-  private void c(int paramInt)
-  {
-    QLog.d("ReadinjoyFixPosArticleManager", 1, "on async data refresh , channelID  : " + paramInt);
-    Object localObject1 = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    if (localObject1 == null) {}
-    ArrayList localArrayList;
-    Object localObject2;
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
+      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("sensor"));
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {}
     do
     {
-      do
-      {
-        return;
-        localObject1 = (qoe)((WeakReference)localObject1).get();
-      } while ((localObject1 == null) || (((qoe)localObject1).isEmpty()));
-      localArrayList = new ArrayList();
-      localObject2 = ((qoe)localObject1).a().iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)((Iterator)localObject2).next();
-        if (!a(Long.valueOf(localBaseArticleInfo.mRecommendSeq).longValue())) {
-          localArrayList.add(localBaseArticleInfo);
-        }
+      return;
+      if (this.jdField_a_of_type_AndroidHardwareSensor == null) {
+        this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4);
       }
-      localObject2 = a(paramInt, localArrayList, localArrayList, 3);
-    } while (localObject2 == localArrayList);
-    ThreadManager.getUIHandler().post(new ReadinjoyFixPosArticleManager.1(this, (qoe)localObject1, (List)localObject2));
+      if (this.jdField_b_of_type_AndroidHardwareSensor == null) {
+        this.jdField_b_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(1);
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, this.jdField_a_of_type_AndroidHardwareSensor, 3);
+    this.c = this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, this.jdField_b_of_type_AndroidHardwareSensor, 3);
+    this.jdField_a_of_type_Boolean = true;
+    QLog.d("ReadinjoySensorUtils", 1, "register,gyroscopeEnable=" + this.jdField_b_of_type_Boolean + " ,accelerometerEnable" + this.c);
   }
   
-  public ArticleInfo a(int paramInt, long paramLong)
+  public double[] a()
   {
-    return (ArticleInfo)this.jdField_a_of_type_Onv.a(paramInt, a(paramLong));
+    return this.jdField_b_of_type_ArrayOfDouble;
   }
   
-  public List<BaseArticleInfo> a(int paramInt1, List<BaseArticleInfo> paramList1, List<BaseArticleInfo> paramList2, int paramInt2)
+  public void b()
   {
-    if (paramList1 == null) {
-      return null;
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager != null) {
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this);
     }
-    this.jdField_a_of_type_Onv.a(paramInt1);
-    if (!this.jdField_a_of_type_Onv.a(paramInt1))
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public double[] b()
+  {
+    return this.jdField_a_of_type_ArrayOfDouble;
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    switch (paramSensorEvent.sensor.getType())
     {
-      QLog.d("ReadinjoyFixPosArticleManager", 1, "has no fix article , give up insert !");
-      return paramList1;
-    }
-    QLog.d("ReadinjoyFixPosArticleManager", 1, "insertFixPosArticles type : " + paramInt2 + ", channelID : " + paramInt1);
-    int j;
-    if (paramInt2 == 2)
-    {
-      paramInt2 = 0;
-      if (paramInt2 < paramList2.size())
+    case 2: 
+    case 3: 
+    default: 
+      return;
+    case 4: 
+      if (this.jdField_b_of_type_Float != 0.0F)
       {
-        long l = ((BaseArticleInfo)paramList2.get(paramInt2)).mRecommendSeq;
-        if (!a(l)) {}
-        for (;;)
+        float f7 = (float)paramSensorEvent.timestamp;
+        float f8 = this.jdField_b_of_type_Float;
+        float f6 = paramSensorEvent.values[0];
+        float f5 = paramSensorEvent.values[1];
+        float f4 = paramSensorEvent.values[2];
+        double d1 = Math.sqrt(f6 * f6 + f5 * f5 + f4 * f4);
+        float f3 = f4;
+        float f2 = f5;
+        float f1 = f6;
+        if (d1 > 9.999999717180685E-010D)
         {
-          paramInt2 += 1;
-          break;
-          i = a(l);
-          j = paramInt2 - i;
-          localArrayList1 = (ArrayList)this.jdField_a_of_type_Onv.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
-          localArrayList2 = (ArrayList)this.jdField_a_of_type_Onv.b.get(Integer.valueOf(paramInt1));
-          if ((localArrayList1 != null) && (localArrayList2 != null))
-          {
-            int k = localArrayList1.indexOf(Integer.valueOf(i));
-            if (k >= 0)
-            {
-              localArrayList2.set(k, Integer.valueOf(j));
-              QLog.d("ReadinjoyFixPosArticleManager", 1, "fix offset when loadMore, expect : " + i + ", now : " + paramInt2 + ", offset : " + j);
-            }
-          }
+          f1 = (float)(f6 / d1);
+          f2 = (float)(f5 / d1);
+          f3 = (float)(f4 / d1);
         }
+        double d2 = d1 * ((f7 - f8) * 1.0E-009F) / 2.0D;
+        d1 = Math.sin(d2);
+        d2 = Math.cos(d2);
+        this.jdField_b_of_type_ArrayOfDouble[0] = (f1 * d1);
+        this.jdField_b_of_type_ArrayOfDouble[1] = (f2 * d1);
+        this.jdField_b_of_type_ArrayOfDouble[2] = (f3 * d1);
+        this.jdField_b_of_type_ArrayOfDouble[3] = d2;
       }
-    }
-    paramList2 = (ArrayList)this.jdField_a_of_type_Onv.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
-    ArrayList localArrayList1 = (ArrayList)this.jdField_a_of_type_Onv.b.get(Integer.valueOf(paramInt1));
-    ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_Onv.c.get(Integer.valueOf(paramInt1));
-    if ((paramList2 == null) || (localArrayList1 == null) || (localArrayList2 == null))
-    {
-      QLog.d("ReadinjoyFixPosArticleManager", 1, "ad article or positions is empty ! return ori data ");
-      return paramList1;
-    }
-    ArrayList localArrayList3 = new ArrayList(paramList1);
-    int i = Math.min(paramList2.size(), localArrayList2.size());
-    paramInt2 = 0;
-    if (paramInt2 < i)
-    {
-      j = ((Integer)paramList2.get(paramInt2)).intValue();
-      j = ((Integer)localArrayList1.get(paramInt2)).intValue() + j;
-      if (paramList1.size() < j + 1) {
-        QLog.d("ReadinjoyFixPosArticleManager", 1, "expect insert into " + j + ", but article size is not enough");
-      }
-      for (;;)
-      {
-        paramInt2 += 1;
-        break;
-        j = a(paramInt1, localArrayList3, j);
-        if (j == -1)
-        {
-          QLog.d("ReadinjoyFixPosArticleManager", 1, "find real position is error ! ");
-        }
-        else
-        {
-          QLog.d("ReadinjoyFixPosArticleManager", 1, "insert article , position : " + j + ", expectIndex : " + paramList2.get(paramInt2) + ", fakeSeq : " + b(1, ((Integer)paramList2.get(paramInt2)).intValue()));
-          localArrayList3.add(j, ogy.a().a(paramInt1, b(1, ((Integer)paramList2.get(paramInt2)).intValue())));
-        }
-      }
-    }
-    return localArrayList3;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadinjoyFixPosArticleManager", 2, " registerReommendADListener " + paramInt);
-    }
-    this.jdField_a_of_type_Onv.c(paramInt);
-  }
-  
-  public void a(int paramInt, long paramLong)
-  {
-    if (!a(paramLong)) {
+      this.jdField_b_of_type_Float = ((float)paramSensorEvent.timestamp);
       return;
     }
-    int i = a(paramLong);
-    this.jdField_a_of_type_Onv.a(paramInt, i);
-  }
-  
-  public void a(int paramInt, qoe paramqoe)
-  {
-    if (paramqoe == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new WeakReference(paramqoe));
-    this.jdField_a_of_type_Onv.c(paramInt);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
-    this.jdField_a_of_type_Onv.d(paramInt);
+    this.jdField_a_of_type_ArrayOfFloat[0] = (this.jdField_a_of_type_ArrayOfFloat[0] * 0.8F + paramSensorEvent.values[0] * 0.2F);
+    this.jdField_a_of_type_ArrayOfFloat[1] = (this.jdField_a_of_type_ArrayOfFloat[1] * 0.8F + paramSensorEvent.values[1] * 0.2F);
+    this.jdField_a_of_type_ArrayOfFloat[2] = (this.jdField_a_of_type_ArrayOfFloat[2] * 0.8F + paramSensorEvent.values[2] * 0.2F);
+    this.jdField_a_of_type_ArrayOfDouble[0] = (paramSensorEvent.values[0] - this.jdField_a_of_type_ArrayOfFloat[0]);
+    this.jdField_a_of_type_ArrayOfDouble[1] = (paramSensorEvent.values[1] - this.jdField_a_of_type_ArrayOfFloat[1]);
+    this.jdField_a_of_type_ArrayOfDouble[2] = (paramSensorEvent.values[2] - this.jdField_a_of_type_ArrayOfFloat[2]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     onu
  * JD-Core Version:    0.7.0.1
  */

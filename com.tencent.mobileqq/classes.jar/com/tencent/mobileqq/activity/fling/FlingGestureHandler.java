@@ -38,7 +38,7 @@ public class FlingGestureHandler
   
   protected void a()
   {
-    if (!b()) {}
+    if (!a()) {}
     ViewGroup localViewGroup;
     do
     {
@@ -63,7 +63,7 @@ public class FlingGestureHandler
       ((ViewGroup)localView.getParent()).removeView(localView);
       ((TopGestureLayout)localObject).addView(localView);
       return;
-    } while (a());
+    } while (b());
     if ((this.mTopLayout != null) && (this.mTopLayout.getParent() != null)) {
       ((ViewGroup)this.mTopLayout.getParent()).removeView(this.mTopLayout);
     }
@@ -82,11 +82,6 @@ public class FlingGestureHandler
     }
   }
   
-  protected boolean a()
-  {
-    return (this.mTopLayout != null) && (this.mTopLayout.getParent() != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() == this.mTopLayout);
-  }
-  
   protected void b()
   {
     Object localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
@@ -97,11 +92,16 @@ public class FlingGestureHandler
       {
         return;
         localObject = a((Activity)localObject);
-      } while ((!a()) || (!this.mTopLayout.getParent().equals(localObject)));
+      } while ((!b()) || (!this.mTopLayout.getParent().equals(localObject)));
       ((ViewGroup)localObject).removeView(this.mTopLayout);
     } while (!this.jdField_a_of_type_AndroidViewView.getParent().equals(this.mTopLayout));
     this.mTopLayout.removeView(this.jdField_a_of_type_AndroidViewView);
     ((ViewGroup)localObject).addView(this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  protected boolean b()
+  {
+    return (this.mTopLayout != null) && (this.mTopLayout.getParent() != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() == this.mTopLayout);
   }
   
   public void flingLToR()
@@ -116,14 +116,14 @@ public class FlingGestureHandler
   
   public void setTopLayout(TopGestureLayout paramTopGestureLayout)
   {
-    if ((!b()) && (paramTopGestureLayout == null)) {}
+    if ((!a()) && (paramTopGestureLayout == null)) {}
     Activity localActivity;
     do
     {
       return;
       localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     } while (localActivity == null);
-    if (a())
+    if (b())
     {
       b();
       this.jdField_a_of_type_AndroidViewView = a(localActivity).getChildAt(0);

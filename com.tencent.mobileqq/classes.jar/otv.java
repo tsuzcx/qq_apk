@@ -1,21 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class otv
-  implements ViewBase.OnClickListener
+public class otv
+  implements Animation.AnimationListener
 {
-  otv(otu paramotu, opw paramopw, Container paramContainer) {}
+  public otv(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramViewBase = this.jdField_a_of_type_Opw.a();
-    String str = paramViewBase.mSocialFeedInfo.a.f;
-    obz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
-    qoe.a(paramViewBase, (int)paramViewBase.mChannelID);
-    rvf.a(paramViewBase);
+    this.a.a(this.a.a);
+    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment show info");
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment Repeat animation");
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment start animation");
   }
 }
 

@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry;
 
-import agtk;
+import ahfz;
 import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpakcetPreviewConfBean.PreviewInfo;
 
 public class SpringHbEntryManager$13
   implements Runnable
 {
-  public SpringHbEntryManager$13(agtk paramagtk) {}
+  public SpringHbEntryManager$13(ahfz paramahfz) {}
   
   public void run()
   {
-    agtk.f(this.this$0);
+    ahfz.f(this.this$0);
     SpringFestivalRedpakcetPreviewConfBean.PreviewInfo localPreviewInfo = this.this$0.a(this.this$0.b());
     if (localPreviewInfo == null) {
       this.this$0.a("", 4002);
     }
     for (;;)
     {
-      agtk.g(this.this$0);
+      ahfz.g(this.this$0);
       return;
       this.this$0.a(localPreviewInfo.activityId, 4001);
     }

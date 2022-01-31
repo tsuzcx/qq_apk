@@ -1,18 +1,13 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import ajjy;
-import bbmy;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
 
 class GameActivity$19
   implements Runnable
 {
-  GameActivity$19(GameActivity paramGameActivity, String paramString, long paramLong) {}
+  GameActivity$19(GameActivity paramGameActivity) {}
   
-  public void run()
-  {
-    bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131639227) + this.val$errMsg, 1).a();
-  }
+  public void run() {}
 }
 
 

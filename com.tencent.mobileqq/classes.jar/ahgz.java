@@ -1,18 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class ahgz
-  implements ValueAnimator.AnimatorUpdateListener
+class ahgz
+  implements DialogInterface.OnCancelListener
 {
-  public ahgz(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
+  ahgz(ahgy paramahgy) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
+    ahih.a("sq.cftc", 4, 0, null);
   }
 }
 

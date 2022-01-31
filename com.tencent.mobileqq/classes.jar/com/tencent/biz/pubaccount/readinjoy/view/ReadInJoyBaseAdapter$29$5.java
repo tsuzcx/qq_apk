@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import qoe;
-import qot;
+import rap;
+import rbe;
 
 public class ReadInJoyBaseAdapter$29$5
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$29$5(qot paramqot) {}
+  public ReadInJoyBaseAdapter$29$5(rbe paramrbe) {}
   
   public void run()
   {

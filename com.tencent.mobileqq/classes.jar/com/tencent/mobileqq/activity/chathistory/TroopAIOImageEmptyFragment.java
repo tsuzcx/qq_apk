@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import aciy;
+import actn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import axwd;
+import aywk;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
@@ -44,19 +44,19 @@ public class TroopAIOImageEmptyFragment
     {
       paramLayoutInflater = this.mContentView.getContext().getResources();
       paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
-      paramViewGroup.mRequestWidth = aciy.a(321.0F, paramLayoutInflater);
-      paramViewGroup.mRequestHeight = aciy.a(200.0F, paramLayoutInflater);
-      paramViewGroup.mLoadingDrawable = axwd.a;
-      paramViewGroup.mFailedDrawable = axwd.a;
+      paramViewGroup.mRequestWidth = actn.a(321.0F, paramLayoutInflater);
+      paramViewGroup.mRequestHeight = actn.a(200.0F, paramLayoutInflater);
+      paramViewGroup.mLoadingDrawable = aywk.a;
+      paramViewGroup.mFailedDrawable = aywk.a;
       paramLayoutInflater = URLDrawable.getDrawable(this.b, paramViewGroup);
-      ((ImageView)this.mContentView.findViewById(2131311432)).setImageDrawable(paramLayoutInflater);
+      ((ImageView)this.mContentView.findViewById(2131377245)).setImageDrawable(paramLayoutInflater);
     }
-    ((TextView)this.mContentView.findViewById(2131311233)).setText(this.c);
+    ((TextView)this.mContentView.findViewById(2131377043)).setText(this.c);
   }
   
   public int getContentLayoutId()
   {
-    return 2131494739;
+    return 2131560311;
   }
   
   public void init(Bundle paramBundle)

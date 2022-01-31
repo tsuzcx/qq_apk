@@ -1,16 +1,19 @@
-public abstract interface agzl
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbUIFragment;
+
+public class agzl
+  extends ahac
 {
-  public abstract boolean isNeedAutoCloseWhenAccountChange();
+  public agzl(BaseHbUIFragment paramBaseHbUIFragment) {}
   
-  public abstract void onClose();
-  
-  public abstract void onEnter();
-  
-  public abstract void onOverride();
+  public void afterTextChanged(Editable paramEditable)
+  {
+    this.a.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agzl
  * JD-Core Version:    0.7.0.1
  */

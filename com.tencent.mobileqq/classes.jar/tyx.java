@@ -1,32 +1,19 @@
 import android.support.annotation.NonNull;
+import android.view.MotionEvent;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.IEventReceiver;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class tyx
-  extends QQUIEventReceiver<IEventReceiver, syb>
+public abstract interface tyx
 {
-  public tyx(@NonNull IEventReceiver paramIEventReceiver)
-  {
-    super(paramIEventReceiver);
-  }
+  public abstract void a();
   
-  public void a(@NonNull IEventReceiver paramIEventReceiver, @NonNull syb paramsyb)
-  {
-    if (paramsyb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      bbmy.a(tfy.a(), 2, ajjy.a(2131645244), 0).a();
-      urp.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramsyb.jdField_a_of_type_Int), "5" });
-      return;
-    }
-    bbmy.a(tfy.a(), 1, ajjy.a(2131645239), 0).a();
-    urp.a("play_video", "report_fail", 0, 0, new String[] { "", "5" });
-  }
+  public abstract void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
   
-  public Class acceptEventClass()
-  {
-    return syb.class;
-  }
+  public abstract void a(@NonNull ups paramups, ErrorMessage paramErrorMessage);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
 }
 
 

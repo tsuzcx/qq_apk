@@ -1,82 +1,30 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.open.downloadnew.DownloaderGetCodeClient.1;
-import eipc.EIPCResultCallback;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.view.ViewPropertyAnimator;
+import com.tencent.mobileqq.webview.webso.WebSoService.12;
 
 public class bcgw
+  implements Animator.AnimatorListener
 {
-  private static volatile bcgw jdField_a_of_type_Bcgw;
-  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new bcgx(this);
-  private Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, List<bcge>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, String> b = new ConcurrentHashMap();
+  public bcgw(WebSoService.12 param12, ViewPropertyAnimator paramViewPropertyAnimator) {}
   
-  public static bcgw a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (jdField_a_of_type_Bcgw == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bcgw == null) {
-        jdField_a_of_type_Bcgw = new bcgw();
-      }
-      return jdField_a_of_type_Bcgw;
-    }
-    finally {}
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$12.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$12.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$12.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewViewPropertyAnimator.setListener(null);
   }
   
-  private String a(String paramString, int paramInt)
-  {
-    return paramString + "_" + paramInt;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  private void a(String paramString, bcge parambcge)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (parambcge == null)) {}
-    List localList1;
-    do
-    {
-      return;
-      List localList2 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      localList1 = localList2;
-      if (localList2 == null) {
-        localList1 = Collections.synchronizedList(new ArrayList());
-      }
-    } while (localList1.contains(parambcge));
-    localList1.add(parambcge);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localList1);
-  }
-  
-  public void a(String paramString, int paramInt, bcge parambcge)
-  {
-    a(a(paramString, paramInt), parambcge);
-    parambcge = new Bundle();
-    parambcge.putString("PackageName", paramString);
-    parambcge.putInt("VersionCode", paramInt);
-    bcds.c("DownloaderGetCodeClient", paramString + "_" + paramInt + " begin getApkCode ......");
-    this.jdField_a_of_type_JavaUtilMap.put(a(paramString, paramInt), Boolean.valueOf(true));
-    QIPCClientHelper.getInstance().callServer("Module_DownloaderGetCodeServer", "DownloaderWriteCodeIPC_Action__GetCode", parambcge, this.jdField_a_of_type_EipcEIPCResultCallback);
-    ThreadManager.getSubThreadHandler().postDelayed(new DownloaderGetCodeClient.1(this, paramString, paramInt, parambcge), 3000L);
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt, bcge parambcge)
-  {
-    if (!TextUtils.isEmpty(paramString1)) {
-      this.b.put(a(paramString2, paramInt), paramString1);
-    }
-    a(paramString2, paramInt, parambcge);
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcgw
  * JD-Core Version:    0.7.0.1
  */

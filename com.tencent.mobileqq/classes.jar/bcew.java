@@ -1,17 +1,22 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler.5.1;
+
 public class bcew
+  implements DialogInterface.OnClickListener
 {
-  public static final String a = ajjy.a(2131636659);
-  public static final String b = ajjy.a(2131636657);
-  public static final String c = ajjy.a(2131636665);
-  public static final String d = ajjy.a(2131636660);
-  public static final String e = ajjy.a(2131636663);
-  public static final String f = ajjy.a(2131636661);
-  public static final String g = ajjy.a(2131636658);
-  public static final String h = ajjy.a(2131636664);
+  bcew(bcet parambcet, int paramInt, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ThreadManager.excute(new SwiftBrowserShareMenuHandler.5.1(this), 128, null, false);
+    bcet.a(this.jdField_a_of_type_Bcet, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcew
  * JD-Core Version:    0.7.0.1
  */

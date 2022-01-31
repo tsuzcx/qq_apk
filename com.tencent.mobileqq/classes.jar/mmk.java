@@ -1,14 +1,18 @@
-import com.tencent.common.app.AppInterface;
-import java.lang.ref.WeakReference;
+import android.view.MotionEvent;
 
-public abstract class mmk
-  extends mmn
+public abstract interface mmk
 {
-  public WeakReference<AppInterface> a = new WeakReference(null);
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, long paramLong);
+  
+  public abstract void a(int paramInt, long paramLong);
+  
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mmk
  * JD-Core Version:    0.7.0.1
  */

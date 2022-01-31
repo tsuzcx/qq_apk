@@ -1,12 +1,18 @@
+import com.tribe.async.reactive.StreamFunction;
+
 class tfs
-  implements swj
+  extends StreamFunction<tfi, tfi>
 {
-  tfs(tfp paramtfp, swi paramswi) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void a(boolean paramBoolean)
+  tfs(tfn paramtfn) {}
+  
+  protected void a(tfi paramtfi)
   {
-    this.jdField_a_of_type_Swi.a();
-    this.jdField_a_of_type_Tfp.d();
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    veg.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] will fetch vidlist of uinion_id: %s", Integer.valueOf(i), paramtfi.a);
+    notifyResult(paramtfi);
   }
 }
 

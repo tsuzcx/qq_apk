@@ -1,6 +1,6 @@
 package cooperation.weiyun;
 
-import bbmy;
+import bcpw;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class WeiyunAIOUtils$4
@@ -10,7 +10,7 @@ public final class WeiyunAIOUtils$4
   
   public void run()
   {
-    bbmy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131627191, 0).b(this.jdField_a_of_type_Int);
+    bcpw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131692829, 0).b(this.jdField_a_of_type_Int);
   }
 }
 

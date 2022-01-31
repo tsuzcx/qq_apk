@@ -1,67 +1,69 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.QQSettingMe.30.1;
-import com.tencent.mobileqq.activity.QQSettingMe.30.2;
-import com.tencent.mobileqq.activity.QQSettingMe.30.3;
-import com.tencent.mobileqq.activity.QQSettingMe.30.4;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class abmt
-  extends ajfo
+  extends akhc
 {
-  public abmt(QQSettingMe paramQQSettingMe) {}
+  public abmt(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void b(boolean paramBoolean, ayaw paramayaw)
   {
-    if (paramObject == null) {}
-    do
+    if (QLog.isColorLevel())
     {
-      return;
-      if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && ((paramObject instanceof Card)) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((Card)paramObject).uin)))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.30.1(this));
-        ThreadManager.post(new QQSettingMe.30.2(this), 5, null, true);
-        return;
+      QLog.d("SUB_ACCOUNT", 2, "LoginVerifyCodeActivity.onBindSubAccount() isSucc=" + paramBoolean);
+      if (paramayaw != null) {
+        QLog.d("SUB_ACCOUNT", 2, "LoginVerifyCodeActivity.onBindSubAccount() mainAccount=" + paramayaw.b + " subAccount=" + paramayaw.c + " errType=" + paramayaw.jdField_a_of_type_Int + " errMsg=" + paramayaw.jdField_a_of_type_JavaLangString);
       }
-    } while ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (!(paramObject instanceof Card)) || (this.a.c) || (!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((Card)paramObject).uin)));
-    ThreadManager.post(new QQSettingMe.30.3(this, (Card)paramObject), 5, null, true);
-  }
-  
-  protected void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.c)) {
-      QQSettingMe.a(this.a, false);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, String.format("onGetMedal [%b, %b] medalSwitchDisable= ", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(this.a.c), Boolean.valueOf(paramBoolean2) }));
+    this.a.c();
+    Object localObject;
+    if (paramBoolean)
+    {
+      this.a.a(2131719846, 2);
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub success............");
+      }
+      ayan.b(this.a.app);
+      ayan.a(this.a.app);
+      ayan.c(this.a.app);
+      ayan.d(this.a.app);
+      localObject = new Intent(this.a, SplashActivity.class);
+      ((Intent)localObject).putExtra("tab_index", MainFragment.b);
+      ((Intent)localObject).setFlags(67108864);
+      this.a.startActivity((Intent)localObject);
+      this.a.finish();
     }
-  }
-  
-  protected void onGetSignInInfo(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().post(new QQSettingMe.30.4(this));
-    }
-  }
-  
-  protected void onSetMedal(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.a.c)) {
-      QQSettingMe.a(this.a, false);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, String.format("onSetMedal [%b %b]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.a.c) }));
-    }
-  }
-  
-  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (azzz.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.b(paramString);
+    for (;;)
+    {
+      if ((paramayaw != null) && (QLog.isColorLevel())) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub failed............ ...errorMsg = " + paramayaw.jdField_a_of_type_JavaLangString + "...errorType = " + paramayaw.jdField_a_of_type_Int);
+      }
+      return;
+      if (paramayaw != null) {
+        switch (paramayaw.jdField_a_of_type_Int)
+        {
+        default: 
+          this.a.a(2131719835, 0);
+          break;
+        case 1002: 
+          ayao.a(this.a.app, this.a);
+          break;
+        case 1003: 
+          this.a.a(2131719836, 0);
+          break;
+        case 1004: 
+          String str = paramayaw.jdField_a_of_type_JavaLangString;
+          localObject = str;
+          if (TextUtils.isEmpty(str)) {
+            localObject = this.a.getString(2131719837);
+          }
+          this.a.a((String)localObject, 0);
+        }
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.notifymsg;
 
-import agwj;
+import ahiy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -12,7 +12,7 @@ public final class NotifyMsgManager$3
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = agwj.a();
+    QQAppInterface localQQAppInterface = ahiy.a();
     if ((localQQAppInterface != null) && (this.a != null)) {
       localQQAppInterface.a().a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
     }

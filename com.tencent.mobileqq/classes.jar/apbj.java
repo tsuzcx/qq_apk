@@ -1,15 +1,30 @@
-import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
 
 class apbj
-  implements batk
+  extends apbi
 {
-  apbj(apbf paramapbf, Activity paramActivity, int paramInt) {}
-  
-  public void callback(int paramInt)
+  public apbj(apbe paramapbe)
   {
-    if ((paramInt == 1) || (paramInt == 2)) {
-      apbf.a(this.jdField_a_of_type_Apbf, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    super(paramapbe);
+  }
+  
+  protected String a()
+  {
+    return "StateCancelUploadWhenChangeToOff";
+  }
+  
+  protected boolean a()
+  {
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
     }
+    apbe.b(this.jdField_a_of_type_Apbe, 11, 9);
+    apbe.c(this.jdField_a_of_type_Apbe, 11, 9);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateCancelUploadWhenRecv)");
+    this.jdField_a_of_type_Apbi = new apbl(this.jdField_a_of_type_Apbe);
+    return true;
   }
 }
 

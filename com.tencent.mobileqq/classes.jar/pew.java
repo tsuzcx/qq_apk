@@ -1,366 +1,201 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButtonImp;
 import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
 public class pew
+  implements phs
 {
-  public static View a(int paramInt1, Object paramObject, int paramInt2, View paramView, Context paramContext, qoe paramqoe, azwg paramazwg)
+  public static int a(ArticleInfo paramArticleInfo)
   {
-    if ((paramView != null) && ((paramView.getTag() instanceof pez))) {}
-    for (paramContext = (pez)paramView.getTag();; paramContext = paramqoe)
-    {
-      if (paramContext != null)
-      {
-        paramContext.a(paramInt1).a(paramObject);
-        paramContext.o();
-        paramContext.p();
-      }
-      return paramView;
-      paramqoe = a(paramInt2, paramContext, paramObject, paramazwg, paramqoe);
-      if (paramqoe != null) {
-        try
-        {
-          paramView = paramqoe.a();
-          paramView.setTag(paramqoe);
-          if (!pmu.c(paramInt2)) {
-            nzq.a(paramView, paramContext.getResources().getDrawable(2130841186));
-          } else {
-            nzq.a(paramView, paramContext.getResources().getDrawable(2131101149));
-          }
-        }
-        catch (Exception paramObject)
-        {
-          QLog.e("CellFactory", 1, "getView: ", paramObject);
-          return null;
-        }
-      }
+    if ((paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.a != null) && (paramArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaUtilArrayList != null)) {
+      return paramArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaUtilArrayList.size();
     }
+    return 0;
   }
   
-  private static pez a(int paramInt, Context paramContext, Object paramObject, azwg paramazwg, qoe paramqoe)
+  public static pvo a(ArticleInfo paramArticleInfo, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt == 0) {
+      return new pvp().a();
+    }
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    qde localqde;
+    if ((paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.a != null) && (paramArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaUtilArrayList != null) && (paramArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaUtilArrayList.size() >= 1))
     {
-    case 13: 
-    case 38: 
-    case 46: 
-    case 70: 
-    case 72: 
-    case 73: 
-    case 74: 
-    case 75: 
-    case 76: 
-    case 77: 
-    case 78: 
-    case 79: 
-    case 80: 
-    case 81: 
-    case 83: 
-    case 84: 
-    case 85: 
-    case 86: 
-    case 89: 
-    case 90: 
-    case 91: 
-    case 92: 
-    case 94: 
-    case 95: 
-    case 99: 
-    case 100: 
-    case 107: 
-    case 108: 
-    case 109: 
-    case 110: 
-    case 111: 
-    case 112: 
-    case 113: 
-    case 114: 
-    case 118: 
-    case 119: 
-    case 120: 
-    case 121: 
-    default: 
-      paramContext = null;
+      paramArticleInfo = paramArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (paramArticleInfo.hasNext()) {
+        localqde = (qde)paramArticleInfo.next();
+      }
     }
     for (;;)
     {
-      if (paramContext != null) {}
       try
       {
-        paramContext.a(paramObject);
-        paramContext.a();
-        paramContext.d();
-        return paramContext;
+        int i = localArrayList1.size();
+        if (i == paramInt) {
+          return new pvp().a(localArrayList1).b(localArrayList2).a();
+        }
+        i = localqde.a;
+        int j = localqde.jdField_b_of_type_Int;
+        URL localURL = new URL(localqde.jdField_c_of_type_JavaLangString);
+        if (localqde.jdField_c_of_type_Int != 1) {
+          break label270;
+        }
+        bool = true;
+        localArrayList1.add(new rie(i, j, localURL, bool));
+        localArrayList2.add(new URL(localqde.jdField_b_of_type_JavaLangString));
       }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
+      catch (MalformedURLException localMalformedURLException) {}
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      paramContext = new pgm(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new phs(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pfj(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pic(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pic(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = null;
-      continue;
-      paramContext = new pia(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pfk(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new phr(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pfi(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pib(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pht(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pfu(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pgn(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pfl(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pfu(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pgv(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pgw(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pfs(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new phf(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pfs(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new phd(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pix(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new piv(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pit(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pjb(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new piw(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new piu(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pjd(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new piy(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new piq(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pid(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new phn(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new php(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pir(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pgy(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pha(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pig(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pik(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pii(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pfl(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pha(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pht(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pga(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pgj(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pgb(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pin(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pim(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pio(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new piy(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new piw(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pjd(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new phh(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new phi(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pgk(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new phj(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new phl(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new phk(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new phq(paramContext, paramazwg, paramqoe, ComponentContentRecommend.class);
-      continue;
-      paramContext = new phq(paramContext, paramazwg, paramqoe, ComponentContentRecommendFollowList.class);
-      continue;
-      paramContext = new phq(paramContext, paramazwg, paramqoe, ComponentContentRecommendFollowGroup.class);
-      continue;
-      paramContext = new pgl(paramContext, paramazwg, paramqoe);
-      continue;
-      paramContext = new pgu(paramContext, paramazwg, paramqoe);
+      QLog.d("AnswerProteusItem", 2, "Malformed URL: " + localMalformedURLException.getMessage());
+      break;
+      label270:
+      boolean bool = false;
     }
+  }
+  
+  public static void a(BaseArticleInfo paramBaseArticleInfo, String paramString, JSONObject paramJSONObject)
+  {
+    boolean bool = true;
+    if (paramBaseArticleInfo.mSocialFeedInfo.j == 1)
+    {
+      if (bool) {
+        break label61;
+      }
+      paramBaseArticleInfo = new JSONObject();
+      paramBaseArticleInfo.put("read_article", paramString);
+      paramJSONObject.put("id_read_article", paramBaseArticleInfo);
+      paramJSONObject.put("id_read_article_wrapper", new JSONObject());
+    }
+    label61:
+    while (!QLog.isColorLevel())
+    {
+      return;
+      bool = false;
+      break;
+    }
+    QLog.i("AnswerProteusItem", 2, "bindReadArticle isDeleted +" + bool);
+  }
+  
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  {
     return null;
   }
   
-  public static boolean a(int paramInt)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    boolean bool = true;
-    switch (paramInt)
-    {
-    case 4: 
-    case 13: 
-    case 38: 
-    case 46: 
-    case 50: 
-    case 51: 
-    case 52: 
-    case 70: 
-    case 80: 
-    case 81: 
-    case 83: 
-    case 84: 
-    case 85: 
-    case 86: 
-    case 89: 
-    case 90: 
-    case 91: 
-    case 92: 
-    case 94: 
-    case 95: 
-    case 97: 
-    case 98: 
-    case 99: 
-    case 100: 
-    case 109: 
-    case 110: 
-    case 111: 
-    case 112: 
-    case 113: 
-    case 114: 
-    case 118: 
-    case 119: 
-    case 120: 
-    case 121: 
-    default: 
-      bool = false;
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 5: 
-    case 7: 
-    case 8: 
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-    case 14: 
-    case 15: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    case 20: 
-    case 21: 
-    case 22: 
-    case 23: 
-    case 24: 
-    case 25: 
-    case 26: 
-    case 27: 
-    case 28: 
-    case 29: 
-    case 30: 
-    case 31: 
-    case 32: 
-    case 33: 
-    case 34: 
-    case 35: 
-    case 36: 
-    case 37: 
-    case 39: 
-    case 40: 
-    case 41: 
-    case 42: 
-    case 43: 
-    case 44: 
-    case 45: 
-    case 47: 
-    case 48: 
-    case 49: 
-    case 53: 
-    case 54: 
-    case 55: 
-    case 56: 
-    case 57: 
-    case 58: 
-    case 59: 
-    case 60: 
-    case 61: 
-    case 62: 
-    case 63: 
-    case 64: 
-    case 65: 
-    case 66: 
-    case 67: 
-    case 68: 
-    case 69: 
-    case 71: 
-    case 72: 
-    case 73: 
-    case 74: 
-    case 75: 
-    case 76: 
-    case 77: 
-    case 78: 
-    case 79: 
-    case 82: 
-    case 87: 
-    case 88: 
-    case 93: 
-    case 96: 
-    case 101: 
-    case 102: 
-    case 103: 
-    case 104: 
-    case 105: 
-    case 106: 
-    case 107: 
-    case 108: 
-    case 115: 
-    case 116: 
-    case 117: 
-    case 122: 
-    case 123: 
-      return bool;
+    long l = 0L;
+    if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+      l = paramBaseArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Long;
     }
+    JSONObject localJSONObject = new pdp().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l).f(paramBaseArticleInfo).g(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).k(paramBaseArticleInfo).p(paramBaseArticleInfo).r(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).x(paramBaseArticleInfo).A(paramBaseArticleInfo).B(paramBaseArticleInfo).D(paramBaseArticleInfo).C(paramBaseArticleInfo).a("ReadInjoy_original_cell").E(paramBaseArticleInfo).I(paramBaseArticleInfo).a(paramBaseArticleInfo, ajyc.a(2131700262)).a();
+    if (!olc.a(paramBaseArticleInfo)) {
+      a(paramBaseArticleInfo, ajyc.a(2131700261), localJSONObject);
+    }
+    return localJSONObject;
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pax parampax, int paramInt2)
+  {
+    ViewBase localViewBase = paramContainer.getVirtualView();
+    Object localObject1 = (pll)localViewBase.findViewBaseByName("id_middle_body_content");
+    pex localpex = new pex(this, parampax, paramContainer);
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      localObject2 = (NativeMiddleBodyView)((pll)localObject1).getNativeView();
+      if ((localObject2 != null) && (((NativeMiddleBodyView)localObject2).a() == null))
+      {
+        localObject3 = new RelativeLayout.LayoutParams(-2, -2);
+        LinearLayout localLinearLayout = new LinearLayout(paramContainer.getContext());
+        localLinearLayout.setOrientation(1);
+        localLinearLayout.addView(new ComponentContentGridImage(paramContainer.getContext()));
+        localLinearLayout.addView(new ComponentContentUgcImage(paramContainer.getContext()));
+        paramInt1 = actn.a(12.0F, paramContainer.getContext().getResources());
+        ((RelativeLayout.LayoutParams)localObject3).setMargins(paramInt1, 0, paramInt1, 0);
+        ((pll)localObject1).a((RelativeLayout.LayoutParams)localObject3);
+        ((NativeMiddleBodyView)localObject2).a(localLinearLayout, (RelativeLayout.LayoutParams)localObject3);
+      }
+      if (localObject2 != null)
+      {
+        paramContainer = (ViewGroup)((NativeMiddleBodyView)localObject2).a();
+        localObject2 = parampax.a();
+        paramInt1 = a((ArticleInfo)localObject2);
+        localObject2 = a((ArticleInfo)localObject2, paramInt1);
+        if (paramInt1 != 0) {
+          break label351;
+        }
+        paramContainer.setVisibility(8);
+        ((pll)localObject1).setOnClickListener(localpex);
+      }
+    }
+    pmr.a(localViewBase, parampax.a());
+    paramContainer = (pjx)localViewBase.findViewBaseByName("id_info_avator");
+    if (paramContainer != null) {
+      paramContainer.a(parampax);
+    }
+    paramContainer = (NativeButton)localViewBase.findViewBaseByName("id_super_topic_button");
+    if ((paramContainer != null) && (paramContainer.getNativeView() != null) && ((paramContainer.getNativeView() instanceof NativeButtonImp))) {
+      ((NativeButtonImp)paramContainer.getNativeView()).setTextColor(-1);
+    }
+    paramContainer = (pjv)localViewBase.findViewBaseByName("id_article_comment");
+    if (paramContainer != null)
+    {
+      localObject1 = (NativeCommentView)paramContainer.getNativeView();
+      ((NativeCommentView)localObject1).a = true;
+      paramContainer.a(parampax);
+      ((NativeCommentView)localObject1).setShouldCallClick(true);
+      paramContainer.setOnClickListener(localpex);
+    }
+    pen.a(localViewBase, parampax);
+    pmr.b(localViewBase, parampax);
+    return;
+    label351:
+    paramContainer.setVisibility(0);
+    Object localObject3 = (ComponentContentGridImage)paramContainer.getChildAt(0);
+    paramContainer = (ComponentContentUgcImage)paramContainer.getChildAt(1);
+    if (paramInt1 == 1)
+    {
+      ((ComponentContentGridImage)localObject3).setVisibility(8);
+      paramContainer.setVisibility(0);
+      paramContainer.a(parampax);
+    }
+    for (;;)
+    {
+      paramContainer.setPicClickListener(new pey(this, parampax));
+      break;
+      ((ComponentContentGridImage)localObject3).setVisibility(0);
+      ((ComponentContentGridImage)localObject3).setMIReadInJoyModel(parampax);
+      paramContainer.setVisibility(8);
+      ((ComponentContentGridImage)localObject3).a(localObject2);
+    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pax parampax, ViewBase paramViewBase)
+  {
     return false;
   }
 }

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import ahwm;
+import aije;
 
 class QvipSpecialSoundManager$3
   implements Runnable
 {
-  QvipSpecialSoundManager$3(QvipSpecialSoundManager paramQvipSpecialSoundManager, ahwm paramahwm, boolean paramBoolean) {}
+  QvipSpecialSoundManager$3(QvipSpecialSoundManager paramQvipSpecialSoundManager, aije paramaije, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ahwm.a(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Aije.a(this.jdField_a_of_type_Boolean);
   }
 }
 

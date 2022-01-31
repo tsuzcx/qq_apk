@@ -1,31 +1,26 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.comic.webbundle.WebBundleReportUtils.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer.4;
 
 public class bfbe
+  implements DialogInterface.OnClickListener
 {
-  public static String a = "0";
-  public static String b = "1";
-  public static String c = "2";
-  public static String d = "3";
-  public static String e = "4";
+  public bfbe(AppBrandPageContainer.4 param4) {}
   
-  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString3, String paramString4, String paramString5, String paramString6)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.post(new WebBundleReportUtils.1(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramString3, paramString4, paramString5, paramString6), 5, null, false);
-  }
-  
-  public static void a(String paramString1, boolean paramBoolean, String paramString2)
-  {
-    String str = "0";
-    if (paramBoolean) {
-      str = "1";
-    }
-    a("hybrid", "webBundle_open", 0, 0, 0, 0, paramString1, str, paramString2, "");
+    bfgv.a().edit().putBoolean(AppBrandPageContainer.a(this.a.this$0).a().appId + "_debug", this.a.a);
+    this.a.this$0.a(this.a.this$0);
+    bfgs.a(AppBrandPageContainer.a(this.a.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfbe
  * JD-Core Version:    0.7.0.1
  */

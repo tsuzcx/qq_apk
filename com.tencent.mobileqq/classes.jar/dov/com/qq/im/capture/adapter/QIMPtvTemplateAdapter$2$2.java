@@ -1,18 +1,18 @@
 package dov.com.qq.im.capture.adapter;
 
-import ajjy;
-import bbmy;
-import bhfv;
-import bhfx;
+import ajyc;
+import bcpw;
+import bjan;
+import bjap;
 
 public class QIMPtvTemplateAdapter$2$2
   implements Runnable
 {
-  public QIMPtvTemplateAdapter$2$2(bhfx parambhfx) {}
+  public QIMPtvTemplateAdapter$2$2(bjap parambjap) {}
   
   public void run()
   {
-    bbmy.a(this.a.a.a, ajjy.a(2131644035), 0).a();
+    bcpw.a(this.a.a.a, ajyc.a(2131709820), 0).a();
   }
 }
 

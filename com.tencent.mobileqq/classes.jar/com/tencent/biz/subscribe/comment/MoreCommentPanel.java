@@ -32,19 +32,19 @@ public class MoreCommentPanel
   
   private void a()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131496649, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131304753));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131304751));
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562250, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370410));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370408));
     if (this.jdField_a_of_type_Boolean)
     {
-      setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131101121));
-      setBackgroundResource(2130848023);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131099740));
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848021);
+      setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166715));
+      setBackgroundResource(2130848253);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165277));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848251);
       return;
     }
-    setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100168));
-    setBackgroundResource(2130848022);
+    setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165758));
+    setBackgroundResource(2130848252);
   }
   
   public void setHintText(CharSequence paramCharSequence)

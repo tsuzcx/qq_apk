@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aclt;
-import aclw;
+import acwm;
+import acwp;
 
 class IntimateInfoView$10$1
   implements Runnable
@@ -10,7 +10,7 @@ class IntimateInfoView$10$1
   
   public void run()
   {
-    aclw.a(this.a.this$0).a();
+    acwp.a(this.a.this$0).a();
   }
 }
 

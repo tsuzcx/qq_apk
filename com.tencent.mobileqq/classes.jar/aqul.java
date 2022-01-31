@@ -1,37 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-
 public class aqul
-  extends QIPCModule
 {
-  private static aqul a;
+  public int a;
+  public String a;
   
-  private aqul(String paramString)
+  public aqul(aqug paramaqug, int paramInt, String paramString)
   {
-    super(paramString);
-  }
-  
-  public static aqul a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new aqul("JubaoIPCServer");
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("JubaoIPCServer", 2, "jubaoIpcServer onCall= " + paramString + ",callbackId = " + paramInt);
-    }
-    return null;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

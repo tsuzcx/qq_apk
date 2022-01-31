@@ -1,25 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-
-public class bifm
-  implements Animation.AnimationListener
+public abstract interface bifm
 {
-  public bifm(EditVideoGuide paramEditVideoGuide) {}
+  public abstract void a(long paramLong, float paramFloat);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.j();
-    this.a.a.a(0);
-  }
+  public abstract void a(String paramString);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bifm
  * JD-Core Version:    0.7.0.1
  */

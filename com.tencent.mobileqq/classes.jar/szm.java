@@ -1,68 +1,42 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetEmoticonPackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetEmoticonPackList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
 
 public class szm
-  extends slz<tbk>
+  extends tbe
 {
-  public final String a;
-  public final int c;
-  public final int d;
-  public final int e;
+  qqstory_service.RspDelFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment;
+  tbf jdField_a_of_type_Tbf;
   
-  public szm(String paramString, int paramInt)
+  public szm(qqstory_service.RspDelFeedComment paramRspDelFeedComment, tbf paramtbf)
   {
-    this(paramString, paramInt, 0, 0);
+    super(paramRspDelFeedComment.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment = paramRspDelFeedComment;
+    this.jdField_a_of_type_Tbf = paramtbf;
   }
   
-  public szm(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public szm(tbf paramtbf)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("mCookie should not be null");
-    }
-    if (paramInt1 <= 0) {
-      throw new IllegalArgumentException("mCount should not be less than 0 : " + paramInt1);
-    }
-    this.a = paramString;
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
+    this.jdField_a_of_type_Tbf = paramtbf;
   }
   
-  public String a()
+  public void a()
   {
-    return skt.a("StorySvc.video_emoticon_get");
+    this.jdField_a_of_type_Tbf.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment);
   }
   
-  public slu a(byte[] paramArrayOfByte)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    qqstory_service.RspGetEmoticonPackList localRspGetEmoticonPackList = new qqstory_service.RspGetEmoticonPackList();
-    try
-    {
-      localRspGetEmoticonPackList.mergeFrom(paramArrayOfByte);
-      return new tbk(localRspGetEmoticonPackList, paramArrayOfByte, System.currentTimeMillis());
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      urk.e("GetEmojiPackInfoListRequest", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
-    }
-    return null;
+    this.jdField_a_of_type_Tbf.a(paramInt, paramBundle);
   }
   
-  protected byte[] a()
+  public void a(int paramInt, String paramString)
   {
-    qqstory_service.ReqGetEmoticonPackList localReqGetEmoticonPackList = new qqstory_service.ReqGetEmoticonPackList();
-    localReqGetEmoticonPackList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    localReqGetEmoticonPackList.count.set(this.c);
-    return localReqGetEmoticonPackList.toByteArray();
+    this.jdField_a_of_type_Tbf.a(paramInt, paramString);
   }
   
-  public String toString()
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    return "GetEmojiPackInfoListRequest{mCookie='" + this.a + '\'' + ", mCount=" + this.c + ", latitude=" + this.d + ", longitude=" + this.e + '}';
+    this.jdField_a_of_type_Tbf.a(paramBoolean, paramBundle);
   }
 }
 

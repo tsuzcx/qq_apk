@@ -1,38 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class rdi
-  implements ComplementFileStringLoader
+  extends oyg
 {
-  private rdq a;
-  
-  public rdi(rdq paramrdq)
+  public rdi(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean, int paramInt)
   {
-    this.a = paramrdq;
+    super(paramString);
   }
   
-  public String loadFileAsString(String paramString)
+  public void a(oya paramoya)
   {
-    try
-    {
-      InputStream localInputStream = this.a.a(paramString);
-      if (localInputStream == null) {
-        throw new IllegalStateException(paramString + " not found");
-      }
-    }
-    catch (IOException localIOException)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("OfflineComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
-        localIOException.printStackTrace();
-      }
-      return null;
-    }
-    String str = rdz.a(localIOException);
-    return str;
+    paramoya.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
   }
 }
 

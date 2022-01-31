@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import acsr;
-import acss;
+import addk;
+import addl;
 import mqq.util.WeakReference;
 
 public class DoodleMsgView$1$2
   implements Runnable
 {
-  public DoodleMsgView$1$2(acsr paramacsr, int paramInt) {}
+  public DoodleMsgView$1$2(addk paramaddk, int paramInt) {}
   
   public void run()
   {
-    if (DoodleMsgView.a(this.jdField_a_of_type_Acsr.a) != null)
+    if (DoodleMsgView.a(this.jdField_a_of_type_Addk.a) != null)
     {
-      acss localacss = (acss)DoodleMsgView.a(this.jdField_a_of_type_Acsr.a).get();
-      if (localacss != null) {
-        localacss.a(this.jdField_a_of_type_Int);
+      addl localaddl = (addl)DoodleMsgView.a(this.jdField_a_of_type_Addk.a).get();
+      if (localaddl != null) {
+        localaddl.a(this.jdField_a_of_type_Int);
       }
     }
   }

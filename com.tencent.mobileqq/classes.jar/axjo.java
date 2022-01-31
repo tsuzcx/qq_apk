@@ -1,14 +1,32 @@
-public abstract interface axjo
+import android.annotation.TargetApi;
+import android.support.annotation.Nullable;
+import java.util.Collection;
+
+@TargetApi(9)
+public class axjo
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b(int paramInt);
+  public static boolean a(@Nullable Object paramObject)
+  {
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof Collection)) {
+        break label25;
+      }
+      if (!((Collection)paramObject).isEmpty()) {
+        break label35;
+      }
+    }
+    label25:
+    while (paramObject.toString().isEmpty()) {
+      return true;
+    }
+    label35:
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axjo
  * JD-Core Version:    0.7.0.1
  */

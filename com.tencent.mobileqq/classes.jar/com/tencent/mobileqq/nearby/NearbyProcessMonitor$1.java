@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby;
 
-import aseo;
-import asfc;
+import atas;
+import atbg;
 
 public final class NearbyProcessMonitor$1
   implements Runnable
@@ -10,11 +10,11 @@ public final class NearbyProcessMonitor$1
   
   public void run()
   {
-    aseo.b(this.a);
-    aseo.a(this.a);
-    aseo.a += 1;
-    asfc.a(this.a);
-    aseo.a();
+    atas.b(this.a);
+    atas.a(this.a);
+    atas.a += 1;
+    atbg.a(this.a);
+    atas.a();
   }
 }
 

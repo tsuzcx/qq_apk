@@ -1,43 +1,104 @@
-import QQService.SvcDevLoginInfo;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.app.Application;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build.VERSION;
+import android.provider.Settings.Secure;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.MD5;
 
 public class aabf
-  implements View.OnClickListener
 {
-  public aabf(AuthDevActivity paramAuthDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
+  private static int jdField_a_of_type_Int = -1;
+  private static String jdField_a_of_type_JavaLangString = "";
   
-  public void onClick(View paramView)
+  public static String a(Application paramApplication)
   {
-    boolean bool2 = true;
-    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramView.stDeviceItemDes);
-    if (Arrays.equals(NetConnInfoCenter.GUID, paramView.vecGuid)) {}
-    for (boolean bool1 = true;; bool1 = false)
+    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+      return jdField_a_of_type_JavaLangString;
+    }
+    String str1 = "";
+    Context localContext = paramApplication.getApplicationContext();
+    Object localObject = str1;
+    if (a(paramApplication))
     {
-      AuthDevActivity localAuthDevActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity;
-      String str1 = paramView.strDeviceName;
-      String str2 = AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
-      int i = this.jdField_a_of_type_Int;
-      if (paramView.iLoginPlatform == 3L) {}
-      for (;;)
+      paramApplication = (TelephonyManager)localContext.getSystemService("phone");
+      String str2 = paramApplication.getDeviceId();
+      localObject = str1;
+      if (!TextUtils.isEmpty(str2)) {
+        localObject = "" + str2;
+      }
+      str1 = paramApplication.getSubscriberId();
+      if (TextUtils.isEmpty(str1)) {
+        break label170;
+      }
+      paramApplication = (String)localObject + str1;
+    }
+    for (;;)
+    {
+      localObject = paramApplication;
+      if (TextUtils.isEmpty(paramApplication))
       {
-        AuthDevActivity.a(localAuthDevActivity, str1, localArrayList, str2, i, bool2, bool1, paramView.iAppId);
-        return;
-        bool2 = false;
+        localObject = paramApplication;
+        if (Build.VERSION.SDK_INT >= 23) {
+          localObject = bfmw.b();
+        }
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        paramApplication = (Application)localObject;
+        if (!((String)localObject).startsWith("012345678912345")) {}
+      }
+      else
+      {
+        paramApplication = Settings.Secure.getString(localContext.getContentResolver(), "android_id");
+      }
+      jdField_a_of_type_JavaLangString = MD5.toMD5(paramApplication);
+      return jdField_a_of_type_JavaLangString;
+      label170:
+      str1 = paramApplication.getSimOperator();
+      paramApplication = (Application)localObject;
+      if (!TextUtils.isEmpty(str1)) {
+        paramApplication = (String)localObject + str1;
       }
     }
+  }
+  
+  private static boolean a(Application paramApplication)
+  {
+    boolean bool = true;
+    if (jdField_a_of_type_Int == -1)
+    {
+      bool = a(paramApplication, "android.permission.READ_PHONE_STATE");
+      if (bool) {
+        jdField_a_of_type_Int = 1;
+      }
+    }
+    while (jdField_a_of_type_Int > 0) {
+      for (;;)
+      {
+        return bool;
+        jdField_a_of_type_Int = 0;
+      }
+    }
+    return false;
+  }
+  
+  private static boolean a(Application paramApplication, String paramString)
+  {
+    if (paramApplication == null) {}
+    PackageManager localPackageManager;
+    do
+    {
+      return false;
+      localPackageManager = paramApplication.getPackageManager();
+    } while ((localPackageManager == null) || (localPackageManager.checkPermission(paramString, paramApplication.getPackageName()) != 0));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aabf
  * JD-Core Version:    0.7.0.1
  */

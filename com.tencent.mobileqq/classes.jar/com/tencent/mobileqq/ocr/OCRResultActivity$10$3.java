@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.ocr;
 
-import ajjy;
-import atdt;
-import atgo;
-import bbmy;
+import ajyc;
+import auaf;
+import audu;
+import bcpw;
 
 public class OCRResultActivity$10$3
   implements Runnable
 {
-  public OCRResultActivity$10$3(atdt paramatdt) {}
+  public OCRResultActivity$10$3(auaf paramauaf) {}
   
   public void run()
   {
     OCRResultActivity.a(this.a.a).dismiss();
     OCRResultActivity.a(this.a.a).a(0);
     OCRResultActivity.d(this.a.a, false);
-    bbmy.a(this.a.a, 1, ajjy.a(2131642033), 0).a();
+    bcpw.a(this.a.a, 1, ajyc.a(2131707818), 0).a();
   }
 }
 

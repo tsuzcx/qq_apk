@@ -1,27 +1,87 @@
-public class acup
-  extends acus
+import android.content.Context;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+
+public final class acup
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public int b;
-  
-  public acup(int paramInt1, int paramInt2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.b = paramInt1;
-    this.a = paramInt2;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
+    Object localObject1 = (ChatMessage)paramCompoundButton.getTag();
+    if (localObject1 == null) {}
+    for (;;)
     {
-      do
+      return;
+      if ((localObject1 instanceof MessageForPtt))
       {
-        return false;
-      } while (!(paramObject instanceof acup));
-      paramObject = (acup)paramObject;
-    } while ((this.b != paramObject.b) || (this.a != paramObject.a));
-    return true;
+        localObject2 = MediaPlayerManager.a(BaseActivity.sTopActivity.app).a();
+        if ((localObject2 == localObject1) || (((localObject2 instanceof MessageForPtt)) && (((ChatMessage)localObject2).uniseq == ((ChatMessage)localObject1).uniseq))) {
+          MediaPlayerManager.a(BaseActivity.sTopActivity.app).c(false);
+        }
+      }
+      Object localObject2 = AIOLongShotHelper.a();
+      if ((localObject2 != null) && (((AIOLongShotHelper)localObject2).a()))
+      {
+        if ((paramBoolean != ((AIOLongShotHelper)localObject2).a((ChatMessage)localObject1)) && (BaseChatItemLayout.a != null)) {
+          BaseChatItemLayout.a.a((ChatMessage)localObject1, paramCompoundButton, paramBoolean);
+        }
+      }
+      else if (paramBoolean != asty.a().a((ChatMessage)localObject1))
+      {
+        if (!paramBoolean) {
+          asty.a().a((ChatMessage)localObject1, paramBoolean);
+        }
+        while (BaseChatItemLayout.a != null)
+        {
+          BaseChatItemLayout.a.a((ChatMessage)localObject1, paramCompoundButton, paramBoolean);
+          return;
+          if ((localObject1 instanceof MessageForFile))
+          {
+            localObject2 = apue.a(BaseActivity.sTopActivity.app, (MessageForFile)localObject1);
+            if ((((FileManagerEntity)localObject2).getCloudType() == 1) && (((FileManagerEntity)localObject2).status == 2))
+            {
+              localObject1 = paramCompoundButton.getContext().getString(2131692681);
+              bcpw.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
+              paramCompoundButton.setChecked(false);
+              return;
+            }
+          }
+          if ((localObject1 instanceof MessageForTroopFile))
+          {
+            localObject2 = (MessageForTroopFile)localObject1;
+            localObject2 = bakj.a(BaseActivity.sTopActivity.app, (MessageForTroopFile)localObject2);
+            if ((localObject2 != null) && ((((azqt)localObject2).b == 0) || (((azqt)localObject2).b == 1) || (((azqt)localObject2).b == 2) || (((azqt)localObject2).b == 3) || (((azqt)localObject2).b == 4)))
+            {
+              localObject1 = paramCompoundButton.getContext().getString(2131692681);
+              bcpw.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
+              paramCompoundButton.setChecked(false);
+              return;
+            }
+          }
+          int i = asty.a().a();
+          if (asty.a().a((ChatMessage)localObject1, i))
+          {
+            if (asty.a().a == 7) {}
+            for (localObject1 = paramCompoundButton.getContext().getString(2131698472, new Object[] { Integer.valueOf(i) });; localObject1 = paramCompoundButton.getContext().getString(2131698471, new Object[] { Integer.valueOf(i) }))
+            {
+              bcpw.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
+              paramCompoundButton.setChecked(false);
+              return;
+            }
+          }
+          asty.a().a((ChatMessage)localObject1, paramBoolean);
+        }
+      }
+    }
   }
 }
 

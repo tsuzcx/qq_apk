@@ -1,34 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
-public class aaag
-  implements View.OnClickListener
+public final class aaag
+  extends RecyclablePool.Recyclable
 {
-  public aaag(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public long a;
+  public String a;
+  public long[] a;
+  public long b;
+  public long c;
   
-  public void onClick(View paramView)
+  public aaag()
   {
-    boolean bool = false;
-    awqx.b(this.a.app, "CliOper", "", "", "0X8007144", "0X8007144", 0, 0, "", "", "", "");
-    paramView = (axat)this.a.app.getManager(61);
-    if ((paramView != null) && (paramView.a() >= 2)) {}
-    for (;;)
+    this.jdField_a_of_type_ArrayOfLong = new long[6];
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfLong.length)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "click top right manage btn underTwo = " + bool);
-      }
-      AssociatedAccountActivity.a(this.a, bool);
-      return;
-      bool = true;
+      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
+      i += 1;
     }
+    this.c = 0L;
+  }
+  
+  public void recycle()
+  {
+    super.recycle();
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaag
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,17 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import android.view.View.OnClickListener;
 
-public class pso
-  implements ptp
+class pso
+  implements View.OnClickListener
 {
-  public pso(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  pso(psi parampsi) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    ReadInJoyDeliverUGCActivity.a(this.a, paramInt);
+    paramView = this.a.jdField_a_of_type_Rap.a();
+    if (paramView != null) {
+      paramView.a(null, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
   }
 }
 

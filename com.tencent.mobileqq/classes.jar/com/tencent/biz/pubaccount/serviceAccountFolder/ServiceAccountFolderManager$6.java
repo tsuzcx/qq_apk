@@ -5,12 +5,12 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import rol;
+import sbc;
 
 public class ServiceAccountFolderManager$6
   implements Runnable
 {
-  public ServiceAccountFolderManager$6(rol paramrol, QQAppInterface paramQQAppInterface) {}
+  public ServiceAccountFolderManager$6(sbc paramsbc, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -18,10 +18,10 @@ public class ServiceAccountFolderManager$6
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_enter_time", rol.a(this.this$0));
+      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_enter_time", sbc.a(this.this$0));
       ((SharedPreferences.Editor)localObject).commit();
       if (QLog.isColorLevel()) {
-        QLog.d("ServiceAccountFolderManager", 2, "setFolderLastEnterTime->mFolderLastEnterTime:" + rol.a(this.this$0));
+        QLog.d("ServiceAccountFolderManager", 2, "setFolderLastEnterTime->mFolderLastEnterTime:" + sbc.a(this.this$0));
       }
     }
   }

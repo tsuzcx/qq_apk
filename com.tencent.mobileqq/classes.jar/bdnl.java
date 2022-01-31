@@ -1,106 +1,81 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bdnl
-  implements Cloneable
+class bdnl
+  extends Handler
 {
-  public static String c = "auto";
-  public static String d = "portrait";
-  public static String e = "landscape";
-  public int a;
-  public bdmy a;
-  public Boolean a;
-  public String a;
-  public int b;
-  public Boolean b;
-  public String b;
-  
-  public static bdnl a()
+  public bdnl(bdni parambdni, Looper paramLooper)
   {
-    bdnl localbdnl = new bdnl();
-    localbdnl.jdField_a_of_type_Bdmy = bdmy.a();
-    localbdnl.jdField_a_of_type_Int = bdyk.a("#ffffff");
-    localbdnl.jdField_a_of_type_JavaLangString = "dark";
-    localbdnl.jdField_a_of_type_JavaLangBoolean = null;
-    localbdnl.jdField_b_of_type_Int = 50;
-    localbdnl.jdField_b_of_type_JavaLangBoolean = null;
-    localbdnl.jdField_b_of_type_JavaLangString = null;
-    return localbdnl;
+    super(paramLooper);
   }
   
-  public void a(JSONObject paramJSONObject)
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject2 = null;
-    int i;
-    if (paramJSONObject != null)
+    String str1 = null;
+    bdht.b("PCPushProxy", "handleMessage msg.what = " + paramMessage.what + ", msg.obj = " + paramMessage.obj);
+    String str2;
+    bdnk localbdnk;
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_Bdmy.a(paramJSONObject);
-      localObject1 = paramJSONObject.optString("backgroundColor");
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label143;
+    default: 
+      str2 = (String)paramMessage.obj;
+      if (str2 != null)
+      {
+        localbdnk = (bdnk)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str2);
+        if (localbdnk == null) {
+          bdht.e("PCPushProxy", "handleMessage get entry = null, key = " + str2);
+        }
       }
-      i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("backgroundTextStyle", this.jdField_a_of_type_JavaLangString);
-      if (!paramJSONObject.has("enablePullDownRefresh")) {
-        break label151;
-      }
-      localObject1 = Boolean.valueOf(paramJSONObject.optBoolean("enablePullDownRefresh"));
-      label72:
-      this.jdField_a_of_type_JavaLangBoolean = ((Boolean)localObject1);
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("onReachBottomDistance", this.jdField_b_of_type_Int);
-      if (!paramJSONObject.has("disableScroll")) {
-        break label156;
-      }
-    }
-    label143:
-    label151:
-    label156:
-    for (Object localObject1 = Boolean.valueOf(paramJSONObject.optBoolean("disableScroll"));; localObject1 = null)
-    {
-      this.jdField_b_of_type_JavaLangBoolean = ((Boolean)localObject1);
-      localObject1 = localObject2;
-      if (paramJSONObject.has("pageOrientation")) {
-        localObject1 = paramJSONObject.optString("pageOrientation", d);
-      }
-      this.jdField_b_of_type_JavaLangString = ((String)localObject1);
-      return;
-      i = bdyk.a((String)localObject1);
       break;
-      localObject1 = null;
-      break label72;
     }
-  }
-  
-  public bdnl b()
-  {
-    try
+    do
     {
-      localbdnl = (bdnl)super.clone();
-      localThrowable1.printStackTrace();
-    }
-    catch (Throwable localThrowable1)
-    {
-      try
+      do
       {
-        localbdnl.jdField_a_of_type_Bdmy = this.jdField_a_of_type_Bdmy.b();
-        return localbdnl;
+        return;
+        bdjc.a("200", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
+        return;
+        bdjc.a("100", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
+        return;
+        if (localbdnk.jdField_b_of_type_Int != 1) {
+          str1 = localbdnk.jdField_b_of_type_JavaLangString.substring(localbdnk.jdField_b_of_type_JavaLangString.indexOf("#") + 1);
+        }
+        for (;;)
+        {
+          switch (paramMessage.what)
+          {
+          default: 
+            return;
+          case 1: 
+            this.a.jdField_a_of_type_Bdnh.a(this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+            return;
+            str1 = localbdnk.jdField_b_of_type_JavaLangString;
+            continue;
+            bdht.e("PCPushProxy", "handleMessage get key = null");
+            localbdnk = null;
+          }
+        }
+      } while (localbdnk == null);
+      if (localbdnk.c.startsWith("ANDROIDQQ.PCPUSH.")) {
+        bdjc.a("100", localbdnk.c, str1);
       }
-      catch (Throwable localThrowable2)
+      for (;;)
       {
-        bdnl localbdnl;
-        break label24;
+        this.a.jdField_a_of_type_Bdnh.a(localbdnk);
+        return;
+        bdjc.a("100", "ANDROIDQQ.PCPUSH." + localbdnk.c, str1);
       }
-      localThrowable1 = localThrowable1;
-      localbdnl = null;
-    }
-    label24:
-    return localbdnl;
+      this.a.jdField_a_of_type_Bdnh.a(str2);
+      return;
+    } while (localbdnk == null);
+    bdjc.a("500", localbdnk.c, str1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdnl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,35 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import mqq.app.AppRuntime;
 
 public class odl
-  extends SimpleConfigHandler
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  private View a;
+  
+  public odl(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo)
   {
-    boolean bool = super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    paramString = Aladdin.getConfig(paramInt1).getString("daily_header_proteus_bid", "0");
-    bgmq.a("daily_header_proteus_bid", paramString);
-    QLog.i("DailyDynamicHeaderConfig", 2, "update bid=" + paramString);
-    return bool;
+    if (onk.a() != null)
+    {
+      paramArkAppMessage = onk.a().getApplication();
+      if (paramArkAppMessage != null) {}
+    }
+    else
+    {
+      return;
+    }
+    this.a = new View(paramArkAppMessage);
+    this.a.setVisibility(8);
   }
+  
+  public View a()
+  {
+    return this.a;
+  }
+  
+  public void a() {}
+  
+  public void a(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo) {}
 }
 
 

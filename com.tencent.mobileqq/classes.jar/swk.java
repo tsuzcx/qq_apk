@@ -1,39 +1,51 @@
-public abstract class swk
+import android.annotation.TargetApi;
+import android.os.SystemClock;
+
+@TargetApi(14)
+public class swk
+  extends wad
 {
-  protected int a;
-  protected swi a;
+  private int jdField_a_of_type_Int = 941000;
+  private long jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  private String jdField_a_of_type_JavaLangString;
+  private swm jdField_a_of_type_Swm;
+  private String b;
   
-  public abstract void a();
-  
-  public void a(swi paramswi)
+  public swk(String paramString1, String paramString2, swm paramswm)
   {
-    this.jdField_a_of_type_Swi = paramswi;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Swm = paramswm;
   }
   
-  public boolean a()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Int < 1)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onFailure(String paramString)
+  {
+    if (paramString.equals(String.valueOf(941001))) {
+      this.jdField_a_of_type_Swm.a(941001, paramString, "");
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_Int += 1;
-      urk.d("Q.qqstory.net:BatchNetHandler", String.format("retry request , retry count = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-      a();
-      return true;
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Swi != null) {
-      this.jdField_a_of_type_Swi.a(this);
+      veg.d(swf.jdField_a_of_type_JavaLangString, "combine audio fail %s, %d", new Object[] { paramString, Integer.valueOf(this.jdField_a_of_type_Int) });
+      vyi.g(this.jdField_a_of_type_JavaLangString);
+      return;
+      if (paramString.equals(String.valueOf(941002))) {
+        this.jdField_a_of_type_Swm.a(941002, paramString, "");
+      } else {
+        this.jdField_a_of_type_Swm.a(this.jdField_a_of_type_Int, paramString, "");
+      }
     }
   }
   
-  public void c()
+  public void onSuccess(String paramString)
   {
-    if (this.jdField_a_of_type_Swi != null) {
-      this.jdField_a_of_type_Swi.b(this);
-    }
+    veg.a(swf.jdField_a_of_type_JavaLangString, "combine music success take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_Swm.a(0, "", this.b);
+    vyi.g(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,7 +1,13 @@
-public class bihv
-  implements bjhx
+import com.tencent.ttpic.video.AECoderFactory.AEEncoderFactory;
+import com.tencent.ttpic.video.AEEncoder;
+
+final class bihv
+  implements AECoderFactory.AEEncoderFactory
 {
-  bihv(bihu parambihu) {}
+  public AEEncoder createEncoder(String paramString, int paramInt1, int paramInt2)
+  {
+    return new avxf(paramString, paramInt1, paramInt2);
+  }
 }
 
 

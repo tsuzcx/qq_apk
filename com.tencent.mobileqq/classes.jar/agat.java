@@ -1,19 +1,16 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class agat
-  implements begw
+public class agat
+  implements View.OnClickListener
 {
-  agat(agas paramagas, begr parambegr) {}
+  public agat(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt != this.jdField_a_of_type_Agas.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      this.jdField_a_of_type_Agas.a(paramInt);
-      this.jdField_a_of_type_Agas.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.a();
-    }
-    this.jdField_a_of_type_Begr.dismiss();
+    this.a.getActivity().finish();
   }
 }
 

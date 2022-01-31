@@ -1,15 +1,59 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AlphaClickableRelativeLayout;
+import com.tencent.widget.XListView;
 
-class afrx
-  implements Comparator<afss>
+public class afrx
+  extends afpz
 {
-  afrx(afrw paramafrw) {}
+  protected afry a;
+  protected FrameLayout a;
+  protected ImageView a;
+  protected TextView a;
+  protected QQAppInterface a;
+  protected AlphaClickableRelativeLayout a;
+  protected XListView a;
   
-  public int a(afss paramafss1, afss paramafss2)
+  public afrx(Activity paramActivity)
   {
-    return (int)(paramafss2.a.time - paramafss1.a.time);
+    super(paramActivity);
+    if ((paramActivity instanceof SplashActivity)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((SplashActivity)paramActivity).app;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("CTEntryController", 2, "CTEntryController create");
+    }
   }
+  
+  public void a(afry paramafry)
+  {
+    this.jdField_a_of_type_Afry = paramafry;
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131376267));
+    this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout = ((AlphaClickableRelativeLayout)paramView.findViewById(2131374959));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374965));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramView.findViewById(2131369841));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362125));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(new ColorDrawable(0));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setNeedCheckSpringback(false);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
+    this.jdField_a_of_type_ComTencentWidgetXListView.mForContacts = true;
+  }
+  
+  public void c(boolean paramBoolean) {}
 }
 
 

@@ -1,37 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class baut
-  implements DownloadParams.DecodeHandler
+class baut
+  implements FilenameFilter
 {
-  private int a;
-  private int b;
+  baut(baus parambaus, String paramString) {}
   
-  @Deprecated
-  public baut() {}
-  
-  public baut(int paramInt1, int paramInt2)
+  public boolean accept(File paramFile, String paramString)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  @Deprecated
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    return bahl.a(paramBitmap, this.a, this.b);
-  }
-  
-  public String toString()
-  {
-    return "NinePatchDecoderHandler{reqW=" + this.a + ", reqH=" + this.b + '}';
+    return paramString.startsWith(this.jdField_a_of_type_JavaLangString);
   }
 }
 

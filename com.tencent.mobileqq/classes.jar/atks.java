@@ -1,30 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class atks
-  implements View.OnClickListener
+class atks
+  implements atla
 {
-  public atks(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  atks(atkm paramatkm, VideoData paramVideoData) {}
   
-  public void onClick(View paramView)
+  public boolean a(atkx paramatkx, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    atlh.a(AutoReplyEditActivity.a(this.a), false);
-    String str = String.valueOf(AutoReplyEditActivity.a(this.a).getText());
-    if (AutoReplyEditActivity.a(this.a) != null) {}
-    for (paramView = AutoReplyEditActivity.a(this.a).getRawText(); !str.equals(paramView); paramView = "")
-    {
-      AutoReplyEditActivity.a(this.a);
-      return;
+    if (this.jdField_a_of_type_Atkm.a != null) {
+      this.jdField_a_of_type_Atkm.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, paramInt1, paramInt2, "use sdk play error");
     }
-    AutoReplyEditActivity.a(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atks
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,20 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.data.OpenID;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import mqq.app.QQPermissionCallback;
 
-class azfa
-  extends mps
+public class azfa
+  implements QQPermissionCallback
 {
-  azfa(azez paramazez) {}
+  public azfa(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((azez.a(this.a) == null) || (azez.a(this.a) == null) || (azez.a(this.a) == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((azez.a(this.a).isFinishing()) || (azez.a(this.a)));
-      azez.a(this.a).d();
-      if (azez.a(this.a) != null) {
-        azez.a(this.a).removeCallbacksAndMessages(null);
-      }
-    } while ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null) || (paramOpenID.openID.equals(azez.a(this.a))));
-    azez.a(this.a).b();
+    bbcv.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 

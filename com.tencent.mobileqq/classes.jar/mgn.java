@@ -1,16 +1,34 @@
-import android.content.DialogInterface;
+import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class mgn
-  implements DialogInterface.OnClickListener
+public class mgn
+  extends bbgg
 {
-  mgn(mgm parammgm) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public mgn(Context paramContext, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    ((aqkz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(236)).a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_JavaLangString, "4", "openRoom");
+    super(paramContext, paramInt);
+  }
+  
+  public static bbgg a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  {
+    paramContext = new mgn(paramContext, 2131755791);
+    paramContext.setContentView(2131558906);
+    paramContext.setTitle(paramString1);
+    paramContext.setMessage(paramString2);
+    paramContext.setNegativeButton(paramInt2, paramOnClickListener2);
+    paramContext.setPositiveButton(paramInt3, paramOnClickListener1);
+    paramContext.setCanceledOnTouchOutside(false);
+    return paramContext;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    QLog.w("MultiVideoEnterPageActivity", 1, "onWindowFocusChanged, hasFocus[" + paramBoolean + "]");
+    if (!paramBoolean) {
+      dismiss();
+    }
   }
 }
 

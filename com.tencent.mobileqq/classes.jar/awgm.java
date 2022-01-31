@@ -1,47 +1,99 @@
-import android.media.Image;
-import android.media.Image.Plane;
-import android.media.ImageReader;
-import android.media.ImageReader.OnImageAvailableListener;
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
-import java.nio.ByteBuffer;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.pic.PicShareToWX;
+import com.tencent.mobileqq.screendetect.ScreenShotFragment;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
 public class awgm
-  implements ImageReader.OnImageAvailableListener
+  implements bfpc
 {
-  public awgm(Camera2Control paramCamera2Control) {}
+  public awgm(ScreenShotFragment paramScreenShotFragment) {}
   
-  public void onImageAvailable(ImageReader paramImageReader)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    try
-    {
-      awgx.a(1, "[Camera2]Image Capture cost:" + (float)(System.currentTimeMillis() - Camera2Control.a(this.a)) / 1000.0F);
-      awgw.a(2, Camera2Control.a(this.a).a * Camera2Control.a(this.a).b, System.currentTimeMillis() - Camera2Control.a(this.a));
-      paramImageReader = paramImageReader.acquireNextImage();
-      if (paramImageReader != null)
-      {
-        ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
-        byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
-        localByteBuffer.get(arrayOfByte);
-        if ((Camera2Control.a(this.a) != null) && (Camera2Control.a(this.a) != null))
-        {
-          Camera2Control.a(this.a).a = Camera2Control.a(this.a).a;
-          Camera2Control.a(this.a).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.a)));
-        }
-        paramImageReader.close();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotFragment", 2, "OnItemClickListener : position = " + paramInt + ", view = " + paramView + ", id = " + paramLong);
+    }
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null) {
       return;
     }
-    catch (Exception paramImageReader)
+    int i = ((awgp)paramAdapterView).a.c;
+    paramAdapterView = null;
+    switch (i)
     {
-      awgx.a(1, "[Camera2] onImageAvailable mImageReader exception:" + paramImageReader);
+    default: 
+      if ((ScreenShotFragment.a(this.a)) && (paramAdapterView != null)) {
+        awgq.a("0X800A9A9", paramAdapterView, "1");
+      }
+      if ((i != 9) && (i != 10)) {
+        break label300;
+      }
+      paramInt = -1;
+      if (!WXShareHelper.a().a()) {
+        paramInt = 2131720906;
+      }
+      break;
     }
+    for (;;)
+    {
+      if (paramInt == -1) {
+        break label300;
+      }
+      bcpw.a(this.a.getActivity(), this.a.getActivity().getString(paramInt), 0).b(this.a.getActivity().getResources().getDimensionPixelSize(2131298865));
+      return;
+      awgq.a("0X8009FF0", 0);
+      paramAdapterView = "1";
+      break;
+      awgq.a("0X8009FF1", 0);
+      paramAdapterView = "2";
+      break;
+      awgq.a("0X8009FF2", 0);
+      paramAdapterView = "3";
+      break;
+      awgq.a("0X8009FF3", 0);
+      paramAdapterView = "4";
+      break;
+      awgq.a("0X800A77D", 0);
+      paramAdapterView = "5";
+      break;
+      if (!WXShareHelper.a().b()) {
+        paramInt = 2131720907;
+      }
+    }
+    switch (i)
+    {
+    default: 
+      return;
+    case 2: 
+      ScreenShotFragment.a(this.a.getActivity(), ScreenShotFragment.a(this.a));
+      return;
+    case 3: 
+      ScreenShotFragment.a(this.a, this.a.getActivity(), ScreenShotFragment.a(this.a));
+      return;
+    case 9: 
+      if ((PicShareToWX.a().a()) && (PicShareToWX.a().a(ScreenShotFragment.a(this.a))))
+      {
+        PicShareToWX.a().a(this.a.getActivity(), ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a), 3);
+        axqw.b(null, "dc00898", "", "", "0X800A505", "0X800A505", 0, 0, "", "", "", "");
+        return;
+      }
+      ScreenShotFragment.a(this.a, ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a));
+      return;
+    case 10: 
+      label300:
+      ScreenShotFragment.b(this.a, ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a));
+      return;
+    }
+    ScreenShotFragment.a(this.a, ScreenShotFragment.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     awgm
  * JD-Core Version:    0.7.0.1
  */

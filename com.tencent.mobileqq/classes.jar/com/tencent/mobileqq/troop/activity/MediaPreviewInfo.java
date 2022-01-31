@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.activity;
 
-import alkc;
+import alyq;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aydp;
+import azdz;
 import org.json.JSONObject;
 
 public class MediaPreviewInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<MediaPreviewInfo> CREATOR = new aydp();
+  public static final Parcelable.Creator<MediaPreviewInfo> CREATOR = new azdz();
   public int a;
   public String a;
   public String b;
@@ -29,7 +29,7 @@ public class MediaPreviewInfo
       this.jdField_a_of_type_Int = paramJSONObject.optInt("type", -1);
       this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("image");
       this.b = paramJSONObject.optString("video");
-      this.c = alkc.b(this.b);
+      this.c = alyq.b(this.b);
     }
   }
   

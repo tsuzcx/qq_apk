@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import abgl;
-import abgm;
+import abql;
+import abqm;
 import android.content.Intent;
 import android.os.Bundle;
-import babr;
-import bafb;
+import bbcv;
+import bbgg;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class OverloadTipsActivity
   extends BaseActivity
 {
-  private bafb a;
+  private bbgg a;
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131493776);
+    super.setContentView(2131559347);
     if ((getIntent() != null) && (getIntent().getExtras() != null)) {}
     for (paramBundle = getIntent().getExtras().getString("msg");; paramBundle = null)
     {
@@ -29,11 +29,11 @@ public class OverloadTipsActivity
         this.a.dismiss();
       }
       this.a = null;
-      this.a = babr.a(this, 230);
-      this.a.setContentView(2131493323);
-      this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131629260, new abgl(this));
+      this.a = bbcv.a(this, 230);
+      this.a.setContentView(2131558883);
+      this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131694937, new abql(this));
       this.a.setTextContentDescription(paramBundle);
-      this.a.setOnKeyListener(new abgm(this));
+      this.a.setOnKeyListener(new abqm(this));
       this.a.show();
       return false;
     }

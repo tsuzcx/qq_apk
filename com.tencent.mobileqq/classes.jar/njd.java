@@ -1,104 +1,64 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.image.URLDrawable.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
-public class njd
+class njd
+  implements URLDrawable.DownloadListener
 {
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TemplateBean jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean;
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new VafContext();
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private rdg jdField_a_of_type_Rdg;
+  njd(njc paramnjc) {}
   
-  public njd(Activity paramActivity, FrameLayout paramFrameLayout)
+  public void onFileDownloadFailed(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramActivity);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(paramActivity);
-    this.jdField_a_of_type_Rdg = rdg.a("default_feeds", true);
-    oag.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "default_feeds");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setTemplateFactory(this.jdField_a_of_type_Rdg);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
-    a();
-  }
-  
-  private void a()
-  {
-    try
+    synchronized ()
     {
-      String str = (String)bgmq.a("readinjoy_follow_subscribed_list_data_key", "");
-      if (!TextUtils.isEmpty(str)) {
-        a(new JSONObject(str));
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if ((paramJSONObject == null) || (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)) {
-      return;
-    }
-    for (;;)
-    {
-      try
+      String str = (String)njc.a(this.a).get(0);
+      njc.a(this.a).remove(0);
+      if (njc.b(this.a) != null)
       {
-        if (this.jdField_a_of_type_Rdg != null)
-        {
-          localTemplateBean = this.jdField_a_of_type_Rdg.getTemplateBean(paramJSONObject);
-          if (localTemplateBean == null)
-          {
-            QLog.d("SubscribedListHeaderController", 1, "templateBean is null");
-            return;
-          }
-          if (this.jdField_a_of_type_OrgJsonJSONObject == null)
-          {
-            Container localContainer = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localTemplateBean);
-            if (localContainer == null) {
-              break;
-            }
-            localContainer.setBackgroundResource(2130841186);
-            this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localContainer, -1, -1);
-            this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = localContainer;
-          }
-          oag.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localTemplateBean);
-          ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new nje(this, localTemplateBean));
-          oag.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, localTemplateBean);
-          this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = localTemplateBean;
-          oag.a(localTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), "expose_T");
-          QLog.d("SubscribedListHeaderController", 1, "update subscribed list data : " + this.jdField_a_of_type_OrgJsonJSONObject);
-          return;
+        if (!njc.b(this.a).contains(str)) {
+          break label119;
+        }
+        njc.b(this.a).remove(str);
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(delete) url:" + str);
         }
       }
-      catch (JSONException paramJSONObject)
+      label119:
+      do
       {
+        njc.a(this.a, null);
+        njc.a(this.a);
         return;
-      }
-      TemplateBean localTemplateBean = null;
+        njc.a(this.a).add(str);
+        njc.b(this.a).add(str);
+      } while (!QLog.isColorLevel());
+      QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(retry) url:" + str);
     }
   }
   
-  public boolean a()
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
   {
-    return this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() == 0;
+    synchronized ()
+    {
+      String str = (String)njc.a(this.a).get(0);
+      njc.a(this.a).remove(0);
+      if ((njc.b(this.a) != null) && (njc.b(this.a).contains(str))) {
+        njc.b(this.a).remove(str);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadSucceed url:" + str);
+      }
+      njc.a(this.a, null);
+      njc.a(this.a);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     njd
  * JD-Core Version:    0.7.0.1
  */

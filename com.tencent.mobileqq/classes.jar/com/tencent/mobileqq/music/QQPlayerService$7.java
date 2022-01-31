@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.music;
 
-import arzq;
+import asvu;
 
 class QQPlayerService$7
   implements Runnable
 {
-  QQPlayerService$7(QQPlayerService paramQQPlayerService, arzq paramarzq, int paramInt) {}
+  QQPlayerService$7(QQPlayerService paramQQPlayerService, asvu paramasvu, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Arzq.onPlayStateChanged(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Asvu.onPlayStateChanged(this.jdField_a_of_type_Int);
   }
 }
 

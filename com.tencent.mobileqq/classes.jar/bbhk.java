@@ -1,66 +1,100 @@
-import android.graphics.Rect;
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.text.method.MovementMethod;
-import android.text.method.Touch;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiBaseInfo;
 
-public class bbhk
-  extends LinkMovementMethod
+class bbhk
+  implements anyb
 {
-  private static bbhk a;
+  bbhk(bbhb parambbhb) {}
   
-  public static MovementMethod a()
+  public void a(anyc paramanyc)
   {
-    if (a == null) {
-      a = new bbhk();
+    int i;
+    int j;
+    if ((paramanyc instanceof aocr))
+    {
+      i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
+      j = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
+      if ((i < 0) || (j < 0) || (j < i)) {}
     }
-    return a;
+    aocp localaocp;
+    int k;
+    int m;
+    do
+    {
+      this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, ayla.c(((aocr)paramanyc).a));
+      do
+      {
+        return;
+      } while (!(paramanyc instanceof aocp));
+      localaocp = (aocp)paramanyc;
+      i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
+      j = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
+      k = localaocp.a;
+      m = localaocp.b;
+      if ((i < 0) || (j < 0) || (j < i)) {
+        break;
+      }
+    } while ((k == 2) && (m == -1));
+    if (k == 1) {}
+    for (paramanyc = ayla.c(m);; paramanyc = ayla.a(m))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, paramanyc);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+      if (this.a.jdField_a_of_type_Boolean) {
+        localaocp.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
+      }
+      anwm.a().a(k).a(m, 5);
+      return;
+    }
   }
   
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  public void a(anyc paramanyc1, anyc paramanyc2, Drawable paramDrawable) {}
+  
+  public boolean a(anyc paramanyc)
   {
-    int i = paramMotionEvent.getAction();
-    if ((i == 1) || (i == 0))
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart() == 0) {}
+    for (;;)
     {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramTextView.getTotalPaddingLeft();
-      int n = paramTextView.getTotalPaddingTop();
-      int i1 = paramTextView.getScrollX();
-      int i2 = paramTextView.getScrollY();
-      Object localObject = paramTextView.getLayout();
-      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
-      localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
-      if (localObject.length != 0)
+      return;
+      try
       {
-        if (i == 1) {
-          localObject[0].onClick(paramTextView);
-        }
-        for (;;)
+        Editable localEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText();
+        int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
+        int j = TextUtils.getOffsetBefore(this.a.jdField_a_of_type_AndroidWidgetEditText.getText(), i);
+        if (i != j)
         {
-          return true;
-          if (i == 0)
-          {
-            Rect localRect = new Rect();
-            paramTextView.getGlobalVisibleRect(localRect);
-            if (localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
-              Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
-            }
-          }
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
         }
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
-    return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
   }
+  
+  public void b(anyc paramanyc) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbhk
  * JD-Core Version:    0.7.0.1
  */

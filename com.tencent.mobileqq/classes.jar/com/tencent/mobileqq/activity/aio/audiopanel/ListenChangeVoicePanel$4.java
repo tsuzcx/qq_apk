@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import ajjj;
-import aucu;
+import ajxn;
+import avca;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -19,11 +19,11 @@ class ListenChangeVoicePanel$4
     if ((ListenChangeVoicePanel.a(this.this$0).get() == null) || (this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
       return;
     }
-    Object localObject = (ajjj)((QQAppInterface)ListenChangeVoicePanel.a(this.this$0).get()).getManager(51);
+    Object localObject = (ajxn)((QQAppInterface)ListenChangeVoicePanel.a(this.this$0).get()).getManager(51);
     int i;
     if (!((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).r())
     {
-      localObject = ((ajjj)localObject).a(((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_JavaLangString, ((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_Int, true);
+      localObject = ((ajxn)localObject).a(((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_JavaLangString, ((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_Int, true);
       if (localObject == null) {
         break label199;
       }
@@ -36,12 +36,12 @@ class ListenChangeVoicePanel$4
         ListenChangeVoicePanel.a(this.this$0, i);
         ListenChangeVoicePanel.a(this.this$0)[i] = 1;
       }
-      if (ListenChangeVoicePanel.jdField_a_of_type_Aucu != null) {
+      if (ListenChangeVoicePanel.jdField_a_of_type_Avca != null) {
         break;
       }
-      ListenChangeVoicePanel.jdField_a_of_type_Aucu = new aucu();
+      ListenChangeVoicePanel.jdField_a_of_type_Avca = new avca();
       return;
-      localObject = ((ajjj)localObject).a(((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_JavaLangString, true);
+      localObject = ((ajxn)localObject).a(((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_JavaLangString, true);
       if (localObject != null) {
         i = ((ExtensionInfo)localObject).pttChangeVoiceType;
       } else {

@@ -1,19 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-public final class aafb
-  implements DialogInterface.OnClickListener
+public class aafb
+  implements View.OnClickListener
 {
-  public aafb(aagm paramaagm) {}
+  public aafb(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a != null) {
-      this.a.a();
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
     }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    axqw.b(this.a.app, "CliOper", "", "", "0X800433B", "0X800433B", 0, 0, "", "", "", "");
   }
 }
 

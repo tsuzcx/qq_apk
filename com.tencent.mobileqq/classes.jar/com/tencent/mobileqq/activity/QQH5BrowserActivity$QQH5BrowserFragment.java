@@ -10,13 +10,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bazb;
-import bbcj;
+import bcbv;
+import bcfj;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
-import mjg;
+import muf;
 
 public class QQH5BrowserActivity$QQH5BrowserFragment
   extends WebViewFragment
@@ -25,44 +25,44 @@ public class QQH5BrowserActivity$QQH5BrowserFragment
   {
     super.getActivity().getWindow().setFlags(1024, 1024);
     this.jdField_a_of_type_ComTencentBizUiTouchWebView.setVerticalScrollBarEnabled(false);
-    this.jdField_a_of_type_Bbcj.a.setVisibility(8);
-    if ((this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams() instanceof RelativeLayout.LayoutParams))
+    this.jdField_a_of_type_Bcfj.a.setVisibility(8);
+    if ((this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams() instanceof RelativeLayout.LayoutParams))
     {
-      paramBundle = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-      paramBundle.height = ((int)mjg.a(BaseApplicationImpl.getApplication(), 60.0F));
-      this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramBundle);
+      paramBundle = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+      paramBundle.height = ((int)muf.a(BaseApplicationImpl.getApplication(), 60.0F));
+      this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramBundle);
     }
-    this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidViewViewGroup.setPadding(0, 0, 0, 0);
-    int i = (int)mjg.a(BaseApplicationImpl.getApplication(), 12.0F);
+    this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidViewViewGroup.setPadding(0, 0, 0, 0);
+    int i = (int)muf.a(BaseApplicationImpl.getApplication(), 12.0F);
     paramBundle = new RelativeLayout.LayoutParams(-2, -2);
-    paramBundle.width = ((int)mjg.a(BaseApplicationImpl.getApplication(), 15.0F));
-    paramBundle.height = ((int)mjg.a(BaseApplicationImpl.getApplication(), 15.0F));
-    this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramBundle);
-    this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846691);
-    this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    paramBundle = this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetTextView.getParent();
+    paramBundle.width = ((int)muf.a(BaseApplicationImpl.getApplication(), 15.0F));
+    paramBundle.height = ((int)muf.a(BaseApplicationImpl.getApplication(), 15.0F));
+    this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramBundle);
+    this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846879);
+    this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    paramBundle = this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetTextView.getParent();
     if ((paramBundle instanceof RelativeLayout))
     {
       ((RelativeLayout)paramBundle).setPadding(0, 0, 0, 0);
       paramBundle.requestLayout();
     }
-    paramBundle = super.getActivity().findViewById(2131309693);
+    paramBundle = super.getActivity().findViewById(2131375448);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(9);
     localLayoutParams.setMargins(i, i, 0, 0);
     paramBundle.setLayoutParams(localLayoutParams);
-    paramBundle = this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    paramBundle.width = ((int)mjg.a(BaseApplicationImpl.getApplication(), 22.0F));
-    paramBundle.height = ((int)mjg.a(BaseApplicationImpl.getApplication(), 15.0F));
-    this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramBundle);
-    this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847264);
-    paramBundle = this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.getParent();
+    paramBundle = this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramBundle.width = ((int)muf.a(BaseApplicationImpl.getApplication(), 22.0F));
+    paramBundle.height = ((int)muf.a(BaseApplicationImpl.getApplication(), 15.0F));
+    this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramBundle);
+    this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847478);
+    paramBundle = this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.getParent();
     if ((paramBundle instanceof RelativeLayout))
     {
       ((RelativeLayout)paramBundle).setPadding(0, 0, 0, 0);
       paramBundle.requestLayout();
     }
-    paramBundle = super.getActivity().findViewById(2131309694);
+    paramBundle = super.getActivity().findViewById(2131375449);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(11);
     localLayoutParams.setMargins(0, i, i, 0);

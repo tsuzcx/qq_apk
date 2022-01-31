@@ -1,30 +1,19 @@
-import java.util.Comparator;
+import android.content.Context;
+import android.view.View;
 
-final class ytd
-  implements Comparator<ytb>
+public abstract interface ytd
 {
-  public int a(ytb paramytb1, ytb paramytb2)
-  {
-    if ((paramytb1 == null) && (paramytb2 == null)) {}
-    do
-    {
-      return 0;
-      if ((paramytb1 == null) && (paramytb2 != null)) {
-        return 1;
-      }
-      if ((paramytb1 != null) && (paramytb2 == null)) {
-        return -1;
-      }
-      if (paramytb1.a() > paramytb2.a()) {
-        return -1;
-      }
-    } while (paramytb1.a() >= paramytb2.a());
-    return 1;
-  }
+  public abstract View a();
+  
+  public abstract void a(Context paramContext);
+  
+  public abstract void b(Context paramContext);
+  
+  public abstract void c(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ytd
  * JD-Core Version:    0.7.0.1
  */

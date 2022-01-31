@@ -1006,6 +1006,11 @@ public class MsfCore
     }
   }
   
+  public void updateBatteryStatus(ToServiceMsg paramToServiceMsg)
+  {
+    this.pushManager.a(paramToServiceMsg);
+  }
+  
   public void verifyPasswd(ToServiceMsg paramToServiceMsg)
   {
     this.wtLoginCenter.c(paramToServiceMsg);

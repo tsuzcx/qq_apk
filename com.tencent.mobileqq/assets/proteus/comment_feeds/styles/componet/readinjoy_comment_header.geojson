@@ -3,7 +3,7 @@
     "layout_type": "layout_relative",
     "default_visible": "YES",
     "view_id": "id_comment_cell_header",
-    "margin_top":"4",
+    "margin_top":"12",
     "height": {
         "type": "wrap_content"
     },
@@ -17,7 +17,6 @@
             "layout_type": "layout_relative",
             "default_visible": "YES",
             "view_id": "id_comment_header_component",
-            "margin_top": "8",
             "margin_left": "13",
             "height": {
                 "type": "wrap_content"
@@ -81,7 +80,7 @@
                 }
             ]
         },
-
+        
         {
             "view_type": "QQRIJCommentLikeButton",
             "view_id": "id_like_button",
@@ -89,7 +88,6 @@
             "event_type": "cmd_like_click",
             "align_parent_right": "YES",
             "margin_right": "16",
-            "margin_top": "8",
             "height": {
                 "type": "relative",
                 "value": "18"
@@ -107,7 +105,7 @@
             "visible_depend_on_children": "YES",
             "view_id": "id_comment_describe_and_comment_container",
             "direction": "vertical",
-            "margin_left": "64",
+            "margin_left": "65",
             "height": {
                 "type": "wrap_content"
             },
@@ -119,7 +117,6 @@
                 "layout_type": "layout_linear",
                 "visible_depend_on_children": "YES",
                 "view_id": "id_comment_header_nickname_container",
-                "margin_top": "12",
                 "direction": "horizontal",
                 "height": {
                     "type": "wrap_content"
@@ -218,6 +215,7 @@
                         "setAttatchInfo:": "$header_family_jump_url"
                     }
                 }
+
                 ]
             },
             {

@@ -6,8 +6,8 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Build.VERSION;
 import android.text.TextUtils.TruncateAt;
 import android.widget.TextView;
-import yny;
-import ypk;
+import yxs;
+import yze;
 
 public class GdtButtonView
   extends TextView
@@ -22,7 +22,7 @@ public class GdtButtonView
   private void a(Context paramContext, GdtButtonData paramGdtButtonData)
   {
     if ((paramGdtButtonData == null) || (!paramGdtButtonData.isValid())) {
-      yny.d("GdtButtonView", "init error");
+      yxs.d("GdtButtonView", "init error");
     }
     do
     {
@@ -31,7 +31,7 @@ public class GdtButtonView
       setText(paramGdtButtonData.text.text);
       setSingleLine(true);
       setEllipsize(TextUtils.TruncateAt.END);
-      int i = ypk.a(2.0F, paramContext.getResources());
+      int i = yze.a(2.0F, paramContext.getResources());
       setPadding(i, 0, i, 0);
       setTextSize(0, paramGdtButtonData.text.size);
       setTextColor(paramGdtButtonData.text.color);

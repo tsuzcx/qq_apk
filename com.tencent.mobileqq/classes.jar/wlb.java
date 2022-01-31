@@ -1,38 +1,28 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.widget.PopupWindow;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.3.1;
+import com.tencent.qphone.base.util.QLog;
 
-class wlb
-  implements URLDrawableDownListener
+public class wlb
+  implements wki
 {
-  wlb(wku paramwku) {}
+  public wlb(DetailBaseAdapter.3.1 param1) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void a()
   {
-    this.a.a(false, "onLoadCancelled");
+    QLog.d(wkx.jdField_a_of_type_JavaLangString, 2, "showFollowTipView");
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void b()
   {
-    this.a.a(false, "onLoadFailed");
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    this.a.a(false, "onLoadInterrupted");
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.a.a(true, "onLoadSuccessed");
-    this.a.b = true;
+    QLog.d(wkx.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow followTipView");
+    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wlb
  * JD-Core Version:    0.7.0.1
  */

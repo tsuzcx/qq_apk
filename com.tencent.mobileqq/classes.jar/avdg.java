@@ -1,100 +1,168 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class avdg
-  extends bbkk
 {
-  public float a;
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private String jdField_a_of_type_JavaLangString;
+  public String a;
+  public HashMap<String, String> a = new HashMap();
   public boolean a;
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  public float b;
-  private int b;
-  private int c;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public avdg(Drawable paramDrawable1, int paramInt1, String paramString, int paramInt2, Drawable paramDrawable2, float paramFloat)
+  public static boolean a()
   {
-    super(paramDrawable1, paramInt1);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_ArrayOfFloat = new float[this.jdField_a_of_type_JavaLangString.length()];
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable2;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramFloat);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt2);
+    return false;
   }
   
-  public int a()
+  protected void a(bbds parambbds, QQAppInterface paramQQAppInterface, Context paramContext) {}
+  
+  protected void a(QQAppInterface paramQQAppInterface, Context paramContext) {}
+  
+  public boolean a(BaseActivity paramBaseActivity)
   {
-    getSize(this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt());
-    return this.b;
+    return a(paramBaseActivity, a());
   }
   
-  public int b()
+  public boolean a(BaseActivity paramBaseActivity, boolean paramBoolean)
   {
-    Rect localRect = getDrawable().getBounds();
-    Paint.FontMetricsInt localFontMetricsInt = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt();
-    int i = localRect.bottom;
-    int j = -localFontMetricsInt.top;
-    this.c = Math.max(i, localFontMetricsInt.bottom + j);
-    return this.c;
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt().top + paramInt4;; i = paramInt4)
+    if (paramBaseActivity == null)
     {
-      if ((this.b > 0) && (this.c > 0))
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, i, this.b, this.c + i);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      }
-      super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
-      float f = getDrawable().getBounds().right;
-      paramInt1 = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt().ascent;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (;;)
-      {
-        paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramFloat + f, paramInt4, this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-        paramInt4 -= paramInt1;
-      }
+      avdi.a(this.g, this.f, 100);
+      return false;
+    }
+    Intent localIntent;
+    if (paramBoolean) {
+      localIntent = new Intent(paramBaseActivity, SplashActivity.class);
+    }
+    for (;;)
+    {
+      localIntent.setFlags(67108864);
+      avdi.a(this, paramBoolean, localIntent);
+      QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant QAssistantConfigItem.Jump item_server = " + this.c + "|" + paramBaseActivity.getClass().toString());
+      paramBaseActivity.startActivity(localIntent);
+      return true;
+      localIntent = new Intent(paramBaseActivity, SplashActivity.class);
+      localIntent.putExtra("tab_index", MainFragment.b);
+      localIntent.putExtra("fragment_id", 1);
     }
   }
   
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  public boolean a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    paramCharSequence = getDrawable().getBounds();
-    this.jdField_a_of_type_AndroidGraphicsPaint.getTextWidths(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfFloat);
-    paramInt1 = paramCharSequence.right;
-    paramFontMetricsInt = this.jdField_a_of_type_ArrayOfFloat;
-    int i = paramFontMetricsInt.length;
-    paramInt2 = 0;
-    while (paramInt2 < i)
+    if ((paramQQAppInterface == null) || (paramContext == null))
     {
-      float f = paramFontMetricsInt[paramInt2];
-      paramInt1 = (int)(paramInt1 + f);
-      paramInt2 += 1;
+      avdi.a(this.g, this.f, 100);
+      return false;
     }
-    this.b = paramInt1;
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt2 = paramCharSequence.bottom;
-    i = -paramPaint.top;
-    this.c = Math.max(paramInt2, paramPaint.bottom + i);
-    return paramInt1;
+    QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant RealJump start");
+    a(paramQQAppInterface, paramContext);
+    if (!b(paramQQAppInterface, paramContext))
+    {
+      avdi.a(this.g, this.f, 3);
+      QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant checkIsSupportJump is false");
+      return false;
+    }
+    if ((bbjw.a(this.b)) && (bbjw.a(this.c)))
+    {
+      avdi.a(this.g, this.f, 100);
+      return false;
+    }
+    bbds localbbds2;
+    bbds localbbds1;
+    if (!bbjw.a(this.b))
+    {
+      localbbds2 = bbej.a(paramQQAppInterface, paramContext, this.b);
+      localbbds1 = localbbds2;
+      if (localbbds2 != null)
+      {
+        localbbds1 = localbbds2;
+        if (!bbjw.a(this.e))
+        {
+          localbbds1 = localbbds2;
+          if (!bbjw.a(this.e))
+          {
+            localbbds2.b(this.e);
+            localbbds1 = localbbds2;
+          }
+        }
+      }
+    }
+    while (localbbds1 == null)
+    {
+      avdi.a(this.g, this.f, 102);
+      return false;
+      localbbds2 = new bbds(paramQQAppInterface, paramContext);
+      localbbds2.b = this.c;
+      if ((!bbjw.a(this.d)) && (!bbjw.a(this.d))) {
+        localbbds2.c = this.d;
+      }
+      localbbds1 = localbbds2;
+      if (!this.a.isEmpty())
+      {
+        localbbds2.a(this.a);
+        localbbds1 = localbbds2;
+      }
+    }
+    QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant RealJump ready Jump server = " + this.c);
+    a(localbbds1, paramQQAppInterface, paramContext);
+    if (localbbds1.c()) {
+      avdi.a(this.g, this.f, 0);
+    }
+    for (;;)
+    {
+      return true;
+      avdi.a(this.g, this.f, 103);
+    }
+  }
+  
+  protected boolean b(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (this.f != null)
+    {
+      if (!this.f.equalsIgnoreCase("ecchat")) {
+        break label79;
+      }
+      int i = bbjn.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").getInt("sp_extend_friend_entry_add_friend", 0);
+      paramQQAppInterface = (aoep)paramQQAppInterface.getManager(264);
+      if ((i != 1) || (!paramQQAppInterface.b())) {
+        break label73;
+      }
+      bool1 = true;
+    }
+    label73:
+    label79:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return bool1;
+          bool1 = false;
+        }
+        bool1 = bool2;
+      } while (!this.f.equalsIgnoreCase("confessmsg"));
+      bool1 = bool2;
+    } while (((amno)paramQQAppInterface.getManager(269)).a() != null);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avdg
  * JD-Core Version:    0.7.0.1
  */

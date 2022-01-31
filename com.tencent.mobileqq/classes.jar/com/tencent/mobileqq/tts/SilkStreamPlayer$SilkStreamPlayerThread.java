@@ -3,12 +3,12 @@ package com.tencent.mobileqq.tts;
 import android.app.Application;
 import android.media.AudioTrack;
 import android.os.Handler;
-import aztb;
-import aztc;
-import aztd;
-import azth;
-import badq;
-import bahn;
+import bauf;
+import baug;
+import bauh;
+import baul;
+import bbev;
+import bbis;
 import com.tencent.commonsdk.util.MD5Coding;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -50,7 +50,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     if (!this.jdField_b_of_type_Boolean)
     {
       this.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_Int = bahn.a(paramInt);
+      this.jdField_a_of_type_Int = bbis.a(paramInt);
       this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
       this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
     }
@@ -121,7 +121,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
       {
         QLog.d("SilkStreamPlayer", 2, paramInputStream, new Object[0]);
         return;
-        int i = bahn.a(paramArrayOfByte);
+        int i = bbis.a(paramArrayOfByte);
         if ((i < 0) || (i > this.jdField_a_of_type_ArrayOfByte.length))
         {
           this.jdField_a_of_type_Boolean = false;
@@ -159,7 +159,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
   
   public void run()
   {
-    SilkStreamPlayer.a(this.this$0, azth.a().a(MD5Coding.encodeHexStr(SilkStreamPlayer.a(this.this$0))));
+    SilkStreamPlayer.a(this.this$0, baul.a().a(MD5Coding.encodeHexStr(SilkStreamPlayer.a(this.this$0))));
     int j;
     if (SilkStreamPlayer.a(this.this$0) != null) {
       j = 1;
@@ -173,18 +173,18 @@ class SilkStreamPlayer$SilkStreamPlayerThread
         this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper.a();
         this.jdField_a_of_type_Boolean = true;
         ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-        localaztb = new aztb(SilkStreamPlayer.a(this.this$0));
-        localaztc = new aztc(localByteArrayOutputStream);
+        localbauf = new bauf(SilkStreamPlayer.a(this.this$0));
+        localbaug = new baug(localByteArrayOutputStream);
         i = 1;
         if (this.jdField_a_of_type_Boolean)
         {
-          if (!badq.g(SilkStreamPlayer.a(this.this$0)))
+          if (!bbev.g(SilkStreamPlayer.a(this.this$0)))
           {
             this.jdField_a_of_type_Boolean = false;
             ThreadManagerV2.getUIHandlerV2().post(new SilkStreamPlayer.SilkStreamPlayerThread.2(this));
             i = 0;
             if ((j == 0) && (i != 0)) {
-              azth.a().a(SilkStreamPlayer.a(this.this$0), localByteArrayOutputStream);
+              baul.a().a(SilkStreamPlayer.a(this.this$0), localByteArrayOutputStream);
             }
             this.jdField_a_of_type_Boolean = false;
             if ((this.jdField_a_of_type_AndroidMediaAudioTrack == null) || (this.jdField_a_of_type_AndroidMediaAudioTrack.getState() == 0)) {}
@@ -198,7 +198,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
             if (this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper != null) {
               this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper.a();
             }
-            localaztb.close();
+            localbauf.close();
             if (SilkStreamPlayer.a(this.this$0).available() > 0) {
               SilkStreamPlayer.a(this.this$0).close();
             }
@@ -274,8 +274,8 @@ class SilkStreamPlayer$SilkStreamPlayerThread
       {
         for (;;)
         {
-          aztb localaztb;
-          aztc localaztc;
+          bauf localbauf;
+          baug localbaug;
           int i;
           if (QLog.isColorLevel())
           {
@@ -297,11 +297,11 @@ class SilkStreamPlayer$SilkStreamPlayerThread
                   SilkStreamPlayer.a(this.this$0).a();
                 }
                 localObject1 = localObject3;
-                arrayOfByte = localaztb.a();
+                arrayOfByte = localbauf.a();
                 if ((j == 0) && (arrayOfByte != null))
                 {
                   localObject1 = arrayOfByte;
-                  localaztc.b(arrayOfByte, 0, arrayOfByte.length);
+                  localbaug.b(arrayOfByte, 0, arrayOfByte.length);
                 }
                 localObject3 = arrayOfByte;
                 localObject1 = arrayOfByte;
@@ -322,7 +322,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
                 {
                   try
                   {
-                    localaztc.close();
+                    localbaug.close();
                     i = 1;
                   }
                   catch (Exception localException1)

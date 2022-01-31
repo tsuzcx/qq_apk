@@ -1,61 +1,147 @@
-import android.os.Bundle;
+import android.os.Build;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_like.FeedsLikeRsp;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.manager.Manager;
 
-class aspv
-  implements asmc
+public class aspv
+  implements Manager
 {
-  aspv(aspq paramaspq, VideoData paramVideoData) {}
+  private aspt jdField_a_of_type_Aspt;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Map<Integer, aspw> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public aspv(QQAppInterface paramQQAppInterface)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public int a(aspw paramaspw)
+  {
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+    try
     {
-      paramBundle = new oidb_0xada.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + aspq.a(this.jdField_a_of_type_Aspq));
-        }
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new ilive_feeds_like.FeedsLikeRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          this.jdField_a_of_type_Aspq.f(true);
-          this.jdField_a_of_type_Aspq.d(paramArrayOfByte.total.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Int = aspq.a(this.jdField_a_of_type_Aspq);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Boolean = true;
-          aspq.b(this.jdField_a_of_type_Aspq, false);
-          aspq.b(this.jdField_a_of_type_Aspq, false);
-          ((aszm)this.jdField_a_of_type_Aspq.a.getManager(263)).a(aspq.a(this.jdField_a_of_type_Aspq), paramArrayOfByte.total.get());
-          if (QLog.isColorLevel()) {
-            QLog.i("PlayOperationViewModel", 2, "total:   " + paramArrayOfByte.total.get() + ",ret:     " + paramArrayOfByte.ret.get());
-          }
-        }
-        return;
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramaspw);
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiAIOManager", 2, "addAioContext() called with: multiAioContext = [" + paramaspw + "], id = [" + i + "]");
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      return i;
+    }
+    finally {}
+  }
+  
+  public aspw a(int paramInt)
+  {
+    try
+    {
+      aspw localaspw = (aspw)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiAIOManager", 2, "removeAioContext() called with: id = [" + paramInt + "], multiAioContext = " + localaspw);
+      }
+      return localaspw;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+      while (localIterator.hasNext())
       {
-        QLog.w("PlayOperationViewModel", 1, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + aspq.a(this.jdField_a_of_type_Aspq) + "  e:" + paramArrayOfByte);
-        return;
+        aspw localaspw = (aspw)localIterator.next();
+        if (localaspw != null) {
+          localaspw.a();
+        }
+      }
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+    finally {}
+  }
+  
+  public void a(aspt paramaspt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAIOManager", 2, "onConfUpdate : " + paramaspt);
+    }
+    this.jdField_a_of_type_Aspt = paramaspt;
+  }
+  
+  public boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAIOManager", 2, "MultiAIOEntranceConfigData isConfigInited = " + this.b);
+    }
+    if (this.b) {
+      return this.jdField_a_of_type_Boolean;
+    }
+    this.b = true;
+    b();
+    if (!this.jdField_a_of_type_Aspt.a())
+    {
+      this.jdField_a_of_type_Boolean = false;
+      return false;
+    }
+    Object localObject = this.jdField_a_of_type_Aspt.a();
+    String str = (Build.MANUFACTURER + Build.MODEL).trim();
+    if ((localObject != null) && (((List)localObject).contains(str)))
+    {
+      this.jdField_a_of_type_Boolean = false;
+      return false;
+    }
+    localObject = this.jdField_a_of_type_Aspt.a();
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (axjp.b((String)localObject) <= 0))
+    {
+      this.jdField_a_of_type_Boolean = false;
+      return false;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    return true;
+  }
+  
+  public aspw b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAIOManager", 2, "getAioContext() called with: id = [" + paramInt + "]");
+    }
+    try
+    {
+      aspw localaspw = (aspw)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      return localaspw;
+    }
+    finally {}
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Aspt = ((aspt)ampm.a().a(478));
+    if (this.jdField_a_of_type_Aspt == null)
+    {
+      this.jdField_a_of_type_Aspt = new aspt();
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiAIOManager", 2, "MultiAIOEntranceConfigData =null, general new bean");
       }
     }
-    QLog.w("PlayOperationViewModel", 1, "errorCode:   " + paramInt + " isLiked=" + aspq.a(this.jdField_a_of_type_Aspq));
-    aspq.b(this.jdField_a_of_type_Aspq, false);
+  }
+  
+  public void onDestroy()
+  {
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aspv
  * JD-Core Version:    0.7.0.1
  */

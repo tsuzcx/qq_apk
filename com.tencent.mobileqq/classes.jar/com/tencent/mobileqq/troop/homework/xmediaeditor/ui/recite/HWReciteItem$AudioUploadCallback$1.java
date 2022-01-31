@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite;
 
-import azac;
-import azax;
-import azbw;
+import baau;
+import babp;
+import baco;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 
 public class HWReciteItem$AudioUploadCallback$1
   implements Runnable
 {
-  public HWReciteItem$AudioUploadCallback$1(azbw paramazbw) {}
+  public HWReciteItem$AudioUploadCallback$1(baco parambaco) {}
   
   public void run()
   {
-    HWReciteItem.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem.a.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_Azac.c), true);
+    HWReciteItem.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem.a.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_Baau.c), true);
   }
 }
 

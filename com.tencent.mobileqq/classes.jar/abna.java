@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.MainFragment;
 
-class abna
-  implements QQPermissionCallback
+public class abna
+  extends abni
 {
-  abna(abmz paramabmz) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public abna(MainFragment paramMainFragment)
   {
-    QLog.d("QQSettingRedesign", 1, "User requestPermissions denied...");
-    babr.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
+    super(null);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    QLog.d("QQSettingRedesign", 1, "User requestPermissions grant...");
-    this.a.a.g();
+    ajwm localajwm = this.a.b();
+    if ((localajwm instanceof ReadinjoyTabFrame)) {
+      ((ReadinjoyTabFrame)localajwm).k();
+    }
+    osj.a().l();
+    MainFragment.a(MainFragment.a(this.a), MainFragment.a(this.a));
+    super.onClick(paramView);
   }
 }
 

@@ -1,20 +1,25 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.qphone.base.util.QLog;
 
 class pny
-  extends pnc
+  implements pnq
 {
-  pny(pnn parampnn, AppInterface paramAppInterface) {}
+  pny(pnr parampnr) {}
   
-  public Drawable a()
+  public void a()
   {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_diandian_selected");
+    if (pnr.a(this.a) != null)
+    {
+      pnr.a(this.a).a();
+      return;
+    }
+    onk.a(pnr.c(this.a).getContext(), pnr.b(this.a));
+    QLog.d("RvPolymericContainer", 1, "mScrollJumpUrl : " + pnr.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pny
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atnz;
+import aukm;
+import aulx;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="subuin,trunkuin")
 public class SubAccountInfo
-  extends atmo
+  extends aukm
 {
   public static final int INIT = 0;
   public static final int LOSS_OF_LOCAL_IDENTITY = 2;
   public static final int NORMAL = 1;
   public static final int SERVER_ERROR = 3;
-  @atnz
+  @aulx
   public String A2;
   public byte[] cookie;
   public boolean hintIsNew;
   public boolean isTop;
   public byte isbind;
   public long lastCleanQZoneMessageTime;
-  @atnz
+  @aulx
   public CharSequence lastMsg;
-  @atnz
+  @aulx
   public String lastUin;
-  @atnz
+  @aulx
   public String lastUinNick;
   public long lasttime;
   public String serverErrorMsg;
@@ -34,11 +34,11 @@ public class SubAccountInfo
   public String subname;
   public String subuin;
   public String trunkuin;
-  @atnz
+  @aulx
   public int unNotifySender;
-  @atnz
+  @aulx
   public int unreadMsgNum;
-  @atnz
+  @aulx
   public int unreadSenderNum;
   
   public void cloneTo(SubAccountInfo paramSubAccountInfo)

@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class avrx
-  implements View.OnClickListener
+public class avrx
 {
-  avrx(avrw paramavrw, avnv paramavnv) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Avnv.b(paramView);
-  }
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  HashMap<String, avsa> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  ArrayList<avsb> b = new ArrayList();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avrx
  * JD-Core Version:    0.7.0.1
  */

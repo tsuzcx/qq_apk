@@ -1,251 +1,268 @@
-import android.graphics.BitmapFactory.Options;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
 
-final class apcn
-  implements apdl
+class apcn
+  extends apbi
 {
-  apcn(QQAppInterface paramQQAppInterface) {}
-  
-  public long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong, int paramInt3)
+  public apcn(apbe paramapbe)
   {
-    return a(paramString1, paramInt1, paramString2, paramInt2, paramString3, paramString4, paramString5, paramLong, paramInt3, 0L, 0);
+    super(paramapbe);
   }
   
-  public long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong1, int paramInt3, long paramLong2, int paramInt4)
+  protected String a()
   {
-    paramString5 = azih.a(this.a, Long.parseLong(paramString2));
-    if (paramString5 != null) {
-      paramString5.c(paramString3, paramString4, paramLong1, paramInt2);
-    }
-    String str = axwb.a("", 0L, 0, true);
-    long l1 = 0L;
-    try
-    {
-      long l2 = Long.parseLong(paramString2);
-      l1 = l2;
-      paramString5 = azih.a(this.a, l2).a(paramString3);
-      l1 = l2;
-    }
-    catch (Exception paramString5)
-    {
-      do
-      {
-        for (;;)
-        {
-          FileManagerEntity localFileManagerEntity;
-          paramString5 = null;
-          continue;
-          if (paramInt1 != 3000) {
-            break;
-          }
-          localFileManagerEntity.nOpType = 25;
-          if (QLog.isColorLevel()) {
-            QLog.i("FileManagerUtil<FileAssistant>", 1, "getC2CProcessCallBack->prepareForward nSessionId[" + localFileManagerEntity.nSessionId + "],[troopToDisc]");
-          }
-        }
-      } while (!QLog.isDevelopLevel());
-      throw new NullPointerException("群同事传递的peerType不对！");
-    }
-    localFileManagerEntity = new FileManagerEntity();
-    localFileManagerEntity.nSessionId = apck.a().longValue();
-    localFileManagerEntity.fileName = paramString4;
-    if ((paramString5 != null) && (apdh.b(paramString5.k)))
-    {
-      paramString4 = new BitmapFactory.Options();
-      paramString4.inJustDecodeBounds = true;
-      apdc.a(paramString5.k, paramString4);
-      if ((paramString4.outHeight > 0) && (paramString4.outWidth > 0))
-      {
-        localFileManagerEntity.imgWidth = paramString4.outWidth;
-        localFileManagerEntity.imgHeight = paramString4.outHeight;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("FileManagerUtil<FileAssistant>", 1, "[" + localFileManagerEntity.nSessionId + "]entity forward from troop no size, get and use thumb size(wh)[" + localFileManagerEntity.imgWidth + ":" + localFileManagerEntity.imgHeight + "]");
-      }
-    }
-    paramString4 = awbi.a(-1000);
-    acvh.a().a(paramString4.uniseq, paramLong2, paramInt4);
-    paramLong2 = paramString4.uniseq;
-    localFileManagerEntity.uniseq = paramLong2;
-    if (paramInt1 == 0)
-    {
-      localFileManagerEntity.nOpType = 24;
-      if (QLog.isColorLevel()) {
-        QLog.i("FileManagerUtil<FileAssistant>", 1, "getC2CProcessCallBack->prepareForward nSessionId[" + localFileManagerEntity.nSessionId + "],[troopToOffline]");
-      }
-      localFileManagerEntity.bSend = true;
-      localFileManagerEntity.isReaded = true;
-      localFileManagerEntity.peerType = paramInt1;
-      localFileManagerEntity.peerUin = paramString1;
-      localFileManagerEntity.peerNick = apck.a(this.a, paramString1, null, paramInt1);
-      localFileManagerEntity.selfUin = paramString2;
-      localFileManagerEntity.srvTime = (awao.a() * 1000L);
-      localFileManagerEntity.setCloudType(4);
-      localFileManagerEntity.status = 2;
-      localFileManagerEntity.msgSeq = apck.a();
-      localFileManagerEntity.msgUid = apck.b();
-      localFileManagerEntity.fileSize = paramLong1;
-      localFileManagerEntity.TroopUin = l1;
-      localFileManagerEntity.busId = paramInt2;
-      localFileManagerEntity.strTroopFilePath = paramString3;
-      if (paramString5 != null)
-      {
-        localFileManagerEntity.strTroopFileID = paramString5.a.toString();
-        localFileManagerEntity.lastTime = paramString5.c;
-      }
-      localFileManagerEntity.TroopUin = l1;
-      localFileManagerEntity.forwardTroopFileEntrance = paramInt3;
-      paramString2 = this.a.getCurrentAccountUin();
-      this.a.a().a(paramString1, paramString2, true, "", paramLong1, true, paramInt1, str, localFileManagerEntity.msgSeq, localFileManagerEntity.msgSeq, paramString3, 1, paramLong2, localFileManagerEntity.msgUid, -1L, awao.a());
-      this.a.a().a(localFileManagerEntity);
-      return localFileManagerEntity.nSessionId;
-    }
+    return "StateWaitResultWhenPause";
   }
   
-  public String a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, long paramLong1, long paramLong2, long paramLong3, int paramInt3)
+  protected void a()
   {
-    return null;
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    apbe.b(this.jdField_a_of_type_Apbe, 9, 10);
+    apbe.c(this.jdField_a_of_type_Apbe, 9, 15);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateWaitResultWhenRecv)");
+    this.jdField_a_of_type_Apbi = new apco(this.jdField_a_of_type_Apbe);
   }
   
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  protected void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileManagerUtil<FileAssistant>", 1, "getC2CProcessCallBack->onResult bSuccess[" + paramBoolean + "],nSessionId[" + paramLong + "],retCode[" + paramInt + "],retMsg[" + paramString1 + "],uuid[" + paramString2 + "],troopUin[" + paramString3 + "],strNewPath[" + paramString4 + "]");
-    }
-    FileManagerEntity localFileManagerEntity = this.a.a().b(paramLong);
+    int i = 1;
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
     if (localFileManagerEntity == null)
     {
-      QLog.e("FileManagerUtil<FileAssistant>", 1, "getC2CProcessCallBack->onResult,but entity is null SessionId[" + paramLong + "]");
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. onFileRequestBeHandledByPC entity is null");
       return;
     }
-    label214:
-    label232:
-    String str;
-    if (localFileManagerEntity.nOpType == 24)
+    if (5 != paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileManagerUtil<FileAssistant>", 1, "getC2CProcessCallBack->onResult [troopToOffline]");
-      }
-      if ((paramBoolean) && (TextUtils.isEmpty(paramString4) != true)) {
-        break label444;
-      }
-      localFileManagerEntity.status = 0;
-      if (TextUtils.isEmpty(paramString4) == true) {
-        QLog.e("FileManagerUtil<FileAssistant>", 1, "!!!!!!!！！！new uuid is null!!!!!!!");
-      }
-      if (paramInt != 0)
+      this.jdField_a_of_type_Apbe.d();
+      switch (paramInt)
       {
-        if (TextUtils.isEmpty(paramString1)) {
-          break label793;
-        }
-        apcb.c(paramString1);
-        paramBoolean = false;
-      }
-      if (localFileManagerEntity.peerType != 0) {
-        break label816;
-      }
-      paramString4 = this.a;
-      str = localFileManagerEntity.forwardTroopFileEntrance + "";
-      if (paramBoolean != true) {
-        break label808;
-      }
-      paramString2 = "1";
-      label283:
-      awqx.b(paramString4, "P_CliOper", "Grp_files", "", "transfer", "Clk_fri", 0, 0, paramString3, str, paramString2, localFileManagerEntity.peerUin);
-      label315:
-      paramString2 = this.a.a();
-      if (localFileManagerEntity.status != 1) {
-        break label908;
+      default: 
+        label63:
+        QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]  is not foud . handledbypc type error:" + paramInt);
+        paramInt = 0;
       }
     }
-    label908:
-    for (paramBoolean = true;; paramBoolean = false)
+    while (paramInt != 0)
     {
-      paramString2.a(paramBoolean, 46, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Integer.valueOf(paramInt), paramString1 });
+      this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 0, null);
       return;
-      if (localFileManagerEntity.nOpType == 25)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("FileManagerUtil<FileAssistant>", 1, "getC2CProcessCallBack->onResult [troopToDisc]");
-        break;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("FileManagerUtil<FileAssistant>", 1, "getC2CProcessCallBack->onResult operation Error![" + localFileManagerEntity.nOpType + "]");
-      break;
-      label444:
-      localFileManagerEntity.status = 1;
-      localFileManagerEntity.setCloudType(1);
-      localFileManagerEntity.Uuid = paramString4;
-      localFileManagerEntity.TroopUin = 0L;
-      localFileManagerEntity.strTroopFileID = null;
-      localFileManagerEntity.strTroopFilePath = null;
-      if (QLog.isColorLevel()) {
-        QLog.i("FileManagerUtil<FileAssistant>", 1, "onResult bSuccess[true],peerType[" + localFileManagerEntity.peerType + "],peerUin[" + localFileManagerEntity.peerUin + "],uuid[" + localFileManagerEntity.Uuid + "]");
-      }
-      paramString2 = null;
-      if (localFileManagerEntity.peerType == 3000)
-      {
-        this.a.a().a(localFileManagerEntity, 64, "");
-        this.a.a().a(localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, this.a.getCurrentAccountUin(), localFileManagerEntity.fileName, localFileManagerEntity.fileSize, paramString4, localFileManagerEntity.uniseq, localFileManagerEntity.msgUid, null);
-        if (apck.a(localFileManagerEntity.fileName) == 0) {
-          paramString2 = this.a.a().a(localFileManagerEntity, 5);
-        }
-      }
-      for (;;)
-      {
-        if (paramString2 == null) {
-          break label791;
-        }
-        localFileManagerEntity.strLargeThumPath = paramString2;
-        break;
-        if (apck.a(localFileManagerEntity.fileName) == 2)
-        {
-          paramString2 = this.a.a().b(localFileManagerEntity);
-          continue;
-          this.a.a().a(localFileManagerEntity, 63, "");
-          this.a.a().a(localFileManagerEntity.peerUin, localFileManagerEntity, null);
-          if (apck.a(localFileManagerEntity.fileName) == 0) {
-            paramString2 = this.a.a().a(localFileManagerEntity, 5);
-          } else if (apck.a(localFileManagerEntity.fileName) == 2) {
-            paramString2 = this.a.a().a(localFileManagerEntity);
-          }
-        }
-      }
-      label791:
-      break label214;
-      label793:
-      apcb.c(BaseApplicationImpl.getContext().getString(2131627033));
-      break label232;
-      label808:
-      paramString2 = "2";
-      break label283;
-      label816:
-      if (localFileManagerEntity.peerType != 3000) {
-        break label315;
-      }
-      paramString4 = this.a;
-      str = localFileManagerEntity.forwardTroopFileEntrance + "";
-      if (paramBoolean == true) {}
-      for (paramString2 = "1";; paramString2 = "2")
-      {
-        awqx.b(paramString4, "P_CliOper", "Grp_files", "", "transfer", "Clk_talk", 0, 0, paramString3, str, paramString2, "");
-        break;
-      }
+      this.jdField_a_of_type_Apbe.d();
+      break label63;
+      apbe.b(this.jdField_a_of_type_Apbe, 10, 5);
+      apbe.c(this.jdField_a_of_type_Apbe, 10, 5);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateAcceptByPCWhenPause)");
+      this.jdField_a_of_type_Apbi = new apbg(this.jdField_a_of_type_Apbe);
+      paramInt = i;
+      continue;
+      apbe.b(this.jdField_a_of_type_Apbe, 10, 6);
+      apbe.c(this.jdField_a_of_type_Apbe, 10, 6);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateRefuseByPCWhenPause)");
+      this.jdField_a_of_type_Apbi = new apbz(this.jdField_a_of_type_Apbe);
+      paramInt = i;
+      continue;
+      apbe.b(this.jdField_a_of_type_Apbe, 10, 8);
+      apbe.c(this.jdField_a_of_type_Apbe, 10, 8);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateSenderCancelSendWhenPause)");
+      this.jdField_a_of_type_Apbi = new apcg(this.jdField_a_of_type_Apbe);
+      paramInt = i;
+      continue;
+      apbe.b(this.jdField_a_of_type_Apbe, 10, 7);
+      apbe.c(this.jdField_a_of_type_Apbe, 10, 7);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateSaveToWeiYunByPCWhenPause)");
+      this.jdField_a_of_type_Apbi = new apcd(this.jdField_a_of_type_Apbe);
+      paramInt = i;
+      continue;
+      apbe.a(this.jdField_a_of_type_Apbe);
+      apbe.b(this.jdField_a_of_type_Apbe, 10, 11);
+      apbe.c(this.jdField_a_of_type_Apbe, 10, 14);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateUploadingWhenPause)");
+      this.jdField_a_of_type_Apbi = new apcj(this.jdField_a_of_type_Apbe);
+      paramInt = 0;
     }
   }
   
-  public void a(boolean paramBoolean, String paramString1, long paramLong, int paramInt, String paramString2, String paramString3, String paramString4) {}
+  protected void a(int paramInt1, int paramInt2)
+  {
+    if (a("onSenderUploadProgressNotify")) {
+      return;
+    }
+    this.jdField_a_of_type_Apbe.c(true);
+    apbe.a(this.jdField_a_of_type_Apbe);
+    b(paramInt1, paramInt2);
+    apbe.a(this.jdField_a_of_type_Apbe, 10, 11);
+    apbe.a(this.jdField_a_of_type_Apbe, 10, 14, false);
+    a("StateUploadingWhenPause");
+    this.jdField_a_of_type_Apbi = new apcj(this.jdField_a_of_type_Apbe);
+  }
+  
+  protected void a(int paramInt, String paramString)
+  {
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    apbe.a(this.jdField_a_of_type_Apbe, 10, 12, true);
+    a("StateExcepInvalidWhenPause");
+    this.jdField_a_of_type_Apbi = new apbs(this.jdField_a_of_type_Apbe);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. onRecvOnLineFileResult entity is null");
+      return;
+    }
+    if (paramBoolean == true)
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + " recv  success response of accept,  waiting the cmd of starting upload");
+      return;
+    }
+    this.jdField_a_of_type_Apbe.c(1);
+    if (!this.jdField_a_of_type_Apbe.e())
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Apbi.a() + " recvonlinefile result = false and no handle it. here waiting response of asking progress");
+      return;
+    }
+    this.jdField_a_of_type_Apbe.c(false);
+    apbe.b(this.jdField_a_of_type_Apbe, 10, 10);
+    apbe.c(this.jdField_a_of_type_Apbe, 10, 10);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateChangeToOffFailedWhenPause)");
+    this.jdField_a_of_type_Apbi = new apbm(this.jdField_a_of_type_Apbe);
+    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]  recv failed!!");
+  }
+  
+  protected boolean a(int paramInt, String paramString, long paramLong)
+  {
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
+    }
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((apue.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
+    }
+    this.jdField_a_of_type_Apbe.a(paramLong, localFileManagerEntity.peerUin);
+    localFileManagerEntity.setCloudType(1);
+    apbe.b(this.jdField_a_of_type_Apbe, 1, 3);
+    apbe.c(this.jdField_a_of_type_Apbe, 1, 3);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateUploadoneWhenPause)");
+    this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Apbi = new apcm(this.jdField_a_of_type_Apbe);
+    return true;
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    apbe.a(this.jdField_a_of_type_Apbe, 10, 9, true);
+    a("StateCancelUploadWhenPause");
+    this.jdField_a_of_type_Apbi = new apbk(this.jdField_a_of_type_Apbe);
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (a("onAskSenderUpProgressResult")) {
+      return;
+    }
+    if (paramBoolean == true)
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + " recv  success response of ask progress,  waiting the notify of progress");
+      return;
+    }
+    this.jdField_a_of_type_Apbe.c(2);
+    if (!this.jdField_a_of_type_Apbe.e())
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Apbi.a() + " ask progress server result = false and no handle it. here waiting response of sender on recv");
+      return;
+    }
+    this.jdField_a_of_type_Apbe.c(false);
+    apbe.b(this.jdField_a_of_type_Apbe, 10, 10);
+    apbe.c(this.jdField_a_of_type_Apbe, 10, 10);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateChangeToOffFailedWhenPause)");
+    this.jdField_a_of_type_Apbi = new apbm(this.jdField_a_of_type_Apbe);
+  }
+  
+  protected void d()
+  {
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. onSenderReplayComeOnRecv entity is null");
+      return;
+    }
+    this.jdField_a_of_type_Apbe.c(true);
+    apbe.a(this.jdField_a_of_type_Apbe);
+    apbe.b(this.jdField_a_of_type_Apbe, 10, 11);
+    apbe.c(this.jdField_a_of_type_Apbe, 10, 14);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateUploadingWhenPause)");
+    this.jdField_a_of_type_Apbi = new apcj(this.jdField_a_of_type_Apbe);
+  }
+  
+  protected void e()
+  {
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Apbi.a() + "onRecvButSenderReplayTimeOut entity is null");
+      return;
+    }
+    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Apbi.a() + " you had recv the file, but sender replay time out!!!! recvCmdSucAndHadTryCount=" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Apcp.a);
+    this.jdField_a_of_type_Apbe.c(1);
+    if (!this.jdField_a_of_type_Apbe.e())
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Apbi.a() + " sender replay time out and no handle it. here waiting response of asking progress");
+      return;
+    }
+    this.jdField_a_of_type_Apbe.c(false);
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_Apcp.a < 9223372036854775807L)
+    {
+      apbe.a(this.jdField_a_of_type_Apbe, 10, 10, true);
+      a("StateChangeToOffFailedWhenPause");
+      this.jdField_a_of_type_Apbi = new apbm(this.jdField_a_of_type_Apbe);
+      return;
+    }
+    apbe.a(this.jdField_a_of_type_Apbe, 10, 12, true);
+    a("StateExcepInvalidWhenPause");
+    this.jdField_a_of_type_Apbi = new apbs(this.jdField_a_of_type_Apbe);
+  }
+  
+  protected void h()
+  {
+    if (a("onAskSenderUpProgressTimeOut")) {
+      return;
+    }
+    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Apbi.a() + " you had recv the file, but ask progress time out!!!!!, recvCmdSucAndHadTryCount =" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Apcp.a);
+    this.jdField_a_of_type_Apbe.c(2);
+    if (!this.jdField_a_of_type_Apbe.e())
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Apbi.a() + " ask progress time out and no handle it. here waiting response of sender when recv");
+      return;
+    }
+    this.jdField_a_of_type_Apbe.c(false);
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_Apcp.a < 9223372036854775807L)
+    {
+      apbe.a(this.jdField_a_of_type_Apbe, 10, 10, true);
+      a("StateChangeToOffFailedWhenPause");
+      this.jdField_a_of_type_Apbi = new apbm(this.jdField_a_of_type_Apbe);
+      return;
+    }
+    apbe.a(this.jdField_a_of_type_Apbe, 10, 12, true);
+    a("StateExcepInvalidWhenPause");
+    this.jdField_a_of_type_Apbi = new apbs(this.jdField_a_of_type_Apbe);
+  }
 }
 
 

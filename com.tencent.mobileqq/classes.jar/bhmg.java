@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.text.DynamicTextItem.TextMap;
-
-public final class bhmg
-  implements Parcelable.Creator<DynamicTextItem.TextMap>
+class bhmg
+  extends bhmj
 {
-  public DynamicTextItem.TextMap a(Parcel paramParcel)
+  bhmg(bhmf parambhmf, String paramString, boolean paramBoolean)
   {
-    return new DynamicTextItem.TextMap(paramParcel);
+    super(paramString, paramBoolean);
   }
   
-  public DynamicTextItem.TextMap[] a(int paramInt)
+  public String a()
   {
-    return new DynamicTextItem.TextMap[paramInt];
+    return null;
+  }
+  
+  public String b()
+  {
+    return "wspeed.qq.com";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhmg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment;
 
 public class afvw
-  implements DialogInterface.OnClickListener
+  implements Handler.Callback
 {
-  public afvw(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public afvw(ChatHistoryAuthDevForRoamMsgFragment paramChatHistoryAuthDevForRoamMsgFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    awqx.b(this.a.app, "CliOper", "", "", "0X8005FDA", "0X8005FDA", 0, 0, "", "", "", "");
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    ChatHistoryAuthDevForRoamMsgFragment.a(this.a).findViewById(2131378725).setEnabled(true);
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+    if (paramMessage.arg1 == 0) {
+      bcpw.a(this.a.getActivity(), 2, ajyc.a(2131701605), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
+    for (;;)
+    {
+      this.a.getActivity().setResult(1);
+      this.a.getActivity().finish();
+      return false;
+      bcpw.a(this.a.getActivity(), 2, ajyc.a(2131701615), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
   }
 }
 

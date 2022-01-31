@@ -1,21 +1,24 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
+
 public class auyu
-  implements auyv
+  implements Animation.AnimationListener
 {
-  public void a()
+  public auyu(BreatheEffectView paramBreatheEffectView, auyz paramauyz) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    urk.b("FlowEdit_NeoVideoFilterPlayView", "onResetAndStart");
+    this.jdField_a_of_type_Auyz.a();
   }
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    urk.a("FlowEdit_NeoVideoFilterPlayView", "onSpeedChange, old=%d, new=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(long paramLong) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auyu
  * JD-Core Version:    0.7.0.1
  */

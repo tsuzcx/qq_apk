@@ -1,65 +1,23 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
 
-public class aeom
-  implements aenz
+class aeom
+  implements DialogInterface.OnClickListener
 {
-  aeob jdField_a_of_type_Aeob;
-  private Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
+  aeom(aeol paramaeol, String paramString) {}
   
-  public aeom(QQAppInterface paramQQAppInterface, aeob paramaeob, Context paramContext, String paramString, View.OnClickListener paramOnClickListener)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aeob = paramaeob;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return 36;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    paramVarArgs = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131493107, null);
-    ImageView localImageView1 = (ImageView)paramVarArgs.findViewById(2131298266);
-    TextView localTextView = (TextView)paramVarArgs.findViewById(2131298267);
-    ImageView localImageView2 = (ImageView)paramVarArgs.findViewById(2131298265);
-    localTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131629592));
-    localImageView1.setImageResource(2130843946);
-    paramVarArgs.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131629592));
-    paramVarArgs.setOnClickListener(new aeon(this));
-    localImageView2.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    return paramVarArgs;
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 10;
+    ((ajvk)this.jdField_a_of_type_Aeol.a.a.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Aeol.a.a.a().a();
+    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
+    if (localRecentUser != null) {
+      paramDialogInterface.b(localRecentUser);
+    }
+    this.jdField_a_of_type_Aeol.a.H();
   }
 }
 

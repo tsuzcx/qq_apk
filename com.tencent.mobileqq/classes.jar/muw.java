@@ -1,19 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class muw
-  implements View.OnClickListener
 {
-  muw(mut parammut) {}
+  int jdField_a_of_type_Int;
+  int b;
   
-  public void onClick(View paramView)
+  muw(muv parammuv, int paramInt1, int paramInt2)
   {
-    this.a.a(this.a.a);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     muw
  * JD-Core Version:    0.7.0.1
  */

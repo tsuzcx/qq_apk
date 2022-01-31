@@ -1,21 +1,10 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.data.MessageForPtt;
 
-public class ayaj
-  implements View.OnTouchListener
+public abstract interface ayaj
 {
-  public ayaj(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, FrameLayout paramFrameLayout, View paramView) {}
+  public abstract void a(String paramString, MessageForPtt paramMessageForPtt);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_AndroidViewView);
-    }
-    return false;
-  }
+  public abstract void a(boolean paramBoolean, MessageForPtt paramMessageForPtt);
 }
 
 

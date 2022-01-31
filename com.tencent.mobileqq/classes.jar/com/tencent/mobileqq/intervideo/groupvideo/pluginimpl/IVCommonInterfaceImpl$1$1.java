@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
-import akfx;
+import akuj;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.CountDownLatch;
 
 class IVCommonInterfaceImpl$1$1
-  extends akfx
+  extends akuj
 {
   IVCommonInterfaceImpl$1$1(IVCommonInterfaceImpl.1 param1, String paramString, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch)
   {

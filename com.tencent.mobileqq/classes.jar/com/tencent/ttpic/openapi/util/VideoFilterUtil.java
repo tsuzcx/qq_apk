@@ -26,7 +26,6 @@ import com.tencent.ttpic.filament.FilamentFilter;
 import com.tencent.ttpic.filament.FilamentParticleFilter;
 import com.tencent.ttpic.filter.ActFilters;
 import com.tencent.ttpic.filter.AllVideoFilters;
-import com.tencent.ttpic.filter.Audio3DFilter;
 import com.tencent.ttpic.filter.CrazyFaceFilters;
 import com.tencent.ttpic.filter.CustomVertexFilter;
 import com.tencent.ttpic.filter.CustomVideoFilter;
@@ -41,7 +40,6 @@ import com.tencent.ttpic.filter.FaceOffByImageFilter;
 import com.tencent.ttpic.filter.FaceOffFilter;
 import com.tencent.ttpic.filter.FacialFeatureFilter;
 import com.tencent.ttpic.filter.FastStickerFilter;
-import com.tencent.ttpic.filter.GameFilter;
 import com.tencent.ttpic.filter.HairCos;
 import com.tencent.ttpic.filter.HeadCropFilter;
 import com.tencent.ttpic.filter.LutItemsFilter;
@@ -292,26 +290,6 @@ public class VideoFilterUtil
       }
     }
     return localObject1;
-  }
-  
-  private static Audio3DFilter createAudio3DFilter(VideoMaterial paramVideoMaterial)
-  {
-    if ((paramVideoMaterial != null) && (paramVideoMaterial.getAudio3DParams() != null))
-    {
-      Audio3DFilter localAudio3DFilter = new Audio3DFilter(paramVideoMaterial.getItemList3D(), paramVideoMaterial.getOrderMode(), paramVideoMaterial.getMaxFaceCount());
-      localAudio3DFilter.setGameParams(paramVideoMaterial.getGameParams(), paramVideoMaterial.getDataPath());
-      if (paramVideoMaterial.getItemList() != null)
-      {
-        Iterator localIterator = paramVideoMaterial.getItemList().iterator();
-        while (localIterator.hasNext()) {
-          localAudio3DFilter.addSticker((StickerItem)localIterator.next(), paramVideoMaterial.getDataPath());
-        }
-      }
-      if (localAudio3DFilter.getStickerListSize() > 0) {
-        return localAudio3DFilter;
-      }
-    }
-    return null;
   }
   
   private static VideoFilterBase createBigHeadFilter(VideoMaterial paramVideoMaterial)
@@ -782,7 +760,7 @@ public class VideoFilterUtil
             }
             localObject2 = str;
             if (TextUtils.isEmpty(str)) {
-              localObject2 = "//Need Sync FaceOffFragmentShaderExt.dat\n\nprecision highp float;\nvarying vec2 canvasCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvarying vec2 noseTextureCoordinate;\nvarying float pointVisValue;\nvarying float opacityValue;\n\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform sampler2D inputImageTexture3;\nuniform sampler2D inputImageTexture4;\nuniform sampler2D inputImageTexture5;\nuniform sampler2D inputImageTexture6;\nuniform sampler2D inputImageTexture7;\n\nuniform float alpha;\nuniform int enableFaceOff;\nuniform int enableNoseOcclusion;\nuniform float enableAlphaFromGray;\nuniform float enableAlphaFromGrayNew;\nuniform int blendMode;\nuniform int blendIris;\nuniform float level1;\nuniform float level2;\n\nuniform vec2 size;\nuniform vec2 center1;\nuniform vec2 center2;\nuniform float radius1;\nuniform float radius2;\n\nuniform int leftEyeClosed; // deprecated\nuniform int rightEyeClosed; // deprecated\nuniform float leftEyeCloseAlpha;\nuniform float rightEyeCloseAlpha;\n\nvec3 blendColorWithMode(vec4 texColor, vec4 canvasColor, int colorBlendMode)\n{\n    vec3 vOne = vec3(1.0, 1.0, 1.0);\n    vec3 vZero = vec3(0.0, 0.0, 0.0);\n    vec3 resultFore = texColor.rgb;\n    if (colorBlendMode <= 1){ //default, since used most, put on top\n\n    } else if (colorBlendMode == 2) {  //multiply\n        resultFore = canvasColor.rgb * texColor.rgb;\n    } else if (colorBlendMode == 3){    //screen\n        resultFore = vOne - (vOne - canvasColor.rgb) * (vOne - texColor.rgb);\n    } else if (colorBlendMode == 4){    //overlay\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n        if (canvasColor.r >= 0.5) {\n            resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n        }\n        if (canvasColor.g >= 0.5) {\n            resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n        }\n        if (canvasColor.b >= 0.5) {\n            resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n        }\n    } else if (colorBlendMode == 5){    //hardlight\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n        if (texColor.r >= 0.5) {\n            resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n        }\n        if (texColor.g >= 0.5) {\n            resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n        }\n        if (texColor.b >= 0.5) {\n            resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n        }\n    } else if (colorBlendMode == 6){    //softlight\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb + canvasColor.rgb * canvasColor.rgb * (vOne - 2.0 * texColor.rgb);\n        if (texColor.r >= 0.5) {\n            resultFore.r = 2.0 * canvasColor.r * (1.0 - texColor.r) + (2.0 * texColor.r - 1.0) * sqrt(canvasColor.r);\n        }\n        if (texColor.g >= 0.5) {\n            resultFore.g = 2.0 * canvasColor.g * (1.0 - texColor.g) + (2.0 * texColor.g - 1.0) * sqrt(canvasColor.g);\n        }\n        if (texColor.b >= 0.5) {\n            resultFore.b = 2.0 * canvasColor.b * (1.0 - texColor.b) + (2.0 * texColor.b - 1.0) * sqrt(canvasColor.b);\n        }\n    } else if (colorBlendMode == 7){    //divide\n        resultFore = vOne;\n        if (texColor.r > 0.0) {\n            resultFore.r = canvasColor.r / texColor.r;\n        }\n        if (texColor.g > 0.0) {\n            resultFore.g = canvasColor.g / texColor.g;\n        }\n        if (texColor.b > 0.0) {\n            resultFore.b = canvasColor.b / texColor.b;\n        }\n        resultFore = min(vOne, resultFore);\n    } else if (colorBlendMode == 8){    //add\n        resultFore = canvasColor.rgb + texColor.rgb;\n        resultFore = min(vOne, resultFore);\n    } else if (colorBlendMode == 9){    //substract\n        resultFore = canvasColor.rgb - texColor.rgb;\n        resultFore = max(vZero, resultFore);\n    } else if (colorBlendMode == 10){   //diff\n        resultFore = abs(canvasColor.rgb - texColor.rgb);\n    } else if (colorBlendMode == 11){   //darken\n        resultFore = min(canvasColor.rgb, texColor.rgb);\n    } else if (blendMode == 12){   //lighten\n        resultFore = max(canvasColor.rgb, texColor.rgb);\n    }\n    return resultFore;\n}\n\nvec4 blendColor(vec4 texColor, vec4 canvasColor) {\n    vec3 vOne = vec3(1.0, 1.0, 1.0);\n    vec3 vZero = vec3(0.0, 0.0, 0.0);\n    //revert pre multiply\n    if(texColor.a > 0.0){\n       texColor.rgb = texColor.rgb / texColor.a;\n    }\n    vec3 resultFore = texColor.rgb;\n    if (blendMode <= 12) {\n        resultFore = blendColorWithMode(texColor, canvasColor, blendMode);\n    } else if (blendMode == 13){   //highlight for lips\n        if (texColor.a > 0.0001) {\n            if(canvasColor.r >= level1) {\n                texColor.rgb = vec3(1.0, 1.0, 1.0);\n                //if(canvasColor.r < 0.6) {\n                   canvasColor.rgb = canvasColor.rgb + (vOne - canvasColor.rgb) * 0.05;\n                //}\n            } else if (canvasColor.r >= level2) {\n               if (level1 > level2) {\n                   float f = (canvasColor.r - level2) / (level1 - level2);\n                   texColor.rgb = texColor.rgb + (vOne - texColor.rgb) * f;\n                   canvasColor.rgb = canvasColor.rgb + (vOne - canvasColor.rgb) * 0.05 * f;\n               }\n            }\n        }\n        resultFore = canvasColor.rgb * texColor.rgb;\n        resultFore = clamp(resultFore, 0.0001, 0.9999);\n    } else if (blendMode == 14){   // iris\n         vec2 curPos = vec2(canvasCoordinate.x * size.x, canvasCoordinate.y * size.y);\n         float dist1 = sqrt((curPos.x - center1.x) * (curPos.x - center1.x) + (curPos.y - center1.y) * (curPos.y - center1.y));\n         float dist2 = sqrt((curPos.x - center2.x) * (curPos.x - center2.x) + (curPos.y - center2.y) * (curPos.y - center2.y));\n         if (dist1 < radius1 && leftEyeCloseAlpha >= 0.01) {\n             float _x = (curPos.x - center1.x) / radius1 / 2.0;\n             float _y = (curPos.y - center1.y) / radius1 / 2.0;\n             vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));\n             if (irisColor.a > 0.0) {\n                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);\n             }\n             resultFore = blendColorWithMode(irisColor, canvasColor, blendIris);\n             texColor.a = texColor.a * irisColor.a * leftEyeCloseAlpha;\n         } else if (dist2 < radius2 && rightEyeCloseAlpha >= 0.01) {\n             float _x = (curPos.x - center2.x) / radius2 / 2.0;\n             float _y = (curPos.y - center2.y) / radius2 / 2.0;\n             vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));\n             if (irisColor.a > 0.0) {\n                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);\n             }\n             resultFore = blendColorWithMode(irisColor, canvasColor, blendIris);\n             texColor.a = texColor.a * irisColor.a * rightEyeCloseAlpha;\n         } else {\n            texColor.a = 0.0;\n         }\n         //resultFore = texColor.rgb;\n         //texColor.a = 1.0;\n    }\n    //pre multiply for glBlendFunc\n    vec4 resultColor = vec4(resultFore * texColor.a, texColor.a);\n    return resultColor;\n}\n\nvoid main(void) {\n    vec4 canvasColor = texture2D(inputImageTexture, canvasCoordinate);\n    vec4 texColor = texture2D(inputImageTexture2, textureCoordinate);\n    vec4 grayColor = texture2D(inputImageTexture3, grayTextureCoordinate);\n    vec4 maskColor = texture2D(inputImageTexture5, grayTextureCoordinate);\n\n    if (enableFaceOff == 1) {\n        if (texColor.a > 0.0) {\n            texColor = texColor / vec4(texColor.a, texColor.a, texColor.a, 1.0);\n        }\n        if(enableAlphaFromGray > 0.0){\n            float grayAlpha = (1.0 - mix(maskColor.r, grayColor.r, enableAlphaFromGrayNew));\n            texColor.a = texColor.a * grayAlpha * alpha;\n        } else {\n            texColor.a = texColor.a * alpha;\n        }\n    }\n\n    float confidence = smoothstep(0.7, 1.0, pointVisValue) * opacityValue;\n\n    texColor.a = texColor.a * confidence;\n\n    if (enableNoseOcclusion > 0) {\n        vec4 screenNoseColor = texture2D(inputImageTexture7, canvasCoordinate);\n        vec4 materialNoseColor = texture2D(inputImageTexture6, noseTextureCoordinate);\n        if (screenNoseColor.r > materialNoseColor.r + 0.1 && materialNoseColor.a > 0.01) {\n            texColor.a = 0.0;\n        }\n        texColor.a = texColor.a * screenNoseColor.a; \n    }\n\n//    if(confidence >= 0.0){\n//            texColor.a = texColor.a * confidence;\n//    }\n\n    texColor.rgb = texColor.rgb * texColor.a;\n\n    gl_FragColor = blendColor(texColor, canvasColor);\n    //gl_FragColor = vec4(canvasColor.rgb * opacityValue, 1.0);\n }\n";
+              localObject2 = "//Need Sync FaceOffFragmentShaderExt.dat\n\nprecision highp float;\nvarying vec2 canvasCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvarying vec2 noseTextureCoordinate;\nvarying float pointVisValue;\nvarying float opacityValue;\n\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform sampler2D inputImageTexture3;\nuniform sampler2D inputImageTexture4;\nuniform sampler2D inputImageTexture5;\nuniform sampler2D inputImageTexture6;\nuniform sampler2D inputImageTexture7;\n\nuniform float alpha;\nuniform int enableFaceOff;\nuniform float enableNoseOcclusion;\nuniform float enableAlphaFromGray;\nuniform float enableAlphaFromGrayNew;\nuniform int blendMode;\nuniform int blendIris;\nuniform float level1;\nuniform float level2;\n\nuniform vec2 size;\nuniform vec2 center1;\nuniform vec2 center2;\nuniform float radius1;\nuniform float radius2;\n\nuniform int leftEyeClosed; // deprecated\nuniform int rightEyeClosed; // deprecated\nuniform float leftEyeCloseAlpha;\nuniform float rightEyeCloseAlpha;\n\nvec3 blendColorWithMode(vec4 texColor, vec4 canvasColor, int colorBlendMode)\n{\n    vec3 vOne = vec3(1.0, 1.0, 1.0);\n    vec3 vZero = vec3(0.0, 0.0, 0.0);\n    vec3 resultFore = texColor.rgb;\n    if (colorBlendMode <= 1){ //default, since used most, put on top\n\n    } else if (colorBlendMode == 2) {  //multiply\n        resultFore = canvasColor.rgb * texColor.rgb;\n    } else if (colorBlendMode == 3){    //screen\n        resultFore = vOne - (vOne - canvasColor.rgb) * (vOne - texColor.rgb);\n    } else if (colorBlendMode == 4){    //overlay\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n        if (canvasColor.r >= 0.5) {\n            resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n        }\n        if (canvasColor.g >= 0.5) {\n            resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n        }\n        if (canvasColor.b >= 0.5) {\n            resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n        }\n    } else if (colorBlendMode == 5){    //hardlight\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n        if (texColor.r >= 0.5) {\n            resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n        }\n        if (texColor.g >= 0.5) {\n            resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n        }\n        if (texColor.b >= 0.5) {\n            resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n        }\n    } else if (colorBlendMode == 6){    //softlight\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb + canvasColor.rgb * canvasColor.rgb * (vOne - 2.0 * texColor.rgb);\n        if (texColor.r >= 0.5) {\n            resultFore.r = 2.0 * canvasColor.r * (1.0 - texColor.r) + (2.0 * texColor.r - 1.0) * sqrt(canvasColor.r);\n        }\n        if (texColor.g >= 0.5) {\n            resultFore.g = 2.0 * canvasColor.g * (1.0 - texColor.g) + (2.0 * texColor.g - 1.0) * sqrt(canvasColor.g);\n        }\n        if (texColor.b >= 0.5) {\n            resultFore.b = 2.0 * canvasColor.b * (1.0 - texColor.b) + (2.0 * texColor.b - 1.0) * sqrt(canvasColor.b);\n        }\n    } else if (colorBlendMode == 7){    //divide\n        resultFore = vOne;\n        if (texColor.r > 0.0) {\n            resultFore.r = canvasColor.r / texColor.r;\n        }\n        if (texColor.g > 0.0) {\n            resultFore.g = canvasColor.g / texColor.g;\n        }\n        if (texColor.b > 0.0) {\n            resultFore.b = canvasColor.b / texColor.b;\n        }\n        resultFore = min(vOne, resultFore);\n    } else if (colorBlendMode == 8){    //add\n        resultFore = canvasColor.rgb + texColor.rgb;\n        resultFore = min(vOne, resultFore);\n    } else if (colorBlendMode == 9){    //substract\n        resultFore = canvasColor.rgb - texColor.rgb;\n        resultFore = max(vZero, resultFore);\n    } else if (colorBlendMode == 10){   //diff\n        resultFore = abs(canvasColor.rgb - texColor.rgb);\n    } else if (colorBlendMode == 11){   //darken\n        resultFore = min(canvasColor.rgb, texColor.rgb);\n    } else if (blendMode == 12){   //lighten\n        resultFore = max(canvasColor.rgb, texColor.rgb);\n    }\n    return resultFore;\n}\n\nvec4 blendColor(vec4 texColor, vec4 canvasColor) {\n    vec3 vOne = vec3(1.0, 1.0, 1.0);\n    vec3 vZero = vec3(0.0, 0.0, 0.0);\n    //revert pre multiply\n    if(texColor.a > 0.0){\n       texColor.rgb = texColor.rgb / texColor.a;\n    }\n    vec3 resultFore = texColor.rgb;\n    if (blendMode <= 12) {\n        resultFore = blendColorWithMode(texColor, canvasColor, blendMode);\n    } else if (blendMode == 13){   //highlight for lips\n        if (texColor.a > 0.0001) {\n            if(canvasColor.r >= level1) {\n                texColor.rgb = vec3(1.0, 1.0, 1.0);\n                //if(canvasColor.r < 0.6) {\n                   canvasColor.rgb = canvasColor.rgb + (vOne - canvasColor.rgb) * 0.05;\n                //}\n            } else if (canvasColor.r >= level2) {\n               if (level1 > level2) {\n                   float f = (canvasColor.r - level2) / (level1 - level2);\n                   texColor.rgb = texColor.rgb + (vOne - texColor.rgb) * f;\n                   canvasColor.rgb = canvasColor.rgb + (vOne - canvasColor.rgb) * 0.05 * f;\n               }\n            }\n        }\n        resultFore = canvasColor.rgb * texColor.rgb;\n        resultFore = clamp(resultFore, 0.0001, 0.9999);\n    } else if (blendMode == 14){   // iris\n         vec2 curPos = vec2(canvasCoordinate.x * size.x, canvasCoordinate.y * size.y);\n         float dist1 = sqrt((curPos.x - center1.x) * (curPos.x - center1.x) + (curPos.y - center1.y) * (curPos.y - center1.y));\n         float dist2 = sqrt((curPos.x - center2.x) * (curPos.x - center2.x) + (curPos.y - center2.y) * (curPos.y - center2.y));\n         if (dist1 < radius1 && leftEyeCloseAlpha >= 0.01) {\n             float _x = (curPos.x - center1.x) / radius1 / 2.0;\n             float _y = (curPos.y - center1.y) / radius1 / 2.0;\n             vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));\n             if (irisColor.a > 0.0) {\n                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);\n             }\n             resultFore = blendColorWithMode(irisColor, canvasColor, blendIris);\n             texColor.a = texColor.a * irisColor.a * leftEyeCloseAlpha;\n         } else if (dist2 < radius2 && rightEyeCloseAlpha >= 0.01) {\n             float _x = (curPos.x - center2.x) / radius2 / 2.0;\n             float _y = (curPos.y - center2.y) / radius2 / 2.0;\n             vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));\n             if (irisColor.a > 0.0) {\n                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);\n             }\n             resultFore = blendColorWithMode(irisColor, canvasColor, blendIris);\n             texColor.a = texColor.a * irisColor.a * rightEyeCloseAlpha;\n         } else {\n            texColor.a = 0.0;\n         }\n         //resultFore = texColor.rgb;\n         //texColor.a = 1.0;\n    }\n    //pre multiply for glBlendFunc\n    vec4 resultColor = vec4(resultFore * texColor.a, texColor.a);\n    return resultColor;\n}\n\nvoid main(void) {\n    vec4 canvasColor = texture2D(inputImageTexture, canvasCoordinate);\n    vec4 texColor = texture2D(inputImageTexture2, textureCoordinate);\n\n        if (texColor.a > 0.0) {\n            texColor = texColor / vec4(texColor.a, texColor.a, texColor.a, 1.0);\n        }\n        if(enableAlphaFromGray > 0.0){\n            vec4 grayColor = texture2D(inputImageTexture3, grayTextureCoordinate);\n            vec4 maskColor = texture2D(inputImageTexture5, grayTextureCoordinate);\n            float grayAlpha = (1.0 - mix(maskColor.r, grayColor.r, enableAlphaFromGrayNew));\n            texColor.a = texColor.a * grayAlpha * alpha;\n        } else {\n            texColor.a = texColor.a * alpha;\n        }\n\n    float confidence = smoothstep(0.7, 1.0, pointVisValue) * opacityValue;\n\n    texColor.a = texColor.a * confidence;\n\n        vec4 screenNoseColor = texture2D(inputImageTexture7, canvasCoordinate);\n        texColor.a = texColor.a * mix(1.0, screenNoseColor.a, enableNoseOcclusion); \n\n//    if(confidence >= 0.0){\n//            texColor.a = texColor.a * confidence;\n//    }\n\n    texColor.rgb = texColor.rgb * texColor.a;\n\n    gl_FragColor = blendColor(texColor, canvasColor);\n    //gl_FragColor = vec4(canvasColor.rgb * opacityValue, 1.0);\n }\n";
             }
             localFaceOffFilter.updateFilterShader((String)localObject1, (String)localObject2);
           }
@@ -971,7 +949,6 @@ public class VideoFilterUtil
     FabbyFilters localFabbyFilters = createFabbyMvFilterList(paramVideoMaterial);
     List localList6 = createMultiViewerFilters(paramVideoMaterial);
     List localList7 = createFacialFeatureFilters(paramVideoMaterial);
-    GameFilter localGameFilter = createGameFilter(paramVideoMaterial);
     FilamentFilter localFilamentFilter = createFilamentFilter(paramVideoMaterial);
     List localList17 = createVoiceTextFilter(paramVideoMaterial);
     List localList18 = createParticleXFilters(paramVideoMaterial);
@@ -1032,12 +1009,10 @@ public class VideoFilterUtil
       localVideoFilterList.setFaceGpuParticleFilters(localList12);
       localVideoFilterList.setGestureGpuParticleFilters(localList13);
       localVideoFilterList.setFilamentParticleFilter(localFilamentParticleFilter);
-      localVideoFilterList.setAudio3DFilter(createAudio3DFilter(paramVideoMaterial));
       localVideoFilterList.setEffectTriggerFilters(createEffectTriggerFilters(paramVideoMaterial));
       localVideoFilterList.setComicEffectFilters(createComicEffectFilterFilters(paramVideoMaterial));
       localVideoFilterList.setGestureFilters(localList4);
       localVideoFilterList.setBodyFilters(localList5);
-      localVideoFilterList.setGameFilter(localGameFilter);
       localVideoFilterList.setFilamentFilter(localFilamentFilter);
       localVideoFilterList.setMultiViewerFilters(localList6);
       localVideoFilterList.setNeedDetectGesture(VideoMaterialUtil.isGestureDetectMaterial(paramVideoMaterial));
@@ -1147,7 +1122,7 @@ public class VideoFilterUtil
         for (;;)
         {
           if (localList16 == null) {
-            break label1224;
+            break label1202;
           }
           localAllVideoFilters.addAll(localList16);
           if (localObject != null) {
@@ -1163,7 +1138,7 @@ public class VideoFilterUtil
       }
       else
       {
-        label1224:
+        label1202:
         if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_HEAD_CROP.value)
         {
           localVideoFilterList.setHeadCropFilter(localHeadCropFilter);
@@ -1299,7 +1274,7 @@ public class VideoFilterUtil
       {
         localObject1 = new VideoFilterInputFreeze();
         if (PTFaceAttr.PTExpression.TIME_TRIGGER.value != paramStickerItem.getTriggerTypeInt()) {
-          break label168;
+          break label165;
         }
         ((VideoFilterInputFreeze)localObject1).setFreezeFrameStartTime((paramStickerItem.triggerFrameStartTime * paramStickerItem.frameDuration), (paramStickerItem.triggerFrameDurationTime * paramStickerItem.frameDuration), paramStickerItem.alwaysTriggered);
         ((VideoFilterInputFreeze)localObject1).setTriggerTimeUpdater(paramStickerItem.triggerTimeUpdater);
@@ -1307,7 +1282,7 @@ public class VideoFilterUtil
     }
     for (;;)
     {
-      if ((paramStickerItem.triggerState != null) && (!paramStickerItem.triggerState.equals("")))
+      if ((paramStickerItem.triggerState != null) && (paramStickerItem.triggerState.size() > 0))
       {
         ((VideoFilterInputFreeze)localObject1).setIsStateTrigger(true);
         ((VideoFilterInputFreeze)localObject1).setStateTriggerParam(paramStickerItem.renderId, paramStickerItem.triggerState, paramStickerItem.triggerStateRange);
@@ -1316,20 +1291,9 @@ public class VideoFilterUtil
       ((VideoFilterInputFreeze)localObject1).setPlayTimes(paramStickerItem.triggedTimes);
       ((VideoFilterInputFreeze)localObject1).setDelayTriggerTime((paramStickerItem.frameDuration * paramStickerItem.delayedTriggedTime));
       return localObject1;
-      label168:
+      label165:
       ((VideoFilterInputFreeze)localObject1).setFreezeFrameTriggleType(paramStickerItem.getTriggerTypeInt(), paramStickerItem.alwaysTriggered, paramStickerItem.activateTriggerCount, paramStickerItem.activateTriggerTotalCount);
     }
-  }
-  
-  private static GameFilter createGameFilter(VideoMaterial paramVideoMaterial)
-  {
-    if ((paramVideoMaterial != null) && (paramVideoMaterial.getGameParams() != null))
-    {
-      GameFilter localGameFilter = new GameFilter(paramVideoMaterial.getItemList3D(), paramVideoMaterial.getOrderMode(), paramVideoMaterial.getMaxFaceCount());
-      localGameFilter.setGameParams(paramVideoMaterial.getGameParams(), paramVideoMaterial.getDataPath());
-      return localGameFilter;
-    }
-    return null;
   }
   
   private static List<GPUParticleFilter> createGestureGpuParticleFilters(VideoMaterial paramVideoMaterial)
@@ -1528,6 +1492,7 @@ public class VideoFilterUtil
       {
         MultiViewerFilter localMultiViewerFilter = new MultiViewerFilter();
         localMultiViewerFilter.setVideoFilterList(createFilters(((MultiViewerItem)localObject).videoMaterial));
+        localMultiViewerFilter.setStickersMap(((MultiViewerItem)localObject).videoMaterial.getRenderOrderList());
         if (((MultiViewerItem)localObject).videoMaterial.isNeedFreezeFrame()) {
           paramVideoMaterial.setNeedFreezeFrame(true);
         }
@@ -1548,10 +1513,10 @@ public class VideoFilterUtil
         localObject = ((MultiViewerItem)localObject).videoMaterial.getFilterId();
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
           if (effectFilterProvider == null) {
-            break label241;
+            break label253;
           }
         }
-        label241:
+        label253:
         for (localObject = effectFilterProvider.getFilter((String)localObject);; localObject = FabbyFilterFactory.createFilter((String)localObject))
         {
           localMultiViewerFilter.setEffectFilter((BaseFilter)localObject);

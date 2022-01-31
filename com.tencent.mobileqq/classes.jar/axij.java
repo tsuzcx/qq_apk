@@ -1,41 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import android.os.Message;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.WaitDoneBundle.1;
 
 public class axij
-  implements bemm
 {
-  public axij(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  public final Object a;
+  public final Runnable a;
   
-  public void a(beml parambeml)
+  axij()
   {
-    int i;
-    switch (parambeml.a)
-    {
-    case 2131298738: 
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      awqx.b(this.a.app, "dc00898", "", "", "0X8009C65", "0X8009C65", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "" + i);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaLangRunnable = new CameraProxy.WaitDoneBundle.1(this);
+  }
+  
+  static void a(Message paramMessage)
+  {
+    if (paramMessage == null) {}
+    while (!(paramMessage.obj instanceof axij)) {
       return;
-      axfs.a(this.a.app, "0X800993B");
-      axfs.a(this.a.app, this.a, 1, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      i = 1;
-      continue;
-      axfs.a(this.a.app, "0X800993C");
-      axfs.a(this.a.app, this.a, 2, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      i = 2;
-      continue;
-      axfs.a(this.a.app, "0X800993C");
-      axfs.a(this.a.app, this.a, 3, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      i = 3;
     }
+    ((axij)paramMessage.obj).jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axij
  * JD-Core Version:    0.7.0.1
  */

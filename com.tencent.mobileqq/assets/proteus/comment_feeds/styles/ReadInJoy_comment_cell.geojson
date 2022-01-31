@@ -1,74 +1,63 @@
 {
-	"ReadInJoy_comment_cell": {
-		"view_type": "cell",
-		"default_visible": "YES",
-		"layout_type": "layout_relative",
-		"padding_bottom": "10",
-		"height": {
-			"type": "wrap_content"
-		},
-		"width": {
-			"type": "relative",
-			"value": "375"
-		},
-		"subviews": [{
-				"view_type": "UIView",
-				"default_visible": "YES",
-				"view_id": "id_comment_cell_one_container",
-				"layout_type": "layout_linear",
-				"direction": "vertical",
-				"height": {
-					"type": "wrap_content"
-				},
-				"width": {
-					"type": "relative",
-					"value": "375"
-				},
-				"subviews": [{
-					"$includeComponet": "componet/readinjoy_comment_header.geojson"
-				}]
-			},
-			{
-				"view_type": "UIView",
-				"default_visible": "YES",
-				"view_id": "id_comment_cell_two_container",
-				"below_of_view": "id_comment_cell_one_container",
-				"layout_type": "layout_linear",
-				"direction": "vertical",
-				"height": {
-					"type": "wrap_content"
-				},
-				"width": {
-					"type": "relative",
-					"value": "375"
-				},
-				"subviews": [{
-						"$includeComponet": "componet/readinjoy_comment_media.geojson"
-					},
-					{
-						"$includeComponet": "componet/vv_comment_media.geojson"
-					},
-					{
-						"$includeComponet": "componet/readinjoy_comment_diversion.geojson"
-					},
-					{
-						"$includeComponet": "componet/readinjoy_comment_tail.geojson"
-					},
-					{
-						"$includeComponet": "componet/readinjoy_expose_subcomment_container.geojson"
-					},
-					{
-						"$includeComponet": "componet/readinjoy_comment_expose_like_person.geojson"
-					}
-				]
-			},
-			{
-				"$includeComponet": "componet/readinjoy_comment_awsome_mark_img.geojson"
-			},
-			{
-				"$includeComponet": "componet/vv_comment_awsome_mark_img.geojson"
-			}
-
-		]
-	}
+    "ReadInJoy_comment_cell": {
+        "view_type": "cell",
+        "default_visible":"YES",
+        "layout_type":"layout_relative",
+        "padding_bottom":"10",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews":
+        [
+            {
+                "view_type": "UIView",
+                "default_visible":"YES",
+                "view_id": "id_comment_cell_one_container",
+                "layout_type":"layout_linear",
+                "direction":"vertical",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "subviews":
+                [
+                    {"$includeComponet": "componet/readinjoy_comment_header.geojson"}
+                ]
+            },
+            {
+                "view_type": "UIView",
+                "default_visible":"YES",
+                "view_id": "id_comment_cell_two_container",
+                "below_of_view":"id_comment_cell_one_container",
+                "layout_type":"layout_linear",
+                "direction":"vertical",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "subviews":
+                [
+                    {"$includeComponet": "componet/readinjoy_comment_media.geojson"},
+                    {"$includeComponet": "componet/vv_comment_media.geojson"},
+                    {"$includeComponet": "componet/readinjoy_comment_diversion.geojson"},
+                    {"$includeComponet": "componet/readinjoy_comment_tail.geojson"},
+                    {"$includeComponet": "componet/readinjoy_expose_subcomment_container.geojson"},
+                    {"$includeComponet": "componet/readinjoy_comment_expose_like_person.geojson"}
+                ]
+            },
+            {"$includeComponet": "componet/readinjoy_comment_awsome_mark_img.geojson"},
+            {"$includeComponet": "componet/vv_comment_awsome_mark_img.geojson"}
+            
+        ]
+    }
 }

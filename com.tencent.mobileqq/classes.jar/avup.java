@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public class avup
-  extends avuy
+class avup
+  implements avsj
 {
-  public avup(GroupSearchEngine paramGroupSearchEngine, avuz paramavuz, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramavuz, paramString, paramInt);
-  }
+  avup(avuo paramavuo) {}
   
-  public avom a(List<avon> paramList, String paramString)
+  public void a(boolean paramBoolean)
   {
-    return new avmf(paramList, paramString, GroupSearchEngine.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager onResourceDownload");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avup
  * JD-Core Version:    0.7.0.1
  */

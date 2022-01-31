@@ -39,9 +39,9 @@ public class PTSJNIHandler
     }
   }
   
-  private native String callJSEventFunction(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3);
+  private native void callJSEventFunction(String paramString1, int paramInt1, String paramString2, String paramString3, String[] paramArrayOfString1, String[] paramArrayOfString2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt2, int paramInt3);
   
-  private native String callJSFunction(String paramString, Object[] paramArrayOfObject, int paramInt1, int paramInt2);
+  private native void callJSFunction(String paramString, Object[] paramArrayOfObject, int paramInt1, int paramInt2);
   
   public static void create(PTSAppInstance paramPTSAppInstance, String paramString1, String paramString2, int paramInt)
   {
@@ -75,7 +75,7 @@ public class PTSJNIHandler
   
   private native void destroyPTSPage(int paramInt1, int paramInt2);
   
-  public static native String evaluateJavaScript(int paramInt, String paramString);
+  public static native void evaluateJavaScript(int paramInt, String paramString);
   
   public static PTSJNIHandler get(PTSAppInstance paramPTSAppInstance)
   {
@@ -152,14 +152,14 @@ public class PTSJNIHandler
   
   private native void setJSGlobalValueForKey(String paramString1, String paramString2, int paramInt1, int paramInt2);
   
-  public String callJSEventFunction(String paramString1, int paramInt1, String paramString2, int paramInt2)
+  public void callJSEventFunction(String paramString1, int paramInt1, String paramString2, String paramString3, String[] paramArrayOfString1, String[] paramArrayOfString2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt2)
   {
-    return callJSEventFunction(paramString1, paramInt1, paramString2, this.mAppInstanceUniqueID, paramInt2);
+    callJSEventFunction(paramString1, paramInt1, paramString2, paramString3, paramArrayOfString1, paramArrayOfString2, paramArrayOfFloat1, paramArrayOfFloat2, this.mAppInstanceUniqueID, paramInt2);
   }
   
-  public String callJSFunction(String paramString, Object[] paramArrayOfObject, int paramInt)
+  public void callJSFunction(String paramString, Object[] paramArrayOfObject, int paramInt)
   {
-    return callJSFunction(paramString, paramArrayOfObject, this.mAppInstanceUniqueID, paramInt);
+    callJSFunction(paramString, paramArrayOfObject, this.mAppInstanceUniqueID, paramInt);
   }
   
   public String getJSGlobalValueForKey(String paramString, int paramInt)

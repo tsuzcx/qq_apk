@@ -1,76 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
-public class rcz<T>
+class rcz
+  extends oyg
 {
-  public static final String a;
-  private int jdField_a_of_type_Int;
-  private T jdField_a_of_type_JavaLangObject;
-  private final rda<T> jdField_a_of_type_Rda;
-  
-  static
+  rcz(rcy paramrcy, String paramString, AbsListView paramAbsListView, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "zimage." + rcz.class.getSimpleName();
+    super(paramString);
   }
   
-  public rcz(T paramT, rda<T> paramrda)
+  public void a(oya paramoya)
   {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.jdField_a_of_type_Rda = paramrda;
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public T a()
-  {
-    try
-    {
-      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-      return localObject1;
-    }
-    finally
-    {
-      localObject2 = finally;
-      throw localObject2;
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_Int += 1;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.jdField_a_of_type_Int -= 1;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        if (QLog.isColorLevel()) {
-          rdc.a("Reference", " decReference 0 " + this.jdField_a_of_type_JavaLangObject);
-        }
-        if (this.jdField_a_of_type_JavaLangObject != null)
-        {
-          this.jdField_a_of_type_Rda.a(this.jdField_a_of_type_JavaLangObject);
-          this.jdField_a_of_type_JavaLangObject = null;
-        }
-      }
-      return;
-    }
-    finally {}
+    paramoya.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rcz
  * JD-Core Version:    0.7.0.1
  */

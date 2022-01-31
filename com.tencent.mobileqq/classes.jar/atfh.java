@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
 
-public final class atfh
-  implements Parcelable.Creator<OcrRecogResult>
+public class atfh
+  implements AbsListView.OnScrollListener
 {
-  public OcrRecogResult a(Parcel paramParcel)
-  {
-    return new OcrRecogResult(paramParcel);
-  }
+  public atfh(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public OcrRecogResult[] a(int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    return new OcrRecogResult[paramInt];
+    if (paramInt == 1) {
+      bfmr.b(ChooseInterestTagActivity.a(this.a));
+    }
   }
 }
 

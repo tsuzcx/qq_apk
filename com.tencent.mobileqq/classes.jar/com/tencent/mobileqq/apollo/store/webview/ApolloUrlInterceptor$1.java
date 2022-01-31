@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import aiwa;
+import ajkc;
 
 public class ApolloUrlInterceptor$1
   implements Runnable
 {
   public void run()
   {
-    aiwa.a(this.this$0);
+    ajkc.a(this.this$0);
   }
 }
 

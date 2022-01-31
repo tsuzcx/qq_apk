@@ -1,27 +1,26 @@
-import android.util.Property;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-class biwg
-  extends Property<biwc, Integer>
+public abstract interface biwg
 {
-  biwg(biwc parambiwc, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public abstract void a(VideoMaterial paramVideoMaterial);
   
-  public Integer a(biwc parambiwc)
-  {
-    if (parambiwc != null) {
-      return Integer.valueOf(biwc.b(parambiwc));
-    }
-    return Integer.valueOf(0);
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public void a(biwc parambiwc, Integer paramInteger)
-  {
-    if (parambiwc != null) {
-      biwc.b(parambiwc, paramInteger.intValue());
-    }
-  }
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 

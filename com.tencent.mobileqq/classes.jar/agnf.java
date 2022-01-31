@@ -1,24 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
 public class agnf
-  implements agrf
+  implements DialogInterface.OnClickListener
 {
-  public agnf(LingHbFragment paramLingHbFragment) {}
+  public agnf(PhotoListActivity paramPhotoListActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0)
-    {
-      this.a.a.findViewById(2131302444).setVisibility(8);
-      return;
-    }
-    this.a.a.findViewById(2131302444).setVisibility(0);
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agnf
  * JD-Core Version:    0.7.0.1
  */

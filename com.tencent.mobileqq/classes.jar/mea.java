@@ -1,48 +1,50 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.service.AVRedPacketConfig;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
-class mea
-  extends llt
+public class mea
+  implements View.OnClickListener
 {
-  mea(mdz parammdz) {}
+  public mea(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity, bfol parambfol) {}
   
-  public void a(boolean paramBoolean, AVRedPacketConfig paramAVRedPacketConfig)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Mec = new mec();
-    this.a.jdField_a_of_type_Mec.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig = paramAVRedPacketConfig;
-    if ((paramBoolean) && (paramAVRedPacketConfig != null) && (paramAVRedPacketConfig.mainSwitch)) {
-      this.a.jdField_a_of_type_Mec.jdField_a_of_type_Boolean = true;
+    boolean bool = false;
+    if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().U) {
+      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
+        axqw.b(null, "CliOper", "", "", "0X8005C28", "0X8005C28", 0, 0, "", "", "", "");
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.i, 1, "onGetAVRedPacketConfig红包配置获取结果, isSuccess[" + paramBoolean + "], config[" + paramAVRedPacketConfig + "], mMainSwitch[" + this.a.jdField_a_of_type_Mec.jdField_a_of_type_Boolean + "], mNeedDownloadRes[" + this.a.jdField_a_of_type_Mec.jdField_b_of_type_Boolean + "], Thread[" + Thread.currentThread().getId() + "]");
-    }
-    this.a.a(this.a.jdField_a_of_type_Mec);
-    if ((this.a.jdField_a_of_type_Mec.jdField_b_of_type_Boolean) && (paramAVRedPacketConfig != null))
+    for (;;)
     {
-      if (!this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.a.jdField_a_of_type_Lls))
+      if (!this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().U) {
+        bool = true;
+      }
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.b(bool);
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().b("OnClick", bool);
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a();
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.b();
+      try
       {
-        QLog.w(this.a.i, 1, "startDownloadAVRedPacketRes, 调用失败");
+        this.jdField_a_of_type_Bfol.dismiss();
         return;
       }
-      this.a.b(this.a.jdField_a_of_type_Mec);
-      return;
+      catch (Throwable paramView)
+      {
+        paramView.printStackTrace();
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000)
+      {
+        axqw.b(null, "CliOper", "", "", "0X8005C23", "0X8005C23", 0, 0, "", "", "", "");
+        continue;
+        if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
+          axqw.b(null, "CliOper", "", "", "0X8005C27", "0X8005C27", 0, 0, "", "", "", "");
+        } else if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000) {
+          axqw.b(null, "CliOper", "", "", "0X8005C22", "0X8005C22", 0, 0, "", "", "", "");
+        }
+      }
     }
-    this.a.b(this.a.jdField_a_of_type_Mec);
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.i, 1, "红包资源下载结果, isSuccess[" + paramBoolean + "], resPath[" + paramString1 + "], bgMusicPath[" + paramString2 + "]");
-    }
-    this.a.jdField_a_of_type_Mec.jdField_a_of_type_JavaLangString = paramString1;
-    this.a.jdField_a_of_type_Mec.jdField_b_of_type_JavaLangString = paramString2;
-    this.a.jdField_a_of_type_Mec.c = paramBoolean;
-    if (paramBoolean) {
-      mez.a(paramString1);
-    }
-    this.a.b(this.a.jdField_a_of_type_Mec);
   }
 }
 

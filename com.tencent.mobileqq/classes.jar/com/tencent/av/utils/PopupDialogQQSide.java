@@ -6,17 +6,17 @@ import android.os.ResultReceiver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import babr;
-import bafb;
+import bbcv;
+import bbgg;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import mhn;
-import mho;
-import mhp;
+import msm;
+import msn;
+import mso;
 
 public class PopupDialogQQSide
   extends PublicBaseFragment
 {
-  public bafb a = null;
+  public bbgg a = null;
   
   void a()
   {
@@ -39,31 +39,31 @@ public class PopupDialogQQSide
     boolean bool1 = ((Bundle)localObject1).getBoolean("leftBtnVisiable", true);
     boolean bool2 = ((Bundle)localObject1).getBoolean("rightBtnVisiable", true);
     a();
-    localObject1 = new mhn(this, (ResultReceiver)localObject2);
-    localObject2 = new mho(this, (ResultReceiver)localObject2);
+    localObject1 = new msm(this, (ResultReceiver)localObject2);
+    localObject2 = new msn(this, (ResultReceiver)localObject2);
     if (i == 0) {
-      i = 2131654874;
+      i = 2131720772;
     }
     for (;;)
     {
       if (j == 0) {
-        j = 2131654874;
+        j = 2131720772;
       }
       for (;;)
       {
-        bafb localbafb = babr.a(getActivity(), k);
-        localbafb.setMessage(str2);
-        localbafb.setTitle(str1);
+        bbgg localbbgg = bbcv.a(getActivity(), k);
+        localbbgg.setMessage(str2);
+        localbbgg.setTitle(str1);
         if (bool1) {
-          localbafb.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
+          localbbgg.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
         }
         if (bool2) {
-          localbafb.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
+          localbbgg.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
         }
-        localbafb.setOnDismissListener(new mhp(this));
-        localbafb.setCancelable(true);
-        localbafb.show();
-        this.a = localbafb;
+        localbbgg.setOnDismissListener(new mso(this));
+        localbbgg.setCancelable(true);
+        localbbgg.show();
+        this.a = localbbgg;
         return;
       }
     }

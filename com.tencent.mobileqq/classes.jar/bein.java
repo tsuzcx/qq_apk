@@ -1,29 +1,10 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.widget.DynamicGridView;
-
-public class bein
-  extends AnimatorListenerAdapter
+public abstract interface bein
 {
-  public bein(DynamicGridView paramDynamicGridView, View paramView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, false);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, true);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
-  }
+  public abstract boolean doOnRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bein
  * JD-Core Version:    0.7.0.1
  */

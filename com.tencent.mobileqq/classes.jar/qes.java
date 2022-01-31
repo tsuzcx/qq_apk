@@ -1,20 +1,23 @@
-public abstract interface qes
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import java.util.List;
+
+public class qes
+  implements AdapterView.OnItemLongClickListener
 {
-  public abstract void a(qeq paramqeq);
+  public qes(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public abstract void a(qeq paramqeq, int paramInt);
-  
-  public abstract void a(qeq paramqeq, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(qeq paramqeq, boolean paramBoolean);
-  
-  public abstract void b(qeq paramqeq);
-  
-  public abstract void c(qeq paramqeq);
-  
-  public abstract void d(qeq paramqeq);
-  
-  public abstract void e(qeq paramqeq);
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if (!ReadInJoyDeliverUGCActivity.a(this.a).a().get(paramInt).equals(ReadInJoyDeliverUGCActivity.a(this.a))) {
+      ReadInJoyDeliverUGCActivity.a(this.a).a(paramInt);
+    }
+    ReadInJoyDeliverUGCActivity.a(this.a, false);
+    return true;
+  }
 }
 
 

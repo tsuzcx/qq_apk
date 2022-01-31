@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import advv;
+import aegu;
 import android.app.Activity;
 import android.util.Pair;
 import android.util.SparseArray;
-import awqx;
-import bahv;
+import axqw;
+import bbjc;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
-import vup;
+import whm;
 
 public class AIOGalleryScene$19
   implements Runnable
 {
-  public AIOGalleryScene$19(advv paramadvv, int paramInt, SparseArray paramSparseArray, ArrayList paramArrayList) {}
+  public AIOGalleryScene$19(aegu paramaegu, int paramInt, SparseArray paramSparseArray, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if ((advv.O(this.this$0) == null) || (advv.P(this.this$0).isFinishing())) {
+    if ((aegu.O(this.this$0) == null) || (aegu.P(this.this$0).isFinishing())) {
       return;
     }
     Object localObject;
     String str1;
     String str2;
-    if (vup.a(this.jdField_a_of_type_Int))
+    if (whm.a(this.jdField_a_of_type_Int))
     {
       localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(1);
       if (!(localObject instanceof Pair)) {
@@ -55,9 +55,9 @@ public class AIOGalleryScene$19
             if (localObject == null)
             {
               localObject = "";
-              advv.a(this.this$0, 2131627276, 2130839598, 55, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
-              awqx.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
-              if (vup.b(this.jdField_a_of_type_Int))
+              aegu.a(this.this$0, 2131692914, 2130839646, 55, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+              axqw.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
+              if (whm.b(this.jdField_a_of_type_Int))
               {
                 localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(2);
                 if (!(localObject instanceof String)) {
@@ -92,9 +92,9 @@ public class AIOGalleryScene$19
             break label285;
           }
           localObject = "";
-          advv.a(this.this$0, 2131627275, 2130839597, 56, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
-          awqx.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
-          this.this$0.a.c();
+          aegu.a(this.this$0, 2131692913, 2130839645, 56, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+          axqw.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
+          this.this$0.a.d();
           return;
         }
         catch (JSONException localJSONException3)

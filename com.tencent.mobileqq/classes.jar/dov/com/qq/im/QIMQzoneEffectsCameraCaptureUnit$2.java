@@ -1,15 +1,15 @@
 package dov.com.qq.im;
 
-import bhem;
+import bihc;
 
 public class QIMQzoneEffectsCameraCaptureUnit$2
   implements Runnable
 {
-  public QIMQzoneEffectsCameraCaptureUnit$2(bhem parambhem) {}
+  public QIMQzoneEffectsCameraCaptureUnit$2(bihc parambihc) {}
   
   public void run()
   {
-    bhem.a(this.this$0, "正在合成gif...");
+    bihc.a(this.this$0, "正在合成gif...");
   }
 }
 

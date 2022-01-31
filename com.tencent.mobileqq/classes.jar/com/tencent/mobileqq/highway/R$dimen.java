@@ -2,8 +2,8 @@ package com.tencent.mobileqq.highway;
 
 public final class R$dimen
 {
-  public static final int activity_horizontal_margin = 2131165188;
-  public static final int activity_vertical_margin = 2131165189;
+  public static final int activity_horizontal_margin = 2131296260;
+  public static final int activity_vertical_margin = 2131296261;
 }
 
 

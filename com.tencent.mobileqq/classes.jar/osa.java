@@ -1,16 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
 
-class osa
-  implements View.OnClickListener
+public class osa
+  extends bhvs
 {
-  osa(orz paramorz, String paramString, ArticleInfo paramArticleInfo) {}
-  
-  public void onClick(View paramView)
+  protected void a(String paramString)
   {
-    obz.a(orz.a(this.jdField_a_of_type_Orz), this.jdField_a_of_type_JavaLangString);
-    orz.a(1, obz.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    TaskManager.getInstance().accept(paramString);
   }
 }
 

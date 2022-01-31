@@ -1,20 +1,12 @@
-import android.view.animation.Animation;
-import cooperation.qzone.contentbox.PlusMenuContainer;
+import android.view.View;
 
-public class bfty
-  extends beem
+public abstract interface bfty
 {
-  public bfty(PlusMenuContainer paramPlusMenuContainer) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.setVisibility(4);
-    PlusMenuContainer.a(this.a, false);
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfty
  * JD-Core Version:    0.7.0.1
  */

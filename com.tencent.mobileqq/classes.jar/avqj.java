@@ -1,231 +1,260 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import pb.unite.search.DynamicSearch.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItemGroup;
+import java.net.URLEncoder;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class avqj
-  implements avqi<avom>
+  extends WebViewPlugin
+  implements bcbo
 {
-  public List<avom> a(Object... paramVarArgs)
+  private static String a;
+  protected Activity a;
+  
+  static
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length < 3)) {
-      return null;
+    jdField_a_of_type_JavaLangString = "remind";
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
-    String str1 = "";
-    if ((paramVarArgs[0] instanceof String)) {
-      str1 = (String)paramVarArgs[0];
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "remindSuccess : " + paramString);
     }
-    Object localObject;
-    int i;
-    ArrayList localArrayList1;
-    Iterator localIterator;
-    if ((paramVarArgs[1] instanceof List))
+    boolean bool1 = avqg.a(avqg.a(paramString, "isNew"));
+    boolean bool2 = avqg.a(avqg.a(paramString, "isInsert"));
+    avqg.a(paramString, "title");
+    avqg.a(avqg.a(paramString, "startDate")).longValue();
+    avqg.a(avqg.a(paramString, "endDate")).longValue();
+    if (bool1)
     {
-      localObject = (List)paramVarArgs[1];
-      i = -1;
-      if ((paramVarArgs[2] instanceof Integer)) {
-        i = ((Integer)paramVarArgs[2]).intValue();
+      paramString = "0";
+      if (!bool2) {
+        break label180;
       }
-      localArrayList1 = new ArrayList(((List)localObject).size());
-      localIterator = ((List)localObject).iterator();
     }
-    label920:
-    for (;;)
+    label180:
+    for (String str = "0";; str = "1")
     {
-      label448:
-      label1223:
-      if (localIterator.hasNext())
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "createAndAddReport  r2: " + str + " r3: " + paramString);
+      }
+      axqw.b(null, "CliOper", "", "", "Time_reminder", "Updata_clock", 0, 0, str, paramString, "", "");
+      return;
+      paramString = "1";
+      break;
+    }
+  }
+  
+  public void a(String paramString, JsBridgeListener paramJsBridgeListener)
+  {
+    long l = avqg.a(avqg.a(paramString, "currentDate")).longValue();
+    avqg.a(this.jdField_a_of_type_AndroidAppActivity, l * 1000L, new avqk(this), paramJsBridgeListener);
+  }
+  
+  public void b(String paramString)
+  {
+    Object localObject2 = this.mRuntime.a();
+    Object localObject1 = "";
+    String str3 = "";
+    Object localObject3 = new StringBuilder();
+    if (localObject2 != null) {
+      localObject1 = ((CustomWebView)localObject2).getUrl();
+    }
+    try
+    {
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        DynamicSearch.ResultItemGroup localResultItemGroup = (DynamicSearch.ResultItemGroup)localIterator.next();
-        long l3 = localResultItemGroup.group_mask.get();
-        String str2 = localResultItemGroup.group_name.get().toStringUtf8();
-        paramVarArgs = localResultItemGroup.rpt_highlight_words.get();
-        ArrayList localArrayList2 = new ArrayList(paramVarArgs.size());
-        paramVarArgs = paramVarArgs.iterator();
-        for (;;)
-        {
-          if (paramVarArgs.hasNext())
-          {
-            localArrayList2.add(((ByteStringMicro)paramVarArgs.next()).toStringUtf8());
-            continue;
-            localObject = new ArrayList();
-            break;
-          }
-        }
-        List localList = localResultItemGroup.result_items.get();
-        ArrayList localArrayList3 = new ArrayList(localList.size());
-        boolean bool1;
-        String str3;
-        String str4;
-        long l1;
-        int j;
-        if (localResultItemGroup.hide_title.get() == 1)
-        {
-          bool1 = true;
-          str3 = localResultItemGroup.group_footer_name.get().toStringUtf8();
-          str4 = localResultItemGroup.group_footer_jump_url.get().toStringUtf8();
-          l1 = localList.size();
-          j = 0;
-        }
-        label371:
-        boolean bool2;
-        for (;;)
-        {
-          if (j >= localList.size()) {
-            break label1102;
-          }
-          paramVarArgs = (DynamicSearch.ResultItem)localList.get(j);
-          localObject = paramVarArgs.sub_result_items.get();
-          int m = ((List)localObject).size() + 1;
-          ArrayList localArrayList4 = new ArrayList(m);
-          localArrayList4.add(paramVarArgs);
-          localArrayList4.addAll((Collection)localObject);
-          int k = 0;
-          if (k < m)
-          {
-            DynamicSearch.ResultItem localResultItem = (DynamicSearch.ResultItem)localArrayList4.get(k);
-            paramVarArgs = localResultItem.result_id.get().toStringUtf8();
-            bool2 = localResultItem.layout_id.has();
-            localObject = localResultItem.name.get().toStringUtf8();
-            long l2;
-            String str5;
-            String str6;
-            String str7;
-            if (localResultItem.group_mask.has())
-            {
-              l2 = localResultItem.group_mask.get();
-              str5 = localResultItem.pic_url.get().toStringUtf8();
-              str6 = localResultItem.jmp_url.get().toStringUtf8();
-              str7 = localResultItem.extension.get().toStringUtf8();
-              if (!bool2) {
-                break label920;
-              }
-              localObject = null;
-              paramVarArgs = (Object[])localObject;
-              switch (localResultItem.layout_id.get())
-              {
-              default: 
-                paramVarArgs = (Object[])localObject;
-              case 5: 
-              case 10: 
-                label583:
-                if ((paramVarArgs != null) && (paramVarArgs.b()))
-                {
-                  paramVarArgs.r = localResultItem.seporator_type.get();
-                  paramVarArgs.a = bool1;
-                  localArrayList3.add(paramVarArgs);
-                  l2 = l1;
-                }
-                break;
-              }
-            }
-            for (;;)
-            {
-              k += 1;
-              l1 = l2;
-              break label371;
-              bool1 = false;
-              break;
-              l2 = l3;
-              break label448;
-              paramVarArgs = new avou(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new avpq(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new avov(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new avpd(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new avpm(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new avpj(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new avpk(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new avpa(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new avoy(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new avpb(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new avpl(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new avpi(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              paramVarArgs = new avpg(str1, l3, localArrayList2, localResultItem, i);
-              break label583;
-              l2 = l1 - 1L;
-              continue;
-              if (!avwf.b(l2))
-              {
-                QLog.e("Q.uniteSearch.NetBaseParser", 1, "itemGroupMask is not valid. mask=" + l2);
-                l2 = l1;
-              }
-              else if (l2 == 2073745984L)
-              {
-                paramVarArgs = new avpw(str1, str7, -4, str5);
-                paramVarArgs.r = localResultItem.seporator_type.get();
-                localArrayList3.add(paramVarArgs);
-                l2 = l1;
-              }
-              else
-              {
-                paramVarArgs = new avnl(str1, paramVarArgs, (String)localObject, str5, str6, str7, l2, localArrayList2, i);
-                l2 = l1;
-                if (paramVarArgs != null)
-                {
-                  paramVarArgs.r = localResultItem.seporator_type.get();
-                  paramVarArgs.c = bool1;
-                  paramVarArgs.g = j;
-                  paramVarArgs.h = j;
-                  paramVarArgs.a = i;
-                  localArrayList3.add(paramVarArgs);
-                  l2 = l1;
-                }
-              }
-            }
-          }
-          j += 1;
-        }
-        label1102:
-        if (l1 > 0L)
-        {
-          l1 = localResultItemGroup.total_result_count.get();
-          paramVarArgs = localResultItemGroup.more_url.get().toStringUtf8();
-          localObject = localResultItemGroup.more_name.get().toStringUtf8();
-          if (localResultItemGroup.highlight_title_keyword.get() == 1)
-          {
-            bool2 = true;
-            if (localResultItemGroup.hide_title_blank_view.get() != 1) {
-              break label1223;
-            }
-          }
-          for (boolean bool3 = true;; bool3 = false)
-          {
-            localArrayList1.add(new avnk(str1, l3, str2, localArrayList3, l1, paramVarArgs, (String)localObject, localArrayList2, bool1, bool2, bool3, str3, str4));
-            break;
-            bool2 = false;
-            break label1159;
-          }
-        }
+        localObject2 = URLEncoder.encode((String)localObject1, "utf-8");
+        localObject1 = localObject2;
+      }
+      String str1;
+      long l1;
+      long l2;
+      long l3;
+      String str2;
+      int i;
+      label408:
+      for (;;)
+      {
+        str1 = str3;
+        localObject2 = localObject1;
       }
     }
-    label1159:
-    return localArrayList1;
+    catch (Exception localException1)
+    {
+      do
+      {
+        for (;;)
+        {
+          try
+          {
+            if (!TextUtils.isEmpty(paramString))
+            {
+              str1 = URLEncoder.encode(paramString, "utf-8");
+              localObject2 = localObject1;
+            }
+            ((StringBuilder)localObject3).append("p=").append(str1);
+            ((StringBuilder)localObject3).append("&j=").append((String)localObject2);
+            l1 = VACDReportUtil.a(null, "qqwallet", "insertCalendar", "invoke", ((StringBuilder)localObject3).toString(), 0, null);
+            if (!TextUtils.isEmpty(paramString)) {
+              continue;
+            }
+            VACDReportUtil.endReport(l1, "parseUrl", null, -1, "json is empty");
+            return;
+          }
+          catch (Exception localException2)
+          {
+            continue;
+          }
+          localException1 = localException1;
+          str1 = str3;
+          localObject2 = localObject1;
+          if (QLog.isDevelopLevel())
+          {
+            localException1.printStackTrace();
+            str1 = str3;
+            localObject2 = localObject1;
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "createCalendar : " + paramString);
+        }
+        localObject1 = null;
+        try
+        {
+          paramString = new JSONObject(paramString);
+          localObject2 = paramString.optString("title");
+          l2 = paramString.optLong("startDate");
+          l3 = paramString.optLong("endDate");
+          str1 = paramString.optString("remark");
+          str2 = paramString.optString("address");
+          str3 = paramString.optString("callback");
+          localObject3 = paramString.optJSONArray("reminds");
+          paramString = (String)localObject1;
+          if (localObject3 != null)
+          {
+            paramString = (String)localObject1;
+            if (((JSONArray)localObject3).length() > 0)
+            {
+              localObject1 = new int[((JSONArray)localObject3).length()];
+              i = 0;
+              for (;;)
+              {
+                paramString = (String)localObject1;
+                if (i >= ((JSONArray)localObject3).length()) {
+                  break;
+                }
+                localObject1[i] = ((JSONArray)localObject3).getInt(i);
+                i += 1;
+              }
+            }
+          }
+          if (TextUtils.isEmpty((CharSequence)localObject2)) {
+            break label408;
+          }
+        }
+        catch (JSONException paramString)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "JSONException " + paramString.getMessage());
+          }
+          VACDReportUtil.endReport(l1, "parseUrl", null, -1, "JsonException");
+          return;
+        }
+        if ((l2 < 1L) || (l3 < 1L))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "params error.");
+          }
+          VACDReportUtil.endReport(l1, "parseUrl", null, -1, "params error.");
+          return;
+        }
+        VACDReportUtil.a(l1, null, "parseUrl", null, 0, null);
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "startTime : " + avql.a(1000L * l2) + " endTime : " + avql.a(1000L * l3));
+        }
+        i = avqg.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject2, 1000L * l2, 1000L * l3, str1, str2, paramString);
+        VACDReportUtil.endReport(l1, "insert", null, i, null);
+        if (!TextUtils.isEmpty(str3)) {
+          super.callJs(str3, new String[] { "{\"retCode\":" + i + "}" });
+        }
+      } while (i != 0);
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "addByRecevierReport");
+      }
+      axqw.b(null, "CliOper", "", "", "Time_reminder", "Rec_ckl_add", 0, 0, "", "", "", "");
+      return;
+    }
+  }
+  
+  public String[] getMultiNameSpace()
+  {
+    return new String[] { "REMIND", "calendar" };
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (("REMIND".equals(paramString2)) && ("createTimePicker".equals(paramString3)))
+    {
+      a(paramVarArgs[0], paramJsBridgeListener);
+      return true;
+    }
+    if (("calendar".equals(paramString2)) && ("addEvent".equals(paramString3)))
+    {
+      b(paramVarArgs[0]);
+      return true;
+    }
+    if (("calendar".equals(paramString2)) && ("remindSuccess".equals(paramString3)))
+    {
+      a(paramVarArgs[0]);
+      return true;
+    }
+    if (("calendar".equals(paramString2)) && ("remindDelete".equals(paramString3)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "deleteRemindSuccess");
+      }
+      axqw.b(null, "CliOper", "", "", "Time_reminder", "Delete_clock", 0, 0, "", "", "", "");
+      return true;
+    }
+    if (("calendar".equals(paramString2)) && ("remindMsgReport".equals(paramString3)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "remindMsgReport : " + paramVarArgs[0]);
+      }
+      axqw.b(null, "CliOper", "", "", "Time_reminder", "Obj_clock", 0, 0, avqg.a(paramVarArgs[0], "entranceType"), avqg.a(paramVarArgs[0], "role"), "", "");
+      return true;
+    }
+    if (("calendar".equals(paramString2)) && ("remindAioReport".equals(paramString3)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "remindAioReport");
+      }
+      axqw.b(null, "CliOper", "", "", "Time_reminder", "Clock_card_clk", 0, 0, "", "", "", "");
+      return true;
+    }
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidAppActivity = this.mRuntime.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avqj
  * JD-Core Version:    0.7.0.1
  */

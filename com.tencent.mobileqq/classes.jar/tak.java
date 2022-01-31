@@ -1,69 +1,75 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetTagList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class tak
-  extends slz<tbx>
+  extends tbe
 {
-  private static final String jdField_a_of_type_JavaLangString = skt.a("StorySvc.get_label_list");
-  private final boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private final String jdField_b_of_type_JavaLangString;
-  private int c;
-  private final int d;
+  qqstory_service.RspFeedLikeList jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspFeedLikeList;
+  boolean jdField_a_of_type_Boolean;
   
-  public tak(int paramInt1, long paramLong, String paramString, int paramInt2)
+  public tak(tai paramtai) {}
+  
+  public tak(tai paramtai, qqstory_service.RspFeedLikeList paramRspFeedLikeList, boolean paramBoolean)
   {
-    this.c = paramInt1;
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.d = paramInt2;
-    this.jdField_a_of_type_Boolean = true;
+    super(paramRspFeedLikeList.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspFeedLikeList = paramRspFeedLikeList;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public tak(String paramString, int paramInt)
+  public List<LikeEntry> a(qqstory_struct.FeedLikeInfo paramFeedLikeInfo)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.d = paramInt;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public slu a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetTagList localRspGetTagList = new qqstory_service.RspGetTagList();
-    try
+    paramFeedLikeInfo = paramFeedLikeInfo.like_list.get();
+    ArrayList localArrayList1 = new ArrayList();
+    tdo localtdo = (tdo)tdc.a(2);
+    ArrayList localArrayList2 = new ArrayList();
+    int i = 0;
+    while (i < paramFeedLikeInfo.size())
     {
-      localRspGetTagList.mergeFrom(paramArrayOfByte);
-      return new tbx(localRspGetTagList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
+      LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)paramFeedLikeInfo.get(i));
+      if (localtdo.b(localLikeEntry.unionId) == null) {
+        localArrayList2.add(new tej("", localLikeEntry.unionId));
       }
+      localArrayList1.add(localLikeEntry);
+      i += 1;
+    }
+    if (!localArrayList2.isEmpty()) {
+      new tkl().a(1, localArrayList2);
+    }
+    return localArrayList1;
+  }
+  
+  public void a()
+  {
+    qqstory_struct.FeedLikeInfo localFeedLikeInfo = (qqstory_struct.FeedLikeInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspFeedLikeList.feed_like_info.get();
+    List localList = a(localFeedLikeInfo);
+    this.jdField_a_of_type_Tai.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount = localFeedLikeInfo.like_total_count.get();
+    this.jdField_a_of_type_Tai.a.jdField_a_of_type_JavaUtilList = localList;
+    this.jdField_a_of_type_Tai.a.jdField_a_of_type_Tco.a(localList, this.jdField_a_of_type_Tai.c, this.jdField_a_of_type_Boolean, true);
+    this.jdField_a_of_type_Tai.a.a(localList);
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Tai.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory:FeedLikeDataProvider", 2, new Object[] { "GetLikeListResponse NetWork ErrorCode:", Integer.valueOf(paramInt) });
     }
   }
   
-  protected byte[] a()
+  public void a(int paramInt, String paramString)
   {
-    qqstory_service.ReqGetTagList localReqGetTagList = new qqstory_service.ReqGetTagList();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localReqGetTagList.music_type.set(this.c);
-      localReqGetTagList.music_id.set(this.jdField_b_of_type_Long);
+    this.jdField_a_of_type_Tai.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory:FeedLikeDataProvider", 2, "GetLikeListResponse fails: " + paramInt + "|" + paramString);
     }
-    localReqGetTagList.start_cookie.set(this.jdField_b_of_type_JavaLangString);
-    localReqGetTagList.size.set(this.d);
-    return localReqGetTagList.toByteArray();
   }
 }
 

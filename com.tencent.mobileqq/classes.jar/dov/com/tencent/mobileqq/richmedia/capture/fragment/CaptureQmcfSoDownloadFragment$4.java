@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.richmedia.capture.fragment;
 
-import awhj;
+import axgp;
 
 class CaptureQmcfSoDownloadFragment$4
   implements Runnable
@@ -9,7 +9,7 @@ class CaptureQmcfSoDownloadFragment$4
   
   public void run()
   {
-    awhj.a().b();
+    axgp.a().b();
   }
 }
 

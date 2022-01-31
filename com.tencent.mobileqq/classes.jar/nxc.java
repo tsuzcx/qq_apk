@@ -1,58 +1,61 @@
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.RectF;
-import android.text.TextPaint;
-import android.text.style.ReplacementSpan;
-import org.jetbrains.annotations.NotNull;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class nxc
-  extends ReplacementSpan
+public class nxc
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private nxc(nwx paramnwx) {}
+  public nxc(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  private float a(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return paramPaint.measureText(paramCharSequence, paramInt1, paramInt2);
-  }
-  
-  private TextPaint a(Paint paramPaint)
-  {
-    paramPaint = new TextPaint(paramPaint);
-    paramPaint.setTextSize(bajq.d(9.0F));
-    return paramPaint;
-  }
-  
-  public void draw(@NotNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NotNull Paint paramPaint)
-  {
-    paramPaint.setColor(Color.parseColor("#376099"));
-    paramPaint.setTextSize(bajq.b(9.0F));
-    Paint.FontMetricsInt localFontMetricsInt = paramPaint.getFontMetricsInt();
-    int i = localFontMetricsInt.bottom - localFontMetricsInt.top;
-    Math.abs(localFontMetricsInt.leading);
-    Math.abs(localFontMetricsInt.ascent);
-    Math.abs(localFontMetricsInt.descent);
-    paramPaint.setAntiAlias(true);
-    RectF localRectF = new RectF();
-    localRectF.left = ((int)paramFloat);
-    int j = (paramInt5 - paramInt3 - localFontMetricsInt.descent + localFontMetricsInt.top) / 2;
-    localRectF.top = (paramInt3 + j);
-    localRectF.bottom = (paramInt5 - j);
-    localRectF.right = (localRectF.left + (int)paramPaint.measureText(paramCharSequence, paramInt1, paramInt2));
-    paramCanvas.drawText(paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt4 - localFontMetricsInt.descent, paramPaint);
-    nwx.a(paramCanvas, paramPaint, (int)a(paramPaint, paramCharSequence, paramInt1, paramInt2), i, bajq.b(1.0F), bajq.b(1.0F), bajq.b(1.0F), bajq.b(1.0F), bajq.b(1.0F), paramFloat, paramInt4 - i);
-  }
-  
-  public int getSize(@NotNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    paramCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
-    return (int)a(paramPaint).measureText(paramCharSequence.toString());
+    ReadInJoySettingActivity.c(this.a, paramBoolean);
+    int i;
+    label51:
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
+    {
+      bcpw.a(this.a.getBaseContext(), 2, 2131718571, 2000).a();
+      ReadInJoySettingActivity.a(this.a).setText(2131718570);
+      if (!paramBoolean) {
+        break label149;
+      }
+      i = 1;
+      bhvh.e(i);
+      bhvh.a(paramBoolean);
+      bhvh.a(true);
+      localQQAppInterface = this.a.a;
+      if (!paramBoolean) {
+        break label154;
+      }
+      paramCompoundButton = "0X8008236";
+      label80:
+      if (!paramBoolean) {
+        break label160;
+      }
+    }
+    label149:
+    label154:
+    label160:
+    for (String str = "0X8008236";; str = "0X8008235")
+    {
+      noo.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
+      return;
+      bcpw.a(this.a.getBaseContext(), 2, 2131718569, 2000).a();
+      ReadInJoySettingActivity.a(this.a).setText(2131718573);
+      break;
+      i = 0;
+      break label51;
+      paramCompoundButton = "0X8008235";
+      break label80;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nxc
  * JD-Core Version:    0.7.0.1
  */

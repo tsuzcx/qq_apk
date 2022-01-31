@@ -1,426 +1,523 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.readinjoy.ReadInJoyManager;
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.model.RenderInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public abstract class beyr
+public class beyr
 {
-  public int a;
-  public String a;
-  protected boolean a;
-  public int b;
-  protected String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
+  static final int jdField_a_of_type_Int = belj.a("MiniApp", "mini_app_report_max_time_cost", 120000);
+  private static SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private static ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public static HashMap<String, beyt> a;
+  private static final Map<String, List<String>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static SparseArray<beys> b = new SparseArray();
   
-  public beyr()
+  static
   {
-    this.jdField_a_of_type_Int = 256;
+    jdField_a_of_type_AndroidUtilSparseArray.put(1, "onlaunch");
+    jdField_a_of_type_AndroidUtilSparseArray.put(4, "basejsdownloadstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(5, "basejsdownloadend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(6, "basejsunzipstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(7, "basejsunzipend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(8, "basejsreadstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(9, "basejsreadend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(10, "basejsreadstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(11, "basejsreadend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(12, "appconfigreadstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(13, "appconfigreadend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(14, "servicejsstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(15, "servicejsend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(16, "basejsstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(17, "basejsready");
+    jdField_a_of_type_AndroidUtilSparseArray.put(18, "basejsstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(19, "basejsready");
+    jdField_a_of_type_AndroidUtilSparseArray.put(2, "apponloaded");
+    jdField_a_of_type_AndroidUtilSparseArray.put(20, "apponhide");
+    jdField_a_of_type_AndroidUtilSparseArray.put(21, "apponshow");
+    jdField_a_of_type_AndroidUtilSparseArray.put(22, "apponunload");
+    jdField_a_of_type_AndroidUtilSparseArray.put(23, "jsonerror");
+    jdField_a_of_type_AndroidUtilSparseArray.put(24, "appcreate");
+    jdField_a_of_type_AndroidUtilSparseArray.put(100, "service_start");
+    jdField_a_of_type_AndroidUtilSparseArray.put(101, "service_end");
+    jdField_a_of_type_AndroidUtilSparseArray.put(102, "webview_start");
+    jdField_a_of_type_AndroidUtilSparseArray.put(103, "webview_end");
+    jdField_a_of_type_AndroidUtilSparseArray.put(104, "app_load_start");
+    jdField_a_of_type_AndroidUtilSparseArray.put(105, "app_load_end");
+    jdField_a_of_type_AndroidUtilSparseArray.put(104, "service_app_start");
+    jdField_a_of_type_AndroidUtilSparseArray.put(105, "service_app_end");
+    jdField_a_of_type_AndroidUtilSparseArray.put(106, "webview_app_start");
+    jdField_a_of_type_AndroidUtilSparseArray.put(107, "webview_app_end");
+    jdField_a_of_type_AndroidUtilSparseArray.put(200, "runtimecreatetaskstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(201, "runtimecreatetaskend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(202, "runtimeinittaskstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(203, "runtimeinittaskend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(204, "baselibloadasynctaskstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(205, "baselibloadasynctaskend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(206, "apkgloadasynctaskstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(207, "apkgloadasynctaskend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(208, "serviceinittaskstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(209, "serviceinittaskend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(210, "preloadflagtaskstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(211, "preloadflagtaskend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(212, "flutterviewinitstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(213, "flutterviewcreateend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(214, "flutterviewchannelinitend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(215, "flutterlaunchappstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(216, "flutterlaunchappend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(217, "fluttermatchtimecost");
+    jdField_a_of_type_AndroidUtilSparseArray.put(218, "fluttersetdatatimecost");
+    jdField_a_of_type_AndroidUtilSparseArray.put(219, "flutterrendertimecost");
+    jdField_a_of_type_AndroidUtilSparseArray.put(220, "fluttertotaltimecost");
+    jdField_a_of_type_AndroidUtilSparseArray.put(600, "ssocmdstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(601, "ssocmdend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(602, "x5installsuccess");
+    jdField_a_of_type_AndroidUtilSparseArray.put(603, "x5installfail");
+    jdField_a_of_type_AndroidUtilSparseArray.put(604, "x5installtimeout");
+    jdField_a_of_type_AndroidUtilSparseArray.put(605, "preloadprocess");
+    jdField_a_of_type_AndroidUtilSparseArray.put(606, "pageshow");
+    jdField_a_of_type_AndroidUtilSparseArray.put(607, "pagehide");
+    jdField_a_of_type_AndroidUtilSparseArray.put(612, "pageclick");
+    jdField_a_of_type_AndroidUtilSparseArray.put(608, "onlaunchsucc");
+    jdField_a_of_type_AndroidUtilSparseArray.put(609, "onlaunchfail");
+    jdField_a_of_type_AndroidUtilSparseArray.put(610, "onlaunchtimeout");
+    jdField_a_of_type_AndroidUtilSparseArray.put(619, "appdownloadstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(620, "appdownloadend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(621, "appunzipstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(622, "appunzipend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(611, "domready");
+    jdField_a_of_type_AndroidUtilSparseArray.put(613, "subpkgdownloadstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(614, "subpkgdownloadend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(615, "subpkgunpackstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(616, "subpkgunpackend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(617, "basejsdownloadfailed");
+    jdField_a_of_type_AndroidUtilSparseArray.put(618, "basejsunzipfailed");
+    jdField_a_of_type_AndroidUtilSparseArray.put(623, "pageframeloadstart");
+    jdField_a_of_type_AndroidUtilSparseArray.put(624, "pageframeloadend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(626, "preload_process_start");
+    jdField_a_of_type_AndroidUtilSparseArray.put(627, "preload_process_end");
+    jdField_a_of_type_AndroidUtilSparseArray.put(628, "http_request_result");
+    jdField_a_of_type_AndroidUtilSparseArray.put(629, "cpuPerformance");
+    jdField_a_of_type_AndroidUtilSparseArray.put(630, "fpsPerformance");
+    jdField_a_of_type_AndroidUtilSparseArray.put(631, "memoryPerformance");
+    jdField_a_of_type_AndroidUtilSparseArray.put(632, "web_socket_open");
+    jdField_a_of_type_AndroidUtilSparseArray.put(633, "web_socket_close");
+    jdField_a_of_type_AndroidUtilSparseArray.put(634, "web_socket_failure");
+    jdField_a_of_type_AndroidUtilSparseArray.put(642, "fpsVariance");
+    jdField_a_of_type_AndroidUtilSparseArray.put(643, "memoryGrowth");
+    jdField_a_of_type_AndroidUtilSparseArray.put(644, "miniappstaytime");
+    jdField_a_of_type_AndroidUtilSparseArray.put(636, "first_render_result");
+    jdField_a_of_type_AndroidUtilSparseArray.put(637, "re_render_result");
+    jdField_a_of_type_AndroidUtilSparseArray.put(638, "newpage_result");
+    jdField_a_of_type_AndroidUtilSparseArray.put(639, "storage_usage");
+    jdField_a_of_type_AndroidUtilSparseArray.put(640, "http_download");
+    jdField_a_of_type_AndroidUtilSparseArray.put(641, "http_upload");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1001, "minigamebaselibloadso");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1002, "minigamebaselibloadsoend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1003, "minigamebaselibloadjar");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1004, "minigamebaselibloadjarend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1005, "minigamebaselibloadjs");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1006, "minigamebaselibloadjsend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1007, "minigameloadmainpkg");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1008, "minigameloadmainpkgend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1009, "minigameloadsubpkg");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1010, "minigameloadsubpkgend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1011, "minigameprogresserror");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1012, "minigamebaselibinstallskip");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1013, "minigameenterloadingpage");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1014, "minigameloadbaselib");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1015, "minigameloadbaselibend");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1016, "minigamefirsthide");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1017, "minigamesurvival");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1018, "minigameblackscreen");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1019, "minigamenorefresh");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1020, "minigamefirststaytime");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1021, "minigamestaytime");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1022, "minigamefirstlaunch");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1023, "minigametwicelaunch");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1024, "minigameerrordialog");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1025, "capsulebuttoncloseclick");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1026, "loadingpagecloseclick");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1027, "minigameimagedownload");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1028, "miniappstartbycache");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1030, "stepstartactivity");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1031, "steponcreate");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1032, "stepinitdatamustonresume");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1033, "steploadbaselibtimecost");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1034, "stepinitjspluginlist");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1035, "steponresume");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1036, "steploadgpkg");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1037, "stepinitruntime");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1038, "stepinitjspluginengine");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1039, "stepcreatesurfaceview");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1040, "steplaunchgame");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1042, "stepfirstframefromgamelaunched");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1043, "stepfirstframefromcreate");
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(1));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(4));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(6));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(619));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(613));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(621));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(626));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(100));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(101));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(102));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(103));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(619));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(620));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(4));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(5));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(14));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(15));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(18));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(19));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(104));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(105));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(106));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(107));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(2));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(5));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(617));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(7));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(618));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(620));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(614));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(622));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(627));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(1022));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(1023));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(200));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(202));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(204));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(206));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(208));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(210));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(212));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(212));
+    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(215));
+    b.put(2, new beys("launch_result", 1));
+    b.put(5, new beys("basejs_download_result", 4));
+    b.put(617, new beys("basejs_download_result", 4));
+    b.put(7, new beys("basejs_unzip_result", 6));
+    b.put(618, new beys("basejs_unzip_result", 6));
+    b.put(620, new beys("app_download_result", 619));
+    b.put(614, new beys("sub_download_result", 613));
+    b.put(622, new beys("app_unzip_result", 621));
+    b.put(627, new beys("preload_result", 626));
+    b.put(1022, new beys("game_first_launch_result", 1));
+    b.put(1023, new beys("game_twice_launch_result", 1));
+    b.put(201, new beys("runtime_create_task", 200));
+    b.put(203, new beys("runtime_init_task", 202));
+    b.put(205, new beys("base_lib_load_async_task", 204));
+    b.put(207, new beys("apkg_load_async_task", 206));
+    b.put(209, new beys("service_init_task", 208));
+    b.put(211, new beys("preload_flag_task", 210));
+    b.put(213, new beys("flutter_view_create", 212));
+    b.put(214, new beys("flutter_view_channel_init", 212));
+    b.put(216, new beys("flutter_launch_app", 215));
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  private void a(beyx parambeyx, String paramString)
+  public static beyt a(String paramString)
   {
-    if (parambeyx != null)
+    beyt localbeyt2 = (beyt)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    beyt localbeyt1 = localbeyt2;
+    if (localbeyt2 == null)
     {
-      parambeyx.jdField_a_of_type_Int = 2;
-      parambeyx.jdField_a_of_type_JavaLangString = paramString;
+      localbeyt1 = new beyt();
+      localbeyt1.jdField_a_of_type_JavaLangString = paramString;
+      jdField_a_of_type_JavaUtilHashMap.put(paramString, localbeyt1);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginPreloadStrategy", 2, "pluginType:" + this.jdField_b_of_type_Int + "  " + paramString);
-    }
+    return localbeyt1;
   }
   
-  public int a(QQAppInterface paramQQAppInterface, String paramString)
+  public static String a(int paramInt)
   {
-    if ((paramQQAppInterface == null) || (paramString == null)) {
-      return 3;
-    }
-    Object localObject1 = (mmy)paramQQAppInterface.getManager(70);
-    int m;
-    if (localObject1 != null) {
-      m = ((mmy)localObject1).a(paramQQAppInterface);
-    }
-    for (int k = ((mmy)localObject1).a();; k = 0)
+    return (String)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+  }
+  
+  public static String a(MiniAppInfo paramMiniAppInfo)
+  {
+    if (paramMiniAppInfo != null)
     {
-      Object localObject2 = (auqh)paramQQAppInterface.getManager(36);
-      int i = 0;
-      int j = 0;
-      boolean bool1 = false;
-      boolean bool2 = bool1;
-      int n = j;
-      int i1;
-      if (localObject2 != null)
+      if (paramMiniAppInfo.isReportTypeMiniGame()) {
+        return "1";
+      }
+      return "0";
+    }
+    return "0";
+  }
+  
+  public static JSONArray a(String paramString)
+  {
+    beyt localbeyt = a(paramString);
+    paramString = new JSONArray();
+    try
+    {
+      JSONObject localJSONObject;
+      if (localbeyt.jdField_b_of_type_JavaUtilMap.size() > 0)
       {
-        n = ((auqh)localObject2).b(0);
-        localObject1 = ((auqh)localObject2).b(0);
-        localObject2 = ((auqh)localObject2).a();
-        if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
-          break label663;
-        }
-        bool1 = false;
-        i = 0;
-        i1 = 0;
-        if (i1 < ((List)localObject1).size())
+        localJSONObject = new JSONObject();
+        localJSONObject.put("navigationStart", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(1)));
+        localJSONObject.put("serviceStart", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(100)));
+        localJSONObject.put("serviceEnd", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(101)));
+        localJSONObject.put("viewStart", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(102)));
+        localJSONObject.put("viewEnd", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(103)));
+        localJSONObject.put("fetchPkgStart", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(619)));
+        localJSONObject.put("fetchPkgEnd", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(620)));
+        localJSONObject.put("fetchSdkStart", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(4)));
+        localJSONObject.put("fetchSdkEnd", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(5)));
+        localJSONObject.put("loadSdkServiceStart", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(14)));
+        localJSONObject.put("loadSdkServiceEnd", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(15)));
+        localJSONObject.put("loadSdkViewStart", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(18)));
+        localJSONObject.put("loadSdkViewEnd", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(19)));
+        localJSONObject.put("loadAppServiceStart", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(104)));
+        localJSONObject.put("loadAppServiceEnd", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(105)));
+        localJSONObject.put("loadAppViewStart", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(106)));
+        localJSONObject.put("loadAppViewEnd", localbeyt.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(107)));
+        paramString.put(localJSONObject);
+      }
+      if (localbeyt.jdField_a_of_type_JavaUtilMap.size() > 0)
+      {
+        localJSONObject = new JSONObject();
+        localJSONObject.put("navigationStart", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1)));
+        localJSONObject.put("serviceStart", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(100)));
+        localJSONObject.put("serviceEnd", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(101)));
+        localJSONObject.put("viewStart", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(102)));
+        localJSONObject.put("viewEnd", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(103)));
+        localJSONObject.put("fetchPkgStart", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(619)));
+        localJSONObject.put("fetchPkgEnd", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(620)));
+        localJSONObject.put("fetchSdkStart", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(4)));
+        localJSONObject.put("fetchSdkEnd", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(5)));
+        localJSONObject.put("loadSdkServiceStart", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(14)));
+        localJSONObject.put("loadSdkServiceEnd", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(15)));
+        localJSONObject.put("loadSdkViewStart", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(18)));
+        localJSONObject.put("loadSdkViewEnd", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(19)));
+        localJSONObject.put("loadAppServiceStart", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(104)));
+        localJSONObject.put("loadAppServiceEnd", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(105)));
+        localJSONObject.put("loadAppViewStart", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(106)));
+        localJSONObject.put("loadAppViewEnd", localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(107)));
+        paramString.put(localJSONObject);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        besl.d("MiniReportManager", "create performance result failed", localException);
+      }
+    }
+    besl.d("MiniReportManager", "wesley: getformance: " + paramString.toString());
+    return paramString;
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt, String paramString)
+  {
+    a(paramMiniAppInfo, paramInt, null, null, null, 0, paramString, 0L, null, "", "", "", "");
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt, String paramString, long paramLong)
+  {
+    a(paramMiniAppInfo, paramInt, null, null, null, 0, paramString, paramLong, null, "", "", "", "");
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt, String paramString1, String paramString2)
+  {
+    a(paramMiniAppInfo, paramInt, null, paramString1, null, 0, paramString2, 0L, null, "", "", "", "");
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2)
+  {
+    a(paramMiniAppInfo, paramInt1, paramString1, paramString2, paramString3, paramInt2, "0", 0L, null);
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, long paramLong, String paramString5)
+  {
+    a(paramMiniAppInfo, paramInt1, paramString1, paramString2, paramString3, paramInt2, paramString4, paramLong, paramString5, "", "", "", "");
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, long paramLong, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
+  {
+    long l2 = System.currentTimeMillis();
+    if (paramMiniAppInfo != null) {}
+    for (Object localObject1 = paramMiniAppInfo.appId;; localObject1 = "0000000000")
+    {
+      beyt localbeyt = a((String)localObject1);
+      long l1;
+      Object localObject2;
+      if (paramInt1 == 1)
+      {
+        beyb.a((String)localObject1);
+        if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null) && (paramMiniAppInfo.launchParam.b != 0L))
         {
-          BusinessInfoCheckUpdate.AppInfo localAppInfo = (BusinessInfoCheckUpdate.AppInfo)((List)localObject1).get(i1);
-          j = i;
-          if (localAppInfo.mission_level.get() != 0) {
-            break label657;
-          }
-          j = i;
-          if (localAppInfo.path.get().contains(".")) {
-            break label657;
-          }
-          if (localAppInfo.iNewFlag.get() != 1) {}
-          for (;;)
+          l1 = paramMiniAppInfo.launchParam.b;
+          besl.a("MiniReportManager", "reportEventType: fix onlaunch timestamp to " + paramMiniAppInfo.launchParam.b);
+          localbeyt.jdField_a_of_type_Boolean = false;
+          if (!localbeyt.jdField_b_of_type_Boolean)
           {
-            i1 += 1;
-            break;
-            j = 0;
-            for (;;)
+            localObject2 = a("0000000000");
+            if ((localObject2 != null) && (((beyt)localObject2).jdField_a_of_type_JavaUtilMap.size() > 0))
             {
-              if ((j >= ((List)localObject2).size()) || (localAppInfo.uiAppId.get() == ((BusinessInfoCheckUpdate.AppSetting)((List)localObject2).get(j)).appid.get()))
+              Iterator localIterator = ((beyt)localObject2).jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+              while (localIterator.hasNext())
               {
-                if ((j >= ((List)localObject2).size()) || (((BusinessInfoCheckUpdate.AppSetting)((List)localObject2).get(j)).setting.get())) {
-                  break label288;
-                }
-                break;
+                Map.Entry localEntry = (Map.Entry)localIterator.next();
+                localbeyt.jdField_a_of_type_JavaUtilMap.put(localEntry.getKey(), localEntry.getValue());
+                besl.a("MiniReportManager", "transfer eventtime" + localEntry.getKey() + "[" + (String)jdField_a_of_type_AndroidUtilSparseArray.get(((Integer)localEntry.getKey()).intValue()) + " ] + appid:" + (String)localObject1);
               }
-              j += 1;
+              ((beyt)localObject2).jdField_a_of_type_JavaUtilMap.clear();
             }
-            label288:
-            i += 1;
-            j = i;
-            if (!paramString.equals(localAppInfo.path.get())) {
-              break label657;
-            }
-            bool1 = true;
           }
         }
-        j = i;
-        i = n;
-        n = j;
-        bool2 = bool1;
       }
       for (;;)
       {
-        paramString = (awcz)paramQQAppInterface.getManager(10);
-        int i2 = 0;
-        i1 = 0;
-        if (paramString != null)
-        {
-          i2 = paramString.a(1);
-          i1 = paramString.a(2);
+        if ((paramInt1 == 611) && (!localbeyt.jdField_a_of_type_Boolean)) {
+          paramInt1 = 2;
         }
-        j = 0;
-        bool1 = false;
-        paramQQAppInterface = (ReadInJoyManager)paramQQAppInterface.getManager(96);
-        label413:
-        int i6;
-        int i3;
-        label433:
-        int i4;
-        if (paramQQAppInterface != null)
+        for (;;)
         {
-          paramQQAppInterface = paramQQAppInterface.a();
-          if (paramQQAppInterface != null)
-          {
-            j = paramQQAppInterface.a();
-            if ((paramQQAppInterface == null) || (!paramQQAppInterface.a())) {
-              break label617;
+          if (paramInt1 == 2) {
+            if (localbeyt.jdField_a_of_type_Boolean) {
+              besl.a("MiniReportManager", "has report apponloaded. ignore apponloaed ");
             }
-            bool1 = true;
+          }
+          label721:
+          label727:
+          label755:
+          for (;;)
+          {
+            return;
+            if (localbeyt.jdField_b_of_type_JavaUtilMap.size() == 0) {
+              localbeyt.jdField_b_of_type_JavaUtilMap.putAll(localbeyt.jdField_a_of_type_JavaUtilMap);
+            }
+            break;
+            localbeyt.jdField_a_of_type_Boolean = true;
+            localbeyt.jdField_b_of_type_Boolean = true;
+            if (jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt1))) {
+              localbeyt.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt1), Long.valueOf(l1));
+            }
+            localObject2 = "";
+            localObject1 = localObject2;
+            if (paramMiniAppInfo != null)
+            {
+              localObject1 = localObject2;
+              if (paramMiniAppInfo.renderInfo != null) {
+                localObject1 = paramMiniAppInfo.renderInfo.jdField_a_of_type_Int + "";
+              }
+            }
+            beyf.a(paramMiniAppInfo, paramInt1, paramString1, paramString2, paramString3, paramInt2, paramString4, paramLong, paramString5, l1, paramString6, paramString7, paramString8, paramString9, (String)localObject1);
+            paramString2 = (beys)b.get(paramInt1);
+            if (paramString2 != null)
+            {
+              paramString3 = (Long)localbeyt.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramString2.jdField_a_of_type_Int));
+              if (paramString3 == null) {
+                break label721;
+              }
+              paramLong = paramString3.longValue();
+              if (paramLong > 0L)
+              {
+                l2 -= paramLong;
+                paramString2 = paramString2.jdField_a_of_type_JavaLangString;
+                paramString3 = (String)localbeyt.c.get(Integer.valueOf(paramInt1));
+                if (l2 < 0L) {
+                  break label727;
+                }
+                paramLong = l2;
+                if (l2 > jdField_a_of_type_Int) {
+                  paramLong = jdField_a_of_type_Int;
+                }
+                if (besl.a()) {
+                  besl.d("MiniReportManager", "timeCostEvent;eventId:" + paramInt1 + ";costTime:" + paramLong + "ms");
+                }
+                beyf.a(paramMiniAppInfo, paramString2, paramString3, paramInt2, paramLong, l1, paramString6, paramString7, paramString8, paramString9, (String)localObject1);
+              }
+            }
+            for (;;)
+            {
+              if ((paramInt1 != 2) || (!"0".equals(paramString4))) {
+                break label755;
+              }
+              beyf.a(paramMiniAppInfo, 630, paramString1, "0", null, 0, "0", 0L, null, l1, "", "", "", "", (String)localObject1);
+              return;
+              paramLong = 0L;
+              break;
+              besl.d("MiniReportManager", "costTime < 0 " + l2);
+            }
           }
         }
-        else
-        {
-          i6 = i2 + k + i + j;
-          if (m <= 0) {
-            break label623;
-          }
-          i3 = 1;
-          if (i1 <= 0) {
-            break label629;
-          }
-          i4 = 1;
-          label441:
-          if (!bool1) {
-            break label635;
-          }
-        }
-        label617:
-        label623:
-        label629:
-        label635:
-        for (int i5 = 1;; i5 = 0)
-        {
-          i3 = i5 + (n + i3 + i4);
-          if (QLog.isColorLevel()) {
-            QLog.d("PluginPreloadStrategy", 2, "Troop redTouch: " + m + "; Troop num: " + k + "; Message num: " + i + "; Leba redTouch: " + n + "; Business has redTouch: " + bool2 + "; QZone msg count: " + i2 + "; QZone new count: " + i1 + "; ReadInJoy notify count: " + j + "; ReadInJoy need show notify: " + bool1 + "; Total redTouch: " + i3 + "; Total num: " + i6);
-          }
-          if (!bool2) {
-            break label643;
-          }
-          if ((i6 != 0) || (i3 != 1)) {
-            break label641;
-          }
-          return 4;
-          j = 0;
-          break;
-          bool1 = false;
-          break label413;
-          i3 = 0;
-          break label433;
-          i4 = 0;
-          break label441;
-        }
-        label641:
-        return 1;
-        label643:
-        if ((i6 > 0) || (i3 > 0)) {
-          return 2;
-        }
-        return 3;
-        label657:
-        i = j;
+        l1 = l2;
         break;
-        label663:
-        i = n;
-        bool2 = bool1;
-        n = j;
+        l1 = l2;
       }
-      m = 0;
     }
   }
   
-  protected abstract void a();
-  
-  public void a(beyx parambeyx) {}
-  
-  public boolean a(int paramInt1, int paramInt2)
+  private static void a(MiniAppInfo paramMiniAppInfo, String paramString)
   {
-    if ((1 << Calendar.getInstance().get(7) - 1 & paramInt1) == 0) {}
-    while ((1 << Calendar.getInstance().get(11) & paramInt2) == 0) {
-      return false;
+    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)) && (!TextUtils.isEmpty(paramString)))
+    {
+      if (jdField_a_of_type_JavaUtilMap.get(paramMiniAppInfo.appId) == null) {
+        jdField_a_of_type_JavaUtilMap.put(paramMiniAppInfo.appId, new ArrayList());
+      }
+      ((List)jdField_a_of_type_JavaUtilMap.get(paramMiniAppInfo.appId)).add(paramString);
     }
-    return true;
   }
   
-  public boolean a(beyt parambeyt, String paramString1, QQAppInterface paramQQAppInterface, String paramString2, int paramInt, long paramLong, int[] paramArrayOfInt, beyx parambeyx)
+  public static void a(String paramString1, MiniAppInfo paramMiniAppInfo, String paramString2)
   {
-    if (parambeyt == null) {
-      return false;
-    }
-    if ((parambeyt.jdField_h_of_type_Boolean) && (!a(paramString2)))
+    if (paramString1 != null)
     {
-      a(parambeyx, "preload:fail:notinleba");
-      return false;
-    }
-    if (parambeyt.jdField_b_of_type_Boolean)
-    {
-      int i = a(paramQQAppInterface, paramString1);
-      if ((parambeyt.jdField_c_of_type_Boolean) && (i == 4))
+      besl.a("MiniReportManager", "checkShouldReportJSError: report js error " + paramString1);
+      if (!a(paramMiniAppInfo, paramString1))
       {
-        a(parambeyx, "preload:ok:reddotonly");
-        return true;
-      }
-      if ((parambeyt.jdField_d_of_type_Boolean) && ((i == 1) || (i == 4)))
-      {
-        a(parambeyx, "preload:ok:reddot");
-        return true;
-      }
-      if ((parambeyt.jdField_e_of_type_Boolean) && (i == 2))
-      {
-        a(parambeyx, "preload:fail:lebareddot");
-        return false;
+        a(paramMiniAppInfo, 23, paramString2, paramString1, null, 0, "0", 0L, null, "", "", "", "");
+        a(paramMiniAppInfo, paramString1);
       }
     }
-    if ((parambeyt.a) && (!a(parambeyt.jdField_b_of_type_Int, parambeyt.jdField_c_of_type_Int)))
-    {
-      a(parambeyx, "preload:fail:timecontrol");
-      return false;
+  }
+  
+  private static boolean a(MiniAppInfo paramMiniAppInfo, String paramString)
+  {
+    if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramString))) {
+      return true;
     }
-    if ((parambeyt.j) && (paramInt < parambeyt.jdField_f_of_type_Int))
+    paramMiniAppInfo = (List)jdField_a_of_type_JavaUtilMap.get(paramMiniAppInfo.appId);
+    if (paramMiniAppInfo != null)
     {
-      a(parambeyx, "preload:fail:usedtimeslimit");
-      return false;
-    }
-    if (parambeyt.jdField_i_of_type_Boolean)
-    {
-      long l = parambeyt.jdField_e_of_type_Int * 60 * 60 * 1000;
-      if (System.currentTimeMillis() - paramLong > l)
-      {
-        a(parambeyx, "preload:fail:notactive");
-        return false;
-      }
-    }
-    if (parambeyt.jdField_f_of_type_Boolean)
-    {
-      if ((System.currentTimeMillis() - paramLong) / 1000L <= parambeyt.jdField_d_of_type_Int) {
-        paramInt = 1;
-      }
-      while (paramInt != 0) {
-        if (parambeyt.jdField_g_of_type_Boolean)
-        {
-          a(parambeyx, "preload:ok:cdperiod");
+      paramMiniAppInfo = paramMiniAppInfo.iterator();
+      while (paramMiniAppInfo.hasNext()) {
+        if (paramString.equals((String)paramMiniAppInfo.next())) {
           return true;
-          paramInt = 0;
         }
-        else
-        {
-          a(parambeyx, "preload:fail:cdperiod");
-          return false;
-        }
-      }
-    }
-    if ((parambeyt.k) && (parambeyt.jdField_g_of_type_Int > 0) && (!a(paramString1, paramQQAppInterface.getCurrentAccountUin(), parambeyt.jdField_g_of_type_Int, paramArrayOfInt, parambeyt.jdField_h_of_type_Int, parambeyt.jdField_i_of_type_Int)))
-    {
-      a(parambeyx, "preload:fail:notinuserlearn");
-      return false;
-    }
-    a(parambeyx, "preload:ok:normal");
-    return true;
-  }
-  
-  public abstract boolean a(beyx parambeyx);
-  
-  public boolean a(String paramString)
-  {
-    Object localObject = afqa.a().b();
-    if ((localObject == null) || (((List)localObject).size() == 0)) {
-      return false;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      amnq localamnq = (amnq)((Iterator)localObject).next();
-      if ((localamnq != null) && (localamnq.a != null) && (localamnq.a.strPkgName != null) && (localamnq.a.strPkgName.contains(paramString))) {
-        return true;
       }
     }
     return false;
   }
   
-  public boolean a(String paramString1, String paramString2, int paramInt1, int[] paramArrayOfInt, int paramInt2, int paramInt3)
+  public static void b(MiniAppInfo paramMiniAppInfo, int paramInt, String paramString)
   {
-    if ((paramString1 == null) || (paramString2 == null) || (paramInt1 <= 0) || (paramArrayOfInt == null)) {
-      return false;
+    String str = "0000000000";
+    if (paramMiniAppInfo != null) {
+      str = paramMiniAppInfo.appId;
     }
-    String str1 = paramString1 + "_userlearn_lasttime:" + paramString2;
-    String str2 = paramString1 + "_userlearn_timearea:" + paramString2;
-    String str3 = paramString1 + "_userlearn_timearea_inhour:" + paramString2 + ":";
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("ppp_profile", bahu.a());
-    long l = localSharedPreferences.getLong(str1, 0L);
-    int i = localSharedPreferences.getInt(str2, 3);
-    if ((System.currentTimeMillis() - l > 86400000L) || (paramInt1 != i))
-    {
-      paramString2 = a(paramArrayOfInt, paramInt1, paramInt2, paramInt3);
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        break label382;
-      }
-      paramInt2 = 0;
-      while (paramInt2 < paramInt1)
-      {
-        localSharedPreferences.edit().putInt(str3 + paramInt2, paramString2[paramInt2]).commit();
-        paramInt2 += 1;
-      }
-      localSharedPreferences.edit().putInt(str2, paramInt1).commit();
-      localSharedPreferences.edit().putLong(str1, System.currentTimeMillis()).commit();
-    }
-    for (;;)
-    {
-      if (paramString2 != null)
-      {
-        paramInt2 = Calendar.getInstance().get(11);
-        paramInt3 = paramString2.length;
-        paramInt1 = 0;
-        while (paramInt1 < paramInt3)
-        {
-          if (paramInt2 == paramString2[paramInt1])
-          {
-            return true;
-            paramString2 = new int[i];
-            paramInt1 = 0;
-            for (;;)
-            {
-              paramString1 = paramString2;
-              if (paramInt1 >= i) {
-                break;
-              }
-              paramString2[paramInt1] = localSharedPreferences.getInt(str3 + paramInt1, paramInt1 + 20);
-              paramInt1 += 1;
-            }
-          }
-          paramInt1 += 1;
-        }
-      }
-      return false;
-      label382:
-      paramString2 = paramString1;
-    }
-  }
-  
-  public int[] a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramArrayOfInt == null) || (paramInt1 <= 0) || (paramInt1 > paramArrayOfInt.length)) {}
-    do
-    {
-      return null;
-      localObject = new beys(this, paramInt3);
-      switch (paramInt2)
-      {
-      default: 
-        return null;
-      case 1: 
-        paramInt2 = ((beys)localObject).a(paramArrayOfInt, paramInt1);
-      }
-    } while (paramInt2 == -1);
-    paramInt3 = paramInt2 - paramInt1 / 2;
-    paramInt2 = paramInt3;
-    if (paramInt3 < 0) {
-      paramInt2 = paramInt3 + paramArrayOfInt.length;
-    }
-    Object localObject = new int[paramInt1];
-    paramInt3 = 0;
-    if (paramInt3 < paramInt1)
-    {
-      localObject[paramInt3] = paramInt2;
-      int i = paramInt2 + 1;
-      if (i >= paramArrayOfInt.length) {}
-      for (paramInt2 = -paramArrayOfInt.length;; paramInt2 = 0)
-      {
-        paramInt3 += 1;
-        paramInt2 = i + paramInt2;
-        break;
-      }
-    }
-    return localObject;
-    return ((beys)localObject).a(paramArrayOfInt, paramInt1);
-  }
-  
-  public boolean b(beyx parambeyx)
-  {
-    return true;
+    a(str).c.put(Integer.valueOf(paramInt), paramString);
+    besl.a("MiniReportManager", "addCostTimeEventAttachInfo:  mileStoneEventKey:" + paramInt + "   attachInfo:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beyr
  * JD-Core Version:    0.7.0.1
  */

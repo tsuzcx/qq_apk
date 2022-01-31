@@ -1,15 +1,22 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.data.MessageForTroopStory;
 
 class aeeq
-  implements View.OnTouchListener
+  implements bfoq
 {
-  aeeq(aeeh paramaeeh) {}
+  aeeq(aeep paramaeep, MessageForTroopStory paramMessageForTroopStory, bfol parambfol) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    return true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      vwt.a(this.jdField_a_of_type_Aeep.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory).f();
+    }
   }
 }
 

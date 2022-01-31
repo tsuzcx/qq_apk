@@ -1,36 +1,22 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
-class ablw
-  implements begw
+public class ablw
+  implements Animation.AnimationListener
 {
-  ablw(ablv paramablv) {}
+  public ablw(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.a.jdField_a_of_type_Begr.dismiss();
-      return;
-      awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_QQshare", 0, 0, "", "", "", "");
-      xeq.a("share_success");
-      this.a.a.u();
-      continue;
-      if (bfhl.a((float)this.a.a.jdField_a_of_type_Double, (float)this.a.a.b, this.a.a.l, this.a.a.i, null).c(this.a.a.getIntent().getStringExtra("uin")).b(this.a.a, this.a.a.getIntent().getStringExtra("uin"), 1, null))
-      {
-        paramInt = QQMapActivity.a(this.a.a).getDimensionPixelSize(2131167766);
-        bbmy.a(this.a.a, 2, this.a.a.getString(2131626723), 1).b(paramInt);
-        xeq.a("favorite_success");
-      }
-      bfhz.a(null, 65, 7);
-      awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_collect", 0, 0, "", "", "", "");
-    }
+    LoginInfoActivity.b(this.a).setVisibility(4);
+    LoginInfoActivity.b(this.a).clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

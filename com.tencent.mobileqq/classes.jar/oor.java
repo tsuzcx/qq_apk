@@ -1,20 +1,49 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class oor
-  implements Comparator<ArticleInfo>
+public class oor
+  implements AladdinConfigHandler
 {
-  oor(ooq paramooq) {}
-  
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
+    QLog.d("BiuTriggerTypeConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = ooi.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("BiuTriggerTypeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "on_click"))
+      {
+        if (TextUtils.equals(str2, "fast_biu")) {}
+        for (paramInt1 = 1;; paramInt1 = 0)
+        {
+          bhvh.a("sp_key_biu_button_click_behaviour", Integer.valueOf(paramInt1));
+          break;
+        }
+      }
+      if (TextUtils.equals(str1, "on_long_pressed"))
+      {
+        if (TextUtils.equals(str2, "fast_biu")) {}
+        for (paramInt1 = 1;; paramInt1 = 0)
+        {
+          bhvh.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(paramInt1));
+          break;
+        }
+      }
     }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
-    }
-    return 1;
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bhvh.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0));
+    bhvh.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1));
   }
 }
 

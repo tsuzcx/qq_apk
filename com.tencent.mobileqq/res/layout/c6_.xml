@@ -3,9 +3,9 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/ljr" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginLeft="18.0dip" android:layout_marginTop="19.0dip" android:src="@drawable/hnd" android:scaleType="fitCenter" />
     <RelativeLayout android:id="@id/m1x" android:layout_width="250.0dip" android:layout_height="250.0dip" android:layout_marginTop="147.0dip" android:layout_centerHorizontal="true">
-        <dov.com.qq.im.preview.VideoPlayView android:id="@id/mew" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <dov.com.qq.im.ae.gif.preview.VideoPlayView android:id="@id/mew" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <ImageView android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/hkk" />
-        <dov.com.qq.im.giftext.AEGIFOutlineTextView android:id="@id/lym" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:layout_alignParentBottom="true" />
+        <dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView android:id="@id/lym" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:layout_alignParentBottom="true" />
     </RelativeLayout>
     <RelativeLayout android:id="@id/m20" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="41.0dip" android:layout_below="@id/m1x">
         <LinearLayout android:orientation="horizontal" android:id="@id/lr1" android:layout_width="wrap_content" android:layout_height="wrap_content">

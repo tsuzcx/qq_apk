@@ -1,18 +1,63 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.observer.BusinessObserver;
 
 class aebn
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  aebn(aebk paramaebk) {}
+  aebn(aebm paramaebm, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    aciy.n = true;
-    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
+    if (paramBoolean) {}
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.SubscribeResponse localSubscribeResponse = new mobileqq_mp.SubscribeResponse();
+          localSubscribeResponse.mergeFrom(paramBundle);
+          paramInt = ((mobileqq_mp.RetInfo)localSubscribeResponse.ret_info.get()).ret_code.get();
+          if (paramInt == 0)
+          {
+            i = 1;
+            paramInt = 1;
+          }
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramInt = 0;
+      }
+      try
+      {
+        StructingMsgItemBuilder.a(this.jdField_a_of_type_Aebm.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Aebm.jdField_a_of_type_AndroidAppActivity);
+        axqw.b(this.jdField_a_of_type_Aebm.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a, "dc00899", "Pb_account_lifeservice", "", "0X8006513", "0X8006513", 0, 0, "" + paramInt, "" + this.jdField_a_of_type_JavaLangString, "", "");
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          paramInt = i;
+        }
+      }
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_Aebm.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Aebm.jdField_a_of_type_AndroidAppActivity);
+      break label236;
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_Aebm.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Aebm.jdField_a_of_type_AndroidAppActivity);
+      break label236;
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_Aebm.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Aebm.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_Aebm.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Aebm.jdField_a_of_type_AndroidAppActivity);
+      label236:
+      paramInt = 0;
+    }
   }
 }
 

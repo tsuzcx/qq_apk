@@ -1,10 +1,17 @@
-public abstract interface rmd
+class rmd
+  extends osp
 {
-  public abstract void b(int paramInt);
+  rmd(rmc paramrmc) {}
   
-  public abstract void b(boolean paramBoolean);
+  public void a(boolean paramBoolean, long paramLong)
+  {
+    rmc.a(this.a, paramBoolean, paramLong, rmc.a(this.a));
+  }
   
-  public abstract void c(boolean paramBoolean);
+  public void g(boolean paramBoolean)
+  {
+    rmc.a(this.a, paramBoolean);
+  }
 }
 
 

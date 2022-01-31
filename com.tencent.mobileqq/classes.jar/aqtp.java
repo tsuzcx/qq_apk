@@ -1,51 +1,27 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.MD5;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 
 public class aqtp
-  implements avwg
+  implements View.OnClickListener
 {
-  public aqtp(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public aqtp(TextHeaderView paramTextHeaderView, Activity paramActivity, QQGameMsgInfo paramQQGameMsgInfo) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    if (paramString == null)
+    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-4}" });
-      return;
+      paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      paramView.putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
+      yod.a(ajae.a(), "769", "205019", this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId, "76901", "1", "160", new String[] { this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, "", "20" });
+      bich.a(3, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
     }
-    JSONObject localJSONObject = new JSONObject();
-    for (;;)
-    {
-      try
-      {
-        byte[] arrayOfByte = bace.a(paramString);
-        if (arrayOfByte == null) {
-          break;
-        }
-        localJSONObject.put("code", 0);
-        StringBuilder localStringBuilder = new StringBuilder("data:");
-        if (atra.a(paramString))
-        {
-          str = "image/gif;";
-          localStringBuilder.append(str);
-          localStringBuilder.append("base64,");
-          localStringBuilder.append(baaw.encodeToString(arrayOfByte, 0));
-          localJSONObject.put("imgData", localStringBuilder);
-          localJSONObject.put("md5", MD5.toMD5(arrayOfByte));
-          localJSONObject.put("imagePath", paramString);
-          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
-        return;
-      }
-      String str = "image/jpg;";
-    }
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
   }
 }
 

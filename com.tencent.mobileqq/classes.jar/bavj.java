@@ -1,17 +1,33 @@
-class bavj
-  implements bavv
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
+
+final class bavj
+  implements DownloadParams.DecodeHandler
 {
-  bavj(bavh parambavh) {}
-  
-  public void a(int paramInt, String paramString) {}
-  
-  public void a(bavm parambavm)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (parambavm.a)
-    {
-      bavh.a(this.a, parambavm);
-      bavh.a(this.a);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
     }
+    if (paramBitmap == null) {
+      return null;
+    }
+    paramDownloadParams = paramDownloadParams.tag;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
+    {
+      paramDownloadParams = (int[])paramDownloadParams;
+      float f2 = bbct.a();
+      float f1 = f2;
+      if (f2 < 0.01F) {
+        f1 = 1.0F;
+      }
+      paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
+      paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
+      return bbdr.c(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+    }
+    return bbdr.c(paramBitmap, 50, 50);
   }
 }
 

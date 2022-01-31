@@ -1,30 +1,45 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.portal.FormalView;
-import com.tencent.mobileqq.portal.StrokeTextView;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
-public class atsu
-  extends beem
+class atsu
+  implements amnf
 {
-  public atsu(FormalView paramFormalView, View paramView) {}
+  atsu(atsa paramatsa, IphonePickerView paramIphonePickerView, bfol parambfol) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.c();
-    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a = true;
+    if ((this.jdField_a_of_type_Bfol != null) && (this.jdField_a_of_type_Bfol.isShowing()))
+    {
+      atsa.a(this.jdField_a_of_type_Atsa, this.jdField_a_of_type_Atsa.c, false);
+      this.jdField_a_of_type_Bfol.dismiss();
+    }
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView) != null) {
-      FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView).setVisibility(0);
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
+      {
+        if ((paramInt1 == 0) || (paramInt1 == 1)) {
+          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+        }
+        this.jdField_a_of_type_Atsa.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
+      }
+      return;
+      this.jdField_a_of_type_Atsa.e = paramInt2;
+      continue;
+      this.jdField_a_of_type_Atsa.f = paramInt2;
+      continue;
+      this.jdField_a_of_type_Atsa.g = paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsu
  * JD-Core Version:    0.7.0.1
  */

@@ -5,14 +5,14 @@ import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.Properties;
-import trk;
-import trp;
-import urk;
+import ueg;
+import uel;
+import veg;
 
 public class VideoViewTVKImpl$5$1
   implements Runnable
 {
-  public VideoViewTVKImpl$5$1(trp paramtrp, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public VideoViewTVKImpl$5$1(uel paramuel, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
   public void run()
   {
@@ -26,14 +26,14 @@ public class VideoViewTVKImpl$5$1
       localProperties.load(new StringReader(str));
       if (localProperties != null)
       {
-        trk.a(this.jdField_a_of_type_Trp.a).jdField_b_of_type_JavaLangString = localProperties.getProperty("VideoCodec");
-        trk.a(this.jdField_a_of_type_Trp.a).jdField_b_of_type_Long = Long.valueOf(localProperties.getProperty("VideoBitRate")).longValue();
-        trk.a(this.jdField_a_of_type_Trp.a).a = Integer.valueOf(localProperties.getProperty("Width")).intValue();
-        trk.a(this.jdField_a_of_type_Trp.a).jdField_b_of_type_Int = Integer.valueOf(localProperties.getProperty("Height")).intValue();
-        trk.a(this.jdField_a_of_type_Trp.a).jdField_c_of_type_JavaLangString = localProperties.getProperty("AudioCodec");
-        trk.a(this.jdField_a_of_type_Trp.a).jdField_c_of_type_Long = Long.valueOf(localProperties.getProperty("AudioBitRate")).longValue();
+        ueg.a(this.jdField_a_of_type_Uel.a).jdField_b_of_type_JavaLangString = localProperties.getProperty("VideoCodec");
+        ueg.a(this.jdField_a_of_type_Uel.a).jdField_b_of_type_Long = Long.valueOf(localProperties.getProperty("VideoBitRate")).longValue();
+        ueg.a(this.jdField_a_of_type_Uel.a).a = Integer.valueOf(localProperties.getProperty("Width")).intValue();
+        ueg.a(this.jdField_a_of_type_Uel.a).jdField_b_of_type_Int = Integer.valueOf(localProperties.getProperty("Height")).intValue();
+        ueg.a(this.jdField_a_of_type_Uel.a).jdField_c_of_type_JavaLangString = localProperties.getProperty("AudioCodec");
+        ueg.a(this.jdField_a_of_type_Uel.a).jdField_c_of_type_Long = Long.valueOf(localProperties.getProperty("AudioBitRate")).longValue();
       }
-      urk.a(this.jdField_a_of_type_Trp.a.a, "Video Info : %s", trk.a(this.jdField_a_of_type_Trp.a));
+      veg.a(this.jdField_a_of_type_Uel.a.a, "Video Info : %s", ueg.a(this.jdField_a_of_type_Uel.a));
       return;
     }
     catch (IOException localIOException)

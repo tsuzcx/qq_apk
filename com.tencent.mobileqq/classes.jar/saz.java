@@ -1,36 +1,60 @@
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class saz
-  extends akih
+  implements BusinessObserver
 {
-  saz(sau paramsau) {}
+  saz(sax paramsax, saw paramsaw) {}
   
-  public int a()
-  {
-    return 0;
-  }
-  
-  public void a(Object paramObject)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
+      QLog.d("ServiceAccountFolderFeedAdapter", 2, "do unfollow->uin:" + this.jdField_a_of_type_Saw.a + ", success:" + String.valueOf(paramBoolean));
     }
-    this.a.a = true;
-    sau.a(this.a);
+    if ((sax.a(this.jdField_a_of_type_Sax) != null) && (sax.a(this.jdField_a_of_type_Sax).isResume())) {
+      sax.a(this.jdField_a_of_type_Sax).b(false);
+    }
+    if (!paramBoolean) {
+      sax.a(this.jdField_a_of_type_Sax);
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
+          localUnFollowResponse.mergeFrom(paramBundle);
+          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() == 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ServiceAccountFolderFeedAdapter", 2, "unfollow success");
+            }
+            sax.b(this.jdField_a_of_type_Sax, this.jdField_a_of_type_Saw);
+            StructLongMessageDownloadProcessor.a(sax.a(this.jdField_a_of_type_Sax), this.jdField_a_of_type_Saw.a);
+            ((baja)sax.a(this.jdField_a_of_type_Sax).getManager(132)).a(this.jdField_a_of_type_Saw.a);
+            return;
+          }
+          sax.a(this.jdField_a_of_type_Sax);
+          return;
+        }
+      }
+      catch (Exception paramBundle) {}
+    }
   }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    sau.a(this.a, 2131629887);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     saz
  * JD-Core Version:    0.7.0.1
  */

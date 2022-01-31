@@ -1,72 +1,39 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.intimate_relation.intimate_relation.IntimateBuddy;
-import tencent.intimate_relation.intimate_relation.IntimateInfo;
-import tencent.intimate_relation.intimate_relation.IntimateLadybro;
-import tencent.intimate_relation.intimate_relation.IntimateLover;
-import tencent.intimate_relation.intimate_relation.SnsRelationInfo;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
 public class acli
+  extends Handler
 {
-  public int a;
+  public acli(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public static acli a(byte[] paramArrayOfByte)
+  public void handleMessage(Message paramMessage)
   {
-    intimate_relation.IntimateInfo localIntimateInfo = null;
-    intimate_relation.SnsRelationInfo localSnsRelationInfo = new intimate_relation.SnsRelationInfo();
-    for (;;)
+    switch (paramMessage.what)
     {
-      try
-      {
-        localSnsRelationInfo.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = localIntimateInfo;
-        if (localSnsRelationInfo.intimate_list.has())
-        {
-          paramArrayOfByte = localIntimateInfo;
-          if (localSnsRelationInfo.intimate_list.size() > 0)
-          {
-            paramArrayOfByte = new acli();
-            localIntimateInfo = (intimate_relation.IntimateInfo)localSnsRelationInfo.intimate_list.get(0);
-            if ((!localIntimateInfo.lover.has()) || (!((intimate_relation.IntimateLover)localIntimateInfo.lover.get()).level.has())) {
-              break label173;
-            }
-            paramArrayOfByte.a = ((intimate_relation.IntimateLover)localIntimateInfo.lover.get()).level.get();
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("ExtSnsIntimateInfo", 1, "parseFrom retInfo:" + paramArrayOfByte);
-        }
-        return paramArrayOfByte;
-      }
-      catch (Throwable paramArrayOfByte)
-      {
-        QLog.i("ExtSnsIntimateInfo", 1, "parseFrom error:" + paramArrayOfByte.getMessage());
-        return null;
-      }
-      label173:
-      if ((localIntimateInfo.buddy.has()) && (((intimate_relation.IntimateBuddy)localIntimateInfo.buddy.get()).level.has())) {
-        paramArrayOfByte.a = ((intimate_relation.IntimateBuddy)localIntimateInfo.buddy.get()).level.get();
-      } else if ((localIntimateInfo.ladybro.has()) && (((intimate_relation.IntimateLadybro)localIntimateInfo.ladybro.get()).level.has())) {
-        paramArrayOfByte.a = ((intimate_relation.IntimateLadybro)localIntimateInfo.ladybro.get()).level.get();
-      }
+    default: 
+      return;
+    case 0: 
+      this.a.i();
+      bcpw.a(this.a, this.a.getString(2131719264), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
+    case 1: 
+      this.a.a(true);
+      this.a.i();
+      bcpw.a(this.a, this.a.getString(2131719251), 0).b(this.a.getTitleBarHeight());
+      return;
     }
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ExtSnsIntimatePushInfo{");
-    localStringBuilder.append("intimate_level:").append(this.a).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    paramMessage = (String)paramMessage.obj;
+    this.a.o.setText(paramMessage + "");
+    this.a.o.setContentDescription(paramMessage + "");
+    this.a.o.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acli
  * JD-Core Version:    0.7.0.1
  */

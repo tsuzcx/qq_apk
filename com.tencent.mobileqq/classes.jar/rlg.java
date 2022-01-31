@@ -1,24 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class rlg
-  implements View.OnClickListener
+class rlg
+  implements ViewBase.OnClickListener
 {
-  public rlg(BridgeModule paramBridgeModule, String paramString) {}
+  rlg(rlf paramrlf) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramView = new JSONObject();
-    try
-    {
-      paramView.put("timestamp", System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramView);
-      return;
+    int i;
+    if ((rle.a(this.a.jdField_a_of_type_Rle) instanceof AdData)) {
+      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+      {
+      default: 
+        i = -1;
+      }
     }
-    catch (JSONException paramView) {}
+    for (;;)
+    {
+      rld.a(this.a.jdField_a_of_type_Rle.a);
+      rmt.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)rle.a(this.a.jdField_a_of_type_Rle), true, true, i);
+      return;
+      rnn.a(rle.a(this.a.jdField_a_of_type_Rle), paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+      return;
+      i = 4;
+      continue;
+      i = 3;
+      continue;
+      i = 5;
+      continue;
+      i = 8;
+      continue;
+      i = 1;
+      continue;
+      i = 1000;
+    }
   }
 }
 

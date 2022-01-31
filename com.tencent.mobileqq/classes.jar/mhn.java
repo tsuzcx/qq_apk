@@ -1,19 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.ResultReceiver;
-import com.tencent.av.utils.PopupDialogQQSide;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class mhn
-  implements DialogInterface.OnClickListener
+class mhn
+  extends ClickableSpan
 {
-  public mhn(PopupDialogQQSide paramPopupDialogQQSide, ResultReceiver paramResultReceiver) {}
+  mhn(mhf parammhf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, this.jdField_a_of_type_ComTencentAvUtilsPopupDialogQQSide.getArguments());
-    }
-    paramDialogInterface.dismiss();
+    this.a.d();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(paramTextPaint.getColor());
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

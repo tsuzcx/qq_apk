@@ -1,43 +1,99 @@
-import android.graphics.Canvas;
-import android.text.TextPaint;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class amqr
-  extends amqo
+  extends ampb<amql>
 {
-  private TextPaint a = new TextPaint();
-  
-  private String a(ampo paramampo)
+  public static amql b(int paramInt)
   {
-    return String.valueOf(paramampo.a());
+    amql localamql = (amql)ampm.a().a(paramInt);
+    if (localamql != null) {
+      return localamql;
+    }
+    return new amql();
   }
   
-  public amrm a(ampo paramampo)
+  public int a()
   {
-    amqn localamqn = ampx.a();
-    float f1 = amrp.a(localamqn.c(), a(paramampo)) + localamqn.f() + localamqn.f();
-    float f2 = amrp.a(localamqn.c());
-    f2 = localamqn.e() * 2.0F + f2;
-    paramampo.a(f2);
-    paramampo.b(f1);
-    return new amrm(f1, f2);
+    return 0;
   }
   
-  public boolean a(ampo paramampo)
+  @NonNull
+  public amql a(int paramInt)
+  {
+    return new amql();
+  }
+  
+  public amql a(String paramString)
+  {
+    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    return new amql(paramString);
+  }
+  
+  @Nullable
+  public amql a(ampi[] paramArrayOfampi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkConfProcessor", 2, "[onParsed] config type = " + a());
+    }
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    {
+      paramArrayOfampi = paramArrayOfampi[0].a;
+      if (!TextUtils.isEmpty(paramArrayOfampi)) {
+        return a(paramArrayOfampi);
+      }
+      QLog.d("ArkConfProcessor", 1, "[onParsed] content is empty, config type = " + a());
+    }
+    return null;
+  }
+  
+  public Class<amql> a()
+  {
+    return amql.class;
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("ArkConfProcessor", 1, "[onReqFailed] failCode=" + paramInt + ", config type = " + a());
+  }
+  
+  public void a(amql paramamql)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkConfProcessor", 2, "[onUpdate]  config type = " + a());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
   {
     return true;
-  }
-  
-  public void b(Canvas paramCanvas, ampo paramampo, ampx paramampx, float paramFloat1, float paramFloat2)
-  {
-    paramampx = ampx.a();
-    this.a.setTextSize(paramampx.c());
-    this.a.setColor(-1);
-    paramCanvas.drawText(a(paramampo), paramampx.f() + paramFloat1, paramampx.e() + paramFloat2 - this.a.ascent(), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqr
  * JD-Core Version:    0.7.0.1
  */

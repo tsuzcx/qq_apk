@@ -1,8 +1,40 @@
-public abstract interface bgvj
+import android.support.annotation.NonNull;
+import cooperation.qqreader.ui.ReaderHomePageActivity;
+import org.json.JSONObject;
+
+public class bgvj
+  extends bgut
 {
-  public abstract void a(String paramString);
+  public bgvj(ReaderHomePageActivity paramReaderHomePageActivity) {}
   
-  public abstract void a(String paramString, long paramLong, bguu parambguu, boolean paramBoolean);
+  public void a(@NonNull bgus parambgus)
+  {
+    parambgus = parambgus.a();
+    if (parambgus == null) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        int i = parambgus.getJSONObject("data").getInt("identity");
+        parambgus = this.a;
+        if (i == 2)
+        {
+          bool = true;
+          bgvm.e(parambgus, bool);
+          bgvo.d("ReaderHomePageActivity", "queryUserIdentityForTabSwitch: identity = " + i);
+          return;
+        }
+      }
+      catch (Exception parambgus)
+      {
+        bgvo.a("ReaderHomePageActivity", "queryUserIdentityForTabSwitch:", parambgus);
+        return;
+      }
+      boolean bool = false;
+    }
+  }
 }
 
 

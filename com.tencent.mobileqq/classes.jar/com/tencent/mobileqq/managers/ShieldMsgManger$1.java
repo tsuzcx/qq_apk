@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.managers;
 
-import arip;
+import aser;
 
 public class ShieldMsgManger$1
   implements Runnable
 {
-  public ShieldMsgManger$1(arip paramarip) {}
+  public ShieldMsgManger$1(aser paramaser) {}
   
   public void run()
   {
-    arip.a(this.this$0);
+    aser.a(this.this$0);
   }
 }
 

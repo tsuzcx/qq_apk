@@ -1,22 +1,10 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskException;
-
-public class ogm
-  extends BroadcastReceiver
+public abstract interface ogm
 {
-  public ogm(KandianMergeManager paramKandianMergeManager) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    TaskException.reportCrash(paramIntent.getBooleanExtra("isNativeCrashed", false), paramIntent.getStringExtra("crashType"), paramIntent.getStringExtra("crashAddress"), paramIntent.getStringExtra("crashStack"), paramIntent.getIntExtra("native_SICODE", 0), paramIntent.getLongExtra("crashTime", 0L));
-  }
+  public abstract void onViewState(boolean paramBoolean, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ogm
  * JD-Core Version:    0.7.0.1
  */

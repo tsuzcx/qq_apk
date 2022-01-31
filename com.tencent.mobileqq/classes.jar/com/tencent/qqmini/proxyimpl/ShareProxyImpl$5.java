@@ -1,22 +1,22 @@
 package com.tencent.qqmini.proxyimpl;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
-import bbms;
-import bdng;
+import bcpq;
+import bers;
 import com.tencent.mobileqq.app.ThreadManager;
 
 class ShareProxyImpl$5
   implements Runnable
 {
-  ShareProxyImpl$5(ShareProxyImpl paramShareProxyImpl, Activity paramActivity, bdng parambdng) {}
+  ShareProxyImpl$5(ShareProxyImpl paramShareProxyImpl, Activity paramActivity, bers parambers) {}
   
   public void run()
   {
-    bbms localbbms = new bbms(this.val$activity);
-    localbbms.a(ajjy.a(2131636947));
-    localbbms.show();
-    ThreadManager.excute(new ShareProxyImpl.5.1(this, localbbms), 128, null, true);
+    bcpq localbcpq = new bcpq(this.val$activity);
+    localbcpq.a(ajyc.a(2131702731));
+    localbcpq.show();
+    ThreadManager.excute(new ShareProxyImpl.5.1(this, localbcpq), 128, null, true);
   }
 }
 

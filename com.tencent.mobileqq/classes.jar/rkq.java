@@ -1,12 +1,15 @@
-import android.view.View.OnClickListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-public abstract interface rkq
+class rkq
+  extends rkj
 {
-  public abstract void a(String paramString, View.OnClickListener paramOnClickListener);
+  public rkq(rkn paramrkn, View paramView, BaseData paramBaseData)
+  {
+    super(paramView, paramBaseData);
+  }
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(String paramString, View.OnClickListener paramOnClickListener);
+  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean) {}
 }
 
 

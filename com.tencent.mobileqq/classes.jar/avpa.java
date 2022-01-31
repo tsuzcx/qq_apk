@@ -1,138 +1,117 @@
-import java.util.ArrayList;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import java.util.HashMap;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import java.util.Map;
 
 public class avpa
-  extends avow
+  extends RecyclerView.Adapter<avpd>
+  implements baxl
 {
-  public double a;
-  public int a;
-  public CharSequence a;
-  public String a;
-  public List<avop> a;
-  public double b;
-  public int b;
-  public CharSequence b;
-  public String b;
-  public boolean b;
-  public CharSequence c;
-  public List<String> c;
-  public boolean c;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  private int jdField_a_of_type_Int = 0;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new avpb(this);
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private baxk jdField_a_of_type_Baxk;
+  private List<ReceiptMessageReadMemberListFragment.MemberInfo> jdField_a_of_type_JavaUtilList;
+  private Map<String, Bitmap> jdField_a_of_type_JavaUtilMap;
   
-  public avpa(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  private avpa(Context paramContext, baxk parambaxk, RecyclerView paramRecyclerView)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Baxk = parambaxk;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bbdr.a();
+    this.jdField_a_of_type_Baxk.a(this);
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    paramRecyclerView.setOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
   }
   
-  public avpa(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  private Bitmap a(String paramString)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    return a(paramString, 1, (byte)0);
   }
   
-  public int a(int paramInt)
+  private Bitmap a(String paramString, int paramInt, byte paramByte)
   {
-    int i = paramInt;
-    switch (paramInt)
-    {
-    default: 
-      i = 1;
+    Bitmap localBitmap = this.jdField_a_of_type_Baxk.a(paramInt, paramString);
+    if (localBitmap != null) {
+      return localBitmap;
     }
-    return i;
+    if (!this.jdField_a_of_type_Baxk.a()) {
+      this.jdField_a_of_type_Baxk.a(paramString, paramInt, true, paramByte);
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
   }
   
-  public void a(String paramString)
+  private void a()
   {
-    boolean bool2 = true;
-    int n = 0;
-    for (;;)
+    int j = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount();
+    int i = 0;
+    while (i < j)
     {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        this.i = paramString.optString("leftImageURL");
-        this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
-        this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_JavaLangCharSequence = avwf.a(paramString.optString("headText"));
-        this.jdField_a_of_type_JavaLangString = paramString.optString("headLineIconURL");
-        this.jdField_b_of_type_JavaLangCharSequence = avwf.a(paramString.optString("descLineText"));
-        this.jdField_c_of_type_JavaLangCharSequence = avwf.a(paramString.optString("firstLineText"));
-        JSONArray localJSONArray = paramString.optJSONArray("imageList");
-        int i;
-        Object localObject;
-        if (localJSONArray != null)
-        {
-          this.jdField_a_of_type_JavaUtilList = new ArrayList(localJSONArray.length());
-          i = 0;
-          if (i < localJSONArray.length())
-          {
-            localObject = localJSONArray.optJSONObject(i);
-            localObject = new avop(((JSONObject)localObject).optString("url"), ((JSONObject)localObject).optInt("type"));
-            this.jdField_a_of_type_JavaUtilList.add(localObject);
-            i += 1;
-            continue;
-          }
-        }
-        this.jdField_a_of_type_Double = paramString.optDouble("imageAspectRatio", 1.0D);
-        this.jdField_b_of_type_Double = paramString.optDouble("singleImageScale", 1.0D);
-        this.jdField_b_of_type_Int = paramString.optInt("imageTotalCount");
-        if (paramString.optInt("topNeedHigherMargin", 0) == 1)
-        {
-          bool1 = true;
-          this.jdField_b_of_type_Boolean = bool1;
-          if (paramString.optInt("needCornerRadius", 0) != 1) {
-            break label394;
-          }
-          bool1 = bool2;
-          this.jdField_c_of_type_Boolean = bool1;
-          localJSONArray = paramString.optJSONArray("dynamicLineImageList");
-          if (localJSONArray != null)
-          {
-            this.jdField_c_of_type_JavaUtilList = new ArrayList(localJSONArray.length());
-            i = n;
-            if (i < localJSONArray.length())
-            {
-              localObject = localJSONArray.optJSONObject(i).optString("url");
-              this.jdField_c_of_type_JavaUtilList.add(localObject);
-              i += 1;
-              continue;
-            }
-          }
-          this.jdField_b_of_type_JavaLangString = paramString.optString("dynamicLineLeftText");
-          this.j = paramString.optString("dynamicLineZanIconUrl");
-          this.k = paramString.optString("dynamicLineZanText");
-          this.l = paramString.optString("dynamicLineCommentIconUrl");
-          this.m = paramString.optString("dynamicLineCommentText");
-          return;
-        }
+      Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(i);
+      localObject = (avpd)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject);
+      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.get(avpd.a((avpd)localObject));
+      if (localBitmap != null) {
+        avpd.a((avpd)localObject).setImageBitmap(localBitmap);
       }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      boolean bool1 = false;
-      continue;
-      label394:
-      bool1 = false;
+      i += 1;
     }
   }
   
-  public boolean b()
+  public avpd a(ViewGroup paramViewGroup, int paramInt)
   {
-    return super.b();
+    return new avpd(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562315, paramViewGroup, false), null);
+  }
+  
+  public void a(avpd paramavpd, int paramInt)
+  {
+    ReceiptMessageReadMemberListFragment.MemberInfo localMemberInfo = (ReceiptMessageReadMemberListFragment.MemberInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    avpd.a(paramavpd, localMemberInfo.a);
+    avpd.a(paramavpd).setText(localMemberInfo.b);
+    avpd.a(paramavpd).setImageBitmap(a(localMemberInfo.a));
+  }
+  
+  public void a(List<ReceiptMessageReadMemberListFragment.MemberInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramBitmap);
+    if (paramInt1 <= 0)
+    {
+      if (this.jdField_a_of_type_Int == 0) {
+        a();
+      }
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avpa
  * JD-Core Version:    0.7.0.1
  */

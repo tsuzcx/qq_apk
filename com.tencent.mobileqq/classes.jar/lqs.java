@@ -1,34 +1,16 @@
-import com.tencent.av.ui.AVActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-
 public class lqs
-  implements URLDrawable.URLDrawableListener
+  implements lqr
 {
-  public lqs(AVActivity paramAVActivity) {}
+  public void a(lqq paramlqq) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public boolean a(lqq paramlqq)
   {
-    AVActivity.a(this.a, false);
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadCanceled().");
+    return false;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public boolean b(lqq paramlqq)
   {
-    AVActivity.a(this.a, false);
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadFialed().");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadProgressed(). i = " + paramInt);
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    AVActivity.a(this.a, true);
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadSuccessed().");
+    return true;
   }
 }
 

@@ -1,31 +1,54 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class aymk
-  extends aymp
+class aymk
+  extends Handler
 {
-  public aymk(TroopAioKeywordTipBar.4 param4) {}
-  
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  aymk(aymj paramaymj, Looper paramLooper)
   {
-    if (!this.a.this$0.a) {}
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Activity localActivity;
+    if ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null))
+    {
+      localActivity = null;
+      if (localActivity != null) {
+        break label75;
+      }
+      QLog.d("ThemeSwitchManager", 2, "handleMessage activity is not TitleBarActivity, , what=" + paramMessage.what);
+    }
+    label75:
     do
     {
       return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
+      localActivity = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      break;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
+    } while ((localActivity.isFinishing()) || ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())));
+    this.a.jdField_a_of_type_Bcpq = new bcpq(localActivity, ((BaseActivity)localActivity).getTitleBarHeight());
+    this.a.jdField_a_of_type_Bcpq.setCancelable(true);
+    this.a.jdField_a_of_type_Bcpq.c(2131719969);
+    this.a.jdField_a_of_type_Bcpq.show();
     return;
-    ayme.a(this.a.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
+    this.a.c();
+    bcpw.a(localActivity, ajyc.a(2131714923), 4000).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aymk
  * JD-Core Version:    0.7.0.1
  */

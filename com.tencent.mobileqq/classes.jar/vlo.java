@@ -1,20 +1,19 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qqstory.utils.FileUtils.1;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-
 public class vlo
-  implements DialogInterface.OnClickListener
 {
-  public vlo(FileUtils.1 param1) {}
+  public int a;
+  public vlm a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private vlo(vlq paramvlq)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent(this.a.a, QQSettingMsgHistoryActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_Vlm = vlq.a(paramvlq);
+    this.jdField_a_of_type_Int = vlq.a(paramvlq);
+    this.b = vlq.b(paramvlq);
+  }
+  
+  public String toString()
+  {
+    return "DoodleConfig{doodleStrategy=" + this.jdField_a_of_type_Vlm + ", maxBitmapWidth=" + this.jdField_a_of_type_Int + ", maxBitmapHeight=" + this.b + '}';
   }
 }
 

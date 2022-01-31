@@ -1,30 +1,12 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.pic.PicShareToWX;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
-
-public class atpy
-  implements bbsh
+class atpy
+  implements atap
 {
-  public atpy(PicShareToWX paramPicShareToWX, int paramInt) {}
+  atpy(atpi paramatpi) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicShareToWX", 1, "onWXShareResp resp.errCode = " + paramBaseResp.errCode + ", fromType = " + this.jdField_a_of_type_Int);
-    }
-    if (paramBaseResp.errCode == 0)
-    {
-      PicShareToWX.a(this.jdField_a_of_type_Int, true);
-      PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX, true, 0, 1);
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      PicShareToWX.a(this.jdField_a_of_type_Int, false);
-      PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX, false, paramBaseResp.errCode, 1);
-    }
+    this.a.c(paramBoolean);
+    this.a.t = paramBoolean;
   }
 }
 

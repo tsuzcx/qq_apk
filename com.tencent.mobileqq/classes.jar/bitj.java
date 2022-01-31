@@ -1,341 +1,202 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.graphics.PointF;
+import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import dov.com.qq.im.BaseVMPeakActivity;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
 
 public class bitj
-  extends bitr
+  extends Fragment
+  implements bisx
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<bitm> jdField_a_of_type_JavaUtilList;
+  public static double a;
+  public static List<List<List<PointF>>> a;
+  public static List<List<float[]>> b;
+  private long jdField_a_of_type_Long = 9223372036854775807L;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private biss jdField_a_of_type_Biss;
+  private biuo jdField_a_of_type_Biuo;
+  private biur jdField_a_of_type_Biur;
+  private bius jdField_a_of_type_Bius;
+  private bivb jdField_a_of_type_Bivb;
+  private bivc jdField_a_of_type_Bivc;
+  private BaseVMPeakActivity jdField_a_of_type_DovComQqImBaseVMPeakActivity;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  private boolean jdField_a_of_type_Boolean;
+  private TextView b;
+  private List<bisj> c = new ArrayList();
   
-  public bitj(Context paramContext, String paramString1, String paramString2, int paramInt, @NonNull List<bitm> paramList, QQAppInterface paramQQAppInterface)
+  static
   {
-    super(paramContext, paramString1, paramString2, paramInt);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    jdField_a_of_type_Double = 1.0D;
   }
   
-  private bitn a(int paramInt)
+  public static bitj a(String paramString, long paramLong)
   {
-    int i = c();
-    if ((paramInt < 0) || (paramInt >= i)) {
-      throw new IllegalStateException("getViewType Exception, innerPos:" + paramInt + ",LineCount:" + i);
-    }
-    Object localObject1;
-    if (paramInt == 0)
-    {
-      localObject1 = new bitn(null);
-      ((bitn)localObject1).jdField_a_of_type_Int = 1;
-      return localObject1;
-    }
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
-    i = 0;
-    if (((Iterator)localObject2).hasNext())
-    {
-      localObject1 = (bitm)((Iterator)localObject2).next();
-      i += 1;
-      if (i == paramInt)
-      {
-        localObject2 = new bitn(null);
-        ((bitn)localObject2).jdField_a_of_type_Int = 2;
-        ((bitn)localObject2).jdField_a_of_type_Bitm = ((bitm)localObject1);
-        return localObject2;
-      }
-      if (!bitm.a((bitm)localObject1)) {
-        break label253;
-      }
-      if (paramInt <= ((bitm)localObject1).a().size() + i)
-      {
-        localObject2 = (bitl)((bitm)localObject1).a().get(paramInt - i - 1);
-        bitn localbitn = new bitn(null);
-        localbitn.jdField_a_of_type_Int = 3;
-        localbitn.jdField_a_of_type_Bitm = ((bitm)localObject1);
-        localbitn.jdField_a_of_type_Bitl = ((bitl)localObject2);
-        return localbitn;
-      }
-      i = ((bitm)localObject1).a().size() + i;
-    }
-    label253:
-    for (;;)
-    {
-      break;
-      throw new IllegalStateException("can not find item with innerPos:" + paramInt);
-    }
+    bitj localbitj = new bitj();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("KEY_PREVIEW_SOURCE_PATH", paramString);
+    localBundle.putLong("KEY_AVAILABLE_EMO_COUNT", paramLong);
+    localbitj.setArguments(localBundle);
+    return localbitj;
   }
   
-  private void a(View paramView)
+  private void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
   {
-    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131298409);
-    Object localObject = (ImageView)paramView.findViewById(2131298419);
-    TextView localTextView = (TextView)paramView.findViewById(2131298416);
-    paramView = paramView.findViewById(2131298410);
-    localTextView.setText(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      ((ImageView)localObject).setVisibility(0);
-      localObject = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-      if (!this.b) {
-        break label138;
-      }
-      localCheckBox.setChecked(true);
-    }
-    for (((RelativeLayout.LayoutParams)localObject).leftMargin = vms.a(this.jdField_a_of_type_AndroidContentContext, 32.0F);; ((RelativeLayout.LayoutParams)localObject).leftMargin = 0)
-    {
-      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      int i = -2170912;
-      QQStoryContext.a();
-      if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
-        i = -16444373;
-      }
-      paramView.setBackgroundColor(i);
-      return;
-      ((ImageView)localObject).setVisibility(4);
-      break;
-      label138:
-      localCheckBox.setChecked(false);
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putStringArrayList("qipc_param_camera_emo_png_dirs", paramArrayList1);
+    localBundle.putStringArrayList("qipc_param_camera_emo_texts", paramArrayList2);
+    localBundle.putStringArrayList("qipc_param_camera_emo_snapshots", paramArrayList3);
+    QIPCClientHelper.getInstance().callServer("CameraEmoIpcServer", "qipc_action_camera_emo_create_gif_and_upload", localBundle, new bits(this));
+    getActivity().setResult(201);
+    getActivity().finish();
   }
   
-  private void a(View paramView, bitm parambitm)
+  private void b()
   {
-    TextView localTextView1 = (TextView)paramView.findViewById(2131301599);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131301601);
-    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131301572);
-    paramView = (CheckBox)paramView.findViewById(2131301574);
-    localTextView1.setText(parambitm.a.group_name);
-    localTextView2.setText(String.format("(%s/%s)", new Object[] { Integer.valueOf(parambitm.a()), Integer.valueOf(parambitm.b()) }));
-    if (parambitm.b() == 0)
-    {
-      paramView.setVisibility(4);
-      if (!parambitm.a()) {
-        break label146;
-      }
-      paramView.setChecked(true);
-      label111:
-      if (!bitm.a(parambitm)) {
-        break label154;
-      }
-      localCheckBox.setChecked(true);
-    }
-    for (;;)
-    {
-      paramView.setOnClickListener(new bitk(this, parambitm));
-      return;
-      paramView.setVisibility(0);
-      break;
-      label146:
-      paramView.setChecked(false);
-      break label111;
-      label154:
-      localCheckBox.setChecked(false);
-    }
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375453);
+    ViewGroup.LayoutParams localLayoutParams = localRelativeLayout.getLayoutParams();
+    localLayoutParams.width = -1;
+    localLayoutParams.height = ((int)(DeviceUtils.getScreenHeight(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity) * 0.08F));
+    localRelativeLayout.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367062).setOnClickListener(new bitl(this));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378372));
+    int i = (int)(DeviceUtils.getScreenWidth(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity) * 0.04F);
+    this.jdField_b_of_type_AndroidWidgetTextView.setPadding(i, bawz.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 9.0F), 0, bawz.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 9.0F));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375562));
+    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bitm(this));
+    c();
   }
   
-  private void a(View paramView, bitm parambitm, bitl parambitl)
+  private void c()
   {
-    ImageView localImageView = (ImageView)paramView.findViewById(2131301175);
-    Object localObject1 = (TextView)paramView.findViewById(2131301195);
-    Object localObject2 = (CheckBox)paramView.findViewById(2131301158);
-    paramView = paramView.findViewById(2131301157);
-    ((TextView)localObject1).setText(parambitl.jdField_a_of_type_ComTencentMobileqqDataFriends.remark);
-    if (parambitl.jdField_a_of_type_Boolean)
-    {
-      ((CheckBox)localObject2).setChecked(true);
-      localObject1 = bacm.b();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-        break label226;
-      }
-      localObject2 = azwp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, parambitl.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, 3, (Drawable)localObject1, (Drawable)localObject1);
-      if (localObject2 == null) {
-        break label207;
-      }
-      localImageView.setImageDrawable((Drawable)localObject2);
-    }
-    for (;;)
-    {
-      paramView.setVisibility(4);
-      if (this.jdField_a_of_type_JavaUtilList.indexOf(parambitm) == this.jdField_a_of_type_JavaUtilList.size() - 1)
-      {
-        parambitm = parambitm.a();
-        if (parambitm.indexOf(parambitl) == parambitm.size() - 1)
-        {
-          int i = -2170912;
-          QQStoryContext.a();
-          if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
-            i = -16444373;
-          }
-          paramView.setBackgroundColor(i);
-          paramView.setVisibility(0);
-        }
-      }
-      return;
-      ((CheckBox)localObject2).setChecked(false);
-      break;
-      label207:
-      urk.e("Q.qqstory.publish.edit.ComplexPart", "FaceDrawable is null.");
-      localImageView.setImageDrawable((Drawable)localObject1);
-      continue;
-      label226:
-      urk.e("Q.qqstory.publish.edit.ComplexPart", "QQAppInterface is null.");
-      localImageView.setImageDrawable((Drawable)localObject1);
-    }
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375556));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new GridLayoutManager(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 2));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new bitn(this));
+    d();
   }
   
-  private void a(bitn parambitn)
+  private void d()
   {
-    boolean bool;
-    if (this.jdField_a_of_type_Boolean) {
-      if (!this.b) {
-        bool = true;
+    Object localObject = new bisj();
+    ((bisj)localObject).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = null;
+    ((bisj)localObject).jdField_a_of_type_JavaLangString = null;
+    ((bisj)localObject).b = 2;
+    this.c.add(0, new bisj());
+    this.jdField_a_of_type_Biss = new biss(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, this.c);
+    this.jdField_a_of_type_Biss.a(this);
+    this.jdField_a_of_type_Biss.a(this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Biss);
+    localObject = new biuz();
+    ((biuz)localObject).a = 0;
+    this.jdField_a_of_type_Bivc.a((biuz)localObject);
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_Bius = ((bius)biix.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity).a(bius.class));
+    this.jdField_a_of_type_Biss.a(this.jdField_a_of_type_Bius, this.jdField_a_of_type_DovComQqImBaseVMPeakActivity);
+    this.jdField_a_of_type_Bius.b().a("");
+    this.jdField_a_of_type_Bius.a().a(new bism("#ccffffff", "#000000"));
+    this.jdField_a_of_type_Bius.c().a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, new bito(this));
+    this.jdField_a_of_type_Bius.a();
+    this.jdField_a_of_type_Biuo = ((biuo)biix.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity).a(biuo.class));
+    this.jdField_a_of_type_Biur = ((biur)biix.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, bjmo.a()).a(biur.class));
+    this.jdField_a_of_type_Biur.a().a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, new bitp(this));
+  }
+  
+  private void f()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(0);
+    localObject = biua.a(this.jdField_a_of_type_JavaLangString, true, (View)localObject);
+    getFragmentManager().beginTransaction().add(2131366671, (Fragment)localObject).addToBackStack(null).commit();
+  }
+  
+  protected int a()
+  {
+    return 2131558519;
+  }
+  
+  public void a()
+  {
+    f();
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    this.jdField_a_of_type_DovComQqImBaseVMPeakActivity = ((BaseVMPeakActivity)getActivity());
+    paramBundle = getArguments().getString("KEY_PREVIEW_SOURCE_PATH");
+    this.jdField_a_of_type_Long = getArguments().getLong("KEY_AVAILABLE_EMO_COUNT");
+    QLog.d("AEGIFChunkPreviewFragment", 4, "availableEmoCount = " + this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Bivc = new bivc(paramBundle, jdField_a_of_type_JavaUtilList, jdField_b_of_type_JavaUtilList, jdField_a_of_type_Double, getActivity());
+    this.jdField_a_of_type_Bivc.a(new bitk(this));
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilHashMap.put("happy", ajyc.a(2131699957));
+    this.jdField_a_of_type_JavaUtilHashMap.put("neutral", ajyc.a(2131699958));
+    this.jdField_a_of_type_JavaUtilHashMap.put("sad", ajyc.a(2131699963));
+    this.jdField_a_of_type_JavaUtilHashMap.put("anger", ajyc.a(2131699961));
+    this.jdField_a_of_type_JavaUtilHashMap.put("disgust", ajyc.a(2131699959));
+    this.jdField_a_of_type_JavaUtilHashMap.put("fear", ajyc.a(2131699966));
+  }
+  
+  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(a(), paramViewGroup, false));
+    b();
+    e();
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    bivc localbivc;
+    if (this.jdField_a_of_type_Bivc != null)
+    {
+      localbivc = this.jdField_a_of_type_Bivc;
+      if (this.jdField_a_of_type_Boolean) {
+        break label31;
       }
     }
-    for (this.b = bool;; this.b = true)
+    label31:
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-      bool = false;
-      break;
-    }
-  }
-  
-  private void b(bitn parambitn)
-  {
-    parambitn.jdField_a_of_type_Bitm.a();
-  }
-  
-  private int c()
-  {
-    if (!this.b) {
-      return 1;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 1;
-    if (localIterator.hasNext())
-    {
-      bitm localbitm = (bitm)localIterator.next();
-      List localList = localbitm.a();
-      i += 1;
-      if (!bitm.a(localbitm)) {
-        break label72;
-      }
-      i = localList.size() + i;
-    }
-    label72:
-    for (;;)
-    {
-      break;
-      return i;
-    }
-  }
-  
-  private void c(bitn parambitn)
-  {
-    parambitn.jdField_a_of_type_Bitm.a(parambitn.jdField_a_of_type_Bitl);
-  }
-  
-  public int a()
-  {
-    return c();
-  }
-  
-  public int a(int paramInt)
-  {
-    return a(paramInt).jdField_a_of_type_Int;
-  }
-  
-  public View a(int paramInt, ViewGroup paramViewGroup)
-  {
-    switch (a(paramInt).jdField_a_of_type_Int)
-    {
-    default: 
-      return null;
-    case 1: 
-      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495723, null);
-    case 2: 
-      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495725, null);
-    }
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495724, null);
-  }
-  
-  @NonNull
-  public List<bitl> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.addAll(((bitm)localIterator.next()).b());
-    }
-    return localArrayList;
-  }
-  
-  public void a(int paramInt)
-  {
-    bitn localbitn = a(paramInt);
-    switch (localbitn.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 1: 
-      a(localbitn);
-      return;
-    case 2: 
-      b(localbitn);
+      localbivc.a(bool);
       return;
     }
-    c(localbitn);
   }
   
-  public void a(int paramInt, View paramView)
+  public void onPause()
   {
-    bitn localbitn = a(paramInt);
-    switch (localbitn.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramView);
-      return;
-    case 2: 
-      a(paramView, localbitn.jdField_a_of_type_Bitm);
-      return;
-    }
-    a(paramView, localbitn.jdField_a_of_type_Bitm, localbitn.jdField_a_of_type_Bitl);
+    super.onPause();
+    bizc.a().H();
   }
   
-  public void a(List<String> paramList)
+  public void onResume()
   {
-    if (paramList == null) {
-      return;
-    }
-    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator1.hasNext())
-    {
-      bitm localbitm = (bitm)localIterator1.next();
-      Iterator localIterator2 = localbitm.a().iterator();
-      while (localIterator2.hasNext())
-      {
-        bitl localbitl = (bitl)localIterator2.next();
-        if (paramList.contains(localbitl.a())) {
-          localbitm.b(localbitl);
-        }
-      }
-    }
+    super.onResume();
+    this.jdField_a_of_type_Boolean = false;
+    bizg.a().j();
   }
 }
 

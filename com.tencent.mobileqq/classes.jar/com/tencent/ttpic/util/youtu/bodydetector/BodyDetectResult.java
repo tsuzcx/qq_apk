@@ -8,6 +8,8 @@ public class BodyDetectResult
   public List<Float> bodyPointScores;
   public List<PointF> bodyPoints;
   public long dectectBodyTime = 0L;
+  public int detectHeight;
+  public int detectWidth;
 }
 
 

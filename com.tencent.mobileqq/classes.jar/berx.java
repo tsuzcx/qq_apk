@@ -1,27 +1,48 @@
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.widget.soload.config.SoConfig.SoInfo;
+import android.graphics.Bitmap;
+import org.json.JSONObject;
 
-class berx
-  implements beso
+public class berx
+  implements Cloneable
 {
-  berx(berw paramberw, besd parambesd) {}
+  public Bitmap a;
+  public String a;
+  public Bitmap b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a(SoConfig.SoInfo paramSoInfo)
+  public static berx a(JSONObject paramJSONObject)
   {
-    long l = berw.a(this.jdField_a_of_type_Berw).a;
-    StringBuilder localStringBuilder = new StringBuilder().append("is64bit=");
-    if (besh.a()) {}
-    for (int i = 1;; i = 0)
+    berx localberx = new berx();
+    if (paramJSONObject != null)
     {
-      VACDReportUtil.a(l, null, "load.item.getconfig.end", i + "&v=" + berw.a(), SoConfig.SoInfo.getReportCode(paramSoInfo), null);
-      berw.a(this.jdField_a_of_type_Berw, this.jdField_a_of_type_Besd, paramSoInfo);
-      return;
+      localberx.jdField_a_of_type_JavaLangString = paramJSONObject.optString("pagePath");
+      localberx.jdField_b_of_type_JavaLangString = paramJSONObject.optString("text");
+      localberx.c = paramJSONObject.optString("iconData");
+      localberx.d = paramJSONObject.optString("selectedIconData");
+      localberx.jdField_a_of_type_AndroidGraphicsBitmap = berw.a(localberx.c);
+      localberx.jdField_b_of_type_AndroidGraphicsBitmap = berw.a(localberx.d);
     }
+    return localberx;
+  }
+  
+  public berx a()
+  {
+    try
+    {
+      berx localberx = (berx)super.clone();
+      return localberx;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     berx
  * JD-Core Version:    0.7.0.1
  */

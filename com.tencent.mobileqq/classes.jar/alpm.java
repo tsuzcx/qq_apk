@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class alpm
+class alpm
+  implements admh
 {
-  public String a;
-  public boolean a;
-  public String b;
+  alpm(alpf paramalpf, long paramLong) {}
   
-  public alpm(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public void a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    this.jdField_a_of_type_Alpf.a(this.jdField_a_of_type_Long, paramBoolean, paramSosoLbsInfo);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alpm
  * JD-Core Version:    0.7.0.1
  */

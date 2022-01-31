@@ -19,7 +19,9 @@ import java.util.List;
 
 public class StickerItem
 {
+  public ArrayList<StickerItem.TriggerArea> activateTriggerArea;
   public int activateTriggerCount;
+  public int activateTriggerCountOnce;
   public int activateTriggerTotalCount;
   public int activateTriggerType;
   public int[] activeParts;
@@ -115,9 +117,11 @@ public class StickerItem
   public int support3D;
   public Transition transition;
   public int triggedTimes = 0;
+  public ArrayList<StickerItem.TriggerArea> triggerArea;
   public int triggerFrameDurationTime;
   public int triggerFrameStartTime;
-  public String triggerState;
+  public int triggerHandPoint;
+  public ArrayList<String> triggerState;
   public StickerItem.ValueRange triggerStateRange;
   public TriggerTimeUpdater triggerTimeUpdater;
   private String triggerType;

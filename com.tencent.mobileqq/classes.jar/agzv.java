@@ -1,17 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qphone.base.util.QLog;
 
 public class agzv
-  implements View.OnClickListener
+  implements View.OnFocusChangeListener
 {
-  public agzv(DrawerFrame paramDrawerFrame) {}
+  public agzv(LingHbFragment paramLingHbFragment) {}
   
-  public void onClick(View paramView) {}
+  public void onFocusChange(View paramView, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      LingHbFragment.a(this.a).a(this.a.c.getText().toString(), false);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("LingHbFragment", 2, "onFocusChange:" + paramBoolean);
+      }
+      return;
+      LingHbFragment.a(this.a).a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agzv
  * JD-Core Version:    0.7.0.1
  */

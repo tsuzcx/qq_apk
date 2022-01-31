@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import amvk;
+import anls;
 
 public class DataReportViewerFloatViewHelper$1
   implements Runnable
 {
   public void run()
   {
-    amvk.a(this.this$0, this.this$0.a());
+    anls.a(this.this$0, this.this$0.a());
   }
 }
 

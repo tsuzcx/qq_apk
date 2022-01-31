@@ -1,70 +1,61 @@
-import NS_MINI_INTERFACE.INTERFACE.StCheckNavigateRightReq;
-import NS_MINI_INTERFACE.INTERFACE.StCheckNavigateRightRsp;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONObject;
+import android.graphics.SurfaceTexture;
 
-public class bdta
-  extends bdtz
+class bdta
+  implements bdtj
 {
-  private INTERFACE.StCheckNavigateRightReq a = new INTERFACE.StCheckNavigateRightReq();
+  bdta(bdsz parambdsz) {}
   
-  public bdta(String paramString1, String paramString2)
+  public void a()
   {
-    this.a.appId.set(paramString1);
-    this.a.targetAppId.set(paramString2);
+    veg.b("DefaultMediaPlayer", "decoder -> onDecodeStart");
   }
   
-  protected String a()
+  public void a(int paramInt, Throwable paramThrowable)
   {
-    return "mini_app_info";
+    veg.d("DefaultMediaPlayer", "decoder -> onDecodeError :%d , %s", new Object[] { Integer.valueOf(paramInt), paramThrowable });
   }
   
-  public JSONObject a(byte[] paramArrayOfByte)
+  public void a(long paramLong)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StCheckNavigateRightRsp localStCheckNavigateRightRsp = new INTERFACE.StCheckNavigateRightRsp();
-    try
+    if (bdsz.a(this.a) == 0)
     {
-      localStCheckNavigateRightRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStCheckNavigateRightRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        int i = localStCheckNavigateRightRsp.actionCode.get();
-        paramArrayOfByte.put("action_code", i);
-        paramArrayOfByte.put("skip_local_check", localStCheckNavigateRightRsp.skipLocalCheck.get());
-        if (i == 0) {
-          paramArrayOfByte.put("reason", localStCheckNavigateRightRsp.wording.get());
-        } else {
-          paramArrayOfByte.put("wording", localStCheckNavigateRightRsp.wording.get());
-        }
-      }
+      bdtb.a(this.a.hashCode(), "[Player] on video decode first frame");
+      bdsz.a(this.a, 1);
     }
-    catch (Exception paramArrayOfByte)
-    {
-      bdnw.a("GetNewBaseLibRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
-    }
-    bdnw.a("GetNewBaseLibRequest", "onResponse fail.rsp = null");
-    return null;
-    return paramArrayOfByte;
   }
   
-  protected byte[] a()
+  public void a(SurfaceTexture paramSurfaceTexture)
   {
-    return this.a.toByteArray();
+    bdsz.a(this.a, paramSurfaceTexture);
   }
   
-  protected String b()
+  public void b()
   {
-    return "CheckNavigateRight";
+    veg.d("DefaultMediaPlayer", "decoder -> onDecodeFinish");
+    bdsz.a(this.a);
+  }
+  
+  public void b(long paramLong)
+  {
+    veg.d("DefaultMediaPlayer", "decoder -> onDecodeSeekTo :%d", new Object[] { Long.valueOf(paramLong) });
+  }
+  
+  public void c()
+  {
+    veg.d("DefaultMediaPlayer", "decoder -> onDecodeCancel");
+    bdsz.a(this.a);
+  }
+  
+  public void d()
+  {
+    veg.d("DefaultMediaPlayer", "decoder -> onDecodeRepeat");
+    bdsz.a(this.a);
+    bdsz.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdta
  * JD-Core Version:    0.7.0.1
  */

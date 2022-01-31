@@ -1,30 +1,47 @@
+import android.app.Activity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
+import org.json.JSONObject;
 
 public class bhqd
-  extends bhik
+  extends bhrq
 {
-  public bhqd(QIMPtvTemplateProviderView paramQIMPtvTemplateProviderView) {}
-  
-  public void a()
+  private boolean a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PtvTemplateProviderView", 2, "onFaceUUpdate!");
+    try
+    {
+      paramString = new JSONObject(paramString);
+      int i = paramString.optInt("categoryType");
+      paramString = paramString.optString("categoryId");
+      Activity localActivity = this.a.mRuntime.a();
+      if (localActivity != null)
+      {
+        bgxy.a(localActivity, this.a.mRuntime.a().getCurrentAccountUin(), i, paramString, -1);
+        return true;
+      }
     }
-    this.a.g();
+    catch (Exception paramString)
+    {
+      QLog.e("QZoneCategoryAlbumPlugin", 1, paramString.getMessage());
+      return false;
+    }
+    return false;
   }
   
-  public void g()
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PtvTemplateProviderView", 2, "onSegmentModeUpdate!");
+    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
+    while ((!paramString3.equalsIgnoreCase("jumpCategoryAlbum")) || (paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+      return false;
     }
-    this.a.a(false);
+    return a(paramVarArgs[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhqd
  * JD-Core Version:    0.7.0.1
  */

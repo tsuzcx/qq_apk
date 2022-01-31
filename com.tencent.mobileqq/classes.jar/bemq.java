@@ -1,12 +1,30 @@
-public abstract interface bemq
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class bemq
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  bemq(bemn parambemn, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bemn, 1);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Bemn.isShowing()) {
+        this.jdField_a_of_type_Bemn.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bemq
  * JD-Core Version:    0.7.0.1
  */

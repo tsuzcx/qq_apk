@@ -5,7 +5,8 @@ import NS_MINI_INTERFACE.INTERFACE.StFriendRanking;
 import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
 import NS_MINI_INTERFACE.INTERFACE.StRankingList;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
-import ajjy;
+import ajyc;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -44,30 +45,30 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder
   public MiniAppDesktopAdapter$FriendsPkViewHolder(View paramView)
   {
     super(paramView);
-    this.mBackground = ((ImageView)paramView.findViewById(2131304502));
-    this.mTitleIcon = ((ImageView)paramView.findViewById(2131304511));
-    this.mTitle = ((TextView)paramView.findViewById(2131304510));
-    this.mMoreIcon = ((ImageView)paramView.findViewById(2131304512));
-    this.mPkButton = ((ImageView)paramView.findViewById(2131304504));
-    this.mTopAppIcon = ((ImageView)paramView.findViewById(2131304513));
-    this.mTopAppName = ((TextView)paramView.findViewById(2131304516));
-    this.mTopAppDesc = ((TextView)paramView.findViewById(2131304515));
-    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131304506)));
-    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131304507)));
-    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131304508)));
-    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131304509)));
+    this.mBackground = ((ImageView)paramView.findViewById(2131370184));
+    this.mTitleIcon = ((ImageView)paramView.findViewById(2131370193));
+    this.mTitle = ((TextView)paramView.findViewById(2131370192));
+    this.mMoreIcon = ((ImageView)paramView.findViewById(2131370194));
+    this.mPkButton = ((ImageView)paramView.findViewById(2131370186));
+    this.mTopAppIcon = ((ImageView)paramView.findViewById(2131370195));
+    this.mTopAppName = ((TextView)paramView.findViewById(2131370198));
+    this.mTopAppDesc = ((TextView)paramView.findViewById(2131370197));
+    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131370188)));
+    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131370189)));
+    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131370190)));
+    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131370191)));
     ((MiniAppDesktopAdapter.FriendsPkViewHolder.Item)this.mRanking.get(0)).mCrown.setVisibility(0);
     ((MiniAppDesktopAdapter.FriendsPkViewHolder.Item)this.mRanking.get(3)).setOutOfRankStyle();
   }
   
-  public void bindView(DesktopFriendsPkModuleInfo paramDesktopFriendsPkModuleInfo)
+  public void bindView(Activity paramActivity, DesktopFriendsPkModuleInfo paramDesktopFriendsPkModuleInfo)
   {
     Object localObject1 = paramDesktopFriendsPkModuleInfo.moduleInfo;
     Object localObject2 = paramDesktopFriendsPkModuleInfo.ranking;
     Object localObject3 = URLDrawable.URLDrawableOptions.obtain();
-    Object localObject4 = this.itemView.getContext().getResources().getDrawable(2130847234);
-    ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject4);
-    ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject4);
+    Drawable localDrawable = this.itemView.getContext().getResources().getDrawable(2130847451);
+    ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = localDrawable;
+    ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = localDrawable;
     ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = false;
     try
     {
@@ -77,7 +78,7 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder
       MiniAppUtils.setImage(this.mPkButton, ((INTERFACE.StFriendRanking)localObject2).animationPic.get());
       this.mTopAppName.setText(((INTERFACE.StFriendRanking)localObject2).gameInfo.appInfo.appName.get());
       this.mTopAppIcon.setImageDrawable(MiniAppUtils.getIcon(this.itemView.getContext(), ((INTERFACE.StFriendRanking)localObject2).gameInfo.appInfo.icon.get(), true));
-      this.mTopAppDesc.setText(((INTERFACE.StFriendRanking)localObject2).friendsNum.get() + ajjy.a(2131641009));
+      this.mTopAppDesc.setText(((INTERFACE.StFriendRanking)localObject2).friendsNum.get() + ajyc.a(2131706794));
       int i = 0;
       int j;
       for (;;)
@@ -98,32 +99,23 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder
         ((MiniAppDesktopAdapter.FriendsPkViewHolder.Item)this.mRanking.get(j)).gone();
         j += 1;
       }
-      MiniAppUtils.setJump(this.mMoreIcon, paramDesktopFriendsPkModuleInfo.jumpMoreInfo, 3009);
-      MiniAppUtils.setJump(this.itemView, paramDesktopFriendsPkModuleInfo.appInfo, 3009);
-      localObject1 = MiniAppUtils.getAppInterface();
-      if (localObject1 != null)
+      MiniAppUtils.setJump(paramActivity, this.mMoreIcon, paramDesktopFriendsPkModuleInfo.jumpMoreInfo, 3009);
+      MiniAppUtils.setJump(paramActivity, this.itemView, paramDesktopFriendsPkModuleInfo.appInfo, 3009);
+      paramActivity = MiniAppUtils.getAppInterface();
+      if (paramActivity != null)
       {
-        localObject1 = (MiniAppExposureManager)((AppInterface)localObject1).getManager(322);
-        if (localObject1 != null)
+        paramActivity = (MiniAppExposureManager)paramActivity.getManager(322);
+        if (paramActivity != null)
         {
-          localObject2 = new MiniAppConfig(paramDesktopFriendsPkModuleInfo.appInfo);
-          ((MiniAppConfig)localObject2).launchParam.scene = 3009;
-          localObject2 = new MiniAppExposureManager.MiniAppModuleExposureData((MiniAppConfig)localObject2, "page_view", "expo");
-          localObject3 = new MiniAppExposureManager.CardModuleExposureData("desktop", "pk", "expo", null);
-          if (((MiniAppExposureManager)localObject1).getDesktopPullDownState() == 3)
-          {
-            ((MiniAppExposureManager)localObject1).addReportItem((MiniAppExposureManager.BaseExposureReport)localObject2);
-            ((MiniAppExposureManager)localObject1).addReportItem((MiniAppExposureManager.BaseExposureReport)localObject3);
-          }
+          localObject1 = new MiniAppConfig(paramDesktopFriendsPkModuleInfo.appInfo);
+          ((MiniAppConfig)localObject1).launchParam.scene = 3009;
+          localObject1 = new MiniAppExposureManager.MiniAppModuleExposureData((MiniAppConfig)localObject1, "page_view", "expo");
+          localObject2 = new MiniAppExposureManager.CardModuleExposureData("desktop", "pk", "expo", null);
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(paramDesktopFriendsPkModuleInfo.appInfo.appId).append("_").append(paramDesktopFriendsPkModuleInfo.appInfo.verType).append("_").append(paramDesktopFriendsPkModuleInfo.getModuleType());
+          paramActivity.putReportDataToMap(((StringBuilder)localObject3).toString(), (MiniAppExposureManager.BaseExposureReport)localObject1);
+          paramActivity.putReportDataToMap("pk", (MiniAppExposureManager.BaseExposureReport)localObject2);
         }
-        else
-        {
-          return;
-        }
-        localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append(paramDesktopFriendsPkModuleInfo.appInfo.appId).append("_").append(paramDesktopFriendsPkModuleInfo.appInfo.verType).append("_").append(paramDesktopFriendsPkModuleInfo.getModuleType());
-        ((MiniAppExposureManager)localObject1).putReportDataToMap(((StringBuilder)localObject4).toString(), (MiniAppExposureManager.BaseExposureReport)localObject2);
-        ((MiniAppExposureManager)localObject1).putReportDataToMap("pk", (MiniAppExposureManager.BaseExposureReport)localObject3);
         return;
       }
     }
@@ -132,7 +124,7 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder
       for (;;)
       {
         continue;
-        localObject1 = null;
+        paramActivity = null;
       }
     }
   }

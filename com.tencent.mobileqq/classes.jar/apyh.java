@@ -1,31 +1,28 @@
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import java.util.ArrayList;
 
-public class apyh
-  implements bbpw
+class apyh
+  implements aptu
 {
-  public apyh(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  apyh(apyg paramapyg) {}
   
-  public void a(View paramView, int paramInt)
+  public void a()
   {
-    if ((paramInt == 5) || (paramInt == 4))
-    {
-      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", "2747277822");
-      this.a.startActivity(paramView);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    this.a.getActivity().finish();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(apeh.a());
+    Intent localIntent = new Intent();
+    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
+    SendBottomBar.a(this.a.a).setResult(-1, localIntent);
+    SendBottomBar.a(this.a.a).finish();
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apyh
  * JD-Core Version:    0.7.0.1
  */

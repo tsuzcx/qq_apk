@@ -1,12 +1,26 @@
-import android.app.Activity;
+import android.database.DataSetObserver;
+import com.tencent.widget.ExpandableListConnector;
 
-public abstract interface bfqx
+public class bfqx
+  extends DataSetObserver
 {
-  public abstract void onFail(Activity paramActivity, String paramString);
+  public bfqx(ExpandableListConnector paramExpandableListConnector) {}
+  
+  public void onChanged()
+  {
+    ExpandableListConnector.a(this.a, true, true);
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    ExpandableListConnector.a(this.a, true, true);
+    this.a.notifyDataSetInvalidated();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfqx
  * JD-Core Version:    0.7.0.1
  */

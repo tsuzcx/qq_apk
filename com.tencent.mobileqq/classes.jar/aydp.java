@@ -1,28 +1,23 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import com.tencent.mobileqq.teamwork.DocsGrayTipsInfo;
 
 public final class aydp
-  implements Parcelable.Creator<MediaPreviewInfo>
+  implements Parcelable.Creator<DocsGrayTipsInfo>
 {
-  public MediaPreviewInfo a(Parcel paramParcel)
+  public DocsGrayTipsInfo a(Parcel paramParcel)
   {
-    MediaPreviewInfo localMediaPreviewInfo = new MediaPreviewInfo();
-    localMediaPreviewInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localMediaPreviewInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localMediaPreviewInfo.b = paramParcel.readString();
-    localMediaPreviewInfo.c = paramParcel.readString();
-    return localMediaPreviewInfo;
+    return new DocsGrayTipsInfo(paramParcel);
   }
   
-  public MediaPreviewInfo[] a(int paramInt)
+  public DocsGrayTipsInfo[] a(int paramInt)
   {
-    return new MediaPreviewInfo[paramInt];
+    return new DocsGrayTipsInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aydp
  * JD-Core Version:    0.7.0.1
  */

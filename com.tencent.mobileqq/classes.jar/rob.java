@@ -1,41 +1,21 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import android.text.TextUtils;
-import android.webkit.URLUtil;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.SquareImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
 
 public class rob
-  implements wxx<CertifiedAccountRead.StGetMainPageRsp>
+  implements ruw
 {
-  public rob(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
+  public rob(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
   
-  private void a(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public void a(int paramInt)
   {
-    ServiceAccountFolderActivityNew.a(this.a, ((CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get()).id.get());
-    String str = paramStGetMainPageRsp.user.icon.get();
-    if ((!TextUtils.isEmpty(paramStGetMainPageRsp.user.icon.get())) && (URLUtil.isNetworkUrl(str)))
+    switch (paramInt)
     {
-      ServiceAccountFolderActivityNew.a(this.a).setImageURL(str);
-      ServiceAccountFolderActivityNew.a(this.a).setOnClickListener(new roc(this));
-    }
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
-  {
-    if (paramBoolean)
-    {
-      if (paramStGetMainPageRsp != null)
-      {
-        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
-        urk.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage success");
-        a(paramStGetMainPageRsp);
-        ServiceAccountFolderActivityNew.a(this.a);
-      }
+    default: 
+      return;
+    case 0: 
+      this.a.h();
       return;
     }
-    urk.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage error retCode:" + paramLong + ",errMsg:" + paramString);
+    this.a.f();
   }
 }
 

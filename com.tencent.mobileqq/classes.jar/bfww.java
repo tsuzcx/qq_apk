@@ -1,27 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiUserInfo;
+import android.view.MotionEvent;
+import android.view.View;
 
-public final class bfww
-  implements Parcelable.Creator<WeishiUserInfo>
+public abstract interface bfww
 {
-  public WeishiUserInfo a(Parcel paramParcel)
-  {
-    WeishiUserInfo localWeishiUserInfo = new WeishiUserInfo();
-    localWeishiUserInfo.uin = paramParcel.readLong();
-    localWeishiUserInfo.nickName = paramParcel.readString();
-    localWeishiUserInfo.logo = paramParcel.readString();
-    return localWeishiUserInfo;
-  }
-  
-  public WeishiUserInfo[] a(int paramInt)
-  {
-    return new WeishiUserInfo[paramInt];
-  }
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfww
  * JD-Core Version:    0.7.0.1
  */

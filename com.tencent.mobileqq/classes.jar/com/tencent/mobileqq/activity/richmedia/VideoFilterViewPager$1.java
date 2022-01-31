@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahko;
+import ahxg;
 
 class VideoFilterViewPager$1
   implements Runnable

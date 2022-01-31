@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraStoryCaptureButtonLayout;
 
 class bizz
+  implements View.OnTouchListener
 {
-  public FilterDesc a;
-  public ArrayList<WeakReference<bjab>> a;
+  bizz(bizx parambizx) {}
   
-  bizz(bizy parambizy)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (((bizx.a(this.a) instanceof QIMCameraStoryCaptureButtonLayout)) && (((QIMCameraStoryCaptureButtonLayout)bizx.a(this.a)).c())) {
+      return true;
+    }
+    return bizx.a(this.a).a(paramMotionEvent);
   }
 }
 

@@ -1,31 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 
 class wkw
-  extends Handler
+  implements View.OnClickListener
 {
-  wkw(wku paramwku) {}
+  wkw(wkv paramwkv, CertifiedAccountMeta.StUser paramStUser) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_Ayoo + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_Ayop);
-    }
-    if (this.a.jdField_a_of_type_Ayop != null) {
-      this.a.a(this.a.jdField_a_of_type_Ayop);
-    }
-    this.a.a();
+    xhe.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + wva.a(this.jdField_a_of_type_Wkv.a()), "clk_shop", 0, 0, new String[0]);
+    wiv.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wkw
  * JD-Core Version:    0.7.0.1
  */

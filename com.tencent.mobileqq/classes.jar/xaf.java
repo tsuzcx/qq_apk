@@ -1,87 +1,52 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class xaf
-  extends RecyclerView.ViewHolder
+class xaf
+  implements baho
 {
-  private final View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private boolean jdField_a_of_type_Boolean;
-  private View b;
+  xaf(wzw paramwzw) {}
   
-  public xaf(xac paramxac, View paramView)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131303057));
-    this.b = paramView.findViewById(2131300738);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131304893);
-  }
-  
-  private RotateAnimation a()
-  {
-    RotateAnimation localRotateAnimation = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
-    localRotateAnimation.setDuration(3000L);
-    localRotateAnimation.setInterpolator(new LinearInterpolator());
-    localRotateAnimation.setRepeatCount(-1);
-    return localRotateAnimation;
-  }
-  
-  public void a()
-  {
-    a(true);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      QLog.d("requstTroopNotifyAd", 2, "result = " + paramJSONObject + ", requestCode = " + paramInt);
+    }
+    if (paramJSONObject != null)
     {
-      if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 8) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramJSONObject = paramJSONObject.optJSONObject("data");
+      if (paramJSONObject != null)
+      {
+        paramJSONObject = paramJSONObject.optJSONObject("8020205751015455");
+        if (paramJSONObject != null)
+        {
+          paramJSONObject = paramJSONObject.optJSONArray("list");
+          if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+          {
+            paramJSONObject = azpf.a(paramJSONObject.optJSONObject(0));
+            if (paramJSONObject != null)
+            {
+              this.a.jdField_a_of_type_Azpf = paramJSONObject;
+              this.a.d = true;
+              if (QLog.isColorLevel()) {
+                QLog.d("requstTroopNotifyAd", 2, "apurl = " + this.a.jdField_a_of_type_Azpf.a + ", img = " + this.a.jdField_a_of_type_Azpf.c + ", rl = " + this.a.jdField_a_of_type_Azpf.b);
+              }
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result ready -----------");
+            }
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+            return;
+          }
+        }
       }
-      if (this.b.getVisibility() == 8) {
-        this.b.setVisibility(0);
-      }
     }
-    while (this.b.getVisibility() != 0) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result null -----------");
     }
-    this.b.setVisibility(8);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
-    }
-    while (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public void c()
-  {
-    b(true);
-  }
-  
-  public void d()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(a());
-      this.jdField_a_of_type_Boolean = true;
-    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
   }
 }
 

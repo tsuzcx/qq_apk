@@ -1,34 +1,50 @@
-import android.content.Context;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.net.URL;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.Player;
+import java.lang.ref.WeakReference;
 
-public abstract interface aelm
-  extends aell
+public final class aelm
+  extends AnimationView.Player
 {
-  public abstract URLDrawable.URLDrawableOptions a();
+  public static boolean a;
   
-  public abstract URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions);
+  public aelm(AnimationView paramAnimationView)
+  {
+    super(paramAnimationView);
+  }
   
-  public abstract String a();
+  public static void a(boolean paramBoolean)
+  {
+    jdField_a_of_type_Boolean = paramBoolean;
+  }
   
-  public abstract URL a();
+  public void a(AnimationView paramAnimationView)
+  {
+    reset();
+    this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAnimationView);
+  }
   
-  public abstract void a(QQAppInterface paramQQAppInterface);
-  
-  public abstract void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo);
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract boolean b();
-  
-  public abstract String c();
-  
-  public abstract boolean c();
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (jdField_a_of_type_Boolean)
+      {
+        paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+      }
+      else
+      {
+        a();
+      }
+    }
+  }
 }
 
 

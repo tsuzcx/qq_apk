@@ -1,26 +1,18 @@
-public class ajhp
-  implements ajfe
+import java.util.Comparator;
+
+class ajhp
+  implements Comparator<ajio>
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  ajhp(ajhm paramajhm) {}
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public int a(ajio paramajio1, ajio paramajio2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    }
-    b(paramBoolean, paramObject);
+    return paramajio1.h - paramajio2.h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajhp
  * JD-Core Version:    0.7.0.1
  */

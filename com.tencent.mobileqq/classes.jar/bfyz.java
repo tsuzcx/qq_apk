@@ -1,39 +1,57 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.qzone.panorama.widget.PanoramaLoadingBall;
+import android.content.Context;
+import android.graphics.PointF;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSmoothScroller;
+import android.support.v7.widget.RecyclerView.SmoothScroller.Action;
+import android.support.v7.widget.RecyclerView.State;
+import android.util.DisplayMetrics;
+import android.view.View;
 
-public class bfyz
-  extends Handler
+class bfyz
+  extends LinearSmoothScroller
 {
-  public bfyz(PanoramaLoadingBall paramPanoramaLoadingBall, Looper paramLooper)
+  bfyz(bfyx parambfyx, Context paramContext, LinearLayoutManager paramLinearLayoutManager)
   {
-    super(paramLooper);
+    super(paramContext);
   }
   
-  public void handleMessage(Message paramMessage)
+  public float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
   {
-    super.handleMessage(paramMessage);
-    if ((paramMessage.what == 291) && (Build.VERSION.SDK_INT >= 11))
+    return bfyx.a(this.jdField_a_of_type_Bfyx) / paramDisplayMetrics.densityDpi;
+  }
+  
+  public int calculateTimeForDeceleration(int paramInt)
+  {
+    return super.calculateTimeForDeceleration(paramInt);
+  }
+  
+  public int calculateTimeForScrolling(int paramInt)
+  {
+    return super.calculateTimeForScrolling(paramInt);
+  }
+  
+  public PointF computeScrollVectorForPosition(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.computeScrollVectorForPosition(paramInt);
+  }
+  
+  public void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
+  {
+    paramView = bfyx.a(this.jdField_a_of_type_Bfyx, this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager, paramView);
+    int i = paramView[0];
+    int j = paramView[1];
+    int k = calculateTimeForDeceleration(Math.max(Math.abs(i), Math.abs(j)));
+    if (k > 0)
     {
-      if (PanoramaLoadingBall.a(this.a)) {
-        PanoramaLoadingBall.a(this.a, 60.0F);
-      }
-      if (PanoramaLoadingBall.a(this.a) == 0) {
-        this.a.setRotationX(PanoramaLoadingBall.a(this.a));
-      }
-    }
-    else
-    {
+      paramAction.update(i, j, k, this.mDecelerateInterpolator);
       return;
     }
-    this.a.setRotationY(PanoramaLoadingBall.a(this.a));
+    bfzd.a(bfyx.a(this.jdField_a_of_type_Bfyx));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfyz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.troop.utils;
 
-import azfo;
-import azfp;
-import azpw;
+import bagr;
+import bags;
+import bara;
 
 public class AIOAnimationControlManager$10$1
   implements Runnable
 {
-  public AIOAnimationControlManager$10$1(azfp paramazfp) {}
+  public AIOAnimationControlManager$10$1(bags parambags) {}
   
   public void run()
   {
     try
     {
-      if (this.a.jdField_a_of_type_Azfo.jdField_a_of_type_Azpw != null) {
-        this.a.jdField_a_of_type_Azfo.jdField_a_of_type_Azpw.b();
+      if (this.a.jdField_a_of_type_Bagr.jdField_a_of_type_Bara != null) {
+        this.a.jdField_a_of_type_Bagr.jdField_a_of_type_Bara.b();
       }
       label26:
-      this.a.jdField_a_of_type_Azfo.jdField_a_of_type_Int = 1;
-      this.a.jdField_a_of_type_Azfo.a(this.a.jdField_a_of_type_Boolean);
+      this.a.jdField_a_of_type_Bagr.jdField_a_of_type_Int = 1;
+      this.a.jdField_a_of_type_Bagr.a(this.a.jdField_a_of_type_Boolean);
       return;
     }
     catch (Throwable localThrowable)

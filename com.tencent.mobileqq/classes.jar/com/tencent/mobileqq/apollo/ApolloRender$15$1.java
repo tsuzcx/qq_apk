@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo;
 
-import aigi;
+import aitb;
 
 public class ApolloRender$15$1
   extends IApolloRunnableTask
 {
-  public ApolloRender$15$1(aigi paramaigi) {}
+  public ApolloRender$15$1(aitb paramaitb) {}
   
   public String a()
   {

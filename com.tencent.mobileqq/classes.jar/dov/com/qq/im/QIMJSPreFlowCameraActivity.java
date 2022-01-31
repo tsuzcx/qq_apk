@@ -1,12 +1,12 @@
 package dov.com.qq.im;
 
-import ahhj;
+import ahua;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bheo;
-import bhfm;
-import bhgs;
+import bihe;
+import bjae;
+import bjbk;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class QIMJSPreFlowCameraActivity
@@ -31,18 +31,18 @@ public class QIMJSPreFlowCameraActivity
         paramBundle.printStackTrace();
         continue;
       }
-      ((bhgs)bhfm.a(5)).e();
+      ((bjbk)bjae.a(5)).f();
       int i = localIntent.getIntExtra("firsttab", 0);
       int j = localIntent.getIntExtra("secondtab", 0);
       String str = localIntent.getStringExtra("itemid");
       int k = localIntent.getIntExtra("type", 0);
       int m = localIntent.getIntExtra("direction", 1);
-      int n = localIntent.getIntExtra("WebSceneType", ahhj.d);
+      int n = localIntent.getIntExtra("WebSceneType", ahua.d);
       paramBundle = str;
       if (str == null) {
         paramBundle = "";
       }
-      bheo.a(this, 4, 10007, 7, -1, i, j, paramBundle, 0, true, k, m, n, localIntent.getExtras());
+      bihe.a(this, 4, 10007, 7, -1, i, j, paramBundle, 0, true, k, m, n, localIntent.getExtras());
     }
   }
 }

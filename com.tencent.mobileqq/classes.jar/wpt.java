@@ -1,19 +1,17 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 
-class wpt
-  implements wpz
+public class wpt
+  extends RecyclerView.ViewHolder
 {
-  wpt(wpq paramwpq) {}
-  
-  public void a(View paramView, float paramFloat)
+  public wpt(View paramView)
   {
-    paramView.getLayoutParams().width = ((int)paramFloat);
-    paramView.requestLayout();
+    super(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wpt
  * JD-Core Version:    0.7.0.1
  */

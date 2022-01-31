@@ -1,24 +1,24 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
-import bdnw;
+import beka;
+import besl;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class AuthJsPlugin$1
   implements AsyncResult
 {
-  AuthJsPlugin$1(AuthJsPlugin paramAuthJsPlugin, bdfz parambdfz) {}
+  AuthJsPlugin$1(AuthJsPlugin paramAuthJsPlugin, beka parambeka) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     if (paramBoolean)
     {
-      bdnw.a("AuthJsPlugin", "call API_LOGIN  code:" + paramJSONObject.toString());
+      besl.a("AuthJsPlugin", "call API_LOGIN  code:" + paramJSONObject.toString());
       this.val$req.a(paramJSONObject);
       return;
     }
-    bdnw.d("AuthJsPlugin", "call API_LOGIN failed ");
+    besl.d("AuthJsPlugin", "call API_LOGIN failed ");
     this.val$req.b();
   }
 }

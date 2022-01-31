@@ -1,46 +1,43 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordInfo;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
 
 public class qbf
-  extends nev
 {
-  private qbf(qbe paramqbe) {}
+  public List<qbg> a;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public static qbf a(articlesummary.HotWordInfo paramHotWordInfo)
   {
-    if (paramBundle.getBoolean("is_from_first_recommend_video"))
+    qbf localqbf = new qbf();
+    if (paramHotWordInfo.rpt_hot_word_item.has())
     {
-      VideoInfo.EntranceDownloadInfo localEntranceDownloadInfo = (VideoInfo.EntranceDownloadInfo)paramBundle.getParcelable("value_entrance_download_info");
-      if (localEntranceDownloadInfo == null) {
-        break label32;
-      }
-      qbe.a(this.a, localEntranceDownloadInfo);
-    }
-    for (;;)
-    {
-      return;
-      label32:
-      qbe.a(this.a, paramBundle.getString("VALUE_COOKIE"));
-      if (paramBoolean)
+      localqbf.a = new ArrayList(paramHotWordInfo.rpt_hot_word_item.size());
+      paramHotWordInfo = paramHotWordInfo.rpt_hot_word_item.get().iterator();
+      while (paramHotWordInfo.hasNext())
       {
-        paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
-        if ((paramBundle != null) && (paramBundle.size() > 0))
-        {
-          paramBundle = (VideoInfo)paramBundle.get(0);
-          qbe.a(this.a, paramBundle);
-        }
-      }
-      while (paramBundle != null)
-      {
-        ThreadManager.post(new VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1(this, paramBundle), 5, null, true);
-        return;
-        paramBundle = null;
+        qbg localqbg = qbg.a((articlesummary.HotWordItem)paramHotWordInfo.next());
+        localqbf.a.add(localqbg);
       }
     }
+    return localqbf;
+  }
+  
+  public byte[] a()
+  {
+    articlesummary.HotWordInfo localHotWordInfo = new articlesummary.HotWordInfo();
+    if (this.a.size() > 0)
+    {
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(((qbg)localIterator.next()).a());
+      }
+      localHotWordInfo.rpt_hot_word_item.set(localArrayList);
+    }
+    return localHotWordInfo.toByteArray();
   }
 }
 

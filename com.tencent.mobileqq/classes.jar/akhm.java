@@ -1,75 +1,73 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.JobReporter;
+import com.tencent.mobileqq.app.ThreadWrapContext;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.ISecurityFileHelper;
+import java.util.HashMap;
 
 public class akhm
-  extends akhk
-  implements ISecurityFileHelper
+  implements ThreadWrapContext
 {
-  public akhm()
-  {
-    super(null);
-  }
+  private static boolean a;
+  private static volatile boolean b;
   
-  protected String a()
+  public static void a(long paramLong)
   {
-    return "QQFavoriteMigration";
-  }
-  
-  public String declareBusinessFileName()
-  {
-    return "QQ_Favorite";
-  }
-  
-  public boolean doMigrate(File paramFile)
-  {
-    QLog.d("ISecurityFileHelper", 1, "Move QQFavorite file start");
-    File localFile = new File(ajed.bf);
-    if ((localFile.exists()) && (paramFile.isDirectory()))
+    if ((!a) && (BaseApplicationImpl.sProcessId == 1))
     {
-      paramFile = akhi.a(localFile);
-      int j = paramFile.length;
-      int i = 0;
-      while (i < j)
+      a = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|chance " + paramLong);
+      }
+      if (paramLong > 0L)
       {
-        localFile = paramFile[i];
-        String str = localFile.getName();
-        if ((str.length() > 4) && (str.matches("[0-9]{5}.*"))) {
-          bace.a(localFile.getAbsolutePath(), ajed.bf + akhi.a(str));
+        b = JobReporter.ramdomReport((int)paramLong);
+        if (QLog.isColorLevel()) {
+          QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|sShotChanceForPublicVersion " + b);
         }
-        i += 1;
       }
     }
-    a();
-    return true;
   }
   
-  public boolean needMigration()
+  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    if (a())
-    {
-      File localFile = new File(ajed.bf);
-      if ((localFile.exists()) && (localFile.isDirectory())) {
-        return true;
-      }
-      a();
-    }
-    return false;
+    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
   }
   
-  public File oldBusinessDir(String paramString)
+  public long getMainProccessThreadMonitorTime()
   {
-    return null;
+    return bbjn.d();
   }
   
-  public boolean oldBusinessDirExist(String paramString)
+  public long getMainProccessThreadPeakCounts()
   {
-    return false;
+    return bbjn.c();
   }
   
-  public String[] reportHistoryFileInfo()
+  public boolean isColorLevel()
   {
-    return new String[] { "0", "0" };
+    return QLog.isColorLevel();
+  }
+  
+  public boolean isShotReportRejectedError()
+  {
+    return b;
+  }
+  
+  public void reportDengTaException(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3, boolean paramBoolean2)
+  {
+    axrl.a(BaseApplicationImpl.getApplication()).a(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramHashMap, paramString3, paramBoolean2);
+  }
+  
+  public void reportRDMException(Throwable paramThrowable, String paramString1, String paramString2) {}
+  
+  public void setMainProccessThreadMonitorTime(long paramLong)
+  {
+    bbjn.b(paramLong);
+  }
+  
+  public void setMainProccessThreadPeakCounts(long paramLong)
+  {
+    bbjn.a(paramLong);
   }
 }
 

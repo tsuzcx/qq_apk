@@ -1,23 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.hotpic.HotPicData;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public final class aqer
-  implements Parcelable.Creator<HotPicData>
+class aqer
+  implements Handler.Callback
 {
-  public HotPicData a(Parcel paramParcel)
-  {
-    return new HotPicData(paramParcel);
-  }
+  aqer(aqeq paramaqeq) {}
   
-  public HotPicData[] a(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    return new HotPicData[paramInt];
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    if ((this.a.jdField_a_of_type_Bbgg != null) && (this.a.jdField_a_of_type_Bbgg.isShowing()) && (this.a.jdField_a_of_type_Aqez != null)) {
+      this.a.jdField_a_of_type_Aqez.a();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqer
  * JD-Core Version:    0.7.0.1
  */

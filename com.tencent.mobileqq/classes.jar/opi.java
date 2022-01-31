@@ -1,18 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.commonsdk.cache.QQLruCache;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class opi
-  extends QQLruCache<String, List<BaseData>>
+public class opi
+  implements AladdinConfigHandler
 {
-  opi(oph paramoph, int paramInt1, int paramInt2, int paramInt3)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super(paramInt1, paramInt2, paramInt3);
+    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = ooi.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("NativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "native_article")) {
+        bhvh.a("native_proteus_offline_bid", str2);
+      }
+    }
+    return true;
   }
   
-  protected void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
+  public void onWipeConfig(int paramInt)
   {
-    super.entryRemoved(paramBoolean, paramString, paramList1, paramList2);
+    bhvh.a("native_proteus_offline_bid", "0");
   }
 }
 

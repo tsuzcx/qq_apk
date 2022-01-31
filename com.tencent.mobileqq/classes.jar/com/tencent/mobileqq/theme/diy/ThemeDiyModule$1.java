@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.theme.diy;
 
-import arok;
-import axmb;
-import axmm;
+import asko;
+import aymh;
+import aymt;
 import org.json.JSONObject;
 
 class ThemeDiyModule$1
-  implements arok<axmb>
+  implements asko<aymh>
 {
   ThemeDiyModule$1(ThemeDiyModule paramThemeDiyModule, JSONObject paramJSONObject, String paramString) {}
   
-  public void postQuery(axmb paramaxmb)
+  public void postQuery(aymh paramaymh)
   {
-    if ((paramaxmb != null) && (paramaxmb.b())) {
+    if ((paramaymh != null) && (paramaymh.b())) {
       if (ThemeDiyModule.access$000(this.this$0) != null) {
         ThemeDiyModule.access$000(this.this$0).diyThemeSetup(this.val$styleObj, this.val$callbackId);
       }

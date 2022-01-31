@@ -1,21 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.content.res.Resources;
+import android.widget.Button;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
-class xcq
-  implements QQPermissionCallback
+public class xcq
+  extends baks
 {
-  xcq(xco paramxco) {}
+  public xcq(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(int paramInt)
   {
-    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
-    babr.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
+    super.a(paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetButton.setText(TroopGiftPanel.a(this.a));
+    TroopGiftPanel.a(this.a, 0L);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(int paramInt, String paramString)
   {
-    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user grant = ");
-    xco.e(this.a);
+    super.a(paramInt, paramString);
+    bcpw.a(this.a.jdField_a_of_type_AndroidContentContext, ajyc.a(2131715423), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
+    TroopGiftPanel.a(true);
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    super.b(paramInt, paramString);
+    bcpw.a(this.a.jdField_a_of_type_AndroidContentContext, ajyc.a(2131715390), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
+    TroopGiftPanel.a(true);
   }
 }
 

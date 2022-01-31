@@ -1,27 +1,17 @@
-import android.text.Spanned;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class puu
-  implements Comparator<Object>
+class puu
+  implements View.OnClickListener
 {
-  private Spanned a;
+  puu(put paramput) {}
   
-  public puu(Spanned paramSpanned)
+  public void onClick(View paramView)
   {
-    this.a = paramSpanned;
-  }
-  
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    int i = this.a.getSpanStart(paramObject1);
-    int j = this.a.getSpanStart(paramObject2);
-    if (i > j) {
-      return 1;
+    paramView = this.a.jdField_a_of_type_Rap.a();
+    if (paramView != null) {
+      paramView.a(null, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-    if (i < j) {
-      return -1;
-    }
-    return 0;
   }
 }
 

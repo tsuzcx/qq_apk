@@ -1,32 +1,78 @@
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import android.content.Intent;
+import android.os.AsyncTask;
+import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar.6;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Set;
 
 public class apyf
-  implements View.OnClickListener
+  extends AsyncTask<Object, Object, Integer>
 {
-  public apyf(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  public apyf(SendBottomBar.6 param6) {}
   
-  public void onClick(View paramView)
+  protected Integer a(Object... paramVarArgs)
   {
-    if (QQGamePubAccountFragment.a(this.a) != null)
+    paramVarArgs = apeh.a();
+    Iterator localIterator = paramVarArgs.iterator();
+    int i = 0;
+    VFSFile localVFSFile;
+    for (;;)
     {
-      QQGamePubAccountFragment.a(this.a).scrollToPosition(0);
-      QQGamePubAccountFragment.a(this.a).setVisibility(8);
-      if (this.a.a != null) {
-        this.a.a.setCurrentItem(0);
+      FileInfo localFileInfo;
+      if (localIterator.hasNext())
+      {
+        localFileInfo = (FileInfo)localIterator.next();
+        if (!localFileInfo.b()) {}
+      }
+      else
+      {
+        SendBottomBar.a(this.a.this$0).a(paramVarArgs);
+        axty.a().a(true);
+        return Integer.valueOf(i);
+      }
+      if (!SendBottomBar.a(this.a.this$0).a().a(localFileInfo.c())) {
+        try
+        {
+          localVFSFile = new VFSFile(localFileInfo.c());
+          if (!localVFSFile.exists()) {
+            QLog.e("delDownloadFiles<FileAssistant>", 1, "local file can scan, is not existed? file:" + localFileInfo.c());
+          }
+        }
+        catch (Exception localException)
+        {
+          QLog.e("delDownloadFiles<FileAssistant>", 1, "del file error:" + localException.toString());
+        }
       }
     }
-    paramView = (String)QQGamePubAccountFragment.a(this.a).getTag();
-    yez.a(aing.a(), "769", "205031", "", "76901", "1", "160", new String[] { paramView, "", "20" });
+    for (;;)
+    {
+      break;
+      localVFSFile.delete();
+      SendBottomBar.a(this.a.this$0, SendBottomBar.a(this.a.this$0) + localException.a());
+      i += 1;
+    }
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    super.onPostExecute(paramInteger);
+    this.a.this$0.d();
+    paramInteger = new Intent();
+    paramInteger.putExtra("extra_delete_total_file_size", SendBottomBar.a(this.a.this$0));
+    SendBottomBar.a(this.a.this$0).setResult(-1, paramInteger);
+    apeh.b();
+    this.a.this$0.a();
+    SendBottomBar.a(this.a.this$0).n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apyf
  * JD-Core Version:    0.7.0.1
  */

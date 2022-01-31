@@ -1,24 +1,14 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import javax.annotation.Nullable;
 
-public class rwq
-  implements View.OnClickListener
+public abstract interface rwq
 {
-  public rwq(WSRecommendFragment paramWSRecommendFragment) {}
+  public abstract InputStream a(@Nullable InputStream paramInputStream);
   
-  public void onClick(View paramView)
-  {
-    WSPublicAccReport.getInstance().reportPublicAccDetailClick();
-    paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-    paramView.putExtra("uin", String.valueOf(2062433139L));
-    paramView.putExtra("uintype", 1008);
-    paramView.putExtra("source", 119);
-    this.a.startActivity(paramView);
-  }
+  public abstract void a();
+  
+  public abstract void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString);
 }
 
 

@@ -1,173 +1,80 @@
-import android.annotation.SuppressLint;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.utils.DebugUtil;
-import com.tencent.mobileqq.minigame.manager.EngineInstaller;
-import com.tencent.mobileqq.minigame.manager.InstalledEngine;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.jsp.QQApiPlugin.3;
 
-@SuppressLint({"WrongConstant"})
 public class arne
+  implements oof
 {
-  private static volatile arne jdField_a_of_type_Arne;
-  public static final String[] a;
-  private int jdField_a_of_type_Int = 3;
-  private InstalledEngine jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine;
-  private boolean jdField_a_of_type_Boolean;
+  public arne(QQApiPlugin.3 param3) {}
   
-  static
+  public void a(BaseResp paramBaseResp)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "native_lame_mp3", "c++_shared", "saturn", "traeimp-rtmp", "txffmpeg", "liteavsdk" };
-  }
-  
-  public arne()
-  {
-    Iterator localIterator = EngineInstaller.getInstalledEngine(this.jdField_a_of_type_Int).iterator();
-    while (localIterator.hasNext())
+    if ((this.a.this$0.c == null) || (!this.a.this$0.c.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    boolean bool;
+    switch (paramBaseResp.errCode)
     {
-      InstalledEngine localInstalledEngine = (InstalledEngine)localIterator.next();
-      if (localInstalledEngine.isVerify) {
-        this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine = localInstalledEngine;
-      }
+    case -1: 
+    default: 
+      wim.a(1, 2131719476);
+      bool = false;
     }
-  }
-  
-  public static arne a()
-  {
-    if (jdField_a_of_type_Arne == null) {}
-    try
-    {
-      if (jdField_a_of_type_Arne == null) {
-        jdField_a_of_type_Arne = new arne();
-      }
-      return jdField_a_of_type_Arne;
-    }
-    finally {}
-  }
-  
-  private String a(InstalledEngine paramInstalledEngine)
-  {
-    if ((paramInstalledEngine != null) && (paramInstalledEngine.isVerify)) {
-      return paramInstalledEngine.engineDir;
-    }
-    return null;
-  }
-  
-  public void a(InstalledEngine paramInstalledEngine)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine = paramInstalledEngine;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine != null) {}
     for (;;)
     {
-      boolean bool1;
-      try
+      if (!TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_JavaLangString))
       {
-        bool1 = bfxz.a(this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine.engineDir + File.separator + "liteavsdk.jar", BaseApplicationImpl.getApplication().getApplicationContext(), getClass().getClassLoader(), "com.tencent.rtmp.ui.TXCloudVideoView", null, false);
-        if (bool1)
+        this.a.this$0.callJs(this.a.this$0.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(bool) });
+        return;
+        wim.a(2, 2131719495);
+        if ((this.a.this$0.jdField_a_of_type_Bchs != null) && (this.a.this$0.jdField_a_of_type_Bchv != null))
         {
-          QLog.e("MiniAppSoLoader", 1, "load liteavsdk.jar successful!!!");
-          bool3 = bool1;
-          String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-          int j = arrayOfString.length;
-          int i = 0;
-          bool1 = true;
-          if (i >= j) {
-            break label234;
+          int i;
+          label171:
+          String str1;
+          String str2;
+          String str3;
+          if ("2".equals(this.a.jdField_a_of_type_JavaLangString))
+          {
+            i = 1009;
+            paramBaseResp = this.a.this$0.jdField_a_of_type_Bchs.f();
+            str1 = this.a.this$0.jdField_a_of_type_Bchs.g();
+            str2 = this.a.b;
+            str3 = AccountDetailActivity.a(this.a.this$0.jdField_a_of_type_Bchv.b());
+            String str4 = this.a.this$0.jdField_a_of_type_Bchs.h();
+            if ((str4 == null) || ("".equals(str4))) {
+              break label314;
+            }
+            noo.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, paramBaseResp, this.a.this$0.jdField_a_of_type_Bchv.b(), str3, false);
           }
-          str = arrayOfString[i];
-          if ((!"liteavsdk".equals(str)) || (bool3)) {
-            continue;
+          for (;;)
+          {
+            bool = true;
+            break;
+            i = 1004;
+            break label171;
+            label314:
+            if ("2".equals(this.a.jdField_a_of_type_JavaLangString)) {
+              i = 1003;
+            }
+            noo.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str1, paramBaseResp, str2, str3, false);
           }
-          QLog.e("MiniAppSoLoader", 1, "load liteavsdk.jar failed?!!, and don't load liteavsdk.so ?!!");
-          bool1 = false;
-          i += 1;
-          continue;
+          bool = false;
         }
       }
-      catch (Exception localException)
+      else
       {
-        String str;
-        QLog.e("MiniAppSoLoader", 1, "load liteavsdk.jar failed, e:" + localException.toString());
-        bool1 = false;
-        continue;
-        QLog.e("MiniAppSoLoader", 1, "load liteavsdk.jar failed ？!! ");
-        bool3 = bool1;
-        continue;
-        if ((bool1) && (a(str)))
-        {
-          bool2 = true;
-          bool1 = bool2;
-          if (!"native_lame_mp3".equals(str)) {
-            continue;
-          }
-          bool1 = bool2;
-          if (!bool2) {
-            continue;
-          }
-          this.jdField_a_of_type_Boolean = true;
-          bool1 = bool2;
-          continue;
-        }
-        boolean bool2 = false;
-        continue;
+        this.a.this$0.callJs4OpenApiIfNeeded("shareMsg", 0, String.valueOf(bool));
+        return;
       }
-      label234:
-      return bool1;
-      boolean bool3 = false;
+      bool = true;
     }
-  }
-  
-  protected boolean a(String paramString)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine == null) || (TextUtils.isEmpty(paramString))) {
-      QLog.e("MiniAppSoLoader", 1, "[MiniEng]load so " + paramString + " from " + this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine);
-    }
-    String str2;
-    String str1;
-    do
-    {
-      return false;
-      str2 = a(this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine);
-      str1 = str2 + File.separator + "lib" + paramString + ".so";
-      QLog.i("MiniAppSoLoader", 1, "[MiniEng]load so " + paramString + " from " + str1);
-    } while (TextUtils.isEmpty(str2));
-    try
-    {
-      System.load(str1);
-      if (this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine.loadStatus == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine.loadStatus = 3;
-      }
-      QLog.i("MiniAppSoLoader", 1, "[MiniEng] load " + str1 + " success.");
-      return true;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("MiniAppSoLoader", 1, "[MiniEng] load " + str1 + " fail: " + DebugUtil.getPrintableStackTrace(paramString), paramString);
-      this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine.loadStatus = 2;
-    }
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return a("native_lame_mp3");
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     arne
  * JD-Core Version:    0.7.0.1
  */

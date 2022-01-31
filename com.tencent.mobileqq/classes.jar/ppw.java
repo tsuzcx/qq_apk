@@ -1,23 +1,34 @@
+import com.tencent.pts.core.PTSJNIHandler;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class ppw
-  implements Cloneable
+class ppw
+  extends ppe
 {
-  public String a;
-  public String b;
+  ppw(ppv paramppv) {}
   
-  protected Object clone()
+  public void a(int paramInt, List<Long> paramList, long paramLong)
   {
-    try
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onFeedsLoaded], channelID = ").append(paramInt).append("\n");
+    paramList = osj.a().a(Integer.valueOf(paramInt), paramList);
+    if (QLog.isColorLevel())
     {
-      ppw localppw = (ppw)super.clone();
-      return localppw;
+      paramInt = 0;
+      while (paramInt < paramList.size())
+      {
+        ((StringBuilder)localObject).append("articleInfo [").append(paramInt).append("]: ").append(paramList.get(paramInt)).append("\n");
+        paramInt += 1;
+      }
+      QLog.i("PTSLoadFeedsModule", 1, ((StringBuilder)localObject).toString());
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
+    localObject = new Object[1];
+    localObject[0] = ppt.a(true, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i("PTSLoadFeedsModule", 1, "[onFeedsLoaded], args[0]" + localObject[0]);
     }
-    return null;
+    QLog.i("PTSLoadFeedsModule", 1, "js callback ptr = " + paramLong);
+    PTSJNIHandler.jsFunctionCallbackAsync(paramLong, (Object[])localObject);
   }
 }
 

@@ -1,575 +1,449 @@
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.StoryAlbumEntry;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tribe.async.async.ThreadOffFunction;
-import com.tribe.async.reactive.Stream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.view.Display;
+import android.view.View;
+import android.view.ViewStub;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.3;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.9;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.lang.ref.WeakReference;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class scu
-  extends spc
-  implements spp
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private scm jdField_a_of_type_Scm;
-  private spz jdField_a_of_type_Spz;
-  wis jdField_a_of_type_Wis = null;
+  public int a;
+  private akdo jdField_a_of_type_Akdo = new scw(this);
+  public View a;
+  ViewStub jdField_a_of_type_AndroidViewViewStub = null;
+  ImageButton jdField_a_of_type_AndroidWidgetImageButton = null;
+  public QQAppInterface a;
+  HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
+  public WeakReference<Activity> a;
+  private sch jdField_a_of_type_Sch = new scv(this);
+  sci jdField_a_of_type_Sci;
+  scn jdField_a_of_type_Scn;
+  public boolean a;
+  int b = 0;
+  int c = 0;
+  private int d;
   
-  public static String a(@NonNull List<sdf> paramList)
+  public scu(Activity paramActivity, QQAppInterface paramQQAppInterface, sci paramsci)
   {
-    if (paramList.isEmpty()) {
-      return "";
-    }
-    paramList = paramList.iterator();
-    int n = 0;
-    int m = 0;
-    int k = 0;
-    int j = 0;
-    int i = 0;
-    if (paramList.hasNext())
-    {
-      int i1;
-      int i2;
-      switch (((sdf)paramList.next()).jdField_a_of_type_Int)
-      {
-      case 5: 
-      default: 
-        i1 = n;
-        i2 = m;
-        n = i;
-        m = j;
-        j = i2;
-        i = i1;
-      }
-      for (;;)
-      {
-        i1 = n;
-        i2 = m;
-        n = i;
-        m = j;
-        j = i2;
-        i = i1;
-        break;
-        i1 = j;
-        i2 = i + 1;
-        i = n;
-        j = m;
-        m = i1;
-        n = i2;
-        continue;
-        i2 = j + 1;
-        i1 = i;
-        i = n;
-        j = m;
-        m = i2;
-        n = i1;
-        continue;
-        k += 1;
-        i1 = j;
-        i2 = i;
-        i = n;
-        j = m;
-        m = i1;
-        n = i2;
-        continue;
-        i2 = m + 1;
-        m = j;
-        i1 = i;
-        i = n;
-        j = i2;
-        n = i1;
-        continue;
-        i2 = n + 1;
-        n = j;
-        i1 = i;
-        i = i2;
-        j = m;
-        m = n;
-        n = i1;
-      }
-    }
-    paramList = new StringBuilder("{");
-    paramList.append("\"festival\":").append(i).append(",");
-    paramList.append("\"birthday\":").append(j).append(",");
-    paramList.append("\"frequent\":").append(k).append(",");
-    paramList.append("\"unfrequent\":").append(m).append(",");
-    paramList.append("\"aboard\":").append(n).append(",");
-    paramList.append("}");
-    return paramList.toString();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Sci = paramsci;
+    this.d = ((int)paramActivity.getResources().getDimension(2131297815));
+    i();
+    ThreadManager.getSubThreadHandler().post(new SubscriptRecommendController.3(this));
   }
   
-  public static List<sek> a(@NonNull HashMap<String, sde> paramHashMap)
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    ArrayList localArrayList = new ArrayList(paramHashMap.size());
-    paramHashMap = paramHashMap.entrySet().iterator();
-    while (paramHashMap.hasNext())
-    {
-      sde localsde = (sde)((Map.Entry)paramHashMap.next()).getValue();
-      if (localsde.a != null) {
-        localArrayList.add(localsde.a);
-      }
-    }
-    return localArrayList;
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("subscribe_version" + paramQQAppInterface.getCurrentAccountUin(), 0);
   }
   
-  public static List<sdg> a(sdf paramsdf, int paramInt)
+  public static String a(QQAppInterface paramQQAppInterface)
   {
-    ArrayList localArrayList = new ArrayList();
-    List localList = paramsdf.a();
-    if (localList.size() < paramInt)
-    {
-      localArrayList.addAll(localList);
-      localObject1 = localList.iterator();
-      while (((Iterator)localObject1).hasNext()) {
-        ((sdg)((Iterator)localObject1).next()).a(true);
-      }
-      paramsdf.a(localList);
-      return localArrayList;
-    }
-    Object localObject1 = localList.iterator();
-    Object localObject2;
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (sdg)((Iterator)localObject1).next();
-      if (((sdg)localObject2).a()) {
-        ((sdg)localObject2).a(false);
-      }
-    }
-    localObject1 = new sep();
-    ((sep)localObject1).a(localList);
-    localObject1 = ((sep)localObject1).a(paramInt, null, 0).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (List)((Iterator)localObject1).next();
-      ((sdg)((List)localObject2).get(0)).a(true);
-      localArrayList.add(((List)localObject2).get(0));
-    }
-    paramsdf.a(localList);
-    return localArrayList;
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getString("subscirpt_full_recommend_url", "");
   }
   
-  private void a(long paramLong1, long paramLong2)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "saveScanTime lastDateAlbumTime=" + paramLong1 + " ,lastScanPictureTime=" + paramLong2);
-    spz localspz = (spz)sqg.a(10);
-    localspz.b("key_last_pic_scan_time", Long.valueOf(paramLong2));
-    localspz.b("key_last_date_album_time", Long.valueOf(paramLong1));
-    localspz.b("key_story_home_scan_time", Long.valueOf(paramLong2));
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
+    localEditor.putInt("subscribe_version" + paramQQAppInterface.getCurrentAccountUin(), paramInt);
+    localEditor.commit();
   }
   
-  public static void a(List<sdf> paramList)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    if (paramList.isEmpty()) {
+    String str = paramQQAppInterface.getCurrentAccountUin();
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences(str, 0).edit();
+    localEditor.putBoolean("is_show_subscribe_red_point" + str, true);
+    localEditor.putBoolean("is_show_subscribe_folder_red_dot" + str, true);
+    localEditor.putInt("pa_subscribe_config_show" + str, paramInt);
+    localEditor.putString("pa_subscribe_config_msg" + str, paramString);
+    localEditor.commit();
+    paramString = sdf.a();
+    paramString.a(paramQQAppInterface, false);
+    paramString.b(paramQQAppInterface, true);
+    paramString.c(paramQQAppInterface, true);
+    paramString.d(paramQQAppInterface, true);
+    paramString.b(paramQQAppInterface);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
+    paramQQAppInterface.putBoolean("subscript_inner_recommend", paramBoolean);
+    paramQQAppInterface.commit();
+  }
+  
+  public static boolean a(AppInterface paramAppInterface, boolean paramBoolean, String paramString)
+  {
+    paramAppInterface = paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin(), 4).edit();
+    paramAppInterface.putBoolean("subscript_full_recommend", paramBoolean);
+    paramAppInterface.putString("subscirpt_full_recommend_url", paramString);
+    return paramAppInterface.commit();
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool2 = false;
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    boolean bool1 = bool2;
+    if (paramQQAppInterface.getBoolean("subscript_inner_recommend", false))
+    {
+      bool1 = bool2;
+      if (!paramQQAppInterface.getBoolean("subscript_full_recommend", false)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public static int b(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("subscript_full_recommend_version" + paramQQAppInterface.getCurrentAccountUin(), -1);
+  }
+  
+  public static String b(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getString("pa_subscribe_config_msg" + paramQQAppInterface.getCurrentAccountUin(), "");
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
+    localEditor.putInt("subscript_full_recommend_version" + paramQQAppInterface.getCurrentAccountUin(), paramInt);
+    localEditor.commit();
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
+    localEditor.putBoolean("is_show_subscribe_red_point" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("subscript_full_recommend", false);
+  }
+  
+  public static int c(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("subscript_inner_recommend_version" + paramQQAppInterface.getCurrentAccountUin(), -1);
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
+    localEditor.putInt("subscript_inner_recommend_version" + paramQQAppInterface.getCurrentAccountUin(), paramInt);
+    localEditor.commit();
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
+    localEditor.putBoolean("is_show_subscribe_folder_red_dot" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean c(QQAppInterface paramQQAppInterface)
+  {
+    return (paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("is_show_subscribe_red_point" + paramQQAppInterface.getCurrentAccountUin(), true)) && (f(paramQQAppInterface));
+  }
+  
+  public static void d(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
+    paramQQAppInterface.putBoolean("subscribe_discovery_btn", paramBoolean);
+    paramQQAppInterface.commit();
+  }
+  
+  public static boolean d(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("pa_subscribe_config_show" + paramQQAppInterface.getCurrentAccountUin(), 1) != 0;
+  }
+  
+  public static boolean e(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("is_show_subscribe_folder_red_dot" + paramQQAppInterface.getCurrentAccountUin(), true);
+  }
+  
+  public static boolean f(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("subscribe_discovery_btn", true);
+  }
+  
+  private void i()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Sch);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akdo);
+    }
+  }
+  
+  private void j()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akdo);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Sch);
+    }
+  }
+  
+  private void k()
+  {
+    if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewViewStub == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {}
+    while (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
       return;
     }
-    Collections.sort(paramList, new scw());
-  }
-  
-  private void a(sdt paramsdt)
-  {
-    Object localObject1 = (spz)sqg.a(10);
-    if ((TextUtils.isEmpty(paramsdt.a)) || (TextUtils.isEmpty(paramsdt.b)))
-    {
-      localObject2 = (String)((spz)localObject1).b("key_album_debug_k", "");
-      localObject1 = (String)((spz)localObject1).b("key_album_debug_sse", "");
-      urk.e("Q.qqstory.recommendAlbum.logic.StoryScanManager", "保存K means 的调试信息失败:" + paramsdt.a + " 和 " + paramsdt.b);
-      urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "sp K means debug sse info:" + (String)localObject1 + " time info:" + (String)localObject2);
-      return;
-    }
-    if (paramsdt.a())
-    {
-      ((spz)localObject1).b("key_album_debug_k", paramsdt.a);
-      ((spz)localObject1).b("key_album_debug_sse", paramsdt.b);
-      urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "sp K means debug sse info:" + paramsdt.b + " time info:" + paramsdt.a);
-      return;
-    }
-    Object localObject2 = paramsdt.a.split(";");
-    paramsdt = paramsdt.b.split(";");
-    ((spz)localObject1).b("key_album_debug_k", localObject2[0]);
-    ((spz)localObject1).b("key_album_debug_sse", paramsdt[0]);
-    urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "sp K means debug sse info:" + paramsdt[0] + " time info:" + localObject2[0]);
-  }
-  
-  public static void b(@NonNull List<sdg> paramList)
-  {
-    Collections.sort(paramList, new scx());
-  }
-  
-  public List<sdf> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    spz localspz = (spz)sqg.a(10);
-    long l = ((Long)localspz.b("key_last_home_time", Long.valueOf(-1L))).longValue();
-    atmp localatmp = QQStoryContext.a().a().createEntityManager();
-    Object localObject = sqd.a(localatmp, StoryAlbumEntry.class, StoryAlbumEntry.class.getSimpleName(), "state=0 ", null, "startTime desc");
-    if ((localObject == null) || (((List)localObject).isEmpty())) {
-      return localArrayList;
-    }
-    urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getNewStoryAlbum : new album time=%s,last time=%d", new Object[] { Long.valueOf(((StoryAlbumEntry)((List)localObject).get(0)).startTime), Long.valueOf(l) });
-    if (((StoryAlbumEntry)((List)localObject).get(0)).startTime <= l) {
-      return localArrayList;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      StoryAlbumEntry localStoryAlbumEntry = (StoryAlbumEntry)((Iterator)localObject).next();
-      sdf localsdf;
-      try
-      {
-        localsdf = sdf.a(localStoryAlbumEntry);
-        if (!localsdf.c()) {
-          break label241;
-        }
-        localArrayList.add(localsdf);
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        vkw.a("getNewStoryAlbum DB info have error:" + localInvalidProtocolBufferMicroException, new Object[0]);
-      }
-      continue;
-      label241:
-      urk.e("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getNewStoryAlbum we find the illegal album and deleted it : " + localsdf);
-      localInvalidProtocolBufferMicroException.setStatus(1001);
-      localatmp.b(localInvalidProtocolBufferMicroException);
-    }
-    urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getNewStoryAlbum reslut=%s", new Object[] { localArrayList });
-    if (localArrayList.isEmpty()) {
-      return localArrayList;
-    }
-    if (((sdf)localArrayList.get(0)).f() <= l)
-    {
-      localArrayList.clear();
-      return localArrayList;
-    }
-    localspz.b("key_last_home_time", Long.valueOf(((sdf)localArrayList.get(0)).f()));
-    return localArrayList;
-  }
-  
-  public List<scz> a(long paramLong1, long paramLong2)
-  {
-    return this.jdField_a_of_type_Scm.a(paramLong1, paramLong2);
-  }
-  
-  @NonNull
-  public List<sdg> a(Context paramContext)
-  {
-    spz localspz = (spz)sqg.a(10);
-    long l = ((Long)localspz.b("key_story_home_scan_time", Long.valueOf(-1L))).longValue();
-    paramContext = a(paramContext, Math.max(System.currentTimeMillis() / 1000L - 259200L, l));
-    urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getNewScanPicList  result=" + paramContext);
-    if (paramContext.size() >= 10)
-    {
-      localspz.b("key_story_home_scan_time", Long.valueOf(((sdg)paramContext.get(0)).b));
-      return paramContext;
-    }
-    return null;
-  }
-  
-  @NonNull
-  public List<sdg> a(Context paramContext, long paramLong)
-  {
-    urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getNewPicList scan time = " + paramLong);
-    new ArrayList();
-    return new scl().a(paramContext, 1L + paramLong, false, 500);
-  }
-  
-  public scm a()
-  {
-    return this.jdField_a_of_type_Scm;
+    Animation localAnimation = AnimationUtils.loadAnimation((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2130772176);
+    localAnimation.setFillAfter(true);
+    localAnimation.setAnimationListener(new sdb(this));
+    a(0);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimation);
   }
   
   public void a()
   {
-    ((sqm)sqg.a(26)).a(this);
-    this.jdField_a_of_type_Spz = ((spz)sqg.a(10));
-    this.jdField_a_of_type_Wis = wis.a();
-    this.jdField_a_of_type_Wis.a();
-    this.jdField_a_of_type_Scm = new scm();
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-    case 1: 
-      do
-      {
-        return;
-        urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "trimMemory to be 5");
-      } while (Build.VERSION.SDK_INT < 17);
+    this.jdField_a_of_type_Int = 1;
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
       return;
     }
-    urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "clearAllMemory");
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    int j = 2;
-    Object localObject = this.jdField_a_of_type_Wis;
-    if (paramBoolean)
-    {
-      i = 2;
-      ((wis)localObject).b(i);
-      localObject = (spz)sqg.a(10);
-      if (!paramBoolean) {
-        break label54;
+    if (this.jdField_a_of_type_AndroidViewViewStub == null) {
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+      {
+        this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131375648));
+        if (this.jdField_a_of_type_AndroidViewViewStub != null)
+        {
+          this.jdField_a_of_type_AndroidViewViewStub.setOnInflateListener(new scx(this));
+          this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
+          b();
+          h();
+        }
       }
     }
-    label54:
-    for (int i = j;; i = 1)
+    for (;;)
     {
-      ((spz)localObject).b("sp_key_user_enable_album_scan", Integer.valueOf(i));
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006431", "0X8006431", 0, 0, "", "", "", "");
       return;
-      i = 1;
-      break;
+      e();
+      a(this.d);
     }
+  }
+  
+  void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {}
+    View localView;
+    do
+    {
+      return;
+      localView = ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131369266);
+    } while (localView == null);
+    localView.setPadding(0, 0, 0, paramInt);
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      ((scg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(64)).a(paramString);
+    }
+  }
+  
+  void a(List<scm> paramList)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+      return;
+    }
+    if (this.jdField_a_of_type_Scn == null) {
+      this.jdField_a_of_type_Scn = new scn((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Sci);
+    }
+    this.jdField_a_of_type_Scn.a();
+    this.jdField_a_of_type_Scn.a(paramList);
   }
   
   public boolean a()
   {
-    int i = ((Integer)this.jdField_a_of_type_Spz.b("sp_key_user_enable_album_scan", Integer.valueOf(0))).intValue();
-    if ((i == 0) || (i == -1)) {
-      return this.jdField_a_of_type_Scm.b();
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity == null) {
+      return false;
     }
-    return i != 1;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "deletedAlbumById=" + paramLong);
-    if (paramLong >= 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      vkw.a(bool, "It is not allowed to deleted the id<0");
-      atmp localatmp = QQStoryContext.a().a().createEntityManager();
-      StoryAlbumEntry localStoryAlbumEntry = new StoryAlbumEntry();
-      localStoryAlbumEntry.setId(paramLong);
-      localStoryAlbumEntry.setStatus(1001);
-      return localatmp.b(localStoryAlbumEntry);
+    View localView = localActivity.findViewById(2131365657);
+    WindowManager localWindowManager = (WindowManager)localActivity.getSystemService("window");
+    int i = localWindowManager.getDefaultDisplay().getWidth();
+    int j = localWindowManager.getDefaultDisplay().getHeight();
+    int k = (int)localActivity.getResources().getDimension(2131298865);
+    int m = (int)localActivity.getResources().getDimension(2131298871);
+    int n = this.d;
+    int i1 = localView.getHeight();
+    int i2 = localView.getWidth();
+    int i3 = ImmersiveUtils.getStatusBarHeight(localActivity);
+    if ((i < i2) || (j - (k + m + n) - i3 < i1)) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
   }
   
-  public boolean a(Context paramContext)
-  {
-    boolean bool2;
-    if ((this.jdField_a_of_type_Scm != null) && (this.jdField_a_of_type_Scm.a()))
-    {
-      bool2 = true;
-      if (Build.VERSION.SDK_INT < 18) {
-        break label132;
-      }
-    }
-    label132:
-    for (boolean bool3 = true;; bool3 = false)
-    {
-      boolean bool1;
-      if (Build.VERSION.SDK_INT >= 23) {
-        if (paramContext.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) {
-          bool1 = true;
-        }
-      }
-      for (;;)
-      {
-        label50:
-        if ((bool3) && (bool1) && (bool2)) {}
-        for (boolean bool4 = true;; bool4 = false)
-        {
-          urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "isAlbumModuleEnable :%s , isVersionOk :%s , isStoragePermitOk :%s , isConfigOk :%s", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool3), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-          return bool4;
-          bool2 = false;
-          break;
-          bool1 = false;
-          break label50;
-        }
-        bool1 = true;
-      }
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_Scm.b(paramString);
-  }
-  
-  public boolean a(@NonNull List<sdf> paramList, boolean paramBoolean)
-  {
-    urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "insertAlbumToDb albums=" + paramList.size() + " append=" + paramBoolean);
-    boolean bool;
-    if (!paramList.isEmpty()) {
-      bool = true;
-    }
-    atmp localatmp;
-    for (;;)
-    {
-      vkw.a(bool, "It is not allow save the empty albums to DB ");
-      localatmp = QQStoryContext.a().a().createEntityManager();
-      localatmp.a().a();
-      if (!paramBoolean) {
-        localatmp.a(StoryAlbumEntry.class);
-      }
-      try
-      {
-        paramList = paramList.iterator();
-        for (;;)
-        {
-          if (!paramList.hasNext()) {
-            break label226;
-          }
-          sdf localsdf = (sdf)paramList.next();
-          localStoryAlbumEntry = localsdf.a();
-          if (localStoryAlbumEntry.getId() <= 0L) {
-            break;
-          }
-          localStoryAlbumEntry.setStatus(1001);
-          if (!localatmp.a(localStoryAlbumEntry))
-          {
-            localStoryAlbumEntry.setStatus(1000);
-            localatmp.b(localStoryAlbumEntry);
-          }
-          localsdf.a(localStoryAlbumEntry.getId());
-        }
-      }
-      catch (Exception paramList)
-      {
-        for (;;)
-        {
-          StoryAlbumEntry localStoryAlbumEntry;
-          urk.c("Q.qqstory.recommendAlbum.logic.StoryScanManager", "insertAlbumToDb exception=%s", paramList);
-          return false;
-          bool = false;
-          break;
-          localatmp.b(localStoryAlbumEntry);
-        }
-      }
-      finally
-      {
-        localatmp.a().b();
-      }
-    }
-    label226:
-    localatmp.a().c();
-    localatmp.a().b();
-    return true;
-  }
-  
-  public boolean a(sdf paramsdf)
-  {
-    urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "deletedAlbumById=" + paramsdf);
-    atmp localatmp = QQStoryContext.a().a().createEntityManager();
-    paramsdf = paramsdf.a();
-    paramsdf.setStatus(1001);
-    return localatmp.a(paramsdf);
-  }
-  
-  public List<sdf> b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    atmp localatmp = QQStoryContext.a().a().createEntityManager();
-    Object localObject = sqd.a(localatmp, StoryAlbumEntry.class, StoryAlbumEntry.class.getSimpleName(), null, null);
-    if (localObject == null) {
-      return localArrayList;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      StoryAlbumEntry localStoryAlbumEntry = (StoryAlbumEntry)((Iterator)localObject).next();
-      sdf localsdf;
-      try
-      {
-        localsdf = sdf.a(localStoryAlbumEntry);
-        if (!localsdf.c()) {
-          break label144;
-        }
-        if (localsdf.c() < 2) {
-          a(localsdf, 10);
-        }
-        localArrayList.add(localsdf);
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        vkw.a("DB info have error:" + localInvalidProtocolBufferMicroException, new Object[0]);
-      }
-      continue;
-      label144:
-      urk.e("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getAlbumListFromDB we find the illegal album and deleted it : " + localsdf);
-      localInvalidProtocolBufferMicroException.setStatus(1001);
-      localatmp.b(localInvalidProtocolBufferMicroException);
-    }
-    a(localArrayList);
-    urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getAlbumListFromDB reslut=" + localArrayList);
-    return localArrayList;
-  }
-  
+  @TargetApi(9)
   public void b()
   {
-    ((sqm)sqg.a(26)).b(this);
-    this.jdField_a_of_type_Wis.b();
-  }
-  
-  public boolean b(Context paramContext)
-  {
-    if (a(paramContext)) {
-      return this.jdField_a_of_type_Scm.c();
+    boolean bool = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Object localObject1 = ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources();
+    if (bool)
+    {
+      i = 2131165976;
+      i = ((Resources)localObject1).getColor(i);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(i);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new scy(this));
+      Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376678);
+      if (localObject2 != null)
+      {
+        if (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+          break label263;
+        }
+        i = 2131167027;
+        label93:
+        ((ImageView)localObject2).setBackgroundResource(i);
+      }
+      localObject2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377350);
+      if (!bool) {
+        break label270;
+      }
+      i = ((Resources)localObject1).getColor(2131165965);
+      label126:
+      ((TextView)localObject2).setTextColor(i);
+      if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView == null)
+      {
+        this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375643));
+        this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)((Resources)localObject1).getDimension(2131297816));
+        this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Scn);
+        if (Build.VERSION.SDK_INT >= 9) {
+          this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
+        }
+      }
+      if (this.jdField_a_of_type_AndroidWidgetImageButton == null)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131364259));
+        localObject1 = this.jdField_a_of_type_AndroidWidgetImageButton;
+        if (bool) {
+          break label281;
+        }
+      }
     }
-    return false;
-  }
-  
-  public boolean b(String paramString)
-  {
-    return this.jdField_a_of_type_Scm.a(paramString);
-  }
-  
-  public List<see> c()
-  {
-    return this.jdField_a_of_type_Scm.a();
+    label263:
+    label270:
+    label281:
+    for (int i = 2130842629;; i = 2130842631)
+    {
+      ((ImageButton)localObject1).setImageResource(i);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new scz(this));
+      return;
+      i = 2131165966;
+      break;
+      i = 2131166225;
+      break label93;
+      i = ((Resources)localObject1).getColor(2131165964);
+      break label126;
+    }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Scm.a();
+    if (a())
+    {
+      localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject != null) {}
+    }
+    else
+    {
+      return;
+    }
+    int i = bawz.a((Context)localObject, 100.0F);
+    Object localObject = (ImageView)((Activity)localObject).findViewById(2131372102);
+    this.b = ((ImageView)localObject).getHeight();
+    this.c = ((ImageView)localObject).getWidth();
+    ((ImageView)localObject).setLayoutParams(new LinearLayout.LayoutParams(i, i));
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Int != 0)
-    {
-      urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "scan task is running so ignore this request.");
-      return;
-    }
-    urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "start scan");
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Int = 1;
-    sdt localsdt = new sdt();
-    Context localContext = QQStoryContext.a().a().getBaseContext();
-    Stream.of(Integer.valueOf(0)).map(new ThreadOffFunction("Q.qqstory.recommendAlbum.logic.StoryScanManager", 2)).map(new sdr(localContext, localsdt)).map(new sds(localsdt)).map(new sdq(localsdt)).map(new sdp(localsdt)).subscribe(new scv(this, localsdt));
+    c();
   }
   
-  public void e()
+  void e()
   {
-    this.jdField_a_of_type_Scm.c();
+    if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewViewStub == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {}
+    while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
+      return;
+    }
+    Animation localAnimation = AnimationUtils.loadAnimation((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2130772177);
+    localAnimation.setFillAfter(true);
+    localAnimation.setAnimationListener(new sda(this));
+    this.jdField_a_of_type_AndroidViewViewStub.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimation);
   }
   
   public void f()
   {
-    this.jdField_a_of_type_Scm.b();
+    j();
+    if (this.jdField_a_of_type_Scn != null) {
+      this.jdField_a_of_type_Scn.b();
+    }
+  }
+  
+  public void g()
+  {
+    ThreadManager.getSubThreadHandler().post(new SubscriptRecommendController.9(this));
+  }
+  
+  public void h()
+  {
+    if (this.jdField_a_of_type_Scn != null) {
+      this.jdField_a_of_type_Scn.notifyDataSetChanged();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("SubscriptRecommendController", 2, "scriptRecommendAdapter is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     scu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
-import com.tencent.image.Utils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class agiz
-  extends agja
+  implements DialogInterface.OnClickListener
 {
-  public agiz(String paramString)
-  {
-    super(paramString);
-    this.a = "PhotoIncompatibleWebp";
-    this.b = "reportGenerateHeif";
-  }
+  public agiz(BindNumberActivity paramBindNumberActivity) {}
   
-  static boolean a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return Utils.isHeifFile(paramString);
+    if (this.a.a != null) {
+      this.a.a.setText("");
+    }
   }
 }
 

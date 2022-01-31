@@ -1,110 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import Wallet.BroadCastInfo;
+import Wallet.GetBroadCastHbIdiomRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import mqq.observer.BusinessObserver;
 
-public class agwd
+class agwd
+  implements BusinessObserver
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  agwd(agwc paramagwc) {}
   
-  public static agwd a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return agwe.a;
-  }
-  
-  public String a()
-  {
-    ResourceInfo localResourceInfo = ((PreloadManager)BaseApplicationImpl.getApplication().getRuntime().getManager(151)).a("text_translate");
-    if (localResourceInfo == null) {
-      return null;
-    }
-    return localResourceInfo.folderPath;
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      localObject = "";
-    }
-    do
+    if (paramInt == 28)
     {
-      do
+      paramBundle = (GetBroadCastHbIdiomRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null) {
+        break label21;
+      }
+    }
+    for (;;)
+    {
+      return;
+      label21:
+      if (paramBoolean)
       {
-        do
+        this.a.jdField_a_of_type_Agvz.a = false;
+        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext())
         {
-          return localObject;
-          localObject = paramString;
-        } while (!this.jdField_a_of_type_Boolean);
-        localObject = paramString;
-      } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-      localObject = paramString;
-    } while (TextUtils.isEmpty(this.b));
-    Object localObject = new StringBuilder();
-    int i = 0;
-    if (i < paramString.length())
-    {
-      char c = paramString.charAt(i);
-      int j = this.jdField_a_of_type_JavaLangString.indexOf(c);
-      if (j != -1) {
-        ((StringBuilder)localObject).append(this.b.charAt(j));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        ((StringBuilder)localObject).append(c);
+          String str = (String)localIterator.next();
+          BroadCastInfo localBroadCastInfo = (BroadCastInfo)paramBundle.sendlistIdiomInfoDict.get(str);
+          if ((this.a.jdField_a_of_type_Agvz.a(str) != null) && (localBroadCastInfo != null)) {
+            if (localBroadCastInfo.isFinished == 1) {
+              this.a.jdField_a_of_type_Agvz.a(str);
+            } else {
+              this.a.jdField_a_of_type_Agvz.a(str, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localBroadCastInfo.idiomSeq, localBroadCastInfo.hbIdiom, localBroadCastInfo.hbIdiomLastPY);
+            }
+          }
+        }
       }
     }
-    localObject = ((StringBuilder)localObject).toString();
-    if (QLog.isColorLevel()) {
-      QLog.d("FontConvert", 2, "traditionalToSimplified params is " + paramString + ",result is " + (String)localObject);
-    }
-    return localObject;
-  }
-  
-  /* Error */
-  public void a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 30	agwd:jdField_a_of_type_Boolean	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: new 113	android/os/Handler
-    //   17: dup
-    //   18: invokestatic 119	com/tencent/mobileqq/app/ThreadManager:getSubThreadLooper	()Landroid/os/Looper;
-    //   21: invokespecial 122	android/os/Handler:<init>	(Landroid/os/Looper;)V
-    //   24: new 124	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1
-    //   27: dup
-    //   28: aload_0
-    //   29: invokespecial 127	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1:<init>	(Lagwd;)V
-    //   32: invokevirtual 131	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   35: pop
-    //   36: goto -25 -> 11
-    //   39: astore_2
-    //   40: aload_0
-    //   41: monitorexit
-    //   42: aload_2
-    //   43: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	44	0	this	agwd
-    //   6	2	1	bool	boolean
-    //   39	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	39	finally
-    //   14	36	39	finally
   }
 }
 

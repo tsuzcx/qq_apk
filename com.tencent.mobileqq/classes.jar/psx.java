@@ -1,29 +1,16 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import android.view.View.OnClickListener;
 
-public class psx
-  implements begw
+class psx
+  implements View.OnClickListener
 {
-  public psx(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  psx(psv parampsv) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
-      return;
-    }
-    ReadInJoyDeliverUGCActivity.b(this.a, true);
-    ReadInJoyDeliverUGCActivity.c(this.a, ReadInJoyDeliverUGCActivity.c(this.a));
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
-      return;
-      ReadInJoyDeliverUGCActivity.b(this.a);
-      ndn.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", obz.e(), false);
-      continue;
-      ReadInJoyDeliverUGCActivity.c(this.a);
+    paramView = this.a.jdField_a_of_type_Rap.a();
+    if (paramView != null) {
+      paramView.a(null, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
     }
   }
 }

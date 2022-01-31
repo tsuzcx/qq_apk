@@ -65,6 +65,7 @@ public final class e_busi_param
   public static final int _FeedEventId = 78;
   public static final int _FeedGetMethod = 118;
   public static final int _FeedTime = 42;
+  public static final int _FeedsOpUin = 197;
   public static final int _FontLibraryURL = 89;
   public static final int _Framerate = 110;
   public static final int _FriendshipEndTime = 129;

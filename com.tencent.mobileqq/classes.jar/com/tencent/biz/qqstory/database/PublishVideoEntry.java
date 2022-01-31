@@ -2,21 +2,21 @@ package com.tencent.biz.qqstory.database;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import atmo;
-import atnz;
-import atoc;
+import aukm;
+import aulx;
+import auma;
 import com.tencent.biz.qqstory.utils.JsonORM;
 import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sfp;
-import srv;
-import urk;
+import ssl;
+import ter;
+import veg;
 
 public class PublishVideoEntry
-  extends atmo
-  implements sfp
+  extends aukm
+  implements ssl
 {
   public static final String ENTRY_KEY_BACKGROUND_VOLUME = "backgroundVolume";
   public static final String ENTRY_KEY_IS_MIX_ORIGINAL = "isMixOriginal";
@@ -34,28 +34,28 @@ public class PublishVideoEntry
   public long createTime;
   public String doodlePath;
   public String doodleRawPath;
-  @atnz
+  @aulx
   private JSONObject extraJson;
   public String extraJsonString;
-  @atoc
+  @auma
   public String fakeVid;
   @Deprecated
   public int fragmentGroupId;
   public String fragments;
   public String gpsFilterDescription;
   public boolean hasFragments;
-  @atnz
+  @aulx
   public int hwBitrateMode = -1;
   public boolean hwEncodeRecordVideo;
-  @atnz
+  @aulx
   public boolean isCancel;
-  @atnz
+  @aulx
   public boolean isEdited;
   public boolean isLocalPublish;
-  @atnz
+  @aulx
   public boolean isMixOriginal;
   public boolean isMuteRecordVoice;
-  @atnz
+  @aulx
   public boolean isNeedHighProfile;
   public boolean isPicture;
   public String localCreateCity;
@@ -66,7 +66,7 @@ public class PublishVideoEntry
   public String mLocalRawVideoDir;
   public byte[] mMosaicMask;
   public int mMosaicSize;
-  @atnz
+  @aulx
   public String manualSavedPath;
   public String mbgmAudioFilePath;
   public String miniThumbPath;
@@ -78,16 +78,16 @@ public class PublishVideoEntry
   public byte[] readerConfBytes;
   public int recordFrames;
   public double recordTime;
-  @atnz
+  @aulx
   public int redBagType;
   public int saveMode;
-  @atnz
+  @aulx
   public int specialVideoType;
   public byte[] spreadGroupBytes;
   public byte[] tagInfoBytes;
   public String thumbPath;
   public long timeZoneOffset;
-  @atnz
+  @aulx
   public boolean useSrcFile;
   public String videoAddress;
   public String videoCreateAddress;
@@ -130,7 +130,7 @@ public class PublishVideoEntry
     {
       for (;;)
       {
-        urk.c("PublishVideoEntry", "getExtraJson error", localJSONException);
+        veg.c("PublishVideoEntry", "getExtraJson error", localJSONException);
         this.extraJson = new JSONObject();
       }
     }
@@ -241,7 +241,7 @@ public class PublishVideoEntry
   }
   
   @Nullable
-  public srv getLinkInfo()
+  public ter getLinkInfo()
   {
     Object localObject = getStringExtra("link", null);
     if (localObject == null) {
@@ -249,19 +249,19 @@ public class PublishVideoEntry
     }
     try
     {
-      localObject = (srv)JsonORM.a(new JSONObject((String)localObject), srv.class);
+      localObject = (ter)JsonORM.a(new JSONObject((String)localObject), ter.class);
       return localObject;
     }
     catch (JsonORM.JsonParseException localJsonParseException)
     {
-      urk.c("PublishVideoEntry", "getLinkInfo error", localJsonParseException);
+      veg.c("PublishVideoEntry", "getLinkInfo error", localJsonParseException);
       return null;
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        urk.c("PublishVideoEntry", "getLinkInfo error", localJSONException);
+        veg.c("PublishVideoEntry", "getLinkInfo error", localJSONException);
       }
     }
   }
@@ -301,7 +301,7 @@ public class PublishVideoEntry
     }
     catch (JSONException paramString)
     {
-      urk.c("PublishVideoEntry", "putStringExtra error", paramString);
+      veg.c("PublishVideoEntry", "putStringExtra error", paramString);
     }
     return false;
   }
@@ -319,20 +319,20 @@ public class PublishVideoEntry
     }
     catch (JSONException paramString)
     {
-      urk.c("PublishVideoEntry", "setGameLinkInfo error", paramString);
+      veg.c("PublishVideoEntry", "setGameLinkInfo error", paramString);
     }
   }
   
-  public void setLinkInfo(@NonNull srv paramsrv)
+  public void setLinkInfo(@NonNull ter paramter)
   {
     try
     {
-      putExtra("link", JsonORM.a(paramsrv));
+      putExtra("link", JsonORM.a(paramter));
       return;
     }
-    catch (JsonORM.JsonParseException paramsrv)
+    catch (JsonORM.JsonParseException paramter)
     {
-      urk.c("PublishVideoEntry", "setLinkInfo error", paramsrv);
+      veg.c("PublishVideoEntry", "setLinkInfo error", paramter);
     }
   }
   

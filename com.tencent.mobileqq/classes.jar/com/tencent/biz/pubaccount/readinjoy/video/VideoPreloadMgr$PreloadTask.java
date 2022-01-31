@@ -2,50 +2,50 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import ocm;
-import qhp;
-import qht;
-import qhw;
-import qih;
-import qii;
+import onx;
+import qtu;
+import qty;
+import qub;
+import qum;
+import qun;
 
 public class VideoPreloadMgr$PreloadTask
   implements Runnable
 {
-  qhp jdField_a_of_type_Qhp;
-  qht jdField_a_of_type_Qht;
-  qii jdField_a_of_type_Qii;
+  qtu jdField_a_of_type_Qtu;
+  qty jdField_a_of_type_Qty;
+  qun jdField_a_of_type_Qun;
   
-  public void a(qhw paramqhw, qht paramqht)
+  public void a(qub paramqub, qty paramqty)
   {
-    if ((paramqhw == null) || (paramqht == null) || (paramqhw.a() == null) || (TextUtils.isEmpty(paramqht.jdField_c_of_type_JavaLangString))) {}
+    if ((paramqub == null) || (paramqty == null) || (paramqub.a() == null) || (TextUtils.isEmpty(paramqty.jdField_c_of_type_JavaLangString))) {}
     for (;;)
     {
       return;
-      VideoPreloadMgr.a(this.this$0, paramqhw);
-      VideoPreloadMgr.a(this.this$0, paramqht);
+      VideoPreloadMgr.a(this.this$0, paramqub);
+      VideoPreloadMgr.a(this.this$0, paramqty);
       if (QLog.isColorLevel()) {
-        QLog.i("Q.readinjoy.video", 2, "[preload]:" + paramqht.jdField_c_of_type_JavaLangString + ", busiType =" + paramqht.f + ", articleID =" + paramqht.jdField_c_of_type_Long);
+        QLog.i("Q.readinjoy.video", 2, "[preload]:" + paramqty.jdField_c_of_type_JavaLangString + ", busiType =" + paramqty.f + ", articleID =" + paramqty.jdField_c_of_type_Long);
       }
-      paramqhw.n();
-      paramqhw.a(Long.valueOf(paramqht.jdField_c_of_type_Long));
-      if (paramqht.f == 2) {
-        ocm.a().a(paramqht.jdField_c_of_type_JavaLangString, "PubAccountArticleCenter.GetUrlByVid", new qih(this, paramqhw));
+      paramqub.n();
+      paramqub.a(Long.valueOf(paramqty.jdField_c_of_type_Long));
+      if (paramqty.f == 2) {
+        onx.a().a(paramqty.jdField_c_of_type_JavaLangString, "PubAccountArticleCenter.GetUrlByVid", new qum(this, paramqub));
       }
-      while (this.jdField_a_of_type_Qii != null)
+      while (this.jdField_a_of_type_Qun != null)
       {
-        paramqhw = this.jdField_a_of_type_Qii;
-        paramqhw.i += 1;
+        paramqub = this.jdField_a_of_type_Qun;
+        paramqub.i += 1;
         return;
-        paramqhw.a(paramqht.jdField_c_of_type_JavaLangString, 2, 0L);
+        paramqub.a(paramqty.jdField_c_of_type_JavaLangString, 2, 0L);
       }
     }
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Qht != null) {
-      a(this.jdField_a_of_type_Qhp.a(this.jdField_a_of_type_Qht), this.jdField_a_of_type_Qht);
+    if (this.jdField_a_of_type_Qty != null) {
+      a(this.jdField_a_of_type_Qtu.a(this.jdField_a_of_type_Qty), this.jdField_a_of_type_Qty);
     }
   }
 }

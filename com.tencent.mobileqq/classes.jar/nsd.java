@@ -1,36 +1,68 @@
-import android.view.View;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class nsd
 {
-  public static AtomicBoolean a;
-  
-  public static ArkAppMessage a(por parampor)
+  public static void a(Drawable paramDrawable)
   {
-    return null;
+    if (!a()) {
+      QLog.i("DailyDynamicHeaderBackgroundController", 1, "blurBackground, isNeedToBlurBackground : NO");
+    }
+    while (!(paramDrawable instanceof URLDrawable)) {
+      return;
+    }
+    ((URLDrawable)paramDrawable).setDecodeHandler(new nse());
   }
   
-  public static void a() {}
-  
-  public static void a(int paramInt) {}
-  
-  public static void a(View paramView) {}
-  
-  public static void a(ArkAppMessage paramArkAppMessage, int paramInt) {}
-  
-  public static void a(nsb paramnsb, int paramInt) {}
-  
-  public static boolean a(ArkAppMessage paramArkAppMessage)
+  public static void a(ImageView paramImageView)
   {
+    if (paramImageView == null) {
+      return;
+    }
+    if (b())
+    {
+      paramImageView.setColorFilter(855638016, PorterDuff.Mode.DARKEN);
+      return;
+    }
+    paramImageView.clearColorFilter();
+  }
+  
+  private static boolean a()
+  {
+    Object localObject = (oso)((QQAppInterface)onk.a()).getManager(163);
+    if (localObject != null)
+    {
+      localObject = ((oso)localObject).a().a();
+      if (localObject != null)
+      {
+        localObject = ((JSONObject)localObject).optString("is_blur_background", "0");
+        QLog.i("DailyDynamicHeaderBackgroundController", 1, "isNeedToBlurBackground, isBlurBackground = " + (String)localObject);
+        return "1".equals(localObject);
+      }
+    }
     return false;
   }
   
-  public static void b() {}
-  
-  public static void b(int paramInt) {}
-  
-  public static void b(View paramView) {}
+  private static boolean b()
+  {
+    Object localObject = (oso)((QQAppInterface)onk.a()).getManager(163);
+    if (localObject != null)
+    {
+      localObject = ((oso)localObject).a().a();
+      if (localObject != null)
+      {
+        localObject = ((JSONObject)localObject).optString("is_cover_background", "0");
+        QLog.i("DailyDynamicHeaderBackgroundController", 1, "isNeedGrayLayer, isCoverBackground = " + (String)localObject);
+        return "1".equals(localObject);
+      }
+    }
+    return false;
+  }
 }
 
 

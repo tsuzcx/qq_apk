@@ -1,14 +1,28 @@
-import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.VideoInfo;
 
 public abstract interface qxs
 {
-  public abstract int a(BaseData paramBaseData);
+  public abstract int a();
   
-  public abstract qxr a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup);
+  public abstract VideoInfo a();
   
-  public abstract boolean a(BaseData paramBaseData);
+  public abstract qqo a();
+  
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(VideoInfo paramVideoInfo);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

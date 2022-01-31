@@ -1,251 +1,171 @@
-import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams.FloatingBuilder;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenStatusReceiver;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IFullScreenEnterListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.business.qvip.QQLevelIconConfig;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.vas.avatar.VasFaceManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
-public abstract class bbqs
-  implements View.OnClickListener
+public class bbqs
+  implements Manager
 {
-  public Context a;
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public bbqq a;
-  public FloatingScreenContainer a;
-  public FloatingScreenStatusReceiver a;
+  public ansh a;
+  public anxb a;
+  public apzf a;
+  public aqwn a;
+  public auux a;
+  public bboe a;
+  private bbqt a;
+  public bbtc a;
+  public QQAppInterface a;
+  public VasFaceManager a;
   
-  bbqs(Context paramContext)
+  public bbqs(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Anxb = new anxb(paramQQAppInterface);
+    this.jdField_a_of_type_Apzf = new apzf(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager = new VasFaceManager(paramQQAppInterface);
+    this.jdField_a_of_type_Ansh = new ansh(paramQQAppInterface);
+    this.jdField_a_of_type_Auux = new auux(paramQQAppInterface);
+    this.jdField_a_of_type_Bboe = new bboe(paramQQAppInterface);
+    this.jdField_a_of_type_Aqwn = new aqwn(paramQQAppInterface);
+    this.jdField_a_of_type_Bbtc = new bbtc(paramQQAppInterface);
+    this.jdField_a_of_type_Bbqt = new bbqt();
+    AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApp(), this.jdField_a_of_type_Bbqt);
   }
   
-  public int a(FloatingScreenParams paramFloatingScreenParams, View paramView)
+  public static String a(int paramInt)
   {
-    FloatingScreenParams localFloatingScreenParams = paramFloatingScreenParams;
-    if (paramFloatingScreenParams == null)
+    int i = paramInt & 0xF;
+    String str = null;
+    if (i == 1)
     {
-      if (this.jdField_a_of_type_AndroidContentContext != null) {
-        localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().build();
+      str = amys.c().mNotifyPaymentText;
+      if (TextUtils.isEmpty(str)) {
+        break label112;
+      }
+      i = 0;
+      switch (paramInt >> 4)
+      {
+      default: 
+        paramInt = i;
       }
     }
-    else
+    for (;;)
     {
-      a(paramView);
-      a(localFloatingScreenParams.getInnerRoundCorner(), localFloatingScreenParams.getOuterRoundCorner());
-      b(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a(this.jdField_a_of_type_AndroidWidgetFrameLayout, localFloatingScreenParams);
-      c();
-      d();
-      return 0;
+      if (paramInt == 0) {
+        break label112;
+      }
+      return str.replace("[vip]", BaseApplicationImpl.getContext().getResources().getString(paramInt));
+      if (i != 2) {
+        break;
+      }
+      str = amys.c().mExpiredNotifyPaymentText;
+      break;
+      paramInt = 2131695485;
+      continue;
+      paramInt = 2131719964;
+      continue;
+      paramInt = 2131690464;
     }
-    return 2;
+    label112:
+    return "";
   }
   
-  public IVideoOuterStatusListener a(IVideoInnerStatusListener paramIVideoInnerStatusListener)
+  public static boolean a()
   {
-    return null;
+    if (bbwx.a().a())
+    {
+      if (bbev.b(BaseApplicationImpl.getApplication()) == 0)
+      {
+        bbwx.a().a(null, false);
+        return true;
+      }
+      QLog.d("KC.TMSManager", 1, "can only query in mobile connection");
+      return true;
+    }
+    QLog.d("KC.TMSManager", 1, "tms can not work");
+    return false;
+  }
+  
+  public static String b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 17: 
+    case 33: 
+      return "mvip.n.a.qlevel_cuifei";
+    case 18: 
+    case 34: 
+      return "mvip.n.a.qlevel_guoqi";
+    case 49: 
+      return "jhan_qlevel_cuifei";
+    }
+    return "jhan_qlevel_guoqi";
+  }
+  
+  public static String c(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 17: 
+    case 18: 
+      return "LTMCLUB";
+    case 33: 
+    case 34: 
+      return "CJCLUBT";
+    }
+    return "SVHHZLH";
+  }
+  
+  public int a()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    return BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).getInt("is_show_qq_level_notice", 0);
   }
   
   public void a(int paramInt)
   {
-    if ((paramInt != 1) || (this.jdField_a_of_type_Bbqq == null) || (!this.jdField_a_of_type_Bbqq.a()))
-    {
-      this.jdField_a_of_type_Bbqq = null;
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.d()))
-      {
-        b(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
-        a(false, new View[] { this.jdField_a_of_type_AndroidWidgetImageView });
-        this.jdField_a_of_type_Bbqq = null;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenStatusReceiver != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenStatusReceiver.a();
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenStatusReceiver = null;
-      }
-    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    QLog.e("QQLevelNotice", 1, "setShowQQLevelNoticeValue: " + paramInt + ", " + str);
+    BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).edit().putInt("is_show_qq_level_notice", paramInt).commit();
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean)
   {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.setOutlineProvider(new bbpz(paramInt2));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.setClipToOutline(true);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.setElevation(15.0F);
-        antu.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845251));
-      }
-      if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setOutlineProvider(new bbpz(paramInt1));
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setClipToOutline(true);
-      }
-    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).edit().putBoolean("is_show_host_qq_level_guide", paramBoolean).commit();
   }
   
-  public void a(Context paramContext)
+  public boolean b()
   {
-    if (paramContext == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer = new FloatingScreenContainer(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.setBackgroundColor(paramContext.getResources().getColor(2131101491));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131307452);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundColor(paramContext.getResources().getColor(2131101491));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(paramContext, 2131495598, null));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131307439));
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131638839));
-    a(new View[] { this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_AndroidWidgetImageView });
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    return BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).getBoolean("is_show_host_qq_level_guide", true);
   }
   
-  public void a(View paramView)
+  public void onDestroy()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
-    b(paramView);
-    paramView.setId(2131307454);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramView, new FrameLayout.LayoutParams(-1, -1));
-    b(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, new FrameLayout.LayoutParams(-1, -1));
-  }
-  
-  public void a(bbqp parambbqp) {}
-  
-  public void a(bbqq parambbqq)
-  {
-    this.jdField_a_of_type_Bbqq = parambbqq;
-  }
-  
-  public void a(IFullScreenEnterListener paramIFullScreenEnterListener) {}
-  
-  public void a(boolean paramBoolean, View... paramVarArgs)
-  {
-    if (paramVarArgs == null) {
-      return;
-    }
-    int j = paramVarArgs.length;
-    int i = 0;
-    label11:
-    View localView;
-    if (i < j)
-    {
-      localView = paramVarArgs[i];
-      if (localView != null)
-      {
-        if (!paramBoolean) {
-          break label44;
-        }
-        localView.setVisibility(0);
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label11;
-      break;
-      label44:
-      localView.setVisibility(4);
-    }
-  }
-  
-  public void a(View... paramVarArgs)
-  {
-    if (paramVarArgs == null) {}
-    for (;;)
-    {
-      return;
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
-      {
-        View localView = paramVarArgs[i];
-        if (localView != null) {
-          localView.setOnClickListener(this);
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public void b(View paramView)
-  {
-    if (paramView != null) {}
-    try
-    {
-      ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-      if (localViewGroup != null) {
-        localViewGroup.removeView(paramView);
-      }
-      return;
-    }
-    catch (ClassCastException paramView)
-    {
-      paramView.printStackTrace();
-      return;
-    }
-    catch (Exception paramView)
-    {
-      paramView.printStackTrace();
-    }
-  }
-  
-  public void b(boolean paramBoolean, View... paramVarArgs)
-  {
-    if (paramVarArgs == null) {}
-    for (;;)
-    {
-      return;
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
-      {
-        View localView = paramVarArgs[i];
-        if (localView != null) {
-          localView.setEnabled(paramBoolean);
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public void c()
-  {
-    a(true, new View[] { this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer, this.jdField_a_of_type_AndroidWidgetImageView });
-  }
-  
-  public void d() {}
-  
-  public void onClick(View paramView)
-  {
-    int i = paramView.getId();
-    if (i == 2131307439) {
-      a(1);
-    }
-    while ((i != 2131307445) || (this.jdField_a_of_type_Bbqq == null)) {
-      return;
-    }
-    this.jdField_a_of_type_Bbqq.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a(), this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.b());
+    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Bbqt);
+    this.jdField_a_of_type_Apzf.onDestroy();
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager.onDestroy();
+    this.jdField_a_of_type_Bbtc.a();
+    this.jdField_a_of_type_Bboe.onDestroy();
+    this.jdField_a_of_type_Aqwn.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbqs
  * JD-Core Version:    0.7.0.1
  */

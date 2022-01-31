@@ -1,18 +1,55 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportReq;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportRsp;
+import NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
-class bhke
-  implements auub
+public class bhke
+  extends QzoneExternalRequest
 {
-  bhke(bhkc parambhkc, boolean paramBoolean) {}
+  private JceStruct a;
   
-  public void a()
+  public bhke(ArrayList<tMobileQbossFeedBackInfo> paramArrayList)
   {
-    SosoInterface.a(new bhkf(this, "NewStoryTakeVideoActivity"));
+    MobileQbossReportReq localMobileQbossReportReq = new MobileQbossReportReq();
+    localMobileQbossReportReq.vecMobileQbossFeedBackInfo = paramArrayList;
+    this.a = localMobileQbossReportReq;
+  }
+  
+  public static MobileQbossReportRsp a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
+    }
+    MobileQbossReportRsp localMobileQbossReportRsp;
+    do
+    {
+      return paramArrayOfByte;
+      localMobileQbossReportRsp = (MobileQbossReportRsp)decode(paramArrayOfByte, "report");
+      paramArrayOfByte = localMobileQbossReportRsp;
+    } while (localMobileQbossReportRsp != null);
+    return null;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.mobileqboss.report";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "report";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhke
  * JD-Core Version:    0.7.0.1
  */

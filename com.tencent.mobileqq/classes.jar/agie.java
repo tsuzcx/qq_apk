@@ -1,23 +1,44 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import android.animation.IntEvaluator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import java.util.List;
 
-class agie
-  implements agal
+public class agie
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  agie(agid paramagid, Intent paramIntent, ArrayList paramArrayList) {}
+  private int jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
+  private IntEvaluator jdField_a_of_type_AndroidAnimationIntEvaluator = new IntEvaluator();
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public agie(AvatarPendantActivity paramAvatarPendantActivity, List paramList1, List paramList2) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ((NewPhotoListActivity)this.jdField_a_of_type_Agid.a.get()).f();
-    if (biys.a((Activity)this.jdField_a_of_type_Agid.a.get(), paramLocalMediaInfo))
+    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
+    int i = 0;
+    while (i < this.jdField_a_of_type_Int)
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-      PhotoUtils.a((Activity)this.jdField_a_of_type_Agid.a.get(), this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
+      paramValueAnimator = (View)this.jdField_a_of_type_JavaUtilList.get(i);
+      agih localagih = (agih)this.b.get(i);
+      ViewGroup.LayoutParams localLayoutParams = paramValueAnimator.getLayoutParams();
+      if (localagih.jdField_a_of_type_Int != localagih.b)
+      {
+        FrameLayout.LayoutParams localLayoutParams1 = (FrameLayout.LayoutParams)paramValueAnimator.getLayoutParams();
+        localLayoutParams1.topMargin = this.jdField_a_of_type_AndroidAnimationIntEvaluator.evaluate(f, Integer.valueOf(localagih.jdField_a_of_type_Int), Integer.valueOf(localagih.b)).intValue();
+        paramValueAnimator.setLayoutParams(localLayoutParams1);
+      }
+      if (localagih.c != localagih.d) {
+        localLayoutParams.height = this.jdField_a_of_type_AndroidAnimationIntEvaluator.evaluate(f, Integer.valueOf(localagih.c), Integer.valueOf(localagih.d)).intValue();
+      }
+      if (localagih.e != localagih.f) {
+        localLayoutParams.width = this.jdField_a_of_type_AndroidAnimationIntEvaluator.evaluate(f, Integer.valueOf(localagih.e), Integer.valueOf(localagih.f)).intValue();
+      }
+      paramValueAnimator.setLayoutParams(localLayoutParams);
+      paramValueAnimator.requestLayout();
+      i += 1;
     }
   }
 }

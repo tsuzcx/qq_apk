@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import ajjy;
+import ajyc;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -15,7 +15,7 @@ import android.graphics.Shader.TileMode;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
-import bbgp;
+import bcjp;
 import com.tencent.mobileqq.R.styleable;
 
 public class CircleProgressBar
@@ -27,7 +27,7 @@ public class CircleProgressBar
   public Paint a;
   public RectF a;
   public TextPaint a;
-  bbgp a;
+  bcjp a;
   public String a;
   public boolean a;
   public float b;
@@ -71,7 +71,7 @@ public class CircleProgressBar
     this.jdField_h_of_type_Int = -90;
     this.jdField_i_of_type_Int = this.jdField_h_of_type_Int;
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_Bbgp = new bbgp(this);
+    this.jdField_a_of_type_Bcjp = new bcjp(this);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.CircleProgressBar);
     this.jdField_a_of_type_Int = paramContext.getColor(13, Color.parseColor("#999999"));
     this.jdField_b_of_type_Int = paramContext.getColor(10, Color.parseColor("#12b7f5"));
@@ -110,13 +110,13 @@ public class CircleProgressBar
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Boolean = false;
     postInvalidate();
-    this.jdField_a_of_type_Bbgp.sendEmptyMessageDelayed(10000, 50L);
+    this.jdField_a_of_type_Bcjp.sendEmptyMessageDelayed(10000, 50L);
   }
   
   public void b()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bbgp.removeMessages(10000);
+    this.jdField_a_of_type_Bcjp.removeMessages(10000);
     postInvalidate();
   }
   
@@ -162,7 +162,7 @@ public class CircleProgressBar
       this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float / 4.0F);
       f3 = this.jdField_a_of_type_AndroidTextTextPaint.descent();
       f5 = this.jdField_a_of_type_AndroidTextTextPaint.ascent();
-      paramCanvas.drawText(ajjy.a(2131636125), f4, f1 + f2 - (f3 + f5), this.jdField_a_of_type_AndroidTextTextPaint);
+      paramCanvas.drawText(ajyc.a(2131701909), f4, f1 + f2 - (f3 + f5), this.jdField_a_of_type_AndroidTextTextPaint);
       this.jdField_a_of_type_AndroidGraphicsPaint.reset();
       return;
     }
@@ -235,7 +235,7 @@ public class CircleProgressBar
       this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float / 4.0F);
       f3 = this.jdField_a_of_type_AndroidTextTextPaint.descent();
       f5 = this.jdField_a_of_type_AndroidTextTextPaint.ascent();
-      paramCanvas.drawText(ajjy.a(2131636126), f4, f1 + f2 - (f3 + f5), this.jdField_a_of_type_AndroidTextTextPaint);
+      paramCanvas.drawText(ajyc.a(2131701910), f4, f1 + f2 - (f3 + f5), this.jdField_a_of_type_AndroidTextTextPaint);
       break;
     }
   }

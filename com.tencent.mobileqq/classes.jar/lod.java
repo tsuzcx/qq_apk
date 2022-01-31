@@ -1,18 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.gaudio.GaInviteLockActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-class lod
-  implements DialogInterface.OnDismissListener
+public class lod
+  extends lfv
 {
-  lod(loa paramloa, long paramLong) {}
+  public lod(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(long paramLong1, long paramLong2, ArrayList<lom> paramArrayList)
   {
-    QLog.w("ShareChat", 1, "ActionSheet.onDismiss, mChoosedLinkType[" + this.jdField_a_of_type_Loa.b + "], mIHandle[" + this.jdField_a_of_type_Loa.jdField_a_of_type_Lof + "], seq[" + this.jdField_a_of_type_Long + "]");
-    if ((this.jdField_a_of_type_Loa.b == -1) && (this.jdField_a_of_type_Loa.jdField_a_of_type_Lof != null)) {
-      this.jdField_a_of_type_Loa.a(this.jdField_a_of_type_Loa.jdField_a_of_type_Int, this.jdField_a_of_type_Loa.b, 1);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onReceiveMemberList mMemberChangeEventReceiver size:" + paramArrayList.size());
     }
+    ThreadManager.getUIHandler().post(new GaInviteLockActivity.1.1(this, paramArrayList));
   }
 }
 

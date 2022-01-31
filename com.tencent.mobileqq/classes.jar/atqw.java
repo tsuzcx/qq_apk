@@ -1,28 +1,24 @@
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.10.1;
 
 public class atqw
-  extends atqy
+  implements View.OnClickListener
 {
-  atqw(CompressInfo paramCompressInfo)
-  {
-    super(paramCompressInfo);
-  }
+  atqw(atqu paramatqu) {}
   
-  protected int a()
+  public void onClick(View paramView)
   {
-    return 80;
-  }
-  
-  protected final int[] a()
-  {
-    if (this.a.g == 2) {
-      return null;
-    }
-    int[] arrayOfInt = new int[2];
-    arrayOfInt[0] = 2560;
-    arrayOfInt[1] = (arrayOfInt[0] * 2);
-    atpg.a("PicTypeNormal", "getScaleLargerSide", "PicType.SendPhotoMaxLongSide = " + arrayOfInt[0]);
-    return arrayOfInt;
+    paramView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "https://nearby.qq.com/nearby-visitor/index.html?_proxy=1&_wwv=128");
+    this.a.a.startActivity(paramView);
+    atqu.a(this.a, null);
+    ThreadManager.post(new NearbyProfileDisplayTribePanel.10.1(this), 5, null, false);
+    axqw.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
   }
 }
 

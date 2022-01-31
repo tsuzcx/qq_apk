@@ -1,142 +1,55 @@
-import java.util.ArrayList;
-
-public class bfmf
+public final class bfmf
 {
-  public int a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
-  public String b;
-  public String c;
+  private static float jdField_a_of_type_Float = 0.4F;
+  private static final float[] jdField_a_of_type_ArrayOfFloat;
+  private static float b = 1.0F - jdField_a_of_type_Float;
+  private static float c;
+  private static float d = 1.0F / a(1.0F);
   
-  public bfmf()
+  static
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public bfmf(int paramInt1, String paramString1, String paramString2, String paramString3, ArrayList<String> paramArrayList, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    boolean bool1;
-    if (this == paramObject) {
-      bool1 = true;
-    }
-    label116:
-    do
+    jdField_a_of_type_ArrayOfFloat = new float[101];
+    float f1 = 0.0F;
+    int i = 0;
+    if (i <= 100)
     {
-      do
+      float f4 = i / 100.0F;
+      float f2 = 1.0F;
+      for (;;)
       {
-        do
+        float f3 = (f2 - f1) / 2.0F + f1;
+        float f5 = 3.0F * f3 * (1.0F - f3);
+        float f6 = ((1.0F - f3) * jdField_a_of_type_Float + b * f3) * f5 + f3 * f3 * f3;
+        if (Math.abs(f6 - f4) < 1.E-005D)
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return bool1;
-                  bool1 = bool3;
-                } while (paramObject == null);
-                bool1 = bool3;
-              } while (getClass() != paramObject.getClass());
-              paramObject = (bfmf)paramObject;
-              bool1 = bool3;
-            } while (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int);
-            bool1 = bool3;
-          } while (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int);
-          if (this.jdField_a_of_type_JavaLangString == null) {
-            break;
-          }
-          bool1 = bool3;
-        } while (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
-        if (this.jdField_b_of_type_JavaLangString == null) {
-          break label170;
+          jdField_a_of_type_ArrayOfFloat[i] = (f3 * f3 * f3 + f5);
+          i += 1;
+          break;
         }
-        bool1 = bool3;
-      } while (!this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString));
-      if (this.c == null) {
-        break label179;
-      }
-      bool1 = bool3;
-    } while (!this.c.equals(paramObject.c));
-    label140:
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      bool1 = this.jdField_a_of_type_JavaUtilArrayList.equals(paramObject.jdField_a_of_type_JavaUtilArrayList);
-    }
-    for (;;)
-    {
-      return bool1;
-      if (paramObject.jdField_a_of_type_JavaLangString == null) {
-        break;
-      }
-      return false;
-      label170:
-      if (paramObject.jdField_b_of_type_JavaLangString == null) {
-        break label116;
-      }
-      return false;
-      label179:
-      if (paramObject.c == null) {
-        break label140;
-      }
-      return false;
-      bool1 = bool2;
-      if (paramObject.jdField_a_of_type_JavaUtilArrayList != null) {
-        bool1 = false;
+        if (f6 > f4) {
+          f2 = f3;
+        } else {
+          f1 = f3;
+        }
       }
     }
+    jdField_a_of_type_ArrayOfFloat[100] = 1.0F;
+    c = 8.0F;
+    d = 1.0F;
   }
   
-  public int hashCode()
+  public static float a(float paramFloat)
   {
-    int m = 0;
-    int n = this.jdField_a_of_type_Int;
-    int i;
-    int j;
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      i = this.jdField_a_of_type_JavaLangString.hashCode();
-      if (this.jdField_b_of_type_JavaLangString == null) {
-        break label107;
-      }
-      j = this.jdField_b_of_type_JavaLangString.hashCode();
-      label39:
-      if (this.c == null) {
-        break label112;
-      }
-    }
-    label107:
-    label112:
-    for (int k = this.c.hashCode();; k = 0)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        m = this.jdField_a_of_type_JavaUtilArrayList.hashCode();
-      }
-      return ((k + (j + (i + n * 31) * 31) * 31) * 31 + m) * 31 + this.jdField_b_of_type_Int;
-      i = 0;
-      break;
-      j = 0;
-      break label39;
+    paramFloat = c * paramFloat;
+    if (paramFloat < 1.0F) {}
+    for (paramFloat -= 1.0F - (float)Math.exp(-paramFloat);; paramFloat = (1.0F - (float)Math.exp(1.0F - paramFloat)) * (1.0F - 0.3678795F) + 0.3678795F) {
+      return paramFloat * d;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfmf
  * JD-Core Version:    0.7.0.1
  */

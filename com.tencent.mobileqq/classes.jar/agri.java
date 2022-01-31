@@ -1,17 +1,13 @@
-public class agri
+import android.content.Intent;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+
+public abstract interface agri
 {
-  float jdField_a_of_type_Float;
-  String jdField_a_of_type_JavaLangString;
-  
-  public agri(String paramString, float paramFloat)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-  }
+  public abstract void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agri
  * JD-Core Version:    0.7.0.1
  */

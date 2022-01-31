@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -9,14 +9,14 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import aqkq;
-import aqkv;
-import aqkw;
-import aqkx;
-import aqkz;
-import aqlk;
-import aqmd;
-import badq;
+import arev;
+import arfa;
+import arfb;
+import arfc;
+import arfe;
+import arfp;
+import argi;
+import bbev;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -28,24 +28,24 @@ public class GroupVideoLoadingFragment
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new aqkx(this, Looper.getMainLooper());
-  private aqkq jdField_a_of_type_Aqkq;
-  private aqkz jdField_a_of_type_Aqkz;
-  private aqlk jdField_a_of_type_Aqlk = new aqkw(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new arfc(this, Looper.getMainLooper());
+  private arev jdField_a_of_type_Arev;
+  private arfe jdField_a_of_type_Arfe;
+  private arfp jdField_a_of_type_Arfp = new arfb(this);
   private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
   
   private void a()
   {
-    if (!badq.g(this.jdField_a_of_type_AndroidContentContext))
+    if (!bbev.g(this.jdField_a_of_type_AndroidContentContext))
     {
-      this.jdField_a_of_type_Aqkq.a(ajjy.a(2131639613), "");
-      this.jdField_a_of_type_Aqkq.c();
+      this.jdField_a_of_type_Arev.a(ajyc.a(2131705398), "");
+      this.jdField_a_of_type_Arev.c();
       return;
     }
-    this.jdField_a_of_type_Aqkq.a(ajjy.a(2131639609), ajjy.a(2131639605));
-    aqkz.a("group_video", new aqkv(this));
+    this.jdField_a_of_type_Arev.a(ajyc.a(2131705394), ajyc.a(2131705390));
+    arfe.a("group_video", new arfa(this));
   }
   
   private void a(boolean paramBoolean)
@@ -64,7 +64,7 @@ public class GroupVideoLoadingFragment
       str1 = "checkVersion";
     }
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Aqkz.a(this.jdField_a_of_type_AndroidContentContext, str2, str3, i, str1, str5, str4, str6, str7, this.jdField_a_of_type_Aqlk);
+    this.jdField_a_of_type_Arfe.a(this.jdField_a_of_type_AndroidContentContext, str2, str3, i, str1, str5, str4, str6, str7, this.jdField_a_of_type_Arfp);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity) {}
@@ -81,7 +81,7 @@ public class GroupVideoLoadingFragment
   
   public boolean onBackEvent()
   {
-    aqmd.b("2856633");
+    argi.b("2856633");
     this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("exitLoadPage").opIn(this.jdField_b_of_type_Int).opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
     return super.onBackEvent();
   }
@@ -89,20 +89,20 @@ public class GroupVideoLoadingFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Aqkz = ((aqkz)MobileQQ.sMobileQQ.waitAppRuntime(null).getManager(236));
+    this.jdField_a_of_type_Arfe = ((arfe)MobileQQ.sMobileQQ.waitAppRuntime(null).getManager(236));
     jdField_a_of_type_Boolean = true;
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131493564, null);
-    this.jdField_a_of_type_Aqkq = new aqkq();
-    this.jdField_a_of_type_Aqkq.a(getActivity(), paramLayoutInflater);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559133, null);
+    this.jdField_a_of_type_Arev = new arev();
+    this.jdField_a_of_type_Arev.a(getActivity(), paramLayoutInflater);
     this.jdField_a_of_type_AndroidContentContext = getActivity();
     this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
     this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("group_video");
     a();
-    aqmd.b("2856632");
+    argi.b("2856632");
     return paramLayoutInflater;
   }
   
@@ -110,9 +110,9 @@ public class GroupVideoLoadingFragment
   {
     super.onDestroy();
     jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Aqkz.a(getActivity());
+    this.jdField_a_of_type_Arfe.a(getActivity());
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_Aqlk = null;
+    this.jdField_a_of_type_Arfp = null;
   }
 }
 

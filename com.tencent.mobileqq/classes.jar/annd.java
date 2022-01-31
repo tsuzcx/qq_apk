@@ -1,65 +1,99 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class annd
+class annd
+  extends ajxl
 {
-  public static annd a(Bundle paramBundle)
+  annd(annc paramannc) {}
+  
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    int i;
-    if (paramBundle != null)
+    localObject3 = null;
+    String str1;
+    if ((paramBoolean) && (paramSetting != null))
     {
-      localObject1 = localObject2;
-      if (paramBundle.containsKey("cur_data_source_type"))
-      {
-        QLog.d("EmoticonPreviewData", 1, "restoreSaveInstanceState execute");
-        i = paramBundle.getInt("cur_data_source_type");
-        if (i != 0) {
-          break label53;
+      str1 = paramSetting.uin;
+      if ((str1 != null) && (str1.startsWith("stranger_")) && (this.a.jdField_a_of_type_JavaUtilSet.contains(str1))) {
+        if (TextUtils.isEmpty(paramSetting.url)) {
+          break label186;
         }
-        localObject1 = new anno(null).b(paramBundle);
       }
     }
-    label53:
-    do
+    for (paramSetting = annc.a(32, paramSetting.url, paramSetting.bHeadType, paramSetting.bFaceFlags);; paramSetting = null)
     {
-      return localObject1;
-      localObject1 = localObject2;
-    } while (i != 1);
-    return new annm(null).b(paramBundle);
+      if (!TextUtils.isEmpty(paramSetting)) {
+        this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, paramSetting);
+      }
+      try
+      {
+        i = str1.indexOf('_');
+        j = str1.indexOf('_', i + 1);
+        i = Integer.parseInt(str1.substring(i + 1, j));
+      }
+      catch (NumberFormatException localNumberFormatException1)
+      {
+        for (;;)
+        {
+          int j;
+          String str2;
+          i = 0;
+          anmg.b("StrangerHdHeadUrlFetcher", new Object[] { localNumberFormatException1.toString() });
+          Object localObject1 = localObject3;
+        }
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          label186:
+          int i = 0;
+          anmg.b("StrangerHdHeadUrlFetcher", new Object[] { localException1.toString() });
+          Object localObject2 = localObject3;
+        }
+      }
+      try
+      {
+        str2 = str1.substring(j + 1);
+        ConnectNearbyProcService.a(4106, new Object[] { str2, Integer.valueOf(i), paramSetting });
+        annc.a(this.a, str1);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        break label237;
+      }
+      catch (NumberFormatException localNumberFormatException2)
+      {
+        break label209;
+      }
+      str1 = null;
+      break;
+      anmg.b("StrangerHdHeadUrlFetcher", new Object[] { "setting.url is null" });
+    }
   }
   
-  public abstract int a(List<annd> paramList);
-  
-  public abstract long a();
-  
-  public abstract Drawable a(Context paramContext);
-  
-  public abstract anht a();
-  
-  public abstract CustomEmotionData a();
-  
-  public void a(Bundle paramBundle, int paramInt)
+  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    paramBundle.putInt("cur_data_source_type", paramInt);
+    if ((paramBoolean1) && (paramBoolean2))
+    {
+      String str1 = annc.a(32, paramInt, paramString);
+      if (this.a.jdField_a_of_type_JavaUtilSet.contains(str1))
+      {
+        String str2 = this.a.a(paramString, paramInt, false);
+        if (!TextUtils.isEmpty(str2)) {
+          ConnectNearbyProcService.a(4106, new Object[] { paramString, Integer.valueOf(paramInt), str2 });
+        }
+        annc.a(this.a, str1);
+      }
+    }
   }
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(annd paramannd);
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     annd
  * JD-Core Version:    0.7.0.1
  */

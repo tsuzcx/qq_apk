@@ -1,26 +1,20 @@
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import java.util.Iterator;
-import java.util.Set;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class vjs
+final class vjs
+  implements Animation.AnimationListener
 {
-  public static void a(@NonNull String paramString, Bundle paramBundle)
+  vjs(View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramBundle == null)
-    {
-      urk.b(paramString, ", logBundleDetails : null");
-      return;
-    }
-    urk.b(paramString, "-- ----------- logBundleDetails ------------- [[[");
-    Iterator localIterator = paramBundle.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      urk.a(paramString, "-- - %s : %s", str, paramBundle.get(str));
-    }
-    urk.b(paramString, "-- ----------- logBundleDetails ------------- ]]]");
+    this.a.setAnimation(null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

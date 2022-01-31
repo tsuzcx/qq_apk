@@ -1,23 +1,26 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.QavPanel;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 
 public class ldr
   implements DialogInterface.OnClickListener
 {
-  public ldr(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public ldr(VideoController paramVideoController, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    mga.e(false, false);
-    if (paramDialogInterface != null)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      paramDialogInterface.dismiss();
-      if ((this.a.a != null) && (this.a.a.a != null)) {
-        this.a.a.a.b();
+      this.jdField_a_of_type_ComTencentAvVideoController.a("onHowling_click", this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Long, true, false);
+      if (this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+        this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(108) });
       }
     }
+    if (this.b) {
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Mtt.d();
+    }
+    axqw.b(null, "CliOper", "", "", "0x8006993", "0x8006993", 0, 0, "", "", "", "");
   }
 }
 

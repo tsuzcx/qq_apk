@@ -1,40 +1,11 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.app.Activity;
+import android.os.Bundle;
 
-public class sxy
-  extends QQUIEventReceiver<sxw, sxv>
+public abstract interface sxy<T extends Activity>
 {
-  public sxy(sxw paramsxw)
-  {
-    super(paramsxw);
-  }
+  public abstract void a(T paramT);
   
-  public void a(@NonNull sxw paramsxw, @NonNull sxv paramsxv)
-  {
-    if (paramsxw.a()) {}
-    do
-    {
-      return;
-      if (paramsxv.jdField_a_of_type_Boolean)
-      {
-        sxw.a(paramsxw);
-        return;
-      }
-      if ((paramsxv.a() != null) && (!paramsxv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("HaloResponseReceiver", 2, "onEvent: failed. Message: exception: " + paramsxv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
-    return;
-    sxw.a(paramsxw);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return sxv.class;
-  }
+  public abstract void a(T paramT, Bundle paramBundle);
 }
 
 

@@ -9,20 +9,20 @@
         <RelativeLayout android:id="@id/cmh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
             <com.qzone.widget.QZoneFeedSkinAsyncImageView android:id="@id/cm2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
             <com.qzone.widget.QZoneFeedSkinAsyncImageView android:id="@id/cm1" android:visibility="gone" android:layout_width="83.0dip" android:layout_height="83.0dip" android:layout_marginLeft="-67.0dip" android:layout_marginTop="75.79999dip" android:layout_toRightOf="@id/cmb" />
-            <RelativeLayout android:id="@id/cmb" android:background="@drawable/a_c" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginTop="96.0dip" android:layout_centerHorizontal="true">
+            <RelativeLayout android:id="@id/cmb" android:background="@drawable/cek" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginTop="96.0dip" android:layout_centerHorizontal="true">
                 <com.qzone.widget.QZoneFeedSkinAsyncImageView android:id="@id/cma" android:visibility="gone" android:layout_width="58.0dip" android:layout_height="58.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
             </RelativeLayout>
             <RelativeLayout android:id="@id/cm0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="96.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
-                <RelativeLayout android:id="@id/cm8" android:background="@drawable/a_c" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_alignParentLeft="true">
+                <RelativeLayout android:id="@id/cm8" android:background="@drawable/cek" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_alignParentLeft="true">
                     <com.qzone.widget.QZoneFeedSkinAsyncImageView android:id="@id/cm7" android:layout_width="40.0dip" android:layout_height="40.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
                 </RelativeLayout>
-                <RelativeLayout android:id="@id/cml" android:background="@drawable/a_c" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginLeft="22.0dip" android:layout_toRightOf="@id/cm8">
+                <RelativeLayout android:id="@id/cml" android:background="@drawable/cek" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginLeft="22.0dip" android:layout_toRightOf="@id/cm8">
                     <com.qzone.widget.QZoneFeedSkinAsyncImageView android:id="@id/cmi" android:layout_width="40.0dip" android:layout_height="40.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
                 </RelativeLayout>
-                <RelativeLayout android:id="@id/cmm" android:background="@drawable/a_c" android:visibility="gone" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginLeft="-7.0dip" android:layout_toRightOf="@id/cml">
+                <RelativeLayout android:id="@id/cmm" android:background="@drawable/cek" android:visibility="gone" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginLeft="-7.0dip" android:layout_toRightOf="@id/cml">
                     <com.qzone.widget.QZoneFeedSkinAsyncImageView android:id="@id/cmj" android:layout_width="40.0dip" android:layout_height="40.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
                 </RelativeLayout>
-                <RelativeLayout android:id="@id/cmn" android:background="@drawable/a_c" android:visibility="gone" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginLeft="-7.0dip" android:layout_toRightOf="@id/cmm">
+                <RelativeLayout android:id="@id/cmn" android:background="@drawable/cek" android:visibility="gone" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginLeft="-7.0dip" android:layout_toRightOf="@id/cmm">
                     <com.qzone.widget.QZoneFeedSkinAsyncImageView android:id="@id/cmk" android:layout_width="40.0dip" android:layout_height="40.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
                     <com.qzone.widget.QZoneFeedSkinAsyncImageView android:id="@id/cmo" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
                     <TextView android:textSize="19.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/cmr" android:visibility="gone" android:layout_width="23.0dip" android:layout_height="26.5dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />

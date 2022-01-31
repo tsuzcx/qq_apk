@@ -1,33 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import java.util.HashMap;
 
 public class aaho
-  implements DialogInterface.OnDismissListener
+  implements asko<bbpv>
 {
-  public aaho(ChatHistory paramChatHistory, View paramView1, int paramInt, View paramView2, TranslateAnimation paramTranslateAnimation) {}
+  public aaho(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(bbpv parambbpv)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.b.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    paramDialogInterface = (afsu)paramDialogInterface;
-    int i = paramDialogInterface.a();
-    boolean bool = paramDialogInterface.a();
-    ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory, i);
-    if (bool)
+    if (parambbpv.jdField_a_of_type_Int == AddFriendVerifyActivity.a(this.a).a())
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131625011));
-      return;
+      Object localObject = (Bitmap)parambbpv.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2131378859));
+      AddFriendVerifyActivity.b(this.a).setVisibility(0);
+      AddFriendVerifyActivity.b(this.a).setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), (Bitmap)localObject));
+      localObject = (Bitmap)parambbpv.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2131378854));
+      localObject = bbst.a(this.a.getResources(), (Bitmap)localObject);
+      AddFriendVerifyActivity.a(this.a).setBackgroundDrawable((Drawable)localObject);
+      AddFriendVerifyActivity.b(this.a).setTextColor(parambbpv.b);
+      AddFriendVerifyActivity.a(this.a).setTextColor(parambbpv.b);
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getIntent().getExtras().getString("leftViewText");
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(paramDialogInterface);
   }
 }
 

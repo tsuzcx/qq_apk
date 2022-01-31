@@ -1,31 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.VideoAppInterface;
 
-class mur
-  implements View.OnClickListener
+public class mur
+  extends mus
 {
-  mur(muq parammuq) {}
-  
-  public void onClick(View paramView)
+  public mur(VideoAppInterface paramVideoAppInterface, long paramLong)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof nbu)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "click!");
-      }
-      paramView = (nbu)paramView;
-      if (this.a.a != null) {
-        this.a.a.a(paramView);
-      }
-      this.a.a(paramView);
-    }
+    super(paramVideoAppInterface, 64, paramLong);
+  }
+  
+  public void a(String paramString, muu parammuu)
+  {
+    super.a(paramString, parammuu);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mur
  * JD-Core Version:    0.7.0.1
  */

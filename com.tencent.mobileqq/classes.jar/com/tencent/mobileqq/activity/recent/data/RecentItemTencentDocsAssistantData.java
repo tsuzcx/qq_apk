@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ahcw;
+import ahpl;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.config.AppSetting;
@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mmy;
+import mxx;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
@@ -31,16 +31,16 @@ public class RecentItemTencentDocsAssistantData
       QLog.d("RecentItemTencentDocsAssistantData", 2, "RecentItemTencentDocsAssistantData update");
     }
     super.a(paramQQAppInterface, paramContext);
-    this.mTitleName = paramContext.getString(2131654288);
+    this.mTitleName = paramContext.getString(2131720182);
     this.mMsgExtroInfo = "";
-    oidb_0x791.RedDotInfo localRedDotInfo = ((mmy)paramQQAppInterface.getManager(70)).a(46, false);
+    oidb_0x791.RedDotInfo localRedDotInfo = ((mxx)paramQQAppInterface.getManager(70)).a(46, false);
     if (localRedDotInfo == null)
     {
       this.mUnreadNum = 0;
       this.mDisplayTime = 0L;
       this.mShowTime = "";
-      this.mLastMsg = paramContext.getString(2131654289);
-      if (AppSetting.c)
+      this.mLastMsg = paramContext.getString(2131720183);
+      if (AppSetting.d)
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(this.mTitleName).append(",");
@@ -132,10 +132,10 @@ public class RecentItemTencentDocsAssistantData
           QLog.e("RecentItemTencentDocsAssistantData", 1, "RecentItemTencentDocsAssistantData update error" + paramQQAppInterface.getMessage());
           localObject2 = localObject1;
           continue;
-          this.mLastMsg = paramContext.getString(2131654289);
+          this.mLastMsg = paramContext.getString(2131720183);
         }
         if ((this.mDisplayTime > 0L) && (this.mDisplayTime != 9223372036854775806L)) {
-          this.mShowTime = ahcw.a().a(a(), this.mDisplayTime);
+          this.mShowTime = ahpl.a().a(a(), this.mDisplayTime);
         }
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           continue;

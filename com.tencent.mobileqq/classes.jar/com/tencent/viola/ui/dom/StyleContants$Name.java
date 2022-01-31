@@ -7,6 +7,8 @@ public abstract interface StyleContants$Name
   public static final String ALIGN_SELF = "alignSelf";
   public static final String AUTO = "auto";
   public static final String BACKGROUND_COLOR = "backgroundColor";
+  public static final String BACKGROUND_IMAGE = "backgroundImage";
+  public static final String BACKGROUND_IMAGE_PARSE = "background_image_parse";
   public static final String BLUR = "blur";
   public static final String BLUR_RADIUS = "blurRadius";
   public static final String BORDER_BOTTOM_COLOR = "borderBottomColor";
@@ -83,8 +85,11 @@ public abstract interface StyleContants$Name
   public static final String TEXT_OVERFLOW = "textOverflow";
   public static final String THUMB_COLOR = "thumbColor";
   public static final String TOP = "top";
+  public static final String TOPINDEX = "topIndex";
   public static final String TRANSFORM = "transform";
   public static final String TRANSFORM_ORIGIN = "transformOrigin";
+  public static final String TRANSFORM_ORIGIN_PARSE = "transform_origin_parse";
+  public static final String TRANSFORM_PARSE = "transform_parse";
   public static final String UNDEFINED = "undefined";
   public static final String VALUE = "value";
   public static final String VALUES = "values";

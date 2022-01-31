@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Mp4FlowReEncoder;
-import java.util.Comparator;
+import android.graphics.drawable.Drawable;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
 public class auyr
-  implements Comparator<auxx>
+  implements bbkq<Integer>
 {
-  public auyr(Mp4FlowReEncoder paramMp4FlowReEncoder) {}
+  public auyr(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
   
-  public int a(auxx paramauxx1, auxx paramauxx2)
+  public void a(bbkk<Integer> parambbkk, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    if (paramauxx2.a() > paramauxx1.a()) {
-      return -1;
-    }
-    if (paramauxx2.a() == paramauxx1.a()) {
-      return 0;
-    }
-    return 1;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(paramInteger.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auyr
  * JD-Core Version:    0.7.0.1
  */

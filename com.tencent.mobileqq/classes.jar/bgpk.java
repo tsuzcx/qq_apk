@@ -1,40 +1,44 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.ar.util.VipARUtils.3;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qqfav.QfavHelper.AsyncFavoritesProvider.1;
+import mqq.os.MqqHandler;
 
-public class bgpk
-  implements ModuleDownloadListener
+public abstract class bgpk
+  extends OnPluginInstallListener.Stub
 {
-  public bgpk(VipARUtils.3 param3) {}
+  public Bundle a;
   
-  public void onDownloadCanceled(String paramString)
+  public bgpk(Bundle paramBundle)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+    this.a = paramBundle;
   }
   
-  public void onDownloadFailed(String paramString)
+  public void a()
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+    bgpf.a(BaseApplication.getContext(), this);
   }
   
-  public void onDownloadProgress(String paramString, float paramFloat)
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+    a(false, this.a);
   }
   
-  public void onDownloadSucceed(String paramString)
+  public void onInstallFinish(String paramString)
   {
-    if (!paramString.equals("vip_tar_engine.jar")) {
-      return;
-    }
-    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bgph.a(), " onDownloadSucceed = ", bgph.b() });
-    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bgph.b());
+    ThreadManager.getSubThreadHandler().post(new QfavHelper.AsyncFavoritesProvider.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgpk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.history.tendoc;
 
-import afpl;
-import afrj;
-import afrk;
-import afss;
+import agbl;
+import agdi;
+import agdj;
+import ager;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import awbi;
-import ayjf;
-import beez;
+import axaq;
+import azjv;
+import bfmt;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -27,15 +27,15 @@ import java.util.List;
 import mqq.os.MqqHandler;
 
 public class TenDocMessageResultAdapter
-  extends afrj
+  extends agdi
 {
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   private Runnable jdField_a_of_type_JavaLangRunnable;
   private List<TencentDocItem> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public TenDocMessageResultAdapter(Context paramContext, beez parambeez, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  public TenDocMessageResultAdapter(Context paramContext, bfmt parambfmt, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    super(paramContext, parambeez, paramSessionInfo, paramQQAppInterface);
+    super(paramContext, parambfmt, paramSessionInfo, paramQQAppInterface);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
   
@@ -50,8 +50,8 @@ public class TenDocMessageResultAdapter
       MessageRecord localMessageRecord = localTencentDocItem.mRecord;
       if (localMessageRecord != null)
       {
-        MessageForText localMessageForText = awbi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord.selfuin, localMessageRecord.frienduin, localMessageRecord.senderuin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (byte)1, (byte)0, (short)0, localTencentDocItem.mSearchWords);
-        localMessageForText.msgData = ayjf.a(localTencentDocItem);
+        MessageForText localMessageForText = axaq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord.selfuin, localMessageRecord.frienduin, localMessageRecord.senderuin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (byte)1, (byte)0, (short)0, localTencentDocItem.mSearchWords);
+        localMessageForText.msgData = azjv.a(localTencentDocItem);
         localMessageForText.shmsgseq = localMessageRecord.shmsgseq;
         localMessageForText.msgseq = localMessageRecord.msgseq;
         localMessageForText.time = localMessageRecord.time;
@@ -87,7 +87,7 @@ public class TenDocMessageResultAdapter
     notifyDataSetChanged();
   }
   
-  public void a(List<afss> paramList, int paramInt)
+  public void a(List<ager> paramList, int paramInt)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       return;
@@ -102,17 +102,17 @@ public class TenDocMessageResultAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject1 = (afss)getItem(paramInt);
+    Object localObject1 = (ager)getItem(paramInt);
     Object localObject2;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131493645, paramViewGroup, false);
-      paramViewGroup = new afrk();
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131311631));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131299474));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302061));
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559214, paramViewGroup, false);
+      paramViewGroup = new agdj();
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131377444));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365042));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367679));
       paramView.setTag(paramViewGroup);
-      localObject2 = ((afss)localObject1).a;
+      localObject2 = ((ager)localObject1).a;
       QLog.d("TenDocMessageResultAdapter", 4, "get view mr: " + localObject2);
       if (localObject2 != null) {
         break label130;
@@ -122,16 +122,16 @@ public class TenDocMessageResultAdapter
     do
     {
       return paramView;
-      paramViewGroup = (afrk)paramView.getTag();
+      paramViewGroup = (agdj)paramView.getTag();
       break;
       localObject2 = TencentDocItem.decodeFromMsgData(((MessageRecord)localObject2).msgData);
       QLog.d("TenDocMessageResultAdapter", 4, "get view doc item: " + localObject2);
     } while (localObject2 == null);
-    CharSequence localCharSequence = ((afss)localObject1).a(((TencentDocItem)localObject2).mTitle, -11353092);
-    localObject1 = ((afss)localObject1).a(((TencentDocItem)localObject2).mDescription, -11353092);
+    CharSequence localCharSequence = ((ager)localObject1).a(((TencentDocItem)localObject2).mTitle, -11353092);
+    localObject1 = ((ager)localObject1).a(((TencentDocItem)localObject2).mDescription, -11353092);
     paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText(localCharSequence);
     paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-    afpl.a(paramViewGroup.jdField_a_of_type_AndroidWidgetImageView, ((TencentDocItem)localObject2).mIcon);
+    agbl.a(paramViewGroup.jdField_a_of_type_AndroidWidgetImageView, ((TencentDocItem)localObject2).mIcon);
     return paramView;
   }
 }

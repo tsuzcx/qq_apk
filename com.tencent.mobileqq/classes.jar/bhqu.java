@@ -1,52 +1,158 @@
-import android.util.Pair;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.SegmentPicker;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import mqq.manager.TicketManager;
+import org.json.JSONObject;
 
 public class bhqu
-  implements View.OnClickListener
+  extends bhrq
+  implements bhko
 {
-  public bhqu(VideoSegmentPickerProviderView paramVideoSegmentPickerProviderView) {}
+  private String a;
   
-  public void onClick(View paramView)
+  private void a(WebViewPlugin paramWebViewPlugin, bcdb parambcdb, String... paramVarArgs)
   {
-    long l1 = 0L;
-    bhqw localbhqw;
-    long l2;
-    if (VideoSegmentPickerProviderView.a(this.a) != null)
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0))
     {
-      paramView = VideoSegmentPickerProviderView.a(this.a).a();
-      VideoSegmentPickerProviderView.a(this.a).a.clearSegments();
-      VideoSegmentPickerProviderView.a(this.a).a.addSegment(paramView);
-      if (VideoSegmentPickerProviderView.a(this.a) != null)
+      long l;
+      String str1;
+      try
       {
-        localbhqw = (bhqw)VideoSegmentPickerProviderView.a(this.a).get();
-        if (localbhqw != null)
+        paramVarArgs = new JSONObject(paramVarArgs[0]);
+        l = paramVarArgs.optLong("uin");
+        str1 = paramVarArgs.optString("payKey");
+        localObject = paramVarArgs.optString("nickName");
+        this.jdField_a_of_type_JavaLangString = paramVarArgs.optString("callback");
+        if (l == 0L)
         {
-          if ((paramView == null) || (paramView.size() <= 0)) {
-            break label145;
-          }
-          l2 = ((Long)((Pair)paramView.get(0)).first).longValue();
-          l1 = ((Long)((Pair)paramView.get(0)).second).longValue();
+          QLog.e("QZoneRedPocketGiftJsPlugin", 1, "uin error , uin " + l);
+          return;
+        }
+        if (TextUtils.isEmpty(str1))
+        {
+          QLog.e("QZoneRedPocketGiftJsPlugin", 1, "payKey error , paykey = " + str1);
+          return;
         }
       }
+      catch (Exception paramWebViewPlugin)
+      {
+        a(this.jdField_a_of_type_JavaLangString, null, ajyc.a(2131712294), -1);
+        QLog.e("QZoneRedPocketGiftJsPlugin", 1, paramWebViewPlugin.getMessage());
+        return;
+      }
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        QLog.e("QZoneRedPocketGiftJsPlugin", 1, "callback is empty.");
+        return;
+      }
+      paramVarArgs = (String[])localObject;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        paramVarArgs = String.valueOf(l);
+      }
+      bhkl.a().a().a(l, str1);
+      Object localObject = bgyf.a();
+      String str2 = ((TicketManager)parambcdb.a().getManager(2)).getSkey(parambcdb.a().getAccount());
+      int i = bgxy.a(paramWebViewPlugin, parambcdb, 8);
+      bgxy.a(parambcdb.a(), (bgyf)localObject, str2, l, paramVarArgs, str1, i);
     }
-    for (;;)
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void a(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    switch (paramByte)
     {
-      localbhqw.a(l2, l1);
+    default: 
       return;
-      label145:
-      l2 = 0L;
     }
+    if ((paramInt == -1) && (paramIntent != null))
+    {
+      a(this.jdField_a_of_type_JavaLangString, null, ajyc.a(2131712292), 0);
+      return;
+    }
+    a(this.jdField_a_of_type_JavaLangString, null, ajyc.a(2131712295), -1);
+  }
+  
+  protected void a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    JSONObject localJSONObject;
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null)
+    {
+      if (TextUtils.isEmpty(paramString1))
+      {
+        paramInt = -1;
+        paramString3 = ajyc.a(2131712293);
+      }
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("code", paramInt);
+      localJSONObject.put("data", paramString2);
+      localJSONObject.put("message", paramString3);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramString1, new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (Exception paramString2)
+    {
+      for (;;)
+      {
+        paramString2.printStackTrace();
+      }
+    }
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!"Qzone".equals(paramString2)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {}
+    while (!"sendRedPocketGift".equals(paramString3)) {
+      return false;
+    }
+    bhkl.a().a(this);
+    a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
+    return true;
+  }
+  
+  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    return super.a(paramString, paramLong, paramMap);
+  }
+  
+  public void onWebEvent(String paramString, Bundle paramBundle)
+  {
+    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
+    do
+    {
+      do
+      {
+        return;
+        if (paramBundle.getBundle("data") != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("QZoneRedPocketGiftJsPlugin", 2, "call js function,bundle is empty");
+      return;
+    } while (!"cmd.qzoneSendRedPocketGift".equals(paramString));
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      a(this.jdField_a_of_type_JavaLangString, null, ajyc.a(2131712291), -1);
+      return;
+    }
+    a(this.jdField_a_of_type_JavaLangString, null, ajyc.a(2131712296), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhqu
  * JD-Core Version:    0.7.0.1
  */

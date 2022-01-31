@@ -1,6 +1,6 @@
 package com.tencent.qidian;
 
-import bcpn;
+import bdto;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qidian.data.BmqqAccountType;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class QidianManager$7
   implements Runnable
 {
-  public QidianManager$7(bcpn parambcpn, String paramString) {}
+  public QidianManager$7(bdto parambdto, String paramString) {}
   
   public void run()
   {

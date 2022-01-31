@@ -1,363 +1,68 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.ReqStoryPic;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.config.HwServlet;
-import com.tencent.mobileqq.highway.openup.SessionInfo;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.StoryUploadProcessor.2;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import java.io.File;
-import java.util.HashMap;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class axvg
-  extends axox
+  implements View.OnClickListener
 {
-  public static String a;
-  private long jdField_a_of_type_Long;
-  private Transaction jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction;
-  private long b;
-  public String b;
-  private byte[] d;
-  private byte[] e;
-  public String m;
-  public String n;
-  private String o = "Q.qqstory.publish.upload";
+  public axvg(StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext, Resources paramResources, PopupWindow paramPopupWindow) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = "Q.qqstory.publish.upload.StoryUploadProcessor";
-  }
-  
-  public axvg(axos paramaxos, axvt paramaxvt)
-  {
-    super(paramaxos, paramaxvt);
-    this.jdField_a_of_type_Axqf.jdField_a_of_type_Axou = this;
-    this.jdField_a_of_type_Axqf.jdField_a_of_type_ArrayOfByte = paramaxvt.jdField_a_of_type_ArrayOfByte;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    jdField_a_of_type_JavaLangString = this.o + ".StoryUploadProcessor";
-  }
-  
-  public static int a(int paramInt)
-  {
-    return 95000000 + paramInt;
-  }
-  
-  private int a(String paramString)
-  {
-    String str = vlm.a(paramString);
-    long l1 = 0L;
+    int k;
+    int m;
     try
     {
-      l2 = Long.valueOf(str.substring(0, str.indexOf("_"))).longValue();
-      l1 = l2;
+      ViewGroup localViewGroup = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().c.findViewById(2131362551);
+      if (localViewGroup == null) {
+        return;
+      }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        urk.c(jdField_a_of_type_JavaLangString, "exception", localException);
+        arrayOfInt1 = null;
       }
-      if (l1 <= 0L) {
-        break label173;
+      int[] arrayOfInt2 = new int[2];
+      arrayOfInt1.getLocationOnScreen(arrayOfInt2);
+      int i = arrayOfInt2[1];
+      int j = arrayOfInt1.getHeight();
+      int[] arrayOfInt1 = new int[2];
+      paramView.getLocationOnScreen(arrayOfInt1);
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX = arrayOfInt1[0];
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY = arrayOfInt1[1];
+      k = actn.a(106.0F, this.jdField_a_of_type_AndroidContentResResources);
+      m = paramView.getHeight();
+      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY - i + m + k <= j) {
+        break label257;
       }
-      long l2 = (System.currentTimeMillis() - l1) / 24L / 60L / 60L / 1000L;
-      l1 = l2;
-      if (l2 <= 30L) {
-        break label166;
-      }
-      l1 = 30L;
-      return (int)(l1 + 999000L);
     }
-    l2 = vlm.b(sfm.e);
-    urk.e(jdField_a_of_type_JavaLangString, "orig file create time:%d, flag file create time:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
-    if ((l2 == 0L) || ((l1 > 0L) && (l2 > l1)))
-    {
-      urk.e(jdField_a_of_type_JavaLangString, "your file delete by software %s", new Object[] { paramString });
-      return 940017;
-    }
-    label166:
-    label173:
-    return 9071;
-  }
-  
-  private String c()
-  {
-    return String.format("sdcard free size:%d, upload dir exist:%b ", new Object[] { Long.valueOf(vlm.a()), Boolean.valueOf(bace.a(sfm.e)) });
-  }
-  
-  public static void g()
-  {
-    Bosses.get().postLightWeightJob(new StoryUploadProcessor.2(), 0);
-  }
-  
-  protected long a(long paramLong)
-  {
-    paramLong = this.q - paramLong;
-    if (!this.jdField_d_of_type_Boolean) {}
-    for (paramLong = Math.min(paramLong, this.jdField_a_of_type_Bess.a(BaseApplication.getContext(), this.q, this.s, -1));; paramLong = Math.min(paramLong, 14600L)) {
-      return Math.min(paramLong, 131072L);
-    }
-  }
-  
-  protected void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
-  {
-    if (paramLong1 != 0L) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 1, this.jdField_a_of_type_Axqf.jdField_b_of_type_Int, this.jdField_a_of_type_Axvt.jdField_a_of_type_Int, paramLong1);
-    }
-    if (paramLong2 != 0L) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 1, this.jdField_a_of_type_Axqf.jdField_b_of_type_Int, this.jdField_a_of_type_Axvt.jdField_a_of_type_Int, paramLong2);
-    }
-    if (paramLong3 != 0L) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 0, this.jdField_a_of_type_Axqf.jdField_b_of_type_Int, this.jdField_a_of_type_Axvt.jdField_a_of_type_Int, paramLong3);
-    }
-    if (paramLong4 != 0L) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 0, this.jdField_a_of_type_Axqf.jdField_b_of_type_Int, this.jdField_a_of_type_Axvt.jdField_a_of_type_Int, paramLong4);
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if ((!paramBoolean) && (axtt.b(this.j))) {
-      break label14;
-    }
-    label14:
-    while ((this.h) || ((paramBoolean) && ((this.jdField_m_of_type_Int & 0x2) > 0)) || ((!paramBoolean) && ((this.jdField_m_of_type_Int & 0x1) > 0))) {
-      return;
-    }
-    int j = this.jdField_m_of_type_Int;
-    int i;
-    label59:
-    String str;
-    label82:
-    long l;
-    if (paramBoolean)
-    {
-      i = 2;
-      this.jdField_m_of_type_Int = (i | j);
-      if (this.jdField_a_of_type_Axqf.jdField_b_of_type_Int != 196610) {
-        break label226;
-      }
-      str = "actStoryPicUpload";
-      this.l = System.currentTimeMillis();
-      l = (System.nanoTime() - this.jdField_k_of_type_Long) / 1000000L;
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_sessionKey", "null");
-      if (!paramBoolean) {
-        break label299;
-      }
-      awrn.a(BaseApplication.getContext()).a(null, str, true, l, this.q, this.jdField_a_of_type_JavaUtilHashMap, "");
-      if (this.jdField_a_of_type_Axqf.jdField_b_of_type_Int != 196609) {
-        break label247;
-      }
-      urp.b("publish_story", "publish_video", 0, 0, new String[] { String.valueOf(this.q), String.valueOf(this.l - this.jdField_b_of_type_Long), urp.a(BaseApplication.getContext()), this.n });
-    }
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846189));
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY - k);
     for (;;)
     {
-      l();
+      ((nqx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(9, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
+      paramView = ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
+      paramView.alpha = 0.5F;
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes(paramView);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(new axvh(this));
       return;
-      i = 1;
-      break label59;
-      label226:
-      if (this.jdField_a_of_type_Axqf.jdField_b_of_type_Int != 196609) {
-        break;
-      }
-      str = "actStoryVideoUpload";
-      break label82;
-      label247:
-      urp.b("publish_story", "publish_thumbnail", 0, 0, new String[] { String.valueOf(this.q), String.valueOf(this.l - this.jdField_b_of_type_Long), urp.a(BaseApplication.getContext()) });
-      continue;
-      label299:
-      if (this.j != -9527) {
-        this.jdField_a_of_type_JavaUtilHashMap.remove("param_rspHeader");
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", String.valueOf(this.j));
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_errorDesc", this.i);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_picSize", String.valueOf(this.q));
-      awrn.a(BaseApplication.getContext()).a(null, str, false, l, this.q, this.jdField_a_of_type_JavaUtilHashMap, "");
-      if (this.jdField_a_of_type_Axqf.jdField_b_of_type_Int == 196609) {
-        urp.b("publish_story", "publish_video", 0, a(this.j), new String[] { String.valueOf(this.q), String.valueOf(this.l - this.jdField_b_of_type_Long), urp.a(BaseApplication.getContext()), this.i });
-      } else {
-        urp.b("publish_story", "publish_thumbnail", 0, a(this.j), new String[] { String.valueOf(this.q), String.valueOf(this.l - this.jdField_b_of_type_Long), urp.a(BaseApplication.getContext()), this.i });
-      }
+      label257:
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846188));
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY + m);
     }
-  }
-  
-  byte[] a(int paramInt1, int paramInt2)
-  {
-    return super.a(paramInt1, paramInt2);
-  }
-  
-  public void aS_()
-  {
-    urk.d(jdField_a_of_type_JavaLangString, "send file %s", new Object[] { this.jdField_a_of_type_Axvt.i });
-    this.jdField_b_of_type_Axow.a();
-    axvh localaxvh = new axvh(this, SystemClock.uptimeMillis());
-    int i = -1;
-    if (this.jdField_a_of_type_Axqf.jdField_b_of_type_Int == 196610)
-    {
-      i = 34;
-      qqstory_bhd_upload_pic.ReqStoryPic localReqStoryPic = new qqstory_bhd_upload_pic.ReqStoryPic();
-      localReqStoryPic.platform.set(2);
-      localReqStoryPic.tojpg.set(0);
-      localReqStoryPic.version.set(ByteStringMicro.copyFromUtf8("8.2.6"));
-      this.jdField_a_of_type_Axqf.jdField_a_of_type_ArrayOfByte = localReqStoryPic.toByteArray();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Axqf.jdField_c_of_type_Int = i;
-      try
-      {
-        if (SessionInfo.getInstance(this.jdField_a_of_type_Axvt.jdField_b_of_type_JavaLangString).getHttpconn_sig_session() != null)
-        {
-          j = SessionInfo.getInstance(this.jdField_a_of_type_Axvt.jdField_b_of_type_JavaLangString).getHttpconn_sig_session().length;
-          this.e = new byte[j];
-          System.arraycopy(SessionInfo.getInstance(this.jdField_a_of_type_Axvt.jdField_b_of_type_JavaLangString).getHttpconn_sig_session(), 0, this.e, 0, j);
-        }
-        if (SessionInfo.getInstance(this.jdField_a_of_type_Axvt.jdField_b_of_type_JavaLangString).getSessionKey() != null)
-        {
-          j = SessionInfo.getInstance(this.jdField_a_of_type_Axvt.jdField_b_of_type_JavaLangString).getSessionKey().length;
-          this.jdField_d_of_type_ArrayOfByte = new byte[j];
-          System.arraycopy(SessionInfo.getInstance(this.jdField_a_of_type_Axvt.jdField_b_of_type_JavaLangString).getSessionKey(), 0, this.jdField_d_of_type_ArrayOfByte, 0, j);
-        }
-        if ((this.e == null) || (this.e.length == 0) || (this.jdField_d_of_type_ArrayOfByte == null) || (this.jdField_d_of_type_ArrayOfByte.length == 0)) {
-          HwServlet.getConfig(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Axvt.jdField_b_of_type_JavaLangString);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_Axvt.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, localaxvh, this.jdField_a_of_type_Axqf.jdField_a_of_type_ArrayOfByte, false);
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.setVideoSegmentMode(true);
-        int j = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-        urk.c(jdField_a_of_type_JavaLangString, "Transaction submit RetCode:" + j + " T_ID:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId() + " UniSeq:" + this.jdField_a_of_type_Axvt.jdField_a_of_type_Long + " MD5:" + this.jdField_c_of_type_JavaLangString + " uuid:" + this.jdField_k_of_type_JavaLangString + " Path:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.filePath + " Cmd:" + i);
-        if (j != 0)
-        {
-          a(j, "SubmitError.", "", this.jdField_b_of_type_Axow);
-          d();
-        }
-        return;
-      }
-      finally {}
-      if (this.jdField_a_of_type_Axqf.jdField_b_of_type_Int == 196609) {
-        i = 37;
-      } else if (this.jdField_a_of_type_Axqf.jdField_b_of_type_Int == 327681) {
-        i = 57;
-      }
-    }
-  }
-  
-  public void aU_()
-  {
-    super.aU_();
-    urk.d(jdField_a_of_type_JavaLangString, "start upload %s", new Object[] { this.jdField_a_of_type_Axvt.i });
-    if ((this.jdField_a_of_type_ArrayOfByte == null) && (!j()))
-    {
-      b(940006, "make md5 fail");
-      d();
-      return;
-    }
-    if (!vlt.a(QQStoryContext.a().a()))
-    {
-      b(880001, "no network");
-      d();
-      return;
-    }
-    aS_();
-  }
-  
-  public int b()
-  {
-    f();
-    return 0;
-  }
-  
-  public int c()
-  {
-    String str = this.jdField_a_of_type_Axvt.i;
-    if (TextUtils.isEmpty(str))
-    {
-      b(9302, a(new Exception("filePath null")));
-      d();
-      return -1;
-    }
-    File localFile = new File(str);
-    if (!localFile.exists())
-    {
-      b(a(str), c() + "sendFile not exist " + str);
-      d();
-      return -1;
-    }
-    if (!localFile.canRead())
-    {
-      b(9070, a(new Exception("sendFile not readable " + this.jdField_a_of_type_Axqf.jdField_c_of_type_JavaLangString)));
-      d();
-      return -1;
-    }
-    long l = localFile.length();
-    this.jdField_a_of_type_Axqf.jdField_a_of_type_Long = l;
-    this.q = l;
-    urk.a(jdField_a_of_type_JavaLangString, "upload file size %d, file %s", Long.valueOf(this.q), str);
-    if (l <= 0L)
-    {
-      b(a(str), c() + "sendFile size empty " + str);
-      d();
-      return -1;
-    }
-    return super.c();
-  }
-  
-  void d()
-  {
-    super.d();
-    d(1005);
-    urk.d(jdField_a_of_type_JavaLangString, "error errCode:%d,errDesc:%s, %s", new Object[] { Integer.valueOf(this.j), this.i, this.jdField_a_of_type_Axvt.i });
-    if (this.jdField_a_of_type_Axvt.jdField_a_of_type_Atqq != null)
-    {
-      atqr localatqr = new atqr();
-      localatqr.jdField_a_of_type_Int = -1;
-      localatqr.jdField_b_of_type_Int = a(this.j);
-      localatqr.jdField_a_of_type_JavaLangString = this.i;
-      this.jdField_a_of_type_Axvt.jdField_a_of_type_Atqq.b(localatqr);
-    }
-  }
-  
-  void e()
-  {
-    super.e();
-    d(1003);
-    urk.d(jdField_a_of_type_JavaLangString, "success path:%s", new Object[] { this.jdField_a_of_type_Axvt.i });
-    atqr localatqr;
-    if (this.jdField_a_of_type_Axvt.jdField_a_of_type_Atqq != null)
-    {
-      localatqr = new atqr();
-      localatqr.jdField_a_of_type_Int = 0;
-      if (this.jdField_a_of_type_Axqf.jdField_b_of_type_Int != 196610) {
-        break label91;
-      }
-    }
-    for (localatqr.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;; localatqr.jdField_b_of_type_JavaLangString = this.n)
-    {
-      this.jdField_a_of_type_Axvt.jdField_a_of_type_Atqq.b(localatqr);
-      return;
-      label91:
-      localatqr.jdField_c_of_type_JavaLangString = this.jdField_m_of_type_JavaLangString;
-    }
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().cancelTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-    }
-  }
-  
-  public void onResp(axsq paramaxsq)
-  {
-    super.onResp(paramaxsq);
   }
 }
 

@@ -1,28 +1,27 @@
 package com.tencent.mobileqq.apollo.script;
 
-import aisa;
-import aisd;
-import aisj;
-import aisk;
-import aisl;
+import ajey;
+import ajfb;
+import ajfh;
+import ajfj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingDeque;
 
 public class SpriteTaskHandler$1
   implements Runnable
 {
-  public SpriteTaskHandler$1(aisj paramaisj) {}
+  public SpriteTaskHandler$1(ajfh paramajfh) {}
   
   public void run()
   {
-    aisk localaisk = (aisk)aisj.a(this.this$0).pollLast();
-    aisa localaisa = aisl.a(aisj.a(this.this$0).a());
-    if ((localaisa != null) && (localaisk != null))
+    SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)ajfh.a(this.this$0).pollLast();
+    ajey localajey = ajfj.a(ajfh.a(this.this$0).a());
+    if ((localajey != null) && (localSpriteTaskParam != null))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("cmshow_scripted_SpriteTaskHandler", 2, new Object[] { "[addTask] not play current task, actionId:", Integer.valueOf(localaisk.f), ",but delay play" });
+        QLog.d("cmshow_scripted_SpriteTaskHandler", 2, new Object[] { "[addTask] not play current task, actionId:", Integer.valueOf(localSpriteTaskParam.f), ",but delay play" });
       }
-      localaisa.a(localaisk);
+      localajey.a(localSpriteTaskParam);
     }
   }
 }

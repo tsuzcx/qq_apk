@@ -1,45 +1,16 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.customviews.VideoProgressView;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.videoplayer.AIOBubbleVideoView;
-import java.util.concurrent.CopyOnWriteArraySet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceText;
 
-public class ados
-  extends acju
+class ados
+  implements DialogInterface.OnClickListener
 {
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLDrawable a;
-  public VideoProgressView a;
-  public AIOBubbleVideoView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  ados(ador paramador, MessageForDeviceText paramMessageForDeviceText) {}
   
-  public ados(adoi paramadoi) {}
-  
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoplayerAIOBubbleVideoView != null)
-    {
-      long l = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoplayerAIOBubbleVideoView.a();
-      if (l > 0L)
-      {
-        MessageForShortVideo localMessageForShortVideo = baab.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoplayerAIOBubbleVideoView.getId()));
-        if (localMessageForShortVideo != null) {
-          adoi.a(this.jdField_a_of_type_Adoi, localMessageForShortVideo, l);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoplayerAIOBubbleVideoView.a(true);
-      adoi.a().remove(this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoplayerAIOBubbleVideoView);
-    }
+    ((yeu)this.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a(this.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ador.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceText);
   }
 }
 

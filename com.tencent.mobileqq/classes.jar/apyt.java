@@ -1,19 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.flashchat.FlashChatPanel;
 
-final class apyt
-  implements agpe
+public class apyt
+  implements admv
 {
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameHelper", 1, "dowloadFullPopRes complete! rescpde=" + paramInt);
-    }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)) && (QLog.isColorLevel())) {
-      QLog.d("QQGameHelper", 1, "dowloadFullPopRes fileUrl=" + paramPathResult.url + " unzipPath=" + paramPathResult.folderPath);
-    }
-  }
+  public apyt(FlashChatPanel paramFlashChatPanel) {}
+  
+  public void a() {}
+  
+  public void b() {}
 }
 
 

@@ -12,6 +12,7 @@ public class MiniAppReportManager2$PageViewSubAction
   public static final String LAUNCH = "2launch";
   public static final String LAUNCH_FAIL = "2launch_fail";
   public static final String LOAD = "2load";
+  public static final String LOAD_END = "2load_end";
   public static final String PAGE_HIDE = "2page_hide";
   public static final String PAGE_SHOW = "2page_show";
   public static final String SHOW = "2show";

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aoii;
-import aojd;
-import aojj;
+import aozc;
+import aozx;
+import apad;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FileVideoManager$VideoControl$3
   implements Runnable
 {
-  public FileVideoManager$VideoControl$3(aojj paramaojj, QQAppInterface paramQQAppInterface) {}
+  public FileVideoManager$VideoControl$3(apad paramapad, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     if (this.this$0.a == null)
     {
-      aojj.b(this.this$0);
+      apad.b(this.this$0);
       this.this$0.a();
       this.a.a().a(true, 3, null);
     }
-    aojd.a(this.this$0);
+    aozx.a(this.this$0);
   }
 }
 

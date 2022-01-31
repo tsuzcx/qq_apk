@@ -1,36 +1,17 @@
-public class uyu
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
+
+final class uyu
+  implements vac
 {
-  private int jdField_a_of_type_Int;
-  private uyq jdField_a_of_type_Uyq = new uyp();
-  private int b;
+  uyu(WeakReference paramWeakReference) {}
   
-  public uys a()
+  public void a(ErrorMessage paramErrorMessage)
   {
-    return new uys(this, null);
-  }
-  
-  public uyu a(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_Int = paramInt;
+    uyv localuyv = (uyv)this.a.get();
+    if (localuyv != null) {
+      localuyv.a(paramErrorMessage);
     }
-    return this;
-  }
-  
-  public uyu a(uyq paramuyq)
-  {
-    if (paramuyq != null) {
-      this.jdField_a_of_type_Uyq = paramuyq;
-    }
-    return this;
-  }
-  
-  public uyu b(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.b = paramInt;
-    }
-    return this;
   }
 }
 

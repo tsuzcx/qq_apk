@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import aciy;
+import actn;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -14,9 +14,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import apps;
-import behi;
-import bfcq;
+import aqjh;
+import bfpc;
+import bgkh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
@@ -26,38 +26,38 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.GridView;
 import java.util.ArrayList;
-import obz;
-import xgx;
+import onk;
+import xpx;
 
 public class SDKSetEmotionPreviewFragment
   extends IphoneTitleBarFragment
-  implements View.OnClickListener, behi
+  implements View.OnClickListener, bfpc
 {
   private int jdField_a_of_type_Int;
-  private apps jdField_a_of_type_Apps;
+  private aqjh jdField_a_of_type_Aqjh;
   private GridView jdField_a_of_type_ComTencentWidgetGridView;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
   private int b;
   
   private void a()
   {
-    this.jdField_a_of_type_Apps = new apps(this);
-    this.jdField_a_of_type_ComTencentWidgetGridView.setAdapter(this.jdField_a_of_type_Apps);
-    this.jdField_a_of_type_Apps.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Aqjh = new aqjh(this);
+    this.jdField_a_of_type_ComTencentWidgetGridView.setAdapter(this.jdField_a_of_type_Aqjh);
+    this.jdField_a_of_type_Aqjh.a(this.jdField_a_of_type_JavaUtilArrayList);
   }
   
   private void a(View paramView)
   {
     Object localObject = getResources();
     int i = ((Resources)localObject).getDisplayMetrics().widthPixels;
-    int j = aciy.a(0.0F, (Resources)localObject);
-    int k = aciy.a(4.0F, (Resources)localObject);
-    int m = aciy.a(4.0F, (Resources)localObject);
+    int j = actn.a(0.0F, (Resources)localObject);
+    int k = actn.a(4.0F, (Resources)localObject);
+    int m = actn.a(4.0F, (Resources)localObject);
     this.jdField_a_of_type_Int = ((i - j * 2 - k * 3) / 4);
     this.b = this.jdField_a_of_type_Int;
-    localObject = ((Resources)localObject).getString(2131625767);
+    localObject = ((Resources)localObject).getString(2131691343);
     setTitle((CharSequence)localObject, (String)localObject);
-    this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramView.findViewById(2131300011));
+    this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramView.findViewById(2131365592));
     this.jdField_a_of_type_ComTencentWidgetGridView.setScrollBarStyle(0);
     this.jdField_a_of_type_ComTencentWidgetGridView.setNumColumns(4);
     this.jdField_a_of_type_ComTencentWidgetGridView.setColumnWidth(this.jdField_a_of_type_Int);
@@ -85,9 +85,9 @@ public class SDKSetEmotionPreviewFragment
     localAIOImageData.e = false;
     paramString = new Bundle();
     if (paramView != null) {
-      paramString.putParcelable("KEY_THUMBNAL_BOUND", xgx.a(paramView));
+      paramString.putParcelable("KEY_THUMBNAL_BOUND", xpx.a(paramView));
     }
-    bfcq.a(paramContext, paramString, new AIOImageProviderService(localQQAppInterface.c(), null, 0, null), localAIOImageData, -1, 4);
+    bgkh.a(paramContext, paramString, new AIOImageProviderService(localQQAppInterface.c(), null, 0, null), localAIOImageData, -1, 4);
   }
   
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
@@ -99,7 +99,7 @@ public class SDKSetEmotionPreviewFragment
   
   protected int getContentLayoutId()
   {
-    return 2131493470;
+    return 2131559033;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -138,12 +138,12 @@ public class SDKSetEmotionPreviewFragment
   public void onResume()
   {
     super.onResume();
-    obz.a(getActivity());
+    onk.a(getActivity());
     if (this.leftView != null)
     {
       this.leftView.setTextColor(-14408926);
-      this.leftView.setContentDescription(getString(2131624770));
-      this.leftView.setBackgroundResource(2130848260);
+      this.leftView.setContentDescription(getString(2131690331));
+      this.leftView.setBackgroundResource(2130848492);
     }
     if (this.centerView != null) {
       this.centerView.setTextColor(-16777216);

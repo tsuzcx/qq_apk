@@ -1,8 +1,14 @@
 import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
 
-class anzl
+public class anzl
 {
-  View[] a = new View[12];
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public URLImageView a;
+  
+  public anzl(anzj paramanzj) {}
 }
 
 

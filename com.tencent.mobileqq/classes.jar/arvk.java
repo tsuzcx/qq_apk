@@ -1,269 +1,176 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IntimateInfo;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.10;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.11;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.14;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.16;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.5;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.7;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.9;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 public class arvk
 {
-  public QQAppInterface a;
-  private String jdField_a_of_type_JavaLangString;
-  private List<arvf> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Map<String, arve> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<String, String> b = new HashMap();
+  private static String a = "";
   
-  public arvk(QQAppInterface paramQQAppInterface, String paramString)
+  public static bbgg a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    bbgg localbbgg = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationDialogUtil", 2, "showFloatExitConfirmDialog: invoked. ");
+    }
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if (localBaseActivity != null)
+    {
+      localbbgg = bbcv.a(localBaseActivity, 230, null, localBaseActivity.getString(2131719602), 2131690832, 2131691240, new arvp(), new arvq(localBaseActivity, paramInt, paramString));
+      paramString = new LocationDialogUtil.14(localBaseActivity, localbbgg);
+      ThreadManager.getUIHandlerV2().postDelayed(paramString, 500L);
+    }
+    return localbbgg;
   }
   
-  public static arvk a(QQAppInterface paramQQAppInterface, String paramString)
+  public static void a(Activity paramActivity)
+  {
+    paramActivity = new LocationDialogUtil.9(paramActivity);
+    ThreadManager.getUIHandlerV2().postDelayed(paramActivity, 500L);
+  }
+  
+  public static void a(Activity paramActivity, int paramInt1, String paramString, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MultiCardContext", 2, "create() called with: app = [" + paramQQAppInterface + "]");
+      QLog.d("LocationDialogUtil", 2, new Object[] { "showStartShareLocationDialog: invoked. ", "context = [" + paramActivity + "], uinType = [" + paramInt1 + "], frienduin = [" + paramString + "]" });
     }
-    return new arvk(paramQQAppInterface, paramString);
+    paramActivity = new LocationDialogUtil.6(paramActivity, paramInt1, paramString, paramInt2);
+    ThreadManager.getUIHandlerV2().post(paramActivity);
   }
   
-  public int a()
+  static void a(Activity paramActivity, arxh paramarxh)
   {
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        return 0;
-      }
-      int i = this.jdField_a_of_type_JavaUtilList.size();
-      return i;
-    }
-    finally {}
+    paramActivity = new LocationDialogUtil.4(paramActivity, paramarxh);
+    ThreadManager.getUIHandlerV2().post(paramActivity);
   }
   
-  public arve a(int paramInt)
+  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2)
   {
+    b(paramActivity, bbcv.a(paramActivity, 230, null, paramActivity.getResources().getString(2131693984), 2131690596, 2131694793, new arvl(paramActivity, paramString1, paramString2, paramString3, paramLatLng1, paramLatLng2), new arvt()));
+  }
+  
+  public static void a(BaseActivity paramBaseActivity)
+  {
+    if (paramBaseActivity == null) {
+      return;
+    }
+    bctm.b();
+    bbgg localbbgg = bbcv.a(paramBaseActivity, 230, null, "位置共享将收起为小窗进行展示，请开启QQ悬浮窗权限以正常使用功能。", paramBaseActivity.getString(2131690596), paramBaseActivity.getString(2131694793), new arvr(paramBaseActivity), null);
+    localbbgg.setCancelable(false);
+    b(paramBaseActivity, localbbgg);
+  }
+  
+  public static void a(BaseActivity paramBaseActivity, int paramInt1, int paramInt2, String paramString)
+  {
+    LocationDialogUtil.5 local5 = new LocationDialogUtil.5(paramBaseActivity);
+    ThreadManager.getUIHandlerV2().post(local5);
+    aruq.a(paramBaseActivity.app).a(paramInt2, paramString, paramInt1, 2);
+  }
+  
+  public static void a(BaseActivity paramBaseActivity, int paramInt1, String paramString, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationDialogUtil", 2, new Object[] { "showEnterOtherRoomExitDialog: invoked. ", "activity = [" + paramBaseActivity + "], uinType = [" + paramInt1 + "], uin = [" + paramString + "], entryType = [" + paramInt2 + "]" });
+    }
+    if (paramInt2 == 1) {}
+    for (String str = paramBaseActivity.getResources().getString(2131719600);; str = paramBaseActivity.getResources().getString(2131719599))
+    {
+      paramBaseActivity = new LocationDialogUtil.11(paramBaseActivity, str, paramInt1, paramString, paramInt2);
+      ThreadManager.getUIHandlerV2().postDelayed(paramBaseActivity, 500L);
+      return;
+    }
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    if ((paramActivity instanceof PublicFragmentActivity))
+    {
+      paramActivity = paramActivity.getIntent().getStringExtra("FRAGMENT_KEY");
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationDialogUtil", 2, new Object[] { "activityIsShareOrPickFragment: invoked. ", " key: ", paramActivity });
+      }
+      if (("LocationShareFragment".equals(paramActivity)) || ("LocationPickFragment".equals(paramActivity))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private static void b(int paramInt, String paramString)
+  {
+    int i = 2;
+    if (paramInt == 3) {
+      i = 1;
+    }
+    for (;;)
+    {
+      axqw.b(null, "CliOper", "", "", paramString, paramString, i, 0, "", "0", "0", "");
+      return;
+      if (paramInt != 2) {
+        i = 0;
+      }
+    }
+  }
+  
+  public static void b(Activity paramActivity)
+  {
+    paramActivity = new LocationDialogUtil.10(paramActivity);
+    ThreadManager.getUIHandlerV2().postDelayed(paramActivity, 500L);
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationDialogUtil", 2, new Object[] { "showRoomJoinLimitedDialog: invoked. showRoomJoinLimitedDialog#post ", " runnable: ", paramActivity });
+    }
+  }
+  
+  private static void b(Activity paramActivity, bbgg parambbgg)
+  {
+    if (paramActivity != null) {}
     try
     {
-      if ((this.jdField_a_of_type_JavaUtilMap == null) || (paramInt < 0) || (this.jdField_a_of_type_JavaUtilList == null) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-        return null;
-      }
-      arvf localarvf = (arvf)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (localarvf != null)
+      if (!paramActivity.isFinishing())
       {
-        arve localarve = (arve)this.jdField_a_of_type_JavaUtilMap.get(localarvf.a());
-        if ((localarve != null) && (TextUtils.isEmpty(localarve.b()))) {
-          localarve.a((String)this.b.get(localarvf.a()));
+        parambbgg.show();
+        a = String.valueOf(paramActivity.hashCode());
+        if (QLog.isColorLevel()) {
+          QLog.d("LocationDialogUtil", 2, new Object[] { "showSafely: invoked. ", " currentDialogActivityHash: ", a });
         }
-        return localarve;
-      }
-    }
-    finally {}
-    return null;
-  }
-  
-  public arvf a(int paramInt)
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaUtilList.size())) {
-        return null;
-      }
-      arvf localarvf = (arvf)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      return localarvf;
-    }
-    finally {}
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String a(String paramString)
-  {
-    try
-    {
-      paramString = (String)this.b.get(paramString);
-      return paramString;
-    }
-    finally {}
-  }
-  
-  /* Error */
-  public ArrayList<Long> a(int paramInt1, int paramInt2)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 28	arvk:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   6: ifnull +24 -> 30
-    //   9: aload_0
-    //   10: getfield 28	arvk:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   13: invokeinterface 74 1 0
-    //   18: iload_1
-    //   19: if_icmple +11 -> 30
-    //   22: iload_1
-    //   23: iflt +7 -> 30
-    //   26: iload_2
-    //   27: ifgt +7 -> 34
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aconst_null
-    //   33: areturn
-    //   34: iload_2
-    //   35: istore_3
-    //   36: iload_1
-    //   37: iload_2
-    //   38: iadd
-    //   39: aload_0
-    //   40: getfield 28	arvk:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   43: invokeinterface 74 1 0
-    //   48: if_icmple +15 -> 63
-    //   51: aload_0
-    //   52: getfield 28	arvk:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   55: invokeinterface 74 1 0
-    //   60: iload_1
-    //   61: isub
-    //   62: istore_3
-    //   63: new 25	java/util/ArrayList
-    //   66: dup
-    //   67: invokespecial 26	java/util/ArrayList:<init>	()V
-    //   70: astore 4
-    //   72: iload_1
-    //   73: istore_2
-    //   74: iload_2
-    //   75: iload_1
-    //   76: iload_3
-    //   77: iadd
-    //   78: if_icmpge +45 -> 123
-    //   81: aload_0
-    //   82: getfield 28	arvk:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   85: iload_2
-    //   86: invokeinterface 79 2 0
-    //   91: checkcast 81	arvf
-    //   94: invokevirtual 83	arvf:a	()Ljava/lang/String;
-    //   97: astore 5
-    //   99: aload 4
-    //   101: aload 5
-    //   103: invokestatic 114	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   106: invokevirtual 118	java/lang/Long:longValue	()J
-    //   109: invokestatic 121	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   112: invokevirtual 125	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   115: pop
-    //   116: iload_2
-    //   117: iconst_1
-    //   118: iadd
-    //   119: istore_2
-    //   120: goto -46 -> 74
-    //   123: aload_0
-    //   124: monitorexit
-    //   125: aload 4
-    //   127: areturn
-    //   128: astore 4
-    //   130: aload_0
-    //   131: monitorexit
-    //   132: aload 4
-    //   134: athrow
-    //   135: astore 5
-    //   137: goto -21 -> 116
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	140	0	this	arvk
-    //   0	140	1	paramInt1	int
-    //   0	140	2	paramInt2	int
-    //   35	43	3	i	int
-    //   70	56	4	localArrayList	ArrayList
-    //   128	5	4	localObject	Object
-    //   97	5	5	str	String
-    //   135	1	5	localException	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   2	22	128	finally
-    //   30	32	128	finally
-    //   36	63	128	finally
-    //   63	72	128	finally
-    //   81	99	128	finally
-    //   99	116	128	finally
-    //   123	125	128	finally
-    //   130	132	128	finally
-    //   99	116	135	java/lang/Exception
-  }
-  
-  public List<arvf> a(List<Long> paramList)
-  {
-    if (paramList != null)
-    {
-      ArrayList localArrayList = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        String str = String.valueOf((Long)paramList.next());
-        localArrayList.add(new arvf(str, babh.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, str)));
-      }
-      return localArrayList;
-    }
-    return null;
-  }
-  
-  public Map<String, arve> a(Map<Long, IntimateInfo> paramMap)
-  {
-    if (paramMap != null)
-    {
-      HashMap localHashMap = new HashMap();
-      paramMap = paramMap.entrySet().iterator();
-      while (paramMap.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)paramMap.next();
-        localHashMap.put(String.valueOf(localEntry.getKey()), new arve((IntimateInfo)localEntry.getValue()));
-      }
-      return localHashMap;
-    }
-    return null;
-  }
-  
-  public void a(List<arvf> paramList, Map<String, arve> paramMap, Map<String, String> paramMap1)
-  {
-    if (paramList != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      if (paramMap != null) {
-        this.jdField_a_of_type_JavaUtilMap.putAll(paramMap);
-      }
-      if (paramMap1 != null) {
-        this.b.putAll(paramMap1);
       }
       return;
     }
-    finally {}
+    catch (Exception paramActivity)
+    {
+      QLog.e("LocationDialogUtil", 1, "showSafely: failed. ", paramActivity);
+    }
   }
   
-  public Map<String, String> b(Map<Long, String> paramMap)
+  public static void b(BaseActivity paramBaseActivity)
   {
-    if (paramMap != null)
-    {
-      HashMap localHashMap = new HashMap();
-      paramMap = paramMap.entrySet().iterator();
-      while (paramMap.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)paramMap.next();
-        localHashMap.put(String.valueOf(localEntry.getKey()), localEntry.getValue());
-      }
-      return localHashMap;
-    }
-    return null;
+    paramBaseActivity = new LocationDialogUtil.16(paramBaseActivity);
+    ThreadManager.getUIHandlerV2().postDelayed(paramBaseActivity, 1000L);
+  }
+  
+  static void b(BaseActivity paramBaseActivity, int paramInt1, int paramInt2, String paramString)
+  {
+    paramBaseActivity = new LocationDialogUtil.7(paramBaseActivity);
+    ThreadManager.getUIHandlerV2().postDelayed(paramBaseActivity, 7000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arvk
  * JD-Core Version:    0.7.0.1
  */

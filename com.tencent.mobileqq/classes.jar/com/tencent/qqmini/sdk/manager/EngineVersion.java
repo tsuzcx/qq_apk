@@ -3,16 +3,17 @@ package com.tencent.qqmini.sdk.manager;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdnw;
-import bdos;
-import bdyl;
+import besl;
+import betf;
+import bffr;
+import bfgt;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 
 public class EngineVersion
   implements Parcelable, Comparable<EngineVersion>
 {
-  public static final Parcelable.Creator<EngineVersion> CREATOR = new bdos();
+  public static final Parcelable.Creator<EngineVersion> CREATOR = new betf();
   public String a;
   public String b;
   
@@ -20,8 +21,13 @@ public class EngineVersion
   
   public EngineVersion(String paramString)
   {
-    this.a = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();
-    this.b = paramString;
+    if (bfgt.a()) {}
+    for (String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();; str = "1.1.0")
+    {
+      this.a = str;
+      this.b = paramString;
+      return;
+    }
   }
   
   public EngineVersion(String paramString1, String paramString2)
@@ -85,7 +91,7 @@ public class EngineVersion
     }
     catch (Exception paramEngineVersion)
     {
-      bdnw.d("EngineVersion", "[MiniEng] compare error " + bdyl.a(paramEngineVersion));
+      besl.d("EngineVersion", "[MiniEng] compare error " + bffr.a(paramEngineVersion));
     }
     return 0;
   }

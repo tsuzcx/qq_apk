@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import aguo;
+import ahhd;
 import android.graphics.drawable.Drawable;
 
 public class SpringHbEntryPendantHolder$5
   implements Runnable
 {
-  public SpringHbEntryPendantHolder$5(aguo paramaguo) {}
+  public SpringHbEntryPendantHolder$5(ahhd paramahhd) {}
   
   public void run()
   {
-    aguo localaguo1 = this.this$0;
-    aguo localaguo2 = this.this$0;
-    Drawable localDrawable = aguo.a(this.this$0);
-    localaguo2.a = localDrawable;
-    aguo.a(localaguo1, localDrawable);
-    aguo.a(this.this$0);
+    ahhd localahhd1 = this.this$0;
+    ahhd localahhd2 = this.this$0;
+    Drawable localDrawable = ahhd.a(this.this$0);
+    localahhd2.a = localDrawable;
+    ahhd.a(localahhd1, localDrawable);
+    ahhd.a(this.this$0);
   }
 }
 

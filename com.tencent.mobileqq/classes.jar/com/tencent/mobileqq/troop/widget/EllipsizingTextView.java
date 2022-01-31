@@ -7,14 +7,14 @@ import android.text.TextPaint;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import azmf;
+import banj;
 import com.tencent.mobileqq.R.styleable;
 
 public class EllipsizingTextView
   extends TextView
 {
   private int jdField_a_of_type_Int = 1;
-  private azmf jdField_a_of_type_Azmf;
+  private banj jdField_a_of_type_Banj;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -49,12 +49,12 @@ public class EllipsizingTextView
     }
   }
   
-  private azmf a()
+  private banj a()
   {
-    if (this.jdField_a_of_type_Azmf == null) {
-      this.jdField_a_of_type_Azmf = new azmf(this);
+    if (this.jdField_a_of_type_Banj == null) {
+      this.jdField_a_of_type_Banj = new banj(this);
     }
-    return this.jdField_a_of_type_Azmf;
+    return this.jdField_a_of_type_Banj;
   }
   
   public void a()
@@ -73,15 +73,15 @@ public class EllipsizingTextView
     ((TextPaint)localObject).setColor(getCurrentTextColor());
     ((TextPaint)localObject).drawableState = getDrawableState();
     localObject = a();
-    ((azmf)localObject).a(getText(), this, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
+    ((banj)localObject).a(getText(), this, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
     if (getEllipsize() == TextUtils.TruncateAt.END)
     {
-      ((azmf)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
+      ((banj)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
       return;
     }
     if (getEllipsize() == TextUtils.TruncateAt.MIDDLE)
     {
-      ((azmf)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
+      ((banj)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
       return;
     }
     super.onDraw(paramCanvas);

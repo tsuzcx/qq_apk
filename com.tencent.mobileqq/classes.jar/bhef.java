@@ -1,20 +1,39 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import NS_USER_ACTION_REPORT.UserActionReport;
+import NS_USER_ACTION_REPORT.UserActionReportReq;
+import NS_USER_ACTION_REPORT.UserCommReport;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
-class bhef
-  implements View.OnTouchListener
+public class bhef
+  extends QzoneExternalRequest
 {
-  bhef(bhec parambhec) {}
+  private final JceStruct a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bhef(UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
   {
-    return true;
+    this.a = new UserActionReportReq(1, paramUserCommReport, paramArrayList);
+    this.needCompress = false;
+  }
+  
+  public String getCmdString()
+  {
+    return "MobileReport.UserActionReport";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "UserActionReport";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhef
  * JD-Core Version:    0.7.0.1
  */

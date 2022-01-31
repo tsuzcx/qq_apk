@@ -1,25 +1,69 @@
 import android.content.Context;
-import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-class ajsx
-  implements baoa
+public class ajsx
+  extends akgg
 {
-  ajsx(ajsv paramajsv, axmb paramaxmb, Context paramContext, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void a()
   {
-    QLog.e("Theme.ThemeHandler", 1, "onQueryItemVer: " + paramInt + "," + paramString1 + "," + paramString2);
-    if (paramInt == 0)
+    int i = Build.VERSION.SDK_INT;
+    Object localObject = BaseApplicationImpl.sApplication;
+    boolean bool1;
+    if (i > 10)
     {
-      this.jdField_a_of_type_Axmb.a(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2);
-      this.jdField_a_of_type_AndroidOsBundle.putString("themePath", this.jdField_a_of_type_Axmb.d());
-      ajsv.a(this.jdField_a_of_type_Ajsv, this.jdField_a_of_type_AndroidOsBundle);
-      return;
+      i = 4;
+      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("screen_shot", i).getString("currentactivity", null);
+      if ((BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2 != null) && (BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getClass().getName().equals(localObject)))
+      {
+        bool1 = SettingCloneUtil.readValue(BaseApplicationImpl.sApplication, null, BaseApplicationImpl.sApplication.getString(2131695283), "qqsetting_screenshot_key", false);
+        boolean bool2 = bbab.a(BaseApplication.getContext());
+        if ((bool1) && (bool2))
+        {
+          if (BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot == null)
+          {
+            if (!BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.Z) {
+              break label164;
+            }
+            localObject = BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getApplicationContext();
+            label118:
+            BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot = new ScreenShot((Context)localObject, BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getWindow());
+          }
+          bool1 = BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot.b();
+          if (!bool1) {
+            break label172;
+          }
+          ScreenShot.a("BaseActivity2 is showing");
+        }
+      }
     }
-    this.jdField_a_of_type_AndroidOsBundle.putString("themeId", "1000");
-    this.jdField_a_of_type_AndroidOsBundle.remove("themePath");
-    ajsv.a(this.jdField_a_of_type_Ajsv, this.jdField_a_of_type_AndroidOsBundle);
+    for (;;)
+    {
+      return;
+      i = 0;
+      break;
+      label164:
+      localObject = BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2;
+      break label118;
+      label172:
+      if (!BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot.c()) {
+        BaseActivity2.a(BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2);
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("BaseActivity", 2, "snapshot activate " + bool1);
+        return;
+        if ((!bbmr.g) && (Build.VERSION.SDK_INT < 11)) {
+          bbmo.a().a(BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getWindow());
+        }
+      }
+    }
   }
 }
 

@@ -1,78 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-public class uer
-  extends sgl<uec, sjc>
+class uer
+  implements ufn
 {
-  public uer(uec paramuec)
-  {
-    super(paramuec);
-  }
+  uer(uep paramuep, udf paramudf, Object paramObject) {}
   
-  private void c(@NonNull uec paramuec, @NonNull sjc paramsjc)
+  public boolean a(ufk paramufk, int paramInt1, int paramInt2)
   {
-    if ((uec.a(paramuec) == null) || (!uec.a(paramuec).a.date.equals(paramsjc.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.date)))
-    {
-      urk.b(this.TAG, "ignore this upload status event. %s.", paramsjc.toString());
-      return;
-    }
-    urk.a(this.TAG, "receive upload status change event. %s.", paramsjc.toString());
-    int i = 0;
-    for (;;)
-    {
-      StoryVideoItem localStoryVideoItem;
-      if (i < uec.a(paramuec).a().size())
-      {
-        localStoryVideoItem = (StoryVideoItem)uec.a(paramuec).a().get(i);
-        if (!localStoryVideoItem.equals(paramsjc.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem)) {
-          break label159;
-        }
-        if (paramsjc.b != null) {
-          break label135;
-        }
-        localStoryVideoItem.copy(paramsjc.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      }
-      for (;;)
-      {
-        paramuec.a();
-        urk.d(this.TAG, "can't find the video whose state has been changed.");
-        return;
-        label135:
-        uec.a(paramuec).a(localStoryVideoItem);
-        uec.a(paramuec).a(paramsjc.b, i);
-      }
-      label159:
-      i += 1;
-    }
+    return this.jdField_a_of_type_Udf.a(this.jdField_a_of_type_Uep, 0, paramInt1, this.jdField_a_of_type_Uep.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
   }
-  
-  public void a(@NonNull uec paramuec, @NonNull sjc paramsjc)
-  {
-    if (paramsjc.a()) {
-      urk.b(this.TAG, "ignore this upload status event, because it's a troop video.");
-    }
-    do
-    {
-      return;
-      if (paramsjc.c())
-      {
-        urk.a(this.TAG, "receive share group video upload status change event. %s.", paramsjc.toString());
-        return;
-      }
-    } while (!paramsjc.b());
-    urk.a(this.TAG, "receive personal video upload status change event. %s.", paramsjc.toString());
-    c(paramuec, paramsjc);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return sjc.class;
-  }
-  
-  public void b(@NonNull uec paramuec, @NonNull sjc paramsjc) {}
 }
 
 

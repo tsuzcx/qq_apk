@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.secspy;
 
-import avyq;
+import awyj;
 import tencent.im.s2c.msgtype0x210.submsgtype0x7c.submsgtype0x7c.MsgBody;
 
 public class SecSpyFileManager$2
   implements Runnable
 {
-  public SecSpyFileManager$2(avyq paramavyq, submsgtype0x7c.MsgBody paramMsgBody, int paramInt) {}
+  public SecSpyFileManager$2(awyj paramawyj, submsgtype0x7c.MsgBody paramMsgBody, int paramInt) {}
   
   /* Error */
   public void run()
@@ -85,12 +85,12 @@ public class SecSpyFileManager$2
     //   154: iload 10
     //   156: istore_3
     //   157: aload_0
-    //   158: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   158: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   161: lload 13
     //   163: iconst_1
     //   164: iconst_0
     //   165: anewarray 4	java/lang/Object
-    //   168: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   168: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   171: iload_1
     //   172: lookupswitch	default:+204->376, 1:+293->465, 2:+488->660, 3:+683->855, 4:+902->1074, 257:+1337->1509, 258:+1466->1638, 259:+1974->2146, 260:+2307->2479, 261:+2660->2832, 262:+3052->3224, 263:+3189->3361, 264:+3383->3555, 265:+3554->3726, 266:+3691->3863, 267:+4176->4348, 268:+4463->4635, 269:+4600->4772, 270:+4857->5029, 271:+5144->5316, 272:+5521->5693, 275:+6212->6384, 276:+6299->6471, 280:+6476->6648, 291:+6665->6837
     //   377: iconst_4
@@ -122,14 +122,14 @@ public class SecSpyFileManager$2
     //   434: ldc2_w 119
     //   437: invokestatic 126	java/lang/Thread:sleep	(J)V
     //   440: aload_0
-    //   441: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   441: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   444: aload_0
     //   445: getfield 17	com/tencent/mobileqq/secspy/SecSpyFileManager$2:jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x7cSubmsgtype0x7c$MsgBody	Ltencent/im/s2c/msgtype0x210/submsgtype0x7c/submsgtype0x7c$MsgBody;
     //   448: aload_0
     //   449: getfield 19	com/tencent/mobileqq/secspy/SecSpyFileManager$2:jdField_a_of_type_Int	I
     //   452: iconst_1
     //   453: isub
-    //   454: invokevirtual 129	avyq:a	(Ltencent/im/s2c/msgtype0x210/submsgtype0x7c/submsgtype0x7c$MsgBody;I)V
+    //   454: invokevirtual 129	awyj:a	(Ltencent/im/s2c/msgtype0x210/submsgtype0x7c/submsgtype0x7c$MsgBody;I)V
     //   457: return
     //   458: ldc 131
     //   460: astore 17
@@ -141,12 +141,12 @@ public class SecSpyFileManager$2
     //   473: iload 10
     //   475: istore_3
     //   476: aload_0
-    //   477: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   477: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   480: lload 13
     //   482: iconst_2
     //   483: iconst_0
     //   484: anewarray 4	java/lang/Object
-    //   487: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   487: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   490: iload 8
     //   492: istore 4
     //   494: iload 9
@@ -154,12 +154,12 @@ public class SecSpyFileManager$2
     //   498: iload 10
     //   500: istore_3
     //   501: aload_0
-    //   502: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   502: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   505: aload 18
     //   507: lload 13
     //   509: aload 17
     //   511: iconst_0
-    //   512: invokevirtual 134	avyq:a	(Ljava/lang/String;JLjava/lang/String;Z)Z
+    //   512: invokevirtual 134	awyj:a	(Ljava/lang/String;JLjava/lang/String;Z)Z
     //   515: istore 7
     //   517: iload 7
     //   519: istore 6
@@ -172,12 +172,12 @@ public class SecSpyFileManager$2
     //   534: iload 7
     //   536: istore_3
     //   537: aload_0
-    //   538: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   538: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   541: lload 13
     //   543: iconst_0
     //   544: iconst_0
     //   545: anewarray 4	java/lang/Object
-    //   548: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   548: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   551: iload 7
     //   553: istore 6
     //   555: goto -175 -> 380
@@ -220,14 +220,14 @@ public class SecSpyFileManager$2
     //   636: ldc2_w 119
     //   639: invokestatic 126	java/lang/Thread:sleep	(J)V
     //   642: aload_0
-    //   643: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   643: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   646: aload_0
     //   647: getfield 17	com/tencent/mobileqq/secspy/SecSpyFileManager$2:jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x7cSubmsgtype0x7c$MsgBody	Ltencent/im/s2c/msgtype0x210/submsgtype0x7c/submsgtype0x7c$MsgBody;
     //   650: aload_0
     //   651: getfield 19	com/tencent/mobileqq/secspy/SecSpyFileManager$2:jdField_a_of_type_Int	I
     //   654: iconst_1
     //   655: isub
-    //   656: invokevirtual 129	avyq:a	(Ltencent/im/s2c/msgtype0x210/submsgtype0x7c/submsgtype0x7c$MsgBody;I)V
+    //   656: invokevirtual 129	awyj:a	(Ltencent/im/s2c/msgtype0x210/submsgtype0x7c/submsgtype0x7c$MsgBody;I)V
     //   659: return
     //   660: iload 8
     //   662: istore 4
@@ -236,12 +236,12 @@ public class SecSpyFileManager$2
     //   668: iload 10
     //   670: istore_3
     //   671: aload_0
-    //   672: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   672: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   675: lload 13
     //   677: iconst_2
     //   678: iconst_0
     //   679: anewarray 4	java/lang/Object
-    //   682: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   682: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   685: iload 8
     //   687: istore 4
     //   689: iload 9
@@ -249,12 +249,12 @@ public class SecSpyFileManager$2
     //   693: iload 10
     //   695: istore_3
     //   696: aload_0
-    //   697: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   697: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   700: aload 18
     //   702: lload 13
     //   704: aload 17
     //   706: iconst_1
-    //   707: invokevirtual 134	avyq:a	(Ljava/lang/String;JLjava/lang/String;Z)Z
+    //   707: invokevirtual 134	awyj:a	(Ljava/lang/String;JLjava/lang/String;Z)Z
     //   710: istore 7
     //   712: iload 7
     //   714: istore 6
@@ -267,12 +267,12 @@ public class SecSpyFileManager$2
     //   729: iload 7
     //   731: istore_3
     //   732: aload_0
-    //   733: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   733: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   736: lload 13
     //   738: iconst_0
     //   739: iconst_0
     //   740: anewarray 4	java/lang/Object
-    //   743: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   743: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   746: iload 7
     //   748: istore 6
     //   750: goto -370 -> 380
@@ -315,14 +315,14 @@ public class SecSpyFileManager$2
     //   831: ldc2_w 119
     //   834: invokestatic 126	java/lang/Thread:sleep	(J)V
     //   837: aload_0
-    //   838: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   838: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   841: aload_0
     //   842: getfield 17	com/tencent/mobileqq/secspy/SecSpyFileManager$2:jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x7cSubmsgtype0x7c$MsgBody	Ltencent/im/s2c/msgtype0x210/submsgtype0x7c/submsgtype0x7c$MsgBody;
     //   845: aload_0
     //   846: getfield 19	com/tencent/mobileqq/secspy/SecSpyFileManager$2:jdField_a_of_type_Int	I
     //   849: iconst_1
     //   850: isub
-    //   851: invokevirtual 129	avyq:a	(Ltencent/im/s2c/msgtype0x210/submsgtype0x7c/submsgtype0x7c$MsgBody;I)V
+    //   851: invokevirtual 129	awyj:a	(Ltencent/im/s2c/msgtype0x210/submsgtype0x7c/submsgtype0x7c$MsgBody;I)V
     //   854: return
     //   855: iload 7
     //   857: istore 6
@@ -342,9 +342,9 @@ public class SecSpyFileManager$2
     //   886: iload 10
     //   888: istore_3
     //   889: aload_0
-    //   890: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   890: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   893: aload 18
-    //   895: invokevirtual 151	avyq:a	(Ljava/lang/String;)Ljava/io/File;
+    //   895: invokevirtual 151	awyj:a	(Ljava/lang/String;)Ljava/io/File;
     //   898: astore 17
     //   900: aload 17
     //   902: ifnull +6052 -> 6954
@@ -412,12 +412,12 @@ public class SecSpyFileManager$2
     //   1031: iconst_1
     //   1032: istore 4
     //   1034: aload_0
-    //   1035: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   1035: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   1038: lload 13
     //   1040: iconst_0
     //   1041: iconst_0
     //   1042: anewarray 4	java/lang/Object
-    //   1045: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   1045: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   1048: iload 4
     //   1050: istore_3
     //   1051: invokestatic 116	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -516,9 +516,9 @@ public class SecSpyFileManager$2
     //   1248: iload 10
     //   1250: istore_3
     //   1251: aload_0
-    //   1252: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   1252: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   1255: aload 18
-    //   1257: invokevirtual 151	avyq:a	(Ljava/lang/String;)Ljava/io/File;
+    //   1257: invokevirtual 151	awyj:a	(Ljava/lang/String;)Ljava/io/File;
     //   1260: astore 18
     //   1262: iload 8
     //   1264: istore 4
@@ -527,9 +527,9 @@ public class SecSpyFileManager$2
     //   1270: iload 10
     //   1272: istore_3
     //   1273: aload_0
-    //   1274: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   1274: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   1277: aload 17
-    //   1279: invokevirtual 151	avyq:a	(Ljava/lang/String;)Ljava/io/File;
+    //   1279: invokevirtual 151	awyj:a	(Ljava/lang/String;)Ljava/io/File;
     //   1282: astore 17
     //   1284: iload 7
     //   1286: istore 6
@@ -575,12 +575,12 @@ public class SecSpyFileManager$2
     //   1364: iload 10
     //   1366: istore_3
     //   1367: aload_0
-    //   1368: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   1368: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   1371: lload 13
     //   1373: iconst_0
     //   1374: iconst_0
     //   1375: anewarray 4	java/lang/Object
-    //   1378: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   1378: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   1381: iload 7
     //   1383: istore 6
     //   1385: iload 8
@@ -632,14 +632,14 @@ public class SecSpyFileManager$2
     //   1483: ldc2_w 119
     //   1486: invokestatic 126	java/lang/Thread:sleep	(J)V
     //   1489: aload_0
-    //   1490: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   1490: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   1493: aload_0
     //   1494: getfield 17	com/tencent/mobileqq/secspy/SecSpyFileManager$2:jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x7cSubmsgtype0x7c$MsgBody	Ltencent/im/s2c/msgtype0x210/submsgtype0x7c/submsgtype0x7c$MsgBody;
     //   1497: aload_0
     //   1498: getfield 19	com/tencent/mobileqq/secspy/SecSpyFileManager$2:jdField_a_of_type_Int	I
     //   1501: iconst_1
     //   1502: isub
-    //   1503: invokevirtual 129	avyq:a	(Ltencent/im/s2c/msgtype0x210/submsgtype0x7c/submsgtype0x7c$MsgBody;I)V
+    //   1503: invokevirtual 129	awyj:a	(Ltencent/im/s2c/msgtype0x210/submsgtype0x7c/submsgtype0x7c$MsgBody;I)V
     //   1506: aload 17
     //   1508: athrow
     //   1509: iload 8
@@ -649,13 +649,13 @@ public class SecSpyFileManager$2
     //   1517: iload 10
     //   1519: istore_3
     //   1520: aload_0
-    //   1521: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   1524: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   1521: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   1524: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   1527: aload_0
-    //   1528: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   1531: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1528: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   1531: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1534: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   1537: invokevirtual 199	azto:a	(Landroid/content/Context;)Laztu;
+    //   1537: invokevirtual 199	baus:a	(Landroid/content/Context;)Lbauy;
     //   1540: astore 17
     //   1542: iload 8
     //   1544: istore 4
@@ -664,11 +664,11 @@ public class SecSpyFileManager$2
     //   1550: iload 10
     //   1552: istore_3
     //   1553: aload_0
-    //   1554: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   1554: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   1557: lload 13
     //   1559: aload 17
-    //   1561: invokevirtual 204	aztu:a	()Lorg/json/JSONObject;
-    //   1564: invokevirtual 207	avyq:a	(JLorg/json/JSONObject;)V
+    //   1561: invokevirtual 204	bauy:a	()Lorg/json/JSONObject;
+    //   1564: invokevirtual 207	awyj:a	(JLorg/json/JSONObject;)V
     //   1567: iload 7
     //   1569: istore 6
     //   1571: iload 8
@@ -693,7 +693,7 @@ public class SecSpyFileManager$2
     //   1609: ldc 209
     //   1611: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1614: aload 17
-    //   1616: invokevirtual 204	aztu:a	()Lorg/json/JSONObject;
+    //   1616: invokevirtual 204	bauy:a	()Lorg/json/JSONObject;
     //   1619: invokevirtual 212	org/json/JSONObject:toString	()Ljava/lang/String;
     //   1622: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1625: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -777,8 +777,8 @@ public class SecSpyFileManager$2
     //   1787: iload 10
     //   1789: istore_3
     //   1790: aload_0
-    //   1791: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   1794: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1791: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   1794: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1797: invokevirtual 254	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   1800: invokestatic 260	com/tencent/smtt/sdk/QbSdk:getTbsVersion	(Landroid/content/Context;)I
     //   1803: ldc_w 261
@@ -803,8 +803,8 @@ public class SecSpyFileManager$2
     //   1842: aload 19
     //   1844: ldc_w 269
     //   1847: aload_0
-    //   1848: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   1851: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1848: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   1851: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1854: invokevirtual 272	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   1857: invokevirtual 267	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   1860: pop
@@ -820,8 +820,8 @@ public class SecSpyFileManager$2
     //   1880: dup
     //   1881: aload_0
     //   1882: aload_0
-    //   1883: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   1886: getfield 279	avyq:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   1883: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   1886: getfield 279	awyj:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   1889: aload 18
     //   1891: aload 17
     //   1893: invokespecial 282	com/tencent/mobileqq/secspy/SecSpyFileManager$2$1:<init>	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$2;Landroid/os/Handler;Ljava/lang/String;Ljava/lang/String;)V
@@ -845,8 +845,8 @@ public class SecSpyFileManager$2
     //   1930: iload 10
     //   1932: istore_3
     //   1933: aload_0
-    //   1934: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   1937: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1934: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   1937: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1940: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   1943: aload 19
     //   1945: invokevirtual 296	mqq/app/MobileQQ:sendBroadcast	(Landroid/content/Intent;)V
@@ -860,15 +860,15 @@ public class SecSpyFileManager$2
     //   1963: iload 10
     //   1965: istore_3
     //   1966: aload_0
-    //   1967: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   1967: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   1970: aload 18
     //   1972: aload_0
-    //   1973: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   1976: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1973: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   1976: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1979: invokevirtual 272	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   1982: lload 13
     //   1984: aload 17
-    //   1986: invokestatic 299	avyq:a	(Lavyq;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;)V
+    //   1986: invokestatic 299	awyj:a	(Lawyj;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;)V
     //   1989: iload 7
     //   1991: istore 6
     //   1993: goto -1613 -> 380
@@ -899,15 +899,15 @@ public class SecSpyFileManager$2
     //   2045: iload 10
     //   2047: istore_3
     //   2048: aload_0
-    //   2049: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   2052: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   2049: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   2052: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   2055: lload 11
     //   2057: ldc2_w 119
     //   2060: lmul
     //   2061: lload 15
     //   2063: ldc2_w 119
     //   2066: lmul
-    //   2067: invokevirtual 304	azto:a	(JJ)Ljava/lang/String;
+    //   2067: invokevirtual 304	baus:a	(JJ)Ljava/lang/String;
     //   2070: astore 18
     //   2072: iload 8
     //   2074: istore 4
@@ -916,12 +916,12 @@ public class SecSpyFileManager$2
     //   2080: iload 10
     //   2082: istore_3
     //   2083: aload_0
-    //   2084: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   2084: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   2087: aload 18
     //   2089: lload 13
     //   2091: aload 17
     //   2093: iconst_1
-    //   2094: invokevirtual 307	avyq:a	(Ljava/lang/String;JLjava/lang/String;Z)V
+    //   2094: invokevirtual 307	awyj:a	(Ljava/lang/String;JLjava/lang/String;Z)V
     //   2097: iload 7
     //   2099: istore 6
     //   2101: goto -1721 -> 380
@@ -933,7 +933,7 @@ public class SecSpyFileManager$2
     //   2114: iload 10
     //   2116: istore_3
     //   2117: aload_0
-    //   2118: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   2118: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   2121: lload 13
     //   2123: iconst_m1
     //   2124: iconst_1
@@ -943,7 +943,7 @@ public class SecSpyFileManager$2
     //   2130: aload 17
     //   2132: invokevirtual 310	org/json/JSONException:getMessage	()Ljava/lang/String;
     //   2135: aastore
-    //   2136: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   2136: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   2139: iload 7
     //   2141: istore 6
     //   2143: goto -1763 -> 380
@@ -976,10 +976,10 @@ public class SecSpyFileManager$2
     //   2201: iload 10
     //   2203: istore_3
     //   2204: aload_0
-    //   2205: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   2208: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   2205: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   2208: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   2211: aload 17
-    //   2213: invokevirtual 318	azto:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   2213: invokevirtual 318	baus:a	(Ljava/lang/String;)Ljava/lang/String;
     //   2216: astore 17
     //   2218: iload 8
     //   2220: istore 4
@@ -988,9 +988,9 @@ public class SecSpyFileManager$2
     //   2226: iload 10
     //   2228: istore_3
     //   2229: aload_0
-    //   2230: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   2230: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   2233: aload 17
-    //   2235: invokevirtual 151	avyq:a	(Ljava/lang/String;)Ljava/io/File;
+    //   2235: invokevirtual 151	awyj:a	(Ljava/lang/String;)Ljava/io/File;
     //   2238: astore 18
     //   2240: aload 18
     //   2242: ifnull +143 -> 2385
@@ -1021,11 +1021,11 @@ public class SecSpyFileManager$2
     //   2295: iload 10
     //   2297: istore_3
     //   2298: aload_0
-    //   2299: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   2302: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   2299: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   2302: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   2305: aload 18
     //   2307: aload 17
-    //   2309: invokevirtual 324	azto:a	(Ljava/io/File;Ljava/lang/String;)Lorg/json/JSONObject;
+    //   2309: invokevirtual 324	baus:a	(Ljava/io/File;Ljava/lang/String;)Lorg/json/JSONObject;
     //   2312: astore 17
     //   2314: iload 8
     //   2316: istore 4
@@ -1034,10 +1034,10 @@ public class SecSpyFileManager$2
     //   2322: iload 10
     //   2324: istore_3
     //   2325: aload_0
-    //   2326: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   2326: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   2329: lload 13
     //   2331: aload 17
-    //   2333: invokevirtual 207	avyq:a	(JLorg/json/JSONObject;)V
+    //   2333: invokevirtual 207	awyj:a	(JLorg/json/JSONObject;)V
     //   2336: iload 7
     //   2338: istore 6
     //   2340: goto -1960 -> 380
@@ -1049,7 +1049,7 @@ public class SecSpyFileManager$2
     //   2353: iload 10
     //   2355: istore_3
     //   2356: aload_0
-    //   2357: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   2357: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   2360: lload 13
     //   2362: iconst_m1
     //   2363: iconst_1
@@ -1059,7 +1059,7 @@ public class SecSpyFileManager$2
     //   2369: aload 17
     //   2371: invokevirtual 310	org/json/JSONException:getMessage	()Ljava/lang/String;
     //   2374: aastore
-    //   2375: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   2375: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   2378: iload 7
     //   2380: istore 6
     //   2382: goto -2002 -> 380
@@ -1070,7 +1070,7 @@ public class SecSpyFileManager$2
     //   2393: iload 10
     //   2395: istore_3
     //   2396: aload_0
-    //   2397: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   2397: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   2400: lload 13
     //   2402: iconst_m1
     //   2403: iconst_1
@@ -1086,7 +1086,7 @@ public class SecSpyFileManager$2
     //   2424: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2427: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2430: aastore
-    //   2431: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   2431: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   2434: iload 7
     //   2436: istore 6
     //   2438: goto -2058 -> 380
@@ -1097,7 +1097,7 @@ public class SecSpyFileManager$2
     //   2449: iload 10
     //   2451: istore_3
     //   2452: aload_0
-    //   2453: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   2453: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   2456: lload 13
     //   2458: iconst_m1
     //   2459: iconst_1
@@ -1106,7 +1106,7 @@ public class SecSpyFileManager$2
     //   2464: iconst_0
     //   2465: ldc_w 328
     //   2468: aastore
-    //   2469: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   2469: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   2472: iload 7
     //   2474: istore 6
     //   2476: goto -2096 -> 380
@@ -1159,10 +1159,10 @@ public class SecSpyFileManager$2
     //   2575: iload 10
     //   2577: istore_3
     //   2578: aload_0
-    //   2579: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   2582: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   2579: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   2582: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   2585: aload 19
-    //   2587: invokevirtual 318	azto:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   2587: invokevirtual 318	baus:a	(Ljava/lang/String;)Ljava/lang/String;
     //   2590: astore 20
     //   2592: iload 8
     //   2594: istore 4
@@ -1171,9 +1171,9 @@ public class SecSpyFileManager$2
     //   2600: iload 10
     //   2602: istore_3
     //   2603: aload_0
-    //   2604: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   2604: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   2607: aload 20
-    //   2609: invokevirtual 151	avyq:a	(Ljava/lang/String;)Ljava/io/File;
+    //   2609: invokevirtual 151	awyj:a	(Ljava/lang/String;)Ljava/io/File;
     //   2612: astore 19
     //   2614: aload 19
     //   2616: ifnull +122 -> 2738
@@ -1202,9 +1202,9 @@ public class SecSpyFileManager$2
     //   2665: iload 10
     //   2667: istore_3
     //   2668: aload_0
-    //   2669: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   2669: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   2672: aload 18
-    //   2674: invokevirtual 342	avyq:a	(Lorg/json/JSONArray;)Ljava/util/List;
+    //   2674: invokevirtual 342	awyj:a	(Lorg/json/JSONArray;)Ljava/util/List;
     //   2677: astore 18
     //   2679: iload 8
     //   2681: istore 4
@@ -1213,11 +1213,11 @@ public class SecSpyFileManager$2
     //   2687: iload 10
     //   2689: istore_3
     //   2690: aload_0
-    //   2691: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   2694: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   2691: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   2694: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   2697: aload 19
     //   2699: aload 18
-    //   2701: invokevirtual 345	azto:a	(Ljava/io/File;Ljava/util/List;)Ljava/lang/String;
+    //   2701: invokevirtual 345	baus:a	(Ljava/io/File;Ljava/util/List;)Ljava/lang/String;
     //   2704: astore 18
     //   2706: iload 8
     //   2708: istore 4
@@ -1226,12 +1226,12 @@ public class SecSpyFileManager$2
     //   2714: iload 10
     //   2716: istore_3
     //   2717: aload_0
-    //   2718: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   2718: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   2721: aload 18
     //   2723: lload 13
     //   2725: aload 17
     //   2727: iconst_1
-    //   2728: invokevirtual 307	avyq:a	(Ljava/lang/String;JLjava/lang/String;Z)V
+    //   2728: invokevirtual 307	awyj:a	(Ljava/lang/String;JLjava/lang/String;Z)V
     //   2731: iload 7
     //   2733: istore 6
     //   2735: goto -2355 -> 380
@@ -1242,7 +1242,7 @@ public class SecSpyFileManager$2
     //   2746: iload 10
     //   2748: istore_3
     //   2749: aload_0
-    //   2750: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   2750: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   2753: lload 13
     //   2755: iconst_m1
     //   2756: iconst_1
@@ -1258,7 +1258,7 @@ public class SecSpyFileManager$2
     //   2777: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2780: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2783: aastore
-    //   2784: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   2784: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   2787: iload 7
     //   2789: istore 6
     //   2791: goto -2411 -> 380
@@ -1269,7 +1269,7 @@ public class SecSpyFileManager$2
     //   2802: iload 10
     //   2804: istore_3
     //   2805: aload_0
-    //   2806: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   2806: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   2809: lload 13
     //   2811: iconst_m1
     //   2812: iconst_1
@@ -1278,7 +1278,7 @@ public class SecSpyFileManager$2
     //   2817: iconst_0
     //   2818: ldc_w 347
     //   2821: aastore
-    //   2822: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   2822: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   2825: iload 7
     //   2827: istore 6
     //   2829: goto -2449 -> 380
@@ -1331,10 +1331,10 @@ public class SecSpyFileManager$2
     //   2928: iload 10
     //   2930: istore_3
     //   2931: aload_0
-    //   2932: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   2935: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   2932: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   2935: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   2938: aload 18
-    //   2940: invokevirtual 318	azto:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   2940: invokevirtual 318	baus:a	(Ljava/lang/String;)Ljava/lang/String;
     //   2943: astore 19
     //   2945: iload 8
     //   2947: istore 4
@@ -1343,9 +1343,9 @@ public class SecSpyFileManager$2
     //   2953: iload 10
     //   2955: istore_3
     //   2956: aload_0
-    //   2957: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   2957: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   2960: aload 19
-    //   2962: invokevirtual 151	avyq:a	(Ljava/lang/String;)Ljava/io/File;
+    //   2962: invokevirtual 151	awyj:a	(Ljava/lang/String;)Ljava/io/File;
     //   2965: astore 18
     //   2967: aload 18
     //   2969: ifnull +161 -> 3130
@@ -1374,9 +1374,9 @@ public class SecSpyFileManager$2
     //   3018: iload 10
     //   3020: istore_3
     //   3021: aload_0
-    //   3022: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3022: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3025: aload 17
-    //   3027: invokevirtual 342	avyq:a	(Lorg/json/JSONArray;)Ljava/util/List;
+    //   3027: invokevirtual 342	awyj:a	(Lorg/json/JSONArray;)Ljava/util/List;
     //   3030: astore 17
     //   3032: iload 8
     //   3034: istore 4
@@ -1385,11 +1385,11 @@ public class SecSpyFileManager$2
     //   3040: iload 10
     //   3042: istore_3
     //   3043: aload_0
-    //   3044: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   3047: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   3044: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   3047: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   3050: aload 18
     //   3052: aload 17
-    //   3054: invokevirtual 350	azto:a	(Ljava/io/File;Ljava/util/List;)Z
+    //   3054: invokevirtual 350	baus:a	(Ljava/io/File;Ljava/util/List;)Z
     //   3057: ifeq +35 -> 3092
     //   3060: iload 8
     //   3062: istore 4
@@ -1398,12 +1398,12 @@ public class SecSpyFileManager$2
     //   3068: iload 10
     //   3070: istore_3
     //   3071: aload_0
-    //   3072: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3072: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3075: lload 13
     //   3077: iconst_0
     //   3078: iconst_0
     //   3079: anewarray 4	java/lang/Object
-    //   3082: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   3082: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   3085: iload 7
     //   3087: istore 6
     //   3089: goto -2709 -> 380
@@ -1414,7 +1414,7 @@ public class SecSpyFileManager$2
     //   3100: iload 10
     //   3102: istore_3
     //   3103: aload_0
-    //   3104: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3104: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3107: lload 13
     //   3109: iconst_m1
     //   3110: iconst_1
@@ -1423,7 +1423,7 @@ public class SecSpyFileManager$2
     //   3115: iconst_0
     //   3116: ldc_w 352
     //   3119: aastore
-    //   3120: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   3120: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   3123: iload 7
     //   3125: istore 6
     //   3127: goto -2747 -> 380
@@ -1434,7 +1434,7 @@ public class SecSpyFileManager$2
     //   3138: iload 10
     //   3140: istore_3
     //   3141: aload_0
-    //   3142: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3142: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3145: lload 13
     //   3147: iconst_m1
     //   3148: iconst_1
@@ -1450,7 +1450,7 @@ public class SecSpyFileManager$2
     //   3169: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3172: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   3175: aastore
-    //   3176: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   3176: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   3179: iload 7
     //   3181: istore 6
     //   3183: goto -2803 -> 380
@@ -1461,7 +1461,7 @@ public class SecSpyFileManager$2
     //   3194: iload 10
     //   3196: istore_3
     //   3197: aload_0
-    //   3198: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3198: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3201: lload 13
     //   3203: iconst_m1
     //   3204: iconst_1
@@ -1470,7 +1470,7 @@ public class SecSpyFileManager$2
     //   3209: iconst_0
     //   3210: ldc_w 347
     //   3213: aastore
-    //   3214: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   3214: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   3217: iload 7
     //   3219: istore 6
     //   3221: goto -2841 -> 380
@@ -1479,13 +1479,13 @@ public class SecSpyFileManager$2
     //   3228: iload 10
     //   3230: istore_3
     //   3231: aload_0
-    //   3232: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   3235: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   3232: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   3235: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   3238: aload_0
-    //   3239: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   3242: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   3239: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   3242: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   3245: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   3248: invokevirtual 355	azto:a	(Landroid/content/Context;)Ljava/util/List;
+    //   3248: invokevirtual 355	baus:a	(Landroid/content/Context;)Ljava/util/List;
     //   3251: astore 17
     //   3253: iload 8
     //   3255: istore 4
@@ -1502,9 +1502,9 @@ public class SecSpyFileManager$2
     //   3276: aload 18
     //   3278: ldc_w 358
     //   3281: aload_0
-    //   3282: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3282: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3285: aload 17
-    //   3287: invokevirtual 361	avyq:a	(Ljava/util/Collection;)Lorg/json/JSONArray;
+    //   3287: invokevirtual 361	awyj:a	(Ljava/util/Collection;)Lorg/json/JSONArray;
     //   3290: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   3293: pop
     //   3294: iload 8
@@ -1512,10 +1512,10 @@ public class SecSpyFileManager$2
     //   3298: iload 10
     //   3300: istore_3
     //   3301: aload_0
-    //   3302: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3302: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3305: lload 13
     //   3307: aload 18
-    //   3309: invokevirtual 207	avyq:a	(JLorg/json/JSONObject;)V
+    //   3309: invokevirtual 207	awyj:a	(JLorg/json/JSONObject;)V
     //   3312: iload 7
     //   3314: istore 6
     //   3316: goto -2936 -> 380
@@ -1527,7 +1527,7 @@ public class SecSpyFileManager$2
     //   3329: iload 10
     //   3331: istore_3
     //   3332: aload_0
-    //   3333: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3333: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3336: lload 13
     //   3338: iconst_m1
     //   3339: iconst_1
@@ -1537,7 +1537,7 @@ public class SecSpyFileManager$2
     //   3345: aload 17
     //   3347: invokevirtual 366	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   3350: aastore
-    //   3351: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   3351: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   3354: iload 7
     //   3356: istore 6
     //   3358: goto -2978 -> 380
@@ -1563,35 +1563,35 @@ public class SecSpyFileManager$2
     //   3402: iload 10
     //   3404: istore_3
     //   3405: aload_0
-    //   3406: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3406: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3409: aload 18
-    //   3411: invokevirtual 342	avyq:a	(Lorg/json/JSONArray;)Ljava/util/List;
+    //   3411: invokevirtual 342	awyj:a	(Lorg/json/JSONArray;)Ljava/util/List;
     //   3414: astore 18
     //   3416: iload 8
     //   3418: istore 4
     //   3420: iload 10
     //   3422: istore_3
     //   3423: aload_0
-    //   3424: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   3427: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   3424: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   3427: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   3430: aload_0
-    //   3431: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   3434: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   3431: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   3434: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   3437: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   3440: aload 18
-    //   3442: invokevirtual 369	azto:a	(Landroid/content/Context;Ljava/util/List;)Ljava/lang/String;
+    //   3442: invokevirtual 369	baus:a	(Landroid/content/Context;Ljava/util/List;)Ljava/lang/String;
     //   3445: astore 18
     //   3447: iload 8
     //   3449: istore 4
     //   3451: iload 10
     //   3453: istore_3
     //   3454: aload_0
-    //   3455: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3455: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3458: aload 18
     //   3460: lload 13
     //   3462: aload 17
     //   3464: iconst_1
-    //   3465: invokevirtual 307	avyq:a	(Ljava/lang/String;JLjava/lang/String;Z)V
+    //   3465: invokevirtual 307	awyj:a	(Ljava/lang/String;JLjava/lang/String;Z)V
     //   3468: iload 7
     //   3470: istore 6
     //   3472: goto -3092 -> 380
@@ -1603,7 +1603,7 @@ public class SecSpyFileManager$2
     //   3485: iload 10
     //   3487: istore_3
     //   3488: aload_0
-    //   3489: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3489: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3492: lload 13
     //   3494: iconst_m1
     //   3495: iconst_1
@@ -1613,7 +1613,7 @@ public class SecSpyFileManager$2
     //   3501: aload 17
     //   3503: invokevirtual 366	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   3506: aastore
-    //   3507: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   3507: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   3510: iload 7
     //   3512: istore 6
     //   3514: goto -3134 -> 380
@@ -1624,7 +1624,7 @@ public class SecSpyFileManager$2
     //   3525: iload 10
     //   3527: istore_3
     //   3528: aload_0
-    //   3529: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3529: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3532: lload 13
     //   3534: iconst_m1
     //   3535: iconst_1
@@ -1633,7 +1633,7 @@ public class SecSpyFileManager$2
     //   3540: iconst_0
     //   3541: ldc_w 371
     //   3544: aastore
-    //   3545: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   3545: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   3548: iload 7
     //   3550: istore 6
     //   3552: goto -3172 -> 380
@@ -1659,23 +1659,23 @@ public class SecSpyFileManager$2
     //   3596: iload 10
     //   3598: istore_3
     //   3599: aload_0
-    //   3600: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3600: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3603: aload 17
-    //   3605: invokevirtual 342	avyq:a	(Lorg/json/JSONArray;)Ljava/util/List;
+    //   3605: invokevirtual 342	awyj:a	(Lorg/json/JSONArray;)Ljava/util/List;
     //   3608: astore 17
     //   3610: iload 8
     //   3612: istore 4
     //   3614: iload 10
     //   3616: istore_3
     //   3617: aload_0
-    //   3618: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   3621: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   3618: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   3621: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   3624: aload_0
-    //   3625: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   3628: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   3625: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   3628: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   3631: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   3634: aload 17
-    //   3636: invokevirtual 374	azto:a	(Landroid/content/Context;Ljava/util/List;)V
+    //   3636: invokevirtual 374	baus:a	(Landroid/content/Context;Ljava/util/List;)V
     //   3639: iload 7
     //   3641: istore 6
     //   3643: goto -3263 -> 380
@@ -1687,7 +1687,7 @@ public class SecSpyFileManager$2
     //   3656: iload 10
     //   3658: istore_3
     //   3659: aload_0
-    //   3660: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3660: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3663: lload 13
     //   3665: iconst_m1
     //   3666: iconst_1
@@ -1697,7 +1697,7 @@ public class SecSpyFileManager$2
     //   3672: aload 17
     //   3674: invokevirtual 366	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   3677: aastore
-    //   3678: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   3678: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   3681: iload 7
     //   3683: istore 6
     //   3685: goto -3305 -> 380
@@ -1708,7 +1708,7 @@ public class SecSpyFileManager$2
     //   3696: iload 10
     //   3698: istore_3
     //   3699: aload_0
-    //   3700: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3700: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3703: lload 13
     //   3705: iconst_m1
     //   3706: iconst_1
@@ -1717,7 +1717,7 @@ public class SecSpyFileManager$2
     //   3711: iconst_0
     //   3712: ldc_w 371
     //   3715: aastore
-    //   3716: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   3716: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   3719: iload 7
     //   3721: istore 6
     //   3723: goto -3343 -> 380
@@ -1726,13 +1726,13 @@ public class SecSpyFileManager$2
     //   3730: iload 10
     //   3732: istore_3
     //   3733: aload_0
-    //   3734: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   3737: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   3734: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   3737: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   3740: aload_0
-    //   3741: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   3744: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   3741: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   3744: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   3747: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   3750: invokevirtual 377	azto:a	(Landroid/content/Context;)Ljava/util/Set;
+    //   3750: invokevirtual 377	baus:a	(Landroid/content/Context;)Ljava/util/Set;
     //   3753: astore 17
     //   3755: iload 8
     //   3757: istore 4
@@ -1749,9 +1749,9 @@ public class SecSpyFileManager$2
     //   3778: aload 18
     //   3780: ldc_w 379
     //   3783: aload_0
-    //   3784: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3784: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3787: aload 17
-    //   3789: invokevirtual 361	avyq:a	(Ljava/util/Collection;)Lorg/json/JSONArray;
+    //   3789: invokevirtual 361	awyj:a	(Ljava/util/Collection;)Lorg/json/JSONArray;
     //   3792: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   3795: pop
     //   3796: iload 8
@@ -1759,10 +1759,10 @@ public class SecSpyFileManager$2
     //   3800: iload 10
     //   3802: istore_3
     //   3803: aload_0
-    //   3804: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3804: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3807: lload 13
     //   3809: aload 18
-    //   3811: invokevirtual 207	avyq:a	(JLorg/json/JSONObject;)V
+    //   3811: invokevirtual 207	awyj:a	(JLorg/json/JSONObject;)V
     //   3814: iload 7
     //   3816: istore 6
     //   3818: goto -3438 -> 380
@@ -1774,7 +1774,7 @@ public class SecSpyFileManager$2
     //   3831: iload 10
     //   3833: istore_3
     //   3834: aload_0
-    //   3835: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   3835: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   3838: lload 13
     //   3840: iconst_m1
     //   3841: iconst_1
@@ -1784,7 +1784,7 @@ public class SecSpyFileManager$2
     //   3847: aload 17
     //   3849: invokevirtual 366	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   3852: aastore
-    //   3853: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   3853: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   3856: iload 7
     //   3858: istore 6
     //   3860: goto -3480 -> 380
@@ -1819,14 +1819,14 @@ public class SecSpyFileManager$2
     //   3922: iload 10
     //   3924: istore_3
     //   3925: aload_0
-    //   3926: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   3929: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   3926: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   3929: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   3932: aload_0
-    //   3933: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   3936: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   3933: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   3936: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   3939: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   3942: aload 18
-    //   3944: invokevirtual 384	azto:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/util/List;
+    //   3944: invokevirtual 384	baus:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/util/List;
     //   3947: astore 19
     //   3949: iload 8
     //   3951: istore 4
@@ -1948,7 +1948,7 @@ public class SecSpyFileManager$2
     //   4205: iload 10
     //   4207: istore_3
     //   4208: aload_0
-    //   4209: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   4209: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   4212: lload 13
     //   4214: iconst_m1
     //   4215: iconst_1
@@ -1958,7 +1958,7 @@ public class SecSpyFileManager$2
     //   4221: aload 17
     //   4223: invokevirtual 413	android/database/sqlite/SQLiteException:getMessage	()Ljava/lang/String;
     //   4226: aastore
-    //   4227: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   4227: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   4230: iload 7
     //   4232: istore 6
     //   4234: goto -3854 -> 380
@@ -1991,10 +1991,10 @@ public class SecSpyFileManager$2
     //   4289: iload 10
     //   4291: istore_3
     //   4292: aload_0
-    //   4293: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   4293: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   4296: lload 13
     //   4298: aload 17
-    //   4300: invokevirtual 207	avyq:a	(JLorg/json/JSONObject;)V
+    //   4300: invokevirtual 207	awyj:a	(JLorg/json/JSONObject;)V
     //   4303: iload 7
     //   4305: istore 6
     //   4307: goto -3927 -> 380
@@ -2005,7 +2005,7 @@ public class SecSpyFileManager$2
     //   4318: iload 10
     //   4320: istore_3
     //   4321: aload_0
-    //   4322: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   4322: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   4325: lload 13
     //   4327: iconst_m1
     //   4328: iconst_1
@@ -2014,7 +2014,7 @@ public class SecSpyFileManager$2
     //   4333: iconst_0
     //   4334: ldc_w 420
     //   4337: aastore
-    //   4338: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   4338: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   4341: iload 7
     //   4343: istore 6
     //   4345: goto -3965 -> 380
@@ -2067,35 +2067,35 @@ public class SecSpyFileManager$2
     //   4444: iload 10
     //   4446: istore_3
     //   4447: aload_0
-    //   4448: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   4448: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   4451: aload 18
-    //   4453: invokevirtual 342	avyq:a	(Lorg/json/JSONArray;)Ljava/util/List;
+    //   4453: invokevirtual 342	awyj:a	(Lorg/json/JSONArray;)Ljava/util/List;
     //   4456: astore 18
     //   4458: iload 8
     //   4460: istore 4
     //   4462: iload 10
     //   4464: istore_3
     //   4465: aload_0
-    //   4466: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   4469: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   4466: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   4469: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   4472: aload_0
-    //   4473: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   4476: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   4473: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   4476: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   4479: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   4482: aload 17
     //   4484: aload 18
-    //   4486: invokevirtual 423	azto:a	(Landroid/content/Context;Ljava/lang/String;Ljava/util/List;)V
+    //   4486: invokevirtual 423	baus:a	(Landroid/content/Context;Ljava/lang/String;Ljava/util/List;)V
     //   4489: iload 8
     //   4491: istore 4
     //   4493: iload 10
     //   4495: istore_3
     //   4496: aload_0
-    //   4497: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   4497: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   4500: lload 13
     //   4502: iconst_0
     //   4503: iconst_0
     //   4504: anewarray 4	java/lang/Object
-    //   4507: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   4507: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   4510: iload 7
     //   4512: istore 6
     //   4514: goto -4134 -> 380
@@ -2107,7 +2107,7 @@ public class SecSpyFileManager$2
     //   4527: iload 10
     //   4529: istore_3
     //   4530: aload_0
-    //   4531: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   4531: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   4534: lload 13
     //   4536: iconst_m1
     //   4537: iconst_1
@@ -2117,7 +2117,7 @@ public class SecSpyFileManager$2
     //   4543: aload 17
     //   4545: invokevirtual 366	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   4548: aastore
-    //   4549: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   4549: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   4552: iload 7
     //   4554: istore 6
     //   4556: goto -4176 -> 380
@@ -2128,7 +2128,7 @@ public class SecSpyFileManager$2
     //   4567: iload 10
     //   4569: istore_3
     //   4570: aload_0
-    //   4571: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   4571: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   4574: lload 13
     //   4576: iconst_m1
     //   4577: iconst_1
@@ -2137,7 +2137,7 @@ public class SecSpyFileManager$2
     //   4582: iconst_0
     //   4583: ldc_w 425
     //   4586: aastore
-    //   4587: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   4587: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   4590: iload 7
     //   4592: istore 6
     //   4594: goto -4214 -> 380
@@ -2148,7 +2148,7 @@ public class SecSpyFileManager$2
     //   4605: iload 10
     //   4607: istore_3
     //   4608: aload_0
-    //   4609: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   4609: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   4612: lload 13
     //   4614: iconst_m1
     //   4615: iconst_1
@@ -2157,7 +2157,7 @@ public class SecSpyFileManager$2
     //   4620: iconst_0
     //   4621: ldc_w 420
     //   4624: aastore
-    //   4625: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   4625: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   4628: iload 7
     //   4630: istore 6
     //   4632: goto -4252 -> 380
@@ -2166,13 +2166,13 @@ public class SecSpyFileManager$2
     //   4639: iload 10
     //   4641: istore_3
     //   4642: aload_0
-    //   4643: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   4646: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   4643: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   4646: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   4649: aload_0
-    //   4650: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   4653: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   4650: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   4653: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   4656: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   4659: invokevirtual 428	azto:b	(Landroid/content/Context;)Ljava/util/Set;
+    //   4659: invokevirtual 428	baus:b	(Landroid/content/Context;)Ljava/util/Set;
     //   4662: astore 17
     //   4664: iload 8
     //   4666: istore 4
@@ -2189,9 +2189,9 @@ public class SecSpyFileManager$2
     //   4687: aload 18
     //   4689: ldc_w 379
     //   4692: aload_0
-    //   4693: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   4693: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   4696: aload 17
-    //   4698: invokevirtual 361	avyq:a	(Ljava/util/Collection;)Lorg/json/JSONArray;
+    //   4698: invokevirtual 361	awyj:a	(Ljava/util/Collection;)Lorg/json/JSONArray;
     //   4701: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   4704: pop
     //   4705: iload 8
@@ -2199,10 +2199,10 @@ public class SecSpyFileManager$2
     //   4709: iload 10
     //   4711: istore_3
     //   4712: aload_0
-    //   4713: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   4713: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   4716: lload 13
     //   4718: aload 18
-    //   4720: invokevirtual 207	avyq:a	(JLorg/json/JSONObject;)V
+    //   4720: invokevirtual 207	awyj:a	(JLorg/json/JSONObject;)V
     //   4723: iload 7
     //   4725: istore 6
     //   4727: goto -4347 -> 380
@@ -2214,7 +2214,7 @@ public class SecSpyFileManager$2
     //   4740: iload 10
     //   4742: istore_3
     //   4743: aload_0
-    //   4744: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   4744: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   4747: lload 13
     //   4749: iconst_m1
     //   4750: iconst_1
@@ -2224,7 +2224,7 @@ public class SecSpyFileManager$2
     //   4756: aload 17
     //   4758: invokevirtual 366	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   4761: aastore
-    //   4762: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   4762: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   4765: iload 7
     //   4767: istore 6
     //   4769: goto -4389 -> 380
@@ -2257,14 +2257,14 @@ public class SecSpyFileManager$2
     //   4827: iload 10
     //   4829: istore_3
     //   4830: aload_0
-    //   4831: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   4834: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   4831: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   4834: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   4837: aload_0
-    //   4838: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   4841: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   4838: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   4841: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   4844: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   4847: aload 18
-    //   4849: invokevirtual 431	azto:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   4849: invokevirtual 431	baus:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
     //   4852: astore 19
     //   4854: iload 8
     //   4856: istore 4
@@ -2278,12 +2278,12 @@ public class SecSpyFileManager$2
     //   4873: iload 10
     //   4875: istore_3
     //   4876: aload_0
-    //   4877: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   4877: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   4880: aload 19
     //   4882: lload 13
     //   4884: aload 17
     //   4886: iconst_1
-    //   4887: invokevirtual 307	avyq:a	(Ljava/lang/String;JLjava/lang/String;Z)V
+    //   4887: invokevirtual 307	awyj:a	(Ljava/lang/String;JLjava/lang/String;Z)V
     //   4890: iload 7
     //   4892: istore 6
     //   4894: goto -4514 -> 380
@@ -2295,7 +2295,7 @@ public class SecSpyFileManager$2
     //   4907: iload 10
     //   4909: istore_3
     //   4910: aload_0
-    //   4911: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   4911: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   4914: lload 13
     //   4916: iconst_m1
     //   4917: iconst_1
@@ -2305,7 +2305,7 @@ public class SecSpyFileManager$2
     //   4923: aload 17
     //   4925: invokevirtual 366	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   4928: aastore
-    //   4929: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   4929: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   4932: iload 7
     //   4934: istore 6
     //   4936: goto -4556 -> 380
@@ -2314,7 +2314,7 @@ public class SecSpyFileManager$2
     //   4943: iload 10
     //   4945: istore_3
     //   4946: aload_0
-    //   4947: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   4947: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   4950: lload 13
     //   4952: iconst_m1
     //   4953: iconst_1
@@ -2330,7 +2330,7 @@ public class SecSpyFileManager$2
     //   4974: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   4977: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   4980: aastore
-    //   4981: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   4981: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   4984: iload 7
     //   4986: istore 6
     //   4988: goto -4608 -> 380
@@ -2341,7 +2341,7 @@ public class SecSpyFileManager$2
     //   4999: iload 10
     //   5001: istore_3
     //   5002: aload_0
-    //   5003: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   5003: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   5006: lload 13
     //   5008: iconst_m1
     //   5009: iconst_1
@@ -2350,7 +2350,7 @@ public class SecSpyFileManager$2
     //   5014: iconst_0
     //   5015: ldc_w 420
     //   5018: aastore
-    //   5019: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   5019: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   5022: iload 7
     //   5024: istore 6
     //   5026: goto -4646 -> 380
@@ -2403,35 +2403,35 @@ public class SecSpyFileManager$2
     //   5125: iload 10
     //   5127: istore_3
     //   5128: aload_0
-    //   5129: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   5129: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   5132: aload 18
-    //   5134: invokevirtual 342	avyq:a	(Lorg/json/JSONArray;)Ljava/util/List;
+    //   5134: invokevirtual 342	awyj:a	(Lorg/json/JSONArray;)Ljava/util/List;
     //   5137: astore 18
     //   5139: iload 8
     //   5141: istore 4
     //   5143: iload 10
     //   5145: istore_3
     //   5146: aload_0
-    //   5147: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   5150: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   5147: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   5150: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   5153: aload_0
-    //   5154: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   5157: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   5154: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   5157: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   5160: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   5163: aload 17
     //   5165: aload 18
-    //   5167: invokevirtual 437	azto:b	(Landroid/content/Context;Ljava/lang/String;Ljava/util/List;)V
+    //   5167: invokevirtual 437	baus:b	(Landroid/content/Context;Ljava/lang/String;Ljava/util/List;)V
     //   5170: iload 8
     //   5172: istore 4
     //   5174: iload 10
     //   5176: istore_3
     //   5177: aload_0
-    //   5178: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   5178: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   5181: lload 13
     //   5183: iconst_0
     //   5184: iconst_0
     //   5185: anewarray 4	java/lang/Object
-    //   5188: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   5188: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   5191: iload 7
     //   5193: istore 6
     //   5195: goto -4815 -> 380
@@ -2443,7 +2443,7 @@ public class SecSpyFileManager$2
     //   5208: iload 10
     //   5210: istore_3
     //   5211: aload_0
-    //   5212: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   5212: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   5215: lload 13
     //   5217: iconst_m1
     //   5218: iconst_1
@@ -2453,7 +2453,7 @@ public class SecSpyFileManager$2
     //   5224: aload 17
     //   5226: invokevirtual 366	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   5229: aastore
-    //   5230: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   5230: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   5233: iload 7
     //   5235: istore 6
     //   5237: goto -4857 -> 380
@@ -2464,7 +2464,7 @@ public class SecSpyFileManager$2
     //   5248: iload 10
     //   5250: istore_3
     //   5251: aload_0
-    //   5252: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   5252: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   5255: lload 13
     //   5257: iconst_m1
     //   5258: iconst_1
@@ -2473,7 +2473,7 @@ public class SecSpyFileManager$2
     //   5263: iconst_0
     //   5264: ldc_w 439
     //   5267: aastore
-    //   5268: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   5268: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   5271: iload 7
     //   5273: istore 6
     //   5275: goto -4895 -> 380
@@ -2484,7 +2484,7 @@ public class SecSpyFileManager$2
     //   5286: iload 10
     //   5288: istore_3
     //   5289: aload_0
-    //   5290: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   5290: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   5293: lload 13
     //   5295: iconst_m1
     //   5296: iconst_1
@@ -2493,7 +2493,7 @@ public class SecSpyFileManager$2
     //   5301: iconst_0
     //   5302: ldc_w 420
     //   5305: aastore
-    //   5306: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   5306: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   5309: iload 7
     //   5311: istore 6
     //   5313: goto -4933 -> 380
@@ -2541,17 +2541,17 @@ public class SecSpyFileManager$2
     //   5398: iload 10
     //   5400: istore_3
     //   5401: aload_0
-    //   5402: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   5405: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   5402: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   5405: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   5408: aload_0
-    //   5409: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   5412: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   5409: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   5412: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   5415: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   5418: lload 11
     //   5420: lload 13
     //   5422: aload 17
     //   5424: iload_2
-    //   5425: invokevirtual 456	azto:a	(Landroid/content/Context;JJLjava/lang/String;I)V
+    //   5425: invokevirtual 456	baus:a	(Landroid/content/Context;JJLjava/lang/String;I)V
     //   5428: iload 7
     //   5430: istore 6
     //   5432: goto -5052 -> 380
@@ -2624,18 +2624,18 @@ public class SecSpyFileManager$2
     //   5578: iload 10
     //   5580: istore_3
     //   5581: aload_0
-    //   5582: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   5585: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   5582: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   5585: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   5588: aload_0
-    //   5589: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   5592: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   5589: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   5592: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   5595: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   5598: aload 18
     //   5600: iload_2
     //   5601: lload 11
     //   5603: lload 13
     //   5605: aload 17
-    //   5607: invokevirtual 480	azto:a	(Landroid/content/Context;Ljava/lang/String;IJJLjava/lang/String;)V
+    //   5607: invokevirtual 480	baus:a	(Landroid/content/Context;Ljava/lang/String;IJJLjava/lang/String;)V
     //   5610: iload 7
     //   5612: istore 6
     //   5614: goto -5234 -> 380
@@ -2646,7 +2646,7 @@ public class SecSpyFileManager$2
     //   5625: iload 10
     //   5627: istore_3
     //   5628: aload_0
-    //   5629: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   5629: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   5632: lload 13
     //   5634: iconst_m1
     //   5635: iconst_1
@@ -2655,7 +2655,7 @@ public class SecSpyFileManager$2
     //   5640: iconst_0
     //   5641: ldc_w 482
     //   5644: aastore
-    //   5645: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   5645: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   5648: iload 7
     //   5650: istore 6
     //   5652: goto -5272 -> 380
@@ -2666,7 +2666,7 @@ public class SecSpyFileManager$2
     //   5663: iload 10
     //   5665: istore_3
     //   5666: aload_0
-    //   5667: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   5667: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   5670: lload 13
     //   5672: iconst_m1
     //   5673: iconst_1
@@ -2675,7 +2675,7 @@ public class SecSpyFileManager$2
     //   5678: iconst_0
     //   5679: ldc_w 484
     //   5682: aastore
-    //   5683: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   5683: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   5686: iload 7
     //   5688: istore 6
     //   5690: goto -5310 -> 380
@@ -2686,8 +2686,8 @@ public class SecSpyFileManager$2
     //   5701: iload 10
     //   5703: istore_3
     //   5704: aload_0
-    //   5705: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   5708: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   5705: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   5708: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   5711: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   5714: invokestatic 260	com/tencent/smtt/sdk/QbSdk:getTbsVersion	(Landroid/content/Context;)I
     //   5717: ifgt +41 -> 5758
@@ -2698,7 +2698,7 @@ public class SecSpyFileManager$2
     //   5728: iload 10
     //   5730: istore_3
     //   5731: aload_0
-    //   5732: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   5732: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   5735: lload 13
     //   5737: iconst_m1
     //   5738: iconst_1
@@ -2707,7 +2707,7 @@ public class SecSpyFileManager$2
     //   5743: iconst_0
     //   5744: ldc_w 486
     //   5747: aastore
-    //   5748: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   5748: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   5751: iload 7
     //   5753: istore 6
     //   5755: goto -5375 -> 380
@@ -2758,10 +2758,10 @@ public class SecSpyFileManager$2
     //   5848: iload 10
     //   5850: istore_3
     //   5851: aload_0
-    //   5852: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   5855: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   5852: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   5855: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   5858: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   5861: invokestatic 498	azto:a	(Landroid/content/Context;)Z
+    //   5861: invokestatic 498	baus:a	(Landroid/content/Context;)Z
     //   5864: ifne +50 -> 5914
     //   5867: iload 8
     //   5869: istore 4
@@ -2770,8 +2770,8 @@ public class SecSpyFileManager$2
     //   5875: iload 10
     //   5877: istore_3
     //   5878: aload_0
-    //   5879: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   5882: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   5879: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   5882: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   5885: astore 20
     //   5887: iload 8
     //   5889: istore 4
@@ -2780,12 +2780,12 @@ public class SecSpyFileManager$2
     //   5895: iload 10
     //   5897: istore_3
     //   5898: aload_0
-    //   5899: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   5902: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   5899: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   5902: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   5905: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   5908: aload 19
     //   5910: iload_2
-    //   5911: invokestatic 501	azto:a	(Landroid/app/Application;Ljava/lang/String;I)V
+    //   5911: invokestatic 501	baus:a	(Landroid/app/Application;Ljava/lang/String;I)V
     //   5914: iload 8
     //   5916: istore 4
     //   5918: iload 9
@@ -2793,12 +2793,12 @@ public class SecSpyFileManager$2
     //   5922: iload 10
     //   5924: istore_3
     //   5925: aload_0
-    //   5926: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   5929: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
-    //   5932: invokevirtual 504	azto:a	()Landroid/os/Handler;
+    //   5926: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   5929: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
+    //   5932: invokevirtual 504	baus:a	()Landroid/os/Handler;
     //   5935: aload_0
-    //   5936: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   5939: invokestatic 507	avyq:a	(Lavyq;)Ljava/lang/Runnable;
+    //   5936: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   5939: invokestatic 507	awyj:a	(Lawyj;)Ljava/lang/Runnable;
     //   5942: invokevirtual 513	android/os/Handler:removeCallbacks	(Ljava/lang/Runnable;)V
     //   5945: iload 8
     //   5947: istore 4
@@ -2817,12 +2817,12 @@ public class SecSpyFileManager$2
     //   5974: iload 10
     //   5976: istore_3
     //   5977: aload_0
-    //   5978: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   5981: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
-    //   5984: invokevirtual 504	azto:a	()Landroid/os/Handler;
+    //   5978: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   5981: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
+    //   5984: invokevirtual 504	baus:a	()Landroid/os/Handler;
     //   5987: aload_0
-    //   5988: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   5991: invokestatic 507	avyq:a	(Lavyq;)Ljava/lang/Runnable;
+    //   5988: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   5991: invokestatic 507	awyj:a	(Lawyj;)Ljava/lang/Runnable;
     //   5994: lload 11
     //   5996: ldc2_w 119
     //   5999: lmul
@@ -2923,18 +2923,18 @@ public class SecSpyFileManager$2
     //   6199: iload 10
     //   6201: istore_3
     //   6202: aload_0
-    //   6203: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   6206: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   6203: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   6206: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   6209: aload_0
-    //   6210: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   6213: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6210: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   6213: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   6216: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   6219: aload 19
     //   6221: iload_2
     //   6222: lload 11
     //   6224: lload 13
     //   6226: aload 17
-    //   6228: invokevirtual 528	azto:c	(Landroid/content/Context;Ljava/lang/String;IJJLjava/lang/String;)V
+    //   6228: invokevirtual 528	baus:c	(Landroid/content/Context;Ljava/lang/String;IJJLjava/lang/String;)V
     //   6231: iload 7
     //   6233: istore 6
     //   6235: goto -5855 -> 380
@@ -2945,7 +2945,7 @@ public class SecSpyFileManager$2
     //   6246: iload 10
     //   6248: istore_3
     //   6249: aload_0
-    //   6250: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   6250: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   6253: lload 13
     //   6255: iconst_m1
     //   6256: iconst_1
@@ -2954,7 +2954,7 @@ public class SecSpyFileManager$2
     //   6261: iconst_0
     //   6262: ldc_w 482
     //   6265: aastore
-    //   6266: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   6266: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   6269: iload 7
     //   6271: istore 6
     //   6273: goto -5893 -> 380
@@ -2965,7 +2965,7 @@ public class SecSpyFileManager$2
     //   6284: iload 10
     //   6286: istore_3
     //   6287: aload_0
-    //   6288: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   6288: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   6291: lload 13
     //   6293: iconst_m1
     //   6294: iconst_1
@@ -2974,7 +2974,7 @@ public class SecSpyFileManager$2
     //   6299: iconst_0
     //   6300: ldc_w 484
     //   6303: aastore
-    //   6304: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   6304: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   6307: iload 7
     //   6309: istore 6
     //   6311: goto -5931 -> 380
@@ -2985,12 +2985,12 @@ public class SecSpyFileManager$2
     //   6322: iload 10
     //   6324: istore_3
     //   6325: aload_0
-    //   6326: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   6326: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   6329: lload 13
     //   6331: iconst_0
     //   6332: iconst_0
     //   6333: anewarray 4	java/lang/Object
-    //   6336: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   6336: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   6339: iload 7
     //   6341: istore 6
     //   6343: goto -5963 -> 380
@@ -3001,7 +3001,7 @@ public class SecSpyFileManager$2
     //   6354: iload 10
     //   6356: istore_3
     //   6357: aload_0
-    //   6358: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   6358: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   6361: lload 13
     //   6363: iconst_m1
     //   6364: iconst_1
@@ -3010,7 +3010,7 @@ public class SecSpyFileManager$2
     //   6369: iconst_0
     //   6370: ldc_w 420
     //   6373: aastore
-    //   6374: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   6374: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   6377: iload 7
     //   6379: istore 6
     //   6381: goto -6001 -> 380
@@ -3021,10 +3021,10 @@ public class SecSpyFileManager$2
     //   6392: iload 10
     //   6394: istore_3
     //   6395: aload_0
-    //   6396: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   6399: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6396: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   6399: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   6402: invokevirtual 194	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   6405: invokestatic 531	azto:a	(Landroid/app/Application;)V
+    //   6405: invokestatic 531	baus:a	(Landroid/app/Application;)V
     //   6408: iload 8
     //   6410: istore 4
     //   6412: iload 9
@@ -3032,12 +3032,12 @@ public class SecSpyFileManager$2
     //   6416: iload 10
     //   6418: istore_3
     //   6419: aload_0
-    //   6420: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   6423: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
-    //   6426: invokevirtual 504	azto:a	()Landroid/os/Handler;
+    //   6420: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   6423: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
+    //   6426: invokevirtual 504	baus:a	()Landroid/os/Handler;
     //   6429: aload_0
-    //   6430: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   6433: invokestatic 507	avyq:a	(Lavyq;)Ljava/lang/Runnable;
+    //   6430: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   6433: invokestatic 507	awyj:a	(Lawyj;)Ljava/lang/Runnable;
     //   6436: invokevirtual 513	android/os/Handler:removeCallbacks	(Ljava/lang/Runnable;)V
     //   6439: iload 8
     //   6441: istore 4
@@ -3046,12 +3046,12 @@ public class SecSpyFileManager$2
     //   6447: iload 10
     //   6449: istore_3
     //   6450: aload_0
-    //   6451: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   6451: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   6454: lload 13
     //   6456: iconst_0
     //   6457: iconst_0
     //   6458: anewarray 4	java/lang/Object
-    //   6461: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   6461: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   6464: iload 7
     //   6466: istore 6
     //   6468: goto -6088 -> 380
@@ -3086,17 +3086,17 @@ public class SecSpyFileManager$2
     //   6530: iload 10
     //   6532: istore_3
     //   6533: aload_0
-    //   6534: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   6537: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   6534: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   6537: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   6540: aload_0
-    //   6541: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   6544: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6541: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   6544: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   6547: lload 13
     //   6549: aload 17
     //   6551: aload_0
-    //   6552: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   6555: getfield 279	avyq:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   6558: invokevirtual 534	azto:a	(Lcom/tencent/mobileqq/app/QQAppInterface;JLjava/lang/String;Landroid/os/Handler;)V
+    //   6552: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   6555: getfield 279	awyj:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   6558: invokevirtual 534	baus:a	(Lcom/tencent/mobileqq/app/QQAppInterface;JLjava/lang/String;Landroid/os/Handler;)V
     //   6561: iload 7
     //   6563: istore 6
     //   6565: goto -6185 -> 380
@@ -3108,7 +3108,7 @@ public class SecSpyFileManager$2
     //   6578: iload 10
     //   6580: istore_3
     //   6581: aload_0
-    //   6582: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   6582: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   6585: lload 13
     //   6587: iconst_m1
     //   6588: iconst_1
@@ -3118,7 +3118,7 @@ public class SecSpyFileManager$2
     //   6594: aload 17
     //   6596: invokevirtual 535	java/io/IOException:getMessage	()Ljava/lang/String;
     //   6599: aastore
-    //   6600: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   6600: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   6603: iload 7
     //   6605: istore 6
     //   6607: goto -6227 -> 380
@@ -3129,7 +3129,7 @@ public class SecSpyFileManager$2
     //   6618: iload 10
     //   6620: istore_3
     //   6621: aload_0
-    //   6622: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   6622: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   6625: lload 13
     //   6627: iconst_m1
     //   6628: iconst_1
@@ -3138,7 +3138,7 @@ public class SecSpyFileManager$2
     //   6633: iconst_0
     //   6634: ldc_w 420
     //   6637: aastore
-    //   6638: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   6638: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   6641: iload 7
     //   6643: istore 6
     //   6645: goto -6265 -> 380
@@ -3171,26 +3171,26 @@ public class SecSpyFileManager$2
     //   6703: iload 10
     //   6705: istore_3
     //   6706: aload_0
-    //   6707: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   6710: getfield 185	avyq:jdField_a_of_type_Azto	Lazto;
+    //   6707: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   6710: getfield 185	awyj:jdField_a_of_type_Baus	Lbaus;
     //   6713: aload_0
-    //   6714: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   6717: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6714: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   6717: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   6720: lload 13
     //   6722: aload 18
-    //   6724: invokevirtual 538	azto:a	(Lcom/tencent/mobileqq/app/QQAppInterface;JLjava/lang/String;)Ljava/lang/String;
+    //   6724: invokevirtual 538	baus:a	(Lcom/tencent/mobileqq/app/QQAppInterface;JLjava/lang/String;)Ljava/lang/String;
     //   6727: astore 18
     //   6729: iload 8
     //   6731: istore 4
     //   6733: iload 10
     //   6735: istore_3
     //   6736: aload_0
-    //   6737: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   6737: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   6740: aload 18
     //   6742: lload 13
     //   6744: aload 17
     //   6746: iconst_1
-    //   6747: invokevirtual 307	avyq:a	(Ljava/lang/String;JLjava/lang/String;Z)V
+    //   6747: invokevirtual 307	awyj:a	(Ljava/lang/String;JLjava/lang/String;Z)V
     //   6750: iload 7
     //   6752: istore 6
     //   6754: goto -6374 -> 380
@@ -3202,7 +3202,7 @@ public class SecSpyFileManager$2
     //   6767: iload 10
     //   6769: istore_3
     //   6770: aload_0
-    //   6771: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   6771: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   6774: lload 13
     //   6776: iconst_m1
     //   6777: iconst_1
@@ -3212,7 +3212,7 @@ public class SecSpyFileManager$2
     //   6783: aload 17
     //   6785: invokevirtual 366	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   6788: aastore
-    //   6789: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   6789: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   6792: iload 7
     //   6794: istore 6
     //   6796: goto -6416 -> 380
@@ -3223,7 +3223,7 @@ public class SecSpyFileManager$2
     //   6807: iload 10
     //   6809: istore_3
     //   6810: aload_0
-    //   6811: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   6811: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   6814: lload 13
     //   6816: iconst_m1
     //   6817: iconst_1
@@ -3232,7 +3232,7 @@ public class SecSpyFileManager$2
     //   6822: iconst_0
     //   6823: ldc_w 420
     //   6826: aastore
-    //   6827: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   6827: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   6830: iload 7
     //   6832: istore 6
     //   6834: goto -6454 -> 380
@@ -3244,8 +3244,8 @@ public class SecSpyFileManager$2
     //   6847: istore_3
     //   6848: aconst_null
     //   6849: aload_0
-    //   6850: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
-    //   6853: getfield 188	avyq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6850: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
+    //   6853: getfield 188	awyj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   6856: invokestatic 543	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:a	(Landroid/app/Activity;Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   6859: iload 8
     //   6861: istore 4
@@ -3254,12 +3254,12 @@ public class SecSpyFileManager$2
     //   6867: iload 10
     //   6869: istore_3
     //   6870: aload_0
-    //   6871: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lavyq;
+    //   6871: getfield 15	com/tencent/mobileqq/secspy/SecSpyFileManager$2:this$0	Lawyj;
     //   6874: lload 13
     //   6876: iconst_0
     //   6877: iconst_0
     //   6878: anewarray 4	java/lang/Object
-    //   6881: invokevirtual 113	avyq:a	(JI[Ljava/lang/Object;)V
+    //   6881: invokevirtual 113	awyj:a	(JI[Ljava/lang/Object;)V
     //   6884: iload 7
     //   6886: istore 6
     //   6888: goto -6508 -> 380
@@ -3332,7 +3332,7 @@ public class SecSpyFileManager$2
     //   753	20	17	localException1	java.lang.Exception
     //   898	441	17	localObject1	Object
     //   1428	79	17	localObject2	Object
-    //   1540	552	17	localaztu	aztu
+    //   1540	552	17	localbauy	bauy
     //   2104	27	17	localJSONException1	org.json.JSONException
     //   2172	160	17	localObject3	Object
     //   2343	383	17	localJSONException2	org.json.JSONException

@@ -1,16 +1,10 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-
 public class atzq
-  implements bajj<Rect>
 {
-  public atzq(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  public String a = "auto";
   
-  public void a(bajd<Rect> parambajd, float paramFloat, Rect paramRect, Transformation paramTransformation)
+  public String toString()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
+    return "ARCloudReqOcrInfo{language = " + this.a + '}';
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajjy;
+import ajyc;
 import android.content.DialogInterface.OnDismissListener;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import baip;
+import bbjw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.MiniAppInterface;
@@ -24,6 +24,10 @@ import com.tencent.mobileqq.mini.apkg.SecondApiRightInfo;
 import com.tencent.mobileqq.mini.app.AuthorizeCenter;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.jsapi.IJsPlugin;
+import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
+import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
+import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
+import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.sdk.EntryModel;
@@ -71,8 +75,9 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
   public BaseAppBrandRuntime appBrandRuntime;
   AuthDialog authDialog;
   public AuthorizeCenter authorizeCenter;
+  private boolean checkStoragePermission;
   private List<String> defaultBlackList;
-  DialogInterface.OnDismissListener dismissListener = new BaseJsPluginEngine.8(this);
+  DialogInterface.OnDismissListener dismissListener;
   private HashMap<String, Integer> firstApiMap;
   private boolean isCreated;
   private boolean isDestory;
@@ -91,10 +96,18 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
   
   public BaseJsPluginEngine(BaseAppBrandRuntime paramBaseAppBrandRuntime)
   {
-    this.appBrandRuntime = paramBaseAppBrandRuntime;
-    this.jobQueue = new ConcurrentLinkedQueue();
-    this.sysPermissionQueue = new ConcurrentLinkedQueue();
-    this.uiHandler = new Handler(Looper.getMainLooper(), this);
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "miniappcheckstoragepermission", 0) == 1) {}
+    for (;;)
+    {
+      this.checkStoragePermission = bool;
+      this.dismissListener = new BaseJsPluginEngine.8(this);
+      this.appBrandRuntime = paramBaseAppBrandRuntime;
+      this.jobQueue = new ConcurrentLinkedQueue();
+      this.sysPermissionQueue = new ConcurrentLinkedQueue();
+      this.uiHandler = new Handler(Looper.getMainLooper(), this);
+      return;
+      bool = false;
+    }
   }
   
   public static void assertInMainThread()
@@ -143,21 +156,31 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
       return "";
     }
     String str;
-    if (!apiAuthoritySilent())
-    {
-      if (this.appBrandRuntime != null)
+    if (i == 1) {
+      if (!apiAuthoritySilent())
       {
-        str = this.appBrandRuntime.appId;
-        label115:
-        if ((!isAuthWhiteAppId(str)) && (!paramBoolean)) {
-          break label245;
+        if (this.appBrandRuntime != null)
+        {
+          str = this.appBrandRuntime.appId;
+          label122:
+          if (!isAuthWhiteAppId(str)) {
+            break label299;
+          }
         }
       }
+      else
+      {
+        str = AuthorizeCenter.getScopeName(paramString1, paramString2);
+        if (!TextUtils.isEmpty(str))
+        {
+          this.authorizeCenter.setAuthorize(str, true);
+          QLog.i("BaseJsPluginEngine", 1, "apiAuthoritySilent setAuthorize : " + str);
+        }
+        i = 2;
+      }
     }
-    else {
-      i = 2;
-    }
-    label275:
+    label299:
+    label340:
     for (;;)
     {
       if (QLog.isColorLevel()) {
@@ -177,10 +200,14 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
         this.uiHandler.obtainMessage(1).sendToTarget();
         return str;
         str = null;
-        break label115;
-        label245:
+        break label122;
+        if (paramBoolean)
+        {
+          i = 2;
+          continue;
+        }
         if (!this.authorizeCenter.shouldAskEveryTime(paramString1, paramString2)) {
-          break label275;
+          break label340;
         }
         i = 1;
         continue;
@@ -279,6 +306,9 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
     this.defaultBlackList.add("queryAppInfo");
     this.defaultBlackList.add("installApp");
     this.defaultBlackList.add("startApp");
+    this.defaultBlackList.add("showMiniAIOEntrance");
+    this.defaultBlackList.add("hideMiniAIOEntrance");
+    this.defaultBlackList.add("getGroupInfoExtra");
   }
   
   public static boolean isAuthWhiteAppId(String paramString)
@@ -435,12 +465,12 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
     {
       localObject = new JSONObject(paramString).opt("subscribe");
       if (!(localObject instanceof Boolean)) {
-        break label293;
+        break label300;
       }
       boolean bool = ((Boolean)localObject).booleanValue();
       localObject = new BaseJsPluginEngine.3(this, paramJsRuntime, paramInt);
       if (!bool) {
-        break label276;
+        break label282;
       }
       if (i == 1)
       {
@@ -465,7 +495,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
     }
     catch (JSONException paramString)
     {
-      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, ajjy.a(2131635215), paramInt);
+      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, ajyc.a(2131700999), paramInt);
       paramString.printStackTrace();
       return;
     }
@@ -473,11 +503,11 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
     {
       callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, "no permission", paramInt);
       return;
-      label276:
+      label282:
       this.authorizeCenter.setAuthorize(AuthorizeCenter.getScopeName("subscribeAppMsg", paramString), false, (MiniAppCmdInterface)localObject);
       return;
-      label293:
-      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, ajjy.a(2131635214), paramInt);
+      label300:
+      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, ajyc.a(2131700998), paramInt);
     }
   }
   
@@ -551,6 +581,23 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
     return null;
   }
   
+  public WebviewContainer getWebviewContainer(JsRuntime paramJsRuntime)
+  {
+    if ((paramJsRuntime instanceof PageWebview))
+    {
+      AbsAppBrandPage localAbsAppBrandPage = ((AppBrandPageContainer)this.appBrandRuntime.getContainer()).getPageByWebViewId(paramJsRuntime.getPageWebViewId());
+      paramJsRuntime = ((PageWebview)paramJsRuntime).getRouteUrl();
+      if (localAbsAppBrandPage != null) {
+        return localAbsAppBrandPage.getWebviewContainerByUrl(paramJsRuntime);
+      }
+    }
+    else
+    {
+      return this.appBrandRuntime.getCurWebviewContainer();
+    }
+    return null;
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
     if (QLog.isColorLevel()) {
@@ -579,7 +626,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
         String str1 = (String)AuthorizeCenter.scopeDescMap.get(localObject1);
         paramMessage = (String)AuthorizeCenter.negativeButtonDesMap.get(localObject1);
         if (TextUtils.isEmpty(paramMessage)) {
-          paramMessage = ajjy.a(2131635218);
+          paramMessage = ajyc.a(2131701002);
         }
         Object localObject3;
         String str2;
@@ -598,9 +645,9 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
           break;
         }
         label303:
-        if ((this.authDialog != null) && (!this.isDestory))
+        if ((this.authDialog != null) && (!this.isPause))
         {
-          this.authDialog.show(str2, (String)localObject3, (String)localObject2, null, null, str1, paramMessage, new BaseJsPluginEngine.6(this), ajjy.a(2131635216), new BaseJsPluginEngine.7(this));
+          this.authDialog.show(str2, (String)localObject3, (String)localObject2, null, null, str1, paramMessage, new BaseJsPluginEngine.6(this), ajyc.a(2131701000), new BaseJsPluginEngine.7(this));
           continue;
           localObject1 = this.sysPermissionQueue.iterator();
           if ((paramMessage.arg1 == 3) || (paramMessage.arg1 == 2))
@@ -711,39 +758,39 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
       {
         localObject = this.appBrandRuntime.activity;
         if ((localObject == null) || (!(localObject instanceof BaseActivity))) {
-          break label382;
+          break label386;
         }
         localObject = (BaseActivity)localObject;
         label307:
         if (localObject != null)
         {
           str2 = AuthorizeCenter.getSystemPermission(paramString1, paramString2);
-          if (baip.a(str2)) {
-            break label432;
+          if (bbjw.a(str2)) {
+            break label436;
           }
           if (((BaseActivity)localObject).checkSelfPermission(str2) != 0) {
-            break label388;
+            break label392;
           }
         }
       }
-      label388:
+      label386:
+      label392:
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
-          break label394;
+          break label398;
         }
-        ((BaseActivity)localObject).requestPermissions(new BaseJsPluginEngine.1(this, paramString1, paramString2, paramJsRuntime, paramInt), 1, new String[] { str2 });
+        ((BaseActivity)localObject).requestPermissions(new BaseJsPluginEngine.1(this, paramString1, paramString2, paramJsRuntime, paramInt, str2, (BaseActivity)localObject), 1, new String[] { str2 });
         return "";
         localObject = null;
         break;
-        label382:
         localObject = null;
         break label307;
       }
-      label394:
+      label398:
       QLog.d("BaseJsPluginEngine", 2, str2 + " has granted permission!!!");
       return handleNativeRequestInner(paramString1, paramString2, paramJsRuntime, paramInt, false);
-      label432:
+      label436:
       return handleNativeRequestInner(paramString1, paramString2, paramJsRuntime, paramInt, false);
     }
     return handleNativeRequestInner(paramString1, paramString2, paramJsRuntime, paramInt, false);

@@ -1,9 +1,9 @@
 package com.tencent.util;
 
-import ajjc;
+import ajxg;
 import android.graphics.Bitmap;
 import android.widget.ImageView.ScaleType;
-import beom;
+import bfwg;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.data.Card;
@@ -12,24 +12,24 @@ import com.tencent.mobileqq.widget.RandomCoverView;
 public final class DrawerCoverUtil$3
   implements Runnable
 {
-  public DrawerCoverUtil$3(BaseActivity paramBaseActivity, Bitmap paramBitmap, RandomCoverView paramRandomCoverView, boolean paramBoolean, ajjc paramajjc, Card paramCard) {}
+  public DrawerCoverUtil$3(BaseActivity paramBaseActivity, Bitmap paramBitmap, RandomCoverView paramRandomCoverView, boolean paramBoolean, ajxg paramajxg, Card paramCard) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) {
       return;
     }
-    beom localbeom = new beom(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidGraphicsBitmap, 0, 0);
+    bfwg localbfwg = new bfwg(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidGraphicsBitmap, 0, 0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setImageDrawable(localbeom);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setImageDrawable(localbfwg);
     if (this.jdField_a_of_type_Boolean) {
-      localbeom.a();
+      localbfwg.a();
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ajjc.a(this.jdField_a_of_type_ComTencentMobileqqDataCard.strDrawerCardUrl, localbeom);
+      this.jdField_a_of_type_Ajxg.a(this.jdField_a_of_type_ComTencentMobileqqDataCard.strDrawerCardUrl, localbfwg);
       return;
-      localbeom.b();
+      localbfwg.b();
     }
   }
 }

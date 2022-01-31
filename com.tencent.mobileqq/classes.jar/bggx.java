@@ -1,27 +1,33 @@
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.video.QzoneLiveVideoInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.webbundle.sdk.WebBundleLogListener;
+import org.jetbrains.annotations.NotNull;
 
-public final class bggx
-  implements bgaz
+final class bggx
+  implements WebBundleLogListener
 {
-  public bggx(String paramString) {}
-  
-  public void onQzonePluginClientReady(bfzg parambfzg)
+  public void log(int paramInt, @NotNull String paramString1, @NotNull String paramString2)
   {
-    if (parambfzg == null) {
-      bgax.a(QzoneLiveVideoInterface.getContext(), this);
-    }
-    do
+    if (QLog.isColorLevel()) {}
+    switch (paramInt)
     {
+    default: 
       return;
-      parambfzg = parambfzg.a(this.a);
-    } while (parambfzg == null);
-    QzoneLiveVideoInterface.access$002(parambfzg.ver);
+    case 4: 
+      QLog.i(paramString1, 2, paramString2);
+      return;
+    case 3: 
+      QLog.d(paramString1, 2, paramString2);
+      return;
+    case 5: 
+      QLog.w(paramString1, 2, paramString2);
+      return;
+    }
+    QLog.e(paramString1, 2, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bggx
  * JD-Core Version:    0.7.0.1
  */

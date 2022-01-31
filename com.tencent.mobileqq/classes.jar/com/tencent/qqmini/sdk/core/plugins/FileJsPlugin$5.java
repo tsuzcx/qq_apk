@@ -1,36 +1,47 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bdeu;
-import bdfz;
-import bdnw;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import beiu;
+import beka;
+import bfgi;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.io.IOException;
 
 class FileJsPlugin$5
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$5(FileJsPlugin paramFileJsPlugin, bdfz parambdfz, long paramLong) {}
+  FileJsPlugin$5(FileJsPlugin paramFileJsPlugin, String paramString1, beka parambeka, String paramString2, String paramString3, byte[] paramArrayOfByte) {}
   
   public String run()
   {
-    try
+    if (!FileJsPlugin.access$300(this.this$0, this.val$encoding)) {
+      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "invalid encoding " + this.val$encoding);
+    }
+    if (beiu.a().a(this.val$filePath) != 2) {
+      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$filePath);
+    }
+    String str = beiu.a().c(this.val$filePath);
+    if (!TextUtils.isEmpty(str))
     {
-      String str1 = new JSONObject(this.val$req.b).optString("path");
-      String str2 = bdeu.a().a(str1);
-      bdnw.a("FileJsPlugin", "accessFile [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], aboFilePath:" + str2);
-      if ((TextUtils.isEmpty(str2)) || (!new File(str2).exists())) {
-        return FileJsPlugin.access$100(this.this$0, this.val$req, null, "no such file or directory \"" + str1 + "\"");
+      if (str.contains("miniprogramLog"))
+      {
+        bfgi.a(this.this$0.mMiniAppInfo.appId, this.val$data);
+        return FileJsPlugin.access$200(this.this$0, this.val$req, null);
       }
-      str1 = FileJsPlugin.access$200(this.this$0, this.val$req, null);
-      return str1;
+      try
+      {
+        if (FileJsPlugin.access$400(this.this$0, this.val$nativeBufferBytes, this.val$data, this.val$encoding, str, true))
+        {
+          str = FileJsPlugin.access$200(this.this$0, this.val$req, null);
+          return str;
+        }
+      }
+      catch (IOException localIOException)
+      {
+        return FileJsPlugin.access$100(this.this$0, this.val$req, null, localIOException.getMessage());
+      }
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return "";
+    return FileJsPlugin.access$100(this.this$0, this.val$req, null, "no such file or directory, open ");
   }
 }
 

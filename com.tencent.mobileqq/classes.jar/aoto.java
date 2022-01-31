@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
 public class aoto
-  implements alsd
+  implements Cloneable
 {
-  public ColorNote getColorNote()
-  {
-    alsl localalsl = new alsl();
-    localalsl.a(17039360);
-    String str = apdq.b(-1, "");
-    if (QLog.isColorLevel()) {
-      QLog.i("DefaultFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
-    }
-    localalsl.a(str);
-    localalsl.b("default_file");
-    localalsl.c("0MB");
-    localalsl.d("resdrawable://2130843465");
-    return localalsl.a();
-  }
+  public int a;
+  public View a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public int b;
+  public TextView b;
+  public int c;
+  
+  public aoto(aotm paramaotm) {}
 }
 
 

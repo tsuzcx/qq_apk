@@ -1,38 +1,48 @@
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.upload.UploadManager;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
-
 public class aonh
+  extends aonk
 {
-  private final bgvj jdField_a_of_type_Bgvj;
-  private final UploadManager.IUploadStatusListener jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadManager$IUploadStatusListener;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
-  private String b;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public aonh(String paramString, Object paramObject, boolean paramBoolean, UploadManager.IUploadStatusListener paramIUploadStatusListener, bgvj parambgvj)
+  public aonh(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadManager$IUploadStatusListener = paramIUploadStatusListener;
-    this.jdField_a_of_type_Bgvj = parambgvj;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      WeiyunTransmissionGlobal.getInstance().getUploadManager().removeJob(this.jdField_a_of_type_JavaLangString);
-      return;
+    super(2, paramString1);
+    this.a = paramString2;
+    this.b = paramString3;
+    this.c = paramString4;
+    this.d = paramString5;
+    if (this.b == null) {
+      this.b = "";
     }
-    bguw.a().a(this.jdField_a_of_type_JavaLangString);
+    if (this.e == null) {
+      this.e = "";
+    }
   }
   
-  public void a(String paramString)
+  public boolean equals(Object paramObject)
   {
-    this.b = paramString;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof aonh))
+    {
+      paramObject = (aonh)paramObject;
+      bool1 = bool2;
+      if (this.b.equals(paramObject.b))
+      {
+        bool1 = bool2;
+        if (this.e.equals(paramObject.e)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    return this.e + "_" + this.b;
   }
 }
 

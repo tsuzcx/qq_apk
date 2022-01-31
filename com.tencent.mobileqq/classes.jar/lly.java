@@ -1,40 +1,20 @@
-import android.app.Notification;
-import android.graphics.Bitmap;
-import android.os.IInterface;
-import com.tencent.av.service.AVPbInfo;
+import com.tencent.av.core.VcControllerImpl;
 
-public abstract interface lly
-  extends IInterface
+public class lly
 {
-  public abstract int a(long paramLong, int paramInt);
+  public int a;
+  public long a;
+  public String a;
+  public int b;
   
-  public abstract AVPbInfo a(byte[] paramArrayOfByte);
+  public lly(VcControllerImpl paramVcControllerImpl) {}
   
-  public abstract void a();
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(long paramLong, String paramString);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, Bitmap paramBitmap);
-  
-  public abstract void a(llv paramllv);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, Notification paramNotification);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b();
-  
-  public abstract void b(byte[] paramArrayOfByte);
-  
-  public abstract void c();
-  
-  public abstract void c(byte[] paramArrayOfByte);
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" uin : " + this.jdField_a_of_type_Long + " operation : " + this.jdField_a_of_type_Int + " opvalue : " + this.b + " nickname : " + this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
+  }
 }
 
 

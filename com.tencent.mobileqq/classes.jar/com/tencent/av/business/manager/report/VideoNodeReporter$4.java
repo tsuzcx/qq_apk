@@ -1,15 +1,15 @@
 package com.tencent.av.business.manager.report;
 
-import kyl;
+import ljb;
 
 public class VideoNodeReporter$4
   implements Runnable
 {
-  public VideoNodeReporter$4(kyl paramkyl, long paramLong1, int paramInt, long paramLong2) {}
+  public VideoNodeReporter$4(ljb paramljb, long paramLong1, int paramInt, long paramLong2) {}
   
   public void run()
   {
-    kyl.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
+    ljb.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
   }
 }
 

@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.mobileqq.pluginsdk.PluginInterface;
+import com.tencent.mobileqq.pluginsdk.PluginInterfaceHelper.OnPluginInterfaceLoadedListener;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
 
 public class bbty
-  implements DialogInterface.OnClickListener
+  implements PluginInterfaceHelper.OnPluginInterfaceLoadedListener
 {
-  public bbty(AuthorityActivity paramAuthorityActivity) {}
+  public bbty(PathTraceManager paramPathTraceManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPluginInterfaceLoaded(PluginInterface paramPluginInterface)
   {
-    paramDialogInterface.dismiss();
+    PathTraceManager.a(this.a, paramPluginInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbty
  * JD-Core Version:    0.7.0.1
  */

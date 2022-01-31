@@ -1,8 +1,69 @@
-import android.net.Uri;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract interface rvo
+public class rvo<T>
 {
-  public abstract void a(Uri paramUri, String paramString, int paramInt);
+  private T jdField_a_of_type_JavaLangObject;
+  private List<rvp<T>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  
+  public rvo(T paramT)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+  }
+  
+  public T a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((rvp)localIterator.next()).a(this);
+      }
+    }
+    finally {}
+  }
+  
+  public void a(T paramT)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    a();
+  }
+  
+  public void a(rvp<T> paramrvp)
+  {
+    try
+    {
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramrvp)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramrvp);
+      }
+      return;
+    }
+    finally
+    {
+      paramrvp = finally;
+      throw paramrvp;
+    }
+  }
+  
+  public void b(rvp<T> paramrvp)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramrvp);
+      return;
+    }
+    finally
+    {
+      paramrvp = finally;
+      throw paramrvp;
+    }
+  }
 }
 
 

@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.logic;
 
 import java.util.List;
-import onu;
-import qoe;
+import ozj;
+import rap;
 
 public class ReadinjoyFixPosArticleManager$1
   implements Runnable
 {
-  public ReadinjoyFixPosArticleManager$1(onu paramonu, qoe paramqoe, List paramList) {}
+  public ReadinjoyFixPosArticleManager$1(ozj paramozj, rap paramrap, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Qoe.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Qoe.notifyDataSetChanged();
+    this.jdField_a_of_type_Rap.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Rap.notifyDataSetChanged();
   }
 }
 

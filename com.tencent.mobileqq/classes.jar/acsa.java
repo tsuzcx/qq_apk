@@ -1,16 +1,20 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
+import cooperation.qwallet.plugin.FakeUrl.FakeInfo;
+import cooperation.qwallet.plugin.FakeUrl.FakeListener;
 
-class acsa
-  implements View.OnClickListener
+public class acsa
+  implements FakeUrl.FakeListener
 {
-  acsa(acrz paramacrz) {}
+  public acsa(QQNotifySettingBaseFragment.2.1 param1) {}
   
-  public void onClick(View paramView)
+  public boolean onBlHandleFakeurl(FakeUrl.FakeInfo paramFakeInfo, int paramInt)
   {
-    this.a.a.a().finish();
+    return false;
+  }
+  
+  public boolean onClickUrl(String paramString)
+  {
+    return false;
   }
 }
 

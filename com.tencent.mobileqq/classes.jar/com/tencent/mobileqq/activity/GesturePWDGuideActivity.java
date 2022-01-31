@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aayd;
+import abia;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -13,9 +13,9 @@ public class GesturePWDGuideActivity
   
   private void a()
   {
-    setTitle(2131627363);
-    this.a = ((Button)findViewById(2131301399));
-    this.a.setOnClickListener(new aayd(this));
+    setTitle(2131693003);
+    this.a = ((Button)findViewById(2131367009));
+    this.a.setOnClickListener(new abia(this));
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -31,7 +31,7 @@ public class GesturePWDGuideActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131493548);
+    super.setContentView(2131559117);
     a();
   }
 }

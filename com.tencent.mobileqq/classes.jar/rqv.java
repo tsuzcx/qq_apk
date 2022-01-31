@@ -1,20 +1,19 @@
-import android.support.annotation.Nullable;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
 
-public abstract class rqv
+public class rqv
 {
-  public abstract int a();
-  
-  @Nullable
-  public Object a(int paramInt1, int paramInt2)
+  public static rqq a(Context paramContext, int paramInt)
   {
-    return null;
+    switch (paramInt)
+    {
+    default: 
+      return new rqt(paramContext);
+    case 2: 
+      return new ReadInJoySkinAnimManager(paramContext);
+    }
+    return new rqu(paramContext);
   }
-  
-  public abstract boolean a(int paramInt1, int paramInt2);
-  
-  public abstract int b();
-  
-  public abstract boolean b(int paramInt1, int paramInt2);
 }
 
 

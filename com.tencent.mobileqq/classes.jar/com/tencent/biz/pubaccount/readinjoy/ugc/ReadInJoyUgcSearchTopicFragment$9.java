@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
 import android.content.res.Resources;
-import bbmy;
+import bcpw;
 
 class ReadInJoyUgcSearchTopicFragment$9
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyUgcSearchTopicFragment$9
   
   public void run()
   {
-    bbmy.a(this.this$0.getActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangCharSequence, 0).b(this.this$0.getResources().getDimensionPixelSize(2131167766));
+    bcpw.a(this.this$0.getActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangCharSequence, 0).b(this.this$0.getResources().getDimensionPixelSize(2131298865));
   }
 }
 

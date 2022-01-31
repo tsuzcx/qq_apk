@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark;
 
-import alfa;
+import alto;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -16,7 +16,7 @@ class ArkHorizontalListView$1
       if (QLog.isColorLevel()) {
         QLog.d("ArkHorizontalListView", 2, "checkScrollToChild updateHeadBorder");
       }
-      ((alfa)ArkHorizontalListView.a(this.this$0).get()).a(this.this$0);
+      ((alto)ArkHorizontalListView.a(this.this$0).get()).a(this.this$0);
     }
   }
 }

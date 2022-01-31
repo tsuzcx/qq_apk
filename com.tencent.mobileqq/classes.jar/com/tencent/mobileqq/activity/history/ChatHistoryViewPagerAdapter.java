@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.history;
 
-import afew;
-import afkk;
-import afmo;
-import afmp;
-import afpe;
+import afqt;
+import afwh;
+import afyl;
+import afym;
+import agbe;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,24 +16,24 @@ import java.util.ArrayList;
 
 public class ChatHistoryViewPagerAdapter
   extends CustomFragmentStatePagerAdapter
-  implements afew
+  implements afqt
 {
-  private afkk jdField_a_of_type_Afkk;
-  private afmo jdField_a_of_type_Afmo;
+  private afwh jdField_a_of_type_Afwh;
+  private afyl jdField_a_of_type_Afyl;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private String jdField_a_of_type_JavaLangString;
   protected ArrayList<ChatHistoryBaseFragment> a;
-  private ArrayList<afmp> b = new ArrayList();
+  private ArrayList<afym> b = new ArrayList();
   
-  public ChatHistoryViewPagerAdapter(FragmentManager paramFragmentManager, BaseActivity paramBaseActivity, afkk paramafkk, afmo paramafmo, String paramString)
+  public ChatHistoryViewPagerAdapter(FragmentManager paramFragmentManager, BaseActivity paramBaseActivity, afwh paramafwh, afyl paramafyl, String paramString)
   {
     super(paramFragmentManager);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_Afkk = paramafkk;
-    this.jdField_a_of_type_Afmo = paramafmo;
+    this.jdField_a_of_type_Afwh = paramafwh;
+    this.jdField_a_of_type_Afyl = paramafyl;
     this.b.clear();
-    this.b.addAll(this.jdField_a_of_type_Afmo.jdField_a_of_type_JavaUtilArrayList);
+    this.b.addAll(this.jdField_a_of_type_Afyl.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
@@ -42,7 +42,7 @@ public class ChatHistoryViewPagerAdapter
     int i = 0;
     while (i < this.b.size())
     {
-      if (((afmp)this.b.get(i)).a == paramInt) {
+      if (((afym)this.b.get(i)).a == paramInt) {
         return i;
       }
       i += 1;
@@ -50,10 +50,10 @@ public class ChatHistoryViewPagerAdapter
     return -1;
   }
   
-  private afmp a(int paramInt)
+  private afym a(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt < this.b.size())) {
-      return (afmp)this.b.get(paramInt);
+      return (afym)this.b.get(paramInt);
     }
     return null;
   }
@@ -82,24 +82,24 @@ public class ChatHistoryViewPagerAdapter
   
   public ChatHistoryBaseFragment a(int paramInt, boolean paramBoolean)
   {
-    afmp localafmp = a(paramInt);
+    afym localafym = a(paramInt);
     Object localObject1 = null;
-    if (localafmp != null)
+    if (localafym != null)
     {
-      Object localObject2 = a(localafmp.a);
+      Object localObject2 = a(localafym.a);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = localObject2;
         if (paramBoolean)
         {
-          localObject1 = afpe.a(localafmp.a);
+          localObject1 = agbe.a(localafym.a);
           ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
           ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
           ((ChatHistoryBaseFragment)localObject1).a(paramInt);
           ((ChatHistoryBaseFragment)localObject1).b(this.jdField_a_of_type_JavaLangString);
-          ((ChatHistoryBaseFragment)localObject1).b(localafmp.a);
-          ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_Afkk);
+          ((ChatHistoryBaseFragment)localObject1).b(localafym.a);
+          ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_Afwh);
           localObject2 = new Bundle();
           ((Bundle)localObject2).putBoolean("should_restore_from_kill", false);
           ((ChatHistoryBaseFragment)localObject1).setArguments((Bundle)localObject2);

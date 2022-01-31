@@ -1,19 +1,15 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class agfh
-  implements MessageQueue.IdleHandler
+class agfh
+  implements View.OnTouchListener
 {
-  public agfh(AlbumListFragment paramAlbumListFragment, int paramInt1, int paramInt2) {}
+  agfh(agfg paramagfg) {}
   
-  public boolean queueIdle()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AlbumListActivity", 2, "load Scroll Position,index:" + this.jdField_a_of_type_Int + " top:" + this.b);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListFragment.a.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
+    agfg.a(this.a, paramView);
     return false;
   }
 }

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.location.ui;
 
-import arap;
-import arat;
-import bbmy;
+import arwd;
+import arwh;
+import bcpw;
 
 public class LocationPickController$3
   implements Runnable
 {
-  public LocationPickController$3(arat paramarat) {}
+  public LocationPickController$3(arwh paramarwh) {}
   
   public void run()
   {
-    if (arat.a(this.this$0).getCount() <= 0) {
-      arat.a(this.this$0);
+    if (arwh.a(this.this$0).getCount() <= 0) {
+      arwh.a(this.this$0);
     }
-    bbmy.a(arat.a(this.this$0), 1, 2131628360, 0).a();
+    bcpw.a(arwh.a(this.this$0), 1, 2131694001, 0).a();
   }
 }
 

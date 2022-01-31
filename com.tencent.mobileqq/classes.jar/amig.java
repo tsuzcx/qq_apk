@@ -1,67 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
 
-public class amig
-  extends amie<amif>
+class amig
+  implements amia
 {
-  public int a()
-  {
-    return 479;
-  }
+  amig(amic paramamic) {}
   
-  @NonNull
-  public amif a()
+  public void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomOnlineStatusManager", 2, "migrateDefaultContent");
-    }
-    return new amif();
-  }
-  
-  @NonNull
-  public amif a(@NonNull alzs[] paramArrayOfalzs)
-  {
-    boolean bool = false;
-    amif localamif = new amif();
-    try
-    {
-      if (paramArrayOfalzs[0].a != null)
-      {
-        if (new JSONObject(paramArrayOfalzs[0].a).optInt("show_custom_online_state", 1) == 1) {
-          bool = true;
-        }
-        localamif.a = bool;
-        if (QLog.isColorLevel()) {
-          QLog.d("CustomOnlineStatusManager", 2, "parsed showVipIcon: " + localamif.a);
-        }
-      }
-      return localamif;
-    }
-    catch (Exception paramArrayOfalzs)
-    {
-      QLog.e("CustomOnlineStatusManager", 1, "parsed failed: ", paramArrayOfalzs);
-    }
-    return localamif;
-  }
-  
-  public Class<amif> a()
-  {
-    return amif.class;
-  }
-  
-  @NonNull
-  public amif b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomOnlineStatusManager", 2, "migrateOldContent");
-    }
-    return new amif();
+    amic.a(this.a, amic.a(this.a).inflate());
+    amic.a(this.a).setOnClickListener(new amih(this));
+    ((TextView)amic.a(this.a).findViewById(2131365170)).setOnClickListener(new amii(this));
+    axqw.b(null, "dc00898", "", "", "0X800A8AD", "0X800A8AD", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amig
  * JD-Core Version:    0.7.0.1
  */

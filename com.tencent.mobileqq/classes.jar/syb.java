@@ -1,24 +1,6 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
 public class syb
-  extends sfo
 {
-  public final int a;
-  public final String a;
-  public final String b;
-  
-  public syb(sya paramsya, ErrorMessage paramErrorMessage, String paramString1, String paramString2, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.jdField_a_of_type_Int + "} " + super.toString();
-  }
+  public static int[][] a = { { -1, 243 }, { -1, 248 } };
 }
 
 

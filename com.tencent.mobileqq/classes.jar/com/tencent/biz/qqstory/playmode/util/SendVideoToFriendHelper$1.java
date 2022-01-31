@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import bacm;
+import bbdr;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -14,93 +14,93 @@ import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 import java.io.File;
 import java.io.IOException;
-import sgi;
-import tfy;
-import tgm;
-import tgo;
-import urk;
-import vms;
-import vnr;
+import ste;
+import tsu;
+import tti;
+import ttk;
+import veg;
+import vzo;
+import wan;
 
 public class SendVideoToFriendHelper$1
   implements Runnable
 {
-  public SendVideoToFriendHelper$1(tgm paramtgm, long paramLong, StoryVideoItem paramStoryVideoItem, String paramString) {}
+  public SendVideoToFriendHelper$1(tti paramtti, long paramLong, StoryVideoItem paramStoryVideoItem, String paramString) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    urk.d("SendVideoToFriendHelper", "generateShareThumb run start: %d.", new Object[] { Long.valueOf(l - this.jdField_a_of_type_Long) });
-    tgm.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    veg.d("SendVideoToFriendHelper", "generateShareThumb run start: %d.", new Object[] { Long.valueOf(l - this.jdField_a_of_type_Long) });
+    tti.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoLocalThumbnailPath)) {
-      urk.b("SendVideoToFriendHelper", "video thumbnail has existed.");
+      veg.b("SendVideoToFriendHelper", "video thumbnail has existed.");
     }
-    for (Object localObject1 = SafeBitmapFactory.decodeFile(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoLocalThumbnailPath);; localObject1 = vms.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalVideoPath, BaseApplicationImpl.getContext().getResources().getDisplayMetrics().widthPixels, BaseApplicationImpl.getContext().getResources().getDisplayMetrics().heightPixels))
+    for (Object localObject1 = SafeBitmapFactory.decodeFile(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoLocalThumbnailPath);; localObject1 = vzo.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalVideoPath, BaseApplicationImpl.getContext().getResources().getDisplayMetrics().widthPixels, BaseApplicationImpl.getContext().getResources().getDisplayMetrics().heightPixels))
     {
-      urk.d("SendVideoToFriendHelper", "generate share thumbnail step first cost: %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      veg.d("SendVideoToFriendHelper", "generate share thumbnail step first cost: %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       if (localObject1 != null) {
         break;
       }
-      localObject1 = new tgo(new ErrorMessage(-1, "generate thumbnail failed."), this.jdField_a_of_type_JavaLangString);
-      sgi.a().dispatch((Dispatcher.Dispatchable)localObject1);
+      localObject1 = new ttk(new ErrorMessage(-1, "generate thumbnail failed."), this.jdField_a_of_type_JavaLangString);
+      ste.a().dispatch((Dispatcher.Dispatchable)localObject1);
       return;
     }
     l = System.currentTimeMillis();
     Object localObject2 = localObject1;
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalMaskPath)) {
-      localObject2 = vnr.a((Bitmap)localObject1, SafeBitmapFactory.decodeFile(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalMaskPath));
+      localObject2 = wan.a((Bitmap)localObject1, SafeBitmapFactory.decodeFile(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalMaskPath));
     }
-    urk.d("SendVideoToFriendHelper", "generate share thumbnail step second cost: %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    veg.d("SendVideoToFriendHelper", "generate share thumbnail step second cost: %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     l = System.currentTimeMillis();
-    Object localObject3 = vnr.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoWidth, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoHeight);
+    Object localObject3 = wan.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoWidth, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoHeight);
     localObject1 = localObject2;
     if (localObject3 != null) {
-      localObject1 = vnr.a((Bitmap)localObject2, (Bitmap)localObject3);
+      localObject1 = wan.a((Bitmap)localObject2, (Bitmap)localObject3);
     }
-    urk.d("SendVideoToFriendHelper", "generate share thumbnail step third cost: %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    veg.d("SendVideoToFriendHelper", "generate share thumbnail step third cost: %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     l = System.currentTimeMillis();
-    localObject3 = vnr.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoWidth, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoHeight);
+    localObject3 = wan.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoWidth, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoHeight);
     localObject2 = localObject1;
     if (localObject3 != null) {
-      localObject2 = vnr.a((Bitmap)localObject1, (Bitmap)localObject3);
+      localObject2 = wan.a((Bitmap)localObject1, (Bitmap)localObject3);
     }
-    urk.d("SendVideoToFriendHelper", "generate share thumbnail step forth cost: %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    veg.d("SendVideoToFriendHelper", "generate share thumbnail step forth cost: %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     l = System.currentTimeMillis();
-    urk.d("SendVideoToFriendHelper", "generate share thumbnail step fifth cost: %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    veg.d("SendVideoToFriendHelper", "generate share thumbnail step fifth cost: %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     l = System.currentTimeMillis();
-    localObject1 = tfy.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, true);
+    localObject1 = tsu.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, true);
     localObject3 = new File((String)localObject1);
     for (;;)
     {
       try
       {
-        bacm.a((Bitmap)localObject2, (File)localObject3);
+        bbdr.a((Bitmap)localObject2, (File)localObject3);
         ((Bitmap)localObject2).recycle();
-        urk.c("SendVideoToFriendHelper", "generate thumbnail failed. e = %s.", localIOException1);
+        veg.c("SendVideoToFriendHelper", "generate thumbnail failed. e = %s.", localIOException1);
       }
       catch (IOException localIOException1)
       {
         try
         {
-          urk.a("SendVideoToFriendHelper", "generate thumbnail success. shareThumbPath = %s.", localObject1);
-          urk.d("SendVideoToFriendHelper", "generate share thumbnail step sixth cost: %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-          localObject2 = new tgo(new ErrorMessage(), this.jdField_a_of_type_JavaLangString);
-          ((tgo)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
-          ((tgo)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject1);
-          sgi.a().dispatch((Dispatcher.Dispatchable)localObject2);
+          veg.a("SendVideoToFriendHelper", "generate thumbnail success. shareThumbPath = %s.", localObject1);
+          veg.d("SendVideoToFriendHelper", "generate share thumbnail step sixth cost: %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+          localObject2 = new ttk(new ErrorMessage(), this.jdField_a_of_type_JavaLangString);
+          ((ttk)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+          ((ttk)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject1);
+          ste.a().dispatch((Dispatcher.Dispatchable)localObject2);
           return;
         }
         catch (IOException localIOException2)
         {
-          tgo localtgo;
+          ttk localttk;
           break label503;
         }
         localIOException1 = localIOException1;
         localObject1 = null;
       }
       label503:
-      localtgo = new tgo(new ErrorMessage(-1, "generate thumbnail failed." + localIOException1.getMessage()), this.jdField_a_of_type_JavaLangString);
-      sgi.a().dispatch(localtgo);
+      localttk = new ttk(new ErrorMessage(-1, "generate thumbnail failed." + localIOException1.getMessage()), this.jdField_a_of_type_JavaLangString);
+      ste.a().dispatch(localttk);
     }
   }
 }

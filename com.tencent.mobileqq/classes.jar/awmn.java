@@ -1,186 +1,183 @@
-import android.opengl.GLES20;
-import com.tencent.maxvideo.common.AVIOStruct;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.SpannableStringBuilder;
+import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.List;
 
 public class awmn
+  extends awoc
 {
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
-  private awmk[] jdField_a_of_type_ArrayOfAwmk = new awmk[3];
+  private long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  List<awoc> jdField_a_of_type_JavaUtilList;
   
-  private boolean c()
+  public awmn(QQAppInterface paramQQAppInterface, int paramInt, String paramString, List<awoc> paramList)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1;
+    super(paramQQAppInterface, paramInt, 0L);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public awmk a()
+  private CharSequence f()
   {
-    if (!c()) {
-      return null;
-    }
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    localSpannableStringBuilder.append("邀请:");
     int i = 0;
-    awmk localawmk;
-    if (i < this.jdField_a_of_type_ArrayOfAwmk.length) {
-      if (this.jdField_a_of_type_ArrayOfAwmk[i].b() == 0)
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      if (i != 0) {
+        localSpannableStringBuilder.append("、");
+      }
+      localSpannableStringBuilder.append(((awoc)this.jdField_a_of_type_JavaUtilList.get(i)).e());
+      i += 1;
+    }
+    return localSpannableStringBuilder;
+  }
+  
+  protected long a(String paramString)
+  {
+    return 0L;
+  }
+  
+  public CharSequence a()
+  {
+    return f();
+  }
+  
+  public Object a()
+  {
+    return Integer.valueOf(9889987);
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 1500L) {
+      return;
+    }
+    if ((paramView.getContext() instanceof UniteSearchActivity)) {
+      awvy.a("all_result", "clk_discuss", new String[] { "" + this.jdField_a_of_type_JavaLangString });
+    }
+    this.jdField_a_of_type_Long = l;
+    Intent localIntent = new Intent(paramView.getContext(), SelectMemberActivity.class);
+    localIntent.putExtra("param_type", 3000);
+    localIntent.putExtra("param_subtype", 0);
+    localIntent.putExtra("param_from", 1002);
+    localIntent.putExtra("param_min", 2);
+    localIntent.putExtra("param_max", 99);
+    localIntent.putExtra("param_entrance", 28);
+    ArrayList localArrayList = new ArrayList();
+    int j = 0;
+    Object localObject;
+    String str1;
+    String str2;
+    int i;
+    if (j < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      localObject = (awoc)this.jdField_a_of_type_JavaUtilList.get(j);
+      str1 = ((awoc)localObject).b();
+      str2 = ((awoc)localObject).e().toString();
+      if ((localObject instanceof awmq))
       {
-        localawmk = this.jdField_a_of_type_ArrayOfAwmk[i];
-        localawmk.d();
+        localObject = ((awmq)localObject).e();
+        i = 2;
       }
     }
     for (;;)
     {
-      return localawmk;
-      i += 1;
+      localArrayList.add(SelectMemberActivity.a(str1, str2, i, (String)localObject));
+      j += 1;
       break;
-      localawmk = null;
-    }
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-    while (i < this.jdField_a_of_type_ArrayOfAwmk.length)
-    {
-      this.jdField_a_of_type_ArrayOfAwmk[i] = new awmk(this.jdField_a_of_type_ArrayOfInt[i]);
-      i += 1;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(1);
-  }
-  
-  public void a(awmm paramawmm)
-  {
-    if (c())
-    {
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfAwmk.length)
+      if ((localObject instanceof awmx))
       {
-        this.jdField_a_of_type_ArrayOfAwmk[i].a(paramawmm);
-        i += 1;
+        localObject = ((awmx)localObject).jdField_a_of_type_JavaLangString;
+        i = 2;
+      }
+      else if ((localObject instanceof awmr))
+      {
+        localObject = "-1";
+        i = 0;
+        continue;
+        localIntent.putExtra("param_done_button_wording", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719210));
+        localIntent.putExtra("param_done_button_highlight_wording", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719211));
+        localIntent.putExtra("param_title", ajyc.a(2131702534));
+        localIntent.putExtra("param_selected_records_for_create_discussion", localArrayList);
+        ((Activity)paramView.getContext()).startActivityForResult(localIntent, 1300);
+        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800635F", "0X800635F", 0, 0, "", "", "", "");
+      }
+      else
+      {
+        localObject = "-1";
+        i = 0;
       }
     }
   }
   
   public boolean a()
   {
-    if (!c()) {}
-    for (;;)
+    return false;
+  }
+  
+  public CharSequence b()
+  {
+    return "";
+  }
+  
+  public String b()
+  {
+    return String.valueOf(9889987);
+  }
+  
+  public int c()
+  {
+    return 9889987;
+  }
+  
+  public CharSequence c()
+  {
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    if (this.jdField_a_of_type_JavaUtilList != null) {}
+    for (int i = this.jdField_a_of_type_JavaUtilList.size();; i = 0)
     {
-      return false;
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfAwmk.length)
-      {
-        if (this.jdField_a_of_type_ArrayOfAwmk[i].a() == 3) {
-          return true;
-        }
-        i += 1;
-      }
+      localSpannableStringBuilder.append("已选择").append("" + i).append("人");
+      return localSpannableStringBuilder;
     }
   }
   
-  public awmk b()
+  public String c()
   {
-    if (!c()) {
-      return null;
-    }
-    int i = 0;
-    awmk localawmk;
-    if (i < this.jdField_a_of_type_ArrayOfAwmk.length)
-    {
-      if (this.jdField_a_of_type_ArrayOfAwmk[i].c() == 0) {}
-      while (this.jdField_a_of_type_ArrayOfAwmk[i].a() != 0)
-      {
-        i += 1;
-        break;
-      }
-      localawmk = this.jdField_a_of_type_ArrayOfAwmk[i];
-      localawmk.d();
-    }
-    for (;;)
-    {
-      return localawmk;
-      localawmk = null;
-    }
+    return f().toString();
   }
   
-  public void b()
+  public int d()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(0) == 1)
-    {
-      GLES20.glDeleteTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfAwmk.length)
-      {
-        if (this.jdField_a_of_type_ArrayOfAwmk[i] != null)
-        {
-          this.jdField_a_of_type_ArrayOfAwmk[i].b();
-          this.jdField_a_of_type_ArrayOfAwmk[i] = null;
-        }
-        this.jdField_a_of_type_ArrayOfInt[i] = 0;
-        i += 1;
-      }
-    }
+    return 9889987;
   }
   
-  public boolean b()
+  public CharSequence d()
   {
-    int i = 0;
-    if (!c()) {
-      return false;
-    }
-    while (i < this.jdField_a_of_type_ArrayOfAwmk.length)
-    {
-      this.jdField_a_of_type_ArrayOfAwmk[i].c();
-      i += 1;
-    }
-    return true;
+    return null;
   }
   
-  public awmk c()
+  public String d()
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    if (!c()) {}
-    int i;
-    label18:
-    do
-    {
-      return localObject2;
-      i = 0;
-      localObject2 = localObject1;
-    } while (i >= this.jdField_a_of_type_ArrayOfAwmk.length);
-    awmk localawmk;
-    if (this.jdField_a_of_type_ArrayOfAwmk[i].a() == 2)
-    {
-      localawmk = this.jdField_a_of_type_ArrayOfAwmk[i];
-      if (localObject1 == null) {
-        localObject1 = localawmk;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label18;
-      AVIOStruct localAVIOStruct = (AVIOStruct)localObject1.a.a;
-      localObject2 = (AVIOStruct)localawmk.a.a;
-      long l = localAVIOStruct.vFrameTime;
-      if (((AVIOStruct)localObject2).vFrameTime > l)
-      {
-        localObject2 = localObject1;
-        if (localAVIOStruct.pFrameIndex == 0) {
-          break;
-        }
-        localObject1.c();
-        localObject1 = localawmk;
-        continue;
-      }
-      localawmk.c();
-    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awmn
  * JD-Core Version:    0.7.0.1
  */

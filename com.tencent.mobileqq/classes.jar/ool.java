@@ -1,30 +1,61 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.aladdin.config.network.AladdinRequestHandler;
+import com.tencent.aladdin.config.network.AladdinResponseHandler;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class ool
+  extends AladdinRequestHandler
 {
-  private static String jdField_a_of_type_JavaLangString = new String(new byte[] { 13, 14, 10, 13, 11, 14, 14, 15, 12, 10, 15, 14, 11, 10, 11, 14 });
-  private static ooi jdField_a_of_type_Ooi;
-  private static byte[] jdField_a_of_type_ArrayOfByte = { 12, 10, 15, 14, 11, 10, 11, 14, 13, 14, 10, 13, 11, 14, 14, 15 };
-  private static String b;
-  
-  public static String a(String paramString)
+  public static byte[] a(byte[] paramArrayOfByte)
   {
-    return jdField_a_of_type_Ooi.b(paramString);
+    int i = paramArrayOfByte.length - 4;
+    byte[] arrayOfByte = new byte[i];
+    bbmj.a(arrayOfByte, 0, paramArrayOfByte, 4, i);
+    return arrayOfByte;
   }
   
-  public static void a()
+  private static void b(Bundle paramBundle)
   {
-    String str = obz.a();
-    if (!TextUtils.equals(str, b))
+    HashMap localHashMap = new HashMap();
+    int i = paramBundle.getInt("key_ret_code", 0);
+    localHashMap.put("param_OpCode", String.valueOf(paramBundle.getInt("key_rsp_type", 0)));
+    localHashMap.put("param_FailCode", String.valueOf(i));
+    long l1 = paramBundle.getLong("key_config_count");
+    long l2 = paramBundle.getLong("key_failed_count");
+    localHashMap.put("param_ConfigCount", String.valueOf(l1));
+    localHashMap.put("param_FailCount", String.valueOf(l2));
+    l1 = paramBundle.getLong("key_response_timestamp", 0L) - paramBundle.getLong("key_request_timestamp", 0L);
+    localHashMap.put("param_CostTime", String.valueOf(l1));
+    paramBundle = axrl.a(onk.a().getApplication());
+    String str = onk.a();
+    if (i == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      b = str;
-      jdField_a_of_type_Ooi = ooi.a(b, jdField_a_of_type_JavaLangString, jdField_a_of_type_ArrayOfByte);
+      paramBundle.a(str, "actKanDianAladdinResult", bool, l1, 0L, localHashMap, null, false);
+      return;
     }
   }
   
-  public static String b(String paramString)
+  private static byte[] c(byte[] paramArrayOfByte)
   {
-    return jdField_a_of_type_Ooi.d(paramString);
+    long l = paramArrayOfByte.length;
+    byte[] arrayOfByte = new byte[(int)l + 4];
+    bbmj.a(arrayOfByte, 0, 4L + l);
+    bbmj.a(arrayOfByte, 4, paramArrayOfByte, (int)l);
+    return arrayOfByte;
+  }
+  
+  public void onSend(byte[] paramArrayOfByte, Bundle paramBundle, AladdinResponseHandler paramAladdinResponseHandler)
+  {
+    AppRuntime localAppRuntime = onk.a();
+    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), oom.class);
+    localNewIntent.putExtra("key_body_bytes", paramArrayOfByte);
+    localNewIntent.putExtra("key_extra_info", paramBundle);
+    localNewIntent.putExtra("key_response_handler", paramAladdinResponseHandler);
+    localNewIntent.putParcelableArrayListExtra("key_aladdin_listeners", ooh.a);
+    localAppRuntime.startServlet(localNewIntent);
   }
 }
 

@@ -1,39 +1,9 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-
-public class qwq
-  implements INetInfoHandler
+class qwq
+  extends qwp
 {
-  public qwq(FastWebActivity paramFastWebActivity) {}
-  
-  public void onNetMobile2None()
+  long a(long paramLong)
   {
-    FastWebActivity.n(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    FastWebActivity.n(this.a);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    FastWebActivity.n(this.a);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    FastWebActivity.n(this.a);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    FastWebActivity.n(this.a);
-  }
-  
-  public void onNetWifi2None()
-  {
-    FastWebActivity.n(this.a);
+    return Math.max(paramLong, this.b);
   }
 }
 

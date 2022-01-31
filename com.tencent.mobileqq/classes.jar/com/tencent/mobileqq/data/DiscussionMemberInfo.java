@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import atmo;
-import atnz;
+import aukm;
+import aulx;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="discussionUin,memberUin")
 public class DiscussionMemberInfo
-  extends atmo
+  extends aukm
 {
   public long dataTime;
   public String discussionUin;
-  @atnz
+  @aulx
   public String displayedNamePinyinFirst;
   public byte flag;
   public String inteRemark;

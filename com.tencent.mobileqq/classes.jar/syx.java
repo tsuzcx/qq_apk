@@ -1,57 +1,25 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedComment;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class syx
-  extends slz
+  extends SimpleJob<Void>
 {
-  private static final String jdField_a_of_type_JavaLangString = skt.a("StorySvc.feed_comment_list_batch_775");
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private int c;
-  
-  public syx(List<String> paramList, boolean paramBoolean)
+  public syx(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      this.c = i;
-      return;
-    }
+    super(paramString);
   }
   
-  public String a()
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public slu a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspBatchFeedComment localRspBatchFeedComment = new qqstory_service.RspBatchFeedComment();
-    try
-    {
-      localRspBatchFeedComment.mergeFrom(paramArrayOfByte);
-      return new syy(localRspBatchFeedComment);
+    paramJobContext = ((tcv)tdc.a(10)).a();
+    if (!TextUtils.isEmpty(paramJobContext)) {
+      this.a.a(paramJobContext);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqBatchFeedComment localReqBatchFeedComment = new qqstory_service.ReqBatchFeedComment();
-    List localList = a(this.jdField_a_of_type_JavaUtilList);
-    localReqBatchFeedComment.feed_id_list.set(localList);
-    localReqBatchFeedComment.source.set(this.c);
-    return localReqBatchFeedComment.toByteArray();
+    return null;
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.nearby.widget;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import atbp;
+import atxt;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class AvatarWallPagerAdapter$InnerPagerAdapter
   
   public int getItemPosition(Object paramObject)
   {
-    paramObject = (atbp)((View)paramObject).getTag(2131311032);
+    paramObject = (atxt)((View)paramObject).getTag(2131376841);
     int i = 0;
     while (i < this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaUtilList.size())
     {
@@ -97,7 +97,7 @@ public class AvatarWallPagerAdapter$InnerPagerAdapter
           }
         }
         localView = this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a(paramInt), this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaUtilList.get(paramInt));
-        localView.setTag(2131311032, new atbp(this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter, this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaUtilList.get(paramInt)));
+        localView.setTag(2131376841, new atxt(this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter, this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaUtilList.get(paramInt)));
         if (paramViewGroup != null)
         {
           paramViewGroup.addView(localView);

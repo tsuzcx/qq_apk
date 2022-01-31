@@ -1,26 +1,28 @@
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+
 public class aijy
+  implements awcd
 {
-  public float a;
-  public float b;
-  public float c;
+  private aijy(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public aijy(float paramFloat1, float paramFloat2, float paramFloat3)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ApolloRoleInfo:").append("scale:").append(this.a).append(",xPos:").append(this.b).append(",yPos:").append(this.c);
-    return localStringBuilder.toString();
+    if ((paramBitmap != null) && (paramInt2 == 200))
+    {
+      if (this.b.d != 0) {
+        this.b.b = true;
+      }
+    }
+    else {
+      return;
+    }
+    this.b.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aijy
  * JD-Core Version:    0.7.0.1
  */

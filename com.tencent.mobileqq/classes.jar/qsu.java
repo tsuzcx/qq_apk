@@ -1,16 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1.1.1;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class qsu
-  implements axbx
+class qsu
+  implements rai
 {
-  public qsu(ReadInJoySkinGuideView.1 param1) {}
+  qsu(qst paramqst, qms paramqms) {}
   
-  public void a(axba paramaxba)
+  public void a(@NonNull View paramView, int paramInt)
   {
-    this.a.this$0.a.post(new ReadInJoySkinGuideView.1.1.1(this, paramaxba));
+    if ((paramInt == 0) && (this.jdField_a_of_type_Qms.s.getVisibility() == 0)) {
+      qst.a(this.jdField_a_of_type_Qst).resumeAnimation();
+    }
   }
 }
 

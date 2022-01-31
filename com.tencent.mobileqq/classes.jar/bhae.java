@@ -1,29 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.AECamera.panel.material.AEMaterialPanel;
-import dov.com.qq.im.AECamera.panel.material.AEMaterialProviderView;
+import android.os.Handler;
+import android.os.Message;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
 public class bhae
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public bhae(AEMaterialPanel paramAEMaterialPanel) {}
+  public bhae(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    if (AEMaterialPanel.a(this.a) != null)
-    {
-      AEMaterialPanel.a(this.a).setAlpha(1.0F);
-      AEMaterialPanel.a(this.a).setVisibility(8);
-    }
+    this.a.onHandleMessage(QzoneVerticalVideoDownloadActivity.access$000(this.a), paramMessage);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhae
  * JD-Core Version:    0.7.0.1
  */

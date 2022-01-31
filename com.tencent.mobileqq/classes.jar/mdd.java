@@ -1,30 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import com.tencent.qphone.base.util.QLog;
 
-class mdd
-  extends Handler
+public class mdd
+  implements View.OnClickListener
 {
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference<mdc> jdField_a_of_type_JavaLangRefWeakReference;
+  public mdd(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
-  mdd(String paramString, mdc parammdc)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammdc);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    mdc localmdc = (mdc)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localmdc != null) {}
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    mdc.a(localmdc);
-    krx.c(this.jdField_a_of_type_JavaLangString, "ITEM_DISPEAR");
+    QLog.d(this.a.c, 1, "onClick R.id.qav_btn_accept_video");
+    this.a.p();
+    this.a.a.a().ao = true;
   }
 }
 

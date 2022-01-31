@@ -1,21 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import java.util.List;
 
-public class agbm
-  implements DialogInterface.OnClickListener
+class agbm
+  implements View.OnClickListener
 {
-  public agbm(PhotoListActivity paramPhotoListActivity) {}
+  agbm(agbl paramagbl, TroopLinkElement paramTroopLinkElement, agbn paramagbn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    if (!agbl.a(this.jdField_a_of_type_Agbl))
+    {
+      paramView = new Intent(agbl.a(this.jdField_a_of_type_Agbl), QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement.url);
+      agbl.a(this.jdField_a_of_type_Agbl).startActivity(paramView);
+      return;
     }
-    if (this.a.c != null) {
-      this.a.c.setClickable(true);
+    boolean bool = agbn.a(this.jdField_a_of_type_Agbn).isChecked();
+    if (bool)
+    {
+      agbl.a(this.jdField_a_of_type_Agbl).remove(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
+      paramView = agbn.a(this.jdField_a_of_type_Agbn);
+      if (bool) {
+        break label125;
+      }
+    }
+    label125:
+    for (bool = true;; bool = false)
+    {
+      paramView.setChecked(bool);
+      return;
+      agbl.a(this.jdField_a_of_type_Agbl).add(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
+      break;
     }
   }
 }

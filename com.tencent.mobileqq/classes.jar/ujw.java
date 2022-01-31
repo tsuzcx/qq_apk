@@ -1,44 +1,58 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.settings.QQStoryBasicSettingsActivity;
 
-class ujw
-  implements slx<tag, tah>
+public class ujw
+  extends ssy
 {
-  ujw(ujv paramujv, JobContext paramJobContext, AtomicBoolean paramAtomicBoolean, Integer paramInteger) {}
+  public ujw(QQStoryBasicSettingsActivity paramQQStoryBasicSettingsActivity) {}
   
-  public void a(@NonNull tag paramtag, @Nullable tah paramtah, @NonNull ErrorMessage paramErrorMessage)
+  public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    QQStoryBasicSettingsActivity.a(this.a);
+    switch (paramInt)
     {
-      urk.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId pull segment cancel on net respond");
+    default: 
+      return;
+    case 1: 
+    case 1001: 
+      this.a.a(0);
+      return;
+    case 2: 
+      this.a.a(1);
+      return;
+    case 3: 
+      this.a.a(2);
       return;
     }
-    if ((paramErrorMessage.isFail()) || (paramtah == null))
+    bcpw.a(this.a, ajyc.a(2131710806), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (this.a.jdField_a_of_type_Bcpt != null) {
+      this.a.jdField_a_of_type_Bcpt.b();
+    }
+    if (paramBoolean)
     {
-      urk.a("Q.qqstory.home.data.HomeFeedListPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      ujv.a(this.jdField_a_of_type_Ujv, paramErrorMessage);
+      this.a.jdField_a_of_type_Ssw.a(this.a.b(this.a.jdField_a_of_type_Int));
+      this.a.jdField_a_of_type_Ssw.b(this.a.b(this.a.jdField_a_of_type_Int));
+      if (this.a.jdField_a_of_type_Int == 2) {
+        vel.a("browse_friend_settings", "close", 0, 0, new String[] { "", "", "", "" });
+      }
+      do
+      {
+        return;
+        if (this.a.jdField_a_of_type_Int == 0)
+        {
+          vel.a("browse_friend_settings", "choose_all", 0, 0, new String[] { "", "", "", "" });
+          return;
+        }
+      } while (this.a.jdField_a_of_type_Int != 1);
+      vel.a("browse_friend_settings", "choose_wifi", 0, 0, new String[] { "", "", "", "" });
       return;
     }
-    ujv.a(this.jdField_a_of_type_Ujv);
-    ujv.a(this.jdField_a_of_type_Ujv).a(paramtah.jdField_a_of_type_JavaUtilList, paramtah.jdField_a_of_type_JavaLangString, paramtah.jdField_a_of_type_Boolean);
-    ((uje)sqg.a(11)).a(paramtah.jdField_a_of_type_JavaUtilList);
-    boolean bool = ujv.a(paramtah, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
-    urk.d("Q.qqstory.home.data.HomeFeedListPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramtah.b), Integer.valueOf(ujv.b(this.jdField_a_of_type_Ujv)), Boolean.valueOf(bool) });
-    if ((!paramtah.jdField_a_of_type_Boolean) && (ujv.b(this.jdField_a_of_type_Ujv) < 10) && ((!paramtah.b) || (bool)))
-    {
-      urk.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId list not end, pull more");
-      paramtag.b = ujv.a(this.jdField_a_of_type_Ujv).a();
-      slv.a().a(paramtag, this);
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false)) {
-      ujv.a(this.jdField_a_of_type_Ujv).c();
-    }
-    paramtag = ujv.a(this.jdField_a_of_type_Ujv).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-    ujv.a(this.jdField_a_of_type_Ujv, paramtag);
+    bcpw.a(this.a, 2131694974, 0).b(this.a.getTitleBarHeight());
+    this.a.a(this.a.b);
+    this.a.jdField_a_of_type_Ssv.d();
   }
 }
 

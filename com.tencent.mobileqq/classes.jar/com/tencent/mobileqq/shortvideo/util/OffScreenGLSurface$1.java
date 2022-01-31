@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import awlq;
+import axkw;
 import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
 public class OffScreenGLSurface$1
   implements Runnable
 {
-  public OffScreenGLSurface$1(awlq paramawlq) {}
+  public OffScreenGLSurface$1(axkw paramaxkw) {}
   
   public void run()
   {
-    awlq.a(this.this$0).sendFirstFrameMsg();
+    axkw.a(this.this$0).sendFirstFrameMsg();
   }
 }
 

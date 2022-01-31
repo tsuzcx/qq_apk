@@ -1,24 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
 
 class arir
-  implements DialogInterface.OnCancelListener
+  implements ActionCallback
 {
-  arir(ariq paramariq, BaseChatPie paramBaseChatPie) {}
+  arir(arii paramarii, arja paramarja) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onResult(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TempMsgManager", 2, "dialog cancel");
+    try
+    {
+      i = Integer.parseInt(paramString);
+      this.jdField_a_of_type_Arja.a(i, "");
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(1);
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        int i = -1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arir
  * JD-Core Version:    0.7.0.1
  */

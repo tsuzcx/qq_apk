@@ -1,39 +1,35 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
 import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.ArrayList;
 
-class axen
-  implements WtTicketPromise
+public class axen
 {
-  axen(axem paramaxem, Runnable paramRunnable) {}
+  public int a;
+  ayrv jdField_a_of_type_Ayrv;
+  public String a;
+  public ArrayList<axeo> a;
+  public int b = 0;
   
-  public void Done(Ticket paramTicket)
+  public axen(ShortVideoResourceManager paramShortVideoResourceManager, ayrv paramayrv)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeamWorkFileImportHandler", 2, "--- pskey invalid retry ---  ");
-    }
-    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+    this.jdField_a_of_type_Ayrv = paramayrv;
+    this.b = 0;
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileImportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
+      QLog.d("ShortVideoResourceManager", 2, "HttpEngineTask[start]: " + this);
     }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileImportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
-    }
+    this.b = 1;
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager).getNetEngine(0).a(this.jdField_a_of_type_Ayrv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axen
  * JD-Core Version:    0.7.0.1
  */

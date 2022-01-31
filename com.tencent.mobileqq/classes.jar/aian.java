@@ -1,11 +1,13 @@
 public class aian
-  extends aiac
 {
-  public Object a;
+  public int a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aian
  * JD-Core Version:    0.7.0.1
  */

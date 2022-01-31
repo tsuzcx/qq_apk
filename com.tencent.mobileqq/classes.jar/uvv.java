@@ -1,12 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.List;
 
-class uvv
-  implements View.OnClickListener
+public class uvv
+  extends tjd
 {
-  uvv(uvu paramuvu) {}
+  public List<String> a = new ArrayList();
   
-  public void onClick(View paramView) {}
+  public uvv(ErrorMessage paramErrorMessage)
+  {
+    super(paramErrorMessage);
+  }
+  
+  public String toString()
+  {
+    return "FeedData{" + super.toString() + '}';
+  }
 }
 
 

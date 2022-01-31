@@ -12,11 +12,11 @@ class QfavJumpActivity$3
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 11
+    //   1: astore 12
     //   3: aconst_null
-    //   4: astore 12
+    //   4: astore 9
     //   6: aconst_null
-    //   7: astore 9
+    //   7: astore 10
     //   9: aconst_null
     //   10: astore 13
     //   12: aconst_null
@@ -72,32 +72,32 @@ class QfavJumpActivity$3
     //   118: aload_0
     //   119: getfield 18	cooperation/qqfav/widget/QfavJumpActivity$3:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   122: invokespecial 81	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   125: astore 10
+    //   125: astore 11
     //   127: aload 13
     //   129: astore 9
     //   131: invokestatic 60	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   134: sipush 8192
     //   137: invokevirtual 85	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
-    //   140: astore 11
+    //   140: astore 10
     //   142: lconst_0
     //   143: lstore 6
     //   145: lconst_0
     //   146: lstore 4
-    //   148: aload 11
+    //   148: aload 10
     //   150: astore 8
-    //   152: aload 11
+    //   152: aload 10
     //   154: astore 9
     //   156: aload_0
     //   157: getfield 20	cooperation/qqfav/widget/QfavJumpActivity$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   160: aload 11
+    //   160: aload 10
     //   162: invokevirtual 89	java/io/InputStream:read	([B)I
     //   165: istore_1
     //   166: iload_1
     //   167: iconst_m1
     //   168: if_icmpeq +126 -> 294
-    //   171: aload 11
+    //   171: aload 10
     //   173: astore 8
-    //   175: aload 11
+    //   175: aload 10
     //   177: astore 9
     //   179: aload_0
     //   180: getfield 16	cooperation/qqfav/widget/QfavJumpActivity$3:this$0	Lcooperation/qqfav/widget/QfavJumpActivity;
@@ -108,20 +108,20 @@ class QfavJumpActivity$3
     //   192: i2l
     //   193: ladd
     //   194: lstore_2
-    //   195: aload 11
+    //   195: aload 10
     //   197: astore 8
-    //   199: aload 11
+    //   199: aload 10
     //   201: astore 9
-    //   203: aload 10
-    //   205: aload 11
+    //   203: aload 11
+    //   205: aload 10
     //   207: iconst_0
     //   208: iload_1
     //   209: invokevirtual 96	java/io/FileOutputStream:write	([BII)V
     //   212: lload_2
     //   213: lstore 4
-    //   215: aload 11
+    //   215: aload 10
     //   217: astore 8
-    //   219: aload 11
+    //   219: aload 10
     //   221: astore 9
     //   223: lload_2
     //   224: lload 6
@@ -134,9 +134,9 @@ class QfavJumpActivity$3
     //   234: ldc2_w 97
     //   237: dcmpl
     //   238: ifle -90 -> 148
-    //   241: aload 11
+    //   241: aload 10
     //   243: astore 8
-    //   245: aload 11
+    //   245: aload 10
     //   247: astore 9
     //   249: aload_0
     //   250: getfield 16	cooperation/qqfav/widget/QfavJumpActivity$3:this$0	Lcooperation/qqfav/widget/QfavJumpActivity;
@@ -167,18 +167,18 @@ class QfavJumpActivity$3
     //   296: lconst_0
     //   297: lcmp
     //   298: ifne +43 -> 341
-    //   301: aload 11
+    //   301: aload 10
     //   303: astore 8
-    //   305: aload 11
+    //   305: aload 10
     //   307: astore 9
     //   309: aload_0
     //   310: getfield 16	cooperation/qqfav/widget/QfavJumpActivity$3:this$0	Lcooperation/qqfav/widget/QfavJumpActivity;
     //   313: ldc 109
     //   315: invokevirtual 113	cooperation/qqfav/widget/QfavJumpActivity:getString	(I)Ljava/lang/String;
     //   318: putstatic 114	cooperation/qqfav/widget/QfavJumpActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   321: aload 11
+    //   321: aload 10
     //   323: astore 8
-    //   325: aload 11
+    //   325: aload 10
     //   327: astore 9
     //   329: aload_0
     //   330: getfield 16	cooperation/qqfav/widget/QfavJumpActivity$3:this$0	Lcooperation/qqfav/widget/QfavJumpActivity;
@@ -186,17 +186,17 @@ class QfavJumpActivity$3
     //   336: iconst_1
     //   337: invokevirtual 54	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
     //   340: pop
-    //   341: aload 11
+    //   341: aload 10
     //   343: astore 8
-    //   345: aload 11
+    //   345: aload 10
     //   347: astore 9
     //   349: aload_0
     //   350: getfield 16	cooperation/qqfav/widget/QfavJumpActivity$3:this$0	Lcooperation/qqfav/widget/QfavJumpActivity;
     //   353: invokestatic 92	cooperation/qqfav/widget/QfavJumpActivity:a	(Lcooperation/qqfav/widget/QfavJumpActivity;)Z
     //   356: ifeq +107 -> 463
-    //   359: aload 11
+    //   359: aload 10
     //   361: astore 8
-    //   363: aload 11
+    //   363: aload 10
     //   365: astore 9
     //   367: aload_0
     //   368: getfield 16	cooperation/qqfav/widget/QfavJumpActivity$3:this$0	Lcooperation/qqfav/widget/QfavJumpActivity;
@@ -210,9 +210,9 @@ class QfavJumpActivity$3
     //   385: invokevirtual 104	mqq/os/MqqHandler:obtainMessage	(III)Landroid/os/Message;
     //   388: invokevirtual 108	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
     //   391: pop
-    //   392: aload 11
+    //   392: aload 10
     //   394: astore 8
-    //   396: aload 11
+    //   396: aload 10
     //   398: astore 9
     //   400: aload_0
     //   401: getfield 16	cooperation/qqfav/widget/QfavJumpActivity$3:this$0	Lcooperation/qqfav/widget/QfavJumpActivity;
@@ -221,10 +221,10 @@ class QfavJumpActivity$3
     //   408: ldc2_w 115
     //   411: invokevirtual 120	mqq/os/MqqHandler:sendEmptyMessageDelayed	(IJ)Z
     //   414: pop
-    //   415: aload 11
+    //   415: aload 10
     //   417: ifnull +11 -> 428
     //   420: invokestatic 60	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   423: aload 11
+    //   423: aload 10
     //   425: invokevirtual 64	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   428: aload_0
     //   429: getfield 16	cooperation/qqfav/widget/QfavJumpActivity$3:this$0	Lcooperation/qqfav/widget/QfavJumpActivity;
@@ -234,120 +234,130 @@ class QfavJumpActivity$3
     //   437: aload_0
     //   438: getfield 20	cooperation/qqfav/widget/QfavJumpActivity$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
     //   441: invokevirtual 72	java/io/InputStream:close	()V
-    //   444: aload 10
+    //   444: aload 11
     //   446: ifnull -351 -> 95
-    //   449: aload 10
+    //   449: aload 11
     //   451: invokevirtual 121	java/io/FileOutputStream:close	()V
     //   454: return
     //   455: astore 8
     //   457: aload 8
     //   459: invokevirtual 78	java/io/IOException:printStackTrace	()V
     //   462: return
-    //   463: aload 11
+    //   463: aload 10
     //   465: astore 8
-    //   467: aload 11
+    //   467: aload 10
     //   469: astore 9
-    //   471: aload 10
+    //   471: aload 11
     //   473: invokestatic 127	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
-    //   476: aload 11
+    //   476: aload 10
     //   478: astore 8
-    //   480: aload 11
+    //   480: aload 10
     //   482: astore 9
     //   484: aload 14
     //   486: invokevirtual 130	java/io/File:delete	()Z
     //   489: pop
     //   490: goto -75 -> 415
-    //   493: astore 11
-    //   495: aload 8
-    //   497: astore 9
-    //   499: aload 11
-    //   501: astore 8
-    //   503: invokestatic 135	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   506: ifeq +13 -> 519
-    //   509: ldc 137
-    //   511: iconst_2
-    //   512: ldc 139
-    //   514: aload 8
-    //   516: invokestatic 143	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   519: aload_0
-    //   520: getfield 16	cooperation/qqfav/widget/QfavJumpActivity$3:this$0	Lcooperation/qqfav/widget/QfavJumpActivity;
-    //   523: getfield 48	cooperation/qqfav/widget/QfavJumpActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   526: iconst_1
-    //   527: invokevirtual 54	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
-    //   530: pop
-    //   531: aload 9
-    //   533: ifnull +11 -> 544
-    //   536: invokestatic 60	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   539: aload 9
-    //   541: invokevirtual 64	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   544: aload_0
-    //   545: getfield 16	cooperation/qqfav/widget/QfavJumpActivity$3:this$0	Lcooperation/qqfav/widget/QfavJumpActivity;
-    //   548: iconst_0
-    //   549: invokestatic 67	cooperation/qqfav/widget/QfavJumpActivity:a	(Lcooperation/qqfav/widget/QfavJumpActivity;Z)Z
-    //   552: pop
-    //   553: aload_0
-    //   554: getfield 20	cooperation/qqfav/widget/QfavJumpActivity$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   557: invokevirtual 72	java/io/InputStream:close	()V
-    //   560: aload 10
-    //   562: ifnull -467 -> 95
-    //   565: aload 10
-    //   567: invokevirtual 121	java/io/FileOutputStream:close	()V
-    //   570: return
-    //   571: astore 8
-    //   573: aload 8
-    //   575: invokevirtual 78	java/io/IOException:printStackTrace	()V
-    //   578: return
-    //   579: astore 8
-    //   581: aload 8
-    //   583: invokevirtual 78	java/io/IOException:printStackTrace	()V
-    //   586: goto -142 -> 444
-    //   589: astore 8
-    //   591: aload 8
-    //   593: invokevirtual 78	java/io/IOException:printStackTrace	()V
-    //   596: goto -36 -> 560
-    //   599: astore 8
-    //   601: aconst_null
-    //   602: astore 10
-    //   604: aload 9
-    //   606: ifnull +11 -> 617
-    //   609: invokestatic 60	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   612: aload 9
-    //   614: invokevirtual 64	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   617: aload_0
-    //   618: getfield 16	cooperation/qqfav/widget/QfavJumpActivity$3:this$0	Lcooperation/qqfav/widget/QfavJumpActivity;
-    //   621: iconst_0
-    //   622: invokestatic 67	cooperation/qqfav/widget/QfavJumpActivity:a	(Lcooperation/qqfav/widget/QfavJumpActivity;Z)Z
-    //   625: pop
-    //   626: aload_0
-    //   627: getfield 20	cooperation/qqfav/widget/QfavJumpActivity$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   630: invokevirtual 72	java/io/InputStream:close	()V
-    //   633: aload 10
-    //   635: ifnull +8 -> 643
-    //   638: aload 10
-    //   640: invokevirtual 121	java/io/FileOutputStream:close	()V
-    //   643: aload 8
-    //   645: athrow
-    //   646: astore 9
-    //   648: aload 9
-    //   650: invokevirtual 78	java/io/IOException:printStackTrace	()V
-    //   653: goto -20 -> 633
-    //   656: astore 9
-    //   658: aload 9
-    //   660: invokevirtual 78	java/io/IOException:printStackTrace	()V
-    //   663: goto -20 -> 643
-    //   666: astore 8
-    //   668: goto -64 -> 604
-    //   671: astore 8
-    //   673: goto -69 -> 604
-    //   676: astore 8
-    //   678: aload 12
-    //   680: astore 9
-    //   682: aload 11
-    //   684: astore 10
-    //   686: goto -183 -> 503
+    //   493: astore 12
+    //   495: aload 11
+    //   497: astore 10
+    //   499: aload 8
+    //   501: astore 9
+    //   503: aload 12
+    //   505: astore 8
+    //   507: invokestatic 135	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   510: ifeq +13 -> 523
+    //   513: ldc 137
+    //   515: iconst_2
+    //   516: ldc 139
+    //   518: aload 8
+    //   520: invokestatic 143	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   523: aload_0
+    //   524: getfield 16	cooperation/qqfav/widget/QfavJumpActivity$3:this$0	Lcooperation/qqfav/widget/QfavJumpActivity;
+    //   527: getfield 48	cooperation/qqfav/widget/QfavJumpActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   530: iconst_1
+    //   531: invokevirtual 54	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
+    //   534: pop
+    //   535: aload 9
+    //   537: ifnull +11 -> 548
+    //   540: invokestatic 60	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   543: aload 9
+    //   545: invokevirtual 64	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   548: aload_0
+    //   549: getfield 16	cooperation/qqfav/widget/QfavJumpActivity$3:this$0	Lcooperation/qqfav/widget/QfavJumpActivity;
+    //   552: iconst_0
+    //   553: invokestatic 67	cooperation/qqfav/widget/QfavJumpActivity:a	(Lcooperation/qqfav/widget/QfavJumpActivity;Z)Z
+    //   556: pop
+    //   557: aload_0
+    //   558: getfield 20	cooperation/qqfav/widget/QfavJumpActivity$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   561: invokevirtual 72	java/io/InputStream:close	()V
+    //   564: aload 10
+    //   566: ifnull -471 -> 95
+    //   569: aload 10
+    //   571: invokevirtual 121	java/io/FileOutputStream:close	()V
+    //   574: return
+    //   575: astore 8
+    //   577: aload 8
+    //   579: invokevirtual 78	java/io/IOException:printStackTrace	()V
+    //   582: return
+    //   583: astore 8
+    //   585: aload 8
+    //   587: invokevirtual 78	java/io/IOException:printStackTrace	()V
+    //   590: goto -146 -> 444
+    //   593: astore 8
+    //   595: aload 8
+    //   597: invokevirtual 78	java/io/IOException:printStackTrace	()V
+    //   600: goto -36 -> 564
+    //   603: astore 8
+    //   605: aconst_null
+    //   606: astore 9
+    //   608: aload 10
+    //   610: ifnull +11 -> 621
+    //   613: invokestatic 60	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   616: aload 10
+    //   618: invokevirtual 64	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   621: aload_0
+    //   622: getfield 16	cooperation/qqfav/widget/QfavJumpActivity$3:this$0	Lcooperation/qqfav/widget/QfavJumpActivity;
+    //   625: iconst_0
+    //   626: invokestatic 67	cooperation/qqfav/widget/QfavJumpActivity:a	(Lcooperation/qqfav/widget/QfavJumpActivity;Z)Z
+    //   629: pop
+    //   630: aload_0
+    //   631: getfield 20	cooperation/qqfav/widget/QfavJumpActivity$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   634: invokevirtual 72	java/io/InputStream:close	()V
+    //   637: aload 9
+    //   639: ifnull +8 -> 647
+    //   642: aload 9
+    //   644: invokevirtual 121	java/io/FileOutputStream:close	()V
+    //   647: aload 8
+    //   649: athrow
+    //   650: astore 10
+    //   652: aload 10
+    //   654: invokevirtual 78	java/io/IOException:printStackTrace	()V
+    //   657: goto -20 -> 637
+    //   660: astore 9
+    //   662: aload 9
+    //   664: invokevirtual 78	java/io/IOException:printStackTrace	()V
+    //   667: goto -20 -> 647
+    //   670: astore 8
+    //   672: aload 9
+    //   674: astore 10
+    //   676: aload 11
+    //   678: astore 9
+    //   680: goto -72 -> 608
+    //   683: astore 8
+    //   685: aload 10
+    //   687: astore 11
+    //   689: aload 9
+    //   691: astore 10
+    //   693: aload 11
+    //   695: astore 9
+    //   697: goto -89 -> 608
+    //   700: astore 8
+    //   702: aload 12
+    //   704: astore 10
+    //   706: goto -199 -> 507
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	689	0	this	3
+    //   0	709	0	this	3
     //   165	44	1	i	int
     //   194	95	2	l1	long
     //   146	149	4	l2	long
@@ -355,25 +365,26 @@ class QfavJumpActivity$3
     //   13	1	8	localObject1	Object
     //   96	3	8	localIOException1	java.io.IOException
     //   106	3	8	localIOException2	java.io.IOException
-    //   150	245	8	arrayOfByte1	byte[]
+    //   150	245	8	localObject2	Object
     //   455	3	8	localIOException3	java.io.IOException
-    //   465	50	8	localObject2	Object
-    //   571	3	8	localIOException4	java.io.IOException
-    //   579	3	8	localIOException5	java.io.IOException
-    //   589	3	8	localIOException6	java.io.IOException
-    //   599	45	8	localObject3	Object
-    //   666	1	8	localObject4	Object
-    //   671	1	8	localObject5	Object
-    //   676	1	8	localException1	java.lang.Exception
-    //   7	606	9	localObject6	Object
-    //   646	3	9	localIOException7	java.io.IOException
-    //   656	3	9	localIOException8	java.io.IOException
-    //   680	1	9	localObject7	Object
-    //   125	560	10	localObject8	Object
-    //   1	480	11	arrayOfByte2	byte[]
-    //   493	190	11	localException2	java.lang.Exception
-    //   4	675	12	localObject9	Object
-    //   10	118	13	localObject10	Object
+    //   465	54	8	localObject3	Object
+    //   575	3	8	localIOException4	java.io.IOException
+    //   583	3	8	localIOException5	java.io.IOException
+    //   593	3	8	localIOException6	java.io.IOException
+    //   603	45	8	localObject4	Object
+    //   670	1	8	localObject5	Object
+    //   683	1	8	localObject6	Object
+    //   700	1	8	localException1	java.lang.Exception
+    //   4	639	9	localObject7	Object
+    //   660	13	9	localIOException7	java.io.IOException
+    //   678	18	9	localObject8	Object
+    //   7	610	10	localObject9	Object
+    //   650	3	10	localIOException8	java.io.IOException
+    //   674	31	10	localObject10	Object
+    //   125	569	11	localObject11	Object
+    //   1	1	12	localObject12	Object
+    //   493	210	12	localException2	java.lang.Exception
+    //   10	118	13	localObject13	Object
     //   26	459	14	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
@@ -393,30 +404,30 @@ class QfavJumpActivity$3
     //   400	415	493	java/lang/Exception
     //   471	476	493	java/lang/Exception
     //   484	490	493	java/lang/Exception
-    //   565	570	571	java/io/IOException
-    //   437	444	579	java/io/IOException
-    //   553	560	589	java/io/IOException
-    //   15	56	599	finally
-    //   114	127	599	finally
-    //   626	633	646	java/io/IOException
-    //   638	643	656	java/io/IOException
-    //   131	142	666	finally
-    //   156	166	666	finally
-    //   179	189	666	finally
-    //   203	212	666	finally
-    //   223	241	666	finally
-    //   249	285	666	finally
-    //   309	321	666	finally
-    //   329	341	666	finally
-    //   349	359	666	finally
-    //   367	392	666	finally
-    //   400	415	666	finally
-    //   471	476	666	finally
-    //   484	490	666	finally
-    //   503	519	671	finally
-    //   519	531	671	finally
-    //   15	56	676	java/lang/Exception
-    //   114	127	676	java/lang/Exception
+    //   569	574	575	java/io/IOException
+    //   437	444	583	java/io/IOException
+    //   557	564	593	java/io/IOException
+    //   15	56	603	finally
+    //   114	127	603	finally
+    //   630	637	650	java/io/IOException
+    //   642	647	660	java/io/IOException
+    //   131	142	670	finally
+    //   156	166	670	finally
+    //   179	189	670	finally
+    //   203	212	670	finally
+    //   223	241	670	finally
+    //   249	285	670	finally
+    //   309	321	670	finally
+    //   329	341	670	finally
+    //   349	359	670	finally
+    //   367	392	670	finally
+    //   400	415	670	finally
+    //   471	476	670	finally
+    //   484	490	670	finally
+    //   507	523	683	finally
+    //   523	535	683	finally
+    //   15	56	700	java/lang/Exception
+    //   114	127	700	java/lang/Exception
   }
 }
 

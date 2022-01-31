@@ -1,29 +1,81 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 
 public class tvq
-  extends sgl<tvd, snl>
 {
-  public tvq(tvd paramtvd)
+  @NonNull
+  public final String a;
+  @NonNull
+  public final String b;
+  @NonNull
+  public final String c;
+  public final String d;
+  
+  public tvq(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    super(paramtvd);
+    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null))
+    {
+      veg.e("Q.qqstory.playernew.TVKPreloader", "vid=%s, videoUrl=%s, localPath=%s", new Object[] { paramString1, paramString2, paramString3 });
+      throw new IllegalArgumentException("vid, videoUrl, localPath should not be null");
+    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
   }
   
-  public void a(@NonNull tvd paramtvd, @NonNull snl paramsnl)
+  public boolean equals(Object paramObject)
   {
-    if ((paramtvd.a != null) && (TextUtils.equals(paramtvd.a.b, paramsnl.a)))
+    boolean bool2 = true;
+    boolean bool3 = false;
+    boolean bool1;
+    if (this == paramObject) {
+      bool1 = true;
+    }
+    do
     {
-      urk.a(this.TAG, "receive feed info change event. %s.", paramsnl.toString());
-      paramtvd.i();
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            bool1 = bool3;
+          } while (paramObject == null);
+          bool1 = bool3;
+        } while (getClass() != paramObject.getClass());
+        paramObject = (tvq)paramObject;
+        bool1 = bool3;
+      } while (!this.a.equals(paramObject.a));
+      bool1 = bool3;
+    } while (!this.b.equals(paramObject.b));
+    if (this.d != null) {
+      bool1 = this.d.equals(paramObject.d);
+    }
+    for (;;)
+    {
+      return bool1;
+      bool1 = bool2;
+      if (paramObject.d != null) {
+        bool1 = false;
+      }
     }
   }
   
-  public Class acceptEventClass()
+  public int hashCode()
   {
-    return snl.class;
+    int j = this.a.hashCode();
+    int k = this.b.hashCode();
+    if (this.d != null) {}
+    for (int i = this.d.hashCode();; i = 0) {
+      return i + (j * 31 + k) * 31;
+    }
   }
   
-  public void b(@NonNull tvd paramtvd, @NonNull snl paramsnl) {}
+  public String toString()
+  {
+    return "PreloadItem{vid='" + this.a + '\'' + ", debugMsg='" + this.d + '\'' + '}';
+  }
 }
 
 

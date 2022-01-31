@@ -43,7 +43,7 @@ class PreloadManager$ReadFileThread
     //   51: dup
     //   52: new 57	java/io/File
     //   55: dup
-    //   56: getstatic 62	ajed:cE	Ljava/lang/String;
+    //   56: getstatic 62	ajsf:cG	Ljava/lang/String;
     //   59: invokespecial 65	java/io/File:<init>	(Ljava/lang/String;)V
     //   62: aload 4
     //   64: invokespecial 68	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V

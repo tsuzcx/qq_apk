@@ -1,18 +1,37 @@
-import android.view.View;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.utils.VipUtils;
 
-public class ajde
+class ajde
+  implements aiwk
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  String jdField_a_of_type_JavaLangString;
-  int b;
+  ajde(ajdd paramajdd) {}
   
-  public ajde(View paramView, int paramInt1, String paramString, int paramInt2)
+  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
+    ajdd localajdd = this.a;
+    if (ajdd.a(this.a).jdField_b_of_type_Boolean)
+    {
+      paramStartCheckParam = ajdd.a(this.a).e;
+      ajdd.a(localajdd, paramStartCheckParam);
+      if (!"message".equals(ajdd.a(this.a).f)) {
+        break label101;
+      }
+    }
+    label101:
+    for (int i = 1;; i = 0)
+    {
+      VipUtils.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(ajdd.a(this.a).jdField_b_of_type_Int) });
+      return;
+      paramStartCheckParam = ajdd.a(this.a).d;
+      break;
+    }
+  }
+  
+  public void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if (ajdd.a(this.a) != null) {
+      ajdd.a(this.a).c(-10001, ajdd.a(this.a).jdField_b_of_type_JavaLangString);
+    }
   }
 }
 

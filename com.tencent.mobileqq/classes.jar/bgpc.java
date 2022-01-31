@@ -1,19 +1,18 @@
-import cooperation.qzone.util.QZLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qqdataline.ipc.MessageRecordParcel;
 
-class bgpc
-  extends bcol
+public final class bgpc
+  implements Parcelable.Creator<MessageRecordParcel>
 {
-  bgpc(bgpb parambgpb) {}
-  
-  public void a()
+  public MessageRecordParcel a(Parcel paramParcel)
   {
-    QZLog.i("VipARQGThreeController", 1, "qg so load success status = " + bcom.b.get());
+    return MessageRecordParcel.a(paramParcel);
   }
   
-  public void b()
+  public MessageRecordParcel[] a(int paramInt)
   {
-    QZLog.i("VipARQGThreeController", 1, "qg so load fail status = " + bcom.b.get());
+    return new MessageRecordParcel[paramInt];
   }
 }
 

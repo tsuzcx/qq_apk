@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text;
 
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
@@ -88,11 +89,10 @@ public class NativeText
       }
       for (;;)
       {
-        if ((this.mGravity & 0x20) != 0) {
-          j = i | 0x10;
-        }
-        for (;;)
+        if ((this.mGravity & 0x20) != 0)
         {
+          j = i | 0x10;
+          label295:
           this.mNative.setGravity(j);
           this.mNative.setLineSpacing(this.mLineSpaceExtra, this.mLineSpaceMultipiler);
           if (this.mMaxWidth > 0) {
@@ -101,8 +101,15 @@ public class NativeText
           if (this.mEnableMarquee != null) {
             this.mNative.setEnableMarquee(this.mEnableMarquee.booleanValue());
           }
+          if ((this.mEnableClickSpan == null) || (!this.mEnableClickSpan.booleanValue())) {
+            break label469;
+          }
+          this.mNative.setMovementMethod(LinkMovementMethod.getInstance());
+        }
+        for (;;)
+        {
           if (TextUtils.isEmpty(this.mText)) {
-            break label442;
+            break label480;
           }
           setRealText(this.mText);
           return;
@@ -112,26 +119,28 @@ public class NativeText
             break;
           }
           if ((this.mGravity & 0x2) == 0) {
-            break label449;
+            break label487;
           }
           i = 5;
           break;
           if ((this.mGravity & 0x8) != 0)
           {
             j = i | 0x30;
+            break label295;
           }
-          else
-          {
-            j = i;
-            if ((this.mGravity & 0x10) != 0) {
-              j = i | 0x50;
-            }
+          j = i;
+          if ((this.mGravity & 0x10) == 0) {
+            break label295;
           }
+          j = i | 0x50;
+          break label295;
+          label469:
+          this.mNative.setMovementMethod(null);
         }
-        label442:
+        label480:
         setRealText("");
         return;
-        label449:
+        label487:
         i = 0;
       }
     }

@@ -1,37 +1,43 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
 
-public class bhyg
-  extends AnimatorListenerAdapter
+class bhyg
+  implements ModuleDownloadListener
 {
-  public bhyg(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  bhyg(bhye parambhye, bhyj parambhyj) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onDownloadCanceled(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim  140ms end");
-    }
-    aquv.a();
-    this.a.a.setImageResource(2130843547);
-    this.a.a.setOnTouchListener(null);
-    this.a.a.setOnTouchListener(new bhyh(this));
-    this.a.b.setStateful(true);
-    this.a.b.setOnClickListener(new bhyi(this));
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onDownloadFailed(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim start");
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+    bhye.b(this.jdField_a_of_type_Bhye, false);
+    this.jdField_a_of_type_Bhyj.a(false);
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("libTar.so")) {
+      return;
     }
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bhye.c(), " onDownloadSucceed = ", bhye.d() });
+    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bhye.d());
+    bhye.b(this.jdField_a_of_type_Bhye);
+    this.jdField_a_of_type_Bhyj.a(bhye.b(this.jdField_a_of_type_Bhye));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhyg
  * JD-Core Version:    0.7.0.1
  */

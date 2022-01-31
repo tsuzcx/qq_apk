@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import bfpk;
+import bgxr;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -65,10 +65,10 @@ public class LpReport_ShuoshuoBehavior_dc02478
       if (!TextUtils.isEmpty(this.version)) {
         break label198;
       }
-      str = "8.2.6";
+      str = "8.2.8";
       label52:
       LpReportUtils.safePut(localHashMap, "version", str);
-      LpReportUtils.safePut(localHashMap, "qua", bfpk.a());
+      LpReportUtils.safePut(localHashMap, "qua", bgxr.a());
       if (!TextUtils.isEmpty(this.client_time)) {
         break label206;
       }

@@ -9,14 +9,14 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import bdfs;
-import bdgi;
-import bdhd;
-import bdnw;
-import bdvd;
-import bdve;
-import bdwa;
-import bdyn;
+import bejs;
+import beki;
+import belg;
+import besl;
+import bfbl;
+import bfbm;
+import bfcj;
+import bffu;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import com.tencent.qqmini.sdk.runtime.core.page.widget.MiniAppTextArea;
 import java.util.ArrayList;
@@ -31,9 +31,9 @@ public class NativeViewContainer
   private Context jdField_a_of_type_AndroidContentContext;
   private SparseArray<MiniAppTextArea> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   private View jdField_a_of_type_AndroidViewView;
-  private bdwa jdField_a_of_type_Bdwa;
+  private bfcj jdField_a_of_type_Bfcj;
   private PageWebviewContainer jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer;
-  private List<bdve> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<bfbm> jdField_a_of_type_JavaUtilList = new ArrayList();
   private SparseArray<CoverView> b = new SparseArray();
   
   public NativeViewContainer(Context paramContext, PageWebviewContainer paramPageWebviewContainer)
@@ -41,40 +41,40 @@ public class NativeViewContainer
     super(paramContext);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer = paramPageWebviewContainer;
-    this.jdField_a_of_type_Bdwa = new bdwa(this);
+    this.jdField_a_of_type_Bfcj = new bfcj(this);
     b();
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext().getApplicationContext()).inflate(2131493731, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext().getApplicationContext()).inflate(2131559300, null);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131304532)).setOnClickListener(new bdvd(this));
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370214)).setOnClickListener(new bfbl(this));
     if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer != null) {
       this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.a(this.jdField_a_of_type_AndroidViewView);
     }
   }
   
-  private void b(bdfs parambdfs)
+  private void b(bejs parambejs)
   {
-    bdgi.a(new NativeViewContainer.3(this, parambdfs));
+    beki.a(new NativeViewContainer.3(this, parambejs));
   }
   
-  private void c(bdfs parambdfs)
+  private void c(bejs parambejs)
   {
-    bdgi.a(new NativeViewContainer.4(this, parambdfs));
+    beki.a(new NativeViewContainer.4(this, parambejs));
   }
   
-  private void d(bdfs parambdfs)
+  private void d(bejs parambejs)
   {
-    bdgi.a(new NativeViewContainer.5(this, parambdfs));
+    beki.a(new NativeViewContainer.5(this, parambejs));
   }
   
-  private void e(bdfs parambdfs)
+  private void e(bejs parambejs)
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(parambdfs.b);
+      JSONObject localJSONObject1 = new JSONObject(parambejs.b);
       int i = localJSONObject1.optInt("inputId");
       JSONObject localJSONObject2 = new JSONObject();
       localJSONObject2.put("inputId", i);
@@ -82,20 +82,20 @@ public class NativeViewContainer
       if (!TextUtils.isEmpty(str)) {
         localJSONObject2.put("data", str);
       }
-      bdgi.a(new NativeViewContainer.6(this, i, localJSONObject1, parambdfs, localJSONObject2));
+      beki.a(new NativeViewContainer.6(this, i, localJSONObject1, parambejs, localJSONObject2));
       return;
     }
     catch (JSONException localJSONException)
     {
-      bdnw.d("NativeViewContainer", parambdfs.a + " error.", localJSONException);
+      besl.d("NativeViewContainer", parambejs.a + " error.", localJSONException);
     }
   }
   
-  private void f(bdfs parambdfs)
+  private void f(bejs parambejs)
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(parambdfs.b);
+      JSONObject localJSONObject1 = new JSONObject(parambejs.b);
       int i = localJSONObject1.optInt("inputId");
       JSONObject localJSONObject2 = new JSONObject();
       localJSONObject2.put("inputId", i);
@@ -103,28 +103,28 @@ public class NativeViewContainer
       if (!TextUtils.isEmpty(str)) {
         localJSONObject2.put("data", str);
       }
-      bdgi.a(new NativeViewContainer.7(this, localJSONObject1, parambdfs, localJSONObject2));
+      beki.a(new NativeViewContainer.7(this, localJSONObject1, parambejs, localJSONObject2));
       return;
     }
     catch (JSONException localJSONException)
     {
-      bdnw.d("NativeViewContainer", parambdfs.a + " error.", localJSONException);
+      besl.d("NativeViewContainer", parambejs.a + " error.", localJSONException);
     }
   }
   
-  private void g(bdfs parambdfs)
+  private void g(bejs parambejs)
   {
     try
     {
-      int i = new JSONObject(parambdfs.b).optInt("inputId");
+      int i = new JSONObject(parambejs.b).optInt("inputId");
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("inputId", i);
-      bdgi.a(new NativeViewContainer.8(this, i, parambdfs, localJSONObject));
+      beki.a(new NativeViewContainer.8(this, i, parambejs, localJSONObject));
       return;
     }
     catch (JSONException localJSONException)
     {
-      bdnw.d("NativeViewContainer", parambdfs.a + " error.", localJSONException);
+      besl.d("NativeViewContainer", parambejs.a + " error.", localJSONException);
     }
   }
   
@@ -161,27 +161,27 @@ public class NativeViewContainer
     return null;
   }
   
-  public String a(bdfs parambdfs)
+  public String a(bejs parambejs)
   {
-    bdnw.a("NativeViewContainer", "event = " + parambdfs.a + ", params = " + parambdfs.b);
-    if ("showKeyboard".equals(parambdfs.a)) {
-      a(parambdfs);
+    besl.a("NativeViewContainer", "event = " + parambejs.a + ", params = " + parambejs.b);
+    if ("showKeyboard".equals(parambejs.a)) {
+      a(parambejs);
     }
     for (;;)
     {
       return null;
-      if ("hideKeyboard".equals(parambdfs.a)) {
-        b(parambdfs);
-      } else if ("updateInput".equals(parambdfs.a)) {
-        c(parambdfs);
-      } else if ("setKeyboardValue".equals(parambdfs.a)) {
-        d(parambdfs);
-      } else if ("insertTextArea".equals(parambdfs.a)) {
-        e(parambdfs);
-      } else if ("updateTextArea".equals(parambdfs.a)) {
-        f(parambdfs);
-      } else if ("removeTextArea".equals(parambdfs.a)) {
-        g(parambdfs);
+      if ("hideKeyboard".equals(parambejs.a)) {
+        b(parambejs);
+      } else if ("updateInput".equals(parambejs.a)) {
+        c(parambejs);
+      } else if ("setKeyboardValue".equals(parambejs.a)) {
+        d(parambejs);
+      } else if ("insertTextArea".equals(parambejs.a)) {
+        e(parambejs);
+      } else if ("updateTextArea".equals(parambejs.a)) {
+        f(parambejs);
+      } else if ("removeTextArea".equals(parambejs.a)) {
+        g(parambejs);
       }
     }
   }
@@ -219,7 +219,7 @@ public class NativeViewContainer
     }
   }
   
-  public void a(int paramInt, JSONObject paramJSONObject, bdfs parambdfs)
+  public void a(int paramInt, JSONObject paramJSONObject, bejs parambejs)
   {
     Object localObject2 = (MiniAppTextArea)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
     int i = paramJSONObject.optInt("parentId");
@@ -242,7 +242,7 @@ public class NativeViewContainer
     }
     for (;;)
     {
-      ((MiniAppTextArea)localObject1).setAttributes(paramInt, paramJSONObject, parambdfs);
+      ((MiniAppTextArea)localObject1).setAttributes(paramInt, paramJSONObject, parambejs);
       return;
       label119:
       if (bool) {
@@ -260,33 +260,33 @@ public class NativeViewContainer
     }
   }
   
-  void a(bdfs parambdfs)
+  void a(bejs parambejs)
   {
     try
     {
-      int i = new JSONObject(parambdfs.b).optInt("inputId");
+      int i = new JSONObject(parambejs.b).optInt("inputId");
       if (i > 0)
       {
-        bdgi.a(new NativeViewContainer.1(this, i, parambdfs));
+        beki.a(new NativeViewContainer.1(this, i, parambejs));
         return;
       }
       if (System.currentTimeMillis() - 0L > 1000L)
       {
         System.currentTimeMillis();
-        bdgi.a(new NativeViewContainer.2(this, parambdfs), 200L);
+        beki.a(new NativeViewContainer.2(this, parambejs), 200L);
         return;
       }
     }
     catch (Exception localException)
     {
-      bdnw.d("NativeViewContainer", parambdfs.a + " error.", localException);
+      besl.d("NativeViewContainer", parambejs.a + " error.", localException);
     }
   }
   
-  public void a(bdhd parambdhd)
+  public void a(belg parambelg)
   {
     if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.a(parambdhd);
+      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.a(parambelg);
     }
   }
   
@@ -304,7 +304,7 @@ public class NativeViewContainer
     }
     catch (Exception paramJSONObject)
     {
-      bdnw.d("NativeViewContainer", "updateTextArea error.", paramJSONObject);
+      besl.d("NativeViewContainer", "updateTextArea error.", paramJSONObject);
     }
   }
   
@@ -317,7 +317,7 @@ public class NativeViewContainer
   }
   
   /* Error */
-  public boolean a(bdve parambdve)
+  public boolean a(bfbm parambfbm)
   {
     // Byte code:
     //   0: aload_0
@@ -350,7 +350,7 @@ public class NativeViewContainer
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	47	0	this	NativeViewContainer
-    //   0	47	1	parambdve	bdve
+    //   0	47	1	parambfbm	bfbm
     //   32	7	2	bool	boolean
     // Exception table:
     //   from	to	target	type
@@ -374,7 +374,7 @@ public class NativeViewContainer
   }
   
   /* Error */
-  public boolean b(bdve parambdve)
+  public boolean b(bfbm parambfbm)
   {
     // Byte code:
     //   0: aload_0
@@ -407,7 +407,7 @@ public class NativeViewContainer
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	47	0	this	NativeViewContainer
-    //   0	47	1	parambdve	bdve
+    //   0	47	1	parambfbm	bfbm
     //   32	7	2	bool	boolean
     // Exception table:
     //   from	to	target	type
@@ -421,7 +421,7 @@ public class NativeViewContainer
       if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) {
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       }
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, bdyn.a(getContext(), 50.0F));
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, bffu.a(getContext(), 50.0F));
       localLayoutParams.leftMargin = 0;
       localLayoutParams.topMargin = paramInt;
       this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
@@ -435,10 +435,10 @@ public class NativeViewContainer
     }
   }
   
-  public void setSoftKeyboardStateListener(bdhd parambdhd)
+  public void setSoftKeyboardStateListener(belg parambelg)
   {
     if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.setSoftKeyboardStateListener(parambdhd);
+      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebviewContainer.setSoftKeyboardStateListener(parambelg);
     }
   }
 }

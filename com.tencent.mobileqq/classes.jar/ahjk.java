@@ -1,26 +1,12 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-
-class ahjk
-  implements Handler.Callback
+public abstract interface ahjk
 {
-  ahjk(ahjj paramahjj) {}
+  public abstract void a();
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a(null);
-      continue;
-      if (ahjj.a(this.a) != null) {
-        ahjj.a(this.a).k();
-      }
-    }
-  }
+  public abstract void b();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

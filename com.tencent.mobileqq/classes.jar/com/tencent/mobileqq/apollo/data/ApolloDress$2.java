@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.data;
 
-import ajjy;
-import bbmy;
+import ajyc;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class ApolloDress$2
@@ -11,7 +11,7 @@ public final class ApolloDress$2
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getApplication(), ajjy.a(2131634532) + this.a + " 装扮不足7件", 1).a();
+    bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131700320) + this.a + " 装扮不足7件", 1).a();
   }
 }
 

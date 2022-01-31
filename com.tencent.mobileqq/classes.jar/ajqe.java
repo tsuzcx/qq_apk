@@ -1,24 +1,31 @@
-import java.util.concurrent.atomic.AtomicBoolean;
-import msf.msgcomm.msg_comm.Msg;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.qphone.base.util.QLog;
 
-class ajqe
+public class ajqe
+  extends bbwf
 {
-  public long a;
-  public AtomicBoolean a;
-  public msg_comm.Msg a;
-  public long b;
+  public ajqe(ApolloLottieAnim paramApolloLottieAnim, String paramString1, String paramString2, String paramString3) {}
   
-  public ajqe(msg_comm.Msg paramMsg, long paramLong1, long paramLong2)
+  public void onDone(bbwg parambbwg)
   {
-    this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg = paramMsg;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    super.onDone(parambbwg);
+    if (3 == parambbwg.a()) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloLottieAnim", 2, "downloadZip onDone task.getStatus()->" + parambbwg.a());
+      }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a = 2;
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajqe
  * JD-Core Version:    0.7.0.1
  */

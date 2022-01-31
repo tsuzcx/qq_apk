@@ -1,13 +1,18 @@
-import android.graphics.drawable.Drawable;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
-public abstract interface aorv
+public class aorv
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener);
+  public aorv(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    FileAssistantActivity.a(this.a).setVisibility(8);
+  }
 }
 
 

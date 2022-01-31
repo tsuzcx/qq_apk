@@ -1,27 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerEntryItemView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import common.config.service.QzoneConfig;
-import mqq.app.AppRuntime;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.Set;
 
 public class vwo
-  implements View.OnClickListener
 {
-  public vwo(RecommendBannerEntryItemView paramRecommendBannerEntryItemView) {}
-  
-  public void onClick(View paramView)
+  public static void a(@NonNull String paramString, Bundle paramBundle)
   {
-    paramView = QzoneConfig.getInstance().getConfig("qqminiapp", "publicAcuntDiscoverPageSchema", "mqqapi://miniapp/open?_atype=0&_mappid=1109786902&_mvid=&_vt=3&_sig=f945854d8893417d87b3599d8dce7bdde77f409be5548044ed67383266b1fbf4");
-    MiniAppLauncher.startMiniApp(this.a.getContext(), paramView, 2016, null, null);
-    bfpr.a();
-    wye.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "auth_page", "clk_find", 0, 0, new String[0]);
+    if (paramBundle == null)
+    {
+      veg.b(paramString, ", logBundleDetails : null");
+      return;
+    }
+    veg.b(paramString, "-- ----------- logBundleDetails ------------- [[[");
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      veg.a(paramString, "-- - %s : %s", str, paramBundle.get(str));
+    }
+    veg.b(paramString, "-- ----------- logBundleDetails ------------- ]]]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vwo
  * JD-Core Version:    0.7.0.1
  */

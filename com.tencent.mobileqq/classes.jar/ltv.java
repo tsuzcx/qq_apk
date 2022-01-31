@@ -1,18 +1,9 @@
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.av.ui.MultiIncomingCallsActivity.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.ttpic.openapi.model.ExpressionItem;
 
 public class ltv
-  extends kvg
+  extends ExpressionItem
 {
-  public ltv(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
-  
-  protected void a(long paramLong1, long paramLong2, ArrayList<ldv> paramArrayList)
-  {
-    ThreadManager.getUIHandler().post(new MultiIncomingCallsActivity.1.1(this, paramArrayList));
-  }
+  public int[] a;
 }
 
 

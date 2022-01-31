@@ -1,9 +1,8 @@
-import com.tencent.mobileqq.data.QCallRecent;
-import java.util.List;
-
 public abstract interface aufs
 {
-  public abstract void a(List<QCallRecent> paramList);
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

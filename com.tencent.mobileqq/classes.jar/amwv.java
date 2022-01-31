@@ -1,99 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class amwv
-  extends ajjh
+public class amwv
 {
-  amwv(amwu paramamwu) {}
+  public int a;
+  public int b;
   
-  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
+  public static amwv a(String paramString)
   {
-    localObject3 = null;
-    String str1;
-    if ((paramBoolean) && (paramSetting != null))
+    if (paramString == null) {}
+    do
     {
-      str1 = paramSetting.uin;
-      if ((str1 != null) && (str1.startsWith("stranger_")) && (this.a.jdField_a_of_type_JavaUtilSet.contains(str1))) {
-        if (TextUtils.isEmpty(paramSetting.url)) {
-          break label186;
-        }
-      }
-    }
-    for (paramSetting = amwu.a(32, paramSetting.url, paramSetting.bHeadType, paramSetting.bFaceFlags);; paramSetting = null)
-    {
-      if (!TextUtils.isEmpty(paramSetting)) {
-        this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, paramSetting);
-      }
+      return null;
       try
       {
-        i = str1.indexOf('_');
-        j = str1.indexOf('_', i + 1);
-        i = Integer.parseInt(str1.substring(i + 1, j));
+        amwv localamwv = new amwv();
+        paramString = new JSONObject(paramString);
+        localamwv.a = paramString.optInt("switch", 0);
+        localamwv.b = paramString.optInt("stoppreload", 0);
+        QLog.d("ConfBean", 2, "confBean = " + localamwv.a);
+        return localamwv;
       }
-      catch (NumberFormatException localNumberFormatException1)
-      {
-        for (;;)
-        {
-          int j;
-          String str2;
-          i = 0;
-          amvy.b("StrangerHdHeadUrlFetcher", new Object[] { localNumberFormatException1.toString() });
-          Object localObject1 = localObject3;
-        }
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          label186:
-          int i = 0;
-          amvy.b("StrangerHdHeadUrlFetcher", new Object[] { localException1.toString() });
-          Object localObject2 = localObject3;
-        }
-      }
-      try
-      {
-        str2 = str1.substring(j + 1);
-        ConnectNearbyProcService.a(4106, new Object[] { str2, Integer.valueOf(i), paramSetting });
-        amwu.a(this.a, str1);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        break label237;
-      }
-      catch (NumberFormatException localNumberFormatException2)
-      {
-        break label209;
-      }
-      str1 = null;
-      break;
-      amvy.b("StrangerHdHeadUrlFetcher", new Object[] { "setting.url is null" });
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  public String toString()
   {
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      String str1 = amwu.a(32, paramInt, paramString);
-      if (this.a.jdField_a_of_type_JavaUtilSet.contains(str1))
-      {
-        String str2 = this.a.a(paramString, paramInt, false);
-        if (!TextUtils.isEmpty(str2)) {
-          ConnectNearbyProcService.a(4106, new Object[] { paramString, Integer.valueOf(paramInt), str2 });
-        }
-        amwu.a(this.a, str1);
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("result:").append(this.a);
+    localStringBuilder.append(" stoppreload:").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amwv
  * JD-Core Version:    0.7.0.1
  */

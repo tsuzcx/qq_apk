@@ -1,10 +1,34 @@
-public abstract interface ocq
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+
+public class ocq
+  implements TVK_SDKMgr.InstallListener
 {
-  public abstract void a(String paramString1, String paramString2);
+  public ocq(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView) {}
+  
+  public void onInstallProgress(float paramFloat)
+  {
+    yxs.a("ReadInJoyArticleBottomVideoView", "installSDK onInstallProgress arg0=");
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    yxs.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledFailed arg0=");
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    yxs.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledSuccessed");
+    if ((ReadInJoyArticleBottomVideoView.b()) && (ReadInJoyArticleBottomVideoView.a(this.a) != null)) {
+      ReadInJoyArticleBottomVideoView.a(this.a).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(this.a, 4));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ocq
  * JD-Core Version:    0.7.0.1
  */

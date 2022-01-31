@@ -1,108 +1,36 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.qphone.base.util.QLog;
 
 public class mft
+  implements DialogInterface.OnClickListener
 {
-  public static int a(int[] paramArrayOfInt, int paramInt)
-  {
-    return a(paramArrayOfInt, paramInt, 0);
-  }
+  public mft(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong) {}
   
-  public static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramArrayOfInt == null)
-    {
-      paramInt2 = -1;
-      return paramInt2;
+    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.g()) {
+      return;
     }
-    int i = paramInt2;
-    if (paramInt2 < 0) {
-      i = 0;
+    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a().a() == -1) {
+      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.q(this.jdField_a_of_type_Long);
     }
     for (;;)
     {
-      if (i >= paramArrayOfInt.length) {
-        break label38;
-      }
-      paramInt2 = i;
-      if (paramInt1 == paramArrayOfInt[i]) {
-        break;
-      }
-      i += 1;
-    }
-    label38:
-    return -1;
-  }
-  
-  public static int a(Object[] paramArrayOfObject, Object paramObject)
-  {
-    return a(paramArrayOfObject, paramObject, 0);
-  }
-  
-  public static int a(Object[] paramArrayOfObject, Object paramObject, int paramInt)
-  {
-    if (paramArrayOfObject == null)
-    {
-      paramInt = -1;
-      return paramInt;
-    }
-    if (paramInt < 0) {
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      int i;
-      if (paramObject == null)
+      paramDialogInterface.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d())
       {
-        i = paramInt;
-        for (;;)
-        {
-          if (i >= paramArrayOfObject.length) {
-            break label82;
-          }
-          paramInt = i;
-          if (paramArrayOfObject[i] == null) {
-            break;
-          }
-          i += 1;
-        }
+        MultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase, true);
+        this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.f(this.jdField_a_of_type_Long, 65535);
       }
-      if (paramArrayOfObject.getClass().getComponentType().isInstance(paramObject))
+      else if (QLog.isColorLevel())
       {
-        i = paramInt;
-        for (;;)
-        {
-          if (i >= paramArrayOfObject.length) {
-            break label82;
-          }
-          paramInt = i;
-          if (paramObject.equals(paramArrayOfObject[i])) {
-            break;
-          }
-          i += 1;
-        }
+        QLog.e(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.c, 2, "PressCameraBtnRunnable-->go on stage fail,can not find the session");
       }
-      label82:
-      return -1;
     }
-  }
-  
-  public static <T> boolean a(List<T> paramList, T paramT)
-  {
-    if (paramList == null) {}
-    while (paramList.indexOf(paramT) < 0) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(int[] paramArrayOfInt, int paramInt)
-  {
-    return a(paramArrayOfInt, paramInt) != -1;
-  }
-  
-  public static boolean a(Object[] paramArrayOfObject, Object paramObject)
-  {
-    return a(paramArrayOfObject, paramObject) != -1;
   }
 }
 

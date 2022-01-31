@@ -1,25 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView.4.2;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
 
-public class aqfi
-  implements DialogInterface.OnClickListener
+class aqfi
+  extends Handler
 {
-  public aqfi(HotPicPageView.4.2 param2) {}
+  aqfi(aqfb paramaqfb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
-    if (this.a.a.jdField_a_of_type_Aqfp.a == 1) {
-      this.a.a.jdField_a_of_type_Aqfp.a(0);
+    if (paramMessage.what == 0) {
+      bcpw.a(this.a.a, ajyc.a(2131704815), 0).a();
     }
-    QLog.d("HotPicManagerHotPicPageView", 2, "user click button");
+    while (1 != paramMessage.what) {
+      return;
+    }
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqfi
  * JD-Core Version:    0.7.0.1
  */

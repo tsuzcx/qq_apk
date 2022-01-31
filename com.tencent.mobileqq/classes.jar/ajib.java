@@ -1,111 +1,62 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.event.ForeBackgroundEvent;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.io.File;
 
-public final class ajib
+final class ajib
+  extends bbwf
 {
-  private List<ajid> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  ajib(String paramString, File paramFile, ajih paramajih) {}
   
-  public static ajib a()
+  public void onDone(bbwg parambbwg)
   {
-    return ajie.a();
-  }
-  
-  public List<ajid> a()
-  {
-    try
-    {
-      List localList = this.jdField_a_of_type_JavaUtilList;
-      return localList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void a()
-  {
+    super.onDone(parambbwg);
     if (QLog.isColorLevel()) {
-      QLog.d("ForeBackgroundSwitch", 2, "onAppBackground: invoked. ");
+      QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData onDone url" + this.jdField_a_of_type_JavaLangString + " task.getStatus():" + parambbwg.a());
     }
-    wcj.a().a(new ForeBackgroundEvent(true));
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppBackground ==============");
-    saf.a().a();
-    ardg.b();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((ajid)localIterator.next()).b();
+    if (3 == parambbwg.a()) {
+      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
     }
-  }
-  
-  public void a(ajid paramajid)
-  {
-    try
+    while (this.jdField_a_of_type_Ajih == null)
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramajid);
+      do
+      {
+        try
+        {
+          nay.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+          if (this.jdField_a_of_type_Ajih != null) {
+            this.jdField_a_of_type_Ajih.a(true, 0);
+          }
+          return;
+        }
+        catch (Exception parambbwg)
+        {
+          for (;;)
+          {
+            this.jdField_a_of_type_JavaIoFile.delete();
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error  error->" + parambbwg.getMessage());
+            }
+          }
+        }
+        catch (OutOfMemoryError parambbwg)
+        {
+          for (;;)
+          {
+            this.jdField_a_of_type_JavaIoFile.delete();
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error resType->" + parambbwg.getMessage());
+            }
+          }
+        }
+      } while (this.jdField_a_of_type_Ajih == null);
+      this.jdField_a_of_type_Ajih.a(false, 0);
       return;
     }
-    finally
-    {
-      paramajid = finally;
-      throw paramajid;
-    }
-  }
-  
-  public final void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForeBackgroundSwitch", 2, "onAppForeground: invoked. " + paramString);
-    }
-    if (xfs.b <= 0L)
-    {
-      xfs.b = System.currentTimeMillis();
-      QLog.d("ForeBackgroundSwitch", 1, new Object[] { "onAppForeground: invoked. ", " sFirstForegroundTimestamp: ", Long.valueOf(xfs.b) });
-    }
-    ardg.a();
-    if (TextUtils.equals("com.tencent.mobileqq:qzone", paramString)) {
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
-    for (;;)
-    {
-      QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppForeground ==============");
-      paramString = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramString.hasNext()) {
-        ((ajid)paramString.next()).a();
-      }
-      paramString = new ForeBackgroundEvent(false);
-      wcj.a().a(paramString);
-      continue;
-      paramString = new ForeBackgroundEvent(false);
-      wcj.a().a(paramString);
-    }
-  }
-  
-  public void b(ajid paramajid)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramajid);
-      return;
-    }
-    finally
-    {
-      paramajid = finally;
-      throw paramajid;
-    }
+    this.jdField_a_of_type_Ajih.a(false, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajib
  * JD-Core Version:    0.7.0.1
  */

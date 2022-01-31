@@ -1,41 +1,16 @@
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListPart.6.1;
+import mqq.os.MqqHandler;
+
 public class bilu
+  implements bjob<Boolean>
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
+  bilu(bilj parambilj) {}
   
-  public bilu(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-  }
-  
-  public static boolean a(bilu parambilu1, bilu parambilu2)
-  {
-    return Float.compare(parambilu1.d, parambilu2.d) != 0;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-  }
-  
-  public void a(bilu parambilu)
-  {
-    this.c *= parambilu.c;
-    this.a -= parambilu.a;
-    this.b -= parambilu.b;
-  }
-  
-  public String toString()
-  {
-    return "CropHomeing{x=" + this.a + ", y=" + this.b + ", scale=" + this.c + ", rotate=" + this.d + '}';
+    ThreadManager.getFileThreadHandler().postAtFrontOfQueue(new AEBottomListPart.6.1(this));
   }
 }
 

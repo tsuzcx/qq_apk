@@ -1,23 +1,48 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.2;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class adjq
-  implements arge
+public class adjq
+  implements adih
 {
-  adjq(adjp paramadjp) {}
+  private BaseChatPie a;
   
-  public void a(adjt paramadjt)
+  public adjq(BaseChatPie paramBaseChatPie)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarketFaceItemBuilder", 2, "func downloadVideoDetails, 【callback】 try to download video details.");
-    }
-    adje.a(this.a.jdField_a_of_type_Adje, paramadjt);
+    this.a = paramBaseChatPie;
   }
   
-  public void a(boolean paramBoolean)
+  private void a()
   {
-    if (paramBoolean) {
-      adje.a(this.a.jdField_a_of_type_Adje, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.a.jdField_a_of_type_Adjt);
+    if ((this.a != null) && (this.a.z()) && (this.a.b() == 1)) {
+      ThreadManager.post(new TroopNotificationAIOHelper.1(this), 8, null, true);
     }
+  }
+  
+  private void b()
+  {
+    if ((this.a != null) && (this.a.b() == 1)) {
+      ThreadManager.post(new TroopNotificationAIOHelper.2(this), 8, null, true);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 4: 
+      a();
+      return;
+    }
+    b();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 4, 9 };
   }
 }
 

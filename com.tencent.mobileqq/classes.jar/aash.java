@@ -1,18 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class aash
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aash(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public aash(ChatHistoryFileActivity paramChatHistoryFileActivity, aask paramaask) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.isFinishing()) {
-      ForwardFriendListActivity.a(this.a).dismiss();
-    }
+    this.jdField_a_of_type_Aask.a(false);
   }
 }
 

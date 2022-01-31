@@ -1,56 +1,53 @@
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class amlm
+final class amlm
+  implements angt
 {
-  private Map<String, List<amln>> a = new HashMap();
-  
-  public static amlm a(alzs[] paramArrayOfalzs)
+  public void a(String paramString1, String paramString2)
   {
-    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length <= 0)) {
-      return null;
-    }
-    localamlm = new amlm();
-    try
-    {
-      paramArrayOfalzs = new JSONObject(paramArrayOfalzs[0].a);
-      Iterator localIterator = paramArrayOfalzs.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        JSONArray localJSONArray = paramArrayOfalzs.getJSONArray(str);
-        ArrayList localArrayList = new ArrayList();
-        int i = 0;
-        while (i < localJSONArray.length())
-        {
-          localArrayList.add(amln.a(localJSONArray.getJSONObject(i)));
-          i += 1;
-        }
-        localamlm.a.put(str, localArrayList);
-      }
-      return localamlm;
-    }
-    catch (JSONException paramArrayOfalzs)
-    {
-      QLog.e("TencentDocEditConvertConfigBean", 1, "parse fail", paramArrayOfalzs);
+    if (QLog.isColorLevel()) {
+      QLog.d(amll.a(), 2, paramString2);
     }
   }
   
-  public Map<String, List<amln>> a()
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return this.a;
+    if (QLog.isColorLevel()) {
+      QLog.e(amll.a(), 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(amll.a(), 2, paramString2);
+    }
+  }
+  
+  public void c(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(amll.a(), 2, paramString2);
+    }
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(amll.a(), 2, paramString2);
+    }
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(amll.a(), 2, paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amlm
  * JD-Core Version:    0.7.0.1
  */

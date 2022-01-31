@@ -1,37 +1,119 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import com.tencent.widget.AbsListView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.ArrayList;
 
 public class aavn
-  implements begh
+  extends BaseAdapter
+  implements baxl
 {
-  public aavn(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public aavn(ContactBindedActivity paramContactBindedActivity, Context paramContext)
   {
-    FriendProfileCardActivity.a(this.a, paramInt1);
-    if ((this.a.a != null) && (this.a.a.a("map_key_extend_friend_info"))) {
-      this.a.a.d();
-    }
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844136);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public PhoneContact a(int paramInt)
   {
-    if (this.a.b != paramInt) {
-      this.a.b = paramInt;
-    }
-    switch (paramInt)
+    return (PhoneContact)ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).get(paramInt);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-    default: 
-      zqk.a().a("vas_profilecard_list");
+      if ((ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity) != null) && (ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).size() > 0))
+      {
+        PhoneContact localPhoneContact = (PhoneContact)ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).get(ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).size() - 1);
+        ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity, localPhoneContact, false);
+      }
+      this.jdField_a_of_type_Boolean = false;
+      return;
     }
+    this.jdField_a_of_type_Boolean = true;
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Bitmap localBitmap = null;
+    PhoneContact localPhoneContact = a(paramInt);
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity.getLayoutInflater().inflate(2131559159, null);
+    }
+    paramViewGroup.setTag(localPhoneContact);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131365824);
+    paramView = localBitmap;
+    if (paramInt == getCount() - 1)
+    {
+      paramView = localBitmap;
+      if (this.jdField_a_of_type_Boolean) {
+        paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      }
+    }
+    localImageView.setImageDrawable(paramView);
+    localBitmap = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).a(11, localPhoneContact.unifiedCode);
+    paramView = localBitmap;
+    if (localBitmap == null)
+    {
+      ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).a(localPhoneContact.unifiedCode, 11, true, (byte)0);
+      paramView = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity);
+    }
+    localImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramView));
+    if (AppSetting.d) {
+      localImageView.setContentDescription(localPhoneContact.name);
+    }
+    return paramViewGroup;
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    super.notifyDataSetChanged();
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if (ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity) == null) {}
     for (;;)
     {
-      if (FriendProfileCardActivity.a(this.a) != null) {
-        FriendProfileCardActivity.a(this.a).a(paramInt);
-      }
       return;
-      zqk.a().a("vas_profilecard_list", false);
+      paramInt1 = 0;
+      while (paramInt1 < ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).getChildCount())
+      {
+        View localView = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).getChildAt(paramInt1);
+        Object localObject = localView.getTag();
+        if ((localObject != null) && ((localObject instanceof PhoneContact)) && (paramString.equals(((PhoneContact)localObject).unifiedCode))) {
+          ((ImageView)localView.findViewById(2131365824)).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+        }
+        paramInt1 += 1;
+      }
     }
   }
 }

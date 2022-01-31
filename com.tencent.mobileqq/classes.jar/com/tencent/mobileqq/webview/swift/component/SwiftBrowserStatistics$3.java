@@ -2,16 +2,16 @@ package com.tencent.mobileqq.webview.swift.component;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import awpy;
-import bbca;
-import bbcc;
+import axpw;
+import bcfa;
+import bcfc;
 import java.net.URLEncoder;
-import mkw;
+import mvv;
 
 public class SwiftBrowserStatistics$3
   implements Runnable
 {
-  public SwiftBrowserStatistics$3(bbca parambbca, String paramString, int paramInt) {}
+  public SwiftBrowserStatistics$3(bcfa parambcfa, String paramString, int paramInt) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class SwiftBrowserStatistics$3
         if (TextUtils.isEmpty(str1)) {
           return;
         }
-        if ((!this.this$0.q) && (!mkw.a().m(str1))) {
+        if ((!this.this$0.q) && (!mvv.a().m(str1))) {
           return;
         }
         str1 = URLEncoder.encode(this.jdField_a_of_type_JavaLangString);
@@ -55,7 +55,7 @@ public class SwiftBrowserStatistics$3
         ((StringBuilder)localObject).append(str1).append("|");
         ((StringBuilder)localObject).append(str1).append("|");
         ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-        awpy.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
+        axpw.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
         return;
       }
     }

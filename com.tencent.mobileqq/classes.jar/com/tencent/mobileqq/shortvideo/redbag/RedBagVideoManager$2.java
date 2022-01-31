@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.shortvideo.redbag;
 
-import alzw;
-import amfm;
-import awkk;
-import awko;
-import batm;
-import bato;
-import batr;
+import ampm;
+import amvs;
+import axjq;
+import axju;
+import bbwg;
+import bbwi;
+import bbwl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -21,42 +21,42 @@ public final class RedBagVideoManager$2
     Object localObject;
     try
     {
-      if (awkk.jdField_a_of_type_Boolean)
+      if (axjq.jdField_a_of_type_Boolean)
       {
         if (QLog.isColorLevel()) {
           QLog.d("RedBagVideoManager", 2, "checkAndDownloadRes : isLoadingRes = true");
         }
         return;
       }
-      awkk.jdField_a_of_type_Boolean = true;
-      localObject = (amfm)alzw.a().a(252);
-      String str1 = ((amfm)localObject).b;
-      localObject = ((amfm)localObject).jdField_a_of_type_JavaLangString;
+      axjq.jdField_a_of_type_Boolean = true;
+      localObject = (amvs)ampm.a().a(252);
+      String str1 = ((amvs)localObject).b;
+      localObject = ((amvs)localObject).jdField_a_of_type_JavaLangString;
       if ((QLog.isColorLevel()) && (str1 != null) && (localObject != null)) {
         QLog.d("RedBagVideoManager", 2, "checkAndDownloadRes: md5 = " + str1 + ", url = " + (String)localObject);
       }
       if ((str1 == null) || (str1.length() == 0) || (localObject == null) || (((String)localObject).length() == 0))
       {
-        awkk.jdField_a_of_type_Boolean = false;
+        axjq.jdField_a_of_type_Boolean = false;
         return;
       }
     }
     finally {}
-    if (!awkk.a(str2, this.a))
+    if (!axjq.a(str2, this.a))
     {
-      String str3 = awkk.jdField_a_of_type_JavaLangString + "VideoRedbagRes_2.0_android.zip";
-      batm localbatm = new batm((String)localObject, new File(str3));
-      localbatm.n = true;
-      batr localbatr = ((bato)this.a.getManager(47)).a(1);
+      String str3 = axjq.jdField_a_of_type_JavaLangString + "VideoRedbagRes_2.0_android.zip";
+      bbwg localbbwg = new bbwg((String)localObject, new File(str3));
+      localbbwg.n = true;
+      bbwl localbbwl = ((bbwi)this.a.getManager(47)).a(1);
       if (QLog.isColorLevel()) {
         QLog.d("RedBagVideoManager", 2, "checkAndDownloadRes : [download] startDownload: " + (String)localObject + " path=" + str3);
       }
-      localbatr.a(localbatm, new awko(this, (String)localObject, str3, str2), null);
+      localbbwl.a(localbbwg, new axju(this, (String)localObject, str3, str2), null);
     }
     for (;;)
     {
       return;
-      awkk.jdField_a_of_type_Boolean = false;
+      axjq.jdField_a_of_type_Boolean = false;
     }
   }
 }

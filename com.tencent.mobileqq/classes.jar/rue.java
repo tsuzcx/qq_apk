@@ -1,58 +1,131 @@
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
-import android.os.Build.VERSION;
-import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 
-public class rue
+public final class rue
 {
-  public static GradientDrawable a(View paramView, float paramFloat, @ColorInt int paramInt)
+  private int jdField_a_of_type_Int = -1;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private View jdField_a_of_type_AndroidViewView;
+  public TabLayoutCompat a;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private Object jdField_a_of_type_JavaLangObject;
+  public ruf a;
+  private CharSequence b;
+  
+  public int a()
   {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadius(paramFloat);
-    localGradientDrawable.setColor(paramInt);
-    if (paramView != null) {
-      a(paramView, localGradientDrawable);
-    }
-    return localGradientDrawable;
+    return this.jdField_a_of_type_Int;
   }
   
-  public static GradientDrawable a(View paramView, float paramFloat, @ColorInt int paramInt1, int paramInt2)
+  @Nullable
+  public Drawable a()
   {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    if (paramFloat > 0.0F) {
-      localGradientDrawable.setCornerRadius(paramFloat);
-    }
-    localGradientDrawable.setStroke(paramInt2, paramInt1);
-    if (paramView != null) {
-      a(paramView, localGradientDrawable);
-    }
-    return localGradientDrawable;
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
   
-  public static StateListDrawable a(View paramView, @NonNull Drawable paramDrawable1, @NonNull Drawable paramDrawable2)
+  @Nullable
+  public View a()
   {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842910 }, paramDrawable1);
-    localStateListDrawable.addState(new int[0], paramDrawable2);
-    if (paramView != null) {
-      a(paramView, localStateListDrawable);
-    }
-    return localStateListDrawable;
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public static void a(@NonNull View paramView, @NonNull Drawable paramDrawable)
+  @Nullable
+  public CharSequence a()
   {
-    if (Build.VERSION.SDK_INT < 16)
-    {
-      paramView.setBackgroundDrawable(paramDrawable);
-      return;
+    return this.jdField_a_of_type_JavaLangCharSequence;
+  }
+  
+  @Nullable
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  @NonNull
+  public rue a(int paramInt)
+  {
+    return a(LayoutInflater.from(this.jdField_a_of_type_Ruf.getContext()).inflate(paramInt, this.jdField_a_of_type_Ruf, false));
+  }
+  
+  @NonNull
+  public rue a(@Nullable View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    c();
+    return this;
+  }
+  
+  @NonNull
+  public rue a(@Nullable CharSequence paramCharSequence)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    c();
+    return this;
+  }
+  
+  @NonNull
+  public rue a(@Nullable Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    return this;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
+      throw new IllegalArgumentException("Tab not attached to a TabLayout");
     }
-    paramView.setBackground(paramDrawable);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a_(this);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
+      throw new IllegalArgumentException("Tab not attached to a TabLayout");
+    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b() == this.jdField_a_of_type_Int;
+  }
+  
+  @Nullable
+  public CharSequence b()
+  {
+    return this.b;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
+      throw new IllegalArgumentException("Tab not attached to a TabLayout");
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.c(this, true);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Ruf != null) {
+      this.jdField_a_of_type_Ruf.b();
+    }
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = null;
+    this.jdField_a_of_type_Ruf = null;
+    this.jdField_a_of_type_JavaLangObject = null;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.jdField_a_of_type_JavaLangCharSequence = null;
+    this.b = null;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidViewView = null;
   }
 }
 

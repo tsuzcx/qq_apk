@@ -5,12 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
 import java.util.HashMap;
-import ydg;
+import ymk;
 
 public class LightAppSettingInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<LightAppSettingInfo> CREATOR = new ydg();
+  public static final Parcelable.Creator<LightAppSettingInfo> CREATOR = new ymk();
   public int a;
   public long a;
   public String a;

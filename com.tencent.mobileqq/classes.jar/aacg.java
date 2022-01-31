@@ -1,47 +1,28 @@
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public class aacg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class aacg
+  extends JobSegment<asiu, asiu>
 {
-  public aacg(AutoRemarkActivity paramAutoRemarkActivity) {}
+  aacg(aacb paramaacb, String paramString, int paramInt) {}
   
-  public void onGlobalLayout()
+  protected void a(JobContext paramJobContext, asiu paramasiu)
   {
-    Object localObject = new Rect();
-    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
-    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
+    if (paramasiu.b())
     {
-      i = 1;
-      localObject = this.a.getCurrentFocus();
-      if (i != 0) {
-        break label101;
+      notifyResult(paramasiu);
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.permissionHelper", 2, "appBaseInfo cache is valid");
       }
-      if ((localObject != null) && ((localObject instanceof EditText))) {
-        ((EditText)localObject).setCursorVisible(false);
-      }
-    }
-    label101:
-    while ((localObject == null) || (!(localObject instanceof EditText)))
-    {
       return;
-      i = 0;
-      break;
     }
-    ((EditText)localObject).setCursorVisible(true);
+    asiz.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new aach(this, this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aacg
  * JD-Core Version:    0.7.0.1
  */

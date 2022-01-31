@@ -1,52 +1,28 @@
-import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import com.tribe.async.parallel.ParallelStream;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class uch
-  extends JobSegment<ucw, ucw>
+class uch
+  implements udf
 {
-  private JobContext jdField_a_of_type_ComTribeAsyncAsyncJobContext;
-  private ParallelStream jdField_a_of_type_ComTribeAsyncParallelParallelStream;
-  private ucw jdField_a_of_type_Ucw;
+  uch(ucc paramucc, StoryVideoItem paramStoryVideoItem) {}
   
-  private void a(String paramString)
+  public boolean a(udc paramudc, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = ParallelStream.of(new ucp(this), paramString);
-    uiv localuiv1;
-    uiv localuiv2;
-    if (this.jdField_a_of_type_Ucw.a())
-    {
-      localuiv1 = new uiv(paramString, 2, "", 0);
-      localuiv2 = new uiv(paramString, 2, "", 1);
+    if (this.jdField_a_of_type_Ucc.isCanceled()) {
+      return true;
     }
-    for (this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new ucn(this, 0), paramString).map(new ucn(this, 1), paramString).map(new ucl(this), localuiv1).map(new ucl(this), localuiv2);; this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new ucn(this, -1), paramString).map(new ucl(this), localuiv1))
+    veg.e(this.jdField_a_of_type_Ucc.a.a, "onError, setOnErrorListener [videoView, model=%d, what=%d, position=%d, extra=%s, Info=%s] = ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramObject });
+    if (paramInt2 == 102)
     {
-      this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.subscribe(new uck(this));
-      return;
-      localuiv1 = new uiv(paramString, 2, "");
+      paramudc.d();
+      return true;
     }
-  }
-  
-  protected void a(JobContext paramJobContext, ucw paramucw)
-  {
-    if ((paramucw == null) || (paramucw.a == null) || (TextUtils.isEmpty(paramucw.a.feedId)))
-    {
-      urk.b("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed id is while request feed all info.");
-      notifyError(new ErrorMessage(940001, "feed id is while request feed all info."));
-      return;
-    }
-    this.jdField_a_of_type_ComTribeAsyncAsyncJobContext = paramJobContext;
-    this.jdField_a_of_type_Ucw = paramucw;
-    a(paramucw.a.feedId);
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.cancel();
+    VideoViewVideoHolder.c(this.jdField_a_of_type_Ucc.a, 7);
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Ucc.a, false);
+    VideoViewVideoHolder.b(this.jdField_a_of_type_Ucc.a, paramInt2);
+    ucc.b(this.jdField_a_of_type_Ucc, new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_Ucc.a), "wht=" + paramInt2 + ", mod=" + paramInt1 + ", " + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid));
+    return true;
   }
 }
 

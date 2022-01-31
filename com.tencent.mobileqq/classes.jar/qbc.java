@@ -1,27 +1,36 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-
-class qbc
-  implements View.OnSystemUiVisibilityChangeListener
+public class qbc
 {
-  qbc(qaz paramqaz) {}
+  private Integer jdField_a_of_type_JavaLangInteger;
+  private Long jdField_a_of_type_JavaLangLong;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public qbc(Long paramLong, Integer paramInteger, String paramString1, String paramString2)
   {
-    ReadInJoyCommentListFragment localReadInJoyCommentListFragment;
-    if (qaz.a(this.a) != null)
-    {
-      localReadInJoyCommentListFragment = qaz.a(this.a);
-      if ((paramInt & 0x2) != 0) {
-        break label32;
-      }
-    }
-    label32:
-    for (boolean bool = true;; bool = false)
-    {
-      localReadInJoyCommentListFragment.a(bool);
-      return;
-    }
+    this.jdField_a_of_type_JavaLangLong = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangInteger = paramInteger;
+  }
+  
+  public Long a()
+  {
+    return this.jdField_a_of_type_JavaLangLong;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    return "FollowingMember{uin='" + this.jdField_a_of_type_JavaLangLong + '\'' + ", nickname='" + this.jdField_a_of_type_JavaLangString + '\'' + ", headUrl='" + this.b + '\'' + '}';
   }
 }
 

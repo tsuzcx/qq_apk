@@ -1,45 +1,88 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class afno
-  implements View.OnClickListener
+  implements afmm
 {
-  public afno(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, String paramString) {}
+  public afno(TroopActivity paramTroopActivity) {}
   
-  public void onClick(View paramView)
+  public Activity a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.i) && (!ChatHistoryTroopMemberFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment)))
-    {
-      if (((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.a > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 3))
-      {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().getIntent();
-        paramView.putExtra("member_uin", "0");
-        paramView.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().setResult(-1, paramView);
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().finish();
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) {
-          awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
-        }
-        return;
-      }
-      bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), ajjy.a(2131635872), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
+    return this.a;
+  }
+  
+  public View a()
+  {
+    return this.a.findViewById(2131375491);
+  }
+  
+  public aqbc a()
+  {
+    return TroopActivity.a(this.a);
+  }
+  
+  public bfmt a()
+  {
+    return this.a.jdField_a_of_type_Bfmt;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.app;
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (this.a.b != 2) {
       return;
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h))
+    switch (paramInt)
     {
-      bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
-      return;
     }
-    bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), ajjy.a(2131635836), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.a.runOnUiThread(paramRunnable);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.a.isResume()) {
+      bcpw.a(a(), paramString, 0).b(this.a.getTitleBarHeight());
+    }
+  }
+  
+  public boolean a()
+  {
+    return TroopActivity.a(this.a);
+  }
+  
+  public View b()
+  {
+    return this.a.findViewById(2131375445);
+  }
+  
+  public boolean b()
+  {
+    return TroopActivity.b(this.a);
+  }
+  
+  public View c()
+  {
+    return this.a.findViewById(2131375437);
+  }
+  
+  public View d()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afno
  * JD-Core Version:    0.7.0.1
  */

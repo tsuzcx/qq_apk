@@ -1,14 +1,44 @@
-public abstract interface apfg
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchDetailFragment;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class apfg
+  extends awkd<awog, awwp>
 {
-  public abstract void loadFinish(int paramInt1, int paramInt2, String paramString);
+  public apfg(FileSearchDetailFragment paramFileSearchDetailFragment, ListView paramListView, baxk parambaxk, awog paramawog, String paramString, QQAppInterface paramQQAppInterface)
+  {
+    super(paramListView, parambaxk);
+    paramFileSearchDetailFragment = (apfe)paramawog;
+    if (paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.size() > 1)
+    {
+      paramListView = new ArrayList();
+      parambaxk = paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.iterator();
+      while (parambaxk.hasNext())
+      {
+        paramawog = (FileManagerEntity)parambaxk.next();
+        paramString = new apfe();
+        paramString.jdField_a_of_type_JavaLangString = paramFileSearchDetailFragment.jdField_a_of_type_JavaLangString;
+        paramString.jdField_a_of_type_JavaUtilList.add(paramawog);
+        paramListView.add(paramString);
+      }
+      a(paramListView);
+    }
+  }
   
-  public abstract void loadFinish(int paramInt1, boolean paramBoolean, int paramInt2, String paramString);
+  protected awrb<awog, awwp> a(int paramInt)
+  {
+    return new apfj(this.a.a);
+  }
   
-  public abstract void openFile(String paramString1, String paramString2, long paramLong, boolean paramBoolean);
-  
-  public abstract void updatePage(int paramInt1, int paramInt2);
-  
-  public abstract void webLog(String paramString);
+  protected awwq a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new apfk(paramViewGroup);
+  }
 }
 
 

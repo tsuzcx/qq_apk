@@ -1,25 +1,32 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
 public class asst
-  implements ajga
+  extends astn
 {
-  public asst(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public asst(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap)
   {
-    this.a.a();
-    if (!paramBoolean) {
-      this.a.b(this.a.getString(2131625456));
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onGetTroopMemRecommendCards, success = " + paramBoolean + ",troopUin = " + paramString + ",notifySource = " + paramInt);
     }
-    while ((this.a.e != 1) || (paramInt != 2)) {
-      return;
+    if ((MultiCardRecommendFragment.a(this.a) != null) && (MultiCardRecommendFragment.a(this.a).equals(paramString)))
+    {
+      MultiCardRecommendFragment.a(this.a).a.clear();
+      MultiCardRecommendFragment.a(this.a).a.putAll(paramMap);
+      this.a.a.removeMessages(1);
+      this.a.a.sendEmptyMessage(1);
     }
-    NearbyPeopleProfileActivity.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asst
  * JD-Core Version:    0.7.0.1
  */

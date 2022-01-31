@@ -25,8 +25,9 @@ public class PAGView
   implements TextureView.SurfaceTextureListener, ScreenBroadcastReceiver.ScreenStateListener
 {
   private static final int MAX_PRECISION = 100000000;
+  private static final int MSG_FLUSH = 1;
   private static final int MSG_PLAY = 0;
-  private static final int MSG_REMOVE_CALLBACK_MSG = 1;
+  private static final int MSG_REMOVE_CALLBACK_MSG = 2;
   private static final Object g_HandlerLock = new Object();
   private static int g_HandlerThreadCount;
   private static Handler g_PAGRendererHandler = null;
@@ -82,38 +83,38 @@ public class PAGView
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 63	org/libpag/PAGView:g_HandlerThreadCount	I
+    //   3: getstatic 65	org/libpag/PAGView:g_HandlerThreadCount	I
     //   6: iconst_1
     //   7: isub
-    //   8: putstatic 63	org/libpag/PAGView:g_HandlerThreadCount	I
-    //   11: iconst_1
+    //   8: putstatic 65	org/libpag/PAGView:g_HandlerThreadCount	I
+    //   11: iconst_2
     //   12: aload_0
-    //   13: invokestatic 114	org/libpag/PAGView:sendMessage	(ILjava/lang/Object;)V
-    //   16: getstatic 63	org/libpag/PAGView:g_HandlerThreadCount	I
+    //   13: invokestatic 116	org/libpag/PAGView:sendMessage	(ILjava/lang/Object;)V
+    //   16: getstatic 65	org/libpag/PAGView:g_HandlerThreadCount	I
     //   19: ifne +48 -> 67
-    //   22: getstatic 61	org/libpag/PAGView:g_PAGRendererThread	Landroid/os/HandlerThread;
+    //   22: getstatic 63	org/libpag/PAGView:g_PAGRendererThread	Landroid/os/HandlerThread;
     //   25: ifnull +42 -> 67
-    //   28: getstatic 61	org/libpag/PAGView:g_PAGRendererThread	Landroid/os/HandlerThread;
-    //   31: invokevirtual 120	android/os/HandlerThread:isAlive	()Z
+    //   28: getstatic 63	org/libpag/PAGView:g_PAGRendererThread	Landroid/os/HandlerThread;
+    //   31: invokevirtual 122	android/os/HandlerThread:isAlive	()Z
     //   34: ifeq +33 -> 67
-    //   37: getstatic 59	org/libpag/PAGView:g_PAGRendererHandler	Landroid/os/Handler;
+    //   37: getstatic 61	org/libpag/PAGView:g_PAGRendererHandler	Landroid/os/Handler;
     //   40: aconst_null
-    //   41: invokevirtual 125	android/os/Handler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
-    //   44: getstatic 130	android/os/Build$VERSION:SDK_INT	I
+    //   41: invokevirtual 127	android/os/Handler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
+    //   44: getstatic 132	android/os/Build$VERSION:SDK_INT	I
     //   47: bipush 18
     //   49: if_icmple +22 -> 71
-    //   52: getstatic 61	org/libpag/PAGView:g_PAGRendererThread	Landroid/os/HandlerThread;
-    //   55: invokevirtual 133	android/os/HandlerThread:quitSafely	()Z
+    //   52: getstatic 63	org/libpag/PAGView:g_PAGRendererThread	Landroid/os/HandlerThread;
+    //   55: invokevirtual 135	android/os/HandlerThread:quitSafely	()Z
     //   58: pop
     //   59: aconst_null
-    //   60: putstatic 61	org/libpag/PAGView:g_PAGRendererThread	Landroid/os/HandlerThread;
+    //   60: putstatic 63	org/libpag/PAGView:g_PAGRendererThread	Landroid/os/HandlerThread;
     //   63: aconst_null
-    //   64: putstatic 59	org/libpag/PAGView:g_PAGRendererHandler	Landroid/os/Handler;
+    //   64: putstatic 61	org/libpag/PAGView:g_PAGRendererHandler	Landroid/os/Handler;
     //   67: ldc 2
     //   69: monitorexit
     //   70: return
-    //   71: getstatic 61	org/libpag/PAGView:g_PAGRendererThread	Landroid/os/HandlerThread;
-    //   74: invokevirtual 136	android/os/HandlerThread:quit	()Z
+    //   71: getstatic 63	org/libpag/PAGView:g_PAGRendererThread	Landroid/os/HandlerThread;
+    //   74: invokevirtual 138	android/os/HandlerThread:quit	()Z
     //   77: pop
     //   78: goto -19 -> 59
     //   81: astore_0
@@ -385,7 +386,7 @@ public class PAGView
     do
     {
       return;
-      this.pagPlayer.flush();
+      sendMessage(1, this);
     } while (this.mListener == null);
     this.mListener.onSurfaceTextureAvailable(paramSurfaceTexture, paramInt1, paramInt2);
   }
@@ -407,7 +408,7 @@ public class PAGView
     if (this.pagSurface != null)
     {
       this.pagSurface.updateSize();
-      this.pagPlayer.flush();
+      sendMessage(1, this);
     }
     if (this.mListener != null) {
       this.mListener.onSurfaceTextureSizeChanged(paramSurfaceTexture, paramInt1, paramInt2);

@@ -27,9 +27,9 @@ class ChatHistoryBaseFragment$ProgressView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131495856, this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131306298));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311220));
+    LayoutInflater.from(paramContext).inflate(2131561447, this);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131371995));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377030));
   }
   
   public void a(CharSequence paramCharSequence)

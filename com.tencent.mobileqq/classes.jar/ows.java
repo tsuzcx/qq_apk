@@ -1,88 +1,45 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.gif.GifView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class ows
-  extends oxl
+  implements URLDrawable.DownloadListener
 {
-  public ows(ArticleInfo paramArticleInfo, Context paramContext)
-  {
-    super(paramArticleInfo, paramContext);
-  }
+  public ows(GifView paramGifView, AtomicLong paramAtomicLong1, AtomicLong paramAtomicLong2, long paramLong, AtomicLong paramAtomicLong3, AtomicLong paramAtomicLong4, URLDrawable paramURLDrawable) {}
   
-  public static Intent a(Activity paramActivity, ArticleInfo paramArticleInfo)
+  public void onFileDownloadFailed(int paramInt)
   {
-    paramActivity = new Intent(paramActivity, ReadInJoyDeliverBiuActivity.class);
-    paramActivity.putExtra("arg_article_info", paramArticleInfo);
-    paramActivity.putExtra("feedsType", paramArticleInfo.mFeedType);
-    if (paramArticleInfo.mChannelID == 70L)
+    if (GifView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView))
     {
-      paramActivity.putExtra("biu_src", 9);
-      paramActivity.putExtra("arg_from_type", 14);
+      if (!GifView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView)) {
+        break label104;
+      }
+      GifView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView);
     }
     for (;;)
     {
-      if (och.a(paramArticleInfo)) {
-        paramActivity.putExtra("arg_type", 4);
-      }
-      return paramActivity;
-      paramActivity.putExtra("biu_src", 1);
-      paramActivity.putExtra("arg_from_type", 1);
+      QLog.d("gifvideo.GifView", 1, "onLoadFialed! mIsBigImg=" + GifView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " w=" + GifView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " h=" + GifView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView));
+      GifView localGifView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView;
+      localGifView.a += 1;
+      return;
+      label104:
+      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
     }
   }
   
-  protected int a()
+  public void onFileDownloadStarted()
   {
-    return 25;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(System.currentTimeMillis());
   }
   
-  public void a(ArticleInfo paramArticleInfo)
+  public void onFileDownloadSucceed(long paramLong)
   {
-    SocializeFeedsInfo localSocializeFeedsInfo = paramArticleInfo.mSocialFeedInfo;
-    if (rvf.a(paramArticleInfo.mChannelID)) {}
-    String str2;
-    for (String str1 = "0X8009361";; str1 = "0X8007EE4")
-    {
-      str2 = obz.a(paramArticleInfo);
-      if ((!qoe.i(paramArticleInfo)) && (!qoe.a(paramArticleInfo)) && (!qoe.j(paramArticleInfo)) && (!qoe.k(paramArticleInfo))) {
-        break;
-      }
-      if (!qoe.o(paramArticleInfo)) {
-        ndn.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Pre.jdField_a_of_type_Long), str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
-      }
-      if ((!obz.k(paramArticleInfo)) && (!obz.l(paramArticleInfo))) {
-        qoe.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
-      }
-      return;
-    }
-    ndn.a(null, paramArticleInfo.mSubscribeID, str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
-  }
-  
-  protected void a(ViewBase paramViewBase)
-  {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.b())) {
-      bbmy.a(BaseApplicationImpl.sApplication, 0, 2131652690, 0).a();
-    }
-    while ((!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null)) {
-      return;
-    }
-    paramViewBase = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    Intent localIntent = a(paramViewBase, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    if (nsh.a() == 1) {}
-    for (;;)
-    {
-      localIntent.putExtra("fast_biu_type", bool);
-      paramViewBase.startActivity(localIntent);
-      paramViewBase.overridePendingTransition(0, 0);
-      return;
-      bool = false;
-    }
+    this.b.set(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    this.c.set(System.currentTimeMillis() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get());
+    this.d.set(paramLong);
+    QLog.d("gifvideo.GifView", 1, "gif download success");
   }
 }
 

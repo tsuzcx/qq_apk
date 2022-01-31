@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import avom;
-import avva;
-import bakz;
+import awof;
+import awut;
+import bbmj;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -17,20 +17,20 @@ public class NetSearchEngine$ParseTask
   implements Runnable
 {
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<avva> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<awut> jdField_a_of_type_JavaLangRefWeakReference;
   private ArrayList<byte[]> jdField_a_of_type_JavaUtilArrayList;
   
-  public NetSearchEngine$ParseTask(String paramString, ArrayList<byte[]> paramArrayList, avva paramavva)
+  public NetSearchEngine$ParseTask(String paramString, ArrayList<byte[]> paramArrayList, awut paramawut)
   {
     this.jdField_a_of_type_JavaLangString = paramArrayList;
-    this.jdField_a_of_type_JavaUtilArrayList = paramavva;
+    this.jdField_a_of_type_JavaUtilArrayList = paramawut;
     Object localObject;
     if (localObject != null) {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject);
     }
   }
   
-  private List<avom> a(String paramString, ArrayList<byte[]> paramArrayList)
+  private List<awof> a(String paramString, ArrayList<byte[]> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
       return null;
@@ -58,12 +58,12 @@ public class NetSearchEngine$ParseTask
         j = localObject.length;
         break label72;
         label94:
-        int n = (int)bakz.a((byte[])localObject, 1);
-        int m = (int)bakz.a((byte[])localObject, 5);
+        int n = (int)bbmj.a((byte[])localObject, 1);
+        int m = (int)bbmj.a((byte[])localObject, 5);
         if ((n > 0) && (n + 9 < j))
         {
           byte[] arrayOfByte = new byte[n];
-          bakz.a(arrayOfByte, 0, (byte[])localObject, 9, n);
+          bbmj.a(arrayOfByte, 0, (byte[])localObject, 9, n);
           j = n + 9;
           SummaryCardBusiEntry.comm localcomm = new SummaryCardBusiEntry.comm();
           try
@@ -75,7 +75,7 @@ public class NetSearchEngine$ParseTask
             }
             n = localcomm.service.get();
             arrayOfByte = new byte[m];
-            bakz.a(arrayOfByte, 0, (byte[])localObject, j, m);
+            bbmj.a(arrayOfByte, 0, (byte[])localObject, j, m);
             localObject = this.this$0.a(paramString, n, localcomm, arrayOfByte);
             if ((localObject == null) || (((List)localObject).size() <= 0)) {
               continue;
@@ -104,9 +104,9 @@ public class NetSearchEngine$ParseTask
     List localList = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList);
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      avva localavva = (avva)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localavva != null) {
-        localavva.a(localList, 1);
+      awut localawut = (awut)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localawut != null) {
+        localawut.a(localList, 1);
       }
     }
   }

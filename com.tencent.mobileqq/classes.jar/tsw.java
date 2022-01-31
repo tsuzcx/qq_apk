@@ -1,6 +1,14 @@
-public abstract interface tsw
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.10.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+
+public final class tsw
+  implements tjy
 {
-  public abstract void a(tso paramtso, int paramInt1, int paramInt2);
+  public void a(tjx paramtjx)
+  {
+    ThreadManager.getUIHandler().post(new PlayModeUtils.10.1(this, paramtjx));
+  }
 }
 
 

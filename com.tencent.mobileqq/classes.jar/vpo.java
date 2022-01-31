@@ -1,20 +1,6 @@
-import android.view.View;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-
-public class vpo
-  implements benm
+public abstract interface vpo
 {
-  public vpo(SegmentList paramSegmentList) {}
-  
-  public void a(View paramView)
-  {
-    this.a.a.b(paramView);
-  }
-  
-  public void b(View paramView)
-  {
-    this.a.a.c(paramView);
-  }
+  public abstract void b(int paramInt);
 }
 
 

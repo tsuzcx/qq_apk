@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaiq
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aaiq(ChatHistoryFileActivity paramChatHistoryFileActivity, aais paramaais) {}
+  public aaiq(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aais.a(true);
+    if (ArkFullScreenAppActivity.a(this.a) != null) {
+      altd.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, altd.b, 0, 0);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkFullScreenAppActivity", 2, "click to close");
+    }
+    this.a.finish();
   }
 }
 

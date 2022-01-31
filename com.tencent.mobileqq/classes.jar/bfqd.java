@@ -1,20 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
-
-public class bfqd
-  extends Handler
+public abstract interface bfqd
 {
-  public bfqd(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
+  public abstract void F();
   
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.a(this.a.a, paramMessage);
-  }
+  public abstract void G();
+  
+  public abstract void H();
+  
+  public abstract void a(float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfqd
  * JD-Core Version:    0.7.0.1
  */

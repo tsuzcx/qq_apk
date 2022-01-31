@@ -1,155 +1,168 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.os.Build.VERSION;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.widget.ImageView;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import org.json.JSONObject;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Text;
 
 public class alub
-  extends RecyclerView.Adapter<alud>
-  implements Animator.AnimatorListener
 {
-  float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1;
-  ViewPropertyAnimator jdField_a_of_type_AndroidViewViewPropertyAnimator;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int b = -1;
+  public static int a;
+  private static final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+  public static int b = 3;
+  public static int c = 1;
+  public static int d = 3;
+  public static int e = 3;
+  public static int f = 10;
+  public static int g = 1;
+  private alra jdField_a_of_type_Alra;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  protected WeakReference<QQAppInterface> a;
+  private boolean jdField_a_of_type_Boolean;
   
-  public alub(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    jdField_a_of_type_Int = 5;
   }
   
-  public alud a(ViewGroup paramViewGroup, int paramInt)
+  public alub(BaseChatPie paramBaseChatPie)
   {
-    return new alud(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131493256, paramViewGroup, false));
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a);
+    }
+    ArkAppCenter.b(false);
   }
   
-  public void a(alud paramalud, int paramInt)
+  public static boolean a(Node paramNode, JSONObject paramJSONObject)
   {
-    label171:
-    View localView;
-    switch (((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue() & 0xFFFF0000)
+    boolean bool = true;
+    if (paramNode == null) {
+      bool = false;
+    }
+    for (;;)
     {
-    default: 
-      if ((paramInt != this.jdField_a_of_type_Int) || (Build.VERSION.SDK_INT <= 19)) {
-        break label426;
-      }
-      if ((this.jdField_a_of_type_AndroidViewViewPropertyAnimator == null) || (this.b == -1) || (this.b == this.jdField_a_of_type_Int)) {
-        this.jdField_a_of_type_AndroidViewViewPropertyAnimator = paramalud.jdField_a_of_type_AndroidViewView.animate();
-      }
-      if (paramalud.jdField_a_of_type_AndroidViewView.getMeasuredWidth() == 0) {
-        break label417;
-      }
-      if ((this.b == -1) || (this.b == this.jdField_a_of_type_Int))
+      return bool;
+      try
       {
-        f = this.jdField_a_of_type_Float;
-        this.jdField_a_of_type_Float = f;
-        localView = paramalud.jdField_a_of_type_AndroidViewView;
-        if (this.jdField_a_of_type_Float != 0.0F) {
-          break label409;
+        String str = paramNode.getNodeName();
+        NodeList localNodeList = paramNode.getChildNodes();
+        JSONObject localJSONObject = new JSONObject();
+        int i = 0;
+        int k;
+        for (int j = 0;; j = k)
+        {
+          if (i < localNodeList.getLength())
+          {
+            Node localNode = localNodeList.item(i);
+            if ((localNode instanceof Element))
+            {
+              a(localNode, localJSONObject);
+              k = 1;
+            }
+            else
+            {
+              k = j;
+              if ((localNode instanceof Text))
+              {
+                paramJSONObject.put(str, paramNode.getFirstChild().getNodeValue());
+                k = j;
+              }
+            }
+          }
+          else
+          {
+            if (j == 0) {
+              break;
+            }
+            paramJSONObject.put(str, localJSONObject);
+            return true;
+          }
+          i += 1;
         }
+        return false;
       }
-      break;
+      catch (Exception paramNode) {}
     }
-    label409:
-    for (float f = -paramalud.jdField_a_of_type_AndroidViewView.getMeasuredWidth();; f = this.jdField_a_of_type_Float)
-    {
-      localView.setTranslationX(f);
-      this.jdField_a_of_type_AndroidViewViewPropertyAnimator.setDuration((int)((paramalud.jdField_a_of_type_AndroidViewView.getMeasuredWidth() - Math.abs(this.jdField_a_of_type_Float)) / paramalud.jdField_a_of_type_AndroidViewView.getMeasuredWidth()) * 200).translationX(0.0F).setListener(this).setUpdateListener(new aluc(this)).start();
-      return;
-      paramalud.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramalud.jdField_a_of_type_Alsg);
-      paramalud.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramalud.jdField_a_of_type_Alsg.a(300);
-      paramalud.b.setBackgroundResource(0);
-      paramalud.b.setVisibility(8);
-      break;
-      paramalud.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramalud.b.setBackgroundResource(2130838948);
-      paramalud.b.setVisibility(0);
-      break;
-      paramalud.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramalud.b.setBackgroundResource(2130838951);
-      paramalud.b.setVisibility(0);
-      break;
-      paramalud.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramalud.b.setBackgroundResource(2130838957);
-      paramalud.b.setVisibility(0);
-      break;
-      f = 0.0F;
-      break label171;
-    }
-    label417:
-    paramalud.jdField_a_of_type_AndroidViewView.setTranslationX(0.0F);
-    return;
-    label426:
-    paramalud.jdField_a_of_type_AndroidViewView.setTranslationX(0.0F);
   }
   
-  public void a(List<ColorNote> paramList)
+  public View a()
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
+    if (this.jdField_a_of_type_Alra != null) {
+      return this.jdField_a_of_type_Alra.a();
+    }
+    return null;
+  }
+  
+  BaseChatPie a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Alra != null) {
+      this.jdField_a_of_type_Alra.a();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Alra != null)
+    {
+      if ((paramInt2 == 22) || (paramInt1 != 22)) {
+        break label27;
+      }
+      this.jdField_a_of_type_Alra.a();
+    }
+    label27:
+    while ((paramInt2 != 22) || (paramInt1 == 22)) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Int = -1;
-    int i = 0;
-    if (i < paramList.size())
+    this.jdField_a_of_type_Alra.b();
+  }
+  
+  public void a(List<alsb> paramList, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null)
     {
-      ColorNote localColorNote = (ColorNote)paramList.get(i);
-      if (localColorNote.isOpen()) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((localColorNote.animate) && (this.jdField_a_of_type_Int == -1)) {
-          this.jdField_a_of_type_Int = i;
-        }
-        int j = localColorNote.getServiceType();
-        this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j & 0xFFFF0000));
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkApp.ArkRecommendController", 2, "showAppPanel.mChatPie is null");
       }
+      return;
     }
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return super.getItemViewType(paramInt);
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    paramAnimator = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a().iterator();
-    while (paramAnimator.hasNext()) {
-      ((ColorNote)paramAnimator.next()).animate = false;
+    if (this.jdField_a_of_type_Alra == null) {
+      this.jdField_a_of_type_Alra = new alra(a());
     }
-    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Alra.a();
+    this.jdField_a_of_type_Alra.a(paramList, paramInt, null);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void b()
+  {
+    if (this.jdField_a_of_type_Alra != null)
+    {
+      this.jdField_a_of_type_Alra.c();
+      this.jdField_a_of_type_Alra = null;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = null;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alub
  * JD-Core Version:    0.7.0.1
  */

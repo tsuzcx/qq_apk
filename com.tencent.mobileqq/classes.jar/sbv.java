@@ -1,32 +1,35 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class sbv
-  extends nca
+  implements View.OnFocusChangeListener
 {
-  public sbv(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, long paramLong) {}
+  public sbv(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void a(boolean paramBoolean, scd paramscd, byte[] paramArrayOfByte, String paramString)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(true, this.jdField_a_of_type_Long);
-      if (paramscd != null)
+      paramView.clearFocus();
+      SubscriptFeedsActivity.a(this.a);
+      long l = System.currentTimeMillis();
+      if (l - SubscriptFeedsActivity.a(this.a) > 1500L)
       {
+        SubscriptFeedsActivity.a(this.a, l);
+        UniteSearchActivity.a(this.a, null, 12);
         if (QLog.isColorLevel()) {
-          QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean + " ;articleID = " + paramscd.a);
+          QLog.d("SubscriptFeedsActivity", 2, "Search Subscript Account...");
         }
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(paramscd, paramArrayOfByte);
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.b(paramscd);
       }
-      return;
     }
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(false, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sbv
  * JD-Core Version:    0.7.0.1
  */

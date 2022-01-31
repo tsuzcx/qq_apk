@@ -1,31 +1,43 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
-import mqq.app.AppRuntime;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 class aeqh
-  implements DialogInterface.OnClickListener
+  implements bfoq
 {
-  aeqh(aeqg paramaeqg) {}
+  aeqh(aeqd paramaeqd, bfol parambfol, ChatMessage paramChatMessage, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.a.getActivity() != null)
+    this.jdField_a_of_type_Bfol.dismiss();
+    switch (paramInt)
     {
-      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
-      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
-      this.a.a.getActivity().startActivity(localIntent);
     }
-    paramDialogInterface.dismiss();
+    do
+    {
+      return;
+      this.jdField_a_of_type_Aeqd.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.jdField_a_of_type_JavaLangString, false, 1);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i(this.jdField_a_of_type_Aeqd.jdField_a_of_type_JavaLangString, 2, "del hot chat member onClick, uin=" + this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin);
+      }
+      if (!bbev.d(BaseApplication.getContext()))
+      {
+        bcpw.a(this.jdField_a_of_type_Aeqd.a(), this.jdField_a_of_type_Aeqd.a().getString(2131694609), 0).b(this.jdField_a_of_type_Aeqd.a().getTitleBarHeight());
+        return;
+      }
+    } while ((ajyi)this.jdField_a_of_type_Aeqd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35) == null);
+    paramView = bbcv.a(this.jdField_a_of_type_Aeqd.a(), 230).setMessage(2131693297).setNegativeButton(2131690573, new aeqj(this)).setPositiveButton(2131690575, new aeqi(this));
+    paramView.setTitle(2131693298);
+    paramView.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeqh
  * JD-Core Version:    0.7.0.1
  */

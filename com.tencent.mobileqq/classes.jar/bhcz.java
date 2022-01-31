@@ -1,24 +1,23 @@
-import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.event.ExoticEvent;
 
-class bhcz
-  implements CosFunHelper.CountDownListener
+public final class bhcz
+  implements Parcelable.Creator<ExoticEvent>
 {
-  bhcz(bhcw parambhcw) {}
-  
-  public void onCountDownEnd()
+  public ExoticEvent a(Parcel paramParcel)
   {
-    bhcw.b(this.a);
+    return new ExoticEvent(paramParcel, null);
   }
   
-  public void onCountDownStart(VideoMaterial paramVideoMaterial)
+  public ExoticEvent[] a(int paramInt)
   {
-    bhcw.a(this.a, paramVideoMaterial.getTipsDrawable());
+    return new ExoticEvent[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhcz
  * JD-Core Version:    0.7.0.1
  */

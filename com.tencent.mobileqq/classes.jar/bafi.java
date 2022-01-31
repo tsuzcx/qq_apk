@@ -1,30 +1,28 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.Spannable;
+import java.util.Comparator;
 
-class bafi
-  implements View.OnClickListener
+final class bafi
+  implements Comparator<bafh>
 {
-  bafi(bafb parambafb, DialogInterface.OnClickListener paramOnClickListener) {}
+  bafi(Spannable paramSpannable) {}
   
-  public void onClick(View paramView)
+  public int a(bafh parambafh1, bafh parambafh2)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bafb, 1);
+    int i = 0;
+    int j = this.a.getSpanStart(parambafh1);
+    int k = this.a.getSpanStart(parambafh2);
+    if (j < k) {
+      i = -1;
     }
-    try
-    {
-      if (this.jdField_a_of_type_Bafb.isShowing()) {
-        this.jdField_a_of_type_Bafb.dismiss();
-      }
-      return;
+    while (j <= k) {
+      return i;
     }
-    catch (Exception paramView) {}
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bafi
  * JD-Core Version:    0.7.0.1
  */

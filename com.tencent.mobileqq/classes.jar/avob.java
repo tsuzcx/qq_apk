@@ -1,58 +1,61 @@
-import android.view.View;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class avob
-  implements avom
+  extends QIPCModule
 {
-  protected int a;
-  private String a;
-  public List<avon> a;
+  private static avob jdField_a_of_type_Avob;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public avob(List<avon> paramList, String paramString, int paramInt)
+  private avob(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramString);
   }
   
-  public int a()
+  public static avob a()
   {
-    return 3;
+    if (jdField_a_of_type_Avob != null) {
+      return jdField_a_of_type_Avob;
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Avob == null) {
+        jdField_a_of_type_Avob = new avob("REAL_NAME");
+      }
+      avob localavob = jdField_a_of_type_Avob;
+      return localavob;
+    }
   }
   
-  public String a()
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    return ajjy.a(2131639600);
-  }
-  
-  public List<avon> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    avsv.a(null, 0, this.jdField_a_of_type_Int, "0X8009D47", 0, 0, null, null);
-    String str = avwf.a("pages/search-results/search-results?mode=search&q=" + this.jdField_a_of_type_JavaLangString);
-    str = avwf.a("https://m.q.qq.com/a/p/1108291530?via=2005_2&referer=2005&s=" + str);
-    str = "mqqapi://microapp/open?url=" + str;
-    MiniAppLauncher.startMiniApp(paramView.getContext(), str, 2005, null);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.i("RealName", 2, "onCall s: " + paramString);
+    }
+    if (paramBundle == null) {}
+    do
+    {
+      do
+      {
+        return null;
+        paramInt = paramBundle.getInt("result");
+        if (QLog.isColorLevel()) {
+          QLog.i("RealName", 2, "result is : " + paramInt);
+        }
+      } while (paramInt == 0);
+      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    } while (paramString == null);
+    ((ajuf)paramString.a(4)).e();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avob
  * JD-Core Version:    0.7.0.1
  */

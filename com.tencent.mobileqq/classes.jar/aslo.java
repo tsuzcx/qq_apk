@@ -1,72 +1,50 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
-class aslo
-  implements asmc
+public class aslo
 {
-  aslo(asln paramasln) {}
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public aslo(String paramString1, String paramString2, MsgBackupUserData paramMsgBackupUserData, int paramInt)
   {
-    boolean bool = true;
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i(asln.a(this.a), 2, "errorCode:   " + paramInt);
-    }
-    if (paramArrayOfByte != null) {
-      paramBundle = new oidb_0xada.RspBody();
-    }
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.i(asln.a(this.a), 2, "err_msg:   " + paramBundle.err_msg.get());
-      }
-      if (paramBundle.busi_buf.has())
-      {
-        paramArrayOfByte = new FeedsProtocol.GetMediaDetailRsp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        if (QLog.isColorLevel()) {
-          QLog.i(asln.a(this.a), 2, "GetMediaDetailRsp  error_code:   " + paramArrayOfByte.err_code.get() + ",err_msg:     " + paramArrayOfByte.err_msg.get().toStringUtf8() + ",total:  " + paramArrayOfByte.total.get());
-        }
-        paramBundle = this.a;
-        if (paramArrayOfByte.is_end.get() == 0) {
-          break label309;
-        }
-      }
-      for (;;)
-      {
-        paramBundle.jdField_a_of_type_Boolean = bool;
-        this.a.jdField_a_of_type_Int = paramArrayOfByte.total.get();
-        asln.a(this.a, paramArrayOfByte);
-        asln.a(this.a, asln.a(this.a) + 10);
-        paramBundle = this.a.jdField_a_of_type_Asla;
-        paramInt = i;
-        if (paramArrayOfByte.err_code.has()) {
-          paramInt = paramArrayOfByte.err_code.get();
-        }
-        paramBundle.a(1, paramInt);
-        return;
-        label309:
-        bool = false;
-      }
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public MsgBackupUserData a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupConfirmQrRsp--");
+    localStringBuilder.append(",token:").append(this.jdField_a_of_type_JavaLangString).append(",encryptKey:").append(this.b).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aslo
  * JD-Core Version:    0.7.0.1
  */

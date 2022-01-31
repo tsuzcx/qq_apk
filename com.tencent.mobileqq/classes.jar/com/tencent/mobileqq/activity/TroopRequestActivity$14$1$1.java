@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import acba;
+import aclm;
 import com.tencent.mobileqq.data.Card;
 
 class TroopRequestActivity$14$1$1

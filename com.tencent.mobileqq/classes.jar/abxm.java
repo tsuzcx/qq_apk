@@ -1,50 +1,17 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class abxm
-  implements View.OnClickListener
+  extends ajxl
 {
-  public abxm(TroopInfoActivity paramTroopInfoActivity) {}
+  public abxm(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
+    if ((!paramBoolean) || (paramString == null)) {
       return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId != 0L) || (this.a.c != 0L))
-    {
-      this.a.c();
-      return;
-    }
-    switch (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
-    {
-    default: 
-      return;
-    case 0: 
-    case 1: 
-      this.a.i();
-      return;
-    }
-    if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.jdField_a_of_type_Long <= this.a.jdField_b_of_type_Long) && (this.a.jdField_b_of_type_Int == 0))
-    {
-      paramView = babr.a(this.a, 230);
-      paramView.setTitle(null);
-      paramView.setMessage(this.a.getString(2131627852, new Object[] { this.a.jdField_a_of_type_Long + "" }));
-      paramView.setPositiveButton(this.a.getString(2131627829), new baca());
-      paramView.setPositiveButtonContentDescription(this.a.getString(2131627829));
-      paramView.show();
-      return;
-    }
-    paramView = TroopInfoActivity.a(this.a);
-    if (!TextUtils.isEmpty(paramView))
-    {
-      this.a.a(paramView);
-      return;
-    }
-    TroopInfoActivity.a(this.a);
+    this.a.a(this.a.app.getCurrentAccountUin());
   }
 }
 

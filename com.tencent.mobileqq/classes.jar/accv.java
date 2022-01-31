@@ -1,22 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class accv
-  implements DialogInterface.OnClickListener
+public class accv
+  implements View.OnClickListener
 {
-  accv(accu paramaccu, bafb parambafb) {}
+  public accv(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    awqx.b(this.jdField_a_of_type_Accu.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Accu.a.a, "", "", "");
-    paramDialogInterface = new Intent(this.jdField_a_of_type_Accu.a, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", "http://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
-    paramDialogInterface.putExtra("webStyle", "noBottomBar");
-    this.jdField_a_of_type_Accu.a.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_Bafb.cancel();
+    if (Build.VERSION.SDK_INT >= 26) {}
+    try
+    {
+      paramView = new Intent("android.settings.CHANNEL_NOTIFICATION_SETTINGS");
+      paramView.putExtra("android.provider.extra.APP_PACKAGE", this.a.getPackageName());
+      paramView.putExtra("android.provider.extra.CHANNEL_ID", "CHANNEL_ID_SHOW_BADGE");
+      this.a.startActivity(paramView);
+      if (QLog.isColorLevel()) {
+        QLog.d("IphoneTitleBarActivity", 2, "go to channel setting");
+      }
+      return;
+    }
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+        try
+        {
+          paramView = new Intent();
+          paramView.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+          paramView.setData(Uri.fromParts("package", this.a.getPackageName(), null));
+          this.a.startActivity(paramView);
+          if (QLog.isColorLevel())
+          {
+            QLog.d("IphoneTitleBarActivity", 2, "go to system setting");
+            return;
+          }
+        }
+        catch (Exception paramView)
+        {
+          paramView.printStackTrace();
+          QLog.e("IphoneTitleBarActivity", 2, "go to setting fail");
+        }
+      }
+    }
   }
 }
 

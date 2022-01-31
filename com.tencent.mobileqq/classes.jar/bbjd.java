@@ -1,34 +1,23 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.widget.GridListView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bbjd
-  extends DataSetObserver
+class bbjd
+  implements View.OnClickListener
 {
-  public bbjd(GridListView paramGridListView) {}
+  bbjd(bbjc parambbjc) {}
   
-  public void onChanged()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Bbjg != null) {
-      GridListView.a(this.a, this.a.jdField_a_of_type_Bbjg.getCount());
-    }
-    if (this.a.jdField_a_of_type_Bbjh != null) {
-      this.a.jdField_a_of_type_Bbjh.notifyDataSetChanged();
-    }
-  }
-  
-  public void onInvalidated()
-  {
-    if (this.a.jdField_a_of_type_Bbjg != null) {
-      GridListView.a(this.a, this.a.jdField_a_of_type_Bbjg.getCount());
-    }
-    if (this.a.jdField_a_of_type_Bbjh != null) {
-      this.a.jdField_a_of_type_Bbjh.notifyDataSetInvalidated();
+    if (this.a.a.isShowing())
+    {
+      this.a.a.cancel();
+      this.a.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbjd
  * JD-Core Version:    0.7.0.1
  */

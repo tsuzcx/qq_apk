@@ -1,27 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.MapParcelable;
 
-class bher
-  extends BroadcastReceiver
+public final class bher
+  implements Parcelable.Creator<MapParcelable>
 {
-  bher(bheq parambheq) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public MapParcelable a(Parcel paramParcel)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMStoryEffectCameraCaptureUnit", 2, new Object[] { "onReceive action=", paramContext });
-    }
-    if ("dov.com.qq.im.finish_capture_action".equals(paramContext)) {
-      bheq.a(this.a);
-    }
+    return new MapParcelable(paramParcel.readHashMap(getClass().getClassLoader()));
+  }
+  
+  public MapParcelable[] a(int paramInt)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bher
  * JD-Core Version:    0.7.0.1
  */

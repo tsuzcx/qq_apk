@@ -1,15 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 
 public class absl
-  implements CompoundButton.OnCheckedChangeListener
+  extends akav
 {
-  public absl(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public absl(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    SoundAndVibrateActivity.a(this.a, paramBoolean);
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, false);
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, true);
+    }
   }
 }
 

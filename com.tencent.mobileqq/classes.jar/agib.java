@@ -1,23 +1,53 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.22.1;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.22.2;
+import com.tencent.mobileqq.app.QQHeadDownloadHandler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class agib
-  implements agal
+public class agib
+  extends ajxl
 {
-  agib(agia paramagia, Intent paramIntent, ArrayList paramArrayList) {}
+  public agib(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    ((NewPhotoListActivity)this.jdField_a_of_type_Agia.a.get()).f();
-    if (biys.a((Activity)this.jdField_a_of_type_Agia.a.get(), paramLocalMediaInfo))
+    if ((paramSetting == null) || (this.a.a == null) || (!this.a.a.a.equals(paramSetting.uin)))
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-      PhotoUtils.a((Activity)this.jdField_a_of_type_Agia.a.get(), this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("AvatarPendantActivity", 2, "onGetHeadInfo， fail");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AvatarPendantActivity", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
+    }
+    AvatarPendantActivity.c(this.a);
+    if (!this.a.isResume()) {
+      AvatarPendantActivity.a(this.a, true);
+    }
+    String str2 = QQHeadDownloadHandler.a(paramSetting.url, paramSetting.bFaceFlags);
+    String str1 = str2;
+    if (!TextUtils.isEmpty(str2)) {
+      str1 = MsfSdkUtils.insertMtype("QQHeadIcon", str2);
+    }
+    this.a.d = paramSetting.headImgTimestamp;
+    ThreadManager.getUIHandler().post(new AvatarPendantActivity.22.2(this, str1));
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    AvatarPendantActivity.c(this.a);
+    if (!this.a.isResume()) {
+      AvatarPendantActivity.a(this.a, true);
+    }
+    if (paramBoolean) {
+      ThreadManager.excute(new AvatarPendantActivity.22.1(this), 32, null, false);
     }
   }
 }

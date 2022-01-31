@@ -1,18 +1,17 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigGallery;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pfi
-  extends pfj
+class pfi
+  implements View.OnClickListener
 {
-  public pfi(Context paramContext, azwg paramazwg, qoe paramqoe)
-  {
-    super(paramContext, paramazwg, paramqoe);
-  }
+  pfi(pfe parampfe, rap paramrap, pax parampax) {}
   
-  public pez g()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Pey = new ComponentContentBigGallery(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    rbu localrbu = this.jdField_a_of_type_Rap.a();
+    if (localrbu != null) {
+      localrbu.a(paramView, this.jdField_a_of_type_Pax.a(), 2);
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajmp;
+import akay;
 import android.util.Pair;
 import java.util.Calendar;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 public class MessageRoamManager$3
   implements Runnable
 {
-  public MessageRoamManager$3(ajmp paramajmp, int paramInt) {}
+  public MessageRoamManager$3(akay paramakay, int paramInt) {}
   
   public void run()
   {

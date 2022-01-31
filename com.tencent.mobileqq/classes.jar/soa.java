@@ -1,44 +1,30 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
 
 public class soa
-  implements anhs
+  implements TextWatcher
 {
-  public soa(StoryInputBarView paramStoryInputBarView) {}
+  public soa(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public void a(anht paramanht)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (((paramanht instanceof anmf)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
-      ((anmf)paramanht).a(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
+    PublicAccountImageCollectionCommentActivity.a(this.a, paramEditable.toString());
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((!TextUtils.isEmpty(paramCharSequence)) && (paramCharSequence.length() - paramInt2 + paramInt3 > 100)) {
+      bcpw.a(this.a, 0, this.a.getString(2131695553), 0).b(this.a.getTitleBarHeight());
     }
   }
   
-  public void a(anht paramanht1, anht paramanht2, Drawable paramDrawable) {}
-  
-  public boolean a(anht paramanht)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
-      axku.a(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-    }
-  }
-  
-  public void b(anht paramanht) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     soa
  * JD-Core Version:    0.7.0.1
  */

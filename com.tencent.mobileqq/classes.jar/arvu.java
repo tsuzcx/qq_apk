@@ -1,23 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
 
 public class arvu
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public arvu(MultiCardFragment paramMultiCardFragment) {}
+  public arvu(LocationDialogUtil.4 param4) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
-    }
+    this.a.a.b();
+    axqw.b(null, "CliOper", "", "", "0X800A967", "0X800A967", 0, 0, "0", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arvu
  * JD-Core Version:    0.7.0.1
  */

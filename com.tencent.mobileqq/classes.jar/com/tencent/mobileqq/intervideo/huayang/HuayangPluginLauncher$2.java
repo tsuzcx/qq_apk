@@ -1,45 +1,45 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import ajjy;
+import ajyc;
 import android.os.Handler;
 import android.os.Message;
-import aqlx;
+import argc;
 
 public class HuayangPluginLauncher$2
   implements Runnable
 {
-  public HuayangPluginLauncher$2(aqlx paramaqlx, boolean paramBoolean) {}
+  public HuayangPluginLauncher$2(argc paramargc, boolean paramBoolean) {}
   
   public void run()
   {
     long l;
-    if (aqlx.a(this.this$0) == null)
+    if (argc.a(this.this$0) == null)
     {
-      aqlx.a(this.this$0, aqlx.b(this.this$0));
+      argc.a(this.this$0, argc.b(this.this$0));
       if (this.a)
       {
-        l = 1000L - (System.currentTimeMillis() - aqlx.a(this.this$0));
+        l = 1000L - (System.currentTimeMillis() - argc.a(this.this$0));
         if (l > 0L) {
-          aqlx.a(this.this$0, "HuayangPluginLauncher", ajjy.a(2131639862) + l);
+          argc.a(this.this$0, "HuayangPluginLauncher", ajyc.a(2131705647) + l);
         }
       }
     }
     try
     {
       Thread.sleep(l);
-      if ((aqlx.a(this.this$0) != null) && (aqlx.a(this.this$0)))
+      if ((argc.a(this.this$0) != null) && (argc.a(this.this$0)))
       {
         if (this.a)
         {
-          Message localMessage = Message.obtain(aqlx.a(this.this$0), 2);
-          aqlx.a(this.this$0).sendMessage(localMessage);
-          aqlx.a(this.this$0, aqlx.a(this.this$0));
+          Message localMessage = Message.obtain(argc.a(this.this$0), 2);
+          argc.a(this.this$0).sendMessage(localMessage);
+          argc.a(this.this$0, argc.a(this.this$0));
           this.this$0.a = true;
         }
       }
       else
       {
-        aqlx.a(this.this$0, false);
+        argc.a(this.this$0, false);
         return;
       }
     }
@@ -49,7 +49,7 @@ public class HuayangPluginLauncher$2
       {
         localInterruptedException.printStackTrace();
         continue;
-        aqlx.b(this.this$0, aqlx.a(this.this$0));
+        argc.b(this.this$0, argc.a(this.this$0));
       }
     }
   }

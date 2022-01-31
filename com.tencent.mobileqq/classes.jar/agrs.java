@@ -1,23 +1,36 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class agrs
   implements View.OnClickListener
 {
-  public agrs(DrawHbFragment paramDrawHbFragment) {}
+  int jdField_a_of_type_Int;
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  
+  public agrs(NewPhotoListActivity paramNewPhotoListActivity) {}
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(CheckBox paramCheckBox)
+  {
+    this.jdField_a_of_type_AndroidWidgetCheckBox = paramCheckBox;
+  }
   
   public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.a.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.a.a.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetCheckBox);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agrs
  * JD-Core Version:    0.7.0.1
  */

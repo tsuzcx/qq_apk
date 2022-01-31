@@ -1,97 +1,134 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
 
-public final class bfnc
+public class bfnc
 {
-  public static int a(Context paramContext)
+  public static String a(String paramString1, String paramString2)
   {
-    return bfnb.a(paramContext).getInt("GRAY_UPDATE_GRAY_LEVEL", 0);
+    Object localObject = null;
+    try
+    {
+      paramString2 = a(paramString1.getBytes("UTF-8"), paramString2.getBytes("UTF-8"));
+      paramString1 = localObject;
+      if (paramString2 != null) {
+        paramString1 = bbca.encodeToString(paramString2, 2);
+      }
+      return paramString1;
+    }
+    catch (UnsupportedEncodingException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return null;
   }
   
-  public static void a(Context paramContext, int paramInt)
+  private static byte[] a(byte[] paramArrayOfByte)
   {
-    bfnb.a(paramContext).edit().putInt("GRAY_UPDATE_GRAY_LEVEL", paramInt).apply();
+    byte[] arrayOfByte = new byte[24];
+    if (arrayOfByte.length > paramArrayOfByte.length)
+    {
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramArrayOfByte.length);
+      return arrayOfByte;
+    }
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, arrayOfByte.length);
+    return arrayOfByte;
   }
   
-  public static void a(Context paramContext, boolean paramBoolean)
+  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    bfnb.a(paramContext).edit().putBoolean("is_frist_enter_home_page_from_leba", paramBoolean).apply();
+    try
+    {
+      paramArrayOfByte2 = new SecretKeySpec(a(paramArrayOfByte2), "DESede");
+      Cipher localCipher = Cipher.getInstance("DESede");
+      localCipher.init(1, paramArrayOfByte2);
+      paramArrayOfByte1 = localCipher.doFinal(paramArrayOfByte1);
+      return paramArrayOfByte1;
+    }
+    catch (NoSuchAlgorithmException paramArrayOfByte1)
+    {
+      paramArrayOfByte1.printStackTrace();
+      return null;
+    }
+    catch (NoSuchPaddingException paramArrayOfByte1)
+    {
+      for (;;)
+      {
+        paramArrayOfByte1.printStackTrace();
+      }
+    }
+    catch (Exception paramArrayOfByte1)
+    {
+      for (;;)
+      {
+        paramArrayOfByte1.printStackTrace();
+      }
+    }
   }
   
-  public static boolean a(Context paramContext)
+  public static String b(String paramString1, String paramString2)
   {
-    return bfnb.a(paramContext).getBoolean("is_frist_enter_home_page_from_leba", true);
+    try
+    {
+      paramString2 = paramString2.getBytes("UTF-8");
+      paramString1 = b(bbca.decode(paramString1, 0), paramString2);
+      if (paramString1 != null)
+      {
+        paramString1 = new String(paramString1, "UTF-8");
+        return paramString1;
+      }
+      return null;
+    }
+    catch (UnsupportedEncodingException paramString1)
+    {
+      paramString1.printStackTrace();
+      return null;
+    }
+    catch (IllegalArgumentException paramString1)
+    {
+      for (;;)
+      {
+        paramString1.printStackTrace();
+      }
+    }
   }
   
-  public static int b(Context paramContext)
+  public static byte[] b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return bfnb.a(paramContext).getInt("GRAY_UPDATE_UPDATE_STATUS", 0);
-  }
-  
-  public static void b(Context paramContext, int paramInt)
-  {
-    bfnb.a(paramContext).edit().putInt("GRAY_UPDATE_UPDATE_STATUS", paramInt).apply();
-  }
-  
-  public static void b(Context paramContext, boolean paramBoolean)
-  {
-    bfnb.a(paramContext).edit().putBoolean("GRAY_UPDATE_IS_UPDATE_TO_QQ_BOOKSTORE", paramBoolean).apply();
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    return bfnb.a(paramContext).getBoolean("GRAY_UPDATE_IS_UPDATE_TO_QQ_BOOKSTORE", false);
-  }
-  
-  public static int c(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("SETTING", 0).getInt("NUM_OF_RED_POINT", 0);
-  }
-  
-  public static void c(Context paramContext, int paramInt)
-  {
-    bfnb.a(paramContext).edit().putInt("GRAY_UPDATING_NEXT_REQ_TIME_INTERVAL", paramInt).apply();
-  }
-  
-  public static void c(Context paramContext, boolean paramBoolean)
-  {
-    bfnb.a(paramContext).edit().putBoolean("GRAY_UPDATE_IS_HAS_TAB_CONFIG_DATA", paramBoolean).apply();
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    return bfnb.a(paramContext).getBoolean("GRAY_UPDATE_IS_HAS_TAB_CONFIG_DATA", false);
-  }
-  
-  public static void d(Context paramContext, int paramInt)
-  {
-    bfnb.a(paramContext).edit().putInt("GRAY_UPDATING_REMAIN_MAX_TIME", paramInt).apply();
-  }
-  
-  public static void d(Context paramContext, boolean paramBoolean)
-  {
-    bfnb.a(paramContext).edit().putBoolean("new_user_in_act", paramBoolean).apply();
-  }
-  
-  public static boolean d(Context paramContext)
-  {
-    return bfnb.a(paramContext).getBoolean("new_user_in_act", false);
-  }
-  
-  public static void e(Context paramContext, boolean paramBoolean)
-  {
-    paramContext.getSharedPreferences("SETTING", 0).edit().putBoolean("is_new_user", paramBoolean).apply();
-  }
-  
-  public static boolean e(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("SETTING", 0).getBoolean("is_new_user", true);
+    try
+    {
+      paramArrayOfByte2 = new SecretKeySpec(a(paramArrayOfByte2), "DESede");
+      Cipher localCipher = Cipher.getInstance("DESede");
+      localCipher.init(2, paramArrayOfByte2);
+      paramArrayOfByte1 = localCipher.doFinal(paramArrayOfByte1);
+      return paramArrayOfByte1;
+    }
+    catch (NoSuchAlgorithmException paramArrayOfByte1)
+    {
+      paramArrayOfByte1.printStackTrace();
+      return null;
+    }
+    catch (NoSuchPaddingException paramArrayOfByte1)
+    {
+      for (;;)
+      {
+        paramArrayOfByte1.printStackTrace();
+      }
+    }
+    catch (Exception paramArrayOfByte1)
+    {
+      for (;;)
+      {
+        paramArrayOfByte1.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfnc
  * JD-Core Version:    0.7.0.1
  */

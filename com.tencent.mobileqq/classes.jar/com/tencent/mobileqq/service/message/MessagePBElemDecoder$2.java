@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.service.message;
 
-import awbd;
+import axal;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,11 +11,11 @@ import msf.msgcomm.msg_comm.MsgHead;
 public class MessagePBElemDecoder$2
   implements Runnable
 {
-  public MessagePBElemDecoder$2(awbd paramawbd, msg_comm.Msg paramMsg) {}
+  public MessagePBElemDecoder$2(axal paramaxal, msg_comm.Msg paramMsg) {}
   
   public void run()
   {
-    ((PublicAccountHandler)awbd.a(this.this$0).app.a(11)).a(String.valueOf(this.a.msg_head.from_uin.get()), 0L, 1);
+    ((PublicAccountHandler)axal.a(this.this$0).app.a(11)).a(String.valueOf(this.a.msg_head.from_uin.get()), 0L, 1);
   }
 }
 

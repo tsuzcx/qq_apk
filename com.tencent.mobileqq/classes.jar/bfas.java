@@ -1,416 +1,241 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.VipComicProxyActivity;
-import cooperation.comic.VipProxyPreLoadComicProcess;
-import cooperation.comic.utils.QQComicPluginBridge.1;
-import cooperation.plugin.PluginInfo;
-import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Observer;
-import mqq.app.AppRuntime;
+import com.tencent.qqmini.sdk.core.plugins.engine.IJsPluginEngine;
+import com.tencent.qqmini.sdk.core.plugins.engine.JsPluginEngine;
+import com.tencent.qqmini.sdk.runtime.core.EventListener.1;
+import com.tencent.qqmini.sdk.runtime.core.EventListener.2;
+import com.tencent.qqmini.sdk.runtime.core.EventListener.3;
+import com.tencent.qqmini.sdk.runtime.core.EventListener.4;
+import com.tencent.qqmini.sdk.runtime.core.EventListener.5;
+import com.tencent.qqmini.sdk.runtime.core.EventListener.6;
+import com.tencent.qqmini.sdk.runtime.core.EventListener.7;
+import com.tencent.tissue.v8rt.engine.SpeedUtil;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfas
+  implements bfbn, bfdd
 {
-  public static bezz a;
-  public static bfad a;
-  public static bfaq a;
-  public static bfaz a;
-  private static final Object a;
-  public static volatile boolean a;
-  public static boolean b;
+  private bfar a;
+  protected boolean a;
+  private boolean b;
   
-  static
+  public bfas(bfar parambfar)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_Bfar = parambfar;
   }
   
-  public static bfae a(bbac parambbac, bfaa parambfaa)
+  public String a(String paramString1, String paramString2, int paramInt)
   {
-    if (jdField_a_of_type_Bfad == null) {
-      return null;
+    int j = 1;
+    int i = 1;
+    if ("initWeixinJSBridgeFinish".equals(paramString1))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      besl.b("EventListener", "WeixinJSBridge finished.");
+      SpeedUtil.DEFAULT.event("initWeixinJSBridge finished");
+      return bekg.a(paramString1, null).toString();
     }
-    return jdField_a_of_type_Bfad.a(parambbac, parambfaa);
-  }
-  
-  public static void a(Context paramContext)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQComicDebug", 2, "load plugin start");
-    }
-    if (!QIPCServerHelper.getInstance().isModuleRunning("comic_plugin.apk")) {
-      VasWebviewUtil.reportVasStatus("qqcomic", "launch_plugin_action", "0", 0, 201);
-    }
-    Intent localIntent = new Intent(paramContext, VipProxyPreLoadComicProcess.class);
-    localIntent.putExtra("userQqResources", 2);
-    localIntent.putExtra("useSkinEngine", false);
-    localIntent.putExtra("params_remote_connect_at_launch", true);
-    localIntent.putExtra("sendTime", SystemClock.elapsedRealtime());
-    bfar.a(BaseApplicationImpl.getApplication().getRuntime(), 1, 1, 0L);
-    a(localIntent);
-    if ((bant.a() instanceof Serializable)) {
-      localIntent.putExtra("urlMap", (Serializable)bant.a());
-    }
-    bfdi localbfdi = new bfdi(0);
-    localbfdi.b = "comic_plugin.apk";
-    localbfdi.d = "comic_plugin";
-    localbfdi.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localbfdi.e = "com.qqcomic.app.VipPreloadComicProcess";
-    localbfdi.jdField_a_of_type_AndroidContentIntent = localIntent;
-    bfcz.b(paramContext, localbfdi);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQComicDebug", 2, "load plugin end");
-    }
-  }
-  
-  public static void a(Intent paramIntent)
-  {
-    boolean bool7 = false;
-    int i = 0;
-    boolean bool5 = true;
-    if (paramIntent == null) {
-      return;
-    }
-    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.comic_plugin_profile.name(), "");
-    if (QLog.isColorLevel()) {
-      QLog.d("QQComicPluginBridge", 2, "parseDPC config = " + str);
-    }
-    if (!TextUtils.isEmpty(str)) {}
+    bfdc localbfdc = this.jdField_a_of_type_Bfar.jdField_a_of_type_Bfdc;
+    bfbk localbfbk = this.jdField_a_of_type_Bfar.jdField_a_of_type_Bfbk;
+    JsPluginEngine localJsPluginEngine = this.jdField_a_of_type_Bfar.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine;
+    bejy localbejy = this.jdField_a_of_type_Bfar.jdField_a_of_type_Bejy;
+    beka localbeka = new bekb().a(paramString1).b(paramString2).a(paramInt).a(localbfdc).a();
     for (;;)
     {
       try
       {
-        arrayOfInteger = new Integer[7];
-        Arrays.fill(arrayOfInteger, Integer.valueOf(0));
-        arrayOfInteger[2] = Integer.valueOf(1);
-        if (DeviceProfileManager.a(str, arrayOfInteger, new ajhd()) >= arrayOfInteger.length)
+        if ("redirectTo".equals(paramString1))
         {
-          i = arrayOfInteger[0].intValue();
-          if (i == 1) {
-            bool1 = true;
-          }
-        }
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          boolean bool6;
-          try
+          paramString2 = new JSONObject(paramString2).optString("url", "");
+          if (!TextUtils.isEmpty(paramString2))
           {
-            i = arrayOfInteger[1].intValue();
-            if (i == 1) {
-              bool2 = true;
-            }
-          }
-          catch (Exception localException2)
-          {
-            Integer[] arrayOfInteger;
-            int j;
-            bool2 = true;
-            bool3 = bool1;
-            i = 0;
-            bool1 = false;
-            bool4 = false;
-            continue;
-          }
-          try
-          {
-            i = arrayOfInteger[2].intValue();
-            if (i == 1) {
-              bool3 = true;
-            }
-          }
-          catch (Exception localException3)
-          {
-            bool5 = true;
-            bool3 = bool1;
-            i = 0;
-            bool4 = bool2;
-            bool1 = false;
-            bool2 = bool5;
-            continue;
-          }
-          try
-          {
-            i = arrayOfInteger[3].intValue();
-            if (i == 1) {
-              bool4 = true;
-            }
-          }
-          catch (Exception localException4)
-          {
-            bool6 = false;
-            bool4 = bool1;
-            bool5 = bool2;
-            i = 0;
-            bool1 = bool6;
-            bool2 = bool3;
-            bool3 = bool4;
-            bool4 = bool5;
-            continue;
-          }
-          try
-          {
-            i = arrayOfInteger[5].intValue();
-          }
-          catch (Exception localException5)
-          {
-            bool5 = bool1;
-            bool6 = bool2;
-            i = 0;
-            bool1 = bool4;
-            bool2 = bool3;
-            bool3 = bool5;
-            bool4 = bool6;
-            continue;
-          }
-          try
-          {
-            j = arrayOfInteger[6].intValue();
-            if (j == 1)
+            if ((localbejy != null) && (localbejy.a(paramString2)))
             {
-              bool6 = bool4;
-              bool7 = bool3;
-              bool4 = bool2;
-              bool3 = bool1;
-              bool2 = bool7;
-              bool1 = bool6;
-              paramIntent.putExtra("isSetHardWareLayerForWebview", bool4);
-              paramIntent.putExtra("isHandleNavigationBar", bool2);
-              paramIntent.putExtra("isCloseHardAcc", bool1);
-              paramIntent.putExtra("bitDepthFlag", i);
-              paramIntent.putExtra("skipBitmapReuse", bool5);
-              if (!QLog.isColorLevel()) {
-                break;
+              paramInt = i;
+              if (paramInt != 0) {
+                return localbeka.b();
               }
-              QLog.d("QQComicDebug", 2, "parseDPC isPreloadInMiddlePage = " + bool3 + " , isSetHardWareLayerForWebview = " + bool4 + " , isHandleNavigationBar = " + bool2 + " , isCloseHardAcc = " + bool1 + " , bitDepthFlag = " + i + " , skipBitmapReuse = " + bool5);
-              return;
-              bool1 = false;
-              continue;
-              bool2 = false;
-              continue;
-              bool3 = false;
-              continue;
-              bool4 = false;
-              continue;
+              beki.a(new EventListener.1(this, localbfbk, paramString2, localbeka));
             }
-            bool5 = false;
-            continue;
-            localException1 = localException1;
-            bool2 = true;
-            bool3 = false;
-            bool4 = false;
-            bool1 = false;
-            i = 0;
           }
-          catch (Exception localException6)
-          {
-            bool5 = bool1;
-            bool6 = bool2;
-            bool1 = bool4;
-            bool2 = bool3;
-            bool3 = bool5;
-            bool4 = bool6;
+          else {
+            return bekg.a(paramString1, null).toString();
           }
         }
-        localException1.printStackTrace();
-        bool5 = bool7;
-        continue;
-        bool1 = false;
-        bool2 = true;
-        bool3 = false;
-        bool4 = false;
-        bool5 = false;
-        continue;
-      }
-      boolean bool1 = false;
-      boolean bool2 = true;
-      boolean bool3 = false;
-      boolean bool4 = false;
-      i = 0;
-      bool5 = bool7;
-    }
-  }
-  
-  public static void a(Observer paramObserver)
-  {
-    if (jdField_a_of_type_Bfaq == null) {
-      jdField_a_of_type_Bfaq = new bfaq();
-    }
-    for (;;)
-    {
-      jdField_a_of_type_Bfaq.addObserver(paramObserver);
-      return;
-      jdField_a_of_type_Bfaq.deleteObservers();
-    }
-  }
-  
-  public static boolean a(Activity paramActivity, Intent paramIntent, String paramString, aqdz paramaqdz)
-  {
-    if ((!jdField_a_of_type_Boolean) || (paramActivity == null) || (paramIntent == null) || (TextUtils.isEmpty(paramString))) {
-      return false;
-    }
-    paramIntent.putExtra("big_brother_source_key", "biz_src_zz_bodong");
-    if ((paramActivity instanceof BasePluginActivity))
-    {
-      paramActivity.startActivity(paramIntent);
-      return true;
-    }
-    paramIntent.putExtra("userQqResources", 2);
-    paramIntent.putExtra("useSkinEngine", false);
-    paramIntent.putExtra("params_remote_connect_at_launch", true);
-    bfdi localbfdi = new bfdi(0);
-    localbfdi.b = "comic_plugin.apk";
-    localbfdi.d = "comic_plugin";
-    localbfdi.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localbfdi.e = paramString;
-    localbfdi.jdField_a_of_type_JavaLangClass = VipComicProxyActivity.a(paramString);
-    localbfdi.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbfdi.c = 10000;
-    localbfdi.jdField_a_of_type_Aqdz = paramaqdz;
-    bfcz.a(paramActivity, localbfdi);
-    return true;
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime)
-  {
-    boolean bool = false;
-    if (jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicPluginBridge", 2, "QQComic is ready");
-      }
-      bool = true;
-    }
-    do
-    {
-      do
-      {
-        return bool;
-        if (!(paramAppRuntime instanceof QQAppInterface))
+        else
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQComicPluginBridge", 2, "Not in main process, QQComic is NOT installed");
-          }
-          return jdField_a_of_type_Boolean;
-        }
-        paramAppRuntime = (bfcz)paramAppRuntime.getManager(27);
-        if (paramAppRuntime != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QQComicPluginBridge", 2, "PluginManager is NOT ready");
-      return false;
-      paramAppRuntime = paramAppRuntime.a("comic_plugin.apk");
-      if (paramAppRuntime != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQComicPluginBridge", 2, "QQComic is NOT found");
-    return false;
-    if (paramAppRuntime.mState == 4) {}
-    for (bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return jdField_a_of_type_Boolean;
-    }
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime, boolean paramBoolean, bfav arg2)
-  {
-    boolean bool = false;
-    if (a(paramAppRuntime))
-    {
-      jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicPluginBridge", 2, "QQComic is ready");
-      }
-      bool = true;
-    }
-    do
-    {
-      do
-      {
-        return bool;
-        paramAppRuntime = (bfcz)paramAppRuntime.getManager(27);
-        if (paramAppRuntime != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QQComicPluginBridge", 2, "PluginManager is NOT ready");
-      return false;
-      ThreadManager.executeOnNetWorkThread(new QQComicPluginBridge.1(paramAppRuntime, ???));
-    } while (!paramBoolean);
-    PluginInfo localPluginInfo = paramAppRuntime.a("comic_plugin.apk");
-    if ((localPluginInfo != null) && (localPluginInfo.mState != 4)) {}
-    for (;;)
-    {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQComicPluginBridge", 2, "QQComic is waiting for installation");
-        }
-        try
-        {
-          jdField_a_of_type_JavaLangObject.wait();
-          if (QLog.isColorLevel()) {
-            QLog.d("QQComicPluginBridge", 2, "QQComic installation is finished");
-          }
-          paramAppRuntime = paramAppRuntime.a("comic_plugin.apk");
-          if ((paramAppRuntime != null) && (paramAppRuntime.mState == 4))
+          if ("navigateTo".equals(paramString1))
           {
-            paramBoolean = true;
-            jdField_a_of_type_Boolean = paramBoolean;
-            if (QLog.isColorLevel())
+            paramString2 = new JSONObject(paramString2).optString("url", "");
+            if (!TextUtils.isEmpty(paramString2))
             {
-              ??? = new StringBuilder().append("QQComic is ");
-              if (!jdField_a_of_type_Boolean) {
-                break label235;
+              if ((localbejy == null) || (!localbejy.a(paramString2))) {
+                break label544;
               }
-              paramAppRuntime = "installed";
-              QLog.d("QQComicPluginBridge", 2, paramAppRuntime);
+              paramInt = j;
+              if (paramInt != 0) {
+                return bekg.b(paramString1, null).toString();
+              }
+              beki.a(new EventListener.2(this, localbfbk, paramString2, localbeka));
             }
-            return jdField_a_of_type_Boolean;
+            return bekg.a(paramString1, null).toString();
           }
+          if ("navigateBack".equals(paramString1))
+          {
+            paramInt = new JSONObject(paramString2).optInt("delta", 0);
+            if (paramInt > 0) {
+              beki.a(new EventListener.3(this, localbfbk, paramInt, localbeka));
+            }
+            return bekg.a(paramString1, null).toString();
+          }
+          if ("switchTab".equals(paramString1))
+          {
+            paramString2 = new JSONObject(paramString2).optString("url", "");
+            if (!TextUtils.isEmpty(paramString2)) {
+              beki.a(new EventListener.4(this, localbfbk, paramString2, localbeka));
+            }
+            return bekg.a(paramString1, null).toString();
+          }
+          if ("reLaunch".equals(paramString1))
+          {
+            paramString2 = new JSONObject(paramString2).optString("url", "");
+            if (!TextUtils.isEmpty(paramString2)) {
+              beki.a(new EventListener.5(this, paramString2, localbeka));
+            }
+            return bekg.a(paramString1, null).toString();
+          }
+          if ("exitMiniProgram".equals(paramString1))
+          {
+            beki.a(new EventListener.6(this));
+            if (localJsPluginEngine != null) {
+              return localJsPluginEngine.handleNativeRequest(paramString1, paramString2, localbfdc, paramInt);
+            }
+          }
+          else
+          {
+            if (!"flutter_launch".equals(paramString1)) {
+              continue;
+            }
+            beki.a(new EventListener.7(this, localbfbk, paramString1, paramString2, localbeka));
+            continue;
+          }
+          return "";
         }
-        catch (InterruptedException localInterruptedException) {}
       }
-      paramBoolean = false;
+      catch (JSONException paramString1)
+      {
+        besl.d("EventListener", "", paramString1);
+        return "";
+      }
+      catch (Throwable paramString1)
+      {
+        besl.d("EventListener", "", paramString1);
+        return "";
+      }
+      paramInt = 0;
       continue;
-      label235:
-      paramAppRuntime = "NOT installed";
+      label544:
+      paramInt = 0;
     }
   }
   
-  public static void b(Observer paramObserver)
+  public String a(String paramString1, String paramString2, begy parambegy, int paramInt)
   {
-    if (jdField_a_of_type_Bfaz == null) {
-      jdField_a_of_type_Bfaz = new bfaz();
+    if ("initWeixinJSBridgeFinish".equals(paramString1))
+    {
+      besl.a("EventListener", "onWebViewNativeRequest eventName=" + paramString1 + ",callbackId=" + paramInt);
+      return "";
+    }
+    besl.a("EventListener", "ServiceRemoteRuntime onWebViewNativeRequest eventName=" + paramString1 + ",callbackId=" + paramInt);
+    if (this.jdField_a_of_type_Bfar.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine == null) {
+      return "";
+    }
+    return this.jdField_a_of_type_Bfar.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.handleNativeRequest(paramString1, paramString2, parambegy, paramInt);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bfar.a() != null)
+    {
+      besl.a("EventListener", "moveAppBrandToBack. | " + this);
+      if (!this.jdField_a_of_type_Bfar.a().moveTaskToBack(false))
+      {
+        besl.d("EventListener", "moveTaskToBack failed, finish the activity.");
+        this.jdField_a_of_type_Bfar.a().finish();
+      }
+    }
+  }
+  
+  public final void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Bfar.jdField_a_of_type_Bfbk != null) {
+      this.jdField_a_of_type_Bfar.jdField_a_of_type_Bfbk.a(false);
+    }
+    this.jdField_a_of_type_Bfar.b(this.jdField_a_of_type_Bfar.a(), true);
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt)
+  {
+    if (this.jdField_a_of_type_Bfar.jdField_a_of_type_Bfdc == null) {
+      return;
+    }
+    besl.a("EventListener", "ServiceRemoteRuntime  onWebViewEvent eventName=" + paramString1 + ",pageWebviewId=" + paramInt);
+    if (paramString1.contains("GenerateFuncReady")) {
+      SpeedUtil.DEFAULT.event("GenerateFuncReady");
     }
     for (;;)
     {
-      jdField_a_of_type_Bfaz.addObserver(paramObserver);
+      this.jdField_a_of_type_Bfar.jdField_a_of_type_Bfdc.a(paramString1, paramString2, paramInt);
       return;
-      jdField_a_of_type_Bfaz.deleteObservers();
+      if ((paramString2 != null) && (paramString2.contains("__DOMReady")))
+      {
+        SpeedUtil.DEFAULT.event("domReady");
+        SpeedUtil.DEFAULT.report(new String[0]);
+        SpeedUtil.DEFAULT.clear();
+        this.b = true;
+      }
     }
+  }
+  
+  public void a(String paramString1, String paramString2, int[] paramArrayOfInt)
+  {
+    if ("custom_event_onAppRouteDone".equals(paramString1)) {
+      this.jdField_a_of_type_Bfar.a(bejl.a(10));
+    }
+    if (this.jdField_a_of_type_Bfar.jdField_a_of_type_Bfbk != null) {
+      this.jdField_a_of_type_Bfar.jdField_a_of_type_Bfbk.a(paramString1, paramString2, paramArrayOfInt);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.b;
+  }
+  
+  public void b(String paramString1, String paramString2, int paramInt)
+  {
+    SpeedUtil.DEFAULT.event("onWebViewReady " + paramInt);
+    c(paramString1, paramString2, paramInt);
+    d(paramString1, paramString2, paramInt);
+  }
+  
+  public void c(String paramString1, String paramString2, int paramInt)
+  {
+    SpeedUtil.DEFAULT.event("onAppRoute " + paramInt + " " + paramString2);
+    paramString1 = bekj.a(paramString2, paramString1, this.jdField_a_of_type_Bfar.a());
+    this.jdField_a_of_type_Bfar.jdField_a_of_type_Bfdc.a("onAppRoute", paramString1.toString(), paramInt);
+  }
+  
+  public void d(String paramString1, String paramString2, int paramInt)
+  {
+    paramString1 = bekj.a(paramString2, paramString1, this.jdField_a_of_type_Bfar.a());
+    this.jdField_a_of_type_Bfar.jdField_a_of_type_Bfdc.a("onAppRouteDone", paramString1.toString(), paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfas
  * JD-Core Version:    0.7.0.1
  */

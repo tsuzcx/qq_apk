@@ -1,49 +1,82 @@
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class qxi
-  implements oqy
 {
-  public qxi(AuthorData paramAuthorData) {}
+  private static final String jdField_a_of_type_JavaLangString = qxi.class.getSimpleName();
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private qxb jdField_a_of_type_Qxb;
+  private qxu jdField_a_of_type_Qxu;
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  qxi(Activity paramActivity, qxb paramqxb, qxu paramqxu)
   {
-    this.a.a(true);
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    ArticleInfo localArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.c()) {
-      paramString = "2";
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Qxb = paramqxb;
+    this.jdField_a_of_type_Qxu = paramqxu;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    switch (paramInt1)
+    {
     }
+    label20:
+    String str;
+    VideoInfo localVideoInfo;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          break label20;
+          while (paramInt2 != -1) {}
+          str = paramIntent.getStringExtra("ARG_VIDEO_ARTICLE_ID");
+        } while ((!paramIntent.getBooleanExtra("KEY_VIDEO_BIU_SUCCESS", false)) || (str == null) || (this.jdField_a_of_type_Qxb == null));
+        paramIntent = this.jdField_a_of_type_Qxu.a().iterator();
+      } while (!paramIntent.hasNext());
+      localVideoInfo = (VideoInfo)paramIntent.next();
+    } while (!str.equals(localVideoInfo.g));
+    localVideoInfo.f += 1;
+    this.jdField_a_of_type_Qxb.b(localVideoInfo);
+  }
+  
+  public void a(VideoInfo paramVideoInfo)
+  {
+    boolean bool = true;
+    if (odr.a() == 1) {}
     for (;;)
     {
-      paramString = obz.a(localBaseApplication, localArticleInfo, 0, paramString);
-      if (paramBoolean) {
-        paramInt = 1;
-      }
       try
       {
-        for (;;)
-        {
-          paramString.put("is_done", paramInt);
-          raz.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800898B", paramString.toString());
-          return;
-          paramString = "1";
-          break;
-          paramInt = 2;
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, ReadInJoyDeliverBiuActivity.class);
+        if ((paramVideoInfo.jdField_a_of_type_Int == 6) && (paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)) {
+          localIntent.putExtra("feedsType", paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType);
         }
+        localIntent.putExtra("ARG_VIDEO_ARTICLE_ID", paramVideoInfo.g);
+        localIntent.putExtra("biu_src", 2);
+        localIntent.putExtra("arg_from_type", 8);
+        localIntent.putExtra("arg_article_info", paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+        localIntent.putExtra("fast_biu_type", bool);
+        this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 102);
+        this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
+        return;
       }
-      catch (JSONException localJSONException)
+      catch (Exception paramVideoInfo)
       {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
         }
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "innerOpenReadInJoyBiuActivity error exception = " + paramVideoInfo.getMessage());
       }
+      bool = false;
     }
   }
 }

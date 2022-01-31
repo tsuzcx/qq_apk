@@ -1,27 +1,12 @@
-import android.util.Pair;
-import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-class apnc
-  extends ajuc
+public abstract interface apnc
 {
-  apnc(apnb paramapnb) {}
+  public abstract void a(long paramLong);
   
-  protected void a(String paramString, List<Pair<String, String>> paramList)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.size())
-    {
-      QLog.i("ForwardTroopMemberControllerForMiniPie", 2, i);
-      if ((apnb.a(this.a).equals(paramString)) && (apnb.a(this.a) != null))
-      {
-        apnb.a(this.a);
-        apnb.a(this.a).a(paramList);
-      }
-      return;
-    }
-  }
+  public abstract void a(List<apqg> paramList, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, short paramShort);
+  
+  public abstract void b(String paramString1, String paramString2);
 }
 
 

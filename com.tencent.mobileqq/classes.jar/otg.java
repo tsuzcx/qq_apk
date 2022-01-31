@@ -1,48 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
-
-public class otg
+final class otg
+  implements oti
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public void l()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    Object localObject = new JSONObject();
-    ((JSONObject)localObject).put("small_video_icon", "public_account_video_profile");
-    localJSONObject1.put("id_small_video_icon", localObject);
-    localObject = new JSONObject();
-    ((JSONObject)localObject).put("small_video_cover", "public_account_small_video_mengceng");
-    localJSONObject1.put("id_small_video_cover", localObject);
-    JSONObject localJSONObject2 = new JSONObject();
-    if (paramBaseArticleInfo.mSinglePicture != null)
-    {
-      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
-      localJSONObject2.put("article_small_imge_url", localObject);
-      localJSONObject1.put("id_article_small_imge", localJSONObject2);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("small_video_duration", obj.a(paramBaseArticleInfo.mVideoDuration));
-      localJSONObject1.put("id_small_video_duration", localObject);
-      otl.a(paramBaseArticleInfo, localJSONObject1, true);
-      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label186;
-      }
-      otl.a(paramBaseArticleInfo, localJSONObject1);
-      otl.b(paramBaseArticleInfo, localJSONObject1);
-    }
-    for (;;)
-    {
-      otl.m(paramBaseArticleInfo, localJSONObject1);
-      otl.e(paramBaseArticleInfo, localJSONObject1);
-      otl.g(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_small_cell");
-      otl.a(localJSONObject1, paramBaseArticleInfo);
-      return localJSONObject1;
-      localObject = null;
-      break;
-      label186:
-      otl.d(paramBaseArticleInfo, localJSONObject1);
-    }
+    ooe.a(9, "", "", "", "");
+  }
+  
+  public void m()
+  {
+    ooe.a(9, "", "", "", "", otd.c, "", false);
   }
 }
 

@@ -1,35 +1,31 @@
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 
-class bafn
-  implements View.OnClickListener
+public class bafn
+  implements bfoq
 {
-  int jdField_a_of_type_Int;
+  public bafn(VisitorTroopCardFragment paramVisitorTroopCardFragment, bfol parambfol) {}
   
-  public bafn(bafb parambafb, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Bafb.onArrayItemClick != null) {
-      this.jdField_a_of_type_Bafb.onArrayItemClick.onClick(this.jdField_a_of_type_Bafb, this.jdField_a_of_type_Bafb.customWhichToCallBack(this.jdField_a_of_type_Int));
-    }
-    try
+    switch (this.jdField_a_of_type_Bfol.a(paramInt).c)
     {
-      if (this.jdField_a_of_type_Bafb.isShowing()) {
-        this.jdField_a_of_type_Bafb.dismiss();
-      }
-      return;
     }
-    catch (Exception paramView) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      VisitorTroopCardFragment.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
+      continue;
+      bamn.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      continue;
+      bamn.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bafn
  * JD-Core Version:    0.7.0.1
  */

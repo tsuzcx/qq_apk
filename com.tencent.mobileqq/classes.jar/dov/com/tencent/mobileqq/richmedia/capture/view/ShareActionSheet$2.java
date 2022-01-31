@@ -1,19 +1,19 @@
 package dov.com.tencent.mobileqq.richmedia.capture.view;
 
-import bjgh;
+import bkws;
 import com.tencent.biz.widgets.ElasticHorScrView;
 
 public class ShareActionSheet$2
   implements Runnable
 {
-  public ShareActionSheet$2(bjgh parambjgh) {}
+  public ShareActionSheet$2(bkws parambkws) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.this$0.jdField_a_of_type_Int) {
       this.this$0.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
     }
-    while (this.this$0.b.getWidth() < bjgh.a(this.this$0))
+    while (this.this$0.b.getWidth() < bkws.a(this.this$0))
     {
       this.this$0.b.setMove(true);
       return;

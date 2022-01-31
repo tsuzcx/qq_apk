@@ -1,20 +1,27 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1.1.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public class azpx
-  implements axbf
+class azpx
+  implements DialogInterface.OnClickListener
 {
-  public azpx(TroopGiftAnimationController.1 param1) {}
+  azpx(azpt paramazpt, azpg paramazpg) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.this$0.a.post(new TroopGiftAnimationController.1.1.1(this));
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while (azpt.a(this.jdField_a_of_type_Azpt) == 0);
+    TroopFileTransferManager.a(this.jdField_a_of_type_Azpt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azpt.jdField_a_of_type_Long).c(this.jdField_a_of_type_Azpg.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azpx
  * JD-Core Version:    0.7.0.1
  */

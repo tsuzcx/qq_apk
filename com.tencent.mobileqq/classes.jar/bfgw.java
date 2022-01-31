@@ -1,22 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Build.VERSION;
 
-final class bfgw
-  implements View.OnClickListener
+public final class bfgw
 {
-  bfgw(Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
+  public static boolean a()
   {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
+    return Build.VERSION.SDK_INT >= 19;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfgw
  * JD-Core Version:    0.7.0.1
  */

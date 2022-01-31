@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 class UploaderProxyImpl$1
   implements Runnable
 {
-  UploaderProxyImpl$1(UploaderProxyImpl paramUploaderProxyImpl, String paramString1, Map paramMap1, String paramString2, Map paramMap2, String paramString3, UploaderProxy.UploadListener paramUploadListener) {}
+  UploaderProxyImpl$1(UploaderProxyImpl paramUploaderProxyImpl, String paramString1, Map paramMap1, String paramString2, Map paramMap2, String paramString3, String paramString4, UploaderProxy.UploadListener paramUploadListener) {}
   
   public void run()
   {
@@ -29,7 +29,7 @@ class UploaderProxyImpl$1
         localBuilder.addHeader(str, (String)this.val$header.get(str));
       }
     }
-    localBuilder.method("POST", HttpUtil.buildMultiPartBody(this.val$name, this.val$formData, this.val$uploadFileName, this.val$uploadFileName, this.val$listener));
+    localBuilder.method("POST", HttpUtil.buildMultiPartBody(this.val$filePath, this.val$formData, this.val$name, this.val$uploadFileName, this.val$listener));
     localObject = ((OkHttpClient)localObject).newCall(localBuilder.build());
     ((Call)localObject).enqueue(new UploaderProxyImpl.1.1(this));
     this.this$0.taskMap.put(this.val$url, localObject);

@@ -1,50 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import mqq.os.MqqHandler;
 
 public class ogi
-  extends auqd
+  implements arbi
 {
-  public ogi(KandianMergeManager paramKandianMergeManager) {}
+  public ogi(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
+  public void a(HotPicData paramHotPicData)
   {
-    if (!"kandian_num_red_pnt_buffer".equals(paramString)) {}
-    while ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    paramString = ((NumRedMsg.NumMsgBusi)paramList.get(paramList.size() - 1)).str_ext.get();
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramList = KandianMsgBoxRedPntInfo.createFromJSON(paramString);
-      if ((paramList == null) || (paramList.mMsgCnt <= 0) || ((KandianMergeManager.a(this.a) != null) && (paramList.mSeq <= KandianMergeManager.a(this.a).mSeq)))
-      {
-        QLog.d("KandianMergeManager", 2, new Object[] { "[redpnt_center]new msgbox red info has error, local : ", KandianMergeManager.a(this.a), "new : ", paramList });
-        return;
-      }
-      if (Aladdin.getConfig(215).getIntegerFromString("message_reddot_style", 0) == 2) {
-        break label183;
-      }
-      this.a.a(paramList);
-    }
-    for (;;)
-    {
-      QLog.d("KandianMergeManager", 1, "handlerRedPntCenterNotify | num red pnt buffer : " + paramString);
-      return;
-      label183:
-      ogy.a().j(1);
-    }
+    this.a.a = paramHotPicData;
+    ReadInJoyCommentComponentFragment.a(this.a, null);
+    ThreadManager.getUIHandler().post(new ReadInJoyCommentComponentFragment.8.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ogi
  * JD-Core Version:    0.7.0.1
  */

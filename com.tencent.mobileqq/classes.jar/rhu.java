@@ -1,9 +1,8 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-
 public abstract interface rhu
 {
-  public abstract void a(ViewPager paramViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
+  public abstract void a(rva paramrva);
+  
+  public abstract void b(rva paramrva);
 }
 
 

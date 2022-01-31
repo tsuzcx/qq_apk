@@ -1,17 +1,10 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.MessageForPic;
 
 public class abjj
-  implements View.OnClickListener
 {
-  public abjj(PublicAccountListActivity paramPublicAccountListActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.cancel();
-  }
+  public URLImageView a;
+  MessageForPic a;
 }
 
 

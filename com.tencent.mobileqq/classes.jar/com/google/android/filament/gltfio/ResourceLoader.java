@@ -2,28 +2,15 @@ package com.google.android.filament.gltfio;
 
 import android.support.annotation.NonNull;
 import com.google.android.filament.Engine;
-import java.lang.reflect.Method;
 import java.nio.Buffer;
 
 public class ResourceLoader
 {
-  private static Method sEngineGetNativeObject;
   private final long mNativeObject;
-  
-  static
-  {
-    try
-    {
-      sEngineGetNativeObject = Engine.class.getDeclaredMethod("getNativeObject", new Class[0]);
-      sEngineGetNativeObject.setAccessible(true);
-      return;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException) {}
-  }
   
   public ResourceLoader(@NonNull Engine paramEngine)
   {
-    this.mNativeObject = nCreateResourceLoader(((Long)sEngineGetNativeObject.invoke(paramEngine, new Object[0])).longValue());
+    this.mNativeObject = nCreateResourceLoader(paramEngine.getNativeObject());
   }
   
   private static native void nAddResourceData(long paramLong, String paramString, Buffer paramBuffer, int paramInt);

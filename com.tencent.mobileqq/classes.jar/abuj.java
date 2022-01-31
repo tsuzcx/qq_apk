@@ -1,16 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class abuj
-  implements View.OnClickListener
+  implements avts
 {
-  public abuj(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public abuj(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public void onClick(View paramView)
+  public void a(float paramFloat)
   {
-    this.a.b(this.a.e());
-    paramView.setEnabled(false);
+    if (paramFloat < 0.0F)
+    {
+      this.a.a(this.a.getString(2131694420));
+      return;
+    }
+    if (paramFloat > 175.0F)
+    {
+      this.a.a(this.a.getString(2131694419));
+      return;
+    }
+    QQIdentiferActivity.a(this.a).setText("");
   }
 }
 

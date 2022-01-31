@@ -1,26 +1,27 @@
-import com.tencent.biz.subscribe.videoplayer.CleanVideoPlayerView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
-class wew
-  implements tql
+public class wew
+  implements Animator.AnimatorListener
 {
-  wew(wet paramwet, adcg paramadcg, CleanVideoPlayerView paramCleanVideoPlayerView) {}
+  public wew(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void a_(tqg paramtqg)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Long localLong = (Long)wet.b(this.jdField_a_of_type_Wet).get(Integer.valueOf(this.jdField_a_of_type_Adcg.b));
-    if ((localLong != null) && (localLong.longValue() > 0L))
-    {
-      paramtqg.a(localLong.longValue());
-      QLog.d("SubscribePlayerManager", 4, "playInner seekTo: " + localLong);
-    }
-    this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerCleanVideoPlayerView.d();
+    RotateCircleImageView.b(this.a).start();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wew
  * JD-Core Version:    0.7.0.1
  */

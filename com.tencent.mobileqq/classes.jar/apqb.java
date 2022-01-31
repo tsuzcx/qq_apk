@@ -1,22 +1,19 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class apqb
-  implements CompoundButton.OnCheckedChangeListener
+class apqb
+  implements View.OnClickListener
 {
-  public apqb(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  apqb(apqa paramapqa) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    ((ariq)this.a.a.getManager(303)).a((short)-23312, paramBoolean, true);
-    awqx.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 2, 2, "", "", "", "");
+    apue.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apmx.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apqb
  * JD-Core Version:    0.7.0.1
  */

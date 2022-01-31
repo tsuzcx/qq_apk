@@ -1,78 +1,46 @@
-import android.content.Context;
-import android.view.ViewConfiguration;
+import android.os.Handler;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
 public class lia
+  implements Observer
 {
-  private int jdField_a_of_type_Int;
-  private lhx jdField_a_of_type_Lhx;
-  private boolean jdField_a_of_type_Boolean;
+  private WeakReference<MagicFaceDataEntity> a;
   
-  public lia(Context paramContext)
+  public lia(MagicFaceDataEntity paramMagicFaceDataEntity)
   {
-    this.jdField_a_of_type_Lhx = new lhx(paramContext);
-    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledOverflingDistance();
+    this.a = new WeakReference(paramMagicFaceDataEntity);
   }
   
-  public int a()
+  public void update(Observable paramObservable, Object paramObject)
   {
-    return this.jdField_a_of_type_Lhx.a();
-  }
-  
-  public int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int j = this.jdField_a_of_type_Lhx.a();
-    if (this.jdField_a_of_type_Lhx.a()) {}
-    for (int i = j;; i = this.jdField_a_of_type_Lhx.b())
+    int j;
+    if (this.a.get() != null)
     {
-      paramInt2 = lie.a(i + paramInt1, paramInt2, paramInt3);
-      if (paramInt2 != j) {
-        this.jdField_a_of_type_Lhx.a(j, 0, paramInt2 - j, 0, 0);
+      paramObservable = ((MagicFaceDataEntity)this.a.get()).a;
+      if (paramObject != null)
+      {
+        Object[] arrayOfObject = (Object[])paramObject;
+        if ((arrayOfObject != null) && (arrayOfObject.length > 0))
+        {
+          j = ((Integer)arrayOfObject[0]).intValue();
+          if ((j == 130) || (j == 131) || (j == 132)) {
+            if ((j != 131) && (j != 132)) {
+              break label152;
+            }
+          }
+        }
       }
-      return i + paramInt1 - paramInt2;
     }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Lhx.a(true);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = Math.max(paramInt, this.jdField_a_of_type_Int);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int j = a();
-    lhx locallhx = this.jdField_a_of_type_Lhx;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = 0)
+    label152:
+    for (int i = 500;; i = 0)
     {
-      locallhx.a(j, 0, paramInt1, 0, paramInt2, paramInt3, 0, 0, i, 0);
+      lcl.c("MagicFaceDataEntity", "MagicFaceDataEntity update :" + j + "|" + i);
+      paramObservable.sendMessageDelayed(paramObservable.obtainMessage(1, paramObject), i);
       return;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Lhx.a();
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return this.jdField_a_of_type_Lhx.b();
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Lhx.a(paramInt, 0, 0, 0, 0);
-    this.jdField_a_of_type_Lhx.a();
   }
 }
 

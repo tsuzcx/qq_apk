@@ -1,12 +1,15 @@
 package com.tencent.mobileqq.triton.engine;
 
+import android.text.TextUtils;
 import com.tencent.mobileqq.triton.sdk.ITSoLoader;
 import java.io.File;
+import java.util.HashMap;
 
 public class TTSoLoader
 {
   private static final String TAG = "SoLoader";
-  private static final String[] sLibsNames = { "png-armeabi-v7a", "freetypejni", "v8jni", "c++_shared", "triton" };
+  private static final String[] sLibsNames = { "c++_shared", "png-armeabi-v7a", "freetypejni", "v8jni", "triton" };
+  private static final String[] sOptionalLibsNames = { "webAudio" };
   private static ITSoLoader sSoloaderProxy;
   
   public static ITSoLoader getSoLoader()
@@ -15,6 +18,49 @@ public class TTSoLoader
       sSoloaderProxy = new TTSoLoader.DefSoLoader(null);
     }
     return sSoloaderProxy;
+  }
+  
+  public static boolean loadOptionalSo(String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        String str = getSoLoader().getSoPath("lib" + paramString + ".so");
+        if ((!TextUtils.isEmpty(str)) && (new File(str).exists()))
+        {
+          i = 0;
+          if (i != 0)
+          {
+            System.loadLibrary(paramString);
+            return true;
+          }
+          System.load(str);
+          return true;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        TTLog.d("SoLoader", "可选so加载失败了不中断主流程 loadOptionalSo error ", paramString);
+        return false;
+      }
+      int i = 1;
+    }
+  }
+  
+  public static HashMap<String, Boolean> loadOptionalSoList()
+  {
+    HashMap localHashMap = new HashMap();
+    String[] arrayOfString = sOptionalLibsNames;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = arrayOfString[i];
+      localHashMap.put(str, Boolean.valueOf(loadOptionalSo(str)));
+      i += 1;
+    }
+    return localHashMap;
   }
   
   public static boolean loadSo()

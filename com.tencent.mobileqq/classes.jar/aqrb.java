@@ -1,12 +1,15 @@
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import com.tencent.mobileqq.javahooksdk.ReplaceMethodCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class aqrb
-  implements ReplaceMethodCallback
+  implements View.OnClickListener
 {
-  public void replaceMethod(MethodHookParam paramMethodHookParam)
+  aqrb(aqqw paramaqqw) {}
+  
+  public void onClick(View paramView)
   {
-    aqqz.a(true);
+    aqqw.d(this.a);
+    this.a.a(true);
   }
 }
 

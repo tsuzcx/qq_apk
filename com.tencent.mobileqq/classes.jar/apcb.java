@@ -1,193 +1,163 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.1;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.2;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.3;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.4;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.5;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.6;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.7;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.8;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-public class apcb
+class apcb
+  extends apbi
 {
-  private static int jdField_a_of_type_Int = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131167766) - (int)bacc.a(BaseApplicationImpl.getContext(), 5.0F);
-  private static Map<Integer, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private static Map<String, Long> b = new HashMap();
-  
-  public static void a(int paramInt)
+  public apcb(apbe paramapbe)
   {
-    try
+    super(paramapbe);
+  }
+  
+  protected String a()
+  {
+    return "StateRequest";
+  }
+  
+  protected void a(int paramInt)
+  {
+    int i = 1;
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
     {
-      if (BaseApplicationImpl.sApplication.getRuntime().isBackground_Pause) {
-        return;
-      }
-      if (a(paramInt))
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. onFileRequestBeHandledByPC entity is null");
+      return;
+    }
+    if (5 != paramInt)
+    {
+      this.jdField_a_of_type_Apbe.d();
+      switch (paramInt)
       {
-        Looper localLooper = Looper.getMainLooper();
-        if (Thread.currentThread() != localLooper.getThread())
-        {
-          new Handler(localLooper).post(new FMToastUtil.1(paramInt));
-          return;
-        }
-        bbmy.a(BaseApplicationImpl.getContext(), 0, paramInt, 0).b(jdField_a_of_type_Int);
-      }
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public static void a(int paramInt1, String paramString, int paramInt2)
-  {
-    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackground_Pause) {}
-    while (!a(paramString)) {
-      return;
-    }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new FMToastUtil.8(paramInt1, paramString, paramInt2));
-      return;
-    }
-    bbmy.a(BaseApplicationImpl.getContext(), paramInt1, paramString, paramInt2).b(jdField_a_of_type_Int);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (BaseApplicationImpl.sApplication.getRuntime().isBackground_Pause) {}
-    while (!a(paramString)) {
-      return;
-    }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new FMToastUtil.2(paramString));
-      return;
-    }
-    bbmy.a(BaseApplicationImpl.getContext(), 0, paramString, 0).b(jdField_a_of_type_Int);
-  }
-  
-  private static boolean a(int paramInt)
-  {
-    if (jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt)))
-    {
-      long l1 = ((Long)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).longValue();
-      long l2 = SystemClock.uptimeMillis();
-      if (l1 + 2000L < l2)
-      {
-        jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Long.valueOf(l2));
-        return true;
+      default: 
+        label63:
+        QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]  is not foud . handledbypc type error:" + paramInt);
+        paramInt = 0;
       }
     }
-    else
+    while (paramInt != 0)
     {
-      jdField_a_of_type_JavaUtilMap.clear();
-      jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Long.valueOf(SystemClock.uptimeMillis()));
-      return true;
+      this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 0, null);
+      return;
+      this.jdField_a_of_type_Apbe.b();
+      break label63;
+      apbe.a(this.jdField_a_of_type_Apbe, 11, 5, true);
+      a("StateAcceptByPC");
+      this.jdField_a_of_type_Apbi = new apbf(this.jdField_a_of_type_Apbe);
+      paramInt = i;
+      continue;
+      apbe.a(this.jdField_a_of_type_Apbe, 11, 6, true);
+      a("StateRefuseByPC");
+      this.jdField_a_of_type_Apbi = new apby(this.jdField_a_of_type_Apbe);
+      paramInt = i;
+      continue;
+      apbe.a(this.jdField_a_of_type_Apbe, 11, 8, true);
+      a("StateSenderCancelSend");
+      this.jdField_a_of_type_Apbi = new apcf(this.jdField_a_of_type_Apbe);
+      paramInt = i;
+      continue;
+      apbe.a(this.jdField_a_of_type_Apbe, 11, 7, true);
+      a("StateSaveToWeiYunByPC");
+      this.jdField_a_of_type_Apbi = new apcc(this.jdField_a_of_type_Apbe);
+      paramInt = i;
+      continue;
+      apbe.a(this.jdField_a_of_type_Apbe);
+      apbe.a(this.jdField_a_of_type_Apbe, 11, 11);
+      apbe.a(this.jdField_a_of_type_Apbe, 11, 14, false);
+      a("StateUploadingWhenChangeToOff");
+      this.jdField_a_of_type_Apbi = new apci(this.jdField_a_of_type_Apbe);
+      paramInt = 0;
     }
-    return false;
   }
   
-  private static boolean a(String paramString)
+  protected void a(int paramInt1, int paramInt2)
   {
-    if (b.containsKey(paramString))
-    {
-      long l1 = ((Long)b.get(paramString)).longValue();
-      long l2 = SystemClock.uptimeMillis();
-      if (l1 + 2000L < l2)
-      {
-        b.put(paramString, Long.valueOf(l2));
-        return true;
-      }
-    }
-    else
-    {
-      b.clear();
-      b.put(paramString, Long.valueOf(SystemClock.uptimeMillis()));
-      return true;
-    }
-    return false;
+    apbe.a(this.jdField_a_of_type_Apbe);
+    b(paramInt1, paramInt2);
+    apbe.a(this.jdField_a_of_type_Apbe, 11, 11);
+    apbe.a(this.jdField_a_of_type_Apbe, 11, 14, false);
+    a("StateUploadingWhenChangeToOff");
+    this.jdField_a_of_type_Apbi = new apci(this.jdField_a_of_type_Apbe);
   }
   
-  public static void b(int paramInt)
+  protected void a(int paramInt, String paramString)
   {
-    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackground_Pause) {}
-    while (!a(paramInt)) {
-      return;
-    }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new FMToastUtil.3(paramInt));
-      return;
-    }
-    bbmy.a(BaseApplicationImpl.getContext(), 2, paramInt, 0).b(jdField_a_of_type_Int);
+    super.a(paramInt, paramString);
   }
   
-  public static void b(String paramString)
+  protected boolean a()
   {
-    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackground_Pause) {
-      return;
-    }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
     {
-      new Handler(localLooper).post(new FMToastUtil.4(paramString));
-      return;
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
     }
-    bbmy.a(BaseApplicationImpl.getContext(), 2, paramString, 0).b(jdField_a_of_type_Int);
+    apbe.b(this.jdField_a_of_type_Apbe, 9, 10);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "start send recv cmd.... [" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Apcp.a + "-" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Apcp.b + "]");
+    boolean bool = this.jdField_a_of_type_Apbe.a(localFileManagerEntity.peerUin, localFileManagerEntity.nOLfileSessionId);
+    if (bool)
+    {
+      apbe.c(this.jdField_a_of_type_Apbe, 9, 15);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateWaitResultWhenRecv)");
+      this.jdField_a_of_type_Apbi = new apco(this.jdField_a_of_type_Apbe);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 10, null, 6, null);
+      return bool;
+      apbe.c(this.jdField_a_of_type_Apbe, 9, 10);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateChangeToOffFailedWhenRecv)");
+      this.jdField_a_of_type_Apbi = new apbn(this.jdField_a_of_type_Apbe);
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]  failure to send recv cmd!!! ");
+    }
   }
   
-  public static void c(int paramInt)
+  protected boolean a(int paramInt, String paramString, long paramLong)
   {
-    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackground_Pause) {}
-    while (!a(paramInt)) {
-      return;
-    }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
     {
-      new Handler(localLooper).post(new FMToastUtil.7(paramInt));
-      return;
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
     }
-    bbmy.a(BaseApplicationImpl.getContext(), 0, paramInt, 0).b(jdField_a_of_type_Int);
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((apue.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
+    }
+    localFileManagerEntity.setCloudType(1);
+    apbe.a(this.jdField_a_of_type_Apbe, 1, -1, true);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateGotoOffFileProcess)");
+    this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Apbi = new apbu(this.jdField_a_of_type_Apbe);
+    return true;
   }
   
-  public static void c(String paramString)
+  protected void b()
   {
-    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackground_Pause) {}
-    while (!a(paramString)) {
-      return;
-    }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
     {
-      new Handler(localLooper).post(new FMToastUtil.5(paramString));
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
     }
-    bbmy.a(BaseApplicationImpl.getContext(), 2, paramString, 1).b(jdField_a_of_type_Int);
+    apbe.a(this.jdField_a_of_type_Apbe, 11, 9, true);
+    this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 5, null);
+    a("StateCancelUploadWhenRecv");
+    this.jdField_a_of_type_Apbi = new apbl(this.jdField_a_of_type_Apbe);
   }
   
-  public static void d(String paramString)
+  protected void g()
   {
-    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackground_Pause) {
-      return;
-    }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      new Handler(localLooper).post(new FMToastUtil.6(paramString));
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. onCheckIsTooLongSession entity is null");
       return;
     }
-    bbmy.a(BaseApplicationImpl.getContext(), 0, paramString, 0).b(jdField_a_of_type_Int);
+    apbe.a(this.jdField_a_of_type_Apbe, 9, 12, true);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateExcepInvalidWhenRecv)");
+    this.jdField_a_of_type_Apbi = new apbt(this.jdField_a_of_type_Apbe);
   }
 }
 

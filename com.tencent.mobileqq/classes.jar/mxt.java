@@ -1,82 +1,24 @@
-import com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-public class mxt
-  implements INetInfoHandler
+class mxt
+  extends akav
 {
-  private mxt(VideoCoverAdapter paramVideoCoverAdapter) {}
+  mxt(mxq parammxq) {}
   
-  public void onNetMobile2None()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from mobile to none");
-    }
-    VideoCoverAdapter.a(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from mobile to wifi");
-    }
-    VideoCoverAdapter.a(this.a, false);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from none to mobile");
-    }
-    if (!VideoCoverAdapter.a(this.a))
+    if (105 == paramInt)
     {
-      paramString = this.a.a();
-      if ((paramString != null) && (paramString.isPlaying()))
-      {
-        this.a.c();
-        this.a.d();
+      if (QLog.isColorLevel()) {
+        QLog.i("storyRedDotDebug", 2, "mGetRedPointPushObserver");
       }
-      VideoCoverAdapter.a(this.a, true);
+      this.a.notifyUI(105, true, paramObject);
     }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from none to wifi");
-    }
-    VideoCoverAdapter.a(this.a, false);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from wifi to mobile");
-    }
-    if (!VideoCoverAdapter.a(this.a))
-    {
-      paramString = this.a.a();
-      if ((paramString != null) && (paramString.isPlaying()))
-      {
-        this.a.c();
-        this.a.d();
-      }
-      VideoCoverAdapter.a(this.a, true);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from wifi to none");
-    }
-    VideoCoverAdapter.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     mxt
  * JD-Core Version:    0.7.0.1
  */

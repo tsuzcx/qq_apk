@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.photo;
 
 import android.content.Intent;
-import awqx;
+import axqw;
 import java.util.ArrayList;
 
 class PhotoPreviewActivity$15
@@ -19,8 +19,8 @@ class PhotoPreviewActivity$15
     }
     for (;;)
     {
-      awqx.b(null, "CliOper", "", "", "0X8009AB1", "0X8009AB1", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
-      aweg.b = System.currentTimeMillis();
+      axqw.b(null, "CliOper", "", "", "0X8009AB1", "0X8009AB1", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
+      axdo.b = System.currentTimeMillis();
       return;
       PhotoUtils.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.e, this.this$0.h);
     }

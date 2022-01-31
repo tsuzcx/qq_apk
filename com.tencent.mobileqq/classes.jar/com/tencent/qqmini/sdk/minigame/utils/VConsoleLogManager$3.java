@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.minigame.utils;
 
-import bdrg;
+import bewy;
 
 public class VConsoleLogManager$3
   implements Runnable
 {
-  public VConsoleLogManager$3(bdrg parambdrg, String paramString1, String paramString2) {}
+  public VConsoleLogManager$3(bewy parambewy, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bdrg.a(this.this$0, "javascript:console." + this.a + "(\"" + this.b + "\")");
+    bewy.a(this.this$0, "javascript:console." + this.a + "(\"" + this.b + "\")");
   }
 }
 

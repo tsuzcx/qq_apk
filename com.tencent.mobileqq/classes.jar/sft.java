@@ -1,35 +1,21 @@
-public abstract class sft<T>
-  implements sfu<T>
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class sft
+  implements View.OnClickListener
 {
-  private sfv<T> a;
+  sft(sfn paramsfn, int paramInt1, int paramInt2, String paramString) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    Object localObject = this.a.a();
-    if (localObject != null)
-    {
-      a(localObject);
-      urk.a("Q.qqstory.home.data.Producer", "start one consumer:%s", localObject);
-      return;
-    }
-    urk.d("Q.qqstory.home.data.Producer", "no data return");
-  }
-  
-  public abstract void a(T paramT);
-  
-  public void a(sfv<T> paramsfv)
-  {
-    this.a = paramsfv;
-  }
-  
-  public void b()
-  {
-    a();
+    this.jdField_a_of_type_Sfn.a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Sfn.o = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Sfn.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sft
  * JD-Core Version:    0.7.0.1
  */

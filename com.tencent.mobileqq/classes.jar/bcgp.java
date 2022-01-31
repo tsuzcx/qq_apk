@@ -1,22 +1,49 @@
-import com.tencent.open.base.img.ImageCache;
-import com.tencent.open.downloadnew.DownloadInfo;
+import java.security.MessageDigest;
 
-class bcgp
-  implements bces
+public class bcgp
 {
-  bcgp(bcgo parambcgo, DownloadInfo paramDownloadInfo) {}
+  private static char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
   
-  public void a(String paramString1, String paramString2, String paramString3) {}
-  
-  public void b(String paramString1, String paramString2, String paramString3)
+  public static String a(String paramString)
   {
-    bcds.d("DownloadManager_", ">>download apk icon err,should load another size icon");
-    ImageCache.a("app", bcdq.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c, 75), null);
+    try
+    {
+      paramString = a(paramString.getBytes(), "SHA1");
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
+  }
+  
+  private static String a(byte[] paramArrayOfByte)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 2);
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      localStringBuilder.append(a[((paramArrayOfByte[i] & 0xF0) >>> 4)]);
+      localStringBuilder.append(a[(paramArrayOfByte[i] & 0xF)]);
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  private static String a(byte[] paramArrayOfByte, String paramString)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return "";
+    }
+    paramString = MessageDigest.getInstance(paramString);
+    paramString.update(paramArrayOfByte, 0, paramArrayOfByte.length);
+    return a(paramString.digest());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcgp
  * JD-Core Version:    0.7.0.1
  */

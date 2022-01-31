@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import abtm;
-import azwp;
+import acdy;
+import baxt;
 
 public class SubAccountBindActivity$5$1
   implements Runnable
 {
-  public SubAccountBindActivity$5$1(abtm paramabtm, String paramString, int paramInt) {}
+  public SubAccountBindActivity$5$1(acdy paramacdy, String paramString, int paramInt) {}
   
   public void run()
   {
-    azwp localazwp = azwp.a(this.jdField_a_of_type_Abtm.a.app, 1, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Abtm.a.runOnUiThread(new SubAccountBindActivity.5.1.1(this, localazwp));
+    baxt localbaxt = baxt.a(this.jdField_a_of_type_Acdy.a.app, 1, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Acdy.a.runOnUiThread(new SubAccountBindActivity.5.1.1(this, localbaxt));
   }
 }
 

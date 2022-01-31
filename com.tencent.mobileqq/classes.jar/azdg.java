@@ -1,8 +1,23 @@
-public abstract interface azdg
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
+
+public class azdg
+  implements Animation.AnimationListener
 {
-  public abstract void a(String paramString, boolean paramBoolean);
+  public azdg(AudioRecordFragment paramAudioRecordFragment) {}
   
-  public abstract boolean a();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+    this.a.jdField_b_of_type_AndroidViewView.setBackgroundColor(2130706432);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

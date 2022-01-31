@@ -1,21 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
 
-class oub
-  implements ViewBase.OnClickListener
+public class oub
+  extends osp
 {
-  oub(otz paramotz, opw paramopw, Container paramContainer) {}
+  public oub(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(TopBannerInfo paramTopBannerInfo)
   {
-    paramViewBase = this.jdField_a_of_type_Opw.a();
-    String str = paramViewBase.mSocialFeedInfo.a.f;
-    obz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
-    qoe.a(paramViewBase, (int)paramViewBase.mChannelID);
-    rvf.a(paramViewBase);
+    if (paramTopBannerInfo.mChannelId == 2000000000) {
+      this.a.a(paramTopBannerInfo);
+    }
   }
 }
 

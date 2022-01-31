@@ -1,126 +1,173 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
-import android.widget.ImageView;
-import com.tencent.av.widget.shimmer.ShimmerTextView;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.RemoteException;
+import com.tencent.av.service.AVPbInfo;
+import com.tencent.av.service.AVServiceForQQ;
+import com.tencent.qphone.base.util.QLog;
 
 public class lxv
-  implements View.OnTouchListener
 {
-  final int jdField_a_of_type_Int;
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  ShimmerTextView jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = null;
-  public lxu a;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = -1;
-  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  ImageView jdField_b_of_type_AndroidWidgetImageView = null;
-  int jdField_c_of_type_Int = 0;
-  Rect jdField_c_of_type_AndroidGraphicsRect = new Rect();
-  ImageView jdField_c_of_type_AndroidWidgetImageView = null;
+  Context jdField_a_of_type_AndroidContentContext = null;
+  lwq jdField_a_of_type_Lwq = null;
+  lxw jdField_a_of_type_Lxw = null;
+  lxx jdField_a_of_type_Lxx = new lxx(this);
   
-  public lxv(Context paramContext, ImageView paramImageView1, ImageView paramImageView2, ShimmerTextView paramShimmerTextView, ImageView paramImageView3)
+  public lxv(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView1;
-    this.jdField_b_of_type_AndroidWidgetImageView = paramImageView2;
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = paramShimmerTextView;
-    this.jdField_c_of_type_AndroidWidgetImageView = paramImageView3;
-    this.jdField_c_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131166536);
-    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  private void a(int paramInt)
+  public int a(long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect.left = (this.jdField_b_of_type_AndroidGraphicsRect.left + paramInt - this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsRect.right = (this.jdField_b_of_type_AndroidGraphicsRect.right + paramInt - this.jdField_b_of_type_Int);
-    if (this.jdField_a_of_type_AndroidGraphicsRect.right >= this.jdField_c_of_type_Int)
-    {
-      this.jdField_a_of_type_AndroidGraphicsRect.right = this.jdField_c_of_type_Int;
-      this.jdField_a_of_type_AndroidGraphicsRect.left = (this.jdField_a_of_type_AndroidGraphicsRect.right - this.jdField_a_of_type_AndroidWidgetImageView.getWidth());
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsRect.left <= 0)
-    {
-      this.jdField_a_of_type_AndroidGraphicsRect.left = 0;
-      this.jdField_a_of_type_AndroidGraphicsRect.right = (this.jdField_a_of_type_AndroidGraphicsRect.left + this.jdField_a_of_type_AndroidWidgetImageView.getWidth());
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.layout(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_b_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_b_of_type_AndroidGraphicsRect.bottom);
-    this.jdField_c_of_type_AndroidWidgetImageView.layout(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_c_of_type_AndroidGraphicsRect.right, this.jdField_c_of_type_AndroidGraphicsRect.bottom);
-  }
-  
-  void a()
-  {
-    this.jdField_b_of_type_AndroidGraphicsRect.top = this.jdField_a_of_type_AndroidWidgetImageView.getTop();
-    this.jdField_b_of_type_AndroidGraphicsRect.bottom = this.jdField_a_of_type_AndroidWidgetImageView.getBottom();
-    this.jdField_b_of_type_AndroidGraphicsRect.left = this.jdField_a_of_type_AndroidWidgetImageView.getLeft();
-    this.jdField_b_of_type_AndroidGraphicsRect.right = this.jdField_a_of_type_AndroidWidgetImageView.getRight();
-    this.jdField_a_of_type_AndroidGraphicsRect.left = this.jdField_a_of_type_AndroidWidgetImageView.getLeft();
-    this.jdField_a_of_type_AndroidGraphicsRect.right = this.jdField_a_of_type_AndroidWidgetImageView.getRight();
-    this.jdField_c_of_type_AndroidGraphicsRect.top = this.jdField_c_of_type_AndroidWidgetImageView.getTop();
-    this.jdField_c_of_type_AndroidGraphicsRect.bottom = this.jdField_c_of_type_AndroidWidgetImageView.getBottom();
-    this.jdField_c_of_type_AndroidGraphicsRect.left = this.jdField_c_of_type_AndroidWidgetImageView.getLeft();
-    this.jdField_c_of_type_AndroidGraphicsRect.right = this.jdField_c_of_type_AndroidWidgetImageView.getRight();
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(lxu paramlxu)
-  {
-    this.jdField_a_of_type_Lxu = paramlxu;
-  }
-  
-  public void b()
-  {
-    a(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = (int)paramMotionEvent.getRawX();
-    switch (paramMotionEvent.getAction())
-    {
+    if (this.jdField_a_of_type_Lwq == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "mQavProxy == null");
+      }
     }
     do
     {
-      do
+      return 0;
+      try
       {
-        do
-        {
-          do
-          {
-            return true;
-            this.jdField_b_of_type_Int = i;
-            a();
-            return true;
-            if (this.jdField_a_of_type_Boolean)
-            {
-              a(i);
-              return true;
-            }
-          } while (Math.abs(i - this.jdField_b_of_type_Int) <= this.jdField_a_of_type_Int);
-          this.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(4);
-          this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-          return true;
-          if (this.jdField_a_of_type_AndroidGraphicsRect.right != this.jdField_c_of_type_Int) {
-            break;
-          }
-        } while (this.jdField_a_of_type_Lxu == null);
-        this.jdField_a_of_type_Lxu.a(true);
-        return true;
-      } while (this.jdField_a_of_type_AndroidGraphicsRect.right >= this.jdField_c_of_type_Int);
-      this.jdField_a_of_type_AndroidWidgetImageView.layout(this.jdField_b_of_type_AndroidGraphicsRect.left, this.jdField_b_of_type_AndroidGraphicsRect.top, this.jdField_b_of_type_AndroidGraphicsRect.right, this.jdField_b_of_type_AndroidGraphicsRect.bottom);
-      this.jdField_c_of_type_AndroidWidgetImageView.layout(this.jdField_c_of_type_AndroidGraphicsRect.left, this.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_c_of_type_AndroidGraphicsRect.right, this.jdField_c_of_type_AndroidGraphicsRect.bottom);
-      this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    } while (this.jdField_a_of_type_Lxu == null);
-    this.jdField_a_of_type_Lxu.a(false);
-    return true;
+        paramInt = this.jdField_a_of_type_Lwq.a(paramLong, paramInt);
+        return paramInt;
+      }
+      catch (RemoteException localRemoteException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QavWrapper", 2, "RemoteException", localRemoteException);
+    return 0;
+  }
+  
+  public AVPbInfo a(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Lwq == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "mQavProxy == null");
+      }
+    }
+    do
+    {
+      return null;
+      try
+      {
+        paramArrayOfByte = this.jdField_a_of_type_Lwq.a(paramArrayOfByte);
+        return paramArrayOfByte;
+      }
+      catch (RemoteException paramArrayOfByte) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QavWrapper", 2, "processQCallPush RemoteException", paramArrayOfByte);
+    return null;
+  }
+  
+  public void a()
+  {
+    b(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Lxw = null;
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (this.jdField_a_of_type_Lwq == null)
+    {
+      Intent localIntent = new Intent(paramContext, AVServiceForQQ.class);
+      boolean bool = paramContext.getApplicationContext().bindService(localIntent, this.jdField_a_of_type_Lxx, 1);
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "bindService result == " + bool);
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Lwq == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "mQavProxy == null");
+      }
+    }
+    do
+    {
+      return;
+      try
+      {
+        this.jdField_a_of_type_Lwq.a(paramString);
+        return;
+      }
+      catch (RemoteException paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QavWrapper", 2, "onGetQCallNickName RemoteException", paramString);
+  }
+  
+  public void a(String paramString, Bitmap paramBitmap)
+  {
+    if (this.jdField_a_of_type_Lwq == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "mQavProxy == null");
+      }
+    }
+    do
+    {
+      return;
+      try
+      {
+        this.jdField_a_of_type_Lwq.a(paramString, paramBitmap);
+        return;
+      }
+      catch (RemoteException paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QavWrapper", 2, "pushStrangeFace RemoteException", paramString);
+  }
+  
+  public void a(lxw paramlxw)
+  {
+    this.jdField_a_of_type_Lxw = paramlxw;
+    a(this.jdField_a_of_type_AndroidContentContext);
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Lwq == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "mQavProxy == null");
+      }
+    }
+    do
+    {
+      return;
+      try
+      {
+        this.jdField_a_of_type_Lwq.a(paramArrayOfByte);
+        return;
+      }
+      catch (RemoteException paramArrayOfByte) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QavWrapper", 2, "RemoteException", paramArrayOfByte);
+  }
+  
+  public void b(Context paramContext)
+  {
+    paramContext.getApplicationContext().unbindService(this.jdField_a_of_type_Lxx);
+    this.jdField_a_of_type_Lwq = null;
+  }
+  
+  public void b(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Lwq == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "mQavProxy == null");
+      }
+    }
+    do
+    {
+      return;
+      try
+      {
+        this.jdField_a_of_type_Lwq.c(paramArrayOfByte);
+        return;
+      }
+      catch (RemoteException paramArrayOfByte) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QavWrapper", 2, "RemoteException", paramArrayOfByte);
   }
 }
 

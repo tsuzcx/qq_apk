@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import rqc;
-import rqh;
+import scu;
+import scz;
 
 public class SubscriptRecommendController$6$1
   implements Runnable
 {
-  public SubscriptRecommendController$6$1(rqh paramrqh) {}
+  public SubscriptRecommendController$6$1(scz paramscz) {}
   
   public void run()
   {
-    rqc.a(this.a.a.a, false);
+    scu.a(this.a.a.a, false);
   }
 }
 

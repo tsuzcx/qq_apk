@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import ndn;
+import noo;
 
 class ReadInJoyCommentComponentFragment$2
   implements Runnable
@@ -13,7 +13,7 @@ class ReadInJoyCommentComponentFragment$2
     if (ReadInJoyCommentComponentFragment.a(this.this$0) == 1) {
       str = "0X80094C4";
     }
-    ndn.a(null, "", "", str, 0, 0, String.valueOf(this.this$0.d), "", "", ReadInJoyCommentComponentFragment.a(this.this$0, true), false);
+    noo.a(null, "", "", str, 0, 0, String.valueOf(this.this$0.d), "", "", ReadInJoyCommentComponentFragment.a(this.this$0, true), false);
   }
 }
 

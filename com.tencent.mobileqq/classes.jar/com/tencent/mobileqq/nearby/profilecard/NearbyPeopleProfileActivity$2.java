@@ -4,13 +4,13 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import ascz;
-import atmp;
-import atmq;
-import azyf;
-import badq;
-import baip;
-import befb;
+import aszd;
+import aukn;
+import auko;
+import bazj;
+import bbev;
+import bbjw;
+import bfmv;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
@@ -20,7 +20,7 @@ import com.tencent.qphone.base.util.QLog;
 class NearbyPeopleProfileActivity$2
   implements Runnable
 {
-  NearbyPeopleProfileActivity$2(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, befb parambefb) {}
+  NearbyPeopleProfileActivity$2(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, bfmv parambfmv) {}
   
   public void run()
   {
@@ -45,19 +45,19 @@ class NearbyPeopleProfileActivity$2
       if (NearbyPeopleProfileActivity.a(this.this$0) == 0)
       {
         if (this.this$0.jdField_a_of_type_Long > 0L) {
-          localObject2 = (NearbyPeopleCard)((atmp)localObject3).a(NearbyPeopleCard.class, "tinyId=?", new String[] { String.valueOf(this.this$0.jdField_a_of_type_Long) });
+          localObject2 = (NearbyPeopleCard)((aukn)localObject3).a(NearbyPeopleCard.class, "tinyId=?", new String[] { String.valueOf(this.this$0.jdField_a_of_type_Long) });
         }
         localObject1 = localObject2;
         if (localObject2 == null)
         {
           localObject1 = localObject2;
-          if (!baip.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
+          if (!bbjw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
           {
-            localObject1 = (NearbyPeopleCard)((atmp)localObject3).a(NearbyPeopleCard.class, "uin=?", new String[] { this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString });
+            localObject1 = (NearbyPeopleCard)((aukn)localObject3).a(NearbyPeopleCard.class, "uin=?", new String[] { this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString });
             break label715;
           }
         }
-        ((atmp)localObject3).a();
+        ((aukn)localObject3).a();
         if (localObject1 == null) {
           break label1073;
         }
@@ -99,7 +99,7 @@ class NearbyPeopleProfileActivity$2
           ((NearbyPeopleCard)localObject1).aioDistanceAndTime = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_b_of_type_JavaLangString;
         }
         this.this$0.jdField_d_of_type_JavaLangString = ((NearbyPeopleCard)localObject1).uin;
-        localObject3 = (ascz)this.this$0.app.getManager(106);
+        localObject3 = (aszd)this.this$0.app.getManager(106);
         String str = this.this$0.app.getCurrentAccountUin();
         boolean bool3 = this.this$0.n;
         if (this.this$0.j != -1) {
@@ -107,7 +107,7 @@ class NearbyPeopleProfileActivity$2
         }
         bool2 = true;
         label552:
-        bool2 = ((ascz)localObject3).a((NearbyPeopleCard)localObject1, str, bool3, bool2, this.this$0.jdField_d_of_type_Int, bool1);
+        bool2 = ((aszd)localObject3).a((NearbyPeopleCard)localObject1, str, bool3, bool2, this.this$0.jdField_d_of_type_Int, bool1);
         localObject3 = this.this$0.getIntent();
         bool1 = bool2;
         if (localObject3 != null)
@@ -128,7 +128,7 @@ class NearbyPeopleProfileActivity$2
     }
     for (;;)
     {
-      if ((!badq.d(BaseApplication.getContext())) && (bool1))
+      if ((!bbev.d(BaseApplication.getContext())) && (bool1))
       {
         this.this$0.runOnUiThread(new NearbyPeopleProfileActivity.2.1(this));
         label715:
@@ -136,7 +136,7 @@ class NearbyPeopleProfileActivity$2
         if (NearbyPeopleProfileActivity.a(this.this$0) <= 0L) {
           break label183;
         }
-        localObject1 = (NearbyPeopleCard)((atmp)localObject3).a(NearbyPeopleCard.class, "nowId=?", new String[] { String.valueOf(NearbyPeopleProfileActivity.a(this.this$0)) });
+        localObject1 = (NearbyPeopleCard)((aukn)localObject3).a(NearbyPeopleCard.class, "nowId=?", new String[] { String.valueOf(NearbyPeopleProfileActivity.a(this.this$0)) });
         break label183;
         label763:
         bool2 = false;
@@ -160,13 +160,13 @@ class NearbyPeopleProfileActivity$2
           }
           if (this.this$0.jdField_a_of_type_Long > 0L)
           {
-            azyf.a(this.this$0.jdField_a_of_type_Asft, this.this$0.app, this.this$0.jdField_a_of_type_Long, null, this.this$0.jdField_d_of_type_Int, (byte[])localObject1, l, false, i, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
+            bazj.a(this.this$0.jdField_a_of_type_Atbx, this.this$0.app, this.this$0.jdField_a_of_type_Long, null, this.this$0.jdField_d_of_type_Int, (byte[])localObject1, l, false, i, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
             return;
           }
-          azyf.a(this.this$0.jdField_a_of_type_Asft, this.this$0.app, 0L, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.this$0.jdField_d_of_type_Int, (byte[])localObject1, l, false, i, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
+          bazj.a(this.this$0.jdField_a_of_type_Atbx, this.this$0.app, 0L, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.this$0.jdField_d_of_type_Int, (byte[])localObject1, l, false, i, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
           return;
         }
-        azyf.a(this.this$0.jdField_a_of_type_Asft, this.this$0.app, 0L, this.this$0.app.getCurrentAccountUin(), this.this$0.jdField_d_of_type_Int, (byte[])localObject1, l, false, i, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
+        bazj.a(this.this$0.jdField_a_of_type_Atbx, this.this$0.app, 0L, this.this$0.app.getCurrentAccountUin(), this.this$0.jdField_d_of_type_Int, (byte[])localObject1, l, false, i, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
         return;
       }
       label1061:

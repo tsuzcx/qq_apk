@@ -1,25 +1,22 @@
-import android.graphics.Rect;
-import android.hardware.Camera.Size;
-import java.io.File;
+import android.support.v4.app.Fragment;
 
-public class awin
+public abstract interface awin
 {
-  public int a;
-  public ahns a;
-  public Rect a;
-  public Camera.Size a;
-  public File a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
+  public abstract int a();
   
-  private awin(awij paramawij) {}
+  public abstract Fragment a();
+  
+  public abstract String a();
+  
+  public abstract boolean a();
+  
+  public abstract long[] a();
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,115 +1,70 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.ViolaBizLibData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amzs
-  extends amza
+  extends amyi<amzr>
 {
-  public static final String[] a = { "libviola.so" };
+  public static final amzr a = new amzr();
   
-  public amzs(QQAppInterface paramQQAppInterface)
+  public static amzr c()
   {
-    super("android.qq.readinjoy.viola_biz_810", paramQQAppInterface);
-  }
-  
-  public static void a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (amyp)((QQAppInterface)localObject).getManager(77);
-      if (localObject != null)
-      {
-        localObject = (amzs)((amyp)localObject).a("android.qq.readinjoy.viola_biz_810");
-        if (localObject != null)
-        {
-          ((amzs)localObject).a(true);
-          QLog.i("viola.ViolaBizLibHandler", 1, "restartDownloadLib");
-        }
-      }
+    amzr localamzr2 = (amzr)ampm.a().a(423);
+    amzr localamzr1 = localamzr2;
+    if (localamzr2 == null) {
+      localamzr1 = new amzr();
     }
-  }
-  
-  public static boolean i()
-  {
-    String str = oho.a();
-    int i = 0;
-    while (i < a.length)
-    {
-      File localFile = new File(str, a[i]);
-      if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile())) {
-        return false;
-      }
-      i += 1;
-    }
-    return true;
+    return localamzr1;
   }
   
   public int a()
   {
-    return 10079;
+    return 423;
   }
   
-  public Class<? extends XmlData> a()
+  @NonNull
+  public amzr a()
   {
-    return ViolaBizLibData.class;
+    return a;
   }
   
-  public String a()
+  @NonNull
+  public amzr a(ampi[] paramArrayOfampi)
   {
-    return "viola.ViolaBizLibHandler";
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess]:" + paramString);
-    XmlData localXmlData = a();
-    if (localXmlData != null) {
-      QLog.i("viola.ViolaBizLibHandler", 1, "version:" + localXmlData.Version);
-    }
-    if (new File(paramString).exists())
+    boolean bool = true;
+    localamzr = new amzr();
+    paramArrayOfampi = paramArrayOfampi[0].a;
+    try
     {
-      if (oho.a(paramString)) {
-        break label124;
-      }
-      if (localXmlData != null)
+      if (new JSONObject(paramArrayOfampi).optInt("show_red_name_card", 0) == 1) {}
+      for (;;)
       {
-        localXmlData.loadState = 0;
-        localXmlData.Version = 0;
-        amyo.a(localXmlData, new String[] { "loadState", "Version" });
+        localamzr.a = bool;
+        return localamzr;
+        bool = false;
       }
-      QLog.e("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess],unzip android.qq.readinjoy.viola_biz_810 lib failed!");
+      return localamzr;
     }
-    label124:
-    do
+    catch (JSONException paramArrayOfampi)
     {
-      return;
-      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
-      if (paramString != null) {
-        paramString.edit().putString("res_name", "android.qq.readinjoy.viola_biz_810").commit();
-      }
-    } while (!amzt.i());
-    ohi.a("biz doOnDownloadSuccess");
+      veg.e("QVipRedNameCardProcessor", "QVipRedNameCardConfig onParsed exception :" + paramArrayOfampi.getMessage());
+    }
   }
   
-  public boolean a()
+  public Class<amzr> a()
   {
-    return true;
+    return amzr.class;
   }
   
-  public String b()
+  @NonNull
+  public amzr b()
   {
-    return null;
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amzs
  * JD-Core Version:    0.7.0.1
  */

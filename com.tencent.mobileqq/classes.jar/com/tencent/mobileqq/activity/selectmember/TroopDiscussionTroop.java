@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import aciy;
-import ahsu;
-import ahsx;
-import ahsy;
-import ahsz;
-import ahta;
-import ahtb;
-import ajee;
+import actn;
+import aifm;
+import aifp;
+import aifq;
+import aifr;
+import aifs;
+import aift;
+import ajsg;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import awqx;
-import bbmy;
-import begh;
+import axqw;
+import bcpw;
+import bfob;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DiscussionInfo;
@@ -27,14 +27,14 @@ import com.tencent.widget.SwipPinnedHeaderExpandableListView;
 
 public class TroopDiscussionTroop
   extends TroopDiscussionBaseV
-  implements View.OnClickListener, begh
+  implements View.OnClickListener, bfob
 {
-  int jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131167813);
-  private ahsu jdField_a_of_type_Ahsu;
-  private ahsz jdField_a_of_type_Ahsz;
-  private ahta jdField_a_of_type_Ahta;
-  private ahtb jdField_a_of_type_Ahtb;
-  private ajee jdField_a_of_type_Ajee = new ahsy(this);
+  int jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298912);
+  private aifm jdField_a_of_type_Aifm;
+  private aifr jdField_a_of_type_Aifr;
+  private aifs jdField_a_of_type_Aifs;
+  private aift jdField_a_of_type_Aift;
+  private ajsg jdField_a_of_type_Ajsg = new aifq(this);
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
   private SwipPinnedHeaderExpandableListView jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView;
   
@@ -45,27 +45,27 @@ public class TroopDiscussionTroop
   
   private void d()
   {
-    if (this.jdField_a_of_type_Ahsz == null) {
-      this.jdField_a_of_type_Ahsz = new ahsz(this);
+    if (this.jdField_a_of_type_Aifr == null) {
+      this.jdField_a_of_type_Aifr = new aifr(this);
     }
-    if (this.jdField_a_of_type_Ahtb == null) {
-      this.jdField_a_of_type_Ahtb = new ahtb(this);
+    if (this.jdField_a_of_type_Aift == null) {
+      this.jdField_a_of_type_Aift = new aift(this);
     }
-    if (this.jdField_a_of_type_Ahta == null) {
-      this.jdField_a_of_type_Ahta = new ahta(this);
+    if (this.jdField_a_of_type_Aifs == null) {
+      this.jdField_a_of_type_Aifs = new aifs(this);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ahsz);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ahtb);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ahta);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajee);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aifr);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aift);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aifs);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajsg);
   }
   
   private void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ahsz);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ahtb);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ahta);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajee);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aifr);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aift);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aifs);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajsg);
   }
   
   protected void a()
@@ -75,19 +75,19 @@ public class TroopDiscussionTroop
   
   public void a(Bundle paramBundle)
   {
-    a(2131494575);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView = ((SwipPinnedHeaderExpandableListView)findViewById(2131313707));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131312075));
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setSelector(2131101491);
+    a(2131560147);
+    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView = ((SwipPinnedHeaderExpandableListView)findViewById(2131379542));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377897));
+    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setSelector(2131167087);
     this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setNeedCheckSpringback(true);
     this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setGroupIndicator(null);
     this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setPadding(0, 0, 0, aciy.a(54.0F, getResources()));
+    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setPadding(0, 0, 0, actn.a(54.0F, getResources()));
     this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setChildDivider(null);
     this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setClipToPadding(false);
     this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setScrollBarStyle(33554432);
-    this.jdField_a_of_type_Ahsu = new ahsu(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView, this);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setAdapter(this.jdField_a_of_type_Ahsu);
+    this.jdField_a_of_type_Aifm = new aifm(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView, this);
+    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setAdapter(this.jdField_a_of_type_Aifm);
   }
   
   public void b()
@@ -96,8 +96,8 @@ public class TroopDiscussionTroop
     if (QLog.isColorLevel()) {
       QLog.d("TroopDiscussionTroop", 2, "doOnDestroy");
     }
-    if (this.jdField_a_of_type_Ahsu != null) {
-      this.jdField_a_of_type_Ahsu.b();
+    if (this.jdField_a_of_type_Aifm != null) {
+      this.jdField_a_of_type_Aifm.b();
     }
     g();
     super.b();
@@ -111,8 +111,8 @@ public class TroopDiscussionTroop
   
   public void c()
   {
-    if (this.jdField_a_of_type_Ahsu != null) {
-      this.jdField_a_of_type_Ahsu.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Aifm != null) {
+      this.jdField_a_of_type_Aifm.notifyDataSetChanged();
     }
   }
   
@@ -123,20 +123,20 @@ public class TroopDiscussionTroop
   
   public void onClick(View paramView)
   {
-    paramView = (ahsx)paramView.getTag();
+    paramView = (aifp)paramView.getTag();
     if ((paramView != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null))
     {
       localObject = paramView.jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
       if (((this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity instanceof SelectMemberActivity)) && (!((TroopInfo)localObject).isAllowCreateDiscuss()) && (!((TroopInfo)localObject).isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (!((TroopInfo)localObject).isTroopAdmin(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
         if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c)) {
-          bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, 0, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131632141), 0).b(getResources().getDimensionPixelSize(2131167766));
+          bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, 0, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131697861), 0).b(getResources().getDimensionPixelSize(2131298865));
         }
       }
     }
     while ((paramView == null) || (paramView.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo == null))
     {
       return;
-      bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, 0, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131632143), 0).b(getResources().getDimensionPixelSize(2131167766));
+      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, 0, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131697863), 0).b(getResources().getDimensionPixelSize(2131298865));
       return;
       Bundle localBundle = new Bundle();
       localBundle.putString("group_uin", ((TroopInfo)localObject).troopuin);
@@ -153,7 +153,7 @@ public class TroopDiscussionTroop
       }
       for (;;)
       {
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_contacts", "", "choose_grp", "create_discuss", 0, 0, ((TroopInfo)localObject).troopuin + "", String.valueOf(i), "", "");
+        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_contacts", "", "choose_grp", "create_discuss", 0, 0, ((TroopInfo)localObject).troopuin + "", String.valueOf(i), "", "");
         return;
         i = 0;
         continue;

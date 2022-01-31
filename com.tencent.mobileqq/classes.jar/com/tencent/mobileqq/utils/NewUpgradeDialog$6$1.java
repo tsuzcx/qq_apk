@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import badr;
+import bbew;
 
 class NewUpgradeDialog$6$1
   implements Runnable
@@ -9,7 +9,7 @@ class NewUpgradeDialog$6$1
   
   public void run()
   {
-    badr.a(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog$6.this$0, 2);
+    bbew.a(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog$6.this$0, 2);
     this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog$6.this$0.a(this.jdField_a_of_type_Int, 2);
   }
 }

@@ -1,27 +1,12 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.ad.multiVideo.MultiVideoAdFooterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class nok
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  nok(noj paramnoj, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  nok(nnx paramnnx) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while ((this.a.a == null) || (this.a.a.a == null));
-    this.a.a.a.a();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

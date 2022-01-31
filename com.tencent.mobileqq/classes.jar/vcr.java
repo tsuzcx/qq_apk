@@ -1,23 +1,36 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class vcr
-  implements ViewPager.OnPageChangeListener
+  extends wcr
 {
-  public vcr(FaceViewPager paramFaceViewPager) {}
+  public static final String KEY = "NewDividerSegment";
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public vcr(Context paramContext)
   {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((vcs)localIterator.next()).b(paramInt);
-    }
+    super(paramContext);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, vas paramvas, ViewGroup paramViewGroup)
+  {
+    return paramvas.a();
+  }
+  
+  public String a()
+  {
+    return "NewDividerSegment";
+  }
+  
+  public vas a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new vas(LayoutInflater.from(this.a).inflate(2131561222, paramViewGroup, false));
   }
 }
 

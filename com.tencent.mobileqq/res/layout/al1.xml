@@ -5,6 +5,7 @@
         <include android:id="@id/c3f" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="12.0dip" android:layout_centerVertical="true" layout="@layout/al2" />
         <FrameLayout android:id="@id/lh1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:layout_toLeftOf="@id/b8q" android:layout_alignParentRight="true">
             <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/c3e" android:layout_width="65.0dip" android:layout_height="65.0dip" android:layout_marginLeft="34.0dip" android:scaleType="centerCrop" android:contentDescription="@null" app:cornerRadius="12.0dip" />
+            <com.tencent.mobileqq.widget.FixRatioPAHighLightImageView android:id="@id/fb3" android:layout_width="65.0dip" android:layout_height="65.0dip" android:layout_marginLeft="34.0dip" />
             <com.tencent.image.URLImageView android:id="@id/c3k" android:background="@drawable/hfg" android:visibility="visible" android:clickable="true" android:layout_width="65.0dip" android:layout_height="65.0dip" android:layout_marginLeft="34.0dip" android:src="@drawable/cll" android:scaleType="center" android:contentDescription="@null" />
         </FrameLayout>
         <include android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" layout="@layout/al4" />

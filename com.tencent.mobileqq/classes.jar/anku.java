@@ -1,26 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import org.json.JSONObject;
 
-class anku
-  implements View.OnClickListener
+public abstract class anku
 {
-  anku(anks paramanks, IPSiteModel.Goods paramGoods) {}
+  public String a;
+  public boolean a = true;
   
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(anks.a(this.jdField_a_of_type_Anks), QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(anks.a(this.jdField_a_of_type_Anks), this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Goods.moreUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(anks.a(this.jdField_a_of_type_Anks), "IP", "aio_productmore", "", 0, 0, 0, anks.b(this.jdField_a_of_type_Anks), anks.c(this.jdField_a_of_type_Anks), "", "", "", "", "", 0, 0, 0, 0);
-  }
+  public abstract JSONObject a();
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anku
  * JD-Core Version:    0.7.0.1
  */

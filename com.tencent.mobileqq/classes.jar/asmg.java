@@ -1,22 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.2.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
 public class asmg
-  implements asmo
+  implements DialogInterface.OnClickListener
 {
-  asmg(asme paramasme) {}
+  public asmg(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      ThreadManagerV2.excute(new ShortVideoShareUtil.1.2.1(this, (ascz)this.a.a.getManager(106)), 16, null, false);
+    if (this.a.b == 2) {
+      MsgBackupCompleteFragment.d(this.a.getActivity(), this.a.c, this.a.d);
     }
+    while (this.a.b != 3) {
+      return;
+    }
+    MsgBackupCompleteFragment.j(this.a.getActivity(), this.a.c, this.a.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asmg
  * JD-Core Version:    0.7.0.1
  */

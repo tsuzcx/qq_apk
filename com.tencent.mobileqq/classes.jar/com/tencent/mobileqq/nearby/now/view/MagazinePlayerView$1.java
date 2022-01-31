@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import asna;
-import asor;
+import atje;
+import atkv;
 
 public class MagazinePlayerView$1
   implements Runnable
 {
-  public MagazinePlayerView$1(asna paramasna) {}
+  public MagazinePlayerView$1(atje paramatje) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Asor.b();
+    this.this$0.jdField_a_of_type_Atkv.b();
     this.this$0.jdField_a_of_type_Boolean = true;
-    this.this$0.jdField_a_of_type_Asor.c();
+    this.this$0.jdField_a_of_type_Atkv.c();
   }
 }
 

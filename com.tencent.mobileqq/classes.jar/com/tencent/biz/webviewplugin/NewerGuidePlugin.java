@@ -1,7 +1,5 @@
 package com.tencent.biz.webviewplugin;
 
-import anad;
-import anah;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,15 +13,17 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Window;
-import anfc;
-import asfc;
-import azlj;
-import azyk;
-import bacm;
-import bbac;
-import bbms;
-import begr;
-import behe;
+import anql;
+import anqp;
+import anvl;
+import atbg;
+import bamn;
+import bazo;
+import bbdr;
+import bcdb;
+import bcpq;
+import bfol;
+import bfoy;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.AddFriendLogicActivity;
@@ -48,25 +48,25 @@ import eipc.EIPCResult;
 import java.util.Arrays;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import xbs;
-import xbt;
-import xbu;
-import xbv;
-import xbw;
-import xbx;
-import xby;
-import xbz;
-import xca;
-import xcb;
+import xks;
+import xkt;
+import xku;
+import xkv;
+import xkw;
+import xkx;
+import xky;
+import xkz;
+import xla;
+import xlb;
 
 public class NewerGuidePlugin
   extends WebViewPlugin
 {
   private int jdField_a_of_type_Int;
-  private anad jdField_a_of_type_Anad = new xbs(this);
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new xbt(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new xkt(this);
   private Uri jdField_a_of_type_AndroidNetUri;
-  private bbms jdField_a_of_type_Bbms;
+  private anql jdField_a_of_type_Anql = new xks(this);
+  private bcpq jdField_a_of_type_Bcpq;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
@@ -82,7 +82,7 @@ public class NewerGuidePlugin
   
   public static JSONObject a(String paramString)
   {
-    paramString = asfc.a("upload_for_new_guide", paramString, 4).getString("upload_for_new_guide", "");
+    paramString = atbg.a("upload_for_new_guide", paramString, 4).getString("upload_for_new_guide", "");
     try
     {
       paramString = new JSONObject(paramString);
@@ -129,22 +129,22 @@ public class NewerGuidePlugin
       j = 1;
     }
     Object localObject1 = this.mRuntime.a();
-    IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject1).getLayoutInflater().inflate(2131495228, null);
-    localIphonePickerView.a(new xcb(this, -1));
-    localObject1 = begr.c((Context)localObject1);
-    ((begr)localObject1).d(true);
-    ((begr)localObject1).a(localIphonePickerView, null);
-    Object localObject2 = (DispatchActionMoveScrollView)((begr)localObject1).findViewById(2131296387);
+    IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject1).getLayoutInflater().inflate(2131560805, null);
+    localIphonePickerView.a(new xlb(this, -1));
+    localObject1 = bfol.c((Context)localObject1);
+    ((bfol)localObject1).d(true);
+    ((bfol)localObject1).a(localIphonePickerView, null);
+    Object localObject2 = (DispatchActionMoveScrollView)((bfol)localObject1).findViewById(2131361923);
     ((DispatchActionMoveScrollView)localObject2).jdField_a_of_type_Boolean = true;
     ((DispatchActionMoveScrollView)localObject2).setBackgroundResource(17170445);
     if (Build.VERSION.SDK_INT >= 11)
     {
-      localObject2 = ((begr)localObject1).getWindow();
+      localObject2 = ((bfol)localObject1).getWindow();
       if (localObject2 != null) {
         ((Window)localObject2).setFlags(16777216, 16777216);
       }
     }
-    localIphonePickerView.setPickListener(new xby(this, localIphonePickerView, (begr)localObject1));
+    localIphonePickerView.setPickListener(new xky(this, localIphonePickerView, (bfol)localObject1));
     this.b = (k - 1897);
     this.c = (j - 1);
     this.d = (i - 1);
@@ -153,7 +153,7 @@ public class NewerGuidePlugin
     localIphonePickerView.setSelection(2, this.d);
     try
     {
-      ((begr)localObject1).show();
+      ((bfol)localObject1).show();
       return;
     }
     catch (Exception localException) {}
@@ -209,7 +209,7 @@ public class NewerGuidePlugin
       localObject = TroopInfoActivity.a(String.valueOf(localObject), 35);
       ((Bundle)localObject).putString("authSig", paramJSONObject.optString("authSig"));
       ((Bundle)localObject).putBoolean("from_newer_guide", true);
-      azlj.a(this.mRuntime.a(), (Bundle)localObject, 2, 3);
+      bamn.a(this.mRuntime.a(), (Bundle)localObject, 2, 3);
       return;
       long l = Long.parseLong((String)localObject);
       paramJSONObject = new ProfileActivity.AllInOne("0", 41);
@@ -308,7 +308,7 @@ public class NewerGuidePlugin
     //   138: ldc_w 438
     //   141: aload 6
     //   143: iconst_0
-    //   144: invokestatic 444	baaw:encodeToString	([BI)Ljava/lang/String;
+    //   144: invokestatic 444	bbca:encodeToString	([BI)Ljava/lang/String;
     //   147: invokevirtual 447	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   150: pop
     //   151: aload 8
@@ -485,12 +485,12 @@ public class NewerGuidePlugin
       i = 0;
     }
     Object localObject = this.mRuntime.a();
-    IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject).getLayoutInflater().inflate(2131495228, null);
-    localIphonePickerView.a(new xbw(this, paramArrayOfString));
-    paramArrayOfString = begr.c((Context)localObject);
+    IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject).getLayoutInflater().inflate(2131560805, null);
+    localIphonePickerView.a(new xkw(this, paramArrayOfString));
+    paramArrayOfString = bfol.c((Context)localObject);
     paramArrayOfString.d(true);
     paramArrayOfString.a(localIphonePickerView, null);
-    localObject = (DispatchActionMoveScrollView)paramArrayOfString.findViewById(2131296387);
+    localObject = (DispatchActionMoveScrollView)paramArrayOfString.findViewById(2131361923);
     ((DispatchActionMoveScrollView)localObject).jdField_a_of_type_Boolean = true;
     ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
     if (Build.VERSION.SDK_INT >= 11)
@@ -500,7 +500,7 @@ public class NewerGuidePlugin
         ((Window)localObject).setFlags(16777216, 16777216);
       }
     }
-    localIphonePickerView.setPickListener(new xbx(this, paramArrayOfString));
+    localIphonePickerView.setPickListener(new xkx(this, paramArrayOfString));
     this.jdField_a_of_type_Int = i;
     localIphonePickerView.setSelection(0, i);
     try
@@ -535,7 +535,7 @@ public class NewerGuidePlugin
     else {
       return;
     }
-    ((BaseActivity)localActivity).requestPermissions(new xbz(this, paramJSONObject, localActivity), 1, new String[] { "android.permission.READ_CONTACTS" });
+    ((BaseActivity)localActivity).requestPermissions(new xkz(this, paramJSONObject, localActivity), 1, new String[] { "android.permission.READ_CONTACTS" });
   }
   
   private void c()
@@ -558,7 +558,7 @@ public class NewerGuidePlugin
     {
       return;
     }
-    localBaseActivity.requestPermissions(new xbu(this, localBaseActivity), 1, new String[] { "android.permission.CAMERA" });
+    localBaseActivity.requestPermissions(new xku(this, localBaseActivity), 1, new String[] { "android.permission.CAMERA" });
     return;
     label94:
     d();
@@ -571,24 +571,24 @@ public class NewerGuidePlugin
     }
     paramJSONObject = new Bundle();
     paramJSONObject.putString("key_action", "uploadContacts");
-    paramJSONObject = anah.a("ipc_newer_guide", null, this.jdField_a_of_type_Anad.key, paramJSONObject);
-    anfc.a().a(paramJSONObject);
+    paramJSONObject = anqp.a("ipc_newer_guide", null, this.jdField_a_of_type_Anql.key, paramJSONObject);
+    anvl.a().a(paramJSONObject);
   }
   
   private void d()
   {
     Activity localActivity = this.mRuntime.a();
-    String[] arrayOfString = localActivity.getResources().getStringArray(2130903098);
-    begr localbegr = (begr)behe.a(localActivity, null);
-    localbegr.c(arrayOfString[22]);
-    localbegr.c(arrayOfString[24]);
-    localbegr.c(arrayOfString[13]);
-    localbegr.d(arrayOfString[16]);
-    localbegr.a(new xbv(this, localActivity, localbegr));
+    String[] arrayOfString = localActivity.getResources().getStringArray(2130968634);
+    bfol localbfol = (bfol)bfoy.a(localActivity, null);
+    localbfol.c(arrayOfString[22]);
+    localbfol.c(arrayOfString[24]);
+    localbfol.c(arrayOfString[13]);
+    localbfol.d(arrayOfString[16]);
+    localbfol.a(new xkv(this, localActivity, localbfol));
     if (!localActivity.isFinishing()) {}
     try
     {
-      localbegr.show();
+      localbfol.show();
       return;
     }
     catch (Exception localException) {}
@@ -613,7 +613,7 @@ public class NewerGuidePlugin
         e(paramJSONObject);
         return;
       }
-      ((BaseActivity)localActivity).requestPermissions(new xca(this, paramJSONObject, localActivity), 1, new String[] { "android.permission.READ_CONTACTS" });
+      ((BaseActivity)localActivity).requestPermissions(new xla(this, paramJSONObject, localActivity), 1, new String[] { "android.permission.READ_CONTACTS" });
       return;
     }
   }
@@ -627,8 +627,8 @@ public class NewerGuidePlugin
     paramJSONObject = new Bundle();
     paramJSONObject.putString("key_action", "getRecommendedList");
     paramJSONObject.putInt("wantCount", i);
-    paramJSONObject = anah.a("ipc_newer_guide", null, this.jdField_a_of_type_Anad.key, paramJSONObject);
-    anfc.a().a(paramJSONObject);
+    paramJSONObject = anqp.a("ipc_newer_guide", null, this.jdField_a_of_type_Anql.key, paramJSONObject);
+    anvl.a().a(paramJSONObject);
   }
   
   private void f(JSONObject paramJSONObject)
@@ -646,8 +646,8 @@ public class NewerGuidePlugin
     localBundle.putInt("startIndex", i);
     localBundle.putInt("num", j);
     localBundle.putString("callback", paramJSONObject);
-    paramJSONObject = anah.a("ipc_newer_guide", null, this.jdField_a_of_type_Anad.key, localBundle);
-    anfc.a().a(paramJSONObject);
+    paramJSONObject = anqp.a("ipc_newer_guide", null, this.jdField_a_of_type_Anql.key, localBundle);
+    anvl.a().a(paramJSONObject);
   }
   
   public void callJs(String paramString, String... paramVarArgs)
@@ -744,8 +744,8 @@ public class NewerGuidePlugin
               paramString1 = new Bundle();
               paramString1.putString("key_action", "followPublicAccount");
               paramString1.putString("uin", paramJsBridgeListener);
-              paramJsBridgeListener = anah.a("ipc_newer_guide", null, this.jdField_a_of_type_Anad.key, paramString1);
-              anfc.a().a(paramJsBridgeListener);
+              paramJsBridgeListener = anqp.a("ipc_newer_guide", null, this.jdField_a_of_type_Anql.key, paramString1);
+              anvl.a().a(paramJsBridgeListener);
             }
             else if (paramString3.equals("joinTroop"))
             {
@@ -757,8 +757,8 @@ public class NewerGuidePlugin
               paramString3.putString("uin", paramString1);
               paramString3.putString("name", paramString2);
               paramString3.putString("authSig", paramJsBridgeListener);
-              paramJsBridgeListener = anah.a("ipc_newer_guide", null, this.jdField_a_of_type_Anad.key, paramString3);
-              anfc.a().a(paramJsBridgeListener);
+              paramJsBridgeListener = anqp.a("ipc_newer_guide", null, this.jdField_a_of_type_Anql.key, paramString3);
+              anvl.a().a(paramJsBridgeListener);
             }
             else if (paramString3.equals("joinTroopByTap"))
             {
@@ -770,8 +770,8 @@ public class NewerGuidePlugin
               paramString3.putString("uin", paramString1);
               paramString3.putString("name", paramString2);
               paramString3.putString("authSig", paramJsBridgeListener);
-              paramJsBridgeListener = anah.a("ipc_newer_guide", null, this.jdField_a_of_type_Anad.key, paramString3);
-              anfc.a().a(paramJsBridgeListener);
+              paramJsBridgeListener = anqp.a("ipc_newer_guide", null, this.jdField_a_of_type_Anql.key, paramString3);
+              anvl.a().a(paramJsBridgeListener);
             }
             else if (paramString3.equals("sayHi"))
             {
@@ -779,8 +779,8 @@ public class NewerGuidePlugin
               paramJsBridgeListener = new Bundle();
               paramJsBridgeListener.putString("key_action", "sayHi");
               paramJsBridgeListener.putLong("tinyId", l);
-              paramJsBridgeListener = anah.a("ipc_newer_guide", null, this.jdField_a_of_type_Anad.key, paramJsBridgeListener);
-              anfc.a().a(paramJsBridgeListener);
+              paramJsBridgeListener = anqp.a("ipc_newer_guide", null, this.jdField_a_of_type_Anql.key, paramJsBridgeListener);
+              anvl.a().a(paramJsBridgeListener);
             }
             else if (paramString3.equals("jumpCard"))
             {
@@ -917,9 +917,9 @@ public class NewerGuidePlugin
         if (paramInt == -1)
         {
           paramIntent = this.mRuntime.a();
-          localObject = bacm.b(paramIntent, this.jdField_a_of_type_AndroidNetUri);
-          str = azyk.a();
-          paramInt = azyk.b(paramIntent);
+          localObject = bbdr.b(paramIntent, this.jdField_a_of_type_AndroidNetUri);
+          str = bazo.a();
+          paramInt = bazo.b(paramIntent);
           localIntent = new Intent();
           localIntent.setClass(paramIntent, PhotoCropForPortraitActivity.class);
           localIntent.putExtra("PhotoConst.DEST_BROADCAST_ACTION_NAME", "ACTION_NEWER_GUIDE_SELECT_AVATAR_RESULT");
@@ -980,7 +980,7 @@ public class NewerGuidePlugin
     if (QLog.isColorLevel()) {
       QLog.d("NewerGuidePlugin", 2, "onCreate this=" + this);
     }
-    anfc.a().a(this.jdField_a_of_type_Anad);
+    anvl.a().a(this.jdField_a_of_type_Anql);
     a();
   }
   
@@ -990,7 +990,7 @@ public class NewerGuidePlugin
       QLog.d("NewerGuidePlugin", 2, "onDestroy this=" + this);
     }
     super.onDestroy();
-    anfc.a().b(this.jdField_a_of_type_Anad);
+    anvl.a().b(this.jdField_a_of_type_Anql);
     b();
   }
 }

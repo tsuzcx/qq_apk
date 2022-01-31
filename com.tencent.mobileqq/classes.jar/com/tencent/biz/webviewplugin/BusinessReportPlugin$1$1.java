@@ -1,8 +1,8 @@
 package com.tencent.biz.webviewplugin;
 
-import bbac;
-import nfo;
-import xaz;
+import bcdb;
+import nqp;
+import xjz;
 
 class BusinessReportPlugin$1$1
   implements Runnable
@@ -11,7 +11,7 @@ class BusinessReportPlugin$1$1
   
   public void run()
   {
-    nfo.a(this.jdField_a_of_type_ComTencentBizWebviewpluginBusinessReportPlugin$1.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.b);
+    nqp.a(this.jdField_a_of_type_ComTencentBizWebviewpluginBusinessReportPlugin$1.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

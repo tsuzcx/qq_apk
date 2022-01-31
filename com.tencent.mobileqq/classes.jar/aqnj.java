@@ -1,16 +1,12 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
-
-class aqnj
-  implements BusinessObserver
+public class aqnj
 {
-  aqnj(aqnd paramaqnd) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public int a;
+  public String a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqnj
  * JD-Core Version:    0.7.0.1
  */

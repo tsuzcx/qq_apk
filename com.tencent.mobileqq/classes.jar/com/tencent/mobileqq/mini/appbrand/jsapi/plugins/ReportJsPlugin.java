@@ -8,10 +8,12 @@ import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04884;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.minigame.jsapi.GameBrandRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 import org.json.JSONArray;
@@ -23,11 +25,15 @@ public class ReportJsPlugin
   public static final String API_API_REPORT = "api_report";
   public static final String API_API_REPORT_DC = "reportDC";
   private static final String API_REPORT_KEY_VALUE = "reportKeyValue";
+  public static final String EVENT_NAME_REPORT_DATA_TO_DC = "reportDataToDC";
+  public static final String KEY_TABLE_DATA = "args";
+  public static final String KEY_TABLE_NAME = "tableName";
   private static final int REPORT_EVENT_Display = 15496;
   private static final int REPORT_EVENT_Speed = 13544;
   private static final int REPORT_EVENT_Speed_newPage2pageReady = 9;
   private static final int REPORT_EVENT_Speed_reRenderTime = 6;
   private static final Set<String> S_EVENT_MAP = new ReportJsPlugin.1();
+  public static final String TABLE_DC04239 = "dc04239";
   private static final String TAG = "[mini] ReportJsPlugin";
   private Activity mActivity;
   
@@ -177,10 +183,36 @@ public class ReportJsPlugin
     for (;;)
     {
       return "";
-      if ("api_report".equals(paramString1)) {
+      if ("api_report".equals(paramString1))
+      {
         handleApiReport(paramString1, paramString2, this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig);
-      } else if ("reportDC".equals(paramString1)) {
+      }
+      else if ("reportDC".equals(paramString1))
+      {
         handleReportDC(paramString1, paramString2);
+      }
+      else if ("reportDataToDC".equals(paramString1))
+      {
+        try
+        {
+          JSONObject localJSONObject = new JSONObject(paramString2);
+          paramJsRuntime = localJSONObject.optString("tableName");
+          localJSONObject = localJSONObject.optJSONObject("args");
+          if (localJSONObject == null) {
+            break label181;
+          }
+          if (!"dc04239".equals(paramJsRuntime)) {
+            continue;
+          }
+          MiniProgramLpReportDC04239.gameInnerReport(getGameBrandRuntime().getApkgInfo().appConfig, localJSONObject);
+        }
+        catch (Exception paramJsRuntime)
+        {
+          QLog.e("[mini] ReportJsPlugin", 1, "ReportPlugin handleNativeRequest exception, [eventName=" + paramString1 + "][jsonParams=" + paramString2 + "]");
+        }
+        continue;
+        label181:
+        QLog.e("[mini] ReportJsPlugin", 1, "ReportPlugin report to table[" + paramJsRuntime + "] fail, no args, [eventName=" + paramString1 + "][jsonParams=" + paramString2 + "]");
       }
     }
   }

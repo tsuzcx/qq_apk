@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import android.graphics.Bitmap;
 
-public final class aqkb
-  implements Parcelable.Creator<IVPluginInfo>
+public abstract interface aqkb
 {
-  public IVPluginInfo a(Parcel paramParcel)
-  {
-    return new IVPluginInfo(paramParcel);
-  }
+  public abstract void a(String paramString);
   
-  public IVPluginInfo[] a(int paramInt)
-  {
-    return new IVPluginInfo[paramInt];
-  }
+  public abstract void a(String paramString, Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqkb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.pic.ReportInfo;
+import android.content.res.Resources;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public final class atql
-  implements Parcelable.Creator<ReportInfo>
+class atql
+  implements Animation.AnimationListener
 {
-  public ReportInfo a(Parcel paramParcel)
+  atql(atpi paramatpi) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReportInfo localReportInfo = new ReportInfo();
-    localReportInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localReportInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localReportInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localReportInfo.f = paramParcel.readInt();
-    localReportInfo.d = paramParcel.readInt();
-    localReportInfo.e = paramParcel.readInt();
-    localReportInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localReportInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localReportInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    return localReportInfo;
+    if (paramAnimation == atpi.b(this.a))
+    {
+      atpi.a(this.a).setVisibility(8);
+      atpi.a(this.a).clearAnimation();
+      atpi.a(this.a).setBackgroundResource(2130848196);
+      atpi.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166557));
+    }
   }
   
-  public ReportInfo[] a(int paramInt)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return new ReportInfo[paramInt];
+    if (paramAnimation == atpi.a(this.a))
+    {
+      atpi.a(this.a).setVisibility(0);
+      atpi.a(this.a).setBackgroundResource(2130849538);
+      atpi.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166848));
+    }
   }
 }
 

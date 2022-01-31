@@ -1,14 +1,18 @@
-import android.widget.EditText;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import cooperation.qzone.LocalMultiProcConfig;
 
-public abstract interface bgzw
+public final class bgzw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt, String paramString, EditText paramEditText);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    LocalMultiProcConfig.putBool("qz_safe_mode_no_tip", paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgzw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,37 @@
-import android.text.Spanned;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import java.io.File;
 
 class bhnk
-  extends bilo
+  implements ModuleDownloadListener
 {
-  bhnk(bhnj parambhnj, int paramInt)
-  {
-    super(paramInt);
-  }
+  bhnk(bhni parambhni) {}
   
-  public int a(CharSequence paramCharSequence)
-  {
-    if (this.jdField_a_of_type_Bhnj.b() == 0) {
-      return super.a(paramCharSequence);
-    }
-    return 0;
-  }
+  public void onDownloadCanceled(String paramString) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onDownloadFailed(String paramString) {}
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString)
   {
-    if (this.jdField_a_of_type_Bhnj.b() == 0) {}
-    for (this.jdField_a_of_type_Int = 20;; this.jdField_a_of_type_Int = 18) {
-      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    if (!paramString.equals("pictureMarkerSo.zip")) {}
+    do
+    {
+      return;
+      localObject = bhni.a.getPath();
+      paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
+    } while (!paramString.exists());
+    Object localObject = new File((String)localObject);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
     }
+    bhnq.b(paramString, (File)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhnk
  * JD-Core Version:    0.7.0.1
  */

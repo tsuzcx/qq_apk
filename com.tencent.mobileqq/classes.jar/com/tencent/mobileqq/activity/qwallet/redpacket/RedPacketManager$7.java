@@ -12,87 +12,83 @@ class RedPacketManager$7
     //   0: new 31	java/lang/StringBuilder
     //   3: dup
     //   4: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   7: invokestatic 38	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   10: invokevirtual 44	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
-    //   13: invokevirtual 50	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   16: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   19: ldc 56
-    //   21: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: aload_0
-    //   25: getfield 18	com/tencent/mobileqq/activity/qwallet/redpacket/RedPacketManager$7:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   28: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   31: aload_0
-    //   32: getfield 20	com/tencent/mobileqq/activity/qwallet/redpacket/RedPacketManager$7:b	Ljava/lang/String;
-    //   35: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: ldc 61
-    //   40: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: aload_0
-    //   44: getfield 22	com/tencent/mobileqq/activity/qwallet/redpacket/RedPacketManager$7:jdField_a_of_type_Int	I
-    //   47: invokevirtual 64	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   50: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   53: astore_1
-    //   54: new 70	java/io/File
-    //   57: dup
-    //   58: aload_1
-    //   59: invokespecial 73	java/io/File:<init>	(Ljava/lang/String;)V
-    //   62: invokevirtual 77	java/io/File:exists	()Z
-    //   65: ifeq +77 -> 142
-    //   68: aload_1
-    //   69: invokestatic 82	bace:a	(Ljava/lang/String;)[B
-    //   72: astore_1
-    //   73: aload_1
-    //   74: ifnull +68 -> 142
-    //   77: aload_1
-    //   78: arraylength
-    //   79: ifle +63 -> 142
-    //   82: new 84	com/qq/taf/jce/JceInputStream
-    //   85: dup
-    //   86: aload_1
-    //   87: invokespecial 87	com/qq/taf/jce/JceInputStream:<init>	([B)V
-    //   90: astore_2
-    //   91: aload_2
-    //   92: ldc 89
-    //   94: invokevirtual 93	com/qq/taf/jce/JceInputStream:setServerEncoding	(Ljava/lang/String;)I
-    //   97: pop
-    //   98: new 95	Wallet/GetGroupRedPackListRsp
-    //   101: dup
-    //   102: invokespecial 96	Wallet/GetGroupRedPackListRsp:<init>	()V
-    //   105: astore_1
-    //   106: aload_1
-    //   107: aload_2
-    //   108: invokevirtual 100	Wallet/GetGroupRedPackListRsp:readFrom	(Lcom/qq/taf/jce/JceInputStream;)V
-    //   111: invokestatic 106	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   114: new 108	com/tencent/mobileqq/activity/qwallet/redpacket/RedPacketManager$7$1
-    //   117: dup
-    //   118: aload_0
-    //   119: aload_1
-    //   120: invokespecial 111	com/tencent/mobileqq/activity/qwallet/redpacket/RedPacketManager$7$1:<init>	(Lcom/tencent/mobileqq/activity/qwallet/redpacket/RedPacketManager$7;LWallet/GetGroupRedPackListRsp;)V
-    //   123: invokevirtual 117	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
-    //   126: pop
-    //   127: return
-    //   128: astore_2
-    //   129: aconst_null
-    //   130: astore_1
-    //   131: aload_2
-    //   132: invokevirtual 120	java/lang/Throwable:printStackTrace	()V
-    //   135: goto -24 -> 111
-    //   138: astore_2
-    //   139: goto -8 -> 131
-    //   142: aconst_null
-    //   143: astore_1
-    //   144: goto -33 -> 111
+    //   7: getstatic 37	ahje:f	Ljava/lang/String;
+    //   10: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13: aload_0
+    //   14: getfield 18	com/tencent/mobileqq/activity/qwallet/redpacket/RedPacketManager$7:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   17: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: aload_0
+    //   21: getfield 20	com/tencent/mobileqq/activity/qwallet/redpacket/RedPacketManager$7:b	Ljava/lang/String;
+    //   24: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: ldc 43
+    //   29: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: aload_0
+    //   33: getfield 22	com/tencent/mobileqq/activity/qwallet/redpacket/RedPacketManager$7:jdField_a_of_type_Int	I
+    //   36: invokevirtual 46	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: astore_1
+    //   43: new 52	java/io/File
+    //   46: dup
+    //   47: aload_1
+    //   48: invokespecial 55	java/io/File:<init>	(Ljava/lang/String;)V
+    //   51: invokevirtual 59	java/io/File:exists	()Z
+    //   54: ifeq +77 -> 131
+    //   57: aload_1
+    //   58: invokestatic 64	bbdj:a	(Ljava/lang/String;)[B
+    //   61: astore_1
+    //   62: aload_1
+    //   63: ifnull +68 -> 131
+    //   66: aload_1
+    //   67: arraylength
+    //   68: ifle +63 -> 131
+    //   71: new 66	com/qq/taf/jce/JceInputStream
+    //   74: dup
+    //   75: aload_1
+    //   76: invokespecial 69	com/qq/taf/jce/JceInputStream:<init>	([B)V
+    //   79: astore_2
+    //   80: aload_2
+    //   81: ldc 71
+    //   83: invokevirtual 75	com/qq/taf/jce/JceInputStream:setServerEncoding	(Ljava/lang/String;)I
+    //   86: pop
+    //   87: new 77	Wallet/GetGroupRedPackListRsp
+    //   90: dup
+    //   91: invokespecial 78	Wallet/GetGroupRedPackListRsp:<init>	()V
+    //   94: astore_1
+    //   95: aload_1
+    //   96: aload_2
+    //   97: invokevirtual 82	Wallet/GetGroupRedPackListRsp:readFrom	(Lcom/qq/taf/jce/JceInputStream;)V
+    //   100: invokestatic 88	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
+    //   103: new 90	com/tencent/mobileqq/activity/qwallet/redpacket/RedPacketManager$7$1
+    //   106: dup
+    //   107: aload_0
+    //   108: aload_1
+    //   109: invokespecial 93	com/tencent/mobileqq/activity/qwallet/redpacket/RedPacketManager$7$1:<init>	(Lcom/tencent/mobileqq/activity/qwallet/redpacket/RedPacketManager$7;LWallet/GetGroupRedPackListRsp;)V
+    //   112: invokevirtual 99	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   115: pop
+    //   116: return
+    //   117: astore_2
+    //   118: aconst_null
+    //   119: astore_1
+    //   120: aload_2
+    //   121: invokevirtual 102	java/lang/Throwable:printStackTrace	()V
+    //   124: goto -24 -> 100
+    //   127: astore_2
+    //   128: goto -8 -> 120
+    //   131: aconst_null
+    //   132: astore_1
+    //   133: goto -33 -> 100
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	147	0	this	7
-    //   53	91	1	localObject	Object
-    //   90	18	2	localJceInputStream	com.qq.taf.jce.JceInputStream
-    //   128	4	2	localThrowable1	java.lang.Throwable
-    //   138	1	2	localThrowable2	java.lang.Throwable
+    //   0	136	0	this	7
+    //   42	91	1	localObject	Object
+    //   79	18	2	localJceInputStream	com.qq.taf.jce.JceInputStream
+    //   117	4	2	localThrowable1	java.lang.Throwable
+    //   127	1	2	localThrowable2	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
-    //   0	73	128	java/lang/Throwable
-    //   77	106	128	java/lang/Throwable
-    //   106	111	138	java/lang/Throwable
+    //   0	62	117	java/lang/Throwable
+    //   66	95	117	java/lang/Throwable
+    //   95	100	127	java/lang/Throwable
   }
 }
 

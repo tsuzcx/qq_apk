@@ -1,17 +1,17 @@
 package com.tencent.biz.videostory.network.observer;
 
 import com.tencent.qphone.base.util.QLog;
-import wxw;
-import wxx;
+import xgw;
+import xgx;
 
 public class VSDispatchObserver$2
   implements Runnable
 {
-  public VSDispatchObserver$2(wxw paramwxw, wxx paramwxx, long paramLong, String paramString) {}
+  public VSDispatchObserver$2(xgw paramxgw, xgx paramxgx, long paramLong, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Wxx.a(false, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, null);
+    this.jdField_a_of_type_Xgx.a(false, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, null);
     QLog.e("VSNetworkHelper", 1, "inform VSBaseRequest finalRsp is empty.");
   }
 }

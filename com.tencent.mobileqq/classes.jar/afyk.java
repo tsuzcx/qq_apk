@@ -1,11 +1,10 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class afyk
+public abstract interface afyk
 {
-  public afyj a;
-  public ImageView a;
-  public TextView a;
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

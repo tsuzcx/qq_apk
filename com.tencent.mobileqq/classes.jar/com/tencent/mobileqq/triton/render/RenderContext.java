@@ -53,12 +53,29 @@ public class RenderContext
   
   private boolean checkOpenGLES30(Context paramContext)
   {
-    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getDeviceConfigurationInfo();
-    boolean bool = this.mTritonEngine.getQQEnv().enableOpengles3();
-    if (paramContext.reqGlEsVersion >= 196608) {}
-    for (int i = 1; (bool) && (i != 0); i = 0) {
+    for (;;)
+    {
+      try
+      {
+        i = ((ActivityManager)paramContext.getSystemService("activity")).getDeviceConfigurationInfo().reqGlEsVersion;
+        if (i < 196608) {
+          continue;
+        }
+        i = 1;
+      }
+      catch (Exception paramContext)
+      {
+        TTLog.e("RenderContext", "get support ES3 error! " + paramContext.getMessage());
+        int i = 0;
+        continue;
+      }
+      if ((!this.mTritonEngine.getQQEnv().enableOpengles3()) || (i == 0)) {
+        break label84;
+      }
       return true;
+      i = 0;
     }
+    label84:
     return false;
   }
   

@@ -1,23 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import android.graphics.Rect;
+import java.io.File;
 
-public class axii
-  implements View.OnClickListener
+class axii
 {
-  public axii(GroupTeamWorkListActivity paramGroupTeamWorkListActivity, View paramView) {}
+  int jdField_a_of_type_Int;
+  aiak jdField_a_of_type_Aiak;
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  File jdField_a_of_type_JavaIoFile;
+  boolean jdField_a_of_type_Boolean;
+  int b;
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).notifyDataSetChanged();
-    baig.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.c(), 1, false);
-  }
+  private axii(axhx paramaxhx) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axii
  * JD-Core Version:    0.7.0.1
  */

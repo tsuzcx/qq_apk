@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agee;
-import agef;
-import ajed;
+import agqc;
+import agqd;
+import ajsf;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,12 +14,13 @@ import android.os.MessageQueue.IdleHandler;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.os.SystemClock;
-import atpg;
-import atqj;
-import aupw;
-import bace;
-import bech;
-import beep;
+import android.widget.TextView;
+import aune;
+import auoh;
+import avpe;
+import bbdj;
+import bfjx;
+import bfmj;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -27,18 +29,20 @@ import com.tencent.util.BinderWarpper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import ndn;
-import rtr;
+import noo;
+import sgj;
 
 public class SendPhotoActivity
   extends BaseActivity
 {
   public static final String a;
   public long a;
+  public ProgressDialog a;
   public Handler a;
   public MessageQueue.IdleHandler a;
   Messenger jdField_a_of_type_AndroidOsMessenger;
-  public SendPhotoActivity.sendPhotoTask a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public SendPhotoTask a;
   boolean jdField_a_of_type_Boolean = false;
   public long b;
   
@@ -50,18 +54,18 @@ public class SendPhotoActivity
   public SendPhotoActivity()
   {
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new agee(this);
-    this.jdField_a_of_type_AndroidOsHandler = new agef(this);
+    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new agqc(this);
+    this.jdField_a_of_type_AndroidOsHandler = new agqd(this, this);
   }
   
   static void a()
   {
-    String str1 = ajed.aU + "photo/" + ".nomedia";
-    String str2 = ajed.aU + "thumb/" + ".nomedia";
-    String str3 = ajed.aU + "thumb2/" + ".nomedia";
-    bace.c(str1);
-    bace.c(str2);
-    bace.c(str3);
+    String str1 = ajsf.aW + "photo/" + ".nomedia";
+    String str2 = ajsf.aW + "thumb/" + ".nomedia";
+    String str3 = ajsf.aW + "thumb2/" + ".nomedia";
+    bbdj.c(str1);
+    bbdj.c(str2);
+    bbdj.c(str3);
   }
   
   private static void b(BaseActivity paramBaseActivity, ArrayList<String> paramArrayList)
@@ -82,8 +86,8 @@ public class SendPhotoActivity
         i = 0;
         while (i < paramArrayList.size())
         {
-          localArrayList.add(bech.a((String)paramArrayList.get(i)));
-          QLog.d((String)localObject2, 2, "[report] picture " + i + "md5=" + bech.a((String)paramArrayList.get(i)) + ": path=" + (String)paramArrayList.get(i));
+          localArrayList.add(bfjx.a((String)paramArrayList.get(i)));
+          QLog.d((String)localObject2, 2, "[report] picture " + i + "md5=" + bfjx.a((String)paramArrayList.get(i)) + ": path=" + (String)paramArrayList.get(i));
           i += 1;
         }
         localObject2 = new Intent("com.tencent.biz.pubaccount.picResultAction");
@@ -102,15 +106,52 @@ public class SendPhotoActivity
         }
       }
       localObject1 = ((Intent)localObject1).getStringExtra("uin");
-      if ((localObject1 != null) && (j == 1008) && (rtr.a(paramBaseActivity.app, (String)localObject1)))
+      if ((localObject1 != null) && (j == 1008) && (sgj.a(paramBaseActivity.app, (String)localObject1)))
       {
         i = 0;
         while (i < paramArrayList.size())
         {
-          ndn.a(paramBaseActivity.app, "P_CliOper", "Pb_account_lifeservice", (String)localObject1, "0X8005C9D", "0X8005C9D", 0, 0, "", "", "", "", false);
+          noo.a(paramBaseActivity.app, "P_CliOper", "Pb_account_lifeservice", (String)localObject1, "0X8005C9D", "0X8005C9D", 0, 0, "", "", "", "", false);
           i += 1;
         }
       }
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_AndroidAppProgressDialog != null) {
+        b();
+      }
+      while (!this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())
+      {
+        this.jdField_a_of_type_AndroidAppProgressDialog.show();
+        return;
+        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131755791);
+        this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
+        this.jdField_a_of_type_AndroidAppProgressDialog.show();
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559386);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131371557));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+      aune.b("PIC_TAG_ERROR", "SendPhotoActivity.showProgressDialog", localThrowable.toString());
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "TestPicSend finish compress,currentTime = " + System.currentTimeMillis());
+    }
+    if ((this.jdField_a_of_type_AndroidAppProgressDialog != null) && (this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppProgressDialog.cancel();
     }
   }
   
@@ -128,23 +169,23 @@ public class SendPhotoActivity
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = true;
     super.doOnCreate(paramBundle);
-    ThreadManager.executeOnFileThread(bace.a);
+    ThreadManager.executeOnFileThread(bbdj.a);
     Object localObject1 = getIntent();
     paramBundle = ((Intent)localObject1).getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
     if (paramBundle == null)
     {
-      atpg.b(jdField_a_of_type_JavaLangString, "initPicUploadInfos", "paths is null");
+      aune.b(jdField_a_of_type_JavaLangString, "initPicUploadInfos", "paths is null");
       finish();
       return true;
     }
-    beep.a(true, paramBundle);
+    bfmj.a(true, paramBundle);
     int i;
     if (((Intent)localObject1).getBooleanExtra("ReceiptMsgManager.EXTRA_KEY_IS_RECEIPT", false))
     {
       localObject2 = (SessionInfo)((Intent)localObject1).getParcelableExtra("session_info");
       i = ((Intent)localObject1).getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
       if (localObject2 != null) {
-        aupw.a().a(this.app, (SessionInfo)localObject2, paramBundle, i);
+        avpe.a().a(this.app, (SessionInfo)localObject2, paramBundle, i);
       }
       setResult(-1, getIntent());
       finish();
@@ -161,9 +202,9 @@ public class SendPhotoActivity
       i = ((Intent)localObject1).getIntExtra("key_is_sync_qzone", 0);
       if (i == 1)
       {
-        atqj localatqj = atqj.a();
-        if (localatqj != null) {
-          localatqj.a(i, ((Intent)localObject1).getLongExtra("key_qzone_batch_id", 0L), ((Intent)localObject1).getStringExtra("key_qzone_album_id"));
+        auoh localauoh = auoh.a();
+        if (localauoh != null) {
+          localauoh.a(i, ((Intent)localObject1).getLongExtra("key_qzone_batch_id", 0L), ((Intent)localObject1).getStringExtra("key_qzone_album_id"));
         }
       }
     }
@@ -175,7 +216,7 @@ public class SendPhotoActivity
       {
         localObject1 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, "TimeOut");
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject1, i * 10000);
-        atpg.b(jdField_a_of_type_JavaLangString, "doOnCreate", "send delayed Message:MSG_CANCLE_PROGRESS, delayTime = " + i * 5000);
+        aune.b(jdField_a_of_type_JavaLangString, "doOnCreate", "send delayed Message:MSG_CANCLE_PROGRESS, delayTime = " + i * 5000);
       }
     }
     catch (RemoteException localRemoteException)
@@ -189,7 +230,7 @@ public class SendPhotoActivity
       }
     }
     this.b = System.nanoTime();
-    atpg.a(jdField_a_of_type_JavaLangString, "initPicUploadInfos", "  totalCount:" + paramBundle.size());
+    aune.a(jdField_a_of_type_JavaLangString, "initPicUploadInfos", "  totalCount:" + paramBundle.size());
     setCanLock(false);
     return true;
   }
@@ -202,21 +243,8 @@ public class SendPhotoActivity
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "doOnDestroy ," + this);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask.a = null;
-      isUnLockSuccess = true;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    b();
+    isUnLockSuccess = true;
   }
   
   public void doOnResume()

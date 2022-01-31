@@ -1,34 +1,54 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
 
-class sfa
-  implements CompoundButton.OnCheckedChangeListener
+public final class sfa
 {
-  sfa(sez paramsez) {}
+  private ProfileParams a = new ProfileParams(null);
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public ProfileParams a()
   {
-    if (paramBoolean)
-    {
-      sez.a(this.a);
-      if (sez.a(this.a)) {
-        urp.a("video_shoot_slides", "clk_setting_on", 0, 0, new String[0]);
-      }
-    }
-    for (;;)
-    {
-      sez.a(this.a, paramBoolean);
-      return;
-      sez.b(this.a);
-      if (sez.a(this.a)) {
-        urp.a("video_shoot_slides", "clk_setting_close", 0, 0, new String[0]);
-      }
-    }
+    return this.a;
+  }
+  
+  public sfa a(int paramInt)
+  {
+    this.a.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public sfa a(ProfileParams.CurLoginUsr paramCurLoginUsr)
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams$CurLoginUsr = paramCurLoginUsr;
+    return this;
+  }
+  
+  public sfa a(String paramString)
+  {
+    this.a.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public sfa b(String paramString)
+  {
+    this.a.b = paramString;
+    return this;
+  }
+  
+  public sfa c(String paramString)
+  {
+    this.a.c = paramString;
+    return this;
+  }
+  
+  public sfa d(String paramString)
+  {
+    this.a.d = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sfa
  * JD-Core Version:    0.7.0.1
  */

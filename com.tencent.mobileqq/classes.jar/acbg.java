@@ -1,17 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-
 public class acbg
-  implements View.OnClickListener
 {
-  public acbg(TroopRequestActivity paramTroopRequestActivity) {}
+  public volatile long a;
+  public String a;
   
-  public void onClick(View paramView)
-  {
-    paramView = this.a.d;
-    azcm.a(this.a, paramView);
-  }
+  protected acbg(acaz paramacaz) {}
 }
 
 

@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.Context;
+import android.os.AsyncTask;
 
-class apvs
-  implements DialogInterface.OnCancelListener
+final class apvs
+  extends er
 {
-  apvs(apvq paramapvq) {}
+  apvs(Context paramContext) {}
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
+  {
+    super.a(paramAsyncTask, paramInt);
+    eo.a(this.a, paramAsyncTask, paramInt, new apvt(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apvs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,565 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.RspDelAllMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
+import android.graphics.drawable.ColorDrawable;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralRecommendFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.TagFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class uhz
-  extends mml
+  extends AbsVideoInfoWidget
+  implements View.OnClickListener
 {
-  public uhz(StoryMessageListActivity paramStoryMessageListActivity) {}
+  public bfol a;
+  private svb jdField_a_of_type_Svb = new svb();
+  protected tpe a;
+  private uir jdField_a_of_type_Uir;
+  private uiv jdField_a_of_type_Uiv;
+  private final uwa jdField_a_of_type_Uwa;
+  private View b;
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public uhz(View paramView)
   {
-    int j = -1;
-    paramBundle = new qqstory_struct.ErrorInfo();
-    qqstory_710_del_message.RspDelAllMessage localRspDelAllMessage;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      localRspDelAllMessage = new qqstory_710_del_message.RspDelAllMessage();
+    super(paramView);
+    this.jdField_b_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Uwa = ((uwa)tdc.a(11));
+  }
+  
+  private boolean a(StoryVideoItem paramStoryVideoItem)
+  {
+    QQUserUIItem localQQUserUIItem = ((tdo)tdc.a(2)).c(paramStoryVideoItem.mOwnerUid);
+    int i;
+    int j;
+    label83:
+    int k;
+    label99:
+    int m;
+    label112:
+    int n;
+    label123:
+    int i1;
+    if (((paramStoryVideoItem.mStoryType != 1) || (localQQUserUIItem == null) || (localQQUserUIItem.isVip()) || (localQQUserUIItem.isFriend()) || (localQQUserUIItem.isMe())) || ((localQQUserUIItem != null) && (localQQUserUIItem.isFriend())))
+    {
+      i = 1;
+      if ((localQQUserUIItem == null) || (!localQQUserUIItem.isMe())) {
+        break label197;
+      }
+      j = 1;
+      if ((localQQUserUIItem == null) || (!localQQUserUIItem.isVip())) {
+        break label202;
+      }
+      k = 1;
+      if (paramStoryVideoItem.mBanType != 1000) {
+        break label208;
+      }
+      m = 1;
+      if (paramStoryVideoItem.mStoryType != 2) {
+        break label214;
+      }
+      n = 1;
+      i1 = a().mUIStyle.bottomWidgetShowFlag;
+      switch (i1)
+      {
+      default: 
+        if ((m == 0) && ((i == 0) || (paramStoryVideoItem.mBanType != 0)) && (j == 0) && (k == 0) && (n == 0)) {
+          break;
+        }
+      }
+    }
+    label197:
+    label202:
+    label208:
+    label214:
+    while ((i != 0) && (i1 == 3))
+    {
+      return true;
+      i = 0;
+      break;
+      j = 0;
+      break label83;
+      k = 0;
+      break label99;
+      m = 0;
+      break label112;
+      n = 0;
+      break label123;
+      veg.d(this.jdField_b_of_type_JavaLangString, "show BottomWidget because flag 1");
+      return true;
+      veg.d(this.jdField_b_of_type_JavaLangString, "hide BottomWidget because flag 2");
+      return false;
+    }
+    return false;
+  }
+  
+  private void c(StoryVideoItem paramStoryVideoItem)
+  {
+    Object localObject = ((StoryPlayerGroupHolder)a()).a();
+    if (localObject != null) {
+      ((VideoViewVideoHolder)localObject).c(true);
+    }
+    localObject = new uih(this, (VideoViewVideoHolder)localObject, paramStoryVideoItem);
+    localObject = bbcv.a(b(), 230, 2131558906, ajyc.a(2131706884), null, ajyc.a(2131706882), ajyc.a(2131706889), (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
+    ((bbgg)localObject).setCancelable(false);
+    ((bbgg)localObject).getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    ((bbgg)localObject).show();
+    vel.a("play_video", "exp_del", 0, 0, new String[] { "", "", "", paramStoryVideoItem.mVid });
+    vel.a("play_video", "clk_delete", 0, 0, new String[] { "", "2", "", paramStoryVideoItem.mVid });
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_Uav == null) {}
+    VideoListFeedItem localVideoListFeedItem;
+    StoryVideoItem localStoryVideoItem;
+    QQUserUIItem localQQUserUIItem;
+    int i;
+    boolean bool;
+    bfol localbfol;
+    do
+    {
+      return;
+      localObject = ((StoryPlayerGroupHolder)a()).a();
+      localVideoListFeedItem = this.jdField_a_of_type_Uav.a();
+      localStoryVideoItem = this.jdField_a_of_type_Uav.a();
+      localQQUserUIItem = ((tdo)tdc.a(2)).c(localStoryVideoItem.mOwnerUid);
+      if ((localQQUserUIItem == null) || (!localQQUserUIItem.isVip())) {
+        break;
+      }
+      i = 1;
+      bool = tsu.a(localStoryVideoItem);
+      localbfol = (bfol)bfoy.b(b(), null);
+      localbfol.a(ajyc.a(2131706881), 5);
+      localbfol.c(2131690596);
+      AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
+      localbfol.a(new uib(this, localStoryVideoItem, (VideoViewVideoHolder)localObject, localAtomicBoolean, localbfol));
+      localbfol.a(new uid(this, localAtomicBoolean, (VideoViewVideoHolder)localObject));
+    } while (localbfol.isShowing());
+    localbfol.show();
+    if (localObject != null) {
+      ((VideoViewVideoHolder)localObject).c(true);
+    }
+    label185:
+    int j;
+    if (i != 0)
+    {
+      i = 1;
+      j = vel.a(localVideoListFeedItem);
+      if (!bool) {
+        break label247;
+      }
+    }
+    label247:
+    for (Object localObject = "2";; localObject = "1")
+    {
+      vel.a("play_video", "clk_more_play", i, j, new String[] { localObject, String.valueOf(vel.a(localQQUserUIItem)), localStoryVideoItem.mVid });
+      return;
+      i = 0;
+      break;
+      i = 2;
+      break label185;
+    }
+  }
+  
+  private void e()
+  {
+    if (this.jdField_a_of_type_Uav == null) {}
+    VideoViewVideoHolder localVideoViewVideoHolder;
+    do
+    {
+      bfol localbfol;
+      do
+      {
+        return;
+        localVideoViewVideoHolder = ((StoryPlayerGroupHolder)a()).a();
+        StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_Uav.a();
+        localbfol = (bfol)bfoy.b(b(), null);
+        localbfol.a(ajyc.a(2131706878), 5);
+        localbfol.c(2131690596);
+        AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
+        localbfol.a(new uie(this, localStoryVideoItem, localAtomicBoolean, localbfol));
+        localbfol.a(new uif(this, localAtomicBoolean, localVideoViewVideoHolder));
+      } while (localbfol.isShowing());
+      localbfol.show();
+    } while (localVideoViewVideoHolder == null);
+    localVideoViewVideoHolder.c(true);
+  }
+  
+  public String a()
+  {
+    return "MoreVideoInfoWidget";
+  }
+  
+  public String a(StoryVideoItem paramStoryVideoItem)
+  {
+    if (paramStoryVideoItem.isUploadFail()) {
+      return "3";
+    }
+    if (paramStoryVideoItem.isUploading()) {
+      return "1";
+    }
+    return "2";
+  }
+  
+  protected tpe a(trz paramtrz)
+  {
+    if (paramtrz == null) {}
+    for (this.jdField_a_of_type_Tpe = tpe.a(b());; this.jdField_a_of_type_Tpe = tpe.a(b(), paramtrz)) {
+      return this.jdField_a_of_type_Tpe;
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    new uia(this);
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    if (this.jdField_a_of_type_Uav == null) {
+      return;
+    }
+    if (!vyp.a(QQStoryContext.a().a()))
+    {
+      bcpw.a(BaseApplicationImpl.getApplication().getApplicationContext(), 1, ajyc.a(2131706888), 0).a();
+      return;
+    }
+    bcpw.a(b(), ajyc.a(2131706885), 0).a();
+    new tla().a(paramStoryVideoItem.mVid);
+    uwg localuwg = (uwg)tdc.a(12);
+    localuwg.a(this.jdField_a_of_type_Uav.jdField_b_of_type_JavaLangString, 0, paramStoryVideoItem);
+    localuwg.a(this.jdField_a_of_type_Uav.jdField_b_of_type_JavaLangString, 1, paramStoryVideoItem);
+    paramStoryVideoItem = new tld(new ErrorMessage(), paramStoryVideoItem.mVid);
+    ste.a().dispatch(paramStoryVideoItem);
+  }
+  
+  public void a(@NonNull Map<Subscriber, String> paramMap)
+  {
+    paramMap.put(new uiw(this), "");
+    paramMap.put(new uio(this), "");
+    paramMap.put(new uim(this), "");
+    paramMap.put(new uin(this), "");
+    paramMap.put(new uip(this), "");
+    paramMap.put(new uil(this), "");
+    paramMap.put(new uiq(this), "");
+    this.jdField_a_of_type_Uir = new uir(this);
+    a(this.jdField_a_of_type_Uir);
+  }
+  
+  public void a(trz paramtrz)
+  {
+    if (this.jdField_a_of_type_Uav == null) {
+      return;
+    }
+    Object localObject1 = (tdo)tdc.a(2);
+    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_Uav.a();
+    if (localStoryVideoItem == null)
+    {
+      veg.e(this.jdField_b_of_type_JavaLangString, "click error , video info not found , vid :%s", new Object[] { this.jdField_a_of_type_Uav.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    VideoListFeedItem localVideoListFeedItem = this.jdField_a_of_type_Uav.a();
+    QQUserUIItem localQQUserUIItem = ((tdo)localObject1).b(localStoryVideoItem.mOwnerUid);
+    boolean bool2;
+    boolean bool3;
+    label105:
+    boolean bool8;
+    boolean bool4;
+    label128:
+    int i;
+    label141:
+    boolean bool5;
+    long l1;
+    boolean bool1;
+    Object localObject2;
+    Object localObject3;
+    label324:
+    boolean bool7;
+    boolean bool6;
+    if ((localQQUserUIItem != null) && (localQQUserUIItem.isVip))
+    {
+      bool2 = true;
+      if (localStoryVideoItem.mStoryType != 2) {
+        break label834;
+      }
+      bool3 = true;
+      bool8 = tsu.a(localStoryVideoItem);
+      if ((localQQUserUIItem == null) || (localQQUserUIItem.relationType != 0)) {
+        break label840;
+      }
+      bool4 = true;
+      if (localStoryVideoItem.mBanType != 1000) {
+        break label846;
+      }
+      i = 1;
+      long l2 = 0L;
+      bool5 = false;
+      l1 = l2;
+      if ((this.jdField_a_of_type_Two instanceof txc))
+      {
+        localObject1 = ((txc)this.jdField_a_of_type_Two).jdField_a_of_type_Tfi;
+        bool1 = tgb.a(QQStoryContext.a()).a(((txc)this.jdField_a_of_type_Two).a());
+        bool5 = bool1;
+        l1 = l2;
+        if (bool1)
+        {
+          l1 = ((tfi)localObject1).a(localStoryVideoItem.mVid);
+          bool5 = bool1;
+        }
+      }
+      if ((localStoryVideoItem.mStoryType != 2) || (TextUtils.isEmpty(b()))) {
+        break label1377;
+      }
+      localObject1 = ((umy)tdc.a(7)).a(b());
+      if (localObject1 == null) {
+        break label1377;
+      }
+      localObject2 = ((TroopManager)tsu.a().getManager(52)).c(String.valueOf(((ShareGroupItem)localObject1).groupUin));
+      localObject3 = tsu.a().getCurrentAccountUin();
+      if ((localObject2 == null) || ((!((TroopInfo)localObject2).isTroopAdmin((String)localObject3)) && (!((TroopInfo)localObject2).isTroopOwner((String)localObject3)))) {
+        break label851;
+      }
+      bool1 = true;
+      bool7 = ((ShareGroupItem)localObject1).isOwner();
+      bool6 = bool1;
+      bool1 = bool7;
     }
     for (;;)
     {
-      int m;
-      int k;
-      try
+      localObject3 = ((StoryPlayerGroupHolder)a()).a();
+      int j;
+      if (bool3)
       {
-        localRspDelAllMessage.mergeFrom(paramArrayOfByte);
-        if (!localRspDelAllMessage.errinfo.error_code.has()) {
-          break label239;
-        }
-        i = localRspDelAllMessage.errinfo.error_code.get();
-        j = i;
-        if (j == 0) {
-          i = 1;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        m = 0;
-        k = j;
-      }
-      try
-      {
-        paramBundle.error_code.set(localRspDelAllMessage.errinfo.error_code.get());
-        paramBundle.error_desc.set(localRspDelAllMessage.errinfo.error_desc.get());
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqstory.msgList", 2, "receive delete all msg, code=" + paramInt + " bizCode=" + j);
-        }
-        if (i == 0) {
-          bbmy.a(this.a.getApplicationContext(), 1, ajjy.a(2131648721), 0).a();
-        }
-        return paramBundle;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
+        j = c();
+        if (localVideoListFeedItem != null)
         {
-          k = j;
-          m = i;
+          localObject1 = localVideoListFeedItem.feedId;
+          label373:
+          vel.a("story_grp", "video_more", j, 0, new String[] { "", "", "", localObject1 });
+          if (localObject3 != null) {
+            ((VideoViewVideoHolder)localObject3).c(true);
+          }
+          new uig(this, new Boolean[] { Boolean.valueOf(false) }, (VideoViewVideoHolder)localObject3);
+          if ((this.jdField_a_of_type_Bfol != null) && (this.jdField_a_of_type_Bfol.isShowing())) {
+            this.jdField_a_of_type_Bfol.dismiss();
+          }
+          if (localVideoListFeedItem != null) {
+            break label940;
+          }
+          localObject2 = null;
+          label473:
+          if (c() != 12) {
+            break label950;
+          }
+          bool7 = true;
+          label485:
+          boolean bool9 = a().mUIStyle.showVideoNoInteresting;
+          if ((this.jdField_a_of_type_Two instanceof txc)) {
+            ((txc)this.jdField_a_of_type_Two).a();
+          }
+          if ((this.jdField_a_of_type_Two instanceof twd))
+          {
+            localObject1 = (twd)this.jdField_a_of_type_Two;
+            if (((twd)localObject1).a != null)
+            {
+              localObject1 = ((twd)localObject1).a.jdField_a_of_type_JavaLangString;
+              localObject1 = this.jdField_a_of_type_Uwa.a((String)localObject1, true);
+              if (((localObject1 instanceof GeneralRecommendFeedItem)) || (!(localObject1 instanceof TagFeedItem))) {}
+            }
+          }
+          veg.d(this.jdField_b_of_type_JavaLangString, "onShareMoreClick, vip=%s, troop=%s, mine=%s, friend=%s, memory=%s, vid=%s, isShareGroupOwner=%s, isTroopManager=%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool8), Boolean.valueOf(bool4), Boolean.valueOf(bool7), localStoryVideoItem.mVid, Boolean.valueOf(bool1), Boolean.valueOf(bool6) });
+          if (this.jdField_a_of_type_Uav.a().isGameVideo()) {
+            vel.a("video_game", "clk_challenge", 0, 0, new String[] { "", "", this.jdField_a_of_type_Uav.a().getVideoGameInfo().jdField_a_of_type_JavaLangString });
+          }
+          if (!bool3) {
+            break label1032;
+          }
+          if ((!bool1) && (!bool8)) {
+            break label956;
+          }
+          localObject1 = Arrays.asList(new int[][] { { 10, 7, 8 } });
         }
       }
-      int i = 0;
-      continue;
-      j = k;
-      i = m;
-      if (QLog.isColorLevel())
+      for (;;)
       {
-        QLog.i("Q.qqstory.msgList", 2, "error parse RspDelAllMessage", paramArrayOfByte);
-        j = k;
-        i = m;
-        continue;
-        label239:
+        a(paramtrz).a((List)localObject1).a().a(new tqg(localStoryVideoItem, bool7, (String)localObject2)).a(new uis(this, bool7, localVideoListFeedItem, (String)localObject2, localStoryVideoItem, bool8, (VideoViewVideoHolder)localObject3, bool2, localQQUserUIItem, bool5, l1)).b();
+        return;
+        bool2 = false;
+        break;
+        label834:
+        bool3 = false;
+        break label105;
+        label840:
+        bool4 = false;
+        break label128;
+        label846:
         i = 0;
+        break label141;
+        label851:
+        bool1 = false;
+        break label324;
+        localObject1 = "";
+        break label373;
+        label871:
+        int k;
+        if (bool2)
+        {
+          j = 1;
+          k = vel.a(localVideoListFeedItem);
+          if (!bool8) {
+            break label933;
+          }
+        }
+        label933:
+        for (localObject1 = "2";; localObject1 = "1")
+        {
+          vel.a("play_video", "clk_more_play", j, k, new String[] { localObject1, String.valueOf(vel.a(localQQUserUIItem)), localStoryVideoItem.mVid });
+          break;
+          j = 2;
+          break label871;
+        }
+        label940:
+        localObject2 = localVideoListFeedItem.feedId;
+        break label473;
+        label950:
+        bool7 = false;
+        break label485;
+        label956:
+        if (bool6) {
+          localObject1 = Arrays.asList(new int[][] { { 10, 7, 9, 8 } });
+        } else {
+          localObject1 = Arrays.asList(new int[][] { { 10, 7, 9 } });
+        }
       }
+      label1032:
+      if (bool8)
+      {
+        a(paramtrz).a(Arrays.asList(new int[][] { { 1, 2, 3, 4, 5 }, { 6, 7, 8 } })).a(2131719497).a(new tqg(localStoryVideoItem, bool7, (String)localObject2)).a(new uis(this, bool7, localVideoListFeedItem, (String)localObject2, localStoryVideoItem, bool8, (VideoViewVideoHolder)localObject3, bool2, localQQUserUIItem, bool5, l1)).b();
+        return;
+      }
+      if (bool4)
+      {
+        a(paramtrz).a(Arrays.asList(new int[][] { { 10, 7, 9 } })).a().a(new tqg(localStoryVideoItem, bool7, (String)localObject2)).a(new uis(this, bool7, localVideoListFeedItem, (String)localObject2, localStoryVideoItem, bool8, (VideoViewVideoHolder)localObject3, bool2, localQQUserUIItem, bool5, l1)).b();
+        return;
+      }
+      if ((!bool2) && (i == 0)) {
+        break;
+      }
+      a(paramtrz).a(Arrays.asList(new int[][] { { 1, 2, 3, 4, 5 }, { 6, 9 } })).a(2131719497).a(new tqg(localStoryVideoItem, bool7, (String)localObject2)).a(new uis(this, bool7, localVideoListFeedItem, (String)localObject2, localStoryVideoItem, bool8, (VideoViewVideoHolder)localObject3, bool2, localQQUserUIItem, bool5, l1)).b();
+      return;
+      label1377:
+      bool1 = false;
+      bool6 = false;
     }
+  }
+  
+  public void a(@NonNull uav paramuav, @NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    veg.a(this.jdField_b_of_type_JavaLangString, "bindData=%s", paramuav);
+    j();
+  }
+  
+  public boolean a(@NonNull uav paramuav, @NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    return (!a().mUIStyle.hideMoreIcon) && ((paramuav.jdField_a_of_type_Tfi == null) || (paramuav.jdField_a_of_type_Tfi.a != 13));
+  }
+  
+  public int b()
+  {
+    return -1;
+  }
+  
+  public void b(StoryVideoItem paramStoryVideoItem)
+  {
+    Object localObject = ((StoryPlayerGroupHolder)a()).a();
+    uwg localuwg = (uwg)tdc.a(12);
+    if (localObject != null) {
+      ((VideoViewVideoHolder)localObject).c(true);
+    }
+    localObject = new uii(this, (VideoViewVideoHolder)localObject, paramStoryVideoItem, localuwg);
+    localObject = bbcv.a(b(), 230, 2131558906, ajyc.a(2131706875), null, ajyc.a(2131706880), ajyc.a(2131706887), (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
+    ((bbgg)localObject).setCancelable(false);
+    ((bbgg)localObject).getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    ((bbgg)localObject).show();
+    vel.a("play_video", "exp_del", 0, 0, new String[] { "", "", "", paramStoryVideoItem.mVid });
+    vel.a("play_video", "clk_delete", 0, 0, new String[] { "", "1", "", paramStoryVideoItem.mVid });
+  }
+  
+  public void f() {}
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_Svb != null) {
+      this.jdField_a_of_type_Svb.a();
+    }
+    if (this.jdField_a_of_type_Uir != null) {
+      b(this.jdField_a_of_type_Uir);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i = 1;
+    if (this.jdField_a_of_type_Uav == null) {
+      return;
+    }
+    paramView = this.jdField_a_of_type_Uav.a();
+    if (paramView == null)
+    {
+      veg.e(this.jdField_b_of_type_JavaLangString, "click error , video info not found , vid :%s", new Object[] { this.jdField_a_of_type_Uav.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    if (paramView.mStoryType == 2) {}
+    boolean bool;
+    for (;;)
+    {
+      bool = a(paramView);
+      if (i == 0) {
+        break;
+      }
+      a(null);
+      return;
+      i = 0;
+    }
+    if (tsu.a(paramView))
+    {
+      if ((paramView.isUploadFail()) || (paramView.isUploading()))
+      {
+        e();
+        return;
+      }
+      a(null);
+      return;
+    }
+    if (bool)
+    {
+      a(null);
+      return;
+    }
+    d();
   }
 }
 

@@ -1,25 +1,38 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.widget.ARMapHongBaoListView;
 
 class tie
-  implements View.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
-  tie(tia paramtia) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onClick(View paramView)
+  tie(thy paramthy) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    paramView = tia.a(this.a).a();
-    if (!badq.g(paramView))
+    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+    if (paramInt == 0)
     {
-      bbmy.a(paramView, 1, 2131628946, 0).a();
+      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Thy.jdField_a_of_type_Thk.d();
+      }
       return;
     }
-    urk.d("Q.qqstory.playernew.StoryPlayerImpl", "updateData error, retry, requestGroupData, currentInfo = %s", new Object[] { tia.a(this.a) });
-    tia.a(this.a).setVisibility(0);
-    tia.a(this.a).removeCallbacks(tia.a(this.a));
-    tia.a(this.a).postDelayed(tia.a(this.a), 500L);
+    thy.a(this.jdField_a_of_type_Thy);
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 > 0) {}
+    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
+    {
+      if (this.jdField_a_of_type_Thy.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.isDirty()) {
+        this.jdField_a_of_type_Thy.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.invalidate();
+      }
+      return;
+    }
   }
 }
 

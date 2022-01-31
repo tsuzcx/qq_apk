@@ -1,24 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-
-public class atzm
-  implements Animation.AnimationListener
+public abstract class atzm
+  implements ajtg
 {
-  public atzm(BreatheEffectView paramBreatheEffectView) {}
+  protected void a(Object paramObject) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.a();
+    if ((105 == paramInt) && (paramBoolean)) {
+      a(paramObject);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     atzm
  * JD-Core Version:    0.7.0.1
  */

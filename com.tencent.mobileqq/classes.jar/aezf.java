@@ -1,68 +1,80 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Button;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.ThemeImageView;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aezf
-  extends aeyf
-  implements View.OnClickListener
+  implements aeyv, View.OnClickListener
 {
-  public aezf(Context paramContext, QQAppInterface paramQQAppInterface, aicw paramaicw, atcu paramatcu)
+  public static String a;
+  private aeyx jdField_a_of_type_Aeyx;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String b;
+  
+  static
   {
-    super(paramContext, paramQQAppInterface, paramaicw, paramatcu);
+    jdField_a_of_type_JavaLangString = "https://imgcache.qq.com/club/client/group/release/index.html?_bid=199&groupId=";
   }
   
-  public View a(int paramInt, View paramView)
+  public aezf(QQAppInterface paramQQAppInterface, Context paramContext, aeyx paramaeyx)
   {
-    View localView;
-    Object localObject;
-    if ((paramView == null) || (!(paramView.getTag() instanceof aezg)))
-    {
-      paramView = new aezg();
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495342, null);
-      localObject = new Rect();
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-      a(localView, ((Rect)localObject).height() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131167766) - bajq.a(80.0F));
-      paramView.a = ((Button)localView.findViewById(2131301633));
-      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        paramView.a.setBackgroundResource(2130839020);
-      }
-      localObject = (ThemeImageView)localView.findViewById(2131301630);
-      ((ThemeImageView)localObject).setSupportMaskView(true);
-      ((ThemeImageView)localObject).setMaskShape(beog.b);
-      localView.setTag(paramView);
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A5D3", "0X800A5D3", 0, 0, "1", "", "", "");
-      localObject = paramView;
-    }
-    for (;;)
-    {
-      ((aezg)localObject).a.setOnClickListener(this);
-      return localView;
-      localObject = (aezg)paramView.getTag();
-      localView = paramView;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Aeyx = paramaeyx;
+  }
+  
+  public int a()
+  {
+    return 25;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558591, null);
+    paramVarArgs.setOnClickListener(this);
+    return paramVarArgs;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 21;
   }
   
   public void onClick(View paramView)
   {
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A5D4", "0X800A5D4", 0, 0, "1", "", "", "");
-    if (badq.d(this.jdField_a_of_type_AndroidContentContext))
+    switch (paramView.getId())
     {
-      paramView = (afgd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(295);
-      if (paramView != null) {
-        paramView.b(true);
-      }
+    default: 
       return;
     }
-    bbmy.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131626719), 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeBigTroopTipsBar", 2, "click tips, jump");
+    }
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", jdField_a_of_type_JavaLangString + this.b + "&from=aio");
+    paramView.putExtra("hide_operation_bar", true);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a(this.b, 3);
+    this.jdField_a_of_type_Aeyx.a();
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_up", "", "Grp_AIO", "clk", 0, 0, this.b, "", "", "");
   }
 }
 

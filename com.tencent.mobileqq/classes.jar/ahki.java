@@ -1,44 +1,32 @@
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class ahki
-  implements axrt
+  implements View.OnClickListener
 {
-  public void onResp(axsq paramaxsq)
-  {
-    Object localObject = (ahkl)paramaxsq.jdField_a_of_type_Axsp.a();
-    krx.c("VideoFilterTools", "download file call back. file = " + ((ahkl)localObject).a);
-    if (paramaxsq.jdField_a_of_type_Int != 0)
-    {
-      krx.c("VideoFilterTools", "download file faild. errcode = " + paramaxsq.b);
-      return;
-    }
-    if (!((ahkl)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramaxsq.jdField_a_of_type_Axsp.c)))
-    {
-      krx.c("VideoFilterTools", "download file faild : md5 is not match.");
-      bace.d(paramaxsq.jdField_a_of_type_Axsp.c);
-      return;
-    }
-    krx.c("VideoFilterTools", "download file successed.");
-    try
-    {
-      localObject = ahkg.a();
-      bace.a(paramaxsq.jdField_a_of_type_Axsp.c, (String)localObject, false);
-      bace.d(paramaxsq.jdField_a_of_type_Axsp.c);
-      return;
-    }
-    catch (IOException paramaxsq)
-    {
-      paramaxsq.printStackTrace();
-      krx.c("VideoFilterTools", "BEAUTY_ZIP unzip file faild.");
-    }
-  }
+  ahki(ahkf paramahkf, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper close banner");
+    }
+    paramView = (QQAppInterface)ahkf.a(this.jdField_a_of_type_Ahkf).getAppRuntime();
+    this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.a();
+    UpgradeTIMWrapper.a(paramView, this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper);
+    ahkf.a(this.jdField_a_of_type_Ahkf).obtainMessage(20).sendToTarget();
+    axqw.b(paramView, "CliOper", "", "", "0X800865A", "0X800865A", 0, 0, "", "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahki
  * JD-Core Version:    0.7.0.1
  */

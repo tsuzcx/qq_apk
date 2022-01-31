@@ -7,9 +7,9 @@ import com.tencent.hlyyb.downloader.DownloaderTaskCategory;
 import com.tencent.tmassistantbase.network.INetworkChangedObserver;
 import com.tencent.tmassistantbase.network.NetworkMonitorReceiver;
 import com.tencent.tmassistantbase.util.GlobalUtil;
+import com.tencent.tmassistantbase.util.aa;
 import com.tencent.tmassistantbase.util.ab;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.p;
+import com.tencent.tmassistantbase.util.o;
 import com.tencent.tmdownloader.internal.storage.a;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -40,19 +40,19 @@ public class ApkDownloadManager
   
   public void AddDownloadListener(h paramh)
   {
-    ac.c("ApkDownloadManager", "call AddDownloadListener, dl: " + paramh);
+    ab.c("ApkDownloadManager", "call AddDownloadListener, dl: " + paramh);
     f.a().a(paramh);
   }
   
   public void RemoveDownloadListener(h paramh)
   {
-    ac.c("ApkDownloadManager", "call RemoveDownloadListener, dl: " + paramh);
+    ab.c("ApkDownloadManager", "call RemoveDownloadListener, dl: " + paramh);
     f.a().b(paramh);
   }
   
   public void cancelDownload(String paramString)
   {
-    ac.c("ApkDownloadManager", "call cancelDownload, url: " + paramString);
+    ab.c("ApkDownloadManager", "call cancelDownload, url: " + paramString);
     paramString = (c)this.mDownloads.remove(paramString);
     if (paramString != null) {
       paramString.e();
@@ -61,7 +61,7 @@ public class ApkDownloadManager
   
   public void continueDownload(String paramString)
   {
-    ac.c("ApkDownloadManager", "call continueDownload, url: " + paramString);
+    ab.c("ApkDownloadManager", "call continueDownload, url: " + paramString);
     paramString = (c)this.mDownloads.get(paramString);
     if (paramString != null) {
       paramString.c();
@@ -70,7 +70,7 @@ public class ApkDownloadManager
   
   public void deleteDownload(String paramString)
   {
-    ac.c("ApkDownloadManager", "call deleteDownload, url: " + paramString);
+    ab.c("ApkDownloadManager", "call deleteDownload, url: " + paramString);
     paramString = (c)this.mDownloads.remove(paramString);
     if (paramString != null) {
       paramString.f();
@@ -81,7 +81,7 @@ public class ApkDownloadManager
   {
     if ((this.mLeaving) || (GlobalUtil.getInstance().getContext() == null))
     {
-      ac.e("ApkDownloadManager", "init failed: mLeaving = " + this.mLeaving + ", context = " + GlobalUtil.getInstance().getContext());
+      ab.e("ApkDownloadManager", "init failed: mLeaving = " + this.mLeaving + ", context = " + GlobalUtil.getInstance().getContext());
       return;
     }
     long l = System.currentTimeMillis();
@@ -90,19 +90,19 @@ public class ApkDownloadManager
     HalleyAgent.getDownloader().setPhoneGuid((String)localObject);
     HalleyAgent.getDownloader().setTaskNumForCategory(DownloaderTaskCategory.Cate_DefaultMass, 3);
     HalleyAgent.getDownloader().setNotNetworkWaitMillis(5000);
-    ac.c("ApkDownloadManager", "Start to load DownloadInfo list.");
+    ab.c("ApkDownloadManager", "Start to load DownloadInfo list.");
     this.mDownloads.clear();
     localObject = a.a().b();
     if (localObject != null)
     {
-      ac.c("ApkDownloadManager", "The size of downloadinfo_list: " + ((ArrayList)localObject).size());
+      ab.c("ApkDownloadManager", "The size of downloadinfo_list: " + ((ArrayList)localObject).size());
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         c localc = (c)((Iterator)localObject).next();
         if (localc != null)
         {
-          ac.c("ApkDownloadManager", "---------------load download info---------------");
+          ab.c("ApkDownloadManager", "---------------load download info---------------");
           localc.a("ApkDownloadManager");
           if (!TextUtils.isEmpty(localc.b)) {
             this.mDownloads.put(localc.b, localc);
@@ -116,10 +116,10 @@ public class ApkDownloadManager
         }
       }
     }
-    ac.c("ApkDownloadManager", "Add NetworkChangedObserver to NetworkMonitorReceiver");
+    ab.c("ApkDownloadManager", "Add NetworkChangedObserver to NetworkMonitorReceiver");
     NetworkMonitorReceiver.getInstance().addNetworkChangedObserver(this);
     this.mLastNetType = b.a();
-    ab.a("ApkDownloadManager init end, timeCost = " + (System.currentTimeMillis() - l));
+    aa.a("ApkDownloadManager init end, timeCost = " + (System.currentTimeMillis() - l));
   }
   
   public Boolean isAllDownloadFinished()
@@ -137,8 +137,8 @@ public class ApkDownloadManager
   {
     try
     {
-      ac.c("ApkDownloadManager", "halleytest onNetworkChanged and isNetworkConncted=" + b.b() + ",isAutoDownloadOrPause=" + g.a().c());
-      p.c();
+      ab.c("ApkDownloadManager", "halleytest onNetworkChanged and isNetworkConncted=" + b.b() + ",isAutoDownloadOrPause=" + g.a().c());
+      o.c();
       if ((b.b()) && (g.a().c()))
       {
         String str = b.a();
@@ -148,17 +148,17 @@ public class ApkDownloadManager
           c localc = (c)this.mDownloads.get(localIterator.next());
           if ((localc != null) && (!TextUtils.isEmpty(str)))
           {
-            ac.c("ApkDownloadManager", "halleytest onNetworkChanged and di.mAppName = " + localc.E + ",di.mStatus=" + localc.g + ",di.mIsPausedByMobl=" + localc.G);
+            ab.c("ApkDownloadManager", "halleytest onNetworkChanged and di.mAppName = " + localc.E + ",di.mStatus=" + localc.g + ",di.mIsPausedByMobl=" + localc.G);
             if (((localc.g == 3) && (localc.G)) || ((localc.g == 5) && (g.a().a(this.mLastNetType, str))))
             {
-              ac.c("ApkDownloadManager", "halleytest onNetworkChanged di.mAppName = " + localc.E + "and startDownloadIfReady");
+              ab.c("ApkDownloadManager", "halleytest onNetworkChanged di.mAppName = " + localc.E + "and startDownloadIfReady");
               localc.c();
             }
             if (((localc.g == 2) || (localc.g == 1)) && (g.a().b(this.mLastNetType, str)))
             {
               localc.d();
               localc.G = true;
-              ac.c("ApkDownloadManager", "halleytest onNetworkChanged di.mAppName = " + localc.E + "and pauseDownload, di.mIsPausedByMoble=" + localc.G);
+              ab.c("ApkDownloadManager", "halleytest onNetworkChanged di.mAppName = " + localc.E + "and pauseDownload, di.mIsPausedByMoble=" + localc.G);
             }
           }
         }
@@ -170,7 +170,7 @@ public class ApkDownloadManager
   
   public void pauseDownload(String paramString)
   {
-    ac.c("ApkDownloadManager", "call pauseDownload, url: " + paramString);
+    ab.c("ApkDownloadManager", "call pauseDownload, url: " + paramString);
     paramString = (c)this.mDownloads.get(paramString);
     if (paramString != null) {
       paramString.d();
@@ -226,7 +226,7 @@ public class ApkDownloadManager
   
   public List<c> queryDownloadInfoByVia(String paramString)
   {
-    ac.b("ApkDownloadManager", "ApkDownloadManager queryDownloadInfoByVia" + paramString);
+    ab.b("ApkDownloadManager", "ApkDownloadManager queryDownloadInfoByVia" + paramString);
     if (paramString == null) {
       return null;
     }
@@ -247,7 +247,7 @@ public class ApkDownloadManager
   
   public void restartDownload(String paramString)
   {
-    ac.c("ApkDownloadManager", "call restartDownload, url: " + paramString);
+    ab.c("ApkDownloadManager", "call restartDownload, url: " + paramString);
     paramString = (c)this.mDownloads.get(paramString);
     if (paramString != null) {
       paramString.c();
@@ -271,12 +271,12 @@ public class ApkDownloadManager
     //   25: iload_2
     //   26: invokevirtual 196	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   29: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokestatic 75	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   32: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   35: invokestatic 275	com/tencent/tmdownloader/internal/downloadservice/b:b	()Z
     //   38: ifne +13 -> 51
     //   41: ldc 10
     //   43: ldc_w 391
-    //   46: invokestatic 75	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   49: iconst_1
     //   50: ireturn
     //   51: invokestatic 248	com/tencent/tmdownloader/internal/downloadservice/b:a	()Ljava/lang/String;
@@ -288,7 +288,7 @@ public class ApkDownloadManager
     //   69: ifeq +13 -> 82
     //   72: ldc 10
     //   74: ldc_w 399
-    //   77: invokestatic 75	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   77: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   80: iconst_2
     //   81: ireturn
     //   82: aload_1
@@ -296,7 +296,7 @@ public class ApkDownloadManager
     //   86: ifne +13 -> 99
     //   89: ldc 10
     //   91: ldc_w 403
-    //   94: invokestatic 75	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   94: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   97: iconst_3
     //   98: ireturn
     //   99: aload_1
@@ -305,7 +305,7 @@ public class ApkDownloadManager
     //   104: ifeq +13 -> 117
     //   107: ldc 10
     //   109: ldc_w 405
-    //   112: invokestatic 75	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   112: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   115: iconst_4
     //   116: ireturn
     //   117: aload_0
@@ -408,7 +408,7 @@ public class ApkDownloadManager
     //   374: getfield 448	com/tencent/tmdownloader/internal/downloadservice/c:I	J
     //   377: invokevirtual 253	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   380: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   383: invokestatic 354	com/tencent/tmassistantbase/util/ac:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   383: invokestatic 354	com/tencent/tmassistantbase/util/ab:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   386: aload 5
     //   388: getstatic 467	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_UIN	Ljava/lang/String;
     //   391: invokeinterface 416 2 0
@@ -531,7 +531,7 @@ public class ApkDownloadManager
     //   707: iload 6
     //   709: invokevirtual 132	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   712: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   715: invokestatic 75	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   715: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   718: aload 5
     //   720: ifnull +852 -> 1572
     //   723: aload 7
@@ -556,7 +556,7 @@ public class ApkDownloadManager
     //   776: getfield 541	com/tencent/tmdownloader/internal/downloadservice/c:L	Ljava/lang/String;
     //   779: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   782: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   785: invokestatic 75	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   785: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   788: ldc 10
     //   790: new 55	java/lang/StringBuilder
     //   793: dup
@@ -567,7 +567,7 @@ public class ApkDownloadManager
     //   805: getfield 547	com/tencent/tmdownloader/internal/downloadservice/c:M	Ljava/lang/String;
     //   808: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   811: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   814: invokestatic 75	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   814: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   817: aload 7
     //   819: astore 8
     //   821: aload 7
@@ -663,7 +663,7 @@ public class ApkDownloadManager
     //   1046: getfield 448	com/tencent/tmdownloader/internal/downloadservice/c:I	J
     //   1049: invokevirtual 253	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   1052: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1055: invokestatic 354	com/tencent/tmassistantbase/util/ac:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1055: invokestatic 354	com/tencent/tmassistantbase/util/ab:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   1058: aload 5
     //   1060: getstatic 467	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_UIN	Ljava/lang/String;
     //   1063: invokeinterface 416 2 0
@@ -791,49 +791,49 @@ public class ApkDownloadManager
     //   1370: iload_2
     //   1371: invokevirtual 196	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1374: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1377: invokestatic 75	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1377: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   1380: iload_2
     //   1381: ireturn
     //   1382: astore 8
     //   1384: ldc 10
     //   1386: ldc_w 560
     //   1389: aload 8
-    //   1391: invokestatic 563	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1391: invokestatic 563	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1394: goto -1195 -> 199
     //   1397: astore 8
     //   1399: ldc 10
     //   1401: ldc_w 565
-    //   1404: invokestatic 567	com/tencent/tmassistantbase/util/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1404: invokestatic 567	com/tencent/tmassistantbase/util/ab:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   1407: goto -1130 -> 277
     //   1410: astore 8
     //   1412: ldc 10
     //   1414: ldc_w 569
     //   1417: aload 8
-    //   1419: invokestatic 563	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1419: invokestatic 563	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1422: goto -1112 -> 310
     //   1425: astore 8
     //   1427: ldc 10
     //   1429: ldc_w 571
     //   1432: aload 8
-    //   1434: invokestatic 563	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1434: invokestatic 563	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1437: goto -1094 -> 343
     //   1440: astore 8
     //   1442: ldc 10
     //   1444: ldc_w 573
     //   1447: aload 8
-    //   1449: invokestatic 563	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1449: invokestatic 563	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1452: goto -1033 -> 419
     //   1455: astore 8
     //   1457: ldc 10
     //   1459: ldc_w 575
     //   1462: aload 8
-    //   1464: invokestatic 563	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1464: invokestatic 563	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1467: goto -950 -> 517
     //   1470: astore 8
     //   1472: ldc 10
     //   1474: ldc_w 577
     //   1477: aload 8
-    //   1479: invokestatic 563	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1479: invokestatic 563	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1482: goto -896 -> 586
     //   1485: aload 7
     //   1487: getfield 327	com/tencent/tmdownloader/internal/downloadservice/c:a	Ljava/lang/String;
@@ -849,7 +849,7 @@ public class ApkDownloadManager
     //   1512: ifeq -881 -> 631
     //   1515: ldc 10
     //   1517: ldc_w 405
-    //   1520: invokestatic 75	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1520: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   1523: iconst_4
     //   1524: ireturn
     //   1525: aload 7
@@ -863,7 +863,7 @@ public class ApkDownloadManager
     //   1546: ifeq +127 -> 1673
     //   1549: ldc 10
     //   1551: ldc_w 405
-    //   1554: invokestatic 75	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1554: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   1557: iconst_4
     //   1558: ireturn
     //   1559: aload 7
@@ -873,43 +873,43 @@ public class ApkDownloadManager
     //   1569: goto -877 -> 692
     //   1572: ldc 10
     //   1574: ldc_w 579
-    //   1577: invokestatic 136	com/tencent/tmassistantbase/util/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1577: invokestatic 136	com/tencent/tmassistantbase/util/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1580: goto -763 -> 817
     //   1583: astore 7
     //   1585: ldc 10
     //   1587: ldc_w 560
     //   1590: aload 7
-    //   1592: invokestatic 563	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1592: invokestatic 563	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1595: goto -693 -> 902
     //   1598: astore 7
     //   1600: ldc 10
     //   1602: ldc_w 569
     //   1605: aload 7
-    //   1607: invokestatic 563	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1607: invokestatic 563	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1610: goto -625 -> 985
     //   1613: astore 7
     //   1615: ldc 10
     //   1617: ldc_w 571
     //   1620: aload 7
-    //   1622: invokestatic 563	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1622: invokestatic 563	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1625: goto -608 -> 1017
     //   1628: astore 7
     //   1630: ldc 10
     //   1632: ldc_w 581
     //   1635: aload 7
-    //   1637: invokestatic 563	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1637: invokestatic 563	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1640: goto -550 -> 1090
     //   1643: astore 7
     //   1645: ldc 10
     //   1647: ldc_w 575
     //   1650: aload 7
-    //   1652: invokestatic 563	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1652: invokestatic 563	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1655: goto -472 -> 1183
     //   1658: astore 7
     //   1660: ldc 10
     //   1662: ldc_w 577
     //   1665: aload 7
-    //   1667: invokestatic 563	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1667: invokestatic 563	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1670: goto -421 -> 1249
     //   1673: goto -1006 -> 667
     //   1676: goto -1009 -> 667
@@ -971,7 +971,7 @@ public class ApkDownloadManager
         localArrayList.add(localc);
       }
     }
-    ac.c("ApkDownloadManager", "Start to save DownloadInfo list.");
+    ab.c("ApkDownloadManager", "Start to save DownloadInfo list.");
     a.a().a(localArrayList);
   }
 }

@@ -1,71 +1,32 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPromoteTaskList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class tnv
-  implements tpx
+  extends tmb<qqstory_service.ReqGetPromoteTaskList>
 {
-  public tnv(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
+  public static final String b = sxp.a("StorySvc.get_promote_tasklist");
   
-  public void a(int paramInt)
+  public tnv(String paramString)
   {
-    urk.a(this.a.jdField_a_of_type_JavaLangString, "onPageSelected : position = %d", Integer.valueOf(paramInt));
-    int i = this.a.b;
-    this.a.b = paramInt;
-    Object localObject = this.a.a();
-    if (localObject != null)
-    {
-      localObject = (toi)((tog)localObject).a(toi.class);
-      if ((localObject != null) && (((toi)localObject).b.getVisibility() != 0)) {
-        this.a.a(true, true);
-      }
-    }
-    localObject = (tmv)this.a.b(tmv.class);
-    if (localObject != null) {
-      ((tmv)localObject).a().a(paramInt);
-    }
-    c(paramInt);
-    if (StoryPlayerGroupHolder.a(this.a) != null) {
-      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, i, paramInt);
-    }
+    super(b, new qqstory_service.ReqGetPromoteTaskList(), null);
+    ((qqstory_service.ReqGetPromoteTaskList)this.a).bytes_cookie.set(ByteStringMicro.copyFromUtf8(paramString));
   }
   
-  public void a(int paramInt1, float paramFloat, int paramInt2)
+  public syq a(byte[] paramArrayOfByte)
   {
-    if (StoryPlayerGroupHolder.a(this.a) != null) {
-      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt1, paramFloat, paramInt2);
-    }
-    tmv localtmv = (tmv)this.a.b(tmv.class);
-    if (localtmv != null) {
-      localtmv.a().a(paramInt1, paramFloat, paramInt2);
-    }
+    return new tnw(paramArrayOfByte);
   }
   
-  public void b(int paramInt)
+  protected byte[] a()
   {
-    if ((paramInt == 1) && (this.a.d()) && (this.a.c()))
-    {
-      ((tmv)this.a.b(tmv.class)).d();
-      urk.a(this.a.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onPageScrolled, showLoadingMoreWidget position=%d", Integer.valueOf(this.a.b));
-    }
-    tmv localtmv = (tmv)this.a.b(tmv.class);
-    if (localtmv != null) {
-      localtmv.a().b(paramInt);
-    }
-    if (StoryPlayerGroupHolder.a(this.a) != null) {
-      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt);
-    }
+    veg.a("GetPromoteTaskRequest", "encode: %s", this);
+    return super.a();
   }
   
-  public void c(int paramInt)
+  public String toString()
   {
-    urk.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected : position = %d", Integer.valueOf(paramInt));
-    tog localtog = this.a.a();
-    if ((localtog != null) && (TextUtils.equals(StoryPlayerGroupHolder.a(this.a).a().jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Tjs.jdField_a_of_type_JavaLangString)) && (!localtog.c()))
-    {
-      urk.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected, setSelected => %s", localtog);
-      this.a.a(localtog);
-    }
+    return vys.a(this.a);
   }
 }
 

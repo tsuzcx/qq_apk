@@ -1,80 +1,121 @@
-import android.app.Activity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import mqq.app.AppRuntime;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.PttSilkAndChangeVoiceSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class anps
-  extends RecyclerView.ViewHolder
+  extends anpi
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private anpu jdField_a_of_type_Anpu;
-  private ViewGroup b;
-  
-  public anps(View paramView, Activity paramActivity)
+  public anps(QQAppInterface paramQQAppInterface)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131309736));
-    this.b = ((ViewGroup)paramView.findViewById(2131299132));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311290));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131304499));
-    int i = aciy.a(4.0F, paramActivity.getResources());
-    paramView = new awur(-1, i * 3, i * 3, i);
-    this.b.setBackgroundDrawable(paramView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(null);
-    this.jdField_a_of_type_Anpu = new anpu(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Anpu);
-    paramView = new anux(paramActivity, 0, false);
-    paramView.setAutoMeasureEnabled(false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
+    super("qq.android.ptt.so.658", paramQQAppInterface);
   }
   
-  public static void a(int paramInt1, int paramInt2, int paramInt3)
+  public int a()
   {
-    bgqx localbgqx = new bgqx();
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    String str = "";
-    if (localAppRuntime != null) {
-      str = localAppRuntime.getAccount();
-    }
-    long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localbgqx.b = (str + "_" + l);
-    localbgqx.jdField_a_of_type_Int = 1;
-    localbgqx.jdField_e_of_type_JavaLangString = "tianshu.78";
-    localbgqx.jdField_f_of_type_JavaLangString = "tianshu.78";
-    localbgqx.g = Integer.toString(paramInt3);
-    localbgqx.h = "";
-    localbgqx.jdField_a_of_type_Long = l;
-    localbgqx.d = paramInt1;
-    localbgqx.k = Integer.toString(paramInt2);
-    localbgqx.jdField_e_of_type_Int = 1;
-    localbgqx.jdField_f_of_type_Int = 1;
-    bgqw.a().a(localbgqx);
+    return 10007;
   }
   
-  public void a(MiniAppRecommInfo paramMiniAppRecommInfo, int paramInt)
+  public Class<? extends XmlData> a()
   {
-    if (paramMiniAppRecommInfo == null) {
-      return;
+    return PttSilkAndChangeVoiceSoData.class;
+  }
+  
+  public String a()
+  {
+    return "actEarlyPttSilkAndChangeVoiceSo";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "download success: " + paramString);
     }
-    this.jdField_a_of_type_AndroidViewViewGroup.setPadding(this.jdField_a_of_type_AndroidViewViewGroup.getPaddingLeft(), paramInt, this.jdField_a_of_type_AndroidViewViewGroup.getPaddingRight(), this.jdField_a_of_type_AndroidViewViewGroup.getPaddingBottom());
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMiniAppRecommInfo.headDesc);
-    this.jdField_a_of_type_Anpu.a(paramMiniAppRecommInfo.appInfoList);
+    for (;;)
+    {
+      try
+      {
+        str = avbz.a();
+        if ((str != null) && (!str.equals("")))
+        {
+          bbdj.a(str);
+          if (new File(str).mkdir())
+          {
+            bbdj.a(paramString, str, false);
+            if (QLog.isColorLevel()) {
+              QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip success: " + paramString);
+            }
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        String str;
+        localException.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip failed: " + localException.getMessage());
+        continue;
+      }
+      try
+      {
+        if (!avbz.a)
+        {
+          bbdj.a(avbz.b());
+          bbdj.c(str, avbz.b());
+        }
+        super.a(paramString);
+        return;
+      }
+      finally {}
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    Object localObject = (PttSilkAndChangeVoiceSoData)a();
+    if (localObject == null) {
+      return false;
+    }
+    int i = lmb.f();
+    if (QLog.isColorLevel()) {
+      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload cpuArch = " + i + " isUserNeedDownload try match version=" + "8.2.8" + " data.version=" + ((PttSilkAndChangeVoiceSoData)localObject).version);
+    }
+    localObject = this.a.getPreferences();
+    if (!((SharedPreferences)localObject).getBoolean("hasReportedCpuArch", false))
+    {
+      aytl.a();
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).putBoolean("hasReportedCpuArch", true);
+      ((SharedPreferences.Editor)localObject).commit();
+    }
+    if (i > 2) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload return " + bool);
+      }
+      return bool;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anps
  * JD-Core Version:    0.7.0.1
  */

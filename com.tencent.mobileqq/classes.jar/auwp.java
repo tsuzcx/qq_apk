@@ -1,230 +1,96 @@
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richmedia.conn.ConnManager.1;
-import com.tencent.mobileqq.richmedia.conn.ConnManager.2;
-import com.tencent.mobileqq.richmedia.conn.ConnManager.3;
-import com.tencent.mobileqq.richmedia.conn.ConnManager.4;
-import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.util.SparseArray;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class auwp
-  implements auws
 {
-  private static String jdField_a_of_type_JavaLangString = "PeakAudioTransHandler ConnManager";
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private auwq jdField_a_of_type_Auwq;
-  private auwr jdField_a_of_type_Auwr;
-  private avbn jdField_a_of_type_Avbn;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private ArrayList<auwq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  protected ConcurrentLinkedQueue<byte[]> a;
+  public static int a;
+  public static SparseArray<String> a;
+  public static String a;
+  private static AtomicBoolean a;
   
-  public auwp(AppInterface paramAppInterface, avbn paramavbn)
+  static
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Avbn = paramavbn;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    jdField_a_of_type_Int = 50;
+    jdField_a_of_type_JavaLangString = ajyc.a(2131716768);
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  private void b(long paramLong)
+  public static void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ConnManager.4(this, paramLong));
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Auwr != null)
+    if (paramAppRuntime == null) {}
+    JSONObject localJSONObject;
+    JSONArray localJSONArray;
+    for (;;)
     {
-      if (!this.jdField_a_of_type_Avbn.d()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "closeConnection : TCP not opened  mTCPstate =" + this.jdField_a_of_type_Avbn.b());
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Avbn.b(13);
-    this.jdField_a_of_type_Auwr.b();
-    this.jdField_a_of_type_Auwr = null;
-  }
-  
-  public void a(long paramLong, auwr paramauwr)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "onDisConnect connId = " + paramLong + ",sendDataQueue size =" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() + " mTCPstate =" + this.jdField_a_of_type_Avbn.b());
-    }
-    this.jdField_a_of_type_Avbn.b(10);
-    this.jdField_a_of_type_Auwq = null;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.jdField_a_of_type_Avbn.a())
-    {
-      ((avbo)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(0)).a(String.valueOf(paramLong), "TransInfo.ExitSession", null, 0, 0, false);
-      return;
-    }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "onDisConnect : session not open need not sso exit");
-  }
-  
-  public void a(auwq paramauwq, long paramLong)
-  {
-    if (paramauwq == null) {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : endPoint is null");
-    }
-    do
-    {
-      return;
-      if ((TextUtils.isEmpty(paramauwq.jdField_a_of_type_JavaLangString)) || (paramauwq.jdField_a_of_type_Int == 0))
+      try
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : endPoint is illegal");
+        QLog.e("VipProfileDiyCardConfig", 1, "parseJson, app null");
         return;
       }
-      if (!this.jdField_a_of_type_Avbn.a())
+      finally {}
+      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : Session not Open");
-        return;
+        localJSONObject = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "card.diyFontConfig.json", true, null);
+        if (localJSONObject == null) {
+          break label217;
+        }
+        localJSONArray = localJSONObject.optJSONArray("fontList");
+        if ((localJSONArray != null) && (localJSONArray.length() > 0)) {
+          if (jdField_a_of_type_AndroidUtilSparseArray == null)
+          {
+            jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+            break label227;
+          }
+        }
       }
-      if (!this.jdField_a_of_type_Avbn.f())
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : TCP not Close mTCPstate =" + this.jdField_a_of_type_Avbn.b());
-        return;
-      }
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "openNewConnection : host:" + paramauwq.jdField_a_of_type_JavaLangString + ",port=" + paramauwq.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Auwq = paramauwq;
-      if (this.jdField_a_of_type_Auwr != null) {
-        this.jdField_a_of_type_Auwr.b();
-      }
-      this.jdField_a_of_type_Auwr = new LiteTcpConnection(this, paramLong, paramauwq, 3000, 10000);
-    } while (this.jdField_a_of_type_Auwr == null);
-    this.jdField_a_of_type_Auwr.a(this);
-    this.jdField_a_of_type_Auwr.a();
-    this.jdField_a_of_type_Avbn.b(11);
-  }
-  
-  public void a(ArrayList<auwq> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, auwr paramauwr, auwq paramauwq, int paramInt)
-  {
-    int j = 0;
-    paramauwr = (avbo)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(0);
-    if (paramauwq == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect failed ep = null return");
-      b(paramLong);
     }
     for (;;)
     {
-      return;
-      if (paramBoolean)
+      if (i < localJSONArray.length())
       {
-        this.jdField_a_of_type_AndroidOsHandler.post(new ConnManager.1(this, paramauwr, paramLong, paramauwq));
-        return;
-      }
-      paramauwr = paramauwq.jdField_a_of_type_JavaLangString;
-      int i = paramauwq.jdField_a_of_type_Int;
-      if ((this.jdField_a_of_type_Auwq == null) || (!paramauwr.equals(this.jdField_a_of_type_Auwq.jdField_a_of_type_JavaLangString)) || (i != this.jdField_a_of_type_Auwq.jdField_a_of_type_Int))
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect ip or port changed ");
-        b(paramLong);
-        return;
-      }
-      if (!this.jdField_a_of_type_Avbn.h())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect reConnect state legal lSessionID = " + paramLong);
+        paramAppRuntime = localJSONArray.optJSONObject(i);
+        int j = paramAppRuntime.optInt("id");
+        String str = paramAppRuntime.optString("imgUrl");
+        if (TextUtils.isEmpty(str)) {
+          break label232;
         }
-        b(paramLong);
-        return;
-      }
-      if (!this.jdField_a_of_type_Avbn.e())
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "onConnect : TCP not in Opening state = " + this.jdField_a_of_type_Avbn.b());
-        a(paramLong);
-        return;
-      }
-      if (this.jdField_a_of_type_Auwq.c >= 1)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "reConnect > 1 return");
-        paramInt = 0;
-        for (;;)
+        paramAppRuntime = str;
+        if (!str.startsWith("http:"))
         {
-          i = j;
-          if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
-          {
-            paramauwr = (auwq)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-            if ((paramauwr != this.jdField_a_of_type_Auwq) && (paramauwr.c == 0))
-            {
-              this.jdField_a_of_type_Auwq = paramauwr;
-              i = 1;
-            }
+          paramAppRuntime = str;
+          if (!str.startsWith("https:")) {
+            paramAppRuntime = "http:" + str;
           }
-          else
-          {
-            if (i == 0) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "onConnect failed change ip new ip = " + this.jdField_a_of_type_Auwq.jdField_a_of_type_JavaLangString + ", port =" + this.jdField_a_of_type_Auwq.jdField_a_of_type_Int);
-            }
-            a(this.jdField_a_of_type_Auwq, paramLong);
-            return;
-          }
-          paramInt += 1;
         }
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect  not ip notify  connect failed ");
-        b(paramLong);
-        return;
+        jdField_a_of_type_AndroidUtilSparseArray.put(j, paramAppRuntime);
+        break label232;
+        jdField_a_of_type_AndroidUtilSparseArray.clear();
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "onConnect failed reconnect ip = " + this.jdField_a_of_type_Auwq.jdField_a_of_type_JavaLangString + ", port =" + this.jdField_a_of_type_Auwq.jdField_a_of_type_Int);
-      }
-      if (paramInt == 3) {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ConnManager.2(this, paramLong), 2000L);
-      }
-      while (this.jdField_a_of_type_Auwq != null)
+      else
       {
-        paramauwr = this.jdField_a_of_type_Auwq;
-        paramauwr.c += 1;
-        return;
-        this.jdField_a_of_type_AndroidOsHandler.post(new ConnManager.3(this, paramLong));
+        jdField_a_of_type_Int = localJSONObject.optInt("maxTextLength", jdField_a_of_type_Int);
+        jdField_a_of_type_JavaLangString = localJSONObject.optString("inputTip", jdField_a_of_type_JavaLangString);
+        label217:
+        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        break;
       }
+      label227:
+      int i = 0;
+      continue;
+      label232:
+      i += 1;
     }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramArrayOfByte);
-    }
-    if (this.jdField_a_of_type_Auwr != null) {
-      this.jdField_a_of_type_Auwr.c();
-    }
-  }
-  
-  public boolean a()
-  {
-    return badq.e(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getApplicationContext());
-  }
-  
-  public byte[] a()
-  {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
-      return (byte[])this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auwp
  * JD-Core Version:    0.7.0.1
  */

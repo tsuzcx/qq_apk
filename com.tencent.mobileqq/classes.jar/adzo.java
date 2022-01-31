@@ -1,28 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import com.tencent.widget.RoundRectImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
 class adzo
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  adzo(adzn paramadzn) {}
+  adzo(adzh paramadzh, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramAnimation = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.a.jdField_b_of_type_ComTencentWidgetRoundRectImageView.getWidth() / 2, this.a.jdField_b_of_type_ComTencentWidgetRoundRectImageView.getHeight() / 2);
-    paramAnimation.addAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAlphaAnimation);
-    paramAnimation.addAnimation(localScaleAnimation);
-    paramAnimation.setDuration(200L);
-    this.a.jdField_b_of_type_ComTencentWidgetRoundRectImageView.startAnimation(paramAnimation);
-    paramAnimation.setAnimationListener(this.a.a);
+    this.jdField_a_of_type_Adzh.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    axdo.jdField_a_of_type_Boolean = true;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

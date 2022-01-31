@@ -7,6 +7,8 @@ class MiniMsgUserParamWrapper$1
 {
   MiniMsgUserParamWrapper$1(MiniMsgUserParamWrapper paramMiniMsgUserParamWrapper) {}
   
+  public void onFromMiniAIOToAIO() {}
+  
   public void onGoToConversation()
   {
     if (MiniMsgUserParamWrapper.a(this.a) != null) {

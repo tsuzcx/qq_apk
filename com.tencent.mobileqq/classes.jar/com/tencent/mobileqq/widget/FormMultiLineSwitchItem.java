@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import azve;
-import bajq;
+import bawi;
+import bbkx;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 
@@ -38,29 +38,29 @@ public class FormMultiLineSwitchItem
     this.jdField_a_of_type_AndroidWidgetTextView = a();
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
     localLayoutParams.addRule(15, 0);
-    localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131165559);
+    localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131296631);
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     this.b = new TextView(getContext());
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       this.b.setText(this.jdField_a_of_type_JavaLangString);
     }
-    if ((AppSetting.c) && (Build.VERSION.SDK_INT >= 16))
+    if ((AppSetting.d) && (Build.VERSION.SDK_INT >= 16))
     {
-      azve.a(this.b, false);
+      bawi.a(this.b, false);
       setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText() + " " + this.jdField_a_of_type_JavaLangString);
     }
     this.b.setSingleLine(false);
     this.b.setDuplicateParentStateEnabled(true);
-    int i = bajq.a();
-    int j = bajq.a(96.0F);
+    int i = bbkx.a();
+    int j = bbkx.a(96.0F);
     this.b.setMaxWidth(i - j);
-    localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131165549);
-    localLayoutParams.bottomMargin = getResources().getDimensionPixelOffset(2131165555);
-    localLayoutParams.leftMargin = getResources().getDimensionPixelSize(2131166923);
-    localLayoutParams.addRule(3, 2131301018);
-    i = getResources().getDimensionPixelSize(2131165574);
-    this.b.setTextColor(getResources().getColorStateList(2131101333));
+    localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131296621);
+    localLayoutParams.bottomMargin = getResources().getDimensionPixelOffset(2131296627);
+    localLayoutParams.leftMargin = getResources().getDimensionPixelSize(2131298015);
+    localLayoutParams.addRule(3, 2131366629);
+    i = getResources().getDimensionPixelSize(2131296646);
+    this.b.setTextColor(getResources().getColorStateList(2131166928));
     this.b.setTextSize(0, i);
     this.b.setGravity(19);
     addView(this.b, localLayoutParams);
@@ -69,7 +69,7 @@ public class FormMultiLineSwitchItem
   public void setSecendLineText(String paramString)
   {
     this.b.setText(paramString);
-    if ((AppSetting.c) && (Build.VERSION.SDK_INT >= 16)) {
+    if ((AppSetting.d) && (Build.VERSION.SDK_INT >= 16)) {
       setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText() + " " + this.jdField_a_of_type_JavaLangString);
     }
   }
@@ -83,7 +83,7 @@ public class FormMultiLineSwitchItem
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
       if (paramInt == 8)
       {
-        setMinimumHeight(getResources().getDimensionPixelSize(2131165567));
+        setMinimumHeight(getResources().getDimensionPixelSize(2131296639));
         localLayoutParams.addRule(15, -1);
       }
     }

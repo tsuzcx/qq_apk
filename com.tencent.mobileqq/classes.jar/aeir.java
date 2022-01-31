@@ -1,22 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
 
-class aeir
-  extends BroadcastReceiver
+public class aeir
+  extends axfa
 {
-  private aeir(aegy paramaegy) {}
+  public aeir(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt1, int paramInt2) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
-      aegy.a(this.a, 1);
+    aejg localaejg = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (localaejg != null) {
+      localaejg.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramInt, 0L, true);
     }
-    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
+  }
+  
+  public void a(int paramInt, axes paramaxes)
+  {
+    aejg localaejg = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (paramaxes.jdField_a_of_type_Int == 0)
+    {
+      paramaxes = (aumz)paramaxes.jdField_a_of_type_JavaLangObject;
+      if (localaejg != null) {
+        localaejg.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 1, paramaxes.b, false);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramaxes.b);
       return;
     }
-    aegy.a(this.a, 1);
+    if (localaejg != null) {
+      localaejg.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 2, "step:" + paramaxes.jdField_a_of_type_Aunp.a + ", desc:" + paramaxes.jdField_a_of_type_Aunp.b, false);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E");
   }
 }
 

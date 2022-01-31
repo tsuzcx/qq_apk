@@ -1,59 +1,109 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.NearbyReportManager.1;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.manager.Manager;
 
 public class asfa
   implements Manager
 {
-  beey<asfb> jdField_a_of_type_Beey = new beey();
-  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  public static String a;
+  private QQAppInterface a;
   public boolean a;
+  public String b;
+  public String c;
+  public String d;
   
-  public asfa(NearbyAppInterface paramNearbyAppInterface)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
+    jdField_a_of_type_JavaLangString = "TimUpgradeHongdianManager";
+  }
+  
+  public asfa(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyReportManager", 2, "report");
-    }
-    beey localbeey = this.jdField_a_of_type_Beey.a();
-    ajnd localajnd = (ajnd)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3);
-    boolean bool = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Beey.a();
-    ThreadManager.post(new NearbyReportManager.1(this, localbeey, localajnd, bool), 5, null, false);
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)
-  {
-    asfb localasfb = (asfb)this.jdField_a_of_type_Beey.a(paramLong);
-    if (localasfb == null)
+    try
     {
+      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_upgrade_hongdian_pre_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).edit();
+      localEditor.putBoolean("tim_upgrade_hongdian_switch", false);
+      localEditor.putString("tim_upgrade_hongdian_title", null);
+      localEditor.putString("tim_upgrade_hongdian_sub_title", null);
+      localEditor.putString("tim_upgrade_hongdian_url", null);
       if (QLog.isColorLevel()) {
-        QLog.d("NearbyReportManager", 2, "updateRecord ,not exist!! tinyID = " + paramLong);
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "clearHondianSP done");
       }
       return;
     }
-    localasfb.c += 1;
-    localasfb.d += paramInt1;
-    if (paramInt2 > localasfb.e) {
-      localasfb.e = paramInt2;
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "clearHondianSP " + localException.toString());
     }
-    localasfb.f |= paramInt3;
   }
   
-  public void onDestroy()
+  public boolean a()
   {
-    this.jdField_a_of_type_Beey.a();
+    long l1 = System.currentTimeMillis();
+    for (;;)
+    {
+      try
+      {
+        SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_upgrade_hongdian_pre_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
+        this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean("tim_upgrade_hongdian_switch", false);
+        this.b = localSharedPreferences.getString("tim_upgrade_hongdian_title", null);
+        this.c = localSharedPreferences.getString("tim_upgrade_hongdian_sub_title", null);
+        this.d = localSharedPreferences.getString("tim_upgrade_hongdian_url", null);
+        long l2 = System.currentTimeMillis();
+        boolean bool2;
+        if ((!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)))
+        {
+          bool1 = TextUtils.isEmpty(this.d);
+          if (!bool1)
+          {
+            bool1 = true;
+            bool2 = bool1;
+          }
+        }
+        boolean bool1 = false;
+      }
+      catch (Exception localException1)
+      {
+        try
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.i(jdField_a_of_type_JavaLangString, 2, "checkIfShowTimHongdian , switchKey = " + this.jdField_a_of_type_Boolean + ", mTitle = " + this.b + ", mSubTitle =" + this.c + ", url=" + this.d + ", sp time cost = " + (l2 - l1) + ", ifShow= " + bool1);
+            bool2 = bool1;
+          }
+          return bool2;
+        }
+        catch (Exception localException2)
+        {
+          continue;
+        }
+        localException1 = localException1;
+        bool1 = false;
+        bool2 = bool1;
+        if (QLog.isColorLevel())
+        {
+          QLog.e(jdField_a_of_type_JavaLangString, 2, "checkIfShowTimHongdian " + localException1.toString());
+          return bool1;
+        }
+      }
+    }
   }
+  
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asfa
  * JD-Core Version:    0.7.0.1
  */

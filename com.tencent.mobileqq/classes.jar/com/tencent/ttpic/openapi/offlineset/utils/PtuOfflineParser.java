@@ -1,5 +1,7 @@
 package com.tencent.ttpic.openapi.offlineset.utils;
 
+import com.tencent.ttpic.offlineset.beans.AEKitDownSetting;
+import com.tencent.ttpic.offlineset.beans.AEKitDownSetting.DownResInfo;
 import com.tencent.ttpic.offlineset.beans.AIBeautyConfigJsonBean;
 import com.tencent.ttpic.offlineset.beans.AIBeautyParamsJsonBean;
 import com.tencent.ttpic.offlineset.beans.DeviceDownConfigJsonBean;
@@ -20,6 +22,14 @@ public class PtuOfflineParser
   public AIBeautyParamsJsonBean getDefaultAIBeautyParam()
   {
     return parseAIBeautyParam("camera/camera_video/configsetting/beauty.json", true);
+  }
+  
+  public AEKitDownSetting parseAEKitDownSetting(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    return (AEKitDownSetting)GsonUtils.json2Obj(paramString, new PtuOfflineParser.4(this).getType());
   }
   
   public AIBeautyConfigJsonBean parseAIBeautyConfig(String paramString)
@@ -45,6 +55,14 @@ public class PtuOfflineParser
       return null;
     }
     return (DeviceDownConfigJsonBean)GsonUtils.json2Obj(paramString, new PtuOfflineParser.3(this).getType());
+  }
+  
+  public AEKitDownSetting.DownResInfo parseDownResInfo(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    return (AEKitDownSetting.DownResInfo)GsonUtils.json2Obj(paramString, new PtuOfflineParser.5(this).getType());
   }
 }
 

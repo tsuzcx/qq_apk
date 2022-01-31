@@ -1,12 +1,15 @@
-public class pqy
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
+
+class pqy
+  implements bfsg
 {
-  private String a;
-  private String b;
-  private String c;
+  pqy(pqt parampqt) {}
   
-  public pqy(String paramString)
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    this.a = paramString;
+    pqt.a(this.a, (pax)this.a.a, paramInt, paramArrayList, paramObject);
   }
 }
 

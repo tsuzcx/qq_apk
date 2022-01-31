@@ -1,49 +1,26 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity.2.1;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity.2.2;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity.2.3;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity.2.4;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity.2.5;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
 public class apub
-  extends adyi
+  implements Comparator<FileInfo>
 {
-  public apub(AIOGalleryActivity paramAIOGalleryActivity) {}
-  
-  public void a()
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.4(this));
+    if (paramFileInfo1.c())
+    {
+      if (!paramFileInfo2.c()) {
+        return -1000;
+      }
+    }
+    else if (paramFileInfo2.c()) {
+      return 1000;
+    }
+    return paramFileInfo1.d().compareToIgnoreCase(paramFileInfo2.d());
   }
-  
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.2(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.1(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.5(this, paramLong, paramInt1, paramInt2, paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3));
-  }
-  
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.3(this, paramArrayOfAIORichMediaData, paramInt));
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apub
  * JD-Core Version:    0.7.0.1
  */

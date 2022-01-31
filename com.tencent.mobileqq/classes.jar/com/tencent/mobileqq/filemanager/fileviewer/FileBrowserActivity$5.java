@@ -3,7 +3,7 @@ package com.tencent.mobileqq.filemanager.fileviewer;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.widget.TextView;
-import aonk;
+import apef;
 
 class FileBrowserActivity$5
   implements Runnable
@@ -18,8 +18,8 @@ class FileBrowserActivity$5
     if (str2.length() > 2)
     {
       str1 = str2;
-      if (str2.substring(str2.length() - 1).equals(aonk.c)) {
-        str1 = str2.substring(0, str2.length() - 1) + aonk.b;
+      if (str2.substring(str2.length() - 1).equals(apef.b)) {
+        str1 = str2.substring(0, str2.length() - 1) + apef.a;
       }
     }
     FileBrowserActivity.a(this.this$0).setText(str1);

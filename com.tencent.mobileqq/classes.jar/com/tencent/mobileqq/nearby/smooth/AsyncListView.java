@@ -4,16 +4,16 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnTouchListener;
 import android.widget.ListAdapter;
-import atbi;
-import atbj;
-import begh;
-import behk;
+import atxm;
+import atxn;
+import bfob;
+import bfpe;
 import com.tencent.mobileqq.fpsreport.FPSXListView;
 
 public class AsyncListView
   extends FPSXListView
 {
-  final atbi a = new atbi(this);
+  final atxm a = new atxm(this);
   
   public AsyncListView(Context paramContext)
   {
@@ -42,24 +42,24 @@ public class AsyncListView
     this.a.b();
   }
   
-  public void setItemManager(atbj paramatbj)
+  public void setItemManager(atxn paramatxn)
   {
-    this.a.a(paramatbj);
+    this.a.a(paramatxn);
   }
   
-  public void setOnItemSelectedListener(behk parambehk)
+  public void setOnItemSelectedListener(bfpe parambfpe)
   {
-    this.a.a(parambehk);
+    this.a.a(parambfpe);
     if (!this.a.a()) {
-      super.setOnItemSelectedListener(parambehk);
+      super.setOnItemSelectedListener(parambfpe);
     }
   }
   
-  public void setOnScrollListener(begh parambegh)
+  public void setOnScrollListener(bfob parambfob)
   {
-    this.a.a(parambegh);
+    this.a.a(parambfob);
     if (!this.a.a()) {
-      super.setOnScrollListener(parambegh);
+      super.setOnScrollListener(parambfob);
     }
   }
   

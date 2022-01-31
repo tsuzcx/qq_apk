@@ -1,55 +1,18 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public class bghz
-  extends bgix
+class bghz
+  implements amgw
 {
-  public static bghz a;
+  bghz(bghy parambghy, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte) {}
   
-  public bghz()
+  public ColorNote getColorNote()
   {
-    jdField_a_of_type_Bghz = this;
-  }
-  
-  public static void a(String paramString)
-  {
-    if ((jdField_a_of_type_Bghz != null) && (jdField_a_of_type_Bghz.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null))
-    {
-      QLog.d("QZonePublishVoiceShuoShuoH5Plugin", 2, "onDeleteAudioVoice");
-      jdField_a_of_type_Bghz.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.moodVoice.onVoiceDelete('" + paramString + "')");
-    }
-  }
-  
-  public static void b()
-  {
-    if ((jdField_a_of_type_Bghz != null) && (jdField_a_of_type_Bghz.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null))
-    {
-      QLog.d("QZonePublishVoiceShuoShuoH5Plugin", 2, "onNotifyH5CutCancel");
-      jdField_a_of_type_Bghz.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.moodVoice.cutCancel()");
-    }
-  }
-  
-  public static void c()
-  {
-    if ((jdField_a_of_type_Bghz != null) && (jdField_a_of_type_Bghz.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null)) {
-      jdField_a_of_type_Bghz.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.QZMoodVoiceJSInterface.notifyGetVoiceRecordTime()");
-    }
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_Bghz = null;
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    return false;
+    return new amhc().a(16908292).a(this.jdField_a_of_type_JavaLangString).b(this.b).c(this.c).d("resdrawable://2130838570").a(this.jdField_a_of_type_ArrayOfByte).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bghz
  * JD-Core Version:    0.7.0.1
  */

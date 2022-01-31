@@ -60,9 +60,9 @@ class ProfileHeaderView$3
     //   92: ifne +100 -> 192
     //   95: aload 5
     //   97: astore_2
-    //   98: invokestatic 74	azyk:a	()Z
+    //   98: invokestatic 74	bazo:a	()Z
     //   101: ifeq +91 -> 192
-    //   104: invokestatic 78	azyk:b	()Ljava/lang/String;
+    //   104: invokestatic 78	bazo:b	()Ljava/lang/String;
     //   107: astore_2
     //   108: new 80	java/io/File
     //   111: dup
@@ -82,14 +82,14 @@ class ProfileHeaderView$3
     //   140: aload 5
     //   142: iload_1
     //   143: iload_1
-    //   144: invokestatic 96	bacm:a	(Ljava/io/InputStream;II)D
+    //   144: invokestatic 96	bbdr:a	(Ljava/io/InputStream;II)D
     //   147: d2i
     //   148: putfield 99	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   151: aload 5
     //   153: invokevirtual 104	java/io/InputStream:close	()V
     //   156: aload_2
     //   157: aload 4
-    //   159: invokestatic 109	azvq:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   159: invokestatic 109	bawu:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   162: astore_2
     //   163: aload_2
     //   164: astore_3
@@ -196,14 +196,14 @@ class ProfileHeaderView$3
     //   361: aload_2
     //   362: aload_0
     //   363: getfield 16	com/tencent/mobileqq/profile/view/ProfileHeaderView$3:this$0	Lcom/tencent/mobileqq/profile/view/ProfileHeaderView;
-    //   366: getfield 172	com/tencent/mobileqq/profile/view/ProfileHeaderView:jdField_a_of_type_Atwx	Latwx;
-    //   369: getfield 175	atwx:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   366: getfield 172	com/tencent/mobileqq/profile/view/ProfileHeaderView:jdField_a_of_type_Auuw	Lauuw;
+    //   369: getfield 175	auuw:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
     //   372: getfield 178	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:k	Ljava/lang/String;
-    //   375: invokestatic 183	babh:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   375: invokestatic 183	bbcl:a	(Ljava/lang/String;)Ljava/lang/String;
     //   378: putfield 66	com/tencent/mobileqq/avatar/dynamicavatar/DynamicAvatarView:e	Ljava/lang/String;
     //   381: aload_2
     //   382: getfield 66	com/tencent/mobileqq/avatar/dynamicavatar/DynamicAvatarView:e	Ljava/lang/String;
-    //   385: invokestatic 186	babh:a	(Ljava/lang/String;)Z
+    //   385: invokestatic 186	bbcl:a	(Ljava/lang/String;)Z
     //   388: ifeq +41 -> 429
     //   391: aload_2
     //   392: aload_0
@@ -234,10 +234,10 @@ class ProfileHeaderView$3
     //   452: aload_0
     //   453: getfield 18	com/tencent/mobileqq/profile/view/ProfileHeaderView$3:jdField_a_of_type_Int	I
     //   456: if_icmpne +10 -> 466
-    //   459: invokestatic 209	bacm:b	()Landroid/graphics/Bitmap;
+    //   459: invokestatic 209	bbdr:b	()Landroid/graphics/Bitmap;
     //   462: astore_2
     //   463: goto -212 -> 251
-    //   466: invokestatic 211	bacm:a	()Landroid/graphics/Bitmap;
+    //   466: invokestatic 211	bbdr:a	()Landroid/graphics/Bitmap;
     //   469: astore_2
     //   470: goto -219 -> 251
     //   473: astore_2

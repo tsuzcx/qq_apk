@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import adll;
-import amzi;
+import adwl;
+import anpq;
 
 public class PokeResHandler$2
   implements Runnable
 {
-  public PokeResHandler$2(amzi paramamzi) {}
+  public PokeResHandler$2(anpq paramanpq) {}
   
   public void run()
   {
-    adll.a(this.this$0.a, null);
+    adwl.a(this.this$0.a, null);
   }
 }
 

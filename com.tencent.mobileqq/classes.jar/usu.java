@@ -1,45 +1,32 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditPicSave.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
-public class usu
-  extends SimpleObserver<vfh>
+class usu
+  extends JobSegment<Integer, uvx>
 {
-  usu(uss paramuss) {}
+  private uvw a;
   
-  public void a(vfh paramvfh)
+  public usu(@NonNull uvw paramuvw)
   {
-    super.onNext(paramvfh);
-    this.a.a(40);
-    paramvfh = paramvfh.a.b;
-    urk.b("EditPicSave", "picPath = " + paramvfh);
-    if (this.a.jdField_a_of_type_Uwe.getActivity() != null)
+    this.a = paramuvw;
+  }
+  
+  protected void a(JobContext paramJobContext, Integer paramInteger)
+  {
+    Object localObject = this.a.a(paramInteger.intValue(), 5);
+    if ((((uvx)localObject).a.size() > 0) || (((uvx)localObject).b))
     {
-      ThreadManager.post(new EditPicSave.2.1(this, paramvfh), 5, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
-      this.a.jdField_a_of_type_Int = 40;
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.b = 10;
-      this.a.f();
+      veg.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
+      notifyResult(localObject);
+      return;
     }
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    urk.d("EditPicSave", "saveVideo cancel !");
-    this.a.jdField_a_of_type_Uut.a(0);
-    this.a.g();
-    bbmy.a(this.a.jdField_a_of_type_Uwe.a(), ajjy.a(2131637903), 0).a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    urk.e("EditPicSave", "saveVideo error ：" + paramError);
-    this.a.jdField_a_of_type_Uut.a(0);
-    bbmy.a(this.a.jdField_a_of_type_Uwe.a(), 1, ajjy.a(2131637904) + paramError, 0).a();
-    this.a.g();
+    localObject = new tmt();
+    ((tmt)localObject).a = this.a.a();
+    ((tmt)localObject).b = QQStoryContext.a().b();
+    syr.a().a((syv)localObject, new usv(this, paramJobContext, paramInteger));
   }
 }
 

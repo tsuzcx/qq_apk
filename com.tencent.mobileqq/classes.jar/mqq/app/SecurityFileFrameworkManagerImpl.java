@@ -39,7 +39,7 @@ public class SecurityFileFrameworkManagerImpl
   private static final long ERROR_CODE_RENAME_SUCCESS_BUT_FILE_SUM_NO_MATCH = 11L;
   private static final long ERROR_CODE_RETURN_NULL = 8L;
   private static final long ERROR_CODE_TOKEN_DO_NOT_MATCH = 5L;
-  private static final String FILE_KEY_PREFIX = "NoRename#";
+  public static final String FILE_KEY_PREFIX = "NoRename#";
   private static final long REQUEST_CODE_SECURITY_FILE_FRAMEWORK = 0L;
   private static String SDCARD_PATH = SDCARD_ROOT + "/Tencent/MobileQQ/";
   private static String SDCARD_ROOT = Environment.getExternalStorageDirectory().getAbsolutePath();
@@ -254,7 +254,7 @@ public class SecurityFileFrameworkManagerImpl
     }
   }
   
-  private static char generateVerifyChar(String paramString)
+  public static char generateVerifyChar(String paramString)
   {
     int i = 0;
     paramString = paramString.toCharArray();
@@ -311,15 +311,26 @@ public class SecurityFileFrameworkManagerImpl
       QLog.d("SecurityFileFrameworkManagerImpl", 1, "context is null");
       return false;
     }
-    File localFile = new File(SDCARD_PATH);
-    if ((!localFile.exists()) && (!localFile.mkdirs()))
+    Object localObject = paramContext.getExternalCacheDir();
+    File localFile;
+    if (localObject != null)
     {
-      QLog.d("SecurityFileFrameworkManagerImpl", 1, new Object[] { "rootFile create fail, target root path=", localFile.getAbsoluteFile() });
+      SDCARD_ROOT = ((File)localObject).getParentFile().getAbsolutePath();
+      SDCARD_PATH = SDCARD_ROOT + "/Tencent/MobileQQ/";
+      localFile = new File(SDCARD_PATH);
+      if ((!localFile.exists()) && (!localFile.mkdirs()))
+      {
+        QLog.d("SecurityFileFrameworkManagerImpl", 1, new Object[] { "rootFile create fail, target root path=", localFile.getAbsoluteFile() });
+        return false;
+      }
+    }
+    else
+    {
+      QLog.d("SecurityFileFrameworkManagerImpl", 1, "externalCacheDir is null");
       return false;
     }
     SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("SecurityFileFrameworkManagerImpl", 4);
     paramContext = localSharedPreferences.getString("FILE_KEY", "");
-    Object localObject;
     int i;
     if (TextUtils.isEmpty(paramContext))
     {
@@ -340,14 +351,14 @@ public class SecurityFileFrameworkManagerImpl
         {
           localFile = localObject[i];
           if (localFile.lastModified() >= l) {
-            break label664;
+            break label721;
           }
           l = localFile.lastModified();
           paramContext = localFile;
         }
       }
     }
-    label664:
+    label721:
     for (;;)
     {
       i += 1;

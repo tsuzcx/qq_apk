@@ -5,10 +5,7 @@ import com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil;
 final class ApkgMainProcessManager$3
   implements Runnable
 {
-  public void run()
-  {
-    MiniappDownloadUtil.getInstance();
-  }
+  public void run() {}
 }
 
 

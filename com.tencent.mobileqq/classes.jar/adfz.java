@@ -1,18 +1,52 @@
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class adfz
-  implements apcz
+public class adfz
+  extends ampb<adga>
 {
-  adfz(adfw paramadfw) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    paramView = babr.a(this.a.a, 230);
-    paramView.setTitle(2131625979);
-    paramView.setMessage(2131625980);
-    paramView.setNegativeButton(2131625035, new adga(this, paramView));
-    paramView.setPositiveButton(2131629116, new adgb(this));
-    paramView.show();
+    return 592;
+  }
+  
+  @NonNull
+  public adga a(int paramInt)
+  {
+    return new adga();
+  }
+  
+  @Nullable
+  public adga a(ampi[] paramArrayOfampi)
+  {
+    adga localadga = new adga();
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null)) {
+      adga.a(localadga, paramArrayOfampi[0].a);
+    }
+    return localadga;
+  }
+  
+  public Class<adga> a()
+  {
+    return adga.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(adga paramadga) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

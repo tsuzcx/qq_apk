@@ -1,51 +1,41 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager.OnGetQQNumberEventListener;
+import dov.com.qq.im.ae.camera.ui.watermark.WaterMarkOnlineUserManager.1.1;
+import java.util.Random;
 
-public abstract class bipf
-  implements bipe
+public class bipf
+  implements LogicDataManager.OnGetQQNumberEventListener
 {
-  private List<bipa> a = new ArrayList();
+  bipf(bipe parambipe) {}
   
-  public void a()
+  public int onGetQQNumber()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bipa)localIterator.next()).h();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bipa)localIterator.next()).b(paramInt);
-    }
-  }
-  
-  public void a(bipa parambipa)
-  {
-    if (parambipa == null) {
-      throw new IllegalArgumentException("the observer is null.");
-    }
-    if (this.a.contains(parambipa)) {
-      throw new IllegalStateException("Observer " + parambipa + " is already registered.");
-    }
-    this.a.add(parambipa);
-  }
-  
-  public void b(bipa parambipa)
-  {
-    if (parambipa == null) {
-      throw new IllegalArgumentException("The observer is null.");
-    }
-    synchronized (this.a)
+    long l = System.currentTimeMillis();
+    if (l - bipe.a(this.a) > 60000L)
     {
-      int i = this.a.indexOf(parambipa);
-      if (i != -1) {
-        this.a.remove(i);
+      bipe.a(this.a, l);
+      new Thread(new WaterMarkOnlineUserManager.1.1(this)).start();
+      if (l - bipe.b(this.a) <= 1000L) {
+        break label168;
       }
-      return;
+      bipe.b(this.a, l);
+    }
+    for (;;)
+    {
+      synchronized (bipe.a(this.a))
+      {
+        if (bipe.a(this.a) != 0) {
+          bipe.a(this.a, bipe.a(this.a) - 1000 + new Random().nextInt(2000));
+        }
+        return bipe.a(this.a);
+        if (l - bipe.a(this.a) >= 0L) {
+          break;
+        }
+        bipe.a(this.a, l);
+      }
+      label168:
+      if (l - bipe.b(this.a) < 0L) {
+        bipe.b(this.a, l);
+      }
     }
   }
 }

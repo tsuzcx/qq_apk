@@ -1,63 +1,138 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.Spannable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.mobileim.structmsg.structmsg.GroupInfo;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.widget.ColorNickTextView;
+import com.tencent.mobileqq.widget.datepicker.CalendarDay;
+import java.util.LinkedList;
+import java.util.List;
 
 public class afcw
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public afcw(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<afcv> jdField_a_of_type_JavaUtilList = new LinkedList();
   
-  public void onClick(View paramView)
+  public afcw(TroopMemberHistoryFragment paramTroopMemberHistoryFragment, Context paramContext)
   {
-    paramView = (afbv)paramView.getTag();
-    if (paramView.a.msg.group_msg_type.get() == 80)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  boolean a(long paramLong1, long paramLong2)
+  {
+    CalendarDay localCalendarDay1 = new CalendarDay(paramLong1 * 1000L);
+    CalendarDay localCalendarDay2 = new CalendarDay(paramLong2 * 1000L);
+    return (localCalendarDay1.year == localCalendarDay2.year) && (localCalendarDay1.month == localCalendarDay2.month) && (localCalendarDay1.day == localCalendarDay2.day);
+  }
+  
+  boolean a(List<afcv> paramList)
+  {
+    int j = paramList.size();
+    int i = 0;
+    long l2;
+    for (long l1 = 0L; i < j; l1 = l2)
     {
-      paramView = TroopInfoActivity.a(String.valueOf(paramView.a.msg.group_code.get()), 5);
-      TroopInfoActivity.a(this.a.getActivity(), paramView);
-      return;
-    }
-    if (!badq.d(this.a.getActivity()))
-    {
-      bbmy.a(this.a.a, this.a.getActivity().getString(2131628946), 0).b(this.a.a());
-      return;
-    }
-    ((FriendListHandler)TroopSuspiciousFragment.a(this.a).a(1)).b(String.valueOf(paramView.a.req_uin.get()));
-    afcz.a((structmsg.StructMsg)paramView.a.get());
-    TroopSuspiciousFragment.a(this.a, (structmsg.StructMsg)paramView.a.get(), paramView.c);
-    String str1 = paramView.a.msg.group_info.msg_alert.get();
-    String str2 = paramView.a.msg.group_code.get() + "";
-    if ((str1 == null) || ("".equals(str1)))
-    {
-      TroopSuspiciousFragment.a(this.a, 1, (structmsg.StructMsg)paramView.a.get());
-      if ((paramView.a.msg.has()) && (paramView.a.msg.req_uin_nick.has())) {
-        ((TroopManager)TroopSuspiciousFragment.a(this.a).getManager(52)).b(str2, paramView.a.req_uin.get() + "", paramView.a.msg.req_uin_nick.get());
+      afcv localafcv = (afcv)paramList.get(i);
+      l2 = localafcv.jdField_a_of_type_Long;
+      if ((l1 == 0L) || (!a(l1, l2))) {
+        localafcv.jdField_a_of_type_Boolean = true;
       }
-      afcz.a(paramView.a, "unnormal_join");
+      this.jdField_a_of_type_JavaUtilList.add(localafcv);
+      i += 1;
     }
-    for (;;)
+    return true;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    afcv localafcv;
+    Object localObject;
+    RelativeLayout.LayoutParams localLayoutParams;
+    int i;
+    if (paramView == null)
     {
-      TroopSuspiciousFragment.c(this.a);
-      TroopSuspiciousFragment.a(this.a).c(2131653452);
-      TroopSuspiciousFragment.a(this.a).show();
-      return;
-      TroopSuspiciousFragment.a(this.a, 0, (structmsg.StructMsg)paramView.a.get());
+      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559216, null);
+      paramViewGroup = new afcu();
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131377031));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377033));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367679));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131368885));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369278);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377836));
+      paramView.setTag(paramViewGroup);
+      localafcv = (afcv)getItem(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localafcv.jdField_a_of_type_JavaLangCharSequence);
+      paramViewGroup.b.setText(localafcv.a());
+      localObject = new ayju(bbcl.h(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.b, localafcv.jdField_a_of_type_JavaLangString), 16).a();
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText((CharSequence)localObject);
+      bboe.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView, (Spannable)localObject);
+      localObject = baxt.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, localafcv.jdField_a_of_type_JavaLangString);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      localObject = (RelativeLayout.LayoutParams)paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      localLayoutParams = (RelativeLayout.LayoutParams)paramViewGroup.b.getLayoutParams();
+      if (!localafcv.jdField_a_of_type_Boolean) {
+        break label420;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (paramInt != 0) {
+        break label400;
+      }
+      i = bbkx.a(3.0F);
+      label284:
+      ((RelativeLayout.LayoutParams)localObject).topMargin = i;
+      if (paramInt != 0) {
+        break label410;
+      }
+      i = bbkx.a(3.0F);
+    }
+    label302:
+    for (localLayoutParams.topMargin = i;; localLayoutParams.topMargin = 0)
+    {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramViewGroup.b.setLayoutParams(localLayoutParams);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramView.setContentDescription(localafcv.jdField_a_of_type_JavaLangCharSequence + " " + localafcv.a());
+      return paramView;
+      paramViewGroup = (afcu)paramView.getTag();
+      break;
+      i = bbkx.a(9.0F);
+      break label284;
+      i = bbkx.a(9.0F);
+      break label302;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      ((RelativeLayout.LayoutParams)localObject).topMargin = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afcw
  * JD-Core Version:    0.7.0.1
  */

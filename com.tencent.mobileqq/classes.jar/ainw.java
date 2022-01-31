@@ -1,51 +1,29 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class ainw
-  implements AudioManager.OnAudioFocusChangeListener
+  implements View.OnTouchListener
 {
-  ainw(ainq paramainq) {}
+  ainw(ainv paramainv) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmGameAudioPlayer", 2, new Object[] { "[onAudioFocusChange],focusChange:", Integer.valueOf(paramInt) });
+    switch (paramMotionEvent.getAction())
+    {
     }
     for (;;)
     {
-      JSONObject localJSONObject;
-      try
-      {
-        localJSONObject = new JSONObject();
-        if (paramInt != 1) {
-          break label105;
-        }
-        localJSONObject.put("event", 2);
-        aipj localaipj = aing.a(ainq.a(this.a));
-        if ((localaipj == null) || (localaipj.a() == null)) {
-          break label104;
-        }
-        aing.a().callbackFromRequest(localaipj.a().getLuaState(), 0, "sc.audio_event.local", localJSONObject.toString());
-        return;
-      }
-      catch (Throwable localThrowable) {}
-      localJSONObject.put("event", 1);
+      return false;
+      paramView.setAlpha(0.5F);
       continue;
-      label104:
-      return;
-      label105:
-      if (paramInt != -1) {
-        if (paramInt != -2) {}
-      }
+      paramView.setAlpha(1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ainw
  * JD-Core Version:    0.7.0.1
  */

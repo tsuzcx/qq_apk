@@ -1,8 +1,22 @@
-import android.view.View;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr.1;
 
-public abstract interface apcz
+public class apcz
+  extends BroadcastReceiver
 {
-  public abstract void onClick(View paramView);
+  public apcz(UniformDownloadMgr.1 param1) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (paramIntent == null) {
+      return;
+    }
+    paramContext = paramIntent.getBundleExtra("param");
+    paramIntent = paramIntent.getStringExtra("url");
+    apcy.a().a(paramIntent, paramContext);
+  }
 }
 
 

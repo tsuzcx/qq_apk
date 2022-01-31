@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.util;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import bbmy;
-import rsv;
+import bcpw;
+import sfn;
 
 public class PublicAccountH5AbilityPlugin$9
   implements Runnable
 {
-  public PublicAccountH5AbilityPlugin$9(rsv paramrsv) {}
+  public PublicAccountH5AbilityPlugin$9(sfn paramsfn) {}
   
   public void run()
   {
-    bbmy.a(this.this$0.a, 0, this.this$0.a.getResources().getString(2131652727), 0).a();
+    bcpw.a(this.this$0.a, 0, this.this$0.a.getResources().getString(2131718551), 0).a();
   }
 }
 

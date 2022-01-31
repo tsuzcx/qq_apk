@@ -1,38 +1,17 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-class udy
-  implements anhs
+public class udy
+  implements ufo
 {
-  udy(udw paramudw) {}
+  public udy(TextureVideoView paramTextureVideoView) {}
   
-  public void a(anht paramanht)
+  public boolean a_(ufk paramufk, int paramInt1, int paramInt2)
   {
-    if (((paramanht instanceof anmf)) && (udw.a(this.a) != null)) {
-      ((anmf)paramanht).a(udw.a(), udw.a(this.a), udw.a(this.a), null);
+    if (this.a.a != null) {
+      this.a.a.a_(paramufk, paramInt1, paramInt2);
     }
+    return true;
   }
-  
-  public void a(anht paramanht1, anht paramanht2, Drawable paramDrawable) {}
-  
-  public boolean a(anht paramanht)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    if (udw.a(this.a) != null) {
-      axku.a(udw.a(this.a));
-    }
-  }
-  
-  public void b(anht paramanht) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

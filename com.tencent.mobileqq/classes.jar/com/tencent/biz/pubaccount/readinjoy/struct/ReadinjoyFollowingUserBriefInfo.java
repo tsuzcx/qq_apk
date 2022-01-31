@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class ReadinjoyFollowingUserBriefInfo
-  extends atmo
+  extends aukm
 {
   public int followed = 0;
-  @atoc
+  @auma
   public long uin;
   
   public ReadinjoyFollowingUserBriefInfo()

@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class phu
-  implements View.OnClickListener
+public abstract interface phu
 {
-  phu(pht parampht) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = this.a.jdField_a_of_type_Qoe.a();
-    if (paramView != null) {
-      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
-  }
+  public abstract void a();
 }
 
 

@@ -1,22 +1,17 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-class qoz
-  extends ajrw
+final class qoz
+  extends AnimatorListenerAdapter
 {
-  qoz(qoe paramqoe) {}
+  qoz(View paramView) {}
   
-  protected void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if (orc.a(this.a.a(), str) < pqi.d)
-    {
-      this.a.a.c(6);
-      return;
-    }
-    bbmy.a(this.a.a(), 0, this.a.a().getString(2131652758), 0).a();
+    this.a.setAlpha(1.0F);
+    this.a.setLayerType(0, null);
+    this.a.setVisibility(8);
   }
 }
 

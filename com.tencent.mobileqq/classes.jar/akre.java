@@ -1,69 +1,37 @@
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
 class akre
-  implements akrw
+  implements ayth
 {
-  akre(akrc paramakrc, aksh paramaksh) {}
+  akre(akqx paramakqx, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public void a(int paramInt, aksg paramaksg, long paramLong)
+  public void a(aytj paramaytj, ayti paramayti)
   {
-    if (akrc.a(this.jdField_a_of_type_Akrc)) {}
-    do
+    try
     {
-      do
-      {
-        return;
-      } while (paramInt != akrv.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Akrc.h = paramLong;
-      akrc localakrc = this.jdField_a_of_type_Akrc;
-      localakrc.i += this.jdField_a_of_type_Akrc.h;
-      this.jdField_a_of_type_Aksh.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Akrc.jdField_a_of_type_Akqi.a();
-      this.jdField_a_of_type_Aksh.jdField_a_of_type_Aksg = paramaksg;
-      this.jdField_a_of_type_Aksh.jdField_a_of_type_Int = this.jdField_a_of_type_Akrc.d;
-      this.jdField_a_of_type_Aksh.jdField_b_of_type_Int = this.jdField_a_of_type_Akrc.e;
-      this.jdField_a_of_type_Aksh.jdField_a_of_type_Long = this.jdField_a_of_type_Akrc.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Aksh.jdField_c_of_type_Int = this.jdField_a_of_type_Akrc.f;
-      this.jdField_a_of_type_Aksh.jdField_b_of_type_JavaLangString = Integer.toString(this.jdField_a_of_type_Akrc.jdField_a_of_type_ComTencentCommonAppAppInterface.getAppid());
-      this.jdField_a_of_type_Aksh.jdField_b_of_type_Long = Long.parseLong(this.jdField_a_of_type_Akrc.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-      this.jdField_a_of_type_Aksh.jdField_c_of_type_Long = System.currentTimeMillis();
-      akrc.a(this.jdField_a_of_type_Akrc, this.jdField_a_of_type_Aksh);
-    } while (akrc.a(this.jdField_a_of_type_Akrc) == null);
-    akrc.a(this.jdField_a_of_type_Akrc).c();
-  }
-  
-  public void a(akry paramakry)
-  {
-    this.jdField_a_of_type_Aksh.jdField_a_of_type_Akry = paramakry;
-  }
-  
-  public void a(akrz paramakrz)
-  {
-    this.jdField_a_of_type_Aksh.jdField_a_of_type_Akrz = paramakrz;
-  }
-  
-  public void a(aksa paramaksa)
-  {
-    this.jdField_a_of_type_Aksh.jdField_a_of_type_Aksa = paramaksa;
-  }
-  
-  public void a(aksb paramaksb)
-  {
-    this.jdField_a_of_type_Aksh.jdField_a_of_type_Aksb = paramaksb;
-  }
-  
-  public void a(aksi paramaksi)
-  {
-    this.jdField_a_of_type_Aksh.jdField_a_of_type_Aksi = paramaksi;
-  }
-  
-  public void b(akrz paramakrz)
-  {
-    this.jdField_a_of_type_Aksh.jdField_b_of_type_Akrz = paramakrz;
+      paramaytj = paramaytj.a.getWupBuffer();
+      paramayti = new structmsg.RspSystemMsgRead();
+      paramayti.mergeFrom(paramaytj);
+      int i = paramayti.head.result.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.", 2, "sendGroupSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
+      }
+      return;
+    }
+    catch (Exception paramaytj)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramaytj);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akre
  * JD-Core Version:    0.7.0.1
  */

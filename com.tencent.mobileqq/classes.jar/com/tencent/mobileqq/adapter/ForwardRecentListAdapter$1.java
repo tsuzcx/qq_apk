@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.adapter;
 
-import aiaf;
+import aimy;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,11 +9,11 @@ import mqq.os.MqqHandler;
 public class ForwardRecentListAdapter$1
   implements Runnable
 {
-  public ForwardRecentListAdapter$1(aiaf paramaiaf, List paramList) {}
+  public ForwardRecentListAdapter$1(aimy paramaimy, List paramList) {}
   
   public void run()
   {
-    ArrayList localArrayList = aiaf.a(this.this$0, this.a);
+    ArrayList localArrayList = aimy.a(this.this$0, this.a);
     if ((localArrayList != null) && (localArrayList.size() > 0)) {
       ThreadManager.getUIHandler().post(new ForwardRecentListAdapter.1.1(this, localArrayList));
     }

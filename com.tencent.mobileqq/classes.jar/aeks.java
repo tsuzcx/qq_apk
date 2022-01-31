@@ -1,25 +1,11 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.troop.widget.RedDotImageView;
 
-final class aeks
-  implements Animation.AnimationListener
+public class aeks
 {
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleHelper", 2, "onAllAnimationEnd " + paramAnimation);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleHelper", 2, "onAnimationStart " + paramAnimation);
-    }
-  }
+  public int a;
+  public Drawable a;
+  public RedDotImageView a;
 }
 
 

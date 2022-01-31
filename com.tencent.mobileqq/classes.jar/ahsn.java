@@ -1,32 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
-import java.util.List;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-class ahsn
-  implements View.OnClickListener
+public class ahsn
+  implements ahti
 {
-  ahsn(ahsm paramahsm) {}
+  public ahsn(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    paramView = (ahso)paramView.getTag();
-    if (this.a.a.a.contains(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups))
-    {
-      this.a.a.a.remove(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, false);
-      return;
-    }
-    this.a.a.a.add(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
-    paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-    this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, true);
+    EditLocalVideoActivity.a(this.a, paramString);
+    EditLocalVideoActivity.g(this.a);
+  }
+  
+  public void b()
+  {
+    bcpw.a(this.a, 2131695103, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahsn
  * JD-Core Version:    0.7.0.1
  */

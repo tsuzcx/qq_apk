@@ -1,59 +1,92 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.VipComicHelper.1;
-import java.lang.ref.WeakReference;
-import mqq.app.MobileQQ;
+import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
+import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import android.os.Handler;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.request.GetAppInfoByLinkRequest.1;
+import org.json.JSONObject;
 
 public class beze
-  implements moc
+  extends bfad
 {
-  public beze(VipComicHelper.1 param1) {}
+  private INTERFACE.StGetAppInfoByLinkReq a = new INTERFACE.StGetAppInfoByLinkReq();
   
-  public void loaded(String paramString, int paramInt)
+  public beze(String paramString, int paramInt)
   {
-    int j = 0;
-    paramString = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramString == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ComicHelper", 2, "Finish update offline pkg. code = " + paramInt + ", entry = " + this.a.jdField_a_of_type_Int);
-    }
-    switch (paramInt)
-    {
-    }
-    for (int i = 0;; i = 1)
-    {
-      Object localObject = paramString.getApplication().getSharedPreferences("vip_comic_file", 4);
-      int k = ((SharedPreferences)localObject).getInt("totalOfflinePkgDownloadCount", 0);
-      if (i != 0) {
-        j = k + 1;
-      }
-      if (j != k) {
-        ((SharedPreferences)localObject).edit().putInt("totalOfflinePkgDownloadCount", j).apply();
-      }
-      if (i == 0) {
-        break;
-      }
-      long l = NetConnInfoCenter.getServerTime();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramInt + "|");
-      ((StringBuilder)localObject).append(j + "|");
-      ((StringBuilder)localObject).append(l + "|");
-      ((StringBuilder)localObject).append("|||||");
-      awpy.a(paramString, "sendtdbank|b_sng_qqvip_qqcomic|offlinePkgDownload", ((StringBuilder)localObject).toString(), true);
-      return;
-    }
+    this.a.link.set(paramString);
+    this.a.linkType.set(paramInt);
   }
   
-  public void progress(int paramInt) {}
+  private void a(MiniAppInfo paramMiniAppInfo)
+  {
+    beiw.b().post(new GetAppInfoByLinkRequest.1(this, paramMiniAppInfo));
+  }
+  
+  protected String a()
+  {
+    return "mini_app_info";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    INTERFACE.StGetAppInfoByLinkRsp localStGetAppInfoByLinkRsp = new INTERFACE.StGetAppInfoByLinkRsp();
+    try
+    {
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      localStGetAppInfoByLinkRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      if ((localStGetAppInfoByLinkRsp != null) && (localStGetAppInfoByLinkRsp.appInfo != null))
+      {
+        paramArrayOfByte = new JSONObject();
+        MiniAppInfo localMiniAppInfo = MiniAppInfo.from(localStGetAppInfoByLinkRsp.appInfo);
+        localMiniAppInfo.link = this.a.link.get();
+        localMiniAppInfo.linkType = this.a.linkType.get();
+        String str = localStGetAppInfoByLinkRsp.shareTicket.get();
+        paramArrayOfByte.put("appInfo", localMiniAppInfo);
+        paramArrayOfByte.put("shareTicket", str);
+        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
+        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+        if (localStGetAppInfoByLinkRsp.appInfo.type.get() == 3) {
+          a(localMiniAppInfo);
+        }
+      }
+      else
+      {
+        besl.a("ProtoBufRequest", "onResponse fail.rsp = null");
+        return null;
+      }
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      besl.a("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
+      return null;
+    }
+    return paramArrayOfByte;
+  }
+  
+  public byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetAppInfoByLink";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beze
  * JD-Core Version:    0.7.0.1
  */

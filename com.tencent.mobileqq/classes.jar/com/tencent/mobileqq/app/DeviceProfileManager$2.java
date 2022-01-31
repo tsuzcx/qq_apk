@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import ajha;
-import amom;
+import ajvd;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import baho;
+import anet;
+import bbit;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
@@ -43,7 +43,7 @@ class DeviceProfileManager$2
     break label933;
     label340:
     Object localObject9;
-    ajha localajha;
+    ajvd localajvd;
     label430:
     Object localObject7;
     Object localObject8;
@@ -88,8 +88,8 @@ class DeviceProfileManager$2
               break label1387;
             }
             localIterator = ((HashMap)???).entrySet().iterator();
-            localEditor2 = baho.a(BaseApplicationImpl.getApplication(), "dpcConfig").edit();
-            localSharedPreferences = baho.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
+            localEditor2 = bbit.a(BaseApplicationImpl.getApplication(), "dpcConfig").edit();
+            localSharedPreferences = bbit.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
             localEditor3 = localSharedPreferences.edit();
             localObject1 = null;
             Intent localIntent1;
@@ -116,7 +116,7 @@ class DeviceProfileManager$2
           localEditor1 = localEditor3;
           localObject7 = localObject3;
           if (QLog.isColorLevel()) {
-            QLog.d("DeviceProfileManager", 2, "onDPCResponse DPCXmlHandler.tempMap: key=" + (String)localObject9 + ", value=" + localajha.toString() + ", isAccountName=" + bool1);
+            QLog.d("DeviceProfileManager", 2, "onDPCResponse DPCXmlHandler.tempMap: key=" + (String)localObject9 + ", value=" + localajvd.toString() + ", isAccountName=" + bool1);
           }
         } while (localObject7 == null);
         DeviceProfileManager.DPCConfigInfo localDPCConfigInfo = (DeviceProfileManager.DPCConfigInfo)((HashMap)localObject7).get(???);
@@ -134,13 +134,13 @@ class DeviceProfileManager$2
     if (QLog.isDevelopLevel()) {
       QLog.d("DeviceProfileManager", 4, "onDPCResponse tempFeatureMap old value: key=" + (String)??? + " " + localObject9 + ", isAddConfig=" + bool1);
     }
-    boolean bool3 = DeviceProfileManager.a((DeviceProfileManager.DPCConfigInfo)localObject9, localajha.b.toString().trim());
+    boolean bool3 = DeviceProfileManager.a((DeviceProfileManager.DPCConfigInfo)localObject9, localajvd.b.toString().trim());
     if (bool1) {
       ((HashMap)localObject7).put(???, localObject9);
     }
     for (;;)
     {
-      localEditor1.putString((String)???, localajha.b);
+      localEditor1.putString((String)???, localajvd.b);
       label933:
       if (!QLog.isColorLevel()) {
         break label340;
@@ -167,7 +167,7 @@ class DeviceProfileManager$2
           localEditor3.putInt(DeviceProfileManager.AccountDpcManager.a(DeviceProfileManager.a().jdField_a_of_type_ComTencentCommonAppAppInterface, "server_version"), localConfig.version.get());
         }
         i = localSharedPreferences.getInt("key_versioncode", 0);
-        j = amom.a(BaseApplicationImpl.getApplication());
+        j = anet.a(BaseApplicationImpl.getApplication());
         if (i < j) {
           localEditor3.putInt("key_versioncode", j);
         }

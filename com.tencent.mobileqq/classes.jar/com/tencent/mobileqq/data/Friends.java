@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
 import QQService.EVIPSPEC;
-import aesc;
+import afcy;
 import android.database.Cursor;
 import android.text.TextUtils;
-import atmo;
-import atnz;
-import atoc;
+import aukm;
+import aulx;
+import auma;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
 
 public class Friends
-  extends atmo
+  extends aukm
   implements Cloneable
 {
   public static final int CLIENT_DEFAULT = 0;
@@ -64,9 +64,9 @@ public class Friends
   public int cNewLoverDiamondFlag;
   public byte cSpecialFlag;
   public String customModel = "";
-  @atnz
+  @aulx
   public String customOnlineStatus;
-  @atnz
+  @aulx
   public int customOnlineStatusType;
   public long datetime;
   public byte detalStatusFlag;
@@ -76,6 +76,7 @@ public class Friends
   public int friendType;
   public byte gathtertype = 0;
   public byte gender;
+  public int grayNameplateFlag;
   public int groupid = -1;
   @Deprecated
   public int hollywoodVipInfo;
@@ -101,7 +102,8 @@ public class Friends
   public long namePlateOfKingGameId;
   public long namePlateOfKingLoginTime;
   public String nameplateCfgInfo;
-  @atnz
+  public int nameplateVipType;
+  @aulx
   public int netTypeIconId;
   public int qqVipInfo;
   public String recommReason;
@@ -109,7 +111,7 @@ public class Friends
   public String remark;
   @Deprecated
   public byte[] richBuffer;
-  @atnz
+  @aulx
   @Deprecated
   public RichStatus richStatus;
   @Deprecated
@@ -125,13 +127,13 @@ public class Friends
   @Deprecated
   public byte status = 10;
   public String strMasterUin = "";
-  @atnz
+  @aulx
   public String strTermDesc;
   public int superQqInfo;
   public int superVipInfo;
   public int superVipTemplateId;
   public long uExtOnlineStatus;
-  @atoc
+  @auma
   public String uin;
   
   public static boolean isValidUin(long paramLong)
@@ -203,6 +205,8 @@ public class Friends
     this.strMasterUin = paramCursor.getString(paramCursor.getColumnIndex("strMasterUin"));
     this.superVipTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("superVipTemplateId"));
     this.bigClubTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("bigClubTemplateId"));
+    this.nameplateVipType = paramCursor.getInt(paramCursor.getColumnIndex("nameplateVipType"));
+    this.grayNameplateFlag = paramCursor.getInt(paramCursor.getColumnIndex("grayNameplateFlag"));
     this.isHideBigClub = paramCursor.getInt(paramCursor.getColumnIndex("isHideBigClub"));
     this.cNewLoverDiamondFlag = paramCursor.getInt(paramCursor.getColumnIndex("cNewLoverDiamondFlag"));
     this.medalsInfo = paramCursor.getString(paramCursor.getColumnIndex("medalsInfo"));
@@ -282,7 +286,7 @@ public class Friends
   public int getNetWorkType()
   {
     int j = 2;
-    aesc localaesc = aesc.a();
+    afcy localafcy = afcy.a();
     int i;
     if (this.eNetwork == 0)
     {
@@ -293,9 +297,9 @@ public class Friends
       {
         return i;
         i = j;
-      } while (1 != localaesc.a(this.iTermType, 1));
+      } while (1 != localafcy.a(this.iTermType, 1));
     }
-    if (1 != localaesc.a(this.iTermType, 1)) {
+    if (1 != localafcy.a(this.iTermType, 1)) {
       i = j;
     }
     switch (this.netTypeIconId)

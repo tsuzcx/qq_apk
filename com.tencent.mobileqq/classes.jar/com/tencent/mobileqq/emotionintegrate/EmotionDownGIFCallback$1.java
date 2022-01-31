@@ -1,37 +1,39 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import anni;
-import atpb;
-import atpr;
-import atpw;
+import aodt;
+import aumz;
+import aunp;
+import aunu;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmotionDownGIFCallback$1
   implements Runnable
 {
-  public EmotionDownGIFCallback$1(anni paramanni, atpb paramatpb) {}
+  public EmotionDownGIFCallback$1(aodt paramaodt, aumz paramaumz) {}
   
   public void run()
   {
-    QLog.d("EmotionDownGIFCallback", 1, "onDownload");
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionDownGIFCallback", 1, "onDownload");
+    }
     if ((this.a != null) && (this.a.jdField_b_of_type_JavaLangString != null))
     {
-      atpw localatpw = new atpw();
-      localatpw.jdField_a_of_type_Int = this.a.jdField_a_of_type_Int;
-      localatpw.jdField_a_of_type_JavaLangObject = this.a;
-      localatpw.jdField_a_of_type_Boolean = this.a.jdField_a_of_type_Boolean;
+      aunu localaunu = new aunu();
+      localaunu.jdField_a_of_type_Int = this.a.jdField_a_of_type_Int;
+      localaunu.jdField_a_of_type_JavaLangObject = this.a;
+      localaunu.jdField_a_of_type_Boolean = this.a.jdField_a_of_type_Boolean;
       if (this.a.jdField_a_of_type_Int != 0)
       {
-        if (this.a.jdField_a_of_type_Atpr == null)
+        if (this.a.jdField_a_of_type_Aunp == null)
         {
-          atpr localatpr = new atpr();
-          localatpr.jdField_b_of_type_JavaLangString = (this.a.jdField_b_of_type_Int + "_" + this.a.jdField_a_of_type_JavaLangString);
-          localatpr.jdField_a_of_type_JavaLangString = "onDownload";
-          this.a.jdField_a_of_type_Atpr = localatpr;
+          aunp localaunp = new aunp();
+          localaunp.jdField_b_of_type_JavaLangString = (this.a.jdField_b_of_type_Int + "_" + this.a.jdField_a_of_type_JavaLangString);
+          localaunp.jdField_a_of_type_JavaLangString = "onDownload";
+          this.a.jdField_a_of_type_Aunp = localaunp;
         }
-        localatpw.jdField_a_of_type_Atpr = this.a.jdField_a_of_type_Atpr;
+        localaunu.jdField_a_of_type_Aunp = this.a.jdField_a_of_type_Aunp;
       }
-      this.this$0.a(this.a.jdField_a_of_type_Int, localatpw);
+      this.this$0.a(this.a.jdField_a_of_type_Int, localaunu);
     }
   }
 }

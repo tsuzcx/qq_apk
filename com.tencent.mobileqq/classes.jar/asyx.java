@@ -1,107 +1,205 @@
-import android.text.SpannableStringBuilder;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.text.style.StyleSpan;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import NearbyGroup.Attr;
+import NearbyGroup.Cell;
+import NearbyGroup.GPS;
+import NearbyGroup.LBSInfo;
+import NearbyGroup.Wifi;
+import appoint.define.appoint_define.Cell;
+import appoint.define.appoint_define.GPS;
+import appoint.define.appoint_define.LBSInfo;
+import appoint.define.appoint_define.Wifi;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoCell;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoWifi;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class asyx
-  extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
-  private asyz jdField_a_of_type_Asyz;
-  private List<atap> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public void a(asyz paramasyz)
+  public static LBSInfo a()
   {
-    this.jdField_a_of_type_Asyz = paramasyz;
+    return a(false, SosoInterface.a());
   }
   
-  public void a(List<atap> paramList)
+  public static LBSInfo a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = 0;
-    TextView localTextView = (TextView)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131495316, paramViewGroup, false);
-    atap localatap = (atap)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject = localatap.a;
-    paramView = (View)localObject;
-    if (localObject != null)
-    {
-      paramView = (View)localObject;
-      if (((String)localObject).length() > 9) {
-        paramView = ((String)localObject).substring(0, 8) + "...";
-      }
+    Attr localAttr = null;
+    if (paramSosoLbsInfo == null) {
+      return null;
     }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramView);
-    localSpannableStringBuilder.setSpan(new StyleSpan(1), 0, localSpannableStringBuilder.length(), 33);
-    localObject = localatap.b;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1;
+    Object localObject2;
+    if (paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      localSpannableStringBuilder.append(" 回复 ");
-      paramView = (View)localObject;
-      if (((String)localObject).length() > 9) {
-        paramView = ((String)localObject).substring(0, 8) + "...";
-      }
-      localSpannableStringBuilder.append(paramView);
-      localSpannableStringBuilder.setSpan(new StyleSpan(1), localSpannableStringBuilder.length() - paramView.length(), localSpannableStringBuilder.length(), 33);
-    }
-    localSpannableStringBuilder.append("：").append(localatap.c);
-    paramView = localTextView.getPaint();
-    localObject = new ArrayList();
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = (vms.a(localTextView.getContext()) - vms.a(localTextView.getContext(), 85.0F));
-    }
-    paramInt = 0;
-    while (paramInt < localSpannableStringBuilder.length())
-    {
-      int j = i;
-      if (paramView.measureText(localSpannableStringBuilder.subSequence(i, paramInt).toString()) > this.jdField_a_of_type_Int)
+      localObject1 = paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        ((List)localObject).add(Integer.valueOf(paramInt - 1));
-        j = paramInt;
+        localObject2 = (SosoInterface.SosoCell)((Iterator)localObject1).next();
+        localArrayList.add(new Cell((short)((SosoInterface.SosoCell)localObject2).jdField_a_of_type_Int, (short)((SosoInterface.SosoCell)localObject2).b, ((SosoInterface.SosoCell)localObject2).c, ((SosoInterface.SosoCell)localObject2).d, (short)((SosoInterface.SosoCell)localObject2).e));
       }
-      paramInt += 1;
-      i = j;
     }
-    paramView = ((List)localObject).iterator();
-    while (paramView.hasNext())
+    for (;;)
     {
-      localObject = (Integer)paramView.next();
-      if (((Integer)localObject).intValue() < localSpannableStringBuilder.length() - 1) {
-        localSpannableStringBuilder.insert(((Integer)localObject).intValue(), "\n");
+      try
+      {
+        if (paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation == null) {
+          break label313;
+        }
+        if (!paramBoolean) {
+          continue;
+        }
+        localObject1 = new GPS((int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a * 1000000.0D), (int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.b * 1000000.0D), -1, 1);
+      }
+      catch (Exception localException)
+      {
+        Iterator localIterator;
+        SosoInterface.SosoWifi localSosoWifi;
+        localGPS = null;
+        continue;
+        if (paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute == null) {
+          continue;
+        }
+        localAttr = new Attr(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.a, paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.b, paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.c);
+        return new LBSInfo(localGPS, (ArrayList)localObject2, localArrayList, localAttr);
+      }
+      localObject2 = new ArrayList();
+      if (paramSosoLbsInfo.b != null)
+      {
+        localIterator = paramSosoLbsInfo.b.iterator();
+        if (localIterator.hasNext())
+        {
+          localSosoWifi = (SosoInterface.SosoWifi)localIterator.next();
+          if (localSosoWifi == null) {
+            continue;
+          }
+          ((ArrayList)localObject2).add(new Wifi(localSosoWifi.jdField_a_of_type_Long, (short)localSosoWifi.jdField_a_of_type_Int));
+          continue;
+          localObject1 = new GPS((int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.c * 1000000.0D), (int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.d * 1000000.0D), -1, 0);
+          continue;
+        }
+      }
+      label313:
+      GPS localGPS = null;
+    }
+  }
+  
+  public static appoint_define.LBSInfo a(String paramString)
+  {
+    Object localObject1 = SosoInterface.a();
+    if ((localObject1 == null) || (((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation == null) || (((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a == 0.0D) || (((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.b == 0.0D)) {
+      SosoInterface.a(60000L, paramString);
+    }
+    for (paramString = SosoInterface.a();; paramString = (String)localObject1)
+    {
+      if (paramString != null)
+      {
+        localObject1 = new appoint_define.LBSInfo();
+        Object localObject2;
+        Object localObject3;
+        Object localObject4;
+        if (paramString.b != null)
+        {
+          localObject2 = paramString.b.iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (SosoInterface.SosoWifi)((Iterator)localObject2).next();
+            if (localObject3 != null)
+            {
+              localObject4 = new appoint_define.Wifi();
+              ((appoint_define.Wifi)localObject4).uint64_mac.set(((SosoInterface.SosoWifi)localObject3).jdField_a_of_type_Long);
+              ((appoint_define.Wifi)localObject4).int32_rssi.set(((SosoInterface.SosoWifi)localObject3).jdField_a_of_type_Int);
+              ((appoint_define.LBSInfo)localObject1).rpt_msg_wifis.add((MessageMicro)localObject4);
+            }
+          }
+        }
+        if (paramString.jdField_a_of_type_JavaUtilArrayList != null)
+        {
+          localObject2 = paramString.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (SosoInterface.SosoCell)((Iterator)localObject2).next();
+            if (localObject3 != null)
+            {
+              localObject4 = new appoint_define.Cell();
+              ((appoint_define.Cell)localObject4).int32_cellid.set(((SosoInterface.SosoCell)localObject3).d);
+              ((appoint_define.Cell)localObject4).int32_lac.set(((SosoInterface.SosoCell)localObject3).c);
+              ((appoint_define.Cell)localObject4).int32_rssi.set(((SosoInterface.SosoCell)localObject3).e);
+              ((appoint_define.Cell)localObject4).int32_mcc.set(((SosoInterface.SosoCell)localObject3).jdField_a_of_type_Int);
+              ((appoint_define.Cell)localObject4).int32_mnc.set(((SosoInterface.SosoCell)localObject3).b);
+              ((appoint_define.LBSInfo)localObject1).rpt_msg_cells.add((MessageMicro)localObject4);
+            }
+          }
+        }
+        if (paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation != null)
+        {
+          localObject2 = new appoint_define.GPS();
+          ((appoint_define.GPS)localObject2).int32_lon.set((int)(paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.d * 1000000.0D));
+          ((appoint_define.GPS)localObject2).int32_lat.set((int)(paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.c * 1000000.0D));
+          ((appoint_define.GPS)localObject2).int32_type.set(0);
+          ((appoint_define.LBSInfo)localObject1).msg_gps.set((MessageMicro)localObject2);
+          return localObject1;
+        }
+      }
+      else
+      {
+        atbp.a("getLbsInfo", new Object[] { "lbs is null" });
+        return null;
+      }
+      return localObject1;
+    }
+  }
+  
+  public static String a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramSosoLbsInfo == null) {
+      return null;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    JSONArray localJSONArray;
+    Object localObject;
+    try
+    {
+      localJSONObject.put("lat", (int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a * 1000000.0D));
+      localJSONObject.put("lon", (int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.b * 1000000.0D));
+      localJSONArray = new JSONArray();
+      localObject = paramSosoLbsInfo.b.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        SosoInterface.SosoWifi localSosoWifi = (SosoInterface.SosoWifi)((Iterator)localObject).next();
+        localJSONArray.put(new JSONObject().put("mac", localSosoWifi.jdField_a_of_type_Long).put("rssi", localSosoWifi.jdField_a_of_type_Int));
+        continue;
+        return localJSONObject.toString();
       }
     }
-    localTextView.setText(localSpannableStringBuilder);
-    localTextView.setMovementMethod(LinkMovementMethod.getInstance());
-    localTextView.setOnClickListener(new asyy(this, paramViewGroup));
-    return localTextView;
+    catch (JSONException paramSosoLbsInfo)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LbsUtils", 2, "lbsInfo to json exception", paramSosoLbsInfo);
+      }
+    }
+    for (;;)
+    {
+      localJSONObject.put("wifis", localJSONArray);
+      localJSONArray = new JSONArray();
+      paramSosoLbsInfo = paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (paramSosoLbsInfo.hasNext())
+      {
+        localObject = (SosoInterface.SosoCell)paramSosoLbsInfo.next();
+        localJSONArray.put(new JSONObject().put("mcc", ((SosoInterface.SosoCell)localObject).jdField_a_of_type_Int).put("mnc", ((SosoInterface.SosoCell)localObject).b).put("lac", ((SosoInterface.SosoCell)localObject).c).put("cellid", ((SosoInterface.SosoCell)localObject).d).put("rssi", ((SosoInterface.SosoCell)localObject).e));
+      }
+      localJSONObject.put("cells", localJSONArray);
+    }
   }
 }
 

@@ -1,16 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
 
 public class acah
-  implements View.OnClickListener
+  extends ajxl
 {
-  public acah(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public acah(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
+    if (paramBoolean) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null)) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 

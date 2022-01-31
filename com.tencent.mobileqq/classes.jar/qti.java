@@ -1,6 +1,13 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
+
 public abstract interface qti
 {
+  public abstract VideoInfo a(View paramView);
+  
   public abstract void a(boolean paramBoolean);
+  
+  public abstract void g();
 }
 
 

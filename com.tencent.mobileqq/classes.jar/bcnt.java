@@ -1,40 +1,49 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.ParticipleView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+
 public class bcnt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private static bcnu a = new bcnu();
+  public bcnt(ParticipleView paramParticipleView) {}
   
-  public static void a(bcnu parambcnu)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (parambcnu != null)
+    long l = System.currentTimeMillis();
+    paramValueAnimator = ParticipleView.a(this.a).iterator();
+    int i = 1;
+    if (paramValueAnimator.hasNext())
     {
-      a = parambcnu;
-      return;
+      bcnx localbcnx = (bcnx)paramValueAnimator.next();
+      float f = Math.min((float)(l - bcnx.a(localbcnx)) / ParticipleView.a(this.a), 1.0F);
+      bcnx.a(localbcnx, f);
+      if (f < 1.0F) {
+        i = 0;
+      }
+      for (;;)
+      {
+        break;
+        paramValueAnimator.remove();
+      }
     }
-    a = new bcnu();
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    a.a(paramString1, paramString2);
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a.a(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    a.b(paramString1, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    a.c(paramString1, paramString2);
+    if (i != 0)
+    {
+      ParticipleView.a(this.a).cancel();
+      ParticipleView.a(this.a, null);
+      ParticipleView.a(this.a).clear();
+      if (QLog.isColorLevel()) {
+        QLog.d("ParticipleView", 2, "selectedAnimation end cancel");
+      }
+    }
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcnt
  * JD-Core Version:    0.7.0.1
  */

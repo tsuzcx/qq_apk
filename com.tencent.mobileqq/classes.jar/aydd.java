@@ -1,40 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-
-class aydd
-  extends BroadcastReceiver
+public class aydd
 {
-  aydd(aydb paramaydb) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean equals(Object paramObject)
   {
-    if ("com.tencent.mobileqq.JoinTroopUtil.RET_ACTION".equals(paramIntent.getAction())) {}
-    switch (paramIntent.getIntExtra("ret_action", 1000))
-    {
-    default: 
-      aydb.a(this.a, aydb.a(this.a).troopUin, 2);
-      return;
-    case 1000: 
-      aydb.a(this.a, aydb.a(this.a).troopUin, 2);
-      return;
-    case 1001: 
-      aydb.a(this.a, aydb.a(this.a).troopUin, 2);
-      return;
-    case 1002: 
-      aydb.a(this.a, aydb.a(this.a).troopUin, 2);
-      return;
-    case 1003: 
-      aydb.a(this.a, aydb.a(this.a).troopUin, 1);
-      return;
-    }
-    aydb.a(this.a, aydb.a(this.a).troopUin, 3);
+    return this.b.equals(((aydd)paramObject).b);
+  }
+  
+  public int hashCode()
+  {
+    return super.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aydd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,27 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class tvp
-  extends QQUIEventReceiver<tvd, tgh>
+final class tvp
+  extends SimpleJob<Object>
 {
-  public tvp(@NonNull tvd paramtvd)
+  tvp(String paramString, sti paramsti, String[] paramArrayOfString, int paramInt, tvq paramtvq, TVK_ICacheMgr paramTVK_ICacheMgr, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    super(paramtvd);
+    super(paramString);
   }
   
-  public void a(@NonNull tvd paramtvd, @NonNull tgh paramtgh)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (TextUtils.equals(String.valueOf(paramtvd.hashCode()), paramtgh.jdField_a_of_type_JavaLangString)) {
-      b(paramtvd, paramtgh);
+    paramJobContext = this.jdField_a_of_type_Sti.a();
+    if (!TextUtils.isEmpty(paramJobContext)) {
+      this.jdField_a_of_type_ArrayOfJavaLangString[0] = bfng.a(this.jdField_a_of_type_ArrayOfJavaLangString[0], "authkey", paramJobContext);
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tgh.class;
-  }
-  
-  public void b(tvd paramtvd, tgh paramtgh)
-  {
-    paramtvd = ((StoryPlayerGroupHolder)paramtvd.a()).a();
-    if (paramtvd != null) {
-      paramtvd.c(false);
-    }
-    if (paramtgh.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
-      return;
-    }
-    boolean bool = tfy.a(paramtgh.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    switch (paramtgh.jdField_a_of_type_Int)
-    {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131641094), 0).a();
-      return;
-    case 2: 
-      if (bool) {}
-      for (paramtvd = "2";; paramtvd = "1")
-      {
-        urp.a("play_video", "down_suc", 0, 0, new String[] { paramtvd, "", "", paramtgh.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-        bbmy.a(BaseApplicationImpl.getContext(), 2, skt.a(2131633920), 0).a();
-        return;
-      }
-    }
-    if (bool) {}
-    for (paramtvd = "2";; paramtvd = "1")
-    {
-      urp.a("play_video", "down_fail", 0, 0, new String[] { paramtvd, "", "", paramtgh.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131641098), 0).a();
-      return;
-    }
+    tvk.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_Tvq);
+    return null;
   }
 }
 

@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View.MeasureSpec;
 import android.widget.RelativeLayout;
-import azvv;
+import bawz;
 
 public class HalfScreenRelativelayout
   extends RelativeLayout
@@ -38,7 +38,7 @@ public class HalfScreenRelativelayout
   
   private void a()
   {
-    this.a = ((int)(a(getContext()) / 2.0F) + azvv.a(getContext(), 56.0F));
+    this.a = ((int)(a(getContext()) / 2.0F) + bawz.a(getContext(), 56.0F));
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)

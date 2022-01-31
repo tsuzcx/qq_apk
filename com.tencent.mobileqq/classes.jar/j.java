@@ -22,7 +22,7 @@ public abstract class j
     this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
   }
   
-  public abstract int a(int paramInt1, int paramInt2, ge paramge);
+  public abstract int a(int paramInt1, int paramInt2, hx paramhx);
   
   protected String a()
   {
@@ -38,6 +38,17 @@ public abstract class j
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.i[0] * this.i[1]);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.e = 0;
+    this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+    {
+      i.a("FounderBaseLayout", "StopAnimation......");
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    }
   }
   
   protected boolean a(int paramInt1, int paramInt2)
@@ -126,6 +137,15 @@ public abstract class j
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setIntValues(new int[] { this.i[0] });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.i[0] * this.i[1]);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+  }
+  
+  public void i()
+  {
+    a(true);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    this.e = 0;
+    this.i[0] = -1;
+    this.i[1] = -1;
   }
 }
 

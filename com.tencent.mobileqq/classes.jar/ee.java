@@ -1,27 +1,19 @@
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.dataline.activities.LiteMutiPicViewerActivity;
 import com.dataline.util.widget.AsyncImageView;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class ee
 {
-  public LinearLayout a;
-  public ProgressBar a;
+  public View a;
+  public ImageView a;
   public RelativeLayout a;
-  public TextView a;
   public AsyncImageView a;
-  public URLImageView a;
-  public TextView b;
-  public AsyncImageView b;
-  public TextView c;
-  public AsyncImageView c;
-  public TextView d;
-  public AsyncImageView d;
-  public TextView e;
+  public DataLineMsgRecord a;
   
-  public ee(ed paramed) {}
+  public ee(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity) {}
 }
 
 

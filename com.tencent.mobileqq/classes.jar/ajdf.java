@@ -1,17 +1,40 @@
-import com.tencent.mobileqq.data.ApolloActionPackage;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ajdf
+class ajdf
+  extends bbwf
 {
-  public abstract ajdn a(int paramInt);
+  ajdf(ajdd paramajdd) {}
   
-  public abstract void a();
+  public void onDone(bbwg parambbwg)
+  {
+    super.onDone(parambbwg);
+    QLog.i("cmgame_process.CmGameRscDownloader", 2, "[onDone], status:" + parambbwg.a());
+  }
   
-  public abstract void a(int paramInt);
+  public void onDoneFile(bbwg parambbwg)
+  {
+    if ((parambbwg == null) || (ajdd.a(this.a) == null)) {
+      return;
+    }
+    if (parambbwg.a() != 3)
+    {
+      ajdd.a(this.a, 2);
+      if (ajdd.a(this.a) != null) {
+        ajdd.a(this.a).c(-1005, ajdd.a(this.a).jdField_b_of_type_JavaLangString);
+      }
+      QLog.e("cmgame_process.CmGameRscDownloader", 1, "downLoad game res fail retCode: " + parambbwg.a());
+      return;
+    }
+    ajdd.a(this.a);
+  }
   
-  public abstract void a(List<ajdn> paramList, List<ApolloActionPackage> paramList1, boolean paramBoolean);
-  
-  public abstract boolean a(int paramInt);
+  public void onProgress(bbwg parambbwg)
+  {
+    int i = (int)parambbwg.a;
+    if (ajdd.a(this.a) != null) {
+      ajdd.a(this.a).a(i, ajdd.a(this.a).jdField_b_of_type_Int, ajdd.a(this.a).jdField_b_of_type_JavaLangString);
+    }
+  }
 }
 
 

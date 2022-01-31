@@ -1,26 +1,29 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aeqr
-  implements View.OnClickListener
+class aeqr
+  implements mzb
 {
-  public aeqr(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  aeqr(aeqd paramaeqd) {}
   
-  public void onClick(View paramView)
+  public void loaded(String paramString, int paramInt)
   {
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a + "Q.hotchat.aio_post_list_plugin", 2, "checkUpByBusinessId:2586|param:" + paramString + "|code:" + paramInt);
     }
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
+    paramString = this.a;
+    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      aeqd.b(paramString, bool);
+      return;
     }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeqr
  * JD-Core Version:    0.7.0.1
  */

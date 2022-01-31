@@ -1,45 +1,22 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
-public class atds
-  implements bbku
+class atds
+  implements DialogInterface.OnClickListener
 {
-  public atds(OCRResultActivity paramOCRResultActivity) {}
+  atds(atdr paramatdr, oidb_0x8e4.RspBody paramRspBody) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (OCRResultActivity.a(this.a) == 0) {
-      OCRResultActivity.a(this.a);
-    }
-    while (OCRResultActivity.a(this.a) != 1) {
-      return;
-    }
-    OCRResultActivity.b(this.a);
-  }
-  
-  public void a(String paramString)
-  {
-    axkw.a(paramString, "OCR_Participle_copy");
-  }
-  
-  public void b(String paramString)
-  {
-    OCRResultActivity.a(this.a, paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    axkw.a(this.a, this.a.app, paramString);
-  }
-  
-  public void d(String paramString)
-  {
-    Intent localIntent = new Intent(this.a, TextPreviewTranslateActivity.class);
-    localIntent.putExtra("TranslateText", paramString);
-    localIntent.putExtra("WhereAreYouFrom", "OCR_RESULT");
-    this.a.startActivityForResult(localIntent, 1);
-    OCRResultActivity.a(this.a, true);
+    paramDialogInterface = this.jdField_a_of_type_TencentImOidbCmd0x8e4Oidb_0x8e4$RspBody.poi_info;
+    String str = paramDialogInterface.bytes_uid.get().toStringUtf8();
+    atdw.a(this.jdField_a_of_type_Atdr.a, HotChatInfo.createHotChat(paramDialogInterface, false, 0), paramDialogInterface.uint32_group_code.get(), str, paramDialogInterface.bytes_name.get().toStringUtf8());
   }
 }
 

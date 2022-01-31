@@ -1,16 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import java.lang.ref.WeakReference;
 
 class acwg
-  implements DialogInterface.OnClickListener
 {
-  acwg(acwe paramacwe, ChatMessage paramChatMessage) {}
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<acwf> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public acwg(acwd paramacwd, View paramView, acwf paramacwf)
   {
-    this.jdField_a_of_type_Acwe.d(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramacwf);
+  }
+  
+  public acwf a()
+  {
+    return (acwf)this.b.get();
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
   }
 }
 

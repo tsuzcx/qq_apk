@@ -1,18 +1,14 @@
-public class akds
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
+import java.util.Comparator;
+
+class akds
+  implements Comparator<QIMNotifyAddFriend>
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public long c;
+  akds(akdr paramakdr) {}
   
-  public akds(String paramString, int paramInt, long paramLong1, long paramLong2, long paramLong3)
+  public int a(QIMNotifyAddFriend paramQIMNotifyAddFriend1, QIMNotifyAddFriend paramQIMNotifyAddFriend2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.c = paramLong3;
+    return (int)(paramQIMNotifyAddFriend2.pushTime - paramQIMNotifyAddFriend1.pushTime);
   }
 }
 

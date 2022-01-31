@@ -1,25 +1,17 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
-public class afdb
-  extends ajey
+class afdb
+  implements View.OnClickListener
 {
-  public afdb(TroopView paramTroopView) {}
+  afdb(afda paramafda) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    if (paramInt2 == 0) {
-      this.a.j();
-    }
-    while (this.a.a()) {
-      return;
-    }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131629250);
-    }
-    bbmy.a(this.a.a(), 1, paramString1, 0).a();
+    paramView = (RecommendTroopItem)paramView.getTag(-1);
+    bamn.a(afda.a(this.a), paramView, this.a.a());
+    this.a.b(paramView);
   }
 }
 

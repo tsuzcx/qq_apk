@@ -1,26 +1,11 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
-
 public class umn
-  implements slx<ump, umq>
+  extends ssk
 {
-  private WeakReference<umm> a;
+  public int a;
   
-  public umn(umm paramumm)
+  public String toString()
   {
-    this.a = new WeakReference(paramumm);
-  }
-  
-  public void a(@NonNull ump paramump, @Nullable umq paramumq, @NonNull ErrorMessage paramErrorMessage)
-  {
-    urk.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
-    umm localumm = (umm)this.a.get();
-    if (localumm == null) {
-      return;
-    }
-    localumm.a(paramump, paramumq, paramErrorMessage);
+    return "ChangeVideoSortEvent " + super.toString();
   }
 }
 

@@ -1,98 +1,22 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 public class akgk
-  implements bcgf
+  implements ajtg
 {
-  private akgl jdField_a_of_type_Akgl;
-  private String jdField_a_of_type_JavaLangString;
+  public void a(boolean paramBoolean, int paramInt) {}
   
-  public akgk(String paramString, akgl paramakgl)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Akgl = paramakgl;
-  }
-  
-  public int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle)
-  {
-    int i = -20;
-    if (paramString1.equals(BaseApplicationImpl.sApplication.getPackageName()))
+    if ((paramObject != null) && ((paramObject instanceof Object[]))) {}
+    for (paramObject = (Object[])paramObject;; paramObject = null)
     {
-      if (this.jdField_a_of_type_JavaLangString == null)
+      switch (paramInt)
       {
-        paramString1 = null;
-        paramInt = -1;
       }
-      for (;;)
+      do
       {
-        if (this.jdField_a_of_type_Akgl != null) {
-          this.jdField_a_of_type_Akgl.a(paramInt);
-        }
-        QLog.d("UpgradeController", 1, "writeCodeToApk:" + this.jdField_a_of_type_JavaLangString + ", forFile:" + paramString2 + " result: " + paramInt, paramString1);
-        return paramInt;
-        if (this.jdField_a_of_type_JavaLangString.length() == 0)
-        {
-          paramString1 = null;
-          paramInt = 0;
-        }
-        else
-        {
-          try
-          {
-            paramString1 = new File(paramString2);
-            paramBundle = new File(paramString2 + "~tmp");
-            if (paramBundle.exists()) {
-              paramBundle.delete();
-            }
-            paramString1.renameTo(paramBundle);
-            becv.a(paramBundle, this.jdField_a_of_type_JavaLangString);
-            paramBundle.renameTo(paramString1);
-            paramString1 = null;
-            paramInt = 0;
-          }
-          catch (FileNotFoundException paramString1)
-          {
-            paramInt = -30;
-          }
-          catch (IOException paramString1)
-          {
-            paramInt = i;
-            if (paramString1 != null)
-            {
-              paramInt = i;
-              if (paramString1.getMessage() != null)
-              {
-                paramInt = i;
-                if (paramString1.getMessage().contains("space")) {
-                  paramInt = -10;
-                }
-              }
-            }
-          }
-          catch (Exception paramString1)
-          {
-            paramInt = -20;
-          }
-        }
-      }
-    }
-    return -1;
-  }
-  
-  public void a(String paramString, int paramInt, Bundle paramBundle)
-  {
-    if (BaseApplicationImpl.sApplication.getPackageName().equals(paramString))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("UpgradeController", 4, "syncVersionCodeToTool:" + paramString + ", versionCode:" + paramInt);
-      }
-      if ((this.jdField_a_of_type_Akgl != null) && (!this.jdField_a_of_type_Akgl.a(paramInt))) {
-        this.jdField_a_of_type_JavaLangString = null;
-      }
+        return;
+      } while (paramObject == null);
+      a(paramBoolean, ((Integer)paramObject[0]).intValue());
+      return;
     }
   }
 }

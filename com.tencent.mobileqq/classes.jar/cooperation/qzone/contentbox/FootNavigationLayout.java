@@ -6,23 +6,23 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bftt;
-import bful;
+import bhcd;
+import bhcv;
 import java.util.ArrayList;
 
 public class FootNavigationLayout
   extends LinearLayout
 {
   private static final int[] jdField_a_of_type_ArrayOfInt = { 4, 5, 6 };
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private View[] jdField_a_of_type_ArrayOfAndroidViewView;
+  private ViewGroup[] jdField_a_of_type_ArrayOfAndroidViewViewGroup;
+  private ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
   private TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
   
   public FootNavigationLayout(Context paramContext)
   {
@@ -44,17 +44,15 @@ public class FootNavigationLayout
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131496389, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131300683));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131309991));
-    this.c = ((TextView)findViewById(2131311421));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131299703);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131299704);
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, this.c };
-    this.jdField_a_of_type_ArrayOfAndroidViewView = new View[] { null, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_AndroidViewView };
+    LayoutInflater.from(getContext()).inflate(2131561988, this);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131368402));
+    this.jdField_a_of_type_ArrayOfAndroidViewViewGroup = new ViewGroup[] { (ViewGroup)findViewById(2131366288), (ViewGroup)findViewById(2131375752), (ViewGroup)findViewById(2131377232) };
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { (ImageView)findViewById(2131366289), (ImageView)findViewById(2131375753), (ImageView)findViewById(2131377233) };
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[] { (TextView)findViewById(2131366290), (TextView)findViewById(2131375754), (TextView)findViewById(2131377234) };
+    this.jdField_a_of_type_ArrayOfAndroidViewView = new View[] { null, findViewById(2131365271), findViewById(2131365272) };
   }
   
-  public void a(ArrayList<bful> paramArrayList)
+  public void a(ArrayList<bhcv> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
@@ -63,17 +61,19 @@ public class FootNavigationLayout
     }
     int i = 0;
     label20:
+    ViewGroup localViewGroup;
     TextView localTextView;
     View localView;
     if (i < 3)
     {
+      localViewGroup = this.jdField_a_of_type_ArrayOfAndroidViewViewGroup[i];
       localTextView = this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i];
       localView = this.jdField_a_of_type_ArrayOfAndroidViewView[i];
       if (i < paramArrayList.size()) {
-        break label77;
+        break label85;
       }
-      if (localTextView != null) {
-        localTextView.setVisibility(8);
+      if (localViewGroup != null) {
+        localViewGroup.setVisibility(8);
       }
       if (localView != null) {
         localView.setVisibility(8);
@@ -84,12 +84,12 @@ public class FootNavigationLayout
       i += 1;
       break label20;
       break;
-      label77:
-      bful localbful = (bful)paramArrayList.get(i);
-      if ((localbful == null) || (TextUtils.isEmpty(localbful.a)) || (TextUtils.isEmpty(localbful.a.trim())))
+      label85:
+      bhcv localbhcv = (bhcv)paramArrayList.get(i);
+      if ((localbhcv == null) || (TextUtils.isEmpty(localbhcv.a)) || (TextUtils.isEmpty(localbhcv.a.trim())))
       {
-        if (localTextView != null) {
-          localTextView.setVisibility(8);
+        if (localViewGroup != null) {
+          localViewGroup.setVisibility(8);
         }
         if (localView != null) {
           localView.setVisibility(8);
@@ -97,16 +97,89 @@ public class FootNavigationLayout
       }
       else
       {
-        if (localTextView != null)
+        if (localViewGroup != null)
         {
-          localTextView.setVisibility(0);
-          localTextView.setText(localbful.a);
-          localTextView.setOnClickListener(new bftt(this, localbful, i));
+          localViewGroup.setVisibility(0);
+          if (localTextView != null) {
+            localTextView.setText(localbhcv.a);
+          }
+          localViewGroup.setOnClickListener(new bhcd(this, localbhcv, i));
         }
         if (localView != null) {
           localView.setVisibility(0);
         }
       }
+    }
+  }
+  
+  public void setArrowVisible(int paramInt)
+  {
+    ImageView[] arrayOfImageView = this.jdField_a_of_type_ArrayOfAndroidWidgetImageView;
+    int j = arrayOfImageView.length;
+    int i = 0;
+    while (i < j)
+    {
+      ImageView localImageView = arrayOfImageView[i];
+      if (localImageView != null) {
+        localImageView.setVisibility(paramInt);
+      }
+      i += 1;
+    }
+  }
+  
+  public void setNightMode(boolean paramBoolean)
+  {
+    int k = 0;
+    int j = 0;
+    Object localObject2;
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-15263977);
+      localObject1 = this.jdField_a_of_type_ArrayOfAndroidWidgetTextView;
+      k = localObject1.length;
+      i = 0;
+      while (i < k)
+      {
+        localObject2 = localObject1[i];
+        if (localObject2 != null) {
+          localObject2.setTextColor(-1);
+        }
+        i += 1;
+      }
+      localObject1 = this.jdField_a_of_type_ArrayOfAndroidWidgetImageView;
+      k = localObject1.length;
+      i = j;
+      while (i < k)
+      {
+        localObject2 = localObject1[i];
+        if (localObject2 != null) {
+          localObject2.setBackgroundResource(2130847511);
+        }
+        i += 1;
+      }
+    }
+    this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-1);
+    Object localObject1 = this.jdField_a_of_type_ArrayOfAndroidWidgetTextView;
+    j = localObject1.length;
+    int i = 0;
+    while (i < j)
+    {
+      localObject2 = localObject1[i];
+      if (localObject2 != null) {
+        localObject2.setTextColor(-16777216);
+      }
+      i += 1;
+    }
+    localObject1 = this.jdField_a_of_type_ArrayOfAndroidWidgetImageView;
+    j = localObject1.length;
+    i = k;
+    while (i < j)
+    {
+      localObject2 = localObject1[i];
+      if (localObject2 != null) {
+        localObject2.setBackgroundResource(2130847510);
+      }
+      i += 1;
     }
   }
 }

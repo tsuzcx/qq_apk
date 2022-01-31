@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="ring" android:useLevel="false" android:innerRadius="0.0dip" android:thickness="@dimen/n7"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/a9b" />
-    <item android:drawable="@drawable/b70" />
-</selector>
+    <solid android:color="#88000000" />
+</shape>

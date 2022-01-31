@@ -1,8 +1,19 @@
-import android.graphics.drawable.Drawable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.RecvMsg;
 
-public abstract interface bgml
+public final class bgml
+  implements Parcelable.Creator<RecvMsg>
 {
-  public abstract void a(Drawable paramDrawable);
+  public RecvMsg a(Parcel paramParcel)
+  {
+    return new RecvMsg(paramParcel);
+  }
+  
+  public RecvMsg[] a(int paramInt)
+  {
+    return new RecvMsg[paramInt];
+  }
 }
 
 

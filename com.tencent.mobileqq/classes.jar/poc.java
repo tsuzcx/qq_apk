@@ -1,24 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInjoySkinAndRefreshFacade.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 public class poc
-  extends pnm
+  implements ViewFactory.FoundClickableViewListener
 {
-  poc(pob parampob) {}
+  poc(pob parampob, int paramInt, TemplateBean paramTemplateBean) {}
   
-  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt)
+  public void onFound(ViewBase paramViewBase)
   {
-    if ((paramBoolean) && (paramInt == pob.a(this.a))) {
-      ThreadManager.post(new ReadInjoySkinAndRefreshFacade.2.1(this, paramGuideInfo2, paramInt, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 5, null, true);
+    if (pob.a(this.jdField_a_of_type_Pob) != null)
+    {
+      paramViewBase.setOnClickListener(new pod(this));
+      return;
     }
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    {
+    default: 
+      return;
+    case 1038: 
+      paramViewBase.setOnClickListener(new pog(this));
+      return;
+    case 1116: 
+      paramViewBase.setOnClickListener(new poe(this));
+      return;
+    case 1040: 
+      paramViewBase.setOnClickListener(new pof(this));
+      return;
+    }
+    paramViewBase.setOnClickListener(new poh(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     poc
  * JD-Core Version:    0.7.0.1
  */

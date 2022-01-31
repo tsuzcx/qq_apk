@@ -1,55 +1,24 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-public class aays
+class aays
   implements DialogInterface.OnClickListener
 {
-  public aays(GroupManagerActivity paramGroupManagerActivity) {}
+  aays(aayq paramaayq, String paramString) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = GroupManagerActivity.a(this.a).getInputValue();
-    if (paramDialogInterface.equals("")) {
-      paramDialogInterface = this.a.getResources().getString(2131627551);
-    }
-    for (;;)
-    {
-      if (GroupManagerActivity.a(this.a) == 0) {
-        if (this.a.a.size() > 0)
-        {
-          b = (byte)(((Groups)this.a.a.get(this.a.a.size() - 1)).seqid + 1);
-          GroupManagerActivity.a(this.a, this.a.a(b, paramDialogInterface));
-          if (QLog.isColorLevel()) {
-            QLog.d("GroupManagerActivity", 2, "AddFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
-          }
-          if (GroupManagerActivity.a(this.a)) {
-            this.a.a(2131627588);
-          }
-          awqx.b(this.a.app, "CliOper", "", "", "category", "Add_category", 0, 0, "", "", "", "");
-        }
-      }
-      while (1 != GroupManagerActivity.a(this.a)) {
-        for (;;)
-        {
-          return;
-          byte b = 1;
-        }
-      }
-      GroupManagerActivity.a(this.a, this.a.b((byte)GroupManagerActivity.a(this.a).group_id, paramDialogInterface));
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupManagerActivity", 2, "EditeFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
-      }
-      if (GroupManagerActivity.a(this.a)) {
-        this.a.a(2131627591);
-      }
-      awqx.b(this.a.app, "CliOper", "", "", "category", "Name_category", 0, 0, "", "", "", "");
-      return;
-    }
+    DiscussionInfoCardActivity.a(this.jdField_a_of_type_Aayq.a).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Aayq.a.app.a().a();
+    paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaLangString, 3000));
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("isNeedFinish", true);
+    this.jdField_a_of_type_Aayq.a.setResult(-1, paramDialogInterface);
+    this.jdField_a_of_type_Aayq.a.finish();
   }
 }
 

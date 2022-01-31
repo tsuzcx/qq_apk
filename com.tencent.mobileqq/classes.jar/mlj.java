@@ -1,30 +1,75 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.av.gaudio.AVPhoneUserInfo;
 
 public class mlj
-  implements ViewTreeObserver.OnPreDrawListener
 {
-  public mlj(PoiMapActivity paramPoiMapActivity) {}
+  public int a;
+  public long a;
+  public AVPhoneUserInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
   
-  public boolean onPreDraw()
+  public mlj()
   {
-    this.a.o = PoiMapActivity.e(this.a).getMeasuredHeight();
-    PoiMapActivity.a(this.a, PoiMapActivity.a(this.a).getMeasuredHeight());
-    if ((this.a.o > 0) && (PoiMapActivity.a(this.a) > 0))
-    {
-      this.a.a((this.a.o - PoiMapActivity.b(this.a)) / 2 + this.a.u, false);
-      PoiMapActivity.f(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-      PoiMapActivity.b(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-    }
-    return true;
+    this.jdField_b_of_type_Long = 4L;
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Int == 2;
+  }
+  
+  public boolean c()
+  {
+    return this.e;
+  }
+  
+  public boolean d()
+  {
+    return (this.jdField_b_of_type_Boolean) && (!this.c);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin:=").append(this.jdField_a_of_type_Long).append(',');
+    localStringBuilder.append("isVideoIn:=").append(this.e).append(',');
+    localStringBuilder.append("isAttened:=").append(this.jdField_a_of_type_Boolean).append(',');
+    localStringBuilder.append("isSpeaking:=").append(this.jdField_b_of_type_Boolean).append(',');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mlj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aekq;
+import aevl;
 import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$67
@@ -13,7 +13,7 @@ class BaseChatPie$67
     if (QLog.isColorLevel()) {
       QLog.d(this.this$0.a, 2, "checkPESourceDowned onShow First");
     }
-    aekq.a();
+    aevl.a();
   }
 }
 

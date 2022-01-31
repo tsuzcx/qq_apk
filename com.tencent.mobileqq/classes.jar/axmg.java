@@ -1,22 +1,14 @@
-public class axmg
+import java.io.File;
+
+public abstract interface axmg
 {
-  public void a() {}
+  public abstract boolean a();
   
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public boolean a(axmb paramaxmb)
-  {
-    return false;
-  }
+  public abstract boolean a(File paramFile, axme paramaxme, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axmg
  * JD-Core Version:    0.7.0.1
  */

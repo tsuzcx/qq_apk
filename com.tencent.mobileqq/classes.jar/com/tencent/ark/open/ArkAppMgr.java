@@ -690,7 +690,7 @@ public class ArkAppMgr
     Object localObject = getAppPathInfoByNameFromLocal(paramString1, paramString2, paramString3, false);
     if ((localObject != null) && ((paramString3 == null) || (compareVersionString(((ArkAppMgr.AppPathInfo)localObject).desc.version, paramString3) >= 0)))
     {
-      ENV.logI("ArkApp.ArkAppMgr", String.format("ArkTemp.getAppPathByName, app found at local, update app, app-name=%s,app-appView=%s, min-ver=%s,info.desc.version=%s", new Object[] { paramString1, paramString2, paramString3, ((ArkAppMgr.AppPathInfo)localObject).desc.version }));
+      ENV.logI("ArkApp.ArkAppMgr", String.format("ArkTemp.getAppPathByName, app found at local, update app, app-name=%s,app-appView=%s, min-ver=%s,info.desc.version=%s,form=%d", new Object[] { paramString1, paramString2, paramString3, ((ArkAppMgr.AppPathInfo)localObject).desc.version, Integer.valueOf(((ArkAppMgr.AppPathInfo)localObject).from) }));
       paramString3 = new ArkAppMgr.GetAppPathByNameTask();
       paramString3.appName = paramString1;
       paramString3.appView = paramString2;
@@ -726,111 +726,107 @@ public class ArkAppMgr
     {
       synchronized (this.mTempAppCache)
       {
-        ??? = (ArkAppInfo.AppDownloadInfo)this.mTempAppCache.get(???);
-        if ((??? == null) || (TextUtils.isEmpty(paramString2))) {
-          break label540;
+        localObject2 = (ArkAppInfo.AppDownloadInfo)this.mTempAppCache.get(???);
+        if ((localObject2 == null) || (TextUtils.isEmpty(paramString2))) {
+          break label559;
         }
-        arrayOfString = ArkAppConfigMgr.getAppTemplateAndView(((ArkAppInfo.AppDownloadInfo)???).config, paramString2);
-        if ((arrayOfString == null) || (arrayOfString.length < 2)) {
-          break label534;
+        localObject2 = ArkAppConfigMgr.getAppTemplateAndView(((ArkAppInfo.AppDownloadInfo)localObject2).config, paramString2);
+        if ((localObject2 == null) || (localObject2.length < 2)) {
+          break label553;
         }
-        str = arrayOfString[0];
+        localObject3 = localObject2[0];
         synchronized (this.mDebugAppPathCache)
         {
-          ??? = (ArkAppMgr.AppPathInfo)this.mDebugAppPathCache.get(str);
+          ??? = (ArkAppMgr.AppPathInfo)this.mDebugAppPathCache.get(localObject3);
           if ((??? == null) || (((ArkAppMgr.AppPathInfo)???).path == null)) {
-            break label528;
+            break label547;
           }
           ??? = new File(((ArkAppMgr.AppPathInfo)???).path);
           if ((!((File)???).exists()) || (!((File)???).isFile())) {
-            break label528;
+            break label547;
           }
           ??? = ???;
           if (??? != null) {}
         }
       }
-      label302:
-      label358:
-      do
+      synchronized (this.mAppPathCache)
       {
-        synchronized (this.mAppPathCache)
+        ??? = (ArkAppMgr.AppPathInfo)this.mAppPathCache.get(localObject3);
+        ??? = ???;
+        if (??? != null)
         {
-          ??? = (ArkAppMgr.AppPathInfo)this.mAppPathCache.get(str);
-          ??? = ???;
-          if (??? != null)
-          {
-            if (((ArkAppMgr.AppPathInfo)???).path != null) {
-              break label302;
-            }
-            this.mAppPathCache.remove(str);
-            ??? = null;
+          if (((ArkAppMgr.AppPathInfo)???).path != null) {
+            break label296;
           }
-          File localFile;
-          do
-          {
-            ??? = ???;
-            if (??? == null) {
-              break label358;
-            }
-            ??? = ???;
-            if (arrayOfString != null)
-            {
-              ??? = ???;
-              if (arrayOfString.length >= 2)
-              {
-                ((ArkAppMgr.AppPathInfo)???).desc.name = ???;
-                ((ArkAppMgr.AppPathInfo)???).appTempInfo = new ArkAppInfo.AppTemplateView();
-                ((ArkAppMgr.AppPathInfo)???).appTempInfo.view = paramString2;
-                ((ArkAppMgr.AppPathInfo)???).appTempInfo.template = arrayOfString[0];
-                ((ArkAppMgr.AppPathInfo)???).appTempInfo.templateView = arrayOfString[1];
-                ??? = ???;
-              }
-            }
-            return ???;
-            ??? = finally;
-            throw ???;
-            ??? = finally;
-            throw ???;
-            localFile = new File(((ArkAppMgr.AppPathInfo)???).path);
-            if (!localFile.exists()) {
-              break;
-            }
-            ??? = ???;
-          } while (localFile.isFile());
-          this.mAppPathCache.remove(str);
+          this.mAppPathCache.remove(localObject3);
           ??? = null;
         }
-        if (paramBoolean) {
-          return null;
-        }
-        paramString2 = getLocalAppPathByAppName(str, paramString2);
-        if (paramString2 == null) {
-          return null;
-        }
-        int i = ArkAppCacheMgr.checkAppVersion(paramString2.path);
-        if (i != 1)
+        label296:
+        File localFile;
+        do
         {
-          ENV.logI("ArkApp.ArkAppMgr", String.format("getAppPathByNameFromLocal, arkCheckAppVersion fail, ret=%d, app-name=%s, tempapp=%s, app-ver=%s", new Object[] { Integer.valueOf(i), str, ???, paramString2.desc.version }));
-          deleteAppByName(str, false);
-          return null;
-        }
-        assert (paramString2 != null);
-        ??? = paramString2;
-      } while (paramString2.appTempInfo != null);
-      ENV.logI("ArkApp.ArkAppMgr", String.format("ArkTemp.getAppPathInfoByNameFromLocalCache init put to cache app=%s", new Object[] { str }));
+          ??? = ???;
+          if (??? == null) {
+            break label352;
+          }
+          if ((localObject2 != null) && (localObject2.length >= 2))
+          {
+            ((ArkAppMgr.AppPathInfo)???).desc.name = ???;
+            ((ArkAppMgr.AppPathInfo)???).appTempInfo = new ArkAppInfo.AppTemplateView();
+            ((ArkAppMgr.AppPathInfo)???).appTempInfo.view = paramString2;
+            ((ArkAppMgr.AppPathInfo)???).appTempInfo.template = localObject2[0];
+            ((ArkAppMgr.AppPathInfo)???).appTempInfo.templateView = localObject2[1];
+          }
+          ((ArkAppMgr.AppPathInfo)???).from = 1;
+          return ???;
+          ??? = finally;
+          throw ???;
+          ??? = finally;
+          throw ???;
+          localFile = new File(((ArkAppMgr.AppPathInfo)???).path);
+          if (!localFile.exists()) {
+            break;
+          }
+          ??? = ???;
+        } while (localFile.isFile());
+        this.mAppPathCache.remove(localObject3);
+        ??? = null;
+      }
+      label352:
+      if (paramBoolean) {
+        return null;
+      }
+      paramString2 = getLocalAppPathByAppName((String)localObject3, paramString2);
+      if (paramString2 == null)
+      {
+        ENV.logI("ArkApp.ArkAppMgr", String.format("ArkTemp.getAppPathInfoByNameFromLocalCache path return null for find cache oly, app=%s", new Object[] { localObject3 }));
+        return null;
+      }
+      int i = ArkAppCacheMgr.checkAppVersion(paramString2.path);
+      if (i != 1)
+      {
+        ENV.logI("ArkApp.ArkAppMgr", String.format("getAppPathByNameFromLocal, arkCheckAppVersion fail, ret=%d, app-name=%s, tempapp=%s, app-ver=%s", new Object[] { Integer.valueOf(i), localObject3, ???, paramString2.desc.version }));
+        deleteAppByName((String)localObject3, false);
+        return null;
+      }
+      assert (paramString2 != null);
+      if (paramString2.appTempInfo == null) {
+        ENV.logI("ArkApp.ArkAppMgr", String.format("ArkTemp.getAppPathInfoByNameFromLocalCache init put to cache app=%s", new Object[] { localObject3 }));
+      }
       synchronized (this.mAppPathCache)
       {
         this.mAppPathCache.put(paramString2.desc.name, paramString2);
+        paramString2.from = 2;
         return paramString2;
       }
-      label528:
+      label547:
       ??? = null;
       continue;
-      label534:
-      String str = ???;
+      label553:
+      Object localObject3 = ???;
       continue;
-      label540:
-      String[] arrayOfString = null;
+      label559:
+      Object localObject2 = null;
     }
   }
   
@@ -1112,6 +1108,7 @@ public class ArkAppMgr
     saveAppDesc(paramUpdateAppByNameTask.appPathInfo.desc.name, str1);
     ENV.logI("ArkApp.ArkAppMgr", String.format("ArkTemp.onUpdateApp_DownloadAppPackageResult, success, app-name=%s, app-version=%s, app-path=%s", new Object[] { paramUpdateAppByNameTask.appPathInfo.desc.name, paramUpdateAppByNameTask.appPathInfo.desc.version, paramArrayOfByte }));
     paramUpdateAppByNameTask.appPathInfo.path = paramArrayOfByte;
+    paramUpdateAppByNameTask.appPathInfo.from = 0;
     deleteOldAppWhenUpdateSuccess(paramUpdateAppByNameTask.appName, paramUpdateAppByNameTask.appPathInfo.desc.version, true);
     notifyUpdateAppByNameResult(1, 0, null, paramUpdateAppByNameTask);
   }

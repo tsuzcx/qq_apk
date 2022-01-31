@@ -9,9 +9,9 @@ class DesktopDataManager$6
   
   public void run()
   {
-    DesktopDataManager.access$1600(this.this$0, this.val$moduleInfos);
-    if (DesktopDataManager.access$1500(this.this$0) != null) {
-      DesktopDataManager.access$1500(this.this$0).onDataChanged();
+    DesktopDataManager.access$1300(this.this$0, this.val$moduleInfos);
+    if (DesktopDataManager.access$1400(this.this$0) != null) {
+      DesktopDataManager.access$1400(this.this$0).onDataChanged();
     }
   }
 }

@@ -1,18 +1,28 @@
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
+import com.tencent.av.ui.VideoControlUI;
 
-class mjp
+public class mjp
   extends Handler
 {
+  public mjp(VideoControlUI paramVideoControlUI, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
   public void handleMessage(Message paramMessage)
   {
-    mjo localmjo = (mjo)paramMessage.obj;
+    String str = (String)paramMessage.obj;
     switch (paramMessage.what)
     {
     default: 
       return;
+    case 256: 
+      mat.a(this.a.a, 1037, str);
+      return;
     }
-    localmjo.jdField_a_of_type_Mjm.a(((mjq[])localmjo.jdField_a_of_type_ArrayOfJavaLangObject)[0]);
+    mat.a(this.a.a, 1036, str);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.dataline.activities;
 
-import ajed;
+import ajsf;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -9,9 +9,9 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import awuw;
-import axkd;
-import babh;
+import axuy;
+import ayki;
+import bbcl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
@@ -31,15 +31,15 @@ class LiteActivity$36
       if (this.this$0.jdField_b_of_type_AndroidWidgetTextView == null)
       {
         this.this$0.jdField_b_of_type_AndroidWidgetTextView = new TextView(this.this$0);
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setId(2131304841);
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setId(2131370507);
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setSingleLine();
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.this$0.getResources().getDrawable(2130838772));
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.this$0.getResources().getDrawable(2130838842));
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130838772);
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.this$0.getResources().getColorStateList(2131101329));
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130838842);
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.this$0.getResources().getColorStateList(2131166924));
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setPadding((int)(LiteActivity.a(this.this$0) * 10.0F), this.this$0.jdField_b_of_type_AndroidWidgetTextView.getPaddingTop(), (int)(LiteActivity.b(this.this$0) * 10.0F), this.this$0.jdField_b_of_type_AndroidWidgetTextView.getPaddingBottom());
-        localObject = new RelativeLayout.LayoutParams(-1, (int)this.this$0.getResources().getDimension(2131165865));
+        localObject = new RelativeLayout.LayoutParams(-1, (int)this.this$0.getResources().getDimension(2131296940));
         this.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.this$0.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.this$0);
       }
@@ -61,7 +61,7 @@ class LiteActivity$36
       localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.nickName);
       label388:
       localStringBuilder.append(":");
-      if (!(localObject instanceof axkd)) {
+      if (!(localObject instanceof ayki)) {
         break label905;
       }
     }
@@ -69,7 +69,7 @@ class LiteActivity$36
     {
       try
       {
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(((axkd)localObject).a(localStringBuilder.toString(), true, new int[] { 1, 16 }));
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(((ayki)localObject).a(localStringBuilder.toString(), true, new int[] { 1, 16 }));
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.requestLayout();
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setTag(this.jdField_a_of_type_AndroidContentIntent);
         localObject = this.this$0.jdField_b_of_type_AndroidWidgetTextView.getHandler();
@@ -85,7 +85,7 @@ class LiteActivity$36
         label510:
         if (this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.msgtype == -2011)
         {
-          localObject = awuw.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.msgData);
+          localObject = axuy.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.msgData);
           if (localObject != null)
           {
             localObject = ((AbsStructMsg)localObject).mMsgBrief;
@@ -124,9 +124,9 @@ class LiteActivity$36
         }
         if ((1010 == this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.istroop) || (1001 == this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.istroop) || (10002 == this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.istroop))
         {
-          if (String.valueOf(ajed.H).equals(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.frienduin))
+          if (String.valueOf(ajsf.H).equals(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.frienduin))
           {
-            str2 = babh.q(this.this$0.app, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.senderuin);
+            str2 = bbcl.q(this.this$0.app, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.senderuin);
             str1 = str2;
             if (TextUtils.isEmpty(str2)) {
               str1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.senderuin;
@@ -137,10 +137,10 @@ class LiteActivity$36
             if (this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.msgtype != -1024) {
               break label388;
             }
-            localObject = String.format(this.this$0.getResources().getString(2131633103), new Object[] { str1 });
+            localObject = String.format(this.this$0.getResources().getString(2131698839), new Object[] { str1 });
             break label388;
           }
-          str2 = babh.q(this.this$0.app, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.frienduin);
+          str2 = bbcl.q(this.this$0.app, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.frienduin);
           str1 = str2;
           if (!TextUtils.isEmpty(str2)) {
             continue;

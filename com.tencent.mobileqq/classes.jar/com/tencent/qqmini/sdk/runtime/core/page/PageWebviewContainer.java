@@ -10,73 +10,73 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bdcz;
-import bdfs;
-import bdfv;
-import bdfx;
-import bdgg;
-import bdgi;
-import bdhd;
-import bdii;
-import bdml;
-import bdna;
-import bdnl;
-import bdnw;
-import bdux;
-import bdvh;
-import bdvi;
+import begz;
+import bejs;
+import bejw;
+import bejy;
+import bekg;
+import beki;
+import belg;
+import beml;
+import bequ;
+import berl;
+import besa;
+import besl;
+import bfbf;
+import bfbp;
+import bfbq;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import org.json.JSONObject;
 
 public class PageWebviewContainer
   extends FrameLayout
-  implements SwipeRefreshLayout.OnRefreshListener, bdii
+  implements SwipeRefreshLayout.OnRefreshListener, beml
 {
   private SwipeRefreshLayout jdField_a_of_type_AndroidSupportV4WidgetSwipeRefreshLayout;
-  private bdcz jdField_a_of_type_Bdcz;
-  private bdux jdField_a_of_type_Bdux;
+  private begz jdField_a_of_type_Begz;
+  private bfbf jdField_a_of_type_Bfbf;
   private AbsAppBrandPage jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAbsAppBrandPage;
   private NativeViewContainer jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer;
-  private String jdField_a_of_type_JavaLangString = bdnl.d;
+  private String jdField_a_of_type_JavaLangString = besa.d;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
-  public PageWebviewContainer(bdcz parambdcz, AbsAppBrandPage paramAbsAppBrandPage)
+  public PageWebviewContainer(begz parambegz, AbsAppBrandPage paramAbsAppBrandPage)
   {
-    super(parambdcz.a());
+    super(parambegz.a());
     this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAbsAppBrandPage = paramAbsAppBrandPage;
-    this.jdField_a_of_type_Bdcz = parambdcz;
-    this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer = new NativeViewContainer(parambdcz.a(), this);
+    this.jdField_a_of_type_Begz = parambegz;
+    this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer = new NativeViewContainer(parambegz.a(), this);
     ViewCompat.setImportantForAccessibility(this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer, 4);
     this.jdField_a_of_type_AndroidSupportV4WidgetSwipeRefreshLayout = new SwipeRefreshLayout(getContext());
     this.jdField_a_of_type_AndroidSupportV4WidgetSwipeRefreshLayout.setOnRefreshListener(this);
     addView(this.jdField_a_of_type_AndroidSupportV4WidgetSwipeRefreshLayout, new FrameLayout.LayoutParams(-1, -1));
   }
   
-  private bdfx a()
+  private bejy a()
   {
-    if ((this.jdField_a_of_type_Bdcz != null) && (this.jdField_a_of_type_Bdcz.a() != null)) {
-      return (bdfx)this.jdField_a_of_type_Bdcz.a().apkgInfo;
+    if ((this.jdField_a_of_type_Begz != null) && (this.jdField_a_of_type_Begz.a() != null)) {
+      return (bejy)this.jdField_a_of_type_Begz.a().apkgInfo;
     }
     return null;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Bdux.a().b();
+    return this.jdField_a_of_type_Bfbf.a().b();
   }
   
   public Activity a()
   {
-    if (this.jdField_a_of_type_Bdcz != null) {
-      return this.jdField_a_of_type_Bdcz.a();
+    if (this.jdField_a_of_type_Begz != null) {
+      return this.jdField_a_of_type_Begz.a();
     }
     return null;
   }
   
-  public bdux a()
+  public bfbf a()
   {
-    return this.jdField_a_of_type_Bdux;
+    return this.jdField_a_of_type_Bfbf;
   }
   
   public NativeViewContainer a()
@@ -92,46 +92,46 @@ public class PageWebviewContainer
     return null;
   }
   
-  public String a(bdfs parambdfs)
+  public String a(bejs parambejs)
   {
-    bdnw.a("PageWebviewContainer", "event = " + parambdfs.jdField_a_of_type_JavaLangString + ", params = " + parambdfs.jdField_b_of_type_JavaLangString);
-    if ("startPullDownRefresh".equals(parambdfs.jdField_a_of_type_JavaLangString)) {
-      bdgi.a(new PageWebviewContainer.3(this, parambdfs));
+    besl.a("PageWebviewContainer", "event = " + parambejs.jdField_a_of_type_JavaLangString + ", params = " + parambejs.jdField_b_of_type_JavaLangString);
+    if ("startPullDownRefresh".equals(parambejs.jdField_a_of_type_JavaLangString)) {
+      beki.a(new PageWebviewContainer.3(this, parambejs));
     }
     for (;;)
     {
       return null;
-      if ("stopPullDownRefresh".equals(parambdfs.jdField_a_of_type_JavaLangString))
+      if ("stopPullDownRefresh".equals(parambejs.jdField_a_of_type_JavaLangString))
       {
-        bdgi.a(new PageWebviewContainer.4(this, parambdfs));
+        beki.a(new PageWebviewContainer.4(this, parambejs));
       }
-      else if ("disableScrollBounce".equals(parambdfs.jdField_a_of_type_JavaLangString))
+      else if ("disableScrollBounce".equals(parambejs.jdField_a_of_type_JavaLangString))
       {
         try
         {
-          JSONObject localJSONObject = new JSONObject(parambdfs.jdField_b_of_type_JavaLangString);
+          JSONObject localJSONObject = new JSONObject(parambejs.jdField_b_of_type_JavaLangString);
           if (!localJSONObject.has("disable")) {
             break label182;
           }
-          bdgi.a(new PageWebviewContainer.5(this, localJSONObject.optBoolean("disable", false), parambdfs));
+          beki.a(new PageWebviewContainer.5(this, localJSONObject.optBoolean("disable", false), parambejs));
         }
         catch (Exception localException)
         {
-          bdnw.d("PageWebviewContainer", "EVENT_DISABLE_SROLL_BOUNCE error," + localException);
-          parambdfs.a("params error");
+          besl.d("PageWebviewContainer", "EVENT_DISABLE_SROLL_BOUNCE error," + localException);
+          parambejs.a("params error");
         }
         continue;
         label182:
-        bdnw.d("PageWebviewContainer", "EVENT_DISABLE_SROLL_BOUNCE params error.");
-        parambdfs.a("params error");
+        besl.d("PageWebviewContainer", "EVENT_DISABLE_SROLL_BOUNCE params error.");
+        parambejs.a("params error");
       }
     }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bdux != null) {
-      this.jdField_a_of_type_Bdux.c();
+    if (this.jdField_a_of_type_Bfbf != null) {
+      this.jdField_a_of_type_Bfbf.c();
     }
     if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer != null) {
       this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer.removeAllViews();
@@ -152,10 +152,10 @@ public class PageWebviewContainer
     }
   }
   
-  public void a(bdhd parambdhd)
+  public void a(belg parambelg)
   {
     if ((this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAbsAppBrandPage != null) && (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAbsAppBrandPage.a() != null)) {
-      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAbsAppBrandPage.a().a(parambdhd);
+      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAbsAppBrandPage.a().a(parambelg);
     }
   }
   
@@ -200,15 +200,15 @@ public class PageWebviewContainer
       }
       if (this.b)
       {
-        this.jdField_a_of_type_Bdux.a().setVerticalScrollBarEnabled(false);
-        this.jdField_a_of_type_Bdux.a().setHorizontalScrollBarEnabled(false);
-        if ((this.jdField_a_of_type_Bdux.a().getView() != null) && (this.jdField_a_of_type_Bdux.a().getView().getViewTreeObserver() != null) && (this.jdField_a_of_type_Bdux.a().getView().getViewTreeObserver().isAlive())) {
-          this.jdField_a_of_type_Bdux.a().getView().getViewTreeObserver().addOnScrollChangedListener(new bdvi(this));
+        this.jdField_a_of_type_Bfbf.a().setVerticalScrollBarEnabled(false);
+        this.jdField_a_of_type_Bfbf.a().setHorizontalScrollBarEnabled(false);
+        if ((this.jdField_a_of_type_Bfbf.a().getView() != null) && (this.jdField_a_of_type_Bfbf.a().getView().getViewTreeObserver() != null) && (this.jdField_a_of_type_Bfbf.a().getView().getViewTreeObserver().isAlive())) {
+          this.jdField_a_of_type_Bfbf.a().getView().getViewTreeObserver().addOnScrollChangedListener(new bfbq(this));
         }
       }
-      if ((this.jdField_a_of_type_Bdcz != null) && (this.jdField_a_of_type_Bdcz.a() != null) && (!this.jdField_a_of_type_Bdcz.a().isFinishing()))
+      if ((this.jdField_a_of_type_Begz != null) && (this.jdField_a_of_type_Begz.a() != null) && (!this.jdField_a_of_type_Begz.a().isFinishing()))
       {
-        if (!bdnl.c.equals(this.jdField_a_of_type_JavaLangString)) {
+        if (!besa.c.equals(this.jdField_a_of_type_JavaLangString)) {
           break label352;
         }
         i = 4;
@@ -216,7 +216,7 @@ public class PageWebviewContainer
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bdcz.a().setRequestedOrientation(i);
+      this.jdField_a_of_type_Begz.a().setRequestedOrientation(i);
       return;
       label325:
       bool = localBoolean.booleanValue();
@@ -228,7 +228,7 @@ public class PageWebviewContainer
       bool = localBoolean.booleanValue();
       break label118;
       label352:
-      if (!bdnl.e.equals(this.jdField_a_of_type_JavaLangString)) {
+      if (!besa.e.equals(this.jdField_a_of_type_JavaLangString)) {
         i = 1;
       }
     }
@@ -262,16 +262,16 @@ public class PageWebviewContainer
   
   public void b(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Bdux != null) {
-      this.jdField_a_of_type_Bdux.a(paramString1, paramString2, a());
+    if (this.jdField_a_of_type_Bfbf != null) {
+      this.jdField_a_of_type_Bfbf.a(paramString1, paramString2, a());
     }
   }
   
   public void b(String paramString, JSONObject paramJSONObject, int paramInt)
   {
-    if (this.jdField_a_of_type_Bdux != null)
+    if (this.jdField_a_of_type_Bfbf != null)
     {
-      paramString = bdgg.b(paramString, paramJSONObject);
+      paramString = bekg.b(paramString, paramJSONObject);
       if (paramString == null) {
         break label32;
       }
@@ -279,28 +279,28 @@ public class PageWebviewContainer
     label32:
     for (paramString = paramString.toString();; paramString = "")
     {
-      this.jdField_a_of_type_Bdux.a(paramInt, paramString);
+      this.jdField_a_of_type_Bfbf.a(paramInt, paramString);
       return;
     }
   }
   
   public void onRefresh()
   {
-    if (this.jdField_a_of_type_Bdcz != null) {
-      this.jdField_a_of_type_Bdcz.a(bdfv.a("onPullDownRefresh", new JSONObject().toString(), a()));
+    if (this.jdField_a_of_type_Begz != null) {
+      this.jdField_a_of_type_Begz.a(bejw.a("onPullDownRefresh", new JSONObject().toString(), a()));
     }
   }
   
-  public void setBrandPageWebview(bdux parambdux)
+  public void setBrandPageWebview(bfbf parambfbf)
   {
-    if (parambdux != null)
+    if (parambfbf != null)
     {
-      this.jdField_a_of_type_Bdux = parambdux;
-      if (this.jdField_a_of_type_Bdux.a() != null)
+      this.jdField_a_of_type_Bfbf = parambfbf;
+      if (this.jdField_a_of_type_Bfbf.a() != null)
       {
-        this.jdField_a_of_type_Bdux.a().addView(this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer, new FrameLayout.LayoutParams(-1, -1));
-        this.jdField_a_of_type_AndroidSupportV4WidgetSwipeRefreshLayout.addView(this.jdField_a_of_type_Bdux.a(), new ViewGroup.LayoutParams(-1, -1));
-        this.jdField_a_of_type_Bdux.a().setOnWebviewScrollListener(new bdvh(this));
+        this.jdField_a_of_type_Bfbf.a().addView(this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer, new FrameLayout.LayoutParams(-1, -1));
+        this.jdField_a_of_type_AndroidSupportV4WidgetSwipeRefreshLayout.addView(this.jdField_a_of_type_Bfbf.a(), new ViewGroup.LayoutParams(-1, -1));
+        this.jdField_a_of_type_Bfbf.a().setOnWebviewScrollListener(new bfbp(this));
       }
     }
   }
@@ -312,10 +312,10 @@ public class PageWebviewContainer
     }
   }
   
-  public void setSoftKeyboardStateListener(bdhd parambdhd)
+  public void setSoftKeyboardStateListener(belg parambelg)
   {
     if ((this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAbsAppBrandPage != null) && (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAbsAppBrandPage.a() != null)) {
-      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAbsAppBrandPage.a().setSoftKeyboardStateListener(parambdhd);
+      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAbsAppBrandPage.a().setSoftKeyboardStateListener(parambelg);
     }
   }
 }

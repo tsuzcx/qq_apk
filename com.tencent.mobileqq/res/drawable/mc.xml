@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true">
-        <shape>
-            <corners android:radius="19.0dip" />
-            <size android:height="38.0dip" />
-            <solid android:color="#ff0071ff" />
-        </shape>
-    </item>
-    <item>
-        <shape>
-            <corners android:radius="19.0dip" />
-            <size android:height="38.0dip" />
-            <solid android:color="#ff282828" />
-        </shape>
-    </item>
+    <item android:state_focused="true" android:drawable="@drawable/a9c" />
+    <item android:state_pressed="true" android:drawable="@drawable/a9c" />
+    <item android:drawable="@color/ajr" />
 </selector>

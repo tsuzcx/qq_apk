@@ -1,28 +1,15 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.QUSDebugFragment;
 
-class aqjg
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+public class aqjg
+  implements View.OnClickListener
 {
-  private aqjg(aqjb paramaqjb) {}
+  public aqjg(QUSDebugFragment paramQUSDebugFragment) {}
   
-  public void onComplete(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    synchronized (aqjb.a(this.a))
-    {
-      String str = aqjb.a(paramString1);
-      aqja.b("onComplete path:" + str);
-      aqja.b("onComplete vid:" + paramString1 + ", detail:" + paramString2);
-      aqjb.a(this.a, paramString1);
-      paramString2 = new File(aqjb.b(paramString1));
-      if (paramString2.exists()) {
-        paramString2.renameTo(new File(str));
-      }
-      aqjb.b(this.a, paramString1);
-      aqjb.b(this.a, aqjb.a(this.a));
-      aqjb.b(this.a);
-      return;
-    }
+    new bcuk(this.a.getActivity()).show();
   }
 }
 

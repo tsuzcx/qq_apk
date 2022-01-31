@@ -1,36 +1,57 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class aotj
-  extends aodp
+  extends apvd
 {
-  public aotj(TroopFileDetailBrowserActivity paramTroopFileDetailBrowserActivity) {}
+  public aotj(QfileRecentAllFileTabView paramQfileRecentAllFileTabView) {}
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt, String paramString)
+  public void a()
   {
-    if (!paramBoolean) {
-      if ((paramString != null) && (paramString.length() > 0)) {
-        apck.a(paramString);
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().s();
+    Object localObject = apeh.b();
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (apef.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
+          axqw.b(QfileRecentAllFileTabView.b(this.a), "dc00898", "", "", "0X800A087", "0X800A087", 0, 0, "", "", "", "");
+        }
       }
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((this.a.b == null) || (this.a.app == null));
-        if (this.a.b.b() == paramLong) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.d("FileBrowserActivity<FileAssistant>", 4, "difference nSessionId");
-      return;
-    } while (this.a.app.a().b(paramLong) != null);
-    QLog.e("FileBrowserActivity<FileAssistant>", 1, "OnTroopFileCopyToC2cDisc->,but entity is null SessionId[" + paramLong + "]");
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

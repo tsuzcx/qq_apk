@@ -1,444 +1,242 @@
-import android.animation.ObjectAnimator;
-import android.app.Activity;
-import android.graphics.drawable.Drawable;
+import android.content.Context;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.widget.DocCooperationBanner.2;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchDetailActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class apfe
-  implements View.OnClickListener
+  extends awoh
 {
-  amlv jdField_a_of_type_Amlv;
-  amly jdField_a_of_type_Amly;
-  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  public View a;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
-  final String jdField_a_of_type_JavaLangString = "DocCooperationBanner";
-  private boolean jdField_a_of_type_Boolean;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_b_of_type_ComTencentImageURLImageView;
-  String jdField_b_of_type_JavaLangString;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_c_of_type_ComTencentImageURLImageView;
+  public int a;
+  CharSequence a;
+  public String a;
+  public List<FileManagerEntity> a;
+  CharSequence b;
+  public String b;
   
-  public apfe(Activity paramActivity, ViewGroup paramViewGroup, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, amlv paramamlv)
+  public apfe()
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131494920, paramViewGroup, true);
-    this.jdField_a_of_type_Amlv = paramamlv;
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131299206);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    b();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
   }
   
-  private Drawable a(int paramInt, String paramString)
+  public CharSequence a()
   {
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    CharSequence localCharSequence = awvy.a(((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).fileName.toLowerCase(), this.jdField_a_of_type_JavaLangString);
+    localCharSequence.toString();
+    return localCharSequence;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(View paramView)
+  {
+    if ((paramView.getContext() instanceof UniteSearchActivity)) {
+      awvy.a("all_result", "clk_file", new String[] { "" + this.jdField_a_of_type_JavaLangString });
+    }
+    awvy.a(this.jdField_a_of_type_JavaLangString, 100, 0, paramView);
+    if (this.jdField_a_of_type_JavaUtilList.size() == 1)
     {
-      localObject = (QQAppInterface)localObject;
-      if (paramInt == 0) {
-        return azwp.a((AppInterface)localObject, 1, paramString);
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+      Object localObject1 = (BaseActivity)paramView.getContext();
+      Object localObject2 = new apud();
+      ((apud)localObject2).jdField_b_of_type_JavaLangString = "file_viewer_in";
+      ((apud)localObject2).jdField_a_of_type_Int = 73;
+      ((apud)localObject2).c = apvb.a(localFileManagerEntity.fileName);
+      ((apud)localObject2).jdField_a_of_type_Long = localFileManagerEntity.fileSize;
+      apuc.a(((BaseActivity)localObject1).app.getCurrentAccountUin(), (apud)localObject2);
+      apuc.a("0X8004AE4");
+      if (localFileManagerEntity.nFileType == 13)
+      {
+        ayfv.a(localFileManagerEntity.Uuid, (Context)localObject1, this.jdField_a_of_type_Int, localFileManagerEntity, ((BaseActivity)localObject1).app);
+        if (this.jdField_a_of_type_Int == 8) {
+          axqw.b(null, "dc00898", "", "", "0X800A084", "0X800A084", 0, 0, "", "", "", "");
+        }
       }
-      if (paramInt == 1) {
-        return azwp.a((AppInterface)localObject, 4, paramString);
-      }
-      if (paramInt == 3000) {
-        return azwp.a((AppInterface)localObject, 101, paramString);
+      for (;;)
+      {
+        apuc.a("0X8006062");
+        awso.a(null, 0, this.jdField_a_of_type_Int, "0x8009D59", 0, 0, null, null);
+        return;
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          axqw.b(null, "dc00898", "", "", "0X800A086", "0X800A086", 0, 0, "", "", "", "");
+          continue;
+          localObject2 = new apoe(((BaseActivity)localObject1).app, (Context)localObject1, localFileManagerEntity, 10001);
+          Bundle localBundle = new Bundle();
+          localBundle.putBoolean("from_qlink_enter_recent", false);
+          localBundle.putString("c2c_discussion_recentfile", localFileManagerEntity.peerUin);
+          if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+            localBundle.putString("file_browser_extra_params_uin", this.jdField_b_of_type_JavaLangString);
+          }
+          ((apoe)localObject2).a(localBundle);
+          localObject1 = new apog((Context)localObject1, (apoj)localObject2);
+          ((apog)localObject1).a(7);
+          if (this.jdField_a_of_type_Int != -1) {
+            ((apog)localObject1).a(this.jdField_a_of_type_Int);
+          }
+          ((apog)localObject1).a(ajyc.a(2131704504));
+          ((apog)localObject1).a(apvk.a(paramView.findViewById(2131366211), localFileManagerEntity.fileName));
+          ((apog)localObject1).a();
+        }
       }
     }
+    apuc.a("0X8006099");
+    awso.a(null, 0, this.jdField_a_of_type_Int, "0x8009D5B", 0, 0, null, null);
+    FileSearchDetailActivity.a(paramView.getContext(), a(), this);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public CharSequence b()
+  {
     return null;
   }
   
-  private void a(boolean paramBoolean, int paramInt)
+  public String b()
   {
-    int j = 1;
-    Object localObject = amlz.a();
-    int i;
-    if (paramBoolean)
+    return ((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).peerUin;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public CharSequence c()
+  {
+    Object localObject3;
+    if (this.jdField_a_of_type_JavaLangCharSequence == null)
     {
-      localObject = ((amlv)localObject).jdField_b_of_type_JavaLangString;
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        i = j;
-        if (paramInt != 1)
-        {
-          if (paramInt != 3000) {
-            break label80;
-          }
-          i = j;
-        }
+      if (this.jdField_a_of_type_JavaUtilList.size() != 1) {
+        break label158;
       }
+      localObject3 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+      localObject1 = new SpannableStringBuilder();
+      ((SpannableStringBuilder)localObject1).append(d());
+      if (((FileManagerEntity)localObject3).nFileType == 13) {
+        break label87;
+      }
+      ((SpannableStringBuilder)localObject1).append(" ").append(apue.c((FileManagerEntity)localObject3));
     }
+    label87:
+    Object localObject2;
     for (;;)
     {
-      awqx.b(null, "dc00898", "", "", (String)localObject, (String)localObject, i, 0, "", "", "", "");
-      return;
-      localObject = ((amlv)localObject).d;
-      break;
-      label80:
-      if (paramInt == 0) {
-        i = 0;
-      } else {
-        i = 3;
-      }
+      this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
+      return this.jdField_a_of_type_JavaLangCharSequence;
+      localObject2 = apvu.b(((FileManagerEntity)localObject3).srvTime);
+      localObject3 = apue.b((FileManagerEntity)localObject3);
+      ((SpannableStringBuilder)localObject1).clear();
+      ((SpannableStringBuilder)localObject1).append((String)localObject2 + " " + (String)localObject3 + " " + BaseApplicationImpl.getContext().getString(2131692432));
     }
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131302648));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131299210));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131299209));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131299202));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131299203));
-    this.jdField_c_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131299204));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131299208));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131299211));
-    String str;
-    if ((this.jdField_a_of_type_Amlv != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null))
+    label158:
+    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    long l = 0L;
+    label170:
+    if (((Iterator)localObject1).hasNext())
     {
-      localObject = this.jdField_a_of_type_Amlv.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_Amly = ((amly)localObject);
-      if ((localObject != null) && (!TextUtils.isEmpty(((amly)localObject).jdField_a_of_type_JavaLangString)))
-      {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        str = ((amly)localObject).jdField_a_of_type_JavaLangString;
-        if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int != 3000)) {
-          break label245;
-        }
+      localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
+      if (l >= ((FileManagerEntity)localObject2).srvTime) {
+        break label220;
       }
+      l = ((FileManagerEntity)localObject2).srvTime;
     }
-    label245:
-    for (Object localObject = ajjy.a(2131637602);; localObject = ajjy.a(2131637587))
+    label220:
+    for (;;)
     {
-      localObject = str.replace("$name", (CharSequence)localObject);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      return;
-    }
-  }
-  
-  public void a()
-  {
-    a(false);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramString != null) {
-      this.jdField_b_of_type_JavaLangString = paramString;
-    }
-    boolean bool;
-    if (this.jdField_a_of_type_Amly != null)
-    {
-      bool = this.jdField_a_of_type_Amly.jdField_a_of_type_Boolean;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(8);
-      this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(8);
-      if (paramInt <= 0) {
-        break label171;
-      }
-      localObject = new StringBuilder().append(paramInt).append(ajjy.a(2131637591));
-      if (!bool) {
-        break label153;
-      }
-      paramString = ajjy.a(2131637599);
-      label94:
-      localObject = paramString;
-      localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
-      if (!bool) {
-        break label162;
-      }
-    }
-    label153:
-    label162:
-    for (paramString = ajjy.a(2131637583);; paramString = ajjy.a(2131637592))
-    {
-      localTextView.setText(paramString);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-      paramString = (String)localObject;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-      return;
-      bool = false;
-      break;
-      paramString = ajjy.a(2131637593);
-      break label94;
-    }
-    label171:
-    Object localObject = ajjy.a(2131637589);
-    TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
-    StringBuilder localStringBuilder = new StringBuilder().append(ajjy.a(2131637588));
-    if (bool) {}
-    for (paramString = ajjy.a(2131637603);; paramString = ajjy.a(2131637586))
-    {
-      localTextView.setText(paramString + ajjy.a(2131637601));
-      this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null)
-      {
-        paramString = a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString);
-        if (paramString != null) {
-          this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramString);
-        }
-      }
-      paramString = (String)localObject;
+      break label170;
+      this.jdField_a_of_type_JavaLangCharSequence = d();
       break;
     }
   }
   
-  public void a(int paramInt, List<amlw> paramList, String paramString)
+  public CharSequence d()
   {
-    int i = 0;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    boolean bool;
+    int i = 7;
+    if (this.jdField_b_of_type_JavaLangCharSequence != null) {
+      return this.jdField_b_of_type_JavaLangCharSequence;
+    }
+    int j = this.jdField_a_of_type_JavaUtilList.size();
     Object localObject1;
-    if (this.jdField_a_of_type_Amly != null)
+    if (j > 1)
     {
-      bool = this.jdField_a_of_type_Amly.jdField_a_of_type_Boolean;
-      if (paramInt != 1) {
-        break label365;
-      }
-      this.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(8);
-      this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(8);
-      localObject1 = new StringBuilder().append(ajjy.a(2131637585));
-      if (!bool) {
-        break label321;
-      }
-      paramString = ajjy.a(2131637597);
-      label92:
-      paramString = paramString;
-      if ((paramList == null) || (paramList.size() <= 0)) {
-        break label331;
-      }
-      localObject1 = (amlw)paramList.get(0);
-      paramString = ((amlw)localObject1).jdField_a_of_type_JavaLangString + paramString;
-      label150:
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-      localObject1 = this.jdField_c_of_type_AndroidWidgetTextView;
-      if (!bool) {
-        break label355;
-      }
+      localObject1 = new SpannableStringBuilder(j + ajyc.a(2131704508) + "\"");
+      ((SpannableStringBuilder)localObject1).append(awvy.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString));
+      ((SpannableStringBuilder)localObject1).append("\"").append("相关的同名文件记录");
+      this.jdField_b_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
+      return this.jdField_b_of_type_JavaLangCharSequence;
     }
-    label321:
-    label331:
-    label355:
-    for (paramString = ajjy.a(2131637600);; paramString = ajjy.a(2131637590))
-    {
-      ((TextView)localObject1).setText(paramString);
-      if (paramList == null) {
-        return;
-      }
-      paramString = this.jdField_a_of_type_ComTencentImageURLImageView;
-      localObject1 = this.jdField_b_of_type_ComTencentImageURLImageView;
-      URLImageView localURLImageView = this.jdField_c_of_type_ComTencentImageURLImageView;
-      paramInt = i;
-      while (paramInt < paramList.size())
-      {
-        Object localObject2 = ((amlw)paramList.get(paramInt)).jdField_b_of_type_JavaLangString;
-        if (paramInt < 3)
-        {
-          localObject2 = URLDrawable.getDrawable((String)localObject2, URLDrawable.URLDrawableOptions.obtain());
-          i = aciy.a(24.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-          ((URLDrawable)localObject2).setTag(azue.b(i, i, i / 2));
-          ((URLDrawable)localObject2).setDecodeHandler(azue.c);
-          new URLImageView[] { paramString, localObject1, localURLImageView }[paramInt].setImageDrawable((Drawable)localObject2);
-        }
-        paramInt += 1;
-      }
-      bool = false;
-      break;
-      paramString = ajjy.a(2131637604);
-      break label92;
-      paramString = "1人" + paramString;
-      break label150;
-    }
-    label365:
-    this.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(0);
-    if (paramInt == 2)
-    {
-      this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(8);
-      label387:
-      localObject1 = new StringBuilder().append(paramInt).append(ajjy.a(2131637598));
-      if (!bool) {
-        break label477;
-      }
-      paramString = ajjy.a(2131637595);
-      label421:
-      paramString = paramString;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-      localObject1 = this.jdField_c_of_type_AndroidWidgetTextView;
-      if (!bool) {
-        break label487;
-      }
-    }
-    label477:
-    label487:
-    for (paramString = ajjy.a(2131637582);; paramString = ajjy.a(2131637581))
-    {
-      ((TextView)localObject1).setText(paramString);
-      break;
-      this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(0);
-      break label387;
-      paramString = ajjy.a(2131637584);
-      break label421;
-    }
-  }
-  
-  public void a(String paramString1, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, boolean paramBoolean, String paramString2)
-  {
-    StringBuilder localStringBuilder;
-    if ((!TextUtils.isEmpty(paramString1)) && (paramTeamWorkFileImportInfo != null))
-    {
-      new StringBuilder(paramString1);
-      if (paramString1.indexOf("?") <= 0) {
-        break label213;
-      }
-      paramString1 = paramString1 + "&adtag=s_qq_file_inviteedit";
-      if (paramBoolean)
-      {
-        paramBoolean = amlz.a().a(paramTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
-        localStringBuilder = new StringBuilder(ajjy.a(2131637596));
-        if ((paramTeamWorkFileImportInfo.jdField_a_of_type_Int != 1) && (paramTeamWorkFileImportInfo.jdField_a_of_type_Int != 3000)) {
-          break label237;
-        }
-        localStringBuilder.append("群成员");
-        label108:
-        if (!paramBoolean) {
-          break label256;
-        }
-        localStringBuilder.append("一起编辑");
-      }
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    String str = apue.b((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).trim();
+    if (str.indexOf(ajyc.a(2131704507)) == 0) {
+      localSpannableStringBuilder.append("来自多人聊天: ");
     }
     for (;;)
     {
-      bbmy.a(BaseApplicationImpl.getApplication(), 2, localStringBuilder.toString(), 1).a();
-      ThreadManager.excute(new DocCooperationBanner.2(this, paramTeamWorkFileImportInfo, paramString1, paramBoolean, paramString2), 128, null, false);
-      axhg.a(null, "0X800A637");
-      paramString2 = new Bundle();
-      paramString2.putString("url", paramString1);
-      paramString2.putBoolean("temp_preview_from_qq", true);
-      paramString2.putParcelable("key_team_work_file_import_info", paramTeamWorkFileImportInfo);
-      TeamWorkDocEditBrowserActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, false);
-      return;
-      label213:
-      paramString1 = paramString1 + "?adtag=s_qq_file_inviteedit";
-      break;
-      label237:
-      if (paramTeamWorkFileImportInfo.jdField_a_of_type_Int != 0) {
-        break label108;
-      }
-      localStringBuilder.append("好友");
-      break label108;
-      label256:
-      localStringBuilder.append("一起查看");
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_Amlv != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null))
-    {
-      if (!paramBoolean) {
-        break label106;
-      }
-      if (!this.jdField_a_of_type_Boolean)
+      localObject1 = str;
+      if (i != 0) {}
+      try
       {
-        if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
-          this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+        localObject1 = str.toLowerCase().substring(i);
+        localSpannableStringBuilder.append(awvy.a((String)localObject1, this.jdField_a_of_type_JavaLangString));
+        if (this.jdField_b_of_type_JavaLangCharSequence == null) {
+          this.jdField_b_of_type_JavaLangCharSequence = localSpannableStringBuilder;
         }
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { 0.0F });
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(180L);
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-      }
-    }
-    return;
-    label106:
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
-          this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
-        }
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { this.jdField_a_of_type_AndroidViewView.getHeight() });
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new apff(this));
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(180L);
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-      }
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (!badq.d(BaseApplication.getContext())) {
-      bbmy.a(this.jdField_a_of_type_AndroidAppActivity, ajjy.a(2131637594), 0).a();
-    }
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
-      {
-        paramView = BaseApplicationImpl.sApplication.getRuntime();
-        if ((paramView instanceof QQAppInterface))
+        return this.jdField_b_of_type_JavaLangCharSequence;
+        if (str.indexOf(ajyc.a(2131704505)) == 0)
         {
-          paramView = (axem)((QQAppInterface)paramView).a(120);
-          if ((paramView != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (!paramView.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo)))
-          {
-            axhg.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.k + "-" + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d);
-            this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g = 0;
-            paramView.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-          }
+          localSpannableStringBuilder.append("发给多人聊天: ");
+        }
+        else if (str.indexOf(ajyc.a(2131704506)) == 0)
+        {
+          localSpannableStringBuilder.append("来自群: ");
+          i = 4;
+        }
+        else if (str.indexOf(ajyc.a(2131704501)) == 0)
+        {
+          localSpannableStringBuilder.append("发给群: ");
+          i = 4;
+        }
+        else if (str.indexOf(ajyc.a(2131704502)) == 0)
+        {
+          localSpannableStringBuilder.append("来自 ");
+          i = 2;
+        }
+        else if (str.indexOf(ajyc.a(2131704503)) == 0)
+        {
+          localSpannableStringBuilder.append("发给  ");
+          i = 2;
+        }
+        else if (str.indexOf(ajyc.a(2131704500)) == 0)
+        {
+          localSpannableStringBuilder.append("存到");
+          i = 2;
         }
       }
-      for (boolean bool = true; this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null; bool = false)
+      catch (Exception localException)
       {
-        a(bool, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int);
-        return;
-        if (this.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0) {
-          a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, false, "");
+        for (;;)
+        {
+          Object localObject2 = str;
         }
+        i = 0;
       }
     }
   }

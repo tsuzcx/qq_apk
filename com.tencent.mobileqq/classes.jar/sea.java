@@ -1,24 +1,16 @@
-import java.util.Comparator;
-
 class sea
-  implements Comparator<sdf>
+  implements shf
 {
-  sea(sdy paramsdy) {}
+  sea(sdz paramsdz, int paramInt1, int paramInt2) {}
   
-  public int a(sdf paramsdf1, sdf paramsdf2)
+  public void a(boolean paramBoolean)
   {
-    if (paramsdf1.f() == paramsdf2.f()) {
-      return 0;
-    }
-    if (paramsdf1.f() > paramsdf2.f()) {
-      return 1;
-    }
-    return -1;
+    sdv.a(this.jdField_a_of_type_Sdz.a, this.jdField_a_of_type_Int, this.b, false, Boolean.valueOf(paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sea
  * JD-Core Version:    0.7.0.1
  */

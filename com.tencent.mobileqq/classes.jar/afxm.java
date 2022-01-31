@@ -1,98 +1,51 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class afxm
-  extends bblf
+  implements View.OnClickListener
 {
-  private afxm(ContactListView paramContactListView) {}
+  public afxm(ChatHistoryC2CLinkFragment paramChatHistoryC2CLinkFragment) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return 2131493803;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    if ((this.a.a == null) || (this.a.a.isEmpty()) || (paramInt < 0) || (paramInt >= this.a.a.size())) {}
-    PhoneContact localPhoneContact1;
-    do
-    {
+    if ((paramView.getTag() instanceof String)) {
       return;
-      PhoneContact localPhoneContact2 = (PhoneContact)this.a.a.get(paramInt);
-      localPhoneContact1 = localPhoneContact2;
-      if (localPhoneContact2 == null)
+    }
+    Object localObject1 = (ChatMessage)((afxk)paramView.getTag()).a;
+    if (this.a.c)
+    {
+      this.a.jdField_a_of_type_Agbf.a(localObject1);
+      this.a.jdField_a_of_type_Afxi.notifyDataSetChanged();
+    }
+    while ((!(localObject1 instanceof MessageForStructing)) || (((MessageForStructing)localObject1).structingMsg == null) || (!(((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg)))
+    {
+      this.a.jdField_a_of_type_Afxi.notifyDataSetChanged();
+      return;
+    }
+    localObject1 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
+    Object localObject2;
+    if ((localObject1 instanceof StructMsgForGeneralShare))
+    {
+      localObject2 = (StructMsgForGeneralShare)localObject1;
+      axvk localaxvk = new axvk(this.a.b, paramView, (StructMsgForGeneralShare)localObject2);
+      StructMsgForGeneralShare.onClickEvent(this.a.b, this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForGeneralShare)localObject2, paramView, localaxvk);
+    }
+    for (;;)
+    {
+      ((AbsShareMsg)localObject1).getOnClickListener().onClick(paramView);
+      break;
+      if ((localObject1 instanceof StructMsgForAudioShare))
       {
-        localPhoneContact1 = localPhoneContact2;
-        if (paramInt + 1 < this.a.a.size()) {
-          localPhoneContact1 = (PhoneContact)this.a.a.get(paramInt + 1);
-        }
+        localObject2 = (StructMsgForAudioShare)localObject1;
+        StructMsgForAudioShare.onClickEvent(this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForAudioShare)localObject2);
       }
-    } while (localPhoneContact1 == null);
-    ((TextView)paramView).setText(localPhoneContact1.pinyinFirst);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return getItemViewType(paramInt) == 1;
-  }
-  
-  public int getCount()
-  {
-    if (this.a.a != null) {
-      return this.a.a.size();
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((this.a.a == null) || (this.a.a.isEmpty())) {}
-    while (this.a.a.get(paramInt) == null) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (getItemViewType(paramInt) == 1)
-    {
-      View localView = paramView;
-      if (paramView == null) {
-        localView = LayoutInflater.from(this.a.getContext()).inflate(a(), paramViewGroup, false);
-      }
-      a(localView, paramInt);
-      return localView;
-    }
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramViewGroup = this.a.a();
-      paramViewGroup.setOnClickListener(this.a);
-    }
-    paramView = (PhoneContact)this.a.a.get(paramInt);
-    this.a.a(paramViewGroup, paramView, false);
-    return paramViewGroup;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
   }
 }
 

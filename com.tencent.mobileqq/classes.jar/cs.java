@@ -1,16 +1,16 @@
-import com.dataline.activities.PrinterSubOptionActivity;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.dataline.activities.LiteActivity;
 
 public class cs
+  implements View.OnLongClickListener
 {
-  public int a;
-  public long a;
-  public String a;
+  public cs(LiteActivity paramLiteActivity) {}
   
-  public cs(PrinterSubOptionActivity paramPrinterSubOptionActivity, int paramInt, long paramLong, String paramString)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    actn.n = true;
+    return this.a.a(paramView);
   }
 }
 

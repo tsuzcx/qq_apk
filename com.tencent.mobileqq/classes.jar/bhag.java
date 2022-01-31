@@ -1,22 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.AECamera.panel.material.AEMaterialProviderView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
 public class bhag
-  extends bhik
+  implements View.OnClickListener
 {
-  public bhag(AEMaterialProviderView paramAEMaterialProviderView) {}
+  public bhag(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEMaterialProviderView", 2, "material list updated!");
+    if (!QzoneVerticalVideoDownloadActivity.access$200(this.a))
+    {
+      QzoneVerticalVideoDownloadActivity.access$300(this.a, false, false);
+      QzoneVerticalVideoDownloadActivity.access$400(this.a);
     }
-    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhag
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,15 @@ import com.tencent.biz.videostory.network.request.VSBaseRequest;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
-import vvt;
-import wxw;
-import wxx;
-import wyc;
+import wiq;
+import xgw;
+import xgx;
+import xhc;
 
 public class VSNetworkHelper
 {
   private static volatile VSNetworkHelper jdField_a_of_type_ComTencentBizVideostoryNetworkVSNetworkHelper;
-  private volatile wxw jdField_a_of_type_Wxw = new wxw();
+  private volatile xgw jdField_a_of_type_Xgw = new xgw();
   
   private VSNetworkHelper()
   {
@@ -46,15 +46,15 @@ public class VSNetworkHelper
     BaseApplicationImpl.getApplication().getRuntime().registObserver(a());
   }
   
-  public wxw a()
+  public xgw a()
   {
-    if (this.jdField_a_of_type_Wxw == null) {}
+    if (this.jdField_a_of_type_Xgw == null) {}
     try
     {
-      if (this.jdField_a_of_type_Wxw == null) {
-        this.jdField_a_of_type_Wxw = new wxw();
+      if (this.jdField_a_of_type_Xgw == null) {
+        this.jdField_a_of_type_Xgw = new xgw();
       }
-      return this.jdField_a_of_type_Wxw;
+      return this.jdField_a_of_type_Xgw;
     }
     finally {}
   }
@@ -64,19 +64,19 @@ public class VSNetworkHelper
     QLog.i("VSNetworkHelper", 2, "VSNetworkHelper: release");
     BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(a());
     a().a();
-    vvt.a();
+    wiq.a();
     jdField_a_of_type_ComTencentBizVideostoryNetworkVSNetworkHelper = null;
   }
   
-  public void a(VSBaseRequest paramVSBaseRequest, wxx paramwxx)
+  public void a(VSBaseRequest paramVSBaseRequest, xgx paramxgx)
   {
     if (paramVSBaseRequest == null) {
       return;
     }
-    a().a(paramVSBaseRequest, paramwxx);
-    paramwxx = new VSNetworkHelper.RequestIntent(this, BaseApplicationImpl.getApplication(), wyc.class);
-    paramwxx.putExtra("key_request_data", paramVSBaseRequest);
-    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramwxx);
+    a().a(paramVSBaseRequest, paramxgx);
+    paramxgx = new VSNetworkHelper.RequestIntent(this, BaseApplicationImpl.getApplication(), xhc.class);
+    paramxgx.putExtra("key_request_data", paramVSBaseRequest);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramxgx);
     QLog.i("VSNetworkHelper", 2, paramVSBaseRequest.getCmdName() + " sendRequest: success");
   }
   

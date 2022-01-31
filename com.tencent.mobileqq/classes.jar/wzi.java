@@ -1,18 +1,36 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.TextView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class wzi
-  extends AnimatorListenerAdapter
+class wzi
+  implements wze
 {
-  public wzi(SingleLyricView paramSingleLyricView) {}
+  wzi(wzh paramwzh, wzg paramwzg) {}
   
-  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    if (SingleLyricView.a(this.a) != null) {
-      SingleLyricView.a(this.a).setAlpha(1.0F);
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
     }
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
+    {
+      if (this.jdField_a_of_type_Wzg.a)
+      {
+        this.jdField_a_of_type_Wzh.jdField_a_of_type_Wzv.b(this.jdField_a_of_type_Wzh);
+        return;
+      }
+      if (this.jdField_a_of_type_Wzh.jdField_a_of_type_JavaLangString != null)
+      {
+        l = System.currentTimeMillis();
+        this.jdField_a_of_type_Wzh.jdField_a_of_type_Wyw.a(paramString1, this.jdField_a_of_type_Wzh.jdField_a_of_type_JavaLangString, new wzj(this, l));
+        return;
+      }
+      long l = System.currentTimeMillis();
+      this.jdField_a_of_type_Wzh.a(localFile, this.jdField_a_of_type_Wzh.b, new wzl(this, l));
+      return;
+    }
+    this.jdField_a_of_type_Wzh.d = paramString2;
+    this.jdField_a_of_type_Wzh.jdField_a_of_type_Wzv.a(this.jdField_a_of_type_Wzh);
   }
 }
 

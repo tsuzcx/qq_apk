@@ -1,31 +1,23 @@
-import com.tencent.mobileqq.shortvideo.util.ShortVideoGuideUtil.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.mobileqq.data.fts.FTSMessage;
+import java.util.HashSet;
+import java.util.List;
 
 public class awme
-  implements TVK_SDKMgr.InstallListener
 {
-  public awme(ShortVideoGuideUtil.1 param1) {}
-  
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(awmd.a, 2, "installSDK onInstalledFailed arg0=" + paramInt);
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(awmd.a, 2, "installSDK onInstalledSuccessed=");
-    }
-  }
+  public int a;
+  public long a;
+  public HashSet<Long> a;
+  public List<FTSMessage> a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awme
  * JD-Core Version:    0.7.0.1
  */

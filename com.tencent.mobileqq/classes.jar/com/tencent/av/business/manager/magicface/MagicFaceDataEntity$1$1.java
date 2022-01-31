@@ -1,6 +1,6 @@
 package com.tencent.av.business.manager.magicface;
 
-import krx;
+import lcl;
 
 class MagicFaceDataEntity$1$1
   implements Runnable
@@ -9,7 +9,7 @@ class MagicFaceDataEntity$1$1
   
   public void run()
   {
-    krx.c("MagicFaceDataEntity", "reloadDecrateList 3:" + this.a.a);
+    lcl.c("MagicFaceDataEntity", "reloadDecrateList 3:" + this.a.a);
     MagicFaceDataEntity.a(this.a.this$0, this.a.a);
   }
 }

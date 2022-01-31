@@ -1,6 +1,6 @@
 package cooperation.readinjoy;
 
-import bgmq;
+import bhvh;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
@@ -12,7 +12,7 @@ public final class ReadInJoyHelper$3
   public void run()
   {
     int j = 0;
-    Object localObject1 = bgmq.a("local_kd_tab_has_set");
+    Object localObject1 = bhvh.a("local_kd_tab_has_set");
     if ((localObject1 instanceof Boolean)) {
       if (!((Boolean)localObject1).booleanValue()) {
         break label121;
@@ -21,15 +21,15 @@ public final class ReadInJoyHelper$3
     label121:
     for (int i = 1;; i = 0)
     {
-      bgmq.a("local_kd_tab_has_set_prefix", Integer.valueOf(i));
-      Object localObject2 = bgmq.a("local_kd_tab_switch");
+      bhvh.a("local_kd_tab_has_set_prefix", Integer.valueOf(i));
+      Object localObject2 = bhvh.a("local_kd_tab_switch");
       if ((localObject2 instanceof Boolean))
       {
         i = j;
         if (((Boolean)localObject2).booleanValue()) {
           i = 1;
         }
-        bgmq.a("local_kd_tab_switch_prefix", Integer.valueOf(i));
+        bhvh.a("local_kd_tab_switch_prefix", Integer.valueOf(i));
       }
       QLog.i("ReadInJoyHelper", 1, this.a.getAccount() + " synSwitchCache async update preCache  hasSet:" + localObject1 + " switchOpen:" + localObject2);
       return;

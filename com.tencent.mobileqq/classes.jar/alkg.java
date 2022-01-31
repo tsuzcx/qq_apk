@@ -1,61 +1,47 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x74b.oidb_0x74b.OneUinHeadInfo;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class alkg
 {
-  public int a;
-  public long a;
-  public ArrayList<alkh> a;
-  public long b;
-  
-  public static alkg a(oidb_0x74b.OneUinHeadInfo paramOneUinHeadInfo)
+  public static alke a(alkh paramalkh, int paramInt)
   {
-    Object localObject;
-    if (paramOneUinHeadInfo == null) {
-      localObject = null;
+    if (paramalkh == null) {
+      throw new RuntimeException("params can not be null!");
     }
-    alkg localalkg;
-    do
+    Object localObject;
+    switch (paramalkh.jdField_a_of_type_Int)
     {
+    default: 
+      localObject = new alkj(paramInt);
+    }
+    for (;;)
+    {
+      QLog.i("KeyingManager", 1, "getKeying keying: " + localObject + "  params: " + paramalkh.toString());
       return localObject;
-      localalkg = new alkg();
-      if (paramOneUinHeadInfo.uint64_uin.has()) {
-        localalkg.jdField_a_of_type_Long = paramOneUinHeadInfo.uint64_uin.get();
+      localObject = new aljy(paramInt);
+      continue;
+      localObject = new alkl(paramInt);
+      continue;
+      localObject = new alkc(paramInt);
+      continue;
+      localObject = new alkd(paramInt);
+      continue;
+      if (TextUtils.isEmpty(paramalkh.jdField_a_of_type_JavaLangString)) {
+        break;
       }
-      if (paramOneUinHeadInfo.uint64_tinyid.has()) {
-        localalkg.b = paramOneUinHeadInfo.uint64_tinyid.get();
-      }
-      localalkg.jdField_a_of_type_Int = ((int)(System.currentTimeMillis() / 1000L));
-      localObject = localalkg;
-    } while (!paramOneUinHeadInfo.rpt_msg_head_list.has());
-    localalkg.jdField_a_of_type_JavaUtilArrayList = alkh.a(paramOneUinHeadInfo.rpt_msg_head_list.get());
-    return localalkg;
+      localObject = new aljz(paramInt, paramalkh.jdField_a_of_type_JavaLangString);
+    }
+    throw new RuntimeException("fragmentShader can not be empty!");
   }
   
-  public static ArrayList<alkg> a(List<oidb_0x74b.OneUinHeadInfo> paramList)
+  public static alkh a(int paramInt)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      alkg localalkg = a((oidb_0x74b.OneUinHeadInfo)paramList.next());
-      if (localalkg != null) {
-        localArrayList.add(localalkg);
-      }
-    }
-    return localArrayList;
+    return new alkh(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alkg
  * JD-Core Version:    0.7.0.1
  */

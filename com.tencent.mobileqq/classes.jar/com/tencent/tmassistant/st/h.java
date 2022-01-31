@@ -8,7 +8,7 @@ import com.tencent.tmassistant.common.jce.StatItem;
 import com.tencent.tmassistant.common.jce.StatReportRequest;
 import com.tencent.tmassistant.common.jce.StatReportResponse;
 import com.tencent.tmassistantbase.network.PostHttpRequest;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmdownloader.internal.notification.g;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,7 +28,7 @@ public class h
       while (localIterator.hasNext())
       {
         StatItem localStatItem = (StatItem)localIterator.next();
-        ac.c("SDKREPORT", ">>sendRequest type = " + localStatItem.type + " data = " + g.a(localStatItem.records));
+        ab.c("SDKREPORT", ">>sendRequest type = " + localStatItem.type + " data = " + g.a(localStatItem.records));
       }
       if (this.c == null) {
         this.c = new StatReportRequest();
@@ -36,9 +36,9 @@ public class h
       this.c.data = paramArrayList;
       paramArrayList = ProtocolPackage.buildRequest(this.c);
       int i = paramArrayList.head.requestId;
-      ac.c("StatReportEngine", "selfUpdateReport sendStatReportRequest ret = " + i);
+      ab.c("StatReportEngine", "selfUpdateReport sendStatReportRequest ret = " + i);
       paramArrayList = ProtocolPackage.buildPostData(paramArrayList);
-      ac.c("StatReportEngine", "selfUpdateReport sendStatReportRequest");
+      ab.c("StatReportEngine", "selfUpdateReport sendStatReportRequest");
       super.sendRequest(paramArrayList);
       return i;
     }
@@ -52,7 +52,7 @@ public class h
   
   public void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
-    ac.c("StatReportEngine", "errorCode: " + paramInt);
+    ab.c("StatReportEngine", "errorCode: " + paramInt);
     Response localResponse = ProtocolPackage.unpackPackage(paramArrayOfByte2);
     paramArrayOfByte1 = (Request)ProtocolPackage.bytes2JceObj(paramArrayOfByte1, Request.class);
     if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.head != null)) {}
@@ -60,7 +60,7 @@ public class h
     {
       if (paramArrayOfByte2 == null)
       {
-        ac.c("StatReportEngine", "response is null");
+        ab.c("StatReportEngine", "response is null");
         this.b.onStatReportFinish(i, null, null, paramInt);
         return;
       }
@@ -82,7 +82,7 @@ public class h
       }
       for (;;)
       {
-        ac.c("StatReportEngine", "exit");
+        ab.c("StatReportEngine", "exit");
         return;
         label166:
         this.b.onStatReportFinish(i, null, paramArrayOfByte1, paramArrayOfByte1.ret);

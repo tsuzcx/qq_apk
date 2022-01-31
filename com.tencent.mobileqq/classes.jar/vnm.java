@@ -1,55 +1,25 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
-import java.io.IOException;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-class vnm
-  extends vnh
+public class vnm
+  implements vla
 {
-  vnm(vni paramvni, vnq paramvnq, String[] paramArrayOfString, ArrayList paramArrayList) {}
+  public vnm(DoodleLayout paramDoodleLayout) {}
   
-  public void onFailure(String paramString)
+  public void a(Bitmap paramBitmap, boolean paramBoolean)
   {
-    urk.e("Q.qqstory.ffmpeg.FFmpegCmd", paramString);
-    this.jdField_a_of_type_Vnq.onFailure(paramString);
+    if (this.a.a != null) {
+      this.a.a.a(paramBitmap, paramBoolean);
+    }
   }
   
-  public void onFinish(boolean paramBoolean)
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      this.jdField_a_of_type_Vnq.onFinish(paramBoolean);
-    }
-    if (paramBoolean) {}
-    try
+    if (this.a.a != null)
     {
-      this.jdField_a_of_type_Vni.a(this.jdField_a_of_type_JavaUtilArrayList);
-      return;
+      veg.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
+      this.a.a.a(paramArrayOfByte);
     }
-    catch (FFmpegCommandAlreadyRunningException localFFmpegCommandAlreadyRunningException)
-    {
-      this.jdField_a_of_type_Vnq.onFailure(localFFmpegCommandAlreadyRunningException.getMessage());
-      urk.e("Q.qqstory.ffmpeg.FFmpegCmd", localFFmpegCommandAlreadyRunningException.getMessage());
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      this.jdField_a_of_type_Vnq.onFailure(localIOException.getMessage());
-      urk.e("Q.qqstory.ffmpeg.FFmpegCmd", localIOException.getMessage());
-    }
-  }
-  
-  public void onProgress(String paramString)
-  {
-    this.jdField_a_of_type_Vnq.onProgress(paramString);
-  }
-  
-  public void onStart()
-  {
-    this.jdField_a_of_type_Vnq.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    this.jdField_a_of_type_Vnq.onSuccess(paramString);
   }
 }
 

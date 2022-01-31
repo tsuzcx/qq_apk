@@ -1,16 +1,10 @@
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import java.util.List;
 
-class xdk
-  implements QzoneZipCacheHelperCallBack
+public abstract interface xdk
 {
-  xdk(xdi paramxdi, String paramString1, String paramString2, String paramString3) {}
+  public abstract void a(int paramInt);
   
-  public void onResult(boolean paramBoolean)
-  {
-    xdi.a(this.jdField_a_of_type_Xdi, paramBoolean, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-  }
-  
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
+  public abstract void a(List<bale> paramList, xch paramxch);
 }
 
 

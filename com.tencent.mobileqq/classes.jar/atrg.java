@@ -1,81 +1,41 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public class atrg
-  implements Comparable<atrg>
+class atrg
+  implements View.OnClickListener
 {
-  static boolean a;
-  public int a;
-  public Drawable a;
-  public String a;
-  public int[] a;
-  public int b;
-  public Drawable b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  atrg(atqu paramatqu, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_Boolean = true;
-    if (Build.VERSION.SDK_INT >= 23) {
-      jdField_a_of_type_Boolean = akhu.a(BaseApplicationImpl.getContext());
-    }
-  }
-  
-  public int a(atrg paramatrg)
-  {
-    if (paramatrg != null) {
-      return this.c - paramatrg.c;
-    }
-    return 0;
-  }
-  
-  public Drawable a()
-  {
-    if ((jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)))
+    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
     {
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      URLDrawable localURLDrawable = URLDrawable.getDrawable(this.e, (URLDrawable.URLDrawableOptions)localObject);
-      localObject = URLDrawable.getDrawable(this.f, (URLDrawable.URLDrawableOptions)localObject);
-      StateListDrawable localStateListDrawable = new StateListDrawable();
-      localStateListDrawable.addState(new int[] { -16842908, -16842913, -16842919 }, localURLDrawable);
-      localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
+      atqu.a(this.jdField_a_of_type_Atqu, 1);
+      new axra(this.jdField_a_of_type_Atqu.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.jdField_a_of_type_Atqu.a.a.a).a();
     }
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  public Drawable b()
-  {
-    if ((jdField_a_of_type_Boolean) && (this.b == null) && (!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.h)))
+    for (;;)
     {
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      URLDrawable localURLDrawable = URLDrawable.getDrawable(this.g, (URLDrawable.URLDrawableOptions)localObject);
-      localObject = URLDrawable.getDrawable(this.h, (URLDrawable.URLDrawableOptions)localObject);
-      StateListDrawable localStateListDrawable = new StateListDrawable();
-      localStateListDrawable.addState(new int[] { -16842908, -16842913, -16842919 }, localURLDrawable);
-      localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
-      this.b = localStateListDrawable;
+      atqu.b(this.jdField_a_of_type_Atqu);
+      return;
+      if (paramView == this.b)
+      {
+        atqu.a(this.jdField_a_of_type_Atqu, 2);
+        new axra(this.jdField_a_of_type_Atqu.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.jdField_a_of_type_Atqu.a.a.a).a();
+      }
+      else if (paramView == this.c)
+      {
+        atqu.a(this.jdField_a_of_type_Atqu, 3);
+        new axra(this.jdField_a_of_type_Atqu.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.jdField_a_of_type_Atqu.a.a.a).a();
+      }
     }
-    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atrg
  * JD-Core Version:    0.7.0.1
  */

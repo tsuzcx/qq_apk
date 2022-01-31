@@ -1,59 +1,31 @@
-import android.text.TextUtils;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import java.util.List;
-import org.json.JSONObject;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import mqq.app.AppActivity;
 
 public class azbu
-  extends azbz
+  implements View.OnClickListener
 {
-  private TextView a;
-  private TextView b;
+  public azbu(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
   
-  protected azbu(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312486));
-    this.b = ((TextView)paramView.findViewById(2131312377));
-  }
-  
-  public void a(View paramView, HWReciteItem paramHWReciteItem, azbx paramazbx)
-  {
-    paramHWReciteItem = (azac)paramazbx.a;
-    switch (paramView.getId())
-    {
+    paramView = this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity();
+    if (paramView.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.jdField_a_of_type_JavaLangString);
     }
-    do
+    for (;;)
     {
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().app, "dc00899", "Grp_tribe", "", "post", "save_video", 0, 0, "", "", "", "");
       return;
-      ReciteFragment.a(paramView.getContext(), paramHWReciteItem.a().toString(), paramHWReciteItem.jdField_c_of_type_Int);
-      paramView = BaseApplicationImpl.getApplication().getRuntime();
-    } while (!(paramView instanceof QQAppInterface));
-    azzx.a((QQAppInterface)paramView, paramHWReciteItem.f, "Grp_recite", "Recite_Clk", 0, 0, new String[] { paramHWReciteItem.f, "", paramHWReciteItem.b, "" });
-  }
-  
-  public void a(HWReciteItem paramHWReciteItem, azbx paramazbx, azac paramazac, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (TextUtils.isEmpty(paramazac.jdField_c_of_type_JavaLangString))
-    {
-      StringBuilder localStringBuilder = new StringBuilder(ajjy.a(2131639519)).append(paramazac.b);
-      if ((paramazac.a != null) && (!paramazac.a.isEmpty())) {
-        localStringBuilder.append(ayzg.a(paramazac.a));
-      }
-      paramazac.jdField_c_of_type_JavaLangString = localStringBuilder.toString();
+      paramView.requestPermissions(new azbv(this), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramazac.jdField_c_of_type_JavaLangString);
-    paramHWReciteItem.b(this.jdField_a_of_type_AndroidViewView, paramazbx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azbu
  * JD-Core Version:    0.7.0.1
  */

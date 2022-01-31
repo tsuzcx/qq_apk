@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
+import android.view.View;
+import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
 
-public abstract class ssd
-  extends akgd
+class ssd
+  implements RecyclerView.OnChildAttachStateChangeListener
 {
-  public ssd(String paramString)
+  ssd(srv paramsrv) {}
+  
+  public void onChildViewAttachedToWindow(View paramView)
   {
-    super(0, true, false, 300000L, false, false, paramString);
+    paramView = (srn)srv.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == srv.a(this.a)))
+    {
+      paramView.b();
+      veg.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "attach from window , start play!");
+    }
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onChildViewDetachedFromWindow(View paramView)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    paramView = (srn)srv.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == srv.a(this.a)))
     {
-      srz.a = new sry((int)(paramSosoLbsInfo.a.a * 1000000.0D), (int)(paramSosoLbsInfo.a.b * 1000000.0D));
-      urk.b("LbsManager", "onLocationFinish success : " + srz.a);
+      paramView.c();
+      veg.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "detach from window , stop play!");
     }
   }
 }

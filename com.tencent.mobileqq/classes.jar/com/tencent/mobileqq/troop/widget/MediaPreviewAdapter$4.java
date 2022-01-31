@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.widget;
 
-import azmp;
-import azmr;
+import bant;
+import banv;
 import com.tencent.image.URLImageView;
 
 public class MediaPreviewAdapter$4
   implements Runnable
 {
-  public MediaPreviewAdapter$4(azmp paramazmp, azmr paramazmr) {}
+  public MediaPreviewAdapter$4(bant parambant, banv parambanv) {}
   
   public void run()
   {

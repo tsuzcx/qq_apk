@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.MapContext;
@@ -18,9 +17,9 @@ class MapViewJsPlugin$15
     try
     {
       int i = new JSONObject(this.val$jsonParams).optInt("mapId", 0);
-      Object localObject = this.this$0.jsPluginEngine.appBrandRuntime.getCurWebviewContainer();
+      Object localObject = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
       if (localObject == null) {
-        break label187;
+        break label188;
       }
       localObject = ((WebviewContainer)localObject).getMapContext(i);
       if (localObject != null)
@@ -51,7 +50,7 @@ class MapViewJsPlugin$15
       return;
     }
     return;
-    label187:
+    label188:
     QLog.w("[mini] MapViewJsPlugin", 2, "handleNativeRequest eventName=" + this.val$eventName + "，top page not found");
     this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$eventName, null, this.val$callbackId);
   }

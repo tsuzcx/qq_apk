@@ -1,18 +1,41 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x977.oidb_cmd0x977.FollowStatusInfo;
-import tencent.im.oidb.cmd0x977.oidb_cmd0x977.KdUserInfo;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class opq
-  implements psh<oidb_cmd0x977.FollowStatusInfo, ppf>
+public class opq
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  opq(opp paramopp) {}
-  
-  public ppf a(oidb_cmd0x977.FollowStatusInfo paramFollowStatusInfo)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    return new ppf(Long.valueOf(paramFollowStatusInfo.uint64_uin.get()), Integer.valueOf(paramFollowStatusInfo.enum_account_type.get()), paramFollowStatusInfo.user_info.bytes_nick.get().toStringUtf8(), paramFollowStatusInfo.user_info.bytes_qq_head_url.get().toStringUtf8());
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoFloatWindowConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = ooi.a(paramString);
+    if ((String)paramString.get("readinjoy_tinyvideo_window_switch") != null) {
+      bhvh.b((String)paramString.get("readinjoy_tinyvideo_window_switch"));
+    }
+    paramString = (String)paramString.get("readinjoy_tinyvideo_autoplay_nextvideo");
+    if (paramString != null) {}
+    try
+    {
+      bhvh.d(Integer.parseInt(paramString));
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bhvh.b(null);
+    bhvh.d(0);
   }
 }
 

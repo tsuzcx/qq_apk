@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.readinjoy;
 
-import ajjy;
-import akfp;
+import ajyc;
+import akub;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
@@ -15,11 +15,11 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.WindowManager;
-import babh;
-import baip;
-import bgmq;
-import bgnb;
-import bgnc;
+import bbcl;
+import bbjw;
+import bhvh;
+import bhvt;
+import bhvu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
@@ -51,7 +51,7 @@ public class ReadInJoyManager
   private BusinessInfoCheckUpdate.AppInfo jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
   private BusinessInfoCheckUpdate.RedTypeInfo jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$RedTypeInfo;
   private HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private CopyOnWriteArrayList<bgnc> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private CopyOnWriteArrayList<bhvu> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
   
   static
@@ -63,7 +63,7 @@ public class ReadInJoyManager
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver = new ReadInJoyManager.NotifyReceiver(this);
-    this.jdField_a_of_type_AndroidContentSharedPreferences = bgmq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
+    this.jdField_a_of_type_AndroidContentSharedPreferences = bhvh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
     if (((WindowManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getSystemService("window")).getDefaultDisplay().getWidth() <= 720) {}
     for (int i = 14;; i = 24)
     {
@@ -95,7 +95,7 @@ public class ReadInJoyManager
     long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("config_feeds_process_seq", 0L) + 1L;
     SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
     localEditor.putLong("config_feeds_process_seq", l);
-    bgmq.a(localEditor, true);
+    bhvh.a(localEditor, true);
     return l;
   }
   
@@ -376,50 +376,50 @@ public class ReadInJoyManager
         localEditor.putLong("config_feeds_publishfail_leba_max_id", ((Bundle)localObject).getLong("_id"));
       }
       localEditor.putLong("config_feeds_publishfail_leba_unread_count", l1);
-      bgmq.a(localEditor, true);
+      bhvh.a(localEditor, true);
       b();
       return;
       l2 = l1;
     }
   }
   
-  private boolean a(Uri paramUri, bgnb parambgnb, long paramLong)
+  private boolean a(Uri paramUri, bhvt parambhvt, long paramLong)
   {
     ContentValues localContentValues = new ContentValues();
-    localContentValues.put("pushTime", Integer.valueOf(parambgnb.jdField_a_of_type_Int));
-    localContentValues.put("notifyType", Integer.valueOf(parambgnb.jdField_c_of_type_Int));
-    localContentValues.put("feedsOwner", Long.valueOf(parambgnb.jdField_a_of_type_Long));
-    localContentValues.put("feedsID", Long.valueOf(parambgnb.jdField_b_of_type_Long));
-    localContentValues.put("feedsSubject", parambgnb.jdField_a_of_type_JavaLangString);
-    localContentValues.put("deleteUin", Long.valueOf(parambgnb.f));
-    localContentValues.put("publishFail", Integer.valueOf(parambgnb.jdField_d_of_type_Int));
-    localContentValues.put("likeUin", Long.valueOf(parambgnb.e));
-    localContentValues.put("commentUin", Long.valueOf(parambgnb.jdField_c_of_type_Long));
-    localContentValues.put("commentID", parambgnb.jdField_b_of_type_JavaLangString);
-    localContentValues.put("replyUin", Long.valueOf(parambgnb.jdField_d_of_type_Long));
-    localContentValues.put("replyID", parambgnb.jdField_c_of_type_JavaLangString);
-    localContentValues.put("commentInfo", parambgnb.jdField_d_of_type_JavaLangString);
-    localContentValues.put("receiveTime", Long.valueOf(parambgnb.g));
+    localContentValues.put("pushTime", Integer.valueOf(parambhvt.jdField_a_of_type_Int));
+    localContentValues.put("notifyType", Integer.valueOf(parambhvt.jdField_c_of_type_Int));
+    localContentValues.put("feedsOwner", Long.valueOf(parambhvt.jdField_a_of_type_Long));
+    localContentValues.put("feedsID", Long.valueOf(parambhvt.jdField_b_of_type_Long));
+    localContentValues.put("feedsSubject", parambhvt.jdField_a_of_type_JavaLangString);
+    localContentValues.put("deleteUin", Long.valueOf(parambhvt.f));
+    localContentValues.put("publishFail", Integer.valueOf(parambhvt.jdField_d_of_type_Int));
+    localContentValues.put("likeUin", Long.valueOf(parambhvt.e));
+    localContentValues.put("commentUin", Long.valueOf(parambhvt.jdField_c_of_type_Long));
+    localContentValues.put("commentID", parambhvt.jdField_b_of_type_JavaLangString);
+    localContentValues.put("replyUin", Long.valueOf(parambhvt.jdField_d_of_type_Long));
+    localContentValues.put("replyID", parambhvt.jdField_c_of_type_JavaLangString);
+    localContentValues.put("commentInfo", parambhvt.jdField_d_of_type_JavaLangString);
+    localContentValues.put("receiveTime", Long.valueOf(parambhvt.g));
     localContentValues.put("processSeq", Long.valueOf(paramLong));
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getContentResolver().insert(paramUri, localContentValues) == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handlePushedFeedsMsgRecords, insertMsgRecordToFeedsTable failed, feedID=" + parambgnb.jdField_b_of_type_Long + ", commentID=" + parambgnb.jdField_b_of_type_JavaLangString);
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "handlePushedFeedsMsgRecords, insertMsgRecordToFeedsTable failed, feedID=" + parambhvt.jdField_b_of_type_Long + ", commentID=" + parambhvt.jdField_b_of_type_JavaLangString);
       }
       return false;
     }
     return true;
   }
   
-  private bgnc b()
+  private bhvu b()
   {
-    bgnc localbgnc = new bgnc();
-    localbgnc.jdField_a_of_type_Int = 0;
+    bhvu localbhvu = new bhvu();
+    localbhvu.jdField_a_of_type_Int = 0;
     if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
-      return localbgnc;
+      return localbhvu;
     }
     if (!this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("share_to_news", false)) {
-      return localbgnc;
+      return localbhvu;
     }
     long l3 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("config_feeds_newfeeds_leba_latest_owner", 0L);
     int i;
@@ -460,15 +460,15 @@ public class ReadInJoyManager
       if (l1 <= 0L) {
         break label365;
       }
-      localbgnc.jdField_a_of_type_Int = 1;
-      localbgnc.jdField_b_of_type_Int = ((int)l1);
-      localbgnc.jdField_d_of_type_Int = 3;
+      localbhvu.jdField_a_of_type_Int = 1;
+      localbhvu.jdField_b_of_type_Int = ((int)l1);
+      localbhvu.jdField_d_of_type_Int = 3;
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(localbgnc.jdField_b_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(localbhvu.jdField_b_of_type_JavaLangString))
       {
-        k = localbgnc.jdField_b_of_type_JavaLangString.length();
+        k = localbhvu.jdField_b_of_type_JavaLangString.length();
         if (k * 2 > this.jdField_a_of_type_Int)
         {
           i = 0;
@@ -476,7 +476,7 @@ public class ReadInJoyManager
           label266:
           if (j < k)
           {
-            if (localbgnc.jdField_b_of_type_JavaLangString.charAt(j) >= 'ÿ') {
+            if (localbhvu.jdField_b_of_type_JavaLangString.charAt(j) >= 'ÿ') {
               break label745;
             }
             i += 1;
@@ -484,11 +484,11 @@ public class ReadInJoyManager
             if ((i <= this.jdField_a_of_type_Int) || (j <= 0)) {
               break label752;
             }
-            localbgnc.jdField_b_of_type_JavaLangString = (localbgnc.jdField_b_of_type_JavaLangString.substring(0, j) + "...");
+            localbhvu.jdField_b_of_type_JavaLangString = (localbhvu.jdField_b_of_type_JavaLangString.substring(0, j) + "...");
           }
         }
       }
-      return localbgnc;
+      return localbhvu;
       i = 0;
       break;
       label344:
@@ -507,8 +507,8 @@ public class ReadInJoyManager
       if (j == 0) {
         break label389;
       }
-      localbgnc.jdField_a_of_type_Int = 4;
-      localbgnc.jdField_b_of_type_JavaLangString = ajjy.a(2131646931);
+      localbhvu.jdField_a_of_type_Int = 4;
+      localbhvu.jdField_b_of_type_JavaLangString = ajyc.a(2131712719);
     }
     label389:
     if ((k != 0) || (i != 0) || (m != 0))
@@ -554,26 +554,26 @@ public class ReadInJoyManager
       default: 
         break;
       case 1: 
-        localbgnc.jdField_a_of_type_Int = 2;
-        localbgnc.jdField_b_of_type_JavaLangString = str;
-        localbgnc.jdField_d_of_type_Int = i;
+        localbhvu.jdField_a_of_type_Int = 2;
+        localbhvu.jdField_b_of_type_JavaLangString = str;
+        localbhvu.jdField_d_of_type_Int = i;
         break;
       case 2: 
-        localbgnc.jdField_a_of_type_Int = 2;
-        localbgnc.jdField_b_of_type_JavaLangString = babh.j(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.toString(l3));
-        localbgnc.jdField_d_of_type_Int = i;
+        localbhvu.jdField_a_of_type_Int = 2;
+        localbhvu.jdField_b_of_type_JavaLangString = bbcl.j(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.toString(l3));
+        localbhvu.jdField_d_of_type_Int = i;
         break;
       case 5: 
-        localbgnc.jdField_a_of_type_Int = 2;
-        localbgnc.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("readinjoy_push_channel_article_content_wording", "");
-        localbgnc.jdField_d_of_type_Int = i;
+        localbhvu.jdField_a_of_type_Int = 2;
+        localbhvu.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("readinjoy_push_channel_article_content_wording", "");
+        localbhvu.jdField_d_of_type_Int = i;
         break;
         if (l2 <= 0L) {
           break;
         }
-        localbgnc.jdField_a_of_type_Int = 3;
-        localbgnc.jdField_c_of_type_Int = 2130844287;
-        localbgnc.jdField_d_of_type_Int = 4;
+        localbhvu.jdField_a_of_type_Int = 3;
+        localbhvu.jdField_c_of_type_Int = 2130844372;
+        localbhvu.jdField_d_of_type_Int = 4;
         break;
         i += 2;
         break label290;
@@ -585,18 +585,18 @@ public class ReadInJoyManager
   
   private void b()
   {
-    bgnc localbgnc = b();
-    int i = localbgnc.a(a());
+    bhvu localbhvu = b();
+    int i = localbhvu.a(a());
     if (i != 0)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.set(0, localbgnc);
-      ((akfp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(62)).a(true, true, i);
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.set(0, localbhvu);
+      ((akub)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(62)).a(true, true, i);
     }
   }
   
-  public bgnc a()
+  public bhvu a()
   {
-    return (bgnc)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(0);
+    return (bhvu)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(0);
   }
   
   public BusinessInfoCheckUpdate.AppInfo a()
@@ -639,10 +639,10 @@ public class ReadInJoyManager
       return;
     }
     long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("readinjoy_push_channel_article_content_channel_id", 0L);
-    String str = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("readinjoy_push_channel_article_content_channel_name", bgmq.jdField_a_of_type_JavaLangString);
+    String str = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("readinjoy_push_channel_article_content_channel_name", bhvh.jdField_a_of_type_JavaLangString);
     Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("readinjoy_push_channel_article_content_article_id_list", "");
     ArrayList localArrayList = new ArrayList(((String)localObject).length());
-    localObject = baip.a((String)localObject, ',');
+    localObject = bbjw.a((String)localObject, ',');
     int j = localObject.length;
     int i = 0;
     while (i < j)
@@ -658,7 +658,7 @@ public class ReadInJoyManager
     paramIntent.putExtra("subscription_all_article_id", localArrayList);
   }
   
-  public void a(List<bgnb> paramList)
+  public void a(List<bhvt> paramList)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       return;

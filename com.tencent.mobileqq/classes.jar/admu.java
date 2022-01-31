@@ -1,24 +1,19 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class admu
-  implements shy
+  implements View.OnClickListener
 {
-  long jdField_a_of_type_Long;
-  admv jdField_a_of_type_Admv;
-  String jdField_a_of_type_JavaLangString;
+  public admu(ArkAppView paramArkAppView, ArkViewModel paramArkViewModel) {}
   
-  public void a(admv paramadmv, String paramString, long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Admv = paramadmv;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
+      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
+    }
   }
-  
-  public void a(String paramString1, String paramString2, int paramInt) {}
-  
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
-  
-  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

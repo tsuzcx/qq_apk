@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import badq;
-import bgmq;
+import bbev;
+import bhvh;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import obz;
+import onk;
 
 public final class ReadInJoyUtils$3
   implements Runnable
@@ -19,21 +19,21 @@ public final class ReadInJoyUtils$3
     if ((this.a == null) || (!this.a.isLogin())) {
       return;
     }
-    if (badq.a(this.a.getApp()))
+    if (bbev.a(this.a.getApp()))
     {
-      obz.e(this.a);
+      onk.e(this.a);
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyUtils", 2, "handConversationToShow is wifi");
       }
     }
-    if (!bgmq.A(this.a))
+    if (!bhvh.B(this.a))
     {
-      obz.b(this.a);
-      bgmq.f(this.a);
+      onk.b(this.a);
+      bhvh.f(this.a);
     }
-    if (bgmq.v(this.a))
+    if (bhvh.w(this.a))
     {
-      bgmq.m(this.a, false);
+      bhvh.m(this.a, false);
       ((KandianMergeManager)this.a.getManager(162)).j();
     }
     for (;;)

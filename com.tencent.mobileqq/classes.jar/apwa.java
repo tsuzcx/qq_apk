@@ -1,22 +1,13 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-
-class apwa
-  extends RecyclerView.ViewHolder
+public class apwa
 {
-  apwa(apvy paramapvy, View paramView)
-  {
-    super(paramView);
-  }
-  
-  public String toString()
-  {
-    return super.toString();
-  }
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  String b;
+  String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apwa
  * JD-Core Version:    0.7.0.1
  */

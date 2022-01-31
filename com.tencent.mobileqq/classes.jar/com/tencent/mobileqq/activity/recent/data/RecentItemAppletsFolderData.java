@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import agxk;
-import ahca;
-import ahcw;
-import akaq;
+import ahjz;
+import ahop;
+import ahpl;
+import akpc;
 import android.content.Context;
 import android.text.TextUtils;
+import bbcl;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -55,20 +56,20 @@ public class RecentItemAppletsFolderData
     }
     super.a(paramQQAppInterface, paramContext);
     if (TextUtils.isEmpty(this.mTitleName)) {
-      this.mTitleName = this.mUser.uin;
+      this.mTitleName = bbcl.j(paramQQAppInterface, this.mUser.uin);
     }
     QQMessageFacade.Message localMessage = null;
     Object localObject1 = paramQQAppInterface.a();
     if (localObject1 != null) {
       localMessage = ((QQMessageFacade)localObject1).a(this.mUser.uin, this.mUser.getType());
     }
-    localObject1 = (agxk)paramQQAppInterface.getManager(315);
-    if (ahca.a(paramQQAppInterface)) {}
+    localObject1 = (ahjz)paramQQAppInterface.getManager(315);
+    if (ahop.a(paramQQAppInterface)) {}
     try
     {
-      ((agxk)localObject1).a();
-      label93:
-      Object localObject2 = ((agxk)localObject1).a(this.mUser.uin);
+      ((ahjz)localObject1).a();
+      label97:
+      Object localObject2 = ((ahjz)localObject1).a(this.mUser.uin);
       if (localObject2 != null)
       {
         QLog.d("RecentItemAppletsFolderData", 2, "account not null nick:" + ((AppletsAccountInfo)localObject2).nick);
@@ -76,45 +77,45 @@ public class RecentItemAppletsFolderData
         this.iconUrl = ((AppletsAccountInfo)localObject2).faceUrl;
         this.iconUrlSimple = ((AppletsAccountInfo)localObject2).faceUrlSimple;
         if (localMessage == null) {
-          break label317;
+          break label321;
         }
         localObject2 = paramQQAppInterface.a();
         if (localObject2 == null) {
-          break label301;
+          break label305;
         }
-        this.mUnreadNum = ((akaq)localObject2).a(localMessage.frienduin, this.mUser.getType());
-        label203:
-        if (((agxk)localObject1).a(localMessage, this.mUser) != 2) {
-          break label309;
+        this.mUnreadNum = ((akpc)localObject2).a(localMessage.frienduin, this.mUser.getType());
+        label207:
+        if (((ahjz)localObject1).a(localMessage, this.mUser) != 2) {
+          break label313;
         }
         this.mUnreadFlag = 1;
-        label222:
+        label226:
         this.mDisplayTime = a();
       }
       for (;;)
       {
         localObject1 = a();
         a(localMessage, this.mUser.getType(), paramQQAppInterface, paramContext, (MsgSummary)localObject1);
-        this.mShowTime = ahcw.a().a(this.mUser.uin, this.mUser.lastmsgtime);
+        this.mShowTime = ahpl.a().a(this.mUser.uin, this.mUser.lastmsgtime);
         this.mLastMsg = ((MsgSummary)localObject1).strContent;
         f();
         return;
         QLog.d("RecentItemAppletsFolderData", 2, "account is null");
         break;
-        label301:
+        label305:
         this.mUnreadNum = 0;
-        break label203;
-        label309:
+        break label207;
+        label313:
         this.mUnreadFlag = 2;
-        break label222;
-        label317:
+        break label226;
+        label321:
         this.mDisplayTime = 0L;
         this.mUnreadNum = 0;
       }
     }
     catch (Throwable localThrowable)
     {
-      break label93;
+      break label97;
     }
   }
   

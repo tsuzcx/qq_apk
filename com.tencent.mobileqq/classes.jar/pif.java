@@ -1,31 +1,26 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import cooperation.liveroom.LiveRoomProxyActivity;
 
 class pif
   implements View.OnClickListener
 {
-  pif(pid parampid, ArticleInfo paramArticleInfo, prv paramprv) {}
+  pif(pid parampid, int paramInt, rap paramrap, pax parampax) {}
   
   public void onClick(View paramView)
   {
-    obz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    obz.a(this.jdField_a_of_type_Pid.a, this.jdField_a_of_type_Prv.b.b);
-    try
+    if (this.jdField_a_of_type_Int == 120) {
+      LiveRoomProxyActivity.open(this.jdField_a_of_type_Rap.a(), this.jdField_a_of_type_Pax.a().mSocialFeedInfo.a.c, "kandian feed click");
+    }
+    rbu localrbu;
+    do
     {
-      paramView = new JSONObject();
-      paramView.put("folder_status", obz.d);
-      paramView.put("kandian_mode", "" + obz.e());
-      paramView.put("tab_source", "" + obz.d());
-      ndn.a(null, "", "0X8008277", "0X8008277", 0, 0, "", "", "", paramView.toString(), false);
       return;
-    }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
-    }
+      localrbu = this.jdField_a_of_type_Rap.a();
+    } while (localrbu == null);
+    localrbu.a(paramView, this.jdField_a_of_type_Pax.a(), 2);
   }
 }
 

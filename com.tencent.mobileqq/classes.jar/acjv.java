@@ -1,36 +1,23 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.NamePlateCfgInfo;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class acjv
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public acjv(BaseChatItemLayout paramBaseChatItemLayout) {}
+  public acjv(TroopMemberListActivity paramTroopMemberListActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof NamePlateCfgInfo)))
-    {
-      paramView = (NamePlateCfgInfo)paramView.getTag();
-      if ((paramView.mVipType != 3) && (paramView.mVipType != 259)) {
-        break label99;
-      }
-      bajr.a(BaseActivity.sTopActivity.app, this.a.getContext(), paramView.mVipType, paramView.mNamePlateId, "mios.p.cl.cztx_qlncmp");
-    }
-    for (;;)
-    {
-      awqx.b(BaseActivity.sTopActivity.app, "dc00898", "", "", "qq_vip", "0X8009CAB", 0, 0, "", "", "", "");
-      return;
-      label99:
-      bajr.b(BaseActivity.sTopActivity.app, this.a.getContext(), "mios.p.cl.cztx_qlncmp");
-    }
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acjv
  * JD-Core Version:    0.7.0.1
  */

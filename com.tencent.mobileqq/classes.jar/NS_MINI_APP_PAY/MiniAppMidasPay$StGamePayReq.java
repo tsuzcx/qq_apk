@@ -10,12 +10,13 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class MiniAppMidasPay$StGamePayReq
   extends MessageMicro<StGamePayReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48, 56, 64 }, new String[] { "extInfo", "appId", "prepayId", "starCurrency", "balanceAmount", "topupAmount", "payChannel", "sandboxEnv" }, new Object[] { null, "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, StGamePayReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48, 56, 64, 72 }, new String[] { "extInfo", "appId", "prepayId", "starCurrency", "balanceAmount", "topupAmount", "payChannel", "sandboxEnv", "reason" }, new Object[] { null, "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, StGamePayReq.class);
   public final PBStringField appId = PBField.initString("");
   public final PBInt32Field balanceAmount = PBField.initInt32(0);
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBInt32Field payChannel = PBField.initInt32(0);
   public final PBStringField prepayId = PBField.initString("");
+  public final PBInt32Field reason = PBField.initInt32(0);
   public final PBInt32Field sandboxEnv = PBField.initInt32(0);
   public final PBInt32Field starCurrency = PBField.initInt32(0);
   public final PBInt32Field topupAmount = PBField.initInt32(0);

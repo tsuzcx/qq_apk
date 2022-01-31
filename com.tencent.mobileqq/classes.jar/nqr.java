@@ -1,21 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.content.Context;
-import android.widget.RelativeLayout.LayoutParams;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class nqr
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bbwf
 {
-  nqr(nqp paramnqp, RelativeLayout.LayoutParams paramLayoutParams1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat, RelativeLayout.LayoutParams paramLayoutParams2) {}
+  nqr(nqq paramnqq) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDone(bbwg parambbwg)
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    nqp.a(this.jdField_a_of_type_Nqp, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams, f, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.jdField_a_of_type_Float);
-    nqp.a(this.jdField_a_of_type_Nqp, this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams, f, nqp.a(this.jdField_a_of_type_Nqp));
-    nqp.a(this.jdField_a_of_type_Nqp, nqp.a(this.jdField_a_of_type_Nqp), f, 0.2F, 1.7F, aciy.a(34.0F, nqp.a(this.jdField_a_of_type_Nqp).getResources()));
-    nqp.a(this.jdField_a_of_type_Nqp, nqp.b(this.jdField_a_of_type_Nqp), f, 0.2F, 2.0F, aciy.a(34.0F, nqp.a(this.jdField_a_of_type_Nqp).getResources()));
-    nqp.a(this.jdField_a_of_type_Nqp, nqp.c(this.jdField_a_of_type_Nqp), f, 0.2F, 2.0F, aciy.a(34.0F, nqp.a(this.jdField_a_of_type_Nqp).getResources()));
+    super.onDone(parambbwg);
+    if ((parambbwg.a == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putLong("last_modified_time", parambbwg.i).commit();
+      }
+      this.a.b();
+    }
+    if (QLog.isColorLevel())
+    {
+      File localFile = new File(nqq.jdField_a_of_type_JavaLangString);
+      long l = 0L;
+      if (localFile.exists()) {
+        l = localFile.lastModified();
+      }
+      QLog.d("EcShopAssistantManager", 2, "download onDone status=" + parambbwg.a() + ",errCode=" + parambbwg.a + ",httpCode=" + parambbwg.f + ",local lastModify=" + l + ",server lastModify=" + parambbwg.i);
+    }
   }
 }
 

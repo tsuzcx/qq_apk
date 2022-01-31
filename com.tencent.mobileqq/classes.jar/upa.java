@@ -1,27 +1,6 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class upa
-  extends QQUIEventReceiver<uoh, syp>
+public abstract interface upa
 {
-  public upa(@NonNull uoh paramuoh)
-  {
-    super(paramuoh);
-  }
-  
-  public void a(@NonNull uoh paramuoh, @NonNull syp paramsyp)
-  {
-    if ((paramsyp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramsyp.jdField_a_of_type_JavaUtilList == null)) {
-      return;
-    }
-    paramuoh.a(paramsyp);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return syp.class;
-  }
+  public abstract void a(upb paramupb);
 }
 
 

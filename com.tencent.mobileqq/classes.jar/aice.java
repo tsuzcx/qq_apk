@@ -1,73 +1,46 @@
-import android.support.v4.app.FragmentActivity;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class aice
-  implements View.OnClickListener
+public abstract interface aice
 {
-  aice(aicc paramaicc) {}
+  public abstract void bind(@Nullable aicg paramaicg);
   
-  public void onClick(View paramView)
-  {
-    if (!aicc.a(this.a)) {
-      babr.a(aicc.a(this.a), 230, "", ajjy.a(2131647690), new aicf(this), null).show();
-    }
-    do
-    {
-      return;
-      localObject = paramView.getTag();
-    } while ((localObject == null) || (!(localObject instanceof String)));
-    if ((paramView instanceof Button))
-    {
-      paramView = (Button)paramView;
-      if (paramView != null) {
-        paramView.setEnabled(false);
-      }
-    }
-    Object localObject = (String)localObject;
-    for (;;)
-    {
-      try
-      {
-        l1 = Long.parseLong(aicc.a(this.a));
-      }
-      catch (Exception paramView)
-      {
-        try
-        {
-          l2 = Long.parseLong((String)localObject);
-          aicc.a(this.a).add(localObject);
-          ((ajtg)aicc.a(this.a).a(20)).c(l1, l2);
-          if (aicc.a(this.a) == null) {
-            break;
-          }
-          awqx.b(aicc.a(this.a).app, "dc00898", "", "", "", "0X8009FA0", 0, 0, (String)localObject, "", "", "");
-          return;
-        }
-        catch (Exception paramView)
-        {
-          long l1;
-          long l2;
-          break label189;
-        }
-        paramView = paramView;
-        l1 = 0L;
-      }
-      label189:
-      if (QLog.isColorLevel()) {
-        QLog.d("RobotAdapter", 2, "parseLong err", paramView);
-      }
-      l2 = 0L;
-    }
-  }
+  public abstract void clearHighlightContent();
+  
+  @Nullable
+  public abstract CharSequence content();
+  
+  public abstract int contentLength();
+  
+  @Nullable
+  public abstract aicg delegate();
+  
+  public abstract void doSelecting(ChatMessage paramChatMessage);
+  
+  public abstract boolean hasSelected();
+  
+  public abstract void highlightBackgroundColor(@ColorInt int paramInt);
+  
+  public abstract void highlightContent();
+  
+  public abstract void locationByIndex(int paramInt, @NonNull int[] paramArrayOfInt, boolean paramBoolean);
+  
+  @Nullable
+  public abstract CharSequence selectContent();
+  
+  public abstract void selectContent(int paramInt1, int paramInt2);
+  
+  public abstract int touchIndex(int paramInt1, int paramInt2);
+  
+  @NonNull
+  public abstract View view();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aice
  * JD-Core Version:    0.7.0.1
  */

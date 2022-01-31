@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
-public abstract interface aidf
+public class aidf
+  extends aclh
 {
-  public abstract void a(DiscussionInfo paramDiscussionInfo);
+  public CheckBox a;
   
-  public abstract void a(TroopInfo paramTroopInfo, int paramInt);
+  private aidf(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aidf
  * JD-Core Version:    0.7.0.1
  */

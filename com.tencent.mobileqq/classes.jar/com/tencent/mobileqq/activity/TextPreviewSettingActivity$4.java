@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import fv;
+import ho;
 
 class TextPreviewSettingActivity$4
   implements Runnable

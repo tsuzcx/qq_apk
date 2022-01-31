@@ -1,14 +1,13 @@
-class rdx
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+
+public class rdx
+  implements bfwv
 {
-  String a;
-  String b;
-  String c;
+  public rdx(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public rdx(String paramString1, String paramString2, String paramString3)
+  public void a()
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    this.a.a(new rdy(this, "onListViewDrawFinished"));
   }
 }
 

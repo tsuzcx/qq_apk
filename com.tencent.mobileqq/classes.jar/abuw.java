@@ -1,40 +1,18 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.widget.XEditTextEx;
 
 public class abuw
-  extends atdr
+  implements View.OnTouchListener
 {
-  public abuw(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public abuw(QQLSActivity paramQQLSActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    TextPreviewTranslateActivity.b(this.a);
-    if ((paramBoolean) && (paramTranslateResult != null) && (paramTranslateResult.b()) && (!paramTranslateResult.a()))
-    {
-      TextPreviewTranslateActivity.a(this.a, paramTranslateResult);
-      return;
-    }
-    String str2 = this.a.getResources().getString(2131633502);
-    String str1 = str2;
-    if (paramTranslateResult != null)
-    {
-      if (TextUtils.isEmpty(paramTranslateResult.e)) {
-        break label92;
-      }
-      str1 = paramTranslateResult.e;
-    }
-    for (;;)
-    {
-      bbmy.a(this.a, 1, str1, 0).a();
-      return;
-      label92:
-      str1 = str2;
-      if (paramTranslateResult.a()) {
-        str1 = this.a.getResources().getString(2131633481);
-      }
-    }
+    QQLSActivity.a(this.a).setCursorVisible(true);
+    return false;
   }
 }
 

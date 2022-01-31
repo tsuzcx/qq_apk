@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.qq.im.poi.PoiInfo;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public final class hq
-  implements Parcelable.Creator<PoiInfo>
+class hq
+  implements asko<Void>
 {
-  public PoiInfo a(Parcel paramParcel)
-  {
-    return new PoiInfo(paramParcel, null);
-  }
+  hq(ho paramho, ChatMessage paramChatMessage) {}
   
-  public PoiInfo[] a(int paramInt)
+  public void a(Void paramVoid)
   {
-    return new PoiInfo[paramInt];
+    if (this.jdField_a_of_type_Ho.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage) != null) {
+      bbkv.a(this.jdField_a_of_type_Ho.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     hq
  * JD-Core Version:    0.7.0.1
  */

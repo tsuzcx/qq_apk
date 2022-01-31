@@ -1,58 +1,30 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.export.js.VipDownloadInterface;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class bcii
-  implements bcgv
+class bcii
+  extends BroadcastReceiver
 {
-  public bcii(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
+  bcii(bcic parambcic) {}
   
-  public void a(int paramInt, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bcds.e(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction ERROR");
-  }
-  
-  public void a(List<DownloadInfo> paramList)
-  {
-    bcds.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
+    long l1 = paramIntent.getLongExtra("groupId", 0L);
+    paramContext = paramIntent.getLongArrayExtra("uinList");
+    boolean bool = paramIntent.getBooleanExtra("isSpeaking", false);
+    int j = paramContext.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
+      long l2 = paramContext[i];
+      this.a.notifyUI(2, true, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Boolean.valueOf(bool) });
+      i += 1;
     }
-    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    bcds.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "querySucess : " + paramList);
-    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bcii
  * JD-Core Version:    0.7.0.1
  */

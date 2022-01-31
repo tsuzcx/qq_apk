@@ -1,74 +1,86 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.liveroom.LiveRoomHelper;
-import cooperation.liveroom.LiveRoomProxyActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.Gift;
+import java.util.List;
 
 public class aqrx
-  extends WebViewPlugin
+  extends aqru
 {
-  public aqrx()
+  public LinearLayout a;
+  public ImageView[] a;
+  public LinearLayout[] a;
+  public TextView[] a;
+  public TextView d;
+  
+  public aqrx(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    this.mPluginNameSpace = "gflivesdk";
+    super(paramContext, paramView, paramViewGroup);
+    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559083, paramViewGroup, false);
+    if (paramContext != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramContext);
+    }
+    this.d = ((TextView)paramContext.findViewById(2131378198));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131368962));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[4];
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[4];
+    this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout = new LinearLayout[4];
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)paramContext.findViewById(2131367966));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)paramContext.findViewById(2131378192));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[0] = ((LinearLayout)paramContext.findViewById(2131368958));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)paramContext.findViewById(2131367967));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)paramContext.findViewById(2131378193));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[1] = ((LinearLayout)paramContext.findViewById(2131368959));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2] = ((ImageView)paramContext.findViewById(2131367968));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)paramContext.findViewById(2131378194));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[2] = ((LinearLayout)paramContext.findViewById(2131368960));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[3] = ((ImageView)paramContext.findViewById(2131367969));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3] = ((TextView)paramContext.findViewById(2131378195));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[3] = ((LinearLayout)paramContext.findViewById(2131368961));
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void a(FeedsItemData paramFeedsItemData)
   {
-    if ("openView".equals(paramString3)) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, "openView");
-        }
-        paramString1 = new JSONObject(paramVarArgs[0]);
-        paramString2 = paramString1.optString("viewType");
-        paramJsBridgeListener = paramString1.optString("callback");
-        if ("activity".equals(paramString2))
-        {
-          paramString1 = paramString1.optString("url");
-          paramString2 = this.mRuntime.a();
-          if ((paramString2 != null) && (paramString1 != null) && (!paramString1.isEmpty()))
-          {
-            LiveRoomProxyActivity.open(paramString2, paramString1, "BusinessPlugin openView");
-            callJs(paramJsBridgeListener, new String[] { "{\"result\":0}" });
-          }
-        }
-        return true;
+    super.a(paramFeedsItemData);
+    this.d.setText(paramFeedsItemData.title);
+    int i;
+    if ((paramFeedsItemData.giftList != null) && (paramFeedsItemData.giftList.size() > 0))
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      i = 0;
+      label45:
+      if (i >= 4) {
+        return;
       }
-      catch (JSONException paramJsBridgeListener)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-        }
+      if (i >= paramFeedsItemData.giftList.size()) {
+        break label176;
       }
+      this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[i].setVisibility(0);
+      FeedsItemData.Gift localGift = (FeedsItemData.Gift)paramFeedsItemData.giftList.get(i);
+      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setText(localGift.text);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130839282);
+      localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130839282);
+      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setImageDrawable(URLDrawable.getDrawable(localGift.picture, localURLDrawableOptions));
     }
     for (;;)
     {
-      return false;
-      if ("checkSDKInstalled".equals(paramString3))
-      {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-          if ((!LiveRoomHelper.getPluginInstalledInTool()) || (TextUtils.isEmpty(LiveRoomHelper.getPluginVersionInTool()))) {
-            break;
-          }
-          callJs(paramJsBridgeListener, new String[] { "{\"result\":0,\"version\":\"" + LiveRoomHelper.getPluginVersionInTool() + "\"}" });
-          return true;
-        }
-        catch (JSONException paramJsBridgeListener) {}
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-        }
-      }
+      i += 1;
+      break label45;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      break;
+      label176:
+      this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[i].setVisibility(8);
     }
-    PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), new aqry(this, paramJsBridgeListener));
-    return true;
   }
 }
 

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.nearpeople.NearbyRecommender;
 
 import EncounterSvc.RespEncounterInfo;
-import atck;
-import azwg;
+import atyo;
+import baxk;
 
 public class ChatPushCarrierHelper$1
   implements Runnable
 {
-  public ChatPushCarrierHelper$1(atck paramatck, String paramString, RespEncounterInfo paramRespEncounterInfo) {}
+  public ChatPushCarrierHelper$1(atyo paramatyo, String paramString, RespEncounterInfo paramRespEncounterInfo) {}
   
   public void run()
   {
-    azwg localazwg = this.this$0.a;
+    baxk localbaxk = this.this$0.a;
     String str = this.jdField_a_of_type_JavaLangString;
     if (this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp > 0) {}
     for (long l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp;; l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.common_face_timestamp)
     {
-      localazwg.a(32, str, 202, l);
+      localbaxk.a(32, str, 202, l);
       return;
     }
   }

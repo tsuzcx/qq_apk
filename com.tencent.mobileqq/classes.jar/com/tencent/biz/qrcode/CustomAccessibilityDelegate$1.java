@@ -1,17 +1,17 @@
 package com.tencent.biz.qrcode;
 
-import vsk;
-import vsl;
+import wfg;
+import wfh;
 
 public class CustomAccessibilityDelegate$1
   implements Runnable
 {
-  public CustomAccessibilityDelegate$1(vsk paramvsk) {}
+  public CustomAccessibilityDelegate$1(wfg paramwfg) {}
   
   public void run()
   {
-    if (vsk.a(this.this$0) != null) {
-      vsk.a(this.this$0).b();
+    if (wfg.a(this.this$0) != null) {
+      wfg.a(this.this$0).b();
     }
   }
 }

@@ -1,115 +1,57 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.content.Intent;
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-class wge
-  extends ruj
+public class wge
+  implements bcwh
 {
-  private final wgd jdField_a_of_type_Wgd;
+  public wge(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public wge(wfz paramwfz, wgd paramwgd)
+  public void a(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_Wgd = paramwgd;
-  }
-  
-  protected boolean a(Integer paramInteger)
-  {
-    if ((wfz.a(this.jdField_a_of_type_Wfz) == null) || (this.jdField_a_of_type_Wfz.a == null)) {
-      return false;
+    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
+      return;
     }
-    if (this.jdField_a_of_type_Wgd != null) {
-      this.jdField_a_of_type_Wgd.a(paramInteger.intValue());
-    }
-    switch (paramInteger.intValue())
+    String str1;
+    label53:
+    String str3;
+    int i;
+    if (this.a.jdField_c_of_type_Int == 2)
     {
-    }
-    for (;;)
-    {
-      if ((paramInteger.intValue() != 20) && (paramInteger.intValue() != 25) && (wfz.a(this.jdField_a_of_type_Wfz) != null)) {
-        wfz.a(this.jdField_a_of_type_Wfz, wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, paramInteger.intValue() - 1, wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
+      if (this.a.h != 2) {
+        break label159;
       }
-      return super.a(paramInteger);
-      wfz.a(this.jdField_a_of_type_Wfz);
-      continue;
-      wfz.b(this.jdField_a_of_type_Wfz);
-      continue;
-      wfz.a(this.jdField_a_of_type_Wfz, paramInteger.intValue());
-      continue;
-      wfz.c(this.jdField_a_of_type_Wfz);
-      continue;
-      wfz.d(this.jdField_a_of_type_Wfz);
-      continue;
-      wfz.d(this.jdField_a_of_type_Wfz);
-      continue;
-      wfz.e(this.jdField_a_of_type_Wfz);
-      continue;
-      if ((wfz.a(this.jdField_a_of_type_Wfz) != null) && (wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null))
+      str1 = "qr_wechat";
+      str3 = this.a.jdField_c_of_type_JavaLangString;
+      i = this.a.a;
+      if (paramBaseResp.errCode != 0) {
+        break label165;
+      }
+    }
+    label159:
+    label165:
+    for (String str2 = "0";; str2 = "1")
+    {
+      bbbb.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, String.valueOf(i), str2 });
+      switch (paramBaseResp.errCode)
       {
-        wye.a(wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "clk_shop", 0, 0, new String[0]);
-        vvy.a(vvs.a(wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()));
-        continue;
-        if ((wfz.a(this.jdField_a_of_type_Wfz) != null) && (wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null))
-        {
-          vvy.a(wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.yzOrderPage.get());
-          wye.b(wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "clk_shoplist", 0, 0, new String[0]);
-          continue;
-          if ((wfz.a(this.jdField_a_of_type_Wfz) != null) && (wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null))
-          {
-            vvy.a(QzoneConfig.getInstance().getConfig("qqsubscribe", "showFansGroupConfigEntranceUrl", "https://h5.qzone.qq.com/subscription/fansqun/{uin}?_proxy=1&_wv=3").replace("{uin}", wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()));
-            wye.a(wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "clk_fan", 0, 0, new String[0]);
-            continue;
-            if (wfz.a(this.jdField_a_of_type_Wfz) == null) {
-              wfz.a(this.jdField_a_of_type_Wfz, new wfw(this.jdField_a_of_type_Wfz.a));
-            }
-            wfz.a(this.jdField_a_of_type_Wfz).a(wfz.a(this.jdField_a_of_type_Wfz));
-            if ((wfz.a(this.jdField_a_of_type_Wfz) != null) && (wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null))
-            {
-              wye.a(wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "clk_pic", 0, 0, new String[] { null, null, wfz.a(this.jdField_a_of_type_Wfz).f(), wfz.a(this.jdField_a_of_type_Wfz).c() });
-              continue;
-              vvy.a("https://h5.qzone.qq.com/subscription/syncFeeds/{uin}?_proxy=1&_wv=3".replace("{uin}", wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()));
-              wye.b(wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "sync_qzone", 0, 0, new String[0]);
-              continue;
-              Intent localIntent = new Intent();
-              localIntent.putExtra("postUin", wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get());
-              localIntent.putExtra("has_shop", true);
-              localIntent.putExtra("is_edit", true);
-              localIntent.putExtra("feed", wfz.a(this.jdField_a_of_type_Wfz).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.toByteArray());
-              bfpr.a(this.jdField_a_of_type_Wfz.a, localIntent, 3);
-              continue;
-              if (wfz.a(this.jdField_a_of_type_Wfz) != null) {
-                if (wfz.a(this.jdField_a_of_type_Wfz).b())
-                {
-                  QLog.d("SubscribeShareHelper", 2, "mColorNoteController ：add colorNote");
-                  wfz.a(this.jdField_a_of_type_Wfz).e();
-                }
-                else
-                {
-                  wfz.a(this.jdField_a_of_type_Wfz).i();
-                  continue;
-                  if ((wfz.a(this.jdField_a_of_type_Wfz) != null) && (wfz.a(this.jdField_a_of_type_Wfz).c()))
-                  {
-                    bbmy.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131625293), 5000).a();
-                    wfz.a(this.jdField_a_of_type_Wfz).f();
-                    QLog.d("SubscribeShareHelper", 2, "mColorNoteController ： delete colorNote");
-                  }
-                }
-              }
-            }
-          }
-        }
+      case -1: 
+      default: 
+        wim.a(1, 2131719476);
+        this.a.a(false);
+        return;
+        str1 = "qr_circle";
+        break label53;
       }
     }
+    wim.a(2, 2131719495);
+    this.a.a(true);
+    return;
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wge
  * JD-Core Version:    0.7.0.1
  */

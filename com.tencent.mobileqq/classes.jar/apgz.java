@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
 
-public abstract interface apgz
-  extends View.OnTouchListener
+class apgz
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  int jdField_a_of_type_Int = 201;
+  ExcitingTransferDownloadCompletedInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
   
-  public abstract void b(View paramView, int paramInt1, int paramInt2);
+  apgz(apgy paramapgy) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apgz
  * JD-Core Version:    0.7.0.1
  */

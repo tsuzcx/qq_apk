@@ -1,15 +1,14 @@
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
-final class mgl
+public class mgl
   implements DialogInterface.OnClickListener
 {
-  mgl(Context paramContext) {}
+  public mgl(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    mgj.a(this.a);
     paramDialogInterface.dismiss();
   }
 }

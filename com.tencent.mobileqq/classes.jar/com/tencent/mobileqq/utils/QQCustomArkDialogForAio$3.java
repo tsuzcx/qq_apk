@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.utils;
 
 import android.os.Bundle;
-import baew;
+import bbgb;
 
 public class QQCustomArkDialogForAio$3
   implements Runnable
 {
-  public QQCustomArkDialogForAio$3(baew parambaew, Bundle paramBundle) {}
+  public QQCustomArkDialogForAio$3(bbgb parambbgb, Bundle paramBundle) {}
   
   public void run()
   {
-    baew.a(this.this$0, this.a);
+    bbgb.a(this.this$0, this.a);
   }
 }
 

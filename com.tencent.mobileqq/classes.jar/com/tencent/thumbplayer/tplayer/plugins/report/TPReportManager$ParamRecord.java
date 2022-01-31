@@ -1,0 +1,55 @@
+package com.tencent.thumbplayer.tplayer.plugins.report;
+
+class TPReportManager$ParamRecord
+{
+  int bufferingCount = 0;
+  int bufferingDurationMs = 0;
+  String cdnIp = "";
+  String cdnUip = "";
+  String cdnUrl = "";
+  String defId = "";
+  long endBufferingTimeMs = 0L;
+  long endPrepareTimeMs = 0L;
+  int getSpeedCnt = 0;
+  boolean isMultiTrack = false;
+  boolean isSelectedSubtitle = false;
+  boolean isSwitchingDef = false;
+  int liveDelayMs = 0;
+  int maxSpeed = 0;
+  int playDurationMs = 0;
+  long startBufferingTimeMs = 0L;
+  long startPlayTimeMs = 0L;
+  long startPrepareTimeMs = 0L;
+  int totalSpeed = 0;
+  
+  private TPReportManager$ParamRecord(TPReportManager paramTPReportManager) {}
+  
+  void reset()
+  {
+    this.startPlayTimeMs = 0L;
+    this.playDurationMs = 0;
+    this.startPrepareTimeMs = 0L;
+    this.endPrepareTimeMs = 0L;
+    this.bufferingCount = 0;
+    this.bufferingDurationMs = 0;
+    this.startBufferingTimeMs = 0L;
+    this.endBufferingTimeMs = 0L;
+    this.liveDelayMs = 0;
+    this.maxSpeed = 0;
+    this.totalSpeed = 0;
+    this.getSpeedCnt = 0;
+    this.isSelectedSubtitle = false;
+    this.isMultiTrack = false;
+    this.isSwitchingDef = false;
+    this.defId = "";
+    this.cdnUrl = "";
+    this.cdnIp = "";
+    this.cdnUip = "";
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+ * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportManager.ParamRecord
+ * JD-Core Version:    0.7.0.1
+ */

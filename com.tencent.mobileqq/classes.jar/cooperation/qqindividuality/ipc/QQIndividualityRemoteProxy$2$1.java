@@ -1,22 +1,22 @@
 package cooperation.qqindividuality.ipc;
 
-import bfkl;
-import bfkm;
-import bfkn;
+import bgsd;
+import bgse;
+import bgsf;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class QQIndividualityRemoteProxy$2$1
   extends Thread
 {
-  public QQIndividualityRemoteProxy$2$1(bfkm parambfkm) {}
+  public QQIndividualityRemoteProxy$2$1(bgse parambgse) {}
   
   public void run()
   {
     while (!this.a.a.a.isEmpty())
     {
-      bfkn localbfkn = (bfkn)this.a.a.a.poll();
-      if (localbfkn != null) {
-        this.a.a.a(localbfkn);
+      bgsf localbgsf = (bgsf)this.a.a.a.poll();
+      if (localbgsf != null) {
+        this.a.a.a(localbgsf);
       }
     }
   }

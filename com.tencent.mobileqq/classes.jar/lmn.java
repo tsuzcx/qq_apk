@@ -1,19 +1,44 @@
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
+import android.graphics.PointF;
 
-public class lmn
-  implements auez
+public abstract class lmn
+  extends lmd
 {
-  public lmn(QQServiceForAV paramQQServiceForAV) {}
+  protected Path a;
+  protected PathMeasure a;
   
-  public void a(String paramString)
+  public lmn()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAV", 2, "onGetQCallNickName");
-    }
-    new lnd(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new lmo(this, paramString));
+    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(this.jdField_a_of_type_AndroidGraphicsPath, false);
+  }
+  
+  public abstract void a();
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    super.a(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    a();
+  }
+  
+  public void b(float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPath.quadTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y, (this.jdField_a_of_type_AndroidGraphicsPointF.x + paramFloat1) / 2.0F, (this.jdField_a_of_type_AndroidGraphicsPointF.y + paramFloat2) / 2.0F);
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    a();
+  }
+  
+  public void c(float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
+    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    a();
   }
 }
 

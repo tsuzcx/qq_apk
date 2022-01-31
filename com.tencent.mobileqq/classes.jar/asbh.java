@@ -1,22 +1,16 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager;
 
 final class asbh
-  implements Comparator<String>
+  extends asbp<TimerTaskManager, Void>
 {
-  public int a(String paramString1, String paramString2)
+  protected TimerTaskManager a(Void paramVoid)
   {
-    if (paramString1.length() > paramString2.length()) {
-      return -1;
-    }
-    if (paramString1.length() < paramString2.length()) {
-      return 1;
-    }
-    return 0;
+    return new TimerTaskManager();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     asbh
  * JD-Core Version:    0.7.0.1
  */

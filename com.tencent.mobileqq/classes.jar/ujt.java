@@ -1,36 +1,20 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
 
 public class ujt
-  extends uiz
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public List<ukt> b = new ArrayList();
-  public boolean e;
+  public ujt(QGSettingFragment paramQGSettingFragment) {}
   
-  public ujt(ErrorMessage paramErrorMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super(paramErrorMessage);
-  }
-  
-  public String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
+    if (paramBoolean)
     {
-      ukt localukt = (ukt)localIterator.next();
-      localStringBuilder.append("feedId:").append(localukt.a().feedId);
-      localStringBuilder.append("unionId:").append(localukt.a().getOwner().getUnionId());
+      QGSettingFragment.b(true);
+      return;
     }
-    return localStringBuilder.toString();
-  }
-  
-  public String toString()
-  {
-    return "FeedData{" + super.toString() + "mFeedItems=" + this.b + '}';
+    QGSettingFragment.b(false);
   }
 }
 

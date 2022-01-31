@@ -1,17 +1,25 @@
-class asbp
+public abstract class asbp<T, P>
 {
-  public asbq a;
-  public String a;
+  private volatile T a;
   
-  public asbp(asbl paramasbl, String paramString, asbq paramasbq)
+  protected abstract T a(P paramP);
+  
+  public final T b(P paramP)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Asbq = paramasbq;
+    if (this.a == null) {}
+    try
+    {
+      if (this.a == null) {
+        this.a = a(paramP);
+      }
+      return this.a;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     asbp
  * JD-Core Version:    0.7.0.1
  */

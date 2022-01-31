@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo.sendpanel;
 
-import bivc;
-import bivm;
+import bklo;
+import bkly;
 
 public class SendPanelManager$4
   implements Runnable
 {
-  public SendPanelManager$4(bivm parambivm) {}
+  public SendPanelManager$4(bkly parambkly) {}
   
   public void run()
   {
-    bivm.a(this.this$0).a(bivm.a(this.this$0));
+    bkly.a(this.this$0).a(bkly.a(this.this$0));
   }
 }
 

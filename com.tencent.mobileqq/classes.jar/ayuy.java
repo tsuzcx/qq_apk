@@ -1,52 +1,35 @@
-import android.app.Activity;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import java.util.HashMap;
 
-class ayuy
-  implements View.OnKeyListener
+public class ayuy
 {
-  private ayuy(ayuw paramayuw) {}
+  public static long a;
+  public static Object a;
+  public static HashMap<Long, ayuz> a;
+  public static long b;
   
-  public void a()
+  static
   {
-    Activity localActivity = this.a.a();
-    if (localActivity != null)
-    {
-      this.a.a().finish();
-      localActivity.overridePendingTransition(2130772036, 2130772218);
-    }
+    jdField_a_of_type_JavaLangObject = new Object();
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public static ayuz a(long paramLong)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramInt)
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-    default: 
-      bool1 = false;
-    }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-      switch (paramKeyEvent.getAction())
-      {
-      case 0: 
-      default: 
-        break;
-      case 1: 
-        bool1 = bool2;
+      ayuz localayuz2 = (ayuz)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      ayuz localayuz1 = localayuz2;
+      if (localayuz2 == null) {
+        localayuz1 = new ayuz();
       }
-    } while (paramKeyEvent.isCanceled());
-    a();
-    return true;
+      jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localayuz1);
+      return localayuz1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayuy
  * JD-Core Version:    0.7.0.1
  */

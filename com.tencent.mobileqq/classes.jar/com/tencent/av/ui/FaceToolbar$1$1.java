@@ -1,15 +1,15 @@
 package com.tencent.av.ui;
 
-import lsv;
+import mdo;
 
 public class FaceToolbar$1$1
   implements Runnable
 {
-  public FaceToolbar$1$1(lsv paramlsv, int paramInt) {}
+  public FaceToolbar$1$1(mdo parammdo, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Lsv.a.fixDimmed(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Mdo.a.fixDimmed(this.jdField_a_of_type_Int);
   }
 }
 

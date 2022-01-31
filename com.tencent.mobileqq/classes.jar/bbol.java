@@ -1,32 +1,58 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bbol
-  extends AccessibilityDelegateCompat
+  implements anyg
 {
-  public bbol(TabBarView paramTabBarView) {}
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public bbol(bboe parambboe) {}
+  
+  public List<aoak> a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (this.a.a(paramView) == this.a.o) {}
-    for (boolean bool = true;; bool = false)
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new aoak(7, 7, null));
+    askd localaskd = (askd)bboe.a(this.jdField_a_of_type_Bboe).getManager(14);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
+      int i = ((Integer)localIterator.next()).intValue();
+      EmoticonPackage localEmoticonPackage = localaskd.a(String.valueOf(i));
+      if (localEmoticonPackage != null)
+      {
+        localArrayList.add(new aoak(10, 7, localEmoticonPackage));
+      }
+      else
+      {
+        localEmoticonPackage = new EmoticonPackage();
+        localEmoticonPackage.epId = String.valueOf(i);
+        localEmoticonPackage.wordingId = -1L;
+        localEmoticonPackage.jobType = 4;
+        localEmoticonPackage.isMagicFaceDownloading = false;
+        localEmoticonPackage.valid = true;
+        localEmoticonPackage.status = 0;
+        localEmoticonPackage.aio = true;
+        localaskd.a(localEmoticonPackage);
+        anvr.a().a(bboe.a(this.jdField_a_of_type_Bboe));
+        ((anvs)bboe.a(this.jdField_a_of_type_Bboe).getManager(43)).a(String.valueOf(i), anvs.c, null, true, 0);
+      }
     }
+    return localArrayList;
   }
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void a(List<Integer> paramList)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbol
  * JD-Core Version:    0.7.0.1
  */

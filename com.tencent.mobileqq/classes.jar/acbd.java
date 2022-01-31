@@ -1,31 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class acbd
-  implements View.OnClickListener
+class acbd
+  implements DialogInterface.OnClickListener
 {
-  public acbd(TroopRequestActivity paramTroopRequestActivity) {}
+  acbd(acaz paramacaz) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (((ajjj)this.a.app.getManager(51)).b(TroopRequestActivity.a(this.a))) {
-      paramView = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 1);
-    }
-    for (;;)
-    {
-      awqx.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
-      ProfileActivity.b(this.a, paramView);
-      return;
-      paramView = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 24);
-      azlj.a(this.a.a, paramView);
-    }
+    this.a.b = true;
+    acaz.b(this.a);
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

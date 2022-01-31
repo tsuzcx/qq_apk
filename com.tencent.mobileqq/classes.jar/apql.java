@@ -1,18 +1,25 @@
-public abstract interface apql
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class apql
+  implements View.OnClickListener
 {
-  public abstract String a();
+  apql(apqk paramapqk) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void aV_();
-  
-  public abstract String b();
-  
-  public abstract void b();
-  
-  public abstract void b(String paramString);
+  public void onClick(View paramView)
+  {
+    if (!apqk.a(this.a)) {
+      return;
+    }
+    long l = apeh.b();
+    axqw.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", 4, 0, "" + l, "0", "", "");
+    if ((1 == apqk.a(this.a)) && (!apqk.b(this.a)))
+    {
+      aptr.a(apqk.a(this.a), 2131698403, 2131698402, new apqm(this));
+      return;
+    }
+    apqk.a(this.a);
+  }
 }
 
 

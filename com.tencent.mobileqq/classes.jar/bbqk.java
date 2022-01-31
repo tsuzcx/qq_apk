@@ -1,22 +1,20 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import com.tencent.image.URLDrawableHandler;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public final class bbqk
-  implements DialogInterface.OnClickListener
+class bbqk
+  implements EIPCResultCallback
 {
-  public bbqk(Context paramContext) {}
+  bbqk(bbqj parambbqj, URLDrawableHandler paramURLDrawableHandler) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    bbqn.c();
-    FloatingScreenPermission.requestPermission(this.a);
+    this.jdField_a_of_type_Bbqj.a(this.jdField_a_of_type_ComTencentImageURLDrawableHandler, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbqk
  * JD-Core Version:    0.7.0.1
  */

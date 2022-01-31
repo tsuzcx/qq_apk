@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/cvg" android:background="@drawable/aty" android:layout_width="fill_parent" android:layout_height="65.0dip" />
+    <View android:id="@id/jmw" android:background="@drawable/cfl" android:layout_width="fill_parent" android:layout_height="65.0dip" />
     <RelativeLayout android:id="@id/alq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:translationX="15.0dip">
         <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:id="@id/hvh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0KB/s" android:layout_centerHorizontal="true" />
         <TextView android:textSize="14.0dip" android:textColor="#80ffffff" android:id="@id/jmx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/mvk" android:layout_below="@id/hvh" android:layout_centerHorizontal="true" />

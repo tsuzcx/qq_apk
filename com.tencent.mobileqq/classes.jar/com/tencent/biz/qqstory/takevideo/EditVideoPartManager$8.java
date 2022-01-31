@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.graphics.Bitmap;
-import uut;
+import vhp;
 
 public class EditVideoPartManager$8
   implements Runnable
 {
-  public EditVideoPartManager$8(uut paramuut) {}
+  public EditVideoPartManager$8(vhp paramvhp) {}
   
   public void run()
   {

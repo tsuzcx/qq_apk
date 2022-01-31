@@ -10,7 +10,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.tencent.mobileqq.R.styleable;
-import urk;
+import veg;
 
 public class ShadowCardView
   extends FrameLayout
@@ -46,8 +46,8 @@ public class ShadowCardView
   {
     try
     {
-      int k = getResources().getColor(2131101537);
-      int m = getResources().getColor(2131101221);
+      int k = getResources().getColor(2131167134);
+      int m = getResources().getColor(2131166815);
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.shadowCardView);
       this.a = paramContext.getDimensionPixelSize(8, 0);
       this.b = paramContext.getColor(5, m);
@@ -69,7 +69,7 @@ public class ShadowCardView
     {
       for (;;)
       {
-        urk.e("ShadowCardView", "init ShadowCardView catch exception");
+        veg.e("ShadowCardView", "init ShadowCardView catch exception");
       }
     }
   }

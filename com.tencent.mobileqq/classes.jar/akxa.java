@@ -1,24 +1,27 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class akxa
+public class akxa
 {
-  public static Bundle a(Bundle paramBundle)
+  public String a;
+  public List<AppletItem> a;
+  
+  public akxa()
   {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    paramBundle = new akxf(localBundle);
-    paramBundle.a(10L);
-    paramBundle.b(true);
-    paramBundle.a(true);
-    paramBundle.b(4096L);
-    return paramBundle.a();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppletsSetting:[").append("des = ").append(this.jdField_a_of_type_JavaLangString).append(this.jdField_a_of_type_JavaUtilList);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akxa
  * JD-Core Version:    0.7.0.1
  */

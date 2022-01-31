@@ -114,10 +114,10 @@ public class SkinEngine
       bool = true;
       a = bool;
       if (Build.VERSION.SDK_INT < 24) {
-        break label619;
+        break label621;
       }
     }
-    label619:
+    label621:
     for (boolean bool = true;; bool = false)
     {
       b = bool;
@@ -126,12 +126,12 @@ public class SkinEngine
       mComposedIconInfoOfCM = null;
       IS_PROBLEM_CM11 = false;
       mIconResourceID = null;
-      Object localObject = { "drawable-xxxhdpi/", "drawable-xxhdpi/", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" };
-      e = new String[][] { { "drawable-xhdpi/", "drawable-xxxhdpi/", "drawable-xxhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-hdpi/", "drawable-xhdpi/", "drawable-xxhdpi/", "drawable-xxxhdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-mdpi/", "drawable/", "drawable-hdpi/", "drawable-xhdpi/", "drawable-xxhdpi/", "drawable-xxxhdpi/" }, { "drawable-ldpi/", "drawable-mdpi/", "drawable-hdpi/", "drawable-xhdpi/", "drawable-xxhdpi/", "drawable-xxxhdpi/", "drawable/" }, { "drawable-xxhdpi/", "drawable-xxxhdpi/", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" }, localObject };
-      localObject = new int[] { 160, 160, 240, 320, 480, 640 };
-      int[] arrayOfInt1 = { 120, 160, 240, 320, 480, 640, 160 };
-      int[] arrayOfInt2 = { 480, 640, 320, 240, 160, 160 };
-      f = new int[][] { { 320, 640, 480, 240, 160, 160 }, { 240, 320, 480, 640, 160, 160 }, localObject, arrayOfInt1, arrayOfInt2, { 640, 480, 320, 240, 160, 160 } };
+      e = new String[][] { { "drawable-xhdpi/", "drawable-xxxhdpi/", "drawable-xxhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-hdpi/", "drawable-xhdpi/", "drawable-xxhdpi/", "drawable-xxxhdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-mdpi/", "drawable/", "drawable-hdpi/", "drawable-xhdpi/", "drawable-xxhdpi/", "drawable-xxxhdpi/" }, { "drawable-ldpi/", "drawable-mdpi/", "drawable-hdpi/", "drawable-xhdpi/", "drawable-xxhdpi/", "drawable-xxxhdpi/", "drawable/" }, { "drawable-xxhdpi/", "drawable-xxxhdpi/", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-xxxhdpi/", "drawable-xxhdpi/", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" } };
+      int[] arrayOfInt1 = { 320, 640, 480, 240, 160, 160 };
+      int[] arrayOfInt2 = { 160, 160, 240, 320, 480, 640 };
+      int[] arrayOfInt3 = { 480, 640, 320, 240, 160, 160 };
+      int[] arrayOfInt4 = { 640, 480, 320, 240, 160, 160 };
+      f = new int[][] { arrayOfInt1, { 240, 320, 480, 640, 160, 160 }, arrayOfInt2, { 120, 160, 240, 320, 480, 640, 160 }, arrayOfInt3, arrayOfInt4 };
       g = 0;
       h = 1;
       i = 2;
@@ -1385,20 +1385,20 @@ public class SkinEngine
   
   private void a(a parama)
   {
-    Object localObject = parama.i;
-    String str = ((j)localObject).b;
+    j localj = parama.i;
+    Object localObject = localj.b;
     if (this.w != null)
     {
-      this.c.resourceId = ((j)localObject).a;
-      a(this.mResources, this.c, ((j)localObject).d, e[this.y], f[this.y]);
+      this.c.resourceId = localj.a;
+      a(this.mResources, this.c, localj.d, e[this.y], f[this.y]);
       if (this.c.string != null)
       {
-        ((j)localObject).b = this.c.string.toString();
-        ((j)localObject).c = this.c.density;
-        if (b(((j)localObject).d)) {
-          i.a("SkinEngine", a(((j)localObject).d), "SkinEngine reloadImage : cs -> " + parama + ",fileName -> " + ((j)localObject).d + ", mFilePath -> " + ((j)localObject).b + ", oldFilePath -> " + str + ", resourceID -> " + ((j)localObject).a + "Current Thread:" + Thread.currentThread().getName() + ", cacheSize: " + this.t.size());
+        localj.b = this.c.string.toString();
+        localj.c = this.c.density;
+        if (b(localj.d)) {
+          i.a("SkinEngine", a(localj.d), "SkinEngine reloadImage : cs -> " + parama + ",fileName -> " + localj.d + ", mFilePath -> " + localj.b + ", oldFilePath -> " + (String)localObject + ", resourceID -> " + localj.a + "Current Thread:" + Thread.currentThread().getName() + ", cacheSize: " + this.t.size());
         }
-        if ((str != null) || (((j)localObject).b != null) || (((j)localObject).d.endsWith(".xml")) || (this.F == null) || (this.F.isTint(((j)localObject).d))) {
+        if ((localObject != null) || (localj.b != null) || (localj.d.endsWith(".xml")) || (this.F == null) || (this.F.isTint(localj.d))) {
           break label344;
         }
         if ((!(parama instanceof SkinnableBitmapDrawable.a)) || (((SkinnableBitmapDrawable.a)parama).o == null)) {
@@ -1411,7 +1411,7 @@ public class SkinEngine
     label344:
     a locala;
     label534:
-    label796:
+    label805:
     do
     {
       do
@@ -1420,64 +1420,65 @@ public class SkinEngine
         {
           do
           {
-            do
-            {
-              return;
-              ((j)localObject).b = null;
-              break;
-              ((j)localObject).b = null;
-              break;
-            } while ((!(parama instanceof SkinnableNinePatchDrawable.a)) || (((SkinnableNinePatchDrawable.a)parama).s == null));
-            ((SkinnableNinePatchDrawable.a)parama).s.setColorFilter(null);
             return;
-            if (!(parama instanceof SkinnableBitmapDrawable.a)) {
-              break label796;
-            }
-            parama = (SkinnableBitmapDrawable.a)parama;
-            locala = a(((j)localObject).a, this.mResources, (j)localObject, this.c);
-            if (locala != null) {
-              break label534;
-            }
-            if (b(((j)localObject).d)) {
-              i.a("SkinEngine", a(((j)localObject).d), "SkinEngine reloadImage : _loadImage fail, fileName -> " + ((j)localObject).d + ", mFilePath -> " + ((j)localObject).b + ", resourceID -> " + ((j)localObject).a + "Current Thread:" + Thread.currentThread().getName() + ", cacheSize: " + this.t.size());
-            }
-          } while (!DEBUG);
-          throw new NullPointerException("loadImage failed, file path: " + ((j)localObject).b + " , resource name:" + ((j)localObject).d);
-          if ((DEBUG) && ((locala instanceof SkinnableNinePatchDrawable.a))) {
-            throw new IllegalArgumentException("error image, the resource Image is Bitmap, but the skin Image is 9-path, file path: " + ((j)localObject).b + " , resource name:" + ((j)localObject).d);
+            localj.b = null;
+            break;
+            localj.b = null;
+            break;
+          } while ((!(parama instanceof SkinnableNinePatchDrawable.a)) || (((SkinnableNinePatchDrawable.a)parama).s == null));
+          ((SkinnableNinePatchDrawable.a)parama).s.setColorFilter(null);
+          return;
+          if (!(parama instanceof SkinnableBitmapDrawable.a)) {
+            break label805;
           }
-          if (b(((j)localObject).d)) {
-            i.a("SkinEngine", a(((j)localObject).d), "SkinEngine reloadImage : _loadImage success, fileName -> " + ((j)localObject).d + ", mFilePath -> " + ((j)localObject).b + ", oldFilePath -> " + str + ", resourceID -> " + ((j)localObject).a + "Current Thread:" + Thread.currentThread().getName() + ", cacheSize: " + this.t.size());
+          parama = (SkinnableBitmapDrawable.a)parama;
+          locala = a(localj.a, this.mResources, localj, this.c);
+          if (locala != null) {
+            break label534;
           }
-          localObject = (SkinnableBitmapDrawable.a)locala;
-          parama.l = ((SkinnableBitmapDrawable.a)localObject).l;
-          parama.e = ((SkinnableBitmapDrawable.a)localObject).e;
-          parama.j = ((SkinnableBitmapDrawable.a)localObject).j;
-          parama.o = ((SkinnableBitmapDrawable.a)localObject).o;
-          parama.k = ((SkinnableBitmapDrawable.a)localObject).k;
-        } while ((!parama.s) && (!((SkinnableBitmapDrawable.a)localObject).s));
-        parama.n = ((SkinnableBitmapDrawable.a)localObject).n;
-        parama.p = ((SkinnableBitmapDrawable.a)localObject).p;
-        parama.q = ((SkinnableBitmapDrawable.a)localObject).q;
-        parama.s = true;
+          if (b(localj.d)) {
+            i.a("SkinEngine", a(localj.d), "SkinEngine reloadImage : _loadImage fail, fileName -> " + localj.d + ", mFilePath -> " + localj.b + ", resourceID -> " + localj.a + "Current Thread:" + Thread.currentThread().getName() + ", cacheSize: " + this.t.size());
+          }
+        } while (!DEBUG);
+        throw new NullPointerException("loadImage failed, file path: " + localj.b + " , resource name:" + localj.d);
+        if ((DEBUG) && ((locala instanceof SkinnableNinePatchDrawable.a))) {
+          throw new IllegalArgumentException("error image, the resource Image is Bitmap, but the skin Image is 9-path, file path: " + localj.b + " , resource name:" + localj.d);
+        }
+        if (b(localj.d)) {
+          i.a("SkinEngine", a(localj.d), "SkinEngine reloadImage : _loadImage success, fileName -> " + localj.d + ", mFilePath -> " + localj.b + ", oldFilePath -> " + (String)localObject + ", resourceID -> " + localj.a + "Current Thread:" + Thread.currentThread().getName() + ", cacheSize: " + this.t.size());
+        }
+        localObject = (SkinnableBitmapDrawable.a)locala;
+        parama.l = ((SkinnableBitmapDrawable.a)localObject).l;
+        parama.e = ((SkinnableBitmapDrawable.a)localObject).e;
+        parama.j = ((SkinnableBitmapDrawable.a)localObject).j;
+        parama.o = ((SkinnableBitmapDrawable.a)localObject).o;
+        parama.k = ((SkinnableBitmapDrawable.a)localObject).k;
+        if ((parama.s) || (((SkinnableBitmapDrawable.a)localObject).s))
+        {
+          parama.n = ((SkinnableBitmapDrawable.a)localObject).n;
+          parama.p = ((SkinnableBitmapDrawable.a)localObject).p;
+          parama.q = ((SkinnableBitmapDrawable.a)localObject).q;
+          parama.s = true;
+        }
+        a((a)localObject, localj.d);
         return;
       } while (!(parama instanceof SkinnableNinePatchDrawable.a));
       parama = (SkinnableNinePatchDrawable.a)parama;
-      locala = a(((j)localObject).a, this.mResources, (j)localObject, this.c);
+      locala = a(localj.a, this.mResources, localj, this.c);
       if (locala != null) {
-        break label986;
+        break label995;
       }
-      if (b(((j)localObject).d)) {
-        i.a("SkinEngine", a(((j)localObject).d), "SkinEngine reloadImage : _loadImage fail, fileName -> " + ((j)localObject).d + ", mFilePath -> " + ((j)localObject).b + ", resourceID -> " + ((j)localObject).a + "Current Thread:" + Thread.currentThread().getName() + ", cacheSize: " + this.t.size());
+      if (b(localj.d)) {
+        i.a("SkinEngine", a(localj.d), "SkinEngine reloadImage : _loadImage fail, fileName -> " + localj.d + ", mFilePath -> " + localj.b + ", resourceID -> " + localj.a + "Current Thread:" + Thread.currentThread().getName() + ", cacheSize: " + this.t.size());
       }
     } while (!DEBUG);
-    throw new NullPointerException("loadImage failed, file path: " + ((j)localObject).b + " , resource name:" + ((j)localObject).d);
-    label986:
+    throw new NullPointerException("loadImage failed, file path: " + localj.b + " , resource name:" + localj.d);
+    label995:
     if ((DEBUG) && ((locala instanceof SkinnableBitmapDrawable.a))) {
-      throw new IllegalArgumentException("error image, the resource Image is 9-path, but the skin Image is Bitmap, did you compiled the 9-pathflie to apk and un-zip it? file path: " + ((j)localObject).b + " , resource name:" + ((j)localObject).d);
+      throw new IllegalArgumentException("error image, the resource Image is 9-path, but the skin Image is Bitmap, did you compiled the 9-pathflie to apk and un-zip it? file path: " + localj.b + " , resource name:" + localj.d);
     }
-    if (b(((j)localObject).d)) {
-      i.a("SkinEngine", a(((j)localObject).d), "SkinEngine reloadImage : _loadImage success, fileName -> " + ((j)localObject).d + ", mFilePath -> " + ((j)localObject).b + ", oldFilePath -> " + str + ", resourceID -> " + ((j)localObject).a + "Current Thread:" + Thread.currentThread().getName() + ", cacheSize: " + this.t.size());
+    if (b(localj.d)) {
+      i.a("SkinEngine", a(localj.d), "SkinEngine reloadImage : _loadImage success, fileName -> " + localj.d + ", mFilePath -> " + localj.b + ", oldFilePath -> " + (String)localObject + ", resourceID -> " + localj.a + "Current Thread:" + Thread.currentThread().getName() + ", cacheSize: " + this.t.size());
     }
     localObject = (SkinnableNinePatchDrawable.a)locala;
     parama.k = ((SkinnableNinePatchDrawable.a)localObject).k;
@@ -1487,6 +1488,7 @@ public class SkinEngine
     parama.m = ((SkinnableNinePatchDrawable.a)localObject).m;
     parama.r = ((SkinnableNinePatchDrawable.a)localObject).r;
     parama.j = ((SkinnableNinePatchDrawable.a)localObject).j;
+    a((a)localObject, localj.d);
   }
   
   private void a(a parama, String paramString)
@@ -1588,9 +1590,6 @@ public class SkinEngine
       int i1;
       try
       {
-        if (this.E != null) {
-          this.E.b();
-        }
         localArrayList = new ArrayList();
         int i2 = this.t.size();
         i1 = 0;
@@ -1599,11 +1598,11 @@ public class SkinEngine
           {
             Object localObject1 = (WeakReference)this.t.valueAt(i1);
             if (localObject1 == null) {
-              break label193;
+              break label179;
             }
             localObject1 = (a)((WeakReference)localObject1).get();
             if (localObject1 == null) {
-              break label193;
+              break label179;
             }
             if (((a)localObject1).i.d.endsWith(".xml")) {
               localArrayList.add(localObject1);
@@ -1634,7 +1633,7 @@ public class SkinEngine
         this.p.writeLock().unlock();
       }
       return;
-      label193:
+      label179:
       i1 += 1;
     }
   }
@@ -1672,7 +1671,7 @@ public class SkinEngine
           localj = paramContext.skinData;
           str1 = localj.b;
           if (this.w == null) {
-            break label192;
+            break label204;
           }
         }
         String str2 = a(this.mResources, localj.d);
@@ -1692,12 +1691,18 @@ public class SkinEngine
       {
         this.q.writeLock().unlock();
       }
-      if ((str1 != null) || (localj.b != null))
+      if ((str1 == null) && (localj.b == null))
       {
+        if (this.F != null)
+        {
+          this.F.tintColorState(paramContext.getColors(), paramContext.getStateSpecs(), paramContext.skinData.d);
+          continue;
+          label204:
+          localj.b = null;
+        }
+      }
+      else {
         paramContext.a(a(localj.a, this.mResources, localj));
-        continue;
-        label192:
-        localj.b = null;
       }
     }
     this.q.writeLock().unlock();
@@ -1807,7 +1812,7 @@ public class SkinEngine
       ((SkinEngine)localObject).y = a(((SkinEngine)localObject).mResources);
       SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("theme", 4);
       ((SkinEngine)localObject).w = localSharedPreferences.getString("theme_root", null);
-      if (((SkinEngine)localObject).F != null) {
+      if ((((SkinEngine)localObject).F != null) && (((SkinEngine)localObject).w != null)) {
         ((SkinEngine)localObject).F.loadConfig(localResources, ((SkinEngine)localObject).w + File.separator + "config.json");
       }
       paramContext.getApplicationContext().registerReceiver(((SkinEngine)localObject).n, new IntentFilter("com.tencent.qplus.THEME_UPDATE"), "com.tencent.msg.permission.pushnotify", null);
@@ -1829,7 +1834,7 @@ public class SkinEngine
     localSkinEngine.a(localResources, 0, paramArrayOfInt, 0, paramInt1, paramInt2, paramFile);
     paramContext = paramContext.getSharedPreferences("theme", 4);
     localSkinEngine.w = paramContext.getString("theme_root", null);
-    if (localSkinEngine.F != null) {
+    if ((localSkinEngine.F != null) && (localSkinEngine.w != null)) {
       localSkinEngine.F.loadConfig(localResources, localSkinEngine.w + File.separator + "config.json");
     }
     localSkinEngine.s = paramContext.getBoolean("complied", true);
@@ -2955,8 +2960,11 @@ public class SkinEngine
       }
       else
       {
-        b();
+        if (this.E != null) {
+          this.E.b();
+        }
         b(paramContext);
+        b();
         localSharedPreferences.edit().putString("theme_root", str).putBoolean("complied", this.s).commit();
         this.r = false;
         this.x = null;
@@ -3056,14 +3064,23 @@ public class SkinEngine
   
   public boolean checkResExist(int paramInt)
   {
-    this.mResources.getValue(paramInt, this.d, true);
-    String str = this.d.string.toString();
-    this.d.resourceId = paramInt;
+    TypedValue localTypedValue = c();
+    this.mResources.getValue(paramInt, localTypedValue, true);
+    if (TextUtils.isEmpty(localTypedValue.string))
+    {
+      a(localTypedValue);
+      return false;
+    }
+    String str = localTypedValue.string.toString();
+    localTypedValue.resourceId = paramInt;
     str = str.substring(str.lastIndexOf("/") + 1);
-    a(this.mResources, this.d, str, e[this.y], f[this.y]);
-    if (this.d.string != null) {
+    a(this.mResources, localTypedValue, str, e[this.y], f[this.y]);
+    if (localTypedValue.string != null)
+    {
+      a(localTypedValue);
       return true;
     }
+    a(localTypedValue);
     if (a(this.mResources, str) != null) {}
     for (boolean bool = true;; bool = false) {
       return bool;

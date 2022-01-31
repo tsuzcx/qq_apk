@@ -1,60 +1,104 @@
 import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aliy
 {
-  public static final String a;
-  public alja[] a;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  private alit jdField_a_of_type_Alit;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  long b;
   
-  static
+  public aliy(AppInterface paramAppInterface)
   {
-    jdField_a_of_type_JavaLangString = aljb.class.getSimpleName() + "." + aliy.class.getSimpleName();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Alit = new alit(paramAppInterface);
   }
   
-  public aliy()
+  private int a(long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfAlja = new alja[6];
+    this.jdField_a_of_type_Long = Math.max(paramLong, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Int = Math.max(paramInt, this.jdField_a_of_type_Int);
+    if (this.b == 0L) {
+      return this.jdField_a_of_type_Int;
+    }
+    return Math.max((int)(100L * paramLong / this.b), this.jdField_a_of_type_Int);
   }
   
-  public alja a(AppInterface paramAppInterface, int paramInt)
+  public void a()
   {
-    int i;
-    if (paramInt >= 0)
-    {
-      i = paramInt;
-      if (paramInt <= 6) {}
+    if (this.jdField_a_of_type_Alit != null) {
+      this.jdField_a_of_type_Alit.a();
     }
-    else
-    {
-      i = 0;
+  }
+  
+  public void a(ArrayList<alix> paramArrayList, aljb paramaljb)
+  {
+    QLog.i("AREngine_ARResourceManagerTools", 1, "startDowdLoad");
+    this.b = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
+    if (paramArrayList.size() < 1) {
+      return;
     }
-    Object localObject = this.jdField_a_of_type_ArrayOfAlja[i];
-    paramAppInterface = (AppInterface)localObject;
-    if (localObject == null)
+    Object localObject = paramArrayList.iterator();
+    alix localalix;
+    while (((Iterator)localObject).hasNext())
     {
-      paramAppInterface = (AppInterface)localObject;
-      switch (i)
-      {
-      default: 
-        paramAppInterface = (AppInterface)localObject;
+      localalix = (alix)((Iterator)localObject).next();
+      this.b = Math.max(this.b, localalix.jdField_a_of_type_Long);
+    }
+    if (paramaljb != null) {
+      paramaljb.a();
+    }
+    localObject = (ArrayList)paramArrayList.clone();
+    QLog.i("AREngine_ARResourceManagerTools", 1, "startDowdLoad size is " + ((ArrayList)localObject).size());
+    int i = 0;
+    label129:
+    if (i < paramArrayList.size())
+    {
+      if (((alix)paramArrayList.get(i)).jdField_a_of_type_Int == 4) {
+        break label187;
       }
+      this.jdField_a_of_type_Alit.a((alix)paramArrayList.get(i), new aliz(this, paramaljb, paramArrayList, (ArrayList)localObject));
     }
     for (;;)
     {
-      localObject = paramAppInterface;
-      if (paramAppInterface == null) {
-        localObject = new aliz();
+      i += 1;
+      break label129;
+      break;
+      label187:
+      if (((alix)paramArrayList.get(i)).jdField_a_of_type_Int == 4)
+      {
+        mze.a();
+        localalix = (alix)paramArrayList.get(i);
+        mze.a(((alix)paramArrayList.get(i)).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new alja(this, paramaljb, (ArrayList)localObject, localalix), true, 0, true);
       }
-      this.jdField_a_of_type_ArrayOfAlja[i] = localObject;
-      return localObject;
-      paramAppInterface = new ljx();
-      continue;
-      paramAppInterface = new akjy();
+    }
+  }
+  
+  public void b()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      a();
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Alit != null) {
+      this.jdField_a_of_type_Alit.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aliy
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,8 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lxd;
-import lxf;
+import mhu;
+import mhw;
 
 public abstract class QavListItemBase
   extends LinearLayout
@@ -16,7 +16,7 @@ public abstract class QavListItemBase
   protected int a;
   Context jdField_a_of_type_AndroidContentContext;
   final String jdField_a_of_type_JavaLangString;
-  lxd jdField_a_of_type_Lxd;
+  mhu jdField_a_of_type_Mhu;
   
   public QavListItemBase(Context paramContext)
   {
@@ -34,25 +34,25 @@ public abstract class QavListItemBase
   
   public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(int paramInt, lxd paramlxd)
+  public void a(int paramInt, mhu parammhu)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Lxd = paramlxd;
+    this.jdField_a_of_type_Mhu = parammhu;
   }
   
-  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, lxf paramlxf, lxd paramlxd);
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, mhw parammhw, mhu parammhu);
   
-  public void a(lxf paramlxf, int paramInt) {}
+  public void a(mhw parammhw, int paramInt) {}
   
   public abstract void b(int paramInt1, int paramInt2);
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Lxd != null)
+    if (this.jdField_a_of_type_Mhu != null)
     {
       long l = AudioHelper.b();
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onClick, seq[" + l + "], mPosition[" + this.jdField_a_of_type_Int + "]");
-      this.jdField_a_of_type_Lxd.a(l, this.jdField_a_of_type_Int, this);
+      this.jdField_a_of_type_Mhu.a(l, this.jdField_a_of_type_Int, this);
     }
   }
   

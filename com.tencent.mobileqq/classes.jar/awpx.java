@@ -1,31 +1,95 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.statistics.DailyReport;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchResultManager.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class awpx
-  extends batl
+  implements Manager
 {
-  public awpx(DailyReport paramDailyReport, String paramString1, String paramString2)
+  private awps jdField_a_of_type_Awps = new awps("Cahce_");
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public awpx(QQAppInterface paramQQAppInterface)
   {
-    super(paramString1, paramString2);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void onDone(batm parambatm)
+  public ArrayList<awpv> a(String paramString)
   {
-    super.onDone(parambatm);
-    long l = parambatm.a().getLong("id");
-    VasWebviewUtil.reportVasStatus("AvatarPendant", "AvatarPendantOn", String.valueOf(l), 0, 0, 0, 0, baau.a(new File(baau.b(l, 4))), "");
+    if (this.jdField_a_of_type_Awps != null)
+    {
+      paramString = this.jdField_a_of_type_Awps.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
+      if ((paramString != null) && (paramString.size() > 10))
+      {
+        ArrayList localArrayList = new ArrayList(paramString.subList(0, 10));
+        QLog.i("MostUsedSearchResultManager", 2, "tmpResult subList 10 ,orglist is " + paramString.size());
+        return localArrayList;
+      }
+      return paramString;
+    }
+    QLog.e("MostUsedSearchResultManager", 2, "Match with null cache");
+    return null;
   }
   
-  public boolean onStart(batm parambatm)
+  public void a()
   {
-    return true;
+    if (this.jdField_a_of_type_Awps != null)
+    {
+      this.jdField_a_of_type_Awps.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      QLog.d("MostUsedSearchResultManager", 2, "init");
+      return;
+    }
+    QLog.e("MostUsedSearchResultManager", 2, "init with null cache ");
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    if ((paramString1 == null) || (TextUtils.isEmpty(paramString1))) {
+      return;
+    }
+    if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2))) {}
+    for (String str = paramString2;; str = paramString1)
+    {
+      QLog.d("MostUsedSearchResultManager", 2, "UpdateItemUsed : key= " + paramString1 + " mostusedKey= " + paramString2);
+      int i = awpr.a(paramInt);
+      if (!a(i)) {
+        break;
+      }
+      paramString1 = new MostUsedSearchItem(str, NetConnInfoCenter.getServerTimeMillis(), paramString3, paramInt, i);
+      ThreadManager.getSubThreadHandler().post(new MostUsedSearchResultManager.1(this, paramString1));
+      return;
+      paramString2 = "";
+    }
+  }
+  
+  boolean a(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Awps != null) {
+      this.jdField_a_of_type_Awps.a();
+    }
+  }
+  
+  public void onDestroy()
+  {
+    b();
+    this.jdField_a_of_type_Awps = null;
+    QLog.d("MostUsedSearchResultManager", 2, "onDestroy");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,13 @@
-import android.graphics.PointF;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
 
-public abstract interface vam
+public class vam
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
+  public vam(StoryListPresenter.4.1 param1) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

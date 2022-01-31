@@ -1,15 +1,21 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class oua
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  oua(otz paramotz, opw paramopw) {}
+  oua(otz paramotz) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    qoe.a(this.jdField_a_of_type_Opw.a(), 0, 1);
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

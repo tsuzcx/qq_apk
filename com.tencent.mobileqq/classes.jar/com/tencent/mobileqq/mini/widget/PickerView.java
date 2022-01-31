@@ -30,13 +30,13 @@ public class PickerView
   
   public PickerView(@NonNull Context paramContext)
   {
-    super(paramContext, 2131689823);
+    super(paramContext, 2131755360);
     initView(paramContext);
   }
   
   private void initView(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131493420, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131558983, null);
     setContentView(paramContext);
     Window localWindow = getWindow();
     if (localWindow != null)
@@ -48,10 +48,10 @@ public class PickerView
       localWindow.setAttributes(localLayoutParams);
       localWindow.setGravity(80);
     }
-    this.mNumPicker = ((NumberPicker)paramContext.findViewById(2131305312));
-    this.mCancelTextView = ((TextView)paramContext.findViewById(2131312258));
+    this.mNumPicker = ((NumberPicker)paramContext.findViewById(2131370987));
+    this.mCancelTextView = ((TextView)paramContext.findViewById(2131378078));
     this.mCancelTextView.setOnClickListener(this);
-    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131312288));
+    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131378108));
     this.mConfirmTextView.setOnClickListener(this);
     setNumpickerDiverColor(this.mNumPicker);
     setOnCancelListener(this);
@@ -127,14 +127,14 @@ public class PickerView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131312258)
+    if (paramView.getId() == 2131378078)
     {
       if (this.mOnConfirmListener != null) {
         this.mOnConfirmListener.onValCancel();
       }
       dismissDlg();
     }
-    while (paramView.getId() != 2131312288) {
+    while (paramView.getId() != 2131378108) {
       return;
     }
     if (this.mOnConfirmListener != null) {

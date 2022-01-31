@@ -1,34 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import aamx;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.QLog;
+import aawo;
+import ajyc;
+import android.content.res.Resources;
+import bcpw;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class Conversation$33$2
   implements Runnable
 {
-  public Conversation$33$2(aamx paramaamx, boolean paramBoolean) {}
+  public Conversation$33$2(aawo paramaawo) {}
   
   public void run()
   {
-    Conversation.a(this.jdField_a_of_type_Aamx.a, 800L);
-    PullRefreshHeader localPullRefreshHeader;
-    if (this.jdField_a_of_type_Aamx.a.a != null)
-    {
-      localPullRefreshHeader = this.jdField_a_of_type_Aamx.a.a;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label66;
-      }
-    }
-    label66:
-    for (int i = 0;; i = 2)
-    {
-      localPullRefreshHeader.a(i);
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoMonitor", 2, "ConversationTab[onRefleshRecentListFinished_ui]");
-      }
-      return;
-    }
+    bcpw.a(this.a.a.a(), 2, ajyc.a(2131702598), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
   }
 }
 

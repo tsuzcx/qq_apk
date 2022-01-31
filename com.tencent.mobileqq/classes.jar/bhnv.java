@@ -1,144 +1,237 @@
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import cooperation.qzone.util.QZLog;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class bhnv
 {
-  public bhny a(String paramString)
+  public static Object a(Object paramObject, String paramString, boolean paramBoolean, Class[] paramArrayOfClass, Object... paramVarArgs)
   {
-    if (TextUtils.isEmpty(paramString))
+    if ((paramObject == null) || (TextUtils.isEmpty(paramString))) {
+      return null;
+    }
+    Class localClass = paramObject.getClass();
+    if ((paramBoolean) || (paramArrayOfClass != null)) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip TextUtils.isEmpty(config) return");
+      if (paramArrayOfClass.length == 0) {
+        paramString = localClass.getMethod(paramString, new Class[0]);
       }
+      while ((paramVarArgs == null) || (paramVarArgs.length == 0))
+      {
+        return paramString.invoke(paramObject, new Object[0]);
+        paramString = localClass.getMethod(paramString, paramArrayOfClass);
+        continue;
+        if ((paramArrayOfClass == null) || (paramArrayOfClass.length == 0)) {
+          paramString = localClass.getDeclaredMethod(paramString, new Class[0]);
+        } else {
+          paramString = localClass.getDeclaredMethod(paramString, paramArrayOfClass);
+        }
+      }
+      paramObject = paramString.invoke(paramObject, paramVarArgs);
+      return paramObject;
+    }
+    catch (NoSuchMethodException paramObject)
+    {
+      QZLog.e("JarReflectUtil", "NoSuchMethodException: " + paramObject.getMessage());
+      paramObject.printStackTrace();
+      return null;
+    }
+    catch (InvocationTargetException paramObject)
+    {
+      QZLog.e("JarReflectUtil", "InvocationTargetException: " + paramObject.getMessage());
+      paramObject.printStackTrace();
+      return null;
+    }
+    catch (IllegalAccessException paramObject)
+    {
+      paramObject.printStackTrace();
+      QZLog.e("JarReflectUtil", "IllegalAccessException: " + paramObject.getMessage());
+      return null;
+    }
+    catch (NullPointerException paramObject)
+    {
+      paramObject.printStackTrace();
+      QZLog.e("JarReflectUtil", "NullPointerException: " + paramObject.getMessage());
+    }
+    return null;
+  }
+  
+  public static Object a(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return null;
+    }
+    try
+    {
+      paramString1 = Class.forName(paramString1);
+      paramString1 = paramString1.getField(paramString2).get(paramString1);
+      return paramString1;
+    }
+    catch (NoSuchFieldException paramString1)
+    {
+      QZLog.e("JarReflectUtil", "NoSuchFieldException: ");
+      paramString1.printStackTrace();
+      return null;
+    }
+    catch (IllegalAccessException paramString1)
+    {
+      QZLog.e("JarReflectUtil", "IllegalAccessException: ");
+      paramString1.printStackTrace();
+      return null;
+    }
+    catch (ClassNotFoundException paramString1)
+    {
+      QZLog.e("JarReflectUtil", "ClassNotFoundException: ");
+      paramString1.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static Object a(String paramString1, String paramString2, boolean paramBoolean, Class[] paramArrayOfClass, Object... paramVarArgs)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
       return null;
     }
     for (;;)
     {
       try
       {
-        localObject = new JSONObject(paramString);
-        if (!((JSONObject)localObject).has("pendantMD5")) {
-          break label142;
-        }
-        paramString = ((JSONObject)localObject).getString("pendantMD5");
-        if (!((JSONObject)localObject).has("pendantUrl")) {
-          break label136;
-        }
-        str = ((JSONObject)localObject).getString("pendantUrl");
-        if (!((JSONObject)localObject).has("pendantName")) {
-          break label130;
-        }
-        localObject = ((JSONObject)localObject).getString("pendantName");
-        if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(str)))
+        paramString1 = Class.forName(paramString1);
+        if (!paramBoolean)
         {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.w("ConfigSimplifier_PTV", 2, "zipMd5 or zipUrl empty return!");
-          return null;
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-      paramString = new bhny((String)localObject, str, paramString);
-      return paramString;
-      label130:
-      Object localObject = "";
-      continue;
-      label136:
-      String str = "";
-      continue;
-      label142:
-      paramString = "";
-    }
-  }
-  
-  public bhny a(String paramString1, String paramString2, String paramString3, bhnx parambhnx)
-  {
-    bhny localbhny = a(paramString1);
-    if (localbhny == null) {
-      paramString1 = null;
-    }
-    do
-    {
-      for (;;)
-      {
-        return paramString1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ConfigSimplifier_PTV", 2, "parseConfigZip md5=" + localbhny.jdField_c_of_type_JavaLangString + " url=" + localbhny.b + " name=" + localbhny.jdField_a_of_type_JavaLangString);
-        }
-        try
-        {
-          paramString1 = paramString2 + File.separator;
-          String str = paramString2 + File.separator + localbhny.jdField_a_of_type_JavaLangString;
-          File localFile = new File(paramString2, paramString3);
-          if (localFile.exists())
+          if ((paramArrayOfClass == null) || (paramArrayOfClass.length == 0))
           {
-            localFile.delete();
-            if (QLog.isColorLevel()) {
-              QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip file.delete()");
-            }
-          }
-          localObject = new File(str);
-          if (((File)localObject).exists())
-          {
-            ((File)localObject).delete();
-            if (QLog.isColorLevel()) {
-              QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip filejson.delete()");
-            }
-          }
-          localObject = new axro();
-          ((axro)localObject).jdField_a_of_type_Axrt = new bhnw(this, paramString2, paramString3, localbhny, paramString1, str, parambhnx);
-          ((axro)localObject).jdField_a_of_type_JavaLangString = localbhny.b;
-          ((axro)localObject).jdField_a_of_type_Int = 0;
-          ((axro)localObject).jdField_c_of_type_JavaLangString = localFile.getPath();
-          ((axro)localObject).jdField_c_of_type_Int = badq.a(axsr.a().a());
-        }
-        catch (Exception paramString2)
-        {
-          try
-          {
-            Object localObject;
-            paramString1 = BaseApplicationImpl.getApplication().getRuntime();
-            if (QQAppInterface.class.isInstance(paramString1))
-            {
-              ((QQAppInterface)paramString1).getNetEngine(0).a((axsp)localObject);
-              paramString1 = localbhny;
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.i("ConfigSimplifier", 2, "startDownloadFilterConfigZip, url: " + localbhny.b);
-              return localbhny;
-            }
-            paramString1 = localbhny;
-            if (bhfc.a() == null) {
+            paramString1 = paramString1.getMethod(paramString2, new Class[0]);
+            if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
               continue;
             }
-            bhfc.a().getNetEngine(0).a((axsp)localObject);
-            return localbhny;
+            return paramString1.invoke(null, new Object[0]);
           }
-          catch (Exception paramString1) {}
-          paramString2 = paramString2;
-          paramString1 = localbhny;
+          paramString1 = paramString1.getMethod(paramString2, paramArrayOfClass);
+          continue;
         }
+        if ((paramArrayOfClass != null) && (paramArrayOfClass.length != 0)) {
+          continue;
+        }
+        paramString1 = paramString1.getDeclaredMethod(paramString2, new Class[0]);
       }
-    } while (!QLog.isColorLevel());
-    paramString2.printStackTrace();
-    return localbhny;
-    return localbhny;
+      catch (NoSuchMethodException paramString1)
+      {
+        paramString1.printStackTrace();
+        QZLog.e("JarReflectUtil", "NoSuchMethodException: " + paramString1.getMessage());
+        return null;
+        paramString1 = paramString1.getDeclaredMethod(paramString2, paramArrayOfClass);
+        continue;
+        paramString1 = paramString1.invoke(null, paramVarArgs);
+        return paramString1;
+      }
+      catch (InvocationTargetException paramString1)
+      {
+        paramString1.printStackTrace();
+        QZLog.e("JarReflectUtil", "InvocationTargetException: " + paramString1.getMessage());
+        return null;
+      }
+      catch (IllegalAccessException paramString1)
+      {
+        paramString1.printStackTrace();
+        QZLog.e("JarReflectUtil", "IllegalAccessException: " + paramString1.getMessage());
+        return null;
+      }
+      catch (ClassNotFoundException paramString1)
+      {
+        paramString1.printStackTrace();
+        QZLog.e("JarReflectUtil", "ClassNotFoundException: " + paramString1.getMessage());
+        return null;
+      }
+      catch (NullPointerException paramString1)
+      {
+        paramString1.printStackTrace();
+        QZLog.e("JarReflectUtil", "NullPointerException: " + paramString1.getMessage());
+      }
+      paramString1.setAccessible(true);
+    }
+    return null;
+  }
+  
+  public static Object a(String paramString, Class[] paramArrayOfClass, Object... paramVarArgs)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      paramString = Class.forName(paramString);
+      if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
+        return paramString.newInstance();
+      }
+      paramString = paramString.getConstructor(paramArrayOfClass).newInstance(paramVarArgs);
+      return paramString;
+    }
+    catch (ClassNotFoundException paramString)
+    {
+      QZLog.e("JarReflectUtil", "ClassNotFoundException: " + paramString.getMessage());
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (InstantiationException paramString)
+    {
+      QZLog.e("JarReflectUtil", "InstantiationException: " + paramString.getMessage());
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (IllegalAccessException paramString)
+    {
+      QZLog.e("JarReflectUtil", "IllegalAccessException: " + paramString.getMessage());
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (NoSuchMethodException paramString)
+    {
+      QZLog.e("JarReflectUtil", "NoSuchMethodException: " + paramString.getMessage());
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (InvocationTargetException paramString)
+    {
+      QZLog.e("JarReflectUtil", "InvocationTargetException: " + paramString.getMessage());
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static Field a(Object paramObject, String paramString)
+  {
+    paramObject = paramObject.getClass();
+    try
+    {
+      paramObject = paramObject.getDeclaredField(paramString);
+      return paramObject;
+    }
+    catch (NoSuchFieldException paramObject)
+    {
+      paramObject.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static Class[] a(Class... paramVarArgs)
+  {
+    Class[] arrayOfClass = new Class[paramVarArgs.length];
+    int i = 0;
+    while (i < paramVarArgs.length)
+    {
+      arrayOfClass[i] = paramVarArgs[i];
+      i += 1;
+    }
+    return arrayOfClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhnv
  * JD-Core Version:    0.7.0.1
  */

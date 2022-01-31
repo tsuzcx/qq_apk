@@ -1,42 +1,24 @@
-import android.os.AsyncTask;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
 
-class aahk
-  extends AsyncTask<MessageRecord, Object, Object>
+public class aahk
+  implements bfoq
 {
-  aahk(aahj paramaahj) {}
+  public aahk(AddFriendVerifyActivity paramAddFriendVerifyActivity, bfol parambfol) {}
   
-  protected Object a(MessageRecord... paramVarArgs)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.a.d) {
-      if (this.a.a.jdField_a_of_type_Atob != null) {
-        this.a.a.jdField_a_of_type_Atob.a(paramVarArgs[0], true);
-      }
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      if ((paramVarArgs[0] instanceof MessageForApollo)) {
-        aisc.a(this.a.a.app, "chat_history_start_del_msg");
-      }
-      return null;
-      this.a.a.app.a().a(paramVarArgs[0], true);
-    }
-  }
-  
-  protected void onPostExecute(Object paramObject)
-  {
-    super.onPostExecute(paramObject);
-    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    if ((this.a.a.jdField_a_of_type_Bbms != null) && (this.a.a.jdField_a_of_type_Bbms.isShowing())) {
-      this.a.a.jdField_a_of_type_Bbms.dismiss();
-    }
-    if (this.a.a.d) {
-      this.a.a.a(11, false);
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1001));
+      continue;
+      agqs.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1);
     }
   }
 }

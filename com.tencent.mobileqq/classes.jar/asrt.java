@@ -1,88 +1,33 @@
-import android.content.Context;
-import android.os.Handler;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.common.galleryactivity.AbstractImageAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.1;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.2;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.3;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
 
 public class asrt
-  extends AbstractImageAdapter
-  implements asrz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private asrz jdField_a_of_type_Asrz;
+  public asrt(MultiCardFragment paramMultiCardFragment, assf paramassf, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
   
-  public asrt(Context paramContext)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = mpl.a();
-    if ((i != 1) && (i != 4)) {}
-    asrx localasrx;
-    do
-    {
+    float f1 = paramValueAnimator.getAnimatedFraction();
+    if (this.jdField_a_of_type_Assf == null) {
       return;
-      localasrx = (asrx)getItem(paramInt + 1);
-      if (localasrx != null) {
-        localasrx.a();
-      }
-      localasrx = (asrx)getItem(paramInt - 1);
-    } while (localasrx == null);
-    localasrx.a();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.1(this, paramInt1, paramInt2));
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.3(this, paramInt, paramBoolean));
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    ((asrx)getItem(paramInt)).a(paramView, paramInt, this);
-  }
-  
-  public void a(asrz paramasrz)
-  {
-    this.jdField_a_of_type_Asrz = paramasrz;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.2(this, paramInt1, paramInt2));
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView != null) {
-      return paramView;
     }
-    paramView = (asrx)getItem(paramInt);
-    paramViewGroup = paramView.a;
-    if (((this.jdField_a_of_type_AndroidContentContext instanceof PicBrowserActivity)) && (((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).b)) {
-      ((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).app.a().b(paramViewGroup.a);
-    }
-    paramView = paramView.a(paramInt, this.jdField_a_of_type_AndroidOsHandler, this);
-    paramView.setTag(2131296390, Boolean.valueOf(true));
-    return paramView;
+    float f2 = 1.0F - (1.0F - this.jdField_a_of_type_Float) * f1;
+    this.jdField_a_of_type_Assf.a.setScaleX(f2);
+    this.jdField_a_of_type_Assf.a.setScaleY(f2);
+    this.jdField_a_of_type_Assf.a.setTranslationX(0.0F);
+    this.jdField_a_of_type_Assf.a.setTranslationY(this.b * f1);
+    paramValueAnimator = this.jdField_a_of_type_Assf.a.getLayoutParams();
+    float f3 = this.c;
+    paramValueAnimator.height = ((int)((1.0F - f1 * (1.0F - this.d)) / f2 * f3));
+    this.jdField_a_of_type_Assf.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asrt
  * JD-Core Version:    0.7.0.1
  */

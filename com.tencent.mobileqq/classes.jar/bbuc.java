@@ -1,20 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity.5;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class bbuc
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public bbuc(AuthorityActivity.5 param5) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bbuc(PathTraceManager paramPathTraceManager, Looper paramLooper)
   {
-    paramDialogInterface.dismiss();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramMessage = (JSONObject)paramMessage.obj;
+        String str = paramMessage.getString("callback");
+        if (this.a.a != null)
+        {
+          bbts localbbts = (bbts)this.a.a.get();
+          if (localbbts != null)
+          {
+            localbbts.callJs(str, new String[] { paramMessage.toString() });
+            return;
+          }
+        }
+      }
+      catch (Exception paramMessage) {}
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbuc
  * JD-Core Version:    0.7.0.1
  */

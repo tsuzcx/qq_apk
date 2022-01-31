@@ -1,17 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import java.lang.ref.SoftReference;
 
-class aeby
-  implements View.OnClickListener
+public class aeby
 {
-  aeby(aebk paramaebk) {}
+  public String a;
+  SoftReference<View> a;
+  SoftReference<ViewGroup> b;
   
-  public void onClick(View paramView)
+  public aeby(String paramString, View paramView, ViewGroup paramViewGroup)
   {
-    aciy.n = true;
-    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
-    acnc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
-    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "2", "0", "", "");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
+    this.b = new SoftReference(paramViewGroup);
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+  }
+  
+  public ViewGroup a()
+  {
+    return (ViewGroup)this.b.get();
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    this.b = new SoftReference(paramViewGroup);
   }
 }
 

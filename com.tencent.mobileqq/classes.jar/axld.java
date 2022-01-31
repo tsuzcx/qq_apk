@@ -1,22 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.concurrent.atomic.AtomicInteger;
 
-final class axld
-  implements DialogInterface.OnClickListener
+public class axld
 {
-  axld(axle paramaxle) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    axkz.a("0X800A5CA");
-    if (this.a != null) {
-      this.a.onCancel();
-    }
-  }
+  public AtomicInteger a = new AtomicInteger(0);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axld
  * JD-Core Version:    0.7.0.1
  */

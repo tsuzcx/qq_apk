@@ -1,165 +1,87 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.ArNativeSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import com.tencent.mobileqq.config.business.qvip.QVipBigTroopExpiredConfig;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amyx
-  extends amza
+  extends amyi<QVipBigTroopExpiredConfig>
 {
-  public amyx(QQAppInterface paramQQAppInterface)
+  public static QVipBigTroopExpiredConfig c()
   {
-    super("qq.android.ar.native.so_v8.0.0", paramQQAppInterface);
+    QVipBigTroopExpiredConfig localQVipBigTroopExpiredConfig2 = (QVipBigTroopExpiredConfig)ampm.a().a(428);
+    QVipBigTroopExpiredConfig localQVipBigTroopExpiredConfig1 = localQVipBigTroopExpiredConfig2;
+    if (localQVipBigTroopExpiredConfig2 == null) {
+      localQVipBigTroopExpiredConfig1 = new QVipBigTroopExpiredConfig();
+    }
+    return localQVipBigTroopExpiredConfig1;
   }
   
   public int a()
   {
-    return 10024;
+    return 428;
   }
   
-  public Class<? extends XmlData> a()
+  @NonNull
+  public QVipBigTroopExpiredConfig a()
   {
-    return ArNativeSoData.class;
+    return new QVipBigTroopExpiredConfig();
   }
   
-  public String a()
+  @NonNull
+  public QVipBigTroopExpiredConfig a(ampi[] paramArrayOfampi)
   {
-    return "ArConfig_NativeSoDownloadHandler";
-  }
-  
-  public void a(XmlData paramXmlData)
-  {
-    int i = 0;
+    boolean bool = true;
+    localQVipBigTroopExpiredConfig = new QVipBigTroopExpiredConfig();
+    paramArrayOfampi = paramArrayOfampi[0].a;
     try
     {
-      Object localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("ArNativeSoDownloadHandler", 4);
-      if (((SharedPreferences)localObject1).getBoolean("qq.android.ar.native.so_v8.0.0", true))
+      if (!TextUtils.isEmpty(paramArrayOfampi))
       {
-        ((SharedPreferences)localObject1).edit().putBoolean("qq.android.ar.native.so_v8.0.0", false).commit();
-        localObject1 = new File(aknn.a() + File.separator).listFiles();
-        int j = localObject1.length;
-        while (i < j)
-        {
-          Object localObject2 = localObject1[i];
-          if (QLog.isColorLevel()) {
-            QLog.d("ArConfig_NativeSoDownloadHandler", 2, "File name=" + localObject2.getAbsolutePath());
-          }
-          if ((localObject2.isFile()) && (localObject2.getName().startsWith("libArMapEngine")) && (!localObject2.getName().contains("ArMapEngine800")))
-          {
-            localObject2.delete();
-            if (QLog.isColorLevel()) {
-              QLog.d("ArConfig_NativeSoDownloadHandler", 2, "delete f=" + localObject2.getName());
-            }
-          }
-          i += 1;
+        paramArrayOfampi = new JSONObject(paramArrayOfampi);
+        if (paramArrayOfampi.optInt("enable", 1) != 1) {
+          break label164;
         }
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel())
+      for (;;)
       {
-        QLog.d("ArConfig_NativeSoDownloadHandler", 2, "exception =" + localException.getMessage());
-        localException.printStackTrace();
+        localQVipBigTroopExpiredConfig.mIsEnable = bool;
+        localQVipBigTroopExpiredConfig.mNotifyTipsMaxDay = paramArrayOfampi.optInt("NotifyTipsMaxDay", 15);
+        localQVipBigTroopExpiredConfig.mNotifyTipsMinDay = paramArrayOfampi.optInt("NotifyTipsMinDay", 7);
+        localQVipBigTroopExpiredConfig.mNotifyTipsMaxCount = paramArrayOfampi.optInt("NotifyTipsMaxCount", 2);
+        localQVipBigTroopExpiredConfig.mNotifyTipsPerDay = paramArrayOfampi.optInt("NotifyTipsPerDay", 1);
+        localQVipBigTroopExpiredConfig.mNotifyTipsMaxCloseCount = paramArrayOfampi.optInt("NotifyTipsMaxCloseCount", 3);
+        localQVipBigTroopExpiredConfig.mNotifyDialogMaxDay = paramArrayOfampi.optInt("NotifyDialogMaxDay", 7);
+        localQVipBigTroopExpiredConfig.mNotifyDialogMinDay = paramArrayOfampi.optInt("NotifyDialogMinDay", 0);
+        localQVipBigTroopExpiredConfig.mNotifyDialogMaxCount = paramArrayOfampi.optInt("NotifyDialogMaxCount", 2);
+        localQVipBigTroopExpiredConfig.mNotifyDialogPerDay = paramArrayOfampi.optInt("NotifyDialogPerDay", 1);
+        localQVipBigTroopExpiredConfig.mNotifyDialogExpiredIntervalDay = paramArrayOfampi.optInt("NotifyDialogExpiredIntervalDay", 5);
+        return localQVipBigTroopExpiredConfig;
+        label164:
+        bool = false;
       }
-      super.a(paramXmlData);
+      return localQVipBigTroopExpiredConfig;
     }
-  }
-  
-  public void a(String paramString)
-  {
-    int i = aknn.b(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_NativeSoDownloadHandler", 2, "download success: " + paramString + ",result=" + i);
-    }
-    if (i == 0) {
-      BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit().putInt("ar_native_so_version", b()).commit();
-    }
-    for (;;)
+    catch (JSONException paramArrayOfampi)
     {
-      try
-      {
-        str = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).getString("ar_native_ArMapEngine800", "");
-        if (!TextUtils.isEmpty(str))
-        {
-          QQAppInterface localQQAppInterface = this.a;
-          i = a().Version;
-          if (!TextUtils.isEmpty(str)) {
-            continue;
-          }
-          localObject = "0";
-          awqx.b(localQQAppInterface, "dc01440", "", "", "0X8007A3D", "0X8007A3D", 0, 0, "", String.valueOf(i), (String)localObject, "qq.android.ar.native.so_v8.0.0");
-          localObject = new HashMap();
-          ((HashMap)localObject).put("config_version", String.valueOf(a().Version));
-          ((HashMap)localObject).put("md5", str);
-          ((HashMap)localObject).put("res_name", "qq.android.ar.native.so_v8.0.0");
-          awrn.a(BaseApplicationImpl.getContext()).a(this.a.getCurrentAccountUin(), "armap_so_update_rate", true, 0L, 0L, (HashMap)localObject, "", false);
-        }
-      }
-      catch (Exception localException)
-      {
-        String str;
-        Object localObject;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localException.printStackTrace();
-        continue;
-      }
-      super.a(paramString);
-      return;
-      a().loadState = 0;
-      a().Version = 0;
-      amyo.a(a(), new String[0]);
-      continue;
-      localObject = str;
+      veg.e("QVipBigTroopExpiredProcessor", "QVipBigTroopExpiredConfig onParsed exception :" + paramArrayOfampi.getMessage());
     }
   }
   
-  public void a(boolean paramBoolean)
+  public Class<QVipBigTroopExpiredConfig> a()
   {
-    a(false, paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_NativeSoDownloadHandler", 2, "restartDownload " + paramBoolean);
-    }
+    return QVipBigTroopExpiredConfig.class;
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  @NonNull
+  public QVipBigTroopExpiredConfig b()
   {
-    if (paramBoolean1) {
-      super.a(paramBoolean2);
-    }
-    do
-    {
-      return;
-      if ((a() == null) || (a().loadState != 2)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ArConfig_NativeSoDownloadHandler", 2, "restartDownloadForce is in downloading");
-    return;
-    super.a(paramBoolean2);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return "prd";
+    return new QVipBigTroopExpiredConfig();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amyx
  * JD-Core Version:    0.7.0.1
  */

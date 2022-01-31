@@ -1,46 +1,18 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.wadl.ipc.WadlProxyServiceManager.ClientMessageHandler.1;
-import cooperation.wadl.ipc.WadlProxyServiceManager.ClientMessageHandler.2;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qqpim.QQPimTipsInfo;
 
 public final class bgst
-  extends Handler
+  implements Parcelable.Creator<QQPimTipsInfo>
 {
-  public bgst(bgsp parambgsp, Looper paramLooper)
+  public QQPimTipsInfo a(Parcel paramParcel)
   {
-    super(paramLooper);
+    return new QQPimTipsInfo(paramParcel, null);
   }
   
-  public void handleMessage(Message paramMessage)
+  public QQPimTipsInfo[] a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.b();
-      continue;
-      this.a.c();
-      continue;
-      Bundle localBundle = paramMessage.getData();
-      this.a.a.post(new WadlProxyServiceManager.ClientMessageHandler.1(this, localBundle));
-      continue;
-      localBundle = paramMessage.getData();
-      this.a.a.post(new WadlProxyServiceManager.ClientMessageHandler.2(this, localBundle));
-      continue;
-      if (bgsp.a(this.a) != null)
-      {
-        bgsp.a(this.a).a();
-        continue;
-        if ((!bgsp.a(this.a)) && (bgsp.a(this.a) != null)) {
-          bgsp.a(this.a).b();
-        }
-      }
-    }
+    return new QQPimTipsInfo[paramInt];
   }
 }
 

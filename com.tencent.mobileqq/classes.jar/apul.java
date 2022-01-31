@@ -1,34 +1,22 @@
-import android.content.Intent;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public abstract class apul
+final class apul
+  implements aptu
 {
-  private apum a;
+  apul(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface) {}
   
-  public void a(Intent paramIntent) {}
-  
-  public void a(ViewGroup paramViewGroup) {}
-  
-  public void a(apum paramapum)
+  public void a()
   {
-    this.a = paramapum;
+    apue.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
   
   public void b() {}
-  
-  public void b(ViewGroup paramViewGroup) {}
-  
-  public void d() {}
-  
-  public void o() {}
-  
-  public void p() {}
-  
-  public void q() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apul
  * JD-Core Version:    0.7.0.1
  */

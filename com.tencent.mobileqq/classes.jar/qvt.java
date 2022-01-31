@@ -1,59 +1,25 @@
-import android.os.Looper;
+import android.telephony.PhoneStateListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class qvt
+class qvt
+  extends PhoneStateListener
 {
-  private int jdField_a_of_type_Int = this.jdField_a_of_type_JavaLangThread.getPriority();
-  private Thread jdField_a_of_type_JavaLangThread = Looper.getMainLooper().getThread();
-  private int jdField_b_of_type_Int;
-  private Thread jdField_b_of_type_JavaLangThread;
+  qvt(qvr paramqvr) {}
   
-  public qvt()
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    for (ThreadGroup localThreadGroup = Thread.currentThread().getThreadGroup(); localThreadGroup.getParent() != null; localThreadGroup = localThreadGroup.getParent()) {}
-    Thread[] arrayOfThread = new Thread[localThreadGroup.activeCount()];
-    localThreadGroup.enumerate(arrayOfThread);
-    int i = 0;
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoVolumeController", 2, "onCallStateChanged:" + paramInt);
+    }
+    switch (paramInt)
     {
-      if (i < arrayOfThread.length)
-      {
-        if ((arrayOfThread[i] != null) && (arrayOfThread[i].isAlive()) && (arrayOfThread[i].getName().equalsIgnoreCase("RenderThread")))
-        {
-          this.jdField_b_of_type_JavaLangThread = arrayOfThread[i];
-          this.jdField_b_of_type_Int = this.jdField_b_of_type_JavaLangThread.getPriority();
-        }
-      }
-      else {
-        return;
-      }
-      i += 1;
+    default: 
+      return;
+    case 1: 
+      this.a.a(true);
+      return;
     }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangThread.setPriority(10);
-    if (this.jdField_b_of_type_JavaLangThread != null) {
-      this.jdField_b_of_type_JavaLangThread.setPriority(10);
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaLangThread.setPriority(this.jdField_a_of_type_Int);
-    if (this.jdField_b_of_type_JavaLangThread != null) {
-      this.jdField_b_of_type_JavaLangThread.setPriority(this.jdField_b_of_type_Int);
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("main:" + this.jdField_a_of_type_JavaLangThread.getPriority());
-    if (this.jdField_b_of_type_JavaLangThread != null) {
-      localStringBuilder.append(" render:" + this.jdField_b_of_type_JavaLangThread.getPriority());
-    }
-    return localStringBuilder.toString();
+    this.a.a(true);
   }
 }
 

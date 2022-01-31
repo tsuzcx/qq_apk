@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent;
 
-import agxq;
-import alzf;
+import ahkf;
+import amov;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -12,18 +12,18 @@ import mqq.os.MqqHandler;
 public class BannerManager$41
   implements Runnable
 {
-  public BannerManager$41(agxq paramagxq) {}
+  public BannerManager$41(ahkf paramahkf) {}
   
   public void run()
   {
     try
     {
-      Object localObject = agxq.a(this.this$0).app;
-      alzf localalzf = ((QQAppInterface)localObject).a(((QQAppInterface)localObject).getCurrentAccountUin(), true);
+      Object localObject = ahkf.a(this.this$0).app;
+      amov localamov = ((QQAppInterface)localObject).a(((QQAppInterface)localObject).getCurrentAccountUin(), true);
       if (QLog.isColorLevel()) {
-        QLog.i("PushBannerConfig", 2, String.format(Locale.getDefault(), "initConfig config: %s", new Object[] { localalzf }));
+        QLog.i("PushBannerConfig", 2, String.format(Locale.getDefault(), "initConfig config: %s", new Object[] { localamov }));
       }
-      if (localalzf != null)
+      if (localamov != null)
       {
         localObject = ((QQAppInterface)localObject).getHandler(Conversation.class);
         if (localObject != null) {

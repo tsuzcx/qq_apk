@@ -1,15 +1,18 @@
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
-public abstract interface wcl<T extends SimpleBaseEvent>
+public class wcl
+  implements wdk
 {
-  public abstract ArrayList<Class<T>> a();
+  public wcl(SegmentList paramSegmentList) {}
   
-  public abstract void a(SimpleBaseEvent paramSimpleBaseEvent);
+  public void a()
+  {
+    this.a.a.a(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wcl
  * JD-Core Version:    0.7.0.1
  */

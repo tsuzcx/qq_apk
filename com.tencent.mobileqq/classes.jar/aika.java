@@ -1,15 +1,39 @@
-import com.tencent.mobileqq.apollo.ApolloTicker.NativeDrawTask;
-import java.util.Timer;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.activity.specialcare.SpecialCareUtils.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
 public class aika
 {
-  public int a;
-  public ApolloTicker.NativeDrawTask a;
-  public Timer a;
+  public static void a(Activity paramActivity, String paramString, int paramInt)
+  {
+    if ((paramInt == 3) && (apzt.a().a()))
+    {
+      localObject = new HashMap();
+      ((Map)localObject).put("uin", paramString);
+      ((Map)localObject).put("from", Integer.valueOf(3));
+      aqaj.a(paramActivity, "SpecialCareFriendSettingPage", (Map)localObject);
+      return;
+    }
+    Object localObject = new Intent(paramActivity, QQSpecialCareSettingActivity.class);
+    ((Intent)localObject).putExtra("key_friend_uin", paramString);
+    ((Intent)localObject).putExtra("key_start_from", 3);
+    paramActivity.startActivity((Intent)localObject);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(new SpecialCareUtils.1(paramQQAppInterface), 1000L);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aika
  * JD-Core Version:    0.7.0.1
  */

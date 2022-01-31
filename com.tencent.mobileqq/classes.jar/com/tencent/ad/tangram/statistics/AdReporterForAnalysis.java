@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.analysis.AdAnalysis;
 import com.tencent.ad.tangram.analysis.AdAnalysisEvent;
-import com.tencent.ad.tangram.analysis.b;
+import com.tencent.ad.tangram.analysis.AdAnalysisUtil;
 import com.tencent.ad.tangram.device.AdCarrier;
 import com.tencent.ad.tangram.loader.AdLoaderWithJSON;
 import com.tencent.ad.tangram.log.AdLog;
@@ -29,7 +29,7 @@ public final class AdReporterForAnalysis
   public static AdAnalysisEvent createEventCarrier(Context paramContext, int paramInt, long paramLong)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1039, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1039, localgdt_analysis_event);
     localgdt_analysis_event.internalErrorCode = paramInt;
     localgdt_analysis_event.duration = paramLong;
     return new AdAnalysisEvent(localgdt_analysis_event, 102);
@@ -45,7 +45,7 @@ public final class AdReporterForAnalysis
         str2 = String.valueOf(paramAd.getAId());
       }
       paramAd = new gdt_analysis_event();
-      b.initEvent(paramContext, paramInt, paramAd);
+      AdAnalysisUtil.initEvent(paramContext, paramInt, paramAd);
       paramAd.posId = str1;
       paramAd.aid = str2;
       paramAd.carrierCode = AdCarrier.getCode(paramContext);
@@ -57,7 +57,7 @@ public final class AdReporterForAnalysis
   public static AdAnalysisEvent createEventForAidTicket(Context paramContext, int paramInt1, int paramInt2, long paramLong)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1049, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1049, localgdt_analysis_event);
     localgdt_analysis_event.internalErrorCode = paramInt1;
     localgdt_analysis_event.errorCode1 = paramInt2;
     localgdt_analysis_event.duration = paramLong;
@@ -67,7 +67,7 @@ public final class AdReporterForAnalysis
   public static AdAnalysisEvent createEventForAndroidId(Context paramContext, int paramInt, long paramLong, boolean paramBoolean)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1042, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1042, localgdt_analysis_event);
     localgdt_analysis_event.internalErrorCode = paramInt;
     localgdt_analysis_event.duration = paramLong;
     if (paramBoolean) {}
@@ -81,7 +81,7 @@ public final class AdReporterForAnalysis
   public static AdAnalysisEvent createEventForDeviceId(Context paramContext, int paramInt1, long paramLong, boolean paramBoolean, int paramInt2)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1040, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1040, localgdt_analysis_event);
     localgdt_analysis_event.internalErrorCode = paramInt1;
     localgdt_analysis_event.duration = paramLong;
     if (paramBoolean) {}
@@ -97,7 +97,7 @@ public final class AdReporterForAnalysis
   public static AdAnalysisEvent createEventForDeviceInfoEnd(Context paramContext, String paramString, long paramLong)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1037, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1037, localgdt_analysis_event);
     localgdt_analysis_event.businessId = paramString;
     localgdt_analysis_event.duration = paramLong;
     return new AdAnalysisEvent(localgdt_analysis_event, 102);
@@ -106,7 +106,7 @@ public final class AdReporterForAnalysis
   public static AdAnalysisEvent createEventForGetImei(Context paramContext, int paramInt1, long paramLong, int paramInt2)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1073, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1073, localgdt_analysis_event);
     localgdt_analysis_event.internalErrorCode = paramInt1;
     localgdt_analysis_event.duration = paramLong;
     localgdt_analysis_event.errorCode3 = paramInt2;
@@ -117,7 +117,7 @@ public final class AdReporterForAnalysis
   public static AdAnalysisEvent createEventForGetQADID(Context paramContext, int paramInt, long paramLong)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1044, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1044, localgdt_analysis_event);
     localgdt_analysis_event.internalErrorCode = paramInt;
     localgdt_analysis_event.duration = paramLong;
     return new AdAnalysisEvent(localgdt_analysis_event, 102);
@@ -126,7 +126,7 @@ public final class AdReporterForAnalysis
   public static AdAnalysisEvent createEventForIPV4(Context paramContext, int paramInt)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1045, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1045, localgdt_analysis_event);
     localgdt_analysis_event.internalErrorCode = paramInt;
     return new AdAnalysisEvent(localgdt_analysis_event, 102);
   }
@@ -167,7 +167,7 @@ public final class AdReporterForAnalysis
   public static AdAnalysisEvent createEventForLocation(Context paramContext, boolean paramBoolean, long paramLong)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1038, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1038, localgdt_analysis_event);
     if (paramBoolean) {}
     for (int i = 0;; i = 1)
     {
@@ -182,7 +182,7 @@ public final class AdReporterForAnalysis
   public static AdAnalysisEvent createEventForMacAddress(Context paramContext, int paramInt, long paramLong, boolean paramBoolean)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1041, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1041, localgdt_analysis_event);
     localgdt_analysis_event.internalErrorCode = paramInt;
     localgdt_analysis_event.duration = paramLong;
     if (paramBoolean) {}
@@ -209,7 +209,7 @@ public final class AdReporterForAnalysis
   public static AdAnalysisEvent createEventForTaidTicket(Context paramContext, int paramInt1, int paramInt2, long paramLong)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1050, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1050, localgdt_analysis_event);
     localgdt_analysis_event.internalErrorCode = paramInt1;
     localgdt_analysis_event.errorCode1 = paramInt2;
     localgdt_analysis_event.duration = paramLong;
@@ -219,7 +219,7 @@ public final class AdReporterForAnalysis
   public static AdAnalysisEvent createEventImeiConsistency(Context paramContext, int paramInt1, int paramInt2)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1074, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1074, localgdt_analysis_event);
     localgdt_analysis_event.internalErrorCode = paramInt1;
     localgdt_analysis_event.errorCode3 = paramInt2;
     localgdt_analysis_event.phoneType = paramInt2;
@@ -229,7 +229,7 @@ public final class AdReporterForAnalysis
   public static AdAnalysisEvent createEventImeiSource(Context paramContext, int paramInt1, int paramInt2)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1075, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1075, localgdt_analysis_event);
     localgdt_analysis_event.androidSimState = paramInt1;
     localgdt_analysis_event.muidSourceType = paramInt1;
     localgdt_analysis_event.errorCode3 = paramInt2;
@@ -257,7 +257,7 @@ public final class AdReporterForAnalysis
     {
       i = 102;
       paramString2 = new gdt_analysis_event();
-      b.initEvent(paramContext, 1051, paramString2);
+      AdAnalysisUtil.initEvent(paramContext, 1051, paramString2);
       paramString2.api = paramString1;
       if (localUri == null) {
         break label85;
@@ -439,7 +439,7 @@ public final class AdReporterForAnalysis
       j = 1047;
       label24:
       paramString = new gdt_analysis_event();
-      b.initEvent(paramContext, j, paramString);
+      AdAnalysisUtil.initEvent(paramContext, j, paramString);
       paramString.carrierCode = AdCarrier.getCode(paramContext);
       paramString.netType = AdNet.getType(paramContext);
       paramString.duration = paramLong;
@@ -485,7 +485,7 @@ public final class AdReporterForAnalysis
   public static void reportForGetIPV4Start(Context paramContext)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1046, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1046, localgdt_analysis_event);
     localgdt_analysis_event.carrierCode = AdCarrier.getCode(paramContext);
     localgdt_analysis_event.netType = AdNet.getType(paramContext);
     AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(localgdt_analysis_event, 102));
@@ -500,7 +500,7 @@ public final class AdReporterForAnalysis
     {
       i = 102;
       localgdt_analysis_event = new gdt_analysis_event();
-      b.initEvent(paramContext, 1052, localgdt_analysis_event);
+      AdAnalysisUtil.initEvent(paramContext, 1052, localgdt_analysis_event);
       localgdt_analysis_event.api = paramString1;
       localgdt_analysis_event.url = paramString2;
       if (localUri == null) {
@@ -553,7 +553,7 @@ public final class AdReporterForAnalysis
     {
       i = 102;
       paramString3 = new gdt_analysis_event();
-      b.initEvent(paramContext, 1052, paramString3);
+      AdAnalysisUtil.initEvent(paramContext, 1052, paramString3);
       paramString3.api = paramString1;
       paramString3.url = paramString2;
       if (localUri2 == null) {
@@ -708,7 +708,7 @@ public final class AdReporterForAnalysis
   public static void reportForLoadAd(Context paramContext, String paramString)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1053, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1053, localgdt_analysis_event);
     localgdt_analysis_event.posId = paramString;
     AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(localgdt_analysis_event, 102));
   }
@@ -719,7 +719,7 @@ public final class AdReporterForAnalysis
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
     if (i == 0)
     {
-      b.initEvent(paramContext, 1001, localgdt_analysis_event);
+      AdAnalysisUtil.initEvent(paramContext, 1001, localgdt_analysis_event);
       localgdt_analysis_event.carrierCode = AdCarrier.getCode(paramContext);
       localgdt_analysis_event.netType = AdNet.getType(paramContext);
       localgdt_analysis_event.duration = paramLong;
@@ -728,7 +728,7 @@ public final class AdReporterForAnalysis
     {
       AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(localgdt_analysis_event, 102));
       return;
-      b.initEvent(paramContext, 1002, localgdt_analysis_event);
+      AdAnalysisUtil.initEvent(paramContext, 1002, localgdt_analysis_event);
       localgdt_analysis_event.carrierCode = AdCarrier.getCode(paramContext);
       localgdt_analysis_event.netType = AdNet.getType(paramContext);
       localgdt_analysis_event.duration = paramLong;
@@ -742,7 +742,7 @@ public final class AdReporterForAnalysis
   public static void reportForLoadAdStart(Context paramContext)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    b.initEvent(paramContext, 1000, localgdt_analysis_event);
+    AdAnalysisUtil.initEvent(paramContext, 1000, localgdt_analysis_event);
     localgdt_analysis_event.carrierCode = AdCarrier.getCode(paramContext);
     localgdt_analysis_event.netType = AdNet.getType(paramContext);
     AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(localgdt_analysis_event, 102));

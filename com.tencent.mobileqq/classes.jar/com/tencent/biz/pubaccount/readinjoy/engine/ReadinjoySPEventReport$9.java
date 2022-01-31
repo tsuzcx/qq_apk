@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo.NotifyI
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import rtr;
+import sgj;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public class ReadinjoySPEventReport$9
@@ -35,7 +35,7 @@ public class ReadinjoySPEventReport$9
     }
     for (int i = 17;; i = 16)
     {
-      rtr.a(i, localArrayList);
+      sgj.a(i, localArrayList);
       return;
     }
   }

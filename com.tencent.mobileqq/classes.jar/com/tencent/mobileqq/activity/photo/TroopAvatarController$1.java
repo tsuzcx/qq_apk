@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo;
 
-import afzi;
-import agej;
+import aglg;
+import agqh;
 
 public class TroopAvatarController$1
   implements Runnable
 {
-  public TroopAvatarController$1(agej paramagej, afzi paramafzi1, afzi paramafzi2) {}
+  public TroopAvatarController$1(agqh paramagqh, aglg paramaglg1, aglg paramaglg2) {}
   
   public void run()
   {
-    agej.a(this.this$0, this.a);
-    agej.b(this.this$0, this.b);
+    agqh.a(this.this$0, this.a);
+    agqh.b(this.this$0, this.b);
     this.this$0.b();
   }
 }

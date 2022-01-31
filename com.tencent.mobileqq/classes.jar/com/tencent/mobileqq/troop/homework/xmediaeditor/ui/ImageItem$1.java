@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import azaa;
-import azaf;
-import azbc;
+import baas;
+import baax;
+import babu;
 
 public class ImageItem$1
   implements Runnable
 {
-  public ImageItem$1(azbc paramazbc, azaa paramazaa) {}
+  public ImageItem$1(babu parambabu, baas parambaas) {}
   
   public void run()
   {
-    azbc.a(this.this$0, (azaf)this.a, true);
+    babu.a(this.this$0, (baax)this.a, true);
   }
 }
 

@@ -1,16 +1,29 @@
-public class bgmu
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.QlAndQQInterface.WorkState;
+
+class bgmu
+  extends BroadcastReceiver
 {
-  public float a;
-  public int a;
-  public boolean a;
-  public float b;
-  public int b;
-  public boolean b = true;
-  public boolean c = true;
+  bgmu(bgmt parambgmt) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
+      return;
+    }
+    QLog.w("QQProxyForQlink", 1, "receive qqAccountbroacast action=" + paramContext);
+    bgmt.a(this.a, new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false));
+    bgmt.c(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgmu
  * JD-Core Version:    0.7.0.1
  */

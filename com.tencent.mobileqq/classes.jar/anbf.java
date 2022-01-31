@@ -1,81 +1,65 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoIpcServer.1;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class anbf
-  extends QIPCModule
+  extends ampb<anbe>
 {
-  public anbf()
+  public static anbe a()
   {
-    super("CameraEmoIpcServer");
+    return (anbe)ampm.a().a(342);
   }
   
-  public static anbf a()
+  public int a()
   {
-    return anbg.a();
+    return 342;
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  @NonNull
+  public anbe a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraEmoIpcServer", 2, "action = " + paramString + ", params = " + paramBundle);
+    return new anbe();
+  }
+  
+  @Nullable
+  public anbe a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
+      return anbe.a(paramArrayOfampi);
     }
-    Bundle localBundle = new Bundle();
-    ArrayList localArrayList1;
-    ArrayList localArrayList2;
-    if ("qipc_action_camera_emo_create_gif_and_upload".equals(paramString))
-    {
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      localArrayList1 = paramBundle.getStringArrayList("qipc_param_camera_emo_png_dirs");
-      localArrayList2 = paramBundle.getStringArrayList("qipc_param_camera_emo_texts");
-      paramBundle = paramBundle.getStringArrayList("qipc_param_camera_emo_snapshots");
-      if ((localArrayList1 == null) || (localArrayList2 == null)) {
-        break label242;
-      }
-      if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-        break label324;
-      }
-    }
-    label324:
-    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
-    {
-      if (paramString == null)
-      {
-        QLog.d("CameraEmoIpcServer", 2, "CameraEmoIpcServer.onCall get app failed");
-        localBundle.putInt("qipc_param_camera_emo_upload_result", 16);
-        callbackResult(paramInt, EIPCResult.createExceptionResult(new Exception("app == null")));
-        paramString = new HashMap();
-        paramString.put("sucFlag", "0");
-        paramString.put("retCode", String.valueOf(16));
-        awrn.a(BaseApplication.getContext()).a(null, "CamEmoUpload", false, 0L, 0L, paramString, null);
-        return null;
-      }
-      ThreadManager.excute(new CameraEmoIpcServer.1(this, paramBundle, localArrayList1, localArrayList2), 64, null, false);
-      callbackResult(paramInt, EIPCResult.createSuccessResult(localBundle));
-      return null;
-      label242:
-      QLog.d("CameraEmoIpcServer", 2, "CameraEmoIpcServer.onCall params error");
-      localBundle.putInt("qipc_param_camera_emo_upload_result", 16);
-      callbackResult(paramInt, EIPCResult.createExceptionResult(new Exception("pngDirs == null || texts == null")));
-      paramString = new HashMap();
-      paramString.put("sucFlag", "0");
-      paramString.put("retCode", String.valueOf(16));
-      awrn.a(BaseApplication.getContext()).a(null, "CamEmoUpload", false, 0L, 0L, paramString, null);
-      return null;
-    }
+    return null;
+  }
+  
+  public Class<anbe> a()
+  {
+    return anbe.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("TencentDocAIOShowGuideDialogProcessor", 1, "TENCENT_DOC_AIO_SHOW_GUIDE_DIALOG failed, resultCode:" + paramInt);
+  }
+  
+  public void a(anbe paramanbe) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anbf
  * JD-Core Version:    0.7.0.1
  */

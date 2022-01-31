@@ -1,46 +1,35 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.colornote.swipeback.SwipeBackLayout;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
 public class aluw
-  extends Handler
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private WeakReference<SwipeBackLayout> a;
+  public aluw(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public aluw(SwipeBackLayout paramSwipeBackLayout)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a = new WeakReference(paramSwipeBackLayout);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    SwipeBackLayout localSwipeBackLayout = (SwipeBackLayout)this.a.get();
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
-    default: 
-      super.handleMessage(paramMessage);
+      AboutActivity.a(5);
+      if (!this.a.b().equals("close")) {
+        this.a.b();
+      }
+      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is opened and IDE debug is also open ,state=%s", new Object[] { AboutActivity.b() }));
+      ArkAppCenter.a(true);
+      return;
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (SwipeBackLayout.a(localSwipeBackLayout));
-      SwipeBackLayout.a(localSwipeBackLayout, true);
-    } while (!(localSwipeBackLayout.a instanceof Activity));
-    if (QLog.isColorLevel()) {
-      QLog.d("SwipeBackLayout", 2, "SwipeBackLayout finish()");
-    }
-    localSwipeBackLayout.c = true;
-    ((Activity)localSwipeBackLayout.a).finish();
+    AboutActivity.a(0);
+    this.a.c();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is closed and IDE debug is also closed,state=%s", new Object[] { AboutActivity.b() }));
+    ArkAppCenter.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aluw
  * JD-Core Version:    0.7.0.1
  */

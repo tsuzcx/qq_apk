@@ -53,13 +53,16 @@ public class GamePreloadManager
   
   private void sendBaseLibVersion()
   {
-    InstalledEngine localInstalledEngine = this.mGameEngineLoadTask.getEngine();
-    if ((localInstalledEngine != null) && (localInstalledEngine.loadStatus == 3) && (localInstalledEngine.engineVersion != null))
+    String str = GameLibVersionManager.g().getGameEngineVersion();
+    if (str != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putString("bundle_key_process_name", AppUtil.getProcessName());
-      localBundle.putString("bundle_key_preload_game_baselib_version", localInstalledEngine.engineVersion.mMinor);
+      localBundle.putString("bundle_key_preload_game_baselib_version", str);
       AppBrandProxy.g().sendCmd("cmd_on_preload_game_baselib", localBundle, null);
+      if (QLog.isColorLevel()) {
+        QLog.i("GamePreloadManager", 2, "[MiniEng]preload engine version:" + str);
+      }
     }
   }
   

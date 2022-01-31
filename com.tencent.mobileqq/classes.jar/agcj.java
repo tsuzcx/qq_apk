@@ -1,22 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
-public class agcj
-  implements DialogInterface.OnClickListener
+class agcj
+  extends ajuh
 {
-  public agcj(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  agcj(agch paramagch) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
-    if (this.a.b != null) {
-      this.a.b.setClickable(true);
-    }
+    agch.a(this.a, paramUpgradeDetailWrapper);
+    this.a.e();
   }
 }
 

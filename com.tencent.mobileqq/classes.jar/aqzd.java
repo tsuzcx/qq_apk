@@ -1,43 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Comparator;
 
 class aqzd
-  extends ajuc
+  implements Comparator<File>
 {
   aqzd(aqzc paramaqzc) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public int a(File paramFile1, File paramFile2)
   {
-    super.a(paramInt1, paramInt2, paramString);
-    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0))
+    if (paramFile1.lastModified() > paramFile2.lastModified()) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, new Object[] { "onTroopManagerSuccess: invoked. 主动退群 or 解散群", " reqtype: ", Integer.valueOf(paramInt1), " troopUin: ", paramString });
+      return -1;
+      if (paramFile1.lastModified() != paramFile2.lastModified()) {
+        break;
       }
-      arbp.a(this.a.app, 1, paramString);
-    }
-  }
-  
-  protected void b(String paramString, int paramInt)
-  {
-    super.b(paramString, paramInt);
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
+      if (paramFile1.length() > paramFile2.length()) {
+        return 1;
       }
-      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-      if ((localBaseActivity != null) && (this.a.a.a())) {
-        bbmy.a(localBaseActivity, 2131627611, 1).a();
-      }
-      arbp.a(this.a.app, 1, paramString);
-    }
+    } while (paramFile1.length() < paramFile2.length());
+    return 0;
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aqzd
  * JD-Core Version:    0.7.0.1
  */

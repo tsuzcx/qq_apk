@@ -13,10 +13,10 @@ import android.graphics.drawable.Drawable;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import babe;
-import bbja;
-import bbjb;
-import bbjc;
+import bbci;
+import bclx;
+import bcly;
+import bclz;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.SoftReference;
@@ -35,14 +35,14 @@ public class GifAnimationDrawable
   private long jdField_a_of_type_Long = 34L;
   protected Context a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private bbjb jdField_a_of_type_Bbjb;
-  private bbjc jdField_a_of_type_Bbjc;
+  private bcly jdField_a_of_type_Bcly;
+  private bclz jdField_a_of_type_Bclz;
   private final String jdField_a_of_type_JavaLangString = "FastAnimationDrawable@" + Integer.toHexString(hashCode());
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
   private Set<SoftReference<Bitmap>> jdField_a_of_type_JavaUtilSet;
   protected volatile boolean a;
   private long jdField_b_of_type_Long;
-  private ArrayList<bbja> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<bclx> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   protected boolean b;
   protected boolean c;
   protected boolean d;
@@ -51,22 +51,22 @@ public class GifAnimationDrawable
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bbjc = new bbjc(this);
+    this.jdField_a_of_type_Bclz = new bclz(this);
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_JavaUtilSet = jdField_b_of_type_JavaUtilSet;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
   
-  private void a(bbjb parambbjb)
+  private void a(bcly parambcly)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "frameReady() called next=" + parambbjb);
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "frameReady() called next=" + parambcly);
     }
     this.d = false;
-    if ((this.jdField_a_of_type_Bbjb != null) && (babe.a("android.resource://main_tab_animation_" + (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Bbjb.jdField_a_of_type_Int)) == null)) {
-      this.jdField_a_of_type_JavaUtilSet.add(new SoftReference(this.jdField_a_of_type_Bbjb.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.getBitmap()));
+    if ((this.jdField_a_of_type_Bcly != null) && (bbci.a("android.resource://main_tab_animation_" + (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Bcly.jdField_a_of_type_Int)) == null)) {
+      this.jdField_a_of_type_JavaUtilSet.add(new SoftReference(this.jdField_a_of_type_Bcly.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.getBitmap()));
     }
-    this.jdField_a_of_type_Bbjb = parambbjb;
+    this.jdField_a_of_type_Bcly = parambcly;
     if (!isRunning())
     {
       if (QLog.isColorLevel()) {
@@ -75,10 +75,10 @@ public class GifAnimationDrawable
       return;
     }
     invalidateSelf();
-    b(parambbjb);
+    b(parambcly);
     if ((this.jdField_a_of_type_Int == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) && (this.c))
     {
-      this.jdField_a_of_type_Bbjc.postDelayed(new GifAnimationDrawable.1(this), this.jdField_a_of_type_Long);
+      this.jdField_a_of_type_Bclz.postDelayed(new GifAnimationDrawable.1(this), this.jdField_a_of_type_Long);
       return;
     }
     a();
@@ -92,11 +92,11 @@ public class GifAnimationDrawable
     this.jdField_a_of_type_Boolean = true;
   }
   
-  private void b(bbjb parambbjb)
+  private void b(bcly parambcly)
   {
     Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
-      ((bbja)localIterator.next()).a(parambbjb.jdField_a_of_type_Int);
+      ((bclx)localIterator.next()).a(parambcly.jdField_a_of_type_Int);
     }
   }
   
@@ -105,7 +105,7 @@ public class GifAnimationDrawable
     Log.i(this.jdField_a_of_type_JavaLangString, "dispatchAnimationStart: ");
     Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
-      ((bbja)localIterator.next()).a(this);
+      ((bclx)localIterator.next()).a(this);
     }
   }
   
@@ -114,7 +114,7 @@ public class GifAnimationDrawable
     Log.i(this.jdField_a_of_type_JavaLangString, "dispatchAnimationEnd: ");
     Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
-      ((bbja)localIterator.next()).b(this);
+      ((bclx)localIterator.next()).b(this);
     }
   }
   
@@ -134,7 +134,7 @@ public class GifAnimationDrawable
     if (!this.jdField_b_of_type_Boolean) {
       l1 = l2 + this.jdField_a_of_type_Long;
     }
-    ThreadManagerV2.postImmediately(new GifAnimationDrawable.Decoder(this, new bbjb(this.jdField_a_of_type_Int, l1, null)), null, false);
+    ThreadManagerV2.postImmediately(new GifAnimationDrawable.Decoder(this, new bcly(this.jdField_a_of_type_Int, l1, null)), null, false);
   }
   
   public void a(boolean paramBoolean)
@@ -153,25 +153,25 @@ public class GifAnimationDrawable
       if (QLog.isColorLevel()) {
         QLog.d(this.jdField_a_of_type_JavaLangString, 2, "draw() called diff=[" + l1 + "]");
       }
-      if (this.jdField_a_of_type_Bbjb != null)
+      if (this.jdField_a_of_type_Bcly != null)
       {
         if (this.jdField_b_of_type_Boolean)
         {
           this.jdField_b_of_type_Boolean = false;
           c();
         }
-        this.jdField_a_of_type_Bbjb.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.setBounds(getBounds());
+        this.jdField_a_of_type_Bcly.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.setBounds(getBounds());
         if (QLog.isColorLevel())
         {
-          Bitmap localBitmap = this.jdField_a_of_type_Bbjb.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.getBitmap();
+          Bitmap localBitmap = this.jdField_a_of_type_Bcly.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.getBitmap();
           if (localBitmap != null) {
             QLog.d(this.jdField_a_of_type_JavaLangString, 2, "draw() called with: w=" + localBitmap.getWidth() + ", h=" + localBitmap.getHeight());
           }
         }
         else
         {
-          this.jdField_a_of_type_Bbjb.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.setFilterBitmap(true);
-          this.jdField_a_of_type_Bbjb.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.draw(paramCanvas);
+          this.jdField_a_of_type_Bcly.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.setFilterBitmap(true);
+          this.jdField_a_of_type_Bcly.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.draw(paramCanvas);
           this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16711936);
           this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
           this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);

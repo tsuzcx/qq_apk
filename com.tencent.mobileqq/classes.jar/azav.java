@@ -1,29 +1,55 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class azav
-  extends azaz<ayzz>
+  implements BusinessObserver
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public ImageView c;
+  public azav(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public azav(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297313));
-    this.c = ((ImageView)paramView.findViewById(2131309457));
-    this.b = ((ImageView)paramView.findViewById(2131298717));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297320));
+    localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    String str = "";
+    paramInt = -1;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          continue;
+        }
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        int i = localWebSsoResponseBody.ret.get();
+        paramInt = i;
+        paramBundle = str;
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle = localContext.getString(2131696569, new Object[] { Integer.valueOf(9992) });
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TribeVideoListPlayerFragment", 2, "reportVV: retCode = " + paramInt + ", errMsg = " + paramBundle);
+      }
+      return;
+      paramBundle = localContext.getString(2131696569, new Object[] { Integer.valueOf(9991) });
+      continue;
+      paramBundle = localContext.getString(2131696569, new Object[] { Integer.valueOf(9992) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azav
  * JD-Core Version:    0.7.0.1
  */

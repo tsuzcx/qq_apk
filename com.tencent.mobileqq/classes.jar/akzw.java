@@ -1,42 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.6;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import java.io.File;
+import java.text.SimpleDateFormat;
 
 public class akzw
-  implements DialogInterface.OnClickListener
 {
-  public akzw(ArkAppDownloadModule.6 param6) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a()
   {
-    boolean bool = false;
-    akzp.a(this.a.this$0, true);
-    bgsw.a().b(this.a.jdField_a_of_type_Int, this.a.b);
-    awqx.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "7", "", this.a.b, "");
-    if ((paramDialogInterface instanceof bafb))
-    {
-      if (!((bafb)paramDialogInterface).getCheckBoxState()) {
-        bool = true;
-      }
-      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences == null) {}
+    String str = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath();
+    return str + "/Camera/ARVideoRecord.tmp";
+  }
+  
+  public static boolean a()
+  {
+    return (Build.VERSION.SDK_INT >= 18) && (aldn.a().d) && (!Build.MODEL.equalsIgnoreCase("CAM-TL00"));
+  }
+  
+  public static String b()
+  {
+    String str = ShortVideoUtils.d();
+    str = str + new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(Long.valueOf(System.currentTimeMillis()));
+    str = str + mnf.a;
+    File localFile = new File(str).getParentFile();
+    if (!localFile.exists()) {
+      localFile.mkdirs();
     }
-    try
-    {
-      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.c, bool).apply();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.e("ark.download.module", 1, "continue download sp error : ", paramDialogInterface);
-    }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akzw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,75 +1,116 @@
-import android.content.Context;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.MultiForwardActivity;
-import java.lang.ref.WeakReference;
+import com.qq.jce.wup.UniPacket;
+import com.qq.taf.RequestPacket;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceUtil;
+import java.nio.ByteBuffer;
+import java.util.HashMap;
+import java.util.Set;
 
-class awyq
-  implements View.OnClickListener
+public class awyq
+  extends UniPacket
 {
-  String jdField_a_of_type_JavaLangString = null;
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference = null;
-  String b = null;
+  public static String a;
+  JceOutputStream a;
+  JceOutputStream b;
+  JceOutputStream c;
   
-  public awyq(awyo paramawyo, Context paramContext, String paramString1, String paramString2)
+  static
   {
-    if (paramContext != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    jdField_a_of_type_JavaLangString = awyq.class.getSimpleName();
+  }
+  
+  public awyq(boolean paramBoolean)
+  {
+    super(paramBoolean);
+  }
+  
+  public byte[] encode()
+  {
+    if (this._package.iVersion == 2)
+    {
+      if ((this._package.sServantName == null) || (this._package.sServantName.equals(""))) {
+        throw new IllegalArgumentException("servantName can not is null");
+      }
+      if ((this._package.sFuncName == null) || (this._package.sFuncName.equals(""))) {
+        throw new IllegalArgumentException("funcName can not is null");
+      }
     }
-    if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_a_of_type_JavaLangString = paramString1;
+    else
+    {
+      if (this._package.sServantName == null) {
+        this._package.sServantName = "";
+      }
+      if (this._package.sFuncName == null) {
+        this._package.sFuncName = "";
+      }
     }
-    if (!TextUtils.isEmpty(paramString2)) {
-      this.b = paramString2;
+    if (this.jdField_a_of_type_ComQqTafJceJceOutputStream == null)
+    {
+      this.jdField_a_of_type_ComQqTafJceJceOutputStream = new JceOutputStream(0);
+      this.jdField_a_of_type_ComQqTafJceJceOutputStream.setServerEncoding(this.encodeName);
+      if ((this._package.iVersion != 2) && (this._package.iVersion != 1)) {
+        break label304;
+      }
+      this.jdField_a_of_type_ComQqTafJceJceOutputStream.write(this._data, 0);
+      label184:
+      this._package.sBuffer = JceUtil.getJceBufArray(this.jdField_a_of_type_ComQqTafJceJceOutputStream.getByteBuffer());
+      if (this.b != null) {
+        break label319;
+      }
+      this.b = new JceOutputStream(0);
+    }
+    for (;;)
+    {
+      this.b.setServerEncoding(this.encodeName);
+      writeTo(this.b);
+      int i = this.b.getByteBuffer().position();
+      Object localObject = ByteBuffer.allocate(i + 4);
+      ((ByteBuffer)localObject).putInt(i + 4);
+      localObject = ((ByteBuffer)localObject).array();
+      System.arraycopy(this.b.getByteBuffer().array(), 0, localObject, 4, i);
+      return localObject;
+      this.jdField_a_of_type_ComQqTafJceJceOutputStream.getByteBuffer().clear();
+      break;
+      label304:
+      this.jdField_a_of_type_ComQqTafJceJceOutputStream.write(this._newData, 0);
+      break label184;
+      label319:
+      this.b.getByteBuffer().clear();
     }
   }
   
-  public void onClick(View paramView)
+  public <T> void put(String paramString, T paramT)
   {
-    BaseChatPie localBaseChatPie;
-    Object localObject;
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof FragmentActivity)) && (!MultiForwardActivity.class.isInstance(this.jdField_a_of_type_JavaLangRefWeakReference.get())))
+    if (this._newData != null)
     {
-      paramView = ((FragmentActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getChatFragment();
-      if (paramView != null)
-      {
-        localBaseChatPie = paramView.a();
-        aael.b(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString + " +1");
-        localObject = "";
-        paramView = (View)localObject;
-        if (!TextUtils.isEmpty(this.b)) {
-          paramView = Uri.parse(this.b);
-        }
+      if (paramString == null) {
+        throw new IllegalArgumentException("put key can not is null");
       }
-    }
-    try
-    {
-      paramView = paramView.getQueryParameter("article_id");
-      localObject = paramView;
-    }
-    catch (Exception paramView)
-    {
+      if (paramT == null) {
+        throw new IllegalArgumentException("put value can not is null");
+      }
+      if ((paramT instanceof Set)) {
+        throw new IllegalArgumentException("can not support Set");
+      }
+      if (this.c == null) {
+        this.c = new JceOutputStream();
+      }
       for (;;)
       {
-        paramView.printStackTrace();
+        this.c.setServerEncoding(this.encodeName);
+        this.c.write(paramT, 0);
+        paramT = JceUtil.getJceBufArray(this.c.getByteBuffer());
+        this._newData.put(paramString, paramT);
+        return;
+        this.c.getByteBuffer().clear();
       }
     }
-    paramView = (View)localObject;
-    if (localObject == null) {
-      paramView = "";
-    }
-    ndn.a(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8007239", "0X8007239", 0, 0, paramView, "", "", "");
-    ndn.a("0X8007239", "", paramView, "", "", "");
+    super.put(paramString, paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awyq
  * JD-Core Version:    0.7.0.1
  */

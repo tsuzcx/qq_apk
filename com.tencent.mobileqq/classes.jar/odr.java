@@ -1,46 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 public class odr
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
 {
-  public static String a = "HomePageConfigHandler";
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public static int a()
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = ocx.a(paramString);
-    Object localObject = paramString.keySet();
-    try
-    {
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str1 = (String)((Iterator)localObject).next();
-        String str2 = (String)paramString.get(str1);
-        if (TextUtils.equals(str1, "rij_person_info_page_use_viola")) {
-          bgmq.m(Integer.parseInt(str2));
-        }
-      }
-      return true;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return ((Integer)bhvh.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0))).intValue();
   }
   
-  public void onWipeConfig(int paramInt)
+  public static void a()
   {
-    super.onWipeConfig(paramInt);
-    bgmq.m(0);
+    bhvh.a("sp_key_biu_long_click_tips_count", Integer.valueOf(((Integer)bhvh.a("sp_key_biu_long_click_tips_count", Integer.valueOf(0))).intValue() + 1));
+  }
+  
+  public static int b()
+  {
+    return ((Integer)bhvh.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1))).intValue();
   }
 }
 

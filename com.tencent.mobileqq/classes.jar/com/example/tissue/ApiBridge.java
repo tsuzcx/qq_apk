@@ -21,9 +21,10 @@ import java.util.Map;
 public class ApiBridge
 {
   private static final String JS_CHANNEL = "com.tencent.tissue/basic_channel";
-  private static final String TAG = "ApiBridge";
+  private static final String TAG = "ApiBridge3";
   private static final ApiBridge ourInstance = new ApiBridge();
   private BasicMessageChannel<Object> basicMessageChannel;
+  ApiBridge.BridgeReadyListener bridgeReadyListener;
   private Context context;
   private String currentWxsPath;
   private FlutterView flutterView;
@@ -72,6 +73,11 @@ public class ApiBridge
   
   public void sendMsg(String paramString, Object... paramVarArgs) {}
   
+  public void setBridgeReadyListener(ApiBridge.BridgeReadyListener paramBridgeReadyListener)
+  {
+    this.bridgeReadyListener = paramBridgeReadyListener;
+  }
+  
   public void testJs2Dart()
   {
     this.wxsService.loadScript("js2darttest", "");
@@ -93,13 +99,13 @@ public class ApiBridge
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("testJs2Dart send message ");
       ((StringBuilder)localObject1).append(l);
-      Logger.i("ApiBridge", ((StringBuilder)localObject1).toString());
+      Logger.i("ApiBridge3", ((StringBuilder)localObject1).toString());
       return;
     }
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("testJs2Dart failed ptr is ");
     ((StringBuilder)localObject1).append(l);
-    Logger.e("ApiBridge", ((StringBuilder)localObject1).toString());
+    Logger.e("ApiBridge3", ((StringBuilder)localObject1).toString());
   }
   
   public void testJs2Map()
@@ -133,19 +139,19 @@ public class ApiBridge
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("testJs2Map send message ");
           ((StringBuilder)localObject1).append(l);
-          Logger.i("ApiBridge", ((StringBuilder)localObject1).toString());
+          Logger.i("ApiBridge3", ((StringBuilder)localObject1).toString());
           return;
         }
-        Logger.e("ApiBridge", "testJs2Map failed json is null");
+        Logger.e("ApiBridge3", "testJs2Map failed json is null");
         return;
       }
-      Logger.e("ApiBridge", "testJs2Map failed no jsruntime");
+      Logger.e("ApiBridge3", "testJs2Map failed no jsruntime");
       return;
     }
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("testJs2Map failed ptr is ");
     ((StringBuilder)localObject1).append(l);
-    Logger.e("ApiBridge", ((StringBuilder)localObject1).toString());
+    Logger.e("ApiBridge3", ((StringBuilder)localObject1).toString());
   }
 }
 

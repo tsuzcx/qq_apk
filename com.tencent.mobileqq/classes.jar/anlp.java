@@ -1,19 +1,26 @@
-import android.view.View;
-import java.io.File;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-public class anlp
+class anlp
+  implements Animation.AnimationListener
 {
-  public int a;
-  View jdField_a_of_type_AndroidViewView;
-  public balx a;
-  public File a;
-  boolean jdField_a_of_type_Boolean;
+  anlp(anlo paramanlo) {}
   
-  anlp(anlk paramanlk) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.a.setVisibility(8);
+    this.a.a.d();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anlp
  * JD-Core Version:    0.7.0.1
  */

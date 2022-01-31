@@ -1,35 +1,18 @@
+import java.util.ArrayList;
+
 public class aofh
+  extends aogh
 {
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b = "";
-  public short b;
-  public byte[] b;
-  public int c;
-  public long c;
-  public String c;
-  public byte[] c;
-  public int d;
-  public String d = "";
-  public byte[] d;
-  public String e = "";
+  public ArrayList<aofi> a;
   
-  public aofh(aofe paramaofe)
+  public aofh()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_JavaLangString = "";
+    this.mType = 6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aofh
  * JD-Core Version:    0.7.0.1
  */

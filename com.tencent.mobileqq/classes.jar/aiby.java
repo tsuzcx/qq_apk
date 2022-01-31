@@ -1,76 +1,220 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.List;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewConfiguration;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.lang.ref.WeakReference;
 
-class aiby
-  extends ajjh
+public final class aiby
+  implements adih, aicc
 {
-  aiby(aibw paramaibw) {}
+  private static final int jdField_a_of_type_Int = bbkx.b(50.0F);
+  private static int jdField_b_of_type_Int = -1;
+  private long jdField_a_of_type_Long = -1L;
+  private final WeakReference<Fragment> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
+  private boolean jdField_b_of_type_Boolean;
+  private int c;
+  private int d = -1;
+  private int e = -1;
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  public aiby(Fragment paramFragment)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendAdapter", 2, "onCancelMayKnowRecommend isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFragment);
+    if (jdField_b_of_type_Int == -1)
     {
-      if ((this.a.jdField_a_of_type_Aibk != null) && ((this.a.jdField_a_of_type_Aibk instanceof aibl))) {
-        ((aibl)this.a.jdField_a_of_type_Aibk).a(paramString);
-      }
-      aibw.a(this.a);
+      int i = ViewConfiguration.get(paramFragment.getActivity()).getScaledTouchSlop();
+      jdField_b_of_type_Int = i * i;
     }
   }
   
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    if (paramBoolean) {
-      aibw.a(this.a);
+    Object localObject2 = (Fragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject1 = null;
+    if ((localObject2 instanceof ChatHistoryC2CAllFragment)) {
+      localObject1 = ((ChatHistoryC2CAllFragment)localObject2).jdField_a_of_type_ComTencentMobileqqActivityHistoryWidgetChatHistoryTimeLineContainer;
     }
-  }
-  
-  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
-  {
-    super.onMayKnowListPushAdd(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendAdapter", 2, "onMayKnowListPushAdd isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      aibw.a(this.a);
-    }
-  }
-  
-  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
-  {
-    super.onMayKnowListPushDel(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendAdapter", 2, "onMayKnowListPushDel isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      aibw.a(this.a);
-    }
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendAdapter", 2, "onMayknowStateChanged isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean)
+    switch (paramInt)
     {
-      this.a.notifyDataSetChanged();
-      if (aibw.a(this.a) != null)
+    }
+    do
+    {
+      aibp localaibp;
+      View localView;
+      do
       {
-        aibw.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-        aibw.a(this.a).postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              localObject2 = aibp.a();
+              ((aibp)localObject2).a(this);
+              this.jdField_b_of_type_Boolean = true;
+            } while ((((aibp)localObject2).a() == null) || (!((aibp)localObject2).c()) || (((aibp)localObject2).a()));
+            ((aibp)localObject2).a((View)localObject1);
+            return;
+            aibp.a().b(this);
+            this.jdField_b_of_type_Boolean = false;
+            return;
+            localObject1 = aibp.a();
+          } while (!((aicg)localObject1).c());
+          ((aicg)localObject1).d();
+          return;
+          localaibp = aibp.a();
+        } while ((!localaibp.c()) || (localaibp.a()));
+        localView = localaibp.a();
+      } while (localView == null);
+      localView.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+      if (this.jdField_a_of_type_ArrayOfInt[1] + localView.getMeasuredHeight() - localView.getPaddingBottom() < jdField_a_of_type_Int + ImmersiveUtils.c)
+      {
+        localaibp.d();
+        return;
+      }
+      if (localObject1 != null)
+      {
+        paramInt = this.jdField_a_of_type_ArrayOfInt[1];
+        ((View)localObject1).getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+        if (paramInt > this.jdField_a_of_type_ArrayOfInt[1])
+        {
+          localaibp.d();
+          return;
+        }
+        localaibp.a((View)localObject1);
+        return;
+      }
+      if (Build.VERSION.SDK_INT >= 17)
+      {
+        localObject1 = new DisplayMetrics();
+        ((Fragment)localObject2).getActivity().getWindowManager().getDefaultDisplay().getRealMetrics((DisplayMetrics)localObject1);
+        localaibp.d(((DisplayMetrics)localObject1).heightPixels);
+        return;
+      }
+      localaibp.a();
+      return;
+      localObject1 = aibp.a();
+    } while ((((aibp)localObject1).a() == null) || (!((aibp)localObject1).c()) || (!((aibp)localObject1).a()));
+    ((aibp)localObject1).b();
+  }
+  
+  public void a(@NonNull aicg paramaicg)
+  {
+    boolean bool = paramaicg.c();
+    paramaicg = (Fragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((paramaicg instanceof ChatHistoryC2CAllFragment)) {
+      paramaicg = ((ChatHistoryC2CAllFragment)paramaicg).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+    }
+    for (;;)
+    {
+      if (paramaicg != null) {
+        paramaicg.requestDisallowInterceptTouchEvent(bool);
+      }
+      return;
+      if ((paramaicg instanceof ChatHistoryTroopAllFragment)) {
+        paramaicg = ((ChatHistoryTroopAllFragment)paramaicg).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+      } else if ((paramaicg instanceof ChatHistoryBubbleListForTroopFragment)) {
+        paramaicg = ((ChatHistoryBubbleListForTroopFragment)paramaicg).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+      } else {
+        paramaicg = null;
       }
     }
+  }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    boolean bool = true;
+    aibp localaibp = aibp.a();
+    if ((!localaibp.c()) || (!this.jdField_b_of_type_Boolean)) {}
+    int i;
+    label102:
+    do
+    {
+      do
+      {
+        int j;
+        int k;
+        do
+        {
+          return;
+          i = paramMotionEvent.getAction();
+          j = (int)paramMotionEvent.getRawX();
+          k = (int)paramMotionEvent.getRawY();
+          if (i == 0)
+          {
+            if (!localaibp.a(j, k))
+            {
+              this.jdField_a_of_type_Boolean = bool;
+              this.jdField_a_of_type_Long = localaibp.jdField_a_of_type_Long;
+              if (!this.jdField_a_of_type_Boolean) {
+                break label102;
+              }
+              this.d = j;
+            }
+            for (this.e = k;; this.e = -1)
+            {
+              this.c = 0;
+              return;
+              bool = false;
+              break;
+              this.d = -1;
+            }
+          }
+          if (i != 2) {
+            break;
+          }
+        } while ((!this.jdField_a_of_type_Boolean) || (Math.pow(this.d - j, 2.0D) + Math.pow(this.e - k, 2.0D) <= jdField_b_of_type_Int));
+        this.c = 2;
+      } while (!QLog.isColorLevel());
+      QLog.d("ChatPieSelectableHelper", 0, "detect scrolling.");
+      return;
+    } while (((i != 1) && (i != 3)) || (!this.jdField_a_of_type_Boolean));
+    if (this.c == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatPieSelectableHelper", 0, "detect taping.");
+      }
+      long l = localaibp.jdField_a_of_type_Long;
+      if ((this.jdField_a_of_type_Long == -1L) || (l == -1L)) {
+        break label281;
+      }
+      if (this.jdField_a_of_type_Long == l) {
+        localaibp.d();
+      }
+    }
+    for (;;)
+    {
+      this.c = 1;
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Long = -1L;
+      return;
+      label281:
+      localaibp.d();
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 4, 8, 10, 14, 12, 13 };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aiby
  * JD-Core Version:    0.7.0.1
  */

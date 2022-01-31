@@ -1,23 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiBottomButton;
+import android.database.DataSetObservable;
+import android.database.DataSetObserver;
+import java.util.ArrayList;
 
-public final class bfwp
-  implements Parcelable.Creator<WeishiBottomButton>
+class bfwp
+  extends DataSetObservable
 {
-  public WeishiBottomButton a(Parcel paramParcel)
-  {
-    return new WeishiBottomButton(paramParcel);
-  }
+  bfwp(bfwn parambfwn) {}
   
-  public WeishiBottomButton[] a(int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    return new WeishiBottomButton[paramInt];
+    for (;;)
+    {
+      int i;
+      synchronized (this.mObservers)
+      {
+        i = this.mObservers.size() - 1;
+        if (i >= 0)
+        {
+          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
+          if ((localDataSetObserver instanceof bfwo)) {
+            ((bfwo)localDataSetObserver).a(paramInt1, paramInt2);
+          } else {
+            localDataSetObserver.onChanged();
+          }
+        }
+      }
+      return;
+      i -= 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfwp
  * JD-Core Version:    0.7.0.1
  */

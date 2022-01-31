@@ -1,104 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.richstatus.HistorySignItem;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
+import java.util.List;
 
-public class awec
-  extends alzl<aweb>
+class awec
+  implements awfe
 {
-  private String a()
-  {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).c();
-  }
+  awec(awdz paramawdz, HistorySignItem paramHistorySignItem) {}
   
-  public int a()
+  public void a(int paramInt, View paramView)
   {
-    return 325;
-  }
-  
-  @NonNull
-  public aweb a(int paramInt)
-  {
-    return new aweb();
-  }
-  
-  @Nullable
-  public aweb a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    if (SignatureHistoryFragment.b(this.jdField_a_of_type_Awdz.a)) {}
+    Object localObject;
+    awew localawew;
+    do
     {
-      aweb localaweb = aweb.a(paramArrayOfalzs[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoAndHotPicRedDotConfProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
-      }
-      return localaweb;
-    }
-    return null;
-  }
-  
-  public Class<aweb> a()
-  {
-    return aweb.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoAndHotPicRedDotConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(aweb paramaweb)
-  {
-    boolean bool2 = true;
-    int i = paramaweb.a;
-    int j = paramaweb.b;
-    int k = paramaweb.c;
-    int m = paramaweb.d;
-    paramaweb = a();
-    if (ShortVideoUtils.c(paramaweb) != j)
-    {
-      ShortVideoUtils.b(paramaweb, j);
-      if (i == 1)
+      do
       {
-        bool1 = true;
-        ShortVideoUtils.c(paramaweb, bool1);
-        ShortVideoUtils.f = false;
-      }
+        return;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusHistorySignItem.commentItemList;
+      } while ((localObject == null) || (((List)localObject).size() <= paramInt));
+      localObject = (CommentItem)((List)localObject).get(paramInt);
+      localawew = ((CommentItem)localObject).user;
+    } while ((localawew == null) || (TextUtils.isEmpty(localawew.a)));
+    paramView.setSelected(true);
+    bblr localbblr = new bblr();
+    SignatureHistoryFragment.a(this.jdField_a_of_type_Awdz.a, (CommentItem)localObject);
+    localbblr.a(2131364825, this.jdField_a_of_type_Awdz.a.getString(2131691307), 0);
+    if ((localawew.a.equals(SignatureHistoryFragment.b(this.jdField_a_of_type_Awdz.a))) || (bbbd.a(SignatureHistoryFragment.b(this.jdField_a_of_type_Awdz.a), SignatureHistoryFragment.a(this.jdField_a_of_type_Awdz.a)))) {
+      localbblr.a(2131364985, this.jdField_a_of_type_Awdz.a.getString(2131692737), 0);
     }
-    else if (ShortVideoUtils.b(paramaweb) != m)
-    {
-      ShortVideoUtils.a(paramaweb, m);
-      if (k != 1) {
-        break label103;
-      }
-    }
-    label103:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      ShortVideoUtils.b(paramaweb, bool1);
-      ShortVideoUtils.e = false;
-      return;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  public int b()
-  {
-    return ShortVideoUtils.a(a());
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    bbcc.a(paramView, localbblr, this.jdField_a_of_type_Awdz.a, new awed(this, paramView));
   }
 }
 

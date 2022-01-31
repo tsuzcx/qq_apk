@@ -2,7 +2,7 @@ package com.tencent.mobileqq.model;
 
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
-import arnw;
+import aska;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Vector;
@@ -11,16 +11,16 @@ class ChatBackgroundManager$BgColorExtractJob
   implements Runnable
 {
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private arnw jdField_a_of_type_Arnw;
+  private aska jdField_a_of_type_Aska;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   
-  public ChatBackgroundManager$BgColorExtractJob(ChatBackgroundManager paramChatBackgroundManager, String paramString, Bitmap paramBitmap, boolean paramBoolean, arnw paramarnw)
+  public ChatBackgroundManager$BgColorExtractJob(ChatBackgroundManager paramChatBackgroundManager, String paramString, Bitmap paramBitmap, boolean paramBoolean, aska paramaska)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
     this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Arnw = paramarnw;
+    this.jdField_a_of_type_Aska = paramaska;
   }
   
   public void run()
@@ -40,7 +40,7 @@ class ChatBackgroundManager$BgColorExtractJob
             QLog.d("ChatBackgroundManager", 4, "get Bitmap from Drawable success.");
           }
           label97:
-          if (this.jdField_a_of_type_Arnw != null)
+          if (this.jdField_a_of_type_Aska != null)
           {
             localVector = (Vector)this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString);
             if ((localVector == null) || (localVector.isEmpty())) {

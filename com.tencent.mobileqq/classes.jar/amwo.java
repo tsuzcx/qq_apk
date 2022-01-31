@@ -1,287 +1,94 @@
-import android.content.SharedPreferences;
 import android.text.TextUtils;
-import appoint.define.appoint_define.RichText;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class amwo
 {
-  public static final Pattern a = Pattern.compile("\\{\\{(.\\d+):(.\\d?)\\}\\}", 2);
+  public String a;
+  public boolean a;
+  public String b = "https://qun.qq.com/qqweb/m/qun/qun_robot/auto-approval.html?_wv=1027&gc=$GCODE$&page=groupSetting";
   
-  public static axkd a(appoint_define.RichText paramRichText)
+  public amwo()
   {
-    return a(paramRichText, 16);
+    this.jdField_a_of_type_JavaLangString = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public static axkd a(appoint_define.RichText paramRichText, int paramInt)
+  public static amwo a(ampi[] paramArrayOfampi)
   {
-    return a(apqk.a(paramRichText), paramInt);
-  }
-  
-  public static axkd a(String paramString, int paramInt)
-  {
-    return new axkd(paramString, 5, paramInt);
-  }
-  
-  public static String a(String paramString)
-  {
-    if (paramString == null)
+    amwo localamwo = new amwo();
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
     {
-      paramString = "";
-      return paramString;
-    }
-    for (;;)
-    {
-      for (;;)
+      int j = paramArrayOfampi.length;
+      int i = 0;
+      while (i < j)
       {
-        Object localObject3;
-        Object localObject4;
-        int i;
-        try
+        Object localObject = paramArrayOfampi[i];
+        if (localObject == null)
         {
-          localObject5 = new JSONObject(paramString);
-          localObject3 = ((JSONObject)localObject5).optString("content");
-          localObject4 = localObject3;
+          i += 1;
         }
-        catch (JSONException localJSONException1)
+        else
         {
-          Object localObject5;
-          Object localObject1;
-          String str;
-          localObject4 = paramString;
-        }
-        try
-        {
-          if (((JSONObject)localObject5).has("audio_list"))
+          localObject = ((ampi)localObject).jdField_a_of_type_JavaLangString;
+          for (;;)
           {
-            localObject1 = localObject3;
-            localObject4 = localObject3;
-            if (((JSONObject)localObject5).optJSONArray("audio_list").length() > 0)
+            try
             {
-              localObject4 = localObject3;
-              localObject1 = (String)localObject3 + ajjy.a(2131641153);
+              JSONObject localJSONObject = new JSONObject((String)localObject);
+              if (localJSONObject.has("announcementUrl")) {
+                localamwo.jdField_a_of_type_JavaLangString = localJSONObject.optString("announcementUrl");
+              }
+              if (localJSONObject.has("autoApprovalUrl")) {
+                localamwo.b = localJSONObject.optString("autoApprovalUrl");
+              }
+              if (!localJSONObject.has("frequencyLimitVisible")) {
+                continue;
+              }
+              if (localJSONObject.getInt("frequencyLimitVisible") != 1) {
+                continue;
+              }
+              bool = true;
+              localamwo.jdField_a_of_type_Boolean = bool;
             }
-            localObject3 = a.matcher((CharSequence)localObject1);
-            paramString = (String)localObject1;
-            if (!((Matcher)localObject3).find()) {
+            catch (JSONException localJSONException)
+            {
+              boolean bool;
+              localJSONException.printStackTrace();
+              continue;
+            }
+            if (!QLog.isColorLevel()) {
               break;
             }
-            paramString = ((Matcher)localObject3).group(1);
-            localObject1 = ((String)localObject1).replace(((Matcher)localObject3).group(0), paramString);
+            QLog.i("TroopUrlConfBean", 2, "parse: " + (String)localObject);
+            break;
+            bool = false;
             continue;
-          }
-          localObject4 = localObject3;
-          if (((JSONObject)localObject5).has("video_list"))
-          {
-            localObject1 = localObject3;
-            localObject4 = localObject3;
-            if (((JSONObject)localObject5).optJSONArray("video_list").length() > 0)
-            {
-              localObject4 = localObject3;
-              localObject1 = (String)localObject3 + ajjy.a(2131641154);
-            }
-          }
-          else
-          {
-            localObject4 = localObject3;
-            if (((JSONObject)localObject5).has("pic_list"))
-            {
-              localObject1 = localObject3;
-              localObject4 = localObject3;
-              if (((JSONObject)localObject5).optJSONArray("pic_list").length() > 0)
-              {
-                localObject4 = localObject3;
-                localObject1 = (String)localObject3 + ajjy.a(2131641152);
-              }
-            }
-            else
-            {
-              localObject1 = localObject3;
-              localObject4 = localObject3;
-              if (((JSONObject)localObject5).has("post_array"))
-              {
-                localObject4 = localObject3;
-                localObject5 = ((JSONObject)localObject5).optJSONArray("post_array");
-                i = 0;
-              }
-            }
+            localamwo.jdField_a_of_type_Boolean = false;
           }
         }
-        catch (JSONException localJSONException2)
-        {
-          label406:
-          Object localObject2;
-          break label406;
-          i += 1;
-          localObject3 = localJSONException2;
-        }
-      }
-      localObject1 = localObject3;
-      localObject4 = localObject3;
-      if (i < ((JSONArray)localObject5).length())
-      {
-        localObject4 = localObject3;
-        str = ((JSONArray)localObject5).optJSONObject(i).optString("type");
-        localObject4 = localObject3;
-        if (TextUtils.isEmpty(str))
-        {
-          localObject1 = localObject3;
-          break label450;
-        }
-        localObject4 = localObject3;
-        if (str.equals("qqmusic"))
-        {
-          localObject4 = localObject3;
-          localObject1 = (String)localObject3 + ajjy.a(2131641150);
-          break label450;
-        }
-        localObject4 = localObject3;
-        localObject1 = localObject3;
-        if (!str.equals("audio")) {
-          break label450;
-        }
-        localObject4 = localObject3;
-        localObject1 = (String)localObject3 + ajjy.a(2131641151);
-        break label450;
-        localObject2 = localObject4;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("Q..msgbox.util", 2, "getTribeJsonContent content:" + paramString);
-          localObject2 = localObject4;
-        }
       }
     }
-  }
-  
-  public static boolean a()
-  {
-    return "0".equals(BaseApplicationImpl.getContext().getSharedPreferences("nearby_callback", 4).getString("nearby_settings_greetings_receive", "0"));
-  }
-  
-  public static boolean a(int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
-  {
-    return ((!a()) || (paramInt1 != 1001) || (a(paramInt2, paramString))) && (!paramBoolean);
-  }
-  
-  public static boolean a(int paramInt, String paramString)
-  {
-    return (paramInt == -2053) && (!paramString.equals(String.valueOf(1822701914L + ajed.l))) && (!paramString.equals("1822701914"));
-  }
-  
-  public static boolean a(QQMessageFacade.Message paramMessage, QQAppInterface paramQQAppInterface)
-  {
-    MessageRecord localMessageRecord = null;
-    if (paramMessage.msgtype == -2011) {
-      localMessageRecord = paramQQAppInterface.a(1001).a(ajed.I, 1001, paramMessage.uniseq);
+    if (TextUtils.isEmpty(localamwo.jdField_a_of_type_JavaLangString)) {
+      localamwo.jdField_a_of_type_JavaLangString = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
     }
-    return a(paramMessage.istroop, paramMessage.msgtype, a(localMessageRecord), paramMessage.senderuin);
+    if (TextUtils.isEmpty(localamwo.b)) {
+      localamwo.b = "https://qun.qq.com/qqweb/m/qun/qun_robot/auto-approval.html?_wv=1027&gc=$GCODE$&page=groupSetting";
+    }
+    return localamwo;
   }
   
-  public static boolean a(MessageRecord paramMessageRecord)
+  public String toString()
   {
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    if ((paramMessageRecord instanceof MessageForStructing))
-    {
-      MessageForStructing localMessageForStructing = (MessageForStructing)paramMessageRecord;
-      if ((localMessageForStructing.structingMsg == null) || (localMessageForStructing.structingMsg.mMsgServiceID != 98)) {}
-    }
-    for (int i = 1;; i = 0) {
-      return (i != 0) || (paramMessageRecord.msgtype == -2070);
-    }
-  }
-  
-  public static String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      str1 = "";
-    }
-    do
-    {
-      return str1;
-      str1 = paramString;
-    } while (paramString.indexOf("/") == -1);
-    int i = 0;
-    String str1 = paramString;
-    for (;;)
-    {
-      try
-      {
-        if (i >= axjs.a.length) {
-          break label277;
-        }
-        str1 = paramString;
-        str2 = paramString;
-        if (paramString.indexOf('\024' + axjs.a[i]) == -1) {
-          break label268;
-        }
-        str1 = paramString;
-        str2 = paramString.replace('\024' + axjs.a[i], "\024" + (char)i);
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        paramString = new StringBuilder().append("TextUtils:");
-        if (str1.length() <= 200) {
-          break label258;
-        }
-        i = 200;
-        QLog.e("Q..msgbox.util", 2, str1.substring(0, i));
-        str2 = str1;
-      }
-      str1 = paramString;
-      String str2 = paramString;
-      if (i < axjs.a.length)
-      {
-        str2 = paramString;
-        str1 = paramString;
-        if (paramString.indexOf(axjs.a[i]) != -1)
-        {
-          str1 = paramString;
-          str2 = paramString.replace(axjs.a[i], "\024" + (char)i);
-        }
-        i += 1;
-        paramString = str2;
-      }
-      else
-      {
-        return str2;
-        label258:
-        i = str1.length() - 1;
-        continue;
-        label268:
-        i += 1;
-        paramString = str2;
-        break;
-        label277:
-        i = 0;
-      }
-    }
-  }
-  
-  public static boolean b(MessageRecord paramMessageRecord)
-  {
-    return a(paramMessageRecord.istroop, paramMessageRecord.msgtype, a(paramMessageRecord), paramMessageRecord.senderuin);
+    StringBuilder localStringBuilder = new StringBuilder(200);
+    localStringBuilder.append("TroopUrlConfBean [announcement: ").append(this.jdField_a_of_type_JavaLangString).append(", autoApproval: ").append(this.b).append(", freqLimitVisible: ").append(this.jdField_a_of_type_Boolean).append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amwo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,41 @@
-import android.util.SparseArray;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ampg
+  implements amot
 {
-  private ampx jdField_a_of_type_Ampx;
-  private final SparseArray<BlockingQueue<ampo>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private final BlockingQueue<ampo> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
-  
-  public ampg(ampx paramampx)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, amos paramamos)
   {
-    this.jdField_a_of_type_Ampx = paramampx;
-  }
-  
-  protected int a()
-  {
-    return 300;
-  }
-  
-  public ampo a(int paramInt, Object paramObject)
-  {
-    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    Object localObject = localBlockingQueue;
-    if (localBlockingQueue == null) {
-      localObject = new LinkedBlockingQueue();
+    if ((paramamos != null) && ("smart_devices_discovery_config".equals(paramString))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("OnSmartDeviceDiscoveryCfgListener", 2, "handleConfigForTag smartDeviceDiscoverCfg content = " + paramamos.a);
+      }
     }
-    localObject = (ampo)((BlockingQueue)localObject).poll();
-    if (localObject == null)
+    try
     {
-      localObject = this.jdField_a_of_type_Ampx.a(paramInt);
-      amrq.a("DanmakuFactory", new Object[] { localObject, " is created " });
+      paramInt = new JSONObject(paramamos.a).optInt("smart_device_discovery_config_switch");
+      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", paramInt).apply();
+      return;
     }
-    for (;;)
+    catch (JSONException paramString)
     {
-      ((ampo)localObject).e();
-      ((ampo)localObject).a(paramObject);
-      return localObject;
-      amrq.a("DanmakuFactory", new Object[] { localObject, " is reused " });
+      paramString.printStackTrace();
+      return;
     }
-  }
-  
-  public void a(ampo paramampo)
-  {
-    int i = paramampo.a();
-    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    Object localObject = localBlockingQueue;
-    if (localBlockingQueue == null)
+    catch (Exception paramString) {}finally
     {
-      localObject = new LinkedBlockingQueue();
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localObject);
-    }
-    if (a() > ((BlockingQueue)localObject).size()) {
-      ((BlockingQueue)localObject).add(paramampo);
+      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", 1).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampg
  * JD-Core Version:    0.7.0.1
  */

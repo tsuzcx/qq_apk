@@ -1,37 +1,44 @@
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
 
-class pwt
-  extends axvs
+public class pwt
+  implements View.OnClickListener
 {
-  pwt(pws parampws) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RecommendFollowInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
   
-  public void handleMessage(Message paramMessage)
+  private pwt(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
+  
+  public void onClick(View paramView)
   {
-    axqf localaxqf = (axqf)paramMessage.obj;
-    if ((localaxqf == null) || (localaxqf.jdField_b_of_type_Int != 24) || (localaxqf.c != 10)) {}
-    while ((localaxqf.jdField_b_of_type_Long != this.a.a.a) || (localaxqf.f.equals(pws.a(this.a)))) {
-      return;
-    }
-    switch (paramMessage.what)
+    switch (paramView.getId())
     {
-    case 1004: 
     default: 
       return;
-    case 1002: 
-      QLog.d("KingsMomentVideoDeliveControllerr", 1, "mVideoTransProcessorHandler transfer=" + localaxqf.e + ", total=" + localaxqf.a);
-      pws.a(this.a, (float)localaxqf.e * 100.0F / (float)localaxqf.a);
-      return;
-    case 1003: 
-      QLog.d("KingsMomentVideoDeliveControllerr", 1, "mPicTransProcessorHandler send finished!");
-      pws.a(this.a, localaxqf.f);
-      pws.b(this.a, localaxqf.i);
-      QLog.d("KingsMomentVideoDeliveControllerr", 1, "mPicTransProcessorHandler mImageMd5=" + pws.a(this.a) + ", mImageUrl=" + pws.b(this.a));
-      pws.a(this.a, 0, pws.b(this.a), pws.a(this.a), null, null, null);
-      return;
+    case 2131366528: 
+      paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList;
+      RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramView.a(localRecommendFollowInfo, bool);
+        return;
+      }
     }
-    QLog.d("KingsMomentVideoDeliveControllerr", 1, "upload king moment cover failed");
-    pws.a(this.a, 13);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
   }
 }
 

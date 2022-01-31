@@ -1,19 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
 
-public final class pph
-  implements Parcelable.Creator<FusionBiuInfo>
+public class pph
+  implements nua
 {
-  public FusionBiuInfo a(Parcel paramParcel)
-  {
-    return new FusionBiuInfo(paramParcel);
-  }
+  public pph(PTSFragment paramPTSFragment) {}
   
-  public FusionBiuInfo[] a(int paramInt)
-  {
-    return new FusionBiuInfo[paramInt];
-  }
+  public void a(String paramString) {}
 }
 
 

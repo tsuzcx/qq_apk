@@ -1,34 +1,15 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
 
-final class aori
+public class aori
   implements View.OnClickListener
 {
-  aori(FileManagerEntity paramFileManagerEntity, Activity paramActivity, aotc paramaotc) {}
+  public aori(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
   public void onClick(View paramView)
   {
-    try
-    {
-      paramView = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      apcj localapcj = new apcj();
-      localapcj.b = "file_forward";
-      localapcj.jdField_a_of_type_Int = 71;
-      localapcj.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-      localapcj.c = apdh.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
-      localapcj.d = apck.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType);
-      apci.a(paramView.getCurrentAccountUin(), localapcj);
-      apdq.a(paramView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      if (this.jdField_a_of_type_Aotc != null) {
-        this.jdField_a_of_type_Aotc.a(2);
-      }
-      return;
-    }
-    catch (Exception paramView) {}
+    QfileCloudFileTabView.a(this.a, paramView, false);
   }
 }
 

@@ -1,17 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQSettingMe.WebPreloadTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class abxg
-  implements View.OnClickListener
+  implements bcak
 {
-  public abxg(TroopInfoActivity paramTroopInfoActivity, XListView paramXListView) {}
+  public abxg(QQSettingMe.WebPreloadTask paramWebPreloadTask, QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView.removeHeaderView(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b = null;
+    if ((paramBoolean) && (QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe) != null)) {
+      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).a();
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("WebPreloadTask preloadWebProcess isProcessExist: ");
+      if (paramBoolean) {
+        break label64;
+      }
+    }
+    label64:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.d("QQSettingRedesign", 2, paramBoolean);
+      return;
+    }
   }
 }
 

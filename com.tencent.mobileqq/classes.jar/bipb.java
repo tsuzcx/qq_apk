@@ -1,69 +1,107 @@
-import android.content.Context;
-import android.widget.BaseAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.videostory.network.request.GetWatermarkDictRequest;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager;
+import java.util.Map;
 
-public abstract class bipb<PACKAGE extends bion>
-  extends BaseAdapter
+public class bipb
 {
-  public int a;
-  protected Context a;
-  protected bhhl a;
-  protected PACKAGE a;
-  protected FaceListPage a;
+  private static volatile bipb jdField_a_of_type_Bipb;
+  private static final String jdField_a_of_type_JavaLangString = bipb.class.getSimpleName();
+  private int jdField_a_of_type_Int;
+  private biqn jdField_a_of_type_Biqn;
+  private SosoInterface.SosoLocation jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation;
   
-  public bipb(Context paramContext, FaceListPage paramFaceListPage)
+  public static bipb a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage = paramFaceListPage;
-  }
-  
-  public void a(bhhl parambhhl)
-  {
-    this.jdField_a_of_type_Bhhl = parambhhl;
-  }
-  
-  public void a(PACKAGE paramPACKAGE)
-  {
-    this.jdField_a_of_type_Bion = paramPACKAGE;
-  }
-  
-  protected boolean a()
-  {
-    return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage.a;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_Bion == null)
+    if (jdField_a_of_type_Bipb == null) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceList", 2, "facePkg is null");
+      if (jdField_a_of_type_Bipb == null) {
+        jdField_a_of_type_Bipb = new bipb();
       }
-      return 0;
+      return jdField_a_of_type_Bipb;
     }
-    int i = this.jdField_a_of_type_Bion.b();
-    int j = this.jdField_a_of_type_Bion.a();
-    if (j < 1) {
-      throw new IllegalArgumentException("per item count < 1 :" + j);
-    }
-    if ((QLog.isColorLevel()) && (i == 0)) {
-      QLog.d("FaceList", 2, "totalFaceCount = 0");
-    }
-    if (i % j == 0) {
-      return i / j;
-    }
-    return i / j + 1;
+    finally {}
   }
   
-  public Object getItem(int paramInt)
+  private void a(double paramDouble1, double paramDouble2)
   {
-    return Integer.valueOf(paramInt);
+    long l = fi.a();
+    GetWatermarkDictRequest localGetWatermarkDictRequest = new GetWatermarkDictRequest(new COMM.StCommonExt(), paramDouble1, paramDouble2, String.valueOf(l));
+    VSNetworkHelper.a().a(localGetWatermarkDictRequest, new bipd(this));
   }
   
-  public long getItemId(int paramInt)
+  private void a(Map<String, String> paramMap)
   {
-    return paramInt;
+    LogicDataManager.getInstance().addWatermarkDict(paramMap);
+    String str = (String)paramMap.get("City");
+    if (str != null) {
+      LogicDataManager.getInstance().setLocation(str);
+    }
+    str = (String)paramMap.get("Weather");
+    if (str != null) {}
+    try
+    {
+      i = Integer.parseInt(str);
+      LogicDataManager.getInstance().setWeather(i);
+      LogicDataManager.getInstance().setWeatherType(i);
+      paramMap = (String)paramMap.get("TempCurr");
+      if (paramMap != null) {
+        LogicDataManager.getInstance().setTemperature(paramMap.replace(ajyc.a(2131716879), ""));
+      }
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        LogUtils.e(localNumberFormatException);
+        int i = 0;
+      }
+    }
+  }
+  
+  public biqn a()
+  {
+    return this.jdField_a_of_type_Biqn;
+  }
+  
+  public SosoInterface.SosoLocation a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = ((this.jdField_a_of_type_Int + 1) % 50);
+    if (this.jdField_a_of_type_Int != 1) {
+      return;
+    }
+    akug.a(new bipc(this, "qq_story_water_mark", false));
+  }
+  
+  public void a(biqn parambiqn)
+  {
+    this.jdField_a_of_type_Biqn = parambiqn;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    xfr.a().a("WM_LIST_CONFIG_CHANGED", Boolean.valueOf(paramBoolean));
+  }
+  
+  public void b()
+  {
+    try
+    {
+      jdField_a_of_type_Bipb = null;
+      this.jdField_a_of_type_Biqn = null;
+      return;
+    }
+    finally {}
   }
 }
 

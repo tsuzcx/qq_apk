@@ -1,33 +1,95 @@
-import com.tencent.qphone.base.util.QLog;
-
-class bawp
-  implements moc
+public class bawp
 {
-  bawp(bawm parambawm, long paramLong1, String paramString1, long paramLong2, String paramString2) {}
+  public static bawp a;
+  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[256];
+  private static char[] jdField_a_of_type_ArrayOfChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
   
-  public void loaded(String paramString, int paramInt)
+  protected bawp()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid loaded,code:" + paramInt + ",cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("280")) {
-      this.jdField_a_of_type_Bawm.a("http://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
-    }
-    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {
-      if (this.jdField_a_of_type_Bawm.a(2L, this.jdField_b_of_type_Long)) {
-        this.jdField_a_of_type_Bawm.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long);
-      }
-    }
-    while ((!this.jdField_a_of_type_Bawm.a(5L, this.jdField_b_of_type_Long)) || (this.jdField_b_of_type_JavaLangString == null)) {
-      return;
-    }
-    this.jdField_a_of_type_Bawm.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Long);
+    a();
   }
   
-  public void progress(int paramInt)
+  public static bawp a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid progress:" + paramInt);
+    if (jdField_a_of_type_Bawp == null) {}
+    try
+    {
+      jdField_a_of_type_Bawp = new bawp();
+      return jdField_a_of_type_Bawp;
+    }
+    finally {}
+  }
+  
+  public String a(String paramString)
+  {
+    return a(paramString.getBytes()).toString();
+  }
+  
+  public StringBuffer a(byte[] paramArrayOfByte)
+  {
+    int k = 0;
+    StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length * 2);
+    int i = 0;
+    int j = 0;
+    char c;
+    while (k < paramArrayOfByte.length)
+    {
+      i = i << 8 | paramArrayOfByte[k] & 0xFF;
+      j += 8;
+      if (j > 5)
+      {
+        Object localObject = jdField_a_of_type_ArrayOfChar;
+        j -= 6;
+        c = localObject[(i >> j)];
+        if (c == 'i') {
+          localObject = "ia";
+        }
+        for (;;)
+        {
+          localStringBuffer.append(localObject);
+          i &= (1 << j) - 1;
+          break;
+          if (c == '+') {
+            localObject = "ib";
+          } else if (c == '/') {
+            localObject = "ic";
+          } else {
+            localObject = Character.valueOf(c);
+          }
+        }
+      }
+      k += 1;
+    }
+    if (j > 0)
+    {
+      c = jdField_a_of_type_ArrayOfChar[(i << 6 - j)];
+      if (c != 'i') {
+        break label185;
+      }
+      paramArrayOfByte = "ia";
+    }
+    for (;;)
+    {
+      localStringBuffer.append(paramArrayOfByte);
+      return localStringBuffer;
+      label185:
+      if (c == '+') {
+        paramArrayOfByte = "ib";
+      } else if (c == '/') {
+        paramArrayOfByte = "ic";
+      } else {
+        paramArrayOfByte = Character.valueOf(c);
+      }
+    }
+  }
+  
+  protected void a()
+  {
+    int i = 0;
+    while (i < jdField_a_of_type_ArrayOfChar.length)
+    {
+      jdField_a_of_type_ArrayOfByte[jdField_a_of_type_ArrayOfChar[i]] = ((byte)i);
+      i += 1;
     }
   }
 }

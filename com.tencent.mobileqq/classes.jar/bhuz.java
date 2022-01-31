@@ -1,44 +1,20 @@
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+
 class bhuz
-  implements bhvb
+  implements QzoneZipCacheHelperCallBack
 {
-  private final bhuy a;
+  bhuz(bhuy parambhuy) {}
   
-  bhuz(bhuy parambhuy)
+  public void onResult(boolean paramBoolean)
   {
-    this.a = parambhuy;
+    bhuy.a(this.a, paramBoolean);
   }
   
-  public void a(bhvg parambhvg, bhvd parambhvd)
-  {
-    switch (parambhvd.a)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.a(parambhvg);
-      return;
-    case 1: 
-      this.a.b(parambhvg);
-      return;
-    case 2: 
-      this.a.c(parambhvg);
-      return;
-    case 3: 
-      this.a.d(parambhvg);
-      return;
-    case 4: 
-      this.a.e(parambhvg);
-      return;
-    case 5: 
-      this.a.f(parambhvg);
-      return;
-    }
-    throw new IllegalArgumentException("ON_ANY must not been send by anybody");
-  }
+  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhuz
  * JD-Core Version:    0.7.0.1
  */

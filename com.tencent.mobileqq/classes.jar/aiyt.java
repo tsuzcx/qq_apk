@@ -1,32 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.reflect.Method;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aiyt
+class aiyt
+  extends aizl
 {
-  public static void a(boolean paramBoolean, String paramString1, String paramString2)
+  public QQAppInterface a;
+  
+  aiyt(QQAppInterface paramQQAppInterface)
   {
-    try
-    {
-      if (1 != BaseApplicationImpl.sProcessId) {
-        return;
-      }
-      ClassLoader localClassLoader = BaseApplicationImpl.sApplication.getClassLoader();
-      if ((localClassLoader != null) && (!TextUtils.isEmpty(paramString2)) && (paramString2.contains("Apollo")))
-      {
-        localClassLoader.loadClass("com.tencent.mobileqq.apollo.utils.ApolloUtil").getMethod("handleApolloNoCatchCrash", new Class[] { Boolean.TYPE, String.class, String.class }).invoke(null, new Object[] { Boolean.valueOf(paramBoolean), paramString1, paramString2 });
-        return;
-      }
-    }
-    catch (Throwable paramString1)
-    {
-      paramString1.printStackTrace();
-    }
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    aiyr.a(((airz)this.a.getManager(153)).a(), paramInt);
+  }
+  
+  public void b(String paramString, int paramInt1, int paramInt2)
+  {
+    QLog.i("CmGameTemp_CmGameAudioManager", 0, "[onQueryAudioRoomId] friUin:" + paramString + ",roomID:" + paramInt1);
+    super.b(paramString, paramInt1, paramInt2);
+    ((airz)this.a.getManager(153)).a().a(paramString, String.valueOf(paramInt1), paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiyt
  * JD-Core Version:    0.7.0.1
  */

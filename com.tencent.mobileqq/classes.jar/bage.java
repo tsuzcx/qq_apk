@@ -1,28 +1,28 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class bage
-  implements TextWatcher
+  implements baxl
 {
-  bage(bafw parambafw, int paramInt) {}
+  bage(bagc parambagc) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if ((this.jdField_a_of_type_Bafw.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
+    if ((paramBitmap != null) && (bagc.a(this.a) != null))
     {
-      this.jdField_a_of_type_Bafw.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
-      this.jdField_a_of_type_Bafw.a.setSelection(this.jdField_a_of_type_Int - 1);
+      if (QLog.isColorLevel()) {
+        QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, String.format("onDecodeTaskCompleted uin=%s", new Object[] { paramString }));
+      }
+      if (!TextUtils.isEmpty(paramString)) {
+        bagc.a(this.a).b(paramString);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bage
  * JD-Core Version:    0.7.0.1
  */

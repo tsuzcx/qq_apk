@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import ajgm;
+import ajuo;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class DataLineHandler$5
   implements Runnable
 {
-  public DataLineHandler$5(ajgm paramajgm, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public DataLineHandler$5(ajuo paramajuo, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
   public void run()
   {

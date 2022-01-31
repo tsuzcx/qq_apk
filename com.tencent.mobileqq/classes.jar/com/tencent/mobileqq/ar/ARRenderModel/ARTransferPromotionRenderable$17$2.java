@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akma;
+import alam;
 
 class ARTransferPromotionRenderable$17$2
   implements Runnable

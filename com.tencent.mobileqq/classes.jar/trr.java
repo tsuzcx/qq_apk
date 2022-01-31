@@ -1,15 +1,10 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoOutputFrameListener;
-
-class trr
-  implements TVK_IMediaPlayer.OnVideoOutputFrameListener
+public class trr
+  extends trp
 {
-  trr(trk paramtrk) {}
-  
-  public void OnVideoOutputFrame(TVK_IMediaPlayer paramTVK_IMediaPlayer, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    urk.a(this.a.a, "OnVideoOutputFrame width=%d height=%d rotation=%d %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
-  }
+  public String a;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

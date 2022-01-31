@@ -1,33 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.Switch;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class nlo
-  implements DialogInterface.OnKeyListener
+class nlo
+  implements View.OnClickListener
 {
-  public nlo(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  nlo(nll paramnll) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    if (paramInt == 4)
-    {
-      ReadInJoySettingActivity.a(this.a, true);
-      paramDialogInterface = ReadInJoySettingActivity.a(this.a);
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label53;
-      }
-    }
-    for (;;)
-    {
-      paramDialogInterface.setChecked(bool);
-      ReadInJoySettingActivity.a(this.a).cancel();
-      return false;
-      label53:
-      bool = false;
-    }
+    this.a.a.dismiss();
   }
 }
 

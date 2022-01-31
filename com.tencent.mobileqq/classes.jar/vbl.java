@@ -1,8 +1,9 @@
-import android.view.MotionEvent;
-
-public abstract class vbl
+class vbl
+  implements bfos
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  vbl(vbd paramvbd) {}
+  
+  public void onDismiss() {}
 }
 
 

@@ -1,35 +1,17 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.forward.ForwardShortVideoOption.PressDarkImageView;
-import com.tencent.qphone.base.util.QLog;
-
-public class apms
+class apms
+  implements aptu
 {
-  public ImageView a;
-  public ForwardShortVideoOption.PressDarkImageView a;
+  apms(apmr paramapmr) {}
   
-  public void a(Drawable paramDrawable)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (paramDrawable == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardShortVideoOption", 2, "setPreviewImage null");
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837903);
-      return;
+    apmp.a(this.a.a);
+    if (this.a.a.a != null) {
+      this.a.a.a.d();
     }
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(13);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
-    this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bajq.a(140.0F));
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
   }
+  
+  public void b() {}
 }
 
 

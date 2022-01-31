@@ -1,27 +1,19 @@
-import android.view.View;
-
 public class lry
-  extends lrv
 {
-  private View a;
-  public String b;
-  public boolean b;
+  private final int a;
+  private int b;
+  private int c;
   
-  public lry(int paramInt, View paramView)
+  public lry(int paramInt)
   {
-    super(paramInt);
-    this.a = paramView;
+    this.a = paramInt;
+    this.b = 1;
+    this.c = 1;
   }
   
-  public lry(View paramView)
+  public void a(lqt paramlqt, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super(0);
-    this.a = paramView;
-  }
-  
-  public View a()
-  {
-    return this.a;
+    paramlqt.a(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
   }
 }
 

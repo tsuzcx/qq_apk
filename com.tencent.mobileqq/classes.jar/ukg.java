@@ -1,13 +1,15 @@
-public abstract interface ukg
-  extends ujc<ujt>
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+class ukg
 {
-  public abstract void a(String paramString);
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  String jdField_a_of_type_JavaLangString;
   
-  public abstract void a(ukv paramukv);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void f();
+  ukg(ukf paramukf) {}
 }
 
 

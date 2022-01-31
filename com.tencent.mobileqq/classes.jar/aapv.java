@@ -1,17 +1,17 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 
-public class aapv
-  implements behi
+public final class aapv
+  implements DialogInterface.OnCancelListener
 {
-  public aapv(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public aapv(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, 0);
+    }
   }
 }
 

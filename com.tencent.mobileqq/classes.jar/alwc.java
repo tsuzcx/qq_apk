@@ -1,36 +1,39 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.widget.RoundImageView;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Bundle;
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class alwc
-  implements aliw
+  implements EIPCResultCallback
 {
-  alwc(alwb paramalwb) {}
+  alwc(alvz paramalvz, String paramString, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramString2 = (List)alwb.a(this.a).get(paramString1);
-    if ((paramString2 != null) && (paramString2.size() > 0))
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.download url=", this.jdField_a_of_type_JavaLangString, ", ipc call back code=", Integer.valueOf(paramEIPCResult.code) });
+    int j = -1;
+    int i = j;
+    if (paramEIPCResult.code == 0)
     {
-      paramString2 = paramString2.iterator();
-      while (paramString2.hasNext())
+      paramEIPCResult = paramEIPCResult.data;
+      i = j;
+      if (paramEIPCResult != null)
       {
-        alwf localalwf = (alwf)paramString2.next();
-        if ((localalwf != null) && (localalwf.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView != null) && (localalwf.jdField_a_of_type_Ampw != null))
-        {
-          localalwf.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(paramBitmap);
-          localalwf.jdField_a_of_type_Ampw.c(true);
+        i = j;
+        if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+          i = paramEIPCResult.getInt("code");
         }
       }
     }
-    alwb.a(this.a).remove(paramString1);
+    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onDownload(i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alwc
  * JD-Core Version:    0.7.0.1
  */

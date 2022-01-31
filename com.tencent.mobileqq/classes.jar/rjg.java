@@ -1,42 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-final class rjg
-  implements rnl
+public class rjg
+  implements INetInfoHandler
 {
-  public void a()
+  public rjg(FastWebActivity paramFastWebActivity) {}
+  
+  public void onNetMobile2None()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "pre load all offline from net is fail");
-    }
+    FastWebActivity.n(this.a);
   }
   
-  public void a(String paramString)
+  public void onNetMobile2Wifi(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = (JSONArray)new JSONObject(paramString).get("preload_bids");
-      int i = 0;
-      while (i < paramString.length())
-      {
-        rjb.a((String)paramString.get(i), null);
-        i += 1;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ViolaAccessHelper", 2, "pre load all offline from net is success");
-      }
-      rjb.jdField_a_of_type_JavaLangString = obz.a();
-      rjb.jdField_a_of_type_Long = System.currentTimeMillis();
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ViolaAccessHelper", 2, "pre load all offline from net is exception:" + paramString.getMessage());
-    }
+    FastWebActivity.n(this.a);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    FastWebActivity.n(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    FastWebActivity.n(this.a);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    FastWebActivity.n(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    FastWebActivity.n(this.a);
   }
 }
 

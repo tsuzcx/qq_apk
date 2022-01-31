@@ -1,36 +1,19 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoSimpleInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-public class tbv
-  extends slu
+class tbv
+  implements tey
 {
-  public List<StoryVideoItem> a = new ArrayList();
+  tbv(tbu paramtbu) {}
   
-  public tbv(qqstory_service.RspSimpleInfoList paramRspSimpleInfoList)
+  public void a(boolean paramBoolean, teu paramteu)
   {
-    super(paramRspSimpleInfoList.result);
-    paramRspSimpleInfoList = paramRspSimpleInfoList.video_list.get();
-    if (paramRspSimpleInfoList != null)
+    veg.b("AddressDataProvider", "AddressLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramteu != null))
     {
-      paramRspSimpleInfoList = paramRspSimpleInfoList.iterator();
-      while (paramRspSimpleInfoList.hasNext())
-      {
-        qqstory_struct.StoryVideoSimpleInfo localStoryVideoSimpleInfo = (qqstory_struct.StoryVideoSimpleInfo)paramRspSimpleInfoList.next();
-        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-        localStoryVideoItem.convertFrom("Q.qqstory.net:GetSimpleInfoListResponse", localStoryVideoSimpleInfo);
-        this.a.add(localStoryVideoItem);
-      }
+      veg.a("AddressDataProvider", "AddressLbsListener: onLbsUpdate, [longitude=%s, latitude=%s]", Integer.valueOf(paramteu.b), Integer.valueOf(paramteu.a));
+      this.a.a(paramteu.b, paramteu.a);
+      return;
     }
-  }
-  
-  public String toString()
-  {
-    return "GetSimpleInfoListResponse{mVideoItemList=" + this.a + '}';
+    veg.e("AddressDataProvider", "AddressLbsListener: onLbsUpdate, failed.");
+    this.a.a(false, null);
   }
 }
 

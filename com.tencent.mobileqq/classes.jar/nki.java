@@ -1,18 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nki
-  implements TopGestureLayout.OnGestureListener
+class nki
+  implements DialogInterface.OnClickListener
 {
-  public nki(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  nki(nke paramnke, JsResult paramJsResult, Context paramContext) {}
   
-  public void flingLToR()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReadInJoyChannelActivity.a(this.a, true);
-    this.a.finish();
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
   }
-  
-  public void flingRToL() {}
 }
 
 

@@ -1,24 +1,52 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig.BannerItem;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerManager.3;
+import android.os.Message;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import java.util.Map;
 
-public class bhgg
-  implements axrt
+class bhgg
+  implements Downloader.DownloadListener
 {
-  public bhgg(QIMCaptureBannerManager.3 param3) {}
+  bhgg(bhgf parambhgf) {}
   
-  public void onResp(axsq paramaxsq)
+  public void onDownloadCanceled(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMCaptureBannerManager", 2, "onResp url: " + this.a.a.imgUrl + " resultcode: " + paramaxsq.c);
-    }
+    Message localMessage = Message.obtain(bhgf.a(this.a));
+    localMessage.what = 5;
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    paramDownloadResult = Message.obtain(bhgf.a(this.a));
+    paramDownloadResult.what = 3;
+    paramDownloadResult.obj = paramString;
+    paramDownloadResult.sendToTarget();
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  {
+    paramString = (bhgh)bhgf.a(this.a).get(paramString);
+    if (paramString != null) {
+      paramString.a = Float.valueOf(paramFloat);
+    }
+    Message localMessage = Message.obtain(bhgf.a(this.a));
+    localMessage.what = 6;
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
+  }
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    paramDownloadResult = Message.obtain(bhgf.a(this.a));
+    paramDownloadResult.what = 2;
+    paramDownloadResult.obj = paramString;
+    paramDownloadResult.sendToTarget();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhgg
  * JD-Core Version:    0.7.0.1
  */

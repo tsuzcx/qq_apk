@@ -1,33 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class atib
-  implements View.OnTouchListener
+class atib
+  extends mxl
 {
-  public atib(PromotionEntry paramPromotionEntry) {}
+  atib(athz paramathz, atig paramatig) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (PromotionEntry.a(this.a) == null) {}
-    do
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        PromotionEntry.a(this.a).setAlpha(255);
-        return false;
-      }
-    } while (paramMotionEvent.getAction() != 0);
-    PromotionEntry.a(this.a).setAlpha(100);
-    return false;
+    QLog.i("reportPlay", 1, " reportPlay code:" + paramInt);
+    if (this.jdField_a_of_type_Atig != null) {
+      this.jdField_a_of_type_Atig.a(paramInt, paramArrayOfByte, paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atib
  * JD-Core Version:    0.7.0.1
  */

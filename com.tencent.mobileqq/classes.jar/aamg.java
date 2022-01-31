@@ -1,6 +1,9 @@
+import com.tencent.mobileqq.activity.BaseChatPie;
+
 public class aamg
+  implements bfws
 {
-  public boolean a;
+  public aamg(BaseChatPie paramBaseChatPie) {}
 }
 
 

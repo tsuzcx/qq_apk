@@ -1,15 +1,15 @@
 package com.tencent.av.ui.redbag;
 
-import mdx;
+import mow;
 
 public class AVRedBag$2$1
   implements Runnable
 {
-  public AVRedBag$2$1(mdx parammdx, int paramInt) {}
+  public AVRedBag$2$1(mow parammow, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Mdx.c(this.jdField_a_of_type_Int - 1);
+    this.jdField_a_of_type_Mow.d(this.jdField_a_of_type_Int - 1);
   }
 }
 

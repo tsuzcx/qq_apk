@@ -1,30 +1,71 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import java.lang.ref.WeakReference;
 
 public class ahwt
-  implements Animation.AnimationListener
 {
-  public ahwt(SpecailCareListActivity paramSpecailCareListActivity, ahxh paramahxh) {}
+  private static WeakReference<ahwv> a;
+  private static WeakReference<ahwu> b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static void a()
   {
-    paramAnimation = new RelativeLayout.LayoutParams(this.jdField_a_of_type_Ahxh.a.getLayoutParams());
-    paramAnimation.addRule(15);
-    paramAnimation.setMargins((int)(12.0F * SpecailCareListActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, (int)(10.0F * SpecailCareListActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
-    this.jdField_a_of_type_Ahxh.a.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Ahxh.a.clearAnimation();
+    if (b != null) {}
+    for (ahwu localahwu = (ahwu)b.get();; localahwu = null)
+    {
+      if (localahwu != null) {
+        localahwu.j();
+      }
+      return;
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public static void a(int paramInt)
+  {
+    if (b != null) {}
+    for (ahwu localahwu = (ahwu)b.get();; localahwu = null)
+    {
+      if (localahwu != null) {
+        localahwu.b(paramInt);
+      }
+      return;
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public static void a(ahwu paramahwu)
+  {
+    b = new WeakReference(paramahwu);
+  }
+  
+  public static void a(ahwv paramahwv)
+  {
+    a = new WeakReference(paramahwv);
+  }
+  
+  public static void a(String paramString)
+  {
+    if (b != null) {}
+    for (ahwu localahwu = (ahwu)b.get();; localahwu = null)
+    {
+      if (localahwu != null) {
+        localahwu.c(paramString);
+      }
+      return;
+    }
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    if (a != null) {}
+    for (ahwv localahwv = (ahwv)a.get();; localahwv = null)
+    {
+      if (localahwv != null) {
+        localahwv.a(paramString, paramInt);
+      }
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahwt
  * JD-Core Version:    0.7.0.1
  */

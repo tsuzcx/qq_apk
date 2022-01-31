@@ -1,180 +1,830 @@
-import android.text.Spannable;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
 import android.text.TextUtils;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.1;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class aybq
-  extends aybn
 {
-  public int a;
-  public Spannable a;
-  public ArrayList<aybo> a;
-  public JSONObject a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c;
-  public long c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
-  public int m;
-  public int n;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private aybu jdField_a_of_type_Aybu;
+  private aybv jdField_a_of_type_Aybv;
+  private aybw jdField_a_of_type_Aybw;
+  private aybx jdField_a_of_type_Aybx;
+  private ayby jdField_a_of_type_Ayby;
+  private aycb jdField_a_of_type_Aycb;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
   
-  public aybq(JSONObject paramJSONObject)
+  private ayay a(aybe paramaybe, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_d_of_type_Int = paramJSONObject.optInt("del");
-    this.jdField_e_of_type_Int = paramJSONObject.optInt("views_num");
-    this.jdField_f_of_type_Int = paramJSONObject.optInt("hot_score");
-    this.m = paramJSONObject.optInt("commentnum_v2");
-    this.jdField_c_of_type_Long = paramJSONObject.optLong("uin");
-    this.jdField_l_of_type_Int = paramJSONObject.optInt("likes");
-    this.jdField_g_of_type_Int = paramJSONObject.optInt("readnum");
-    this.jdField_h_of_type_Int = paramJSONObject.optInt("theme_id");
-    this.jdField_k_of_type_Int = paramJSONObject.optInt("alreadyzan");
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("pid");
-    this.jdField_b_of_type_Long = paramJSONObject.optLong("bid");
-    if ((TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) || (this.jdField_b_of_type_Long == 0L)) {
-      throw new IllegalArgumentException("pid = " + this.jdField_d_of_type_JavaLangString + ", bid = " + this.jdField_b_of_type_Long);
-    }
-    label251:
-    Object localObject;
-    if (paramJSONObject.optInt("relation") == 1)
+    int n;
+    Object localObject1;
+    Object localObject3;
+    label38:
+    Object localObject2;
+    int i1;
+    int i;
+    Paint localPaint;
+    Object localObject5;
+    int k;
+    Object localObject4;
+    int i4;
+    if ((paramaybe instanceof SpriteGLView))
     {
-      bool1 = true;
-      this.jdField_c_of_type_Boolean = bool1;
-      this.jdField_g_of_type_JavaLangString = paramJSONObject.optString("detail_page_url").replace("${bid}", String.valueOf(this.jdField_b_of_type_Long)).replace("${pid}", this.jdField_d_of_type_JavaLangString);
-      if (paramJSONObject.optInt("star") != 1) {
-        break label684;
+      n = 4;
+      localObject1 = paramJSONObject.optString("text");
+      if (!(paramaybe instanceof SpriteGLView)) {
+        break label764;
       }
-      bool1 = true;
-      this.jdField_d_of_type_Boolean = bool1;
-      this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("gbar_home_url_android");
-      this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject.optJSONObject("report");
-      localObject = paramJSONObject.optJSONObject("user_info");
-      if (localObject != null)
-      {
-        this.n = ((JSONObject)localObject).optInt("sex");
-        this.jdField_k_of_type_JavaLangString = ((JSONObject)localObject).optString("nickname");
-        this.jdField_l_of_type_JavaLangString = ((JSONObject)localObject).optString("headimgurl");
+      localObject3 = new ayck((SpriteGLView)paramaybe);
+      ((ayay)localObject3).c(1.0F / n);
+      localObject2 = localObject1;
+      if (this.jdField_a_of_type_Aybx != null) {
+        localObject2 = this.jdField_a_of_type_Aybx.a((aybd)localObject3, (String)localObject1);
       }
-      localObject = paramJSONObject.optJSONObject("theme_info");
-      if (localObject != null)
-      {
-        this.jdField_d_of_type_Long = ((JSONObject)localObject).optLong("creator_uin");
-        this.jdField_i_of_type_Int = ((JSONObject)localObject).optInt("censor_status");
-        this.jdField_j_of_type_Int = ((JSONObject)localObject).optInt("recommend_status");
-        this.jdField_h_of_type_JavaLangString = ((JSONObject)localObject).optString("theme_intro");
-        this.jdField_i_of_type_JavaLangString = ((JSONObject)localObject).optString("theme_name");
+      i1 = paramJSONObject.optInt("textSize", 20) * n;
+      i = Color.parseColor(paramJSONObject.optString("textColor"));
+      localPaint = new Paint();
+      localPaint.setAntiAlias(true);
+      localPaint.setColor(i);
+      localPaint.setTextSize(i1);
+      localObject5 = paramJSONObject.optJSONObject("size");
+      k = (int)localPaint.measureText((String)localObject2);
+      localObject4 = paramJSONObject.optString("imageRight");
+      i4 = paramJSONObject.optInt("imagePadding") * n;
+      if (TextUtils.isEmpty((CharSequence)localObject4)) {
+        break label961;
       }
-      localObject = paramJSONObject.optJSONObject("post");
-      this.jdField_j_of_type_JavaLangString = ((JSONObject)localObject).optString("content");
-      this.jdField_c_of_type_Int = paramJSONObject.optInt("cs_source");
-      localObject = ((JSONObject)localObject).optJSONArray("ugc_video_list").optJSONObject(0);
-      this.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("duration");
-      this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("height");
-      this.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("width");
-      this.jdField_b_of_type_Boolean = ((JSONObject)localObject).optBoolean("isLocalVideo");
-      this.jdField_e_of_type_Long = ((JSONObject)localObject).optLong("size");
-      this.jdField_f_of_type_JavaLangString = ((JSONObject)localObject).optString("text");
-      this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("url");
-      this.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("vid");
-      this.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("video_thumbe_url");
-      if (this.jdField_b_of_type_Int / this.jdField_a_of_type_Int <= 0.75F) {
-        break label689;
+      if (this.jdField_a_of_type_Aybw == null) {
+        break label955;
+      }
+      localObject1 = this.jdField_a_of_type_Aybw.a((aybd)localObject3, this.jdField_a_of_type_JavaLangString, (String)localObject4);
+      label205:
+      if (localObject1 != null) {
+        break label817;
       }
     }
-    label684:
-    label689:
-    for (boolean bool1 = bool2;; bool1 = false)
+    label817:
+    label946:
+    label955:
+    label961:
+    for (;;)
     {
-      this.jdField_a_of_type_Boolean = bool1;
-      paramJSONObject = paramJSONObject.optJSONArray("gbar_info_list");
-      if (paramJSONObject == null) {
-        return;
-      }
-      while (i1 < paramJSONObject.length())
+      int j;
+      int m;
+      int i2;
+      float f2;
+      float f1;
+      float f6;
+      float f3;
+      float f5;
+      try
       {
-        localObject = paramJSONObject.optJSONObject(i1);
-        long l1 = ((JSONObject)localObject).optLong("bid");
-        if (((JSONObject)localObject).optInt("bar_class") != 101)
-        {
-          localObject = new aybo(l1, ((JSONObject)localObject).optString("name") + ajjy.a(2131649309), this.jdField_e_of_type_JavaLangString.replace("${bid}", String.valueOf(l1)));
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+        localObject4 = bbdr.a(this.jdField_a_of_type_JavaLangString + "/" + (String)localObject4, null);
+        localObject1 = localObject4;
+        if (localObject1 == null) {
+          break label946;
         }
-        i1 += 1;
+        i = ((Bitmap)localObject1).getWidth();
+        j = ((Bitmap)localObject1).getHeight();
+        j *= n;
+        i *= n;
+        if (localObject5 == null) {
+          break label935;
+        }
+        if (((JSONObject)localObject5).optInt("width") == 0) {
+          break label932;
+        }
+        k = ((JSONObject)localObject5).optInt("width") * n;
+        if (((JSONObject)localObject5).optInt("height") == 0) {
+          break label925;
+        }
+        m = ((JSONObject)localObject5).optInt("height") * n;
+        if (this.jdField_a_of_type_Aybx != null) {
+          this.jdField_a_of_type_Aybx.a(k - i - i4, (String)localObject2, localPaint);
+        }
+        localObject2 = a(k - i - i4, (String)localObject2, localPaint);
+        i2 = m;
+        m = k;
+        if (this.jdField_a_of_type_Aybx == null) {
+          break label919;
+        }
+        k = this.jdField_a_of_type_Aybx.a(m, i, i4, (String)localObject2, localPaint);
+        i3 = k;
+        if (k == 0) {
+          i3 = (int)localPaint.measureText((String)localObject2);
+        }
+        i = i + i3 + i4;
       }
-      bool1 = false;
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        int i3;
+        float f7;
+        float f4;
+        label764:
+        if (QLog.isColorLevel()) {
+          QLog.e("SceneBuilder", 2, "buildLabel" + QLog.getStackTraceString(localOutOfMemoryError));
+        }
+      }
+      try
+      {
+        localObject4 = Bitmap.createBitmap(m, i2, Bitmap.Config.ARGB_8888);
+        localObject5 = new Canvas((Bitmap)localObject4);
+        ((Canvas)localObject5).drawColor(-16777216, PorterDuff.Mode.CLEAR);
+        f7 = i1 * 0.8F;
+        f2 = 0.0F;
+        f1 = 0.0F;
+        f4 = 0.0F;
+        f6 = 0.0F;
+        f3 = 0.0F;
+        f5 = 0.0F;
+        paramJSONObject = paramJSONObject.optString("gravity");
+        if (paramJSONObject == null) {
+          break label913;
+        }
+        if (!paramJSONObject.contains("left")) {
+          break label858;
+        }
+        f1 = 0.0F;
+        if (!paramJSONObject.contains("top")) {
+          break label877;
+        }
+        f2 = 0.0F;
+        f3 = f5;
+        f4 = f2;
+        if (paramJSONObject.equals("center"))
+        {
+          f1 = (m - i) / 2;
+          f4 = (i2 - i1) / 2;
+          f3 = (i2 - j) / 2;
+        }
+        if (paramJSONObject.contains("center_horizontal")) {
+          f1 = (m - i) / 2;
+        }
+        f2 = f1;
+        if (!paramJSONObject.contains("center_vertical")) {
+          break label913;
+        }
+        f2 = (i2 - i1) / 2;
+        f3 = (i2 - j) / 2;
+        f4 = f2;
+        f2 = f1;
+        f1 = f3;
+        if ((this.jdField_a_of_type_Aybx == null) || (!this.jdField_a_of_type_Aybx.a((Canvas)localObject5, (String)localObject2, f2, f4, f7, m, i2, localPaint))) {
+          ((Canvas)localObject5).drawText((String)localObject2, f2, f4 + f7, localPaint);
+        }
+        if (localObject1 != null)
+        {
+          paramJSONObject = new Matrix();
+          paramJSONObject.postScale(n, n);
+          f3 = i4;
+          paramJSONObject.postTranslate(i3 + (f3 + f2), f1);
+          ((Canvas)localObject5).drawBitmap((Bitmap)localObject1, paramJSONObject, localPaint);
+        }
+        ((aybd)localObject3).a(paramaybe, (Bitmap)localObject4);
+      }
+      catch (OutOfMemoryError paramaybe)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("SceneBuilder", 2, "buildLabel" + QLog.getStackTraceString(paramaybe));
+        return localObject3;
+      }
+      return localObject3;
+      n = 1;
       break;
-      bool1 = false;
-      break label251;
+      localObject3 = new aycx((SpriteNativeView)paramaybe);
+      break label38;
+      continue;
+      label858:
+      if (paramJSONObject.contains("right"))
+      {
+        f1 = m - i;
+        continue;
+        label877:
+        f3 = f5;
+        f2 = f6;
+        if (paramJSONObject.contains("bottom"))
+        {
+          f2 = i2 - i1;
+          f3 = i2 - j;
+          continue;
+          f1 = f3;
+          continue;
+          k = 0;
+          continue;
+          m = i1;
+          continue;
+          continue;
+          i2 = i1;
+          m = k;
+          continue;
+          j = 0;
+          i = 0;
+          continue;
+          localObject1 = null;
+          break label205;
+          localObject1 = null;
+          j = 0;
+          i = 0;
+        }
+      }
     }
   }
   
-  public static ArrayList<aybq> a(JSONArray paramJSONArray)
+  private ayay a(aybe paramaybe, JSONObject paramJSONObject, aybc paramaybc)
   {
-    ArrayList localArrayList = new ArrayList(paramJSONArray.length());
-    int i1 = 0;
-    for (;;)
+    Object localObject1 = null;
+    Object localObject3 = paramJSONObject.optString("type");
+    if ("layer".equals(localObject3)) {
+      if ((paramaybe instanceof SpriteGLView)) {
+        localObject1 = new aych((SpriteGLView)paramaybe);
+      }
+    }
+    Object localObject6;
+    label134:
+    int i;
+    int j;
+    label412:
+    label457:
+    Object localObject2;
+    while (localObject1 == null)
     {
-      if (i1 < paramJSONArray.length()) {
-        try
+      localObject3 = null;
+      return localObject3;
+      localObject1 = new aycv((SpriteNativeView)paramaybe);
+      continue;
+      if ("image".equals(localObject3))
+      {
+        localObject1 = null;
+        Object localObject4 = paramJSONObject.optString("path");
+        localObject6 = paramJSONObject.optString("event");
+        if ((paramaybe instanceof SpriteGLView))
         {
-          aybq localaybq = new aybq(paramJSONArray.optJSONObject(i1));
-          if (localaybq != null) {
-            localArrayList.add(new aybq(paramJSONArray.optJSONObject(i1)));
+          localObject3 = (SpriteGLView)paramaybe;
+          if (TextUtils.isEmpty((CharSequence)localObject6))
+          {
+            localObject3 = new ayck((SpriteGLView)localObject3);
+            if (this.jdField_a_of_type_Aybw != null) {
+              localObject1 = this.jdField_a_of_type_Aybw.a((aybd)localObject3, this.jdField_a_of_type_JavaLangString, (String)localObject4);
+            }
+            if (localObject1 != null) {
+              break label412;
+            }
           }
-          i1 += 1;
         }
-        catch (Exception localException)
+        for (;;)
         {
           for (;;)
           {
-            if (QLog.isColorLevel()) {
-              QLog.e("TribeVideoItem", 2, QLog.getStackTraceString(localException));
+            try
+            {
+              localObject4 = bbdr.a(this.jdField_a_of_type_JavaLangString + "/" + (String)localObject4, null);
+              localObject1 = localObject3;
+              if (localObject4 == null) {
+                break;
+              }
+              localObject1 = paramJSONObject.optJSONObject("size");
+              if (localObject1 == null) {
+                break label457;
+              }
+              i = ((JSONObject)localObject1).optInt("width");
+              j = ((JSONObject)localObject1).optInt("height");
             }
-            Object localObject = null;
+            catch (OutOfMemoryError localOutOfMemoryError2)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.e("SceneBuilder", 2, "buildNode" + QLog.getStackTraceString(localOutOfMemoryError2));
+              }
+            }
+            try
+            {
+              localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject4, i, j, true);
+              ((aybd)localObject3).a(paramaybe, (Bitmap)localObject1);
+              localObject1 = localObject3;
+            }
+            catch (OutOfMemoryError localOutOfMemoryError1)
+            {
+              if (!QLog.isColorLevel()) {
+                break label457;
+              }
+              QLog.e("SceneBuilder", 2, "buildNode" + QLog.getStackTraceString(localOutOfMemoryError1));
+            }
           }
+          localObject3 = new ayce((SpriteGLView)localObject3, true, (String)localObject6);
+          ((ayce)localObject3).a(new aybr(this, paramaybc, (String)localObject6));
+          break label134;
+          localObject3 = (SpriteNativeView)paramaybe;
+          if (TextUtils.isEmpty((CharSequence)localObject6))
+          {
+            localObject3 = new aycx((SpriteNativeView)localObject3);
+            break label134;
+          }
+          localObject3 = new aycu((SpriteNativeView)localObject3, (String)localObject6);
+          ((aycu)localObject3).a(new aybs(this, paramaybc, (ayay)localObject3, (String)localObject6));
+          break label134;
+          localObject5 = localObject1;
+          continue;
+          localObject2 = localObject5;
+        }
+      }
+      if ("video".equals(localObject3))
+      {
+        if ((paramaybe instanceof SpriteGLView))
+        {
+          localObject3 = (SpriteGLView)paramaybe;
+          localObject2 = new VideoSprite((SpriteGLView)localObject3, ((SpriteGLView)localObject3).getContext(), true);
+          ((VideoSprite)localObject2).c(this.jdField_a_of_type_JavaLangString + "/" + paramJSONObject.optString("path"));
+          if (paramJSONObject.optBoolean("isKey", false)) {
+            ((SpriteGLView)localObject3).setVideoTimeGetter((VideoSprite)localObject2);
+          }
+          if (paramJSONObject.optBoolean("autoClose", false)) {
+            ((VideoSprite)localObject2).a(this.jdField_a_of_type_Aycb);
+          }
+          ((VideoSprite)localObject2).a(paramJSONObject.optBoolean("isLooping", false));
+        }
+        else
+        {
+          localObject2 = (SpriteNativeView)paramaybe;
+          localObject3 = this.jdField_a_of_type_JavaLangString + "/" + paramJSONObject.optString("path");
+          localObject2 = new aycy((SpriteNativeView)localObject2, (String)localObject3);
+          ((aycy)localObject2).a((String)localObject3, paramJSONObject.optBoolean("isLooping", false));
+        }
+      }
+      else if ("label".equals(localObject3)) {
+        localObject2 = a(paramaybe, paramJSONObject);
+      }
+    }
+    ((ayay)localObject2).a(paramJSONObject.optString("name"));
+    ((ayay)localObject2).a(paramJSONObject.optInt("tag"));
+    ((ayay)localObject2).a((float)paramJSONObject.optDouble("x", 0.0D));
+    ((ayay)localObject2).b((float)paramJSONObject.optDouble("y", 0.0D));
+    ((ayay)localObject2).b((int)(paramJSONObject.optDouble("alpha", 1.0D) * 255.0D));
+    ((ayay)localObject2).c(((ayay)localObject2).a() * (float)paramJSONObject.optDouble("scale", 1.0D));
+    ((ayay)localObject2).d((float)paramJSONObject.optDouble("rotate", 0.0D));
+    ((ayay)localObject2).e(((ayay)paramaybc).a());
+    localObject3 = paramJSONObject.optJSONArray("actions");
+    if (localObject3 != null) {
+      ((ayay)localObject2).a(a((JSONArray)localObject3));
+    }
+    Object localObject5 = paramJSONObject.optJSONObject("frames");
+    if (localObject5 != null)
+    {
+      localObject3 = new ayaz();
+      ((ayaz)localObject3).jdField_a_of_type_Int = ((JSONObject)localObject5).optInt("fps");
+      localObject5 = ((JSONObject)localObject5).optJSONArray("datas");
+      j = ((JSONArray)localObject5).length();
+      ((ayaz)localObject3).jdField_a_of_type_ArrayOfAyba = new ayba[j];
+      i = 0;
+      while (i < j)
+      {
+        ((ayaz)localObject3).jdField_a_of_type_ArrayOfAyba[i] = new ayba();
+        localObject6 = ((JSONArray)localObject5).optJSONObject(i);
+        localObject3.jdField_a_of_type_ArrayOfAyba[i].jdField_a_of_type_Float = ((JSONObject)localObject6).optInt("x");
+        localObject3.jdField_a_of_type_ArrayOfAyba[i].b = ((JSONObject)localObject6).optInt("y");
+        i += 1;
+      }
+      ((ayay)localObject2).a((ayaz)localObject3);
+    }
+    localObject3 = paramJSONObject.optString("horizontal_align");
+    if (localObject3 != null)
+    {
+      if (((String)localObject3).equals("left")) {
+        ((ayay)localObject2).c(0);
+      }
+    }
+    else
+    {
+      label1028:
+      localObject3 = paramJSONObject.optString("vertical_align");
+      if (localObject3 != null)
+      {
+        if (!((String)localObject3).equals("top")) {
+          break label1180;
+        }
+        ((ayay)localObject2).d(0);
+      }
+    }
+    for (;;)
+    {
+      localObject3 = localObject2;
+      if (!(localObject2 instanceof aybc)) {
+        break;
+      }
+      localObject5 = (aybc)localObject2;
+      paramJSONObject = paramJSONObject.optJSONArray("children");
+      j = paramJSONObject.length();
+      i = 0;
+      for (;;)
+      {
+        localObject3 = localObject2;
+        if (i >= j) {
+          break;
+        }
+        localObject3 = a(paramaybe, paramJSONObject.getJSONObject(i), paramaybc);
+        if (localObject3 != null) {
+          ((aybc)localObject5).a((ayay)localObject3);
+        }
+        i += 1;
+      }
+      if (((String)localObject3).equals("right"))
+      {
+        ((ayay)localObject2).c(1);
+        break label1028;
+      }
+      if (!((String)localObject3).equals("center")) {
+        break label1028;
+      }
+      ((ayay)localObject2).c(2);
+      break label1028;
+      label1180:
+      if (((String)localObject3).equals("bottom")) {
+        ((ayay)localObject2).d(1);
+      } else if (((String)localObject3).equals("center")) {
+        ((ayay)localObject2).d(2);
+      }
+    }
+  }
+  
+  private aybc a(aybe paramaybe, String paramString)
+  {
+    Object localObject1;
+    if ((paramaybe instanceof SpriteGLView))
+    {
+      localObject1 = new aych((SpriteGLView)paramaybe);
+      if (paramString != null) {
+        break label43;
+      }
+    }
+    for (;;)
+    {
+      return localObject1;
+      localObject1 = new aycv((SpriteNativeView)paramaybe);
+      break;
+      try
+      {
+        label43:
+        paramString = new JSONObject(paramString);
+        Object localObject2 = paramString.optJSONObject("size");
+        int i = ((JSONObject)localObject2).optInt("width");
+        int j = ((JSONObject)localObject2).optInt("height");
+        this.jdField_a_of_type_Float = (this.jdField_a_of_type_Int / i);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          localObject2 = ((ViewGroup)paramaybe).getLayoutParams();
+          ((ViewGroup.LayoutParams)localObject2).width = this.jdField_a_of_type_Int;
+          ((ViewGroup.LayoutParams)localObject2).height = ((int)(j * this.jdField_a_of_type_Float));
+          ((ViewGroup)paramaybe).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+          ((ayay)localObject1).c(this.jdField_a_of_type_Float);
+          if (this.jdField_a_of_type_Ayby != null) {
+            this.jdField_a_of_type_Ayby.a(((ViewGroup.LayoutParams)localObject2).width, ((ViewGroup.LayoutParams)localObject2).height);
+          }
+        }
+        paramString = paramString.optJSONArray("scene");
+        if (paramString != null)
+        {
+          j = paramString.length();
+          i = 0;
+          while (i < j)
+          {
+            localObject2 = a(paramaybe, paramString.getJSONObject(i), (aybc)localObject1);
+            if (localObject2 != null) {
+              ((aybc)localObject1).a((ayay)localObject2);
+            }
+            i += 1;
+          }
+          if (!QLog.isColorLevel()) {}
+        }
+      }
+      catch (Exception paramaybe) {}
+    }
+    QLog.e("SceneBuilder", 2, "buildFromJson" + QLog.getStackTraceString(paramaybe));
+    return localObject1;
+  }
+  
+  private aybg a(JSONObject paramJSONObject)
+  {
+    Object localObject1 = null;
+    JSONObject localJSONObject = null;
+    Object localObject2 = paramJSONObject.optString("type");
+    String str = paramJSONObject.optString("timeType");
+    int j = paramJSONObject.optInt("duration");
+    if (((String)localObject2).equals("sequence")) {
+      localObject1 = new aybp(a(paramJSONObject.optJSONArray("actions")));
+    }
+    label513:
+    label516:
+    for (;;)
+    {
+      if (localObject1 != null)
+      {
+        ((aybg)localObject1).jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isRepeat");
+        if (str != null)
+        {
+          if (!str.equals("linear")) {
+            break label473;
+          }
+          ((aybg)localObject1).e = 0;
+        }
+        label102:
+        if ((paramJSONObject.optBoolean("autoClose", false)) && (this.jdField_a_of_type_Aycb != null)) {
+          ((aybg)localObject1).a(new aybt(this));
+        }
+      }
+      return localObject1;
+      if (((String)localObject2).equals("delay"))
+      {
+        localObject1 = new aybi(j);
+      }
+      else
+      {
+        if (((String)localObject2).equals("position"))
+        {
+          localJSONObject = paramJSONObject.optJSONObject("from");
+          localObject2 = paramJSONObject.optJSONObject("to");
+          if ((this.jdField_a_of_type_Aybu == null) || (!"$POSITIONX$".equals(((JSONObject)localObject2).optString("x")))) {
+            break label513;
+          }
+          aybf[] arrayOfaybf = this.jdField_a_of_type_Aybu.a(localJSONObject, (JSONObject)localObject2, this.jdField_a_of_type_Float);
+          if ((arrayOfaybf == null) || (arrayOfaybf.length != 2)) {
+            break label513;
+          }
+          localObject1 = new aybk(j, arrayOfaybf[0].jdField_a_of_type_Float, arrayOfaybf[0].b, arrayOfaybf[1].jdField_a_of_type_Float, arrayOfaybf[1].b);
+        }
+        for (int i = 1;; i = 0)
+        {
+          if (i != 0) {
+            break label516;
+          }
+          localObject1 = new aybk(j, (float)localJSONObject.optDouble("x"), (float)localJSONObject.optDouble("y"), (float)((JSONObject)localObject2).optDouble("x"), (float)((JSONObject)localObject2).optDouble("y"));
+          break;
+          if (((String)localObject2).equals("scale"))
+          {
+            localObject1 = new aybo(j, (float)paramJSONObject.optDouble("from", 1.0D), (float)paramJSONObject.optDouble("to", 1.0D));
+            break;
+          }
+          if (((String)localObject2).equals("alpha"))
+          {
+            localObject1 = new aybm(j, (int)(paramJSONObject.optDouble("from", 1.0D) * 255.0D), (int)(paramJSONObject.optDouble("to", 1.0D) * 255.0D));
+            break;
+          }
+          localObject1 = localJSONObject;
+          if (!((String)localObject2).equals("rotate")) {
+            break;
+          }
+          localObject1 = new aybn(j, paramJSONObject.optInt("from", 0), paramJSONObject.optInt("to", 0));
+          break;
+          label473:
+          if (str.equals("easeIn"))
+          {
+            ((aybg)localObject1).e = 1;
+            break label102;
+          }
+          if (!str.equals("easeOut")) {
+            break label102;
+          }
+          ((aybg)localObject1).e = 2;
+          break label102;
         }
       }
     }
-    return localArrayList;
   }
   
-  public boolean equals(Object paramObject)
+  public static String a(int paramInt, String paramString, Paint paramPaint)
   {
-    if (this == paramObject) {}
+    String str2 = "";
+    if (paramInt <= 0) {}
+    float f;
     do
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+      return paramString;
+      f = paramPaint.measureText("...");
+    } while ((int)Math.ceil(paramPaint.measureText(paramString)) <= paramInt);
+    int i = paramString.length() - 1;
+    for (;;)
+    {
+      String str1 = str2;
+      if (i > 0)
+      {
+        if ((int)Math.ceil(paramPaint.measureText(paramString, 0, i) + f) <= paramInt) {
+          str1 = paramString.substring(0, i) + "...";
+        }
+      }
+      else {
+        return str1;
+      }
+      i -= 1;
+    }
+  }
+  
+  public static boolean a(File paramFile)
+  {
+    StringBuffer localStringBuffer;
+    Object localObject;
+    if (paramFile.exists())
+    {
+      localStringBuffer = new StringBuffer();
+      localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append("check.ini");
+      localObject = new File(localStringBuffer.toString());
+      if (((File)localObject).exists()) {}
+    }
+    else
+    {
+      return false;
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        localObject = bbdj.b((File)localObject);
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break;
+        }
+        localObject = ((String)localObject).split("&");
+        if (localObject == null) {
+          break;
+        }
+        i = 0;
+        if (i >= localObject.length) {
+          break label225;
+        }
+        if (localObject[i].startsWith("﻿")) {
+          localObject[i] = localObject[i].replace("﻿", "");
+        }
+        localStringBuffer.setLength(0);
+        localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append(localObject[i]);
+        File localFile = new File(localStringBuffer.toString());
+        if (localFile.exists()) {
+          break label218;
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.e("SceneBuilder", 2, "isAnimationPackageValid File not exist:" + localFile.getName());
         return false;
       }
-      paramObject = (aybq)paramObject;
-    } while ((this.jdField_d_of_type_JavaLangString.equals(paramObject.jdField_d_of_type_JavaLangString)) && (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long));
-    return false;
+      catch (IOException paramFile) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("SceneBuilder", 2, "isAnimationPackageValid IOException");
+      return false;
+      label218:
+      i += 1;
+    }
+    label225:
+    return true;
+  }
+  
+  private aybg[] a(JSONArray paramJSONArray)
+  {
+    int j = paramJSONArray.length();
+    aybg[] arrayOfaybg = new aybg[j];
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfaybg[i] = a(paramJSONArray.optJSONObject(i));
+      i += 1;
+    }
+    return arrayOfaybg;
+  }
+  
+  private static String b(String paramString)
+  {
+    try
+    {
+      localInputStreamReader = new InputStreamReader(new FileInputStream(new File(paramString)));
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        label66:
+        localBufferedReader = null;
+        InputStreamReader localInputStreamReader = null;
+      }
+    }
+    try
+    {
+      localBufferedReader = new BufferedReader(localInputStreamReader);
+      try
+      {
+        paramString = new StringBuilder();
+        for (;;)
+        {
+          String str = localBufferedReader.readLine();
+          if (str == null) {
+            break;
+          }
+          paramString.append(str);
+          paramString.append('\n');
+        }
+        paramString.printStackTrace();
+      }
+      catch (Exception paramString) {}
+    }
+    catch (Exception paramString)
+    {
+      localBufferedReader = null;
+      break label66;
+    }
+    if (localBufferedReader != null) {}
+    try
+    {
+      localBufferedReader.close();
+      if (localInputStreamReader != null) {}
+      try
+      {
+        localInputStreamReader.close();
+        return null;
+      }
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+      localBufferedReader.close();
+      localInputStreamReader.close();
+      paramString = paramString.toString();
+      return paramString;
+    }
+    catch (IOException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public aybq a(int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public aybq a(aybv paramaybv)
+  {
+    this.jdField_a_of_type_Aybv = paramaybv;
+    return this;
+  }
+  
+  public aybq a(aybw paramaybw)
+  {
+    this.jdField_a_of_type_Aybw = paramaybw;
+    return this;
+  }
+  
+  public aybq a(aybx paramaybx)
+  {
+    this.jdField_a_of_type_Aybx = paramaybx;
+    return this;
+  }
+  
+  public aybq a(ayby paramayby)
+  {
+    this.jdField_a_of_type_Ayby = paramayby;
+    return this;
+  }
+  
+  public aybq a(aycb paramaycb)
+  {
+    this.jdField_a_of_type_Aycb = paramaycb;
+    return this;
+  }
+  
+  public aybq a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public void a(aybe paramaybe, aybz paramaybz)
+  {
+    ThreadManager.post(new SceneBuilder.1(this, paramaybe, paramaybz), 8, null, true);
   }
 }
 

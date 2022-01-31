@@ -1,80 +1,26 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class mfn
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  ArrayList<mfl> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
+  public mfn(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion, VideoAppInterface paramVideoAppInterface, int paramInt) {}
   
-  public mfn()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public int a()
-  {
-    int i = 0;
-    int k;
-    for (int j = 0; i < this.jdField_a_of_type_JavaUtilArrayList.size(); j = k)
-    {
-      k = j;
-      if (((mfl)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c()) {
-        k = j + 1;
-      }
-      i += 1;
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.c, 1, "showConfirmBoxToHangup, yes, mRelationId[" + this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b + "]");
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.k(0L);
+    paramDialogInterface = new Bundle();
+    paramDialogInterface.putString("uin", String.valueOf(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b));
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(4, 0, 0, paramDialogInterface, null);
+    if (!bbfu.a(this.jdField_a_of_type_Int)) {
+      mpy.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, String.valueOf(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b), 3000, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695925));
     }
-    return j;
-  }
-  
-  public ArrayList<mfl> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public mfl a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      mfl localmfl = (mfl)localIterator.next();
-      if (localmfl.a() == paramInt) {
-        return localmfl;
-      }
-    }
-    return null;
-  }
-  
-  public void a(mfl parammfl)
-  {
-    if (parammfl == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(parammfl);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public ArrayList<mfl> b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      if (((mfl)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c()) {
-        localArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
-      }
-      i += 1;
-    }
-    return localArrayList;
   }
 }
 

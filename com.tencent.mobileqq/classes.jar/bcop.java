@@ -1,23 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
-class bcop
-  extends bcok
+public class bcop
+  implements View.OnClickListener
 {
-  public bcop()
-  {
-    mof.a();
-  }
+  public bcop(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    bcom.a.set(true);
-    mof.b(paramString, BaseApplicationImpl.getApplication().getRuntime(), new bcoq(this, paramString, paramBoolean), true, 0, true);
+    ProfileCardMoreInfoView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcop
  * JD-Core Version:    0.7.0.1
  */

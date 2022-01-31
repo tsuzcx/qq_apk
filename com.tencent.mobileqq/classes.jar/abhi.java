@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
-class abhi
-  implements DialogInterface.OnCancelListener
+public class abhi
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  abhi(abhe paramabhe) {}
+  public abhi(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.a.a.setResult(4003);
-    this.a.a.finish();
+    if (this.a.a != null) {
+      return this.a.a.a(paramMotionEvent);
+    }
+    return true;
   }
 }
 

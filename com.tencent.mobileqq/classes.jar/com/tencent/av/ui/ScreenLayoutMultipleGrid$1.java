@@ -1,18 +1,18 @@
 package com.tencent.av.ui;
 
-import lqb;
-import lyh;
-import mjg;
+import mat;
+import miy;
+import muf;
 
 public class ScreenLayoutMultipleGrid$1
   implements Runnable
 {
-  public ScreenLayoutMultipleGrid$1(lyh paramlyh) {}
+  public ScreenLayoutMultipleGrid$1(miy parammiy) {}
   
   public void run()
   {
-    lqb.a(this.this$0.a, 1054);
-    mjg.a(1);
+    mat.a(this.this$0.a, 1054);
+    muf.a(1);
   }
 }
 

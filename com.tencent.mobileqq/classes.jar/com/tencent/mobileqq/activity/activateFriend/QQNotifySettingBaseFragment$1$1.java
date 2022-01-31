@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsGetMsgRsp;
-import achj;
+import acry;
 
 public class QQNotifySettingBaseFragment$1$1
   implements Runnable
 {
-  public QQNotifySettingBaseFragment$1$1(achj paramachj, AcsGetMsgRsp paramAcsGetMsgRsp) {}
+  public QQNotifySettingBaseFragment$1$1(acry paramacry, AcsGetMsgRsp paramAcsGetMsgRsp) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Achj.a.a(this.jdField_a_of_type_WalletAcsGetMsgRsp);
+    this.jdField_a_of_type_Acry.a.a(this.jdField_a_of_type_WalletAcsGetMsgRsp);
   }
 }
 

@@ -608,6 +608,7 @@ public final class DiskLruCache
   {
     close();
     Util.deleteContents(this.directory);
+    this.size = 0L;
   }
   
   public DiskLruCache.Editor edit(String paramString)

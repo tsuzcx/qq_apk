@@ -1,12 +1,15 @@
+import android.os.Bundle;
+
 public class apde
 {
-  int a;
-  int b;
+  public int a;
+  public long a;
+  public Bundle a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public String toString()
-  {
-    return "Type [type1=" + this.a + ", type2=" + this.b + "]";
-  }
+  apde(apcy paramapcy) {}
 }
 
 

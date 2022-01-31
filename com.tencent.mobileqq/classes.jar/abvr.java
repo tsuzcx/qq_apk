@@ -1,28 +1,12 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class abvr
-  extends MqqHandler
+class abvr
+  implements DialogInterface.OnClickListener
 {
-  public abvr(TroopAssistantActivity paramTroopAssistantActivity) {}
+  abvr(abvq paramabvq) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (!this.a.app.isLogin()) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.c();
-      return;
-    }
-    this.a.c();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,55 +1,23 @@
-import com.google.zxing.client.android.wifi.ParsedResultType;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.dataline.util.file.DLFileInfo;
 
 public final class go
-  extends gn
+  implements Parcelable.Creator<DLFileInfo>
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
-  private final String b;
-  private final String c;
-  
-  public go(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  public DLFileInfo a(Parcel paramParcel)
   {
-    super(ParsedResultType.WIFI);
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString1;
-    this.c = paramString3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return new DLFileInfo(paramParcel, null);
   }
   
-  public String a()
+  public DLFileInfo[] a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder(80);
-    a(this.jdField_a_of_type_JavaLangString, localStringBuilder);
-    a(this.b, localStringBuilder);
-    a(this.c, localStringBuilder);
-    a(Boolean.toString(this.jdField_a_of_type_Boolean), localStringBuilder);
-    return localStringBuilder.toString();
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String c()
-  {
-    return this.b;
-  }
-  
-  public String d()
-  {
-    return this.c;
+    return new DLFileInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     go
  * JD-Core Version:    0.7.0.1
  */

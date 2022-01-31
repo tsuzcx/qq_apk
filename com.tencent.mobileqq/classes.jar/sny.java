@@ -1,34 +1,21 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
 public class sny
-  implements View.OnFocusChangeListener
 {
-  public sny(StoryInputBarView paramStoryInputBarView) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      this.a.a();
-    }
-    while (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Uby.jdField_a_of_type_Boolean);
-    this.a.jdField_a_of_type_Uby.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
-    paramView = this.a;
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramView.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-  }
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  public TextView a;
+  public VideoFeedsAlphaMaskView a;
+  public ZImageView a;
+  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     sny
  * JD-Core Version:    0.7.0.1
  */

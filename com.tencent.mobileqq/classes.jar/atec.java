@@ -1,23 +1,25 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-public class atec
-  implements PopupWindow.OnDismissListener
+final class atec
+  implements DialogInterface.OnClickListener
 {
-  public atec(OCRResultActivity paramOCRResultActivity) {}
+  atec(Activity paramActivity, String paramString, int paramInt, long paramLong) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b = null;
-    if ((OCRResultActivity.b(this.a) != null) && (OCRResultActivity.b(this.a).size() > 1))
+    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidAppActivity, GameRoomInviteActivity.class);
+    paramDialogInterface.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.putExtra("roomNum", this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Long > 0L)
     {
-      Drawable localDrawable = this.a.getResources().getDrawable(2130844711);
-      this.a.a.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+      paramDialogInterface.putExtra("gc", this.jdField_a_of_type_Long);
+      paramDialogInterface.putExtra("isInviteTroop", false);
     }
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
   }
 }
 

@@ -1,22 +1,39 @@
-public final class bjbq
-  implements ahoe
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
+public class bjbq
+  implements BusinessObserver
 {
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
-  }
+  public void a() {}
   
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public void a(Bundle paramBundle) {}
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 967: 
+      b();
+      return;
+    case 968: 
+      a(paramBoolean, paramBundle);
+      return;
+    case 969: 
+      c();
+      return;
+    case 970: 
+      a(paramBundle);
+      return;
     }
-    return -paramInt1;
+    a();
   }
 }
 

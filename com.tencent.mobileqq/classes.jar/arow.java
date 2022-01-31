@@ -1,20 +1,21 @@
-public abstract interface arow
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.jsp.UiApiPlugin.8;
+import com.tencent.mobileqq.jsp.UiApiPlugin.8.1.1;
+
+public class arow
+  implements bbai
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public arow(UiApiPlugin.8 param8) {}
   
-  public abstract void a(long paramLong);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
+  public void a(Bitmap paramBitmap)
+  {
+    ThreadManager.post(new UiApiPlugin.8.1.1(this, paramBitmap), 8, null, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     arow
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,14 @@
-import android.text.TextUtils;
+import android.view.View;
 
-public class bfvj
-  extends bfvg
+public abstract interface bfvj
 {
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int > 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-  }
+  public abstract void a(View paramView);
+  
+  public abstract void b(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfvj
  * JD-Core Version:    0.7.0.1
  */

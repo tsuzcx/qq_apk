@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aevn
-  extends ajjh
+final class aevn
+  implements Animation.AnimationListener
 {
-  public aevn(SearchBaseFragment paramSearchBaseFragment) {}
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramBoolean) && (paramObject != null) && (SearchBaseFragment.a(this.a) != null) && (SearchBaseFragment.a(this.a).uin.get() == ((Long)paramObject).longValue())) {
-      SearchBaseFragment.a(this.a).relation.set(SearchBaseFragment.a(this.a).relation.get() & 0x10);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleHelper", 2, "onAllAnimationEnd " + paramAnimation);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleHelper", 2, "onAnimationStart " + paramAnimation);
     }
   }
 }

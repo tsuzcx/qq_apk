@@ -2,7 +2,7 @@ package com.tencent.commonsdk.util.notification;
 
 public abstract interface NotificationLimiter
 {
-  public abstract boolean shouldNotify();
+  public abstract boolean shouldNotify(int paramInt);
 }
 
 

@@ -1,28 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class aeoi
-  implements View.OnClickListener
+  extends ajta
 {
-  aeoi(aeog paramaeog) {}
+  aeoi(aeoe paramaeoe) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
   {
-    aeog.a(this.a).a(aeog.a(this.a).a, Integer.valueOf(4));
-    aeog.a(this.a).a();
-    ariz.a().c(aeog.a(this.a).a, aeog.a(this.a));
-    ariz.a().c(aeog.a(this.a), aeog.a(this.a).a);
-    awqx.b(aeog.a(this.a), "P_CliOper", "Grp_msg", "", "AIOchat", "Clk_setmsg", 0, 0, aeog.a(this.a).a, "", "", "");
-    QQAppInterface localQQAppInterface = aeog.a(this.a);
-    String str = aeog.a(this.a).a;
-    if (aeog.a(this.a).b(aeog.a(this.a).a) == 3) {}
-    for (paramView = "1";; paramView = "0")
+    if (paramBoolean)
     {
-      awqx.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_confirm", 0, 0, str, paramView, "", "");
+      if ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())) {
+        aeoe.a(this.a);
+      }
+      do
+      {
+        do
+        {
+          return;
+        } while (paramBoolean1.booleanValue());
+        paramString1 = BaseActivity.sTopActivity;
+      } while (paramString1 == null);
+      bbcv.a(paramString1, 230, paramString1.getString(2131689957), null, null, paramString1.getString(2131719540), new aeoj(this, paramString1), null).show();
       return;
     }
+    bcpw.a(this.a.jdField_a_of_type_AndroidContentContext, paramInt, 0).b(this.a.a());
   }
 }
 

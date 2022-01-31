@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import NS_COMM.COMM.StCommonExt;
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -57,7 +57,7 @@ public class MiniGamePayFragment
       try
       {
         paramString1.put("resultCode", -4);
-        paramString1.put("resultMsg", ajjy.a(2131641052));
+        paramString1.put("resultMsg", ajyc.a(2131706837));
         if (paramString1 != null) {
           paramString1 = paramString1.toString();
         }
@@ -87,7 +87,7 @@ public class MiniGamePayFragment
       try
       {
         paramString1.put("resultCode", 1000);
-        paramString1.put("errMsg", ajjy.a(2131641057));
+        paramString1.put("errMsg", ajyc.a(2131706842));
         paramString1 = paramString1.toString();
         if (paramString1 != null) {
           handleNativeResponse(paramString3, paramString1, paramInt2);

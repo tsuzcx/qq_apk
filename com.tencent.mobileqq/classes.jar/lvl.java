@@ -1,33 +1,28 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class lvl
-  implements mgy
+  extends lvf
 {
-  public lvl(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
-  
-  private void b()
+  public lvl()
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().aa) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().ab)) {}
-    for (boolean bool = true;; bool = false)
+    this.c = new lvr[6];
+    this.b = 1000L;
+    a(255);
+  }
+  
+  public void a(AVRedPacketManager paramAVRedPacketManager)
+  {
+    int i = 0;
+    while (i < this.c.length)
     {
-      VideoMsgTools.a(this.a, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().g), bool, false);
-      return;
+      this.c[i] = new lvr(paramAVRedPacketManager.a("qav_redpacket_lightning_" + (i + 1) + ".png"));
+      i += 1;
     }
   }
   
-  public void a() {}
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "MultiVideoMembersClickListener , Uin = " + paramLong + " , videoScr = " + paramInt1 + " , isNeedRequest " + paramBoolean + " , positon = " + paramInt2);
-    }
-    if ((paramInt2 == 7) && (paramBoolean)) {
-      b();
-    }
+    a(0, paramInt2 - paramInt1 * 120 / 750, paramInt1, paramInt2);
   }
 }
 

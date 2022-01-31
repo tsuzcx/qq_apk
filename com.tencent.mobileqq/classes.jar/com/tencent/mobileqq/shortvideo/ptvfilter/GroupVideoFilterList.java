@@ -109,7 +109,7 @@ public class GroupVideoFilterList
       }
     }
     updateFilterList();
-    GLGestureProxy.getInstance().setListener(this.gestureListener);
+    GLGestureProxy.getInstance().addListener(this.gestureListener);
   }
   
   private String getRandomNext(VideoMaterial.ChildPendant paramChildPendant)

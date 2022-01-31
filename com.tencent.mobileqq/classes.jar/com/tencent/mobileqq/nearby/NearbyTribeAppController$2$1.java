@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.nearby;
 
-import ajjy;
+import ajyc;
 import android.content.res.Resources;
-import asfh;
-import bbmy;
+import atbl;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class NearbyTribeAppController$2$1
   implements Runnable
 {
-  public NearbyTribeAppController$2$1(asfh paramasfh) {}
+  public NearbyTribeAppController$2$1(atbl paramatbl) {}
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getContext(), ajjy.a(2131641591), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131167766));
+    bcpw.a(BaseApplicationImpl.getContext(), ajyc.a(2131707376), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298865));
   }
 }
 

@@ -7,7 +7,7 @@ class AppBrandPage$1
   
   public void run()
   {
-    AppBrandPage.a(this.this$0).a(1);
+    AppBrandPage.a(this.this$0).a(1, -1);
   }
 }
 

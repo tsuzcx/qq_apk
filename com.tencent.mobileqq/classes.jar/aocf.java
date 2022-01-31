@@ -1,17 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import android.widget.LinearLayout;
+import com.tencent.image.URLImageView;
 
 public class aocf
-  implements View.OnClickListener
+  extends anxe
 {
-  public aocf(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.c.setVisibility(8);
-    amlu.a().a("");
-  }
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  URLImageView[] jdField_a_of_type_ArrayOfComTencentImageURLImageView;
 }
 
 

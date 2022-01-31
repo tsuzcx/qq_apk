@@ -7,8 +7,9 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bdqx;
-import bdzh;
+import bewo;
+import bfgb;
+import bfgx;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 
 public class VConsoleDragView
@@ -16,7 +17,7 @@ public class VConsoleDragView
 {
   private int jdField_a_of_type_Int;
   private DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics;
-  private bdqx jdField_a_of_type_Bdqx;
+  private bewo jdField_a_of_type_Bewo;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
@@ -50,33 +51,38 @@ public class VConsoleDragView
   
   private void b()
   {
-    this.jdField_a_of_type_Int = bdzh.a();
-    this.b = bdzh.b();
-    this.jdField_a_of_type_AndroidUtilDisplayMetrics = MiniAppEnv.g().getContext().getResources().getDisplayMetrics();
+    this.jdField_a_of_type_Int = bfgx.a();
+    int n = bfgx.b();
+    if (bfgb.a()) {}
+    for (int m = bfgb.a(getContext());; m = 0)
+    {
+      this.b = (m + n);
+      this.jdField_a_of_type_AndroidUtilDisplayMetrics = MiniAppEnv.g().getContext().getResources().getDisplayMetrics();
+      return;
+    }
   }
   
   public void a()
   {
-    int m = bdzh.a();
-    int n = bdzh.b();
-    int i1;
-    if (m > n)
+    int m = bfgx.a();
+    int i1 = bfgx.b();
+    if (m > i1)
     {
-      i1 = m;
-      this.jdField_a_of_type_Int = i1;
-      if (m <= n) {
-        break label52;
+      n = m;
+      this.jdField_a_of_type_Int = n;
+      n = m;
+      if (m > i1) {
+        n = i1;
       }
-    }
-    for (;;)
-    {
       this.b = n;
       this.jdField_a_of_type_AndroidUtilDisplayMetrics = MiniAppEnv.g().getContext().getResources().getDisplayMetrics();
       return;
-      i1 = n;
+    }
+    if (bfgb.a()) {}
+    for (int n = bfgb.a(getContext());; n = 0)
+    {
+      n += i1;
       break;
-      label52:
-      n = m;
     }
   }
   
@@ -142,16 +148,16 @@ public class VConsoleDragView
         }
       }
     }
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bdqx != null)) {
-      this.jdField_a_of_type_Bdqx.c();
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bewo != null)) {
+      this.jdField_a_of_type_Bewo.d();
     }
     this.jdField_a_of_type_Boolean = false;
     return true;
   }
   
-  public void setListener(bdqx parambdqx)
+  public void setListener(bewo parambewo)
   {
-    this.jdField_a_of_type_Bdqx = parambdqx;
+    this.jdField_a_of_type_Bewo = parambewo;
   }
 }
 

@@ -1,21 +1,24 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.util.Pair;
-import java.util.Comparator;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.GiftPkgSelectDialog.1.1;
 
-class obn
-  implements Comparator<Pair<Long, Pair<View, BaseArticleInfo>>>
+public class obn
+  implements AdapterView.OnItemClickListener
 {
   obn(obm paramobm) {}
   
-  public int a(Pair<Long, Pair<View, BaseArticleInfo>> paramPair1, Pair<Long, Pair<View, BaseArticleInfo>> paramPair2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return ((Long)paramPair2.first).compareTo((Long)paramPair1.first);
+    obm.a(this.a, paramInt);
+    obm.a(this.a).notifyDataSetChanged();
+    obm.a(this.a).postDelayed(new GiftPkgSelectDialog.1.1(this, paramInt), 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     obn
  * JD-Core Version:    0.7.0.1
  */

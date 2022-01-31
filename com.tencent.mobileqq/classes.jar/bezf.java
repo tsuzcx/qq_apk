@@ -1,28 +1,60 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.webbundle.sdk.WebBundleH5OptionListner;
-import cooperation.comic.VipComicHelper.2.1;
-import mqq.os.MqqHandler;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StGetAuthListReq;
+import com.tencent.mobileqq.pb.PBStringField;
+import org.json.JSONObject;
 
-public final class bezf
-  implements WebBundleH5OptionListner
+public class bezf
+  extends bfad
 {
-  bezf(SharedPreferences paramSharedPreferences) {}
+  private INTERFACE.StGetAuthListReq a = new INTERFACE.StGetAuthListReq();
   
-  public void enableWebBundle(boolean paramBoolean)
+  public bezf(COMM.StCommonExt paramStCommonExt, String paramString)
   {
-    QLog.d("WebBundle.Comic", 2, "handle enable webbundle. enable = " + paramBoolean);
-    this.a.edit().putBoolean("webbundle_enable", paramBoolean).apply();
-    if (!paramBoolean) {
-      ThreadManager.getUIHandler().post(new VipComicHelper.2.1(this));
+    this.a.appid.set(paramString);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
     }
+  }
+  
+  protected String a()
+  {
+    return "mini_user_info";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    if (paramArrayOfByte != null) {}
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("authList", a(paramArrayOfByte));
+      return localJSONObject;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      besl.a("GetAuthListsRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    besl.a("GetAuthListsRequest", "onResponse fail.data = null");
+    return null;
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetAuthList";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bezf
  * JD-Core Version:    0.7.0.1
  */

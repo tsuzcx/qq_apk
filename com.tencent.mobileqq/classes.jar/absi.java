@@ -1,33 +1,29 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 
 public class absi
-  implements CompoundButton.OnCheckedChangeListener
+  implements auvc
 {
-  public absi(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public absi(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(int paramInt, String paramString)
   {
-    int i = 1;
-    if (paramBoolean)
-    {
-      this.a.app.d(1);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label68;
+    if (paramInt == 0) {
+      if (ProfileActivity.AllInOne.b(this.a.a))
+      {
+        paramInt = 1;
+        axqw.b(this.a.app, "CliOper", "", "", "0X80050E7", "0X80050E7", paramInt, 0, "", "", "", "");
+        axqw.b(null, "dc00898", "", "", "0X800A4FD", "0X800A4FD", 0, 0, "", "0", "0", "");
       }
     }
-    for (;;)
-    {
-      awqx.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
-      return;
-      this.a.app.d(0);
-      break;
-      label68:
-      i = 0;
+    while (paramInt != 2) {
+      for (;;)
+      {
+        return;
+        paramInt = 2;
+      }
     }
+    axqw.b(null, "dc00898", "", "", "0X800A4FE", "0X800A4FE", 0, 0, "", "0", "0", "");
   }
 }
 

@@ -1,37 +1,31 @@
-import QC.CommonRsp;
-import QC.FaceRsp;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
 
 public class afvz
-  extends ajrp
+  implements afyk
 {
-  public afvz(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public afvz(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
   
-  public void a(boolean paramBoolean, FaceRsp paramFaceRsp)
+  public void a()
   {
-    if (paramFaceRsp != null)
-    {
-      int i = paramFaceRsp.authRet;
-      localObject = "null";
-      if (paramFaceRsp.stRet != null) {
-        localObject = "ret:" + paramFaceRsp.stRet.ret + " auth:" + paramFaceRsp.authRet + " url:" + paramFaceRsp.url;
-      }
-      QLog.d("AvatarPendantActivity", 2, "onSetFace: " + paramBoolean + "," + (String)localObject);
-      if (i == 0) {
-        this.a.r = 0;
-      }
+    this.a.j();
+  }
+  
+  public void b()
+  {
+    if ((!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof ChatHistoryActivity)) || (!((ChatHistoryActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).c)) {
+      this.a.jdField_a_of_type_Agbs.a();
     }
-    else
-    {
-      return;
-    }
-    this.a.r = 1;
-    Object localObject = new Intent(this.a, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramFaceRsp.url);
-    this.a.startActivity((Intent)localObject);
+    this.a.c = true;
+    this.a.b(true);
+  }
+  
+  public void c()
+  {
+    this.a.jdField_a_of_type_Agbs.b();
+    this.a.c = false;
+    this.a.b(false);
+    this.a.jdField_a_of_type_Agbf.a();
   }
 }
 

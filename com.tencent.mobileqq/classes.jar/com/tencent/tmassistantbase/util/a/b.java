@@ -1,7 +1,7 @@
 package com.tencent.tmassistantbase.util.a;
 
 import android.util.Log;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
@@ -49,7 +49,7 @@ public class b
       {
         paramObject = localc.b(this.a.a, paramMethod, paramArrayOfObject);
         localc.a(this.a.a, paramMethod, paramArrayOfObject, paramObject);
-        ac.c("miles", "hook end, invoke time cost:" + (System.currentTimeMillis() - l));
+        ab.c("miles", "hook end, invoke time cost:" + (System.currentTimeMillis() - l));
         return paramObject;
       }
       catch (Throwable paramObject)
@@ -62,12 +62,12 @@ public class b
       i = 0;
       break;
       if (localc != null) {
-        ac.c("miles", "hook method disabled, invoke time cost:" + (System.currentTimeMillis() - l));
+        ab.c("miles", "hook method disabled, invoke time cost:" + (System.currentTimeMillis() - l));
       }
       paramObject = paramMethod.invoke(this.a.a, paramArrayOfObject);
       return paramObject;
       Log.e("HookManager_AbstractHook", this.a.a() + " invoke exception!" + paramObject.getMessage());
-      ac.c("miles", "hook exception, invoke time cost:" + (System.currentTimeMillis() - l));
+      ab.c("miles", "hook exception, invoke time cost:" + (System.currentTimeMillis() - l));
       paramObject = localObject;
     } while (i == 0);
     return paramMethod.invoke(this.a.a, paramArrayOfObject);

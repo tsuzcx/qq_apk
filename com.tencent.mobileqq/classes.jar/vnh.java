@@ -1,20 +1,6 @@
-public class vnh
-  implements vnq
+public abstract interface vnh
 {
-  public long b;
-  
-  public void onFailure(String paramString) {}
-  
-  public void onFinish(boolean paramBoolean) {}
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
-  {
-    this.b = System.currentTimeMillis();
-  }
-  
-  public void onSuccess(String paramString) {}
+  public abstract void a(vps paramvps);
 }
 
 

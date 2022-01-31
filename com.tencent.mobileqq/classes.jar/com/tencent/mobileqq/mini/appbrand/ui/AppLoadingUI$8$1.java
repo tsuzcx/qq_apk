@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
 import android.app.Activity;
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class AppLoadingUI$8$1
@@ -11,7 +11,7 @@ class AppLoadingUI$8$1
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getContext(), 1, "" + this.val$errMsg, 1).a();
+    bcpw.a(BaseApplicationImpl.getContext(), 1, "" + this.val$errMsg, 1).a();
     this.this$1.this$0.getActivity().finish();
   }
 }

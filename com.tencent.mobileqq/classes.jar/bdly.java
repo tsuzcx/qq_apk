@@ -1,23 +1,19 @@
-import android.content.Context;
-import android.text.TextUtils;
-import java.io.File;
+import com.tencent.open.downloadnew.WebViewDownloadListener.1;
+import com.tencent.smtt.sdk.ValueCallback;
 
 public class bdly
+  implements ValueCallback<String>
 {
-  public static final String a = bdle.a().a().getFilesDir().getPath() + "/mini/";
-  public static final String b = a + ".baseLib";
+  public bdly(WebViewDownloadListener.1 param1) {}
   
-  public static String a(String paramString1, String paramString2)
+  public void a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    return b + File.separator + bdyv.c(paramString1) + "_" + paramString2 + File.separator;
+    bdht.a("WebViewDownloadListener", "[onReceiveValue]:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdly
  * JD-Core Version:    0.7.0.1
  */

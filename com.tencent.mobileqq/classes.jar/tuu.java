@@ -1,36 +1,16 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
 
-public final class tuu
-  extends QQUIEventReceiver<tun, swv>
+public class tuu
+  implements View.OnTouchListener
 {
-  public tuu(@NonNull tun paramtun)
-  {
-    super(paramtun);
-  }
+  public tuu(StoryPlayerFragment paramStoryPlayerFragment) {}
   
-  public void a(@NonNull tun paramtun, @NonNull swv paramswv)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramswv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramswv.jdField_a_of_type_JavaUtilList != null) && (paramtun.a != null))
-    {
-      paramswv = paramswv.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramswv.hasNext())
-      {
-        srj localsrj = (srj)paramswv.next();
-        if (TextUtils.equals(paramtun.a.b, localsrj.a)) {
-          paramtun.i();
-        }
-      }
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return swv.class;
+    return true;
   }
 }
 

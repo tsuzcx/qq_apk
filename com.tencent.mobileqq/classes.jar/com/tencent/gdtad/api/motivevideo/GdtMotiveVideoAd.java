@@ -1,18 +1,18 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import ylr;
-import yny;
-import ypk;
+import yvi;
+import yxs;
+import yze;
 
 public final class GdtMotiveVideoAd
   extends com.tencent.gdtad.api.GdtAd
 {
-  private ylr params;
+  private yvi params;
   
-  public GdtMotiveVideoAd(ylr paramylr)
+  public GdtMotiveVideoAd(yvi paramyvi)
   {
-    super(paramylr);
-    this.params = paramylr;
+    super(paramyvi);
+    this.params = paramyvi;
   }
   
   public int getErrorCode(com.tencent.gdtad.aditem.GdtAd paramGdtAd, int paramInt1, int paramInt2, int paramInt3)
@@ -23,16 +23,16 @@ public final class GdtMotiveVideoAd
     }
     if ((paramGdtAd == null) || (!isValid()))
     {
-      yny.d("GdtMotiveVideoAd", "getErrorCode error");
+      yxs.d("GdtMotiveVideoAd", "getErrorCode error");
       return 1;
     }
-    if (ypk.a(paramGdtAd.getCreativeSize())) {
+    if (yze.a(paramGdtAd.getCreativeSize())) {
       return 0;
     }
     return 7;
   }
   
-  protected ylr getParams()
+  protected yvi getParams()
   {
     return this.params;
   }

@@ -1,37 +1,28 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.1;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.2;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.3;
 
 public class artk
-  implements begh
 {
-  private boolean jdField_a_of_type_Boolean;
-  
-  public artk(MultiAIOItemFragment paramMultiAIOItemFragment, begh parambegh) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public static void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Begh.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    ThreadManager.post(new QQMusicPlayReport.2(paramInt1, paramInt2), 5, null, false);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public static void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Begh.onScrollStateChanged(paramAbsListView, paramInt);
-    if (paramInt == 0)
-    {
-      paramAbsListView = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
-      if ((paramAbsListView != null) && (paramAbsListView.a() == MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment)) && (!this.jdField_a_of_type_Boolean))
-      {
-        MultiAIOFragment.a("0X8009F80", 0);
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
+    ThreadManager.post(new QQMusicPlayReport.1(paramBoolean, paramInt), 5, null, false);
+  }
+  
+  public static void b(boolean paramBoolean, int paramInt)
+  {
+    ThreadManager.post(new QQMusicPlayReport.3(paramBoolean, bbev.b(null), paramInt), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     artk
  * JD-Core Version:    0.7.0.1
  */

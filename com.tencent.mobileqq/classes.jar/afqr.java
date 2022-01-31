@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
 
-class afqr
-  extends atdi
+public class afqr
+  implements awcd
 {
-  afqr(afqi paramafqi) {}
+  private afqr(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  protected void a(Object paramObject)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a.g();
-    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a.app.a() != null)) {
-      this.a.a.app.a().e();
+    if ((AlphabetFriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
+      AlphabetFriendFragment.a(this.a, 1400L, false);
     }
   }
 }

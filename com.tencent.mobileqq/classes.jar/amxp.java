@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.doutu.DoutuData;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
 
-public final class amxp
-  implements Parcelable.Creator<DoutuData>
+public abstract interface amxp
 {
-  public DoutuData a(Parcel paramParcel)
-  {
-    return new DoutuData(paramParcel);
-  }
+  public abstract long a();
   
-  public DoutuData[] a(int paramInt)
-  {
-    return new DoutuData[paramInt];
-  }
+  public abstract ExcitingTransferDownloadConfig a();
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amxp
  * JD-Core Version:    0.7.0.1
  */

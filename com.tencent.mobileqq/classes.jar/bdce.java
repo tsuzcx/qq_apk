@@ -1,58 +1,249 @@
-import android.content.Intent;
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqconnect.wtlogin.Login;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import java.util.Locale;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.open.agent.OpenCardContainer;
+import java.util.Iterator;
+import java.util.List;
 
 public class bdce
-  implements begw
+  extends BaseAdapter
+  implements View.OnClickListener, bfvi
 {
-  public bdce(Login paramLogin) {}
+  int jdField_a_of_type_Int = -1;
+  bfvm jdField_a_of_type_Bfvm = a(paramContext);
+  public String a;
+  private List<bdch> jdField_a_of_type_JavaUtilList;
   
-  public void OnClick(View paramView, int paramInt)
+  public bdce(OpenCardContainer paramOpenCardContainer, Context paramContext) {}
+  
+  private void a(bdci parambdci, int paramInt, View paramView)
   {
-    if (Login.a(this.a)) {
+    paramView = (bdch)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    bdci.a(parambdci).setText(paramView.b);
+    if (paramView.jdField_a_of_type_Boolean)
+    {
+      bdci.a(parambdci).setVisibility(0);
+      this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(false);
+    }
+    for (;;)
+    {
+      if (paramView.jdField_a_of_type_JavaLangString != null) {
+        OpenCardContainer.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer, bdci.a(parambdci), paramView.jdField_a_of_type_JavaLangString);
+      }
+      return;
+      bdci.a(parambdci).setVisibility(4);
+    }
+  }
+  
+  protected bfvm a(Context paramContext)
+  {
+    int i = paramContext.getResources().getDimensionPixelSize(2131298603);
+    int j = paramContext.getResources().getDimensionPixelSize(2131298604);
+    paramContext = OpenCardContainer.c;
+    int[] arrayOfInt1 = OpenCardContainer.jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt2 = OpenCardContainer.b;
+    return new bdcg(this, 1, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+  }
+  
+  void a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((bdch)localIterator.next()).jdField_a_of_type_Boolean = false;
+      }
+      notifyDataSetChanged();
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      bdch localbdch = (bdch)localIterator.next();
+      if (localbdch.jdField_a_of_type_Long == paramLong) {
+        localbdch.jdField_a_of_type_Boolean = true;
+      } else {
+        localbdch.jdField_a_of_type_Boolean = false;
+      }
+    }
+    notifyDataSetChanged();
+  }
+  
+  protected void a(Context paramContext, View paramView, int paramInt, Object paramObject, bfvn parambfvn, View.OnClickListener paramOnClickListener)
+  {
+    if (this.jdField_a_of_type_Bfvm != null) {}
+    for (int i = this.jdField_a_of_type_Bfvm.a(paramContext, paramView, paramInt, paramObject, parambfvn, paramOnClickListener);; i = 0)
+    {
+      int j = paramView.getScrollX();
+      if ((paramInt >= 0) && (this.jdField_a_of_type_Int == paramInt)) {
+        paramView.scrollTo(i, 0);
+      }
+      while (j == 0) {
+        return;
+      }
+      paramView.scrollTo(0, 0);
       return;
     }
-    if (paramInt == 0)
+  }
+  
+  public void a(List<bdch> paramList, String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      paramView = null;
-      if (this.a.jdField_a_of_type_AndroidWidgetEditText != null) {
-        paramView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      if (paramString.equals(this.jdField_a_of_type_JavaLangString)) {
+        break label33;
       }
-      if (TextUtils.isEmpty(paramView)) {
-        break label175;
-      }
+      this.jdField_a_of_type_JavaLangString = paramString;
     }
-    label175:
-    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });; paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756")
+    for (;;)
     {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      localIntent.putExtra("uin", this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getCurrentAccountUin());
-      localIntent.putExtra("reqType", 3);
-      localIntent.putExtra("url", paramView);
-      this.a.startActivity(localIntent);
-      for (;;)
+      this.jdField_a_of_type_JavaUtilList = paramList;
+      notifyDataSetChanged();
+      return;
+      label33:
+      if (paramList != null)
       {
-        Login.a(this.a, true);
-        Login.a(this.a).dismiss();
-        return;
-        if (paramInt == 1)
+        paramString = paramList.iterator();
+        while (paramString.hasNext())
         {
-          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
-          this.a.startActivity(paramView);
+          bdch localbdch = (bdch)paramString.next();
+          if (localbdch.jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a()) {
+            localbdch.jdField_a_of_type_Boolean = true;
+          } else {
+            localbdch.jdField_a_of_type_Boolean = false;
+          }
         }
       }
     }
   }
+  
+  public void a_(View paramView)
+  {
+    if (paramView != null)
+    {
+      paramView = paramView.getTag(-1);
+      if (!(paramView instanceof Integer)) {}
+    }
+    for (int i = ((Integer)paramView).intValue();; i = -1)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+    }
+  }
+  
+  public void e() {}
+  
+  public void e(boolean paramBoolean) {}
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = new bdci(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer, null);
+      View localView = this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559494, paramViewGroup, false);
+      bdci.a(paramView, (URLImageView)localView.findViewById(2131379285));
+      bdci.a(paramView, (TextView)localView.findViewById(2131379288));
+      bdci.a(paramView, (ImageView)localView.findViewById(2131375809));
+      bdci.a(paramView, (Button)localView.findViewById(2131365012));
+      localView.setTag(paramView);
+      localView.setTag(-3, Integer.valueOf(bawz.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_AndroidContentContext, 66.0F)));
+      paramViewGroup = paramView;
+      paramView = localView;
+    }
+    for (;;)
+    {
+      a(paramViewGroup, paramInt, paramView);
+      bdci.a(paramViewGroup).setOnClickListener(new bdcf(this, paramInt));
+      paramView.setTag(-1, Integer.valueOf(paramInt));
+      a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), paramViewGroup, this);
+      return paramView;
+      paramViewGroup = (bdci)paramView.getTag();
+    }
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer;
+    int i;
+    if (this.jdField_a_of_type_JavaUtilList == null)
+    {
+      i = 0;
+      OpenCardContainer.a((OpenCardContainer)localObject, i);
+      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0)) {
+        break label67;
+      }
+      this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(true);
+    }
+    label137:
+    label138:
+    for (;;)
+    {
+      super.notifyDataSetChanged();
+      return;
+      i = this.jdField_a_of_type_JavaUtilList.size();
+      break;
+      label67:
+      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      i = 0;
+      label79:
+      if (((Iterator)localObject).hasNext())
+      {
+        if (!((bdch)((Iterator)localObject).next()).jdField_a_of_type_Boolean) {
+          break label137;
+        }
+        this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(false);
+        i = 1;
+      }
+      for (;;)
+      {
+        break label79;
+        if (i != 0) {
+          break label138;
+        }
+        this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(true);
+        break;
+      }
+    }
+  }
+  
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdce
  * JD-Core Version:    0.7.0.1
  */

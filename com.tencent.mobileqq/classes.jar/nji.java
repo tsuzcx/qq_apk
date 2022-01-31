@@ -1,693 +1,394 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.os.Bundle;
-import android.os.Parcelable;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Environment;
 import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity.SerializableMap;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.util.Achilles;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.10;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.11;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.2;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.3;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.4;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.5;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.6;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.7;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.8;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.9;
+import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
+import java.io.File;
+import java.io.IOException;
 import java.lang.ref.WeakReference;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import mqq.app.MobileQQ;
+import mqq.manager.Manager;
 
 public class nji
+  implements Manager
 {
-  private static int a;
-  public static String a;
+  private static final Long jdField_a_of_type_JavaLangLong = Long.valueOf(86400000L);
+  private static final String jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory().getPath() + "/Android/data/com.tencent.mobileqq/cache/public_account_ad_download/";
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "mp4", "fhd", "shd", "hd", "sd", "msd" };
+  private int jdField_a_of_type_Int = 0;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private PAAdPreloadTask jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask;
+  private TVK_ICacheMgr jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+  private TVK_UserInfo jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private ArrayList<PAAdPreloadTask> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private njl jdField_a_of_type_Njl;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private ArrayList<PAAdPreloadTask> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<PAAdPreloadTask> c = new ArrayList();
   
-  static
+  public nji(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_JavaLangString = "https://kandian.qq.com/mqq/html/settingInterest.html?_wv=1027&_bid=2378";
-    jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_AndroidContentContext = paramQQAppInterface.getApplication().getApplicationContext();
   }
   
-  public static Intent a(Context paramContext, int paramInt)
+  private static int a(String paramString)
   {
-    return b(paramContext, paramInt, 0);
-  }
-  
-  public static Intent a(Context paramContext, int paramInt1, int paramInt2)
-  {
-    Intent localIntent = null;
-    if (paramInt1 != -1) {
-      localIntent = new Intent(paramContext, ReadInJoyFeedsActivity.class);
-    }
-    if (paramInt1 != -1) {
-      localIntent.putExtra("readinjoy_show_tab", paramInt1);
-    }
-    if (paramInt2 != -1) {
-      localIntent.putExtra("tab_tab_index", paramInt2);
-    }
-    return localIntent;
-  }
-  
-  public static Intent a(Context paramContext, int paramInt, KandianRedDotInfo paramKandianRedDotInfo)
-  {
-    Intent localIntent = new Intent(paramContext, PublicFragmentActivity.class);
-    localIntent.putExtra("public_fragment_class", ReadInJoyDailyFragment.class.getName());
-    if (!(paramContext instanceof Activity)) {
-      localIntent.setFlags(268435456);
-    }
-    if ((paramKandianRedDotInfo != null) && (paramKandianRedDotInfo.hasArticleID())) {
-      localIntent.putExtra("kandian_feeds_red_pnt_info", paramKandianRedDotInfo);
-    }
-    localIntent.setFlags(603979776);
-    localIntent.putExtra("launch_from", paramInt);
-    localIntent.putExtra("public_fragment_window_feature", 1);
-    return localIntent;
-  }
-  
-  public static Intent a(Context paramContext, HashMap<String, String> paramHashMap)
-  {
-    ArticleInfo localArticleInfo = new ArticleInfo();
-    paramContext = new Intent(paramContext, FastWebActivity.class);
-    try
-    {
-      String str1 = (String)paramHashMap.get("channelID");
-      String str2 = (String)paramHashMap.get("strategyId");
-      String str3 = (String)paramHashMap.get("algorithmID");
-      String str4 = (String)paramHashMap.get("title");
-      String str5 = (String)paramHashMap.get("firstPagePicUrl");
-      String str6 = (String)paramHashMap.get("articleContentUrl");
-      String str7 = (String)paramHashMap.get("articleID");
-      String str8 = (String)paramHashMap.get("subscribeID");
-      String str9 = (String)paramHashMap.get("subscribeName");
-      paramHashMap = (String)paramHashMap.get("rowKey");
-      if (paramHashMap != null) {
-        localArticleInfo.innerUniqueID = paramHashMap;
-      }
-      if (str6 != null) {
-        localArticleInfo.mArticleContentUrl = URLDecoder.decode(str6, "utf-8");
-      }
-      if (str5 != null) {
-        localArticleInfo.mFirstPagePicUrl = URLDecoder.decode(str5, "utf-8");
-      }
-      if (str1 != null) {
-        localArticleInfo.mChannelID = Long.valueOf(str1).longValue();
-      }
-      if (str2 != null) {
-        localArticleInfo.mStrategyId = Integer.valueOf(str2).intValue();
-      }
-      if (str3 != null) {
-        localArticleInfo.mAlgorithmID = Long.valueOf(str3).longValue();
-      }
-      if (str4 != null) {
-        localArticleInfo.mTitle = str4;
-      }
-      if (str7 != null) {
-        localArticleInfo.mArticleID = Long.valueOf(str7).longValue();
-      }
-      if (str8 != null) {
-        localArticleInfo.mSubscribeID = str8;
-      }
-      if (str9 != null) {
-        localArticleInfo.mSubscribeName = str9;
-      }
-    }
-    catch (Exception paramHashMap)
-    {
-      label267:
-      break label267;
-    }
-    paramContext.putExtra("fast_web_article_info", localArticleInfo);
-    return paramContext;
-  }
-  
-  private static String a(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
-      return paramString2;
-      try
+      return 0;
+      File localFile = new File(a(paramString));
+      if ((localFile.exists()) && (localFile.length() > 0L)) {
+        return 2;
+      }
+      paramString = new File(b(paramString));
+    } while ((!paramString.exists()) || (paramString.length() <= 0L));
+    return 1;
+  }
+  
+  public static String a()
+  {
+    File localFile = new File(jdField_a_of_type_JavaLangString);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public static String a(String paramString)
+  {
+    String str2 = "";
+    String str1 = str2;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      File localFile = new File(jdField_a_of_type_JavaLangString);
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
+      str1 = str2;
+      if (localFile.exists())
       {
-        if ("com.tencent.rijvideo".equalsIgnoreCase(paramString1))
-        {
-          paramString1 = Uri.parse(paramString2);
-          Object localObject = paramString1.getQueryParameterNames();
-          Uri.Builder localBuilder = paramString1.buildUpon().clearQuery();
-          localObject = ((Set)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            String str = (String)((Iterator)localObject).next();
-            localBuilder.appendQueryParameter(str, URLEncoder.encode(paramString1.getQueryParameter(str), "utf-8"));
-          }
-          return localBuilder.toString();
+        str1 = str2;
+        if (localFile.isDirectory()) {
+          str1 = jdField_a_of_type_JavaLangString + String.valueOf(20170807) + "_" + paramString;
         }
       }
-      catch (Exception paramString1)
-      {
-        QLog.e("ReadInJoyActivityHelper", 1, paramString1, new Object[0]);
-        return paramString2;
-      }
-    } while (!"com.tencent.reading".equalsIgnoreCase(paramString1));
-    paramString1 = peq.a().a(paramString2);
-    return paramString1;
+    }
+    return str1;
   }
   
-  public static void a(Context paramContext)
+  private nsb a()
   {
-    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    localObject = new Intent(paramContext, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", jdField_a_of_type_JavaLangString);
-    ((Intent)localObject).putExtra("hide_operation_bar", true);
-    ((Intent)localObject).putExtra("hide_more_button", true);
-    paramContext.startActivity((Intent)localObject);
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://kandian.qq.com/mqq/watchspot/sticker.html?_wwv=265&_wv=1027&_wvSb=0&_nav_titleclr=000000&_bid=3002");
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    paramContext.startActivity(localIntent);
-    ndn.a(null, "CliOper", "", "", "0X8008C89", "0X8008C89", 0, 0, paramInt + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
-  }
-  
-  public static void a(Context paramContext, int paramInt, Bundle paramBundle, boolean paramBoolean)
-  {
-    if (paramContext == null) {}
-    while (pel.a(paramContext)) {
-      return;
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      return (nsb)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getManager(237);
     }
-    Intent localIntent = new Intent();
-    if (paramBundle != null) {
-      localIntent.putExtras(paramBundle);
-    }
-    if (!(paramContext instanceof BaseActivity)) {
-      localIntent.setFlags(268435456);
-    }
-    if (paramBoolean)
-    {
-      localIntent.addFlags(67108864);
-      localIntent.addFlags(536870912);
-    }
-    localIntent.putExtra("launch_from", paramInt);
-    localIntent.putExtra("public_fragment_window_feature", 1);
-    PublicFragmentActivity.a(paramContext, localIntent, ReadInJoyDailyFragment.class);
-  }
-  
-  public static void a(Context paramContext, int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    a(paramContext, paramInt1, paramString, paramInt2, paramInt3, null);
-  }
-  
-  public static void a(Context paramContext, int paramInt1, String paramString, int paramInt2, int paramInt3, Map<String, Object> paramMap)
-  {
-    a(paramContext, paramInt1, paramString, paramInt2, paramInt3, paramMap, false);
-  }
-  
-  public static void a(Context paramContext, int paramInt1, String paramString, int paramInt2, int paramInt3, Map<String, Object> paramMap, boolean paramBoolean)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      Intent localIntent = new Intent(paramContext, ReadInJoyChannelActivity.class);
-      localIntent.putExtra("channel_id", paramInt1);
-      localIntent.putExtra("channel_name", paramString);
-      localIntent.putExtra("channel_type", paramInt2);
-      localIntent.putExtra("channel_from", paramInt3);
-      localIntent.putExtra("is_channel_activity", true);
-      if ((paramMap != null) && (!paramMap.isEmpty()))
-      {
-        paramString = new ReadInJoyChannelActivity.SerializableMap();
-        paramString.setMap(paramMap);
-        localIntent.putExtra("channel_map_data", paramString);
-      }
-      if (paramBoolean) {
-        localIntent.addFlags(67108864);
-      }
-      paramContext.startActivity(localIntent);
-      if ((paramContext instanceof Activity)) {
-        ((Activity)paramContext).overridePendingTransition(2130771981, 0);
-      }
-      return;
-    }
-    paramMap = new Intent();
-    paramMap.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-    paramMap.putExtra("channel_id", paramInt1);
-    paramMap.putExtra("sub_channel_name", paramString);
-    paramMap.putExtra("is_sub_channel", true);
-    PublicFragmentActivity.a(paramContext, paramMap, ReadInJoyPicWaterFallFragment.class);
-  }
-  
-  public static void a(Context paramContext, ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2, boolean paramBoolean)
-  {
-    Intent localIntent = new Intent(paramContext, ReadInJoyChannelActivity.class);
-    localIntent.putExtra("channel_id", 56);
-    localIntent.putExtra("channel_name", ajjy.a(2131647226));
-    localIntent.putExtra("channel_type", 3);
-    localIntent.putExtra("channel_from", 1);
-    localIntent.putExtra("is_channel_activity", true);
-    localIntent.putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID", paramArticleInfo2.mArticleID);
-    localIntent.putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_SEQ", paramArticleInfo1.mRecommendSeq);
-    localIntent.putExtra("READINJOY_VIDEO_FORCE_INSERT_FIRST_CREATED", true);
-    localIntent.putExtra("READINJOY_VIDEO_FORCE_INSERT_HIDE_REFRESH_HEADER", true);
-    if (paramArticleInfo1 != paramArticleInfo2)
-    {
-      localIntent.putExtra("READINJOY_VIDEO_FORCE_INSERT_TOW_VIDEO_ITEM_INDEX", 2);
-      if (qoe.q(paramArticleInfo2)) {
-        break label215;
-      }
-    }
-    label215:
-    for (boolean bool = true;; bool = false)
-    {
-      localIntent.putExtra("READINJOY_VIDEO_FORCE_INSERT_IS_UGC_VIDEO", bool);
-      localIntent.putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_INFO", paramArticleInfo2);
-      localIntent.putExtra("is_need_show_animation_adapter", paramBoolean);
-      paramContext.startActivity(localIntent);
-      new.a.put(ReadInJoyChannelActivity.class, new.b());
-      qji.a().a(false, "jumpFromKandianFeed", 1);
-      return;
-      localIntent.putExtra("READINJOY_VIDEO_FORCE_INSERT_TOW_VIDEO_ITEM_INDEX", 1);
-      break;
-    }
-  }
-  
-  /* Error */
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnonnull +4 -> 5
-    //   4: return
-    //   5: aload_1
-    //   6: invokestatic 186	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   9: ifne +178 -> 187
-    //   12: new 447	org/json/JSONObject
-    //   15: dup
-    //   16: aload_1
-    //   17: invokespecial 450	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   20: ldc_w 452
-    //   23: iconst_m1
-    //   24: invokevirtual 456	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   27: i2l
-    //   28: lstore_3
-    //   29: new 92	java/util/HashMap
-    //   32: dup
-    //   33: invokespecial 457	java/util/HashMap:<init>	()V
-    //   36: astore 5
-    //   38: lload_3
-    //   39: ldc2_w 458
-    //   42: lcmp
-    //   43: ifeq +17 -> 60
-    //   46: aload 5
-    //   48: ldc 110
-    //   50: lload_3
-    //   51: invokestatic 462	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   54: invokeinterface 463 3 0
-    //   59: pop
-    //   60: aload 5
-    //   62: ldc_w 465
-    //   65: aload_1
-    //   66: invokeinterface 463 3 0
-    //   71: pop
-    //   72: ldc 2
-    //   74: invokevirtual 468	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   77: iconst_1
-    //   78: new 300	java/lang/StringBuilder
-    //   81: dup
-    //   82: invokespecial 301	java/lang/StringBuilder:<init>	()V
-    //   85: ldc_w 470
-    //   88: invokevirtual 308	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: lload_3
-    //   92: invokevirtual 473	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   95: ldc_w 475
-    //   98: invokevirtual 308	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   101: aload_1
-    //   102: invokevirtual 308	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   105: invokevirtual 309	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   108: invokestatic 479	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   111: aload 5
-    //   113: astore_1
-    //   114: aconst_null
-    //   115: ldc_w 294
-    //   118: ldc_w 296
-    //   121: ldc_w 296
-    //   124: ldc_w 481
-    //   127: ldc_w 481
-    //   130: iconst_0
-    //   131: iconst_0
-    //   132: ldc_w 296
-    //   135: iload_2
-    //   136: invokestatic 483	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   139: ldc_w 296
-    //   142: invokestatic 313	com/tencent/biz/pubaccount/readinjoy/activity/ReadInJoyBaseDeliverActivity:a	()Ljava/lang/String;
-    //   145: iconst_0
-    //   146: invokestatic 318	ndn:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
-    //   149: aload_0
-    //   150: ldc_w 484
-    //   153: getstatic 488	obb:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   156: iconst_0
-    //   157: iload_2
-    //   158: aload_1
-    //   159: invokestatic 343	nji:a	(Landroid/content/Context;ILjava/lang/String;IILjava/util/Map;)V
-    //   162: return
-    //   163: astore 5
-    //   165: aconst_null
-    //   166: astore_1
-    //   167: aload 5
-    //   169: invokevirtual 491	org/json/JSONException:printStackTrace	()V
-    //   172: goto -58 -> 114
-    //   175: astore 6
-    //   177: aload 5
-    //   179: astore_1
-    //   180: aload 6
-    //   182: astore 5
-    //   184: goto -17 -> 167
-    //   187: aconst_null
-    //   188: astore_1
-    //   189: goto -75 -> 114
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	192	0	paramContext	Context
-    //   0	192	1	paramString	String
-    //   0	192	2	paramInt	int
-    //   28	64	3	l	long
-    //   36	76	5	localHashMap	HashMap
-    //   163	15	5	localJSONException1	org.json.JSONException
-    //   182	1	5	localObject	Object
-    //   175	6	6	localJSONException2	org.json.JSONException
-    // Exception table:
-    //   from	to	target	type
-    //   12	38	163	org/json/JSONException
-    //   46	60	175	org/json/JSONException
-    //   60	111	175	org/json/JSONException
-  }
-  
-  public static void a(Context paramContext, String paramString1, int paramInt, String paramString2, boolean paramBoolean)
-  {
-    if (BaseActivity.sTopActivity != null) {
-      paramContext = BaseActivity.sTopActivity;
-    }
-    if (paramContext == null) {}
-    while (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.intent.action.VIEW");
-    localIntent.setData(Uri.parse(paramString1));
-    localIntent.putExtra("big_brother_source_key", obz.f(paramInt));
-    localIntent.putExtra("launch_app_time", System.currentTimeMillis());
-    paramString1 = new njj(paramBoolean, paramString2, paramContext, paramString1);
-    jdField_a_of_type_Int = almh.a().a(paramString1);
-    localIntent.putExtra("key_callback_id", jdField_a_of_type_Int);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static void a(Context paramContext, HashMap<String, String> paramHashMap)
-  {
-    int k = 0;
-    int m = 0;
-    if ((paramContext == null) || (paramHashMap == null)) {
-      return;
-    }
-    String str2 = (String)paramHashMap.get("appSchema");
-    Object localObject = (String)paramHashMap.get("appPackageName");
-    String str1 = (String)paramHashMap.get("isCancelJump");
-    if ((str1 != null) && ("1".equals(str1))) {}
-    int j;
-    label515:
-    label529:
-    label572:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = bady.a(paramContext, (String)localObject);
-      str1 = (String)paramHashMap.get("defaultURL");
-      paramHashMap = (String)paramHashMap.get("channelID");
-      if ((!TextUtils.isEmpty(paramHashMap)) && (TextUtils.isDigitsOnly(paramHashMap))) {}
-      for (j = Integer.valueOf(paramHashMap).intValue();; j = 0)
-      {
-        for (;;)
-        {
-          paramHashMap = new StringBuilder();
-          if (!a((String)localObject)) {
-            break;
-          }
-          try
-          {
-            paramContext = (Context)new WeakReference(paramContext).get();
-            if (paramContext == null) {
-              break;
-            }
-            str1 = URLDecoder.decode(str1, "utf-8");
-            str2 = a((String)localObject, URLDecoder.decode(str2, "utf-8"));
-            paramHashMap.append("appSchema:" + str2 + " appPackageName:" + (String)localObject + " defaultUrl:" + str1);
-            if (!bool2) {
-              break label529;
-            }
-            localObject = Aladdin.getConfig(159);
-            if (localObject == null) {
-              break label572;
-            }
-            i = ((AladdinConfig)localObject).getIntegerFromString("privateOpenUrl", 0);
-          }
-          catch (Exception paramContext)
-          {
-            for (;;)
-            {
-              Runtime localRuntime;
-              paramHashMap.append(" startApp error:" + paramContext.toString());
-              continue;
-              a(paramContext, str2, j, str1, bool1);
-              continue;
-              int i = k;
-              if (!Achilles.a(localException, true))
-              {
-                obz.f(paramContext, str1);
-                if (bool1) {}
-                for (i = 1;; i = 0)
-                {
-                  obz.a(str2, 2, i);
-                  i = k;
-                  break;
-                }
-                i = 0;
-              }
-            }
-          }
-        }
-        if (1 != i) {
-          break label515;
-        }
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("am start --user 0");
-        ((StringBuilder)localObject).append(" -a android.intent.action.VIEW");
-        ((StringBuilder)localObject).append(" -d " + str2);
-        localObject = ((StringBuilder)localObject).toString();
-        localRuntime = Runtime.getRuntime();
-        if (localRuntime != null) {}
-        try
-        {
-          localRuntime.exec((String)localObject);
-          k = m;
-          if (bool1) {
-            k = 1;
-          }
-          obz.a(str2, 1, k);
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            a(paramContext, str2, j, str1, bool1);
-            paramHashMap.append(" runtime.exec error:" + localException.toString());
-          }
-        }
-        paramHashMap.append("hasInstalled:" + bool2 + " configSwitch:" + i);
-        paramHashMap.append(" hasInstalled:" + bool2);
-        QLog.e("ReadInJoyActivityHelper", 1, paramHashMap.toString());
-        return;
-      }
-    }
-  }
-  
-  public static void a(Context paramContext, List<Long> paramList, long paramLong, int paramInt)
-  {
-    Intent localIntent = new Intent(paramContext, ReadInJoyNewFeedsActivity.class);
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      localIntent.putExtra("subscription_all_article_id", (Serializable)paramList);
-      QLog.i("ReadInJoyActivityHelper", 1, paramList.toString());
-    }
-    if (paramLong != -1L) {
-      localIntent.putExtra("subscription_click_article_id", paramLong);
-    }
-    if (paramInt == 1) {
-      localIntent.putExtra("from_search", true);
-    }
-    for (;;)
-    {
-      localIntent.putExtra("launch_from", paramInt);
-      if (!(paramContext instanceof Activity)) {
-        localIntent.setFlags(268435456);
-      }
-      paramContext.startActivity(localIntent);
-      ((KandianMergeManager)BaseApplicationImpl.getApplication().getRuntime().getManager(162)).g();
-      return;
-      localIntent.putExtra("from_search", false);
-    }
-  }
-  
-  public static void a(Context paramContext, boolean paramBoolean)
-  {
-    Intent localIntent;
-    if (paramBoolean)
-    {
-      localIntent = new Intent(paramContext, ReadInJoyMessagesActivity.class);
-      localIntent.putExtra("shouldBackSelfAct", true);
-    }
-    for (;;)
-    {
-      if (!(paramContext instanceof Activity)) {
-        localIntent.setFlags(268435456);
-      }
-      paramContext.startActivity(localIntent);
-      return;
-      localIntent = new Intent(paramContext, ReadInJoySelfActivity.class);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2)
-  {
-    a(paramQQAppInterface, paramContext, paramInt1, paramInt2, null);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    Intent localIntent = new Intent(paramContext, ReadInJoyNewFeedsActivity.class);
-    localIntent.putExtra("readinjoy_show_tab", 0);
-    if (paramInt1 == 2) {
-      localIntent.setFlags(131072);
-    }
-    if (paramInt2 != -1) {
-      localIntent.putExtra("tab_tab_index", paramInt2);
-    }
-    if (bgmq.c(paramQQAppInterface)) {}
-    for (localIntent = new Intent(paramContext, ReadInJoySettingActivity.class);; localIntent = a(paramContext, paramInt1))
-    {
-      if (paramBundle != null) {
-        localIntent.putExtras(paramBundle);
-      }
-      paramContext.startActivity(localIntent);
-      if ((paramInt2 == 0) && (!bgmq.k())) {
-        ((KandianMergeManager)paramQQAppInterface.getManager(162)).g();
-      }
-      return;
-      if (!bgmq.k()) {
-        break;
-      }
-    }
-    if (paramInt1 == 1) {
-      localIntent.putExtra("from_search", true);
-    }
-    for (;;)
-    {
-      localIntent.putExtra("launch_from", paramInt1);
-      qji.a().a(true, "init", 1);
-      break;
-      if (paramInt1 == 9)
-      {
-        obz.a(true);
-        localIntent.putExtra("from_lock_screen", true);
-        oci.a(localIntent);
-        QLog.d(nji.class.getSimpleName(), 2, "start kandian activity, launch from lock screen");
-      }
-      else
-      {
-        localIntent.putExtra("from_search", false);
-      }
-    }
+    return null;
   }
   
   public static boolean a(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramString)) {
-      if ((!"com.tencent.reading".equalsIgnoreCase(paramString)) && (!"com.tencent.rijvideo".equalsIgnoreCase(paramString)))
+    return a(paramString) == 2;
+  }
+  
+  private String b()
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      return ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).c();
+    }
+    return "";
+  }
+  
+  public static String b(String paramString)
+  {
+    String str = a(paramString);
+    paramString = str;
+    if (!TextUtils.isEmpty(str)) {
+      paramString = str + ".tmp";
+    }
+    return paramString;
+  }
+  
+  private void b()
+  {
+    c("initCacheManager");
+    TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
+    if (localTVK_IProxyFactory != null)
+    {
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr = localTVK_IProxyFactory.getCacheMgr(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new njm(this, null));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setOnPreLoadCompleteCallback(new njn(this, null));
+    }
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo = new TVK_UserInfo(b(), "");
+    this.jdField_a_of_type_Njl = new njl(this, this);
+    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Njl);
+    ThreadManager.executeOnNetWorkThread(new AdvertisementVideoPreloadManager.3(this));
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  private void b(int paramInt)
+  {
+    c("continueDownload queueType:" + paramInt);
+    this.jdField_a_of_type_Int = 0;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask = null;
+      ThreadManager.executeOnNetWorkThread(new AdvertisementVideoPreloadManager.11(this, paramInt));
+      return;
+    }
+  }
+  
+  public static void b(String paramString)
+  {
+    c("clearCacheVideo vid:" + paramString);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      File localFile = new File(b(paramString));
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      paramString = new File(a(paramString));
+      if (paramString.exists()) {
+        paramString.delete();
+      }
+    }
+  }
+  
+  private void c()
+  {
+    c("resetDownload");
+    this.jdField_a_of_type_Int = 0;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask = null;
+      this.jdField_b_of_type_Int = 0;
+      return;
+    }
+  }
+  
+  public static void c(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdvertisementVideoPreloadManager", 2, paramString);
+    }
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_Int == 0) {
+      c("onNetworkChange, no queue is working");
+    }
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask == null)
       {
-        bool1 = bool2;
-        if (!"com.tencent.weishi".equalsIgnoreCase(paramString)) {}
+        c("onNetworkChange, no valid task");
+        return;
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.isNetworkValid())
+      {
+        c("onNetworkChange, vid:" + this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mVideoVid + ", networkType:" + this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mNetworkType + ", valid network, going on");
+        return;
+      }
+      c("onNetworkChange, vid:" + this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mVideoVid + ", networkType:" + this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mNetworkType + ", invalid network, skip to next task");
+    } while (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr == null);
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.stopCacheData(20170807);
+    b(this.jdField_a_of_type_Int);
+  }
+  
+  public void a()
+  {
+    c("installTVKSdk");
+    TVK_SDKMgr.initSdk(this.jdField_a_of_type_AndroidContentContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", b());
+    if (!TVK_SDKMgr.isInstalled(this.jdField_a_of_type_AndroidContentContext))
+    {
+      ThreadManager.post(new AdvertisementVideoPreloadManager.2(this), 8, null, false);
+      return;
+    }
+    b();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      a();
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      c("startVideoDownload queueType:" + paramInt);
+      if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr == null)
+      {
+        c("startVideoDownload cache manager not init!");
+        c();
+        return;
+      }
+      if (paramInt <= this.jdField_a_of_type_Int)
+      {
+        c("startVideoDownload queue(" + this.jdField_a_of_type_Int + ") already run!");
+        return;
+      }
+    }
+    if (this.jdField_a_of_type_Int != 0)
+    {
+      c("startVideoDownload break current queue(" + this.jdField_a_of_type_Int + ")!");
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.stopCacheData(20170807);
+      c();
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask == null)
+      {
+        c("startVideoDownload no task to download");
+        c();
+        return;
+        if (this.jdField_b_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())
+        {
+          this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask = ((PAAdPreloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int));
+          this.jdField_b_of_type_Int += 1;
+          continue;
+          if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)
+          {
+            this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask = ((PAAdPreloadTask)this.jdField_b_of_type_JavaUtilArrayList.remove(0));
+            continue;
+            if (this.c.size() > 0) {
+              this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask = ((PAAdPreloadTask)this.c.remove(0));
+            }
+          }
+        }
       }
       else
       {
-        bool1 = true;
+        this.jdField_a_of_type_Int = paramInt;
+        String str1 = this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mVideoVid;
+        int i;
+        String str2;
+        Object localObject3;
+        if (!TextUtils.isEmpty(str1)) {
+          if (this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mExpireTime > NetConnInfoCenter.getServerTimeMillis())
+          {
+            i = a(str1);
+            c("startVideoDownload vid:" + str1 + ", cacheState:" + i);
+            if (i != 2) {
+              if (this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.isNetworkValid())
+              {
+                str2 = b(str1);
+                localObject3 = new File(str2);
+                boolean bool = ((File)localObject3).exists();
+                if (bool) {}
+              }
+            }
+          }
+        }
+        for (;;)
+        {
+          try
+          {
+            ((File)localObject3).createNewFile();
+            localObject3 = new TVK_PlayerVideoInfo(2, str1, "");
+            HashMap localHashMap = new HashMap();
+            localHashMap.put("shouq_bus_type", "bus_type_pa_advertisement");
+            ((TVK_PlayerVideoInfo)localObject3).setReportInfoMap(localHashMap);
+            ((TVK_PlayerVideoInfo)localObject3).setConfigMap("cache_duration", String.valueOf(-1));
+            ((TVK_PlayerVideoInfo)localObject3).setConfigMap("cache_servers_type", String.valueOf(20170807));
+            ((TVK_PlayerVideoInfo)localObject3).setConfigMap("file_dir", str2);
+            this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.preLoadVideoById(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo, (TVK_PlayerVideoInfo)localObject3, "");
+            c("startVideoDownload vid:" + str1);
+            return;
+          }
+          catch (IOException localIOException)
+          {
+            c("startVideoDownload create tmp file failed for vid:" + str1);
+            continue;
+          }
+          i = bbev.a(BaseApplication.getContext());
+          c("startVideoDownload vid:" + str1 + ", networkType:" + this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mNetworkType + ", curNetType:" + i + ", no valid network, skip to next task");
+          b(paramInt);
+          continue;
+          c("startVideoDownload vid:" + str1 + ", full cached, skip to next task");
+          b(paramInt);
+          continue;
+          c("startVideoDownload vid:" + str1 + ", expireTime:" + this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mExpireTime + ", task expired, clean cache and skip to next task");
+          b(paramInt);
+          if (a(str1) != 0)
+          {
+            ThreadManager.executeOnFileThread(new AdvertisementVideoPreloadManager.10(this, str1));
+            continue;
+            c("startVideoDownload empty vid, skip to next task");
+            b(paramInt);
+          }
+        }
+        switch (paramInt)
+        {
+        }
       }
     }
-    return bool1;
   }
   
-  public static Intent b(Context paramContext, int paramInt1, int paramInt2)
+  public void a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig)
   {
-    Intent localIntent = new Intent(paramContext, SplashActivity.class);
-    localIntent.putExtra("fragment_id", 1);
-    localIntent.putExtra("launch_from", paramInt1);
-    localIntent.putExtra("tab_index", MainFragment.i);
-    localIntent.putExtra("open_kandian_tab_fragment", true);
-    localIntent.putExtra("arg_channel_cover_id", paramInt2);
-    localIntent.setFlags(335544320);
-    Object localObject1;
-    Object localObject2;
-    if (paramInt1 != 9)
+    int j;
+    ArrayList localArrayList;
+    Iterator localIterator;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      localObject1 = localIntent;
-      if (paramInt1 != 6) {}
-    }
-    else
-    {
-      obz.a(true);
-      oci.a(localIntent);
-      localObject2 = obz.a();
-      localObject1 = localIntent;
-      if (localObject2 != null)
-      {
-        localObject1 = localIntent;
-        if (bgmq.k())
+      int i = paramQQAppInterface.getPreferences().getInt("public_account_ad_preload_task", 0);
+      j = paramConfig.version.get();
+      c("handlePreloadTaskFromConfig localVer:" + i + ", serverVer:" + j);
+      if (i != j) {
+        if (paramConfig.msg_content_list.size() > 0)
         {
-          localObject2 = ((KandianMergeManager)((QQAppInterface)localObject2).getManager(162)).a();
-          localObject1 = localIntent;
-          if (localObject2 != null)
+          localArrayList = new ArrayList();
+          localIterator = paramConfig.msg_content_list.get().iterator();
+          if (localIterator.hasNext())
           {
-            localObject1 = localIntent;
-            if (TextUtils.isEmpty(((KandianRedDotInfo)localObject2).extInfo)) {}
+            paramConfig = (ConfigurationService.Content)localIterator.next();
+            if ((paramConfig != null) && (paramConfig.content.has())) {
+              if (paramConfig.compress.get() == 1)
+              {
+                paramConfig = augt.a(paramConfig.content.get().toByteArray());
+                if (paramConfig == null) {
+                  break label500;
+                }
+              }
+            }
           }
         }
       }
@@ -696,274 +397,192 @@ public class nji
     {
       try
       {
-        if (new JSONObject(((KandianRedDotInfo)localObject2).extInfo).optInt("jump_daily_channel", 0) == 1)
+        paramConfig = new String(paramConfig, "UTF-8");
+        if (TextUtils.isEmpty(paramConfig)) {
+          break;
+        }
+        localArrayList.addAll(PAAdPreloadTask.parserConfigTask(paramQQAppInterface.getCurrentAccountUin(), paramConfig));
+        break;
+        paramQQAppInterface = finally;
+        throw paramQQAppInterface;
+      }
+      catch (Exception paramConfig)
+      {
+        QLog.e("AdvertisementVideoPreloadManager", 1, "handlePreloadTaskFromConfig|uncompress failed " + paramConfig);
+        paramConfig = null;
+        continue;
+      }
+      paramConfig = paramConfig.content.get().toStringUtf8();
+      continue;
+      c("handlePreloadTaskFromConfig empty content");
+      break;
+      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr != null))
+      {
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.stopCacheData(20170807);
+        c();
+      }
+      long l = NetConnInfoCenter.getServerTimeMillis();
+      paramConfig = new ArrayList();
+      localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        PAAdPreloadTask localPAAdPreloadTask = (PAAdPreloadTask)localIterator.next();
+        if ((localPAAdPreloadTask.mExpireTime <= l) || (!localArrayList.contains(localPAAdPreloadTask))) {
+          paramConfig.add(localPAAdPreloadTask);
+        }
+      }
+      ThreadManager.executeOnFileThread(new AdvertisementVideoPreloadManager.4(this, paramConfig));
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
+      c("handlePreloadTaskFromConfig new taskSize:" + localArrayList.size());
+      ThreadManager.executeOnSubThread(new AdvertisementVideoPreloadManager.5(this));
+      paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
+      paramQQAppInterface.putInt("public_account_ad_preload_task", j);
+      paramQQAppInterface.apply();
+      ThreadManager.executeOnNetWorkThread(new AdvertisementVideoPreloadManager.6(this));
+      for (;;)
+      {
+        return;
+        c("handlePreloadTaskFromConfig empty config");
+        continue;
+        c("handlePreloadTaskFromConfig same version, no need to update");
+      }
+      label500:
+      paramConfig = null;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    ThreadManager.executeOnSubThread(new AdvertisementVideoPreloadManager.7(this, paramString));
+  }
+  
+  public void a(niv paramniv)
+  {
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    if (paramniv != null) {}
+    for (;;)
+    {
+      niw localniw;
+      try
+      {
+        if ((paramniv.jdField_a_of_type_Nix == null) || (paramniv.jdField_a_of_type_JavaUtilArrayList == null) || (paramniv.jdField_a_of_type_JavaUtilArrayList.size() <= 0))
         {
-          paramInt2 = 1;
-          if (paramInt2 != 0)
+          c("handlePreloadTaskFromMessage invalid item");
+          return;
+        }
+        nix localnix = paramniv.jdField_a_of_type_Nix;
+        localniw = (niw)paramniv.jdField_a_of_type_JavaUtilArrayList.get(0);
+        c("handlePreloadTaskFromMessage msgid:" + paramniv.c + ", vid:" + localniw.b);
+        if (!TextUtils.isEmpty(localniw.b))
+        {
+          PAAdPreloadTask localPAAdPreloadTask = new PAAdPreloadTask();
+          localPAAdPreloadTask.mUserUin = b();
+          localPAAdPreloadTask.mVideoVid = localniw.b;
+          if (this.jdField_b_of_type_JavaUtilArrayList.contains(localPAAdPreloadTask)) {
+            break label309;
+          }
+          localPAAdPreloadTask.mMsgId = paramniv.c;
+          localPAAdPreloadTask.mSource = 2;
+          if (paramniv.jdField_a_of_type_Long > 0L)
           {
-            paramContext = a(paramContext, paramInt1, (KandianRedDotInfo)localObject2);
-            localObject1 = paramContext;
-            return localObject1;
+            l = paramniv.jdField_a_of_type_Long;
+            localPAAdPreloadTask.mReceiveTime = l;
+            localPAAdPreloadTask.mExpireTime = (localPAAdPreloadTask.mReceiveTime + jdField_a_of_type_JavaLangLong.longValue());
+            localPAAdPreloadTask.mPreloadState = 1;
+            localPAAdPreloadTask.mNetworkType = localnix.e;
+            this.jdField_b_of_type_JavaUtilArrayList.add(localPAAdPreloadTask);
+            ThreadManager.executeOnNetWorkThread(new AdvertisementVideoPreloadManager.8(this));
+            c("handlePreloadTaskFromMessage msgid:" + paramniv.c + ", vid:" + localniw.b + ", add to queue");
           }
         }
         else
         {
-          paramInt2 = 0;
-          continue;
-        }
-        paramContext = localIntent;
-      }
-      catch (Exception paramContext)
-      {
-        return localIntent;
-      }
-    }
-  }
-  
-  public static Intent b(Context paramContext, HashMap<String, String> paramHashMap)
-  {
-    ArticleInfo localArticleInfo = new ArticleInfo();
-    Intent localIntent = new Intent(paramContext, FastWebActivity.class);
-    try
-    {
-      Object localObject = (String)paramHashMap.get("strategyId");
-      String str1 = (String)paramHashMap.get("algorithmID");
-      String str2 = (String)paramHashMap.get("url");
-      String str3 = (String)paramHashMap.get("rowkey");
-      paramContext = (String)paramHashMap.get("fromType");
-      paramContext = (String)paramHashMap.get("commenId");
-      if (TextUtils.isEmpty(paramContext))
-      {
-        paramContext = (String)paramHashMap.get("commentId");
-        String str4 = (String)paramHashMap.get("subCommentId");
-        String str5 = (String)paramHashMap.get("jumpCommentType");
-        paramHashMap = (String)paramHashMap.get("isAwesome");
-        if (str3 != null) {
-          localArticleInfo.innerUniqueID = str3;
-        }
-        if (str2 != null) {
-          localArticleInfo.mArticleContentUrl = new String(baaw.decode(str2, 0));
-        }
-        if (localObject != null) {
-          localArticleInfo.mStrategyId = Integer.valueOf((String)localObject).intValue();
-        }
-        if (str1 != null) {
-          localArticleInfo.mAlgorithmID = Long.valueOf(str1).longValue();
-        }
-        localObject = new AnchorData();
-        ((AnchorData)localObject).jdField_a_of_type_JavaLangString = paramContext;
-        ((AnchorData)localObject).jdField_b_of_type_JavaLangString = str4;
-        ((AnchorData)localObject).jdField_b_of_type_Boolean = "0".equals(str5);
-        ((AnchorData)localObject).jdField_a_of_type_Boolean = "1".equals(paramHashMap);
-        localIntent.putExtra("intent_key_anchor_data", (Parcelable)localObject);
-        localIntent.putExtra("fast_web_article_info", localArticleInfo);
-        return localIntent;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      for (;;) {}
-    }
-  }
-  
-  public static void b(Context paramContext, int paramInt)
-  {
-    Intent localIntent = new Intent(paramContext, SplashActivity.class);
-    localIntent.putExtra("fragment_id", 1);
-    localIntent.putExtra("launch_from", paramInt);
-    localIntent.putExtra("tab_index", MainFragment.i);
-    localIntent.putExtra("open_kandian_tab_fragment", true);
-    localIntent.setFlags(335544320);
-    if ((paramInt == 9) || (paramInt == 6))
-    {
-      obz.a(true);
-      oci.a(localIntent);
-    }
-    if (paramContext != null) {
-      paramContext.startActivity(localIntent);
-    }
-  }
-  
-  public static void b(Context paramContext, int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    b(paramContext, paramInt1, paramString, paramInt2, paramInt3, null);
-  }
-  
-  public static void b(Context paramContext, int paramInt1, String paramString, int paramInt2, int paramInt3, Map<String, Object> paramMap)
-  {
-    Intent localIntent = new Intent(paramContext, ReadInJoyVideoSubChannelActivity.class);
-    localIntent.putExtra("channel_id", paramInt1);
-    localIntent.putExtra("channel_name", paramString);
-    localIntent.putExtra("channel_type", paramInt2);
-    localIntent.putExtra("channel_from", paramInt3);
-    if ((paramMap != null) && (!paramMap.isEmpty()))
-    {
-      paramString = new ReadInJoyChannelActivity.SerializableMap();
-      paramString.setMap(paramMap);
-      localIntent.putExtra("channel_map_data", paramString);
-    }
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static void b(Context paramContext, HashMap<String, String> paramHashMap)
-  {
-    if ((paramContext == null) || (paramHashMap == null)) {
-      return;
-    }
-    String str1 = (String)paramHashMap.get("rowKey");
-    String str2 = (String)paramHashMap.get("videoType");
-    String str3 = (String)paramHashMap.get("videoVid");
-    String str4 = (String)paramHashMap.get("videoWidth");
-    String str5 = (String)paramHashMap.get("videoHeight");
-    String str6 = (String)paramHashMap.get("videoDuration");
-    String str7 = (String)paramHashMap.get("title");
-    String str13 = (String)paramHashMap.get("firstPagePicUrl");
-    String str15 = (String)paramHashMap.get("articleContentUrl");
-    String str8 = (String)paramHashMap.get("subscribeID");
-    String str9 = (String)paramHashMap.get("subscribeName");
-    String str10 = (String)paramHashMap.get("sourceFrom");
-    Object localObject = (String)paramHashMap.get("commentId");
-    String str16 = (String)paramHashMap.get("subCommentId");
-    String str17 = (String)paramHashMap.get("isAwesome");
-    String str18 = (String)paramHashMap.get("jumpCommentType");
-    String str11 = (String)paramHashMap.get("strategyId");
-    String str12 = (String)paramHashMap.get("algorithmID");
-    String str14 = (String)paramHashMap.get("channelID");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      AnchorData localAnchorData = new AnchorData();
-      localAnchorData.jdField_a_of_type_JavaLangString = ((String)localObject);
-      localAnchorData.jdField_b_of_type_JavaLangString = str16;
-      localAnchorData.jdField_a_of_type_Boolean = "1".equals(str17);
-      localAnchorData.jdField_b_of_type_Boolean = "0".equals(str18);
-      paramHashMap = new Bundle();
-      paramHashMap.putBoolean("VIDEO_SHOW_COMMENT", true);
-      paramHashMap.putParcelable("VIDEO_COMMENT_ANCHOR", localAnchorData);
-    }
-    for (;;)
-    {
-      localObject = paramHashMap;
-      if (paramHashMap == null) {
-        localObject = new Bundle();
-      }
-      for (;;)
-      {
-        try
-        {
-          paramHashMap = URLDecoder.decode(str15, "utf-8");
-          str13 = URLDecoder.decode(str13, "utf-8");
-          int j = 0;
-          int k = 0;
-          if (str2 != null) {
-            j = Integer.valueOf(str2).intValue();
-          }
-          if (str4 != null) {
-            k = Integer.valueOf(str4).intValue();
-          }
-          if (str5 == null) {
-            break label586;
-          }
-          m = Integer.valueOf(str5).intValue();
-          if (str6 == null) {
-            break label580;
-          }
-          n = Integer.valueOf(str6).intValue();
-          if (TextUtils.isEmpty(str10)) {
-            break label575;
-          }
-          if ("nativeArticleRecommend".equalsIgnoreCase(str10))
-          {
-            i = 10;
-            if (str11 != null) {
-              ((Bundle)localObject).putInt("VIDEO_STRATEGY_ID", Integer.valueOf(str11).intValue());
-            }
-            if (str12 != null) {
-              ((Bundle)localObject).putLong("VIDEO_ALGORITHM_ID", Long.valueOf(str12).longValue());
-            }
-            if (str14 != null) {
-              ((Bundle)localObject).putInt("REPORT_VIDEO_FEEDS_CHANNEL_ID", Integer.valueOf(str14).intValue());
-            }
-            qcn.a((Activity)paramContext, (Bundle)localObject, i, str1, j, str3, k, m, n, str7, str13, paramHashMap, str9, str8, 0L, false, 0L, 0, null, null, null, null, null);
-            return;
-          }
-        }
-        catch (Exception paramContext)
-        {
-          QLog.e("ReadInJoyActivityHelper", 1, "openFullVideoPlayerror ." + paramContext.toString());
           return;
         }
-        int i = Integer.valueOf(str10).intValue();
-        continue;
-        label575:
-        i = -1;
-        continue;
-        label580:
-        int n = 0;
-        continue;
-        label586:
-        int m = 0;
       }
-      paramHashMap = null;
+      finally {}
+      long l = NetConnInfoCenter.getServerTimeMillis();
+      continue;
+      label309:
+      c("handlePreloadTaskFromMessage msgid:" + paramniv.c + ", vid:" + localniw.b + ", exist in queue, ignore");
     }
   }
   
-  public static void b(Context paramContext, boolean paramBoolean)
+  public void a(niv paramniv, int paramInt)
   {
-    Intent localIntent = new Intent(paramContext, ReadInJoySelfActivity.class);
-    localIntent.putExtra("redTouch", paramBoolean);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static void c(Context paramContext, HashMap<String, String> paramHashMap)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramHashMap == null)
-    {
-      QLog.d("ReadInJoyActivityHelper", 1, new Object[] { "openDailyDynamicChildFeeds log=", localStringBuilder.toString() });
-      return;
-    }
-    label243:
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    if (paramniv != null) {}
     for (;;)
     {
+      String str;
       try
       {
-        String str1 = (String)paramHashMap.get("channelID");
-        String str2 = (String)paramHashMap.get("channelName");
-        if (paramContext != null) {
-          break label243;
+        if ((paramniv.jdField_a_of_type_Nix == null) || (paramniv.jdField_a_of_type_JavaUtilArrayList == null) || (paramniv.jdField_a_of_type_JavaUtilArrayList.size() <= paramInt))
+        {
+          c("handlePreloadTaskFromPlay invalid item");
+          return;
         }
-        paramContext = BaseActivity.sTopActivity;
-        if ((paramContext == null) || (TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {
-          break;
+        str = ((niw)paramniv.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).b;
+        c("handlePreloadTaskFromPlay msgid:" + paramniv.c + ", index:" + paramInt + ", vid:" + str);
+        if (!TextUtils.isEmpty(str))
+        {
+          PAAdPreloadTask localPAAdPreloadTask = new PAAdPreloadTask();
+          localPAAdPreloadTask.mUserUin = b();
+          localPAAdPreloadTask.mVideoVid = str;
+          if (this.c.contains(localPAAdPreloadTask)) {
+            break label317;
+          }
+          localPAAdPreloadTask.mMsgId = paramniv.c;
+          localPAAdPreloadTask.mSource = 3;
+          if (paramniv.jdField_a_of_type_Long > 0L)
+          {
+            l = paramniv.jdField_a_of_type_Long;
+            localPAAdPreloadTask.mReceiveTime = l;
+            localPAAdPreloadTask.mExpireTime = (localPAAdPreloadTask.mReceiveTime + jdField_a_of_type_JavaLangLong.longValue());
+            localPAAdPreloadTask.mPreloadState = 1;
+            localPAAdPreloadTask.mNetworkType = paramniv.jdField_a_of_type_Nix.e;
+            this.c.add(localPAAdPreloadTask);
+            ThreadManager.executeOnNetWorkThread(new AdvertisementVideoPreloadManager.9(this));
+            c("handlePreloadTaskFromPlay msgid:" + paramniv.c + ", index:" + paramInt + ", vid:" + str + ", add to queue");
+          }
         }
-        Intent localIntent = new Intent(paramContext, ReadInJoyChannelActivity.class);
-        localIntent.putExtra("channel_id", Integer.valueOf(str1));
-        localIntent.putExtra("channel_name", str2);
-        localIntent.putExtra("channel_map_data", paramHashMap);
-        localIntent.putExtra("is_daily_dynamic_child_channel", true);
-        paramContext.startActivity(localIntent);
-        if ((paramContext instanceof Activity)) {
-          ((Activity)paramContext).overridePendingTransition(2130771981, 0);
+        else
+        {
+          return;
         }
-        paramContext = (String)paramHashMap.get("requestData");
-        if (!TextUtils.isEmpty(paramContext)) {
-          bgmq.a("DAILY_CHILD_FEEDS_REQUEST_CONFIG" + str1, paramContext);
-        }
-        localStringBuilder.append(str1);
-        localStringBuilder.append(str2);
-        localStringBuilder.append(paramContext);
       }
-      catch (Exception paramContext)
-      {
-        localStringBuilder.append(paramContext.toString());
-      }
-      break;
+      finally {}
+      long l = NetConnInfoCenter.getServerTimeMillis();
+      continue;
+      label317:
+      c("handlePreloadTaskFromPlay msgid:" + paramniv.c + ", index:" + paramInt + ", vid:" + str + ", exist in queue, ignore");
     }
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_b_of_type_JavaUtilArrayList.clear();
+    this.c.clear();
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr != null)
+    {
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.stopCacheData(20170807);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.removePreloadCallback();
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setOnPreLoadCompleteCallback(null);
+    }
+    if (this.jdField_a_of_type_Njl != null)
+    {
+      this.jdField_a_of_type_Njl.a();
+      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Njl);
+      this.jdField_a_of_type_Njl = null;
+    }
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nji
  * JD-Core Version:    0.7.0.1
  */

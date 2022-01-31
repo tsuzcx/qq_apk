@@ -1,61 +1,21 @@
-import android.support.v4.view.ViewCompat;
+import android.app.Dialog;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
-import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
 
 public class afhw
+  implements View.OnClickListener
 {
-  public static boolean a(View paramView)
+  public afhw(Face2FaceAddContactFragment paramFace2FaceAddContactFragment, Dialog paramDialog) {}
+  
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramView instanceof HeaderScrollView)) {
-      if (!((HeaderScrollView)paramView).b()) {
-        bool1 = true;
-      }
-    }
-    do
-    {
-      do
-      {
-        View localView;
-        do
-        {
-          for (;;)
-          {
-            return bool1;
-            bool1 = false;
-          }
-          if (!(paramView instanceof ViewGroup)) {
-            break;
-          }
-          localView = ((ViewGroup)paramView).getChildAt(1);
-          if ((localView == null) || (!(localView instanceof HeaderScrollView))) {
-            break label116;
-          }
-          bool1 = bool2;
-        } while (!((HeaderScrollView)localView).b());
-        return false;
-        if (!(paramView instanceof AbsListView)) {
-          break label116;
-        }
-        paramView = (AbsListView)paramView;
-        if (paramView.getChildCount() <= 0) {
-          break;
-        }
-        bool1 = bool2;
-      } while (paramView.getFirstVisiblePosition() > 0);
-      bool1 = bool2;
-    } while (paramView.getChildAt(0).getTop() < paramView.getPaddingTop());
-    return false;
-    label116:
-    return ViewCompat.canScrollVertically(paramView, -1);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afhw
  * JD-Core Version:    0.7.0.1
  */

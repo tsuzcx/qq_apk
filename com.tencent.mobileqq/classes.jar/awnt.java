@@ -1,48 +1,54 @@
+import android.view.View;
+import com.tencent.mobileqq.search.activity.MessageSearchActivity;
+import java.util.List;
+
 public class awnt
-  implements ajfe
+  implements awof
 {
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString) {}
+  public static final String a;
+  private List<awog> a;
+  private String b;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3, String paramString, long paramLong) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt) {}
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  static
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramObject = (Object[])paramObject;
-          } while ((paramObject == null) || (paramObject.length != 3));
-          a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-          return;
-          paramObject = (Object[])paramObject;
-        } while ((paramObject == null) || (paramObject.length != 5));
-        a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3], ((Long)paramObject[4]).longValue());
-        return;
-        paramObject = (Object[])paramObject;
-      } while ((paramObject == null) || (paramObject.length != 3));
-      a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue());
-      return;
-      paramObject = (Object[])paramObject;
-    } while ((paramObject == null) || (paramObject.length != 3));
-    b(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+    jdField_a_of_type_JavaLangString = ajyc.a(2131705387);
+  }
+  
+  public awnt(List<awog> paramList, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramString;
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<awog> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    awvy.a(this.b, 40, 0, paramView);
+    MessageSearchActivity.a(paramView.getContext(), this.b);
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awnt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,80 +1,78 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class amwh
-  extends amwl
+  extends ampb<amwi>
 {
-  public amwh(MsgBoxListActivity paramMsgBoxListActivity) {}
-  
-  protected void a(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  public int a()
   {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgBoxListActivity", 2, "onGetInteractLastFeed = false");
-      }
-    }
-    for (;;)
+    return 535;
+  }
+  
+  @NonNull
+  public amwi a(int paramInt)
+  {
+    return new amwi();
+  }
+  
+  @Nullable
+  public amwi a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null))
     {
-      return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 1);
+      amwi localamwi = amwi.a(paramArrayOfampi[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherBusinessConfProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
       }
-      while (!this.a.isFinishing())
-      {
-        this.a.a();
-        return;
-        if (this.a.app.a().isInMsgBoxRecentList(ajed.ak, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(ajed.ak, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, ajed.ak, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            ahcq.b(this.a.app, ajed.ak, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(ajed.ak, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
-      }
+      return localamwi;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessConfProcessor", 2, "onParsed is null");
+    }
+    return null;
+  }
+  
+  public Class<amwi> a()
+  {
+    return amwi.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
     }
   }
   
-  protected void b(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  public void a(amwi paramamwi)
   {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgBoxListActivity", 2, "onGetInteractLastFeed = false");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessConfProcessor", 2, "onUpdate " + paramamwi.toString());
     }
-    for (;;)
-    {
-      return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 2);
-      }
-      while (!this.a.isFinishing())
-      {
-        this.a.a();
-        return;
-        if (this.a.app.a().isInMsgBoxRecentList(ajed.al, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(ajed.al, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, ajed.al, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            ahcq.b(this.a.app, ajed.al, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(ajed.al, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
-      }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessConfProcessor", 2, "migrateOldVersion");
     }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amwh
  * JD-Core Version:    0.7.0.1
  */

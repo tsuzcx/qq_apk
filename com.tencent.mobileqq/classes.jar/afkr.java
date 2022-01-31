@@ -1,96 +1,40 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.teamwork.DocsGrayTipsInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
 
 public class afkr
-  extends axfi
+  extends afjv
+  implements View.OnClickListener
 {
-  public afkr(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
-  
-  public void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  public afkr(Context paramContext, QQAppInterface paramQQAppInterface, aipp paramaipp, atyy paramatyy)
   {
-    try
+    super(paramContext, paramQQAppInterface, paramaipp, paramatyy);
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    afks localafks;
+    if ((paramView == null) || (!(paramView.getTag() instanceof afks)))
     {
-      Object localObject = (DocsGrayTipsInfo)paramArrayOfObject[0];
-      String str = (String)paramArrayOfObject[1];
-      long l = ((Long)paramArrayOfObject[2]).longValue();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131654249).equals(str))
-      {
-        paramArrayOfObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((DocsGrayTipsInfo)localObject).a, 0, l);
-        if ((paramArrayOfObject != null) && ((paramArrayOfObject instanceof MessageForUniteGrayTip)))
-        {
-          localObject = (MessageForUniteGrayTip)paramArrayOfObject;
-          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a != null)) {
-            ((MessageForUniteGrayTip)localObject).tipParam.a.clear();
-          }
-          ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
-          localObject = new Message();
-          Bundle localBundle = new Bundle();
-          localBundle.putLong("messageUniseq", paramArrayOfObject.uniseq);
-          ((Message)localObject).setData(localBundle);
-          ((Message)localObject).what = 78;
-          ((Message)localObject).arg1 = 0;
-          this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
-        }
-      }
-      bbmy.a(this.a.getActivity(), str, 0).a();
-      QLog.i(axdz.i, 2, " onGetUserAuth  isSuccess = " + paramBoolean + " tips =" + str);
-      return;
+      localafks = new afks();
+      paramView = LayoutInflater.from(this.a).inflate(2131560924, null);
+      paramView.setTag(localafks);
     }
-    catch (Exception paramArrayOfObject)
+    for (;;)
     {
-      QLog.e(axdz.i, 2, " onGetUserAuth  exception = " + paramArrayOfObject.toString());
+      paramView.setOnClickListener(this);
+      return paramView;
+      localafks = (afks)paramView.getTag();
     }
   }
   
-  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    try
-    {
-      QLog.i(axdz.i, 2, " onSetUserAuth  isSuccess = " + paramBoolean);
-      Object localObject = (DocsGrayTipsInfo)paramArrayOfObject[0];
-      String str = (String)paramArrayOfObject[1];
-      long l = ((Long)paramArrayOfObject[2]).longValue();
-      if (paramBoolean)
-      {
-        paramArrayOfObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((DocsGrayTipsInfo)localObject).a, 0, l);
-        if ((paramArrayOfObject != null) && ((paramArrayOfObject instanceof MessageForUniteGrayTip)))
-        {
-          localObject = (MessageForUniteGrayTip)paramArrayOfObject;
-          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a != null)) {
-            ((MessageForUniteGrayTip)localObject).tipParam.a.clear();
-          }
-          ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
-          localObject = new Message();
-          Bundle localBundle = new Bundle();
-          localBundle.putLong("messageUniseq", paramArrayOfObject.uniseq);
-          ((Message)localObject).setData(localBundle);
-          ((Message)localObject).what = 78;
-          ((Message)localObject).arg1 = 0;
-          this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
-        }
-      }
-      bbmy.a(this.a.getActivity(), str, 0).a();
-      return;
-    }
-    catch (Exception paramArrayOfObject)
-    {
-      QLog.e(axdz.i, 1, " onSetUserAuth  exception  = " + paramArrayOfObject.toString());
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afkr
  * JD-Core Version:    0.7.0.1
  */

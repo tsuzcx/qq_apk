@@ -1,65 +1,87 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 
 public class qex
-  implements qbd
 {
-  private qex(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  private int jdField_a_of_type_Int = 9;
+  private long[] jdField_a_of_type_ArrayOfLong = new long[this.jdField_a_of_type_Int];
+  private long[] b = new long[this.jdField_a_of_type_Int];
+  private long[] c = new long[this.jdField_a_of_type_Int];
+  private long[] d = new long[this.jdField_a_of_type_Int];
+  private long[] e = new long[this.jdField_a_of_type_Int];
+  private long[] f = new long[this.jdField_a_of_type_Int];
   
-  public void a(boolean paramBoolean)
+  public qex(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  
+  public void a(int paramInt, long paramLong)
   {
-    boolean bool2 = true;
-    VideoFeedsRecyclerView localVideoFeedsRecyclerView;
-    if (VideoFeedsRecommendFragment.a(this.a) != null)
-    {
-      VideoFeedsRecommendFragment.a(this.a).a.d(paramBoolean);
-      if ((!VideoFeedsRecommendFragment.a(this.a).b) && ((VideoFeedsRecommendFragment.a(this.a).itemView.getParent() instanceof VideoFeedsRecyclerView)))
-      {
-        localVideoFeedsRecyclerView = (VideoFeedsRecyclerView)VideoFeedsRecommendFragment.a(this.a).itemView.getParent();
-        if (paramBoolean) {
-          break label201;
-        }
-        bool1 = true;
-        localVideoFeedsRecyclerView.setScrollable(bool1);
-      }
-    }
-    if (paramBoolean)
-    {
-      VideoFeedsRecommendFragment.a(this.a).setNeedDetectOrientation(this.a.getActivity(), false);
-      label112:
-      if (!VideoFeedsRecommendFragment.b(this.a))
-      {
-        localVideoFeedsRecyclerView = VideoFeedsRecommendFragment.a(this.a);
-        if (paramBoolean) {
-          break label223;
-        }
-      }
-    }
-    label201:
-    label223:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localVideoFeedsRecyclerView.setScrollable(bool1);
-      if ((!paramBoolean) && (VideoFeedsRecommendFragment.c(this.a)))
-      {
-        VideoFeedsRecommendFragment.a(this.a).a();
-        VideoFeedsRecommendFragment.a(this.a, false);
-      }
-      if (VideoFeedsRecommendFragment.a(this.a) != null) {
-        VideoFeedsRecommendFragment.a(this.a).a(paramBoolean);
-      }
-      return;
-      bool1 = false;
-      break;
-      VideoFeedsRecommendFragment.a(this.a, VideoFeedsRecommendFragment.a(this.a));
-      break label112;
+    if (paramInt < this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
     }
   }
   
-  public void b()
+  public long[] a()
   {
-    this.a.b(true);
+    return this.c;
+  }
+  
+  public void b(int paramInt, long paramLong)
+  {
+    if (paramInt < this.jdField_a_of_type_Int) {
+      this.b[paramInt] = paramLong;
+    }
+  }
+  
+  public long[] b()
+  {
+    return this.d;
+  }
+  
+  public void c(int paramInt, long paramLong)
+  {
+    if (paramInt < this.jdField_a_of_type_Int) {
+      this.c[paramInt] = paramLong;
+    }
+  }
+  
+  public long[] c()
+  {
+    return this.b;
+  }
+  
+  public void d(int paramInt, long paramLong)
+  {
+    if (paramInt < this.jdField_a_of_type_Int) {
+      this.d[paramInt] = paramLong;
+    }
+  }
+  
+  public long[] d()
+  {
+    return this.jdField_a_of_type_ArrayOfLong;
+  }
+  
+  public void e(int paramInt, long paramLong)
+  {
+    if (paramInt < this.jdField_a_of_type_Int) {
+      this.e[paramInt] = paramLong;
+    }
+  }
+  
+  public long[] e()
+  {
+    return this.f;
+  }
+  
+  public void f(int paramInt, long paramLong)
+  {
+    if (paramInt < this.jdField_a_of_type_Int) {
+      this.f[paramInt] = paramLong;
+    }
+  }
+  
+  public long[] f()
+  {
+    return this.e;
   }
 }
 

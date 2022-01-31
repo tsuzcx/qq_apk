@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.shortvideo;
 
-import awgg;
+import axfo;
 
 final class VideoEnvironment$3
   implements Runnable
 {
-  VideoEnvironment$3(awgg paramawgg, boolean paramBoolean) {}
+  VideoEnvironment$3(axfo paramaxfo, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Awgg != null) {
-      this.jdField_a_of_type_Awgg.a(this.jdField_a_of_type_Boolean);
+    if (this.jdField_a_of_type_Axfo != null) {
+      this.jdField_a_of_type_Axfo.a(this.jdField_a_of_type_Boolean);
     }
   }
 }

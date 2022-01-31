@@ -1,55 +1,13 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class zza
-  implements adbt
+public abstract class zza
 {
-  public zza(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
-  
-  public void a()
-  {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkFullScreenAppActivity", 2, "arkview loadSucc: " + ArkFullScreenAppActivity.a(this.a));
-    }
-    Object localObject;
-    boolean bool;
-    if (ArkFullScreenAppActivity.a(this.a) != null)
-    {
-      localObject = ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Adaj;
-      if (localObject != null)
-      {
-        if ((!((adaj)localObject).checkShare()) || (!ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Boolean)) {
-          break label135;
-        }
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.i("ArkFullScreenAppActivity", 2, "supportShare: " + bool);
-        }
-        localObject = this.a.rightViewImg;
-        if (!bool) {
-          break label140;
-        }
-      }
-    }
-    for (;;)
-    {
-      ((ImageView)localObject).setVisibility(i);
-      return;
-      label135:
-      bool = false;
-      break;
-      label140:
-      i = 4;
-    }
-  }
-  
-  public void b() {}
+  public static int a;
+  public static String a = "http://zyjc.sec.qq.com/config?b=";
+  public static String b = "http://zyjc.sec.qq.com/reportFixer.php";
+  public static String c = "/sdcard/";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zza
  * JD-Core Version:    0.7.0.1
  */

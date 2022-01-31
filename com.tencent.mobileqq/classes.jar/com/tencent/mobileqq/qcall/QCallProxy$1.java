@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.qcall;
 
-import aufp;
+import avev;
 import com.tencent.qphone.base.util.QLog;
 
 public class QCallProxy$1
   implements Runnable
 {
-  public QCallProxy$1(aufp paramaufp) {}
+  public QCallProxy$1(avev paramavev) {}
   
   public void run()
   {

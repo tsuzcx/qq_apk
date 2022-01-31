@@ -1,17 +1,27 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView.1.1;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class tqz
-  implements tsw
+class tqz
+  extends tpm
 {
-  public tqz(TextureVideoView paramTextureVideoView) {}
-  
-  @TargetApi(15)
-  public void a(tso paramtso, int paramInt1, int paramInt2)
+  tqz(tqk paramtqk, StoryVideoItem paramStoryVideoItem, trs paramtrs)
   {
-    this.a.getHandler().post(new TextureVideoView.1.1(this, paramtso));
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    String str = (String)a("result");
+    vxs.a(str);
+    vxs.a(this.jdField_a_of_type_Trs.d);
+    if (this.jdField_a_of_type_Trs.d == null)
+    {
+      this.jdField_a_of_type_Trs.d = "";
+      veg.c(this.b, "imageLocalPath is null", new Throwable());
+    }
+    a("DownloadPic2FileJob_iiu", str);
+    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Trs.d);
+    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Trs.a));
+    return true;
   }
 }
 

@@ -1,22 +1,25 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.qphone.base.util.QLog;
 
-public class plu
-  implements begw
+class plu
+  implements pca
 {
-  public plu(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  plu(plp paramplp, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean);
     }
-    for (;;)
+    if (paramBoolean)
     {
-      ComponentHeaderTopicRecommend.a(this.a).dismiss();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = false;
+      plp.a(this.jdField_a_of_type_Plp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      plp.a(this.jdField_a_of_type_Plp).notifyDataSetChanged();
       return;
-      ComponentHeaderTopicRecommend.a(this.a, false);
     }
+    bcpw.a(plp.c(this.jdField_a_of_type_Plp).getContext(), 1, 2131718502, 0).a();
   }
 }
 

@@ -1,35 +1,15 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.View;
-import android.view.Window;
-import android.widget.FrameLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
 public class mfu
-  extends Dialog
+  implements DialogInterface.OnClickListener
 {
-  public mfu(Context paramContext, boolean paramBoolean) {}
+  public mfu(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.getWindow().setGravity(17);
-    super.setContentView(2131494022);
-  }
-  
-  public void a(View paramView, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      b();
-    }
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131306819);
-    localFrameLayout.setOnClickListener(new mfv(this));
-    if (paramView != null) {
-      localFrameLayout.addView(paramView);
-    }
-  }
-  
-  void b()
-  {
-    findViewById(2131306818).setOnClickListener(new mfw(this));
+    paramDialogInterface.dismiss();
   }
 }
 

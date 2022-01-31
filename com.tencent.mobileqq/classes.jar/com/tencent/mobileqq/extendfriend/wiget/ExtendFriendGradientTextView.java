@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import aciy;
+import actn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -25,7 +25,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bajq;
+import bbkx;
 import com.tencent.mobileqq.R.styleable;
 import java.util.HashMap;
 
@@ -65,7 +65,7 @@ public class ExtendFriendGradientTextView
   private Bitmap a(StaticLayout paramStaticLayout)
   {
     Bitmap localBitmap = Bitmap.createBitmap(paramStaticLayout.getWidth(), paramStaticLayout.getHeight(), Bitmap.Config.ARGB_8888);
-    localBitmap.setDensity((int)bajq.c());
+    localBitmap.setDensity((int)bbkx.c());
     paramStaticLayout.draw(new Canvas(localBitmap));
     return localBitmap;
   }
@@ -86,7 +86,7 @@ public class ExtendFriendGradientTextView
   public Bitmap a(Bitmap paramBitmap)
   {
     Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
-    localBitmap.setDensity((int)bajq.c());
+    localBitmap.setDensity((int)bbkx.c());
     Object localObject = new Shader[2];
     localObject[0] = new BitmapShader(paramBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
     localObject[1] = new LinearGradient(0.0F, 0.0F, 0.0F, paramBitmap.getHeight(), -16777216, 0, Shader.TileMode.CLAMP);
@@ -110,7 +110,7 @@ public class ExtendFriendGradientTextView
       setLayerType(1, null);
     }
     this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.c = (getResources().getDisplayMetrics().widthPixels - aciy.a(26.0F, getResources()) * 2);
+    this.c = (getResources().getDisplayMetrics().widthPixels - actn.a(26.0F, getResources()) * 2);
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap(12);
   }
   
@@ -170,7 +170,7 @@ public class ExtendFriendGradientTextView
     if (this.jdField_a_of_type_AndroidTextStaticLayout != null)
     {
       paramInt1 = getResources().getDisplayMetrics().widthPixels;
-      aciy.a(26.0F, getResources());
+      actn.a(26.0F, getResources());
       setMeasuredDimension(this.jdField_a_of_type_AndroidTextStaticLayout.getWidth(), this.jdField_a_of_type_AndroidTextStaticLayout.getHeight());
     }
   }

@@ -1,32 +1,26 @@
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.open.agent.TroopAbilityPreVerificationFragment;
-import com.tencent.qphone.base.util.QLog;
-
 public class bbzm
-  extends mps
 {
-  public bbzm(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c = 2;
+  public int d;
+  public int e;
+  public int f;
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public bbzm(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    QLog.d("TroopAbility.PreVerification", 1, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID);
-    if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-    {
-      if (!paramOpenID.openID.equals(this.a.b))
-      {
-        this.a.d();
-        TroopAbilityPreVerificationFragment.a(this.a);
-        return;
-      }
-      this.a.c();
-      return;
-    }
-    this.a.c(ajjy.a(2131649340));
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.f = paramInt4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbzm
  * JD-Core Version:    0.7.0.1
  */

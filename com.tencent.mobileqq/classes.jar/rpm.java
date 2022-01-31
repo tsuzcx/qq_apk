@@ -1,12 +1,54 @@
-import android.graphics.drawable.Drawable;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class rpm
+  extends BroadcastReceiver
 {
-  int jdField_a_of_type_Int;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
+  private String jdField_a_of_type_JavaLangString;
+  
+  private rpm(rpl paramrpl) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyGlobalReporter", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON appstatus=" + rpl.a(this.jdField_a_of_type_Rpl));
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
+              break;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadInJoyGlobalReporter", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF appstatus = " + rpl.a(this.jdField_a_of_type_Rpl));
+            }
+          } while (rpl.a(this.jdField_a_of_type_Rpl) != 2);
+          this.jdField_a_of_type_Rpl.a();
+          this.jdField_a_of_type_Rpl.c();
+          return;
+        } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyGlobalReporter", 2, "ScreenBroadcastReceiver ACTION_USER_PRESENT app status=" + rpl.a(this.jdField_a_of_type_Rpl));
+        }
+      } while ((rpl.a(this.jdField_a_of_type_Rpl) != 2) || (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)));
+      paramContext = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    } while (paramContext == null);
+    this.jdField_a_of_type_Rpl.a(paramContext, NetConnInfoCenter.getServerTimeMillis());
+  }
 }
 
 

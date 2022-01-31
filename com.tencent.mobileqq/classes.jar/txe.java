@@ -1,26 +1,52 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 class txe
-  extends mmn
+  extends SimpleObserver<List<tsr>>
 {
-  txe(txb paramtxb, boolean paramBoolean) {}
+  txe(txd paramtxd, tww paramtww) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(List<tsr> paramList)
   {
-    if (paramInt != 0)
+    ArrayList localArrayList = new ArrayList();
+    twp localtwp = new twp(txd.a(this.jdField_a_of_type_Txd));
+    localtwp.jdField_a_of_type_JavaUtilList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(3, bool);
-        this.a.a(0, this.a.a.getString(2131654637));
-        return;
-      }
+      tsr localtsr = (tsr)localIterator.next();
+      String str = localtsr.jdField_a_of_type_JavaLangString;
+      localtwp.jdField_a_of_type_JavaUtilMap.put(localtsr.b, str);
+      localtwp.jdField_a_of_type_JavaUtilList.add(localtsr.b);
     }
-    ((sga)this.a.a.app.getManager(181)).b(this.b);
+    paramList = txb.a(paramList);
+    if ((paramList != null) && (!txd.a(this.jdField_a_of_type_Txd).a())) {
+      localtwp.jdField_a_of_type_JavaLangString = paramList.b;
+    }
+    localArrayList.add(localtwp);
+    paramList = this.jdField_a_of_type_Tww;
+    if (!txd.a(this.jdField_a_of_type_Txd).a()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramList.a(localArrayList, bool);
+      return;
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    int i = 0;
+    if ((paramError instanceof ErrorMessage)) {
+      i = ((ErrorMessage)paramError).errorCode;
+    }
+    paramError = new ArrayList();
+    paramError.add(txd.a(this.jdField_a_of_type_Txd));
+    this.jdField_a_of_type_Tww.a(new ErrorMessage(i, "fail"), paramError);
   }
 }
 

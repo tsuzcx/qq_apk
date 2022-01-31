@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import azue;
+import bavi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -24,15 +24,15 @@ class LoadingFragment$1
     try
     {
       int i = DisplayUtil.dip2px(BaseApplicationImpl.getContext(), 60.0F);
-      Object localObject1 = this.this$0.getResources().getDrawable(2130847244);
+      Object localObject1 = this.this$0.getResources().getDrawable(2130840788);
       Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = i;
       ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = i;
       ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
       ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
       localObject1 = URLDrawable.getDrawable(URLDecoder.decode(LoadingFragment.access$000(this.this$0).config.iconUrl), (URLDrawable.URLDrawableOptions)localObject2);
-      ((URLDrawable)localObject1).setTag(azue.b(i, i, 40));
-      ((URLDrawable)localObject1).setDecodeHandler(azue.i);
+      ((URLDrawable)localObject1).setTag(bavi.b(i, i, 40));
+      ((URLDrawable)localObject1).setDecodeHandler(bavi.i);
       localObject2 = Message.obtain();
       ((Message)localObject2).what = 7;
       ((Message)localObject2).obj = localObject1;

@@ -1,27 +1,46 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.av.VideoController;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.qphone.base.util.QLog;
 
 public class lqn
-  implements View.OnClickListener
 {
-  public lqn(AVActivity paramAVActivity, String paramString, long paramLong) {}
-  
-  public void onClick(View paramView)
+  public static void a(boolean paramBoolean)
   {
-    lqb.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1044);
-    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(2, false);
-    kxl.e(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvVideoController.a().d) + "");
-    if (AudioHelper.e()) {
-      QLog.w(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "qav_double_screen_notify, click[" + this.jdField_a_of_type_JavaLangString + "], seq[" + this.jdField_a_of_type_Long + "]");
+    VideoController.a().k(paramBoolean);
+    if (VideoController.a().j() == VideoController.r)
+    {
+      QLog.i("RenderUtils", 1, "setAEDetectInited, init FaceSDK falied.");
+      ltx.a();
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      new lrz(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, false, 4).a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    }
+  }
+  
+  public static boolean a(PendantItem paramPendantItem1, PendantItem paramPendantItem2)
+  {
+    if ((paramPendantItem1 == null) && (paramPendantItem2 == null)) {}
+    do
+    {
+      return true;
+      if ((paramPendantItem1 == null) || (paramPendantItem2 == null)) {
+        break;
+      }
+    } while ((paramPendantItem1.getId() == null) || (paramPendantItem2.getId() == null) || (paramPendantItem1.getId().equalsIgnoreCase(paramPendantItem2.getId())));
+    return false;
+    return false;
+  }
+  
+  public static boolean a(FilterDesc paramFilterDesc1, FilterDesc paramFilterDesc2)
+  {
+    if ((paramFilterDesc1 == null) && (paramFilterDesc2 == null)) {}
+    do
+    {
+      return true;
+      if ((paramFilterDesc1 == null) || (paramFilterDesc2 == null)) {
+        break;
+      }
+    } while ((paramFilterDesc1.name == null) || (paramFilterDesc2.name == null) || (paramFilterDesc1.name.equalsIgnoreCase(paramFilterDesc2.name)));
+    return false;
+    return false;
   }
 }
 

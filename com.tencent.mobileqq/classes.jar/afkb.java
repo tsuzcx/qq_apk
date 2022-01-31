@@ -1,32 +1,18 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
-public class afkb
-  implements afpv
+class afkb
+  extends afjx
 {
-  public afkb(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.k();
-      return;
-    case 3: 
-      this.a.l();
-      return;
-    case 2: 
-      this.a.m();
-      return;
-    }
-    this.a.n();
-  }
+  public ImageButton a;
+  public TextView a;
+  public Button b;
+  public TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afkb
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import qtz;
+import rgl;
 
 public class ReadinjoyClipboardEditText
   extends EditText
 {
-  private qtz a;
+  private rgl a;
   
   public ReadinjoyClipboardEditText(Context paramContext)
   {
@@ -49,9 +49,9 @@ public class ReadinjoyClipboardEditText
     }
   }
   
-  public void setClipboardCallBack(qtz paramqtz)
+  public void setClipboardCallBack(rgl paramrgl)
   {
-    this.a = paramqtz;
+    this.a = paramrgl;
   }
 }
 

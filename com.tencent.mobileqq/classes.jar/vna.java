@@ -1,14 +1,19 @@
-class vna
+import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
+import android.view.animation.AccelerateDecelerateInterpolator;
+
+@TargetApi(11)
+public class vna
 {
-  public final int a;
-  public final String a;
-  public final String b;
-  
-  public vna(int paramInt, String paramString1, String paramString2)
+  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, vnd paramvnd)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    float f = (paramFloat2 - paramFloat1) / 5.0F;
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2, paramFloat2 - 3.0F * f, paramFloat2, paramFloat2 - f, paramFloat2 });
+    localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+    localValueAnimator.addUpdateListener(new vnb(paramvnd));
+    localValueAnimator.addListener(new vnc(paramvnd, localValueAnimator));
+    localValueAnimator.setDuration(paramLong);
+    return localValueAnimator;
   }
 }
 

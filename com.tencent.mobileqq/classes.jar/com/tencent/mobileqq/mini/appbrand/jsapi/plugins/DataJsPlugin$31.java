@@ -1,29 +1,24 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajed;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.qphone.base.util.QLog;
+import ajsf;
+import bbdj;
 import java.io.File;
 
 class DataJsPlugin$31
-  implements ThreadExcutor.IThreadListener
+  implements Runnable
 {
-  DataJsPlugin$31(DataJsPlugin paramDataJsPlugin, String paramString1, String paramString2, int paramInt) {}
+  DataJsPlugin$31(DataJsPlugin paramDataJsPlugin, File paramFile, String paramString) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public void run()
   {
-    String str = ajed.ba + this.val$fileName;
-    if (new File(str).exists())
+    File localFile = new File(ajsf.bc);
+    localFile.mkdirs();
+    if (this.val$localPic.exists())
     {
-      DataJsPlugin.access$900(this.this$0, this.val$title, str, this.val$shareType);
-      return;
+      localFile = new File(localFile, this.val$fileName);
+      bbdj.a(this.val$localPic, localFile);
     }
-    QLog.e("[mini] DataJsPlugin", 4, "shareLocalPicMessage: realPicFile is not exist:" + str);
   }
-  
-  public void onPreRun() {}
 }
 
 

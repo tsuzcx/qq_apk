@@ -1,18 +1,13 @@
-import android.view.View;
-
-public abstract interface benr
+public class benr
 {
-  public abstract void a(View paramView);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a(View paramView);
-  
-  public abstract void e();
+  public static void a(String paramString, bent parambent)
+  {
+    new bens(parambent).execute(new String[] { paramString });
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     benr
  * JD-Core Version:    0.7.0.1
  */

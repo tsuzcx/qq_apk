@@ -1,49 +1,31 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceStruct;
 
-class bhxm
-  implements GestureDetector.OnGestureListener
+public class bhxm
 {
-  private bhxm(bhxh parambhxh) {}
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
   {
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    paramMotionEvent2.getX();
-    paramMotionEvent1.getX();
-    paramMotionEvent1.getX();
-    paramMotionEvent2.getX();
-    paramFloat1 = paramMotionEvent2.getY();
-    float f = paramMotionEvent1.getY();
-    paramMotionEvent1.getY();
-    paramMotionEvent2.getY();
-    if ((paramFloat1 - f > 120) && (Math.abs(paramFloat2) > 20)) {
-      this.a.l();
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    return true;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return true;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return true;
+    try
+    {
+      paramClass = (JceStruct)paramClass.newInstance();
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+      paramArrayOfByte.setServerEncoding("utf8");
+      paramClass.readFrom(paramArrayOfByte);
+      return paramClass;
+    }
+    catch (Exception paramClass)
+    {
+      paramClass.printStackTrace();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhxm
  * JD-Core Version:    0.7.0.1
  */

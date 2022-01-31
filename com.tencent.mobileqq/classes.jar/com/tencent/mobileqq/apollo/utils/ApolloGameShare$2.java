@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aiys;
-import aizn;
-import aizp;
+import ajmu;
+import ajnp;
+import ajnr;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import azsq;
-import azvq;
+import batu;
+import bawu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -15,18 +15,18 @@ import java.io.File;
 public class ApolloGameShare$2
   implements Runnable
 {
-  public ApolloGameShare$2(aizn paramaizn, int paramInt) {}
+  public ApolloGameShare$2(ajnp paramajnp, int paramInt) {}
   
   public void run()
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(aiys.s).append(aizn.a(this.this$0)).append("/inviteIcon.png");
+    ((StringBuilder)localObject).append(ajmu.s).append(ajnp.a(this.this$0)).append("/inviteIcon.png");
     try
     {
       if (new File(((StringBuilder)localObject).toString()).exists()) {
         localObject = BitmapFactory.decodeFile(((StringBuilder)localObject).toString());
       } else {
-        localObject = azvq.b(BaseApplicationImpl.getApplication().getResources(), 2130838430);
+        localObject = bawu.b(BaseApplicationImpl.getApplication().getResources(), 2130838438);
       }
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -42,10 +42,10 @@ public class ApolloGameShare$2
     Bitmap localBitmap;
     while (localBitmap != null)
     {
-      localBitmap = azsq.a(localThrowable);
-      aizn.a(this.this$0, String.valueOf(System.currentTimeMillis()));
-      WXShareHelper.a().a(new aizp(this));
-      WXShareHelper.a().a(aizn.a(this.this$0), aizn.b(this.this$0), localBitmap, aizn.c(this.this$0), aizn.d(this.this$0), this.a);
+      localBitmap = batu.a(localThrowable);
+      ajnp.a(this.this$0, String.valueOf(System.currentTimeMillis()));
+      WXShareHelper.a().a(new ajnr(this));
+      WXShareHelper.a().a(ajnp.a(this.this$0), ajnp.b(this.this$0), localBitmap, ajnp.c(this.this$0), ajnp.d(this.this$0), this.a);
       return;
     }
   }

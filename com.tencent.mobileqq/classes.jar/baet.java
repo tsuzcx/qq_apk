@@ -1,26 +1,12 @@
-class baet
-  implements adam
+public abstract interface baet
 {
-  baet(baes parambaes) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
   
-  public boolean a(adaj paramadaj)
-  {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(adaj paramadaj, String paramString1, String paramString2)
-  {
-    return false;
-  }
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baet
  * JD-Core Version:    0.7.0.1
  */

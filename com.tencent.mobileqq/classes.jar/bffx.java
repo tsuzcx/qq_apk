@@ -1,93 +1,43 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.SendMsg;
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class bffx
 {
-  private bffz jdField_a_of_type_Bffz;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  public static final byte[] a;
+  private static final char[] a;
   
-  public bffx(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-    this.jdField_a_of_type_Bffz = new bffz(paramQQAppInterface);
+    jdField_a_of_type_ArrayOfChar = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
+    jdField_a_of_type_ArrayOfByte = new byte[0];
   }
   
-  private int a(String paramString, Bundle paramBundle, Handler paramHandler, long paramLong)
+  public static String a(byte[] paramArrayOfByte)
   {
-    paramHandler = new SendMsg(paramString);
-    paramString = paramBundle;
-    if (paramBundle == null) {
-      paramString = new Bundle();
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
     }
-    if ((paramString != null) && (paramString.size() > 0)) {
-      paramHandler.a.putAll(paramString);
-    }
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-    paramHandler.a(i);
-    if (paramLong > 0L) {
-      paramHandler.a(paramLong);
-    }
+    arrayOfChar = new char[paramArrayOfByte.length * 2];
+    int i = 0;
     try
     {
-      this.jdField_a_of_type_Bffz.a(paramHandler);
-      return i;
+      while (i < paramArrayOfByte.length)
+      {
+        int j = paramArrayOfByte[i];
+        arrayOfChar[(i * 2 + 1)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
+        j = (byte)(j >>> 4);
+        arrayOfChar[(i * 2 + 0)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
+        i += 1;
+      }
+      return new String(arrayOfChar);
     }
-    catch (Exception paramString)
+    catch (Exception paramArrayOfByte)
     {
-      paramString.printStackTrace();
-      throw new RuntimeException("sendMsg is fail", paramString);
+      besl.a("HexUtil", " === bytes2HexStr error === " + paramArrayOfByte.toString());
+      return null;
     }
   }
-  
-  public int a(String paramString, Bundle paramBundle)
-  {
-    try
-    {
-      int i = a(paramString, paramBundle, null, 0L);
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return -1;
-  }
-  
-  public void a()
-  {
-    PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
-    if (localPluginCommunicationHandler == null)
-    {
-      QLog.e("QlinkServiceManager", 1, "[QLINK] QQ - PluginCommunicationHandler.getInstance failed");
-      return;
-    }
-    localPluginCommunicationHandler.register(new bffy(this, "qlink.notify"));
-  }
-  
-  public void a(long paramLong) {}
-  
-  public boolean a(long paramLong1, int paramInt, long paramLong2, long paramLong3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    return true;
-  }
-  
-  public boolean a(byte[] paramArrayOfByte)
-  {
-    return true;
-  }
-  
-  public void b(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bffx
  * JD-Core Version:    0.7.0.1
  */

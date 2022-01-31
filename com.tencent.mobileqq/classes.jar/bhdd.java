@@ -1,37 +1,23 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import dov.com.qq.im.AECamera.View.AECameraGLSurfaceView;
-import dov.com.qq.im.AEPituCameraUnit.25;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.feed.CertifiedFakeFeed;
 
-public class bhdd
-  implements DialogInterface.OnClickListener
+public final class bhdd
+  implements Parcelable.Creator<CertifiedFakeFeed>
 {
-  public bhdd(AEPituCameraUnit.25 param25) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public CertifiedFakeFeed a(Parcel paramParcel)
   {
-    Activity localActivity = bhcw.a(this.a.this$0).a();
-    if (paramInt == 1)
-    {
-      bhcw.a(this.a.this$0).setCameraPermissionFinish(true);
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", localActivity.getPackageName(), null));
-      localActivity.startActivity(localIntent);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      localActivity.finish();
-    }
+    return new CertifiedFakeFeed(paramParcel);
+  }
+  
+  public CertifiedFakeFeed[] a(int paramInt)
+  {
+    return new CertifiedFakeFeed[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhdd
  * JD-Core Version:    0.7.0.1
  */

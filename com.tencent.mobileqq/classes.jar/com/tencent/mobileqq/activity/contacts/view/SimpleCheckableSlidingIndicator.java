@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.contacts.view;
 
-import afhd;
-import afhe;
-import afhf;
-import afhg;
-import afhm;
+import afta;
+import aftb;
+import aftc;
+import aftd;
+import aftj;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Handler.Callback;
@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
-import beez;
+import bfmt;
 
 public class SimpleCheckableSlidingIndicator
   extends SimpleSlidingIndicator
@@ -21,10 +21,10 @@ public class SimpleCheckableSlidingIndicator
   public static int b = 1;
   public static int c = 2;
   public static int d = 1;
-  private afhf jdField_a_of_type_Afhf;
-  afhg jdField_a_of_type_Afhg;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new afhe(this);
-  private beez jdField_a_of_type_Beez;
+  private aftc jdField_a_of_type_Aftc;
+  aftd jdField_a_of_type_Aftd;
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aftb(this);
+  private bfmt jdField_a_of_type_Bfmt;
   private int i = -9999999;
   private int j = jdField_a_of_type_Int;
   
@@ -53,7 +53,7 @@ public class SimpleCheckableSlidingIndicator
       {
         localObject = ValueAnimator.ofInt(new int[] { ((View)localObject).getLeft(), localView.getLeft() });
         ((ValueAnimator)localObject).setDuration(200L);
-        ((ValueAnimator)localObject).addUpdateListener(new afhd(this));
+        ((ValueAnimator)localObject).addUpdateListener(new afta(this));
         ((ValueAnimator)localObject).start();
       }
       while (localView == null) {
@@ -78,12 +78,12 @@ public class SimpleCheckableSlidingIndicator
       if (paramBoolean1)
       {
         a();
-        if ((this.jdField_a_of_type_Afhm != null) && (paramInt >= 0)) {
-          this.jdField_a_of_type_Afhm.a(paramInt, paramBoolean2);
+        if ((this.jdField_a_of_type_Aftj != null) && (paramInt >= 0)) {
+          this.jdField_a_of_type_Aftj.a(paramInt, paramBoolean2);
         }
       }
     }
-    while ((this.e != paramInt) || (this.jdField_a_of_type_Afhg == null) || (paramInt <= 0)) {
+    while ((this.e != paramInt) || (this.jdField_a_of_type_Aftd == null) || (paramInt < 0)) {
       for (;;)
       {
         return;
@@ -94,7 +94,7 @@ public class SimpleCheckableSlidingIndicator
         invalidate();
       }
     }
-    this.jdField_a_of_type_Afhg.a(paramInt);
+    this.jdField_a_of_type_Aftd.a(paramInt);
   }
   
   public int[] a()
@@ -116,31 +116,31 @@ public class SimpleCheckableSlidingIndicator
     {
       return super.onTouchEvent(paramMotionEvent);
       this.j = b;
-      if (this.jdField_a_of_type_Afhf != null) {
-        this.jdField_a_of_type_Afhf.a(this.j);
+      if (this.jdField_a_of_type_Aftc != null) {
+        this.jdField_a_of_type_Aftc.a(this.j);
       }
-      if (this.jdField_a_of_type_Beez != null)
+      if (this.jdField_a_of_type_Bfmt != null)
       {
-        this.jdField_a_of_type_Beez.removeMessages(d);
+        this.jdField_a_of_type_Bfmt.removeMessages(d);
         continue;
-        if (this.jdField_a_of_type_Beez != null) {
-          this.jdField_a_of_type_Beez.sendEmptyMessage(d);
+        if (this.jdField_a_of_type_Bfmt != null) {
+          this.jdField_a_of_type_Bfmt.sendEmptyMessage(d);
         }
       }
     }
   }
   
-  public void setOnRepeatClickListener(afhg paramafhg)
+  public void setOnRepeatClickListener(aftd paramaftd)
   {
-    this.jdField_a_of_type_Afhg = paramafhg;
+    this.jdField_a_of_type_Aftd = paramaftd;
   }
   
-  public void setScrollViewListener(afhf paramafhf)
+  public void setScrollViewListener(aftc paramaftc)
   {
-    if (this.jdField_a_of_type_Beez == null) {
-      this.jdField_a_of_type_Beez = new beez(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    if (this.jdField_a_of_type_Bfmt == null) {
+      this.jdField_a_of_type_Bfmt = new bfmt(this.jdField_a_of_type_AndroidOsHandler$Callback);
     }
-    this.jdField_a_of_type_Afhf = paramafhf;
+    this.jdField_a_of_type_Aftc = paramaftc;
   }
 }
 

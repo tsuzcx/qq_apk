@@ -1,13 +1,16 @@
+import android.graphics.drawable.Drawable;
+
 public class sce
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  int jdField_a_of_type_Int;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sce
  * JD-Core Version:    0.7.0.1
  */

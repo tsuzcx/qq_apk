@@ -1,22 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.text.TextUtils.TruncateAt;
 
-class bfvc
-  implements EIPCResultCallback
+public class bfvc
+  extends StaticLayout
 {
-  bfvc(bfva parambfva) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public bfvc(CharSequence paramCharSequence, int paramInt1, int paramInt2, TextPaint paramTextPaint, int paramInt3, Layout.Alignment paramAlignment, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FontManager", 2, "startFontSoDownload download so success");
-    }
+    super(paramCharSequence, paramInt1, paramInt2, paramTextPaint, paramInt3, paramAlignment, paramFloat1, paramFloat2, paramBoolean, paramTruncateAt, paramInt4);
+  }
+  
+  public int getParagraphDirection(int paramInt)
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfvc
  * JD-Core Version:    0.7.0.1
  */

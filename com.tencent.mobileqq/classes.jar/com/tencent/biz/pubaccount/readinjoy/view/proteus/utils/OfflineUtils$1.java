@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.utils;
 
-import rdg;
-import rdj;
+import rpu;
+import rpx;
 
 public final class OfflineUtils$1
   implements Runnable
@@ -13,9 +13,9 @@ public final class OfflineUtils$1
     if (this.a) {
       return;
     }
-    rdg.a();
-    rdg.a("default_feeds", true);
-    new rdj().a();
+    rpu.a();
+    rpu.a("default_feeds", true);
+    new rpx().a();
   }
 }
 

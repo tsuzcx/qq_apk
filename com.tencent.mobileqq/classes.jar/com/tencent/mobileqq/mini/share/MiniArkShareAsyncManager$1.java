@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.share;
 
-import atmo;
-import atmp;
-import atmq;
+import aukm;
+import aukn;
+import auko;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -20,10 +20,10 @@ final class MiniArkShareAsyncManager$1
       localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
       if (localObject != null)
       {
-        atmo localatmo = ((atmp)localObject).a(MiniProgramArkShareLocalImageEntity.class, "localPath = ?", new String[] { this.val$filePath });
-        if (localatmo != null)
+        aukm localaukm = ((aukn)localObject).a(MiniProgramArkShareLocalImageEntity.class, "localPath = ?", new String[] { this.val$filePath });
+        if (localaukm != null)
         {
-          if (!((atmp)localObject).b(localatmo)) {
+          if (!((aukn)localObject).b(localaukm)) {
             break label90;
           }
           QLog.d("MiniArkShareAsyncManage", 2, "removeArkShareLocalImageDatabaseEntity: remove record for " + this.val$filePath);

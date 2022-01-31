@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.utils;
 
-import ajrk;
-import babl;
+import akfu;
+import bbcp;
 import java.util.List;
 
 public class DBUtils$2
   implements Runnable
 {
-  public DBUtils$2(babl parambabl, ajrk paramajrk, List paramList) {}
+  public DBUtils$2(bbcp parambbcp, akfu paramakfu, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ajrk.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Akfu.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

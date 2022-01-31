@@ -1,17 +1,22 @@
-import java.lang.reflect.Field;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 
-public final class vlr
+public class vlr
 {
-  public final int a;
+  public final Drawable a;
   public final String a;
-  public final Field a;
+  public final String b;
   
-  public vlr(String paramString, int paramInt, Field paramField)
+  public vlr(@NonNull String paramString1, @NonNull String paramString2, Drawable paramDrawable)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangReflectField = paramField;
-    paramField.setAccessible(true);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+  }
+  
+  public String toString()
+  {
+    return "SelectedItem{category='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + '}';
   }
 }
 

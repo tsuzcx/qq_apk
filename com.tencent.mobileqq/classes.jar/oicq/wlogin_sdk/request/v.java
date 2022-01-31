@@ -77,10 +77,10 @@ public class v
   public int b(long paramLong1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong2)
   {
     long l = System.currentTimeMillis();
-    t.aq.commit(Build.VERSION.RELEASE, new String(t.G), "", util.buf_to_string(util.get_ksid(t.t)), new String(t.E), new String(t.Q), new String(t.I), new String(t.H), util.get_release_time(), "6.0.0.2425");
+    t.as.commit(Build.VERSION.RELEASE, new String(t.G), "", util.buf_to_string(util.get_ksid(t.t)), new String(t.E), new String(t.Q), new String(t.I), new String(t.H), util.get_release_time(), "6.0.0.2423");
     try
     {
-      paramArrayOfByte1 = t.aq.toJasonObj().toString().getBytes();
+      paramArrayOfByte1 = t.as.toJasonObj().toString().getBytes();
       if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0)) {
         return 0;
       }
@@ -106,10 +106,10 @@ public class v
       util.LOGI("request_report_error(0) rsp: ret=" + i);
       if (i != 0)
       {
-        report_t.write_tofile(t.aq, t.t);
+        report_t.write_tofile(t.as, t.t);
         return i;
       }
-      t.aq.clear_t2();
+      t.as.clear_t2();
       return i;
     }
   }

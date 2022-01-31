@@ -1,26 +1,67 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import cooperation.comic.ui.QQComicFragment;
-import java.util.Observable;
-import java.util.Observer;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StRemoveUserCloudStorageReq;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StRemoveUserCloudStorageRsp;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import org.json.JSONObject;
 
 public class bfaf
-  implements Observer
+  extends bfad
 {
-  public bfaf(QQComicFragment paramQQComicFragment, WebView paramWebView) {}
+  private CloudStorage.StRemoveUserCloudStorageReq a = new CloudStorage.StRemoveUserCloudStorageReq();
   
-  public void update(Observable paramObservable, Object paramObject)
+  public bfaf(String[] paramArrayOfString, String paramString)
   {
-    if (bfas.a != null)
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
     {
-      QLog.d("WebLog_WebViewFragment", 4, "RuntimeCreateObserver update ");
-      bfas.a.a(this.jdField_a_of_type_ComTencentSmttSdkWebView.getContext());
+      String str = paramArrayOfString[i];
+      this.a.keyList.add(str);
+      i += 1;
     }
+    this.a.appid.set(paramString);
+  }
+  
+  protected String a()
+  {
+    return "mini_app_cloudstorage";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    CloudStorage.StRemoveUserCloudStorageRsp localStRemoveUserCloudStorageRsp = new CloudStorage.StRemoveUserCloudStorageRsp();
+    try
+    {
+      localStRemoveUserCloudStorageRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStRemoveUserCloudStorageRsp != null) {
+        return new JSONObject();
+      }
+      besl.a("ProtoBufRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      besl.a("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "RemoveUserCloudStorage";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfaf
  * JD-Core Version:    0.7.0.1
  */

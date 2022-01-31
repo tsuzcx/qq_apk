@@ -1,34 +1,43 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import android.view.ViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
 public class tiw
-  implements View.OnTouchListener
 {
-  float jdField_a_of_type_Float = -1.0F;
-  float b = -1.0F;
+  private static String a = tiw.class.getSimpleName();
   
-  public tiw(VideoCoverListBar paramVideoCoverListBar, int paramInt) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static tbj a(ViewGroup paramViewGroup, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
+    veg.a(a, "create type=%d", Integer.valueOf(paramInt));
+    switch (paramInt)
     {
-    case 2: 
     default: 
-      return false;
-    case 0: 
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.b = paramMotionEvent.getY();
-      return false;
+      if (QLog.isDevelopLevel()) {
+        QLog.e(a, 2, "发现一个野生的类型: " + paramInt);
+      }
+      return new tbj(paramViewGroup, 2131561303);
+    case 6: 
+      return new tin(paramViewGroup);
+    case 5: 
+      return new tiv(paramViewGroup);
+    case 7: 
+      return new tim(paramViewGroup);
+    case 8: 
+      return new tjc(paramViewGroup, 2131561303);
+    case 9: 
+      return new tiu(paramViewGroup);
+    case 3: 
+      return new tio(paramViewGroup);
+    case 4: 
+      return new tis(paramViewGroup, 4);
+    case 2: 
+      return new tja(paramViewGroup, 2131561305);
+    case 10: 
+    case 11: 
+      return new tit(paramViewGroup);
+    case 12: 
+      return new tix(paramViewGroup);
     }
-    if (Math.abs(paramMotionEvent.getY() - this.b) > Math.min(this.jdField_a_of_type_Int, 40)) {
-      urp.a("play_video", "slide_mini", 0, 0, new String[] { "2", "", "", VideoCoverListBar.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar) });
-    }
-    this.jdField_a_of_type_Float = -1.0F;
-    this.b = -1.0F;
-    return false;
+    return new tip(paramViewGroup);
   }
 }
 

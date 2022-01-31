@@ -1,12 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import java.io.File;
 
 class aeel
-  implements DialogInterface.OnClickListener
+  implements aeen
 {
-  aeel(aeeh paramaeeh) {}
+  aeel(aeei paramaeei, String paramString, aeeo paramaeeo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt)
+  {
+    if (new File(this.jdField_a_of_type_JavaLangString).exists())
+    {
+      this.jdField_a_of_type_Aeeo.a.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aeeo.f.setVisibility(8);
+    }
+  }
 }
 
 

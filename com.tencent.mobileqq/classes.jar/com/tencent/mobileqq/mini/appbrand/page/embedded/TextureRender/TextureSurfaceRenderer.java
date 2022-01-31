@@ -60,11 +60,19 @@ public abstract class TextureSurfaceRenderer
   
   private void deinitGL()
   {
-    this.egl.eglMakeCurrent(this.eglDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-    this.egl.eglDestroySurface(this.eglDisplay, this.eglSurface);
-    this.egl.eglDestroyContext(this.eglDisplay, this.eglContext);
-    this.egl.eglTerminate(this.eglDisplay);
-    QLog.d("miniapp-embedded", 1, "OpenGL deinit OK.");
+    try
+    {
+      this.egl.eglMakeCurrent(this.eglDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+      this.egl.eglDestroySurface(this.eglDisplay, this.eglSurface);
+      this.egl.eglDestroyContext(this.eglDisplay, this.eglContext);
+      this.egl.eglTerminate(this.eglDisplay);
+      QLog.d("miniapp-embedded", 1, "OpenGL deinit OK.");
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("miniapp-embedded", 1, "deinitGL error, ", localThrowable);
+    }
   }
   
   private int[] getConfig()
@@ -74,19 +82,28 @@ public abstract class TextureSurfaceRenderer
   
   private void initGL()
   {
-    this.egl = ((EGL10)EGLContext.getEGL());
-    this.eglDisplay = this.egl.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-    Object localObject = new int[2];
-    this.egl.eglInitialize(this.eglDisplay, (int[])localObject);
-    localObject = chooseEglConfig();
-    this.eglContext = createContext(this.egl, this.eglDisplay, (EGLConfig)localObject);
-    this.eglSurface = this.egl.eglCreateWindowSurface(this.eglDisplay, (EGLConfig)localObject, this.surface, null);
-    if ((this.eglSurface == null) || (this.eglSurface == EGL10.EGL_NO_SURFACE)) {
-      throw new RuntimeException("GL Error: " + GLUtils.getEGLErrorString(this.egl.eglGetError()));
-    }
-    if (!this.egl.eglMakeCurrent(this.eglDisplay, this.eglSurface, this.eglSurface, this.eglContext)) {
-      throw new RuntimeException("GL Make current error: " + GLUtils.getEGLErrorString(this.egl.eglGetError()));
-    }
+    do
+    {
+      try
+      {
+        this.egl = ((EGL10)EGLContext.getEGL());
+        this.eglDisplay = this.egl.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+        Object localObject = new int[2];
+        this.egl.eglInitialize(this.eglDisplay, (int[])localObject);
+        localObject = chooseEglConfig();
+        this.eglContext = createContext(this.egl, this.eglDisplay, (EGLConfig)localObject);
+        this.eglSurface = this.egl.eglCreateWindowSurface(this.eglDisplay, (EGLConfig)localObject, this.surface, null);
+        if ((this.eglSurface == null) || (this.eglSurface == EGL10.EGL_NO_SURFACE)) {
+          throw new RuntimeException("GL Error: " + GLUtils.getEGLErrorString(this.egl.eglGetError()));
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("miniapp-embedded", 1, "initGL error.", localThrowable);
+        return;
+      }
+    } while (this.egl.eglMakeCurrent(this.eglDisplay, this.eglSurface, this.eglSurface, this.eglContext));
+    throw new RuntimeException("GL Make current error: " + GLUtils.getEGLErrorString(this.egl.eglGetError()));
   }
   
   private void pingFps()
@@ -131,29 +148,38 @@ public abstract class TextureSurfaceRenderer
   
   public void run()
   {
-    initGL();
-    initGLComponents();
-    QLog.d("miniapp-embedded", 1, "OpenGL init OK.");
-    while (this.running) {
-      if (!this.pause)
-      {
-        long l = System.currentTimeMillis();
-        pingFps();
-        if (draw()) {
-          this.egl.eglSwapBuffers(this.eglDisplay, this.eglSurface);
-        }
-        l = 16L - (System.currentTimeMillis() - l);
-        if (l > 0L) {
-          try
-          {
-            Thread.sleep(l);
+    try
+    {
+      initGL();
+      initGLComponents();
+      QLog.d("miniapp-embedded", 1, "OpenGL init OK.");
+      while (this.running) {
+        if (!this.pause)
+        {
+          long l1 = System.currentTimeMillis();
+          pingFps();
+          if (draw()) {
+            this.egl.eglSwapBuffers(this.eglDisplay, this.eglSurface);
           }
-          catch (InterruptedException localInterruptedException) {}
+          long l2 = System.currentTimeMillis();
+          l1 = 16L - (l2 - l1);
+          if (l1 > 0L) {
+            try
+            {
+              Thread.sleep(l1);
+            }
+            catch (InterruptedException localInterruptedException) {}
+          }
         }
       }
+      deinitGLComponents();
+      deinitGL();
+      return;
     }
-    deinitGLComponents();
-    deinitGL();
+    catch (Throwable localThrowable)
+    {
+      QLog.e("miniapp-embedded", 1, "TextureSurfaceRenderer run error,", localThrowable);
+    }
   }
 }
 

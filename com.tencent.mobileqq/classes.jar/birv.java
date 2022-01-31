@@ -1,23 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class birv
-  implements DialogInterface.OnShowListener
+  implements Animation.AnimationListener
 {
-  birv(birt parambirt, boolean paramBoolean) {}
+  birv(biru parambiru) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (birt.a(this.jdField_a_of_type_Birt) != null) {
-      birt.a(this.jdField_a_of_type_Birt).onShow(paramDialogInterface);
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      birt.a(this.jdField_a_of_type_Birt).b();
-      return;
-    }
-    birt.a(this.jdField_a_of_type_Birt).a(true);
+    biru.a(this.a).setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

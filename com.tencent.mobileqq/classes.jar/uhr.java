@@ -1,39 +1,27 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class uhr
-  extends vpv
+public final class uhr
+  extends QQUIEventReceiver<uhj, uwf>
 {
-  public static final String KEY = "MemoriesPlaceHolderSegment";
-  
-  public uhr(Context paramContext)
+  public uhr(@NonNull uhj paramuhj)
   {
-    super(paramContext);
+    super(paramuhj);
   }
   
-  public int a()
+  public void a(@NonNull uhj paramuhj, @NonNull uwf paramuwf)
   {
-    return 1;
+    if ((paramuwf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramuwf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramuhj.a != null) && (TextUtils.equals(paramuwf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramuhj.a.b))) {
+      paramuhj.i();
+    }
   }
   
-  public View a(int paramInt, unw paramunw, ViewGroup paramViewGroup)
+  public Class acceptEventClass()
   {
-    paramInt = vms.d(this.a);
-    int i = vms.e(this.a);
-    paramunw.a().getLayoutParams().height = (paramInt - i);
-    return paramunw.a();
-  }
-  
-  public String a()
-  {
-    return "MemoriesPlaceHolderSegment";
-  }
-  
-  public unw a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new unw(LayoutInflater.from(this.a).inflate(2131495704, paramViewGroup, false));
+    return uwf.class;
   }
 }
 

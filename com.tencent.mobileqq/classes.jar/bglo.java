@@ -1,9 +1,6 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.util.LruCache;
-
 public abstract interface bglo
 {
-  public abstract void a(LruCache<Integer, BitmapDrawable> paramLruCache);
+  public abstract void a(String paramString1, String paramString2, long paramLong);
 }
 
 

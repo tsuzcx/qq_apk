@@ -1,41 +1,27 @@
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
 public class aplc
-  extends apkz
+  implements amjh
 {
-  private String h;
-  private String i;
-  
-  public aplc(Intent paramIntent)
+  public String a()
   {
-    super(paramIntent);
-    this.h = paramIntent.getStringExtra("uin");
-    this.i = paramIntent.getStringExtra("uinname");
+    return ajyc.a(2131699413);
   }
   
-  private View a(String paramString, Drawable paramDrawable)
+  public void a(View paramView, int paramInt)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131493344, null);
-    TextView localTextView = (TextView)localView.findViewById(2131312699);
-    ImageView localImageView = (ImageView)localView.findViewById(2131302411);
-    localTextView.setText(paramString);
-    localImageView.setImageDrawable(paramDrawable);
-    return localView;
-  }
-  
-  protected View a()
-  {
-    return a(String.format("[%s]%s", new Object[] { ajjy.a(2131638993), this.i }), azwp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.h));
-  }
-  
-  protected boolean h()
-  {
-    return true;
+    if (paramView == null) {}
+    while (paramInt != 17039360) {
+      return;
+    }
+    paramView = paramView.getContext();
+    Intent localIntent = new Intent(paramView, FileAssistantActivity.class);
+    localIntent.putExtra("from", "FileAssistant");
+    paramView.startActivity(localIntent);
+    axqw.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 1, 0, "", "", "", "");
   }
 }
 

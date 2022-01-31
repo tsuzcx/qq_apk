@@ -1,22 +1,19 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
-public class atfs
-  implements TextWatcher
+public final class atfs
+  implements Parcelable.Creator<BasicTypeDataParcel>
 {
-  private atfs(OCRTextSearchActivity paramOCRTextSearchActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public BasicTypeDataParcel a(Parcel paramParcel)
   {
-    paramEditable = this.a.a.getText().toString();
-    this.a.b(paramEditable);
+    return new BasicTypeDataParcel(paramParcel);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public BasicTypeDataParcel[] a(int paramInt)
+  {
+    return new BasicTypeDataParcel[paramInt];
+  }
 }
 
 

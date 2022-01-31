@@ -1,61 +1,20 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import java.util.Comparator;
 
 public class amiz
-  extends amie<amiy>
+  implements Comparator<ColorNote>
 {
-  public int a()
-  {
-    return 465;
-  }
+  public amiz(ColorNoteSettingFragment paramColorNoteSettingFragment) {}
   
-  @NonNull
-  public amiy a()
+  public int a(ColorNote paramColorNote1, ColorNote paramColorNote2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipExtendIconProcessor", 2, "migrateDefaultContent");
-    }
-    return new amiy();
-  }
-  
-  @NonNull
-  public amiy a(@NonNull alzs[] paramArrayOfalzs)
-  {
-    amiy localamiy = new amiy();
-    try
-    {
-      localamiy.a = new JSONObject(paramArrayOfalzs[0].a).optBoolean("showVipIcon", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QVipExtendIconProcessor", 2, "parsed showVipIcon: " + localamiy.a);
-      }
-      return localamiy;
-    }
-    catch (JSONException paramArrayOfalzs)
-    {
-      QLog.e("QVipExtendIconProcessor", 1, "parsed failed: ", paramArrayOfalzs);
-    }
-    return localamiy;
-  }
-  
-  public Class<amiy> a()
-  {
-    return amiy.class;
-  }
-  
-  @NonNull
-  public amiy b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipExtendIconProcessor", 2, "migrateOldContent");
-    }
-    return new amiy();
+    return -(int)(paramColorNote1.getTime() - paramColorNote2.getTime());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amiz
  * JD-Core Version:    0.7.0.1
  */

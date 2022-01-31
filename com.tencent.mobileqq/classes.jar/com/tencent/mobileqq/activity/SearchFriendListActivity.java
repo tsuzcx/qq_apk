@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import abpv;
-import abpw;
-import abpx;
-import ajjh;
-import ajjy;
+import acah;
+import acai;
+import acaj;
+import ajxl;
+import ajyc;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,19 +12,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azwp;
+import baxt;
 import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
-import mqb;
+import nbc;
 
 public class SearchFriendListActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  private abpw jdField_a_of_type_Abpw;
-  private ajjh jdField_a_of_type_Ajjh = new abpv(this);
+  private acai jdField_a_of_type_Acai;
+  private ajxl jdField_a_of_type_Ajxl = new acah(this);
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private ArrayList<SearchResultItem> jdField_a_of_type_JavaUtilArrayList;
   
@@ -40,22 +40,22 @@ public class SearchFriendListActivity
     String str1 = String.valueOf(((SearchResultItem)localObject2).jdField_a_of_type_Long);
     String str2 = ((SearchResultItem)localObject2).b;
     int i = ((SearchResultItem)localObject2).jdField_a_of_type_Int;
-    Object localObject2 = (abpx)paramView.getTag();
+    Object localObject2 = (acaj)paramView.getTag();
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      ((abpx)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+      ((acaj)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
       if (i != 1) {
         break label194;
       }
-      ((abpx)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(azwp.a(this.app, str1, (byte)3));
-      ((abpx)localObject2).b.setText("QQ号码: " + str1);
+      ((acaj)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(baxt.a(this.app, str1, (byte)3));
+      ((acaj)localObject2).b.setText("QQ号码: " + str1);
     }
     for (;;)
     {
-      ((abpx)localObject2).jdField_a_of_type_Int = paramInt;
-      paramView.setContentDescription(((abpx)localObject2).jdField_a_of_type_AndroidWidgetTextView.getText());
+      ((acaj)localObject2).jdField_a_of_type_Int = paramInt;
+      paramView.setContentDescription(((acaj)localObject2).jdField_a_of_type_AndroidWidgetTextView.getText());
       return;
-      TextView localTextView = ((abpx)localObject2).jdField_a_of_type_AndroidWidgetTextView;
+      TextView localTextView = ((acaj)localObject2).jdField_a_of_type_AndroidWidgetTextView;
       if (i == 1) {}
       for (localObject1 = str1;; localObject1 = str2)
       {
@@ -63,41 +63,41 @@ public class SearchFriendListActivity
         break;
       }
       label194:
-      ((abpx)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(azwp.b(this.app, str2, (byte)3));
-      ((abpx)localObject2).b.setText(ajjy.a(2131647838) + str2);
+      ((acaj)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(baxt.b(this.app, str2, (byte)3));
+      ((acaj)localObject2).b.setText(ajyc.a(2131713625) + str2);
     }
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131496767);
-    setContentBackgroundResource(2130838503);
-    setTitle(ajjy.a(2131647837));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131309946));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130838503);
-    addObserver(this.jdField_a_of_type_Ajjh);
+    super.setContentView(2131562368);
+    setContentBackgroundResource(2130838514);
+    setTitle(ajyc.a(2131713624));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131375707));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130838514);
+    addObserver(this.jdField_a_of_type_Ajxl);
     this.jdField_a_of_type_JavaUtilArrayList = getIntent().getParcelableArrayListExtra("param_search_result_item_list");
     if (this.jdField_a_of_type_JavaUtilArrayList == null) {
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     }
-    this.jdField_a_of_type_Abpw = new abpw(this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Abpw);
+    this.jdField_a_of_type_Acai = new acai(this, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Acai);
     return true;
   }
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Ajjh);
+    removeObserver(this.jdField_a_of_type_Ajxl);
     super.doOnDestroy();
   }
   
   public void onClick(View paramView)
   {
     int i;
-    if ((paramView.getTag() instanceof abpx))
+    if ((paramView.getTag() instanceof acaj))
     {
-      i = ((abpx)paramView.getTag()).jdField_a_of_type_Int;
+      i = ((acaj)paramView.getTag()).jdField_a_of_type_Int;
       if ((i < 0) || (i >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
         break label90;
       }
@@ -113,7 +113,7 @@ public class SearchFriendListActivity
         AddFriendActivity.a(this, paramView, this.app, false, 1);
         return;
       }
-      mqb.a(this, null, String.valueOf(paramView.jdField_a_of_type_Long), false, -1, true, -1);
+      nbc.a(this, null, String.valueOf(paramView.jdField_a_of_type_Long), false, -1, true, -1);
       return;
     }
   }

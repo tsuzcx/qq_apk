@@ -6,51 +6,51 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import slv;
-import slz;
-import swu;
-import szd;
-import szp;
-import uiw;
-import uje;
-import urk;
+import syr;
+import syv;
+import tjq;
+import tlz;
+import tml;
+import uvs;
+import uwa;
+import veg;
 
 public class GetFeedFeatureHandler$1
   implements Runnable
 {
-  public GetFeedFeatureHandler$1(swu paramswu) {}
+  public GetFeedFeatureHandler$1(tjq paramtjq) {}
   
   public void run()
   {
     Object localObject3;
-    if (swu.a(this.this$0))
+    if (tjq.a(this.this$0))
     {
       localObject1 = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        localObject3 = (Long)swu.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2);
+        localObject3 = (Long)tjq.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2);
         if ((localObject3 != null) && (System.currentTimeMillis() - ((Long)localObject3).longValue() < 30000L))
         {
           ((Iterator)localObject1).remove();
-          urk.a("Q.qqstory.home.GetFeedFeatureHandler", "remove same request for feed info:%s", localObject2);
+          veg.a("Q.qqstory.home.GetFeedFeatureHandler", "remove same request for feed info:%s", localObject2);
         }
         else
         {
-          swu.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, Long.valueOf(System.currentTimeMillis()));
+          tjq.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, Long.valueOf(System.currentTimeMillis()));
         }
       }
     }
     if (this.this$0.jdField_a_of_type_JavaUtilList.size() == 0) {
       return;
     }
-    urk.a("Q.qqstory.home.GetFeedFeatureHandler", "request for feed info:%s", this.this$0.jdField_a_of_type_JavaUtilList);
+    veg.a("Q.qqstory.home.GetFeedFeatureHandler", "request for feed info:%s", this.this$0.jdField_a_of_type_JavaUtilList);
     Object localObject1 = new ArrayList();
     Object localObject2 = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (String)((Iterator)localObject2).next();
-      if (this.this$0.jdField_a_of_type_Uje.a((String)localObject3) == null)
+      if (this.this$0.jdField_a_of_type_Uwa.a((String)localObject3) == null)
       {
         if (!TextUtils.isEmpty((CharSequence)localObject3)) {
           ((List)localObject1).add(localObject3);
@@ -65,23 +65,23 @@ public class GetFeedFeatureHandler$1
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "request FeedItem: first=", ((List)localObject1).get(0) });
       }
-      localObject2 = new szd();
-      ((szd)localObject2).jdField_a_of_type_JavaUtilList = new ArrayList();
+      localObject2 = new tlz();
+      ((tlz)localObject2).jdField_a_of_type_JavaUtilList = new ArrayList();
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject3 = new uiw((String)((Iterator)localObject1).next(), 0, "", "");
-        ((szd)localObject2).jdField_a_of_type_JavaUtilList.add(localObject3);
+        localObject3 = new uvs((String)((Iterator)localObject1).next(), 0, "", "");
+        ((tlz)localObject2).jdField_a_of_type_JavaUtilList.add(localObject3);
       }
-      slv.a().a((slz)localObject2, this.this$0);
+      syr.a().a((syv)localObject2, this.this$0);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "request FeedFeature: first=", this.this$0.jdField_a_of_type_JavaUtilList.get(0) });
     }
-    localObject1 = new szp();
-    ((szp)localObject1).jdField_a_of_type_JavaUtilList = this.this$0.jdField_a_of_type_JavaUtilList;
-    slv.a().a((slz)localObject1, this.this$0);
+    localObject1 = new tml();
+    ((tml)localObject1).jdField_a_of_type_JavaUtilList = this.this$0.jdField_a_of_type_JavaUtilList;
+    syr.a().a((syv)localObject1, this.this$0);
   }
 }
 

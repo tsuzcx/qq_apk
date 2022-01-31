@@ -1,48 +1,38 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
 
 class mhi
-  extends PhoneStateListener
+  implements DialogInterface.OnClickListener
 {
-  mhi(mhf parammhf) {}
+  mhi(mhh parammhh) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    for (;;)
+    mhf.a(this.a.a, false);
+    if (paramInt == 1)
     {
-      super.onCallStateChanged(paramInt, paramString);
+      axqw.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
+      this.a.a.c();
+      if (!muf.a(mhf.a(this.a.a))) {
+        mhf.a(this.a.a).a(mhf.a(this.a.a));
+      }
+    }
+    while (paramInt != 0)
+    {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged CALL_STATE_IDLE  mIsCalling:  " + this.a.jdField_a_of_type_Boolean);
-      }
-      if (this.a.jdField_a_of_type_Boolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged isCallingRunnable mIsCalling: " + this.a.jdField_a_of_type_Boolean);
-        }
-        ThreadManager.post(this.a.jdField_a_of_type_JavaLangRunnable, 8, null, false);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged CALL_STATE_RINGING or CALL_STATE_OFFHOOK");
-        }
-        if (!this.a.jdField_a_of_type_Boolean)
-        {
-          this.a.jdField_a_of_type_Boolean = true;
-          if (this.a.jdField_a_of_type_Mhg != null) {
-            this.a.jdField_a_of_type_Mhg.a(true);
-          }
-        }
-      }
+      mhf.a(this.a.a).b(mhf.a(this.a.a));
+      return;
     }
+    mhf.a(this.a.a, mhf.a(this.a.a).a().v);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mhi
  * JD-Core Version:    0.7.0.1
  */

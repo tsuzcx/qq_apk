@@ -1,8 +1,18 @@
-import android.view.View;
-
-class anzo
+public abstract class anzo
 {
-  View[] a = new View[12];
+  public int b;
+  
+  public anzo(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public void a() {}
+  
+  public int b()
+  {
+    return 0;
+  }
 }
 
 

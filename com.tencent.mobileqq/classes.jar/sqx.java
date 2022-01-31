@@ -1,12 +1,19 @@
 public class sqx
 {
-  public final int a;
-  public final String a;
-  
-  public sqx(int paramInt, String paramString)
+  public static int a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    switch (paramInt)
+    {
+    case 1: 
+    case 2: 
+    case 5: 
+    case 6: 
+    default: 
+      return 6;
+    case 4: 
+      return 10;
+    }
+    return 10;
   }
 }
 

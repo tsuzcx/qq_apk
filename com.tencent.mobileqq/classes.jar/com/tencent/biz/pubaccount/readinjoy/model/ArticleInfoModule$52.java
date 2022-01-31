@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import ohb;
-import ooq;
+import osm;
+import ozr;
 import tencent.im.oidb.cmd0xbd6.oidb_cmd0xbd6.RspBody;
 
 public class ArticleInfoModule$52
   implements Runnable
 {
-  public ArticleInfoModule$52(ooq paramooq, String paramString1, int paramInt, oidb_cmd0xbd6.RspBody paramRspBody, String paramString2) {}
+  public ArticleInfoModule$52(ozr paramozr, String paramString1, int paramInt, oidb_cmd0xbd6.RspBody paramRspBody, String paramString2) {}
   
   public void run()
   {
-    ohb.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_TencentImOidbCmd0xbd6Oidb_cmd0xbd6$RspBody, this.b);
+    osm.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_TencentImOidbCmd0xbd6Oidb_cmd0xbd6$RspBody, this.b);
   }
 }
 

@@ -1,19 +1,15 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class agdq
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  agdq(agdp paramagdp) {}
+  agdq(agdn paramagdn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
-    {
-      this.a.b();
-      agdp.a(this.a).moveTaskToBack(true);
-    }
+    this.a.a = null;
+    this.a.dismiss();
   }
 }
 

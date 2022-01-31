@@ -1,216 +1,187 @@
-import android.content.Context;
-import android.os.Handler;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.random.RandomController;
-import com.tencent.av.random.RandomController.RequestFetchRunnable;
-import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.business.manager.magicface.MagicfaceDataAudioJason;
+import com.tencent.av.business.manager.magicface.MagicfaceDataPendantJason;
+import com.tencent.av.business.manager.magicface.MagicfaceDataVideoJason;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public class lih
-  implements lio
+public abstract class lih
 {
-  public lih(RandomController paramRandomController) {}
+  protected MagicfaceDataAudioJason a;
+  protected MagicfaceDataVideoJason a;
+  protected String a;
+  protected Map<String, MagicfaceDataPendantJason> a;
+  protected Rect b;
+  protected String b;
+  protected int c;
+  protected int d;
   
-  public void a(int paramInt, liu paramliu)
+  public lih(String paramString1, String paramString2, String paramString3)
   {
-    if (this.a.jdField_a_of_type_Kvq == null) {}
-    label517:
-    label1010:
-    do
+    lcl.c("AVMagicfaceData", "init|config=" + paramString2 + "|" + paramString3 + "|" + paramString1);
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_JavaLangString = paramString3;
+    try
     {
-      do
+      paramString1 = new JSONObject(paramString1);
+      paramString2 = paramString1.getJSONObject("video");
+      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason = ((MagicfaceDataVideoJason)bazb.a(paramString2, MagicfaceDataVideoJason.class));
+      int i;
+      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason != null)
       {
-        do
+        if (!"voicesticker".equals(paramString3))
         {
-          for (;;)
+          if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.location_x > 0)
           {
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("RandomController", 2, "rsp.rsptype = " + paramliu.a + ", errCode = " + paramInt);
-            }
-            if ((paramliu.a == 1) || (paramliu.a == 2))
-            {
-              switch (paramInt)
-              {
-              case -2: 
-              default: 
-                RandomController.b(this.a);
-                return;
-              case 1: 
-                if (RandomController.a(this.a).get() >= 3)
-                {
-                  RandomController.a(this.a);
-                  return;
-                }
-                paramliu = (liv)paramliu;
-                RandomController.a(this.a).a(paramliu);
-                RandomController.a(this.a).a().postDelayed(RandomController.a(this.a), paramliu.h);
-                return;
-              case 0: 
-                RandomController.a(this.a, paramliu);
-                return;
-              case -1: 
-                RandomController.a(this.a);
-                return;
-              }
-              RandomController.b(this.a, paramliu);
-              return;
-            }
-            if ((paramliu.a == -100) || (paramliu.a == 3))
-            {
-              if (RandomController.a(this.a) == 1)
-              {
-                if ((paramInt == 0) && ((paramliu instanceof liw)))
-                {
-                  paramliu = (liw)paramliu;
-                  this.a.jdField_a_of_type_Kvq.a.a = paramliu.a;
-                  if (this.a.jdField_a_of_type_Kvq.j())
-                  {
-                    paramliu = RandomController.a(this.a).iterator();
-                    while (paramliu.hasNext()) {
-                      ((lin)paramliu.next()).a();
-                    }
-                  }
-                }
-              }
-              else if (RandomController.a(this.a) == 2)
-              {
-                Object localObject2;
-                Object localObject1;
-                if ((paramInt == 0) && ((paramliu instanceof liy)))
-                {
-                  localObject2 = (liy)paramliu;
-                  if (((liy)localObject2).f != 0) {
-                    if (((liy)localObject2).f != 2) {
-                      break label517;
-                    }
-                  }
-                  for (localObject1 = ((liy)localObject2).e;; localObject1 = String.valueOf(((liy)localObject2).jdField_a_of_type_Long))
-                  {
-                    if (!TextUtils.isEmpty((CharSequence)localObject1))
-                    {
-                      kth localkth = RandomController.a(this.a).a((String)localObject1);
-                      if (localkth != null)
-                      {
-                        localkth.c = ((liy)localObject2).c;
-                        RandomController.a(this.a).a((String)localObject1, ((liy)localObject2).b, ((liy)localObject2).c);
-                        if (QLog.isColorLevel()) {
-                          QLog.d("RandomController", 2, "RSP_MULTI_PULL uin:" + localkth.jdField_a_of_type_Long + ", headUrl:" + localkth.c);
-                        }
-                      }
-                    }
-                    localObject1 = RandomController.a(this.a).iterator();
-                    while (((Iterator)localObject1).hasNext()) {
-                      ((lin)((Iterator)localObject1).next()).a();
-                    }
-                  }
-                }
-                if (paramInt == 100)
-                {
-                  localObject2 = RandomController.a(this.a).c();
-                  localObject1 = new StringBuilder();
-                  localObject2 = ((ArrayList)localObject2).iterator();
-                  while (((Iterator)localObject2).hasNext()) {
-                    ((StringBuilder)localObject1).append(((kth)((Iterator)localObject2).next()).jdField_a_of_type_Long).append("|");
-                  }
-                  if ((!this.a.jdField_b_of_type_Boolean) && (RandomController.a(this.a) != null)) {
-                    RandomController.a(this.a).a(RandomController.b(this.a), 5, ((StringBuilder)localObject1).toString(), this.a.a(RandomController.a(this.a).getAccount()), this.a.jdField_a_of_type_Long);
-                  }
-                }
-                if ((paramliu instanceof liy))
-                {
-                  paramliu = (liy)paramliu;
-                  if ((!TextUtils.isEmpty(paramliu.d)) && (TextUtils.isEmpty(this.a.jdField_a_of_type_Kvq.a.e)))
-                  {
-                    this.a.jdField_a_of_type_Kvq.a.e = (RandomController.a(this.a).getApp().getString(2131630349) + " “" + paramliu.d + "” ");
-                    RandomController.a(this.a, paramliu.d);
-                    if (QLog.isColorLevel()) {
-                      QLog.d("RandomController", 2, "RSP_MULTI_PULL talkTips : " + this.a.jdField_a_of_type_Kvq.a.e);
-                    }
-                  }
-                }
-              }
-              if (paramInt == -3)
-              {
-                paramliu = RandomController.a(this.a).iterator();
-                while (paramliu.hasNext()) {
-                  ((lin)paramliu.next()).a();
-                }
-              }
-            }
-            else
-            {
-              if ((!(paramliu instanceof liz)) || (paramliu.a != 5)) {
-                break label1010;
-              }
-              if (paramInt != 0) {
-                break;
-              }
-              paramliu = (liz)paramliu;
-              if (QLog.isColorLevel()) {
-                QLog.d("RandomController", 2, "request room owner room owner change push，uin " + paramliu.b + " [random room owner]");
-              }
-              this.a.jdField_b_of_type_Int = 5;
-              this.a.g = paramliu.b;
-              paramliu = RandomController.a(this.a).iterator();
-              while (paramliu.hasNext()) {
-                ((lin)paramliu.next()).a();
-              }
-            }
+            paramString3 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason;
+            paramString3.location_x *= 2;
           }
-        } while ((paramInt != -4) || (!QLog.isColorLevel()));
-        QLog.e("RandomController", 2, "[random room owner] pull room fail fail");
-        return;
-      } while ((!(paramliu instanceof liz)) || (4 != paramliu.a));
-      if (QLog.isColorLevel()) {
-        QLog.d("RandomController", 2, "[random room owner] RSP_MULTI_KICK_MEMBER");
-      }
-      RandomController.a(this.a).a().removeCallbacks(RandomController.a(this.a));
-      RandomController.a(this.a, false);
-      paramliu = (liz)paramliu;
-      long l = paramliu.jdField_a_of_type_OrgJsonJSONObject.optInt("groupid");
-      this.a.jdField_a_of_type_JavaLangString = bach.a(paramliu.jdField_a_of_type_OrgJsonJSONObject.optString("wording").trim());
-      if (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) {
-        this.a.jdField_a_of_type_JavaLangString = RandomController.a(this.a).getApp().getApplicationContext().getString(2131630342);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("RandomController", 2, "[random room owner] KICK_MEMBER success groupId = " + l + ", mCurrGroupId = " + this.a.jdField_a_of_type_Long);
-      }
-      if (l == this.a.jdField_a_of_type_Long)
-      {
-        if (paramInt == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("RandomController", 2, "[random room owner] KICK_MEMBER success");
+          if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.location_y > 0)
+          {
+            paramString3 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason;
+            paramString3.location_y *= 2;
           }
-          this.a.jdField_b_of_type_Int = 6;
+          if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.width > 0)
+          {
+            paramString3 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason;
+            paramString3.width *= 2;
+          }
+          if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.height > 0)
+          {
+            paramString3 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason;
+            paramString3.height *= 2;
+          }
         }
-        for (;;)
+        paramString2 = paramString2.optJSONArray("locations");
+        if (paramString2 != null)
         {
-          paramliu = RandomController.a(this.a).iterator();
-          while (paramliu.hasNext()) {
-            ((lin)paramliu.next()).a();
-          }
-          break;
-          if (paramInt == -4)
+          i = 0;
+          while (i < paramString2.length())
           {
-            if (QLog.isColorLevel()) {
-              QLog.e("RandomController", 2, "[random room owner] KICK_MEMBER fail" + paramliu.jdField_a_of_type_JavaLangString);
-            }
-            this.a.jdField_b_of_type_Int = 7;
+            paramString3 = (JSONObject)paramString2.get(i);
+            this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.pointArrayList.add(new Point(paramString3.optInt("x"), paramString3.optInt("y")));
+            i += 1;
+          }
+        }
+        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.pointArrayList.add(new Point(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.location_x, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.location_y));
+      }
+      if (paramString1.has("audio")) {
+        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason = ((MagicfaceDataAudioJason)bazb.a(paramString1.getJSONObject("audio"), MagicfaceDataAudioJason.class));
+      }
+      this.jdField_a_of_type_JavaUtilMap = new HashMap();
+      if (paramString1.has("pendant"))
+      {
+        paramString1 = paramString1.getJSONArray("pendant");
+        i = j;
+        while (i < paramString1.length())
+        {
+          paramString2 = (MagicfaceDataPendantJason)bazb.a((JSONObject)paramString1.get(i), MagicfaceDataPendantJason.class);
+          if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2.name)))
+          {
+            lcl.e("AVMagicfaceData", "Pendant: " + paramString2.toString());
+            paramString2.duration *= 1000;
+            this.jdField_a_of_type_JavaUtilMap.put(paramString2.name, paramString2);
+          }
+          i += 1;
+        }
+      }
+      return;
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason == null)
+      {
+        lcl.e("AVMagicfaceData", "MagicfaceData error!");
+        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason = new MagicfaceDataVideoJason();
+      }
+      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason == null) {
+        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason = new MagicfaceDataAudioJason();
+      }
+      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.persistent)
+      {
+        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.repeat_count = 50000;
+        if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.frame_count == 0) {
+          this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.frame_count = 3;
+        }
+        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason.is_repeat = true;
+      }
+      lcl.e("AVMagicfaceData", "MagicfaceData:: " + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.toString());
+      this.c = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.frame_count;
+      paramString1 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.getLocation(-1);
+      this.jdField_b_of_type_AndroidGraphicsRect = new Rect(paramString1.x, paramString1.y, paramString1.x + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.width, paramString1.y + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.height);
+    }
+  }
+  
+  protected abstract int a();
+  
+  int a(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason == null) {
+      return paramInt;
+    }
+    Point localPoint = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.getLocation(paramInt);
+    this.jdField_b_of_type_AndroidGraphicsRect = new Rect(localPoint.x, localPoint.y, localPoint.x + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.width, localPoint.y + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.height);
+    return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.lastLocationIndex;
+  }
+  
+  protected abstract String a(int paramInt);
+  
+  protected abstract void a();
+  
+  protected abstract void a(int paramInt1, int paramInt2);
+  
+  public boolean a(lih paramlih)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramlih != null)
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        if ((!TextUtils.isEmpty(paramlih.jdField_b_of_type_JavaLangString)) && (!paramlih.jdField_b_of_type_JavaLangString.equalsIgnoreCase("face")))
+        {
+          bool1 = bool2;
+          if (!paramlih.jdField_b_of_type_JavaLangString.equalsIgnoreCase("voicesticker")) {}
+        }
+        else
+        {
+          bool1 = bool2;
+          if (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("pendant")) {
+            bool1 = true;
           }
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("RandomController", 2, "KICK_MEMBER success groupid != mCurrGroupId  [random room owner]");
+    }
+    return bool1;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public abstract void b();
+  
+  public boolean b()
+  {
+    return (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("face")) || (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("voicesticker"));
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("pendant");
+  }
+  
+  public String toString()
+  {
+    return "Id[" + this.jdField_a_of_type_JavaLangString + "], type[" + this.jdField_b_of_type_JavaLangString + "]";
   }
 }
 

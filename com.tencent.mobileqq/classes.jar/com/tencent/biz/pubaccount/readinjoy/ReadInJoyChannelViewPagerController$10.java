@@ -4,24 +4,24 @@ import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyChannelViewPager;
 import com.tencent.biz.widgets.TabLayout;
 import java.util.List;
-import nia;
-import nic;
-import ogy;
+import ntk;
+import ntm;
+import osj;
 
 public class ReadInJoyChannelViewPagerController$10
   implements Runnable
 {
-  public ReadInJoyChannelViewPagerController$10(nia paramnia, int paramInt) {}
+  public ReadInJoyChannelViewPagerController$10(ntk paramntk, int paramInt) {}
   
   public void run()
   {
-    nia.b(this.this$0, true);
-    nia.a(this.this$0).setSwappingAnimation();
-    TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)nia.b(this.this$0).get(this.a);
-    nia.b(this.this$0, localTabChannelCoverInfo);
-    nia.a(this.this$0).a(localTabChannelCoverInfo.mChannelCoverId, 4, false, true);
-    nia.a(this.this$0).setCurrentItem(nia.a, false);
-    nia.a(this.this$0).a(this.a, nia.a, new nic(this));
+    ntk.b(this.this$0, true);
+    ntk.a(this.this$0).setSwappingAnimation();
+    TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)ntk.b(this.this$0).get(this.a);
+    ntk.b(this.this$0, localTabChannelCoverInfo);
+    ntk.a(this.this$0).a(localTabChannelCoverInfo.mChannelCoverId, 4, false, true);
+    ntk.a(this.this$0).setCurrentItem(ntk.a, false);
+    ntk.a(this.this$0).a(this.a, ntk.a, new ntm(this));
   }
 }
 

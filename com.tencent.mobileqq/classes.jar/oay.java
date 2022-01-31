@@ -1,22 +1,63 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.VideoAdInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import org.json.JSONObject;
 
-class oay
-  implements ViewBase.OnClickListener
+public class oay
 {
-  oay(oal paramoal) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public static AdvertisementInfo a(VideoAdInfo paramVideoAdInfo)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) && (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null)) {
-      obz.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+    if (paramVideoAdInfo == null) {
+      return null;
     }
+    AdvertisementInfo localAdvertisementInfo = new AdvertisementInfo();
+    localAdvertisementInfo.mAdAdvertiseId = paramVideoAdInfo.jdField_g_of_type_Long;
+    localAdvertisementInfo.mAdVideoUrl = paramVideoAdInfo.s;
+    localAdvertisementInfo.mAdAid = paramVideoAdInfo.e;
+    localAdvertisementInfo.mAdTraceId = paramVideoAdInfo.jdField_h_of_type_JavaLangString;
+    localAdvertisementInfo.mAdViewId = paramVideoAdInfo.m;
+    localAdvertisementInfo.mAdProductId = paramVideoAdInfo.i;
+    localAdvertisementInfo.mAdVia = paramVideoAdInfo.t;
+    localAdvertisementInfo.mAdNocoId = paramVideoAdInfo.jdField_h_of_type_Long;
+    localAdvertisementInfo.mAdApurl = paramVideoAdInfo.jdField_g_of_type_JavaLangString;
+    localAdvertisementInfo.mAdRl = paramVideoAdInfo.f;
+    localAdvertisementInfo.mAdEffectUrl = paramVideoAdInfo.A;
+    localAdvertisementInfo.mAdLandingPageReportUrl = paramVideoAdInfo.z;
+    localAdvertisementInfo.mAdLandingPage = paramVideoAdInfo.j;
+    localAdvertisementInfo.mAdCanvasJson = paramVideoAdInfo.y;
+    localAdvertisementInfo.mAdDestType = paramVideoAdInfo.jdField_n_of_type_Int;
+    localAdvertisementInfo.mAdExt = paramVideoAdInfo.r;
+    localAdvertisementInfo.mOrigin = nmf.N;
+    localAdvertisementInfo.mAdAppDownLoadSchema = paramVideoAdInfo.x;
+    localAdvertisementInfo.mAdCustomizedInvokeUrl = paramVideoAdInfo.jdField_n_of_type_JavaLangString;
+    localAdvertisementInfo.mChannelID = 409409L;
+    localAdvertisementInfo.mAdProductType = paramVideoAdInfo.c;
+    localAdvertisementInfo.mAdJumpMode = paramVideoAdInfo.l;
+    localAdvertisementInfo.mAdPosID = paramVideoAdInfo.jdField_b_of_type_Long;
+    if (paramVideoAdInfo.v != null) {}
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramVideoAdInfo.v);
+      if (localJSONObject.has("mini_program_type")) {
+        localAdvertisementInfo.miniProgramType = localJSONObject.optInt("mini_program_type");
+      }
+      localAdvertisementInfo.mAdExtInfo = paramVideoAdInfo.v;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+    localAdvertisementInfo.mPopFormH5Url = paramVideoAdInfo.C;
+    localAdvertisementInfo.mShowAdButton = paramVideoAdInfo.jdField_b_of_type_Boolean;
+    localAdvertisementInfo.processAdExt(paramVideoAdInfo.r);
+    return localAdvertisementInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     oay
  * JD-Core Version:    0.7.0.1
  */

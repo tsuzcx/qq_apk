@@ -1,21 +1,16 @@
-import android.view.MotionEvent;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-public class accp
-  implements View.OnTouchListener
+class accp
+  extends AccessibilityDelegateCompat
 {
-  public accp(TroopTransferActivity paramTroopTransferActivity) {}
+  accp(accn paramaccn) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
-    if (paramMotionEvent != null) {
-      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    }
-    return false;
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setSelected(false);
   }
 }
 

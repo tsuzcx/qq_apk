@@ -1,7 +1,4 @@
-public abstract interface sxc
-{
-  public abstract void a(sxb paramsxb);
-}
+public class sxc {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

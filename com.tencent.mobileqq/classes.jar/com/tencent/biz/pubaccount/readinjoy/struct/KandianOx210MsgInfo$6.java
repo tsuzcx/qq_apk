@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bgmq;
+import bhvh;
 
 public class KandianOx210MsgInfo$6
   implements Runnable
 {
   public void run()
   {
-    SharedPreferences.Editor localEditor = bgmq.a(this.a, true, false).edit();
+    SharedPreferences.Editor localEditor = bhvh.a(this.a, true, false).edit();
     localEditor.remove("kandian_push_0x210_msg_for_follow");
     localEditor.remove("kandian_push_0x210_c5_msg_time");
-    bgmq.a(localEditor, true);
+    bhvh.a(localEditor, true);
   }
 }
 

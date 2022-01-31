@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import axby;
-import axcl;
+import ayca;
+import aycn;
 import java.util.LinkedList;
 
 class FrameSprite$1$1
@@ -16,26 +16,26 @@ class FrameSprite$1$1
       int j;
       synchronized (this.a.this$0)
       {
-        axcl[] arrayOfaxcl = axby.a(this.a.this$0);
-        if ((arrayOfaxcl == null) || (axby.a(this.a.this$0))) {
+        aycn[] arrayOfaycn = ayca.a(this.a.this$0);
+        if ((arrayOfaycn == null) || (ayca.a(this.a.this$0))) {
           return;
         }
-        axby.a(this.a.this$0, new axcl[axby.a(this.a.this$0).length / 2]);
+        ayca.a(this.a.this$0, new aycn[ayca.a(this.a.this$0).length / 2]);
         j = 0;
         int i = 0;
-        if (j < axby.a(this.a.this$0).length)
+        if (j < ayca.a(this.a.this$0).length)
         {
           if (j % 2 == 0)
           {
-            axby localaxby2 = this.a.this$0;
+            ayca localayca2 = this.a.this$0;
             int k = i + 1;
-            axby.a(localaxby2, i, arrayOfaxcl[j]);
+            ayca.a(localayca2, i, arrayOfaycn[j]);
             i = k;
           }
           else
           {
-            axby.a(this.a.this$0).remove(arrayOfaxcl[j]);
-            arrayOfaxcl[j].c();
+            ayca.a(this.a.this$0).remove(arrayOfaycn[j]);
+            arrayOfaycn[j].c();
           }
         }
         else {

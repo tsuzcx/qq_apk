@@ -1,61 +1,56 @@
-import java.nio.ByteBuffer;
-import oicq.wlogin_sdk.tools.MD5;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloGameShare.2;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajnr
+  implements bcwh
 {
-  public static String a(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return paramString;
-    }
-    StringBuffer localStringBuffer = new StringBuffer(paramString.length());
-    int i = 0;
-    if (i < paramString.length())
-    {
-      char c = paramString.charAt(i);
-      if ((c == ' ') || (c == '-') || (c == ')') || (c == '(') || (c == '_')) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuffer.append(c);
-      }
-    }
-    return localStringBuffer.toString();
-  }
+  public ajnr(ApolloGameShare.2 param2) {}
   
-  public static String a(String paramString1, String paramString2)
+  public void a(BaseResp paramBaseResp)
   {
-    paramString1 = paramString1.getBytes();
-    byte[] arrayOfByte = paramString2.getBytes();
-    if (paramString1.length > 10)
+    if (paramBaseResp == null) {}
+    do
     {
-      paramString2 = new byte[10];
-      System.arraycopy(paramString1, 0, paramString2, 0, 10);
-      paramString1 = paramString2;
+      do
+      {
+        return;
+      } while ((ajnp.a(this.a.this$0) == null) || (!ajnp.a(this.a.this$0).equals(paramBaseResp.transaction)));
+      QLog.i("ApolloGameShare", 1, "[shareResult2WXFriendOrCircle], resp.errCode:" + paramBaseResp.errCode);
+    } while (paramBaseResp.errCode != 0);
+    paramBaseResp = this.a.this$0.a();
+    int j;
+    int i;
+    if (paramBaseResp == null)
+    {
+      j = -1;
+      if (1 != this.a.a) {
+        break label159;
+      }
+      i = 3;
     }
     for (;;)
     {
-      return MD5.toMD5(ByteBuffer.allocate(paramString1.length + arrayOfByte.length).put(paramString1).put(arrayOfByte).array());
-    }
-  }
-  
-  public static String b(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    for (paramString = "#";; paramString = String.valueOf(paramString.charAt(0)).toUpperCase())
-    {
-      String str = paramString;
-      if (!baip.b(paramString.charAt(0))) {
-        str = "#";
+      VipUtils.a(ajnp.a(this.a.this$0), "cmshow", "Apollo", "share_url_succeed", j, i, new String[] { Integer.toString(ajnp.a(this.a.this$0)) });
+      return;
+      j = ApolloUtil.b(paramBaseResp.a.a);
+      break;
+      label159:
+      if (2 == this.a.a) {
+        i = 4;
+      } else {
+        i = -1;
       }
-      return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajnr
  * JD-Core Version:    0.7.0.1
  */

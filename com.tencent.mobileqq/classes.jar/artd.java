@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.listentogether.data.ISong;
 
-public class artd
-  implements arva
+public abstract interface artd
 {
-  public artd(MultiAIOFragment paramMultiAIOFragment) {}
-  
-  public void a(int paramInt)
-  {
-    MultiAIOFragment.a(this.a, true);
-  }
+  public abstract void a(ISong paramISong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     artd
  * JD-Core Version:    0.7.0.1
  */

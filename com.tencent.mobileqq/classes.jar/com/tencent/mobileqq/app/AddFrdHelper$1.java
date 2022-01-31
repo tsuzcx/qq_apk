@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import ajdy;
+import ajsa;
 
 public class AddFrdHelper$1
   implements Runnable
 {
-  public AddFrdHelper$1(ajdy paramajdy) {}
+  public AddFrdHelper$1(ajsa paramajsa) {}
   
   public void run()
   {

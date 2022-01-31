@@ -1,47 +1,19 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.Context;
 
-public final class smk
-  extends MSFServlet
+public abstract class smk<MSG extends smd, INFO extends sme>
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  MSG a;
+  
+  public smk(MSG paramMSG)
   {
-    if (paramIntent == null) {
-      return;
-    }
-    Bundle localBundle = paramIntent.getExtras();
-    paramIntent = null;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      paramIntent = bakc.b(paramFromServiceMsg.getWupBuffer());
-      localBundle.putInt("data_error_code", 0);
-    }
-    for (;;)
-    {
-      QQStoryContext.a().a().a(localBundle, paramIntent);
-      return;
-      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
-      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
-    }
+    this.a = paramMSG;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(bakc.a(arrayOfByte));
-    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-    paramPacket.autoResend = paramIntent.getBooleanExtra("support_retry", false);
-  }
+  public abstract boolean a(Context paramContext, INFO paramINFO);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     smk
  * JD-Core Version:    0.7.0.1
  */

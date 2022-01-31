@@ -1,28 +1,28 @@
 package cooperation.qzone;
 
-import bfpd;
-import bfpe;
+import bgxk;
+import bgxl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.mfsdk.reporter.ReporterMachine;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zqb;
+import zzt;
 
 public class LeakHelper$2$1
   implements Runnable
 {
-  public LeakHelper$2$1(bfpe parambfpe) {}
+  public LeakHelper$2$1(bgxl parambgxl) {}
   
   public void run()
   {
-    Object localObject1 = zqb.a("mobileqzone_leak");
+    Object localObject1 = zzt.a("mobileqzone_leak");
     Object localObject2;
     if (((Boolean)localObject1[0]).booleanValue())
     {
       localObject2 = (String)localObject1[1];
-      bfpd.a((String)localObject2);
+      bgxk.a((String)localObject2);
     }
     try
     {

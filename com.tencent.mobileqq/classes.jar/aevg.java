@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.graphics.RectF;
 
 public class aevg
-  implements View.OnClickListener
 {
-  public aevg(SearchBaseActivity paramSearchBaseActivity) {}
+  public int a;
+  public aevh a;
+  public aevi a;
+  public RectF a;
   
-  public void onClick(View paramView)
+  public aevg()
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if (this.a.h != 1) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
-    }
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_a_of_type_Aevi = new aevi(0.0D, 0.0D);
+    this.jdField_a_of_type_Aevh = new aevh(0.0D, 0.0D);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public String toString()
+  {
+    return "ItemStatus{rect=" + this.jdField_a_of_type_AndroidGraphicsRectF + ", velocity=" + this.jdField_a_of_type_Aevi + ", acceleration=" + this.jdField_a_of_type_Aevh + '}';
   }
 }
 

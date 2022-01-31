@@ -1,25 +1,29 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import ajjy;
+import ajyc;
 import android.graphics.Color;
 import android.widget.TextView;
-import qaq;
-import qca;
+import oat;
+import qms;
+import qny;
 
 public class VideoFeedsGameAdComManager$1
   implements Runnable
 {
-  public VideoFeedsGameAdComManager$1(qca paramqca) {}
+  public VideoFeedsGameAdComManager$1(qny paramqny) {}
   
   public void run()
   {
-    if ((qca.a(this.this$0) != null) && (qca.a(this.this$0).D != null))
+    if ((qny.a(this.this$0) != null) && (qny.a(this.this$0).J != null))
     {
-      qca.a(this.this$0).D.setTextColor(Color.parseColor("#262626"));
-      qca.a(this.this$0).D.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-      qca.a(this.this$0).D.setText(ajjy.a(2131650423));
-      qca.a(this.this$0).D.setClickable(false);
-      qca.a(this.this$0).D.setClickable(false);
+      qny.a(this.this$0).J.setTextColor(Color.parseColor("#262626"));
+      if (oat.a()) {
+        qny.a(this.this$0).J.setTextColor(Color.parseColor("#80000000"));
+      }
+      qny.a(this.this$0).J.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      qny.a(this.this$0).J.setText(ajyc.a(2131716214));
+      qny.a(this.this$0).J.setClickable(false);
+      qny.a(this.this$0).J.setClickable(false);
     }
   }
 }

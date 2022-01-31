@@ -1,24 +1,40 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.List;
 
 class vbb
-  implements Animation.AnimationListener
+  extends uyl
 {
-  vbb(vaz paramvaz) {}
+  vbb(vba paramvba) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, View paramView, Object paramObject, vas paramvas)
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_Vau != null) {
-      this.a.a.jdField_a_of_type_Vau.a(null);
-    }
+    if (vzo.b()) {}
+    label6:
+    do
+    {
+      do
+      {
+        do
+        {
+          break label6;
+          do
+          {
+            return;
+          } while ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilList.size()));
+          paramObject = (StoryVideoItem)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+        } while (TextUtils.isEmpty(paramObject.mOwnerUid));
+        paramObject = vba.a(this.a).b(paramObject.mOwnerUid);
+      } while (paramObject == null);
+      switch (paramView.getId())
+      {
+      default: 
+        return;
+      }
+    } while (vba.a(this.a) == null);
+    vba.a(this.a).a(paramView, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, paramObject, paramInt);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

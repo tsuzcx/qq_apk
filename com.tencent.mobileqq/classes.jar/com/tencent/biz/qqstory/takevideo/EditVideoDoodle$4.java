@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import java.util.Collections;
-import uth;
-import uzm;
+import vgd;
+import vmi;
 
 public class EditVideoDoodle$4
   implements Runnable
 {
-  public EditVideoDoodle$4(uth paramuth) {}
+  public EditVideoDoodle$4(vgd paramvgd) {}
   
   public void run()
   {
     if (!this.this$0.jdField_a_of_type_Boolean) {
-      this.this$0.jdField_a_of_type_Uzm.a(1, Collections.EMPTY_LIST);
+      this.this$0.jdField_a_of_type_Vmi.a(1, Collections.EMPTY_LIST);
     }
   }
 }

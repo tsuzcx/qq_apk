@@ -1,15 +1,32 @@
-public abstract class aklw
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetConfig;
+import com.tencent.mobileqq.config.ResourcePluginListener;
+
+public class aklw
+  extends ResourcePluginListener
 {
-  public int b;
+  private aklw(GetConfig paramGetConfig) {}
   
-  public aklw(int paramInt)
+  public void a(byte paramByte)
   {
-    this.b = paramInt;
+    if (this.a.b == 44)
+    {
+      if ((paramByte != 2) && (paramByte == 3)) {}
+      this.a.a.app.c(GetConfig.a(this.a));
+      this.a.a(7);
+    }
+  }
+  
+  public void b(byte paramByte)
+  {
+    if ((paramByte != 2) && (paramByte == 3)) {}
+    this.a.a.app.d(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aklw
  * JD-Core Version:    0.7.0.1
  */

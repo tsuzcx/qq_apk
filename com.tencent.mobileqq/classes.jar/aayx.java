@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
 public class aayx
-  implements View.OnClickListener
+  extends ajta
 {
-  public aayx(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  public aayx(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
   {
-    H5MagicPlayerActivity.a(this.a);
-    if ((this.a.d.equals(this.a.c)) && (this.a.a != null))
+    this.a.h();
+    if (paramBoolean)
     {
-      awqx.b(null, "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.a.a.epId, "", "", "");
+      if (paramBoolean1.booleanValue()) {
+        DiscussionInfoCardActivity.e(this.a);
+      }
       return;
     }
-    awqx.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.a.a.epId, "", "", "");
+    bcpw.a(this.a, paramInt, 0).b(this.a.getTitleBarHeight());
   }
 }
 

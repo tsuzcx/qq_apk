@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import uuq;
+import vhm;
 
 public class EditVideoParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<EditVideoParams> CREATOR = new uuq();
+  public static final Parcelable.Creator<EditVideoParams> CREATOR = new vhm();
   public int a;
   public final Bundle a;
   public EditVideoParams.EditSource a;

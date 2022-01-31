@@ -1,12 +1,16 @@
 import com.tencent.qphone.base.util.QLog;
 
-public class bjfc
-  implements bjdx
+class bjfc
+  implements bjfd
 {
-  public void a(boolean paramBoolean)
+  bjfc(bjfa parambjfa) {}
+  
+  public void a(float paramFloat, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean, String paramString, bkfm parambkfm)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager onResourceDownload");
+      QLog.d("QIMInformationPasterManager", 2, "preload:" + paramString + " item:" + parambkfm.toString());
     }
   }
 }

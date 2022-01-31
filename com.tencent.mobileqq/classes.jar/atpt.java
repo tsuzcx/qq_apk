@@ -1,57 +1,68 @@
-import android.app.KeyguardManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.pic.PicPreDownloader.ScreenBroadcastReceiver.1;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.net.Uri;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class atpt
-  extends BroadcastReceiver
+class atpt
+  implements DialogInterface.OnClickListener
 {
-  public String a;
+  atpt(atpi paramatpi, boolean paramBoolean) {}
   
-  public atpt(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramString;
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    boolean bool = false;
-    paramIntent = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(paramIntent))
+    if (this.jdField_a_of_type_Boolean)
     {
-      PicPreDownloader.b = PicPreDownloader.a;
-      if (!a(paramContext)) {
-        bool = true;
-      }
-      PicPreDownloader.a = bool;
-    }
-    for (;;)
-    {
-      atpg.a("PIC_TAG_PRELOAD", "onReceive", "isScreenOn:" + PicPreDownloader.a + ",lastScreenOnState:" + PicPreDownloader.b);
-      if ((PicPreDownloader.b != PicPreDownloader.a) || (PicPreDownloader.a)) {
-        break;
-      }
+      paramDialogInterface = new Intent();
+      paramDialogInterface.setAction("android.intent.action.VIEW");
+      paramDialogInterface.setData(Uri.parse(atpi.a(this.jdField_a_of_type_Atpi).guideAppNowJumpUri));
+      this.jdField_a_of_type_Atpi.a.startActivity(paramDialogInterface);
       return;
-      if ("android.intent.action.SCREEN_OFF".equals(paramIntent))
-      {
-        PicPreDownloader.b = PicPreDownloader.a;
-        PicPreDownloader.a = false;
+    }
+    if ("com.tencent.now".equals(atpi.a(this.jdField_a_of_type_Atpi).guideAppNowPackage))
+    {
+      paramDialogInterface = BaseApplicationImpl.getContext().getSharedPreferences("now_down_apk", 4);
+      if (paramDialogInterface.getInt("state", 0) == 1) {
+        try
+        {
+          apwc.a(paramDialogInterface.getString("filePath", ""));
+          paramDialogInterface.edit().putInt("state", 0).apply();
+          return;
+        }
+        catch (Exception paramDialogInterface)
+        {
+          QLog.e("NearbyProfileDisplayPanel", 1, paramDialogInterface, new Object[0]);
+          this.jdField_a_of_type_Atpi.a(atpi.a(this.jdField_a_of_type_Atpi).guideAppNowDownloadUrl, "now.apk", "now_down_apk");
+          return;
+        }
       }
-      else if ("android.intent.action.USER_PRESENT".equals(paramIntent))
+      this.jdField_a_of_type_Atpi.a(atpi.a(this.jdField_a_of_type_Atpi).guideAppNowDownloadUrl, "now.apk", "now_down_apk");
+      return;
+    }
+    paramDialogInterface = atpi.a(this.jdField_a_of_type_Atpi).guideAppNowPackage.replaceAll("\\.", "_") + "_apk";
+    String str = atpi.a(this.jdField_a_of_type_Atpi).guideAppNowPackage.replaceAll("\\.", "_") + ".apk";
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences(paramDialogInterface, 4);
+    if (localSharedPreferences.getInt("state", 0) == 1) {
+      try
       {
-        PicPreDownloader.b = PicPreDownloader.a;
-        PicPreDownloader.a = true;
+        apwc.a(localSharedPreferences.getString("filePath", ""));
+        localSharedPreferences.edit().putInt("state", 0).apply();
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("NearbyProfileDisplayPanel", 1, localException, new Object[0]);
+        this.jdField_a_of_type_Atpi.a(atpi.a(this.jdField_a_of_type_Atpi).guideAppNowDownloadUrl, str, paramDialogInterface);
+        return;
       }
     }
-    ThreadManager.post(new PicPreDownloader.ScreenBroadcastReceiver.1(this), 5, null, true);
+    this.jdField_a_of_type_Atpi.a(atpi.a(this.jdField_a_of_type_Atpi).guideAppNowDownloadUrl, str, paramDialogInterface);
   }
 }
 

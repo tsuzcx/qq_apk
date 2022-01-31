@@ -1,12 +1,6 @@
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import java.util.List;
-
-public class sxb
-  extends sfo
+public abstract interface sxb
 {
-  public ShareGroupItem a;
-  public String a;
-  public List<ShareGroupItem> a;
+  public abstract void a(sxa paramsxa);
 }
 
 

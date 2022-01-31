@@ -1,23 +1,8 @@
-public class awfe
+import android.view.View;
+
+public abstract interface awfe
 {
-  public volatile int a = 0;
-  public int b;
-  public int c = 0;
-  public int d;
-  
-  public String a()
-  {
-    switch (this.a)
-    {
-    default: 
-      return "UNKNOWN_STATUS";
-    case 0: 
-      return "CONFIG_REQUEST_OK";
-    case 1: 
-      return "CONFIG_START_SERVLET";
-    }
-    return "CONFIG_SEND_REQ";
-  }
+  public abstract void a(int paramInt, View paramView);
 }
 
 

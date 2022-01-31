@@ -1,44 +1,26 @@
-import android.text.TextUtils;
+import android.content.Intent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
+import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
 
-class acme
-  implements begw
+public class acme
+  implements View.OnClickListener
 {
-  acme(aclw paramaclw, String paramString) {}
+  public acme(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    aclw.a(this.jdField_a_of_type_Aclw).dismiss();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        aclw.a(this.jdField_a_of_type_Aclw, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (aclw.a(this.jdField_a_of_type_Aclw))
-      {
-        aclw.b(this.jdField_a_of_type_Aclw);
-        return;
-      }
-      aclw.c(this.jdField_a_of_type_Aclw);
-      return;
-    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-    if (aclw.a(this.jdField_a_of_type_Aclw))
-    {
-      aclw.b(this.jdField_a_of_type_Aclw);
-      return;
-    }
-    aclw.c(this.jdField_a_of_type_Aclw);
+    paramView = new Intent(this.a, CountrySelectActivity.class);
+    paramView.putExtra("key_country_code", this.a.a.mLocationCountyCode);
+    paramView.putExtra("key_no_limit_allow", true);
+    this.a.startActivityForResult(paramView, 111);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acme
  * JD-Core Version:    0.7.0.1
  */

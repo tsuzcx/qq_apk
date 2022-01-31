@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ahrh;
+import aidz;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,10 +9,11 @@ import android.text.TextUtils;
 public class ResultRecord
   implements Parcelable
 {
-  public static final Parcelable.Creator<ResultRecord> CREATOR = new ahrh();
+  public static final Parcelable.Creator<ResultRecord> CREATOR = new aidz();
   public int a;
   public long a;
   public String a;
+  public boolean a;
   public int b;
   public String b;
   public String c;
@@ -33,6 +34,13 @@ public class ResultRecord
     this.d = paramParcel.readString();
     this.jdField_a_of_type_Long = paramParcel.readLong();
     this.jdField_b_of_type_Int = paramParcel.readInt();
+    if (paramParcel.readInt() == 1) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+      bool = false;
+    }
   }
   
   public ResultRecord(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
@@ -53,6 +61,7 @@ public class ResultRecord
       localResultRecord.c = paramResultRecord.c;
       localResultRecord.d = paramResultRecord.d;
       localResultRecord.jdField_b_of_type_Int = paramResultRecord.jdField_b_of_type_Int;
+      localResultRecord.jdField_a_of_type_Boolean = paramResultRecord.jdField_a_of_type_Boolean;
     }
     return localResultRecord;
   }
@@ -70,6 +79,7 @@ public class ResultRecord
     this.c = paramString3;
     this.d = paramString4;
     this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public int describeContents()
@@ -110,6 +120,12 @@ public class ResultRecord
     paramParcel.writeString(this.d);
     paramParcel.writeLong(this.jdField_a_of_type_Long);
     paramParcel.writeInt(this.jdField_b_of_type_Int);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      paramParcel.writeInt(paramInt);
+      return;
+    }
   }
 }
 

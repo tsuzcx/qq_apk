@@ -1,27 +1,81 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.MethodCodec;
+import io.flutter.plugin.common.StandardMethodCodec;
 
-public class apzo
-  implements View.OnClickListener
+public abstract class apzo
+  implements MethodChannel.MethodCallHandler
 {
-  public apzo(TextHeaderView paramTextHeaderView, Activity paramActivity, QQGameMsgInfo paramQQGameMsgInfo) {}
+  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
   
-  public void onClick(View paramView)
+  protected abstract void a(String paramString, MethodChannel.Result paramResult);
+  
+  protected abstract void a(String paramString, Boolean paramBoolean, MethodChannel.Result paramResult);
+  
+  protected abstract void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
+  
+  protected abstract void a(String paramString, Integer paramInteger, Boolean paramBoolean, MethodChannel.Result paramResult);
+  
+  protected abstract void b(String paramString, MethodChannel.Result paramResult);
+  
+  protected abstract void b(String paramString, Boolean paramBoolean, MethodChannel.Result paramResult);
+  
+  protected abstract void b(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
+  
+  protected abstract void c(String paramString, MethodChannel.Result paramResult);
+  
+  protected abstract void c(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
+  
+  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
-    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
+    String str = paramMethodCall.method;
+    if ("setSpecialCare".equals(str))
     {
-      paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      paramView.putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
-      yez.a(aing.a(), "769", "205019", this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId, "76901", "1", "160", new String[] { this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, "", "20" });
-      bgtf.a(3, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      a((String)paramMethodCall.argument("uin"), (Boolean)paramMethodCall.argument("isSpecialCare"), paramResult);
+      return;
     }
+    if ("setQzoneNotify".equals(str))
+    {
+      b((String)paramMethodCall.argument("uin"), (Boolean)paramMethodCall.argument("isQzoneNotify"), paramResult);
+      return;
+    }
+    if ("getSCFSwitchs".equals(str))
+    {
+      a((String)paramMethodCall.argument("uin"), paramResult);
+      return;
+    }
+    if ("getSpecialRing".equals(str))
+    {
+      b((String)paramMethodCall.argument("uin"), paramResult);
+      return;
+    }
+    if ("openSpecialRingMall".equals(str))
+    {
+      c((String)paramMethodCall.argument("uin"), paramResult);
+      return;
+    }
+    if ("onPageShowReport".equals(str))
+    {
+      a((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
+      return;
+    }
+    if ("onBellShowReport".equals(str))
+    {
+      b((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
+      return;
+    }
+    if ("onBellClickReport".equals(str))
+    {
+      c((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
+      return;
+    }
+    if ("onSpecialCareSwitchReport".equals(str))
+    {
+      a((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), (Boolean)paramMethodCall.argument("isChecked"), paramResult);
+      return;
+    }
+    paramResult.notImplemented();
   }
 }
 

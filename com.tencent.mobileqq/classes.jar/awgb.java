@@ -1,37 +1,103 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.widget.SingleLineTextView;
+import com.tencent.widget.ThemeURLImageView;
+import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 
-class awgb
-  implements awmj
+public class awgb
 {
-  awgb(awfz paramawfz) {}
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static WeakReference<Drawable> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a()
+  public static Drawable a(Context paramContext)
   {
-    this.a.a = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onStop!");
+    if (paramContext == null) {
+      return null;
     }
+    return paramContext.getResources().getDrawable(2130845311);
   }
   
-  public void a(Process paramProcess)
+  private static Drawable a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.a.a = paramProcess;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer Start!");
+    if (jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      Drawable localDrawable = (Drawable)jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localDrawable != null) {
+        if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+        {
+          paramQQAppInterface = localDrawable;
+          if (jdField_a_of_type_JavaLangString.equals(ThemeUtil.curThemeId)) {}
+        }
+        else
+        {
+          ThemeUtil.setThemeFilter(localDrawable, ThemeUtil.curThemeId);
+          jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
+          paramQQAppInterface = localDrawable;
+        }
+      }
     }
+    do
+    {
+      return paramQQAppInterface;
+      paramContext = a(paramContext);
+      paramQQAppInterface = paramContext;
+    } while (paramContext == null);
+    paramQQAppInterface = paramContext.getConstantState().newDrawable().mutate();
+    ThemeUtil.setThemeFilter(paramQQAppInterface, ThemeUtil.curThemeId);
+    jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
+    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    return paramQQAppInterface;
   }
   
-  public void b()
+  public static ThemeURLImageView a(Context paramContext)
   {
-    this.a.a = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onDestroy!");
-    }
+    if (paramContext == null) {}
+    Drawable localDrawable;
+    do
+    {
+      return null;
+      localDrawable = a(paramContext);
+    } while (localDrawable == null);
+    paramContext = new ThemeURLImageView(paramContext);
+    paramContext.setContentDescription("BOT");
+    paramContext.setImageDrawable(localDrawable);
+    return paramContext;
+  }
+  
+  public static void a(Context paramContext, SingleLineTextView paramSingleLineTextView, String paramString)
+  {
+    if ((paramSingleLineTextView == null) || (TextUtils.isEmpty(paramString)) || (paramContext == null)) {}
+    do
+    {
+      return;
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((!(localAppRuntime instanceof QQAppInterface)) || (!bahx.b((QQAppInterface)localAppRuntime, paramString))) {
+        break;
+      }
+      paramString = a((QQAppInterface)localAppRuntime, paramContext);
+    } while (paramString == null);
+    paramSingleLineTextView.setCompoundDrawablePadding((int)bbdh.a(paramContext, 5.0F));
+    paramSingleLineTextView.setDrawableRight2WithIntrinsicBounds(paramString);
+    return;
+    paramSingleLineTextView.setDrawableRight2WithIntrinsicBounds(null);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    return ((localAppRuntime instanceof QQAppInterface)) && (bahx.b((QQAppInterface)localAppRuntime, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     awgb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,30 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import mqq.util.WeakReference;
 
-class alvj
-  implements EIPCResultCallback
+public class alvj
+  extends agrm
 {
-  alvj(alvi paramalvi) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  private alvj(AlbumListFragment paramAlbumListFragment)
   {
-    QLog.d("DanmuDataIPCClient", 1, new Object[] { "get barrage list, IPC success, msgSeq:", Long.valueOf(paramEIPCResult.data.getLong("key_barrage_msg_seq")) });
+    super(paramAlbumListFragment);
+  }
+  
+  public static agrj b(AlbumListFragment paramAlbumListFragment)
+  {
+    if ((a == null) || (a.a.get() != null)) {}
+    try
+    {
+      if ((a == null) || (a.a.get() != null)) {
+        a = new alvj(paramAlbumListFragment);
+      }
+      return a;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alvj
  * JD-Core Version:    0.7.0.1
  */

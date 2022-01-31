@@ -1,35 +1,41 @@
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
-import java.lang.ref.WeakReference;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
-public class nrj
-  implements qif
+class nrj
+  extends akav
 {
-  private WeakReference<ReadInJoyArticleBottomVideoView> a;
+  nrj(nri paramnri) {}
   
-  public nrj(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
+  public void a(List<MessageRecord> paramList)
   {
-    this.a = new WeakReference(paramReadInJoyArticleBottomVideoView);
-  }
-  
-  public List<qig> a(int paramInt, boolean paramBoolean)
-  {
-    ReadInJoyArticleBottomVideoView localReadInJoyArticleBottomVideoView = (ReadInJoyArticleBottomVideoView)this.a.get();
-    ArrayList localArrayList = new ArrayList();
-    if (localReadInJoyArticleBottomVideoView != null) {
-      localArrayList.add(new qig(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView).d, "", 5, (int)ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView).a));
+    super.a(paramList);
+    HashSet localHashSet = new HashSet();
+    if (nqq.b != null) {
+      localHashSet.addAll(nqq.b);
     }
-    return localArrayList;
-  }
-  
-  public boolean a()
-  {
-    ReadInJoyArticleBottomVideoView localReadInJoyArticleBottomVideoView = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (localReadInJoyArticleBottomVideoView == null) {
-      return false;
+    nri localnri = (nri)this.a.mApp.getBusinessHandler(88);
+    paramList = new ArrayList(paramList).iterator();
+    label164:
+    while (paramList.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+      if (("2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) || ((localMessageRecord.istroop == 1008) && (sbc.e(this.a.app, localMessageRecord.senderuin)))) {}
+      for (int i = 1;; i = 0)
+      {
+        if ((i == 0) && (!localHashSet.contains(localMessageRecord.senderuin))) {
+          break label164;
+        }
+        if (i != 0) {
+          localnri.a(localMessageRecord);
+        }
+        localnri.b(localMessageRecord);
+        break;
+      }
     }
-    return badq.h(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView));
   }
 }
 

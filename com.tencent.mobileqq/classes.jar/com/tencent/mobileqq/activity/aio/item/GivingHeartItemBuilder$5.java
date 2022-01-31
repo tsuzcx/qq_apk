@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import acno;
-import adfe;
-import adll;
+import acyh;
+import adqg;
+import adwl;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -10,18 +10,18 @@ import java.util.Map;
 public class GivingHeartItemBuilder$5
   implements Runnable
 {
-  public GivingHeartItemBuilder$5(adfe paramadfe) {}
+  public GivingHeartItemBuilder$5(adqg paramadqg) {}
   
   public void run()
   {
-    Object localObject = adll.a(this.this$0.b, adfe.a(this.this$0));
+    Object localObject = adwl.a(this.this$0.b, adqg.a(this.this$0));
     if (((ArrayList)localObject).size() > 0)
     {
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        acno localacno = (acno)((Iterator)localObject).next();
-        adfe.a(this.this$0).put(Integer.valueOf(localacno.b), Integer.valueOf(localacno.c));
+        acyh localacyh = (acyh)((Iterator)localObject).next();
+        adqg.a(this.this$0).put(Integer.valueOf(localacyh.b), Integer.valueOf(localacyh.c));
       }
     }
   }

@@ -1,92 +1,203 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule.1;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule.2;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule.3;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule.4;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.net.URLDecoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class oov
-  extends oqg
+  implements AladdinConfigHandler
 {
-  private HashMap<Long, ArticleReadInfo> jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public static final SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd");
   
-  public oov(AppInterface paramAppInterface, atmp paramatmp, ExecutorService paramExecutorService, pdc parampdc, Handler paramHandler)
+  public static int a()
   {
-    super(paramAppInterface, paramatmp, paramExecutorService, parampdc, paramHandler);
-  }
-  
-  private void a(List<ArticleReadInfo> paramList)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      return;
+    String[] arrayOfString = ((String)bhvh.a("readinjoy_comment_guide_show_num_one_day", "0_0")).split("_");
+    if ((arrayOfString != null) && (arrayOfString.length >= 2) && (a(System.currentTimeMillis()).equals(arrayOfString[0]))) {
+      return Integer.valueOf(arrayOfString[1]).intValue();
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ArticleReadInfoModule.2(this, paramList));
+    return 0;
   }
   
-  public void a()
+  public static TemplateBean a(VafContext paramVafContext)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (paramVafContext == null)
     {
-      QLog.d("ArticleReadInfoModule", 1, "article read info has loaded");
-      return;
+      rpu localrpu = rpu.a("comment_feeds", true);
+      paramVafContext = localrpu;
+      if (localrpu == null) {
+        return null;
+      }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ArticleReadInfoModule.1(this));
-  }
-  
-  public void a(long paramLong)
-  {
-    ArticleReadInfo localArticleReadInfo = (ArticleReadInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    if (localArticleReadInfo != null)
+    else
     {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ArticleReadInfoModule.4(this, localArticleReadInfo));
+      paramVafContext = (rpu)paramVafContext.getTemplateFactory();
     }
-    QLog.d("ArticleInfo", 2, "DeleteArticle ReadInfo , articleID : " + paramLong);
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    ArticleReadInfo localArticleReadInfo = (ArticleReadInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong1));
-    if (localArticleReadInfo == null)
+    if (paramVafContext != null) {}
+    for (;;)
     {
-      localArticleReadInfo = new ArticleReadInfo();
-      localArticleReadInfo.mArticleID = paramLong1;
-      localArticleReadInfo.mLastReadTime = paramLong2;
+      try
+      {
+        paramVafContext = paramVafContext.getTemplateBean(a());
+        return paramVafContext;
+      }
+      catch (JSONException paramVafContext)
+      {
+        QLog.d("CommentGuideConfigHandler", 1, "getTemplateBean ", paramVafContext);
+      }
+      paramVafContext = null;
     }
-    for (localArticleReadInfo.mIsRead = true;; localArticleReadInfo.mIsRead = true)
+    return null;
+  }
+  
+  public static String a()
+  {
+    String str = (String)bhvh.a("readinjoy_comment_guide_wording", ajyc.a(2131702171));
+    QLog.d("CommentGuideConfigHandler", 1, "wording = " + str);
+    return str;
+  }
+  
+  public static String a(long paramLong)
+  {
+    Date localDate = new Date(paramLong);
+    return a.format(localDate);
+  }
+  
+  public static String a(String paramString)
+  {
+    String str2 = (String)bhvh.a("readinjoy_comment_guide_base_jump_url", "");
+    QLog.d("CommentGuideConfigHandler", 1, "jump = " + str2);
+    String str1;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = null;
+    }
+    String str3;
+    do
     {
-      a(localArticleReadInfo);
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ArticleReadInfoModule.3(this, localArticleReadInfo));
-      return;
-      localArticleReadInfo.mLastReadTime = paramLong2;
+      do
+      {
+        return str1;
+        str1 = str2;
+      } while (TextUtils.isEmpty(paramString));
+      str3 = (String)bfng.a(str2).get("appSchema");
+      str1 = str2;
+    } while (TextUtils.isEmpty(str3));
+    try
+    {
+      str1 = URLDecoder.decode(str3, "UTF-8");
+      paramString = str1 + "&rowkey=" + paramString;
+      paramString = bfng.a(bfng.a(str2, "appSchema"), "appSchema", paramString);
+      QLog.d("CommentGuideConfigHandler", 1, "getJumpUrl : " + paramString);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      QLog.d("CommentGuideConfigHandler", 1, "getJumpUrl ", paramString);
+    }
+    return str2;
+  }
+  
+  public static JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("style_ID", "ReadInJoy_comment_pop_guide");
+      localJSONObject.put("guide_image", bhvh.a("readinjoy_comment_guide_image_url", "readinjoy_comment_guide_big_bg"));
+      localJSONObject.put("guide_wording", a());
+      localJSONObject.put("jump_button_text", ajyc.a(2131702170));
+      localJSONObject.put("dismiss_button_image", "readinjoy_comment_guide_close");
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.d("CommentGuideConfigHandler", 1, "getGuidePopupWindowData ", localJSONException);
+    }
+    return localJSONObject;
+  }
+  
+  public static void a(int paramInt)
+  {
+    String str = a(System.currentTimeMillis());
+    bhvh.a("readinjoy_comment_guide_show_num_one_day", str + "_" + paramInt);
+  }
+  
+  public static boolean a()
+  {
+    if (((Integer)bhvh.a("readinjoy_comment_guide_pic_button_should_show", Integer.valueOf(-1))).intValue() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("CommentGuideConfigHandler", 1, "isShow = " + bool);
+      return bool;
     }
   }
   
-  public void a(ArticleReadInfo paramArticleReadInfo)
+  public static boolean b()
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramArticleReadInfo.mArticleID), paramArticleReadInfo);
+    boolean bool1;
+    if (((Integer)bhvh.a("readinjoy_comment_guide_should_show", Integer.valueOf(-1))).intValue() == 1)
+    {
+      bool1 = true;
+      bool2 = bool1;
+      if (bool1)
+      {
+        int i = ((Integer)bhvh.a("readinjoy_comment_guide_max_show_count", Integer.valueOf(3))).intValue();
+        int j = a();
+        QLog.d("CommentGuideConfigHandler", 1, "count = " + i + "  todayNum : " + j);
+        if (j >= i) {
+          break label126;
+        }
+        a(j + 1);
+      }
+    }
+    label126:
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      QLog.d("CommentGuideConfigHandler", 1, "isShow = " + bool2);
+      return bool2;
+      bool1 = false;
+      break;
+    }
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
-  
-  public boolean a(long paramLong)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)) != null;
+    QLog.d("CommentGuideConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = ooi.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("CommentGuideConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "should_show")) {
+        bhvh.a("readinjoy_comment_guide_should_show", Integer.valueOf(Integer.valueOf(str2).intValue()));
+      } else if (TextUtils.equals(str1, "wording")) {
+        bhvh.a("readinjoy_comment_guide_wording", str2);
+      } else if (TextUtils.equals(str1, "image_url")) {
+        bhvh.a("readinjoy_comment_guide_image_url", str2);
+      } else if (TextUtils.equals(str1, "base_jump_url")) {
+        bhvh.a("readinjoy_comment_guide_base_jump_url", str2);
+      } else if (TextUtils.equals(str1, "max_show_count")) {
+        bhvh.a("readinjoy_comment_guide_max_show_count", Integer.valueOf(Integer.valueOf(str2).intValue()));
+      } else if (TextUtils.equals(str1, "pic_button_should_show")) {
+        bhvh.a("readinjoy_comment_guide_pic_button_should_show", Integer.valueOf(Integer.valueOf(str2).intValue()));
+      }
+    }
+    return true;
   }
   
-  public void b()
+  public void onWipeConfig(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    QLog.d("CommentGuideConfigHandler", 1, "[onWipeConfig]");
+    bhvh.a("readinjoy_comment_guide_should_show", Integer.valueOf(0));
   }
 }
 

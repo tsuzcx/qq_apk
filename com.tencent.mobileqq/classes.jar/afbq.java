@@ -1,57 +1,14 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
-import com.tencent.mobileqq.data.ShowExternalTroop;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afbq
-  extends ajuc
+public final class afbq
+  implements DialogInterface.OnClickListener
 {
-  public afbq(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, List<ShowExternalTroop> paramList, List<String> paramList1)
-  {
-    this.a.b = false;
-    if ((!paramBoolean) || (paramList == null) || (paramList.size() == 0) || (paramInt != 0))
-    {
-      this.a.jdField_a_of_type_Int = 0;
-      if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
-        ShowExternalTroopListActivity.a(this.a);
-      }
-      if (!this.a.jdField_a_of_type_Boolean)
-      {
-        paramList = new ArrayList();
-        this.a.jdField_a_of_type_Aicm.a(paramList);
-        paramInt = this.a.getTitleBarHeight();
-        bbmy.a(this.a, 1, this.a.getString(2131630771), 0).b(paramInt);
-        return;
-      }
-      this.a.a();
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
-      ShowExternalTroopListActivity.a(this.a);
-    }
-    this.a.c.setVisibility(0);
-    if (this.a.jdField_a_of_type_Aicm != null)
-    {
-      this.a.jdField_a_of_type_Int = paramList.size();
-      this.a.jdField_a_of_type_Aicm.a(paramList);
-    }
-    this.a.a(paramList1, true);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afbq
  * JD-Core Version:    0.7.0.1
  */

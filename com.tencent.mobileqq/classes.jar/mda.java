@@ -1,19 +1,19 @@
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+
 public class mda
+  implements mht
 {
-  public float a;
-  public int a;
-  public int b;
+  public mda(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
-  public mda(int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramInt3;
+    this.a.j = true;
+    this.a.L();
   }
   
-  public String toString()
+  public void b()
   {
-    return this.jdField_a_of_type_Int + "_" + this.b + "_" + this.jdField_a_of_type_Float;
+    this.a.j = false;
   }
 }
 

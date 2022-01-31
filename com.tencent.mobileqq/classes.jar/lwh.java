@@ -1,13 +1,18 @@
-class lwh
-  implements bekd
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVRedPacketConfig.ExpressionInfo;
+
+public final class lwh
+  implements Parcelable.Creator<AVRedPacketConfig.ExpressionInfo>
 {
-  lwh(lwf paramlwf) {}
-  
-  public void onScrollStateChanged(int paramInt)
+  public AVRedPacketConfig.ExpressionInfo a(Parcel paramParcel)
   {
-    if ((paramInt == 4097) && (this.a.a != null)) {
-      this.a.a.a(0L);
-    }
+    return new AVRedPacketConfig.ExpressionInfo(paramParcel);
+  }
+  
+  public AVRedPacketConfig.ExpressionInfo[] a(int paramInt)
+  {
+    return new AVRedPacketConfig.ExpressionInfo[paramInt];
   }
 }
 

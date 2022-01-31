@@ -1,198 +1,71 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
-import com.tencent.qg.qq.QGameApp.1;
-import com.tencent.qg.qq.QGameApp.3;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.io.File;
-import org.json.JSONObject;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.widget.ProfileCardVideoCoverShowView;
+import java.util.ArrayList;
 
 public class bcov
-  extends armo
-  implements IEventReceiver
+  extends BaseAdapter
 {
-  public static volatile boolean a;
-  private bcox a;
+  public bcov(ProfileCardVideoCoverShowView paramProfileCardVideoCoverShowView) {}
   
-  public bcov(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
+  public bcox a(int paramInt)
   {
-    super(paramMiniAppActivity, paramString, paramInt);
+    return (bcox)ProfileCardVideoCoverShowView.a(this.a).get(paramInt);
   }
   
-  public static String a(Context paramContext, String paramString)
+  public int getCount()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramContext.getCacheDir().getAbsolutePath();
-    }
-    return paramContext.getCacheDir().getAbsolutePath() + File.separator + paramString;
+    return ProfileCardVideoCoverShowView.a(this.a).size();
   }
   
-  public static String a(Context paramContext, String paramString1, String paramString2)
+  public long getItemId(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString2)) {
-      return a(paramContext, paramString1);
-    }
-    return a(paramContext, paramString1) + File.separator + paramString2;
+    return paramInt;
   }
   
-  private String a(String paramString)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    paramViewGroup = paramView;
+    if (paramView == null)
     {
-      return "";
-      paramString = new File(paramString);
-    } while ((!paramString.exists()) || (paramString.length() <= 0L));
-    try
+      paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131560964, null, false);
+      paramViewGroup.setTag((ImageView)paramViewGroup.findViewById(2131367776));
+      paramView = new StateListDrawable();
+      paramView.addState(ProfileCardVideoCoverShowView.a(), new ColorDrawable(855638016));
+      paramView.addState(ProfileCardVideoCoverShowView.b(), new ColorDrawable(0));
+      paramViewGroup.findViewById(2131377633).setBackgroundDrawable(paramView);
+    }
+    paramView = (ImageView)paramViewGroup.getTag();
+    bcox localbcox = a(paramInt);
+    if (TextUtils.isEmpty(localbcox.a)) {
+      paramView.setImageDrawable(null);
+    }
+    while (paramInt == 0)
     {
-      paramString = new JSONObject(bace.b(paramString)).optString("version");
-      return paramString;
+      paramViewGroup.setPadding(actn.a(12.0F, this.a.getResources()), 0, 0, 0);
+      return paramViewGroup;
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
+      localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
+      localURLDrawableOptions.mRequestHeight = actn.a(178.0F, this.a.getResources());
+      localURLDrawableOptions.mRequestWidth = actn.a(100.0F, this.a.getResources());
+      paramView.setImageDrawable(URLDrawable.getDrawable(localbcox.a, localURLDrawableOptions));
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return "";
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3)
-  {
-    String str = paramString1;
-    if (!TextUtils.isEmpty(paramString2)) {
-      str = paramString1 + File.separator + paramString2;
-    }
-    paramString1 = str;
-    if (!TextUtils.isEmpty(paramString3)) {
-      paramString1 = str + File.separator + paramString3;
-    }
-    return paramString1;
-  }
-  
-  private void a(int paramInt)
-  {
-    QLog.e("QGameApp", 1, new Object[] { "dispatchAppInitFailed. errorCode=", Integer.valueOf(paramInt) });
-    armq localarmq = new armq();
-    localarmq.jdField_a_of_type_Int = 4;
-    localarmq.jdField_a_of_type_Armr = this.jdField_a_of_type_Armr;
-    sgi.a().dispatch("MiniAppManager", localarmq);
-  }
-  
-  private void a(boolean paramBoolean, String paramString)
-  {
-    ThreadManagerV2.excute(new QGameApp.3(this, paramBoolean, paramString), 64, null, true);
-  }
-  
-  private boolean a(boolean paramBoolean, String paramString)
-  {
-    boolean bool = false;
-    String str1;
-    String str2;
-    if (!paramBoolean)
-    {
-      str1 = a(a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "libsconfig.json"));
-      str2 = a(a(paramString, "", "libsconfig.json"));
-      if ((!TextUtils.isEmpty(str2)) && (str2.equals(str1))) {
-        paramBoolean = true;
-      }
-    }
-    do
-    {
-      return paramBoolean;
-      str1 = a(paramString, "qgamelibs", "");
-      str2 = a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs") + File.separator;
-      bace.b(str2);
-      paramBoolean = bool;
-    } while (bace.a(str1, str2, false) < 0);
-    return bace.d(a(paramString, "", "libsconfig.json"), a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "libsconfig.json"));
-  }
-  
-  private String[] a()
-  {
-    String str3 = this.jdField_a_of_type_Armr.a.getString("unzipped_path");
-    String str2 = a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "ejecta.js");
-    String str1 = null;
-    if (!TextUtils.isEmpty(str3)) {
-      str1 = a(str3, this.jdField_a_of_type_Armr.h, "index.js");
-    }
-    return new String[] { str2, str1 };
-  }
-  
-  @SuppressLint({"UnsafeDynamicallyLoadedCode"})
-  private boolean b()
-  {
-    int i = 0;
-    if (!jdField_a_of_type_Boolean)
-    {
-      Object localObject = new File(a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs"));
-      if (!((File)localObject).isDirectory()) {}
-      do
-      {
-        return false;
-        localObject = ((File)localObject).listFiles(new bcow(this));
-      } while ((localObject == null) || (localObject.length == 0));
-      int j = localObject.length;
-      while (i < j)
-      {
-        System.load(localObject[i].getAbsolutePath());
-        i += 1;
-      }
-      jdField_a_of_type_Boolean = true;
-    }
-    return true;
-  }
-  
-  private void d()
-  {
-    ThreadManagerV2.getUIHandlerV2().postDelayed(new QGameApp.1(this), 1000L);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null)
-    {
-      this.jdField_a_of_type_Bcox = new bcox(this);
-      sgi.a().registerSubscriber(this.jdField_a_of_type_Bcox);
-      armp localarmp = armw.a().a("ak:3214");
-      if (localarmp != null) {
-        localarmp.a("ak:3214", "QGameApp", this.jdField_a_of_type_Armr.h);
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity.finish();
-    }
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_a_of_type_Bcox != null) {
-      sgi.a().unRegisterSubscriber(this.jdField_a_of_type_Bcox);
-    }
-  }
-  
-  public boolean isValidate()
-  {
-    return true;
+    paramViewGroup.setPadding(0, 0, 0, 0);
+    return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcov
  * JD-Core Version:    0.7.0.1
  */

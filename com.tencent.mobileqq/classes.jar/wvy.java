@@ -1,71 +1,42 @@
+import android.os.Build.VERSION;
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.ViewStub;
-import java.util.LinkedList;
-import java.util.Queue;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 
-public abstract class wvy
+public class wvy
+  implements RadioGroup.OnCheckedChangeListener
 {
-  private final ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private Queue<Runnable> jdField_a_of_type_JavaUtilQueue;
-  private boolean jdField_a_of_type_Boolean;
+  public wvy(RelativePersonalBottomView paramRelativePersonalBottomView) {}
   
-  public wvy(ViewStub paramViewStub)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
-    this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  }
-  
-  private void b()
-  {
-    for (;;)
+    if (RelativePersonalBottomView.a(this.a).getId() == paramInt) {
+      RelativePersonalBottomView.a(this.a).setCurrentItem(0);
+    }
+    while (RelativePersonalBottomView.b(this.a).getId() != paramInt) {
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 23) {}
+    for (boolean bool = akwg.a(this.a.getContext());; bool = true)
     {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
-      if (localRunnable != null) {
-        try
-        {
-          localRunnable.run();
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-          throw new RuntimeException("doPendingActions encounter an error", localException);
-        }
+      if (!bool)
+      {
+        bbcv.b((PublicFragmentActivity)this.a.getContext());
+        RelativePersonalBottomView.a(this.a).getChildAt(0).performClick();
+        return;
       }
-    }
-  }
-  
-  protected final void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
+      RelativePersonalBottomView.a(this.a).setCurrentItem(1);
       return;
     }
-    View localView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-    this.jdField_a_of_type_Boolean = true;
-    a(localView);
-    b();
-  }
-  
-  protected abstract void a(View paramView);
-  
-  protected void a(Runnable paramRunnable)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      paramRunnable.run();
-    }
-    while (paramRunnable == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilQueue.add(paramRunnable);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wvy
  * JD-Core Version:    0.7.0.1
  */

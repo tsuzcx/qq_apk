@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.emosm;
 
-import anan;
-import anbc;
 import android.os.Handler;
 import android.os.Message;
-import aryk;
-import bacm;
+import anqw;
+import anrn;
+import asuo;
+import bbdr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import ew;
+import gp;
 import java.io.File;
 
 public class MultiEmotionSaveManager$1
   implements Runnable
 {
-  public MultiEmotionSaveManager$1(anbc paramanbc, File paramFile1, File paramFile2, String paramString1, String paramString2, anan paramanan) {}
+  public MultiEmotionSaveManager$1(anrn paramanrn, File paramFile1, File paramFile2, String paramString1, String paramString2, anqw paramanqw) {}
   
   public void run()
   {
@@ -37,13 +37,13 @@ public class MultiEmotionSaveManager$1
             }
           }
         }
-        if ((this.jdField_a_of_type_JavaIoFile == null) || (!ew.a(this.jdField_b_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile))) {
+        if ((this.jdField_a_of_type_JavaIoFile == null) || (!gp.a(this.jdField_b_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile))) {
           continue;
         }
         if (QLog.isColorLevel()) {
           QLog.e("MultiEmotionSaveManager", 2, "savePhotoToSysAlbum...path=" + this.jdField_a_of_type_JavaLangString);
         }
-        bacm.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+        bbdr.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
         i = 1;
         if (i == 0) {
           continue;
@@ -56,29 +56,29 @@ public class MultiEmotionSaveManager$1
           continue;
         }
         QLog.e("MultiEmotionSaveManager", 2, "save exception = " + localException.getMessage());
-        this.jdField_a_of_type_Anan.b = 10005;
-        this.jdField_a_of_type_Anan.c = aryk.a(this.jdField_a_of_type_Anan.b);
+        this.jdField_a_of_type_Anqw.b = 10005;
+        this.jdField_a_of_type_Anqw.c = asuo.a(this.jdField_a_of_type_Anqw.b);
         continue;
         j = 2;
         continue;
         int i = -1;
         continue;
       }
-      localObject = this.jdField_a_of_type_Anan;
+      localObject = this.jdField_a_of_type_Anqw;
       if (i == 0) {
         continue;
       }
       i = k;
-      ((anan)localObject).a = i;
-      localObject = anbc.a(this.this$0).obtainMessage(j);
-      ((Message)localObject).obj = this.jdField_a_of_type_Anan;
-      anbc.a(this.this$0).sendMessage((Message)localObject);
+      ((anqw)localObject).a = i;
+      localObject = anrn.a(this.this$0).obtainMessage(j);
+      ((Message)localObject).obj = this.jdField_a_of_type_Anqw;
+      anrn.a(this.this$0).sendMessage((Message)localObject);
       return;
       if (QLog.isColorLevel()) {
         QLog.e("MultiEmotionSaveManager", 2, "copyFile error destFileName = " + this.jdField_b_of_type_JavaLangString);
       }
-      this.jdField_a_of_type_Anan.b = 10004;
-      this.jdField_a_of_type_Anan.c = aryk.a(this.jdField_a_of_type_Anan.b);
+      this.jdField_a_of_type_Anqw.b = 10004;
+      this.jdField_a_of_type_Anqw.c = asuo.a(this.jdField_a_of_type_Anqw.b);
       i = 0;
     }
   }

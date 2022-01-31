@@ -1,53 +1,112 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
+import android.content.Context;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 class bbhp
-  extends Animation
+  extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private View jdField_a_of_type_AndroidViewView;
-  private int b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<ResultRecord> jdField_a_of_type_JavaUtilList;
   
-  public bbhp(View paramView)
+  public bbhp(QQAppInterface paramQQAppInterface, Context paramContext, List<ResultRecord> paramList, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramContext;
+    this.jdField_a_of_type_AndroidContentContext = paramList;
+    Object localObject;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = localObject;
+    this.jdField_a_of_type_JavaUtilList = paramOnClickListener;
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  private int a(int paramInt)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    paramFloat = 90.0F * paramFloat;
-    this.jdField_a_of_type_AndroidGraphicsCamera.save();
-    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(paramFloat);
-    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if (paramInt == 4) {}
+    do
     {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - paramFloat / 90.0F);
-      this.jdField_a_of_type_AndroidViewView.invalidate();
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int, -this.b);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int, this.b);
-    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
+      return 11;
+      if (paramInt == 1) {
+        return 4;
+      }
+      if (paramInt == 3000) {
+        return 101;
+      }
+    } while (paramInt == 1006);
+    return 1;
   }
   
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private void a(ImageView paramImageView, ResultRecord paramResultRecord)
   {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if (ajsf.z.equals(paramResultRecord.a))
+    {
+      paramImageView.setImageResource(2130843408);
+      return;
+    }
+    if (ajsf.A.equals(paramResultRecord.a))
+    {
+      paramImageView.setImageResource(2130843406);
+      return;
+    }
+    if (ajsf.B.equals(paramResultRecord.a))
+    {
+      paramImageView.setImageResource(2130843411);
+      return;
+    }
+    if (ajsf.y.equals(paramResultRecord.a))
+    {
+      paramImageView.setImageResource(2130839295);
+      return;
+    }
+    int i = a(paramResultRecord.a());
+    paramImageView.setImageDrawable(baxt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, paramResultRecord.a));
+  }
+  
+  public ResultRecord a(int paramInt)
+  {
+    return (ResultRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Bbhl.i, this.jdField_a_of_type_Bbhl.i));
+    }
+    for (;;)
+    {
+      a(paramView, a(paramInt));
+      paramView.setTag(a(paramInt));
+      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramView.setFocusable(false);
+      return paramView;
+      paramView = (ImageView)paramView;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbhp
  * JD-Core Version:    0.7.0.1
  */

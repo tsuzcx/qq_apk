@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import ajjy;
-import bbmy;
-import bief;
+import ajyc;
+import bcpw;
+import bjvc;
 
 public class EditVideoDoodle$12
   implements Runnable
 {
-  public EditVideoDoodle$12(bief parambief) {}
+  public EditVideoDoodle$12(bjvc parambjvc) {}
   
   public void run()
   {
-    bbmy.a(this.this$0.a(), ajjy.a(2131638112), 0).a();
+    bcpw.a(this.this$0.a(), ajyc.a(2131703897), 0).a();
   }
 }
 

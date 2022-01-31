@@ -1,17 +1,30 @@
-import android.app.Activity;
-import com.tencent.widget.AdapterView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
 
-public abstract class xgh
+class xgh
+  implements Animation.AnimationListener
 {
-  public abstract void a(int paramInt);
+  xgh(xge paramxge) {}
   
-  public abstract void a(Activity paramActivity, xgi paramxgi, int paramInt);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (xge.a(this.a) != null) {
+      xge.a(this.a).setVisibility(4);
+    }
+    if (xge.a(this.a) != null) {
+      xge.a(this.a).setAlpha(1.0F);
+    }
+  }
   
-  public abstract void a(AdapterView paramAdapterView, int paramInt);
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xgh
  * JD-Core Version:    0.7.0.1
  */

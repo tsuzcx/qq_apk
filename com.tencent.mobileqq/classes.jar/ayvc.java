@@ -1,23 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
-
-public final class ayvc
-  implements Parcelable.Creator<HWGuideItem>
+public class ayvc
 {
-  public HWGuideItem a(Parcel paramParcel)
-  {
-    return new HWGuideItem(paramParcel);
-  }
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b = "";
+  public int c;
+  public long c;
+  public String c = "";
+  public int d;
+  public long d;
+  public String d = "";
+  public int e;
+  public long e;
+  public String e = "";
+  public long f;
+  public String f = "";
+  public long g;
+  public long h;
+  public long i;
+  public long j;
+  public long k;
+  public long l;
+  public long m;
+  public long n;
+  public long o;
+  public long p;
+  public long q;
   
-  public HWGuideItem[] a(int paramInt)
+  public ayvc()
   {
-    return new HWGuideItem[paramInt];
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Float = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayvc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
-public class afnd
-  implements azif
+class afnd
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
+  afnd(afna paramafna) {}
   
-  public afnd(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
+    paramView = (RecommendTroopItem)paramView.getTag(-1);
+    bamn.a(afna.a(this.a), paramView, 17, 10029);
+    bbbb.a("Grp_contacts_news", "notice", "recom_clk", 1, 0, new String[] { paramView.uin, paramView.recomAlgol });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afnd
  * JD-Core Version:    0.7.0.1
  */

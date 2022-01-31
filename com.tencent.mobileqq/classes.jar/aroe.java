@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.Emoticon;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-class aroe
-  implements arok<anla>
+public class aroe
+  implements View.OnClickListener
 {
-  aroe(arnz paramarnz, boolean paramBoolean, SessionInfo paramSessionInfo) {}
+  public aroe(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void a(anla paramanla)
+  public void onClick(View paramView)
   {
-    if ((paramanla != null) && (paramanla.a != null))
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        arnz.a(this.jdField_a_of_type_Arnz.a, "0X800A937", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramanla.a.epId);
-      }
-    }
-    else {
-      return;
-    }
-    arnz.a(this.jdField_a_of_type_Arnz.a, "0X800A936", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramanla.a.epId);
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

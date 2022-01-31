@@ -1,65 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.annotation.TargetApi;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.data.ArkBabyqCardInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class anhy
-  implements anir
+  implements ArkViewImplement.LoadCallback
 {
-  public anhy(EmoticonMainPanel paramEmoticonMainPanel, int paramInt, long paramLong) {}
+  public anhy(ArkBabyqCardInfo paramArkBabyqCardInfo, altt paramaltt, altp paramaltp, adlk paramadlk, int paramInt) {}
   
-  public void a()
+  @TargetApi(14)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    int k = 1;
-    int j = this.jdField_a_of_type_Int;
-    int i = j;
-    List localList;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.h)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonMainPanel", 2, "switchTabMode mMarketPgkDownloaded = true");
-      }
-      localList = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList;
-      i = j;
-      if (localList != null)
-      {
-        i = j;
-        if (localList.size() > 0)
-        {
-          if ((localList.size() <= EmoticonMainPanel.e) || (((ankb)localList.get(EmoticonMainPanel.e)).jdField_a_of_type_Int != 8)) {
-            break label163;
-          }
-          i = 1;
-          if (!((anbh)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(334)).c()) {
-            break label198;
-          }
-        }
-      }
+    onLoadState(paramInt1);
+  }
+  
+  @TargetApi(14)
+  public void onLoadState(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkBabyqCardInfo", 2, "attachArkView onLoadFinish ArkBabyqCardInfo state=" + paramInt);
     }
-    label163:
-    label198:
-    for (j = k;; j = 0)
+    if (paramInt == 1)
     {
-      if (i != 0) {
-        if (localList.size() >= j + 4) {
-          i = j + 3;
-        }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.h = false;
-        EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, this.jdField_a_of_type_Long, i);
-        return;
-        i = 0;
-        break;
-        i = 0;
-        continue;
-        if (localList.size() >= j + 3) {
-          i = j + 2;
-        } else {
-          i = 0;
-        }
-      }
+      this.jdField_a_of_type_Altt.b.setVisibility(0);
+      this.jdField_a_of_type_Altp.a(this.jdField_a_of_type_Altt, this.jdField_a_of_type_ComTencentMobileqqDataArkBabyqCardInfo);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Altp.a(this.jdField_a_of_type_Adlk, this.jdField_a_of_type_Int);
+      return;
+      this.jdField_a_of_type_Altt.b.setVisibility(8);
     }
   }
 }

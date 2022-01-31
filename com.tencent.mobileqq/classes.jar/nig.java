@@ -1,67 +1,44 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.biz.widgets.TabLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout;
 
-class nig
-  implements ViewPager.OnPageChangeListener
+public class nig
+  implements njr
 {
-  nig(nia paramnia) {}
+  public nig(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    QLog.d("ReadInJoyChannelViewPagerController", 2, "on page scroll state: " + paramInt);
-    nia.b(this.a, paramInt);
-    if (paramInt == 0)
+    if (paramInt1 - paramInt3 > bawz.a(this.a, 60.0F))
     {
-      QLog.d("ReadInJoyChannelViewPagerController", 2, "page scroll state changed notify");
-      nia.b(this.a);
-      nia.a(this.a).a();
-    }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (!nia.a(this.a)) {
-      nia.a(this.a, paramInt1, paramFloat, paramInt2);
-    }
-    TabChannelCoverInfo localTabChannelCoverInfo = this.a.a();
-    if ((paramInt1 >= nia.a) && (localTabChannelCoverInfo != null)) {
-      nia.b(this.a, localTabChannelCoverInfo);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    QLog.d("ReadInJoyChannelViewPagerController", 1, new Object[] { "onPageSelected position = ", Integer.valueOf(paramInt) });
-    TabChannelCoverInfo localTabChannelCoverInfo = this.a.a();
-    nia.a(this.a, localTabChannelCoverInfo);
-    if (localTabChannelCoverInfo != null) {
-      nia.a(localTabChannelCoverInfo.mChannelCoverId);
-    }
-    if (nia.a(this.a) == 0) {
-      nia.a(this.a, paramInt);
-    }
-    nia.b(this.a, paramInt);
-    nia.a(this.a, paramInt);
-    QLog.d("ReadInJoyChannelViewPagerController", 2, "page selected notify");
-    if (nia.a(this.a) == 0) {
-      nia.b(this.a);
-    }
-    if ((localTabChannelCoverInfo != null) && (localTabChannelCoverInfo.mChannelCoverId == 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      nia.a(bool);
-      nia.c(this.a);
-      nia.a(this.a, nia.c());
-      QLog.d("ReadInJoyChannelViewPagerController", 1, new Object[] { "selected channel cover info =", nia.a(this.a) });
+      PublicAccountAdvertisementActivity.a(this.a);
+      PublicAccountAdvertisementActivity.b(this.a);
+      this.a.finish();
       return;
     }
+    PublicAccountAdvertisementActivity.a(this.a).a();
+  }
+  
+  public boolean a()
+  {
+    return (!PublicAccountAdvertisementActivity.a(this.a)) && (!PublicAccountAdvertisementActivity.b(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nig
  * JD-Core Version:    0.7.0.1
  */

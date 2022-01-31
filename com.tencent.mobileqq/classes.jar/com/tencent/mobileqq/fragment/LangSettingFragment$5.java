@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import ajlo;
+import ajzv;
 import android.support.v4.app.FragmentActivity;
 
 class LangSettingFragment$5
@@ -10,7 +10,7 @@ class LangSettingFragment$5
   
   public void run()
   {
-    ajlo.a(this.this$0.getActivity(), this.jdField_a_of_type_Int);
+    ajzv.a(this.this$0.getActivity(), this.jdField_a_of_type_Int);
     this.this$0.getActivity().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
   }
 }

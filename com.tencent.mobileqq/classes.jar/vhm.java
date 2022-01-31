@@ -1,14 +1,19 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
-public abstract interface vhm
+public final class vhm
+  implements Parcelable.Creator<EditVideoParams>
 {
-  public abstract void a();
+  public EditVideoParams a(Parcel paramParcel)
+  {
+    return new EditVideoParams(paramParcel);
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(SlideItemInfo paramSlideItemInfo);
-  
-  public abstract void a(String paramString);
+  public EditVideoParams[] a(int paramInt)
+  {
+    return new EditVideoParams[paramInt];
+  }
 }
 
 

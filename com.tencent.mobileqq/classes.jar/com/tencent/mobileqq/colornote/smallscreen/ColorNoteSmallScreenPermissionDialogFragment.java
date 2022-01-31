@@ -1,21 +1,24 @@
 package com.tencent.mobileqq.colornote.smallscreen;
 
-import alue;
-import aluf;
+import amjp;
+import amjq;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import babr;
-import bafb;
+import axqw;
+import bbcv;
+import bbgg;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class ColorNoteSmallScreenPermissionDialogFragment
   extends PublicBaseFragment
 {
+  public static boolean a;
+  
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
     super.initWindowStyleAndAnimation(paramActivity);
@@ -28,12 +31,20 @@ public class ColorNoteSmallScreenPermissionDialogFragment
     if (QLog.isColorLevel()) {
       QLog.i("ColorNoteSmallScreenPermissionDialogFragment", 2, "showPermissionDialog in");
     }
-    bafb localbafb = babr.a(getActivity(), 230).setMessage(2131630460).setNegativeButton(2131625035, new aluf(this)).setPositiveButton(2131630464, new alue(this));
-    localbafb.setTitle(2131630462);
-    localbafb.setCancelable(false);
-    localbafb.setCanceledOnTouchOutside(false);
-    localbafb.show();
+    bbgg localbbgg = bbcv.a(getActivity(), 230).setMessage(2131690858).setNegativeButton(2131690596, new amjq(this)).setPositiveButton(2131690859, new amjp(this));
+    localbbgg.setTitle(2131690860);
+    localbbgg.setCancelable(false);
+    localbbgg.setCanceledOnTouchOutside(false);
+    localbbgg.show();
+    a = true;
+    axqw.b(null, "dc00898", "", "", "0X800AB3A", "0X800AB3A", 0, 0, "", "", "", "");
     return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    a = false;
   }
 }
 

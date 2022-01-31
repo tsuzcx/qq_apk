@@ -1,19 +1,34 @@
-import android.support.annotation.Nullable;
-import java.io.File;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspAddGroupVideo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tnx
-  extends sfo
+  extends syq
 {
-  @Nullable
-  public final File a;
-  public final String a;
-  public final boolean a;
+  private final qqstory_group.RspAddGroupVideo a;
   
-  public tnx(String paramString, boolean paramBoolean, File paramFile)
+  public tnx(qqstory_group.RspAddGroupVideo paramRspAddGroupVideo)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
+    super(paramRspAddGroupVideo.result);
+    this.a = paramRspAddGroupVideo;
+  }
+  
+  public List<tny> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.a.group_feed_list.get().iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(new tny((qqstory_group.GroupFeed)localIterator.next()));
+    }
+    return localArrayList;
+  }
+  
+  public String toString()
+  {
+    return "AddGroupVideoResponse{mRspAddGroupVideo=" + a() + '}';
   }
 }
 

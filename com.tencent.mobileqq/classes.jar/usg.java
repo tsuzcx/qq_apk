@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 
-public final class usg
-  implements Parcelable.Creator<EditLocalPhotoSource>
+class usg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public EditLocalPhotoSource a(Parcel paramParcel)
-  {
-    return new EditLocalPhotoSource(paramParcel);
-  }
+  usg(use paramuse, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
-  public EditLocalPhotoSource[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new EditLocalPhotoSource[paramInt];
+    try
+    {
+      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.scrollTo((int)(300.0F - f * 300.0F), 0);
+      return;
+    }
+    catch (Exception paramValueAnimator) {}
   }
 }
 

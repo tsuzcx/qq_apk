@@ -1,17 +1,34 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.av.redpacket.AVRedPacketManager.LocalEmojiInfo;
+import com.tencent.av.redpacket.AVRedPacketManager.LocalFrameSyncInfo;
+import java.util.List;
 
-public class lue
-  implements View.OnClickListener
+public abstract interface lue
 {
-  public lue(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, long paramLong, Intent paramIntent, kvq paramkvq) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_Kvq);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, List<AVRedPacketManager.LocalEmojiInfo> paramList);
+  
+  public abstract void a(int paramInt, luf paramluf);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void b(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

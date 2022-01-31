@@ -1,14 +1,16 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
-
 public class tbp
-  extends slu
 {
-  public qqstory_service.RspGetMusicListConfig a;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public tbp(qqstory_service.RspGetMusicListConfig paramRspGetMusicListConfig)
+  public tbp(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    super(paramRspGetMusicListConfig.result);
-    this.a = paramRspGetMusicListConfig;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

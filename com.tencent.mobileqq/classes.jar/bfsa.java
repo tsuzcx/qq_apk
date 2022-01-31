@@ -1,22 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import com.tencent.widget.HorizontalListView;
 
 public class bfsa
-  implements View.OnClickListener
 {
-  public bfsa(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  private int a;
   
-  public void onClick(View paramView)
+  private bfsa(HorizontalListView paramHorizontalListView) {}
+  
+  public void a()
   {
-    QzoneVerticalVideoDownloadActivity.access$502(this.a, true);
-    QzoneVerticalVideoDownloadActivity.access$600(this.a);
-    this.a.finish();
+    this.a = HorizontalListView.access$900(this.this$0);
+  }
+  
+  public boolean a()
+  {
+    return (this.this$0.hasWindowFocus()) && (HorizontalListView.access$1000(this.this$0) == this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfsa
  * JD-Core Version:    0.7.0.1
  */

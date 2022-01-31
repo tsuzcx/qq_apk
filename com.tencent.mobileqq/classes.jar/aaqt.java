@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aaqt
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aaqt(EditInfoActivity paramEditInfoActivity) {}
+  public aaqt(ChatHistory paramChatHistory) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.o();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

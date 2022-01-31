@@ -1,13 +1,11 @@
 class pzq
+  extends pyw
 {
-  public int a;
-  public long a;
-  public int b = 2147483647;
-  public long b;
+  pzq(pzi parampzi) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pzq
  * JD-Core Version:    0.7.0.1
  */

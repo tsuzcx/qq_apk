@@ -1,20 +1,21 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class skm
-  implements skf
+final class skm
+  implements DialogInterface.OnClickListener
 {
-  public skm(StoryVideoUploadTask paramStoryVideoUploadTask, skl paramskl) {}
+  skm(int paramInt1, int paramInt2) {}
   
-  public void a(ske paramske)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Skl.k = ((sjz)paramske).b;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
+    paramDialogInterface.dismiss();
+    sms.b(112, 2, 0);
+    smq.a(117, this.a, this.b, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     skm
  * JD-Core Version:    0.7.0.1
  */

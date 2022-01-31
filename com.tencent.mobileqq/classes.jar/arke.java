@@ -1,69 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mediafocus.MediaFocusStackItem;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
 
-public class arke
-  extends QIPCModule
+public final class arke
+  implements Parcelable.Creator<NewTogetherRoomMessageData>
 {
-  public static boolean a;
-  private String a;
-  private boolean b;
-  
-  private arke()
+  public NewTogetherRoomMessageData a(Parcel paramParcel)
   {
-    super("MediaFocusModuleClient");
-    b();
+    return new NewTogetherRoomMessageData(paramParcel);
   }
   
-  public static arke a()
+  public NewTogetherRoomMessageData[] a(int paramInt)
   {
-    return arkh.a();
-  }
-  
-  public static void a()
-  {
-    arke localarke = a();
-    if (!jdField_a_of_type_Boolean)
-    {
-      QIPCClientHelper.getInstance().register(localarke);
-      jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  private void b()
-  {
-    QIPCClientHelper.getInstance().getClient().connect(new arkf(this));
-    QIPCClientHelper.getInstance().getClient().addListener(new arkg(this));
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "action = " + paramString + ", params = " + paramBundle);
-    }
-    Bundle localBundle = new Bundle();
-    if ("actionCheckItemExist".equals(paramString))
-    {
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      paramString = (MediaFocusStackItem)paramBundle.getParcelable("focusItem");
-      boolean bool = false;
-      if (paramString != null) {
-        bool = arki.a().a(paramString.a(), paramString.b());
-      }
-      localBundle.putBoolean("isItemExist", bool);
-      localBundle.putBoolean("isConnected", this.b);
-      localBundle.putParcelable("focusItem", paramString);
-    }
-    return EIPCResult.createSuccessResult(localBundle);
+    return new NewTogetherRoomMessageData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arke
  * JD-Core Version:    0.7.0.1
  */

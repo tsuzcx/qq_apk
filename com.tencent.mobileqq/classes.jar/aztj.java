@@ -1,16 +1,26 @@
-import java.util.ArrayList;
-
-public class aztj
+public abstract interface aztj
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
+  public abstract void a(aztk paramaztk);
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract int d();
+  
+  public abstract String d();
+  
+  public abstract String e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aztj
  * JD-Core Version:    0.7.0.1
  */

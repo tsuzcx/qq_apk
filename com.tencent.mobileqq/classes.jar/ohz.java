@@ -1,43 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
 class ohz
-  extends BroadcastReceiver
+  extends oho
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  ohz(ohy paramohy) {}
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-      {
-        QLog.d("ReadinjoySPEventReport", 2, "receive screen off broadcast");
-        ohp.e(false);
-        return;
-      }
-      if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
-      {
-        QLog.d("ReadinjoySPEventReport", 2, "receive screen on broadcast");
-        ohp.e(true);
-        return;
-      }
-      if ("mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction()))
-      {
-        ohp.c(false);
-        ohp.o();
-        return;
-      }
-    } while (!"mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()));
-    ohp.d(false);
-    ohp.o();
+    this.a.jdField_a_of_type_Ohv.a().a(this.a.jdField_a_of_type_Oii.a.commentId, paramString, paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ohz
  * JD-Core Version:    0.7.0.1
  */

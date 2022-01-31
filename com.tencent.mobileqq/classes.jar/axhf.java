@@ -1,34 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.teamwork.spread.TroopFileAIOMsgTips.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
 
 public class axhf
-  extends axgt
 {
-  public axhf(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, axgz paramaxgz)
-  {
-    super(paramQQAppInterface, paramChatMessage, paramaxgz);
-  }
+  public int a;
+  public int b = 0;
   
-  protected String a()
+  public axhf(SVHwEncoder.HwEncode paramHwEncode)
   {
-    return ((MessageForTroopFile)this.a).fileName;
-  }
-  
-  protected void a(axgu paramaxgu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileAIOMsgTips", 1, "getWordsList by TroopFile[" + System.currentTimeMillis() + "]");
-    }
-    ThreadManager.post(new TroopFileAIOMsgTips.1(this, paramaxgu), 8, null, true);
+    this.jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axhf
  * JD-Core Version:    0.7.0.1
  */

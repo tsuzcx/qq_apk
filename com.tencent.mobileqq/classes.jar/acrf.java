@@ -1,17 +1,53 @@
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivatePageAdapter;
+
 public class acrf
+  extends ajtq
 {
-  public String a;
-  public boolean a;
+  public acrf(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public acrf(String paramString, boolean paramBoolean)
+  protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
+    {
+      akjv.a(this.a.app, false, true, false, true);
+      this.a.a();
+    }
+    ActivateFriendActivity.a(this.a, paramBoolean2);
   }
   
-  public String toString()
+  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return "ResultBean{rtext='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isFinish=" + this.jdField_a_of_type_Boolean + '}';
+    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
+    {
+      akjv.a(this.a.app, false, true, false, true);
+      this.a.a();
+    }
+    if (!this.a.isFinishing())
+    {
+      if (!paramBoolean1) {
+        break label161;
+      }
+      ActivateFriendActivity.a(this.a, paramBoolean2);
+      if (!ActivateFriendActivity.a(this.a)) {
+        break label148;
+      }
+    }
+    label148:
+    for (String str = this.a.getString(2131689603);; str = this.a.getString(2131689604))
+    {
+      str = this.a.getString(2131689606, new Object[] { str });
+      bcpw.a(this.a, 2, str, 0).b(this.a.getTitleBarHeight());
+      if (ActivateFriendActivity.a(this.a) != null)
+      {
+        ActivateFriendActivity.a(this.a).c();
+        ActivateFriendActivity.b(this.a);
+      }
+      return;
+    }
+    label161:
+    bcpw.a(this.a, 1, this.a.getResources().getString(2131719375), 0).b(this.a.getTitleBarHeight());
   }
 }
 

@@ -1,34 +1,103 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Canvas;
+import android.os.SystemClock;
 import android.view.View;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
 
-final class vsf
-  extends AnimatorListenerAdapter
+public class vsf
+  extends vsq<vsd, vsd>
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private int b;
+  public final String a;
+  public final WeakReference<veu> a;
+  private boolean a;
   
-  vsf(View paramView, int paramInt)
+  public vsf(veu paramveu, String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramView.getLayerType();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramveu);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public vsf(veu paramveu, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramveu);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  private Bitmap a(vsd paramvsd, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
+    try
+    {
+      paramvsd = paramvsd.a();
+      veg.a("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "filter view = %s", paramvsd);
+      if (paramvsd == null)
+      {
+        veg.e("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "filter view has been recycled.");
+        return null;
+      }
+      paramBitmap = Bitmap.createBitmap(paramBitmap);
+      float f1 = paramBitmap.getWidth();
+      float f2 = paramBitmap.getHeight();
+      float f3 = paramvsd.getWidth();
+      float f4 = paramvsd.getHeight();
+      Canvas localCanvas = new Canvas(paramBitmap);
+      localCanvas.scale(f1 / f3, f2 / f4);
+      paramvsd.draw(localCanvas);
+      return paramBitmap;
+    }
+    catch (OutOfMemoryError paramvsd)
+    {
+      veg.c("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "create filterBitmap error : %s", paramvsd);
+    }
+    return null;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  protected void a(JobContext paramJobContext, vsd paramvsd)
   {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.jdField_a_of_type_Int, null);
+    long l = SystemClock.uptimeMillis();
+    paramJobContext = this.jdField_a_of_type_JavaLangString;
+    if (paramJobContext == null) {
+      paramJobContext = vst.a(paramvsd.jdField_a_of_type_Int, paramvsd.b, ".png");
+    }
+    for (;;)
+    {
+      Object localObject = (veu)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localObject != null) && (!((veu)localObject).b()))
+      {
+        localObject = ((veu)localObject).a();
+        if (localObject != null)
+        {
+          paramvsd.jdField_a_of_type_Vsh.b = ((Bitmap)localObject);
+          paramvsd.jdField_a_of_type_Boolean = true;
+          Bitmap localBitmap = a(paramvsd, (Bitmap)localObject);
+          if (localBitmap == null) {
+            break label234;
+          }
+          veg.a("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateFilterBitmap success %s", Integer.valueOf(System.identityHashCode(localBitmap)));
+          localObject = localBitmap;
+        }
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Boolean)
+        {
+          boolean bool = vxy.a((Bitmap)localObject, Bitmap.CompressFormat.PNG, 60, paramJobContext);
+          paramvsd.jdField_a_of_type_Boolean = bool;
+          paramvsd.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = paramJobContext;
+          if (!bool) {
+            veg.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "Save doodle bitmap to " + paramJobContext + " failed! error code = " + bool);
+          }
+        }
+        veg.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "GenerateEditPicDoodleSegment" + paramvsd.jdField_a_of_type_Boolean + " cost " + (SystemClock.uptimeMillis() - l));
+        super.notifyResult(paramvsd);
+        return;
+        label234:
+        veg.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateFilterBitmap failed");
+      }
+    }
   }
 }
 

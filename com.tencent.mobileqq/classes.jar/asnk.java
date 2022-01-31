@@ -1,29 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
 
 public class asnk
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public asnk(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public asnk(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      ShortVideoCommentsView.a(this.a).setTextColor(2130706432);
-    }
-    for (;;)
+    asle.a().a().c();
+    asle.a().d();
+    if (this.a.a)
     {
-      return false;
-      ShortVideoCommentsView.a(this.a).setTextColor(-16777216);
+      this.a.g();
+      return;
     }
+    this.a.a(this.a.getActivity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asnk
  * JD-Core Version:    0.7.0.1
  */

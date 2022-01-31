@@ -1,53 +1,114 @@
-import com.qq.taf.jce.JceStruct;
-import com.tencent.tmassistant.common.ProtocolPackage;
-import com.tencent.tmassistant.common.jce.ReqHead;
-import com.tencent.tmassistant.common.jce.Request;
-import com.tencent.tmassistant.common.jce.SdkInfo;
-import com.tencent.tmassistant.common.jce.Ticket;
-import com.tencent.tmassistant.common.jce.TicketWtLogin;
-import com.tencent.tmassistantbase.network.PostHttpRequest;
+import android.os.Bundle;
+import android.support.v4.util.ArrayMap;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.extension.proxy.ProxyWebViewClientExtension;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 
-public abstract class bcaq
-  extends PostHttpRequest
+final class bcaq
+  extends ProxyWebViewClientExtension
 {
-  public int a(JceStruct paramJceStruct)
+  private ArrayMap<String, Object> jdField_a_of_type_AndroidSupportV4UtilArrayMap;
+  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
+  
+  public bcaq(bcal parambcal, TouchWebView paramTouchWebView)
   {
-    try
-    {
-      paramJceStruct = ProtocolPackage.buildRequest(paramJceStruct);
-      if (paramJceStruct == null) {
-        return -1;
-      }
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
+  }
+  
+  private void a(Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
+  {
+    WebViewPluginEngine localWebViewPluginEngine = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
+    if (QLog.isColorLevel()) {
+      QLog.i("WebCoreDump", 2, "Take web core dump for " + nax.b(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), new String[0]));
     }
-    catch (Throwable paramJceStruct)
+    if (localWebViewPluginEngine != null)
     {
-      for (;;)
-      {
-        paramJceStruct = null;
+      if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap == null) {
+        this.jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(4);
       }
-      Object localObject = new SdkInfo();
-      ((SdkInfo)localObject).versionCode = 1;
-      ((SdkInfo)localObject).versionName = bbtm.a().c();
-      ((SdkInfo)localObject).name = "AppNews";
-      ((SdkInfo)localObject).channel = "";
-      ((SdkInfo)localObject).builderNum = "";
-      paramJceStruct.head.sdkInfo = ((SdkInfo)localObject);
-      localObject = new TicketWtLogin();
-      ((TicketWtLogin)localObject).uin = bbtm.a().a();
-      ((TicketWtLogin)localObject).A2 = bbtm.a().b().getBytes();
-      Ticket localTicket = new Ticket();
-      localTicket.value = ProtocolPackage.jceStructToUTF8Byte((JceStruct)localObject);
-      localTicket.type = 1;
-      paramJceStruct.head.ticket = localTicket;
-      int i = paramJceStruct.head.requestId;
-      sendRequest(ProtocolPackage.buildPostData(paramJceStruct));
-      return i;
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("performanceData", paramObject1);
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("requestData", paramObject2);
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("responseData", paramObject3);
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("errorCode", paramObject4);
+      localWebViewPluginEngine.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 64L, this.jdField_a_of_type_AndroidSupportV4UtilArrayMap);
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("WebCoreDump", 2, "No JS plugin engine to handle web core dump");
+  }
+  
+  public void computeScroll(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.computeScroll(paramView);
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.dispatchTouchEvent(paramMotionEvent, paramView);
+  }
+  
+  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onInterceptTouchEvent(paramMotionEvent, paramView);
+  }
+  
+  public Object onMiscCallBack(String paramString, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Bcal.onMiscCallBack(paramString, paramBundle);
+    return null;
+  }
+  
+  public Object onMiscCallBack(String paramString, Bundle paramBundle, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
+  {
+    if ((paramString.equalsIgnoreCase("onReportResourceInfo")) || (paramString.equalsIgnoreCase("onResourcesPerformance"))) {
+      a(paramObject1, paramObject2, paramObject3, paramObject4);
+    }
+    return null;
+  }
+  
+  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
+  }
+  
+  public void onResponseReceived(WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse, int paramInt)
+  {
+    a(null, paramWebResourceRequest, paramWebResourceResponse, Integer.valueOf(paramInt));
+  }
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onTouchEvent(paramMotionEvent, paramView);
+  }
+  
+  public void onUrlChange(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AbsWebView", 2, "onUrlChange detect 302 url: " + paramString2);
+    }
+    SwiftBrowserCookieMonster.d();
+  }
+  
+  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcaq
  * JD-Core Version:    0.7.0.1
  */

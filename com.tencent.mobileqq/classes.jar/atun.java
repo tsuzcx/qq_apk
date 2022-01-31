@@ -1,161 +1,252 @@
-import ProfileLogic.QC.readUserInfoRsp;
-import ProfileLogic.QC.setUserFlagRsp;
-import ProfileLogic.QC.setUserProfileRsp;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 import java.util.ArrayList;
-import java.util.Vector;
+import java.util.List;
 
 public class atun
-  extends ajrp
+  extends BaseAdapter
 {
-  public atun(CustomCoverFragment paramCustomCoverFragment) {}
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
+  Context jdField_a_of_type_AndroidContentContext;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  List<InterestTagInfo> jdField_a_of_type_JavaUtilList;
+  int b;
+  int c;
+  int d;
+  int e;
+  int f;
   
-  public void e(boolean paramBoolean, Object paramObject)
+  public atun(Context paramContext, Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool = true;
-    int i = 0;
-    CustomCoverFragment.a(this.a).b();
-    Object localObject = this.a.getActivity();
-    if (localObject == null) {}
-    label194:
-    label334:
-    label353:
-    label364:
-    do
-    {
-      do
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(2);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298658);
+    this.d = paramInt1;
+    this.c = (i + paramInt2);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.f = 0;
+    this.e = paramInt3;
+    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
+  }
+  
+  public int a()
+  {
+    return this.c;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt < 0) {
+      return;
+    }
+    if ((paramInt > 0) && (this.f == 0)) {
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              if (!paramBoolean) {
-                break label724;
-              }
-              if (!(paramObject instanceof readUserInfoRsp)) {
-                break label364;
-              }
-              this.a.stopTitleProgress();
-              paramObject = (readUserInfoRsp)paramObject;
-              if (CustomCoverFragment.a(this.a))
-              {
-                localObject = this.a;
-                if (paramObject.flag != 1) {
-                  break;
-                }
-                paramBoolean = true;
-                CustomCoverFragment.a((CustomCoverFragment)localObject, paramBoolean);
-              }
-              CustomCoverFragment.a(this.a, paramObject.itemid);
-              CustomCoverFragment.b(this.a, paramObject.index);
-              CustomCoverFragment.c(this.a, paramObject.listend);
-              if (!TextUtils.isEmpty(paramObject.urlprefix)) {
-                atwy.a = paramObject.urlprefix;
-              }
-              CustomCoverFragment.a(this.a, paramObject.itemlist);
-              if (CustomCoverFragment.a(this.a) != null)
-              {
-                if (CustomCoverFragment.a(this.a).size() != 0) {
-                  break label334;
-                }
-                CustomCoverFragment.a(this.a).setVisibility(8);
-                CustomCoverFragment.c(this.a, 2);
-              }
-              if (CustomCoverFragment.a(this.a) != null) {
-                CustomCoverFragment.a(this.a).sendEmptyMessage(101);
-              }
-            } while (!QLog.isColorLevel());
-            localObject = new StringBuilder().append("onDefaultCardRsp: [readUserInfoRsp] selId=").append(CustomCoverFragment.a(this.a)).append(" reqIndex=").append(CustomCoverFragment.b(this.a)).append(" footerState=").append(CustomCoverFragment.c(this.a)).append(" flag=");
-            if (paramObject.flag == 1)
-            {
-              paramBoolean = bool;
-              localObject = ((StringBuilder)localObject).append(paramBoolean).append(" itemList=");
-              if (paramObject.itemlist != null) {
-                break label353;
-              }
-            }
-            for (;;)
-            {
-              QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, i);
-              return;
-              paramBoolean = false;
-              break;
-              CustomCoverFragment.a(this.a).setVisibility(0);
-              break label194;
-              paramBoolean = false;
-              break label293;
-              i = paramObject.itemlist.size();
-            }
-            if (!(paramObject instanceof setUserProfileRsp)) {
-              break;
-            }
-            i = ((setUserProfileRsp)paramObject).ret;
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserProfileRsp] ret=" + i);
-            }
-            if (i == 0)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserProfileRsp] selId=" + CustomCoverFragment.a(this.a));
-              }
-              paramObject = new Intent();
-              paramObject.putExtra("req_code_key", 2002);
-              paramObject.putExtra("card_url_key", this.a.a(CustomCoverFragment.d(this.a)));
-              ((FragmentActivity)localObject).setResult(-1, paramObject);
-              ((FragmentActivity)localObject).finish();
-              return;
-            }
-          } while (this.a.getActivity() == null);
-          bbmy.a(this.a.getActivity(), 1, 2131654637, 0).a();
-          return;
-        } while (!(paramObject instanceof setUserFlagRsp));
-        i = ((setUserFlagRsp)paramObject).ret;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserFlagRsp] ret=" + i);
-        }
-        if (i != 0) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserFlagRsp] setFlag=" + CustomCoverFragment.b(this.a));
-        }
-        CustomCoverFragment.a(this.a, true);
-        bbmy.a((Context)localObject, 0, 2131654640, 0).a();
-        if (CustomCoverFragment.b(this.a))
-        {
-          ((FragmentActivity)localObject).finish();
-          return;
-        }
-        CustomCoverFragment.a(this.a, CustomCoverFragment.b(this.a));
-      } while (CustomCoverFragment.a(this.a) == null);
-      CustomCoverFragment.a(this.a).sendEmptyMessage(101);
-      return;
-    } while (this.a.getActivity() == null);
-    label293:
-    bbmy.a(this.a.getActivity(), 1, 2131654637, 0).a();
-    return;
-    label724:
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: isSuccess=false, cmd=" + paramObject);
+        this.jdField_a_of_type_JavaUtilList.add(0, null);
+        this.jdField_a_of_type_JavaUtilList.add(null);
+      }
     }
-    if ("profilelogic.readUserInfo".equals(paramObject))
+    for (;;)
     {
-      CustomCoverFragment.c(this.a, 1);
-      this.a.stopTitleProgress();
-      bbmy.a((Context)localObject, 1, 2131654348, 0).a();
+      this.f = paramInt;
+      notifyDataSetChanged();
       return;
+      if ((paramInt == 0) && (this.f > 0) && (this.jdField_a_of_type_JavaUtilList.size() > 2))
+      {
+        this.jdField_a_of_type_JavaUtilList.remove(0);
+        this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+      }
     }
-    bbmy.a((Context)localObject, 1, 2131654637, 0).a();
+  }
+  
+  public void a(List<InterestTagInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if ((paramList != null) && (paramList.size() > 0)) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+    if ((this.jdField_a_of_type_JavaUtilList.size() > 0) && (this.f > 0))
+    {
+      this.jdField_a_of_type_JavaUtilList.add(0, null);
+      this.jdField_a_of_type_JavaUtilList.add(null);
+    }
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramInt >= 0)
+    {
+      localObject1 = localObject2;
+      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+        localObject1 = (InterestTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      }
+    }
+    return localObject1;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramInt >= 0)
+    {
+      localObject1 = localObject2;
+      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+        localObject1 = (InterestTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      }
+    }
+    if (localObject1 == null) {
+      return 0L;
+    }
+    return ((InterestTagInfo)localObject1).tagId;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if ((InterestTagInfo)getItem(paramInt) != null) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int i = getItemViewType(paramInt);
+    atuo localatuo;
+    Object localObject;
+    if (i == 0)
+    {
+      InterestTagInfo localInterestTagInfo = (InterestTagInfo)getItem(paramInt);
+      if (paramView == null)
+      {
+        paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560903, null);
+        localatuo = new atuo();
+        localatuo.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131367906));
+        localatuo.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377350));
+        paramViewGroup.setTag(localatuo);
+        paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(this.d, this.c));
+      }
+      for (;;)
+      {
+        localObject = paramViewGroup;
+        if (localInterestTagInfo != null)
+        {
+          localObject = paramViewGroup;
+          if (localatuo != null)
+          {
+            paramView = localInterestTagInfo.tagIconUrl;
+            if ((paramView == null) || (!paramView.equals("icon_more_url"))) {
+              break;
+            }
+            localatuo.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840979);
+            if ((localInterestTagInfo.tagType == 10) || (localInterestTagInfo.tagType == 11) || (localInterestTagInfo.tagType == 9)) {
+              localatuo.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840980);
+            }
+            localatuo.jdField_a_of_type_AndroidWidgetTextView.setText(localInterestTagInfo.tagName);
+            localObject = paramViewGroup;
+          }
+        }
+        label203:
+        return localObject;
+        localatuo = (atuo)paramView.getTag();
+        paramViewGroup = paramView;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.b;
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_a_of_type_Int;
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "nearbyCard";
+        if (TextUtils.isEmpty(paramView)) {
+          break label455;
+        }
+        paramView = URLDrawable.getDrawable(aysr.a(paramView), (URLDrawable.URLDrawableOptions)localObject);
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          try
+          {
+            if (this.e == 7)
+            {
+              paramView.setTag(bavi.b(this.jdField_a_of_type_Int, this.b, (int)(10.0F * this.jdField_a_of_type_Float)));
+              paramView.setDecodeHandler(bavi.c);
+            }
+            paramView.setDownloadListener(new asyw(this.jdField_a_of_type_AndroidContentContext, "actInterestTagPicDownload"));
+          }
+          catch (Exception localException2)
+          {
+            URLImageView localURLImageView;
+            View localView;
+            continue;
+          }
+          try
+          {
+            ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = null;
+            ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = null;
+            localURLImageView = localatuo.jdField_a_of_type_ComTencentImageURLImageView;
+            localObject = paramView;
+            if (paramView == null) {
+              localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+            }
+            localURLImageView.setImageDrawable((Drawable)localObject);
+          }
+          catch (Exception localException3) {}
+        }
+        localException1 = localException1;
+        paramView = null;
+      }
+      localException1.printStackTrace();
+      continue;
+      localView = paramView;
+      if (i != 1) {
+        break label203;
+      }
+      localView = paramView;
+      if (paramView != null) {
+        break label203;
+      }
+      paramView = new View(this.jdField_a_of_type_AndroidContentContext);
+      paramView.setLayoutParams(new ViewGroup.LayoutParams(this.f, this.c));
+      return paramView;
+      label455:
+      paramView = null;
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 2;
   }
 }
 

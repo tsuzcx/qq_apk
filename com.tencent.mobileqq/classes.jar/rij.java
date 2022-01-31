@@ -1,20 +1,34 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
 
 public class rij
-  extends AnimatorListenerAdapter
 {
-  public rij(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  private static rij a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public static rij a()
   {
-    this.a.a();
+    try
+    {
+      if (a == null) {
+        a = new rij();
+      }
+      rij localrij = a;
+      return localrij;
+    }
+    finally {}
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a()
   {
-    this.a.a();
+    return false;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return false;
   }
 }
 

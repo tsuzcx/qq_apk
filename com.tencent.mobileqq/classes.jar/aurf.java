@@ -1,14 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.mobileqq.portal.PortalManager.TimerConfig;
+import java.util.Comparator;
 
-public class aurf
-  implements beor
+public final class aurf
+  implements Comparator<PortalManager.TimerConfig>
 {
-  public aurf(IosTimepicker paramIosTimepicker) {}
-  
-  public void a(View paramView, int paramInt)
+  public int a(PortalManager.TimerConfig paramTimerConfig1, PortalManager.TimerConfig paramTimerConfig2)
   {
-    IosTimepicker.a(this.a, paramView, 1);
+    long l = paramTimerConfig1.uiBegin - paramTimerConfig2.uiBegin;
+    if (l > 0L) {
+      return 1;
+    }
+    if (l < 0L) {
+      return -1;
+    }
+    return 0;
   }
 }
 

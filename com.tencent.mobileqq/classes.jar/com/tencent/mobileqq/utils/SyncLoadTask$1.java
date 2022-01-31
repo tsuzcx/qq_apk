@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.res.Resources;
-import baiq;
-import bair;
+import bbjx;
+import bbjy;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,7 +11,7 @@ import mqq.os.MqqHandler;
 public final class SyncLoadTask$1
   implements Runnable
 {
-  public SyncLoadTask$1(ArrayList paramArrayList1, Resources paramResources, bair parambair, ArrayList paramArrayList2) {}
+  public SyncLoadTask$1(ArrayList paramArrayList1, Resources paramResources, bbjy parambbjy, ArrayList paramArrayList2) {}
   
   public void run()
   {
@@ -20,15 +20,15 @@ public final class SyncLoadTask$1
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      baiq localbaiq = (baiq)localIterator.next();
-      if (localbaiq.runOnSubThread(this.jdField_a_of_type_AndroidContentResResources))
+      bbjx localbbjx = (bbjx)localIterator.next();
+      if (localbbjx.runOnSubThread(this.jdField_a_of_type_AndroidContentResResources))
       {
-        localArrayList1.add(localbaiq);
+        localArrayList1.add(localbbjx);
       }
       else
       {
-        localbaiq.clean();
-        localArrayList2.add(localbaiq);
+        localbbjx.clean();
+        localArrayList2.add(localbbjx);
       }
     }
     ThreadManager.getUIHandler().post(new SyncLoadTask.1.1(this, localArrayList1, localArrayList2));

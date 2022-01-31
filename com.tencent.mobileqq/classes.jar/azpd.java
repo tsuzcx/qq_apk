@@ -1,22 +1,53 @@
-import com.tencent.mobileqq.remind.widget.WheelView;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.widget.VerticalGallery;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class azpd
-  implements beoq
+  extends DefaultHandler
 {
-  private int jdField_a_of_type_Int;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  protected String e;
   
-  public azpd(WheelPickerLayout paramWheelPickerLayout, int paramInt)
+  public azpd(azpa paramazpa) {}
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (this.e != null)
+    {
+      paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+      if (!this.e.equals("title")) {
+        break label46;
+      }
+      if (bbjw.a(this.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaLangString = paramArrayOfChar;
+      }
+    }
+    label46:
+    while (!this.e.equals("summary")) {
+      return;
+    }
+    this.c = paramArrayOfChar;
   }
   
-  public void a(VerticalGallery paramVerticalGallery)
+  public void endElement(String paramString1, String paramString2, String paramString3)
   {
-    int i = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout)[this.jdField_a_of_type_Int].getSelectedItemPosition();
-    if (WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout) != null) {
-      WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.jdField_a_of_type_Int, i);
+    this.e = null;
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    if (paramString2.equals("picture")) {
+      this.b = paramAttributes.getValue("cover");
+    }
+    for (;;)
+    {
+      this.e = paramString2;
+      return;
+      if (paramString2.equals("msg")) {
+        this.d = paramAttributes.getValue("url");
+      }
     }
   }
 }

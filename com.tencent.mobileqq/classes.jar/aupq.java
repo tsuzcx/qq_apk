@@ -1,4 +1,11 @@
-public class aupq {}
+public final class aupq
+  extends aupf
+{
+  protected int c()
+  {
+    return 506;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

@@ -2,8 +2,8 @@ package com.tencent.widget;
 
 import android.annotation.TargetApi;
 import android.view.VelocityTracker;
-import befo;
-import belr;
+import bfni;
+import bftl;
 
 class AbsListView$FlingRunnable$1
   implements Runnable
@@ -15,13 +15,13 @@ class AbsListView$FlingRunnable$1
   {
     int i = AbsListView.access$1200(this.a.this$0);
     VelocityTracker localVelocityTracker = AbsListView.access$1300(this.a.this$0);
-    belr localbelr = AbsListView.FlingRunnable.a(this.a);
+    bftl localbftl = AbsListView.FlingRunnable.a(this.a);
     if ((localVelocityTracker == null) || (i == -1)) {
       return;
     }
     localVelocityTracker.computeCurrentVelocity(1000, AbsListView.access$1400(this.a.this$0));
-    if (befo.b()) {}
-    for (float f = -localVelocityTracker.getYVelocity(i); (Math.abs(f) >= AbsListView.access$1500(this.a.this$0)) && (localbelr.a(0.0F, f)); f = -localVelocityTracker.getYVelocity())
+    if (bfni.b()) {}
+    for (float f = -localVelocityTracker.getYVelocity(i); (Math.abs(f) >= AbsListView.access$1500(this.a.this$0)) && (localbftl.a(0.0F, f)); f = -localVelocityTracker.getYVelocity())
     {
       this.a.this$0.postDelayed(this, 40L);
       return;

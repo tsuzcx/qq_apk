@@ -1,286 +1,97 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.FlowMusic;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.RemoteException;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.util.NetworkState;
 
-public class bhjl
-  extends bhfe
-  implements axrt
+class bhjl
+  extends bhic
+  implements bhoc
 {
-  public static boolean a;
-  private float jdField_a_of_type_Float;
-  private axrr jdField_a_of_type_Axrr;
-  private bhiw jdField_a_of_type_Bhiw;
-  private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  private File jdField_a_of_type_JavaIoFile;
-  private Class<? extends bhiw> jdField_a_of_type_JavaLangClass;
+  private static int jdField_a_of_type_Int;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "qzone_live_video_plugin_hack.apk", "qzone_vertical_video_plugin.apk" };
+  private Handler jdField_a_of_type_AndroidOsHandler = new bhjm(this, Looper.getMainLooper());
+  private bhjf jdField_a_of_type_Bhjf;
+  private bhjn jdField_a_of_type_Bhjn;
   
-  private MusicItemInfo a()
+  bhjl(bhjf parambhjf, bhjn parambhjn)
   {
-    MusicItemInfo localMusicItemInfo = new MusicItemInfo();
-    localMusicItemInfo.mMusicName = ajjy.a(2131647459);
-    localMusicItemInfo.mType = 7;
-    return localMusicItemInfo;
+    this.jdField_a_of_type_Bhjn = parambhjn;
+    this.jdField_a_of_type_Bhjf = parambhjf;
+    NetworkState.addListener(this);
   }
   
-  private MusicItemInfo a(FlowMusic paramFlowMusic, String paramString)
+  void a()
   {
-    boolean bool = true;
-    String str1 = paramFlowMusic.songName;
-    String str2 = paramFlowMusic.url;
-    String str3 = paramFlowMusic.singerName;
-    int i = paramFlowMusic.songId;
-    String str4 = paramFlowMusic.songMid;
-    int j = paramFlowMusic.tryBegin;
-    int k = paramFlowMusic.tryEnd;
-    int m = paramFlowMusic.duration;
-    if ((paramFlowMusic.playable == 1) && (!TextUtils.isEmpty(paramFlowMusic.url))) {}
-    for (;;)
-    {
-      paramFlowMusic = new MusicItemInfo(str1, str2, str3, i, str4, j, k, m, bool);
-      if ((TextUtils.isEmpty(paramFlowMusic.mUrl)) && (QLog.isColorLevel())) {
-        QLog.i("RecognitionManager", 2, "recognitionResultFromFlowMusic: invoked. info: recognitionItem.mUrl = " + paramFlowMusic.mUrl);
-      }
-      paramFlowMusic.mRecognitionOffset = Float.valueOf(paramString).floatValue();
-      paramFlowMusic.musicStart = ((int)(paramFlowMusic.mRecognitionOffset * 1000.0F) + 500);
-      paramFlowMusic.musicEnd = (paramFlowMusic.musicStart + 10000);
-      paramFlowMusic.musicDuration = (paramFlowMusic.musicEnd + 10000);
-      if (QLog.isColorLevel()) {
-        QLog.i("RecognitionManager", 2, "recognitionResultFromFlowMusic: invoked. info: recognitionItem = " + paramFlowMusic);
-      }
-      return paramFlowMusic;
-      bool = false;
-    }
-  }
-  
-  private String a(JSONObject paramJSONObject)
-  {
-    String str = "0";
-    Object localObject = paramJSONObject.optJSONArray("results");
-    paramJSONObject = str;
-    if (localObject != null)
-    {
-      localObject = ((JSONArray)localObject).optJSONObject(0);
-      paramJSONObject = str;
-      if (localObject != null) {
-        paramJSONObject = ((JSONObject)localObject).optString("offset");
-      }
-    }
-    return paramJSONObject;
-  }
-  
-  private List<String> a(JSONObject paramJSONObject)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramJSONObject = paramJSONObject.optJSONArray("songlist");
-    if (paramJSONObject != null)
-    {
-      int i = 0;
-      while (i < paramJSONObject.length())
-      {
-        JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
-        if (localJSONObject != null) {
-          localArrayList.add(localJSONObject.optString("songmid"));
-        }
-        i += 1;
-      }
-    }
-    return localArrayList;
-  }
-  
-  private JSONObject a(axsq paramaxsq)
-  {
-    do
-    {
+    if ((bhjf.b()) && (this.jdField_a_of_type_Bhjn.a() != null)) {
       try
       {
-        paramaxsq = new JSONObject(new String(paramaxsq.jdField_a_of_type_ArrayOfByte));
-        axsq localaxsq = paramaxsq;
-        localaxsq = paramaxsq;
+        String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          String str = arrayOfString[i];
+          this.jdField_a_of_type_Bhjf.a(str, this, 0);
+          i += 1;
+        }
+        return;
       }
-      catch (JSONException localJSONException1)
+      catch (RemoteException localRemoteException)
       {
-        try
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.i("RecognitionManager", 2, "fetchResponseJson: invoked. info: responseJson = " + paramaxsq);
-            localaxsq = paramaxsq;
-          }
-          return localaxsq;
-        }
-        catch (JSONException localJSONException2)
-        {
-          continue;
-        }
-        localJSONException1 = localJSONException1;
-        paramaxsq = null;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("RecognitionManager", 2, "fetchResponseJson: Failed. info: exception = ", localJSONException1);
-    return paramaxsq;
-  }
-  
-  private void a(axsq paramaxsq)
-  {
-    Object localObject = a(paramaxsq);
-    if (localObject == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("RecognitionManager", 2, new Object[] { "resolveResponseData: Failed. info: responseJson = ", localObject });
+        QLog.e("QZonePluginPreInstaller", 1, localRemoteException, new Object[0]);
       }
     }
-    List localList;
-    do
-    {
-      return;
-      paramaxsq = a((JSONObject)localObject);
-      localList = a((JSONObject)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.i("RecognitionManager", 2, "resolveResponseData: invoked. info: songMids = " + localList);
-      }
-      a((JSONObject)localObject);
-      localObject = (QIMMusicConfigManager)bhfm.a(2);
-      if (localList.size() != 0) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = a();
-    } while (!this.jdField_a_of_type_JavaLangClass.equals(this.jdField_a_of_type_Bhiw.getClass()));
-    d();
-    return;
-    ((QIMMusicConfigManager)localObject).a((String)localList.get(0), new bhjm(this, paramaxsq));
   }
   
-  private void a(byte[] paramArrayOfByte)
+  public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("RecognitionManager", 2, "requestRecognition: invoked. info: postBytes = " + paramArrayOfByte);
+      QLog.d("QZonePluginPreInstaller", 2, "onInstallBegin");
     }
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return;
-    }
-    axro localaxro = new axro();
-    localaxro.jdField_a_of_type_JavaLangString = ("http://c.y.qq.com/youtu/humming/search?sessionid=" + System.currentTimeMillis());
-    localaxro.jdField_a_of_type_Int = 1;
-    localaxro.e = 0;
-    localaxro.jdField_a_of_type_Axrt = this;
-    localaxro.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Axrr.a(localaxro);
   }
   
-  private boolean a(JSONObject paramJSONObject)
-  {
-    return paramJSONObject.optString("is_humming").equals("yes");
-  }
+  public void a(String paramString, float paramFloat, long paramLong) {}
   
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(bhiw parambhiw)
+  public void a(String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("RecognitionManager", 2, "registerObserver: invoked. info: observer = " + parambhiw);
+      QLog.d("QZonePluginPreInstaller", 2, "onInstallError, plugin=" + paramString + ", retryInstallNum=" + jdField_a_of_type_Int);
     }
-    this.jdField_a_of_type_Bhiw = parambhiw;
-  }
-  
-  public void a(File paramFile)
-  {
-    if (((paramFile == null) || (!paramFile.exists())) && (QLog.isColorLevel())) {
-      QLog.e("RecognitionManager", 2, "setTargetAudioFile: invoked. info: audioFile = " + paramFile);
+    paramInt = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginRetryDownloadTimes", 1);
+    if ((jdField_a_of_type_Int < paramInt) && (this.jdField_a_of_type_Bhjf != null))
+    {
+      jdField_a_of_type_Int += 1;
+      paramString = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramString);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramString, jdField_a_of_type_Int * 30 * 1000);
     }
-    this.jdField_a_of_type_JavaIoFile = paramFile;
   }
   
-  public void aY_()
+  public void b()
   {
-    this.jdField_a_of_type_Axrr = super.a().getNetEngine(0);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    jdField_a_of_type_Int = 0;
+    NetworkState.removeListener(this);
   }
   
-  public void aZ_() {}
-  
-  public void b(bhiw parambhiw)
+  public void b(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("RecognitionManager", 2, "unregisterObserver: invoked. info: observer = " + parambhiw);
+      QLog.d("QZonePluginPreInstaller", 2, "onInstallFinish");
     }
-    this.jdField_a_of_type_Bhiw = null;
   }
   
-  public void c()
+  public void onNetworkConnect(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangClass = this.jdField_a_of_type_Bhiw.getClass();
-    try
-    {
-      byte[] arrayOfByte = bhix.a(this.jdField_a_of_type_JavaIoFile);
-      return;
-    }
-    catch (Throwable localThrowable1)
-    {
-      do
-      {
-        try
-        {
-          arrayOfByte = new bhjk().a(this.jdField_a_of_type_Float).a(arrayOfByte);
-          a(arrayOfByte);
-          return;
-        }
-        catch (Throwable localThrowable2)
-        {
-          while (!QLog.isColorLevel()) {}
-          QLog.e("RecognitionManager", 2, "performQQMusicInternalMethod: Failed. info: Failed to generate fingerprint. exception = ", localThrowable2);
-        }
-        localThrowable1 = localThrowable1;
-      } while (!QLog.isColorLevel());
-      QLog.e("RecognitionManager", 2, "performQQMusicInternalMethod: Failed. info: Failed to invoke HumUtils.fileToByte. exception = ", localThrowable1);
-      return;
+    if (bhjf.b()) {
+      a();
     }
   }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("RecognitionManager", 2, "notifyObserver: invoked. info: this.mHumObserver = " + this.jdField_a_of_type_Bhiw);
-    }
-    if (this.jdField_a_of_type_Bhiw != null) {
-      this.jdField_a_of_type_Bhiw.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-    }
-  }
-  
-  public void onResp(axsq paramaxsq)
-  {
-    if (paramaxsq != null)
-    {
-      if (paramaxsq.c != 200) {
-        break label55;
-      }
-      a(paramaxsq);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("RecognitionManager", 2, "onResp: invoked. info: resp.mHttpCode = " + paramaxsq.c);
-      }
-      return;
-      label55:
-      bcec.a().a(ajjy.a(2131647460) + paramaxsq.c);
-    }
-  }
-  
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhjl
  * JD-Core Version:    0.7.0.1
  */

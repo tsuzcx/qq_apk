@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bdcz;
-import bdfz;
-import bdxm;
+import begz;
+import beka;
+import bfee;
 
 class PickerJsPlugin$2
   implements Runnable
 {
-  PickerJsPlugin$2(PickerJsPlugin paramPickerJsPlugin, String[][] paramArrayOfString, int[] paramArrayOfInt, bdfz parambdfz) {}
+  PickerJsPlugin$2(PickerJsPlugin paramPickerJsPlugin, String[][] paramArrayOfString, int[] paramArrayOfInt, beka parambeka) {}
   
   public void run()
   {
     if (PickerJsPlugin.access$100(this.this$0) == null) {
-      PickerJsPlugin.access$102(this.this$0, new bdxm(PickerJsPlugin.access$200(this.this$0).a()));
+      PickerJsPlugin.access$102(this.this$0, new bfee(PickerJsPlugin.access$200(this.this$0).a()));
     }
     PickerJsPlugin.access$100(this.this$0).a(this.val$mutiArray);
     PickerJsPlugin.access$100(this.this$0).a(this.val$curValue);

@@ -1,36 +1,31 @@
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
 
-class rgo
-  implements ViewTreeObserver.OnPreDrawListener
+public class rgo
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private final int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final int b;
+  public rgo(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
   
-  rgo(rgn paramrgn, View paramView, int paramInt1, int paramInt2)
+  @SuppressLint({"NewApi"})
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public boolean onPreDraw()
-  {
-    this.jdField_a_of_type_Rgn.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Rgn.a, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Rgn.a) + rgn.a(this.jdField_a_of_type_Rgn));
-    ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Rgn.a, ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Rgn.a) + rgn.b(this.jdField_a_of_type_Rgn));
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Rgn.a, this.jdField_a_of_type_Rgn.a.a(ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Rgn.a)));
-    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Rgn.a) != null) {
-      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Rgn.a).setVisibility(4);
+    for (;;)
+    {
+      ReadinjoySlidingIndicator.a(this.a, ReadinjoySlidingIndicator.a(this.a));
+      View localView = ReadinjoySlidingIndicator.a(this.a).getChildAt(ReadinjoySlidingIndicator.a(this.a));
+      ReadinjoySlidingIndicator.a(this.a, localView.getLeft());
+      this.a.invalidate();
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Rgn.a, this.jdField_a_of_type_Int, this.b);
-    return true;
   }
 }
 

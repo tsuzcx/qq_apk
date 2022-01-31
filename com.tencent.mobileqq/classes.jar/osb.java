@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class osb
-  implements View.OnClickListener
+public abstract interface osb
 {
-  osb(orz paramorz, long paramLong, ArticleInfo paramArticleInfo) {}
+  public abstract void a(MessageRecord paramMessageRecord);
   
-  public void onClick(View paramView)
-  {
-    paramView = obb.g + baaw.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
-    obz.a(orz.a(this.jdField_a_of_type_Orz), paramView);
-    orz.a(1, obz.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
-  }
+  public abstract void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle);
+  
+  public abstract void b(MessageRecord paramMessageRecord);
 }
 
 

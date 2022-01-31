@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import axra;
+import ayrh;
 
 public class GroupPttUploadProcessor$3
   implements Runnable
 {
-  public GroupPttUploadProcessor$3(axra paramaxra) {}
+  public GroupPttUploadProcessor$3(ayrh paramayrh) {}
   
   public void run()
   {

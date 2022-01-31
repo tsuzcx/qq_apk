@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import atmo;
+import aukm;
 
 public class SquareBannerEntry
-  extends atmo
+  extends aukm
 {
   public String bannerId;
   public String imageUrl;

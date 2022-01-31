@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bbdq;
-import bbdu;
-import bbee;
-import bfpr;
+import bcgq;
+import bcgu;
+import bche;
+import bgxy;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -127,7 +127,7 @@ public class WebSoServlet
   
   public void notifyObserver(Intent paramIntent, int paramInt, boolean paramBoolean, Bundle paramBundle, Class<? extends BusinessObserver> paramClass)
   {
-    if ((paramClass == bbdq.class) && (a()))
+    if ((paramClass == bcgq.class) && (a()))
     {
       paramIntent = new WebSoServlet.ReceiveRunnable(paramInt, paramBoolean, paramBundle);
       QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").getHandler().post(paramIntent);
@@ -202,7 +202,7 @@ public class WebSoServlet
       if (paramFromServiceMsg != null)
       {
         paramIntent = a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, paramFromServiceMsg);
-        bfpr.a(null, bbee.f(str), paramFromServiceMsg.getResultCode(), paramIntent[0], 1, System.currentTimeMillis());
+        bgxy.a(null, bche.f(str), paramFromServiceMsg.getResultCode(), paramIntent[0], 1, System.currentTimeMillis());
         if (QLog.isColorLevel()) {
           QLog.d("WebSoServlet", 2, "WebSo url: " + str + ", req time cost: " + paramIntent[0]);
         }
@@ -212,7 +212,7 @@ public class WebSoServlet
         break label498;
       }
       paramIntent = paramFromServiceMsg.getWupBuffer();
-      paramFromServiceMsg = bbdu.a(bbee.e(str));
+      paramFromServiceMsg = bcgu.a(bche.e(str));
       if (!TextUtils.isEmpty(paramFromServiceMsg)) {
         break;
       }
@@ -220,7 +220,7 @@ public class WebSoServlet
       return;
     }
     localBundle.putInt("rsp_code", 0);
-    paramIntent = bbdu.a(paramIntent, paramFromServiceMsg);
+    paramIntent = bcgu.a(paramIntent, paramFromServiceMsg);
     if (paramIntent != null)
     {
       localBundle.putSerializable("rsp_data", paramIntent);
@@ -249,7 +249,7 @@ public class WebSoServlet
     String str2 = paramIntent.getStringExtra("refer");
     String str1 = paramIntent.getStringExtra("url");
     int i = paramIntent.getIntExtra("key_time_out", 60000);
-    paramIntent = new bbdu(bbee.e(str1), l, localHttpReq, str2).encode();
+    paramIntent = new bcgu(bche.e(str1), l, localHttpReq, str2).encode();
     if (paramIntent == null) {
       paramIntent = new byte[4];
     }
@@ -259,7 +259,7 @@ public class WebSoServlet
       for (l = 60000L;; l = i)
       {
         paramPacket.setTimeout(l);
-        paramPacket.setSSOCommand(bbee.f(str1));
+        paramPacket.setSSOCommand(bche.f(str1));
         paramPacket.putSendData(paramIntent);
         if (QLog.isColorLevel()) {
           QLog.d("WebSoServlet", 2, "send req url: " + str1);

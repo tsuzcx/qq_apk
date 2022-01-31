@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import afrw;
-import afss;
+import agdv;
+import ager;
 import android.os.Message;
-import beez;
+import bfmt;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -16,7 +16,7 @@ import java.util.List;
 public class C2CMessageResultAdapter$1
   implements Runnable
 {
-  public C2CMessageResultAdapter$1(afrw paramafrw, String paramString, long paramLong, List paramList) {}
+  public C2CMessageResultAdapter$1(agdv paramagdv, String paramString, long paramLong, List paramList) {}
   
   public void run()
   {
@@ -31,7 +31,7 @@ public class C2CMessageResultAdapter$1
       {
         localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
         if (this.this$0.a(localMessageRecord)) {
-          this.this$0.jdField_a_of_type_JavaUtilList.add(new afss(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
+          this.this$0.jdField_a_of_type_JavaUtilList.add(new ager(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
         }
         i += 1;
       }
@@ -46,7 +46,7 @@ public class C2CMessageResultAdapter$1
         {
           localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
           if (this.this$0.a(localMessageRecord)) {
-            this.this$0.jdField_a_of_type_JavaUtilList.add(new afss(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
+            this.this$0.jdField_a_of_type_JavaUtilList.add(new ager(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
           }
           i += 1;
         }
@@ -59,7 +59,7 @@ public class C2CMessageResultAdapter$1
     ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
     ((HashMap)localObject).put("sequence", Long.valueOf(this.jdField_a_of_type_Long));
     ((HashMap)localObject).put("data", this.jdField_a_of_type_JavaUtilList);
-    this.this$0.jdField_a_of_type_Beez.obtainMessage(6, localObject).sendToTarget();
+    this.this$0.jdField_a_of_type_Bfmt.obtainMessage(6, localObject).sendToTarget();
   }
 }
 

@@ -1,17 +1,11 @@
-import org.json.JSONObject;
-
-public abstract class amum
+public class amum
 {
-  public String a;
-  public boolean a = true;
-  
-  public abstract JSONObject a();
-  
-  public abstract boolean a();
+  public int a;
+  public String a = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amum
  * JD-Core Version:    0.7.0.1
  */

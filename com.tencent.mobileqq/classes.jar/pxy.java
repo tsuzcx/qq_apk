@@ -1,119 +1,50 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector.2;
-import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector.3;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
 
 public class pxy
+  extends ClickableSpan
+  implements rfs
 {
-  public static final String a;
-  private int jdField_a_of_type_Int = 1;
-  private volatile OrientationEventListener jdField_a_of_type_AndroidViewOrientationEventListener;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private HashMap<Integer, Long> jdField_a_of_type_JavaUtilHashMap;
-  private volatile pyb jdField_a_of_type_Pyb;
-  private boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int = -1;
+  protected long a;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  boolean jdField_a_of_type_Boolean;
   
-  static
+  public pxy(ComponentHeaderUgc paramComponentHeaderUgc, long paramLong, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "Q.readinjoy.video." + pxy.class.getSimpleName();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public pxy(Activity paramActivity, pya parampya)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    ComponentHeaderUgc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc, this.jdField_a_of_type_Long);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.jdField_a_of_type_Int;; i = -1)
     {
-      this.jdField_a_of_type_AndroidViewOrientationEventListener = new pxz(this, paramActivity, new WeakReference(parampya));
-      ThreadManager.executeOnSubThread(new OrientationDetector.2(this, paramActivity));
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
       return;
     }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    ThreadManager.executeOnSubThread(new OrientationDetector.3(this, paramBoolean));
-  }
-  
-  private boolean a(int paramInt)
-  {
-    if ((paramInt >= 70) && (paramInt <= 110)) {
-      paramInt = 1;
-    }
-    for (;;)
-    {
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), Long.valueOf(l));
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-      Map.Entry localEntry;
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localEntry = (Map.Entry)localIterator.next();
-      } while ((((Integer)localEntry.getKey()).intValue() == paramInt) || (l - ((Long)localEntry.getValue()).longValue() >= 200L));
-      return false;
-      if ((paramInt >= 250) && (paramInt <= 290)) {
-        paramInt = 2;
-      } else {
-        paramInt = 0;
-      }
-    }
-    return true;
-  }
-  
-  public Context a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    a(false);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidViewOrientationEventListener = null;
-      if (this.jdField_a_of_type_Pyb != null)
-      {
-        this.jdField_a_of_type_Pyb.b();
-        this.jdField_a_of_type_Pyb = null;
-      }
-      return;
-    }
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidViewOrientationEventListener == null) {}
-    do
-    {
-      return false;
-      if (!paramBoolean) {
-        break;
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        a(true);
-        return true;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w(jdField_a_of_type_JavaLangString, 2, "mRotateSettingSwitch is false : enable failure");
-    return false;
-    a(false);
-    return true;
   }
 }
 

@@ -14,6 +14,7 @@ public class BoxShadowLayout
   int jdField_a_of_type_Int;
   View jdField_a_of_type_AndroidViewView;
   BoxShadow jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadow;
+  int b;
   
   public BoxShadowLayout(@NonNull Context paramContext)
   {
@@ -30,10 +31,24 @@ public class BoxShadowLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
+  public void a(int paramInt)
+  {
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadow.getLayoutParams();
+    localLayoutParams.leftMargin = (paramInt - (int)(this.b * 0.5F));
+    localLayoutParams.rightMargin = (paramInt - (int)(this.b * 0.5F));
+    localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.leftMargin = paramInt;
+    localLayoutParams.rightMargin = paramInt;
+    localLayoutParams.bottomMargin = ((int)(this.b * 0.75F));
+    this.jdField_a_of_type_AndroidViewView.setMinimumHeight(0);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+  }
+  
   public void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
     this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadow = new BoxShadow(getContext(), paramInt1, paramInt2, paramInt3);
     this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramInt1;
     paramInt2 = (int)(0.5F * paramInt1);
     paramView = new FrameLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadow, paramView);

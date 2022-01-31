@@ -1,23 +1,30 @@
-import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
-import java.util.Comparator;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3.1;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class lvz
-  implements Comparator<kth>
+  implements bcwh
 {
-  public lvz(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
+  public lvz(RedPacketShareFragment.3.1 param1) {}
   
-  public int a(kth paramkth1, kth paramkth2)
+  public void a(BaseResp paramBaseResp)
   {
-    if ((paramkth2.b) && (paramkth1.b)) {
-      return paramkth2.d - paramkth1.d;
+    if ((RedPacketShareFragment.d(this.a.a.this$0) == null) || (!RedPacketShareFragment.d(this.a.a.this$0).equals(paramBaseResp.transaction))) {
+      return;
     }
-    if ((!paramkth2.b) && (!paramkth1.b)) {
-      return paramkth2.d - paramkth1.d;
+    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND_CIRCLE onWXShareResp resp.errCode = " + paramBaseResp.errCode);
+    switch (paramBaseResp.errCode)
+    {
     }
-    if ((paramkth2.b) && (!paramkth1.b)) {
-      return 1;
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      RedPacketShareFragment.a("0X8008CF8", 4);
     }
-    return -1;
   }
 }
 

@@ -1,23 +1,16 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
-
-public class ajow
-  extends RecyclablePool.Recyclable
+public abstract interface ajow
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public long c;
-  public long d;
+  public abstract void a();
   
-  public void recycle()
-  {
-    super.recycle();
-  }
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajow
  * JD-Core Version:    0.7.0.1
  */

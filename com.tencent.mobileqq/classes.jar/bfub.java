@@ -1,13 +1,12 @@
 import android.view.View;
-import android.view.ViewGroup;
 
 public abstract interface bfub
 {
-  public abstract void a(int paramInt, View paramView, ViewGroup paramViewGroup);
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfub
  * JD-Core Version:    0.7.0.1
  */

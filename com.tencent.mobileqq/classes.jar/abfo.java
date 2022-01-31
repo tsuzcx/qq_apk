@@ -1,39 +1,27 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import cooperation.qzone.LocalMultiProcConfig;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class abfo
-  implements CompoundButton.OnCheckedChangeListener
+  implements OnCompositionLoadedListener
 {
-  public abfo(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public abfo(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131653020) + this.a.a, paramBoolean);
-    if (AppSetting.c) {
-      NotifyPushSettingActivity.e(this.a).setContentDescription(ajjy.a(2131641873));
+    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
+      QLog.d("ColorScreenManager", 1, "onCompositionLoaded: composition= " + paramLottieComposition);
     }
-    QQAppInterface localQQAppInterface = this.a.app;
-    int i;
-    if (paramBoolean)
+    if (paramLottieComposition == null)
     {
-      i = 1;
-      if (!paramBoolean) {
-        break label109;
-      }
-    }
-    label109:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      awqx.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, paramCompoundButton, "", "", "");
+      bbrc.a(this.a.this$0.app, "individual_v2_colorscreen_parse_fail", "0", "", Integer.toString(this.a.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
+      bbrb.a("individual_v2_colorscreen_parse_fail", "id:" + this.a.jdField_a_of_type_Int);
       return;
-      i = 0;
-      break;
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition = paramLottieComposition;
+    this.a.this$0.b.postDelayed(this.a, 500L);
   }
 }
 

@@ -1,41 +1,44 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
-class aois
-  implements apbn
+public class aois
+  implements aokv
 {
-  aois(aoio paramaoio) {}
+  public aois(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  public void a()
+  public void a(String paramString, int paramInt)
   {
-    this.a.b();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.a(2005);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 12, null, paramInt, null);
-    apck.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.jdField_i_of_type_JavaLangString, this.a.jdField_g_of_type_Long, aoio.a(this.a), this.a.e, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9040L, "", this.a.jdField_i_of_type_Long, this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Long, aoio.a(this.a), "", aoio.a(this.a), "sdcard full", null);
-    apck.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.j, this.a.jdField_g_of_type_Long, aoio.a(this.a), this.a.e, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9040L, "", this.a.jdField_i_of_type_Long, this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Long, aoio.a(this.a), "", aoio.b(this.a), "sdcard full", null);
-  }
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.a.jdField_d_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
-      this.a.jdField_d_of_type_JavaLangString = paramString2;
+    if (!paramString.equals(ExtendFriendSquareFragment.a(this.a)))
+    {
+      ExtendFriendSquareFragment.a(this.a, paramString);
+      if (!aoep.a.equals(ExtendFriendSquareFragment.a(this.a))) {
+        break label187;
+      }
+      ExtendFriendSquareFragment.a(this.a, false);
     }
-    while (!this.a.jdField_b_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
+    label187:
+    for (boolean bool1 = ExtendFriendSquareFragment.f(this.a);; bool1 = false)
+    {
+      boolean bool2 = ExtendFriendSquareFragment.a(this.a, false, paramString);
+      long l = Math.abs(System.currentTimeMillis() - ExtendFriendSquareFragment.b(this.a));
+      if ((!bool2) || (l > 60000L) || (bool1))
+      {
+        ExtendFriendSquareFragment.b(this.a, false);
+        this.a.a.a();
+        this.a.a.notifyDataSetChanged();
+        this.a.a.a(false);
+        ExtendFriendSquareFragment.a(this.a);
+        ExtendFriendSquareFragment.a(this.a).removeMessages(11);
+        ExtendFriendSquareFragment.a(this.a).sendEmptyMessageDelayed(11, 500L);
+        return;
+      }
+      ExtendFriendSquareFragment.b(this.a, true);
       return;
     }
-    this.a.jdField_b_of_type_JavaLangString = paramString2;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aois
  * JD-Core Version:    0.7.0.1
  */

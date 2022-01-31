@@ -1,223 +1,131 @@
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.database.VideoCollectionEntry;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.support.v4.view.MotionEventCompat;
+import android.support.v4.view.ViewConfigurationCompat;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
 
 public class tzq
-  extends tzj
-  implements sks
 {
-  public ShareGroupItem a;
-  public HashMap<String, WeakReference<tzs>> a;
-  public List<HotSortVideoEntry> a;
-  uaa a;
-  protected boolean a;
-  protected boolean b;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int = 0;
+  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int = -1;
+  private float jdField_c_of_type_Float;
+  private int jdField_c_of_type_Int;
+  private float d;
   
-  public tzq(Context paramContext, boolean paramBoolean)
+  public tzq(Context paramContext, String paramString)
   {
-    super(paramContext);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_c_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(paramContext));
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private void a(List<HotSortVideoEntry> paramList)
+  public int a(MotionEvent paramMotionEvent)
   {
-    if (paramList.isEmpty()) {}
-    do
+    int i = 3;
+    int j = paramMotionEvent.getAction() & 0xFF;
+    if ((j == 3) || (j == 1))
     {
-      int i;
-      int k;
-      do
-      {
-        return;
-        if (this.b)
-        {
-          localVideoCollectionItem = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-          if (localVideoCollectionItem.collectionType == 7)
-          {
-            localVideoCollectionItem.hotSortVideoLIst.set(1, paramList.get(0));
-            paramList.remove(0);
-            this.b = false;
-            if (QLog.isColorLevel()) {
-              QLog.i("Q.qqstory.shareGroup.ShareGroupsListAdapter", 2, "[hotlist]填了一个坑");
-            }
-          }
-        }
-        int m = paramList.size() / 2;
-        if (paramList.size() % 2 == 1) {}
-        for (i = 1;; i = 0)
-        {
-          int j = 0;
-          k = 0;
-          while (j < m)
-          {
-            localVideoCollectionItem = new VideoCollectionItem();
-            localVideoCollectionItem.collectionType = 7;
-            localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, String.valueOf(j), "0_xx");
-            localVideoCollectionItem.hotSortVideoLIst.add(paramList.get(k));
-            localVideoCollectionItem.hotSortVideoLIst.add(paramList.get(k + 1));
-            k += 2;
-            this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
-            this.b = false;
-            j += 1;
-          }
-        }
-      } while ((paramList.size() <= 0) || (i == 0));
-      VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
-      localVideoCollectionItem.collectionType = 7;
-      localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, String.valueOf(k), "0_xx");
-      localVideoCollectionItem.hotSortVideoLIst.add(paramList.get(k));
-      localVideoCollectionItem.hotSortVideoLIst.add(null);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
-      this.b = true;
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.qqstory.shareGroup.ShareGroupsListAdapter", 2, "[hotlist]又挖了一个坑");
-  }
-  
-  private static void b(ImageView paramImageView, int paramInt, String paramString)
-  {
-    if (paramImageView == null) {
-      urk.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", "update imageView error. imageView is null.");
+      Log.v(this.jdField_a_of_type_JavaLangString, "Intercept done!");
+      i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Int = -1;
+      return i;
     }
-    do
+    if (j != 0)
     {
-      return;
-      paramImageView.setVisibility(paramInt);
-    } while (paramInt != 0);
-    vms.b(paramImageView, vmp.a(paramString), 80, 80, null, "StoryDiscoverHeadImage");
-  }
-  
-  protected View a(int paramInt, ViewGroup paramViewGroup)
-  {
-    LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    paramInt = getItemViewType(paramInt);
-    View localView = null;
-    if (paramInt == 1)
-    {
-      localView = localLayoutInflater.inflate(2131495770, paramViewGroup, false);
-      localView.setTag(new tzs(localView, this));
+      if (this.jdField_a_of_type_Int != 0)
+      {
+        Log.v(this.jdField_a_of_type_JavaLangString, "Intercept returning true! " + this.jdField_a_of_type_Int);
+        return this.jdField_a_of_type_Int;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        Log.v(this.jdField_a_of_type_JavaLangString, "Intercept returning false!");
+        return 0;
+      }
     }
-    do
+    switch (j)
     {
-      return localView;
-      if (paramInt == 0)
-      {
-        paramViewGroup = localLayoutInflater.inflate(2131495705, paramViewGroup, false);
-        paramViewGroup.setTag(new tzx(paramViewGroup, this));
-        return paramViewGroup;
-      }
-      if (paramInt == 2)
-      {
-        paramViewGroup = localLayoutInflater.inflate(2131495769, paramViewGroup, false);
-        paramViewGroup.setTag(new tzw(paramViewGroup, this));
-        return paramViewGroup;
-      }
-    } while (paramInt != 7);
-    paramViewGroup = localLayoutInflater.inflate(2131495766, paramViewGroup, false);
-    paramViewGroup.setTag(new tzv(paramViewGroup, this));
-    return paramViewGroup;
-  }
-  
-  public void a(HotSortVideoEntry paramHotSortVideoEntry)
-  {
-    int i = 0;
+    }
     for (;;)
     {
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      return this.jdField_a_of_type_Int;
+      j = this.jdField_b_of_type_Int;
+      if (j != -1)
       {
-        if (((HotSortVideoEntry)this.jdField_a_of_type_JavaUtilList.get(i)).storyId.equals(paramHotSortVideoEntry.storyId)) {
-          this.jdField_a_of_type_JavaUtilList.set(i, paramHotSortVideoEntry);
+        j = MotionEventCompat.findPointerIndex(paramMotionEvent, j);
+        float f1 = MotionEventCompat.getX(paramMotionEvent, j);
+        float f3 = f1 - this.jdField_a_of_type_Float;
+        float f4 = Math.abs(f3);
+        float f2 = MotionEventCompat.getY(paramMotionEvent, j);
+        float f5 = f2 - this.jdField_b_of_type_Float;
+        float f6 = Math.abs(f5);
+        Log.v(this.jdField_a_of_type_JavaLangString, "Moved x to " + f1 + "," + f2 + " diff=" + f4 + "," + f6 + ", mTouchSlop=" + this.jdField_c_of_type_Int);
+        if ((f4 > this.jdField_c_of_type_Int) && (f4 > f6))
+        {
+          Log.v(this.jdField_a_of_type_JavaLangString, "Starting drag horizontal !");
+          if (f3 > 0.0F)
+          {
+            label325:
+            this.jdField_a_of_type_Int = i;
+            if (f3 <= 0.0F) {
+              break label368;
+            }
+          }
+          label368:
+          for (f1 = this.jdField_c_of_type_Float + this.jdField_c_of_type_Int;; f1 = this.jdField_c_of_type_Float - this.jdField_c_of_type_Int)
+          {
+            this.jdField_a_of_type_Float = f1;
+            this.jdField_b_of_type_Float = f2;
+            break;
+            i = 1;
+            break label325;
+          }
+        }
+        if ((f6 > this.jdField_c_of_type_Int) && (f6 > f4))
+        {
+          Log.v(this.jdField_a_of_type_JavaLangString, "Starting drag vertical !");
+          if (f5 > 0.0F)
+          {
+            i = 4;
+            label421:
+            this.jdField_a_of_type_Int = i;
+            this.jdField_a_of_type_Float = f1;
+            if (f5 <= 0.0F) {
+              break label464;
+            }
+          }
+          label464:
+          for (f1 = this.d + this.jdField_c_of_type_Int;; f1 = this.d - this.jdField_c_of_type_Int)
+          {
+            this.jdField_b_of_type_Float = f1;
+            break;
+            i = 2;
+            break label421;
+          }
+          f1 = paramMotionEvent.getX();
+          this.jdField_c_of_type_Float = f1;
+          this.jdField_a_of_type_Float = f1;
+          f1 = paramMotionEvent.getY();
+          this.d = f1;
+          this.jdField_b_of_type_Float = f1;
+          this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, 0);
+          this.jdField_a_of_type_Boolean = false;
+          this.jdField_a_of_type_Int = 0;
+          if (this.jdField_a_of_type_AndroidViewMotionEvent != null) {
+            this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
+          }
+          this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+          Log.v(this.jdField_a_of_type_JavaLangString, "Down at " + this.jdField_a_of_type_Float + "," + this.jdField_b_of_type_Float + " mIsBeingDragged=" + this.jdField_a_of_type_Int + "mIsUnableToDrag=" + this.jdField_a_of_type_Boolean);
         }
       }
-      else {
-        return;
-      }
-      i += 1;
     }
-  }
-  
-  public void a(ShareGroupItem paramShareGroupItem)
-  {
-    if (paramShareGroupItem != null)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = paramShareGroupItem;
-      super.notifyDataSetChanged();
-    }
-  }
-  
-  public void a(String paramString, List<uhj> paramList)
-  {
-    paramList = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if ((paramList != null) && (paramList.get() != null))
-    {
-      VideoCollectionItem localVideoCollectionItem = ((spt)sqg.a(19)).a(paramString);
-      if (localVideoCollectionItem == null) {
-        break label55;
-      }
-      ((tzs)paramList.get()).a.setData(localVideoCollectionItem);
-    }
-    label55:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", 2, "updateCollectionData: videoCollectionItem is null, collectionId:" + paramString);
-  }
-  
-  public void a(List<VideoCollectionItem> paramList, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    super.a(paramList, paramBoolean);
-  }
-  
-  public void a(uaa paramuaa)
-  {
-    super.a(paramuaa, paramuaa);
-    this.jdField_a_of_type_Uaa = paramuaa;
-  }
-  
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public void e(List<HotSortVideoEntry> paramList, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    b();
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = false;
-    a(VideoCollectionItem.getProfilePlaceholderItem("hotsort"));
-    a(VideoCollectionItem.getCurrentYearFakeItem("hotsort"));
-    a(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public void f(List<HotSortVideoEntry> paramList, boolean paramBoolean)
-  {
-    if (paramList.isEmpty()) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    a(paramList);
-    notifyDataSetChanged();
   }
 }
 

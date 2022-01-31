@@ -1,66 +1,42 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.mobileqq.widget.ConfigClearableEditText;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
-public class bbhf
-  extends ExploreByTouchHelper
+class bbhf
+  implements View.OnTouchListener
 {
-  public bbhf(ConfigClearableEditText paramConfigClearableEditText, View paramView)
-  {
-    super(paramView);
-  }
+  bbhf(bbhb parambbhb) {}
   
-  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((ConfigClearableEditText.a(this.a)) && (paramFloat1 > ConfigClearableEditText.a(this.a))) {
-      return 0;
-    }
-    return -1;
-  }
-  
-  public void getVisibleVirtualViews(List<Integer> paramList)
-  {
-    if (ConfigClearableEditText.a(this.a)) {
-      paramList.add(Integer.valueOf(0));
-    }
-  }
-  
-  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfigClearableEditTextHelper", 2, "onPerformActionForVirtualView virtualViewId:" + paramInt1);
-    }
-    return false;
-  }
-  
-  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
-  {
-    if (paramInt == 0) {
-      paramAccessibilityEvent.setContentDescription(ajjy.a(2131636629));
-    }
-  }
-  
-  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    if (paramInt == 0)
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839619);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130839619));
+    if (this.a.c)
     {
-      paramAccessibilityNodeInfoCompat.setContentDescription(ajjy.a(2131636630));
-      paramAccessibilityNodeInfoCompat.addAction(16);
-      paramInt = ConfigClearableEditText.a(this.a);
-      paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(paramInt, this.a.getPaddingTop(), this.a.a.getIntrinsicWidth() + paramInt, this.a.getHeight() - this.a.getPaddingBottom()));
+      bbhb.a(this.a);
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label110;
+      }
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+    }
+    for (;;)
+    {
+      this.a.c = false;
+      paramView = this.a.getWindow().getAttributes();
+      paramView.y = 0;
+      this.a.getWindow().setAttributes(paramView);
+      return false;
+      label110:
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbhf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.detail.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import ucr;
-import ucu;
-import ucw;
+import upn;
+import upq;
+import ups;
 
 public class DetailFeedAllInfoPuller$2
   implements Runnable
 {
-  public DetailFeedAllInfoPuller$2(ucr paramucr, ucw paramucw, boolean paramBoolean, ErrorMessage paramErrorMessage) {}
+  public DetailFeedAllInfoPuller$2(upn paramupn, ups paramups, boolean paramBoolean, ErrorMessage paramErrorMessage) {}
   
   public void run()
   {
-    ucr.a(this.this$0).a(this.jdField_a_of_type_Ucw, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    upn.a(this.this$0).a(this.jdField_a_of_type_Ups, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
   }
 }
 

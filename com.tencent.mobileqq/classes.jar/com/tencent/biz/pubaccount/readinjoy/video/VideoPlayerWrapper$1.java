@@ -3,24 +3,24 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.text.TextUtils;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import java.util.Properties;
-import obz;
-import qhw;
+import onk;
+import qub;
 
 public class VideoPlayerWrapper$1
   implements Runnable
 {
-  public VideoPlayerWrapper$1(qhw paramqhw, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public VideoPlayerWrapper$1(qub paramqub, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
   public void run()
   {
     Object localObject = this.a.getStreamDumpInfo();
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = obz.a((String)localObject);
+      localObject = onk.a((String)localObject);
       if (localObject != null)
       {
         this.this$0.a = Long.valueOf(((Properties)localObject).getProperty("VideoBitRate")).longValue();
-        if (qhw.a(this.this$0) == null) {}
+        if (qub.a(this.this$0) == null) {}
       }
     }
   }

@@ -1,86 +1,105 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffColorFilter;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.hotchat.anim.HeartLayout;
-import com.tencent.mobileqq.hotchat.ui.HeartView;
-import java.util.Random;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Set;
 
 public class aqem
-  extends aqel
+  extends aqbc
 {
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Random jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
-  private int[] jdField_a_of_type_ArrayOfInt = { Color.parseColor("#c797ff"), Color.parseColor("#80b9f4"), Color.parseColor("#67d0d7"), Color.parseColor("#67d78e"), Color.parseColor("#b5e255"), Color.parseColor("#f2c64f"), Color.parseColor("#f6a455"), Color.parseColor("#ff96b9"), Color.parseColor("#ff6a6a") };
+  AbsShareMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
+  AbsStructMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
   
-  public aqem(Context paramContext, int paramInt)
+  public aqem(Intent paramIntent)
   {
-    super(paramContext, paramInt);
+    super(paramIntent);
   }
   
-  public aqem(Context paramContext, int paramInt, aqef paramaqef)
+  protected void a()
   {
-    super(paramContext, paramInt, paramaqef);
+    if (k()) {
+      this.jdField_a_of_type_JavaUtilSet.add(d);
+    }
+    if (l()) {
+      this.jdField_a_of_type_JavaUtilSet.add(c);
+    }
+    if (m()) {
+      this.jdField_a_of_type_JavaUtilSet.add(b);
+    }
   }
   
-  public static void a(HeartLayout paramHeartLayout)
-  {
-    if ((paramHeartLayout == null) || (paramHeartLayout.a() == null)) {}
-    do
-    {
-      return;
-      paramHeartLayout = paramHeartLayout.a();
-    } while (paramHeartLayout == null);
-    paramHeartLayout.j = 2400;
-    aqeh.b = 0.05F;
-  }
-  
-  public Bitmap a()
+  public boolean a()
   {
     super.a();
-    return b();
+    AbsStructMsg localAbsStructMsg = axuy.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("stuctmsg_bytes"));
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = axuy.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("struct_msg_show_in_dialog"));
+    if ((localAbsStructMsg != null) && ((localAbsStructMsg instanceof AbsShareMsg))) {
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)localAbsStructMsg);
+    }
+    return true;
   }
   
-  public Bitmap b()
+  protected boolean a(bbgg parambbgg)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
-      Bitmap localBitmap1;
-      Bitmap localBitmap2;
-      do
-      {
-        return null;
-        if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
-          this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(3);
-        }
-        if (this.jdField_a_of_type_AndroidGraphicsCanvas == null) {
-          this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-        }
-        localBitmap1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
-        localBitmap2 = HeartView.a(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      } while (localBitmap2 == null);
-      Canvas localCanvas = this.jdField_a_of_type_AndroidGraphicsCanvas;
-      localCanvas.setBitmap(localBitmap2);
-      Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-      localPaint.setColorFilter(new PorterDuffColorFilter(this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_ArrayOfInt.length)], PorterDuff.Mode.SRC_ATOP));
-      localCanvas.drawBitmap(localBitmap1, 0.0F, 0.0F, localPaint);
-      localPaint.setColorFilter(null);
-      if (Build.VERSION.SDK_INT >= 11) {
-        localCanvas.setBitmap(null);
-      }
-      return localBitmap2;
+    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) {
+      parambbgg.addView(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.getPreDialogView(this.jdField_a_of_type_AndroidAppActivity, null));
     }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
-    return null;
+    for (;;)
+    {
+      return true;
+      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
+      {
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+        localLayoutParams.setMargins(actn.a(-15.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 0, actn.a(-15.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), actn.a(5.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardOption.ForwardRecommendFriendOption", 2, "updateImageView addStructView");
+        }
+        parambbgg.addView(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.getPreDialogView(this.jdField_a_of_type_AndroidAppActivity, null), localLayoutParams);
+      }
+    }
+  }
+  
+  protected void d()
+  {
+    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("structmsg_service_id", -1);
+    if (i == 63) {
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B34", "0X8005B34", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      super.d();
+      return;
+      if (i == 84) {
+        if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("pa_type", -1) == 53) {
+          axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007018", "0X8007018", 0, 0, "", "", "", "");
+        } else {
+          axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007169", "0X8007169", 0, 0, "", "", "", "");
+        }
+      }
+    }
+  }
+  
+  protected void r()
+  {
+    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("structmsg_service_id", -1);
+    if (i == 63) {
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B35", "0X8005B35", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      super.r();
+      return;
+      if (i == 84) {
+        if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("pa_type", -1) == 53) {
+          axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007017", "0X8007017", 0, 0, "", "", "", "");
+        } else {
+          axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800716A", "0X800716A", 0, 0, "", "", "", "");
+        }
+      }
+    }
   }
 }
 

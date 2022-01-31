@@ -1,21 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class adur
-  implements Animation.AnimationListener
+public class adur
+  implements View.OnClickListener
 {
-  adur(aduq paramaduq) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (aduq.a(this.a) != null) {
-      aduq.a(this.a).b();
-    }
+    ThreadManager.post(new MarketFaceItemBuilder.7.1(this), 5, null, true);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

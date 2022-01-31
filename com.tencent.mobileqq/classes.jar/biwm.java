@@ -1,14 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class biwm
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  biwm(biwc parambiwc) {}
+  biwm(biwl parambiwl) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.invalidateSelf();
+    if ((this.a.a != null) && (biwl.a(this.a) != null)) {
+      biwl.a(this.a).a(paramView, this.a.a, biwl.a(this.a));
+    }
   }
 }
 

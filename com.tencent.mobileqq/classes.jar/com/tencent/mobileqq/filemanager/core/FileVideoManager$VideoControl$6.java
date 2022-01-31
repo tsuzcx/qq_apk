@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aojj;
+import apad;
 
 public class FileVideoManager$VideoControl$6
   implements Runnable
 {
-  public FileVideoManager$VideoControl$6(aojj paramaojj) {}
+  public FileVideoManager$VideoControl$6(apad paramapad) {}
   
   public void run()
   {
-    aojj.d(this.this$0);
+    apad.d(this.this$0);
   }
 }
 

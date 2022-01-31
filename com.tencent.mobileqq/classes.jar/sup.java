@@ -1,25 +1,19 @@
-class sup
-  extends sgc
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.File;
+
+public abstract interface sup
 {
-  sup(suo paramsuo) {}
+  public abstract void a(String paramString, int paramInt1, int paramInt2, sul paramsul);
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
-  {
-    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
-    if ((paramBoolean1) && (paramBoolean2)) {
-      bbmy.a(this.a.a.a, 2, ajjy.a(2131641173), 0).a();
-    }
-    do
-    {
-      return;
-      if ((!paramBoolean1) && (paramBoolean2))
-      {
-        bbmy.a(this.a.a.a, 1, ajjy.a(2131641178), 0).a();
-        return;
-      }
-    } while ((paramBoolean1) || (paramBoolean2));
-    bbmy.a(this.a.a.a, 1, ajjy.a(2131641174), 0).a();
-  }
+  public abstract void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, sul paramsul);
+  
+  public abstract void a(String paramString, int paramInt1, File paramFile, int paramInt2, sul paramsul);
+  
+  public abstract void a(String paramString, int paramInt, sul paramsul);
+  
+  public abstract void b(String paramString, int paramInt1, File paramFile, int paramInt2, sul paramsul);
+  
+  public abstract void b(String paramString, int paramInt, sul paramsul);
 }
 
 

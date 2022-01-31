@@ -1,32 +1,12 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
 
-class afdt
-  implements View.OnTouchListener
+public abstract interface afdt
 {
-  afdt(afdq paramafdq, TextView paramTextView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-    }
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afdt
  * JD-Core Version:    0.7.0.1
  */

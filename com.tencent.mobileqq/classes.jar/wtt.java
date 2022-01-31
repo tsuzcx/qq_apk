@@ -1,219 +1,103 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.videostory.capture.PlayDownloadManagerWrap.1;
-import com.tencent.biz.videostory.capture.PlayDownloadManagerWrap.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.TextureView;
+import android.view.View;
+import com.tencent.biz.subscribe.videoplayer.VideoFrameCheckHelper.1;
 
 public class wtt
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private final Map<String, bgxw> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private WeakReference<wus> jdField_a_of_type_MqqUtilWeakReference;
-  private final Map<String, List<wts>> b = new HashMap();
+  private long jdField_a_of_type_Long;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private final String jdField_a_of_type_JavaLangString = "VideoFrameCheckHelper";
   
-  public static wtt a()
+  private void a(TextureView paramTextureView, wtu paramwtu)
   {
-    return wtv.a;
+    a().postDelayed(new VideoFrameCheckHelper.1(this, paramTextureView, paramwtu), 20L);
   }
   
-  private void a(String paramString)
+  private boolean a(TextureView paramTextureView)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    boolean bool2 = false;
+    if (paramTextureView.isAvailable())
     {
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      return;
-    }
-  }
-  
-  private void a(String paramString, bgxw parambgxw)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, parambgxw);
-      return;
-    }
-  }
-  
-  private boolean a(String paramString)
-  {
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
       {
-        if (this.jdField_a_of_type_JavaUtilMap.get(paramString) != null)
-        {
-          bool = true;
-          return bool;
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      }
+      int i = paramTextureView.getWidth() / 16;
+      int j = paramTextureView.getHeight() / 16;
+      boolean bool1 = bool2;
+      if (i > 0)
+      {
+        bool1 = bool2;
+        if (j > 0) {
+          if (Build.VERSION.SDK_INT < 17) {
+            break label126;
+          }
         }
       }
-      boolean bool = false;
+      label126:
+      for (this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramTextureView.getResources().getDisplayMetrics(), i, j, Bitmap.Config.ARGB_8888);; this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888))
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap = paramTextureView.getBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        if (!tvj.a(this.jdField_a_of_type_AndroidGraphicsBitmap, 4, 16)) {
+          break;
+        }
+        veg.b("VideoFrameCheckHelper", "isCurrentFrameBlack CheckVideoViewRealStartRunnable find dark bitmap ! current = %d");
+        bool1 = true;
+        return bool1;
+      }
+      veg.d("VideoFrameCheckHelper", "isCurrentFrameBlack StoryPlayerTest.isBlack false. treat as not-black frame");
+      return false;
     }
+    veg.d("VideoFrameCheckHelper", "isCurrentFrameBlack targetView.isAvailable() false. treat as not-black frame");
+    return false;
   }
   
-  public Map<String, bgxw> a()
+  public Handler a()
   {
-    return this.jdField_a_of_type_JavaUtilMap;
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    }
+    return this.jdField_a_of_type_AndroidOsHandler;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = null;
-    this.b.clear();
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+    veg.d("VideoFrameCheckHelper", "release");
   }
   
-  public void a(bgya parambgya, boolean paramBoolean)
+  public void a(View paramView, wtu paramwtu)
   {
-    if (parambgya == null) {}
-    for (;;)
+    if ((paramView == null) || (paramwtu == null)) {}
+    do
     {
       return;
-      String str;
-      List localList;
-      try
-      {
-        str = parambgya.jdField_a_of_type_JavaLangString;
-        localList = (List)this.b.get(str);
-        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(str)) && (paramBoolean) && (parambgya.equals(wrn.a))) {
-          ThreadManager.getUIHandler().post(new PlayDownloadManagerWrap.2(this, parambgya));
-        }
-        if (localList == null)
-        {
-          this.b.remove(str);
-          continue;
-        }
-      }
-      finally {}
-      parambgya = localList.iterator();
-      while (parambgya.hasNext()) {
-        ((wts)parambgya.next()).a(str, paramBoolean);
-      }
-      this.b.remove(str);
-    }
-  }
-  
-  /* Error */
-  public void a(String paramString, int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 23	wtt:b	Ljava/util/Map;
-    //   6: aload_1
-    //   7: invokeinterface 58 2 0
-    //   12: checkcast 70	java/util/List
-    //   15: astore_3
-    //   16: aload_3
-    //   17: ifnonnull +17 -> 34
-    //   20: aload_0
-    //   21: getfield 23	wtt:b	Ljava/util/Map;
-    //   24: aload_1
-    //   25: invokeinterface 46 2 0
-    //   30: pop
-    //   31: aload_0
-    //   32: monitorexit
-    //   33: return
-    //   34: aload_3
-    //   35: invokeinterface 103 1 0
-    //   40: astore_3
-    //   41: aload_3
-    //   42: invokeinterface 109 1 0
-    //   47: ifeq -16 -> 31
-    //   50: aload_3
-    //   51: invokeinterface 113 1 0
-    //   56: checkcast 115	wts
-    //   59: aload_1
-    //   60: iload_2
-    //   61: invokeinterface 121 3 0
-    //   66: goto -25 -> 41
-    //   69: astore_1
-    //   70: aload_0
-    //   71: monitorexit
-    //   72: aload_1
-    //   73: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	74	0	this	wtt
-    //   0	74	1	paramString	String
-    //   0	74	2	paramInt	int
-    //   15	36	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	16	69	finally
-    //   20	31	69	finally
-    //   34	41	69	finally
-    //   41	66	69	finally
-  }
-  
-  public void a(String paramString, wts paramwts)
-  {
-    if (paramwts != null) {}
-    try
-    {
-      List localList = (List)this.b.get(paramString);
-      Object localObject = localList;
-      if (localList == null) {
-        localObject = new ArrayList();
-      }
-      if (!((List)localObject).contains(paramwts))
-      {
-        ((List)localObject).add(paramwts);
-        this.b.put(paramString, localObject);
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(wus paramwus, @NonNull bgxx parambgxx, @NonNull bgya parambgya)
-  {
-    if (a(parambgya.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if ((this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)) {
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramwus);
-    }
-    paramwus = new wtu(null);
-    a(parambgya.jdField_a_of_type_JavaLangString, paramwus);
-    this.jdField_a_of_type_JavaLangString = parambgya.jdField_a_of_type_JavaLangString;
-    ThreadManager.excute(new PlayDownloadManagerWrap.1(this, parambgxx, parambgya, paramwus), 128, null, true);
-  }
-  
-  public void b(String paramString, wts paramwts)
-  {
-    List localList;
-    try
-    {
-      localList = (List)this.b.get(paramString);
-      if ((localList != null) && (localList.size() > 1))
-      {
-        Iterator localIterator = localList.iterator();
-        while (localIterator.hasNext()) {
-          if ((wts)localIterator.next() == paramwts) {
-            localIterator.remove();
-          }
-        }
-      }
-      if (localList == null) {
-        break label91;
-      }
-    }
-    finally {}
-    if (localList.size() < 1) {
-      label91:
-      this.b.remove(paramString);
-    }
+      paramView = tvj.a(paramView);
+    } while (paramView == null);
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    a(paramView, paramwtu);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wtt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import abcn;
-import abco;
+import abml;
+import abmm;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -16,9 +16,9 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import atok;
-import awqx;
-import badq;
+import aumi;
+import axqw;
+import bbev;
 import com.tencent.mobileqq.activity.phone.CountryActivity;
 import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -36,8 +36,8 @@ public class LoginPhoneNumActivity2
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   private OpenSDKAppInterface jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new abco(this);
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new abcn(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new abmm(this);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new abml(this);
   
   private String a(String paramString)
   {
@@ -116,7 +116,7 @@ public class LoginPhoneNumActivity2
     this.jdField_a_of_type_JavaLangString = a(this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString());
     if (this.jdField_a_of_type_JavaLangString == null)
     {
-      a(2131651323, 1);
+      a(2131717115, 1);
       bool = false;
     }
     return bool;
@@ -127,8 +127,8 @@ public class LoginPhoneNumActivity2
     paramString1 = paramString1 + " " + paramString2;
     Rect localRect = new Rect();
     this.jdField_a_of_type_AndroidWidgetTextView.getPaint().getTextBounds(paramString1, 0, paramString1.length(), localRect);
-    int i = getResources().getDimensionPixelSize(2131166224);
-    int j = getResources().getDimensionPixelSize(2131166223);
+    int i = getResources().getDimensionPixelSize(2131297305);
+    int j = getResources().getDimensionPixelSize(2131297304);
     if (localRect.right > i - j)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString2);
@@ -139,12 +139,12 @@ public class LoginPhoneNumActivity2
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131312632));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378456));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    b(getString(2131651270), "+" + this.b);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131305318));
+    b(getString(2131717061), "+" + this.b);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370993));
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298042));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363592));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -154,18 +154,18 @@ public class LoginPhoneNumActivity2
     do
     {
       return;
-      if (!badq.d(BaseApplication.getContext()))
+      if (!bbev.d(BaseApplication.getContext()))
       {
-        a(2131626719, 0);
+        a(2131692321, 0);
         return;
       }
-      a(2131651369);
+      a(2131717161);
       if (QLog.isColorLevel()) {
         QLog.d("LoginPhoneNumActivity", 2, "-->startQueryAccount--CheckSMSVerifyLoginAccount, countryCode = " + this.b + "phoneNum = " + this.jdField_a_of_type_JavaLangString);
       }
-    } while (atok.a().a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_MqqObserverWtloginObserver) == 0);
+    } while (aumi.a().a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_MqqObserverWtloginObserver) == 0);
     c();
-    a(getString(2131651340), 1);
+    a(getString(2131717132), 1);
   }
   
   public void a()
@@ -189,7 +189,7 @@ public class LoginPhoneNumActivity2
   
   public void b()
   {
-    a(2131652916, 1);
+    a(2131718741, 1);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -243,7 +243,7 @@ public class LoginPhoneNumActivity2
     {
     default: 
       return;
-    case 2131312632: 
+    case 2131378456: 
       startActivityForResult(new Intent(this, CountryActivity.class), 1);
       return;
     }
@@ -253,8 +253,8 @@ public class LoginPhoneNumActivity2
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2131495248));
-    setTitle(2131654810);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2131560827));
+    setTitle(2131720708);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("key_req_src", -1);
     if (QLog.isColorLevel()) {
       QLog.d("LoginPhoneNumActivity", 2, "-->onCreate--mReqSrc = " + this.jdField_a_of_type_Int);
@@ -262,8 +262,8 @@ public class LoginPhoneNumActivity2
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface = ((OpenSDKAppInterface)getAppRuntime());
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
     d();
-    awqx.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 0, 0, "", "", "", "");
-    awqx.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 4, 0, "", "", "", "");
+    axqw.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 0, 0, "", "", "", "");
+    axqw.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 4, 0, "", "", "", "");
   }
   
   public void onDestroy()

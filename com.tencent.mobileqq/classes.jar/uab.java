@@ -1,18 +1,26 @@
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
+
 public class uab
 {
-  public String a;
-  public String b;
+  protected uab(uaj paramuaj) {}
   
-  public uab(String paramString1, String paramString2)
+  public static uab a(uaj paramuaj)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    if (paramuaj.a().mReportData.from == 86) {
+      return new uae(paramuaj);
+    }
+    return new uab(paramuaj);
   }
   
-  public String toString()
-  {
-    return "GroupID{groupUin='" + this.a + '\'' + ", groupUnionID='" + this.b + '\'' + '}';
-  }
+  public void a(uah paramuah) {}
+  
+  public void a(uah paramuah, int paramInt1, int paramInt2, uav paramuav) {}
+  
+  public void a(uah paramuah, View paramView) {}
+  
+  public void a(uah paramuah, boolean paramBoolean) {}
 }
 
 

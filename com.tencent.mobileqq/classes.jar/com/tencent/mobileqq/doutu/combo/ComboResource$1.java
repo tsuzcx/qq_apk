@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import amxv;
+import anod;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class ComboResource$1
@@ -8,7 +8,7 @@ public final class ComboResource$1
 {
   public void run()
   {
-    amxv.a(BaseApplicationImpl.getApplication().getBaseContext());
+    anod.a(BaseApplicationImpl.getApplication().getBaseContext());
   }
 }
 

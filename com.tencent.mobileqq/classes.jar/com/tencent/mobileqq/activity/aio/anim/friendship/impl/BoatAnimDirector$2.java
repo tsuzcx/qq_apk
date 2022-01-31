@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.anim.friendship.impl;
 
-import acph;
+import adaa;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 
 public class BoatAnimDirector$2
   implements Runnable
 {
-  public BoatAnimDirector$2(acph paramacph) {}
+  public BoatAnimDirector$2(adaa paramadaa) {}
   
   public void run()
   {

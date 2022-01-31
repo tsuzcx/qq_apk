@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public final class sov
-  implements Parcelable.Creator<DiscoverBannerVideoEntry.BannerInfo>
+class sov
 {
-  public DiscoverBannerVideoEntry.BannerInfo a(Parcel paramParcel)
-  {
-    return new DiscoverBannerVideoEntry.BannerInfo(paramParcel);
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public DiscoverBannerVideoEntry.BannerInfo[] a(int paramInt)
-  {
-    return new DiscoverBannerVideoEntry.BannerInfo[paramInt];
-  }
+  sov(sou paramsou) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     sov
  * JD-Core Version:    0.7.0.1
  */

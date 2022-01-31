@@ -1,28 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
 
-public class asis
-  implements begw
+public abstract class asis
 {
-  public asis(NearbyGuideActivity paramNearbyGuideActivity, begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static int a(String paramString)
   {
-    this.jdField_a_of_type_Begr.cancel();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.h();
-      return;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("ak:"))) {
+      return 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.i();
+    return 0;
   }
+  
+  public abstract void a(String paramString1, String paramString2, Object paramObject);
+  
+  protected abstract boolean a(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     asis
  * JD-Core Version:    0.7.0.1
  */

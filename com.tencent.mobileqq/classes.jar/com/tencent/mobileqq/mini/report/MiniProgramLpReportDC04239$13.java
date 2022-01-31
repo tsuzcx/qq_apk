@@ -16,7 +16,7 @@ final class MiniProgramLpReportDC04239$13
     {
       MiniAppExposureManager.BaseExposureReport localBaseExposureReport = (MiniAppExposureManager.BaseExposureReport)localIterator.next();
       if (localBaseExposureReport != null) {
-        localBaseExposureReport.report();
+        localBaseExposureReport.handleReport();
       }
     }
     MiniProgramReporter.getInstance().flush();

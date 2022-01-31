@@ -1,25 +1,40 @@
 import android.animation.Animator;
-import android.animation.ValueAnimator;
+import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import android.view.animation.Animation;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import java.util.HashSet;
 
 public class autp
+  implements Animator.AnimatorListener
 {
-  public static Animator a(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  public autp(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, auts paramauts, View paramView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
-    localValueAnimator.addUpdateListener(new autr(paramInt1, paramView));
-    return localValueAnimator;
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Auts.a));
+    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimator.height = -2;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
   }
   
-  public static Animation a(View paramView, float paramFloat1, float paramFloat2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new bajd(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new autq(paramView));
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Auts.a));
+    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimator.height = -2;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     autp
  * JD-Core Version:    0.7.0.1
  */

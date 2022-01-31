@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.troop.utils;
 
-import azks;
-import azlb;
+import balw;
+import bamf;
 import java.lang.ref.WeakReference;
 
 public class TroopRobotManager$3
   implements Runnable
 {
-  public TroopRobotManager$3(azks paramazks) {}
+  public TroopRobotManager$3(balw parambalw) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      azlb localazlb = (azlb)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localazlb != null) {
-        localazlb.a(this.this$0.d, this.this$0.b, this.this$0.jdField_a_of_type_Boolean);
+      bamf localbamf = (bamf)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbamf != null) {
+        localbamf.a(this.this$0.d, this.this$0.b, this.this$0.jdField_a_of_type_Boolean);
       }
     }
   }

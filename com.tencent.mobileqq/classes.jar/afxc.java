@@ -1,68 +1,57 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class afxc
-  extends atog
+  extends apwx
 {
-  public afxc(BindVerifyActivity paramBindVerifyActivity) {}
+  public afxc(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BindVerifyActivity", 2, "onBindMobile [" + paramBoolean + ", " + paramBundle + "]");
+    paramView = (aimd)paramView.getTag();
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
+    if (5 != localFileManagerEntity.cloudType) {
+      apue.c(localFileManagerEntity);
     }
-    this.a.b();
-    int i;
-    if (paramBoolean)
+    switch (paramView.jdField_a_of_type_Int)
     {
-      i = paramBundle.getInt("k_result");
-      if ((i == 104) || (i == 0)) {
-        this.a.b();
-      }
     }
     for (;;)
     {
-      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
-      BindVerifyActivity.a(this.a, null);
+      ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
       return;
-      if (i == 107)
+      if (!bbev.d(BaseApplication.getContext()))
       {
-        this.a.a(paramBundle);
+        aptv.a(2131692665);
+        return;
       }
-      else if (i == 106)
+      apsz.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new afxd(this, localFileManagerEntity));
+      continue;
+      this.a.a(localFileManagerEntity);
+      continue;
+      if (localFileManagerEntity.getCloudType() == 0)
       {
-        this.a.a();
-        if (this.a.getIntent().getBooleanExtra("k_is_block", false)) {
-          awqx.b(this.a.app, "CliOper", "", "", "0X80053D5", "0X80053D5", 2, 0, "", "", "", "");
-        }
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
+      }
+      else if (localFileManagerEntity.getCloudType() == 6)
+      {
+        ((ajuo)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(0, localFileManagerEntity.uniseq, false);
       }
       else
       {
-        this.a.a(1, a(i));
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
         continue;
-        this.a.a(1, this.a.getString(2131652912));
+        if (!bbev.d(BaseApplication.getContext()))
+        {
+          aptv.a(2131692665);
+          return;
+        }
+        boolean bool = localFileManagerEntity.isSend();
+        apsz.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new afxe(this, localFileManagerEntity));
       }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindVerifyActivity", 2, "onRebindMobile [" + paramBoolean + ", " + paramBundle + "]");
-    }
-    this.a.b();
-    if (paramBoolean) {
-      this.a.b();
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
-      BindVerifyActivity.a(this.a, null);
-      return;
-      this.a.a(1, this.a.getString(2131652912));
     }
   }
 }

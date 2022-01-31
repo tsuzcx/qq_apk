@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.notecard;
 
-import ord;
+import pcf;
 
 class SoundCheckRunnable$1
   implements Runnable
 {
-  SoundCheckRunnable$1(SoundCheckRunnable paramSoundCheckRunnable, ord paramord) {}
+  SoundCheckRunnable$1(SoundCheckRunnable paramSoundCheckRunnable, pcf parampcf) {}
   
   public void run()
   {
-    this.a.H_();
+    this.a.F_();
   }
 }
 

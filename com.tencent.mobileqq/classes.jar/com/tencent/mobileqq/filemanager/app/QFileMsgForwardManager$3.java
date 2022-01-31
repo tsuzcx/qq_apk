@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aofz;
-import aogw;
+import aowt;
+import aoxq;
 import java.util.HashMap;
 
 public class QFileMsgForwardManager$3
   implements Runnable
 {
-  public QFileMsgForwardManager$3(aofz paramaofz, String paramString) {}
+  public QFileMsgForwardManager$3(aowt paramaowt, String paramString) {}
   
   public void run()
   {
-    aogw localaogw = null;
-    if (aofz.a(this.this$0).containsKey(this.a)) {
-      localaogw = (aogw)aofz.a(this.this$0).get(this.a);
+    aoxq localaoxq = null;
+    if (aowt.a(this.this$0).containsKey(this.a)) {
+      localaoxq = (aoxq)aowt.a(this.this$0).get(this.a);
     }
-    if (localaogw != null) {
-      localaogw.d();
+    if (localaoxq != null) {
+      localaoxq.d();
     }
   }
 }

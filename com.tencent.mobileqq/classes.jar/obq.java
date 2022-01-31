@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public abstract interface obq
+class obq
 {
-  public abstract void a(boolean paramBoolean, List<BaseArticleInfo> paramList);
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  obq(obm paramobm) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     obq
  * JD-Core Version:    0.7.0.1
  */

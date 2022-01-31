@@ -1,26 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.FirstPageInfo;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bdms
-  implements Parcelable.Creator<FirstPageInfo>
+final class bdms
+  implements URLDrawable.URLDrawableListener
 {
-  public FirstPageInfo a(Parcel paramParcel)
+  bdms(ImageView paramImageView) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    FirstPageInfo localFirstPageInfo = new FirstPageInfo();
-    localFirstPageInfo.a = paramParcel.readString();
-    localFirstPageInfo.b = paramParcel.readString();
-    return localFirstPageInfo;
+    QLog.d("CommonUtils_", 1, "onLoadCanceled");
   }
   
-  public FirstPageInfo[] a(int paramInt)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return new FirstPageInfo[paramInt];
+    QLog.d("CommonUtils_", 1, "onLoadFialed urldrawable load failed ");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    QLog.d("CommonUtils_", 1, "onLoadProgressed");
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.a.setImageDrawable(paramURLDrawable);
+    QLog.d("CommonUtils_", 1, "onLoadSuccessed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdms
  * JD-Core Version:    0.7.0.1
  */

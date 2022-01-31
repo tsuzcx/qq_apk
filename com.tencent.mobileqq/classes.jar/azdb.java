@@ -1,24 +1,33 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
-class azdb
-  implements View.OnClickListener
+public class azdb
+  extends BroadcastReceiver
 {
-  azdb(azcz paramazcz) {}
+  public azdb(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = new Bundle();
-    paramView.putString(baoz.e, ajjy.a(2131634427));
-    paramView.putString(baoz.f, "CJCLUBT");
-    paramView.putString(baoz.d, "1450000516");
-    paramView.putInt(baoz.b, 3);
-    paramView.putString(baoz.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
-    paramView.putString(baoz.g, "svip");
-    paramView.putString(baoz.a, azcz.a(this.a).getCurrentAccountUin());
-    baoz.a(azcz.a(this.a), azcz.a(this.a), paramView);
+    paramContext = paramIntent.getAction();
+    if ("key_photo_delete_action".equals(paramContext))
+    {
+      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
+      this.a.a(i, 9);
+    }
+    do
+    {
+      return;
+      if ("key_audio_delete_action".equals(paramContext))
+      {
+        this.a.a(0);
+        this.a.a = null;
+        bair.a(this.a.o, this.a.p, "del_record", this.a.q, this.a.b, "", "");
+        return;
+      }
+    } while (!"key_audio_play_action".equals(paramContext));
+    bair.a(this.a.o, this.a.p, "preview_record", this.a.q, this.a.b, "", "");
   }
 }
 

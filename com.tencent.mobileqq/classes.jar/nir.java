@@ -1,14 +1,26 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+
 public class nir
-  extends bgmz
+  implements Animation.AnimationListener
 {
-  protected void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
+  public nir(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    nio.a().a(paramString, paramLong1, paramArrayOfLong, paramLong2);
+    this.a.setResult(-1);
+    PublicAccountAdvertisementActivity.g(this.a);
+    PublicAccountAdvertisementActivity.a(this.a, 0, 0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nir
  * JD-Core Version:    0.7.0.1
  */

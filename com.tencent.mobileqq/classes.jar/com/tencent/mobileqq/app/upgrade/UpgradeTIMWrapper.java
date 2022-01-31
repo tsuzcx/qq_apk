@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.upgrade;
 
-import akgv;
+import akvh;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
@@ -9,7 +9,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.Xml;
-import bace;
+import bbdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class UpgradeTIMWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator<UpgradeTIMWrapper> CREATOR = new akgv();
+  public static final Parcelable.Creator<UpgradeTIMWrapper> CREATOR = new akvh();
   public int a;
   public String a;
   public String b;
@@ -160,7 +160,7 @@ public class UpgradeTIMWrapper
     try
     {
       Object localObject1 = new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config_tim").getAbsolutePath();
-      localObject1 = bace.a(new File((String)localObject1 + "upgrade_config_tim_info"));
+      localObject1 = bbdj.a(new File((String)localObject1 + "upgrade_config_tim_info"));
       if ((localObject1 == null) || (localObject1.length <= 0))
       {
         localObject4 = null;
@@ -228,7 +228,7 @@ public class UpgradeTIMWrapper
     do
     {
       return;
-      bace.a(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config_tim").getAbsolutePath(), "upgrade_config_tim_info", paramString);
+      bbdj.a(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config_tim").getAbsolutePath(), "upgrade_config_tim_info", paramString);
     } while (!QLog.isColorLevel());
     QLog.i("UpgradeTIMWrapper", 2, "UpgradeTIMWrapper save upgrade_config_tim to file finish.");
   }
@@ -243,7 +243,7 @@ public class UpgradeTIMWrapper
       if (b())
       {
         String str = new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config_tim").getAbsolutePath();
-        bace.d(str + "upgrade_config_tim_info");
+        bbdj.d(str + "upgrade_config_tim_info");
         if (QLog.isColorLevel()) {
           QLog.i("UpgradeTIMWrapper", 2, "UpgradeTIMWrapper delUpgradeConfig : " + str + "upgrade_config_tim_info");
         }
@@ -259,7 +259,7 @@ public class UpgradeTIMWrapper
       return false;
     }
     String str = new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config_tim").getAbsolutePath();
-    return bace.a(str + "upgrade_config_tim_info");
+    return bbdj.a(str + "upgrade_config_tim_info");
   }
   
   public void a()

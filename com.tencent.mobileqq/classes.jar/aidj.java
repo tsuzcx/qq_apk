@@ -1,46 +1,47 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.Switch;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
 public class aidj
-  extends aiac
+  implements bfts
 {
-  public aidh a;
-  public View a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public Switch a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public ImageView d;
-  public TextView d;
-  public TextView e;
+  public aidj(FriendTabView paramFriendTabView) {}
   
-  public aidj(View paramView)
+  public void a()
   {
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302061));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131304131));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131310657));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131309710));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311221));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311223));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131304834));
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131311924));
-    this.jdField_c_of_type_AndroidWidgetImageView.setClickable(false);
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131307029));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131312009);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312075));
-    this.e = ((TextView)paramView.findViewById(2131312074));
+    this.a.a = true;
+    FriendTabView.a(this.a).setFooterEnable(false);
+  }
+  
+  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
+  {
+    if (!this.a.a)
+    {
+      if (paramInt - 1 >= 0) {
+        paramPinnedFooterExpandableListView.b(paramInt - 1);
+      }
+      for (;;)
+      {
+        this.a.a = true;
+        FriendTabView.a(this.a).setFooterEnable(false);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendTabView", 2, "header group unusal: " + paramInt);
+        }
+      }
+    }
+    if (paramPinnedFooterExpandableListView.c(paramInt))
+    {
+      paramPinnedFooterExpandableListView.b(paramInt);
+      return;
+    }
+    paramPinnedFooterExpandableListView.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aidj
  * JD-Core Version:    0.7.0.1
  */

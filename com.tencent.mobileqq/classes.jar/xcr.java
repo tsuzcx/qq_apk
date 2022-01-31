@@ -1,21 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
-class xcr
-  implements QQPermissionCallback
+public class xcr
+  implements DialogInterface.OnClickListener
 {
-  xcr(xco paramxco) {}
+  public xcr(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
-    babr.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user grant = ");
-    xco.f(this.a);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (paramInt == 1)
+    {
+      bbqw.a(this.a.a, "mvip.n.a.qlw_forsvip", "CJCLUBT", 3, false, true);
+      axqw.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_sure_click", 0, 0, "", "", "", "");
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    axqw.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_cancel_click", 0, 0, "", "", "", "");
   }
 }
 

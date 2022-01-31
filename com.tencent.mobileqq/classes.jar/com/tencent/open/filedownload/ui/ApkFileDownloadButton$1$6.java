@@ -1,11 +1,11 @@
 package com.tencent.open.filedownload.ui;
 
-import bcit;
+import bdmu;
 
 public class ApkFileDownloadButton$1$6
   implements Runnable
 {
-  public ApkFileDownloadButton$1$6(bcit parambcit) {}
+  public ApkFileDownloadButton$1$6(bdmu parambdmu) {}
   
   public void run()
   {

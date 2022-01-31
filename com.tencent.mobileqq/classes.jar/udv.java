@@ -1,12 +1,18 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.annotation.TargetApi;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView.1.1;
 
-public abstract interface udv
+public class udv
+  implements ufs
 {
-  public abstract boolean a();
+  public udv(TextureVideoView paramTextureVideoView) {}
   
-  public abstract boolean a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
-  
-  public abstract boolean b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
+  @TargetApi(15)
+  public void a(ufk paramufk, int paramInt1, int paramInt2)
+  {
+    this.a.getHandler().post(new TextureVideoView.1.1(this, paramufk));
+  }
 }
 
 

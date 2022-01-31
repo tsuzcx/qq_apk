@@ -2,13 +2,13 @@ package cooperation.qzone.networkedmodule;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bfxq;
-import bfxr;
-import bfxs;
-import bfxu;
-import bfxz;
-import bfya;
-import bgfp;
+import bhgb;
+import bhgc;
+import bhgd;
+import bhgf;
+import bhgk;
+import bhgl;
+import bhoh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -28,7 +28,7 @@ public class QzoneModuleManager
   public volatile boolean hasLoadNewMapSDK;
   public volatile boolean hasLoadOldMapSDK;
   private volatile boolean hasSetVersionNum;
-  bfxu mDownloadManager = new bfxu(BaseApplicationImpl.getApplication());
+  bhgf mDownloadManager = new bhgf(BaseApplicationImpl.getApplication());
   private volatile boolean mHasStartedUpdateTask;
   public Object mLock = new Object();
   private Map<String, Boolean> mModueLoadState = new ConcurrentHashMap();
@@ -58,7 +58,7 @@ public class QzoneModuleManager
         QLog.e("QzoneModuleManager", 1, "loadModule error: networked module is disabled");
         return false;
       }
-      if (bfxq.a())
+      if (bhgb.a())
       {
         QLog.w("QzoneModuleManager", 1, "loadModule error:device is in the blacklist.");
         return false;
@@ -82,10 +82,10 @@ public class QzoneModuleManager
     if (TextUtils.isEmpty(paramString)) {
       throw new IllegalArgumentException("moduleId is null or empty.");
     }
-    bfxs localbfxs = bfxr.a().a(paramString);
-    if (localbfxs != null)
+    bhgd localbhgd = bhgc.a().a(paramString);
+    if (localbhgd != null)
     {
-      if ((!localbfxs.a()) && (isModuleDownloaded(paramString)))
+      if ((!localbhgd.a()) && (isModuleDownloaded(paramString)))
       {
         QLog.i("QzoneModuleManager", 2, "checkIfNeedUpdate: " + paramString + ",no new configs");
         return false;
@@ -98,7 +98,7 @@ public class QzoneModuleManager
   
   public boolean downloadModule(String paramString, ModuleDownloadListener paramModuleDownloadListener)
   {
-    paramString = bfxr.a().a(paramString);
+    paramString = bhgc.a().a(paramString);
     if (paramString == null) {
       return false;
     }
@@ -107,10 +107,10 @@ public class QzoneModuleManager
   
   public String getModuleFilePath(String paramString)
   {
-    bfxs localbfxs = bfxr.a().a(paramString);
+    bhgd localbhgd = bhgc.a().a(paramString);
     paramString = "";
-    if (localbfxs != null) {
-      paramString = QzoneModuleConst.getModuleSavePath(BaseApplicationImpl.getApplication(), localbfxs);
+    if (localbhgd != null) {
+      paramString = QzoneModuleConst.getModuleSavePath(BaseApplicationImpl.getApplication(), localbhgd);
     }
     return paramString;
   }
@@ -122,7 +122,7 @@ public class QzoneModuleManager
   
   public boolean isModuleDownloaded(String paramString)
   {
-    paramString = bfxr.a().a(paramString);
+    paramString = bhgc.a().a(paramString);
     if (paramString != null)
     {
       File localFile = new File(QzoneModuleConst.getModuleSavePath(BaseApplicationImpl.getApplication(), paramString));
@@ -188,19 +188,19 @@ public class QzoneModuleManager
     return false;
   }
   
-  boolean loadModule(bfxs parambfxs, ClassLoader paramClassLoader, boolean paramBoolean)
+  boolean loadModule(bhgd parambhgd, ClassLoader paramClassLoader, boolean paramBoolean)
   {
-    if (parambfxs == null)
+    if (parambhgd == null)
     {
       QLog.e("QzoneModuleManager", 1, "record is null");
       return false;
     }
-    String str1 = parambfxs.jdField_a_of_type_JavaLangString;
+    String str1 = parambhgd.jdField_a_of_type_JavaLangString;
     if (this.mModueLoadState.containsKey(str1)) {
       return ((Boolean)this.mModueLoadState.get(str1)).booleanValue();
     }
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    String str2 = QzoneModuleConst.getModuleSavePath(localBaseApplicationImpl, parambfxs);
+    String str2 = QzoneModuleConst.getModuleSavePath(localBaseApplicationImpl, parambhgd);
     synchronized (this.mLock)
     {
       if (this.mModueLoadState.containsKey(str1))
@@ -209,7 +209,7 @@ public class QzoneModuleManager
         return paramBoolean;
       }
     }
-    paramBoolean = bfxz.a(str2, localBaseApplicationImpl.getApplicationContext(), paramClassLoader, parambfxs.f, parambfxs, paramBoolean);
+    paramBoolean = bhgk.a(str2, localBaseApplicationImpl.getApplicationContext(), paramClassLoader, parambhgd.f, parambhgd, paramBoolean);
     this.mModueLoadState.put(str1, Boolean.valueOf(paramBoolean));
     return paramBoolean;
   }
@@ -227,7 +227,7 @@ public class QzoneModuleManager
       return ((Boolean)this.mModueLoadState.get(str3)).booleanValue();
     }
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    bfxs localbfxs = new bfxs(str3, ???.getName(), "", "", "", "", "", 0, 0L, null);
+    bhgd localbhgd = new bhgd(str3, ???.getName(), "", "", "", "", "", 0, 0L, null);
     synchronized (this.mLock)
     {
       if (this.mModueLoadState.containsKey(str3))
@@ -236,15 +236,15 @@ public class QzoneModuleManager
         return bool;
       }
     }
-    boolean bool = bfxz.a(str2, localBaseApplicationImpl.getApplicationContext(), getClass().getClassLoader(), localbfxs.f, localbfxs);
+    boolean bool = bhgk.a(str2, localBaseApplicationImpl.getApplicationContext(), getClass().getClassLoader(), localbhgd.f, localbhgd);
     this.mModueLoadState.put(str3, Boolean.valueOf(bool));
     return bool;
   }
   
   public boolean loadModule(String paramString, ClassLoader paramClassLoader, boolean paramBoolean1, boolean paramBoolean2)
   {
-    bfxs localbfxs = bfxr.a().a(paramString);
-    if (localbfxs == null)
+    bhgd localbhgd = bhgc.a().a(paramString);
+    if (localbhgd == null)
     {
       QLog.e("QzoneModuleManager", 1, "loadModule error: can't find information about " + paramString + ",please ensure is do exist");
       return false;
@@ -255,21 +255,21 @@ public class QzoneModuleManager
       return false;
     }
     if (paramBoolean1) {
-      return loadModule2QQClassLoader(localbfxs);
+      return loadModule2QQClassLoader(localbhgd);
     }
-    return loadModule(localbfxs, paramClassLoader, paramBoolean2);
+    return loadModule(localbhgd, paramClassLoader, paramBoolean2);
   }
   
-  boolean loadModule2QQClassLoader(bfxs parambfxs)
+  boolean loadModule2QQClassLoader(bhgd parambhgd)
   {
-    if (parambfxs == null)
+    if (parambhgd == null)
     {
       QLog.e("QzoneModuleManager", 1, "record is null");
       return false;
     }
-    String str1 = parambfxs.jdField_a_of_type_JavaLangString;
+    String str1 = parambhgd.jdField_a_of_type_JavaLangString;
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (bgfp.g(bgfp.a(localBaseApplicationImpl)))
+    if (bhoh.g(bhoh.a(localBaseApplicationImpl)))
     {
       QLog.e("QzoneModuleManager", 1, "-------try to load module into MainClassLoader in QQ process.This shouldn't happen,please ensure this is really what you want...");
       return false;
@@ -277,7 +277,7 @@ public class QzoneModuleManager
     if (this.mModueLoadState.containsKey(str1)) {
       return ((Boolean)this.mModueLoadState.get(str1)).booleanValue();
     }
-    String str2 = QzoneModuleConst.getModuleSavePath(localBaseApplicationImpl, parambfxs);
+    String str2 = QzoneModuleConst.getModuleSavePath(localBaseApplicationImpl, parambhgd);
     synchronized (this.mLock)
     {
       if (this.mModueLoadState.containsKey(str1))
@@ -286,7 +286,7 @@ public class QzoneModuleManager
         return bool;
       }
     }
-    boolean bool = bfxz.a(str2, localBaseApplicationImpl.getApplicationContext(), parambfxs.f, parambfxs);
+    boolean bool = bhgk.a(str2, localBaseApplicationImpl.getApplicationContext(), parambhgd.f, parambhgd);
     this.mModueLoadState.put(str1, Boolean.valueOf(bool));
     if ((bool) && (!this.hasSetVersionNum)) {
       QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new QzoneModuleManager.2(this));
@@ -296,8 +296,8 @@ public class QzoneModuleManager
   
   public boolean loadModuleAsQQPatch(String paramString)
   {
-    bfxs localbfxs = bfxr.a().a(paramString);
-    if (localbfxs == null)
+    bhgd localbhgd = bhgc.a().a(paramString);
+    if (localbhgd == null)
     {
       QLog.e("QzoneModuleManager", 1, "loadModule error: can't find information about " + paramString + ",please ensure is do exist");
       return false;
@@ -307,13 +307,13 @@ public class QzoneModuleManager
       QLog.e("QzoneModuleManager", 1, "securityCheck: reject");
       return false;
     }
-    return loadModule2QQClassLoader(localbfxs);
+    return loadModule2QQClassLoader(localbhgd);
   }
   
   public boolean loadModuleAsQzonePatch(String paramString, ClassLoader paramClassLoader)
   {
-    bfxs localbfxs = bfxr.a().a(paramString);
-    if (localbfxs == null)
+    bhgd localbhgd = bhgc.a().a(paramString);
+    if (localbhgd == null)
     {
       QLog.e("QzoneModuleManager", 1, "loadModule error: can't find information about " + paramString + ",please ensure is do exist");
       return false;
@@ -323,7 +323,7 @@ public class QzoneModuleManager
       QLog.e("QzoneModuleManager", 1, "securityCheck: reject");
       return false;
     }
-    return loadModule(localbfxs, paramClassLoader, true);
+    return loadModule(localbhgd, paramClassLoader, true);
   }
   
   public void updateAllModules()
@@ -334,13 +334,13 @@ public class QzoneModuleManager
       return;
       this.mHasStartedUpdateTask = true;
       QLog.i("QzoneModuleManager", 1, "start to updateAllModules.");
-      bfya localbfya = new bfya(this);
+      bhgl localbhgl = new bhgl(this);
       while (this.mNextModuleIndex < QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size())
       {
         String str = (String)QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.get(this.mNextModuleIndex);
         if (checkIfNeedUpdate(str))
         {
-          updateModule(str, localbfya);
+          updateModule(str, localbhgl);
           return;
         }
         this.mNextModuleIndex += 1;

@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
-import ukt;
-import uoh;
-import urk;
+import uxp;
+import vbd;
+import veg;
 
 public class FeedSegment$16
   implements Runnable
 {
-  public FeedSegment$16(uoh paramuoh, int paramInt, ukt paramukt, String paramString) {}
+  public FeedSegment$16(vbd paramvbd, int paramInt, uxp paramuxp, String paramString) {}
   
   public void run()
   {
-    urk.b("Q.qqstory.home:FeedSegment", "doScrollHorizal, findViewHolder, null, waiting done");
-    uoh.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Ukt, this.jdField_a_of_type_JavaLangString, true);
+    veg.b("Q.qqstory.home:FeedSegment", "doScrollHorizal, findViewHolder, null, waiting done");
+    vbd.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Uxp, this.jdField_a_of_type_JavaLangString, true);
   }
 }
 

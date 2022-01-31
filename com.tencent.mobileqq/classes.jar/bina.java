@@ -1,24 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class bina
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  bina(bimy parambimy) {}
+  bina(bimz parambimz) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_Bims != null) {
-      this.a.a.jdField_a_of_type_Bims.a(null);
-    }
+    bimz.a(this.a).a(655364, new Object[] { "热门玩法", "vt_pag_jiaopiangushi" });
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

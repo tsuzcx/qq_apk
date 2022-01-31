@@ -1,29 +1,28 @@
 package com.tencent.mobileqq.activity;
 
-import abai;
-import afqa;
+import agca;
 import android.os.SystemClock;
-import awrn;
-import bahj;
-import beez;
+import axrl;
+import bbio;
+import bfmt;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.List;
 
-public class Leba$10
+class Leba$10
   implements Runnable
 {
-  public Leba$10(abai paramabai) {}
+  Leba$10(Leba paramLeba) {}
   
   public void run()
   {
-    List localList = afqa.a().a(this.this$0.a(), this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.this$0.jdField_a_of_type_Beez.post(new Leba.10.1(this, localList));
-    if (abai.a(this.this$0))
+    List localList = agca.a().a(this.this$0.a(), this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.this$0.jdField_a_of_type_Bfmt.post(new Leba.10.1(this, localList));
+    if (Leba.a(this.this$0))
     {
-      abai.b(this.this$0, false);
+      Leba.b(this.this$0, false);
       long l1 = SystemClock.uptimeMillis();
-      long l2 = abai.a(this.this$0);
-      awrn.a(BaseApplication.getContext()).a(bahj.a(), "actLebaShowTime", true, l1 - l2, 0L, null, null);
+      long l2 = Leba.a(this.this$0);
+      axrl.a(BaseApplication.getContext()).a(bbio.a(), "actLebaShowTime", true, l1 - l2, 0L, null, null);
     }
   }
 }

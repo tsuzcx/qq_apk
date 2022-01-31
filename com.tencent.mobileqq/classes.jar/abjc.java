@@ -1,15 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class abjc
-  extends atdh
+  implements View.OnClickListener
 {
-  public abjc(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public abjc(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (PublicAccountListActivity.a(this.a)) {
-      PublicAccountListActivity.a(this.a);
+    if (System.currentTimeMillis() - this.a.a < 2000L) {
+      return;
+    }
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (HongbaoShowerActivity.a(this.a) == 0) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      axqw.b(localQQAppInterface, "dc01440", "", "", "0X80077EA", "0X80077EA", 0, 0, paramView, "", "", "");
+      return;
     }
   }
 }

@@ -1,44 +1,54 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public class aupf
-  extends aupy<ReceiptMessageDetailFragment>
+public abstract class aupf
+  extends ampb<aupj>
 {
-  public aupf(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public int a()
   {
-    super(paramReceiptMessageDetailFragment);
+    return c();
   }
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  @NonNull
+  public aupj a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback onRes: " + paramInt);
+    return new aupj();
+  }
+  
+  @Nullable
+  public aupj a(ampi[] paramArrayOfampi)
+  {
+    aupj localaupj = new aupj();
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null)) {
+      aupj.a(localaupj, paramArrayOfampi[0].a);
     }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback succ");
-      }
-      paramBundle = new oidb_0x986.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramInt = paramBundle.uint32_read_uin_num.get();
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, 2147483647, true);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "fetch read member fail on invalid data");
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
-    }
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
-    return;
+    return localaupj;
+  }
+  
+  public Class<aupj> a()
+  {
+    return aupj.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aupj paramaupj) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  protected abstract int c();
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

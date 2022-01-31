@@ -1,73 +1,159 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ProgressBar;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhrf
-  extends Handler
+  extends bhrq
 {
-  public bhrf(CropVideoActivity paramCropVideoActivity) {}
+  private String a;
   
-  public void handleMessage(Message paramMessage)
+  public bhrf()
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_JavaLangString = bhrf.class.getSimpleName();
+  }
+  
+  private JSONObject a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
     {
-    default: 
-    case 1: 
-    case 2: 
-      do
+      paramString = new JSONObject(paramString);
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
       {
-        return;
-        postDelayed(this.a.a, 1000L);
-        CropVideoActivity.a(this.a).setProgress(paramMessage.arg1);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("CropVideoActivity", 2, "crop video begin");
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, paramString, new Object[0]);
+        paramString = null;
+      }
+    }
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!"Qzone".equals(paramString2)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
+      return false;
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime != null)) {
+      paramJsBridgeListener = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+    }
+    while (paramJsBridgeListener != null)
+    {
+      paramString1 = paramJsBridgeListener.getTag(2131367725);
+      if ((paramString1 != null) && ((paramString1 instanceof bhrg)))
+      {
+        paramString1 = (bhrg)paramString1;
+        if ((!"setBannerHeight".equals(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length < 1)) {
+          break label344;
         }
-        if ((CropVideoActivity.a(this.a) >= CropVideoActivity.b(this.a)) && (CropVideoActivity.b(this.a) >= 0L))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("CropVideoActivity", 2, "startCropVideo illegal time!");
-          }
-          bbmy.a(this.a.getApplicationContext(), ajjy.a(2131636840), 1).a();
-          return;
+        paramJsBridgeListener = a(paramVarArgs[0]);
+        if (paramJsBridgeListener != null) {
+          break label176;
         }
-      } while (CropVideoActivity.a(this.a, CropVideoActivity.a(this.a)) != 0);
-      if (Build.VERSION.SDK_INT >= 18) {
-        bhri.a(CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.c(this.a), CropVideoActivity.d(this.a), CropVideoActivity.e(this.a), CropVideoActivity.f(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), new bhrg(this));
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "setBannerHeight 方法参数错误！！！！");
+        return false;
+        paramJsBridgeListener = null;
+      }
+      else
+      {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "webViewBannerInterface error o=" + paramString1);
+        return false;
+      }
+    }
+    QLog.e(this.jdField_a_of_type_JavaLangString, 1, "handleJsRequest webView==null");
+    return false;
+    label176:
+    double d = paramJsBridgeListener.optDouble("height");
+    if (d <= 0.0D) {
+      QLog.e(this.jdField_a_of_type_JavaLangString, 1, "setBannerHeight 方法参数错误 height<=0 ！！！！  )");
+    }
+    int i;
+    for (;;)
+    {
+      return true;
+      i = paramJsBridgeListener.optInt("unit");
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, "setBannerHeight height:" + d + ",unit:" + i);
+      if (i == 1) {
+        paramString1.setBannerHeight((int)d);
+      } else if (i == 2) {
+        paramString1.setBannerHeight((int)bbkx.a((float)d));
+      } else if (i == 3) {
+        paramString1.setBannerHeight((int)(d * bbkx.a()));
+      } else {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "setBannerHeight 方法参数错误 :unit= " + i);
+      }
+    }
+    label344:
+    if ("closeBanner".equals(paramString3))
+    {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, "closeBanner:");
+      paramString1.j();
+      return true;
+    }
+    if (("enableGesture".equals(paramString3)) && (paramVarArgs.length >= 1))
+    {
+      paramJsBridgeListener = a(paramVarArgs[0]);
+      if (paramJsBridgeListener == null) {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "enableGesture 方法参数错误！！！！");
       }
       for (;;)
       {
-        this.a.a();
-        return;
-        CropVideoActivity.a(this.a, CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.c(this.a), CropVideoActivity.d(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a));
+        return true;
+        boolean bool = paramJsBridgeListener.optBoolean("enable");
+        QLog.i(this.jdField_a_of_type_JavaLangString, 1, "enableGesture enable:" + bool);
+        paramString1.d(bool);
       }
-    case 3: 
-      if (QLog.isColorLevel()) {
-        QLog.d("CropVideoActivity", 2, "crop video success");
-      }
-      this.a.finish();
-      return;
-    case 4: 
-      if (QLog.isColorLevel()) {
-        QLog.d("CropVideoActivity", 2, "crop video fail");
-      }
-      bbmy.a(this.a.getApplicationContext(), 1, ajjy.a(2131636838), 1).a();
-      this.a.finish();
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "crop video with ffmpeg");
+    if (("getBannerData".equals(paramString3)) && (paramVarArgs.length >= 1))
+    {
+      paramString2 = a(paramVarArgs[0]);
+      if (paramString2 == null) {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "getBannerData 方法参数错误！！！！");
+      }
+      for (;;)
+      {
+        return true;
+        paramString2 = paramString2.optString("callback");
+        if (TextUtils.isEmpty(paramString2)) {
+          QLog.e(this.jdField_a_of_type_JavaLangString, 1, "getBannerData 方法参数错误！！！！");
+        }
+        paramString1 = paramString1.a();
+        paramJsBridgeListener.callJs(paramString2, new String[] { paramString1 });
+        QLog.i(this.jdField_a_of_type_JavaLangString, 1, "getBannerData " + paramString1);
+      }
     }
-    CropVideoActivity.a(this.a, CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.c(this.a), CropVideoActivity.d(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a));
-    this.a.a();
+    if (("qbossReport".equals(paramString3)) && (paramVarArgs.length >= 1))
+    {
+      paramString2 = a(paramVarArgs[0]);
+      if (paramString2 == null) {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "qbossReport 方法参数错误！！！！");
+      }
+      for (;;)
+      {
+        return true;
+        paramJsBridgeListener = paramString2.optString("sQBosstrace");
+        if (TextUtils.isEmpty(paramJsBridgeListener)) {
+          QLog.e(this.jdField_a_of_type_JavaLangString, 1, "qbossReport 方法参数错误！！！！");
+        }
+        i = paramString2.optInt("type");
+        paramString2 = paramString2.optString("reportInfo");
+        paramString1.a(i, paramJsBridgeListener, paramString2);
+        QLog.i(this.jdField_a_of_type_JavaLangString, 1, "qbossReport type:" + i + ",qBosstrace:" + paramJsBridgeListener + " ,reportInfo:" + paramString2);
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhrf
  * JD-Core Version:    0.7.0.1
  */

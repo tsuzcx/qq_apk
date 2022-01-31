@@ -7,8 +7,8 @@ import com.tencent.replacemonitor.MonitorResult;
 import com.tencent.replacemonitor.MonitorStep;
 import com.tencent.replacemonitor.MonitorTask;
 import com.tencent.replacemonitor.MonitorType;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.q;
 import java.io.File;
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ public class b
 {
   private MonitorResult a(MonitorTask paramMonitorTask, String paramString1, String paramString2, MonitorStep paramMonitorStep)
   {
-    ac.c("WashMonitor", "ChannedlIdMonitorAction>>checkByChannelId " + paramMonitorTask.appName + " task.cpChannelId = " + paramString2 + " fileChannelId = " + paramString2 + " filePath =" + paramString1);
+    ab.c("WashMonitor", "ChannedlIdMonitorAction>>checkByChannelId " + paramMonitorTask.appName + " task.cpChannelId = " + paramString2 + " fileChannelId = " + paramString2 + " filePath =" + paramString1);
     if (TextUtils.isEmpty(paramString1)) {
       paramMonitorTask = new MonitorResult(paramMonitorStep, 3, "通过渠道号检测时发现filePath为空", a());
     }
@@ -30,7 +30,7 @@ public class b
       try
       {
         String str = a.a(paramString1);
-        ac.c("WashMonitor", "ChannedlIdMonitorAction>>checkByChannelId " + paramMonitorTask.appName + " task.cpChannelId = " + paramMonitorTask.cpChannelId + " fileChannelId = " + str);
+        ab.c("WashMonitor", "ChannedlIdMonitorAction>>checkByChannelId " + paramMonitorTask.appName + " task.cpChannelId = " + paramMonitorTask.cpChannelId + " fileChannelId = " + str);
         if ((!TextUtils.isEmpty(str)) && (!paramString2.equals(str)))
         {
           paramString2 = new MonitorResult(paramMonitorStep, 1, "通过渠道号检测发现洗包", a());
@@ -42,9 +42,9 @@ public class b
           paramString2.replaceChannelId = str;
           paramString2.replacedFileSize = l;
           paramString2.replaceTime = localFile.lastModified();
-          paramString1 = r.b(paramString1);
+          paramString1 = q.b(paramString1);
           if ((paramMonitorStep == MonitorStep.INSTALLING) || (paramMonitorStep == MonitorStep.AFTER_INSTALL)) {
-            paramString1 = r.c(paramMonitorTask.packageName);
+            paramString1 = q.c(paramMonitorTask.packageName);
           }
           paramMonitorTask = paramString2;
           if (paramString1 == null) {
@@ -75,7 +75,7 @@ public class b
   
   public MonitorResult a(MonitorTask paramMonitorTask, MonitorStep paramMonitorStep)
   {
-    ac.c("WashMonitor", "ChannedlIdMonitorAction>>" + paramMonitorTask.appName + "开始通过渠道号比较检测洗包 step = " + paramMonitorStep);
+    ab.c("WashMonitor", "ChannedlIdMonitorAction>>" + paramMonitorTask.appName + "开始通过渠道号比较检测洗包 step = " + paramMonitorStep);
     if (TextUtils.isEmpty(paramMonitorTask.cpChannelId)) {
       return new MonitorResult(paramMonitorStep, 0, "渠道号检测暂时不做, task.cpChannelId is empty", a());
     }

@@ -1,7 +1,7 @@
 package com.tencent.qidian;
 
-import atwx;
-import awnu;
+import auuw;
+import axmt;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -12,8 +12,8 @@ class QidianProfileCardActivity$11
   
   public void run()
   {
-    if (awnu.b()) {}
-    for (this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = this.this$0.app.a(this.this$0.jdField_a_of_type_Atwx.a.a, (byte)2, true);; this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = this.this$0.app.a(this.this$0.jdField_a_of_type_Atwx.a.a, true))
+    if (axmt.b()) {}
+    for (this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = this.this$0.app.a(this.this$0.jdField_a_of_type_Auuw.a.a, (byte)2, true);; this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = this.this$0.app.a(this.this$0.jdField_a_of_type_Auuw.a.a, true))
     {
       this.this$0.c();
       return;

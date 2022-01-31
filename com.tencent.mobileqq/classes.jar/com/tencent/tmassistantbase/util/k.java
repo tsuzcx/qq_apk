@@ -1,13 +1,39 @@
 package com.tencent.tmassistantbase.util;
 
-import java.text.SimpleDateFormat;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class k
-  extends ThreadLocal<SimpleDateFormat>
+public class k
 {
-  protected SimpleDateFormat a()
+  public static Map<l, Handler> a = new ConcurrentHashMap();
+  private static Handler b;
+  
+  public static Handler a()
   {
-    return new SimpleDateFormat("yyyyMMddHH");
+    if (b == null) {
+      b = b(l.a);
+    }
+    return b;
+  }
+  
+  public static Looper a(l paraml)
+  {
+    return b(paraml).getLooper();
+  }
+  
+  private static Handler b(l paraml)
+  {
+    if (a.containsKey(paraml)) {
+      return (Handler)a.get(paraml);
+    }
+    Object localObject = new HandlerThread(paraml.name());
+    ((HandlerThread)localObject).start();
+    localObject = new Handler(((HandlerThread)localObject).getLooper());
+    a.put(paraml, localObject);
+    return localObject;
   }
 }
 

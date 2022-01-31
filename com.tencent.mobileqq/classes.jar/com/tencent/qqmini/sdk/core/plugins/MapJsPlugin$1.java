@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
-import bdgh;
+import beka;
+import bekh;
 import org.json.JSONObject;
 
 class MapJsPlugin$1
-  implements bdgh
+  implements bekh
 {
-  MapJsPlugin$1(MapJsPlugin paramMapJsPlugin, bdfz parambdfz) {}
+  MapJsPlugin$1(MapJsPlugin paramMapJsPlugin, beka parambeka) {}
   
   public void onLocationFinishCallback(JSONObject paramJSONObject)
   {

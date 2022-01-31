@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import ohb;
-import oqs;
+import osm;
+import pbu;
 
 public class SubscriptionInfoModule$7
   implements Runnable
 {
-  public SubscriptionInfoModule$7(oqs paramoqs, int paramInt1, int paramInt2) {}
+  public SubscriptionInfoModule$7(pbu parampbu, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    ohb.a().a(this.a, this.b);
+    osm.a().a(this.a, this.b);
   }
 }
 

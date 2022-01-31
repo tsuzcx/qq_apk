@@ -1,24 +1,29 @@
-import android.content.Context;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 public class uhp
-  extends uqp
+  extends sth<uhj, tah>
 {
-  public uhp(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public uhp(uhj paramuhj)
   {
-    super(paramContext, paramString1, paramString2, paramInt1, paramInt2);
+    super(paramuhj);
   }
   
-  protected void U_()
+  public void a(@NonNull uhj paramuhj, @NonNull tah paramtah)
   {
-    vpv localvpv = a().a("FeedSegment");
-    if ((localvpv != null) && (localvpv.a() == 0))
+    if ((paramuhj.a != null) && (TextUtils.equals(paramuhj.a.b, paramtah.a)))
     {
-      this.a = true;
-      return;
+      veg.a(this.TAG, "receive feed info change event. %s.", paramtah.toString());
+      paramuhj.i();
     }
-    this.a = false;
   }
+  
+  public Class acceptEventClass()
+  {
+    return tah.class;
+  }
+  
+  public void b(@NonNull uhj paramuhj, @NonNull tah paramtah) {}
 }
 
 

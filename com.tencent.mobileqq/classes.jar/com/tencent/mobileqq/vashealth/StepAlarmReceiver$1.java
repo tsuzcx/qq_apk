@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vashealth;
 
-import basg;
+import bbui;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class StepAlarmReceiver$1
@@ -13,7 +13,7 @@ class StepAlarmReceiver$1
     if (this.this$0.a == null) {
       return;
     }
-    ((basg)this.this$0.a.getManager(260)).b();
+    ((bbui)this.this$0.a.getManager(260)).b();
   }
 }
 

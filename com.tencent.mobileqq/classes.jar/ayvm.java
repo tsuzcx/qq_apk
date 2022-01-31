@@ -1,54 +1,89 @@
-import android.graphics.Bitmap;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ayvm
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+class ayvm
 {
-  private ayvm(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
+  private int[] jdField_a_of_type_ArrayOfInt;
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  ayvm(ayvl paramayvl) {}
+  
+  private azab a(List<azab> paramList, int[] paramArrayOfInt, boolean paramBoolean)
   {
-    BaseScaleAndMoveBitmapView.a(this.a, false);
-    BaseScaleAndMoveBitmapView localBaseScaleAndMoveBitmapView = this.a;
-    localBaseScaleAndMoveBitmapView.c *= paramScaleGestureDetector.getScaleFactor();
-    this.a.c = Math.max(BaseScaleAndMoveBitmapView.a(this.a), Math.min(this.a.c, BaseScaleAndMoveBitmapView.b(this.a)));
-    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c <= this.a.getHeight())
+    if (paramArrayOfInt != null)
     {
-      this.a.b = ((this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c);
-      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c > this.a.getWidth()) {
-        break label323;
-      }
-      this.a.jdField_a_of_type_Float = ((this.a.getWidth() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c) / 2.0F);
-    }
-    for (;;)
-    {
-      urk.a("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "onScale %f", Float.valueOf(this.a.c));
-      this.a.invalidate();
-      return true;
-      if (this.a.b(0.0F) >= 0.0F)
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      int j = 5;
+      if (i < paramArrayOfInt.length)
       {
-        this.a.b = 0.0F;
-        break;
+        int k = j;
+        if (((azab)paramList.get(i)).a() == paramBoolean)
+        {
+          if (paramArrayOfInt[i] >= j) {
+            break label94;
+          }
+          k = paramArrayOfInt[i];
+          localArrayList.clear();
+          localArrayList.add(Integer.valueOf(i));
+        }
+        for (;;)
+        {
+          i += 1;
+          j = k;
+          break;
+          label94:
+          k = j;
+          if (paramArrayOfInt[i] == j)
+          {
+            localArrayList.add(Integer.valueOf(i));
+            k = j;
+          }
+        }
       }
-      if (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) > this.a.getHeight()) {
-        break;
-      }
-      this.a.b = (this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      break;
-      label323:
-      if (this.a.a(0.0F) >= 0.0F) {
-        this.a.jdField_a_of_type_Float = 0.0F;
-      } else if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) <= this.a.getWidth()) {
-        this.a.jdField_a_of_type_Float = (this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
+      if (localArrayList.size() > 0)
+      {
+        i = ((Integer)localArrayList.get(0)).intValue();
+        if ((i >= 0) && (i < paramList.size())) {
+          return (azab)paramList.get(i);
+        }
       }
     }
+    return null;
+  }
+  
+  azab a(int paramInt, boolean paramBoolean)
+  {
+    Object localObject2 = null;
+    List localList = ayvl.a(this.jdField_a_of_type_Ayvl, paramInt);
+    Object localObject1 = localObject2;
+    if (localList != null)
+    {
+      localObject1 = localObject2;
+      if (localList.size() > 0) {
+        localObject1 = a(localList, a(paramInt), paramBoolean);
+      }
+    }
+    return localObject1;
+  }
+  
+  void a(List<azab> paramList)
+  {
+    if ((paramList != null) && (paramList != null) && (paramList.size() > 0)) {
+      this.jdField_a_of_type_ArrayOfInt = new int[paramList.size()];
+    }
+  }
+  
+  int[] a(int paramInt)
+  {
+    if (paramInt == 0) {
+      return this.jdField_a_of_type_ArrayOfInt;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayvm
  * JD-Core Version:    0.7.0.1
  */

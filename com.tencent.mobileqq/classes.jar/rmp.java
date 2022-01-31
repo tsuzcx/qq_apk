@@ -1,25 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
-
 public class rmp
-  implements qcg
 {
-  public rmp(ViolaVideoView paramViolaVideoView) {}
-  
-  public long a()
-  {
-    return ViolaVideoView.a(this.a).a();
-  }
-  
-  public void a(int paramInt)
-  {
-    ViolaVideoView.a(this.a).d(paramInt);
-  }
-  
-  public long b()
-  {
-    return ViolaVideoView.a(this.a).b();
-  }
+  public static final String a = ajyc.a(2131713032);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import acoe;
-import acof;
+import acyx;
+import acyy;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import com.tencent.widget.ListView;
@@ -20,11 +20,11 @@ class PathAnimation$Animator
     long l2 = -1L;
     if (localIterator.hasNext())
     {
-      acof localacof = (acof)localIterator.next();
+      acyy localacyy = (acyy)localIterator.next();
       long l1;
-      if (l3 < localacof.jdField_a_of_type_Long)
+      if (l3 < localacyy.jdField_a_of_type_Long)
       {
-        l1 = localacof.jdField_a_of_type_Long - l3;
+        l1 = localacyy.jdField_a_of_type_Long - l3;
         label63:
         if (l1 < 0L) {
           break label195;
@@ -33,25 +33,25 @@ class PathAnimation$Animator
           break label186;
         }
         label75:
-        this.this$0.a(localacof.jdField_a_of_type_AndroidViewView, localacof);
+        this.this$0.a(localacyy.jdField_a_of_type_AndroidViewView, localacyy);
       }
       for (;;)
       {
         l2 = l1;
         break;
-        if (!localacof.b)
+        if (!localacyy.b)
         {
-          l1 = localacof.jdField_a_of_type_Acoe.a(localacof, localacof.jdField_a_of_type_AndroidViewView.getWidth(), localacof.jdField_a_of_type_AndroidViewView.getHeight(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getWidth(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getHeight());
-          localacof.b = true;
+          l1 = localacyy.jdField_a_of_type_Acyx.a(localacyy, localacyy.jdField_a_of_type_AndroidViewView.getWidth(), localacyy.jdField_a_of_type_AndroidViewView.getHeight(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getWidth(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getHeight());
+          localacyy.b = true;
           break label63;
         }
-        l1 = localacof.jdField_a_of_type_Acoe.a(l3 - localacof.jdField_a_of_type_Long, localacof);
+        l1 = localacyy.jdField_a_of_type_Acyx.a(l3 - localacyy.jdField_a_of_type_Long, localacyy);
         break label63;
         label186:
         l1 = Math.min(l2, l1);
         break label75;
         label195:
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.removeViewInLayout(localacof.jdField_a_of_type_AndroidViewView);
+        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.removeViewInLayout(localacyy.jdField_a_of_type_AndroidViewView);
         localIterator.remove();
         l1 = l2;
       }

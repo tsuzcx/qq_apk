@@ -1,62 +1,121 @@
-import NS_MINI_INTERFACE.INTERFACE.StGetUserInfoExtraReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetUserInfoExtraRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.qidian.data.QidianExternalInfo;
 
 public class bdtv
-  extends bdtz
+  implements View.OnClickListener
 {
-  private INTERFACE.StGetUserInfoExtraReq a = new INTERFACE.StGetUserInfoExtraReq();
+  private long jdField_a_of_type_Long;
   
-  public bdtv(String paramString)
-  {
-    this.a.appid.set(paramString);
-  }
+  public bdtv(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "mini_user_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetUserInfoExtraRsp localStGetUserInfoExtraRsp = new INTERFACE.StGetUserInfoExtraRsp();
-    try
+    if (paramView == null) {}
+    do
     {
-      localStGetUserInfoExtraRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetUserInfoExtraRsp != null)
+      do
       {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("encryptedData", localStGetUserInfoExtraRsp.encryptedData.get());
-        paramArrayOfByte.put("iv", localStGetUserInfoExtraRsp.iv.get());
-        return paramArrayOfByte;
-      }
-      bdnw.a("GetUserInfoExtraRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              l = System.currentTimeMillis();
+            } while (Math.abs(l - this.jdField_a_of_type_Long) < 1000L);
+            this.jdField_a_of_type_Long = l;
+            paramView = (ausu)paramView.getTag();
+            switch (paramView.jdField_a_of_type_Int)
+            {
+            default: 
+              return;
+            case 4: 
+              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.b(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
+              return;
+            case 7: 
+              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f();
+              return;
+            case 20: 
+              axqw.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "1", "1", "", "");
+              if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 6)
+              {
+                ChatActivityUtils.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, 1024, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.nickname, null, true, null, true, true, null, "from_internal");
+                return;
+              }
+              FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuw);
+              return;
+            case 55: 
+              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
+              return;
+            case 8: 
+              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.d(((Integer)paramView.jdField_a_of_type_JavaLangObject).intValue());
+              return;
+            case 52: 
+              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
+              return;
+            case 47: 
+              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
+              return;
+            case 48: 
+              localObject = (String[])paramView.jdField_a_of_type_JavaLangObject;
+              paramView = localObject[0];
+              localObject = localObject[1];
+              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(paramView, (String)localObject);
+              return;
+            case 49: 
+              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
+              return;
+            case 50: 
+              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a((bdvb)paramView.jdField_a_of_type_JavaLangObject);
+              return;
+            case 51: 
+              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.d(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
+              return;
+            case 53: 
+              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.d();
+              return;
+            case 54: 
+              paramView = bbej.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
+            }
+          } while (paramView == null);
+          paramView.c();
+          return;
+          QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
+          return;
+          paramView = String.valueOf(paramView.jdField_a_of_type_JavaLangObject);
+        } while ((TextUtils.isEmpty(paramView)) || (!paramView.contains("|")));
+        paramView = paramView.split("\\|");
+      } while ((paramView == null) || (paramView.length != 2));
+      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, paramView[0], paramView[1]);
+      return;
+    } while (QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity));
+    QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, true);
+    if ((this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuw != null) && (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqDataCard != null))
     {
-      bdnw.a("GetUserInfoExtraRequest", "onResponse fail." + paramArrayOfByte);
+      this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqDataCard.vQzoneCoverInfo);
+      return;
     }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetUserInfoExtra";
+    this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(2131695619);
+    paramView = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Ajtk;
+    Object localObject = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app.getCurrentAccountUin();
+    String str = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a;
+    long l = ProfileActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne, false);
+    paramView.a((String)localObject, str, 1, 0L, (byte)1, 0L, 0L, new byte[] { 0 }, "", l, 10004, new byte[] { 0 }, (byte)0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bdtv
  * JD-Core Version:    0.7.0.1
  */

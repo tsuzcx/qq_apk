@@ -1,56 +1,34 @@
-import android.text.method.PasswordTransformationMethod;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
 class ahfr
-  implements View.OnClickListener
+  implements mzb
 {
-  ahfr(ahfp paramahfp, int paramInt) {}
+  ahfr(ahfq paramahfq, String paramString, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void loaded(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_AndroidTextTextWatcher);
-    this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.removeTextChangedListener(this.jdField_a_of_type_Ahfp.a.b);
-    this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_Ahfp.a.jdField_c_of_type_AndroidTextTextWatcher);
-    this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramView = (SimpleAccount)this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_Int);
-    ImageView localImageView;
-    if (!LoginView.h(this.jdField_a_of_type_Ahfp.a))
-    {
-      LoginView.h(this.jdField_a_of_type_Ahfp.a, true);
-      this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-      localImageView = this.jdField_a_of_type_Ahfp.a.jdField_c_of_type_AndroidWidgetImageView;
-      if ((!LoginView.d(this.jdField_a_of_type_Ahfp.a)) && (!LoginView.e(this.jdField_a_of_type_Ahfp.a)) && (!LoginView.f(this.jdField_a_of_type_Ahfp.a))) {
-        break label368;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("springHb_SpringFestivalRedpacketConfigManager", 2, "CODE_SUCCESS[" + this.jdField_a_of_type_JavaLangString + ", " + paramInt + ", " + paramString + "]");
     }
-    label368:
-    for (int i = 2130845885;; i = 2130843810)
+    if ((paramInt == 0) && (paramString == null))
     {
-      localImageView.setImageResource(i);
-      this.jdField_a_of_type_Ahfp.a.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131640570));
-      LoginView.a(this.jdField_a_of_type_Ahfp.a, paramView);
-      this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_AndroidTextTextWatcher);
-      this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.addTextChangedListener(this.jdField_a_of_type_Ahfp.a.b);
-      this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.clearFocus();
-      this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_Ahfp.a.jdField_c_of_type_AndroidTextTextWatcher);
-      this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.clearFocus();
-      this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setClearButtonVisible(false);
-      this.jdField_a_of_type_Ahfp.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a().setVisibility(8);
-      return;
+      bbjn.h(ahfq.a(this.jdField_a_of_type_Ahfq), ahfq.a(this.jdField_a_of_type_Ahfq).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int + 1);
+      bbjn.b(ahfq.a(this.jdField_a_of_type_Ahfq), ahfq.a(this.jdField_a_of_type_Ahfq).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, NetConnInfoCenter.getServerTimeMillis());
+    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("springHb_SpringFestivalRedpacketConfigManager", 2, "progress[" + paramInt + "]");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahfr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,15 @@
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import javax.annotation.Nullable;
+import android.database.DataSetObserver;
 
-public abstract interface rjt
+class rjt
+  extends DataSetObserver
 {
-  public abstract InputStream a(@Nullable InputStream paramInputStream);
+  rjt(rjs paramrjs) {}
   
-  public abstract void a();
-  
-  public abstract void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString);
+  public void onChanged()
+  {
+    super.onChanged();
+    this.a.notifyDataSetChanged();
+  }
 }
 
 

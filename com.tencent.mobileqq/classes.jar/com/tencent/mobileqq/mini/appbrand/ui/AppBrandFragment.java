@@ -32,6 +32,7 @@ import com.tencent.mobileqq.mini.app.MiniAppStateManager.MiniAppStateObserver;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime.KeyboardObserver;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntimeContainer;
+import com.tencent.mobileqq.mini.appbrand.jsapi.AdFrequencyLimit;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
 import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
@@ -126,6 +127,7 @@ public class AppBrandFragment
   public void completeLoading()
   {
     showKingCardGuideAfterPageLoaded();
+    AdFrequencyLimit.setOnStartTime(System.currentTimeMillis());
   }
   
   public boolean doDispatchKeyEvent(KeyEvent paramKeyEvent)

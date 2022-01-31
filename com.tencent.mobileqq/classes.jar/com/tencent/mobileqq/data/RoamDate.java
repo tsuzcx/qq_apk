@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atnz;
+import aukm;
+import aulx;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.Arrays;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin, date")
 public class RoamDate
-  extends atmo
+  extends aukm
 {
   public static final int LOCAL_INDEX_00 = 0;
   public static final int LOCAL_INDEX_01 = 1;
@@ -20,11 +20,11 @@ public class RoamDate
   public static final int SERVER_INDEX_11 = 3;
   private static final String TABLE_NAME = "MessageRoamDate";
   public String date;
-  @atnz
+  @aulx
   public long[] lastMsgTime = new long[31];
   public byte[] lastMsgTimeData;
   public long locindex;
-  @atnz
+  @aulx
   public long[] random;
   public byte[] randomData;
   public long serindex;

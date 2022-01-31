@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.utils;
 
-import bacn;
+import bbds;
 
 public class JumpAction$11
   implements Runnable
 {
-  public JumpAction$11(bacn parambacn) {}
+  public JumpAction$11(bbds parambbds) {}
   
   public void run()
   {

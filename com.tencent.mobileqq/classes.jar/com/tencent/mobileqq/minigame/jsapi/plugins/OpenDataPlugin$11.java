@@ -15,30 +15,41 @@ class OpenDataPlugin$11
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
     GameLog localGameLog = GameLog.getInstance();
-    StringBuilder localStringBuilder = new StringBuilder().append("setUserCloudStorage callback appid:").append(GameInfoManager.g().getAppId()).append(", isSuc").append(paramBoolean).append(", ret:");
-    if (paramJSONObject != null) {}
-    for (paramJSONObject = paramJSONObject.toString();; paramJSONObject = "")
+    StringBuilder localStringBuilder = new StringBuilder().append("getFriendCloudStorage callback appid:").append(GameInfoManager.g().getAppId()).append(", isSuc:").append(paramBoolean).append(", ret:");
+    Object localObject;
+    if (paramJSONObject != null) {
+      localObject = paramJSONObject.toString();
+    }
+    for (;;)
     {
-      localGameLog.i("OpenDataPlugin", paramJSONObject);
-      paramJSONObject = new JSONObject();
-      if (!paramBoolean) {
-        break;
-      }
-      try
-      {
-        paramJSONObject.put("state", "success");
-        this.this$0.jsPluginEngine.callbackJsEventOK(this.val$jsRuntime, "setUserCloudStorage", paramJSONObject, this.val$callbackId);
-        return;
-      }
-      catch (Throwable paramJSONObject)
-      {
-        GameLog.getInstance().e("OpenDataPlugin", "setUserCloudStorage error " + paramJSONObject.getMessage());
-        this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "setUserCloudStorage", null, this.val$callbackId);
+      localGameLog.i("OpenDataPlugin", (String)localObject);
+      localObject = new JSONObject();
+      if (paramBoolean) {
+        try
+        {
+          ((JSONObject)localObject).put("state", "success");
+          if ((paramJSONObject != null) && (paramJSONObject.get("data") != null)) {
+            ((JSONObject)localObject).put("data", paramJSONObject.get("data"));
+          }
+          for (;;)
+          {
+            this.this$0.jsPluginEngine.callbackJsEventOK(this.val$jsRuntime, "getFriendCloudStorage", (JSONObject)localObject, this.val$callbackId);
+            return;
+            localObject = "";
+            break;
+            ((JSONObject)localObject).put("data", paramJSONObject);
+          }
+          ((JSONObject)localObject).put("state", "fail");
+        }
+        catch (Throwable paramJSONObject)
+        {
+          GameLog.getInstance().e("OpenDataPlugin", "getFriendCloudStorage error " + paramJSONObject.getMessage());
+          this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "getFriendCloudStorage", null, this.val$callbackId);
+          return;
+        }
       }
     }
-    paramJSONObject.put("state", "fail");
-    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "setUserCloudStorage", paramJSONObject, this.val$callbackId);
-    return;
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "getFriendCloudStorage", (JSONObject)localObject, this.val$callbackId);
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.config;
 
-import alyz;
+import amop;
 import com.tencent.mobileqq.data.ResourcePluginInfo;
 
 public final class AboutConfig$3
   implements Runnable
 {
-  public AboutConfig$3(alyz paramalyz, ResourcePluginInfo paramResourcePluginInfo) {}
+  public AboutConfig$3(amop paramamop, ResourcePluginInfo paramResourcePluginInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Alyz.a(this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
-    this.jdField_a_of_type_Alyz.b();
+    this.jdField_a_of_type_Amop.a(this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
+    this.jdField_a_of_type_Amop.b();
   }
 }
 

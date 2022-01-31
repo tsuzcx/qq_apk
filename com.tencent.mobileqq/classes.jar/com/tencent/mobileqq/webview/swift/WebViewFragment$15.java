@@ -3,7 +3,7 @@ package com.tencent.mobileqq.webview.swift;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import awqx;
+import axqw;
 import com.tencent.mobileqq.bigbrother.TeleScreenRunnable;
 import com.tencent.qphone.base.util.QLog;
 
@@ -33,7 +33,7 @@ class WebViewFragment$15
           if (this.jdField_a_of_type_Long == -1L)
           {
             str1 = "";
-            awqx.b(null, "dc00898", "", "", "0X800A86A", "0X800A86A", 0, 0, str1, "", "", "");
+            axqw.b(null, "dc00898", "", "", "0X800A86A", "0X800A86A", 0, 0, str1, "", "", "");
             return;
           }
           str1 = String.valueOf(this.jdField_a_of_type_Long);
@@ -45,7 +45,7 @@ class WebViewFragment$15
         if (this.jdField_a_of_type_Long == -1L)
         {
           str1 = "";
-          awqx.b(null, "dc00898", "", "", "0X800A86B", "0X800A86B", 0, 0, str1, "", "", "");
+          axqw.b(null, "dc00898", "", "", "0X800A86B", "0X800A86B", 0, 0, str1, "", "", "");
           return;
         }
       }

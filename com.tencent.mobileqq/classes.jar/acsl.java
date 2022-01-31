@@ -1,8 +1,18 @@
-public abstract interface acsl
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+
+public class acsl
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public acsl(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onClick(View paramView)
+  {
+    axqw.b(this.a.app, "CliOper", "", "", "0X8004E0A", "0X8004E0A", 0, 0, "", "", "", "");
+    this.a.setResult(0);
+    this.a.finish();
+  }
 }
 
 

@@ -1,71 +1,60 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
 
-public class ambx
+class ambx
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  public String a;
-  public JSONObject a;
+  ambx(ambw paramambw) {}
   
-  public ambx()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
-  }
-  
-  public static ambx a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
+    this.a.a("animator set end!");
+    if (this.a.c != null)
     {
-      ambx localambx = new ambx();
-      localambx.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString).optJSONObject("loverAIOPush");
-      return localambx;
+      ambw.a(this.a).removeView(this.a.c);
+      this.a.c = null;
+      if (this.a.d == null) {
+        break label186;
+      }
+      ambw.b(this.a).removeView(this.a.d);
+      this.a.d = null;
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      QLog.e("C2CLovePushGrayConfBean", 2, "C2CLovePushGrayConfBean onParsed erro " + paramString.toString());
-    }
-    return null;
-  }
-  
-  public ambx b(String paramString)
-  {
-    ambx localambx = new ambx();
-    try
-    {
-      if (this.jdField_a_of_type_OrgJsonJSONObject != null)
+      if (this.a.e != null)
       {
-        paramString = this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject(paramString);
-        if (paramString != null)
-        {
-          localambx.jdField_a_of_type_Int = paramString.optInt("linkType", 1);
-          localambx.jdField_a_of_type_JavaLangString = paramString.optString("linkURL", "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1");
-          return localambx;
-        }
-        localambx.jdField_a_of_type_Int = 1;
-        localambx.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
-        return localambx;
+        this.a.e.setVisibility(0);
+        paramAnimator = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+        paramAnimator.a = -1L;
+        paramAnimator.b();
       }
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("C2CLovePushGrayProcessor", 2, "getC2CLovePushGrayConfBean Exception :", paramString);
+      if (this.a.jdField_b_of_type_AndroidViewView != null) {
+        this.a.jdField_b_of_type_AndroidViewView.invalidate();
       }
-      localambx.jdField_a_of_type_Int = 1;
-      localambx.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
+      this.a.jdField_a_of_type_JavaLangString = "";
+      this.a.jdField_b_of_type_JavaLangString = "";
+      this.a.a(true);
+      return;
+      this.a.a("something wrong, bubble view is null!");
+      break;
+      label186:
+      this.a.a("something wrong, pendview is null!");
     }
-    return localambx;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a("animator set start!");
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambx
  * JD-Core Version:    0.7.0.1
  */

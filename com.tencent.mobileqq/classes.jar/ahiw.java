@@ -1,20 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.45;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahiw
-  implements DialogInterface.OnClickListener
 {
-  public ahiw(NewFlowCameraActivity.45 param45) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(String paramString)
   {
-    paramDialogInterface = this.a.this$0.getIntent();
-    paramDialogInterface.putExtra("flow_back", 0);
-    this.a.this$0.setResult(1001, paramDialogInterface);
-    this.a.this$0.finish();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QWalletPerTrace", 2, "markTimeStamp " + paramString);
+    }
   }
 }
 

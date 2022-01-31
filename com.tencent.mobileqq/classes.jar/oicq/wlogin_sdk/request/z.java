@@ -5,6 +5,8 @@ import android.util.Log;
 import com.tencent.loginsecsdk.ProtocolDet;
 import java.util.List;
 import oicq.wlogin_sdk.report.Reporter;
+import oicq.wlogin_sdk.report.a;
+import oicq.wlogin_sdk.report.c;
 import oicq.wlogin_sdk.sharemem.WloginSigInfo;
 import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tlv_type.tlv_t1;
@@ -64,37 +66,39 @@ public class z
     Object localObject14 = new tlv_t116();
     Object localObject12 = new tlv_t100();
     Object localObject13 = new tlv_t107();
-    Object localObject31 = new tlv_t108();
-    Object localObject28 = new tlv_t109();
-    Object localObject27 = new tlv_t52d();
-    Object localObject26 = new tlv_t124();
-    tlv_t128 localtlv_t128 = new tlv_t128();
-    Object localObject25 = new tlv_t142();
+    Object localObject32 = new tlv_t108();
+    Object localObject30 = new tlv_t109();
+    Object localObject29 = new tlv_t52d();
+    Object localObject28 = new tlv_t124();
+    Object localObject27 = new tlv_t128();
+    Object localObject24 = new tlv_t142();
     tlv_t112 localtlv_t112 = new tlv_t112();
-    tlv_t144 localtlv_t144 = new tlv_t144();
+    Object localObject25 = new tlv_t144();
     Object localObject15 = new tlv_t145();
     Object localObject19 = new tlv_t147();
-    Object localObject30 = new tlv_t166();
+    Object localObject31 = new tlv_t166();
     tlv_t16a localtlv_t16a = new tlv_t16a();
     Object localObject17 = new tlv_t141();
     Object localObject18 = new tlv_t8();
     Object localObject16 = new tlv_t154();
-    Object localObject24 = new tlv_t511();
-    tlv_t16e localtlv_t16e = new tlv_t16e();
-    Object localObject29 = new tlv_t172();
-    Object localObject7 = new tlv_t177();
-    Object localObject22 = new tlv_t400();
-    Object localObject1 = new tlv_t187();
-    Object localObject2 = new tlv_t188();
-    Object localObject3 = new tlv_t194();
-    Object localObject4 = new tlv_t201();
-    Object localObject5 = new tlv_t202();
-    Object localObject21 = new tlv_t(1302);
-    Object localObject20 = new tlv_t(1313);
+    tlv_t511 localtlv_t511 = new tlv_t511();
+    Object localObject26 = new tlv_t16e();
+    Object localObject1 = new tlv_t172();
+    Object localObject8 = new tlv_t177();
+    Object localObject23 = new tlv_t400();
+    Object localObject2 = new tlv_t187();
+    Object localObject3 = new tlv_t188();
+    Object localObject4 = new tlv_t194();
+    Object localObject5 = new tlv_t201();
+    Object localObject6 = new tlv_t202();
+    Object localObject22 = new tlv_t(1302);
+    Object localObject21 = new tlv_t(1313);
     tlv_t localtlv_t = new tlv_t(1317);
-    Object localObject6 = new tlv_t545();
-    Object localObject8 = new tlv_t544();
-    Object localObject23 = this.x.a(paramLong2, paramLong4);
+    Object localObject7 = new tlv_t545();
+    Object localObject20 = new tlv_t544();
+    c.a(Thread.currentThread());
+    long l1 = System.currentTimeMillis();
+    WloginSigInfo localWloginSigInfo = this.x.a(paramLong2, paramLong4);
     localObject9 = ((tlv_t18)localObject9).get_tlv_18(paramLong1, paramInt1, paramLong2, paramInt2);
     localObject10 = ((tlv_t1)localObject10).get_tlv_1(paramLong2, paramArrayOfByte1);
     ((tlv_t106)localObject11).set_data(paramArrayOfByte2, paramArrayOfByte2.length);
@@ -108,58 +112,58 @@ public class z
     localObject17 = ((tlv_t141)localObject17).get_tlv_141(t.C, t.D, t.F);
     localObject18 = ((tlv_t8)localObject18).get_tlv_8(0, t.u, 0);
     localObject19 = ((tlv_t147)localObject19).get_tlv_147(paramLong4, t.G, t.H);
-    byte[] arrayOfByte = ((tlv_t177)localObject7).get_tlv_177(1577331209L, "6.0.0.2425");
-    localObject7 = new byte[0];
+    byte[] arrayOfByte = ((tlv_t177)localObject8).get_tlv_177(1582559746L, "6.0.0.2423");
+    localObject8 = new byte[0];
     if ((paramArrayOfByte4 != null) && (paramArrayOfByte4.length > 0)) {
-      paramArrayOfByte2 = ((tlv_t108)localObject31).get_tlv_108(paramArrayOfByte4);
+      paramArrayOfLong = ((tlv_t108)localObject32).get_tlv_108(paramArrayOfByte4);
     }
     for (paramInt1 = 13;; paramInt1 = 12)
     {
       if ((paramInt3 & 0x80) != 0)
       {
-        paramArrayOfLong = ((tlv_t166)localObject30).get_tlv_166(t.x);
+        paramArrayOfByte4 = ((tlv_t166)localObject31).get_tlv_166(t.x);
         paramInt1 += 1;
       }
       for (;;)
       {
         if ((this.x.r != null) && (this.x.r.length > 0))
         {
-          paramArrayOfByte4 = ((tlv_t172)localObject29).get_tlv_172(this.x.r);
+          localObject1 = ((tlv_t172)localObject1).get_tlv_172(this.x.r);
           paramInt1 += 1;
         }
         for (;;)
         {
           if ((t.N != null) && (t.N.length > 0))
           {
-            localObject1 = ((tlv_t187)localObject1).get_tlv_187(t.N);
+            localObject2 = ((tlv_t187)localObject2).get_tlv_187(t.N);
             paramInt1 += 1;
           }
           for (;;)
           {
             if ((t.O != null) && (t.O.length > 0))
             {
-              localObject2 = ((tlv_t188)localObject2).get_tlv_188(t.O);
+              localObject3 = ((tlv_t188)localObject3).get_tlv_188(t.O);
               paramInt1 += 1;
             }
             for (;;)
             {
               if ((t.L != null) && (t.L.length > 0))
               {
-                localObject3 = ((tlv_t194)localObject3).get_tlv_194(t.L);
+                localObject4 = ((tlv_t194)localObject4).get_tlv_194(t.L);
                 paramInt1 += 1;
               }
               for (;;)
               {
                 if ((k.L != null) && (k.L.length > 0))
                 {
-                  localObject4 = ((tlv_t201)localObject4).get_tlv_201(k.L, k.M, "qq".getBytes(), k.N);
+                  localObject5 = ((tlv_t201)localObject5).get_tlv_201(k.L, k.M, "qq".getBytes(), k.N);
                   paramInt1 += 1;
                 }
                 for (;;)
                 {
                   if ((t.R != null) && (t.R.length > 0))
                   {
-                    localObject5 = ((tlv_t202)localObject5).get_tlv_202(t.R, t.S);
+                    localObject6 = ((tlv_t202)localObject6).get_tlv_202(t.R, t.S);
                     paramInt1 += 1;
                   }
                   for (;;)
@@ -169,25 +173,30 @@ public class z
                     }
                     if ((t.T != null) && (t.T.length > 0))
                     {
-                      localObject6 = ((tlv_t545)localObject6).get_tlv_545(t.T);
+                      localObject7 = ((tlv_t545)localObject7).get_tlv_545(t.T);
                       paramInt1 += 1;
                     }
                     for (;;)
                     {
-                      paramArrayOfByte1 = ((tlv_t109)localObject28).get_tlv_109(t.O);
-                      localObject27 = ((tlv_t52d)localObject27).get_tlv_52d(this.a);
-                      localObject28 = util.get_os_type();
-                      localObject29 = util.get_os_version();
+                      paramArrayOfByte1 = ((tlv_t109)localObject30).get_tlv_109(t.O);
+                      paramArrayOfByte2 = ((tlv_t52d)localObject29).get_tlv_52d(this.a);
+                      localObject29 = util.get_os_type();
+                      localObject30 = util.get_os_version();
                       paramInt2 = t.D;
-                      localObject30 = t.C;
-                      localObject31 = t.F;
-                      localObject26 = localtlv_t144.get_tlv_144(paramArrayOfByte1, (byte[])localObject27, ((tlv_t124)localObject26).get_tlv_124((byte[])localObject28, (byte[])localObject29, paramInt2, (byte[])localObject30, new byte[0], (byte[])localObject31), localtlv_t128.get_tlv_128(t.U, t.V, t.W, t.Z, t.I, t.A, t.P), localtlv_t16e.get_tlv_16e(t.I), t.b(this.x.h)._tgtgt_key);
-                      localObject25 = ((tlv_t142)localObject25).get_tlv_142(paramArrayOfByte5);
+                      localObject31 = t.C;
+                      localObject32 = t.F;
+                      localObject28 = ((tlv_t124)localObject28).get_tlv_124((byte[])localObject29, (byte[])localObject30, paramInt2, (byte[])localObject31, new byte[0], (byte[])localObject32);
+                      localObject27 = ((tlv_t128)localObject27).get_tlv_128(t.U, t.V, t.W, t.Z, t.I, t.A, t.P);
+                      localObject26 = ((tlv_t16e)localObject26).get_tlv_16e(t.I);
+                      util.LOGI("nopicsig tlv16e", "");
+                      localObject25 = ((tlv_t144)localObject25).get_tlv_144(paramArrayOfByte1, paramArrayOfByte2, (byte[])localObject28, (byte[])localObject27, (byte[])localObject26, t.b(this.x.h)._tgtgt_key);
+                      localObject24 = ((tlv_t142)localObject24).get_tlv_142(paramArrayOfByte5);
                       paramInt1 = paramInt1 + 1 + 1;
                       if ((this.x.g != null) && (!util.check_uin_account(this.x.g).booleanValue()))
                       {
                         paramArrayOfByte5 = localtlv_t112.get_tlv_112(this.x.g.getBytes());
                         paramInt1 += 1;
+                        util.LOGI("nopicsig tlv112", "");
                       }
                       for (;;)
                       {
@@ -195,195 +204,242 @@ public class z
                         {
                           paramArrayOfByte3 = localtlv_t16a.get_tlv_16a(paramArrayOfByte3);
                           paramInt1 += 1;
+                          util.LOGI("nopicsig tlv16a", "");
                         }
                         for (;;)
                         {
                           if ((paramList != null) && (paramList.size() > 0))
                           {
-                            paramList = ((tlv_t511)localObject24).get_tlv_511(paramList);
+                            paramList = localtlv_t511.get_tlv_511(paramList);
                             paramInt1 += 1;
+                            util.LOGI("nopicsig tlv511", "");
                           }
                           for (;;)
                           {
-                            if ((localObject23 != null) && (((WloginSigInfo)localObject23)._G != null) && (((WloginSigInfo)localObject23)._G.length > 0) && (((WloginSigInfo)localObject23)._dpwd != null) && (((WloginSigInfo)localObject23)._dpwd.length > 0) && (((WloginSigInfo)localObject23)._randseed != null) && (((WloginSigInfo)localObject23)._randseed.length > 0))
+                            if ((localWloginSigInfo != null) && (localWloginSigInfo._G != null) && (localWloginSigInfo._G.length > 0) && (localWloginSigInfo._dpwd != null) && (localWloginSigInfo._dpwd.length > 0) && (localWloginSigInfo._randseed != null) && (localWloginSigInfo._randseed.length > 0))
                             {
-                              localObject7 = ((tlv_t400)localObject22).get_tlv_400(((WloginSigInfo)localObject23)._G, paramLong2, t.A, ((WloginSigInfo)localObject23)._dpwd, paramLong4, 1L, ((WloginSigInfo)localObject23)._randseed);
+                              localObject8 = ((tlv_t400)localObject23).get_tlv_400(localWloginSigInfo._G, paramLong2, t.A, localWloginSigInfo._dpwd, paramLong4, 1L, localWloginSigInfo._randseed);
+                              util.LOGI("nopicsig tlv400", "");
                               paramInt1 += 1;
                             }
                             for (;;)
                             {
                               paramArrayOfByte1 = new byte[4];
                               util.int32_to_buf(paramArrayOfByte1, 0, paramInt11);
-                              ((tlv_t)localObject21).set_data(paramArrayOfByte1, 4);
-                              localObject21 = ((tlv_t)localObject21).get_buf();
+                              ((tlv_t)localObject22).set_data(paramArrayOfByte1, 4);
+                              localObject22 = ((tlv_t)localObject22).get_buf();
+                              util.LOGI("nopicsig tlv516", "");
                               paramArrayOfByte1 = new byte[6];
-                              util.int32_to_buf(paramArrayOfByte1, 0, t.ax);
+                              util.int32_to_buf(paramArrayOfByte1, 0, t.az);
                               util.int16_to_buf(paramArrayOfByte1, 4, 0);
-                              ((tlv_t)localObject20).set_data(paramArrayOfByte1, 6);
-                              localObject20 = ((tlv_t)localObject20).get_buf();
+                              ((tlv_t)localObject21).set_data(paramArrayOfByte1, 6);
+                              localObject21 = ((tlv_t)localObject21).get_buf();
                               paramInt1 = paramInt1 + 1 + 1;
-                              localObject22 = ((tlv_t544)localObject8).get_tlv_544(this.a, paramLong2, t.A.length, t.A, "6.0.0.2425".length(), "6.0.0.2425", this.u);
-                              paramArrayOfByte1 = null;
-                              localObject8 = null;
+                              util.LOGI("nopicsig tlv521", "");
+                              paramLong3 = System.currentTimeMillis();
+                              localObject20 = ((tlv_t544)localObject20).get_tlv_544(this.a, paramLong2, t.A.length, t.A, "6.0.0.2423".length(), "6.0.0.2423", this.u);
+                              paramLong4 = System.currentTimeMillis();
+                              util.LOGI("nopicsig tlv544 cost:" + (paramLong4 - paramLong3), "");
+                              try
+                              {
+                                paramLong2 = System.currentTimeMillis();
+                              }
+                              catch (Throwable paramArrayOfByte2)
+                              {
+                                for (;;)
+                                {
+                                  label1732:
+                                  long l2;
+                                  paramLong1 = 0L;
+                                  paramLong2 = 0L;
+                                  paramArrayOfByte1 = null;
+                                  util.LOGI("request_tgtgt_nopicsig tlv536 error" + Log.getStackTraceString(paramArrayOfByte2), "");
+                                }
+                              }
                               for (;;)
                               {
                                 try
                                 {
-                                  localObject24 = new tlv_t(1334);
-                                  localObject23 = ProtocolDet.getLoginExtraData(this.a);
-                                  if ((localObject23 == null) || (localObject23.length <= 0)) {
+                                  paramArrayOfByte1 = new tlv_t(1334);
+                                  paramArrayOfByte2 = ProtocolDet.getLoginExtraData(this.a);
+                                  if ((paramArrayOfByte2 == null) || (paramArrayOfByte2.length <= 0)) {
                                     continue;
                                   }
-                                  ((tlv_t)localObject24).set_data((byte[])localObject23, localObject23.length);
-                                  localObject8 = ((tlv_t)localObject24).get_buf();
-                                  localObject24 = new byte[localObject8.length + 2];
-                                  util.int16_to_buf((byte[])localObject24, 0, 1);
-                                  System.arraycopy(localObject8, 0, localObject24, 2, localObject8.length);
-                                  localtlv_t.set_data((byte[])localObject24, localObject24.length);
-                                  localObject8 = localtlv_t.get_buf();
-                                  paramArrayOfByte1 = (byte[])localObject8;
+                                  paramArrayOfByte1.set_data(paramArrayOfByte2, paramArrayOfByte2.length);
+                                  paramArrayOfByte1 = paramArrayOfByte1.get_buf();
+                                  localObject23 = new byte[paramArrayOfByte1.length + 2];
+                                  util.int16_to_buf((byte[])localObject23, 0, 1);
+                                  System.arraycopy(paramArrayOfByte1, 0, localObject23, 2, paramArrayOfByte1.length);
+                                  localtlv_t.set_data((byte[])localObject23, localObject23.length);
+                                  paramArrayOfByte1 = localtlv_t.get_buf();
                                   paramInt1 += 1;
                                 }
-                                catch (Throwable localThrowable1)
+                                catch (Throwable paramArrayOfByte2)
                                 {
-                                  util.LOGI("request_tgtgt_nopicsig tlv536 error" + Log.getStackTraceString(localThrowable1), "");
-                                  continue;
-                                  paramArrayOfByte1 = localThrowable2;
-                                  continue;
+                                  paramLong1 = 0L;
+                                  paramArrayOfByte1 = null;
+                                  break label2449;
+                                  paramArrayOfByte1 = null;
+                                  break;
                                 }
                                 try
                                 {
-                                  util.LOGI("request_tgtgt_nopicsig tlv536 " + localObject23.length, "" + this.x.f);
-                                  paramInt2 = localObject9.length + localObject10.length + localObject11.length + localObject14.length + localObject12.length + localObject13.length + paramArrayOfByte2.length + localObject26.length + localObject25.length + paramArrayOfByte5.length + localObject15.length + paramArrayOfLong.length + paramArrayOfByte3.length + localObject16.length + localObject17.length + localObject18.length + paramList.length + localObject19.length + paramArrayOfByte4.length + arrayOfByte.length + localObject7.length + localObject1.length + localObject2.length + localObject3.length + localObject4.length + localObject5.length + localObject21.length + localObject20.length;
-                                  paramInt3 = paramInt2;
-                                  if (paramArrayOfByte1 != null) {
-                                    paramInt3 = paramInt2 + paramArrayOfByte1.length;
-                                  }
-                                  paramInt2 = paramInt3;
-                                  if (localObject6 != null)
-                                  {
-                                    paramInt2 = paramInt3;
-                                    if (localObject6.length > 0) {
-                                      paramInt2 = paramInt3 + localObject6.length;
-                                    }
-                                  }
-                                  if (localObject22 == null) {
-                                    continue;
-                                  }
-                                  paramInt3 = localObject22.length;
-                                  paramInt1 += 1;
-                                  paramInt3 = paramInt2 + paramInt3;
-                                  paramInt2 = paramInt1;
+                                  util.LOGI("nopicsig tlv536 " + paramArrayOfByte2.length, "" + this.x.f);
                                 }
-                                catch (Throwable localThrowable2)
+                                catch (Throwable paramArrayOfByte2)
                                 {
-                                  continue;
-                                  continue;
-                                  paramInt3 = paramInt2;
-                                  paramInt2 = paramInt1;
+                                  paramLong1 = 0L;
+                                  break label2449;
                                 }
                               }
-                              localObject8 = new byte[paramInt3];
-                              System.arraycopy(localObject9, 0, localObject8, 0, localObject9.length);
+                              try
+                              {
+                                paramLong1 = System.currentTimeMillis();
+                              }
+                              catch (Throwable paramArrayOfByte2)
+                              {
+                                paramLong1 = 0L;
+                                break;
+                              }
+                              try
+                              {
+                                util.LOGI("nopicsig tlv536 cost:" + (paramLong1 - paramLong2), "");
+                                paramInt2 = localObject9.length + localObject10.length + localObject11.length + localObject14.length + localObject12.length + localObject13.length + paramArrayOfLong.length + localObject25.length + localObject24.length + paramArrayOfByte5.length + localObject15.length + paramArrayOfByte4.length + paramArrayOfByte3.length + localObject16.length + localObject17.length + localObject18.length + paramList.length + localObject19.length + localObject1.length + arrayOfByte.length + localObject8.length + localObject2.length + localObject3.length + localObject4.length + localObject5.length + localObject6.length + localObject22.length + localObject21.length;
+                                paramInt3 = paramInt2;
+                                if (paramArrayOfByte1 != null) {
+                                  paramInt3 = paramInt2 + paramArrayOfByte1.length;
+                                }
+                                paramInt2 = paramInt3;
+                                if (localObject7 != null)
+                                {
+                                  paramInt2 = paramInt3;
+                                  if (localObject7.length > 0) {
+                                    paramInt2 = paramInt3 + localObject7.length;
+                                  }
+                                }
+                                if (localObject20 == null) {
+                                  break label2514;
+                                }
+                                paramInt3 = localObject20.length;
+                                paramInt1 += 1;
+                                paramInt3 = paramInt2 + paramInt3;
+                                paramInt2 = paramInt1;
+                              }
+                              catch (Throwable paramArrayOfByte2)
+                              {
+                                break;
+                                break label2265;
+                                paramInt3 = paramInt2;
+                                paramInt2 = paramInt1;
+                                break label1732;
+                              }
+                              paramArrayOfByte2 = new byte[paramInt3];
+                              System.arraycopy(localObject9, 0, paramArrayOfByte2, 0, localObject9.length);
                               paramInt1 = 0 + localObject9.length;
-                              System.arraycopy(localObject10, 0, localObject8, paramInt1, localObject10.length);
+                              System.arraycopy(localObject10, 0, paramArrayOfByte2, paramInt1, localObject10.length);
                               paramInt1 += localObject10.length;
-                              System.arraycopy(localObject11, 0, localObject8, paramInt1, localObject11.length);
+                              System.arraycopy(localObject11, 0, paramArrayOfByte2, paramInt1, localObject11.length);
                               paramInt1 += localObject11.length;
-                              System.arraycopy(localObject14, 0, localObject8, paramInt1, localObject14.length);
+                              System.arraycopy(localObject14, 0, paramArrayOfByte2, paramInt1, localObject14.length);
                               paramInt1 += localObject14.length;
-                              System.arraycopy(localObject12, 0, localObject8, paramInt1, localObject12.length);
+                              System.arraycopy(localObject12, 0, paramArrayOfByte2, paramInt1, localObject12.length);
                               paramInt1 += localObject12.length;
-                              System.arraycopy(localObject13, 0, localObject8, paramInt1, localObject13.length);
+                              System.arraycopy(localObject13, 0, paramArrayOfByte2, paramInt1, localObject13.length);
                               paramInt1 += localObject13.length;
-                              System.arraycopy(paramArrayOfByte2, 0, localObject8, paramInt1, paramArrayOfByte2.length);
-                              paramInt1 += paramArrayOfByte2.length;
-                              System.arraycopy(localObject26, 0, localObject8, paramInt1, localObject26.length);
-                              paramInt1 += localObject26.length;
-                              System.arraycopy(localObject25, 0, localObject8, paramInt1, localObject25.length);
-                              paramInt1 += localObject25.length;
-                              System.arraycopy(paramArrayOfByte5, 0, localObject8, paramInt1, paramArrayOfByte5.length);
-                              paramInt1 += paramArrayOfByte5.length;
-                              System.arraycopy(localObject15, 0, localObject8, paramInt1, localObject15.length);
-                              paramInt1 += localObject15.length;
-                              System.arraycopy(paramArrayOfLong, 0, localObject8, paramInt1, paramArrayOfLong.length);
+                              System.arraycopy(paramArrayOfLong, 0, paramArrayOfByte2, paramInt1, paramArrayOfLong.length);
                               paramInt1 += paramArrayOfLong.length;
-                              System.arraycopy(paramArrayOfByte3, 0, localObject8, paramInt1, paramArrayOfByte3.length);
-                              paramInt1 += paramArrayOfByte3.length;
-                              System.arraycopy(localObject16, 0, localObject8, paramInt1, localObject16.length);
-                              paramInt1 += localObject16.length;
-                              System.arraycopy(localObject17, 0, localObject8, paramInt1, localObject17.length);
-                              paramInt1 += localObject17.length;
-                              System.arraycopy(localObject18, 0, localObject8, paramInt1, localObject18.length);
-                              paramInt1 += localObject18.length;
-                              System.arraycopy(paramList, 0, localObject8, paramInt1, paramList.length);
-                              paramInt1 += paramList.length;
-                              System.arraycopy(localObject19, 0, localObject8, paramInt1, localObject19.length);
-                              paramInt1 += localObject19.length;
-                              System.arraycopy(paramArrayOfByte4, 0, localObject8, paramInt1, paramArrayOfByte4.length);
+                              System.arraycopy(localObject25, 0, paramArrayOfByte2, paramInt1, localObject25.length);
+                              paramInt1 += localObject25.length;
+                              System.arraycopy(localObject24, 0, paramArrayOfByte2, paramInt1, localObject24.length);
+                              paramInt1 += localObject24.length;
+                              System.arraycopy(paramArrayOfByte5, 0, paramArrayOfByte2, paramInt1, paramArrayOfByte5.length);
+                              paramInt1 += paramArrayOfByte5.length;
+                              System.arraycopy(localObject15, 0, paramArrayOfByte2, paramInt1, localObject15.length);
+                              paramInt1 += localObject15.length;
+                              System.arraycopy(paramArrayOfByte4, 0, paramArrayOfByte2, paramInt1, paramArrayOfByte4.length);
                               paramInt1 += paramArrayOfByte4.length;
-                              System.arraycopy(arrayOfByte, 0, localObject8, paramInt1, arrayOfByte.length);
-                              paramInt1 += arrayOfByte.length;
-                              System.arraycopy(localObject7, 0, localObject8, paramInt1, localObject7.length);
-                              paramInt1 += localObject7.length;
-                              System.arraycopy(localObject1, 0, localObject8, paramInt1, localObject1.length);
+                              System.arraycopy(paramArrayOfByte3, 0, paramArrayOfByte2, paramInt1, paramArrayOfByte3.length);
+                              paramInt1 += paramArrayOfByte3.length;
+                              System.arraycopy(localObject16, 0, paramArrayOfByte2, paramInt1, localObject16.length);
+                              paramInt1 += localObject16.length;
+                              System.arraycopy(localObject17, 0, paramArrayOfByte2, paramInt1, localObject17.length);
+                              paramInt1 += localObject17.length;
+                              System.arraycopy(localObject18, 0, paramArrayOfByte2, paramInt1, localObject18.length);
+                              paramInt1 += localObject18.length;
+                              System.arraycopy(paramList, 0, paramArrayOfByte2, paramInt1, paramList.length);
+                              paramInt1 += paramList.length;
+                              System.arraycopy(localObject19, 0, paramArrayOfByte2, paramInt1, localObject19.length);
+                              paramInt1 += localObject19.length;
+                              System.arraycopy(localObject1, 0, paramArrayOfByte2, paramInt1, localObject1.length);
                               paramInt1 += localObject1.length;
-                              System.arraycopy(localObject2, 0, localObject8, paramInt1, localObject2.length);
+                              System.arraycopy(arrayOfByte, 0, paramArrayOfByte2, paramInt1, arrayOfByte.length);
+                              paramInt1 += arrayOfByte.length;
+                              System.arraycopy(localObject8, 0, paramArrayOfByte2, paramInt1, localObject8.length);
+                              paramInt1 += localObject8.length;
+                              System.arraycopy(localObject2, 0, paramArrayOfByte2, paramInt1, localObject2.length);
                               paramInt1 += localObject2.length;
-                              System.arraycopy(localObject3, 0, localObject8, paramInt1, localObject3.length);
+                              System.arraycopy(localObject3, 0, paramArrayOfByte2, paramInt1, localObject3.length);
                               paramInt1 += localObject3.length;
-                              System.arraycopy(localObject4, 0, localObject8, paramInt1, localObject4.length);
+                              System.arraycopy(localObject4, 0, paramArrayOfByte2, paramInt1, localObject4.length);
                               paramInt1 += localObject4.length;
-                              System.arraycopy(localObject5, 0, localObject8, paramInt1, localObject5.length);
+                              System.arraycopy(localObject5, 0, paramArrayOfByte2, paramInt1, localObject5.length);
                               paramInt1 += localObject5.length;
-                              System.arraycopy(localObject21, 0, localObject8, paramInt1, localObject21.length);
+                              System.arraycopy(localObject6, 0, paramArrayOfByte2, paramInt1, localObject6.length);
+                              paramInt1 += localObject6.length;
+                              System.arraycopy(localObject22, 0, paramArrayOfByte2, paramInt1, localObject22.length);
+                              paramInt1 += localObject22.length;
+                              System.arraycopy(localObject21, 0, paramArrayOfByte2, paramInt1, localObject21.length);
                               paramInt1 += localObject21.length;
-                              System.arraycopy(localObject20, 0, localObject8, paramInt1, localObject20.length);
-                              paramInt1 += localObject20.length;
                               if (paramArrayOfByte1 == null) {
-                                break label2290;
+                                break label2511;
                               }
-                              System.arraycopy(paramArrayOfByte1, 0, localObject8, paramInt1, paramArrayOfByte1.length);
+                              System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, paramInt1, paramArrayOfByte1.length);
                               paramInt1 = paramArrayOfByte1.length + paramInt1;
+                              label2265:
                               paramInt3 = paramInt1;
-                              if (localObject22 != null)
+                              if (localObject20 != null)
                               {
-                                System.arraycopy(localObject22, 0, localObject8, paramInt1, localObject22.length);
-                                paramInt3 = paramInt1 + localObject22.length;
+                                System.arraycopy(localObject20, 0, paramArrayOfByte2, paramInt1, localObject20.length);
+                                paramInt3 = paramInt1 + localObject20.length;
                               }
-                              if ((localObject6 != null) && (localObject6.length > 0))
+                              if ((localObject7 != null) && (localObject7.length > 0))
                               {
-                                System.arraycopy(localObject6, 0, localObject8, paramInt3, localObject6.length);
-                                paramInt1 = localObject6.length;
-                                util.LOGI("nopicsig qimei len:" + localObject6.length, "");
+                                System.arraycopy(localObject7, 0, paramArrayOfByte2, paramInt3, localObject7.length);
+                                paramInt1 = localObject7.length;
+                                util.LOGI("nopicsig qimei len:" + localObject7.length, "");
                               }
-                              return a(a((byte[])localObject8, this.u, paramInt2), this.y, this.A, this.B);
+                              l2 = System.currentTimeMillis();
+                              a.a().a(2, l2 - l1, paramLong4 - paramLong3, paramLong1 - paramLong2);
+                              c.b(Thread.currentThread());
+                              return a(a(paramArrayOfByte2, this.u, paramInt2), this.y, this.A, this.B);
                               util.LOGI("request_tgtgt_nopicsig req without DA1", "" + paramLong2);
                             }
-                            label2290:
+                            label2449:
+                            label2511:
+                            label2514:
                             paramList = new byte[0];
                           }
                           paramArrayOfByte3 = new byte[0];
                         }
                         paramArrayOfByte5 = new byte[0];
                       }
-                      localObject6 = new byte[0];
+                      localObject7 = new byte[0];
                     }
-                    localObject5 = new byte[0];
+                    localObject6 = new byte[0];
                   }
-                  localObject4 = new byte[0];
+                  localObject5 = new byte[0];
                 }
-                localObject3 = new byte[0];
+                localObject4 = new byte[0];
               }
-              localObject2 = new byte[0];
+              localObject3 = new byte[0];
             }
-            localObject1 = new byte[0];
+            localObject2 = new byte[0];
           }
-          paramArrayOfByte4 = new byte[0];
+          localObject1 = new byte[0];
         }
-        paramArrayOfLong = new byte[0];
+        paramArrayOfByte4 = new byte[0];
       }
-      paramArrayOfByte2 = new byte[0];
+      paramArrayOfLong = new byte[0];
     }
   }
   
@@ -401,7 +457,7 @@ public class z
       if ((this.y == oicq_request.EncryptionMethod.EM_ST) && ((this.B == null) || (this.B.length == 0) || (this.A == null) || (this.A.length == 0)))
       {
         this.y = oicq_request.EncryptionMethod.EM_ECDH;
-        t.aq.attr_api(2413503);
+        t.as.attr_api(2413503);
         util.LOGI("using wt st encrypt body but no st key", "" + paramLong2);
       }
       a(paramLong2, a(paramLong1, i, paramLong2, paramInt2, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramInt3, paramInt4, paramArrayOfLong, paramInt5, paramLong3, i, paramInt7, paramInt8, paramInt9, paramInt10, paramArrayOfByte4, paramLong4, t.E, paramWUserSigInfo._domains, paramWUserSigInfo._source_type), this.y);

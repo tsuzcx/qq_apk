@@ -1,28 +1,18 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.av.gaudio.BaseGaInvite;
-
 public class lde
-  implements ldf
 {
-  public lde(BaseGaInvite paramBaseGaInvite) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  String jdField_a_of_type_JavaLangString = null;
+  int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long = 0L;
+  String jdField_b_of_type_JavaLangString = null;
+  long jdField_c_of_type_Long = 0L;
+  String jdField_c_of_type_JavaLangString = null;
+  String d = null;
+  String e = null;
+  String f = null;
   
-  public boolean a(Bitmap paramBitmap, String paramString)
-  {
-    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      if (this.a.jdField_b_of_type_AndroidWidgetTextView != null)
-      {
-        paramBitmap = BaseGaInvite.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.jdField_b_of_type_AndroidWidgetTextView, paramString, this.a.jdField_b_of_type_Int, String.valueOf(this.a.jdField_a_of_type_Long), this.a.jdField_a_of_type_ArrayOfLong);
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramBitmap);
-      }
-      return bool;
-    }
-  }
+  public lde(ldd paramldd) {}
 }
 
 

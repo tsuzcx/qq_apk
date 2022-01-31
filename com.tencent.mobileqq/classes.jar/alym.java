@@ -1,49 +1,35 @@
-import android.graphics.Rect;
-import java.util.ArrayList;
+import com.tencent.mobileqq.armap.sensor.rotation.Vector3;
 
 public class alym
 {
-  public int a;
-  public alyt a;
-  public Rect a;
-  public ArrayList<alyn> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = 0;
-  public int d = 0;
-  public int e = 1;
-  
-  public alym(alyt paramalyt, int paramInt1, Rect paramRect, int paramInt2, boolean paramBoolean, int paramInt3)
+  public static float a(double paramDouble)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 24;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Alyt = paramalyt;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-    this.e = paramInt3;
-    if (paramalyt.jdField_a_of_type_Int > 0) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      paramalyt.jdField_a_of_type_Int += 1;
-      return;
-    }
+    return (float)(paramDouble - Math.floor(paramDouble / 360.0D) * 360.0D);
   }
   
-  public String toString()
+  public static float a(float paramFloat1, float paramFloat2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("text: ").append(this.jdField_a_of_type_Alyt.jdField_a_of_type_JavaLangString).append("; size: ").append(this.jdField_b_of_type_Int).append("; line_count: ").append(this.e).append("; container: ").append(this.jdField_a_of_type_AndroidGraphicsRect).append("; algin: ").append(this.c).append("; v_algin: ").append(this.d);
-    return localStringBuilder.toString();
+    return (float)Math.asin(paramFloat1 / (2.0F * paramFloat2));
+  }
+  
+  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    return (float)(paramFloat1 * paramFloat2 * paramFloat3 / Math.sqrt((paramFloat1 + paramFloat2 + paramFloat3) * (paramFloat1 - paramFloat2 + paramFloat3) * (paramFloat1 + paramFloat2 - paramFloat3) * (paramFloat2 + paramFloat3 - paramFloat1)));
+  }
+  
+  public static float a(Vector3 paramVector31, Vector3 paramVector32)
+  {
+    return (float)Math.sqrt((paramVector31.x - paramVector32.x) * (paramVector31.x - paramVector32.x) + (paramVector31.y - paramVector32.y) * (paramVector31.y - paramVector32.y) + (paramVector31.z - paramVector32.z) * (paramVector31.z - paramVector32.z));
+  }
+  
+  public static float b(float paramFloat1, float paramFloat2)
+  {
+    return (float)Math.asin(Math.min(1.0F, Math.max(-1.0F, paramFloat1 / (2.0F * paramFloat2))));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alym
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,64 @@
 import android.os.Handler;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class abnq
-  extends Handler
+  extends akbn
 {
-  public abnq(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  public abnq(NearbyActivity paramNearbyActivity) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, String paramString)
+  {
+    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth isSuccess=" + paramBoolean + ", checkRet=" + paramInt + ", checkMsg=" + paramString + ", isFinishing=" + this.a.isFinishing() + ", isStopHeartBeat=" + this.a.c);
+    if ((paramBoolean) && (paramInt != 0)) {
+      if (!this.a.isFinishing()) {}
+    }
+    while ((this.a.isFinishing()) || (this.a.c))
+    {
+      do
+      {
+        return;
+        try
+        {
+          bbgg localbbgg = bbcv.a(this.a, 230);
+          localbbgg.setCancelable(false);
+          String str = paramString;
+          if (TextUtils.isEmpty(paramString)) {
+            str = ajyc.a(2131707094);
+          }
+          localbbgg.setMessage(str);
+          localbbgg.setNegativeButton(ajyc.a(2131707095), new abnr(this));
+          localbbgg.show();
+          new axra(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_exp").e(this.a.a.getCurrentAccountUin()).a();
+          return;
+        }
+        catch (Exception paramString) {}
+      } while (!QLog.isColorLevel());
+      QLog.d("nearby.NearbyActivity", 2, "onCheckNearbyUserAuth exp:" + paramString.toString());
+      return;
+    }
+    this.a.e();
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.heart_beat", 2, "onNearbyHeartBeat:isSucc=" + paramBoolean + ", cmd=" + paramString + ", interval=" + paramLong);
+    }
+    if ("OidbSvc.0xafc_1".equals(paramString))
+    {
+      if (paramBoolean) {
+        this.a.n = paramLong;
+      }
+      if (!this.a.c)
+      {
+        this.a.b.removeMessages(this.a.i);
+        this.a.b.sendEmptyMessageDelayed(this.a.i, this.a.n);
+      }
+    }
+  }
 }
 
 

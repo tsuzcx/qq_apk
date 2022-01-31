@@ -1,93 +1,47 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.bubble.BubbleManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class ambt
-  extends alzl<ambu>
+  extends bbwf
 {
-  public int a()
+  public ambt(BubbleManager paramBubbleManager, String paramString1, String paramString2)
   {
-    return 566;
+    super(paramString1, paramString2);
   }
   
-  @NonNull
-  public ambu a(int paramInt)
+  public void onCancel(bbwg parambbwg)
   {
-    return new ambu();
-  }
-  
-  @Nullable
-  public ambu a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0) && (paramArrayOfalzs[0] != null))
-    {
-      ambu localambu = ambu.a(paramArrayOfalzs[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("BootOptimizeConfProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
-      }
-      return localambu;
-    }
+    String str = parambbwg.a().getString("name");
     if (QLog.isColorLevel()) {
-      QLog.d("BootOptimizeConfProcessor", 2, "onParsed is null");
+      QLog.i("BubbleManager", 2, "bubbleDownloadListener onCancel pkgName = " + str);
     }
-    return null;
+    this.a.a("Bubble_download_cancel", parambbwg.b(), str, 0L);
   }
   
-  public Class<ambu> a()
+  public void onDone(bbwg parambbwg)
   {
-    return ambu.class;
-  }
-  
-  public void a(int paramInt)
-  {
+    long l = parambbwg.h - parambbwg.g;
     if (QLog.isColorLevel()) {
-      QLog.d("BootOptimizeConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+      QLog.i("BubbleManager", 2, "bubbleDownloadListener onDone downloadTime = " + l);
     }
+    this.a.a("Bubble_download_succ", parambbwg.b(), "pkgName", l);
   }
   
-  public void a(ambu paramambu)
+  public boolean onStart(bbwg parambbwg)
   {
-    if (paramambu == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BootOptimizeConfProcessor", 2, "onUpdate but newConf==null");
-      }
-      return;
-    }
+    String str = parambbwg.a().getString("name");
     if (QLog.isColorLevel()) {
-      QLog.d("BootOptimizeConfProcessor", 2, "onUpdate " + paramambu.toString());
+      QLog.i("BubbleManager", 2, "bubbleDownloadListener onStart pkgName = " + str);
     }
-    ahca.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramambu.a);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BootOptimizeConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
+    this.a.a("Bubble_download", parambbwg.b(), str, 0L);
+    super.onStart(parambbwg);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambt
  * JD-Core Version:    0.7.0.1
  */

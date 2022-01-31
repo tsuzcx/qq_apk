@@ -1,33 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
 class afjc
-  implements DialogInterface.OnKeyListener
+  extends GridLayoutManager.SpanSizeLookup
 {
-  afjc(afiu paramafiu, int paramInt) {}
+  afjc(afjb paramafjb, GridLayoutManager paramGridLayoutManager) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public int getSpanSize(int paramInt)
   {
-    if (paramInt == 4)
-    {
-      if (!afiu.a(this.jdField_a_of_type_Afiu)) {
-        break label28;
-      }
-      afiu.a(this.jdField_a_of_type_Afiu, this.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_Afjb.a(paramInt)) || (this.jdField_a_of_type_Afjb.b(paramInt)) || (this.jdField_a_of_type_Afjb.c(paramInt)) || (this.jdField_a_of_type_Afjb.b())) {
+      return this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.getSpanCount();
     }
-    for (;;)
-    {
-      return true;
-      label28:
-      afiu.a(this.jdField_a_of_type_Afiu, afiu.a(this.jdField_a_of_type_Afiu), Long.valueOf(afiu.a(this.jdField_a_of_type_Afiu)).longValue());
-      afiu.a(this.jdField_a_of_type_Afiu);
-    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afjc
  * JD-Core Version:    0.7.0.1
  */

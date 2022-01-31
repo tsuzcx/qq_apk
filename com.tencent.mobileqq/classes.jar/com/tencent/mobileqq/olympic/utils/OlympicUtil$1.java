@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.olympic.utils;
 
-import atiu;
+import augt;
 
 public final class OlympicUtil$1
   implements Runnable
 {
   public void run()
   {
-    atiu.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    augt.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

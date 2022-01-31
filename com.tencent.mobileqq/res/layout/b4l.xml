@@ -6,7 +6,7 @@
         <ImageView android:background="#33000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
         <TextView android:textColor="#ffffffff" android:id="@id/fqb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
     </RelativeLayout>
-    <ImageView android:id="@id/fq_" android:background="#33000000" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/fui" android:background="@color/al9" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_centerInParent="true" />
     <RelativeLayout android:id="@id/fq8" android:visibility="gone" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
         <com.tencent.mobileqq.widget.NumberCheckBox android:id="@id/fq9" android:clickable="false" android:layout_margin="4.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_centerInParent="true" style="@style/hy" />
     </RelativeLayout>

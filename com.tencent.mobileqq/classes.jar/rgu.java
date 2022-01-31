@@ -1,10 +1,18 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
 
 public abstract interface rgu
 {
-  public abstract void a(View paramView, int paramInt, long paramLong);
+  public abstract View a();
   
-  public abstract void b(View paramView, int paramInt, long paramLong);
+  public abstract void a();
+  
+  public abstract void a(View.OnClickListener paramOnClickListener);
+  
+  public abstract void a(KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo);
+  
+  public abstract void b();
 }
 
 

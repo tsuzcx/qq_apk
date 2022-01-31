@@ -1,32 +1,29 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public class tbe
-  extends slu
+public abstract class tbe
 {
-  public List<QQUserUIItem> a = new ArrayList();
+  public int a;
+  public String a;
   
-  public tbe(qqstory_service.RspConvertUinAndUnionId paramRspConvertUinAndUnionId)
+  public tbe() {}
+  
+  public tbe(qqstory_struct.ErrorInfo paramErrorInfo)
   {
-    super(paramRspConvertUinAndUnionId.result);
-    paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.user_list.get();
-    if (paramRspConvertUinAndUnionId != null)
-    {
-      paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.iterator();
-      while (paramRspConvertUinAndUnionId.hasNext())
-      {
-        qqstory_struct.UserInfo localUserInfo = (qqstory_struct.UserInfo)paramRspConvertUinAndUnionId.next();
-        QQUserUIItem localQQUserUIItem = new QQUserUIItem();
-        localQQUserUIItem.convertFrom(localUserInfo);
-        this.a.add(localQQUserUIItem);
-      }
-    }
+    this.jdField_a_of_type_Int = paramErrorInfo.error_code.get();
+    this.jdField_a_of_type_JavaLangString = paramErrorInfo.error_desc.get().toStringUtf8();
   }
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt, Bundle paramBundle);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajls;
+import akac;
 import android.os.Bundle;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -20,7 +20,7 @@ class FriendListHandler$5
     if (QLog.isColorLevel()) {
       QLog.d("FriendListHandler", 2, "cancelMayKnowRecommend|uin = " + this.a);
     }
-    ((ajls)this.this$0.mApp.getManager(159)).b(this.a);
+    ((akac)this.this$0.mApp.getManager(159)).b(this.a);
     this.this$0.notifyUI(93, true, this.a);
     try
     {

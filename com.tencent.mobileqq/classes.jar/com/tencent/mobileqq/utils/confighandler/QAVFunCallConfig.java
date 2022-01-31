@@ -17,7 +17,7 @@ public class QAVFunCallConfig
   extends ConfigInfo
 {
   public static final String TAG = "QAVConfig_382";
-  TreeMap<Integer, QAVFunCallConfig.FCItem> fcItems = new TreeMap();
+  final TreeMap<Integer, QAVFunCallConfig.FCItem> fcItems = new TreeMap();
   
   public int getActivityFCId()
   {
@@ -99,14 +99,15 @@ public class QAVFunCallConfig
   
   public String toString()
   {
-    String str = "Size[" + this.fcItems.size() + "]";
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("Size[").append(this.fcItems.size()).append("]");
     Iterator localIterator = this.fcItems.values().iterator();
     while (localIterator.hasNext())
     {
       QAVFunCallConfig.FCItem localFCItem = (QAVFunCallConfig.FCItem)localIterator.next();
-      str = str + "\n" + localFCItem;
+      localStringBuilder.append("\n").append(localFCItem);
     }
-    return str;
+    return localStringBuilder.toString();
   }
 }
 

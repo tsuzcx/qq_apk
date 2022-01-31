@@ -1,25 +1,18 @@
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import mqq.util.WeakReference;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aghj
-  extends agfo
+  extends aggy
 {
-  protected aghj(AlbumListFragment paramAlbumListFragment)
+  public aghj(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    super(paramAlbumListFragment);
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
   }
   
-  public static agfk b(AlbumListFragment paramAlbumListFragment)
+  protected void y()
   {
-    if ((a == null) || (a.a.get() != paramAlbumListFragment)) {}
-    try
-    {
-      if ((a == null) || (a.a.get() != paramAlbumListFragment)) {
-        a = new aghj(paramAlbumListFragment);
-      }
-      return a;
-    }
-    finally {}
+    this.a = "MiniPieForNearby";
   }
 }
 

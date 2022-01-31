@@ -1,28 +1,6 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
-
-class aekd
-  extends BroadcastReceiver
+public abstract interface aekd
 {
-  aekd(aejb paramaejb) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("com.tencent.mobileqq.action.ACTION_CONFESS_START_EVENT".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "Confess action! ");
-      }
-      if (aejb.a(this.a) != null)
-      {
-        aejb.b(this.a).a(35);
-        alyx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-      }
-    }
-  }
+  public abstract void a();
 }
 
 

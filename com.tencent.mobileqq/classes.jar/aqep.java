@@ -1,44 +1,46 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class aqep
+  extends aqem
 {
-  int a = 0;
+  private String h;
+  private String i;
   
-  public static aqep a(String paramString)
+  public aqep(Intent paramIntent)
   {
-    if (paramString == null) {}
-    do
-    {
-      for (;;)
-      {
-        return null;
-        try
-        {
-          paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-          Object localObject = paramString.getElementsByTagName("hotpic_config");
-          if ((localObject != null) && (((NodeList)localObject).getLength() > 0))
-          {
-            localObject = new aqep();
-            ((aqep)localObject).a = Integer.parseInt(paramString.getElementsByTagName("entry").item(0).getFirstChild().getNodeValue());
-            return localObject;
-          }
-        }
-        catch (Exception paramString) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("HotPicConfProcessor", 1, "handleHotPicConfig failed" + paramString);
-    return null;
+    super(paramIntent);
+    this.h = paramIntent.getStringExtra("uin");
+    this.i = paramIntent.getStringExtra("uinname");
+  }
+  
+  private View a(String paramString, Drawable paramDrawable)
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558905, null);
+    TextView localTextView = (TextView)localView.findViewById(2131378523);
+    ImageView localImageView = (ImageView)localView.findViewById(2131368031);
+    localTextView.setText(paramString);
+    localImageView.setImageDrawable(paramDrawable);
+    return localView;
+  }
+  
+  protected View a()
+  {
+    return a(String.format("[%s]%s", new Object[] { ajyc.a(2131704778), this.i }), baxt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.h));
+  }
+  
+  protected boolean h()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqep
  * JD-Core Version:    0.7.0.1
  */

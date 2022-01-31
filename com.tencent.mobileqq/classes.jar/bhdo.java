@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.io.File;
+import java.io.FileFilter;
 
 class bhdo
-  implements agal
+  implements FileFilter
 {
-  bhdo(bhdi parambhdi) {}
+  bhdo(bhdk parambhdk) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public boolean accept(File paramFile)
   {
-    if (!paramBoolean)
-    {
-      this.a.a(101);
-      return;
-    }
-    this.a.a(this.a.a, paramLocalMediaInfo);
+    return paramFile.getName().endsWith(".ftf");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhdo
  * JD-Core Version:    0.7.0.1
  */

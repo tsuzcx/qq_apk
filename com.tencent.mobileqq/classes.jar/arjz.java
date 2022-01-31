@@ -1,285 +1,260 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Base64;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import tencent.aio.video.aio_video.ReqGetOpenIdByUin;
 
 public class arjz
+  extends MSFServlet
 {
-  public static final String g = ajjy.a(2131648153);
-  Context jdField_a_of_type_AndroidContentContext;
-  public Bitmap a;
-  bahv jdField_a_of_type_Bahv = null;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f = "";
-  
-  public arjz(Context paramContext, QQAppInterface paramQQAppInterface)
+  public static NewIntent a(long paramLong1, long paramLong2, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    int i = bbbd.a(paramLong2);
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), arjz.class);
+    localNewIntent.putExtra("appId", i);
+    localNewIntent.putExtra("sso_command", "QQAIOMediaSvc.get_openid_by_uin");
+    localNewIntent.putExtra("req_type", 1);
+    localNewIntent.putExtra("uin", paramLong1);
+    paramQQAppInterface.startServlet(localNewIntent);
+    return localNewIntent;
   }
   
-  public static Bitmap a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  /* Error */
+  private void a(int paramInt, Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    Object localObject3;
-    if (paramDrawable == null)
-    {
-      localObject3 = null;
-      return localObject3;
-    }
-    Object localObject1;
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      localObject1 = (BitmapDrawable)paramDrawable;
-      if (((BitmapDrawable)localObject1).getBitmap() != null) {
-        return ((BitmapDrawable)localObject1).getBitmap();
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        if ((paramDrawable.getIntrinsicWidth() > 0) && (paramDrawable.getIntrinsicHeight() > 0)) {
-          continue;
-        }
-        localObject1 = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        Rect localRect;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("ShareHelper", 2, localOutOfMemoryError.getMessage(), localOutOfMemoryError);
-        Object localObject2 = null;
-        continue;
-      }
-      localObject3 = localObject1;
-      if (localObject1 == null) {
-        break;
-      }
-      localObject3 = new Canvas((Bitmap)localObject1);
-      localRect = paramDrawable.copyBounds();
-      paramDrawable.setBounds(0, 0, ((Canvas)localObject3).getWidth(), ((Canvas)localObject3).getHeight());
-      paramDrawable.draw((Canvas)localObject3);
-      paramDrawable.setBounds(localRect);
-      return localObject1;
-      localObject1 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-    }
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore 5
+    //   3: aload_3
+    //   4: invokevirtual 62	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   7: invokestatic 68	bblm:b	([B)[B
+    //   10: astore 9
+    //   12: aload_3
+    //   13: invokevirtual 72	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   16: ifeq +326 -> 342
+    //   19: aload 9
+    //   21: ifnull +321 -> 342
+    //   24: new 74	android/os/Bundle
+    //   27: dup
+    //   28: invokespecial 75	android/os/Bundle:<init>	()V
+    //   31: astore 8
+    //   33: aload_2
+    //   34: ldc 29
+    //   36: iconst_0
+    //   37: invokevirtual 81	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   40: istore 4
+    //   42: aload_2
+    //   43: ldc 44
+    //   45: lconst_0
+    //   46: invokevirtual 85	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   49: lstore 6
+    //   51: aload 8
+    //   53: ldc 29
+    //   55: iload 4
+    //   57: invokevirtual 89	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   60: aload 8
+    //   62: ldc 44
+    //   64: lload 6
+    //   66: invokevirtual 93	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   69: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   72: ifeq +61 -> 133
+    //   75: ldc 100
+    //   77: iconst_2
+    //   78: new 102	java/lang/StringBuilder
+    //   81: dup
+    //   82: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   85: ldc 105
+    //   87: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: iload 5
+    //   92: invokevirtual 112	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   95: ldc 114
+    //   97: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   100: aload_3
+    //   101: invokevirtual 118	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   104: invokevirtual 121	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   107: ldc 123
+    //   109: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: iload 4
+    //   114: invokevirtual 121	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   117: ldc 125
+    //   119: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: lload 6
+    //   124: invokevirtual 128	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   127: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   130: invokestatic 136	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   133: iload 5
+    //   135: ifeq +154 -> 289
+    //   138: new 138	tencent/aio/video/aio_video$RspGetOpenIdByUin
+    //   141: dup
+    //   142: invokespecial 139	tencent/aio/video/aio_video$RspGetOpenIdByUin:<init>	()V
+    //   145: astore_3
+    //   146: aload_3
+    //   147: aload 9
+    //   149: invokevirtual 143	tencent/aio/video/aio_video$RspGetOpenIdByUin:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   152: pop
+    //   153: aload_3
+    //   154: getfield 147	tencent/aio/video/aio_video$RspGetOpenIdByUin:err_info	Ltencent/aio/video/aio_video$ErrInfo;
+    //   157: getfield 153	tencent/aio/video/aio_video$ErrInfo:err_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   160: invokevirtual 158	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   163: istore 4
+    //   165: iload 4
+    //   167: ifne +59 -> 226
+    //   170: aload_3
+    //   171: getfield 162	tencent/aio/video/aio_video$RspGetOpenIdByUin:open_id	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   174: invokevirtual 167	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   177: invokevirtual 172	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   180: astore_3
+    //   181: aload 8
+    //   183: ldc 174
+    //   185: aload_3
+    //   186: invokevirtual 178	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   189: ldc 100
+    //   191: iconst_2
+    //   192: new 102	java/lang/StringBuilder
+    //   195: dup
+    //   196: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   199: ldc 180
+    //   201: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   204: aload_3
+    //   205: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   208: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   211: invokestatic 136	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   214: aload_0
+    //   215: aload_2
+    //   216: iload_1
+    //   217: iconst_1
+    //   218: aload 8
+    //   220: ldc 182
+    //   222: invokevirtual 186	arjz:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
+    //   225: return
+    //   226: aload_3
+    //   227: getfield 147	tencent/aio/video/aio_video$RspGetOpenIdByUin:err_info	Ltencent/aio/video/aio_video$ErrInfo;
+    //   230: getfield 189	tencent/aio/video/aio_video$ErrInfo:err_msg	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   233: invokevirtual 167	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   236: invokevirtual 172	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   239: astore_3
+    //   240: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   243: ifeq +38 -> 281
+    //   246: ldc 100
+    //   248: iconst_2
+    //   249: new 102	java/lang/StringBuilder
+    //   252: dup
+    //   253: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   256: ldc 191
+    //   258: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: iload 4
+    //   263: invokevirtual 121	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   266: ldc 193
+    //   268: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   271: aload_3
+    //   272: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   275: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   278: invokestatic 196	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   281: aload 8
+    //   283: ldc 198
+    //   285: aload_3
+    //   286: invokevirtual 178	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   289: aload_0
+    //   290: aload_2
+    //   291: iload_1
+    //   292: iconst_0
+    //   293: aload 8
+    //   295: ldc 182
+    //   297: invokevirtual 186	arjz:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
+    //   300: return
+    //   301: astore_3
+    //   302: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   305: ifeq -16 -> 289
+    //   308: ldc 100
+    //   310: iconst_2
+    //   311: ldc 200
+    //   313: aload_3
+    //   314: invokestatic 203	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   317: goto -28 -> 289
+    //   320: astore_2
+    //   321: aload_2
+    //   322: athrow
+    //   323: astore_3
+    //   324: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   327: ifeq -38 -> 289
+    //   330: ldc 100
+    //   332: iconst_2
+    //   333: ldc 205
+    //   335: aload_3
+    //   336: invokestatic 203	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   339: goto -50 -> 289
+    //   342: iconst_0
+    //   343: istore 5
+    //   345: goto -321 -> 24
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	348	0	this	arjz
+    //   0	348	1	paramInt	int
+    //   0	348	2	paramIntent	Intent
+    //   0	348	3	paramFromServiceMsg	FromServiceMsg
+    //   40	222	4	i	int
+    //   1	343	5	bool	boolean
+    //   49	74	6	l	long
+    //   31	263	8	localBundle	android.os.Bundle
+    //   10	138	9	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   138	165	301	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   170	225	301	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   226	281	301	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   281	289	301	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   138	165	320	finally
+    //   170	225	320	finally
+    //   226	281	320	finally
+    //   281	289	320	finally
+    //   302	317	320	finally
+    //   324	339	320	finally
+    //   138	165	323	java/lang/Exception
+    //   170	225	323	java/lang/Exception
+    //   226	281	323	java/lang/Exception
+    //   281	289	323	java/lang/Exception
   }
   
-  public static String a(Long paramLong)
+  private void a(Intent paramIntent, Packet paramPacket)
   {
-    if (paramLong == null) {
-      return null;
-    }
-    return new SimpleDateFormat("yyyyMMdd").format(paramLong);
-  }
-  
-  private static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(Base64.encodeToString(paramString.getBytes(), 3).replace("=", ""));
-    char c1 = localStringBuilder.charAt(0);
-    localStringBuilder.deleteCharAt(0);
-    localStringBuilder.append(c1);
+    long l = paramIntent.getLongExtra("uin", 0L);
+    int i = paramIntent.getIntExtra("appId", 0);
+    paramIntent = paramIntent.getStringExtra("sso_command");
     if (QLog.isColorLevel()) {
-      QLog.i("ShareHelper", 4, "encodeOne src:" + Base64.encodeToString(paramString.getBytes(), 0) + " dst:" + localStringBuilder.toString());
+      QLog.d("FetchOpenIdServlet", 2, "sendPacket uin=" + l + " appId=" + i);
     }
-    return localStringBuilder.toString();
+    aio_video.ReqGetOpenIdByUin localReqGetOpenIdByUin = new aio_video.ReqGetOpenIdByUin();
+    localReqGetOpenIdByUin.app_id.set(i);
+    localReqGetOpenIdByUin.target_uin.set(l);
+    paramPacket.setSSOCommand(paramIntent);
+    paramPacket.putSendData(bblm.a(localReqGetOpenIdByUin.toByteArray()));
   }
   
-  public static String a(String[] paramArrayOfString)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    int i = 0;
-    while (i < paramArrayOfString.length)
-    {
-      paramArrayOfString[i] = a(paramArrayOfString[i]);
-      i += 1;
+    int i = paramIntent.getIntExtra("req_type", -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("FetchOpenIdServlet", 2, "onReceive cmd:" + i);
     }
-    return b(paramArrayOfString);
+    a(i, paramIntent, paramFromServiceMsg);
   }
   
-  private void a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    AbsShareMsg localAbsShareMsg = new awui(StructMsgForGeneralShare.class).c(114).a(this.jdField_b_of_type_JavaLangString).e(this.jdField_a_of_type_JavaLangString).a();
-    localAbsShareMsg.mSourceName = this.e;
-    localAbsShareMsg.mSourceAction = "web";
-    localAbsShareMsg.mSourceUrl = this.f;
-    Object localObject = awuv.a(2);
-    ((awum)localObject).a(this.d, this.jdField_b_of_type_JavaLangString, this.c);
-    localAbsShareMsg.addItem((awul)localObject);
-    localObject = new Intent();
-    ((Intent)localObject).putExtra("forward_type", -3);
-    ((Intent)localObject).putExtra("stuctmsg_bytes", localAbsShareMsg.getBytes());
-    ((Intent)localObject).putExtra("forwardDirect", true);
-    aphp.a((Activity)this.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
-  }
-  
-  private boolean a()
-  {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.e));
-  }
-  
-  private List<bahx>[] a(Context paramContext)
-  {
-    ArrayList localArrayList = new ArrayList();
-    bahx localbahx = new bahx();
-    localbahx.jdField_a_of_type_JavaLangString = paramContext.getString(2131630983);
-    localbahx.jdField_b_of_type_Int = 2130838732;
-    localbahx.jdField_b_of_type_Boolean = true;
-    localbahx.c = 2;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
-    localbahx = new bahx();
-    localbahx.jdField_a_of_type_JavaLangString = paramContext.getString(2131630996);
-    localbahx.jdField_b_of_type_Int = 2130838733;
-    localbahx.jdField_b_of_type_Boolean = true;
-    localbahx.c = 3;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
-    localbahx = new bahx();
-    localbahx.jdField_a_of_type_JavaLangString = paramContext.getString(2131631003);
-    localbahx.jdField_b_of_type_Int = 2130838736;
-    localbahx.c = 9;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
-    localbahx = new bahx();
-    localbahx.jdField_a_of_type_JavaLangString = paramContext.getString(2131630986);
-    localbahx.jdField_b_of_type_Int = 2130838730;
-    localbahx.c = 10;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
-    return (List[])new ArrayList[] { localArrayList };
-  }
-  
-  private static String b(String[] paramArrayOfString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int j = 0;
-    int k;
-    for (int i = 0; j < paramArrayOfString.length; i = k)
-    {
-      k = i;
-      if (paramArrayOfString[j].length() > i) {
-        k = paramArrayOfString[j].length();
-      }
-      j += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("FetchOpenIdServlet", 2, "onSend");
     }
-    j = 0;
-    while (j < i)
-    {
-      k = 0;
-      while (k < paramArrayOfString.length)
-      {
-        if (paramArrayOfString[k].length() > j) {
-          localStringBuilder.append(paramArrayOfString[k].charAt(j));
-        }
-        k += 1;
-      }
-      j += 1;
-    }
-    return a(localStringBuilder.toString());
-  }
-  
-  private void b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (!TextUtils.isEmpty(this.d)) {
-      localArrayList.add(this.d);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("title", this.jdField_b_of_type_JavaLangString);
-    localBundle.putString("desc", this.c);
-    localBundle.putLong("req_share_id", 0L);
-    localBundle.putString("detail_url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putStringArrayList("image_url", localArrayList);
-    bfqn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, localBundle, null);
-  }
-  
-  private void c()
-  {
-    long l = System.currentTimeMillis();
-    WXShareHelper.a().d(String.valueOf(l), this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, this.c, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  private void d()
-  {
-    long l = System.currentTimeMillis();
-    WXShareHelper.a().c(String.valueOf(l), this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, this.c, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(DialogInterface.OnDismissListener paramOnDismissListener)
-  {
-    if (!a()) {
-      bbmy.a(this.jdField_a_of_type_AndroidContentContext, ajjy.a(2131648154), 0).a();
-    }
-    do
-    {
-      for (;;)
-      {
-        return;
-        if (this.jdField_a_of_type_Bahv == null)
-        {
-          arka localarka = new arka(this);
-          paramOnDismissListener = new arkb(this, paramOnDismissListener);
-          this.jdField_a_of_type_Bahv = new bahv((Activity)this.jdField_a_of_type_AndroidContentContext);
-          this.jdField_a_of_type_Bahv.a(this.jdField_a_of_type_AndroidContentContext.getString(2131653614));
-          this.jdField_a_of_type_Bahv.a(a(this.jdField_a_of_type_AndroidContentContext));
-          this.jdField_a_of_type_Bahv.a(localarka);
-          this.jdField_a_of_type_Bahv.a(paramOnDismissListener);
-        }
-        try
-        {
-          if (!this.jdField_a_of_type_Bahv.a().isShowing())
-          {
-            this.jdField_a_of_type_Bahv.a();
-            return;
-          }
-        }
-        catch (Exception paramOnDismissListener) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ShareActionSheet", 2, "actionSheet.show exception=" + paramOnDismissListener);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString3;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    a(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arjz
  * JD-Core Version:    0.7.0.1
  */

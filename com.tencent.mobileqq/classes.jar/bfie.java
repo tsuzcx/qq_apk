@@ -1,13 +1,20 @@
-import android.net.Uri;
+import android.util.Pair;
 
-public abstract interface bfie
+final class bfie
+  implements bfig
 {
-  public static final Uri a = Uri.parse("content://qq.favorites/biz_related");
-  public static final Uri b = Uri.parse("content://qq.favorites/global_search");
+  public Pair<String, String> a(String paramString)
+  {
+    paramString = paramString.split(":", 2);
+    if ((paramString == null) || (paramString.length < 2)) {
+      return null;
+    }
+    return new Pair(paramString[0].trim(), paramString[1].trim());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfie
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,18 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
+import anpk;
+
 public class FaceScanNativeSoData
   extends XmlData
 {
   public String getSharedPreferencesName()
   {
-    return "early_qq.android.ar.face.so_v7.9.5";
+    return "early_" + anpk.a;
   }
   
   public String getStrResName()
   {
-    return "qq.android.ar.face.so_v7.9.5";
+    return anpk.a;
   }
 }
 

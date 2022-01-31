@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aebg;
+import aemf;
 import android.text.Editable;
 import android.text.SpannableString;
-import awqx;
-import azef;
+import axqw;
+import bafh;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.widget.XEditTextEx;
 import com.tencent.widget.XPanelContainer;
@@ -12,7 +12,7 @@ import com.tencent.widget.XPanelContainer;
 public class BaseTroopChatPie$5
   implements Runnable
 {
-  public BaseTroopChatPie$5(aebg paramaebg, boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
+  public BaseTroopChatPie$5(aemf paramaemf, boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class BaseTroopChatPie$5
       i = this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
       this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().delete(i - 1, i);
     }
-    SpannableString localSpannableString = azef.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, this.this$0.E(), this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx, true);
+    SpannableString localSpannableString = bafh.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, this.this$0.E(), this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx, true);
     if ((localSpannableString == null) || (localSpannableString.length() == 0)) {}
     do
     {
@@ -33,19 +33,19 @@ public class BaseTroopChatPie$5
         i = 0;
       }
       this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().insert(i, localSpannableString);
-      aebg.a(this.this$0).a(1);
+      aemf.a(this.this$0).a(1);
       if (this.jdField_a_of_type_Int == 1)
       {
-        awqx.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Press_AIOhead_sendatmsg", 0, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+        axqw.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Press_AIOhead_sendatmsg", 0, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
         return;
       }
     } while (this.jdField_a_of_type_Int != 4);
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("0")))
     {
-      awqx.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_atallmber_sendatallmsg", 0, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+      axqw.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_atallmber_sendatallmsg", 0, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
       return;
     }
-    awqx.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Input_atmber_sendatmsg", 0, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+    axqw.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Input_atmber_sendatmsg", 0, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
   }
 }
 

@@ -1,33 +1,33 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class alqj
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public alqj(ClearEllipsisEditText paramClearEllipsisEditText) {}
+  public alqj(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bbgg parambbgg) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    for (;;)
+    paramDialogInterface = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppSchemeCenter$TelSchemeHandler$1.a));
+    ArkAppCenter.a(paramDialogInterface);
+    BaseActivity.sTopActivity.startActivity(paramDialogInterface);
+    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {}
+    try
     {
-      return false;
-      if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - ClearEllipsisEditText.a(this.a).getIntrinsicWidth()) {}
-      for (int i = 1; (paramMotionEvent.getAction() == 0) && (i != 0); i = 0)
-      {
-        this.a.setText("");
-        this.a.setClearButtonVisible(false);
-        return true;
-      }
+      this.jdField_a_of_type_Bbgg.dismiss();
+      return;
     }
+    catch (Exception paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alqj
  * JD-Core Version:    0.7.0.1
  */

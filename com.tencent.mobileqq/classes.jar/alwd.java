@@ -1,41 +1,23 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.RoundImageView;
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
 import com.tencent.qphone.base.util.QLog;
 
 class alwd
-  implements URLDrawable.URLDrawableListener
+  extends bbwf
 {
-  alwd(alwb paramalwb, RoundImageView paramRoundImageView, ampw paramampw, String paramString) {}
+  alwd(alvz paramalvz, String paramString, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onDone(bbwg parambbwg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentDanmakuRender", 2, "onLoadCanceled : " + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentDanmakuRender", 2, "onLoadFailed : " + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(paramURLDrawable);
-      this.jdField_a_of_type_Ampw.c(true);
+    super.onDone(parambbwg);
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, String.format("download finish, url=%s, err=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(parambbwg.a) }));
+    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onDownload(parambbwg.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alwd
  * JD-Core Version:    0.7.0.1
  */

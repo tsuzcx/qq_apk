@@ -1,31 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Pair;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
 
-class almw
-  extends Handler
+public class almw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  almw(almv paramalmv, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public almw(QRScanEntryView paramQRScanEntryView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = (Pair)paramMessage.obj;
-    this.a.b(((Long)paramMessage.first).longValue(), ((Long)paramMessage.second).longValue());
+    asjl.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     almw
  * JD-Core Version:    0.7.0.1
  */

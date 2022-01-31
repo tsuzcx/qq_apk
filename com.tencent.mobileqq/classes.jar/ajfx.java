@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class ajfx
-  implements Comparator<BaseAddress>
+public final class ajfx
+  implements EIPCResultCallback
 {
-  ajfx(ajfw paramajfw) {}
-  
-  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    int j = paramBaseAddress1.pinyinFirst.compareTo(paramBaseAddress2.pinyinFirst);
-    int i = j;
-    if (j == 0) {
-      i = paramBaseAddress1.pinyinAll.compareTo(paramBaseAddress2.pinyinAll);
-    }
-    return i;
+    QLog.i("CmShow_CmShowRenderView", 1, "openCmShowStore CmShow code:" + paramEIPCResult.code);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajfx
  * JD-Core Version:    0.7.0.1
  */

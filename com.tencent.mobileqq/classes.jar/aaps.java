@@ -1,16 +1,19 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aaps
-  implements View.OnClickListener
+public final class aaps
+  implements DialogInterface.OnClickListener
 {
-  public aaps(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public aaps(aaqe paramaaqe) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppDialog.cancel();
+    if (this.a != null) {
+      this.a.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

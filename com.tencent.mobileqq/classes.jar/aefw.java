@@ -1,14 +1,27 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.aio.panel.PEPanel;
+import com.tencent.widget.ListView;
+import com.tencent.widget.XPanelContainer;
 
-class aefw
-  implements Comparator<MessageRecord>
+public class aefw
+  implements Handler.Callback
 {
-  aefw(aefv paramaefv) {}
+  public aefw(PEPanel paramPEPanel) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public boolean handleMessage(Message paramMessage)
   {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    PEPanel.a(this.a).setVisibility(0);
+    paramMessage = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
+    paramMessage.setDuration(200L);
+    PEPanel.a(this.a).startAnimation(paramMessage);
+    return true;
   }
 }
 

@@ -1,45 +1,114 @@
-import android.util.SparseArray;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import java.util.HashSet;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.smtt.sdk.WebView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bdjh
-  implements View.OnClickListener
+public class bdjh
+  implements bdip
 {
-  bdjh(bdje parambdje) {}
+  protected Context a;
+  protected final WebView a;
+  protected final String a;
+  protected boolean a;
+  protected final String b;
+  protected final String c;
   
-  public void onClick(View paramView)
+  public bdjh(Context paramContext, WebView paramWebView, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    int i = paramView.getId();
-    Object localObject;
-    if ((bdje.a(this.a)) && ((bdje.a(this.a) == null) || (!bdje.a(this.a).contains(Integer.valueOf(i)))) && (bdje.b(this.a) != -1) && (i != bdje.b(this.a)))
-    {
-      localObject = (View)bdje.a(this.a).get(bdje.b(this.a));
-      ((View)localObject).findViewById(2131296379).setVisibility(8);
-      localObject = (TextView)((View)localObject).findViewById(2131296378);
-      bdje.a(this.a, (TextView)localObject, false);
-      localObject = (View)bdje.a(this.a).get(i);
-      ((View)localObject).findViewById(2131296379).setVisibility(0);
-      localObject = (TextView)((View)localObject).findViewById(2131296378);
-      bdje.a(this.a, (TextView)localObject, true);
-      bdje.a(this.a, i);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
+    this.b = paramString3;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.c = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(Exception paramException)
+  {
+    bdht.c("AppUpdate", "AppUpdate onException >>> " + paramException.toString());
+    if ((!this.jdField_a_of_type_Boolean) && (bdiw.a(this.jdField_a_of_type_AndroidContentContext))) {
+      bdjd.b(this.jdField_a_of_type_AndroidContentContext);
     }
-    if (bdje.a(this.a) != null) {
-      bdje.a(this.a).OnClick(paramView, i);
-    }
-    if (bdje.a(this.a) != null)
-    {
-      localObject = (TextView)paramView.findViewById(2131296378);
-      if ((localObject != null) && ((localObject instanceof TextView))) {
-        bdje.a(this.a).a(paramView, i, ((TextView)localObject).getText().toString());
+    if (TextUtils.isEmpty(this.b)) {}
+    for (paramException = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";; paramException = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);") {
+      try
+      {
+        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramException);
+        return;
       }
+      catch (Exception paramException) {}
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    bdht.c("AppUpdate", "AppUpdate onResult >>> " + localJSONObject.toString());
+    paramJSONObject = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        paramJSONObject.put("guid", this.c);
+        paramJSONObject.put("content", localJSONObject.toString());
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        {
+          localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject.toString() + ");}void(0);";
+          paramJSONObject = (JSONObject)localObject;
+          if (!this.jdField_a_of_type_Boolean)
+          {
+            paramJSONObject = (JSONObject)localObject;
+            if (bdiw.a(this.jdField_a_of_type_AndroidContentContext))
+            {
+              if (localJSONObject.optInt("code", -1) != 0) {
+                continue;
+              }
+              bdjd.a(this.jdField_a_of_type_AndroidContentContext);
+              paramJSONObject = (JSONObject)localObject;
+            }
+          }
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        Object localObject;
+        if (TextUtils.isEmpty(this.b))
+        {
+          paramJSONObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";
+          continue;
+        }
+        paramJSONObject = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);";
+        continue;
+      }
+      try
+      {
+        localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+        if (localObject == null) {}
+      }
+      catch (Exception paramJSONObject)
+      {
+        return;
+      }
+      try
+      {
+        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramJSONObject);
+        return;
+      }
+      catch (Exception paramJSONObject) {}
+      localObject = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject.toString() + ");void(0);";
+      continue;
+      bdjd.b(this.jdField_a_of_type_AndroidContentContext);
+      paramJSONObject = (JSONObject)localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdjh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,23 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
 
-class addz
-  implements apca
+public class addz
+  implements adeb
 {
-  addz(addx paramaddx, MessageForFile paramMessageForFile, Context paramContext) {}
+  public addz(DoodleView paramDoodleView) {}
   
   public void a()
   {
-    apck.a(this.jdField_a_of_type_Addx.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a();
+    }
   }
   
-  public void b() {}
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a(paramInt1, paramInt2);
+    }
+  }
 }
 
 

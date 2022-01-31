@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.soso;
 
-import akgb;
-import akgd;
+import akun;
+import akup;
 
 public class SosoInterface$3$1
   implements Runnable
 {
-  public SosoInterface$3$1(akgb paramakgb, akgd paramakgd, String paramString1, int paramInt, String paramString2) {}
+  public SosoInterface$3$1(akun paramakun, akup paramakup, String paramString1, int paramInt, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Akgd.onStatusUpdate(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Akup.onStatusUpdate(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
   }
 }
 

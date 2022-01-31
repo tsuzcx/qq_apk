@@ -1,349 +1,288 @@
-import android.annotation.TargetApi;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.media.MediaMetadataRetriever;
-import android.media.MediaMuxer;
-import android.text.TextUtils;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.PointF;
+import android.opengl.GLES20;
+import com.tencent.aekit.openrender.UniformParam.Float2fParam;
+import com.tencent.aekit.openrender.UniformParam.Float3fParam;
+import com.tencent.aekit.openrender.UniformParam.FloatParam;
+import com.tencent.aekit.openrender.UniformParam.IntParam;
+import com.tencent.aekit.openrender.UniformParam.Mat4Param;
+import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.baseutils.io.FileUtils;
+import com.tencent.ttpic.openapi.config.MediaConfig;
+import com.tencent.ttpic.openapi.model.DoodleItem;
+import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
+import com.tencent.ttpic.openapi.shader.ShaderManager;
+import com.tencent.ttpic.openapi.util.MatrixUtil;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-@TargetApi(18)
 public class vol
+  extends VideoFilterBase
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
-  private MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer;
-  private String jdField_a_of_type_JavaLangString;
-  private von jdField_a_of_type_Von = new von(null);
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private MediaExtractor jdField_b_of_type_AndroidMediaMediaExtractor;
-  private String jdField_b_of_type_JavaLangString;
+  public int a;
+  Point jdField_a_of_type_AndroidGraphicsPoint;
+  protected UniformParam.TextureBitmapParam a;
+  private DoodleItem jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem;
+  private String jdField_a_of_type_JavaLangString = "doodle_image";
+  List<PointF> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  public int b;
+  List<Bitmap> b;
+  public int c = 1080;
+  public int d = 1440;
   
-  public vol(String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public vol(DoodleItem paramDoodleItem, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-  }
-  
-  private int a(MediaExtractor paramMediaExtractor, String paramString)
-  {
-    if (paramMediaExtractor == null) {
-      return -1;
-    }
-    int i = 0;
-    while (i < paramMediaExtractor.getTrackCount())
-    {
-      String str = paramMediaExtractor.getTrackFormat(i).getString("mime");
-      if (QLog.isColorLevel()) {
-        QLog.d("HwVideoMerge", 2, "format for track " + i + " is " + str);
-      }
-      if (str.startsWith(paramString))
-      {
-        paramMediaExtractor.selectTrack(i);
-        return i;
-      }
-      i += 1;
-    }
-    return -1;
-  }
-  
-  public static final int a(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    paramString2 = new vol(paramString1, paramString2, 0L, 0L);
-    int i = paramString2.a(paramString3, paramInt);
-    if ((i == -2) || (i == -4) || (i == -6)) {
-      if (new File(paramString1).renameTo(new File(paramString3))) {
-        paramInt = 0;
-      }
-    }
-    do
-    {
-      return paramInt;
-      return -10;
-      paramInt = i;
-    } while (i != 0);
-    return paramString2.a();
-  }
-  
-  public static final int a(String paramString1, String paramString2, String paramString3, int paramInt, long paramLong1, long paramLong2)
-  {
-    paramString2 = new vol(paramString1, paramString2, paramLong1, paramLong2);
-    int i = paramString2.a(paramString3, paramInt);
-    if ((i == -2) || (i == -4) || (i == -6)) {
-      if (new File(paramString1).renameTo(new File(paramString3))) {
-        paramInt = 0;
-      }
-    }
-    do
-    {
-      return paramInt;
-      return -10;
-      paramInt = i;
-    } while (i != 0);
-    paramString2.a();
-    return i;
-  }
-  
-  private MediaExtractor a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      MediaExtractor localMediaExtractor = new MediaExtractor();
-      try
-      {
-        localMediaExtractor.setDataSource(paramString);
-        return localMediaExtractor;
-      }
-      catch (IOException localIOException)
-      {
-        a("createExtractor path:" + paramString, localIOException);
-        localMediaExtractor.release();
-        return null;
-      }
-    }
-    return null;
+    super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_NORMAL));
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = 320;
+    this.jdField_b_of_type_Int = 480;
+    this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem = paramDoodleItem;
+    initParams();
+    a(paramString);
+    paramDoodleItem.width = 25;
+    paramDoodleItem.height = 25;
   }
   
   private void a()
   {
-    boolean bool2 = false;
-    int i = 0;
-    while ((!bool2) || (i == 0))
+    Bitmap localBitmap = (Bitmap)this.jdField_b_of_type_JavaUtilList.get(0);
+    if (this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam != null)
     {
-      boolean bool1 = bool2;
-      if (!bool2)
-      {
-        bool2 = a();
-        bool1 = bool2;
-        if (!bool2)
-        {
-          this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Von.jdField_a_of_type_Int, this.jdField_a_of_type_Von.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_Von.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-          bool1 = bool2;
-        }
-      }
-      bool2 = bool1;
-      if (i == 0)
-      {
-        boolean bool3 = b();
-        bool2 = bool1;
-        i = bool3;
-        if (!bool3)
-        {
-          this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Von.jdField_b_of_type_Int, this.jdField_a_of_type_Von.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_Von.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-          bool2 = bool1;
-          i = bool3;
-        }
-      }
-    }
-  }
-  
-  private static void a(String paramString, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel())
-    {
-      if (paramThrowable != null) {
-        QLog.d("HwVideoMerge", 2, paramString, paramThrowable);
-      }
-    }
-    else {
+      this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam.swapTextureBitmap(localBitmap);
       return;
     }
-    QLog.d("HwVideoMerge", 2, paramString);
+    this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam = new UniformParam.TextureBitmapParam("inputImageTexture2", localBitmap, 33986, false);
+    this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam.initialParams(super.getProgramIds());
+    super.addParam(this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam);
   }
   
-  private boolean a()
+  private void a(String paramString)
   {
-    this.jdField_a_of_type_Von.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    if (this.jdField_a_of_type_AndroidMediaMediaExtractor == null) {}
-    int i;
-    do
-    {
-      return true;
-      i = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Von.jdField_a_of_type_JavaNioByteBuffer, 0);
-    } while (i <= 0);
-    this.jdField_a_of_type_Von.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-    this.jdField_a_of_type_Von.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = i;
-    this.jdField_a_of_type_Von.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset = 0;
-    this.jdField_a_of_type_Von.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleFlags();
-    this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
-    return false;
-  }
-  
-  private int b()
-  {
-    int i = 0;
-    this.jdField_a_of_type_Von.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    if (this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Von.jdField_a_of_type_JavaNioByteBuffer, 0) <= 0)
-    {
-      b();
-      i = -5;
+    paramString = BitmapUtils.decodeSampledBitmapFromFile(FileUtils.getRealPath(paramString + "/" + this.jdField_a_of_type_JavaLangString + "/" + this.jdField_a_of_type_JavaLangString + "_0.png"), MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);
+    if (BitmapUtils.isLegal(paramString)) {
+      this.jdField_b_of_type_JavaUtilList.add(paramString);
     }
-    do
-    {
-      return i;
-      this.jdField_a_of_type_Von.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    } while (this.jdField_b_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Von.jdField_a_of_type_JavaNioByteBuffer, 0) > 0);
-    b();
-    return -6;
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("Personality", 2, "PersonalityGlareFilter init bitmap is null");
   }
   
-  private static int b(String paramString, int paramInt)
+  public void ApplyGLSLFilter()
   {
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    try
+    if (!this.jdField_a_of_type_Boolean)
     {
-      localMediaMetadataRetriever.setDataSource(paramString);
-      paramString = null;
-      try
-      {
-        String str = localMediaMetadataRetriever.extractMetadata(24);
-        paramString = str;
+      this.jdField_a_of_type_Boolean = true;
+      super.ApplyGLSLFilter();
+    }
+  }
+  
+  PointF a(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, PointF paramPointF4, float paramFloat)
+  {
+    PointF localPointF1 = new PointF((paramPointF3.x - paramPointF1.x) * 0.5F, (paramPointF3.y - paramPointF1.y) * 0.5F);
+    PointF localPointF2 = new PointF((paramPointF3.x - paramPointF2.x) * 3.0F - (paramPointF4.x - paramPointF2.x) * 0.5F - 2.0F * 0.5F * (paramPointF3.x - paramPointF1.x), (paramPointF3.y - paramPointF2.y) * 3.0F - (paramPointF4.y - paramPointF2.y) * 0.5F - 2.0F * 0.5F * (paramPointF3.y - paramPointF1.y));
+    float f1 = paramPointF3.x;
+    float f2 = paramPointF2.x;
+    float f3 = paramPointF4.x;
+    float f4 = paramPointF2.x;
+    float f5 = paramPointF3.x;
+    float f6 = paramPointF1.x;
+    float f7 = paramPointF3.y;
+    float f8 = paramPointF2.y;
+    float f9 = paramPointF4.y;
+    float f10 = paramPointF2.y;
+    paramPointF1 = new PointF((f1 - f2) * -2.0F + (f3 - f4) * 0.5F + (f5 - f6) * 0.5F, 0.5F * (paramPointF3.y - paramPointF1.y) + ((f7 - f8) * -2.0F + (f9 - f10) * 0.5F));
+    f1 = paramPointF1.x;
+    f2 = localPointF2.x;
+    f3 = localPointF1.x;
+    f4 = paramPointF2.x;
+    f5 = paramPointF1.y;
+    f6 = localPointF2.y;
+    return new PointF(f1 * paramFloat * paramFloat * paramFloat + f2 * paramFloat * paramFloat + f3 * paramFloat + f4, localPointF1.y * paramFloat + (f6 * paramFloat * paramFloat + f5 * paramFloat * paramFloat * paramFloat) + paramPointF2.y);
+  }
+  
+  void a(ArrayList<PointF> paramArrayList)
+  {
+    float f3 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.width * this.width / this.c;
+    int i = 3;
+    float f1;
+    float f2;
+    if (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      f1 = (float)vop.a((PointF)this.jdField_a_of_type_JavaUtilList.get(i - 3), (PointF)this.jdField_a_of_type_JavaUtilList.get(i - 2));
+      f2 = (float)vop.a((PointF)this.jdField_a_of_type_JavaUtilList.get(i - 2), (PointF)this.jdField_a_of_type_JavaUtilList.get(i - 1));
+      f1 = 1.0F / ((int)(((float)vop.a((PointF)this.jdField_a_of_type_JavaUtilList.get(i - 1), (PointF)this.jdField_a_of_type_JavaUtilList.get(i)) + (f1 + f2)) / (f3 * 1.5F)) * 12 * 1.0F);
+      if (f1 > 0.1F) {
+        f1 = 0.1F;
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("HwVideoMerge", 2, localException, new Object[0]);
-        }
-      }
-      localMediaMetadataRetriever.release();
-      if (paramString == null) {
-        return paramInt;
-      }
-      int i;
-      return paramInt;
     }
-    catch (IllegalArgumentException paramString)
+    label286:
+    for (;;)
     {
-      try
-      {
-        i = Integer.parseInt(paramString);
-        return i;
-      }
-      catch (NumberFormatException paramString) {}
-      paramString = paramString;
-      return paramInt;
-    }
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaExtractor != null)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
-    }
-    if (this.jdField_b_of_type_AndroidMediaMediaExtractor != null)
-    {
-      this.jdField_b_of_type_AndroidMediaMediaExtractor.release();
-      this.jdField_b_of_type_AndroidMediaMediaExtractor = null;
-    }
-  }
-  
-  private boolean b()
-  {
-    this.jdField_a_of_type_Von.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    if (this.jdField_b_of_type_AndroidMediaMediaExtractor == null) {
-      return true;
-    }
-    long l = this.jdField_b_of_type_AndroidMediaMediaExtractor.getSampleTime();
-    int i = this.jdField_b_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Von.jdField_a_of_type_JavaNioByteBuffer, 0);
-    if ((i <= 0) || ((this.jdField_b_of_type_Long != 0L) && (l > this.jdField_b_of_type_Long * 1000L)))
-    {
-      QLog.d("HwVideoMerge", 2, "getAudioInputBuffer audio end. sampleTime:" + l);
-      return true;
-    }
-    this.jdField_a_of_type_Von.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs = l;
-    this.jdField_a_of_type_Von.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = i;
-    this.jdField_a_of_type_Von.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset = 0;
-    this.jdField_a_of_type_Von.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags = this.jdField_b_of_type_AndroidMediaMediaExtractor.getSampleFlags();
-    this.jdField_b_of_type_AndroidMediaMediaExtractor.advance();
-    return false;
-  }
-  
-  public int a()
-  {
-    int i = 0;
-    this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
-    try
-    {
-      a();
-      this.jdField_a_of_type_AndroidMediaMediaMuxer.stop();
-      this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
-      this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
-      b();
-      return i;
-    }
-    catch (Exception localException)
-    {
+      f2 = 0.0F;
       for (;;)
       {
-        QLog.e("HwVideoMerge", 1, "doWork error, ", localException);
-        i = -13;
+        if (f2 < 1.0F)
+        {
+          paramArrayList.add(a((PointF)this.jdField_a_of_type_JavaUtilList.get(i - 3), (PointF)this.jdField_a_of_type_JavaUtilList.get(i - 2), (PointF)this.jdField_a_of_type_JavaUtilList.get(i - 1), (PointF)this.jdField_a_of_type_JavaUtilList.get(i), f2));
+          f2 += f1;
+          continue;
+          if (f1 >= 0.01F) {
+            break label286;
+          }
+          f1 = 0.01F;
+          break;
+        }
+      }
+      i += 1;
+      break;
+      return;
+    }
+  }
+  
+  public void a(List<PointF> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if ((this.jdField_b_of_type_JavaUtilList.size() < 1) || (this.jdField_a_of_type_AndroidGraphicsPoint == null)) {}
+    for (;;)
+    {
+      return;
+      a();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        PointF localPointF = (PointF)paramList.next();
+        localPointF = new PointF(localPointF.x + this.jdField_a_of_type_AndroidGraphicsPoint.x, localPointF.y + this.jdField_a_of_type_AndroidGraphicsPoint.y);
+        this.jdField_a_of_type_JavaUtilList.add(localPointF);
       }
     }
   }
   
-  public int a(String paramString, int paramInt)
+  public boolean a()
   {
-    this.jdField_a_of_type_AndroidMediaMediaExtractor = a(this.jdField_a_of_type_JavaLangString);
-    int i = a(this.jdField_a_of_type_AndroidMediaMediaExtractor, "video/");
-    if ((this.jdField_a_of_type_AndroidMediaMediaExtractor == null) || (i < 0)) {
-      i = -1;
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1)) {
+      return false;
     }
+    System.currentTimeMillis();
+    vop.a(2);
+    float f1 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.width * this.width / this.c * 1.5F;
+    float f2 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.height * this.height / this.d * 1.5F;
+    ArrayList localArrayList = new ArrayList();
     int j;
-    MediaFormat localMediaFormat1;
-    MediaFormat localMediaFormat2;
-    do
+    if (this.jdField_a_of_type_JavaUtilList.size() <= 3)
     {
-      return i;
-      this.jdField_b_of_type_AndroidMediaMediaExtractor = a(this.jdField_b_of_type_JavaLangString);
-      j = a(this.jdField_b_of_type_AndroidMediaMediaExtractor, "audio/");
-      if ((this.jdField_b_of_type_AndroidMediaMediaExtractor == null) || (j < 0)) {
-        return -2;
-      }
-      if (this.jdField_a_of_type_Long > 0L) {
-        this.jdField_b_of_type_AndroidMediaMediaExtractor.seekTo(this.jdField_b_of_type_Long * 1000L, 0);
-      }
-      localMediaFormat1 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
-      localMediaFormat2 = this.jdField_b_of_type_AndroidMediaMediaExtractor.getTrackFormat(j);
-      this.jdField_a_of_type_Int = localMediaFormat1.getInteger("width");
-      this.jdField_b_of_type_Int = localMediaFormat1.getInteger("height");
-      this.jdField_a_of_type_Von.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      j = b();
-      i = j;
-    } while (j != 0);
-    if (TextUtils.isEmpty(paramString))
-    {
-      b();
-      return -9;
+      i = 3;
+      j = 0;
     }
-    try
+    float f3;
+    float f4;
+    for (;;)
     {
-      if (new File(paramString).exists())
+      if ((j >= this.jdField_a_of_type_JavaUtilList.size()) || (j >= i)) {
+        break label343;
+      }
+      if (j > 0)
       {
-        b();
-        return -8;
+        localObject1 = (PointF)this.jdField_a_of_type_JavaUtilList.get(j - 1);
+        localObject2 = (PointF)this.jdField_a_of_type_JavaUtilList.get(j);
+        int m = (int)((float)vop.a((PointF)localObject1, (PointF)localObject2) / f1 * 18.0F) + 1;
+        int k = m;
+        if (m < 6) {
+          k = 6;
+        }
+        f3 = (((PointF)localObject2).x - ((PointF)localObject1).x) / (k * 1.0F);
+        f4 = (((PointF)localObject2).y - ((PointF)localObject1).y) / (k * 1.0F);
+        m = 0;
+        for (;;)
+        {
+          if (m < k)
+          {
+            localArrayList.add(new PointF(((PointF)localObject1).x + m * f3, ((PointF)localObject1).y + m * f4));
+            m += 1;
+            continue;
+            i = 2;
+            break;
+          }
+        }
+        if (!((PointF)localArrayList.get(localArrayList.size() - 1)).equals(((PointF)localObject2).x, ((PointF)localObject2).y)) {
+          localArrayList.add(localObject1);
+        }
       }
-      this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramString, 0);
-      paramInt = b(this.jdField_a_of_type_JavaLangString, paramInt);
-      this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(paramInt);
-      this.jdField_a_of_type_Von.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(localMediaFormat1);
-      this.jdField_a_of_type_Von.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(localMediaFormat2);
-      return j;
+      j += 1;
     }
-    catch (IOException paramString)
+    label343:
+    if (this.jdField_a_of_type_JavaUtilList.size() > 3) {
+      a(localArrayList);
+    }
+    Object localObject1 = new float[localArrayList.size() * 8];
+    Object localObject2 = new float[localArrayList.size() * 8];
+    int i = 0;
+    while (i < localArrayList.size())
     {
-      this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
-      b();
+      PointF localPointF = (PointF)localArrayList.get(i);
+      float f6 = localPointF.x - f1 / 2.0F;
+      float f5 = this.height - localPointF.y + f2 / 2.0F;
+      f3 = f6 / this.width * 2.0F - 1.0F;
+      f4 = f5 / this.height * 2.0F - 1.0F;
+      f6 = (f6 + f1) / this.width * 2.0F - 1.0F;
+      f5 = (f5 - f2) / this.height * 2.0F - 1.0F;
+      localObject1[(i * 8 + 0)] = f3;
+      localObject1[(i * 8 + 1)] = f5;
+      localObject1[(i * 8 + 2)] = f6;
+      localObject1[(i * 8 + 3)] = f5;
+      localObject1[(i * 8 + 4)] = f3;
+      localObject1[(i * 8 + 5)] = f4;
+      localObject1[(i * 8 + 6)] = f6;
+      localObject1[(i * 8 + 7)] = f4;
+      localObject2[(i * 8 + 0)] = 0.0F;
+      localObject2[(i * 8 + 1)] = 1.0F;
+      localObject2[(i * 8 + 2)] = 1.0F;
+      localObject2[(i * 8 + 3)] = 1.0F;
+      localObject2[(i * 8 + 4)] = 0.0F;
+      localObject2[(i * 8 + 5)] = 0.0F;
+      localObject2[(i * 8 + 6)] = 1.0F;
+      localObject2[(i * 8 + 7)] = 0.0F;
+      i += 1;
     }
-    return -7;
+    super.setPositions((float[])localObject1);
+    super.setTexCords((float[])localObject2);
+    super.addParam(new UniformParam.Float2fParam("texAnchor", -this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y));
+    super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
+    super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
+    super.OnDrawFrameGLSL();
+    GLES20.glDrawArrays(5, 0, localArrayList.size() * 4);
+    GLES20.glFlush();
+    vop.a(0);
+    System.currentTimeMillis();
+    return true;
+  }
+  
+  public void initParams()
+  {
+    super.addParam(new UniformParam.IntParam("texNeedTransform", 1));
+    super.addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
+    super.addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
+    super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
+    super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
+    super.addParam(new UniformParam.FloatParam("positionRotate", 0.0F));
+    super.addParam(new UniformParam.IntParam("blendMode", this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.blendMode));
+    super.addParam(new UniformParam.Mat4Param("u_MVPMatrix", MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F)));
+    super.addParam(new UniformParam.FloatParam("alpha", 1.0F));
+  }
+  
+  public void updatePreview(Object paramObject) {}
+  
+  public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
+  {
+    super.updateVideoSize(paramInt1, paramInt2, paramDouble);
+    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(paramInt1 / 2, paramInt2 / 2);
+    super.addParam(new UniformParam.Float2fParam("canvasSize", paramInt1, paramInt2));
   }
 }
 

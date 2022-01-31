@@ -1,14 +1,6 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
-
-public class ahrg
-  extends aiac
+public abstract interface ahrg
 {
-  public CheckBox a;
-  public TextView a;
-  
-  private ahrg(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
+  public abstract void a();
 }
 
 

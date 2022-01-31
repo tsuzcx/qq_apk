@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.widget.ImageView;
-import bidq;
-import bidy;
+import bjun;
+import bjuv;
 
 public class EditVideoButton$9$1
   implements Runnable
 {
-  public EditVideoButton$9$1(bidy parambidy) {}
+  public EditVideoButton$9$1(bjuv parambjuv) {}
   
   public void run()
   {
-    bidq.a(this.a.a).setVisibility(0);
+    bjun.a(this.a.a).setVisibility(0);
   }
 }
 

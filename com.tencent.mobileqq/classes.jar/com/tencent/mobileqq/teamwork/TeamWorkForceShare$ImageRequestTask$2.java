@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.teamwork;
 
-import ajjy;
-import bbms;
-import bbmy;
+import ajyc;
+import bcpq;
+import bcpw;
 
 class TeamWorkForceShare$ImageRequestTask$2
   implements Runnable
@@ -12,7 +12,7 @@ class TeamWorkForceShare$ImageRequestTask$2
   public void run()
   {
     TeamWorkForceShare.a(this.a.this$0).dismiss();
-    bbmy.a(TeamWorkForceShare.a(this.a.this$0), ajjy.a(2131649015), 0).a();
+    bcpw.a(TeamWorkForceShare.a(this.a.this$0), ajyc.a(2131714804), 0).a();
   }
 }
 

@@ -1,81 +1,45 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import java.util.HashMap;
 
 public class awyt
-  extends awul
 {
-  String S = "";
+  private Long jdField_a_of_type_JavaLangLong;
+  private HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private Long b;
   
-  public awyt()
+  public awyt(Long paramLong1, Long paramLong2)
   {
-    this.a = "more";
-  }
-  
-  public awyt(String paramString)
-  {
-    this();
-    this.S = paramString;
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    paramBundle = paramView;
-    if (paramView == null) {
-      paramBundle = LayoutInflater.from(paramContext).inflate(2131496852, null);
-    }
-    paramContext = (TextView)paramBundle.findViewById(2131310783);
-    if (TextUtils.isEmpty(this.S)) {
-      this.S = ajjy.a(2131648824);
-    }
-    paramContext.setText(this.S);
-    return paramBundle;
+    this.jdField_a_of_type_JavaLangLong = paramLong1;
+    this.b = paramLong2;
   }
   
   public String a()
   {
-    return "More";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.S = paramObjectInput.readUTF();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.S == null) {}
-    for (String str = "";; str = awbk.a(this.S, false))
-    {
-      paramObjectOutput.writeUTF(str);
-      return;
+    String str = new String();
+    if (!a()) {
+      return str;
     }
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilHashMap.size())
+    {
+      str = str + (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+      i += 1;
+    }
+    return str;
   }
   
-  public void a(XmlSerializer paramXmlSerializer)
+  public void a(int paramInt, String paramString)
   {
-    paramXmlSerializer.startTag(null, "title");
-    paramXmlSerializer.text(this.S);
-    paramXmlSerializer.endTag(null, "title");
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramString);
   }
   
-  public boolean a(awwc paramawwc)
+  public boolean a()
   {
-    this.S = awbk.a(awuw.a(paramawwc), false);
-    return true;
+    return this.jdField_a_of_type_JavaUtilHashMap.size() == this.jdField_a_of_type_JavaLangLong.longValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awyt
  * JD-Core Version:    0.7.0.1
  */

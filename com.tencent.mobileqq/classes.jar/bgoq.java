@@ -1,78 +1,29 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqdataline.DatalineBridgeActivity;
 
 public class bgoq
 {
-  public static ArrayList<Object> a(JSONArray paramJSONArray)
+  public static void a(Context paramContext, Bundle paramBundle, String paramString)
   {
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < paramJSONArray.length())
+    if (paramContext == null)
     {
-      Object localObject = paramJSONArray.opt(i);
-      if (localObject == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (localObject.getClass() == JSONObject.class) {
-          localArrayList.add(a((JSONObject)localObject));
-        } else if (localObject.getClass() == JSONArray.class) {
-          localArrayList.add(a((JSONArray)localObject));
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("QQProxyForQlink", 2, "[QLINK] QQ - startQlink failed context=null!");
       }
+      Toast.makeText(BaseApplication.getContext(), ajyc.a(2131710695), 0).show();
+      return;
     }
-    return localArrayList;
-  }
-  
-  public static Map<String, Object> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    Intent localIntent = new Intent(paramContext, DatalineBridgeActivity.class);
+    localIntent.putExtra("componetname", paramString);
+    if (paramBundle != null) {
+      localIntent.putExtra("_param_", paramBundle);
     }
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    try
-    {
-      paramString = a(new JSONObject(paramString));
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localLinkedHashMap;
-  }
-  
-  public static Map<String, Object> a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    Iterator localIterator = paramJSONObject.keys();
-    while (localIterator.hasNext())
-    {
-      String str = localIterator.next() + "";
-      Object localObject = paramJSONObject.get(str);
-      if (localObject != null) {
-        if (localObject.getClass() == JSONObject.class) {
-          localLinkedHashMap.put(str, a((JSONObject)localObject));
-        } else if (localObject.getClass() == JSONArray.class) {
-          localLinkedHashMap.put(str, a((JSONArray)localObject));
-        } else {
-          localLinkedHashMap.put(str, localObject);
-        }
-      }
-    }
-    return localLinkedHashMap;
+    paramContext.startActivity(localIntent);
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.storyHome.memory.model;
 
-import uhg;
-import uhh;
+import uuc;
+import uud;
 
 public class StoryQQ2UidConverter$2
   implements Runnable
 {
-  public StoryQQ2UidConverter$2(uhg paramuhg, String paramString) {}
+  public StoryQQ2UidConverter$2(uuc paramuuc, String paramString) {}
   
   public void run()
   {
-    if (uhg.a(this.this$0) != null) {
-      uhg.a(this.this$0).a(this.a, true);
+    if (uuc.a(this.this$0) != null) {
+      uuc.a(this.this$0).a(this.a, true);
     }
   }
 }

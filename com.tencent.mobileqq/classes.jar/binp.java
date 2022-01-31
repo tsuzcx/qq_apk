@@ -1,60 +1,124 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class binp
-  implements bint
+public class binp
+  extends RecyclerView.Adapter<bins>
 {
-  protected int[] a;
+  int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private binr jdField_a_of_type_Binr;
+  List<QIMFilterCategoryItem> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public binp(GLTextureView paramGLTextureView, int[] paramArrayOfInt)
+  public binp(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfInt = a(paramArrayOfInt);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private int[] a(int[] paramArrayOfInt)
+  public bins a(ViewGroup paramViewGroup, int paramInt)
   {
-    if ((GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 2) && (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 3)) {
-      return paramArrayOfInt;
-    }
-    int i = paramArrayOfInt.length;
-    int[] arrayOfInt = new int[i + 2];
-    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i - 1);
-    arrayOfInt[(i - 1)] = 12352;
-    if (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) == 2) {
-      arrayOfInt[i] = 4;
-    }
-    for (;;)
+    return new bins(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558475, paramViewGroup, false));
+  }
+  
+  public void a(binr parambinr)
+  {
+    this.jdField_a_of_type_Binr = parambinr;
+  }
+  
+  public void a(bins parambins, int paramInt)
+  {
+    Object localObject1 = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    QIMFilterCategoryItem localQIMFilterCategoryItem;
+    Object localObject2;
+    if (localObject1 != null)
     {
-      arrayOfInt[(i + 1)] = 12344;
-      return arrayOfInt;
-      arrayOfInt[i] = 64;
+      localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      localObject2 = bkqo.a().c(this.jdField_a_of_type_Int);
+      if (localObject2 == null) {
+        break label269;
+      }
+    }
+    label259:
+    label269:
+    for (boolean bool1 = TextUtils.equals(((QIMFilterCategoryItem)localObject2).a, localQIMFilterCategoryItem.a);; bool1 = false)
+    {
+      boolean bool2 = bool1;
+      if (!bool1)
+      {
+        if (((localObject2 == null) || (((QIMFilterCategoryItem)localObject2).d())) && (localQIMFilterCategoryItem.d())) {
+          bool2 = true;
+        }
+      }
+      else
+      {
+        if ((!bool2) || (!this.jdField_a_of_type_Boolean)) {
+          break label247;
+        }
+        bins.a(parambins).setVisibility(0);
+        label117:
+        localObject2 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843721);
+        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843721);
+        if (paramInt != 0) {
+          break label259;
+        }
+      }
+      for (localObject1 = "https://qd.myapp.com/myapp/qqteam/QIM/fliters-QIM/other/none2.png";; localObject1 = ((QIMFilterCategoryItem)localObject1).d)
+      {
+        localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+        if (((URLDrawable)localObject1).getStatus() == 2) {
+          ((URLDrawable)localObject1).restartDownload();
+        }
+        bins.b(parambins).setImageDrawable((Drawable)localObject1);
+        bins.a(parambins).setText(localQIMFilterCategoryItem.b);
+        if (this.jdField_a_of_type_Binr != null) {
+          parambins.itemView.setOnClickListener(new binq(this, parambins));
+        }
+        parambins.itemView.setTag(localQIMFilterCategoryItem);
+        return;
+        bool2 = false;
+        break;
+        label247:
+        bins.a(parambins).setVisibility(8);
+        break label117;
+      }
     }
   }
   
-  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
+  public void a(List<QIMFilterCategoryItem> paramList)
   {
-    int[] arrayOfInt = new int[1];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, null, 0, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig failed");
-    }
-    int i = arrayOfInt[0];
-    if (i <= 0) {
-      throw new IllegalArgumentException("No configs match configSpec");
-    }
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, arrayOfEGLConfig, i, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig#2 failed");
-    }
-    paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
-    if (paramEGL10 == null) {
-      throw new IllegalArgumentException("No config chosen");
-    }
-    return paramEGL10;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
   }
   
-  abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig);
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
 }
 
 

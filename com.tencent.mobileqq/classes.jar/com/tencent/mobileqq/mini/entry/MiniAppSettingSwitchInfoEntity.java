@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.entry;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class MiniAppSettingSwitchInfoEntity
-  extends atmo
+  extends aukm
 {
   public static final String TAG = "MiniAppSettingSwitchInfoEntity";
-  @atoc
+  @auma
   public String key;
   public String subTitle;
   public String title;

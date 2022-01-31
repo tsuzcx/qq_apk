@@ -1,98 +1,81 @@
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_ICON.lighting_sweet_key_req;
+import SWEET_NEW_ICON.lighting_sweet_key_rsp;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-class akty
-  implements axxi
+public class akty
+  extends QzoneExternalRequest
 {
-  akty(aktx paramaktx, akud paramakud) {}
+  private lighting_sweet_key_req jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(axxh paramaxxh)
+  public akty() {}
+  
+  public akty(long paramLong)
   {
-    QLog.i("AREngine_ARPreSoResourceDownload", 1, "onPreDownloadStart");
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    this.needCompress = false;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req = new lighting_sweet_key_req();
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm = new sweet_req_comm();
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.opuin = paramLong;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.uin = paramLong;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.loveuin = 0L;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.qua = bgxr.a();
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.pf = 1;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.src = 3;
+    this.jdField_a_of_type_JavaLangString = a();
   }
   
-  public void onResp(axsq paramaxsq)
+  public static lighting_sweet_key_rsp a(byte[] paramArrayOfByte, String paramString)
   {
-    if (paramaxsq.jdField_a_of_type_Int == 3) {
-      QLog.i("AREngine_ARPreSoResourceDownload", 1, "Download init. url = " + ((axro)paramaxsq.jdField_a_of_type_Axsp).jdField_a_of_type_JavaLangString);
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    for (;;)
+    try
     {
-      return;
-      int i;
-      synchronized (aktx.a(this.jdField_a_of_type_Aktx))
-      {
-        if (aktx.a(this.jdField_a_of_type_Aktx) != null)
-        {
-          i = 0;
-          label67:
-          if (i < aktx.a(this.jdField_a_of_type_Aktx).size())
-          {
-            if (!((akud)aktx.a(this.jdField_a_of_type_Aktx).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Akud.jdField_a_of_type_JavaLangString)) {
-              break label342;
-            }
-            aktx.a(this.jdField_a_of_type_Aktx).remove(i);
-          }
-        }
-      }
-      synchronized (aktx.a(this.jdField_a_of_type_Aktx))
-      {
-        ??? = (akuc)aktx.a(this.jdField_a_of_type_Aktx).get(this.jdField_a_of_type_Akud.b);
-        if (paramaxsq.jdField_a_of_type_Int == 0)
-        {
-          if (aktx.a(this.jdField_a_of_type_Aktx) != null) {
-            aktx.a(this.jdField_a_of_type_Aktx).a(this.jdField_a_of_type_Akud.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Akud.jdField_a_of_type_Long);
-          }
-          ??? = new File(((axro)paramaxsq.jdField_a_of_type_Axsp).c);
-          String str = attn.a(((File)???).getAbsolutePath());
-          if (((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_Akud.b))) && (this.jdField_a_of_type_Akud.jdField_a_of_type_Int != 1))
-          {
-            QLog.i("AREngine_ARPreSoResourceDownload", 1, "Download end. MD5 check error. url = " + ((axro)paramaxsq.jdField_a_of_type_Axsp).jdField_a_of_type_JavaLangString + ", fileName = " + ((File)???).getAbsolutePath() + ", fileMD5 = " + str);
-            if (??? == null) {
-              continue;
-            }
-            ((akuc)???).a(false, this.jdField_a_of_type_Akud);
-            return;
-            label342:
-            i += 1;
-            break label67;
-            paramaxsq = finally;
-            throw paramaxsq;
-          }
-        }
-      }
-      for (boolean bool = true; ??? != null; bool = false)
-      {
-        ((akuc)???).a(bool, this.jdField_a_of_type_Akud);
-        return;
-        if (aktx.a(this.jdField_a_of_type_Aktx) != null) {
-          aktx.a(this.jdField_a_of_type_Aktx).a(this.jdField_a_of_type_Akud.jdField_a_of_type_JavaLangString, -1L);
-        }
-      }
+      paramArrayOfByte = (lighting_sweet_key_rsp)decode(paramArrayOfByte, paramString);
+      return paramArrayOfByte;
     }
+    catch (Throwable paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
   }
   
-  public void onUpdateProgeress(axsp arg1, long paramLong1, long paramLong2)
+  public static String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARPreSoResourceDownload", 2, "onUpdateProgeress. url = " + ((axro)???).jdField_a_of_type_JavaLangString + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
-    }
-    synchronized (aktx.a(this.jdField_a_of_type_Aktx))
+    if (TextUtils.isEmpty("SweetQzoneService.lightingSweetKey")) {}
+    String[] arrayOfString;
+    do
     {
-      akuc localakuc = (akuc)aktx.a(this.jdField_a_of_type_Aktx).get(this.jdField_a_of_type_Akud.b);
-      if (localakuc != null) {
-        localakuc.a(paramLong1, paramLong2);
-      }
-      return;
-    }
+      return null;
+      arrayOfString = "SweetQzoneService.lightingSweetKey".split("\\.");
+    } while ((arrayOfString == null) || (arrayOfString.length <= 0));
+    return arrayOfString[(arrayOfString.length - 1)];
+  }
+  
+  public String getCmdString()
+  {
+    return "SweetQzoneService.lightingSweetKey";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req;
+  }
+  
+  public String uniKey()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akty
  * JD-Core Version:    0.7.0.1
  */

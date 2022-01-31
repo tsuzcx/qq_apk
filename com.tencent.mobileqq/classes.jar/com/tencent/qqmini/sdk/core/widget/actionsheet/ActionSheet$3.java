@@ -2,21 +2,21 @@ package com.tencent.qqmini.sdk.core.widget.actionsheet;
 
 import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
-import bdje;
-import bdjg;
+import benh;
+import benj;
 
 public class ActionSheet$3
   implements Runnable
 {
-  public ActionSheet$3(bdje parambdje) {}
+  public ActionSheet$3(benh parambenh) {}
   
   public void run()
   {
-    bdje.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, bdje.a(this.this$0).getHeight()));
-    bdje.a(this.this$0).setDuration(200L);
-    bdje.a(this.this$0).setFillAfter(true);
-    bdje.a(this.this$0).startAnimation(bdje.a(this.this$0));
-    bdje.a(this.this$0).setAnimationListener(new bdjg(this));
+    benh.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, benh.a(this.this$0).getHeight()));
+    benh.a(this.this$0).setDuration(200L);
+    benh.a(this.this$0).setFillAfter(true);
+    benh.a(this.this$0).startAnimation(benh.a(this.this$0));
+    benh.a(this.this$0).setAnimationListener(new benj(this));
   }
 }
 

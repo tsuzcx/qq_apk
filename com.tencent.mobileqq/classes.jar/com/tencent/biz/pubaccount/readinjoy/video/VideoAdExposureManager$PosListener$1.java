@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import pys;
-import pyt;
+import qks;
+import qkt;
 
 public class VideoAdExposureManager$PosListener$1
   implements Runnable
 {
-  public VideoAdExposureManager$PosListener$1(pyt parampyt, pys parampys, int paramInt) {}
+  public VideoAdExposureManager$PosListener$1(qkt paramqkt, qks paramqks, int paramInt) {}
   
   public void run()
   {
-    pys.a(this.jdField_a_of_type_Pys, this.jdField_a_of_type_Int);
+    qks.a(this.jdField_a_of_type_Qks, this.jdField_a_of_type_Int);
   }
 }
 

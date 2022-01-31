@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aecb;
-import aecn;
+import aena;
+import aenm;
 
 public class CmGameChatPie$ChatPieMsgListener$12
   implements Runnable
 {
-  public CmGameChatPie$ChatPieMsgListener$12(aecn paramaecn, aecb paramaecb, int paramInt, long paramLong, String paramString) {}
+  public CmGameChatPie$ChatPieMsgListener$12(aenm paramaenm, aena paramaena, int paramInt, long paramLong, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aecb.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aena.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
   }
 }
 

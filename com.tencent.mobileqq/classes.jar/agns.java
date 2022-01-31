@@ -1,42 +1,6 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
-
-public class agns
-  implements agka
-{
-  public agns(ThemeHbFragment paramThemeHbFragment) {}
-  
-  public void a()
-  {
-    ThemeHbFragment.a(this.a, null);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (ThemeHbFragment.a(this.a) == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back context is null");
-      }
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back drawable = " + paramObject);
-      }
-    } while (!(paramObject instanceof Drawable));
-    if (QLog.isColorLevel()) {
-      QLog.i("ThemeHbFragment", 2, "setImageBgProcess image set...");
-    }
-    ThemeHbFragment.a(this.a).post(new ThemeHbFragment.2.1(this, paramObject));
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agns
  * JD-Core Version:    0.7.0.1
  */

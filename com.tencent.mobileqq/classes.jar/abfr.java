@@ -1,31 +1,27 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import mqq.app.MobileQQ;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class abfr
-  implements CompoundButton.OnCheckedChangeListener
+  implements bcak
 {
-  public abfr(NotifyPushSettingActivity paramNotifyPushSettingActivity, ajfi paramajfi) {}
+  private WeakReference<aqyd> a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public abfr(aqyd paramaqyd)
   {
-    if ((badq.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getApplicationContext())) && (NotifyPushSettingActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity)))
+    this.a = new WeakReference(paramaqyd);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Ajfi.d(paramBoolean);
-      return;
-    }
-    NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, false);
-    paramCompoundButton = NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
-    if (!NotifyPushSettingActivity.h(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).a()) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramCompoundButton.setChecked(paramBoolean);
-      NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, true);
-      bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getApplication().getString(2131629294), 0).b(5);
-      return;
+      aqyd localaqyd = (aqyd)this.a.get();
+      if (localaqyd != null) {
+        localaqyd.a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendProfileCardActivity", 2, "check friend's profile and preload web-process!");
+      }
     }
   }
 }

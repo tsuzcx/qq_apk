@@ -32,7 +32,7 @@ class LoadingFragment$3
           ((MiniAppConfig)localObject).launchParam = this.val$param;
           ((MiniAppConfig)localObject).launchParam.miniAppId = paramJSONObject.appId;
         }
-        if (paramJSONObject.verType != 3) {
+        if ((paramJSONObject.verType != 3) && (paramJSONObject.verType != 1)) {
           ((MiniAppConfig)localObject).forceReroad = 3;
         }
         LoadingFragment.access$002(this.this$0, (MiniAppConfig)localObject);

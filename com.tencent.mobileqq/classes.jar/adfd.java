@@ -1,10 +1,30 @@
-public abstract interface adfd
+public class adfd
+  extends adfl
 {
-  public abstract void a();
+  public int a;
+  public int b;
+  public int c;
   
-  public abstract void a(int paramInt);
+  public adfd(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
   
-  public abstract void b();
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        return false;
+      } while (!(paramObject instanceof adfd));
+      paramObject = (adfd)paramObject;
+    } while ((this.a != paramObject.a) || (this.c != paramObject.c) || (this.b != paramObject.b));
+    return true;
+  }
 }
 
 

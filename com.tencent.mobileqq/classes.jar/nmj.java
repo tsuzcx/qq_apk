@@ -1,16 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class nmj
-  implements View.OnClickListener
+final class nmj
+  extends akuj
 {
-  nmj(nmh paramnmh, nmk paramnmk) {}
-  
-  public void onClick(View paramView)
+  nmj(String paramString)
   {
-    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Nmh.a, nmk.c(this.jdField_a_of_type_Nmk));
-    ndn.a(null, "CliOper", "", nmk.c(this.jdField_a_of_type_Nmk), "0X80078A8", "0X80078A8", 0, 0, "", "", "", obz.c(), false);
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeAdUtils", 2, "getADPosition doStartADLocation onLocationFinish errCode " + paramInt + " info = " + paramSosoLbsInfo);
+    }
   }
 }
 

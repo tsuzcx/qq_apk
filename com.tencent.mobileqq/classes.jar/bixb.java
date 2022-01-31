@@ -1,14 +1,17 @@
-public abstract interface bixb
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+
+public class bixb
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public bixb(AETemplateInfoFragment paramAETemplateInfoFragment) {}
   
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d(int paramInt);
+  public void onClick(View paramView)
+  {
+    birg.a(this.a.getActivity(), 1024, birc.w.a(), null);
+    AETemplateInfoFragment.a(this.a);
+  }
 }
 
 

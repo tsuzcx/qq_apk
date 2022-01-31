@@ -2,9 +2,9 @@ package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.content.Context;
 import android.view.inputmethod.InputMethodManager;
-import bdfs;
-import bdnw;
-import bdwa;
+import bejs;
+import besl;
+import bfcj;
 import com.tencent.qqmini.sdk.runtime.core.page.widget.MiniAppTextArea;
 import java.util.Map;
 import org.json.JSONObject;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 class NativeViewContainer$3
   implements Runnable
 {
-  NativeViewContainer$3(NativeViewContainer paramNativeViewContainer, bdfs parambdfs) {}
+  NativeViewContainer$3(NativeViewContainer paramNativeViewContainer, bejs parambejs) {}
   
   public void run()
   {
@@ -45,7 +45,7 @@ class NativeViewContainer$3
     }
     catch (Throwable localThrowable)
     {
-      bdnw.d("NativeViewContainer", "EVENT_HIDE_KEYBOARD error.", localThrowable);
+      besl.d("NativeViewContainer", "EVENT_HIDE_KEYBOARD error.", localThrowable);
     }
   }
 }

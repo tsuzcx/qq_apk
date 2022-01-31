@@ -1,46 +1,42 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-class bafz
-  implements View.OnClickListener
+public class bafz
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  bafz(bafw parambafw, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bafz(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public void onClick(View paramView)
+  public void onPageSelected(int paramInt)
   {
-    this.jdField_a_of_type_Bafw.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+    super.onPageSelected(paramInt);
+    String str1;
+    String str3;
+    if (this.a.a != null)
     {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bafw, 1);
-      if (this.jdField_a_of_type_Bafw.c)
-      {
-        if (!this.jdField_a_of_type_Bafw.jdField_a_of_type_Boolean) {
-          break label93;
-        }
-        this.jdField_a_of_type_Bafw.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bafw.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+      if (!VisitorTroopCardFragment.a(this.a)) {
+        break label85;
+      }
+      str1 = "grpData_admin";
+      str3 = this.a.a.troopUin;
+      if (!VisitorTroopCardFragment.a(this.a)) {
+        break label91;
       }
     }
-    for (;;)
+    label85:
+    label91:
+    for (String str2 = bbbb.a(this.a.a);; str2 = "1")
     {
-      this.jdField_a_of_type_Bafw.c = false;
-      label93:
-      try
-      {
-        if (this.jdField_a_of_type_Bafw.isShowing()) {
-          this.jdField_a_of_type_Bafw.dismiss();
-        }
-        return;
-      }
-      catch (Exception paramView) {}
-      this.jdField_a_of_type_Bafw.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bafw.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+      bbbb.a("Grp_set_new", str1, "slide_head", 0, 0, new String[] { str3, str2 });
+      return;
+      str1 = "grpData_visitor";
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bafz
  * JD-Core Version:    0.7.0.1
  */

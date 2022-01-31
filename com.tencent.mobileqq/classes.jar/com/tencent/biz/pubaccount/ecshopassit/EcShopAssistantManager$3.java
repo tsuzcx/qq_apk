@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import atmp;
-import atmq;
+import aukn;
+import auko;
 import com.tencent.mobileqq.app.QQAppInterface;
-import nfp;
+import nqq;
 
 public class EcShopAssistantManager$3
   implements Runnable
 {
-  public EcShopAssistantManager$3(nfp paramnfp, String paramString) {}
+  public EcShopAssistantManager$3(nqq paramnqq, String paramString) {}
   
   public void run()
   {
-    atmp localatmp = this.this$0.a.getEntityManagerFactory().createEntityManager();
-    if (nfp.a(this.this$0, localatmp, this.a)) {
-      nfp.a(this.this$0, this.a);
+    aukn localaukn = this.this$0.a.getEntityManagerFactory().createEntityManager();
+    if (nqq.a(this.this$0, localaukn, this.a)) {
+      nqq.a(this.this$0, this.a);
     }
-    localatmp.a();
+    localaukn.a();
   }
 }
 

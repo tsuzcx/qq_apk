@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
-class aaih
-  implements aryj
+public class aaih
+  implements View.OnClickListener
 {
-  aaih(aaig paramaaig) {}
+  public aaih(AddRequestActivity paramAddRequestActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Aryq.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_Aryq.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+    axqw.b(this.a.app, "CliOper", "", "", "0X800AA46", "0X800AA46", 0, 0, "", "", "", "");
+    this.a.b();
   }
 }
 

@@ -1,18 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class aplh
-  implements DialogInterface.OnClickListener
+public abstract interface aplh
 {
-  aplh(apld paramapld) {}
+  public abstract long a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a(false);
-    com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
-    this.a.a.finish();
-  }
+  public abstract String a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(apab paramapab);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract String c();
 }
 
 

@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
 
 public class abxu
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public abxu(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+  public abxu(RecentLoginDevActivity paramRecentLoginDevActivity) {}
 }
 
 

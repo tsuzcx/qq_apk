@@ -1,16 +1,33 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.widget.Button;
+import com.tencent.qphone.base.util.QLog;
 
-public class acag
+class acag
+  extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  public acag(TroopMemberListActivity paramTroopMemberListActivity) {}
+  acad jdField_a_of_type_Acad;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  
+  public acag(acaf paramacaf, View paramView, acad paramacad)
+  {
+    super(paramView);
+    this.jdField_a_of_type_Acad = paramacad;
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131373475));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+  }
   
   public void onClick(View paramView)
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
+    if (this.jdField_a_of_type_Acad != null) {
+      this.jdField_a_of_type_Acad.a(paramView, getPosition());
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
   }
 }
 

@@ -1,116 +1,39 @@
-import android.app.Activity;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.qzone.panorama.widget.PanoramaLoadingBall;
 
 public class bhhk
-  extends bhha
+  extends Handler
 {
-  public bhhk(Object paramObject)
+  public bhhk(PanoramaLoadingBall paramPanoramaLoadingBall, Looper paramLooper)
   {
-    super(paramObject);
+    super(paramLooper);
   }
   
-  public int a(Activity paramActivity, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QCombo", 2, "apply " + toString());
-    }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = this.b.iterator();
-    while (((Iterator)localObject).hasNext())
+    super.handleMessage(paramMessage);
+    if ((paramMessage.what == 291) && (Build.VERSION.SDK_INT >= 11))
     {
-      bhgn localbhgn = (bhgn)((Iterator)localObject).next();
-      if ((localbhgn instanceof bhgp)) {
-        localArrayList.add(((bhgp)localbhgn).a);
+      if (PanoramaLoadingBall.a(this.a)) {
+        PanoramaLoadingBall.a(this.a, 60.0F);
       }
-    }
-    ((bhgs)bhfm.a(5)).a[paramInt].a(this);
-    localObject = (QIMFilterCategoryItem)this.a;
-    bjac.a().a((QIMFilterCategoryItem)localObject, paramInt);
-    if ((QLog.isColorLevel()) && (localObject != null)) {
-      QLog.i("QCombo", 2, "setApplyedFilterGroup" + ((QIMFilterCategoryItem)localObject).b);
-    }
-    bhgp.a(paramActivity, localArrayList, this, paramInt);
-    return 0;
-  }
-  
-  public boolean a()
-  {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (bhgn)localIterator.next();
-      if ((localObject instanceof bhgp))
-      {
-        localObject = ((bhgp)localObject).a;
-        if ((localObject != null) && (((FilterDesc)localObject).predownload == 0)) {
-          return false;
-        }
-      }
-    }
-    return true;
-  }
-  
-  public void b(Activity paramActivity, int paramInt)
-  {
-    super.b(paramActivity, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("QCombo", 2, "select " + toString());
-    }
-    QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.a;
-    bjac.a().b(localQIMFilterCategoryItem, paramActivity, paramInt);
-  }
-  
-  public int d()
-  {
-    int k = 0;
-    Iterator localIterator = this.b.iterator();
-    int i = 0;
-    int j = k;
-    if (localIterator.hasNext())
-    {
-      j = ((bhgn)localIterator.next()).a;
-      if (j == 2) {
-        j = 1;
+      if (PanoramaLoadingBall.a(this.a) == 0) {
+        this.a.setRotationX(PanoramaLoadingBall.a(this.a));
       }
     }
     else
     {
-      if (j == 0) {
-        break label67;
-      }
-      b(2);
-      return 2;
+      return;
     }
-    if (j == 1) {
-      i = 1;
-    }
-    for (;;)
-    {
-      break;
-      label67:
-      if (i != 0)
-      {
-        b(2);
-        return 1;
-      }
-      b(3);
-      return 3;
-    }
-  }
-  
-  public String toString()
-  {
-    return "Filter" + this.a;
+    this.a.setRotationY(PanoramaLoadingBall.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhhk
  * JD-Core Version:    0.7.0.1
  */

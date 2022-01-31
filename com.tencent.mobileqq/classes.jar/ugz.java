@@ -1,46 +1,29 @@
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class ugz
-  extends sgc
+public final class ugz
+  extends QQUIEventReceiver<ugn, uwf>
 {
-  ugz(ugy paramugy) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public ugz(@NonNull ugn paramugn)
   {
-    paramInt = 1;
-    if ((this.a.a == null) || (!TextUtils.equals(paramString, this.a.a.uid))) {
-      return;
-    }
-    if (paramBoolean1)
+    super(paramugn);
+  }
+  
+  public void a(@NonNull ugn paramugn, @NonNull uwf paramuwf)
+  {
+    if ((paramuwf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramuwf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramugn.a != null) && (TextUtils.equals(paramuwf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramugn.a.b)))
     {
-      paramString = this.a.a;
-      if (paramBoolean2)
-      {
-        paramString.isSubscribe = paramInt;
-        paramString = (sga)tfy.a().getManager(181);
-        if (!paramBoolean2) {
-          break label128;
-        }
-        if (!paramString.h()) {
-          paramString.b();
-        }
-        bbmy.a(tfy.a(), 2, ajjy.a(2131645151), 0).a();
-      }
-      for (;;)
-      {
-        ugy.a(this.a).e();
-        ugy.a(this.a).c();
-        return;
-        paramInt = 0;
-        break;
-        label128:
-        bbmy.a(tfy.a(), 2, ajjy.a(2131645147), 0).a();
-      }
+      veg.a(paramugn.b, "refresh feed item , feed id :%s", paramugn.a.b);
+      paramugn.i();
     }
-    bbmy.a(tfy.a(), 1, ajjy.a(2131645156), 0).a();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uwf.class;
   }
 }
 

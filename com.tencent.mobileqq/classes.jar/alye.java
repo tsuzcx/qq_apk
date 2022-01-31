@@ -1,40 +1,36 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.confess.ConfessPlugin;
+import android.content.Context;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
 
 public class alye
-  implements View.OnTouchListener
+  extends alyc
 {
-  public alye(ConfessPlugin paramConfessPlugin) {}
+  private float[] d = new float[16];
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public alye(Context paramContext, int paramInt, SensorManager paramSensorManager, alxu paramalxu)
   {
-    switch (paramMotionEvent.getAction())
+    super(paramContext, paramInt, paramSensorManager, paramalxu);
+    paramContext = paramSensorManager.getDefaultSensor(11);
+    if ((Build.VERSION.SDK_INT >= 9) && (paramContext != null))
     {
+      this.a.add(paramContext);
+      return;
     }
-    for (;;)
-    {
-      return false;
-      if ((paramView instanceof TextView))
-      {
-        int i = ((TextView)paramView).getCurrentTextColor();
-        ((TextView)paramView).setTextColor(Color.argb(128, Color.red(i), Color.green(i), Color.blue(i)));
-        continue;
-        if ((paramView instanceof TextView))
-        {
-          i = ((TextView)paramView).getCurrentTextColor();
-          ((TextView)paramView).setTextColor(Color.argb(255, Color.red(i), Color.green(i), Color.blue(i)));
-        }
-      }
-    }
+    throw new OrientationProviderNotFound(String.valueOf(3));
+  }
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    alxw.a(this.d, paramSensorEvent);
+    super.a(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alye
  * JD-Core Version:    0.7.0.1
  */

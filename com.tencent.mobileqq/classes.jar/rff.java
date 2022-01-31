@@ -1,16 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
-
-public class rff
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface rff
 {
-  public rff(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.invalidate();
-  }
+  public abstract void a(String paramString);
 }
 
 

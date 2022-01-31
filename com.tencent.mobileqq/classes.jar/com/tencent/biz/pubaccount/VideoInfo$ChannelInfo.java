@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import nef;
+import npg;
 
 public class VideoInfo$ChannelInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ChannelInfo> CREATOR = new nef();
+  public static final Parcelable.Creator<ChannelInfo> CREATOR = new npg();
   public int a;
   public String a;
   public int b;

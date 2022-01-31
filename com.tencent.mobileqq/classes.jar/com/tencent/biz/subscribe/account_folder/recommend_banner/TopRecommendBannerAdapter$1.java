@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.account_folder.recommend_banner;
 
-import vxa;
+import wjy;
 
 public class TopRecommendBannerAdapter$1
   implements Runnable
 {
-  public TopRecommendBannerAdapter$1(vxa paramvxa) {}
+  public TopRecommendBannerAdapter$1(wjy paramwjy) {}
   
   public void run()
   {

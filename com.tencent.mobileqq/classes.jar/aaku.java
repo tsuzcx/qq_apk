@@ -1,59 +1,43 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.Map;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import tencent.im.oidb.oidb_0x5e1.RspBody;
+import tencent.im.oidb.oidb_0x5e1.UdcUinData;
 
 public class aaku
-  extends ajjh
+  extends atzn
 {
-  public aaku(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aaku(AuthDevActivity paramAuthDevActivity) {}
   
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    super.onSetGenralSettingsTroopFilter(paramBoolean, paramMap);
-    if ((paramMap == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null)) {
-      return;
-    }
-    if (!paramBoolean) {
-      if (paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin) != null) {
-        bbmy.a(this.a.app.getApp(), 1, this.a.getString(2131654642), 0).b(this.a.getTitleBarHeight());
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(17);
-      return;
-      paramMap = (Integer)paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
-      if (paramMap != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopmask = paramMap.intValue();
-      }
-    }
+    super.a(paramString1, paramInt, paramString2);
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a(oidb_0x5e1.RspBody paramRspBody)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {}
-    try
+    super.a(paramRspBody);
+    AuthDevActivity.a(this.a, paramRspBody);
+    int i = ((oidb_0x5e1.UdcUinData)AuthDevActivity.a(this.a).rpt_msg_uin_data.get(0)).user_login_guard_face.get();
+    FormSimpleItem localFormSimpleItem = AuthDevActivity.a(this.a);
+    if (i == 1)
     {
-      l = Long.valueOf(paramString).longValue();
-      if (l != 0L) {
-        this.a.a(l);
+      paramRspBody = this.a.getString(2131692277);
+      localFormSimpleItem.setRightText(paramRspBody);
+      if (i != 1) {
+        break label111;
       }
-      return;
     }
-    catch (NumberFormatException paramString)
+    label111:
+    for (paramRspBody = "1";; paramRspBody = "0")
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        long l = 0L;
-      }
+      axqw.b(null, "dc00898", "", "", "0X800AA7C", "0X800AA7C", 0, 0, paramRspBody, "", "", "");
+      return;
+      paramRspBody = this.a.getString(2131692284);
+      break;
     }
   }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString) {}
 }
 
 

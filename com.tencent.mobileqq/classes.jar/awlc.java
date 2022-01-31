@@ -1,55 +1,25 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+
 public class awlc
+  implements View.OnTouchListener
 {
-  public static long a()
-  {
-    return b(1) - c(1);
-  }
+  public awlc(ContactSearchFragment paramContactSearchFragment) {}
   
-  public static long a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    long l = Runtime.getRuntime().maxMemory() - a() * 1024L;
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return l;
-    case 1: 
-      return l / 1024L;
-    }
-    return l / 1048576L;
-  }
-  
-  private static long b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return Runtime.getRuntime().totalMemory();
-    case 0: 
-      return Runtime.getRuntime().totalMemory();
-    case 1: 
-      return Runtime.getRuntime().totalMemory() / 1024L;
-    }
-    return Runtime.getRuntime().totalMemory() / 1024L / 1024L;
-  }
-  
-  private static long c(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return Runtime.getRuntime().freeMemory();
-    case 0: 
-      return Runtime.getRuntime().freeMemory();
-    case 1: 
-      return Runtime.getRuntime().freeMemory() / 1024L;
-    }
-    return Runtime.getRuntime().freeMemory() / 1024L / 1024L;
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awlc
  * JD-Core Version:    0.7.0.1
  */

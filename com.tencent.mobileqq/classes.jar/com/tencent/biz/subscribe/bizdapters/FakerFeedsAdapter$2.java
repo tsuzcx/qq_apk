@@ -1,18 +1,18 @@
 package com.tencent.biz.subscribe.bizdapters;
 
-import bbmy;
-import vxx;
+import bcpw;
+import wlg;
 
 public class FakerFeedsAdapter$2
   implements Runnable
 {
-  public FakerFeedsAdapter$2(vxx paramvxx) {}
+  public FakerFeedsAdapter$2(wlg paramwlg) {}
   
   public void run()
   {
     this.this$0.notifyDataSetChanged();
-    if (vxx.a(this.this$0) != null) {
-      bbmy.a(vxx.b(this.this$0), 0, 2131629942, 0).a();
+    if (wlg.a(this.this$0) != null) {
+      bcpw.a(wlg.b(this.this$0), 0, 2131695623, 0).a();
     }
   }
 }

@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.text.style.ForegroundColorSpan;
 import android.util.SparseIntArray;
-import axjs;
-import reo;
-import req;
+import ayjw;
+import rrc;
+import rre;
 
 public class BiuNicknameSpan
   extends ForegroundColorSpan
-  implements reo, req
+  implements rrc, rre
 {
   private int a;
   public long a;
@@ -63,7 +63,7 @@ public class BiuNicknameSpan
         i = j + 1;
         break;
         j = i;
-      } while (axjs.a.get(k, -1) < 0);
+      } while (ayjw.a.get(k, -1) < 0);
       if ((k > 65535) && (paramCharSequence.length() >= i + 2)) {
         paramCharSequence.delete(i, i + 2);
       }

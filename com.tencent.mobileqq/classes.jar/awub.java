@@ -1,64 +1,54 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.util.VADHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
 public class awub
+  extends awur
 {
-  private int jdField_a_of_type_Int;
-  private short jdField_a_of_type_Short;
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private boolean b;
-  
-  awub(int paramInt)
+  public awub(GroupSearchEngine paramGroupSearchEngine, awus paramawus, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
+    super(paramGroupSearchEngine, paramawus, paramString, paramInt);
   }
   
-  public int a()
+  public awof a(List<awog> paramList, String paramString)
   {
-    return this.jdField_a_of_type_Int;
+    return new awnr(paramList, paramString, GroupSearchEngine.a(this.a));
   }
   
-  public short a()
+  public List<awof> a(awvg paramawvg)
   {
-    return this.jdField_a_of_type_Short;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(short paramShort)
-  {
-    this.jdField_a_of_type_Short = paramShort;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
+    if (!GroupSearchEngine.a(this.a)) {
+      return null;
+    }
+    VADHelper.a("voice_search_approximate_cost");
+    List localList = super.a(paramawvg);
+    VADHelper.b("voice_search_approximate_cost");
+    if ((localList != null) && (!localList.isEmpty()))
+    {
+      if (paramawvg.a == null) {
+        paramawvg.a = new Bundle();
+      }
+      paramawvg.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1000);
+      if (localList.size() >= 2)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("GroupSearchEngine", 4, "contact search result count:" + ((awof)localList.get(1)).a().size());
+        }
+        paramawvg.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", ((awof)localList.get(1)).a().size());
+      }
+    }
+    for (;;)
+    {
+      return localList;
+      paramawvg.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awub
  * JD-Core Version:    0.7.0.1
  */

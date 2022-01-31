@@ -1,46 +1,24 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qidian.proto.mobileqq_qidian.GroupItem;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
 public class bcqz
+  implements Animation.AnimationListener
 {
-  public int a;
-  public long a;
-  public String a;
+  public bcqz(ShaderAnimLayout paramShaderAnimLayout) {}
   
-  public bcqz() {}
-  
-  public bcqz(mobileqq_qidian.GroupItem paramGroupItem)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    a(paramGroupItem);
+    this.a.setVisibility(8);
   }
   
-  public mobileqq_qidian.GroupItem a()
-  {
-    mobileqq_qidian.GroupItem localGroupItem = new mobileqq_qidian.GroupItem();
-    localGroupItem.uint64_groupid.set(this.jdField_a_of_type_Long);
-    localGroupItem.uint32_group_level.set(this.jdField_a_of_type_Int);
-    localGroupItem.str_group_name.set(this.jdField_a_of_type_JavaLangString);
-    return localGroupItem;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(mobileqq_qidian.GroupItem paramGroupItem)
-  {
-    if (paramGroupItem.uint64_groupid.has()) {
-      this.jdField_a_of_type_Long = paramGroupItem.uint64_groupid.get();
-    }
-    if (paramGroupItem.uint32_group_level.has()) {
-      this.jdField_a_of_type_Int = paramGroupItem.uint32_group_level.get();
-    }
-    if (paramGroupItem.str_group_name.has()) {
-      this.jdField_a_of_type_JavaLangString = paramGroupItem.str_group_name.get();
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcqz
  * JD-Core Version:    0.7.0.1
  */

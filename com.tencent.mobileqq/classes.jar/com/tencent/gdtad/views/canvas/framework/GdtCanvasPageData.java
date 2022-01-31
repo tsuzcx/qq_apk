@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import yny;
+import yxs;
 
 public class GdtCanvasPageData
   implements Serializable
@@ -26,7 +26,7 @@ public class GdtCanvasPageData
   {
     if ((!isValid()) || (paramInt < 0) || (paramInt > getSize()))
     {
-      yny.d("GdtCanvasPageData", "getComponent error");
+      yxs.d("GdtCanvasPageData", "getComponent error");
       return null;
     }
     return (GdtCanvasComponentData)this.components.get(paramInt);

@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
-import bdjl;
+import beka;
+import beno;
 
 class ShareJsPlugin$6$1
-  implements bdjl
+  implements beno
 {
   ShareJsPlugin$6$1(ShareJsPlugin.6 param6) {}
   

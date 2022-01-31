@@ -1,15 +1,37 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import java.io.File;
+import java.util.concurrent.Future;
 
-class bgvc
-  implements ThreadPool.Job<Void>
+public class bgvc
+  implements PluginManagerUpdater
 {
-  bgvc(bguw parambguw, axro paramaxro) {}
+  private ardx jdField_a_of_type_Ardx;
+  private File jdField_a_of_type_JavaIoFile;
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public bgvc(ardx paramardx, File paramFile)
   {
-    bguw.a(this.jdField_a_of_type_Bguw).a(this.jdField_a_of_type_Axro);
-    return null;
+    this.jdField_a_of_type_Ardx = paramardx;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+  }
+  
+  public File getLatest()
+  {
+    return this.jdField_a_of_type_JavaIoFile;
+  }
+  
+  public Future isAvailable(File paramFile)
+  {
+    return this.jdField_a_of_type_Ardx.isAvailable(paramFile);
+  }
+  
+  public Future update()
+  {
+    return this.jdField_a_of_type_Ardx.update();
+  }
+  
+  public boolean wasUpdating()
+  {
+    return false;
   }
 }
 

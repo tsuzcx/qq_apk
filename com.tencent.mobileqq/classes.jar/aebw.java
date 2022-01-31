@@ -1,39 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.customviews.MessageProgressTextView;
 
-class aebw
-  extends ajpe
+public class aebw
+  extends acun
 {
-  aebw(aebk paramaebk) {}
-  
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c(this.a.a.getIntent());
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.c(this.a.a.getIntent());
-    }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c(this.a.a.getIntent());
-    }
-  }
-  
-  public void v_()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "onDownPublicAccount");
-    }
-  }
+  public RelativeLayout a;
+  public SessionInfo a;
+  public MessageProgressTextView a;
+  public boolean a;
+  public RelativeLayout b;
+  public RelativeLayout c;
 }
 
 

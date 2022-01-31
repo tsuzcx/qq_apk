@@ -1,18 +1,6 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
-
-public class twv
+public abstract interface twv
 {
-  public List<String> a = new ArrayList();
-  public List<String> b = new ArrayList();
-  
-  public void a(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (!this.b.contains(paramString))) {
-      this.b.add(paramString);
-    }
-  }
+  public abstract void a(tww paramtww);
 }
 
 

@@ -1,248 +1,88 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoPtuResManager.1;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.BaseMovementMethod;
+import android.text.method.Touch;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.widget.TextView;
 
 public class awex
+  extends BaseMovementMethod
 {
-  public static boolean a;
+  private int jdField_a_of_type_Int;
+  private BackgroundColorSpan jdField_a_of_type_AndroidTextStyleBackgroundColorSpan;
+  public final String a;
+  private boolean jdField_a_of_type_Boolean = true;
+  private ClickableSpan[] jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan;
+  private int b;
   
-  public static int a(Context paramContext)
+  public awex(int paramInt1, int paramInt2)
   {
-    int i = 0;
-    if (a()) {
-      if (!a(paramContext)) {
-        break label50;
-      }
-    }
-    label50:
-    for (i = 1;; i = 2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPtuResManager", 2, "getPtuResState " + i);
-      }
-      return i;
-    }
+    this.jdField_a_of_type_JavaLangString = "CommentMovementMethod";
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public static int a(ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  private void a(boolean paramBoolean)
   {
-    int i = 0;
-    String str = "new_qq_android_native_ptu_res_" + paramSVConfigItem.versionCode;
-    if (paramSVConfigItem.name.equalsIgnoreCase(str))
-    {
-      if (paramSVConfigItem.versionCode < 67)
-      {
-        i = -2;
-        VideoEnvironment.a("ShortVideoPtuResManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInPendant=" + 59, null);
-      }
-      return i;
-    }
-    return -4;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static String a()
+  public boolean a()
   {
-    return awlw.a(VideoEnvironment.a()) + "ptu_res";
+    return this.jdField_a_of_type_Boolean;
   }
   
-  private static String a(Context paramContext)
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    String str = b(paramContext);
-    if (str != null) {}
-    for (paramContext = str;; paramContext = "null")
-    {
-      VideoEnvironment.a("ShortVideoPtuResManager", "getPtuResPath:pathLog = " + paramContext, null);
-      return str;
-    }
-  }
-  
-  private static void a()
-  {
-    ThreadManager.excute(new ShortVideoPtuResManager.1(), 64, null, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, List<ShortVideoResourceManager.SVConfigItem> paramList, awfg paramawfg)
-  {
-    if (a(VideoEnvironment.a()) != 0)
-    {
-      ShortVideoResourceManager.a(paramQQAppInterface, paramList, paramawfg, "new_qq_android_native_ptu_res_");
-      return;
-    }
-    VideoEnvironment.a("ShortVideoPtuResManager", "onConfigResult| getFilterSoState != 2", null);
-  }
-  
-  private static boolean a()
-  {
-    return awlw.c();
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    paramContext = a(paramContext);
-    if (paramContext == null)
-    {
-      VideoEnvironment.a("ShortVideoPtuResManager", "isFilterSoExist:getPtuResPath soRootPath = null", null);
-      return false;
-    }
-    if (!new File(paramContext).exists())
-    {
-      VideoEnvironment.a("ShortVideoPtuResManager", "isFilterSoExist:getPtuResPath soRootPath=" + paramContext + ",exists=false", null);
-      return false;
-    }
-    return true;
-  }
-  
-  private static boolean a(String paramString)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("ptu_short_video_mgr_sp", 4).edit();
-    localEditor.putString("ptu_short_video_so_name_key", paramString);
-    boolean bool = localEditor.commit();
-    VideoEnvironment.a("ShortVideoPtuResManager", "storeNewPendantUnzipPath commitValue=" + bool + ",pathName=" + paramString, null);
-    return bool;
-  }
-  
-  private static boolean a(String paramString, int paramInt)
-  {
-    boolean bool2 = false;
-    String str = paramString.trim();
-    VideoEnvironment.a("ShortVideoPtuResManager", "checkSignatureVersionIsOK signature=" + paramString, null);
-    paramString = awfl.a(str);
-    int i = paramString.a();
-    VideoEnvironment.a("ShortVideoPtuResManager", "checkSignatureVersionIsOK errCode=" + i + ",trimSignature=" + str, null);
-    boolean bool1 = bool2;
+    int i = paramMotionEvent.getAction();
     if (i == 0)
     {
-      paramString = paramString.b().trim();
-      VideoEnvironment.a("ShortVideoPtuResManager", "checkSignatureVersionIsOK versionValid=" + paramString, null);
-      i = Integer.parseInt(paramString);
-      VideoEnvironment.a("ShortVideoPtuResManager", "checkSignatureVersionIsOK version=" + i + ",limitVersion=" + paramInt, null);
-      bool1 = bool2;
-      if (i >= paramInt) {
-        bool1 = true;
+      i = (int)paramMotionEvent.getX();
+      int j = (int)paramMotionEvent.getY();
+      int k = paramTextView.getTotalPaddingLeft();
+      int m = paramTextView.getTotalPaddingTop();
+      int n = paramTextView.getScrollX();
+      int i1 = paramTextView.getScrollY();
+      Layout localLayout = paramTextView.getLayout();
+      i = localLayout.getOffsetForHorizontal(localLayout.getLineForVertical(j - m + i1), i - k + n);
+      this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan = ((ClickableSpan[])paramSpannable.getSpans(i, i, ClickableSpan.class));
+      if (this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan.length > 0)
+      {
+        a(false);
+        Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0]), paramSpannable.getSpanEnd(this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0]));
+        this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan = new BackgroundColorSpan(this.b);
+        paramSpannable.setSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan, paramSpannable.getSpanStart(this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0]), paramSpannable.getSpanEnd(this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0]), 33);
       }
     }
-    return bool1;
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    boolean bool3 = false;
-    boolean bool2 = true;
-    bool1 = true;
     for (;;)
     {
-      try
+      return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+      a(true);
+      paramTextView.setBackgroundColor(this.jdField_a_of_type_Int);
+      continue;
+      if (i == 1)
       {
-        String str = a();
-        str = str + File.separator + paramString1 + File.separator;
-        File localFile = new File(str);
-        if (localFile.exists())
+        if (this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan.length > 0)
         {
-          if ((c().equals(paramString1)) && (b(str, "ptu_config_file")))
-          {
-            VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:[checkUnzipFileListSizeIsOK]success=true", null);
-            bool1 = false;
-            return bool1;
-          }
-          bace.a(str);
-          VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:[deleteDirectory|already exists]unzipPath=" + str, null);
-        }
-        boolean bool4 = localFile.mkdirs();
-        VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:[exists]mkOK=" + bool4, null);
-        if (!localFile.exists())
-        {
-          VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:unzipFile.exists=false[error]", null);
-          continue;
-        }
-        try
-        {
-          bace.a(paramString2, str, false);
-          bool1 = b(str, "ptu_config_file");
-          VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:checkUnzipFileListSizeIsOK success=" + bool1, null);
-          if (!bool1) {
-            break label434;
-          }
-          bool1 = awdu.a(str);
-          VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:copyResFileToFinalDir copyOK=" + bool1, null);
-          if (!bool1) {
-            break;
-          }
-          bool4 = a(paramString1);
-          VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:checkUnzipFileListSizeIsOK saveOK=" + bool4, null);
-          bool1 = bool3;
-          if (!bool4)
-          {
-            bool4 = a(paramString1);
-            VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool4, null);
-            bool1 = bool3;
-            if (!bool4)
-            {
-              VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:checkUnzipFileListSizeIsOK[two] needRestore=true,saveOK=false", null);
-              bool1 = a("ptu_config_file");
-              VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:checkUnzipFileListSizeIsOK clearMemoryOK=" + bool1 + ",signature=" + paramString1, null);
-              bool1 = true;
-            }
-          }
-          a();
-        }
-        catch (Exception paramString1)
-        {
-          for (;;)
-          {
-            paramString1.printStackTrace();
-            continue;
-            bool1 = true;
-            continue;
-            bool1 = true;
+          this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0].onClick(paramTextView);
+          if (this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan != null) {
+            paramSpannable.removeSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan);
           }
         }
+        Selection.removeSelection(paramSpannable);
+        paramTextView.setBackgroundResource(2131167087);
       }
-      finally {}
-      bool2 = bool1;
-      bool1 = bool2;
-      if (bool2)
+      else if (i != 2)
       {
-        bace.a(str);
-        bool1 = bool2;
+        if (this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan != null) {
+          paramSpannable.removeSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan);
+        }
+        paramTextView.setBackgroundResource(2131167087);
       }
     }
-  }
-  
-  private static String b(Context paramContext)
-  {
-    paramContext = c();
-    if (paramContext.equals("Ptu000_0"))
-    {
-      VideoEnvironment.a("ShortVideoPtuResManager", "getPtuResPath:pathVersion=Pendant000_0", null);
-      return null;
-    }
-    return a() + File.separator + paramContext + File.separator;
-  }
-  
-  private static boolean b(String paramString1, String paramString2)
-  {
-    return awdu.b(paramString1, paramString2);
-  }
-  
-  private static String c()
-  {
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("ptu_short_video_mgr_sp", 4).getString("ptu_short_video_so_name_key", "Ptu000_0");
-    boolean bool = a(str, 67);
-    VideoEnvironment.a("ShortVideoPtuResManager", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
-    if (bool) {
-      return str;
-    }
-    return "Ptu000_0";
   }
 }
 

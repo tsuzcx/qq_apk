@@ -1,10 +1,17 @@
-class rqz
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView.1;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+
+public class rqz
+  implements OnCompositionLoadedListener
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  public rqz(RefreshAnimView.1 param1) {}
+  
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  {
+    RefreshAnimView.a(this.a.this$0, paramLottieComposition);
+  }
 }
 
 

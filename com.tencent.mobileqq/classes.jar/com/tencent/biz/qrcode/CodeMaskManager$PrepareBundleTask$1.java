@@ -1,7 +1,7 @@
 package com.tencent.biz.qrcode;
 
 import android.os.Bundle;
-import vsj;
+import wff;
 
 class CodeMaskManager$PrepareBundleTask$1
   implements Runnable

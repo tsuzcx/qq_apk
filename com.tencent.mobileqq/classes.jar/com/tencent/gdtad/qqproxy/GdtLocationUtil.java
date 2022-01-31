@@ -1,6 +1,6 @@
 package com.tencent.gdtad.qqproxy;
 
-import akfu;
+import akug;
 import android.content.Context;
 import com.tencent.ad.tangram.analysis.AdAnalysis;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
@@ -19,7 +19,7 @@ public enum GdtLocationUtil
   @Deprecated
   public int[] getLocation(Context paramContext)
   {
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = akfu.a("gdt_tangram");
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = akug.a("gdt_tangram");
     boolean bool;
     AdAnalysis localAdAnalysis;
     WeakReference localWeakReference;

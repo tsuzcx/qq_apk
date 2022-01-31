@@ -1,114 +1,94 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.List;
+import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
+import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.GetPackageShopRsp;
+import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.RspBody;
+import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.StockItem;
 
-public class bakv
+class bakv
+  extends mxl
 {
-  public int a;
-  private ArrayList<LinkedList<bakw>> a;
+  bakv(bakt parambakt, baks parambaks) {}
   
-  public bakv()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    int i = 0;
-    while (i < 3)
+    if (paramInt != 0)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(new LinkedList());
-      i += 1;
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public bakw a(boolean paramBoolean)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      if (((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).size() != 0)
-      {
-        if (paramBoolean)
-        {
-          bakw localbakw = (bakw)((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).remove(0);
-          this.jdField_a_of_type_Int -= 1;
-          return localbakw;
-        }
-        return (bakw)((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get(0);
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Baks);
       }
-      i += 1;
+      this.jdField_a_of_type_Baks.a(-1, "errorCode=" + paramInt);
     }
-    return null;
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      int j = 0;
-      while (j < ((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).size())
-      {
-        localStringBuilder.append(baaw.encodeToString(((bakw)((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get(j)).b().getBytes(), 0));
-        localStringBuilder.append("\r\n");
-        j += 1;
-      }
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      ((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).clear();
-      i += 1;
-    }
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a(bakw parambakw)
-  {
-    if (parambakw == null) {}
-    int i;
     do
     {
       return;
-      i = parambakw.b() - 200;
-    } while ((i < 0) || (i >= this.jdField_a_of_type_JavaUtilArrayList.size()));
-    ((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).add(parambakw);
-    this.jdField_a_of_type_Int += 1;
-  }
-  
-  public boolean a(bakw parambakw)
-  {
-    boolean bool2 = false;
-    int i = 0;
+      paramBundle = new Oidb_0xcd1.RspBody();
+      if (paramArrayOfByte != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult erro data=" + null);
+    return;
     for (;;)
     {
-      boolean bool1 = bool2;
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      try
       {
-        if (((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).remove(parambakw))
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (!paramBundle.get_pack_rsp.has()) {
+          break;
+        }
+        paramArrayOfByte = new Oidb_0xcd1.GetPackageShopRsp();
+        paramArrayOfByte.mergeFrom(((Oidb_0xcd1.GetPackageShopRsp)paramBundle.get_pack_rsp.get()).toByteArray());
+        paramBundle = new ArrayList();
+        if (paramArrayOfByte.msg_stock.has())
         {
-          this.jdField_a_of_type_Int -= 1;
-          bool1 = true;
+          List localList = paramArrayOfByte.msg_stock.get();
+          paramInt = 0;
+          if (paramInt < localList.size())
+          {
+            Oidb_0xcd1.StockItem localStockItem = (Oidb_0xcd1.StockItem)localList.get(paramInt);
+            bale localbale = new bale();
+            localbale.a = localStockItem.int32_productid.get();
+            localbale.b = localStockItem.int32_amount.get();
+            paramBundle.add(localbale);
+            paramInt += 1;
+            continue;
+          }
+        }
+        if (paramArrayOfByte.empty_package_page.has())
+        {
+          paramArrayOfByte = (Oidb_0xcd1.EmptyPackagePage)paramArrayOfByte.empty_package_page.get();
+          if (paramArrayOfByte != null)
+          {
+            paramArrayOfByte = new xch(paramArrayOfByte);
+            if (this.jdField_a_of_type_Baks == null) {
+              break;
+            }
+            this.jdField_a_of_type_Baks.a(paramBundle, paramArrayOfByte);
+            return;
+          }
         }
       }
-      else {
-        return bool1;
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
+        }
+        this.jdField_a_of_type_Baks.a(-1, "InvalidProtocolBufferMicroException");
+        return;
       }
-      i += 1;
+      paramArrayOfByte = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bakv
  * JD-Core Version:    0.7.0.1
  */

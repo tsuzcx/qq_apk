@@ -1,12 +1,12 @@
 package dov.com.qq.im.story.mode;
 
-import bhzq;
+import bjrh;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 
 public class StoryEffectTextMode$5
   implements Runnable
 {
-  public StoryEffectTextMode$5(bhzq parambhzq, QQFilterRenderManager paramQQFilterRenderManager, String paramString) {}
+  public StoryEffectTextMode$5(bjrh parambjrh, QQFilterRenderManager paramQQFilterRenderManager, String paramString) {}
   
   public void run()
   {

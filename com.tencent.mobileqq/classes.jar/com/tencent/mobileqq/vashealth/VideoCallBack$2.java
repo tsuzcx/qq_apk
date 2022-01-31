@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vashealth;
 
-import ajjy;
-import bbms;
+import ajyc;
+import bcpq;
 
 class VideoCallBack$2
   implements Runnable
 {
-  VideoCallBack$2(VideoCallBack paramVideoCallBack, bbms parambbms) {}
+  VideoCallBack$2(VideoCallBack paramVideoCallBack, bcpq parambcpq) {}
   
   public void run()
   {
     this.a.setCancelable(false);
-    this.a.a(ajjy.a(2131650321));
+    this.a.a(ajyc.a(2131716112));
     this.a.show();
   }
 }

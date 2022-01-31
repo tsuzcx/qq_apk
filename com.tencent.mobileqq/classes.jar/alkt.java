@@ -1,26 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-public class alkt
-  implements begw
+public final class alkt
+  implements Parcelable.Creator<ArVideoResourceInfo>
 {
-  public alkt(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ArVideoResourceInfo a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.a.a.a("DynamicAvatarRecordActivity");
-    this.a.finish();
+    return new ArVideoResourceInfo(paramParcel);
+  }
+  
+  public ArVideoResourceInfo[] a(int paramInt)
+  {
+    return new ArVideoResourceInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alkt
  * JD-Core Version:    0.7.0.1
  */

@@ -3,16 +3,16 @@ package com.tencent.mobileqq.emoticonview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import aniv;
-import ankc;
-import aqhj;
-import begh;
+import anze;
+import aoal;
+import arbl;
+import bfob;
 import com.tencent.widget.ListView;
 
 public class EmotionPanelListView
   extends ListView
 {
-  private ankc jdField_a_of_type_Ankc;
+  private aoal jdField_a_of_type_Aoal;
   private boolean jdField_a_of_type_Boolean;
   
   public EmotionPanelListView(Context paramContext)
@@ -35,9 +35,9 @@ public class EmotionPanelListView
     if ((!this.jdField_a_of_type_Boolean) || (paramMotionEvent.getAction() != 0)) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
-    begh localbegh = getOnScrollListener();
-    if ((localbegh instanceof aniv)) {
-      ((aniv)localbegh).onTouch(this, paramMotionEvent);
+    bfob localbfob = getOnScrollListener();
+    if ((localbfob instanceof anze)) {
+      ((anze)localbfob).onTouch(this, paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
@@ -47,9 +47,9 @@ public class EmotionPanelListView
     if (!this.jdField_a_of_type_Boolean) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    begh localbegh = getOnScrollListener();
-    if ((localbegh instanceof aniv)) {
-      ((aniv)localbegh).onTouch(this, paramMotionEvent);
+    bfob localbfob = getOnScrollListener();
+    if ((localbfob instanceof anze)) {
+      ((anze)localbfob).onTouch(this, paramMotionEvent);
     }
     return super.onTouchEvent(paramMotionEvent);
   }
@@ -59,19 +59,19 @@ public class EmotionPanelListView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnScrollListener(begh parambegh)
+  public void setOnScrollListener(bfob parambfob)
   {
-    if ((this.jdField_a_of_type_Boolean) && (!(parambegh instanceof aniv)) && (parambegh != null))
+    if ((this.jdField_a_of_type_Boolean) && (!(parambfob instanceof anze)) && (parambfob != null))
     {
-      super.setOnScrollListener(new aniv(this, this.jdField_a_of_type_Ankc, parambegh));
+      super.setOnScrollListener(new anze(this, this.jdField_a_of_type_Aoal, parambfob));
       return;
     }
-    super.setOnScrollListener(parambegh);
+    super.setOnScrollListener(parambfob);
   }
   
-  public void setPullAndFastScrollListener(ankc paramankc)
+  public void setPullAndFastScrollListener(aoal paramaoal)
   {
-    this.jdField_a_of_type_Ankc = paramankc;
+    this.jdField_a_of_type_Aoal = paramaoal;
   }
   
   public boolean trackMotionScroll(int paramInt1, int paramInt2)
@@ -80,9 +80,9 @@ public class EmotionPanelListView
       return super.trackMotionScroll(paramInt1, paramInt2);
     }
     boolean bool = super.trackMotionScroll(paramInt1, paramInt2);
-    begh localbegh = getOnScrollListener();
-    if ((!bool) && ((localbegh instanceof aniv)) && (paramInt2 < 0)) {
-      ((aniv)localbegh).a().a(Math.abs(paramInt2));
+    bfob localbfob = getOnScrollListener();
+    if ((!bool) && ((localbfob instanceof anze)) && (paramInt2 < 0)) {
+      ((anze)localbfob).a().a(Math.abs(paramInt2));
     }
     return bool;
   }

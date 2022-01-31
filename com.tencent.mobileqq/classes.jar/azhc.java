@@ -1,12 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class azhc
-  implements View.OnClickListener
+public class azhc
 {
-  azhc(azhb paramazhb) {}
+  protected ImageView a;
+  protected TextView a;
+  protected ImageView b;
+  protected TextView b;
   
-  public void onClick(View paramView) {}
+  protected azhc(azhb paramazhb) {}
 }
 
 

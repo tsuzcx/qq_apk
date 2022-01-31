@@ -9,7 +9,7 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
-import awrz;
+import axrx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -30,7 +30,7 @@ public class LogcatUtil
   private static void a()
   {
     QLog.e("LogcatUtil", 1, "get trace file begin");
-    String str2 = awrz.a(String.valueOf(100));
+    String str2 = axrx.a(String.valueOf(100));
     StringBuilder localStringBuilder = new StringBuilder(50);
     localStringBuilder.append("AdditionInfo:0|");
     String str1 = "";
@@ -68,7 +68,7 @@ public class LogcatUtil
     localStringBuilder.append((String)localObject3).append("|").append((String)localObject1).append("|");
     localStringBuilder.append("|").append("pub").append("|").append(System.currentTimeMillis());
     localStringBuilder.append("|").append(100).append("|").append(Build.MODEL).append("|").append(Build.VERSION.RELEASE);
-    i = awrz.a(BaseApplicationImpl.getContext(), str2, localStringBuilder.toString());
+    i = axrx.a(BaseApplicationImpl.getContext(), str2, localStringBuilder.toString());
     if (i == 1)
     {
       bool = true;
@@ -76,7 +76,7 @@ public class LogcatUtil
       if (i == 1) {
         break label332;
       }
-      bool = awrz.a(str2, localStringBuilder.toString());
+      bool = axrx.a(str2, localStringBuilder.toString());
       QLog.e("LogcatUtil", 1, new Object[] { "get trace file fileName = ", str2, ",get java trace status=", Boolean.valueOf(bool) });
     }
   }
@@ -274,19 +274,19 @@ public class LogcatUtil
     //   253: dup
     //   254: getstatic 46	com/tencent/logcat/LogcatUtil:b	Ljava/lang/String;
     //   257: invokespecial 316	java/io/File:<init>	(Ljava/lang/String;)V
-    //   260: astore 10
+    //   260: astore 11
     //   262: aload 9
     //   264: astore 5
     //   266: aload_1
     //   267: astore 6
-    //   269: aload 10
+    //   269: aload 11
     //   271: invokevirtual 319	java/io/File:exists	()Z
     //   274: ifne +120 -> 394
     //   277: aload 9
     //   279: astore 5
     //   281: aload_1
     //   282: astore 6
-    //   284: aload 10
+    //   284: aload 11
     //   286: invokevirtual 322	java/io/File:mkdirs	()Z
     //   289: pop
     //   290: aload 9
@@ -297,7 +297,7 @@ public class LogcatUtil
     //   300: dup
     //   301: new 27	java/io/File
     //   304: dup
-    //   305: aload 10
+    //   305: aload 11
     //   307: aload 4
     //   309: invokespecial 291	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   312: invokespecial 325	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
@@ -345,16 +345,16 @@ public class LogcatUtil
     //   396: astore 5
     //   398: aload_1
     //   399: astore 6
-    //   401: aload 10
+    //   401: aload 11
     //   403: invokevirtual 192	java/io/File:listFiles	()[Ljava/io/File;
-    //   406: astore 11
-    //   408: aload 11
+    //   406: astore 10
+    //   408: aload 10
     //   410: ifnull -120 -> 290
     //   413: aload 9
     //   415: astore 5
     //   417: aload_1
     //   418: astore 6
-    //   420: aload 11
+    //   420: aload 10
     //   422: arraylength
     //   423: istore_3
     //   424: iload_2
@@ -364,7 +364,7 @@ public class LogcatUtil
     //   431: astore 5
     //   433: aload_1
     //   434: astore 6
-    //   436: aload 11
+    //   436: aload 10
     //   438: iload_2
     //   439: aaload
     //   440: invokevirtual 343	java/io/File:delete	()Z
@@ -508,8 +508,8 @@ public class LogcatUtil
     //   645	19	7	localIOException3	IOException
     //   1	638	8	localObject11	Object
     //   7	423	9	localObject12	Object
-    //   260	142	10	localFile	File
-    //   406	31	11	arrayOfFile	File[]
+    //   406	31	10	arrayOfFile	File[]
+    //   260	142	11	localFile	File
     // Exception table:
     //   from	to	target	type
     //   157	165	184	java/io/IOException

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.media.AudioRecord;
 import android.media.AudioTrack;
 import com.tencent.qphone.base.util.QLog;
-import xfn;
+import xon;
 
 public class PcmPlayer
 {
@@ -13,15 +13,15 @@ public class PcmPlayer
   private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
   private PcmPlayer.PlayThread jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread;
   private String jdField_a_of_type_JavaLangString;
-  private xfn jdField_a_of_type_Xfn;
+  private xon jdField_a_of_type_Xon;
   private int b;
   private int c = 2;
   private int d = 2;
   
-  public PcmPlayer(Context paramContext, xfn paramxfn, int paramInt, String paramString)
+  public PcmPlayer(Context paramContext, xon paramxon, int paramInt, String paramString)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Xfn = paramxfn;
+    this.jdField_a_of_type_Xon = paramxon;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString;
   }
@@ -40,9 +40,9 @@ public class PcmPlayer
         this.jdField_a_of_type_AndroidMediaAudioTrack.play();
         this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread = new PcmPlayer.PlayThread(this, null);
         this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread.start();
-        if (this.jdField_a_of_type_Xfn != null)
+        if (this.jdField_a_of_type_Xon != null)
         {
-          this.jdField_a_of_type_Xfn.j();
+          this.jdField_a_of_type_Xon.j();
           return;
         }
       }

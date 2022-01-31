@@ -2,7 +2,7 @@ package cooperation.qzone;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
-import bfpx;
+import bgye;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import java.util.List;
 public final class QZoneHelper$6
   implements Runnable
 {
-  public QZoneHelper$6(bfpx parambfpx) {}
+  public QZoneHelper$6(bgye parambgye) {}
   
   public void run()
   {

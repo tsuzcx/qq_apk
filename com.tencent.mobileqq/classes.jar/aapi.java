@@ -1,42 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
-public class aapi
-  implements CompoundButton.OnCheckedChangeListener
+public final class aapi
+  implements DialogInterface.OnClickListener
 {
-  public aapi(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aapi(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, Map paramMap) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (AppSetting.c)
-    {
-      paramCompoundButton = this.a.getString(2131627560);
-      DiscussionInfoCardActivity.b(this.a).setContentDescription(paramCompoundButton);
-    }
-    boolean bool = DiscussionInfoCardActivity.a(this.a).a(this.a.a);
-    paramCompoundButton = DiscussionInfoCardActivity.a(this.a);
-    Object localObject = this.a.a;
-    if (!bool)
-    {
-      paramBoolean = true;
-      paramCompoundButton.a((DiscussionInfo)localObject, paramBoolean);
-      localObject = new awrb(this.a.app).a("dc00899").b("Grp_Dis_set").c("Dis_info");
-      if (!bool) {
-        break label128;
-      }
-    }
-    label128:
-    for (paramCompoundButton = "Clk_unstick";; paramCompoundButton = "Clk_stick")
-    {
-      ((awrb)localObject).d(paramCompoundButton).a();
-      return;
-      paramBoolean = false;
-      break;
-    }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

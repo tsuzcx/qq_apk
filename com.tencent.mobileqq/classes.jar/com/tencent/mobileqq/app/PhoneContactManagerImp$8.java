@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ahzo;
+import aimh;
 import java.util.List;
 
 class PhoneContactManagerImp$8
@@ -12,7 +12,7 @@ class PhoneContactManagerImp$8
   {
     if ((this.a != null) && (!this.a.isEmpty()))
     {
-      this.this$0.a = ahzo.a(this.a, null, true);
+      this.this$0.a = aimh.a(this.a, null, true);
       return;
     }
     this.this$0.a = null;

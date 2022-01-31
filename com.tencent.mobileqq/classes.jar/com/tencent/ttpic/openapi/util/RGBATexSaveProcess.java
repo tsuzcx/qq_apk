@@ -33,7 +33,8 @@ public class RGBATexSaveProcess
   
   private boolean isInBlackList()
   {
-    return blackList.contains(DeviceInstance.getInstance().getDeviceName());
+    String str = DeviceInstance.getInstance().getDeviceName();
+    return (str != null) && ((str.startsWith("HUAWEI")) || (blackList.contains(str)));
   }
   
   public void clear()

@@ -1,25 +1,16 @@
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
 
-class qgh
-  implements URLDrawable.URLDrawableListener
+public class qgh
+  implements View.OnClickListener
 {
-  qgh(qfy paramqfy) {}
+  public qgh(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    if ((qfy.a(this.a) != null) && (qfy.a(this.a).getStatus() == 1) && ((qfy.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
-    {
-      paramURLDrawable = (RegionDrawable)qfy.a(this.a).getCurrDrawable();
-      qfy.a(this.a, paramURLDrawable.getBitmap());
-    }
+    this.a.getActivity().finish();
   }
 }
 

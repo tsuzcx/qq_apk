@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.jsp;
 
 import android.app.ProgressDialog;
-import aqtn;
+import aroj;
 import java.io.File;
 
 public class UiApiPlugin$23$1
   implements Runnable
 {
-  public UiApiPlugin$23$1(aqtn paramaqtn, File paramFile) {}
+  public UiApiPlugin$23$1(aroj paramaroj, File paramFile) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aqtn.a.b.dismiss();
-    this.jdField_a_of_type_Aqtn.a.a(this.jdField_a_of_type_JavaIoFile);
+    this.jdField_a_of_type_Aroj.a.b.dismiss();
+    this.jdField_a_of_type_Aroj.a.a(this.jdField_a_of_type_JavaIoFile);
   }
 }
 

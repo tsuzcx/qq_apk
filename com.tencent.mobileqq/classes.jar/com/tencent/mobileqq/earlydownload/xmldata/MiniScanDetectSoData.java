@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import amzv;
+import anqd;
 
 public class MiniScanDetectSoData
   extends XmlData
 {
-  @amzv(a=true, b=true)
+  @anqd(a=true, b=true)
   public boolean block_user_download;
   
   public String getSharedPreferencesName()
   {
-    return "early_qq.android.minidetect.so_v8.0.7";
+    return "early_qq.android.minidetect.so_v8.2.0";
   }
   
   public String getStrResName()
   {
-    return "qq.android.minidetect.so_v8.0.7";
+    return "qq.android.minidetect.so_v8.2.0";
   }
 }
 

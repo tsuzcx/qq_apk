@@ -1,22 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aape
-  implements begw
+public final class aape
+  implements DialogInterface.OnClickListener
 {
-  public aape(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, begr parambegr) {}
+  public aape(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, aaqe paramaaqe, Bundle paramBundle) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Begr.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "P_CliOper", "Grp_discuss", "", "0X80040ED", "0X80040ED", 0, 0, "", "", "", "");
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006623", "0X8006623", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.f();
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_Aaqe, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

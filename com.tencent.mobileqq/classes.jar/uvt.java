@@ -1,18 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-class uvt
-  implements bbmj
+public class uvt
+  implements Comparator<uvs>
 {
-  uvt(uvq paramuvq) {}
-  
-  public void a(bbmh parambbmh)
+  public int a(uvs paramuvs1, uvs paramuvs2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambbmh);
+    if (paramuvs1.a == paramuvs2.a) {
+      if (!paramuvs1.b) {}
     }
+    while (paramuvs1.a > paramuvs2.a)
+    {
+      return -1;
+      if (paramuvs2.b) {
+        return 1;
+      }
+      return 0;
+    }
+    return 1;
   }
-  
-  public void a(bbmh parambbmh, int paramInt1, int paramInt2) {}
 }
 
 

@@ -2,7 +2,7 @@ package com.tencent.wordsegment;
 
 class WordSegmentVersion
 {
-  public static final int WORDSEGMENT_BUILD_NO = 921;
+  public static final int WORDSEGMENT_BUILD_NO = 171399980;
   public static final long WORDSEGMENT_SO_CRC32 = 2801601734L;
   public static final int WORDSEGMENT_SO_SIZE = 100504;
 }

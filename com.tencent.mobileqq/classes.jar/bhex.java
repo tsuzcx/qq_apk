@@ -1,36 +1,30 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.VideoInfo.VideoRemark;
 
-class bhex
-  extends BroadcastReceiver
+public final class bhex
+  implements Parcelable.Creator<VideoInfo.VideoRemark>
 {
-  bhex(bhew parambhew) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public VideoInfo.VideoRemark a(Parcel paramParcel)
   {
-    if ("tencent.video.q2v.startUploadPTV".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMWebEffectCameraCaptureUnit", 2, "receive ACTION_BLESS_UPLOAD_PTV.");
-      }
-      switch (paramIntent.getIntExtra("broadcastType", 1))
-      {
-      }
-    }
-    do
-    {
-      return;
-      paramContext = this.a.a.a();
-    } while ((paramContext == null) || (paramContext.isFinishing()));
-    paramContext.finish();
+    VideoInfo.VideoRemark localVideoRemark = new VideoInfo.VideoRemark();
+    localVideoRemark.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localVideoRemark.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localVideoRemark.c = paramParcel.readString();
+    localVideoRemark.jdField_a_of_type_Int = paramParcel.readInt();
+    localVideoRemark.d = paramParcel.readString();
+    localVideoRemark.jdField_b_of_type_Int = paramParcel.readInt();
+    return localVideoRemark;
+  }
+  
+  public VideoInfo.VideoRemark[] a(int paramInt)
+  {
+    return new VideoInfo.VideoRemark[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhex
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,12 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel.22.1;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
 
-public class anie
-  extends ajhy
+public abstract interface anie
 {
-  public anie(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public abstract boolean getHasPulledSourceMsg();
   
-  protected void b(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean) {
-      this.a.p();
-    }
-    if ((paramObject != null) && ((paramObject instanceof Integer))) {
-      ThreadManager.getUIHandler().post(new EmoticonMainPanel.22.1(this, paramObject));
-    }
-  }
+  public abstract MessageForReplyText.SourceMsgInfo getSourceMsgInfo();
+  
+  public abstract void setPulledSourceMsg();
 }
 
 

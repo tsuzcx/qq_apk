@@ -1,20 +1,37 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class rpy
-  implements View.OnClickListener
+public class rpy
 {
-  rpy(rpw paramrpw, rpv paramrpv) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(View paramView)
+  public rpy(String paramString)
   {
-    awqx.b(this.jdField_a_of_type_Rpw.jdField_a_of_type_Rpv.a, "P_CliOper", "Pb_account_lifeservice", "", "0X8005731", "0X8005731", 0, 0, "", "", "", "");
-    awqx.b(this.jdField_a_of_type_Rpw.jdField_a_of_type_Rpv.a, "CliOper", "", "", "0X800642E", "0X800642E", 0, 0, String.valueOf(this.jdField_a_of_type_Rpw.jdField_a_of_type_Rpu.a), "", "", "");
-    if ((this.jdField_a_of_type_Rpw.jdField_a_of_type_Rpu == null) || (TextUtils.isEmpty(String.valueOf(this.jdField_a_of_type_Rpw.jdField_a_of_type_Rpu.a)))) {
-      return;
-    }
-    rpw.a(this.jdField_a_of_type_Rpw);
+    this.a = paramString;
+  }
+  
+  public void a(String paramString)
+  {
+    this.d = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == this) {}
+    do
+    {
+      return true;
+      if ((paramObject instanceof rpy)) {
+        return false;
+      }
+      paramObject = (rpy)paramObject;
+    } while ((this.b != null) && (this.b.equals(paramObject.b)) && (this.c != null) && (this.c.equals(paramObject.c)));
+    return false;
+  }
+  
+  public String toString()
+  {
+    return " bid :" + this.b + " localPath:" + this.c + "  ";
   }
 }
 

@@ -1,26 +1,42 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.widget.XListView;
 
-class afgi
-  extends ajjh
+public class afgi
+  implements awcd
 {
-  afgi(afgd paramafgd) {}
+  public afgi(SearchBaseFragment paramSearchBaseFragment) {}
   
-  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CTEntryMng", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
+    if ((paramBitmap == null) || (paramInt2 == 201)) {}
+    for (;;)
     {
-      afgd.a(this.a, true);
-      afgd.a(this.a);
+      return;
+      if ((this.a.e == 0) && (this.a.a != null))
+      {
+        int i = this.a.a.getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
+        {
+          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
+          if ((paramBitmap != null) && ((paramBitmap instanceof afgl)))
+          {
+            paramBitmap = (afgl)paramBitmap;
+            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
+              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            }
+          }
+          paramInt2 += 1;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afgi
  * JD-Core Version:    0.7.0.1
  */

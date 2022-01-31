@@ -1,12 +1,21 @@
-import android.os.Bundle;
+import java.util.ArrayList;
 
-public abstract interface bcge
+public class bcge
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle);
+  public static int a;
+  public static ArrayList<String> a;
+  public static boolean a;
+  public static boolean b;
+  
+  static
+  {
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_Int = -1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcge
  * JD-Core Version:    0.7.0.1
  */

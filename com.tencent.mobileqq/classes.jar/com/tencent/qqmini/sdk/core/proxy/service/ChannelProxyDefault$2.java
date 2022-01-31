@@ -1,36 +1,25 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
-import bdtz;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.SenderListener;
-import org.json.JSONObject;
+import besl;
+import com.tencent.qqmini.sdk.core.proxy.RequestProxy.RequestListener;
+import java.util.List;
+import java.util.Map;
 
 class ChannelProxyDefault$2
-  implements MiniAppProxy.SenderListener
+  implements RequestProxy.RequestListener
 {
-  ChannelProxyDefault$2(ChannelProxyDefault paramChannelProxyDefault, AsyncResult paramAsyncResult, bdtz parambdtz) {}
+  ChannelProxyDefault$2(ChannelProxyDefault paramChannelProxyDefault) {}
   
-  public boolean onReply(int paramInt, byte[] paramArrayOfByte, String paramString)
+  public void onRequestFailed(int paramInt, String paramString)
   {
-    if (paramInt == 0) {
-      if (this.val$result != null)
-      {
-        paramArrayOfByte = this.val$request.a(paramArrayOfByte);
-        if (paramArrayOfByte == null) {
-          break label37;
-        }
-        this.val$result.onReceiveResult(true, paramArrayOfByte);
-      }
-    }
-    label37:
-    while (this.val$result == null)
-    {
-      return true;
-      this.val$result.onReceiveResult(false, new JSONObject());
-      return true;
-    }
-    this.val$result.onReceiveResult(false, new JSONObject());
-    return true;
+    besl.d("ChannelProxyDefault", "httpReport onRequestFailed code = " + paramInt);
+  }
+  
+  public void onRequestHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
+  
+  public void onRequestSucceed(int paramInt, byte[] paramArrayOfByte, Map<String, List<String>> paramMap)
+  {
+    besl.a("ChannelProxyDefault", "httpReport onRequestSucceed");
   }
 }
 

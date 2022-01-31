@@ -1,28 +1,15 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.media.ThumbnailUtils;
-import android.provider.MediaStore.Video.Thumbnails;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.net.URL;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-public class agev
-  implements axwp
+class agev
+  implements View.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  LocalMediaInfo jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+  agev(aget paramaget) {}
   
-  public agev(Context paramContext, LocalMediaInfo paramLocalMediaInfo)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
-  }
-  
-  public Bitmap a(URL paramURL)
-  {
-    paramURL = this.jdField_a_of_type_AndroidContentContext.getContentResolver();
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    return ThumbnailUtils.extractThumbnail(MediaStore.Video.Thumbnails.getThumbnail(paramURL, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo._id, 1, localOptions), this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbWidth, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbHeight);
+    this.a.a.setText("");
   }
 }
 

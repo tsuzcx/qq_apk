@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.hotpic;
 
-import aqhl;
-import aqhn;
-import aqhv;
+import arbn;
+import arbp;
+import arbx;
 
 public class VideoBaseItem$2$1
   implements Runnable
 {
-  public VideoBaseItem$2$1(aqhn paramaqhn) {}
+  public VideoBaseItem$2$1(arbp paramarbp) {}
   
   public void run()
   {
     this.a.a.c = 4;
-    if (aqhl.a(this.a.a) != null) {
-      aqhl.a(this.a.a).d(aqhl.a(this.a.a));
+    if (arbn.a(this.a.a) != null) {
+      arbn.a(this.a.a).d(arbn.a(this.a.a));
     }
   }
 }

@@ -1,71 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSImageView;
-import com.tencent.pts.core.PTSAppInstance;
-import com.tencent.pts.ui.PTSNodeInfo;
-import com.tencent.pts.ui.PTSNodeStyle;
-import com.tencent.pts.ui.vnode.PTSNodeVirtual;
-import com.tencent.pts.utils.PTSLog;
-import com.tencent.pts.utils.PTSTimeCostUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class pei
-  extends PTSNodeVirtual<PTSImageView>
 {
-  public final String a = "PTSNodeImage";
-  
-  private pei(PTSAppInstance paramPTSAppInstance)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    super(paramPTSAppInstance);
-  }
-  
-  private String a(String paramString)
-  {
-    int i = getNodeInfo().getStyle().getWidth();
-    int j = getNodeInfo().getStyle().getHeight();
-    String str = paramString;
-    if (i > 0)
+    JSONObject localJSONObject1 = new JSONObject();
+    Object localObject = new JSONObject();
+    ((JSONObject)localObject).put("small_video_icon", "public_account_video_profile");
+    localJSONObject1.put("id_small_video_icon", localObject);
+    localObject = new JSONObject();
+    ((JSONObject)localObject).put("small_video_cover", "public_account_small_video_mengceng");
+    localJSONObject1.put("id_small_video_cover", localObject);
+    JSONObject localJSONObject2 = new JSONObject();
+    if (paramBaseArticleInfo.mSinglePicture != null)
     {
-      str = paramString;
-      if (j > 0) {
-        str = obz.a(paramString, i, j);
+      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_small_imge_url", localObject);
+      localJSONObject1.put("id_article_small_imge", localJSONObject2);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("small_video_duration", omu.a(paramBaseArticleInfo.mVideoDuration));
+      localJSONObject1.put("id_small_video_duration", localObject);
+      pen.a(paramBaseArticleInfo, localJSONObject1, true);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label186;
       }
+      pen.a(paramBaseArticleInfo, localJSONObject1);
+      pen.b(paramBaseArticleInfo, localJSONObject1);
     }
-    return str;
-  }
-  
-  private void a(String paramString)
-  {
-    PTSTimeCostUtil.start("image-" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("http")) || (paramString.startsWith("pubaccount"))))
+    for (;;)
     {
-      String str = a(paramString);
-      PTSLog.i("PTSNodeImage", "[setImageSrc], cropUrl = " + str);
-      ((PTSImageView)getView()).setImageSrc(str);
+      pen.m(paramBaseArticleInfo, localJSONObject1);
+      pen.e(paramBaseArticleInfo, localJSONObject1);
+      pen.g(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_small_cell");
+      pen.a(localJSONObject1, paramBaseArticleInfo);
+      return localJSONObject1;
+      localObject = null;
+      break;
+      label186:
+      pen.d(paramBaseArticleInfo, localJSONObject1);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PTSNodeImage", 2, "[setImageSrc], path = " + paramString);
-    }
-    PTSTimeCostUtil.end("image-" + paramString);
-  }
-  
-  public PTSImageView a()
-  {
-    return new PTSImageView(this);
-  }
-  
-  public void resetAll() {}
-  
-  public boolean setAttribute(String paramString, Object paramObject)
-  {
-    if (super.setAttribute(paramString, paramObject)) {
-      return true;
-    }
-    if (("src".equals(paramString)) && ((paramObject instanceof String)))
-    {
-      a((String)paramObject);
-      return true;
-    }
-    return false;
   }
 }
 

@@ -9,8 +9,8 @@ import com.tencent.assistant.sdk.remote.BaseService;
 import com.tencent.assistant.sdk.remote.BaseService.Stub;
 import com.tencent.assistant.sdk.remote.SDKActionCallback;
 import com.tencent.tmassistant.st.SDKReportManager2;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.f;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.e;
 import com.tencent.tmassistantsdk.internal.logreport.OuterCallReportModel;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -38,7 +38,7 @@ public class b
   
   public void a(a parama)
   {
-    ac.c("TMAssistantDownloadOpenSDKClient", "addAssistantOnActionListener");
+    ab.c("TMAssistantDownloadOpenSDKClient", "addAssistantOnActionListener");
     if ((parama != null) && (!this.a.contains(parama))) {
       this.a.add(parama);
     }
@@ -46,7 +46,7 @@ public class b
   
   public byte[] a(byte[] paramArrayOfByte)
   {
-    ac.c("TMAssistantDownloadOpenSDKClient", "sendSyncData");
+    ab.c("TMAssistantDownloadOpenSDKClient", "sendSyncData");
     if (!TextUtils.isEmpty(this.mClientKey))
     {
       BaseService localBaseService = (BaseService)super.getServiceInterface();
@@ -54,21 +54,21 @@ public class b
         return localBaseService.sendSyncData(this.mClientKey, paramArrayOfByte);
       }
       super.initTMAssistantDownloadSDK();
-      ac.c("TMAssistantDownloadOpenSDKClient", "initTMAssistantDownloadSDK");
+      ab.c("TMAssistantDownloadOpenSDKClient", "initTMAssistantDownloadSDK");
     }
     return null;
   }
   
   public void b(byte[] paramArrayOfByte)
   {
-    ac.c("TMAssistantDownloadOpenSDKClient", "sendAsyncData");
+    ab.c("TMAssistantDownloadOpenSDKClient", "sendAsyncData");
     if (!TextUtils.isEmpty(this.mClientKey))
     {
       BaseService localBaseService = (BaseService)super.getServiceInterface();
-      ac.c("TMAssistantDownloadOpenSDKClient", "sendAsyncData baseService:" + localBaseService);
+      ab.c("TMAssistantDownloadOpenSDKClient", "sendAsyncData baseService:" + localBaseService);
       if (localBaseService != null)
       {
-        ac.c("TMAssistantDownloadOpenSDKClient", "baseService sendAsyncData");
+        ab.c("TMAssistantDownloadOpenSDKClient", "baseService sendAsyncData");
         localBaseService.sendAsyncData(this.mClientKey, paramArrayOfByte);
       }
     }
@@ -77,7 +77,7 @@ public class b
       return;
     }
     super.initTMAssistantDownloadSDK();
-    ac.c("TMAssistantDownloadOpenSDKClient", "initTMAssistantDownloadSDK");
+    ab.c("TMAssistantDownloadOpenSDKClient", "initTMAssistantDownloadSDK");
   }
   
   public Intent getBindServiceIntent()
@@ -115,11 +115,11 @@ public class b
   public void registerServiceCallback()
   {
     Object localObject = String.valueOf(System.currentTimeMillis()).getBytes();
-    localObject = com.tencent.tmassistantbase.util.a.b(new f().b((byte[])localObject, this.mClientKey.getBytes()), 0);
+    localObject = com.tencent.tmassistantbase.util.a.a(new e().b((byte[])localObject, this.mClientKey.getBytes()), 0);
     try
     {
       int i = ((BaseService)this.mServiceInterface).registerActionCallback(this.mClientKey, (String)localObject, (SDKActionCallback)this.mServiceCallback);
-      ac.c("TMAssistantDownloadOpenSDKClient", "onServiceConnected,registerActionCallback:" + this.mClientKey + ",tokenString:" + (String)localObject + ",threadId:" + Thread.currentThread().getId() + ",mServiceCallback:" + this.mServiceCallback + ",registed result:" + i);
+      ab.c("TMAssistantDownloadOpenSDKClient", "onServiceConnected,registerActionCallback:" + this.mClientKey + ",tokenString:" + (String)localObject + ",threadId:" + Thread.currentThread().getId() + ",mServiceCallback:" + this.mServiceCallback + ",registed result:" + i);
       if (i == 2) {
         onDownloadSDKServiceInvalid();
       }

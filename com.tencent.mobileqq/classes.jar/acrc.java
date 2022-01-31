@@ -1,28 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import java.util.Comparator;
 
 public class acrc
-  extends Handler
+  implements Comparator<acsp>
 {
-  public acrc(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public acrc(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(acsp paramacsp1, acsp paramacsp2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    long l = paramacsp2.a - paramacsp1.a;
+    if (l > 0L) {
+      return 1;
     }
-    this.a.a.j(1);
-    this.a.b();
-    bbmy.a(this.a.a.a(), this.a.a.a().getString(2131632807), 1).a();
+    if (l < 0L) {
+      return -1;
+    }
+    return 0;
   }
 }
 

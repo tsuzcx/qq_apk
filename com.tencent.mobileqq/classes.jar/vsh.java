@@ -1,25 +1,58 @@
-import android.animation.TypeEvaluator;
+import android.graphics.Bitmap;
 
-final class vsh
-  implements TypeEvaluator<vsg>
+public class vsh
 {
-  private vsg a;
+  private static boolean[] a;
+  public int a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public vsg a(float paramFloat, vsg paramvsg1, vsg paramvsg2)
+  static
   {
-    float f1 = paramvsg1.a + (paramvsg2.a - paramvsg1.a) * paramFloat;
-    float f2 = paramvsg1.b + (paramvsg2.b - paramvsg1.b) * paramFloat;
-    paramFloat = paramvsg1.c + (paramvsg2.c - paramvsg1.c) * paramFloat;
-    if (this.a == null) {
-      this.a = new vsg(f1, f2, paramFloat);
+    jdField_a_of_type_ArrayOfBoolean = new boolean[5];
+  }
+  
+  public vsh(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static void a(int[] paramArrayOfInt)
+  {
+    int i = 0;
+    while (i < 5) {
+      if ((paramArrayOfInt == null) || (paramArrayOfInt.length != 5))
+      {
+        jdField_a_of_type_ArrayOfBoolean[i] = false;
+        i += 1;
+      }
+      else
+      {
+        boolean[] arrayOfBoolean = jdField_a_of_type_ArrayOfBoolean;
+        int k = arrayOfBoolean[i];
+        if (paramArrayOfInt[i] > 0) {}
+        for (int j = 1;; j = 0)
+        {
+          arrayOfBoolean[i] = (j | k);
+          break;
+        }
+      }
     }
-    for (;;)
-    {
-      return this.a;
-      this.a.a = f1;
-      this.a.b = f2;
-      this.a.c = paramFloat;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt > 4)) {
+      return true;
     }
+    return jdField_a_of_type_ArrayOfBoolean[paramInt];
   }
 }
 

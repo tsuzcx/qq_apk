@@ -31,7 +31,7 @@ public class ToolProcReceiver
     {
       str = paramIntent.getAction();
       if (!"com.tencent.process.exit".equals(str)) {
-        break label230;
+        break label272;
       }
       localObject = paramIntent.getExtras();
       if (localObject != null) {}
@@ -61,56 +61,45 @@ public class ToolProcReceiver
       }
       bool1 = true;
     }
-    label385:
     label388:
     for (;;)
     {
       break label83;
       bool2 = true;
-      for (;;)
+      label171:
+      do
       {
-        label171:
-        if (!bool2)
+        if (QLog.isColorLevel()) {
+          QLog.d("mqq", 2, "ToolProcReceiver " + str + "." + bool2);
+        }
+        if (bool2) {
+          break;
+        }
+        paramContext = this.mRt.subRuntimeMap.values().iterator();
+        while (paramContext.hasNext())
         {
-          paramContext = this.mRt.subRuntimeMap.values().iterator();
-          for (;;)
-          {
-            if (paramContext.hasNext())
-            {
-              paramIntent = (AppRuntime)paramContext.next();
-              if ((paramIntent instanceof IToolProcEventListener))
-              {
-                ((IToolProcEventListener)paramIntent).onBeforeExitProc();
-                continue;
-                label230:
-                paramContext = this.mRt.subRuntimeMap.values().iterator();
-                bool1 = false;
-                label248:
-                bool2 = bool1;
-                if (!paramContext.hasNext()) {
-                  break;
-                }
-                localObject = (AppRuntime)paramContext.next();
-                if ((!(localObject instanceof IToolProcEventListener)) || (!((IToolProcEventListener)localObject).onReceiveAccountAction(str, paramIntent))) {
-                  break label385;
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.d("mqq", 2, "notKillBy(Account) " + ((AppRuntime)localObject).getModuleId());
-                }
-                bool1 = true;
-              }
-            }
+          paramIntent = (AppRuntime)paramContext.next();
+          if ((paramIntent instanceof IToolProcEventListener)) {
+            ((IToolProcEventListener)paramIntent).onBeforeExitProc();
           }
         }
+        paramContext = this.mRt.subRuntimeMap.values().iterator();
+        bool1 = false;
+        bool2 = bool1;
+      } while (!paramContext.hasNext());
+      label272:
+      localObject = (AppRuntime)paramContext.next();
+      if (((localObject instanceof IToolProcEventListener)) && (((IToolProcEventListener)localObject).onReceiveAccountAction(str, paramIntent)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("mqq", 2, "notKillBy(Account) " + ((AppRuntime)localObject).getModuleId());
+        }
+        bool1 = true;
       }
       for (;;)
       {
-        break label248;
+        break;
         this.mRt.exitToolProc();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("mqq", 2, "ToolProcReceiver " + str + "." + bool2);
         return;
       }
     }

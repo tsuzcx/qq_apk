@@ -1,149 +1,171 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
+import org.json.JSONException;
 
-public class nsx
-  implements awfg, awfi
+class nsx
+  extends BaseAdapter
+  implements AdapterView.OnItemClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private nsy jdField_a_of_type_Nsy;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
-  private boolean c;
+  private final int jdField_a_of_type_Int = actn.a(8.0F, nss.a(this.jdField_a_of_type_Nss).getResources());
   
-  public nsx(QQAppInterface paramQQAppInterface, Context paramContext)
+  private nsx(nss paramnss) {}
+  
+  private nta a(int paramInt, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (awlw.a(paramContext) != 0) {}
+    if (paramView != null) {
+      return (nta)paramView.getTag();
+    }
+    paramView = new nta(null);
+    nta.a(paramView, LayoutInflater.from(nss.a(this.jdField_a_of_type_Nss).getContext()).inflate(2131559934, null));
+    nta.a(paramView, (KanDianUrlRoundCornerImageView)nta.a(paramView).findViewById(2131368414));
+    nta.a(paramView).setCorner(this.jdField_a_of_type_Int);
+    nta.a(paramView, (TextView)nta.a(paramView).findViewById(2131378021));
+    nta.a(paramView, (ImageView)nta.a(paramView).findViewById(2131368417));
+    nta.b(paramView, (ImageView)nta.a(paramView).findViewById(2131368415));
+    nta.a(paramView).setTag(paramView);
+    return paramView;
+  }
+  
+  public int getCount()
+  {
+    return nss.a(this.jdField_a_of_type_Nss).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (paramInt >= nss.a(this.jdField_a_of_type_Nss).size()) {
+      return null;
+    }
+    return nss.a(this.jdField_a_of_type_Nss).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if ((getItem(paramInt) instanceof nsz)) {
+      return 2;
+    }
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = getItem(paramInt);
+    if (paramViewGroup == null)
+    {
+      actn.a("getView", ajyc.a(2131705691), new NullPointerException());
+      return paramView;
+    }
+    paramViewGroup = (TabChannelCoverInfo)paramViewGroup;
+    int i = getItemViewType(paramInt);
+    paramView = a(paramInt, paramView);
+    switch (i)
+    {
+    }
     for (;;)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-      bool = false;
-    }
-  }
-  
-  private void a(int paramInt)
-  {
-    c();
-    if (this.jdField_a_of_type_Nsy != null) {
-      this.jdField_a_of_type_Nsy.a(paramInt);
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
-      ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
-    }
-  }
-  
-  private void d()
-  {
-    if ((this.b) && ((this.c) || (!this.jdField_a_of_type_Boolean))) {
-      a(1);
-    }
-  }
-  
-  public void I_()
-  {
-    VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "onNetWorkNone", null);
-  }
-  
-  public void a()
-  {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    int j = 1;
-    VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    int k = 0;
-    int i;
-    if (paramInt1 != 1)
-    {
-      i = j;
-      if (paramInt1 != 0) {}
-    }
-    else
-    {
-      if (paramInt2 == 0) {
-        break label69;
-      }
-      i = j;
-    }
-    if (i != 0) {
-      a(3);
-    }
-    return;
-    label69:
-    ArrayList localArrayList = new ArrayList(1);
-    if (ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList) == 0)
-    {
-      ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this);
-      if (awlw.a(VideoEnvironment.a()) == 2)
+      return nta.a(paramView);
+      try
       {
-        ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this);
-        paramInt1 = k;
+        URL localURL = new URL(paramViewGroup.mChannelCoverIcon);
+        omu.a(nta.a(paramView), localURL, nss.a(this.jdField_a_of_type_Nss).getContext());
+        nta.a(paramView).setText(paramViewGroup.mChannelCoverName);
+        nss.a(this.jdField_a_of_type_Nss, paramViewGroup, nta.a(paramView));
       }
-    }
-    for (;;)
-    {
-      i = paramInt1;
-      break;
-      this.c = true;
-      VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "onConfigResult| getFilterSoState != 2", null);
-      paramInt1 = k;
-      continue;
-      paramInt1 = 1;
+      catch (MalformedURLException localMalformedURLException)
+      {
+        for (;;)
+        {
+          QLog.e("IconTabController", 1, "", localMalformedURLException);
+        }
+      }
+      nta.a(paramView).setImageResource(2130848415);
+      nta.a(paramView).setText(ajyc.a(2131705690));
+      if (nss.a(this.jdField_a_of_type_Nss).a()) {
+        nta.b(paramView).setVisibility(0);
+      } else {
+        nta.b(paramView).setVisibility(8);
+      }
     }
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
+    int i = 1;
+    paramAdapterView = getItem(paramInt);
+    if (paramAdapterView == null)
     {
-      if (paramInt != 0) {
-        a(3);
-      }
-    }
-    else if (paramString1.startsWith("new_qq_android_native_short_filter_"))
-    {
-      if (paramInt == 0) {
-        break label92;
-      }
-      a(3);
-    }
-    for (;;)
-    {
-      VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
+      actn.a("IconTabController", ajyc.a(2131705692), new NullPointerException());
       return;
-      this.b = true;
-      d();
-      break;
-      label92:
-      this.c = true;
-      d();
     }
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2) {}
-  
-  public void a(nsy paramnsy)
-  {
-    this.jdField_a_of_type_Nsy = paramnsy;
+    TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)paramAdapterView;
+    int j = getItemViewType(paramInt);
+    paramAdapterView = a(paramInt, paramView);
+    switch (j)
+    {
+    default: 
+      return;
+    case 1: 
+      j = oes.b;
+      if (ReadInJoyChannelPanelFragment.a(localTabChannelCoverInfo) != -1) {}
+      for (;;)
+      {
+        oes.a("0X8009496", localTabChannelCoverInfo, j, i, paramInt);
+        nss.a(this.jdField_a_of_type_Nss).a(paramInt);
+        this.jdField_a_of_type_Nss.b();
+        return;
+        i = 0;
+      }
+    }
+    paramView = new Intent();
+    paramView.putExtra("currentIndex", nss.a(this.jdField_a_of_type_Nss).b());
+    PublicTransFragmentActivity.b(nss.a(this.jdField_a_of_type_Nss).getContext(), paramView, ReadInJoyChannelPanelFragment.class);
+    for (;;)
+    {
+      try
+      {
+        paramView = new onr().b().c(nss.a(this.jdField_a_of_type_Nss).a());
+        if (!oot.a()) {
+          continue;
+        }
+        paramInt = 1;
+        ReadInJoyChannelPanelFragment.a("0X8009497", paramView.b("style", paramInt).a());
+      }
+      catch (JSONException paramView)
+      {
+        QLog.e("IconTabController", 1, QLog.getStackTraceString(paramView));
+        continue;
+      }
+      nss.a(this.jdField_a_of_type_Nss).a(false);
+      nta.b(paramAdapterView).setVisibility(8);
+      return;
+      paramInt = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nsx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,176 +1,58 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class aqge
+class aqge
+  extends ajvl
 {
-  public static aqge a;
-  public int a;
-  public boolean a;
-  public int b = 1;
-  public int c = 256;
+  aqge(aqgb paramaqgb) {}
   
-  public aqge()
+  protected void a(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public static int a()
-  {
-    aqge localaqge = a();
-    if (localaqge != null) {
-      return localaqge.c;
-    }
-    return 256;
-  }
-  
-  public static int a(String paramString, int paramInt)
-  {
-    if (paramString == null) {}
-    do
-    {
-      return paramInt;
-      try
-      {
-        int i = Integer.valueOf(paramString).intValue();
-        return i;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("HotVideoDPC", 2, "StringToInt Exception! " + paramString);
-    return paramInt;
-  }
-  
-  public static aqge a()
-  {
-    if ((jdField_a_of_type_Aqge == null) || (jdField_a_of_type_Aqge.jdField_a_of_type_Boolean)) {
-      jdField_a_of_type_Aqge = b();
-    }
-    return jdField_a_of_type_Aqge;
-  }
-  
-  public static boolean a()
-  {
-    aqge localaqge = a();
-    return (localaqge != null) && (localaqge.b == 1);
-  }
-  
-  public static aqge b()
-  {
-    int i1 = 256;
-    boolean bool = false;
     if (QLog.isColorLevel()) {
-      QLog.d("HotVideoDPC", 2, "loadHotVideoDPC!");
+      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onGetFlyTicket: " + paramBoolean + " sigUrl=" + paramString1);
     }
-    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HotVCfg.name());
-    QLog.i("HotVideoDPC", 2, "loadHotVideoDPC dpcValue: " + str);
-    if (!TextUtils.isEmpty(str)) {}
-    for (;;)
+    if (!paramBoolean)
     {
-      int k;
-      int m;
-      int i;
-      int j;
-      int n;
-      try
+      this.a.x();
+      switch (paramInt)
       {
-        localObject = str.split("\\|");
-        if ((localObject != null) && (localObject.length >= 3))
-        {
-          k = a(localObject[0], 0);
-          m = k;
-        }
-      }
-      catch (Exception localException2)
-      {
-        Object localObject;
-        m = 0;
-        j = 1;
-        continue;
-      }
-      try
-      {
-        i = a(localObject[1], 0);
-        j = i;
-        m = k;
-        try
-        {
-          n = a(localObject[2], 256);
-          localObject = new aqge();
-          ((aqge)localObject).jdField_a_of_type_Int = k;
-          ((aqge)localObject).b = i;
-          ((aqge)localObject).c = n;
-          if ((str == null) || (str.isEmpty())) {
-            bool = true;
-          }
-          ((aqge)localObject).jdField_a_of_type_Boolean = bool;
-          return localObject;
-        }
-        catch (Exception localException1) {}
-        if ((localObject != null) && (localObject.length == 1)) {
-          k = a(localObject[0], 0);
-        }
-      }
-      catch (Exception localException3)
-      {
-        j = 1;
-        continue;
-      }
-      try
-      {
-        QLog.i("HotVideoDPC", 2, "loadHotVideoDPC configs.length == 1");
-        i = 1;
-        n = i1;
-      }
-      catch (Exception localException4)
-      {
-        m = k;
-        j = 1;
-        continue;
-      }
-      if ((localObject != null) && (localObject.length == 2))
-      {
-        k = a(localObject[0], 0);
-        m = k;
-        i = a(localObject[1], 0);
-        j = i;
-        m = k;
-        QLog.i("HotVideoDPC", 2, "loadHotVideoDPC configs.length == 2");
-        n = i1;
-        continue;
-        n = i1;
-        i = j;
-        k = m;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("HotVideoDPC", 2, "loadHotVideoDPC exception:", localException1);
-          n = i1;
-          i = j;
-          k = m;
-        }
-      }
-      else
-      {
-        i = 1;
-        k = 0;
-        n = i1;
+      default: 
+        paramString1 = ajyc.a(2131704822);
+        aqgb.c(this.a, null);
+        aqgb.a(this.a, false);
+        bcpw.a(this.a.a, 1, paramString1, 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
       }
     }
+    while ((aqgb.c(this.a) == null) || (Long.parseLong(aqgb.c(this.a)) != paramLong2)) {
+      for (;;)
+      {
+        return;
+        paramString1 = ajyc.a(2131704829);
+        continue;
+        paramString1 = ajyc.a(2131704828);
+      }
+    }
+    if (aqgb.a(this.a))
+    {
+      aqgb.c(this.a, paramString1);
+      aqgb.a(this.a, aqgb.c(this.a), true);
+    }
+    aqgb.a(this.a, false);
   }
   
-  public String toString()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("hotVideoSwitch: ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" hotVideoBlurSwitch: ").append(this.b);
-    localStringBuilder.append(" hotVideoBlurMemory: ").append(this.c);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.i("ForwardOption.ForwardShareCardOption", 2, "onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramString + "]");
+    }
+    if ((aqgb.c(this.a) != null) && (aqgb.c(this.a).equals(paramString))) {
+      aqgb.a(this.a, aqgb.c(this.a), false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqge
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,12 @@
 package com.tencent.youtu.ytagreflectlivecheck.requester;
 
 import android.os.Build;
+import android.os.Build.VERSION;
 
 public class RGBConfigRequester$YTColorSeqReq
 {
+  public String android_apilevel = "" + Build.VERSION.SDK_INT;
+  public String android_version = Build.VERSION.RELEASE;
   public String app_id;
   public String build_brand = Build.BRAND;
   public String build_device = Build.DEVICE;

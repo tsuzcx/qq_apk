@@ -1,20 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-class mes
-  extends lru
+public class mes
+  extends BroadcastReceiver
 {
-  mes(meo parammeo) {}
+  public mes(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  protected void b(lry paramlry)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramlry.jdField_b_of_type_Boolean) {
-      return;
+    if (paramIntent.getAction().equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION"))
+    {
+      long l = AudioHelper.b();
+      paramContext = ldc.a().a();
+      this.a.a(l, "BroadcastReceiver_qzone", this.a.getIntent(), paramContext);
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
+      this.a.b("BroadcastReceiver_qzone");
     }
-    paramlry.jdField_b_of_type_Boolean = this.a.a(false, 2);
-    if (paramlry.jdField_b_of_type_Boolean) {
-      paramlry.jdField_b_of_type_JavaLangString = "AVRegbagResultUI";
-    }
-    QLog.w(this.a.i, 1, "onAVActivityPreBackPressed, BlockSystemBack[" + paramlry.jdField_b_of_type_Boolean + "]");
   }
 }
 

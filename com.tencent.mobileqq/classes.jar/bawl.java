@@ -1,20 +1,17 @@
-public class bawl
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+
+final class bawl
+  extends View.AccessibilityDelegate
 {
-  public long a;
-  public String a = "";
-  public long b;
-  public String b = "";
-  public long c;
-  public String c = "";
-  public long d;
-  public String d;
-  public long e;
-  public long f;
+  bawl(bawn parambawn) {}
   
-  public bawl()
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    this.jdField_d_of_type_Long = 999L;
-    this.jdField_d_of_type_JavaLangString = "";
+    super.sendAccessibilityEvent(paramView, paramInt);
+    if ((paramInt == 1) && (this.a != null)) {
+      this.a.onClick(paramView);
+    }
   }
 }
 

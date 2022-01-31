@@ -1,65 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.articlesummary.articlesummary.AggregatedList;
-import tencent.im.oidb.articlesummary.articlesummary.ArticleSummary;
-import tencent.im.oidb.articlesummary.articlesummary.FeedsInfo;
-import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfo;
-
 public class ppc
 {
-  public ArrayList<ppd> a;
-  articlesummary.AggregatedList a;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
   
-  public static ppc a(articlesummary.AggregatedList paramAggregatedList)
+  public String toString()
   {
-    if ((paramAggregatedList != null) && (paramAggregatedList.rpt_article_summary.has()))
-    {
-      ppc localppc = new ppc();
-      Object localObject = paramAggregatedList.rpt_article_summary.get();
-      localppc.jdField_a_of_type_JavaUtilArrayList = new ArrayList(((List)localObject).size());
-      localppc.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$AggregatedList = paramAggregatedList;
-      paramAggregatedList = ((List)localObject).iterator();
-      while (paramAggregatedList.hasNext())
-      {
-        localObject = (articlesummary.ArticleSummary)paramAggregatedList.next();
-        articlesummary.FeedsInfo localFeedsInfo = (articlesummary.FeedsInfo)((articlesummary.ArticleSummary)localObject).msg_feeds_info.get();
-        ppd localppd = new ppd();
-        localppd.jdField_a_of_type_Long = ((articlesummary.ArticleSummary)localObject).msg_feeds_info.msg_social_feeds_info.uint64_feeds_id.get();
-        localppd.jdField_b_of_type_Long = ((articlesummary.ArticleSummary)localObject).uint64_algorithm_id.get();
-        if (localFeedsInfo.feeds_type.has()) {
-          localppd.jdField_a_of_type_Int = localFeedsInfo.feeds_type.get();
-        }
-        if (((articlesummary.ArticleSummary)localObject).uint32_strategy_id.has()) {
-          localppd.jdField_b_of_type_Int = ((articlesummary.ArticleSummary)localObject).uint32_strategy_id.get();
-        }
-        if (((articlesummary.ArticleSummary)localObject).uint64_recommend_seq.has()) {
-          localppd.c = ((articlesummary.ArticleSummary)localObject).uint64_recommend_seq.get();
-        }
-        localppc.jdField_a_of_type_JavaUtilArrayList.add(localppd);
-      }
-      return localppc;
-    }
-    return null;
-  }
-  
-  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return (paramBaseArticleInfo.mExtraBiuBriefInfo != null) && (!paramBaseArticleInfo.isExtraBiuExpanded) && (paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList != null) && (!paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList.isEmpty());
-  }
-  
-  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return (paramBaseArticleInfo.mExtraBiuBriefInfo != null) && (paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList != null) && (!paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList.isEmpty());
-  }
-  
-  public byte[] a()
-  {
-    return ((articlesummary.AggregatedList)this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$AggregatedList.get()).toByteArray();
+    return "InnerMsg{innerUniqId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", title='" + this.jdField_b_of_type_JavaLangString + '\'' + ", algorithID=" + this.jdField_a_of_type_Long + ", strategyID=" + this.jdField_a_of_type_Int + ", jumpSrcType=" + this.jdField_b_of_type_Int + ", pushContext='" + this.jdField_c_of_type_JavaLangString + '\'' + ", templateID=" + this.jdField_c_of_type_Int + ", articleContentType=" + this.d + '}';
   }
 }
 

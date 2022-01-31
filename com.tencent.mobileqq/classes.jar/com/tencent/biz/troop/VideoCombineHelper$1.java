@@ -1,17 +1,17 @@
 package com.tencent.biz.troop;
 
-import wju;
-import wkc;
-import wke;
+import wyw;
+import wze;
+import wzg;
 
 public class VideoCombineHelper$1
   implements Runnable
 {
-  public VideoCombineHelper$1(wju paramwju, wke paramwke, wkc paramwkc) {}
+  public VideoCombineHelper$1(wyw paramwyw, wzg paramwzg, wze paramwze) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Wke, this.jdField_a_of_type_Wkc);
+    this.this$0.a(this.jdField_a_of_type_Wzg, this.jdField_a_of_type_Wze);
   }
 }
 

@@ -1,208 +1,205 @@
-import android.os.Bundle;
+import NearbyGroup.Color;
+import NearbyGroup.GroupInfo;
+import NearbyGroup.GroupLabel;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementRecentUserManager.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.data.ShowExternalTroop;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.pb.addcontacts.AccountSearchPb.Color;
+import com.tencent.pb.addcontacts.AccountSearchPb.Label;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import tencent.im.oidb.cmd0x886.oidb_cmd0x886.AdInfo;
-import tencent.im.oidb.cmd0x886.oidb_cmd0x886.PhoneInfo;
-import tencent.im.oidb.cmd0x886.oidb_cmd0x886.ReqBody;
+import java.util.List;
+import tencent.im.group.group_label.GroupLabel.Color;
+import tencent.im.group.group_label.GroupLabel.Label;
+import tencent.im.oidb.cmd0x935.oidb_0x935.RgroupInfo;
+import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.Color;
+import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.Label;
 
 public class myd
 {
-  private static myd jdField_a_of_type_Myd;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList<mxu> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private pdc jdField_a_of_type_Pdc = pdc.a();
+  public static String a = myd.class.getSimpleName();
   
-  public static myd a()
+  public static View a(Context paramContext, ViewGroup paramViewGroup, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    if (jdField_a_of_type_Myd == null) {
-      jdField_a_of_type_Myd = new myd();
-    }
-    return jdField_a_of_type_Myd;
+    paramContext = azml.a(paramContext, paramViewGroup, paramInt2);
+    paramViewGroup = (azmn)paramContext.getTag();
+    paramViewGroup.a.setMaxLabelCount(paramInt1);
+    paramViewGroup.a.setmIsNeedPriority(paramBoolean);
+    return paramContext;
   }
   
-  private void a(ToServiceMsg paramToServiceMsg)
+  public static ArrayList<GroupLabel> a(RecommendTroopItem paramRecommendTroopItem)
   {
-    if (paramToServiceMsg != null)
-    {
-      paramToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
-      long l = System.currentTimeMillis();
-      paramToServiceMsg.extraData.putLong("time_stamp", l);
-      this.jdField_a_of_type_Pdc.a(paramToServiceMsg);
-    }
-  }
-  
-  public String a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementRecentUserManager", 2, "getTrueUin uin:" + paramString);
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        mxu localmxu = (mxu)localIterator.next();
-        if (localmxu.jdField_a_of_type_JavaLangString.equals(paramString))
-        {
-          paramString = localmxu.jdField_a_of_type_Mxw.jdField_a_of_type_JavaLangString;
-          return paramString;
-        }
-      }
-      return null;
-    }
-  }
-  
-  public mxu a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementRecentUserManager", 2, "getAdvertisementItem uin:" + paramString);
-    }
-    if (!TextUtils.isEmpty(paramString)) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          mxu localmxu = (mxu)localIterator.next();
-          if (paramString.equals(localmxu.jdField_a_of_type_JavaLangString)) {
-            return localmxu;
-          }
-        }
-      }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((mxu)localIterator.next()).jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public void a(AppInterface paramAppInterface, int paramInt, mxu parammxu)
-  {
-    if ((parammxu == null) || (paramAppInterface == null)) {}
+    if (paramRecommendTroopItem == null) {}
     for (;;)
     {
-      return;
-      oidb_cmd0x886.PhoneInfo localPhoneInfo = myn.a();
+      return null;
+      Object localObject;
+      if ((paramRecommendTroopItem.labelList == null) && (paramRecommendTroopItem.x935RgroupInfo != null)) {
+        localObject = new oidb_0x935.RgroupInfo();
+      }
       try
       {
-        l1 = Long.parseLong(paramAppInterface.getCurrentAccountUin());
-        paramAppInterface = parammxu.a(paramInt);
-        long l2 = NetConnInfoCenter.getServerTimeMillis();
-        String str = bcdu.d(l1 + parammxu.c + paramInt + l2);
-        oidb_cmd0x886.ReqBody localReqBody = new oidb_cmd0x886.ReqBody();
-        localReqBody.uint64_uin.set(l1);
-        localReqBody.msg_phone_info.set(localPhoneInfo);
-        localReqBody.msg_ad_info.set(paramAppInterface);
-        localReqBody.uint64_client_time.set(l2);
-        localReqBody.bytes_uuid.set(ByteStringMicro.copyFromUtf8(str));
-        localReqBody.enum_ad_display.set(1);
-        a(pde.a("OidbSvc.0x886", 2182, 0, localReqBody.toByteArray()));
-        if (!QLog.isColorLevel()) {
+        ((oidb_0x935.RgroupInfo)localObject).mergeFrom(paramRecommendTroopItem.x935RgroupInfo);
+        if (((oidb_0x935.RgroupInfo)localObject).rpt_group_label.has()) {
+          paramRecommendTroopItem.labelList = akfd.a(((oidb_0x935.RgroupInfo)localObject).rpt_group_label.get());
+        }
+        if ((paramRecommendTroopItem.labelList == null) || (paramRecommendTroopItem.labelList.size() <= 0)) {
           continue;
         }
-        paramAppInterface = new StringBuilder("AdReport(");
-        paramAppInterface.append(paramInt).append(") msgID=").append(parammxu.c);
-        QLog.d("AdvertisementRecentUserManager", 2, paramAppInterface.toString());
-        return;
+        localObject = new ArrayList();
+        paramRecommendTroopItem = paramRecommendTroopItem.labelList.iterator();
+        while (paramRecommendTroopItem.hasNext())
+        {
+          oidb_0x9fb.Label localLabel = (oidb_0x9fb.Label)paramRecommendTroopItem.next();
+          GroupLabel localGroupLabel = new GroupLabel();
+          Color localColor = new Color();
+          localColor.R = localLabel.edging_color.uint32_r.get();
+          localColor.G = localLabel.edging_color.uint32_g.get();
+          localColor.B = localLabel.edging_color.uint32_b.get();
+          localGroupLabel.edging_color = localColor;
+          localColor = new Color();
+          localColor.R = localLabel.text_color.uint32_r.get();
+          localColor.G = localLabel.text_color.uint32_g.get();
+          localColor.B = localLabel.text_color.uint32_b.get();
+          localGroupLabel.text_color = localColor;
+          localGroupLabel.strWording = localLabel.bytes_name.get().toStringUtf8();
+          localGroupLabel.type = localLabel.uint32_label_attr.get();
+          ((ArrayList)localObject).add(localGroupLabel);
+        }
       }
-      catch (Exception paramAppInterface)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         for (;;)
         {
-          long l1 = 0L;
-          paramAppInterface.printStackTrace();
+          localInvalidProtocolBufferMicroException.printStackTrace();
         }
+        return localInvalidProtocolBufferMicroException;
       }
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
+  public static void a(View paramView, Context paramContext, ShowExternalTroop paramShowExternalTroop)
   {
-    if ((paramRecentUser != null) && (paramRecentUser.uin != null)) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        mxu localmxu = a(paramRecentUser.uin);
-        if ((localmxu != null) && (NetConnInfoCenter.getServerTimeMillis() - localmxu.jdField_a_of_type_Long > 86400000L))
-        {
-          localObject1 = (ProxyManager)paramQQAppInterface.getManager(18);
-          if (localObject1 == null)
-          {
-            localObject1 = null;
-            if (localObject1 != null)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("AdvertisementRecentUserManager", 2, "deleteItem uin:" + paramRecentUser.uin);
-              }
-              ahay.a().a(paramRecentUser.uin + "-" + paramRecentUser.getType());
-              ((akeu)localObject1).b(paramRecentUser);
-              ahcq.b(paramQQAppInterface, localmxu.jdField_a_of_type_JavaLangString, 1008);
-              paramQQAppInterface.a().c(localmxu.jdField_a_of_type_JavaLangString, 1008);
-            }
-            ThreadManager.executeOnFileThread(new AdvertisementRecentUserManager.1(this, localmxu));
-          }
-        }
-        else
-        {
-          return;
-        }
-        Object localObject1 = ((ProxyManager)localObject1).a();
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
+    if (paramShowExternalTroop == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementRecentUserManager", 2, "removeUinItem uin:" + paramString);
-    }
-    ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    GroupInfo localGroupInfo = new GroupInfo();
+    try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      localGroupInfo.lCode = Long.valueOf(paramShowExternalTroop.troopUin).longValue();
+      localGroupInfo.strName = paramShowExternalTroop.troopName;
+      if (!TextUtils.isEmpty(paramShowExternalTroop.troopDesText)) {
+        localGroupInfo.strIntro = paramShowExternalTroop.troopDesText;
+      }
+      if ((paramShowExternalTroop.labelList != null) && (paramShowExternalTroop.labelList.size() != 0))
       {
-        mxu localmxu = (mxu)localIterator.next();
-        if (paramString.equals(localmxu.jdField_a_of_type_JavaLangString)) {
-          localArrayList.add(localmxu);
+        ArrayList localArrayList = new ArrayList();
+        paramShowExternalTroop = paramShowExternalTroop.labelList.iterator();
+        while (paramShowExternalTroop.hasNext())
+        {
+          GroupLabel.Label localLabel = (GroupLabel.Label)paramShowExternalTroop.next();
+          GroupLabel localGroupLabel = new GroupLabel();
+          Color localColor = new Color();
+          localColor.R = localLabel.edging_color.uint32_r.get();
+          localColor.G = localLabel.edging_color.uint32_g.get();
+          localColor.B = localLabel.edging_color.uint32_b.get();
+          localGroupLabel.edging_color = localColor;
+          localColor = new Color();
+          localColor.R = localLabel.text_color.uint32_r.get();
+          localColor.G = localLabel.text_color.uint32_g.get();
+          localColor.B = localLabel.text_color.uint32_b.get();
+          localGroupLabel.text_color = localColor;
+          localGroupLabel.strWording = localLabel.bytes_name.get().toStringUtf8();
+          localGroupLabel.type = localLabel.uint32_label_attr.get();
+          localArrayList.add(localGroupLabel);
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilArrayList.removeAll(localArrayList);
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(a, 2, "fillCustomView NumberFormatException");
+        }
+      }
+      localGroupInfo.labels = localNumberFormatException;
+      azml.a(paramView, localGroupInfo, paramContext, false);
+    }
   }
   
-  public void a(mxu parammxu)
+  public static void a(View paramView, Context paramContext, AccountSearchPb.record paramrecord)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementRecentUserManager", 2, "putAdvertisementItem uin:" + parammxu.jdField_a_of_type_JavaLangString);
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(parammxu);
+    if (paramrecord == null) {
       return;
     }
+    GroupInfo localGroupInfo = new GroupInfo();
+    try
+    {
+      localGroupInfo.lCode = paramrecord.code.get();
+      localGroupInfo.strName = paramrecord.name.get();
+      if ((paramrecord.brief.has()) && (!TextUtils.isEmpty(paramrecord.brief.get()))) {
+        localGroupInfo.strIntro = paramrecord.brief.get();
+      }
+      if ((paramrecord.msg_group_labels.has()) && (!paramrecord.msg_group_labels.isEmpty()))
+      {
+        ArrayList localArrayList = new ArrayList();
+        paramrecord = paramrecord.msg_group_labels.get().iterator();
+        while (paramrecord.hasNext())
+        {
+          AccountSearchPb.Label localLabel = (AccountSearchPb.Label)paramrecord.next();
+          GroupLabel localGroupLabel = new GroupLabel();
+          Color localColor = new Color();
+          localColor.R = localLabel.edging_color.uint32_r.get();
+          localColor.G = localLabel.edging_color.uint32_g.get();
+          localColor.B = localLabel.edging_color.uint32_b.get();
+          localGroupLabel.edging_color = localColor;
+          localColor = new Color();
+          localColor.R = localLabel.text_color.uint32_r.get();
+          localColor.G = localLabel.text_color.uint32_g.get();
+          localColor.B = localLabel.text_color.uint32_b.get();
+          localGroupLabel.text_color = localColor;
+          localGroupLabel.strWording = localLabel.bytes_name.get().toStringUtf8();
+          localGroupLabel.type = localLabel.uint32_label_attr.get();
+          localArrayList.add(localGroupLabel);
+        }
+      }
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(a, 2, "fillCustomView NumberFormatException");
+        }
+      }
+      localGroupInfo.labels = localNumberFormatException;
+      azml.a(paramView, localGroupInfo, paramContext, false);
+    }
+  }
+  
+  public static View b(Context paramContext, ViewGroup paramViewGroup, int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    paramContext = azml.a(paramContext, paramViewGroup, paramInt2, 2131561064);
+    paramViewGroup = (azmn)paramContext.getTag();
+    paramViewGroup.a.setMaxLabelCount(paramInt1);
+    paramViewGroup.a.setmIsNeedPriority(paramBoolean);
+    paramViewGroup.b = 1;
+    return paramContext;
   }
 }
 

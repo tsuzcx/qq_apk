@@ -1,6 +1,22 @@
-abstract interface vhc
+import android.graphics.Bitmap;
+
+class vhc
+  extends vju
 {
-  public abstract void a(int paramInt);
+  public Bitmap a;
+  public Bitmap b;
+  
+  public vhc(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
+  {
+    super(paramInt, paramBitmap1);
+    this.b = paramBitmap2;
+    this.a = paramBitmap3;
+  }
+  
+  public vhc(vju paramvju, Bitmap paramBitmap1, Bitmap paramBitmap2)
+  {
+    this(paramvju.jdField_c_of_type_Int, paramvju.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
+  }
 }
 
 

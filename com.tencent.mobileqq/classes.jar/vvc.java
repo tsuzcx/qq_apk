@@ -1,25 +1,37 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qrcode.ipc.VoiceScan.1;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
 public class vvc
-  implements bbgx
+  extends syu<tng, tot>
 {
-  public vvc(VoiceScan.1 param1) {}
+  vvc(vva paramvva) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void a(@NonNull tng paramtng, @Nullable tot paramtot, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramClickableColorSpanTextView = new Intent(vvb.a(this.a.this$0), QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    vvb.a(this.a.this$0).startActivity(paramClickableColorSpanTextView);
+    veg.b("EditVideoTagPresenter", "loadMore onCmdRespond.");
+    if ((paramErrorMessage.isSuccess()) && (paramtot != null))
+    {
+      veg.a("EditVideoTagPresenter", "loadMore onCmdRespond, refresh success:[%s]", paramtot.toString());
+      vva.a(this.a).addAll(paramtot.jdField_a_of_type_JavaUtilList);
+      vva.a(this.a, paramtot.jdField_a_of_type_JavaLangString);
+      vva.a(this.a, paramtot.b);
+      ThreadManager.executeOnSubThread(new EditVideoTagPresenter.2.1(this));
+    }
+    for (;;)
+    {
+      vva.a(this.a).b(paramErrorMessage.errorCode, vva.a(this.a), this.a.a());
+      return;
+      veg.e("EditVideoTagPresenter", "loadMore onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vvc
  * JD-Core Version:    0.7.0.1
  */

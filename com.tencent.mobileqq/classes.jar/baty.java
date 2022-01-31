@@ -1,26 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 import com.tencent.qphone.base.util.QLog;
-import dualsim.common.IKingCardInterface.OnChangeListener;
-import dualsim.common.OrderCheckResult;
-import mqq.app.AppRuntime;
 
-public class baty
-  implements IKingCardInterface.OnChangeListener
+class baty
+  implements bfoq
 {
-  public void onChanged(OrderCheckResult paramOrderCheckResult)
+  baty(batu parambatu) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("KC.KCWraperV2", 1, "state changed");
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject == null) {}
-    for (localObject = null;; localObject = ((AppRuntime)localObject).getAccount())
-    {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramOrderCheckResult != null)) {
-        batu.a((String)localObject, paramOrderCheckResult);
-      }
+    if (this.a.jdField_b_of_type_Boolean) {
       return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopShareUtility", 2, "OnClick.chooseLinkType: " + paramInt);
+    }
+    this.a.jdField_b_of_type_Boolean = true;
+    switch (paramInt)
+    {
+    default: 
+      this.a.b(false);
+      this.a.jdField_a_of_type_Int = -1;
+      this.a.jdField_b_of_type_Int = -1;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.a.jdField_b_of_type_Bfol.dismiss();
+      return;
+      this.a.b(true);
+      this.a.jdField_b_of_type_Int = 1;
+      batu.a(this.a);
+      continue;
+      this.a.b(true);
+      this.a.jdField_b_of_type_Int = 0;
+      batu.a(this.a);
     }
   }
 }

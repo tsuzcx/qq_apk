@@ -15,27 +15,27 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.MutiPicTextInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.PosAdInfo;
-import yjm;
-import yjn;
-import yjo;
+import ysq;
+import ysr;
+import yss;
 
 public abstract class ReaderGdtSdk$RequestListener
-  implements yjn
+  implements ysr
 {
-  public void onResponse(yjm paramyjm)
+  public void onResponse(ysq paramysq)
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject = null;
-    paramyjm = paramyjm.a().a;
-    if (paramyjm == null) {
-      paramyjm = (yjm)localObject;
+    paramysq = paramysq.a().a;
+    if (paramysq == null) {
+      paramysq = (ysq)localObject;
     }
     for (;;)
     {
-      onResult(localArrayList, paramyjm);
+      onResult(localArrayList, paramysq);
       return;
-      localObject = paramyjm.pos_ads_info.get();
-      paramyjm = paramyjm.gdt_cookie.get();
+      localObject = paramysq.pos_ads_info.get();
+      paramysq = paramysq.gdt_cookie.get();
       if (localObject != null) {
         if (!((List)localObject).isEmpty())
         {

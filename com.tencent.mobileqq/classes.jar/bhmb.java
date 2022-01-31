@@ -1,117 +1,222 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.util.WeakReference;
+import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qzone.statistic.StatisticCollector;
+import cooperation.qzone.statistic.access.WnsKeys;
+import cooperation.qzone.statistic.access.concept.Statistic;
+import cooperation.qzone.util.NetworkState;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 
 public class bhmb
 {
-  private DynamicTextConfigManager jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager;
-  private ConcurrentHashMap<String, ArrayList<WeakReference<bhmd>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static final AtomicInteger a = new AtomicInteger(0);
   
-  public bhmb(DynamicTextConfigManager paramDynamicTextConfigManager)
+  public static int a()
   {
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager = paramDynamicTextConfigManager;
+    try
+    {
+      int i = a.incrementAndGet();
+      if (i > 1000000) {
+        a.set(0);
+      }
+      return i;
+    }
+    finally {}
   }
   
-  private void a(bhma parambhma)
+  public static void a(int paramInt)
   {
-    if ((parambhma == null) || (TextUtils.isEmpty(parambhma.jdField_c_of_type_JavaLangString))) {}
-    File[] arrayOfFile;
+    a("QzoneNewService.forwardReport", paramInt, null, 1);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, String paramString1, String paramString2)
+  {
+    Object localObject = "";
+    if (paramInt1 == 0)
+    {
+      localObject = new StringBuilder().append("errorCode = ").append(paramInt2).append(", msg = ");
+      if (paramString1 == null) {
+        break label58;
+      }
+    }
+    for (;;)
+    {
+      localObject = paramString1;
+      a("qzonenewservice.opBox", paramInt1, (String)localObject, 0, 5, paramString2);
+      return;
+      label58:
+      paramString1 = "";
+    }
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    a("qzonenewservice.openvip", 1300000 + paramInt, paramString, 1);
+  }
+  
+  public static void a(String paramString)
+  {
+    a("qzonenewservice.call.music", 0, paramString, 1);
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    int i = bgfp.b();
+    a("QZoneAPPInQQ.activiySwitch." + paramString, 0, paramInt, null, i, 0, null);
+  }
+  
+  private static void a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, int paramInt4, String paramString3)
+  {
+    if (BaseApplicationImpl.getApplication() == null) {}
+    StatisticCollector localStatisticCollector;
     do
     {
       return;
-      arrayOfFile = DynamicTextConfigManager.a.listFiles();
-    } while ((arrayOfFile == null) || (arrayOfFile.length == 0));
-    int j = arrayOfFile.length;
-    int i = 0;
-    label40:
-    File localFile;
-    if (i < j)
-    {
-      localFile = arrayOfFile[i];
-      if (localFile != null) {
-        break label63;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label40;
-      break;
-      label63:
-      String str1 = localFile.getName();
-      if (TextUtils.isEmpty(str1)) {
-        localFile.delete();
-      }
-      if (str1.contains("_"))
+      long l2 = 0L;
+      long l1 = l2;
+      if (BaseApplicationImpl.getApplication() != null)
       {
-        String str2 = str1.substring(0, str1.lastIndexOf("_"));
-        if ((parambhma.jdField_c_of_type_JavaLangString.equalsIgnoreCase(str2)) && (!str1.equalsIgnoreCase(parambhma.a()))) {
-          localFile.delete();
+        l1 = l2;
+        if (BaseApplicationImpl.getApplication().isRuntimeReady())
+        {
+          l1 = l2;
+          if (BaseApplicationImpl.getApplication().getRuntime() != null) {
+            l1 = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+          }
         }
       }
+      localStatisticCollector = StatisticCollector.getInstance();
+      Statistic localStatistic = localStatisticCollector.getStatistic();
+      localStatistic.setValue(WnsKeys.AppId, Integer.valueOf(localStatisticCollector.getAppid()));
+      localStatistic.setValue(WnsKeys.ReleaseVersion, localStatisticCollector.getReleaseVersion());
+      localStatistic.setValue(WnsKeys.CommandId, paramString1);
+      localStatistic.setValue(WnsKeys.APN, NetworkState.getAPN());
+      localStatistic.setValue(WnsKeys.Sequence, Integer.valueOf(a()));
+      localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt1));
+      localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l1));
+      localStatistic.setValue(WnsKeys.Qua, bgxr.a());
+      localStatistic.setValue(WnsKeys.Build, "4440");
+      localStatistic.setValue(WnsKeys.TimeCost, Integer.valueOf(paramInt2));
+      if (paramString2 != null) {
+        localStatistic.setValue(WnsKeys.Detail, paramString2);
+      }
+      if (paramInt3 > 0) {
+        localStatistic.setValue(WnsKeys.Frequency, Integer.valueOf(paramInt3));
+      }
+      if (paramInt4 > 0)
+      {
+        localStatistic.setValue(WnsKeys.DType, Integer.valueOf(paramInt4));
+        localStatistic.setValue(WnsKeys.ODetails, paramString3);
+      }
+      localStatisticCollector.put(localStatistic);
+    } while (paramInt3 != 1);
+    localStatisticCollector.forceReport();
+  }
+  
+  public static void a(String paramString1, int paramInt1, String paramString2, int paramInt2)
+  {
+    a(paramString1, paramInt1, paramString2, paramInt2, 0, null);
+  }
+  
+  private static void a(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3)
+  {
+    if (BaseApplicationImpl.getApplication() == null) {}
+    StatisticCollector localStatisticCollector;
+    do
+    {
+      return;
+      long l2 = 0L;
+      long l1 = l2;
+      if (BaseApplicationImpl.getApplication() != null)
+      {
+        l1 = l2;
+        if (BaseApplicationImpl.getApplication().isRuntimeReady())
+        {
+          l1 = l2;
+          if (BaseApplicationImpl.getApplication().getRuntime() != null) {
+            l1 = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+          }
+        }
+      }
+      localStatisticCollector = StatisticCollector.getInstance();
+      Statistic localStatistic = localStatisticCollector.getStatistic();
+      localStatistic.setValue(WnsKeys.AppId, Integer.valueOf(localStatisticCollector.getAppid()));
+      localStatistic.setValue(WnsKeys.ReleaseVersion, localStatisticCollector.getReleaseVersion());
+      localStatistic.setValue(WnsKeys.CommandId, paramString1);
+      localStatistic.setValue(WnsKeys.APN, NetworkState.getAPN());
+      localStatistic.setValue(WnsKeys.Sequence, Integer.valueOf(a()));
+      localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt1));
+      localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l1));
+      localStatistic.setValue(WnsKeys.Qua, bgxr.a());
+      localStatistic.setValue(WnsKeys.Build, "4440");
+      if (paramString2 != null) {
+        localStatistic.setValue(WnsKeys.Detail, paramString2);
+      }
+      if (paramInt2 > 0) {
+        localStatistic.setValue(WnsKeys.Frequency, Integer.valueOf(paramInt2));
+      }
+      if (paramInt3 > 0)
+      {
+        localStatistic.setValue(WnsKeys.DType, Integer.valueOf(paramInt3));
+        localStatistic.setValue(WnsKeys.ODetails, paramString3);
+      }
+      localStatisticCollector.put(localStatistic);
+    } while (paramInt2 != 1);
+    localStatisticCollector.forceReport();
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
+    {
+      a("qzonenewservice.refresh", 0, null, i, 1, paramString);
+      return;
     }
   }
   
-  public void a(@NonNull bhma parambhma, bhmd parambhmd)
+  public static void b(int paramInt, String paramString)
   {
-    if ((parambhma == null) || (TextUtils.isEmpty(parambhma.jdField_a_of_type_JavaLangString)))
+    a("Qzone.FeedVideo.Play", paramInt, paramString, 1);
+  }
+  
+  public static void b(String paramString)
+  {
+    a("qzonenewservice.to.qzone", 1100003, paramString, 1);
+  }
+  
+  public static void b(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("DText", 2, "startDownloadDynamicTextRes fontInfo is null or resUrl is empty.");
-      }
+      a("qzonenewservice.refresh.more", 0, null, i, 1, paramString);
       return;
     }
-    Object localObject = parambhma.jdField_a_of_type_JavaLangString;
-    if (QLog.isColorLevel()) {
-      QLog.i("DText", 2, "startDownloadDynamicText res url: " + (String)localObject);
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-      {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localObject))
-        {
-          parambhma = (ArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-          localObject = parambhma.iterator();
-          if (!((Iterator)localObject).hasNext()) {
-            break label268;
-          }
-          if (((WeakReference)((Iterator)localObject).next()).get() != parambhmd) {
-            continue;
-          }
-          i = 1;
-          if (i == 0) {
-            parambhma.add(new WeakReference(parambhmd));
-          }
-          return;
-        }
-      }
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(new WeakReference(parambhmd));
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject, localArrayList);
-      parambhmd = new axro();
-      parambhmd.jdField_a_of_type_Axrt = new bhmc(this);
-      parambhmd.jdField_a_of_type_JavaLangString = ((String)localObject);
-      parambhmd.jdField_a_of_type_Int = 0;
-      parambhmd.jdField_c_of_type_JavaLangString = DynamicTextConfigManager.a(parambhma);
-      parambhmd.jdField_c_of_type_Int = badq.a(axsr.a().a());
-      parambhmd.a(parambhma);
-      kry.a().a(parambhmd);
-      return;
-      label268:
-      int i = 0;
-    }
+  }
+  
+  public static void c(int paramInt, String paramString)
+  {
+    a("wns.internal.crashRelatedServerIP", paramInt, paramString, 1);
+  }
+  
+  public static void c(String paramString)
+  {
+    a("qzonenewservice.to.qzonewap", 1100006, paramString, 1);
+  }
+  
+  public static void d(int paramInt, String paramString)
+  {
+    a("QzoneNewService.MusicSdkPlay", paramInt, paramString, 1);
+  }
+  
+  public static void e(int paramInt, String paramString)
+  {
+    a("Feeds.getStickerGif", paramInt, paramString, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhmb
  * JD-Core Version:    0.7.0.1
  */

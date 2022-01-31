@@ -2,8 +2,8 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import bdfz;
-import bdnw;
+import beka;
+import besl;
 
 class InternalJSPlugin$6$2
   implements DialogInterface.OnClickListener
@@ -12,7 +12,7 @@ class InternalJSPlugin$6$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdnw.d("InternalJSPlugin", "cancel");
+    besl.d("InternalJSPlugin", "cancel");
     this.this$1.val$req.a("click cancel");
   }
 }

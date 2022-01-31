@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.magicface.model;
 
-import argx;
-import argy;
+import ascz;
+import asda;
 
 public class MagicfaceDecoder$1
   implements Runnable
 {
-  public MagicfaceDecoder$1(argx paramargx) {}
+  public MagicfaceDecoder$1(ascz paramascz) {}
   
   public void run()
   {
     int i = Thread.currentThread().getPriority();
     Thread.currentThread().setPriority(10);
     this.this$0.jdField_a_of_type_Boolean = true;
-    if (this.this$0.jdField_a_of_type_Argy != null) {
-      this.this$0.jdField_a_of_type_Argy.a();
+    if (this.this$0.jdField_a_of_type_Asda != null) {
+      this.this$0.jdField_a_of_type_Asda.a();
     }
     this.this$0.a();
     this.this$0.jdField_a_of_type_Boolean = false;
-    if (this.this$0.jdField_a_of_type_Argy != null) {
-      this.this$0.jdField_a_of_type_Argy.b();
+    if (this.this$0.jdField_a_of_type_Asda != null) {
+      this.this$0.jdField_a_of_type_Asda.b();
     }
     Thread.currentThread().setPriority(i);
   }

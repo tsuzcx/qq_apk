@@ -1,8 +1,11 @@
-public abstract interface qfm
+import android.widget.ImageView;
+
+class qfm
 {
-  public abstract void b();
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView b;
   
-  public abstract void c();
+  private qfm(qfk paramqfk) {}
 }
 
 

@@ -1,165 +1,90 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailBaseInfoModel.1.1;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
-public class nff
-  implements alzn<String>
+public final class nff
+  implements BusinessObserver
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean;
-  private String c = "";
+  nff(QQAppInterface paramQQAppInterface, nmv paramnmv, int paramInt, String paramString) {}
   
-  public static nff a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    nff localnff = new nff();
-    localnff.jdField_a_of_type_JavaLangString = rsp.jdField_a_of_type_JavaLangString;
-    localnff.jdField_b_of_type_JavaLangString = rsp.jdField_b_of_type_JavaLangString;
-    localnff.c = rsp.c;
-    localnff.jdField_a_of_type_Boolean = rsp.d;
-    return localnff;
-  }
-  
-  private nff a(nff paramnff, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return this;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("pacenter_url")) {
-          this.jdField_a_of_type_JavaLangString = paramnff.jdField_a_of_type_JavaLangString;
-        }
-        if (paramString.has("pacategory_url")) {
-          this.jdField_b_of_type_JavaLangString = paramnff.jdField_b_of_type_JavaLangString;
-        }
-        if (paramString.has("readinjoy_search_url")) {
-          this.c = paramnff.c;
-        }
-        if (paramString.has("image_collection_comment")) {
-          this.jdField_a_of_type_Boolean = paramnff.jdField_a_of_type_Boolean;
-        }
-        if (paramnff.jdField_b_of_type_Boolean)
-        {
-          this.jdField_b_of_type_Boolean = true;
-          return this;
-        }
-      }
-      catch (Exception paramnff)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountCenterUrlConfProcessor", 2, "checkPublicAccountCenterUrlConfigData error", paramnff);
-        }
-        paramnff.printStackTrace();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseInfoModel", 2, "success:" + String.valueOf(paramBoolean));
     }
-    return this;
-  }
-  
-  public static nff a(alzs[] paramArrayOfalzs)
-  {
-    Object localObject = new nff();
-    int i = 0;
-    String str;
+    PublicAccountHandler localPublicAccountHandler = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
+    if (paramBoolean) {}
     for (;;)
     {
-      if (i >= paramArrayOfalzs.length) {
-        return localObject;
-      }
-      str = paramArrayOfalzs[i].jdField_a_of_type_JavaLangString;
       try
       {
-        nff localnff = ((nff)localObject).a((nff)amaf.a(str, nff.class), str);
-        localObject = localnff;
-      }
-      catch (QStorageInstantiateException localQStorageInstantiateException)
-      {
-        for (;;)
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
         {
-          QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + str, localQStorageInstantiateException);
-        }
-      }
-      i += 1;
-    }
-    return localObject;
-  }
-  
-  public void a()
-  {
-    rsp.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    rsp.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    rsp.c = this.c;
-    rsp.d = this.jdField_a_of_type_Boolean;
-  }
-  
-  public void a(String paramString)
-  {
-    boolean bool3 = true;
-    for (;;)
-    {
-      boolean bool2;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        String str1 = paramString.getString("pacenter_url");
-        String str2 = paramString.getString("pacategory_url");
-        if (!rsp.a(str1)) {
-          break label156;
-        }
-        this.jdField_a_of_type_JavaLangString = str1;
-        bool1 = true;
-        if (rsp.a(str2))
-        {
-          this.jdField_b_of_type_JavaLangString = str2;
-          bool1 = true;
-        }
-        bool2 = bool1;
-        if (paramString.has("readinjoy_search_url"))
-        {
-          str1 = paramString.getString("readinjoy_search_url");
-          bool2 = bool1;
-          if (rsp.a(str1))
+          Object localObject = new mobileqq_mp.SetFunctionFlagResponse();
+          ((mobileqq_mp.SetFunctionFlagResponse)localObject).mergeFrom(paramBundle);
+          if (((mobileqq_mp.RetInfo)((mobileqq_mp.SetFunctionFlagResponse)localObject).ret_info.get()).ret_code.get() == 0)
           {
-            this.c = str1;
-            bool2 = true;
+            ((mobileqq_mp.RetInfo)((mobileqq_mp.SetFunctionFlagResponse)localObject).ret_info.get()).ret_code.get();
+            if (QLog.isColorLevel()) {
+              QLog.d("AccountDetailBaseInfoModel", 2, "sendSetFunctionFlagRequest success");
+            }
+            this.jdField_a_of_type_Nmv.d = this.jdField_a_of_type_Int;
+            paramBundle = null;
+            localObject = (akdi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+            if (localObject != null) {
+              paramBundle = ((akdi)localObject).a(this.jdField_a_of_type_JavaLangString);
+            }
+            if (paramBundle != null)
+            {
+              if (this.jdField_a_of_type_Nmv.e == 6)
+              {
+                if (this.jdField_a_of_type_Int == 1) {
+                  paramBundle.mShowMsgFlag = this.jdField_a_of_type_Int;
+                }
+                ThreadManager.getSubThreadHandler().postDelayed(new AccountDetailBaseInfoModel.1.1(this, paramBundle), 10L);
+                localPublicAccountHandler.notifyUI(109, true, this.jdField_a_of_type_Nmv);
+                return;
+              }
+              if (this.jdField_a_of_type_Nmv.e != 3) {
+                continue;
+              }
+              paramBundle.isSyncLbs = true;
+              if (this.jdField_a_of_type_Nmv.d != 1) {
+                break label315;
+              }
+              paramBoolean = true;
+              paramBundle.isAgreeSyncLbs = paramBoolean;
+              continue;
+            }
+          }
+          else
+          {
+            localPublicAccountHandler.notifyUI(109, false, this.jdField_a_of_type_Nmv);
           }
         }
-        if (paramString.has("image_collection_comment"))
+        else
         {
-          this.jdField_a_of_type_Boolean = paramString.getBoolean("image_collection_comment");
-          bool1 = bool3;
-          this.jdField_b_of_type_Boolean = bool1;
+          localPublicAccountHandler.notifyUI(109, false, this.jdField_a_of_type_Nmv);
           return;
+          localPublicAccountHandler.notifyUI(109, false, this.jdField_a_of_type_Nmv);
         }
-      }
-      catch (Exception paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountCenterUrlConfProcessor", 2, "checkPublicAccountCenterUrlConfigData error", paramString);
-        }
-        paramString.printStackTrace();
-        this.jdField_b_of_type_Boolean = false;
         return;
       }
-      boolean bool1 = bool2;
-      continue;
-      label156:
-      bool1 = false;
-    }
-  }
-  
-  public void b()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      rsp.c((QQAppInterface)localAppRuntime);
+      catch (Exception paramBundle)
+      {
+        return;
+      }
+      label315:
+      paramBoolean = false;
     }
   }
 }

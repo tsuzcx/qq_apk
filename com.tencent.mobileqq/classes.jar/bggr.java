@@ -1,40 +1,89 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.XMPCoreUtil.2;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResultCallback;
+import java.util.Iterator;
+import java.util.Vector;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bggr
-  implements ModuleDownloadListener
 {
-  public bggr(XMPCoreUtil.2 param2) {}
+  static EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new bggs();
+  static Vector<bggt> jdField_a_of_type_JavaUtilVector;
+  static JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
   
-  public void onDownloadCanceled(String paramString)
+  static
   {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadCanceled ", paramString });
+    jdField_a_of_type_JavaUtilVector = new Vector();
   }
   
-  public void onDownloadFailed(String paramString)
+  public static int a(String paramString, int paramInt)
   {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadFailed ", paramString });
+    return jdField_a_of_type_OrgJsonJSONObject.optInt(paramString, paramInt);
   }
   
-  public void onDownloadProgress(String paramString, float paramFloat)
+  public static void a()
   {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+    Bundle localBundle = new Bundle();
+    QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "getComicConfig", localBundle, jdField_a_of_type_EipcEIPCResultCallback);
   }
   
-  public void onDownloadSucceed(String paramString)
+  public static void a(bggt parambggt)
   {
-    if (!paramString.equals("xmpcore.jar")) {
-      return;
+    if (parambggt != null) {
+      jdField_a_of_type_JavaUtilVector.add(parambggt);
     }
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "url = ", bggp.a(), " onDownloadSucceed = ", bggp.b() });
-    LocalMultiProcConfig.putString("xmp_core_file_md5", bggp.b());
+  }
+  
+  public static void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("VipComicCommonConfig");
+        if ((paramString != null) && (paramString.length() > 0))
+        {
+          i = 0;
+          if (i < paramString.length())
+          {
+            Object localObject = paramString.optJSONObject(i);
+            if ((localObject == null) || (!bcgc.a((JSONObject)localObject, "VipComicCommonConfig"))) {
+              break label118;
+            }
+            jdField_a_of_type_OrgJsonJSONObject = (JSONObject)localObject;
+            paramString = jdField_a_of_type_JavaUtilVector.iterator();
+            if (paramString.hasNext())
+            {
+              localObject = (bggt)paramString.next();
+              if (localObject == null) {
+                continue;
+              }
+              ((bggt)localObject).a(jdField_a_of_type_OrgJsonJSONObject);
+              continue;
+            }
+          }
+        }
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.d("VipComicConfigHelper", 2, "parse config json file failed.", paramString);
+      }
+      label118:
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bggr
  * JD-Core Version:    0.7.0.1
  */

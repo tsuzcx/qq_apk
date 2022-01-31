@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.servlet;
 
-import awcz;
-import awda;
+import axch;
+import axci;
 import com.tencent.qphone.base.util.QLog;
 
 public class QZoneManagerImp$1$1
   implements Runnable
 {
-  public QZoneManagerImp$1$1(awda paramawda) {}
+  public QZoneManagerImp$1$1(axci paramaxci) {}
   
   public void run()
   {
-    long l = awcz.a(this.a.a);
-    awcz.a(this.a.a);
-    awcz.a(this.a.a, awcz.b(this.a.a));
-    this.a.a.a(l | awcz.a(this.a.a));
+    long l = axch.a(this.a.a);
+    axch.a(this.a.a);
+    axch.a(this.a.a, axch.b(this.a.a));
+    this.a.a.a(l | axch.a(this.a.a));
     if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.QZoneManagerImp.", 2, "onChange notifyQQTab type:" + Long.toBinaryString(awcz.a(this.a.a)));
+      QLog.d("UndealCount.QZoneManagerImp.", 2, "onChange notifyQQTab type:" + Long.toBinaryString(axch.a(this.a.a)));
     }
   }
 }

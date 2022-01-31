@@ -1,31 +1,38 @@
-import android.net.Uri;
-import android.provider.ContactsContract.Data;
-import android.provider.ContactsContract.RawContacts;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
 
-final class aqqx
-  implements HookMethodCallback
+class aqqx
+  extends Handler
 {
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
-  {
-    paramMethodHookParam = ((Uri)paramMethodHookParam.args[0]).toString();
-    if ((paramMethodHookParam.contains(ContactsContract.RawContacts.CONTENT_URI.toString())) || (paramMethodHookParam.contains(ContactsContract.Data.CONTENT_URI.toString())))
-    {
-      paramMethodHookParam = new StringBuilder(1000);
-      StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-      int i = 0;
-      while (i < arrayOfStackTraceElement.length)
-      {
-        paramMethodHookParam.append(arrayOfStackTraceElement[i] + "-");
-        i += 1;
-      }
-      QLog.d("ContactDelete", 1, paramMethodHookParam.toString());
-    }
-  }
+  aqqx(aqqw paramaqqw) {}
   
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    case 3: 
+    case 5: 
+    default: 
+      return;
+    case 0: 
+      this.a.a();
+      return;
+    case 1: 
+      aqqw.a(this.a);
+      return;
+    case 6: 
+      aqqw.b(this.a);
+      return;
+    case 2: 
+      aqqw.c(this.a);
+      return;
+    case 4: 
+      aqqw.d(this.a);
+      return;
+    }
+    aqqw.e(this.a);
+  }
 }
 
 

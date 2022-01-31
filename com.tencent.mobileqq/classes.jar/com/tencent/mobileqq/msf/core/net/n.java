@@ -846,7 +846,7 @@ public class n
         if ((NetConnInfoCenter.isWifiConn()) || ((!NetConnInfoCenter.isWifiOrMobileConn()) && (NetConnInfoCenter.getCurrentAPN() == null)))
         {
           bool2 = bool1;
-          if (l1 - com.tencent.mobileqq.msf.core.a.c.n >= 60000L) {
+          if (l1 - com.tencent.mobileqq.msf.core.a.c.l >= 60000L) {
             break;
           }
           localObject1 = new StringBuffer();
@@ -860,13 +860,13 @@ public class n
           }
           localObject1 = ((StringBuffer)localObject1).toString();
           if (this.f.getStatReporter() != null) {
-            this.f.getStatReporter().a(false, l1 - com.tencent.mobileqq.msf.core.a.c.n, (String)localObject1);
+            this.f.getStatReporter().a(false, l1 - com.tencent.mobileqq.msf.core.a.c.l, (String)localObject1);
           }
-          com.tencent.mobileqq.msf.core.a.c.n = 0L;
+          com.tencent.mobileqq.msf.core.a.c.l = 0L;
           return bool1;
         }
         bool2 = bool1;
-        if (l1 - com.tencent.mobileqq.msf.core.a.c.o >= 60000L) {
+        if (l1 - com.tencent.mobileqq.msf.core.a.c.m >= 60000L) {
           break;
         }
         localObject1 = new StringBuffer();
@@ -880,9 +880,9 @@ public class n
         }
         localObject1 = ((StringBuffer)localObject1).toString();
         if (this.f.getStatReporter() != null) {
-          this.f.getStatReporter().a(false, l1 - com.tencent.mobileqq.msf.core.a.c.o, (String)localObject1);
+          this.f.getStatReporter().a(false, l1 - com.tencent.mobileqq.msf.core.a.c.m, (String)localObject1);
         }
-        com.tencent.mobileqq.msf.core.a.c.o = 0L;
+        com.tencent.mobileqq.msf.core.a.c.m = 0L;
         return bool1;
       }
       NetConnInfoCenter.checkConnInfo(BaseApplication.getContext(), true);
@@ -925,37 +925,46 @@ public class n
   
   private void r()
   {
-    if (this.N != null) {}
-    do
+    for (;;)
     {
-      do
+      try
       {
-        return;
-      } while (com.tencent.mobileqq.msf.core.a.a.T() == 0);
-      localObject1 = com.tencent.mobileqq.msf.core.a.a.S();
-      if (localObject1 != null) {
-        break;
+        Object localObject1 = this.N;
+        if (localObject1 != null) {
+          return;
+        }
+        if (com.tencent.mobileqq.msf.core.a.a.T() == 0) {
+          continue;
+        }
+        localObject1 = com.tencent.mobileqq.msf.core.a.a.S();
+        if (localObject1 == null)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("MSF.C.NetConnTag", 2, "TcpdumpSSOVip is empty");
+          continue;
+        }
+        this.L.clear();
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("MSF.C.NetConnTag", 2, "TcpdumpSSOVip is empty");
-    return;
-    this.L.clear();
-    Object localObject1 = ((String)localObject1).split(";");
-    int i2 = localObject1.length;
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      Object localObject2 = localObject1[i1];
-      n.a locala = new n.a(this);
-      locala.a = localObject2;
-      locala.b = 1;
-      locala.c = "";
-      this.L.add(locala);
-      i1 += 1;
+      finally {}
+      String[] arrayOfString = localObject2.split(";");
+      int i2 = arrayOfString.length;
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        String str = arrayOfString[i1];
+        n.a locala = new n.a(this);
+        locala.a = str;
+        locala.b = 1;
+        locala.c = "";
+        this.L.add(locala);
+        i1 += 1;
+      }
+      this.N = new q(this);
+      this.N.setName("checkNetConnectByConnectSSOThread");
+      this.N.start();
     }
-    this.N = new q(this);
-    this.N.setName("checkNetConnectByConnectSSOThread");
-    this.N.start();
   }
   
   private static boolean s()

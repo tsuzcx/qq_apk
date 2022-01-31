@@ -9,8 +9,8 @@ class MiniAppDesktop$2$1
   
   public void run()
   {
-    int i = MiniAppDesktop.access$500(this.this$1.this$0);
-    MiniAppDesktop.access$600(this.this$1.this$0).springBackOverScrollHeaderView(-i);
+    int i = MiniAppDesktop.access$400(this.this$1.this$0);
+    MiniAppDesktop.access$500(this.this$1.this$0).springBackOverScrollHeaderView(-i);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.tmdownloader.internal.downloadclient;
 
 import com.qq.taf.jce.JceStruct;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.BatchSDKDownloadActionResponse;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCHead;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCResponse;
@@ -14,7 +14,7 @@ class d
   
   public void a()
   {
-    ac.c(c.b(), "onDownloadSDKServiceInvalid yybOpenClient......");
+    ab.c(c.b(), "onDownloadSDKServiceInvalid yybOpenClient......");
     synchronized (this.a)
     {
       c.a(this.a, null);
@@ -28,7 +28,7 @@ class d
     {
       paramArrayOfByte = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramArrayOfByte);
       JceStruct localJceStruct = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramArrayOfByte);
-      ac.c(c.b(), "response.head.cmdId = " + paramArrayOfByte.head.cmdId);
+      ab.c(c.b(), "response.head.cmdId = " + paramArrayOfByte.head.cmdId);
       switch (paramArrayOfByte.head.cmdId)
       {
       }
@@ -37,16 +37,16 @@ class d
         do
         {
           return;
-          ac.c("jimluo", "_SubScribeSDKDownloadTask......");
+          ab.c("jimluo", "_SubScribeSDKDownloadTask......");
         } while (localJceStruct == null);
         this.a.a((SubScribeSDKDownloadTaskByViaResponse)localJceStruct);
         return;
-        ac.c("jimluo", "_BatchDownloadAction......");
+        ab.c("jimluo", "_BatchDownloadAction......");
       } while (localJceStruct == null);
       this.a.a((BatchSDKDownloadActionResponse)localJceStruct);
       return;
     }
-    ac.c(c.b(), "onActionResult reponseData = null");
+    ab.c(c.b(), "onActionResult reponseData = null");
   }
 }
 

@@ -1,6 +1,9 @@
 package com.tencent.av;
 
-import kvq;
+import bbev;
+import com.tencent.av.app.VideoAppInterface;
+import lgf;
+import mqq.app.MobileQQ;
 
 class VideoController$22
   implements Runnable
@@ -11,7 +14,16 @@ class VideoController$22
   {
     this.this$0.i = null;
     this.this$0.a().a("acceptGAudioChat", 0);
-    this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, 16, 0);
+    boolean bool = bbev.g(this.this$0.a.getApplication().getApplicationContext());
+    VideoController localVideoController = this.this$0;
+    int j = this.jdField_a_of_type_Int;
+    long l = this.jdField_a_of_type_Long;
+    if (bool) {}
+    for (int i = 69;; i = 68)
+    {
+      localVideoController.a(j, l, i, 0);
+      return;
+    }
   }
 }
 

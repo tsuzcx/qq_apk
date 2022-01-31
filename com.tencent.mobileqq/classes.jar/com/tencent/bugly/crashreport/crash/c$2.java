@@ -21,7 +21,7 @@ final class c$2
     {
       x.c("Size of crash list: %s", new Object[] { Integer.valueOf(localList.size()) });
       int j = localList.size();
-      if (j > 100L)
+      if (j > 20L)
       {
         ArrayList localArrayList = new ArrayList();
         Collections.sort(localList);
@@ -29,7 +29,7 @@ final class c$2
         for (;;)
         {
           localObject = localArrayList;
-          if (i >= 100L) {
+          if (i >= 20L) {
             break;
           }
           localArrayList.add(localList.get(j - 1 - i));

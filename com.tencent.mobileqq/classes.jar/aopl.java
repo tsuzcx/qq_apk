@@ -1,64 +1,65 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.1;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.2;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.3;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.4;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.5;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.6;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-public abstract class aopl
+public class aopl
+  implements apwk
 {
-  protected final QQAppInterface a;
+  public aopl(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public aopl(QQAppInterface paramQQAppInterface)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    this.a = paramQQAppInterface;
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadStart progress = " + paramInt);
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.2(this));
   }
   
-  protected abstract String a(boolean paramBoolean);
-  
-  protected abstract HashMap<String, String> a();
-  
-  public abstract void a();
-  
-  public void a(aopm paramaopm, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
+  public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    paramaopm = paramaopm.a();
-    paramaopm.putAll(paramExcitingTransferOneSlotComplete.getReportData());
-    awrn localawrn = awrn.a(BaseApplication.getContext());
-    String str = this.a.getCurrentAccountUin();
-    if (paramExcitingTransferOneSlotComplete.m_SubReason == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localawrn.a(str, "actPDSlot", bool, 0L, 0L, paramaopm, "");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadFailed errCode = " + paramInt);
     }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.6(this));
   }
   
-  public void a(boolean paramBoolean)
+  public void a(String paramString, long paramLong, Bundle paramBundle)
   {
-    if (a()) {
-      b(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadSucess ");
     }
-    HashMap localHashMap = a();
-    if (localHashMap != null) {
-      QLog.i("DataReport", 1, ">>> report: act=" + a(false) + localHashMap.toString());
-    }
-    awrn.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(false), paramBoolean, 0L, 0L, localHashMap, "");
+    this.a.runOnUiThread(new UniformDownloadActivity.11.1(this));
+    axqw.b(null, "dc00898", "", "", "0X8008FFA", "0X8008FFA", 1, 0, "", "", "", "");
   }
   
-  protected abstract boolean a();
-  
-  protected abstract HashMap<String, String> b();
-  
-  public abstract void b();
-  
-  public void b(boolean paramBoolean)
+  public void b(int paramInt, Bundle paramBundle)
   {
-    HashMap localHashMap = b();
-    if (localHashMap != null)
-    {
-      QLog.i("OldDataReport", 1, ">>> reportOld: act=" + a(true) + localHashMap.toString());
-      awrn.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(true), paramBoolean, 0L, 0L, localHashMap, "");
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadProgress progress = " + paramInt);
     }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.4(this, paramInt));
+  }
+  
+  public void c(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadPause progress = " + paramInt);
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.5(this));
+  }
+  
+  public void d(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadResume progress = " + paramInt);
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.3(this));
   }
 }
 

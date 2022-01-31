@@ -1,23 +1,46 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.views.RoundBorderImageView;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import java.util.List;
 
-final class tis
-  extends SimpleJob<Object>
+public class tis
+  extends tiq
 {
-  tis(String paramString)
+  public int a;
+  
+  public tis(ViewGroup paramViewGroup, int paramInt)
   {
-    super(paramString);
+    super(paramViewGroup, 2131561302);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(tfi paramtfi)
   {
-    paramJobContext = tio.a();
-    if (paramJobContext != null) {
-      tio.b(paramJobContext);
+    super.a(paramtfi);
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      vxs.a(ajyc.a(2131707601), new Object[0]);
+      return;
+    case 3: 
+      this.itemView.setTag(Integer.valueOf(3));
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramtfi.c, false);
+      String str = vzl.b(paramtfi.g);
+      if (!TextUtils.isEmpty(str)) {
+        b(str);
+      }
+      while ((paramtfi.a == null) || (paramtfi.a.isEmpty()))
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(1, 1 - paramtfi.b);
+        return;
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.setImageResource(2130845727);
+      }
     }
-    return null;
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(ajyc.a(2131707600), false);
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.setImageResource(2130845724);
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.b(false);
   }
 }
 

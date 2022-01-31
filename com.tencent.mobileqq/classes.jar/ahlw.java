@@ -1,25 +1,31 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+
 class ahlw
+  implements View.OnClickListener
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
-  public float e;
-  public float f;
+  ahlw(ahkf paramahkf, int paramInt) {}
   
-  public ahlw(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public void onClick(View paramView)
   {
-    this.a = paramFloat2;
-    this.b = paramFloat3;
-    this.c = paramFloat1;
-    this.d = paramFloat4;
-    this.e = paramFloat5;
-    this.f = paramFloat6;
+    if (BaseActivity.sTopActivity != null) {
+      asle.a().a(BaseActivity.sTopActivity, this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      asle.m();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahlw
  * JD-Core Version:    0.7.0.1
  */

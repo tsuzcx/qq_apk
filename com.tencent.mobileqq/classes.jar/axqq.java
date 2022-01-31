@@ -1,45 +1,99 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.ImageUploadStep.1;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class axqq
-  extends axql
 {
-  private int a;
+  public static boolean a;
   
-  axqq(axqk paramaxqk)
+  private static String a(QQAppInterface paramQQAppInterface)
   {
-    super(paramaxqk);
-    this.jdField_a_of_type_JavaLangString = "ImageUploadStep";
+    if (paramQQAppInterface == null) {
+      return "unknown";
+    }
+    switch (bbev.b(paramQQAppInterface.getApp()))
+    {
+    default: 
+      return "unknown";
+    case 0: 
+      return "none";
+    case 1: 
+      return "Wi-Fi";
+    case 2: 
+      return "2G";
+    case 3: 
+      return "3G";
+    case 4: 
+      return "4G";
+    }
+    return "5G";
   }
   
-  protected boolean a()
+  private static String a(QQAppInterface paramQQAppInterface, axqr paramaxqr)
   {
-    return axqk.a(this.jdField_b_of_type_Axqk).get();
+    paramaxqr.a = bbct.d();
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = SosoInterface.b();
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null)) {
+      paramaxqr.c = localSosoLbsInfo.a.e;
+    }
+    paramaxqr.b = a(paramQQAppInterface);
+    return paramaxqr.toString();
   }
   
-  protected void d()
+  public static void a(QQAppInterface paramQQAppInterface, axqr paramaxqr)
   {
+    paramaxqr = a(paramQQAppInterface, paramaxqr);
     if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "ImageUploadStep|process|ready=" + axqk.a(this.jdField_b_of_type_Axqk) + ",remoteUrl=" + axqk.a(this.jdField_b_of_type_Axqk) + " ,localUrl=" + axqk.b(this.jdField_b_of_type_Axqk));
+      QLog.i("PushReportController", 1, "reportPushEvent detail=" + paramaxqr);
     }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (paramQQAppInterface == null)
     {
-      f();
+      if (QLog.isColorLevel()) {
+        QLog.i("PushReportController", 1, "not Rumtime");
+      }
+      paramQQAppInterface = new Intent();
+      paramQQAppInterface.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      paramQQAppInterface.putExtra("reporting_tag", "dc03266");
+      paramQQAppInterface.putExtra("reporting_detail", paramaxqr);
+      paramQQAppInterface.putExtra("reporting_count", 1);
+      paramQQAppInterface.putExtra("is_runtime", 0);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface);
       return;
     }
-    if (axqk.a(this.jdField_b_of_type_Axqk).get())
-    {
-      b();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("PushReportController", 1, " Rumtime");
     }
-    ThreadManager.excute(new ForwardSdkShareProcessor.ImageUploadStep.1(this), 128, null, true);
+    axqw.b(paramQQAppInterface, "dc03266", paramaxqr, 1);
+  }
+  
+  public static void a(String paramString, axqr paramaxqr)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.contains("&")))
+    {
+      paramString = paramString.split("&");
+      int i = 0;
+      while (i < paramString.length)
+      {
+        if (paramString[i].contains("pushfrom"))
+        {
+          String[] arrayOfString = paramString[i].split("=");
+          if ((arrayOfString != null) && (arrayOfString.length >= 2)) {
+            paramaxqr.g = arrayOfString[1];
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axqq
  * JD-Core Version:    0.7.0.1
  */

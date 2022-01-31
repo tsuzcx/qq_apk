@@ -1,126 +1,131 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.ArrayList;
 
-public class aoue
-  implements aotv
+public abstract class aoue
 {
-  private ayqd jdField_a_of_type_Ayqd;
-  private UUID jdField_a_of_type_JavaUtilUUID;
+  protected Context a;
+  protected View.OnClickListener a;
+  protected bfol a;
+  protected QQAppInterface a;
   
-  public aoue(ayqd paramayqd)
+  public aoue(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_Ayqd = paramayqd;
-    this.jdField_a_of_type_JavaUtilUUID = this.jdField_a_of_type_Ayqd.jdField_a_of_type_JavaUtilUUID;
-    if (this.jdField_a_of_type_JavaUtilUUID == null) {
-      throw new NullPointerException("TroopFileStatusInfo Id null");
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aouf(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private void a(acun paramacun, boolean paramBoolean)
+  {
+    paramacun = a(paramacun);
+    if (paramBoolean) {
+      if (paramacun != null)
+      {
+        paramacun.setVisibility(0);
+        paramacun.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      }
     }
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Ayqd.c;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_Ayqd.e;
-  }
-  
-  public void a(long paramLong)
-  {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Ayqd.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifyProgress: get troopFileTransferManager failed.");
-    }
-    TroopFileTransferManager.Item localItem;
-    do
-    {
-      return;
-      localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Ayqd.jdField_a_of_type_JavaUtilUUID);
-    } while (localItem == null);
-    localItem.ProgressValue = paramLong;
-    localTroopFileTransferManager.a(localItem, 8);
-  }
-  
-  public void a(aojh paramaojh)
-  {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Ayqd.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null)
-    {
-      QLog.e("VideoForTroop<QFile>", 1, "getUrl: get troopFileTransferManager failed.");
+    while (paramacun == null) {
       return;
     }
-    localTroopFileTransferManager.a(this.jdField_a_of_type_Ayqd.e, this.jdField_a_of_type_Ayqd.g, this.jdField_a_of_type_Ayqd.c, this.jdField_a_of_type_Ayqd.h, new aouf(this, paramaojh));
+    paramacun.setVisibility(8);
+    paramacun.setOnClickListener(null);
   }
   
-  public void a(String paramString)
+  protected abstract ImageView a(acun paramacun);
+  
+  protected void a()
   {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Ayqd.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifySuccessed: get troopFileTransferManager failed.");
+    if ((this.jdField_a_of_type_Bfol != null) && (this.jdField_a_of_type_Bfol.isShowing())) {
+      bfoy.b((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bfol);
     }
-    TroopFileTransferManager.Item localItem;
-    do
-    {
-      return;
-      localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Ayqd.jdField_a_of_type_JavaUtilUUID);
-    } while (localItem == null);
-    boolean bool = ayor.b(localItem.Status);
-    if (QLog.isColorLevel()) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifySuccessed  itemStatus[" + localItem.Status + "]");
-    }
-    if ((bool) || (this.jdField_a_of_type_Ayqd.jdField_b_of_type_Int == 7))
-    {
-      localItem.LocalFile = paramString;
-      localTroopFileTransferManager.a(localItem, 11);
-      return;
-    }
-    localTroopFileTransferManager.a(localItem, 6);
   }
   
-  public void a(boolean paramBoolean)
+  public void a(acun paramacun, View paramView, ChatMessage paramChatMessage)
   {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Ayqd.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifyFileFailed: get troopFileTransferManager failed.");
-    }
-    TroopFileTransferManager.Item localItem;
-    do
+    RelativeLayout.LayoutParams localLayoutParams;
+    if (a(paramChatMessage))
     {
-      return;
-      localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Ayqd.jdField_a_of_type_JavaUtilUUID);
-    } while (localItem == null);
-    if (paramBoolean)
+      paramChatMessage = a(paramacun);
+      if (paramChatMessage == null)
+      {
+        paramChatMessage = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+        paramChatMessage.setImageResource(2130838105);
+        paramChatMessage.setId(2131364129);
+        a(paramacun, paramChatMessage);
+        localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+        localLayoutParams.bottomMargin = actn.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        localLayoutParams.addRule(8, 2131364110);
+        localLayoutParams.addRule(0, 2131364110);
+        localLayoutParams.addRule(1, 0);
+        if ((paramView instanceof ViewGroup)) {
+          ((ViewGroup)paramView).addView(paramChatMessage, localLayoutParams);
+        }
+      }
+      for (;;)
+      {
+        a(paramacun, true);
+        return;
+        paramChatMessage.setImageResource(2130838105);
+      }
+    }
+    if (b(paramChatMessage))
     {
-      localTroopFileTransferManager.a(localItem, 12);
-      return;
+      paramChatMessage = a(paramacun);
+      if (paramChatMessage == null)
+      {
+        paramChatMessage = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+        paramChatMessage.setImageResource(2130838100);
+        paramChatMessage.setId(2131364129);
+        a(paramacun, paramChatMessage);
+        localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+        localLayoutParams.bottomMargin = actn.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        localLayoutParams.addRule(8, 2131364110);
+        localLayoutParams.addRule(0, 2131364110);
+        localLayoutParams.addRule(1, 0);
+        if ((paramView instanceof ViewGroup)) {
+          ((ViewGroup)paramView).addView(paramChatMessage, localLayoutParams);
+        }
+      }
+      for (;;)
+      {
+        a(paramacun, true);
+        return;
+        paramChatMessage.setImageResource(2130838100);
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifyFileFaild isInvalid[" + paramBoolean + "], itemStatus[" + localItem.Status + "]");
-    }
-    if ((ayor.b(localItem.Status)) || (this.jdField_a_of_type_Ayqd.jdField_b_of_type_Int == 7))
-    {
-      localTroopFileTransferManager.a(localItem, 10);
-      return;
-    }
-    localTroopFileTransferManager.a(localItem, 3);
+    a(paramacun, false);
   }
   
-  public boolean a()
+  protected abstract void a(acun paramacun, ImageView paramImageView);
+  
+  protected void a(View paramView, acun paramacun, ChatMessage paramChatMessage, int paramInt) {}
+  
+  protected void a(bfoq parambfoq)
   {
-    return this.jdField_a_of_type_Ayqd.jdField_b_of_type_Int == 12;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new bfok(0, bfoy.a(this.jdField_a_of_type_AndroidContentContext, 2131718750), 0, 0, 2));
+    this.jdField_a_of_type_Bfol = bfoy.a(this.jdField_a_of_type_AndroidContentContext, localArrayList, parambfoq);
+    this.jdField_a_of_type_Bfol.c(2131690596);
+    bfoy.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bfol);
   }
   
-  public String b()
+  protected boolean a(ChatMessage paramChatMessage)
   {
-    return apbo.a().c() + becz.a(this.jdField_a_of_type_Ayqd.e);
+    return false;
   }
   
-  public String c()
+  protected boolean b(ChatMessage paramChatMessage)
   {
-    return this.jdField_a_of_type_Ayqd.g;
+    return false;
   }
 }
 

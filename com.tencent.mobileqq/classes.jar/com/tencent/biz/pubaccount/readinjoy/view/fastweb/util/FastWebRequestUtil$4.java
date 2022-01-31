@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
 import java.util.ArrayList;
-import nph;
-import rac;
-import rah;
+import oas;
+import rmu;
+import rmz;
 
 public final class FastWebRequestUtil$4
   implements Runnable
 {
-  public FastWebRequestUtil$4(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, boolean paramBoolean, int paramInt, String paramString7, rah paramrah) {}
+  public FastWebRequestUtil$4(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, boolean paramBoolean, int paramInt, String paramString7, rmz paramrmz) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    String str = rac.a(rac.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.f, this.jdField_a_of_type_Boolean, 2, this.jdField_a_of_type_Int), rac.a(this.g));
-    if ((str != null) && (rac.a(str, this.b, localArrayList, nph.a(this.jdField_a_of_type_JavaLangString, this.d, this.g)))) {}
+    String str = rmu.a(rmu.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.f, this.jdField_a_of_type_Boolean, 2, this.jdField_a_of_type_Int), rmu.a(this.g));
+    if ((str != null) && (rmu.a(str, this.b, localArrayList, oas.a(this.jdField_a_of_type_JavaLangString, this.d, this.g)))) {}
     for (boolean bool = true;; bool = false)
     {
-      if (this.jdField_a_of_type_Rah != null) {
-        this.jdField_a_of_type_Rah.a(bool, localArrayList);
+      if (this.jdField_a_of_type_Rmz != null) {
+        this.jdField_a_of_type_Rmz.a(bool, localArrayList);
       }
       return;
     }

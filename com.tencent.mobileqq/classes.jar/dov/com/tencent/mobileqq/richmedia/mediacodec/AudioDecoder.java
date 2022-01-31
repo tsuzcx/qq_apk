@@ -3,16 +3,16 @@ package dov.com.tencent.mobileqq.richmedia.mediacodec;
 import android.annotation.TargetApi;
 import android.media.AudioTrack;
 import android.text.TextUtils;
-import bjgq;
-import bjho;
+import bkxb;
+import bkxz;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import urk;
+import veg;
 
 @TargetApi(16)
 public class AudioDecoder
 {
-  public bjgq a;
+  public bkxb a;
   private AudioDecoder.AudioPlayRunnable jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioPlayRunnable;
   private AudioDecoder.BgmAudioPlayRunnable jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecAudioDecoder$BgmAudioPlayRunnable;
   private Thread jdField_a_of_type_JavaLangThread;
@@ -21,10 +21,10 @@ public class AudioDecoder
   private void a(AudioTrack paramAudioTrack, byte[] paramArrayOfByte, int paramInt)
   {
     int i;
-    switch (this.jdField_a_of_type_Bjgq.jdField_a_of_type_Int)
+    switch (this.jdField_a_of_type_Bkxb.jdField_a_of_type_Int)
     {
     default: 
-      if (!this.jdField_a_of_type_Bjgq.jdField_b_of_type_Boolean) {
+      if (!this.jdField_a_of_type_Bkxb.jdField_b_of_type_Boolean) {
         paramAudioTrack.write(paramArrayOfByte, 0, paramInt);
       }
       paramInt = 1;
@@ -33,31 +33,31 @@ public class AudioDecoder
     }
     for (;;)
     {
-      if ((!this.jdField_a_of_type_Bjgq.jdField_b_of_type_Boolean) && (paramInt == 0) && (paramArrayOfByte != null)) {
+      if ((!this.jdField_a_of_type_Bkxb.jdField_b_of_type_Boolean) && (paramInt == 0) && (paramArrayOfByte != null)) {
         paramAudioTrack.write(paramArrayOfByte, 0, i);
       }
       return;
       i = paramArrayOfByte.length / 2;
       byte[] arrayOfByte = new byte[i];
-      bjho.a(paramArrayOfByte, 0, arrayOfByte, i);
+      bkxz.a(paramArrayOfByte, 0, arrayOfByte, i);
       paramArrayOfByte = arrayOfByte;
       paramInt = 0;
       continue;
       i = paramArrayOfByte.length * 2;
       arrayOfByte = new byte[i];
-      bjho.a(paramArrayOfByte, 0, arrayOfByte, i, 2);
+      bkxz.a(paramArrayOfByte, 0, arrayOfByte, i, 2);
       paramArrayOfByte = arrayOfByte;
       paramInt = 0;
       continue;
       i = paramArrayOfByte.length * 2 / 3;
       arrayOfByte = new byte[i];
-      bjho.b(paramArrayOfByte, 0, arrayOfByte, i);
+      bkxz.b(paramArrayOfByte, 0, arrayOfByte, i);
       paramArrayOfByte = arrayOfByte;
       paramInt = 0;
       continue;
       i = paramArrayOfByte.length * 4;
       arrayOfByte = new byte[i];
-      bjho.a(paramArrayOfByte, 0, arrayOfByte, i, 4);
+      bkxz.a(paramArrayOfByte, 0, arrayOfByte, i, 4);
       paramArrayOfByte = arrayOfByte;
       paramInt = 0;
     }
@@ -72,27 +72,27 @@ public class AudioDecoder
     //   4: invokespecial 54	dov/com/tencent/mobileqq/richmedia/mediacodec/AudioDecoder:<init>	()V
     //   7: astore 4
     //   9: aload 4
-    //   11: new 23	bjgq
+    //   11: new 23	bkxb
     //   14: dup
-    //   15: invokespecial 55	bjgq:<init>	()V
-    //   18: putfield 21	dov/com/tencent/mobileqq/richmedia/mediacodec/AudioDecoder:jdField_a_of_type_Bjgq	Lbjgq;
+    //   15: invokespecial 55	bkxb:<init>	()V
+    //   18: putfield 21	dov/com/tencent/mobileqq/richmedia/mediacodec/AudioDecoder:jdField_a_of_type_Bkxb	Lbkxb;
     //   21: aload 4
-    //   23: getfield 21	dov/com/tencent/mobileqq/richmedia/mediacodec/AudioDecoder:jdField_a_of_type_Bjgq	Lbjgq;
+    //   23: getfield 21	dov/com/tencent/mobileqq/richmedia/mediacodec/AudioDecoder:jdField_a_of_type_Bkxb	Lbkxb;
     //   26: aload_0
-    //   27: putfield 58	bjgq:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   27: putfield 58	bkxb:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   30: aload 4
-    //   32: getfield 21	dov/com/tencent/mobileqq/richmedia/mediacodec/AudioDecoder:jdField_a_of_type_Bjgq	Lbjgq;
+    //   32: getfield 21	dov/com/tencent/mobileqq/richmedia/mediacodec/AudioDecoder:jdField_a_of_type_Bkxb	Lbkxb;
     //   35: aload_0
     //   36: aconst_null
     //   37: iconst_0
-    //   38: invokestatic 63	com/tencent/mobileqq/shortvideo/util/AudioEncoder:a	(Ljava/lang/String;Ljava/lang/String;I)Lawkz;
-    //   41: putfield 66	bjgq:jdField_a_of_type_Awkz	Lawkz;
+    //   38: invokestatic 63	com/tencent/mobileqq/shortvideo/util/AudioEncoder:a	(Ljava/lang/String;Ljava/lang/String;I)Laxkf;
+    //   41: putfield 66	bkxb:jdField_a_of_type_Axkf	Laxkf;
     //   44: aload 4
-    //   46: getfield 21	dov/com/tencent/mobileqq/richmedia/mediacodec/AudioDecoder:jdField_a_of_type_Bjgq	Lbjgq;
+    //   46: getfield 21	dov/com/tencent/mobileqq/richmedia/mediacodec/AudioDecoder:jdField_a_of_type_Bkxb	Lbkxb;
     //   49: lload_1
-    //   50: putfield 70	bjgq:c	J
+    //   50: putfield 70	bkxb:c	J
     //   53: aload_3
-    //   54: invokestatic 75	bace:c	(Ljava/lang/String;)V
+    //   54: invokestatic 75	bbdj:c	(Ljava/lang/String;)V
     //   57: new 77	java/io/FileOutputStream
     //   60: dup
     //   61: aload_3
@@ -215,9 +215,9 @@ public class AudioDecoder
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bjgq != null)
+    if (this.jdField_a_of_type_Bkxb != null)
     {
-      this.jdField_a_of_type_Bjgq.jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_Bkxb.jdField_a_of_type_Int = paramInt;
       QLog.d("AudioDecoder", 4, "setSpeedType:" + paramInt);
     }
   }
@@ -226,7 +226,7 @@ public class AudioDecoder
   {
     if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioPlayRunnable != null)
     {
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioPlayRunnable.a(paramLong, this.jdField_a_of_type_Bjgq.c);
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioPlayRunnable.a(paramLong, this.jdField_a_of_type_Bkxb.c);
       QLog.d("AudioDecoder", 1, new Object[] { "seekTo: ", Long.valueOf(paramLong) });
       return;
     }
@@ -235,23 +235,23 @@ public class AudioDecoder
   
   public void a(long paramLong1, long paramLong2)
   {
-    if (this.jdField_a_of_type_Bjgq == null)
+    if (this.jdField_a_of_type_Bkxb == null)
     {
       QLog.w("AudioDecoder", 4, "you must start play first");
       return;
     }
-    if ((paramLong1 == this.jdField_a_of_type_Bjgq.jdField_a_of_type_Long) && (paramLong2 == this.jdField_a_of_type_Bjgq.jdField_b_of_type_Long))
+    if ((paramLong1 == this.jdField_a_of_type_Bkxb.jdField_a_of_type_Long) && (paramLong2 == this.jdField_a_of_type_Bkxb.jdField_b_of_type_Long))
     {
-      urk.d("AudioDecoder", "segment not changed, setPlayRange ignore, startTimeMs=%d, endTimeMs=%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+      veg.d("AudioDecoder", "segment not changed, setPlayRange ignore, startTimeMs=%d, endTimeMs=%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
       return;
     }
     QLog.d("AudioDecoder", 4, "setPlayRange begin startTimeMs=" + paramLong1 + " endTimeMs=" + paramLong2);
-    this.jdField_a_of_type_Bjgq.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Bjgq.jdField_b_of_type_Long = paramLong2;
-    a(this.jdField_a_of_type_Bjgq);
+    this.jdField_a_of_type_Bkxb.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Bkxb.jdField_b_of_type_Long = paramLong2;
+    a(this.jdField_a_of_type_Bkxb);
   }
   
-  public void a(bjgq parambjgq)
+  public void a(bkxb parambkxb)
   {
     for (;;)
     {
@@ -260,18 +260,18 @@ public class AudioDecoder
       float f1;
       try
       {
-        QLog.d("AudioDecoder", 4, "startPlay " + parambjgq.toString());
+        QLog.d("AudioDecoder", 4, "startPlay " + parambkxb.toString());
         c();
         b();
-        if (this.jdField_a_of_type_Bjgq == null) {
-          this.jdField_a_of_type_Bjgq = new bjgq();
+        if (this.jdField_a_of_type_Bkxb == null) {
+          this.jdField_a_of_type_Bkxb = new bkxb();
         }
-        this.jdField_a_of_type_Bjgq.a(parambjgq);
-        if (this.jdField_a_of_type_Bjgq.jdField_b_of_type_Long == 0L) {
-          this.jdField_a_of_type_Bjgq.jdField_b_of_type_Long = this.jdField_a_of_type_Bjgq.c;
+        this.jdField_a_of_type_Bkxb.a(parambkxb);
+        if (this.jdField_a_of_type_Bkxb.jdField_b_of_type_Long == 0L) {
+          this.jdField_a_of_type_Bkxb.jdField_b_of_type_Long = this.jdField_a_of_type_Bkxb.c;
         }
-        f2 = (float)this.jdField_a_of_type_Bjgq.jdField_a_of_type_Long / (float)this.jdField_a_of_type_Bjgq.c;
-        f3 = (float)this.jdField_a_of_type_Bjgq.jdField_b_of_type_Long / (float)this.jdField_a_of_type_Bjgq.c;
+        f2 = (float)this.jdField_a_of_type_Bkxb.jdField_a_of_type_Long / (float)this.jdField_a_of_type_Bkxb.c;
+        f3 = (float)this.jdField_a_of_type_Bkxb.jdField_b_of_type_Long / (float)this.jdField_a_of_type_Bkxb.c;
         f1 = f2;
         if (f2 >= 0.0F) {
           break label228;
@@ -282,7 +282,7 @@ public class AudioDecoder
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioPlayRunnable = new AudioDecoder.AudioPlayRunnable(this, f1, f2);
       this.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioPlayRunnable, "AudioPlay", 8);
       this.jdField_a_of_type_JavaLangThread.start();
-      if (!TextUtils.isEmpty(parambjgq.jdField_b_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(parambkxb.jdField_b_of_type_JavaLangString))
       {
         this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecAudioDecoder$BgmAudioPlayRunnable = new AudioDecoder.BgmAudioPlayRunnable(this);
         this.b = ThreadManager.newFreeThread(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecAudioDecoder$BgmAudioPlayRunnable, "BgmPlay", 8);
@@ -304,16 +304,16 @@ public class AudioDecoder
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bjgq == null) {
+    if (this.jdField_a_of_type_Bkxb == null) {
       return;
     }
     QLog.d("AudioDecoder", 1, "setMuteAudio: " + paramBoolean);
-    this.jdField_a_of_type_Bjgq.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Bkxb.jdField_b_of_type_Boolean = paramBoolean;
   }
   
   public byte[] a()
   {
-    return AudioDecoder.AudioPlayRunnable.a(new AudioDecoder.AudioPlayRunnable(this, 0.0F, 1.0F), this.jdField_a_of_type_Bjgq.jdField_a_of_type_JavaLangString, false);
+    return AudioDecoder.AudioPlayRunnable.a(new AudioDecoder.AudioPlayRunnable(this, 0.0F, 1.0F), this.jdField_a_of_type_Bkxb.jdField_a_of_type_JavaLangString, false);
   }
   
   public void b()

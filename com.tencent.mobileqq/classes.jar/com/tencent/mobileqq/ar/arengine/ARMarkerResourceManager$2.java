@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import ajjy;
-import akts;
-import bbmy;
+import ajyc;
+import alie;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class ARMarkerResourceManager$2
   implements Runnable
 {
-  public ARMarkerResourceManager$2(akts paramakts) {}
+  public ARMarkerResourceManager$2(alie paramalie) {}
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131634934), 1).a();
+    bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131700718), 1).a();
   }
 }
 

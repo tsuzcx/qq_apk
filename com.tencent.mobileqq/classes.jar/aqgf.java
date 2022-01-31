@@ -1,35 +1,22 @@
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardShortVideoOption;
 
 public class aqgf
-  implements axzn
+  implements View.OnClickListener
 {
-  public aqgf(HotVideoData paramHotVideoData, aqgh paramaqgh, aqgg paramaqgg) {}
+  public aqgf(ForwardShortVideoOption paramForwardShortVideoOption) {}
   
-  public void a(axyg paramaxyg, axyv paramaxyv)
+  public void onClick(View paramView)
   {
-    if (paramaxyv != null) {
-      if (paramaxyv.a.size() > 0)
-      {
-        paramaxyg = (axzj)paramaxyv.a.get(0);
-        this.jdField_a_of_type_Aqgh.a(paramaxyg);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aqgg.a(this.jdField_a_of_type_Aqgh);
-      return;
-      this.jdField_a_of_type_Aqgh.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Aqgh.jdField_a_of_type_JavaLangString = "Unknown error！";
-      continue;
-      this.jdField_a_of_type_Aqgh.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Aqgh.jdField_a_of_type_JavaLangString = "Unknown error！";
+    if (this.a.a != null) {
+      ForwardShortVideoOption.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqgf
  * JD-Core Version:    0.7.0.1
  */

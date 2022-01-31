@@ -1,18 +1,15 @@
-import UserGrowth.stNotificationReq;
-import UserGrowth.stNotificationRsp;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
 public class saa
-  extends ryw<stNotificationRsp>
+  implements rwh
 {
-  public saa(String paramString)
-  {
-    super("Notification");
-    stNotificationReq localstNotificationReq = new stNotificationReq();
-    localstNotificationReq.linkStrategyArgs = saj.a();
-    localstNotificationReq.push_info = paramString;
-    this.a = localstNotificationReq;
-    sai.b("NotificationRequest", "stNotificationReq = " + localstNotificationReq.toString());
-  }
+  public saa(ViolaBaseView paramViolaBaseView) {}
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void b() {}
 }
 
 

@@ -1,36 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 public class arre
-  implements DialogInterface.OnClickListener
+  implements artc
 {
-  public arre(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
+  public Object a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private arre(ListenTogetherManager paramListenTogetherManager)
   {
-    paramInt = arrt.a().a();
-    if (1 == paramInt)
-    {
-      this.a.l();
-      if (this.a.a) {
-        arsa.a("0X800A253", 3);
-      }
-    }
-    while (2 != paramInt)
-    {
-      return;
-      arsa.a("0X800A253", 1);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangObject == null) {}
+    while (paramInt == 0) {
       return;
     }
-    if (this.a.d) {
-      arsa.a("0X800A244", 2);
-    }
-    for (;;)
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      this.a.l();
+      this.jdField_a_of_type_JavaLangObject.notifyAll();
       return;
-      arsa.a("0X800A244", 1);
     }
   }
 }

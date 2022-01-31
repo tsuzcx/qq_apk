@@ -1,14 +1,22 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
-
-public abstract interface wah
+class wah
+  extends wad
 {
-  public abstract void a(int paramInt);
+  wah(wae paramwae, wam paramwam) {}
   
-  public abstract void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString);
+  public void onFailure(String paramString)
+  {
+    veg.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onFail: " + paramString);
+    this.jdField_a_of_type_Wam.onFailure(paramString);
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    veg.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onSuccess: " + paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wah
  * JD-Core Version:    0.7.0.1
  */

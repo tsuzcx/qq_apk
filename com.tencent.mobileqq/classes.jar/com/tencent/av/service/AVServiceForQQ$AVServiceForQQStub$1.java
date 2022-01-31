@@ -1,12 +1,12 @@
 package com.tencent.av.service;
 
 import com.tencent.qphone.base.util.QLog;
-import llr;
+import lwj;
 
 public class AVServiceForQQ$AVServiceForQQStub$1
   implements Runnable
 {
-  public AVServiceForQQ$AVServiceForQQStub$1(llr paramllr) {}
+  public AVServiceForQQ$AVServiceForQQStub$1(lwj paramlwj) {}
   
   public void run()
   {

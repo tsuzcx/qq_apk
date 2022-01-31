@@ -9,6 +9,7 @@ public abstract interface ComponentConstant$Event
   public static final String BUFFER_STAR = "bufferStart";
   public static final String CHANGE = "change";
   public static final String CLICK = "click";
+  public static final String CONTENT_SIZE_CHANGED = "contentSizeChanged";
   public static final String CREATED = "created";
   public static final String DESTROY = "destroy";
   public static final String DESTROYED = "destroyed";
@@ -31,6 +32,7 @@ public abstract interface ComponentConstant$Event
   public static final String LOAD_MORE = "loadMore";
   public static final String LONG_PRESS = "longPress";
   public static final String MOUNTED = "mounted";
+  public static final String ON_LAYOUT = "layout";
   public static final String OVER_SCROLL = "overScroll";
   public static final String PAN = "pan";
   public static final String PAUSE = "pause";
@@ -53,7 +55,9 @@ public abstract interface ComponentConstant$Event
   public static final String STICKITEM_CHANGE = "stickItemChange";
   public static final String STOP_SEEK = "stopSeek";
   public static final String TIMEUPDATE = "timeupdate";
+  public static final String TOUCH_CANCEL = "touchCancel";
   public static final String TOUCH_DOWN = "touchDown";
+  public static final String TOUCH_MOVE = "touchMove";
   public static final String TOUCH_UP = "touchUp";
   public static final String UPDATED = "updated";
   public static final String USER_PAUSE = "userPause";

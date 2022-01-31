@@ -1,47 +1,24 @@
-import android.graphics.Rect;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.CustomedTabWidget;
-import java.lang.ref.WeakReference;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout.DispatchKeyEventListener;
 
-public class bbhw
-  extends Handler
+class bbhw
+  implements MyLinearLayout.DispatchKeyEventListener
 {
-  private WeakReference<CustomedTabWidget> a;
+  bbhw(bbhs parambbhs) {}
   
-  public bbhw(CustomedTabWidget paramCustomedTabWidget)
+  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    this.a = new WeakReference(paramCustomedTabWidget);
-  }
-  
-  public void handleMessage(Message arg1)
-  {
-    CustomedTabWidget localCustomedTabWidget = (CustomedTabWidget)this.a.get();
-    if (localCustomedTabWidget == null) {
-      return;
-    }
-    if (localCustomedTabWidget.jdField_a_of_type_Float < 0.0F) {
-      localCustomedTabWidget.invalidate((int)(localCustomedTabWidget.b.left + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.top, localCustomedTabWidget.b.right, localCustomedTabWidget.b.bottom);
-    }
-    synchronized (localCustomedTabWidget.jdField_a_of_type_Bbhw)
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.b))
     {
-      Rect localRect = localCustomedTabWidget.b;
-      localRect.left = ((int)(localRect.left + localCustomedTabWidget.jdField_a_of_type_Float));
-      localRect = localCustomedTabWidget.b;
-      localRect.right = ((int)(localRect.right + localCustomedTabWidget.jdField_a_of_type_Float));
-      if ((localCustomedTabWidget.jdField_a_of_type_AndroidGraphicsRect.left - localCustomedTabWidget.b.left) / localCustomedTabWidget.jdField_a_of_type_Float >= 1.0F)
-      {
-        sendEmptyMessage(0);
-        return;
-        localCustomedTabWidget.invalidate(localCustomedTabWidget.b.left, localCustomedTabWidget.b.top, (int)(localCustomedTabWidget.b.right + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.bottom);
-      }
+      this.a.a();
+      return true;
     }
-    localObject.b.set(localObject.jdField_a_of_type_AndroidGraphicsRect.left, localObject.jdField_a_of_type_AndroidGraphicsRect.top, localObject.jdField_a_of_type_AndroidGraphicsRect.right, localObject.jdField_a_of_type_AndroidGraphicsRect.bottom);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbhw
  * JD-Core Version:    0.7.0.1
  */

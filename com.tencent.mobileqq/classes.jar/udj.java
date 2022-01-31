@@ -1,7 +1,4 @@
-public abstract interface udj
-{
-  public abstract void a(udk paramudk);
-}
+class udj {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

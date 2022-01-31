@@ -1,36 +1,55 @@
-import android.content.Intent;
-import com.tencent.biz.troop.TroopMemberApiService;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetRecommendUserListRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerModel.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class wjb
-  extends WtloginListener
+  implements xgx<CertifiedAccountRead.StGetRecommendUserListRsp>
 {
-  public wjb(TroopMemberApiService paramTroopMemberApiService, WtloginHelper paramWtloginHelper) {}
+  wjb(wja paramwja) {}
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetRecommendUserListRsp paramStGetRecommendUserListRsp)
   {
-    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
-  }
-  
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (paramInt2 == 0)
+    if (paramBoolean)
     {
-      paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, paramString.getExtras());
-      return;
+      veg.c("FollowedRecommendBanner", "sendRequest GetRecommendUserList success");
+      if (paramStGetRecommendUserListRsp != null)
+      {
+        paramString = new ArrayList();
+        if (paramStGetRecommendUserListRsp.vecUser.get() != null)
+        {
+          Iterator localIterator = paramStGetRecommendUserListRsp.vecUser.get().iterator();
+          while (localIterator.hasNext()) {
+            paramString.add(new wko((CertifiedAccountMeta.StUser)localIterator.next()));
+          }
+        }
+        wja.a(this.a, (COMM.StCommonExt)paramStGetRecommendUserListRsp.extInfo.get());
+        if (paramStGetRecommendUserListRsp.isFinish.get() != 1) {
+          break label161;
+        }
+      }
+      label161:
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        ThreadManager.getUIHandler().post(new FollowedRecommendBannerModel.1.1(this, paramString, paramBoolean));
+        xhe.a("subscribe_personal_detail_page_request", xhe.a(0L, System.currentTimeMillis() - wja.a(this.a)));
+        return;
+      }
     }
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
+    veg.c("FollowedRecommendBanner", "sendRequest GetRecommendUserList error");
+    xhe.a("subscribe_personal_detail_page_request", xhe.a(paramLong, System.currentTimeMillis() - wja.a(this.a)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wjb
  * JD-Core Version:    0.7.0.1
  */

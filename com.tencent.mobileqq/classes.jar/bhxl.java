@@ -1,19 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.troop_homework.outer.TroopHWRecordBaseActivity;
 
-class bhxl
-  implements DialogInterface.OnClickListener
+public class bhxl
+  implements View.OnClickListener
 {
-  bhxl(bhxh parambhxh) {}
+  public bhxl(TroopHWRecordBaseActivity paramTroopHWRecordBaseActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.a(2);
+    switch (paramView.getId())
+    {
+    }
+    do
+    {
+      return;
+    } while (this.a.a);
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhxl
  * JD-Core Version:    0.7.0.1
  */

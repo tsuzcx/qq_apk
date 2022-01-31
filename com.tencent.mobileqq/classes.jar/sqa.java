@@ -1,19 +1,42 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.List;
 
-class sqa
-  implements slx<szi, tbg>
+public class sqa
 {
-  sqa(spz paramspz, long paramLong) {}
+  public AddressItem a;
+  public String a;
+  public List<sqc> a;
+  public srg a;
   
-  public void a(@NonNull szi paramszi, @Nullable tbg paramtbg, @NonNull ErrorMessage paramErrorMessage)
+  public sqa(String paramString)
   {
-    if (paramtbg != null)
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
     {
-      this.jdField_a_of_type_Spz.b("qqstory_black_status", Integer.valueOf(paramtbg.b));
-      this.jdField_a_of_type_Spz.b("qqstory_black_status_update_interval", Integer.valueOf(paramtbg.c));
-      this.jdField_a_of_type_Spz.b("qqstory_black_status_last_update_time", Integer.valueOf((int)this.jdField_a_of_type_Long));
+      return false;
+      if (this == paramObject) {
+        return true;
+      }
+    } while (!(paramObject instanceof sqa));
+    return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((sqa)paramObject).jdField_a_of_type_JavaLangString);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder("GeoHashPhotoGroup=[");
+    localStringBuilder1.append("geohashString:").append(this.jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder2 = localStringBuilder1.append("picList size:");
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
+    {
+      localStringBuilder2.append(i);
+      return localStringBuilder1.toString();
     }
   }
 }

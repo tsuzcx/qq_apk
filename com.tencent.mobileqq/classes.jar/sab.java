@@ -1,13 +1,18 @@
-import NS_KING_INTERFACE.stPostFeedDingReq;
-import NS_KING_INTERFACE.stPostFeedDingRsp;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.viola.core.ViolaInstance;
 
 public class sab
-  extends ryw<stPostFeedDingRsp>
+  implements View.OnLayoutChangeListener
 {
-  public sab(String paramString, int paramInt)
+  public sab(ViolaBaseView paramViolaBaseView) {}
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    super("PostFeedDing");
-    this.a = new stPostFeedDingReq(paramString, null, paramInt);
+    if (ViolaBaseView.a(this.a) != null) {
+      ViolaBaseView.a(this.a).setSize(paramView.getWidth(), paramView.getHeight());
+    }
   }
 }
 

@@ -1,19 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import android.support.annotation.NonNull;
 
-public class bjhz
-  extends Handler
+class bjhz
+  implements bjgx
 {
-  public bjhz(BaseShortVideoOprerator paramBaseShortVideoOprerator, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bjhz(bjhy parambjhy) {}
   
-  public void handleMessage(Message paramMessage)
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    this.a.a(paramMessage);
+    return bakj.b(paramString);
   }
 }
 

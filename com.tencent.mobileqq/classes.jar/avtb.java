@@ -1,204 +1,717 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.ArkViewImplement;
-import com.tencent.ark.ArkViewModel;
-import com.tencent.ark.ArkViewModelBase.AppInfo;
-import com.tencent.ark.ArkViewModelBase.ErrorInfo;
-import com.tencent.ark.ark;
-import com.tencent.ark.open.ArkAppInfo.TimeRecord;
-import com.tencent.ark.open.ArkAppMgr;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.rich.ArkNodeContainer.1;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import android.util.SparseIntArray;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qmcf.QmcfManager;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil.1;
+import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class avtb
-  extends ArkViewModel
-  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  private avta a;
-  public ArkAppInfo.TimeRecord a;
+  public static int a;
+  public static long a;
+  public static final SparseIntArray a;
+  public static String a;
+  public static boolean a;
+  public static String b;
+  public static boolean b;
+  public static String c;
+  public static boolean c;
+  public static String d;
+  public static boolean d;
+  public static String e;
+  public static boolean e;
   
-  public avtb(avsw paramavsw) {}
-  
-  private void b(String paramString)
+  static
   {
-    paramString = new File(paramString);
-    if (!paramString.exists()) {
-      paramString.mkdirs();
-    }
+    jdField_a_of_type_Int = -1;
+    jdField_a_of_type_JavaLangString = "";
+    jdField_b_of_type_JavaLangString = "";
+    jdField_c_of_type_JavaLangString = "";
+    jdField_d_of_type_JavaLangString = "";
+    jdField_e_of_type_JavaLangString = "";
+    jdField_a_of_type_Long = -1L;
+    jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(10000, 1);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(10004, 2);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(10001, 3);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(10002, 4);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(10007, 5);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(10003, 6);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(10012, 7);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(10013, 8);
   }
   
-  public void a()
+  public static axts a()
   {
-    destroy();
-    this.jdField_a_of_type_Avta = null;
+    axts localaxts = new axts();
+    localaxts.jdField_a_of_type_JavaLangString = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+    localaxts.jdField_b_of_type_JavaLangString = "";
+    localaxts.jdField_c_of_type_JavaLangString = "";
+    localaxts.jdField_d_of_type_JavaLangString = "";
+    localaxts.jdField_a_of_type_Int = jdField_a_of_type_AndroidUtilSparseIntArray.get(jdField_a_of_type_Int, -1);
+    localaxts.jdField_e_of_type_JavaLangString = "${count_unknown}";
+    localaxts.f = "";
+    localaxts.g = "";
+    localaxts.h = "";
+    localaxts.i = "";
+    localaxts.j = "";
+    localaxts.k = "";
+    localaxts.l = "";
+    localaxts.m = "";
+    localaxts.n = "";
+    localaxts.o = "";
+    localaxts.p = "";
+    localaxts.q = "";
+    localaxts.r = "";
+    localaxts.s = "";
+    localaxts.t = "";
+    localaxts.u = "";
+    return localaxts;
   }
   
-  public void a(String paramString)
+  public static void a()
   {
-    try
-    {
-      new JSONObject(paramString);
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008423";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008423";
+    axpr.a(null, localaxts);
+  }
+  
+  public static void a(int paramInt)
+  {
+    if (!jdField_e_of_type_Boolean) {
       return;
     }
-    catch (Exception paramString)
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008754";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008754";
+    localaxts.n = String.valueOf(paramInt);
+    axpr.a(null, localaxts);
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    if (!jdField_e_of_type_Boolean) {
+      return;
+    }
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008430";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008430";
+    localaxts.jdField_b_of_type_JavaLangString = paramString;
+    if (localaxts.jdField_a_of_type_Int == 5) {
+      localaxts.g = jdField_a_of_type_JavaLangString;
+    }
+    localaxts.h = jdField_b_of_type_JavaLangString;
+    localaxts.i = jdField_c_of_type_JavaLangString;
+    localaxts.j = jdField_d_of_type_JavaLangString;
+    localaxts.k = jdField_e_of_type_JavaLangString;
+    localaxts.l = (paramInt + "");
+    localaxts.n = "";
+    paramString = new StringBuilder();
+    if (jdField_d_of_type_Boolean) {}
+    for (int i = 2;; i = 1)
     {
-      QLog.e("ArkNodeContainer", 2, String.format("CheckMetaLegality,appMeta is parse error and msg=%s", new Object[] { paramString.getMessage() }));
+      localaxts.m = (i + "");
+      axpr.a(null, localaxts);
+      if (jdField_a_of_type_Boolean)
+      {
+        localaxts.jdField_c_of_type_JavaLangString = "0X80083B2";
+        localaxts.jdField_d_of_type_JavaLangString = "0X80083B2";
+        axpr.a(null, localaxts);
+      }
+      QmcfManager.getInstance().reportQmcfFrameConsume(paramInt, jdField_a_of_type_Int, jdField_e_of_type_JavaLangString);
+      return;
     }
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public static void a(long paramLong, int paramInt)
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkNodeContainer", 2, String.format("loadArkApp, apppath:" + paramString1 + " retcode:" + paramInt + " msg:" + paramString2, new Object[0]));
-    }
-    boolean bool1;
-    label72:
-    String str1;
-    String str2;
-    String str3;
-    if (paramInt != 0)
+    if (jdField_b_of_type_Boolean)
     {
-      bool1 = true;
-      if (paramInt != -2) {
-        break label152;
+      axts localaxts = a();
+      localaxts.jdField_c_of_type_JavaLangString = "0X800893A";
+      localaxts.jdField_d_of_type_JavaLangString = "0X800893A";
+      localaxts.h = jdField_b_of_type_JavaLangString;
+      localaxts.i = jdField_c_of_type_JavaLangString;
+      localaxts.f = (paramInt + "");
+      if (localaxts.jdField_a_of_type_Int == 5) {
+        localaxts.g = jdField_a_of_type_JavaLangString;
       }
-      str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
-      str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
-      str3 = ArkEnvironmentManager.getInstance().getAppResPath(this.mAppInfo.name);
-      b(str1);
-      b(str2);
-      b(str3);
-      if (paramString2 != null) {
-        break label158;
-      }
-      paramString2 = "";
+      localaxts.o = ((float)paramLong / 1000.0F + "");
+      axpr.a(null, localaxts);
     }
-    label152:
-    label158:
+  }
+  
+  public static void a(bjww parambjww)
+  {
+    if ((parambjww != null) && (parambjww.a != null) && (parambjww.a.jdField_a_of_type_Int == 14)) {
+      if (parambjww.a()) {
+        break label57;
+      }
+    }
+    label57:
+    for (int i = 1;; i = 2)
+    {
+      axqw.b(null, "dc00898", "", "", "0X800A55F", "0X800A55F", i, 0, "", "", "", "");
+      return;
+    }
+  }
+  
+  public static void a(bjww parambjww, bklx parambklx)
+  {
+    if (parambklx == null) {}
+    while ((parambjww == null) || (parambjww.a == null) || (parambjww.a.jdField_a_of_type_Int != 14)) {
+      return;
+    }
+    if (parambklx.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 2)
+    {
+      axqw.b(null, "dc00898", "", "", "0X800A55C", "0X800A55C", i, 0, "", "", "", "");
+      return;
+    }
+  }
+  
+  public static void a(bklx parambklx)
+  {
+    c(null, parambklx);
+  }
+  
+  public static void a(BoyDataReport paramBoyDataReport)
+  {
+    if (paramBoyDataReport != null) {
+      ThreadManager.post(new CaptureReportUtil.1(paramBoyDataReport), 5, null, false);
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    if (!jdField_e_of_type_Boolean) {
+      return;
+    }
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008425";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008425";
+    localaxts.h = paramString;
+    axpr.a(null, localaxts);
+  }
+  
+  public static void a(String paramString, long paramLong)
+  {
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008939";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008939";
+    localaxts.h = jdField_b_of_type_JavaLangString;
+    localaxts.i = jdField_c_of_type_JavaLangString;
+    if (localaxts.jdField_a_of_type_Int == 5) {
+      localaxts.g = jdField_a_of_type_JavaLangString;
+    }
+    localaxts.j = paramString;
+    localaxts.o = ((float)paramLong / 1000.0F + "");
+    axpr.a(null, localaxts);
+  }
+  
+  private static String b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "unknown";
+    case 0: 
+      return "miss";
+    case 1: 
+      return "good";
+    case 2: 
+      return "great";
+    }
+    return "perfect";
+  }
+  
+  public static void b()
+  {
+    if (!jdField_e_of_type_Boolean) {
+      return;
+    }
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008424";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008424";
+    axpr.a(null, localaxts);
+  }
+  
+  public static void b(int paramInt)
+  {
+    if (!jdField_e_of_type_Boolean) {
+      return;
+    }
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008429";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008429";
+    localaxts.f = (paramInt + "");
+    axpr.a(null, localaxts);
+  }
+  
+  public static void b(int paramInt, String paramString)
+  {
+    if (!jdField_e_of_type_Boolean) {
+      return;
+    }
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008433";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008433";
+    localaxts.jdField_b_of_type_JavaLangString = paramString;
+    localaxts.h = jdField_b_of_type_JavaLangString;
+    localaxts.i = jdField_c_of_type_JavaLangString;
+    localaxts.j = jdField_d_of_type_JavaLangString;
+    localaxts.k = jdField_e_of_type_JavaLangString;
+    if (localaxts.jdField_a_of_type_Int == 5) {
+      localaxts.g = jdField_a_of_type_JavaLangString;
+    }
+    localaxts.l = (paramInt + "");
+    paramString = new StringBuilder();
+    if (jdField_c_of_type_Boolean) {}
+    for (int i = 2;; i = 1)
+    {
+      localaxts.m = (i + "");
+      localaxts.n = String.valueOf(ahzh.a().c);
+      localaxts.o = (jdField_a_of_type_Long + "");
+      axpr.a(null, localaxts);
+      if (jdField_a_of_type_Boolean)
+      {
+        localaxts.jdField_c_of_type_JavaLangString = "0X80083B1";
+        localaxts.jdField_d_of_type_JavaLangString = "0X80083B1";
+        axpr.a(null, localaxts);
+      }
+      QmcfManager.getInstance().reportQmcfFrameConsume(paramInt, jdField_a_of_type_Int, jdField_e_of_type_JavaLangString);
+      return;
+    }
+  }
+  
+  private static void b(long paramLong1, long paramLong2)
+  {
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008937";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008937";
+    localaxts.h = jdField_b_of_type_JavaLangString;
+    localaxts.i = jdField_c_of_type_JavaLangString;
+    localaxts.j = ("" + paramLong1);
+    if (localaxts.jdField_a_of_type_Int == 5) {
+      localaxts.g = jdField_a_of_type_JavaLangString;
+    }
+    localaxts.o = (paramLong2 / 1000L + "");
+    axpr.a(null, localaxts);
+  }
+  
+  public static void b(bjww parambjww)
+  {
+    if ((parambjww != null) && (parambjww.a != null) && (parambjww.a.jdField_a_of_type_Int == 14)) {
+      if (parambjww.a()) {
+        break label59;
+      }
+    }
+    label59:
+    for (int i = 1;; i = 2)
+    {
+      axqw.b(null, "dc00898", "", "", "0X800A55E", "0X800A55E", i, 0, "", "", "", "");
+      return;
+    }
+  }
+  
+  public static void b(bjww parambjww, bklx parambklx)
+  {
+    if (parambklx == null) {}
+    while ((parambjww == null) || (parambjww.a == null) || (parambjww.a.jdField_a_of_type_Int != 14)) {
+      return;
+    }
+    if (parambklx.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 2)
+    {
+      axqw.b(null, "dc00898", "", "", "0X800A55B", "0X800A55B", i, 0, "", "", "", "");
+      return;
+    }
+  }
+  
+  public static void b(String paramString)
+  {
+    if (!jdField_e_of_type_Boolean) {
+      return;
+    }
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008427";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008427";
+    localaxts.j = paramString;
+    axpr.a(null, localaxts);
+  }
+  
+  private static void b(String paramString1, String paramString2, String paramString3)
+  {
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008936";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008936";
+    localaxts.h = jdField_b_of_type_JavaLangString;
+    localaxts.i = jdField_c_of_type_JavaLangString;
+    localaxts.j = paramString2;
+    localaxts.k = paramString1;
+    if (localaxts.jdField_a_of_type_Int == 5) {
+      localaxts.g = jdField_a_of_type_JavaLangString;
+    }
+    localaxts.l = paramString3;
+    axpr.a(null, localaxts);
+  }
+  
+  public static void c()
+  {
+    if (!jdField_e_of_type_Boolean) {
+      return;
+    }
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008753";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008753";
+    axpr.a(null, localaxts);
+  }
+  
+  public static void c(int paramInt)
+  {
+    if (!jdField_e_of_type_Boolean) {
+      return;
+    }
+    axts localaxts = a();
+    localaxts.f = (paramInt + "");
+    localaxts.jdField_c_of_type_JavaLangString = "0X800842B";
+    localaxts.jdField_d_of_type_JavaLangString = "0X800842B";
+    axpr.a(null, localaxts);
+  }
+  
+  public static void c(bjww parambjww)
+  {
+    if ((parambjww != null) && (parambjww.a != null) && (parambjww.a.jdField_a_of_type_Int == 14)) {
+      axqw.b(null, "dc00898", "", "", "0X800A55D", "0X800A55D", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public static void c(bjww parambjww, bklx parambklx)
+  {
+    int i = 1;
+    if (parambklx == null) {}
+    while ((parambjww != null) && (parambjww.a != null) && (parambjww.a.jdField_a_of_type_Int != 14)) {
+      return;
+    }
+    if (parambklx.jdField_a_of_type_Int == 1)
+    {
+      parambjww = "2";
+      if (!parambklx.jdField_a_of_type_Boolean) {
+        break label96;
+      }
+    }
     for (;;)
     {
-      doLoadArkApp(paramString1, str1, str2, str3, bool1, bool2, paramInt, paramString2);
+      axqw.b(null, "dc00898", "", "", "0X800A55A", "0X800A55A", i, 0, parambjww, "", "", "");
       return;
-      bool1 = false;
+      if (parambklx.jdField_a_of_type_Int == 0)
+      {
+        parambjww = "1";
+        break;
+      }
+      parambjww = "3";
       break;
-      bool2 = false;
-      break label72;
+      label96:
+      i = 2;
     }
   }
   
-  public boolean a(avta paramavta, String paramString, float paramFloat)
+  public static void c(String paramString)
   {
-    this.jdField_a_of_type_Avta = paramavta;
-    if (this.jdField_a_of_type_Avta == null) {
-      return false;
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008938";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008938";
+    localaxts.h = jdField_b_of_type_JavaLangString;
+    localaxts.i = jdField_c_of_type_JavaLangString;
+    if (localaxts.jdField_a_of_type_Int == 5) {
+      localaxts.g = jdField_a_of_type_JavaLangString;
     }
-    if (!TextUtils.isEmpty(paramString)) {
-      a(paramString);
+    localaxts.j = paramString;
+    axpr.a(null, localaxts);
+  }
+  
+  public static void d()
+  {
+    if (!jdField_e_of_type_Boolean) {
+      return;
     }
-    return super.init(this.jdField_a_of_type_Avta.b(), this.jdField_a_of_type_Avta.d(), this.jdField_a_of_type_Avta.c(), paramString, alem.a(), paramFloat);
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008426";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008426";
+    axpr.a(null, localaxts);
   }
   
-  public void initLibrary()
+  public static void d(int paramInt)
   {
-    ark.MediaSetStub(alfg.a);
+    if (!jdField_e_of_type_Boolean) {
+      return;
+    }
+    axts localaxts = a();
+    localaxts.f = (paramInt + "");
+    localaxts.jdField_c_of_type_JavaLangString = "0X800842C";
+    localaxts.jdField_d_of_type_JavaLangString = "0X800842C";
+    axpr.a(null, localaxts);
   }
   
-  public void onFirstDrawEnd()
+  public static void d(bjww parambjww)
   {
-    super.onFirstDrawEnd();
-  }
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    if (paramAppPathInfo != null) {}
-    for (paramAppPathInfo = paramAppPathInfo.path;; paramAppPathInfo = null)
+    if ((parambjww != null) && (parambjww.a != null) && (parambjww.a.jdField_a_of_type_Int == 14)) {
+      if (parambjww.a()) {
+        break label59;
+      }
+    }
+    label59:
+    for (int i = 1;; i = 2)
     {
-      this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.getAppFromLocal = false;
-      this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.endOfGetApp = System.currentTimeMillis();
-      a(paramAppPathInfo, paramInt, paramString);
+      axqw.b(null, "dc00898", "", "", "0X800A559", "0X800A559", i, 0, "", "", "", "");
       return;
     }
   }
   
-  public boolean onLoadApp(ArkViewModelBase.AppInfo paramAppInfo)
+  public static void e()
   {
-    if ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null)
-    {
-      this.mInit = false;
-      this.mLoadFailed = true;
-      paramAppInfo = this.mViewImpl;
-      if (paramAppInfo != null) {
-        paramAppInfo.onLoadFailed(null, this.mErrorInfo.retCode, true);
-      }
-      return true;
+    if (!jdField_e_of_type_Boolean) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.beginOfGetApp = System.currentTimeMillis();
-    Object localObject2 = this.jdField_a_of_type_Avta.a();
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = ArkAppMgr.getInstance().getAppPathByNameFromLocal(this.mAppInfo.name, this.mAppInfo.view, this.mAppInfo.appMinVersion, true);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkNodeContainer", 2, String.format("onLoadApp,mAppInfo.name=%s,appPath=%s", new Object[] { this.mAppInfo.name, localObject1 }));
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      ArkDispatchTask.getInstance().post(this.mAppInfo.name, new ArkNodeContainer.1(this, (String)localObject1));
-      return true;
-    }
-    localObject2 = this.mViewImpl;
-    if (localObject2 != null) {
-      ((ArkViewImplement)localObject2).onLoading();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkNodeContainer", 2, String.format("onLoadApp,mAppInfo.name=%s,appPath=%s,viewImplement=%h", new Object[] { this.mAppInfo.name, localObject1, localObject2 }));
-    }
-    ArkAppMgr.getInstance().getAppPathByName(paramAppInfo.name, paramAppInfo.view, paramAppInfo.appMinVersion, null, new avtc(this));
-    return false;
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008428";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008428";
+    axpr.a(null, localaxts);
   }
   
-  public void onLoadReport(int paramInt)
+  public static void e(int paramInt)
   {
-    if (this.mAppInfo != null) {
-      alep.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.mAppInfo.name, "ArkAppLoadState", paramInt, 0, 0L, 0L, 0L, this.mAppInfo.view, "");
+    if (!jdField_e_of_type_Boolean) {}
+    axts localaxts;
+    do
+    {
+      return;
+      localaxts = a();
+      localaxts.jdField_c_of_type_JavaLangString = "0X800842D";
+      localaxts.jdField_d_of_type_JavaLangString = "0X800842D";
+      if (localaxts.jdField_a_of_type_Int == 5) {
+        localaxts.g = jdField_a_of_type_JavaLangString;
+      }
+      localaxts.h = jdField_b_of_type_JavaLangString;
+      localaxts.i = jdField_c_of_type_JavaLangString;
+      localaxts.j = jdField_d_of_type_JavaLangString;
+      localaxts.k = jdField_e_of_type_JavaLangString;
+      localaxts.g = jdField_a_of_type_JavaLangString;
+      localaxts.l = (paramInt + "");
+      axpr.a(null, localaxts);
+    } while (!jdField_a_of_type_Boolean);
+    localaxts.jdField_c_of_type_JavaLangString = "0X80083AE";
+    localaxts.jdField_d_of_type_JavaLangString = "0X80083AE";
+    axpr.a(null, localaxts);
+  }
+  
+  public static void e(bjww parambjww)
+  {
+    if ((parambjww != null) && (parambjww.a != null) && (parambjww.a.jdField_a_of_type_Int == 14)) {
+      axqw.b(null, "dc00898", "", "", "0X800A558", "0X800A558", 0, 0, "", "", "", "");
     }
   }
   
-  public void onRunAppFailed()
+  public static void f()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkNodeContainer", 2, String.format("onRunAppFailed", new Object[0]));
+    if (!jdField_e_of_type_Boolean) {
+      return;
     }
-    Object localObject = this.mViewImpl;
-    if (localObject != null)
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X800842A";
+    localaxts.jdField_d_of_type_JavaLangString = "0X800842A";
+    axpr.a(null, localaxts);
+  }
+  
+  public static void f(int paramInt)
+  {
+    if (!jdField_e_of_type_Boolean) {}
+    axts localaxts;
+    do
     {
-      if (this.jdField_a_of_type_Avta == null) {
-        break label90;
+      return;
+      localaxts = a();
+      localaxts.jdField_c_of_type_JavaLangString = "0X800842D";
+      localaxts.jdField_d_of_type_JavaLangString = "0X800842D";
+      if (localaxts.jdField_a_of_type_Int == 5) {
+        localaxts.g = jdField_a_of_type_JavaLangString;
       }
-      localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131653263);
+      localaxts.h = jdField_b_of_type_JavaLangString;
+      localaxts.i = jdField_c_of_type_JavaLangString;
+      localaxts.j = jdField_d_of_type_JavaLangString;
+      localaxts.k = jdField_e_of_type_JavaLangString;
+      localaxts.l = (paramInt + "");
+      axpr.a(null, localaxts);
+    } while (!jdField_a_of_type_Boolean);
+    localaxts.jdField_c_of_type_JavaLangString = "0X80083AE";
+    localaxts.jdField_d_of_type_JavaLangString = "0X80083AE";
+    axpr.a(null, localaxts);
+  }
+  
+  public static void f(bjww parambjww)
+  {
+    if ((parambjww != null) && (parambjww.a != null) && (parambjww.a.jdField_a_of_type_Int == 14)) {
+      axqw.b(null, "dc00898", "", "", "0X800A557", "0X800A557", 0, 0, "", "", "", "");
     }
-    label90:
-    for (this.mErrorInfo.msg = String.format((String)localObject, new Object[] { this.jdField_a_of_type_Avta.b() });; this.mErrorInfo.msg = "")
+  }
+  
+  public static void g()
+  {
+    if (jdField_a_of_type_Int == 10002) {
+      vel.a("video_edit", "camera_clkdouble", 0, 0, new String[0]);
+    }
+  }
+  
+  public static void g(int paramInt)
+  {
+    if (!jdField_e_of_type_Boolean) {}
+    axts localaxts;
+    do
     {
-      this.mErrorInfo.canRetry = false;
-      super.onRunAppFailed();
+      return;
+      localaxts = a();
+      localaxts.jdField_c_of_type_JavaLangString = "0X800842E";
+      localaxts.jdField_d_of_type_JavaLangString = "0X800842E";
+      if (localaxts.jdField_a_of_type_Int == 5) {
+        localaxts.g = jdField_a_of_type_JavaLangString;
+      }
+      localaxts.h = jdField_b_of_type_JavaLangString;
+      localaxts.i = jdField_c_of_type_JavaLangString;
+      localaxts.j = jdField_d_of_type_JavaLangString;
+      localaxts.k = jdField_e_of_type_JavaLangString;
+      localaxts.l = (paramInt + "");
+      axpr.a(null, localaxts);
+    } while (!jdField_a_of_type_Boolean);
+    localaxts.jdField_c_of_type_JavaLangString = "0X80083B0";
+    localaxts.jdField_d_of_type_JavaLangString = "0X80083B0";
+    axpr.a(null, localaxts);
+  }
+  
+  public static void g(bjww parambjww)
+  {
+    if ((parambjww != null) && (parambjww.a != null) && (parambjww.a.jdField_a_of_type_Int == 14)) {
+      axqw.b(null, "dc00898", "", "", "0X800A556", "0X800A556", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public static void h()
+  {
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008F10";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008F10";
+    axpr.a(null, localaxts);
+  }
+  
+  public static void h(int paramInt)
+  {
+    if (!jdField_e_of_type_Boolean) {
+      return;
+    }
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X800842F";
+    localaxts.jdField_d_of_type_JavaLangString = "0X800842F";
+    if (localaxts.jdField_a_of_type_Int == 5) {
+      localaxts.g = jdField_a_of_type_JavaLangString;
+    }
+    localaxts.h = jdField_b_of_type_JavaLangString;
+    localaxts.i = jdField_c_of_type_JavaLangString;
+    localaxts.j = jdField_d_of_type_JavaLangString;
+    localaxts.k = jdField_e_of_type_JavaLangString;
+    localaxts.l = (paramInt + "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (jdField_d_of_type_Boolean) {}
+    for (paramInt = 2;; paramInt = 1)
+    {
+      localaxts.m = (paramInt + "");
+      axpr.a(null, localaxts);
+      return;
+    }
+  }
+  
+  public static void h(bjww parambjww)
+  {
+    if ((parambjww != null) && (parambjww.a != null) && (parambjww.a.jdField_a_of_type_Int == 14)) {
+      axqw.b(null, "dc00898", "", "", "0X800A555", "0X800A555", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public static void i()
+  {
+    jdField_a_of_type_Int = -1;
+    jdField_a_of_type_JavaLangString = "";
+    jdField_b_of_type_JavaLangString = "";
+    jdField_c_of_type_JavaLangString = "";
+    jdField_d_of_type_JavaLangString = "";
+    jdField_e_of_type_JavaLangString = "";
+    jdField_a_of_type_Boolean = false;
+    jdField_b_of_type_Boolean = false;
+    jdField_a_of_type_Long = -1L;
+    jdField_d_of_type_Boolean = false;
+    jdField_c_of_type_Boolean = false;
+    jdField_e_of_type_Boolean = false;
+  }
+  
+  public static void i(int paramInt)
+  {
+    if (!jdField_e_of_type_Boolean) {}
+    axts localaxts;
+    do
+    {
+      return;
+      localaxts = a();
+      localaxts.jdField_c_of_type_JavaLangString = "0X8008431";
+      localaxts.jdField_d_of_type_JavaLangString = "0X8008431";
+      if (localaxts.jdField_a_of_type_Int == 5) {
+        localaxts.g = jdField_a_of_type_JavaLangString;
+      }
+      localaxts.h = jdField_b_of_type_JavaLangString;
+      localaxts.i = jdField_c_of_type_JavaLangString;
+      localaxts.j = jdField_d_of_type_JavaLangString;
+      localaxts.k = jdField_e_of_type_JavaLangString;
+      localaxts.l = (paramInt + "");
+      localaxts.n = String.valueOf(ahzh.a().c);
+      localaxts.o = (jdField_a_of_type_Long + "");
+      axpr.a(null, localaxts);
+    } while (!jdField_a_of_type_Boolean);
+    localaxts.jdField_c_of_type_JavaLangString = "0X80083AF";
+    localaxts.jdField_d_of_type_JavaLangString = "0X80083AF";
+    axpr.a(null, localaxts);
+  }
+  
+  public static void j(int paramInt)
+  {
+    if (!jdField_e_of_type_Boolean) {
+      return;
+    }
+    axts localaxts = a();
+    localaxts.jdField_c_of_type_JavaLangString = "0X8008432";
+    localaxts.jdField_d_of_type_JavaLangString = "0X8008432";
+    localaxts.h = jdField_b_of_type_JavaLangString;
+    localaxts.i = jdField_c_of_type_JavaLangString;
+    localaxts.j = jdField_d_of_type_JavaLangString;
+    localaxts.k = jdField_e_of_type_JavaLangString;
+    if (localaxts.jdField_a_of_type_Int == 5) {
+      localaxts.g = jdField_a_of_type_JavaLangString;
+    }
+    localaxts.l = (paramInt + "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (jdField_c_of_type_Boolean) {}
+    for (paramInt = 2;; paramInt = 1)
+    {
+      localaxts.m = (paramInt + "");
+      localaxts.n = String.valueOf(ahzh.a().c);
+      localaxts.o = (jdField_a_of_type_Long + "");
+      axpr.a(null, localaxts);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avtb
  * JD-Core Version:    0.7.0.1
  */

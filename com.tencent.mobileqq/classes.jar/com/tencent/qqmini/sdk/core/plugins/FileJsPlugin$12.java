@@ -1,36 +1,37 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bdeu;
-import bdfz;
-import bdgo;
+import beiu;
+import beka;
+import bekq;
 import java.io.File;
+import org.json.JSONObject;
 
 class FileJsPlugin$12
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$12(FileJsPlugin paramFileJsPlugin, String paramString1, bdfz parambdfz, String paramString2) {}
+  FileJsPlugin$12(FileJsPlugin paramFileJsPlugin, String paramString, JSONObject paramJSONObject, beka parambeka, boolean paramBoolean) {}
   
   public String run()
   {
-    if (TextUtils.isEmpty(this.val$oldPath)) {
-      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "invalid path");
+    if ((TextUtils.isEmpty(this.val$dirPath)) || (this.val$reqParamObj.isNull("dirPath"))) {
+      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "fail parameter error: parameter.dirPath should be String instead of Null;");
     }
-    if (bdeu.a().a(this.val$oldPath) == 9999) {
-      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$oldPath);
+    if (beiu.a().a(this.val$dirPath) != 2) {
+      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$dirPath);
     }
-    if (bdeu.a().a(this.val$newPath) != 2) {
-      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$newPath);
+    String str = beiu.a().c(this.val$dirPath);
+    if (!new File(str).exists()) {
+      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "no such file or directory, open " + this.val$dirPath);
     }
-    String str1 = bdeu.a().a(this.val$oldPath);
-    String str2 = bdeu.a().c(this.val$newPath);
-    if (!new File(str1).exists()) {
-      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "no such file or directory, open " + this.val$oldPath);
+    if (this.val$recursive) {
+      bekq.a(str);
     }
-    if (bdgo.a(str1, str2)) {
+    for (;;)
+    {
       return FileJsPlugin.access$200(this.this$0, this.val$req, null);
+      bekq.b(str);
     }
-    return FileJsPlugin.access$100(this.this$0, this.val$req, null, "no such file or directory, open ");
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import ConfigPush.FileStoragePushFSSvcList;
-import ajjh;
-import ajxo;
-import audb;
-import awcw;
-import axpy;
+import ajxl;
+import akly;
+import avch;
+import axce;
+import ayqf;
 import com.tencent.kingkong.Common;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -17,7 +17,7 @@ import mqq.app.MobileQQ;
 public class GetGeneralSettings
   extends AsyncStep
 {
-  private ajjh a;
+  private ajxl a;
   
   public int a()
   {
@@ -39,10 +39,10 @@ public class GetGeneralSettings
       if (!bool) {
         break;
       }
-      if (this.jdField_a_of_type_Ajjh == null)
+      if (this.jdField_a_of_type_Ajxl == null)
       {
-        this.jdField_a_of_type_Ajjh = new ajxo(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Ajjh, true);
+        this.jdField_a_of_type_Ajxl = new akly(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Ajxl, true);
       }
       if (!this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(bool)) {
         break;
@@ -52,25 +52,25 @@ public class GetGeneralSettings
       Common.SetContext(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApplication().getApplicationContext());
       Common.SetSafeStatus(true);
     }
-    synchronized (axpy.a().a)
+    synchronized (ayqf.a().a)
     {
-      FileStoragePushFSSvcList localFileStoragePushFSSvcList = axpy.a().a();
+      FileStoragePushFSSvcList localFileStoragePushFSSvcList = ayqf.a().a();
       if (localFileStoragePushFSSvcList != null)
       {
-        awcw.a(localFileStoragePushFSSvcList, this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
-        axpy.a().b(null);
+        axce.a(localFileStoragePushFSSvcList, this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
+        ayqf.a().b(null);
       }
-      audb.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app).a(true, true);
+      avch.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app).a(true, true);
       return 7;
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Ajjh != null)
+    if (this.jdField_a_of_type_Ajxl != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ajjh);
-      this.jdField_a_of_type_Ajjh = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ajxl);
+      this.jdField_a_of_type_Ajxl = null;
     }
   }
 }

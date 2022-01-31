@@ -1,31 +1,18 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import java.util.List;
 
-public class alff
+public abstract interface alff
 {
-  public View a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public BaseChatItemLayout a;
-  public ArkAppLoadLayout a;
-  public ArkAppRootLayout a;
-  public ArkAppView a;
-  public LinearLayout b;
+  public abstract String a();
+  
+  public abstract List<String> a();
+  
+  public abstract String b();
+  
+  public abstract String c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alff
  * JD-Core Version:    0.7.0.1
  */

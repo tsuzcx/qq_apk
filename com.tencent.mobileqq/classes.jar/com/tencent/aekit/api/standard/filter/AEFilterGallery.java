@@ -7,7 +7,6 @@ import com.tencent.filter.ttpic.GPUImageLookupFilter;
 public class AEFilterGallery
   extends AEChainI
 {
-  private boolean mIsApplied = false;
   private GPUImageLookupFilter mLookupFilter;
   
   public AEFilterGallery()

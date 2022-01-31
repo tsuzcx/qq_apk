@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emoticonview;
 
-import anbp;
-import anie;
-import bbmy;
+import ansa;
+import anyn;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class EmoticonMainPanel$22$1
   implements Runnable
 {
-  public EmoticonMainPanel$22$1(anie paramanie, Object paramObject) {}
+  public EmoticonMainPanel$22$1(anyn paramanyn, Object paramObject) {}
   
   public void run()
   {
@@ -20,32 +20,32 @@ public class EmoticonMainPanel$22$1
     default: 
       i = 0;
       if (i != 0) {
-        bbmy.a(BaseApplicationImpl.sApplication, 1, i, 0).b(this.jdField_a_of_type_Anie.a.g);
+        bcpw.a(BaseApplicationImpl.sApplication, 1, i, 0).b(this.jdField_a_of_type_Anyn.a.g);
       }
       break;
     }
     do
     {
       return;
-      i = 2131626425;
+      i = 2131692011;
       break;
-      i = 2131626427;
+      i = 2131692013;
       break;
-      i = 2131626429;
+      i = 2131692015;
       break;
-      i = 2131626428;
+      i = 2131692014;
       break;
-      i = 2131626424;
+      i = 2131692010;
       break;
-      i = 2131626426;
+      i = 2131692012;
       break;
-      QLog.e("FavEmoRoamingObserver", 1, new Object[] { "update panel, over limit flag:", Boolean.valueOf(CameraEmoAllSend.b), " ret:", Integer.valueOf(i), " isResumed:", Boolean.valueOf(EmoticonMainPanel.b(this.jdField_a_of_type_Anie.a)) });
-    } while ((CameraEmoAllSend.b) || (!EmoticonMainPanel.b(this.jdField_a_of_type_Anie.a)));
+      QLog.e("FavEmoRoamingObserver", 1, new Object[] { "update panel, over limit flag:", Boolean.valueOf(CameraEmoAllSend.b), " ret:", Integer.valueOf(i), " isResumed:", Boolean.valueOf(EmoticonMainPanel.b(this.jdField_a_of_type_Anyn.a)) });
+    } while ((CameraEmoAllSend.b) || (!EmoticonMainPanel.b(this.jdField_a_of_type_Anyn.a)));
     CameraEmoAllSend.b = true;
     if (i == 7) {}
     for (i = 1;; i = 2)
     {
-      anbp.a(this.jdField_a_of_type_Anie.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Anie.a.jdField_a_of_type_AndroidContentContext, i);
+      ansa.a(this.jdField_a_of_type_Anyn.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Anyn.a.jdField_a_of_type_AndroidContentContext, i);
       i = 0;
       break;
     }

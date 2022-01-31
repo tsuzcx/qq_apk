@@ -1,28 +1,40 @@
-import android.animation.ArgbEvaluator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import android.os.Bundle;
+import java.util.concurrent.CountDownLatch;
 
-public class arjo
-  implements ValueAnimator.AnimatorUpdateListener
+class arjo
+  implements arem
 {
-  public arjo(MedalGuideView paramMedalGuideView) {}
+  arjo(arjn paramarjn, arei paramarei, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    MedalGuideView.a(this.a, f);
-    int i = ((Integer)this.a.jdField_a_of_type_AndroidAnimationArgbEvaluator.evaluate(f, Integer.valueOf(0), Integer.valueOf(this.a.jdField_a_of_type_Int))).intValue();
-    this.a.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(i);
-    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
+    if (paramBoolean)
+    {
+      paramString = new Bundle();
+      paramString.putString("authid", this.jdField_a_of_type_Arei.a().b);
+      paramString.putString("authKey", this.jdField_a_of_type_Arei.a().jdField_a_of_type_JavaLangString);
+      paramString.putLong("accountUpdateTime", this.jdField_a_of_type_Arei.a().jdField_a_of_type_Long);
+      paramString.putString("payToken", this.jdField_a_of_type_Arei.a().c);
+      Bundle localBundle = new Bundle();
+      localBundle.putBundle("data", paramString);
+      localBundle.putBoolean("isSuccess", true);
+      localBundle.putInt("code", paramInt);
+      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      return;
+      paramString = new Bundle();
+      paramString.putBoolean("isSuccess", false);
+      paramString.putInt("code", paramInt);
+      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arjo
  * JD-Core Version:    0.7.0.1
  */

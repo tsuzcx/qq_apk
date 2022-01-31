@@ -1,21 +1,14 @@
-import android.util.Property;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class biwj
-  extends Property<biwc, Float>
+  implements DialogInterface.OnClickListener
 {
-  biwj(biwc parambiwc, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  biwj(biwh parambiwh, biqn parambiqn) {}
   
-  public Float a(biwc parambiwc)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return Float.valueOf(biwc.c(parambiwc));
-  }
-  
-  public void a(biwc parambiwc, Float paramFloat)
-  {
-    biwc.b(parambiwc, paramFloat.floatValue());
+    biwh.a(this.jdField_a_of_type_Biwh, this.jdField_a_of_type_Biqn);
   }
 }
 

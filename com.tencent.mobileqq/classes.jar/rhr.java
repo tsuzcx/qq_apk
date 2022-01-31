@@ -1,12 +1,21 @@
-import android.support.annotation.Nullable;
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
 
-public abstract interface rhr
+public class rhr
 {
-  public abstract View a(ViewGroup paramViewGroup);
+  public ReadInJoyBaseFragment a;
+  public qzj a;
+  public boolean a;
+  public boolean b;
   
-  public abstract void a(rho paramrho1, @Nullable rho paramrho2, int paramInt);
+  public rhr()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public ReadInJoyBaseFragment a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment;
+  }
 }
 
 

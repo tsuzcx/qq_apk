@@ -1,293 +1,223 @@
-import android.text.TextUtils;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.manager.ProxyIpManager;
-import mqq.manager.ProxyIpManager.ProxyIp;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class aojs
+  implements Handler.Callback
 {
-  private String jdField_a_of_type_JavaLangString;
-  private Iterator<String> jdField_a_of_type_JavaUtilIterator;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private ProxyIpManager.ProxyIp jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp;
-  private boolean jdField_a_of_type_Boolean;
-  private Iterator<ProxyIpManager.ProxyIp> jdField_b_of_type_JavaUtilIterator;
-  private List<ProxyIpManager.ProxyIp> jdField_b_of_type_JavaUtilList;
-  private boolean jdField_b_of_type_Boolean;
+  public final int a;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+  private aojq jdField_a_of_type_Aojq;
+  private aojr jdField_a_of_type_Aojr;
+  public aojt a;
+  private aoju jdField_a_of_type_Aoju;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public final String a;
+  private Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
+  protected boolean a;
+  public final int b = 2;
+  public final int c = 4;
+  public final int d = 6;
+  public final int e = 7;
   
-  public aojs(QQAppInterface paramQQAppInterface, String paramString)
+  public aojs(QQAppInterface paramQQAppInterface)
   {
-    int i = paramString.indexOf("://");
-    int j;
-    if (i == -1)
-    {
-      i = 0;
-      j = paramString.substring(i).indexOf("/") + i;
-      if ((-1 != j) || (-1 != j)) {
-        break label116;
-      }
-      paramString = null;
-    }
-    for (;;)
-    {
-      if ((localObject != null) && (paramString != null))
-      {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(1);
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
-        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        this.jdField_a_of_type_JavaLangString = paramString;
-      }
-      a(paramQQAppInterface);
-      return;
-      i += 3;
-      break;
-      label116:
-      int k = paramString.indexOf("&bHost=");
-      if (-1 == k) {
-        localObject = str;
-      }
-      for (;;)
-      {
-        if (localObject != null) {
-          break label238;
-        }
-        localObject = paramString.substring(i, j);
-        paramString = paramString.substring(j);
-        break;
-        int m = paramString.indexOf("&bPort=", k);
-        localObject = str;
-        if (-1 != m)
-        {
-          localObject = paramString.substring("&bHost=".length() + k, m);
-          str = paramString.substring(m + "&bPort=".length());
-          localObject = (String)localObject + ":" + str;
-        }
-      }
-      label238:
-      paramString = paramString.substring(j, k);
-    }
-  }
-  
-  public aojs(QQAppInterface paramQQAppInterface, List<String> paramList, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    }
-    a(paramQQAppInterface);
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_b_of_type_JavaUtilList = ((ProxyIpManager)paramQQAppInterface.getManager(3)).getProxyIp(5);
-    if (this.jdField_b_of_type_JavaUtilList == null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("HttpUrlProcessor", 4, "HttpUrlProcessor: getProxyIp return null, so new empty ProxyList");
-      }
-      this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    }
-    a();
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    String str2 = null;
-    for (;;)
-    {
-      try
-      {
-        int i = paramString.indexOf("://");
-        if (i == -1)
-        {
-          i = 0;
-          String str1 = paramString.substring(i);
-          if (TextUtils.isEmpty(str1)) {
-            break;
-          }
-          int k = str1.indexOf("/");
-          int j = k;
-          if (-1 == k) {
-            j = str1.length() - 1;
-          }
-          k = paramString.indexOf("&bHost=");
-          if (-1 == k)
-          {
-            str1 = str2;
-            if (str2 == null) {
-              str1 = paramString.substring(i, j + i);
-            }
-            if (str1 == null) {
-              break;
-            }
-            i = str1.indexOf(":");
-            paramString = str1;
-            if (i >= 0) {
-              paramString = str1.substring(0, i);
-            }
-            return b(paramString);
-          }
-          int m = paramString.indexOf("&bPort=", k);
-          if (-1 == m) {
-            continue;
-          }
-          str1 = paramString.substring("&bHost=".length() + k, m);
-          str2 = paramString.substring("&bPort=".length() + m);
-          str2 = str1 + ":" + str2;
-          continue;
-        }
-        i += 3;
-      }
-      catch (Exception paramString)
-      {
-        return false;
-      }
-    }
-  }
-  
-  public static boolean b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return false;
-      int i;
-      if ((paramString.length() >= 7) && (paramString.length() <= 15))
-      {
-        paramString = paramString.split("\\.");
-        if ((paramString != null) && (paramString.length == 4))
-        {
-          i = 0;
-          if (i >= 4) {}
-        }
-      }
-      try
-      {
-        int j = Integer.parseInt(paramString[i]);
-        if ((j >= 0) && (j <= 255)) {
-          i += 1;
-        }
-      }
-      catch (Exception paramString) {}
-    }
-    return true;
-    return false;
-  }
-  
-  public String a()
-  {
-    Object localObject1 = null;
-    Object localObject2;
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      localObject2 = localObject1;
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("HttpUrlProcessor", 4, "getNextUrl: no host, so return null");
-        localObject2 = localObject1;
-      }
-      return localObject2;
-    }
-    if (!this.jdField_a_of_type_JavaUtilIterator.hasNext())
-    {
-      if (this.jdField_b_of_type_JavaUtilIterator.hasNext())
-      {
-        this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp = ((ProxyIpManager.ProxyIp)this.jdField_b_of_type_JavaUtilIterator.next());
-        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      }
-    }
-    else
-    {
-      label94:
-      localObject2 = (String)this.jdField_a_of_type_JavaUtilIterator.next();
-      QLog.e("HttpUrlProcessor", 4, "waterLog- getNextUrl: host[" + (String)localObject2 + "]");
-      if (!this.jdField_a_of_type_Boolean) {
-        break label418;
-      }
-      int i = ((String)localObject2).indexOf(":");
-      if (i <= 0) {
-        break label330;
-      }
-      localObject1 = ((String)localObject2).substring(0, i);
-      String str = ((String)localObject2).substring(i + 1);
-      localObject2 = localObject1;
-      localObject1 = str;
-      label176:
-      if (!this.jdField_b_of_type_Boolean) {
-        break label349;
-      }
-      localObject1 = "https://" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.ip + ":" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.port + this.jdField_a_of_type_JavaLangString + "&bHost=" + (String)localObject2 + "&bPort=" + (String)localObject1;
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.d("HttpUrlProcessor", 4, "getNextUrl: url:" + (String)localObject1);
-      return localObject1;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        break label94;
-      }
-      localObject2 = localObject1;
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.d("HttpUrlProcessor", 4, "getNextUrl: no proxy no host, so return null");
-      return null;
-      label330:
-      if (this.jdField_b_of_type_Boolean)
-      {
-        localObject1 = "443";
-        break label176;
-      }
-      localObject1 = "80";
-      break label176;
-      label349:
-      localObject1 = "http://" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.ip + ":" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.port + this.jdField_a_of_type_JavaLangString + "&bHost=" + (String)localObject2 + "&bPort=" + (String)localObject1;
-      continue;
-      label418:
-      if (this.jdField_b_of_type_Boolean) {
-        localObject1 = "https://" + (String)localObject2 + this.jdField_a_of_type_JavaLangString;
-      } else {
-        localObject1 = "http://" + (String)localObject2 + this.jdField_a_of_type_JavaLangString;
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = "ExtendFriendLimitChatStateMachine";
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aojr = new aojr(this, 100);
+    this.jdField_a_of_type_Aoju = new aoju(this, 101);
+    a(100, null);
   }
   
   public void a()
   {
-    this.jdField_b_of_type_JavaUtilIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    if (this.jdField_b_of_type_JavaUtilIterator.hasNext()) {
-      this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp = ((ProxyIpManager.ProxyIp)this.jdField_b_of_type_JavaUtilIterator.next());
-    }
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt < 0)
     {
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      QLog.e("ExtendFriendLimitChatStateMachine", 2, "requestmatch with wrong id");
+      i = 1;
+    }
+    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, i, i).sendToTarget();
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+  }
+  
+  public void a(int paramInt, aofp paramaofp)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      QLog.i("ExtendFriendLimitChatStateMachine", 2, "setStatus  " + paramInt);
+      if (this.jdField_a_of_type_Aojq != null) {
+        this.jdField_a_of_type_Aojq.b(paramaofp);
       }
       return;
+      try
+      {
+        this.jdField_a_of_type_Aojq = this.jdField_a_of_type_Aojr;
+        continue;
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
+      this.jdField_a_of_type_Aojq = this.jdField_a_of_type_Aoju;
     }
+  }
+  
+  public void a(aojt paramaojt)
+  {
+    this.jdField_a_of_type_Aojt = paramaojt;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendLimitChatStateMachine", 2, "onMatchPushMsg success:" + paramBoolean);
+    }
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 7, Integer.valueOf(i)).sendToTarget();
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, aofp paramaofp, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendLimitChatStateMachine", 2, "onCSMatchResponseMsg success:" + paramBoolean + " retCode:" + paramInt);
+    }
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 4, i, paramInt, new Object[] { paramaofp, paramString }).sendToTarget();
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean, aofp paramaofp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendLimitChatStateMachine", 2, "onMatchPushMsg success:" + paramBoolean + " info:" + paramaofp);
+    }
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 6, i, 0, paramaofp).sendToTarget();
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aojr != null)
+    {
+      this.jdField_a_of_type_Aojr.b();
+      this.jdField_a_of_type_Aojr = null;
+    }
+    if (this.jdField_a_of_type_Aoju != null)
+    {
+      this.jdField_a_of_type_Aoju.b();
+      this.jdField_a_of_type_Aoju = null;
+    }
+    this.jdField_a_of_type_Aojq = null;
+    this.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendLimitChatStateMachine", 2, "machine Clear ");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (this.jdField_a_of_type_Aojq == null) {
+      return true;
+    }
+    switch (paramMessage.what)
+    {
+    case 3: 
+    case 5: 
+    default: 
+      return true;
+    case 1: 
+      int i = paramMessage.arg1;
+      this.jdField_a_of_type_Aojq.a(i);
+      return true;
+    case 2: 
+      this.jdField_a_of_type_Aojq.a();
+      return true;
+    case 4: 
+      if (paramMessage.arg1 == 1)
+      {
+        bool1 = true;
+        if ((paramMessage.obj == null) || (!(paramMessage.obj instanceof Object[]))) {
+          break label214;
+        }
+        Object localObject = (Object[])paramMessage.obj;
+        if ((localObject == null) || (localObject.length != 2)) {
+          break label197;
+        }
+        aofp localaofp = (aofp)localObject[0];
+        localObject = (String)localObject[1];
+        this.jdField_a_of_type_Aojq.a(bool1, paramMessage.arg2, localaofp, (String)localObject);
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ExtendFriendLimitChatStateMachine", 2, "CS_RESPONSE_MSG mIsGetMatchInfoWaitingHandle");
+        }
+        this.jdField_a_of_type_Boolean = false;
+        return true;
+        bool1 = false;
+        break;
+        this.jdField_a_of_type_Aojq.a(bool1, paramMessage.arg2, null, null);
+        continue;
+        this.jdField_a_of_type_Aojq.a(bool1, paramMessage.arg2, null, null);
+        QLog.e("ExtendFriendLimitChatStateMachine", 2, "CS_RESPONSE_MSG obj err");
+      }
+    case 6: 
+      label197:
+      label214:
+      if (paramMessage.arg1 == 1) {
+        bool1 = true;
+      }
+      if (paramMessage.obj == null) {
+        break;
+      }
+    }
+    for (paramMessage = (aofp)paramMessage.obj;; paramMessage = null)
+    {
+      this.jdField_a_of_type_Aojq.a(bool1, paramMessage);
+      return true;
+      bool1 = bool2;
+      if (paramMessage.arg1 == 1) {
+        bool1 = true;
+      }
+      this.jdField_a_of_type_Aojq.a(bool1);
+      return true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aojs
  * JD-Core Version:    0.7.0.1
  */

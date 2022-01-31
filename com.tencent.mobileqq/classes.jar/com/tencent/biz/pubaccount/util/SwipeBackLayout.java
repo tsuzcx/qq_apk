@@ -24,9 +24,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import rvd;
-import rvy;
-import rvz;
+import shv;
+import sir;
+import sis;
 
 public class SwipeBackLayout
   extends RelativeLayout
@@ -34,13 +34,13 @@ public class SwipeBackLayout
   protected int a;
   public Context a;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  final Handler jdField_a_of_type_AndroidOsHandler = new rvy(this);
+  final Handler jdField_a_of_type_AndroidOsHandler = new sir(this);
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   protected View a;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
   public WebViewFragment a;
   protected List<ViewPager> a;
-  public rvd a;
+  public shv a;
   protected boolean a;
   protected int b;
   protected boolean b;
@@ -71,11 +71,11 @@ public class SwipeBackLayout
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_JavaUtilList = new LinkedList();
     this.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_Rvd = new rvd();
+    this.jdField_a_of_type_Shv = new shv();
     this.jdField_e_of_type_Boolean = true;
     this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842048);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842140);
     this.jdField_f_of_type_Int = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
   }
   
@@ -84,7 +84,7 @@ public class SwipeBackLayout
     this(paramContext, null);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_e_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new rvz(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new sis(this, paramContext));
   }
   
   private void a(List<ViewPager> paramList, ViewGroup paramViewGroup)
@@ -175,7 +175,7 @@ public class SwipeBackLayout
             int j = (int)((paramMotionEvent.getX() + ((CustomWebView)localObject).getWebScrollX()) / f1);
             float f2 = paramMotionEvent.getY();
             int k = (int)((((CustomWebView)localObject).getWebScrollY() + f2) / f1);
-            bool1 = this.jdField_a_of_type_Rvd.a(new Point(j, k));
+            bool1 = this.jdField_a_of_type_Shv.a(new Point(j, k));
           }
         }
       }
@@ -236,7 +236,7 @@ public class SwipeBackLayout
         this.jdField_d_of_type_Int = j;
         this.jdField_b_of_type_Int = j;
         this.c = ((int)paramMotionEvent.getRawY());
-        if ((this.jdField_b_of_type_Int < this.jdField_e_of_type_Int / 3) && ((this.jdField_a_of_type_Rvd.a()) || (!a(paramMotionEvent))) && (this.jdField_e_of_type_Boolean)) {
+        if ((this.jdField_b_of_type_Int < this.jdField_e_of_type_Int / 3) && ((this.jdField_a_of_type_Shv.a()) || (!a(paramMotionEvent))) && (this.jdField_e_of_type_Boolean)) {
           this.jdField_d_of_type_Boolean = true;
         }
       }

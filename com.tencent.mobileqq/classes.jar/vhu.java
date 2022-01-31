@@ -1,30 +1,20 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class vhu
-  extends vhw
+class vhu
+  extends SimpleJob<Object>
 {
-  public int a;
-  public long a;
-  public SlideItemInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public boolean c;
-  private boolean e;
-  
-  public vhu() {}
-  
-  public vhu(long paramLong1, SlideItemInfo paramSlideItemInfo, int paramInt1, int paramInt2, long paramLong2, vhv paramvhv, boolean paramBoolean)
+  vhu(vhp paramvhp, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    this.jdField_b_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo = paramSlideItemInfo;
-    this.jdField_a_of_type_JavaLangString = paramSlideItemInfo.b;
-    this.jdField_a_of_type_Vhv = paramvhv;
-    this.e = paramBoolean;
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    vel.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
   }
 }
 

@@ -1,109 +1,87 @@
-import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.ViewConfigurationCompat;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.listentogether.data.ISong;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class artj
-  implements bejq
+class artj
+  extends Handler
 {
-  float jdField_a_of_type_Float;
-  final int jdField_a_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment.getActivity()));
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
-  float c;
-  float d;
+  private final WeakReference<arth> a;
   
-  public artj(MultiAIOItemFragment paramMultiAIOItemFragment) {}
-  
-  public boolean a(MotionEvent paramMotionEvent)
+  artj(arth paramarth, Looper paramLooper)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    switch (paramMotionEvent.getActionMasked())
-    {
-    default: 
-      bool1 = bool2;
+    super(paramLooper);
+    this.a = new WeakReference(paramarth);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    arth localarth = (arth)this.a.get();
+    if (localarth == null) {
+      super.handleMessage(paramMessage);
     }
-    for (;;)
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOItemFragment", 2, "onInterceptTouchEvent() called with: ev = [" + paramMotionEvent + "], intercept = " + bool1);
-      }
-      return bool1;
-      float f1 = paramMotionEvent.getX();
-      this.d = f1;
-      this.jdField_b_of_type_Float = f1;
-      f1 = paramMotionEvent.getY();
-      this.c = f1;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, 0);
-      bool1 = bool2;
-      continue;
-      int i = this.jdField_b_of_type_Int;
-      bool1 = bool2;
-      if (i != -1)
+      do
       {
-        i = MotionEventCompat.findPointerIndex(paramMotionEvent, i);
-        bool1 = bool2;
-        if (i >= 0)
+        return;
+        switch (paramMessage.what)
         {
-          bool1 = bool2;
-          if (i <= paramMotionEvent.getPointerCount() - 1)
-          {
-            float f2 = MotionEventCompat.getX(paramMotionEvent, i);
-            f1 = Math.abs(f2 - this.d);
-            float f3 = MotionEventCompat.getY(paramMotionEvent, i) - this.jdField_a_of_type_Float;
-            float f4 = Math.abs(f3);
-            if ((f4 > this.jdField_a_of_type_Int) && (f4 * 0.5F > f1)) {
-              if (f3 > 0.0F)
-              {
-                f1 = this.c + this.jdField_a_of_type_Int;
-                label250:
-                this.jdField_a_of_type_Float = f1;
-                this.jdField_b_of_type_Float = f2;
-                bool1 = false;
-              }
-            }
-            for (;;)
-            {
-              MultiAIOBaseViewPager localMultiAIOBaseViewPager = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
-              bool2 = bool1;
-              if (localMultiAIOBaseViewPager != null)
-              {
-                bool2 = bool1;
-                if (localMultiAIOBaseViewPager.a() != MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment)) {
-                  bool2 = true;
-                }
-              }
-              bool1 = bool2;
-              break;
-              f1 = this.c - this.jdField_a_of_type_Int;
-              break label250;
-              if (f1 > this.jdField_a_of_type_Int)
-              {
-                bool1 = true;
-              }
-              else
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("MultiAIOItemFragment", 2, "onInterceptTouchEvent() called with: ev = [" + paramMotionEvent + "] do nothing");
-                }
-                bool1 = false;
-              }
-            }
-            bool1 = true;
-          }
+        default: 
+          super.handleMessage(paramMessage);
+          return;
         }
+      } while (!QLog.isColorLevel());
+      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, "--->handleMessage[MSG_FROM_SERVICE]");
+      return;
+      paramMessage = paramMessage.getData();
+      paramMessage.setClassLoader(ISong.class.getClassLoader());
+      paramMessage = (ISong)paramMessage.getParcelable("key_song");
+      if (QLog.isColorLevel()) {
+        QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PLAY_SONG_CHANGE] %s", new Object[] { paramMessage.a() }));
       }
+      arth.a(localarth, paramMessage);
+      return;
+      paramMessage = paramMessage.getData();
+      String str = paramMessage.getString("key_id");
+      i = paramMessage.getInt("key_play_state", -1);
+      if (QLog.isColorLevel()) {
+        QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PLAY_STATE_CHANGE] %s %s", new Object[] { str, artb.a(i) }));
+      }
+      arth.a(localarth, str, i);
+    } while ((i != 4) || (!arth.a(localarth)));
+    arth.a(localarth);
+    return;
+    boolean bool1 = paramMessage.getData().getBoolean("key_net_state", false);
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_NET_STATE_CHANGE] %b", new Object[] { Boolean.valueOf(bool1) }));
     }
+    arth.a(localarth, bool1);
+    return;
+    paramMessage = paramMessage.getData();
+    bool1 = paramMessage.getBoolean("key_focus_state", false);
+    boolean bool2 = paramMessage.getBoolean("key_focus_transient", false);
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_FOCUS_STATE_CHANGE] %b_%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+    }
+    arth.a(localarth, bool1, bool2);
+    return;
+    paramMessage = paramMessage.getData();
+    int i = paramMessage.getInt("key_position", -1);
+    int j = paramMessage.getInt("key_duration", -1);
+    paramMessage = paramMessage.getString("key_id");
+    if (((i <= 0) || (j <= 0)) && (QLog.isColorLevel())) {
+      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PROGRESS_CHANGE] [%d/%d] %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramMessage }));
+    }
+    arth.a(localarth, paramMessage, i, j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     artj
  * JD-Core Version:    0.7.0.1
  */

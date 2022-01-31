@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.proxy.fts;
 
-import akfb;
-import bbmy;
+import aktn;
+import bcpw;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FTSTroopOperator$3
@@ -9,7 +9,7 @@ public class FTSTroopOperator$3
 {
   public void run()
   {
-    bbmy.a(this.this$0.a.getApp(), this.a, 0).a();
+    bcpw.a(this.this$0.a.getApp(), this.a, 0).a();
   }
 }
 

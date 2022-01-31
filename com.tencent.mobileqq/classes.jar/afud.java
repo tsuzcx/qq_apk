@@ -1,23 +1,76 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import java.util.List;
 
 public class afud
+  extends BaseAdapter
 {
-  public static void a(String paramString)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private List<afuf> jdField_a_of_type_JavaUtilList;
+  
+  public afud(Context paramContext)
   {
-    a(paramString, "");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a(List<afuf> paramList)
   {
-    a(paramString1, paramString2, "");
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3)
+  public int getCount()
   {
-    awqx.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, "", "");
-    if (QLog.isColorLevel()) {
-      QLog.d(afvn.a + ".report", 2, "tag=" + paramString1 + ",extra1=" + paramString2 + ",extra2=" + paramString3);
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramViewGroup = new afug(this, null);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561502, null, false);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367958));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367957));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378467));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378468));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      afuf localafuf = (afuf)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localafuf.jdField_a_of_type_AndroidGraphicsBitmap);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localafuf.b);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localafuf.jdField_a_of_type_Int + ajyc.a(2131704597));
+      if (!localafuf.jdField_a_of_type_Boolean) {
+        break;
+      }
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838946));
+      return paramView;
+      paramViewGroup = (afug)paramView.getTag();
+    }
+    paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838948));
+    return paramView;
   }
 }
 

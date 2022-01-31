@@ -1,6 +1,6 @@
 package cooperation.qqpim;
 
-import ajjy;
+import ajyc;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -10,13 +10,13 @@ import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.view.Window;
-import bbms;
-import bbmy;
-import beez;
-import bfkp;
-import bfkq;
-import bfkr;
-import bfky;
+import bcpq;
+import bcpw;
+import bfmt;
+import bgsh;
+import bgsi;
+import bgsj;
+import bgsq;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -28,9 +28,9 @@ public class QQPimBridgeActivity
   implements Handler.Callback
 {
   public static long a;
-  private bbms jdField_a_of_type_Bbms;
-  private beez jdField_a_of_type_Beez;
-  bfky jdField_a_of_type_Bfky = new bfkq(this);
+  private bcpq jdField_a_of_type_Bcpq;
+  private bfmt jdField_a_of_type_Bfmt;
+  bgsq jdField_a_of_type_Bgsq = new bgsi(this);
   private QQPimPluginLoadRunnable jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable;
   
   public static boolean a(Context paramContext)
@@ -54,22 +54,22 @@ public class QQPimBridgeActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131101491);
+    getWindow().setBackgroundDrawableResource(2131167087);
     if (System.currentTimeMillis() - jdField_a_of_type_Long < 800L)
     {
       finish();
       return true;
     }
-    this.jdField_a_of_type_Beez = new beez(this);
+    this.jdField_a_of_type_Bfmt = new bfmt(this);
     jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Bbms = new bbms(this, super.getResources().getDimensionPixelSize(2131167766));
-    this.jdField_a_of_type_Bbms.a(ajjy.a(2131644829));
-    this.jdField_a_of_type_Bbms.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bbms.setOnDismissListener(new bfkp(this));
+    this.jdField_a_of_type_Bcpq = new bcpq(this, super.getResources().getDimensionPixelSize(2131298865));
+    this.jdField_a_of_type_Bcpq.a(ajyc.a(2131710617));
+    this.jdField_a_of_type_Bcpq.setCanceledOnTouchOutside(false);
+    this.jdField_a_of_type_Bcpq.setOnDismissListener(new bgsh(this));
     if (this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable != null) {
       this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable.a();
     }
-    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = new QQPimPluginLoadRunnable(this.jdField_a_of_type_Bfky);
+    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = new QQPimPluginLoadRunnable(this.jdField_a_of_type_Bgsq);
     ThreadManager.postImmediately(this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable, null, true);
     return true;
   }
@@ -77,10 +77,10 @@ public class QQPimBridgeActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing()))
+    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing()))
     {
-      this.jdField_a_of_type_Bbms.dismiss();
-      this.jdField_a_of_type_Bbms = null;
+      this.jdField_a_of_type_Bcpq.dismiss();
+      this.jdField_a_of_type_Bcpq = null;
     }
     sTopActivity = null;
   }
@@ -102,44 +102,44 @@ public class QQPimBridgeActivity
           do
           {
             return false;
-          } while ((isFinishing()) || (this.jdField_a_of_type_Bbms == null));
-          this.jdField_a_of_type_Bbms.a(ajjy.a(2131644831));
-          this.jdField_a_of_type_Bbms.show();
+          } while ((isFinishing()) || (this.jdField_a_of_type_Bcpq == null));
+          this.jdField_a_of_type_Bcpq.a(ajyc.a(2131710619));
+          this.jdField_a_of_type_Bcpq.show();
           return false;
         } while (isFinishing());
         int i = paramMessage.arg1;
-        int j = super.getResources().getDimensionPixelSize(2131167766);
-        paramMessage = ajjy.a(2131644832);
+        int j = super.getResources().getDimensionPixelSize(2131298865);
+        paramMessage = ajyc.a(2131710620);
         if (-4 == i) {
-          paramMessage = ajjy.a(2131644833);
+          paramMessage = ajyc.a(2131710621);
         }
         for (;;)
         {
-          bbmy.a(this.app.getApp(), 1, paramMessage, 0).b(j);
+          bcpw.a(this.app.getApp(), 1, paramMessage, 0).b(j);
           finish();
           return false;
           if ((-5 == i) || (-1 == i) || (-3 == i) || (-2 == i)) {
-            paramMessage = ajjy.a(2131644828);
+            paramMessage = ajyc.a(2131710616);
           } else if (-6 == i) {
-            paramMessage = ajjy.a(2131644830);
+            paramMessage = ajyc.a(2131710618);
           }
         }
       } while (isFinishing());
       localBundle = getIntent().getExtras();
-      if (bfkr.i.equals(localBundle.getString(bfkr.o)))
+      if (bgsj.i.equals(localBundle.getString(bgsj.o)))
       {
         paramMessage = localObject1;
         if (!a(getApplicationContext())) {
-          paramMessage = this.jdField_a_of_type_Bbms;
+          paramMessage = this.jdField_a_of_type_Bcpq;
         }
         QQPimPluginProxyActivity.a(this, localBundle, paramMessage);
         finish();
         return false;
       }
-    } while (!bfkr.j.equals(localBundle.getString(bfkr.o)));
+    } while (!bgsj.j.equals(localBundle.getString(bgsj.o)));
     paramMessage = localObject2;
     if (!a(getApplicationContext())) {
-      paramMessage = this.jdField_a_of_type_Bbms;
+      paramMessage = this.jdField_a_of_type_Bcpq;
     }
     QQPimPluginProxyActivity.b(this, localBundle, paramMessage);
     finish();

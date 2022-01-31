@@ -1,31 +1,25 @@
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.QavPanel;
 
-class loe
-  implements begw
+public class loe
+  implements mht
 {
-  loe(loa paramloa, long paramLong, begr parambegr) {}
+  public loe(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("ShareChat", 1, "showChooseTypeActionSheet, which[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "], mIHandle[" + this.jdField_a_of_type_Loa.a + "]");
-    }
-    if (this.jdField_a_of_type_Loa.a == null) {
-      return;
-    }
-    paramView = paramView.getContext();
-    switch (paramInt)
+    if (this.a.a != null)
     {
+      this.a.a.setViewEnable(2131372373, false);
+      this.a.a.setViewEnable(2131372372, false);
+      this.a.a.setViewEnable(2131362922, false);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      this.jdField_a_of_type_Loa.b(this.jdField_a_of_type_Long, paramView);
-      continue;
-      this.jdField_a_of_type_Loa.a(this.jdField_a_of_type_Long, paramView);
-    }
+  }
+  
+  public void b()
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772163);
   }
 }
 

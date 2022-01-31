@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import abju;
+import abtu;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -23,7 +23,7 @@ public class PublicFragmentActivity
   
   public static void a(Activity paramActivity, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    abju.a(paramActivity, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
+    abtu.a(paramActivity, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
   }
   
   public static void a(Activity paramActivity, Class<? extends PublicBaseFragment> paramClass, int paramInt)
@@ -33,7 +33,7 @@ public class PublicFragmentActivity
   
   public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    abju.a(paramContext, paramIntent, PublicFragmentActivity.class, paramClass);
+    abtu.a(paramContext, paramIntent, PublicFragmentActivity.class, paramClass);
   }
   
   public static void a(Context paramContext, Class<? extends PublicBaseFragment> paramClass)
@@ -145,14 +145,14 @@ public class PublicFragmentActivity
       a(paramBundle);
     }
     super.doOnCreate(paramBundle);
-    setContentView(2131492914);
+    setContentView(2131558451);
     if (this.a == null)
     {
       finish();
       return false;
     }
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131301051, this.a);
+    paramBundle.replace(2131366662, this.a);
     paramBundle.commit();
     return true;
   }

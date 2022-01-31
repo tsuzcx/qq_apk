@@ -1,76 +1,139 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x116.submsgtype0x116.MsgBody;
+import android.graphics.Rect;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class lvc
-  extends BroadcastReceiver
+  extends lvf
 {
-  public lvc(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  public lux a;
+  public boolean a;
+  public lvr[] a;
+  public int b;
+  public lvr[] b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public lvc(lux paramlux)
   {
-    paramContext = paramIntent.getAction();
-    long l1 = paramIntent.getLongExtra("groupId", 0L);
-    long l2 = paramIntent.getLongExtra("roomId", 0L);
-    long l3 = this.a.a.d();
+    this.jdField_a_of_type_ArrayOfLvr = new lvr[6];
+    this.jdField_b_of_type_ArrayOfLvr = new lvr[6];
+    this.jdField_a_of_type_Lux = paramlux;
+    this.jdField_c_of_type_ArrayOfLvr = this.jdField_a_of_type_ArrayOfLvr;
+    this.jdField_b_of_type_Long = 1800L;
+  }
+  
+  public void a(long paramLong)
+  {
+    super.a(paramLong);
+    Rect localRect = this.jdField_a_of_type_Lux.a();
     int i;
     int j;
-    label61:
-    String str;
-    StringBuilder localStringBuilder;
-    if (this.a.b == l1)
+    int k;
+    int m;
+    if (this.jdField_a_of_type_Boolean)
     {
-      i = 1;
-      if (l3 != l2) {
-        break label231;
+      i = (localRect.left + localRect.right - this.d) / 2;
+      j = (localRect.top + localRect.bottom - this.e) / 2;
+      k = (localRect.left + localRect.right + this.d) / 2;
+      m = localRect.top;
+      a(i, j, k, (localRect.bottom + m + this.e) / 2);
+      if (this.jdField_a_of_type_Lux.a == null) {
+        break label237;
       }
-      j = 1;
-      if (QLog.isColorLevel())
-      {
-        str = this.a.c;
-        localStringBuilder = new StringBuilder().append("handleMsgType0x210SuMsgType0x116 mMemberChangeEventReceiver fit=");
-        if ((i == 0) || (j == 0)) {
-          break label237;
-        }
-      }
+      a(this.jdField_a_of_type_Lux.a());
     }
-    label231:
-    label237:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      QLog.d(str, 2, bool + ";current roomId=" + l3 + ";groupId=" + this.a.b);
-      if ("tencent.video.q2v.GvideoMemInviteUpdate".equals(paramContext)) {
-        mfs.a(paramIntent);
-      }
-      if ((paramContext.equalsIgnoreCase("tencent.video.q2v.GvideoMemInviteUpdate")) && (i != 0) && (j != 0)) {
-        paramContext = new submsgtype0x116.MsgBody();
-      }
-      try
-      {
-        paramContext.mergeFrom(paramIntent.getByteArrayExtra("pushData"));
-        this.a.a.a(paramContext.rpt_msg_member_join, paramContext.rpt_msg_member_quit, paramContext.uint32_invite_list_total_count.get(), paramContext.enum_event_type.get());
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramContext)
-      {
-        do
-        {
-          paramContext.printStackTrace();
-        } while (!QLog.isColorLevel());
-        QLog.d(this.a.c, 2, "mMemberChangeEventReceiver throw exception");
-      }
-      i = 0;
+      b(this.jdField_a_of_type_Lux.a());
+      return;
+      i = (localRect.left + localRect.right - this.jdField_b_of_type_Int) / 2;
+      j = (localRect.top + localRect.bottom - this.jdField_c_of_type_Int) / 2;
+      k = (localRect.left + localRect.right + this.jdField_b_of_type_Int) / 2;
+      m = localRect.top;
+      a(i, j, k, (localRect.bottom + m + this.jdField_c_of_type_Int) / 2);
       break;
-      j = 0;
-      break label61;
+      label237:
+      a(0);
     }
+  }
+  
+  public void a(AVRedPacketManager paramAVRedPacketManager)
+  {
+    int k = 0;
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= this.jdField_a_of_type_ArrayOfLvr.length) {
+        break;
+      }
+      this.jdField_a_of_type_ArrayOfLvr[i] = new lvr(paramAVRedPacketManager.a("qav_redpacket_focus_" + i * 6 + ".png"));
+      i += 1;
+    }
+    while (j < this.jdField_b_of_type_ArrayOfLvr.length)
+    {
+      this.jdField_b_of_type_ArrayOfLvr[j] = new lvr(paramAVRedPacketManager.a("qav_redpacket_focus_big_" + j * 6 + ".png"));
+      j += 1;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    {
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label45;
+      }
+    }
+    label45:
+    for (lvr[] arrayOflvr = this.jdField_b_of_type_ArrayOfLvr;; arrayOflvr = this.jdField_a_of_type_ArrayOfLvr)
+    {
+      this.jdField_c_of_type_ArrayOfLvr = arrayOflvr;
+      this.jdField_b_of_type_Long = (this.jdField_c_of_type_ArrayOfLvr.length * 300);
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    int j = 0;
+    super.b();
+    lvr[] arrayOflvr = this.jdField_a_of_type_ArrayOfLvr;
+    int k = arrayOflvr.length;
+    int i = 0;
+    lvr locallvr;
+    while (i < k)
+    {
+      locallvr = arrayOflvr[i];
+      if (locallvr != null) {
+        locallvr.a();
+      }
+      i += 1;
+    }
+    arrayOflvr = this.jdField_b_of_type_ArrayOfLvr;
+    k = arrayOflvr.length;
+    i = j;
+    while (i < k)
+    {
+      locallvr = arrayOflvr[i];
+      if (locallvr != null) {
+        locallvr.a();
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_Lux = null;
+    this.jdField_a_of_type_ArrayOfLvr = null;
+    this.jdField_b_of_type_ArrayOfLvr = null;
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_b_of_type_Int = (paramInt1 * 380 / 750);
+    this.jdField_c_of_type_Int = (paramInt1 * 380 / 750);
+    this.d = (paramInt1 * 500 / 750);
+    this.e = (paramInt1 * 500 / 750);
   }
 }
 

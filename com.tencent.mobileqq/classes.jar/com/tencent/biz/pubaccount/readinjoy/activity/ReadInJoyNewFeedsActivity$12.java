@@ -1,16 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import azzu;
+import rpl;
 
 class ReadInJoyNewFeedsActivity$12
   implements Runnable
 {
-  ReadInJoyNewFeedsActivity$12(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, int paramInt) {}
+  ReadInJoyNewFeedsActivity$12(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
   public void run()
   {
-    azzu.b();
-    this.this$0.runOnUiThread(new ReadInJoyNewFeedsActivity.12.1(this));
+    rpl.a().b(this.this$0.app);
   }
 }
 

@@ -1,91 +1,31 @@
+import android.app.Activity;
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_read.ReadNearUserFeedsRsp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import cooperation.troop.NearbyVideoChatProxyActivity;
+import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.SelfInfo;
 
-final class aszw
-  implements aslt
+class aszw
+  implements wxw
 {
-  aszw(int paramInt, atac paramatac) {}
+  aszw(aszv paramaszv, String paramString) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(Bundle paramBundle)
   {
-    boolean bool3 = false;
-    bool2 = false;
-    bool1 = true;
-    paramBundle = new ArrayList();
-    int i = this.jdField_a_of_type_Int;
-    ilive_feeds_read.ReadNearUserFeedsRsp localReadNearUserFeedsRsp;
-    if (paramInt == 0) {
-      localReadNearUserFeedsRsp = new ilive_feeds_read.ReadNearUserFeedsRsp();
-    }
-    for (;;)
+    if (paramBundle.getBoolean("isOtherTypeChatting", false))
     {
-      try
-      {
-        localReadNearUserFeedsRsp.mergeFrom(paramArrayOfByte);
-        if (!localReadNearUserFeedsRsp.result.has())
-        {
-          QLog.i("NearbyMomentProtocol", 1, "getMomentList, don't has result");
-          paramInt = i;
-          if (this.jdField_a_of_type_Atac != null) {
-            this.jdField_a_of_type_Atac.a(bool2, paramBundle, bool1, paramInt);
-          }
-          return;
-        }
-        if (localReadNearUserFeedsRsp.result.get() == 0) {
-          if (QLog.isColorLevel()) {
-            QLog.i("NearbyMomentProtocol", 2, "endFlag=" + localReadNearUserFeedsRsp.end_flag.get() + ",size=" + localReadNearUserFeedsRsp.infos.size() + ",total=" + localReadNearUserFeedsRsp.total.get());
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool2 = false;
-        bool1 = true;
-      }
-      try
-      {
-        paramBundle.addAll(localReadNearUserFeedsRsp.infos.get());
-        paramInt = localReadNearUserFeedsRsp.end_flag.get();
-        bool1 = bool3;
-        if (paramInt == 1) {
-          bool1 = true;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          bool2 = true;
-          bool1 = true;
-        }
-      }
-      try
-      {
-        paramInt = localReadNearUserFeedsRsp.pos.get();
-        bool2 = true;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool2 = true;
-        break label281;
-      }
-      QLog.i("NearbyMomentProtocol", 1, "getMomentList error, result =" + localReadNearUserFeedsRsp.result.get() + ",errMsg=" + localReadNearUserFeedsRsp.err_msg.get());
-      paramInt = i;
-      continue;
-      label281:
-      QLog.i("NearbyMomentProtocol", 1, "getMomentList, e=" + paramArrayOfByte.toString());
-      paramInt = i;
-      continue;
-      QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
-      paramInt = i;
+      paramBundle = bbcv.a(this.jdField_a_of_type_Aszv.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), 230);
+      paramBundle.setMessage(this.jdField_a_of_type_Aszv.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a().getString(2131696181));
+      paramBundle.setNegativeButton(ajyc.a(2131707192), new aszx(this));
+      paramBundle.show();
+      return;
     }
+    wxu.a();
+    paramBundle = new oidb_0x8dd.SelfInfo();
+    paramBundle.uint32_gender.set(this.jdField_a_of_type_Aszv.jdField_a_of_type_Int);
+    paramBundle.uint32_charm_level.set(this.jdField_a_of_type_Aszv.b);
+    paramBundle.uint32_age.set(this.jdField_a_of_type_Aszv.c);
+    NearbyVideoChatProxyActivity.a(this.jdField_a_of_type_Aszv.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), this.jdField_a_of_type_Aszv.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), null, this.jdField_a_of_type_JavaLangString, paramBundle, 0);
   }
 }
 

@@ -8,7 +8,7 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Pair;
-import atfi;
+import aucj;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageRecord;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageTranslateRspResult;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -24,7 +24,7 @@ import java.util.List;
 public class TranslateResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<TranslateResult> CREATOR = new atfi();
+  public static final Parcelable.Creator<TranslateResult> CREATOR = new aucj();
   public int a;
   public String a;
   public List<TranslateResult.Record> a;
@@ -68,31 +68,24 @@ public class TranslateResult
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
       return "";
     }
-    Object localObject2 = new StringBuilder();
-    Object localObject1 = new ArrayList();
+    Object localObject1 = new StringBuilder();
     int i = 0;
-    Object localObject3;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      localObject3 = (TranslateResult.Record)this.jdField_a_of_type_JavaUtilList.get(i);
-      if ((!TextUtils.isEmpty(((TranslateResult.Record)localObject3).jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(((TranslateResult.Record)localObject3).jdField_b_of_type_JavaLangString)))
+      localObject2 = (TranslateResult.Record)this.jdField_a_of_type_JavaUtilList.get(i);
+      if ((!TextUtils.isEmpty(((TranslateResult.Record)localObject2).jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(((TranslateResult.Record)localObject2).jdField_b_of_type_JavaLangString)))
       {
-        ((StringBuilder)localObject2).append(((TranslateResult.Record)localObject3).jdField_a_of_type_JavaLangString).append("\n");
-        int j = ((StringBuilder)localObject2).length();
-        ((StringBuilder)localObject2).append(((TranslateResult.Record)localObject3).jdField_b_of_type_JavaLangString);
-        ((List)localObject1).add(new Pair(Integer.valueOf(j), Integer.valueOf(((StringBuilder)localObject2).length())));
-        ((StringBuilder)localObject2).append("\n").append("\n");
+        ((StringBuilder)localObject1).append(((TranslateResult.Record)localObject2).jdField_b_of_type_JavaLangString);
+        if (i < this.jdField_a_of_type_JavaUtilList.size() - 1) {
+          ((StringBuilder)localObject1).append("\n\n");
+        }
       }
       i += 1;
     }
-    localObject2 = new SpannableString(((StringBuilder)localObject2).toString());
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject3 = (Pair)((Iterator)localObject1).next();
-      ((SpannableString)localObject2).setSpan(new ForegroundColorSpan(Color.parseColor("#12B7F5")), ((Integer)((Pair)localObject3).first).intValue(), ((Integer)((Pair)localObject3).second).intValue(), 33);
-    }
-    return localObject2;
+    Object localObject2 = new ForegroundColorSpan(Color.parseColor("#12B7F5"));
+    localObject1 = new SpannableString(((StringBuilder)localObject1).toString());
+    ((SpannableString)localObject1).setSpan(localObject2, 0, ((SpannableString)localObject1).length(), 33);
+    return localObject1;
   }
   
   public String a()
@@ -223,6 +216,38 @@ public class TranslateResult
     return true;
   }
   
+  public CharSequence b()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return "";
+    }
+    Object localObject2 = new StringBuilder();
+    Object localObject1 = new ArrayList();
+    int i = 0;
+    Object localObject3;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      localObject3 = (TranslateResult.Record)this.jdField_a_of_type_JavaUtilList.get(i);
+      if ((!TextUtils.isEmpty(((TranslateResult.Record)localObject3).jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(((TranslateResult.Record)localObject3).jdField_b_of_type_JavaLangString)))
+      {
+        ((StringBuilder)localObject2).append(((TranslateResult.Record)localObject3).jdField_a_of_type_JavaLangString).append("\n");
+        int j = ((StringBuilder)localObject2).length();
+        ((StringBuilder)localObject2).append(((TranslateResult.Record)localObject3).jdField_b_of_type_JavaLangString);
+        ((List)localObject1).add(new Pair(Integer.valueOf(j), Integer.valueOf(((StringBuilder)localObject2).length())));
+        ((StringBuilder)localObject2).append("\n").append("\n");
+      }
+      i += 1;
+    }
+    localObject2 = new SpannableString(((StringBuilder)localObject2).toString());
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject3 = (Pair)((Iterator)localObject1).next();
+      ((SpannableString)localObject2).setSpan(new ForegroundColorSpan(Color.parseColor("#12B7F5")), ((Integer)((Pair)localObject3).first).intValue(), ((Integer)((Pair)localObject3).second).intValue(), 33);
+    }
+    return localObject2;
+  }
+  
   public String b()
   {
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
@@ -292,12 +317,16 @@ public class TranslateResult
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
       TranslateResult.Record localRecord = (TranslateResult.Record)this.jdField_a_of_type_JavaUtilList.get(i);
-      if ((!TextUtils.isEmpty(localRecord.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localRecord.jdField_b_of_type_JavaLangString))) {
+      if ((!TextUtils.isEmpty(localRecord.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localRecord.jdField_b_of_type_JavaLangString)))
+      {
         localStringBuilder.append(localRecord.jdField_a_of_type_JavaLangString);
+        if (i < this.jdField_a_of_type_JavaUtilList.size() - 1) {
+          localStringBuilder.append("\n\n");
+        }
       }
       i += 1;
     }
-    return localStringBuilder.toString();
+    return localStringBuilder.toString().trim();
   }
   
   public int describeContents()

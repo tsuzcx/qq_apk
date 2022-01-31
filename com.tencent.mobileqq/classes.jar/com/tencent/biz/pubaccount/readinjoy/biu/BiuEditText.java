@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import reo;
-import rep;
+import rrc;
+import rrd;
 
 public class BiuEditText
   extends EditText
@@ -25,7 +25,7 @@ public class BiuEditText
   
   private void a()
   {
-    addTextChangedListener(new rep());
+    addTextChangedListener(new rrd());
   }
   
   public boolean onPrivateIMECommand(String paramString, Bundle paramBundle)
@@ -44,16 +44,16 @@ public class BiuEditText
     {
       return;
       Editable localEditable = getEditableText();
-      reo[] arrayOfreo = (reo[])localEditable.getSpans(paramInt1, paramInt2, reo.class);
-      if ((arrayOfreo != null) && (arrayOfreo.length > 0))
+      rrc[] arrayOfrrc = (rrc[])localEditable.getSpans(paramInt1, paramInt2, rrc.class);
+      if ((arrayOfrrc != null) && (arrayOfrrc.length > 0))
       {
-        int i = arrayOfreo.length;
+        int i = arrayOfrrc.length;
         paramInt2 = 0;
         while (paramInt2 < i)
         {
-          reo localreo = arrayOfreo[paramInt2];
-          int j = localEditable.getSpanStart(localreo);
-          int k = localEditable.getSpanEnd(localreo);
+          rrc localrrc = arrayOfrrc[paramInt2];
+          int j = localEditable.getSpanStart(localrrc);
+          int k = localEditable.getSpanEnd(localrrc);
           if ((j >= 0) && (k >= j) && (paramInt1 > j) && (paramInt1 < k))
           {
             setSelection(k);

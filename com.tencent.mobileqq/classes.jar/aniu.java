@@ -1,8 +1,9 @@
 import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
 
 public abstract interface aniu
 {
-  public abstract boolean a(View paramView, anht paramanht);
+  public abstract void a(View paramView, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct);
 }
 
 

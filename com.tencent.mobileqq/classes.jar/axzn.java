@@ -1,6 +1,23 @@
-public abstract interface axzn
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+
+class axzn
+  implements ayad
 {
-  public abstract void a(axyg paramaxyg, axyv paramaxyv);
+  axzn(axzl paramaxzl, CountdownTextView paramCountdownTextView) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Axzl.jdField_d_of_type_Long = 0L;
+    this.jdField_a_of_type_Axzl.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(axzl.a(this.jdField_a_of_type_Axzl, 0L));
+  }
+  
+  public void a(long paramLong)
+  {
+    paramLong /= 1000L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(axzl.a(this.jdField_a_of_type_Axzl, paramLong));
+    this.jdField_a_of_type_Axzl.jdField_d_of_type_Long = paramLong;
+  }
 }
 
 

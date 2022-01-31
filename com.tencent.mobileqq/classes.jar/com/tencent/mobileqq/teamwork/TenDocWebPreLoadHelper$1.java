@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamwork;
 
-import axfy;
+import aygb;
 
 public final class TenDocWebPreLoadHelper$1
   implements Runnable
@@ -9,7 +9,7 @@ public final class TenDocWebPreLoadHelper$1
   
   public void run()
   {
-    axfy.b(this.a);
+    aygb.b(this.a);
   }
 }
 

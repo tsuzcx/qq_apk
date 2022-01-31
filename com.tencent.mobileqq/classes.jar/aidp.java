@@ -1,18 +1,20 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
 
 public class aidp
+  extends ajxl
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
+  public aidp(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  protected aidp(aido paramaido) {}
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aidp
  * JD-Core Version:    0.7.0.1
  */

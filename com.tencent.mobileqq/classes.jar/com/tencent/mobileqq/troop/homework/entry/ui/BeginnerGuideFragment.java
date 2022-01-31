@@ -12,12 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import ayvs;
-import ayvu;
-import ayvv;
-import ayvx;
-import ayxg;
-import bbms;
+import azwi;
+import azwk;
+import azwl;
+import azwn;
+import azxy;
+import bcpq;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -29,13 +29,13 @@ import java.net.URL;
 
 public class BeginnerGuideFragment
   extends PublicBaseFragment
-  implements ayxg
+  implements azxy
 {
   private int jdField_a_of_type_Int;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private View jdField_a_of_type_AndroidViewView;
-  private ayvx jdField_a_of_type_Ayvx;
-  private bbms jdField_a_of_type_Bbms;
+  private azwn jdField_a_of_type_Azwn;
+  private bcpq jdField_a_of_type_Bcpq;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   protected ComplexGuidViewPager a;
   private boolean jdField_a_of_type_Boolean;
@@ -49,7 +49,7 @@ public class BeginnerGuideFragment
     localIntent.putExtra("BeginnerGuideFragment:page_type", true);
     localIntent.putExtra("BeginnerGuideFragment:hw_type", paramInt);
     PublicFragmentActivity.a(paramActivity, localIntent, BeginnerGuideFragment.class);
-    paramActivity.overridePendingTransition(2130772277, 2130771990);
+    paramActivity.overridePendingTransition(2130772278, 2130771990);
   }
   
   private void a(String paramString, int paramInt)
@@ -102,7 +102,7 @@ public class BeginnerGuideFragment
         try
         {
           String str3 = new File(new URL(str2).getFile()).getName();
-          new ayvs(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2, str3, str1).a(this.jdField_a_of_type_Ayvx, i, false);
+          new azwi(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2, str3, str1).a(this.jdField_a_of_type_Azwn, i, false);
           return true;
         }
         catch (Exception localException) {}
@@ -132,7 +132,7 @@ public class BeginnerGuideFragment
     localIntent.putExtra("BeginnerGuideFragment:page_type", false);
     localIntent.putExtra("BeginnerGuideFragment:hw_type", paramInt);
     PublicFragmentActivity.a(paramActivity, localIntent, BeginnerGuideFragment.class);
-    paramActivity.overridePendingTransition(2130772277, 2130771990);
+    paramActivity.overridePendingTransition(2130772278, 2130771990);
   }
   
   private void d()
@@ -140,10 +140,10 @@ public class BeginnerGuideFragment
     if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager == null) {
       return;
     }
-    ayvu localayvu = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a;
+    azwk localazwk = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a;
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (localayvu != null)
+    if (localazwk != null)
     {
       if (!this.jdField_a_of_type_Boolean) {
         break label135;
@@ -155,14 +155,14 @@ public class BeginnerGuideFragment
         localObject1 = localObject2;
       }
     }
-    while ((localObject1 != null) && (((ayvv)localObject1).jdField_a_of_type_JavaLangString != null) && (((ayvv)localObject1).jdField_a_of_type_JavaUtilArrayList != null))
+    while ((localObject1 != null) && (((azwl)localObject1).jdField_a_of_type_JavaLangString != null) && (((azwl)localObject1).jdField_a_of_type_JavaUtilArrayList != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.setData(((ayvv)localObject1).jdField_a_of_type_JavaLangString, ((ayvv)localObject1).jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.setData(((azwl)localObject1).jdField_a_of_type_JavaLangString, ((azwl)localObject1).jdField_a_of_type_JavaUtilArrayList);
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.invalidate();
       return;
-      localObject1 = localayvu.b;
+      localObject1 = localazwk.b;
       continue;
-      localObject1 = localayvu.a;
+      localObject1 = localazwk.a;
       continue;
       label135:
       switch (this.jdField_a_of_type_Int)
@@ -173,10 +173,10 @@ public class BeginnerGuideFragment
         localObject1 = localObject2;
         break;
       case 4: 
-        localObject1 = localayvu.c;
+        localObject1 = localazwk.c;
         break;
       case 7: 
-        localObject1 = localayvu.d;
+        localObject1 = localazwk.d;
       }
     }
   }
@@ -195,13 +195,13 @@ public class BeginnerGuideFragment
     {
       if (!getActivity().isFinishing())
       {
-        if (this.jdField_a_of_type_Bbms == null)
+        if (this.jdField_a_of_type_Bcpq == null)
         {
-          this.jdField_a_of_type_Bbms = new bbms(getActivity(), getActivity().getTitleBarHeight());
-          this.jdField_a_of_type_Bbms.setCancelable(false);
-          this.jdField_a_of_type_Bbms.show();
+          this.jdField_a_of_type_Bcpq = new bcpq(getActivity(), getActivity().getTitleBarHeight());
+          this.jdField_a_of_type_Bcpq.setCancelable(false);
+          this.jdField_a_of_type_Bcpq.show();
         }
-        this.jdField_a_of_type_Bbms.c(paramInt);
+        this.jdField_a_of_type_Bcpq.c(paramInt);
       }
     }
     catch (Exception localException)
@@ -226,12 +226,12 @@ public class BeginnerGuideFragment
   
   protected void c()
   {
-    if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing())) {}
+    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bbms.dismiss();
+      this.jdField_a_of_type_Bcpq.dismiss();
       label24:
-      this.jdField_a_of_type_Bbms = null;
+      this.jdField_a_of_type_Bcpq = null;
       if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager != null) {
         this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.setVisibility(0);
       }
@@ -270,7 +270,7 @@ public class BeginnerGuideFragment
       QLog.d("BeginnerGuideFragment", 2, "BeginnerGuideFragment create view");
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
-    this.jdField_a_of_type_Ayvx = new ayvx(this, Looper.myLooper());
+    this.jdField_a_of_type_Azwn = new azwn(this, Looper.myLooper());
     this.jdField_a_of_type_AndroidOsBundle = getArguments();
     if (this.jdField_a_of_type_AndroidOsBundle != null)
     {
@@ -283,15 +283,15 @@ public class BeginnerGuideFragment
     for (;;)
     {
       boolean bool = a();
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131494771, paramViewGroup, false);
+      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560343, paramViewGroup, false);
       if (this.jdField_a_of_type_AndroidViewView == null) {
         getActivity().finish();
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager = ((ComplexGuidViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131299028));
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager = ((ComplexGuidViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131364588));
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.setOnActionBtnClickListener(this);
       d();
       if (bool) {
-        a(2131631974);
+        a(2131697688);
       }
       return this.jdField_a_of_type_AndroidViewView;
       label177:
@@ -305,15 +305,15 @@ public class BeginnerGuideFragment
   public void onDetach()
   {
     super.onDetach();
-    if (this.jdField_a_of_type_Ayvx != null) {
-      this.jdField_a_of_type_Ayvx.removeCallbacksAndMessages(null);
+    if (this.jdField_a_of_type_Azwn != null) {
+      this.jdField_a_of_type_Azwn.removeCallbacksAndMessages(null);
     }
   }
   
   public void onFinish()
   {
     super.onFinish();
-    getActivity().overridePendingTransition(2130771990, 2130772279);
+    getActivity().overridePendingTransition(2130771990, 2130772280);
   }
 }
 

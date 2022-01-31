@@ -1,19 +1,26 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.qwallet.fragment.ExclusiveHbFragment;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
 
 public class agmx
-  extends agnn
+  implements View.OnClickListener
 {
-  public agmx(ExclusiveHbFragment paramExclusiveHbFragment) {}
+  public agmx(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    ExclusiveHbFragment.a(this.a);
+    paramView = this.a.getIntent();
+    String str = paramView.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    int i = paramView.getIntExtra("PhotoConst.CLIP_WIDTH", 0);
+    PhotoUtils.a(paramView, this.a, str, i, i, 1080, 1080, bazo.a());
+    axqw.b(this.a.app, "dc00898", "", "", "0X800723F", "0X800723F", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmx
  * JD-Core Version:    0.7.0.1
  */

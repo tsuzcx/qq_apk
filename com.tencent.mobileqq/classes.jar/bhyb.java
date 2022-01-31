@@ -1,31 +1,123 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.content.Context;
+import android.view.SurfaceHolder;
 
 public class bhyb
-  extends AnimatorListenerAdapter
 {
-  public bhyb(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  private Object a = bhnv.a("com.tencent.tar.TarInterface", null, new Object[0]);
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a()
   {
-    this.a.a.d = 5;
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation captureView 190ms all end");
+    Object localObject = bhnv.a(this.a, "getConfigWith", false, null, new Object[0]);
+    if ((localObject instanceof Integer)) {
+      return ((Integer)localObject).intValue();
     }
+    return -1;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public int a(SurfaceHolder paramSurfaceHolder, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation captureView begin");
+    paramSurfaceHolder = bhnv.a(this.a, "onDrawFrame", false, a(new Class[] { SurfaceHolder.class, Boolean.TYPE }), new Object[] { paramSurfaceHolder, Boolean.valueOf(paramBoolean) });
+    if ((paramSurfaceHolder instanceof Integer)) {
+      return ((Integer)paramSurfaceHolder).intValue();
     }
+    return 0;
+  }
+  
+  public void a()
+  {
+    bhnv.a(this.a, "onResume", false, null, new Object[0]);
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    bhnv.a(this.a, "setTrackingPoint", false, a(new Class[] { Float.TYPE, Float.TYPE }), new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    bhnv.a(this.a, "onSurfaceChanged", false, a(new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+  }
+  
+  public void a(Context paramContext, int paramInt)
+  {
+    bhnv.a(this.a, "init", false, a(new Class[] { Context.class, Integer.TYPE }), new Object[] { paramContext, Integer.valueOf(paramInt) });
+  }
+  
+  public float[] a()
+  {
+    Object localObject = bhnv.a(this.a, "getModelMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
+    }
+    return null;
+  }
+  
+  public Class[] a(Class... paramVarArgs)
+  {
+    Class[] arrayOfClass = new Class[paramVarArgs.length];
+    int i = 0;
+    while (i < paramVarArgs.length)
+    {
+      arrayOfClass[i] = paramVarArgs[i];
+      i += 1;
+    }
+    return arrayOfClass;
+  }
+  
+  public int b()
+  {
+    Object localObject = bhnv.a(this.a, "getConfigHeight", false, null, new Object[0]);
+    if ((localObject instanceof Integer)) {
+      return ((Integer)localObject).intValue();
+    }
+    return -1;
+  }
+  
+  public void b()
+  {
+    bhnv.a(this.a, "onStop", false, null, new Object[0]);
+  }
+  
+  public float[] b()
+  {
+    Object localObject = bhnv.a(this.a, "getViewMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
+    }
+    return null;
+  }
+  
+  public void c()
+  {
+    bhnv.a(this.a, "onDestroy", false, null, new Object[0]);
+  }
+  
+  public float[] c()
+  {
+    Object localObject = bhnv.a(this.a, "getProjectionMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
+    }
+    return null;
+  }
+  
+  public void d()
+  {
+    bhnv.a(this.a, "onSurfaceCreated", false, null, new Object[0]);
+  }
+  
+  public float[] d()
+  {
+    Object localObject = bhnv.a(this.a, "getScaleMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhyb
  * JD-Core Version:    0.7.0.1
  */

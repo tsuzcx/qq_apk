@@ -1,35 +1,87 @@
-import android.os.Bundle;
+import android.content.ClipData;
+import android.content.ClipData.Item;
+import android.content.ClipDescription;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
-class aney
-  implements bapb<aphb>
+public class aney
+  implements Manager
 {
-  aney(aned paramaned, int paramInt, ajrm paramajrm, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  private ClipboardManager jdField_a_of_type_AndroidContentClipboardManager;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void a(aphb paramaphb, Object paramObject)
+  public aney(QQAppInterface paramQQAppInterface)
   {
-    paramObject = new Bundle();
-    paramObject.putInt("id", this.jdField_a_of_type_Int);
-    if ((paramaphb != null) || (this.jdField_a_of_type_Int == 0))
-    {
-      paramObject.putInt("result", 0);
-      this.jdField_a_of_type_Ajrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private ClipboardManager a()
+  {
+    if (this.jdField_a_of_type_AndroidContentClipboardManager == null) {
+      this.jdField_a_of_type_AndroidContentClipboardManager = ((ClipboardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getSystemService("clipboard"));
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      bapf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_colorscreen_set_fail", "0", "", Integer.toString(this.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
-      bape.a("individual_v2_colorscreen_set_fail", "id:" + this.jdField_a_of_type_Int);
-      paramObject.putInt("result", 1);
+    return this.jdField_a_of_type_AndroidContentClipboardManager;
+  }
+  
+  private SharedPreferences a()
+  {
+    if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
+      this.jdField_a_of_type_AndroidContentSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
     }
+    return this.jdField_a_of_type_AndroidContentSharedPreferences;
+  }
+  
+  public String a()
+  {
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      long l1 = a().getLong("KEY_LAST_COPY_TIME", 0L);
+      Object localObject = a().getPrimaryClipDescription();
+      if (localObject != null)
+      {
+        long l2 = ((ClipDescription)localObject).getTimestamp();
+        long l3 = System.currentTimeMillis();
+        if ((l2 != l1) && (l3 - l2 < 180000L))
+        {
+          a().edit().putLong("KEY_LAST_COPY_TIME", l2).apply();
+          if ((a().hasPrimaryClip()) && (a().getPrimaryClip() != null) && (a().getPrimaryClip().getItemCount() > 0))
+          {
+            localObject = a().getPrimaryClip().getItemAt(0);
+            if (QLog.isColorLevel()) {
+              QLog.d("CopyPromptManager", 2, "origin copy data : " + localObject);
+            }
+            if (localObject != null)
+            {
+              localObject = ((ClipData.Item)localObject).getText();
+              if ((localObject != null) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+                return String.valueOf(localObject);
+              }
+            }
+          }
+        }
+      }
+    }
+    return "";
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aney
  * JD-Core Version:    0.7.0.1
  */

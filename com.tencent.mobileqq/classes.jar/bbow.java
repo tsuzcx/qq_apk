@@ -1,35 +1,19 @@
-import android.view.View;
-import android.view.ViewGroup;
-
-public class bbow
+class bbow
 {
-  private static long jdField_a_of_type_Long = 400L;
-  private static boolean jdField_a_of_type_Boolean;
+  public int a;
+  public long a;
+  public String a;
+  public String b = "";
   
-  public static void a()
+  bbow(bbop parambbop)
   {
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static void a(ViewGroup paramViewGroup)
-  {
-    if (jdField_a_of_type_Boolean) {
-      return;
-    }
-    jdField_a_of_type_Boolean = true;
-    paramViewGroup.invalidate();
-    View localView = paramViewGroup.getChildAt(0);
-    paramViewGroup = paramViewGroup.getChildAt(1);
-    bbnp localbbnp = new bbnp(paramViewGroup);
-    localbbnp.setDuration(jdField_a_of_type_Long);
-    localbbnp.setFillAfter(true);
-    localbbnp.setAnimationListener(new bbox(localView, paramViewGroup));
-    paramViewGroup.startAnimation(localbbnp);
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbow
  * JD-Core Version:    0.7.0.1
  */

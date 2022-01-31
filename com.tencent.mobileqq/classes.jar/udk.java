@@ -1,27 +1,19 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import java.util.ArrayList;
-import java.util.List;
-
-public class udk
-  extends swh
+class udk
+  implements udf
 {
-  public FeedVideoInfo a;
-  public String a;
-  public List<StoryVideoItem> a;
-  public String b;
+  public udf a;
   
-  public udk(ErrorMessage paramErrorMessage, String paramString)
-  {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  private udk(udi paramudi) {}
   
-  public String toString()
+  public boolean a(udc paramudc, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    return "GetVideoListEvent{mVideoItems=" + this.jdField_a_of_type_JavaUtilList.size() + ", feedId=" + this.jdField_a_of_type_JavaLangString + ", mUnionId=" + this.b + '}' + super.toString();
+    if (udi.a(this.jdField_a_of_type_Udi) != null) {
+      udi.a(this.jdField_a_of_type_Udi).c(udi.a(this.jdField_a_of_type_Udi));
+    }
+    if (this.jdField_a_of_type_Udf != null) {
+      return this.jdField_a_of_type_Udf.a(paramudc, paramInt1, paramInt2, paramInt3, paramString, paramObject);
+    }
+    return false;
   }
 }
 

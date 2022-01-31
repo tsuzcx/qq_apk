@@ -1,20 +1,20 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
-import bdgi;
+import beka;
+import beki;
 
 public class ClipboardJsPlugin
   extends BaseJsPlugin
 {
-  public String getClipboardData(bdfz parambdfz)
+  public String getClipboardData(beka parambeka)
   {
-    bdgi.a(new ClipboardJsPlugin.1(this, parambdfz));
+    beki.a(new ClipboardJsPlugin.1(this, parambeka));
     return "";
   }
   
-  public String setClipboardData(bdfz parambdfz)
+  public String setClipboardData(beka parambeka)
   {
-    bdgi.a(new ClipboardJsPlugin.2(this, parambdfz));
+    beki.a(new ClipboardJsPlugin.2(this, parambeka));
     return "";
   }
 }

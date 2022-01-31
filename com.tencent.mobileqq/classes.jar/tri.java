@@ -1,51 +1,69 @@
-import android.content.Context;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-
-public class tri
+public abstract class tri
+  extends tqk
 {
-  static volatile tri jdField_a_of_type_Tri;
-  Context jdField_a_of_type_AndroidContentContext;
-  trj jdField_a_of_type_Trj;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
   
-  private tri(Context paramContext)
+  protected String a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    return null;
   }
   
-  public static tri a(Context paramContext)
+  public void a(tro paramtro)
   {
-    if (jdField_a_of_type_Tri == null) {}
-    try
-    {
-      if (jdField_a_of_type_Tri == null) {
-        jdField_a_of_type_Tri = new tri(paramContext);
-      }
-      return jdField_a_of_type_Tri;
-    }
-    finally {}
+    super.a(paramtro);
+    paramtro.a = this.jdField_c_of_type_JavaLangString;
   }
   
-  public trj a()
+  public void a(trq paramtrq)
   {
-    if (this.jdField_a_of_type_Trj == null) {
-      this.jdField_a_of_type_Trj = new trj();
-    }
-    return this.jdField_a_of_type_Trj;
+    super.a(paramtrq);
+    paramtrq.b = 2;
+    paramtrq.d = ("[" + ssi.a + "] " + this.a);
+    paramtrq.a = this.d;
+    paramtrq.k = this.a;
+    paramtrq.l = this.b;
+    paramtrq.h = this.jdField_c_of_type_JavaLangString;
   }
   
-  public void a()
+  public void a(trr paramtrr)
   {
-    TVK_SDKMgr.setOnLogListener(a());
+    super.a(paramtrr);
+    paramtrr.jdField_c_of_type_JavaLangString = this.a;
+    paramtrr.d = this.b;
+    paramtrr.a = this.d;
+    paramtrr.e = this.jdField_c_of_type_JavaLangString;
   }
   
-  public void a(Context paramContext)
+  public void a(trs paramtrs)
   {
-    TVK_SDKMgr.initSdk(paramContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+    super.a(paramtrs);
+    paramtrs.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+    paramtrs.e = this.d;
+    paramtrs.a = this.a;
+    paramtrs.d = tsa.a(this.d);
   }
   
-  public boolean a()
+  public void a(trt paramtrt)
   {
-    return TVK_SDKMgr.isInstalled(null);
+    super.a(paramtrt);
+    paramtrt.jdField_c_of_type_JavaLangString = this.b;
+    paramtrt.a = this.a;
+    paramtrt.d = this.jdField_c_of_type_JavaLangString;
+    paramtrt.e = this.d;
+    paramtrt.jdField_c_of_type_Boolean = true;
+  }
+  
+  public void b(trt paramtrt)
+  {
+    super.b(paramtrt);
+    paramtrt.jdField_c_of_type_JavaLangString = this.b;
+    paramtrt.a = this.a;
+    paramtrt.d = this.jdField_c_of_type_JavaLangString;
+    paramtrt.e = this.d;
+    paramtrt.jdField_c_of_type_Boolean = true;
   }
 }
 

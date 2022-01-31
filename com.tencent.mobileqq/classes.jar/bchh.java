@@ -1,23 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-class bchh
-  extends BroadcastReceiver
+public abstract interface bchh
+  extends bcci
 {
-  bchh(bchb parambchb) {}
+  public abstract void a(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    bcds.c("MyAppApi", "onReceive ---INTENT = " + paramIntent);
-    if ((paramIntent != null) && (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))) {
-      this.a.f();
-    }
-  }
+  public abstract boolean c();
+  
+  public abstract String d();
+  
+  public abstract String e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bchh
  * JD-Core Version:    0.7.0.1
  */

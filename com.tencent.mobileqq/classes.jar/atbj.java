@@ -1,57 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.nearby.smooth.ItemLoader;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public final class atbj
+public class atbj
+  extends ayox
 {
-  int jdField_a_of_type_Int;
-  final Handler jdField_a_of_type_AndroidOsHandler;
-  atbi jdField_a_of_type_Atbi;
-  final ItemLoader<?, ?> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  private NearbyAppInterface a;
   
-  void a()
+  public atbj(NearbyAppInterface paramNearbyAppInterface)
   {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    super(paramNearbyAppInterface);
+    this.a = paramNearbyAppInterface;
   }
   
-  void a(View paramView1, View paramView2, int paramInt)
+  public ayoz a(aywa paramaywa)
   {
-    this.jdField_a_of_type_Atbi.a();
-    ListAdapter localListAdapter = this.jdField_a_of_type_Atbi.a();
-    if ((this.jdField_a_of_type_Int != 2) && (!this.jdField_a_of_type_Boolean)) {}
-    for (boolean bool = true;; bool = false)
+    if (paramaywa == null) {}
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(paramView1, paramView2, localListAdapter, paramInt, bool);
-      return;
-    }
-  }
-  
-  void a(atbi paramatbi)
-  {
-    this.jdField_a_of_type_Atbi = paramatbi;
-    if (this.jdField_a_of_type_Atbi != null)
-    {
-      paramatbi = this.jdField_a_of_type_Atbi.a();
-      paramatbi.setOnScrollListener(new atbm(this, null));
-      paramatbi.setOnTouchListener(new atbl(this, null));
-      paramatbi.setOnItemSelectedListener(new atbn(this, null));
-    }
-  }
-  
-  void b()
-  {
-    if (this.jdField_a_of_type_Atbi == null) {
-      throw new IllegalStateException("Cannot cancel requests with no managed view");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Atbi.a());
+      return null;
+      if ((paramaywa.b == 8) || (paramaywa.b == 64) || (paramaywa.b == 21)) {
+        return new ayst(this, paramaywa);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.richmedia.TransFileController", 2, paramaywa.toString());
+    return null;
   }
 }
 

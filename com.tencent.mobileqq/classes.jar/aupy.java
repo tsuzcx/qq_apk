@@ -1,28 +1,10 @@
-import android.os.Bundle;
-import java.lang.ref.WeakReference;
-
-abstract class aupy<T>
-  extends mmn
+public final class aupy
+  extends aupf
 {
-  protected T a;
-  private WeakReference<T> a;
-  
-  aupy(T paramT)
+  protected int c()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramT);
+    return 517;
   }
-  
-  public final void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (this.jdField_a_of_type_JavaLangObject == null) {
-      return;
-    }
-    b(paramInt, paramArrayOfByte, paramBundle);
-    this.jdField_a_of_type_JavaLangObject = null;
-  }
-  
-  abstract void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 

@@ -1,26 +1,22 @@
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
-
 public class tnf
 {
-  protected tnf(tnn paramtnn) {}
+  public final String a;
+  public final vuz a;
+  public final vvh a;
+  public final String b;
   
-  public static tnf a(tnn paramtnn)
+  public tnf(String paramString1, vvh paramvvh, vuz paramvuz, String paramString2)
   {
-    if (paramtnn.a().mReportData.from == 86) {
-      return new tni(paramtnn);
-    }
-    return new tnf(paramtnn);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Vvh = paramvvh;
+    this.jdField_a_of_type_Vuz = paramvuz;
+    this.b = paramString2;
   }
   
-  public void a(tnl paramtnl) {}
-  
-  public void a(tnl paramtnl, int paramInt1, int paramInt2, tnz paramtnz) {}
-  
-  public void a(tnl paramtnl, View paramView) {}
-  
-  public void a(tnl paramtnl, boolean paramBoolean) {}
+  public String toString()
+  {
+    return "TagInfoBaseVidList{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tagInfo=" + this.jdField_a_of_type_Vvh + ", comInfo=" + this.jdField_a_of_type_Vuz + ", extCfgInfo=" + this.b + '}';
+  }
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.biz.widgets;
 
 import android.view.View;
-import xfi;
+import xoi;
 
 public class TabLayout$TabAdapter$1
   implements Runnable
 {
-  public TabLayout$TabAdapter$1(xfi paramxfi, int paramInt, View paramView) {}
+  public TabLayout$TabAdapter$1(xoi paramxoi, int paramInt, View paramView) {}
   
   public void run()
   {

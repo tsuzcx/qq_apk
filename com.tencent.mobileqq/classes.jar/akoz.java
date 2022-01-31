@@ -1,46 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 class akoz
-  extends akqg
+  implements Comparator<MessageRecord>
 {
-  akoz(akou paramakou) {}
+  akoz(akow paramakow) {}
   
-  public void a()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadSuccess");
-    }
-    Message localMessage = akou.a(this.a).obtainMessage();
-    localMessage.what = 100;
-    localMessage.sendToTarget();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadProcess process=" + paramInt);
-    }
-    Message localMessage = akou.a(this.a).obtainMessage();
-    localMessage.what = 102;
-    localMessage.arg1 = paramInt;
-    localMessage.sendToTarget();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadFail");
-    }
-    Message localMessage = akou.a(this.a).obtainMessage();
-    localMessage.what = 101;
-    localMessage.sendToTarget();
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akoz
  * JD-Core Version:    0.7.0.1
  */

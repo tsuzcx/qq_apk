@@ -1,21 +1,8 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.view.View;
 
-class addg
-  extends acju
+public abstract interface addg
 {
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
-  
-  addg(addd paramaddd) {}
+  public abstract void a(View paramView, int paramInt);
 }
 
 

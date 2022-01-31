@@ -1,65 +1,20 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener.1;
-import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener.2;
-import com.tencent.tmassistantsdk.ITMAssistantCallBackListener;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bchn
-  implements ITMAssistantCallBackListener
+public abstract interface bchn
+  extends bcci
 {
-  protected bchn(bchb parambchb) {}
+  public abstract View a(int paramInt);
   
-  public void onDownloadTaskProgressChanged(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, long paramLong1, long paramLong2)
-  {
-    bchb.a(this.a, true);
-    bcds.b("MyAppApi", "onDownloadTaskProgressChanged  receiveDataLen:" + paramLong1 + ",totalDataLen:" + paramLong2);
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    bcgo localbcgo = bcgo.a();
-    DownloadInfo localDownloadInfo2 = localbcgo.a(paramTMAssistantCallYYBParamStruct.SNGAppId);
-    DownloadInfo localDownloadInfo1 = localDownloadInfo2;
-    if (localDownloadInfo2 == null)
-    {
-      localDownloadInfo1 = this.a.a(paramTMAssistantCallYYBParamStruct, null);
-      localbcgo.e(localDownloadInfo1);
-    }
-    localDownloadInfo1.f = i;
-    localDownloadInfo1.a(2);
-    localbcgo.a(2, localDownloadInfo1);
-    bccu.a().a(paramTMAssistantCallYYBParamStruct, i);
-    bcds.a("MyAppApi", "onDownloadTaskProgressChanged info state=" + localDownloadInfo1.a() + " progress=" + localDownloadInfo1.f);
-  }
+  public abstract void a(String paramString, int paramInt);
   
-  public void onDownloadTaskStateChanged(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, int paramInt1, int paramInt2, String paramString)
-  {
-    this.a.b = true;
-    bchb.a(this.a, true);
-    bcds.b("MyAppApi", "onDownloadTaskStateChanged");
-    ThreadManager.getSubThreadHandler().post(new MyAppApi.QQDownloadListener.1(this, paramTMAssistantCallYYBParamStruct, paramInt1, paramInt2, paramString));
-  }
+  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, int paramInt3);
   
-  public void onQQDownloaderInvalid()
-  {
-    bcds.b("MyAppApi", ajjy.a(2131641257));
-    ThreadManager.getSubThreadHandler().post(new MyAppApi.QQDownloadListener.2(this));
-  }
-  
-  public void onServiceFree()
-  {
-    bcds.b("MyAppApi", "OnServiceFree");
-    try
-    {
-      ((TMAssistantCallYYB_V2)this.a.a).releaseIPCConnected();
-      return;
-    }
-    catch (Exception localException) {}
-  }
+  public abstract void a(boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2, String paramString1, String paramString2, String paramString3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bchn
  * JD-Core Version:    0.7.0.1
  */

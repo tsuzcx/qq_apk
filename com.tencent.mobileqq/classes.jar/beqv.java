@@ -1,81 +1,112 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.AppMode;
 
-public abstract class beqv<M, VH extends bequ<M>>
-  extends RecyclerView.Adapter<bequ<M>>
+public final class beqv
+  implements Parcelable.Creator<AppMode>
 {
-  protected Context a;
-  protected View a;
-  protected beqs a;
-  protected beqt a;
-  protected View b;
-  
-  public beqv(Context paramContext)
+  public AppMode a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public abstract VH a(ViewGroup paramViewGroup, int paramInt);
-  
-  public abstract void a(VH paramVH, int paramInt);
-  
-  public int b()
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      i = 1;
-    }
-    int j = i;
-    if (this.b != null) {
-      j = i + 1;
-    }
-    return j;
-  }
-  
-  public final bequ b(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (paramInt == 1024) {
-      paramViewGroup = new bequ(this.jdField_a_of_type_AndroidViewView);
-    }
-    for (;;)
+    boolean bool2 = true;
+    AppMode localAppMode = new AppMode();
+    if (paramParcel.readInt() == 1)
     {
-      if (this.jdField_a_of_type_Beqs != null) {
-        paramViewGroup.itemView.setOnClickListener(new beqw(this, paramViewGroup));
+      bool1 = true;
+      localAppMode.a = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label179;
       }
-      if (this.jdField_a_of_type_Beqt != null) {
-        paramViewGroup.itemView.setOnLongClickListener(new beqx(this, paramViewGroup));
+      bool1 = true;
+      label37:
+      localAppMode.b = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label184;
       }
-      return paramViewGroup;
-      if (paramInt == 1025) {
-        paramViewGroup = new bequ(this.b);
-      } else {
-        paramViewGroup = a(paramViewGroup, paramInt);
+      bool1 = true;
+      label53:
+      localAppMode.c = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label189;
+      }
+      bool1 = true;
+      label69:
+      localAppMode.d = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label194;
+      }
+      bool1 = true;
+      label85:
+      localAppMode.e = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label199;
+      }
+      bool1 = true;
+      label101:
+      localAppMode.f = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label204;
+      }
+      bool1 = true;
+      label117:
+      localAppMode.g = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label209;
+      }
+      bool1 = true;
+      label133:
+      localAppMode.h = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label214;
+      }
+      bool1 = true;
+      label149:
+      localAppMode.i = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label219;
       }
     }
-  }
-  
-  public final void b(bequ parambequ, int paramInt)
-  {
-    switch (parambequ.getItemViewType())
+    label179:
+    label184:
+    label189:
+    label194:
+    label199:
+    label204:
+    label209:
+    label214:
+    label219:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-    default: 
-      a(parambequ, paramInt);
+      localAppMode.j = bool1;
+      return localAppMode;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label37;
+      bool1 = false;
+      break label53;
+      bool1 = false;
+      break label69;
+      bool1 = false;
+      break label85;
+      bool1 = false;
+      break label101;
+      bool1 = false;
+      break label117;
+      bool1 = false;
+      break label133;
+      bool1 = false;
+      break label149;
     }
   }
   
-  public int c()
+  public AppMode[] a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return 0;
-    }
-    return 1;
+    return new AppMode[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beqv
  * JD-Core Version:    0.7.0.1
  */

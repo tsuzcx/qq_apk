@@ -1,16 +1,29 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.SystemClock;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForPokeEmo;
 
 class adwf
-  implements DialogInterface.OnClickListener
+  implements bfoq
 {
-  adwf(adwe paramadwe) {}
+  adwf(adwe paramadwe, MessageForPokeEmo paramMessageForPokeEmo, bfol parambfol) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    advv.W(this.a.a).setResult(8001);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      long l;
+      do
+      {
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_Adwe.c < 500L);
+      this.jdField_a_of_type_Adwe.c = l;
+      aaod.b(this.jdField_a_of_type_Adwe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adwe.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adwe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
+    }
   }
 }
 

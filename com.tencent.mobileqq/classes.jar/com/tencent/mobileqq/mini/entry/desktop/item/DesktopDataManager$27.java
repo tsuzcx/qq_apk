@@ -1,34 +1,31 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import atmp;
-import atmq;
-import com.tencent.common.app.AppInterface;
+import akwr;
+import amtc;
 import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 class DesktopDataManager$27
-  implements Runnable
+  extends akwr
 {
-  DesktopDataManager$27(DesktopDataManager paramDesktopDataManager, MiniAppRedDotEntity paramMiniAppRedDotEntity) {}
+  DesktopDataManager$27(DesktopDataManager paramDesktopDataManager) {}
   
-  public void run()
+  public void onGetAppletsPushUnreadInfo(Object paramObject)
   {
-    Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject == null) {
-      QLog.e("DesktopDataManager", 1, "updateRedDotData, app is null.");
-    }
-    do
+    if ((amtc.h()) && ((paramObject instanceof MiniAppRedDotEntity)))
     {
-      return;
-      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    } while (localObject == null);
-    if (DesktopDataManager.access$3400(this.this$0, (atmp)localObject, this.val$entity))
-    {
-      QLog.d("DesktopDataManager", 1, "updateRedDotData, success to delete recommend appInfo: " + this.val$entity);
-      return;
+      paramObject = (MiniAppRedDotEntity)paramObject;
+      this.this$0.setMiniAppPushRedDotData(paramObject);
     }
-    QLog.e("DesktopDataManager", 1, "updateRedDotData, failed to delete recommend appInfo: " + this.val$entity);
+  }
+  
+  public void onReceiveAppletsMessageUnreadInfo(Map<String, Integer> paramMap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 1, "onReceiveAppletsMessageUnreadInfo: " + paramMap);
+    }
+    this.this$0.setMiniAppNoticeRedDotData(paramMap);
   }
 }
 

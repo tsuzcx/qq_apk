@@ -1,32 +1,55 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerIndicator;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerViewPager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.Iterator;
+import java.util.List;
 
-class nfq
-  extends batl
+public class nfq
+  implements ViewPager.OnPageChangeListener
 {
-  nfq(nfp paramnfp) {}
+  public nfq(AccountDetailBannerViewPager paramAccountDetailBannerViewPager) {}
   
-  public void onDone(batm parambatm)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    super.onDone(parambatm);
-    if ((parambatm.a == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putLong("last_modified_time", parambatm.i).commit();
-      }
-      this.a.b();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AccountDetailBannerViewPager", 2, "onPageScrollStateChanged->" + paramInt);
     }
-    if (QLog.isColorLevel())
+    AccountDetailBannerViewPager.a(this.a, paramInt);
+    if (AccountDetailBannerViewPager.a(this.a) != null)
     {
-      File localFile = new File(nfp.jdField_a_of_type_JavaLangString);
-      long l = 0L;
-      if (localFile.exists()) {
-        l = localFile.lastModified();
+      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
       }
-      QLog.d("EcShopAssistantManager", 2, "download onDone status=" + parambatm.a() + ",errCode=" + parambatm.a + ",httpCode=" + parambatm.f + ",local lastModify=" + l + ",server lastModify=" + parambatm.i);
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (AccountDetailBannerViewPager.a(this.a) != null)
+    {
+      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
+      }
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AccountDetailBannerViewPager", 2, "onPageSelected->" + paramInt);
+    }
+    if (AccountDetailBannerViewPager.a(this.a) != null)
+    {
+      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      }
+    }
+    if (AccountDetailBannerViewPager.a(this.a) != null) {
+      AccountDetailBannerViewPager.a(this.a).a(paramInt);
     }
   }
 }

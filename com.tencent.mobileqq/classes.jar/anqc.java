@@ -1,59 +1,74 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.WebpSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.util.WebpSoLoader;
+import com.tencent.qphone.base.util.QLog;
 
 public class anqc
-  implements GestureDetector.OnGestureListener
+  extends anpi
 {
-  public anqc(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  QQAppInterface b = null;
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public anqc(QQAppInterface paramQQAppInterface)
   {
-    return false;
+    super("qq.android.pic.webp.so", paramQQAppInterface);
+    this.b = paramQQAppInterface;
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public int a()
   {
-    int j = 1;
-    if ((paramMotionEvent1 != null) && (paramMotionEvent2 != null)) {
-      if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 50.0F) {
-        break label78;
+    return 10056;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return WebpSoData.class;
+  }
+  
+  public String a()
+  {
+    return "QWebpSoDownloadDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QWebpSoDownloadHandler", 2, "onDownload success: " + paramString);
+      }
+      String str = WebpSoLoader.a(BaseApplicationImpl.getContext());
+      if (!TextUtils.isEmpty(str)) {
+        bbdj.a(paramString, str, false);
       }
     }
-    label78:
-    for (int i = 1;; i = 0)
+    catch (Exception localException)
     {
-      if (paramMotionEvent2.getY() - paramMotionEvent1.getY() > 50.0F) {
-        i = j;
-      }
       for (;;)
       {
-        if ((i != 0) && (this.a.a != null)) {
-          this.a.a.a();
+        if (QLog.isColorLevel()) {
+          QLog.d("QWebpSoDownloadHandler", 2, localException.getMessage());
         }
-        return false;
       }
     }
+    super.a(paramString);
   }
   
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public boolean a()
   {
-    return false;
+    return true;
   }
   
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public String b()
   {
-    return false;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anqc
  * JD-Core Version:    0.7.0.1
  */

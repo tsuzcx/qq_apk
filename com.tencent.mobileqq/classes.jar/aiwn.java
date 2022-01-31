@@ -1,219 +1,249 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController.1;
-import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController.2;
-import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController.3;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.apollo.data.ApolloDress.1;
+import com.tencent.mobileqq.apollo.data.ApolloDress.2;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ApolloActionPush;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForLongMsg;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aiwn
+  implements Cloneable
 {
-  private static aiwn a;
+  public static final Map<String, Integer> a;
+  public static final String[] a;
+  public int a;
   public long a;
-  public WeakReference<QQAppInterface> a;
+  public String a;
+  public HashMap<Integer, aiwo> a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  private aiwn()
+  static
   {
-    this.jdField_a_of_type_Long = -1L;
+    jdField_a_of_type_JavaUtilMap = new ApolloDress.1();
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ajyc.a(2131700325), ajyc.a(2131700322), ajyc.a(2131700318), ajyc.a(2131700324), ajyc.a(2131700323), ajyc.a(2131700319), ajyc.a(2131700321) };
   }
   
-  public static aiwn a()
+  public static aiwn a(String paramString)
+  {
+    boolean bool = true;
+    aiwn localaiwn = new aiwn();
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramString);
+        Object localObject1 = localJSONObject.getJSONObject("role");
+        localaiwn.jdField_a_of_type_Int = ((JSONObject)localObject1).getInt("id");
+        if (((JSONObject)localObject1).optInt("aiFlag", 0) == 1)
+        {
+          localaiwn.jdField_a_of_type_Boolean = bool;
+          localaiwn.jdField_a_of_type_Long = ((JSONObject)localObject1).optLong("ts");
+          localaiwn.c = ((JSONObject)localObject1).optInt("feeType");
+          localaiwn.d = ((JSONObject)localObject1).optInt("tag");
+          localaiwn.b = localJSONObject.optInt("sex");
+          localaiwn.e = localJSONObject.optInt("belongCombId");
+          localaiwn.f = localJSONObject.optInt("combIsCollected");
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloDress", 2, "parseApolloDress data:" + paramString);
+          }
+          paramString = localJSONObject.getJSONArray("dresslist");
+          int i = 0;
+          if (i < paramString.length())
+          {
+            Object localObject2 = paramString.getJSONObject(i);
+            localObject1 = new aiwo();
+            ((aiwo)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("id");
+            ((aiwo)localObject1).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("ts");
+            ((aiwo)localObject1).b = ((JSONObject)localObject2).optInt("feeType");
+            ((aiwo)localObject1).c = ((JSONObject)localObject2).optInt("tag");
+            ((aiwo)localObject1).jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+            localObject2 = ((JSONObject)localObject2).getJSONArray("parts");
+            int j = 0;
+            if (j < ((JSONArray)localObject2).length())
+            {
+              ((aiwo)localObject1).jdField_a_of_type_JavaUtilArrayList.add(((JSONArray)localObject2).getString(j));
+              j += 1;
+              continue;
+            }
+            if (localaiwn.jdField_a_of_type_JavaUtilHashMap == null) {
+              localaiwn.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+            }
+            localaiwn.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(((aiwo)localObject1).jdField_a_of_type_Int), localObject1);
+            i += 1;
+            continue;
+          }
+          if ((localaiwn.jdField_a_of_type_JavaUtilHashMap == null) || (localaiwn.jdField_a_of_type_JavaUtilHashMap.size() < 7))
+          {
+            QLog.e("ApolloDress", 2, "parseApolloDress role dress do not complete :" + localJSONObject.toString());
+            if (QLog.isColorLevel())
+            {
+              i = localaiwn.jdField_a_of_type_Int;
+              ThreadManager.getUIHandler().post(new ApolloDress.2(i));
+            }
+          }
+          return localaiwn;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ApolloDress", 2, "parseApolloDress failed", paramString);
+        }
+        return null;
+      }
+      bool = false;
+    }
+  }
+  
+  public static aiwn a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {}
+    while ((!paramJSONObject.has("role")) || (!paramJSONObject.has("dresslist"))) {
+      return null;
+    }
+    aiwn localaiwn = new aiwn();
+    localaiwn.b = paramJSONObject.optInt("sex");
+    Object localObject1 = paramJSONObject.optJSONObject("role");
+    if (localObject1 != null)
+    {
+      localaiwn.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("id");
+      localaiwn.jdField_a_of_type_Long = ((JSONObject)localObject1).optLong("ts");
+    }
+    localObject1 = paramJSONObject.optJSONArray("dresslist");
+    if (localObject1 != null)
+    {
+      int i = 0;
+      while (i < ((JSONArray)localObject1).length())
+      {
+        Object localObject2 = ((JSONArray)localObject1).optJSONObject(i);
+        aiwo localaiwo = new aiwo();
+        localaiwo.jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("id");
+        localaiwo.jdField_a_of_type_Long = ((JSONObject)localObject2).optLong("ts");
+        localaiwo.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        localObject2 = ((JSONObject)localObject2).optJSONArray("parts");
+        int j = 0;
+        while ((localObject2 != null) && (j < ((JSONArray)localObject2).length()))
+        {
+          localaiwo.jdField_a_of_type_JavaUtilArrayList.add(((JSONArray)localObject2).optString(j));
+          j += 1;
+        }
+        if (localaiwn.jdField_a_of_type_JavaUtilHashMap == null) {
+          localaiwn.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+        }
+        localaiwn.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localaiwo.jdField_a_of_type_Int), localaiwo);
+        i += 1;
+      }
+    }
+    localaiwn.jdField_a_of_type_JavaLangString = paramJSONObject.optString("faceData");
+    return localaiwn;
+  }
+  
+  public static aiwn b(String paramString)
   {
     try
     {
-      if (jdField_a_of_type_Aiwn == null) {
-        jdField_a_of_type_Aiwn = new aiwn();
-      }
-      aiwn localaiwn = jdField_a_of_type_Aiwn;
-      return localaiwn;
-    }
-    finally {}
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloMsgPlayController", 2, "[playUnreadAction] app:" + paramQQAppInterface + "sessionInfo:" + paramSessionInfo);
-    }
-    if ((paramSessionInfo == null) || (paramQQAppInterface == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloMsgPlayController", 2, "[playUnreadAction] sessionInfo or app is null,return.");
-      }
-    }
-    aiyu localaiyu;
-    Object localObject1;
-    Object localObject2;
-    do
-    {
-      return;
-      localaiyu = (aiyu)paramQQAppInterface.getManager(155);
-      localObject1 = localaiyu.a(paramSessionInfo);
-      if (localObject1 != null)
+      paramString = new JSONObject(paramString).optJSONArray("petList");
+      if ((paramString != null) && (paramString.length() > 0))
       {
-        ThreadManager.getSubThreadHandler().postDelayed(new ApolloMsgPlayController.1(this, paramQQAppInterface, (ApolloActionPush)localObject1), 500L);
-        return;
-      }
-      localObject2 = paramQQAppInterface.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, null, 5);
-      if (((List)localObject2).size() > 0) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloMsgPlayController", 2, "[playUnreadAction] no message,return.");
-    return;
-    int i = ((List)localObject2).size() - 1;
-    label164:
-    MessageRecord localMessageRecord;
-    if (i >= 0)
-    {
-      localMessageRecord = (MessageRecord)((List)localObject2).get(i);
-      if (!(localMessageRecord instanceof MessageForApollo)) {
-        break label429;
-      }
-      localObject1 = (MessageForApollo)localMessageRecord;
-      if ((i != ((List)localObject2).size() - 1) || (!ApolloGameUtil.a(((MessageForApollo)localObject1).msgType))) {
-        break label262;
-      }
-      ApolloGameData localApolloGameData = localaiyu.a(((MessageForApollo)localObject1).gameId);
-      if ((localApolloGameData == null) || (!aiyr.a("8.2.6", localApolloGameData.minVer, localApolloGameData.maxVer))) {
-        break label262;
+        paramString = a(paramString.getJSONObject(0).toString());
+        return paramString;
       }
     }
-    label262:
-    label329:
-    int j;
-    label393:
-    label429:
-    do
-    {
-      do
-      {
-        boolean bool2;
-        do
-        {
-          do
-          {
-            do
-            {
-              i -= 1;
-              break label164;
-              break;
-              if ((((MessageForApollo)localObject1).hasPlayed) || (i == ((List)localObject2).size() - 1)) {
-                break label393;
-              }
-              if (!ApolloGameUtil.a(((MessageForApollo)localObject1).msgType)) {
-                break label329;
-              }
-              localObject1 = localaiyu.a(((MessageForApollo)localObject1).gameId);
-            } while ((localObject1 != null) && (aiyr.a("8.2.6", ((ApolloGameData)localObject1).minVer, ((ApolloGameData)localObject1).maxVer)));
-            paramQQAppInterface = ((aisi)paramQQAppInterface.getManager(249)).a();
-            if (paramQQAppInterface != null) {
-              paramQQAppInterface.a(1, (MessageForApollo)localMessageRecord);
-            }
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ApolloMsgPlayController", 2, "[playUnreadAction] play MessageForApollo:" + localMessageRecord.toString());
-            return;
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ApolloMsgPlayController", 2, "[playUnreadAction] has already played MessageForApollo:" + localMessageRecord.toString());
-            return;
-            if ((!(localMessageRecord instanceof MessageForText)) && (!(localMessageRecord instanceof MessageForLongMsg))) {
-              break label681;
-            }
-          } while ((paramSessionInfo.jdField_a_of_type_Int != 0) && (paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000));
-          localObject1 = new ArrayList();
-          bool2 = ApolloUtil.a(paramQQAppInterface, paramSessionInfo, localMessageRecord, (List)localObject1);
-        } while ((localObject1 == null) || (((ArrayList)localObject1).size() <= 0));
-        paramSessionInfo = localMessageRecord.getExtInfoFromExtStr("is_apollo_emoticon_action_played");
-        if ((!TextUtils.isEmpty(paramSessionInfo)) && ("2".equals(paramSessionInfo)))
-        {
-          bool1 = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloMsgPlayController", 2, new Object[] { "[playUnreadAction] apollo emoticon action played=", Boolean.valueOf(bool1), ", uniseq=", Long.valueOf(localMessageRecord.uniseq) });
-          }
-          if ((bool1) || (i == ((List)localObject2).size() - 1)) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloMsgPlayController", 2, new Object[] { "[playUnreadAction] send action list to play, actionList=", localObject1 });
-          }
-          localObject2 = (ChatMessage)localMessageRecord;
-          if (!bool2) {
-            break label676;
-          }
-        }
-        for (paramSessionInfo = (SessionInfo)localObject1;; paramSessionInfo = null)
-        {
-          a(paramQQAppInterface, (ChatMessage)localObject2, (ArrayList)localObject1, paramSessionInfo);
-          localMessageRecord.saveExtInfoToExtStr("is_apollo_emoticon_action_played", "2");
-          ThreadManager.post(new ApolloMsgPlayController.2(this, localMessageRecord), 5, null, false);
-          return;
-          bool1 = false;
-          break;
-        }
-      } while ((!(localMessageRecord instanceof MessageForArkApp)) || ((paramSessionInfo.jdField_a_of_type_Int != 0) && (paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000)));
-      j = ApolloUtil.a(paramQQAppInterface, (MessageForArkApp)localMessageRecord);
-    } while (j <= 0);
-    label676:
-    label681:
-    paramSessionInfo = localMessageRecord.getExtInfoFromExtStr("is_share_ark_message_action_played");
-    if ((!TextUtils.isEmpty(paramSessionInfo)) && ("2".equals(paramSessionInfo))) {}
-    for (boolean bool1 = true;; bool1 = false)
+    catch (Exception paramString)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ApolloMsgPlayController", 2, new Object[] { "[playUnreadAction] share ark action played=", Boolean.valueOf(bool1), ", uniseq=", Long.valueOf(localMessageRecord.uniseq) });
+        QLog.e("ApolloPet", 2, "parseApolloPetDress failed", paramString);
       }
-      if ((bool1) || (i == ((List)localObject2).size() - 1)) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloMsgPlayController", 2, new Object[] { "[playUnreadAction] send action list to play, actionId=", Integer.valueOf(j) });
-      }
-      paramQQAppInterface = ((aisi)paramQQAppInterface.getManager(249)).a();
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.a((ChatMessage)localMessageRecord, j);
-      }
-      localMessageRecord.saveExtInfoToExtStr("is_share_ark_message_action_played", "2");
-      ThreadManager.excute(new ApolloMsgPlayController.3(this, localMessageRecord), 32, null, false);
-      return;
     }
+    return null;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, ArrayList<Integer> paramArrayList1, ArrayList<Integer> paramArrayList2)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloMsgPlayController", 2, "[playWhiteFace]");
-    }
-    if ((paramQQAppInterface == null) || (paramChatMessage == null) || (paramArrayList1 == null) || (paramArrayList1.size() == 0)) {}
-    do
+    StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_Int + "|");
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      return;
-      paramQQAppInterface = ((aisi)paramQQAppInterface.getManager(249)).a();
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.a(paramChatMessage, paramArrayList1, paramArrayList2);
+      Iterator localIterator = new TreeSet(this.jdField_a_of_type_JavaUtilHashMap.keySet()).iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append(localIterator.next()).append("|");
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public int[] a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.keySet().size() == 0)) {
+      return ajhw.a(this.jdField_a_of_type_Int);
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet();
+    int[] arrayOfInt = new int[((Set)localObject).size()];
+    localObject = ((Set)localObject).iterator();
+    int i = 0;
+    while (((Iterator)localObject).hasNext())
+    {
+      arrayOfInt[i] = ((Integer)((Iterator)localObject).next()).intValue();
+      i += 1;
+    }
+    return arrayOfInt;
+  }
+  
+  protected Object clone()
+  {
+    Object localObject = null;
+    try
+    {
+      aiwn localaiwn = (aiwn)super.clone();
+      localObject = localaiwn;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      for (;;)
+      {
+        localCloneNotSupportedException.printStackTrace();
+      }
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      localObject.jdField_a_of_type_JavaUtilHashMap = ((HashMap)this.jdField_a_of_type_JavaUtilHashMap.clone());
+    }
+    return localObject;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("ApolloDress{");
+    localStringBuffer.append("roleId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mRoleGender=").append(this.b);
+    localStringBuffer.append(", roleTimeStamp=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", feeType=").append(this.c);
+    localStringBuffer.append(", tag=").append(this.d);
+    localStringBuffer.append(", isAIRole=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append(", belongCombId=").append(this.e);
+    localStringBuffer.append(", combIsCollected=").append(this.f);
+    localStringBuffer.append(", faceData='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      Object localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet();
+      localStringBuffer.append(",ids [");
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localStringBuffer.append((Integer)((Iterator)localObject).next()).append(",");
+      }
+      localStringBuffer.append("]");
+    }
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

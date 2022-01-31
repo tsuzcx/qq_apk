@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import ohb;
-import ooq;
+import osm;
+import ozr;
 
 public class ArticleInfoModule$51
   implements Runnable
 {
-  public ArticleInfoModule$51(ooq paramooq, String paramString, int paramInt) {}
+  public ArticleInfoModule$51(ozr paramozr, String paramString, int paramInt) {}
   
   public void run()
   {
-    ohb.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    osm.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

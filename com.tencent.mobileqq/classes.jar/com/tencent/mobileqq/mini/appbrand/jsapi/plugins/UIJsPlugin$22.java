@@ -1,35 +1,27 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
-import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
-import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import org.json.JSONObject;
 
 class UIJsPlugin$22
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  UIJsPlugin$22(UIJsPlugin paramUIJsPlugin, JsRuntime paramJsRuntime, JSONObject paramJSONObject1, int paramInt1, int paramInt2, JSONObject paramJSONObject2, String paramString1, String paramString2, JSONObject paramJSONObject3, int paramInt3) {}
+  UIJsPlugin$22(UIJsPlugin paramUIJsPlugin, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    Boolean localBoolean = null;
-    Object localObject = ((AppBrandPageContainer)this.this$0.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(this.val$webview.getPageWebViewId());
-    if (localObject != null) {}
-    for (localObject = ((AbsAppBrandPage)localObject).getCurrentWebviewContainer();; localObject = null)
-    {
-      if (localObject != null)
-      {
-        if (this.val$jsonObject.opt("disableScroll") != null) {
-          localBoolean = Boolean.valueOf(this.val$jsonObject.optBoolean("disableScroll"));
-        }
-        ((WebviewContainer)localObject).insertCanvas(this.val$canvasId, this.val$parentId, this.val$postionObj, this.val$data, this.val$jsonObject.optBoolean("hide"), this.val$jsonObject.optBoolean("useHardwareAccelerate"), localBoolean, this.val$jsonObject.optBoolean("gesture"));
-        this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, this.val$result, this.val$callbackId);
-      }
-      return;
-    }
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

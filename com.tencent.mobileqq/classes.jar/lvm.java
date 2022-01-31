@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-
 public class lvm
-  implements DialogInterface.OnClickListener
+  extends lur
 {
-  public lvm(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(long paramLong) {}
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    mga.e(false, false);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    paramInt2 = this.b * paramInt1 / 750;
+    paramInt3 = this.c * paramInt1 / 750;
+    a(paramInt2, paramInt3, this.d * paramInt1 / 750 + paramInt2, this.e * paramInt1 / 750 + paramInt3);
   }
 }
 

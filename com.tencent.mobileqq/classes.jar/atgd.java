@@ -1,136 +1,82 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.ColorDrawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
-public class atgd
-  extends atfx
+public abstract class atgd
+  extends Binder
+  implements atgc
 {
-  public static final Paint a;
-  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  
-  static
+  public atgd()
   {
-    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    attachInterface(this, "com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
   }
   
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, atft paramatft, atfv paramatfv)
+  public static atgc a(IBinder paramIBinder)
   {
-    Context localContext = paramViewGroup.getContext();
-    OCRTextSearchInfo.SougouSearchInfo localSougouSearchInfo = (OCRTextSearchInfo.SougouSearchInfo)paramatfv.jdField_a_of_type_JavaLangObject;
-    paramInt = 1;
-    if (paramView != null)
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+    if ((localIInterface != null) && ((localIInterface instanceof atgc))) {
+      return (atgc)localIInterface;
+    }
+    return new atge(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    switch (paramInt1)
     {
-      paramatft = (atfv)paramView.getTag();
-      if ((paramatft.jdField_a_of_type_Int == paramatfv.jdField_a_of_type_Int) && (paramatft.b == paramatfv.b))
-      {
-        paramatft = (atgf)paramView.getTag(-1);
-        paramInt = 0;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+      if (paramParcel1.readInt() != 0) {
+        localObject1 = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(paramParcel1);
       }
+      paramParcel1 = a((BasicTypeDataParcel)localObject1);
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      for (;;)
+      {
+        return true;
+        paramParcel2.writeInt(0);
+      }
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+    localObject1 = localObject2;
+    if (paramParcel1.readInt() != 0) {
+      localObject1 = (Message)Message.CREATOR.createFromParcel(paramParcel1);
+    }
+    paramParcel1 = a((Message)localObject1);
+    paramParcel2.writeNoException();
+    if (paramParcel1 != null)
+    {
+      paramParcel2.writeInt(1);
+      paramParcel1.writeToParcel(paramParcel2, 1);
     }
     for (;;)
     {
-      Object localObject;
-      if (paramInt == 0)
-      {
-        localObject = paramatft;
-        if (paramatft != null) {}
-      }
-      else
-      {
-        localObject = new atgf(this);
-        paramView = (ViewGroup)LayoutInflater.from(localContext).inflate(2131495352, paramViewGroup, false);
-        ((atgf)localObject).jdField_a_of_type_AndroidViewViewGroup = paramView;
-        ((atgf)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311534));
-        ((atgf)localObject).b = ((TextView)paramView.findViewById(2131296277));
-        ((atgf)localObject).c = ((TextView)paramView.findViewById(2131310544));
-        ((atgf)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302158));
-        paramView.setTag(-1, localObject);
-      }
-      a((atgf)localObject, localSougouSearchInfo);
-      paramView.setTag(paramatfv);
-      return paramView;
-      paramatft = null;
-    }
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-  }
-  
-  void a(atgf paramatgf, OCRTextSearchInfo.SougouSearchInfo paramSougouSearchInfo)
-  {
-    Object localObject = new atfm(paramSougouSearchInfo.titleKeyWords, null);
-    if (!TextUtils.isEmpty(paramSougouSearchInfo.title))
-    {
-      localObject = ((atfm)localObject).a(paramSougouSearchInfo.title, true);
-      if (localObject != null) {
-        paramatgf.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      }
-    }
-    localObject = new atfm(paramSougouSearchInfo.abstractStrKeyWords, null);
-    if (!TextUtils.isEmpty(paramSougouSearchInfo.abstractStr))
-    {
-      localObject = ((atfm)localObject).a(atfm.a(paramSougouSearchInfo.abstractStr));
-      paramatgf.b.setText((CharSequence)localObject);
-    }
-    try
-    {
-      if (TextUtils.isEmpty(paramSougouSearchInfo.summaryPic)) {
-        paramatgf.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
-      for (;;)
-      {
-        if (!TextUtils.isEmpty(paramSougouSearchInfo.sourceFrom)) {
-          break label306;
-        }
-        paramatgf.c.setVisibility(8);
-        return;
-        localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = aciy.a(80.0F, BaseApplicationImpl.sApplication.getResources());
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = aciy.a(60.0F, BaseApplicationImpl.sApplication.getResources());
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-        localObject = URLDrawable.getDrawable(paramSougouSearchInfo.summaryPic, (URLDrawable.URLDrawableOptions)localObject);
-        if ((localObject == null) || (((URLDrawable)localObject).getStatus() != 2)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "updateNormalItem image fail," + paramSougouSearchInfo);
-        }
-        paramatgf.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        paramatgf.jdField_a_of_type_AndroidWidgetImageView.setTag(paramSougouSearchInfo.summaryPic);
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "updateNormalItem", localException);
-        }
-        localException.printStackTrace();
-        continue;
-        paramatgf.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        localException.setURLDrawableListener(new atge(this));
-        paramatgf.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localException);
-      }
-      label306:
-      paramatgf.c.setVisibility(0);
-      paramatgf.c.setText(paramSougouSearchInfo.sourceFrom);
+      return true;
+      paramParcel2.writeInt(0);
     }
   }
 }

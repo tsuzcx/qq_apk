@@ -1,30 +1,32 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyShareFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
-class pcp
-  implements ViewBase.OnClickListener
+public class pcp
 {
-  pcp(pck parampck) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(ViewBase paramViewBase)
+  public pcp(String paramString)
   {
-    oag.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-    paramViewBase = pcj.a(this.a.jdField_a_of_type_Pcj, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getData());
-    if (paramViewBase == null)
-    {
-      QLog.e(pcj.a(this.a.jdField_a_of_type_Pcj), 1, "daily share info is null");
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("share_info_intent", paramViewBase.toString());
-    PublicFragmentActivity.a(pcj.a(this.a.jdField_a_of_type_Pcj).getContext(), localIntent, ReadInJoyDailyShareFragment.class);
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public pcp(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Int = 2;
+    this.d = paramString1;
+    this.c = paramString2;
+    this.b = paramString3;
+    this.e = paramString4;
+  }
+  
+  public String toString()
+  {
+    return "type = " + this.jdField_a_of_type_Int + " index = " + this.jdField_a_of_type_JavaLangString + " city = " + this.b + " province = " + this.c + " country = " + this.d + " citycode = " + this.e;
   }
 }
 

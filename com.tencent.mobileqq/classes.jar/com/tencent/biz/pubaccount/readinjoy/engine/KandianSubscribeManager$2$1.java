@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import ogt;
+import ose;
 
 public class KandianSubscribeManager$2$1
   implements Runnable
 {
-  public KandianSubscribeManager$2$1(ogt paramogt) {}
+  public KandianSubscribeManager$2$1(ose paramose) {}
   
   public void run()
   {

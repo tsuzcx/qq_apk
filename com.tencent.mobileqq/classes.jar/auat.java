@@ -1,28 +1,33 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.profile.view.VipTagView;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
 
 public class auat
-  implements Animation.AnimationListener
+  extends auef
 {
-  public auat(ProfileTagView paramProfileTagView, VipTagView paramVipTagView) {}
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, true);
-  }
+  public auat(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void a(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a.a != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTagColor(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.getResources().getColor(2131100846), this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.getResources().getColor(2131100844));
+    super.a(paramMotionEvent);
+    if ((this.jdField_a_of_type_Boolean) || (this.b)) {
+      auab.a("0X800AC97", 0);
     }
   }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    this.b = true;
+    return super.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
 }
 
 

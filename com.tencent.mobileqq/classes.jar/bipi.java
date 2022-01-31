@@ -1,42 +1,28 @@
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.1;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.2;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.ttpic.openapi.model.WMElement;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager;
+import java.util.List;
 
-public class bipi
-  implements bhkl
+class bipi
+  implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private QIMCommonLoadingView jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView;
-  private Boolean jdField_a_of_type_JavaLangBoolean;
+  bipi(biph parambiph, int paramInt, bipp parambipp) {}
   
-  bipi(bipg parambipg, QIMCommonLoadingView paramQIMCommonLoadingView, ImageView paramImageView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = paramQIMCommonLoadingView;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_JavaLangBoolean = ((Boolean)paramImageView.getTag(2131311040));
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_JavaLangBoolean = null;
-  }
-  
-  public void a(float paramFloat, String paramString, int paramInt)
-  {
-    paramInt = (int)paramFloat;
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.1(this, paramInt));
-  }
-  
-  public void a(boolean paramBoolean, String paramString, bior parambior)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("InformationFaceAdapter", 2, "isSucess:" + paramBoolean);
+    paramView = (WMElement)LogicDataManager.getInstance().getEditableWMElement().get(this.jdField_a_of_type_Int);
+    if (paramView != null)
+    {
+      if (paramView.ischeckin) {
+        biph.a(this.jdField_a_of_type_Biph, paramView, this.jdField_a_of_type_Bipp);
+      }
     }
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.2(this, paramBoolean, parambior));
+    else {
+      return;
+    }
+    this.jdField_a_of_type_Bipp.a.setText("");
   }
 }
 

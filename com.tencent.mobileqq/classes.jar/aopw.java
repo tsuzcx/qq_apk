@@ -1,86 +1,207 @@
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.downloader.BaseDownloader.1;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.IExcitingTransferRecvListener;
-import java.util.concurrent.Executor;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.SingleLineTextView;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
 
 public abstract class aopw
-  implements aopj, IExcitingTransferRecvListener
+  extends bfua
 {
-  protected long a;
-  protected aopl a;
-  public apbo a;
-  private ExcitingTransferDownloadReqInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo = new ExcitingTransferDownloadReqInfo();
-  private boolean jdField_a_of_type_Boolean = true;
+  private Context jdField_a_of_type_AndroidContentContext;
+  protected aoqa a;
+  private ExpandableListView jdField_a_of_type_ComTencentWidgetExpandableListView;
+  Object jdField_a_of_type_JavaLangObject;
+  LinkedHashMap<String, List<Object>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   
-  public aopw(QQAppInterface paramQQAppInterface)
+  public aopw(Context paramContext, Object paramObject)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Aopl = a(paramQQAppInterface);
+    if (paramObject != null) {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)paramObject);
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
   public int a()
   {
-    return 1;
+    return 2131558842;
   }
   
-  protected abstract aopl a(QQAppInterface paramQQAppInterface);
-  
-  public abstract void a(ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo);
-  
-  public boolean a()
+  String a(int paramInt)
   {
-    try
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    int i = 0;
+    while (localIterator.hasNext())
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
+      str = (String)localIterator.next();
+      if (i == paramInt) {
+        return str;
+      }
+      i += 1;
     }
-    finally {}
+    String str = null;
+    return str;
   }
   
-  public void az_()
+  protected List<Object> a(int paramInt)
   {
-    try
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    int i = 0;
+    while (localIterator.hasNext())
     {
-      this.jdField_a_of_type_Boolean = false;
-      apcw.a().execute(new BaseDownloader.1(this));
+      String str = (String)localIterator.next();
+      if (i != paramInt) {
+        i += 1;
+      } else {
+        return (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str);
+      }
+    }
+    return null;
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    aoqb localaoqb = (aoqb)paramView.getTag();
+    if (localaoqb == null)
+    {
+      localaoqb = new aoqb();
+      localaoqb.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131367211));
+      paramView.findViewById(2131364631).setVisibility(8);
+      paramView.findViewById(2131368649).setVisibility(8);
+      localaoqb.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131368568));
+      paramView.setTag(localaoqb);
+    }
+    for (;;)
+    {
+      paramView.setOnClickListener(new aopz(this, paramInt));
+      localaoqb.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_ComTencentWidgetExpandableListView.c(paramInt));
+      paramView = (String)getGroup(paramInt);
+      localaoqb.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramView);
+      localaoqb.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
       return;
     }
-    finally {}
   }
   
-  public void b()
+  public void a(aoqa paramaoqa)
   {
-    try
-    {
-      this.jdField_a_of_type_Boolean = true;
-      ExcitingTransferEngine.getInstance().cancelRecvFile(this.jdField_a_of_type_Long);
-      return;
+    this.jdField_a_of_type_Aoqa = paramaoqa;
+  }
+  
+  public void a(ExpandableListView paramExpandableListView)
+  {
+    this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public Object getChild(int paramInt1, int paramInt2)
+  {
+    List localList = a(paramInt1);
+    if ((localList != null) && (localList.size() > 0) && (paramInt2 < localList.size())) {
+      return localList.get(paramInt2);
     }
-    finally {}
+    return null;
   }
   
-  public void c()
+  public long getChildId(int paramInt1, int paramInt2)
   {
-    b();
-    this.jdField_a_of_type_Aopl.a();
+    return paramInt2;
   }
   
-  public void d()
+  public int getChildrenCount(int paramInt)
   {
-    b();
-    this.jdField_a_of_type_Aopl.b();
+    List localList = a(paramInt);
+    if (localList != null) {
+      return localList.size();
+    }
+    return 0;
   }
   
-  public void e()
+  public Object getGroup(int paramInt)
   {
-    b();
+    return a(paramInt);
   }
   
-  protected void f()
+  public int getGroupCount()
   {
-    this.jdField_a_of_type_Long = ExcitingTransferEngine.getInstance().recvFileEx(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo, aopn.a().b(), this);
+    return this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size();
+  }
+  
+  public long getGroupId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getGroupView(int paramInt, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView != null)
+    {
+      localObject = (aoqb)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
+    }
+    for (;;)
+    {
+      paramViewGroup.setOnClickListener(new aopx(this, paramInt));
+      if (AppSetting.d) {
+        paramViewGroup.setAccessibilityDelegate(new wfg(paramViewGroup, new aopy(this, paramInt)));
+      }
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setClickable(false);
+      localObject = (String)getGroup(paramInt);
+      paramView.jdField_a_of_type_Int = paramInt;
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText((CharSequence)localObject);
+      return paramViewGroup;
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558842, paramViewGroup, false);
+      paramView = new aoqb();
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramViewGroup.findViewById(2131367211));
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131368568));
+      paramViewGroup.findViewById(2131364631).setVisibility(8);
+      paramViewGroup.findViewById(2131368649).setVisibility(8);
+      paramViewGroup.setTag(paramView);
+    }
+  }
+  
+  public boolean hasStableIds()
+  {
+    return false;
+  }
+  
+  public boolean isChildSelectable(int paramInt1, int paramInt2)
+  {
+    return true;
+  }
+  
+  public void onGroupCollapsed(int paramInt)
+  {
+    super.onGroupCollapsed(paramInt);
+    if (AppSetting.d)
+    {
+      String str = (String)getGroup(paramInt);
+      QQAppInterface.f(str + ajyc.a(2131709605));
+    }
+  }
+  
+  public void onGroupExpanded(int paramInt)
+  {
+    super.onGroupExpanded(paramInt);
+    if (AppSetting.d)
+    {
+      String str = (String)getGroup(paramInt);
+      QQAppInterface.f(str + ajyc.a(2131709625));
+    }
   }
 }
 

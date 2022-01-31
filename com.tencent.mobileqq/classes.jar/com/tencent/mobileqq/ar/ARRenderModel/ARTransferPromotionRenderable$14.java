@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import ajjy;
-import akjt;
-import akkv;
-import aklt;
-import akma;
-import akmc;
-import badq;
+import ajyc;
+import akyf;
+import akzh;
+import alaf;
+import alam;
+import alao;
+import bbev;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.ar.ARNativeBridge;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -17,7 +17,7 @@ import mqq.os.MqqHandler;
 public class ARTransferPromotionRenderable$14
   implements Runnable
 {
-  public ARTransferPromotionRenderable$14(akma paramakma, int paramInt1, int paramInt2, int paramInt3) {}
+  public ARTransferPromotionRenderable$14(alam paramalam, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ public class ARTransferPromotionRenderable$14
       case 5: 
       case 6: 
       default: 
-        akma.d(this.this$0);
+        alam.d(this.this$0);
       }
     }
     label204:
@@ -51,10 +51,10 @@ public class ARTransferPromotionRenderable$14
             do
             {
               return;
-              if (akma.a(this.this$0) != null)
+              if (alam.a(this.this$0) != null)
               {
                 QLog.d("ARTransferPromotionRenderable", 2, "native_switchGameStatusWithVideoId status " + this.b);
-                akma.a(this.this$0).native_switchGameStatusWithVideoId(i, this.c);
+                alam.a(this.this$0).native_switchGameStatusWithVideoId(i, this.c);
               }
               if (i == 7)
               {
@@ -66,11 +66,11 @@ public class ARTransferPromotionRenderable$14
                 break;
               }
               QLog.d("ARTransferPromotionRenderable", 2, "GameStatus_TRAVERSING_DOOR");
-              akma.b(this.this$0, true);
+              alam.b(this.this$0, true);
               ThreadManager.getSubThreadHandler().post(new ARTransferPromotionRenderable.14.2(this));
               break;
             } while (this.b != 1);
-            akma.d(this.this$0);
+            alam.d(this.this$0);
             j = this.this$0.b;
             QLog.d("ARTransferPromotionRenderable", 2, "ARPromotionMediaPlayerWrapper.PLAYER_STATUS_END status " + this.this$0.b);
             switch (j)
@@ -86,51 +86,51 @@ public class ARTransferPromotionRenderable$14
                 break label342;
               }
             }
-          } while (akma.a(this.this$0) == null);
-          akma.a(this.this$0).b(2, this.c);
+          } while (alam.a(this.this$0) == null);
+          alam.a(this.this$0).b(2, this.c);
           return;
-          akma.a(this.this$0);
-          if ((this.c == 0) && (j == 7) && (!badq.g(BaseApplication.getContext())))
+          alam.a(this.this$0);
+          if ((this.c == 0) && (j == 7) && (!bbev.g(BaseApplication.getContext())))
           {
-            akkv.a(ajjy.a(2131634966), false);
+            akzh.a(ajyc.a(2131700750), false);
             QLog.d("ARTransferPromotionRenderable", 2, "net work is so terrible ,we have to stop it");
             return;
           }
-          if ((this.this$0.b != 4) || (akma.a(this.this$0).e != 2)) {
+          if ((this.this$0.b != 4) || (alam.a(this.this$0).e != 2)) {
             break label439;
           }
-        } while (akma.a(this.this$0) == null);
-        akma.a(this.this$0).b(2, 0);
+        } while (alam.a(this.this$0) == null);
+        alam.a(this.this$0).b(2, 0);
         return;
-        if ((this.this$0.b == 4) && (akma.a(this.this$0).e == 1)) {
-          akma.a(this.this$0).e = 0;
+        if ((this.this$0.b == 4) && (alam.a(this.this$0).e == 1)) {
+          alam.a(this.this$0).e = 0;
         }
-        if ((this.this$0.b != 4) || (akma.a(this.this$0).e != 0)) {
+        if ((this.this$0.b != 4) || (alam.a(this.this$0).e != 0)) {
           break label683;
         }
-        if (!akma.a(this.this$0).a.isEmpty()) {
+        if (!alam.a(this.this$0).a.isEmpty()) {
           break label540;
         }
-      } while (akma.a(this.this$0) == null);
-      akma.a(this.this$0).b(2, 0);
+      } while (alam.a(this.this$0) == null);
+      alam.a(this.this$0).b(2, 0);
       return;
-      if (akma.a(this.this$0).a(1))
+      if (alam.a(this.this$0).a(1))
       {
-        akma.a(this.this$0).b(true);
+        alam.a(this.this$0).b(true);
         return;
       }
-      if (akma.a(this.this$0).a(2)) {
-        akma.a(this.this$0, akma.a(this.this$0).b());
+      if (alam.a(this.this$0).a(2)) {
+        alam.a(this.this$0, alam.a(this.this$0).b());
       }
-      while (akma.a(this.this$0) == null)
+      while (alam.a(this.this$0) == null)
       {
         QLog.d("ARTransferPromotionRenderable", 1, "onMediaPlayerStatusChange deal GameStatus_INSIDE_WORLD_360 error hapen mFixFullScreenVideoUrl is null");
         return;
-        if (akma.a(this.this$0).a(3)) {
-          akma.a(this.this$0, akma.a(this.this$0).a());
+        if (alam.a(this.this$0).a(3)) {
+          alam.a(this.this$0, alam.a(this.this$0).a());
         }
       }
-      QLog.d("ARTransferPromotionRenderable", 1, "onMediaPlayerStatusChange deal GameStatus_INSIDE_WORLD_360 with auto play:" + akma.a(this.this$0));
+      QLog.d("ARTransferPromotionRenderable", 1, "onMediaPlayerStatusChange deal GameStatus_INSIDE_WORLD_360 with auto play:" + alam.a(this.this$0));
     } while (this.this$0.b == 5);
     label439:
     if (this.this$0.b == 4) {

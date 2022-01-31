@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import aigz;
+import aits;
 import android.os.Build.VERSION;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.WebSsoBody.STServiceMonitItem;
@@ -19,24 +19,24 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
-import mmi;
 import mqq.app.NewIntent;
+import mxh;
 
 public class ApolloStoreStabilityReportManager$3
   implements Runnable
 {
-  public ApolloStoreStabilityReportManager$3(aigz paramaigz) {}
+  public ApolloStoreStabilityReportManager$3(aits paramaits) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList(aigz.a(this.this$0));
-    aigz.a(this.this$0);
+    ArrayList localArrayList = new ArrayList(aits.a(this.this$0));
+    aits.a(this.this$0);
     try
     {
       Object localObject2 = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.2.6");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.2.8");
       Object localObject1 = new WebSSOAgent.UniSsoServerReq();
       ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
       if ((localArrayList == null) || (localArrayList.size() == 0))
@@ -68,10 +68,10 @@ public class ApolloStoreStabilityReportManager$3
         i += 1;
       }
       ((WebSSOAgent.UniSsoServerReq)localObject1).pbReqData.set(ByteStringMicro.copyFrom(((WebSsoBody.STServiceMonitReq)localObject2).toByteArray()));
-      localObject2 = aigz.a();
+      localObject2 = aits.a();
       if (localObject2 != null)
       {
-        localObject3 = new NewIntent(((AppInterface)localObject2).getApp().getApplicationContext(), mmi.class);
+        localObject3 = new NewIntent(((AppInterface)localObject2).getApp().getApplicationContext(), mxh.class);
         ((NewIntent)localObject3).putExtra("cmd", "apollo_dc_report.service_monit");
         ((NewIntent)localObject3).putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject1).toByteArray());
         ((NewIntent)localObject3).setObserver(this.this$0);

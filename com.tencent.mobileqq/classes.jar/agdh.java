@@ -1,22 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agdh
-  implements behi
+class agdh
+  implements akbu
 {
-  public agdh(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
+  agdh(agch paramagch) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void ag_() {}
+  
+  public void b()
   {
-    if (QzonePhotoPreviewActivity.a(this.a))
-    {
-      this.a.getActivity().finish();
-      baaf.a(this.a.getActivity(), true, false);
+    if ((this.a.a == null) || (this.a.a.app == null)) {
       return;
     }
-    this.a.a();
+    ((akbo)this.a.a.app.getManager(34)).d();
+  }
+  
+  public void i_(int paramInt)
+  {
+    this.a.f();
   }
 }
 

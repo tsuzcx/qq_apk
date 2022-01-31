@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount;
 
-import mwz;
+import nia;
 
 public class AccountDetailActivity$8$1
   implements Runnable
 {
-  public AccountDetailActivity$8$1(mwz parammwz) {}
+  public AccountDetailActivity$8$1(nia paramnia) {}
   
   public void run()
   {

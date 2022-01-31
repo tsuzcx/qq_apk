@@ -1,69 +1,98 @@
+import android.content.Context;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class agfd
-  extends agew
+  extends BaseAdapter
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private ImageView b;
+  private static final String jdField_a_of_type_JavaLangString = agfd.class.getSimpleName();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bfmt jdField_a_of_type_Bfmt;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<ageh> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void a()
+  public agfd(Context paramContext, bfmt parambfmt, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.b = null;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bfmt = parambfmt;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void a(int paramInt)
+  public void a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "loadHistory, keyword = " + paramString);
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0) {
-      b(8);
+    if (paramString == null) {
+      return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    String[] arrayOfString = bbdn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (arrayOfString != null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
-      ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131300146)).setText(paramString);
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str = arrayOfString[i];
+        if (a(str, paramString)) {
+          this.jdField_a_of_type_JavaUtilList.add(new ageh(str));
+        }
+        i += 1;
+      }
     }
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131306224));
-    this.b = ((ImageView)paramView.findViewById(2131306223));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131306225));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "loadHistory, keyword = " + paramString + ", histories = " + this.jdField_a_of_type_JavaUtilList.toString());
     }
+    this.jdField_a_of_type_Bfmt.sendEmptyMessage(3);
   }
   
-  public boolean a()
+  boolean a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return paramString1.toLowerCase(Locale.US).contains(paramString2.toLowerCase(Locale.US));
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    ageh localageh = (ageh)getItem(paramInt);
+    View localView;
+    if (paramView == null)
+    {
+      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559213, null);
+      paramView = new agff(null);
+      paramView.a = ((TextView)localView.findViewById(2131377030));
+      localView.setTag(paramView);
+      paramViewGroup = paramView;
     }
-    return false;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.b != null) {
-      this.b.setVisibility(paramInt);
+    for (;;)
+    {
+      paramViewGroup.a.setText(localageh.jdField_a_of_type_JavaLangString);
+      return localView;
+      paramViewGroup = (agff)paramView.getTag();
+      localView = paramView;
     }
   }
 }

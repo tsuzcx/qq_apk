@@ -2,13 +2,13 @@ package com.tencent.biz.pubaccount.readinjoy.biu;
 
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import nst;
-import nsv;
+import oed;
+import oef;
 
 public class ReadInjoyFriendsBiuComponentFragment$ViewHolder$2$2
   implements Runnable
 {
-  public ReadInjoyFriendsBiuComponentFragment$ViewHolder$2$2(nsv paramnsv) {}
+  public ReadInjoyFriendsBiuComponentFragment$ViewHolder$2$2(oef paramoef) {}
   
   public void run()
   {

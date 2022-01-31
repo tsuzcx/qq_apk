@@ -1,6 +1,19 @@
-public abstract interface apem
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+
+public final class apem
+  implements Parcelable.Creator<FileInfo>
 {
-  public abstract void a(String paramString, long paramLong);
+  public FileInfo a(Parcel paramParcel)
+  {
+    return new FileInfo(paramParcel, null);
+  }
+  
+  public FileInfo[] a(int paramInt)
+  {
+    return new FileInfo[paramInt];
+  }
 }
 
 

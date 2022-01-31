@@ -1,50 +1,39 @@
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.msf.service.protocol.security.CustomSigContent;
-import com.tencent.msf.service.protocol.security.RespondCustomSig;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.observer.AccountObserver;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.widget.DynamicGridView;
 
-final class bfqo
-  extends AccountObserver
+class bfqo
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  bfqo(String paramString, ajfe paramajfe) {}
+  private final int jdField_a_of_type_Int;
+  private final int b;
   
-  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  bfqo(bfqn parambfqn, int paramInt1, int paramInt2)
   {
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
-      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
-        break label30;
-      }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public boolean onPreDraw()
+  {
+    this.jdField_a_of_type_Bfqn.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    DynamicGridView.a(this.jdField_a_of_type_Bfqn.a, DynamicGridView.a(this.jdField_a_of_type_Bfqn.a) + bfqn.a(this.jdField_a_of_type_Bfqn));
+    DynamicGridView.b(this.jdField_a_of_type_Bfqn.a, DynamicGridView.b(this.jdField_a_of_type_Bfqn.a) + bfqn.b(this.jdField_a_of_type_Bfqn));
+    if (DynamicGridView.a(this.jdField_a_of_type_Bfqn.a) != null) {
+      DynamicGridView.a(this.jdField_a_of_type_Bfqn.a).setVisibility(0);
     }
-    for (;;)
-    {
-      return;
-      label30:
-      int i = 0;
-      while (i < paramHashMap.SigList.size())
-      {
-        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
-        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
-        {
-          localObject = new String(((CustomSigContent)localObject).SigContent);
-          OpenID localOpenID = new OpenID();
-          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
-          localOpenID.openID = ((String)localObject);
-          if (this.jdField_a_of_type_Ajfe != null) {
-            this.jdField_a_of_type_Ajfe.onUpdate(1, true, localOpenID);
-          }
-        }
-        i += 1;
-      }
+    DynamicGridView.a(this.jdField_a_of_type_Bfqn.a, this.jdField_a_of_type_Bfqn.a.a(DynamicGridView.a(this.jdField_a_of_type_Bfqn.a)));
+    if (DynamicGridView.a(this.jdField_a_of_type_Bfqn.a) != null) {
+      DynamicGridView.a(this.jdField_a_of_type_Bfqn.a).setVisibility(4);
     }
+    DynamicGridView.a(this.jdField_a_of_type_Bfqn.a, this.jdField_a_of_type_Int, this.b);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfqo
  * JD-Core Version:    0.7.0.1
  */

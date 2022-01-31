@@ -1,16 +1,16 @@
 package com.tencent.biz;
 
 import android.os.Bundle;
-import mmn;
+import mxm;
 
 public class ProtoUtils$TroopProtocolObserver$1
   implements Runnable
 {
-  public ProtoUtils$TroopProtocolObserver$1(mmn parammmn, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public ProtoUtils$TroopProtocolObserver$1(mxm parammxm, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
-    mmn.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    mxm.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

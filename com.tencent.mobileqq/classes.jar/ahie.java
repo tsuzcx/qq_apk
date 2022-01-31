@@ -1,15 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report.SpringHbReportManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahie
-  implements CompoundButton.OnCheckedChangeListener
+  extends BroadcastReceiver
 {
-  public ahie(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public ahie(SpringHbReportManager paramSpringHbReportManager) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    NewFlowCameraActivity.a(this.a, paramBoolean);
+    paramContext = paramIntent.getAction();
+    if (TextUtils.isEmpty(paramContext)) {}
+    while ((!"com.tencent.plugin.state.change".equals(paramContext)) || (paramIntent.getIntExtra("key_plugin_state", 0) != 0)) {
+      return;
+    }
+    QLog.i("springHb_report_SpringHbReportManager", 1, "[onReceive] bg action");
+    this.a.a(2);
   }
 }
 

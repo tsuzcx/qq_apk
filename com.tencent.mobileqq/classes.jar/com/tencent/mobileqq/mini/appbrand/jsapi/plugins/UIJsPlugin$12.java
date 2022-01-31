@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import bafb;
+import bbgg;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.util.ColorUtils;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
@@ -15,25 +15,26 @@ class UIJsPlugin$12
   
   public void run()
   {
-    bafb localbafb;
+    bbgg localbbgg;
     if ((this.this$0.jsPluginEngine.getActivityContext() != null) && (this.this$0.jsPluginEngine.getActivityContext().getActivity() != null) && (!this.this$0.jsPluginEngine.getActivityContext().getActivity().isFinishing()))
     {
-      localbafb = new bafb(this.this$0.jsPluginEngine.getActivityContext(), 2131690181);
-      localbafb.setContentView(2131493682);
+      localbbgg = new bbgg(this.this$0.jsPluginEngine.getActivityContext(), 2131755791);
+      localbbgg.setContentView(2131559251);
       if (!TextUtils.isEmpty(this.val$title)) {
-        break label202;
+        break label216;
       }
     }
-    label202:
+    label216:
     for (String str = null;; str = this.val$title)
     {
-      localbafb.setTitle(str).setMessage(this.val$content);
-      localbafb.setPositiveButton(this.val$confirmText, ColorUtils.parseColor(this.val$confirmColor), new UIJsPlugin.12.1(this));
+      localbbgg.setTitle(str).setMessage(this.val$content);
+      localbbgg.setOwnerActivity(this.this$0.jsPluginEngine.getActivityContext());
+      localbbgg.setPositiveButton(this.val$confirmText, ColorUtils.parseColor(this.val$confirmColor), new UIJsPlugin.12.1(this));
       if (this.val$showCancel) {
-        localbafb.setNegativeButton(this.val$cancelText, ColorUtils.parseColor(this.val$cancelColor), new UIJsPlugin.12.2(this));
+        localbbgg.setNegativeButton(this.val$cancelText, ColorUtils.parseColor(this.val$cancelColor), new UIJsPlugin.12.2(this));
       }
-      localbafb.setCanceledOnTouchOutside(false);
-      localbafb.show();
+      localbbgg.setCanceledOnTouchOutside(false);
+      localbbgg.show();
       if ((this.this$0.jsPluginEngine.getActivityContext().getActivity() instanceof GameActivity)) {
         ((GameActivity)this.this$0.jsPluginEngine.getActivityContext().getActivity()).hideKeyBoard();
       }

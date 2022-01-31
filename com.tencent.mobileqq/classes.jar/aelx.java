@@ -1,130 +1,26 @@
-import android.content.Context;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CameraEmotionData;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class aelx
-  extends aelk
+  extends aelu
 {
-  private CameraEmotionData jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  public String b;
   
-  public aelx(QQAppInterface paramQQAppInterface, CameraEmotionData paramCameraEmotionData)
+  public aelx(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData = paramCameraEmotionData;
-    this.jdField_a_of_type_JavaLangString = ((anbo)paramQQAppInterface.getManager(333)).a(paramCameraEmotionData);
+    super(paramString);
   }
   
-  public int a()
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.exposeNum;
-  }
-  
-  public URLDrawable.URLDrawableOptions a()
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.url;
-    return localURLDrawableOptions;
-  }
-  
-  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
-  {
-    if (paramURL == null) {
-      return null;
+    if (paramRedPacketInfo != null) {
+      this.b = paramRedPacketInfo.resPath;
     }
-    return super.a(paramURL, paramURLDrawableOptions);
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public URL a()
-  {
-    try
-    {
-      URL localURL1 = new URL("protocol_vas_extension_image", "BUSINESS_CAMERA_EMO_PANEL_DYNAMIC", this.jdField_a_of_type_JavaLangString);
-      if (localURL1 == null)
-      {
-        QLog.e("StickerRecCameraData", 1, "StickerLocalRecData getURL url = null");
-        return null;
-      }
-    }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      URL localURL2;
-      for (;;)
-      {
-        QLog.e("StickerRecCameraData", 1, "StickerLocalRecData getURL url exception e = " + localMalformedURLException.getMessage());
-        localURL2 = null;
-      }
-      return localURL2;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    ((anbh)paramQQAppInterface.getManager(334)).c(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    if (((paramContext instanceof BaseActivity)) && (ascr.a(paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)))
-    {
-      paramContext = (BaseActivity)paramContext;
-      bbmy.a(paramQQAppInterface.getApp(), ajjy.a(2131648600), 0).b(paramContext.getTitleBarHeight());
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    aael.a(paramQQAppInterface, paramContext, paramSessionInfo, this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.strContext);
-    ((anbh)paramQQAppInterface.getManager(334)).b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
   }
   
   public boolean a()
   {
-    return true;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.clickNum;
-  }
-  
-  public String b()
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.md5;
-    if (str != null) {
-      return str.toLowerCase();
-    }
-    return null;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return 3;
-  }
-  
-  public String c()
-  {
-    return "a-";
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return !TextUtils.isEmpty(this.b);
   }
 }
 

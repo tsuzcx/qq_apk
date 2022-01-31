@@ -1,42 +1,55 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.20;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.text.TextUtils;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x74f.oidb_cmd0x74f.RspBody;
+import mqq.observer.AccountObserver;
 
 public class abzh
-  extends mmn
+  extends AccountObserver
 {
-  public abzh(TroopMemberListActivity.20 param20) {}
+  public abzh(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    do
+    RegisterSendUpSms.c(this.a, paramInt1);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterSendUpSms", 2, "onRegisterQuerySmsStatResp isSuccess=" + paramBoolean + ", code=" + paramInt1 + ", uin=" + paramString1 + ", nick=" + paramString2 + ", faceUrl=" + paramString3 + ", errmsg=" + paramString4);
+    }
+    if (paramInt1 == 4) {}
+    for (;;)
     {
-      for (;;)
+      RegisterSendUpSms.a(this.a, 0);
+      return;
+      RegisterSendUpSms.a(this.a).setEnabled(true);
+      if (paramInt1 == 0)
       {
-        return;
-        try
-        {
-          paramBundle = new oidb_cmd0x74f.RspBody();
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
-          {
-            TroopMemberListActivity.a(this.a.this$0, paramBundle.range.get());
-            TroopMemberListActivity.c(this.a.this$0);
-            TroopMemberListActivity.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
-            return;
-          }
-        }
-        catch (Exception paramArrayOfByte) {}
+        RegisterSendUpSms.a(this.a).setText(ajyc.a(2131713362));
+        RegisterSendUpSms.a(this.a, paramString1);
+        RegisterSendUpSms.b(this.a, paramString2);
+        RegisterSendUpSms.c(this.a, paramString3);
+        RegisterSendUpSms.a(this.a);
+        continue;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopMemberListActivityget_troop_member", 2, "initListView, get0x74f：failed");
+      paramString1 = paramString4;
+      if (paramInt1 == -1) {}
+      try
+      {
+        paramString1 = new String(paramArrayOfByte, "utf-8");
+        paramArrayOfByte = paramString1;
+        if (TextUtils.isEmpty(paramString1)) {
+          paramArrayOfByte = this.a.getString(2131717141);
+        }
+        bcpw.a(this.a, paramArrayOfByte.trim(), 0).b(this.a.getTitleBarHeight());
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+          paramString1 = paramString4;
+        }
+      }
+    }
   }
 }
 

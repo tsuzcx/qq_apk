@@ -3,7 +3,7 @@ package com.tencent.tmdownloader.internal.downloadservice;
 import com.tencent.hlyyb.downloader.DownloaderTask;
 import com.tencent.hlyyb.downloader.DownloaderTaskListener;
 import com.tencent.tmassistant.st.b;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmdownloader.notify.DownloadTaskNotifier;
 
 class d
@@ -15,17 +15,17 @@ class d
   
   public void onTaskCompletedMainloop(DownloaderTask paramDownloaderTask)
   {
-    ac.c("_DownloadInfo", "halleyTest onTaskCompletedMainloop");
+    ab.c("_DownloadInfo", "halleyTest onTaskCompletedMainloop");
   }
   
   public void onTaskCompletedSubloop(DownloaderTask paramDownloaderTask)
   {
     this.a.j = paramDownloaderTask.getRealSaveName();
-    ac.c("_DownloadInfo", "halleyTest onTaskCompletedSubloop saveFileName = " + paramDownloaderTask.getRealSaveName());
+    ab.c("_DownloadInfo", "halleyTest onTaskCompletedSubloop saveFileName = " + paramDownloaderTask.getRealSaveName());
     this.a.b(paramDownloaderTask.getReceivedLength());
     this.a.l = 0;
     this.a.a(4);
-    ac.c("_DownloadInfo", "halleyTest onTaskCompletedSubloop mReceivedBytes=" + this.a.h + ",totalSize=" + this.a.i);
+    ab.c("_DownloadInfo", "halleyTest onTaskCompletedSubloop mReceivedBytes=" + this.a.h + ",totalSize=" + this.a.i);
     this.a.a(103, paramDownloaderTask);
     b.a().a(this.a, paramDownloaderTask);
     DownloadTaskNotifier.get().notify(c.a(this.a, paramDownloaderTask), 4);
@@ -36,8 +36,8 @@ class d
   public void onTaskDetectedSubloop(DownloaderTask paramDownloaderTask)
   {
     this.a.j = paramDownloaderTask.getRealSaveName();
-    ac.c("_DownloadInfo", "halleyTest onTaskDetectedSubloop saveFileName = " + paramDownloaderTask.getRealSaveName());
-    ac.c("_DownloadInfo", "halleyTest onTaskDetectedSubloop percent=" + paramDownloaderTask.getPercentage() + ",receivedBytes=" + paramDownloaderTask.getReceivedLength());
+    ab.c("_DownloadInfo", "halleyTest onTaskDetectedSubloop saveFileName = " + paramDownloaderTask.getRealSaveName());
+    ab.c("_DownloadInfo", "halleyTest onTaskDetectedSubloop percent=" + paramDownloaderTask.getPercentage() + ",receivedBytes=" + paramDownloaderTask.getReceivedLength());
     this.a.a(paramDownloaderTask.getTotalLength());
     if ((paramDownloaderTask.getPercentage() == 0) && (paramDownloaderTask.getReceivedLength() == 0L)) {
       this.a.a(2);
@@ -46,12 +46,12 @@ class d
   
   public void onTaskFailedMainloop(DownloaderTask paramDownloaderTask)
   {
-    ac.c("_DownloadInfo", "halleyTest onTaskFailedMainloop");
+    ab.c("_DownloadInfo", "halleyTest onTaskFailedMainloop");
   }
   
   public void onTaskFailedSubloop(DownloaderTask paramDownloaderTask)
   {
-    ac.c("_DownloadInfo", "halleyTest onTaskFailedSubloop failCode=" + paramDownloaderTask.getFailCode());
+    ab.c("_DownloadInfo", "halleyTest onTaskFailedSubloop failCode=" + paramDownloaderTask.getFailCode());
     this.a.j = paramDownloaderTask.getRealSaveName();
     this.a.b(paramDownloaderTask.getFailCode());
     this.a.i = 0L;
@@ -60,7 +60,7 @@ class d
     this.a.a(102, paramDownloaderTask);
     if ((paramDownloaderTask.getFailCode() == -72) && (this.b > 0))
     {
-      ac.c("_DownloadInfo", "failed code = -72,redownload mRetryCounter = " + this.b);
+      ab.c("_DownloadInfo", "failed code = -72,redownload mRetryCounter = " + this.b);
       this.b -= 1;
       this.a.f();
       this.a.c();
@@ -70,13 +70,13 @@ class d
   
   public void onTaskPausedMainloop(DownloaderTask paramDownloaderTask)
   {
-    ac.c("_DownloadInfo", "halleyTest onTaskPausedMainloop");
+    ab.c("_DownloadInfo", "halleyTest onTaskPausedMainloop");
   }
   
   public void onTaskPausedSubloop(DownloaderTask paramDownloaderTask)
   {
     boolean bool = paramDownloaderTask.isPausedOnMobile();
-    ac.b("_DownloadInfo", "halleyTest onTaskPausedSubloop pauseType=" + bool + ",mIsPausedByMoble=" + this.a.G);
+    ab.b("_DownloadInfo", "halleyTest onTaskPausedSubloop pauseType=" + bool + ",mIsPausedByMoble=" + this.a.G);
     this.a.a(3);
     if (this.a.G) {
       paramDownloaderTask.setApkId("BY_MOBILE");
@@ -92,7 +92,7 @@ class d
   
   public void onTaskPendingMainloop(DownloaderTask paramDownloaderTask)
   {
-    ac.c("_DownloadInfo", "halleyTest onTaskPendingMainloop");
+    ab.c("_DownloadInfo", "halleyTest onTaskPendingMainloop");
   }
   
   public void onTaskReceivedMainloop(DownloaderTask paramDownloaderTask)
@@ -108,20 +108,20 @@ class d
   
   public void onTaskReceivedSubloop(DownloaderTask paramDownloaderTask)
   {
-    ac.c("_DownloadInfo", "halleyTest onTaskReceivedSubloop failCode=" + paramDownloaderTask.getFailCode());
-    ac.c("_DownloadInfo", "halleyTest onTaskReceivedSubloop mReceivedBytes =" + this.a.h);
-    ac.c("_DownloadInfo", "halleyTest onTaskReceivedSubloop receivedLength=" + paramDownloaderTask.getReceivedLength());
+    ab.c("_DownloadInfo", "halleyTest onTaskReceivedSubloop failCode=" + paramDownloaderTask.getFailCode());
+    ab.c("_DownloadInfo", "halleyTest onTaskReceivedSubloop mReceivedBytes =" + this.a.h);
+    ab.c("_DownloadInfo", "halleyTest onTaskReceivedSubloop receivedLength=" + paramDownloaderTask.getReceivedLength());
   }
   
   public void onTaskStartedMainloop(DownloaderTask paramDownloaderTask)
   {
-    ac.c("_DownloadInfo", "halleyTest onTaskStartedMainloop");
+    ab.c("_DownloadInfo", "halleyTest onTaskStartedMainloop");
   }
   
   public void onTaskStartedSubloop(DownloaderTask paramDownloaderTask)
   {
-    ac.c("_DownloadInfo", "halleyTest onTaskStartedSubloop saveFileName = " + paramDownloaderTask.getRealSaveName());
-    ac.c("_DownloadInfo", "halleyTest onTaskStartedSubloop percent=" + paramDownloaderTask.getPercentage() + ",receivedBytes=" + paramDownloaderTask.getReceivedLength());
+    ab.c("_DownloadInfo", "halleyTest onTaskStartedSubloop saveFileName = " + paramDownloaderTask.getRealSaveName());
+    ab.c("_DownloadInfo", "halleyTest onTaskStartedSubloop percent=" + paramDownloaderTask.getPercentage() + ",receivedBytes=" + paramDownloaderTask.getReceivedLength());
     if (paramDownloaderTask.getPercentage() == 0) {
       this.a.a(2);
     }

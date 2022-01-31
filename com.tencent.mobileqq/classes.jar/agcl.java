@@ -1,21 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class agcl
-  implements View.OnClickListener
+class agcl
+  implements agcg
 {
-  public agcl(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  agcl(agch paramagch) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.y)
+    this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
+  }
+  
+  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
+  {
+    boolean bool = true;
+    Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    ((Message)localObject).obj = paramRedTypeInfo;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+    localObject = ota.a();
+    if (paramRedTypeInfo != null) {}
+    for (;;)
     {
-      PhotoPreviewActivity.a(this.a);
+      ((ota)localObject).b(bool);
       return;
+      bool = false;
     }
-    this.a.a.toggle();
   }
 }
 

@@ -1,304 +1,318 @@
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import cooperation.weiyun.WeiyunAIOUtils.4;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.IntentFilter;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import cooperation.qqreader.QRReaderPageProxyActivity;
+import cooperation.qqreader.host.ChannelIdHelper;
+import cooperation.qqreader.js.JsCallParams;
+import cooperation.qqreader.proxy.ReaderJsPluginProxy;
+import cooperation.qqreader.ui.ReaderHomePageActivity;
 
 public class bgtr
 {
-  public static void a(Activity paramActivity)
+  private final Activity jdField_a_of_type_AndroidAppActivity;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bgtg jdField_a_of_type_Bgtg = new bgts(this);
+  private bgtw jdField_a_of_type_Bgtw;
+  private JsCallParams jdField_a_of_type_CooperationQqreaderJsJsCallParams;
+  
+  public bgtr(Activity paramActivity)
   {
-    String str = String.format("https://jump.weiyun.com?from=3092&aid=%s", new Object[] { "qq_an_wyshouxian" });
-    Intent localIntent = new Intent();
-    localIntent.setClass(paramActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", str);
-    paramActivity.startActivityForResult(localIntent, 21);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt, List<ChatMessage> paramList, MqqHandler paramMqqHandler)
+  private Intent a(Activity paramActivity)
   {
-    Object localObject2 = new ArrayList();
-    Object localObject1 = new ArrayList();
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList3 = new ArrayList();
-    ChatMessage localChatMessage = (ChatMessage)paramList.get(0);
-    bgtg.a(localChatMessage.frienduin, localChatMessage.senderuin, localChatMessage.istroop);
-    int i = 0;
-    if (i < paramList.size())
-    {
-      localChatMessage = (ChatMessage)paramList.get(i);
-      if ((localChatMessage instanceof MessageForTroopFile)) {
-        ((ArrayList)localObject2).add(localChatMessage);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((localChatMessage instanceof MessageForFile)) {
-          ((ArrayList)localObject1).add((MessageForFile)localChatMessage);
-        } else if ((localChatMessage instanceof MessageForPic)) {
-          localArrayList1.add((MessageForPic)localChatMessage);
-        } else if ((localChatMessage instanceof MessageForShortVideo))
-        {
-          if (!(localChatMessage instanceof MessageForLightVideo)) {
-            localArrayList2.add((MessageForShortVideo)localChatMessage);
-          }
-        }
-        else if (akbp.b(localChatMessage)) {
-          localArrayList3.add((StructMsgForImageShare)((MessageForStructing)localChatMessage).structingMsg);
-        }
-      }
-    }
-    if (((ArrayList)localObject2).size() > 0)
-    {
-      paramList = (ChatMessage)((ArrayList)localObject2).get(0);
-      if (TroopFileTransferManager.a(paramQQAppInterface, Long.parseLong(paramList.frienduin)) == null) {
-        return false;
-      }
-      paramList = azjg.a(paramQQAppInterface, (MessageForTroopFile)paramList);
-      if ((paramList == null) || (paramList.e == null)) {
-        return false;
-      }
-      azjg.a(paramActivity, paramQQAppInterface, (List)localObject2);
-    }
+    Intent localIntent = new Intent(paramActivity, QRReaderPageProxyActivity.class);
+    localIntent.putExtra("useSkinEngine", false);
+    localIntent.putExtra("userQqResources", 2);
+    localIntent.putExtras(paramActivity.getIntent());
+    localIntent.putExtra("readerDpcConfig", DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.qr_process_config.name(), "0|0|0|0|0|0"));
+    return localIntent;
+  }
+  
+  private Intent a(Activity paramActivity, Bundle paramBundle)
+  {
     boolean bool = false;
-    if (((ArrayList)localObject1).size() > 0)
+    String str1 = paramBundle.getString("readtype");
+    int i = -1;
+    if (!TextUtils.isEmpty(str1)) {
+      i = Integer.valueOf(str1).intValue();
+    }
+    switch (i)
     {
-      paramActivity = new ArrayList();
-      paramList = ((ArrayList)localObject1).iterator();
-      label320:
-      int j;
-      for (i = 0; paramList.hasNext(); i = j)
-      {
-        localObject1 = (MessageForFile)paramList.next();
-        localObject2 = apck.a(paramQQAppInterface, (MessageForFile)localObject1);
-        if ((((FileManagerEntity)localObject2).cloudType == 0) || (((FileManagerEntity)localObject2).status == 16)) {
-          break label320;
-        }
-        j = i;
-        if (i == 0)
-        {
-          j = i;
-          if (apbf.a((FileManagerEntity)localObject2).a(false)) {
-            j = 1;
-          }
-        }
-        paramActivity.add(localObject1);
-      }
-      if (paramActivity.size() == 0)
-      {
-        apcb.a(2131627031);
-        return false;
-      }
-      if (i != 0) {
-        apbx.a(BaseActivity.sTopActivity, 2131627035, 2131627040, new bgts(paramActivity, paramQQAppInterface, localArrayList1, localArrayList2, localArrayList3, paramMqqHandler, paramInt));
-      }
-    }
-    while (bool)
-    {
-      bbmy.a(paramQQAppInterface.getApp(), 2131627191, 0).b(paramInt);
-      return true;
-      paramActivity = paramActivity.iterator();
-      for (bool = false; paramActivity.hasNext(); bool = apck.a(paramQQAppInterface, (MessageForFile)paramActivity.next(), BaseActivity.sTopActivity, true)) {}
-      bool |= a(paramQQAppInterface, localArrayList1, localArrayList2, localArrayList3, paramMqqHandler, paramInt);
-      continue;
-      bool = a(paramQQAppInterface, localArrayList1, localArrayList2, localArrayList3, paramMqqHandler, paramInt);
-    }
-    bbmy.a(paramQQAppInterface.getApp(), 2131627242, 0).b(paramInt);
-    return false;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt, MqqHandler paramMqqHandler)
-  {
-    awqx.b(paramQQAppInterface, "CliOper", "", "", "0X80067F8", "0X80067F8", 0, 0, "", "", "", "");
-    if (!badq.d(paramActivity))
-    {
-      bbmy.a(paramQQAppInterface.getApp(), 2131626719, 0).b(paramInt);
-      return false;
-    }
-    List localList = arxu.a().a();
-    if (localList.size() == 0)
-    {
-      bbmy.a(paramQQAppInterface.getApp(), 2131632729, 0).b(paramInt);
-      return false;
-    }
-    if (localList.size() == 1) {
-      return b(paramQQAppInterface, paramActivity, paramInt, localList, paramMqqHandler);
-    }
-    return a(paramQQAppInterface, paramActivity, paramInt, localList, paramMqqHandler);
-  }
-  
-  static boolean a(QQAppInterface paramQQAppInterface, ArrayList<MessageForPic> paramArrayList, ArrayList<MessageForShortVideo> paramArrayList1, ArrayList<StructMsgForImageShare> paramArrayList2, MqqHandler paramMqqHandler, int paramInt)
-  {
-    if (((paramArrayList != null) && (paramArrayList.size() > 0)) || ((paramArrayList1 != null) && (paramArrayList1.size() > 0)) || ((paramArrayList2 != null) && (paramArrayList2.size() > 0)))
-    {
-      ArrayList localArrayList = new ArrayList();
-      if ((paramArrayList2 != null) && (paramArrayList2.size() > 0))
-      {
-        paramArrayList2 = paramArrayList2.iterator();
-        label58:
-        if (paramArrayList2.hasNext())
-        {
-          Iterator localIterator = ((StructMsgForImageShare)paramArrayList2.next()).mStructMsgItemLists.iterator();
-          for (;;)
-          {
-            if (!localIterator.hasNext()) {
-              break label58;
-            }
-            Object localObject1 = (awul)localIterator.next();
-            if (!awum.class.isInstance(localObject1)) {
-              break;
-            }
-            localObject1 = ((awum)localObject1).a.iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              Object localObject2 = (awul)((Iterator)localObject1).next();
-              if (awwr.class.isInstance(localObject2))
-              {
-                localObject2 = (awwr)localObject2;
-                if ((!a(((awwr)localObject2).a)) && (!aeor.a(((awwr)localObject2).a))) {
-                  localArrayList.add(((awwr)localObject2).a);
-                }
-              }
-            }
-          }
-        }
-      }
-      if ((paramArrayList != null) && (paramArrayList.size() > 0))
-      {
-        paramArrayList = paramArrayList.iterator();
-        while (paramArrayList.hasNext())
-        {
-          paramArrayList2 = (MessageForPic)paramArrayList.next();
-          if ((!a(paramArrayList2)) && (!aeor.a(paramArrayList2))) {
-            localArrayList.add(paramArrayList2);
-          }
-        }
-      }
-      if ((localArrayList.size() == 0) && ((paramArrayList1 == null) || (paramArrayList1.size() == 0))) {
-        return false;
-      }
-      paramQQAppInterface.a().a().a(localArrayList, paramArrayList1, new bgtv(paramMqqHandler, paramQQAppInterface.getApp(), paramQQAppInterface, paramInt));
-      return true;
-    }
-    return false;
-  }
-  
-  private static boolean a(ChatMessage paramChatMessage)
-  {
-    return (ajke.a(paramChatMessage)) || (ajhz.a(paramChatMessage));
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt, List<ChatMessage> paramList, MqqHandler paramMqqHandler)
-  {
-    paramList = (ChatMessage)paramList.get(0);
-    bgtg.a(paramList.frienduin, paramList.senderuin, paramList.istroop);
-    if ((paramList instanceof MessageForTroopFile)) {
-      azjg.a(paramActivity, paramQQAppInterface, paramList);
+    case 17: 
+    case 18: 
+    case 19: 
+    case 21: 
+    case 22: 
+    case 23: 
+    case 28: 
+    case 29: 
+    case 30: 
+    default: 
+      paramActivity = null;
     }
     for (;;)
     {
-      return true;
-      if ((paramList instanceof MessageForFile))
+      paramBundle = paramActivity;
+      if (paramActivity == null)
       {
-        paramActivity = apck.a(paramQQAppInterface, (MessageForFile)paramList);
-        if (paramActivity.cloudType == 0)
-        {
-          apcb.a(2131627031);
-          return false;
-        }
-        if (paramActivity.status == 16)
-        {
-          apcb.a(2131627218);
-          return false;
-        }
-        if (apbf.a((MessageForFile)paramList).a(false))
-        {
-          if (bbrm.a(BaseActivity.sTopActivity, 5, new bgtt(paramQQAppInterface, paramList))) {
-            apbx.a(BaseActivity.sTopActivity, 2131627035, 2131627038, new bgtu(paramQQAppInterface, paramList));
-          }
-        }
-        else {
-          apck.a(paramQQAppInterface, paramList, BaseActivity.sTopActivity);
-        }
+        paramBundle = new Intent();
+        paramBundle.setClass(this.jdField_a_of_type_AndroidAppActivity, ReaderHomePageActivity.class);
+        paramBundle.putExtras(bgsz.a(paramBundle, 1));
       }
-      else if (((paramList instanceof MessageForPic)) || ((paramList instanceof MessageForShortVideo)))
+      paramBundle.putExtra("params_remote_connect_at_launch", true);
+      return paramBundle;
+      paramActivity = a(paramActivity);
+      paramActivity.putExtra("com.qqreader.pureader.BOOK_ID", paramBundle.getString("nbid"));
+      paramActivity.putExtra("com.qqreader.pureader.YW_BOOK_ID", paramBundle.getString("id"));
+      paramActivity.putExtra("ChannelSrc2", paramBundle.getString("group_code"));
+      if (!TextUtils.equals(paramBundle.getString("stay"), "1")) {
+        bool = true;
+      }
+      paramActivity.putExtra("is_return_to_home_page", bool);
+      continue;
+      paramActivity = a(paramActivity);
+      paramActivity.putExtra("com.qqreader.pureader.BOOK_ID", paramBundle.getString("book_new_id"));
+      paramActivity.putExtra("is_from_conversation", paramBundle.getBoolean("is_from_conversation", false));
+      continue;
+      paramActivity = a(paramActivity);
+      paramActivity.putExtra("com.qqreader.pureader.BOOK_ID", paramBundle.getString("nbid"));
+      paramActivity.putExtra("com.qqreader.pureader.YW_BOOK_ID", paramBundle.getString("bid"));
+      paramActivity.putExtra("com.qqreader.pureader.CHAPTER_ID", paramBundle.getString("cid"));
+      if (!TextUtils.equals(paramBundle.getString("stay"), "1")) {}
+      for (bool = true;; bool = false)
       {
-        if (a(paramList))
-        {
-          apcb.a(2131627031);
-          return false;
+        paramActivity.putExtra("is_return_to_home_page", bool);
+        paramActivity.putExtra("is_from_conversation", paramBundle.getBoolean("is_from_conversation", false));
+        if (paramBundle.getBoolean("recent_note", false)) {
+          ChannelIdHelper.setChannelId("100336");
         }
-        if (((paramList instanceof MessageForPic)) && (aeor.a((MessageForPic)paramList)))
-        {
-          apcb.a(2131627031);
-          return false;
-        }
-        paramQQAppInterface.a().a().a(paramList, new bgtv(paramMqqHandler, paramActivity, paramQQAppInterface, paramInt));
-        if (Looper.myLooper() != Looper.getMainLooper()) {
-          ThreadManager.getUIHandler().post(new WeiyunAIOUtils.4(paramQQAppInterface, paramInt));
-        } else {
-          bbmy.a(paramQQAppInterface.getApp(), 2131627191, 0).b(paramInt);
-        }
+        paramActivity.setFlags(67108864);
+        break;
+      }
+      paramActivity = a(paramActivity);
+      paramActivity.putExtra("com.qqreader.pureader.BOOK_ID", paramBundle.getString("nbid"));
+      paramActivity.putExtra("com.qqreader.pureader.YW_BOOK_ID", paramBundle.getString("bid"));
+      paramActivity.putExtra("com.qqreader.pureader.CHAPTER_ID", paramBundle.getString("cid"));
+      paramActivity.putExtra("com.qqreader.pureader.IN_BOOKSHELF", paramBundle.getString("inBookShelf"));
+      ChannelIdHelper.setChannelId(paramBundle);
+      paramActivity.setFlags(67108864);
+      continue;
+      paramActivity = a(paramActivity);
+      paramActivity.putExtra("com.qqreader.pureader.FILE_PATH", paramBundle.getString("com.qqreader.pureader.FILE_PATH"));
+      paramActivity.putExtra("com.qqreader.pureader.EXTRA_KEY_IS_LOCAL", true);
+      ChannelIdHelper.setChannelId(paramBundle);
+      continue;
+      if (!paramBundle.getBoolean("is_from_qreader_shortcut", false))
+      {
+        paramActivity = null;
       }
       else
       {
-        if (!akbp.b(paramList)) {
+        if (!paramBundle.getBoolean("cityshortcut")) {
           break;
         }
-        paramList = (StructMsgForImageShare)((MessageForStructing)paramList).structingMsg;
-        paramActivity = new ArrayList();
-        paramList = paramList.mStructMsgItemLists.iterator();
-        while (paramList.hasNext())
-        {
-          Object localObject1 = (awul)paramList.next();
-          if (awum.class.isInstance(localObject1))
-          {
-            localObject1 = ((awum)localObject1).a.iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              Object localObject2 = (awul)((Iterator)localObject1).next();
-              if (awwr.class.isInstance(localObject2))
-              {
-                localObject2 = (awwr)localObject2;
-                if (!a(((awwr)localObject2).a)) {
-                  paramActivity.add(((awwr)localObject2).a);
-                }
-              }
-            }
-          }
-        }
-        if (paramActivity.size() > 0)
-        {
-          a(paramQQAppInterface, paramActivity, null, null, paramMqqHandler, paramInt);
-          bbmy.a(paramQQAppInterface.getApp(), 2131627191, 0).b(paramInt);
-        }
-        else
-        {
-          bbmy.a(paramQQAppInterface.getApp(), 2131627242, 0).b(paramInt);
-        }
+        paramBundle = new Intent();
+        paramBundle.setClass(paramActivity, ReaderHomePageActivity.class);
+        paramBundle.putExtras(bgsz.a(paramBundle, 1));
+        paramBundle.putExtra("is_from_qreader_shortcut", true);
+        paramActivity = paramBundle;
       }
     }
-    bbmy.a(paramQQAppInterface.getApp(), 2131627242, 0).b(paramInt);
-    return false;
+    long l1 = paramBundle.getLong("book_id");
+    long l2 = paramBundle.getLong("book_new_id");
+    str1 = bbct.a(paramActivity).a;
+    String str2 = bgvt.a(paramActivity);
+    if (l2 != 0L) {}
+    for (paramBundle = String.valueOf(l2);; paramBundle = "")
+    {
+      bgvr.a(str1, str2, "2198", paramBundle, "2", "");
+      paramActivity = a(paramActivity);
+      paramActivity.putExtra("com.qqreader.pureader.BOOK_ID", String.valueOf(l2));
+      paramActivity.putExtra("com.qqreader.pureader.YW_BOOK_ID", String.valueOf(l1));
+      paramActivity.putExtra("is_return_to_home_page", true);
+      paramActivity.putExtra("is_from_qreader_shortcut", true);
+      paramActivity.setFlags(67108864);
+      break;
+    }
+  }
+  
+  private View a()
+  {
+    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
+    ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
+    localImageView.setBackgroundColor(-1);
+    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    localRelativeLayout.addView(localImageView);
+    TextView localTextView = new TextView(this.jdField_a_of_type_AndroidAppActivity);
+    localTextView.setText(2131693978);
+    localTextView.setTextColor(-16777216);
+    localTextView.setGravity(17);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+    localLayoutParams.addRule(13);
+    localTextView.setPadding(0, bawz.a(this.jdField_a_of_type_AndroidAppActivity, 120.0F), 0, 0);
+    localRelativeLayout.addView(localTextView, localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetTextView = localTextView;
+    bgtz.a().a(this.jdField_a_of_type_AndroidAppActivity, localImageView);
+    return localRelativeLayout;
+  }
+  
+  private void a(Intent paramIntent)
+  {
+    boolean bool = bguw.a();
+    bgvo.e("ReaderSplashImpl", "jumpToPlugin: isUseShadow = " + bool);
+    if (bool)
+    {
+      bguw.a(this.jdField_a_of_type_AndroidAppActivity, paramIntent, "com.qqreader.pureader.SSReaderActivity", new bgtu(this));
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    bgtf.a().a(this.jdField_a_of_type_Bgtg);
+    a(a());
+  }
+  
+  private void a(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidViewViewGroup == null)
+    {
+      bgvo.a("ReaderSplashImpl", "showLoadingView: mContentView == null");
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-1);
+    this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView);
+  }
+  
+  private void a(JsCallParams paramJsCallParams)
+  {
+    if (bgtf.a().a())
+    {
+      ReaderJsPluginProxy localReaderJsPluginProxy = bgtf.a().a(new bgtt(this));
+      if (localReaderJsPluginProxy != null) {
+        localReaderJsPluginProxy.call(paramJsCallParams.a(), paramJsCallParams.b(), paramJsCallParams.c(), paramJsCallParams.a());
+      }
+      for (;;)
+      {
+        d();
+        return;
+        bgvo.a("ReaderSplashImpl", "checkPluginForHandleSpecialJsCall: plugin is ready but jsPluginProxy is null");
+      }
+    }
+    this.jdField_a_of_type_CooperationQqreaderJsJsCallParams = paramJsCallParams;
+    bgtf.a().a(this.jdField_a_of_type_Bgtg);
+    a(a());
+  }
+  
+  private void b(@NonNull Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_AndroidAppActivity == null) {
+      bgvo.a("ReaderSplashImpl", "doJump: activity is null");
+    }
+    Intent localIntent;
+    do
+    {
+      return;
+      if (paramBundle.getBoolean("is_from_qreader_shortcut")) {
+        paramBundle.putString("readtype", String.valueOf(26));
+      }
+      localIntent = a(this.jdField_a_of_type_AndroidAppActivity, paramBundle);
+    } while (localIntent == null);
+    localIntent.putExtra("launch_by_splash", true);
+    localIntent.putExtra("login_interval", bgvt.a(BaseApplicationImpl.getApplication()));
+    if (localIntent.getStringExtra("ChannelSrc2") == null) {
+      localIntent.putExtra("ChannelSrc2", paramBundle.getString("ChannelSrc2"));
+    }
+    if ((localIntent.getComponent() != null) && ("cooperation.qqreader.ui.ReaderHomePageActivity".equals(localIntent.getComponent().getClassName())))
+    {
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      d();
+      return;
+    }
+    localIntent.putExtra("is_from_splash_activity", true);
+    localIntent.putExtra("com.qqreader.pureader.START_TIME", System.currentTimeMillis());
+    a(localIntent);
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_AndroidContentIntent == null)
+    {
+      bgvo.a("ReaderSplashImpl", "handlePendingJumpPluginIntent: mPendingJumpPluginIntent == null");
+      return;
+    }
+    if ((this.jdField_a_of_type_AndroidAppActivity.isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_AndroidAppActivity.isDestroyed())))
+    {
+      bgvo.b("ReaderSplashImpl", "handlePendingJumpPluginIntent: activity is destroyed");
+      return;
+    }
+    bgsz.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, "com.qqreader.pureader.SSReaderActivity", new bgtv(this));
+    this.jdField_a_of_type_AndroidContentIntent = null;
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+  }
+  
+  public ViewGroup a()
+  {
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public void a()
+  {
+    bgvo.d("ReaderSplashImpl", "onCreate");
+    Object localObject = new IntentFilter();
+    ((IntentFilter)localObject).addAction("cooperation.qqreader.start_reader_act_completed");
+    if (this.jdField_a_of_type_Bgtw == null)
+    {
+      this.jdField_a_of_type_Bgtw = new bgtw(this, null);
+      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_Bgtw, (IntentFilter)localObject);
+    }
+    localObject = (JsCallParams)this.jdField_a_of_type_AndroidOsBundle.getParcelable("splash_pending_js_param");
+    if (localObject != null)
+    {
+      a((JsCallParams)localObject);
+      return;
+    }
+    b(this.jdField_a_of_type_AndroidOsBundle);
+  }
+  
+  public void a(@NonNull Bundle paramBundle)
+  {
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void a(@NonNull ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Bgtw != null)
+    {
+      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_Bgtw);
+      this.jdField_a_of_type_Bgtw = null;
+    }
   }
 }
 

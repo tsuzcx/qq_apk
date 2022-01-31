@@ -1,10 +1,6 @@
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
-
 public abstract interface aevb
 {
-  public abstract void a();
-  
-  public abstract void a(ReadInJoySearchHistoryEntity paramReadInJoySearchHistoryEntity);
+  public abstract void a(boolean paramBoolean);
 }
 
 

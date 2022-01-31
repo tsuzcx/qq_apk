@@ -1,82 +1,70 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.av.so.DownloadInfo;
-import com.tencent.mobileqq.startup.step.UpdateAvSo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class lpj
 {
-  public static int a(DownloadInfo paramDownloadInfo)
+  private static lpj a;
+  
+  public static lpj a()
   {
-    int i = 1;
-    if (paramDownloadInfo == null) {}
-    do
+    if (a != null) {
+      return a;
+    }
+    try
     {
-      return 11;
-      if (!TextUtils.isEmpty(paramDownloadInfo.MD5_so_wxvoiceembedqqegg)) {
-        break;
+      a = new lpj();
+      lpj locallpj = a;
+      return locallpj;
+    }
+    catch (Exception localException) {}
+    return null;
+  }
+  
+  public float a()
+  {
+    try
+    {
+      float f1 = Float.parseFloat(lgo.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/videodenoiseratio", "15.0"));
+      float f2;
+      if (f1 <= 0.0D) {
+        f2 = 0.0F;
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QavSo", 4, String.format("getEnableFlag, %s", new Object[] { paramDownloadInfo }));
-    return 11;
-    if (paramDownloadInfo.enable) {
-      if ((b(paramDownloadInfo)) && (a(paramDownloadInfo))) {}
+      do
+      {
+        return f2;
+        f2 = f1;
+      } while (f1 < 30.0D);
+      return 30.0F;
     }
-    for (i = 11;; i = 2) {
-      return i;
-    }
+    catch (Exception localException) {}
+    return 15.0F;
   }
   
-  public static String a()
+  public boolean a()
   {
-    return b();
+    return lgo.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/lowlightflag", 0) == 1;
   }
   
-  public static String a(String paramString)
+  public boolean b()
   {
-    return "795";
+    boolean bool = false;
+    if (lgo.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/lowlightflag", 0) == -1) {
+      bool = true;
+    }
+    return bool;
   }
   
-  public static boolean a(DownloadInfo paramDownloadInfo)
+  public boolean c()
   {
-    String str1 = paramDownloadInfo.MD5_zip_model;
-    paramDownloadInfo = a() + paramDownloadInfo.filename_model_wxvoiceembed;
-    String str2 = DownloadInfo.getSP().getString("model_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equalsIgnoreCase(str1)))
-    {
-      QLog.i("QavSo", 1, String.format("isModelReady, spMd5[%s], zipMd5[%s]", new Object[] { str2, str1 }));
-      return false;
-    }
-    if (!bace.a(paramDownloadInfo))
-    {
-      QLog.i("QavSo", 1, String.format("isModelReady, file no exist, fileName[%s]", new Object[] { paramDownloadInfo }));
-      return false;
-    }
-    return true;
+    return lgo.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/videodenoiseflag", 0) == 1;
   }
   
-  public static String b()
+  public boolean d()
   {
-    return UpdateAvSo.a() + "qavso" + a("") + File.separator;
-  }
-  
-  public static boolean b(DownloadInfo paramDownloadInfo)
-  {
-    String str1 = paramDownloadInfo.MD5_zip_so;
-    paramDownloadInfo = b() + paramDownloadInfo.filename_so_wxvoiceembedqqegg;
-    String str2 = DownloadInfo.getSP().getString("so_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equalsIgnoreCase(str1)))
-    {
-      QLog.i("QavSo", 1, String.format("isSoReady, spMd5[%s], zipMd5[%s]", new Object[] { str2, str1 }));
-      return false;
+    boolean bool = false;
+    if (lgo.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/videodenoiseflag", 0) == -1) {
+      bool = true;
     }
-    if (!bace.a(paramDownloadInfo))
-    {
-      QLog.i("QavSo", 1, String.format("isSoReady, file no exist, fileNameSoWxVoiceEmbedQQEgg[%s]", new Object[] { paramDownloadInfo }));
-      return false;
-    }
-    return true;
+    return bool;
   }
 }
 

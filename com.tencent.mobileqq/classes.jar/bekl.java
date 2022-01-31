@@ -1,20 +1,18 @@
-import android.view.View;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
 class bekl
-  implements bekn
+  implements FileFilter
 {
-  bekl(beki parambeki) {}
-  
-  public void a(View paramView)
+  public boolean accept(File paramFile)
   {
-    this.a.c(paramView);
-    this.a.c();
-    beki.a(this.a, paramView.getTag(), false);
+    return Pattern.matches("cpu[0-9]+", paramFile.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bekl
  * JD-Core Version:    0.7.0.1
  */

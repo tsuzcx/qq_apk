@@ -12,15 +12,15 @@ public class SharpPDecoder
   public int imageHeight;
   public int imageWidth;
   public SharpPDecoder.SharpPFeature mFeatureInfo;
-  public int mhDec;
+  public long mhDec;
   
-  public native void CloseDecoder2(int paramInt);
+  public native void CloseDecoder2(long paramLong);
   
-  public native int CreateDecoder2(String paramString, SharpPDecoder.SharpPFeature paramSharpPFeature);
+  public native long CreateDecoder2(String paramString, SharpPDecoder.SharpPFeature paramSharpPFeature);
   
-  public native int DecodeImage2(int paramInt1, int paramInt2, SharpPDecoder.SharpPOutFrame paramSharpPOutFrame);
+  public native int DecodeImage2(long paramLong, int paramInt, SharpPDecoder.SharpPOutFrame paramSharpPOutFrame);
   
-  public native int DecodeImageToBitmap2(int paramInt1, int paramInt2, Bitmap paramBitmap, Integer paramInteger);
+  public native int DecodeImageToBitmap2(long paramLong, int paramInt, Bitmap paramBitmap, Integer paramInteger);
   
   public native int ParseHeader2(String paramString, SharpPDecoder.SharpPFeature paramSharpPFeature);
   
@@ -32,7 +32,7 @@ public class SharpPDecoder
     {
       return null;
       this.mhDec = CreateDecoder2(paramString, localSharpPFeature);
-    } while (this.mhDec == 0);
+    } while (this.mhDec == 0L);
     this.imageWidth = localSharpPFeature.width;
     this.imageHeight = localSharpPFeature.height;
     int i = (int)(this.imageHeight / this.imageWidth * paramInt2);
@@ -50,18 +50,15 @@ public class SharpPDecoder
       localSharpPOutFrame.dstHeight = i;
       localSharpPOutFrame.fmt = paramInt1;
       paramInt1 = 0;
-      for (;;)
+      while (paramInt1 < localSharpPFeature.layerNum)
       {
-        if (paramInt1 >= localSharpPFeature.layerNum)
-        {
-          paramString = Bitmap.createBitmap(paramString, 0, paramInt2, paramInt2, i, Bitmap.Config.ARGB_8888);
-          CloseDecoder2(this.mhDec);
-          this.mhDec = 0;
-          return paramString;
-        }
-        DecodeImage2(this.mhDec, paramInt1, localSharpPOutFrame);
+        if (DecodeImage2(this.mhDec, paramInt1, localSharpPOutFrame) > 0) {}
         paramInt1 += 1;
       }
+      paramString = Bitmap.createBitmap(paramString, 0, paramInt2, paramInt2, i, Bitmap.Config.ARGB_8888);
+      CloseDecoder2(this.mhDec);
+      this.mhDec = 0L;
+      return paramString;
     }
   }
   

@@ -1,28 +1,16 @@
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryDownloadView.5.1;
 
 public class vay
+  extends AnimatorListenerAdapter
 {
-  public final ArrayList<uyn> a;
-  @NonNull
-  public final uxs a;
-  @NonNull
-  public final uxt a;
-  @NonNull
-  public final uyd a;
-  @NonNull
-  public final uyh a;
-  
-  public vay(@NonNull uyh paramuyh, @NonNull uyd paramuyd, @NonNull uxt paramuxt, @NonNull uxs paramuxs)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Uyh = paramuyh;
-    this.jdField_a_of_type_Uyd = paramuyd;
-    this.jdField_a_of_type_Uxt = paramuxt;
-    this.jdField_a_of_type_Uxs = paramuxs;
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramuxt);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramuyd);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramuyh);
+    if (this.a) {
+      new Handler().postDelayed(new StoryDownloadView.5.1(this), 1200L);
+    }
   }
 }
 

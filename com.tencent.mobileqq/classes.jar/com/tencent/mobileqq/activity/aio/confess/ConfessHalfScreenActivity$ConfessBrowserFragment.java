@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.aio.confess;
 
-import acry;
+import adcr;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
-import bazb;
-import bbaq;
-import bbcj;
-import bbey;
+import bcbv;
+import bcdq;
+import bcfj;
+import bchy;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -26,14 +26,14 @@ public class ConfessHalfScreenActivity$ConfessBrowserFragment
   public int a(Bundle paramBundle)
   {
     int i = super.a(paramBundle);
-    this.jdField_a_of_type_Bazb.b(false);
-    this.jdField_a_of_type_Bbcj.a.setVisibility(8);
+    this.jdField_a_of_type_Bcbv.b(false);
+    this.jdField_a_of_type_Bcfj.a.setVisibility(8);
     return i;
   }
   
-  public bbaq a()
+  public bcdq a()
   {
-    return new bbaq(this, 127, new acry(this));
+    return new bcdq(this, 127, new adcr(this));
   }
   
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
@@ -54,20 +54,20 @@ public class ConfessHalfScreenActivity$ConfessBrowserFragment
       QLog.d("WebLog_WebViewFragment", 2, "ConfessBrowserFragment doOnCreate = ");
     }
     boolean bool = super.a(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(new String[] { "sayHonest", bbey.a, "QQApi", "ui", "share", "PublicAccountJs" });
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(new String[] { "sayHonest", bchy.a, "QQApi", "ui", "share", "PublicAccountJs" });
     return bool;
   }
   
   public int d(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bbcm.c = 0L;
+    this.jdField_a_of_type_Bcfm.c = 0L;
     int i = super.d(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131101491);
-    if ((this.jdField_a_of_type_Bbcj.c instanceof RefreshView)) {
-      ((RefreshView)this.jdField_a_of_type_Bbcj.c).a(false);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131167087);
+    if ((this.jdField_a_of_type_Bcfj.c instanceof RefreshView)) {
+      ((RefreshView)this.jdField_a_of_type_Bcfj.c).a(false);
     }
-    if (this.jdField_a_of_type_Bbcj.b != null) {
-      this.jdField_a_of_type_Bbcj.b.setVisibility(8);
+    if (this.jdField_a_of_type_Bcfj.b != null) {
+      this.jdField_a_of_type_Bcfj.b.setVisibility(8);
     }
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.setBackgroundColor(0);
     return i;

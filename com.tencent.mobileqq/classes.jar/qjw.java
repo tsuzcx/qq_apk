@@ -1,20 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
 
-class qjw
-  implements Animation.AnimationListener
+public final class qjw
+  implements Parcelable.Creator<LikeAnimationInfo>
 {
-  qjw(qjv paramqjv) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public LikeAnimationInfo a(Parcel paramParcel)
   {
-    qjv.a(this.a).startAnimation(qjv.a(this.a));
+    return new LikeAnimationInfo(paramParcel);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public LikeAnimationInfo[] a(int paramInt)
+  {
+    return new LikeAnimationInfo[paramInt];
+  }
 }
 
 

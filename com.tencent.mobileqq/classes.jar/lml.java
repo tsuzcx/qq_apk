@@ -1,20 +1,67 @@
-import android.graphics.Bitmap;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Random;
 
-public class lml
-  implements azwh
+public final class lml
 {
-  public lml(QQServiceForAV paramQQServiceForAV) {}
+  private static final float jdField_a_of_type_Float;
+  static final int jdField_a_of_type_Int = (int)Math.sqrt(16384.0D);
+  public static Random a;
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAV", 2, "onDecodeTaskCompleted");
+    jdField_a_of_type_Float = 1.0F / (jdField_a_of_type_Int - 1);
+    jdField_a_of_type_JavaUtilRandom = new Random();
+  }
+  
+  public static final float a()
+  {
+    return jdField_a_of_type_JavaUtilRandom.nextFloat();
+  }
+  
+  public static final float a(float paramFloat)
+  {
+    return lmm.a[((int)(45.511112F * paramFloat) & 0x3FFF)];
+  }
+  
+  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (paramFloat1 < paramFloat2) {
+      return paramFloat2;
     }
-    new lnd(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new lmm(this, paramString, paramBitmap));
+    if (paramFloat1 > paramFloat3) {
+      return paramFloat3;
+    }
+    return paramFloat1;
+  }
+  
+  public static final int a(int paramInt)
+  {
+    return jdField_a_of_type_JavaUtilRandom.nextInt(paramInt + 1);
+  }
+  
+  public static int a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt1 < paramInt2) {
+      return paramInt2;
+    }
+    if (paramInt1 > paramInt3) {
+      return paramInt3;
+    }
+    return paramInt1;
+  }
+  
+  public static final boolean a()
+  {
+    return jdField_a_of_type_JavaUtilRandom.nextBoolean();
+  }
+  
+  public static final float b(float paramFloat)
+  {
+    return lmm.a[((int)((90.0F + paramFloat) * 45.511112F) & 0x3FFF)];
+  }
+  
+  public static final float c(float paramFloat)
+  {
+    return jdField_a_of_type_JavaUtilRandom.nextFloat() * paramFloat;
   }
 }
 

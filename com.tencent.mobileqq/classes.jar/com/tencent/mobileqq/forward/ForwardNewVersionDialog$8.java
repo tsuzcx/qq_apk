@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.forward;
 
 import android.view.WindowManager;
-import apjo;
+import aqdb;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class ForwardNewVersionDialog$8
   implements Runnable
 {
-  public ForwardNewVersionDialog$8(apjo paramapjo) {}
+  public ForwardNewVersionDialog$8(aqdb paramaqdb) {}
   
   public void run()
   {
-    apjo.a(this.this$0).addView(apjo.a(this.this$0), apjo.a(this.this$0));
-    apjo.a(this.this$0, true);
-    apjo.a(this.this$0).post(new ForwardNewVersionDialog.8.1(this));
+    aqdb.a(this.this$0).addView(aqdb.a(this.this$0), aqdb.a(this.this$0));
+    aqdb.a(this.this$0, true);
+    aqdb.a(this.this$0).post(new ForwardNewVersionDialog.8.1(this));
   }
 }
 

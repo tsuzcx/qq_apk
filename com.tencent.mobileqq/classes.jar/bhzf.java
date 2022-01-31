@@ -1,92 +1,184 @@
-import android.content.Context;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.qg.StoryQGSurfaceView;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.concurrent.atomic.AtomicBoolean;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.pb.adv_report.MobileAdvReportReq;
+import cooperation.vip.pb.vac_adv_get.QzoneBusiMsg;
+import cooperation.vip.pb.vac_adv_get.VacAdvReq;
+import cooperation.vip.pb.vac_adv_get.VacAdvRsp;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
 public class bhzf
-  implements IEventReceiver
+  extends MSFServlet
 {
-  private final bhzi jdField_a_of_type_Bhzi = new bhzi(this);
-  private Queue<Runnable> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public bhzf()
+  public static void a(long paramLong, int paramInt1, String paramString, int paramInt2, qq_ad_get.QQAdGet.DeviceInfo paramDeviceInfo)
   {
-    sgi.a().registerSubscriber(this.jdField_a_of_type_Bhzi);
+    try
+    {
+      paramString = BaseApplicationImpl.getApplication().getRuntime();
+      vac_adv_get.VacAdvReq localVacAdvReq = new vac_adv_get.VacAdvReq();
+      localVacAdvReq.adv_pos.set(paramInt1);
+      localVacAdvReq.qq.set(paramLong);
+      localVacAdvReq.qzone_busi_info.set(new vac_adv_get.QzoneBusiMsg());
+      if (paramDeviceInfo != null) {
+        localVacAdvReq.device_info.set(paramDeviceInfo);
+      }
+      paramDeviceInfo = new NewIntent(paramString.getApplication(), bhzf.class);
+      paramDeviceInfo.putExtra("data", bblm.a(localVacAdvReq.toByteArray()));
+      paramDeviceInfo.putExtra("cmd", "MobileAdv.AdvGet");
+      paramDeviceInfo.putExtra("gdt_adv_business_type", paramInt2);
+      paramString.startServlet(paramDeviceInfo);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QZLog.e("GdtGeneralServlet", "onGdtADVGetRsp error" + paramString.toString());
+    }
   }
   
-  private void c()
+  public static void a(long paramLong, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, qq_ad_get.QQAdGet.DeviceInfo paramDeviceInfo)
   {
-    Object localObject = new StringBuilder().append("mIsSurfaceCreated = ").append(this.b).append(", qgloaded = ").append(bcom.b.get()).append(", renderManager = ");
-    if (EffectsCameraCaptureView.b() != null) {}
-    for (boolean bool = true;; bool = false)
+    try
     {
-      urk.b("QGEnvironment", bool + ", aeRenderManager = ");
-      if ((!this.b) || (!bcom.b.get()) || (EffectsCameraCaptureView.b() == null)) {
-        break;
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      adv_report.MobileAdvReportReq localMobileAdvReportReq = new adv_report.MobileAdvReportReq();
+      PBStringField localPBStringField = localMobileAdvReportReq.recomm_cookie;
+      String str = paramString;
+      if (paramString == null) {
+        str = "";
       }
-      while (!this.jdField_a_of_type_JavaUtilQueue.isEmpty())
+      localPBStringField.set(str);
+      localMobileAdvReportReq.adv_pos.set(paramInt1);
+      localMobileAdvReportReq.action_type.set(paramInt2);
+      localMobileAdvReportReq.action_value.set(paramInt3);
+      localMobileAdvReportReq.feed_index.set(paramInt4);
+      if (paramDeviceInfo != null) {
+        localMobileAdvReportReq.device_info.set(paramDeviceInfo);
+      }
+      localMobileAdvReportReq.qq.set(paramLong);
+      paramString = new NewIntent(localAppRuntime.getApplication(), bhzf.class);
+      paramString.putExtra("data", bblm.a(localMobileAdvReportReq.toByteArray()));
+      paramString.putExtra("cmd", "MobileAdv.AdvReport");
+      QZLog.i("GdtGeneralServlet", " @getGdtInfo sendGdtADVReportReq");
+      localAppRuntime.startServlet(paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QZLog.e("GdtGeneralServlet", "sendGdtADVReportReq error" + paramString.toString());
+    }
+  }
+  
+  public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    int i = -1;
+    try
+    {
+      if (paramFromServiceMsg.isSuccess())
       {
-        localObject = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
-        if (localObject != null) {
-          ((Runnable)localObject).run();
+        int j = paramFromServiceMsg.getWupBuffer().length - 4;
+        byte[] arrayOfByte = new byte[j];
+        bbmj.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, j);
+        paramFromServiceMsg = new vac_adv_get.VacAdvRsp();
+        paramFromServiceMsg.mergeFrom(arrayOfByte);
+        if (paramIntent != null) {
+          i = paramIntent.getIntExtra("gdt_adv_business_type", -1);
+        }
+        if (paramFromServiceMsg.err_code.get() == 0)
+        {
+          bhzc.a().a(i, paramFromServiceMsg);
+          return;
+        }
+        QZLog.e("GdtGeneralServlet", "onGdtADVGetRsp err_code =" + paramFromServiceMsg.err_code.get() + "erro_msg =" + paramFromServiceMsg.err_msg.get());
+        return;
+      }
+    }
+    catch (Exception paramIntent)
+    {
+      QZLog.e("GdtGeneralServlet", "onGdtADVGetRsp error" + paramIntent.toString());
+    }
+  }
+  
+  public void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    try
+    {
+      if (paramFromServiceMsg.isSuccess())
+      {
+        int i = paramFromServiceMsg.getWupBuffer().length - 4;
+        bbmj.a(new byte[i], 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      }
+      return;
+    }
+    catch (Exception paramIntent)
+    {
+      QZLog.e("GdtGeneralServlet", "onGdtADVReportRsp error" + paramIntent.toString());
+    }
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtGeneralServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
+    }
+    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
+    String str2;
+    label151:
+    do
+    {
+      do
+      {
+        return;
+        str2 = paramFromServiceMsg.getServiceCmd();
+      } while (str2 == null);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        boolean bool = paramFromServiceMsg.isSuccess();
+        localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
+        if (!bool) {
+          break label151;
         }
       }
-    }
+      for (String str1 = "";; str1 = "not")
+      {
+        QLog.d("GdtGeneralServlet", 2, str1 + " success");
+        if (!str2.equals("MobileAdv.AdvGet")) {
+          break;
+        }
+        a(paramIntent, paramFromServiceMsg);
+        return;
+      }
+    } while (!str2.equals("MobileAdv.AdvReport"));
+    b(paramIntent, paramFromServiceMsg);
   }
   
-  public StoryQGSurfaceView a(bheq parambheq)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    CameraCaptureView localCameraCaptureView = parambheq.a();
-    Context localContext = localCameraCaptureView.getContext();
-    int i = vms.b(localContext);
-    int j = vms.c(localContext);
-    int k = j - parambheq.g() - parambheq.h();
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    String str = paramIntent.getStringExtra("cmd");
+    long l = paramIntent.getLongExtra("timeout", 10000L);
+    paramPacket.setSSOCommand(str);
+    paramPacket.setTimeout(l);
+    paramPacket.putSendData(arrayOfByte);
     if (QLog.isColorLevel()) {
-      QLog.d("QGEnvironment", 2, new Object[] { "createQGGLView width:", Integer.valueOf(i), ", height:", Integer.valueOf(j), ", realHeight=", Integer.valueOf(k) });
+      QLog.d("GdtGeneralServlet", 2, "onSend exit cmd=" + str);
     }
-    parambheq = new StoryQGSurfaceView(localContext, i, k, localCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext, localCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig, mol.b());
-    QLog.i("QGEnvironment", 1, "QGVersion = " + StoryQGSurfaceView.getQGVersion() + " QGBuildTimeStamp = " + parambheq.getQGBuildTimeStamp());
-    return parambheq;
-  }
-  
-  public void a()
-  {
-    bcom.a("1018", true, new bhzg(this));
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_JavaUtilQueue.offer(paramRunnable);
-    c();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    sgi.a().unRegisterSubscriber(this.jdField_a_of_type_Bhzi);
-  }
-  
-  public void b(Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_JavaUtilQueue.remove(paramRunnable);
-  }
-  
-  public boolean isValidate()
-  {
-    return !this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhzf
  * JD-Core Version:    0.7.0.1
  */

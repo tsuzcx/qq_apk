@@ -1,8 +1,4 @@
-public abstract interface ahjp
-{
-  public abstract void a(int paramInt);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahjp

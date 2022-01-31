@@ -1,25 +1,107 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class shv
-  extends SimpleJob
+public class shv
 {
-  shv(shu paramshu, String paramString, boolean paramBoolean)
+  public static String a;
+  private List<shw> a;
+  
+  static
   {
-    super(paramString);
+    jdField_a_of_type_JavaLangString = "ReadinjoyH5ElementManager";
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  public shv()
   {
-    this.jdField_a_of_type_Shu.b(this.jdField_a_of_type_Boolean);
-    return null;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        shw localshw = (shw)this.jdField_a_of_type_JavaUtilList.get(i);
+        if ((localshw != null) && (paramString.equals(localshw.jdField_a_of_type_JavaLangString)))
+        {
+          this.jdField_a_of_type_JavaUtilList.remove(i);
+          return;
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public void a(String paramString, Rect paramRect)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (a(paramString))) {
+      return;
+    }
+    shw localshw = new shw();
+    localshw.jdField_a_of_type_JavaLangString = paramString;
+    localshw.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.jdField_a_of_type_JavaUtilList.add(localshw);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilList.isEmpty();
+  }
+  
+  public boolean a(Point paramPoint)
+  {
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "pt.x = " + paramPoint.x + "  pt.y=" + paramPoint.y);
+    }
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        shw localshw = (shw)this.jdField_a_of_type_JavaUtilList.get(i);
+        if ((localshw != null) && (localshw.jdField_a_of_type_AndroidGraphicsRect != null) && (localshw.jdField_a_of_type_AndroidGraphicsRect.contains(paramPoint.x, paramPoint.y))) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return false;
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        shw localshw = (shw)this.jdField_a_of_type_JavaUtilList.get(i);
+        if ((localshw != null) && (paramString.equals(localshw.jdField_a_of_type_JavaLangString))) {
+          return true;
+        }
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     shv
  * JD-Core Version:    0.7.0.1
  */

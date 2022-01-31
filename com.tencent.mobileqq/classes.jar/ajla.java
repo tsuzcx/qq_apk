@@ -1,34 +1,50 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.TMG.utils.SoUtil;
+import com.tencent.qphone.base.util.QLog;
 
 class ajla
-  implements Comparator<File>
+  implements AVCallback
 {
-  ajla(ajkz paramajkz) {}
+  ajla(ajku paramajku) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onComplete(int paramInt, String paramString)
   {
-    long l2 = 0L;
-    if (paramFile1 != null) {}
-    for (long l1 = paramFile1.lastModified();; l1 = 0L)
+    if (paramInt == 0)
     {
-      if (paramFile2 != null) {
-        l2 = paramFile2.lastModified();
+      QLog.e("AVEngineWalper", 1, "AVCallback make connection successfully!!!");
+      if (!this.a.a())
+      {
+        bbdj.d(ajll.a() + "libqav_graphics.so", ajll.a() + "libtmg_graphics.so");
+        boolean bool = SoUtil.loadSo("tmg_graphics");
+        QLog.e("AVEngineWalper", 1, "first check failed, rename bLoad = " + bool);
+        if (!this.a.a())
+        {
+          QLog.e("AVEngineWalper", 1, "Second check failed, stop engine~~~");
+          ajku.a(this.a, false);
+          this.a.a();
+          paramInt = 1;
+        }
       }
-      if (l2 >= l1) {
-        break;
+    }
+    for (;;)
+    {
+      if (this.a.a != null) {
+        this.a.a.a(paramInt, paramString);
       }
-      return -1;
+      return;
+      ajku.a(this.a, true);
+      QLog.e("AVEngineWalper", 1, "start successfully second try~~~~");
+      continue;
+      ajku.a(this.a, true);
+      QLog.e("AVEngineWalper", 1, "start successfully~~~~");
+      continue;
+      QLog.e("AVEngineWalper", 1, "AVCallback result=" + paramInt + ", errorInfo=" + paramString);
     }
-    if (l2 > l1) {
-      return 1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajla
  * JD-Core Version:    0.7.0.1
  */

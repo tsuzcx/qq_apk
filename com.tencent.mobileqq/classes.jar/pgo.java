@@ -1,16 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 
 class pgo
-  implements View.OnClickListener
+  implements ViewBase.OnClickListener
 {
-  pgo(pgn parampgn) {}
+  pgo(pgk parampgk, Container paramContainer) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramView = this.a.jdField_a_of_type_Qoe.a();
-    if (paramView != null) {
-      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    paramViewBase = BaseApplicationImpl.getContext();
+    int i;
+    if ((Build.VERSION.SDK_INT >= 23) && (paramViewBase != null)) {
+      if (paramViewBase.checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      if ((i == 0) && (pce.a() == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext() instanceof Activity))) {
+        pgk.a(this.jdField_a_of_type_Pgk, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
+      }
+      return;
+      i = 0;
+      continue;
+      i = 1;
     }
   }
 }

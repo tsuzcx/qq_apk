@@ -1,32 +1,23 @@
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class affd
-  extends ajfo
+  implements MessageQueue.IdleHandler
 {
-  private affd(FriendFragment paramFriendFragment) {}
+  public affd(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public boolean queueIdle()
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
-      FriendFragment.a(this.a, 1400L, true);
-    }
-  }
-  
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
-      }
-      FriendFragment.a(this.a, 1400L, false);
-    }
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     affd
  * JD-Core Version:    0.7.0.1
  */

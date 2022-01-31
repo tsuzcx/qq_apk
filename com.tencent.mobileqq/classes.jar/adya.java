@@ -1,29 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.QQWalletTransferBubbleView;
 
-public final class adya
-  implements Parcelable.Creator<AIORichMediaData>
+public class adya
+  extends acun
 {
-  public AIORichMediaData a(Parcel paramParcel)
-  {
-    Object localObject = paramParcel.readString();
-    try
-    {
-      localObject = AIORichMediaData.a((String)localObject);
-      ((AIORichMediaData)localObject).a(paramParcel);
-      return localObject;
-    }
-    catch (ClassNotFoundException paramParcel)
-    {
-      throw new RuntimeException(paramParcel);
-    }
-  }
+  public long a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public QQWalletTransferBubbleView a;
+  public TextView b;
+  public QQWalletTransferBubbleView b;
+  public TextView c;
   
-  public AIORichMediaData[] a(int paramInt)
-  {
-    return new AIORichMediaData[paramInt];
-  }
+  public adya(adxx paramadxx) {}
 }
 
 

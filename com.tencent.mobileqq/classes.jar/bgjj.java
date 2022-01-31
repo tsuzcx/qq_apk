@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.2.1;
-
-public class bgjj
-  implements DialogInterface.OnClickListener
+public abstract interface bgjj
 {
-  public bgjj(QzoneQunFeedJsPlugin.2.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

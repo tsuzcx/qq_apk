@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.apollo;
 
-import aifg;
-import aihg;
+import airz;
+import aitz;
 import com.tencent.qphone.base.util.QLog;
 
 public class ChatPieApolloViewController$4
   extends IApolloRunnableTask
 {
-  public ChatPieApolloViewController$4(aihg paramaihg, ApolloRender paramApolloRender) {}
+  public ChatPieApolloViewController$4(aitz paramaitz, ApolloRender paramApolloRender) {}
   
   public int a()
   {
@@ -22,7 +22,7 @@ public class ChatPieApolloViewController$4
   public void run()
   {
     if (this.a.getSavaWrapper() != null) {
-      this.a.getSavaWrapper().a(aifg.e);
+      this.a.getSavaWrapper().a(airz.e);
     }
     QLog.i("sava_ChatPieApolloViewController", 1, "preLoadEngine sBasicScript");
   }

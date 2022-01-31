@@ -1,28 +1,36 @@
-import android.support.v4.view.ViewPager.PageTransformer;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.BannerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
+import java.net.URL;
 
 public class rie
-  implements ViewPager.PageTransformer
 {
-  private rie(ChannelTopBanner paramChannelTopBanner) {}
+  private final int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private final URL jdField_a_of_type_JavaNetURL;
+  private final boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
   
-  public void transformPage(View paramView, float paramFloat)
+  public rie(int paramInt1, int paramInt2, URL paramURL, boolean paramBoolean)
   {
-    if (paramView == null) {}
-    while ((this.a.a != null) && (this.a.a.getCount() == 1)) {
-      return;
-    }
-    if ((paramFloat <= -1.1F) || (paramFloat >= 1.1F))
-    {
-      paramView.setScaleX(0.9F);
-      paramView.setScaleY(0.9F);
-      return;
-    }
-    paramFloat = Math.max(0.9F, 1.0F - Math.abs(0.2000001F * paramFloat));
-    paramView.setScaleX(paramFloat);
-    paramView.setScaleY(paramFloat);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaNetURL = paramURL;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
   }
 }
 

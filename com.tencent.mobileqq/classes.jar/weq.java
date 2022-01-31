@@ -1,31 +1,19 @@
-import android.content.Context;
-import android.view.View;
+import android.util.SparseArray;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
 
-final class weq
-  implements begw
+public final class weq
+  extends SparseArray<RotateCircleImageView.BorderStyle>
 {
-  weq(Context paramContext, String paramString, wes paramwes, begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public weq(int paramInt)
   {
-    if (wen.a()) {
-      return;
-    }
-    wen.a(true);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      wen.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Wes);
-    }
+    super(paramInt);
+    append(0, RotateCircleImageView.BorderStyle.STILL);
+    append(1, RotateCircleImageView.BorderStyle.ROTATE);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     weq
  * JD-Core Version:    0.7.0.1
  */

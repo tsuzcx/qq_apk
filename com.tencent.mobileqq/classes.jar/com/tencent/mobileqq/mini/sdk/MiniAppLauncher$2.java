@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.sdk;
 
-import ajjy;
-import bbmy;
+import ajyc;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 final class MiniAppLauncher$2
@@ -11,7 +11,7 @@ final class MiniAppLauncher$2
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131641024) + this.val$appId, 1).a();
+    bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131706809) + this.val$appId, 1).a();
   }
 }
 

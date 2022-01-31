@@ -1,18 +1,22 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-
-class teg
-  extends tcs
+public abstract interface teg
 {
-  teg(tdo paramtdo, StoryVideoItem paramStoryVideoItem, tex paramtex)
-  {
-    super(paramStoryVideoItem);
-  }
+  public abstract String getName();
   
-  public boolean b()
-  {
-    this.jdField_a_of_type_Tex.e = ((String)a("result"));
-    return true;
-  }
+  public abstract int getRelationType();
+  
+  public abstract String getUnionId();
+  
+  public abstract boolean isFriend();
+  
+  public abstract boolean isMe();
+  
+  public abstract boolean isSubscribe();
+  
+  public abstract boolean isSubscribeButNoFriend();
+  
+  public abstract boolean isVip();
+  
+  public abstract boolean isVipButNoFriend();
 }
 
 

@@ -1,37 +1,45 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CountDownLatch;
+import mqq.util.WeakReference;
 
-public class arjn
-  implements ValueAnimator.AnimatorUpdateListener
+final class arjn
+  implements Callable<Bundle>
 {
-  public arjn(MedalGuideView paramMedalGuideView) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private final WeakReference<arjh> jdField_a_of_type_MqqUtilWeakReference;
+  private final String b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  arjn(arjh paramarjh, String paramString1, String paramString2)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("translate")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
-    f = paramValueAnimator.getAnimatedFraction();
-    if ((!this.a.c) && (f >= 0.8857143F))
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramarjh);
+  }
+  
+  public Bundle a()
+  {
+    Object localObject = (arjh)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    Bundle[] arrayOfBundle = new Bundle[1];
+    if (localObject != null)
     {
-      this.a.c = true;
-      this.a.jdField_a_of_type_Befq.sendEmptyMessage(4);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("MedalWallMng", 4, "send MSG_START_3D_ROTATE");
-      }
+      arei localarei = new arei();
+      CountDownLatch localCountDownLatch = new CountDownLatch(1);
+      localarei.a(((arjh)localObject).a, this.b, BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, new arjo(this, localarei, arrayOfBundle, localCountDownLatch));
+      localCountDownLatch.await();
+      return arrayOfBundle[0];
     }
-    if (f >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
-    }
+    localObject = new Bundle();
+    ((Bundle)localObject).putBoolean("isSuccess", false);
+    ((Bundle)localObject).putInt("code", -1000);
+    arrayOfBundle[0] = localObject;
+    return arrayOfBundle[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arjn
  * JD-Core Version:    0.7.0.1
  */

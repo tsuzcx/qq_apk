@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import aoyb;
-import aoyl;
+import appp;
+import appz;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
 import java.util.HashMap;
@@ -10,19 +10,19 @@ import java.util.Map;
 public class VideoFilePresenter$8$1
   implements Runnable
 {
-  public VideoFilePresenter$8$1(aoyl paramaoyl, String paramString) {}
+  public VideoFilePresenter$8$1(appz paramappz, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aoyl.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
+    if (this.jdField_a_of_type_Appz.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
       return;
     }
-    this.jdField_a_of_type_Aoyl.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-    aoyb.a(this.jdField_a_of_type_Aoyl.a, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Appz.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
+    appp.a(this.jdField_a_of_type_Appz.a, this.jdField_a_of_type_JavaLangString);
     HashMap localHashMap = new HashMap();
     localHashMap.put("shouq_bus_type", "bus_type_video_file");
-    this.jdField_a_of_type_Aoyl.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
-    this.jdField_a_of_type_Aoyl.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_Aoyl.a.jdField_a_of_type_AndroidAppActivity, aoyb.a(this.jdField_a_of_type_Aoyl.a), 0L, 0L, this.jdField_a_of_type_Aoyl.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo);
+    this.jdField_a_of_type_Appz.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
+    this.jdField_a_of_type_Appz.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_Appz.a.jdField_a_of_type_AndroidAppActivity, appp.a(this.jdField_a_of_type_Appz.a), 0L, 0L, this.jdField_a_of_type_Appz.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo);
   }
 }
 

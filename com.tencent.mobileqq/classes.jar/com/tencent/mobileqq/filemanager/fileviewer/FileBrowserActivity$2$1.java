@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
-import aoqr;
+import apia;
 
 public class FileBrowserActivity$2$1
   implements Runnable
 {
-  public FileBrowserActivity$2$1(aoqr paramaoqr) {}
+  public FileBrowserActivity$2$1(apia paramapia) {}
   
   public void run()
   {

@@ -1,23 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.setting.QIMSelectEffectParams;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
 
-public final class bhze
-  implements Parcelable.Creator<QIMSelectEffectParams>
+public abstract interface bhze
 {
-  public QIMSelectEffectParams a(Parcel paramParcel)
-  {
-    return new QIMSelectEffectParams(paramParcel);
-  }
-  
-  public QIMSelectEffectParams[] a(int paramInt)
-  {
-    return new QIMSelectEffectParams[paramInt];
-  }
+  public abstract void a(AlumBasicData paramAlumBasicData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhze
  * JD-Core Version:    0.7.0.1
  */

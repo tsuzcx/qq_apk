@@ -1,14 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 
-class bizp
-  implements DialogInterface.OnClickListener
+public final class bizp
 {
-  bizp(bizm parambizm) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static boolean a(View paramView)
   {
-    bizm.a(this.a, "an_yuanshipin");
+    Object localObject = paramView.getTag(2131362186);
+    long l = System.currentTimeMillis();
+    paramView.setTag(2131362186, Long.valueOf(l));
+    return ((localObject instanceof Long)) && (Math.abs(l - ((Long)localObject).longValue()) <= 500L);
   }
 }
 

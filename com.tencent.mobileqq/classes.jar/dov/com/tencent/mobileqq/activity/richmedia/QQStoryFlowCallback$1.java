@@ -1,11 +1,11 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
-import bbmy;
+import bcpw;
 
 public final class QQStoryFlowCallback$1
   implements Runnable
 {
-  public QQStoryFlowCallback$1(bbmy parambbmy) {}
+  public QQStoryFlowCallback$1(bcpw parambcpw) {}
   
   public void run()
   {

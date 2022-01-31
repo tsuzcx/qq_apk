@@ -1,22 +1,20 @@
-public class bhsg
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bhsg
+  implements DialogInterface.OnClickListener
 {
-  private Boolean a;
-  public String a;
+  bhsg(bhsa parambhsa, String[] paramArrayOfString) {}
   
-  public bhsg(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
+    paramDialogInterface.dismiss();
+    bhsa.a(this.jdField_a_of_type_Bhsa, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhsg
  * JD-Core Version:    0.7.0.1
  */

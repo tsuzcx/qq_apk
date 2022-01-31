@@ -1,25 +1,48 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.helper.nativelayout.NativeRelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class qzf
-  implements ViewFactory.FoundClickableViewListener
+public class qzf
+  extends Handler
 {
-  qzf(qze paramqze, ProteusItemData paramProteusItemData, Context paramContext) {}
+  public qzf(BaseTabbar paramBaseTabbar) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void handleMessage(Message paramMessage)
   {
-    if (("id_interaction_ui_view".equals(paramViewBase.getName())) && ((paramViewBase instanceof NativeRelativeLayout)))
+    switch (paramMessage.what)
     {
-      ViewBase localViewBase = (ViewBase)((NativeRelativeLayout)paramViewBase).getSubViews().get(0);
-      if ((localViewBase instanceof oyl)) {
-        ((oyl)localViewBase).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b, 1);
+    default: 
+    case 0: 
+      int i;
+      do
+      {
+        return;
+        BaseTabbar.a(this.a, 0.0F);
+        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
+        this.a.invalidate();
+        i = paramMessage.arg1;
+        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
+      } while (i == 1);
+      BaseTabbar.a(this.a, BaseTabbar.a(this.a), BaseTabbar.b(this.a));
+      return;
+    case 1: 
+      if (BaseTabbar.a(this.a) < 1.0F)
+      {
+        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
+        this.a.invalidate();
+        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
+        return;
       }
+      sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(2), 10L);
+      return;
     }
-    paramViewBase.setOnClickListener(new qzg(this, paramViewBase));
+    BaseTabbar.a(this.a);
+    this.a.a(BaseTabbar.a(this.a), BaseTabbar.b(this.a));
+    BaseTabbar.a(this.a, 1.0F);
+    BaseTabbar.a(this.a, BaseTabbar.b(this.a));
+    this.a.invalidate();
+    BaseTabbar.a(this.a).set(false);
   }
 }
 

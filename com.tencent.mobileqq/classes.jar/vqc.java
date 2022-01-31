@@ -1,10 +1,4 @@
-import android.view.View;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
-
-public abstract interface vqc
-{
-  public abstract void a(InnerListView paramInnerListView, View paramView, int paramInt);
-}
+class vqc {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

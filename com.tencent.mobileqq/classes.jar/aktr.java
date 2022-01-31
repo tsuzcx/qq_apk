@@ -1,53 +1,17 @@
-public class aktr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+final class aktr
+  implements DialogInterface.OnDismissListener
 {
-  public double a;
-  public int a;
-  public aktn a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g = "";
-  
-  public String toString()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("result:{sclass:");
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      str = this.jdField_a_of_type_JavaLangString;
-      localStringBuilder = localStringBuilder.append(str).append(",").append("sItemId:");
-      if (this.jdField_a_of_type_Aktn == null) {
-        break label230;
-      }
-      str = this.jdField_a_of_type_Aktn.jdField_a_of_type_JavaLangString;
-      label56:
-      localStringBuilder = localStringBuilder.append(str).append(",").append("dProb:").append(this.jdField_a_of_type_Double).append(",").append("sTitle:").append(this.d).append(",").append("sWiki:").append(this.e).append(",").append("sJumpUrl:").append(this.f).append(",").append("sCdbRes:");
-      if (this.jdField_a_of_type_ArrayOfByte == null) {
-        break label236;
-      }
-    }
-    label230:
-    label236:
-    for (String str = new String(this.jdField_a_of_type_ArrayOfByte);; str = "")
-    {
-      return str + "," + "isAutoJump:" + this.jdField_a_of_type_Boolean + "," + "iNeedCheckLBS:" + this.c + "," + "imageId:" + this.g + "}";
-      str = "";
-      break;
-      str = "";
-      break label56;
-    }
+    aktq.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aktr
  * JD-Core Version:    0.7.0.1
  */

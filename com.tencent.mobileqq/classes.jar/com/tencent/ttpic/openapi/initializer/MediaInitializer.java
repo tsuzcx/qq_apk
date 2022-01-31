@@ -1,5 +1,6 @@
 package com.tencent.ttpic.openapi.initializer;
 
+import com.tencent.aekit.api.standard.AEModule;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +9,7 @@ public class MediaInitializer
   extends Feature
 {
   private static final String TAG = PagInitializer.class.getSimpleName();
-  private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("vbox_20190530") };
+  private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("mp4con_20190710"), new SharedLibraryInfo("soft_decoder_20190710"), new SharedLibraryInfo("vbox_20190530") };
   
   protected boolean destroyImpl()
   {
@@ -27,6 +28,9 @@ public class MediaInitializer
   
   public List<SharedLibraryInfo> getSharedLibraries()
   {
+    if (AEModule.isEnableReducedMeidaLibrary()) {
+      return Arrays.asList(new SharedLibraryInfo[] { sharedLibraries[2] });
+    }
     return Arrays.asList(sharedLibraries);
   }
   

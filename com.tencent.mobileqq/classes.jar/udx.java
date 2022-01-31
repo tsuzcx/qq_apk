@@ -1,37 +1,20 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-class udx
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class udx
+  implements ufm
 {
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private boolean jdField_a_of_type_Boolean;
+  public udx(TextureVideoView paramTextureVideoView) {}
   
-  udx(udw paramudw) {}
-  
-  public void onGlobalLayout()
+  public void a(ufk paramufk)
   {
-    udw.a(this.jdField_a_of_type_Udw).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
-    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
-    if (i != this.jdField_a_of_type_Int)
-    {
-      int j = udw.a(this.jdField_a_of_type_Udw).getRootView().getHeight();
-      if (j - i <= j / 4) {
-        break label79;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      udw.a(this.jdField_a_of_type_Udw);
+    this.a.jdField_a_of_type_Int = 5;
+    this.a.b = 5;
+    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
-      label79:
-      if (this.jdField_a_of_type_Boolean) {
-        udw.b(this.jdField_a_of_type_Udw);
-      }
+    if (this.a.jdField_a_of_type_Ufm != null) {
+      this.a.jdField_a_of_type_Ufm.a(this.a.jdField_a_of_type_Ufk);
     }
   }
 }

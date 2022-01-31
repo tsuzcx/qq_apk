@@ -1,12 +1,14 @@
 public abstract interface ajfm
 {
-  public abstract void b(byte[] paramArrayOfByte);
+  public abstract void a();
   
-  public abstract void d();
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajfm
  * JD-Core Version:    0.7.0.1
  */

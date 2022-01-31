@@ -1,50 +1,70 @@
-import QQWalletPay.RespCheckChangePwdAuth;
-import android.os.Handler;
-import android.os.Message;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
 class badb
-  extends Handler
+  implements View.OnTouchListener
 {
-  private badb(bacn parambacn) {}
+  long jdField_a_of_type_Long = 0L;
   
-  public void handleMessage(Message paramMessage)
+  badb(bacz parambacz) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramMessage.what != 1) {
-      return;
+    if ((this.jdField_a_of_type_Bacz.jdField_a_of_type_Boolean) || (!(paramView instanceof ImageView))) {
+      return false;
     }
-    if (bacn.a(this.a) != null)
+    int i = paramMotionEvent.getAction();
+    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof asyb))) {}
+    for (paramMotionEvent = (asyb)paramView.getTag();; paramMotionEvent = null)
     {
-      bacn.a(this.a).a();
-      bacn.a(this.a).removeObserver(bacn.a(this.a));
-    }
-    if (paramMessage.arg1 != 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("JumpAction", 2, "msf return error ");
-      }
-      bacn.a(this.a, 1);
-      return;
-    }
-    if ((paramMessage.obj instanceof RespCheckChangePwdAuth))
-    {
-      paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
-      if (paramMessage.retCode == 0)
+      switch (i)
       {
-        bacn.b(this.a);
-        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("JumpAction", 2, "server return error, errorCode: " + paramMessage.retCode + " errorMsg: " + paramMessage.retMsg);
+      for (;;)
+      {
+        return true;
+        if (paramMotionEvent != null)
+        {
+          paramView.setAlpha(paramMotionEvent.a() * 0.5F);
+        }
+        else
+        {
+          paramView.setAlpha(0.5F);
+          continue;
+          if (paramMotionEvent != null) {
+            paramView.setAlpha(paramMotionEvent.a());
+          }
+          while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 800L)
+          {
+            return true;
+            paramView.setAlpha(1.0F);
+          }
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          axqw.b(this.jdField_a_of_type_Bacz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Bacz.jdField_a_of_type_JavaLangString, "0X800A852", "0X800A852", 0, 0, "" + paramMotionEvent.jdField_a_of_type_Long, "", "", "");
+          paramView = bali.a().a(this.jdField_a_of_type_Bacz.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bacz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          paramMotionEvent = new Intent(this.jdField_a_of_type_Bacz.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+          paramMotionEvent.putExtra("url", paramView);
+          this.jdField_a_of_type_Bacz.jdField_a_of_type_AndroidAppActivity.startActivity(paramMotionEvent);
+          continue;
+          if (paramMotionEvent != null) {
+            paramView.setAlpha(paramMotionEvent.a());
+          } else {
+            paramView.setAlpha(1.0F);
+          }
+        }
       }
     }
-    bacn.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     badb
  * JD-Core Version:    0.7.0.1
  */

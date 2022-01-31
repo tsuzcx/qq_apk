@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry;
 
-import agtk;
+import ahfz;
 import com.tencent.qphone.base.util.QLog;
 
 public class SpringHbEntryManager$3
   implements Runnable
 {
-  public SpringHbEntryManager$3(agtk paramagtk) {}
+  public SpringHbEntryManager$3(ahfz paramahfz) {}
   
   public void run()
   {
     try
     {
-      agtk.b(this.this$0);
-      agtk.c(this.this$0);
-      agtk.d(this.this$0);
-      agtk.e(this.this$0);
+      ahfz.b(this.this$0);
+      ahfz.c(this.this$0);
+      ahfz.d(this.this$0);
+      ahfz.e(this.this$0);
       return;
     }
     catch (Throwable localThrowable)

@@ -1,30 +1,33 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class alfp
-  extends ajmm
+  implements aley
 {
   alfp(alfo paramalfo) {}
   
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  public void a(alfw paramalfw)
   {
-    if ((alfo.a(this.a) != null) && (paramList != null))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-        if ((localMessageRecord != null) && (localMessageRecord.uniseq == alfo.a(this.a).b)) {
-          this.a.a(localMessageRecord.uniseq);
-        }
-      }
+    alfo.f(this.a, false);
+    if (alfo.a(this.a)) {
+      return;
     }
+    if (alfo.a(this.a) != null) {
+      alfo.a(this.a).removeMessages(2);
+    }
+    QLog.i("AREngine_ARCloudControl", 1, "onARCloudLBSLocationCheckComplete. retCode = " + paramalfw.jdField_a_of_type_Int + ", imageId = " + paramalfw.jdField_a_of_type_JavaLangString);
+    if (alfo.a(this.a) != null)
+    {
+      algo.a(this.a.a.recognitions, alfo.a(this.a), paramalfw);
+      alfo.a(this.a).a(0, alfo.a(this.a));
+    }
+    alfo.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alfp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import afdq;
+import afpo;
 
 public class ContactsTroopAdapter$5
   implements Runnable
 {
-  public ContactsTroopAdapter$5(afdq paramafdq) {}
+  public ContactsTroopAdapter$5(afpo paramafpo) {}
   
   public void run()
   {
-    afdq.a(this.this$0);
+    afpo.a(this.this$0);
   }
 }
 

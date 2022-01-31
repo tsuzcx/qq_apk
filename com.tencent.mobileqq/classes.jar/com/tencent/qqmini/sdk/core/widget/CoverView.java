@@ -8,9 +8,9 @@ import android.graphics.Path.FillType;
 import android.graphics.RectF;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import bdii;
-import bdnw;
-import bdyn;
+import beml;
+import besl;
+import bffu;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,7 +20,7 @@ public class CoverView
 {
   private float jdField_a_of_type_Float;
   public int a;
-  private bdii jdField_a_of_type_Bdii;
+  private beml jdField_a_of_type_Beml;
   private String jdField_a_of_type_JavaLangString;
   protected boolean a;
   private float jdField_b_of_type_Float;
@@ -30,7 +30,7 @@ public class CoverView
   public CoverView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Float = bdyn.a(paramContext);
+    this.jdField_a_of_type_Float = bffu.a(paramContext);
   }
   
   public int a()
@@ -68,7 +68,7 @@ public class CoverView
     while (this.jdField_b_of_type_Boolean)
     {
       return true;
-      bdnw.a("CoverView", "--ACTION_DOWN--");
+      besl.a("CoverView", "--ACTION_DOWN--");
       int j;
       JSONObject localJSONObject5;
       try
@@ -82,17 +82,17 @@ public class CoverView
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touch", localJSONObject1);
-        if (this.jdField_a_of_type_Bdii == null) {
+        if (this.jdField_a_of_type_Beml == null) {
           continue;
         }
-        this.jdField_a_of_type_Bdii.a("onTouchStart", localJSONObject5.toString());
+        this.jdField_a_of_type_Beml.a("onTouchStart", localJSONObject5.toString());
       }
       catch (JSONException localJSONException1)
       {
         localJSONException1.printStackTrace();
       }
       continue;
-      bdnw.a("CoverView", "--ACTION_POINTER_DOWN--" + paramMotionEvent.getPointerCount() + "   " + paramMotionEvent.getActionIndex() + "   " + paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
+      besl.a("CoverView", "--ACTION_POINTER_DOWN--" + paramMotionEvent.getPointerCount() + "   " + paramMotionEvent.getActionIndex() + "   " + paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
       int k;
       try
       {
@@ -106,10 +106,10 @@ public class CoverView
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touch", localJSONObject2);
-        if (this.jdField_a_of_type_Bdii == null) {
+        if (this.jdField_a_of_type_Beml == null) {
           continue;
         }
-        this.jdField_a_of_type_Bdii.a("onTouchStart", localJSONObject5.toString());
+        this.jdField_a_of_type_Beml.a("onTouchStart", localJSONObject5.toString());
       }
       catch (JSONException localJSONException2)
       {
@@ -134,68 +134,68 @@ public class CoverView
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touches", localJSONArray1);
-        if (this.jdField_a_of_type_Bdii == null) {
+        if (this.jdField_a_of_type_Beml == null) {
           continue;
         }
-        this.jdField_a_of_type_Bdii.a("onTouchMove", localJSONObject5.toString());
+        this.jdField_a_of_type_Beml.a("onTouchMove", localJSONObject5.toString());
       }
       catch (JSONException localJSONException3)
       {
         localJSONException3.printStackTrace();
       }
       continue;
-      bdnw.a("CoverView", "--ACTION_UP--");
+      besl.a("CoverView", "--ACTION_UP--");
       try
       {
         JSONObject localJSONObject3 = new JSONObject();
-        i = (int)bdyn.a(paramMotionEvent.getX());
-        j = (int)bdyn.a(paramMotionEvent.getY());
+        i = (int)bffu.a(paramMotionEvent.getX());
+        j = (int)bffu.a(paramMotionEvent.getY());
         localJSONObject3.put("x", i);
         localJSONObject3.put("y", j);
         localJSONObject3.put("id", paramMotionEvent.getPointerId(0));
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touch", localJSONObject3);
-        if (this.jdField_a_of_type_Bdii == null) {
+        if (this.jdField_a_of_type_Beml == null) {
           continue;
         }
-        this.jdField_a_of_type_Bdii.a("onTouchEnd", localJSONObject5.toString());
+        this.jdField_a_of_type_Beml.a("onTouchEnd", localJSONObject5.toString());
       }
       catch (JSONException localJSONException4)
       {
         localJSONException4.printStackTrace();
       }
       continue;
-      bdnw.a("CoverView", "--ACTION_POINTER_UP--" + paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
+      besl.a("CoverView", "--ACTION_POINTER_UP--" + paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
       try
       {
         i = paramMotionEvent.getActionIndex();
         JSONObject localJSONObject4 = new JSONObject();
-        j = (int)bdyn.a(paramMotionEvent.getX(i));
-        k = (int)bdyn.a(paramMotionEvent.getY(i));
+        j = (int)bffu.a(paramMotionEvent.getX(i));
+        k = (int)bffu.a(paramMotionEvent.getY(i));
         localJSONObject4.put("x", j);
         localJSONObject4.put("y", k);
         localJSONObject4.put("id", paramMotionEvent.getPointerId(i));
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touch", localJSONObject4);
-        if (this.jdField_a_of_type_Bdii == null) {
+        if (this.jdField_a_of_type_Beml == null) {
           continue;
         }
-        this.jdField_a_of_type_Bdii.a("onTouchEnd", localJSONObject5.toString());
+        this.jdField_a_of_type_Beml.a("onTouchEnd", localJSONObject5.toString());
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
       }
       continue;
-      bdnw.a("CoverView", "--ACTION_CANCEL--");
+      besl.a("CoverView", "--ACTION_CANCEL--");
       JSONArray localJSONArray2 = new JSONArray();
       try
       {
         localJSONObject5 = new JSONObject();
-        i = (int)bdyn.a(paramMotionEvent.getX());
-        j = (int)bdyn.a(paramMotionEvent.getY());
+        i = (int)bffu.a(paramMotionEvent.getX());
+        j = (int)bffu.a(paramMotionEvent.getY());
         localJSONObject5.put("x", i);
         localJSONObject5.put("y", j);
         localJSONObject5.put("id", paramMotionEvent.getPointerId(0));
@@ -203,8 +203,8 @@ public class CoverView
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touches", localJSONArray2);
-        if (this.jdField_a_of_type_Bdii != null) {
-          this.jdField_a_of_type_Bdii.a("onTouchCancel", localJSONObject5.toString());
+        if (this.jdField_a_of_type_Beml != null) {
+          this.jdField_a_of_type_Beml.a("onTouchCancel", localJSONObject5.toString());
         }
       }
       catch (JSONException localJSONException5)
@@ -220,11 +220,11 @@ public class CoverView
     this.jdField_b_of_type_Float = paramFloat;
   }
   
-  public void setData(String paramString, boolean paramBoolean, bdii parambdii)
+  public void setData(String paramString, boolean paramBoolean, beml parambeml)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_b_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Bdii = parambdii;
+    this.jdField_a_of_type_Beml = parambeml;
   }
   
   public void setFixed(boolean paramBoolean)

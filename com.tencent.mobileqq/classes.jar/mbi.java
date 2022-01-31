@@ -1,22 +1,35 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.guide.GuideHelper;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-class mbi
-  implements View.OnKeyListener
+public class mbi
+  extends lfg
 {
-  mbi(mbf parammbf) {}
+  public mbi(AVActivity paramAVActivity) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  protected void a(long paramLong1, long paramLong2)
   {
-    if (paramKeyEvent.getAction() == 0) {}
-    switch (paramInt)
-    {
-    default: 
-      return false;
+    if (this.a.isDestroyed()) {
+      return;
     }
-    mbf.b(this.a);
-    return true;
+    this.a.a.a(paramLong1, this.a, 4, 0);
+  }
+  
+  protected void b(long paramLong, int paramInt1, int paramInt2)
+  {
+    if (this.a.isDestroyed()) {
+      return;
+    }
+    paramLong = AudioHelper.b();
+    this.a.a.a(paramLong, this.a, 3, 2);
+  }
+  
+  protected void b(long paramLong1, long paramLong2)
+  {
+    if (this.a.isDestroyed()) {
+      return;
+    }
+    this.a.a.a(paramLong1, this.a, 4, 0);
   }
 }
 

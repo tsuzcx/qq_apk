@@ -1,38 +1,31 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.view.View;
 
-class rrf
-  implements bbsh
+public class rrf
+  extends pms
 {
-  rrf(rrd paramrrd, String paramString, run paramrun) {}
+  private final String a;
   
-  public void a(BaseResp paramBaseResp)
+  public rrf(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      vvp.b(1, 2131653595);
-      bool = false;
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      if (this.jdField_a_of_type_Run == null) {
-        break;
-      }
-      this.jdField_a_of_type_Run.a(bool);
-      return;
-      vvp.b(2, 2131653612);
-      continue;
-      bool = false;
-    }
+    super(paramInt1, paramInt2, paramInt3);
+    this.a = paramString;
+  }
+  
+  public rrf(String paramString, int paramInt)
+  {
+    super(-12084769, paramInt, 860716207);
+    this.a = paramString;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    onk.a(paramView.getContext(), this.a);
   }
 }
 

@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 
-public final class usf
-  implements Parcelable.Creator<EditLocalGifSource>
+class usf
+  implements bcmw
 {
-  public EditLocalGifSource a(Parcel paramParcel)
-  {
-    return new EditLocalGifSource(paramParcel);
-  }
+  usf(use paramuse, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
   
-  public EditLocalGifSource[] a(int paramInt)
+  public void a(String paramString)
   {
-    return new EditLocalGifSource[paramInt];
+    veg.a("Q.qqstory.detail.FeedItemThumbAdapter", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
+    swa.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
   }
 }
 

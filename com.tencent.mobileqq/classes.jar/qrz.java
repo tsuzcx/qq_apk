@@ -1,6 +1,17 @@
-public abstract interface qrz
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
+
+class qrz
+  implements DialogInterface.OnShowListener
 {
-  public abstract void a();
+  qrz(qrw paramqrw) {}
+  
+  public void onShow(DialogInterface paramDialogInterface)
+  {
+    qrw.a(this.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
+    qrw.a(this.a).getWindow().clearFlags(8);
+  }
 }
 
 

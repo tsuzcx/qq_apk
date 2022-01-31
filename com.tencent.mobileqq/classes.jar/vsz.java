@@ -1,18 +1,20 @@
-import android.view.View;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
 
-class vsz
-  implements behy
+public class vsz
+  extends Handler
 {
-  vsz(vsy paramvsy, View paramView) {}
+  public vsz(RMWService paramRMWService) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    vsx.b("RMWService", "service.handle : " + vsy.a(paramMessage));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vsz
  * JD-Core Version:    0.7.0.1
  */

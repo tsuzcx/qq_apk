@@ -1,16 +1,39 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
 public class qqw
-  extends omr
+  extends siy
 {
-  public qqw(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean, int paramInt)
-  {
-    super(paramString);
-  }
+  private qqw(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void a(oml paramoml)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    paramoml.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    VideoFeedsPlayActivity.a("onGetDianZanState isSuccess: " + paramBoolean);
+    if ((!paramBoolean) || (paramBundle == null)) {}
+    int i;
+    do
+    {
+      String str;
+      do
+      {
+        return;
+        str = paramBundle.getString("VALUE_VIDEO_ARTICLE_ID");
+        i = paramBundle.getInt("VALUE_VIDEO_FAVORITE_STATE");
+      } while (str == null);
+      paramBundle = VideoFeedsRecommendFragment.a(this.a).a(str);
+    } while (paramBundle == null);
+    if (i == 1) {
+      paramBundle.l = true;
+    }
+    for (;;)
+    {
+      VideoFeedsRecommendFragment.a(this.a).b(paramBundle);
+      return;
+      if (i == 0) {
+        paramBundle.l = false;
+      }
+    }
   }
 }
 

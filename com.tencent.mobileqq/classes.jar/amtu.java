@@ -1,35 +1,33 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-
 public class amtu
-  implements RadioGroup.OnCheckedChangeListener
 {
-  public amtu(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime, String paramString) {}
+  private amtv jdField_a_of_type_Amtv;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public amtu()
   {
-    if (paramInt == 2131299840) {
-      DBFixConfigActivity.a = 1;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(DBFixManager.b, 0).edit().putInt(this.jdField_a_of_type_JavaLangString + DBFixManager.c, DBFixConfigActivity.a).commit();
-      return;
-      if (paramInt == 2131299372) {
-        DBFixConfigActivity.a = 2;
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Amtv = new amtv();
+  }
+  
+  public amtu(String paramString, amtv paramamtv)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Amtv = paramamtv;
+  }
+  
+  public amtv a()
+  {
+    return this.jdField_a_of_type_Amtv;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amtu
  * JD-Core Version:    0.7.0.1
  */

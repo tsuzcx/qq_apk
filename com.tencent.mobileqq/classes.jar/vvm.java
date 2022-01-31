@@ -1,12 +1,21 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
-public abstract interface vvm
+public class vvm
+  implements AdapterView.OnItemClickListener
 {
-  public abstract void a(ArrayList<vvj> paramArrayList);
+  public vvm(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    HorizontalSelectColorLayout.a(this.a, paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vvm
  * JD-Core Version:    0.7.0.1
  */

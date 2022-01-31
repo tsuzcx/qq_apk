@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import abju;
-import abjv;
-import agwj;
-import ajjy;
+import abtu;
+import abtv;
+import ahiy;
+import ajyc;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
@@ -19,9 +19,9 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import awqx;
-import azve;
-import azvv;
+import axqw;
+import bawi;
+import bawz;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForPeak;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -34,7 +34,7 @@ import mqq.os.MqqHandler;
 
 public class EmojiRedPackPreviewFragment
   extends PublicBaseFragment
-  implements abjv, View.OnClickListener
+  implements abtv, View.OnClickListener
 {
   public static final String TAG = "EmojiRedPackPreviewFragment";
   public ImageView imgLottie;
@@ -62,20 +62,20 @@ public class EmojiRedPackPreviewFragment
     this.mLocalMediaInfo = ((LocalMediaInfo)getArguments().getSerializable("emoji_capture_media_info"));
     this.tag = getArguments().getInt("emoji_capture_tag", 0);
     initThumb();
-    agwj.a(this.reCaptureBtn, 0.3F);
-    agwj.a(this.sendBtn, 0.3F);
-    azve.a(this.reCaptureBtn, ajjy.a(2131638233));
-    azve.a(this.sendBtn, ajjy.a(2131638236));
+    ahiy.a(this.reCaptureBtn, 0.3F);
+    ahiy.a(this.sendBtn, 0.3F);
+    bawi.a(this.reCaptureBtn, ajyc.a(2131704018));
+    bawi.a(this.sendBtn, ajyc.a(2131704021));
     this.reCaptureBtn.setOnClickListener(this);
     this.sendBtn.setOnClickListener(this);
-    this.tips.setText(ajjy.a(2131638235));
+    this.tips.setText(ajyc.a(2131704020));
     LottieComposition.Factory.fromJsonString(getMoneyLottieJson(), new EmojiRedPackPreviewFragment.1(this));
     this.internalProgress = ((int)(this.mLocalMediaInfo.mDuration * 0.33D) / 100);
     ThreadManager.getUIHandler().post(this.percentRun);
-    int i = azvv.a(getActivity(), 75.0F);
-    int j = azvv.a(getActivity(), 75.0F);
+    int i = bawz.a(getActivity(), 75.0F);
+    int j = bawz.a(getActivity(), 75.0F);
     this.viewOpenAnim.setPivotX(i / 2);
-    this.viewOpenAnim.setPivotY(j / 2 + azvv.a(getActivity(), 15.0F));
+    this.viewOpenAnim.setPivotY(j / 2 + bawz.a(getActivity(), 15.0F));
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.viewOpenAnim, "rotation", new float[] { -5.0F, 20.0F });
     localObjectAnimator.setDuration(200L);
     localObjectAnimator.setRepeatMode(2);
@@ -92,13 +92,13 @@ public class EmojiRedPackPreviewFragment
   
   private void initUI()
   {
-    this.previewImg = ((ImageView)getActivity().findViewById(2131302380));
-    this.reCaptureBtn = ((Button)getActivity().findViewById(2131298072));
-    this.sendBtn = getActivity().findViewById(2131298032);
-    this.viewOpenAnim = getActivity().findViewById(2131302371);
-    this.tips = ((TextView)getActivity().findViewById(2131312678));
-    this.numberProbar = ((NumberProgressBar)getActivity().findViewById(2131306256));
-    this.imgLottie = ((ImageView)getActivity().findViewById(2131302366));
+    this.previewImg = ((ImageView)getActivity().findViewById(2131368000));
+    this.reCaptureBtn = ((Button)getActivity().findViewById(2131363624));
+    this.sendBtn = getActivity().findViewById(2131363582);
+    this.viewOpenAnim = getActivity().findViewById(2131367991);
+    this.tips = ((TextView)getActivity().findViewById(2131378502));
+    this.numberProbar = ((NumberProgressBar)getActivity().findViewById(2131371951));
+    this.imgLottie = ((ImageView)getActivity().findViewById(2131367986));
   }
   
   public static void start(Activity paramActivity, int paramInt1, int paramInt2, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
@@ -108,7 +108,7 @@ public class EmojiRedPackPreviewFragment
     localIntent.putExtra("emoji_capture_tag", paramInt2);
     localIntent.putExtra("emoji_capture_result", paramVideoCaptureResult);
     localIntent.putExtra("emoji_capture_media_info", paramLocalMediaInfo);
-    abju.a(paramActivity, localIntent, PublicFragmentActivityForPeak.class, EmojiRedPackPreviewFragment.class, paramInt1);
+    abtu.a(paramActivity, localIntent, PublicFragmentActivityForPeak.class, EmojiRedPackPreviewFragment.class, paramInt1);
   }
   
   public void doConvert()
@@ -146,7 +146,7 @@ public class EmojiRedPackPreviewFragment
     {
     default: 
       return;
-    case 2131298072: 
+    case 2131363624: 
       getActivity().finish();
       return;
     }
@@ -154,12 +154,12 @@ public class EmojiRedPackPreviewFragment
     paramView.putExtra("return_action", 1);
     getActivity().setResult(-1, paramView);
     getActivity().finish();
-    awqx.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.finish", 0, 0, "", "", "", "");
+    axqw.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.finish", 0, 0, "", "", "", "");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2131495995, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2131561587, paramViewGroup, false);
   }
   
   public void onDestroy()

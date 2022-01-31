@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.systemmsg;
 
 import android.content.res.Resources;
-import azlj;
+import bamn;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -56,13 +56,13 @@ public class MessageForSystemMsg
       }
       QLog.i("MessageForSystemMsg", 2, String.format("getSysMsgDesc, msg: %s, suffix: %s", new Object[] { Integer.valueOf(i), paramResources }));
       return paramResources;
-      paramResources = paramResources.getString(2131624123);
+      paramResources = paramResources.getString(2131689663);
       break label87;
-      paramResources = paramResources.getString(2131624003);
+      paramResources = paramResources.getString(2131689542);
       break label87;
-      paramResources = paramResources.getString(2131624002);
+      paramResources = paramResources.getString(2131689541);
       break label87;
-      paramResources = paramResources.getString(2131652854);
+      paramResources = paramResources.getString(2131718679);
       break label87;
       if (i == 2)
       {
@@ -71,13 +71,13 @@ public class MessageForSystemMsg
         if (QLog.isColorLevel()) {
           QLog.d("MessageForSystemMsg", 2, "groupMsgType:" + j + "|req_uin_nick:" + paramStructMsg.msg.req_uin_nick.get() + "|actor_uin_nick:" + paramStructMsg.msg.actor_uin_nick.get() + "|action_uin_nick:" + paramStructMsg.msg.action_uin_nick.get() + "|msg_describe:" + paramStructMsg.msg.msg_describe.get());
         }
-        j = azlj.a(j);
+        j = bamn.a(j);
         if (j == 1) {
           paramResources = paramStructMsg.msg.action_uin_nick.get();
         }
         for (;;)
         {
-          paramResources = azlj.a(paramStructMsg, paramResources + paramStructMsg.msg.msg_describe.get());
+          paramResources = bamn.a(paramStructMsg, paramResources + paramStructMsg.msg.msg_describe.get());
           break;
           if (j == 2) {
             paramResources = paramStructMsg.msg.req_uin_nick.get();

@@ -1,18 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class wzn
-  implements View.OnClickListener
+  extends wad
 {
-  wzn(wzm paramwzm) {}
+  wzn(wzh paramwzh, wzr paramwzr) {}
   
-  public void onClick(View paramView)
+  public void onFailure(String paramString)
   {
-    if (wzm.a(this.a) == null) {}
-    while (wpl.a(wzm.class.getName() + "clickPanel")) {
-      return;
+    QLog.w(".troop.VideoCombineHelper", 1, "concatMediaByTs change ts onSuccess: " + paramString);
+    this.jdField_a_of_type_Wzr.onFailure(paramString);
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.w(".troop.trace_video_combine", 2, "concatMediaByTs change ts onSuccess: " + paramString);
+      QLog.d(".troop.trace_video_combine", 2, "convertToTsTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Wzh.a.a));
     }
-    this.a.a(false);
+    this.jdField_a_of_type_Wzh.a.a = System.currentTimeMillis();
   }
 }
 

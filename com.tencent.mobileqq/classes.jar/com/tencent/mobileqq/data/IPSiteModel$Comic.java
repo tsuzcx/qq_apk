@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import amrz;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anig;
 import java.util.List;
 
 public class IPSiteModel$Comic
   implements Parcelable
 {
-  public static final Parcelable.Creator<Comic> CREATOR = new amrz();
+  public static final Parcelable.Creator<Comic> CREATOR = new anig();
   public List<IPSiteModel.ComicRich> comicRiches;
   public int comicType;
   public String cover;

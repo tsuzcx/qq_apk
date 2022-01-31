@@ -1,37 +1,31 @@
+import android.view.View;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+
 class autv
+  implements bfoq
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
+  autv(autt paramautt, PersonalityLabelInfo paramPersonalityLabelInfo, bfol parambfol) {}
   
-  public autv(autu paramautu, String paramString, int paramInt1, int paramInt2)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Int > 0) {
-      return this.b * 100 / this.jdField_a_of_type_Int;
+    switch (paramInt)
+    {
     }
-    return 0;
-  }
-  
-  public void a()
-  {
-    this.b += 1;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int += 1;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.e();
+      return;
+      autt.a(this.jdField_a_of_type_Autt, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
+      continue;
+      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Autt.a, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
+      this.jdField_a_of_type_Autt.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     autv
  * JD-Core Version:    0.7.0.1
  */

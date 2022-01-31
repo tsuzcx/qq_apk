@@ -1,8 +1,40 @@
-public abstract interface lcl
+import com.tencent.qphone.base.util.QLog;
+
+public class lcl
 {
-  public abstract void a(int paramInt);
+  @Deprecated
+  public static void a(String paramString1, String paramString2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(paramString1, 4, paramString2);
+    }
+  }
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
+  @Deprecated
+  public static void b(String paramString1, String paramString2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.e(paramString1, 4, paramString2);
+    }
+  }
+  
+  @Deprecated
+  public static void c(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public static void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
 }
 
 

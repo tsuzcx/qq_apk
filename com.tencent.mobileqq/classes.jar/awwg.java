@@ -1,84 +1,57 @@
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import org.xml.sax.SAXException;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class awwg
+  implements awwo
 {
-  public static AbsStructMsg a(String paramString)
+  protected View a;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private awwp jdField_a_of_type_Awwp;
+  private List<awwp> jdField_a_of_type_JavaUtilList;
+  private TextView b;
+  
+  public awwg() {}
+  
+  public awwg(ViewGroup paramViewGroup, int paramInt)
   {
-    paramString = new ByteArrayInputStream(paramString.getBytes());
-    awwd localawwd = new awwd();
-    SAXParserFactory localSAXParserFactory = SAXParserFactory.newInstance();
-    try
-    {
-      localSAXParserFactory.newSAXParser().parse(paramString, localawwd);
-      paramString.close();
-      paramString = localawwd.a();
-      return paramString;
-    }
-    catch (ParserConfigurationException paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-      }
-      return null;
-    }
-    catch (SAXException paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-        }
-      }
-    }
-    catch (IOException paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-        }
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370398));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(new awwj(this.jdField_a_of_type_AndroidViewView.findViewById(2131368286)));
+    this.jdField_a_of_type_JavaUtilList.add(new awwj(this.jdField_a_of_type_AndroidViewView.findViewById(2131368292)));
+    this.jdField_a_of_type_JavaUtilList.add(new awwj(this.jdField_a_of_type_AndroidViewView.findViewById(2131368298)));
+    this.jdField_a_of_type_JavaUtilList.add(new awwj(this.jdField_a_of_type_AndroidViewView.findViewById(2131368304)));
+    this.jdField_a_of_type_JavaUtilList.add(new awwj(this.jdField_a_of_type_AndroidViewView.findViewById(2131368305)));
+    this.jdField_a_of_type_Awwp = new awwj(this.jdField_a_of_type_AndroidViewView.findViewById(2131368306));
   }
   
-  public static String a(String paramString)
+  public View a()
   {
-    try
-    {
-      paramString = new FileInputStream(paramString);
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      byte[] arrayOfByte = new byte[1024];
-      for (;;)
-      {
-        int i = paramString.read(arrayOfByte, 0, 1024);
-        if (i == -1) {
-          break;
-        }
-        localByteArrayOutputStream.write(arrayOfByte, 0, i);
-      }
-      paramString = new String(localByteArrayOutputStream.toByteArray(), "utf-8");
-    }
-    catch (IOException paramString)
-    {
-      paramString.printStackTrace();
-      return "";
-    }
-    return paramString;
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public List<awwp> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awwg
  * JD-Core Version:    0.7.0.1
  */

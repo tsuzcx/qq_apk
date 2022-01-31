@@ -1,19 +1,15 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 
 public class aooy
-  extends avkj<avon, avww>
+  implements View.OnClickListener
 {
-  public aooy(TroopFileSearchFragment paramTroopFileSearchFragment) {}
+  public aooy(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  protected avri<avon, avww> a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new aopa();
-  }
-  
-  protected avwx a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new aopc(paramViewGroup);
+    LocalFileBrowserActivity.a(this.a);
   }
 }
 

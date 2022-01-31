@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import qhp;
-import qhq;
+import qtu;
+import qtv;
 
 public class VideoPlayManager$1$1
   implements Runnable
 {
-  public VideoPlayManager$1$1(qhq paramqhq) {}
+  public VideoPlayManager$1$1(qtv paramqtv) {}
   
   public void run()
   {

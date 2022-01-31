@@ -1,478 +1,456 @@
-import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager.1;
+import com.tencent.mobileqq.activity.contacts.base.CardViewController.2;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import mqq.app.AppRuntime;
 
 public class afqa
 {
-  public static volatile int a;
-  private static volatile afqa jdField_a_of_type_Afqa;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  public HashMap<String, amnq> a;
-  protected List<amnq> a;
-  public boolean a;
+  private long jdField_a_of_type_Long;
+  private afqd jdField_a_of_type_Afqd;
+  private ajxl jdField_a_of_type_Ajxl;
+  private ajxn jdField_a_of_type_Ajxn;
+  private akac jdField_a_of_type_Akac;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private ArrayList<MayKnowRecommend> jdField_a_of_type_JavaUtilArrayList;
   
-  private afqa()
+  public afqa(QQAppInterface paramQQAppInterface, afqd paramafqd)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    jdField_a_of_type_Int = 0;
-  }
-  
-  public static afqa a()
-  {
-    if (jdField_a_of_type_Afqa == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Afqa == null) {
-        jdField_a_of_type_Afqa = new afqa();
-      }
-      return jdField_a_of_type_Afqa;
-    }
-  }
-  
-  public amnq a(long paramLong)
-  {
-    Iterator localIterator = a().iterator();
-    while (localIterator.hasNext())
-    {
-      amnq localamnq = (amnq)localIterator.next();
-      if (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == paramLong) {
-        return localamnq;
-      }
-    }
-    return null;
-  }
-  
-  public List<amnq> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    for (;;)
-    {
-      amnq localamnq;
-      boolean bool;
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (!localIterator.hasNext()) {
-          break label265;
-        }
-        localamnq = (amnq)localIterator.next();
-        if ((localamnq == null) || (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) || (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 905L)) {
-          continue;
-        }
-        if (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == msg.jdField_a_of_type_Int)
-        {
-          bool = false;
-          if (!(localAppRuntime instanceof QQAppInterface)) {
-            break label273;
-          }
-          bool = ((QQAppInterface)localAppRuntime).a().a();
-          break label273;
-        }
-        if ((localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 1130L) && (bgmq.k()))
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("Q.lebatab.mgr", 2, "getLebaMgrList hide leba kandian");
-        }
-      }
-      if (((localAppRuntime instanceof QQAppInterface)) && (ajlj.a((QQAppInterface)localAppRuntime, localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.lebatab.mgr", 2, "getLebaMgrList, " + localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId + " is filtered");
-        }
-      }
-      else if (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.cDataType != 1)
-      {
-        localList2.add(localamnq);
-        continue;
-        label265:
-        ajlj.a(localList2);
-        return localList2;
-        label273:
-        if (!bool) {}
-      }
-    }
-  }
-  
-  public List<amnq> a(Context paramContext, QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.lebatab.mgr", 4, String.format(Locale.getDefault(), "reloadLebaItems [%s, %s, %s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), paramContext, paramQQAppInterface }));
-    }
-    ArrayList localArrayList1 = new ArrayList();
-    List localList = paramQQAppInterface.a();
-    ArrayList localArrayList2;
-    if (localList != null)
-    {
-      paramContext = paramQQAppInterface.a().a;
-      if ((paramContext == null) && (QLog.isDevelopLevel())) {
-        QLog.i("Q.lebatab.mgr", 4, "reloadLebaItems wholePeopleChecker is null");
-      }
-      Object localObject = new ArrayList(localList);
-      localArrayList2 = new ArrayList();
-      localObject = ((List)localObject).iterator();
-      boolean bool1 = false;
-      while (((Iterator)localObject).hasNext())
-      {
-        LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)((Iterator)localObject).next();
-        if (localLebaPluginInfo != null) {
-          if ((localLebaPluginInfo.uiResId == 770L) && (paramContext != null) && (!paramContext.jdField_a_of_type_Boolean))
-          {
-            if (QLog.isDevelopLevel()) {
-              QLog.i("Q.lebatab.mgr", 4, "reloadLebaItems wholePeople entry switch is off ");
-            }
-          }
-          else
-          {
-            boolean bool2 = bool1;
-            if (localLebaPluginInfo.uiResId == 770L) {
-              bool2 = true;
-            }
-            amnq localamnq = new amnq();
-            try
-            {
-              localamnq.jdField_a_of_type_Long = localLebaPluginInfo.uiResId;
-              localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo = localLebaPluginInfo;
-              if (!ajlj.a(localamnq)) {
-                break label298;
-              }
-              this.jdField_a_of_type_JavaUtilHashMap.put(localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strPkgName, localamnq);
-              bool1 = bool2;
-            }
-            catch (Exception localException)
-            {
-              bool1 = bool2;
-            }
-            if (QLog.isColorLevel())
-            {
-              bool1 = bool2;
-              if (localException != null)
-              {
-                QLog.d("Q.lebatab.mgr", 2, localException.toString());
-                bool1 = bool2;
-                continue;
-                label298:
-                localArrayList2.add(localamnq);
-                bool1 = bool2;
-              }
-            }
-          }
-        }
-      }
-      if (paramContext != null) {
-        paramContext.a(bool1);
-      }
-      Collections.sort(localArrayList2, new ajlk());
-      paramContext = (auqh)paramQQAppInterface.getManager(36);
-      if (paramContext != null) {
-        break label442;
-      }
-    }
-    label442:
-    for (paramContext = null;; paramContext = paramContext.a())
-    {
-      a(paramQQAppInterface, localArrayList2, paramContext);
-      paramContext = a(paramQQAppInterface);
-      ajlj.a(localArrayList1, paramContext);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.lebatab.mgr", 2, "reloadLebaItems, info.size=" + localList.size() + ", alldatasize=" + this.jdField_a_of_type_JavaUtilList.size() + ", pluginShowList=" + paramContext.size());
-      }
-      return localArrayList1;
-    }
-  }
-  
-  public List<amnq> a(QQAppInterface paramQQAppInterface)
-  {
-    ArrayList localArrayList = new ArrayList();
-    boolean bool = awnu.a();
-    for (;;)
-    {
-      amnq localamnq;
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localamnq = (amnq)localIterator.next();
-        if ((localamnq == null) || (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) || (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 905L)) {
-          continue;
-        }
-        if ((localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 1130L) && (bgmq.k()))
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("Q.lebatab.mgr", 2, "hide leba kandian");
-        }
-      }
-      StringBuilder localStringBuilder;
-      if (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == msg.jdField_a_of_type_Int)
-      {
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder().append("getLebaShowList isNowTabAdded:");
-          paramQQAppInterface.a();
-          QLog.d("Q.qqstory.fourTab", 2, msg.c + "  isNowTabShow:" + paramQQAppInterface.a().jdField_a_of_type_Boolean + "  isSDKAPISupportStory:" + sga.i());
-        }
-        if ((!paramQQAppInterface.a().a()) || (localamnq.jdField_a_of_type_Byte == 1)) {}
-      }
-      else if (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == msg.jdField_a_of_type_Int)
-      {
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder().append("getLebaShowList isNowTabAdded:");
-          paramQQAppInterface.a();
-          QLog.d("Q.qqstory.fourTab", 2, msg.c + "  isNowTabShow:" + paramQQAppInterface.a().jdField_a_of_type_Boolean + "  isSDKAPISupportStory:" + sga.i());
-        }
-        if ((!paramQQAppInterface.a().a()) || (localamnq.jdField_a_of_type_Byte == 1)) {}
-      }
-      else if (ajlj.a(paramQQAppInterface, localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.lebatab.mgr", 2, "getLebaShowList, " + localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId + " is filtered");
-        }
-      }
-      else if (bool)
-      {
-        if (((localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.showInSimpleMode != 0)) || (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 0L)) {
-          localArrayList.add(localamnq);
-        }
-      }
-      else if ((localamnq.jdField_a_of_type_Byte == 0) || (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 0L))
-      {
-        localArrayList.add(localamnq);
-      }
-    }
     if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.mgr", 2, "alldatasize=" + this.jdField_a_of_type_JavaUtilList.size() + ", result.sise=" + localArrayList.size());
+      QLog.d("CardViewController", 2, "CardViewController create");
     }
-    ajlj.a(localArrayList);
-    return localArrayList;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Akac = ((akac)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159));
+    this.jdField_a_of_type_Ajxn = ((ajxn)paramQQAppInterface.getManager(51));
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1));
+    this.jdField_a_of_type_Afqd = paramafqd;
+    this.jdField_a_of_type_Ajxl = new afqb(this);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajxl);
   }
   
-  public void a()
+  private int a()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      jdField_a_of_type_Int = 0;
-      return;
+    long l1 = a().getLong("CardViewControllerdisplay_not_2", 0L);
+    long l2 = NetConnInfoCenter.getServerTimeMillis();
+    if (l1 + a() < l2) {
+      c();
     }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject = a();
-    if (localObject == null) {}
-    for (;;)
-    {
-      return;
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        amnq localamnq = (amnq)((Iterator)localObject).next();
-        if (localamnq != null) {
-          if (localamnq.jdField_a_of_type_Byte == 0)
-          {
-            if (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) {
-              awqx.b(paramQQAppInterface, "CliStatus", "", "", "trends_tab", "Clk_plug_in_s", 0, 0, "1", String.valueOf(localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId), "", "");
-            }
-          }
-          else if ((localamnq.jdField_a_of_type_Byte == 1) && (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null)) {
-            awqx.b(paramQQAppInterface, "CliStatus", "", "", "trends_tab", "Clk_plug_in_s", 0, 0, "0", String.valueOf(localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId), "", "");
-          }
-        }
-      }
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, long paramLong1, boolean paramBoolean, long paramLong2, long paramLong3)
-  {
-    int i = 1;
-    int k = 1;
-    for (;;)
-    {
-      int j;
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        j = i;
-        if (!localIterator.hasNext()) {
-          break label290;
-        }
-        amnq localamnq = (amnq)localIterator.next();
-        if ((localamnq == null) || (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) || (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId != paramLong1)) {
-          continue;
-        }
-        if (paramBoolean)
-        {
-          i = 0;
-          localamnq.jdField_a_of_type_Byte = ((byte)i);
-          if (paramLong3 == -9223372036854775808L)
-          {
-            localamnq.b = paramLong2;
-            i = k;
-            j = i;
-            if (!QLog.isDevelopLevel()) {
-              break label290;
-            }
-            QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, name = " + localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName + " status:" + paramBoolean);
-            if ((paramQQAppInterface != null) && (i == 1)) {
-              ThreadManager.post(new LebaShowListManager.1(this, (auqh)paramQQAppInterface.getManager(36), paramLong1, paramBoolean, paramLong3, paramLong2), 5, null, true);
-            }
-            if (QLog.isDevelopLevel()) {
-              QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, ret = " + i);
-            }
-          }
-        }
-        else
-        {
-          i = 1;
-          continue;
-        }
-        if (paramLong2 == localamnq.b)
-        {
-          localamnq.b = paramLong3;
-          i = k;
-        }
-      }
-      i = -2147483648;
-      continue;
-      label290:
-      i = j;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, List<amnq> paramList, List<BusinessInfoCheckUpdate.AppSetting> paramList1)
-  {
-    int i;
-    if (QLog.isDevelopLevel())
-    {
-      ??? = new StringBuilder().append("setAllLebaList, ");
-      if (paramList != null) {
-        break label111;
-      }
+    int j = 2 - b();
+    int i = j;
+    if (j < 0) {
       i = 0;
     }
-    for (;;)
-    {
-      QLog.i("Q.lebatab.mgr", 4, i);
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        if (paramList != null) {
-          this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-        }
-        a(paramList1);
-        if (paramQQAppInterface != null)
-        {
-          paramQQAppInterface = (ajqw)paramQQAppInterface.a(31);
-          if (paramQQAppInterface != null) {
-            paramQQAppInterface.notifyUI(1, true, null);
-          }
-        }
-        return;
-        label111:
-        i = paramList.size();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("CardViewController", 2, "loadCardSize = " + i);
     }
+    return i;
   }
   
-  public void a(List<BusinessInfoCheckUpdate.AppSetting> paramList)
+  private long a()
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
+    long l = this.jdField_a_of_type_Akac.a(2);
+    if (QLog.isColorLevel()) {
+      QLog.d("CardViewController", 2, "getCardDisplayInterval = " + l);
+    }
+    return l;
+  }
+  
+  private SharedPreferences.Editor a()
+  {
+    return a().edit();
+  }
+  
+  private SharedPreferences a()
+  {
+    if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
+      this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("CardViewControllermay_know_sp" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    }
+    return this.jdField_a_of_type_AndroidContentSharedPreferences;
+  }
+  
+  private void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CardViewController", 2, "decreaseCurrentDelCount " + paramInt);
+    }
+    int i = b();
+    SharedPreferences.Editor localEditor = a();
+    i -= paramInt;
+    paramInt = i;
+    if (i < 0) {
+      paramInt = 0;
+    }
+    localEditor.putInt("CardViewControllerdelete_count", paramInt);
+    if (paramInt == 0) {
+      localEditor.putLong("CardViewControllerdisplay_not_2", 0L);
+    }
+    localEditor.apply();
+  }
+  
+  private void a(ArrayList<MayKnowRecommend> paramArrayList)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      ??? = new ArrayList(2);
+      long l1 = a();
+      long l2 = NetConnInfoCenter.getServerTimeMillis();
+      Object localObject2 = paramArrayList.iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        MayKnowRecommend localMayKnowRecommend = (MayKnowRecommend)((Iterator)localObject2).next();
+        if (localMayKnowRecommend != null) {
+          ((List)???).add(localMayKnowRecommend.uin);
+        }
+      }
+      this.jdField_a_of_type_Akac.a((List)???, l2, l1, true);
+      ??? = paramArrayList.iterator();
+      while (((Iterator)???).hasNext())
+      {
+        localObject2 = (MayKnowRecommend)((Iterator)???).next();
+        if ((localObject2 != null) && (((MayKnowRecommend)localObject2).cardDisplayTimestamp + l1 < l2)) {
+          ((MayKnowRecommend)localObject2).cardDisplayTimestamp = l2;
+        }
+      }
+    }
+    a(paramArrayList);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      if (paramArrayList != null) {
+        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("CardViewController", 2, "displayMayKnowList done");
+      }
       return;
     }
-    for (;;)
+  }
+  
+  private void a(List<MayKnowRecommend> paramList)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
-        continue;
-        if (!localIterator1.hasNext()) {
-          break;
-        }
-        amnq localamnq = (amnq)localIterator1.next();
-        if ((localamnq == null) || (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null)) {
-          continue;
-        }
-        long l = localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId;
-        if (l == 0L) {
-          continue;
-        }
-        Iterator localIterator2 = paramList.iterator();
-        if (!localIterator2.hasNext()) {
-          continue;
-        }
-        BusinessInfoCheckUpdate.AppSetting localAppSetting = (BusinessInfoCheckUpdate.AppSetting)localIterator2.next();
-        if ((localAppSetting == null) || (localAppSetting.appid.get() != l)) {
-          continue;
-        }
-        if (localAppSetting.setting.get())
-        {
-          b = 0;
-          localamnq.jdField_a_of_type_Byte = b;
-          if (QLog.isDevelopLevel()) {
-            QLog.i("Q.lebatab.mgr", 4, "updateAllLebaListFlag, name = " + localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName + " cCurFlag:" + localamnq.jdField_a_of_type_Byte);
-          }
-          localamnq.b = localAppSetting.modify_ts.get();
-        }
+      localStringBuilder = new StringBuilder().append("refreshCardData: ");
+      if (paramList != null) {
+        break label51;
       }
-      byte b = 1;
+    }
+    label51:
+    for (String str = "NULL";; str = paramList.toString())
+    {
+      QLog.d("CardViewController", 2, str);
+      this.jdField_a_of_type_Afqd.a(paramList);
+      return;
     }
   }
   
-  public boolean a(QQAppInterface paramQQAppInterface, long paramLong)
+  private void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramQQAppInterface = a();
-    if (paramQQAppInterface != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("CardViewController", 2, "reallyCheckLocalUpdate, fromNetwork = " + paramBoolean1 + ", isSuccess = " + paramBoolean2);
+    }
+    ThreadManagerV2.excute(new CardViewController.2(this), 16, null, true);
+  }
+  
+  private boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CardViewController", 2, "isTimeToUpdateMKRDataFromNetwork");
+    }
+    return this.jdField_a_of_type_Akac.b(2);
+  }
+  
+  private boolean a(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CardViewController", 2, "getMKRDataFromNetwork");
+    }
+    if (!bbev.g(BaseApplicationImpl.getContext()))
     {
-      paramQQAppInterface = paramQQAppInterface.iterator();
-      while (paramQQAppInterface.hasNext())
+      if (QLog.isColorLevel()) {
+        QLog.d("CardViewController", 2, "getMKRDataFromNetwork when network error, abort");
+      }
+      return false;
+    }
+    return this.jdField_a_of_type_Akac.a(2, paramBundle);
+  }
+  
+  private boolean a(MayKnowRecommend paramMayKnowRecommend)
+  {
+    if (paramMayKnowRecommend != null)
+    {
+      if (!this.jdField_a_of_type_Ajxn.b(paramMayKnowRecommend.uin))
       {
-        amnq localamnq = (amnq)paramQQAppInterface.next();
-        if ((localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == paramLong)) {
-          return localamnq.jdField_a_of_type_Byte == 0;
+        boolean bool = this.jdField_a_of_type_Ajxn.a(paramMayKnowRecommend.uin, false, true);
+        if (bool) {}
+        for (int i = 1;; i = 0)
+        {
+          paramMayKnowRecommend.friendStatus = i;
+          if (bool) {
+            break;
+          }
+          return true;
+        }
+        return false;
+      }
+      paramMayKnowRecommend.friendStatus = 2;
+    }
+    return false;
+  }
+  
+  private boolean a(String paramString, List<MayKnowRecommend> paramList)
+  {
+    if ((paramString != null) && (paramList != null))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        MayKnowRecommend localMayKnowRecommend = (MayKnowRecommend)paramList.next();
+        if ((localMayKnowRecommend != null) && (paramString.equals(localMayKnowRecommend.uin))) {
+          return true;
         }
       }
     }
     return false;
   }
   
-  public List<amnq> b()
+  private int b()
   {
-    ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    int i = 0;
+    int j = a().getInt("CardViewControllerdelete_count", 0);
+    if (j < 0) {}
+    for (;;)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      if (QLog.isColorLevel()) {
+        QLog.d("CardViewController", 2, "loadCurrentDelCount = " + i);
+      }
+      return i;
+      i = j;
+    }
+  }
+  
+  private ArrayList<MayKnowRecommend> b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CardViewController", 2, "calcDisplayingMKRList");
+    }
+    ArrayList localArrayList1 = c();
+    int k = a();
+    int j = localArrayList1.size();
+    ArrayList localArrayList2 = new ArrayList(k);
+    long l1 = NetConnInfoCenter.getServerTimeMillis();
+    long l2 = a();
+    int i = 0;
+    if ((i >= j) || (localArrayList2.size() >= k))
+    {
+      label69:
+      i = 0;
+      localArrayList1.removeAll(localArrayList2);
+      j = localArrayList1.size() - 1;
+      if ((j < 0) || (localArrayList2.size() >= k))
       {
-        amnq localamnq = (amnq)localIterator.next();
-        if ((localamnq != null) && (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId != 905L) && ((localamnq.jdField_a_of_type_Byte == 0) || (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 0L))) {
-          localArrayList.add(localamnq);
+        if ((i == 0) || (a() == 2)) {
+          break label242;
         }
+        c();
+        return b();
       }
     }
-    return localList1;
+    else
+    {
+      localMayKnowRecommend = (MayKnowRecommend)localArrayList1.get(i);
+      if (a(localMayKnowRecommend))
+      {
+        if ((localMayKnowRecommend.cardDisplayTimestamp + l2 <= l1) || (a(localMayKnowRecommend.uin, localArrayList2))) {
+          break label184;
+        }
+        localArrayList2.add(localMayKnowRecommend);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        label184:
+        if (localMayKnowRecommend.cardDisplayTimestamp != 0L) {
+          break label69;
+        }
+        localArrayList2.add(localMayKnowRecommend);
+      }
+    }
+    MayKnowRecommend localMayKnowRecommend = (MayKnowRecommend)localArrayList1.get(j);
+    if (a(localMayKnowRecommend))
+    {
+      localArrayList2.add(localMayKnowRecommend);
+      i = 1;
+    }
+    for (;;)
+    {
+      j -= 1;
+      break;
+      label242:
+      return localArrayList2;
+    }
+  }
+  
+  private ArrayList<MayKnowRecommend> c()
+  {
+    ArrayList localArrayList = this.jdField_a_of_type_Akac.c();
+    Collections.sort(localArrayList, new afqc(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("CardViewController", 2, "getOrderedMKRListFromLocal = " + localArrayList);
+    }
+    return localArrayList;
+  }
+  
+  private void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CardViewController", 2, "resetCurrentDelCount");
+    }
+    SharedPreferences.Editor localEditor = a();
+    localEditor.putInt("CardViewControllerdelete_count", 0);
+    localEditor.putLong("CardViewControllerdisplay_not_2", 0L);
+    localEditor.apply();
+  }
+  
+  private void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CardViewController", 2, "increaseCurrentDelCount");
+    }
+    int i = b();
+    SharedPreferences.Editor localEditor = a();
+    i += 1;
+    localEditor.putInt("CardViewControllerdelete_count", i);
+    if (i == 1) {
+      localEditor.putLong("CardViewControllerdisplay_not_2", NetConnInfoCenter.getServerTimeMillis());
+    }
+    localEditor.apply();
+  }
+  
+  public ArrayList<MayKnowRecommend> a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CardViewController", 2, "getCurrentDisplayingMKRList");
+    }
+    ArrayList localArrayList = new ArrayList();
+    if (a() == 0) {}
+    for (;;)
+    {
+      return localArrayList;
+      int i = 0;
+      int j = 0;
+      Object localObject2;
+      if (this.jdField_a_of_type_JavaUtilArrayList != null)
+      {
+        localObject2 = this.jdField_a_of_type_JavaLangObject;
+        i = j;
+      }
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilArrayList != null)
+        {
+          i = j;
+          if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+          {
+            localArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+            i = 1;
+          }
+        }
+        if (i != 0) {
+          continue;
+        }
+        localObject2 = b();
+        a((ArrayList)localObject2);
+        localArrayList.addAll((Collection)localObject2);
+        return localArrayList;
+      }
+      finally {}
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajxl);
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CardViewController", 2, "deleteMayKnowRecommend, uin = " + paramString);
+    }
+    d();
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.f(paramString);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CardViewController", 2, "try checkUpdate");
+    }
+    if (this.jdField_a_of_type_Afqd.a())
+    {
+      if (a())
+      {
+        int i;
+        if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 1800000L)
+        {
+          i = 1;
+          if (i == 0) {
+            break label124;
+          }
+          Bundle localBundle = new Bundle();
+          localBundle.putString("from", "fetch");
+          if (a(localBundle)) {
+            break label108;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("CardViewController", 2, "do local checkUpdate. msg: \"Time is not up, network update is not allowed or network error [1]\"");
+          }
+          a(false, true);
+        }
+        label108:
+        while (!QLog.isColorLevel())
+        {
+          return;
+          i = 0;
+          break;
+        }
+        QLog.d("CardViewController", 2, "do network checkUpdate. msg: \"send network request done\"");
+        return;
+        label124:
+        if (QLog.isColorLevel()) {
+          QLog.d("CardViewController", 2, "do local checkUpdate. msg: \"Update too frequently, network update is not allowed\"");
+        }
+        a(false, true);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("CardViewController", 2, "do local checkUpdate. msg: \"Time is not up, network update is not allowed [2]\"");
+      }
+      a(false, true);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CardViewController", 2, "try checkUpdate， closed");
+    }
+    a(null);
   }
 }
 

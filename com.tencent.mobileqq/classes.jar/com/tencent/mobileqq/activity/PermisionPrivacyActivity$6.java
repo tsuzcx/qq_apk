@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import asca;
+import ajxn;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
 class PermisionPrivacyActivity$6
   implements Runnable
@@ -9,14 +11,14 @@ class PermisionPrivacyActivity$6
   
   public void run()
   {
-    if (this.this$0.isFinishing()) {}
-    int i;
-    do
+    ArrayList localArrayList = ((ajxn)this.this$0.app.getManager(51)).a();
+    if ((localArrayList == null) || (localArrayList.isEmpty())) {}
+    for (int i = 0;; i = localArrayList.size())
     {
+      PermisionPrivacyActivity.a(this.this$0, i);
+      this.this$0.runOnUiThread(new PermisionPrivacyActivity.6.1(this));
       return;
-      i = asca.a(this.this$0.app);
-    } while (this.this$0.isFinishing());
-    this.this$0.runOnUiThread(new PermisionPrivacyActivity.6.1(this, i));
+    }
   }
 }
 

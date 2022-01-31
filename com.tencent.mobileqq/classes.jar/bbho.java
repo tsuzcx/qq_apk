@@ -1,53 +1,24 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
+import android.app.Activity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 
 class bbho
-  extends Animation
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private View jdField_a_of_type_AndroidViewView;
-  private int b;
+  bbho(bbhl parambbhl, Activity paramActivity) {}
   
-  public bbho(View paramView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    super.applyTransformation(paramFloat, paramTransformation);
-    paramFloat = 90.0F - 90.0F * paramFloat;
-    this.jdField_a_of_type_AndroidGraphicsCamera.save();
-    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(paramFloat);
-    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - paramFloat / 90.0F);
-      this.jdField_a_of_type_AndroidViewView.invalidate();
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int / 2, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int / 2, 0.0F);
-    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    paramView = (ResultRecord)paramView.getTag();
+    this.jdField_a_of_type_Bbhl.hideSoftInputFromWindow();
+    MiniChatActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramView.a(), paramView.a, paramView.b, 0.86F, this.jdField_a_of_type_Bbhl.a(this.jdField_a_of_type_AndroidAppActivity, 0.78F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbho
  * JD-Core Version:    0.7.0.1
  */

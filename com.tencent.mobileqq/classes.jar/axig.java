@@ -1,19 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class axig
-  implements DialogInterface.OnDismissListener
+public class axig
 {
-  axig(axif paramaxif) {}
+  int jdField_a_of_type_Int;
+  public axhs a;
+  public AtomicBoolean a;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  axhs jdField_b_of_type_Axhs;
+  int c;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public axig()
   {
-    this.a.a.a = null;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axig
  * JD-Core Version:    0.7.0.1
  */

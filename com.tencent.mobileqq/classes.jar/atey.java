@@ -1,39 +1,85 @@
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.1;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.2;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.3;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.4;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class atey
-  implements atep
+  implements View.OnClickListener
 {
-  public atey(ScanOcrActivity paramScanOcrActivity) {}
+  public atey(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.runOnUiThread(new ScanOcrActivity.6.3(this));
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.runOnUiThread(new ScanOcrActivity.6.1(this, paramInt1));
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.runOnUiThread(new ScanOcrActivity.6.4(this, paramString));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.runOnUiThread(new ScanOcrActivity.6.2(this));
+    if (paramView == ChooseInterestTagActivity.b(this.a)) {
+      if (TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
+      {
+        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.b(this.a), 30, 0, 0);
+        ChooseInterestTagActivity.a(this.a, true, true);
+      }
+    }
+    label371:
+    do
+    {
+      do
+      {
+        return;
+        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
+        break;
+        if (paramView == this.a.leftView)
+        {
+          bfmr.b(ChooseInterestTagActivity.a(this.a));
+          if (ChooseInterestTagActivity.a(this.a))
+          {
+            this.a.finish();
+            return;
+          }
+          localObject = this.a.getIntent();
+          paramView = (View)localObject;
+          if (localObject == null) {
+            paramView = new Intent();
+          }
+          Collections.reverse(ChooseInterestTagActivity.a(this.a));
+          paramView.putParcelableArrayListExtra("choosed_interest_tags", ChooseInterestTagActivity.a(this.a));
+          paramView.putExtra("interest_tag_type", ChooseInterestTagActivity.a(this.a));
+          this.a.setResult(-1, paramView);
+          this.a.finish();
+          return;
+        }
+        if (paramView != this.a.rightViewText) {
+          break label371;
+        }
+        bfmr.b(ChooseInterestTagActivity.a(this.a));
+      } while (!ChooseInterestTagActivity.a(this.a));
+      if (ChooseInterestTagActivity.a(this.a).isEmpty())
+      {
+        ChooseInterestTagActivity.a(this.a, ajyc.a(2131701794));
+        return;
+      }
+      ChooseInterestTagActivity.a(this.a, 0, ajyc.a(2131701788), 0);
+      Collections.reverse(ChooseInterestTagActivity.a(this.a));
+      paramView = new atfk(ChooseInterestTagActivity.a(this.a));
+      paramView.a.addAll(ChooseInterestTagActivity.a(this.a));
+      Object localObject = new ArrayList(1);
+      ((List)localObject).add(paramView);
+      ChooseInterestTagActivity.a(this.a).a((List)localObject, 0, 1);
+      return;
+    } while (paramView != ChooseInterestTagActivity.a(this.a));
+    ChooseInterestTagActivity.a(this.a).setText(ajyc.a(2131701811));
+    paramView = ChooseInterestTagActivity.a(this.a);
+    int j = ChooseInterestTagActivity.a(this.a);
+    int k = ChooseInterestTagActivity.b(this.a);
+    if (ChooseInterestTagActivity.a(this.a)) {}
+    for (int i = 1;; i = 0)
+    {
+      paramView.a("", j, k, 30, 0, i);
+      return;
     }
   }
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c(boolean paramBoolean) {}
 }
 
 

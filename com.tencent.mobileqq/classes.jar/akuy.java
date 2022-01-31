@@ -1,93 +1,106 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.io.File;
 
-class akuy
-  implements arnn
+public class akuy
 {
-  akuy(akux paramakux, Rect paramRect, long paramLong, Object paramObject, arnk paramarnk, boolean[] paramArrayOfBoolean, Bitmap paramBitmap) {}
-  
-  public void a(int paramInt)
+  public static String a(String paramString1, String paramString2)
   {
-    if ((this.jdField_a_of_type_Arnk != null) && (akux.a(this.jdField_a_of_type_Akux) != null)) {
-      this.jdField_a_of_type_ArrayOfBoolean[0] = this.jdField_a_of_type_Arnk.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Long);
-    }
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniCodeController", 2, "detectSync onDetectReady exec=" + this.jdField_a_of_type_ArrayOfBoolean[0]);
-      }
-      if (this.jdField_a_of_type_ArrayOfBoolean[0] == 0) {}
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      return null;
+      try
       {
-        this.jdField_a_of_type_JavaLangObject.notifyAll();
-        return;
-        this.jdField_a_of_type_ArrayOfBoolean[0] = false;
+        paramString1 = bbdj.a(new File(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config"), paramString1 + paramString2));
+        if ((paramString1 == null) || (paramString1.length <= 0)) {
+          continue;
+        }
+        if (Build.VERSION.SDK_INT <= 8)
+        {
+          paramString1 = new String(paramString1);
+          return paramString1;
+        }
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            paramString1.printStackTrace();
+          }
+          paramString1 = null;
+          continue;
+          try
+          {
+            paramString1 = new String(paramString1, "UTF-8");
+          }
+          catch (Exception paramString1)
+          {
+            if (QLog.isDevelopLevel()) {
+              paramString1.printStackTrace();
+            }
+            paramString1 = null;
+          }
+        }
       }
     }
   }
   
-  public void a(long paramLong) {}
-  
-  public void a(List<akut> arg1, long paramLong)
+  public static void a(String paramString1, String paramString2, String paramString3)
   {
-    int i = 0;
-    label55:
-    boolean bool;
-    label68:
-    int j;
-    int k;
-    int m;
-    if (i < ???.size())
-    {
-      if (((akut)???.get(i)).jdField_a_of_type_Int != 2) {
-        break label217;
-      }
-      ??? = (akut)???.get(i);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(???.jdField_a_of_type_AndroidGraphicsRect);
-      if (QLog.isColorLevel())
-      {
-        if (??? == null) {
-          break label226;
-        }
-        bool = true;
-        i = this.jdField_a_of_type_AndroidGraphicsRect.left;
-        j = this.jdField_a_of_type_AndroidGraphicsRect.top;
-        k = this.jdField_a_of_type_AndroidGraphicsRect.width();
-        m = this.jdField_a_of_type_AndroidGraphicsRect.height();
-        if (??? == null) {
-          break label232;
-        }
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
+      if (QLog.isColorLevel()) {
+        QLog.i("UpgradeConfigManager", 2, "save Config to file failed，content is empty----" + paramString1);
       }
     }
-    label217:
-    label226:
-    label232:
-    for (float f = ???.jdField_a_of_type_Float;; f = 0.0F)
+    do
     {
-      QLog.i("MiniRecog.MiniCodeController", 2, String.format("detectSync onDetectResult=%b [left,top,w,h,score]=[%d, %d, %d, %d]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f) }));
-      if (paramLong == this.jdField_a_of_type_Long)
-      {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
-        {
-          this.jdField_a_of_type_JavaLangObject.notifyAll();
-          return;
-        }
-        ??? = null;
-        break label55;
-      }
       return;
-      i += 1;
-      break;
-      bool = false;
-      break label68;
+      File localFile = new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config");
+      bbdj.a(localFile.getAbsolutePath() + "/", paramString1 + paramString2, paramString3);
+    } while (!QLog.isColorLevel());
+    QLog.i("UpgradeConfigManager", 2, "save Config to file finish.");
+  }
+  
+  public static boolean a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fileName=%s uin=%s", new Object[] { paramString1, paramString2 }));
+    }
+    File localFile;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      localFile = new File(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config"), paramString1 + paramString2);
+      if (!localFile.exists()) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        bool = localFile.delete();
+        if (QLog.isColorLevel()) {
+          QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fileName=%s uin=%s result=%s", new Object[] { paramString1, paramString2, Boolean.valueOf(bool) }));
+        }
+        return bool;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fail! fileName=%s uin=%s", new Object[] { paramString1, paramString2 }), localException);
+        }
+        bool = false;
+        continue;
+      }
+      boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akuy
  * JD-Core Version:    0.7.0.1
  */

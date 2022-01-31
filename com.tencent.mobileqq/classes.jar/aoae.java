@@ -1,14 +1,11 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-
-public class aoae
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class aoae
+  extends anwi
 {
-  public aoae(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  aoae(aoad paramaoad) {}
   
-  public void onGlobalLayout()
+  public void a(int paramInt)
   {
-    this.a.ay_();
+    this.a.a(paramInt);
   }
 }
 

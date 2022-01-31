@@ -1,45 +1,51 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-
-class agjs
-  extends BroadcastReceiver
+public class agjs
 {
-  private agjs(agjk paramagjk) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public agjs(String paramString)
   {
-    int i;
-    String str1;
-    if ("grap_idiom_hb_result_action".equals(paramIntent.getAction()))
+    String[] arrayOfString = paramString.split(" ");
+    if (arrayOfString.length == 1)
     {
-      i = paramIntent.getIntExtra("grap_hb_state", 0);
-      paramContext = paramIntent.getStringExtra("listid");
-      str1 = paramIntent.getStringExtra("grap_hb_frienduin");
-      if ((i != 1) && (i != 10)) {
-        break label59;
-      }
-      agjk.a(this.a, paramContext, str1, 1, true);
+      this.jdField_a_of_type_JavaLangString = arrayOfString[0];
+      this.jdField_a_of_type_Boolean = true;
+      return;
     }
-    label59:
-    String str2;
-    do
+    if (arrayOfString.length == 4)
     {
-      do
+      this.b = arrayOfString[0];
+      this.c = arrayOfString[1];
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangString = arrayOfString[3];
+      return;
+    }
+    if (arrayOfString.length > 4)
+    {
+      int j = arrayOfString.length;
+      paramString = "";
+      int i = 0;
+      while (i < j - 4)
       {
-        return;
-      } while (i != 12);
-      str2 = paramIntent.getStringExtra("grap_hb_idiom");
-      i = paramIntent.getIntExtra("grap_hb_seq", 0);
-      paramIntent = paramIntent.getStringExtra("grap_idiom_alpha");
-    } while (this.a.a(paramContext) == null);
-    agjk.a(this.a, paramContext, str1, 1, false);
-    this.a.a(paramContext, str2, paramIntent, i);
+        paramString = paramString + arrayOfString[i] + " ";
+        i += 1;
+      }
+      this.d = paramString;
+      this.b = arrayOfString[(j - 4)];
+      this.c = arrayOfString[(j - 3)];
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangString = arrayOfString[(j - 1)];
+      return;
+    }
+    throw new RuntimeException("format error!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agjs
  * JD-Core Version:    0.7.0.1
  */

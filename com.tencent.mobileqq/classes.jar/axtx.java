@@ -1,60 +1,38 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
 public class axtx
+  extends RecyclablePool.Recyclable
 {
-  public static boolean a;
-  private axtz a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public long c;
+  public long d;
   
-  public axtx()
+  public void recycle()
   {
-    this.jdField_a_of_type_Axtz = new axtz();
-    a(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HttpTimeoutParam.name()));
-    a();
+    super.recycle();
   }
   
-  private void a()
+  public String toString()
   {
-    DeviceProfileManager.a(new axty(this));
-  }
-  
-  public axtz a()
-  {
-    return this.jdField_a_of_type_Axtz.a();
-  }
-  
-  public void a(String paramString)
-  {
-    if ((paramString == null) || ("".equals(paramString))) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RichMediaStrategy", 2, "OldEngine Timeout Params : " + paramString);
-      }
-      paramString = paramString.split("\\|");
-    } while ((paramString == null) || (paramString.length != 6));
-    try
-    {
-      this.jdField_a_of_type_Axtz.d = (Integer.valueOf(paramString[0]).intValue() * 1000);
-      this.jdField_a_of_type_Axtz.e = (Integer.valueOf(paramString[1]).intValue() * 1000);
-      this.jdField_a_of_type_Axtz.f = (Integer.valueOf(paramString[2]).intValue() * 1000);
-      this.jdField_a_of_type_Axtz.a = (Integer.valueOf(paramString[3]).intValue() * 1000);
-      this.jdField_a_of_type_Axtz.b = (Integer.valueOf(paramString[4]).intValue() * 1000);
-      this.jdField_a_of_type_Axtz.c = (Integer.valueOf(paramString[5]).intValue() * 1000);
-      jdField_a_of_type_Boolean = true;
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append("StorageItem info[size=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(",accessTime=").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(",isFile=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",fileCount=").append(this.c);
+    localStringBuilder.append(",dirCount=").append(this.d);
+    localStringBuilder.append(",name=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",path=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axtx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,60 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class apkx
-  extends apld
+  implements amgw
 {
-  private boolean o;
+  private DataLineMsgRecord a;
   
-  public apkx(Intent paramIntent)
+  public apkx(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    super(paramIntent);
+    this.a = paramDataLineMsgRecord;
   }
   
-  public boolean a()
+  private String a()
   {
-    super.a();
-    this.b = this.jdField_a_of_type_AndroidOsBundle.getLong("req_share_id");
-    this.o = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("is_ec_live_share", false);
-    if ((this.b > 0L) && (!this.o)) {
-      xdt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.b, 0L, this.jdField_a_of_type_MqqObserverBusinessObserver);
-    }
-    G();
-    Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
-    ((Bundle)localObject).putInt("req_type", 1);
-    localObject = awuw.a((Bundle)localObject);
-    if ((localObject != null) && ((localObject instanceof AbsShareMsg))) {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)localObject);
-    }
-    H();
-    return true;
-  }
-  
-  protected boolean a(bafb parambafb)
-  {
-    if (this.o)
+    String str = "";
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("struct_share_key_source_name");
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceIcon = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("struct_share_key_source_icon");
+      JSONObject localJSONObject = new JSONObject();
+      if (this.a != null)
+      {
+        localJSONObject.put("file_color_note_uniSeq", this.a.sessionid);
+        str = localJSONObject.toString();
+      }
+      return str;
     }
-    if ((parambafb != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null))
+    catch (JSONException localJSONException) {}
+    return "";
+  }
+  
+  public ColorNote getColorNote()
+  {
+    if (this.a == null)
     {
-      this.jdField_a_of_type_Apll = new apll(this, this.jdField_a_of_type_AndroidAppActivity);
-      parambafb.addView(this.jdField_a_of_type_Apll.a());
-      parambafb.adjustMessageTopBottomMargin(0.0F, 10.0F);
-      a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName, parambafb);
+      QLog.i("DatalineFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
+      return null;
     }
-    return false;
-  }
-  
-  protected void b()
-  {
-    this.jdField_a_of_type_Bafb.setMessage("");
-  }
-  
-  protected boolean c()
-  {
-    I();
-    return true;
-  }
-  
-  protected void d()
-  {
-    if (this.d)
-    {
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005793", "0X8005793", 0, 0, "", "", "", "");
-      this.d = false;
+    amhc localamhc = new amhc();
+    localamhc.a(17039360);
+    String str = apvk.b(6, this.a.sessionid + "");
+    if (QLog.isColorLevel()) {
+      QLog.i("DatalineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
     }
-    super.d();
+    localamhc.a(str);
+    localamhc.b(this.a.filename);
+    localamhc.c(apvb.a(this.a.filesize));
+    int i = apue.a(apue.a(this.a.filename));
+    localamhc.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localamhc.a(str.getBytes());
+    }
+    return localamhc.a();
   }
 }
 

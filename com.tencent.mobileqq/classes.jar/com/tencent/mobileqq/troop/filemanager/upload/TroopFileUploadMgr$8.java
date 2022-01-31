@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import ayue;
+import azuu;
 
 public class TroopFileUploadMgr$8
   implements Runnable
 {
-  public TroopFileUploadMgr$8(ayue paramayue, int paramInt) {}
+  public TroopFileUploadMgr$8(azuu paramazuu, int paramInt) {}
   
   public void run()
   {

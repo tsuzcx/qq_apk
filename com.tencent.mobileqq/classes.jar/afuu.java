@@ -1,29 +1,27 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class afuu
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  afuu(afut paramafut, Activity paramActivity) {}
+  afuu(afur paramafur) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Afut.a.a.getCount() == 1) && (!MiniMsgTabFragment.a(this.jdField_a_of_type_Afut.a)))
+    try
     {
-      paramAnimation = MiniMsgTabFragment.a(this.jdField_a_of_type_Afut.a);
-      paramAnimation.putExtra("miniAppID", MiniMsgTabFragment.a(this.jdField_a_of_type_Afut.a));
-      paramAnimation.putExtra("clickID", -1);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramAnimation);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      paramDialogInterface.dismiss();
+      afur.a(this.a, afur.a(this.a), Long.valueOf(afur.a(this.a)).longValue());
+      afur.a(this.a);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("SDKEmotionSettingManager", 2, "setNegativeButton cancel error");
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

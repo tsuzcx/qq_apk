@@ -1,87 +1,22 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneInternalWebViewPlugin.1;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+import com.tencent.webbundle.sdk.IWebBundleWebView.OnPageFinishedListener;
+import cooperation.comic.webbundle.WebBundleWebView;
 
-public abstract class bgix
+public class bgix
+  extends WebViewClient
 {
-  public WebViewPlugin a;
+  public bgix(WebBundleWebView paramWebBundleWebView, IWebBundleWebView.OnPageFinishedListener paramOnPageFinishedListener) {}
   
-  public static void a(CustomWebView paramCustomWebView, String paramString, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (paramCustomWebView == null) {
-      return;
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("event", paramString);
-      if (paramJSONObject1 != null) {
-        localJSONObject.put("data", paramJSONObject1);
-      }
-      if (paramJSONObject2 != null) {
-        localJSONObject.put("options", paramJSONObject2);
-      }
-      paramString = "jsbridge://event/dispatchEvent?p=" + Uri.encode(localJSONObject.toString());
-      if (QLog.isDebugVersion()) {
-        QLog.i("QzoneInternalWebViewPlugin", 1, "dispatchEventImpl url:" + paramString);
-      }
-      if (Looper.myLooper() == Looper.getMainLooper())
-      {
-        paramCustomWebView.loadUrl(paramString);
-        return;
-      }
-    }
-    catch (Exception paramCustomWebView)
-    {
-      paramCustomWebView.printStackTrace();
-      return;
-    }
-    paramCustomWebView.post(new QzoneInternalWebViewPlugin.1(paramCustomWebView, paramString));
-  }
-  
-  public Object a(String paramString, long paramLong)
-  {
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(Intent paramIntent, byte paramByte, int paramInt) {}
-  
-  public void a(WebViewPlugin paramWebViewPlugin)
-  {
-    this.a = paramWebViewPlugin;
-  }
-  
-  public void a(String paramString, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
-  {
-    if ((this.a != null) && (this.a.mRuntime != null)) {}
-    for (CustomWebView localCustomWebView = this.a.mRuntime.a();; localCustomWebView = null)
-    {
-      a(localCustomWebView, paramString, paramJSONObject1, paramJSONObject2);
-      return;
-    }
-  }
-  
-  public abstract boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs);
-  
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    return false;
+    super.onPageFinished(paramWebView, paramString);
+    this.jdField_a_of_type_ComTencentWebbundleSdkIWebBundleWebView$OnPageFinishedListener.onPageFinished(this.jdField_a_of_type_CooperationComicWebbundleWebBundleWebView, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgix
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,20 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-class ahxo
-  implements MediaPlayer.OnCompletionListener
+public class ahxo
 {
-  ahxo(ahxk paramahxk, int paramInt, String paramString) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public String toString()
   {
-    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "play completed, soundId:" + this.jdField_a_of_type_Int);
-    try
-    {
-      paramMediaPlayer = new JSONObject();
-      paramMediaPlayer.put("code", 1);
-      this.jdField_a_of_type_Ahxk.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
-      return;
-    }
-    catch (JSONException paramMediaPlayer)
-    {
-      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onCompletion: " + this.jdField_a_of_type_Int, paramMediaPlayer);
-    }
+    return "RMVideoClipSpec: " + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahxo
  * JD-Core Version:    0.7.0.1
  */

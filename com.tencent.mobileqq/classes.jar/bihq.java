@@ -1,13 +1,6 @@
-public abstract interface bihq
-  extends biga
+public class bihq
 {
-  public abstract bihp a();
-  
-  public abstract void a(bijy parambijy, float paramFloat1, float paramFloat2);
-  
-  public abstract void b(int paramInt, bitz parambitz);
-  
-  public abstract void d();
+  public void a() {}
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry;
 
-import agtr;
-import agtw;
+import ahgg;
+import ahgl;
 
 public class SpringHbIPCModule$1
   implements Runnable
 {
-  public SpringHbIPCModule$1(agtr paramagtr) {}
+  public SpringHbIPCModule$1(ahgg paramahgg) {}
   
   public void run()
   {
-    agtw.a().a();
+    ahgl.a().a();
   }
 }
 

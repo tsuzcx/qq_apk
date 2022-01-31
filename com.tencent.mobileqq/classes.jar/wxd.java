@@ -1,70 +1,55 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class wxd
-  extends alzl<wxc>
+  implements TVK_SDKMgr.OnLogListener
 {
-  public int a()
-  {
-    return 406;
-  }
+  public wxd(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public Class<wxc> a()
+  public int d(String paramString1, String paramString2)
   {
-    return wxc.class;
-  }
-  
-  @NonNull
-  public wxc a(int paramInt)
-  {
-    return new wxc();
-  }
-  
-  @Nullable
-  public wxc a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return wxc.a(paramArrayOfalzs[0].a);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    super.a();
-    wvh.a().a(false);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(wxc paramwxc)
-  {
-    wvh.a().a(true);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
     return 0;
   }
   
-  public boolean b()
+  public int e(String paramString1, String paramString2)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
   }
   
-  public boolean c()
+  public int i(String paramString1, String paramString2)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.i("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wxd
  * JD-Core Version:    0.7.0.1
  */

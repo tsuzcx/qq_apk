@@ -1,12 +1,30 @@
-import com.tencent.mobileqq.armap.SdCardImageAnimView;
+import java.io.File;
+import java.io.FileFilter;
 
-public abstract interface alir
+final class alir
+  implements FileFilter
 {
-  public abstract void a(SdCardImageAnimView paramSdCardImageAnimView);
+  public boolean accept(File paramFile)
+  {
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
+    {
+      int i = 3;
+      while (i < paramFile.length())
+      {
+        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alir
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,30 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
+import com.tencent.av.ui.VideoNetStateBar;
+import com.tencent.qphone.base.util.QLog;
 
 public class mll
-  implements Animation.AnimationListener
+  extends lfg
 {
-  public mll(PoiMapActivity paramPoiMapActivity) {}
+  public mll(VideoNetStateBar paramVideoNetStateBar) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(long paramLong1, long paramLong2)
   {
-    paramAnimation = (FrameLayout.LayoutParams)PoiMapActivity.c(this.a).getLayoutParams();
-    paramAnimation.bottomMargin = (this.a.p + this.a.q);
-    PoiMapActivity.c(this.a).setLayoutParams(paramAnimation);
-    if ((this.a.e != null) && (this.a.e.getVisibility() != 8)) {
-      this.a.e.setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onCreateRoomSuc-->GroupID=" + paramLong2);
     }
-    PoiMapActivity.d(this.a).clearAnimation();
-    this.a.a = true;
+    this.a.i();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void b(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onEnterRoomSuc-->GroupID=" + paramLong2);
+    }
+    this.a.i();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mll
  * JD-Core Version:    0.7.0.1
  */

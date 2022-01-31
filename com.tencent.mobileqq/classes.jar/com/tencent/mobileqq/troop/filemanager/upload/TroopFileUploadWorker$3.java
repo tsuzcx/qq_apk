@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import ayul;
+import azvb;
 
 public class TroopFileUploadWorker$3
   implements Runnable
 {
-  public TroopFileUploadWorker$3(ayul paramayul) {}
+  public TroopFileUploadWorker$3(azvb paramazvb) {}
   
   public void run()
   {

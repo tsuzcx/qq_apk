@@ -1,7 +1,7 @@
 package com.tencent.tmdownloader;
 
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.t;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.s;
 import com.tencent.tmdownloader.internal.remote.a;
 
 class q
@@ -13,7 +13,7 @@ class q
   {
     try
     {
-      ac.c("RemoteOpProxy", "<setBoolean> process:" + t.e() + ", getServiceInterface()");
+      ab.c("RemoteOpProxy", "<setBoolean> process:" + s.e() + ", getServiceInterface()");
       a locala = (a)this.c.getServiceInterface();
       if (locala != null) {
         locala.a(this.a, this.b);
@@ -22,7 +22,7 @@ class q
     }
     catch (Exception localException)
     {
-      ac.c("RemoteOpProxy", "<setInt> process:" + t.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
+      ab.c("RemoteOpProxy", "<setInt> process:" + s.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
       localException.printStackTrace();
     }
   }

@@ -2,36 +2,36 @@ package com.tencent.biz.qrcode.activity;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import vuf;
-import vvd;
-import vvj;
+import whc;
+import wia;
+import wig;
 
 public class QRLoginMgrActivity$6$1
   implements Runnable
 {
-  public QRLoginMgrActivity$6$1(vuf paramvuf, ArrayList paramArrayList) {}
+  public QRLoginMgrActivity$6$1(whc paramwhc, ArrayList paramArrayList) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      this.jdField_a_of_type_Vuf.a.finish();
+      this.jdField_a_of_type_Whc.a.finish();
     }
     do
     {
       return;
-      if (QRLoginMgrActivity.a(this.jdField_a_of_type_Vuf.a) != -1L)
+      if (QRLoginMgrActivity.a(this.jdField_a_of_type_Whc.a) != -1L)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext())
         {
-          vvj localvvj = (vvj)localIterator.next();
-          if (localvvj.a == QRLoginMgrActivity.a(this.jdField_a_of_type_Vuf.a)) {
-            localvvj.c = QRLoginMgrActivity.a(this.jdField_a_of_type_Vuf.a);
+          wig localwig = (wig)localIterator.next();
+          if (localwig.a == QRLoginMgrActivity.a(this.jdField_a_of_type_Whc.a)) {
+            localwig.c = QRLoginMgrActivity.a(this.jdField_a_of_type_Whc.a);
           }
         }
       }
-    } while (QRLoginMgrActivity.a(this.jdField_a_of_type_Vuf.a) == null);
-    QRLoginMgrActivity.a(this.jdField_a_of_type_Vuf.a).a(this.jdField_a_of_type_JavaUtilArrayList);
+    } while (QRLoginMgrActivity.a(this.jdField_a_of_type_Whc.a) == null);
+    QRLoginMgrActivity.a(this.jdField_a_of_type_Whc.a).a(this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

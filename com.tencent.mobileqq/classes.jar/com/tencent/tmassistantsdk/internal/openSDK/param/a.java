@@ -6,7 +6,7 @@ import com.qq.taf.jce.JceStruct;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import com.tencent.tmassistant.common.ProtocolPackage;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCCmd;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCHead;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCRequest;
@@ -34,7 +34,7 @@ public class a
     try
     {
       int i = paramIPCResponse.head.cmdId;
-      ac.c("nemo", "unpackBodyStruct cmdid=" + i);
+      ab.c("nemo", "unpackBodyStruct cmdid=" + i);
       Object localObject = IPCCmd.convert(i).toString();
       localObject = a((String)localObject);
       if ((localObject != null) && (paramIPCResponse.body.length > 0)) {}
@@ -151,7 +151,7 @@ public class a
     if (paramTMAssistantDownloadTaskInfo == null) {
       return null;
     }
-    ac.c("IPCPackageTools", "TMAssistantDownloadTaskInfo ......mAppName: " + paramTMAssistantDownloadTaskInfo.mAppName);
+    ab.c("IPCPackageTools", "TMAssistantDownloadTaskInfo ......mAppName: " + paramTMAssistantDownloadTaskInfo.mAppName);
     IPCSDKDownloadInfo localIPCSDKDownloadInfo = new IPCSDKDownloadInfo();
     if (paramTMAssistantDownloadTaskInfo != null)
     {

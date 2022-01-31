@@ -312,168 +312,164 @@ public class PagShelfPlayer
       }
       break;
     }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        if (!paramString.equals("pagShelfPlayerAudioFilePath")) {
-          break;
-        }
-        i = 0;
-        break label54;
-        if (!paramString.equals("pagImgReplace")) {
-          break;
-        }
-        i = 1;
-        break label54;
-        if (!paramString.equals("pagTextReplace")) {
-          break;
-        }
-        i = 2;
-        break label54;
-        if (!paramString.equals("imgGroup")) {
-          break;
-        }
-        i = 3;
-        break label54;
-        paramString = paramVarArgs[0];
-      } while (!(paramString instanceof Boolean));
-      for (;;)
-      {
-        try
-        {
-          if (((Boolean)paramString).booleanValue())
-          {
-            paramString = paramVarArgs[1];
-            paramVarArgs = paramVarArgs[2];
-            if (((paramString instanceof AssetManager)) && ((paramVarArgs instanceof String)))
-            {
-              paramString = ((AssetManager)paramString).openFd((String)paramVarArgs);
-              this.mAudioPlayer = new MediaPlayer();
-              this.mAudioPlayer.setDataSource(paramString.getFileDescriptor(), paramString.getStartOffset(), paramString.getLength());
-              TTPTLogger.i("PagShelfPlayer", "audio path(asset):" + (String)paramVarArgs);
-            }
-            if (this.mAudioPlayer == null) {
-              break;
-            }
-            this.mAudioPlayer.setOnCompletionListener(new PagShelfPlayer.1(this));
-            this.mAudioPlayer.setOnErrorListener(new PagShelfPlayer.2(this));
-            return;
-          }
-        }
-        catch (Exception paramString)
-        {
-          paramString.printStackTrace();
-          if (this.mVideoShelfListener != null) {
-            this.mVideoShelfListener.onError(-1, "audio file is null", null);
-          }
-          ReportUtil.report("[" + PagShelfPlayer.class.getSimpleName() + "] mVideoPlayer.setDataSource , error msg = " + paramString.toString());
-          return;
-        }
-        paramString = paramVarArgs[1];
-        if ((paramString instanceof String))
-        {
-          this.mAudioPlayer = new MediaPlayer();
-          this.mAudioPlayer.setDataSource((String)paramString);
-          TTPTLogger.i("PagShelfPlayer", "audio path:" + (String)paramString);
-        }
-      }
-      if ((paramVarArgs == null) || (paramVarArgs.length < 2))
-      {
-        TTPTLogger.e("PagShelfPlayer", "传入PAG的替换图像参数有误");
-        return;
-      }
-      localObject = paramVarArgs[0];
-    } while (!(localObject instanceof int[]));
-    if ((paramVarArgs[1] instanceof Bitmap)) {
-      paramString = (Bitmap)paramVarArgs[1];
-    }
     for (;;)
     {
-      if (paramString == null)
-      {
-        TTPTLogger.e("PagShelfPlayer", "传入PAG的替换图像为空。");
-        return;
-        if ((paramVarArgs[1] instanceof String)) {
-          paramString = BitmapUtils.decodeSampledBitmapFromFile((String)paramVarArgs[1], 1080, 1080);
-        }
-      }
-      else
-      {
-        paramVarArgs = PAGImage.FromBitmap(paramString);
-        paramVarArgs.setScaleMode(3);
-        localObject = (int[])localObject;
-        k = localObject.length;
-        i = j;
-        while (i < k)
-        {
-          j = localObject[i];
-          this.mPagRender.replaceImage(j, paramVarArgs);
-          i += 1;
-        }
-        if (!BitmapUtils.isLegal(paramString)) {
-          break;
-        }
-        paramString.recycle();
-        return;
-        if ((paramVarArgs == null) || (paramVarArgs.length < 2))
-        {
-          TTPTLogger.e("PagShelfPlayer", "传入PAG的替换文本参数有误");
-          return;
-        }
-        paramString = paramVarArgs[0];
-        if (!(paramString instanceof Integer[])) {
-          break;
-        }
-        if ((paramVarArgs[1] instanceof Bitmap))
-        {
-          setParam("pagImgReplace", paramVarArgs);
-          return;
-        }
-        if ((!(paramVarArgs[1] instanceof String)) || (this.mPagFile == null) || (this.mPagRender == null)) {
-          break;
-        }
-        paramString = (Integer[])paramString;
-        j = paramString.length;
-        i = k;
-        while (i < j)
-        {
-          k = paramString[i].intValue();
-          if (k >= this.mPagFile.numTexts()) {
-            break;
-          }
-          localObject = this.mPagFile.getTextData(k);
-          if (localObject == null)
-          {
-            TTPTLogger.e("PagShelfPlayer", "文字样式在PAG文件中未找到，无法进行设置文字");
-            return;
-          }
-          ((PAGText)localObject).text = ((String)paramVarArgs[1]);
-          this.mPagRender.setTextData(k, (PAGText)localObject);
-          i += 1;
-        }
-        if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-          break;
-        }
-        paramString = paramVarArgs[0];
-        if (!(paramString instanceof HashMap)) {
-          break;
-        }
-        paramString = (HashMap)paramString;
-        if (paramString == null) {
-          break;
-        }
-        paramString = paramString.entrySet().iterator();
-        while (paramString.hasNext())
-        {
-          paramVarArgs = (Map.Entry)paramString.next();
-          setParam("pagImgReplace", new Object[] { paramVarArgs.getValue(), paramVarArgs.getKey() });
-        }
+      return;
+      if (!paramString.equals("pagShelfPlayerAudioFilePath")) {
         break;
       }
-      paramString = null;
+      i = 0;
+      break label54;
+      if (!paramString.equals("pagImgReplace")) {
+        break;
+      }
+      i = 1;
+      break label54;
+      if (!paramString.equals("pagTextReplace")) {
+        break;
+      }
+      i = 2;
+      break label54;
+      if (!paramString.equals("imgGroup")) {
+        break;
+      }
+      i = 3;
+      break label54;
+      paramString = paramVarArgs[0];
+      if ((paramString instanceof Boolean))
+      {
+        for (;;)
+        {
+          try
+          {
+            if (((Boolean)paramString).booleanValue())
+            {
+              paramString = paramVarArgs[1];
+              paramVarArgs = paramVarArgs[2];
+              if (((paramString instanceof AssetManager)) && ((paramVarArgs instanceof String)))
+              {
+                paramString = ((AssetManager)paramString).openFd((String)paramVarArgs);
+                this.mAudioPlayer = new MediaPlayer();
+                this.mAudioPlayer.setDataSource(paramString.getFileDescriptor(), paramString.getStartOffset(), paramString.getLength());
+                TTPTLogger.i("PagShelfPlayer", "audio path(asset):" + (String)paramVarArgs);
+              }
+              if (this.mAudioPlayer == null) {
+                break;
+              }
+              this.mAudioPlayer.setOnCompletionListener(new PagShelfPlayer.1(this));
+              this.mAudioPlayer.setOnErrorListener(new PagShelfPlayer.2(this));
+              return;
+            }
+          }
+          catch (Exception paramString)
+          {
+            paramString.printStackTrace();
+            if (this.mVideoShelfListener != null) {
+              this.mVideoShelfListener.onError(-1, "audio file is null", null);
+            }
+            ReportUtil.report("[" + PagShelfPlayer.class.getSimpleName() + "] mVideoPlayer.setDataSource , error msg = " + paramString.toString());
+            return;
+          }
+          paramString = paramVarArgs[1];
+          if ((paramString instanceof String))
+          {
+            this.mAudioPlayer = new MediaPlayer();
+            this.mAudioPlayer.setDataSource((String)paramString);
+            TTPTLogger.i("PagShelfPlayer", "audio path:" + (String)paramString);
+          }
+        }
+        if ((paramVarArgs == null) || (paramVarArgs.length < 2))
+        {
+          TTPTLogger.e("PagShelfPlayer", "传入PAG的替换图像参数有误");
+          return;
+        }
+        Object localObject = paramVarArgs[0];
+        if ((localObject instanceof int[]))
+        {
+          paramString = null;
+          if ((paramVarArgs[1] instanceof Bitmap)) {
+            paramString = (Bitmap)paramVarArgs[1];
+          }
+          while (paramString == null)
+          {
+            TTPTLogger.e("PagShelfPlayer", "传入PAG的替换图像为空。");
+            return;
+            if ((paramVarArgs[1] instanceof String)) {
+              paramString = BitmapUtils.decodeSampledBitmapFromFile((String)paramVarArgs[1], 1080, 1080);
+            }
+          }
+          paramString = PAGImage.FromBitmap(paramString);
+          paramString.setScaleMode(3);
+          paramVarArgs = (int[])localObject;
+          k = paramVarArgs.length;
+          i = j;
+          while (i < k)
+          {
+            j = paramVarArgs[i];
+            this.mPagRender.replaceImage(j, paramString);
+            i += 1;
+          }
+          continue;
+          if ((paramVarArgs == null) || (paramVarArgs.length < 2))
+          {
+            TTPTLogger.e("PagShelfPlayer", "传入PAG的替换文本参数有误");
+            return;
+          }
+          paramString = paramVarArgs[0];
+          if ((paramString instanceof Integer[]))
+          {
+            if ((paramVarArgs[1] instanceof Bitmap))
+            {
+              setParam("pagImgReplace", paramVarArgs);
+              return;
+            }
+            if (((paramVarArgs[1] instanceof String)) && (this.mPagFile != null) && (this.mPagRender != null))
+            {
+              paramString = (Integer[])paramString;
+              j = paramString.length;
+              i = k;
+              for (;;)
+              {
+                if (i >= j) {
+                  break label732;
+                }
+                k = paramString[i].intValue();
+                if (k >= this.mPagFile.numTexts()) {
+                  break;
+                }
+                localObject = this.mPagFile.getTextData(k);
+                if (localObject == null)
+                {
+                  TTPTLogger.e("PagShelfPlayer", "文字样式在PAG文件中未找到，无法进行设置文字");
+                  return;
+                }
+                ((PAGText)localObject).text = ((String)paramVarArgs[1]);
+                this.mPagRender.setTextData(k, (PAGText)localObject);
+                i += 1;
+              }
+              label732:
+              continue;
+              if ((paramVarArgs != null) && (paramVarArgs.length != 0))
+              {
+                paramString = paramVarArgs[0];
+                if ((paramString instanceof HashMap))
+                {
+                  paramString = (HashMap)paramString;
+                  if (paramString != null)
+                  {
+                    paramString = paramString.entrySet().iterator();
+                    while (paramString.hasNext())
+                    {
+                      paramVarArgs = (Map.Entry)paramString.next();
+                      setParam("pagImgReplace", new Object[] { paramVarArgs.getValue(), paramVarArgs.getKey() });
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
   

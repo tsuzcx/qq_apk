@@ -1,12 +1,21 @@
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.database.DataSetObserver;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
 
-public abstract interface qgl
+public class qgl
+  extends DataSetObserver
 {
-  public abstract void a(VideoInfo paramVideoInfo);
+  public qgl(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public abstract void e();
-  
-  public abstract void f();
+  public void onChanged()
+  {
+    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
+    {
+      ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(0);
+      return;
+    }
+    ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(8);
+  }
 }
 
 

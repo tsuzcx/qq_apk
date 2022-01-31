@@ -1,22 +1,15 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class agea
-  extends mmn
+  implements View.OnClickListener
 {
-  agea(agdz paramagdz, long paramLong) {}
+  agea(agdx paramagdx) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "checkOpenidDiff, onResult, errorCode=", Integer.valueOf(paramInt) });
-    }
-    if ((this.jdField_a_of_type_Agdz.a.isFinishing()) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L)) {}
-    while (paramInt != 16) {
-      return;
-    }
-    agdx.b(this.jdField_a_of_type_Agdz.a);
+    this.a.a = null;
+    this.a.dismiss();
   }
 }
 

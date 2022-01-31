@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view;
 
-import uoc;
+import vay;
 
 public class StoryDownloadView$5$1
   implements Runnable
 {
-  public StoryDownloadView$5$1(uoc paramuoc) {}
+  public StoryDownloadView$5$1(vay paramvay) {}
   
   public void run()
   {

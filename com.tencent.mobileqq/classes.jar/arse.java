@@ -1,21 +1,34 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
 
-class arse
-  implements bbsh
+public class arse
+  implements View.OnTouchListener
 {
-  arse(arsd paramarsd) {}
+  float jdField_a_of_type_Float = 0.0F;
   
-  public void a(BaseResp paramBaseResp)
+  public arse(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.d("AIOShareActionSheet", 1, "WXShareResult trans:" + paramBaseResp.transaction + " ,errCode:" + paramBaseResp.errCode + " ,errStr:" + paramBaseResp.errStr);
-    WXShareHelper.a().b(this);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_Float = paramView.getAlpha();
+      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(this.jdField_a_of_type_Float);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arse
  * JD-Core Version:    0.7.0.1
  */

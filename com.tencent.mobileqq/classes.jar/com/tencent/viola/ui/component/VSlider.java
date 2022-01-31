@@ -1,6 +1,8 @@
 package com.tencent.viola.ui.component;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,13 +27,15 @@ import org.json.JSONObject;
 
 public class VSlider
   extends VComponentContainer<VSliderView>
+  implements Runnable
 {
   private static final String CELL_SCALE = "cellScale";
   private static final String CELL_WIDTH = "cellWidth";
   private static final String LOOP_DISABLE = "loopDisable";
   public static final String TAG = "VSlider";
   private VLoopAbleSliderAdapter mAdapter;
-  public VSlider.ScaleTransformer transformer;
+  private Handler mBatchHandler;
+  private boolean mIsNotify = false;
   
   public VSlider(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -94,18 +98,12 @@ public class VSlider
   
   private void notifyDataChange()
   {
-    if ((this.mAdapter != null) && (getHostView() != null))
+    if (this.mAdapter != null)
     {
-      if (this.transformer != null)
-      {
-        ((VSliderView)getHostView()).setAdapter(this.mAdapter);
-        ((VSliderView)getHostView()).setCurrentItem(((VSliderView)getHostView()).getCurrentIndex());
-      }
+      this.mIsNotify = true;
+      this.mAdapter.notifyDataSetChanged();
+      this.mIsNotify = false;
     }
-    else {
-      return;
-    }
-    this.mAdapter.notifyDataSetChanged();
   }
   
   private void setCellScale(Object paramObject, VSliderView paramVSliderView)
@@ -114,8 +112,7 @@ public class VSlider
       return;
     }
     float f = ViolaUtils.getFloat(paramObject, Float.valueOf(1.0F));
-    this.transformer = new VSlider.ScaleTransformer(this, f);
-    paramVSliderView.setPageTransformer(false, this.transformer);
+    paramVSliderView.setPageTransformer(false, new VSlider.ScaleTransformer(this, f));
     this.mAdapter.setMinScale(f);
   }
   
@@ -144,21 +141,24 @@ public class VSlider
   private void tryResumeState(VSliderView paramVSliderView)
   {
     if (paramVSliderView == null) {}
-    int i;
-    do
-    {
+    while ((this.mDomObj == null) || (this.mDomObj.getDomChildCount() <= 1)) {
       return;
-      Object localObject = this.mDomObj.getState("index");
-      if (!(localObject instanceof Integer)) {
-        break;
+    }
+    Object localObject = this.mDomObj.getState("index");
+    if ((localObject instanceof Integer))
+    {
+      int i = ((Integer)localObject).intValue();
+      if ((i <= this.mDomObj.mDomChildren.size() - 1) && (i >= 0))
+      {
+        paramVSliderView.setStartIndexWithNoAnimate(i);
+        changeIndicatorIndex(i);
+        ViolaLogUtils.d("VSlider", "resumeState, index: " + i);
+        return;
       }
-      i = ((Integer)localObject).intValue();
-    } while ((i > this.mDomObj.mDomChildren.size() - 1) || (i < 0));
-    paramVSliderView.setStartItemIndex(i);
-    changeIndicatorIndex(i);
-    ViolaLogUtils.d("VSlider", "resumeState, index: " + i);
-    return;
-    paramVSliderView.setStartItemIndex(0);
+      paramVSliderView.setStartIndexWithNoAnimate(0);
+      return;
+    }
+    paramVSliderView.setStartIndexWithNoAnimate(0);
   }
   
   public void addChild(VComponent paramVComponent, int paramInt)
@@ -199,6 +199,9 @@ public class VSlider
     if (getHostView() != null) {
       ((VSliderView)getHostView()).destroy();
     }
+    if (this.mBatchHandler != null) {
+      this.mBatchHandler.removeCallbacks(this);
+    }
   }
   
   public void initAdapter()
@@ -210,6 +213,7 @@ public class VSlider
   {
     initAdapter();
     paramContext = new VSliderView(paramContext, this.mAdapter);
+    this.mAdapter.setSliderView(paramContext);
     paramContext.setClickable(true);
     paramContext.bindComponent(this);
     paramContext.setSliderListener(new VSlider.1(this));
@@ -218,6 +222,7 @@ public class VSlider
       setCellScale(getDomObject().getAttributes().get("cellScale"), paramContext);
     }
     detectScrollable(paramContext);
+    this.mBatchHandler = new Handler(Looper.getMainLooper());
     return paramContext;
   }
   
@@ -226,7 +231,18 @@ public class VSlider
     return false;
   }
   
-  public void notifyChange() {}
+  public void notifyWhenChange(String paramString, DomObject paramDomObject)
+  {
+    if (loopDisable()) {
+      return;
+    }
+    if ((paramDomObject != null) && (!"cell".equals(paramDomObject.getType())) && (this.mBatchHandler != null))
+    {
+      this.mBatchHandler.removeCallbacks(this);
+      this.mBatchHandler.postDelayed(this, 16L);
+    }
+    super.notifyWhenChange(paramString, paramDomObject);
+  }
   
   public void onActivityPause()
   {
@@ -251,6 +267,11 @@ public class VSlider
     notifyDataChange();
   }
   
+  public void run()
+  {
+    notifyDataChange();
+  }
+  
   @VComponentProp(name="autoEnable")
   public void setAutoEnable(Boolean paramBoolean)
   {
@@ -261,7 +282,6 @@ public class VSlider
   public void setIndex(int paramInt)
   {
     ((VSliderView)getHostView()).setStartItemIndex(paramInt);
-    this.mAdapter.setStartPosition(paramInt);
   }
   
   @VComponentProp(name="interval")

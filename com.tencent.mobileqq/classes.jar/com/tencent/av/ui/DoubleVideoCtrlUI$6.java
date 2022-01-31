@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
 import android.content.SharedPreferences;
-import baig;
+import bbjn;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import kvq;
+import lgf;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,7 +22,7 @@ class DoubleVideoCtrlUI$6
       return;
       if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a() != null))
       {
-        Object localObject = baig.c(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).getString("AvWeakNet_video_ConfigContent", "");
+        Object localObject = bbjn.c(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).getString("AvWeakNet_video_ConfigContent", "");
         if (((String)localObject).length() == 0)
         {
           QLog.d(this.this$0.c, 1, "cannot Read AvWeaknetConfig");
@@ -37,13 +37,13 @@ class DoubleVideoCtrlUI$6
               this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().aw = true;
             }
             if (((JSONObject)localObject).has("ground_glass_default_interval")) {
-              this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().P = ((JSONObject)localObject).getInt("ground_glass_default_interval");
+              this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().R = ((JSONObject)localObject).getInt("ground_glass_default_interval");
             }
             if (((JSONObject)localObject).has("ground_glass_default_timeout_rule")) {
-              this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().Q = ((JSONObject)localObject).getInt("ground_glass_default_timeout_rule");
+              this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().S = ((JSONObject)localObject).getInt("ground_glass_default_timeout_rule");
             }
-            QLog.d(this.this$0.c, 1, "AsyncReadDoubleGlassConfig mIsGlassCanUse=" + this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().aw + ", mCurrentVideoGlassWaitTime=" + this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().P + ", mCurrentDefaultTimeOutRule=" + this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().Q);
-            if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().aw) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().P > 0))
+            QLog.d(this.this$0.c, 1, "AsyncReadDoubleGlassConfig mIsGlassCanUse=" + this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().aw + ", mCurrentVideoGlassWaitTime=" + this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().R + ", mCurrentDefaultTimeOutRule=" + this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().S);
+            if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().aw) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().R > 0))
             {
               DoubleVideoCtrlUI.a(this.this$0, true);
               return;

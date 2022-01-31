@@ -1,22 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ScrollView;
 
-class ovv
-  implements pjv
+public class ovv
+  implements bfux
 {
-  ovv(ovq paramovq, opw paramopw, Container paramContainer, int paramInt) {}
+  public ovv(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void a(int paramInt)
+  public void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_Opw.a().mSocialFeedInfo.a;
-    ArrayList localArrayList = ((pqz)localObject).a;
-    if ((localArrayList == null) || (localArrayList.size() == 0)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.self.SelfFragment", 2, "onScrollStateChanged onScrollStateChanged= " + paramInt);
     }
-    localObject = (pra)((pqz)localObject).a.get(paramInt);
-    ovq.a(this.jdField_a_of_type_Ovq, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Opw.a(), (int)((pra)localObject).a, this.jdField_a_of_type_Opw.a().innerUniqueID, this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Opw.a());
   }
 }
 

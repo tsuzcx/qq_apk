@@ -1,145 +1,272 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.LinearGradient;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Rect;
-import android.graphics.Shader.TileMode;
-import com.tencent.av.redpacket.AVRedPacketManager;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
 
 public class lkr
-  extends lka
 {
-  public static final int[] a;
-  public String a;
-  public boolean a;
+  public static String a;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public static String f;
+  public static String g;
+  public static String h;
+  public static String i;
+  public static String j;
+  public static String k;
+  public static String l;
+  public static String m;
+  public static String n;
+  public static String o;
+  public static String p;
+  public static String q;
+  public static String r;
+  public static String s;
+  public static String t;
+  public static String u;
+  public static String v;
+  public static String w;
+  public static String x;
+  public static String y;
+  public static String z;
+  public byte a;
+  public int a;
+  @Deprecated
+  lle a;
+  public byte b;
   public int b;
-  public Rect b;
-  public boolean b;
+  public byte c;
   public int c;
+  public byte d;
   public int d;
+  public byte e;
+  public byte f;
+  public byte g;
+  public byte h;
+  public byte i;
+  public byte j;
+  public byte k;
+  public byte l;
+  public byte m;
+  public byte n;
+  public byte o;
+  public byte p;
+  public byte q;
+  public byte r;
+  public byte s;
+  public byte t;
+  public byte u;
+  public byte v;
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { -1966063, -25328, -1966063 };
+    StringBuilder localStringBuilder = new StringBuilder();
+    jdField_a_of_type_JavaLangString = "sharp/camera_angle/" + "enable";
+    localStringBuilder.setLength(0);
+    jdField_b_of_type_JavaLangString = "sharp/camera_angle/" + "local/" + "front";
+    localStringBuilder.setLength(0);
+    jdField_c_of_type_JavaLangString = "sharp/camera_angle/" + "local/" + "back";
+    localStringBuilder.setLength(0);
+    jdField_d_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "front/" + "0";
+    localStringBuilder.setLength(0);
+    jdField_e_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "front/" + "90";
+    localStringBuilder.setLength(0);
+    jdField_f_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "front/" + "180";
+    localStringBuilder.setLength(0);
+    jdField_g_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "front/" + "270";
+    localStringBuilder.setLength(0);
+    jdField_h_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "back/" + "0";
+    localStringBuilder.setLength(0);
+    jdField_i_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "back/" + "90";
+    localStringBuilder.setLength(0);
+    jdField_j_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "back/" + "180";
+    localStringBuilder.setLength(0);
+    jdField_k_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "back/" + "270";
+    localStringBuilder.setLength(0);
+    jdField_l_of_type_JavaLangString = "sharp/camera_angle/" + "sensor";
+    localStringBuilder.setLength(0);
+    jdField_m_of_type_JavaLangString = "sharp/camera_angle/" + "mini_sdk";
+    localStringBuilder.setLength(0);
+    jdField_n_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "enable";
+    localStringBuilder.setLength(0);
+    jdField_o_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "local/" + "front";
+    localStringBuilder.setLength(0);
+    jdField_p_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "local/" + "back";
+    localStringBuilder.setLength(0);
+    jdField_q_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "front/" + "0";
+    localStringBuilder.setLength(0);
+    jdField_r_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "front/" + "90";
+    localStringBuilder.setLength(0);
+    jdField_s_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "front/" + "180";
+    localStringBuilder.setLength(0);
+    jdField_t_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "front/" + "270";
+    localStringBuilder.setLength(0);
+    jdField_u_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "back/" + "0";
+    localStringBuilder.setLength(0);
+    jdField_v_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "back/" + "90";
+    localStringBuilder.setLength(0);
+    w = "sharp/camera_angle_landscape/" + "remote/" + "back/" + "180";
+    localStringBuilder.setLength(0);
+    x = "sharp/camera_angle_landscape/" + "remote/" + "back/" + "270";
+    localStringBuilder.setLength(0);
+    y = "sharp/camera_angle_landscape/" + "sensor";
+    localStringBuilder.setLength(0);
+    z = "sharp/camera_angle_landscape/" + "mini_sdk";
+    localStringBuilder.setLength(0);
   }
   
-  public lkr(Context paramContext)
+  public lkr()
   {
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131630401);
+    this.jdField_a_of_type_Lle = null;
   }
   
-  public void a(long paramLong)
+  private byte a(int paramInt)
   {
-    paramLong -= this.jdField_a_of_type_Long;
-    int j = 0;
-    float f2 = 1.0F;
-    int i;
-    float f1;
-    if (paramLong < 500L)
-    {
-      i = (int)(255L * paramLong / 500L);
-      f1 = 0.5F * (float)(500L + paramLong) / 500.0F;
+    if ((paramInt < -128) || (paramInt > 127)) {
+      throw new IllegalArgumentException(paramInt + " out of the range of byte");
     }
+    return (byte)paramInt;
+  }
+  
+  public boolean a(lle paramlle)
+  {
+    return paramlle.a(jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) >= 1;
+  }
+  
+  public boolean b(lle paramlle)
+  {
+    boolean bool2 = false;
+    if (a(paramlle)) {}
     for (;;)
     {
-      a(i);
-      b(f1);
-      this.d = ((int)(paramLong % 2000L * this.jdField_b_of_type_AndroidGraphicsRect.right / 2000L));
-      return;
-      if (((paramLong >= 500L) && (paramLong <= 2167L)) || (!this.jdField_a_of_type_Boolean))
+      try
       {
-        i = 255;
-        f1 = f2;
+        this.jdField_b_of_type_Int = paramlle.a(jdField_m_of_type_JavaLangString, this.jdField_b_of_type_Int);
+        if (Build.VERSION.SDK_INT < this.jdField_b_of_type_Int) {
+          continue;
+        }
+        this.jdField_a_of_type_Byte = a(paramlle.a(jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Byte));
+        this.jdField_b_of_type_Byte = a(paramlle.a(jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Byte));
+        this.jdField_c_of_type_Byte = a(paramlle.a(jdField_d_of_type_JavaLangString, this.jdField_c_of_type_Byte));
+        this.jdField_d_of_type_Byte = a(paramlle.a(jdField_e_of_type_JavaLangString, this.jdField_d_of_type_Byte));
+        this.jdField_e_of_type_Byte = a(paramlle.a(jdField_f_of_type_JavaLangString, this.jdField_e_of_type_Byte));
+        this.jdField_f_of_type_Byte = a(paramlle.a(jdField_g_of_type_JavaLangString, this.jdField_f_of_type_Byte));
+        this.jdField_g_of_type_Byte = a(paramlle.a(jdField_h_of_type_JavaLangString, this.jdField_g_of_type_Byte));
+        this.jdField_h_of_type_Byte = a(paramlle.a(jdField_i_of_type_JavaLangString, this.jdField_h_of_type_Byte));
+        this.jdField_i_of_type_Byte = a(paramlle.a(jdField_j_of_type_JavaLangString, this.jdField_i_of_type_Byte));
+        this.jdField_j_of_type_Byte = a(paramlle.a(jdField_k_of_type_JavaLangString, this.jdField_j_of_type_Byte));
+        this.jdField_k_of_type_Byte = a(paramlle.a(jdField_l_of_type_JavaLangString, this.jdField_k_of_type_Byte));
+        bool1 = true;
       }
-      else
+      catch (Exception paramlle)
       {
-        f1 = f2;
-        i = j;
-        if (paramLong > 2167L)
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("CameraConfigParser", 2, "parse camera angle config error, reset data.", paramlle);
+        this.jdField_a_of_type_Byte = 0;
+        this.jdField_b_of_type_Byte = 0;
+        this.jdField_c_of_type_Byte = 0;
+        this.jdField_d_of_type_Byte = 0;
+        this.jdField_e_of_type_Byte = 0;
+        this.jdField_f_of_type_Byte = 0;
+        this.jdField_g_of_type_Byte = 0;
+        this.jdField_h_of_type_Byte = 0;
+        this.jdField_i_of_type_Byte = 0;
+        this.jdField_j_of_type_Byte = 0;
+        this.jdField_k_of_type_Byte = 0;
+        this.jdField_b_of_type_Int = 0;
+        bool1 = bool2;
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraConfigParser", 2, "value_local_front:" + this.jdField_a_of_type_Byte + ", value_local_back:" + this.jdField_b_of_type_Byte + ", value_remote_front_0:" + this.jdField_c_of_type_Byte + ", value_remote_front_90:" + this.jdField_d_of_type_Byte + ", value_remote_front_180:" + this.jdField_e_of_type_Byte + ", value_remote_front_270:" + this.jdField_f_of_type_Byte + ", value_remote_back_0:" + this.jdField_g_of_type_Byte + ", value_remote_back_90:" + this.jdField_h_of_type_Byte + ", value_remote_back_180:" + this.jdField_i_of_type_Byte + ", value_remote_back_270:" + this.jdField_j_of_type_Byte + ", value_sensor:" + this.jdField_k_of_type_Byte + ", value_minisdk:" + this.jdField_b_of_type_Int);
+      }
+      return bool1;
+      boolean bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("CameraConfigParser", 2, "ignore camera angle config: sdk version not in range, miniSdk:" + this.jdField_b_of_type_Int);
+        bool1 = bool2;
+        continue;
+        bool1 = bool2;
+        if (QLog.isColorLevel())
         {
-          f1 = f2;
-          i = j;
-          if (paramLong < 2500L)
-          {
-            f1 = f2;
-            i = j;
-            if (this.jdField_a_of_type_Boolean)
-            {
-              i = (int)(255L * (paramLong - 2500L) / -333L);
-              f1 = f2;
-            }
-          }
+          QLog.d("CameraConfigParser", 2, "camera angle config disable, return");
+          bool1 = bool2;
         }
       }
     }
   }
   
-  public void a(Canvas paramCanvas, Paint paramPaint)
+  public boolean c(lle paramlle)
   {
-    super.a(paramCanvas, paramPaint);
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramPaint.setShader(new LinearGradient(0.0F, 0.0F, this.d, 0.0F, jdField_a_of_type_ArrayOfInt, null, Shader.TileMode.CLAMP));
-      paramCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRect, paramPaint);
-      paramPaint.setShader(null);
-      paramPaint.setColor(-16777216);
-      paramPaint.setTextSize(this.jdField_b_of_type_Int);
-      paramPaint.setTextAlign(Paint.Align.CENTER);
-      Paint.FontMetrics localFontMetrics = paramPaint.getFontMetrics();
-      float f1 = this.c;
-      float f2 = localFontMetrics.bottom;
-      f2 = (localFontMetrics.top + f2 + this.jdField_b_of_type_Int) / 2.0F;
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_AndroidGraphicsRect.centerX(), f1 - f2, paramPaint);
-    }
+    return paramlle.a(jdField_n_of_type_JavaLangString, this.jdField_c_of_type_Int) >= 1;
   }
   
-  public void a(boolean paramBoolean, AVRedPacketManager paramAVRedPacketManager)
+  public boolean d(lle paramlle)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {}
-    for (String str = "qav_redpacket_hbsd.png";; str = "qav_redpacket_hbll.png")
+    boolean bool2 = false;
+    if (c(paramlle)) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Lla = new lla(paramAVRedPacketManager.a(str));
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_AndroidGraphicsRect = null;
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (this.jdField_b_of_type_Boolean) {}
-    paramInt4 = paramInt1 * 214 / 1500;
-    int i;
-    int j;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      paramInt3 = 584;
-      i = paramInt2 - paramInt3 * paramInt1 / 750;
-      if (this.jdField_b_of_type_Boolean) {}
-      j = paramInt1 * 1286 / 1500;
-      if (!this.jdField_b_of_type_Boolean) {
-        break label143;
+      try
+      {
+        this.jdField_d_of_type_Int = paramlle.a(z, this.jdField_d_of_type_Int);
+        if (Build.VERSION.SDK_INT < this.jdField_d_of_type_Int) {
+          continue;
+        }
+        this.jdField_l_of_type_Byte = a(paramlle.a(jdField_o_of_type_JavaLangString, this.jdField_l_of_type_Byte));
+        this.jdField_m_of_type_Byte = a(paramlle.a(jdField_p_of_type_JavaLangString, this.jdField_m_of_type_Byte));
+        this.jdField_n_of_type_Byte = a(paramlle.a(jdField_q_of_type_JavaLangString, this.jdField_n_of_type_Byte));
+        this.jdField_o_of_type_Byte = a(paramlle.a(jdField_r_of_type_JavaLangString, this.jdField_o_of_type_Byte));
+        this.jdField_p_of_type_Byte = a(paramlle.a(jdField_s_of_type_JavaLangString, this.jdField_p_of_type_Byte));
+        this.jdField_q_of_type_Byte = a(paramlle.a(jdField_t_of_type_JavaLangString, this.jdField_q_of_type_Byte));
+        this.jdField_r_of_type_Byte = a(paramlle.a(jdField_u_of_type_JavaLangString, this.jdField_r_of_type_Byte));
+        this.jdField_s_of_type_Byte = a(paramlle.a(jdField_v_of_type_JavaLangString, this.jdField_s_of_type_Byte));
+        this.jdField_t_of_type_Byte = a(paramlle.a(w, this.jdField_t_of_type_Byte));
+        this.jdField_u_of_type_Byte = a(paramlle.a(x, this.jdField_u_of_type_Byte));
+        this.jdField_v_of_type_Byte = a(paramlle.a(y, this.jdField_v_of_type_Byte));
+        bool1 = true;
       }
-    }
-    label143:
-    for (paramInt3 = 364;; paramInt3 = 376)
-    {
-      a(paramInt4, i, j, paramInt3 * paramInt1 / 750 + i);
-      this.jdField_b_of_type_Int = (paramInt1 * 28 / 750);
-      this.c = (paramInt2 - paramInt1 * 30 / 750);
-      this.jdField_b_of_type_AndroidGraphicsRect.set(0, paramInt2 - paramInt1 * 10 / 750, paramInt1, paramInt2);
-      return;
-      paramInt3 = 586;
-      break;
+      catch (Exception paramlle)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("CameraConfigParser", 2, "parse camera landscape angle config error, reset data.", paramlle);
+        this.jdField_l_of_type_Byte = 0;
+        this.jdField_m_of_type_Byte = 0;
+        this.jdField_n_of_type_Byte = 0;
+        this.jdField_o_of_type_Byte = 0;
+        this.jdField_p_of_type_Byte = 0;
+        this.jdField_q_of_type_Byte = 0;
+        this.jdField_r_of_type_Byte = 0;
+        this.jdField_s_of_type_Byte = 0;
+        this.jdField_t_of_type_Byte = 0;
+        this.jdField_u_of_type_Byte = 0;
+        this.jdField_v_of_type_Byte = 0;
+        this.jdField_d_of_type_Int = 0;
+        bool1 = bool2;
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraConfigParser", 2, "value_landscape_local_front:" + this.jdField_l_of_type_Byte + ", value_landscape_local_back:" + this.jdField_m_of_type_Byte + ", value_landscape_remote_front_0:" + this.jdField_n_of_type_Byte + ", value_landscape_remote_front_90:" + this.jdField_o_of_type_Byte + ", value_landscape_remote_front_180:" + this.jdField_p_of_type_Byte + ", value_landscape_remote_front_270:" + this.jdField_q_of_type_Byte + ", value_landscape_remote_back_0:" + this.jdField_r_of_type_Byte + ", value_landscape_remote_back_90:" + this.jdField_s_of_type_Byte + ", value_landscape_remote_back_180:" + this.jdField_t_of_type_Byte + ", value_landscape_remote_back_270:" + this.jdField_u_of_type_Byte + ", value_landscape_sensor:" + this.jdField_v_of_type_Byte + ", value_landscape_minisdk:" + this.jdField_d_of_type_Int);
+      }
+      return bool1;
+      boolean bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("CameraConfigParser", 2, "ignore camera landscape angle config: sdk version not in range, miniSdk:" + this.jdField_d_of_type_Int);
+        bool1 = bool2;
+        continue;
+        bool1 = bool2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("CameraConfigParser", 2, "camera landscape angle config disable");
+          bool1 = bool2;
+        }
+      }
     }
   }
 }

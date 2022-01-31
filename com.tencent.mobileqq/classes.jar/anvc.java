@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-
-public class anvc
-  implements DialogInterface.OnClickListener
+class anvc
+  extends bbwf
 {
-  public anvc(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  anvc(anul paramanul) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onCancel(bbwg parambbwg) {}
+  
+  public void onDone(bbwg parambbwg)
+  {
+    super.onDone(parambbwg);
+  }
+  
+  public void onDoneFile(bbwg parambbwg) {}
+  
+  public void onPause(bbwg parambbwg) {}
+  
+  public void onProgress(bbwg parambbwg) {}
 }
 
 

@@ -1,55 +1,35 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.stt.SliceSttManager.SliceSttServet.2;
-import java.io.File;
-
 public class axad
 {
-  acre jdField_a_of_type_Acre = new axae(this);
-  private acrs jdField_a_of_type_Acrs = new acrs();
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public MessageForPtt a;
-  private Long jdField_a_of_type_JavaLangLong;
-  public String a;
-  String b;
-  
-  public axad(axac paramaxac, QQAppInterface paramQQAppInterface, MessageForPtt paramMessageForPtt, Long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt = paramMessageForPtt;
-  }
-  
-  private void b()
-  {
-    if (this.b != null)
-    {
-      File localFile = new File(this.b);
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.sttAbility = 2;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.sttText = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.isReadPtt = true;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.serial();
-    this.jdField_a_of_type_Axac.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.msgData);
-    this.jdField_a_of_type_Axac.jdField_a_of_type_AndroidOsHandler.post(new SliceSttManager.SliceSttServet.2(this));
-  }
-  
-  public void a()
-  {
-    this.b = MessageForPtt.getTmpFilePath(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath());
-    this.jdField_a_of_type_Acrs.a(this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Acre, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin);
-    this.jdField_a_of_type_Acrs.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath());
-  }
+  public static String a = "key_recv_queue_wait_length";
+  public static String b = "key_add_queue_time";
+  public static String c = "holiday_active_flag";
+  public static String d = "ark_at_babyq_flag";
+  public static String e = "ark_show_as_sdk_flag";
+  public static String f = "ark_babyq_gray_tip_flag";
+  public static String g = "ark_babyq_report_recv_flag";
+  public static String h = "is_redbag_video";
+  public static String i = "troop_at_info_list";
+  public static String j = "disc_at_info_list";
+  public static String k = "at_info";
+  public static String l = "is_troop";
+  public static String m = "pic_sync_story";
+  public static String n = "video_sync_story";
+  public static String o = "is_sync_qzone";
+  public static String p = "batch_id_qzone";
+  public static String q = "album_id_qzone";
+  public static String r = "aio_send_qzone_pic_flag";
+  public static String s = "aio_send_qzone_pic_url";
+  public static String t = "aio_send_qzone_pic_size";
+  public static String u = "aio_light_video_read_flag";
+  public static String v = "ark_msg_process_state";
+  public static String w = "service_msg_type";
+  public static String x = "service_msg_remind_type";
+  public static String y = "service_msg_name";
+  public static String z = "key_send_raw_video";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axad
  * JD-Core Version:    0.7.0.1
  */

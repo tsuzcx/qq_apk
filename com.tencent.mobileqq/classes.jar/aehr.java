@@ -1,14 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class aehr
-  implements View.OnClickListener
+  implements EIPCResultCallback
 {
-  aehr(aegy paramaegy) {}
+  aehr(aehq paramaehq) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramView.setVisibility(8);
+    if (-102 == paramEIPCResult.code) {
+      aegu.n(this.a.a).finish();
+    }
   }
 }
 

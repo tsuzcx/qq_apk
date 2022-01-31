@@ -1,11 +1,24 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+
 public class arrw
+  implements DialogInterface.OnClickListener
 {
-  public static final String a = ajed.aU + "/Tencent/";
-  public static final String b = ajed.aU + "msgbackup/";
-  public static final String c = b + "multimsg/";
-  public static final String d = b + "immigrate/";
-  public static final String e = b + "emmigrate/";
-  public static final String f = b + "db/";
+  public arrw(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (FloatingScreenPermission.requestPermission(BaseApplicationImpl.getContext()))
+    {
+      ListenTogetherOverlayFragment.a(this.a, true);
+      return;
+    }
+    ListenTogetherOverlayFragment.a(this.a).finish();
+  }
 }
 
 

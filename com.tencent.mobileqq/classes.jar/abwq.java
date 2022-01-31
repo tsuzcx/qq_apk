@@ -1,8 +1,16 @@
+import com.tencent.mobileqq.activity.QQSettingMe;
+
 public class abwq
+  implements awcb
 {
-  public long a;
-  public String a;
-  String b;
+  public abwq(QQSettingMe paramQQSettingMe) {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
+      this.a.z();
+    }
+  }
 }
 
 

@@ -1,37 +1,39 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 import com.tencent.qphone.base.util.QLog;
 
-class qbu
-  extends BroadcastReceiver
+public class qbu
+  implements Cloneable
 {
-  private qbu(qbq paramqbq) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected Object clone()
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsFloatWindowManager", 2, "onReceive: action=" + paramContext);
-    }
-    if (paramContext.equals("tencent.av.v2q.StartVideoChat")) {
-      this.a.f();
-    }
-    while ((!paramContext.equals("tencent.av.v2q.StopVideoChat")) || (qbq.c(this.a) != 1)) {
-      return;
-    }
-    if (qbq.a(this.a).d()) {
-      qbq.a(this.a).a(qbq.a(this.a), false);
-    }
-    for (;;)
+    try
     {
-      qjm.a().a(true, "float window video");
-      return;
-      if (qbq.a(this.a).e()) {
-        qbq.a(this.a).c();
-      }
+      qbu localqbu = (qbu)super.clone();
+      return localqbu;
     }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      QLog.e("NewPolymericInfo", 2, "PackVideoInfo item clone failed. exception = " + localCloneNotSupportedException);
+    }
+    return null;
+  }
+  
+  public String toString()
+  {
+    return "PackVideoInfo{businessType=" + this.jdField_a_of_type_Int + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", width=" + this.jdField_b_of_type_Int + ", height=" + this.jdField_c_of_type_Int + ", duration=" + this.jdField_d_of_type_Int + ", xgFileSize=" + this.jdField_a_of_type_Long + ", thirdUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", shareUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", thirdUin=" + this.jdField_b_of_type_Long + ", thirdUinName='" + this.jdField_d_of_type_JavaLangString + '\'' + ", thirdName='" + this.e + '\'' + ", thirdIcon='" + this.f + '\'' + ", thirdAction='" + this.g + '\'' + '}';
   }
 }
 

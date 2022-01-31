@@ -1,76 +1,63 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavVideoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amzq
-  extends amza
+  extends amyi<amzp>
 {
-  public amzq(QQAppInterface paramQQAppInterface)
+  public static amzp a()
   {
-    super("qq.android.qav.video", paramQQAppInterface);
+    return (amzp)ampm.a().a(563);
   }
   
   public int a()
   {
-    return 10049;
+    return 563;
   }
   
-  public Class<? extends XmlData> a()
+  @NonNull
+  public amzp a(@NonNull ampi[] paramArrayOfampi)
   {
-    return QavVideoData.class;
-  }
-  
-  public String a()
-  {
-    return "qavDownloadVideoDuration";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavVideoDownloadHandler", 2, "download success: " + paramString);
-    }
+    amzp localamzp = new amzp();
+    paramArrayOfampi = paramArrayOfampi[0].a;
+    if (paramArrayOfampi != null) {}
     try
     {
-      bace.a(paramString, mgw.c(), false);
-      return;
+      if (!"".equals(paramArrayOfampi))
+      {
+        paramArrayOfampi = new JSONObject(paramArrayOfampi);
+        localamzp.a = paramArrayOfampi.getString("musicBoxUrl");
+        localamzp.b = paramArrayOfampi.getString("playerUrl");
+      }
+      return localamzp;
     }
-    catch (Exception paramString)
+    catch (JSONException paramArrayOfampi)
     {
-      paramString.printStackTrace();
+      paramArrayOfampi.printStackTrace();
     }
+    return localamzp;
   }
   
-  public void a(boolean paramBoolean)
+  public Class<amzp> a()
   {
-    QavVideoData localQavVideoData = (QavVideoData)a();
-    if ((localQavVideoData != null) && (!localQavVideoData.autoDownload))
-    {
-      localQavVideoData.autoDownload = true;
-      amyo.a(localQavVideoData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
+    return amzp.class;
   }
   
-  public boolean a()
+  @NonNull
+  public amzp b()
   {
-    return true;
+    return new amzp();
   }
   
-  public String b()
+  @NonNull
+  public amzp c()
   {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    return ((QavVideoData)a()).autoDownload;
+    return new amzp();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amzq
  * JD-Core Version:    0.7.0.1
  */

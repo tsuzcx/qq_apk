@@ -1,15 +1,9 @@
-import android.view.View;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-
-class aupc
-  implements begw
+public final class aupc
+  extends aupb
 {
-  aupc(aupb paramaupb, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  protected int c()
   {
-    ReceiptMessageDetailFragment.g(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment);
-    this.jdField_a_of_type_Begr.dismiss();
+    return 496;
   }
 }
 

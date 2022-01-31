@@ -1,100 +1,120 @@
-import android.animation.TypeEvaluator;
-import android.annotation.TargetApi;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.view.OCRScanEntryView;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.ar.view.ScanEntryProviderView;
+import java.util.ArrayList;
 
-@TargetApi(11)
 public class alne
-  implements TypeEvaluator<alnb>
 {
-  public alnb a(float paramFloat, alnb paramalnb1, alnb paramalnb2)
+  private int jdField_a_of_type_Int;
+  private ArrayList<alnf> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public boolean a;
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131373403, 2131371000, 2131362710 };
+  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { ajyc.a(2131713506), ajyc.a(2131718897), "AR" };
+  public boolean b;
+  private final int[] b;
+  public boolean c;
+  private final int[] c;
+  private final int[] d = { 2130844053, 2130844054, 2130844055, 2130844056, 2130844057, 2130844058, 2130844059, 2130844060 };
+  
+  public alne(int paramInt)
   {
-    long l = System.currentTimeMillis();
-    float f1;
-    float f2;
-    alod localalod;
-    alnb localalnb;
-    if (paramalnb2.jdField_a_of_type_Alod.jdField_a_of_type_Int == 2)
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_b_of_type_ArrayOfInt = new int[] { 2130844061, 2130844062, 2130844063, 2130844064, 2130844065, 2130844066, 2130844067, 2130844068 };
+    this.jdField_c_of_type_ArrayOfInt = new int[] { 2130844036, 2130844037, 2130844038, 2130844039, 2130844040, 2130844041, 2130844042, 2130844043 };
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_b_of_type_ArrayOfInt.length;
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = 1;
+    if (paramInt == 1) {
+      i = 0;
+    }
+    while (paramInt == 2) {
+      return i;
+    }
+    return 2;
+  }
+  
+  public alnf a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < b())) {
+      return (alnf)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public ScanEntryProviderView a(int paramInt, Context paramContext, almz paramalmz)
+  {
+    switch (paramInt)
     {
-      f1 = 1.0F - paramFloat;
-      f2 = f1 * f1 * f1 * paramalnb1.jdField_a_of_type_Alod.jdField_a_of_type_Float + 3.0F * f1 * f1 * paramFloat * paramalnb2.jdField_a_of_type_Alod.e + 3.0F * f1 * paramFloat * paramFloat * paramalnb2.jdField_a_of_type_Alod.g + paramFloat * paramFloat * paramFloat * paramalnb2.jdField_a_of_type_Alod.jdField_a_of_type_Float;
-      float f3 = paramalnb1.jdField_a_of_type_Alod.b;
-      float f4 = paramalnb2.jdField_a_of_type_Alod.f;
-      f1 = f1 * 3.0F * paramFloat * paramFloat * paramalnb2.jdField_a_of_type_Alod.h + (f1 * f1 * f1 * f3 + 3.0F * f1 * f1 * paramFloat * f4) + paramFloat * paramFloat * paramFloat * paramalnb2.jdField_a_of_type_Alod.b;
-      localalod = alod.b(f2, f1);
-      localalnb = new alnb();
-      localalod.d = (paramalnb1.jdField_a_of_type_Alod.d + (paramalnb2.jdField_a_of_type_Alod.d - paramalnb1.jdField_a_of_type_Alod.d) * paramFloat);
-      localalnb.jdField_a_of_type_Alod = localalod;
-      localalnb.jdField_a_of_type_Alnc = paramalnb2.jdField_a_of_type_Alnc;
-      localalnb.jdField_a_of_type_AndroidGraphicsBitmap = paramalnb2.jdField_a_of_type_AndroidGraphicsBitmap;
-      localalnb.jdField_a_of_type_JavaLangString = paramalnb2.jdField_a_of_type_JavaLangString;
-      localalnb.jdField_b_of_type_JavaLangString = paramalnb2.jdField_b_of_type_JavaLangString;
-      localalnb.jdField_a_of_type_JavaLangBoolean = paramalnb2.jdField_a_of_type_JavaLangBoolean;
-      localalnb.jdField_a_of_type_Boolean = paramalnb2.jdField_a_of_type_Boolean;
-      localalnb.jdField_a_of_type_AndroidGraphicsRect = paramalnb2.jdField_a_of_type_AndroidGraphicsRect;
-      if (paramalnb1.jdField_b_of_type_Boolean) {
-        if (paramFloat < 1.0D) {
-          break label758;
-        }
+    default: 
+      return null;
+    case 1: 
+      return new QRScanEntryView(paramContext, paramalmz);
+    case 3: 
+      return new ARScanEntryView(paramContext, paramalmz);
+    }
+    return new OCRScanEntryView(paramContext, paramalmz);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(new alnf(1, ajyc.a(2131713507)));
+      }
+      if (this.jdField_c_of_type_Boolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(new alnf(2, "OCR"));
+      }
+      if (this.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(new alnf(3, "AR"));
       }
     }
-    label758:
-    for (int i = 100;; i = (int)((paramFloat + 0.005D) * 100.0D))
-    {
-      localalnb.jdField_a_of_type_Int = i;
-      if ((localalnb.jdField_a_of_type_Int - paramalnb2.jdField_a_of_type_Int >= 5) || (paramalnb2.jdField_a_of_type_Int == 0))
-      {
-        if ((paramalnb2.jdField_b_of_type_Int == 0) || (paramalnb2.c == 0))
-        {
-          paramalnb2.jdField_b_of_type_Int = ((int)paramalnb1.jdField_a_of_type_Alod.jdField_a_of_type_Float);
-          paramalnb2.c = ((int)paramalnb1.jdField_a_of_type_Alod.b);
-        }
-        double d1 = Math.abs(f1 - paramalnb2.c);
-        double d2 = Math.abs(f2 - paramalnb2.jdField_b_of_type_Int);
-        double d3 = Math.pow(d1, 2.0D);
-        d2 = Math.sqrt(Math.pow(d2, 2.0D) + d3);
-        if ((d2 != 0.0D) && (d1 != 0.0D))
-        {
-          localalod.c = ((float)Math.toDegrees(Math.asin(d1 / d2)));
-          if (!paramalnb2.jdField_a_of_type_Boolean) {
-            localalod.c = (-localalod.c);
-          }
-        }
-        if (Math.abs(localalod.c) > 90.0F)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("BubbleInterActiveAnim", 2, "too large rotate " + localalod.c + ", reset to 0!");
-          }
-          localalod.c = 0.0F;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.i("BubbleInterActiveAnim", 2, "rotate: " + localalod.c + " yDistance: " + d1 + ", distance: " + d2 + ", t: " + paramFloat);
-          QLog.i("BubbleInterActiveAnim", 2, "evaluate_path_and_rotate, cost=" + (System.currentTimeMillis() - l));
-        }
-        paramalnb2.jdField_a_of_type_Int = localalnb.jdField_a_of_type_Int;
-      }
-      if (paramFloat == 1.0F) {
-        localalod.c = 360.0F;
-      }
-      paramalnb2.jdField_b_of_type_Int = ((int)f2);
-      paramalnb2.c = ((int)f1);
-      return localalnb;
-      if (paramalnb2.jdField_a_of_type_Alod.jdField_a_of_type_Int == 1)
-      {
-        f1 = paramalnb1.jdField_a_of_type_Alod.jdField_a_of_type_Float;
-        f2 = (paramalnb2.jdField_a_of_type_Alod.jdField_a_of_type_Float - paramalnb1.jdField_a_of_type_Alod.jdField_a_of_type_Float) * paramFloat + f1;
-        f1 = paramalnb1.jdField_a_of_type_Alod.b + (paramalnb2.jdField_a_of_type_Alod.b - paramalnb1.jdField_a_of_type_Alod.b) * paramFloat;
-        break;
-      }
-      f2 = paramalnb2.jdField_a_of_type_Alod.jdField_a_of_type_Float;
-      f1 = paramalnb2.jdField_a_of_type_Alod.b;
-      break;
+  }
+  
+  public int[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public int[] a(int paramInt)
+  {
+    if (paramInt == 0) {
+      return this.jdField_b_of_type_ArrayOfInt;
     }
+    if (paramInt == 1) {
+      return this.d;
+    }
+    if (paramInt == 2) {
+      return this.jdField_c_of_type_ArrayOfInt;
+    }
+    return null;
+  }
+  
+  public String[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alne
  * JD-Core Version:    0.7.0.1
  */

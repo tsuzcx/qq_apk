@@ -1,12 +1,47 @@
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.List;
+
 class tfr
-  implements swj
+  extends SimpleObserver<List<tsr>>
 {
-  tfr(tfp paramtfp, swi paramswi) {}
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void a(boolean paramBoolean)
+  tfr(tfn paramtfn) {}
+  
+  public void a(List<tsr> paramList)
   {
-    this.jdField_a_of_type_Swi.a();
-    this.jdField_a_of_type_Tfp.c();
+    veg.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onNext()");
+    super.onNext(paramList);
+    int i = 0;
+    while (i < paramList.size())
+    {
+      tsr localtsr = (tsr)paramList.get(i);
+      if (!localtsr.a) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(localtsr.b);
+      }
+      i += 1;
+    }
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+  }
+  
+  public void onComplete()
+  {
+    veg.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onComplete()");
+    super.onComplete();
+    this.jdField_a_of_type_Tfn.a(this.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    veg.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onError()");
+    super.onError(paramError);
+    this.jdField_a_of_type_Tfn.a(this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

@@ -1,35 +1,83 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.5;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.HistorySignItem;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.richstatus.StatusServlet;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.NewIntent;
 
 public class awdw
-  implements axrt
+  implements DialogInterface.OnClickListener
 {
-  public awdw(PtvTemplateManager.5 param5) {}
+  public awdw(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public void onResp(axsq paramaxsq)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "onResp url: " + this.a.a.resurl + " resultcode: " + paramaxsq.c);
-    }
-    this.a.a.usable = this.a.this$0.a(this.a.a);
-    if (this.a.a.usable) {}
-    try
+    paramDialogInterface = new ArrayList();
+    Object localObject = SignatureHistoryFragment.a(this.a).iterator();
+    int i;
+    for (paramInt = 0; ((Iterator)localObject).hasNext(); paramInt = i)
     {
-      mpx.a(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.a.name), PtvTemplateManager.jdField_a_of_type_JavaLangString);
+      String str = (String)((Iterator)localObject).next();
+      i = paramInt;
+      if (str != null)
+      {
+        i = paramInt;
+        if (SignatureHistoryFragment.b(this.a) != null)
+        {
+          i = paramInt;
+          if (SignatureHistoryFragment.b(this.a).get(0) != null)
+          {
+            i = paramInt;
+            if (((HistorySignItem)SignatureHistoryFragment.b(this.a).get(0)).richStatus != null)
+            {
+              i = paramInt;
+              if (((HistorySignItem)SignatureHistoryFragment.b(this.a).get(0)).richStatus.feedsId != null)
+              {
+                if (str.equals(new String(((HistorySignItem)SignatureHistoryFragment.b(this.a).get(0)).richStatus.feedsId))) {
+                  paramInt = 1;
+                }
+                paramDialogInterface.add(str);
+                i = paramInt;
+              }
+            }
+          }
+        }
+      }
+    }
+    if (SignatureHistoryFragment.a(this.a) == null) {
+      SignatureHistoryFragment.a(this.a, new bcpq(this.a.getActivity(), this.a.getActivity().getTitleBarHeight()));
+    }
+    SignatureHistoryFragment.a(this.a).a(ajyc.a(2131714123));
+    SignatureHistoryFragment.a(this.a).show();
+    if ((SignatureHistoryFragment.a(this.a)) && (SignatureHistoryFragment.b(this.a).size() == 1))
+    {
+      paramDialogInterface = new NewIntent(this.a.getActivity().app.getApp(), StatusServlet.class);
+      paramDialogInterface.putExtra("k_cmd", 8);
+      this.a.getActivity().app.startServlet(paramDialogInterface);
+    }
+    while (paramDialogInterface.isEmpty())
+    {
+      axqw.b(null, "dc00898", "", "", "0X800A98D", "0X800A98D", 1, 0, "0", "0", "", "");
+      VasWebviewUtil.reportCommercialDrainage(this.a.getActivity().app.c(), "signature", "signature_10", "", 1, 0, 0, "", "", "");
       return;
     }
-    catch (IOException paramaxsq)
+    localObject = new NewIntent(this.a.getActivity().app.getApp(), StatusServlet.class);
+    ((NewIntent)localObject).putExtra("k_cmd", 5);
+    ((NewIntent)localObject).putStringArrayListExtra("k_status_key", paramDialogInterface);
+    if (paramInt != 0) {}
+    for (paramInt = 1;; paramInt = 0)
     {
-      while (!QLog.isColorLevel()) {}
-      paramaxsq.printStackTrace();
+      ((NewIntent)localObject).putExtra("k_status_flag", paramInt);
+      this.a.getActivity().app.startServlet((NewIntent)localObject);
+      break;
     }
   }
-  
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
 }
 
 

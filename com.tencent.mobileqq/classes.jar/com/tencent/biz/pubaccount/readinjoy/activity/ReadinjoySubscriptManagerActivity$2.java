@@ -8,9 +8,9 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nmk;
-import rqn;
-import rtr;
+import nxv;
+import sdf;
+import sgj;
 
 class ReadinjoySubscriptManagerActivity$2
   implements Runnable
@@ -19,7 +19,7 @@ class ReadinjoySubscriptManagerActivity$2
   
   public void run()
   {
-    Object localObject = rqn.a().c(this.this$0.app);
+    Object localObject = sdf.a().c(this.this$0.app);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     if (localObject != null)
@@ -28,14 +28,14 @@ class ReadinjoySubscriptManagerActivity$2
       while (((Iterator)localObject).hasNext())
       {
         PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)((Iterator)localObject).next();
-        nmk localnmk = new nmk(this.this$0, null);
-        nmk.a(localnmk, localPublicAccountInfo.getUin());
-        nmk.b(localnmk, localPublicAccountInfo.name);
-        nmk.c(localnmk, ChnToSpell.a(nmk.b(localnmk), 2));
-        if (rtr.b(this.this$0.app, localPublicAccountInfo.getUin())) {
-          localArrayList2.add(localnmk);
+        nxv localnxv = new nxv(this.this$0, null);
+        nxv.a(localnxv, localPublicAccountInfo.getUin());
+        nxv.b(localnxv, localPublicAccountInfo.name);
+        nxv.c(localnxv, ChnToSpell.a(nxv.b(localnxv), 2));
+        if (sgj.b(this.this$0.app, localPublicAccountInfo.getUin())) {
+          localArrayList2.add(localnxv);
         } else {
-          localArrayList1.add(localnmk);
+          localArrayList1.add(localnxv);
         }
       }
     }

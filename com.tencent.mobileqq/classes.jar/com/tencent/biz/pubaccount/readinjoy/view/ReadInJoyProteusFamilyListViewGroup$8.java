@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import qsc;
+import reo;
 
 class ReadInJoyProteusFamilyListViewGroup$8
   implements Runnable

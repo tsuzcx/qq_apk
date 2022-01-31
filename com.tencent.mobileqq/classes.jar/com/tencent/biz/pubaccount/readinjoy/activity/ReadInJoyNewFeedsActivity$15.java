@@ -1,25 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 class ReadInJoyNewFeedsActivity$15
   implements Runnable
 {
-  ReadInJoyNewFeedsActivity$15(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, int paramInt) {}
+  ReadInJoyNewFeedsActivity$15(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
   public void run()
   {
-    if (this.a <= 0)
+    QQMessageFacade localQQMessageFacade = this.this$0.app.a();
+    if (localQQMessageFacade != null)
     {
-      this.this$0.a.setText(2131654133);
-      return;
+      int i = localQQMessageFacade.b();
+      this.this$0.f(i);
     }
-    if (this.a > 99)
-    {
-      this.this$0.a.setText(String.format("%s(%d+)", new Object[] { this.this$0.getString(2131654133), Integer.valueOf(99) }));
-      return;
-    }
-    this.this$0.a.setText(String.format("%s(%d)", new Object[] { this.this$0.getString(2131654133), Integer.valueOf(this.a) }));
   }
 }
 

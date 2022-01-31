@@ -1,127 +1,104 @@
-import android.graphics.Color;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
+import android.view.ViewStub;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class qyy
-  extends qxr
-  implements View.OnClickListener
 {
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  private boolean jdField_a_of_type_Boolean;
+  private Object jdField_a_of_type_JavaLangObject;
+  private View jdField_b_of_type_AndroidViewView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private KandianUrlImageView jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
   private TextView c;
-  private TextView d;
-  private TextView e;
-  private TextView f;
   
-  public qyy(View paramView, BaseData paramBaseData)
+  public qyy(View paramView, View.OnClickListener paramOnClickListener)
   {
-    super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312553));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312213));
-    this.d = ((TextView)paramView.findViewById(2131312226));
-    this.c = ((TextView)paramView.findViewById(2131312225));
-    this.e = ((TextView)paramView.findViewById(2131312227));
-    this.f = ((TextView)paramView.findViewById(2131312353));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131302877));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131302963));
-    paramView.findViewById(2131309623).setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setRound(true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131303715));
-    paramBaseData = rue.a(null, aciy.a(12.0F, paramView.getResources()), Color.parseColor("#e9ebec"));
-    paramView = rue.a(null, aciy.a(12.0F, paramView.getResources()), Color.parseColor("#12B7F5"));
-    rue.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
   }
   
-  private long a()
+  private void c()
   {
-    try
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null)
     {
-      long l = Long.parseLong(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b.mSubscribeID);
-      return l;
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTag(this.jdField_a_of_type_JavaLangObject);
     }
-    catch (NumberFormatException localNumberFormatException)
+    if (this.c != null)
     {
-      localNumberFormatException.printStackTrace();
-      return 0L;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      this.c.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.c.setTag(this.jdField_a_of_type_JavaLangObject);
     }
   }
   
-  private void a(boolean paramBoolean)
+  public void a()
   {
-    this.f.setOnClickListener(this);
-    if (paramBoolean)
+    if (this.jdField_b_of_type_AndroidViewView != null)
     {
-      this.f.setText(ajjy.a(2131651093));
-      this.f.setTextColor(-4473925);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setEnabled(false);
-      return;
-    }
-    this.f.setText(ajjy.a(2131651094));
-    this.f.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setEnabled(true);
-  }
-  
-  private void b()
-  {
-    Object localObject;
-    oqv localoqv;
-    long l;
-    qyz localqyz;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      a(true);
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localoqv = ogy.a().a();
-      localObject = ((QQAppInterface)localObject).getAccount();
-      l = a();
-      localqyz = new qyz(this);
-      if (!qoe.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b)) {
-        break label81;
-      }
-    }
-    label81:
-    for (int i = 2;; i = 1)
-    {
-      localoqv.a((String)localObject, l, true, localqyz, i);
-      return;
+      this.jdField_b_of_type_AndroidViewView.clearAnimation();
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
   }
   
-  private void c() {}
-  
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    switch (paramView.getId())
+    if (this.jdField_b_of_type_AndroidViewView == null)
     {
-    default: 
-      return;
-    case 2131303715: 
-    case 2131312353: 
-      b();
-      return;
+      this.jdField_b_of_type_AndroidViewView = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131365734)).inflate();
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365735));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365728));
+      this.c = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379034));
+      this.jdField_b_of_type_AndroidViewView.setOnClickListener(null);
     }
     c();
+    qol.a(this.jdField_b_of_type_AndroidViewView);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842579);
+    int i = vpp.b(this.jdField_a_of_type_AndroidContentContext, 18.6F);
+    localDrawable.setBounds(0, 0, i, i);
+    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
+    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(actn.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString2);
+    if (paramInt == 1)
+    {
+      this.c.setVisibility(0);
+      paramString1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841341);
+      paramInt = vpp.b(this.jdField_a_of_type_AndroidContentContext, 18.6F);
+      paramString1.setBounds(0, 0, paramInt, paramInt);
+      this.c.setCompoundDrawables(paramString1, null, null, null);
+      this.c.setCompoundDrawablePadding(actn.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      return;
+    }
+    this.c.setVisibility(8);
+    this.jdField_b_of_type_AndroidViewView.requestLayout();
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener, Object paramObject)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    c();
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView.getVisibility() == 0);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_b_of_type_AndroidViewView != null) {
+      qol.a(this.jdField_b_of_type_AndroidViewView, 8, 300, true);
+    }
   }
 }
 

@@ -1,50 +1,98 @@
-import android.os.Handler;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ThemeTabLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
 
 public class afkn
-  implements begw
+  extends afjv
+  implements rtz
 {
-  public afkn(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, MessageRecord paramMessageRecord, begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public afkn(Context paramContext, QQAppInterface paramQQAppInterface, aipp paramaipp, atyy paramatyy)
   {
-    switch (paramInt)
+    super(paramContext, paramQQAppInterface, paramaipp, paramatyy);
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    paramInt = this.jdField_a_of_type_Aipp.c();
+    int i = this.jdField_a_of_type_Aipp.b();
+    afko localafko;
+    if ((paramView == null) || (!(paramView.getTag() instanceof afko)))
     {
+      localafko = new afko();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560916, null);
+      localafko.a = ((ThemeTabLayout)paramView.findViewById(2131376812));
+      localafko.a.a(this);
+      if (QLog.isColorLevel()) {
+        QLog.d("NewFriendSlideTabBuilder", 2, "getView new ConnectionsTabLayout tabPosition  ->" + paramInt + ", tabId =" + i);
+      }
+      if ((this.jdField_a_of_type_Atyy != null) || ((this.jdField_a_of_type_Atyy instanceof atza))) {
+        localafko.a.a(((atza)this.jdField_a_of_type_Atyy).a, i);
+      }
+      localafko.a.setOnTabSelectedListener(this);
+      paramView.setTag(localafko);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_JavaUtilList = new ArrayList();
+      c(paramView);
+      if (QLog.isColorLevel()) {
+        QLog.d("NewFriendSlideTabBuilder", 2, "getView update tabPosition = " + paramInt + ", tabId =" + i);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPtt))
+      if ((localafko != null) && (localafko.a != null) && ((this.jdField_a_of_type_Atyy != null) || ((this.jdField_a_of_type_Atyy instanceof atza))))
       {
-        paramView = MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
-        if ((paramView == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord) || (((paramView instanceof MessageForPtt)) && (paramView.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq))) {
-          MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c(false);
-        }
+        ArrayList localArrayList = ((atza)this.jdField_a_of_type_Atyy).a;
+        localafko.a.b(localArrayList, i);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.e = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.b.obtainMessage(1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.b.sendMessageDelayed(paramView, 800L);
-      Utils.executeAsyncTaskOnThreadPool(new afko(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
-      bajr.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history", "ChatHistory", "Clk_deleteOne", 1, 0, new String[0]);
+      return paramView;
+      localafko = (afko)paramView.getTag();
     }
   }
+  
+  public ArrayList<afly> a()
+  {
+    if ((this.jdField_a_of_type_Atyy != null) || ((this.jdField_a_of_type_Atyy instanceof atza))) {
+      return ((atza)this.jdField_a_of_type_Atyy).a;
+    }
+    return null;
+  }
+  
+  public void a(rue paramrue)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendSlideTabBuilder", 2, "builder onTabSelected tab ->" + paramrue.a());
+    }
+    if ((this.jdField_a_of_type_Aipp != null) && (paramrue != null))
+    {
+      this.jdField_a_of_type_Aipp.b(((Integer)paramrue.a()).intValue(), paramrue.a());
+      int i = this.jdField_a_of_type_Aipp.b();
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "frd_recom", "frd_tab_clk", i, 0, "0", "3", "", "");
+    }
+  }
+  
+  public void b(rue paramrue) {}
+  
+  public void c(View paramView)
+  {
+    if (paramView == null) {
+      return;
+    }
+    if (ThemeUtil.isDefaultTheme())
+    {
+      paramView.setBackgroundResource(2130839132);
+      return;
+    }
+    paramView.setBackgroundResource(2130849130);
+  }
+  
+  public void c(rue paramrue) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afkn
  * JD-Core Version:    0.7.0.1
  */

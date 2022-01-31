@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import atjj;
-import atjq;
+import auhi;
+import auhp;
 
 public class AccountPanel$15$1
   implements Runnable
 {
-  public AccountPanel$15$1(atjq paramatjq) {}
+  public AccountPanel$15$1(auhp paramauhp) {}
   
   public void run()
   {
-    atjj.a(this.a.a);
+    auhi.a(this.a.a);
   }
 }
 

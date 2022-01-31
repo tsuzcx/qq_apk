@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import atmo;
+import aukm;
 
 public class ChannelInfo
-  extends atmo
+  extends aukm
   implements Cloneable
 {
   public static final int GIF_CHANNEL_TYPE = 4;

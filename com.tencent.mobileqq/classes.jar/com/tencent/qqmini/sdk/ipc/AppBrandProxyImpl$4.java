@@ -1,50 +1,30 @@
 package com.tencent.qqmini.sdk.ipc;
 
 import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.ResultReceiver;
-import bdkr;
-import bdnw;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import beou;
+import beoy;
+import besl;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class AppBrandProxyImpl$4
-  extends ResultReceiver
+  implements Runnable
 {
-  public AppBrandProxyImpl$4(bdkr parambdkr, Handler paramHandler, ResultReceiver paramResultReceiver, Activity paramActivity)
-  {
-    super(paramHandler);
-  }
+  public AppBrandProxyImpl$4(beou parambeou, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver, Activity paramActivity) {}
   
-  protected void onReceiveResult(int paramInt, Bundle paramBundle)
+  public void run()
   {
-    super.onReceiveResult(paramInt, paramBundle);
-    if (paramInt == 1)
+    try
     {
-      Intent localIntent = new Intent();
-      localIntent.addFlags(805371904);
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      localIntent.setComponent((ComponentName)paramBundle.getParcelable("Activity"));
-      paramBundle.remove("receiver");
-      paramBundle.putParcelable("receiver", this.jdField_a_of_type_AndroidOsResultReceiver);
-      localIntent.putExtras(paramBundle);
-      try
-      {
-        if (this.jdField_a_of_type_AndroidAppActivity != null)
-        {
-          this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-          return;
-        }
-        MiniAppEnv.g().getContext().startActivity(localIntent);
-        return;
-      }
-      catch (Throwable paramBundle)
-      {
-        bdnw.d("minisdk-start_AppBrandProxy", "startMiniApp startActivity exception!", paramBundle);
-      }
+      beou.a(this.this$0).a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.jdField_a_of_type_AndroidOsBundle, new AppBrandProxyImpl.4.1(this, new Handler(Looper.getMainLooper())));
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      besl.d("minisdk-start_AppBrandProxy", "startMiniApp exception.", localThrowable);
     }
   }
 }

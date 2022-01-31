@@ -1,29 +1,14 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
 class trw
-  implements tss
+  implements DialogInterface.OnDismissListener
 {
-  trw(trt paramtrt, tqk paramtqk) {}
+  trw(tru paramtru) {}
   
-  public boolean a_(tso paramtso, int paramInt1, int paramInt2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int i;
-    if (paramInt1 == 3) {
-      i = 1;
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_Tqk.a(this.jdField_a_of_type_Trt, i, Integer.valueOf(paramInt2));
-      if (paramInt1 == 701)
-      {
-        i = 2;
-      }
-      else
-      {
-        i = paramInt1;
-        if (paramInt1 == 702) {
-          i = 3;
-        }
-      }
-    }
+    this.a.e();
   }
 }
 

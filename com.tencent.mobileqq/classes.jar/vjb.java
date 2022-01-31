@@ -1,8 +1,37 @@
+import com.qq.taf.jce.HexUtil;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity.1.1;
+
 public class vjb
-  extends vjc
+  implements aigq
 {
-  public static final int[] a = { -3866832, -10233288, -9576193, -16745729, -15975749, -6989057, -31233, -37737, -845543, -27392, -274353, -1, -16777216 };
-  public static final int[] b = { 2130845673, 2130845674, 2130845675, 2130845676, 2130845677, 2130845678, 2130845679, 2130845680, 2130845681, 2130845682, 2130845683, 2130845684, 2130845686 };
+  public vjb(EditWebVideoActivity paramEditWebVideoActivity) {}
+  
+  public void a(int paramInt)
+  {
+    this.a.runOnUiThread(new EditWebVideoActivity.1.1(this));
+  }
+  
+  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  {
+    int i = ((vjc)this.a.a).a;
+    EditWebVideoActivity.a(this.a, paramString1);
+    EditWebVideoActivity.a(this.a, paramArrayOfByte1);
+    EditWebVideoActivity.b(this.a, HexUtil.bytes2HexStr(EditWebVideoActivity.a(this.a)));
+    paramString1 = this.a;
+    if (i <= 0) {}
+    for (;;)
+    {
+      EditWebVideoActivity.a(paramString1, paramInt3);
+      EditWebVideoActivity.c(this.a, paramString2);
+      EditWebVideoActivity.b(this.a, paramArrayOfByte2);
+      EditWebVideoActivity.b(this.a, paramInt1);
+      EditWebVideoActivity.c(this.a, paramInt2);
+      EditWebVideoActivity.a(this.a).sendEmptyMessage(1002);
+      return;
+      paramInt3 = i;
+    }
+  }
 }
 
 

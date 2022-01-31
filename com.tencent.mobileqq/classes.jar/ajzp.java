@@ -1,8 +1,13 @@
-public abstract interface ajzp
+public class ajzp
 {
-  public abstract void a(int paramInt, xfw paramxfw);
+  public int a;
+  public long a;
+  public int b;
   
-  public abstract void a(long paramLong);
+  public String toString()
+  {
+    return "GroupInfo：" + this.jdField_a_of_type_Long + "|" + this.jdField_a_of_type_Int + "|" + this.b;
+  }
 }
 
 

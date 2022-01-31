@@ -1,23 +1,21 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import mqq.os.MqqHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class abtg
-  extends MqqHandler
+  implements View.OnTouchListener
 {
-  public abtg(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public abtg(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    if (paramMotionEvent.getAction() == 1)
     {
-    default: 
-      return;
-    case 1981: 
-      this.a.finish();
-      return;
+      this.a.a();
+      noo.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
     }
-    this.a.d();
+    return true;
   }
 }
 

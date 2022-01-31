@@ -1,24 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.Conversation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aani
-  extends BroadcastReceiver
+class aani
+  implements DialogInterface.OnClickListener
 {
-  public aani(Conversation paramConversation) {}
+  aani(aang paramaang) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ("login".equals(paramIntent.getStringExtra("status")))
-    {
-      this.a.a.a(26, 2);
-      this.a.a.b = paramIntent.getStringExtra("loginInfo");
-      this.a.a.a = paramIntent.getLongExtra("subappid", 1L);
-      this.a.a.a(-1, null);
-      return;
-    }
-    this.a.a.k();
+    paramDialogInterface.dismiss();
   }
 }
 

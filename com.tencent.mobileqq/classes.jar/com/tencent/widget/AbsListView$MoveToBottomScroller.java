@@ -4,7 +4,7 @@ import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import beel;
+import bfmf;
 
 class AbsListView$MoveToBottomScroller
   implements Runnable
@@ -147,7 +147,7 @@ class AbsListView$MoveToBottomScroller
           return;
         }
         float f = j;
-        i = (int)(beel.a(f / this.d) * this.e);
+        i = (int)(bfmf.a(f / this.d) * this.e);
         continue;
         label426:
         this.d = (400 - j);

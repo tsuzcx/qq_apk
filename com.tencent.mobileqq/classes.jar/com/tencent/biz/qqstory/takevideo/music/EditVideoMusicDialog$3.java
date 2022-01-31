@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo.music;
 
-import she;
-import veq;
+import sua;
+import vrm;
 
 class EditVideoMusicDialog$3
   implements Runnable
@@ -10,8 +10,8 @@ class EditVideoMusicDialog$3
   
   public void run()
   {
-    String str = veq.a(this.a);
-    this.this$0.a = new she();
+    String str = vrm.a(this.a);
+    this.this$0.a = new sua();
     this.this$0.a.a(1);
     this.this$0.a.a(this.this$0);
     this.this$0.a.a(this.a, str, 0L);

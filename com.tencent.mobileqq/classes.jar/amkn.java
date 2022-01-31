@@ -1,88 +1,139 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.app.Activity;
+import android.app.ActivityOptions;
+import android.os.Build.VERSION;
+import android.support.annotation.RequiresApi;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 public class amkn
-  extends alzl<amkl>
 {
-  public int a()
-  {
-    return 456;
-  }
+  private static Class<?> jdField_a_of_type_JavaLangClass;
+  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private static boolean jdField_a_of_type_Boolean;
+  private static Method jdField_b_of_type_JavaLangReflectMethod;
+  private static boolean jdField_b_of_type_Boolean;
   
-  @NonNull
-  public amkl a(int paramInt)
+  @RequiresApi(api=16)
+  private static void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("VerticalSearchConfProcessor", 2, "migrateOldOrDefaultContent ");
+    if (jdField_a_of_type_Boolean) {
+      return;
     }
-    return new amkl();
-  }
-  
-  @Nullable
-  public amkl a(alzs[] paramArrayOfalzs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VerticalSearchConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VerticalSearchConfProcessor", 2, "onParsed " + paramArrayOfalzs.length);
-      }
-      return amkl.a(paramArrayOfalzs[0]);
+      jdField_a_of_type_JavaLangReflectMethod = Activity.class.getDeclaredMethod("getActivityOptions", new Class[0]);
+      jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
+      arrayOfClass = Activity.class.getDeclaredClasses();
+      jdField_a_of_type_JavaLangClass = null;
+      j = arrayOfClass.length;
+      i = 0;
     }
-    return null;
-  }
-  
-  public Class a()
-  {
-    return amkl.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("VerticalSearchConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(amkl paramamkl)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    catch (Throwable localThrowable)
     {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramamkl == null) {
-        break label43;
+      for (;;)
+      {
+        Class[] arrayOfClass;
+        int j;
+        int i;
+        Class localClass;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("SwipeLayoutUtils", 2, localThrowable, new Object[0]);
+          continue;
+          i += 1;
+        }
       }
     }
-    label43:
-    for (paramamkl = paramamkl.toString();; paramamkl = " empty")
+    if (i < j)
     {
-      QLog.d("VerticalSearchConfProcessor", 2, paramamkl);
+      localClass = arrayOfClass[i];
+      if (localClass.getSimpleName().contains("TranslucentConversionListener")) {
+        jdField_a_of_type_JavaLangClass = localClass;
+      }
+    }
+    else
+    {
+      jdField_b_of_type_JavaLangReflectMethod = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { jdField_a_of_type_JavaLangClass, ActivityOptions.class });
+      jdField_b_of_type_JavaLangReflectMethod.setAccessible(true);
+      jdField_b_of_type_Boolean = true;
+      jdField_a_of_type_Boolean = true;
       return;
     }
   }
   
-  public int b()
+  public static void a(Activity paramActivity)
   {
-    return 0;
+    Object localObject = null;
+    for (;;)
+    {
+      int i;
+      try
+      {
+        Class[] arrayOfClass = Activity.class.getDeclaredClasses();
+        int j = arrayOfClass.length;
+        i = 0;
+        if (i < j)
+        {
+          Class localClass = arrayOfClass[i];
+          if (localClass.getSimpleName().contains("TranslucentConversionListener")) {
+            localObject = localClass;
+          }
+        }
+        else
+        {
+          localObject = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { localObject });
+          ((Method)localObject).setAccessible(true);
+          ((Method)localObject).invoke(paramActivity, new Object[] { null });
+          return;
+        }
+      }
+      catch (Throwable paramActivity)
+      {
+        return;
+      }
+      i += 1;
+    }
   }
   
-  public boolean b()
+  public static void a(Activity paramActivity, InvocationHandler paramInvocationHandler)
   {
-    return false;
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      b(paramActivity, paramInvocationHandler);
+      return;
+    }
+    a(paramActivity);
   }
   
-  public boolean c()
+  public static boolean a()
   {
-    return true;
+    if (Build.VERSION.SDK_INT < 21) {
+      return false;
+    }
+    a();
+    return jdField_b_of_type_Boolean;
+  }
+  
+  @RequiresApi(api=16)
+  private static void b(Activity paramActivity, InvocationHandler paramInvocationHandler)
+  {
+    
+    try
+    {
+      Object localObject = jdField_a_of_type_JavaLangReflectMethod.invoke(paramActivity, new Object[0]);
+      Class localClass = jdField_a_of_type_JavaLangClass;
+      paramInvocationHandler = Proxy.newProxyInstance(jdField_a_of_type_JavaLangClass.getClassLoader(), new Class[] { localClass }, paramInvocationHandler);
+      jdField_b_of_type_JavaLangReflectMethod.invoke(paramActivity, new Object[] { paramInvocationHandler, localObject });
+      return;
+    }
+    catch (Throwable paramActivity) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkn
  * JD-Core Version:    0.7.0.1
  */

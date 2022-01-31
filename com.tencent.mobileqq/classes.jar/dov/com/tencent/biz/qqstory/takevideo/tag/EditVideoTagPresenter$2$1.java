@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo.tag;
 
-import bixh;
-import bixj;
+import bknt;
+import bknv;
 
 public class EditVideoTagPresenter$2$1
   implements Runnable
 {
-  public EditVideoTagPresenter$2$1(bixj parambixj) {}
+  public EditVideoTagPresenter$2$1(bknv parambknv) {}
   
   public void run()
   {
-    bixh.a(bixh.a(this.a.a), bixh.a(this.a.a));
+    bknt.a(bknt.a(this.a.a), bknt.a(this.a.a));
   }
 }
 

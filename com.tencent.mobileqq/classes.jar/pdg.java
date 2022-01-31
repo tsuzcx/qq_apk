@@ -1,35 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PkgInstallInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class pdg
+class pdg
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
+  pdg(pdb parampdb, ArticleInfo paramArticleInfo) {}
   
-  public pdg()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public oidb_cmd0x68b.PkgInstallInfo a()
-  {
-    int i = 1;
-    oidb_cmd0x68b.PkgInstallInfo localPkgInstallInfo = new oidb_cmd0x68b.PkgInstallInfo();
-    localPkgInstallInfo.uint32_platform_type.set(1);
-    PBUInt32Field localPBUInt32Field = localPkgInstallInfo.uint32_is_installed;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
+    int i = 0;
+    nut.a(pdb.a(this.jdField_a_of_type_Pdb), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
+      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
+    }
+    try
     {
-      localPBUInt32Field.set(i);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        localPkgInstallInfo.bytes_pkg_name.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-      }
-      return localPkgInstallInfo;
-      i = 0;
+      paramView = new JSONObject();
+      paramView.put("feeds_channel_entrance", i);
+      noo.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", paramView.toString(), false);
+      return;
+    }
+    catch (JSONException paramView)
+    {
+      paramView.printStackTrace();
     }
   }
 }

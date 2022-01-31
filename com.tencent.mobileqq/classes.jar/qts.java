@@ -1,22 +1,9 @@
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import com.tencent.biz.pubaccount.VideoInfo;
+import java.util.List;
 
-public class qts
-  extends LinkMovementMethod
+public abstract interface qts
 {
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    boolean bool = super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0)) {
-      Selection.removeSelection(paramSpannable);
-    }
-    paramTextView.setPressed(false);
-    paramTextView.setFocusable(false);
-    return bool;
-  }
+  public abstract List<qjl> a(List<VideoInfo> paramList);
 }
 
 

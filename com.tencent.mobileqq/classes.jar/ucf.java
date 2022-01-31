@@ -1,29 +1,20 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class ucf
-  extends swh
+class ucf
+  implements udh
 {
-  public int a;
-  public String a;
-  public List<CommentEntry> a;
-  public int b;
-  public String b;
-  public int c;
+  ucf(ucc paramucc, StoryVideoItem paramStoryVideoItem) {}
   
-  public ucf(ErrorMessage paramErrorMessage, String paramString, int paramInt)
+  public void a_(udc paramudc)
   {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(0);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "GetFeedCommentEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mType=" + this.jdField_a_of_type_Int + ", mSource=" + this.c + ", mCommentEntries=" + this.jdField_a_of_type_JavaUtilList.size() + ", mTotalCount=" + this.b + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
+    if (this.jdField_a_of_type_Ucc.isCanceled()) {
+      return;
+    }
+    veg.a(this.jdField_a_of_type_Ucc.a.a, "onPrepared, [videoView=%d]", Integer.valueOf(System.identityHashCode(paramudc)));
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Ucc.a, "VP", SystemClock.uptimeMillis());
+    this.jdField_a_of_type_Ucc.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
   }
 }
 

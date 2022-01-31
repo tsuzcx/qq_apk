@@ -1,37 +1,41 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.util.WeakReference;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
-class rcd
-  implements GifDrawable.OnGIFPlayOnceListener
+public class rcd
+  implements raf
 {
-  AbstractGifImage a;
+  public rcd(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
   
-  rcd(AbstractGifImage paramAbstractGifImage)
+  public void a(Bundle paramBundle)
   {
-    this.a = paramAbstractGifImage;
+    String str = paramBundle.getString("mTaskID");
+    ReadInJoyBaseListViewGroup.a(this.a, str);
+    qeh.b(paramBundle);
   }
   
-  public void onPlayOnce()
+  public void a(String paramString, Bundle paramBundle)
   {
-    Object localObject = (List)rcc.a().get(this.a);
-    if (localObject != null)
+    paramString = this.a.a();
+    Intent localIntent;
+    if ((paramBundle != null) && (paramString != null))
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
-        if (localWeakReference.get() != null) {
-          ((rce)localWeakReference.get()).a();
-        }
-      }
+      localIntent = new Intent();
+      localIntent.putExtras(paramBundle);
+      localIntent.setClass(paramString, KandianVideoUploadService.class);
     }
-    this.a.setGIFPlayOnceListener(null);
-    rcc.b().remove(this.a);
-    rcc.a().remove(this.a);
+    try
+    {
+      paramString.startService(localIntent);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.d("KandianVideoUpload", 1, "Kandian retryFail", paramString);
+    }
   }
 }
 

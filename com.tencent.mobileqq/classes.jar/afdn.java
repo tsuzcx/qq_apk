@@ -1,29 +1,28 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class afdn
-  implements View.OnLongClickListener
+  extends akuj
 {
-  private WeakReference<afdi> a;
-  
-  public afdn(afdi paramafdi)
+  afdn(afdm paramafdm, String paramString, akhq paramakhq, boolean paramBoolean)
   {
-    this.a = new WeakReference(paramafdi);
+    super(paramString);
   }
   
-  public boolean onLongClick(View paramView)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    afdi localafdi = (afdi)this.a.get();
-    if (localafdi != null) {
-      return localafdi.onLongClick(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.i("ac_ft.AddContactFindTroopRTLW", 2, "getRecommendTroopList onLocationFinish info = " + paramSosoLbsInfo);
     }
-    return false;
+    if (paramInt != 0) {
+      QLog.i("ac_ft.AddContactFindTroopRTLW", 1, "getRecommendTroopList onLocationFinish, errorCode=" + paramInt);
+    }
+    this.jdField_a_of_type_Akhq.a(1, this.jdField_a_of_type_Afdm.b, 25, this.jdField_a_of_type_Boolean, afdm.a(this.jdField_a_of_type_Afdm));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afdn
  * JD-Core Version:    0.7.0.1
  */

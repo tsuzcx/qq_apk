@@ -4,7 +4,7 @@ import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 
 public class MiniAppExposureManager$MiniAppModuleExposureData
-  implements MiniAppExposureManager.BaseExposureReport
+  extends MiniAppExposureManager.BaseExposureReport
 {
   private String actionType;
   private MiniAppConfig appConfig;

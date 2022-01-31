@@ -1,21 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
-final class rvv
-  implements bbsh
+public class rvv
+  implements Animation.AnimationListener
 {
-  public void a(BaseResp paramBaseResp)
+  public rvv(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, int paramInt1, int paramInt2) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      bbmy.a(BaseApplicationImpl.getContext(), 2, 2131653595, 1).a();
-    case -2: 
-      return;
-    }
-    bbmy.a(BaseApplicationImpl.getContext(), 2, 2131653612, 1).a();
+    CommonSuspensionGestureLayout.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).setVisibility(8);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).a(true, this.jdField_a_of_type_Int, this.b);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout, this.b);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

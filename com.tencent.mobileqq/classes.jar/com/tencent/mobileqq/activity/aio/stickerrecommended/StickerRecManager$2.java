@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aemi;
-import aeml;
+import aexd;
+import aexg;
 import java.util.List;
 
 public class StickerRecManager$2
   implements Runnable
 {
-  public StickerRecManager$2(aemi paramaemi, String paramString, boolean paramBoolean) {}
+  public StickerRecManager$2(aexd paramaexd, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
     String str = this.this$0.b(this.jdField_a_of_type_JavaLangString);
-    aemi.a(this.this$0, this.jdField_a_of_type_Boolean, str);
-    if ((aemi.a(this.this$0) != null) && (!aemi.a(this.this$0).isEmpty())) {
-      aemi.a(this.this$0).a(aemi.a(this.this$0), str, "999");
+    aexd.a(this.this$0, this.jdField_a_of_type_Boolean, str);
+    if ((aexd.a(this.this$0) != null) && (!aexd.a(this.this$0).isEmpty())) {
+      aexd.a(this.this$0).a(aexd.a(this.this$0), str, "999");
     }
   }
 }

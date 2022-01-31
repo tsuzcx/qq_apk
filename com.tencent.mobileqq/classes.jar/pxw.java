@@ -1,36 +1,35 @@
-public abstract interface pxw
+import android.text.TextPaint;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qphone.base.util.QLog;
+
+public class pxw
+  implements pca
 {
-  public abstract void a(qeq paramqeq);
+  public pxw(ComponentHeaderUgc paramComponentHeaderUgc, ArticleInfo paramArticleInfo) {}
   
-  public abstract void a(qeq paramqeq, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(qeq paramqeq, int paramInt, boolean paramBoolean);
-  
-  public abstract void a(qeq paramqeq, long paramLong1, long paramLong2);
-  
-  public abstract void a(qeq paramqeq, boolean paramBoolean);
-  
-  public abstract boolean a(qeq paramqeq);
-  
-  public abstract void b(qeq paramqeq);
-  
-  public abstract void b(qeq paramqeq, boolean paramBoolean);
-  
-  public abstract void c(qeq paramqeq);
-  
-  public abstract void d(qeq paramqeq);
-  
-  public abstract void e(qeq paramqeq);
-  
-  public abstract void f(qeq paramqeq);
-  
-  public abstract void g(qeq paramqeq);
-  
-  public abstract void h(qeq paramqeq);
-  
-  public abstract void i(qeq paramqeq);
-  
-  public abstract void j(qeq paramqeq);
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    QLog.d("ComponentHeaderUgc", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
+    if ((paramBoolean) && (paramInt == 2))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = paramInt;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setEnabled(false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setText(ajyc.a(2131702258));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.getPaint().setFakeBoldText(false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = 2;
+      osj.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      osj.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a, paramInt);
+      osm.a().b();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setEnabled(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setText(ajyc.a(2131702255));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.getPaint().setFakeBoldText(true);
+    bcpw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), ajyc.a(2131702288), 0).a();
+  }
 }
 
 

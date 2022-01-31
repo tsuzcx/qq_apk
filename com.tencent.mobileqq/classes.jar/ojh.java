@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-
-public class ojh
-  implements View.OnClickListener
+class ojh
+  extends ojq
 {
-  public ojh(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
-  
-  public void onClick(View paramView)
+  ojh(oio paramoio)
   {
-    this.a.onBackEvent();
+    super(paramoio, null);
+  }
+  
+  void a(ojt paramojt)
+  {
+    paramojt.onCommentReply(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ojh
  * JD-Core Version:    0.7.0.1
  */

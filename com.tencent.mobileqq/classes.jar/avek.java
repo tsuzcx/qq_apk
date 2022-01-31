@@ -1,13 +1,54 @@
-import android.view.View;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.GroupIconHelper;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class avek
-  implements behy
+public class avek
+  extends ajvl
 {
-  avek(avej paramavej, View paramView) {}
+  public avek(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    if ((((ArrayList)paramObject).indexOf(QCallDetailActivity.a(this.a)) != -1) && (paramBoolean) && (QCallDetailActivity.a(this.a) == 3000)) {
+      this.a.a(QCallDetailActivity.a(this.a));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a).equals(paramString)) && (QCallDetailActivity.a(this.a) == 3000)) {
+      this.a.a(paramString);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QCallDetailActivity", 2, " === onUpdateDiscussionFaceIcon isSuccess | " + paramBoolean1 + ", disUin | " + paramString + ",isComplete | " + paramBoolean2);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && (QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a) == 3000))
+    {
+      String str = paramString;
+      if (GroupIconHelper.a(paramString)) {
+        str = GroupIconHelper.b(paramString);
+      }
+      if (QCallDetailActivity.a(this.a).equals(str))
+      {
+        this.a.a(QCallDetailActivity.a(this.a));
+        if (QLog.isColorLevel()) {
+          QLog.i("QCallDetailActivity", 2, "==== onUpdateDiscussionFaceIcon updateUin ===");
+        }
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(QCallDetailActivity.a(this.a))) && (QCallDetailActivity.a(this.a).equals(paramString)) && (!this.a.isFinishing())) {
+      this.a.finish();
+    }
   }
 }
 

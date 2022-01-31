@@ -1,31 +1,31 @@
 package cooperation.qlink;
 
-import bffq;
-import bffr;
+import bgnh;
+import bgni;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.mfsdk.reporter.ReporterMachine;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zqb;
+import zzt;
 
 public class QlinkLeakHelper$2$1
   implements Runnable
 {
-  public QlinkLeakHelper$2$1(bffr parambffr) {}
+  public QlinkLeakHelper$2$1(bgni parambgni) {}
   
   public void run()
   {
-    Object localObject1 = zqb.a("mobile_qlink_leak");
+    Object localObject1 = zzt.a("mobile_qlink_leak");
     Object localObject2;
     if (((Boolean)localObject1[0]).booleanValue())
     {
       localObject2 = (String)localObject1[1];
-      bffq.a((String)localObject2);
+      bgnh.a((String)localObject2);
     }
     try
     {
-      if (!"0".equals("cc9d1343"))
+      if (!"0".equals("a15c4095"))
       {
         localObject1 = new JSONObject();
         JSONObject localJSONObject = new JSONObject();

@@ -1,6 +1,6 @@
 package com.tencent.biz.troop.feeds;
 
-import wku;
+import wzw;
 
 class TroopNewGuidePopWindow$4$1
   implements Runnable
@@ -9,7 +9,7 @@ class TroopNewGuidePopWindow$4$1
   
   public void run()
   {
-    wku.a(this.a.this$0, this.a.jdField_a_of_type_OrgJsonJSONObject, this.a.jdField_a_of_type_Int);
+    wzw.a(this.a.this$0, this.a.jdField_a_of_type_OrgJsonJSONObject, this.a.jdField_a_of_type_Int);
   }
 }
 

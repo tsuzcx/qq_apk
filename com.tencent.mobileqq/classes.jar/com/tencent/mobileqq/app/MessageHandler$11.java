@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import arsd;
-import bace;
+import asoh;
+import bbdj;
 
 class MessageHandler$11
   implements Runnable
@@ -10,7 +10,7 @@ class MessageHandler$11
   
   public void run()
   {
-    bace.a(arsd.a, true);
+    bbdj.a(asoh.a, true);
   }
 }
 

@@ -1,64 +1,70 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.AVLoadingDialogActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
+import java.lang.reflect.Array;
 
 public class lrb
-  extends Handler
 {
-  final String a;
+  private static int[] a = { 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 30, 31, 32, 33, 34, 35, 36, 37, 22, 23, 24, 25, 26, 27, 28, 29, 46, 47, 48, 49, 50, 51, 52, 53, 38, 39, 40, 41, 42, 43, 44, 45, 54, 55, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 73, 72, 71, 70, 69, 68, 67, 78, 77, 76, 75, 74, 83, 82, 81, 80, 79, 88, 87, 86, 85, 84, 90, 89, 93, 94, 91, 92 };
   
-  public lrb(String paramString)
+  public static TTFaceOriginDataModel a(TTFaceOriginDataModel paramTTFaceOriginDataModel, RectF paramRectF1, RectF paramRectF2, Matrix paramMatrix, float paramFloat, boolean paramBoolean)
   {
-    this.a = paramString;
+    TTFaceOriginDataModel localTTFaceOriginDataModel = new TTFaceOriginDataModel();
+    float f = Math.max(paramRectF2.width() / paramRectF1.width(), paramRectF2.height() / paramRectF1.height());
+    int i = (int)(paramRectF1.width() * f);
+    int j = (int)(paramRectF1.height() * f);
+    if (i > paramRectF2.width()) {
+      paramMatrix.preTranslate((paramRectF2.width() - i) / 2.0F, 0.0F);
+    }
+    for (;;)
+    {
+      paramMatrix.preScale(f, f);
+      paramMatrix.postScale(paramFloat, paramFloat);
+      i = 0;
+      while (i < paramTTFaceOriginDataModel.facePoint.length)
+      {
+        if (paramBoolean) {
+          paramTTFaceOriginDataModel.facePoint[i][0] = (paramRectF1.width() - paramTTFaceOriginDataModel.facePoint[i][0]);
+        }
+        paramMatrix.mapPoints(localTTFaceOriginDataModel.facePoint[i], paramTTFaceOriginDataModel.facePoint[i]);
+        i += 1;
+      }
+      if (j > paramRectF2.height()) {
+        paramMatrix.preTranslate(0.0F, (paramRectF2.height() - j) / 2.0F);
+      }
+    }
+    localTTFaceOriginDataModel.facePointVisible = paramTTFaceOriginDataModel.facePointVisible;
+    localTTFaceOriginDataModel.pitch = paramTTFaceOriginDataModel.pitch;
+    if (paramBoolean)
+    {
+      paramFloat = -paramTTFaceOriginDataModel.yaw;
+      localTTFaceOriginDataModel.yaw = paramFloat;
+      if (!paramBoolean) {
+        break label273;
+      }
+    }
+    label273:
+    for (paramFloat = -paramTTFaceOriginDataModel.roll;; paramFloat = paramTTFaceOriginDataModel.roll)
+    {
+      localTTFaceOriginDataModel.roll = paramFloat;
+      localTTFaceOriginDataModel.cls = paramTTFaceOriginDataModel.cls;
+      return localTTFaceOriginDataModel;
+      paramFloat = paramTTFaceOriginDataModel.yaw;
+      break;
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public static void a(TTFaceOriginDataModel paramTTFaceOriginDataModel)
   {
-    if ((paramMessage.obj != null) && ((paramMessage.obj instanceof WeakReference)))
+    float[][] arrayOfFloat = (float[][])Array.newInstance(Float.TYPE, new int[] { 94, 2 });
+    int i = 0;
+    while (i < a.length)
     {
-      localObject = (WeakReference)paramMessage.obj;
-      if (localObject != null)
-      {
-        localObject = ((WeakReference)localObject).get();
-        if ((localObject == null) || (!(localObject instanceof AVLoadingDialogActivity))) {}
-      }
+      arrayOfFloat[i][0] = paramTTFaceOriginDataModel.facePoint[(a[i] - 1)][0];
+      arrayOfFloat[i][1] = paramTTFaceOriginDataModel.facePoint[(a[i] - 1)][1];
+      i += 1;
     }
-    for (Object localObject = new WeakReference((AVLoadingDialogActivity)localObject);; localObject = null)
-    {
-      switch (paramMessage.what)
-      {
-      }
-      do
-      {
-        do
-        {
-          return;
-        } while ((localObject == null) || (((WeakReference)localObject).get() == null));
-        paramMessage = (Intent)((AVLoadingDialogActivity)((WeakReference)localObject).get()).getIntent().getParcelableExtra("avactivity_intent");
-        paramMessage.setExtrasClassLoader(ResultRecord.class.getClassLoader());
-        long l = min.a(paramMessage);
-        QLog.w(this.a, 1, "avideo handleMessage MSG_START_AVACTIVITY, seq[" + l + "]");
-        try
-        {
-          AudioHelper.a(this.a + ".MSG_START_AVACTIVITY", paramMessage.getExtras());
-          ((AVLoadingDialogActivity)((WeakReference)localObject).get()).startActivity(paramMessage);
-          ((AVLoadingDialogActivity)((WeakReference)localObject).get()).overridePendingTransition(2130772164, 0);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.w(this.a, 1, "MSG_START_AVACTIVITY, Exception, seq[" + l + "]", paramMessage);
-          return;
-        }
-      } while ((localObject == null) || (((WeakReference)localObject).get() == null));
-      ((AVLoadingDialogActivity)((WeakReference)localObject).get()).finish();
-      return;
-    }
+    paramTTFaceOriginDataModel.facePoint = arrayOfFloat;
   }
 }
 

@@ -1,428 +1,254 @@
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.utils.TroopLinkManager.1;
+import com.tencent.mobileqq.troop.utils.TroopLinkManager.2;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.json.JSONObject;
+
 public class bali
 {
-  private static bali a;
+  public static bali a;
+  public static final HashMap<String, String> a;
+  public Object a;
+  public boolean a;
+  
+  static
+  {
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put("troop_create", "https://admin.qun.qq.com/mcreatev3/info.html?_bid=206&_wv=2097155&cateid=<$CATEID>&subid=<$SUBID>&_nativeFrom=<$FROM>");
+    jdField_a_of_type_JavaUtilHashMap.put("troop_create_for_school", "https://admin.qun.qq.com/mcreatev3/school_new.html?_bid=206&_wv=3&_wwv=128&_nativeFrom=<$FROM>");
+    jdField_a_of_type_JavaUtilHashMap.put("troop_create_for_game", "https://admin.qun.qq.com/mcreatev3/info.html?_bid=206&_wv=2097155&cateid=<$CATEID>&subid=<$SUBID>&_nativeFrom=<$FROM>");
+    jdField_a_of_type_JavaUtilHashMap.put("troop_gift", "https://qun.qq.com/qunpay/gifts/index.html?troopUin=<$GC>&uin=<$UIN>&name=<$NICK>&from=<$FROM>&_wv=1031&_bid=2204&_wvSb=1&_nav_alpha=0");
+    jdField_a_of_type_JavaUtilHashMap.put("troop_rank", "https://qun.qq.com/qqweb/m/qun/rank/rank.html?gc=<$GC>&uin=<$UIN>&from=<$FROM>&_wv=1031&_bid=2468");
+    jdField_a_of_type_JavaUtilHashMap.put("troop_level", "http://qinfo.clt.qq.com/qlevel/level.html?gc=<$GC>&type=<$TYPE>");
+    jdField_a_of_type_JavaUtilHashMap.put("troop_unique_title", "https://qun.qq.com/qqweb/m/qun/medal/index.html?_wv=16777223&_bid=2504&gc=<$GC>&uin=<$UIN>&from=<$FROM>");
+    jdField_a_of_type_JavaUtilHashMap.put("troop_create_notice", "https://web.qun.qq.com/mannounce/edit.html?_bid=148&_wv=1031&gc=<$GC>&title=<$TITLE>&content=<$CONTENT>&from=<$FROM>&school=1");
+    jdField_a_of_type_JavaUtilHashMap.put("troop_create_homework", "https://qun.qq.com/homework/features/sethomework.html?_wv=5123&_bid=2146#role=teacher&gid=<$GC>&content=<$CONTENT>&type=word&from=<$FROM>");
+    jdField_a_of_type_JavaUtilHashMap.put("troop_list_homework", "https://qun.qq.com/homework/features/v2/index.html?_wv=1027&_bid=3089&gc=<$GC>&from=<$FROM>");
+    jdField_a_of_type_JavaUtilHashMap.put("troop_homework_create_notice", "https://web.qun.qq.com/mannounce/schooledit.html?_bid=148&_wv=1031&from=<$FROM>&content=<$CONTENT>&gc=<$GC>");
+    jdField_a_of_type_JavaUtilHashMap.put("troop_bind_game", "https://imgcache.qq.com/gc/gamecenterV2/dist/index/qqbindGroup/index.html?_wvx=10&_wvxBclr=0xffffff&_wv=1027");
+    jdField_a_of_type_JavaUtilHashMap.put("troop_honor_page", "https://qun.qq.com/interactive/qunhonor?gc=<$GC>&_wv=3&&_wwv=128");
+    jdField_a_of_type_JavaUtilHashMap.put("troop_member_honor_page", "https://qun.qq.com/interactive/userhonor?uin=<$UIN>&gc=<$GC>&_wv=3&&_wwv=128");
+    jdField_a_of_type_JavaUtilHashMap.put("troop_honor_setting", "https://qinfo.clt.qq.com/qlevel/setting.html?_wv=4&_bid=125#gc=<$GC>&type=102&grayscale=<$GRAY>");
+  }
+  
+  private bali()
+  {
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_Boolean = false;
+    ThreadManager.post(new TroopLinkManager.1(this, BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + File.separator + "troop_link_config.json"), 5, null, false);
+  }
   
   public static bali a()
   {
-    if (a == null) {}
+    if (jdField_a_of_type_Bali == null) {}
     try
     {
-      if (a == null) {
-        a = new bali();
+      if (jdField_a_of_type_Bali == null) {
+        jdField_a_of_type_Bali = new bali();
       }
-      return a;
+      return jdField_a_of_type_Bali;
     }
     finally {}
   }
   
-  public void a(String paramString)
+  public String a(String paramString)
   {
-    if (paramString.equalsIgnoreCase("SCH-N719"))
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      balh.b = false;
-      bald.jdField_a_of_type_Int = 3;
+      paramString = (String)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      return paramString;
     }
-    do
+  }
+  
+  public String a(String paramString, balj parambalj)
+  {
+    String str1 = paramString;
+    if (parambalj.c != null) {
+      str1 = paramString.replace("<$FROM>", parambalj.c);
+    }
+    paramString = str1;
+    if (parambalj.a != null) {
+      paramString = str1.replace("<$GC>", parambalj.a);
+    }
+    str1 = paramString;
+    if (parambalj.e != null) {
+      str1 = paramString.replace("<$NICK>", parambalj.e);
+    }
+    paramString = str1;
+    if (parambalj.d != null) {
+      paramString = str1.replace("<$TYPE>", parambalj.d);
+    }
+    str1 = paramString;
+    if (parambalj.b != null) {
+      str1 = paramString.replace("<$UIN>", parambalj.b);
+    }
+    paramString = str1;
+    if (parambalj.f != null) {
+      paramString = str1.replace("<$CATEID>", parambalj.f);
+    }
+    str1 = paramString;
+    if (parambalj.g != null) {
+      str1 = paramString.replace("<$SUBID>", parambalj.g);
+    }
+    paramString = str1;
+    if (parambalj.j != null) {
+      paramString = str1.replace("<$GRAY>", parambalj.j);
+    }
+    str1 = paramString;
+    if (parambalj.h != null) {}
+    try
     {
-      return;
-      if (paramString.equalsIgnoreCase("GT-I9103"))
-      {
-        balh.c = false;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("SCH-I779"))
-      {
-        balh.f = false;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("GT-S5830"))
-      {
-        balh.j = false;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("SCH-I739"))
-      {
-        balh.i = false;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("GT-I9082"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("SCH-I759"))
-      {
-        balh.i = false;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("GT-S7562C"))
-      {
-        balh.i = false;
-        return;
-      }
-    } while (!paramString.equalsIgnoreCase("i7562"));
-    balh.l = true;
-  }
-  
-  public void b(String paramString)
-  {
-    if (paramString.equalsIgnoreCase("HTC T328w"))
+      str1 = paramString.replace("<$TITLE>", URLEncoder.encode(parambalj.h, "UTF-8").replaceAll("\\+", "%20"));
+      paramString = str1;
+      if (parambalj.i == null) {}
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      balh.b = false;
-      bald.jdField_a_of_type_Int = 5;
+      String str2;
+      for (;;)
+      {
+        try
+        {
+          paramString = str1.replace("<$CONTENT>", URLEncoder.encode(parambalj.i, "UTF-8").replaceAll("\\+", "%20"));
+          return paramString;
+        }
+        catch (UnsupportedEncodingException paramString)
+        {
+          paramString.printStackTrace();
+        }
+        localUnsupportedEncodingException = localUnsupportedEncodingException;
+        localUnsupportedEncodingException.printStackTrace();
+        str2 = paramString;
+      }
+      return str2;
     }
   }
   
-  public void c(String paramString)
+  public String a(String paramString1, String paramString2)
   {
-    if (paramString.equalsIgnoreCase("MOT-XT788"))
+    paramString1 = balj.a().b(paramString2).a(paramString1);
+    return a().b("troop_member_honor_page", paramString1);
+  }
+  
+  public String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    paramString3 = balj.a().a(paramString1).b(paramString2).e(paramString3).d("3").c("aio");
+    paramString4 = a().b("troop_unique_title", paramString3);
+    paramString3 = paramString4;
+    if (TextUtils.isEmpty(paramString4))
     {
-      balh.jdField_a_of_type_Boolean = false;
-      balh.b = false;
-      bald.jdField_a_of_type_Int = 2;
-      bald.jdField_a_of_type_JavaLangString = "subscription";
+      paramString3 = new StringBuilder();
+      paramString3.append("https://web.qun.qq.com/cgi-bin/misc/dynamic_url?");
+      paramString3.append("gc=").append(paramString1).append("&");
+      paramString3.append("uin=").append(paramString2).append("&");
+      paramString3.append("type=").append(3).append("&");
+      paramString3.append("from=").append("aio").append("&");
+      paramString3.append("_wv=").append("16777223");
+      paramString3.append("&_wwv=1");
+      paramString3 = paramString3.toString();
     }
+    return paramString3;
   }
   
-  public void d(String paramString)
+  public String a(String paramString, boolean paramBoolean)
   {
-    if (paramString.equalsIgnoreCase("HUAWEI C8812")) {
-      balh.d = false;
-    }
-    do
+    Object localObject = balj.a().a(paramString);
+    if (paramBoolean) {}
+    for (paramString = "1";; paramString = "0")
     {
-      return;
-      if (paramString.equalsIgnoreCase("HUAWEI C8813"))
-      {
-        balh.d = false;
-        return;
+      paramString = ((balj)localObject).f(paramString);
+      localObject = a().b("troop_honor_setting", paramString);
+      if (!axmt.b()) {
+        break;
       }
-      if (paramString.equalsIgnoreCase("HUAWEI U8825D"))
+      paramString = "&mode_color=000000";
+      int i = axmt.a();
+      if (i != 0)
       {
-        balh.d = false;
-        return;
+        paramString = String.format("%08x", new Object[] { Integer.valueOf(i) }).substring(2);
+        paramString = "&mode_color=" + paramString;
       }
-      if (paramString.equalsIgnoreCase("HUAWEI C8812E"))
-      {
-        balh.d = false;
-        return;
-      }
-    } while (!paramString.equalsIgnoreCase("HUAWEI G520-0000"));
-    balh.d = false;
+      return (String)localObject + paramString;
+    }
+    return localObject;
   }
   
-  public void e(String paramString)
+  public boolean a(String paramString)
   {
-    if (paramString.equalsIgnoreCase("ZTE V889D"))
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.trooplink", 2, "config update:" + paramString);
+    }
+    try
     {
-      balh.b = false;
-      bald.jdField_a_of_type_Int = 2;
+      localObject2 = new JSONObject(paramString);
+      Iterator localIterator = ((JSONObject)localObject2).keys();
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (localIterator.hasNext())
+        {
+          String str1 = (String)localIterator.next();
+          String str2 = ((JSONObject)localObject2).getString(str1);
+          jdField_a_of_type_JavaUtilHashMap.put(str1, str2);
+        }
+      }
+      this.jdField_a_of_type_Boolean = true;
     }
-    do
+    catch (Exception paramString)
     {
-      return;
-      if (paramString.equalsIgnoreCase("ZTE-T U960s"))
-      {
-        balh.k = false;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("ZTE-U V880"))
-      {
-        balh.d = false;
-        return;
-      }
-    } while (!paramString.equalsIgnoreCase("ZTE U930"));
-    balh.i = false;
+      QLog.e(".troop.trooplink", 1, "parseConfig failed!", paramString);
+      return false;
+    }
+    ??? = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + File.separator + "troop_link_config.json";
+    Object localObject2 = new File((String)???);
+    if (((File)localObject2).exists()) {
+      ((File)localObject2).delete();
+    }
+    ThreadManager.post(new TroopLinkManager.2(this, (String)???, paramString), 5, null, false);
+    return true;
   }
   
-  public void f(String paramString)
+  public String b(String paramString)
   {
-    if (paramString.equalsIgnoreCase("M032")) {
-      balh.e = false;
-    }
-    do
+    paramString = balj.a().a(paramString);
+    String str = a().b("troop_honor_page", paramString);
+    if (axmt.b())
     {
-      return;
-      if (paramString.equalsIgnoreCase("M030"))
+      paramString = "&mode_color=000000";
+      int i = axmt.a();
+      if (i != 0)
       {
-        balh.e = false;
-        return;
+        paramString = String.format("%08x", new Object[] { Integer.valueOf(i) }).substring(2);
+        paramString = "&mode_color=" + paramString;
       }
-      if (paramString.equalsIgnoreCase("M040"))
-      {
-        balh.e = false;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("M351"))
-      {
-        balh.e = false;
-        return;
-      }
-    } while (!paramString.equalsIgnoreCase("M9"));
-    balh.e = false;
+      return str + paramString;
+    }
+    return str;
   }
   
-  public void g(String paramString)
+  public String b(String paramString, balj parambalj)
   {
-    if (paramString.equalsIgnoreCase("U701")) {
-      balh.g = false;
-    }
-  }
-  
-  public void h(String paramString)
-  {
-    if (paramString.equalsIgnoreCase("T580")) {
-      balh.h = false;
-    }
-    do
+    String str = a(paramString);
+    paramString = str;
+    if (!TextUtils.isEmpty(str))
     {
-      return;
-      if (paramString.equalsIgnoreCase("K-Touch T619"))
-      {
-        balh.i = false;
-        return;
+      paramString = str;
+      if (parambalj != null) {
+        paramString = a(str, parambalj);
       }
-      if (paramString.equalsIgnoreCase("K-Touch T621"))
-      {
-        balh.i = false;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("K-Touch T619+"))
-      {
-        balh.i = false;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("K-Touch C666t"))
-      {
-        balh.i = false;
-        return;
-      }
-    } while (!paramString.equalsIgnoreCase("Haier_HT-I600"));
-    balh.i = false;
-  }
-  
-  public void i(String paramString)
-  {
-    if (paramString.equalsIgnoreCase("8022")) {
-      balh.h = false;
     }
-    do
-    {
-      return;
-      if (paramString.equalsIgnoreCase("8150D"))
-      {
-        balh.i = false;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("Coolpad 8079"))
-      {
-        balh.i = false;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("Coolpad W706"))
-      {
-        balh.i = false;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("8190"))
-      {
-        balh.i = false;
-        return;
-      }
-    } while (!paramString.equalsIgnoreCase("Coolpad 8076D"));
-    balh.i = false;
-  }
-  
-  public void j(String paramString)
-  {
-    if (paramString.equalsIgnoreCase("Lenovo A278t")) {
-      balh.h = false;
-    }
-    do
-    {
-      return;
-      if (paramString.equalsIgnoreCase("Lenovo P700"))
-      {
-        balh.i = false;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("Lenovo A750"))
-      {
-        balh.i = false;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("Lenovo S880"))
-      {
-        balh.i = false;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("Lenovo A390t"))
-      {
-        balh.m = true;
-        return;
-      }
-    } while (!paramString.equalsIgnoreCase("Lenovo S890"));
-    balh.m = true;
-  }
-  
-  public void k(String paramString)
-  {
-    if (paramString.equalsIgnoreCase("vivo S11t")) {
-      balh.l = true;
-    }
-    do
-    {
-      return;
-      if (paramString.equalsIgnoreCase("vivo S7"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("vivo Y11"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("vivo S9"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("vivo Y19t"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("vivo S12"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("vivo X1"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("vivo S3+"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("vivo E5"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("vivo S6"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("vivo S11"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("vivo E1"))
-      {
-        balh.i = false;
-        return;
-      }
-    } while (!paramString.equalsIgnoreCase("vivo V1"));
-    balh.jdField_a_of_type_Int = 90;
-  }
-  
-  public void l(String paramString)
-  {
-    if (paramString.equalsIgnoreCase("GN800")) {
-      balh.l = true;
-    }
-    do
-    {
-      return;
-      if (paramString.equalsIgnoreCase("E3T"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("V182"))
-      {
-        balh.l = true;
-        return;
-      }
-      if ((paramString.equalsIgnoreCase("GN700W")) || (paramString.equalsIgnoreCase("GiONEE GN700W")))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("GN137"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("GN700T"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("X805"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("Q1"))
-      {
-        balh.l = true;
-        return;
-      }
-      if (paramString.equalsIgnoreCase("GN708T"))
-      {
-        balh.l = true;
-        return;
-      }
-    } while (!paramString.equalsIgnoreCase("E6mini"));
-    balh.l = true;
-  }
-  
-  public void m(String paramString)
-  {
-    if (paramString.equalsIgnoreCase("T730")) {
-      balh.i = false;
-    }
-  }
-  
-  public void n(String paramString)
-  {
-    if (paramString.equalsIgnoreCase("DOOV S1")) {
-      balh.l = true;
-    }
-    while (!paramString.equalsIgnoreCase("DOOV D360")) {
-      return;
-    }
-    balh.l = true;
-  }
-  
-  public void o(String paramString)
-  {
-    if (paramString.equalsIgnoreCase("LT26i")) {
-      balh.m = true;
-    }
-    while (!paramString.equalsIgnoreCase("LT18i")) {
-      return;
-    }
-    balh.m = true;
-  }
-  
-  public void p(String paramString)
-  {
-    if ("MI PAD".equalsIgnoreCase(paramString)) {
-      balh.i = false;
-    }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bali
  * JD-Core Version:    0.7.0.1
  */

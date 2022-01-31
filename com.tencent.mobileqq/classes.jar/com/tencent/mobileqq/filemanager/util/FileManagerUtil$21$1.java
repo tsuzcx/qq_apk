@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import aoig;
-import apcw;
-import apdb;
+import aoza;
+import apuq;
+import apuv;
+import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -31,7 +31,7 @@ class FileManagerUtil$21$1
         localFileManagerEntity = (FileManagerEntity)localIterator.next();
         if (localFileManagerEntity != this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity)
         {
-          long l = new File(localFileManagerEntity.getFilePath()).lastModified();
+          long l = new VFSFile(localFileManagerEntity.getFilePath()).lastModified();
           if (localFileManagerEntity.localModifyTime != l)
           {
             QLog.i("CHECK_FILE_EXISTED", 1, "find exsited file, but local modified,localModifyTime[" + localFileManagerEntity.localModifyTime + "], fileModified[" + l + "]");
@@ -55,8 +55,8 @@ class FileManagerUtil$21$1
         if (QLog.isColorLevel()) {
           QLog.i("CHECK_FILE_EXISTED", 1, "cann't find exsited file,entity[" + this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName + "]");
         }
-        if (this.this$0.jdField_a_of_type_Apdb != null) {
-          this.this$0.jdField_a_of_type_Apdb.a(false);
+        if (this.this$0.jdField_a_of_type_Apuv != null) {
+          this.this$0.jdField_a_of_type_Apuv.a(false);
         }
         return;
         if (this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA != null)
@@ -97,7 +97,7 @@ class FileManagerUtil$21$1
         localObject = localFileManagerEntity;
         continue;
       }
-      apcw.a().execute(new FileManagerUtil.21.1.1(this, (FileManagerEntity)localObject));
+      apuq.a().execute(new FileManagerUtil.21.1.1(this, (FileManagerEntity)localObject));
       return;
       localObject = null;
     }

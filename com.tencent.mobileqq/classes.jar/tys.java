@@ -1,38 +1,33 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import java.lang.ref.WeakReference;
 
 public class tys
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, sxb>
+  implements uqb
 {
-  public tys(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  private WeakReference<tyr> a;
+  
+  public tys(tyr paramtyr)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    this.a = new WeakReference(paramtyr);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull sxb paramsxb)
+  public void a(String paramString, int paramInt)
   {
-    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramsxb.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if ((paramsxb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramsxb.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
+    veg.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
+    tyr localtyr = (tyr)this.a.get();
+    if ((localtyr == null) || (paramInt == 1002) || (paramInt == 1003)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "update sharegroup info: " + paramsxb.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.toString());
-      }
-      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramsxb.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      return;
+      sxp.a(tyr.a(localtyr), 12, paramString);
+    } while ((localtyr.a == null) || (localtyr.a.a == null));
+    paramInt = vel.a(localtyr.a.a);
+    if (localtyr.a.a.getOwner().isMe()) {}
+    for (paramString = "1";; paramString = "2")
+    {
+      vel.a("home_page", "clk_reply_nick", paramInt, 0, new String[] { paramString, vel.a(4444), "", localtyr.a.a.feedId });
       return;
     }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramsxb);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return sxb.class;
   }
 }
 

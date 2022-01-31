@@ -1,23 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
-class ovz
-  implements View.OnClickListener
+public class ovz
+  implements Animation.AnimationListener
 {
-  ovz(ovx paramovx, opw paramopw, Container paramContainer, qoe paramqoe) {}
+  public ovz(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject = this.jdField_a_of_type_Opw.a();
-    ((ArticleInfo)localObject).click_area = 8;
-    obz.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), (ArticleInfo)localObject, (int)((ArticleInfo)localObject).mChannelID);
-    localObject = this.jdField_a_of_type_Qoe.a();
-    if (localObject != null) {
-      ((qpj)localObject).a(paramView, this.jdField_a_of_type_Opw.a(), 2);
-    }
+    ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    ReadInJoySelfFragment.b(this.a).setAnimation(null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

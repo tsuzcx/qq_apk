@@ -1,18 +1,34 @@
 package com.tencent.qqmini.proxyimpl;
 
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
+import besl;
+import com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper.MiniAppCmdCallback;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
-final class ChannelProxyImpl$2
-  implements MiniAppCmdInterface
+class ChannelProxyImpl$2
+  implements MiniAppSSOCmdHelper.MiniAppCmdCallback<INTERFACE.StJudgeTimingRsp>
 {
-  ChannelProxyImpl$2(AsyncResult paramAsyncResult) {}
+  ChannelProxyImpl$2(ChannelProxyImpl paramChannelProxyImpl, AsyncResult paramAsyncResult) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onReceived(boolean paramBoolean, INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp)
   {
-    if (this.val$result != null) {
-      this.val$result.onReceiveResult(paramBoolean, paramJSONObject);
+    JSONObject localJSONObject;
+    if (this.val$listener != null) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("response", paramStJudgeTimingRsp);
+      this.val$listener.onReceiveResult(paramBoolean, localJSONObject);
+      return;
+    }
+    catch (Throwable paramStJudgeTimingRsp)
+    {
+      for (;;)
+      {
+        besl.d("ChannelProxyImpl", "tianshuRequestAdv", paramStJudgeTimingRsp);
+      }
     }
   }
 }

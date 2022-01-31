@@ -1,16 +1,25 @@
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
 
 class agct
   implements DialogInterface.OnClickListener
 {
-  agct(agcr paramagcr) {}
+  agct(agch paramagch) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PhotoPreviewActivity.a(this.a.a).dismiss();
+    paramDialogInterface = new Intent(this.a.a, LoginActivity.class);
+    paramDialogInterface.putExtra("is_change_account", true);
+    if (this.a.a.getIntent().getExtras() != null) {
+      paramDialogInterface.putExtras(this.a.a.getIntent().getExtras());
+    }
+    paramDialogInterface.addFlags(268435456);
+    paramDialogInterface.addFlags(67108864);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.b.dismiss();
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
-import upw;
-import uqi;
+import vcs;
+import vde;
 
 public class NewMyStorySegment$6$1
   implements Runnable
 {
-  public NewMyStorySegment$6$1(uqi paramuqi) {}
+  public NewMyStorySegment$6$1(vde paramvde) {}
   
   public void run()
   {

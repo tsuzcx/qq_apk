@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import babp;
-import bajr;
+import bbct;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,14 +15,14 @@ class ApolloRender$4
   {
     try
     {
-      Object localObject2 = babp.i();
-      String str = babp.e();
-      int i = babp.b();
-      long l1 = babp.a();
-      long l2 = Math.ceil(babp.d() / 1073741824.0D);
-      long l3 = babp.k();
-      long l4 = babp.l();
-      float f = babp.a();
+      Object localObject2 = bbct.i();
+      String str = bbct.e();
+      int i = bbct.b();
+      long l1 = bbct.a();
+      long l2 = Math.ceil(bbct.d() / 1073741824.0D);
+      long l3 = bbct.k();
+      long l4 = bbct.l();
+      float f = bbct.a();
       Object localObject1 = new JSONObject();
       ((JSONObject)localObject1).put("mo", localObject2);
       ((JSONObject)localObject1).put("os", str);
@@ -38,7 +38,7 @@ class ApolloRender$4
       ((JSONObject)localObject2).put("rd", this.c);
       localObject1 = ((JSONObject)localObject1).toString();
       localObject2 = ((JSONObject)localObject2).toString();
-      bajr.a(null, "cmshow", "Apollo", "device_info", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_Int), localObject1, localObject2 });
+      VipUtils.a(null, "cmshow", "Apollo", "device_info", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_Int), localObject1, localObject2 });
       QLog.i("sava_ApolloRender", 1, " onSurfaceCreated report 644 data: " + (String)localObject1 + ";" + (String)localObject2);
       return;
     }

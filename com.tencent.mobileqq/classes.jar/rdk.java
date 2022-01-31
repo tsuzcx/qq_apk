@@ -1,37 +1,16 @@
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+
 public class rdk
+  extends oyg
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  
-  public rdk(String paramString)
+  public rdk(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    this.a = paramString;
+    super(paramString);
   }
   
-  public void a(String paramString)
+  public void a(oya paramoya)
   {
-    this.d = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == this) {}
-    do
-    {
-      return true;
-      if ((paramObject instanceof rdk)) {
-        return false;
-      }
-      paramObject = (rdk)paramObject;
-    } while ((this.b != null) && (this.b.equals(paramObject.b)) && (this.c != null) && (this.c.equals(paramObject.c)));
-    return false;
-  }
-  
-  public String toString()
-  {
-    return " bid :" + this.b + " localPath:" + this.c + "  ";
+    paramoya.d();
   }
 }
 

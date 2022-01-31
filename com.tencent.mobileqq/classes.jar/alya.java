@@ -1,84 +1,86 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
 
 public class alya
+  extends alyc
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
-  public String g;
+  private float jdField_a_of_type_Float = -1.0F;
+  boolean jdField_a_of_type_Boolean = false;
+  private float b = -1.0F;
+  private float c = -1.0F;
+  private float[] d = new float[3];
+  private float[] e = new float[3];
+  private float[] f = new float[16];
   
-  public static alya a(String paramString)
+  public alya(Context paramContext, int paramInt, SensorManager paramSensorManager, alxu paramalxu)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    alya localalya = new alya();
-    try
+    super(paramContext, paramInt, paramSensorManager, paramalxu);
+    paramContext = paramSensorManager.getDefaultSensor(1);
+    if (paramContext != null)
     {
-      paramString = new JSONObject(paramString);
-      localalya.jdField_a_of_type_JavaLangString = paramString.optString("strGroupUin");
-      localalya.jdField_b_of_type_JavaLangString = paramString.optString("strSendUin");
-      localalya.jdField_a_of_type_Int = paramString.optInt("nTopicId");
-      localalya.jdField_b_of_type_Int = paramString.optInt("nBGType");
-      localalya.jdField_c_of_type_Int = paramString.optInt("nConfessorSex");
-      localalya.jdField_c_of_type_JavaLangString = paramString.optString("strRecNick");
-      localalya.jdField_d_of_type_Int = paramString.optInt("nRecNickType");
-      localalya.jdField_d_of_type_JavaLangString = paramString.optString("strRecUin");
-      localalya.jdField_e_of_type_JavaLangString = paramString.optString("strConfessorUin");
-      localalya.f = paramString.optString("strConfessorDesc");
-      localalya.g = paramString.optString("strConfessorNick");
-      localalya.jdField_e_of_type_Int = paramString.optInt("flag");
-      localalya.jdField_a_of_type_Long = paramString.optInt("confessTime");
-      localalya.jdField_a_of_type_Boolean = paramString.optBoolean("isRandomShmsgseq");
-      return localalya;
+      this.jdField_a_of_type_JavaUtilList.add(paramContext);
+      return;
     }
-    catch (Exception paramString) {}
-    return null;
+    throw new OrientationProviderNotFound(String.valueOf(1));
   }
   
-  public String a()
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    try
-    {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("strGroupUin", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strSendUin", this.jdField_b_of_type_JavaLangString);
-      ((JSONObject)localObject).put("nTopicId", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("nBGType", this.jdField_b_of_type_Int);
-      ((JSONObject)localObject).put("nConfessorSex", this.jdField_c_of_type_Int);
-      ((JSONObject)localObject).put("strRecNick", this.jdField_c_of_type_JavaLangString);
-      ((JSONObject)localObject).put("nRecNickType", this.jdField_d_of_type_Int);
-      ((JSONObject)localObject).put("strRecUin", this.jdField_d_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strConfessorUin", this.jdField_e_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strConfessorDesc", this.f);
-      ((JSONObject)localObject).put("strConfessorNick", this.g);
-      ((JSONObject)localObject).put("flag", this.jdField_e_of_type_Int);
-      ((JSONObject)localObject).put("confessTime", this.jdField_a_of_type_Long);
-      ((JSONObject)localObject).put("isRandomShmsgseq", this.jdField_a_of_type_Boolean);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+    if (this.jdField_a_of_type_Alxu == null) {
+      return;
     }
-    catch (Exception localException)
+    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
     {
-      localException.printStackTrace();
+      this.jdField_a_of_type_Float = paramFloat1;
+      this.jdField_a_of_type_Alxu.updateAzimuth(paramFloat1);
     }
-    return "";
+    if (Math.abs(paramFloat2 - this.b) > 1.0F)
+    {
+      this.b = paramFloat2;
+      this.jdField_a_of_type_Alxu.updatePitch(paramFloat2);
+    }
+    if (Math.abs(paramFloat3 - this.c) > 1.0F)
+    {
+      this.c = paramFloat3;
+      this.jdField_a_of_type_Alxu.updateRoll(paramFloat3);
+    }
+    this.jdField_a_of_type_Alxu.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if (paramSensorEvent.sensor.getType() == 1)
+    {
+      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
+      float f1 = this.jdField_a_of_type_ArrayOfFloat[0];
+      float f2 = this.jdField_a_of_type_ArrayOfFloat[1];
+      float f3 = this.jdField_a_of_type_ArrayOfFloat[2];
+      this.d[1] = (-(float)Math.atan2(f2, f3));
+      this.d[2] = ((float)Math.atan2(-f1, Math.sqrt(f2 * f2 + f3 * f3)));
+      if (this.jdField_a_of_type_Boolean) {
+        this.d = alxv.a(this.d, this.e);
+      }
+      System.arraycopy(this.d, 0, this.e, 0, 3);
+      this.jdField_a_of_type_Boolean = true;
+      alxw.a(alxw.a(this.d), this.f);
+      if (this.jdField_a_of_type_Int != 1) {
+        super.a(this.f);
+      }
+    }
+    else
+    {
+      return;
+    }
+    a(0.0F, (float)(this.d[1] * 180.0F / 3.141592653589793D), (float)(this.d[2] * 180.0F / 3.141592653589793D));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alya
  * JD-Core Version:    0.7.0.1
  */

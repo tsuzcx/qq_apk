@@ -1,11 +1,11 @@
 package cooperation.vip.webview.controller;
 
-import bgrn;
+import biam;
 
 public class BaseTranslucentController$2
   implements Runnable
 {
-  public BaseTranslucentController$2(bgrn parambgrn) {}
+  public BaseTranslucentController$2(biam parambiam) {}
   
   public void run()
   {

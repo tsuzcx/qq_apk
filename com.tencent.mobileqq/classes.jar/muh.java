@@ -1,35 +1,56 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class muh
-  implements BusinessObserver
+public class muh
 {
-  muh(QQAppInterface paramQQAppInterface, boolean paramBoolean, ajpe paramajpe) {}
+  private aukn jdField_a_of_type_Aukn;
+  private auko jdField_a_of_type_Auko;
+  private ConcurrentHashMap<String, aukm> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public muh(VideoAppInterface paramVideoAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList isSuccess:" + String.valueOf(paramBoolean));
-    }
-    paramBundle = paramBundle.getByteArray("data");
-    if ((paramBoolean) && (paramBundle != null)) {}
-    for (paramInt = mug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
+    this.jdField_a_of_type_Auko = paramVideoAppInterface.getEntityManagerFactory(paramVideoAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_Aukn = this.jdField_a_of_type_Auko.createEntityManager();
+  }
+  
+  public ExtensionInfo a(String paramString)
+  {
+    Object localObject3 = null;
+    Object localObject2 = null;
+    ??? = localObject2;
+    if (paramString != null)
     {
-      if (this.jdField_a_of_type_Ajpe != null) {
-        this.jdField_a_of_type_Ajpe.a(paramBoolean, paramInt);
+      if (!"".equals(paramString)) {
+        break label24;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);
-      }
-      return;
+      ??? = localObject2;
+    }
+    label24:
+    do
+    {
+      do
+      {
+        return ???;
+        localObject2 = localObject3;
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+          localObject2 = (ExtensionInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        }
+        ??? = localObject2;
+      } while (localObject2 != null);
+      localObject2 = (ExtensionInfo)this.jdField_a_of_type_Aukn.a(ExtensionInfo.class, paramString);
+      ??? = localObject2;
+    } while (localObject2 == null);
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject2);
+      return localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     muh
  * JD-Core Version:    0.7.0.1
  */

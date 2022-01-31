@@ -1,232 +1,47 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
 
 public class afof
-  implements View.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
-  public afof(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public afof(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    boolean bool3 = false;
-    boolean bool2 = false;
-    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof String))) {}
-    String str;
-    label93:
-    do
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 0)
     {
-      do
-      {
-        do
-        {
-          int j;
-          do
-          {
-            do
-            {
-              int i;
-              do
-              {
-                do
-                {
-                  return;
-                  if (QLog.isColorLevel()) {
-                    QLog.d("Q.history.BaseFragment", 2, "mOnKickOutBtnClickListener onclick");
-                  }
-                  j = paramView.getId();
-                  str = (String)paramView.getTag();
-                  bool1 = str.equals(this.a.jdField_f_of_type_JavaLangString);
-                  if ((this.a.jdField_g_of_type_JavaLangString != null) && (this.a.jdField_g_of_type_JavaLangString.contains(str)))
-                  {
-                    i = 1;
-                    boolean bool4 = this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.a.jdField_f_of_type_JavaLangString);
-                    if (((!bool4) || (str.equals(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) && ((bool4) || (bool1) || (i != 0))) {
-                      break label292;
-                    }
-                  }
-                  for (i = 1;; i = 0)
-                  {
-                    if (j != 2131299415) {
-                      break label551;
-                    }
-                    paramView = paramView.findViewById(2131299416);
-                    bool1 = bool2;
-                    if (paramView.getTag() != null)
-                    {
-                      bool1 = bool2;
-                      if ((paramView.getTag() instanceof Boolean)) {
-                        bool1 = ((Boolean)paramView.getTag()).booleanValue();
-                      }
-                    }
-                    paramView = this.a.a(str, bool1);
-                    if (this.a.jdField_d_of_type_Int != 20) {
-                      break label297;
-                    }
-                    if (paramView == null) {
-                      break;
-                    }
-                    paramView = paramView.a.getTag();
-                    if ((paramView == null) || (!(paramView instanceof Integer))) {
-                      break;
-                    }
-                    i = ((Integer)paramView).intValue();
-                    if (i < 0) {
-                      break;
-                    }
-                    paramView = (afou)this.a.jdField_a_of_type_Afow.getItem(i);
-                    this.a.a(paramView);
-                    return;
-                    i = 0;
-                    break label93;
-                  }
-                  if (this.a.jdField_g_of_type_Boolean)
-                  {
-                    if (this.a.jdField_a_of_type_Afow.jdField_b_of_type_JavaUtilList.contains(str)) {
-                      this.a.jdField_a_of_type_Afow.jdField_b_of_type_JavaUtilList.remove(str);
-                    }
-                    for (;;)
-                    {
-                      ChatHistoryTroopMemberFragment.a(this.a);
-                      this.a.jdField_a_of_type_Afow.notifyDataSetChanged();
-                      return;
-                      if (i != 0) {
-                        this.a.jdField_a_of_type_Afow.jdField_b_of_type_JavaUtilList.add(str);
-                      }
-                    }
-                  }
-                  if (!bool1) {
-                    break;
-                  }
-                } while (this.a.v.equals(str));
-                if (paramView != null) {
-                  paramView.a.a(true);
-                }
-                if (!TextUtils.isEmpty(this.a.v))
-                {
-                  paramView = this.a.a(this.a.v, bool1);
-                  if (paramView != null) {
-                    paramView.a.b(true);
-                  }
-                }
-                this.a.v = str;
-                return;
-              } while (this.a.u.equals(str));
-              if (paramView != null) {
-                paramView.a.a(true);
-              }
-              if (!TextUtils.isEmpty(this.a.u))
-              {
-                paramView = this.a.a(this.a.u, bool1);
-                if (paramView != null) {
-                  paramView.a.b(true);
-                }
-              }
-              this.a.u = str;
-              return;
-              if (j != 2131310476) {
-                break;
-              }
-              paramView = paramView.findViewById(2131312430);
-              boolean bool1 = bool3;
-              if (paramView.getTag() != null)
-              {
-                bool1 = bool3;
-                if ((paramView.getTag() instanceof Boolean)) {
-                  bool1 = ((Boolean)paramView.getTag()).booleanValue();
-                }
-              }
-              if (this.a.jdField_g_of_type_Boolean)
-              {
-                if (!this.a.jdField_a_of_type_Afow.jdField_b_of_type_JavaUtilList.contains(str)) {
-                  break label720;
-                }
-                this.a.jdField_a_of_type_Afow.jdField_b_of_type_JavaUtilList.remove(str);
-              }
-              for (;;)
-              {
-                ChatHistoryTroopMemberFragment.a(this.a);
-                this.a.jdField_a_of_type_Afow.notifyDataSetChanged();
-                if (!bool1) {
-                  break;
-                }
-                paramView = this.a.a(this.a.v, bool1);
-                if (paramView != null)
-                {
-                  paramView.a.b(true);
-                  this.a.v = "";
-                }
-                this.a.jdField_a_of_type_Afoy.notifyDataSetChanged();
-                return;
-                if (i != 0) {
-                  this.a.jdField_a_of_type_Afow.jdField_b_of_type_JavaUtilList.add(str);
-                }
-              }
-              paramView = this.a.a(this.a.u, bool1);
-            } while (paramView == null);
-            paramView.a.b(true);
-            this.a.u = "";
-            return;
-          } while ((j != 2131298022) || (!this.a.jdField_f_of_type_Boolean));
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.history.BaseFragment", 2, "delBtn onClick, uin=" + str);
-          }
-          if (badq.d(BaseApplication.getContext())) {
-            break;
-          }
-        } while (!this.a.getActivity().isResume());
-        bbmy.a(this.a.getActivity(), this.a.getString(2131628948), 0).b(this.a.getActivity().getTitleBarHeight());
-        return;
-        if (this.a.jdField_d_of_type_Int == 1)
-        {
-          this.a.f(str);
-          return;
-        }
-        if (this.a.jdField_d_of_type_Int != 13) {
-          break;
-        }
-        paramView = this.a.a(str);
-        this.a.jdField_a_of_type_JavaUtilArrayList.add(str);
-        this.a.jdField_a_of_type_Afow.a();
-      } while (!this.a.jdField_d_of_type_AndroidAppDialog.isShowing());
-      if (paramView != null) {
-        this.a.jdField_b_of_type_JavaUtilList.remove(paramView);
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopSuspiciousFragment.a(this.a).getItemCount())) {
+        TroopSuspiciousFragment.a(this.a);
       }
-      this.a.jdField_a_of_type_Afoy.notifyDataSetChanged();
-      return;
-      if (this.a.jdField_d_of_type_Int != 21) {
-        break;
-      }
-      paramView = this.a.a(str);
-      this.a.jdField_a_of_type_JavaUtilArrayList.add(str);
-      this.a.jdField_a_of_type_Afow.a();
-    } while (!this.a.jdField_d_of_type_AndroidAppDialog.isShowing());
-    label292:
-    label297:
-    label720:
-    if (paramView != null) {
-      this.a.jdField_b_of_type_JavaUtilList.remove(paramView);
     }
-    label551:
-    this.a.jdField_a_of_type_Afoy.notifyDataSetChanged();
-    return;
-    paramView = new ArrayList();
-    paramView.add(Long.valueOf(Long.parseLong(str)));
-    ChatHistoryTroopMemberFragment.a(this.a, paramView);
+    if (this.a.jdField_a_of_type_Baxk != null)
+    {
+      if (paramInt == 0) {
+        break label94;
+      }
+      this.a.jdField_a_of_type_Baxk.a();
+      this.a.jdField_a_of_type_Baxk.c();
+    }
+    label94:
+    while (!this.a.jdField_a_of_type_Baxk.a()) {
+      return;
+    }
+    this.a.jdField_a_of_type_Baxk.b();
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afof
  * JD-Core Version:    0.7.0.1
  */

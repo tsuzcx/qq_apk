@@ -1,19 +1,20 @@
-import org.apache.http.HttpResponse;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class bceh
+class bceh
+  implements View.OnTouchListener
 {
-  public int a;
-  public HttpResponse a;
+  bceh(bceg parambceg) {}
   
-  public bceh(HttpResponse paramHttpResponse, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_OrgApacheHttpHttpResponse = paramHttpResponse;
-    this.jdField_a_of_type_Int = paramInt;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bceh
  * JD-Core Version:    0.7.0.1
  */

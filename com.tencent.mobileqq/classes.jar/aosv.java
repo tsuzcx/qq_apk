@@ -1,18 +1,21 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService.1;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Comparator;
 
 public class aosv
-  implements MediaPlayer.OnPreparedListener
+  implements Comparator<FileManagerEntity>
 {
-  public aosv(FileViewMusicService.1 param1, MediaPlayer paramMediaPlayer) {}
+  public aosv(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
   {
-    int i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService$1.a.a(i);
+    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
+      return 1;
+    }
+    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
+      return -1;
+    }
+    return 0;
   }
 }
 

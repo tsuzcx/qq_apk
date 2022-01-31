@@ -27,7 +27,7 @@ class MiniAppVideoPlayer$8$3
       MiniAppVideoPlayer.access$1400(this.this$1.this$0, true);
       localMiniAppVideoPlayer = this.this$1.this$0;
       if ((MiniAppVideoPlayer.access$3400(this.this$1.this$0) == null) || (MiniAppVideoPlayer.access$3400(this.this$1.this$0).getVisibility() != 0)) {
-        break label284;
+        break label380;
       }
     }
     for (;;)
@@ -37,12 +37,21 @@ class MiniAppVideoPlayer$8$3
       MiniAppVideoPlayer.access$3600(this.this$1.this$0);
       MiniAppVideoPlayer.access$2002(this.this$1.this$0, false);
       return;
+      if ((this.this$1.this$0.videoWidth < 300) && (!this.this$1.this$0.isFullScreen))
+      {
+        this.this$1.this$0.hideTimeDesc = true;
+        MiniAppVideoPlayer.access$3200(this.this$1.this$0).setVisibility(4);
+        MiniAppVideoPlayer.access$1900(this.this$1.this$0).setVisibility(4);
+        MiniAppVideoPlayer.access$3300(this.this$1.this$0).setVisibility(4);
+        break;
+      }
+      this.this$1.this$0.hideTimeDesc = false;
       MiniAppVideoPlayer.access$3200(this.this$1.this$0).setVisibility(0);
       MiniAppVideoPlayer.access$1900(this.this$1.this$0).setVisibility(0);
       MiniAppVideoPlayer.access$3300(this.this$1.this$0).setVisibility(0);
       MiniAppVideoPlayer.access$3200(this.this$1.this$0).setText(MiniAppVideoPlayer.access$1700(MiniAppVideoPlayer.access$800(this.this$1.this$0).getDuration()));
       break;
-      label284:
+      label380:
       bool = false;
     }
   }

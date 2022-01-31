@@ -1,115 +1,39 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
 
-public class akaz
+class akaz
+  extends bbwf
 {
-  public static int a(MessageRecord paramMessageRecord, int paramInt)
-  {
-    paramMessageRecord = a(paramMessageRecord);
-    int j;
-    if (paramMessageRecord != null)
-    {
-      paramMessageRecord = paramMessageRecord.iterator();
-      int i = 0;
-      j = i;
-      if (!paramMessageRecord.hasNext()) {
-        break label62;
-      }
-      akba localakba = (akba)paramMessageRecord.next();
-      if (localakba.a != paramInt) {
-        break label64;
-      }
-      i = localakba.b + i;
-    }
-    label62:
-    label64:
-    for (;;)
-    {
-      break;
-      j = 0;
-      return j;
-    }
-  }
+  akaz(akay paramakay) {}
   
-  public static List<akba> a(MessageRecord paramMessageRecord)
+  public void onDone(bbwg parambbwg)
   {
-    ArrayList localArrayList;
+    super.onDone(parambbwg);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.roammsg.MessageRoamManager", 2, "onDone status: " + parambbwg.f + ", url: " + parambbwg.a);
+    }
+    int i = parambbwg.a.indexOf("?");
     String str;
-    int j;
-    int i;
-    if (((paramMessageRecord instanceof MessageForStructing)) && ((((MessageForStructing)paramMessageRecord).structingMsg instanceof AbsShareMsg)) && (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 52))
+    if (i == -1)
     {
-      paramMessageRecord = (AbsShareMsg)((MessageForStructing)paramMessageRecord).structingMsg;
-      localArrayList = new ArrayList();
-      Iterator localIterator = paramMessageRecord.iterator();
-      for (;;)
-      {
-        if (localIterator.hasNext())
-        {
-          paramMessageRecord = (awul)localIterator.next();
-          if (paramMessageRecord != null)
-          {
-            str = ajjy.a(2131639480);
-            j = 1;
-            if ((paramMessageRecord instanceof awwx))
-            {
-              i = ((awwx)paramMessageRecord).a.getInt("count");
-              j = 1;
-              paramMessageRecord = str;
-            }
-          }
-        }
+      str = parambbwg.a;
+      if (!akax.a.contains(str)) {
+        break label105;
       }
+      this.a.a(parambbwg);
     }
-    for (;;)
+    label105:
+    do
     {
-      localArrayList.add(new akba(paramMessageRecord, j, i));
+      return;
+      str = parambbwg.a.substring(0, i - 1);
       break;
-      Object localObject = paramMessageRecord.h;
-      if (localObject != null)
+      if ("http://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json".equals(str))
       {
-        i = j;
-        paramMessageRecord = str;
-        try
-        {
-          localObject = new JSONObject((String)localObject);
-          i = j;
-          paramMessageRecord = str;
-          str = ((JSONObject)localObject).getString("giftName");
-          i = j;
-          paramMessageRecord = str;
-          j = ((JSONObject)localObject).getInt("giftType");
-          i = j;
-          paramMessageRecord = str;
-          int k = ((JSONObject)localObject).getInt("giftCount");
-          i = k;
-          paramMessageRecord = str;
-        }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
-          j = i;
-          i = 0;
-        }
-        continue;
-        return localArrayList;
-        return null;
+        this.a.b(parambbwg);
+        return;
       }
-      else
-      {
-        i = 0;
-        j = 1;
-        paramMessageRecord = localJSONException;
-      }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.roammsg.MessageRoamManager", 2, "onDone unkonw url: " + parambbwg.a);
   }
 }
 

@@ -1,41 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
 public class owh
-  implements owa
+  implements Animation.AnimationListener
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  public owh(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, TranslateAnimation paramTranslateAnimation) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return null;
+    ReadInjoyIMAXAdFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
   }
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    return otf.a(paramBaseArticleInfo);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2)
-  {
-    ArticleInfo localArticleInfo = paramopw.a();
-    if ((localArticleInfo != null) && (localArticleInfo.isAccountShown)) {
-      oxx.a(paramContainer, paramopw);
-    }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase)
-  {
-    if ((paramViewBase != null) && (!TextUtils.isEmpty(paramViewBase.getClickEvnet())) && (paramViewBase.getClickEvnet().startsWith("search_word_click_")))
-    {
-      paramViewBase.setOnClickListener(new owi(this, paramopw, paramContainer));
-      return true;
-    }
-    return false;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

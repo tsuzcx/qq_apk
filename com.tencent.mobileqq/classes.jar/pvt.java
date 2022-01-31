@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.data.Friends;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
 
-class pvt
+public class pvt
+  implements View.OnClickListener
 {
-  public int a;
-  public Friends a;
+  public pvt(ComponentContentHotSearch paramComponentContentHotSearch) {}
   
-  public pvt(Friends paramFriends, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public void onClick(View paramView) {}
 }
 
 

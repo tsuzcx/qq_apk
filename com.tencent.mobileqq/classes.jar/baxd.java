@@ -1,12 +1,14 @@
-public abstract interface baxd
+import android.view.Choreographer.FrameCallback;
+
+class baxd
+  implements Choreographer.FrameCallback
 {
-  public abstract int getRenderHeight();
+  baxd(baxc parambaxc) {}
   
-  public abstract int getRenderWidth();
-  
-  public abstract void onDrawBegin();
-  
-  public abstract void onSetRenderer(baxe parambaxe);
+  public void doFrame(long paramLong)
+  {
+    baxc.a(this.a, paramLong);
+  }
 }
 
 

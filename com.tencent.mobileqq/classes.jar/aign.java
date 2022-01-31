@@ -1,46 +1,64 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.1;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aign
-  implements zrt
+public class aign
+  implements aigo
 {
-  public aign(View paramView, zrw paramzrw, long paramLong, int paramInt) {}
+  aign(aigl paramaigl) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location failed," + paramString);
+    if (aigl.a(this.a) != null) {
+      aigl.a(this.a).a(paramInt);
+    }
   }
   
-  public void onPermission(int paramInt)
+  public void a(int paramInt, String paramString1, PublishVideoEntry paramPublishVideoEntry, String paramString2, long paramLong)
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location permision code");
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    double d1 = paramJSONObject.optDouble("altitude", 0.0D);
-    double d2 = paramJSONObject.optDouble("latitude", 0.0D);
-    double d3 = paramJSONObject.optDouble("longitude", 0.0D);
-    double d4 = paramJSONObject.optDouble("horizontalAccuracy", 0.0D);
-    paramJSONObject.optDouble("verticalAccuracy", 0.0D);
-    paramJSONObject.optDouble("accuracy", 0.0D);
-    double d5 = paramJSONObject.optDouble("speed", 0.0D);
-    if (this.jdField_a_of_type_Int == 1)
+    if ((paramInt == 0) && (paramPublishVideoEntry != null) && (paramString2 != null)) {
+      aigl.a(this.a).a(paramPublishVideoEntry, paramString2);
+    }
+    for (;;)
     {
-      ApolloRender.getLocationCity(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D);
+      ThreadManager.excute(new EncodeVideoTask.2.2(this, paramInt, paramPublishVideoEntry, paramLong), 64, null, true);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("EncodeVideoTask", 2, new Object[] { "composite error, fakeVid:", aigl.e(this.a), ", errorCode:", Integer.valueOf(paramInt), ", errorMsg:", paramString1 });
+      }
+      aigl.a(this.a).a(paramInt);
+    }
+  }
+  
+  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("EncodeVideoTask", 2, "generate files|onNext file: " + paramString);
+    }
+    if (aigl.b(this.a))
+    {
+      b(paramPublishVideoEntry, paramString);
       return;
     }
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D, "", 0, "location success");
+    if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (bbdj.b(paramPublishVideoEntry.doodlePath)))
+    {
+      aigl.a(paramString, paramPublishVideoEntry, aigl.a(this.a));
+      return;
+    }
+    b(paramPublishVideoEntry, paramString);
   }
   
-  public void onTrigger(JSONObject paramJSONObject) {}
+  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  {
+    ThreadManager.excute(new EncodeVideoTask.2.1(this, paramString, paramPublishVideoEntry), 64, null, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aign
  * JD-Core Version:    0.7.0.1
  */

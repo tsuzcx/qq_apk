@@ -1,34 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.service.RecvMsg;
 
-class lwt
-  implements DialogInterface.OnClickListener
+public abstract interface lwt
+  extends IInterface
 {
-  lwt(lws paramlws) {}
+  public abstract Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    lwq.a(this.a.a, false);
-    if (paramInt == 1)
-    {
-      awqx.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
-      this.a.a.c();
-      if (!mjg.a(lwq.a(this.a.a))) {
-        lwq.a(this.a.a).a(lwq.a(this.a.a));
-      }
-    }
-    while (paramInt != 0)
-    {
-      return;
-      lwq.a(this.a.a).b(lwq.a(this.a.a));
-      return;
-    }
-    lwq.a(this.a.a, lwq.a(this.a.a).a().v);
-  }
+  public abstract void a(RecvMsg paramRecvMsg);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  
+  public abstract void a(String paramString, int paramInt, byte[] paramArrayOfByte);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo);
 }
 
 

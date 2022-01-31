@@ -7,12 +7,12 @@ class GameActivity$6
   
   public void run()
   {
-    if (GameActivity.access$700(this.this$0) != null)
+    if (GameActivity.access$600(this.this$0) != null)
     {
-      GameActivity.access$800(this.this$0);
+      GameActivity.access$700(this.this$0);
       return;
     }
-    GameActivity.access$900(this.this$0);
+    GameActivity.access$800(this.this$0);
   }
 }
 

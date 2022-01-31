@@ -1,16 +1,29 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-class alxx
+public class alxx
+  implements alxu
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public void onRotationUpdateOriginal(float[] paramArrayOfFloat) {}
+  
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat) {}
+  
+  public void onSensorSupport(int paramInt, boolean paramBoolean) {}
+  
+  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong) {}
+  
+  public void updateAzimuth(float paramFloat) {}
+  
+  public void updateGyroscope(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong) {}
+  
+  public void updatePitch(float paramFloat) {}
+  
+  public void updateRoll(float paramFloat) {}
+  
+  public void updateRotation(float paramFloat1, float paramFloat2, float paramFloat3) {}
+  
+  public void updateSensor(float paramFloat1, float paramFloat2, float paramFloat3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alxx
  * JD-Core Version:    0.7.0.1
  */

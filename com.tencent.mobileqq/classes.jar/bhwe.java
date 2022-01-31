@@ -1,68 +1,38 @@
-abstract class bhwe
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+
+class bhwe
+  extends RemoteCommand
 {
-  int jdField_a_of_type_Int = -1;
-  final bhwg<? super T> jdField_a_of_type_Bhwg;
-  boolean jdField_a_of_type_Boolean;
-  
-  bhwe(bhwg<? super T> parambhwg)
+  bhwe(bhwb parambhwb, String paramString)
   {
-    Object localObject;
-    this.jdField_a_of_type_Bhwg = localObject;
+    super(paramString);
   }
   
-  void a() {}
-  
-  void a(boolean paramBoolean)
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    int j = 1;
-    if (paramBoolean == this.jdField_a_of_type_Boolean) {
-      return;
+    if (paramBundle == null) {
+      paramBundle = null;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    int i;
-    label28:
-    bhwc localbhwc;
-    int k;
-    if (bhwc.a(this.b) == 0)
+    Bundle localBundle;
+    do
     {
-      i = 1;
-      localbhwc = this.b;
-      k = bhwc.a(localbhwc);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label121;
+      return paramBundle;
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      localBundle = this.a.b(paramBundle);
+      if (localBundle != null) {
+        localBundle.setClassLoader(getClass().getClassLoader());
       }
-    }
-    for (;;)
-    {
-      bhwc.a(localbhwc, j + k);
-      if ((i != 0) && (this.jdField_a_of_type_Boolean)) {
-        this.b.a();
-      }
-      if ((bhwc.a(this.b) == 0) && (!this.jdField_a_of_type_Boolean)) {
-        this.b.b();
-      }
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
-      }
-      bhwc.a(this.b, this);
-      return;
-      i = 0;
-      break label28;
-      label121:
-      j = -1;
-    }
-  }
-  
-  abstract boolean a();
-  
-  boolean a(bhvg parambhvg)
-  {
-    return false;
+      paramBundle = localBundle;
+    } while (paramOnInvokeFinishLinstener == null);
+    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
+    return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhwe
  * JD-Core Version:    0.7.0.1
  */

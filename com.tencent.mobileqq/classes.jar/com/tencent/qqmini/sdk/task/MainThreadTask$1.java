@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.task;
 
-import bdyb;
+import bfet;
 
 public class MainThreadTask$1
   implements Runnable
 {
-  public MainThreadTask$1(bdyb parambdyb) {}
+  public MainThreadTask$1(bfet parambfet) {}
   
   public void run()
   {

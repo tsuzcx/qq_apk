@@ -1,180 +1,142 @@
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.adapter.BaseHttpAdapter.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.viola.adapter.HttpRequset;
-import com.tencent.viola.adapter.HttpResponse;
-import com.tencent.viola.adapter.IHttpAdapter;
-import com.tencent.viola.adapter.IHttpAdapter.OnHttpListener;
-import com.tencent.viola.core.ViolaSDKManager;
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import mqq.manager.TicketManager;
+import java.util.List;
 
 public class rjs
-  implements IHttpAdapter
+  extends BaseAdapter
 {
-  public static String a;
-  private static final rjt jdField_a_of_type_Rjt = new rju(null);
-  public static final String b = "QQ/8.2.6 Android/0.17 Android/" + Build.VERSION.RELEASE;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
+  private List<BaseAdapter> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private rju jdField_a_of_type_Rju;
+  private rjv jdField_a_of_type_Rjv;
   
-  static
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean)
   {
-    jdField_a_of_type_JavaLangString = "BaseHttpAdapter";
+    return getView(paramInt, paramView, paramViewGroup);
   }
   
-  private String a(InputStream paramInputStream, IHttpAdapter.OnHttpListener paramOnHttpListener)
+  public List<BaseAdapter> a()
   {
-    if (paramInputStream == null) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream));
-    char[] arrayOfChar = new char[2048];
-    for (;;)
-    {
-      int i = paramInputStream.read(arrayOfChar);
-      if (i == -1) {
-        break;
-      }
-      localStringBuilder.append(arrayOfChar, 0, i);
-      if (paramOnHttpListener == null) {}
-    }
-    paramInputStream.close();
-    return localStringBuilder.toString();
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  private HttpURLConnection a(HttpRequset paramHttpRequset, IHttpAdapter.OnHttpListener paramOnHttpListener)
-  {
-    HttpURLConnection localHttpURLConnection = a(new URL(paramHttpRequset.url));
-    localHttpURLConnection.setConnectTimeout(paramHttpRequset.timeoutMs);
-    localHttpURLConnection.setReadTimeout(paramHttpRequset.timeoutMs);
-    localHttpURLConnection.setUseCaches(false);
-    localHttpURLConnection.setDoInput(true);
-    Object localObject1;
-    if (paramHttpRequset.paramMap != null)
-    {
-      localObject1 = paramHttpRequset.paramMap.keySet().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (String)((Iterator)localObject1).next();
-        localHttpURLConnection.addRequestProperty((String)localObject2, (String)paramHttpRequset.paramMap.get(localObject2));
-      }
-    }
-    Object localObject2 = (QQAppInterface)obz.a();
-    if (localObject2 != null)
-    {
-      TicketManager localTicketManager = (TicketManager)((QQAppInterface)localObject2).getManager(2);
-      localObject1 = ((QQAppInterface)localObject2).getAccount();
-      localObject2 = localTicketManager.getSkey(((QQAppInterface)localObject2).getCurrentAccountUin());
-      localHttpURLConnection.addRequestProperty("Cookie", "uin=o" + (String)localObject1 + "; skey=" + (String)localObject2);
-    }
-    localHttpURLConnection.addRequestProperty("User-Agent", b);
-    if (("POST".equals(paramHttpRequset.method)) || ("PUT".equals(paramHttpRequset.method)) || ("PATCH".equals(paramHttpRequset.method)))
-    {
-      localHttpURLConnection.setRequestMethod(paramHttpRequset.method);
-      if (paramHttpRequset.body != null)
-      {
-        if (paramOnHttpListener != null) {}
-        localHttpURLConnection.setDoOutput(true);
-        localObject1 = new DataOutputStream(localHttpURLConnection.getOutputStream());
-        ((DataOutputStream)localObject1).write(paramHttpRequset.body.getBytes());
-        ((DataOutputStream)localObject1).close();
-        if (paramOnHttpListener == null) {}
-      }
-      return localHttpURLConnection;
-    }
-    if (!TextUtils.isEmpty(paramHttpRequset.method))
-    {
-      localHttpURLConnection.setRequestMethod(paramHttpRequset.method);
-      return localHttpURLConnection;
-    }
-    localHttpURLConnection.setRequestMethod("GET");
-    return localHttpURLConnection;
-  }
+  public void a() {}
   
-  private void a(HttpRequset paramHttpRequset, IHttpAdapter.OnHttpListener paramOnHttpListener, boolean paramBoolean)
+  public void a(BaseAdapter paramBaseAdapter)
   {
-    if (paramOnHttpListener != null) {
-      paramOnHttpListener.onHttpStart();
-    }
-    a(new BaseHttpAdapter.1(this, paramHttpRequset, paramOnHttpListener), paramBoolean);
-  }
-  
-  private void a(HttpResponse paramHttpResponse, IHttpAdapter.OnHttpListener paramOnHttpListener, String paramString)
-  {
-    paramHttpResponse.statusCode = "-1";
-    paramHttpResponse.errorCode = "-1";
-    paramHttpResponse.errorMsg = paramString;
-    if (paramOnHttpListener != null) {
-      paramOnHttpListener.onHttpFinish(paramHttpResponse);
-    }
-  }
-  
-  private void a(Runnable paramRunnable, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      ViolaSDKManager.getInstance().postOnThreadPool(paramRunnable);
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramBaseAdapter == null)) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutorService == null) {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(6);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(paramRunnable);
+    this.jdField_a_of_type_JavaUtilList.add(paramBaseAdapter);
+    paramBaseAdapter.registerDataSetObserver(new rjt(this));
   }
   
-  private byte[] a(InputStream paramInputStream, IHttpAdapter.OnHttpListener paramOnHttpListener)
+  public void a(rju paramrju)
   {
-    if (paramInputStream == null) {
-      return null;
-    }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    byte[] arrayOfByte = new byte[2048];
-    int i = 0;
-    for (;;)
+    this.jdField_a_of_type_Rju = paramrju;
+  }
+  
+  public void a(rjv paramrjv)
+  {
+    this.jdField_a_of_type_Rjv = paramrjv;
+  }
+  
+  public int getCount()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    for (int i = 0; localIterator.hasNext(); i = ((BaseAdapter)localIterator.next()).getCount() + i) {}
+    return i;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      int j = paramInputStream.read(arrayOfByte, 0, arrayOfByte.length);
-      if (j == -1) {
-        break;
+      BaseAdapter localBaseAdapter = (BaseAdapter)localIterator.next();
+      int i = localBaseAdapter.getCount();
+      if (paramInt < i) {
+        return localBaseAdapter.getItem(paramInt);
       }
-      localByteArrayOutputStream.write(arrayOfByte, 0, j);
-      j = i + j;
-      i = j;
-      if (paramOnHttpListener != null) {
-        i = j;
-      }
+      paramInt -= i;
     }
-    localByteArrayOutputStream.flush();
-    return localByteArrayOutputStream.toByteArray();
+    return null;
   }
   
-  protected HttpURLConnection a(URL paramURL)
+  public long getItemId(int paramInt)
   {
-    return (HttpURLConnection)paramURL.openConnection();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      BaseAdapter localBaseAdapter = (BaseAdapter)localIterator.next();
+      int i = localBaseAdapter.getCount();
+      if (paramInt < i) {
+        return localBaseAdapter.getItemId(paramInt);
+      }
+      paramInt -= i;
+    }
+    return -1L;
   }
   
-  @NonNull
-  public rjt a()
+  public int getItemViewType(int paramInt)
   {
-    return jdField_a_of_type_Rjt;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    BaseAdapter localBaseAdapter;
+    if (localIterator.hasNext())
+    {
+      localBaseAdapter = (BaseAdapter)localIterator.next();
+      j = localBaseAdapter.getCount();
+      if (i >= j) {}
+    }
+    for (i = localBaseAdapter.getItemViewType(i);; i = -1)
+    {
+      return i + paramInt;
+      i -= j;
+      paramInt = localBaseAdapter.getViewTypeCount() + paramInt;
+      break;
+    }
   }
   
-  public void sendRequest(HttpRequset paramHttpRequset, IHttpAdapter.OnHttpListener paramOnHttpListener, boolean paramBoolean)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    a(paramHttpRequset, paramOnHttpListener, paramBoolean);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int i = paramInt;
+    while (localIterator.hasNext())
+    {
+      Object localObject = (BaseAdapter)localIterator.next();
+      int j = ((BaseAdapter)localObject).getCount();
+      if (i < j)
+      {
+        localObject = ((BaseAdapter)localObject).getView(i, paramView, paramViewGroup);
+        if (this.jdField_a_of_type_Rjv != null)
+        {
+          this.jdField_a_of_type_Rjv.a(paramInt, (View)localObject);
+          return localObject;
+        }
+      }
+      i -= j;
+    }
+    return null;
+  }
+  
+  public int getViewTypeCount()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    for (int i = 0; localIterator.hasNext(); i = ((BaseAdapter)localIterator.next()).getViewTypeCount() + i) {}
+    return Math.max(i, 1);
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    super.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Rju != null) {
+      this.jdField_a_of_type_Rju.a();
+    }
   }
 }
 

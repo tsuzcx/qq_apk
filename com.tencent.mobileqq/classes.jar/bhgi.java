@@ -1,25 +1,17 @@
-import android.support.annotation.NonNull;
-import dov.com.qq.im.capture.control.CaptureAsyncAutomator;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class bhgi
-  implements ThreadFactory
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.METHOD})
+public @interface bhgi
 {
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-  
-  private bhgi(CaptureAsyncAutomator paramCaptureAsyncAutomator) {}
-  
-  public Thread newThread(@NonNull Runnable paramRunnable)
-  {
-    paramRunnable = new Thread(paramRunnable, "CaptureAsyncAutomator_" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
-    paramRunnable.setPriority(4);
-    return paramRunnable;
-  }
+  String a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhgi
  * JD-Core Version:    0.7.0.1
  */

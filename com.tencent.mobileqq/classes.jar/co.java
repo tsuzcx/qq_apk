@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.PrinterDefaultActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class co
-  implements View.OnClickListener
+class co
+  implements DialogInterface.OnClickListener
 {
-  public co(PrinterDefaultActivity paramPrinterDefaultActivity) {}
+  co(cm paramcm) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    paramDialogInterface.dismiss();
   }
 }
 

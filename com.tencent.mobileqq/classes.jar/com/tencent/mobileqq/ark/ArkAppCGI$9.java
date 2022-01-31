@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ark;
 
-import aldo;
-import aldu;
-import aldz;
+import alsc;
+import alsi;
+import alsn;
 import android.os.Bundle;
-import batm;
-import bato;
-import batr;
+import bbwg;
+import bbwi;
+import bbwl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -14,38 +14,38 @@ import java.lang.ref.WeakReference;
 public class ArkAppCGI$9
   implements Runnable
 {
-  public ArkAppCGI$9(aldo paramaldo, aldz paramaldz) {}
+  public ArkAppCGI$9(alsc paramalsc, alsn paramalsn) {}
   
   public void run()
   {
     try
     {
-      Object localObject = (QQAppInterface)aldo.a(this.this$0).get();
+      Object localObject = (QQAppInterface)alsc.a(this.this$0).get();
       if (localObject == null)
       {
         ArkAppCenter.c("ArkApp.ArkAppCGI", "runTask_retry, app is null, return");
         return;
       }
-      localObject = ((bato)((QQAppInterface)localObject).getManager(47)).a(1);
-      File localFile = new File(aldo.a());
+      localObject = ((bbwi)((QQAppInterface)localObject).getManager(47)).a(1);
+      File localFile = new File(alsc.a());
       this.a.jdField_a_of_type_JavaIoFile = localFile;
-      batm localbatm = new batm(this.a.jdField_a_of_type_JavaLangString, localFile);
-      localbatm.n = true;
-      localbatm.p = true;
+      bbwg localbbwg = new bbwg(this.a.jdField_a_of_type_JavaLangString, localFile);
+      localbbwg.n = true;
+      localbbwg.p = true;
       if (this.a.b != null) {
-        localbatm.a("Cookie", this.a.b);
+        localbbwg.a("Cookie", this.a.b);
       }
       if (this.a.c != null) {
-        localbatm.a("Referer", this.a.c);
+        localbbwg.a("Referer", this.a.c);
       }
       Bundle localBundle = new Bundle();
-      ((batr)localObject).a(localbatm, new aldu(this, localFile), localBundle);
+      ((bbwl)localObject).a(localbbwg, new alsi(this, localFile), localBundle);
       return;
     }
     catch (Exception localException)
     {
       ArkAppCenter.c("ArkApp.ArkAppCGI", String.format("runTask fail, url=%s, msg=%s", new Object[] { this.a.jdField_a_of_type_JavaLangString, localException.getMessage() }));
-      aldo.a(this.this$0, this.a, false, null);
+      alsc.a(this.this$0, this.a, false, null);
     }
   }
 }

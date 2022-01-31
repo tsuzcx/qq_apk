@@ -8,9 +8,9 @@ import android.view.GestureDetector;
 import android.widget.ImageView.ScaleType;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
-import sci;
-import scj;
-import sck;
+import spe;
+import spf;
+import spg;
 
 public class PublicAccountImageView
   extends URLImageView
@@ -20,7 +20,7 @@ public class PublicAccountImageView
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   Handler jdField_a_of_type_AndroidOsHandler;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private sck jdField_a_of_type_Sck;
+  private spg jdField_a_of_type_Spg;
   public boolean a;
   public float[] a;
   public float b;
@@ -36,9 +36,9 @@ public class PublicAccountImageView
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_ArrayOfFloat = new float[9];
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = new scj(this);
+    paramContext = new spf(this);
     setOnTouchListener(paramContext);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new sci(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new spe(this, paramContext));
     setBackgroundColor(-16777216);
     if (paramInt1 == 1) {
       setScaleType(ImageView.ScaleType.FIT_CENTER);
@@ -63,9 +63,9 @@ public class PublicAccountImageView
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_ArrayOfFloat = new float[9];
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = new scj(this);
+    paramContext = new spf(this);
     setOnTouchListener(paramContext);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new sci(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new spe(this, paramContext));
     setBackgroundColor(-16777216);
     setScaleType(ImageView.ScaleType.MATRIX);
     a();

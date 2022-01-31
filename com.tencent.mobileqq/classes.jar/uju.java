@@ -1,45 +1,20 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
 
 public class uju
-  extends uiy<ujt>
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public uju(@Nullable ujc paramujc)
-  {
-    super(paramujc);
-  }
+  public uju(QGSettingFragment paramQGSettingFragment) {}
   
-  protected JobSegment<ujb, ujt> a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return new ujo();
-  }
-  
-  protected JobSegment<Integer, ujb> a(uja paramuja)
-  {
-    return new ujv(paramuja, this.a);
-  }
-  
-  protected ujt a()
-  {
-    uje localuje = (uje)sqg.a(11);
-    List localList = localuje.a();
-    ujt localujt = new ujt(new ErrorMessage());
-    localujt.jdField_b_of_type_JavaUtilList = localuje.b(localList);
-    localujt.jdField_b_of_type_Boolean = true;
-    localujt.a = localujt.jdField_b_of_type_JavaUtilList.isEmpty();
-    return localujt;
-  }
-  
-  protected ujt a(ErrorMessage paramErrorMessage)
-  {
-    return new ujt(paramErrorMessage);
-  }
-  
-  protected void a(List<String> paramList, boolean paramBoolean)
-  {
-    ((uje)sqg.a(11)).a(paramList, paramBoolean);
+    if (paramBoolean)
+    {
+      QGSettingFragment.a(true);
+      return;
+    }
+    QGSettingFragment.a(false);
   }
 }
 

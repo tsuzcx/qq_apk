@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.apollo.view;
 
-import aipq;
-import ajbw;
+import ajco;
+import ajpy;
 import android.app.Activity;
 import java.lang.ref.WeakReference;
 
 public final class ApolloGameWrapper$1
   implements Runnable
 {
-  public ApolloGameWrapper$1(String paramString, Activity paramActivity, ajbw paramajbw) {}
+  public ApolloGameWrapper$1(String paramString, Activity paramActivity, ajpy paramajpy) {}
   
   public void run()
   {
-    aipq localaipq = aipq.a(this.jdField_a_of_type_JavaLangString);
-    if ((localaipq == null) || (localaipq.a == null) || (localaipq.a.get() != this.jdField_a_of_type_AndroidAppActivity))
+    ajco localajco = ajco.a(this.jdField_a_of_type_JavaLangString);
+    if ((localajco == null) || (localajco.a == null) || (localajco.a.get() != this.jdField_a_of_type_AndroidAppActivity))
     {
-      this.jdField_a_of_type_Ajbw.a(false, localaipq);
+      this.jdField_a_of_type_Ajpy.a(false, localajco);
       return;
     }
-    this.jdField_a_of_type_Ajbw.a(true, localaipq);
+    this.jdField_a_of_type_Ajpy.a(true, localajco);
   }
 }
 

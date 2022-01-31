@@ -5,6 +5,8 @@
         <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:id="@id/s8" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerInside" />
         <TextView android:textSize="18.0dip" android:textColor="@color/fl" android:id="@id/jca" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
         <TextView android:textSize="12.0dip" android:textColor="@color/aig" android:id="@id/jcb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+        <TextView android:textSize="13.0dip" android:textColor="#3d000000" android:id="@id/iws" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:text="@string/w8j" />
+        <TextView android:textSize="13.0dip" android:textColor="#3d000000" android:id="@id/iy5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/w8k" />
     </LinearLayout>
     <com.tencent.widget.AutoVerticalScrollTextView android:textSize="12.0dip" android:textColor="@color/aig" android:id="@id/jc7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:layout_alignParentBottom="true" />
     <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/jc_" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">

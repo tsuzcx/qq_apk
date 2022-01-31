@@ -2,20 +2,20 @@ package com.tencent.mobileqq.richmedia.ordersend;
 
 import android.os.Handler;
 import android.os.Message;
-import avbf;
+import away;
 
 public class OrderMediaMsgTimerController$3
   implements Runnable
 {
-  public OrderMediaMsgTimerController$3(avbf paramavbf, long paramLong) {}
+  public OrderMediaMsgTimerController$3(away paramaway, long paramLong) {}
   
   public void run()
   {
-    if (avbf.a(this.this$0) != null)
+    if (away.a(this.this$0) != null)
     {
-      Message localMessage = avbf.a(this.this$0).obtainMessage(101);
+      Message localMessage = away.a(this.this$0).obtainMessage(101);
       localMessage.obj = Long.valueOf(this.a);
-      avbf.a(this.this$0).sendMessage(localMessage);
+      away.a(this.this$0).sendMessage(localMessage);
     }
   }
 }

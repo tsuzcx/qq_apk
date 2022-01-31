@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 
-public class aepu
-  implements aepz
+class aepu
+  extends BroadcastReceiver
 {
-  public aepu(BlessActivity paramBlessActivity) {}
+  aepu(aepg paramaepg) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (BlessActivity.a(this.a) < this.a.jdField_a_of_type_Aeqd.l())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.start();
-      BlessActivity.b(this.a);
+    if (this.a.jdField_a_of_type_Atcf != null) {
+      this.a.jdField_a_of_type_Atcf.a(paramContext);
     }
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aepu
  * JD-Core Version:    0.7.0.1
  */

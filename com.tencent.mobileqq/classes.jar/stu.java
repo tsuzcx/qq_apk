@@ -1,48 +1,36 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Iterator;
+import java.util.List;
 
-public class stu
-  extends slz<stv>
+class stu
+  implements syt<tnj, tou>
 {
-  static final String a = skt.a("StorySvc.msgtab_node_watched");
-  public long b;
-  public String b;
-  public int c;
-  public int d;
+  stu(sto paramsto, stx paramstx, String paramString) {}
   
-  public String a()
+  public void a(@NonNull tnj paramtnj, @Nullable tou paramtou, @NonNull ErrorMessage paramErrorMessage)
   {
-    return a;
-  }
-  
-  public slu a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspMsgTabNodeWatched localRspMsgTabNodeWatched = new qqstory_service.RspMsgTabNodeWatched();
-    try
+    veg.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response " + paramtou);
+    if ((paramErrorMessage.isFail()) || (paramtou == null))
     {
-      localRspMsgTabNodeWatched.mergeFrom(paramArrayOfByte);
-      return new stv(localRspMsgTabNodeWatched);
+      veg.e("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response error!");
+      this.jdField_a_of_type_Stx.a(true);
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    paramtnj = (tcz)tdc.a(5);
+    if (paramtou.a != null)
     {
-      urk.d("Q.qqstory.msgTab:ReqMsgTabNodeWatched", "" + paramArrayOfByte);
+      paramErrorMessage = paramtou.a.iterator();
+      while (paramErrorMessage.hasNext()) {
+        ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
+      }
     }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
-    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqMsgTabNodeWatched.node_type.set(this.c);
-    localReqMsgTabNodeWatched.operation.set(this.d);
-    localReqMsgTabNodeWatched.recommend_id.set(this.jdField_b_of_type_Long);
-    return localReqMsgTabNodeWatched.toByteArray();
+    paramtou.a = paramtnj.a(paramtou.a);
+    ((sto)tdc.a(28)).a(paramtou.b);
+    this.jdField_a_of_type_Sto.c(this.jdField_a_of_type_JavaLangString, 0);
+    this.jdField_a_of_type_Stx.a(true);
   }
 }
 

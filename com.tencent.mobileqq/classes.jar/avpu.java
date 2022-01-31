@@ -1,235 +1,140 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.mobileqq.search.model.HotWordSearchSpecialDataModel;
-import com.tencent.mobileqq.search.model.SearchEntryDataModel.1;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.redtouch.VipBannerInfo.2;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import pb.unify.search.UnifySearchDiscovery.HotSearchItem;
-import pb.unify.search.UnifySearchDiscovery.Result;
-import pb.unite.search.DynamicDiscovery.HotSearchItem;
-import pb.unite.search.DynamicDiscovery.Result;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-public abstract class avpu
-  implements avol
+public class avpu
 {
   public int a;
-  public final Object a;
-  public boolean a;
-  public byte[] a;
+  public long a;
+  public BusinessInfoCheckUpdate.AppInfo a;
+  public String a;
   public int b;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public avpu(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, boolean paramBoolean)
+  public static List<avpu> a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public avpu(QQAppInterface paramQQAppInterface, int paramInt1, byte[] paramArrayOfByte, int paramInt2, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static List<avpu> a(QQAppInterface paramQQAppInterface, List<DynamicDiscovery.Result> paramList, int paramInt)
-  {
-    QLog.d("SearchEntryDataModel818searchProto_old", 2, "convertPbDataToModel");
-    ArrayList localArrayList = new ArrayList();
-    int[] arrayOfInt = new int[paramList.size()];
-    if (paramList.size() > 0)
+    Object localObject1 = avpt.a(paramAppInfo);
+    ArrayList localArrayList;
+    if ((localObject1 != null) && (((Map)localObject1).size() > 0))
     {
-      int i = 0;
-      if (i < paramList.size())
+      localArrayList = new ArrayList();
+      try
       {
-        Object localObject = (DynamicDiscovery.Result)paramList.get(i);
-        arrayOfInt[i] = ((DynamicDiscovery.Result)paramList.get(i)).type.get();
-        int k = ((DynamicDiscovery.Result)localObject).type.get();
-        switch (k)
+        localObject1 = ((Map)localObject1).entrySet().iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-        case 2: 
-        case 4: 
-        default: 
-          localObject = null;
-        }
-        for (;;)
-        {
-          if (localObject != null)
+          Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
+          String str = (String)((Map.Entry)localObject2).getKey();
+          localObject2 = (JSONObject)((Map.Entry)localObject2).getValue();
+          if ((str != null) && (localObject2 != null) && (((JSONObject)localObject2).has("blue_bar_stat")))
           {
-            ((avpu)localObject).b();
-            localArrayList.add(localObject);
-          }
-          i += 1;
-          break;
-          List localList = ((DynamicDiscovery.Result)localObject).hot_search_items.get();
-          if (localList.size() < 6)
-          {
-            localObject = null;
-          }
-          else
-          {
-            String[] arrayOfString = new String[localList.size()];
-            int j = 0;
-            while (j < localList.size())
-            {
-              arrayOfString[j] = ((DynamicDiscovery.HotSearchItem)localList.get(j)).title.get().toStringUtf8();
-              j += 1;
-            }
-            baig.a(paramQQAppInterface.getCurrentAccountUin(), arrayOfString);
-            localObject = new HotWordSearchEntryDataModel(paramQQAppInterface, k, ((DynamicDiscovery.Result)localObject).toByteArray(), paramInt, false);
+            avpu localavpu = new avpu();
+            localavpu.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo = paramAppInfo;
+            localavpu.jdField_b_of_type_Int = ((JSONObject)localObject2).getInt("blue_bar_stat");
+            localavpu.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).getString("blue_content");
+            localavpu.jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("blue_type");
+            localavpu.jdField_a_of_type_JavaLangString = str;
+            localavpu.jdField_a_of_type_Long = (((JSONObject)localObject2).getLong("duration") * 1000L);
+            localavpu.c = ((JSONObject)localObject2).getString("blue_aid");
+            localavpu.d = ((JSONObject)localObject2).getString("link");
+            localavpu.e = ((JSONObject)localObject2).getString("blue_icon_url");
+            localavpu.f = ((JSONObject)localObject2).getString("blue_button_text");
+            localArrayList.add(localavpu);
             continue;
-            localObject = new avms(paramQQAppInterface, k, ((DynamicDiscovery.Result)localObject).toByteArray(), paramInt, false);
-            continue;
-            localObject = new HotWordSearchSpecialDataModel(paramQQAppInterface, k, ((DynamicDiscovery.Result)localObject).toByteArray(), paramInt, false);
+            return null;
           }
         }
       }
-      boolean bool = a(arrayOfInt, avis.a(paramQQAppInterface, paramInt, false));
-      avis.a(paramQQAppInterface, paramInt, bool, false);
-      if (bool) {
-        avis.a(paramQQAppInterface, paramInt, arrayOfInt, false);
+      catch (Exception paramAppInfo)
+      {
+        paramAppInfo.printStackTrace();
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchEntryDataModel", 2, "convertPbDataToModel, modelList = " + localArrayList.size());
     }
     return localArrayList;
   }
   
-  private static boolean a(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
+  public static void a(Conversation paramConversation)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramArrayOfInt1 == null) || (paramArrayOfInt2 == null))
+    if ((paramConversation == null) || (paramConversation.jdField_a_of_type_Ahkf.a(23) != 0)) {}
+    SharedPreferences localSharedPreferences;
+    MqqHandler localMqqHandler;
+    do
     {
-      bool1 = true;
-      return bool1;
+      return;
+      localSharedPreferences = paramConversation.a().getSharedPreferences("mobileQQ", 0);
+      localMqqHandler = paramConversation.jdField_a_of_type_Ahkf.a();
+    } while ((localMqqHandler == null) || ((avpq)paramConversation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36) == null));
+    ThreadManager.getFileThreadHandler().post(new VipBannerInfo.2(paramConversation, localSharedPreferences, localMqqHandler));
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, avpr paramavpr)
+  {
+    if (paramavpr == null) {
+      label4:
+      return;
+    } else {
+      do
+      {
+        do
+        {
+          paramQQAppInterface = (avpq)paramQQAppInterface.getManager(36);
+        } while (paramQQAppInterface == null);
+        paramQQAppInterface = paramQQAppInterface.b(3);
+      } while (paramQQAppInterface == null);
     }
-    if (paramArrayOfInt1.length != paramArrayOfInt2.length) {
-      return true;
-    }
-    int i = 0;
-    for (;;)
+    Object localObject;
+    label78:
+    do
     {
-      bool1 = bool2;
-      if (i >= paramArrayOfInt1.length) {
+      paramQQAppInterface = paramQQAppInterface.iterator();
+      break label78;
+      if (!paramQQAppInterface.hasNext()) {
+        break label4;
+      }
+      localObject = a((BusinessInfoCheckUpdate.AppInfo)paramQQAppInterface.next());
+      if ((localObject == null) || (((List)localObject).size() <= 0)) {
         break;
       }
-      if (paramArrayOfInt1[i] != paramArrayOfInt2[i]) {
-        return true;
+      localObject = ((List)localObject).iterator();
+      if (!((Iterator)localObject).hasNext()) {
+        break;
       }
-      i += 1;
-    }
+    } while (!paramavpr.a((avpu)((Iterator)localObject).next()));
   }
   
-  public static List<avpu> b(QQAppInterface paramQQAppInterface, List<UnifySearchDiscovery.Result> paramList, int paramInt)
+  public static void b(Conversation paramConversation)
   {
-    QLog.d("SearchEntryDataModel818searchProto_new", 2, "convertUnifyPbDataToModel");
-    ArrayList localArrayList = new ArrayList();
-    int[] arrayOfInt = new int[paramList.size()];
-    if (paramList.size() > 0)
+    if ((paramConversation != null) && (paramConversation.jdField_a_of_type_Ahkf.a(23) != 0))
     {
-      int i = 0;
-      if (i < paramList.size())
+      paramConversation = paramConversation.jdField_a_of_type_Ahkf.a();
+      if (paramConversation != null)
       {
-        Object localObject = (UnifySearchDiscovery.Result)paramList.get(i);
-        arrayOfInt[i] = ((UnifySearchDiscovery.Result)paramList.get(i)).type.get();
-        int k = ((UnifySearchDiscovery.Result)localObject).type.get();
-        switch (k)
-        {
-        case 2: 
-        case 4: 
-        default: 
-          localObject = null;
-        }
-        for (;;)
-        {
-          if (localObject != null)
-          {
-            ((avpu)localObject).b();
-            localArrayList.add(localObject);
-          }
-          i += 1;
-          break;
-          List localList = ((UnifySearchDiscovery.Result)localObject).hot_search_items.get();
-          if (localList.size() < 6)
-          {
-            localObject = null;
-          }
-          else
-          {
-            String[] arrayOfString = new String[localList.size()];
-            int j = 0;
-            while (j < localList.size())
-            {
-              arrayOfString[j] = ((UnifySearchDiscovery.HotSearchItem)localList.get(j)).title.get().toStringUtf8();
-              j += 1;
-            }
-            baig.b(paramQQAppInterface.getCurrentAccountUin(), arrayOfString);
-            localObject = new HotWordSearchEntryDataModel(paramQQAppInterface, k, ((UnifySearchDiscovery.Result)localObject).toByteArray(), paramInt, true);
-            continue;
-            localObject = new avms(paramQQAppInterface, k, ((UnifySearchDiscovery.Result)localObject).toByteArray(), paramInt, true);
-            continue;
-            localObject = new HotWordSearchSpecialDataModel(paramQQAppInterface, k, ((UnifySearchDiscovery.Result)localObject).toByteArray(), paramInt, true);
-          }
-        }
-      }
-      boolean bool = a(arrayOfInt, avis.a(paramQQAppInterface, paramInt, true));
-      avis.a(paramQQAppInterface, paramInt, bool, true);
-      if (bool) {
-        avis.a(paramQQAppInterface, paramInt, arrayOfInt, true);
+        paramConversation.removeMessages(9);
+        paramConversation.sendEmptyMessage(9);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchEntryDataModel", 2, "convertPbDataToModel, modelList = " + localArrayList.size());
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ArrayOfByte = bace.a(BaseApplication.getContext().getFileStreamPath("search_discovery_sp_prefixpref_search_model_data" + localQQAppInterface.getCurrentAccountUin() + "_" + this.jdField_a_of_type_Int + "_" + this.b));
-        a(this.jdField_a_of_type_ArrayOfByte);
-        return;
-      }
-      this.jdField_a_of_type_ArrayOfByte = bace.a(BaseApplication.getContext().getFileStreamPath("search_discovery_sp_prefix_unifypref_search_model_data" + localQQAppInterface.getCurrentAccountUin() + "_" + this.jdField_a_of_type_Int + "_" + this.b));
-      a(this.jdField_a_of_type_ArrayOfByte);
-    }
-  }
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_ArrayOfByte == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SearchEntryDataModel", 2, "saveDataToLocal, mRawData is null");
-      }
-      return;
-    }
-    ThreadManager.post(new SearchEntryDataModel.1(this), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avpu
  * JD-Core Version:    0.7.0.1
  */

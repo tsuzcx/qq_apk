@@ -1,14 +1,12 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import android.os.Bundle;
 
 public abstract interface ajmo
 {
-  public static final String a = anam.a("VIP_roam_msg_search_cfg", "http://i.gtimg.cn/qqshow/admindata/comdata/searchStrategy/xydata.json");
-  public static final String b = BaseApplication.getContext().getFilesDir() + File.separator + "searchInCloudConfig.json";
+  public abstract int a(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajmo
  * JD-Core Version:    0.7.0.1
  */

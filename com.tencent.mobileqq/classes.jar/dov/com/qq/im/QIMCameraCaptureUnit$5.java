@@ -1,27 +1,27 @@
 package dov.com.qq.im;
 
-import bbmy;
-import bhdi;
+import bcpw;
+import bify;
 import com.tencent.common.app.BaseApplicationImpl;
 import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
 
 public class QIMCameraCaptureUnit$5
   implements Runnable
 {
-  public QIMCameraCaptureUnit$5(bhdi parambhdi) {}
+  public QIMCameraCaptureUnit$5(bify parambify) {}
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getContext(), this.this$0.jdField_a_of_type_JavaLangString, 0).a();
+    bcpw.a(BaseApplicationImpl.getContext(), this.this$0.jdField_a_of_type_JavaLangString, 0).a();
     if (this.this$0.h) {
-      this.this$0.L();
+      this.this$0.J();
     }
     if (this.this$0.b == 5) {
       this.this$0.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setVisibility(0);
     }
     for (;;)
     {
-      this.this$0.N();
+      this.this$0.L();
       return;
       this.this$0.g();
     }

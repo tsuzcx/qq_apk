@@ -1,54 +1,55 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class psg
+  extends pqt
 {
-  public static <T> int a(Iterable<T> paramIterable, psi<T> parampsi)
+  public psg(Context paramContext, baxk parambaxk, rap paramrap)
   {
-    if (paramIterable != null)
-    {
-      int i = 0;
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext())
-      {
-        if (parampsi.a(paramIterable.next())) {
-          return i;
-        }
-        i += 1;
-      }
-    }
-    return -1;
+    super(paramContext, parambaxk, paramrap);
   }
   
-  public static <T, E> List<E> a(Iterable<T> paramIterable, psh<T, E> parampsh)
+  public pqt a()
   {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramIterable != null) && (parampsh != null))
-    {
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext()) {
-        localArrayList.add(parampsh.a(paramIterable.next()));
-      }
-    }
-    return localArrayList;
+    this.jdField_a_of_type_Boolean = true;
+    return g().l().n();
   }
   
-  public static <T> List<T> a(Iterable<T> paramIterable, psi<T> parampsi)
+  public pqt d()
   {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramIterable != null) && (parampsi != null))
-    {
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext())
-      {
-        Object localObject = paramIterable.next();
-        if (parampsi.a(localObject)) {
-          localArrayList.add(localObject);
-        }
-      }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if ((this.jdField_a_of_type_Pqs != null) && ((this.jdField_a_of_type_Pqs instanceof ComponentContentHotSearch))) {
+      localLinearLayout.addView((ComponentContentHotSearch)this.jdField_a_of_type_Pqs);
     }
-    return localArrayList;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public pqt e()
+  {
+    return this;
+  }
+  
+  public pqt g()
+  {
+    this.jdField_a_of_type_Pqs = new ComponentContentHotSearch(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Rap);
+    return this;
+  }
+  
+  public pqt o()
+  {
+    super.o();
+    return this;
   }
 }
 

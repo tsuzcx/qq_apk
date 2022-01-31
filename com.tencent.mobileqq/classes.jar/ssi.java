@@ -1,71 +1,72 @@
+import android.annotation.TargetApi;
+import com.tencent.common.config.AppSetting;
+
+@TargetApi(14)
 public class ssi
 {
-  public final String a;
-  public final String b;
-  public final String c;
+  public static final Boolean a;
+  public static final String a;
+  public static boolean a;
+  public static final String b;
+  public static final String c;
+  public static final String d;
+  public static final String e;
+  public static final String f;
+  public static final String g;
+  public static final String h;
+  public static final String i;
+  public static final String j;
+  public static final String k;
+  public static final String l;
+  public static final String m;
+  public static final String n;
+  public static final String o;
+  public static final String p;
+  public static final String q;
+  public static final String r;
+  public static final String s;
+  public static final String t;
+  public static final String u;
   
-  public ssi(String paramString1, String paramString2, String paramString3)
+  static
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      throw new IllegalArgumentException("both downloadUrl and downloadLocalPath should not be null");
-    }
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    jdField_a_of_type_JavaLangString = ajyc.a(2131710812);
+    b = ajyc.a(2131710809);
+    jdField_a_of_type_Boolean = AppSetting.a().contains("r");
+    c = ahwa.jdField_a_of_type_JavaLangString + "/qqstory/";
+    d = c + "debug/";
+    e = c + "upload/";
+    f = e + ".music/";
+    g = c + ".tmp/";
+    h = g + "download/preload/";
+    i = g + "download/mine/";
+    j = g + ".tmp/";
+    k = j + "watermark/";
+    l = j + "merge/";
+    m = j + "audio/";
+    n = j + "video/";
+    o = j + "slideshow/";
+    p = j + "textfilter/";
+    q = j + "pk/result/";
+    r = k + "source/";
+    s = k + "doodle/";
+    t = k + "composite/";
+    u = k + "download/";
+    jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
   }
   
-  public boolean equals(Object paramObject)
+  public static String a(int paramInt)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    if (this == paramObject) {
-      bool1 = true;
-    }
-    do
+    switch (paramInt)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool3;
-          } while (paramObject == null);
-          bool1 = bool3;
-        } while (getClass() != paramObject.getClass());
-        paramObject = (ssi)paramObject;
-        bool1 = bool3;
-      } while (!this.a.equals(paramObject.a));
-      bool1 = bool3;
-    } while (!this.b.equals(paramObject.b));
-    if (this.c != null)
-    {
-      bool1 = bool2;
-      if (this.c.equals(paramObject.c)) {}
+    default: 
+      return "UNKNOWN";
+    case 0: 
+      return "VIDEO";
+    case 1: 
+      return "MASK_PIC";
     }
-    for (boolean bool1 = false;; bool1 = bool2)
-    {
-      return bool1;
-      if (paramObject.c != null) {
-        break;
-      }
-    }
-  }
-  
-  public int hashCode()
-  {
-    int j = this.a.hashCode();
-    int k = this.b.hashCode();
-    if (this.c != null) {}
-    for (int i = this.c.hashCode();; i = 0) {
-      return i + (j * 31 + k) * 31;
-    }
-  }
-  
-  public String toString()
-  {
-    return "Input{downloadUrl='" + this.a + '\'' + ", downloadLocalPath='" + this.b + '\'' + ", downloadFileMd5='" + this.c + '\'' + '}';
+    return "THUMBNAIL";
   }
 }
 

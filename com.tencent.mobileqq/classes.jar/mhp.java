@@ -1,22 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.av.utils.PopupDialogQQSide;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class mhp
-  implements DialogInterface.OnDismissListener
+class mhp
+  implements Animation.AnimationListener
 {
-  public mhp(PopupDialogQQSide paramPopupDialogQQSide) {}
+  mhp(mho parammho) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("QavInOutAnimation", 2, "InAnimation onAnimationEnd");
     }
-    if (this.a.getActivity() != null)
+    try
     {
-      this.a.getActivity().doOnBackPressed();
-      this.a.getActivity().overridePendingTransition(0, 0);
+      if (this.a.a != null) {
+        this.a.a.b();
+      }
+      return;
+    }
+    catch (Exception paramAnimation)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationEnd Exception :" + paramAnimation);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavInOutAnimation", 2, "InAnimation onAnimationStart");
+    }
+    try
+    {
+      if (this.a.a != null) {
+        this.a.a.a();
+      }
+      return;
+    }
+    catch (Exception paramAnimation)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationStart Exception :" + paramAnimation);
     }
   }
 }

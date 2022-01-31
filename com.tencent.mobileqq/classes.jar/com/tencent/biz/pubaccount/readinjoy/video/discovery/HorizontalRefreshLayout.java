@@ -9,10 +9,10 @@ import android.view.ViewParent;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import azvv;
-import qkt;
-import qku;
-import qkv;
+import bawz;
+import qwy;
+import qwz;
+import qxa;
 
 public class HorizontalRefreshLayout
   extends FrameLayout
@@ -20,15 +20,15 @@ public class HorizontalRefreshLayout
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
-  private qku jdField_a_of_type_Qku;
-  private qkv jdField_a_of_type_Qkv;
+  private qwz jdField_a_of_type_Qwz;
+  private qxa jdField_a_of_type_Qxa;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
   private int c;
   private int d;
   private int e;
-  private int f = azvv.a(getContext(), 25.0F);
+  private int f = bawz.a(getContext(), 25.0F);
   
   public HorizontalRefreshLayout(Context paramContext)
   {
@@ -82,7 +82,7 @@ public class HorizontalRefreshLayout
   {
     if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView != null))
     {
-      this.jdField_a_of_type_AndroidViewView.animate().translationX(0.0F).setDuration(500L).setListener(new qkt(this)).start();
+      this.jdField_a_of_type_AndroidViewView.animate().translationX(0.0F).setDuration(500L).setListener(new qwy(this)).start();
       this.jdField_b_of_type_AndroidViewView.animate().translationX(this.jdField_a_of_type_Int).setDuration(500L).start();
     }
   }
@@ -197,22 +197,22 @@ public class HorizontalRefreshLayout
       return false;
       this.c = 0;
       this.e = 0;
-      if (this.jdField_a_of_type_Qku != null) {
-        this.jdField_a_of_type_Qku.a(this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidViewView, this);
+      if (this.jdField_a_of_type_Qwz != null) {
+        this.jdField_a_of_type_Qwz.a(this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidViewView, this);
       }
       b();
     }
   }
   
-  public void setOnDraggingListener(qku paramqku)
+  public void setOnDraggingListener(qwz paramqwz)
   {
-    this.jdField_a_of_type_Qku = paramqku;
+    this.jdField_a_of_type_Qwz = paramqwz;
   }
   
-  public void setRefreshHeader(qkv paramqkv)
+  public void setRefreshHeader(qxa paramqxa)
   {
-    this.jdField_a_of_type_Qkv = paramqkv;
-    a(this.jdField_a_of_type_Qkv.a(this));
+    this.jdField_a_of_type_Qxa = paramqxa;
+    a(this.jdField_a_of_type_Qxa.a(this));
   }
 }
 

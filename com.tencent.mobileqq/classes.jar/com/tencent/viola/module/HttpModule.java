@@ -217,7 +217,7 @@ public class HttpModule
     if (TextUtils.isEmpty(paramJSONObject.optString("url"))) {
       return;
     }
-    int i = paramJSONObject.optInt("timeout", 3000);
+    int i = paramJSONObject.optInt("timeout", 10000);
     boolean bool = paramJSONObject.optBoolean("forReport", false);
     reuqestHttp(paramJSONObject.optString("url"), paramJSONObject.optJSONObject("data"), paramJSONObject.optJSONObject("headers"), i, paramString, paramJSONObject.optString("method", "POST").toUpperCase(), bool);
   }
@@ -225,13 +225,13 @@ public class HttpModule
   @JSMethod(uiThread=false)
   public void requestGet(@NonNull String paramString1, JSONObject paramJSONObject, String paramString2)
   {
-    reuqestHttp(paramString1, paramJSONObject, null, 3000, paramString2, "GET", false);
+    reuqestHttp(paramString1, paramJSONObject, null, 10000, paramString2, "GET", false);
   }
   
   @JSMethod(uiThread=false)
   public void requestPost(@NonNull String paramString1, JSONObject paramJSONObject, String paramString2)
   {
-    reuqestHttp(paramString1, paramJSONObject, null, 3000, paramString2, "POST", false);
+    reuqestHttp(paramString1, paramJSONObject, null, 10000, paramString2, "POST", false);
   }
 }
 

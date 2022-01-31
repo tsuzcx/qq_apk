@@ -1,16 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.content.Context;
+import android.content.Intent;
+import android.os.IBinder;
+import com.tencent.biz.huanjiplugin.TranslucentActivty;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 
-public class ncn
-  implements DialogInterface.OnClickListener
+class ncn
+  implements OnPluginInstallListener
 {
-  public ncn(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
+  ncn(ncm paramncm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public IBinder asBinder()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
+    return null;
+  }
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if (this.a.jdField_a_of_type_Nco != null)
+    {
+      float f = paramInt1 / paramInt2;
+      this.a.jdField_a_of_type_Nco.a(0, 1, (int)(f * 100.0F));
+    }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (this.a.jdField_a_of_type_Nco != null) {
+      this.a.jdField_a_of_type_Nco.a(paramInt, "Install Error");
+    }
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (this.a.jdField_a_of_type_Nco != null) {
+      this.a.jdField_a_of_type_Nco.a(3, 4, 100);
+    }
+    if (this.a.jdField_a_of_type_Int == 2)
+    {
+      paramString = new Intent(BaseApplicationImpl.getApplication().getApplicationContext(), TranslucentActivty.class);
+      paramString.addFlags(268435456);
+      paramString.putExtras(paramString);
+      paramString.putExtra("startParam", this.a.jdField_a_of_type_JavaLangString);
+      BaseApplicationImpl.getApplication().getApplicationContext().startActivity(paramString);
+    }
   }
 }
 

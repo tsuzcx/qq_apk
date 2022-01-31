@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import ajqt;
+import akfd;
 import tencent.im.oidb.cmd0x935.oidb_0x935.RspBody;
 
 public class RecommendTroopManagerImp$3
   implements Runnable
 {
-  public RecommendTroopManagerImp$3(ajqt paramajqt, long paramLong, oidb_0x935.RspBody paramRspBody) {}
+  public RecommendTroopManagerImp$3(akfd paramakfd, long paramLong, oidb_0x935.RspBody paramRspBody) {}
   
   public void run()
   {
-    ajqt.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentImOidbCmd0x935Oidb_0x935$RspBody);
+    akfd.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentImOidbCmd0x935Oidb_0x935$RspBody);
   }
 }
 

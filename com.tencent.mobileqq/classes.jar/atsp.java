@@ -1,19 +1,20 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class atsp
-  extends beem
+  implements DialogInterface.OnClickListener
 {
-  atsp(atsk paramatsk) {}
+  atsp(atsm paramatsm, bbgg parambbgg) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setVisibility(0);
+    this.jdField_a_of_type_Bbgg.dismiss();
+    this.jdField_a_of_type_Atsm.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsp
  * JD-Core Version:    0.7.0.1
  */

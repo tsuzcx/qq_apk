@@ -1,18 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-class tja
-  implements View.OnClickListener
+public class tja
+  extends tiy
 {
-  tja(tiz paramtiz, tiy paramtiy) {}
+  protected TextView c = (TextView)a(2131378644);
   
-  public void onClick(View paramView)
+  public tja(ViewGroup paramViewGroup, int paramInt)
   {
-    if (VideoCoverListBar.a(this.jdField_a_of_type_Tiz.jdField_a_of_type_Tiy.a) != null) {
-      VideoCoverListBar.a(this.jdField_a_of_type_Tiz.jdField_a_of_type_Tiy.a).a(tiz.a(this.jdField_a_of_type_Tiz));
+    super(paramViewGroup, paramInt);
+  }
+  
+  public void a(tfi paramtfi)
+  {
+    if (paramtfi.b > 99)
+    {
+      this.c.setText("99+");
+      return;
     }
-    urp.a("play_video", "clk_mini", 0, 0, new String[] { "2", "", "", tiz.a(this.jdField_a_of_type_Tiz) });
+    this.c.setText(String.valueOf(paramtfi.b));
   }
 }
 

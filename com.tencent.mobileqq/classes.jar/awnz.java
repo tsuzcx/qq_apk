@@ -1,45 +1,16 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import java.util.List;
 
 public class awnz
-  extends WebViewPlugin
+  extends awnd
 {
-  private boolean a;
-  
-  public awnz()
+  public awnz(String paramString1, long paramLong1, String paramString2, List<awog> paramList, long paramLong2, String paramString3, String paramString4, List<String> paramList1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString5, String paramString6)
   {
-    this.mPluginNameSpace = "splashADPlugin";
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if (paramLong == 8589934598L)
-    {
-      QLog.i("QSplash@QbossSplashUtil", 1, "handleEvent finish or destroy. isFromSP:" + this.a);
-      if (this.a) {
-        this.mRuntime.a().startActivity(new Intent(this.mRuntime.a(), SplashActivity.class));
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
-  {
-    super.onWebViewCreated(paramCustomWebView);
-    if (this.mRuntime.a().getIntent() != null) {
-      this.a = this.mRuntime.a().getIntent().getBooleanExtra("key_from_splash_ad", false);
-    }
+    super(paramString1, paramLong1, paramString2, paramList, paramLong2, paramString3, paramString4, paramList1, paramBoolean1, paramBoolean2, paramBoolean3, paramString5, paramString6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awnz
  * JD-Core Version:    0.7.0.1
  */

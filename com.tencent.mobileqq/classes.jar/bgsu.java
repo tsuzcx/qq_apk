@@ -1,63 +1,38 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.text.TextUtils;
+import cooperation.qqpim.QQPimTipsInfo;
 
-class bgsu
-  extends bgsl
+public class bgsu
 {
-  private WeakReference<bgsp> a;
-  
-  bgsu(bgsp parambgsp)
+  public static void a(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
   {
-    this.a = new WeakReference(parambgsp);
+    if (paramQQPimTipsInfo == null)
+    {
+      bgss.a(paramContext, "QQPIM_TIPS_CLICK", System.currentTimeMillis());
+      return;
+    }
+    bgss.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int, paramQQPimTipsInfo.jdField_a_of_type_JavaLangString + ";" + paramQQPimTipsInfo.b + ";" + System.currentTimeMillis());
   }
   
-  public void a(String paramString, Bundle paramBundle)
+  public static void b(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
   {
-    bgsp localbgsp = (bgsp)this.a.get();
-    if (localbgsp == null) {
-      bckd.b("WadlProxyServiceManager", "##@transferAsync, manager gc: " + paramString);
+    if (paramQQPimTipsInfo == null) {}
+    while (TextUtils.isEmpty(bgss.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int))) {
+      return;
     }
-    do
+    switch (paramQQPimTipsInfo.jdField_a_of_type_Int)
     {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          bckd.b("WadlProxyServiceManager", "##@Call back from Service: " + paramString);
-        }
-        paramBundle.setClassLoader(getClass().getClassLoader());
-      } while (paramString == null);
-      if (paramString.equals("WADL.REVERSE_HEART_CMD"))
-      {
-        paramString = bgsp.a(localbgsp).obtainMessage();
-        paramString.what = 4;
-        paramString.setData(paramBundle);
-        bgsp.a(localbgsp).sendMessage(paramString);
-        return;
-      }
-      if (paramString.equals("WADL.REVERSE_ACTION_CMD"))
-      {
-        paramString = bgsp.a(localbgsp).obtainMessage();
-        paramString.what = 3;
-        paramString.setData(paramBundle);
-        bgsp.a(localbgsp).sendMessage(paramString);
-        return;
-      }
-      if (paramString.equals("WADL.REVERSE_STOP_MONITOR_CMD"))
-      {
-        paramString = bgsp.a(localbgsp).obtainMessage();
-        paramString.what = 5;
-        paramString.setData(paramBundle);
-        bgsp.a(localbgsp).sendMessage(paramString);
-        return;
-      }
-    } while (!paramString.equals("WADL.REVERSE_START_MONITOR_CMD"));
-    paramString = bgsp.a(localbgsp).obtainMessage();
-    paramString.what = 6;
-    paramString.setData(paramBundle);
-    bgsp.a(localbgsp).sendMessage(paramString);
+    case 3: 
+    default: 
+      return;
+    case 1: 
+      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
+      return;
+    case 2: 
+      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
+      return;
+    }
+    paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
   }
 }
 

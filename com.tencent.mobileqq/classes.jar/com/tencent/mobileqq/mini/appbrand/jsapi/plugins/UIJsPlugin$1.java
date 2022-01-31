@@ -24,14 +24,10 @@ final class UIJsPlugin$1
     add("insertHTMLWebView");
     add("updateHTMLWebView");
     add("removeHTMLWebView");
-    add("insertCamera");
     add("insertImageView");
     add("removeImageView");
     add("insertTextView");
     add("removeTextView");
-    add("insertCanvas");
-    add("updateCanvas");
-    add("removeCanvas");
     add("scrollWebviewTo");
     add("insertTextArea");
     add("updateTextArea");
@@ -45,6 +41,8 @@ final class UIJsPlugin$1
     add("updateScrollView");
     add("removeScrollView");
     add("hideHomeButton");
+    add("showMiniAIOEntrance");
+    add("hideMiniAIOEntrance");
   }
 }
 

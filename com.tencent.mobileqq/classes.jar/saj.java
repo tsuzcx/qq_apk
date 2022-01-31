@@ -1,125 +1,90 @@
-import UserGrowth.stLinkStragegyArgs;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.1;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.2;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.3;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.weaknet.WeakNetHelper.1;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
-import cooperation.qzone.LocalMultiProcConfig;
-import mqq.app.AppRuntime;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
 public class saj
 {
-  private static int a()
+  static long a()
   {
-    if (!a(b(), c(), 0)) {
-      return 0;
-    }
-    return LocalMultiProcConfig.getInt("weishi_usergrowth", b(), 0);
-  }
-  
-  public static stLinkStragegyArgs a()
-  {
-    stLinkStragegyArgs localstLinkStragegyArgs = new stLinkStragegyArgs();
-    localstLinkStragegyArgs.hasInstalledWeish = vnd.a(BaseApplicationImpl.getApplication().getApplicationContext());
-    localstLinkStragegyArgs.todayClickCount = b();
-    localstLinkStragegyArgs.todayEnterCount = a();
-    localstLinkStragegyArgs.todayLastLinkId = c();
-    return localstLinkStragegyArgs;
-  }
-  
-  public static void a()
-  {
-    a(b(), c());
-  }
-  
-  public static void a(int paramInt)
-  {
-    ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.1(paramInt));
-  }
-  
-  private static void a(String paramString1, String paramString2)
-  {
-    ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.2(paramString1, paramString2));
-  }
-  
-  private static boolean a(String paramString1, String paramString2, int paramInt)
-  {
-    long l = LocalMultiProcConfig.getLong("weishi_usergrowth", paramString2, 0L);
-    boolean bool = bgez.a(System.currentTimeMillis(), l);
-    if (!bool) {
-      ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.3(paramString1, paramInt, paramString2));
-    }
-    return bool;
-  }
-  
-  private static int b()
-  {
-    if (!a(d(), e(), 0)) {
-      return 0;
-    }
-    return LocalMultiProcConfig.getInt("weishi_usergrowth", d(), 0);
-  }
-  
-  private static String b()
-  {
-    return "key_open_recommend_page_count_" + h();
-  }
-  
-  public static void b()
-  {
-    a(d(), e());
-  }
-  
-  private static int c()
-  {
-    if (!a(f(), g(), -1)) {
-      return -1;
-    }
-    return LocalMultiProcConfig.getInt("weishi_usergrowth", f(), -1);
-  }
-  
-  private static String c()
-  {
-    return "key_open_recommend_page_time_" + h();
-  }
-  
-  private static String d()
-  {
-    return "key_click_recommend_card_count_" + h();
-  }
-  
-  private static String e()
-  {
-    return "key_click_recommend_card_time_" + h();
-  }
-  
-  private static String f()
-  {
-    return "key_last_link_type_" + h();
-  }
-  
-  private static String g()
-  {
-    return "key_last_link_time_" + h();
-  }
-  
-  private static String h()
-  {
-    String str2 = "";
-    String str3 = DeviceUtils.getVersionName(BaseApplicationImpl.getContext());
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    String str1 = str2;
-    if (localAppRuntime != null)
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(152);
+    int i;
+    if (localAladdinConfig != null)
     {
-      str1 = str2;
-      if (!TextUtils.isEmpty(localAppRuntime.getAccount())) {
-        str1 = bcdt.a(localAppRuntime.getAccount());
+      i = localAladdinConfig.getIntegerFromString("toast_delay_time", 5000);
+      QLog.d("WeakNetHelper", 1, new Object[] { "getToastDelayTime, toastDelayTime = ", Integer.valueOf(i) });
+      if (i < 3000) {
+        QLog.d("WeakNetHelper", 1, new Object[] { "getToastDelayTime, toast config time is unreasonable, don't use it, toastDelayTime = ", Integer.valueOf(i) });
       }
     }
-    return str1 + "_" + str3;
+    else
+    {
+      QLog.d("WeakNetHelper", 1, new Object[] { "getToastDelayTime, default time = ", Integer.valueOf(5000) });
+      return 5000L;
+    }
+    return i;
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    ThreadManager.getSubThreadHandler().post(new WeakNetHelper.1(paramString1, paramString2));
+  }
+  
+  public static boolean a()
+  {
+    Object localObject = BaseActivity.sTopActivity;
+    if ((localObject instanceof SplashActivity))
+    {
+      boolean bool = ReadinjoyTabFrame.c_();
+      if (bool) {}
+      for (localObject = "YES";; localObject = "NO")
+      {
+        QLog.d("WeakNetHelper", 1, new Object[] { "isAbleToShowToast: ", localObject, ", tab." });
+        return bool;
+      }
+    }
+    if ((localObject instanceof ReadInJoyNewFeedsActivity))
+    {
+      QLog.d("WeakNetHelper", 1, "isAbleToShowToast: YES");
+      return true;
+    }
+    if (((localObject instanceof ReadInJoyVideoSubChannelActivity)) || ((localObject instanceof ReadInJoyChannelActivity)))
+    {
+      QLog.d("WeakNetHelper", 1, "isAbleToShowToast: YES, sub channel.");
+      return true;
+    }
+    QLog.d("WeakNetHelper", 1, "isAbleToShowToast: NO, not SplashActivity or ReadInJoyNewFeedsActivity, not sub channel activity.");
+    return false;
+  }
+  
+  static boolean a(ToServiceMsg paramToServiceMsg)
+  {
+    if (paramToServiceMsg != null)
+    {
+      Boolean localBoolean = (Boolean)paramToServiceMsg.getAttribute("isFeedsPreload");
+      if ((localBoolean != null) && (localBoolean.booleanValue()))
+      {
+        QLog.d("WeakNetHelper", 1, "isNeedToShowToast: NO, feeds preload request.");
+        return false;
+      }
+      paramToServiceMsg = (Long)paramToServiceMsg.getAttribute(pbh.d);
+      if ((paramToServiceMsg != null) && (paramToServiceMsg.longValue() == -1L))
+      {
+        QLog.d("WeakNetHelper", 1, "isNeedToShowToast: YES.");
+        return true;
+      }
+    }
+    QLog.d("WeakNetHelper", 1, "isNeedToShowToast: NO.");
+    return false;
   }
 }
 

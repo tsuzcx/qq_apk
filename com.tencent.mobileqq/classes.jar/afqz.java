@@ -1,14 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import java.util.ArrayList;
 
-class afqz
-  implements DialogInterface.OnClickListener
+public class afqz
+  extends yaj
 {
-  afqz(afqi paramafqi) {}
+  public afqz(DeviceFragment paramDeviceFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(ArrayList<DeviceInfo> paramArrayList)
   {
-    paramDialogInterface.dismiss();
+    if (this.a.e)
+    {
+      this.a.e = false;
+      if (this.a.jdField_a_of_type_Afqu != null) {
+        this.a.jdField_a_of_type_Afqu.a(this.a.b(), true, null);
+      }
+    }
+    if (this.a.jdField_a_of_type_Afpl == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_Afpl.a = ((ArrayList)paramArrayList.clone());
+    this.a.jdField_a_of_type_Afpl.notifyDataSetChanged();
   }
 }
 

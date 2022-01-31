@@ -1,56 +1,9 @@
-import android.util.SparseArray;
-import com.tencent.smtt.utils.ByteUtils;
-import java.nio.ByteBuffer;
-
 public class leq
 {
-  public static SparseArray<lep> a(byte[] paramArrayOfByte)
+  @Deprecated
+  public static boolean a(int paramInt1, int paramInt2)
   {
-    ByteBuffer localByteBuffer = ByteBuffer.wrap(paramArrayOfByte);
-    SparseArray localSparseArray = new SparseArray();
-    int j = 0;
-    while (j < paramArrayOfByte.length)
-    {
-      short s = a(localByteBuffer, j);
-      j += 2;
-      int i = b(localByteBuffer, j);
-      j += 2;
-      byte[] arrayOfByte = a(paramArrayOfByte, j, i);
-      j += i;
-      localSparseArray.put(s, new lep(s, i, arrayOfByte));
-    }
-    return localSparseArray;
-  }
-  
-  private static short a(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return paramByteBuffer.getShort(paramInt);
-  }
-  
-  public static byte[] a(lep paramlep)
-  {
-    if (paramlep != null)
-    {
-      short s1 = paramlep.a();
-      short s2 = paramlep.b();
-      paramlep = paramlep.a();
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(s2 + 4);
-      localByteBuffer.putShort(s1);
-      localByteBuffer.putShort(s2);
-      localByteBuffer.put(paramlep);
-      return localByteBuffer.array();
-    }
-    return null;
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    return ByteUtils.subByte(paramArrayOfByte, paramInt1, paramInt2);
-  }
-  
-  private static short b(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return paramByteBuffer.getShort(paramInt);
+    return (paramInt2 == 2) || (paramInt2 == 3) || (paramInt1 == 25) || (paramInt1 == 26);
   }
 }
 

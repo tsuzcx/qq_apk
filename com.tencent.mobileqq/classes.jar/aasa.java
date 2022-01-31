@@ -1,18 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForceLogoutActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class aasa
-  implements View.OnClickListener
+  implements aask
 {
-  public aasa(ForceLogoutActivity paramForceLogoutActivity) {}
+  public aasa(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
   
-  public void onClick(View paramView)
+  public boolean a(boolean paramBoolean)
   {
-    this.a.finish();
-    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
+    if (paramBoolean) {
+      bict.a(this.a);
+    }
+    return false;
   }
 }
 

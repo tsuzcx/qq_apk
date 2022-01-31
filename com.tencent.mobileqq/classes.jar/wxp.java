@@ -1,59 +1,15 @@
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
 
 public class wxp
+  implements View.OnClickListener
 {
-  public String a;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
+  public wxp(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public wxp(wxm paramwxm, String paramString, JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString;
-    try
-    {
-      this.b = paramJSONObject.getString("title");
-      this.c = paramJSONObject.getString("title_color");
-      this.d = paramJSONObject.getString("bg_color");
-      this.e = paramJSONObject.getString("bg_border_color");
-      return;
-    }
-    catch (JSONException paramwxm)
-    {
-      paramwxm.printStackTrace();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    paramString = paramString + "/" + this.jdField_a_of_type_JavaLangString;
-    Object localObject = new File(paramString);
-    if (((File)localObject).exists())
-    {
-      localObject = Arrays.asList(((File)localObject).list());
-      if (((List)localObject).contains("take_video@2x.png"))
-      {
-        String str = paramString + "/" + "take_video@2x.png";
-        if (new File(str).exists()) {
-          this.f = str;
-        }
-      }
-      if (((List)localObject).contains("take_video_no_bg@2x.png"))
-      {
-        paramString = paramString + "/" + "take_video_no_bg@2x.png";
-        if (new File(paramString).exists()) {
-          this.g = paramString;
-        }
-      }
-    }
+    EditUniqueTitleActivity.a(this.a);
   }
 }
 

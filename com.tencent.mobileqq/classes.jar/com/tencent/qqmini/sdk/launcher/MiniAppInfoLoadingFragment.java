@@ -11,12 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import bdct;
-import bdew;
-import bdhg;
-import bdlv;
-import bdlw;
-import bdnw;
+import begs;
+import beiw;
+import belj;
+import bemw;
+import beqf;
+import beqg;
+import besl;
+import bffr;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
@@ -26,14 +28,16 @@ import com.tencent.qqmini.sdk.ui.MiniBaseFragment;
 public class MiniAppInfoLoadingFragment
   extends MiniBaseFragment
 {
-  private static final boolean jdField_a_of_type_Boolean = bdhg.a("MiniApp", "mini_app_enable_db_cache", true);
+  private static final boolean jdField_a_of_type_Boolean = belj.a("MiniApp", "mini_app_enable_db_cache", true);
   private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
   private View jdField_a_of_type_AndroidViewView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   
   private void a()
   {
-    getActivity().runOnUiThread(new MiniAppInfoLoadingFragment.4(this));
+    if (getActivity() != null) {
+      getActivity().runOnUiThread(new MiniAppInfoLoadingFragment.4(this));
+    }
   }
   
   private void a(MiniAppInfo paramMiniAppInfo)
@@ -42,27 +46,43 @@ public class MiniAppInfoLoadingFragment
     {
       if (!a(paramMiniAppInfo))
       {
-        bdew.c().post(new MiniAppInfoLoadingFragment.3(this));
+        beiw.c().post(new MiniAppInfoLoadingFragment.3(this));
         return;
       }
-      bdct.a(getActivity(), paramMiniAppInfo, null, this.jdField_a_of_type_AndroidOsResultReceiver);
+      begs.a(getActivity(), paramMiniAppInfo, null, this.jdField_a_of_type_AndroidOsResultReceiver);
       return;
     }
     catch (Throwable paramMiniAppInfo)
     {
-      bdnw.d("MiniAppInfoLoadingFragment", "startAppByAppid exception! ", paramMiniAppInfo);
+      besl.d("MiniAppInfoLoadingFragment", "startAppByAppid exception! ", paramMiniAppInfo);
     }
-  }
-  
-  private void a(String paramString)
-  {
-    bdew.c().post(new MiniAppInfoLoadingFragment.5(this, paramString));
   }
   
   private void a(String paramString1, int paramInt, String paramString2, LaunchParam paramLaunchParam)
   {
     a();
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(paramString1, paramInt, new bdlw(this));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(paramString1, paramInt, new beqg(this, paramLaunchParam));
+  }
+  
+  private void a(String paramString, long paramLong)
+  {
+    try
+    {
+      if (getActivity() != null)
+      {
+        if (bffr.a())
+        {
+          bemw.a(getActivity(), 1, "" + paramString + paramLong, 1).a();
+          return;
+        }
+        bemw.a(getActivity(), 1, "" + paramString, 1).a();
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      besl.d("MiniAppInfoLoadingFragment", paramString.getMessage(), paramString);
+    }
   }
   
   private void a(String paramString1, String paramString2, String paramString3, LaunchParam paramLaunchParam)
@@ -76,7 +96,7 @@ public class MiniAppInfoLoadingFragment
     if (paramString3 == null) {
       paramString2 = "";
     }
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(paramString1, str, paramString2, new bdlv(this, paramLaunchParam));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(paramString1, str, paramString2, new beqf(this, paramLaunchParam));
   }
   
   private static boolean a(MiniAppInfo paramMiniAppInfo)
@@ -95,11 +115,11 @@ public class MiniAppInfoLoadingFragment
   @Nullable
   public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    bdnw.b("MiniAppInfoLoadingFragment", "LoadingFragment onCreateView");
+    besl.b("MiniAppInfoLoadingFragment", "LoadingFragment onCreateView");
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131493724, null);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131303826));
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131559292, null);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369501));
     }
     return this.jdField_a_of_type_AndroidViewView;
   }
@@ -107,7 +127,7 @@ public class MiniAppInfoLoadingFragment
   public void onResume()
   {
     super.onResume();
-    bdnw.b("MiniAppInfoLoadingFragment", "LoadingFragment doTask");
+    besl.b("MiniAppInfoLoadingFragment", "LoadingFragment doTask");
     Object localObject = getArguments();
     if (localObject == null)
     {

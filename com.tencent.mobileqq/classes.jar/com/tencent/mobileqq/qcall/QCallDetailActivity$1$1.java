@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.qcall;
 
-import aufd;
+import avej;
 
 public class QCallDetailActivity$1$1
   implements Runnable
 {
-  public QCallDetailActivity$1$1(aufd paramaufd) {}
+  public QCallDetailActivity$1$1(avej paramavej) {}
   
   public void run()
   {

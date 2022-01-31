@@ -1,35 +1,34 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
-public class lhg
-  extends lhl
+public abstract class lhg<T1 extends MessageMicro, T2 extends MessageMicro>
 {
-  protected Bitmap a;
-  
-  public lhg(Bitmap paramBitmap)
+  protected final void a(long paramLong, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {}
-    for (boolean bool = true;; bool = false)
+    Object localObject = lhd.a(this);
+    ((lhf)localObject).a("QAVMessageHandler", paramLong);
+    if ((((lhf)localObject).a != null) && (((lhf)localObject).b != null)) {}
+    try
     {
-      beeo.a(bool);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      MessageMicro localMessageMicro = (MessageMicro)((lhf)localObject).a.newInstance();
+      localObject = (MessageMicro)((lhf)localObject).b.newInstance();
+      paramToServiceMsg = paramToServiceMsg.getWupBuffer();
+      if ((paramToServiceMsg != null) && (paramToServiceMsg.length > 4)) {
+        localMessageMicro.mergeFrom(paramToServiceMsg, 4, paramToServiceMsg.length - 4);
+      }
+      ((MessageMicro)localObject).mergeFrom(paramFromServiceMsg.getWupBuffer());
+      a(paramLong, paramFromServiceMsg.isSuccess(), localMessageMicro, (MessageMicro)localObject, paramObject);
       return;
     }
-  }
-  
-  protected Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  protected void a(Bitmap paramBitmap) {}
-  
-  public int[] a(lgc paramlgc)
-  {
-    if (!c()) {
-      b(paramlgc);
+    catch (Exception paramToServiceMsg)
+    {
+      QLog.w("QAVMessageHandler", 1, "onSendMsgRsp, Exception, seq[" + paramLong + "]", paramToServiceMsg);
     }
-    return this.jdField_a_of_type_ArrayOfInt;
   }
+  
+  public abstract void a(long paramLong, boolean paramBoolean, T1 paramT1, T2 paramT2, Object paramObject);
 }
 
 

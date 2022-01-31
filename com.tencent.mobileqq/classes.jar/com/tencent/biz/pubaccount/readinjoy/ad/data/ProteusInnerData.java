@@ -6,22 +6,22 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.regex.Pattern;
-import nmz;
-import nos;
-import npa;
-import nph;
+import nyk;
+import oad;
+import oal;
+import oas;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rdg;
-import rsl;
+import rpu;
+import sfd;
 
 public class ProteusInnerData
   extends AdData
 {
   public int a;
   private String jdField_a_of_type_JavaLangString = "";
-  public nmz a;
+  public nyk a;
   private boolean jdField_a_of_type_Boolean;
   public int b;
   private int u = 1;
@@ -36,13 +36,16 @@ public class ProteusInnerData
   private JSONObject a()
   {
     JSONObject localJSONObject = new JSONObject();
-    if (npa.a(this)) {
-      return nos.a(localJSONObject, this);
+    if (oal.a(this)) {
+      return oad.a(localJSONObject, this);
     }
     if (this.u == 2) {
       return b(localJSONObject);
     }
-    return a(localJSONObject);
+    if (this.u == 1) {
+      return a(localJSONObject);
+    }
+    return c(localJSONObject);
   }
   
   private JSONObject a(JSONObject paramJSONObject)
@@ -58,7 +61,7 @@ public class ProteusInnerData
       }
       if (!TextUtils.isEmpty(this.l))
       {
-        localObject = rsl.a(this.l, 4);
+        localObject = sfd.a(this.l, 4);
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("image_url", ((URL)localObject).toString());
         paramJSONObject.put("id_ad_banner_inner_imge", localJSONObject);
@@ -108,7 +111,7 @@ public class ProteusInnerData
       localObject2 = ((JSONArray)localObject2).optJSONObject(0);
       int i = ((JSONObject)localObject2).optInt("regexType");
       localObject1 = ((JSONObject)localObject1).optJSONObject("formContent").getJSONObject("formRegex").getString("" + i);
-      this.jdField_a_of_type_Nmz = new nmz(this, ((JSONObject)localObject2).optInt("regexType"), ((JSONObject)localObject2).optString("name"), ((JSONObject)localObject2).optString("placeholder"), paramJSONObject.optString("text"), (JSONObject)localObject2, Pattern.compile((String)localObject1));
+      this.jdField_a_of_type_Nyk = new nyk(this, ((JSONObject)localObject2).optInt("regexType"), ((JSONObject)localObject2).optString("name"), ((JSONObject)localObject2).optString("placeholder"), paramJSONObject.optString("text"), (JSONObject)localObject2, Pattern.compile((String)localObject1));
       return;
     }
     catch (Exception paramJSONObject)
@@ -131,7 +134,7 @@ public class ProteusInnerData
       }
       if (!TextUtils.isEmpty(this.l))
       {
-        localObject = rsl.a(this.l, 4);
+        localObject = sfd.a(this.l, 4);
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("image_url", ((URL)localObject).toString());
         paramJSONObject.put("id_inner_small_img", localJSONObject);
@@ -148,7 +151,7 @@ public class ProteusInnerData
         if (!TextUtils.isEmpty(this.L)) {
           break label262;
         }
-        ((JSONObject)localObject).put("text", nph.a(this.I, 16));
+        ((JSONObject)localObject).put("text", oas.a(this.I, 16));
       }
       for (;;)
       {
@@ -165,7 +168,7 @@ public class ProteusInnerData
         paramJSONObject.put("id_operate_edit_area", localObject);
         return paramJSONObject;
         label262:
-        ((JSONObject)localObject).put("text", nph.a(this.I, 12));
+        ((JSONObject)localObject).put("text", oas.a(this.I, 12));
       }
       paramJSONObject.put("id_view_AdDownloadView", localJSONException);
     }
@@ -177,16 +180,31 @@ public class ProteusInnerData
     return paramJSONObject;
   }
   
+  private JSONObject c(JSONObject paramJSONObject)
+  {
+    paramJSONObject = b(paramJSONObject);
+    try
+    {
+      paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_inner_recommend_small_pic_cell");
+      return paramJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return paramJSONObject;
+  }
+  
   public void a()
   {
     localObject3 = null;
     this.jdField_b_of_type_OrgJsonJSONObject = a();
     try
     {
-      rdg localrdg = rdg.a("native_article", true);
+      rpu localrpu = rpu.a("native_article", true);
       localObject1 = localObject3;
-      if (localrdg != null) {
-        localObject1 = localrdg.getTemplateBean(this.jdField_b_of_type_OrgJsonJSONObject);
+      if (localrpu != null) {
+        localObject1 = localrpu.getTemplateBean(this.jdField_b_of_type_OrgJsonJSONObject);
       }
     }
     catch (JSONException localJSONException)
@@ -252,7 +270,7 @@ public class ProteusInnerData
             if ((this.v != 2) && ((this.v != 1) || (this.jdField_a_of_type_Int <= 0))) {
               break;
             }
-            if ((i == 2) || (i == 1)) {
+            if ((i == 2) || (i == 1) || (i == 3)) {
               this.u = i;
             }
             if (QLog.isColorLevel()) {
@@ -262,11 +280,11 @@ public class ProteusInnerData
           }
           catch (Exception paramJSONObject)
           {
-            break label261;
+            break label266;
           }
           bool = false;
           continue;
-          label261:
+          label266:
           paramJSONObject.printStackTrace();
           int i = paramInt;
         }
@@ -288,12 +306,17 @@ public class ProteusInnerData
   
   public boolean b()
   {
+    return this.u == 2;
+  }
+  
+  public boolean c()
+  {
     return this.v == 2;
   }
   
   public String toString()
   {
-    return "ProteusInnerData[formId:" + this.jdField_b_of_type_Int + ",  style:" + this.u + ",  pos_type:" + this.v + ",  para_pos:" + this.jdField_a_of_type_Int + ",\n formItem:" + this.jdField_a_of_type_Nmz + "]";
+    return "ProteusInnerData[formId:" + this.jdField_b_of_type_Int + ",  style:" + this.u + ",  pos_type:" + this.v + ",  para_pos:" + this.jdField_a_of_type_Int + ",\n formItem:" + this.jdField_a_of_type_Nyk + "]";
   }
 }
 

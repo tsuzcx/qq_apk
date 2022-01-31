@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentLinkedQueue;
-
-final class bfdb
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+class bfdb
+  implements besd
 {
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  bfdb(bfcw parambfcw) {}
+  
+  public void a(int paramInt, String paramString, besc parambesc)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "handleOtherProcess onPluginManagerLoaded");
-    }
-    bfcz.a(paramPluginManagerClient);
-    bfcz.a(null);
-    while (!bfcz.a().isEmpty())
-    {
-      paramPluginManagerClient = (bfdj)bfcz.a().poll();
-      if (paramPluginManagerClient != null) {
-        bfcz.b(paramPluginManagerClient.jdField_a_of_type_AndroidContentContext, paramPluginManagerClient.jdField_a_of_type_Bfdi, paramPluginManagerClient.jdField_a_of_type_Bfdg);
-      }
+    if ((paramInt == 0) && (parambesc != null)) {
+      this.a.a(parambesc.b, parambesc.h);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfdb
  * JD-Core Version:    0.7.0.1
  */

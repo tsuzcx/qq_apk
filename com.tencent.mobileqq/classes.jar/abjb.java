@@ -1,29 +1,22 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class abjb
-  extends ajpe
+  implements View.OnClickListener
 {
-  public abjb(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public abjb(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      this.a.c();
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c();
+    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
+    paramView = HongbaoShowerActivity.a(this.a);
+    if (!bool) {}
+    for (bool = true;; bool = false)
+    {
+      paramView.setChecked(bool);
+      return;
     }
   }
 }

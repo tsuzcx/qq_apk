@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-public class ayeq
-  implements DialogInterface.OnClickListener
+public final class ayeq
+  implements Parcelable.Creator<TeamWorkFileImportInfo>
 {
-  public ayeq(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public TeamWorkFileImportInfo a(Parcel paramParcel)
+  {
+    return new TeamWorkFileImportInfo(paramParcel);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public TeamWorkFileImportInfo[] a(int paramInt)
+  {
+    return new TeamWorkFileImportInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayeq
  * JD-Core Version:    0.7.0.1
  */

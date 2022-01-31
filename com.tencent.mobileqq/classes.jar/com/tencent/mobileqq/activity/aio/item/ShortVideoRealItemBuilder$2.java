@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adpi;
+import aeah;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 
 class ShortVideoRealItemBuilder$2
   implements Runnable
 {
-  ShortVideoRealItemBuilder$2(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, MessageForShortVideo paramMessageForShortVideo, adpi paramadpi) {}
+  ShortVideoRealItemBuilder$2(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, MessageForShortVideo paramMessageForShortVideo, aeah paramaeah) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Adpi, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, true);
+    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Aeah, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, true);
   }
 }
 

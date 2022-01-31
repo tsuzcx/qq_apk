@@ -1,57 +1,37 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment.2.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
 
 public class okr
-  implements rno
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public okr(ReadInJoyViolaChannelFragment paramReadInJoyViolaChannelFragment) {}
+  String jdField_a_of_type_JavaLangString = NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).a.commentId;
   
-  public void a()
+  public okr(NativeCommentTextView paramNativeCommentTextView, View paramView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.getActivity() != null) {
-      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadInJoyViolaChannelFragment.2.1(this), 200L);
+    if ((NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView) == null) || (NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).a == null) || (this.jdField_a_of_type_JavaLangString == null))
+    {
+      NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView, this.jdField_a_of_type_AndroidViewView);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyViolaChannelFragment", 2, "initViola success!");
+    if (!this.jdField_a_of_type_JavaLangString.equals(NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).a.commentId))
+    {
+      NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView, this.jdField_a_of_type_AndroidViewView);
+      return;
     }
-    if ((ReadInJoyViolaChannelFragment.a(this.a) != null) && (ReadInJoyViolaChannelFragment.a(this.a).c()) && (this.a.c()) && (ReadinjoyTabFrame.c_())) {
-      ReadInJoyViolaChannelFragment.a(this.a).a(true);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    ReadInJoyViolaChannelFragment.a(this.a);
-    ReadInJoyViolaChannelFragment.a(this.a).c();
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyViolaChannelFragment", 2, "initViola error,error code=" + paramInt);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    if ((1 == paramInt) && (odi.a())) {
-      ohb.a().n();
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyViolaChannelFragment", 2, "initViola process,process code=" + paramInt);
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).setAlpha(i);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     okr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,76 +1,67 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.util.WeakReference;
 
-public class bjgu
+class bjgu
+  implements aysa
 {
-  protected int a;
-  protected PublishVideoEntry a;
-  public boolean a;
-  int b;
-  int c;
-  protected int d = -1;
-  protected int e = -1;
+  bjgu(bjgt parambjgt) {}
   
-  public bjgu(int paramInt, PublishVideoEntry paramPublishVideoEntry)
+  public void onResp(aysx arg1)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.copy(paramPublishVideoEntry);
-    a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode);
-  }
-  
-  private int b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 7: 
-      return 5;
-    case 8: 
-      return 6;
-    case 9: 
-      return 7;
+    bjgs localbjgs = (bjgs)???.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("DText", 2, "onResp, url is: " + localbjgs.jdField_a_of_type_JavaLangString + " http status: " + ???.c);
     }
-    return 4;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    case 3: 
-      return 3;
-    case 4: 
-      return 4;
+    bjgt.a(this.a, localbjgs);
+    if ((bjgt.a(this.a).b(localbjgs)) && (bjgt.a(this.a).a(localbjgs))) {}
+    for (boolean bool = true;; bool = false) {
+      for (;;)
+      {
+        int i;
+        synchronized (bjgt.a(this.a))
+        {
+          ArrayList localArrayList = (ArrayList)bjgt.a(this.a).remove(localbjgs.jdField_a_of_type_JavaLangString);
+          i = localArrayList.size() - 1;
+          if (i >= 0)
+          {
+            WeakReference localWeakReference = (WeakReference)localArrayList.get(i);
+            if (localWeakReference.get() != null) {
+              ((bjgv)localWeakReference.get()).a(bool, localbjgs.jdField_a_of_type_JavaLangString);
+            }
+          }
+          else
+          {
+            return;
+          }
+        }
+        i -= 1;
+      }
     }
-    return 5;
   }
   
-  public void a()
+  public void onUpdateProgeress(aysw arg1, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = b(paramInt);
-    this.c = a(paramInt);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.d = paramInt;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.e = paramInt;
+    bjgs localbjgs = (bjgs)???.a();
+    synchronized (bjgt.a(this.a))
+    {
+      Iterator localIterator = ((ArrayList)bjgt.a(this.a).get(localbjgs.jdField_a_of_type_JavaLangString)).iterator();
+      while (localIterator.hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if (localWeakReference.get() != null) {
+          ((bjgv)localWeakReference.get()).a((float)(100L * paramLong1 / paramLong2), localbjgs.jdField_a_of_type_JavaLangString, localbjgs.jdField_a_of_type_Int);
+        }
+      }
+    }
+    float f = (float)paramLong1 * 100.0F / (float)paramLong2;
+    localObject.b = ((int)f);
+    if (QLog.isColorLevel()) {
+      QLog.i("DText", 2, "onResDownloadProgressUpdate url: " + localObject.jdField_a_of_type_JavaLangString + " progress: " + f + " curOffset: " + paramLong1 + " totalLen: " + paramLong2);
+    }
   }
 }
 

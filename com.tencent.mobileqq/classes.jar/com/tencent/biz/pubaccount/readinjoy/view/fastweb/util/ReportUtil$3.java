@@ -2,10 +2,10 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
 import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import obz;
+import onk;
 import org.json.JSONException;
 import org.json.JSONObject;
-import raz;
+import rnr;
 
 public final class ReportUtil$3
   implements Runnable
@@ -23,11 +23,11 @@ public final class ReportUtil$3
     }
     for (;;)
     {
-      localObject = obz.a(localContext, localArticleInfo, i, (String)localObject);
+      localObject = onk.a(localContext, localArticleInfo, i, (String)localObject);
       try
       {
         ((JSONObject)localObject).put("sojourn_time", this.jdField_a_of_type_Long);
-        raz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800A854", ((JSONObject)localObject).toString());
+        rnr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800A854", ((JSONObject)localObject).toString());
         return;
         localObject = "1";
       }

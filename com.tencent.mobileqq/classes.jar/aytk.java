@@ -1,32 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.Map;
-import java.util.UUID;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class aytk
-  extends wlz
+public class aytk
+  extends MSFServlet
 {
-  aytk(aytj paramaytj) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
-    do
+    if (("LongConn.OffPicUp".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))) {
+      QLog.d("Q.richmedia.ProtoReqManager", 1, "onRecieve." + paramFromServiceMsg.getStringForLog());
+    }
+    ((AppInterface)getAppRuntime()).getProtoReqManager().a(paramIntent, paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent != null)
     {
-      do
-      {
-        return;
-        paramBundle = paramBundle.getString("itemKey");
-      } while (paramBundle == null);
-      paramBundle = UUID.fromString(paramBundle);
-      paramBundle = (TroopFileTransferManager.Item)this.a.jdField_a_of_type_JavaUtilMap.get(paramBundle);
-    } while (paramBundle == null);
-    aytj.a(this.a, paramBundle, paramBoolean, paramInt1, paramInt2, paramString1, paramString2, paramString3);
+      paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
+      paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
+      paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 30000L));
+      boolean bool = paramIntent.getBooleanExtra("key_fastresend", false);
+      paramPacket.addAttribute("fastresend", Boolean.valueOf(bool));
+      paramPacket.autoResend = bool;
+      paramPacket.addAttribute("remind_slown_network", Boolean.valueOf(paramIntent.getBooleanExtra("remind_slown_network", true)));
+      paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
+    }
+  }
+  
+  public void sendToMSF(Intent paramIntent, ToServiceMsg paramToServiceMsg)
+  {
+    if (("LongConn.OffPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd()))) {
+      QLog.d("Q.richmedia.ProtoReqManager", 1, "onSend." + paramToServiceMsg.getStringForLog());
+    }
+    super.sendToMSF(paramIntent, paramToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aytk
  * JD-Core Version:    0.7.0.1
  */

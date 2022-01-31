@@ -12,19 +12,19 @@ import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import com.tencent.biz.qqstory.view.segment.SegmentList;
 import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
 import com.tencent.widget.ListView;
-import smz;
-import srk;
-import unx;
-import uoh;
-import uqp;
-import urp;
+import szv;
+import teg;
+import vat;
+import vbd;
+import vdl;
+import vel;
 
 public class TroopStoryListView
   extends SegmentList
   implements View.OnTouchListener
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
-  private unx jdField_a_of_type_Unx;
+  private vat jdField_a_of_type_Vat;
   private boolean jdField_a_of_type_Boolean;
   
   public TroopStoryListView(Context paramContext)
@@ -45,19 +45,19 @@ public class TroopStoryListView
   public void a()
   {
     super.setActTAG("list_qqstory_troop");
-    uoh localuoh = new uoh(getContext(), this.jdField_a_of_type_AndroidAppActivity, 11, this.jdField_a_of_type_Unx, false);
-    a(localuoh);
-    a(new uqp(getContext(), "FeedSegment", "暂时没有小视频\n你可以在这里查看群内的小视频", 2130845531, 2130845531));
-    localuoh.f_(true);
+    vbd localvbd = new vbd(getContext(), this.jdField_a_of_type_AndroidAppActivity, 11, this.jdField_a_of_type_Vat, false);
+    a(localvbd);
+    a(new vdl(getContext(), "FeedSegment", "暂时没有小视频\n你可以在这里查看群内的小视频", 2130845714, 2130845714));
+    localvbd.e_(true);
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);
     super.setBackgroundColor(-1);
   }
   
-  public void a(Activity paramActivity, unx paramunx)
+  public void a(Activity paramActivity, vat paramvat)
   {
-    this.jdField_a_of_type_Unx = paramunx;
+    this.jdField_a_of_type_Vat = paramvat;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     super.setOnTouchListener(this);
   }
@@ -87,7 +87,7 @@ public class TroopStoryListView
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = this.jdField_a_of_type_Unx.a();
+    paramView = this.jdField_a_of_type_Vat.a();
     int i;
     if (paramView.getVisibility() == 0)
     {
@@ -95,7 +95,7 @@ public class TroopStoryListView
       paramView.clearFocus();
       paramView.setVisibility(8);
       paramView = paramView.a.a;
-      i = urp.a(paramView.getOwner());
+      i = vel.a(paramView.getOwner());
       if (!paramView.getOwner().isMe()) {
         break label113;
       }
@@ -103,7 +103,7 @@ public class TroopStoryListView
     label113:
     for (paramView = "1";; paramView = "2")
     {
-      urp.a("home_page", "cancel_reply", i, 0, new String[] { paramView, "3", "", "" });
+      vel.a("home_page", "cancel_reply", i, 0, new String[] { paramView, "3", "", "" });
       return false;
     }
   }

@@ -1,14 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class meq
-  implements View.OnClickListener
+public class meq
+  extends lgl
 {
-  meq(meo parammeo) {}
+  public meq(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(long paramLong, int paramInt, String paramString)
   {
-    this.a.a(false, 1);
+    QLog.w(this.a.b, 1, "VideoObserver_onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.c + "], seq[" + paramLong + "]");
+    if (TextUtils.equals(this.a.c, paramString))
+    {
+      this.a.b("VideoObserver_onClose");
+      this.a.a(paramLong, paramInt);
+    }
+  }
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    QLog.w(this.a.b, 1, "VideoObserver_onDestroyUI, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], mPeerUin[" + this.a.c + "]");
+    if (TextUtils.equals(this.a.c, paramString)) {
+      this.a.b("VideoObserver_onDestroyUI");
+    }
   }
 }
 

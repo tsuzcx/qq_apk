@@ -11,13 +11,12 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openai.ttpicmodule.AEHandDetector;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 
 class HandRecognizer$3
   implements Runnable
 {
-  HandRecognizer$3(HandRecognizer paramHandRecognizer, Camera paramCamera, byte[] paramArrayOfByte, int paramInt1, int paramInt2, HandRecognizer.OnPreviewFrameHandlerListener paramOnPreviewFrameHandlerListener) {}
+  HandRecognizer$3(HandRecognizer paramHandRecognizer, Camera paramCamera, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, HandRecognizer.OnPreviewFrameHandlerListener paramOnPreviewFrameHandlerListener) {}
   
   public void run()
   {
@@ -35,19 +34,29 @@ class HandRecognizer$3
       localObject2 = BitmapUtils.rotateBitmap((Bitmap)localObject2, 270);
       ((ByteArrayOutputStream)localObject1).close();
       localObject1 = HandRecognizer.access$000(this.this$0).detect((Bitmap)localObject2);
-      if (this.val$listener != null)
+      if (QLog.isColorLevel()) {
+        QLog.i(HandRecognizer.TAG, 2, "【onPreviewFrameHandler】 index: " + this.val$index + " handType," + ((PTHandAttr)localObject1).getHandTypeIndex());
+      }
+      if ((localObject1 != null) && (((PTHandAttr)localObject1).getHandTypeIndex() == this.val$index))
       {
         int i = (int)(((PTHandAttr)localObject1).getConfidence() * 100.0F);
         if (QLog.isColorLevel()) {
-          QLog.i(HandRecognizer.TAG, 2, "onPreviewFrameHandler resultVal: " + i);
+          QLog.i(HandRecognizer.TAG, 2, "【onPreviewFrameHandler】 resultVal: " + i);
+        }
+        if (this.val$listener == null) {
+          return;
         }
         this.val$listener.getHandRecognizeResult(i);
         return;
       }
     }
-    catch (IOException localIOException)
+    catch (Throwable localThrowable)
     {
-      localIOException.printStackTrace();
+      QLog.e(HandRecognizer.TAG, 1, "【onPreviewFrameHandler】 recognize hand error " + QLog.getStackTraceString(localThrowable));
+      return;
+    }
+    if ((QLog.isColorLevel()) && (localThrowable != null)) {
+      QLog.i(HandRecognizer.TAG, 2, "【onPreviewFrameHandler】 handType " + localThrowable.getHandTypeIndex() + " can't match the index: " + this.val$index);
     }
   }
 }

@@ -1,8 +1,15 @@
-public abstract interface uqw
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+
+public class uqw
+  extends wdh
 {
-  public abstract void R_();
+  public uqw(StoryDetailFragment paramStoryDetailFragment) {}
   
-  public abstract void S_();
+  public boolean a(boolean paramBoolean)
+  {
+    this.a.d();
+    return true;
+  }
 }
 
 

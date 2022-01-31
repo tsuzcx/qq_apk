@@ -1,48 +1,14 @@
-import android.text.style.ForegroundColorSpan;
-import android.text.style.StrikethroughSpan;
-import android.text.style.StyleSpan;
-import android.text.style.UnderlineSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class rar
+  implements View.OnClickListener
 {
-  int a;
-  private int b;
-  private int c;
+  rar(rap paramrap, String paramString) {}
   
-  public static rar a(int paramInt, Object... paramVarArgs)
+  public void onClick(View paramView)
   {
-    rar localrar = new rar();
-    localrar.a = paramInt;
-    switch (paramInt)
-    {
-    case 3: 
-    default: 
-      return localrar;
-    case 1: 
-    case 2: 
-      localrar.b = ((Integer)paramVarArgs[0]).intValue();
-      return localrar;
-    }
-    localrar.c = ((Integer)paramVarArgs[0]).intValue();
-    return localrar;
-  }
-  
-  public Object a()
-  {
-    switch (this.a)
-    {
-    default: 
-      return null;
-    case 1: 
-      return new raq(this.b);
-    case 2: 
-      return new ForegroundColorSpan(this.b);
-    case 5: 
-      return new StrikethroughSpan();
-    case 4: 
-      return new StyleSpan(this.c);
-    }
-    return new UnderlineSpan();
+    onk.e(this.jdField_a_of_type_Rap.a, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
-import atmo;
-import atnv;
-import atoc;
+import aukm;
+import ault;
+import auma;
 
 public class StoryVideoEntry
-  extends atmo
+  extends aukm
 {
   public long addTime;
   public String address;
@@ -75,7 +75,7 @@ public class StoryVideoEntry
   public String sourceVid;
   public int storyType;
   public int strangerViewCount;
-  @atnv(a=2147483647)
+  @ault(a=2147483647)
   public long timeZoneOffsetMillis;
   public int totalLikeNum;
   public int totalRateCount = -1;
@@ -83,7 +83,7 @@ public class StoryVideoEntry
   public int uncheckLikeNum;
   public String unionId;
   public int uploadStatus = -1;
-  @atoc
+  @auma
   public String vid;
   public long videoBytes;
   public long videoDuration;

@@ -1,21 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.11;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 
-public class alkq
-  implements DialogInterface.OnClickListener
+public final class alkq
+  implements Parcelable.Creator<ArFeatureInfo>
 {
-  public alkq(DynamicAvatarRecordActivity.11 param11) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ArFeatureInfo a(Parcel paramParcel)
   {
-    this.a.this$0.finish();
+    return new ArFeatureInfo(paramParcel);
+  }
+  
+  public ArFeatureInfo[] a(int paramInt)
+  {
+    return new ArFeatureInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alkq
  * JD-Core Version:    0.7.0.1
  */

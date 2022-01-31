@@ -263,8 +263,6 @@ public class WMGroup
       label917:
       label965:
       boolean bool2;
-      label1067:
-      label1086:
       for (bool1 = true;; bool2 = false)
       {
         if (bool1)
@@ -277,93 +275,103 @@ public class WMGroup
           FrameUtil.clearFrame(this.mCopyFrame, 0.0F, 0.0F, 0.0F, 0.0F, this.width, this.height);
           BenchUtil.benchEnd("clear texture");
           localObject2 = this.wmElements.iterator();
-        }
-        for (;;)
-        {
-          if (!((Iterator)localObject2).hasNext()) {
-            break label1067;
-          }
-          WMElement localWMElement = (WMElement)((Iterator)localObject2).next();
-          localObject1 = localWMElement.getBitmap();
-          Object localObject3;
-          if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled())) {
-            if (!localWMElement.numberSource.equals(""))
-            {
-              localObject3 = (String)LogicDataManager.getInstance().mFollowData.get(localWMElement.numberSource);
-              if (localObject3 == null) {}
-            }
-          }
-          try
+          for (;;)
           {
-            i = Integer.parseInt((String)localObject3);
-            if ((!localWMElement.showCaseMin.equals("")) && (!localWMElement.showCaseMax.equals("")))
+            if (!((Iterator)localObject2).hasNext()) {
+              break label1077;
+            }
+            WMElement localWMElement = (WMElement)((Iterator)localObject2).next();
+            localObject1 = localWMElement.getBitmap();
+            Object localObject3;
+            if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled())) {
+              if (!localWMElement.numberSource.equals(""))
+              {
+                localObject3 = (String)LogicDataManager.getInstance().mFollowData.get(localWMElement.numberSource);
+                if (localObject3 == null) {}
+              }
+            }
+            try
             {
-              int j = Integer.parseInt(localWMElement.showCaseMin);
-              int k = Integer.parseInt(localWMElement.showCaseMax);
-              if ((i < j) || (i > k)) {
+              i = Integer.parseInt((String)localObject3);
+              if ((!localWMElement.showCaseMin.equals("")) && (!localWMElement.showCaseMax.equals("")))
+              {
+                int j = Integer.parseInt(localWMElement.showCaseMin);
+                int k = Integer.parseInt(localWMElement.showCaseMax);
+                if ((i < j) || (i > k)) {
+                  continue;
+                }
+              }
+            }
+            catch (NumberFormatException localNumberFormatException)
+            {
+              for (;;)
+              {
+                int i;
+                float f3;
+                float f4;
+                float f1;
+                float f2;
+                localNumberFormatException.printStackTrace();
                 continue;
+                localObject1 = (TextWMElement)localWMElement;
+                localWMElement.finalContentRect.left = (((TextWMElement)localObject1).getTextRect().left + f2);
+                localWMElement.finalContentRect.top = (((TextWMElement)localObject1).getTextRect().top + f1);
+                localWMElement.finalContentRect.right = (((TextWMElement)localObject1).getTextRect().right + f2);
+                localWMElement.finalContentRect.bottom = (((TextWMElement)localObject1).getTextRect().bottom + f1);
               }
             }
           }
-          catch (NumberFormatException localNumberFormatException)
-          {
-            for (;;)
-            {
-              int i;
-              float f3;
-              float f4;
-              float f1;
-              float f2;
-            }
-          }
-        }
-        BenchUtil.benchStart("load texture");
-        GlUtil.loadTexture(this.mTexId[0], (Bitmap)localObject1);
-        BenchUtil.benchEnd("load texture");
-        f3 = this.width;
-        f4 = this.height;
-        localObject1 = new PointF(0.0F, 0.0F);
-        f1 = f4;
-        f2 = f3;
-        if (!TextUtils.isEmpty(localWMElement.relativeID))
-        {
-          localObject3 = (WMElement)this.mIdElementMap.get(localWMElement.relativeID);
+          BenchUtil.benchStart("load texture");
+          GlUtil.loadTexture(this.mTexId[0], (Bitmap)localObject1);
+          BenchUtil.benchEnd("load texture");
+          f3 = this.width;
+          f4 = this.height;
+          localObject1 = new PointF(0.0F, 0.0F);
           f1 = f4;
           f2 = f3;
-          if (localObject3 != null)
+          if (!TextUtils.isEmpty(localWMElement.relativeID))
           {
+            localObject3 = (WMElement)this.mIdElementMap.get(localWMElement.relativeID);
             f1 = f4;
             f2 = f3;
-            if (((WMElement)localObject3).finalContentRect != null)
+            if (localObject3 != null)
             {
-              f2 = ((WMElement)localObject3).finalContentRect.width();
-              f1 = ((WMElement)localObject3).finalContentRect.height();
-              ((PointF)localObject1).x = ((WMElement)localObject3).finalContentRect.left;
-              ((PointF)localObject1).y = ((WMElement)localObject3).finalContentRect.top;
+              f1 = f4;
+              f2 = f3;
+              if (((WMElement)localObject3).finalContentRect != null)
+              {
+                f2 = ((WMElement)localObject3).finalContentRect.width();
+                f1 = ((WMElement)localObject3).finalContentRect.height();
+                ((PointF)localObject1).x = ((WMElement)localObject3).finalContentRect.left;
+                ((PointF)localObject1).y = ((WMElement)localObject3).finalContentRect.top;
+              }
             }
           }
-        }
-        localObject3 = new PointF(localWMElement.offsetX, localWMElement.offsetY);
-        f3 = ((PointF)localObject1).x;
-        f2 = f2 * localWMElement.relativeAnchor.x + f3 + ((PointF)localObject3).x - localWMElement.width * localWMElement.anchor.x;
-        f3 = ((PointF)localObject1).y;
-        f1 = f1 * localWMElement.relativeAnchor.y + f3 + ((PointF)localObject3).y - localWMElement.height * localWMElement.anchor.y;
-        f3 = f2 + localWMElement.width;
-        f4 = f1 + localWMElement.height;
-        if ((localWMElement instanceof ImageWMElement))
-        {
-          localWMElement.finalContentRect.left = f2;
-          localWMElement.finalContentRect.top = f1;
-          localWMElement.finalContentRect.right = f3;
-        }
-        for (localWMElement.finalContentRect.bottom = f4;; localWMElement.finalContentRect.bottom = (((TextWMElement)localObject1).getTextRect().bottom + f1))
-        {
-          localObject1 = this.mCopyFilter;
-          if ((TextUtils.isEmpty(localWMElement.animateType)) || (!this.mAnimationFilerMap.containsKey(localWMElement.animateType))) {
-            break label1086;
+          localObject3 = new PointF(localWMElement.offsetX, localWMElement.offsetY);
+          f3 = ((PointF)localObject1).x;
+          f2 = f2 * localWMElement.relativeAnchor.x + f3 + ((PointF)localObject3).x - localWMElement.width * localWMElement.anchor.x;
+          f3 = ((PointF)localObject1).y;
+          f1 = f1 * localWMElement.relativeAnchor.y + f3 + ((PointF)localObject3).y - localWMElement.height * localWMElement.anchor.y;
+          f3 = f2 + localWMElement.width;
+          f4 = f1 + localWMElement.height;
+          if ((localWMElement instanceof ImageWMElement))
+          {
+            localWMElement.finalContentRect.left = f2;
+            localWMElement.finalContentRect.top = f1;
+            localWMElement.finalContentRect.right = f3;
+            localWMElement.finalContentRect.bottom = f4;
+            localObject1 = this.mCopyFilter;
+            if ((TextUtils.isEmpty(localWMElement.animateType)) || (!this.mAnimationFilerMap.containsKey(localWMElement.animateType))) {
+              break label1091;
+            }
+            localObject1 = (WMAnimationFilterBase)this.mAnimationFilerMap.get(localWMElement.animateType);
+            ((WMAnimationFilterBase)localObject1).updateParams(localWMElement, this.width, this.height, paramLong);
           }
-          localObject1 = (WMAnimationFilterBase)this.mAnimationFilerMap.get(localWMElement.animateType);
-          ((WMAnimationFilterBase)localObject1).updateParams(localWMElement, this.width, this.height, paramLong);
+        }
+        label1077:
+        label1091:
+        for (;;)
+        {
           BenchUtil.benchStart("draw texture");
           ((BaseFilter)localObject1).setPositions(AlgoUtils.calPositions(f2, f4, f3, f1, this.width, this.height));
           ((BaseFilter)localObject1).OnDrawFrameGLSL();
@@ -386,14 +394,10 @@ public class WMGroup
             break;
             bool2 = ((WMElement)localObject2).updateBitmap(paramLong, paramBoolean3) | i;
           }
-          localObject1 = (TextWMElement)localWMElement;
-          localWMElement.finalContentRect.left = (((TextWMElement)localObject1).getTextRect().left + f2);
-          localWMElement.finalContentRect.top = (((TextWMElement)localObject1).getTextRect().top + f1);
-          localWMElement.finalContentRect.right = (((TextWMElement)localObject1).getTextRect().right + f2);
+          BenchUtil.benchEnd("updateTexture");
+          GlUtil.setBlendMode(paramBoolean2);
+          return paramBoolean1;
         }
-        BenchUtil.benchEnd("updateTexture");
-        GlUtil.setBlendMode(paramBoolean2);
-        return paramBoolean1;
       }
     }
   }

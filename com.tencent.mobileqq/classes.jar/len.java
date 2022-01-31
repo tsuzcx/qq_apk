@@ -1,7 +1,4 @@
-public abstract interface len
-{
-  public abstract void a(boolean paramBoolean);
-}
+public class len {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar

@@ -1,13 +1,13 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
+import java.util.List;
 
-public abstract interface behj
+public class behj
 {
-  public abstract boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  public String a;
+  public List<String> a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     behj
  * JD-Core Version:    0.7.0.1
  */

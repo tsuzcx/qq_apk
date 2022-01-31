@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import nrn;
+import ocx;
 
 class ReadInjoyAdSuperBgDrawable$1$1
   implements Runnable

@@ -1,14 +1,10 @@
-import android.view.View;
+import java.util.List;
 
-public abstract interface aubf
+public class aubf
 {
-  public abstract void a(View paramView);
-  
-  public abstract void a(View paramView, float paramFloat);
-  
-  public abstract void a(View paramView, float paramFloat1, float paramFloat2);
-  
-  public abstract void b(View paramView);
+  public List<aubd> a;
+  public boolean a;
+  public List<audd> b;
 }
 
 

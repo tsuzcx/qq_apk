@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
 
 public class abrq
-  implements aagm
+  implements bfoq
 {
-  public abrq(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  public abrq(PhoneUnityChangeActivity paramPhoneUnityChangeActivity) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    this.a.finish();
+    this.a.jdField_a_of_type_Bfol.cancel();
+    if (this.a.jdField_a_of_type_Bbgg == null) {
+      this.a.jdField_a_of_type_Bbgg = bbcv.a(this.a, 230, ajyc.a(2131708039), ajyc.a(2131708029), ajyc.a(2131708017), ajyc.a(2131708020), new abrr(this), new abrs(this));
+    }
+    if ((this.a.jdField_a_of_type_Bbgg != null) && (!this.a.jdField_a_of_type_Bbgg.isShowing()) && (!this.a.isFinishing())) {
+      this.a.jdField_a_of_type_Bbgg.show();
+    }
   }
 }
 

@@ -1,54 +1,48 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.TicketManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPromoteTaskList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-public class tdb
-  extends ten
+class tdb
+  implements syt<tnv, tnw>
 {
-  private HashMap<String, String> a;
-  private boolean c;
+  tdb(tda paramtda) {}
   
-  public tdb()
+  public void a(@NonNull tnv paramtnv, @Nullable tnw paramtnw, @NonNull ErrorMessage paramErrorMessage)
   {
-    this(null, false);
-  }
-  
-  public tdb(HashMap<String, String> paramHashMap, boolean paramBoolean)
-  {
-    a(false, true);
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.c = paramBoolean;
-  }
-  
-  public void a()
-  {
-    Object localObject2 = tfy.a();
-    Object localObject1 = ((QQAppInterface)localObject2).getCurrentAccountUin();
-    String str = ((TicketManager)((QQAppInterface)localObject2).getManager(2)).getSkey((String)localObject1);
-    localObject2 = new Bundle();
-    localObject1 = mpl.a(BaseApplication.getContext(), (String)localObject1, str, 1, this.jdField_a_of_type_JavaUtilHashMap, (Bundle)localObject2);
-    if ((!((Bundle)localObject2).getBoolean("isSuccess", false)) && (this.c))
+    if (paramtnw == null) {
+      veg.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramtnw });
+    }
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.w(this.b, 2, "shortenUrl failed size:" + ((HashMap)localObject1).size());
-      }
-      b(false);
       return;
+      if (paramErrorMessage.errorCode == 15000)
+      {
+        veg.a("StoryPromoteTaskManager", "onCmdRespond() no change of the request %s", paramtnw);
+        this.a.jdField_a_of_type_Long = paramtnw.a.uint64_expire_time.get();
+        return;
+      }
+      if (paramErrorMessage.isFail())
+      {
+        veg.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramtnw });
+        return;
+      }
+    } while (this.a.jdField_a_of_type_Boolean);
+    this.a.jdField_a_of_type_JavaLangString = paramtnw.a.bytes_cookie.get().toStringUtf8();
+    this.a.jdField_a_of_type_Long = paramtnw.a.uint64_expire_time.get();
+    this.a.a();
+    this.a.a(paramtnw.a);
+    paramtnv = paramtnw.a.bytes_global_promote_url.get().toStringUtf8();
+    if (!TextUtils.isEmpty(paramtnv))
+    {
+      ((tcv)tdc.a(10)).b("key_story_player_promote_url", paramtnv);
+      this.a.b = paramtnv;
     }
-    a("ShortenUrlJob_shortenedUrls", localObject1);
-    b(true);
-  }
-  
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) && (paramMap.containsKey("ShortenUrlJob_shortenedUrls"))) {
-      this.jdField_a_of_type_JavaUtilHashMap = ((HashMap)tfe.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "ShortenUrlJob_shortenedUrls", this.jdField_a_of_type_JavaUtilHashMap));
-    }
+    this.a.a("onCmdRespond()");
   }
 }
 

@@ -1,29 +1,24 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import java.util.List;
 
 public class auaq
-  implements Animation.AnimationListener
+  implements PopupWindow.OnDismissListener
 {
-  public auaq(ProfileTagView paramProfileTagView, View paramView) {}
+  public auaq(OCRResultActivity paramOCRResultActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss()
   {
-    paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView;
-    paramAnimation.i -= 1;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.i == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b();
+    this.a.a = null;
+    if ((OCRResultActivity.c(this.a) != null) && (OCRResultActivity.c(this.a).size() > 1))
+    {
+      Drawable localDrawable = this.a.getResources().getDrawable(2130844792);
+      this.a.b.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
     }
-    ((FriendProfileCardActivity)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a).l();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

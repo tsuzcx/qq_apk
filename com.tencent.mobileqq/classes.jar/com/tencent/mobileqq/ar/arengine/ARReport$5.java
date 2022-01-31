@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import akue;
-import awrn;
+import aliq;
+import axrl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARReport$5
   implements Runnable
 {
-  public ARReport$5(akue paramakue, long paramLong) {}
+  public ARReport$5(aliq paramaliq, long paramLong) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("loadingtime", String.valueOf(this.a));
-    awrn.a(BaseApplication.getContext()).a("", "AndroidactARWebView", true, 0L, 0L, localHashMap, "");
+    axrl.a(BaseApplication.getContext()).a("", "AndroidactARWebView", true, 0L, 0L, localHashMap, "");
   }
 }
 

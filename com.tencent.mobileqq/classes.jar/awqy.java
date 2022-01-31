@@ -1,21 +1,75 @@
-import com.tencent.mobileqq.pluginsdk.PluginRuntime.IClickEventReportor;
+import android.widget.TextView;
 
-final class awqy
-  implements PluginRuntime.IClickEventReportor
+public class awqy
+  extends awry
 {
-  public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
+  public awqy(baxk parambaxk)
   {
-    awqx.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    super(parambaxk);
   }
   
-  public void reportClickEventRuntime(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
+  public void b(awog paramawog, awwp paramawwp)
   {
-    awqx.a(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    super.b(paramawog, paramawwp);
+    TextView localTextView;
+    CharSequence localCharSequence;
+    if ((paramawog instanceof awlv))
+    {
+      awlv localawlv = (awlv)paramawog;
+      localTextView = ((awwl)paramawwp).e();
+      paramawog = ((awwl)paramawwp).f();
+      paramawwp = ((awwl)paramawwp).g();
+      if (localTextView != null)
+      {
+        localCharSequence = localawlv.e();
+        if (localCharSequence != null) {
+          break label96;
+        }
+        localTextView.setText("");
+        if (paramawwp != null) {
+          paramawwp.setVisibility(8);
+        }
+      }
+      if (paramawog != null)
+      {
+        paramawwp = localawlv.f();
+        if (paramawwp != null) {
+          break label115;
+        }
+        paramawog.setText("");
+      }
+    }
+    label96:
+    label115:
+    do
+    {
+      do
+      {
+        return;
+        localTextView.setText(localCharSequence);
+        if (paramawwp == null) {
+          break;
+        }
+        paramawwp.setVisibility(0);
+        break;
+        paramawog.setText(paramawwp);
+        return;
+      } while (!(paramawog instanceof awlu));
+      paramawog = (awlu)paramawog;
+      paramawwp = ((awwl)paramawwp).h();
+    } while (paramawwp == null);
+    paramawog = paramawog.e();
+    if (paramawog == null)
+    {
+      paramawwp.setText("");
+      return;
+    }
+    paramawwp.setText(paramawog);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awqy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,54 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
-import java.util.WeakHashMap;
-import mqq.util.WeakReference;
 
-class rcc
+public class rcc
+  implements qel
 {
-  private static Map<AbstractGifImage, List<WeakReference<rce>>> a = new WeakHashMap();
-  private static Map<AbstractGifImage, rcd> b = new WeakHashMap();
+  public rcc(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
   
-  public void a()
+  public void a(Bundle paramBundle, float paramFloat)
   {
-    a.clear();
-    b.clear();
+    String str = paramBundle.getString("mTaskID");
+    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "");
+    if (this.a.jdField_a_of_type_JavaUtilMap.get(str) != null) {
+      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(str)).a((int)paramFloat);
+    }
   }
   
-  void a(rce paramrce, URLDrawable paramURLDrawable)
+  public void a(Bundle paramBundle, int paramInt, float paramFloat)
   {
-    if ((paramURLDrawable.getCurrDrawable() instanceof GifDrawable))
+    QLog.d("KandianVideoUpload", 1, paramBundle.getString("mTaskID") + "service中的状态:" + paramInt);
+    switch (paramInt)
     {
-      AbstractGifImage localAbstractGifImage = ((GifDrawable)paramURLDrawable.getCurrDrawable()).getImage();
-      paramURLDrawable = new rcd(localAbstractGifImage);
-      localAbstractGifImage.setGIFPlayOnceListener(paramURLDrawable);
-      b.put(localAbstractGifImage, paramURLDrawable);
-      List localList = (List)a.get(localAbstractGifImage);
-      paramURLDrawable = localList;
-      if (localList == null) {
-        paramURLDrawable = new ArrayList();
-      }
-      paramURLDrawable.add(new WeakReference(paramrce));
-      a.put(localAbstractGifImage, paramURLDrawable);
+    default: 
+      return;
+    case 200: 
+      this.a.jdField_a_of_type_Qel.a(paramBundle, (int)paramFloat);
+      return;
+    case 202: 
+      ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
+      return;
     }
+    qeh.b(paramBundle);
+  }
+  
+  public void a(Bundle paramBundle, String paramString)
+  {
+    paramString = paramBundle.getString("mTaskID");
+    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
+    if (this.a.jdField_a_of_type_JavaUtilMap.get(paramString) != null) {
+      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(paramString)).a();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.a();
+    osj.a().b(true);
+    ReadInJoyBaseListViewGroup.a(this.a, paramString);
   }
 }
 

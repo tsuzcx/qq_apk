@@ -1,81 +1,86 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.hotpic.HotPicTab;
-import com.tencent.mobileqq.hotpic.HotPicTagInfo;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class aqga
-  extends BaseAdapter
+class aqga
+  extends mxm
 {
-  ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
-  public List<HotPicTagInfo> a;
-  boolean jdField_a_of_type_Boolean;
+  aqga(aqft paramaqft, Bundle paramBundle) {}
   
-  public aqga(List<HotPicTagInfo> paramList, ArrayList<Integer> paramArrayList, boolean paramBoolean)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilList = paramArrayList;
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)paramBoolean.clone());
-    boolean bool;
-    this.jdField_a_of_type_Boolean = bool;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramViewGroup = new aqgc(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab);
-      paramView = LayoutInflater.from(HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab)).inflate(2131493004, null);
-      paramViewGroup.a = ((TextView)paramView.findViewById(2131302011));
-      paramView.setTag(paramViewGroup);
+      aqgh.a("KEY_STAGE_2_NORMAL_B77", bool);
+      QLog.d("ForwardShareByServerHelper", 1, new Object[] { "notifyServerSendMesssage() onResult errorCode=", Integer.valueOf(paramInt), ", isTimeOut=", Boolean.valueOf(aqft.a(this.jdField_a_of_type_Aqft)), ", isFirstShow =", Boolean.valueOf(aqft.b(this.jdField_a_of_type_Aqft)) });
+      if (aqft.b(this.jdField_a_of_type_Aqft)) {
+        break;
+      }
+      QLog.d("ForwardShareByServerHelper", 1, "handleGetMessageState return for isFirstShow =" + aqft.b(this.jdField_a_of_type_Aqft));
+      return;
+    }
+    if (aqft.a(this.jdField_a_of_type_Aqft))
+    {
+      QLog.d("ForwardShareByServerHelper", 1, "handleGetMessageState return for isTimeOut =" + aqft.a(this.jdField_a_of_type_Aqft));
+      return;
+    }
+    if (paramBundle != null)
+    {
+      long l = paramBundle.getLong("0xb77_9_sendTime", -1L);
+      QLog.d("ForwardShareByServerHelper", 2, "handleGetMessageState currentRequestTime =" + aqft.b(this.jdField_a_of_type_Aqft) + ", sendStamp = " + l);
+      if ((l == -1L) || (l != aqft.b(this.jdField_a_of_type_Aqft)))
+      {
+        QLog.d("ForwardShareByServerHelper", 1, "handleGetMessageState return for sendStamp");
+        return;
+      }
+    }
+    aqft.a(this.jdField_a_of_type_Aqft, true);
+    paramBundle = ForwardUtils.a(paramArrayOfByte);
+    int i = ((Integer)paramBundle[0]).intValue();
+    String str1 = (String)paramBundle[1];
+    String str2 = (String)paramBundle[2];
+    String str3 = (String)paramBundle[3];
+    aqft.a(this.jdField_a_of_type_Aqft).removeMessages(94);
+    this.jdField_a_of_type_Aqft.c();
+    paramBundle = aqft.a(this.jdField_a_of_type_Aqft);
+    String str4 = ForwardUtils.c(aqft.a(this.jdField_a_of_type_Aqft).getInt("req_type"));
+    String str5 = ForwardUtils.a(aqft.a(this.jdField_a_of_type_Aqft).getInt("uintype"));
+    if ((paramBundle instanceof AbsShareMsg)) {}
+    for (paramBundle = ((AbsShareMsg)paramBundle).mContentTitle;; paramBundle = "")
+    {
+      axqw.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, str4, str5, paramBundle);
+      if ((paramInt == 0) && (paramArrayOfByte != null)) {
+        break;
+      }
+      aqft.a(this.jdField_a_of_type_Aqft, paramInt, str2, str3);
+      return;
+    }
+    if (i != 0) {
+      aqft.b(this.jdField_a_of_type_Aqft, str1);
     }
     for (;;)
     {
-      String str = ((HotPicTagInfo)getItem(paramInt)).tagName;
-      paramViewGroup = paramViewGroup.a;
-      paramViewGroup.setText(str);
-      paramViewGroup.setTextSize(2, HotPicTab.b());
-      paramViewGroup.setTextColor(HotPicTab.c());
-      paramViewGroup.setPadding(0, 0, 0, 0);
-      paramViewGroup.setFocusable(true);
-      paramViewGroup.setGravity(17);
-      paramView.setLayoutParams(new RelativeLayout.LayoutParams(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue(), -1));
-      paramView.setContentDescription(str);
-      paramView.setFocusable(true);
-      paramView.setOnHoverListener(new aqgb(this));
-      if (!HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).contains(Integer.valueOf(paramInt)))
-      {
-        awqx.b(null, "dc00898", "", "", "0X8008077", "0X8008077", 0, 0, paramInt + "", "", str, "");
-        HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).add(Integer.valueOf(paramInt));
-      }
-      return paramView;
-      paramViewGroup = (aqgc)paramView.getTag();
+      aqft.c(this.jdField_a_of_type_Aqft, this.jdField_a_of_type_AndroidOsBundle.getString("share_comment_message_for_server"));
+      return;
+      aqft.a(this.jdField_a_of_type_Aqft);
     }
+  }
+  
+  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (QLog.isColorLevel())) {
+      QLog.e("ForwardShareByServerHelper", 2, "onError msg =" + paramString);
+    }
+    return super.a(paramInt, paramString, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqga
  * JD-Core Version:    0.7.0.1
  */

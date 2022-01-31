@@ -1,37 +1,53 @@
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.liveroom.LiveRoomHelper;
-import cooperation.liveroom.LiveRoomPluginInstaller;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 
-class aqry
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public class aqry
+  extends aqru
 {
-  aqry(aqrx paramaqrx, String paramString) {}
+  private ImageView b;
+  private TextView d;
+  private TextView e;
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public aqry(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    PluginBaseInfo localPluginBaseInfo = paramPluginManagerClient.queryPlugin("LiveRoomPlugin.apk");
-    if (QLog.isColorLevel()) {
-      QLog.d("LiveRoomBusinessPlugin", 2, "get plugin info by ipc");
+    super(paramContext, paramView, paramViewGroup);
+    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559085, paramViewGroup, false);
+    if (paramContext != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramContext);
     }
-    if ((localPluginBaseInfo != null) && (localPluginBaseInfo.mState == 4))
-    {
-      LiveRoomHelper.setPluginInstalledInTool();
-      LiveRoomHelper.setPluginVersionInTool("" + localPluginBaseInfo.mCurVersion);
-      this.jdField_a_of_type_Aqrx.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0\"version\":\"" + localPluginBaseInfo.mCurVersion + "\"}" });
-      if (QLog.isColorLevel()) {
-        QLog.d("LiveRoomBusinessPlugin", 2, "plugin is installed: version=" + localPluginBaseInfo.mCurVersion);
-      }
+    this.b = ((ImageView)paramContext.findViewById(2131367992));
+    this.d = ((TextView)paramContext.findViewById(2131378361));
+    this.e = ((TextView)paramContext.findViewById(2131378259));
+  }
+  
+  public void a(FeedsItemData paramFeedsItemData)
+  {
+    super.a(paramFeedsItemData);
+    this.e.setText(paramFeedsItemData.title + "");
+    if (TextUtils.isEmpty(paramFeedsItemData.subTitle)) {
+      this.d.setVisibility(8);
     }
-    do
+    for (;;)
     {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130846164);
+      localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130846164);
+      paramFeedsItemData = URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions);
+      this.b.setImageDrawable(paramFeedsItemData);
       return;
-      this.jdField_a_of_type_Aqrx.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1}" });
-      LiveRoomPluginInstaller.getInstance().installFromTool(paramPluginManagerClient, "checkSDKInstalled");
-    } while (!QLog.isColorLevel());
-    QLog.d("LiveRoomBusinessPlugin", 2, "plugin is not installed");
+      this.d.setVisibility(0);
+      this.d.setText(paramFeedsItemData.subTitle + "");
+    }
   }
 }
 

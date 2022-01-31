@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.utils;
 
-import bafw;
-import beex;
+import bbhb;
+import bfmr;
 
 public class QQCustomDialogWtihEmoticonInput$8
   implements Runnable
 {
-  public QQCustomDialogWtihEmoticonInput$8(bafw parambafw) {}
+  public QQCustomDialogWtihEmoticonInput$8(bbhb parambbhb) {}
   
   public void run()
   {
-    beex.a(this.this$0.a);
+    bfmr.a(this.this$0.a);
   }
 }
 

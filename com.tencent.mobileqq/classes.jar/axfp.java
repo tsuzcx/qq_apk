@@ -1,34 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.common.config.AppSetting;
 
-class axfp
-  implements View.OnClickListener
+public class axfp
 {
-  axfp(axfo paramaxfo) {}
-  
-  public void onClick(View paramView)
+  public static boolean a()
   {
-    if ((axfo.a(this.a) instanceof CustomWebView))
-    {
-      if (2 == axfo.a(this.a).c)
-      {
-        ((CustomWebView)axfo.a(this.a)).callJs("openAdvPermissionsMobile()");
-        this.a.b();
-      }
-    }
-    else {
-      return;
-    }
-    ((CustomWebView)axfo.a(this.a)).callJs("openCooperationMobile()");
-    this.a.b();
-    awqx.b(axfo.a(this.a).app, "dc00898", "", "", "0x8009412", "0x8009412", 0, 0, "", "", "", "");
+    return AppSetting.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axfp
  * JD-Core Version:    0.7.0.1
  */

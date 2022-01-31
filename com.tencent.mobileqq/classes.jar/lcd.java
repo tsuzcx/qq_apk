@@ -1,29 +1,12 @@
-import java.io.BufferedReader;
+import org.json.JSONObject;
 
-public class lcd
-  extends lcc
+public abstract interface lcd
 {
-  private float a;
-  private float b;
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float + (this.b - this.jdField_a_of_type_Float) * lbu.a();
-  }
-  
-  public void a(BufferedReader paramBufferedReader)
-  {
-    super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Float = lbz.a(paramBufferedReader, "lowMin");
-    this.b = lbz.a(paramBufferedReader, "lowMax");
-  }
+  public abstract void a(String paramString, JSONObject paramJSONObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     lcd
  * JD-Core Version:    0.7.0.1
  */

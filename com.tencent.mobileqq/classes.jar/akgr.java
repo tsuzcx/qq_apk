@@ -1,7 +1,4 @@
-public abstract interface akgr
-{
-  public abstract void a(int paramInt, akgo paramakgo);
-}
+public class akgr {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

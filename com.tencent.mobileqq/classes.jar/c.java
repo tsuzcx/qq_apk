@@ -88,12 +88,12 @@ public class c
   
   private void a(int paramInt1, int paramInt2, CharSequence paramCharSequence)
   {
-    i();
+    j();
     int n = View.MeasureSpec.getMode(paramInt1);
     int i3 = View.MeasureSpec.getSize(paramInt1);
     if ((n == -2147483648) || (n == 1073741824)) {}
     int i2;
-    for (this.jdField_j_of_type_Int = Math.min(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.jdField_a_of_type_Int, i3);; this.jdField_j_of_type_Int = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.jdField_a_of_type_Int)
+    for (this.jdField_j_of_type_Int = Math.min(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mMaxWidth, i3);; this.jdField_j_of_type_Int = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mMaxWidth)
     {
       this.jdField_g_of_type_Int = (this.jdField_j_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int);
       this.jdField_k_of_type_Int = 0;
@@ -175,17 +175,17 @@ public class c
             i1 = 1;
             label565:
             if ((i4 > paramInt1) && (i2 > i4)) {
-              a(null, fh.a(paramCharSequence, paramInt1, i4), paramInt1, (int)f2, 0, this.jdField_l_of_type_Int);
+              a(null, ha.a(paramCharSequence, paramInt1, i4), paramInt1, (int)f2, 0, this.jdField_l_of_type_Int);
             }
             if (!(localCharacterStyle instanceof ClickableSpan)) {
               break label694;
             }
-            a(null, fh.a(paramCharSequence, i4, i2), i4, (int)f2, 1, this.jdField_l_of_type_Int);
+            a(null, ha.a(paramCharSequence, i4, i2), i4, (int)f2, 1, this.jdField_l_of_type_Int);
           }
           for (;;)
           {
             if ((n == arrayOfCharacterStyle.length - 1) && (i1 == 0)) {
-              a(null, fh.a(paramCharSequence, i2, ((Spanned)localObject).length()), i2, (int)f2, 0, this.jdField_l_of_type_Int);
+              a(null, ha.a(paramCharSequence, i2, ((Spanned)localObject).length()), i2, (int)f2, 0, this.jdField_l_of_type_Int);
             }
             n += 1;
             paramInt1 = i2;
@@ -193,10 +193,10 @@ public class c
             i1 = 0;
             break label565;
             label694:
-            if (((localCharacterStyle instanceof axkk)) || ((localCharacterStyle instanceof avdg))) {
+            if (((localCharacterStyle instanceof aykp)) || ((localCharacterStyle instanceof awcz))) {
               a(localCharacterStyle);
             } else if ((localCharacterStyle instanceof RelativeSizeSpan)) {
-              a((RelativeSizeSpan)localCharacterStyle, fh.a(paramCharSequence, i4, i2), i4, (int)f2, 3, this.jdField_l_of_type_Int);
+              a((RelativeSizeSpan)localCharacterStyle, ha.a(paramCharSequence, i4, i2), i4, (int)f2, 3, this.jdField_l_of_type_Int);
             } else {
               i.b(a(), "Un Know CharacterStyle   start:" + i4 + "  end:" + i2);
             }
@@ -207,7 +207,7 @@ public class c
       {
         a(null, paramCharSequence, 0, (int)f2, 0, this.jdField_l_of_type_Int);
       }
-      j();
+      k();
       this.m = g.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_l_of_type_ArrayOfInt, this.jdField_f_of_type_ArrayOfInt, this.jdField_g_of_type_ArrayOfInt, this.jdField_f_of_type_Int, this.jdField_l_of_type_Int, this.jdField_g_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId);
       if ((this.m == null) || (this.m.length < 2))
       {
@@ -217,7 +217,7 @@ public class c
       }
       this.jdField_j_of_type_Int = (this.m[0] + this.jdField_a_of_type_Int + this.jdField_b_of_type_Int);
       this.jdField_k_of_type_Int = (this.m[1] + this.jdField_c_of_type_Int + this.jdField_d_of_type_Int);
-      k();
+      l();
       return;
       localObject = null;
       arrayOfCharacterStyle = null;
@@ -268,9 +268,9 @@ public class c
     Object localObject;
     int i1;
     int n;
-    if ((paramCharacterStyle instanceof axkk))
+    if ((paramCharacterStyle instanceof aykp))
     {
-      localObject = ((axkk)paramCharacterStyle).a().getBounds();
+      localObject = ((aykp)paramCharacterStyle).a().getBounds();
       i1 = ((Rect)localObject).width();
       n = ((Rect)localObject).height();
     }
@@ -285,11 +285,11 @@ public class c
       ((r)localObject).jdField_a_of_type_Int = 2;
       this.jdField_c_of_type_JavaUtilList.add(localObject);
       return true;
-      if ((paramCharacterStyle instanceof avdg))
+      if ((paramCharacterStyle instanceof awcz))
       {
-        localObject = (avdg)paramCharacterStyle;
-        i1 = ((avdg)localObject).a();
-        n = ((avdg)localObject).b();
+        localObject = (awcz)paramCharacterStyle;
+        i1 = ((awcz)localObject).a();
+        n = ((awcz)localObject).b();
       }
       else
       {
@@ -383,7 +383,7 @@ public class c
     }
   }
   
-  private void i()
+  private void j()
   {
     if (this.jdField_a_of_type_Boolean) {
       return;
@@ -424,7 +424,7 @@ public class c
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
   }
   
-  private void j()
+  private void k()
   {
     int i1 = this.jdField_c_of_type_JavaUtilList.size();
     this.jdField_a_of_type_ArrayOfInt = new int[i1];
@@ -455,7 +455,7 @@ public class c
     }
   }
   
-  private void k()
+  private void l()
   {
     int n = 0;
     while (n < this.jdField_a_of_type_ArrayOfInt.length)
@@ -491,7 +491,7 @@ public class c
     }
   }
   
-  private void l()
+  private void m()
   {
     if (this.jdField_c_of_type_AndroidGraphicsCanvas == null) {
       this.jdField_c_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
@@ -522,7 +522,7 @@ public class c
     }
   }
   
-  private void m()
+  private void n()
   {
     int i1 = (int)(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getTextSize() / 15.0F);
     int n;
@@ -558,15 +558,15 @@ public class c
       localObject = a(i3, i1);
       this.jdField_b_of_type_AndroidGraphicsCanvas.drawBitmap((Bitmap)localObject, i5, i4 + i6 - i1, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       continue;
-      if ((((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof axkk))
+      if ((((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof aykp))
       {
-        ((axkk)((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6 + i4, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        ((aykp)((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6 + i4, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
-      else if ((((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof avdg))
+      else if ((((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof awcz))
       {
-        localObject = (avdg)((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        ((avdg)localObject).jdField_a_of_type_Boolean = false;
-        ((avdg)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        localObject = (awcz)((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        ((awcz)localObject).jdField_a_of_type_Boolean = false;
+        ((awcz)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
     }
   }
@@ -651,16 +651,16 @@ public class c
     }
   }
   
-  public int a(int paramInt1, int paramInt2, ge paramge)
+  public int a(int paramInt1, int paramInt2, hx paramhx)
   {
     int n = 0;
     while (n < this.jdField_b_of_type_JavaUtilList.size())
     {
-      paramge = (r)this.jdField_b_of_type_JavaUtilList.get(n);
-      if ((paramInt1 >= paramge.jdField_d_of_type_Int) && (paramInt1 <= paramge.jdField_d_of_type_Int + paramge.jdField_b_of_type_Int) && (paramInt2 >= paramge.jdField_e_of_type_Int))
+      paramhx = (r)this.jdField_b_of_type_JavaUtilList.get(n);
+      if ((paramInt1 >= paramhx.jdField_d_of_type_Int) && (paramInt1 <= paramhx.jdField_d_of_type_Int + paramhx.jdField_b_of_type_Int) && (paramInt2 >= paramhx.jdField_e_of_type_Int))
       {
-        int i1 = paramge.jdField_e_of_type_Int;
-        if (paramInt2 <= paramge.jdField_c_of_type_Int + i1) {
+        int i1 = paramhx.jdField_e_of_type_Int;
+        if (paramInt2 <= paramhx.jdField_c_of_type_Int + i1) {
           return n;
         }
       }
@@ -752,7 +752,7 @@ public class c
   
   protected void a(Canvas paramCanvas)
   {
-    if (!this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.h()) {
+    if (!this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.hasSelected()) {
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-256);
@@ -849,10 +849,10 @@ public class c
     }
     c();
     long l1 = System.nanoTime();
-    l();
+    m();
     g.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_l_of_type_ArrayOfInt, this.jdField_f_of_type_Int, this.jdField_l_of_type_Int, this.jdField_g_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId, this.jdField_e_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_i_of_type_ArrayOfInt, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.m_comboIndex);
     a(paramCanvas);
-    m();
+    n();
     paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, null);
     if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation) && (this.jdField_e_of_type_Int == 0)) {
       b();
@@ -867,7 +867,7 @@ public class c
   
   public int[] a(int paramInt1, int paramInt2, long paramLong, boolean paramBoolean, ETFont paramETFont)
   {
-    if ((this.jdField_a_of_type_Long == paramLong) && (this.jdField_b_of_type_Boolean == paramBoolean) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.equals(paramETFont)) && (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.e())) {
+    if ((this.jdField_a_of_type_Long == paramLong) && (this.jdField_b_of_type_Boolean == paramBoolean) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.equals(paramETFont)) && (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.isCacheMeasureResult())) {
       return this.jdField_j_of_type_ArrayOfInt;
     }
     if (this.jdField_a_of_type_Long != paramLong)
@@ -875,7 +875,7 @@ public class c
       if (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null) {
         this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
       }
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.e = false;
+      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.isFounderAnimating = false;
       if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
         this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
       }

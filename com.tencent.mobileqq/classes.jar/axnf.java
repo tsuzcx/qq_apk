@@ -1,80 +1,30 @@
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Build.VERSION;
+import android.os.Process;
+import com.tencent.common.config.AppSetting;
 
-public abstract class axnf
-  implements Cloneable
+public class axnf
 {
-  public long c;
-  public int d;
-  public long d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  @Nullable
-  public String g;
-  public int h;
-  public String h = "";
-  public int i;
-  public int j;
+  private static Boolean a;
   
-  public axnf()
+  public static boolean a()
   {
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_f_of_type_JavaLangString = "";
-  }
-  
-  public int a()
-  {
-    return beog.b;
-  }
-  
-  public String a()
-  {
-    return "";
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    return "";
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    return babh.p(paramQQAppInterface, paramString);
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    return babh.h(paramQQAppInterface, paramString1, paramString2);
-  }
-  
-  public String a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
-  {
-    return "";
-  }
-  
-  public boolean a()
-  {
-    return ((this.jdField_e_of_type_Int == 2) || (this.jdField_e_of_type_Int == 1)) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString));
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public String b(QQAppInterface paramQQAppInterface)
-  {
-    return "";
-  }
-  
-  public int d()
-  {
-    return 2131633811;
+    if (a == null)
+    {
+      if (Build.VERSION.SDK_INT >= 21) {
+        break label28;
+      }
+      a = Boolean.valueOf(false);
+    }
+    for (;;)
+    {
+      return a.booleanValue();
+      label28:
+      if (Build.VERSION.SDK_INT >= 23) {
+        a = Boolean.valueOf(Process.is64Bit());
+      } else {
+        a = Boolean.valueOf(AppSetting.b);
+      }
+    }
   }
 }
 

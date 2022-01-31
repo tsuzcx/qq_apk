@@ -1,12 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
+
 public class qhl
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  pxn jdField_a_of_type_Pxn;
+  public qhl(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
   
-  public qhl(pxn parampxn, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Pxn = parampxn;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a.e();
   }
 }
 

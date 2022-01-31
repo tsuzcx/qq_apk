@@ -1,34 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
 
-class aolk
-  extends aoko
+public class aolk
+  extends AnimatorListenerAdapter
 {
-  public aolk(aokk paramaokk)
-  {
-    super(paramaokk);
-  }
+  public aolk(MatchingView paramMatchingView) {}
   
-  protected String a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return "StateSaveToWeiYunByPCWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    if (MatchingView.a(this.a)) {
+      MatchingView.a(this.a).start();
     }
-    aokk.b(this.jdField_a_of_type_Aokk, 11, 7);
-    aokk.c(this.jdField_a_of_type_Aokk, 11, 7);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateSaveToWeiYunByPC)");
-    this.jdField_a_of_type_Aoko = new aoli(this.jdField_a_of_type_Aokk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aolk
  * JD-Core Version:    0.7.0.1
  */

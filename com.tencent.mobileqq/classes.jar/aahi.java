@@ -1,26 +1,55 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.widget.AbsListView;
+import android.graphics.drawable.Animatable;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import java.io.File;
+import java.net.MalformedURLException;
 
 public class aahi
-  implements begh
+  extends Handler
 {
-  public aahi(ChatHistory paramChatHistory) {}
+  public aahi(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.m = paramInt;
-    if (paramInt == 0)
+    switch (paramMessage.what)
     {
-      AbstractGifImage.resumeAll();
+    }
+    for (;;)
+    {
       return;
+      if ((this.a.isFinishing()) || (AddFriendVerifyActivity.a(this.a) == null)) {
+        continue;
+      }
+      AddFriendVerifyActivity.a(this.a).setVisibility(0);
+      ((Animatable)AddFriendVerifyActivity.a(this.a).getDrawable()).start();
+      return;
+      if (this.a.isFinishing()) {
+        continue;
+      }
+      if (!TextUtils.isEmpty(AddFriendVerifyActivity.c(this.a))) {}
+      try
+      {
+        paramMessage = new File(AddFriendVerifyActivity.d(this.a)).toURL();
+        AddFriendVerifyActivity.a(this.a).setImageDrawable(URLDrawable.getDrawable(paramMessage, 100, 100));
+        label142:
+        if (AddFriendVerifyActivity.a(this.a) == null) {
+          continue;
+        }
+        AddFriendVerifyActivity.a(this.a).setVisibility(8);
+        return;
+        bcpw.a(this.a.getApplicationContext(), 1, 2131720683, 0).b(this.a.getTitleBarHeight());
+        return;
+      }
+      catch (MalformedURLException paramMessage)
+      {
+        break label142;
+      }
     }
-    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Int == 1) && (!this.a.a.jdField_a_of_type_Boolean)) {
-      this.a.a.d();
-    }
-    AbstractGifImage.pauseAll();
   }
 }
 

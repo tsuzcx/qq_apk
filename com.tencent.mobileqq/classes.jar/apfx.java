@@ -1,18 +1,69 @@
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class apfx
-  implements View.OnClickListener
+  implements awrb<awog, awwp>
 {
-  public apfx(SendBottomBar paramSendBottomBar) {}
+  private apgc a;
   
-  public void onClick(View paramView)
+  public void a(apgc paramapgc)
   {
-    if (SendBottomBar.a(this.a) != null) {
-      SendBottomBar.a(this.a).a();
+    this.a = paramapgc;
+  }
+  
+  public void a(awog paramawog, awwp paramawwp)
+  {
+    if ((paramawwp.a() != null) && (!TextUtils.isEmpty(paramawog.a())))
+    {
+      paramawwp.a().setVisibility(0);
+      paramawwp.a().setText(paramawog.a());
     }
-    apck.a(SendBottomBar.a(this.a));
+    if ((paramawwp.b() != null) && (!TextUtils.isEmpty(paramawog.b())))
+    {
+      paramawwp.b().setVisibility(0);
+      paramawwp.b().setText(paramawog.b());
+    }
+    if ((paramawwp.c() != null) && (!TextUtils.isEmpty(paramawog.c())))
+    {
+      paramawwp.c().setVisibility(0);
+      paramawwp.c().setText(paramawog.c());
+    }
+    if ((paramawog.d() == null) && (paramawwp.d() != null)) {
+      paramawwp.d().setVisibility(8);
+    }
+    if ((paramawwp.d() != null) && (paramawog.d() != null))
+    {
+      paramawwp.d().setVisibility(0);
+      paramawwp.d().setText(paramawog.d());
+    }
+    apfw localapfw = (apfw)paramawog;
+    View localView = paramawwp.a();
+    paramawwp = (AsyncImageView)paramawwp.b();
+    String str = localapfw.c();
+    int i = localapfw.e();
+    if (!TextUtils.isEmpty(str))
+    {
+      apue.a(paramawwp, str, i);
+      paramawwp.setOnClickListener(new apfy(this, paramawog));
+      paramawwp = (CheckBox)localView.findViewById(2131366225);
+      if (localapfw.d() <= 1) {
+        break label336;
+      }
+      paramawwp.setVisibility(8);
+    }
+    for (;;)
+    {
+      paramawwp.setChecked(localapfw.b());
+      localView.setOnClickListener(new apfz(this, paramawog));
+      return;
+      paramawwp.setDefaultImage(apue.a(i));
+      break;
+      label336:
+      paramawwp.setVisibility(0);
+    }
   }
 }
 

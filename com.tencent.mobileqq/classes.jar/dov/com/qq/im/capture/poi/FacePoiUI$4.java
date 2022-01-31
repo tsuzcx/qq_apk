@@ -1,12 +1,12 @@
 package dov.com.qq.im.capture.poi;
 
-import bhkz;
+import bjfr;
 import com.tencent.widget.XListView;
 
 public class FacePoiUI$4
   implements Runnable
 {
-  public FacePoiUI$4(bhkz parambhkz) {}
+  public FacePoiUI$4(bjfr parambjfr) {}
   
   public void run()
   {

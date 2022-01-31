@@ -1,23 +1,31 @@
+import android.app.Activity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.widget.RotateableView;
 
-public class adrn
-  extends adrh
+class adrn
+  extends ClickableSpan
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  RotateableView jdField_a_of_type_ComTencentMobileqqWidgetRotateableView;
-  boolean jdField_a_of_type_Boolean = false;
-  public long b;
-  String b;
-  long jdField_c_of_type_Long;
-  View jdField_c_of_type_AndroidViewView;
-  String jdField_c_of_type_JavaLangString;
-  int e;
-  int f;
-  int g;
+  adrn(adqy paramadqy) {}
   
-  public adrn(adrj paramadrj) {}
+  public void onClick(View paramView)
+  {
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramView = bfol.a(this.a.jdField_a_of_type_AndroidContentContext);
+      paramView.b(2131720351);
+      paramView.c(2131690596);
+      paramView.a(new adro(this));
+      paramView.a(new adrp(this, paramView));
+      paramView.show();
+      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
+  }
 }
 
 

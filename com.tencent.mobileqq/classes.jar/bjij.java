@@ -1,7 +1,4 @@
-public class bjij
-{
-  public void a() {}
-}
+public abstract class bjij {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

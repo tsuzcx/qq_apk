@@ -1,126 +1,105 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.event.ForeBackgroundEvent;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class ajwf
-  implements Manager
+public final class ajwf
 {
-  private ajwh jdField_a_of_type_Ajwh;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<ajwh> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private ajwd[] jdField_a_of_type_ArrayOfAjwd = new ajwd[4];
-  private boolean jdField_b_of_type_Boolean;
-  private int[] jdField_b_of_type_ArrayOfInt = new int[0];
   
-  public ajwf(QQAppInterface paramQQAppInterface)
+  public static ajwf a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Ajwh = new ajwh(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return ajwi.a();
   }
   
-  private void a(int[] paramArrayOfInt)
+  public List<ajwh> a()
   {
-    int j = paramArrayOfInt.length;
-    int i = 0;
-    while (i < j)
+    try
     {
-      int k = paramArrayOfInt[i];
-      long l = System.currentTimeMillis();
-      ajwd localajwd = a(k);
-      if (localajwd != null)
-      {
-        localajwd.a();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.db.Cache", 2, "cacheManager init cache:" + localajwd.getClass().getName() + " cost=" + (System.currentTimeMillis() - l));
-        }
-        localajwd.a(0);
-      }
-      i += 1;
+      List localList = this.jdField_a_of_type_JavaUtilList;
+      return localList;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public ajwd a(int paramInt)
+  public final void a()
   {
-    ajwd localajwd = this.jdField_a_of_type_ArrayOfAjwd[paramInt];
-    if (localajwd == null) {}
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_ArrayOfAjwd)
-      {
-        localajwd = this.jdField_a_of_type_ArrayOfAjwd[paramInt];
-        if (localajwd != null) {
-          return localajwd;
-        }
-        long l = System.currentTimeMillis();
-        switch (paramInt)
-        {
-        case 2: 
-          if ((localajwd != null) && (this.jdField_a_of_type_ArrayOfAjwd[paramInt] == null)) {
-            this.jdField_a_of_type_ArrayOfAjwd[paramInt] = localajwd;
-          }
-          if ((QLog.isColorLevel()) && (localajwd != null)) {
-            QLog.d("Q.db.Cache", 2, "get cache instance:" + localajwd.getClass().getName() + " cost=" + (System.currentTimeMillis() - l));
-          }
-          return localajwd;
-        }
-      }
-      Object localObject2 = new ajwm(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ajwh);
-      continue;
-      localObject2 = new ajwo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ajwh);
-      continue;
-      return localObject2;
+    if (QLog.isColorLevel()) {
+      QLog.d("ForeBackgroundSwitch", 2, "onAppBackground: invoked. ");
+    }
+    wpw.a().a(new ForeBackgroundEvent(true));
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppBackground ==============");
+    snb.a().a();
+    aryy.b();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((ajwh)localIterator.next()).b();
     }
   }
   
-  public ajwh a()
+  public void a(ajwh paramajwh)
   {
-    return this.jdField_a_of_type_Ajwh;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramajwh);
       return;
     }
-    a(this.jdField_a_of_type_ArrayOfInt);
-    this.jdField_a_of_type_Ajwh.a();
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return;
+    finally
+    {
+      paramajwh = finally;
+      throw paramajwh;
     }
-    a(this.jdField_b_of_type_ArrayOfInt);
-    this.jdField_b_of_type_Boolean = true;
   }
   
-  public void onDestroy()
+  public final void a(String paramString)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForeBackgroundSwitch", 2, "onAppForeground: invoked. " + paramString);
+    }
+    if (xos.b <= 0L)
+    {
+      xos.b = System.currentTimeMillis();
+      QLog.d("ForeBackgroundSwitch", 1, new Object[] { "onAppForeground: invoked. ", " sFirstForegroundTimestamp: ", Long.valueOf(xos.b) });
+    }
+    aryy.a();
+    if (TextUtils.equals("com.tencent.mobileqq:qzone", paramString)) {
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
     for (;;)
     {
-      int i;
-      synchronized (this.jdField_a_of_type_ArrayOfAjwd)
-      {
-        ajwd[] arrayOfajwd2 = this.jdField_a_of_type_ArrayOfAjwd;
-        int j = arrayOfajwd2.length;
-        i = 0;
-        if (i < j)
-        {
-          ajwd localajwd = arrayOfajwd2[i];
-          if (localajwd != null) {
-            localajwd.b();
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_Ajwh.onDestroy();
-          return;
-        }
+      QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppForeground ==============");
+      paramString = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramString.hasNext()) {
+        ((ajwh)paramString.next()).a();
       }
-      i += 1;
+      paramString = new ForeBackgroundEvent(false);
+      wpw.a().a(paramString);
+      continue;
+      paramString = new ForeBackgroundEvent(false);
+      wpw.a().a(paramString);
+    }
+  }
+  
+  public void b(ajwh paramajwh)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramajwh);
+      return;
+    }
+    finally
+    {
+      paramajwh = finally;
+      throw paramajwh;
     }
   }
 }

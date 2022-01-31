@@ -1,36 +1,34 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.NowLive;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import android.content.Intent;
+import android.view.ViewGroup;
 
-class aqol
-  implements aqqb
+public abstract class aqol
 {
-  aqol(aqod paramaqod) {}
+  private aqom a;
   
-  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  public void a(Intent paramIntent) {}
+  
+  public void a(ViewGroup paramViewGroup) {}
+  
+  public void a(aqom paramaqom)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 101);
-    NowLive.sendServerPushMessage(aqod.a(this.a, localBundle, paramNewTogetherRoomMessageData));
+    this.a = paramaqom;
   }
   
-  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 102);
-    NowLive.sendServerPushMessage(aqod.a(this.a, localBundle, paramNewTogetherRoomMessageData));
-  }
+  public void b() {}
   
-  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 103);
-    NowLive.sendServerPushMessage(aqod.a(this.a, localBundle, paramNewTogetherRoomMessageData));
-  }
+  public void b(ViewGroup paramViewGroup) {}
+  
+  public void d() {}
+  
+  public void p() {}
+  
+  public void q() {}
+  
+  public void r() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqol
  * JD-Core Version:    0.7.0.1
  */

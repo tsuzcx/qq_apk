@@ -1,88 +1,58 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import java.util.List;
 
 public class afxt
-  extends bblf
+  implements asus
 {
-  private afxt(CountryActivity paramCountryActivity) {}
+  public afxt(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, asul paramasul, asuu paramasuu, List paramList) {}
   
-  public int a()
+  public void a()
   {
-    return 2131493803;
+    this.jdField_a_of_type_Asul.a(new afxu(this));
+    this.jdField_a_of_type_Asul.show();
   }
   
-  public void a(View paramView, int paramInt)
+  public void a(asuq paramasuq)
   {
-    paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(((afxu)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString)).intValue();
-    ((TextView)paramView).setText(((afxu)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return ((afxu)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean;
-  }
-  
-  public int getCount()
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (((afxu)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    afxu localafxu = (afxu)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (getItemViewType(paramInt) == 0)
-    {
-      if (paramView != null) {
-        break label107;
+    if ((paramasuq != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity().isFinishing())) {
+      switch (paramasuq.a)
+      {
       }
-      paramView = this.a.getLayoutInflater().inflate(a(), paramViewGroup, false);
     }
-    label107:
     for (;;)
     {
-      ((TextView)paramView).setText(localafxu.jdField_a_of_type_JavaLangString);
-      for (;;)
-      {
-        paramView.setVisibility(0);
-        return paramView;
-        View localView = paramView;
-        if (paramView == null)
-        {
-          localView = CountryActivity.a(paramViewGroup, this.a.getLayoutInflater(), false);
-          localView.setOnClickListener(this.a);
-        }
-        CountryActivity.a(localView, localafxu);
-        paramView = localView;
+      if (this.jdField_a_of_type_Asul.isShowing()) {
+        this.jdField_a_of_type_Asul.dismiss();
       }
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.u();
+      this.jdField_a_of_type_Asuu.b();
+      return;
+      asur.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
+      continue;
+      asur.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
+      continue;
+      asur.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
     }
   }
   
-  public int getViewTypeCount()
+  public void a(asuq paramasuq, int paramInt)
   {
-    return 2;
+    this.jdField_a_of_type_Asul.a(paramInt);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Asul.isShowing()) {
+      this.jdField_a_of_type_Asul.dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.u();
+    this.jdField_a_of_type_Asuu.b();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Asuu.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity(), this.jdField_a_of_type_JavaUtilList);
   }
 }
 

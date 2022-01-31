@@ -1,48 +1,71 @@
-import android.support.annotation.IdRes;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class agxp
+  extends BroadcastReceiver
 {
-  private static final Map<String, Integer> a;
-  public static int[] a;
+  public agxp(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  static
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130838172, 2130838163, 2130838165, 2130838173, 2130838340, 2130840857, 2130838174, 2130838162, 2130838167, 2130838164, 2130838161, 2130838168, 2130838169, 2130838170, 2130838171 };
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilMap.put("m.ke.qq.com", Integer.valueOf(7));
-    jdField_a_of_type_JavaUtilMap.put("ke.qq.com", Integer.valueOf(7));
-    jdField_a_of_type_JavaUtilMap.put("fudao.qq.com", Integer.valueOf(9));
-    jdField_a_of_type_JavaUtilMap.put("buluo.qq.com", Integer.valueOf(10));
-    jdField_a_of_type_JavaUtilMap.put("m.gamecenter.qq.com", Integer.valueOf(2));
-    jdField_a_of_type_JavaUtilMap.put("imgcache.qq.com", Integer.valueOf(2));
-  }
-  
-  @IdRes
-  public static int a(int paramInt)
-  {
-    return jdField_a_of_type_ArrayOfInt[paramInt];
-  }
-  
-  public static int a(String paramString)
-  {
-    Integer localInteger2 = (Integer)jdField_a_of_type_JavaUtilMap.get(paramString);
-    Integer localInteger1 = localInteger2;
-    if (localInteger2 == null) {
-      if (!rtr.d(paramString)) {
-        break label37;
+    int i;
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getAction();
+      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+        break label79;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("RedPacketKSongFragment", 2, "receive action_recv_video_request");
+      }
+      i = 1;
     }
-    label37:
-    for (localInteger1 = Integer.valueOf(8);; localInteger1 = Integer.valueOf(6)) {
-      return localInteger1.intValue();
+    for (;;)
+    {
+      if (i != 0)
+      {
+        if ((!this.a.b) || (!this.a.c) || (this.a.a.getVisibility() != 0)) {
+          break label151;
+        }
+        this.a.a();
+      }
+      label79:
+      while (!this.a.d)
+      {
+        return;
+        if (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+          break label188;
+        }
+        paramContext = (TelephonyManager)this.a.getActivity().getSystemService("phone");
+        if (QLog.isColorLevel()) {
+          QLog.d("RedPacketKSongFragment", 2, "receive action_phone_state_changed|call_state_ringing" + paramContext.getCallState());
+        }
+        if (paramContext.getCallState() != 1) {
+          break label188;
+        }
+        i = 1;
+        break;
+      }
+      label151:
+      if (QLog.isColorLevel()) {
+        QLog.d("RedPacketKSongFragment", 2, "receive pause action");
+      }
+      this.a.b(ajyc.a(2131713324));
+      return;
+      label188:
+      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agxp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,33 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
-import com.tencent.qphone.base.util.QLog;
-
-public class arwk
-  extends GestureDetector.SimpleOnGestureListener
+class arwk
+  implements arwg
 {
-  public arwk(MultiCardPageIndicator paramMultiCardPageIndicator) {}
+  arwk(arwh paramarwh) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      arwh.b(this.a);
+      return;
+    case 1: 
+      arwh.c(this.a);
+      return;
+    case 2: 
+      arwh.a(this.a);
+      return;
+    case 3: 
+      arwh.d(this.a);
+      return;
     }
-    if (MultiCardPageIndicator.a(this.a) != null) {
-      this.a.performClick();
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    arwh.e(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arwk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,12 @@
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.view.View.OnClickListener;
 
-public class vir
-  implements AdapterView.OnItemSelectedListener
+class vir
+  implements View.OnClickListener
 {
-  public vir(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  vir(viq paramviq) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
-  }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public void onClick(View paramView) {}
 }
 
 

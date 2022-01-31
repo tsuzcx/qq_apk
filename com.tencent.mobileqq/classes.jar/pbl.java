@@ -1,60 +1,42 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.net.URL;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
 import java.util.List;
 
 public class pbl
-  extends BaseAdapter
 {
-  List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
-  List<qvs> b = new ArrayList();
+  private int jdField_a_of_type_Int = 1;
+  private List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> jdField_a_of_type_JavaUtilList;
+  private int b;
+  private int c;
+  private int d;
   
-  public pbl(NativeGridImageView paramNativeGridImageView) {}
-  
-  public List<URL> a()
+  public ReadInJoyUserInfoModule.Request0xb81Params a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return new ReadInJoyUserInfoModule.Request0xb81Params(this, null);
   }
   
-  public void a(pbm parampbm)
+  public pbl a(int paramInt)
   {
-    this.b = parampbm.a();
-    this.jdField_a_of_type_JavaUtilList = parampbm.b();
+    this.b = paramInt;
+    return this;
   }
   
-  public int getCount()
+  public pbl a(List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> paramList)
   {
-    return this.b.size();
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
   }
   
-  public Object getItem(int paramInt)
+  public pbl b(int paramInt)
   {
-    return this.b.get(paramInt);
+    this.c = paramInt;
+    return this;
   }
   
-  public long getItemId(int paramInt)
+  public pbl c(int paramInt)
   {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramViewGroup.getContext();
-    if (paramView == null)
-    {
-      paramView = new SquareCornerTextImageView(paramViewGroup);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    }
-    for (;;)
-    {
-      ((SquareCornerTextImageView)paramView).a((qvs)this.b.get(paramInt));
-      return paramView;
-    }
+    this.d = paramInt;
+    return this;
   }
 }
 

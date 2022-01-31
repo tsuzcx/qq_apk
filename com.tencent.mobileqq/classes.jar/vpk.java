@@ -1,86 +1,98 @@
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import java.lang.ref.WeakReference;
-import java.util.WeakHashMap;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 
-public abstract class vpk
+class vpk
+  extends LinearLayout
 {
-  public int a;
-  public Drawable a;
-  public Object a;
-  protected WeakReference<ImageView> a;
-  public vpj a;
-  protected vpl a;
-  protected volatile boolean a;
-  public Drawable b;
+  private int jdField_a_of_type_Int;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private int b;
+  private int c;
+  private int d;
   
-  public vpk(ImageView paramImageView)
+  public vpk(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    paramInt1 /= this.b;
+    this.c = ((int)(paramInt1 * paramFloat));
+    this.d = (paramInt1 - this.c * 2);
+    a();
   }
   
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public void a(Drawable paramDrawable)
+  private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if (this.jdField_a_of_type_Vpl != null) {
-      this.jdField_a_of_type_Vpl.a(this);
-    }
-  }
-  
-  public void a(Drawable paramDrawable, String paramString)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if (this.jdField_a_of_type_Vpl != null) {
-      this.jdField_a_of_type_Vpl.a(this, paramString);
-    }
-  }
-  
-  public void a(WeakHashMap<ImageView, Drawable> paramWeakHashMap, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    ImageView localImageView;
-    do
+    int i = 0;
+    setOrientation(0);
+    setGravity(17);
+    int j = this.jdField_a_of_type_Int / this.b;
+    while (i < this.b)
     {
-      return;
-      localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localImageView == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null));
-    if ((paramBoolean) && (this.jdField_a_of_type_Int == 0))
-    {
-      urk.a("Q.qqstory.newImageLoader", "save to waiting queue t:%s", this.jdField_a_of_type_JavaLangObject);
-      paramWeakHashMap.put(localImageView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      return;
+      ImageView localImageView = new ImageView(getContext());
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, j);
+      if (i == 0) {
+        localLayoutParams.leftMargin = vpp.b(getContext(), 7.0F);
+      }
+      if (i == this.b - 1) {
+        localLayoutParams.rightMargin = vpp.b(getContext(), 7.0F);
+      }
+      localImageView.setLayoutParams(localLayoutParams);
+      localImageView.setPadding(this.c, this.c, this.c, this.c);
+      addView(localImageView);
+      i += 1;
     }
-    localImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    ulq.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", localImageView.getTag(2131303173), " and change to: ", this.jdField_a_of_type_JavaLangObject.toString(), " view hash:" + localImageView.hashCode() });
-    localImageView.setTag(2131303173, this.jdField_a_of_type_JavaLangObject.toString());
   }
   
-  public void a(vpl paramvpl)
+  private void a(int paramInt)
   {
-    this.jdField_a_of_type_Vpl = paramvpl;
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = paramInt;
+      if (i >= paramInt) {
+        break;
+      }
+      j = paramInt;
+      if (i >= getChildCount()) {
+        break;
+      }
+      getChildAt(i).setVisibility(0);
+      i += 1;
+    }
+    while ((j < this.b) && (j < getChildCount()))
+    {
+      getChildAt(j).setVisibility(4);
+      j += 1;
+    }
   }
   
-  public boolean a()
+  public void a(voz paramvoz, int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    ulq.b("Q.qqstory.newImageLoader", new Object[] { ajjy.a(2131648937), this.jdField_a_of_type_JavaLangObject });
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_Vpl = null;
-    this.jdField_a_of_type_Vpj = null;
-    ulq.b("Q.qqstory.newImageLoader", new Object[] { ajjy.a(2131648938), this.jdField_a_of_type_JavaLangObject });
+    int i = paramInt1 * this.b;
+    if (paramInt1 == paramInt2 - 1) {}
+    for (paramInt1 = paramvoz.b();; paramInt1 = this.b + i)
+    {
+      a(paramInt1 - i);
+      paramInt2 = i;
+      while (paramInt2 < paramInt1)
+      {
+        ImageView localImageView = (ImageView)getChildAt(paramInt2 - i);
+        localImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        String str = paramvoz.a(paramInt2);
+        localImageView.setTag(2131376880, str);
+        localImageView.setTag(2131376871, Integer.valueOf(paramInt2));
+        localImageView.setContentDescription(ajyc.a(2131707597) + paramInt2);
+        vlt.a().a(getContext(), localImageView, str, this.d, this.d, null);
+        paramInt2 += 1;
+      }
+    }
   }
 }
 

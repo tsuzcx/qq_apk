@@ -1,15 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class abdb
-  implements View.OnClickListener
+  extends ajsg
 {
-  public abdb(MainFragment paramMainFragment) {}
+  public abdb(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt)
   {
-    this.a.g();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
+      }
+    } while (this.a.a == null);
+    this.a.a.c();
   }
 }
 

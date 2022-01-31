@@ -1,19 +1,19 @@
 package cooperation.qzone.webviewplugin;
 
-import bghk;
+import bhqe;
 import com.tencent.qphone.base.util.QLog;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import mpl;
+import nam;
 
 public class QZoneDNSAnalyzeJsPlugin$2
   implements Runnable
 {
-  public QZoneDNSAnalyzeJsPlugin$2(bghk parambghk, int paramInt) {}
+  public QZoneDNSAnalyzeJsPlugin$2(bhqe parambhqe, int paramInt) {}
   
   public void run()
   {
-    int i = mpl.a();
+    int i = nam.a();
     if ((i != 0) && (i != -1)) {
       try
       {

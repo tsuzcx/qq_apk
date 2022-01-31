@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.gamecenter.anim;
 
-import apwu;
+import aqqw;
 
 public class FullPopAnimLowVersion$6
   implements Runnable
 {
-  public FullPopAnimLowVersion$6(apwu paramapwu) {}
+  public FullPopAnimLowVersion$6(aqqw paramaqqw) {}
   
   public void run()
   {
-    apwu.d(this.this$0);
+    aqqw.d(this.this$0);
   }
 }
 

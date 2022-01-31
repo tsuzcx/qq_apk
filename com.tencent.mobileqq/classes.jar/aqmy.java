@@ -1,24 +1,25 @@
-import android.util.Log;
-
-class aqmy
-  implements aqmi
+public class aqmy
+  implements ajtg
 {
-  aqmy(aqmw paramaqmw) {}
+  public void a() {}
   
-  public void a(int paramInt, String paramString)
+  public void a(aqnb paramaqnb) {}
+  
+  protected void a(boolean paramBoolean, aqnb paramaqnb) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Log.i("Huiyin", "code " + paramInt + ", filename " + paramString);
-    if (paramInt == 0)
+    switch (paramInt)
     {
-      aqmw.a(this.a, paramString);
-      aqmw.a(this.a, 1);
-      Log.i("Huiyin", "file created " + aqmw.a(this.a));
+    default: 
+      return;
     }
+    a(paramBoolean, (aqnb)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqmy
  * JD-Core Version:    0.7.0.1
  */

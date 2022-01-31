@@ -11,16 +11,16 @@ import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.NewIntent;
-import nbe;
-import nbh;
-import ndt;
-import nmw;
-import npb;
-import npj;
-import npl;
+import nmf;
+import nmi;
+import nou;
+import nyh;
+import oam;
+import oau;
+import oaw;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rvb;
+import sht;
 
 public final class NativeAdUtils$3
   implements Runnable
@@ -46,8 +46,8 @@ public final class NativeAdUtils$3
         localJSONObject.put("origin", this.jdField_b_of_type_Int);
         localJSONObject.put("sub_origin", this.jdField_c_of_type_Int);
         localJSONObject.put("oudid", "1");
-        localJSONObject.put("device_info", nbe.a(this.jdField_a_of_type_AndroidContentContext));
-        localJSONObject.put("ad_info", nbe.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo, this.jdField_d_of_type_Int));
+        localJSONObject.put("device_info", nmf.a(this.jdField_a_of_type_AndroidContentContext));
+        localJSONObject.put("ad_info", nmf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo, this.jdField_d_of_type_Int));
         if (this.jdField_b_of_type_OrgJsonJSONObject != null)
         {
           localJSONObject.put("video_info", this.jdField_b_of_type_OrgJsonJSONObject);
@@ -58,33 +58,33 @@ public final class NativeAdUtils$3
         if (this.jdField_c_of_type_OrgJsonJSONObject != null) {
           localJSONObject.put("device_report_info", this.jdField_c_of_type_OrgJsonJSONObject);
         }
-        if (this.jdField_a_of_type_Int == nbe.jdField_c_of_type_Int)
+        if (this.jdField_a_of_type_Int == nmf.jdField_c_of_type_Int)
         {
           localObject2 = new JSONObject();
           if (this.jdField_a_of_type_AndroidOsBundle != null)
           {
-            ((JSONObject)localObject2).put("type_id", nbe.az);
-            ((JSONObject)localObject2).put("tel", this.jdField_a_of_type_AndroidOsBundle.getString(nbe.jdField_a_of_type_JavaLangString, ""));
-            ((JSONObject)localObject2).put("txt", this.jdField_a_of_type_AndroidOsBundle.getString(nbe.jdField_b_of_type_JavaLangString, ""));
+            ((JSONObject)localObject2).put("type_id", nmf.aA);
+            ((JSONObject)localObject2).put("tel", this.jdField_a_of_type_AndroidOsBundle.getString(nmf.jdField_a_of_type_JavaLangString, ""));
+            ((JSONObject)localObject2).put("txt", this.jdField_a_of_type_AndroidOsBundle.getString(nmf.jdField_b_of_type_JavaLangString, ""));
             localJSONObject.put("neg_info", localObject2);
           }
         }
         else
         {
-          if (rvb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo))
+          if (sht.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo))
           {
             new JSONObject();
             if (this.jdField_d_of_type_OrgJsonJSONObject != null) {
               break label846;
             }
             localObject2 = new JSONObject();
-            ((JSONObject)localObject2).put("type", npb.a(this.jdField_b_of_type_Int));
+            ((JSONObject)localObject2).put("type", oam.a(this.jdField_b_of_type_Int));
             ((JSONObject)localObject2).put("interaction_report_url", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdInteractionReportUrl);
             ((JSONObject)localObject2).put("effect_url", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdEffectUrl);
             localJSONObject.put("ugc_card_info", localObject2);
           }
           localObject2 = new JSONObject();
-          if ((npj.l(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.clickType == 2) && (this.e != null))
+          if ((oau.l(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.clickType == 2) && (this.e != null))
           {
             ((JSONObject)localObject2).put("material_group", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.materialGroup));
             ((JSONObject)localObject2).put("slide_mode", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.i) + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.j);
@@ -97,16 +97,16 @@ public final class NativeAdUtils$3
               localJSONObject.put("ad_info", localObject3);
             }
           }
-          if (npj.m(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo))
+          if (oau.m(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo))
           {
             if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.l != 3) {
               break label855;
             }
             ((JSONObject)localObject2).put("is_transparent", "1");
-            if (this.jdField_a_of_type_Int != nbe.jdField_a_of_type_Int) {
+            if (this.jdField_a_of_type_Int != nmf.jdField_a_of_type_Int) {
               break label882;
             }
-            nbe.a(null, "0X8009819", "0X8009819", 0, 0, "", "", "", npl.b());
+            nmf.a(null, "0X8009819", "0X8009819", 0, 0, "", "", "", oaw.b());
             if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.l != 1) {
               ((JSONObject)localObject2).put("volumn", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.f);
             }
@@ -132,7 +132,7 @@ public final class NativeAdUtils$3
           localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
           continue;
         }
-        ((JSONObject)localObject2).put("type_id", nbe.ay);
+        ((JSONObject)localObject2).put("type_id", nmf.az);
         if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
         {
           ((JSONObject)localObject2).put("neg_ids", String.valueOf(this.jdField_a_of_type_Long));
@@ -155,34 +155,34 @@ public final class NativeAdUtils$3
         ((JSONObject)localObject2).put("is_transparent", "");
         continue;
         label882:
-        if (this.jdField_a_of_type_Int == nbe.jdField_b_of_type_Int)
+        if (this.jdField_a_of_type_Int == nmf.jdField_b_of_type_Int)
         {
           if (this.e != null) {
             this.e.put("exposure_info_report", String.valueOf(localObject2));
           }
-          nbe.a(null, "0X8008C80", "0X8008C80", 0, 0, "", "", "", npl.b());
+          nmf.a(null, "0X8008C80", "0X8008C80", 0, 0, "", "", "", oaw.b());
         }
       }
     }
-    if (this.jdField_a_of_type_Int == nbe.A)
+    if (this.jdField_a_of_type_Int == nmf.A)
     {
       ReadInJoyAdPingUrlUtil.a(localJSONException);
       return;
     }
     Object localObject1 = new WebSsoBody.WebSsoRequestBody();
     ((WebSsoBody.WebSsoRequestBody)localObject1).data.set((String)localObject3);
-    Object localObject2 = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), ndt.class);
+    Object localObject2 = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), nou.class);
     ((NewIntent)localObject2).putExtra("cmd", "KdAdReportSsoSvr.kandian_ad_report_new");
     ((NewIntent)localObject2).putExtra("data", ((WebSsoBody.WebSsoRequestBody)localObject1).toByteArray());
-    ((NewIntent)localObject2).setObserver(new nbh(this));
+    ((NewIntent)localObject2).setObserver(new nmi(this));
     this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet((NewIntent)localObject2);
     int i = j;
-    if (npj.m(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo))
+    if (oau.m(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo))
     {
       i = j;
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo != null)
       {
-        if ((!npl.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.h)) || (this.jdField_a_of_type_Int != nbe.jdField_b_of_type_Int)) {
+        if ((!oaw.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.h)) || (this.jdField_a_of_type_Int != nmf.jdField_b_of_type_Int)) {
           break label1279;
         }
         i = 1;
@@ -192,11 +192,11 @@ public final class NativeAdUtils$3
     label1281:
     for (;;)
     {
-      if ((this.jdField_d_of_type_Int != nbe.aw) && (!nbe.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo)) && (!this.jdField_a_of_type_Boolean) && (i == 0))
+      if ((this.jdField_d_of_type_Int != nmf.ax) && (!nmf.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo)) && (!this.jdField_a_of_type_Boolean) && (i == 0))
       {
-        nbe.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo);
-        if ((npj.m(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo != null)) {
-          npl.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.h);
+        nmf.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo);
+        if ((oau.m(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo != null)) {
+          oaw.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.h);
         }
       }
       localObject2 = "";
@@ -208,7 +208,7 @@ public final class NativeAdUtils$3
           localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdViewId;
         }
       }
-      nbe.a(null, "0X8009E3E", "0X8009E3E", 0, 0, String.valueOf(this.jdField_b_of_type_Int), String.valueOf(this.jdField_a_of_type_Int), (String)localObject1, (String)localObject3);
+      nmf.a(null, "0X8009E3E", "0X8009E3E", 0, 0, String.valueOf(this.jdField_b_of_type_Int), String.valueOf(this.jdField_a_of_type_Int), (String)localObject1, (String)localObject3);
       return;
       label1279:
       i = 0;

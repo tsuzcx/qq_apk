@@ -1,22 +1,37 @@
-import java.io.File;
-import java.util.concurrent.Callable;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.freshnews.BlockableEditTextView;
 
-class aqjw
-  implements Callable<File>
+public class aqjw
+  implements ActionMode.Callback
 {
-  aqjw(aqjv paramaqjv) {}
+  public aqjw(BlockableEditTextView paramBlockableEditTextView) {}
   
-  public File a()
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if (aqjv.a(this.a).exists()) {
-      return aqjv.a(this.a);
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    if (BlockableEditTextView.a(this.a) == 0) {
+      return true;
     }
-    return null;
+    return BlockableEditTextView.a(this.a);
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqjw
  * JD-Core Version:    0.7.0.1
  */

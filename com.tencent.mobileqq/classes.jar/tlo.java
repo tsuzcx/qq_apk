@@ -1,33 +1,20 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.List;
 
 public class tlo
-  extends SimpleObserver<ucw>
+  extends ssk
 {
-  public tlo(tlj paramtlj) {}
+  public String a;
+  public List<uuf> a;
   
-  public void a(ucw paramucw)
+  public tlo()
   {
-    super.onNext(paramucw);
-    tlj.a(this.a, paramucw, new ErrorMessage(), true);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void onCancel()
+  public String toString()
   {
-    super.onCancel();
-    urk.d("Q.qqstory.player.CommentFloatDialogController", "refresh data cancel");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    if (((ErrorMessage)paramError).errorCode == 2223)
-    {
-      tlj.a(this.a, tlj.a(this.a), new ErrorMessage(), false);
-      return;
-    }
-    tlj.a(this.a, tlj.a(this.a), (ErrorMessage)paramError, false);
+    return super.toString() + " collectionId=" + this.jdField_a_of_type_JavaLangString + "mSimpleInfoList.size=" + this.jdField_a_of_type_JavaUtilList.size() + "mSimpleInfoList=" + this.jdField_a_of_type_JavaUtilList;
   }
 }
 

@@ -1,69 +1,45 @@
 {
-	"view_type": "UIView",
-	"view_id": "id_comment_expose_subcomment_one",
-	"visible_depend_on_children": "YES",
-	"layout_type": "layout_relative",
-	"height": {
-		"type": "wrap_content"
-	},
-	"width": {
-		"type": "relative",
-		"value": "307"
-	},
-	"subviews": [{
-			"view_type": "UIButton",
-			"view_id": "id_comment_expose_subcomment_one_bg",
-			"visible_depend_on_brother": "id_comment_expose_subcomment_one_container",
-			"height": {
-				"type": "match_parent"
-			},
-			"width": {
-				"type": "relative",
-				"value": "307"
-			},
-			"attributes": {
-				"setBackgroundColor:forStates:": [
-					["#00000000", "#e5e5e5"],
-					["0", "1"]
-				]
-			}
-		},
-		{
-			"view_type": "UIView",
-			"view_id": "id_comment_expose_subcomment_one_container",
-			"visible_depend_on_children": "YES",
-			"layout_type": "layout_linear",
-			"align_parent_center": "YES",
-			"direction": "horizontal",
-			"height": {
-				"type": "wrap_content"
-			},
-			"width": {
-				"type": "relative",
-				"value": "307"
-			},
-			"subviews": [
-				{
-					"view_type": "QQRIJCommentEmotioinLabel",
-					"view_id": "id_comment_expose_subcomment_content_one",
-					"align_parent_center_vertical": "YES",
-					"event_type":"cmd_expose_subcommment_one",
-					"margin_left": "4",
-					"attributes": {
-						"setCommentModel:": "$subcomment_one",
-						"setUserInteractionEnabledString:": "0",
-						"setFontSizeString:": "15"
-					},
-					"height": {
-						"type": "wrap_content"
-					},
-					"width": {
-						"type": "match_parent"
-					}
-				}
-			]
-		}
-
-	]
-
+    "view_type":"UIView",
+    "view_id":"id_comment_expose_subcomment_one_bg",
+    "visible_depend_on_children":"YES",
+    "event_type":"cmd_expose_subcommment_one",
+    "height":{
+        "type":"wrap_content"
+    },
+    "width":{ 
+        "type":"match_parent"
+    },
+    "attributes":{
+        "setBackgroundColors:forStates:":[
+            [
+                "#00000000",
+                "#e5e5e5"
+            ],
+            [
+                "0",
+                "1"
+            ]
+        ]
+    },
+    "subviews":[
+        {
+            "margin_top":"12",
+            "margin_bottom":"12",
+            "margin_left":"9",
+            "margin_right":"9",
+            "view_type":"QQRIJRichTextView",
+            "view_id":"id_comment_expose_subcomment_one",
+            "align_parent_center_vertical": "YES",
+            "height":{
+                "type":"wrap_content"
+            },
+            "width":{
+                "type":"match_parent"
+            },
+            "attributes":{
+                "setFontSizeString:":"15",
+                "setCommentModel:":"$subcomment_one"
+            }
+        }
+    ]
 }

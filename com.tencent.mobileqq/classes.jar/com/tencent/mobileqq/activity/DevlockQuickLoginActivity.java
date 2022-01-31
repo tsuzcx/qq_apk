@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aaoj;
-import aaok;
+import aayb;
+import aayc;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +12,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import babr;
-import badq;
-import bafb;
-import bbms;
-import bbmy;
+import bbcv;
+import bbev;
+import bbgg;
+import bcpq;
+import bcpw;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -27,21 +27,21 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import mqq.manager.WtloginManager;
 import mqq.observer.WtloginObserver;
-import vvp;
+import wim;
 
 public class DevlockQuickLoginActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
   int jdField_a_of_type_Int = 1;
-  Handler jdField_a_of_type_AndroidOsHandler = new aaoj(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new aayb(this);
   Button jdField_a_of_type_AndroidWidgetButton;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  bafb jdField_a_of_type_Bafb;
-  bbms jdField_a_of_type_Bbms;
+  bbgg jdField_a_of_type_Bbgg;
+  bcpq jdField_a_of_type_Bcpq;
   String jdField_a_of_type_JavaLangString;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aaok(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aayc(this);
   byte[] jdField_a_of_type_ArrayOfByte = null;
   int jdField_b_of_type_Int = 1;
   Button jdField_b_of_type_AndroidWidgetButton;
@@ -661,25 +661,25 @@ public class DevlockQuickLoginActivity
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bafb != null) && (this.jdField_a_of_type_Bafb.isShowing()))
+    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing()))
     {
-      this.jdField_a_of_type_Bafb.dismiss();
-      this.jdField_a_of_type_Bafb = null;
+      this.jdField_a_of_type_Bbgg.dismiss();
+      this.jdField_a_of_type_Bbgg = null;
     }
   }
   
   public void a(String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener)
   {
     a();
-    this.jdField_a_of_type_Bafb = babr.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_Bafb.setPositiveButton(paramString3, paramOnClickListener);
-    this.jdField_a_of_type_Bafb.setCancelable(false);
-    this.jdField_a_of_type_Bafb.show();
+    this.jdField_a_of_type_Bbgg = bbcv.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_Bbgg.setPositiveButton(paramString3, paramOnClickListener);
+    this.jdField_a_of_type_Bbgg.setCancelable(false);
+    this.jdField_a_of_type_Bbgg.show();
   }
   
   public void b()
   {
-    Object localObject1 = vvp.a(this.app.a());
+    Object localObject1 = wim.a(this.app.a());
     Object localObject2 = ByteBuffer.allocate(localObject1.length + 4);
     ((ByteBuffer)localObject2).putShort((short)2);
     ((ByteBuffer)localObject2).putShort((short)localObject1.length);
@@ -729,12 +729,12 @@ public class DevlockQuickLoginActivity
   {
     try
     {
-      if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing()))
+      if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing()))
       {
-        this.jdField_a_of_type_Bbms.dismiss();
-        this.jdField_a_of_type_Bbms.cancel();
+        this.jdField_a_of_type_Bcpq.dismiss();
+        this.jdField_a_of_type_Bcpq.cancel();
       }
-      this.jdField_a_of_type_Bbms = null;
+      this.jdField_a_of_type_Bcpq = null;
       return;
     }
     catch (Throwable localThrowable)
@@ -760,14 +760,14 @@ public class DevlockQuickLoginActivity
     {
     default: 
       return;
-    case 2131302832: 
+    case 2131368457: 
       super.finish();
       super.overridePendingTransition(0, 2130772001);
       return;
     }
-    if (!badq.d(this))
+    if (!bbev.d(this))
     {
-      bbmy.a(this, super.getString(2131626719), 0).b(super.getTitleBarHeight());
+      bcpw.a(this, super.getString(2131692321), 0).b(super.getTitleBarHeight());
       return;
     }
     if ((this.app == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
@@ -775,7 +775,7 @@ public class DevlockQuickLoginActivity
       if (QLog.isColorLevel()) {
         QLog.d("DevlockQuickLoginActivity", 2, "requestQRLogin qrCodeString is empty");
       }
-      bbmy.a(super.getApplicationContext(), 1, super.getString(2131626575), 0).b(getTitleBarHeight());
+      bcpw.a(super.getApplicationContext(), 1, super.getString(2131692161), 0).b(getTitleBarHeight());
       super.finish();
       super.overridePendingTransition(0, 2130772001);
       return;
@@ -786,7 +786,7 @@ public class DevlockQuickLoginActivity
       if (QLog.isColorLevel()) {
         QLog.d("DevlockQuickLoginActivity", 2, "requestQRLogin qrCodeString  error");
       }
-      bbmy.a(super.getApplicationContext(), 1, super.getString(2131626575), 0).b(getTitleBarHeight());
+      bcpw.a(super.getApplicationContext(), 1, super.getString(2131692161), 0).b(getTitleBarHeight());
       super.finish();
       super.overridePendingTransition(0, 2130772001);
       return;
@@ -796,18 +796,18 @@ public class DevlockQuickLoginActivity
     paramView = this.app.getCurrentAccountUin();
     try
     {
-      if ((this.jdField_a_of_type_Bbms == null) && (!super.isFinishing()))
+      if ((this.jdField_a_of_type_Bcpq == null) && (!super.isFinishing()))
       {
-        this.jdField_a_of_type_Bbms = new bbms(this, super.getTitleBarHeight());
-        this.jdField_a_of_type_Bbms.c(2131629253);
+        this.jdField_a_of_type_Bcpq = new bcpq(this, super.getTitleBarHeight());
+        this.jdField_a_of_type_Bcpq.c(2131694930);
       }
-      if ((this.jdField_a_of_type_Bbms != null) && (!this.jdField_a_of_type_Bbms.isShowing())) {
-        this.jdField_a_of_type_Bbms.show();
+      if ((this.jdField_a_of_type_Bcpq != null) && (!this.jdField_a_of_type_Bcpq.isShowing())) {
+        this.jdField_a_of_type_Bcpq.show();
       }
       if (QLog.isColorLevel()) {
         QLog.d("DevlockQuickLoginActivity", 2, "requestQRLogin start verifyCode..");
       }
-      if (i == 2131299056)
+      if (i == 2131364616)
       {
         i = this.jdField_b_of_type_Int;
         this.jdField_a_of_type_Int = i;
@@ -831,17 +831,17 @@ public class DevlockQuickLoginActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    super.setTheme(2131690007);
+    super.setTheme(2131755544);
     super.onCreate(paramBundle);
-    super.setContentView(2131495156);
+    super.setContentView(2131560731);
     this.leftView.setVisibility(4);
-    super.setRightButton(2131625271, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131300230));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131305139));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131311509));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131311510));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131299056));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131311128));
+    super.setRightButton(2131690832, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365828));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370812));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377322));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377323));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364616));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131376938));
     paramBundle = super.getIntent();
     if (paramBundle != null)
     {

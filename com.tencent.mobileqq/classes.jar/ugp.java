@@ -1,79 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class ugp
-  extends QQUIEventReceiver<ugl, swq>
+  implements DialogInterface.OnDismissListener
 {
-  public ugp(ugl paramugl)
-  {
-    super(paramugl);
-  }
+  ugp(ugn paramugn, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void a(ugl paramugl, swq paramswq)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!TextUtils.equals(paramswq.jdField_a_of_type_JavaLangString, paramugl.c)) {}
-    do
-    {
-      do
-      {
-        return;
-        paramugl.b(paramugl.b);
-      } while ((paramswq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (!paramswq.e));
-      if (paramswq.c) {
-        paramugl.a.clear();
-      }
-      paramswq = paramswq.jdField_a_of_type_JavaUtilList;
-    } while (paramswq == null);
-    paramswq = paramswq.iterator();
-    label72:
-    VideoCollectionItem localVideoCollectionItem;
-    Object localObject1;
-    ArrayList localArrayList;
-    Object localObject2;
-    if (paramswq.hasNext())
-    {
-      localVideoCollectionItem = (VideoCollectionItem)paramswq.next();
-      localObject1 = new ArrayList();
-      localArrayList = new ArrayList(localVideoCollectionItem.videoVidList);
-      localObject2 = new ArrayList();
-      Iterator localIterator = localVideoCollectionItem.videoItemList.iterator();
-      while (localIterator.hasNext()) {
-        ((ArrayList)localObject2).add(((StoryVideoItem)localIterator.next()).mVid);
-      }
-      localArrayList.removeAll((Collection)localObject2);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
-    int j;
-    for (int i = 0;; i = j)
-    {
-      if (i < localArrayList.size())
-      {
-        j = Math.min(localArrayList.size(), i + 20);
-        if (i < j) {}
-      }
-      else
-      {
-        localObject1 = new swi((List)localObject1);
-        ((swi)localObject1).a("Q.qqstory.memories:MemoryDataPuller");
-        paramugl.a.put(localVideoCollectionItem.collectionId, localObject1);
-        break label72;
-        break;
-      }
-      localObject2 = localArrayList.subList(i, j);
-      ((List)localObject1).add(paramugl.a(localVideoCollectionItem.collectionId, (List)localObject2));
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return swq.class;
+    ugn.a(this.jdField_a_of_type_Ugn).a = ugn.a(this.jdField_a_of_type_Ugn).a();
   }
 }
 

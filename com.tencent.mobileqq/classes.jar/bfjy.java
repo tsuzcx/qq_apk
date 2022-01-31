@@ -1,29 +1,47 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
-
 public class bfjy
-  extends bfko
 {
-  public bfjy(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext)
+  public static String a(String paramString)
   {
-    super(paramContext);
+    String str = paramString;
+    int i;
+    if (a(paramString)) {
+      i = paramString.length() - 1;
+    }
+    for (;;)
+    {
+      if ((i < 0) || (paramString.charAt(i) == '\\') || (paramString.charAt(i) == '/'))
+      {
+        str = paramString.substring(i + 1);
+        return str;
+      }
+      i -= 1;
+    }
   }
   
-  public void onBackPressed()
+  public static boolean a(String paramString)
   {
-    if (this.a.a) {
-      super.onBackPressed();
+    boolean bool2 = false;
+    int j = paramString.length();
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if ((paramString.charAt(i) == '\\') || (paramString.charAt(i) == '/')) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfjy
  * JD-Core Version:    0.7.0.1
  */

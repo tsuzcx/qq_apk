@@ -1,6 +1,16 @@
-abstract interface mfj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+
+public class mfj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(mfi parammfi);
+  public mfj(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion, long paramLong) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.k(this.jdField_a_of_type_Long);
+  }
 }
 
 

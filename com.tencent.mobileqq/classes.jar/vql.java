@@ -1,7 +1,6 @@
-public abstract class vql
-  implements vqk
+public abstract interface vql
 {
-  public void a() {}
+  public abstract void a(String paramString);
 }
 
 

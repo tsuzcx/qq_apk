@@ -3,9 +3,9 @@ package com.tencent.mobileqq.webview.swift.component;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
-import mpw;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
+import nax;
 import oicq.wlogin_sdk.request.Ticket;
 
 final class SwiftBrowserCookieMonster$3
@@ -29,7 +29,7 @@ final class SwiftBrowserCookieMonster$3
         if (TextUtils.isEmpty(SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString)) {
           break label361;
         }
-        QLog.i("SwiftBrowserCookieMonster", 1, mpw.c("skey=" + SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString, new String[0]));
+        QLog.i("SwiftBrowserCookieMonster", 1, nax.c("skey=" + SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString, new String[0]));
       }
     }
     for (;;)
@@ -47,7 +47,7 @@ final class SwiftBrowserCookieMonster$3
         if (TextUtils.isEmpty(SwiftBrowserCookieMonster.d)) {
           break label372;
         }
-        QLog.i("SwiftBrowserCookieMonster", 1, mpw.c("sTwxWeb=" + SwiftBrowserCookieMonster.d, new String[0]));
+        QLog.i("SwiftBrowserCookieMonster", 1, nax.c("sTwxWeb=" + SwiftBrowserCookieMonster.d, new String[0]));
         label270:
         localTicket = ((TicketManager)???).GetLocalTicket(str, 32);
         if (localTicket != null) {

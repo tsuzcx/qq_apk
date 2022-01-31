@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.search.searchengine;
 
 import android.os.Bundle;
-import avnu;
-import avnx;
-import avoa;
-import avom;
-import avon;
-import avtz;
-import avuy;
-import avuz;
-import avva;
-import avvb;
-import avvn;
-import avwe;
+import awnn;
+import awnq;
+import awnt;
+import awof;
+import awog;
+import awts;
+import awur;
+import awus;
+import awut;
+import awuu;
+import awvg;
+import awvx;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,20 +25,20 @@ import java.util.concurrent.TimeUnit;
 class GroupSearchEngine$SearchRunnable
   implements Runnable
 {
-  private avva jdField_a_of_type_Avva;
-  private avvn jdField_a_of_type_Avvn;
+  private awut jdField_a_of_type_Awut;
+  private awvg jdField_a_of_type_Awvg;
   private boolean jdField_a_of_type_Boolean;
   
-  public GroupSearchEngine$SearchRunnable(GroupSearchEngine paramGroupSearchEngine, avvn paramavvn, avva paramavva)
+  public GroupSearchEngine$SearchRunnable(GroupSearchEngine paramGroupSearchEngine, awvg paramawvg, awut paramawut)
   {
-    this.jdField_a_of_type_Avvn = paramavvn;
-    this.jdField_a_of_type_Avva = paramavva;
+    this.jdField_a_of_type_Awvg = paramawvg;
+    this.jdField_a_of_type_Awut = paramawut;
   }
   
   public void a()
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Avva = null;
+    this.jdField_a_of_type_Awut = null;
   }
   
   public void run()
@@ -55,8 +55,8 @@ class GroupSearchEngine$SearchRunnable
       if (k >= GroupSearchEngine.a(this.this$0).size()) {
         break label821;
       }
-      Object localObject3 = (avuy)GroupSearchEngine.a(this.this$0).get(k);
-      if ((((avuy)localObject3).a instanceof NetSearchEngine)) {}
+      Object localObject3 = (awur)GroupSearchEngine.a(this.this$0).get(k);
+      if ((((awur)localObject3).a instanceof NetSearchEngine)) {}
       try
       {
         if (this.jdField_a_of_type_Boolean) {
@@ -75,21 +75,21 @@ class GroupSearchEngine$SearchRunnable
           continue;
           int i = 1;
           continue;
-          localObject2 = (avnx)localInterruptedException.get(1);
+          localObject2 = (awnq)localInterruptedException.get(1);
         }
       }
       if (this.jdField_a_of_type_Boolean) {
         return;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("GroupSearchEngine", 2, "start search : " + ((avuy)localObject3).a.getClass().getSimpleName());
+        QLog.d("GroupSearchEngine", 2, "start search : " + ((awur)localObject3).a.getClass().getSimpleName());
       }
-      localObject1 = ((avuy)localObject3).a(this.jdField_a_of_type_Avvn);
+      localObject1 = ((awur)localObject3).a(this.jdField_a_of_type_Awvg);
       if (QLog.isColorLevel()) {
-        QLog.d("GroupSearchEngine", 2, "end search : " + ((avuy)localObject3).a.getClass().getSimpleName());
+        QLog.d("GroupSearchEngine", 2, "end search : " + ((awur)localObject3).a.getClass().getSimpleName());
       }
       i = j;
-      if ((((avuy)localObject3).a instanceof avvb)) {
+      if ((((awur)localObject3).a instanceof awuu)) {
         if (localObject1 != null)
         {
           i = j;
@@ -100,10 +100,10 @@ class GroupSearchEngine$SearchRunnable
           if (localArrayList1.isEmpty()) {
             break;
           }
-          localObject4 = new avoa(null, this.jdField_a_of_type_Avvn.jdField_a_of_type_JavaLangString);
-          localArrayList1.add(new avnu((avom)localObject4));
+          localObject4 = new awnt(null, this.jdField_a_of_type_Awvg.jdField_a_of_type_JavaLangString);
+          localArrayList1.add(new awnn((awof)localObject4));
           localArrayList1.add(localObject4);
-          avwe.a(40);
+          awvx.a(40);
           i = j;
         }
       }
@@ -114,7 +114,7 @@ class GroupSearchEngine$SearchRunnable
         if (!((List)localObject1).isEmpty())
         {
           j = i;
-          if ((((avuy)localObject3).a instanceof NetSearchEngine))
+          if ((((awur)localObject3).a instanceof NetSearchEngine))
           {
             j = i;
             if (localArrayList1.isEmpty()) {
@@ -124,65 +124,65 @@ class GroupSearchEngine$SearchRunnable
           i = j;
           if (j != 0)
           {
-            localObject4 = new avoa(null, this.jdField_a_of_type_Avvn.jdField_a_of_type_JavaLangString);
-            localArrayList1.add(new avnu((avom)localObject4));
+            localObject4 = new awnt(null, this.jdField_a_of_type_Awvg.jdField_a_of_type_JavaLangString);
+            localArrayList1.add(new awnn((awof)localObject4));
             localArrayList1.add(localObject4);
-            avwe.a(40);
+            awvx.a(40);
             i = 0;
           }
           localArrayList1.addAll((Collection)localObject1);
           j = i;
-          if (!(((avuy)localObject3).a instanceof NetSearchEngine))
+          if (!(((awur)localObject3).a instanceof NetSearchEngine))
           {
-            avwe.a(((avuy)localObject3).b);
+            awvx.a(((awur)localObject3).b);
             j = i;
           }
         }
       }
-      if (((((avuy)localObject3).a instanceof avtz)) && (((avtz)((avuy)GroupSearchEngine.a(this.this$0).get(k)).a).a() != 64))
+      if (((((awur)localObject3).a instanceof awts)) && (((awts)((awur)GroupSearchEngine.a(this.this$0).get(k)).a).a() != 64))
       {
         if (this.jdField_a_of_type_Boolean) {
           return;
         }
-        if ((this.jdField_a_of_type_Avva != null) && (!localArrayList1.isEmpty())) {
-          this.jdField_a_of_type_Avva.a(localArrayList1);
+        if ((this.jdField_a_of_type_Awut != null) && (!localArrayList1.isEmpty())) {
+          this.jdField_a_of_type_Awut.a(localArrayList1);
         }
-        if (this.jdField_a_of_type_Avvn.jdField_a_of_type_AndroidOsBundle == null) {
-          this.jdField_a_of_type_Avvn.jdField_a_of_type_AndroidOsBundle = new Bundle();
+        if (this.jdField_a_of_type_Awvg.jdField_a_of_type_AndroidOsBundle == null) {
+          this.jdField_a_of_type_Awvg.jdField_a_of_type_AndroidOsBundle = new Bundle();
         }
-        this.jdField_a_of_type_Avvn.jdField_a_of_type_AndroidOsBundle.putBoolean("searchCreateDiscussion", true);
-        localObject3 = ((avuy)localObject3).a.a(this.jdField_a_of_type_Avvn);
+        this.jdField_a_of_type_Awvg.jdField_a_of_type_AndroidOsBundle.putBoolean("searchCreateDiscussion", true);
+        localObject3 = ((awur)localObject3).a.a(this.jdField_a_of_type_Awvg);
         if ((localObject3 != null) && (!((List)localObject3).isEmpty()))
         {
-          localObject4 = (avon)((List)localObject3).get(0);
+          localObject4 = (awog)((List)localObject3).get(0);
           if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
             break label805;
           }
           localArrayList2 = new ArrayList();
-          localObject3 = new avnx(null, GroupSearchEngine.a(this.this$0), GroupSearchEngine.a(this.this$0));
-          localArrayList2.add(new avnu((avom)localObject3));
+          localObject3 = new awnq(null, GroupSearchEngine.a(this.this$0), GroupSearchEngine.a(this.this$0));
+          localArrayList2.add(new awnn((awof)localObject3));
           localArrayList2.add(localObject3);
           localArrayList1.addAll(localArrayList2);
           localObject1 = localObject3;
           if (localArrayList2.size() > 0)
           {
-            this.jdField_a_of_type_Avvn.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
+            this.jdField_a_of_type_Awvg.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
             localObject1 = localObject3;
           }
-          ((avnx)localObject1).a((avon)localObject4);
+          ((awnq)localObject1).a((awog)localObject4);
           if (this.jdField_a_of_type_Boolean) {
             return;
           }
-          if ((this.jdField_a_of_type_Avva != null) && (!localArrayList1.isEmpty())) {
-            this.jdField_a_of_type_Avva.a(localArrayList1);
+          if ((this.jdField_a_of_type_Awut != null) && (!localArrayList1.isEmpty())) {
+            this.jdField_a_of_type_Awut.a(localArrayList1);
           }
         }
       }
       if (this.jdField_a_of_type_Boolean) {
         return;
       }
-      if ((this.jdField_a_of_type_Avva != null) && (!localArrayList1.isEmpty())) {
-        this.jdField_a_of_type_Avva.a(localArrayList1);
+      if ((this.jdField_a_of_type_Awut != null) && (!localArrayList1.isEmpty())) {
+        this.jdField_a_of_type_Awut.a(localArrayList1);
       }
       k += 1;
     }
@@ -191,26 +191,26 @@ class GroupSearchEngine$SearchRunnable
     label821:
     if (!this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Avvn.jdField_a_of_type_AndroidOsBundle == null) {
-        this.jdField_a_of_type_Avvn.jdField_a_of_type_AndroidOsBundle = new Bundle();
+      if (this.jdField_a_of_type_Awvg.jdField_a_of_type_AndroidOsBundle == null) {
+        this.jdField_a_of_type_Awvg.jdField_a_of_type_AndroidOsBundle = new Bundle();
       }
-      boolean bool = this.jdField_a_of_type_Avvn.jdField_a_of_type_AndroidOsBundle.getBoolean("searchTroopMember");
+      boolean bool = this.jdField_a_of_type_Awvg.jdField_a_of_type_AndroidOsBundle.getBoolean("searchTroopMember");
       localObject2 = new CountDownLatch(1);
       if (bool)
       {
-        this.jdField_a_of_type_Avvn.jdField_a_of_type_AndroidOsBundle.putBoolean("searchCreateDiscussion", false);
+        this.jdField_a_of_type_Awvg.jdField_a_of_type_AndroidOsBundle.putBoolean("searchCreateDiscussion", false);
         if (GroupSearchEngine.a(this.this$0) == null) {
           GroupSearchEngine.a(this.this$0, (ScheduledThreadPoolExecutor)Executors.newScheduledThreadPool(1));
         }
-        GroupSearchEngine.a(this.this$0, new GroupSearchEngine.TroopMemberSearchRunnable(this.jdField_a_of_type_Avvn, (ArrayList)((ArrayList)localArrayList1).clone(), this.jdField_a_of_type_Avva, GroupSearchEngine.a(this.this$0), (CountDownLatch)localObject2, this.this$0));
+        GroupSearchEngine.a(this.this$0, new GroupSearchEngine.TroopMemberSearchRunnable(this.jdField_a_of_type_Awvg, (ArrayList)((ArrayList)localArrayList1).clone(), this.jdField_a_of_type_Awut, GroupSearchEngine.a(this.this$0), (CountDownLatch)localObject2, this.this$0));
         GroupSearchEngine.a(this.this$0, GroupSearchEngine.a(this.this$0).schedule(GroupSearchEngine.a(this.this$0), 0L, TimeUnit.MILLISECONDS));
       }
-      if (this.jdField_a_of_type_Avva != null)
+      if (this.jdField_a_of_type_Awut != null)
       {
         if (!bool) {
           break label1088;
         }
-        this.jdField_a_of_type_Avva.a(localArrayList1, 1);
+        this.jdField_a_of_type_Awut.a(localArrayList1, 1);
         ((CountDownLatch)localObject2).countDown();
       }
       while (!this.jdField_a_of_type_Boolean)
@@ -223,10 +223,10 @@ class GroupSearchEngine$SearchRunnable
         QLog.d("GroupSearchEngine", 4, "search process cost:" + GroupSearchEngine.a(this.this$0));
         return;
         label1088:
-        if (this.jdField_a_of_type_Avvn.jdField_a_of_type_AndroidOsBundle.getBoolean("hasLocalPeopleOrTroop", false)) {
-          this.jdField_a_of_type_Avva.a(localArrayList1, 5);
+        if (this.jdField_a_of_type_Awvg.jdField_a_of_type_AndroidOsBundle.getBoolean("hasLocalPeopleOrTroop", false)) {
+          this.jdField_a_of_type_Awut.a(localArrayList1, 5);
         } else {
-          this.jdField_a_of_type_Avva.a(localArrayList1, 4);
+          this.jdField_a_of_type_Awut.a(localArrayList1, 4);
         }
       }
     }

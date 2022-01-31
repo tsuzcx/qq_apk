@@ -1,17 +1,28 @@
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.8.1;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import java.util.ArrayList;
 
 public class atfa
-  implements ates
+  implements atfr
 {
-  public atfa(ScanOcrActivity paramScanOcrActivity) {}
+  public atfa(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void a() {}
-  
-  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
+  public void a(long paramLong)
   {
-    this.a.runOnUiThread(new ScanOcrActivity.8.1(this, paramString, paramInt, paramOcrRecogResult, paramLong));
+    int i = 0;
+    while (i < ChooseInterestTagActivity.a(this.a).getChildCount())
+    {
+      InterestTagInfo localInterestTagInfo = (InterestTagInfo)ChooseInterestTagActivity.a(this.a).getChildAt(i).getTag();
+      if ((localInterestTagInfo != null) && (paramLong == localInterestTagInfo.tagId))
+      {
+        ChooseInterestTagActivity.a(this.a).remove(localInterestTagInfo);
+        ChooseInterestTagActivity.a(this.a, localInterestTagInfo);
+        ChooseInterestTagActivity.b(this.a, localInterestTagInfo);
+      }
+      i += 1;
+    }
   }
 }
 

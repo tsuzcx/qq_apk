@@ -1,66 +1,161 @@
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.aekit.openrender.internal.FrameBufferCache;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
 
 public class lgn
-  extends lgr
 {
-  private final String jdField_a_of_type_JavaLangString = "MultipleTextureSource-" + Integer.toHexString(hashCode());
-  private List<Frame> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private Map<String, int[]> jdField_a_of_type_JavaUtilMap;
   
-  protected void a() {}
-  
-  public void a(List<lgo> paramList, long paramLong)
+  public lgn(AppInterface paramAppInterface)
   {
-    ArrayList localArrayList1 = new ArrayList(paramList.size());
-    int i = 0;
-    if (i < paramList.size())
-    {
-      lgo locallgo = (lgo)paramList.get(i);
-      label131:
-      ArrayList localArrayList2;
-      if (i >= this.jdField_a_of_type_JavaUtilList.size())
-      {
-        localObject = new Frame();
-        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "render: create cached frame#" + Integer.toHexString(localObject.hashCode()));
-        ((Frame)localObject).setSizedTexture(locallgo.jdField_a_of_type_Int, locallgo.b, locallgo.c);
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
-        if (!locallgo.a()) {
-          break label257;
-        }
-        localArrayList2 = new ArrayList(1);
-        lgv locallgv = new lgv();
-        locallgv.jdField_a_of_type_JavaUtilList = locallgo.jdField_a_of_type_JavaUtilList;
-        localArrayList2.add(locallgv);
-      }
-      label257:
-      for (Object localObject = lgu.a((Frame)localObject, localArrayList2);; localObject = lgu.a((Frame)localObject))
-      {
-        localArrayList1.add(localObject);
-        i += 1;
-        break;
-        localObject = (Frame)this.jdField_a_of_type_JavaUtilList.get(i);
-        ((Frame)this.jdField_a_of_type_JavaUtilList.get(i)).setSizedTexture(locallgo.jdField_a_of_type_Int, locallgo.b, locallgo.c);
-        break label131;
-      }
-    }
-    b(localArrayList1, paramLong);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   }
   
-  protected void b()
+  public AppInterface a()
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, amlw paramamlw, Class<? extends MSFServlet> paramClass)
+  {
+    if (paramToServiceMsg.getWupBuffer() != null)
     {
-      ((Frame)this.jdField_a_of_type_JavaUtilList.get(i)).clear();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: cached frame#" + Integer.toHexString(((Frame)this.jdField_a_of_type_JavaUtilList.get(i)).hashCode()));
-      i += 1;
+      long l = paramToServiceMsg.getWupBuffer().length;
+      byte[] arrayOfByte = new byte[(int)l + 4];
+      bbmj.a(arrayOfByte, 0, 4L + l);
+      bbmj.a(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
+      paramToServiceMsg.putWupBuffer(arrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.d("MsfServletProxy", 2, "PB cmd: req cmd: " + paramToServiceMsg.getServiceCmd());
+      }
+      paramToServiceMsg.actionListener = paramamlw;
+      paramamlw = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramClass);
+      paramamlw.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramamlw);
+      l = System.currentTimeMillis();
+      paramToServiceMsg.extraData.putLong("sendtimekey", l);
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    FrameBufferCache.getInstance().destroy();
+  }
+  
+  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Exception paramException)
+  {
+    if ((paramToServiceMsg == null) || (paramToServiceMsg.extraData == null))
+    {
+      paramException = new StringBuilder().append("handleResponse error req:").append(paramToServiceMsg).append("|");
+      if (paramFromServiceMsg == null)
+      {
+        paramToServiceMsg = "null";
+        lcl.d("MsfServletProxy", paramToServiceMsg);
+      }
+    }
+    AppInterface localAppInterface;
+    float f;
+    label149:
+    boolean bool;
+    do
+    {
+      return;
+      paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
+      break;
+      localAppInterface = a();
+      f = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
+      if (!paramBoolean) {
+        break label335;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + " app seq:" + paramFromServiceMsg.getAppSeq() + "sec." + f);
+      }
+      bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
+    } while ((!paramBoolean) || (!bool));
+    Object localObject = paramFromServiceMsg.getServiceCmd();
+    if (QLog.isColorLevel()) {
+      QLog.d("MsfServletProxy", 2, "PB cmd: recv cmd: " + (String)localObject);
+    }
+    int i;
+    if (paramFromServiceMsg.getWupBuffer() != null)
+    {
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      paramException = new byte[i];
+      bbmj.a(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      paramFromServiceMsg.putWupBuffer(paramException);
+    }
+    for (paramException = paramFromServiceMsg.getWupBuffer();; paramException = null)
+    {
+      for (;;)
+      {
+        int[] arrayOfInt = (int[])this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        if ((arrayOfInt != null) && (arrayOfInt.length > 0))
+        {
+          int j = arrayOfInt.length;
+          i = 0;
+          label290:
+          if (i >= j) {
+            break;
+          }
+          localObject = (ajtd)localAppInterface.getBusinessHandler(arrayOfInt[i]);
+          if (localObject != null) {}
+          try
+          {
+            ((ajtd)localObject).onReceive(paramToServiceMsg, paramFromServiceMsg, paramException);
+            i += 1;
+            break label290;
+            label335:
+            if (paramException != null)
+            {
+              localObject = new ByteArrayOutputStream();
+              paramException.printStackTrace(new PrintStream((OutputStream)localObject));
+              paramException = new String(((ByteArrayOutputStream)localObject).toByteArray());
+              if (!QLog.isColorLevel()) {
+                break label149;
+              }
+              QLog.d("MsfServletProxy", 2, "[NOT SEND]cmd=" + paramFromServiceMsg.getServiceCmd() + ", " + paramException);
+              break label149;
+            }
+            if (!QLog.isColorLevel()) {
+              break label149;
+            }
+            QLog.w("MsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + ",CODE=" + paramFromServiceMsg.getResultCode() + "sec." + f);
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              localException.printStackTrace();
+              if (QLog.isColorLevel()) {
+                QLog.w("MsfServletProxy", 2, localObject.getClass().getSimpleName() + " onReceive error,", localException);
+              }
+            }
+          }
+        }
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.w("MsfServletProxy", 2, " handlerIds no map " + (String)localObject);
+      return;
+    }
+  }
+  
+  public boolean a(String paramString, int[] paramArrayOfInt)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, paramArrayOfInt);
+      return true;
+    }
+    return false;
   }
 }
 

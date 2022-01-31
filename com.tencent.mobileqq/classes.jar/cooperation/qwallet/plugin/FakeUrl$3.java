@@ -3,7 +3,7 @@ package cooperation.qwallet.plugin;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import bafb;
+import bbgg;
 import com.tencent.qphone.base.util.QLog;
 
 class FakeUrl$3

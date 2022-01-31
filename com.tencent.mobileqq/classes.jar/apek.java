@@ -1,13 +1,22 @@
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 public class apek
+  implements Cloneable
 {
-  public long a;
+  public int a;
+  public View a;
+  public ImageView a;
+  public TextView a;
   public String a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
   
-  public apek(String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  public apek(apej paramapej) {}
 }
 
 

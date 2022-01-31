@@ -1,39 +1,85 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import android.content.Context;
+import java.util.ArrayList;
+import java.util.List;
 
-class bfyl
-  implements ScaleGestureDetector.OnScaleGestureListener
+public abstract class bfyl<M, VH extends bfyo<M>>
+  extends bfyp<M, VH>
 {
-  bfyl(bfyk parambfyk) {}
+  private List<M> a;
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public bfyl(Context paramContext)
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    bfyk.a(this.a, 1.0F - f + bfyk.b(this.a));
-    if (bfyk.a(this.a) == 0) {
-      bfyk.a(this.a, Math.max(bfyk.c(this.a), Math.min(1.5F, bfyk.b(this.a))));
+    super(paramContext);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public abstract int a(int paramInt);
+  
+  public M a(int paramInt)
+  {
+    if (((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size() + c())) {
+      return null;
     }
-    for (;;)
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
+  }
+  
+  public List<M> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    notifyDataSetChanged();
+  }
+  
+  public boolean a(List<M> paramList)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {}
+    for (int i = 1;; i = 0)
     {
-      bfyk.b(this.a, bfyk.b(this.a) / bfyk.d(this.a));
-      if (bfyk.a(this.a) != null) {
-        bfyk.a(this.a).a(bfyk.b(this.a));
+      this.jdField_a_of_type_JavaUtilList.clear();
+      boolean bool = i | this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      if (bool) {
+        notifyDataSetChanged();
       }
-      return true;
-      bfyk.a(this.a, Math.max(bfyk.c(this.a), Math.min(1.0F, bfyk.b(this.a))));
+      return bool;
     }
   }
   
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  public int getItemCount()
   {
-    return true;
+    return this.jdField_a_of_type_JavaUtilList.size() + b();
   }
   
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public final int getItemViewType(int paramInt)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) {
+      return 1024;
+    }
+    if ((this.b != null) && (paramInt == this.jdField_a_of_type_JavaUtilList.size() + c())) {
+      return 1025;
+    }
+    return a(paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfyl
  * JD-Core Version:    0.7.0.1
  */

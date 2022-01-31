@@ -1,16 +1,15 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class adah
-  extends acju
+  implements View.OnClickListener
 {
-  public LinearLayout a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  
   adah(adag paramadag) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.b();
+  }
 }
 
 

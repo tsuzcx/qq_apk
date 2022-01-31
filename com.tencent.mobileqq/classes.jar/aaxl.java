@@ -1,20 +1,15 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aaxl
-  implements TopGestureLayout.InterceptTouchEventListener
+  extends aoeu
 {
-  public aaxl(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public aaxl(Conversation paramConversation) {}
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean)
   {
     if (this.a.a != null) {
-      return this.a.a.a(paramMotionEvent);
+      this.a.a.b();
     }
-    return true;
   }
 }
 

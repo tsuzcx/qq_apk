@@ -1,15 +1,8 @@
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import android.net.Uri;
 
-class azhj
-  extends ThreadLocal<SimpleDateFormat>
+public abstract interface azhj
 {
-  azhj(azhi paramazhi) {}
-  
-  protected SimpleDateFormat a()
-  {
-    return new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-  }
+  public abstract void a(Uri paramUri);
 }
 
 

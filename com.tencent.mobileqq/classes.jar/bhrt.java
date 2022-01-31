@@ -1,37 +1,36 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import org.json.JSONObject;
 
-class bhrt
-  implements EIPCOnGetConnectionListener
+public class bhrt
+  extends bhrq
 {
-  bhrt(bhrr parambhrr) {}
-  
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (paramEIPCConnection != null) {
-      bhrr.a(this.a, paramEIPCConnection.procName);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ("jumpNuanProfile".equals(paramString3))
+    {
+      bool1 = bool2;
+      if (!"Qzone".equals(paramString2)) {}
     }
-    bhrr.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "onConnectBind!");
+    try
+    {
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("uin", "");
+      paramString1 = bgyf.a();
+      paramString1.a = this.a.mRuntime.a().getAccount();
+      bgxy.b(this.a.mRuntime.a(), paramString1, paramJsBridgeListener, -1);
+      bool1 = true;
+      return bool1;
     }
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      bhrr.a(this.a, paramEIPCConnection.procName);
-    }
-    bhrr.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "onConnectUnbind:" + bhrr.a(this.a));
-    }
+    catch (Throwable paramJsBridgeListener) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhrt
  * JD-Core Version:    0.7.0.1
  */

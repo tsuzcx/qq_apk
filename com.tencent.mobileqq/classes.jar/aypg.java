@@ -1,28 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation.10.1;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class aypg
-  implements DialogInterface.OnClickListener
+class aypg
+  extends akav
 {
-  public aypg(TroopFileItemOperation.10.1 param1) {}
+  aypg(aypf paramaypf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, axai paramaxai)
   {
-    switch (paramInt)
-    {
+    if ((paramaxai != null) && (QLog.isColorLevel())) {
+      QLog.e("streamptt.send", 2, "onUpdateUploadStreamFinished Key:" + paramaxai.jdField_a_of_type_JavaLangString + " seq:" + paramaxai.jdField_a_of_type_Short + " Layer:" + paramaxai.jdField_a_of_type_Int + " RespCode:" + paramaxai.b);
     }
-    do
-    {
+    if ((this.a.a != null) && (QLog.isColorLevel())) {
+      QLog.e("streamptt.send", 2, "isSuccess:" + paramBoolean + "　FilePath:" + this.a.a.c + " isStreamPttSuccess:" + this.a.d);
+    }
+    this.a.c(2);
+    if ((paramaxai == null) || (paramaxai.jdField_a_of_type_JavaLangString == null) || (!paramaxai.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.a.a.c))) {
       return;
-    } while (aypd.a(this.a.a.jdField_a_of_type_Aypd) == 0);
-    TroopFileTransferManager.a(this.a.a.jdField_a_of_type_Aypd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_Aypd.jdField_a_of_type_Long).b(this.a.a.jdField_a_of_type_Ayoq.a);
+    }
+    if (!paramBoolean)
+    {
+      aypf.a(this.a, false, paramaxai);
+      return;
+    }
+    aypf.a(this.a, true, paramaxai);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aypg
  * JD-Core Version:    0.7.0.1
  */

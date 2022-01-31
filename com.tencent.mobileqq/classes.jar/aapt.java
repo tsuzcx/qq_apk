@@ -1,16 +1,26 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aapt
-  implements View.OnClickListener
+public final class aapt
+  implements bbwe
 {
-  public aapt(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public aapt(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
   
-  public void onClick(View paramView)
+  public void callback(int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+      this.a.onClick(null, 0);
+      return;
+    }
+    this.b.onClick(null, 0);
   }
 }
 

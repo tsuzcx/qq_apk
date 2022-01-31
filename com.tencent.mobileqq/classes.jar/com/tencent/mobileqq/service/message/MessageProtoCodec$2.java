@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.service.message;
 
-import ajgm;
+import ajuo;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import msf.msgcomm.msg_comm.Msg;
@@ -12,7 +12,7 @@ public final class MessageProtoCodec$2
   
   public void run()
   {
-    ((ajgm)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.a(8)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
+    ((ajuo)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.a(8)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
   }
 }
 

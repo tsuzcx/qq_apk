@@ -1,39 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.content.Context;
 
 public class ahqk
-  implements DialogInterface.OnClickListener
+  extends ahqb
 {
-  public ahqk(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  public int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahqk(Context paramContext, int paramInt)
   {
-    switch (paramInt)
-    {
+    this.c = paramInt;
+    if (paramInt == 0) {
+      this.a = "";
     }
-    boolean bool;
-    do
-    {
+    while (paramInt != 1) {
       return;
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break;
-      }
-      bool = true;
-      paramDialogInterface.setChecked(bool);
-      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d != 32);
-    if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (paramDialogInterface = "friendsfinder.all.confirm";; paramDialogInterface = "friendsfinder.all.cancel")
-    {
-      agwj.a(0, paramDialogInterface);
-      return;
-      bool = false;
-      break;
     }
+    this.a = ajyc.a(2131715681);
   }
 }
 

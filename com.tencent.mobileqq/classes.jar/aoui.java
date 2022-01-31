@@ -1,27 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.view.View;
 
 class aoui
-  implements aots
+  implements bfoq
 {
-  aoui(aoug paramaoug) {}
+  aoui(aouh paramaouh, String paramString, azqt paramazqt) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a(false, apbf.a(this.a.a.a()), this.a.c(), new aouj(this));
-  }
-  
-  public void b()
-  {
-    this.a.e();
-    int i = this.a.d();
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (i == 0)
-    {
-      localQQAppInterface.a().a(this.a.d());
-      return;
-    }
-    localQQAppInterface.a().a(this.a.a.a());
+    axqw.b(this.jdField_a_of_type_Aouh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A7F3", "0X800A7F3", 2, 0, "", "", "", "");
+    new azpt(Long.parseLong(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Aouh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Aouh.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Azqt.a);
+    this.jdField_a_of_type_Aouh.a();
   }
 }
 

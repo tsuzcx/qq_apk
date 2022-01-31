@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.content.Intent;
-import bgte;
+import bicg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 class AppJsPlugin$AppDownloadManager$QueryDownloadInfoListener
-  implements bgte
+  implements bicg
 {
   private String mAppid;
   private AppJsPlugin.IWaldlCallback mCallback;

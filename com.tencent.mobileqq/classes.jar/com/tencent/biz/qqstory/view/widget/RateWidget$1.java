@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import vqp;
+import wdl;
 
 public class RateWidget$1
   implements Runnable
 {
-  public RateWidget$1(vqp paramvqp) {}
+  public RateWidget$1(wdl paramwdl) {}
   
   public void run()
   {
-    vqp localvqp = this.this$0;
-    if (!vqp.a(this.this$0)) {}
+    wdl localwdl = this.this$0;
+    if (!wdl.a(this.this$0)) {}
     for (boolean bool = true;; bool = false)
     {
-      vqp.a(localvqp, bool);
-      this.this$0.c(vqp.a(this.this$0));
+      wdl.a(localwdl, bool);
+      this.this$0.c(wdl.a(this.this$0));
       return;
     }
   }

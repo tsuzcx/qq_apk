@@ -1,15 +1,20 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 
 public class acft
-  extends beem
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public acft(VisitorsActivity paramVisitorsActivity) {}
+  public acft(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.e.setVisibility(0);
+    switch (paramCompoundButton.getId())
+    {
+    default: 
+      return;
+    }
+    asfb.a().a(this.a.app, paramBoolean);
   }
 }
 

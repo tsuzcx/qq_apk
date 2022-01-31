@@ -1,8 +1,9 @@
 package com.tencent.mfsdk.reporter;
 
+import aaak;
 import android.content.SharedPreferences.Editor;
 import android.util.SparseArray;
-import axsr;
+import aysy;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.qphone.base.util.QLog;
@@ -11,10 +12,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
 import mqq.os.MqqHandler;
-import zpy;
-import zqg;
-import zqh;
-import zqr;
+import zzq;
+import zzy;
+import zzz;
 
 class ReporterMachine$ReportRunnable
   implements Runnable
@@ -27,23 +27,23 @@ class ReporterMachine$ReportRunnable
   public void run()
   {
     int i = 0;
-    if (zqg.jdField_a_of_type_Int > zpy.jdField_a_of_type_Int)
+    if (zzy.jdField_a_of_type_Int > zzq.jdField_a_of_type_Int)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("Magnifier_ReporterMachine", 2, "[YunYingReport]:End, reported " + zqg.jdField_a_of_type_Int + " max_report_num " + zpy.jdField_a_of_type_Int);
+        QLog.i("Magnifier_ReporterMachine", 2, "[YunYingReport]:End, reported " + zzy.jdField_a_of_type_Int + " max_report_num " + zzq.jdField_a_of_type_Int);
       }
-      if (MagnifierSDK.jdField_a_of_type_Zqr != null) {
-        MagnifierSDK.jdField_a_of_type_Zqr.a();
+      if (MagnifierSDK.jdField_a_of_type_Aaak != null) {
+        MagnifierSDK.jdField_a_of_type_Aaak.a();
       }
       if (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor != null) {
-        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_today_reported", zqg.jdField_a_of_type_Int).apply();
+        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_today_reported", zzy.jdField_a_of_type_Int).apply();
       }
     }
     int j;
     do
     {
       return;
-      if ((MagnifierSDK.jdField_a_of_type_Zqr == null) || (1 != axsr.a().a()))
+      if ((MagnifierSDK.jdField_a_of_type_Aaak == null) || (1 != aysy.a().a()))
       {
         if (QLog.isColorLevel()) {
           QLog.i("Magnifier_ReporterMachine", 2, "[YunYingReport]:Next try, because MagnifierSDK.dbHandler == null || NetType.WIFI != NetworkCenter.getInstance().getNetType()");
@@ -72,7 +72,7 @@ class ReporterMachine$ReportRunnable
             QLog.e("Magnifier_ReporterMachine", 2, localException1, new Object[0]);
           }
         }
-        MagnifierSDK.jdField_a_of_type_Zqr.a("result_objects", true);
+        MagnifierSDK.jdField_a_of_type_Aaak.a("result_objects", true);
         if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
         {
           if (QLog.isColorLevel()) {
@@ -85,16 +85,16 @@ class ReporterMachine$ReportRunnable
         }
         this.jdField_a_of_type_Int = 0;
         ReporterMachine.a().postDelayed(this, 1800000L);
-        j = zqg.jdField_a_of_type_AndroidUtilSparseArray.size();
+        j = zzy.jdField_a_of_type_AndroidUtilSparseArray.size();
       }
     } while (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor == null);
     Object localObject1;
     if (i < j)
     {
-      int k = zqg.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
+      int k = zzy.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
       if (k > 100)
       {
-        localObject1 = (zqh)zqg.jdField_a_of_type_AndroidUtilSparseArray.get(k);
+        localObject1 = (zzz)zzy.jdField_a_of_type_AndroidUtilSparseArray.get(k);
         if (localObject1 != null) {
           break label372;
         }
@@ -104,7 +104,7 @@ class ReporterMachine$ReportRunnable
         i += 1;
         break;
         label372:
-        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_plugin_" + String.valueOf(k), ((zqh)localObject1).jdField_a_of_type_Int);
+        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_plugin_" + String.valueOf(k), ((zzz)localObject1).jdField_a_of_type_Int);
       }
     }
     if (QLog.isColorLevel()) {
@@ -112,7 +112,7 @@ class ReporterMachine$ReportRunnable
     }
     MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
     return;
-    this.jdField_a_of_type_JavaUtilList = MagnifierSDK.jdField_a_of_type_Zqr.a(true);
+    this.jdField_a_of_type_JavaUtilList = MagnifierSDK.jdField_a_of_type_Aaak.a(true);
     if ((ReporterMachine.a() != null) && (!ReporterMachine.a().isEmpty())) {}
     try
     {

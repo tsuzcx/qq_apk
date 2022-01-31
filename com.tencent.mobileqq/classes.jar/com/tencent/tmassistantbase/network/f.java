@@ -1,6 +1,6 @@
 package com.tencent.tmassistantbase.network;
 
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ConnectException;
@@ -21,7 +21,7 @@ class f
     try
     {
       Object localObject1 = new URL(PostHttpRequest.REQUEST_SERVER_URL);
-      ac.c("PostHttpRequest", ">sendRequest serverUrl=" + localObject1);
+      ab.c("PostHttpRequest", ">sendRequest serverUrl=" + localObject1);
       localObject1 = (HttpsURLConnection)((URL)localObject1).openConnection();
       Object localObject2 = d.a();
       if (localObject2 != null)
@@ -37,13 +37,13 @@ class f
       ((HttpsURLConnection)localObject1).addRequestProperty("Content-Type", "application/octet-stream");
       ((HttpsURLConnection)localObject1).setConnectTimeout(30000);
       ((HttpsURLConnection)localObject1).setReadTimeout(30000);
-      ac.c("PostHttpRequest", ">sendRequest begin getOutputStream");
+      ab.c("PostHttpRequest", ">sendRequest begin getOutputStream");
       localObject2 = ((HttpsURLConnection)localObject1).getOutputStream();
       ((OutputStream)localObject2).write(this.a);
       ((OutputStream)localObject2).flush();
-      ac.c("PostHttpRequest", ">sendRequest outputStream flush.");
+      ab.c("PostHttpRequest", ">sendRequest outputStream flush.");
       i = ((HttpsURLConnection)localObject1).getResponseCode();
-      ac.c("PostHttpRequest", ">sendRequest rspCode:" + i);
+      ab.c("PostHttpRequest", ">sendRequest rspCode:" + i);
       if (i == 200)
       {
         localObject1 = ((HttpsURLConnection)localObject1).getInputStream();
@@ -52,43 +52,43 @@ class f
           localObject1 = c.a((InputStream)localObject1);
           if ((localObject1 != null) && (localObject1.length > 4))
           {
-            ac.c("PostHttpRequest", ">sendRequest data length:" + localObject1.length);
+            ab.c("PostHttpRequest", ">sendRequest data length:" + localObject1.length);
             this.b.onFinished(this.a, (byte[])localObject1, 0);
             return;
           }
-          ac.e("PostHttpRequest", ">sendRequest data:" + localObject1);
+          ab.e("PostHttpRequest", ">sendRequest data:" + localObject1);
           return;
         }
       }
     }
     catch (ConnectTimeoutException localConnectTimeoutException)
     {
-      ac.c("PostHttpRequest", "connect failed ConnectTimeoutException:", localConnectTimeoutException);
+      ab.c("PostHttpRequest", "connect failed ConnectTimeoutException:", localConnectTimeoutException);
       this.b.onFinished(this.a, null, 601);
       return;
       this.b.onFinished(this.a, null, 604);
-      ac.e("PostHttpRequest", ">sendRequest entity == null");
+      ab.e("PostHttpRequest", ">sendRequest entity == null");
       return;
     }
     catch (ConnectException localConnectException)
     {
       int i;
-      ac.c("PostHttpRequest", "connect failed ConnectException:", localConnectException);
+      ab.c("PostHttpRequest", "connect failed ConnectException:", localConnectException);
       this.b.onFinished(this.a, null, 1);
       return;
-      ac.e("PostHttpRequest", ">sendRequest StatusCode not ok:" + i);
+      ab.e("PostHttpRequest", ">sendRequest StatusCode not ok:" + i);
       this.b.onFinished(this.a, null, i);
       return;
     }
     catch (SocketTimeoutException localSocketTimeoutException)
     {
-      ac.c("PostHttpRequest", "connect failed SocketTimeoutException:", localSocketTimeoutException);
+      ab.c("PostHttpRequest", "connect failed SocketTimeoutException:", localSocketTimeoutException);
       this.b.onFinished(this.a, null, 602);
       return;
     }
     catch (Throwable localThrowable)
     {
-      ac.c("PostHttpRequest", "connect failed Throwable:", localThrowable);
+      ab.c("PostHttpRequest", "connect failed Throwable:", localThrowable);
       this.b.onFinished(this.a, null, 604);
     }
   }

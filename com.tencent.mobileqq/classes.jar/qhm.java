@@ -1,8 +1,19 @@
-public abstract interface qhm
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
+
+public final class qhm
+  implements Parcelable.Creator<ResultRecord>
 {
-  public abstract void a(pxn parampxn1, pxn parampxn2, int paramInt, boolean paramBoolean);
+  public ResultRecord a(Parcel paramParcel)
+  {
+    return new ResultRecord(paramParcel);
+  }
   
-  public abstract void j();
+  public ResultRecord[] a(int paramInt)
+  {
+    return new ResultRecord[paramInt];
+  }
 }
 
 

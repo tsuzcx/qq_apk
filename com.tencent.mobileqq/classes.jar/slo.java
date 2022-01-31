@@ -1,73 +1,147 @@
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.SystemClock;
-import android.preference.PreferenceManager;
-import com.tencent.mobileqq.activity.richmedia.MX3FlowNewCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewPreFlowCamera;
-import com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import common.config.service.QzoneConfig;
 
 public class slo
+  implements Handler.Callback
 {
-  public static Intent a(Context paramContext, boolean paramBoolean1, Intent paramIntent, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2)
+  private static final bhmc<slo, Void> jdField_a_of_type_Bhmc = new slp();
+  private static String jdField_a_of_type_JavaLangString;
+  public Handler a;
+  
+  public static slo a()
   {
-    if (paramBoolean1)
-    {
-      Object localObject = NewFlowCameraActivity.class;
-      if (awii.d(awii.c)) {
-        localObject = MX3FlowNewCameraActivity.class;
-      }
-      paramIntent.setComponent(new ComponentName(paramContext, (Class)localObject));
-      PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putString("camera_photo_path", paramString1).commit();
-      paramIntent.putExtra("qcamera_photo_filepath", paramString1);
-      paramIntent.putExtra("support_photo_merge", true);
-      paramIntent.putExtra("activity_start_time", SystemClock.elapsedRealtime());
-      paramIntent.putExtra("video_min_frame_count", 3);
-      paramIntent.putExtra("PhotoConst.MY_UIN", paramString2);
-      paramIntent.putExtra("sv_config", DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.SV658Cfg.name(), null));
-      paramIntent.putExtra("sv_whitelist", DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name()));
-      paramIntent.putExtra("flow_show_filter_red", paramBoolean2);
-      paramIntent.putExtra("flow_show_filter_red_pkg", paramBoolean3);
-      paramIntent.putExtra("edit_video_type", 10002);
-      paramIntent.putExtra("set_user_callback", QQStoryFlowCallback.class.getCanonicalName());
-      paramIntent.putExtra("enable_local_video", true);
-      paramIntent.putExtra("short_video_refer", "qqstory");
-      paramIntent.putExtra("flow_camera_video_mode", true);
-      paramIntent.putExtra("flow_camera_use_filter_function", paramBoolean4);
-      paramIntent.putExtra("flow_camera_use_3dfilter_function", awlp.a(false));
-      paramIntent.putExtra("ignore_dpc_duration", true);
-      paramIntent.putExtra("video_duration", 10);
-      return paramIntent;
-    }
-    paramIntent.setComponent(new ComponentName(paramContext, NewPreFlowCamera.class));
-    paramIntent.putExtra("qcamera_photo_filepath", paramString1);
-    paramIntent.putExtra("edit_video_type", 10002);
-    paramIntent.putExtra("support_photo_merge", true);
-    paramIntent.putExtra("video_min_frame_count", 3);
-    paramIntent.putExtra("flow_show_filter_red", paramBoolean2);
-    paramIntent.putExtra("flow_show_filter_red_pkg", paramBoolean3);
-    return paramIntent;
+    return (slo)jdField_a_of_type_Bhmc.b(null);
   }
   
-  public static boolean a(Context paramContext)
+  private static void c(slv paramslv)
   {
-    if ((paramContext instanceof NewFlowCameraActivity))
+    if ((paramslv == null) || (paramslv.jdField_a_of_type_Sls == null) || (TextUtils.isEmpty(paramslv.jdField_a_of_type_Sls.c()))) {}
+    for (;;)
     {
-      ((NewFlowCameraActivity)paramContext).a("612", "2", "0", true);
+      return;
+      try
+      {
+        if (jdField_a_of_type_JavaLangString == null) {
+          jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "LinkReportCmds", "getVisitorNotify,getWidget,getActiveFeeds,getFeedAlert,getMainPage,getHostHBInfo,getProfileFeeds,applist.shuoshuo,applist.photo,detail.shuoshuo,detail.photo,getPassiveFeeds,getPhotoListEx,like,addComment,forward,Operation.shareOutsite");
+        }
+        String str = paramslv.jdField_a_of_type_Sls.c();
+        if ((jdField_a_of_type_JavaLangString.contains(str)) && (paramslv.b != 0))
+        {
+          sne.d("WeishiBusinessLooper", "cmd error report! cmd=" + str + " retCode=" + paramslv.b + " msg=" + paramslv.jdField_a_of_type_JavaLangString + " duration=" + (System.currentTimeMillis() - paramslv.jdField_a_of_type_Long));
+          return;
+        }
+      }
+      catch (Exception paramslv)
+      {
+        sne.d("weishi-BusinessLooper", "reportRequest Exception:" + paramslv.getLocalizedMessage());
+      }
+    }
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+  }
+  
+  public void a(Runnable paramRunnable, long paramLong)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, paramLong);
+  }
+  
+  public void a(slv paramslv)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 0;
+    localMessage.obj = paramslv;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public void b(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramRunnable);
+    }
+  }
+  
+  public void b(slv paramslv)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    localMessage.obj = paramslv;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage == null)
+    {
+      sne.d("weishi-BusinessLooper", "WeishiBusinessLooper handleMessage, msg is null");
       return true;
     }
-    return false;
+    switch (paramMessage.what)
+    {
+    }
+    slv localslv;
+    do
+    {
+      do
+      {
+        return false;
+        localslv = (slv)paramMessage.obj;
+      } while (localslv == null);
+      localStringBuilder = new StringBuilder().append("runTask cmd=");
+      if (localslv.jdField_a_of_type_Sls != null) {}
+      for (paramMessage = localslv.jdField_a_of_type_Sls.getCmdString();; paramMessage = "mRequest is null")
+      {
+        sne.c("weishi-BusinessLooper", paramMessage);
+        localslv.a();
+        break;
+      }
+      localslv = (slv)paramMessage.obj;
+    } while (localslv == null);
+    StringBuilder localStringBuilder = new StringBuilder().append("completeTask resultCode:").append(localslv.b).append(", cmd=");
+    if (localslv.jdField_a_of_type_Sls != null) {}
+    for (paramMessage = localslv.jdField_a_of_type_Sls.getCmdString();; paramMessage = "mRequest is null")
+    {
+      for (;;)
+      {
+        sne.d("weishi-BusinessLooper", paramMessage);
+        if (localslv.jdField_a_of_type_Slk == null) {
+          break;
+        }
+        try
+        {
+          c(localslv);
+          localslv.jdField_a_of_type_Slk.a(localslv);
+        }
+        catch (Exception paramMessage)
+        {
+          sne.d("weishi-BusinessLooper", "handleMessage MSG_COMPLETE_TASK:" + paramMessage.getLocalizedMessage());
+        }
+      }
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     slo
  * JD-Core Version:    0.7.0.1
  */

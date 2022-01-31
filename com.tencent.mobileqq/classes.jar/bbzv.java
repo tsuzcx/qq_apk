@@ -1,203 +1,75 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import java.io.File;
 
 public class bbzv
 {
-  protected static bbzv a;
-  protected static byte[] a;
-  public int a;
-  protected List<bbzw> a;
-  public int b;
-  protected List<Friend> b;
-  protected List<String> c = new ArrayList(20);
+  public static final int a = ListenChangeVoicePanel.a.length;
   
-  static
+  public static String a(String paramString)
   {
-    jdField_a_of_type_ArrayOfByte = new byte[1];
+    String str = paramString.substring(0, paramString.lastIndexOf(".")).concat(".pcm");
+    new File(paramString).renameTo(new File(str));
+    return str;
   }
   
-  protected bbzv()
+  public static String a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(20);
-    this.jdField_b_of_type_JavaUtilList = new ArrayList(5);
+    int i = paramString.lastIndexOf(".");
+    return paramString.substring(0, i).concat("_" + paramInt).concat(paramString.substring(i, paramString.length()));
   }
   
-  public static bbzv a()
+  public static void a(String paramString1, String paramString2)
   {
-    if (jdField_a_of_type_Bbzv == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    new File(paramString1).delete();
+    new File(paramString2).delete();
+    int i = 0;
+    while (i < a)
     {
-      if (jdField_a_of_type_Bbzv == null) {
-        jdField_a_of_type_Bbzv = new bbzv();
+      new File(a(paramString1, i)).delete();
+      i += 1;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt)
+  {
+    String str = null;
+    new File(paramString1).delete();
+    new File(paramString2).delete();
+    int i = 0;
+    paramString2 = str;
+    if (i < a)
+    {
+      str = a(paramString1, i);
+      if (i == paramInt) {
+        paramString2 = str;
       }
-      return jdField_a_of_type_Bbzv;
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_JavaUtilList.size();
-  }
-  
-  public int a(int paramInt)
-  {
-    List localList = ((bbzw)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList;
-    if (localList != null) {
-      return localList.size();
-    }
-    return 0;
-  }
-  
-  public Friend a(int paramInt)
-  {
-    return (Friend)this.jdField_b_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public Friend a(String paramString)
-  {
-    Friend localFriend;
-    do
-    {
-      Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
-      Iterator localIterator2;
-      while (!localIterator2.hasNext())
+      for (;;)
       {
-        if (!localIterator1.hasNext()) {
-          break;
-        }
-        localIterator2 = ((bbzw)localIterator1.next()).jdField_a_of_type_JavaUtilList.iterator();
-      }
-      localFriend = (Friend)localIterator2.next();
-    } while (!paramString.equals(localFriend.jdField_a_of_type_JavaLangString));
-    return localFriend;
-    return null;
-  }
-  
-  public String a(int paramInt)
-  {
-    return ((bbzw)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<Friend> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator1.hasNext())
-    {
-      Iterator localIterator2 = ((bbzw)localIterator1.next()).jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator2.hasNext()) {
-        localArrayList.add(localIterator2.next());
-      }
-    }
-    return localArrayList;
-  }
-  
-  public List<Friend> a(int paramInt)
-  {
-    return ((bbzw)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!this.c.contains(paramString)) {
-      this.c.add(paramString);
-    }
-  }
-  
-  public void a(List<bbzw> paramList, int paramInt1, int paramInt2)
-  {
-    label9:
-    String str2;
-    Iterator localIterator1;
-    if (paramList.size() <= 0)
-    {
-      return;
-    }
-    else
-    {
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_b_of_type_Int = paramInt2;
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_b_of_type_JavaUtilList.clear();
-      this.c.clear();
-      str2 = bbtm.a().a().getResources().getString(2131625330);
-      localIterator1 = paramList.iterator();
-    }
-    for (;;)
-    {
-      if (localIterator1.hasNext())
-      {
-        paramList = (bbzw)localIterator1.next();
-        if (str2.equals(paramList.jdField_a_of_type_JavaLangString)) {
-          this.jdField_b_of_type_JavaUtilList.addAll(paramList.jdField_a_of_type_JavaUtilList);
-        }
-      }
-      else
-      {
-        break label9;
-      }
-      this.jdField_a_of_type_JavaUtilList.add(paramList);
-      paramList = paramList.jdField_a_of_type_JavaUtilList;
-      if (paramList == null) {
+        i += 1;
         break;
+        new File(str).delete();
       }
-      Iterator localIterator2 = paramList.iterator();
-      while (localIterator2.hasNext())
-      {
-        Friend localFriend = (Friend)localIterator2.next();
-        String str1 = localFriend.c;
-        if (str1 != null)
-        {
-          paramList = str1;
-          if (!"".equals(str1)) {}
-        }
-        else
-        {
-          paramList = localFriend.b;
-        }
-        localFriend.f = ChnToSpell.a(paramList, 2);
-        localFriend.g = ChnToSpell.a(paramList, 1);
-      }
+    }
+    if (paramString2 != null) {
+      new File(paramString2).renameTo(new File(paramString1));
     }
   }
   
-  public boolean a(String paramString)
+  public static void b(String paramString1, String paramString2)
   {
-    return this.c.contains(paramString);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public List<String> b()
-  {
-    return this.c;
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.c.contains(paramString)) {
-      this.c.remove(paramString);
+    new File(paramString1).deleteOnExit();
+    new File(paramString2).deleteOnExit();
+    int i = 0;
+    while (i < a)
+    {
+      new File(a(paramString1, i)).deleteOnExit();
+      i += 1;
     }
-  }
-  
-  public int c()
-  {
-    return this.c.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbzv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,54 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.TroopInviteStatusFragment;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class acid
-  implements Comparator<File>
+public class acid
+  implements afnv
 {
-  acid(acic paramacic) {}
+  public acid(TroopInviteStatusFragment paramTroopInviteStatusFragment) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
   {
-    long l = acic.a(this.a, paramFile1) - acic.a(this.a, paramFile2);
-    if (l > 0L) {
-      return 1;
+    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512))) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
+      }
+      afnu.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString);
+      afnu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
+        this.a.jdField_a_of_type_Bcpq.dismiss();
+      }
+      return;
     }
-    if (l == 0L) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege normalTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt + ", sendSystemMsgAction-----");
     }
-    return -1;
+    TroopInviteStatusFragment.a(this.a, 2);
   }
   
-  public boolean equals(Object paramObject)
+  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
   {
-    return true;
+    if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
+      this.a.jdField_a_of_type_Bcpq.dismiss();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopInviteStatusFragment", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
+    }
+    paramString1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    if (paramInt1 == 72) {}
+    for (paramInt1 = 2131690026;; paramInt1 = 2131690025)
+    {
+      bcpw.a(paramString1, paramInt1, 1).a();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acid
  * JD-Core Version:    0.7.0.1
  */

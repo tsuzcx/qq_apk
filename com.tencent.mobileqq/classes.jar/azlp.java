@@ -1,34 +1,17 @@
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
+import com.tencent.mobileqq.troop.createNewTroop.RelationFriendsTroopViewHelper.4.1;
+import com.tencent.widget.PinnedFooterExpandableListView;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Observable;
-import java.util.Observer;
 
-public abstract class azlp
-  extends Observable
+public class azlp
+  implements azoi
 {
-  protected TroopUploadingThread a;
+  azlp(azlo paramazlo) {}
   
-  public ArrayList<azln> a()
+  public void a(ArrayList<aukm> paramArrayList)
   {
-    if (this.a != null) {
-      return this.a.a();
+    if (this.a.a != null) {
+      this.a.a.post(new RelationFriendsTroopViewHelper.4.1(this, paramArrayList));
     }
-    return null;
-  }
-  
-  public abstract void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, String paramString);
-  
-  public void a(Observer paramObserver)
-  {
-    super.deleteObserver(paramObserver);
-  }
-  
-  public void notifyObservers(Object paramObject)
-  {
-    super.setChanged();
-    super.notifyObservers(paramObject);
   }
 }
 

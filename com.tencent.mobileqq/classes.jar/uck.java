@@ -1,17 +1,11 @@
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment.Observer.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.parallel.SimpleParallelObserver;
-import mqq.os.MqqHandler;
+import java.util.Comparator;
 
-public class uck
-  extends SimpleParallelObserver
+public final class uck
+  implements Comparator<ucp>
 {
-  uck(uch paramuch) {}
-  
-  public void onAllFunctionComplete(boolean paramBoolean)
+  public int a(ucp paramucp1, ucp paramucp2)
   {
-    super.onAllFunctionComplete(paramBoolean);
-    ThreadManager.getUIHandler().post(new DetailFeedAllInfoPullSegment.Observer.1(this, paramBoolean));
+    return paramucp1.a - paramucp2.a;
   }
 }
 

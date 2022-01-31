@@ -1,17 +1,10 @@
-public class obk
+public abstract interface obk
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public String toString()
-  {
-    return "appCode = " + this.a + "\nappVersion = " + this.b + "\nappUsedDate = " + this.c + "\n";
-  }
+  public abstract void a(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     obk
  * JD-Core Version:    0.7.0.1
  */

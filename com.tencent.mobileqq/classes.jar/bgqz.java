@@ -1,32 +1,27 @@
-import android.graphics.drawable.Drawable;
-import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
-import cooperation.vip.vipcomponent.util.VipResourcesListener;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.widget.FadeIconImageView;
+import cooperation.qqfav.widget.LocationDetailActivity;
+import mqq.app.AppRuntime;
 
 public class bgqz
+  extends bgqs
 {
-  public static bgqz a;
-  
-  public static bgqz a()
+  public bgqz(LocationDetailActivity paramLocationDetailActivity, Activity paramActivity, bgqv parambgqv, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
   {
-    if (a == null) {}
-    try
+    super(paramActivity, parambgqv, paramInt1, paramInt2, paramAppRuntime);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (LocationDetailActivity.a(this.a))
     {
-      if (a == null) {
-        a = new bgqz();
+      bgpv.a(true);
+      if (LocationDetailActivity.a(this.a) != null) {
+        LocationDetailActivity.a(this.a).setVisibility(8);
       }
-      return a;
     }
-    finally {}
-  }
-  
-  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, VipResourcesListener paramVipResourcesListener)
-  {
-    return QzoneHuangzuanVipIconShow.getInstance().getLayers(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString1, paramInt3, paramInt4, paramString2, paramVipResourcesListener, 0);
-  }
-  
-  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt3, VipResourcesListener paramVipResourcesListener)
-  {
-    return a(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString, paramInt3, 100, null, paramVipResourcesListener);
+    super.onClick(paramView);
   }
 }
 

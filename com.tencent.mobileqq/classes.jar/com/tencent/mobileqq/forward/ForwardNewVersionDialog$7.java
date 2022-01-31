@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.forward;
 
-import apjo;
-import beex;
+import aqdb;
+import bfmr;
 
 public class ForwardNewVersionDialog$7
   implements Runnable
 {
-  public ForwardNewVersionDialog$7(apjo paramapjo) {}
+  public ForwardNewVersionDialog$7(aqdb paramaqdb) {}
   
   public void run()
   {
-    beex.a(apjo.a(this.this$0));
+    bfmr.a(aqdb.a(this.this$0));
   }
 }
 

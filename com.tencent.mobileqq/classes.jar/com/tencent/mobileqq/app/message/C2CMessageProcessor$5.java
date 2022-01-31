@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app.message;
 
-import akak;
-import bcri;
+import akow;
+import bdvj;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class C2CMessageProcessor$5
   implements Runnable
 {
-  public C2CMessageProcessor$5(akak paramakak, MessageRecord paramMessageRecord) {}
+  public C2CMessageProcessor$5(akow paramakow, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    bcri.a(this.this$0.a, this.a.istroop, this.a.frienduin, String.valueOf(this.a.mQidianMasterUin), String.valueOf(this.a.mQidianTaskId), this.a.mQidianTipText, this.a.time);
+    bdvj.a(this.this$0.a, this.a.istroop, this.a.frienduin, String.valueOf(this.a.mQidianMasterUin), String.valueOf(this.a.mQidianTaskId), this.a.mQidianTipText, this.a.time);
   }
 }
 

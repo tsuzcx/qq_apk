@@ -1,45 +1,14 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnBufferingUpdateListener;
 
-public class ufx
-  extends uiy<ujt>
+class ufx
+  implements MediaPlayer.OnBufferingUpdateListener
 {
-  public ufx(@Nullable ujc paramujc)
-  {
-    super(paramujc);
-  }
+  ufx(ufu paramufu, ufl paramufl) {}
   
-  protected JobSegment<ujb, ujt> a()
+  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
-    return new ujo();
-  }
-  
-  protected JobSegment<Integer, ujb> a(uja paramuja)
-  {
-    return new ufy(paramuja);
-  }
-  
-  protected ujt a()
-  {
-    uje localuje = (uje)sqg.a(11);
-    List localList = localuje.c();
-    ujt localujt = new ujt(new ErrorMessage());
-    localujt.jdField_b_of_type_JavaUtilList = localuje.b(localList);
-    localujt.jdField_b_of_type_Boolean = true;
-    localujt.a = localujt.jdField_b_of_type_JavaUtilList.isEmpty();
-    return localujt;
-  }
-  
-  protected ujt a(ErrorMessage paramErrorMessage)
-  {
-    return new ujt(paramErrorMessage);
-  }
-  
-  protected void a(List<String> paramList, boolean paramBoolean)
-  {
-    ((uje)sqg.a(11)).c(paramList, paramBoolean);
+    this.jdField_a_of_type_Ufl.a(this.jdField_a_of_type_Ufu, paramInt);
   }
 }
 

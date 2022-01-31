@@ -1,39 +1,71 @@
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
-public final class avur
-  extends ThreadPoolExecutor
+public class avur
+  implements ViewPager.OnPageChangeListener
 {
-  public avur(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
+  public int a;
+  
+  public avur(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  
+  public void onPageScrollStateChanged(int paramInt)
   {
-    super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, paramThreadFactory);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "onPageScrollStateChanged state: " + paramInt);
+    }
   }
   
-  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if ((paramRunnable instanceof FutureTask)) {}
-    try
-    {
-      ((FutureTask)paramRunnable).get();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "onPageScrolled position: " + paramInt1 + ", positionOffset: " + paramFloat + ", positionOffsetPixels: " + paramInt2);
     }
-    catch (ExecutionException paramRunnable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("GroupSearchEngine", 2, "Exception happened", paramRunnable);
-      return;
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (this.jdField_a_of_type_Int == paramInt) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n " + paramInt);
+      }
     }
-    catch (Error paramRunnable) {}catch (Exception paramRunnable) {}
+    Object localObject;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n" + paramInt);
+      }
+      ahub.a("", "0X8007804", "", "", "", "");
+      this.jdField_a_of_type_Int = paramInt;
+      View localView = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt);
+      if (localView != null)
+      {
+        localObject = (Runnable)localView.getTag();
+        if (localObject != null)
+        {
+          localView.removeCallbacks((Runnable)localObject);
+          localView.setTag(null);
+        }
+        CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, localView, paramInt, false);
+      }
+      localView = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt - 1);
+      localObject = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt + 1);
+      if (localView != null)
+      {
+        localView.removeCallbacks((Runnable)localView.getTag());
+        localView.clearAnimation();
+      }
+    } while (localObject == null);
+    ((View)localObject).removeCallbacks((Runnable)((View)localObject).getTag());
+    ((View)localObject).clearAnimation();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avur
  * JD-Core Version:    0.7.0.1
  */

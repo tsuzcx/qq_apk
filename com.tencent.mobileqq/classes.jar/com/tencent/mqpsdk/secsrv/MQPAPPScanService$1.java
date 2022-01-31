@@ -1,18 +1,18 @@
 package com.tencent.mqpsdk.secsrv;
 
-import bbtc;
+import bcxc;
 
 public class MQPAPPScanService$1
   extends Thread
 {
-  public MQPAPPScanService$1(bbtc parambbtc, byte[] paramArrayOfByte) {}
+  public MQPAPPScanService$1(bcxc parambcxc, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     try
     {
-      bbtc.a += 1;
-      bbtc.a(this.this$0, this.a);
+      bcxc.a += 1;
+      bcxc.a(this.this$0, this.a);
       return;
     }
     finally {}

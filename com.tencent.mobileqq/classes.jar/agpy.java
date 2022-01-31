@@ -1,23 +1,27 @@
+import android.app.Activity;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.OnConvertListener;
-import eipc.EIPCResult;
+import com.tencent.qphone.base.util.QLog;
 
 class agpy
-  implements EmojiGifHelper.OnConvertListener
+  extends mxm
 {
-  agpy(agpt paramagpt, int paramInt) {}
+  agpy(agpx paramagpx, long paramLong) {}
   
-  public void onConvertResult(boolean paramBoolean, String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("res", paramBoolean);
-    localBundle.putString("path", paramString);
-    this.jdField_a_of_type_Agpt.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    if (QLog.isColorLevel()) {
+      QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "checkOpenidDiff, onResult, errorCode=", Integer.valueOf(paramInt) });
+    }
+    if ((this.jdField_a_of_type_Agpx.a.isFinishing()) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L)) {}
+    while (paramInt != 16) {
+      return;
+    }
+    agpv.b(this.jdField_a_of_type_Agpx.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agpy
  * JD-Core Version:    0.7.0.1
  */

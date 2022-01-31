@@ -1,16 +1,25 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 
-class atgf
+public class atgf
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
+  public boolean a;
   
-  atgf(atgd paramatgd) {}
+  protected void a() {}
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 4124: 
+      a();
+      return;
+    }
+    a((BusinessInfoCheckUpdate.AppInfo)paramVarArgs[0]);
+  }
+  
+  public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
 }
 
 

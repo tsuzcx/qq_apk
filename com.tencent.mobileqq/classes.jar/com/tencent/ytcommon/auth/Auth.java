@@ -5,7 +5,10 @@ import android.content.res.AssetManager;
 import android.os.Build.VERSION;
 import android.util.Log;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
 
 public class Auth
 {
@@ -19,6 +22,15 @@ public class Auth
     boolean bool = nativeCheck(handle);
     Log.d("sdk", "--------------check");
     return bool;
+  }
+  
+  public static int getAuthResult()
+  {
+    if (handle != 0L) {
+      return getCurrentAuthStatus(handle);
+    }
+    Log.w("sdk", "you should call YTCommonInterface.initAuth() first");
+    return -1;
   }
   
   private static native int getCurrentAuthStatus(long paramLong);
@@ -38,6 +50,40 @@ public class Auth
   public static String getLicensePath()
   {
     return licensePath;
+  }
+  
+  private static String getSerial()
+  {
+    String str2 = "";
+    try
+    {
+      LineNumberReader localLineNumberReader = new LineNumberReader(new InputStreamReader(Runtime.getRuntime().exec("cat /proc/cpuinfo").getInputStream()));
+      int i = 1;
+      for (;;)
+      {
+        String str1 = str2;
+        if (i < 100)
+        {
+          String str3 = localLineNumberReader.readLine();
+          str1 = str2;
+          if (str3 != null)
+          {
+            if (str3.indexOf("Serial") <= -1) {
+              break label88;
+            }
+            str1 = str3.substring(str3.indexOf(":") + 1, str3.length()).trim();
+          }
+        }
+        return str1;
+        label88:
+        i += 1;
+      }
+      return "";
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
   }
   
   public static int getVersion()
@@ -131,6 +177,8 @@ public class Auth
   private static native int nativeGetVersion();
   
   private static native long nativeInitN(Context paramContext, int paramInt, String paramString1, AssetManager paramAssetManager, String paramString2, boolean paramBoolean);
+  
+  private static native int nativeSetSerial(String paramString);
   
   public static void setLicensePath(String paramString)
   {

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import aawh;
-import aawn;
+import abge;
+import abgk;
 import android.view.View;
 import com.tencent.widget.Gallery;
 
 public class FriendProfileImageActivity$6$1
   implements Runnable
 {
-  public FriendProfileImageActivity$6$1(aawh paramaawh) {}
+  public FriendProfileImageActivity$6$1(abge paramabge) {}
   
   public void run()
   {
-    if (this.a.a.jdField_a_of_type_Int != this.a.a.jdField_a_of_type_Aawn.b()) {
-      this.a.a.jdField_a_of_type_Int = this.a.a.jdField_a_of_type_Aawn.b();
+    if (this.a.a.jdField_a_of_type_Int != this.a.a.jdField_a_of_type_Abgk.b()) {
+      this.a.a.jdField_a_of_type_Int = this.a.a.jdField_a_of_type_Abgk.b();
     }
     View localView;
     do
@@ -22,8 +22,8 @@ public class FriendProfileImageActivity$6$1
       localView = this.a.a.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView();
     } while (localView == null);
     this.a.a.jdField_a_of_type_AndroidViewView = localView;
-    this.a.a.jdField_a_of_type_Aawn.a(this.a.a.jdField_a_of_type_Aawn.b());
-    this.a.a.a(this.a.a.jdField_a_of_type_ComTencentWidgetGallery, this.a.a.jdField_a_of_type_Aawn.b());
+    this.a.a.jdField_a_of_type_Abgk.a(this.a.a.jdField_a_of_type_Abgk.b());
+    this.a.a.a(this.a.a.jdField_a_of_type_ComTencentWidgetGallery, this.a.a.jdField_a_of_type_Abgk.b());
   }
 }
 

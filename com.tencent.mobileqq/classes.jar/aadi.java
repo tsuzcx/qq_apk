@@ -1,93 +1,87 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Card;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aadi
-  extends ajfo
+class aadi
+  implements DialogInterface.OnCancelListener, DialogInterface.OnClickListener
 {
-  public aadi(BaseChatPie paramBaseChatPie) {}
+  aabm a;
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public aadi(aabm paramaabm)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    this.a = paramaabm;
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    paramDialogInterface = new JSONObject();
+    try
     {
-      if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramObject != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.uin)) && ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1003) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10002)) && (paramObject.strCertificationInfo != null) && (!paramObject.strCertificationInfo.equals(""))) {
-        aael.h(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      paramDialogInterface.put("confirm", false);
+      paramDialogInterface.put("cancel", true);
+      aaet.a(this.a, paramDialogInterface);
+      return;
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      String str = paramDialogInterface.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
       }
-      if ((paramBoolean) && (paramObject != null)) {}
-      switch (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)
+      aabm localaabm = this.a;
+      paramDialogInterface = str;
+      if (str == null) {
+        paramDialogInterface = "";
+      }
+      aaet.a(localaabm, -1, paramDialogInterface);
+    }
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    boolean bool2 = true;
+    paramDialogInterface = new JSONObject();
+    boolean bool1;
+    if (paramInt == 1) {
+      bool1 = true;
+    }
+    try
+    {
+      paramDialogInterface.put("confirm", bool1);
+      if (paramInt != 1) {}
+      for (bool1 = bool2;; bool1 = false)
       {
-      default: 
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.uin)))
-        {
-          this.a.A();
-          if (QLog.isColorLevel()) {
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onCardDownload nick = " + azzz.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d));
-          }
-          this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-          if (AppSetting.c)
-          {
-            paramObject = this.a.e.getText().toString();
-            this.a.e.setContentDescription(paramObject);
-            this.a.a().setTitle(this.a.e.getText());
-          }
-          if ((3000 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) && ((this.a instanceof aede))) {
-            ((aede)this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.e);
-          }
-        }
-      case 1034: 
+        paramDialogInterface.put("cancel", bool1);
+        aaet.a(this.a, paramDialogInterface);
         return;
+        bool1 = false;
+        break;
       }
-      this.a.b(false, false);
+      String str;
+      aabm localaabm;
       return;
     }
-  }
-  
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
+    catch (JSONException paramDialogInterface)
     {
+      str = paramDialogInterface.getMessage();
       if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays isAllow= " + paramBoolean2);
+        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
       }
-      this.a.aQ();
-    }
-  }
-  
-  protected void onImpeach(boolean paramBoolean, String paramString)
-  {
-    if ((this.a.d != null) && (this.a.d.isShowing())) {
-      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.dismissDialog(231);
-    }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.showDialog(232);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.showDialog(233);
-  }
-  
-  protected void onSetCalReactiveDays(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays");
+      localaabm = this.a;
+      paramDialogInterface = str;
+      if (str == null) {
+        paramDialogInterface = "";
       }
-      this.a.aQ();
+      aaet.a(localaabm, -1, paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aadi
  * JD-Core Version:    0.7.0.1
  */

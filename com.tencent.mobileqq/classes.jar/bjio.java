@@ -1,42 +1,73 @@
-import com.tencent.common.app.AppInterface;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager.4;
 import java.io.File;
 import java.io.IOException;
 
-public class bjio
-  implements axrt
+class bjio
+  implements aysa
 {
-  public bjio(QIMPtvTemplateManager.4 param4) {}
+  bjio(bjin parambjin, String paramString1, String paramString2, bjiq parambjiq, String paramString3, String paramString4, bjip parambjip) {}
   
-  public void onResp(axsq paramaxsq)
+  public void onResp(aysx paramaysx)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QIMPtvTemplateManager", 2, "onResp url: " + this.a.a.resurl + " resultcode: " + paramaxsq.c);
+      QLog.i("ConfigSimplifier_PTV", 2, "onResp resultcode: " + paramaysx.c + " threadid=" + Thread.currentThread().getId());
     }
-    this.a.a.usable = this.a.this$0.a(this.a.a);
-    if (this.a.a.usable) {}
-    try
-    {
-      mpx.a(new File(bjin.a(), this.a.a.name), bjin.a);
-      if (this.a.this$0.a() != null) {
-        this.a.this$0.a().notifyObservers(bhik.class, 3, true, null);
+    File localFile = new File(this.jdField_a_of_type_JavaLangString, this.b);
+    if (!localFile.exists()) {
+      if (QLog.isColorLevel()) {
+        QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !zipfile.exists()");
       }
-      return;
     }
-    catch (IOException paramaxsq)
+    label249:
+    do
     {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          paramaxsq.printStackTrace();
+        return;
+        paramaysx = "";
+        try
+        {
+          String str = bbdj.c(localFile.getPath());
+          paramaysx = str;
+          if ((TextUtils.isEmpty(this.jdField_a_of_type_Bjiq.c)) || (!this.jdField_a_of_type_Bjiq.c.equalsIgnoreCase(paramaysx))) {}
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+        {
+          for (;;)
+          {
+            try
+            {
+              nay.a(localFile, this.c);
+              paramaysx = new File(this.d);
+              if (!paramaysx.exists()) {
+                break label249;
+              }
+              paramaysx = bkyy.a(paramaysx);
+              if ((this.jdField_a_of_type_Bjip == null) || (paramaysx == null)) {
+                break;
+              }
+              this.jdField_a_of_type_Bjip.a(paramaysx);
+              return;
+              localUnsatisfiedLinkError = localUnsatisfiedLinkError;
+              QLog.e("ConfigSimplifier_PTV", 1, "onResp error, ", localUnsatisfiedLinkError);
+            }
+            catch (IOException paramaysx)
+            {
+              QLog.e("ConfigSimplifier_PTV", 1, "onResp error, ", paramaysx);
+              continue;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.e("ConfigSimplifier_PTV", 2, new Object[] { "parseFilterConfigZip error, md5:", this.jdField_a_of_type_Bjiq.c, " ", paramaysx });
+            }
+          }
         }
       }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 

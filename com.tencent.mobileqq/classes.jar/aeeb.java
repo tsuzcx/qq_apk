@@ -1,16 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class aeeb
-  extends axfi
+  implements View.OnClickListener
 {
-  aeeb(aedo paramaedo) {}
+  aeeb(aedz paramaedz) {}
   
-  public void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void onClick(View paramView)
   {
-    axfs.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, aedo.e(this.a), paramBoolean, paramArrayOfObject);
-  }
-  
-  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    axfs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, aedo.f(this.a), paramBoolean, paramArrayOfObject);
+    if (paramView.getId() == 2131363431) {
+      aedz.a(this.a).a(paramView);
+    }
+    while (paramView.getId() != 2131363432) {
+      return;
+    }
+    aedz.a(this.a).b(paramView);
   }
 }
 

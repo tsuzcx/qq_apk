@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import bgmq;
+import bbdj;
 import com.tencent.viola.utils.ViolaUtils;
-import obz;
+import onk;
 
 class ViolaBaseView$18
   implements Runnable
@@ -11,16 +11,14 @@ class ViolaBaseView$18
   
   public void run()
   {
-    if (System.currentTimeMillis() - ((Long)bgmq.a("https://sqimg.qq.com/qq_product_operations/kan/violaLibs/Viola.min.0.3.10.js?v_bid=3547" + obz.a(), Long.valueOf(0L))).longValue() > 18000000L)
-    {
-      ViolaBaseView.d(this.this$0, false);
-      bgmq.a("https://sqimg.qq.com/qq_product_operations/kan/violaLibs/Viola.min.0.3.10.js?v_bid=3547" + obz.a(), Long.valueOf(System.currentTimeMillis()));
+    Object localObject = bbdj.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + onk.a());
+    if (localObject == null) {
+      bbdj.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + onk.a(), ViolaBaseView.b(this.this$0));
     }
-    if ((System.currentTimeMillis() - ((Long)bgmq.a(ViolaUtils.getPageName(this.this$0.a) + obz.a(), Long.valueOf(0L))).longValue() > 7200000L) && (ViolaBaseView.a(this.this$0)))
-    {
-      ViolaBaseView.e(this.this$0, false);
-      bgmq.a(ViolaUtils.getPageName(this.this$0.a) + obz.a(), Long.valueOf(System.currentTimeMillis()));
+    while ((!(localObject instanceof String)) || (ViolaBaseView.b(this.this$0).equals(localObject))) {
+      return;
     }
+    bbdj.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + onk.a(), ViolaBaseView.b(this.this$0));
   }
 }
 

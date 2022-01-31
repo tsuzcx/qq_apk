@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
-class abhv
-  implements DialogInterface.OnClickListener
+public class abhv
+  implements CompoundButton.OnCheckedChangeListener
 {
-  abhv(abhu paramabhu) {}
+  public abhv(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    aylf.a(paramBoolean);
+    if (paramBoolean) {
+      aylf.a(new abhw(this.a.jdField_a_of_type_Acck, this.a.jdField_a_of_type_AndroidViewView));
+    }
   }
 }
 

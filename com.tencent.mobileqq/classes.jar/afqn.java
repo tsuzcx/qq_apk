@@ -1,80 +1,119 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contacts.utils.ContactReportUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class afqn
-  extends Handler
+public class afqn
+  extends ampb<afsu>
 {
-  afqn(afqi paramafqi, Looper paramLooper)
+  public int a()
   {
-    super(paramLooper);
+    return 438;
   }
   
-  public void handleMessage(Message paramMessage)
+  @NonNull
+  public afsu a(int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.isLogin())) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldOrDefaultContent");
+    }
+    return new afsu();
+  }
+  
+  @Nullable
+  public afsu a(ampi[] paramArrayOfampi)
+  {
+    int j;
+    int i;
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      do
+      QLog.d("ReportExposeConfigProcessor", 2, "onParsed :" + paramArrayOfampi);
+      if (paramArrayOfampi != null)
       {
-        return;
-        switch (paramMessage.what)
+        j = paramArrayOfampi.length;
+        i = 0;
+        while (i < j)
         {
-        default: 
-          return;
-        case 0: 
-          paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-          this.a.a(35, paramMessage);
-          return;
-        case 28929: 
-          paramMessage = paramMessage.getData();
-        }
-      } while (paramMessage == null);
-      int i = paramMessage.getInt("result");
-      if ((i == -1) || (i == -2))
-      {
-        if (i == -1) {
-          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131653225);
-        }
-        for (String str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131653224);; str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131653227))
-        {
-          try
-          {
-            if (this.a.jdField_a_of_type_Bafb != null)
-            {
-              if (this.a.jdField_a_of_type_Bafb.isShowing()) {
-                this.a.jdField_a_of_type_Bafb.dismiss();
-              }
-              this.a.jdField_a_of_type_Bafb = null;
-            }
-            this.a.jdField_a_of_type_Bafb = babr.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, paramMessage, str, new afqo(this), null);
-            this.a.jdField_a_of_type_Bafb.setOnCancelListener(new afqp(this));
-            this.a.jdField_a_of_type_Bafb.setOnDismissListener(new afqq(this));
-            this.a.jdField_a_of_type_Bafb.show();
-            return;
+          localObject1 = paramArrayOfampi[i];
+          if (localObject1 != null) {
+            QLog.d("ReportExposeConfigProcessor", 2, "onParsed item: " + ((ampi)localObject1).a);
           }
-          catch (Exception paramMessage) {}
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          paramMessage.printStackTrace();
-          return;
-          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131653228);
+          i += 1;
         }
       }
-    } while (this.a.jdField_a_of_type_Bafb == null);
-    this.a.jdField_a_of_type_Bafb.dismiss();
-    return;
-    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-    this.a.a(34, paramMessage);
-    return;
-    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-    this.a.a(33, paramMessage);
+    }
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    {
+      j = paramArrayOfampi.length;
+      i = 0;
+      while (i < j)
+      {
+        Object localObject2 = paramArrayOfampi[i];
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((ampi)localObject2).a))) {
+          try
+          {
+            localObject1 = new afsu();
+            localObject2 = new JSONObject(((ampi)localObject2).a);
+            if (((JSONObject)localObject2).has("enable")) {
+              ((afsu)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).getBoolean("enable");
+            }
+            if (((JSONObject)localObject2).has("interval")) {
+              ((afsu)localObject1).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("interval");
+            }
+            return localObject1;
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("ReportExposeConfigProcessor", 1, localThrowable, new Object[0]);
+          }
+        }
+        i += 1;
+      }
+    }
+    return null;
+  }
+  
+  public Class<afsu> a()
+  {
+    return afsu.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "onReqFailed, code = " + paramInt);
+    }
+  }
+  
+  public void a(afsu paramafsu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "onUpdate");
+    }
+    if (paramafsu != null) {
+      ContactReportUtils.a(paramafsu);
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

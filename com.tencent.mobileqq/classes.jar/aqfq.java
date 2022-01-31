@@ -1,26 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aqfq
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  aqfq(aqfp paramaqfp) {}
+  aqfq(aqfo paramaqfo, bbgg parambbgg) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a == 3) {
-      this.a.d.setVisibility(8);
-    }
+    this.jdField_a_of_type_Aqfo.c();
+    this.jdField_a_of_type_Bbgg.dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqfq
  * JD-Core Version:    0.7.0.1
  */

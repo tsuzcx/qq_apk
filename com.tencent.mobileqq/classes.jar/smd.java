@@ -1,69 +1,46 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.common.app.AppInterface;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.NewIntent;
+import android.os.Parcel;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class smd
-  extends SimpleJob
 {
-  public smd(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, slz paramslz)
+  public String mMsgData;
+  public String mPushId;
+  
+  protected smd(Parcel paramParcel)
   {
-    super(paramString);
+    this.mPushId = paramParcel.readString();
+    this.mMsgData = paramParcel.readString();
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  protected smd(String paramString)
   {
-    for (;;)
+    this.mMsgData = paramString;
+    try
     {
-      NewIntent localNewIntent;
-      try
-      {
-        paramJobContext = this.jdField_a_of_type_Slz.a();
-        paramArrayOfObject = Integer.valueOf(QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).getAndIncrement());
-        AppInterface localAppInterface = QQStoryContext.a();
-        localNewIntent = new NewIntent(localAppInterface.getApp(), smk.class);
-        localNewIntent.putExtra("storySeq", paramArrayOfObject);
-        localNewIntent.putExtra("cmd", this.jdField_a_of_type_Slz.a());
-        localNewIntent.putExtra("data", paramJobContext);
-        localNewIntent.putExtra("start_time", System.currentTimeMillis());
-        if (this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a.contains(Integer.valueOf(this.jdField_a_of_type_Slz.b())))
-        {
-          localNewIntent.putExtra("timeout", 10000L);
-          localNewIntent.putExtra("support_retry", true);
-          QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).put(paramArrayOfObject, this.jdField_a_of_type_Slz);
-          localAppInterface.startServlet(localNewIntent);
-          return null;
-        }
-      }
-      catch (QQStoryCmdHandler.IllegalUinException paramJobContext)
-      {
-        Bosses.get().scheduleJobDelayed(new sme(this, "Q.qqstory.net:QQStoryCmdHandler", paramJobContext), 100);
-        return null;
-      }
-      if (this.jdField_a_of_type_Slz.a > 0L) {
-        localNewIntent.putExtra("timeout", this.jdField_a_of_type_Slz.a);
-      }
+      parseJson(new JSONObject(paramString));
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      sne.b("WSPushMsgActionData parse failed : " + paramString.getLocalizedMessage());
     }
   }
   
-  public int getJobType()
+  protected void parseJson(JSONObject paramJSONObject)
   {
-    return 16;
+    this.mPushId = paramJSONObject.optString("pushid");
+  }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    paramParcel.writeString(this.mPushId);
+    paramParcel.writeString(this.mMsgData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     smd
  * JD-Core Version:    0.7.0.1
  */

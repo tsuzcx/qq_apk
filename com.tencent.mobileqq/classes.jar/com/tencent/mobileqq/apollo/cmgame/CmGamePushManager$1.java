@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo.cmgame;
 
-import aijn;
+import aiwg;
 import com.tencent.mobileqq.apollo.data.CmGamePushItem;
 import java.util.List;
 
 public class CmGamePushManager$1
   implements Runnable
 {
-  public CmGamePushManager$1(aijn paramaijn, CmGamePushItem paramCmGamePushItem, List paramList) {}
+  public CmGamePushManager$1(aiwg paramaiwg, CmGamePushItem paramCmGamePushItem, List paramList) {}
   
   public void run()
   {
-    aijn.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqApolloDataCmGamePushItem, null);
-    aijn.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
+    aiwg.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqApolloDataCmGamePushItem, null);
+    aiwg.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -1,59 +1,57 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.data.GrayTipsSpan;
-import com.tencent.mobileqq.data.MessageForGrayTips;
-import com.tencent.mobileqq.data.MessageForNewGrayTips;
+import android.os.HandlerThread;
+import android.os.Looper;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import mqq.os.MqqMessageQueue;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
-public class ajzx
+final class ajzx
+  implements AbstractUnifiedMonitor.ThreadMonitorCallback
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  public void onThreadMonitorEnd(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddMessageHelper", 2, "-----addDatingSafetyGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + azzz.a(paramString2));
-    }
-    long l = awao.a();
-    MessageForGrayTips localMessageForGrayTips = (MessageForGrayTips)awbi.a(-1028);
-    localMessageForGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, -1028, paramInt, l);
-    localMessageForGrayTips.isread = true;
-    if (!ajml.a(paramQQAppInterface, localMessageForGrayTips)) {
-      paramQQAppInterface.a().a(localMessageForGrayTips, paramQQAppInterface.getCurrentAccountUin());
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, ArrayList<GrayTipsSpan> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + azzz.a(paramString2));
-    }
-    if ((paramBoolean1) && (akbm.d(paramInt)) && (QLog.isColorLevel())) {
-      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage faild : no troop uin");
-    }
-    long l = awao.a();
-    if (paramBoolean1) {}
-    for (int i = -5001;; i = -5000)
+    if (paramInt == 0)
     {
-      QQMessageFacade.Message localMessage = paramQQAppInterface.a().a(paramString1, paramInt);
-      MessageForNewGrayTips localMessageForNewGrayTips = (MessageForNewGrayTips)awbi.a(i);
-      localMessageForNewGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, i, paramInt, l);
-      if (localMessage != null) {
-        localMessageForNewGrayTips.shmsgseq = localMessage.shmsgseq;
-      }
-      localMessageForNewGrayTips.isread = paramBoolean3;
-      localMessageForNewGrayTips.spans = paramArrayList;
-      localMessageForNewGrayTips.updateMsgData();
-      if ((!paramBoolean2) || (!ajml.a(paramQQAppInterface, localMessageForNewGrayTips, false))) {
-        paramQQAppInterface.a().a(localMessageForNewGrayTips, paramQQAppInterface.getCurrentAccountUin());
-      }
-      return;
+      Looper.getMainLooper().setMessageLogging(null);
+      MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(null);
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    a(paramQQAppInterface, paramString1, paramString2, paramInt, null, paramBoolean1, paramBoolean2, true);
+    do
+    {
+      Object localObject;
+      do
+      {
+        return;
+        if (paramInt == 4)
+        {
+          ThreadManager.getSubThreadLooper().setMessageLogging(null);
+          return;
+        }
+        if (paramInt == 5)
+        {
+          ThreadManager.getFileThreadLooper().setMessageLogging(null);
+          return;
+        }
+        if (paramInt == 14)
+        {
+          Looper.getMainLooper().setMessageLogging(null);
+          return;
+        }
+        if (paramInt != 18) {
+          break;
+        }
+        localObject = MsfCore.sCore;
+        if (localObject == null)
+        {
+          QLog.e("AutoMonitor", 1, "msf core hasnot init");
+          return;
+        }
+        localObject = ((MsfCore)localObject).getNetworkHandlerThread();
+      } while ((localObject == null) || (((HandlerThread)localObject).getLooper() == null));
+      ((HandlerThread)localObject).getLooper().setMessageLogging(null);
+      return;
+    } while (paramInt != 19);
+    Looper.getMainLooper().setMessageLogging(null);
   }
 }
 

@@ -1,37 +1,14 @@
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
 
-class aibe
-  implements View.OnTouchListener
+public class aibe
 {
-  aibe(aibc paramaibc) {}
+  public int a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramView instanceof ImageView))
-      {
-        ((ImageView)paramView).getDrawable().setColorFilter(855638016, PorterDuff.Mode.SRC_ATOP);
-        continue;
-        if ((paramView instanceof ImageView)) {
-          ((ImageView)paramView).getDrawable().clearColorFilter();
-        }
-      }
-    }
-  }
+  private aibe(GLVideoClipUtil paramGLVideoClipUtil) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aibe
  * JD-Core Version:    0.7.0.1
  */

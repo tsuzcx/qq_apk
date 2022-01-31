@@ -1,19 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.vip.jsoninflate.model.AlumBasicData;
+import android.content.Intent;
 
-public final class bgpt
-  implements Parcelable.Creator<AlumBasicData>
+class bgpt
 {
-  public AlumBasicData a(Parcel paramParcel)
-  {
-    return new AlumBasicData(paramParcel);
-  }
-  
-  public AlumBasicData[] a(int paramInt)
-  {
-    return new AlumBasicData[paramInt];
-  }
+  public long a;
+  public Intent a;
 }
 
 

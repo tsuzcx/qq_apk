@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import qvo;
+import ria;
 
 public class SlideActiveAnimController$4$1
   implements Runnable
 {
-  public SlideActiveAnimController$4$1(qvo paramqvo) {}
+  public SlideActiveAnimController$4$1(ria paramria) {}
   
   public void run()
   {

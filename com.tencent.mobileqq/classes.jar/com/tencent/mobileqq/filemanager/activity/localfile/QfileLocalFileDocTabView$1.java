@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import apbo;
-import apcc;
-import apfs;
+import apti;
+import aptw;
+import apxv;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,14 +25,14 @@ class QfileLocalFileDocTabView$1
     {
       localObject1 = this.this$0.d.iterator();
       while (((Iterator)localObject1).hasNext()) {
-        apcc.a(bool, ((apfs)((Iterator)localObject1).next()).a(), ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
+        aptw.a(bool, ((apxv)((Iterator)localObject1).next()).a(), ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
       }
     }
     if (this.this$0.f) {}
-    for (Object localObject1 = apbo.a().a();; localObject1 = null)
+    for (Object localObject1 = apti.a().a();; localObject1 = null)
     {
       if (localObject1 != null) {
-        apcc.a(bool, (String)localObject1, ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
+        aptw.a(bool, (String)localObject1, ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
       }
       localObject1 = new HashMap();
       Iterator localIterator = localHashMap.keySet().iterator();
@@ -47,7 +47,7 @@ class QfileLocalFileDocTabView$1
         ((List)((HashMap)localObject1).get(str)).addAll((Collection)localObject2);
       }
     }
-    apcc.a((Map)localObject1);
+    aptw.a((Map)localObject1);
     QfileLocalFileDocTabView.a(this.this$0, new QfileLocalFileDocTabView.1.1(this, (HashMap)localObject1));
   }
 }

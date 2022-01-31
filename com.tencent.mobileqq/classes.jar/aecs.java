@@ -1,38 +1,63 @@
 import android.content.Context;
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
-import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3.1.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AppGuideTipsConfig;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTimDouFuGuide;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class aecs
-  implements OnCompositionLoadedListener
+  extends actq
 {
-  public aecs(ConfessChatPie.3 param3) {}
-  
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public aecs(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    int i = aciy.a(30.0F, this.a.this$0.jdField_a_of_type_AndroidContentContext.getResources());
-    int j = aciy.a(30.0F, this.a.this$0.jdField_a_of_type_AndroidContentContext.getResources());
-    if (paramLottieComposition == null)
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+  }
+  
+  protected actr a()
+  {
+    return new aecu(this);
+  }
+  
+  protected View a(MessageRecord paramMessageRecord, actr paramactr, View paramView, LinearLayout paramLinearLayout, acxn paramacxn)
+  {
+    paramLinearLayout = (aecu)paramactr;
+    paramactr = paramView;
+    if (paramView == null)
     {
-      QLog.e(this.a.this$0.jdField_a_of_type_JavaLangString, 1, "onCompositionLoaded lottieComposition is null");
-      return;
+      paramactr = LayoutInflater.from(this.a).inflate(2131558784, null);
+      paramLinearLayout.b = ((TextView)paramactr.findViewById(2131377350));
+      paramLinearLayout.c = ((TextView)paramactr.findViewById(2131364692));
     }
-    Object localObject = paramLottieComposition.getBounds();
-    float f1 = i / ((Rect)localObject).width();
-    float f2 = j / ((Rect)localObject).height();
-    localObject = new LottieDrawable();
-    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
-    ((LottieDrawable)localObject).setScale(f1, f2);
-    ((LottieDrawable)localObject).loop(false);
-    aecp.a(this.a.this$0, (LottieDrawable)localObject);
-    aecp.a(this.a.this$0).addAnimatorListener(new aect(this));
-    ThreadManager.getUIHandler().post(new ConfessChatPie.3.1.2(this));
+    if ((paramMessageRecord != null) && ((paramMessageRecord instanceof MessageForTimDouFuGuide)))
+    {
+      paramMessageRecord = ((MessageForTimDouFuGuide)paramMessageRecord).config;
+      if (paramMessageRecord != null)
+      {
+        paramLinearLayout.b.setText(paramMessageRecord.tipsHighLight);
+        paramView = new SpannableString(paramMessageRecord.tipsMsg + ajyc.a(2131714933));
+        int i = paramView.length();
+        paramView.setSpan(new ForegroundColorSpan(paramactr.getResources().getColor(2131166866)), i - 4, i, 33);
+        paramLinearLayout.c.setText(paramView);
+        paramactr.setOnClickListener(new aect(this, paramMessageRecord));
+      }
+    }
+    return paramactr;
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public bblt[] a(View paramView)
+  {
+    return new bblr().a();
   }
 }
 

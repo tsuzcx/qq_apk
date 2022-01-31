@@ -1,23 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 
-class aiqy
-  implements DialogInterface.OnKeyListener
+public abstract interface aiqy
 {
-  aiqy(aiqu paramaiqu, airc paramairc) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramInt == 4) && (this.jdField_a_of_type_Airc != null)) {
-      this.jdField_a_of_type_Airc.a(this.jdField_a_of_type_Aiqu.a(), "sc.xy_alert_show_success.local", "{\"cancel\":1}");
-    }
-    return true;
-  }
+  public abstract void a(Canvas paramCanvas, Paint paramPaint);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiqy
  * JD-Core Version:    0.7.0.1
  */

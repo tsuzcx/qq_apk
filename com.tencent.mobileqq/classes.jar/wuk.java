@@ -1,20 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.videostory.capture.VideoStoryCapturePart.11.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
 public class wuk
-  implements bgyr
+  implements View.OnClickListener
 {
-  wuk(wuh paramwuh) {}
+  public wuk(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    ThreadManager.excute(new VideoStoryCapturePart.11.1(this, paramBitmap), 64, null, false);
+    VideoPlayerView.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wuk
  * JD-Core Version:    0.7.0.1
  */

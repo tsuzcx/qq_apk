@@ -1,41 +1,57 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import pttcenterservice.PttShortVideo.PttShortVideoUploadResp;
 
-public class baqv
-  extends baqp
+class baqv
+  implements ITransactionCallback
 {
-  public static baqv a = new baqv();
+  baqv(baqu parambaqu) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, baof parambaof, boolean paramBoolean)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    a.download(paramQQAppInterface, "qqVipLevel." + paramInt, parambaof, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "upload onFailed errn:" + paramInt);
+    }
+    this.a.e();
   }
   
-  public static boolean a(Context paramContext, int paramInt)
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    String str = "qqVipLevel." + paramInt;
-    return new File(a.getDir(paramContext, str)).exists();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "upload onSuccess");
+    }
+    paramHashMap = new PttShortVideo.PttShortVideoUploadResp();
+    try
+    {
+      paramArrayOfByte = (PttShortVideo.PttShortVideoUploadResp)paramHashMap.mergeFrom(paramArrayOfByte);
+      if (paramArrayOfByte.str_fileid.has()) {
+        this.a.c = paramArrayOfByte.str_fileid.get();
+      }
+      this.a.b = true;
+      this.a.b();
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
   }
   
-  public long getBID()
-  {
-    return 41L;
-  }
+  public void onSwitch2BackupChannel() {}
   
-  protected String getRootDir()
-  {
-    return "qqlevel_icon";
-  }
+  public void onTransStart() {}
   
-  protected String getScidPrefix()
-  {
-    return "qqVipLevel.";
-  }
+  public void onUpdateProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     baqv
  * JD-Core Version:    0.7.0.1
  */

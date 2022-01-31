@@ -1,35 +1,25 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 
-public class whl
-  extends ClickableSpan
+public abstract class whl
+  implements DialogInterface.OnCancelListener, DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private whm jdField_a_of_type_Whm;
-  private String b;
+  public abstract void a();
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_Whm != null) {
-      this.jdField_a_of_type_Whm.a(this.jdField_a_of_type_JavaLangString, this.b);
-    }
+    a();
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Int != -2147483648)
-    {
-      paramTextPaint.setColor(this.jdField_a_of_type_Int);
-      return;
-    }
-    super.updateDrawState(paramTextPaint);
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     whl
  * JD-Core Version:    0.7.0.1
  */

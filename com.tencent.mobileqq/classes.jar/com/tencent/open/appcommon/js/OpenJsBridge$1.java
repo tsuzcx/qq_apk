@@ -1,12 +1,12 @@
 package com.tencent.open.appcommon.js;
 
-import bcbq;
+import bdfr;
 import com.tencent.smtt.sdk.WebView;
 
 public class OpenJsBridge$1
   implements Runnable
 {
-  public OpenJsBridge$1(bcbq parambcbq, String paramString, WebView paramWebView) {}
+  public OpenJsBridge$1(bdfr parambdfr, String paramString, WebView paramWebView) {}
   
   /* Error */
   public void run()
@@ -156,7 +156,7 @@ public class OpenJsBridge$1
     //   258: aload 10
     //   260: invokestatic 97	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   263: lstore 4
-    //   265: getstatic 102	bcbf:a	Ljava/util/ArrayList;
+    //   265: getstatic 102	bdfg:a	Ljava/util/ArrayList;
     //   268: aload 11
     //   270: invokevirtual 105	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
     //   273: ifeq +13 -> 286
@@ -168,19 +168,19 @@ public class OpenJsBridge$1
     //   287: getfield 19	com/tencent/open/appcommon/js/OpenJsBridge$1:jdField_a_of_type_ComTencentSmttSdkWebView	Lcom/tencent/smtt/sdk/WebView;
     //   290: ifnull -238 -> 52
     //   293: aload_0
-    //   294: getfield 15	com/tencent/open/appcommon/js/OpenJsBridge$1:this$0	Lbcbq;
+    //   294: getfield 15	com/tencent/open/appcommon/js/OpenJsBridge$1:this$0	Lbdfr;
     //   297: aload 12
     //   299: aload 11
     //   301: aload 9
-    //   303: new 107	bcbr
+    //   303: new 107	bdfs
     //   306: dup
     //   307: aload_0
     //   308: getfield 19	com/tencent/open/appcommon/js/OpenJsBridge$1:jdField_a_of_type_ComTencentSmttSdkWebView	Lcom/tencent/smtt/sdk/WebView;
     //   311: lload 4
     //   313: aload_0
     //   314: getfield 17	com/tencent/open/appcommon/js/OpenJsBridge$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   317: invokespecial 110	bcbr:<init>	(Lcom/tencent/smtt/sdk/WebView;JLjava/lang/String;)V
-    //   320: invokevirtual 115	bcbq:a	(Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Laqrd;)V
+    //   317: invokespecial 110	bdfs:<init>	(Lcom/tencent/smtt/sdk/WebView;JLjava/lang/String;)V
+    //   320: invokevirtual 115	bdfr:a	(Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Larlv;)V
     //   323: return
     //   324: aload 9
     //   326: iconst_3
@@ -222,11 +222,11 @@ public class OpenJsBridge$1
     //   410: invokestatic 129	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   413: istore_1
     //   414: aload_0
-    //   415: getfield 15	com/tencent/open/appcommon/js/OpenJsBridge$1:this$0	Lbcbq;
-    //   418: getfield 133	bcbq:b	Ljava/util/HashMap;
+    //   415: getfield 15	com/tencent/open/appcommon/js/OpenJsBridge$1:this$0	Lbdfr;
+    //   418: getfield 133	bdfr:b	Ljava/util/HashMap;
     //   421: aload 12
     //   423: invokevirtual 138	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   426: checkcast 140	aqre
+    //   426: checkcast 140	arlw
     //   429: astore 9
     //   431: aload 9
     //   433: ifnull +44 -> 477
@@ -238,8 +238,8 @@ public class OpenJsBridge$1
     //   449: aload_0
     //   450: getfield 19	com/tencent/open/appcommon/js/OpenJsBridge$1:jdField_a_of_type_ComTencentSmttSdkWebView	Lcom/tencent/smtt/sdk/WebView;
     //   453: aload_0
-    //   454: getfield 15	com/tencent/open/appcommon/js/OpenJsBridge$1:this$0	Lbcbq;
-    //   457: getfield 133	bcbq:b	Ljava/util/HashMap;
+    //   454: getfield 15	com/tencent/open/appcommon/js/OpenJsBridge$1:this$0	Lbdfr;
+    //   457: getfield 133	bdfr:b	Ljava/util/HashMap;
     //   460: lload 4
     //   462: aload 11
     //   464: lload 6

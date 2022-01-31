@@ -1,34 +1,14 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.Card;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class bauv
+class bauv
+  implements FilenameFilter
 {
-  public static baur a(Activity paramActivity, @NonNull JSONObject paramJSONObject, atwx paramatwx, String paramString)
+  bauv(baus parambaus, String paramString) {}
+  
+  public boolean accept(File paramFile, String paramString)
   {
-    if ((paramatwx == null) || (paramatwx.a == null)) {
-      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal card info is null");
-    }
-    long l1 = paramatwx.a.lCurrentStyleId;
-    if (l1 < 0L) {
-      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal style id=" + l1);
-    }
-    long l2 = paramJSONObject.optLong("id");
-    if (l2 != l1) {
-      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal style id(" + l1 + ") and json id(" + l2 + ") not match");
-    }
-    if (l2 == atxe.l) {}
-    for (paramActivity = new bauw(paramActivity, paramJSONObject, paramatwx);; paramActivity = new baux(paramActivity, paramJSONObject, paramatwx))
-    {
-      paramActivity.a(paramString);
-      return paramActivity;
-      if (l2 != atxe.m) {
-        break;
-      }
-    }
-    throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal id=" + l2);
+    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
   }
 }
 

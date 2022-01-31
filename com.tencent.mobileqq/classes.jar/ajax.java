@@ -1,28 +1,25 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajax
-  extends ajce
+class ajax
+  implements SoundPool.OnLoadCompleteListener
 {
-  public ajax(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    super(paramContext, paramQQAppInterface, paramSessionInfo);
-  }
+  ajax(ajav paramajav, float paramFloat, int paramInt, String paramString, aivy paramaivy, long paramLong) {}
   
-  public ajbx a(String paramString)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    return new ajaw(paramString);
-  }
-  
-  public View a()
-  {
-    if (this.c == 0) {
-      return new ApolloLinearLayout(this.b, null, this.d, 4, 2);
+    if (-1.0F == this.jdField_a_of_type_Float) {}
+    for (float f = 1.0F;; f = this.jdField_a_of_type_Float)
+    {
+      paramInt1 = ajav.a(this.jdField_a_of_type_Ajav).play(paramInt1, f, f, 0, this.jdField_a_of_type_Int, 1.0F);
+      if (paramInt1 != 0) {
+        break;
+      }
+      QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "fail to play, musicPath:" + this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    return super.a();
+    ajav.a(this.jdField_a_of_type_Ajav, this.jdField_a_of_type_Aivy, paramInt1, this.jdField_a_of_type_Long);
   }
 }
 

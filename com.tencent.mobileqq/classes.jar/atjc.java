@@ -1,34 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-public class atjc
-  implements Animator.AnimatorListener
+public abstract interface atjc
 {
-  public atjc(ScanIconAnimateView paramScanIconAnimateView) {}
+  public abstract void a();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public abstract void a(Comments.Comment paramComment);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ScanIconAnimateView.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-  }
+  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public abstract void a(Comments paramComments);
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void b(Comments.Comment paramComment);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjc
  * JD-Core Version:    0.7.0.1
  */

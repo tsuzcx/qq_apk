@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.contact.newfriend.connections;
 
-import afau;
+import afmk;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import azwg;
-import azwh;
-import bacc;
+import baxk;
+import baxl;
+import bbdh;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ThemeImageView;
@@ -19,8 +19,8 @@ public class OverlappingImgLayout
   extends LinearLayout
 {
   private int jdField_a_of_type_Int;
-  private azwg jdField_a_of_type_Azwg;
-  azwh jdField_a_of_type_Azwh = new afau(this);
+  private baxk jdField_a_of_type_Baxk;
+  baxl jdField_a_of_type_Baxl = new afmk(this);
   private List<ThemeImageView> jdField_a_of_type_JavaUtilList = new ArrayList();
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private int b;
@@ -44,7 +44,7 @@ public class OverlappingImgLayout
   private Bitmap a(String paramString)
   {
     Object localObject;
-    if (this.jdField_a_of_type_Azwg == null)
+    if (this.jdField_a_of_type_Baxk == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("OverlappingImgLayout", 2, "mFaceDecoder null");
@@ -55,11 +55,11 @@ public class OverlappingImgLayout
     do
     {
       return localObject;
-      localBitmap = this.jdField_a_of_type_Azwg.a(1, paramString, 0, (byte)4);
+      localBitmap = this.jdField_a_of_type_Baxk.a(1, paramString, 0, (byte)4);
       localObject = localBitmap;
     } while (localBitmap != null);
-    if (!this.jdField_a_of_type_Azwg.a()) {
-      this.jdField_a_of_type_Azwg.a(paramString, 200, false, 1, true, (byte)0, 4);
+    if (!this.jdField_a_of_type_Baxk.a()) {
+      this.jdField_a_of_type_Baxk.a(paramString, 200, false, 1, true, (byte)0, 4);
     }
     return null;
   }
@@ -82,12 +82,12 @@ public class OverlappingImgLayout
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
       localThemeImageView = (ThemeImageView)this.jdField_a_of_type_JavaUtilList.get(i);
-      int k = (int)bacc.a(getContext(), 1.0F);
+      int k = (int)bbdh.a(getContext(), 1.0F);
       localThemeImageView.setPadding(k, k, k, k);
       if (a()) {
         break label134;
       }
-      localThemeImageView.setBackgroundResource(2130837578);
+      localThemeImageView.setBackgroundResource(2130837583);
     }
     for (;;)
     {
@@ -100,28 +100,28 @@ public class OverlappingImgLayout
       break label21;
       break;
       label134:
-      localThemeImageView.setBackgroundResource(2130837579);
+      localThemeImageView.setBackgroundResource(2130837584);
     }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, String[] paramArrayOfString, azwg paramazwg)
+  public void a(int paramInt1, int paramInt2, int paramInt3, String[] paramArrayOfString, baxk parambaxk)
   {
-    this.jdField_a_of_type_Int = ((int)bacc.a(getContext(), paramInt1));
-    this.b = ((int)bacc.a(getContext(), paramInt2));
+    this.jdField_a_of_type_Int = ((int)bbdh.a(getContext(), paramInt1));
+    this.b = ((int)bbdh.a(getContext(), paramInt2));
     this.c = paramInt3;
     setOrientation(0);
     this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Azwg = paramazwg;
-    if (paramazwg != null) {
-      paramazwg.a(this.jdField_a_of_type_Azwh);
+    this.jdField_a_of_type_Baxk = parambaxk;
+    if (parambaxk != null) {
+      parambaxk.a(this.jdField_a_of_type_Baxl);
     }
     setImgs();
     a();
   }
   
-  public void a(int paramInt1, int paramInt2, String[] paramArrayOfString, azwg paramazwg)
+  public void a(int paramInt1, int paramInt2, String[] paramArrayOfString, baxk parambaxk)
   {
-    a(paramInt1, paramInt2, (int)bacc.a(getContext(), 4.0F), paramArrayOfString, paramazwg);
+    a(paramInt1, paramInt2, (int)bbdh.a(getContext(), 4.0F), paramArrayOfString, parambaxk);
   }
   
   public void setImgs()

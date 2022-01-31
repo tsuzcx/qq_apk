@@ -35,28 +35,6 @@ public class VFrameLayout
     this.mDivWeakReference = new WeakReference(paramVDiv);
   }
   
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    if (getComponent() != null) {
-      switch (paramMotionEvent.getAction())
-      {
-      }
-    }
-    for (;;)
-    {
-      return super.dispatchTouchEvent(paramMotionEvent);
-      if (getComponent().isContainTargetEvent("touchDown"))
-      {
-        setClickable(true);
-        getComponent().divFireTouchEvent("touchDown", paramMotionEvent.getRawX(), paramMotionEvent.getRawY());
-        continue;
-        if (getComponent().isContainTargetEvent("touchUp")) {
-          getComponent().divFireTouchEvent("touchUp", paramMotionEvent.getRawX(), paramMotionEvent.getRawY());
-        }
-      }
-    }
-  }
-  
   @Nullable
   public VDiv getComponent()
   {

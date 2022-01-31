@@ -1,16 +1,24 @@
-public abstract interface airr
+import com.tencent.TMG.sdk.AVVideoCtrl.RemoteVideoPreviewCallback;
+import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
+import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.2.1;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+
+public class airr
+  extends AVVideoCtrl.RemoteVideoPreviewCallback
 {
-  public abstract void a();
+  airr(airp paramairp) {}
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  {
+    Object localObject = ajae.a(airo.a(this.a.a));
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = ((ajch)localObject).a();
+    } while (localObject == null);
+    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.2.1(this, paramVideoFrame, (ApolloSurfaceView)localObject));
+  }
 }
 
 

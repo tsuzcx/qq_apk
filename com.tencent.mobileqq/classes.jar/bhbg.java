@@ -1,30 +1,28 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.ttpic.videoshelf.ui.VideoShelfPlayView;
-import dov.com.qq.im.AECamera.qudong.AEVideoShelfPreviewFragment;
+import android.content.Intent;
+import android.os.Handler;
+import android.view.ViewGroup;
+import cooperation.qzone.contentbox.model.MQMsg;
 
-public class bhbg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface bhbg
+  extends bfob
 {
-  public bhbg(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
+  public abstract void a();
   
-  public void onGlobalLayout()
-  {
-    if (Build.VERSION.SDK_INT >= 16) {
-      AEVideoShelfPreviewFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
-    {
-      AEVideoShelfPreviewFragment.a(this.a).updateVideoSize(AEVideoShelfPreviewFragment.a(this.a).getVideoWidth(), AEVideoShelfPreviewFragment.a(this.a).getVideoHeight());
-      return;
-      AEVideoShelfPreviewFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(Handler paramHandler);
+  
+  public abstract boolean a(ViewGroup paramViewGroup, MQMsg paramMQMsg);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhbg
  * JD-Core Version:    0.7.0.1
  */

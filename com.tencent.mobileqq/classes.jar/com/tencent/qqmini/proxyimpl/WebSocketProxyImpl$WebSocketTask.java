@@ -15,23 +15,25 @@ class WebSocketProxyImpl$WebSocketTask
 {
   public WebSocketProxy.WebSocketListener mListener;
   private OkHttpClient mOkHttpClient;
+  public int mSocketId;
   public String mUrl;
   public WebSocket mWebSocket;
   private WebSocketCall mWebSocketCall;
   
-  public WebSocketProxyImpl$WebSocketTask(String paramString, Map<String, String> paramMap, int paramInt, WebSocketProxy.WebSocketListener paramWebSocketListener)
+  public WebSocketProxyImpl$WebSocketTask(int paramInt1, String paramString, Map<String, String> paramMap, int paramInt2, WebSocketProxy.WebSocketListener paramWebSocketListener)
   {
+    this.mSocketId = paramString;
     this.mUrl = paramMap;
     Iterator localIterator;
     this.mListener = localIterator;
     paramMap = new Request.Builder().url(paramMap).build().newBuilder();
-    if (paramInt != null)
+    if (paramInt2 != null)
     {
-      localIterator = paramInt.keySet().iterator();
+      localIterator = paramInt2.keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        paramMap.addHeader(str, (String)paramInt.get(str));
+        paramMap.addHeader(str, (String)paramInt2.get(str));
       }
     }
     paramMap = paramMap.build();
@@ -41,7 +43,7 @@ class WebSocketProxyImpl$WebSocketTask
     this.mOkHttpClient.setWriteTimeout(l, TimeUnit.SECONDS);
     this.mOkHttpClient.setReadTimeout(0L, TimeUnit.SECONDS);
     this.mWebSocketCall = WebSocketCall.create(this.mOkHttpClient, paramMap);
-    this.mWebSocketCall.enqueue(new WebSocketProxyImpl.WebSocketTask.1(this, paramString));
+    this.mWebSocketCall.enqueue(new WebSocketProxyImpl.WebSocketTask.1(this, paramInt1));
   }
 }
 

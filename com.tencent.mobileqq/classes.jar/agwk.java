@@ -1,27 +1,70 @@
-import java.io.File;
-import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-final class agwk
-  implements Comparator<File>
+public class agwk
 {
-  private int a(String paramString)
+  public String a;
+  public Pattern a;
+  public boolean a;
+  public String b;
+  public Pattern b;
+  public boolean b;
+  public String c;
+  public String d;
+  
+  public static List<agwk> a(String paramString)
   {
+    localArrayList = new ArrayList();
     try
     {
-      int i = paramString.lastIndexOf('.');
-      if (i == -1) {
-        return Integer.parseInt(paramString);
+      paramString = new JSONArray(paramString);
+      int i = 0;
+      if (i < paramString.length())
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        agwk localagwk;
+        if (localJSONObject != null)
+        {
+          localagwk = new agwk();
+          localagwk.jdField_a_of_type_JavaLangString = localJSONObject.optString("sourceURLRegular");
+          localagwk.jdField_b_of_type_JavaLangString = localJSONObject.optString("interceptURLRegular");
+          if (localJSONObject.optInt("shouldReport") != 1) {
+            break label138;
+          }
+          bool = true;
+          label85:
+          localagwk.jdField_a_of_type_Boolean = bool;
+          if (localJSONObject.optInt("shouldIntercept") != 1) {
+            break label143;
+          }
+        }
+        label138:
+        label143:
+        for (boolean bool = true;; bool = false)
+        {
+          localagwk.jdField_b_of_type_Boolean = bool;
+          localagwk.c = localJSONObject.optString("jumpURL");
+          localArrayList.add(localagwk);
+          i += 1;
+          break;
+          bool = false;
+          break label85;
+        }
       }
-      i = Integer.parseInt(paramString.substring(0, i));
-      return i;
+      return localArrayList;
     }
-    catch (Exception paramString) {}
-    return 0;
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  public int a(File paramFile1, File paramFile2)
+  public String toString()
   {
-    return a(paramFile1.getName()) - a(paramFile2.getName());
+    return "InterceptConfig [mSrcUrlRegular=" + this.jdField_a_of_type_JavaLangString + ", mInterceptUrlRegular=" + this.jdField_b_of_type_JavaLangString + ", mIsReport=" + this.jdField_a_of_type_Boolean + ", mIsIntercept=" + this.jdField_b_of_type_Boolean + ", mJumpUrl=" + this.c + "]";
   }
 }
 

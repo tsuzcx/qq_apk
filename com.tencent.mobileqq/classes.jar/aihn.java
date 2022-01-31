@@ -1,536 +1,141 @@
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
+import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.CmShowRscUpdateHandler.1;
-import com.tencent.mobileqq.apollo.CmShowRscUpdateHandler.2;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.view.View;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.open.base.BspatchUtil;
-import com.tencent.pb.clubcontent.CmShowContentUpdate.STContInfo;
-import com.tencent.pb.clubcontent.CmShowContentUpdate.STContUpdReq;
-import com.tencent.pb.clubcontent.CmShowContentUpdate.STContUpdRsp;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
 public class aihn
-  implements BusinessObserver
+  implements bfoq
 {
-  private static int jdField_a_of_type_Int = 180;
-  private static aihn jdField_a_of_type_Aihn;
-  private final SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("cmshow_rsc_update_sp", 4);
-  private final SparseArray<WeakReference<aihr>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<aihq> jdField_a_of_type_JavaUtilList;
+  public aihn(ShortVideoPlayActivity paramShortVideoPlayActivity, bfol parambfol, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, String paramString5, String paramString6) {}
   
-  private aihn()
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("json_content_update_interval", 0);
-    if (i >= 10) {
-      jdField_a_of_type_Int = i;
-    }
-    QLog.i("rscContent_CmShowRscUpdateHandler", 1, "RscContentUpdateHandler sJsonContentUpdateInterval:" + jdField_a_of_type_Int);
-  }
-  
-  public static aihn a()
-  {
-    try
+    this.jdField_a_of_type_Bfol.dismiss();
+    paramView = this.jdField_a_of_type_Bfol.a(paramInt);
+    if (paramView != null)
     {
-      if (jdField_a_of_type_Aihn == null) {
-        jdField_a_of_type_Aihn = new aihn();
+      if (!paramView.equals(this.jdField_a_of_type_JavaLangString)) {
+        break label179;
       }
-      aihn localaihn = jdField_a_of_type_Aihn;
-      return localaihn;
-    }
-    finally {}
-  }
-  
-  private void a(int paramInt)
-  {
-    WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if ((localWeakReference != null) && (localWeakReference.get() != null))
-    {
-      ((aihr)localWeakReference.get()).a(false, null);
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-    }
-    QLog.i("rscContent_CmShowRscUpdateHandler", 1, "onContentCheckFailed requestId:" + paramInt);
-  }
-  
-  private void a(int paramInt, aihq paramaihq)
-  {
-    if (paramaihq == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "onContentCheckSuccess result" + paramaihq);
-    }
-    if ((paramaihq.jdField_a_of_type_Int == 100) && (paramaihq.jdField_a_of_type_Long == 1L))
-    {
-      if (1 == BaseApplicationImpl.sProcessId) {
-        break label293;
-      }
-      if ("all_room3D".equals(paramaihq.jdField_a_of_type_JavaLangString)) {
-        aihi.a().a();
-      }
-    }
-    else
-    {
-      label79:
-      a(paramaihq, paramaihq.jdField_b_of_type_Int);
-      if (paramaihq.jdField_b_of_type_Boolean)
-      {
-        if (paramaihq.jdField_d_of_type_Int <= 0) {
-          break label417;
-        }
-        if (jdField_a_of_type_Int == paramaihq.jdField_d_of_type_Int) {
-          break label380;
-        }
-        jdField_a_of_type_Int = paramaihq.jdField_d_of_type_Int;
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("json_content_update_interval", paramaihq.jdField_d_of_type_Int).commit();
-        QLog.i("rscContent_CmShowRscUpdateHandler", 1, "onContentCheckSuccess interval != result.mCheckServerInterval:" + paramaihq.jdField_d_of_type_Int);
-      }
-    }
-    label417:
-    for (;;)
-    {
-      for (;;)
-      {
-        if (this.jdField_a_of_type_JavaUtilList != null)
-        {
-          this.jdField_a_of_type_JavaUtilList.remove(paramaihq);
-          if (this.jdField_a_of_type_JavaUtilList.isEmpty())
-          {
-            this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("last_json_content_update_ts", System.currentTimeMillis()).commit();
-            QLog.i("rscContent_CmShowRscUpdateHandler", 1, "onContentCheckSuccess save lastCheckContentUpdateTS");
-          }
-        }
-        Object localObject = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-        if ((localObject == null) || (((WeakReference)localObject).get() == null)) {
-          break;
-        }
-        ((aihr)((WeakReference)localObject).get()).a(true, paramaihq);
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-        return;
-        QLog.i("rscContent_CmShowRscUpdateHandler", 1, "check update from QQ process");
-        break label79;
-        label293:
-        if (!aing.a(BaseApplicationImpl.getContext())) {
-          break label79;
-        }
-        localObject = new Intent();
-        ((Intent)localObject).setAction("com.tencent.mobileqq.webprocess.launch_cmgame");
-        ((Intent)localObject).putExtra("action_apollo_cmshow_content_update", true);
-        ((Intent)localObject).putExtra("key_content_update_zip_name", "all_room3D");
-        ((Intent)localObject).setPackage(BaseApplicationImpl.getContext().getPackageName());
-        try
-        {
-          QLog.i("rscContent_CmShowRscUpdateHandler", 1, "send sendBroadcast contentUpdate");
-          BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
-        }
-        catch (Throwable localThrowable)
-        {
-          QLog.e("rscContent_CmShowRscUpdateHandler", 1, localThrowable, new Object[0]);
-        }
-      }
-      break label79;
-      label380:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("rscContent_CmShowRscUpdateHandler", 2, "onContentCheckSuccess interval == result.mCheckServerInterval:" + paramaihq.jdField_d_of_type_Int);
-        continue;
-        QLog.i("rscContent_CmShowRscUpdateHandler", 1, "onContentCheckSuccess result.mCheckServerInterval <= 0" + paramaihq.jdField_d_of_type_Int);
-      }
-    }
-  }
-  
-  private void a(int paramInt, CmShowContentUpdate.STContUpdRsp paramSTContUpdRsp, boolean paramBoolean)
-  {
-    if (paramSTContUpdRsp != null) {
-      ThreadManager.post(new CmShowRscUpdateHandler.2(this, paramSTContUpdRsp, paramBoolean, paramInt), 5, null, false);
-    }
-  }
-  
-  private void a(int paramInt, List<aihq> paramList)
-  {
-    if (paramList != null)
-    {
       if (QLog.isColorLevel()) {
-        QLog.d("rscContent_CmShowRscUpdateHandler", 2, "updateResource checkResults:" + paramList.size());
+        QLog.d("ShortVideoPlayActivity", 2, "click menu to forward shortVideo......");
       }
-      if (paramList.isEmpty()) {}
-      for (;;)
-      {
-        return;
-        Object localObject = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localObject != null)
-        {
-          localObject = (bato)((AppInterface)localObject).getManager(47);
-          if ((localObject != null) && (((bato)localObject).a(3) != null))
-          {
-            paramList = paramList.iterator();
-            while (paramList.hasNext())
-            {
-              aihq localaihq = (aihq)paramList.next();
-              if (localaihq != null)
-              {
-                localObject = new File(localaihq.c());
-                ((File)localObject).getParentFile().mkdirs();
-                if (((File)localObject).exists()) {
-                  ((File)localObject).delete();
-                }
-                String str1 = localaihq.e();
-                if ((localaihq.jdField_a_of_type_Boolean) && (!new File(str1).exists()))
-                {
-                  localaihq.jdField_a_of_type_Boolean = false;
-                  QLog.e("rscContent_CmShowRscUpdateHandler", 1, "updateResource old version File no exist :" + str1);
-                }
-                if (localaihq.jdField_a_of_type_Boolean)
-                {
-                  if (localaihq.jdField_a_of_type_ArrayOfByte != null)
-                  {
-                    String str2 = localaihq.d();
-                    if (bace.a(localaihq.jdField_a_of_type_ArrayOfByte, str2))
-                    {
-                      if (BspatchUtil.a(str1, str2, ((File)localObject).getAbsolutePath()))
-                      {
-                        QLog.d("rscContent_CmShowRscUpdateHandler", 2, "BspatchUtil.patch success path:" + ((File)localObject).getAbsolutePath());
-                        try
-                        {
-                          str1 = bcdu.a(((File)localObject).getAbsolutePath());
-                          if (QLog.isColorLevel()) {
-                            QLog.d("rscContent_CmShowRscUpdateHandler", 2, " updateResource onDone dstMd5:" + str1 + " result.mMd5:" + localaihq.jdField_d_of_type_JavaLangString);
-                          }
-                          if (!b(localaihq, str1)) {
-                            break label640;
-                          }
-                          if (b(localaihq))
-                          {
-                            mpx.a((File)localObject, ((File)localObject).getParent() + File.separator);
-                            if (QLog.isColorLevel()) {
-                              QLog.d("rscContent_CmShowRscUpdateHandler", 2, "updateResource unZipFile ok file dstpath:" + ((File)localObject).getAbsolutePath());
-                            }
-                            a(localaihq.jdField_e_of_type_Int, localaihq);
-                          }
-                        }
-                        catch (Exception localException)
-                        {
-                          for (;;)
-                          {
-                            ((File)localObject).delete();
-                            if (QLog.isColorLevel()) {
-                              QLog.d("rscContent_CmShowRscUpdateHandler", 2, "updateResource unZipFile file error path->" + ((File)localObject).getAbsolutePath() + localException.getMessage());
-                            }
-                            a(paramInt);
-                            break;
-                            boolean bool = bace.d(((File)localObject).getAbsolutePath(), localException.b() + localException.jdField_e_of_type_JavaLangString);
-                            QLog.i("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip no need unzip copy:" + bool);
-                          }
-                        }
-                        catch (OutOfMemoryError localOutOfMemoryError)
-                        {
-                          ((File)localObject).delete();
-                        }
-                        if (QLog.isColorLevel())
-                        {
-                          QLog.d("rscContent_CmShowRscUpdateHandler", 2, "updateResource unZipFile file error path->" + ((File)localObject).getAbsolutePath() + localOutOfMemoryError.getMessage());
-                          continue;
-                          label640:
-                          QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
-                          b(localOutOfMemoryError);
-                        }
-                      }
-                      else
-                      {
-                        QLog.e("rscContent_CmShowRscUpdateHandler", 1, "BspatchUtil.patch failed path:" + ((File)localObject).getAbsolutePath());
-                        b(localOutOfMemoryError);
-                      }
-                    }
-                    else {
-                      b(localOutOfMemoryError);
-                    }
-                  }
-                  else
-                  {
-                    a(localOutOfMemoryError);
-                  }
-                }
-                else {
-                  b(localOutOfMemoryError);
-                }
-              }
-            }
-          }
-        }
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity;
+      Bundle localBundle = ShortVideoPlayActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity).getExtras();
+      localBundle.putInt("forward_type", 21);
+      localBundle.putBoolean("forward_need_sendmsg", true);
+      localBundle.putString("forward_thumb", ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.h, "jpg"));
+      localBundle.putString("file_send_path", this.b);
+      Intent localIntent = new Intent();
+      localIntent.putExtras(localBundle);
+      aqbc.a(paramView, localIntent);
+      ShortVideoPlayActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.c) {
+        asuf.a("0X8009ABC");
       }
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X80052CC", "0X80052CC", 0, 0, "", "2", "", "");
     }
-    a(paramInt, null);
-  }
-  
-  private void a(aihq paramaihq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch result:" + paramaihq);
-    }
-    if (paramaihq == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localObject = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        } while (localObject == null);
-        localObject = (bato)((AppInterface)localObject).getManager(47);
-      } while (localObject == null);
-      localObject = ((bato)localObject).a(3);
-    } while (localObject == null);
-    if (TextUtils.isEmpty(paramaihq.c))
-    {
-      QLog.e("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch result.mDownloadPatchFileUrl is empty result:" + paramaihq);
-      return;
-    }
-    File localFile = new File(paramaihq.d());
-    localFile.getParentFile().mkdirs();
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    batm localbatm = new batm(paramaihq.c, localFile);
-    localbatm.p = true;
-    localbatm.n = true;
-    localbatm.f = "apollo_res";
-    localbatm.jdField_b_of_type_Int = 1;
-    localbatm.q = true;
-    localbatm.r = true;
-    localbatm.jdField_a_of_type_JavaLangString = (paramaihq.jdField_b_of_type_JavaLangString + "_" + paramaihq.jdField_a_of_type_JavaLangString);
-    ((batr)localObject).a(localbatm, new aiho(this, localFile, paramaihq), null);
-  }
-  
-  private void b(aihq paramaihq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip result:" + paramaihq);
-    }
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramaihq == null)) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localObject = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        } while (localObject == null);
-        localObject = (bato)((AppInterface)localObject).getManager(47);
-      } while (localObject == null);
-      localObject = ((bato)localObject).a(3);
-    } while (localObject == null);
-    if (TextUtils.isEmpty(paramaihq.jdField_b_of_type_JavaLangString))
-    {
-      QLog.e("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip result.mDownloadFileUrl is empty result:" + paramaihq);
-      return;
-    }
-    File localFile = new File(paramaihq.c());
-    localFile.getParentFile().mkdirs();
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    batm localbatm = new batm(paramaihq.jdField_b_of_type_JavaLangString, localFile);
-    localbatm.p = true;
-    localbatm.n = true;
-    localbatm.f = "apollo_res";
-    localbatm.jdField_b_of_type_Int = 1;
-    localbatm.q = true;
-    localbatm.r = true;
-    localbatm.jdField_a_of_type_JavaLangString = (paramaihq.jdField_b_of_type_JavaLangString + "_" + paramaihq.jdField_a_of_type_JavaLangString);
-    ((batr)localObject).a(localbatm, new aihp(this, localFile, paramaihq), null);
-  }
-  
-  private static boolean b(aihq paramaihq)
-  {
-    if (paramaihq == null) {}
-    while ((TextUtils.isEmpty(paramaihq.jdField_e_of_type_JavaLangString)) || (!paramaihq.jdField_e_of_type_JavaLangString.endsWith(".zip"))) {
-      return false;
-    }
-    return true;
-  }
-  
-  private static boolean b(aihq paramaihq, String paramString)
-  {
-    if (paramaihq == null) {}
-    do
-    {
-      return false;
-      if (TextUtils.isEmpty(paramaihq.jdField_d_of_type_JavaLangString)) {
-        return true;
-      }
-    } while ((paramString == null) || (!paramString.equalsIgnoreCase(paramaihq.jdField_d_of_type_JavaLangString)));
-    return true;
-  }
-  
-  public int a(int paramInt, long paramLong, String paramString)
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramInt + "_" + paramLong + "_" + paramString, 0);
-  }
-  
-  public void a(int paramInt1, long paramLong, String paramString, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramInt1 + "_" + paramLong + "_" + paramString, paramInt2).commit();
-  }
-  
-  public void a(int paramInt, aihr paramaihr)
-  {
-    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
-    {
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, new WeakReference(paramaihr));
-      return;
-    }
-  }
-  
-  public void a(aihq paramaihq, int paramInt)
-  {
-    if (paramaihq != null)
-    {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramaihq.a(), paramInt).commit();
-      QLog.i("rscContent_CmShowRscUpdateHandler", 1, "saveContentVersion version:" + paramInt);
-    }
-  }
-  
-  public void a(AppInterface paramAppInterface)
-  {
-    ThreadManagerV2.excute(new CmShowRscUpdateHandler.1(this, paramAppInterface), 16, null, false);
-  }
-  
-  public void a(AppInterface paramAppInterface, int paramInt, boolean paramBoolean)
-  {
-    QLog.i("rscContent_CmShowRscUpdateHandler", 1, "checkCmShowContentUpdate forceCheck:" + paramBoolean);
-    if (paramAppInterface == null) {}
+    label179:
     do
     {
       return;
-      if (!aihq.a(100, 1L, "all_room3D", "all_room3D.json"))
+      if (paramView.equals(this.c))
       {
-        a(100, 1L, "all_room3D", 0);
-        paramBoolean = true;
-      }
-      if (!paramBoolean)
-      {
-        long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_json_content_update_ts", 0L);
-        if (System.currentTimeMillis() - l < jdField_a_of_type_Int * 1000)
-        {
-          QLog.i("rscContent_CmShowRscUpdateHandler", 1, "checkCmShowContentUpdate in sJsonContentUpdateInterval:" + jdField_a_of_type_Int);
-          return;
-        }
-      }
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
-      Object localObject1 = new CmShowContentUpdate.STContUpdReq();
-      ((CmShowContentUpdate.STContUpdReq)localObject1).app_id.set(1);
-      Object localObject2 = new ArrayList();
-      Object localObject3 = new CmShowContentUpdate.STContInfo();
-      ((CmShowContentUpdate.STContInfo)localObject3).biz_id.set(100);
-      ((CmShowContentUpdate.STContInfo)localObject3).item_id.set(1L);
-      ((CmShowContentUpdate.STContInfo)localObject3).name.set(ByteStringMicro.copyFromUtf8("all_room3D"));
-      ((CmShowContentUpdate.STContInfo)localObject3).ver.set(a(100, 1L, "all_room3D"));
-      ((List)localObject2).add(localObject3);
-      ((CmShowContentUpdate.STContUpdReq)localObject1).cont_list.set((List)localObject2);
-      try
-      {
-        localObject3 = new WebSSOAgent.UniSsoServerReqComm();
-        ((WebSSOAgent.UniSsoServerReqComm)localObject3).platform.set(109L);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject3).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject3).mqqver.set("8.2.6");
-        localObject2 = new WebSSOAgent.UniSsoServerReq();
-        ((WebSSOAgent.UniSsoServerReq)localObject2).comm.set((MessageMicro)localObject3);
-        ((WebSSOAgent.UniSsoServerReq)localObject2).pbReqData.set(ByteStringMicro.copyFrom(((CmShowContentUpdate.STContUpdReq)localObject1).toByteArray()));
-        localObject1 = new NewIntent(BaseApplicationImpl.getContext(), aquf.class);
-        ((NewIntent)localObject1).putExtra("extra_cmd", "cmshowar_content_update.check");
-        ((NewIntent)localObject1).putExtra("extra_data", ((WebSSOAgent.UniSsoServerReq)localObject2).toByteArray());
-        ((NewIntent)localObject1).putExtra("extra_callbackid", String.valueOf(paramInt));
-        ((NewIntent)localObject1).setObserver(this);
-        paramAppInterface.startServlet((NewIntent)localObject1);
-        return;
-      }
-      catch (Exception paramAppInterface) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("rscContent_CmShowRscUpdateHandler", 2, "OpenPandora failed ", paramAppInterface);
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBundle == null) {}
-    String str;
-    for (;;)
-    {
-      return;
-      paramInt = paramBundle.getInt("extra_result_code");
-      Object localObject = paramBundle.getString("extra_cmd");
-      str = paramBundle.getString("extra_callbackid");
-      QLog.i("rscContent_CmShowRscUpdateHandler", 1, "isSuccess:" + paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("rscContent_CmShowRscUpdateHandler", 2, "svrRet:" + paramInt + " cmd:" + (String)localObject + " requestIdStr:" + str);
-      }
-      if (!paramBoolean) {
-        break label281;
-      }
-      try
-      {
-        byte[] arrayOfByte = paramBundle.getByteArray("extra_data");
-        paramBundle = new WebSSOAgent.UniSsoServerRsp();
-        paramBundle.mergeFrom(arrayOfByte);
-        long l = paramBundle.ret.get();
         if (QLog.isColorLevel()) {
-          QLog.d("rscContent_CmShowRscUpdateHandler", 2, "retCode:" + l + " isSuccess:" + paramBoolean + " cmd:" + (String)localObject);
+          QLog.d("ShortVideoPlayActivity", 2, "click menu to share to qzone, finalVideoExists=" + this.jdField_a_of_type_Boolean);
         }
-        if ("cmshowar_content_update.check".equals(localObject)) {
-          if (l == 0L)
+        if (this.jdField_a_of_type_Boolean)
+        {
+          ShortVideoPlayActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity);
+          return;
+        }
+        bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.a, 0, 2131719542, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.a.getResources().getDimensionPixelSize(2131298865));
+        return;
+      }
+      if (paramView.equals(this.d))
+      {
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.a, 0, 2131719542, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.a.getResources().getDimensionPixelSize(2131298865));
+          return;
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.b.get() != null) {
+          ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.e, (MqqHandler)this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.b.get(), this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.g + ".mp4", false));
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.e == 0)
+        {
+          axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "1", "", "");
+          this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.d = true;
+        }
+        for (;;)
+        {
+          new avws(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, 2002, this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.f, this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.j);
+          if (!this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.c) {
+            break;
+          }
+          asuf.a("0X8009ABD");
+          return;
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.e == 3000)
           {
-            localObject = new CmShowContentUpdate.STContUpdRsp();
-            ((CmShowContentUpdate.STContUpdRsp)localObject).mergeFrom(paramBundle.pbRsqData.get().toByteArray());
-            a(ApolloUtil.b(str), (CmShowContentUpdate.STContUpdRsp)localObject, true);
-            return;
+            axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "2", "", "");
+            this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.d = true;
+          }
+          else if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.e == 1)
+          {
+            axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "3", "", "");
+            this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.d = true;
+          }
+          else
+          {
+            axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "4", "", "");
+            this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.d = true;
           }
         }
       }
-      catch (Exception paramBundle)
-      {
-        QLog.e("rscContent_CmShowRscUpdateHandler", 1, paramBundle, new Object[0]);
-        return;
-      }
+    } while (!paramView.equals(this.f));
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.a, 0, 2131719542, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.a.getResources().getDimensionPixelSize(2131298865));
+      return;
     }
-    a(ApolloUtil.b(str));
-    return;
-    label281:
-    a(ApolloUtil.b(str));
+    paramView = new Intent("android.intent.action.VIEW");
+    paramView.setDataAndType(Uri.parse("file://" + this.e), "video/*");
+    this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.startActivity(paramView);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.e == 0)
+    {
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "1", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.d = true;
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.e == 3000)
+    {
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "2", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.d = true;
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.e == 1)
+    {
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "3", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.d = true;
+      return;
+    }
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "4", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.d = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aihn
  * JD-Core Version:    0.7.0.1
  */

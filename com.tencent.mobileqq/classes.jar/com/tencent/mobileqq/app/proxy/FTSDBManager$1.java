@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.proxy;
 
-import akep;
-import akfa;
-import bakq;
+import aktb;
+import aktm;
+import bbma;
 import com.tencent.mobileqq.app.ThreadRegulator;
 
 public class FTSDBManager$1
   implements Runnable
 {
-  public FTSDBManager$1(akep paramakep) {}
+  public FTSDBManager$1(aktb paramaktb) {}
   
   public void run()
   {
@@ -20,21 +20,21 @@ public class FTSDBManager$1
         do
         {
           return;
-          if (bakq.g(akep.a(this.this$0)))
+          if (bbma.g(aktb.a(this.this$0)))
           {
-            akep.a(this.this$0);
+            aktb.a(this.this$0);
             return;
           }
-        } while ((!bakq.h(akep.a(this.this$0))) || (this.this$0.b));
-        akep.a(this.this$0);
+        } while ((!bbma.h(aktb.a(this.this$0))) || (this.this$0.b));
+        aktb.a(this.this$0);
         ThreadRegulator.a().b();
-      } while (akep.a(this.this$0));
-      if ((akep.b(this.this$0) > 10) || (akep.c(this.this$0) == 1))
+      } while (aktb.a(this.this$0));
+      if ((aktb.b(this.this$0) > 10) || (aktb.c(this.this$0) == 1))
       {
-        akep.a(this.this$0);
+        aktb.a(this.this$0);
         return;
       }
-    } while (akep.c(this.this$0) != -1);
+    } while (aktb.c(this.this$0) != -1);
     this.this$0.a.postDelayed(this, 5000L);
   }
 }

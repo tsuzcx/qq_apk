@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.loginwelcome;
 
-import afxy;
-import akfu;
-import amnv;
+import agjw;
+import akug;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import area;
-import arek;
-import asfc;
+import anec;
+import asab;
+import asal;
+import atbg;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.phone.DenyRunnable;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,12 +20,12 @@ import org.json.JSONObject;
 
 public class LoginUserGuideHelper
 {
-  private static String a(boolean paramBoolean, arek paramarek, area paramarea)
+  private static String a(boolean paramBoolean, asal paramasal, asab paramasab)
   {
     int k = 1;
     int j = 0;
     StringBuilder localStringBuilder1 = new StringBuilder(200);
-    localStringBuilder1.append(paramarek.jdField_a_of_type_JavaLangString);
+    localStringBuilder1.append(paramasal.jdField_a_of_type_JavaLangString);
     StringBuilder localStringBuilder2 = localStringBuilder1.append("&ab_auth=");
     String str;
     int i;
@@ -33,17 +33,17 @@ public class LoginUserGuideHelper
     {
       str = "1";
       localStringBuilder2.append(str);
-      if (paramarek.jdField_a_of_type_Int != -1) {
-        localStringBuilder1.append("&friends_recommend_flag=").append(paramarek.jdField_a_of_type_Int);
+      if (paramasal.jdField_a_of_type_Int != -1) {
+        localStringBuilder1.append("&friends_recommend_flag=").append(paramasal.jdField_a_of_type_Int);
       }
-      if (paramarek.b != -1) {
-        localStringBuilder1.append("&groups_recommend_flag=").append(paramarek.b);
+      if (paramasal.b != -1) {
+        localStringBuilder1.append("&groups_recommend_flag=").append(paramasal.b);
       }
-      if ((paramarea == null) || (!paramarea.jdField_a_of_type_Boolean)) {
+      if ((paramasab == null) || (!paramasab.jdField_a_of_type_Boolean)) {
         break label196;
       }
-      i = paramarea.b;
-      j = paramarea.jdField_a_of_type_Int;
+      i = paramasab.b;
+      j = paramasab.jdField_a_of_type_Int;
     }
     for (;;)
     {
@@ -57,11 +57,11 @@ public class LoginUserGuideHelper
       str = "0";
       break;
       label196:
-      paramarek = akfu.a("Login.Guide");
-      if ((paramarek != null) && (paramarek.a != null))
+      paramasal = akug.a("Login.Guide");
+      if ((paramasal != null) && (paramasal.a != null))
       {
-        j = (int)(paramarek.a.a * 1000000.0D);
-        i = (int)(paramarek.a.b * 1000000.0D);
+        j = (int)(paramasal.a.a * 1000000.0D);
+        i = (int)(paramasal.a.b * 1000000.0D);
       }
       else
       {
@@ -76,15 +76,15 @@ public class LoginUserGuideHelper
     if ((paramActivity == null) || (paramQQAppInterface == null)) {
       return;
     }
-    amnv.a(paramActivity, paramQQAppInterface, new LoginUserGuideHelper.1(paramQQAppInterface), new DenyRunnable(paramActivity, new afxy(paramQQAppInterface)));
+    anec.a(paramActivity, paramQQAppInterface, new LoginUserGuideHelper.1(paramQQAppInterface), new DenyRunnable(paramActivity, new agjw(paramQQAppInterface)));
   }
   
-  public static void a(Activity paramActivity, QQAppInterface paramQQAppInterface, area paramarea)
+  public static void a(Activity paramActivity, QQAppInterface paramQQAppInterface, asab paramasab)
   {
-    amnv.a(paramActivity, paramQQAppInterface, new LoginUserGuideHelper.GuideRunnable(paramActivity, paramQQAppInterface, true, paramarea), new LoginUserGuideHelper.GuideRunnable(paramActivity, paramQQAppInterface, false, paramarea));
+    anec.a(paramActivity, paramQQAppInterface, new LoginUserGuideHelper.GuideRunnable(paramActivity, paramQQAppInterface, true, paramasab), new LoginUserGuideHelper.GuideRunnable(paramActivity, paramQQAppInterface, false, paramasab));
   }
   
-  public static void a(Activity paramActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, area paramarea)
+  public static void a(Activity paramActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, asab paramasab)
   {
     if ((paramActivity == null) || (paramQQAppInterface == null)) {
       return;
@@ -92,23 +92,23 @@ public class LoginUserGuideHelper
     if (QLog.isColorLevel()) {
       QLog.i("LoginUserGuideHelper", 2, "openWebGuide hasAuth: " + paramBoolean);
     }
-    paramQQAppInterface = a(paramBoolean, LoginWelcomeManager.a(paramQQAppInterface).a(), paramarea);
-    paramarea = new Intent(paramActivity, QQBrowserActivity.class);
-    paramarea.putExtra("is_wrap_content", true);
-    paramarea.putExtra("url", paramQQAppInterface);
-    paramarea.putExtra("hide_more_button", true);
-    paramarea.putExtra("webStyle", "noBottomBar");
-    paramarea.putExtra("isScreenOrientationPortrait", true);
-    paramarea.addFlags(603979776);
-    paramActivity.startActivity(paramarea);
+    paramQQAppInterface = a(paramBoolean, LoginWelcomeManager.a(paramQQAppInterface).a(), paramasab);
+    paramasab = new Intent(paramActivity, QQBrowserActivity.class);
+    paramasab.putExtra("is_wrap_content", true);
+    paramasab.putExtra("url", paramQQAppInterface);
+    paramasab.putExtra("hide_more_button", true);
+    paramasab.putExtra("webStyle", "noBottomBar");
+    paramasab.putExtra("isScreenOrientationPortrait", true);
+    paramasab.addFlags(603979776);
+    paramActivity.startActivity(paramasab);
   }
   
   public static void a(String paramString, JSONObject paramJSONObject)
   {
-    asfc.a("upload_for_new_guide", paramString, 4).edit().putString("upload_for_new_guide", paramJSONObject.toString()).commit();
+    atbg.a("upload_for_new_guide", paramString, 4).edit().putString("upload_for_new_guide", paramJSONObject.toString()).commit();
   }
   
-  public static void b(Activity paramActivity, QQAppInterface paramQQAppInterface, area paramarea)
+  public static void b(Activity paramActivity, QQAppInterface paramQQAppInterface, asab paramasab)
   {
     if ((paramActivity == null) || (paramQQAppInterface == null)) {
       return;
@@ -116,7 +116,7 @@ public class LoginUserGuideHelper
     if (QLog.isColorLevel()) {
       QLog.i("LoginUserGuideHelper", 2, "goWithoutFindFriend");
     }
-    a(paramActivity, paramQQAppInterface, false, paramarea);
+    a(paramActivity, paramQQAppInterface, false, paramasab);
   }
 }
 

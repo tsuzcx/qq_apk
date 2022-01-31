@@ -1,41 +1,20 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionCenterView;
 
 public class qps
-  implements qnv
+  extends AnimatorListenerAdapter
 {
-  public qps(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
+  public qps(VideoFeedsLikeAnimate.LikeExplosionCenterView paramLikeExplosionCenterView) {}
   
-  public void a(Bundle paramBundle)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    String str = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, str);
-    psj.b(paramBundle);
+    VideoFeedsLikeAnimate.LikeExplosionCenterView.a(this.a);
   }
   
-  public void a(String paramString, Bundle paramBundle)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramString = this.a.a();
-    Intent localIntent;
-    if ((paramBundle != null) && (paramString != null))
-    {
-      localIntent = new Intent();
-      localIntent.putExtras(paramBundle);
-      localIntent.setClass(paramString, KandianVideoUploadService.class);
-    }
-    try
-    {
-      paramString.startService(localIntent);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.d("KandianVideoUpload", 1, "Kandian retryFail", paramString);
-    }
+    VideoFeedsLikeAnimate.LikeExplosionCenterView.a(this.a);
   }
 }
 

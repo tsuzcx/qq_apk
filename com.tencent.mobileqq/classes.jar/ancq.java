@@ -1,110 +1,65 @@
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class ancq
-  extends RecyclerView.LayoutManager
+  extends ampb<ancp>
 {
-  private View.OnClickListener a;
-  
-  public ancq(View.OnClickListener paramOnClickListener)
+  public static ancp a()
   {
-    this.a = paramOnClickListener;
+    return (ancp)ampm.a().a(335);
   }
   
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public int a()
   {
-    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    layoutDecorated(paramView, paramInt1 + localLayoutParams.leftMargin, paramInt2 + localLayoutParams.topMargin, paramInt3 - localLayoutParams.rightMargin, paramInt4 - localLayoutParams.bottomMargin);
+    return 335;
   }
   
-  public RecyclerView.LayoutParams generateDefaultLayoutParams()
+  @NonNull
+  public ancp a(int paramInt)
   {
-    return new RecyclerView.LayoutParams(-2, -2);
+    return new ancp();
   }
   
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  @Nullable
+  public ancp a(ampi[] paramArrayOfampi)
   {
-    detachAndScrapAttachedViews(paramRecycler);
-    int i = getItemCount();
-    int m;
-    int j;
-    int k;
-    if (i > 3)
-    {
-      i = 3;
-      if (i >= 0)
-      {
-        paramState = paramRecycler.getViewForPosition(i);
-        addView(paramState);
-        measureChildWithMargins(paramState, 0, 0);
-        m = getWidth() - getDecoratedMeasuredWidth(paramState);
-        j = getHeight() - getDecoratedMeasuredHeight(paramState);
-        k = m / 2;
-        m /= 2;
-        a(paramState, k, j, getDecoratedMeasuredWidth(paramState) + m, getDecoratedMeasuredHeight(paramState) + j);
-        if (i == 3)
-        {
-          paramState.setScaleX(1.0F - (i - 1) * 0.1F);
-          paramState.setScaleY(1.0F - (i - 1) * 0.1F);
-          paramState.setTranslationY((i - 1) * paramState.getMeasuredHeight() / -10);
-          paramState.setAlpha(0.8F);
-        }
-        for (;;)
-        {
-          i -= 1;
-          break;
-          if (i > 0)
-          {
-            paramState.setScaleX(1.0F - i * 0.1F);
-            paramState.setScaleY(1.0F - i * 0.1F);
-            paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
-            paramState.setAlpha(0.6F);
-          }
-          else if (this.a != null)
-          {
-            paramState.setOnClickListener(this.a);
-          }
-        }
-      }
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
+      return ancp.a(paramArrayOfampi);
     }
-    else
-    {
-      i -= 1;
-      if (i >= 0)
-      {
-        paramState = paramRecycler.getViewForPosition(i);
-        addView(paramState);
-        measureChildWithMargins(paramState, 0, 0);
-        m = getWidth() - getDecoratedMeasuredWidth(paramState);
-        j = getHeight() - getDecoratedMeasuredHeight(paramState);
-        k = m / 2;
-        m /= 2;
-        a(paramState, k, j, getDecoratedMeasuredWidth(paramState) + m, getDecoratedMeasuredHeight(paramState) + j);
-        if (i > 0)
-        {
-          paramState.setScaleX(1.0F - i * 0.1F);
-          paramState.setScaleY(1.0F - i * 0.1F);
-          paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
-        }
-        for (;;)
-        {
-          i -= 1;
-          break;
-          if (this.a != null) {
-            paramState.setOnClickListener(this.a);
-          }
-        }
-      }
-    }
+    return null;
+  }
+  
+  public Class<ancp> a()
+  {
+    return ancp.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("TencentDocSelectAddDocsProcessor", 1, "handleTencentDocUniversalEntry FILE_SELECT_ADD_DOCS failed, resultCode:" + paramInt);
+  }
+  
+  public void a(ancp paramancp) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ancq
  * JD-Core Version:    0.7.0.1
  */

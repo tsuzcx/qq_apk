@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import akwc;
+import alko;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ArAwardInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArAwardInfo> CREATOR = new akwc();
+  public static final Parcelable.Creator<ArAwardInfo> CREATOR = new alko();
   public int a;
   public String a;
   public int b;

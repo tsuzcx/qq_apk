@@ -6,8 +6,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.text.TextUtils;
-import awrn;
-import bgmq;
+import axrl;
+import bhvh;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.text.DateFormat;
@@ -21,8 +21,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import obk;
-import obz;
+import omv;
+import onk;
 import org.w3c.dom.Node;
 
 public class ReadInJoyDoingSomething
@@ -53,12 +53,12 @@ public class ReadInJoyDoingSomething
   
   public static ReadInJoyDoingSomething.AppConfigInfoList a(AppRuntime paramAppRuntime)
   {
-    if (bgmq.a(paramAppRuntime, true, true) == null)
+    if (bhvh.a(paramAppRuntime, true, true) == null)
     {
       QLog.d(c, 1, "getReadInJoySP failed, can not get config.");
       return null;
     }
-    Object localObject = obz.a(paramAppRuntime, jdField_a_of_type_JavaLangString, true);
+    Object localObject = onk.a(paramAppRuntime, jdField_a_of_type_JavaLangString, true);
     String str;
     if (QLog.isColorLevel())
     {
@@ -77,7 +77,7 @@ public class ReadInJoyDoingSomething
   
   private static String a()
   {
-    Object localObject = bgmq.a(obz.a(), true, true);
+    Object localObject = bhvh.a(onk.a(), true, true);
     if (localObject == null)
     {
       QLog.d(c, 1, "getLastScanDate failed, can not get config.");
@@ -135,7 +135,7 @@ public class ReadInJoyDoingSomething
       else
       {
         localObject2 = str;
-        jdField_b_of_type_JavaUtilList = obz.a().getApplication().getPackageManager().getInstalledPackages(0);
+        jdField_b_of_type_JavaUtilList = onk.a().getApplication().getPackageManager().getInstalledPackages(0);
       }
       localObject2 = str;
       Iterator localIterator = jdField_b_of_type_JavaUtilList.iterator();
@@ -169,7 +169,7 @@ public class ReadInJoyDoingSomething
     return localObject2;
   }
   
-  private static List<obk> a(ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
+  private static List<omv> a(ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramAppConfigInfo == null) {
@@ -190,24 +190,24 @@ public class ReadInJoyDoingSomething
     return localArrayList;
   }
   
-  private static obk a(ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
+  private static omv a(ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
   {
-    obk localobk = new obk();
+    omv localomv = new omv();
     if (paramAppConfigInfo == null)
     {
       QLog.d(c, 1, "getReportData configInfo is null.");
-      return localobk;
+      return localomv;
     }
-    localobk.jdField_a_of_type_JavaLangString = paramAppConfigInfo.appCode;
-    localobk.jdField_b_of_type_JavaLangString = a(paramAppConfigInfo.appPackageName);
-    return localobk;
+    localomv.jdField_a_of_type_JavaLangString = paramAppConfigInfo.appCode;
+    localomv.jdField_b_of_type_JavaLangString = a(paramAppConfigInfo.appPackageName);
+    return localomv;
   }
   
   public static void a()
   {
     try
     {
-      Object localObject = a(obz.a());
+      Object localObject = a(onk.a());
       if (localObject == null)
       {
         if (!QLog.isColorLevel()) {
@@ -265,14 +265,14 @@ public class ReadInJoyDoingSomething
     ((HashMap)localObject).put("appCode", paramAppConfigInfo.jdField_a_of_type_JavaLangString);
     ((HashMap)localObject).put("appVersion", paramAppConfigInfo.jdField_b_of_type_JavaLangString);
     ((HashMap)localObject).put("appScanDate", g);
-    ((HashMap)localObject).put("uin", obz.a());
+    ((HashMap)localObject).put("uin", onk.a());
     if (QLog.isColorLevel()) {
-      QLog.d(c, 2, new Object[] { "tagName = ", e, "\n", "reportData = \n", paramAppConfigInfo.toString(), "uin = ", obz.a(), "\n", "appScanDate = ", g, "\n" });
+      QLog.d(c, 2, new Object[] { "tagName = ", e, "\n", "reportData = \n", paramAppConfigInfo.toString(), "uin = ", onk.a(), "\n", "appScanDate = ", g, "\n" });
     }
-    awrn.a(obz.a().getApplication()).a(obz.a(), e, true, 1L, 0L, (HashMap)localObject, null, false);
+    axrl.a(onk.a().getApplication()).a(onk.a(), e, true, 1L, 0L, (HashMap)localObject, null, false);
   }
   
-  private static void a(String paramString, List<obk> paramList, ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
+  private static void a(String paramString, List<omv> paramList, ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
   {
     int j = 0;
     if ((TextUtils.isEmpty(paramString)) || (paramList == null))
@@ -336,9 +336,9 @@ public class ReadInJoyDoingSomething
       localObject = new SimpleDateFormat("yyyy.MM.dd").format((Date)localObject);
       if (((TextUtils.isEmpty(h)) || (((String)localObject).compareTo(h) >= 0)) && (!a((String)localObject, paramList)))
       {
-        obk localobk = a(paramAppConfigInfo);
-        localobk.c = ((String)localObject);
-        paramList.add(localobk);
+        omv localomv = a(paramAppConfigInfo);
+        localomv.c = ((String)localObject);
+        paramList.add(localomv);
         if (a(paramList))
         {
           QLog.d(c, 1, "report data is enough, no need to scan any more.");
@@ -352,7 +352,7 @@ public class ReadInJoyDoingSomething
     }
   }
   
-  private static void a(List<obk> paramList, String paramString)
+  private static void a(List<omv> paramList, String paramString)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       QLog.d(c, 1, "reportData but list is null or empty.");
@@ -364,16 +364,16 @@ public class ReadInJoyDoingSomething
       int i = 0;
       while (i < paramList.size())
       {
-        obk localobk = (obk)paramList.get(i);
+        omv localomv = (omv)paramList.get(i);
         if (QLog.isColorLevel()) {
-          QLog.d(c, 2, new Object[] { "tagName = ", paramString, ", reportDataList [ ", Integer.valueOf(i), " ] : \n", localobk.toString(), "uin = ", obz.a(), "\n" });
+          QLog.d(c, 2, new Object[] { "tagName = ", paramString, ", reportDataList [ ", Integer.valueOf(i), " ] : \n", localomv.toString(), "uin = ", onk.a(), "\n" });
         }
         localHashMap.clear();
-        localHashMap.put("appCode", localobk.jdField_a_of_type_JavaLangString);
-        localHashMap.put("appVersion", localobk.jdField_b_of_type_JavaLangString);
-        localHashMap.put("appUsedDate", localobk.c);
-        localHashMap.put("uin", obz.a());
-        awrn.a(obz.a().getApplication()).a(obz.a(), paramString, true, 1L, 0L, localHashMap, null, false);
+        localHashMap.put("appCode", localomv.jdField_a_of_type_JavaLangString);
+        localHashMap.put("appVersion", localomv.jdField_b_of_type_JavaLangString);
+        localHashMap.put("appUsedDate", localomv.c);
+        localHashMap.put("uin", onk.a());
+        axrl.a(onk.a().getApplication()).a(onk.a(), paramString, true, 1L, 0L, localHashMap, null, false);
         i += 1;
       }
     }
@@ -381,7 +381,7 @@ public class ReadInJoyDoingSomething
   
   public static void a(AppRuntime paramAppRuntime, ReadInJoyDoingSomething.AppConfigInfoList paramAppConfigInfoList)
   {
-    if (bgmq.a(paramAppRuntime, true, true) == null)
+    if (bhvh.a(paramAppRuntime, true, true) == null)
     {
       QLog.d(c, 1, "getReadInJoySP failed, can not update config.");
       return;
@@ -389,7 +389,7 @@ public class ReadInJoyDoingSomething
     if (QLog.isColorLevel()) {
       QLog.d(c, 2, new Object[] { "updateConfig, appConfigInfoList = ", paramAppConfigInfoList.toString() });
     }
-    obz.a(jdField_a_of_type_JavaLangString, paramAppConfigInfoList, true);
+    onk.a(jdField_a_of_type_JavaLangString, paramAppConfigInfoList, true);
   }
   
   public static void a(Node paramNode)
@@ -483,24 +483,24 @@ public class ReadInJoyDoingSomething
         paramNode = paramNode.getNextSibling();
       }
     }
-    a(obz.a(), localAppConfigInfoList);
+    a(onk.a(), localAppConfigInfoList);
   }
   
-  private static boolean a(String paramString, List<obk> paramList)
+  private static boolean a(String paramString, List<omv> paramList)
   {
     if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.size() <= 0)) {
       return false;
     }
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      if (paramString.equals(((obk)paramList.next()).c)) {
+      if (paramString.equals(((omv)paramList.next()).c)) {
         return true;
       }
     }
     return false;
   }
   
-  private static boolean a(List<obk> paramList)
+  private static boolean a(List<omv> paramList)
   {
     boolean bool = true;
     if ((paramList == null) || (paramList.size() <= 0) || (TextUtils.isEmpty(h))) {
@@ -552,7 +552,7 @@ public class ReadInJoyDoingSomething
   {
     int i = 0;
     Object localObject2 = a(paramAppConfigInfo);
-    if ((localObject2 == null) || (TextUtils.isEmpty(((obk)localObject2).jdField_b_of_type_JavaLangString)))
+    if ((localObject2 == null) || (TextUtils.isEmpty(((omv)localObject2).jdField_b_of_type_JavaLangString)))
     {
       if (QLog.isColorLevel())
       {
@@ -562,7 +562,7 @@ public class ReadInJoyDoingSomething
         }
       }
       label60:
-      for (paramAppConfigInfo = ((obk)localObject2).toString();; paramAppConfigInfo = "null")
+      for (paramAppConfigInfo = ((omv)localObject2).toString();; paramAppConfigInfo = "null")
       {
         QLog.d((String)localObject1, 2, new Object[] { "user do not install this app or reportData is null, reportData = ", paramAppConfigInfo });
         return;
@@ -587,7 +587,7 @@ public class ReadInJoyDoingSomething
           if (((TextUtils.isEmpty(h)) || (((String)localObject4).compareTo(h) >= 0)) && (!a((String)localObject4, (List)localObject1)))
           {
             localObject3 = a(paramAppConfigInfo);
-            ((obk)localObject3).c = ((String)localObject4);
+            ((omv)localObject3).c = ((String)localObject4);
             ((List)localObject1).add(localObject3);
           }
         }
@@ -608,7 +608,7 @@ public class ReadInJoyDoingSomething
   
   private static void c()
   {
-    Object localObject = bgmq.a(obz.a(), true, true);
+    Object localObject = bhvh.a(onk.a(), true, true);
     if (localObject == null)
     {
       QLog.d(c, 1, "setLastScanDate failed, can not get config.");
@@ -618,7 +618,7 @@ public class ReadInJoyDoingSomething
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
     localObject = ((SharedPreferences)localObject).edit();
     ((SharedPreferences.Editor)localObject).putString(jdField_b_of_type_JavaLangString, localSimpleDateFormat.format(localDate));
-    bgmq.a((SharedPreferences.Editor)localObject, true);
+    bhvh.a((SharedPreferences.Editor)localObject, true);
   }
 }
 

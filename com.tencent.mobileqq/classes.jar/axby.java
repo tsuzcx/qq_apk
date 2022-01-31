@@ -1,258 +1,248 @@
 import android.content.Context;
+import android.content.Intent;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.1;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.servlet.LoginVerifyServlet.3;
+import com.tencent.mobileqq.troop.org.pb.oidb_0x587.ReqBody;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
+import face.qqlogin.FaceSecureCheck.SecureCheckRequest;
+import java.nio.ByteBuffer;
+import java.util.Random;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import mqq.manager.WtloginManager;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.oidb_0x5e1.ReqBody;
+import tencent.im.oidb.oidb_0x87a.ReqBody;
+import tencent.im.oidb.oidb_0x87c.ReqBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class axby
-  extends axci
+  extends MSFServlet
 {
-  private long jdField_a_of_type_Long;
-  public axbz a;
-  private LinkedList<axcl> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private axcl[] jdField_a_of_type_ArrayOfAxcl;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  public boolean b;
-  private boolean c;
-  private boolean d;
-  private boolean e;
-  private boolean f;
-  public int g;
-  private int h = 10;
-  private int i = -1;
+  public static AtomicInteger a = new AtomicInteger(0);
   
-  public axby(SpriteGLView paramSpriteGLView, String[] paramArrayOfString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = paramSpriteGLView;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_ArrayOfAxcl = new axcl[paramArrayOfString.length];
-    e(10);
-  }
-  
-  private axcl a(int paramInt)
+  public static void a(int paramInt, String paramString1, String paramString2, String paramString3, BusinessObserver paramBusinessObserver)
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilLinkedList != null)
-      {
-        this.jdField_a_of_type_JavaUtilLinkedList.remove(this.jdField_a_of_type_ArrayOfAxcl[paramInt]);
-        axcl localaxcl = this.jdField_a_of_type_ArrayOfAxcl[paramInt];
-        return localaxcl;
-      }
-      return null;
-    }
-    finally {}
-  }
-  
-  private void a(int paramInt, axcl paramaxcl)
-  {
-    if ((this.jdField_a_of_type_ArrayOfAxcl != null) && (this.jdField_a_of_type_ArrayOfAxcl.length > paramInt)) {
-      this.jdField_a_of_type_ArrayOfAxcl[paramInt] = paramaxcl;
-    }
-  }
-  
-  private void e()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilLinkedList != null)
-      {
-        int j = 0;
-        while (j < this.jdField_a_of_type_JavaUtilLinkedList.size())
-        {
-          ((axcl)this.jdField_a_of_type_JavaUtilLinkedList.get(j)).c();
-          j += 1;
-        }
-        this.jdField_a_of_type_JavaUtilLinkedList.clear();
-      }
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("appid", paramInt);
+      localJSONObject.put("key_type", paramString2);
+      localJSONObject.put("key", paramString3);
+      localJSONObject.put("uin", paramString1);
+      localJSONObject.put("from", "guard");
+      localJSONObject.put("nonce", 15331231);
+      a("https://graph.qq.com/face/if_proxy", "application/json", localJSONObject.toString(), new axbz(paramBusinessObserver));
       return;
     }
-    finally {}
+    catch (JSONException paramString1)
+    {
+      QLog.e("LoginVerifyServlet", 1, "sendGetTmpKey JSONException : " + paramString1.getMessage());
+    }
   }
   
-  private void f(int paramInt)
+  private static void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, byte[] paramArrayOfByte, BusinessObserver paramBusinessObserver)
   {
-    try
+    if (paramQQAppInterface == null)
     {
-      if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_ArrayOfAxcl != null) && (this.jdField_a_of_type_ArrayOfAxcl.length > paramInt) && (this.jdField_a_of_type_ArrayOfAxcl[paramInt] != null))
-      {
-        this.jdField_a_of_type_JavaUtilLinkedList.add(this.jdField_a_of_type_ArrayOfAxcl[paramInt]);
-        this.jdField_a_of_type_ArrayOfAxcl[paramInt].a();
-      }
+      QLog.e("LoginVerifyServlet", 1, "sendRequest QQAppInterface is null, command is " + paramString);
       return;
     }
-    finally {}
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(paramInt1);
+    localOIDBSSOPkg.uint32_service_type.set(paramInt2);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+    localOIDBSSOPkg.str_client_version.set(AppSetting.f());
+    paramArrayOfByte = new NewIntent(paramQQAppInterface.getApp(), axby.class);
+    paramArrayOfByte.setObserver(paramBusinessObserver);
+    paramArrayOfByte.putExtra("cmd", paramString);
+    paramArrayOfByte.putExtra("data", localOIDBSSOPkg.toByteArray());
+    paramQQAppInterface.startServlet(paramArrayOfByte);
   }
   
-  public void a()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, atzn paramatzn)
   {
-    if (this.jdField_a_of_type_ArrayOfAxcl != null)
+    paramString = new FaceSecureCheck.SecureCheckRequest();
+    Object localObject = oxm.a(BaseApplicationImpl.getApplication());
+    boolean bool;
+    if (localObject != null)
     {
-      int j = 0;
-      while (j < this.jdField_a_of_type_ArrayOfAxcl.length)
+      paramString.bytes_client_addr.set(ByteStringMicro.copyFrom(((String)localObject).getBytes()));
+      localObject = (WifiManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("wifi");
+      if (localObject == null) {
+        break label363;
+      }
+      bool = ((WifiManager)localObject).isWifiEnabled();
+      localObject = ((WifiManager)localObject).getConnectionInfo();
+      if ((!bool) || (localObject == null)) {
+        break label317;
+      }
+      paramString.uint32_client_addr.set(((WifiInfo)localObject).getIpAddress());
+      label91:
+      localObject = paramQQAppInterface.getManager(1);
+      if ((localObject != null) && ((localObject instanceof WtloginManager)))
       {
-        if (this.jdField_a_of_type_ArrayOfAxcl[j] != null)
-        {
-          this.jdField_a_of_type_ArrayOfAxcl[j].c();
-          this.jdField_a_of_type_ArrayOfAxcl[j] = null;
+        localObject = ((WtloginManager)localObject).getGUID();
+        if (localObject == null) {
+          break label374;
         }
-        j += 1;
+        paramString.bytes_guid.set(ByteStringMicro.copyFrom((byte[])localObject));
       }
-    }
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilLinkedList != null) {
-        this.jdField_a_of_type_JavaUtilLinkedList.clear();
-      }
-      this.jdField_a_of_type_JavaUtilLinkedList = null;
-      this.jdField_a_of_type_ArrayOfAxcl = null;
-      this.e = true;
-      this.jdField_a_of_type_Axbz = null;
-      super.a();
-      return;
-    }
-    finally {}
-  }
-  
-  protected void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
-  {
-    int j;
-    if ((this.c) && (this.jdField_a_of_type_ArrayOfAxcl != null))
-    {
-      j = (int)((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / (1000.0F / this.h));
-      if (j <= this.i) {
-        break label370;
-      }
-      if (j <= this.i + 1) {
-        break label220;
-      }
-      this.i += 1;
-      if (this.i >= this.jdField_a_of_type_ArrayOfAxcl.length) {
-        break label268;
-      }
-      if ((this.jdField_a_of_type_ArrayOfAxcl[this.i] == null) || (!this.jdField_a_of_type_ArrayOfAxcl[this.i].a)) {
-        break label229;
-      }
-      if (this.jdField_a_of_type_Axcl != null) {
-        this.jdField_a_of_type_Axcl.c();
-      }
-      this.jdField_a_of_type_Axcl = a(this.i);
-      if (QLog.isColorLevel()) {
-        QLog.d("FrameSprite", 2, "FrameSprite: mTexture = " + this.jdField_a_of_type_Axcl);
-      }
-      g();
-      super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
-      if (QLog.isColorLevel()) {
-        QLog.d("FrameSprite", 2, "FrameSprite: draw1:" + this.i);
-      }
-    }
-    label220:
-    label229:
-    label370:
-    do
-    {
-      for (;;)
-      {
-        return;
-        this.i = j;
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.d("FrameSprite", 2, "FrameSprite: mTexture = null:" + this.i);
-        }
-        e();
-        return;
-        if (this.d)
-        {
-          super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
-          if (QLog.isColorLevel()) {
-            QLog.d("FrameSprite", 2, "FrameSprite: draw3:" + this.i);
-          }
-        }
-        while (this.jdField_a_of_type_Axbz != null)
-        {
-          this.jdField_a_of_type_Axbz.a();
-          this.jdField_a_of_type_Axbz = null;
-          return;
-          this.c = false;
-          if (this.jdField_a_of_type_Axcl != null) {
-            this.jdField_a_of_type_Axcl.c();
-          }
-        }
-      }
-      super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
-    } while (!QLog.isColorLevel());
-    label268:
-    QLog.d("FrameSprite", 2, "FrameSprite: draw2:" + this.i);
-  }
-  
-  public void a(Context paramContext, SpriteGLView paramSpriteGLView)
-  {
-    ThreadManager.post(new FrameSprite.1(this, paramContext, paramSpriteGLView), 8, null, true);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.d = paramBoolean;
-  }
-  
-  public void aQ_()
-  {
-    this.c = true;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  protected void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
-  {
-    if (this.c)
-    {
-      int j = (int)((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / (1000.0F / this.h));
-      if (j >= this.jdField_a_of_type_ArrayOfAxcl.length) {
-        break label67;
-      }
-      this.jdField_a_of_type_Axcl = this.jdField_a_of_type_ArrayOfAxcl[j];
     }
     for (;;)
     {
-      super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
+      paramString.uint32_seq.set(a.addAndGet(1));
+      paramString.uint32_timestamp.set((int)(System.currentTimeMillis() / 1000L));
+      paramString.uint32_version.set(AppSetting.a());
+      paramString.uint64_appid.set(101810106L);
+      long l = new Random().nextLong();
+      paramString.uint64_nonce.set(l);
+      paramString = paramString.toByteArray();
+      localObject = ByteBuffer.allocate(paramString.length + 4);
+      ((ByteBuffer)localObject).putInt(paramString.length + 4);
+      ((ByteBuffer)localObject).put(paramString);
+      localObject = new NewIntent(paramQQAppInterface.getApp(), axby.class);
+      ((NewIntent)localObject).setObserver(paramatzn);
+      ((NewIntent)localObject).putExtra("cmd", "FaceRecognition.SecureCheck");
+      ((NewIntent)localObject).putExtra("data", paramString);
+      paramQQAppInterface.startServlet((NewIntent)localObject);
       return;
-      label67:
-      if (this.b)
+      QLog.e("LoginVerifyServlet", 1, "getIpAddress error");
+      paramString.bytes_client_addr.set(ByteStringMicro.copyFrom("0.0.0.0".getBytes()));
+      break;
+      label317:
+      if (localObject == null) {}
+      for (bool = true;; bool = false)
       {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_Axcl = this.jdField_a_of_type_ArrayOfAxcl[0];
+        QLog.e("LoginVerifyServlet", 1, new Object[] { "wifiManager.isWifiEnabled : false or connection is null : ", Boolean.valueOf(bool) });
+        paramString.uint32_client_addr.set(0);
+        break;
       }
-      else if (this.d)
-      {
-        this.jdField_a_of_type_Axcl = this.jdField_a_of_type_ArrayOfAxcl[(this.jdField_a_of_type_ArrayOfAxcl.length - 1)];
-      }
-      else
-      {
-        this.jdField_a_of_type_Axcl = null;
-        if (this.jdField_a_of_type_Axbz != null)
-        {
-          this.jdField_a_of_type_Axbz.a();
-          this.jdField_a_of_type_Axbz = null;
-        }
-      }
+      label363:
+      paramString.uint32_client_addr.set(0);
+      break label91;
+      label374:
+      QLog.e("LoginVerifyServlet", 1, "guid is null");
     }
   }
   
-  public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, BusinessObserver paramBusinessObserver)
   {
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
-    }
-    while (this.jdField_a_of_type_ArrayOfAxcl == null) {
+    try
+    {
+      oidb_0x5e1.ReqBody localReqBody = new oidb_0x5e1.ReqBody();
+      localReqBody.rpt_uint64_uins.add(Long.valueOf(Long.parseLong(paramString)));
+      localReqBody.user_login_guard_face.set(1);
+      a(paramQQAppInterface, 1505, "OidbSvc.0x5e1_295", 295, localReqBody.toByteArray(), paramBusinessObserver);
       return;
     }
-    b(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("LoginVerifyServlet", 1, "sendGetUserFaceStateRequest error : " + paramQQAppInterface.getMessage());
+    }
   }
   
-  public void e(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, BusinessObserver paramBusinessObserver)
   {
-    this.h = paramInt;
-    this.g = ((int)(this.h * 0.8D));
+    oidb_0x587.ReqBody localReqBody = new oidb_0x587.ReqBody();
+    localReqBody.user_login_guard_face.set(0);
+    a(paramQQAppInterface, 1415, "OidbSvc.0x587_63", 63, localReqBody.toByteArray(), paramBusinessObserver);
+  }
+  
+  public static void a(String paramString1, long paramLong, String paramString2, BusinessObserver paramBusinessObserver)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("uin", paramString1);
+      localJSONObject.put("nonce", paramLong);
+      localJSONObject.put("appconf_req", paramString2);
+      a("https://graph.qq.com/face/appconf", "application/json", localJSONObject.toString(), new axca(paramBusinessObserver));
+      return;
+    }
+    catch (JSONException paramString1)
+    {
+      QLog.e("LoginVerifyServlet", 1, "sendGetAppConfigRequest error, msg : " + paramString1.getMessage());
+    }
+  }
+  
+  private static void a(String paramString1, String paramString2, String paramString3, axcc paramaxcc)
+  {
+    ThreadManager.getNetExcutor().execute(new LoginVerifyServlet.3(paramString1, paramString2, paramString3, paramaxcc));
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString, BusinessObserver paramBusinessObserver)
+  {
+    oidb_0x87c.ReqBody localReqBody = new oidb_0x87c.ReqBody();
+    localReqBody.str_sms_code.set(paramString);
+    localReqBody.enum_butype.set(1);
+    a(paramQQAppInterface, 2172, "OidbSvc.0x87c_108", 108, localReqBody.toByteArray(), paramBusinessObserver);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, BusinessObserver paramBusinessObserver)
+  {
+    oidb_0x87a.ReqBody localReqBody = new oidb_0x87a.ReqBody();
+    localReqBody.enum_butype.set(1);
+    a(paramQQAppInterface, 2170, "OidbSvc.0x87a_108", 108, localReqBody.toByteArray(), paramBusinessObserver);
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LoginVerifyServlet", 2, "onReceive");
+    }
+    if (paramIntent == null) {
+      return;
+    }
+    Object localObject2 = paramIntent.getExtras();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new Bundle();
+    }
+    if (paramFromServiceMsg.isSuccess()) {}
+    for (localObject2 = bblm.b(paramFromServiceMsg.getWupBuffer());; localObject2 = null)
+    {
+      ((Bundle)localObject1).putByteArray("data", (byte[])localObject2);
+      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("LoginVerifyServlet", 2, "onReceive exit");
+      return;
+      ((Bundle)localObject1).putString("dataErrorMsg", paramFromServiceMsg.getBusinessFailMsg());
+      ((Bundle)localObject1).putInt("dataErrorCode", paramFromServiceMsg.getBusinessFailCode());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramIntent = paramIntent.getStringExtra("cmd");
+    QLog.i("LoginVerifyServlet", 1, "onSend, cmd is " + paramIntent);
+    paramPacket.setSSOCommand(paramIntent);
+    paramPacket.putSendData(bblm.a(arrayOfByte));
+    if (QLog.isColorLevel()) {
+      QLog.i("LoginVerifyServlet", 2, "onSend exit");
+    }
   }
 }
 

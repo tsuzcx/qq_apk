@@ -1,9 +1,12 @@
 package com.tencent.youtu.ytagreflectlivecheck.requester;
 
 import android.os.Build;
+import android.os.Build.VERSION;
 
 public class LiveStyleRequester$LiveStyleAndroidData
 {
+  public String android_apilevel = "" + Build.VERSION.SDK_INT;
+  public String android_version = Build.VERSION.RELEASE;
   public String build_brand = Build.BRAND;
   public String build_device = Build.DEVICE;
   public String build_display = Build.DISPLAY;

@@ -1,82 +1,23 @@
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.manager.Manager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.util.BinderWarpper;
 
-public class bfml
-  implements Manager
+public final class bfml
+  implements Parcelable.Creator<BinderWarpper>
 {
-  @Nullable
-  public RedAppInfo a(String paramString)
+  public BinderWarpper a(Parcel paramParcel)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("path", paramString);
-    paramString = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "getSingleRedTouchInfo", localBundle);
-    if ((paramString != null) && (paramString.code == 0) && (paramString.data != null))
-    {
-      paramString = paramString.data;
-      paramString.setClassLoader(RedAppInfo.class.getClassLoader());
-      return (RedAppInfo)paramString.getParcelable("redTouchInfo");
-    }
-    return null;
+    return new BinderWarpper(paramParcel.readStrongBinder());
   }
   
-  @Nullable
-  public Map<String, RedAppInfo> a(ArrayList<String> paramArrayList)
+  public BinderWarpper[] a(int paramInt)
   {
-    if (paramArrayList == null) {}
-    do
-    {
-      do
-      {
-        return null;
-        localObject = new Bundle();
-        ((Bundle)localObject).putStringArrayList("pathList", paramArrayList);
-        paramArrayList = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "getRedTouchInfo", (Bundle)localObject);
-      } while ((paramArrayList == null) || (paramArrayList.code != 0) || (paramArrayList.data == null));
-      paramArrayList = paramArrayList.data;
-      paramArrayList.setClassLoader(RedAppInfo.class.getClassLoader());
-      localObject = paramArrayList.getParcelableArrayList("redTouchInfoList");
-    } while (localObject == null);
-    paramArrayList = new HashMap();
-    Object localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      RedAppInfo localRedAppInfo = (RedAppInfo)((Iterator)localObject).next();
-      paramArrayList.put(localRedAppInfo.b(), localRedAppInfo);
-    }
-    return paramArrayList;
+    return new BinderWarpper[paramInt];
   }
-  
-  public void a(String paramString)
-  {
-    if (a(paramString))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("path", paramString);
-      QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "reportRedTouchClick", localBundle);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    paramString = a(paramString);
-    return (paramString != null) && (paramString.b() == 1);
-  }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfml
  * JD-Core Version:    0.7.0.1
  */

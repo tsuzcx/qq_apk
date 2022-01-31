@@ -13,10 +13,11 @@ public abstract interface NotificationUtil$Constants
   public static final int NOTIFY_ID_EQLOCK_QUICKLOGIN_MSG = 276;
   public static final int NOTIFY_ID_GENERAL = 275;
   public static final int NOTIFY_ID_IPADONLINE_MSG = 263;
+  public static final int NOTIFY_ID_KANDIAN_LIKE = 526;
   public static final int NOTIFY_ID_LBS_FRIEND_UNREAD = 268;
   public static final int NOTIFY_ID_LIMIT_CHAT_UNREAD = 266;
   public static final int NOTIFY_ID_LOCSHARING = 525;
-  public static final int NOTIFY_ID_MAX = 525;
+  public static final int NOTIFY_ID_MAX = 526;
   public static final int NOTIFY_ID_MSF_PUSH_AVMSG = 479;
   public static final int NOTIFY_ID_MSF_PUSH_DEVLOCK_QUICKLOGIN_MSG = 480;
   public static final int NOTIFY_ID_MSF_PUSH_OFFLINE = 478;

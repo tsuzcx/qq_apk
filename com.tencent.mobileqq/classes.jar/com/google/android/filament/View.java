@@ -41,7 +41,7 @@ public class View
   
   private static native void nSetAmbientOcclusion(long paramLong, int paramInt);
   
-  private static native void nSetAmbientOcclusionOptions(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
+  private static native void nSetAmbientOcclusionOptions(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5);
   
   private static native void nSetAntiAliasing(long paramLong, int paramInt);
   
@@ -213,7 +213,7 @@ public class View
   public void setAmbientOcclusionOptions(@NonNull View.AmbientOcclusionOptions paramAmbientOcclusionOptions)
   {
     this.mAmbientOcclusionOptions = paramAmbientOcclusionOptions;
-    nSetAmbientOcclusionOptions(getNativeObject(), paramAmbientOcclusionOptions.radius, paramAmbientOcclusionOptions.bias, paramAmbientOcclusionOptions.power, paramAmbientOcclusionOptions.resolution);
+    nSetAmbientOcclusionOptions(getNativeObject(), paramAmbientOcclusionOptions.radius, paramAmbientOcclusionOptions.bias, paramAmbientOcclusionOptions.power, paramAmbientOcclusionOptions.resolution, paramAmbientOcclusionOptions.intensity);
   }
   
   public void setAntiAliasing(@NonNull View.AntiAliasing paramAntiAliasing)

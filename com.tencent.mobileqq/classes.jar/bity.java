@@ -1,125 +1,14 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory.Options;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 
-public class bity
-  extends biuq<bitz, bitz>
+class bity
+  implements MediaPlayer.OnPreparedListener
 {
-  public final String a;
-  @NonNull
-  public final WeakReference<bidl> a;
-  public final String b;
+  bity(bitt parambitt) {}
   
-  public bity(bidl parambidl, String paramString1, String paramString2)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (parambidl == null) {
-      throw new IllegalArgumentException("atDoodleController is illegal");
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambidl);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  private boolean a(bitz parambitz, String paramString1, String paramString2)
-  {
-    parambitz.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.atDoodlePath = paramString1;
-    parambitz.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.atJsonData = paramString2;
-    return true;
-  }
-  
-  protected void a(JobContext paramJobContext, bitz parambitz)
-  {
-    int i = 0;
-    int j = 0;
-    String str = parambitz.jdField_a_of_type_JavaLangString;
-    if (str == null)
-    {
-      super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
-      return;
-    }
-    bidl localbidl = (bidl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject;
-    BitmapFactory.Options localOptions;
-    if ((localbidl != null) && (!localbidl.a()))
-    {
-      localObject = this.jdField_a_of_type_JavaLangString;
-      paramJobContext = (JobContext)localObject;
-      if (localObject == null) {
-        paramJobContext = biut.a(parambitz.jdField_a_of_type_Int, parambitz.b, ".png");
-      }
-      localObject = localbidl.a();
-      if (localObject != null)
-      {
-        localOptions = new BitmapFactory.Options();
-        localOptions.inJustDecodeBounds = true;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        bacm.a(str, localOptions);
-        localObject = vlc.b((Bitmap)localObject, localOptions.outWidth, localOptions.outHeight, true, false);
-        if (localObject == null) {
-          break label388;
-        }
-        bool1 = vlc.a((Bitmap)localObject, Bitmap.CompressFormat.PNG, 60, paramJobContext);
-        if ((localObject != null) && (bool1))
-        {
-          urk.b("Q.qqstory.publish.edit.GenerateAtDoodleImageSegment", "resize and crop original doodle image success");
-          i = j;
-          if (a(parambitz, paramJobContext, this.b)) {
-            i = 1;
-          }
-          vlc.a((Bitmap)localObject);
-          if (i == 0) {
-            break label360;
-          }
-          super.notifyResult(parambitz);
-          return;
-        }
-      }
-      catch (OutOfMemoryError paramJobContext)
-      {
-        urk.b("Q.qqstory.publish.edit.GenerateAtDoodleImageSegment", "decode video thumb failed %s", paramJobContext);
-        super.notifyError(new BitmapError("Q.qqstory.publish.edit.GenerateAtDoodleImageSegment", 6));
-        return;
-      }
-      if (localObject != null) {}
-      for (boolean bool2 = true;; bool2 = false)
-      {
-        urk.d("Q.qqstory.publish.edit.GenerateAtDoodleImageSegment", "resize and save doodle image failed, resize result=%s, save result=%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-        bool1 = localbidl.a(paramJobContext);
-        urk.b("Q.qqstory.publish.edit.GenerateAtDoodleImageSegment", "generate original doodle png file : success = " + bool1 + ", path = " + paramJobContext);
-        if (!bool1) {
-          break label347;
-        }
-        urk.b("Q.qqstory.publish.edit.GenerateAtDoodleImageSegment", "use the original doodle image instead");
-        i = j;
-        if (!a(parambitz, paramJobContext, this.b)) {
-          break;
-        }
-        i = 1;
-        break;
-      }
-      label347:
-      urk.d("Q.qqstory.publish.edit.GenerateAtDoodleImageSegment", "copy the original doodle image failed, we'll ignore the doodle then publish");
-      i = j;
-      continue;
-      label360:
-      super.notifyError(new ErrorMessage(-1, "DoodleLayout generate image failed"));
-      return;
-      urk.d("Q.qqstory.publish.edit.GenerateAtDoodleImageSegment", "do not generate at doodle image because at doodle is empty");
-      super.notifyResult(parambitz);
-      return;
-      label388:
-      boolean bool1 = false;
-    }
+    paramMediaPlayer.start();
   }
 }
 

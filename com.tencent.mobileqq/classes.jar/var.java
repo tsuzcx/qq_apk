@@ -1,64 +1,13 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class var
-  implements uya
+class var
+  implements vaa
 {
-  public var(DoodleLayout paramDoodleLayout) {}
+  var(vaf paramvaf) {}
   
-  public void a(int paramInt)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    if (this.a.jdField_a_of_type_Vav != null) {
-      this.a.jdField_a_of_type_Vav.b(1, paramInt);
-    }
-  }
-  
-  public void a(uxu paramuxu)
-  {
-    this.a.jdField_a_of_type_Uxu = paramuxu;
-    if (this.a.jdField_a_of_type_Vav != null)
-    {
-      urk.b("DoodleLayout", "selectLocation: clickItem-->" + paramuxu.toString());
-      this.a.jdField_a_of_type_Vav.a(this.a.jdField_a_of_type_Uxu.a());
-    }
-  }
-  
-  public boolean a(uxx paramuxx)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
-      Object localObject;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b())
-      {
-        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a();
-        ((vcw)localObject).d = false;
-        if (!(localObject instanceof uxx)) {
-          break label120;
-        }
-        uxt localuxt = this.a.a();
-        if (localuxt != null) {
-          localuxt.a.add((uxx)localObject);
-        }
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(paramuxx);
-        paramuxx.d = true;
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
-        return true;
-        label120:
-        if ((localObject instanceof uyj))
-        {
-          localObject = this.a.a();
-          if (localObject != null) {
-            ((uyh)localObject).d();
-          }
-        }
-      }
-    }
-    return false;
+    veg.e("Q.qqstory.home.StoryListPresenter", "step %s error occur when requestAllDataFromNet error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
   }
 }
 

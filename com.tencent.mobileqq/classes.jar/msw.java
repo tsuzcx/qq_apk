@@ -1,28 +1,192 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class msw
-  implements begw
 {
-  public msw(EqqAccountDetailActivity paramEqqAccountDetailActivity, nbu paramnbu, begr parambegr, int paramInt) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static int a(VideoAppInterface paramVideoAppInterface, int paramInt1, String paramString, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b) {}
+    if ((paramInt1 == 19) && (!TextUtils.isEmpty(paramString))) {
+      return paramVideoAppInterface.a(paramString);
+    }
+    return VideoController.a(paramInt1, false, paramInt2);
+  }
+  
+  public static Intent a(Context paramContext, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
-      return;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b(this.jdField_a_of_type_Nbu, paramInt + 1);
-      this.jdField_a_of_type_Begr.dismiss();
-    } while ((!((nfp)EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).getManager(88)).a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity))) || (this.jdField_a_of_type_Int == paramInt));
-    ((ngh)EqqAccountDetailActivity.p(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).a(88)).a(134243867, EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), null, null, null, paramInt + 1, false);
+      return null;
+      paramString = ldc.a().b(paramString);
+    } while (paramString == null);
+    try
+    {
+      paramContext = new Intent(paramContext, GaInviteLockActivity.class);
+      paramContext.addFlags(268435456);
+      a(paramContext, paramString);
+      return paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        QLog.i("QAVNotificationUtil", 1, "getGroupInviteIntent error", paramContext);
+        paramContext = null;
+      }
+    }
+  }
+  
+  public static String a(lea paramlea)
+  {
+    long l = paramlea.jdField_d_of_type_Long;
+    switch (paramlea.e)
+    {
+    default: 
+      return String.valueOf(l);
+    }
+    return paramlea.jdField_b_of_type_JavaLangString + paramlea.a;
+  }
+  
+  public static void a(Intent paramIntent, lgf paramlgf)
+  {
+    long l1 = 0L;
+    try
+    {
+      long l2 = Long.parseLong(paramlgf.s);
+      l1 = l2;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
+    paramIntent.putExtra("uinType", paramlgf.i);
+    paramIntent.putExtra("peerUin", paramlgf.s);
+    paramIntent.putExtra("friendUin", l1);
+    paramIntent.putExtra("relationType", paramlgf.E);
+    paramIntent.putExtra("MultiAVType", paramlgf.C);
+    paramIntent.putExtra("discussId", paramlgf.g);
+    paramIntent.putExtra("memberList", paramlgf.a);
+  }
+  
+  public static void a(String paramString1, String paramString2, VideoAppInterface paramVideoAppInterface, lea paramlea)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CompatModeTag", 2, "showInviteNotification videoPacket[" + paramlea + "], session[" + paramString2 + "], from[" + paramString1 + "]");
+    }
+    paramString1 = String.valueOf(paramlea.c);
+    int i = a(paramVideoAppInterface, paramlea.e, paramString1, 0);
+    String str = a(paramlea);
+    boolean bool;
+    int j;
+    if (paramlea.jdField_d_of_type_Int == 1)
+    {
+      bool = true;
+      j = paramlea.jdField_b_of_type_Int;
+    }
+    for (;;)
+    {
+      try
+      {
+        if (paramVideoAppInterface.a().a(i, paramString1, str, null, bool, null, 0, j)) {
+          break label145;
+        }
+        QLog.w("CompatModeTag", 1, "showNotification() return ! isRequestVideo = false");
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        QLog.w("CompatModeTag", 1, "showNotification() return ! Exception = ", paramString1);
+        return;
+      }
+      bool = false;
+      break;
+      label145:
+      Object localObject = mss.a(paramVideoAppInterface);
+      Bitmap localBitmap = paramVideoAppInterface.a(i, paramString1, str, true, true);
+      paramVideoAppInterface = paramVideoAppInterface.getDisplayName(i, paramString1, str);
+      if (mqr.a()) {
+        if (bool) {
+          ((mss)localObject).a(true, paramString2, paramVideoAppInterface, localBitmap, null, 45, i, 1, null);
+        }
+      }
+      while (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder(200);
+        ((StringBuilder)localObject).append("showNotification, isAudioMode=").append(bool).append(", sessionId=").append(paramString2).append(", uinType=").append(i).append(", peerUin=").append(paramString1).append(", extraUin=").append(str).append(", face=").append(localBitmap).append(", peerName=").append(paramVideoAppInterface).append(", videoPacket=").append(paramlea);
+        QLog.i("CompatModeTag", 2, ((StringBuilder)localObject).toString());
+        return;
+        ((mss)localObject).a(true, paramString2, paramVideoAppInterface, localBitmap, null, 40, i, 2, null);
+        continue;
+        if (bool) {
+          ((mss)localObject).a(false, paramString2, paramVideoAppInterface, localBitmap, null, 45, i, 1);
+        } else {
+          ((mss)localObject).a(false, paramString2, paramVideoAppInterface, localBitmap, null, 40, i, 2);
+        }
+      }
+    }
+  }
+  
+  public static boolean a(Intent paramIntent)
+  {
+    boolean bool2 = false;
+    String str = null;
+    if (paramIntent != null) {
+      str = paramIntent.getStringExtra("Fromwhere");
+    }
+    boolean bool1 = bool2;
+    if (str != null)
+    {
+      bool1 = bool2;
+      if (str.compareTo("AVNotification") == 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public static Intent b(Context paramContext, String paramString)
+  {
+    paramContext = new Intent(paramContext, MultiIncomingCallsActivity.class);
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return paramContext;
+      paramString = ldc.a().b(paramString);
+    } while (paramString == null);
+    paramContext.putExtra("sessionType", paramString.jdField_d_of_type_Int);
+    if (mqr.b(paramString.i))
+    {
+      a(paramContext, paramString);
+      return paramContext;
+    }
+    b(paramContext, paramString);
+    return paramContext;
+  }
+  
+  public static void b(Intent paramIntent, lgf paramlgf)
+  {
+    paramIntent.putExtra("uinType", paramlgf.i);
+    paramIntent.putExtra("relationType", muf.b(paramlgf.i));
+    paramIntent.putExtra("peerUin", paramlgf.jdField_d_of_type_JavaLangString);
+    paramIntent.putExtra("extraUin", paramlgf.f);
+    paramIntent.putExtra("isAudioMode", paramlgf.Q);
+    paramIntent.putExtra("isDoubleVideoMeeting", paramlgf.I);
+    paramIntent.putExtra("bindType", paramlgf.z);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     msw
  * JD-Core Version:    0.7.0.1
  */

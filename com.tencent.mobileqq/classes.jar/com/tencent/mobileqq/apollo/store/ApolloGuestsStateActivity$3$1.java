@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store;
 
-import aitr;
+import ajhr;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.view.View;
@@ -13,13 +13,13 @@ import android.widget.TextView;
 public class ApolloGuestsStateActivity$3$1
   implements Runnable
 {
-  public ApolloGuestsStateActivity$3$1(aitr paramaitr) {}
+  public ApolloGuestsStateActivity$3$1(ajhr paramajhr) {}
   
   public void run()
   {
     if (this.a.a.jdField_a_of_type_AndroidViewView != null)
     {
-      TextView localTextView = (TextView)this.a.a.jdField_a_of_type_AndroidViewView.findViewById(2131297066);
+      TextView localTextView = (TextView)this.a.a.jdField_a_of_type_AndroidViewView.findViewById(2131362605);
       localTextView.setVisibility(0);
       Object localObject1 = new AlphaAnimation(1.0F, 0.0F);
       Object localObject2 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -50.0F);

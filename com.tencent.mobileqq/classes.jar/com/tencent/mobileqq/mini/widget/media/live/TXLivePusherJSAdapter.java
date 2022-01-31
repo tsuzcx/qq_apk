@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
-import bgfg;
+import bhnv;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Set;
@@ -544,12 +544,12 @@ public class TXLivePusherJSAdapter
   
   private void txCloudVideoView_disableLog(Boolean paramBoolean, Object paramObject)
   {
-    bgfg.a(paramObject, "disableLog", false, bgfg.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bhnv.a(paramObject, "disableLog", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayer_setVisibility(int paramInt, Object paramObject)
   {
-    bgfg.a(paramObject, "setVisibility", false, bgfg.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bhnv.a(paramObject, "setVisibility", false, bhnv.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   public TXJSAdapterError enterBackground(boolean paramBoolean)
@@ -896,6 +896,16 @@ public class TXLivePusherJSAdapter
   public void setPushListener(TXLivePushListenerReflect.ITXLivePushListener paramITXLivePushListener)
   {
     this.mLivePushListener = paramITXLivePushListener;
+  }
+  
+  public int startDumpAudioData(String paramString)
+  {
+    return WXLivePusherReflect.startDumpAudioData(paramString, this.mLivePusher);
+  }
+  
+  public void stopDumpAudioData()
+  {
+    WXLivePusherReflect.stopDumpAudioData(this.mLivePusher);
   }
   
   public void takePhoto(boolean paramBoolean, TXLivePushListenerReflect.ITXSnapshotListener paramITXSnapshotListener)

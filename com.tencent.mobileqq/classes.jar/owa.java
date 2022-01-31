@@ -1,18 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
-public abstract interface owa
+public class owa
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract TemplateBean a(int paramInt, JSONObject paramJSONObject);
+  public owa(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public abstract JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo);
-  
-  public abstract void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2);
-  
-  public abstract boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = ReadInJoySelfFragment.a(this.a).getLayoutParams();
+    paramValueAnimator.height = i;
+    ReadInJoySelfFragment.a(this.a).setLayoutParams(paramValueAnimator);
+  }
 }
 
 

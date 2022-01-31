@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.hotpic;
 
-import aqfa;
+import aqzc;
 
 public class HotPicManager$4
   implements Runnable
 {
-  public HotPicManager$4(aqfa paramaqfa) {}
+  public HotPicManager$4(aqzc paramaqzc) {}
   
   public void run()
   {

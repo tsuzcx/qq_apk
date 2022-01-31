@@ -1,31 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class ajbm
-  implements View.OnClickListener
+public abstract interface ajbm
 {
-  ajbm(ajbl paramajbl) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    if (ajbl.a(this.a) != null)
-    {
-      if (ajbl.a(this.a).a != 1036) {
-        break label62;
-      }
-      ((aifg)ajbl.a(this.a).a.getManager(153)).a().c(ajbl.a(this.a).c());
-    }
-    label62:
-    do
-    {
-      return;
-      paramView = (aifc)ajbl.a(this.a).getManager(211);
-    } while (paramView == null);
-    paramView.e();
-  }
+  public abstract aivx a(String paramString1, String paramString2, int paramInt1, int paramInt2);
+  
+  public abstract void a();
 }
 
 

@@ -1,19 +1,42 @@
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class nlm
-  implements begw
+class nlm
+  implements View.OnClickListener
 {
-  public nlm(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  nlm(nll paramnll) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    ReadInJoySettingActivity.c(this.a).d(paramInt);
-    ((TextView)this.a.findViewById(2131305955)).setText(ReadInJoySettingActivity.a(this.a)[paramInt]);
-    obz.a(Integer.toString(paramInt));
-    ndn.a(null, "", "0X8007416", "0X8007416", 0, 0, Integer.toString(paramInt), "", "", "", false);
-    ReadInJoySettingActivity.c(this.a).cancel();
+    if (this.a.jdField_a_of_type_Nld.b == 2)
+    {
+      paramView = new Intent((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", this.a.jdField_a_of_type_Nld.jdField_c_of_type_JavaLangString);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      nmf.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 3, 0);
+    }
+    while (this.a.jdField_a_of_type_Nld.b != 1) {
+      return;
+    }
+    switch (this.a.jdField_c_of_type_Int)
+    {
+    case 3: 
+    default: 
+      return;
+    case 0: 
+      nll.a(this.a);
+      return;
+    case 1: 
+      nmf.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Nld.f);
+      nmf.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 1, 0);
+      return;
+    }
+    nmf.a(this.a.jdField_a_of_type_Nld);
+    nmf.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 4, 0);
   }
 }
 

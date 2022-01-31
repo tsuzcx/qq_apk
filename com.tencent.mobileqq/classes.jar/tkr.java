@@ -1,27 +1,25 @@
-import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
 public class tkr
-  extends Subscriber.SingleEventSubscriberNoRefect<spl>
+  extends ssk
 {
-  tko a;
+  private toy a;
+  public boolean a;
   
-  public tkr(@NonNull tko paramtko)
+  public tkr(ErrorMessage paramErrorMessage)
   {
-    this.a = paramtko;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
   }
   
-  protected void a(@NonNull spl paramspl)
+  public tkr(boolean paramBoolean)
   {
-    if (paramspl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      this.a.a(paramspl.jdField_a_of_type_JavaLangString);
-    }
+    this(new ErrorMessage());
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public Class acceptEventClass()
+  public toy a()
   {
-    return spl.class;
+    return this.jdField_a_of_type_Toy;
   }
 }
 

@@ -1,32 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.open.appcommon.JsWebWorker;
+import java.lang.reflect.Method;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-class bdez
-  extends BroadcastReceiver
+public class bdez
 {
-  bdez(bdey parambdey) {}
+  public Class a;
+  public String a;
+  public Map<Integer, Object> a;
+  public Map<String, Method> b = new HashMap();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bdez(JsWebWorker paramJsWebWorker)
   {
-    paramContext = paramIntent.getAction();
-    if ((paramContext != null) && (paramContext.equals("android.intent.action.HEADSET_PLUG")) && (paramIntent.hasExtra("state")))
-    {
-      if (paramIntent.getIntExtra("state", 0) != 0) {
-        break label46;
-      }
-      bdey.a(this.a, 2);
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext()) {
+      localIterator.next();
     }
-    label46:
-    while (paramIntent.getIntExtra("state", 0) != 1) {
-      return;
-    }
-    bdey.a(this.a, 1);
+    this.jdField_a_of_type_JavaUtilMap = null;
+    this.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdez
  * JD-Core Version:    0.7.0.1
  */

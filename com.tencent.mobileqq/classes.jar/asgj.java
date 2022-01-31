@@ -1,28 +1,37 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
 class asgj
-  extends BroadcastReceiver
+  implements EIPCOnGetConnectionListener
 {
-  asgj(asge paramasge) {}
+  asgj(asgh paramasgh) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    int i = paramIntent.getIntExtra("SmallScreenState", 0);
-    if (i == 3) {
-      this.a.a.setVisibility(4);
+    if (paramEIPCConnection != null) {
+      asgh.a(this.a, paramEIPCConnection.procName);
     }
-    while ((i != 2) && (i != 0)) {
-      return;
+    asgh.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaFocusIpcClient", 2, "onConnectBind");
     }
-    this.a.a.setVisibility(0);
+  }
+  
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      asgh.a(this.a, paramEIPCConnection.procName);
+    }
+    asgh.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaFocusIpcClient", 2, "onConnectUnbind");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asgj
  * JD-Core Version:    0.7.0.1
  */

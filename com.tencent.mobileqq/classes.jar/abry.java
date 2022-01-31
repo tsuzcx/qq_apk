@@ -1,104 +1,28 @@
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
 public class abry
+  extends absa
 {
-  private absb jdField_a_of_type_Absb;
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private GeneralSettingActivity jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity;
+  public abry(PortraitImageview paramPortraitImageview) {}
   
-  private void a(URLImageView paramURLImageView, absa paramabsa)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    localObject = URLDrawable.getDrawable(paramabsa.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-    boolean bool = a((URLDrawable)localObject);
-    if (paramURLImageView != null)
-    {
-      paramURLImageView.setImageDrawable(null);
-      paramURLImageView.setImageDrawable((Drawable)localObject);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleUIChoiceView", 2, "onBindViewHolder loadPic colorDrawable=" + localObject + " bReady=" + bool + " checked=" + paramabsa.jdField_a_of_type_Boolean);
-    }
-    paramabsa.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject);
-    if (!bool)
-    {
-      ((URLDrawable)localObject).setURLDrawableListener(this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity);
-      ((URLDrawable)localObject).startDownload();
-    }
-  }
-  
-  private boolean a(URLDrawable paramURLDrawable)
-  {
-    return (paramURLDrawable != null) && ((paramURLDrawable.getStatus() == 1) || (paramURLDrawable.getStatus() == 4));
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleUIChoiceView", 2, "updateSimpleUIChoice bpref=" + paramInt + " needChangeTheme=" + paramBoolean);
-    }
-    if ((paramInt >= 0) && (this.jdField_a_of_type_Absb != null))
-    {
-      absa localabsa = this.jdField_a_of_type_Absb.a(paramInt);
-      localabsa.jdField_b_of_type_Boolean = paramBoolean;
-      if ((this.jdField_a_of_type_Absb.a(localabsa, paramInt, true)) && (paramBoolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity.a(localabsa.jdField_a_of_type_Int);
+    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
+      try
+      {
+        float f1 = this.a.a();
+        float f2 = paramScaleGestureDetector.getScaleFactor();
+        f1 = Math.min(this.a.b(), Math.max(f1 * f2, 0.1F));
+        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+        this.a.invalidate();
+        return true;
       }
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(paramInt);
-    }
-  }
-  
-  public void a(View paramView, GeneralSettingActivity paramGeneralSettingActivity)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int j = awnu.c();
-    int i = 0;
-    while (i < awnp.a.length)
-    {
-      absa localabsa = new absa(this, awnp.b[i], awnp.a[i], i);
-      if (i == j) {
-        localabsa.jdField_a_of_type_Boolean = true;
+      catch (IllegalArgumentException paramScaleGestureDetector)
+      {
+        paramScaleGestureDetector.printStackTrace();
       }
-      a(null, localabsa);
-      localArrayList.add(localabsa);
-      i += 1;
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131298808));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemViewCacheSize(7);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(paramGeneralSettingActivity);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity = paramGeneralSettingActivity;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new absg(this, 8));
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Absb = new absb(this, localArrayList);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Absb);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) {}
-    float f;
-    do
-    {
-      return true;
-      f = paramMotionEvent.getY();
-      paramMotionEvent = new int[2];
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLocationOnScreen(paramMotionEvent);
-    } while ((f <= paramMotionEvent[1]) || (f >= paramMotionEvent[1] + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getHeight()));
     return false;
   }
 }

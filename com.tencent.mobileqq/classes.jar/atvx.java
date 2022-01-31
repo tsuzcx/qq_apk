@@ -1,27 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
-
-class atvx
-  implements begw
+public abstract class atvx
 {
-  atvx(atvv paramatvv, PersonalityLabelInfo paramPersonalityLabelInfo, begr parambegr) {}
+  public void a(String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.e();
-      return;
-      atvv.a(this.jdField_a_of_type_Atvv, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
-      continue;
-      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Atvv.a, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
-      this.jdField_a_of_type_Atvv.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
-    }
-  }
+  public void a(String paramString, long paramLong) {}
+  
+  public void b(String paramString) {}
+  
+  public void b(String paramString, long paramLong) {}
+  
+  public void c(String paramString) {}
+  
+  public void c(String paramString, long paramLong) {}
 }
 
 

@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.ocr;
 
-import aksg;
-import aksh;
-import ateq;
-import ates;
+import algs;
+import algt;
+import aubm;
+import aubo;
 
 public class OcrControl$3
   implements Runnable
 {
-  public OcrControl$3(ateq paramateq, String paramString, aksg paramaksg) {}
+  public OcrControl$3(aubm paramaubm, String paramString, algs paramalgs) {}
   
   public void run()
   {
-    aksh localaksh = ateq.a(this.this$0, this.jdField_a_of_type_JavaLangString);
-    if ((localaksh != null) && (ateq.a(this.this$0) != null))
+    algt localalgt = aubm.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    if ((localalgt != null) && (aubm.a(this.this$0) != null))
     {
       long l1 = System.currentTimeMillis();
-      long l2 = localaksh.c;
-      ateq.a(this.this$0).a(4, null, this.jdField_a_of_type_Aksg.b, l1 - l2);
+      long l2 = localalgt.c;
+      aubm.a(this.this$0).a(4, null, this.jdField_a_of_type_Algs.b, l1 - l2);
     }
   }
 }

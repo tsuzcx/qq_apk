@@ -1,21 +1,44 @@
-import java.util.List;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity.3;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class nxj
-  extends nyf
+public class nxj
+  implements baho
 {
-  nxj(nxd paramnxd, boolean paramBoolean1, List paramList, boolean paramBoolean2)
-  {
-    super(paramnxd, null);
-  }
+  public nxj(ReadInJoyUploadAvatarActivity.3 param3) {}
   
-  void a(nyi paramnyi)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    paramnyi.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 2);
+    if (QLog.isColorLevel()) {
+      QLog.d(ReadInJoyUploadAvatarActivity.a, 2, "uploadImage->onResult");
+    }
+    if (paramJSONObject != null)
+    {
+      paramInt = paramJSONObject.optInt("retcode");
+      if (paramJSONObject.optJSONObject("result") != null) {}
+      for (paramJSONObject = paramJSONObject.optJSONObject("result").optString("url");; paramJSONObject = null)
+      {
+        paramBundle = new Message();
+        if ((paramInt == 0) && (!TextUtils.isEmpty(paramJSONObject)))
+        {
+          paramBundle.what = 1003;
+          paramBundle.obj = paramJSONObject;
+        }
+        this.a.a.sendMessage(paramBundle);
+        return;
+      }
+    }
+    this.a.a.sendMessage(new Message());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nxj
  * JD-Core Version:    0.7.0.1
  */

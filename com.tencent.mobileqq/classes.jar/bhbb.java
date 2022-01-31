@@ -1,44 +1,94 @@
-import android.graphics.RectF;
-import android.os.Build.VERSION;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
-import dov.com.qq.im.AECamera.qudong.AEVideoShelfEditFragment;
-import dov.com.qq.im.AECamera.qudong.EditTextViewer;
+import android.app.Activity;
+import android.content.IntentFilter;
+import android.view.KeyEvent;
+import cooperation.qzone.util.QZLog;
 
 public class bhbb
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bhbb(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, EditTextViewer paramEditTextViewer, NodeItem paramNodeItem) {}
+  public static String a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  public bhbd a;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
+  private boolean d;
   
-  public void onGlobalLayout()
+  static
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_DovComQqImAECameraQudongEditTextViewer.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
+    jdField_a_of_type_JavaLangString = "WatchActivityManager";
+  }
+  
+  public bhbb()
+  {
+    this.jdField_a_of_type_Bhbd = new bhbd(this, null);
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.c = false;
+    this.d = false;
+  }
+  
+  private void e()
+  {
+    if (this.jdField_a_of_type_AndroidAppActivity != null)
     {
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_DovComQqImAECameraQudongEditTextViewer.getLayoutParams();
-      int i = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.left * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAECameraQudongAEVideoShelfEditFragment));
-      int j = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.top * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAECameraQudongAEVideoShelfEditFragment));
-      int k = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.right) * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAECameraQudongAEVideoShelfEditFragment));
-      int m = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.bottom) * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAECameraQudongAEVideoShelfEditFragment));
-      localMarginLayoutParams.leftMargin = i;
-      localMarginLayoutParams.topMargin = j;
-      localMarginLayoutParams.rightMargin = k;
-      localMarginLayoutParams.bottomMargin = m;
-      localMarginLayoutParams.width = (AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAECameraQudongAEVideoShelfEditFragment) - k - i);
-      localMarginLayoutParams.height = (AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAECameraQudongAEVideoShelfEditFragment) - m - j);
-      this.jdField_a_of_type_DovComQqImAECameraQudongEditTextViewer.setLayoutParams(localMarginLayoutParams);
-      return;
-      this.jdField_a_of_type_DovComQqImAECameraQudongEditTextViewer.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_Bhbd, localIntentFilter);
     }
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_Bhbd);
+    }
+  }
+  
+  public void a()
+  {
+    d();
+  }
+  
+  public void a(int paramInt, KeyEvent paramKeyEvent)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.c = true;
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    e();
+  }
+  
+  public boolean a()
+  {
+    QZLog.i(jdField_a_of_type_JavaLangString, 4, "ljh, mActivityStopped = " + this.d + ", mPressScreenOff = " + this.jdField_a_of_type_Boolean + ", mPressMenuKey = " + this.c + ", mPressHomeKey = " + this.b);
+    return (this.d) && (!this.jdField_a_of_type_Boolean) && (!this.c) && (!this.b);
+  }
+  
+  public void b()
+  {
+    this.d = true;
+  }
+  
+  public void c()
+  {
+    f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhbb
  * JD-Core Version:    0.7.0.1
  */

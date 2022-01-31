@@ -48,6 +48,7 @@ public class MiniAppObserver
   public static final int MINI_APP_GET_USER_APP_LIST = 1010;
   public static final int MINI_APP_GET_USER_APP_LIST_V2 = 1047;
   public static final int MINI_APP_GET_USER_CLOUD_STORAGE = 1016;
+  public static final int MINI_APP_GET_USER_GROUP_INFO = 1062;
   public static final int MINI_APP_GET_USER_HEALTH_DATA = 1041;
   public static final int MINI_APP_GET_USER_INFO_EXTRA = 1032;
   public static final int MINI_APP_GET_USER_INTERACTIVE_STORAGE_SERVLET = 1059;
@@ -253,6 +254,9 @@ public class MiniAppObserver
     }
     if (1061 == paramInt) {
       return "MINI_APP_SEND_ARK_MSG";
+    }
+    if (1062 == paramInt) {
+      return "MINI_APP_GET_USER_GROUP_INFO";
     }
     return "default cmd";
   }
@@ -577,8 +581,13 @@ public class MiniAppObserver
         onGetPotentialFriendList(i, paramBoolean, paramBundle);
         return;
       }
-    } while (paramInt != 1061);
-    onSendArkMsg(i, paramBoolean, paramBundle);
+      if (paramInt == 1061)
+      {
+        onSendArkMsg(i, paramBoolean, paramBundle);
+        return;
+      }
+    } while (paramInt != 1062);
+    onGetUserGroupInfo(i, paramBoolean, paramBundle);
   }
   
   protected void onBatchGetContact(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
@@ -660,6 +669,8 @@ public class MiniAppObserver
   protected void onGetUserAppList(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetUserAppListV2(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onGetUserGroupInfo(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetUserHealthData(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   

@@ -3,12 +3,10 @@ package com.tencent.mobileqq.shortvideo.filter;
 import android.opengl.GLES20;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.filter.BaseFilter;
-import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.sveffects.Logger;
 import com.tencent.sveffects.SdkContext;
 import com.tencent.ttpic.openapi.PTFaceAttr;
-import com.tencent.ttpic.openapi.filter.FaceFeatureAndTeethWhitenFilterSingle;
+import com.tencent.ttpic.openapi.filter.TTBeautyV5BeautyFaceList;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil.LIPS_SEG_TPYE;
 import java.io.File;
@@ -24,7 +22,7 @@ public class QQPtvLipFilter
   private int[] mFlipFaceTextureID = new int[1];
   private boolean mHasInit = false;
   private Frame mInPutFrame;
-  FaceFeatureAndTeethWhitenFilterSingle mLipsFilter;
+  TTBeautyV5BeautyFaceList mLipsFilter;
   QQFilterRenderManager mManager;
   private String mMaskDir;
   private Frame mOutFrame;
@@ -35,11 +33,8 @@ public class QQPtvLipFilter
   {
     super(186, paramQQFilterRenderManager);
     this.mManager = paramQQFilterRenderManager;
-    this.mLipsFilter = new FaceFeatureAndTeethWhitenFilterSingle();
+    this.mLipsFilter = new TTBeautyV5BeautyFaceList();
     this.logger = SdkContext.getInstance().getLogger();
-    this.mMaskDir = SdkContext.getInstance().getResources().getPtuFilterResource().getSoPathDir();
-    this.logger.d("QQPtBeautyLipFilter", "mMaskDir:" + this.mMaskDir);
-    this.mLipsFilter.setMaskDir(this.mMaskDir);
     this.mInPutFrame = new Frame();
     this.mOutFrame = new Frame();
   }
@@ -63,7 +58,7 @@ public class QQPtvLipFilter
     for (;;)
     {
       this.mCopyFaceFilter.apply();
-      this.mLipsFilter.ApplyGLSLFilter();
+      this.mLipsFilter.initial();
       this.mHasInit = true;
       return;
       label112:
@@ -97,20 +92,21 @@ public class QQPtvLipFilter
     if (this.needFlip) {
       this.mFlipFaceFilter.RenderProcess(this.mInputTextureID, this.mManager.getFilterWidth(), this.mManager.getFilterHeight(), this.mFlipFaceTextureID[0], 0.0D, this.mInPutFrame);
     }
-    Frame localFrame;
+    Object localObject;
     for (;;)
     {
       this.mLipsFilter.updateVideoSize(this.mManager.getFilterWidth(), this.mManager.getFilterHeight(), this.mManager.getWindowScale());
-      localFrame = this.mLipsFilter.render(this.mInPutFrame, this.mManager.getFaceAttr().getAllFacePoints());
+      localObject = this.mManager.getFaceAttr();
+      localObject = this.mLipsFilter.render2(this.mInPutFrame, ((PTFaceAttr)localObject).getAllFacePoints(), ((PTFaceAttr)localObject).getPointsVis(), ((PTFaceAttr)localObject).getFaceStatusList(), false, false);
       if (!this.needFlip) {
         break;
       }
-      this.mFlipFaceFilter.RenderProcess(localFrame.getTextureId(), this.mManager.getFilterWidth(), this.mManager.getFilterHeight(), this.mInputTextureID, 0.0D, this.mOutFrame);
+      this.mFlipFaceFilter.RenderProcess(((Frame)localObject).getTextureId(), this.mManager.getFilterWidth(), this.mManager.getFilterHeight(), this.mInputTextureID, 0.0D, this.mOutFrame);
       this.mOutputTextureID = this.mInputTextureID;
       return;
       this.mCopyFaceFilter.RenderProcess(this.mInputTextureID, this.mManager.getFilterWidth(), this.mManager.getFilterHeight(), this.mFlipFaceTextureID[0], 0.0D, this.mInPutFrame);
     }
-    this.mOutputTextureID = localFrame.getTextureId();
+    this.mOutputTextureID = ((Frame)localObject).getTextureId();
   }
   
   public void onSurfaceChange(int paramInt1, int paramInt2)
@@ -134,7 +130,7 @@ public class QQPtvLipFilter
         this.mCopyFaceFilter.ClearGLSL();
       }
       if (this.mLipsFilter != null) {
-        this.mLipsFilter.clearGLSLSelf();
+        this.mLipsFilter.clear();
       }
       this.mHasInit = false;
       this.mShouldRender = false;

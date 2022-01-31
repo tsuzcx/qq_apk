@@ -1,36 +1,55 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class ahhf
-  extends akgd
+class ahhf
+  implements ahbt
 {
-  public ahhf(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  ahhf(ahhd paramahhd, ahgi paramahgi) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    int j = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("springHb_SpringHbEntryPendantHolder", 2, "tryLoadActivityRes resCode:" + paramInt + ",pathRes:" + paramPathResult);
+    }
+    int i;
+    if (paramInt == 0)
     {
-      this.a.a = paramSosoLbsInfo.a.a;
-      this.a.b = paramSosoLbsInfo.a.b;
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
-      }
-      if (FlowCameraActivity2.a(this.a) != null) {
-        FlowCameraActivity2.a(this.a);
+      i = 1;
+      if (paramPathResult == null) {
+        break label156;
       }
     }
-    do
+    for (;;)
     {
+      if (((j & i) == 0) || (bbjw.a(paramPathResult.folderPath))) {
+        break label162;
+      }
+      ahhd.a(this.jdField_a_of_type_Ahhd, paramPathResult.folderPath + File.separator + "pendant" + File.separator);
+      ahhd.b(this.jdField_a_of_type_Ahhd);
+      if (!ahhd.b()) {
+        break label162;
+      }
+      ahhd.a(this.jdField_a_of_type_Ahhd, this.jdField_a_of_type_Ahgi);
+      ahhd.c(this.jdField_a_of_type_Ahhd);
+      ahhd.d(this.jdField_a_of_type_Ahhd);
       return;
-      this.a.a = 0.0D;
-      this.a.b = 0.0D;
-    } while (!QLog.isColorLevel());
-    QLog.d("FlowCameraActivity", 2, "onLocationUpdate() error");
+      i = 0;
+      break;
+      label156:
+      j = 0;
+    }
+    label162:
+    if (!bbjw.a(this.jdField_a_of_type_Ahgi.a)) {
+      ahhd.c(this.jdField_a_of_type_Ahhd, this.jdField_a_of_type_Ahgi);
+    }
+    for (;;)
+    {
+      QLog.e("springHb_SpringHbEntryPendantHolder", 2, "tryLoadActivityRes --> PreloadFailed，resCode：" + paramInt);
+      return;
+      ahhd.b(this.jdField_a_of_type_Ahhd, this.jdField_a_of_type_Ahgi);
+    }
   }
 }
 

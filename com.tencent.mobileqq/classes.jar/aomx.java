@@ -1,34 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp;
+import android.view.animation.Interpolator;
 
 class aomx
-  implements bgun<WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp>
+  implements Interpolator
 {
-  aomx(aomp paramaomp, aonc paramaonc) {}
+  aomx(aoms paramaoms) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
+  public float getInterpolation(float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Failed errorCode=" + paramInt + "; errorMsg=" + paramString);
+    if (paramFloat == 0.0F) {
+      return 0.0F;
     }
-    if (this.jdField_a_of_type_Aonc != null) {
-      this.jdField_a_of_type_Aonc.a(paramInt, paramString);
+    float f = paramFloat * 2.0F;
+    if (f >= 2.0F) {
+      return 1.0F;
     }
-  }
-  
-  public void a(WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Success");
+    paramFloat = 0.45F / 4.0F;
+    if (f < 1.0F)
+    {
+      f -= 1.0F;
+      d = Math.pow(2.0D, 10.0F * f);
+      return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (-0.5D * d));
     }
-    if (this.jdField_a_of_type_Aonc != null) {
-      this.jdField_a_of_type_Aonc.a(null);
-    }
+    f -= 1.0F;
+    double d = Math.pow(2.0D, -10.0F * f);
+    return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (0.5D * d)) + 1.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aomx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,30 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
 class qac
-  extends RecyclerView.AdapterDataObserver
+  extends NativeGifImage
 {
-  private qac(pzs parampzs) {}
-  
-  public void onChanged() {}
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2) {}
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  qac(qab paramqab, File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
   {
-    onItemRangeChanged(paramInt1, paramInt2);
+    super(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
+  }
+  
+  public void executeNewTask()
+  {
+    if (this.mCurrentLoop == 1) {
+      return;
+    }
+    super.executeNewTask();
+  }
+  
+  public void reset()
+  {
+    super.reset();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     qac
  * JD-Core Version:    0.7.0.1
  */

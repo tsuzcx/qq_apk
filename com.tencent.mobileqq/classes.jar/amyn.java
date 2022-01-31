@@ -1,47 +1,33 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.drawable.ColorDrawable;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public class amyn
-  extends ColorDrawable
+class amyn
+  extends ClickableSpan
 {
-  private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private final int b;
+  amyn(amym paramamym, String paramString, Context paramContext) {}
   
-  public amyn(int paramInt1, float paramFloat, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    super(paramInt1);
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramInt2, paramInt3);
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
+    bbiq.a(this.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getApplication().getRuntime().getAccount(), (Activity)this.jdField_a_of_type_AndroidContentContext);
+    axqw.b(null, "dc00898", "", "", amym.a(this.jdField_a_of_type_Amym), amym.a(this.jdField_a_of_type_Amym), 2, 0, "", "", "", "");
   }
   
-  public void draw(Canvas paramCanvas)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.b;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.jdField_a_of_type_Int;
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amyn
  * JD-Core Version:    0.7.0.1
  */

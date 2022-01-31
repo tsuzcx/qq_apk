@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.app.automator.step.CheckAuthCode;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ajww
-  extends ajgf
+  implements View.OnClickListener
 {
-  private ajww(CheckAuthCode paramCheckAuthCode) {}
+  public ajww(FrameHelperActivity paramFrameHelperActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    this.a.a(7);
+    if ((FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity) != null) && (FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).isShowing())) {
+      FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).dismiss();
+    }
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800433B", "0X800433B", 0, 0, "", "", "", "");
   }
 }
 

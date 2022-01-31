@@ -1,56 +1,64 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import mqq.manager.Manager;
+import android.os.Bundle;
 
-public class axso
-  implements Manager
+class axso
 {
-  public axrr a;
-  public axrr b;
+  protected boolean a;
+  protected String[][] a;
+  protected boolean b = true;
+  protected boolean c;
+  protected boolean d;
   
-  public axrr a(bakx parambakx)
+  public axso(axsn paramaxsn, String paramString)
   {
-    if (this.b == null) {}
-    try
+    this.jdField_a_of_type_Boolean = true;
+    paramaxsn = paramString.split(";");
+    this.jdField_a_of_type_Array2dOfJavaLangString = new String[paramaxsn.length][];
+    int i = 0;
+    while (i < paramaxsn.length)
     {
-      parambakx = new HttpCommunicator(parambakx, 32);
-      parambakx.a();
-      this.b = new axss(parambakx, true);
-      return this.b;
+      this.jdField_a_of_type_Array2dOfJavaLangString[i] = paramaxsn[i].split(",");
+      i += 1;
     }
-    finally {}
   }
   
-  public axrr a(AppInterface paramAppInterface, int paramInt)
+  public void a() {}
+  
+  public void a(Bundle paramBundle) {}
+  
+  public void b()
   {
-    if (paramInt == 0)
-    {
-      if (this.a == null) {}
-      try
-      {
-        if (this.a == null) {
-          this.a = new axss(paramAppInterface.getHttpCommunicatort(), false);
-        }
-        return this.a;
-      }
-      finally {}
+    this.c = true;
+    if (!axsn.a(this.jdField_a_of_type_Axsn)) {
+      this.d = true;
     }
-    return null;
   }
   
-  public void onDestroy()
+  public void c()
   {
-    if (this.a != null) {
-      ((axss)this.a).a();
-    }
-    if (this.b != null) {
-      ((axss)this.b).a();
-    }
+    this.c = false;
+    this.d = false;
+  }
+  
+  public void d() {}
+  
+  public void e()
+  {
+    this.b = false;
+  }
+  
+  public void f()
+  {
+    this.d = false;
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axso
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-
-class ayrv
-  implements aoji
+public class ayrv
+  extends aysw
 {
-  ayrv(ayrs paramayrs, TroopFileTransferManager.Item paramItem) {}
+  public int a = 0;
+  public ayrw a;
+  public ayrx a;
+  public ayug a;
+  public String a;
+  public boolean a;
+  public String[] a;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
   
-  public void a() {}
-  
-  public void b()
+  public ayrv()
   {
-    aojd.a(new aoue(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(ayrs.e(this.jdField_a_of_type_Ayrs))));
+    this.b = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayrv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
 
 class nxu
-  extends nyf
+  implements View.OnClickListener
 {
-  nxu(nxd paramnxd, BaseCommentData paramBaseCommentData)
-  {
-    super(paramnxd, null);
-  }
+  nxu(nxs paramnxs, nxv paramnxv) {}
   
-  void a(nyi paramnyi)
+  public void onClick(View paramView)
   {
-    paramnyi.onCommentReply(true, new nwx(0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, nxd.a(this.jdField_a_of_type_Nxd)));
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Nxs.a, nxv.c(this.jdField_a_of_type_Nxv));
+    noo.a(null, "CliOper", "", nxv.c(this.jdField_a_of_type_Nxv), "0X80078A8", "0X80078A8", 0, 0, "", "", "", onk.c(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nxu
  * JD-Core Version:    0.7.0.1
  */

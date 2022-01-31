@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import abac;
+import abkb;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextUtils;
-import aphp;
-import awqx;
-import awrm;
-import bbsv;
+import aqbc;
+import axqw;
+import axrk;
+import bcwv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqprotect.qsec.QSecFramework;
@@ -26,15 +26,15 @@ class JumpActivity$5
     Object localObject1 = this.this$0.getIntent().getType();
     Object localObject3 = this.a.getString("pkg_name");
     if (QSecFramework.a().a(1003).booleanValue()) {
-      bbsv.a().a(this.this$0, null);
+      bcwv.a().a(this.this$0, null);
     }
     if ("cn.wps.moffice_eng".equals(localObject3)) {
-      awqx.b(this.this$0.app, "CliOper", "", "", "0X8008810", "0X8008810", 0, 0, "", "", "", "");
+      axqw.b(this.this$0.app, "CliOper", "", "", "0X8008810", "0X8008810", 0, 0, "", "", "", "");
     }
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return;
     }
-    awrm.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_share_frd");
+    axrk.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_share_frd");
     if (QLog.isColorLevel()) {
       QLog.d("JumpAction", 2, "forward form JumpActivity doShare type=" + (String)localObject1);
     }
@@ -63,7 +63,7 @@ class JumpActivity$5
       ((Intent)localObject1).putExtra("forward_from_jump", true);
       ((Intent)localObject1).putExtra("forward_type", -2);
       ((Intent)localObject1).setData(this.this$0.getIntent().getData());
-      aphp.a(this.this$0, (Intent)localObject1);
+      aqbc.a(this.this$0, (Intent)localObject1);
       this.this$0.finish();
       return;
       if (!((String)localObject1).startsWith("message")) {
@@ -116,7 +116,7 @@ class JumpActivity$5
         this.this$0.finish();
         return;
         ((Intent)localObject1).putExtra("sendMultiple", true);
-        ((Intent)localObject1).putExtra("forward_text", this.this$0.getString(2131625474));
+        ((Intent)localObject1).putExtra("forward_text", this.this$0.getString(2131691046));
       }
     }
     localObject3 = this.this$0.getIntent().getAction();
@@ -137,7 +137,7 @@ class JumpActivity$5
           {
             ((Intent)localObject2).putExtra("sendMultiple", false);
             ((Intent)localObject2).putExtras(this.a);
-            new abac(this.this$0, (Intent)localObject2).execute(new Object[] { this.this$0.getApplicationContext(), localObject3 });
+            new abkb(this.this$0, (Intent)localObject2).execute(new Object[] { this.this$0.getApplicationContext(), localObject3 });
             return;
           }
           localObject1 = JumpActivity.a(this.this$0, (Uri)localObject3);
@@ -155,7 +155,7 @@ class JumpActivity$5
     for (;;)
     {
       ((Intent)localObject2).putExtras(this.a);
-      aphp.a(this.this$0, (Intent)localObject2);
+      aqbc.a(this.this$0, (Intent)localObject2);
       break;
       if ((localObject3 instanceof String))
       {
@@ -167,7 +167,7 @@ class JumpActivity$5
       this.this$0.finish();
       return;
       ((Intent)localObject2).putExtra("sendMultiple", true);
-      ((Intent)localObject2).putExtra("forward_text", this.this$0.getString(2131625474));
+      ((Intent)localObject2).putExtra("forward_text", this.this$0.getString(2131691046));
     }
     label992:
     this.this$0.finish();

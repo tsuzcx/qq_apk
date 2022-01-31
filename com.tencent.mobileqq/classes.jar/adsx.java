@@ -1,11 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
-class adsx
-  extends adst
+public class adsx
+  extends AnimatorListenerAdapter
 {
-  public adsx(QQAppInterface paramQQAppInterface)
+  public adsx(HeartCombolEffectView paramHeartCombolEffectView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramQQAppInterface);
+    super.onAnimationCancel(paramAnimator);
+    this.a.setVisibility(8);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.a.setVisibility(8);
   }
 }
 

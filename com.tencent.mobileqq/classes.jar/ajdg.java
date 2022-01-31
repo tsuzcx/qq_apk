@@ -1,10 +1,22 @@
-import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
-
-public abstract interface ajdg
+public class ajdg
 {
-  public abstract void a(ApolloPanelGuideView paramApolloPanelGuideView);
-  
-  public abstract void b(ApolloPanelGuideView paramApolloPanelGuideView);
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
 }
 
 

@@ -1,132 +1,125 @@
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
-import org.json.JSONObject;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.io.File;
 
 public class axev
-  extends axep
 {
-  FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-  private wma jdField_a_of_type_Wma = new axew(this);
+  private static String a = "Xiaomi;Redmi 4X;23|LGE;Nexus 5X;27|HUAWEI;CAM-UL00;23";
   
-  public axev(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  public static int a(ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
   {
-    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
-  }
-  
-  private FileManagerEntity a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (paramString2 == null) || (paramString2.length() == 0)) {
-      paramQQAppInterface = null;
-    }
-    Object localObject;
-    do
+    if (paramSVConfigItem.versionCode >= 1) {}
+    for (int i = 0;; i = -4)
     {
-      do
-      {
-        return paramQQAppInterface;
-        paramQQAppInterface = paramQQAppInterface.a();
-        localObject = paramQQAppInterface.c();
-        if (localObject == null) {
-          paramQQAppInterface.a();
-        }
-        if (localObject == null) {
-          return null;
-        }
-        paramQQAppInterface = ((List)localObject).iterator();
-        do
-        {
-          if (!paramQQAppInterface.hasNext()) {
-            break;
-          }
-          localObject = (FileManagerEntity)paramQQAppInterface.next();
-        } while ((((FileManagerEntity)localObject).peerUin == null) || (!TextUtils.equals(paramString1, ((FileManagerEntity)localObject).strTroopFileID)) || (!((FileManagerEntity)localObject).peerUin.equals(paramString2)));
-        paramQQAppInterface = (QQAppInterface)localObject;
-      } while (((FileManagerEntity)localObject).cloudType != 1);
-      paramQQAppInterface = (QQAppInterface)localObject;
-    } while (!apck.a((FileManagerEntity)localObject));
-    ((FileManagerEntity)localObject).status = 16;
-    return localObject;
-    return null;
+      VideoEnvironment.a("ShortVideoTrackingResourceMgr", "[checkResourceLowLimitVersion]limitVer=1 downVer=" + paramSVConfigItem.versionCode + " errCode=" + i, null);
+      return i;
+    }
   }
   
-  private boolean a(JSONObject paramJSONObject)
+  public static String a()
   {
-    if (paramJSONObject == null) {}
-    while ((TextUtils.isEmpty(paramJSONObject.optString("groupuin"))) || (TextUtils.isEmpty(paramJSONObject.optString("businesstype")))) {
-      return false;
+    String str = BaseApplicationImpl.getApplication().getSharedPreferences("tracking_short_video_mgr_sp", 4).getString("tracking_sv_md5_version_soname_key", "Tracking000_0");
+    boolean bool = axdc.a(str, 1);
+    VideoEnvironment.a("ShortVideoTrackingResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
+    if (bool) {
+      return str;
     }
-    return true;
+    return "Tracking000_0";
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  static boolean a()
   {
-    int j = 1;
-    int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
-    {
-      if ((!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int != 1) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d)) || (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_Int == 0) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString))) {
-        break label417;
-      }
-      Object localObject = new ayoq();
-      ((ayoq)localObject).jdField_a_of_type_JavaUtilUUID = UUID.nameUUIDFromBytes(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d.getBytes());
-      ((ayoq)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d;
-      ((ayoq)localObject).c = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString;
-      ((ayoq)localObject).jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_Int;
-      localObject = new TroopFileTransferManager.Item((ayoq)localObject);
-      ((TroopFileTransferManager.Item)localObject).FileName = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString;
-      wln.a(paramQQAppInterface, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString).longValue(), (TroopFileTransferManager.Item)localObject, 0, false, false, this.jdField_a_of_type_Wma);
-      localObject = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long);
-      if (localObject == null) {
-        break label404;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().b(((MessageRecord)localObject).uniseq, ((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop);
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_Long);
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5))) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFileID, ((MessageRecord)localObject).frienduin);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
-      {
-        i = j;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5)) {}
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().a(((MessageRecord)localObject).uniseq, ((MessageRecord)localObject).frienduin, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_Long);
-        i = j;
-      }
-    }
+    return axlu.a();
+  }
+  
+  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  {
+    return axlc.i();
+  }
+  
+  static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    boolean bool2 = true;
+    boolean bool1 = false;
+    label349:
     for (;;)
     {
-      if (i == 0)
+      try
       {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Axem.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+        paramQQAppInterface = b();
+        paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
+        File localFile = new File(paramQQAppInterface);
+        if (localFile.exists())
+        {
+          if ((a().equals(paramString1)) && (axdc.b(paramQQAppInterface, "tracking_config_file")))
+          {
+            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[checkUnzipFileListSizeIsOK]success=true", null);
+            return bool1;
+          }
+          bbdj.a(paramQQAppInterface);
+          VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
+        }
+        bool1 = localFile.mkdirs();
+        VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[exists]mkOK=" + bool1, null);
+        try
+        {
+          bbdj.a(paramString2, paramQQAppInterface, false);
+          boolean bool3 = axdc.b(paramQQAppInterface, "tracking_config_file");
+          VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK success=" + bool3, null);
+          bool1 = bool2;
+          if (bool3)
+          {
+            bool1 = a(paramString1);
+            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK saveOK=" + bool1, null);
+            if (bool1) {
+              break label349;
+            }
+            bool1 = a(paramString1);
+            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool1, null);
+            if (bool1) {
+              break label349;
+            }
+            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK[two] needRestore=true,saveOK=false", null);
+            bool1 = a("Tracking000_0");
+            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK clearMemoryOK=" + bool1 + ",signature=" + paramString1, null);
+            bool1 = bool2;
+          }
+        }
+        catch (Exception paramQQAppInterface)
+        {
+          paramQQAppInterface.printStackTrace();
+          bool1 = bool2;
+          continue;
+        }
+        bool1 = false;
       }
-      this.jdField_a_of_type_Axem.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      return;
-      label404:
-      QLog.w("TeamWorkFileImportJobForGroup", 2, "can not find message");
-      i = j;
-      continue;
-      label417:
-      i = 0;
+      finally {}
     }
+  }
+  
+  private static boolean a(String paramString)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("tracking_short_video_mgr_sp", 4).edit();
+    localEditor.putString("tracking_sv_md5_version_soname_key", paramString);
+    boolean bool = localEditor.commit();
+    VideoEnvironment.a("ShortVideoTrackingResourceMgr", "storeNewPendantUnzipPath commitValue=" + bool + ",pathName=" + paramString, null);
+    return bool;
+  }
+  
+  public static String b()
+  {
+    String str = axlc.a(VideoEnvironment.a());
+    return str + "tracking_res_cache" + File.separator;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axev
  * JD-Core Version:    0.7.0.1
  */

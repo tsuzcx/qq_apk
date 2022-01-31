@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.view;
 
-import akwq;
-import akxt;
-import atik;
+import allc;
+import almf;
+import augj;
 
 public class ARScanEntryView$39$1
   implements Runnable
 {
-  public ARScanEntryView$39$1(akxt paramakxt) {}
+  public ARScanEntryView$39$1(almf paramalmf) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Akwq.e();
-    if ((ARScanEntryView.d(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView)) && (this.a.jdField_a_of_type_Atik != null)) {
-      this.a.jdField_a_of_type_Atik.c(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.a);
+    this.a.jdField_a_of_type_Allc.e();
+    if ((ARScanEntryView.d(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView)) && (this.a.jdField_a_of_type_Augj != null)) {
+      this.a.jdField_a_of_type_Augj.c(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.a);
     }
   }
 }

@@ -1,9 +1,9 @@
 package com.tencent.feedback.eup;
 
-import com.tencent.bugly.crashreport.crash.e;
+import com.tencent.bugly.crashreport.crash.f;
 
 final class CrashReport$1
-  implements e
+  implements f
 {
   CrashReport$1(CrashHandleListener paramCrashHandleListener) {}
   
@@ -14,7 +14,7 @@ final class CrashReport$1
   
   public final boolean a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    return this.a.onCrashSaving(paramBoolean, paramString1, paramString2, paramString3, paramInt, paramLong, paramString4, paramString5, paramString6, paramString7);
+    return this.a.onCrashSaving(paramBoolean, paramString1, paramString2, paramString3, -1234567890, paramLong, paramString4, paramString5, paramString6, paramString7);
   }
   
   public final byte[] a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)

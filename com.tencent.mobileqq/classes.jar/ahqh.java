@@ -1,48 +1,64 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity.9;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.content.Context;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ahqh
-  extends akgd
+  extends ahpv
 {
-  public ahqh(CreateFaceToFaceDiscussionActivity.9 param9, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public ahqh(Context paramContext)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131697672);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(byte[] paramArrayOfByte)
   {
-    if ((paramInt != 0) || (paramSosoLbsInfo == null))
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      paramSosoLbsInfo = this.a.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-      paramSosoLbsInfo.arg1 = 1;
-      paramSosoLbsInfo.arg2 = 2131633317;
-      paramSosoLbsInfo.sendToTarget();
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      if (this.jdField_a_of_type_Azmk == null) {
+        this.jdField_a_of_type_Azmk = new azmk();
+      }
+      this.jdField_a_of_type_Azmk.a(paramArrayOfByte.getString("messageNavInfo"));
       return;
     }
-    paramSosoLbsInfo = CreateFaceToFaceDiscussionActivity.a(this.a.this$0, paramSosoLbsInfo);
-    ajmv localajmv = (ajmv)this.a.this$0.app.a(33);
-    switch (this.a.jdField_a_of_type_Int)
+    catch (JSONException paramArrayOfByte)
     {
-    default: 
-      return;
-    case 0: 
-      localajmv.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, this.a.this$0.b, this.a.this$0.h);
-      return;
-    case 1: 
-      localajmv.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, 2, this.a.this$0.h);
-      return;
-    case 2: 
-      localajmv.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, true);
-      return;
-    case 3: 
-      localajmv.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, false);
-      return;
+      paramArrayOfByte.printStackTrace();
     }
-    localajmv.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo);
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Azmk != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Azmk.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 

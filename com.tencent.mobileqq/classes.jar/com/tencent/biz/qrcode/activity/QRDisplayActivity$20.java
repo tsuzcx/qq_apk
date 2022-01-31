@@ -2,7 +2,7 @@ package com.tencent.biz.qrcode.activity;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import vvp;
+import wim;
 
 class QRDisplayActivity$20
   implements Runnable
@@ -11,7 +11,7 @@ class QRDisplayActivity$20
   
   public void run()
   {
-    String str = vvp.a(this.this$0, this.a, this.this$0.b);
+    String str = wim.a(this.this$0, this.a, this.this$0.b);
     ThreadManager.getUIHandler().post(new QRDisplayActivity.20.1(this, str));
   }
 }

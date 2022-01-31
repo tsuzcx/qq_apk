@@ -1,18 +1,47 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.RiskInfoItem;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-public final class abpn
-  implements Parcelable.Creator<RiskInfoItem>
+public class abpn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public RiskInfoItem a(Parcel paramParcel)
-  {
-    return new RiskInfoItem(paramParcel, null);
-  }
+  public abpn(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public RiskInfoItem[] a(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return new RiskInfoItem[paramInt];
+    int i = 1;
+    if (AppSetting.d) {
+      NotifyPushSettingActivity.c(this.a).setContentDescription(ajyc.a(2131718851));
+    }
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131718851), "qqsetting_notify_blncontrol_key", paramBoolean);
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
+    {
+      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 1);
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label147;
+      }
+      label89:
+      if (!paramBoolean) {
+        break label152;
+      }
+    }
+    label147:
+    label152:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      axqw.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Led_blinking", 0, i, paramCompoundButton, "", "", "");
+      return;
+      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 0);
+      break;
+      i = 0;
+      break label89;
+    }
   }
 }
 

@@ -1,16 +1,18 @@
-public class npc
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoAdInfo.NegFeedback;
+
+public final class npc
+  implements Parcelable.Creator<VideoAdInfo.NegFeedback>
 {
-  public static boolean a(int paramInt)
+  public VideoAdInfo.NegFeedback a(Parcel paramParcel)
   {
-    if (!oaf.a()) {
-      return false;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
+    return new VideoAdInfo.NegFeedback(paramParcel);
+  }
+  
+  public VideoAdInfo.NegFeedback[] a(int paramInt)
+  {
+    return new VideoAdInfo.NegFeedback[paramInt];
   }
 }
 

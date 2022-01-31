@@ -1,19 +1,19 @@
 package com.tencent.open.base;
 
 import android.widget.Toast;
-import bbtm;
-import bcec;
+import bcxm;
+import bdid;
 
 public class ToastUtil$1
   implements Runnable
 {
-  public ToastUtil$1(bcec parambcec, String paramString, int paramInt) {}
+  public ToastUtil$1(bdid parambdid, String paramString, int paramInt) {}
   
   public void run()
   {
     if (this.this$0.a == null)
     {
-      this.this$0.a = Toast.makeText(bbtm.a().a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.this$0.a = Toast.makeText(bcxm.a().a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
       this.this$0.a.show();
       return;
     }

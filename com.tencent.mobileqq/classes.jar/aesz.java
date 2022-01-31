@@ -1,21 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class aesz
-  implements View.OnClickListener
+class aesz
+  implements QQPermissionCallback
 {
-  public aesz(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
+  aesz(aerv paramaerv) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener");
-    }
-    awqx.b(null, "dc00899", "Grp_find_new", "", "grptab", "location_set_exp", 0, 0, "", "", "", "");
-    this.a.getActivity().requestPermissions(new aeta(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    bbcv.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    aerv.d(this.a);
   }
 }
 

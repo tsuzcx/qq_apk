@@ -1,37 +1,17 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import ajjy;
-import com.tencent.mobileqq.minigame.debug.DebugWebSocket.DebuggerStateListener;
-import com.tencent.qphone.base.util.QLog;
+import amkg;
+import amkh;
+import com.tencent.common.app.BaseApplicationImpl;
 
 class GameActivity$25
-  implements DebugWebSocket.DebuggerStateListener
+  implements amkh
 {
   GameActivity$25(GameActivity paramGameActivity) {}
   
-  public void onDebuggerBreakPointPaused()
+  public void onServiceSyncSucc(boolean paramBoolean)
   {
-    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger BreakPointPaused");
-    GameActivity.access$4000(this.this$0, ajjy.a(2131639221), null, true);
-  }
-  
-  public void onDebuggerConnectedNormal()
-  {
-    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger connected ");
-    GameActivity.access$4000(this.this$0, ajjy.a(2131639215), null, false);
-    GameActivity.access$4100(this.this$0);
-  }
-  
-  public void onDebuggerDisconnect(String paramString)
-  {
-    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger Disconnect");
-    GameActivity.access$4000(this.this$0, ajjy.a(2131639220), ajjy.a(2131639225), false);
-  }
-  
-  public void onDebuggerReconnecting(String paramString)
-  {
-    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger Reconnecting");
-    GameActivity.access$4000(this.this$0, ajjy.a(2131639217), ajjy.a(2131639216), false);
+    amkg.a(BaseApplicationImpl.getContext(), 2, false);
   }
 }
 

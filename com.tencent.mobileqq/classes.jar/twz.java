@@ -1,15 +1,11 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.settings.QGSettingFragment;
-
 public class twz
-  implements CompoundButton.OnCheckedChangeListener
+  extends two
 {
-  public twz(QGSettingFragment paramQGSettingFragment) {}
+  public uvs a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public twz(String paramString)
   {
-    QGSettingFragment.c(paramBoolean);
+    super(paramString);
   }
 }
 

@@ -1,57 +1,23 @@
-import android.content.Intent;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.Window;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class asfe
-  extends MSFServlet
 {
-  public String[] getPreferSSOCommands()
+  public static ProgressDialog a(Context paramContext, String paramString)
   {
-    return null;
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("NearbyServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
-      }
-      ((NearbyAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("NearbyServlet", 4, "send: " + paramIntent.getServiceCmd());
-        }
-      }
-    }
+    Drawable localDrawable = paramContext.getResources().getDrawable(2130848549);
+    paramContext = new ProgressDialog(paramContext, 2131755791);
+    paramContext.show();
+    paramContext.getWindow().setContentView(2131558428);
+    paramContext.setContentView(2131558428);
+    ((TextView)paramContext.findViewById(2131365147)).setText(paramString);
+    ((ProgressBar)paramContext.findViewById(2131366570)).setIndeterminateDrawable(localDrawable);
+    return paramContext;
   }
 }
 

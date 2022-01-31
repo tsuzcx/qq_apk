@@ -1,61 +1,32 @@
-import android.content.Intent;
-import android.os.Bundle;
+import android.app.Activity;
 import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import java.util.Set;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public class apiy
-  extends aphp
+final class apiy
+  implements View.OnClickListener
 {
-  public apiy(Intent paramIntent)
-  {
-    super(paramIntent);
-  }
+  apiy(apkm paramapkm, FileManagerEntity paramFileManagerEntity) {}
   
-  protected View a()
+  public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("key_hiboom_id");
-    HiBoomTextView localHiBoomTextView = new HiBoomTextView(this.jdField_a_of_type_AndroidAppActivity);
-    localHiBoomTextView.setHiBoom(i, 0, aqdf.jdField_a_of_type_Aqcy);
-    localHiBoomTextView.setText(this.jdField_a_of_type_JavaLangString);
-    localHiBoomTextView.setMaxSize(aqdf.jdField_a_of_type_Int);
-    localHiBoomTextView.setLayoutParams(new RelativeLayout.LayoutParams(500, 500));
-    return localHiBoomTextView;
-  }
-  
-  protected void a()
-  {
-    if (k()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
+    try
+    {
+      paramView = bakj.a(this.jdField_a_of_type_Apkm.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      if (paramView.e == null) {
+        return;
+      }
+      if (bbev.a(this.jdField_a_of_type_Apkm.getActivity()) == 0)
+      {
+        bajf.a(this.jdField_a_of_type_Apkm.getActivity(), this.jdField_a_of_type_Apkm.getActivity().getString(2131697853));
+        return;
+      }
+      bajf.a(this.jdField_a_of_type_Apkm.getActivity(), this.jdField_a_of_type_Apkm.getActivity().getString(2131692829), 0);
+      TroopFileTransferManager.a(this.jdField_a_of_type_Apkm.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin).a(paramView.e, paramView.g, paramView.c, paramView.h);
+      return;
     }
-    if (l()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (m()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
-    }
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    return true;
-  }
-  
-  protected void b()
-  {
-    this.jdField_a_of_type_Bafb.setMessage(null);
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  protected boolean h()
-  {
-    return true;
+    catch (Exception paramView) {}
   }
 }
 

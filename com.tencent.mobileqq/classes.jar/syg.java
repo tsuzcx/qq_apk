@@ -1,11 +1,13 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 public class syg
-  extends slu
 {
-  public syg(sye paramsye, qqstory_service.RspForbidVideo paramRspForbidVideo)
+  public static void a(Object paramObject)
   {
-    super(paramRspForbidVideo.result);
+    if ((paramObject instanceof QQAppInterface)) {
+      syh.a = new WeakReference((QQAppInterface)paramObject);
+    }
   }
 }
 

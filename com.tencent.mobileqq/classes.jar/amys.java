@@ -1,18 +1,92 @@
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.qvip.QQLevelIconConfig;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface amys
+public class amys
+  extends amyi<QQLevelIconConfig>
 {
-  public abstract void a(XmlData paramXmlData);
+  public static QQLevelIconConfig c()
+  {
+    QQLevelIconConfig localQQLevelIconConfig2 = (QQLevelIconConfig)ampm.a().a(542);
+    QQLevelIconConfig localQQLevelIconConfig1 = localQQLevelIconConfig2;
+    if (localQQLevelIconConfig2 == null) {
+      localQQLevelIconConfig1 = new QQLevelIconConfig();
+    }
+    return localQQLevelIconConfig1;
+  }
   
-  public abstract void a(XmlData paramXmlData, long paramLong1, long paramLong2);
+  public int a()
+  {
+    return 542;
+  }
   
-  public abstract void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString);
+  @NonNull
+  public QQLevelIconConfig a()
+  {
+    return new QQLevelIconConfig();
+  }
   
-  public abstract void b(XmlData paramXmlData);
+  @NonNull
+  public QQLevelIconConfig a(ampi[] paramArrayOfampi)
+  {
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLevelIconProcessor", 1, paramArrayOfampi[0].a);
+    }
+    QQLevelIconConfig localQQLevelIconConfig = new QQLevelIconConfig();
+    paramArrayOfampi = paramArrayOfampi[0].a;
+    for (;;)
+    {
+      try
+      {
+        if (!TextUtils.isEmpty(paramArrayOfampi))
+        {
+          paramArrayOfampi = new JSONObject(paramArrayOfampi);
+          if (paramArrayOfampi.optInt("newguideswitch", 1) != 1) {
+            continue;
+          }
+          bool1 = true;
+          localQQLevelIconConfig.mIsEnableGuide = bool1;
+          bool1 = bool2;
+          if (paramArrayOfampi.optInt("rushfeeswitch", 1) == 1) {
+            bool1 = true;
+          }
+          localQQLevelIconConfig.mIsNotifyPayment = bool1;
+          localQQLevelIconConfig.mNotifyPaymentText = paramArrayOfampi.optString("rushfeetips", localQQLevelIconConfig.mNotifyPaymentText);
+          localQQLevelIconConfig.mExpiredNotifyPaymentText = paramArrayOfampi.optString("expiredtips", localQQLevelIconConfig.mExpiredNotifyPaymentText);
+        }
+      }
+      catch (JSONException paramArrayOfampi)
+      {
+        boolean bool1;
+        veg.e("QQLevelIconProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfampi.getMessage());
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("QQLevelIconProcessor", 1, " : " + localQQLevelIconConfig.toString());
+      }
+      return localQQLevelIconConfig;
+      bool1 = false;
+    }
+  }
+  
+  public Class<QQLevelIconConfig> a()
+  {
+    return QQLevelIconConfig.class;
+  }
+  
+  @NonNull
+  public QQLevelIconConfig b()
+  {
+    return new QQLevelIconConfig();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amys
  * JD-Core Version:    0.7.0.1
  */

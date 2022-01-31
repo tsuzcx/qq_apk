@@ -1,8 +1,26 @@
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-
 public abstract interface bgqv
 {
-  public abstract void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp);
+  public abstract void a();
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 

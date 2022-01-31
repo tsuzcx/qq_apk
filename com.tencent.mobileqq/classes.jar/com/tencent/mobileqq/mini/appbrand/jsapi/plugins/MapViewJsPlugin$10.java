@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.MapContext;
@@ -11,7 +10,7 @@ import org.json.JSONObject;
 class MapViewJsPlugin$10
   implements Runnable
 {
-  MapViewJsPlugin$10(MapViewJsPlugin paramMapViewJsPlugin, String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt) {}
+  MapViewJsPlugin$10(MapViewJsPlugin paramMapViewJsPlugin, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt) {}
   
   public void run()
   {
@@ -22,12 +21,12 @@ class MapViewJsPlugin$10
         JSONObject localJSONObject1 = new JSONObject(this.val$jsonParams);
         i = localJSONObject1.optInt("mapId", 0);
         JSONObject localJSONObject2 = new JSONObject();
-        Object localObject = this.this$0.jsPluginEngine.appBrandRuntime.getCurWebviewContainer();
+        Object localObject = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
         if (localObject != null)
         {
           localObject = ((WebviewContainer)localObject).getMapContext(i);
           if (localObject == null) {
-            break label199;
+            break label200;
           }
           ((MapContext)localObject).includeMapPoints(localJSONObject1);
           i = 1;
@@ -38,7 +37,7 @@ class MapViewJsPlugin$10
         else
         {
           QLog.w("[mini] MapViewJsPlugin", 2, "handleNativeRequest eventName=" + this.val$eventName + "，top page not found");
-          break label199;
+          break label200;
         }
         this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$eventName, null, this.val$callbackId);
         return;
@@ -51,7 +50,7 @@ class MapViewJsPlugin$10
         this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$eventName, null, this.val$callbackId);
         return;
       }
-      label199:
+      label200:
       int i = 0;
     }
   }

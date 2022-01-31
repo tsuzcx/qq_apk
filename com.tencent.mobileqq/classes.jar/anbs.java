@@ -1,27 +1,61 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-final class anbs
-  implements DialogInterface.OnClickListener
+public class anbs
+  extends ampb<anbq>
 {
-  anbs(QQAppInterface paramQQAppInterface, Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static anbq a()
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    return (anbq)ampm.a().a(429);
+  }
+  
+  public int a()
+  {
+    return 429;
+  }
+  
+  @NonNull
+  public anbq a(int paramInt)
+  {
+    return new anbq();
+  }
+  
+  @Nullable
+  public anbq a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
+      return anbq.a(paramArrayOfampi);
     }
-    if (paramInt == 1) {
-      baoz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, "mvip.n.a.bqsc_aio", 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131654075), "");
-    }
+    return null;
+  }
+  
+  public Class<anbq> a()
+  {
+    return anbq.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(anbq paramanbq) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anbs
  * JD-Core Version:    0.7.0.1
  */

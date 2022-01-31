@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
 public class aeuw
-  implements QQPermissionCallback
+  extends BroadcastReceiver
 {
-  public aeuw(PublicView paramPublicView, AppActivity paramAppActivity) {}
+  public aeuw(TroopChatPie paramTroopChatPie) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView.denied();
-    babr.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView.grant();
+    if ("com.tencent.mobileqq.action.ACTION_CONFESS_START_EVENT".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "Confess action! ");
+      }
+      if (TroopChatPie.a(this.a) != null)
+      {
+        TroopChatPie.b(this.a).a(35);
+        amon.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+      }
+    }
   }
 }
 

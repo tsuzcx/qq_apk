@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import aifa;
+import airt;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,7 +11,7 @@ import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 public class ApolloGameArkHandler$1
   implements Runnable
 {
-  public ApolloGameArkHandler$1(aifa paramaifa, String paramString) {}
+  public ApolloGameArkHandler$1(airt paramairt, String paramString) {}
   
   public void run()
   {

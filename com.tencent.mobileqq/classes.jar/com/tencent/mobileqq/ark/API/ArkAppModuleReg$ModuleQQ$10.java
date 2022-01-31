@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ark.API;
 
-import adaj;
-import alat;
+import adll;
+import alpf;
 import com.tencent.ark.ark;
 import java.lang.ref.WeakReference;
 
 public class ArkAppModuleReg$ModuleQQ$10
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$10(alat paramalat, long paramLong) {}
+  public ArkAppModuleReg$ModuleQQ$10(alpf paramalpf, long paramLong) {}
   
   public void run()
   {
-    adaj localadaj = (adaj)adaj.a(ark.arkGetContainer(this.a)).get();
-    if (localadaj != null) {
-      localadaj.c();
+    adll localadll = (adll)adll.a(ark.arkGetContainer(this.a)).get();
+    if (localadll != null) {
+      localadll.c();
     }
   }
 }

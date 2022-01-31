@@ -17,6 +17,7 @@ import com.tencent.ttpic.openapi.model.FaceActionCounter;
 import com.tencent.ttpic.openapi.model.StickerItem.ValueRange;
 import com.tencent.ttpic.openapi.model.TriggerStateItem;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -44,7 +45,7 @@ public class VideoFilterInputFreeze
   private long mPlayTime = 0L;
   private Handler mPostHandler;
   private int mTotalTriggerCount = 1;
-  private String mTriggerState;
+  private ArrayList<String> mTriggerState;
   private double mTriggerStateRangeMax;
   private double mTriggerStateRangeMin;
   private TriggerTimeUpdater mTriggerTimeUpdater;
@@ -530,10 +531,10 @@ public class VideoFilterInputFreeze
     this.TRIGGERED_TIMES = paramInt;
   }
   
-  public void setStateTriggerParam(int paramInt, String paramString, StickerItem.ValueRange paramValueRange)
+  public void setStateTriggerParam(int paramInt, ArrayList<String> paramArrayList, StickerItem.ValueRange paramValueRange)
   {
     this.mItemRenderId = paramInt;
-    this.mTriggerState = paramString;
+    this.mTriggerState = paramArrayList;
     if (paramValueRange != null)
     {
       this.mTriggerStateRangeMin = paramValueRange.min;

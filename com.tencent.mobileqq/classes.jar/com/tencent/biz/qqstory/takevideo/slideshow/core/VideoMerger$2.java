@@ -1,24 +1,24 @@
 package com.tencent.biz.qqstory.takevideo.slideshow.core;
 
-import ajjy;
-import bbmy;
+import ajyc;
+import bcpw;
 import com.tencent.qphone.base.util.QLog;
-import urp;
-import vhy;
-import vhz;
+import vel;
+import vuu;
+import vuv;
 
 public class VideoMerger$2
   implements Runnable
 {
-  public VideoMerger$2(vhy paramvhy, vhz paramvhz) {}
+  public VideoMerger$2(vuu paramvuu, vuv paramvuv) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("VideoMerger", 2, "merge video failed");
     }
-    urp.a("actAlbumResult", new String[] { "99" });
-    bbmy.a(this.a.a, ajjy.a(2131650518), 0).a();
+    vel.a("actAlbumResult", new String[] { "99" });
+    bcpw.a(this.a.a, ajyc.a(2131716309), 0).a();
   }
 }
 

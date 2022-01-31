@@ -1,34 +1,39 @@
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class bhpf
-  implements bhis
 {
-  public bhpf(MusicProviderView paramMusicProviderView) {}
-  
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
+  public static int a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "onStep:" + paramInt + " done:" + paramBoolean);
+    try
+    {
+      int i = Integer.parseInt(paramString);
+      return i;
     }
-    if ((paramInt == 6) || (paramInt == 5) || (paramInt == 4)) {
-      this.a.a.sendEmptyMessage(3);
+    catch (NumberFormatException localNumberFormatException)
+    {
+      a("toInt convert error:" + paramString);
+      return 0;
     }
+    catch (Exception paramString)
+    {
+      a("toInt convert error:" + paramString.getMessage());
+    }
+    return 0;
   }
   
-  public void a(MusicItemInfo paramMusicItemInfo)
+  private static final void a(String paramString)
   {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.obj = paramMusicItemInfo;
-    localMessage.what = 4;
-    this.a.a.sendMessage(localMessage);
+    try
+    {
+      QLog.e("SafeUtil", 1, paramString);
+      return;
+    }
+    catch (Exception paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhpf
  * JD-Core Version:    0.7.0.1
  */

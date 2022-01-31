@@ -1,51 +1,25 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
-import mqq.app.AppRuntime;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.1;
 
 public class altw
-  extends axrg
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  protected static boolean a = false;
+  
+  public static void a()
   {
-    String str;
-    for (Object localObject = paramDownloadParams.url.getHost();; str = "")
-    {
-      try
-      {
-        localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { BaseApplicationImpl.getApplication().getRuntime().getAccount(), localObject });
-        localObject = mpl.a(BaseApplicationImpl.getApplication(), (String)localObject, null, "GET", null, null, 5000, 5000);
-        if ((localObject == null) || (((HttpResponse)localObject).getStatusLine().getStatusCode() != 200)) {
-          continue;
-        }
-        localObject = mpl.a((HttpResponse)localObject);
-        localObject = new JSONObject((String)localObject);
-        if (Integer.parseInt(((JSONObject)localObject).getString("ret")) == 0)
-        {
-          localObject = ((JSONObject)localObject).getString("thumbUrl");
-          paramDownloadParams.url = new URL((String)localObject);
-          paramDownloadParams.urlStr = ((String)localObject);
-          localObject = super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
-          return localObject;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      return super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
+    if (!a) {
+      a = true;
     }
+  }
+  
+  public static void a(alty paramalty)
+  {
+    ThreadManager.post(new ArkMessageServerLogic.1(paramalty), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     altw
  * JD-Core Version:    0.7.0.1
  */

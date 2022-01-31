@@ -1,15 +1,15 @@
 package com.tencent.biz.webviewplugin;
 
-import xdi;
+import xmi;
 
 public class QzoneWebViewOfflinePlugin$4
   implements Runnable
 {
-  public QzoneWebViewOfflinePlugin$4(xdi paramxdi, String paramString, long paramLong) {}
+  public QzoneWebViewOfflinePlugin$4(xmi paramxmi, String paramString, long paramLong) {}
   
   public void run()
   {
-    xdi.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.this$0.mRuntime);
+    xmi.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.this$0.mRuntime);
   }
 }
 

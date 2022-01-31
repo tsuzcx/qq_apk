@@ -1,26 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnCaptureImageListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.17;
+import android.content.Context;
 
 public class bdjt
-  implements VideoPlayerProxy.OnCaptureImageListener
 {
-  public bdjt(MiniAppVideoPlayer.17 param17) {}
+  protected static bdkb a;
   
-  public void onCaptureImageFailed(VideoPlayerProxy paramVideoPlayerProxy) {}
-  
-  public void onCaptureImageSucceed(VideoPlayerProxy paramVideoPlayerProxy, Bitmap paramBitmap)
+  public static bdkb a()
   {
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-      MiniAppVideoPlayer.a(this.a.this$0, Bitmap.createBitmap(paramBitmap));
-    }
+    return a;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    a = bdkb.a(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdjt
  * JD-Core Version:    0.7.0.1
  */

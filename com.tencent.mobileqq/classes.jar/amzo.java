@@ -1,36 +1,64 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amzo
-  extends amzp
+  extends amyi<amzn>
 {
-  public amzo(QQAppInterface paramQQAppInterface)
+  public static amzn a()
   {
-    super(e(), paramQQAppInterface);
+    return (amzn)ampm.a().a(413);
   }
   
-  public static String e()
+  public int a()
   {
-    if (lbk.f() <= 2) {
-      return "qq.android.qav.so_665";
+    return 413;
+  }
+  
+  @NonNull
+  public amzn a(@NonNull ampi[] paramArrayOfampi)
+  {
+    amzn localamzn = new amzn();
+    paramArrayOfampi = paramArrayOfampi[0].a;
+    if (paramArrayOfampi != null) {}
+    try
+    {
+      if (!"".equals(paramArrayOfampi))
+      {
+        paramArrayOfampi = new JSONObject(paramArrayOfampi);
+        localamzn.a(paramArrayOfampi.getString("url"));
+        localamzn.a(paramArrayOfampi.getBoolean("isEnable"));
+        localamzn.b(paramArrayOfampi.getBoolean("hideHotValue"));
+      }
+      return localamzn;
     }
-    return "qq.android.qav.sov8_826";
+    catch (JSONException paramArrayOfampi)
+    {
+      paramArrayOfampi.printStackTrace();
+    }
+    return localamzn;
   }
   
-  public Class<? extends XmlData> a()
+  public Class<amzn> a()
   {
-    return QavSoData.class;
+    return amzn.class;
   }
   
-  public String b()
+  @NonNull
+  public amzn b()
   {
-    return null;
+    return new amzn();
+  }
+  
+  @NonNull
+  public amzn c()
+  {
+    return new amzn();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amzo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.confess;
 
-import alrh;
+import amfx;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ class ConfessPlugin$6
     do
     {
       return;
-      localObject = alrh.a().a(str);
+      localObject = amfx.a().a(str);
       ThreadManager.getUIHandler().post(new ConfessPlugin.6.2(this));
       if ((localObject == null) || (localObject.length != 3)) {
         break;

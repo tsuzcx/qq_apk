@@ -1,6 +1,17 @@
-public abstract interface red
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+
+public class red
+  extends oyg
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public red(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  {
+    super(paramString);
+  }
+  
+  public void a(oya paramoya)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramoya.a();
+  }
 }
 
 

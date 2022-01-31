@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.gallery.view;
 
-import apub;
+import aqob;
 
 public class AIOGalleryActivity$2$4
   implements Runnable
 {
-  public AIOGalleryActivity$2$4(apub paramapub) {}
+  public AIOGalleryActivity$2$4(aqob paramaqob) {}
   
   public void run() {}
 }

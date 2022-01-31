@@ -1,29 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import java.lang.ref.WeakReference;
 
-public class bhds
-  implements Animation.AnimationListener
+class bhds
 {
-  public bhds(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<bhdh> jdField_a_of_type_JavaLangRefWeakReference;
+  int b;
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QIMEffectCameraCaptureUnit.f(this.a) != null)
-    {
-      QIMEffectCameraCaptureUnit.f(this.a).clearAnimation();
-      QIMEffectCameraCaptureUnit.f(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  private bhds(bhdk parambhdk) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhds
  * JD-Core Version:    0.7.0.1
  */

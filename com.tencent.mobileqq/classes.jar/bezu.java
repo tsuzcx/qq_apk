@@ -1,50 +1,66 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import NS_MINI_APP_MISC.MISC.StTrans4RoomidReq;
+import NS_MINI_APP_MISC.MISC.StTrans4RoomidRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import org.json.JSONObject;
 
-class bezu
-  implements atqq
+public class bezu
+  extends bfad
 {
-  bezu(bezt parambezt) {}
+  private MISC.StTrans4RoomidReq a = new MISC.StTrans4RoomidReq();
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public bezu(String paramString1, String paramString2)
   {
+    this.a.appid.set(paramString1);
+    this.a.groupid.set(paramString2);
+  }
+  
+  protected String a()
+  {
+    return "mini_app_misc";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    MISC.StTrans4RoomidRsp localStTrans4RoomidRsp = new MISC.StTrans4RoomidRsp();
+    try
+    {
+      localStTrans4RoomidRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStTrans4RoomidRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("openId", localStTrans4RoomidRsp.openid.get());
+        paramArrayOfByte.put("tinyId", localStTrans4RoomidRsp.tinyid.get());
+        paramArrayOfByte.put("roomId", localStTrans4RoomidRsp.roomid.get());
+        return paramArrayOfByte;
+      }
+      besl.a("GetTransRoomIdRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      besl.a("GetTransRoomIdRequest", "onResponse fail." + paramArrayOfByte);
+    }
     return null;
   }
   
-  public void a(atqr paramatqr) {}
-  
-  public void b(atqr paramatqr)
+  public byte[] a()
   {
-    if ((paramatqr == null) || (this.a.a == null)) {
-      return;
-    }
-    if (paramatqr.jdField_a_of_type_Int == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicEmoticonUploader", 2, "Upload finish, id=" + paramatqr.c);
-      }
-      localBundle = new Bundle();
-      localBundle.putInt("result", 0);
-      localBundle.putString("id", paramatqr.c);
-      this.a.a.onInvokeFinish(localBundle);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VipComicEmoticonUploader", 2, "Upload error");
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result", 1);
-    localBundle.putInt("errCode", paramatqr.b);
-    localBundle.putString("errMsg", paramatqr.jdField_a_of_type_JavaLangString);
-    this.a.a.onInvokeFinish(localBundle);
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "Trans4Roomid";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bezu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,194 +1,130 @@
-import android.support.annotation.NonNull;
-import com.tencent.commonsdk.pool.ByteArrayPool;
-import java.io.FilterOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 
 public class bggg
-  extends FilterOutputStream
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static bggg jdField_b_of_type_Bggg;
-  private static int c;
-  protected int a;
-  private bggg jdField_a_of_type_Bggg;
-  private boolean jdField_a_of_type_Boolean;
-  protected byte[] a;
-  private final int jdField_b_of_type_Int = 4;
+  private static final int jdField_a_of_type_Int = new Random().nextInt(1000) + 1;
+  private static final ConcurrentHashMap<Integer, bggh> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  private bggg(@NonNull OutputStream paramOutputStream)
+  public static bggh a(int paramInt)
   {
-    this(paramOutputStream, 8192);
+    return (bggh)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
   }
   
-  private bggg(@NonNull OutputStream paramOutputStream, int paramInt)
+  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, String... paramVarArgs)
   {
-    super(paramOutputStream);
-    this.jdField_a_of_type_ArrayOfByte = ByteArrayPool.getGenericInstance().getBuf(paramInt);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public static bggg a(@NonNull OutputStream paramOutputStream)
-  {
-    bggg localbggg = null;
-    synchronized (jdField_a_of_type_JavaLangObject)
+    int i = 0;
+    if ((paramInt1 != 0) && (jdField_a_of_type_Int > 1)) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1 + "|");
+    localStringBuilder.append(paramInt2 + "|");
+    localStringBuilder.append(paramInt3 + "|");
+    localStringBuilder.append(paramInt4 + "|");
+    localStringBuilder.append(paramString + "|");
+    localStringBuilder.append(paramInt5);
+    paramString = new String[6];
+    System.arraycopy(paramVarArgs, 0, paramString, 0, Math.min(6, paramVarArgs.length));
+    paramInt1 = i;
+    if (paramInt1 < paramString.length)
     {
-      if (jdField_b_of_type_Bggg != null)
-      {
-        localbggg = jdField_b_of_type_Bggg;
-        jdField_b_of_type_Bggg = localbggg.jdField_a_of_type_Bggg;
-        localbggg.jdField_a_of_type_Bggg = null;
-        c -= 1;
+      if (paramString[paramInt1] == null) {
+        localStringBuilder.append("|");
       }
-      if (localbggg != null)
+      for (;;)
       {
-        localbggg.out = paramOutputStream;
-        localbggg.jdField_a_of_type_Boolean = true;
-        return localbggg;
+        paramInt1 += 1;
+        break;
+        localStringBuilder.append("|" + paramString[paramInt1]);
       }
     }
-    return new bggg(paramOutputStream);
-  }
-  
-  private void a()
-  {
-    c();
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if ((paramAppRuntime instanceof QQAppInterface)) {}
+    for (paramAppRuntime = (QQAppInterface)paramAppRuntime;; paramAppRuntime = null)
     {
-      if (c < 4)
-      {
-        this.jdField_a_of_type_Bggg = jdField_b_of_type_Bggg;
-        jdField_b_of_type_Bggg = this;
-        c += 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginPreloadReportUtils", 2, "preload: " + localStringBuilder.toString());
       }
+      axpw.a(paramAppRuntime, "sendtdbank|b_sng_qqvip_qqcomic|preload", localStringBuilder.toString(), true);
       return;
     }
   }
   
-  public static void a(int paramInt1, int paramInt2, int paramInt3)
+  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, String... paramVarArgs)
   {
-    if (((paramInt2 | paramInt3) < 0) || (paramInt2 > paramInt1) || (paramInt1 - paramInt2 < paramInt3)) {
-      throw new IndexOutOfBoundsException("length=" + paramInt1 + "; regionStart=" + paramInt2 + "; regionLength=" + paramInt3);
-    }
-  }
-  
-  private void b()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new IOException("BufferedOutputStream is closed");
-    }
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.out = null;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_Int > 0)
+    int i = 0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1 + "|");
+    localStringBuilder.append(paramInt2 + "|");
+    localStringBuilder.append(paramInt3 + "|");
+    localStringBuilder.append(paramInt4 + "|");
+    localStringBuilder.append(paramString);
+    paramString = new String[6];
+    System.arraycopy(paramVarArgs, 0, paramString, 0, Math.min(6, paramVarArgs.length));
+    paramInt1 = i;
+    if (paramInt1 < paramString.length)
     {
-      this.out.write(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = 0;
-    }
-  }
-  
-  public void close()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      if (bool) {
-        break label14;
+      if (paramString[paramInt1] == null) {
+        localStringBuilder.append("|");
       }
-    }
-    finally
-    {
-      try
+      for (;;)
       {
-        for (;;)
-        {
-          label14:
-          super.close();
-          a();
-        }
+        paramInt1 += 1;
+        break;
+        localStringBuilder.append("|" + paramString[paramInt1]);
       }
-      finally
-      {
-        a();
-      }
-      localObject1 = finally;
     }
-  }
-  
-  public void flush()
-  {
-    try
+    if ((paramAppRuntime instanceof QQAppInterface)) {}
+    for (paramAppRuntime = (QQAppInterface)paramAppRuntime;; paramAppRuntime = null)
     {
-      b();
-      d();
-      this.out.flush();
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginPreloadReportUtils", 2, "hitrate: " + localStringBuilder.toString());
+      }
+      axpw.a(paramAppRuntime, "sendtdbank|b_sng_qqvip_qqcomic|preloadhitrate", localStringBuilder.toString(), true);
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
   }
   
-  public void write(int paramInt)
+  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3, long paramLong, String... paramVarArgs)
   {
-    try
+    int i = 0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1 + "|");
+    localStringBuilder.append(paramInt2 + "|");
+    localStringBuilder.append(paramInt3 + "|");
+    localStringBuilder.append(paramLong);
+    String[] arrayOfString = new String[6];
+    System.arraycopy(paramVarArgs, 0, arrayOfString, 0, Math.min(6, paramVarArgs.length));
+    paramInt1 = i;
+    if (paramInt1 < arrayOfString.length)
     {
-      b();
-      if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfByte.length)
+      if (arrayOfString[paramInt1] == null) {
+        localStringBuilder.append("|");
+      }
+      for (;;)
       {
-        this.out.write(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = 0;
+        paramInt1 += 1;
+        break;
+        localStringBuilder.append("|" + arrayOfString[paramInt1]);
       }
-      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i + 1);
-      arrayOfByte[i] = ((byte)paramInt);
+    }
+    if ((paramAppRuntime instanceof QQAppInterface)) {}
+    for (paramAppRuntime = (QQAppInterface)paramAppRuntime;; paramAppRuntime = null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginPreloadReportUtils", 2, "procbekilled: " + localStringBuilder.toString());
+      }
+      axpw.a(paramAppRuntime, "sendtdbank|b_sng_qqvip_qqcomic|procbekilled", localStringBuilder.toString(), true);
       return;
-    }
-    finally {}
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      b();
-      if (paramArrayOfByte == null) {
-        throw new NullPointerException("buffer == null");
-      }
-    }
-    finally {}
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    if (paramInt2 >= arrayOfByte.length)
-    {
-      d();
-      this.out.write(paramArrayOfByte, paramInt1, paramInt2);
-    }
-    for (;;)
-    {
-      return;
-      a(paramArrayOfByte.length, paramInt1, paramInt2);
-      if (paramInt2 > arrayOfByte.length - this.jdField_a_of_type_Int) {
-        d();
-      }
-      System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, this.jdField_a_of_type_Int, paramInt2);
-      this.jdField_a_of_type_Int += paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bggg
  * JD-Core Version:    0.7.0.1
  */

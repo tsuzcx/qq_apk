@@ -1,11 +1,31 @@
-final class ult
-  extends ThreadLocal<StringBuilder>
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.IEventReceiver;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class ult
+  extends QQUIEventReceiver<IEventReceiver, tkx>
 {
-  protected StringBuilder a()
+  public ult(@NonNull IEventReceiver paramIEventReceiver)
   {
-    StringBuilder localStringBuilder = new StringBuilder(512);
-    localStringBuilder.setLength(0);
-    return localStringBuilder;
+    super(paramIEventReceiver);
+  }
+  
+  public void a(@NonNull IEventReceiver paramIEventReceiver, @NonNull tkx paramtkx)
+  {
+    if (paramtkx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      bcpw.a(tsu.a(), 2, ajyc.a(2131711032), 0).a();
+      vel.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramtkx.jdField_a_of_type_Int), "5" });
+      return;
+    }
+    bcpw.a(tsu.a(), 1, ajyc.a(2131711027), 0).a();
+    vel.a("play_video", "report_fail", 0, 0, new String[] { "", "5" });
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tkx.class;
   }
 }
 

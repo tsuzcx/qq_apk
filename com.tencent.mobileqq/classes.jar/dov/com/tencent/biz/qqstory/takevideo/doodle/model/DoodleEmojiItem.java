@@ -1,21 +1,21 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.model;
 
-import azxx;
-import badq;
-import bhfm;
-import bhki;
-import bioo;
-import biop;
-import bior;
-import biou;
-import biov;
+import bazb;
+import bbev;
+import bjae;
+import bjfa;
+import bkfj;
+import bkfk;
+import bkfm;
+import bkfp;
+import bkfq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tbl;
+import toh;
 
 public class DoodleEmojiItem
   implements Cloneable
@@ -28,9 +28,9 @@ public class DoodleEmojiItem
   @Deprecated
   public int hide;
   public String icon;
-  public Map<String, Map<String, biop>> mCityRes;
-  public List<bior> mInfoItemList;
-  public List<biov> mItemList;
+  public Map<String, Map<String, bkfk>> mCityRes;
+  public List<bkfm> mInfoItemList;
+  public List<bkfq> mItemList;
   public String mLocalEmojiFolderPath;
   public int mask;
   public String md5;
@@ -54,40 +54,40 @@ public class DoodleEmojiItem
     this.mask = 0;
   }
   
-  public DoodleEmojiItem(tbl paramtbl)
+  public DoodleEmojiItem(toh paramtoh)
   {
-    this.pack_id = paramtbl.a;
-    this.icon = paramtbl.jdField_b_of_type_JavaLangString;
-    this.download_icon = paramtbl.c;
-    this.name = paramtbl.d;
-    this.download_url = paramtbl.e;
-    this.config = paramtbl.g;
-    this.md5 = paramtbl.f;
-    this.type = paramtbl.jdField_b_of_type_Int;
+    this.pack_id = paramtoh.a;
+    this.icon = paramtoh.jdField_b_of_type_JavaLangString;
+    this.download_icon = paramtoh.c;
+    this.name = paramtoh.d;
+    this.download_url = paramtoh.e;
+    this.config = paramtoh.g;
+    this.md5 = paramtoh.f;
+    this.type = paramtoh.jdField_b_of_type_Int;
   }
   
   public static DoodleEmojiItem getDoodleEmojiItemFromJsonObj(JSONObject paramJSONObject)
   {
-    DoodleEmojiItem localDoodleEmojiItem = (DoodleEmojiItem)azxx.a(paramJSONObject, DoodleEmojiItem.class);
+    DoodleEmojiItem localDoodleEmojiItem = (DoodleEmojiItem)bazb.a(paramJSONObject, DoodleEmojiItem.class);
     if ((localDoodleEmojiItem != null) && (localDoodleEmojiItem.type != 1))
     {
       try
       {
         if (localDoodleEmojiItem.type == 2)
         {
-          localDoodleEmojiItem.mItemList = biou.a(paramJSONObject.getJSONArray("poi_poster_list"));
+          localDoodleEmojiItem.mItemList = bkfp.a(paramJSONObject.getJSONArray("poi_poster_list"));
           return localDoodleEmojiItem;
         }
         if (localDoodleEmojiItem.type != 3) {
           return localDoodleEmojiItem;
         }
-        localDoodleEmojiItem.mInfoItemList = bioo.a(paramJSONObject.getJSONArray("info_poster_list"));
-        localDoodleEmojiItem.mCityRes = bioo.a(paramJSONObject.optJSONArray("city_res"));
+        localDoodleEmojiItem.mInfoItemList = bkfj.a(paramJSONObject.getJSONArray("info_poster_list"));
+        localDoodleEmojiItem.mCityRes = bkfj.a(paramJSONObject.optJSONArray("city_res"));
         if (QLog.isColorLevel()) {
           QLog.d("QIMInformationPasterManager", 2, "parsed information item list");
         }
-        paramJSONObject = (bhki)bhfm.a().c(12);
-        if (badq.h(BaseApplicationImpl.getContext()))
+        paramJSONObject = (bjfa)bjae.a().c(12);
+        if (bbev.h(BaseApplicationImpl.getContext()))
         {
           if (QLog.isColorLevel()) {
             QLog.d("QIMInformationPasterManager", 2, "batchPullAllRes");

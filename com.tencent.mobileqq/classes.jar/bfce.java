@@ -1,46 +1,43 @@
-import android.os.Handler;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.groupvideo.GVideoPluginInstallerActivity;
+import com.qflutter.log.qflutter_log.QflutterLogPlugin.Log;
 
-public class bfce
-  extends OnPluginInstallListener.Stub
+class bfce
+  implements QflutterLogPlugin.Log
 {
-  public bfce(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity) {}
+  bfce(bfca parambfca) {}
   
-  public void onInstallBegin(String paramString)
+  public void d(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "Group video plugin onInstallBegin...");
-    }
+    besl.a("miniapp-TISSUE", paramString);
   }
   
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  public void e(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "Group video plugin onInstallDownloadProgress...");
-    }
+    besl.d("miniapp-TISSUE", paramString);
   }
   
-  public void onInstallError(String paramString, int paramInt)
+  public int getLogLevel()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "Group video plugin onInstallError...");
-    }
-    this.a.b.sendEmptyMessageDelayed(3, 200L);
+    return 5;
   }
   
-  public void onInstallFinish(String paramString)
+  public void i(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "Group video plugin onInstallFinish...");
-    }
-    this.a.b.sendEmptyMessageDelayed(1, 1000L);
+    besl.b("miniapp-TISSUE", paramString);
+  }
+  
+  public void v(String paramString)
+  {
+    besl.a("miniapp-TISSUE", paramString);
+  }
+  
+  public void w(String paramString)
+  {
+    besl.c("miniapp-TISSUE", paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfce
  * JD-Core Version:    0.7.0.1
  */

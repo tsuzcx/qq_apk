@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 
 public class aobs
-  implements DialogInterface.OnClickListener
 {
-  public aobs(QfileLocalFileAppTabView.1.1 param1) {}
+  public ImageView a;
+  public URLDrawable a;
+  public URLImageView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    QfileLocalFileAppTabView.a(this.a.a.this$0);
-    this.a.a.this$0.c(true);
-  }
+  public aobs(aobr paramaobr) {}
 }
 
 

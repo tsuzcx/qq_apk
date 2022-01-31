@@ -1,17 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
-import arhc;
-import bgbz;
-import bgcb;
-import bghp;
+import asde;
+import bhkl;
+import bhkn;
+import bhqi;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class QZoneGiftFullScreenJsPlugin$1
   implements Runnable
 {
-  public QZoneGiftFullScreenJsPlugin$1(bghp parambghp, String[] paramArrayOfString) {}
+  public QZoneGiftFullScreenJsPlugin$1(bhqi parambhqi, String[] paramArrayOfString) {}
   
   public void run()
   {
@@ -37,7 +37,7 @@ public class QZoneGiftFullScreenJsPlugin$1
         localObject6 = localJSONObject.getJSONObject("giftZipUrl");
         localObject2 = localObject3;
         localObject1 = localObject5;
-        if (arhc.a().equals("sbig"))
+        if (asde.a().equals("sbig"))
         {
           localObject2 = localObject3;
           localObject1 = localObject5;
@@ -56,11 +56,11 @@ public class QZoneGiftFullScreenJsPlugin$1
       }
       try
       {
-        bghp.a(this.this$0, localJSONObject.getString("callback"));
+        bhqi.a(this.this$0, localJSONObject.getString("callback"));
         localObject6 = localObject3;
         localObject3 = localObject2;
         localObject5 = localObject1;
-        if ((!TextUtils.isEmpty((CharSequence)localObject6)) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject5)) && (!TextUtils.isEmpty(bghp.a(this.this$0)))) {
+        if ((!TextUtils.isEmpty((CharSequence)localObject6)) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject5)) && (!TextUtils.isEmpty(bhqi.a(this.this$0)))) {
           break;
         }
         return;
@@ -77,7 +77,7 @@ public class QZoneGiftFullScreenJsPlugin$1
       }
       localObject2 = localObject3;
       localObject1 = localObject5;
-      if (arhc.a().equals("xbig"))
+      if (asde.a().equals("xbig"))
       {
         localObject2 = localObject3;
         localObject1 = localObject5;
@@ -92,7 +92,7 @@ public class QZoneGiftFullScreenJsPlugin$1
       {
         localObject2 = localObject3;
         localObject1 = localObject5;
-        if (arhc.a().equals("small"))
+        if (asde.a().equals("small"))
         {
           localObject2 = localObject3;
           localObject1 = localObject5;
@@ -120,7 +120,7 @@ public class QZoneGiftFullScreenJsPlugin$1
         }
       }
     }
-    bgbz.a().a().a((String)localObject6, localObject4, (String)localObject5);
+    bhkl.a().a().a((String)localObject6, localObject4, (String)localObject5);
   }
 }
 

@@ -1,23 +1,36 @@
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class ahgw
-  implements View.OnClickListener
+  extends alwv
 {
-  public ahgw(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
+  private ahgx jdField_a_of_type_Ahgx;
   
-  public void onClick(View paramView)
+  private ahgw(ahgs paramahgs, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.m();
-    if (((!QLog.isColorLevel()) || (!bace.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()))) || (ahhj.a == 1))
+    super(paramView);
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    try
     {
-      ahhk.b("", "0X8005F5B", "0");
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+      this.jdField_a_of_type_Ahgx = new ahgx(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      int j = this.jdField_a_of_type_AndroidViewView.getWidth();
+      int i = j;
+      if (j == 0) {
+        i = axli.a;
+      }
+      j = actn.a(375.0F, this.jdField_a_of_type_AndroidViewView.getResources());
+      a(i - j - 0, 0, j, actn.a(30.0F, this.jdField_a_of_type_AndroidViewView.getResources()), this.jdField_a_of_type_AndroidViewView);
       return;
     }
-    ahhk.b("", "0X8005F5B", "1");
+    catch (Throwable paramDrawable)
+    {
+      QLog.e("springHb_SpringHbLightPendantHolder", 1, paramDrawable, new Object[0]);
+    }
   }
 }
 

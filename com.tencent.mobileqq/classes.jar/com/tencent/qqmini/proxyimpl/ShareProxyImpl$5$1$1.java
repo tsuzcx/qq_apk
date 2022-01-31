@@ -1,10 +1,10 @@
 package com.tencent.qqmini.proxyimpl;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.res.Resources;
-import bbms;
-import bbmy;
+import bcpq;
+import bcpw;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
@@ -35,7 +35,7 @@ class ShareProxyImpl$5$1$1
     {
       this.this$2.val$loadingDialog.dismiss();
       if (i == 0) {
-        bbmy.a(this.this$2.this$1.val$activity, 1, ajjy.a(2131636949), 1).b(this.this$2.this$1.val$activity.getResources().getDimensionPixelSize(2131167766));
+        bcpw.a(this.this$2.this$1.val$activity, 1, ajyc.a(2131702733), 1).b(this.this$2.this$1.val$activity.getResources().getDimensionPixelSize(2131298865));
       }
       if (i == 0) {
         break;

@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.TipsBar;
+import android.content.Context;
 
-public class bbos
-  implements View.OnClickListener
+class bbos
+  extends bbgg
 {
-  public bbos(TipsBar paramTipsBar) {}
-  
-  public void onClick(View paramView)
+  bbos(bbop parambbop, Context paramContext, int paramInt)
   {
-    this.a.removeAllViews();
+    super(paramContext, paramInt);
+  }
+  
+  public void onBackPressed()
+  {
+    super.onBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbos
  * JD-Core Version:    0.7.0.1
  */

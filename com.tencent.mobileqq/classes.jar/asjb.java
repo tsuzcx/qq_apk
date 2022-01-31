@@ -1,60 +1,31 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import java.util.List;
-
-public class asjb
-  extends Handler
+class asjb
+  extends asix<asiz>
 {
-  public asjb(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public asjb(asiz paramasiz)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 4097: 
-      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
-      return;
-    case 4098: 
-      ChooseInterestTagActivity.a(this.a).setVisibility(8);
-      paramMessage = (List)paramMessage.obj;
-      if (paramMessage != null) {
-        ChooseInterestTagActivity.a(this.a, paramMessage);
-      }
-      if (ChooseInterestTagActivity.a(this.a) == null)
-      {
-        ChooseInterestTagActivity.a(this.a, new asjh(this.a, ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a)));
-        ChooseInterestTagActivity.a(this.a).setAdapter(ChooseInterestTagActivity.a(this.a));
-        paramMessage = this.a;
-        if (ChooseInterestTagActivity.b(this.a) == -1) {
-          break label219;
-        }
-      }
-      for (boolean bool = true;; bool = false)
-      {
-        ChooseInterestTagActivity.a(paramMessage, false, bool);
-        return;
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
-        break;
-      }
-    case 4100: 
-      label219:
-      ChooseInterestTagActivity.a(this.a, false);
+    super(paramasiz);
+  }
+  
+  public void a(asiz paramasiz, boolean paramBoolean, asiu paramasiu)
+  {
+    if (paramasiz == null) {
       return;
     }
-    ChooseInterestTagActivity.a(this.a, ajjy.a(2131636013));
-    ChooseInterestTagActivity.a(this.a).setText("");
-    ChooseInterestTagActivity.a(this.a).setOnClickListener(null);
+    if (paramBoolean)
+    {
+      asis localasis = paramasiz.a(paramasiu.f);
+      if (localasis != null)
+      {
+        asiz.a(paramasiz).a(paramasiu, localasis);
+        return;
+      }
+    }
+    asiz.a(paramasiz, paramasiu.jdField_a_of_type_JavaLangString, paramasiu.jdField_a_of_type_Int, 1002);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     asjb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,62 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import android.os.RemoteException;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import cooperation.qqfav.QfavHelper.4;
 
-class bgpj
-  implements ModuleDownloadListener
+public class bgpj
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  bgpj(bgph parambgph, bgpm parambgpm) {}
+  public bgpj(QfavHelper.4 param4) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
-    bgph.b(this.jdField_a_of_type_Bgph, false);
-    this.jdField_a_of_type_Bgpm.a(false);
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("libTar.so")) {
-      return;
+    try
+    {
+      if (!paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
+      {
+        if (this.a.a == null)
+        {
+          paramPluginManagerClient.installPlugin("qqfav.apk");
+          return;
+        }
+        paramPluginManagerClient.installPlugin("qqfav.apk", this.a.a);
+        return;
+      }
     }
-    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bgph.c(), " onDownloadSucceed = ", bgph.d() });
-    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bgph.d());
-    bgph.b(this.jdField_a_of_type_Bgph);
-    this.jdField_a_of_type_Bgpm.a(bgph.b(this.jdField_a_of_type_Bgph));
+    catch (Exception paramPluginManagerClient)
+    {
+      if (this.a.a != null)
+      {
+        try
+        {
+          this.a.a.onInstallError("qqfav.apk", -1);
+          return;
+        }
+        catch (RemoteException paramPluginManagerClient)
+        {
+          paramPluginManagerClient.printStackTrace();
+          return;
+        }
+        paramPluginManagerClient = this.a.a;
+        if (paramPluginManagerClient != null) {
+          try
+          {
+            this.a.a.onInstallFinish("qqfav.apk");
+            return;
+          }
+          catch (RemoteException paramPluginManagerClient)
+          {
+            paramPluginManagerClient.printStackTrace();
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgpj
  * JD-Core Version:    0.7.0.1
  */

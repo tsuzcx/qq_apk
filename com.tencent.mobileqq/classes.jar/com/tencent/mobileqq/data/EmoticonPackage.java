@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atnw;
-import atoc;
+import aukm;
+import aulu;
+import auma;
 import java.io.Serializable;
 
 public class EmoticonPackage
-  extends atmo
+  extends aukm
   implements Serializable
 {
   public static final int BUSINESS_GUIDE_FLAG = 4;
@@ -54,7 +54,7 @@ public class EmoticonPackage
   public String diversionName;
   public int downloadCount;
   public long endTime;
-  @atoc
+  @auma
   public String epId;
   public long expiretime;
   public int extraFlags;
@@ -76,7 +76,7 @@ public class EmoticonPackage
   public boolean isMagicFaceDownloading;
   public boolean isRecommendation;
   public int jobType;
-  @atnw
+  @aulu
   public int jsonVersion;
   public String jumpUrl;
   public boolean kandian;

@@ -1,32 +1,63 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.style.ImageSpan;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class aakw
-  extends ImageSpan
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aakw(ChatSettingForTroop paramChatSettingForTroop, Drawable paramDrawable, int paramInt)
-  {
-    super(paramDrawable, paramInt);
-  }
+  public aakw(AuthDevActivity paramAuthDevActivity) {}
   
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramCanvas.save();
-    paramCanvas.translate(awmc.a(9.0F), 0.0F);
-    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
-    paramCanvas.restore();
-  }
-  
-  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    return getDrawable().getBounds().right + awmc.a(9.0F);
+    boolean bool = true;
+    paramBoolean = false;
+    if (paramCompoundButton == AuthDevActivity.a(this.a).a())
+    {
+      AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
+      paramCompoundButton = AuthDevActivity.a(this.a);
+      if (AuthDevActivity.a(this.a).a())
+      {
+        paramBoolean = false;
+        paramCompoundButton.setChecked(paramBoolean);
+        AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+        if (bbev.d(this.a)) {
+          break label118;
+        }
+        bcpw.a(this.a, this.a.getString(2131692321), 0).b(this.a.getTitleBarHeight());
+      }
+    }
+    label118:
+    while (paramCompoundButton != AuthDevActivity.b(this.a).a())
+    {
+      do
+      {
+        for (;;)
+        {
+          return;
+          paramBoolean = true;
+        }
+        paramCompoundButton = (akge)this.a.app.a(34);
+      } while (paramCompoundButton == null);
+      if (!AuthDevActivity.a(this.a).a()) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramCompoundButton.a(paramBoolean);
+        return;
+      }
+    }
+    AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
+    paramCompoundButton = AuthDevActivity.b(this.a);
+    if (AuthDevActivity.b(this.a).a()) {}
+    for (;;)
+    {
+      paramCompoundButton.setChecked(paramBoolean);
+      AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+      AuthDevActivity.a(this.a);
+      return;
+      paramBoolean = true;
+    }
   }
 }
 

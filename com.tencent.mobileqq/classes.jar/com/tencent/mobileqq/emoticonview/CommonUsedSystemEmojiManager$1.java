@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
-import anho;
+import anxx;
 
 public class CommonUsedSystemEmojiManager$1
   implements Runnable
 {
-  public CommonUsedSystemEmojiManager$1(anho paramanho) {}
+  public CommonUsedSystemEmojiManager$1(anxx paramanxx) {}
   
   public void run()
   {

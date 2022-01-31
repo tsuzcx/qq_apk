@@ -1,11 +1,9 @@
 package com.tencent.av.ui;
 
 import android.view.View;
-import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import kvq;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import lwa;
 
 class AVActivity$9
   implements Runnable
@@ -14,18 +12,17 @@ class AVActivity$9
   
   public void run()
   {
-    VideoAppInterface localVideoAppInterface = this.this$0.a;
+    VideoAppInterface localVideoAppInterface = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
     if (localVideoAppInterface == null) {}
-    for (;;)
+    do
     {
-      return;
-      if ((!localVideoAppInterface.a().a().c()) && (localVideoAppInterface.d("105000.105100.105120"))) {}
-      for (boolean bool = true; !this.this$0.isDestroyed(); bool = false)
+      do
       {
-        ThreadManager.getUIHandler().post(new AVActivity.9.1(this, bool));
         return;
-      }
-    }
+      } while ((this.this$0.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) || (this.this$0.isDestroyed()));
+      this.this$0.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = lwa.a(localVideoAppInterface, this.a, 1);
+    } while ((this.a.getVisibility() != 8) || (this.this$0.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch == null));
+    this.this$0.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.setVisibility(8);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark.API;
 
-import albj;
+import alpx;
 import android.app.Activity;
 import android.content.Context;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
@@ -8,27 +8,27 @@ import com.tencent.ark.ark;
 import java.lang.ref.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yjm;
-import yjo;
-import ynv;
+import ysq;
+import yss;
+import yxr;
 
 public class ArkAppNotifyCenter$GdtNotify$3$1$1
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$3$1$1(albj paramalbj, yjm paramyjm) {}
+  public ArkAppNotifyCenter$GdtNotify$3$1$1(alpx paramalpx, ysq paramysq) {}
   
   public void run()
   {
-    Object localObject2 = ynv.a(this.jdField_a_of_type_Yjm.a().a);
+    Object localObject2 = yxr.a(this.jdField_a_of_type_Ysq.a().a);
     Object localObject1 = new JSONObject();
     try
     {
       ((JSONObject)localObject1).put("rsp", localObject2);
-      ark.arkNotify(this.jdField_a_of_type_Albj.a.jdField_a_of_type_JavaLangString, "ad_req_callback", ((JSONObject)localObject1).toString(), "json");
-      if (this.jdField_a_of_type_Albj.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+      ark.arkNotify(this.jdField_a_of_type_Alpx.a.jdField_a_of_type_JavaLangString, "ad_req_callback", ((JSONObject)localObject1).toString(), "json");
+      if (this.jdField_a_of_type_Alpx.a.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
-        localObject1 = (Activity)this.jdField_a_of_type_Albj.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-        AdReporterForAnalysis.reportForARKSendNotification((Context)localObject1, this.jdField_a_of_type_Albj.a.jdField_a_of_type_Boolean, "ad_req_callback", this.jdField_a_of_type_Albj.a.jdField_a_of_type_JavaLangString, null);
+        localObject1 = (Activity)this.jdField_a_of_type_Alpx.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+        AdReporterForAnalysis.reportForARKSendNotification((Context)localObject1, this.jdField_a_of_type_Alpx.a.jdField_a_of_type_Boolean, "ad_req_callback", this.jdField_a_of_type_Alpx.a.jdField_a_of_type_JavaLangString, null);
         return;
       }
     }

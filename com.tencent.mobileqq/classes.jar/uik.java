@@ -1,31 +1,21 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class uik
-  extends QQUIEventReceiver<StoryMessageListActivity, sqq>
+class uik
+  extends Job<Object, Object, Object>
 {
-  public uik(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
+  uik(uij paramuij, String paramString, tch paramtch)
   {
-    super(paramStoryMessageListActivity);
+    super(paramString);
   }
   
-  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull sqq paramsqq)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    if (paramsqq.a.isSuccess())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i(this.TAG, 2, "TroopNickNameUpdateEvent");
-      }
-      paramStoryMessageListActivity.g();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return sqq.class;
+    ste.a().dispatch(this.jdField_a_of_type_Tch);
+    return null;
   }
 }
 

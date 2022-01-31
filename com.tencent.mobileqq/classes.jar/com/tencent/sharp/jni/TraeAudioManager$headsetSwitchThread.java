@@ -1,7 +1,7 @@
 package com.tencent.sharp.jni;
 
 import android.media.AudioManager;
-import krx;
+import lcl;
 
 class TraeAudioManager$headsetSwitchThread
   extends TraeAudioManager.switchThread
@@ -47,7 +47,7 @@ class TraeAudioManager$headsetSwitchThread
         {
           for (;;)
           {
-            krx.e(this.jdField_a_of_type_JavaLangString, localInterruptedException.getMessage());
+            lcl.e(this.jdField_a_of_type_JavaLangString, localInterruptedException.getMessage());
           }
         }
       }

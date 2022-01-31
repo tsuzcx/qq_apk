@@ -1,29 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.open.agent.BindGroupFragment;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnControllerClickListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo.RecommadInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
 
 public class bbvk
-  implements DialogInterface.OnClickListener
+  implements TVK_IMediaPlayer.OnControllerClickListener
 {
-  public bbvk(BindGroupFragment paramBindGroupFragment, String paramString) {}
+  public bbvk(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAttationClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  
+  public void onBackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    if (paramInt == 1)
-    {
-      BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment, ajjy.a(2131635323));
-      ((ajtg)BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment).a(20)).a(Integer.valueOf(BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Integer.valueOf(BindGroupFragment.b(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), BindGroupFragment.c(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment));
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player onBackClick");
     }
-    while (paramInt != 0) {
+    this.a.setResult(0);
+    this.a.finish();
+  }
+  
+  public void onBackOnFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player onBackOnFullScreenClick");
+    }
+    if (this.a.getRequestedOrientation() == 0)
+    {
+      this.a.setRequestedOrientation(1);
       return;
     }
-    paramDialogInterface.dismiss();
+    this.a.setResult(0);
+    this.a.finish();
   }
+  
+  public void onCacheClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  
+  public void onFeedbackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  
+  public void onFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player onFullScreenClick--------------");
+    }
+    this.a.setRequestedOrientation(0);
+  }
+  
+  public void onReopenClick(TVK_NetVideoInfo.RecommadInfo paramRecommadInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbvk
  * JD-Core Version:    0.7.0.1
  */

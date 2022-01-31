@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
-
-public class axhy
-  implements DialogInterface.OnClickListener
+class axhy
+  implements axfy
 {
-  public axhy(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  axhy(axhx paramaxhx, axic paramaxic) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    GroupTeamWorkListActivity.a(this.a);
+    if ((paramInt == 1) && (this.jdField_a_of_type_Axic != null)) {
+      this.jdField_a_of_type_Axic.a(paramBoolean, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axhy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdRsp;
-import ajjy;
+import ajyc;
 import android.text.TextUtils;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
@@ -14,7 +14,7 @@ import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import yju;
+import ysx;
 
 class BannerAdPlugin$2
   implements MiniAppCmdInterface
@@ -55,7 +55,7 @@ class BannerAdPlugin$2
         if ((this.this$0.jsPluginEngine.activityContext instanceof GameActivity))
         {
           GdtAd localGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject);
-          yju.a().a(localGdtAd);
+          ysx.a().a(localGdtAd);
           paramBoolean = ((GameActivity)this.this$0.jsPluginEngine.activityContext).createBannerAd(this.val$adPosInfo, (qq_ad_get.QQAdGetRsp.AdInfo)localObject);
           if (!paramBoolean) {
             break label493;
@@ -100,7 +100,7 @@ class BannerAdPlugin$2
     try
     {
       i = paramJSONObject.getInt("resultCode");
-      BannerAdPlugin.access$100(this.this$0, this.val$webview, i, ajjy.a(2131635111));
+      BannerAdPlugin.access$100(this.this$0, this.val$webview, i, ajyc.a(2131700895));
       for (;;)
       {
         QLog.e("[minigame] BannerAdPlugin", 1, "getBannerAd request error");

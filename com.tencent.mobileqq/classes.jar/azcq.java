@@ -1,20 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController.2;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class azcq
-  implements View.OnClickListener
 {
-  public azcq(HomeworkTroopController.2 param2) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public void a(JSONObject paramJSONObject)
   {
-    this.a.this$0.a();
+    this.a = paramJSONObject.optString("left");
+    this.b = paramJSONObject.optString("text");
+    this.c = paramJSONObject.optString("right");
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azcq
  * JD-Core Version:    0.7.0.1
  */

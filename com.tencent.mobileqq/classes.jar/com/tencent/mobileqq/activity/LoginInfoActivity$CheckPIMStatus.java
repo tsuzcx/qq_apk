@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.app.Activity;
-import badf;
+import bbek;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import java.lang.ref.WeakReference;
 import mqq.app.MobileQQ;
@@ -20,8 +20,8 @@ class LoginInfoActivity$CheckPIMStatus
   
   public void run()
   {
-    boolean bool1 = badf.a(MobileQQ.sMobileQQ);
-    boolean bool2 = badf.b(MobileQQ.sMobileQQ);
+    boolean bool1 = bbek.a(MobileQQ.sMobileQQ);
+    boolean bool2 = bbek.b(MobileQQ.sMobileQQ);
     if (!bool1)
     {
       i = LoginInfoActivity.a();
@@ -30,7 +30,7 @@ class LoginInfoActivity$CheckPIMStatus
       }
     }
     label85:
-    for (int i = 2131653329;; i = 2131653332)
+    for (int i = 2131719158;; i = 2131719161)
     {
       Activity localActivity = (Activity)this.b.get();
       if (localActivity != null) {

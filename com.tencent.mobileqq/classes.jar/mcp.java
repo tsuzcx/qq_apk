@@ -1,6 +1,23 @@
-public abstract interface mcp
+public class mcp
+  extends mco
 {
-  public abstract void e(int paramInt);
+  public final int a;
+  public final boolean a;
+  public final String c;
+  
+  public mcp(long paramLong, String paramString, boolean paramBoolean, int paramInt)
+  {
+    super(6100, null);
+    a(paramLong, null);
+    this.c = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return "mId[" + this.c + "], mFrom[" + this.jdField_a_of_type_Int + "], mSender[" + this.jdField_a_of_type_Boolean + "], seq[" + a() + "]";
+  }
 }
 
 

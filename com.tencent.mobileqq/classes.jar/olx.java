@@ -1,32 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class olx
-  implements Animator.AnimatorListener
+class olx
+  implements ViewBase.OnClickListener
 {
-  public olx(VideoView paramVideoView) {}
+  olx(olw paramolw, ViewBase paramViewBase) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (VideoView.a(this.a) != null) {
-      VideoView.a(this.a).setVisibility(4);
-    }
-    if (VideoView.b(this.a) != null) {
-      VideoView.b(this.a).setVisibility(4);
-    }
+    paramViewBase = new pth(this.jdField_a_of_type_Olw.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Olw.jdField_a_of_type_Baxk, this.jdField_a_of_type_Olw.jdField_a_of_type_Rap);
+    paramViewBase.a(this.jdField_a_of_type_Olw.jdField_a_of_type_Pax);
+    paramViewBase.a(this.jdField_a_of_type_Olw.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+    paramViewBase.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView());
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     olx
  * JD-Core Version:    0.7.0.1
  */

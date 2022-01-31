@@ -3,12 +3,12 @@ package com.tencent.biz.troop;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.MessageRecord;
-import wjk;
+import wym;
 
 public class TroopMemberApiService$IncomingHandler$4
   implements Runnable
 {
-  public TroopMemberApiService$IncomingHandler$4(wjk paramwjk, TroopManager paramTroopManager, String paramString1, String paramString2, Bundle paramBundle, int paramInt) {}
+  public TroopMemberApiService$IncomingHandler$4(wym paramwym, TroopManager paramTroopManager, String paramString1, String paramString2, Bundle paramBundle, int paramInt) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class TroopMemberApiService$IncomingHandler$4
     }
     for (;;)
     {
-      this.jdField_a_of_type_Wjk.a.a(72, this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_Wym.a.a(72, this.jdField_a_of_type_AndroidOsBundle);
       return;
       this.jdField_a_of_type_AndroidOsBundle.putLong("lastMsgTime", 0L);
       this.jdField_a_of_type_AndroidOsBundle.putString("lastMsgContent", "");

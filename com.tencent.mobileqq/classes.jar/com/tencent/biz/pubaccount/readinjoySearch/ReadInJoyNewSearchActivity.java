@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoySearch;
 
-import aeva;
-import aevb;
-import amff;
-import amfg;
+import affw;
+import affx;
+import amvl;
+import amvm;
 import android.annotation.TargetApi;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -24,10 +24,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import azzu;
-import babr;
-import bafb;
-import befo;
+import bbay;
+import bbcv;
+import bbgg;
+import bfni;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
@@ -37,19 +37,19 @@ import com.tencent.widget.XListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.List;
-import ndn;
-import rnu;
-import rnv;
-import rnw;
-import rnx;
+import noo;
+import sal;
+import sam;
+import san;
+import sao;
 
 public class ReadInJoyNewSearchActivity
   extends FragmentActivity
-  implements aevb, View.OnClickListener
+  implements affx, View.OnClickListener
 {
-  private aeva jdField_a_of_type_Aeva;
+  private affw jdField_a_of_type_Affw;
   protected Handler a;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new rnv(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new sam(this);
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
@@ -59,7 +59,7 @@ public class ReadInJoyNewSearchActivity
   
   public ReadInJoyNewSearchActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new rnu(this);
+    this.jdField_a_of_type_AndroidOsHandler = new sal(this);
   }
   
   private void a(List<ReadInJoySearchHistoryEntity> paramList)
@@ -69,7 +69,7 @@ public class ReadInJoyNewSearchActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aeva.a(paramList);
+      this.jdField_a_of_type_Affw.a(paramList);
       return;
       this.b.setVisibility(0);
       this.b.setFocusable(false);
@@ -81,19 +81,19 @@ public class ReadInJoyNewSearchActivity
   @TargetApi(14)
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131309736);
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131375491);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
       this.jdField_a_of_type_AndroidViewView.setFitsSystemWindows(true);
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297934));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363480));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131302060));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131367678));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131300167));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131365764));
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new rnx(this, null));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new sao(this, null));
   }
   
   private void b(String paramString)
@@ -101,7 +101,7 @@ public class ReadInJoyNewSearchActivity
     try
     {
       String str = Uri.encode(paramString.trim());
-      Object localObject = amfg.a().d;
+      Object localObject = amvm.a().d;
       if (localObject != null)
       {
         paramString = (String)localObject;
@@ -120,7 +120,7 @@ public class ReadInJoyNewSearchActivity
         if (((String)localObject).contains("|")) {
           paramString = ((String)localObject).replaceAll("\\|", " ");
         }
-        ndn.a(null, null, "0X80067C4", "0X80067C4", 0, 0, "", "", paramString, "", false);
+        noo.a(null, null, "0X80067C4", "0X80067C4", 0, 0, "", "", paramString, "", false);
         return;
       }
       return;
@@ -138,7 +138,7 @@ public class ReadInJoyNewSearchActivity
     if (this.mSystemBarComp == null) {
       this.mSystemBarComp = new SystemBarCompact(this, true, -1);
     }
-    if ((Build.VERSION.SDK_INT >= 23) && (!azzu.b()) && (!azzu.d()))
+    if ((Build.VERSION.SDK_INT >= 23) && (!bbay.b()) && (!bbay.d()))
     {
       getWindow().getDecorView().setSystemUiVisibility(9216);
       this.mSystemBarComp.init();
@@ -146,7 +146,7 @@ public class ReadInJoyNewSearchActivity
       return;
     }
     this.mSystemBarComp.init();
-    if (!azzu.d())
+    if (!bbay.d())
     {
       this.mSystemBarComp.setStatusBarColor(-2368549);
       return;
@@ -157,10 +157,10 @@ public class ReadInJoyNewSearchActivity
   
   private void d()
   {
-    this.jdField_a_of_type_Aeva = new aeva(this, null, this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131309950));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aeva);
-    this.b = super.findViewById(2131309952);
+    this.jdField_a_of_type_Affw = new affw(this, null, this);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131375711));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Affw);
+    this.b = super.findViewById(2131375713);
     e();
   }
   
@@ -171,20 +171,20 @@ public class ReadInJoyNewSearchActivity
   
   public void a()
   {
-    bafb localbafb = babr.a(this, 230);
-    Object localObject = new rnw(this);
-    localbafb.setPositiveButton(2131630570, (DialogInterface.OnClickListener)localObject);
-    localbafb.setNegativeButton(2131630569, (DialogInterface.OnClickListener)localObject);
-    localObject = getString(2131630571);
-    localbafb.setTitle(2131631809);
+    bbgg localbbgg = bbcv.a(this, 230);
+    Object localObject = new san(this);
+    localbbgg.setPositiveButton(2131696273, (DialogInterface.OnClickListener)localObject);
+    localbbgg.setNegativeButton(2131696272, (DialogInterface.OnClickListener)localObject);
+    localObject = getString(2131696274);
+    localbbgg.setTitle(2131697521);
     TextView localTextView = new TextView(this);
     localTextView.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
     localTextView.setTextSize(14.0F);
-    localTextView.setTextColor(getResources().getColor(2131099854));
+    localTextView.setTextColor(getResources().getColor(2131165413));
     localTextView.setText((CharSequence)localObject);
     localTextView.setGravity(1);
-    localbafb.addView(localTextView);
-    localbafb.show();
+    localbbgg.addView(localTextView);
+    localbbgg.show();
   }
   
   public void a(ReadInJoySearchHistoryEntity paramReadInJoySearchHistoryEntity)
@@ -200,7 +200,7 @@ public class ReadInJoyNewSearchActivity
     if (str.contains("|")) {
       paramReadInJoySearchHistoryEntity = str.replaceAll("\\|", " ");
     }
-    ndn.a(null, null, "0X8006819", "0X8006819", 0, 0, paramReadInJoySearchHistoryEntity, "", "", "", false);
+    noo.a(null, null, "0X8006819", "0X8006819", 0, 0, paramReadInJoySearchHistoryEntity, "", "", "", false);
   }
   
   public void a(String paramString)
@@ -211,11 +211,11 @@ public class ReadInJoyNewSearchActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131494437);
+    super.setContentView(2131560003);
     c();
     b();
     d();
-    if (befo.d()) {
+    if (bfni.d()) {
       getWindow().setFlags(16777216, 16777216);
     }
     return true;
@@ -249,7 +249,7 @@ public class ReadInJoyNewSearchActivity
     {
     default: 
       return;
-    case 2131297934: 
+    case 2131363480: 
       finish();
       return;
     }

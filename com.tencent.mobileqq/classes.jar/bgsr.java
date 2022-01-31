@@ -1,80 +1,106 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.RemoteException;
+import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import mqq.app.AppRuntime;
 
-class bgsr
-  implements ServiceConnection
+public class bgsr
 {
-  bgsr(bgsp parambgsp) {}
-  
-  public void a()
+  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    if ((bgsp.a(this.a) != null) && (!bgsp.a(this.a).b())) {
-      bgsp.a(this.a).b();
-    }
-  }
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    bckd.b("WadlProxyServiceManager", "onServiceConnected success");
-    this.a.a = false;
-    bgsp.a(this.a, bgsi.a(paramIBinder));
-    if ((bgsp.a(this.a)) || (bgsp.a(this.a) == null))
+    if ((paramBaseApplicationImpl == null) || (paramString == null))
     {
-      bckd.b("WadlProxyServiceManager", "onServiceConnected,but can't use it! mDestroy=" + bgsp.a(this.a) + ",mWadlService=" + bgsp.a(this.a));
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(bgsj.a, 2, "createQQPimRuntime() application == null || processName == null");
+      }
+      return null;
     }
     try
     {
-      bgsp.a(this.a).a(bgsp.a(this.a));
-      bgsp.a(this.a);
-      a();
-      try
-      {
-        bgsp.a(this.a).asBinder().linkToDeath(bgsp.a(this.a), 0);
-        return;
-      }
-      catch (RemoteException paramComponentName)
-      {
-        paramComponentName.printStackTrace();
-        return;
-      }
+      Class localClass1 = Class.forName("com.qqpim.application.QQPimPluginRuntime");
+      if (localClass1 != null) {}
     }
-    catch (RemoteException paramComponentName)
+    catch (ClassNotFoundException localClassNotFoundException)
     {
       for (;;)
       {
-        paramComponentName.printStackTrace();
+        try
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d(bgsj.a, 2, "createQQPimRuntime() cls == null");
+        }
+        catch (ClassNotFoundException paramBaseApplicationImpl)
+        {
+          ClassLoader localClassLoader;
+          paramBaseApplicationImpl.printStackTrace();
+        }
+        localClassNotFoundException = localClassNotFoundException;
+        localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "qqpim_plugin.apk");
+        Class localClass2 = localClassLoader.loadClass("com.qqpim.application.QQPimPluginRuntime");
+        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
+        continue;
+        do
+        {
+          return null;
+          if (QLog.isColorLevel()) {
+            QLog.d(bgsj.a, 2, "createQQPimRuntime() 1 ");
+          }
+          paramBaseApplicationImpl = localClass2.getDeclaredConstructor(new Class[] { BaseApplicationImpl.class, String.class }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
+        } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime)));
+        if (QLog.isColorLevel()) {
+          QLog.d(bgsj.a, 2, "createQQPimRuntime() succ");
+        }
+        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
+        return paramBaseApplicationImpl;
       }
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    bckd.b("WadlProxyServiceManager", "onServiceDisconnected");
-    try
+    catch (IllegalArgumentException paramBaseApplicationImpl)
     {
-      BaseApplicationImpl.getApplication().unbindService(bgsp.a(this.a));
-      if (bgsp.a(this.a) != null) {
-        bgsp.a(this.a).a();
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
       }
-      if (bgsp.a(this.a) != null) {
-        bgsp.a(this.a).b(bgsp.a(this.a));
+    }
+    catch (IllegalAccessException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
       }
-      return;
     }
-    catch (Exception paramComponentName)
+    catch (InstantiationException paramBaseApplicationImpl)
     {
-      paramComponentName.printStackTrace();
-      return;
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
     }
-    finally
+    catch (InvocationTargetException paramBaseApplicationImpl)
     {
-      bgsp.a(this.a, null);
-      this.a.a = false;
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
     }
+    catch (NoSuchMethodException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (Exception paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    return null;
   }
 }
 

@@ -1,24 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 
 public class acfh
-  implements DialogInterface.OnClickListener
+  implements TextView.OnEditorActionListener
 {
-  public acfh(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public acfh(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.n();
-    if (!TextUtils.isEmpty(this.a.a())) {}
-    for (paramDialogInterface = "1";; paramDialogInterface = "0")
+    if ((paramInt == 6) && (TextPreviewTranslateActivity.a(this.a) != null))
     {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, mpl.a(), paramDialogInterface, "0");
-      this.a.finish();
-      return;
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a).getText().toString());
+      TextPreviewTranslateActivity.a(this.a);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a));
+      TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.b(this.a));
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.c(this.a), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+      return true;
     }
+    return false;
   }
 }
 

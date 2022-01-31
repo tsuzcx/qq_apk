@@ -1,16 +1,17 @@
-import android.app.Activity;
+import java.util.List;
 
-class apho
-  implements alaq
+public class apho
 {
-  apho(aphn paramaphn) {}
+  public int a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public byte[] a;
+  public byte[] b;
+  public byte[] c;
+  public byte[] d;
   
-  public void a(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      this.a.a.finish();
-    }
-  }
+  public apho(aphn paramaphn) {}
 }
 
 

@@ -1,53 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Timer;
-import java.util.concurrent.PriorityBlockingQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.Manager;
+import android.view.View;
 
 public class bjjb
-  implements Manager
 {
-  public static long a;
-  public QQAppInterface a;
-  Timer a;
-  public PriorityBlockingQueue<bjjc> a;
-  public AtomicBoolean a;
+  public float a;
+  public long a;
+  public View a;
+  public String a;
+  public float b;
+  public long b;
   
-  static
+  public bjjb(View paramView, String paramString, float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
   {
-    jdField_a_of_type_Long = 86400000L;
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel())
-    {
-      String str = paramString2;
-      if (paramString2 == null) {
-        str = "";
-      }
-      QLog.d("ShortVideoPreDownloader", 2, paramString1 + "(): " + str);
-    }
-  }
-  
-  public void a(bjjc parambjjc)
-  {
-    bjiw.a(parambjjc, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreDownloader", 2, "launchRequest:" + parambjjc.a.busiType);
-    }
-  }
-  
-  public void onDestroy()
-  {
-    a("onDestroy", null);
-    if (this.jdField_a_of_type_JavaUtilTimer != null)
-    {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
-      this.jdField_a_of_type_JavaUtilTimer.purge();
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
 }
 

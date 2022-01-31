@@ -1,21 +1,23 @@
-class ysu
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.aditem.GdtBaseAdItem;
+
+public final class ysu
+  implements Parcelable.Creator<GdtBaseAdItem>
 {
-  public int a;
-  public long a;
-  public String a;
-  public ytb a;
-  
-  public ysu(yst paramyst, int paramInt, long paramLong, String paramString, ytb paramytb)
+  public GdtBaseAdItem a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ytb = paramytb;
+    return new GdtBaseAdItem(paramParcel);
+  }
+  
+  public GdtBaseAdItem[] a(int paramInt)
+  {
+    return new GdtBaseAdItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ysu
  * JD-Core Version:    0.7.0.1
  */

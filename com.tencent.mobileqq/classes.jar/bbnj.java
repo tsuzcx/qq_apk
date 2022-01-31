@@ -1,41 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
 
 class bbnj
-  implements DialogInterface.OnDismissListener
+  extends URLDrawableDownListener.Adapter
 {
-  private WeakReference<DialogInterface.OnDismissListener> a;
+  bbnj(bbni parambbni) {}
   
-  public bbnj(DialogInterface.OnDismissListener paramOnDismissListener)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.a = new WeakReference(paramOnDismissListener);
+    this.a.onLoadFialed(paramURLDrawable, paramThrowable);
   }
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if (this.a == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneProgressDialog", 2, "CustomDismissListener mDismissLis, lis is null");
-      }
-    }
-    do
-    {
-      return;
-      DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
-      if (localOnDismissListener != null)
-      {
-        localOnDismissListener.onDismiss(paramDialogInterface);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("QzoneProgressDialog", 2, "CustomDismissListener, lis is null");
+    this.a.onLoadSuccessed(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbnj
  * JD-Core Version:    0.7.0.1
  */

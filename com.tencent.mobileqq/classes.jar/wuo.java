@@ -1,18 +1,10 @@
-class wuo
-  implements wpy
+public abstract interface wuo
 {
-  wuo(wuh paramwuh, Runnable paramRunnable) {}
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
-  }
+  public abstract void a(String paramString, long paramLong1, long paramLong2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wuo
  * JD-Core Version:    0.7.0.1
  */

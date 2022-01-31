@@ -1,26 +1,24 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
 
-class txd
-  extends mmn
+public class txd
+  implements twv
 {
-  txd(txb paramtxb, boolean paramBoolean) {}
+  private final txc a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public txd(txc paramtxc)
   {
-    if (paramInt != 0)
-    {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(2, bool);
-        this.a.a(0, this.a.a.getString(2131654637));
-        return;
-      }
+    this.a = paramtxc;
+  }
+  
+  public void a(tww paramtww)
+  {
+    Stream localStream2 = Stream.of(this.a.a).map(new ThreadOffFunction("Q.qqstory.player.data.MsgTabPlayPageLoader", 2)).map(new tfy("Q.qqstory.player.data.MsgTabPlayPageLoader", this.a.c, this.a.d, this.a));
+    Stream localStream1 = localStream2;
+    if (this.a.a.a == 5) {
+      localStream1 = localStream2.map(new tfv()).map(new tfl(this.a.a));
     }
-    ((sga)this.a.a.app.getManager(181)).a(this.b);
+    localStream1.subscribe(new txe(this, paramtww));
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.open.appcommon.js;
 
 import android.text.TextUtils;
-import bcds;
+import bdht;
 import com.tencent.smtt.sdk.WebView;
 
 class DownloadInterface$3
@@ -20,7 +20,7 @@ class DownloadInterface$3
     }
     catch (Exception localException)
     {
-      bcds.a("DownloadInterface", "webview loadUrl>>> ", localException);
+      bdht.a("DownloadInterface", "webview loadUrl>>> ", localException);
     }
   }
 }

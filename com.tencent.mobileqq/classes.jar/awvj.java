@@ -1,34 +1,50 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
 
 class awvj
-  extends QIPCModule
+  implements Comparator<awoc>
 {
-  awvj(awvi paramawvi, String paramString)
-  {
-    super(paramString);
-  }
+  awvj(awvi paramawvi) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public int a(awoc paramawoc1, awoc paramawoc2)
   {
-    if ("receipt_set_read".equals(paramString)) {
-      awvi.a(this.a, paramBundle);
-    }
-    for (;;)
+    int i = -1;
+    paramawoc1 = (awpq)paramawoc1;
+    paramawoc2 = (awpq)paramawoc2;
+    ajxn localajxn = (ajxn)this.a.a.getManager(51);
+    boolean bool1 = localajxn.b((String)paramawoc1.a());
+    boolean bool2 = localajxn.b((String)paramawoc2.a());
+    if ((!bool1) && (!bool2))
     {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.d(StructMsgForGeneralShare.access$000(), 2, "unknown action");
+      bool1 = localajxn.d((String)paramawoc1.a());
+      bool2 = localajxn.d((String)paramawoc2.a());
+      if ((!bool1) && (!bool2)) {
+        return paramawoc2.f() - paramawoc1.f();
+      }
+      if (bool1 != bool2)
+      {
+        if (bool2) {
+          return -1;
+        }
+        return 1;
+      }
+      return paramawoc2.f() - paramawoc1.f();
+    }
+    if (bool1 != bool2)
+    {
+      if (bool2) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
       }
     }
+    return paramawoc2.f() - paramawoc1.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvj
  * JD-Core Version:    0.7.0.1
  */

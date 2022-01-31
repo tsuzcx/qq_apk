@@ -1,61 +1,16 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.ContentObserver;
-import android.os.Handler;
-import android.provider.Settings.System;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
 
 public class pyb
-  extends ContentObserver
+  implements View.OnClickListener
 {
-  public pyb(pxy parampxy, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  public pyb(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
   
-  public ContentResolver a()
+  public void onClick(View paramView)
   {
-    if (this.a.a() != null) {
-      return this.a.a().getContentResolver();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (a() != null) {
-      a().registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
-    }
-  }
-  
-  public void b()
-  {
-    if (a() != null) {
-      a().unregisterContentObserver(this);
-    }
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    if (this.a.a() == null) {}
-    for (;;)
-    {
-      return;
-      int i = Settings.System.getInt(this.a.a().getContentResolver(), "accelerometer_rotation", -1);
-      if (i == 1)
-      {
-        pxy.a(this.a, true);
-        this.a.a(true);
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d(pxy.a, 2, "RotationObserver.onChange() : rotateState=" + i);
-        return;
-        pxy.a(this.a, false);
-        this.a.a(false);
-      }
-    }
+    pdb.a(2, this.jdField_a_of_type_JavaLangString);
+    onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
   }
 }
 

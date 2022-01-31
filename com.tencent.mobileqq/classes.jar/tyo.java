@@ -1,19 +1,13 @@
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.dispatch.Dispatcher;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class tyo
-  extends uad
+public abstract interface tyo
 {
-  public tyo(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
+  public abstract void a();
   
-  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
-  {
-    sys localsys = new sys();
-    localsys.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
-    localsys.jdField_a_of_type_JavaUtilList = paramVideoCollectionItem.collectionVideoUIItemList;
-    sgi.a().dispatch(localsys);
-  }
+  public abstract void a(@NonNull ups paramups, ErrorMessage paramErrorMessage, boolean paramBoolean);
+  
+  public abstract void a(@NonNull ups paramups, boolean paramBoolean);
 }
 
 

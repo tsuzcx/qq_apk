@@ -1,236 +1,43 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.ArrayList;
 import java.util.List;
 
 public class tlv
-  extends vpv
 {
-  public static final String KEY = "PlayerCommentSegment";
-  private int jdField_a_of_type_Int;
-  private tlj jdField_a_of_type_Tlj;
-  private tlw jdField_a_of_type_Tlw = new tlw(this);
-  private tlx jdField_a_of_type_Tlx = new tlx();
-  private tly jdField_a_of_type_Tly = new tly(this);
-  private tmb jdField_a_of_type_Tmb;
-  public ucw a;
+  public int a;
+  public String a;
+  public List<CommentEntry> a;
+  public int b;
+  public String b;
   
-  public tlv(Context paramContext)
+  public tlv()
   {
-    super(paramContext);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  private boolean b()
+  public boolean equals(Object paramObject)
   {
-    return (this.jdField_a_of_type_Tlj == null) || (this.jdField_a_of_type_Tlj.a());
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (tlv)paramObject;
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+      }
+    } while (paramObject.jdField_a_of_type_JavaLangString == null);
+    return false;
   }
   
-  public int a()
+  public int hashCode()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ucw != null)) {
-      return this.jdField_a_of_type_Ucw.a(b()).size();
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString.hashCode();
     }
     return 0;
-  }
-  
-  public View a(int paramInt, unw paramunw, ViewGroup paramViewGroup)
-  {
-    if ((this.jdField_a_of_type_Ucw == null) || (paramInt > this.jdField_a_of_type_Ucw.a(b()).size()))
-    {
-      urk.e("Q.qqstory.detail.DetailCommentSegment", "bind view failed. position is out of bound.");
-      return paramunw.a();
-    }
-    CommentEntry localCommentEntry = (CommentEntry)this.jdField_a_of_type_Ucw.a(b()).get(paramInt);
-    if (localCommentEntry == null)
-    {
-      urk.e("Q.qqstory.detail.DetailCommentSegment", "bind view failed. data is null.");
-      return paramunw.a();
-    }
-    paramViewGroup = (ImageView)paramunw.a(2131297399);
-    TextView localTextView1 = (TextView)paramunw.a(2131305143);
-    TextView localTextView2 = (TextView)paramunw.a(2131298909);
-    Object localObject1 = (LinearLayout)paramunw.a(2131298903);
-    TextView localTextView3 = (TextView)paramunw.a(2131303805);
-    ImageView localImageView = (ImageView)paramunw.a(2131298920);
-    ProgressBar localProgressBar = (ProgressBar)paramunw.a(2131298945);
-    if (localCommentEntry.type == 1)
-    {
-      paramViewGroup.setVisibility(8);
-      ((LinearLayout)localObject1).setVisibility(8);
-      localTextView3.setVisibility(0);
-      localTextView3.setText(localCommentEntry.content);
-      if (QQStoryContext.a())
-      {
-        localTextView2.setBackgroundResource(2130845363);
-        localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100758));
-        localTextView2.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100758));
-        localTextView3.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100756));
-      }
-      return paramunw.a();
-    }
-    paramViewGroup.setVisibility(0);
-    ((LinearLayout)localObject1).setVisibility(0);
-    localTextView3.setVisibility(8);
-    localObject1 = localCommentEntry.commentId + localCommentEntry.feedId + localCommentEntry.status + this.jdField_a_of_type_Tlw.hashCode() + "bubble_style";
-    Object localObject2 = sob.a().a((String)localObject1);
-    label352:
-    QQUserUIItem localQQUserUIItem;
-    Drawable localDrawable;
-    if (localObject2 != null)
-    {
-      localTextView2.setText((CharSequence)localObject2);
-      localQQUserUIItem = ((sqs)sqg.a(2)).c(localCommentEntry.authorUnionId);
-      localDrawable = bacm.b();
-      if (localQQUserUIItem != null) {
-        break label616;
-      }
-      localObject1 = "";
-      label383:
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label626;
-      }
-      paramInt = 1;
-      label393:
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label631;
-      }
-      localObject2 = "V";
-      label405:
-      if (localQQUserUIItem != null) {
-        break label638;
-      }
-      paramViewGroup.setImageDrawable(localDrawable);
-      label416:
-      if ((localQQUserUIItem != null) && (localQQUserUIItem.isAvailable())) {
-        break label751;
-      }
-      paramViewGroup = new SpannableStringBuilder(tfy.b);
-      label440:
-      if (paramInt != 0)
-      {
-        paramInt = paramViewGroup.length();
-        paramViewGroup.append((CharSequence)localObject2);
-        udd.a(paramViewGroup, (String)localObject1, paramInt, paramViewGroup.length());
-      }
-      localTextView1.setText(paramViewGroup);
-      if (localCommentEntry.status != 2) {
-        break label791;
-      }
-      localImageView.setVisibility(0);
-      localProgressBar.setVisibility(8);
-    }
-    for (;;)
-    {
-      localTextView2.setOnTouchListener(this.jdField_a_of_type_Tlx);
-      localTextView2.setSpannableFactory(axkd.a);
-      localTextView2.setTextColor(-16777216);
-      break;
-      localObject2 = udd.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ucw.a, localCommentEntry, this.jdField_a_of_type_Tlw);
-      localTextView2.setText((CharSequence)localObject2);
-      if (localCommentEntry.isReply())
-      {
-        localQQUserUIItem = ((sqs)sqg.a(2)).c(localCommentEntry.replierUnionId);
-        if ((localQQUserUIItem == null) || (!localQQUserUIItem.isAvailable())) {
-          break label352;
-        }
-        sob.a().a((String)localObject1, (CharSequence)localObject2);
-        break label352;
-      }
-      sob.a().a((String)localObject1, (CharSequence)localObject2);
-      break label352;
-      label616:
-      localObject1 = localQQUserUIItem.getUserIconUrl();
-      break label383;
-      label626:
-      paramInt = 0;
-      break label393;
-      label631:
-      localObject2 = "";
-      break label405;
-      label638:
-      if ((localQQUserUIItem.isVipButNoFriend()) || (localQQUserUIItem.isNotDovUser()))
-      {
-        vms.b(paramViewGroup, localQQUserUIItem.headUrl, 60, 60, localDrawable, "QQStory_player");
-        break label416;
-      }
-      if (!TextUtils.isEmpty(localQQUserUIItem.qq))
-      {
-        paramViewGroup.setImageDrawable(azwp.a(tfy.a(), 1, localQQUserUIItem.qq, 3, localDrawable, localDrawable));
-        break label416;
-      }
-      if (mpl.a(localQQUserUIItem.headUrl))
-      {
-        vms.b(paramViewGroup, localQQUserUIItem.headUrl, 60, 60, localDrawable, "QQStory_player");
-        break label416;
-      }
-      paramViewGroup.setImageDrawable(localDrawable);
-      break label416;
-      label751:
-      if (localQQUserUIItem.isVipButNoFriend())
-      {
-        paramViewGroup = new SpannableStringBuilder(localQQUserUIItem.nickName);
-        break label440;
-      }
-      paramViewGroup = new SpannableStringBuilder(localQQUserUIItem.getDisplayName());
-      break label440;
-      label791:
-      localImageView.setVisibility(8);
-      if (localCommentEntry.status == 1) {
-        localProgressBar.setVisibility(0);
-      } else {
-        localProgressBar.setVisibility(8);
-      }
-    }
-  }
-  
-  public CommentEntry a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Ucw == null) || (paramInt >= this.jdField_a_of_type_Ucw.a(this.jdField_a_of_type_Tlj.a()).size())) {
-      return null;
-    }
-    return (CommentEntry)this.jdField_a_of_type_Ucw.a(this.jdField_a_of_type_Tlj.a()).get(paramInt);
-  }
-  
-  public String a()
-  {
-    return "PlayerCommentSegment";
-  }
-  
-  public unw a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = new unw(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495650, paramViewGroup, false));
-    paramViewGroup.a(this.jdField_a_of_type_Tly);
-    paramViewGroup.a(2131297399).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131305143).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131298910).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131298910).setOnLongClickListener(paramViewGroup);
-    paramViewGroup.a(2131303805).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131303805).setOnLongClickListener(paramViewGroup);
-    return paramViewGroup;
-  }
-  
-  public void a(tlj paramtlj, tmb paramtmb, int paramInt)
-  {
-    this.jdField_a_of_type_Tlj = paramtlj;
-    this.jdField_a_of_type_Tmb = paramtmb;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(ucw paramucw)
-  {
-    this.jdField_a_of_type_Ucw = paramucw;
   }
 }
 

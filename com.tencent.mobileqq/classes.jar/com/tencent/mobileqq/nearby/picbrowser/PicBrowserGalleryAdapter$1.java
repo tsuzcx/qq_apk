@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import asrt;
-import asrz;
+import atnx;
+import atod;
 
 public class PicBrowserGalleryAdapter$1
   implements Runnable
 {
-  public PicBrowserGalleryAdapter$1(asrt paramasrt, int paramInt1, int paramInt2) {}
+  public PicBrowserGalleryAdapter$1(atnx paramatnx, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    asrt.a(this.this$0, this.a, this.b);
-    if (asrt.a(this.this$0) != null) {
-      asrt.a(this.this$0).a(this.a, this.b);
+    atnx.a(this.this$0, this.a, this.b);
+    if (atnx.a(this.this$0) != null) {
+      atnx.a(this.this$0).a(this.a, this.b);
     }
   }
 }

@@ -1,88 +1,65 @@
-import android.content.Context;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import com.tencent.widget.XEditTextEx;
+import com.tribe.async.dispatch.IEventReceiver;
 
 public class vqi
+  implements IEventReceiver
 {
-  protected int a;
-  Context a;
-  protected beqz a;
-  protected vqk a;
-  protected boolean a;
+  public View.OnClickListener a;
+  public final View a;
+  public ImageButton a;
+  public TextView a;
+  public XEditTextEx a;
+  public String a;
+  public vql a;
   
-  public vqi(beqz parambeqz, Context paramContext)
+  public vqi(View paramView)
   {
-    this.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_Beqz = parambeqz;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a(paramView);
+  }
+  
+  private void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131363007));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364585));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)paramView.findViewById(2131365515));
+    paramView = new SpannableString(ajyc.a(2131710797));
+    paramView.setSpan(new AbsoluteSizeSpan(14, true), 0, paramView.length(), 33);
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setHint(paramView);
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(new vqk(this));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnEditorActionListener(new vqj(this));
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.jdField_a_of_type_AndroidViewView.getVisibility();
   }
   
-  public void a(vqk paramvqk)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Vqk = paramvqk;
-    if (paramvqk != null)
-    {
-      a(true);
-      a(true, false);
-    }
-    this.jdField_a_of_type_Beqz.setOnClickListener(new vqj(this));
+    this.jdField_a_of_type_AndroidViewView.setVisibility(paramInt);
   }
   
-  public void a(boolean paramBoolean)
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Beqz.a(3);
-      return;
-    }
-    this.jdField_a_of_type_Beqz.a(0);
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(paramOnClickListener);
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void b(View.OnClickListener paramOnClickListener)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (!paramBoolean1)
-    {
-      this.jdField_a_of_type_Beqz.a(5);
-      return;
-    }
-    if (paramBoolean2) {}
-    for (int i = 3;; i = 4)
-    {
-      this.jdField_a_of_type_Beqz.a(i);
-      if ((!this.jdField_a_of_type_Beqz.b(i)) || (this.jdField_a_of_type_Vqk == null)) {
-        break;
-      }
-      this.jdField_a_of_type_Vqk.a();
-      return;
-    }
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
   }
   
-  public void b(boolean paramBoolean)
+  public boolean isValidate()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    boolean bool;
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_Beqz.a() == 0) || (!this.jdField_a_of_type_Beqz.b(2)));
-      bool = true;
-      if (this.jdField_a_of_type_Vqk != null) {
-        bool = this.jdField_a_of_type_Vqk.a(paramBoolean);
-      }
-    } while (!bool);
-    this.jdField_a_of_type_Beqz.a(2);
+    return true;
   }
 }
 

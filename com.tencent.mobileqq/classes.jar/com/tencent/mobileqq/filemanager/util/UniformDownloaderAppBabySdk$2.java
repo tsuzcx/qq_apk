@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import apeu;
+import apwo;
 
 public class UniformDownloaderAppBabySdk$2
   implements Runnable
 {
-  public UniformDownloaderAppBabySdk$2(apeu paramapeu, String paramString) {}
+  public UniformDownloaderAppBabySdk$2(apwo paramapwo, String paramString) {}
   
   public void run()
   {
-    apeu.a(this.this$0, this.a, 2);
-    apeu.a(this.this$0);
+    apwo.a(this.this$0, this.a, 2);
+    apwo.a(this.this$0);
   }
 }
 

@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfwk;
+import bhev;
 
 public class PublishEventTag
   implements Parcelable
 {
-  public static final Parcelable.Creator<PublishEventTag> CREATOR = new bfwk();
+  public static final Parcelable.Creator<PublishEventTag> CREATOR = new bhev();
   public String a;
   public String b;
   public String c;

@@ -1,40 +1,65 @@
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView;
+import com.tencent.widget.ListView;
 import java.util.Iterator;
 import java.util.List;
 
-class rcg
-  extends ajus
+public class rcg
+  implements ren
 {
-  rcg(rcf paramrcf) {}
+  public rcg(ReadInJoyDailyXListView paramReadInJoyDailyXListView) {}
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bftk)localIterator.next()).a(paramInt, paramView, paramListView);
     }
   }
   
-  public void a(List<avpu> paramList, int paramInt)
+  public void a(int paramInt1, View paramView, ListView paramListView, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
-    }
-    if (paramInt != 10) {}
-    avpu localavpu;
-    do
+    this.a.a(paramInt1, paramView, paramListView, paramInt2);
+  }
+  
+  public void a(View paramView, ListView paramListView, int paramInt)
+  {
+    this.a.a(paramView, paramListView, paramInt);
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.a.iterator();
+    boolean bool = false;
+    if (localIterator.hasNext())
     {
-      do
-      {
-        return;
-        while ((paramList == null) || (paramList.size() <= 0)) {}
-        paramList = paramList.iterator();
-      } while (!paramList.hasNext());
-      localavpu = (avpu)paramList.next();
-    } while (!(localavpu instanceof HotWordSearchEntryDataModel));
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)localavpu);
-    rcf.jdField_a_of_type_Int = 0;
-    this.a.a(false, -1, -1);
+      if (!((bftk)localIterator.next()).a(paramInt, paramView, paramListView)) {
+        break label57;
+      }
+      bool = true;
+    }
+    label57:
+    for (;;)
+    {
+      break;
+      return bool;
+    }
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bftk)localIterator.next()).b(paramInt, paramView, paramListView);
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bftk)localIterator.next()).c(paramInt, paramView, paramListView);
+    }
   }
 }
 

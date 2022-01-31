@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.view.View;
-import bdfz;
-import bdje;
-import bdjj;
-import bdnw;
+import beka;
+import benh;
+import benm;
+import besl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class ShareJsPlugin$6$3
-  implements bdjj
+  implements benm
 {
-  ShareJsPlugin$6$3(ShareJsPlugin.6 param6, bdje parambdje) {}
+  ShareJsPlugin$6$3(ShareJsPlugin.6 param6, benh parambenh) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -25,7 +25,7 @@ class ShareJsPlugin$6$3
     }
     catch (JSONException paramView)
     {
-      bdnw.d("ShareJsPlugin", this.this$1.val$req.a + " error.", paramView);
+      besl.d("ShareJsPlugin", this.this$1.val$req.a + " error.", paramView);
     }
   }
 }

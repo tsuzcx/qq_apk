@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bace;
+import bbdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -11,6 +11,7 @@ import com.tencent.viola.bridge.ViolaBridgeManager;
 import com.tencent.viola.commons.Destroyable;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.module.BaseModule;
+import java.util.Iterator;
 import mqq.app.AppRuntime;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -80,7 +81,7 @@ public class CacheModule
       }
       return;
     }
-    paramString1 = bace.a("viola_cache_file_" + paramString1 + "_" + localAppRuntime.getAccount());
+    paramString1 = bbdj.a("viola_cache_file_" + paramString1 + "_" + localAppRuntime.getAccount());
     if ((paramString1 instanceof String)) {}
     for (paramString1 = (String)paramString1;; paramString1 = null)
     {
@@ -97,6 +98,118 @@ public class CacheModule
   }
   
   @JSMethod(uiThread=false)
+  public void multiGet(@NonNull JSONObject paramJSONObject, String paramString)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime == null)
+    {
+      QLog.e("CacheModule", 1, "failed to getItem");
+      if (!TextUtils.isEmpty(paramString)) {
+        ViolaBridgeManager.getInstance().callbackJavascript(getViolaInstance().getInstanceId(), "cache", "callback", paramString, new JSONObject().toString(), true);
+      }
+    }
+    JSONObject localJSONObject1;
+    do
+    {
+      return;
+      localJSONObject1 = new JSONObject();
+      JSONObject localJSONObject2 = new JSONObject();
+      for (;;)
+      {
+        try
+        {
+          JSONArray localJSONArray = paramJSONObject.getJSONArray("keys");
+          i = 0;
+          if (i >= localJSONArray.length()) {
+            continue;
+          }
+          str = localJSONArray.getString(i);
+          paramJSONObject = bbdj.a("viola_cache_file_" + str + "_" + localAppRuntime.getAccount());
+          if (!(paramJSONObject instanceof String)) {
+            continue;
+          }
+          paramJSONObject = (String)paramJSONObject;
+        }
+        catch (JSONException paramJSONObject)
+        {
+          int i;
+          String str;
+          Object localObject;
+          QLog.e("CacheModule", 1, "CacheModule multiGet:", paramJSONObject);
+          continue;
+          paramJSONObject = null;
+          continue;
+        }
+        localObject = paramJSONObject;
+        if (TextUtils.isEmpty(paramJSONObject)) {
+          localObject = "";
+        }
+        localJSONObject2.put(str, localObject);
+        i += 1;
+      }
+      localJSONObject1.put("data", localJSONObject2);
+    } while (TextUtils.isEmpty(paramString));
+    ViolaBridgeManager.getInstance().callbackJavascript(getViolaInstance().getInstanceId(), "cache", "callback", paramString, localJSONObject1, true);
+  }
+  
+  @JSMethod(uiThread=false)
+  public void multiRemove(@NonNull JSONObject paramJSONObject, String paramString)
+  {
+    paramString = BaseApplicationImpl.getApplication().getRuntime();
+    if (paramString == null) {
+      QLog.e("CacheModule", 1, "failed to remove");
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramJSONObject = paramJSONObject.getJSONArray("keys");
+        int i = 0;
+        while (i < paramJSONObject.length())
+        {
+          String str = paramJSONObject.getString(i);
+          bbdj.d(BaseApplicationImpl.getContext().getFilesDir() + "/" + "viola_cache_file_" + str + "_" + paramString.getAccount());
+          i += 1;
+        }
+        return;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        QLog.e("CacheModule", 1, "CacheModule multiRemove:", paramJSONObject);
+      }
+    }
+  }
+  
+  @JSMethod(uiThread=false)
+  public void multiSet(@NonNull JSONObject paramJSONObject, String paramString)
+  {
+    paramString = BaseApplicationImpl.getApplication().getRuntime();
+    if (paramString == null) {
+      QLog.e("CacheModule", 1, "failed to setItem");
+    }
+    for (;;)
+    {
+      return;
+      Iterator localIterator = paramJSONObject.keys();
+      try
+      {
+        while (localIterator.hasNext())
+        {
+          String str1 = (String)localIterator.next();
+          String str2 = (String)paramJSONObject.get(str1);
+          bbdj.a("viola_cache_file_" + str1 + "_" + paramString.getAccount(), str2);
+        }
+        return;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        QLog.e("CacheModule", 1, "CacheModule multiSet:", paramJSONObject);
+      }
+    }
+  }
+  
+  @JSMethod(uiThread=false)
   public void remove(@NonNull String paramString)
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
@@ -105,7 +218,7 @@ public class CacheModule
       QLog.e("CacheModule", 1, "failed to remove");
       return;
     }
-    bace.d(BaseApplicationImpl.getContext().getFilesDir() + "/" + "viola_cache_file_" + paramString + "_" + localAppRuntime.getAccount());
+    bbdj.d(BaseApplicationImpl.getContext().getFilesDir() + "/" + "viola_cache_file_" + paramString + "_" + localAppRuntime.getAccount());
   }
   
   @JSMethod(uiThread=false)
@@ -117,7 +230,7 @@ public class CacheModule
       QLog.e("CacheModule", 1, "failed to setItem");
       return;
     }
-    bace.a("viola_cache_file_" + paramString1 + "_" + localAppRuntime.getAccount(), paramString2);
+    bbdj.a("viola_cache_file_" + paramString1 + "_" + localAppRuntime.getAccount(), paramString2);
   }
 }
 

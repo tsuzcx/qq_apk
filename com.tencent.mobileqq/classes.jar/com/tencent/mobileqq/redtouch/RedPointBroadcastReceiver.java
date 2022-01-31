@@ -3,7 +3,7 @@ package com.tencent.mobileqq.redtouch;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import auqh;
+import avpq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -35,7 +35,7 @@ public class RedPointBroadcastReceiver
       }
       return null;
     }
-    paramString = ((auqh)this.a.getManager(36)).a(paramString);
+    paramString = ((avpq)this.a.getManager(36)).a(paramString);
     if (paramString == null)
     {
       if (QLog.isColorLevel()) {
@@ -76,7 +76,7 @@ public class RedPointBroadcastReceiver
     if (QLog.isColorLevel()) {
       QLog.d("RedPointBroadcastReceiver clearRed", 2, "path = " + paramString);
     }
-    ((auqh)paramQQAppInterface.getManager(36)).b(paramString);
+    ((avpq)paramQQAppInterface.getManager(36)).b(paramString);
   }
   
   private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
@@ -92,13 +92,13 @@ public class RedPointBroadcastReceiver
         JSONObject localJSONObject = new JSONObject();
         try
         {
-          paramString = ((auqh)paramQQAppInterface.getManager(36)).a(paramString);
+          paramString = ((avpq)paramQQAppInterface.getManager(36)).a(paramString);
           localJSONObject.put("service_type", 0);
           localJSONObject.put("act_id", paramInt);
           localJSONObject.put("obj_id", "");
           localJSONObject.put("pay_amt", 0);
           localJSONObject.put("service_id", i);
-          ((auqh)paramQQAppInterface.getManager(36)).c(paramString, localJSONObject.toString());
+          ((avpq)paramQQAppInterface.getManager(36)).c(paramString, localJSONObject.toString());
           return;
         }
         catch (JSONException paramQQAppInterface)

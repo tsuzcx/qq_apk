@@ -9,8 +9,8 @@ import com.tencent.tmassistant.common.jce.NewQqCenterConfig;
 import com.tencent.tmassistant.common.jce.ShareUrlConfig;
 import com.tencent.tmassistantbase.util.GlobalUtil;
 import com.tencent.tmassistantbase.util.Settings;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.l;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.k;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -42,12 +42,12 @@ public class b
       try
       {
         paramClass = (JceStruct)this.a.get(paramString);
-        ac.c("JceCacheManager", "value of " + paramString + " found, return");
+        ab.c("JceCacheManager", "value of " + paramString + " found, return");
         return paramClass;
       }
       catch (Exception paramString)
       {
-        ac.e("JceCacheManager", "<get> type cast error!");
+        ab.e("JceCacheManager", "<get> type cast error!");
       }
     }
     for (;;)
@@ -63,16 +63,16 @@ public class b
             break label144;
           }
           this.a.put(paramString, paramClass);
-          ac.c("JceCacheManager", "<get> Get value of " + paramString + " from database and save it to cache");
+          ab.c("JceCacheManager", "<get> Get value of " + paramString + " from database and save it to cache");
           return paramClass;
         }
         catch (Exception paramString)
         {
-          ac.e("JceCacheManager", "<get> type cast error!");
+          ab.e("JceCacheManager", "<get> type cast error!");
         }
         continue;
         label144:
-        ac.c("JceCacheManager", "<get> value of " + paramString + " is null !");
+        ab.c("JceCacheManager", "<get> value of " + paramString + " is null !");
       }
     }
   }
@@ -81,12 +81,12 @@ public class b
   {
     if (GlobalUtil.getInstance().getContext() == null)
     {
-      ac.c("JceCacheManager", "<getFilterConfig> GlobalUtil context is null, set it");
+      ab.c("JceCacheManager", "<getFilterConfig> GlobalUtil context is null, set it");
       GlobalUtil.getInstance().setContext(paramContext.getApplicationContext());
     }
     if (this.c != null)
     {
-      ac.c("JceCacheManager", "<getFilterConfig> cache is available using cache");
+      ab.c("JceCacheManager", "<getFilterConfig> cache is available using cache");
       return this.c.blackList;
     }
     paramContext = Settings.getInstance().getBlob("key_filter_config");
@@ -102,16 +102,16 @@ public class b
           localStringBuilder.append((String)localIterator.next());
           localStringBuilder.append("\n");
         }
-        ac.c("JceCacheManager", "<getFilterConfig> data is null");
+        ab.c("JceCacheManager", "<getFilterConfig> data is null");
       }
       catch (Exception paramContext)
       {
-        ac.e("JceCacheManager", "<getFilterConfig> decode ShareUrlConfig error!!! error = " + paramContext.getMessage());
+        ab.e("JceCacheManager", "<getFilterConfig> decode ShareUrlConfig error!!! error = " + paramContext.getMessage());
       }
     } else {
       return new ArrayList();
     }
-    ac.c("JceCacheManager", "<getFilterConfig> config content : " + localStringBuilder.toString() + ", and setting cache");
+    ab.c("JceCacheManager", "<getFilterConfig> config content : " + localStringBuilder.toString() + ", and setting cache");
     this.c = paramContext;
     paramContext = paramContext.blackList;
     return paramContext;
@@ -119,7 +119,7 @@ public class b
   
   public <T extends JceStruct> void a(String paramString, byte[] paramArrayOfByte, Class<T> paramClass)
   {
-    l.a().post(new c(this, paramString, paramArrayOfByte, paramClass));
+    k.a().post(new c(this, paramString, paramArrayOfByte, paramClass));
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -143,20 +143,20 @@ public class b
       ShareUrlConfig localShareUrlConfig = (ShareUrlConfig)ProtocolPackage.bytes2JceObj(paramArrayOfByte, ShareUrlConfig.class);
       if (localShareUrlConfig != null)
       {
-        ac.c("JceCacheManager", "ShareUrlConfig is ok, config.blackList = " + localShareUrlConfig.blackList);
+        ab.c("JceCacheManager", "ShareUrlConfig is ok, config.blackList = " + localShareUrlConfig.blackList);
         this.c = localShareUrlConfig;
       }
       for (;;)
       {
         Settings.getInstance().setBlob("key_filter_config", paramArrayOfByte);
         return;
-        ac.c("JceCacheManager", "ShareUrlConfig is null");
+        ab.c("JceCacheManager", "ShareUrlConfig is null");
       }
       return;
     }
     catch (Exception paramArrayOfByte)
     {
-      ac.c("JceCacheManager", "saveFilterConfig error " + paramArrayOfByte.getMessage());
+      ab.c("JceCacheManager", "saveFilterConfig error " + paramArrayOfByte.getMessage());
     }
   }
   

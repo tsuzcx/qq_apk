@@ -1,106 +1,63 @@
-import android.os.Looper;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeShareView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
 public class pln
-  extends ohe
+  extends ViewBase
 {
-  public pln(ComponentHeaderPolymeric paramComponentHeaderPolymeric) {}
+  private NativeShareView a;
   
-  public void a(long paramLong, boolean paramBoolean)
+  public pln(VafContext paramVafContext)
   {
-    int i;
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      i = 1;
-      if (i != 0) {
-        break label32;
-      }
-      QLog.e("ComponentHeaderPolymeric", 2, "Please call this method in main thread!!!");
-    }
-    label32:
-    ArticleInfo localArticleInfo;
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("ComponentHeaderPolymeric", 2, "onUpdateAfterSmallVideoTopicFollow topicId = " + paramLong + " isFollow = " + paramBoolean);
-      }
-      localArticleInfo = (ArticleInfo)this.a.a.a.a().mGroupSubArticleList.get(0);
-    } while ((localArticleInfo == null) || (localArticleInfo.mPolymericInfo == null) || (localArticleInfo.mPolymericInfo.f != paramLong));
-    ComponentHeaderPolymeric.a(this.a).setVisibility(0);
-    if (paramBoolean)
-    {
-      ComponentHeaderPolymeric.a(this.a, true);
-      if ((localArticleInfo.mTopicRecommendFeedsInfo != null) && (localArticleInfo.mTopicRecommendFeedsInfo.a != null)) {
-        ((prx)localArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).c = 1;
-      }
-      if (localArticleInfo.mPolymericInfo != null)
-      {
-        localArticleInfo.mPolymericInfo.e = 2;
-        return;
-      }
-      QLog.e("ComponentHeaderPolymeric", 2, "articleInfo mPolymericInfo == null articleInfo.mArticleID = " + localArticleInfo.mArticleID);
-      return;
-    }
-    ComponentHeaderPolymeric.a(this.a, false);
-    if ((localArticleInfo.mTopicRecommendFeedsInfo != null) && (localArticleInfo.mTopicRecommendFeedsInfo.a != null)) {
-      ((prx)localArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).c = 0;
-    }
-    if (localArticleInfo.mPolymericInfo != null)
-    {
-      localArticleInfo.mPolymericInfo.e = 1;
-      return;
-    }
-    QLog.e("ComponentHeaderPolymeric", 2, "articleInfo mPolymericInfo == null articleInfo.mArticleID = " + localArticleInfo.mArticleID);
+    super(paramVafContext);
+    this.a = new NativeShareView(paramVafContext.getContext());
   }
   
-  public void b(long paramLong, boolean paramBoolean)
+  public void a(Bitmap paramBitmap)
   {
-    int i;
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      i = 1;
-      if (i != 0) {
-        break label32;
-      }
-      QLog.e("ComponentHeaderPolymeric", 2, "Please call this method in main thread!!!");
-    }
-    label32:
-    ArticleInfo localArticleInfo;
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("ComponentHeaderPolymeric", 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
-      }
-      localArticleInfo = (ArticleInfo)this.a.a.a.a().mGroupSubArticleList.get(0);
-    } while ((localArticleInfo == null) || (localArticleInfo.mPolymericInfo == null) || (localArticleInfo.mPolymericInfo.b != paramLong));
-    SocializeFeedsInfo localSocializeFeedsInfo = localArticleInfo.mSocialFeedInfo;
-    ComponentHeaderPolymeric.a(this.a).setVisibility(0);
-    if (paramBoolean)
-    {
-      ComponentHeaderPolymeric.a(this.a, true);
-      if (localSocializeFeedsInfo != null) {
-        localSocializeFeedsInfo.h = 2;
-      }
-      localArticleInfo.mPolymericInfo.e = 2;
-      return;
-    }
-    ComponentHeaderPolymeric.a(this.a, false);
-    if (localSocializeFeedsInfo != null) {
-      localSocializeFeedsInfo.h = 1;
-    }
-    localArticleInfo.mPolymericInfo.e = 1;
+    this.a.setScreenBitmap(paramBitmap);
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.a.setInitRunnable(paramRunnable);
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.setCurrentPath(paramString);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
   }
 }
 

@@ -1,123 +1,50 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadFeedsSender.1.1;
+import java.util.UUID;
 
-final class azus
-  implements DownloadParams.DecodeHandler
+public class azus
+  extends xbe
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  azus(azur paramazur) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    int n;
-    int i1;
-    int i;
-    int j;
-    int k;
-    int m;
-    int i2;
-    int i3;
-    boolean bool;
-    label128:
-    label380:
+    if (!paramBoolean) {}
     do
     {
-      Object localObject;
       do
       {
         do
         {
-          return paramDownloadParams;
-          localObject = paramDownloadParams.tag;
-          paramDownloadParams = paramBitmap;
-        } while (!(localObject instanceof int[]));
-        paramDownloadParams = paramBitmap;
-      } while (((int[])localObject).length != 6);
-      paramDownloadParams = (int[])localObject;
-      n = paramDownloadParams[0];
-      i1 = paramDownloadParams[1];
-      i = paramDownloadParams[2];
-      j = paramDownloadParams[3];
-      k = paramDownloadParams[4];
-      m = paramDownloadParams[5];
-      i2 = paramBitmap.getHeight();
-      i3 = paramBitmap.getWidth();
-      float f1;
-      if ((n >= 0) && (i1 >= 0) && (i > 0) && (j > 0) && (n < i3) && (i1 < i2))
+          return;
+          paramString = paramBundle.getString("itemKey");
+        } while (paramString == null);
+        paramString = UUID.fromString(paramString);
+      } while (!paramString.equals(this.a.a()));
+      azsr.c("TroopFileUploadFeedsSender", azsr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult retCode:" + paramInt1);
+      paramBundle = paramBundle.getString("fileId");
+      bajk localbajk = azsp.a(this.a.d);
+      if (localbajk == null)
       {
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.i(azue.a(), 2, String.format("CUSTOM_CLIP_DECODER [%d,%d,%d,%d,%d,%d] valid=%b", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) }));
-        }
-        if ((bool) || (k <= 0) || (m <= 0)) {
-          break label439;
-        }
-        f1 = k / m;
-        float f2 = paramBitmap.getWidth() / paramBitmap.getHeight();
-        localObject = new Rect();
-        if (f1 <= f2) {
-          break label380;
-        }
-        i = paramBitmap.getWidth();
-        j = (int)(i / f1);
-        n = (int)(0.5F * (paramBitmap.getHeight() - j));
-        f1 = paramBitmap.getHeight() - j;
-        ((Rect)localObject).set(0, n, i, (int)(j + 0.5F * f1));
+        azsr.a("TroopFileUploadFeedsSender", azsr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult getTroopFileMgr()=null");
+        return;
       }
-      for (;;)
+      paramString = localbajk.a(paramString);
+      if (paramString == null)
       {
-        paramBitmap = bacm.a(paramBitmap, (Rect)localObject, ageu.a(k, m, ((Rect)localObject).width(), ((Rect)localObject).height()));
-        paramDownloadParams = paramBitmap;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i(azue.a(), 2, String.format("CUSTOM_CLIP_DECODER centerCrop %s", new Object[] { ((Rect)localObject).toShortString() }));
-        return paramBitmap;
-        bool = false;
-        break label128;
-        i = paramBitmap.getHeight();
-        j = (int)(f1 * i);
-        n = (int)(0.5F * (paramBitmap.getWidth() - j));
-        f1 = paramBitmap.getWidth() - j;
-        ((Rect)localObject).set(n, 0, (int)(j + 0.5F * f1), i);
+        azsr.a("TroopFileUploadFeedsSender", azsr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult getFileInfo()=null");
+        return;
       }
-      paramDownloadParams = paramBitmap;
-    } while (!bool);
-    label439:
-    if (n + i > i3) {
-      i = i3 - n;
-    }
-    for (;;)
-    {
-      if (i1 + j > i2) {
-        j = i2 - i1;
-      }
-      for (;;)
-      {
-        paramDownloadParams = new Rect(n, i1, i + n, j + i1);
-        j = 1;
-        i = j;
-        if (k > 0)
-        {
-          i = j;
-          if (m > 0) {
-            i = ageu.a(k, m, paramDownloadParams.width(), paramDownloadParams.height());
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i(azue.a(), 2, String.format("CUSTOM_CLIP_DECODER [w,h]=[%d,%d] dstClip=%s sample=%d", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), paramDownloadParams, Integer.valueOf(i) }));
-        }
-        return bacm.a(paramBitmap, paramDownloadParams, i);
-      }
-    }
+    } while (paramInt1 != 0);
+    azsr.c("TroopFileUploadFeedsSender", azsr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult refreshOneFile");
+    xap.a(azsp.a(), this.a.d, paramString.a, paramString.b, this.a.jdField_a_of_type_Xay);
+    ThreadManager.executeOnSubThread(new TroopFileUploadFeedsSender.1.1(this, paramBundle, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azus
  * JD-Core Version:    0.7.0.1
  */

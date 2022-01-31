@@ -9,8 +9,8 @@ class ReadInJoyNativeAdFragment$11
   
   public void run()
   {
-    ReadInJoyNativeAdFragment.a(this.this$0).setBackgroundResource(2130839019);
-    ReadInJoyNativeAdFragment.a(this.this$0).setText(this.this$0.getText(2131652656));
+    ReadInJoyNativeAdFragment.a(this.this$0).setBackgroundResource(2130839047);
+    ReadInJoyNativeAdFragment.a(this.this$0).setText(this.this$0.getText(2131718479));
     ReadInJoyNativeAdFragment.a(this.this$0).setTextColor(-1);
     ReadInJoyNativeAdFragment.a(this.this$0).setProgress(0);
     ReadInJoyNativeAdFragment.a(this.this$0).setClickable(true);

@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bazb;
+import bcbv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
@@ -30,14 +30,14 @@ public class TroopTagViewActivity$TroopTagViewFragment
     int i = super.a(paramBundle);
     if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_Boolean))
     {
-      this.jdField_a_of_type_Bazb.c.setText(2131626377);
-      this.jdField_a_of_type_Bazb.c.setVisibility(0);
-      this.jdField_a_of_type_Bazb.a.setVisibility(8);
-      this.jdField_a_of_type_Bazb.c.setOnClickListener(this);
+      this.jdField_a_of_type_Bcbv.c.setText(2131691961);
+      this.jdField_a_of_type_Bcbv.c.setVisibility(0);
+      this.jdField_a_of_type_Bcbv.a.setVisibility(8);
+      this.jdField_a_of_type_Bcbv.c.setOnClickListener(this);
       return i;
     }
-    this.jdField_a_of_type_Bazb.c.setVisibility(8);
-    this.jdField_a_of_type_Bazb.a.setVisibility(8);
+    this.jdField_a_of_type_Bcbv.c.setVisibility(8);
+    this.jdField_a_of_type_Bcbv.a.setVisibility(8);
     return i;
   }
   
@@ -58,7 +58,7 @@ public class TroopTagViewActivity$TroopTagViewFragment
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_Bazb.c)
+    if (paramView == this.jdField_a_of_type_Bcbv.c)
     {
       if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_Boolean))
       {

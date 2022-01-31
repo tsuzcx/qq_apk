@@ -1,61 +1,81 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Handler;
+import android.support.v4.util.LruCache;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
 
 public class vtf
-  implements AdapterView.OnItemClickListener
 {
-  public vtf(QRDisplayActivity paramQRDisplayActivity) {}
+  public int a;
+  protected Context a;
+  public Handler a;
+  public LruCache<String, wbt> a;
+  public int b;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected Bitmap a(Bitmap paramBitmap)
   {
-    QRDisplayActivity.a(this.a).b();
-    int i;
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131655008;
+    veg.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap start.");
+    float f2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
+    int i = paramBitmap.getWidth();
+    float f1 = f2;
+    if (i > 0)
+    {
+      f1 = f2;
+      if (i < this.jdField_a_of_type_Int * f2) {
+        f1 = i / this.jdField_a_of_type_Int;
       }
     }
-    for (;;)
+    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int * f1));
+    this.b = ((int)(f1 * this.b));
+    i = this.jdField_a_of_type_Int;
+    veg.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap end.");
+    return bbdr.a(paramBitmap, i, this.jdField_a_of_type_Int, this.b);
+  }
+  
+  public Bitmap a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
     {
-      if (i != -1)
+      veg.e("Q.qqstory.record.StoryFaceDrawableFactory", "localPath = null!");
+      return null;
+    }
+    veg.b("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath start. localPath:%s.", paramString);
+    try
+    {
+      paramString = BitmapFactory.decodeFile(paramString);
+      if (paramString == null)
       {
-        bbmy.a(this.a, this.a.getString(i), 0).b(this.a.getTitleBarHeight());
-        if (this.a.jdField_c_of_type_Int == 2) {
-          if (paramLong != 2L) {
-            break label165;
-          }
-        }
-        label165:
-        for (paramAdapterView = "qr_wechat";; paramAdapterView = "qr_circle")
-        {
-          azzx.a("Grp_share", "grpData_admin", paramAdapterView, 0, 0, new String[] { this.a.jdField_c_of_type_JavaLangString, String.valueOf(this.a.a), "1" });
-          this.a.h = -1;
-          return;
-          if (WXShareHelper.a().b()) {
-            break label230;
-          }
-          i = 2131655009;
-          break;
-        }
+        veg.e("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile return null!");
+        return null;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("QRDisplayActivity", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      for (;;)
+      {
+        veg.c("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile error : %s.", paramString);
+        paramString = null;
       }
-      this.a.h = ((int)paramLong);
-      QRDisplayActivity.a(this.a);
-      return;
-      label230:
-      i = -1;
+      Bitmap localBitmap = a(paramString);
+      if (localBitmap == null)
+      {
+        veg.e("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap return null!");
+        return null;
+      }
+      if ((paramString != null) && (!paramString.isRecycled())) {
+        paramString.recycle();
+      }
+      veg.c("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath end.");
+      return localBitmap;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vtf
  * JD-Core Version:    0.7.0.1
  */

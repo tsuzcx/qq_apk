@@ -1,32 +1,52 @@
-import android.app.Dialog;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qqdataline.DatalineLeakHelper.2.1;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import java.io.File;
 
-public final class bfgv
-  implements View.OnClickListener
+public class bfgv
 {
-  public void onClick(View paramView)
+  public static long a(String paramString)
   {
-    if (this.a != null) {
-      this.a.dismiss();
+    long l1 = 0L;
+    long l2;
+    if (TextUtils.isEmpty(paramString)) {
+      l2 = l1;
     }
-    bbmy.a(BaseApplicationImpl.getApplication(), ajjy.a(2131636966) + "/Tencent/MobileQQ/log/", 1).a();
-    paramView = ThreadManager.newFreeHandlerThread("dataline-leaker", 10);
-    paramView.start();
-    paramView = paramView.getLooper();
-    if (paramView != null) {
-      new Handler(paramView).post(new DatalineLeakHelper.2.1(this));
+    do
+    {
+      return l2;
+      paramString = new File(paramString);
+      if (paramString.isFile()) {
+        return paramString.length();
+      }
+      paramString = paramString.listFiles();
+      l2 = l1;
+    } while (paramString == null);
+    int j = paramString.length;
+    int i = 0;
+    for (;;)
+    {
+      l2 = l1;
+      if (i >= j) {
+        break;
+      }
+      Object localObject = paramString[i];
+      l2 = l1;
+      if (localObject != null) {
+        l2 = l1 + a(localObject.getAbsolutePath());
+      }
+      i += 1;
+      l1 = l2;
     }
+  }
+  
+  public static SharedPreferences a()
+  {
+    return bfgu.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfgv
  * JD-Core Version:    0.7.0.1
  */

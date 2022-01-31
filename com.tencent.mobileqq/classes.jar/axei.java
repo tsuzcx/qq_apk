@@ -1,39 +1,46 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.ArrayList;
+import java.util.List;
 
 class axei
-  implements WtTicketPromise
+  implements axeq
 {
-  axei(axeh paramaxeh, Runnable paramRunnable) {}
+  axei(axeh paramaxeh) {}
   
-  public void Done(Ticket paramTicket)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeamWorkFileExportHandler", 2, "--- pskey invalid retry ---  ");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startDownloadConfigNoLogin onConfigResult | result=").append(paramInt1).append("serverError=").append(paramInt2);
+    VideoEnvironment.a(axeh.a(this.a), ((StringBuilder)localObject).toString(), null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
+    {
+      if (paramInt2 != 0)
+      {
+        VideoEnvironment.a(axeh.a(this.a), "startDownloadConfigNoLogin onConfigResult| uncompress config error=" + paramInt2, null);
+        axeh.a(this.a);
+        return;
+      }
+      localObject = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a(axeh.a(this.a), (List)localObject);
+      if (paramInt1 == 0)
+      {
+        VideoEnvironment.a(axeh.a(this.a), "startDownloadConfigNoLogin onConfigResult| check config success...", null);
+        axeh.a(this.a).a();
+        arco.a().a();
+        return;
+      }
+      VideoEnvironment.a(axeh.a(this.a), "startDownloadConfigNoLogin onConfigResult| check config error=" + paramInt1, null);
+      axeh.a(this.a);
+      return;
     }
-    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileExportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileExportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
-    }
+    VideoEnvironment.a(axeh.a(this.a), "startDownloadConfigNoLogin onConfigResult| result= RESULT_FAILED error=" + paramInt2, null);
+    axeh.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axei
  * JD-Core Version:    0.7.0.1
  */

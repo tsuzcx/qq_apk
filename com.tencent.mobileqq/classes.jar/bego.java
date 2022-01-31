@@ -1,72 +1,64 @@
-import android.util.SparseArray;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.widget.AbsSpinner;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AuthDevUgActivity;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import com.tencent.qqconnect.wtlogin.Login;
+import cooperation.qqfav.util.HandlerPlus;
 
 public class bego
+  implements View.OnClickListener
 {
-  private final SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  public bego(Login paramLogin) {}
   
-  public bego(AbsSpinner paramAbsSpinner) {}
-  
-  public View a(int paramInt)
+  public void onClick(View paramView)
   {
-    View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localView != null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt);
-    }
-    return localView;
-  }
-  
-  public void a()
-  {
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
-    int j = localSparseArray.size();
-    int i = 0;
-    while (i < j)
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton)
     {
-      View localView = (View)localSparseArray.valueAt(i);
-      if (localView != null) {
-        AbsSpinner.a(this.jdField_a_of_type_ComTencentWidgetAbsSpinner, localView, true);
-      }
-      i += 1;
+      AuthDevUgActivity.a(4);
+      this.a.b();
     }
-    localSparseArray.clear();
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
-  }
-  
-  public void b()
-  {
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
-    int j = localSparseArray.size();
-    int i = 0;
-    View localView;
-    if (i < j)
+    do
     {
-      localView = (View)localSparseArray.valueAt(i);
-      if ((localView == null) || (!(localView.getTag(2131301287) instanceof Boolean))) {
-        break label94;
-      }
-    }
-    label94:
-    for (boolean bool = ((Boolean)localView.getTag(2131301287)).booleanValue();; bool = true)
-    {
-      if ((localView != null) && (bool)) {
-        AbsSpinner.b(this.jdField_a_of_type_ComTencentWidgetAbsSpinner, localView, true);
-      }
-      i += 1;
-      break;
-      localSparseArray.clear();
       return;
-    }
+      if (paramView == this.a.c)
+      {
+        paramView = (InputMethodManager)this.a.getSystemService("input_method");
+        if (paramView != null) {
+          paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+        }
+        paramView = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+        paramView.what = 0;
+        this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessageDelayed(paramView, 100L);
+        return;
+      }
+      if (paramView == this.a.jdField_a_of_type_AndroidViewView)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+        return;
+      }
+      if (paramView == this.a.jdField_b_of_type_AndroidViewView)
+      {
+        this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
+        return;
+      }
+      if (paramView == this.a.jdField_a_of_type_AndroidWidgetTextView)
+      {
+        paramView = new Intent(this.a, LoginPhoneNumActivity2.class);
+        paramView.putExtra("key_req_src", this.a.jdField_a_of_type_Int);
+        this.a.startActivityForResult(paramView, 10000);
+        return;
+      }
+    } while (paramView != this.a.jdField_b_of_type_AndroidWidgetTextView);
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bego
  * JD-Core Version:    0.7.0.1
  */

@@ -1,115 +1,89 @@
+import android.app.Activity;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForQzoneFeed;
+import cooperation.qzone.QZoneClickReport;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public class adyd
-  implements aclm
+class adyd
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private adyh jdField_a_of_type_Adyh;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MessageForShortVideo jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-  private String jdField_a_of_type_JavaLangString;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private int b;
-  private int c;
+  adyd(adyc paramadyc, MessageForQzoneFeed paramMessageForQzoneFeed) {}
   
-  public adyd(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo, adyh paramadyh, long paramLong, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
-    this.jdField_a_of_type_Adyh = paramadyh;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-  }
-  
-  public void a()
-  {
-    Object localObject = new View(BaseApplicationImpl.getApplication());
-    aclk localaclk = aclk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (localaclk != null) {
-      localaclk.a((View)localObject, this);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl = adyc.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl)) {
+      return;
     }
-    localObject = aweg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, 1);
-    if (localObject != null) {
-      aweg.a((awey)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Map localMap = bfng.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
+    Object localObject = null;
+    if (localMap != null) {
+      localObject = (String)localMap.get("g");
     }
-  }
-  
-  public void a(View paramView, axqf paramaxqf, int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq != paramaxqf.jdField_b_of_type_Long)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("carverW GetUrlAction", 2, " handleMessage return file.uniseq=" + paramaxqf.jdField_b_of_type_Long);
+    if (("110".equals(localObject)) || ("279".equals(localObject)) || ("318".equals(localObject)))
+    {
+      paramView = paramView.getContext();
+      localObject = bgyf.a();
+      ((bgyf)localObject).a = this.jdField_a_of_type_Adyc.a.getCurrentAccountUin();
+      ((bgyf)localObject).b = this.jdField_a_of_type_Adyc.a.getCurrentNickname();
+      bgxy.a((Activity)paramView, (bgyf)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl, "mqqChat.QzoneCard", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.appId, -1);
+      paramView = new bgxs();
+      paramView.c = "1";
+      paramView.d = "0";
+      paramView.b = 4;
+      paramView.l = "3";
+      paramView.m = "AIO";
+      paramView.n = "detailPage";
+      QZoneClickReport.startReportImediately(this.jdField_a_of_type_Adyc.a.getAccount(), paramView);
+      paramView = new HashMap();
+      paramView.put("source_type", "3");
+      paramView.put("source_from", "AIO");
+      paramView.put("source_to", "detailPage");
+      axrl.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_Adyc.a.getAccount(), "actQZSourceDataReport", true, 0L, 0L, paramView, null);
+      paramView = null;
+      if (localMap != null) {
+        paramView = (String)localMap.get("a");
+      }
+      if (paramView != null)
+      {
+        if (!paramView.equals("4")) {
+          break label461;
+        }
+        paramView = "1";
       }
     }
-    do
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  if (QLog.isColorLevel()) {
-                    QLog.d("carverW GetUrlAction", 2, " handleMessage what==" + paramInt1 + ", arg1:" + paramInt2 + " fileType=" + paramaxqf.jdField_b_of_type_Int + " status=" + paramaxqf.d + " msg.id=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-                  }
-                } while ((paramaxqf.jdField_b_of_type_Int != 6) && (paramaxqf.jdField_b_of_type_Int != 17) && (paramaxqf.jdField_b_of_type_Int != 9) && (paramaxqf.jdField_b_of_type_Int != 20));
-                switch (paramaxqf.d)
-                {
-                case 2004: 
-                default: 
-                  return;
-                case 2002: 
-                  if (QLog.isColorLevel()) {
-                    QLog.d("carverW GetUrlAction", 2, "STATUS_RECV_PROCESS: get url finished urls=" + paramaxqf.c + " domain =" + paramaxqf.u + " mMsg=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-                  }
-                  break;
-                }
-              } while (paramaxqf.c == null);
-              this.jdField_a_of_type_ArrayOfJavaLangString = paramaxqf.c;
-              this.jdField_a_of_type_JavaLangString = paramaxqf.u;
-              paramInt1 = 0;
-              while (paramInt1 < 1)
-              {
-                if (!baip.a(this.jdField_a_of_type_JavaLangString))
-                {
-                  paramView = new StringBuilder();
-                  String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-                  arrayOfString[paramInt1] = (arrayOfString[paramInt1] + "&txhost=" + this.jdField_a_of_type_JavaLangString);
-                }
-                paramInt1 += 1;
-              }
-            } while (!QLog.isColorLevel());
-            QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_RECV_FINISHED");
-            return;
-            this.jdField_a_of_type_Int = paramaxqf.g;
-          } while (!QLog.isColorLevel());
-          QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_RECV_ERROR  error = " + this.jdField_a_of_type_Int);
-          return;
-          this.jdField_a_of_type_Int = paramaxqf.g;
-        } while (!QLog.isColorLevel());
-        QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_FILE_UNSAFE  error = " + this.jdField_a_of_type_Int);
-        return;
-        this.jdField_a_of_type_Int = paramaxqf.g;
-      } while (!QLog.isColorLevel());
-      QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_FILE_EXPIRED  error = " + this.jdField_a_of_type_Int);
+      localObject = new bgxs();
+      ((bgxs)localObject).c = "330";
+      ((bgxs)localObject).d = "2";
+      ((bgxs)localObject).e = paramView;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.isFirstMsgWithNewFriend) {
+        ((bgxs)localObject).i = "1";
+      }
+      ((bgxs)localObject).a = new ArrayList();
+      ((bgxs)localObject).a.add(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
+      QZoneClickReport.startReportImediately(this.jdField_a_of_type_Adyc.a.getAccount(), (bgxs)localObject);
+      axqw.b(this.jdField_a_of_type_Adyc.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "2", "", "");
+      axqw.b(this.jdField_a_of_type_Adyc.a, "CliOper", "", "", "0X8006000", "0X8006000", 0, 0, "", "", "", "");
       return;
-    } while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (!MessageForShortVideo.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo)) || (this.jdField_a_of_type_Adyh == null));
-    paramView = ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
-    this.jdField_a_of_type_Adyh.a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c, paramView, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, paramaxqf.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Adyc.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
+      break;
+      label461:
+      if (paramView.equals("311")) {
+        paramView = "2";
+      } else if (paramView.equals("2")) {
+        paramView = "3";
+      } else {
+        paramView = "4";
+      }
+    }
   }
 }
 

@@ -1,23 +1,21 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bhrb
-  extends GestureDetector.SimpleOnGestureListener
+final class bhrb
+  implements DialogInterface.OnClickListener
 {
-  public bhrb(CropVideoActivity paramCropVideoActivity) {}
+  bhrb(bbgg parambbgg) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramMotionEvent.getX();
-    paramMotionEvent.getY();
-    CropVideoActivity.a(this.a).b(2.0F, 2.0F, 1.0F);
-    return true;
+    if (this.a.isShowing()) {
+      this.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhrb
  * JD-Core Version:    0.7.0.1
  */

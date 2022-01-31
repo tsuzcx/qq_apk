@@ -1,0 +1,20 @@
+package com.tencent.mobileqq.activity.contacts.adapter;
+
+import afpl;
+
+public class ContactsDeviceAdapter$3
+  implements Runnable
+{
+  public ContactsDeviceAdapter$3(afpl paramafpl) {}
+  
+  public void run()
+  {
+    this.this$0.a = true;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter.3
+ * JD-Core Version:    0.7.0.1
+ */

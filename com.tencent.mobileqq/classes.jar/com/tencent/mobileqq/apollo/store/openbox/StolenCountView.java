@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
-import aitu;
-import aiys;
+import ajhu;
+import ajmu;
 import android.content.Context;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import babp;
+import bbct;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import java.io.File;
@@ -25,17 +25,17 @@ public class StolenCountView
   
   private void a()
   {
-    if (!new File(aiys.k + "boxcard/apollo_stolen_count_1.png").exists()) {
-      aitu.a("apollo_stolen_count_1.png", null, aitu.a("apollo_stolen_count_1.png")).startDownload();
+    if (!new File(ajmu.k + "boxcard/apollo_stolen_count_1.png").exists()) {
+      ajhu.a("apollo_stolen_count_1.png", null, ajhu.a("apollo_stolen_count_1.png")).startDownload();
     }
-    if (!new File(aiys.k + "boxcard/apollo_stolen_count_2.png").exists()) {
-      aitu.a("apollo_stolen_count_2.png", null, aitu.a("apollo_stolen_count_2.png")).startDownload();
+    if (!new File(ajmu.k + "boxcard/apollo_stolen_count_2.png").exists()) {
+      ajhu.a("apollo_stolen_count_2.png", null, ajhu.a("apollo_stolen_count_2.png")).startDownload();
     }
-    if (!new File(aiys.k + "boxcard/apollo_stolen_count_3.png").exists()) {
-      aitu.a("apollo_stolen_count_3.png", null, aitu.a("apollo_stolen_count_3.png")).startDownload();
+    if (!new File(ajmu.k + "boxcard/apollo_stolen_count_3.png").exists()) {
+      ajhu.a("apollo_stolen_count_3.png", null, ajhu.a("apollo_stolen_count_3.png")).startDownload();
     }
-    if (!new File(aiys.k + "boxcard/apollo_stolen_count_4.png").exists()) {
-      aitu.a("apollo_stolen_count_4.png", null, aitu.a("apollo_stolen_count_4.png")).startDownload();
+    if (!new File(ajmu.k + "boxcard/apollo_stolen_count_4.png").exists()) {
+      ajhu.a("apollo_stolen_count_4.png", null, ajhu.a("apollo_stolen_count_4.png")).startDownload();
     }
   }
   
@@ -43,16 +43,16 @@ public class StolenCountView
   {
     a();
     this.b = new URLImageView(paramContext);
-    int j = (int)((float)babp.i() * 0.97F);
-    int i = (int)((float)babp.i() * 0.192F);
+    int j = (int)((float)bbct.i() * 0.97F);
+    int i = (int)((float)bbct.i() * 0.192F);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(j, i);
     localLayoutParams.addRule(13);
-    URLDrawable localURLDrawable = aitu.a("apollo_stolen_count_bg.png", null, aitu.a("apollo_stolen_count_bg.png"));
+    URLDrawable localURLDrawable = ajhu.a("apollo_stolen_count_bg.png", null, ajhu.a("apollo_stolen_count_bg.png"));
     localURLDrawable.startDownload();
     this.b.setImageDrawable(localURLDrawable);
     this.b.setAlpha(0);
     super.addView(this.b, localLayoutParams);
-    j = (int)((float)babp.i() * 0.738F);
+    j = (int)((float)bbct.i() * 0.738F);
     this.a = new URLImageView(paramContext);
     paramContext = new RelativeLayout.LayoutParams(j, i);
     this.a.setScaleType(ImageView.ScaleType.CENTER_INSIDE);

@@ -1,59 +1,32 @@
-import Wallet.SkinInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
 
 public class agoc
+  implements View.OnClickListener
 {
-  public static agoa a(String paramString)
-  {
-    agoa localagoa = new agoa(ajjy.a(2131639642));
-    localagoa.jdField_b_of_type_Int = -2;
-    localagoa.jdField_a_of_type_WalletSkinInfo.skin_id = -2;
-    localagoa.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
-    localagoa.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
-    localagoa.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon = null;
-    localagoa.jdField_a_of_type_Int = 0;
-    return localagoa;
-  }
+  public agoc(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public static agoa a(List<agoa> paramList, int paramInt)
+  public void onClick(View paramView)
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (PhotoPreviewActivity.f(this.a))
     {
-      agoa localagoa = (agoa)paramList.next();
-      if (localagoa.jdField_a_of_type_WalletSkinInfo.skin_id == paramInt) {
-        return localagoa;
-      }
+      this.a.j();
+      return;
     }
-    return null;
-  }
-  
-  public static agoa b(String paramString)
-  {
-    agoa localagoa = new agoa(ajjy.a(2131639644));
-    localagoa.jdField_b_of_type_Int = -1;
-    localagoa.jdField_a_of_type_WalletSkinInfo.skin_id = 0;
-    localagoa.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
-    localagoa.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
-    localagoa.jdField_a_of_type_Int = -1;
-    return localagoa;
-  }
-  
-  public static agoa c(String paramString)
-  {
-    agoa localagoa = new agoa(ajjy.a(2131639643));
-    localagoa.jdField_b_of_type_JavaLangString = paramString;
-    localagoa.jdField_b_of_type_Int = 1;
-    localagoa.jdField_a_of_type_Int = 1000;
-    localagoa.jdField_a_of_type_WalletSkinInfo.skin_id = -1;
-    localagoa.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
-    return localagoa;
+    if (this.a.L) {
+      axqw.b(null, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
+    }
+    if (("FROM_PHOTO_LIST_FLOW".equals(this.a.e)) && (this.a.J)) {
+      this.a.setResult(-1);
+    }
+    this.a.finish();
+    bbbj.a(this.a, true, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agoc
  * JD-Core Version:    0.7.0.1
  */

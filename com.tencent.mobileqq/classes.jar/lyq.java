@@ -1,34 +1,61 @@
-import android.os.Build;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.lang.ref.WeakReference;
 
-public class lyq
-  extends mhy
+final class lyq
+  implements lyx
 {
-  public lyq(VideoControlUI paramVideoControlUI) {}
+  lyq(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, int paramInt, long paramLong, WeakReference paramWeakReference) {}
   
-  public void a()
+  public Bitmap a(long paramLong)
   {
-    this.a.m();
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.b, (byte)3, false, false);
   }
   
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
+  public TroopInfoData a()
   {
-    if (!this.a.h) {
-      this.a.e(0);
+    TroopInfoData localTroopInfoData = new TroopInfoData();
+    localTroopInfoData.troopUin = this.b;
+    localTroopInfoData.updateForTroopInfo(((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).c(this.b), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    return localTroopInfoData;
+  }
+  
+  public String a()
+  {
+    return lyn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b);
+  }
+  
+  public String a(int paramInt)
+  {
+    return "0X800A3E4";
+  }
+  
+  public String a(long paramLong, int paramInt)
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt3 == 2) {
+      mrb.a(paramInt1, paramInt2, this.jdField_a_of_type_Int, this.b);
     }
-    if ("GT-I9100G".equals(Build.MODEL))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.c, 2, "Model is 9100G, don't do animation");
-      }
-      return;
+    lyn.a(this.jdField_a_of_type_Long, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+  }
+  
+  public String b()
+  {
+    return lyn.a(this.b);
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt3 == 2) {
+      mrb.a(paramInt1, paramInt2, this.jdField_a_of_type_Int, this.b);
     }
-    this.a.F();
   }
 }
 

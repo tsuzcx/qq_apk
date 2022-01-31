@@ -1,11 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class atrc
+  implements View.OnClickListener
 {
-  int a;
-  int b;
+  atrc(atqu paramatqu) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "Type [type1=" + this.a + ", type2=" + this.b + "]";
+    paramView = bfol.a(this.a.a);
+    paramView.a(2131718049, 1);
+    paramView.c(2131690596);
+    paramView.a(new atrd(this, paramView));
+    paramView.show();
   }
 }
 

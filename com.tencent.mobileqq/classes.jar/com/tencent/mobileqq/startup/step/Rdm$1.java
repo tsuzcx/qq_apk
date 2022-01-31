@@ -3,8 +3,8 @@ package com.tencent.mobileqq.startup.step;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.QFixApplicationImpl;
 import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
-import ytb;
-import ytc;
+import zct;
+import zcu;
 
 class Rdm$1
   implements Runnable
@@ -13,9 +13,9 @@ class Rdm$1
   
   public void run()
   {
-    ytb localytb = ytc.a(BaseApplicationImpl.sApplication, "dex");
-    if ((localytb != null) && (localytb.a(BaseApplicationImpl.sApplication, true))) {
-      PatchSharedPreUtil.updateCountFailStartupPatch(BaseApplicationImpl.sApplication, this.a, localytb.b(), 0);
+    zct localzct = zcu.a(BaseApplicationImpl.sApplication, "dex");
+    if ((localzct != null) && (localzct.a(BaseApplicationImpl.sApplication, true))) {
+      PatchSharedPreUtil.updateCountFailStartupPatch(BaseApplicationImpl.sApplication, this.a, localzct.b(), 0);
     }
     QFixApplicationImpl.a(BaseApplicationImpl.sApplication);
   }

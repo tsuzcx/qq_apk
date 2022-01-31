@@ -1,53 +1,12 @@
-public abstract class bfuw
+import android.view.View;
+
+public abstract interface bfuw
 {
-  public static bfvf a(long paramLong)
-  {
-    return bfva.a().a(paramLong);
-  }
-  
-  public static bfvg a(long paramLong)
-  {
-    return bfva.a().a(paramLong);
-  }
-  
-  public static bfvh a(long paramLong)
-  {
-    return bfva.a().a(paramLong);
-  }
-  
-  public static String a(int paramInt, String paramString1, String paramString2, bfuy parambfuy)
-  {
-    return bfva.a().a(paramInt, paramString1, paramString2, parambfuy);
-  }
-  
-  public static String a(int paramInt, String paramString1, String paramString2, bfuz parambfuz)
-  {
-    return a(paramInt, paramString1, paramString2, true, parambfuz);
-  }
-  
-  public static String a(int paramInt, String paramString1, String paramString2, boolean paramBoolean, bfuz parambfuz)
-  {
-    return bfva.a().a(paramInt, paramString1, paramString2, paramBoolean, parambfuz);
-  }
-  
-  public static void a(long paramLong, bfvf parambfvf)
-  {
-    bfva.a().a(paramLong, parambfvf);
-  }
-  
-  public static void a(long paramLong, bfvg parambfvg)
-  {
-    bfva.a().a(paramLong, parambfvg);
-  }
-  
-  public static void a(long paramLong, bfvh parambfvh)
-  {
-    bfva.a().a(paramLong, parambfvh);
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfuw
  * JD-Core Version:    0.7.0.1
  */

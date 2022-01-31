@@ -1,145 +1,63 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.open.base.ToastUtil.1;
+import com.tencent.open.base.ToastUtil.2;
+import com.tencent.open.base.ToastUtil.3;
 
 public class bdid
-  extends Dialog
 {
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean jdField_a_of_type_Boolean;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
-  TextView c;
-  TextView d;
-  TextView e;
-  TextView f;
+  protected static bdid a;
+  protected Handler a;
+  public Toast a;
+  public Toast b;
   
-  public bdid(Context paramContext)
+  public bdid()
   {
-    super(paramContext, 2131690143);
-    a(paramContext);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
-  private void a(Context paramContext)
+  public static bdid a()
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131493718, null);
-    setContentView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131304525));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131304538));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131297342));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131312933));
-    this.c = ((TextView)paramContext.findViewById(2131312961));
-    this.d = ((TextView)paramContext.findViewById(2131297332));
-    this.e = ((TextView)paramContext.findViewById(2131303438));
-    this.f = ((TextView)paramContext.findViewById(2131309522));
-    setCanceledOnTouchOutside(true);
-    paramContext = getWindow();
-    if (paramContext != null) {
-      paramContext.setGravity(80);
+    if (jdField_a_of_type_Bdid == null) {
+      jdField_a_of_type_Bdid = new bdid();
     }
+    return jdField_a_of_type_Bdid;
   }
   
-  public Bundle a()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidOsBundle;
+    a(paramInt, 0);
   }
   
-  public void a(Drawable paramDrawable1, String paramString1, String paramString2, Drawable paramDrawable2, String paramString3, String paramString4, String paramString5, View.OnClickListener paramOnClickListener1, String paramString6, View.OnClickListener paramOnClickListener2)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString2);
-    if (paramDrawable2 == null)
-    {
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      if (!TextUtils.isEmpty(paramString3)) {
-        break label141;
-      }
-      this.c.setVisibility(8);
-      label65:
-      if (!TextUtils.isEmpty(paramString5)) {
-        break label161;
-      }
-      this.e.setVisibility(8);
-      label82:
-      if (!TextUtils.isEmpty(paramString6)) {
-        break label190;
-      }
-      this.f.setVisibility(8);
-      label99:
-      if (!TextUtils.isEmpty(paramString4)) {
-        break label219;
-      }
-      this.d.setVisibility(8);
-    }
-    for (;;)
-    {
-      show();
+    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.2(this, paramInt1, paramInt2));
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.3(this, paramView, paramInt));
+  }
+  
+  public void a(String paramString)
+  {
+    a(paramString, 0);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable2);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      break;
-      label141:
-      this.c.setText(paramString3);
-      this.c.setVisibility(0);
-      break label65;
-      label161:
-      this.e.setText(paramString5);
-      this.e.setOnClickListener(paramOnClickListener1);
-      this.e.setVisibility(0);
-      break label82;
-      label190:
-      this.f.setText(paramString6);
-      this.f.setOnClickListener(paramOnClickListener2);
-      this.f.setVisibility(0);
-      break label99;
-      label219:
-      this.d.setVisibility(0);
-      this.d.setText(paramString4);
     }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.1(this, paramString, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdid
  * JD-Core Version:    0.7.0.1
  */

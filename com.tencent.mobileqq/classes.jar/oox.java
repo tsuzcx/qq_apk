@@ -1,237 +1,245 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.BannerInfoModule.2;
-import com.tencent.biz.pubaccount.readinjoy.model.BannerInfoModule.4;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerRoundReqBody;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerRoundRspBody;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.ContentBannerItem;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.DynamicBannerItem;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.MoreChannelItem;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.ReqBody;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.RspBody;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.VideoBannerItem;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class oox
-  extends oqg
+  implements AladdinConfigHandler
 {
-  private final ConcurrentHashMap<Integer, TopBannerInfo> a;
+  private static int jdField_a_of_type_Int = 41505;
+  private static String jdField_a_of_type_JavaLangString;
+  private static boolean jdField_a_of_type_Boolean;
+  private static int jdField_b_of_type_Int;
+  private static String jdField_b_of_type_JavaLangString;
+  private static String c;
+  private static String d;
   
-  public oox(AppInterface paramAppInterface, atmp paramatmp, ExecutorService paramExecutorService, pdc parampdc, Handler paramHandler, ooq paramooq)
+  public static float a()
   {
-    super(paramAppInterface, paramatmp, paramExecutorService, parampdc, paramHandler);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    if (paramooq != null) {
-      paramooq.a(new ooy(this));
+    Float localFloat = (Float)bhvh.a("readinjoy_daily_mode_drag_threshold", Float.valueOf(1.0F));
+    QLog.d("DailyModeConfigHandler", 1, "[getJumpThreshold] " + localFloat);
+    if ((localFloat.floatValue() > 0.001D) && (localFloat.floatValue() < 10.0F)) {
+      return localFloat.floatValue();
     }
+    return 1.0F;
   }
   
-  private void a(TopBannerInfo paramTopBannerInfo)
+  public static int a()
   {
-    b(paramTopBannerInfo);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramTopBannerInfo.mChannelId), paramTopBannerInfo);
-    this.jdField_a_of_type_AndroidOsHandler.post(new BannerInfoModule.2(this, paramTopBannerInfo));
-  }
-  
-  private void b(TopBannerInfo paramTopBannerInfo)
-  {
-    a(paramTopBannerInfo);
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int j = 0;
-    paramToServiceMsg = new oidb_cmd0xbc9.RspBody();
-    int i = pde.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
-    QLog.d("ReadInJoyEngineModule", 2, new Object[] { "handle0xbc9BannerInfo result = ", Integer.valueOf(i) });
-    if ((i == 0) && (paramToServiceMsg.msg_banner_round_rsp_body.has()))
+    if (b(jdField_a_of_type_Int))
     {
-      paramObject = (oidb_cmd0xbc9.BannerRoundRspBody)paramToServiceMsg.msg_banner_round_rsp_body.get();
-      if ((!paramObject.uint32_need_update.has()) || (paramObject.uint32_need_update.get() != 1)) {
-        break label453;
-      }
-      paramFromServiceMsg = new TopBannerInfo();
-      if ((paramObject.rpt_msg_banner_list.has()) && (paramObject.rpt_msg_banner_list.size() > 0))
-      {
-        i = 0;
-        if (i < paramObject.rpt_msg_banner_list.size())
-        {
-          paramToServiceMsg = (oidb_cmd0xbc9.BannerItem)paramObject.rpt_msg_banner_list.get(i);
-          if (paramToServiceMsg.uint32_banner_type.has())
-          {
-            if (paramToServiceMsg.uint32_banner_type.get() != 2) {
-              break label199;
-            }
-            if (!paramToServiceMsg.msg_video_banner_item.has()) {
-              break label462;
-            }
-            paramToServiceMsg = prs.b(paramToServiceMsg);
-          }
-        }
-      }
+      QLog.d("DailyModeConfigHandler", 1, "[getMode] isDailyUnlimitChannel MODE_LOAD_MORE");
+      return 2;
     }
-    label453:
+    Integer localInteger = (Integer)bhvh.a("readinjoy_daily_mode_plan_number", Integer.valueOf(-1));
+    QLog.d("DailyModeConfigHandler", 1, "[getMode] " + localInteger);
+    if (localInteger.intValue() == 2) {
+      return 2;
+    }
+    if (localInteger.intValue() == 1) {
+      return 1;
+    }
+    return 3;
+  }
+  
+  public static String a()
+  {
+    if (jdField_b_of_type_JavaLangString != null) {
+      return jdField_b_of_type_JavaLangString;
+    }
+    jdField_b_of_type_JavaLangString = (String)bhvh.a("readinjoy_daily_mode_bottom_jump", "");
+    return jdField_b_of_type_JavaLangString;
+  }
+  
+  public static JSONObject a()
+  {
+    if (TextUtils.isEmpty(d)) {
+      d = (String)bhvh.a("readinjoy_daily_mode_footer_pts", "");
+    }
+    QLog.i("DailyModeConfigHandler", 1, "getFooterData pts = " + d);
+    try
+    {
+      JSONObject localJSONObject1 = new JSONObject(d);
+      return localJSONObject1;
+    }
+    catch (JSONException localJSONException1)
+    {
+      QLog.e("DailyModeConfigHandler", 1, "getFooterData e = " + localJSONException1);
+      JSONObject localJSONObject2 = new JSONObject();
+      try
+      {
+        localJSONObject2.put("style_ID", "ReadInjoy_daily_footer");
+        localJSONObject2.put("title_EN", "TENCENT KANDIAN");
+        localJSONObject2.put("title_CN", ajyc.a(2131702708));
+        return localJSONObject2;
+      }
+      catch (JSONException localJSONException2)
+      {
+        QLog.e("DailyModeConfigHandler", 1, "getFooterData e = " + localJSONException2);
+      }
+      return localJSONObject2;
+    }
+  }
+  
+  public static void a()
+  {
+    QLog.d("DailyModeConfigHandler", 1, "DailyModeConfigHandler reset.");
+    jdField_a_of_type_JavaLangString = null;
+    jdField_b_of_type_JavaLangString = null;
+    c = null;
+    d = null;
+  }
+  
+  public static void a(String paramString)
+  {
+    if (paramString == null) {}
     for (;;)
     {
-      if (paramToServiceMsg != null) {
-        paramFromServiceMsg.addItem(paramToServiceMsg);
-      }
-      i += 1;
-      break;
-      label199:
-      if (paramToServiceMsg.msg_article_content_item.has())
+      return;
+      try
       {
-        paramToServiceMsg = prq.b(paramToServiceMsg);
-        continue;
-        if (paramObject.bytes_cookie.has()) {
-          paramFromServiceMsg.mCookie = paramObject.bytes_cookie.get().toStringUtf8();
+        paramString = new JSONObject(paramString);
+        jdField_a_of_type_JavaLangString = paramString.optString("bottom_text");
+        jdField_b_of_type_JavaLangString = paramString.optString("jump_url");
+        c = paramString.optString("jump_src");
+        d = paramString.optString("ReadInjoy_daily_footer_pts");
+        if (jdField_a_of_type_JavaLangString != null) {
+          bhvh.a("readinjoy_daily_mode_bottom_text", jdField_a_of_type_JavaLangString);
         }
-        if (paramObject.uint32_channel_id.has()) {
-          paramFromServiceMsg.mChannelId = paramObject.uint32_channel_id.get();
+        if (jdField_b_of_type_JavaLangString != null) {
+          bhvh.a("readinjoy_daily_mode_bottom_jump", jdField_b_of_type_JavaLangString);
         }
-        if ((paramObject.rpt_msg_dynamic_banner_list.has()) && (paramObject.rpt_msg_dynamic_banner_list.size() > 0))
+        if (c != null) {
+          bhvh.a("readinjoy_daily_mode_bottom_jump_src", c);
+        }
+        if (d != null)
         {
-          i = j;
-          while (i < paramObject.rpt_msg_dynamic_banner_list.size())
-          {
-            if ((((oidb_cmd0xbc9.DynamicBannerItem)paramObject.rpt_msg_dynamic_banner_list.get(i)).has()) && (paramObject.rpt_msg_dynamic_banner_list.get(i) != null))
-            {
-              paramToServiceMsg = prp.a((oidb_cmd0xbc9.DynamicBannerItem)paramObject.rpt_msg_dynamic_banner_list.get(i));
-              if (paramToServiceMsg != null)
-              {
-                paramToServiceMsg = paramToServiceMsg.iterator();
-                while (paramToServiceMsg.hasNext()) {
-                  paramFromServiceMsg.addDynamicItem((prp)paramToServiceMsg.next());
-                }
-              }
-            }
-            i += 1;
-          }
+          bhvh.a("readinjoy_daily_mode_footer_pts", d);
+          return;
         }
-        if (paramObject.msg_more_channel_item.has())
-        {
-          paramToServiceMsg = prr.a((oidb_cmd0xbc9.MoreChannelItem)paramObject.msg_more_channel_item.get());
-          if (paramToServiceMsg != null) {
-            paramFromServiceMsg.setMoreChannelItem(paramToServiceMsg);
-          }
-        }
-        a(paramFromServiceMsg);
-        QLog.d("ReadInJoyEngineModule", 2, "handle0xbc9BannerInfo bannerInfo = " + paramFromServiceMsg);
-        return;
-        QLog.d("ReadInJoyEngineModule", 2, "handle0xbc9BannerInfo uint32_need_update = 0");
       }
-      else
+      catch (JSONException paramString)
       {
-        label462:
-        paramToServiceMsg = null;
+        paramString.printStackTrace();
       }
     }
   }
   
-  public TopBannerInfo a(int paramInt)
+  public static boolean a()
   {
-    return (TopBannerInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    return jdField_a_of_type_Boolean;
   }
   
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public static boolean a(int paramInt)
   {
-    Object localObject1 = a(paramInt1);
-    if (localObject1 == null) {}
-    for (localObject1 = "";; localObject1 = ((TopBannerInfo)localObject1).mCookie)
+    return paramInt == 41505;
+  }
+  
+  public static int b()
+  {
+    return jdField_a_of_type_Int;
+  }
+  
+  public static String b()
+  {
+    if (ntu.a() == 1) {
+      return "1";
+    }
+    if (c != null) {
+      return c;
+    }
+    c = (String)bhvh.a("readinjoy_daily_mode_bottom_jump_src", "0");
+    return c;
+  }
+  
+  public static void b()
+  {
+    if ("1".equals((String)bhvh.a("readinjoy_daily_mode_refresh_mode", "0"))) {}
+    for (jdField_a_of_type_Boolean = true;; jdField_a_of_type_Boolean = false)
     {
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = "";
+      jdField_a_of_type_Int = ((Integer)bhvh.a("readinjoy_daily_mode_channel_id", Integer.valueOf(41505))).intValue();
+      if (!bhvh.g())
+      {
+        QLog.i("DailyModeConfigHandler", 1, "非独立看点->进入无限流 refreshDailyConfig   " + jdField_a_of_type_Int);
+        jdField_a_of_type_Int = 41697;
       }
-      localObject1 = new oidb_cmd0xbc9.ReqBody();
-      oidb_cmd0xbc9.BannerRoundReqBody localBannerRoundReqBody = new oidb_cmd0xbc9.BannerRoundReqBody();
-      localBannerRoundReqBody.bytes_cookie.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-      localBannerRoundReqBody.uint32_channel_id.set(paramInt1);
-      ((oidb_cmd0xbc9.ReqBody)localObject1).msg_banner_round_req_body.set(localBannerRoundReqBody);
-      a(pde.a("OidbSvc.0xbc9", 3017, paramInt2, ((oidb_cmd0xbc9.ReqBody)localObject1).toByteArray()));
-      QLog.d("ReadInJoyEngineModule", 2, "req banner info cookies: " + (String)localObject2 + "  channelId: " + paramInt1);
+      if (b(jdField_a_of_type_Int)) {
+        jdField_a_of_type_Boolean = true;
+      }
+      QLog.i("DailyModeConfigHandler", 1, "refreshDailyConfig " + jdField_a_of_type_Boolean + "  " + jdField_a_of_type_Int);
+      jdField_b_of_type_Int = jdField_a_of_type_Int;
+      if (onk.c) {
+        jdField_a_of_type_Int = 41697;
+      }
       return;
     }
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public static boolean b()
   {
-    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xbc9")) {
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    boolean bool = true;
+    if (a()) {
+      return false;
     }
-  }
-  
-  public void b(int paramInt)
-  {
-    a(paramInt, 1);
-  }
-  
-  public void c(int paramInt)
-  {
-    List localList = this.jdField_a_of_type_Atmp.a(TopBannerInfo.class, true, "mChannelId IS NOT NULL AND mChannelId == ?", new String[] { "" + paramInt }, null, null, null, "1");
-    if ((localList == null) || (localList.isEmpty()))
+    if (Aladdin.getConfig(157).getIntegerFromString("enable_dynamic_header", 0) == 1) {}
+    for (;;)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramInt), new TopBannerInfo());
-      return;
+      return bool;
+      bool = false;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramInt), localList.get(0));
   }
   
-  public void d(int paramInt)
+  public static boolean b(int paramInt)
   {
-    Random localRandom = new Random();
-    long l = System.currentTimeMillis();
-    TopBannerInfo localTopBannerInfo = new TopBannerInfo();
-    localTopBannerInfo.mChannelId = paramInt;
-    Object localObject = new prq(1);
-    ((prq)localObject).jdField_c_of_type_JavaLangString = "http://qqpublic.qpic.cn/qq_public_cover/0/0-10000-7437E5B1B0F2403FBD6DDA952CE80AC1_vsmcut_160_90/0?busiType=3";
-    ((prq)localObject).f = "https://post.mp.qq.com/kan/article/2713129639-168010414.html?_wv=2147483777&sig=a039548d942f9b78b9dfab5c79284783&article_id=168010414&time=1534413057&_pflag=1&x5PreFetch=1";
-    ((prq)localObject).jdField_b_of_type_JavaLangString = ajjy.a(2131635112);
-    ((prq)localObject).jdField_d_of_type_JavaLangString = (ajjy.a(2131635119) + l);
-    localTopBannerInfo.addItem((pro)localObject);
-    localObject = new prq(3);
-    ((prq)localObject).jdField_c_of_type_JavaLangString = "http://gpic.qpic.cn/gbar_pic/aDJbaZH6aeQ9iaKenQ8IqHdg7M9kzbfsJZ3JAm4e1ICSlcpxOfcN5KQ/0";
-    ((prq)localObject).f = "https://post.mp.qq.com/kan/article/2713129639-168010414.html?_wv=2147483777&sig=a039548d942f9b78b9dfab5c79284783&article_id=168010414&time=1534413057&_pflag=1&x5PreFetch=1";
-    ((prq)localObject).a = "#F05F4C";
-    ((prq)localObject).jdField_b_of_type_JavaLangString = (ajjy.a(2131635115) + l);
-    localTopBannerInfo.addItem((pro)localObject);
-    localObject = new prq(4);
-    ((prq)localObject).jdField_c_of_type_JavaLangString = "http://qqpublic.qpic.cn/qq_public_cover/0/0-1533397936-401F1461EE42E7A5036F2F9AADA7E93E_open_280_280/320";
-    ((prq)localObject).f = "https://post.mp.qq.com/kan/article/2713129639-168010414.html?_wv=2147483777&sig=a039548d942f9b78b9dfab5c79284783&article_id=168010414&time=1534413057&_pflag=1&x5PreFetch=1";
-    localTopBannerInfo.addItem((pro)localObject);
-    localObject = new prs();
-    ((prs)localObject).jdField_c_of_type_JavaLangString = "http://qqpublic.qpic.cn/qq_public/0/0-3041074878-6A663B38A6407A5DDFC7A5DF6D258047/900";
-    ((prs)localObject).a = "#F05F4C";
-    ((prs)localObject).jdField_b_of_type_JavaLangString = ajjy.a(2131635117);
-    ((prs)localObject).jdField_d_of_type_JavaLangString = (ajjy.a(2131635116) + l);
-    ((prs)localObject).jdField_e_of_type_Int = 2;
-    ((prs)localObject).jdField_e_of_type_JavaLangString = "1135b6d7402114aj";
-    ((prs)localObject).jdField_d_of_type_Int = 720;
-    ((prs)localObject).jdField_c_of_type_Int = 1312;
-    ((prs)localObject).jdField_b_of_type_Long = 1635823166L;
-    ((prs)localObject).jdField_b_of_type_Int = 67;
-    ((prs)localObject).g = "te9oeA";
-    localTopBannerInfo.addItem((pro)localObject);
-    paramInt = localRandom.nextInt(3);
-    localTopBannerInfo.items.remove(paramInt);
-    b(localTopBannerInfo);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(localTopBannerInfo.mChannelId), localTopBannerInfo);
-    this.jdField_a_of_type_AndroidOsHandler.post(new BannerInfoModule.4(this, localTopBannerInfo));
+    if (a(jdField_a_of_type_Int)) {}
+    while (jdField_a_of_type_Int != paramInt) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static void c()
+  {
+    jdField_a_of_type_Int = jdField_b_of_type_Int;
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    if (a(paramInt)) {
+      return true;
+    }
+    return b(paramInt);
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("DailyModeConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = ooi.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("DailyModeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "daily_plan_number")) {
+        bhvh.a("readinjoy_daily_mode_plan_number", Integer.valueOf(str2));
+      } else if (TextUtils.equals(str1, "daily_drag_threshold")) {
+        bhvh.a("readinjoy_daily_mode_drag_threshold", Float.valueOf(str2));
+      }
+    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("DailyModeConfigHandler", 1, "[onWipeConfig]");
+    bhvh.a("readinjoy_daily_mode_plan_number", Integer.valueOf(-1));
   }
 }
 

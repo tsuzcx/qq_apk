@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahka;
-import bglt;
+import ahws;
+import bhuo;
 
 public final class QzoneSyncQQStoryTool$1
   implements Runnable
 {
   public void run()
   {
-    bglt.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, ahka.a, 1, 14.0F, 5.0D, 10.0D, 5000L, -15550475, false, true, 0, null, 0);
+    bhuo.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, ahws.a, 1, 14.0F, 5.0D, 10.0D, 5000L, -15550475, false, true, 0, null, 0);
   }
 }
 

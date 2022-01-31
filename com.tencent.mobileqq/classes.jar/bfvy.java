@@ -1,34 +1,42 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
+import android.text.Spanned;
+import android.text.method.NumberKeyListener;
+import com.tencent.widget.TCWNumberPicker;
 
-public final class bfvy
-  implements Parcelable.Creator<CoverCacheData.GameCoverInfo>
+public class bfvy
+  extends NumberKeyListener
 {
-  public CoverCacheData.GameCoverInfo a(Parcel paramParcel)
+  private bfvy(TCWNumberPicker paramTCWNumberPicker) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    CoverCacheData.GameCoverInfo localGameCoverInfo = new CoverCacheData.GameCoverInfo();
-    if (paramParcel != null)
-    {
-      localGameCoverInfo.jdField_a_of_type_Double = paramParcel.readDouble();
-      localGameCoverInfo.jdField_b_of_type_Double = paramParcel.readDouble();
-      localGameCoverInfo.c = paramParcel.readDouble();
-      localGameCoverInfo.d = paramParcel.readDouble();
-      localGameCoverInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localGameCoverInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localGameCoverInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    CharSequence localCharSequence2 = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    CharSequence localCharSequence1 = localCharSequence2;
+    if (localCharSequence2 == null) {
+      localCharSequence1 = paramCharSequence.subSequence(paramInt1, paramInt2);
     }
-    return localGameCoverInfo;
+    paramCharSequence = String.valueOf(paramSpanned.subSequence(0, paramInt3)) + localCharSequence1 + paramSpanned.subSequence(paramInt4, paramSpanned.length());
+    if ("".equals(paramCharSequence)) {
+      localCharSequence1 = paramCharSequence;
+    }
+    while (TCWNumberPicker.a(this.a, paramCharSequence) <= TCWNumberPicker.a(this.a)) {
+      return localCharSequence1;
+    }
+    return "";
   }
   
-  public CoverCacheData.GameCoverInfo[] a(int paramInt)
+  protected char[] getAcceptedChars()
   {
-    return null;
+    return TCWNumberPicker.a();
+  }
+  
+  public int getInputType()
+  {
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfvy
  * JD-Core Version:    0.7.0.1
  */

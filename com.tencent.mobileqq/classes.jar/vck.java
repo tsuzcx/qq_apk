@@ -1,142 +1,49 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
+import android.app.Activity;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 class vck
-  extends LinearLayout
+  extends uyl
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private int b;
-  private int c;
+  vck(vci paramvci) {}
   
-  public vck(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
+  public void a(int paramInt, View paramView, Object paramObject, vas paramvas)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.c = (this.jdField_a_of_type_Int / this.b);
-    a();
-  }
-  
-  private void a()
-  {
-    setOrientation(0);
-    setGravity(17);
-    int j = vct.a(getContext(), 3.0F);
-    int k = (int)((this.c - j * 2) * this.jdField_a_of_type_Float);
-    int i = 0;
-    while (i < this.b)
-    {
-      View localView = LayoutInflater.from(getContext()).inflate(2131495691, null);
-      localView.setLayoutParams(new ViewGroup.LayoutParams(this.c - j * 2, this.c - j * 2));
-      ((ImageView)localView.findViewById(2131303865)).setPadding(k, k, k, k);
-      addView(localView);
-      i += 1;
-    }
-  }
-  
-  private void a(int paramInt)
-  {
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = paramInt;
-      if (i >= paramInt) {
-        break;
+    if ((paramView == paramvas.a(2131373292)) || (paramView == paramvas.a(2131373293)) || (paramView == paramvas.a(2131373296))) {
+      if (vci.a(this.a)) {
+        veg.d("Q.qqstory.home.LocalVideoPushSegment", "now is opening the new page, so ignore the click");
       }
-      j = paramInt;
-      if (i >= getChildCount()) {
-        break;
+    }
+    while (paramView != paramvas.a(2131373291))
+    {
+      return;
+      vci.a(this.a, true);
+      paramObject = new Bundle();
+      paramObject.putInt("capture_intent_mode", 3);
+      if (vci.a(this.a) == 1) {
+        paramObject.putString("story_capture_album_id", "default_id");
       }
-      getChildAt(i).setVisibility(0);
-      i += 1;
-    }
-    while ((j < this.b) && (j < getChildCount()))
-    {
-      getChildAt(j).setVisibility(4);
-      j += 1;
-    }
-  }
-  
-  public void a(vca paramvca, int paramInt1, int paramInt2)
-  {
-    int i = paramInt1 * this.b;
-    label31:
-    Object localObject3;
-    URLImageView localURLImageView;
-    TextView localTextView;
-    Object localObject2;
-    String str;
-    Object localObject1;
-    if (paramInt1 == paramInt2 - 1)
-    {
-      paramInt1 = paramvca.b();
-      a(paramInt1 - i);
-      paramInt2 = i;
-      if (paramInt2 >= paramInt1) {
+      for (;;)
+      {
+        vwm.a().a((Activity)vci.a(this.a), paramObject, 20000);
+        vel.a("home_page", "clk_smartalbum", 0, 0, new String[] { vci.a(this.a, vci.a(this.a)) });
         return;
-      }
-      localObject3 = getChildAt(paramInt2 - i);
-      localURLImageView = (URLImageView)((View)localObject3).findViewById(2131303865);
-      localTextView = (TextView)((View)localObject3).findViewById(2131303877);
-      localObject2 = (ProgressBar)((View)localObject3).findViewById(2131303875);
-      str = paramvca.b(paramInt2);
-      localObject1 = paramvca.a(paramInt2);
-      if (localObject1 != null) {
-        break label137;
-      }
-      urk.e("LocationFaceAdapter", "FacePackage's thumbUri is empty , pkg : %s", new Object[] { paramvca.toString() });
-    }
-    for (;;)
-    {
-      paramInt2 += 1;
-      break label31;
-      paramInt1 = this.b + i;
-      break;
-      label137:
-      ((View)localObject3).setContentDescription(str);
-      localTextView.setText(str);
-      localURLImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localURLImageView.setTag(2131311062, Integer.valueOf(paramInt2));
-      localObject3 = (Boolean)localURLImageView.getTag(2131311040);
-      if ((localObject3 != null) && (((Boolean)localObject3).booleanValue()) && (((String)localObject1).equals(localURLImageView.getTag(2131311070))))
-      {
-        ((ProgressBar)localObject2).setVisibility(4);
-      }
-      else
-      {
-        localURLImageView.setTag(2131311070, localObject1);
-        localURLImageView.setTag(2131311040, Boolean.valueOf(false));
-        ((ProgressBar)localObject2).setVisibility(0);
-        localObject2 = new vcl((String)localObject1, localURLImageView, (ProgressBar)localObject2);
-        localURLImageView.setURLDrawableDownListener((URLDrawableDownListener)localObject2);
-        localObject3 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = axwd.a;
-        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = axwd.a;
-        ((URLDrawable.URLDrawableOptions)localObject3).mUseAutoScaleParams = false;
-        localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
-        if (((URLDrawable)localObject1).getStatus() == 1) {
-          ((vcl)localObject2).onLoadSuccessed(localURLImageView, (URLDrawable)localObject1);
+        if (vci.a(this.a) == 2)
+        {
+          if (vci.a(this.a) != null) {}
+          for (paramView = String.valueOf(vci.a(this.a).a());; paramView = "default_id")
+          {
+            paramObject.putString("story_capture_album_id", paramView);
+            break;
+          }
         }
-        localURLImageView.setImageDrawable((Drawable)localObject1);
+        if (vci.a(this.a) != 3) {}
       }
     }
+    this.a.a.b("last_cancel_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
+    this.a.a(null, 4);
+    vel.a("home_page", "close_smartalbum", 0, 0, new String[] { vci.a(this.a, vci.a(this.a)) });
   }
 }
 

@@ -1,28 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class bbdz
-  implements bbec
+class bbdz
+  extends asys
 {
-  public bbdz(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, long paramLong) {}
+  bbdz(bbds parambbds, long paramLong) {}
   
-  public void a(String paramString)
+  public void a(long paramLong1, long paramLong2)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Int = 10004;
+    if ((this.jdField_a_of_type_Long == paramLong1) && (paramLong2 > 0L)) {
+      bazo.a((BaseActivity)this.jdField_a_of_type_Bbds.a, paramLong2, this.jdField_a_of_type_Long + "", null, 20003);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e = false;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = false;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Bbdo.d = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbdz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emosm;
 
-import ajff;
-import amzx;
-import anae;
-import anbh;
+import ajth;
 import android.text.TextUtils;
-import awqx;
+import anqf;
+import anqm;
+import anrs;
+import axqw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CameraEmotionData;
 import com.tencent.qphone.base.util.QLog;
@@ -14,7 +14,7 @@ import java.util.List;
 public class CameraRoamingStrategy$3
   implements Runnable
 {
-  public CameraRoamingStrategy$3(amzx paramamzx, List paramList) {}
+  public CameraRoamingStrategy$3(anqf paramanqf, List paramList) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class CameraRoamingStrategy$3
       {
         localCameraEmotionData.RomaingType = "needDel";
         this.this$0.a().b(localCameraEmotionData);
-        awqx.b(this.this$0.a, "dc00898", "", "", "ep_mall", "0X800A372", 0, 0, "", "", localCameraEmotionData.resid, "");
+        axqw.b(this.this$0.a, "dc00898", "", "", "0X800A372", "0X800A372", 0, 0, "", "", localCameraEmotionData.resid, "");
       }
       for (;;)
       {
@@ -38,8 +38,8 @@ public class CameraRoamingStrategy$3
         this.this$0.a().a(localCameraEmotionData);
       }
     }
-    ((anbh)this.this$0.a.getManager(334)).c();
-    ((ajff)this.this$0.a.a(160)).a(3, true, 0);
+    ((anrs)this.this$0.a.getManager(334)).c();
+    ((ajth)this.this$0.a.a(160)).a(3, true, 0);
   }
 }
 

@@ -1,12 +1,37 @@
-public abstract interface nbm
+import android.content.Intent;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+
+public class nbm
+  extends MSFServlet
 {
-  public abstract void a();
+  private String[] a = { "OnlinePush.ReqPush.GameStatusPush" };
   
-  public abstract void b();
+  public String[] getPreferSSOCommands()
+  {
+    return this.a;
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    nbn localnbn = SensorAPIJavaScript.getMsfToWebViewConnector();
+    if (localnbn != null) {
+      localnbn.a(paramIntent, paramFromServiceMsg);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("GamePushServlet", 2, "WebView not connect to msf");
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nbm
  * JD-Core Version:    0.7.0.1
  */

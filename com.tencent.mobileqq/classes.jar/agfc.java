@@ -1,21 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
 
 class agfc
-  implements agfa
+  implements bfps
 {
-  agfc(agfb paramagfb) {}
+  agfc(agfb paramagfb, View paramView) {}
   
-  public void a(long paramLong, float paramFloat, String paramString)
+  public void a()
   {
-    agfb.a(this.a).put(Long.valueOf(paramLong), Float.valueOf(paramFloat));
-    agfb.a(this.a).a(paramLong, paramFloat, paramString);
-  }
-  
-  public void b(long paramLong)
-  {
-    QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onDownloadSuccess:" + paramLong);
-    agfb.a(this.a).b(paramLong);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

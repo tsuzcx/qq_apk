@@ -1,31 +1,14 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class aitq
-  implements View.OnTouchListener
+class aitq
 {
-  public aitq(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-      this.a.jdField_a_of_type_AndroidWidgetButton.performClick();
-      continue;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(0.5F);
-      continue;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-    }
-  }
+  aitq(aitn paramaitn) {}
 }
 
 

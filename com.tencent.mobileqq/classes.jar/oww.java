@@ -1,29 +1,41 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import java.util.Iterator;
+import java.util.List;
 
-public class oww
-  implements ViewBase.OnClickListener
+final class oww
+  implements Handler.Callback
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  
-  public oww(ArticleInfo paramArticleInfo, Context paramContext)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
-      return;
+    switch (paramMessage.what)
+    {
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return true;
+          owv.a(false);
+          owv.a().removeMessages(0);
+        } while ((owv.a() == null) || (owv.a().size() <= 0));
+        paramMessage = owv.a().iterator();
+        while (paramMessage.hasNext()) {
+          ((owx)paramMessage.next()).a(true);
+        }
+        owv.a(false);
+        owv.a().removeMessages(1);
+      } while ((owv.a() == null) || (owv.a().size() <= 0));
+      paramMessage = owv.a().iterator();
+      while (paramMessage.hasNext()) {
+        ((owx)paramMessage.next()).a(false);
+      }
     }
-    if (obz.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      obz.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    }
-    nzv.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009A73", null);
+    owv.a(true);
+    return true;
   }
 }
 

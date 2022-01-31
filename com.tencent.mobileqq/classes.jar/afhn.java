@@ -1,12 +1,17 @@
-public abstract interface afhn
+public class afhn
 {
-  public abstract void a();
+  public int a;
+  public int b;
   
-  public abstract void a(float paramFloat);
+  public afhn(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afhn
  * JD-Core Version:    0.7.0.1
  */

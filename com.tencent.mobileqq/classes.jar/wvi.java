@@ -1,37 +1,23 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.subscribe.widget.comment.component.richtext.element.ContentElement;
 
-class wvi
-  extends akfx
+public final class wvi
+  implements Parcelable.Creator<ContentElement>
 {
-  wvi(wvh paramwvh, String paramString, boolean paramBoolean)
+  public ContentElement a(Parcel paramParcel)
   {
-    super(paramString, paramBoolean);
+    return new ContentElement();
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public ContentElement[] a(int paramInt)
   {
-    if (paramInt == 0)
-    {
-      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-      {
-        SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;
-        wvh.a(this.a, paramSosoLbsInfo.a);
-        double d1 = localSosoLocation.a;
-        double d2 = localSosoLocation.b;
-        wvh.a(this.a, d1, d2);
-        return;
-      }
-      QLog.i("Q.videostory.capture", 2, "LbsManagerService.startLocation: location is null");
-      return;
-    }
-    QLog.i("Q.videostory.capture", 2, "LbsManagerService.startLocation: failed");
+    return new ContentElement[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wvi
  * JD-Core Version:    0.7.0.1
  */

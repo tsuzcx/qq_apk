@@ -1,135 +1,38 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Map;
 
-public class urj
-  implements uri
+public final class urj
+  extends QQUIEventReceiver<uqy, tdh>
 {
-  public static final urj a;
-  public int a;
-  private int b = -1;
-  
-  static
+  public urj(@NonNull uqy paramuqy)
   {
-    jdField_a_of_type_Urj = new urj();
+    super(paramuqy);
   }
   
-  private urj()
+  public void a(@NonNull uqy paramuqy, @NonNull tdh paramtdh)
   {
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  public static urj a()
-  {
-    return jdField_a_of_type_Urj;
-  }
-  
-  private void a(int paramInt, String paramString1, String paramString2)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 2: 
-      QLog.d(paramString1, 2, paramString2);
-      return;
-    case 3: 
-      QLog.d(paramString1, 2, paramString2);
-      return;
-    case 4: 
-      QLog.i(paramString1, 2, paramString2);
-      return;
-    case 5: 
-      QLog.e(paramString1, 1, paramString2);
-      return;
+    if (uqy.a(paramuqy) == null) {
+      veg.b("Q.qqstory.detail.StoryDetailPresenter", "ignore this tag info event. %s.", paramtdh.toString());
     }
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  private void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 2: 
-      QLog.d(paramString1, 2, paramString2, paramThrowable);
-      return;
-    case 3: 
-      QLog.d(paramString1, 2, paramString2, paramThrowable);
-      return;
-    case 4: 
-      QLog.i(paramString1, 2, paramString2, paramThrowable);
-      return;
-    case 5: 
-      QLog.e(paramString1, 1, paramString2, paramThrowable);
-      return;
-    }
-    QLog.e(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    a(2, paramString1, paramString2);
-  }
-  
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(3, paramString1, paramString2, paramThrowable);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if ((this.b != -1) && (paramInt >= this.b)) {}
     do
     {
       do
       {
-        return true;
-      } while (5 <= paramInt);
-      if (!QLog.isColorLevel()) {
-        return false;
-      }
-    } while (this.jdField_a_of_type_Int <= paramInt);
-    return false;
+        return;
+      } while (!paramtdh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      veg.a("Q.qqstory.detail.StoryDetailPresenter", "receive tag info event. %s.", paramtdh.toString());
+      paramtdh = (tmn)paramtdh.jdField_a_of_type_JavaUtilMap.get(uqy.a(paramuqy));
+    } while (paramtdh == null);
+    paramtdh = ((tdf)tdc.a(27)).a(uqy.a(paramuqy).a(), paramtdh.a);
+    uqy.a(paramuqy).b(paramtdh, true);
+    paramuqy.a();
   }
   
-  public void b(String paramString1, String paramString2)
+  public Class acceptEventClass()
   {
-    a(3, paramString1, paramString2);
-  }
-  
-  public void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(4, paramString1, paramString2, paramThrowable);
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    a(4, paramString1, paramString2);
-  }
-  
-  public void c(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(5, paramString1, paramString2, paramThrowable);
-  }
-  
-  public void d(String paramString1, String paramString2)
-  {
-    a(5, paramString1, paramString2);
-  }
-  
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(6, paramString1, paramString2, paramThrowable);
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    a(6, paramString1, paramString2);
+    return tdh.class;
   }
 }
 

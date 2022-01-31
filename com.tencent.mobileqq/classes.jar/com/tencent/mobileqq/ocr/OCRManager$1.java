@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ocr;
 
-import atdp;
+import atzt;
 
 public class OCRManager$1
   implements Runnable
 {
-  public OCRManager$1(atdp paramatdp) {}
+  public OCRManager$1(atzt paramatzt) {}
   
   public void run()
   {

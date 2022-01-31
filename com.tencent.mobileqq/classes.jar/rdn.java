@@ -1,54 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class rdn
-  implements moc
+  extends oyg
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final String b;
-  
-  public rdn(rdm paramrdm, String paramString1, String paramString2)
+  public rdn(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    super(paramString);
   }
   
-  public void loaded(String paramString, int paramInt)
+  public void a(oya paramoya)
   {
-    QLog.d("TemplateFactory", 2, "loaded: bid : " + this.jdField_a_of_type_JavaLangString + " param1 " + paramString + " code : " + paramInt);
-    if (paramInt == 0)
-    {
-      if (paramString == null) {}
-      try
-      {
-        QLog.d("TemplateFactory", 2, "下载离线样式包完成 : " + this.jdField_a_of_type_JavaLangString + " param1 " + paramString);
-        rdz.a(rdm.a(this.jdField_a_of_type_Rdm));
-        if ((paramString == null) && (rdz.a(this.jdField_a_of_type_JavaLangString).a))
-        {
-          QLog.d("TemplateFactory", 2, "加载离线包 : " + this.jdField_a_of_type_JavaLangString + " param1 " + paramString);
-          new rdo().a(5);
-          rsk.a(2, rdm.a(this.jdField_a_of_type_Rdm));
-          rdg localrdg = this.jdField_a_of_type_Rdm.a(BaseApplicationImpl.getApplication());
-          if (localrdg == null)
-          {
-            QLog.d("TemplateFactory", 2, "templateFactory == null  bid : " + this.jdField_a_of_type_JavaLangString + " param1 " + paramString + " code : " + paramInt);
-            return;
-          }
-          localrdg.a(rdm.a().incrementAndGet());
-          rdz.a(this.jdField_a_of_type_JavaLangString, localrdg);
-          rdg.a();
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("TemplateFactory", 1, "loaded: bid : " + this.jdField_a_of_type_JavaLangString, paramString);
-      }
-    }
+    paramoya.b();
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

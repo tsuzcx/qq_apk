@@ -1,68 +1,43 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.qq.im.capture.view.VideoCoverPickerProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import java.util.List;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 class bieb
-  implements bhqt
+  implements INetInfoHandler
 {
-  bieb(biea parambiea) {}
+  bieb(bidy parambidy) {}
   
-  public void a()
+  public void onNetMobile2None()
   {
-    VideoCoverPickerProviderView localVideoCoverPickerProviderView = (VideoCoverPickerProviderView)this.a.a.jdField_a_of_type_Bicj.a.a(113);
-    boolean bool;
-    Object localObject;
-    if (localVideoCoverPickerProviderView != null)
-    {
-      bool = this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a("extra_is_need_gaussion_blur", false);
-      if ((this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditTakeVideoSource))
-      {
-        localObject = (EditTakeVideoSource)this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a;
-        localVideoCoverPickerProviderView.setVideo(((EditTakeVideoSource)localObject).jdField_a_of_type_JavaLangString, 0L, ((EditTakeVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration, ((EditTakeVideoSource)localObject).a(), ((EditTakeVideoSource)localObject).b(), ((EditTakeVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation, true, bool);
-      }
-    }
-    else
-    {
-      return;
-    }
-    if ((this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditLocalVideoSource))
-    {
-      localObject = (EditLocalVideoSource)this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a;
-      localVideoCoverPickerProviderView.setVideo(((EditLocalVideoSource)localObject).jdField_a_of_type_JavaLangString, ((EditLocalVideoSource)localObject).jdField_a_of_type_Int, ((EditLocalVideoSource)localObject).b, ((EditLocalVideoSource)localObject).a(), ((EditLocalVideoSource)localObject).b(), ((EditLocalVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation, true, bool);
-      return;
-    }
-    throw new IllegalArgumentException("SegmentEdit init error");
+    this.a.a(false, false);
   }
   
-  public void a(long paramLong)
+  public void onNetMobile2Wifi(String paramString)
   {
-    biea.a(this.a, true);
-    bibv localbibv = (bibv)this.a.a(bibv.class);
-    if (localbibv != null) {
-      localbibv.a(paramLong, true, false);
-    }
+    this.a.a(true, true);
   }
   
-  public void a(long paramLong, boolean paramBoolean)
+  public void onNetNone2Mobile(String paramString)
   {
-    this.a.a(paramLong, paramBoolean);
+    this.a.a(false, true);
   }
   
-  public void a(List<Long> paramList)
+  public void onNetNone2Wifi(String paramString)
   {
-    bibv localbibv = (bibv)this.a.a(bibv.class);
-    if (localbibv != null) {
-      localbibv.a(paramList);
-    }
+    this.a.a(true, true);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.a(false, true);
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.a(false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bieb
  * JD-Core Version:    0.7.0.1
  */

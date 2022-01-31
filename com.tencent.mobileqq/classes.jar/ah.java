@@ -1,170 +1,249 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
+import android.app.PendingIntent;
+import android.os.IBinder;
+import android.os.Parcel;
+import com.android.internal.telephony.SmsRawData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ah
-  extends AsyncTask<Integer, Integer, String>
+class ah
+  implements af
 {
-  public ah(LiteActivity paramLiteActivity, ArrayList paramArrayList) {}
+  private IBinder a;
   
-  DataLineMsgRecord a(ajgm paramajgm, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  ah(IBinder paramIBinder)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    this.a = paramIBinder;
+  }
+  
+  public List<SmsRawData> a()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.android.internal.telephony.ISms");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      ArrayList localArrayList = localParcel2.createTypedArrayList(SmsRawData.CREATOR);
+      return localArrayList;
     }
-    int i = paramInt1;
-    if (paramInt1 == 0) {
-      switch (apck.a(paramString))
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte, PendingIntent paramPendingIntent1, PendingIntent paramPendingIntent2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    for (;;)
+    {
+      try
       {
-      default: 
-        i = 0;
+        localParcel1.writeInterfaceToken("com.android.internal.telephony.ISms");
+        localParcel1.writeString(paramString1);
+        localParcel1.writeString(paramString2);
+        localParcel1.writeInt(paramInt);
+        localParcel1.writeByteArray(paramArrayOfByte);
+        if (paramPendingIntent1 != null)
+        {
+          localParcel1.writeInt(1);
+          paramPendingIntent1.writeToParcel(localParcel1, 0);
+          if (paramPendingIntent2 != null)
+          {
+            localParcel1.writeInt(1);
+            paramPendingIntent2.writeToParcel(localParcel1, 0);
+            this.a.transact(4, localParcel1, localParcel2, 0);
+            localParcel2.readException();
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        localParcel1.writeInt(0);
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
       }
     }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, PendingIntent paramPendingIntent1, PendingIntent paramPendingIntent2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     for (;;)
     {
-      DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-      localDataLineMsgRecord.msgtype = ajgm.a(i);
-      localDataLineMsgRecord.sessionid = paramajgm.a(0, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a).longValue();
-      localDataLineMsgRecord.path = paramString;
-      localDataLineMsgRecord.thumbPath = null;
-      localDataLineMsgRecord.groupId = paramInt2;
-      localDataLineMsgRecord.groupSize = paramInt3;
-      localDataLineMsgRecord.groupIndex = paramInt4;
-      return localDataLineMsgRecord;
-      i = 1;
-      continue;
-      i = 3;
-      continue;
-      i = 2;
+      try
+      {
+        localParcel1.writeInterfaceToken("com.android.internal.telephony.ISms");
+        localParcel1.writeString(paramString1);
+        localParcel1.writeString(paramString2);
+        localParcel1.writeString(paramString3);
+        if (paramPendingIntent1 != null)
+        {
+          localParcel1.writeInt(1);
+          paramPendingIntent1.writeToParcel(localParcel1, 0);
+          if (paramPendingIntent2 != null)
+          {
+            localParcel1.writeInt(1);
+            paramPendingIntent2.writeToParcel(localParcel1, 0);
+            this.a.transact(5, localParcel1, localParcel2, 0);
+            localParcel2.readException();
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        localParcel1.writeInt(0);
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
     }
   }
   
-  protected String a(Integer... paramVarArgs)
+  public void a(String paramString1, String paramString2, List<String> paramList, List<PendingIntent> paramList1, List<PendingIntent> paramList2)
   {
-    int i = paramVarArgs[0].intValue();
-    a(this.jdField_a_of_type_JavaUtilArrayList, i);
-    return null;
-  }
-  
-  protected void a(String paramString)
-  {
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(false);
-  }
-  
-  void a(List<String> paramList, int paramInt)
-  {
-    if (paramList == null) {}
-    ajgm localajgm;
-    int j;
-    int i;
-    Object localObject;
-    for (;;)
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
+      localParcel1.writeInterfaceToken("com.android.internal.telephony.ISms");
+      localParcel1.writeString(paramString1);
+      localParcel1.writeString(paramString2);
+      localParcel1.writeStringList(paramList);
+      localParcel1.writeTypedList(paramList1);
+      localParcel1.writeTypedList(paramList2);
+      this.a.transact(6, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
-      localajgm = (ajgm)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
-      j = paramList.size();
-      if (j > 3) {
-        break;
-      }
-      i = 0;
-      while (i < j)
-      {
-        localObject = a(localajgm, (String)paramList.get(i), paramInt, 0, 0, 0);
-        if (localObject != null) {
-          localajgm.a((DataLineMsgRecord)localObject, false);
-        }
-        i += 1;
-      }
     }
-    label117:
-    DataLineMsgRecord localDataLineMsgRecord;
-    if ((j > 3) && (j < 50))
+    finally
     {
-      localObject = new ArrayList();
-      int k = localajgm.a();
-      i = 0;
-      if (i < j)
-      {
-        localDataLineMsgRecord = a(localajgm, (String)paramList.get(i), paramInt, k, j, i);
-        if (localDataLineMsgRecord != null) {
-          ((ArrayList)localObject).add(localDataLineMsgRecord);
-        }
-        if (!DataLineMsgSet.isSingle(paramInt, k)) {
-          break label408;
-        }
-        if (localDataLineMsgRecord != null)
-        {
-          localDataLineMsgRecord.groupId = 0;
-          localDataLineMsgRecord.groupIndex = 0;
-          localDataLineMsgRecord.groupSize = 0;
-        }
-        if (((ArrayList)localObject).size() > 0) {
-          localajgm.a((ArrayList)localObject, false);
-        }
-        localObject = new ArrayList();
-      }
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
-    label259:
-    label405:
-    label408:
-    for (;;)
+  }
+  
+  public boolean a(int paramInt)
+  {
+    boolean bool = false;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      i += 1;
-      break label117;
-      if (((ArrayList)localObject).size() <= 0) {
-        break;
+      localParcel1.writeInterfaceToken("com.android.internal.telephony.ISms");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(7, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      paramInt = localParcel2.readInt();
+      if (paramInt != 0) {
+        bool = true;
       }
-      localajgm.a((ArrayList)localObject, false);
-      return;
-      localObject = new ArrayList();
-      j = localajgm.a();
-      i = 0;
-      if (i < 50)
-      {
-        localDataLineMsgRecord = a(localajgm, (String)paramList.get(i), paramInt, j, 50, i);
-        if (localDataLineMsgRecord != null) {
-          ((ArrayList)localObject).add(localDataLineMsgRecord);
-        }
-        if (!DataLineMsgSet.isSingle(paramInt, j)) {
-          break label405;
-        }
-        if (localDataLineMsgRecord != null)
-        {
-          localDataLineMsgRecord.groupId = 0;
-          localDataLineMsgRecord.groupIndex = 0;
-          localDataLineMsgRecord.groupSize = 0;
-        }
-        if (((ArrayList)localObject).size() > 0) {
-          localajgm.a((ArrayList)localObject, false);
-        }
-        localObject = new ArrayList();
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  {
+    boolean bool = false;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.android.internal.telephony.ISms");
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      localParcel1.writeByteArray(paramArrayOfByte);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      paramInt1 = localParcel2.readInt();
+      if (paramInt1 != 0) {
+        bool = true;
       }
-      for (;;)
-      {
-        i += 1;
-        break label259;
-        if (((ArrayList)localObject).size() > 0) {
-          localajgm.a((ArrayList)localObject, false);
-        }
-        i = 0;
-        while (i < 50)
-        {
-          paramList.remove(0);
-          i += 1;
-        }
-        break;
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    boolean bool = false;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.android.internal.telephony.ISms");
+      localParcel1.writeInt(paramInt);
+      localParcel1.writeByteArray(paramArrayOfByte1);
+      localParcel1.writeByteArray(paramArrayOfByte2);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      paramInt = localParcel2.readInt();
+      if (paramInt != 0) {
+        bool = true;
       }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public boolean b(int paramInt)
+  {
+    boolean bool = false;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.android.internal.telephony.ISms");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(8, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      paramInt = localParcel2.readInt();
+      if (paramInt != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ah
  * JD-Core Version:    0.7.0.1
  */

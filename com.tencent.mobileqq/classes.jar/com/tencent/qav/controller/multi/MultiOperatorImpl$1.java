@@ -1,17 +1,17 @@
 package com.tencent.qav.controller.multi;
 
-import bcnr;
+import bdrs;
 
 public class MultiOperatorImpl$1
   implements Runnable
 {
-  public MultiOperatorImpl$1(bcnr parambcnr) {}
+  public MultiOperatorImpl$1(bdrs parambdrs) {}
   
   public void run()
   {
     this.this$0.a();
-    bcnr.a(this.this$0, 1);
-    bcnr.a(this.this$0, null);
+    bdrs.a(this.this$0, 1);
+    bdrs.a(this.this$0, null);
   }
 }
 

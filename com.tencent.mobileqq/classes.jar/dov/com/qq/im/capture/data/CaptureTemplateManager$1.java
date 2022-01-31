@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.data;
 
-import bhhb;
+import bjbt;
 
 public class CaptureTemplateManager$1
   implements Runnable
 {
-  public CaptureTemplateManager$1(bhhb parambhhb) {}
+  public CaptureTemplateManager$1(bjbt parambjbt) {}
   
   public void run()
   {

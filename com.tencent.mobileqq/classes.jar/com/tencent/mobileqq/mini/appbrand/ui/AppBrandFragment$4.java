@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 
 import android.app.Activity;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
-import ypc;
-import ypd;
+import yyw;
+import yyx;
 
 class AppBrandFragment$4
   implements Runnable
@@ -13,7 +13,7 @@ class AppBrandFragment$4
   public void run()
   {
     MiniLog.init();
-    ypc.a().a(this.val$activity, new ypd());
+    yyw.a().a(this.val$activity, new yyx());
   }
 }
 

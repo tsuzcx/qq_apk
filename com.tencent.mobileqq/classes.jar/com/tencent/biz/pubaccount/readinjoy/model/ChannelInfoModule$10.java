@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import ohb;
-import opc;
+import osm;
+import pad;
 
 public class ChannelInfoModule$10
   implements Runnable
 {
-  public ChannelInfoModule$10(opc paramopc, int paramInt) {}
+  public ChannelInfoModule$10(pad parampad, int paramInt) {}
   
   public void run()
   {
-    ohb.a().e(this.a);
+    osm.a().e(this.a);
   }
 }
 

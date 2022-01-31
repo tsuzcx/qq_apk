@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.emosm.cameraemotionroaming;
 
-import anbf;
-import anbl;
+import anrq;
+import anrw;
 import java.util.ArrayList;
 
 public class CameraEmoIpcServer$1
   implements Runnable
 {
-  public CameraEmoIpcServer$1(anbf paramanbf, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3) {}
+  public CameraEmoIpcServer$1(anrq paramanrq, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3) {}
   
   public void run()
   {
     if (this.a != null)
     {
-      anbl.a(this.b, this.c, this.a);
+      anrw.a(this.b, this.c, this.a);
       return;
     }
-    anbl.a(this.b, this.c);
+    anrw.a(this.b, this.c);
   }
 }
 

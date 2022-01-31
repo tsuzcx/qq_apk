@@ -1,75 +1,31 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
-import java.util.TreeMap;
+import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
+import com.tencent.widget.AbsListView;
 
 public class akki
+  implements bfob
 {
-  static String a;
+  public akki(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public static String a()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (a == null) {
-      if (!azzu.a()) {
-        break label53;
+    if (NewFriendVerifyBlockedListFragment.a(this.a) != null)
+    {
+      if ((paramInt != 0) && (paramInt != 1)) {
+        NewFriendVerifyBlockedListFragment.a(this.a).a();
       }
     }
-    label53:
-    for (String str = ajed.aU + "pddata/prd/" + "ar_promotion" + File.separator;; str = BaseApplicationImpl.getApplication().getFilesDir() + "/pddata/prd/" + "ar_promotion" + File.separator)
-    {
-      a = str;
-      return a;
+    else {
+      return;
     }
-  }
-  
-  public static String a(akkc paramakkc)
-  {
-    if (paramakkc == null) {
-      return null;
-    }
-    paramakkc = (akkd)paramakkc.a().get(Integer.valueOf(0));
-    if (paramakkc == null) {
-      return null;
-    }
-    return a(paramakkc);
-  }
-  
-  public static String a(akkd paramakkd)
-  {
-    return paramakkd.d + "entry" + File.separator;
-  }
-  
-  private static String a(String paramString, int paramInt)
-  {
-    return a() + paramString + File.separator + paramInt + File.separator;
-  }
-  
-  public static String a(String paramString1, int paramInt, String paramString2)
-  {
-    return a(paramString1, paramInt) + paramString2 + ".zip";
-  }
-  
-  public static String b(akkc paramakkc)
-  {
-    paramakkc = (akkd)paramakkc.a().get(Integer.valueOf(0));
-    if (paramakkc == null) {
-      return null;
-    }
-    return b(paramakkc);
-  }
-  
-  public static String b(akkd paramakkd)
-  {
-    return paramakkd.d + "guide" + File.separator;
-  }
-  
-  public static final String b(String paramString1, int paramInt, String paramString2)
-  {
-    return a(paramString1, paramInt) + paramString2 + File.separator;
+    NewFriendVerifyBlockedListFragment.a(this.a).b();
+    NewFriendVerifyBlockedListFragment.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akki
  * JD-Core Version:    0.7.0.1
  */

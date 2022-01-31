@@ -1,19 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class atuo
-  implements DialogInterface.OnCancelListener
+class atuo
 {
-  public atuo(CustomCoverFragment paramCustomCoverFragment) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (this.a.getActivity() != null) {
-      this.a.getActivity().finish();
-    }
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
 }
 
 

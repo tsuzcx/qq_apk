@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import aciy;
-import ajjy;
+import actn;
+import ajyc;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -14,12 +14,12 @@ import android.text.TextUtils;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import autt;
-import babr;
-import bafb;
-import bbmh;
-import bbmy;
-import bjiq;
+import avtc;
+import bbcv;
+import bbgg;
+import bcpf;
+import bcpw;
+import bkzb;
 import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
 import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
@@ -30,30 +30,30 @@ import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.richmedia.capture.data.FollowCaptureParam;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import shq;
-import sif;
-import sis;
-import tgr;
-import tgs;
-import tgt;
-import tgu;
+import sum;
+import svb;
+import svo;
+import ttn;
 import tto;
+import ttp;
 import ttq;
-import urk;
-import urp;
-import vjq;
+import ugk;
+import ugm;
+import veg;
+import vel;
+import vwm;
 
 public class FollowCaptureLauncher
-  implements tto, ttq
+  implements ugk, ugm
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Dialog jdField_a_of_type_AndroidAppDialog;
-  private bbmh jdField_a_of_type_Bbmh;
+  private bcpf jdField_a_of_type_Bcpf;
   private AbsVideoInfoWidget jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget;
   private String jdField_a_of_type_JavaLangString;
-  private sif jdField_a_of_type_Sif;
-  private tgu jdField_a_of_type_Tgu;
+  private svb jdField_a_of_type_Svb;
+  private ttq jdField_a_of_type_Ttq;
   private boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
@@ -67,7 +67,7 @@ public class FollowCaptureLauncher
   public FollowCaptureLauncher(AbsVideoInfoWidget paramAbsVideoInfoWidget)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget = paramAbsVideoInfoWidget;
-    this.jdField_a_of_type_Tgu = new tgu(this);
+    this.jdField_a_of_type_Ttq = new ttq(this);
   }
   
   private int a()
@@ -87,25 +87,25 @@ public class FollowCaptureLauncher
     return j;
   }
   
-  private bbmh a()
+  private bcpf a()
   {
-    bbmh localbbmh = new bbmh(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b());
-    localbbmh.a(aciy.a(50.0F, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b().getResources()));
-    localbbmh.a(true);
-    localbbmh.c(false);
-    localbbmh.f(-1);
-    localbbmh.e(0);
-    localbbmh.d(-15550475);
-    localbbmh.g(3);
-    localbbmh.jdField_f_of_type_Boolean = true;
-    localbbmh.jdField_f_of_type_Int = 2;
-    localbbmh.e(true);
-    return localbbmh;
+    bcpf localbcpf = new bcpf(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b());
+    localbcpf.a(actn.a(50.0F, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b().getResources()));
+    localbcpf.a(true);
+    localbcpf.c(false);
+    localbcpf.f(-1);
+    localbcpf.e(0);
+    localbcpf.d(-15550475);
+    localbcpf.g(3);
+    localbcpf.jdField_f_of_type_Boolean = true;
+    localbcpf.jdField_f_of_type_Int = 2;
+    localbcpf.e(true);
+    return localbcpf;
   }
   
   private void a(String paramString1, String paramString2)
   {
-    ThreadManagerV2.excute(new FollowCaptureLauncher.ConvertAllIFrameRunnable(paramString1, paramString2, this.jdField_a_of_type_Tgu), 16, null, true);
+    ThreadManagerV2.excute(new FollowCaptureLauncher.ConvertAllIFrameRunnable(paramString1, paramString2, this.jdField_a_of_type_Ttq), 16, null, true);
   }
   
   private void a(boolean paramBoolean)
@@ -126,10 +126,10 @@ public class FollowCaptureLauncher
   private boolean a(Context paramContext)
   {
     boolean bool = false;
-    if (!autt.a())
+    if (!avtc.a())
     {
-      urk.b("FollowCaptureLauncher", "checkApiVersionDialog false");
-      babr.a(paramContext, 230).setMessage(ajjy.a(2131638880)).setPositiveButton(2131629116, new tgt(this)).show();
+      veg.b("FollowCaptureLauncher", "checkApiVersionDialog false");
+      bbcv.a(paramContext, 230).setMessage(ajyc.a(2131704665)).setPositiveButton(2131694793, new ttp(this)).show();
       bool = true;
     }
     return bool;
@@ -148,9 +148,9 @@ public class FollowCaptureLauncher
     {
       return;
       this.d = true;
-      localFile = shq.a(paramString, 0, false, false);
+      localFile = sum.a(paramString, 0, false, false);
     } while (localFile == null);
-    paramString = new File(bjiq.a(), paramString + ".mp4");
+    paramString = new File(bkzb.a(), paramString + ".mp4");
     a(localFile.getPath(), paramString.getPath());
   }
   
@@ -191,7 +191,7 @@ public class FollowCaptureLauncher
       if (QLog.isColorLevel()) {
         QLog.d("FollowCaptureLauncher", 2, "launchFollowCapture, path is null");
       }
-      urp.a("FollowLaunchEvent", false, System.currentTimeMillis() - this.jdField_a_of_type_Long, new String[] { "iframe_video_path_null" });
+      vel.a("FollowLaunchEvent", false, System.currentTimeMillis() - this.jdField_a_of_type_Long, new String[] { "iframe_video_path_null" });
       h();
       return;
     }
@@ -200,14 +200,14 @@ public class FollowCaptureLauncher
       if (QLog.isColorLevel()) {
         QLog.d("FollowCaptureLauncher", 2, "launchFollowCapture, file not exist");
       }
-      urp.a("FollowLaunchEvent", false, System.currentTimeMillis() - this.jdField_a_of_type_Long, new String[] { "iframe_video_nonexist" });
+      vel.a("FollowLaunchEvent", false, System.currentTimeMillis() - this.jdField_a_of_type_Long, new String[] { "iframe_video_nonexist" });
       h();
       return;
     }
     FollowCaptureParam localFollowCaptureParam = new FollowCaptureParam();
     if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_c_of_type_Boolean))
     {
-      localObject = bjiq.a(this.jdField_b_of_type_JavaLangString);
+      localObject = bkzb.a(this.jdField_b_of_type_JavaLangString);
       localFollowCaptureParam.backgroundPath = localObject[0];
       localFollowCaptureParam.foregroundPath = localObject[1];
     }
@@ -219,10 +219,10 @@ public class FollowCaptureLauncher
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("edit_video_type", 10014);
     ((Bundle)localObject).putSerializable("extra_follow_capture_param", localFollowCaptureParam);
-    vjq.a().a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b(), (Bundle)localObject, 1024);
-    this.jdField_a_of_type_Tgu.removeCallbacksAndMessages(null);
+    vwm.a().a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b(), (Bundle)localObject, 1024);
+    this.jdField_a_of_type_Ttq.removeCallbacksAndMessages(null);
     e();
-    urp.a("FollowLaunchEvent", true, System.currentTimeMillis() - this.jdField_a_of_type_Long, new String[0]);
+    vel.a("FollowLaunchEvent", true, System.currentTimeMillis() - this.jdField_a_of_type_Long, new String[0]);
   }
   
   private void g()
@@ -232,7 +232,7 @@ public class FollowCaptureLauncher
     }
     this.jdField_b_of_type_Boolean = true;
     a(false);
-    urp.a("FollowLaunchEvent", true, System.currentTimeMillis() - this.jdField_a_of_type_Long, new String[] { "activity_stop" });
+    vel.a("FollowLaunchEvent", true, System.currentTimeMillis() - this.jdField_a_of_type_Long, new String[] { "activity_stop" });
   }
   
   private void h()
@@ -244,23 +244,23 @@ public class FollowCaptureLauncher
       this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
     e();
-    bbmy.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b(), 0, ajjy.a(2131638879), 0).a();
+    bcpw.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b(), 0, ajyc.a(2131704664), 0).a();
   }
   
   private void i()
   {
     this.jdField_a_of_type_Int = Math.min(this.jdField_a_of_type_Int + 1, 99);
     if (this.jdField_a_of_type_Int == 99) {
-      this.jdField_a_of_type_Tgu.removeMessages(65536);
+      this.jdField_a_of_type_Ttq.removeMessages(65536);
     }
     for (;;)
     {
       a(this.jdField_a_of_type_Int);
       return;
       if (this.jdField_a_of_type_Int > 80) {
-        this.jdField_a_of_type_Tgu.sendEmptyMessageDelayed(65536, 500L);
+        this.jdField_a_of_type_Ttq.sendEmptyMessageDelayed(65536, 500L);
       } else {
-        this.jdField_a_of_type_Tgu.sendEmptyMessageDelayed(65536, 200L);
+        this.jdField_a_of_type_Ttq.sendEmptyMessageDelayed(65536, 200L);
       }
     }
   }
@@ -301,17 +301,17 @@ public class FollowCaptureLauncher
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bbmh == null) {
+    if (this.jdField_a_of_type_Bcpf == null) {
       return;
     }
-    this.jdField_a_of_type_Bbmh.a();
-    this.jdField_a_of_type_Bbmh.c(paramInt);
+    this.jdField_a_of_type_Bcpf.a();
+    this.jdField_a_of_type_Bcpf.c(paramInt);
     if (QLog.isColorLevel()) {
-      QLog.w("FollowCaptureLauncher", 2, "[setProgress] current:" + this.jdField_a_of_type_Bbmh.a() + ", progress:" + paramInt);
+      QLog.w("FollowCaptureLauncher", 2, "[setProgress] current:" + this.jdField_a_of_type_Bcpf.a() + ", progress:" + paramInt);
     }
-    this.jdField_a_of_type_Bbmh.b(true);
-    this.jdField_a_of_type_Bbmh.d(false);
-    this.jdField_a_of_type_Bbmh.a(String.valueOf(paramInt) + "%");
+    this.jdField_a_of_type_Bcpf.b(true);
+    this.jdField_a_of_type_Bcpf.d(false);
+    this.jdField_a_of_type_Bcpf.a(String.valueOf(paramInt) + "%");
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -319,7 +319,7 @@ public class FollowCaptureLauncher
     a(false);
     if (paramInt2 == -1)
     {
-      sis.b("FollowCaptureLauncher onActivityResult");
+      svo.b("FollowCaptureLauncher onActivityResult");
       if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a().mReportData.from != 106)
       {
         paramIntent = new Intent(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b(), QQStoryMainActivity.class);
@@ -331,10 +331,10 @@ public class FollowCaptureLauncher
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Sif == null) {
-      this.jdField_a_of_type_Sif = new sif();
+    if (this.jdField_a_of_type_Svb == null) {
+      this.jdField_a_of_type_Svb = new svb();
     }
-    this.jdField_a_of_type_Sif.a(paramString, 0, true, new tgr(this));
+    this.jdField_a_of_type_Svb.a(paramString, 0, true, new ttn(this));
   }
   
   public void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2)
@@ -359,14 +359,14 @@ public class FollowCaptureLauncher
     this.jdField_b_of_type_Int = paramInt1;
     this.jdField_c_of_type_Int = paramInt2;
     a(true);
-    bjiq.c();
+    bkzb.c();
     if (!TextUtils.isEmpty(paramString2))
     {
-      this.jdField_b_of_type_JavaLangString = bjiq.a(paramString2);
-      if (!bjiq.a(this.jdField_b_of_type_JavaLangString))
+      this.jdField_b_of_type_JavaLangString = bkzb.a(paramString2);
+      if (!bkzb.a(this.jdField_b_of_type_JavaLangString))
       {
         c(paramString2);
-        paramString2 = new File(bjiq.a(), paramString1 + ".mp4");
+        paramString2 = new File(bkzb.a(), paramString1 + ".mp4");
         this.jdField_c_of_type_JavaLangString = paramString2.getPath();
         if (!paramString2.exists()) {
           break label254;
@@ -388,7 +388,7 @@ public class FollowCaptureLauncher
       this.jdField_c_of_type_Boolean = true;
       break;
       label254:
-      File localFile = shq.a(paramString1, 0, false, false);
+      File localFile = sum.a(paramString1, 0, false, false);
       if (localFile != null)
       {
         this.d = true;
@@ -401,8 +401,8 @@ public class FollowCaptureLauncher
     }
     label297:
     this.jdField_a_of_type_Int = a();
-    a(ajjy.a(2131638878), true, 0);
-    this.jdField_a_of_type_Tgu.sendEmptyMessageDelayed(65536, 100L);
+    a(ajyc.a(2131704663), true, 0);
+    this.jdField_a_of_type_Ttq.sendEmptyMessageDelayed(65536, 100L);
   }
   
   public void a(String paramString, boolean paramBoolean, int paramInt)
@@ -417,24 +417,24 @@ public class FollowCaptureLauncher
         ((Window)localObject).setDimAmount(0.0F);
       }
       this.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131495665);
-      localObject = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131306298);
-      this.jdField_a_of_type_Bbmh = a();
-      ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_Bbmh);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131561256);
+      localObject = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371995);
+      this.jdField_a_of_type_Bcpf = a();
+      ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_Bcpf);
     }
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131304792)).setText(paramString);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131370453)).setText(paramString);
     this.jdField_a_of_type_AndroidAppDialog.setCancelable(paramBoolean);
     this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(paramBoolean);
-    this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new tgs(this));
-    this.jdField_a_of_type_Bbmh.c(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Tgu.sendEmptyMessageDelayed(65545, paramInt);
+    this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new tto(this));
+    this.jdField_a_of_type_Bcpf.c(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Ttq.sendEmptyMessageDelayed(65545, paramInt);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Tgu.removeCallbacksAndMessages(null);
-    if (this.jdField_a_of_type_Sif != null) {
-      this.jdField_a_of_type_Sif.a();
+    this.jdField_a_of_type_Ttq.removeCallbacksAndMessages(null);
+    if (this.jdField_a_of_type_Svb != null) {
+      this.jdField_a_of_type_Svb.a();
     }
   }
   
@@ -443,7 +443,7 @@ public class FollowCaptureLauncher
     Message localMessage = Message.obtain();
     localMessage.what = 65537;
     localMessage.obj = paramString;
-    this.jdField_a_of_type_Tgu.sendMessage(localMessage);
+    this.jdField_a_of_type_Ttq.sendMessage(localMessage);
   }
   
   public void c()
@@ -453,7 +453,7 @@ public class FollowCaptureLauncher
   
   public void d()
   {
-    this.jdField_a_of_type_Tgu.sendEmptyMessage(65538);
+    this.jdField_a_of_type_Ttq.sendEmptyMessage(65538);
   }
 }
 

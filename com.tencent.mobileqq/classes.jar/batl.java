@@ -1,110 +1,74 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
 
-public abstract class batl
+public class batl
+  extends BaseAdapter
 {
-  String wifiFlow;
-  String xgFlow;
+  public batl(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
   
-  public batl() {}
-  
-  public batl(String paramString1, String paramString2)
+  public int getCount()
   {
-    this.wifiFlow = paramString1;
-    this.xgFlow = paramString2;
+    return this.a.a.length;
   }
   
-  private void reportErrorToMM(batm parambatm)
+  public Object getItem(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("DownloadListener", 2, "-->report MM");
-    }
-    if (parambatm.a() != 3)
+    return this.a.a[paramInt];
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return this.a.a[paramInt].jdField_a_of_type_Int;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("DownloadListener", 2, "-->report MM:command=" + parambatm.c + ",error code=" + parambatm.jdField_a_of_type_Int + ",uin=" + parambatm.jdField_a_of_type_Batn.jdField_a_of_type_Long);
-      }
-      bcad.a().a(parambatm.c, 100, parambatm.jdField_a_of_type_Int, String.valueOf(parambatm.jdField_a_of_type_Batn.jdField_a_of_type_Long), parambatm.jdField_a_of_type_Batn.jdField_a_of_type_Int, ajjy.a(2131637704), true);
-    }
-  }
-  
-  public void onCancel(batm parambatm) {}
-  
-  public void onDone(batm parambatm)
-  {
-    parambatm.h = System.currentTimeMillis();
-    if (parambatm.a((byte)1)) {
-      reportErrorToMM(parambatm);
-    }
-  }
-  
-  public void onDoneFile(batm parambatm) {}
-  
-  public void onNetMobile2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DownloadListener", 2, "onNetMobile2None...");
-    }
-  }
-  
-  public void onNetWifi2Mobile()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DownloadListener", 2, "onNetWifi2Mobile...");
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DownloadListener", 2, "onNetWifi2None...");
-    }
-  }
-  
-  public void onPause(batm parambatm) {}
-  
-  public void onProgress(batm parambatm) {}
-  
-  public boolean onStart(batm parambatm)
-  {
-    parambatm.g = System.currentTimeMillis();
-    return true;
-  }
-  
-  public void report(AppInterface paramAppInterface, long paramLong)
-  {
-    String[] arrayOfString;
-    if ((this.wifiFlow != null) && (this.xgFlow != null) && (paramAppInterface != null))
-    {
-      arrayOfString = null;
-      int i = badq.a(paramAppInterface.getApplication().getApplicationContext());
-      if (i > 0)
-      {
-        if (i != 1) {
-          break label134;
-        }
-        arrayOfString = new String[3];
-        arrayOfString[0] = this.wifiFlow;
-        arrayOfString[1] = "param_WIFIFlow";
-        arrayOfString[2] = "param_Flow";
+      paramView = new bato();
+      Object localObject = LayoutInflater.from(this.a).inflate(2131562567, paramViewGroup, false);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131377873));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131377875));
+      paramView.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131377874);
+      ((View)localObject).setTag(paramView);
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      ColorDrawable localColorDrawable = new ColorDrawable(0);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
+      localObject = URLDrawable.getDrawable(this.a.a[paramInt].jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setTag(bavi.b(190, 270, bawz.a(this.a, 3.0F)));
+      ((URLDrawable)localObject).setDecodeHandler(bavi.i);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.a[paramInt].jdField_a_of_type_JavaLangString);
+      localObject = new GradientDrawable();
+      ((GradientDrawable)localObject).setShape(0);
+      ((GradientDrawable)localObject).setCornerRadii(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, bawz.a(this.a, 5.0F), bawz.a(this.a, 5.0F), bawz.a(this.a, 5.0F), bawz.a(this.a, 5.0F) });
+      ((GradientDrawable)localObject).setColor(this.a.a[paramInt].jdField_b_of_type_Int);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable((Drawable)localObject);
+      paramViewGroup = paramViewGroup.jdField_a_of_type_AndroidViewView;
+      if (!this.a.a[paramInt].jdField_a_of_type_Boolean) {
+        break label345;
       }
     }
-    for (;;)
+    label345:
+    for (paramInt = 0;; paramInt = 8)
     {
-      if ((arrayOfString != null) && (paramLong > 0L))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("com.tencent.mobileqq.vip.DownloadListener", 2, "report | tags=" + arrayOfString + ",len=" + paramLong);
-        }
-        paramAppInterface.sendAppDataIncerment(paramAppInterface.getCurrentAccountUin(), arrayOfString, paramLong);
-      }
-      return;
-      label134:
-      arrayOfString = new String[3];
-      arrayOfString[0] = this.xgFlow;
-      arrayOfString[1] = "param_XGFlow";
-      arrayOfString[2] = "param_Flow";
+      paramViewGroup.setVisibility(paramInt);
+      return paramView;
+      paramViewGroup = (bato)paramView.getTag();
+      break;
     }
   }
 }

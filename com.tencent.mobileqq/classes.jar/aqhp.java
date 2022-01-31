@@ -1,28 +1,21 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.view.View;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
 
-class aqhp
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+public class aqhp
+  implements bfoq
 {
-  aqhp(aqhl paramaqhl) {}
+  public aqhp(LangSettingFragment paramLangSettingFragment, int paramInt) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    aqhl.a(this.a, true);
-    if (this.a.c == 3) {}
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-      this.a.c = 2;
-    } while (aqhl.a(this.a) == null);
-    aqhl.a(this.a).j();
+    if (paramInt == 0) {
+      LangSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, this.jdField_a_of_type_Int);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqhp
  * JD-Core Version:    0.7.0.1
  */

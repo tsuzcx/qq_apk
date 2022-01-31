@@ -1,25 +1,25 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-class addt
-  extends ClickableSpan
+public class addt
+  implements DialogInterface.OnClickListener
 {
-  addt(addp paramaddp) {}
+  public addt(DoodlePanel paramDoodlePanel) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!badq.d(this.a.a))
+    switch (paramInt)
     {
-      bbmy.a(this.a.a, ajjy.a(2131637439), 2000).a();
+    default: 
+      return;
+    case 0: 
+      axqw.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
       return;
     }
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140617UV3MZn.html?ADTAG=veda.mobileqq.en");
-    paramView.putExtra("hide_more_button", true);
-    this.a.a.startActivity(paramView);
+    axqw.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
+    DoodlePanel.a(this.a).b(1);
   }
 }
 

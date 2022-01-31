@@ -1,12 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
 class adog
-  implements DialogInterface.OnClickListener
+  implements bfoq
 {
-  adog(adod paramadod) {}
+  adog(adof paramadof, MessageForDeviceFile paramMessageForDeviceFile, bfol parambfol) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      this.jdField_a_of_type_Adof.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
+  }
 }
 
 

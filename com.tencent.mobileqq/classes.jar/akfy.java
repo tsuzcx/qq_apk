@@ -1,32 +1,48 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.addon.DiyPendantEntity;
+import com.tencent.mobileqq.addon.DiyPendantSticker;
+import com.tencent.mobileqq.app.SVIPHandler.2;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public final class akfy
-  implements Handler.Callback
+public class akfy
+  implements ajtg
 {
-  public boolean handleMessage(Message paramMessage)
+  public akfy(SVIPHandler.2 param2, aiqz paramaiqz) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramMessage.what)
+    try
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.i("SOSO.LBS", 2, "msg_stop_location.");
-      }
-      SosoInterface.c();
-      SosoInterface.d();
-      continue;
-      if (SosoInterface.a().hasMessages(1001))
+      if ((paramObject instanceof List))
       {
-        SosoInterface.a().removeMessages(1001);
-        SosoInterface.a().sendEmptyMessageDelayed(1001, 3000L);
+        paramObject = (List)paramObject;
+        if (paramObject.size() > 0)
+        {
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            Iterator localIterator = ((DiyPendantEntity)paramObject.next()).getStickerInfoList().iterator();
+            while (localIterator.hasNext())
+            {
+              Object localObject = (DiyPendantSticker)localIterator.next();
+              localObject = this.jdField_a_of_type_Aiqz.a((DiyPendantSticker)localObject);
+              this.jdField_a_of_type_Aiqz.b.add(localObject);
+            }
+          }
+        }
+      }
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SVIPHandler", 2, paramObject.getMessage());
       }
     }
+    this.jdField_a_of_type_Aiqz.b();
   }
 }
 

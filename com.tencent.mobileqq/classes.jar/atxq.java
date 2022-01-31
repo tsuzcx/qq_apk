@@ -1,33 +1,61 @@
-import android.text.TextUtils;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.widget.AbsListView;
 
-public class atxq
+class atxq
+  implements bfob
 {
-  public String a;
-  public String b;
+  private atxq(atxn paramatxn) {}
   
-  public String a()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.a);
-    return localStringBuilder.toString();
+    bfob localbfob = this.a.jdField_a_of_type_Atxm.a();
+    if (localbfob != null) {
+      localbfob.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
   }
   
-  public void a(String paramString)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    paramString = paramString.split(" ");
-    if ((paramString != null) && (paramString.length == 2))
+    int j = 0;
+    int i;
+    Object localObject;
+    if ((this.a.jdField_a_of_type_Int == 2) && (paramInt != 2))
     {
-      this.b = paramString[0];
-      this.a = paramString[1];
-      return;
+      i = 1;
+      if (i == 0) {
+        break label136;
+      }
+      localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this.a);
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      if (!this.a.b) {
+        break label129;
+      }
+      i = j;
+      label66:
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, i);
+      this.a.jdField_a_of_type_Boolean = true;
     }
-    this.b = "";
-    this.a = "";
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Int = paramInt;
+      localObject = this.a.jdField_a_of_type_Atxm.a();
+      if (localObject != null) {
+        ((bfob)localObject).onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      return;
+      i = 0;
+      break;
+      label129:
+      i = 550;
+      break label66;
+      label136:
+      if (paramInt == 2)
+      {
+        this.a.jdField_a_of_type_Boolean = false;
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      }
+    }
   }
 }
 

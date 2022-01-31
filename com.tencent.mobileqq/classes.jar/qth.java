@@ -1,59 +1,230 @@
-import android.annotation.TargetApi;
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.BaseMovementMethod;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.TopBarInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
-@TargetApi(11)
 public class qth
-  extends BaseMovementMethod
+  implements DialogInterface.OnShowListener, View.OnClickListener, wcd
 {
-  private static qth a;
+  private int jdField_a_of_type_Int;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private qti jdField_a_of_type_Qti;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
   
-  public static qth a()
+  public qth(Activity paramActivity, View paramView, qti paramqti, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (a == null) {
-      a = new qth();
-    }
-    return a;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Qti = paramqti;
   }
   
-  public void initialize(TextView paramTextView, Spannable paramSpannable)
+  private void a(VideoInfo paramVideoInfo, ViewGroup paramViewGroup, ImageView paramImageView1, TextView paramTextView, ImageView paramImageView2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Selection.removeSelection(paramSpannable);
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getActionMasked();
-    if ((i == 1) || (i == 0))
+    if (a(paramVideoInfo, paramViewGroup, paramImageView1, paramTextView, paramImageView2, paramBoolean1))
     {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramTextView.getTotalPaddingLeft();
-      int n = paramTextView.getTotalPaddingTop();
-      int i1 = paramTextView.getScrollX();
-      int i2 = paramTextView.getScrollY();
-      paramMotionEvent = paramTextView.getLayout();
-      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
-      paramMotionEvent = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
-      if (paramMotionEvent.length > 0)
+      if ((paramBoolean2) && (paramViewGroup.getVisibility() == 0)) {
+        qol.a(paramViewGroup, 200);
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        a(paramVideoInfo, "0X800929D", true);
+      }
+    }
+    else
+    {
+      return;
+    }
+    a(paramVideoInfo, "0X800924D", false);
+  }
+  
+  private void a(VideoInfo paramVideoInfo, String paramString, boolean paramBoolean)
+  {
+    qze localqze = new qze(paramVideoInfo);
+    if ((paramVideoInfo.a != null) && (!TextUtils.isEmpty(paramVideoInfo.a.d))) {
+      localqze.a(paramVideoInfo.a.d);
+    }
+    for (;;)
+    {
+      localqze.h(paramVideoInfo.g).w(this.jdField_b_of_type_Int).x(this.jdField_a_of_type_AndroidAppActivity.getIntent().getIntExtra("key_source", 0)).f(paramBoolean);
+      noo.b(null, "", paramString, paramString, 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", localqze.a().a(), false);
+      return;
+      localqze.a(paramVideoInfo.N);
+    }
+  }
+  
+  private void a(qms paramqms)
+  {
+    if ((paramqms instanceof qmr))
+    {
+      paramqms = (qmr)paramqms;
+      if (paramqms.i != null) {
+        paramqms.i.setVisibility(8);
+      }
+    }
+  }
+  
+  private boolean a(VideoInfo paramVideoInfo, ViewGroup paramViewGroup, ImageView paramImageView1, TextView paramTextView, ImageView paramImageView2, boolean paramBoolean)
+  {
+    paramVideoInfo = paramVideoInfo.a;
+    int i;
+    if ((paramVideoInfo != null) && (!TextUtils.isEmpty(paramVideoInfo.b)) && (!TextUtils.isEmpty(paramVideoInfo.jdField_a_of_type_JavaLangString)))
+    {
+      paramTextView.setText(paramVideoInfo.b);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mUseAutoScaleParams = false;
+      if (paramBoolean)
       {
-        if (i == 1) {
-          paramMotionEvent[0].onClick(paramTextView);
-        }
-        for (;;)
+        i = 12;
+        i = actn.a(i, this.jdField_a_of_type_AndroidAppActivity.getResources());
+        localURLDrawableOptions.mRequestWidth = i;
+        localURLDrawableOptions.mRequestHeight = i;
+        localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
+        localURLDrawableOptions.mFailedDrawable = new ColorDrawable(0);
+        paramImageView1.setImageDrawable(URLDrawable.getDrawable(paramVideoInfo.jdField_a_of_type_JavaLangString, localURLDrawableOptions));
+      }
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      if (bool)
+      {
+        paramViewGroup.setVisibility(0);
+        if ((paramBoolean) && (!TextUtils.isEmpty(paramVideoInfo.c)))
         {
-          return true;
-          Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(paramMotionEvent[0]), paramSpannable.getSpanEnd(paramMotionEvent[0]));
+          paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
+          paramViewGroup.mRequestWidth = bawz.a(this.jdField_a_of_type_AndroidAppActivity, 23.0F);
+          paramViewGroup.mRequestHeight = bawz.a(this.jdField_a_of_type_AndroidAppActivity, 23.0F);
+          paramImageView2.setImageDrawable(URLDrawable.getDrawable(paramVideoInfo.c, paramViewGroup));
         }
       }
-      Selection.removeSelection(paramSpannable);
+      do
+      {
+        do
+        {
+          return bool;
+          i = 18;
+          break;
+        } while (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null);
+        paramImageView2.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        return bool;
+        paramViewGroup.setVisibility(8);
+        paramTextView.setText("");
+        paramImageView1.setImageDrawable(null);
+      } while (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null);
+      paramImageView2.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      return bool;
     }
-    return false;
+  }
+  
+  public void a(DialogInterface paramDialogInterface, int paramInt)
+  {
+    boolean bool = false;
+    this.jdField_b_of_type_Boolean = false;
+    if (this.jdField_a_of_type_Qti != null)
+    {
+      paramDialogInterface = this.jdField_a_of_type_Qti;
+      if (paramInt != 0) {
+        bool = true;
+      }
+      paramDialogInterface.a(bool);
+    }
+  }
+  
+  public void a(VideoInfo paramVideoInfo, qms paramqms, boolean paramBoolean)
+  {
+    ImageView localImageView = null;
+    if ((paramVideoInfo == null) || (paramqms == null) || (paramVideoInfo.a == null)) {
+      a(paramqms);
+    }
+    label228:
+    for (;;)
+    {
+      return;
+      Object localObject;
+      ViewGroup localViewGroup;
+      TextView localTextView;
+      if ((paramqms instanceof qmr))
+      {
+        localObject = (qmr)paramqms;
+        if (((qmr)localObject).i == null)
+        {
+          ((qmr)localObject).i = ((ViewGroup)((ViewStub)((qmr)localObject).o.findViewById(2131378982)).inflate());
+          ((qmr)localObject).b = ((ImageView)((qmr)localObject).i.findViewById(2131378968));
+          ((qmr)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((qmr)localObject).i.findViewById(2131378969));
+          ((qmr)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((qmr)localObject).i.findViewById(2131378979));
+        }
+        localViewGroup = ((qmr)paramqms).i;
+        localObject = ((qmr)paramqms).jdField_a_of_type_AndroidWidgetImageView;
+        localTextView = ((qmr)paramqms).jdField_a_of_type_AndroidWidgetTextView;
+        localImageView = ((qmr)paramqms).b;
+      }
+      for (paramqms = localViewGroup;; paramqms = null)
+      {
+        if ((paramqms == null) || (localObject == null) || (localTextView == null)) {
+          break label228;
+        }
+        if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localImageView.getDrawable();
+        }
+        paramqms.setOnClickListener(this);
+        if (paramqms.getVisibility() == 0) {
+          break;
+        }
+        a(paramVideoInfo, paramqms, (ImageView)localObject, localTextView, localImageView, true, paramBoolean);
+        return;
+        localTextView = null;
+        localObject = null;
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public void onClick(View paramView)
+  {
+    VideoInfo localVideoInfo = this.jdField_a_of_type_Qti.a(paramView);
+    if (localVideoInfo == null) {
+      return;
+    }
+    switch (paramView.getId())
+    {
+    }
+    while (this.jdField_a_of_type_Boolean)
+    {
+      a(localVideoInfo, "0x800929E", true);
+      return;
+      if ((localVideoInfo.a != null) && (localVideoInfo.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo != null)) {
+        qol.a(this.jdField_a_of_type_AndroidAppActivity, localVideoInfo.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo);
+      }
+    }
+    a(localVideoInfo, "0X800924E", false);
+  }
+  
+  public void onShow(DialogInterface paramDialogInterface)
+  {
+    if (this.jdField_a_of_type_Qti != null) {
+      this.jdField_a_of_type_Qti.g();
+    }
+    this.jdField_b_of_type_Boolean = true;
   }
 }
 

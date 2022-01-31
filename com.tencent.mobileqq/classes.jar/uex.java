@@ -1,41 +1,42 @@
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.Spannable.Factory;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.media.MediaCodec;
+import android.media.MediaFormat;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.AudioPlayback;
 
 public class uex
-  implements View.OnTouchListener
+  extends uey
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private AudioPlayback a;
+  
+  public uex(ufc paramufc, boolean paramBoolean, int paramInt, ufa paramufa, AudioPlayback paramAudioPlayback)
   {
-    int i = paramMotionEvent.getAction();
-    if ((i == 1) || (i == 0))
-    {
-      Object localObject = ((TextView)paramView).getText();
-      localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
-      paramView = (TextView)paramView;
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramView.getTotalPaddingLeft();
-      int n = paramView.getTotalPaddingTop();
-      int i1 = paramView.getScrollX();
-      int i2 = paramView.getScrollY();
-      paramMotionEvent = paramView.getLayout();
-      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
-      paramMotionEvent = (ClickableSpan[])((Spannable)localObject).getSpans(j, j, ClickableSpan.class);
-      if (paramMotionEvent.length != 0)
-      {
-        if (i == 1) {
-          paramMotionEvent[0].onClick(paramView);
-        }
-        return true;
-      }
+    super(paramufc, paramBoolean, paramInt, paramufa);
+    this.a = paramAudioPlayback;
+    a();
+  }
+  
+  protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
+  {
+    super.a(paramMediaCodec, paramMediaFormat);
+    this.a.a(paramMediaFormat);
+  }
+  
+  protected void a(MediaFormat paramMediaFormat)
+  {
+    this.a.a(paramMediaFormat);
+  }
+  
+  public void a(uez paramuez, long paramLong)
+  {
+    this.a.a(paramuez.jdField_a_of_type_JavaNioByteBuffer, paramuez.jdField_a_of_type_Long);
+    b(paramuez);
+  }
+  
+  protected boolean a()
+  {
+    if (!c()) {
+      return this.a.a() < 200000L;
     }
-    return false;
+    return super.a();
   }
 }
 

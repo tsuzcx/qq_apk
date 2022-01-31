@@ -1,10 +1,13 @@
-import com.qq.jce.wup.UniAttribute;
-import com.qq.taf.jce.JceInputStream;
-
-public class ryq
-  extends UniAttribute
+class ryq
+  extends ryp
 {
-  JceInputStream a = new JceInputStream();
+  String b;
+  
+  public ryq(String paramString1, int paramInt, boolean paramBoolean, String paramString2)
+  {
+    super(paramString1, paramInt, paramBoolean);
+    this.b = paramString2;
+  }
 }
 
 

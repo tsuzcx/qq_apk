@@ -1,20 +1,18 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-class abam
-  implements ViewSwitcher.ViewFactory
+public class abam
+  implements InputFilter
 {
-  abam(abai paramabai) {}
+  public abam(EditInfoActivity paramEditInfoActivity) {}
   
-  public View makeView()
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    if (paramCharSequence.toString().contains("\n")) {
+      return paramCharSequence.toString().replace("\n", "");
+    }
+    return null;
   }
 }
 

@@ -1,23 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class wgi
-  implements Parcelable.Creator<CommodityBean>
+public class wgi
+  extends bduv
 {
-  public CommodityBean a(Parcel paramParcel)
-  {
-    return new CommodityBean(paramParcel);
-  }
+  public wgi(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public CommodityBean[] a(int paramInt)
+  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    return new CommodityBean[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("QRDisplayActivity", 2, "mBusinessObserver onQidianGroupInfo qrcode url: " + paramBoolean);
+    }
+    if ((this.a.b) || (this.a.isFinishing())) {
+      return;
+    }
+    if (!paramBoolean)
+    {
+      this.a.g();
+      return;
+    }
+    String str = (String)paramHashMap.get("uin");
+    paramHashMap = (String)paramHashMap.get("url");
+    this.a.a(str, 2, paramHashMap);
+    paramHashMap = wim.a(paramHashMap, -1);
+    if (paramHashMap != null)
+    {
+      this.a.a = paramHashMap;
+      this.a.f();
+      return;
+    }
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wgi
  * JD-Core Version:    0.7.0.1
  */

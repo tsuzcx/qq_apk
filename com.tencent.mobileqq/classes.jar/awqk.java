@@ -1,48 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
-import com.tencent.widget.XEditTextEx;
 
-public class awqk
-  implements DialogInterface.OnClickListener
+class awqk
+  implements View.OnClickListener
 {
-  public awqk(LocalCrashCollector.3 param3, SessionInfo paramSessionInfo) {}
+  awqk(awqh paramawqh, awne paramawne) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    try
+    if (this.jdField_a_of_type_Awne.l == 1)
     {
-      if (LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0) > 0)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
-          break label106;
-        }
-        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      axqw.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
+      axqw.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 2, 0, "", "", "", "");
+    }
+    Object localObject;
+    for (;;)
+    {
+      localObject = (ajxn)awqh.a(this.jdField_a_of_type_Awqh).getManager(51);
+      if ((((ajxn)localObject).b(this.jdField_a_of_type_Awne.b)) || (((ajxn)localObject).d(this.jdField_a_of_type_Awne.b))) {
+        break;
       }
-      for (;;)
-      {
-        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).delete(0, LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).length());
-        paramDialogInterface.dismiss();
-        return;
-        label106:
-        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true);
-      }
+      localObject = AddFriendLogicActivity.a(paramView.getContext(), 1, this.jdField_a_of_type_Awne.b, null, 3020, 3, this.jdField_a_of_type_Awne.c, null, null, paramView.getContext().getString(2131689628), null);
+      paramView.getContext().startActivity((Intent)localObject);
+      return;
+      axqw.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
+      axqw.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 1, 0, "", "", "", "");
+    }
+    if (((ajxn)localObject).b(this.jdField_a_of_type_Awne.b))
+    {
+      this.jdField_a_of_type_Awne.k = 2;
+      awqh.a(this.jdField_a_of_type_Awqh).notifyDataSetChanged();
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
-    }
+    this.jdField_a_of_type_Awne.k = 1;
+    awqh.a(this.jdField_a_of_type_Awqh).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awqk
  * JD-Core Version:    0.7.0.1
  */

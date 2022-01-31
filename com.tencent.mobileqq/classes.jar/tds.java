@@ -1,12 +1,34 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
 class tds
-  extends tdc
+  implements syt<tnl, tow>
 {
-  tds(tdo paramtdo, tev paramtev) {}
+  tds(tdq paramtdq) {}
   
-  public boolean b()
+  public void a(@NonNull tnl paramtnl, @Nullable tow paramtow, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_Tev.a = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    veg.b("WeatherDataProvider", "requestWeather Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramtow != null))
+    {
+      veg.a("WeatherDataProvider", "requestWeather onCmdRespond success, temperature : %s .", Integer.valueOf(paramtow.b));
+      this.a.jdField_a_of_type_JavaLangObject = new tdt(paramtow.b, paramtow.a);
+      veg.c("WeatherDataProvider", "update local weather data.");
+      paramtnl = (tcv)tdc.a(10);
+      paramtnl.b("edit_video_weather_filter_data", Integer.valueOf(paramtow.b));
+      paramtnl.b("edit_video_weather_desc", paramtow.a);
+      tdq.a(this.a, System.currentTimeMillis() + 14400000L);
+      paramtnl.b("edit_video_weather_expiry_time", Long.valueOf(tdq.a(this.a)));
+      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+      veg.d("WeatherDataProvider", "requestWeather onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramtnl });
+      this.a.a(false, null);
+    }
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import atyq;
-import atyt;
-import bant;
-import baot;
+import auwp;
+import auws;
+import bbpp;
+import bbqp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -25,10 +25,10 @@ public class GetSelfPendantId
     if (QLog.isColorLevel()) {
       QLog.d("GetSelfPendantId", 2, "doStep");
     }
-    bant.a(this.a.app);
-    atyt.a(this.a.app);
-    atyq.a(this.a.app);
-    ((baot)this.a.app.a(71)).a(new String[] { a() }, new int[] { 27201, 27025, 40530, 20059, 27041, 27217, 27225, 27224, 42122, 42121, 27234, 27235, 27236, 27238, 45000, 42334, 27241 });
+    bbpp.a(this.a.app);
+    auws.a(this.a.app);
+    auwp.a(this.a.app);
+    ((bbqp)this.a.app.a(71)).a(new String[] { a() }, new int[] { 27201, 27025, 40530, 20059, 27041, 27217, 27225, 27224, 42122, 42121, 27234, 27235, 27236, 27238, 45000, 42334, 27241 });
     this.a.app.getManager(44);
     return 7;
   }

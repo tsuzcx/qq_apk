@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import awrn;
+import axrl;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class LoadOtherStuff
@@ -8,7 +8,7 @@ public class LoadOtherStuff
 {
   protected boolean doStep()
   {
-    awrn.a(BaseApplicationImpl.getContext());
+    axrl.a(BaseApplicationImpl.getContext());
     BaseApplicationImpl.getApplication().getSharedPreferences("UserGuide", 0);
     return true;
   }

@@ -1,17 +1,75 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class pje
-  implements View.OnClickListener
+public class pje
+  implements ViewBase.OnClickListener
 {
-  pje(pjd parampjd) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public void onClick(View paramView)
+  public pje(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    paramView = this.a.jdField_a_of_type_Qoe.a();
-    if (paramView != null) {
-      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData))) {}
+    try
+    {
+      Object localObject = new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData);
+      QLog.d("OnSuperTopicClickListener", 2, new Object[] { "mArticleInfo.proteusItemsData = ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData });
+      Iterator localIterator = ((JSONObject)localObject).keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if ("id_super_topic".equals(str))
+        {
+          localObject = ((JSONObject)localObject).getJSONObject(str).getString("super_topic_jump_url");
+          QLog.d("OnSuperTopicClickListener", 2, new Object[] { "jumpToSuperTopic, jumpUrl = ", localObject });
+          if (!TextUtils.isEmpty((CharSequence)localObject)) {
+            onk.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, null);
+          }
+        }
+      }
+      return;
     }
+    catch (JSONException localJSONException)
+    {
+      QLog.d("OnSuperTopicClickListener", 2, "jumpToSuperTopic", localJSONException);
+    }
+  }
+  
+  public static void a(ArticleInfo paramArticleInfo, Context paramContext)
+  {
+    paramArticleInfo = paramArticleInfo.mSocialFeedInfo.a;
+    if (paramArticleInfo != null)
+    {
+      paramArticleInfo = paramArticleInfo.d;
+      onk.c(paramContext, paramArticleInfo);
+      QLog.i("OnSuperTopicClickListener", 2, "jumpToWendaRefer jumpUrl +" + paramArticleInfo);
+    }
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if ((onk.l(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (onk.m(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)))
+    {
+      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_AndroidContentContext);
+      noo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      return;
+    }
+    a();
+    noo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
   }
 }
 

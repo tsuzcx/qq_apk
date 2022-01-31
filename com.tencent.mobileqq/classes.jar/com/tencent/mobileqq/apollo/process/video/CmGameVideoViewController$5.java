@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.process.video;
 
-import airi;
-import airm;
-import ajag;
+import ajeg;
+import ajek;
+import ajoi;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
@@ -10,15 +10,15 @@ import java.net.URLEncoder;
 public class CmGameVideoViewController$5
   implements Runnable
 {
-  public CmGameVideoViewController$5(airm paramairm, int paramInt, long paramLong) {}
+  public CmGameVideoViewController$5(ajek paramajek, int paramInt, long paramLong) {}
   
   public void run()
   {
-    if ((airm.a(this.this$0) == null) || (TextUtils.isEmpty(airm.a(this.this$0).c))) {
+    if ((ajek.a(this.this$0) == null) || (TextUtils.isEmpty(ajek.a(this.this$0).c))) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(airm.a(this.this$0).c);
+    localStringBuilder.append(ajek.a(this.this$0).c);
     String str3 = "";
     String str1 = str3;
     switch (this.jdField_a_of_type_Int)
@@ -36,7 +36,7 @@ public class CmGameVideoViewController$5
         if (!TextUtils.isEmpty(str1)) {
           localStringBuilder.append("&video=").append(URLEncoder.encode(str1, "UTF-8"));
         }
-        ajag.a(localStringBuilder.toString(), null, null);
+        ajoi.a(localStringBuilder.toString(), null, null);
         return;
       }
       catch (Throwable localThrowable)
@@ -44,29 +44,29 @@ public class CmGameVideoViewController$5
         QLog.e("cmgame_process.CmGameVideoViewController", 1, localThrowable, new Object[0]);
         return;
       }
-      if ((airm.a(this.this$0) & 0x1) == 1) {
+      if ((ajek.a(this.this$0) & 0x1) == 1) {
         break;
       }
-      String str2 = airm.a(this.this$0, 0L, 0L, 1L, 0L);
-      airm.a(this.this$0, airm.a(this.this$0) | 0x1);
+      String str2 = ajek.a(this.this$0, 0L, 0L, 1L, 0L);
+      ajek.a(this.this$0, ajek.a(this.this$0) | 0x1);
       continue;
-      if ((airm.a(this.this$0) & 0x2) == 2) {
+      if ((ajek.a(this.this$0) & 0x2) == 2) {
         break;
       }
       str2 = "";
-      airm.a(this.this$0, airm.a(this.this$0) | 0x2);
+      ajek.a(this.this$0, ajek.a(this.this$0) | 0x2);
       continue;
-      if ((airm.a(this.this$0) & 0x4) == 4) {
+      if ((ajek.a(this.this$0) & 0x4) == 4) {
         break;
       }
-      str2 = airm.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 0L);
-      airm.a(this.this$0, airm.a(this.this$0) | 0x4);
+      str2 = ajek.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 0L);
+      ajek.a(this.this$0, ajek.a(this.this$0) | 0x4);
       continue;
-      if ((airm.a(this.this$0) & 0x8) == 8) {
+      if ((ajek.a(this.this$0) & 0x8) == 8) {
         break;
       }
-      str2 = airm.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 1L);
-      airm.a(this.this$0, airm.a(this.this$0) | 0x8);
+      str2 = ajek.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 1L);
+      ajek.a(this.this$0, ajek.a(this.this$0) | 0x8);
     }
   }
 }

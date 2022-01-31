@@ -1,6 +1,34 @@
-public abstract interface aiwo
+import java.util.ArrayList;
+
+public class aiwo
+  implements Cloneable
 {
-  public abstract void a();
+  public int a;
+  public long a;
+  public ArrayList<String> a;
+  public int b;
+  public int c;
+  
+  protected Object clone()
+  {
+    Object localObject = null;
+    try
+    {
+      aiwo localaiwo = (aiwo)super.clone();
+      localObject = localaiwo;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      for (;;)
+      {
+        localCloneNotSupportedException.printStackTrace();
+      }
+    }
+    if (this.a != null) {
+      localObject.a = ((ArrayList)this.a.clone());
+    }
+    return localObject;
+  }
 }
 
 

@@ -1,13 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.view.RainView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 
-public class qob
-  implements axbf
+class qob
+  implements DialogInterface.OnClickListener
 {
-  public qob(RainView paramRainView) {}
+  qob(qny paramqny, boolean paramBoolean) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b(this.a);
+    if (!this.jdField_a_of_type_Boolean) {
+      if (!qny.a(this.jdField_a_of_type_Qny)) {}
+    }
+    while (!(qny.a(this.jdField_a_of_type_Qny) instanceof Activity))
+    {
+      return;
+      this.jdField_a_of_type_Qny.b();
+      return;
+    }
+    oau.b(qny.a(this.jdField_a_of_type_Qny));
+    oal.a(qny.a(this.jdField_a_of_type_Qny), qny.a(this.jdField_a_of_type_Qny).o, qny.a(this.jdField_a_of_type_Qny).p, "");
   }
 }
 

@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajjy;
+import ajyc;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Base64;
-import bace;
-import com.tencent.commonsdk.util.MD5Coding;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
+import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mm.vfs.VFSFileOp;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.http.MiniappHttpUtil;
 import com.tencent.mobileqq.mini.http.MiniappHttpUtil.UploadTask;
@@ -23,7 +24,6 @@ import com.tencent.mobileqq.minigame.utils.NativeBuffer;
 import com.tencent.mobileqq.minigame.utils.thread.TTHandleThread;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
@@ -31,7 +31,6 @@ import java.nio.charset.Charset;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import mpr;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -45,7 +44,6 @@ public class FileJsPlugin
   private static final String API_COPY_FILE = "fs_copyFile";
   private static final String API_COPY_FILE_SYNC = "fs_copyFileSync";
   private static final String API_CREATE_DOWNLOAD_TASK = "createDownloadTask";
-  private static final String API_CREATE_LOAD_SUBPACKAGE_TASK = "createLoadSubPackageTask";
   private static final String API_CREATE_UPLOAD_TASK = "createUploadTask";
   private static final String API_CTREATE_FILE_SYSTEM = "createFileSystemInstance";
   private static final String API_GET_FILE_INFO = "getFileInfo";
@@ -127,7 +125,7 @@ public class FileJsPlugin
     if (paramString.endsWith("Sync")) {
       return paramFileTask.run();
     }
-    TTHandleThread.getInstance().execute_FILE(new FileJsPlugin.20(this, paramFileTask));
+    TTHandleThread.getInstance().execute_FILE(new FileJsPlugin.19(this, paramFileTask));
     return "";
   }
   
@@ -220,7 +218,7 @@ public class FileJsPlugin
   
   private Object readFile(String paramString1, String paramString2)
   {
-    paramString2 = bace.a(new File(paramString2));
+    paramString2 = FileUtils.fileToBytes(new VFSFile(paramString2));
     if (paramString2 == null) {
       return null;
     }
@@ -253,7 +251,7 @@ public class FileJsPlugin
     if (paramArrayOfByte != null)
     {
       checkUsrFileSize(paramString3, paramArrayOfByte.length);
-      return bace.a(paramArrayOfByte, paramString3, paramBoolean);
+      return FileUtils.writeFile(paramArrayOfByte, paramString3, paramBoolean);
     }
     if ("base64".equals(paramString2)) {
       paramArrayOfByte = Base64.decode(paramString1, 2);
@@ -261,7 +259,7 @@ public class FileJsPlugin
     while ((paramString2.equals("binary")) || (paramString2.equals("hex")) || (paramString2.equals("base64")))
     {
       checkUsrFileSize(paramString3, paramArrayOfByte.length);
-      return bace.a(paramArrayOfByte, paramString3, paramBoolean);
+      return FileUtils.writeFile(paramArrayOfByte, paramString3, paramBoolean);
       if ("hex".equals(paramString2)) {
         paramArrayOfByte = StringUtil.hexStr2Bytes(paramString1);
       } else {
@@ -271,12 +269,12 @@ public class FileJsPlugin
     paramArrayOfByte = Charset.forName(paramString2).encode(new String(paramArrayOfByte, Charset.forName("utf8")));
     paramString1 = paramArrayOfByte.array();
     checkUsrFileSize(paramString3, paramArrayOfByte.limit());
-    return bace.a(paramString1, paramString3, paramBoolean, paramArrayOfByte.limit());
+    return FileUtils.writeFile(paramString1, paramString3, paramBoolean, paramArrayOfByte.limit());
   }
   
   public String handleNativeRequest(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
   {
-    Object localObject8 = new WeakReference(paramJsRuntime);
+    Object localObject7 = new WeakReference(paramJsRuntime);
     long l = System.currentTimeMillis();
     Object localObject1;
     try
@@ -293,200 +291,176 @@ public class FileJsPlugin
         localObject1 = new JSONObject();
       }
     }
-    int i;
+    String str2;
+    Object localObject9;
+    boolean bool;
+    Object localObject8;
     Object localObject6;
-    if ("createLoadSubPackageTask".equals(paramString1))
+    Object localObject5;
+    if ("createDownloadTask".equals(paramString1))
     {
-      localObject1 = ((JSONObject)localObject1).optString("moduleName");
-      i = this.curPreloadTaskId + 1;
-      this.curPreloadTaskId = i;
-      localObject6 = new JSONObject();
-      try
+      str2 = String.valueOf(this.downloadTaskId.getAndIncrement());
+      localObject9 = ((JSONObject)localObject1).optString("url");
+      bool = ((JSONObject)localObject1).optBoolean("__skipDomainCheck__", false);
+      localObject8 = ((JSONObject)localObject1).optJSONObject("header");
+      localObject6 = MiniAppFileManager.getInstance().getUsrPath(((JSONObject)localObject1).optString("filePath"));
+      if (TextUtils.isEmpty((CharSequence)localObject9))
       {
-        this.jsPluginEngine.appBrandRuntime.getApkgInfo().downloadSubPack((String)localObject1, new FileJsPlugin.3(this, (WeakReference)localObject8, i, (String)localObject1));
-        ((JSONObject)localObject6).put("loadTaskId", i);
-        localObject1 = ApiUtil.wrapCallbackOk(paramString1, (JSONObject)localObject6).toString();
-        return localObject1;
+        QLog.e("[mini] FileJsPlugin", 1, "download url is null");
+        return ApiUtil.wrapCallbackFail(paramString1, null, "download url is null.").toString();
       }
-      catch (Throwable localThrowable2)
+      if (!this.jsPluginEngine.appBrandRuntime.getApkgInfo().isDomainValid(bool, (String)localObject9, 2))
       {
-        localThrowable2.printStackTrace();
+        QLog.e("[mini] FileJsPlugin", 1, "download url Domain not configured." + (String)localObject9);
+        return ApiUtil.wrapCallbackFail(paramString1, null, "Domain not configured.").toString();
+      }
+      if ((!TextUtils.isEmpty((CharSequence)localObject9)) && (this.jsPluginEngine.appBrandRuntime.getApkgInfo().isDomainValid(bool, (String)localObject9, 2)))
+      {
+        localObject5 = localObject6;
+        if (TextUtils.isEmpty((CharSequence)localObject6)) {
+          localObject5 = MiniAppFileManager.getInstance().getTmpPathByUrl((String)localObject9);
+        }
+        localObject5 = VFSFileOp.exportExternalPath((String)localObject5, true);
+        localObject6 = (JsRuntime)((WeakReference)localObject7).get();
+        try
+        {
+          if (!TextUtils.isEmpty((CharSequence)localObject5))
+          {
+            localObject7 = getDownloadUrl((String)localObject9);
+            this.downloadMap.put(str2, localObject7);
+            MiniappDownloadUtil.getInstance().download((String)localObject7, (String)localObject5, false, new FileJsPlugin.3(this, l, str2, (JsRuntime)localObject6, (String)localObject5, (JSONObject)localObject1), Downloader.DownloadMode.StrictMode, (JSONObject)localObject8);
+          }
+          for (;;)
+          {
+            try
+            {
+              localObject1 = new JSONObject();
+              ((JSONObject)localObject1).put("downloadTaskId", str2);
+              localObject1 = ApiUtil.wrapCallbackOk(paramString1, (JSONObject)localObject1).toString();
+              return localObject1;
+            }
+            catch (Throwable localThrowable2)
+            {
+              QLog.e("[mini] FileJsPlugin", 1, paramString1 + " return error.", localThrowable2);
+            }
+            QLog.d("[mini] FileJsPlugin", 1, "download failed, savepath is null.");
+            localObject1 = new JSONObject();
+            ((JSONObject)localObject1).put("downloadTaskId", str2);
+            ((JSONObject)localObject1).put("state", "fail");
+            ((JSONObject)localObject1).put("errMsg", "Download Failed, savepath is null");
+            ((JsRuntime)localObject6).evaluateSubcribeJS("onDownloadTaskStateChange", ((JSONObject)localObject1).toString(), 0);
+          }
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QLog.e("[mini] FileJsPlugin", 1, "download failed." + localException);
+          }
+        }
       }
     }
-    Object localObject7;
+    int i;
     for (;;)
     {
       return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
-      String str2;
-      Object localObject10;
-      boolean bool;
-      Object localObject9;
-      Object localObject3;
-      if ("createDownloadTask".equals(paramString1))
+      QLog.w("[mini] FileJsPlugin", 1, "check download DomainValid fail, callbackFail, event:" + paramString1 + ", callbackId:" + paramInt + ", url:" + (String)localObject9);
+      return ApiUtil.wrapCallbackFail(paramString1, null, "download url error.").toString();
+      Object localObject2;
+      if ("operateDownloadTask".equals(paramString1))
       {
-        str2 = String.valueOf(this.downloadTaskId.getAndIncrement());
-        localObject10 = localThrowable2.optString("url");
-        bool = localThrowable2.optBoolean("__skipDomainCheck__", false);
-        localObject9 = localThrowable2.optJSONObject("header");
-        localObject7 = MiniAppFileManager.getInstance().getUsrPath(localThrowable2.optString("filePath"));
-        if (TextUtils.isEmpty((CharSequence)localObject10))
-        {
-          QLog.e("[mini] FileJsPlugin", 1, "download url is null");
-          return ApiUtil.wrapCallbackFail(paramString1, null, "download url is null.").toString();
-        }
-        if (!this.jsPluginEngine.appBrandRuntime.getApkgInfo().isDomainValid(bool, (String)localObject10, 2))
-        {
-          QLog.e("[mini] FileJsPlugin", 1, "download url Domain not configured." + (String)localObject10);
-          return ApiUtil.wrapCallbackFail(paramString1, null, "Domain not configured.").toString();
-        }
-        if ((!TextUtils.isEmpty((CharSequence)localObject10)) && (this.jsPluginEngine.appBrandRuntime.getApkgInfo().isDomainValid(bool, (String)localObject10, 2)))
-        {
-          localObject6 = localObject7;
-          if (TextUtils.isEmpty((CharSequence)localObject7)) {
-            localObject6 = MiniAppFileManager.getInstance().getTmpPathByUrl((String)localObject10);
-          }
-          localObject7 = (JsRuntime)((WeakReference)localObject8).get();
-          try
-          {
-            if (!TextUtils.isEmpty((CharSequence)localObject6))
-            {
-              localObject8 = getDownloadUrl((String)localObject10);
-              this.downloadMap.put(str2, localObject8);
-              MiniappDownloadUtil.getInstance().download((String)localObject8, (String)localObject6, false, new FileJsPlugin.4(this, l, str2, (JsRuntime)localObject7, (String)localObject6, localThrowable2), Downloader.DownloadMode.StrictMode, (JSONObject)localObject9);
-            }
-            for (;;)
-            {
-              try
-              {
-                localObject2 = new JSONObject();
-                ((JSONObject)localObject2).put("downloadTaskId", str2);
-                localObject2 = ApiUtil.wrapCallbackOk(paramString1, (JSONObject)localObject2).toString();
-                return localObject2;
-              }
-              catch (Throwable localThrowable3)
-              {
-                Object localObject2;
-                QLog.e("[mini] FileJsPlugin", 1, paramString1 + " return error.", localThrowable3);
-              }
-              QLog.d("[mini] FileJsPlugin", 1, "download failed, savepath is null.");
-              localObject2 = new JSONObject();
-              ((JSONObject)localObject2).put("downloadTaskId", str2);
-              ((JSONObject)localObject2).put("state", "fail");
-              ((JSONObject)localObject2).put("errMsg", "Download Failed, savepath is null");
-              ((JsRuntime)localObject7).evaluateSubcribeJS("onDownloadTaskStateChange", ((JSONObject)localObject2).toString(), 0);
-            }
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              QLog.e("[mini] FileJsPlugin", 1, "download failed." + localException);
-            }
-          }
-        }
-        else
-        {
-          QLog.w("[mini] FileJsPlugin", 1, "check download DomainValid fail, callbackFail, event:" + paramString1 + ", callbackId:" + paramInt + ", url:" + (String)localObject10);
-          return ApiUtil.wrapCallbackFail(paramString1, null, "download url error.").toString();
-        }
-      }
-      else if ("operateDownloadTask".equals(paramString1))
-      {
-        localObject6 = localThrowable3.optString("downloadTaskId");
-        if ((!"abort".equals(localThrowable3.optString("operationType"))) || (!this.downloadMap.containsKey(localObject6))) {
+        localObject5 = localThrowable2.optString("downloadTaskId");
+        if ((!"abort".equals(localThrowable2.optString("operationType"))) || (!this.downloadMap.containsKey(localObject5))) {
           continue;
         }
-        MiniappDownloadUtil.getInstance().abort((String)this.downloadMap.get(localObject6));
-        localObject3 = new JSONObject();
+        MiniappDownloadUtil.getInstance().abort((String)this.downloadMap.get(localObject5));
+        localObject2 = new JSONObject();
       }
-      label1495:
-      label1652:
-      label1662:
+      label1397:
       try
       {
-        ((JSONObject)localObject3).put("downloadTaskId", localObject6);
-        localObject3 = ApiUtil.wrapCallbackOk(paramString1, (JSONObject)localObject3).toString();
-        return localObject3;
+        ((JSONObject)localObject2).put("downloadTaskId", localObject5);
+        localObject2 = ApiUtil.wrapCallbackOk(paramString1, (JSONObject)localObject2).toString();
+        return localObject2;
       }
-      catch (Throwable localThrowable8) {}
+      catch (Throwable localThrowable7) {}
       if ("createUploadTask".equals(paramString1))
       {
-        localObject6 = ((JSONObject)localObject3).optString("url");
-        bool = ((JSONObject)localObject3).optBoolean("__skipDomainCheck__", false);
-        String str3 = ((JSONObject)localObject3).optString("filePath");
-        localObject7 = ((JSONObject)localObject3).optString("name");
+        localObject5 = ((JSONObject)localObject2).optString("url");
+        bool = ((JSONObject)localObject2).optBoolean("__skipDomainCheck__", false);
+        String str3 = ((JSONObject)localObject2).optString("filePath");
+        localObject6 = ((JSONObject)localObject2).optString("name");
         str2 = MiniAppFileManager.getInstance().getAbsolutePath(str3);
-        localObject9 = new File(str2);
-        if (TextUtils.isEmpty((CharSequence)localObject6))
+        localObject8 = new VFSFile(str2);
+        if (TextUtils.isEmpty((CharSequence)localObject5))
         {
           QLog.w("[mini] FileJsPlugin", 1, "upload url is empty.");
-          return ApiUtil.wrapCallbackFail(paramString1, null, ":upload url is empty : " + (String)localObject6).toString();
+          return ApiUtil.wrapCallbackFail(paramString1, null, ":upload url is empty : " + (String)localObject5).toString();
         }
-        if (!this.jsPluginEngine.appBrandRuntime.getApkgInfo().isDomainValid(bool, (String)localObject6, 3))
+        if (!this.jsPluginEngine.appBrandRuntime.getApkgInfo().isDomainValid(bool, (String)localObject5, 3))
         {
-          QLog.w("[mini] FileJsPlugin", 1, "check upload DomainValid fail, callbackFail, event:" + paramString1 + ", callbackId:" + paramInt + ", url:" + (String)localObject6);
-          return ApiUtil.wrapCallbackFail(paramString1, null, ajjy.a(2131638734)).toString();
+          QLog.w("[mini] FileJsPlugin", 1, "check upload DomainValid fail, callbackFail, event:" + paramString1 + ", callbackId:" + paramInt + ", url:" + (String)localObject5);
+          return ApiUtil.wrapCallbackFail(paramString1, null, ajyc.a(2131704519)).toString();
         }
         if (TextUtils.isEmpty(str2))
         {
           QLog.w("[mini] FileJsPlugin", 1, "upload file error. " + str2);
           return ApiUtil.wrapCallbackFail(paramString1, null, ":file doesn't exist").toString();
         }
-        if (TextUtils.isEmpty((CharSequence)localObject7))
+        if (TextUtils.isEmpty((CharSequence)localObject6))
         {
-          QLog.w("[mini] FileJsPlugin", 1, "upload file name error. " + (String)localObject7);
+          QLog.w("[mini] FileJsPlugin", 1, "upload file name error. " + (String)localObject6);
           return ApiUtil.wrapCallbackFail(paramString1, null, ":file name is error").toString();
         }
-        localObject10 = ((JSONObject)localObject3).optJSONObject("header");
-        JSONObject localJSONObject2 = ((JSONObject)localObject3).optJSONObject("formData");
+        localObject9 = ((JSONObject)localObject2).optJSONObject("header");
+        JSONObject localJSONObject2 = ((JSONObject)localObject2).optJSONObject("formData");
         if (TextUtils.isEmpty(str3)) {}
-        for (localObject3 = "";; localObject3 = str3.replace(MiniAppGlobal.STR_WXFILE, ""))
+        for (localObject2 = "";; localObject2 = str3.replace(MiniAppGlobal.STR_WXFILE, ""))
         {
-          localObject3 = MiniappHttpUtil.httpUpload("POST", (String)localObject6, str2, (JSONObject)localObject10, localJSONObject2, (String)localObject7, (String)localObject3, new FileJsPlugin.5(this, paramInt, paramJsRuntime, l, (WeakReference)localObject8, (File)localObject9));
-          this.uploadMap.put(Integer.valueOf(paramInt), localObject3);
+          localObject2 = MiniappHttpUtil.httpUpload("POST", (String)localObject5, str2, (JSONObject)localObject9, localJSONObject2, (String)localObject6, (String)localObject2, new FileJsPlugin.4(this, paramInt, paramJsRuntime, l, (WeakReference)localObject7, (VFSFile)localObject8));
+          this.uploadMap.put(Integer.valueOf(paramInt), localObject2);
           try
           {
-            localObject3 = new JSONObject();
-            ((JSONObject)localObject3).put("uploadTaskId", paramInt);
-            localObject3 = ApiUtil.wrapCallbackOk(paramString1, (JSONObject)localObject3).toString();
-            return localObject3;
+            localObject2 = new JSONObject();
+            ((JSONObject)localObject2).put("uploadTaskId", paramInt);
+            localObject2 = ApiUtil.wrapCallbackOk(paramString1, (JSONObject)localObject2).toString();
+            return localObject2;
           }
-          catch (Throwable localThrowable4)
+          catch (Throwable localThrowable3)
           {
-            localThrowable4.printStackTrace();
-            QLog.e("[mini] FileJsPlugin", 1, paramString1 + " return error.", localThrowable4);
+            localThrowable3.printStackTrace();
+            QLog.e("[mini] FileJsPlugin", 1, paramString1 + " return error.", localThrowable3);
           }
         }
       }
       else if ("operateUploadTask".equals(paramString1))
       {
-        localObject6 = (JsRuntime)((WeakReference)localObject8).get();
-        i = localThrowable4.optInt("uploadTaskId");
-        if (("abort".equals(localThrowable4.optString("operationType"))) && (this.uploadMap.containsKey(Integer.valueOf(i)))) {
+        localObject5 = (JsRuntime)((WeakReference)localObject7).get();
+        i = localThrowable3.optInt("uploadTaskId");
+        if (("abort".equals(localThrowable3.optString("operationType"))) && (this.uploadMap.containsKey(Integer.valueOf(i)))) {
           ((MiniappHttpUtil.UploadTask)this.uploadMap.get(Integer.valueOf(i))).abort();
         }
       }
       else
       {
         if (("saveFile".equals(paramString1)) || ("saveFileSync".equals(paramString1))) {
-          return execFileTask(paramString1, new FileJsPlugin.6(this, localThrowable4.optString("tempFilePath"), paramJsRuntime, paramString1, paramInt, localThrowable4.optString("filePath"), l));
+          return execFileTask(paramString1, new FileJsPlugin.5(this, localThrowable3.optString("tempFilePath"), paramJsRuntime, paramString1, paramInt, localThrowable3.optString("filePath"), l));
         }
         if (("mkdir".equals(paramString1)) || ("mkdirSync".equals(paramString1))) {
-          return execFileTask(paramString1, new FileJsPlugin.7(this, localThrowable4.optString("dirPath"), localThrowable4, paramJsRuntime, paramString1, paramInt));
+          return execFileTask(paramString1, new FileJsPlugin.6(this, localThrowable3.optString("dirPath"), localThrowable3, paramJsRuntime, paramString1, paramInt));
         }
-        Object localObject4;
         if ("getFileInfo".equals(paramString1))
         {
-          localObject6 = localThrowable4.optString("filePath");
-          String str1 = localThrowable4.optString("digestAlgorithm", "md5");
-          localObject8 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject6);
-          if (("md5".equals(str1)) || ("sha1".equals(str1)))
+          localObject5 = localThrowable3.optString("filePath");
+          localObject7 = localThrowable3.optString("digestAlgorithm", "md5");
+          String str1 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject5);
+          if (("md5".equals(localObject7)) || ("sha1".equals(localObject7)))
           {
             i = 1;
-            if ((!TextUtils.isEmpty((CharSequence)localObject8)) && (i != 0))
+            if ((!TextUtils.isEmpty(str1)) && (i != 0))
             {
-              localObject6 = new File((String)localObject8);
-              localObject7 = new JSONObject();
+              localObject5 = new VFSFile(str1);
+              localObject6 = new JSONObject();
             }
           }
           else
@@ -495,119 +469,125 @@ public class FileJsPlugin
             {
               try
               {
-                if (!"sha1".equals(str1)) {
-                  break label1652;
+                if (!"sha1".equals(localObject7)) {
+                  break label1554;
                 }
-                str1 = mpr.a((String)localObject8);
+                str1 = FileUtils.getFileSHA1(str1);
                 if (str1 == null) {
-                  break label1662;
+                  break label1564;
                 }
                 str1 = str1.toLowerCase();
-                ((JSONObject)localObject7).put("digest", str1);
-                ((JSONObject)localObject7).put("size", ((File)localObject6).length());
-                this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, (JSONObject)localObject7, paramInt);
+                ((JSONObject)localObject6).put("digest", str1);
+                ((JSONObject)localObject6).put("size", ((VFSFile)localObject5).length());
+                this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, (JSONObject)localObject6, paramInt);
               }
-              catch (Throwable localThrowable5)
+              catch (Throwable localThrowable4)
               {
-                QLog.e("[mini] FileJsPlugin", 1, "getFileInfo exception:" + localThrowable5.getMessage());
+                QLog.e("[mini] FileJsPlugin", 1, "getFileInfo exception:" + localThrowable4.getMessage());
                 this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
               }
               break;
               i = 0;
-              break label1495;
-              localObject4 = MD5Coding.encodeFile2HexStr((String)localObject8);
+              break label1397;
+              label1554:
+              localObject3 = FileUtils.encodeFile2HexStr(localThrowable4);
               continue;
-              localObject4 = null;
+              label1564:
+              localObject3 = null;
             }
           }
-          this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "invalid data", paramInt);
-        }
-        else
-        {
-          if (!"getSavedFileInfo".equals(paramString1)) {
+          QLog.e("[mini] FileJsPlugin", 1, "file : " + (String)localObject5 + "; realFilePath : " + (String)localObject3 + "; digestAlgorithm : " + (String)localObject7);
+          localObject5 = this.jsPluginEngine;
+          if (TextUtils.isEmpty((CharSequence)localObject3)) {}
+          for (localObject3 = "path is null";; localObject3 = "invalid digestAlgorithm")
+          {
+            ((BaseJsPluginEngine)localObject5).callbackJsEventFail(paramJsRuntime, paramString1, null, (String)localObject3, paramInt);
             break;
           }
-          localObject4 = ((JSONObject)localObject4).optString("filePath");
-          localObject6 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject4);
-          if (!TextUtils.isEmpty((CharSequence)localObject6))
+        }
+        if (!"getSavedFileInfo".equals(paramString1)) {
+          break;
+        }
+        Object localObject3 = ((JSONObject)localObject3).optString("filePath");
+        localObject5 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject3);
+        if (!TextUtils.isEmpty((CharSequence)localObject5))
+        {
+          localObject5 = new VFSFile((String)localObject5);
+          if (((VFSFile)localObject5).exists())
           {
-            localObject6 = new File((String)localObject6);
-            if (((File)localObject6).exists())
+            localObject3 = new JSONObject();
+            try
             {
-              localObject4 = new JSONObject();
-              try
-              {
-                ((JSONObject)localObject4).put("size", ((File)localObject6).length());
-                ((JSONObject)localObject4).put("createTime", ((File)localObject6).lastModified() / 1000L);
-                this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, (JSONObject)localObject4, paramInt);
-              }
-              catch (Throwable localThrowable6)
-              {
-                localThrowable6.printStackTrace();
-                this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
-              }
+              ((JSONObject)localObject3).put("size", ((VFSFile)localObject5).length());
+              ((JSONObject)localObject3).put("createTime", ((VFSFile)localObject5).lastModified() / 1000L);
+              this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, (JSONObject)localObject3, paramInt);
             }
-            else
+            catch (Throwable localThrowable5)
             {
-              this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "no such file" + localThrowable6, paramInt);
+              localThrowable5.printStackTrace();
+              this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
             }
           }
           else
           {
-            this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "no such file" + localThrowable6, paramInt);
+            this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "no such file" + localThrowable5, paramInt);
           }
+        }
+        else
+        {
+          this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "no such file" + localThrowable5, paramInt);
         }
       }
     }
     if ("getSavedFileList".equals(paramString1)) {
-      localObject6 = MiniAppFileManager.getInstance().getSaveFileList();
+      localObject5 = MiniAppFileManager.getInstance().getSaveFileList();
     }
     for (;;)
     {
       try
       {
         JSONArray localJSONArray = new JSONArray();
-        if (localObject6 != null)
+        if (localObject5 != null)
         {
-          int j = localObject6.length;
+          int j = localObject5.length;
           i = 0;
           if (i < j)
           {
-            localObject7 = localObject6[i];
-            if ((localObject7 == null) || (!((File)localObject7).exists()) || (!((File)localObject7).isFile())) {
-              break label2980;
+            localObject6 = localObject5[i];
+            if ((localObject6 == null) || (!((VFSFile)localObject6).exists()) || (!((VFSFile)localObject6).isFile())) {
+              break label2955;
             }
-            localObject8 = new JSONObject();
-            ((JSONObject)localObject8).put("filePath", MiniAppFileManager.getInstance().getWxFilePath(((File)localObject7).getAbsolutePath()));
-            ((JSONObject)localObject8).put("size", ((File)localObject7).length());
-            ((JSONObject)localObject8).put("createTime", ((File)localObject7).lastModified() / 1000L);
-            localJSONArray.put(localObject8);
-            break label2980;
+            localObject7 = new JSONObject();
+            ((JSONObject)localObject7).put("filePath", MiniAppFileManager.getInstance().getWxFilePath(((VFSFile)localObject6).getAbsolutePath()));
+            ((JSONObject)localObject7).put("size", ((VFSFile)localObject6).length());
+            ((JSONObject)localObject7).put("createTime", ((VFSFile)localObject6).lastModified() / 1000L);
+            localJSONArray.put(localObject7);
+            break label2955;
           }
         }
-        localObject6 = new JSONObject();
-        ((JSONObject)localObject6).put("fileList", localJSONArray);
-        this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, (JSONObject)localObject6, paramInt);
+        localObject5 = new JSONObject();
+        ((JSONObject)localObject5).put("fileList", localJSONArray);
+        this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, (JSONObject)localObject5, paramInt);
       }
-      catch (Throwable localThrowable7)
+      catch (Throwable localThrowable6)
       {
-        localThrowable7.printStackTrace();
+        localThrowable6.printStackTrace();
         this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
       }
       break;
-      Object localObject5;
+      Object localObject4;
       if ("removeSavedFile".equals(paramString1))
       {
-        localObject6 = localThrowable7.optString("filePath");
-        if ((TextUtils.isEmpty((CharSequence)localObject6)) || (localThrowable7.isNull("filePath"))) {
+        localObject5 = localThrowable6.optString("filePath");
+        if ((TextUtils.isEmpty((CharSequence)localObject5)) || (localThrowable6.isNull("filePath"))) {
           return handleCallbackFail(paramJsRuntime, paramString1, null, "fail parameter error: parameter.dirPath should be String instead of Null;", paramInt);
         }
-        if (MiniAppFileManager.getInstance().getWxFileType((String)localObject6) == 1)
+        if (MiniAppFileManager.getInstance().getWxFileType((String)localObject5) == 1)
         {
-          localObject5 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject6);
-          if (bace.a((String)localObject5))
+          localObject4 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject5);
+          if (FileUtils.fileExists((String)localObject4))
           {
-            bace.a((String)localObject5, false);
+            FileUtils.delete((String)localObject4, false);
             this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
             break;
           }
@@ -619,77 +599,77 @@ public class FileJsPlugin
       }
       if ("openDocument".equals(paramString1))
       {
-        AppBrandTask.runTaskOnUiThread(new FileJsPlugin.8(this, ((JSONObject)localObject5).optString("filePath"), paramJsRuntime, paramString1, paramInt));
+        AppBrandTask.runTaskOnUiThread(new FileJsPlugin.7(this, ((JSONObject)localObject4).optString("filePath"), paramJsRuntime, paramString1, paramInt));
         break;
       }
       if (("writeFile".equals(paramString1)) || ("writeFileSync".equals(paramString1)))
       {
-        localObject6 = ((JSONObject)localObject5).optString("filePath");
-        if (((JSONObject)localObject5).isNull("data"))
+        localObject5 = ((JSONObject)localObject4).optString("filePath");
+        if (((JSONObject)localObject4).isNull("data"))
         {
           paramString2 = null;
-          localObject7 = ((JSONObject)localObject5).optString("encoding", "utf8");
-          localObject5 = NativeBuffer.unpackNativeBuffer((JSONObject)localObject5, "data", this.mTTEngine.getNativeBufferPool());
-          if (localObject5 == null) {
-            break label2391;
+          localObject6 = ((JSONObject)localObject4).optString("encoding", "utf8");
+          localObject4 = NativeBuffer.unpackNativeBuffer((JSONObject)localObject4, "data", this.mTTEngine.getNativeBufferPool());
+          if (localObject4 == null) {
+            break label2366;
           }
         }
-        label2391:
-        for (localObject5 = ((NativeBuffer)localObject5).buf;; localObject5 = null)
+        label2366:
+        for (localObject4 = ((NativeBuffer)localObject4).buf;; localObject4 = null)
         {
-          return execFileTask(paramString1, new FileJsPlugin.9(this, paramString2, (byte[])localObject5, paramJsRuntime, paramString1, paramInt, (String)localObject7, (String)localObject6, l));
-          paramString2 = ((JSONObject)localObject5).optString("data");
+          return execFileTask(paramString1, new FileJsPlugin.8(this, paramString2, (byte[])localObject4, paramJsRuntime, paramString1, paramInt, (String)localObject6, (String)localObject5, l));
+          paramString2 = ((JSONObject)localObject4).optString("data");
           break;
         }
       }
       if (("readFile".equals(paramString1)) || ("readFileSync".equals(paramString1)))
       {
-        localObject6 = ((JSONObject)localObject5).optString("filePath");
-        localObject5 = ((JSONObject)localObject5).optString("encoding", "__internal__array_buffer");
-        paramString2 = (String)localObject5;
-        if (TextUtils.isEmpty((CharSequence)localObject5)) {
+        localObject5 = ((JSONObject)localObject4).optString("filePath");
+        localObject4 = ((JSONObject)localObject4).optString("encoding", "__internal__array_buffer");
+        paramString2 = (String)localObject4;
+        if (TextUtils.isEmpty((CharSequence)localObject4)) {
           paramString2 = "__internal__array_buffer";
         }
-        return execFileTask(paramString1, new FileJsPlugin.10(this, (String)localObject6, paramJsRuntime, paramString1, paramInt, paramString2, l));
+        return execFileTask(paramString1, new FileJsPlugin.9(this, (String)localObject5, paramJsRuntime, paramString1, paramInt, paramString2, l));
       }
       if (("access".equals(paramString1)) || ("accessSync".equals(paramString1))) {
-        return execFileTask(paramString1, new FileJsPlugin.11(this, ((JSONObject)localObject5).optString("path"), l, paramJsRuntime, paramString1, paramInt));
+        return execFileTask(paramString1, new FileJsPlugin.10(this, ((JSONObject)localObject4).optString("path"), l, paramJsRuntime, paramString1, paramInt));
       }
       if (("unlink".equals(paramString1)) || ("unlinkSync".equals(paramString1))) {
-        return execFileTask(paramString1, new FileJsPlugin.12(this, ((JSONObject)localObject5).optString("filePath"), paramJsRuntime, paramString1, paramInt));
+        return execFileTask(paramString1, new FileJsPlugin.11(this, ((JSONObject)localObject4).optString("filePath"), paramJsRuntime, paramString1, paramInt));
       }
       if (("readdir".equals(paramString1)) || ("readdirSync".equals(paramString1))) {
-        return execFileTask(paramString1, new FileJsPlugin.13(this, ((JSONObject)localObject5).optString("dirPath"), (JSONObject)localObject5, paramJsRuntime, paramString1, paramInt));
+        return execFileTask(paramString1, new FileJsPlugin.12(this, ((JSONObject)localObject4).optString("dirPath"), (JSONObject)localObject4, paramJsRuntime, paramString1, paramInt));
       }
       if (("fs_copyFile".equals(paramString1)) || ("fs_copyFileSync".equals(paramString1))) {
-        return execFileTask(paramString1, new FileJsPlugin.14(this, ((JSONObject)localObject5).optString("srcPath"), paramJsRuntime, paramString1, paramInt, ((JSONObject)localObject5).optString("destPath"), l));
+        return execFileTask(paramString1, new FileJsPlugin.13(this, ((JSONObject)localObject4).optString("srcPath"), paramJsRuntime, paramString1, paramInt, ((JSONObject)localObject4).optString("destPath"), l));
       }
       if (("fs_appendFile".equals(paramString1)) || ("fs_appendFileSync".equals(paramString1)))
       {
-        localObject6 = ((JSONObject)localObject5).optString("filePath");
-        localObject7 = ((JSONObject)localObject5).optString("data");
-        localObject8 = ((JSONObject)localObject5).optString("encoding", "utf8");
-        paramString2 = NativeBuffer.unpackNativeBuffer((JSONObject)localObject5, "data", this.mTTEngine.getNativeBufferPool());
+        localObject5 = ((JSONObject)localObject4).optString("filePath");
+        localObject6 = ((JSONObject)localObject4).optString("data");
+        localObject7 = ((JSONObject)localObject4).optString("encoding", "utf8");
+        paramString2 = NativeBuffer.unpackNativeBuffer((JSONObject)localObject4, "data", this.mTTEngine.getNativeBufferPool());
         if (paramString2 != null) {}
         for (paramString2 = paramString2.buf;; paramString2 = null) {
-          return execFileTask(paramString1, new FileJsPlugin.15(this, (String)localObject8, paramJsRuntime, paramString1, paramInt, (String)localObject6, (String)localObject7, paramString2));
+          return execFileTask(paramString1, new FileJsPlugin.14(this, (String)localObject7, paramJsRuntime, paramString1, paramInt, (String)localObject5, (String)localObject6, paramString2));
         }
       }
       if ("unzip".equals(paramString1)) {
-        return execFileTask(paramString1, new FileJsPlugin.16(this, ((JSONObject)localObject5).optString("zipFilePath"), paramJsRuntime, paramString1, paramInt, ((JSONObject)localObject5).optString("targetPath"), l));
+        return execFileTask(paramString1, new FileJsPlugin.15(this, ((JSONObject)localObject4).optString("zipFilePath"), paramJsRuntime, paramString1, paramInt, ((JSONObject)localObject4).optString("targetPath"), l));
       }
       if (("rmdir".equals(paramString1)) || ("rmdirSync".equals(paramString1))) {
-        return execFileTask(paramString1, new FileJsPlugin.17(this, ((JSONObject)localObject5).optString("dirPath"), (JSONObject)localObject5, paramJsRuntime, paramString1, paramInt, ((JSONObject)localObject5).optBoolean("recursive")));
+        return execFileTask(paramString1, new FileJsPlugin.16(this, ((JSONObject)localObject4).optString("dirPath"), (JSONObject)localObject4, paramJsRuntime, paramString1, paramInt, ((JSONObject)localObject4).optBoolean("recursive")));
       }
       if (("fs_rename".equals(paramString1)) || ("fs_renameSync".equals(paramString1))) {
-        return execFileTask(paramString1, new FileJsPlugin.18(this, ((JSONObject)localObject5).optString("oldPath"), paramJsRuntime, paramString1, paramInt, ((JSONObject)localObject5).optString("newPath")));
+        return execFileTask(paramString1, new FileJsPlugin.17(this, ((JSONObject)localObject4).optString("oldPath"), paramJsRuntime, paramString1, paramInt, ((JSONObject)localObject4).optString("newPath")));
       }
       if ((!"stat".equals(paramString1)) && (!"statSync".equals(paramString1))) {
         break;
       }
-      return execFileTask(paramString1, new FileJsPlugin.19(this, ((JSONObject)localObject5).optString("path"), paramJsRuntime, paramString1, paramInt, ((JSONObject)localObject5).optBoolean("recursive")));
+      return execFileTask(paramString1, new FileJsPlugin.18(this, ((JSONObject)localObject4).optString("path"), paramJsRuntime, paramString1, paramInt, ((JSONObject)localObject4).optBoolean("recursive")));
       break;
-      label2980:
+      label2955:
       i += 1;
     }
   }

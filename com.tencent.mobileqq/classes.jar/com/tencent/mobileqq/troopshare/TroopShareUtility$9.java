@@ -2,7 +2,7 @@ package com.tencent.mobileqq.troopshare;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import azsq;
+import batu;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.troopinfo.TroopInfoData;
 public class TroopShareUtility$9
   implements Runnable
 {
-  public TroopShareUtility$9(azsq paramazsq, QQAppInterface paramQQAppInterface, TroopInfoData paramTroopInfoData, Intent paramIntent) {}
+  public TroopShareUtility$9(batu parambatu, QQAppInterface paramQQAppInterface, TroopInfoData paramTroopInfoData, Intent paramIntent) {}
   
   public void run()
   {

@@ -1,66 +1,74 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
+import com.tencent.mobileqq.confess.data.TroopConfessMsg;
+import com.tencent.mobileqq.confess.data.TroopConfessMsgItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public abstract class amom
+class amom
+  extends acun
 {
-  public static int a(Context paramContext)
-  {
-    try
-    {
-      int i = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
-      return i;
-    }
-    catch (Exception paramContext) {}
-    return 0;
-  }
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ConfessNewsBgView jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView;
+  private TextView b;
+  private View jdField_c_of_type_AndroidViewView;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
   
-  public static int a(Context paramContext, String paramString)
+  public void a(TroopConfessMsg paramTroopConfessMsg)
   {
-    try
-    {
-      int i = paramContext.getPackageManager().getPackageInfo(paramString, 0).versionCode;
-      return i;
+    if (paramTroopConfessMsg == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopConfessItemBuilder", 2, "TroopConfessViewHolder bindData null is troopConfessMsgItem.");
+      }
     }
-    catch (Exception paramContext) {}
-    return 0;
-  }
-  
-  public static String a(Context paramContext)
-  {
-    try
+    do
     {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
-      return paramContext;
-    }
-    catch (Exception paramContext) {}
-    return "";
-  }
-  
-  public static boolean a(String paramString, Context paramContext)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
+      return;
+      if ((paramTroopConfessMsg.items != null) && (!paramTroopConfessMsg.items.isEmpty())) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopConfessItemBuilder", 2, "TroopConfessViewHolder bindData items is null or empty.");
+    return;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopConfessMsg.getConfessToNick());
+    this.b.setText(((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic);
+    String str2 = ((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic;
+    float f = amob.a(str2);
+    int i;
+    if (f > 8.0F)
     {
-      return false;
-      paramContext = paramContext.getPackageManager();
-      try
+      this.b.setTextSize(1, 24.0F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
+      this.b.setLineSpacing(0.0F, 1.1F);
+      str1 = str2;
+      if (f <= 12.0F)
       {
-        paramString = paramContext.getApplicationInfo(paramString, 0);
-        if (paramString != null) {
-          return true;
+        str1 = str2;
+        if (amob.a(str2)) {
+          i = (int)(f * 0.7D);
         }
       }
-      catch (PackageManager.NameNotFoundException paramString) {}
     }
-    return false;
+    for (String str1 = str2.substring(0, i) + "\n" + str2.substring(i, str2.length());; str1 = str2)
+    {
+      this.b.setText(str1);
+      if (paramTroopConfessMsg.totalCount > 1) {
+        break;
+      }
+      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      return;
+      this.b.setTextSize(1, 24.0F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
+      this.b.setLineSpacing(0.0F, 1.0F);
+    }
+    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(ajyc.a(2131715275), new Object[] { Integer.valueOf(paramTroopConfessMsg.totalCount - 1) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amom
  * JD-Core Version:    0.7.0.1
  */

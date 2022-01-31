@@ -1,41 +1,62 @@
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
+import java.util.StringTokenizer;
 
-public class aygx
+public abstract class aygx
 {
-  SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private String jdField_a_of_type_JavaLangString;
+  public int a;
+  public ayhd a;
+  public QQAppInterface a;
+  public ChatMessage a;
+  public String a;
   
-  public aygx(Activity paramActivity, int paramInt1, int paramInt2, Bundle paramBundle)
+  public aygx(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, ayhd paramayhd)
   {
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("uin");
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    for (paramBundle = this.jdField_a_of_type_JavaLangString;; paramBundle = "0")
-    {
-      this.jdField_a_of_type_JavaLangString = paramBundle;
-      this.jdField_a_of_type_AndroidContentSharedPreferences = paramActivity.getSharedPreferences("tribeInvokeFrom", 0);
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    this.jdField_a_of_type_JavaLangString = paramChatMessage.frienduin;
+    this.jdField_a_of_type_Int = paramChatMessage.istroop;
+    this.jdField_a_of_type_Ayhd = paramayhd;
+  }
+  
+  public abstract String a();
+  
+  public abstract void a(aygy paramaygy);
+  
+  public boolean a()
+  {
+    Object localObject = ancw.a().c();
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("BaseTimAIOTipsProcessor", 1, "config filetype is null, or maybe has not recv");
+      }
     }
-  }
-  
-  public Boolean a()
-  {
-    return Boolean.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(this.jdField_a_of_type_JavaLangString, false));
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean(this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+    String str;
+    do
+    {
+      while (!((StringTokenizer)localObject).hasMoreTokens())
+      {
+        do
+        {
+          return false;
+          str = apvb.a(a());
+          localObject = new StringTokenizer((String)localObject, "|");
+          if (((StringTokenizer)localObject).hasMoreTokens()) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i("BaseTimAIOTipsProcessor", 1, "config filetype is null");
+        return false;
+      }
+    } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aygx
  * JD-Core Version:    0.7.0.1
  */

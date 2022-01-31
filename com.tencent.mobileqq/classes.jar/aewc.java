@@ -1,19 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
-
-public final class aewc
-  implements Parcelable.Creator<SearchResultItem>
+public abstract interface aewc
 {
-  public SearchResultItem a(Parcel paramParcel)
-  {
-    return new SearchResultItem(paramParcel);
-  }
+  public abstract int a();
   
-  public SearchResultItem[] a(int paramInt)
-  {
-    return new SearchResultItem[paramInt];
-  }
+  public abstract int a(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a(float paramFloat1, float paramFloat2);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

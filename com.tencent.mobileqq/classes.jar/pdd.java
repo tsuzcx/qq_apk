@@ -1,50 +1,17 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class pdd
-  extends MSFServlet
+class pdd
+  implements View.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      rrr.a(paramFromServiceMsg);
-      if (getAppRuntime() != null) {
-        pdc.a().a(paramFromServiceMsg.isSuccess(), paramIntent, paramFromServiceMsg, null);
-      }
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
-  }
+  pdd(pdb parampdb, long paramLong, ArticleInfo paramArticleInfo) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onClick(View paramView)
   {
-    if (paramIntent != null)
-    {
-      ToServiceMsg localToServiceMsg = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      rrr.a(localToServiceMsg);
-      if (localToServiceMsg != null)
-      {
-        paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
-        paramPacket.putSendData(localToServiceMsg.getWupBuffer());
-        paramPacket.setTimeout(localToServiceMsg.getTimeout());
-        paramPacket.setAttributes(localToServiceMsg.getAttributes());
-        paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
-        paramPacket.autoResend = localToServiceMsg.isFastResendEnabled();
-        if (!localToServiceMsg.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-      }
-    }
+    paramView = omm.g + bbca.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
+    onk.a(pdb.a(this.jdField_a_of_type_Pdb), paramView);
+    pdb.a(1, onk.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
   }
 }
 

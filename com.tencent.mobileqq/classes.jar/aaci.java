@@ -1,74 +1,21 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.app.MobileQQ;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public class aaci
-  implements View.OnClickListener
+class aaci
+  extends JobSegment<asiu, asiu>
 {
-  public aaci(BaseChatPie paramBaseChatPie) {}
-  
-  public void onClick(View paramView)
+  protected void a(JobContext paramJobContext, asiu paramasiu)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject == null) || (!(localObject instanceof Integer))) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (acij.b());
-        paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006) {
-          paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f;
-        }
-        switch (((Integer)localObject).intValue())
-        {
-        default: 
-          return;
-        case 1: 
-          ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, true);
-        }
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1010);
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8004954", "0X8004954", 0, 0, "", "", "", "");
-      return;
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1010);
-    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8004953", "0X8004953", 0, 0, "", "", "", "");
-    return;
-    boolean bool2 = ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    if (bool2) {
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "Manage_stranger", "Manage_str_add", 0, 0, "", "", "", "");
+    paramJobContext = aacb.a();
+    if (!paramJobContext.a) {
+      paramJobContext.a();
     }
-    paramView = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-    localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131625011);
-    if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("param_return_addr") != null) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      ChatActivityUtils.a(paramView, (SessionInfo)localObject, str, bool1, bool2);
-      return;
-    }
-    paramView = (begr)behe.a(this.a.a(), null);
-    paramView.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131653778));
-    paramView.a(2131653776, 3);
-    paramView.c(2131625035);
-    paramView.a(new aacj(this, paramView));
-    paramView.show();
+    notifyResult(paramasiu);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaci
  * JD-Core Version:    0.7.0.1
  */

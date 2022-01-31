@@ -1,10 +1,12 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.TextView;
 
-public abstract interface bivw
+public final class bivw
 {
-  public abstract void a(ArrayList<String> paramArrayList);
+  public View a;
+  public TextView a;
   
-  public abstract boolean a(ArrayList<String> paramArrayList, bivx parambivx);
+  public bivw(bivu parambivu) {}
 }
 
 

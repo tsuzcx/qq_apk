@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import qji;
-import qoe;
+import qvn;
+import rap;
 
 public class ReadInJoyBaseAdapter$33
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$33(qoe paramqoe) {}
+  public ReadInJoyBaseAdapter$33(rap paramrap) {}
   
   public void run()
   {
-    qji.a().c(false);
+    qvn.a().c(false);
   }
 }
 

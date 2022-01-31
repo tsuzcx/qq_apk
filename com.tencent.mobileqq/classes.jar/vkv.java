@@ -1,20 +1,28 @@
-public class vkv
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+
+class vkv
+  extends AnimatorListenerAdapter
 {
-  public static String a(int[] paramArrayOfInt)
+  vkv(vkt paramvkt) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramArrayOfInt[0]);
-    int i = 1;
-    while (i < paramArrayOfInt.length)
-    {
-      localStringBuilder.append(",");
-      localStringBuilder.append(paramArrayOfInt[i]);
-      i += 1;
-    }
-    return localStringBuilder.toString();
+    veg.b("FaceLayer", "scaleAnimator cancel!");
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    veg.b("FaceLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.b.g();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    veg.b("FaceLayer", "scaleAnimator start!");
+    this.a.c = true;
   }
 }
 

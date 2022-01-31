@@ -1,13 +1,13 @@
 package cooperation.qzone.report;
 
-import bgch;
-import bgdp;
+import bhkt;
+import bhmc;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class QzoneReportManager
 {
-  private static final bgdp<QzoneReportManager, Void> jdField_a_of_type_Bgdp = new bgch();
+  private static final bhmc<QzoneReportManager, Void> jdField_a_of_type_Bhmc = new bhkt();
   public static String a;
   public static boolean a;
   volatile int jdField_a_of_type_Int = 0;

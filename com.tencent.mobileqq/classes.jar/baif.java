@@ -6,18 +6,11 @@ class baif
 {
   baif(baie parambaie) {}
   
-  public void onClick(View paramView)
-  {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baif
  * JD-Core Version:    0.7.0.1
  */

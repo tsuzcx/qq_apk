@@ -1,52 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
 
 public class aqtw
-  implements BusinessObserver
+  implements bcsv
 {
-  public aqtw(UiApiPlugin paramUiApiPlugin) {}
+  public aqtw(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(View paramView, int paramInt)
   {
-    byte[] arrayOfByte;
-    if (paramBoolean)
+    if ((paramInt == 5) || (paramInt == 4))
     {
-      arrayOfByte = paramBundle.getByteArray("data");
-      paramBundle.getString("openId");
-      if (arrayOfByte != null) {
-        paramBundle = new oidb_sso.OIDBSSOPkg();
-      }
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", "2747277822");
+      this.a.startActivity(paramView);
     }
-    try
-    {
-      paramBundle = (oidb_sso.OIDBSSOPkg)paramBundle.mergeFrom((byte[])arrayOfByte);
-      paramInt = paramBundle.uint32_result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "handleOidb0x716_48Rsp, resultCode:" + paramInt);
-      }
-      paramBundle = paramBundle.bytes_bodybuffer.get().toByteArray();
-      if (paramInt == 0)
-      {
-        arrayOfByte = new byte[4];
-        System.arraycopy(paramBundle, 0, arrayOfByte, 0, 4);
-        paramBundle = TroopInfoActivity.a(String.valueOf(ByteBuffer.wrap(arrayOfByte).getInt() + ""), 32);
-        azlj.a(this.a.a(), paramBundle, -1);
-      }
+    while (paramInt != 1) {
       return;
     }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "pkg.mergeFrom:" + paramBundle.toString());
-    }
+    this.a.getActivity().finish();
   }
 }
 

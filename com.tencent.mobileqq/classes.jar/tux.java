@@ -1,27 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class tux
-  extends QQUIEventReceiver<tun, sxr>
+class tux
+  implements twq
 {
-  public tux(@NonNull tun paramtun)
+  tux(tuw paramtuw) {}
+  
+  public void a()
   {
-    super(paramtun);
+    tuw.a(this.a);
   }
   
-  public void a(@NonNull tun paramtun, @NonNull sxr paramsxr)
+  public void a(two paramtwo, String paramString, boolean paramBoolean)
   {
-    if (paramsxr.a.isSuccess())
-    {
-      urk.a(paramtun.b, "receive user info event. %s.", paramsxr.toString());
-      paramtun.i();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return sxr.class;
+    veg.d("Q.qqstory.playernew.StoryPlayerImpl", "onGroupDataDelete, groupId=%s, vid=%s", new Object[] { paramtwo.a, paramString });
+    tuw.a(this.a).a(paramtwo, paramString, paramBoolean);
   }
 }
 

@@ -1,26 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-
-class aywc
-  implements View.OnClickListener
+public class aywc
 {
-  aywc(aywa paramaywa, CheckBox paramCheckBox) {}
+  public long a;
+  public String a;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    paramView = this.jdField_a_of_type_AndroidWidgetCheckBox;
-    if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      return;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mAppShareID:" + this.jdField_a_of_type_Long);
+    localStringBuilder.append(",mShareUrl:" + this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aywc
  * JD-Core Version:    0.7.0.1
  */

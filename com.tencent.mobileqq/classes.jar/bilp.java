@@ -1,23 +1,24 @@
-import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(11)
-public class bilp
+class bilp
+  implements Animator.AnimatorListener
 {
-  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, bils parambils)
+  bilp(bilj parambilj) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return a(ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 }), parambils, paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.d("AEWaterMarkListPart", 2, "Watermark panel down");
+    }
   }
   
-  private static ValueAnimator a(ValueAnimator paramValueAnimator, bils parambils, long paramLong)
-  {
-    paramValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    paramValueAnimator.addUpdateListener(new bilq(parambils));
-    paramValueAnimator.addListener(new bilr(parambils, paramValueAnimator));
-    paramValueAnimator.setDuration(paramLong);
-    return paramValueAnimator;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

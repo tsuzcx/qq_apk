@@ -1,18 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class adpk
-  implements ValueAnimator.AnimatorUpdateListener
+class adpk
+  implements bfoq
 {
-  public adpk(SixCombolEffectView paramSixCombolEffectView, adpz paramadpz) {}
+  adpk(adpi paramadpi, MessageForFile paramMessageForFile, bfol parambfol, BaseChatItemLayout paramBaseChatItemLayout, adpp paramadpp) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Adpz.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((!this.jdField_a_of_type_Adpz.b) && (this.jdField_a_of_type_Adpz.a < 0.52F)) {
-      this.jdField_a_of_type_Adpz.b = true;
+    paramView = this.jdField_a_of_type_Adpi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop);
+    if (paramView != null)
+    {
+      if (paramView.status == 16)
+      {
+        aptv.a(2131692856);
+        this.jdField_a_of_type_Bfol.cancel();
+        return;
+      }
+      apue.a(this.jdField_a_of_type_Adpi.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Adpi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
     }
+    this.jdField_a_of_type_Adpi.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Adpp, paramView, false);
+    this.jdField_a_of_type_Bfol.cancel();
   }
 }
 

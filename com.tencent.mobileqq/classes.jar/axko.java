@@ -1,20 +1,103 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
-final class axko
-  extends Editable.Factory
+class axko
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  private BufferedReader jdField_a_of_type_JavaIoBufferedReader;
+  private InputStream jdField_a_of_type_JavaIoInputStream;
+  private InputStreamReader jdField_a_of_type_JavaIoInputStreamReader;
+  public Process a;
+  
+  public void a()
   {
-    if ((paramCharSequence instanceof axkn)) {
-      return (Editable)paramCharSequence;
+    if (this.jdField_a_of_type_JavaLangProcess != null)
+    {
+      this.jdField_a_of_type_JavaIoInputStream = this.jdField_a_of_type_JavaLangProcess.getInputStream();
+      this.jdField_a_of_type_JavaIoInputStreamReader = new InputStreamReader(this.jdField_a_of_type_JavaIoInputStream);
+      this.jdField_a_of_type_JavaIoBufferedReader = new BufferedReader(this.jdField_a_of_type_JavaIoInputStreamReader);
     }
-    return new axkn(paramCharSequence, 3);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaLangProcess != null) {}
+    try
+    {
+      for (;;)
+      {
+        String str = this.jdField_a_of_type_JavaIoBufferedReader.readLine();
+        if (str == null) {
+          break;
+        }
+        axkm.a("[@] compressVideo log:" + str, null);
+      }
+      label177:
+      return;
+    }
+    catch (IOException localIOException1)
+    {
+      for (;;)
+      {
+        try
+        {
+          if (this.jdField_a_of_type_JavaIoInputStream != null) {
+            this.jdField_a_of_type_JavaIoInputStream.close();
+          }
+          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
+            this.jdField_a_of_type_JavaIoInputStreamReader.close();
+          }
+          if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
+            this.jdField_a_of_type_JavaIoBufferedReader.close();
+          }
+          return;
+        }
+        catch (IOException localIOException3) {}
+        try
+        {
+          if (this.jdField_a_of_type_JavaIoInputStream != null) {
+            this.jdField_a_of_type_JavaIoInputStream.close();
+          }
+          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
+            this.jdField_a_of_type_JavaIoInputStreamReader.close();
+          }
+          if (this.jdField_a_of_type_JavaIoBufferedReader == null) {
+            continue;
+          }
+          this.jdField_a_of_type_JavaIoBufferedReader.close();
+          return;
+        }
+        catch (IOException localIOException2)
+        {
+          return;
+        }
+      }
+    }
+    finally
+    {
+      try
+      {
+        if (this.jdField_a_of_type_JavaIoInputStream != null) {
+          this.jdField_a_of_type_JavaIoInputStream.close();
+        }
+        if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
+          this.jdField_a_of_type_JavaIoInputStreamReader.close();
+        }
+        if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
+          this.jdField_a_of_type_JavaIoBufferedReader.close();
+        }
+      }
+      catch (IOException localIOException4)
+      {
+        break label177;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axko
  * JD-Core Version:    0.7.0.1
  */

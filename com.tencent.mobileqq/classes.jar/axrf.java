@@ -1,82 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.api.HighwayConfBean;
-import com.tencent.qphone.base.util.QLog;
-
-public class axrf
-  extends alzl<HighwayConfBean>
+final class axrf
 {
-  public int a()
-  {
-    return 15;
-  }
+  final String a;
+  final String b;
+  final String c;
   
-  @NonNull
-  public HighwayConfBean a(int paramInt)
+  axrf(String paramString1, String paramString2, String paramString3)
   {
-    HighwayConfBean localHighwayConfBean = new HighwayConfBean();
-    if (QLog.isColorLevel()) {
-      QLog.d("HighwayConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
-    }
-    return localHighwayConfBean;
-  }
-  
-  @Nullable
-  public HighwayConfBean a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
-    {
-      HighwayConfBean localHighwayConfBean = HighwayConfBean.parse(paramArrayOfalzs[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("HighwayConfProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
-      }
-      return localHighwayConfBean;
-    }
-    return null;
-  }
-  
-  public Class<HighwayConfBean> a()
-  {
-    return HighwayConfBean.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HighwayConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(HighwayConfBean paramHighwayConfBean)
-  {
-    HighwayConfBean.updateHighwayConf((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramHighwayConfBean);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axrf
  * JD-Core Version:    0.7.0.1
  */

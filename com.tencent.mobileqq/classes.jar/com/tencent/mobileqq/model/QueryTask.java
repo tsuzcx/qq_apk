@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.model;
 
-import arok;
-import arol;
+import asko;
+import askp;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class QueryTask<Param, Result>
   implements Runnable
 {
-  public arok<Result> a;
-  public arol<Param, Result> a;
+  public asko<Result> a;
+  public askp<Param, Result> a;
   private Param a;
   
-  public QueryTask(arol<Param, Result> paramarol, arok<Result> paramarok)
+  public QueryTask(askp<Param, Result> paramaskp, asko<Result> paramasko)
   {
-    this.jdField_a_of_type_Arol = paramarol;
-    this.jdField_a_of_type_Arok = paramarok;
+    this.jdField_a_of_type_Askp = paramaskp;
+    this.jdField_a_of_type_Asko = paramasko;
   }
   
   public void a(Param paramParam)
@@ -26,7 +26,7 @@ public class QueryTask<Param, Result>
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_Arol.a(this.jdField_a_of_type_JavaLangObject);
+    Object localObject = this.jdField_a_of_type_Askp.a(this.jdField_a_of_type_JavaLangObject);
     ThreadManager.getUIHandler().post(new QueryTask.1(this, localObject));
   }
 }

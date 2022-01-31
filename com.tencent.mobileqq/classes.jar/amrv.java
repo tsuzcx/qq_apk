@@ -1,23 +1,85 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.DynamicAvatar;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-public final class amrv
-  implements Parcelable.Creator<DynamicAvatar>
+public class amrv
+  extends ampb<amrw>
 {
-  public DynamicAvatar a(Parcel paramParcel)
+  public int a()
   {
-    return new DynamicAvatar(paramParcel);
+    return 567;
   }
   
-  public DynamicAvatar[] a(int paramInt)
+  @NonNull
+  public amrw a(int paramInt)
   {
-    return new DynamicAvatar[paramInt];
+    return new amrw();
+  }
+  
+  @Nullable
+  public amrw a(ampi[] paramArrayOfampi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BroadcastConfProcessor", 2, "onParsed");
+    }
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    {
+      paramArrayOfampi = paramArrayOfampi[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.d("BroadcastConfProcessor", 2, "onParsed, content:" + paramArrayOfampi);
+      }
+      amrw localamrw = amrw.a(paramArrayOfampi);
+      if (!TextUtils.isEmpty(paramArrayOfampi))
+      {
+        BaseApplicationImpl.getApplication().getSharedPreferences("broadcast_white_pref", 4).edit().putString("white_list", paramArrayOfampi).apply();
+        MobileQQ.addBroadcastWhitList(localamrw.a);
+      }
+    }
+    return new amrw();
+  }
+  
+  public Class<amrw> a()
+  {
+    return amrw.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amrw paramamrw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BroadcastConfProcessor", 2, "onUpdate");
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrv
  * JD-Core Version:    0.7.0.1
  */

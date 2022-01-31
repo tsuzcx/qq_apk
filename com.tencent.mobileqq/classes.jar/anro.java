@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-
-public class anro
-  implements anuk
+public abstract interface anro
 {
-  public anro(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  public abstract void a();
   
-  public void a(String paramString, int paramInt)
-  {
-    this.a.a.setText(paramString);
-    this.a.a.setSelection(this.a.a.length());
-    this.a.a(paramString);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(anqw paramanqw);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anro
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,65 @@
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import android.os.Handler;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager.ProgressStatus.1;
 
-class swb
-  extends svu
+public class swb
 {
-  public swb(ViewGroup paramViewGroup)
+  public int a;
+  private Runnable a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  private boolean b;
+  
+  private swb(swa paramswa)
   {
-    super(paramViewGroup, 2131495711);
+    this.jdField_a_of_type_JavaLangRunnable = new StoryVideoUploadProgressManager.ProgressStatus.1(this);
   }
   
-  public void a(String paramString)
+  private void c()
   {
-    b(paramString);
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+    case 0: 
+    case 1: 
+    case 2: 
+    case 3: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            this.jdField_b_of_type_Int = 0;
+            return;
+            this.jdField_b_of_type_Int += 1;
+          } while (this.jdField_b_of_type_Int < 60);
+          this.jdField_b_of_type_Int = 59;
+          return;
+          this.jdField_b_of_type_Int += 1;
+        } while (this.jdField_b_of_type_Int < 95);
+        this.jdField_b_of_type_Int = 94;
+        return;
+        this.jdField_b_of_type_Int += 1;
+      } while (this.jdField_b_of_type_Int < 100);
+      this.jdField_b_of_type_Int = 99;
+      return;
+    }
+    this.jdField_b_of_type_Int = 100;
   }
   
-  public void a(ssm paramssm)
+  public void a()
   {
-    super.a(paramssm);
-    urk.a("Q.qqstory.msgTab.WeiShiRecommendNodeViewHolder", "bindData %s", paramssm);
-    a(vmp.b(paramssm.g));
-    this.a.setNodeName(paramssm.c, 2130845561);
+    this.jdField_b_of_type_Boolean = false;
+    swa.a(this.jdField_a_of_type_Swa).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
   }
   
-  protected void b(ssm paramssm)
+  public void b()
   {
-    this.a.setDisplayState(6);
-    this.a.a(paramssm);
+    this.jdField_b_of_type_Boolean = true;
+    swa.a(this.jdField_a_of_type_Swa).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

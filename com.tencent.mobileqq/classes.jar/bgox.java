@@ -1,61 +1,18 @@
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class bgox
-  implements View.OnTouchListener
+  implements DialogInterface.OnDismissListener
 {
-  private float jdField_a_of_type_Float;
-  boolean jdField_a_of_type_Boolean = false;
-  private float b;
+  bgox(bgos parambgos) {}
   
-  bgox(bgou parambgou) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    if (paramMotionEvent.getActionMasked() == 6) {
-      this.jdField_a_of_type_Boolean = true;
+    if (!this.a.b) {
+      bgos.a(this.a, 1);
     }
-    boolean bool = bgou.a(this.jdField_a_of_type_Bgou).onTouchEvent(paramMotionEvent);
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool;
-            this.jdField_a_of_type_Float = paramMotionEvent.getX();
-            this.b = paramMotionEvent.getY();
-          } while (bgou.a(this.jdField_a_of_type_Bgou) == null);
-          bgou.a(this.jdField_a_of_type_Bgou).a("onActionDown", new float[] { paramMotionEvent.getX(), paramMotionEvent.getY() });
-          return bool;
-        } while ((bgou.a(this.jdField_a_of_type_Bgou).isInProgress()) || (paramMotionEvent.getPointerCount() != 1) || (this.jdField_a_of_type_Boolean) || (bgou.a(this.jdField_a_of_type_Bgou) == null));
-        bgou.a(this.jdField_a_of_type_Bgou).a("onActionMove", new float[] { paramMotionEvent.getX(), paramMotionEvent.getY() });
-        return bool;
-        if ((Math.abs(this.jdField_a_of_type_Float - f1) > ViewConfiguration.getTouchSlop()) || (Math.abs(this.b - f2) > ViewConfiguration.getTouchSlop())) {
-          break;
-        }
-        paramView = bgou.a(this.jdField_a_of_type_Bgou, paramMotionEvent.getX(), paramMotionEvent.getY());
-        if (bgou.a(this.jdField_a_of_type_Bgou) != null) {
-          bgou.a(this.jdField_a_of_type_Bgou).a(paramView[0], paramView[1]);
-        }
-      } while (!bgou.d(this.jdField_a_of_type_Bgou));
-      bgph.a("ar_activity_click", "1");
-      bgou.c(this.jdField_a_of_type_Bgou, false);
-      return bool;
-      this.jdField_a_of_type_Boolean = false;
-    } while (bgou.a(this.jdField_a_of_type_Bgou) == null);
-    bgou.a(this.jdField_a_of_type_Bgou).a("onActionUp", new float[] { 0.0F, 0.0F });
-    return bool;
+    this.a.b = false;
+    this.a.a = null;
   }
 }
 

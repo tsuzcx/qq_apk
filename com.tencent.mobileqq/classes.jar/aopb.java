@@ -1,14 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
 
-class aopb
-  implements View.OnClickListener
+public class aopb
+  implements ActionMode.Callback
 {
-  aopb(aopa paramaopa, avon paramavon) {}
+  public aopb(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
   
-  public void onClick(View paramView)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    this.jdField_a_of_type_Avon.a(paramView);
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

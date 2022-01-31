@@ -1,34 +1,16 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-
-class alio
-  implements Animator.AnimatorListener
+public abstract interface alio
 {
-  alio(alij paramalij, View paramView) {}
+  public abstract void a();
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Alij.p();
-  }
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Alij.p();
-  }
+  public abstract void a(boolean paramBoolean, alip paramalip);
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Alij.g) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alio
  * JD-Core Version:    0.7.0.1
  */

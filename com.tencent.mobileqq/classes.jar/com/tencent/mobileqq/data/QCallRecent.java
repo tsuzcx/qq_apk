@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import akbm;
-import atmo;
-import bado;
+import akpy;
+import aukm;
+import bbet;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type")
 public class QCallRecent
-  extends atmo
+  extends aukm
 {
   public static final int DISCUSS_STATE_CALL = 4;
   public static final int DISCUSS_STATE_CALLED = 3;
@@ -87,9 +87,9 @@ public class QCallRecent
           bool1 = bool3;
         } while (!this.uin.equals(paramObject.uin));
         bool1 = bool3;
-      } while (!akbm.c(this.type));
+      } while (!akpy.c(this.type));
       bool1 = bool3;
-    } while (!akbm.c(paramObject.type));
+    } while (!akpy.c(paramObject.type));
     return true;
   }
   
@@ -110,7 +110,7 @@ public class QCallRecent
   
   public boolean isSend()
   {
-    return bado.a(this.sendFlag);
+    return bbet.a(this.sendFlag);
   }
   
   public boolean isVideo()

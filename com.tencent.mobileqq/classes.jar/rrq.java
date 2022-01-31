@@ -1,12 +1,14 @@
-public abstract interface rrq
+import android.widget.PopupWindow.OnDismissListener;
+
+class rrq
+  implements PopupWindow.OnDismissListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  rrq(rrp paramrrp) {}
   
-  public abstract void a(int paramInt1, int paramInt2, Object paramObject);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c(int paramInt1, int paramInt2);
+  public void onDismiss()
+  {
+    this.a.a(1.0F);
+  }
 }
 
 

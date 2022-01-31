@@ -1,23 +1,7 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-
-public class avdz
-  implements View.OnLayoutChangeListener
+final class avdz
+  implements bfos
 {
-  public avdz(SignatureHistoryFragment paramSignatureHistoryFragment) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    if ((paramInt2 < paramInt6) && (this.a.a != null))
-    {
-      paramInt1 = SignatureHistoryFragment.a(this.a, this.a.a);
-      paramInt3 = this.a.a.getHeight();
-      if (paramInt1 + paramInt3 > paramInt2) {
-        SignatureHistoryFragment.a(this.a, paramInt1, paramInt3, false);
-      }
-    }
-  }
+  public void onDismiss() {}
 }
 
 

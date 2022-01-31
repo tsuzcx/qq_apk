@@ -1,15 +1,8 @@
-public class mhs
+public abstract interface mhs
 {
-  public int a;
-  public String a;
-  public int b = 0;
-  public int c = 0;
+  public abstract void a();
   
-  mhs()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public abstract void b();
 }
 
 

@@ -1,17 +1,17 @@
 package com.tencent.common.galleryactivity;
 
-import xgz;
+import xpz;
 
 public class GalleryManager$1
   implements Runnable
 {
-  public GalleryManager$1(xgz paramxgz) {}
+  public GalleryManager$1(xpz paramxpz) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Xgg.c = true;
-    xgz.a(this.this$0, this.this$0.jdField_a_of_type_Xgn);
-    xgz.a(this.this$0);
+    this.this$0.jdField_a_of_type_Xpg.c = true;
+    xpz.a(this.this$0, this.this$0.jdField_a_of_type_Xpn);
+    xpz.a(this.this$0);
   }
 }
 

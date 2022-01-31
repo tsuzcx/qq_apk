@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dating;
 
-import ahai;
-import amvp;
+import ahmx;
+import anlx;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import java.util.Iterator;
 import java.util.List;
@@ -9,20 +9,20 @@ import java.util.List;
 public class BaseMsgBoxActivity$1$2
   implements Runnable
 {
-  public BaseMsgBoxActivity$1$2(amvp paramamvp, boolean paramBoolean, String paramString1, String paramString2) {}
+  public BaseMsgBoxActivity$1$2(anlx paramanlx, boolean paramBoolean, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Amvp.a.jdField_a_of_type_Ahai != null) && (this.jdField_a_of_type_Amvp.a.jdField_a_of_type_JavaUtilList != null))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Anlx.a.jdField_a_of_type_Ahmx != null) && (this.jdField_a_of_type_Anlx.a.jdField_a_of_type_JavaUtilList != null))
     {
-      Iterator localIterator = this.jdField_a_of_type_Amvp.a.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.jdField_a_of_type_Anlx.a.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
         RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
         if (localRecentBaseData.a().equals(this.jdField_a_of_type_JavaLangString))
         {
           localRecentBaseData.mTitleName = this.b;
-          this.jdField_a_of_type_Amvp.a.jdField_a_of_type_Ahai.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Amvp.a.jdField_a_of_type_Int);
+          this.jdField_a_of_type_Anlx.a.jdField_a_of_type_Ahmx.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anlx.a.jdField_a_of_type_Int);
         }
       }
     }

@@ -1,50 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.qcall.QCallCardInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class aufa
-  implements Parcelable.Creator<QCallCardInfo>
+final class aufa
+  implements ayrz
 {
-  public QCallCardInfo a(Parcel paramParcel)
+  public void a(aysw paramaysw, aysx paramaysx)
   {
-    QCallCardInfo localQCallCardInfo = new QCallCardInfo();
-    localQCallCardInfo.uin = paramParcel.readString();
-    localQCallCardInfo.nickname = paramParcel.readString();
-    localQCallCardInfo.gender = paramParcel.readInt();
-    localQCallCardInfo.birthday = paramParcel.readInt();
-    localQCallCardInfo.in_use_flag = paramParcel.readInt();
-    localQCallCardInfo.pre_recycle_flag = paramParcel.readInt();
-    localQCallCardInfo.recycle_flag = paramParcel.readInt();
-    localQCallCardInfo.reg_time = paramParcel.readInt();
-    localQCallCardInfo.reg_ip = paramParcel.readString();
-    localQCallCardInfo.recycle_time = paramParcel.readInt();
-    localQCallCardInfo.recycle_ip = paramParcel.readString();
-    localQCallCardInfo.remark = paramParcel.readString();
-    localQCallCardInfo.netstatus = paramParcel.readInt();
-    localQCallCardInfo.qq = paramParcel.readString();
-    localQCallCardInfo.phonenum = paramParcel.readString();
-    localQCallCardInfo.phone_mask = paramParcel.readInt();
-    localQCallCardInfo.freeStatus = paramParcel.readInt();
-    localQCallCardInfo.pstn_freeStatus = paramParcel.readInt();
-    localQCallCardInfo.is_ever_pstn = paramParcel.readInt();
-    localQCallCardInfo.vip_all_free_time = paramParcel.readInt();
-    localQCallCardInfo.vip_left_free_time = paramParcel.readInt();
-    localQCallCardInfo.normal_all_free_time = paramParcel.readInt();
-    localQCallCardInfo.normal_left_free_time = paramParcel.readInt();
-    localQCallCardInfo.used_free_time = paramParcel.readInt();
-    localQCallCardInfo.identity = paramParcel.readInt();
-    localQCallCardInfo.autoRemark = paramParcel.readString();
-    localQCallCardInfo.card_type = paramParcel.readInt();
-    localQCallCardInfo.isPopup = paramParcel.readInt();
-    localQCallCardInfo.qqUin2 = paramParcel.readString();
-    localQCallCardInfo.qid_qq_status = paramParcel.readInt();
-    localQCallCardInfo.contact_qq_status = paramParcel.readInt();
-    return localQCallCardInfo;
-  }
-  
-  public QCallCardInfo[] a(int paramInt)
-  {
-    return new QCallCardInfo[paramInt];
+    if ((paramaysw == null) || (paramaysx == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramaysw instanceof ayrv));
+      paramaysw = (ayrv)paramaysw;
+      paramaysw.jdField_a_of_type_Long += paramaysx.c;
+      paramaysx.c = 0L;
+      paramaysx = "bytes=" + paramaysw.jdField_a_of_type_Long + "-";
+      paramaysw.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysx);
+      paramaysx = paramaysw.jdField_a_of_type_JavaLangString;
+      if (paramaysx.contains("range="))
+      {
+        String str = paramaysx.substring(0, paramaysx.lastIndexOf("range="));
+        paramaysw.jdField_a_of_type_JavaLangString = (str + "range=" + paramaysw.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("OlympicResources", 2, "IBreakDownFix, " + paramaysx);
   }
 }
 

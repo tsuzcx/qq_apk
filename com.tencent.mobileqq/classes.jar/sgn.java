@@ -1,51 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.util.ProfileParams;
 
-class sgn
-  extends SimpleJob<Object>
+final class sgn
+  implements DialogInterface.OnCancelListener
 {
-  sgn(sgm paramsgm, String paramString)
-  {
-    super(paramString);
-  }
+  sgn(Activity paramActivity, ProfileParams paramProfileParams) {}
   
-  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    Object localObject = (String)((spz)sqg.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", "");
-    synchronized (this.a.b)
+    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        long l = this.a.a.jdField_a_of_type_Long;
-        if (l != 0L) {}
-      }
-      try
-      {
-        paramVarArgs = new sgq();
-        localObject = new JSONObject((String)localObject);
-        paramVarArgs.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("t");
-        paramVarArgs.jdField_a_of_type_ArrayOfByte = bach.a(((JSONObject)localObject).getString("ak"));
-        this.a.a = paramVarArgs;
-        urk.a("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init success -> %s", localObject);
-        return null;
-      }
-      catch (Exception paramVarArgs)
-      {
-        for (;;)
-        {
-          urk.b("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init error , %s", paramVarArgs);
-        }
-      }
+      aqfb.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
+      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sgn
  * JD-Core Version:    0.7.0.1
  */

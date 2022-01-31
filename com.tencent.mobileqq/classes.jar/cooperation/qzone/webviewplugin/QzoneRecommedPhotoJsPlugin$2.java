@@ -1,17 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
-import bgbz;
-import bgcb;
-import bgjp;
+import bhkl;
+import bhkn;
+import bhsj;
 
 public class QzoneRecommedPhotoJsPlugin$2
   implements Runnable
 {
-  public QzoneRecommedPhotoJsPlugin$2(bgjp parambgjp) {}
+  public QzoneRecommedPhotoJsPlugin$2(bhsj parambhsj) {}
   
   public void run()
   {
-    bgbz.a().a().q();
+    bhkl.a().a().o();
   }
 }
 

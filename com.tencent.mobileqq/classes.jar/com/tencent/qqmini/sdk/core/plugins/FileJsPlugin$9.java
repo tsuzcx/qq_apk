@@ -1,33 +1,59 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bdeu;
-import bdfz;
+import beiu;
+import beka;
+import beku;
+import besl;
 import java.io.File;
 import org.json.JSONObject;
 
 class FileJsPlugin$9
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$9(FileJsPlugin paramFileJsPlugin, String paramString, JSONObject paramJSONObject, bdfz parambdfz) {}
+  FileJsPlugin$9(FileJsPlugin paramFileJsPlugin, String paramString1, beka parambeka, String paramString2, long paramLong) {}
   
   public String run()
   {
-    if ((TextUtils.isEmpty(this.val$dirPath)) || (this.val$reqParamObj.isNull("dirPath"))) {
+    if (TextUtils.isEmpty(this.val$filePath)) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "invalid path");
     }
-    if (bdeu.a().a(this.val$dirPath) == 2)
-    {
-      if (!TextUtils.isEmpty(bdeu.a().a(this.val$dirPath))) {
-        return FileJsPlugin.access$100(this.this$0, this.val$req, null, "file already exists " + this.val$dirPath);
-      }
-      String str = bdeu.a().c(this.val$dirPath);
-      if ((!TextUtils.isEmpty(str)) && (new File(str).mkdirs())) {
-        return FileJsPlugin.access$200(this.this$0, this.val$req, null);
-      }
-      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$dirPath);
+    if (!FileJsPlugin.access$300(this.this$0, this.val$encoding)) {
+      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "invalid encoding " + this.val$encoding);
     }
-    return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$dirPath);
+    String str = beiu.a().a(this.val$filePath);
+    if ((TextUtils.isEmpty(str)) || (!new File(str).exists())) {
+      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "no such file or directory, open " + this.val$filePath);
+    }
+    for (;;)
+    {
+      try
+      {
+        Object localObject = FileJsPlugin.access$500(this.this$0, this.val$encoding, str);
+        if (localObject == null)
+        {
+          besl.d("FileJsPlugin", "readFile failed! path:" + str);
+          return FileJsPlugin.access$100(this.this$0, this.val$req, null, "no such file or directory, open " + this.val$filePath);
+        }
+        JSONObject localJSONObject = new JSONObject();
+        if ((this.this$0.mIsMiniGame) && ((localObject instanceof byte[])))
+        {
+          beku.a(this.this$0.mMiniAppContext, (byte[])localObject, beku.a, "data", localJSONObject);
+          besl.a("FileJsPlugin", "readFile succeed! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], aboFilePath:" + str);
+          return FileJsPlugin.access$200(this.this$0, this.val$req, localJSONObject);
+        }
+        if ((!this.this$0.mIsMiniGame) && ((localObject instanceof byte[]))) {
+          beku.a(this.this$0.mMiniAppContext, (byte[])localObject, beku.b, "data", localJSONObject);
+        } else {
+          localJSONObject.put("data", localObject);
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        besl.d("FileJsPlugin", "readFile failed! ," + localThrowable.getMessage());
+        return FileJsPlugin.access$100(this.this$0, this.val$req, null, localThrowable.getMessage());
+      }
+    }
   }
 }
 

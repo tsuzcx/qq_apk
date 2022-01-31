@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bhhj;
+import bjcb;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class FilterCategory
   implements Parcelable
 {
-  public static final Parcelable.Creator<FilterCategory> CREATOR = new bhhj();
+  public static final Parcelable.Creator<FilterCategory> CREATOR = new bjcb();
   public int a;
   public String a;
   public List<QIMFilterCategoryItem> a;

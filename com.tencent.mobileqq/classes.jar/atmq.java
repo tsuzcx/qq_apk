@@ -1,54 +1,58 @@
-public abstract class atmq
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.3.1;
+import com.tencent.mobileqq.nearby.now.view.widget.LikeAniView;
+
+public class atmq
+  implements GestureDetector.OnDoubleTapListener
 {
-  private static final String CLOSE_EXCEPTION_MSG = "The EntityManagerFactory has been already closed";
-  private boolean closed;
-  private final ajrl dbHelper = build(paramString);
-  private String mName;
+  atmq(atlu paramatlu) {}
   
-  public atmq(String paramString)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.mName = paramString;
-  }
-  
-  public abstract ajrl build(String paramString);
-  
-  public void close()
-  {
-    if (this.closed) {
-      throw new IllegalStateException("The EntityManagerFactory has been already closed");
+    if (System.currentTimeMillis() - atlu.a(this.a) >= 500L)
+    {
+      int i = (int)paramMotionEvent.getRawX();
+      int j = (int)paramMotionEvent.getRawY();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a != 6)) {
+        ((LikeAniView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369178)).a(i, j);
+      }
+      if (!atlu.a(this.a)) {
+        break label98;
+      }
     }
-    this.closed = true;
-    this.dbHelper.a();
-  }
-  
-  public atmp createEntityManager()
-  {
-    if (this.closed) {
-      throw new IllegalStateException("The EntityManagerFactory has been already closed");
+    for (;;)
+    {
+      atlu.a(this.a, System.currentTimeMillis());
+      return true;
+      label98:
+      if ((!atlu.b(this.a)) && (this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369178).getVisibility() == 0))
+      {
+        atlu.a(this.a, false);
+        this.a.c(null);
+        new ativ().h("video").i("playpage_double_click").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        ThreadManagerV2.excute(new PlayOperationViewModel.3.1(this, (aszd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
+      }
     }
-    atnc localatnc = new atnc(this.dbHelper, this.mName);
-    this.closed = false;
-    return localatnc;
   }
   
-  public atmp createMessageRecordEntityManager()
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    if (this.closed) {
-      throw new IllegalStateException("The EntityManagerFactory has been already closed");
-    }
-    atmx localatmx = new atmx(this.dbHelper, this.mName);
-    this.closed = false;
-    return localatmx;
+    return false;
   }
   
-  public boolean isOpen()
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    return !this.closed;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atmq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class asio
-  implements View.OnClickListener
+class asio
+  implements DialogInterface.OnClickListener
 {
-  public asio(NearbyGuideActivity paramNearbyGuideActivity) {}
+  asio(asik paramasik, BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (!this.a.isFinishing()))
-    {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.a.jdField_a_of_type_AndroidAppDialog = null;
-      this.a.d(ajjy.a(2131641394));
-      if (this.a.jdField_a_of_type_Asft == null) {
-        this.a.jdField_a_of_type_Asft = ((asft)this.a.app.a(60));
-      }
-      this.a.jdField_a_of_type_Asft.a(NearbyPeopleProfileActivity.c, 5);
-      this.a.e("0X8005909");
-    }
+    asik.a(this.jdField_a_of_type_Asik, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asio
  * JD-Core Version:    0.7.0.1
  */

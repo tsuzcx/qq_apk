@@ -1,43 +1,46 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.widget.TCWNumberPicker;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnCompletionListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.8.1;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.8.2;
+import org.json.JSONObject;
 
 public class beod
-  implements InputFilter
+  implements VideoPlayerProxy.OnCompletionListener
 {
-  private beod(TCWNumberPicker paramTCWNumberPicker) {}
+  public beod(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onCompletion(VideoPlayerProxy paramVideoPlayerProxy)
   {
-    int i = 0;
-    if (TCWNumberPicker.a(this.a) == null)
-    {
-      paramCharSequence = TCWNumberPicker.a(this.a).filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      return paramCharSequence;
+    if (this.a.c) {
+      beiw.c().post(new MiniAppVideoPlayer.8.1(this));
     }
-    String str = String.valueOf(paramCharSequence.subSequence(paramInt1, paramInt2));
-    paramSpanned = String.valueOf(String.valueOf(paramSpanned.subSequence(0, paramInt3)) + str + paramSpanned.subSequence(paramInt4, paramSpanned.length())).toLowerCase();
-    String[] arrayOfString = TCWNumberPicker.a(this.a);
-    paramInt2 = arrayOfString.length;
-    paramInt1 = i;
+    if (!this.a.jdField_a_of_type_Begy.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
+      MiniAppVideoPlayer.a(this.a, "ended");
+    }
     for (;;)
     {
-      if (paramInt1 >= paramInt2) {
-        break label154;
+      beiw.c().post(new MiniAppVideoPlayer.8.2(this));
+      return;
+      try
+      {
+        paramVideoPlayerProxy = new JSONObject();
+        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
+        this.a.jdField_a_of_type_Begy.a("onVideoEnded", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+        besl.a("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoEnded = " + paramVideoPlayerProxy.toString());
       }
-      paramCharSequence = str;
-      if (arrayOfString[paramInt1].toLowerCase().startsWith(paramSpanned)) {
-        break;
+      catch (Exception paramVideoPlayerProxy)
+      {
+        paramVideoPlayerProxy.printStackTrace();
       }
-      paramInt1 += 1;
     }
-    label154:
-    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beod
  * JD-Core Version:    0.7.0.1
  */

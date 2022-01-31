@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class ahta
-  extends ajmm
+  implements bfoq
 {
-  public ahta(TroopDiscussionTroop paramTroopDiscussionTroop) {}
+  public ahta(EditLocalVideoActivity paramEditLocalVideoActivity, Bundle paramBundle) {}
   
-  protected void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.c();
+    paramView = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + ajyc.a(2131703660);
+    bhan.a().c(paramView);
+    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).dismiss();
+    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahta
  * JD-Core Version:    0.7.0.1
  */

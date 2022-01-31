@@ -1,14 +1,16 @@
-import android.animation.ValueAnimator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface vah
+class vah
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(ValueAnimator paramValueAnimator);
+  vah(vaf paramvaf) {}
   
-  public abstract void b(ValueAnimator paramValueAnimator);
-  
-  public abstract void c(ValueAnimator paramValueAnimator);
-  
-  public abstract void d(ValueAnimator paramValueAnimator);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    vel.a("home_page", "guide_known", 0, 0, new String[0]);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

@@ -1,7 +1,87 @@
+import android.graphics.Color;
+import android.text.TextUtils;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
+
 public class axzg
-  extends axzi
+  extends axup
 {
-  public byte[] a;
+  String ai;
+  
+  public axzg()
+  {
+    this(null);
+  }
+  
+  public axzg(String paramString)
+  {
+    super(paramString, "remark");
+  }
+  
+  public String a()
+  {
+    return "Remark";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.ai = paramObjectInput.readUTF();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    if (this.ai == null) {}
+    for (String str = "";; str = this.ai)
+    {
+      paramObjectOutput.writeUTF(str);
+      return;
+    }
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    super.a(paramXmlSerializer);
+    if (!TextUtils.isEmpty(this.ai)) {
+      paramXmlSerializer.attribute(null, "url", this.ai);
+    }
+  }
+  
+  public boolean a(axwe paramaxwe)
+  {
+    if (paramaxwe == null) {
+      return true;
+    }
+    this.ai = paramaxwe.a("bgColor");
+    return super.a(paramaxwe);
+  }
+  
+  public int b()
+  {
+    return 1;
+  }
+  
+  public int c()
+  {
+    return 2131378319;
+  }
+  
+  public int e()
+  {
+    return Color.rgb(128, 128, 128);
+  }
+  
+  public int f()
+  {
+    return 24;
+  }
+  
+  public String g()
+  {
+    return this.ai;
+  }
 }
 
 

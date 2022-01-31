@@ -1,18 +1,33 @@
-import android.graphics.Point;
-
-final class bajh
-  implements bajk<Point>
+public class bajh
 {
-  public Point a(float paramFloat, Point paramPoint1, Point paramPoint2)
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  
+  public bajh(String paramString, long paramLong, int paramInt1, int paramInt2)
   {
-    float f1 = paramPoint1.x;
-    float f2 = paramPoint1.y;
-    return new Point((int)(f1 + (paramPoint2.x - f1) * paramFloat), (int)(f2 + (paramPoint2.y - f2) * paramFloat));
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt1;
+  }
+  
+  public bajh(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bajh
  * JD-Core Version:    0.7.0.1
  */

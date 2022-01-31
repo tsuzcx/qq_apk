@@ -1,38 +1,37 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import com.tencent.tar.jni.ScanFeatureFilterView;
 
-class bflz
-  extends bfmj
+public final class bflz
 {
-  bflz(bfly parambfly) {}
+  public float a;
+  public int a;
+  public long a;
+  public boolean a;
+  public float b;
+  public int b;
+  public long b;
+  public boolean b;
   
-  public void a(@NonNull bfmi parambfmi)
+  public float a(int paramInt, long paramLong)
   {
-    parambfmi = parambfmi.a();
-    if (parambfmi == null) {
-      bfne.a("ReaderUrlConfigDataHelper", "Response json is null");
+    if (paramLong < this.jdField_b_of_type_Long) {
+      return 0.0F;
     }
-    do
-    {
-      return;
-      if (parambfmi.length() == 0)
-      {
-        bfne.a("ReaderUrlConfigDataHelper", "后台数据异常");
-        return;
-      }
-    } while (!bfly.a(this.a, parambfmi));
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    bfly.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_URL_CONFIG_DATA" + str, parambfmi.toString()).apply();
+    if (paramLong - this.jdField_b_of_type_Long > paramInt) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    return (float)(paramLong - this.jdField_b_of_type_Long) / paramInt % 1.0F;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = ScanFeatureFilterView.a();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bflz
  * JD-Core Version:    0.7.0.1
  */

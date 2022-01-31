@@ -6,13 +6,13 @@ import android.graphics.Rect;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhkb;
-import bijy;
+import bjet;
+import bkat;
 
 public class InteractPasterParcelData
   implements Parcelable
 {
-  public static final Parcelable.Creator<InteractPasterParcelData> CREATOR = new bhkb();
+  public static final Parcelable.Creator<InteractPasterParcelData> CREATOR = new bjet();
   public float a;
   public int a;
   public PointF a;
@@ -45,17 +45,17 @@ public class InteractPasterParcelData
     }
   }
   
-  public InteractPasterParcelData(bijy parambijy)
+  public InteractPasterParcelData(bkat parambkat)
   {
     this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Int = parambijy.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPointF = parambijy.b;
-    this.jdField_a_of_type_Float = parambijy.q;
-    this.b = parambijy.r;
-    this.c = parambijy.s;
-    this.d = parambijy.t;
-    this.jdField_a_of_type_ArrayOfJavaLangString = parambijy.jdField_a_of_type_ArrayOfJavaLangString;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsRect = parambijy.jdField_a_of_type_ArrayOfAndroidGraphicsRect;
+    this.jdField_a_of_type_Int = parambkat.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidGraphicsPointF = parambkat.b;
+    this.jdField_a_of_type_Float = parambkat.q;
+    this.b = parambkat.r;
+    this.c = parambkat.s;
+    this.d = parambkat.t;
+    this.jdField_a_of_type_ArrayOfJavaLangString = parambkat.jdField_a_of_type_ArrayOfJavaLangString;
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsRect = parambkat.jdField_a_of_type_ArrayOfAndroidGraphicsRect;
   }
   
   public int describeContents()

@@ -1,27 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class bgnk
-  extends Handler
+final class bgnk
+  implements View.OnClickListener
 {
-  bgnk(bgnj parambgnj, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bgnk(Dialog paramDialog, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.what == 1)
-    {
-      this.a.jdField_a_of_type_Bgng = null;
-      this.a.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_AndroidAppDialog != null) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgnk
  * JD-Core Version:    0.7.0.1
  */

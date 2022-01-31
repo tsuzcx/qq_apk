@@ -1,23 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.KingCardInfo;
+import android.text.method.TransformationMethod;
 
-public final class bfwe
-  implements Parcelable.Creator<KingCardInfo>
+public abstract interface bfwe
+  extends TransformationMethod
 {
-  public KingCardInfo a(Parcel paramParcel)
-  {
-    return new KingCardInfo(paramParcel);
-  }
-  
-  public KingCardInfo[] a(int paramInt)
-  {
-    return new KingCardInfo[paramInt];
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfwe
  * JD-Core Version:    0.7.0.1
  */

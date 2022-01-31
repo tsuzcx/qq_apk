@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mixedmsg;
 
-import ator;
+import aump;
 import com.tencent.mobileqq.data.MessageForPic;
 
 public final class MixedMsgManager$5
@@ -10,7 +10,7 @@ public final class MixedMsgManager$5
   
   public void run()
   {
-    ator.b(this.a);
+    aump.b(this.a);
   }
 }
 

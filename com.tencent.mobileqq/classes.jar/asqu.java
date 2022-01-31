@@ -1,12 +1,10 @@
-class asqu
+public abstract interface asqu
 {
-  public int a;
-  
-  private asqu(aspq paramaspq) {}
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asqu
  * JD-Core Version:    0.7.0.1
  */

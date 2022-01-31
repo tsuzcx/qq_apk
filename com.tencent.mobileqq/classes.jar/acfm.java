@@ -1,44 +1,32 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.widget.XListView;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import java.util.List;
 
 public class acfm
-  implements avck
+  implements PopupWindow.OnDismissListener
 {
-  public acfm(VisitorsActivity paramVisitorsActivity) {}
+  public acfm(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onDismiss()
   {
-    int i = 0;
-    if ((paramBitmap != null) && (paramInt2 == 200))
+    this.a.a = null;
+    Object localObject;
+    if ((TextPreviewTranslateActivity.b(this.a) != null) && (TextPreviewTranslateActivity.b(this.a).size() > 1))
     {
-      paramBitmap = this.a.a;
-      if (paramBitmap == null) {
-        break label108;
+      localObject = this.a.getResources();
+      if (!TextPreviewTranslateActivity.a(this.a)) {
+        break label76;
       }
-      paramInt2 = paramBitmap.getChildCount();
     }
-    for (;;)
+    label76:
+    for (int i = 2130844792;; i = 2130845297)
     {
-      if (i < paramInt2)
-      {
-        Object localObject = paramBitmap.getChildAt(i).getTag();
-        if ((localObject != null) && ((localObject instanceof acgd)))
-        {
-          localObject = (acgd)localObject;
-          if ((((acgd)localObject).b == paramInt1) && (((acgd)localObject).e != null)) {
-            VisitorsActivity.a(this.a, ((acgd)localObject).e, paramInt1);
-          }
-        }
-        i += 1;
-      }
-      else
-      {
-        return;
-        label108:
-        paramInt2 = 0;
-      }
+      localObject = ((Resources)localObject).getDrawable(i);
+      TextPreviewTranslateActivity.b(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
+      return;
     }
   }
 }

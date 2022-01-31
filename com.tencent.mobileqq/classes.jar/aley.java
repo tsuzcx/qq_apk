@@ -1,17 +1,10 @@
-public class aley
+public abstract interface aley
 {
-  public int a;
-  public String a;
-  
-  public aley()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-  }
+  public abstract void a(alfw paramalfw);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aley
  * JD-Core Version:    0.7.0.1
  */

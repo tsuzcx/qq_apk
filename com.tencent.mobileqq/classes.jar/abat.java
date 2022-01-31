@@ -1,31 +1,66 @@
-import com.tencent.mobileqq.activity.Leba.29.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.view.MotionEvent;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class abat
-  extends atdh
+  extends LinkMovementMethod
 {
-  abat(abai paramabai) {}
+  private abav jdField_a_of_type_Abav;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  private abat(EditInfoActivity paramEditInfoActivity) {}
+  
+  private abav a(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    if ((!paramBoolean1) || (paramInt == 2)) {}
-    for (;;)
+    int i = (int)paramMotionEvent.getX();
+    int j = (int)paramMotionEvent.getY();
+    int k = paramTextView.getTotalPaddingLeft();
+    int m = paramTextView.getTotalPaddingTop();
+    int n = paramTextView.getScrollX();
+    int i1 = paramTextView.getScrollY();
+    paramTextView = paramTextView.getLayout();
+    i = paramTextView.getOffsetForHorizontal(paramTextView.getLineForVertical(j - m + i1), i - k + n);
+    paramTextView = (abav[])paramSpannable.getSpans(i, i, abav.class);
+    if (paramTextView.length > 0) {
+      return paramTextView[0];
+    }
+    return null;
+  }
+  
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
     {
-      return;
-      if (abai.b(this.a))
+      this.jdField_a_of_type_Abav = a(paramTextView, paramSpannable, paramMotionEvent);
+      if (this.jdField_a_of_type_Abav != null)
       {
-        ArrayList localArrayList = new ArrayList();
-        ajlj.a(localArrayList, afqa.a().a(this.a.a));
-        this.a.a(new Leba.29.1(this, localArrayList));
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + abai.c(this.a));
-        return;
-        afqa.a |= 0x2;
+        this.jdField_a_of_type_Abav.a(true);
+        Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.jdField_a_of_type_Abav), paramSpannable.getSpanEnd(this.jdField_a_of_type_Abav));
       }
     }
+    do
+    {
+      return true;
+      if (paramMotionEvent.getAction() != 2) {
+        break;
+      }
+      paramTextView = a(paramTextView, paramSpannable, paramMotionEvent);
+    } while ((this.jdField_a_of_type_Abav == null) || (paramTextView == this.jdField_a_of_type_Abav));
+    this.jdField_a_of_type_Abav.a(false);
+    this.jdField_a_of_type_Abav = null;
+    Selection.removeSelection(paramSpannable);
+    return true;
+    if (this.jdField_a_of_type_Abav != null)
+    {
+      this.jdField_a_of_type_Abav.a(false);
+      super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    }
+    this.jdField_a_of_type_Abav = null;
+    Selection.removeSelection(paramSpannable);
+    return true;
   }
 }
 

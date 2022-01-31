@@ -1,225 +1,116 @@
-import android.os.Handler;
-import android.os.Looper;
+import android.app.Activity;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.LinkedList;
-import java.util.Locale;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class adao
+  implements aczz
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler;
-  private static boolean jdField_a_of_type_Boolean;
-  WeakReference<adai> jdField_a_of_type_JavaLangRefWeakReference;
-  LinkedList<WeakReference<adai>> jdField_a_of_type_JavaUtilLinkedList;
+  private int jdField_a_of_type_Int;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<Integer, adaq> jdField_a_of_type_JavaUtilHashMap;
+  private String b;
   
-  public adao()
+  public adao(@NonNull Activity paramActivity)
   {
-    jdField_a_of_type_Boolean = a();
-    if (!jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-    jdField_a_of_type_AndroidOsHandler = new adap(this, Looper.getMainLooper());
-    ajzo.a().a(new adaq(this));
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public static adao a()
+  public void a()
   {
-    return adar.a;
-  }
-  
-  public static void a()
-  {
-    if (!jdField_a_of_type_Boolean) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendShipViewManager", 2, "doOnResume");
     }
-    jdField_a_of_type_AndroidOsHandler.sendMessage(jdField_a_of_type_AndroidOsHandler.obtainMessage(4));
-  }
-  
-  public static void a(WeakReference<adai> paramWeakReference)
-  {
-    if (!jdField_a_of_type_Boolean) {
-      return;
-    }
-    jdField_a_of_type_AndroidOsHandler.sendMessage(jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramWeakReference));
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    int j = 0;
-    if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
-    {
-      b("removeLast, list is empty");
-      return;
-    }
-    int m = this.jdField_a_of_type_JavaUtilLinkedList.size();
-    int i;
-    label38:
-    int k;
-    if (paramBoolean)
-    {
-      i = m;
-      if (i <= 0) {
-        break label151;
-      }
-      k = this.jdField_a_of_type_JavaUtilLinkedList.indexOf(this.jdField_a_of_type_JavaLangRefWeakReference);
-      if (k > 0) {
-        j = m - k;
-      }
-      k = i;
-      if (i > j) {
-        k = j;
-      }
-      b("removeLast, size = " + m + ", toBeRemovedCount = " + k + " , numOfInactive = " + j);
-    }
-    for (;;)
-    {
-      WeakReference localWeakReference;
-      if (k > 0)
-      {
-        localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilLinkedList.peekLast();
-        if (localWeakReference != null) {}
-      }
-      else
-      {
-        b();
-        return;
-        i = m - 10;
-        break;
-        label151:
-        i = 0;
-        break label38;
-      }
-      adai localadai = (adai)localWeakReference.get();
-      if (localadai != null)
-      {
-        localadai.doOnEvent(2);
-        adai.a(localadai);
-        adai.b(localadai);
-      }
-      g(localWeakReference);
-      k -= 1;
+    adaq localadaq = (adaq)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
+    if (localadaq != null) {
+      localadaq.d();
     }
   }
   
-  private boolean a()
+  public boolean a(int paramInt)
   {
-    amax localamax = amay.b(380).a();
-    if ((localamax == null) || (localamax.a() == null))
-    {
-      QLog.i("ArkApp.ArkAppContainerMRUUpdater", 1, "confBean.getConfig() get fail");
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendShipViewManager", 2, "play anim " + paramInt);
+    }
+    if (paramInt == 0) {
       return false;
     }
-    return localamax.a().b;
-  }
-  
-  private void b() {}
-  
-  private static void b(String paramString) {}
-  
-  public static void b(WeakReference<adai> paramWeakReference)
-  {
-    if (!jdField_a_of_type_Boolean) {
-      return;
-    }
-    jdField_a_of_type_AndroidOsHandler.sendMessage(jdField_a_of_type_AndroidOsHandler.obtainMessage(2, paramWeakReference));
-  }
-  
-  private void c()
-  {
-    b("do clear");
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-  }
-  
-  private static void c(String paramString)
-  {
-    QLog.i("ArkApp.ArkAppContainerMRUUpdater", 1, String.format(Locale.CHINA, paramString, new Object[0]));
-  }
-  
-  public static void c(WeakReference<adai> paramWeakReference)
-  {
-    if (!jdField_a_of_type_Boolean) {
-      return;
-    }
-    jdField_a_of_type_AndroidOsHandler.sendMessage(jdField_a_of_type_AndroidOsHandler.obtainMessage(3, paramWeakReference));
-  }
-  
-  private void d(WeakReference<adai> paramWeakReference)
-  {
-    if (paramWeakReference == null) {}
-    while (this.jdField_a_of_type_JavaLangRefWeakReference != paramWeakReference) {
-      return;
-    }
-    int i = this.jdField_a_of_type_JavaUtilLinkedList.indexOf(this.jdField_a_of_type_JavaLangRefWeakReference);
-    int j = this.jdField_a_of_type_JavaUtilLinkedList.size();
-    if ((i == -1) || (i == j - 1) || (j == 0))
+    adaq localadaq = (adaq)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
+    if (localadaq != null)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      return;
+      localadaq.b();
+      localadaq.e();
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), null);
+      this.jdField_a_of_type_Int = 0;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = ((WeakReference)this.jdField_a_of_type_JavaUtilLinkedList.get(i + 1));
-  }
-  
-  private void e(WeakReference<adai> paramWeakReference)
-  {
-    if (paramWeakReference == null)
+    localadaq = (adaq)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localadaq == null)
     {
-      b("doMoveToFirst node is null");
-      return;
-    }
-    d(paramWeakReference);
-    b(String.format("doMoveToFirst: %h", new Object[] { paramWeakReference.get() }));
-    if ((!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) && (this.jdField_a_of_type_JavaUtilLinkedList.getFirst() == paramWeakReference))
-    {
-      b("doMoveToFirst node already in the first position");
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilLinkedList.contains(paramWeakReference)) {
-      this.jdField_a_of_type_JavaUtilLinkedList.remove(paramWeakReference);
-    }
-    this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramWeakReference);
-    a(false);
-  }
-  
-  private void f(WeakReference<adai> paramWeakReference)
-  {
-    if (paramWeakReference == null)
-    {
-      b("doMoveToFirstInActive node is null");
-      return;
-    }
-    b(String.format("doMoveToFirstInActive: %h", new Object[] { paramWeakReference.get() }));
-    if ((this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) || (!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramWeakReference)))
-    {
-      b("doMoveToFirstInActive node not in the list");
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilLinkedList.remove(paramWeakReference);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramWeakReference);
+      localadaq = adal.a(paramInt, this.jdField_a_of_type_AndroidAppActivity);
+      if (localadaq == null) {
+        return false;
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localadaq);
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-      a(false);
-      return;
-      int i = this.jdField_a_of_type_JavaUtilLinkedList.indexOf(this.jdField_a_of_type_JavaLangRefWeakReference);
-      if (i > 0) {
-        this.jdField_a_of_type_JavaUtilLinkedList.add(i, paramWeakReference);
+      if ((localadaq instanceof adag)) {
+        ((adag)localadaq).a(this.jdField_a_of_type_JavaLangString, this.b);
       }
+      localadaq.a(new adap(this, localadaq));
+      return true;
     }
   }
   
-  private void g(WeakReference<adai> paramWeakReference)
+  public boolean a(int paramInt, String paramString1, String paramString2)
   {
-    if (paramWeakReference == null)
-    {
-      b("doRemove node is null");
-      return;
+    QLog.i("FriendShipViewManager", 1, "play , url = " + paramString1 + " md5:" + paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.trim();
     }
-    b(String.format("doRemove %h", new Object[] { paramWeakReference.get() }));
-    d(paramWeakReference);
-    this.jdField_a_of_type_JavaUtilLinkedList.remove(paramWeakReference);
+    if (this.b != null) {
+      this.b = this.b.trim();
+    }
+    a(3);
+    return true;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendShipViewManager", 2, "doOnPause");
+    }
+    adaq localadaq = (adaq)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
+    if (localadaq != null) {
+      localadaq.c();
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendShipViewManager", 2, "doOnDestroy");
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (localEntry.getValue() != null)
+      {
+        ((adaq)localEntry.getValue()).b();
+        ((adaq)localEntry.getValue()).e();
+      }
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

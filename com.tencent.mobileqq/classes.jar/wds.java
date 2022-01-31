@@ -1,38 +1,21 @@
-import android.content.Context;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
-import java.io.IOException;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-final class wds
-  implements Callback
+class wds
+  implements View.OnTouchListener
 {
-  wds(Context paramContext, wdt paramwdt) {}
+  wds(wdr paramwdr) {}
   
-  public void onFailure(Request paramRequest, IOException paramIOException)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    wdr.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Wdt, "abcdabcdabcdabcd");
-  }
-  
-  public void onResponse(Response paramResponse)
-  {
-    try
-    {
-      paramResponse = new JSONObject(paramResponse.body().string()).optString("key");
-      wdr.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Wdt, paramResponse);
-      return;
-    }
-    catch (Throwable paramResponse)
-    {
-      paramResponse.printStackTrace();
-    }
+    wdr.a(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wds
  * JD-Core Version:    0.7.0.1
  */

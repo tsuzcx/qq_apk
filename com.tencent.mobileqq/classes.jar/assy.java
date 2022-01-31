@@ -1,27 +1,32 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multicard.MultiCardRootLayout;
+import java.lang.ref.WeakReference;
 
 public class assy
-  implements View.OnClickListener
+  implements bfrj
 {
-  public assy(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public assy(MultiCardRootLayout paramMultiCardRootLayout) {}
   
-  public void onClick(View paramView)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
+    int i = paramMotionEvent.getActionMasked();
+    if (MultiCardRootLayout.a(this.a) != null)
     {
-      this.a.a.dismiss();
-      this.a.a = null;
+      asta localasta = (asta)MultiCardRootLayout.a(this.a).get();
+      if ((localasta != null) && (localasta.a(i))) {
+        return true;
+      }
     }
-    this.a.c();
-    awqx.b(this.a.app, "CliOper", "", "", "0X8004824", "0X8004824", 0, 0, "", "", "", "");
+    if (MultiCardRootLayout.a(this.a) != null) {
+      MultiCardRootLayout.a(this.a).onTouchEvent(paramMotionEvent);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     assy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,79 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class anwj
-  implements Animation.AnimationListener
 {
-  public anwj(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
+  private static anwj jdField_a_of_type_Anwj;
+  ArrayList<WeakReference<anwi>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static anwj a()
   {
-    Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+    if (jdField_a_of_type_Anwj == null) {}
+    try
+    {
+      if (jdField_a_of_type_Anwj == null) {
+        jdField_a_of_type_Anwj = new anwj();
+      }
+      return jdField_a_of_type_Anwj;
+    }
+    finally {}
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a()
   {
-    if (Face2FaceFriendBubbleView.a(this.a) == 1)
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-    }
-    for (;;)
-    {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(4);
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
       return;
-      if (Face2FaceFriendBubbleView.a(this.a) == 2)
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839529);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+        anwi localanwi = (anwi)((WeakReference)localIterator.next()).get();
+        if (localanwi != null) {
+          localanwi.a(paramInt);
+        }
       }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 3)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839530);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+    }
+  }
+  
+  public void a(anwi paramanwi)
+  {
+    if (paramanwi == null) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        if (((WeakReference)localIterator.next()).get() == paramanwi) {
+          return;
+        }
       }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 4)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839531);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+    }
+    paramanwi = new WeakReference(paramanwi);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramanwi);
+  }
+  
+  public void b(anwi paramanwi)
+  {
+    if (paramanwi == null) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        if (((WeakReference)localIterator.next()).get() == paramanwi) {
+          localIterator.remove();
+        }
       }
     }
   }

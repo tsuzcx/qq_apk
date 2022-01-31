@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import obz;
+import android.os.Vibrator;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class MainFragment$20
   implements Runnable
@@ -11,11 +13,15 @@ class MainFragment$20
   {
     try
     {
-      obz.d();
+      if (MainFragment.a(this.this$0) == null) {
+        MainFragment.a(this.this$0, (Vibrator)this.this$0.getActivity().getSystemService("vibrator"));
+      }
+      MainFragment.a(this.this$0).vibrate(20L);
       return;
     }
     catch (Exception localException)
     {
+      QLog.e("MainFragment", 2, "Vibrator exception.");
       localException.printStackTrace();
     }
   }

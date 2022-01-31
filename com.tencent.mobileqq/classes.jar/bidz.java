@@ -1,19 +1,16 @@
-public class bidz
+import com.tencent.weiyun.utils.Singleton;
+
+final class bidz
+  extends Singleton<bidy, Void>
 {
-  public final int a;
-  public final long a;
-  public final CharSequence a;
-  
-  public bidz(long paramLong, int paramInt, CharSequence paramCharSequence)
+  protected bidy a(Void paramVoid)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    return new bidy(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bidz
  * JD-Core Version:    0.7.0.1
  */

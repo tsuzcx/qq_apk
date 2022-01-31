@@ -1,9 +1,21 @@
-import android.graphics.Path;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
-public abstract interface acui
+public class acui
+  implements akil
 {
-  public abstract void a(int paramInt, boolean paramBoolean, Path paramPath, List<actz> paramList);
+  public acui(BaseBubbleBuilder paramBaseBubbleBuilder, Intent paramIntent) {}
+  
+  public void a(Object paramObject)
+  {
+    if ((paramObject instanceof String))
+    {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+    }
+  }
 }
 
 

@@ -1,69 +1,29 @@
-import android.content.Context;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import java.util.Collections;
+import java.util.List;
 
 public class ahdr
-  extends ahdg
+  implements View.OnClickListener
 {
-  public ahdr(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131627289);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  public ahdr(ChooseItemView paramChooseItemView) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
+    if ((ChooseItemView.a(this.a) != null) && (ChooseItemView.a(this.a).size() > 1))
     {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Aylu == null) {
-        this.jdField_a_of_type_Aylu = new aylu();
-      }
-      this.jdField_a_of_type_Aylu.a(paramArrayOfByte.getString("messageNavInfo"));
-      return;
+      Collections.shuffle(ChooseItemView.a(this.a));
+      this.a.a(ChooseItemView.a(this.a), true);
     }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Aylu != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Aylu.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+    if (ChooseItemView.a(this.a) != null) {
+      ChooseItemView.a(this.a).onClick(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahdr
  * JD-Core Version:    0.7.0.1
  */

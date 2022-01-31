@@ -1,19 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aadd
-  implements actb
+class aadd
+  implements View.OnClickListener
 {
-  public aadd(BaseChatPie paramBaseChatPie) {}
+  aadd(aada paramaada) {}
   
-  public void a(Bitmap paramBitmap, acsj paramacsj, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.ap();
+    this.a.jdField_a_of_type_Aabp.d();
+    aaet.a(this.a.jdField_a_of_type_Aabm, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aadd
  * JD-Core Version:    0.7.0.1
  */

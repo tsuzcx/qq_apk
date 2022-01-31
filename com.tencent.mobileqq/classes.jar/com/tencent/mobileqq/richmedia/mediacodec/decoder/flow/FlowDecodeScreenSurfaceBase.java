@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import auye;
-import auyi;
-import auyj;
+import avxx;
+import avyb;
+import avyc;
 import java.lang.ref.WeakReference;
 import javax.microedition.khronos.egl.EGLContext;
-import urk;
+import veg;
 
 public class FlowDecodeScreenSurfaceBase
 {
   protected int a;
-  private auyi jdField_a_of_type_Auyi;
-  private auyj jdField_a_of_type_Auyj = new auye(this);
+  private avyb jdField_a_of_type_Avyb;
+  private avyc jdField_a_of_type_Avyc = new avxx(this);
   private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   protected int b;
   private int c = 2;
@@ -31,17 +31,17 @@ public class FlowDecodeScreenSurfaceBase
   
   public void a()
   {
-    urk.b("FlowEdit_FlowDecodeScreenSurfaceBase", "release: ");
-    this.jdField_a_of_type_Auyi.b();
-    this.jdField_a_of_type_Auyi.c();
+    veg.b("FlowEdit_FlowDecodeScreenSurfaceBase", "release: ");
+    this.jdField_a_of_type_Avyb.b();
+    this.jdField_a_of_type_Avyb.c();
   }
   
   public void c()
   {
-    urk.b("FlowEdit_FlowDecodeScreenSurfaceBase", "start: ");
-    this.jdField_a_of_type_Auyi = new auyi(new WeakReference(this.jdField_a_of_type_Auyj));
-    this.jdField_a_of_type_Auyi.a();
-    this.jdField_a_of_type_Auyi.a(this.jdField_a_of_type_Int, this.b);
+    veg.b("FlowEdit_FlowDecodeScreenSurfaceBase", "start: ");
+    this.jdField_a_of_type_Avyb = new avyb(new WeakReference(this.jdField_a_of_type_Avyc));
+    this.jdField_a_of_type_Avyb.a();
+    this.jdField_a_of_type_Avyb.a(this.jdField_a_of_type_Int, this.b);
   }
 }
 

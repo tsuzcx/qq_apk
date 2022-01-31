@@ -1,20 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class agll
   implements DialogInterface.OnClickListener
 {
-  public agll(SendHbActivity paramSendHbActivity) {}
+  public agll(CameraPreviewActivity paramCameraPreviewActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agll
  * JD-Core Version:    0.7.0.1
  */

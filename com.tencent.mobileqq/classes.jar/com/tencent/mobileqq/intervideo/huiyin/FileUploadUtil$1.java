@@ -2,8 +2,8 @@ package com.tencent.mobileqq.intervideo.huiyin;
 
 import android.net.Uri;
 import android.util.Log;
-import aqmj;
-import aqmk;
+import argo;
+import argp;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,24 +11,24 @@ import java.util.Map;
 public final class FileUploadUtil$1
   implements Runnable
 {
-  public FileUploadUtil$1(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, aqmk paramaqmk) {}
+  public FileUploadUtil$1(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, argp paramargp) {}
   
   public void run()
   {
-    aqmj.a(aqmj.a());
+    argo.a(argo.a());
     HashMap localHashMap = new HashMap();
-    aqmj.b("sex=" + this.jdField_a_of_type_JavaLangString + ";user_name=" + this.b + ";ilive_tinyid=" + this.c + ";ilive_a2=" + this.d + ";ilive_login_type=0;ilive_uin=" + this.e + ";");
+    argo.b("sex=" + this.jdField_a_of_type_JavaLangString + ";user_name=" + this.b + ";ilive_tinyid=" + this.c + ";ilive_a2=" + this.d + ";ilive_login_type=0;ilive_uin=" + this.e + ";");
     localHashMap.put("sex", this.jdField_a_of_type_JavaLangString);
     localHashMap.put("voice_word", Uri.encode(this.f));
     try
     {
-      aqmj.a(this.g, localHashMap, new File(this.h), this.jdField_a_of_type_Aqmk);
+      argo.a(this.g, localHashMap, new File(this.h), this.jdField_a_of_type_Argp);
       return;
     }
     catch (Exception localException)
     {
       Log.e("HuiyinFileUpload", localException.getLocalizedMessage());
-      this.jdField_a_of_type_Aqmk.a(1, localException.getLocalizedMessage());
+      this.jdField_a_of_type_Argp.a(1, localException.getLocalizedMessage());
     }
   }
 }

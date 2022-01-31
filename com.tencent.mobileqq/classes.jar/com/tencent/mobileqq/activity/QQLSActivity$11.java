@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.os.Message;
-import bahb;
+import bbig;
 import com.tencent.qphone.base.util.QLog;
 
 class QQLSActivity$11
@@ -17,7 +17,7 @@ class QQLSActivity$11
       if (QLog.isColorLevel()) {
         QLog.d("QQLSSensor", 2, "====openSensor===" + Thread.currentThread().getId());
       }
-      this.this$0.a = new bahb(this.this$0.getApplicationContext(), this.this$0);
+      this.this$0.a = new bbig(this.this$0.getApplicationContext(), this.this$0);
       this.this$0.a.a();
       if (QQLSActivity.a(this.this$0).hasMessages(8)) {
         QQLSActivity.a(this.this$0).removeMessages(8);

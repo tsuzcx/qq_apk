@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import abop;
-import babr;
-import bafb;
+import abyt;
+import bbcv;
+import bbgg;
 
 public class RegisterNewBaseActivity$2
   implements Runnable
@@ -11,11 +11,11 @@ public class RegisterNewBaseActivity$2
   
   public void run()
   {
-    bafb localbafb = babr.a(this.this$0, 230);
-    localbafb.setTitle(this.a);
-    localbafb.setMessage(this.b);
-    localbafb.setPositiveButton(2131653983, new abop(this));
-    localbafb.show();
+    bbgg localbbgg = bbcv.a(this.this$0, 230);
+    localbbgg.setTitle(this.a);
+    localbbgg.setMessage(this.b);
+    localbbgg.setPositiveButton(2131719867, new abyt(this));
+    localbbgg.show();
   }
 }
 

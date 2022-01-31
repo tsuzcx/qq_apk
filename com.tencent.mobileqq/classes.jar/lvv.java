@@ -1,33 +1,40 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Typeface;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.av.redpacket.ui.RedPacketRollTextView;
+import com.tencent.mobileqq.portal.StrokeTextView;
 
 public class lvv
-  extends bafb
+  implements ViewSwitcher.ViewFactory
 {
-  public lvv(Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public lvv(RedPacketRollTextView paramRedPacketRollTextView, boolean paramBoolean) {}
   
-  public static bafb a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  public View makeView()
   {
-    paramContext = new lvv(paramContext, 2131690181);
-    paramContext.setContentView(2131493345);
-    paramContext.setTitle(paramString1);
-    paramContext.setMessage(paramString2);
-    paramContext.setNegativeButton(paramInt2, paramOnClickListener2);
-    paramContext.setPositiveButton(paramInt3, paramOnClickListener1);
-    paramContext.setCanceledOnTouchOutside(false);
-    return paramContext;
-  }
-  
-  public void onWindowFocusChanged(boolean paramBoolean)
-  {
-    super.onWindowFocusChanged(paramBoolean);
-    QLog.w("MultiVideoEnterPageActivity", 1, "onWindowFocusChanged, hasFocus[" + paramBoolean + "]");
-    if (!paramBoolean) {
-      dismiss();
+    localStrokeTextView = new StrokeTextView(RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
+    try
+    {
+      localStrokeTextView.setLayoutParams(new FrameLayout.LayoutParams(actn.a(42.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()), -1));
+      localStrokeTextView.setTextSize(0, RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
+      localStrokeTextView.setIncludeFontPadding(false);
+      if (this.jdField_a_of_type_Boolean) {}
+      for (String str = "0";; str = "")
+      {
+        localStrokeTextView.setText(str);
+        localStrokeTextView.setStrokeEnable(true);
+        localStrokeTextView.setStrokeColor(-1);
+        localStrokeTextView.setStrokeSize(actn.a(6.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()));
+        localStrokeTextView.setInnerTextColor(-2094274);
+        localStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
+        localStrokeTextView.setGravity(17);
+        return localStrokeTextView;
+      }
+      return localStrokeTextView;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }

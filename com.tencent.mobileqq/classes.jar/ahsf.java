@@ -1,14 +1,35 @@
-import com.tencent.mobileqq.data.Friends;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-class ahsf
+public class ahsf
+  implements bckg
 {
-  public int a;
-  public Friends a;
+  public ahsf(LoginView paramLoginView, ImageView paramImageView, int paramInt) {}
   
-  public ahsf(Friends paramFriends, int paramInt)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.jdField_a_of_type_Int = paramInt;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      localImageView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.5F);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
   }
 }
 

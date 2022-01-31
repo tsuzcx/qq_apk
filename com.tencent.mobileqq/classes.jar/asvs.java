@@ -1,32 +1,54 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.music.QQPlayerService;
 
-class asvs
-  implements View.OnClickListener
+public class asvs
+  implements INetInfoHandler
 {
-  asvs(asuq paramasuq, String paramString) {}
+  long a = 0L;
   
-  public void onClick(View paramView)
+  private void a(int paramInt)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Asuq.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    paramView = this.jdField_a_of_type_Asuq.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Asuq.a.j)) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      localIntent.putExtra("url", paramView);
-      awqx.b(this.jdField_a_of_type_Asuq.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Asuq.a.startActivity(localIntent);
+    if (System.currentTimeMillis() - this.a < 500L) {
       return;
     }
+    this.a = System.currentTimeMillis();
+    QQPlayerService.d(BaseApplicationImpl.getContext());
+  }
+  
+  public void onNetMobile2None()
+  {
+    a(4);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    a(3);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    a(1);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    a(2);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    a(6);
+  }
+  
+  public void onNetWifi2None()
+  {
+    a(5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     asvs
  * JD-Core Version:    0.7.0.1
  */

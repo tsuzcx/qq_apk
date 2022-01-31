@@ -1,8 +1,25 @@
-import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
-public abstract interface bikx
+class bikx
+  implements bikp
 {
-  public abstract void a(int paramInt, List<srl> paramList);
+  bikx(biku parambiku, AtomicReference paramAtomicReference) {}
+  
+  public void a(bikt parambikt)
+  {
+    avuf localavuf = (avuf)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    if (localavuf != null) {
+      localavuf.a(parambikt);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    avuf localavuf = (avuf)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    if (localavuf != null) {
+      localavuf.a(paramString);
+    }
+  }
 }
 
 

@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class aeuv
-  extends ajpe
+  extends ayfl
 {
-  public aeuv(PublicView paramPublicView) {}
+  public aeuv(TroopChatPie paramTroopChatPie) {}
   
-  public void a(boolean paramBoolean)
+  public void c(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (true == paramBoolean)
-    {
-      PublicView.a(this.a).a(0);
-      PublicView.a(this.a).sendEmptyMessage(1);
-      PublicView.a(this.a).sendEmptyMessage(3);
-      return;
-    }
-    PublicView.a(this.a).springBackOverScrollHeaderView();
-    PublicView.a(this.a, 1, 2131653904);
-    PublicView.a(this.a);
+    ayfv.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.l(this.a), paramBoolean, paramArrayOfObject);
+  }
+  
+  public void d(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    ayfv.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.m(this.a), paramBoolean, paramArrayOfObject);
   }
 }
 

@@ -1,22 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
 
-public class aavz
-  implements Animation.AnimationListener
+class aavz
+  implements View.OnClickListener
 {
-  public aavz(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  aavz(aavy paramaavy) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.a.a.onClick(this.a.a.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

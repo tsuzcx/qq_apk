@@ -1,12 +1,22 @@
-import android.graphics.Path;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
 public class acuf
+  extends View.AccessibilityDelegate
 {
-  public int a;
-  public Path a;
-  public List<actz> a;
-  public boolean a;
+  public acuf(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  
+  @TargetApi(16)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  {
+    if (Build.VERSION.SDK_INT >= 16) {
+      paramAccessibilityNodeInfo.setVisibleToUser(false);
+    }
+  }
 }
 
 

@@ -1,25 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+
 public class wmk
+  implements View.OnClickListener
 {
-  public static int a;
-  public static int b;
-  String a;
-  public boolean a;
-  String b;
-  public int c;
-  String c;
-  public int d;
+  public wmk(CommentBottomBar paramCommentBottomBar) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_b_of_type_Int = 1;
-  }
-  
-  public wmk(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_c_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.a.d();
+    if (CommentBottomBar.a(this.a) != null) {
+      CommentBottomBar.a(this.a).onClick(paramView);
+    }
   }
 }
 

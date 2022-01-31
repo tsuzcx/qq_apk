@@ -1,197 +1,102 @@
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvGVideoLevelInfo;
+import android.graphics.Canvas;
+import android.graphics.PointF;
+import com.tencent.av.doodle.MySurfaceView;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-class lmd
-  implements lmb
+public abstract class lmd
 {
-  private IBinder a;
+  public int a;
+  public long a;
+  public PointF a;
+  final String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e = -65536;
   
-  lmd(IBinder paramIBinder)
+  public lmd()
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_b_of_type_JavaLangString = "unused";
+    this.jdField_b_of_type_Int = 12;
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = ("DoodleItem_" + getClass().getSimpleName() + "_" + AudioHelper.b());
+    if (AudioHelper.e()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, getClass().getSimpleName());
+    }
   }
   
-  public Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public void a(float paramFloat1, float paramFloat2)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
+    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
+    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
+  }
+  
+  public abstract void a(long paramLong);
+  
+  public void a(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean)
+  {
+    float f2 = 0.0F;
+    int i = paramMySurfaceView.getWidth();
+    int j = paramMySurfaceView.getHeight();
+    int k = this.d;
+    int m = this.c;
+    float f3;
+    if (i * k < j * m) {
+      f3 = i / m;
+    }
+    for (float f1 = (j - k * f3) / 2.0F;; f1 = 0.0F)
     {
+      if (paramCanvas != null)
+      {
+        paramCanvas.save();
+        paramCanvas.translate(f2, f1);
+        paramCanvas.scale(f3, f3);
+        b(paramCanvas, paramMySurfaceView, paramBoolean);
+      }
       try
       {
-        localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-        localParcel1.writeString(paramString);
-        localParcel1.writeInt(paramInt1);
-        localParcel1.writeInt(paramInt2);
-        if (paramBundle != null)
-        {
-          localParcel1.writeInt(1);
-          paramBundle.writeToParcel(localParcel1, 0);
-          this.a.transact(5, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramString = (Bundle)Bundle.CREATOR.createFromParcel(localParcel2);
-            return paramString;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramString = null;
+        paramCanvas.restore();
+        return;
       }
-      finally
+      catch (Exception paramCanvas)
       {
-        localParcel2.recycle();
-        localParcel1.recycle();
+        lcl.e(this.jdField_a_of_type_JavaLangString, paramCanvas.getMessage());
       }
+      f3 = j / k;
+      f2 = (i - m * f3) / 2.0F;
     }
   }
   
-  /* Error */
-  public void a(com.tencent.av.service.RecvMsg paramRecvMsg)
+  public boolean a(float paramFloat1, float paramFloat2)
   {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: aload_2
-    //   5: ldc 25
-    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_1
-    //   11: ifnull +33 -> 44
-    //   14: aload_2
-    //   15: iconst_1
-    //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   19: aload_1
-    //   20: aload_2
-    //   21: iconst_0
-    //   22: invokevirtual 72	com/tencent/av/service/RecvMsg:writeToParcel	(Landroid/os/Parcel;I)V
-    //   25: aload_0
-    //   26: getfield 15	lmd:a	Landroid/os/IBinder;
-    //   29: iconst_1
-    //   30: aload_2
-    //   31: aconst_null
-    //   32: iconst_1
-    //   33: invokeinterface 48 5 0
-    //   38: pop
-    //   39: aload_2
-    //   40: invokevirtual 68	android/os/Parcel:recycle	()V
-    //   43: return
-    //   44: aload_2
-    //   45: iconst_0
-    //   46: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   49: goto -24 -> 25
-    //   52: astore_1
-    //   53: aload_2
-    //   54: invokevirtual 68	android/os/Parcel:recycle	()V
-    //   57: aload_1
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	59	0	this	lmd
-    //   0	59	1	paramRecvMsg	com.tencent.av.service.RecvMsg
-    //   3	51	2	localParcel	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	52	finally
-    //   14	25	52	finally
-    //   25	39	52	finally
-    //   44	49	52	finally
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
+    float f1 = Math.abs(paramFloat1 - this.jdField_a_of_type_AndroidGraphicsPointF.x);
+    float f2 = Math.abs(paramFloat2 - this.jdField_a_of_type_AndroidGraphicsPointF.y);
+    if ((f1 >= 8.0F) || (f2 >= 8.0F)) {}
+    for (boolean bool = true;; bool = false)
     {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(String paramString, int paramInt, byte[] paramArrayOfByte)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt);
-      localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(6, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
-  {
-    int i = 0;
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-      if (paramBoolean) {
-        i = 1;
+      if (bool)
+      {
+        b(paramFloat1, paramFloat2);
+        this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
+        this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
       }
-      localParcel1.writeInt(i);
-      localParcel1.writeString(paramString1);
-      localParcel1.writeString(paramString2);
-      localParcel1.writeString(paramString3);
-      this.a.transact(4, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      return bool;
     }
   }
   
-  public void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-      localParcel.writeTypedArray(paramArrayOfRecvGVideoLevelInfo, 0);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
+  public abstract void b(float paramFloat1, float paramFloat2);
   
-  public IBinder asBinder()
+  public abstract void b(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean);
+  
+  public abstract void c(float paramFloat1, float paramFloat2);
+  
+  public String toString()
   {
-    return this.a;
+    return this.jdField_a_of_type_JavaLangString + ", mPenType[" + this.jdField_a_of_type_Int + "], mPoint[" + this.jdField_a_of_type_AndroidGraphicsPointF.x + "," + this.jdField_a_of_type_AndroidGraphicsPointF.y + "]";
   }
 }
 

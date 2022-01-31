@@ -1,19 +1,37 @@
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
+
 class ahcg
+  implements EIPCOnGetConnectionListener
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  ahcg(ahcf paramahcf) {}
   
-  public ahcg(String paramString1, String paramString2, long paramLong)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
+    if (paramEIPCConnection != null) {
+      ahcf.a(this.a, paramEIPCConnection.procName);
+    }
+    ahcf.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "onConnectBind");
+    }
+  }
+  
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      ahcf.a(this.a, paramEIPCConnection.procName);
+    }
+    ahcf.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "onConnectUnbind");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahcg
  * JD-Core Version:    0.7.0.1
  */

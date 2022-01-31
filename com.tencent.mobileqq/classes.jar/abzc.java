@@ -1,29 +1,34 @@
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class abzc
-  implements View.OnClickListener
+  extends WtloginObserver
 {
-  public abzc(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public abzc(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void onClick(View paramView)
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    vkw.a(this.a.jdField_a_of_type_Acao);
-    vkw.a(this.a.jdField_a_of_type_JavaUtilList);
-    paramView = new ArrayList();
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    if (QLog.isColorLevel())
     {
-      paramView.add(((acam)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
-      i += 1;
+      QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      }
     }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
-    this.a.setResult(-1, localIntent);
+    if (paramInt2 == 0) {
+      return;
+    }
+    RegisterQQNumberActivity.a(this.a);
+    paramString = new Intent(this.a, LoginActivity.class);
+    paramString.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+    paramString.putExtra("tab_index", MainFragment.b);
+    paramString.addFlags(131072);
+    this.a.startActivity(paramString);
     this.a.finish();
   }
 }

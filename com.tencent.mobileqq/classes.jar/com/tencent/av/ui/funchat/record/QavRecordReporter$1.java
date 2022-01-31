@@ -1,6 +1,6 @@
 package com.tencent.av.ui.funchat.record;
 
-import awrn;
+import axrl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -30,11 +30,11 @@ public final class QavRecordReporter$1
     if (QLog.isColorLevel()) {
       QLog.i("QavRecordReporter", 2, "onRecordEnd  params=" + localHashMap);
     }
-    localObject = awrn.a(BaseApplicationImpl.getContext());
+    localObject = axrl.a(BaseApplicationImpl.getContext());
     if (this.e != 3) {}
     for (;;)
     {
-      ((awrn)localObject).a("", "av_record_fps", bool, this.jdField_d_of_type_Long, 0L, localHashMap, "", false);
+      ((axrl)localObject).a("", "av_record_fps", bool, this.jdField_d_of_type_Long, 0L, localHashMap, "", false);
       return;
       bool = false;
     }

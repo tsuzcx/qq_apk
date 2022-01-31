@@ -1,20 +1,21 @@
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.qqstory.app.QQStoryContext;
 
-class uqa
-  extends ulp
+final class uqa
+  extends ClickableSpan
 {
-  uqa(upw paramupw) {}
+  uqa(uqb paramuqb, String paramString, int paramInt) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, unw paramunw)
+  public void onClick(View paramView)
   {
-    if (vms.b()) {}
-    while (paramView.getId() != 2131311247) {
-      return;
-    }
-    urp.a("mystory", "clk_all_story", 0, 0, new String[0]);
-    paramView = QQStoryContext.a().b();
-    skt.a(upw.c(this.a), 1, paramView);
+    this.jdField_a_of_type_Uqb.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(paramTextPaint.getColor());
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

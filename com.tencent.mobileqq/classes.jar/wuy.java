@@ -1,33 +1,57 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.capture.view.CountDownView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.mobileqq.pb.PBStringField;
 
 class wuy
-  implements bhwg<Boolean>
+  extends shb
 {
-  wuy(wut paramwut) {}
+  wuy(wuu paramwuu) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  protected boolean a(Integer paramInteger)
   {
-    if (paramBoolean == null) {
-      return;
+    if ((wuu.a(this.a) == null) || (wuu.a(this.a) == null)) {
+      return false;
     }
-    if (paramBoolean.booleanValue()) {
-      wut.a(this.a);
+    switch (paramInteger.intValue())
+    {
     }
     for (;;)
     {
-      wut.a(this.a).a(paramBoolean.booleanValue(), new wuz(this));
-      return;
-      if (wut.a(this.a) != null) {
-        wut.a(this.a).a();
+      return super.a(paramInteger);
+      wuu.a(this.a);
+      if ((wuu.a(this.a) != null) && (wuu.a(this.a).a() != null))
+      {
+        xhe.a(wuu.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_friends", 0, 0, new String[] { null, null, wuu.a(this.a).f(), wuu.a(this.a).c() });
+        continue;
+        wuu.b(this.a);
+        if ((wuu.a(this.a) != null) && (wuu.a(this.a).a() != null))
+        {
+          xhe.a(wuu.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_qzone", 0, 0, new String[] { null, null, wuu.a(this.a).f(), wuu.a(this.a).c() });
+          continue;
+          wuu.a(this.a, 0);
+          if ((wuu.a(this.a) != null) && (wuu.a(this.a).a() != null))
+          {
+            xhe.a(wuu.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_wechat", 0, 0, new String[] { null, null, wuu.a(this.a).f(), wuu.a(this.a).c() });
+            continue;
+            wuu.a(this.a, 1);
+            if ((wuu.a(this.a) != null) && (wuu.a(this.a).a() != null))
+            {
+              xhe.a(wuu.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_moments", 0, 0, new String[] { null, null, wuu.a(this.a).f(), wuu.a(this.a).c() });
+              continue;
+              wuu.c(this.a);
+              if ((wuu.a(this.a) != null) && (wuu.a(this.a).a() != null)) {
+                xhe.a(wuu.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_save_local", 0, 0, new String[] { null, null, wuu.a(this.a).f(), wuu.a(this.a).c() });
+              }
+            }
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wuy
  * JD-Core Version:    0.7.0.1
  */

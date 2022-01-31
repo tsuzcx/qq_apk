@@ -2,8 +2,8 @@ package com.tencent.gdtad.views.canvas.components.form;
 
 import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentData;
 import com.tencent.gdtad.views.form.GdtFormData;
-import yny;
-import yqq;
+import yxs;
+import zai;
 
 public class GdtCanvasFormComponentData
   extends GdtCanvasComponentData
@@ -16,12 +16,12 @@ public class GdtCanvasFormComponentData
     return (super.isValid()) && (this.data != null) && (this.index != -2147483648);
   }
   
-  public yqq validate()
+  public zai validate()
   {
     if (!isValid())
     {
-      yny.d("GdtCanvasFormComponentData", "validate error");
-      return new yqq(3, -1, null);
+      yxs.d("GdtCanvasFormComponentData", "validate error");
+      return new zai(3, -1, null);
     }
     return this.data.validate();
   }

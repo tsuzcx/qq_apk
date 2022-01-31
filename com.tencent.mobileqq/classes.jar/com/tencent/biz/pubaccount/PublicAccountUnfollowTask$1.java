@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import ndv;
-import ogy;
-import oqv;
+import now;
+import osj;
+import pbx;
 
 public class PublicAccountUnfollowTask$1
   implements Runnable
 {
-  public PublicAccountUnfollowTask$1(ndv paramndv) {}
+  public PublicAccountUnfollowTask$1(now paramnow) {}
   
   public void run()
   {
-    ogy.a().a().a(ndv.a(this.this$0).getAccount(), ndv.a(this.this$0), false, this.this$0, 1);
+    osj.a().a().a(now.a(this.this$0).getAccount(), now.a(this.this$0), false, this.this$0, 1);
   }
 }
 

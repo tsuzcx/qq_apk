@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ahkg;
-import awed;
-import awfl;
-import awfm;
-import bace;
+import ahwy;
+import axdl;
+import axet;
+import axeu;
+import bbdj;
 import java.io.File;
 
 public final class ShortVideoArtResourceMgr$1
@@ -12,8 +12,8 @@ public final class ShortVideoArtResourceMgr$1
 {
   public void run()
   {
-    String str1 = awed.b();
-    String str2 = awed.a();
+    String str1 = axdl.b();
+    String str2 = axdl.a();
     File[] arrayOfFile = new File(str1).listFiles();
     int j;
     Object localObject1;
@@ -37,8 +37,8 @@ public final class ShortVideoArtResourceMgr$1
           localObject2 = arrayOfFile[k].getName();
           if (!str2.equalsIgnoreCase((String)localObject2))
           {
-            localObject3 = awfl.a((String)localObject2);
-            m = ((awfm)localObject3).a();
+            localObject3 = axet.a((String)localObject2);
+            m = ((axeu)localObject3).a();
             if (m == 0) {
               break label197;
             }
@@ -50,7 +50,7 @@ public final class ShortVideoArtResourceMgr$1
           }
         }
         label197:
-        localObject3 = ((awfm)localObject3).b();
+        localObject3 = ((axeu)localObject3).b();
       }
     }
     label419:
@@ -81,8 +81,8 @@ public final class ShortVideoArtResourceMgr$1
           ((File)localObject1).delete();
         }
       }
-      if (new File(ahkg.c).exists()) {
-        bace.a(ahkg.c);
+      if (new File(ahwy.c).exists()) {
+        bbdj.a(ahwy.c);
       }
       return;
     }

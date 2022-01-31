@@ -7,9 +7,8 @@ import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.tmassistant.common.a.c;
 import com.tencent.tmassistant.common.a.d;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.l;
-import com.tencent.tmassistantbase.util.t;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.s;
 import com.tencent.tmdownloader.internal.storage.a.a;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -30,7 +29,7 @@ public class e
       {
         if (TextUtils.isEmpty(paramString1))
         {
-          ac.e("SettingTable", "key should not be empty!!");
+          ab.e("SettingTable", "key should not be empty!!");
           return;
         }
         l1 = System.currentTimeMillis();
@@ -41,14 +40,14 @@ public class e
         localObject = a.c();
         if (localObject == null)
         {
-          ac.e("SettingTable", "<commonInsert> sqliteHelper is null");
+          ab.e("SettingTable", "<commonInsert> sqliteHelper is null");
           continue;
         }
         localObject = ((d)localObject).getWritableDatabase();
       }
       finally {}
       if (localObject == null) {
-        ac.e("SettingTable", "<commonInsert> db is null");
+        ab.e("SettingTable", "<commonInsert> db is null");
       } else {
         for (;;)
         {
@@ -61,13 +60,13 @@ public class e
             localContentValues.put("data", paramArrayOfByte);
             int i = ((SQLiteDatabase)localObject).delete("setting_table", "key=?", new String[] { paramString1 });
             long l2 = ((SQLiteDatabase)localObject).insert("setting_table", null, localContentValues);
-            ac.c("SettingTable", "<commonInsert> deleteResult =  " + i + ", insertResult = " + l2);
+            ab.c("SettingTable", "<commonInsert> deleteResult =  " + i + ", insertResult = " + l2);
             localContentValues.clear();
             ((SQLiteDatabase)localObject).setTransactionSuccessful();
           }
           catch (Exception paramString1)
           {
-            ac.c("SettingTable", "<commonInsert> error " + paramString1.getMessage());
+            ab.c("SettingTable", "<commonInsert> error " + paramString1.getMessage());
             if (!((SQLiteDatabase)localObject).isOpen()) {
               continue;
             }
@@ -81,7 +80,7 @@ public class e
             }
             catch (Exception paramString1)
             {
-              ac.e("SettingTable", "<commonInsert> end transaction error");
+              ab.e("SettingTable", "<commonInsert> end transaction error");
             }
             continue;
           }
@@ -98,11 +97,11 @@ public class e
           try
           {
             ((SQLiteDatabase)localObject).endTransaction();
-            ac.c("SettingTable", "<commonInsert> time cost : " + (System.currentTimeMillis() - l1) + "ms");
+            ab.c("SettingTable", "<commonInsert> time cost : " + (System.currentTimeMillis() - l1) + "ms");
           }
           catch (Exception paramString1)
           {
-            ac.e("SettingTable", "<commonInsert> end transaction error");
+            ab.e("SettingTable", "<commonInsert> end transaction error");
           }
         }
       }
@@ -117,7 +116,7 @@ public class e
     {
       for (;;)
       {
-        ac.e("SettingTable", "<commonInsert> end transaction error");
+        ab.e("SettingTable", "<commonInsert> end transaction error");
       }
     }
   }
@@ -128,10 +127,10 @@ public class e
     Object localObject1 = null;
     try
     {
-      ac.c("SettingTable", "<initCache> begin");
+      ab.c("SettingTable", "<initCache> begin");
       Object localObject6 = a.c();
       if (localObject6 == null) {
-        ac.e("SettingTable", "<initCache> sqliteHelper is null");
+        ab.e("SettingTable", "<initCache> sqliteHelper is null");
       }
       for (;;)
       {
@@ -139,7 +138,7 @@ public class e
         localObject6 = ((d)localObject6).getWritableDatabase();
         if (localObject6 == null)
         {
-          ac.e("SettingTable", "<initCache> db is null");
+          ab.e("SettingTable", "<initCache> db is null");
           continue;
         }
         try
@@ -168,7 +167,7 @@ public class e
           }
           try
           {
-            ac.c("SettingTable", "loading cache key = " + str1 + ",value = " + str2 + ",data = " + arrayOfByte.length);
+            ab.c("SettingTable", "loading cache key = " + str1 + ",value = " + str2 + ",data = " + arrayOfByte.length);
             localObject3 = localObject6;
             localObject5 = localObject6;
             if (!TextUtils.isEmpty(str2))
@@ -213,7 +212,7 @@ public class e
         {
           Object localObject3;
           localObject5 = localObject3;
-          ac.c("SettingTable", "initCache exception: ", localException1);
+          ab.c("SettingTable", "initCache exception: ", localException1);
           localObject5 = localObject3;
           localException1.printStackTrace();
           if (localObject3 == null) {
@@ -238,7 +237,7 @@ public class e
     if (this.a.containsKey(paramString))
     {
       localObject1 = (String)this.a.get(paramString);
-      ac.c("SettingTable", "getting key=" + paramString + ",value=" + (String)localObject1 + ",using cache");
+      ab.c("SettingTable", "getting key=" + paramString + ",value=" + (String)localObject1 + ",using cache");
       return localObject1;
     }
     long l = System.currentTimeMillis();
@@ -251,7 +250,7 @@ public class e
       localObject1 = a.c();
       if (localObject1 == null)
       {
-        ac.e("SettingTable", "<get> sqliteHelper is null");
+        ab.e("SettingTable", "<get> sqliteHelper is null");
         return "";
       }
     }
@@ -259,7 +258,7 @@ public class e
     localObject1 = ((d)localObject1).getWritableDatabase();
     if (localObject1 == null)
     {
-      ac.e("SettingTable", "<get> db is null");
+      ab.e("SettingTable", "<get> db is null");
       return "";
     }
     localObject2 = null;
@@ -326,55 +325,55 @@ public class e
       localObject1 = paramString;
       break label273;
     }
-    ac.c("SettingTable", "<get> time cost : " + (System.currentTimeMillis() - l) + "ms");
+    ab.c("SettingTable", "<get> time cost : " + (System.currentTimeMillis() - l) + "ms");
     return localObject1;
   }
   
   public void a()
   {
-    if (t.a())
+    if (s.a())
     {
-      ac.c("SettingTable", "<SettingTable> init begin, process " + t.e());
-      l.a().postDelayed(new f(this), 1000L);
+      ab.c("SettingTable", "<SettingTable> init begin, process " + s.e());
+      com.tencent.tmassistantbase.util.k.a().postDelayed(new f(this), 1000L);
     }
   }
   
   public void a(String paramString, int paramInt)
   {
-    ac.c("SettingTable", "<setInt>key=" + paramString + ", value=" + String.valueOf(paramInt) + ", process:" + t.e());
-    l.a().post(new g(this, paramString, paramInt));
-    ac.c("SettingTable", "<setInt> exit");
+    ab.c("SettingTable", "<setInt>key=" + paramString + ", value=" + String.valueOf(paramInt) + ", process:" + s.e());
+    com.tencent.tmassistantbase.util.k.a().post(new g(this, paramString, paramInt));
+    ab.c("SettingTable", "<setInt> exit");
   }
   
   public void a(String paramString, long paramLong)
   {
-    ac.c("SettingTable", "<setLong>key=" + paramString + ", value=" + String.valueOf(paramLong) + ", process:" + t.e());
-    l.a().post(new h(this, paramString, paramLong));
-    ac.c("SettingTable", "<setLong> exit");
+    ab.c("SettingTable", "<setLong>key=" + paramString + ", value=" + String.valueOf(paramLong) + ", process:" + s.e());
+    com.tencent.tmassistantbase.util.k.a().post(new h(this, paramString, paramLong));
+    ab.c("SettingTable", "<setLong> exit");
   }
   
   public void a(String paramString1, String paramString2)
   {
-    ac.c("SettingTable", "<setString>key=" + paramString1 + ", value=" + String.valueOf(paramString2) + ", process:" + t.e());
-    l.a().post(new i(this, paramString1, paramString2));
-    ac.c("SettingTable", "<setString> exit");
+    ab.c("SettingTable", "<setString>key=" + paramString1 + ", value=" + String.valueOf(paramString2) + ", process:" + s.e());
+    com.tencent.tmassistantbase.util.k.a().post(new i(this, paramString1, paramString2));
+    ab.c("SettingTable", "<setString> exit");
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    ac.c("SettingTable", "<setBoolean>key=" + paramString + ", value=" + String.valueOf(paramBoolean) + ",process:" + t.e());
-    l.a().post(new k(this, paramString, paramBoolean));
+    ab.c("SettingTable", "<setBoolean>key=" + paramString + ", value=" + String.valueOf(paramBoolean) + ",process:" + s.e());
+    com.tencent.tmassistantbase.util.k.a().post(new k(this, paramString, paramBoolean));
   }
   
   public void a(String paramString, byte[] paramArrayOfByte)
   {
-    ac.c("SettingTable", "<setBlob>key=" + paramString + ", value.length=" + paramArrayOfByte.length + ",process:" + t.e());
-    l.a().post(new j(this, paramString, paramArrayOfByte));
+    ab.c("SettingTable", "<setBlob>key=" + paramString + ", value.length=" + paramArrayOfByte.length + ",process:" + s.e());
+    com.tencent.tmassistantbase.util.k.a().post(new j(this, paramString, paramArrayOfByte));
   }
   
   public boolean a(String paramString)
   {
-    ac.c("SettingTable", "<getBoolean> key=" + paramString + ",process:" + t.e());
+    ab.c("SettingTable", "<getBoolean> key=" + paramString + ",process:" + s.e());
     try
     {
       boolean bool = Boolean.valueOf(f(paramString)).booleanValue();
@@ -382,14 +381,14 @@ public class e
     }
     catch (Exception paramString)
     {
-      ac.e("SettingTable", "<getBoolean> error, e = " + paramString.getMessage() + ",process:" + t.e());
+      ab.e("SettingTable", "<getBoolean> error, e = " + paramString.getMessage() + ",process:" + s.e());
     }
     return false;
   }
   
   public int b(String paramString)
   {
-    ac.c("SettingTable", "<getInt> key=" + paramString + ",process:" + t.e());
+    ab.c("SettingTable", "<getInt> key=" + paramString + ",process:" + s.e());
     try
     {
       int i = Integer.valueOf(f(paramString)).intValue();
@@ -397,14 +396,14 @@ public class e
     }
     catch (Exception paramString)
     {
-      ac.e("SettingTable", "<getInt> error, e = " + paramString.getMessage() + ",process:" + t.e());
+      ab.e("SettingTable", "<getInt> error, e = " + paramString.getMessage() + ",process:" + s.e());
     }
     return 0;
   }
   
   public long c(String paramString)
   {
-    ac.c("SettingTable", "<getLong> key=" + paramString + ",process:" + t.e());
+    ab.c("SettingTable", "<getLong> key=" + paramString + ",process:" + s.e());
     try
     {
       long l = Long.valueOf(f(paramString)).longValue();
@@ -412,7 +411,7 @@ public class e
     }
     catch (Exception paramString)
     {
-      ac.e("SettingTable", "<getLong> error, e = " + paramString.getMessage() + ",process:" + t.e());
+      ab.e("SettingTable", "<getLong> error, e = " + paramString.getMessage() + ",process:" + s.e());
     }
     return 0L;
   }
@@ -424,7 +423,7 @@ public class e
   
   public String d(String paramString)
   {
-    ac.c("SettingTable", "<getString> key=" + paramString + ",process:" + t.e());
+    ab.c("SettingTable", "<getString> key=" + paramString + ",process:" + s.e());
     try
     {
       paramString = f(paramString);
@@ -432,7 +431,7 @@ public class e
     }
     catch (Exception paramString)
     {
-      ac.e("SettingTable", "<getString> error, e = " + paramString.getMessage() + ",process:" + t.e());
+      ab.e("SettingTable", "<getString> error, e = " + paramString.getMessage() + ",process:" + s.e());
     }
     return "";
   }
@@ -457,10 +456,10 @@ public class e
     //   24: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: ldc_w 313
     //   30: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: invokestatic 242	com/tencent/tmassistantbase/util/t:e	()Ljava/lang/String;
+    //   33: invokestatic 242	com/tencent/tmassistantbase/util/s:e	()Ljava/lang/String;
     //   36: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokestatic 132	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   42: invokestatic 132	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   45: iconst_0
     //   46: newarray byte
     //   48: astore 4
@@ -490,7 +489,7 @@ public class e
     //   105: ldc 226
     //   107: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   113: invokestatic 132	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   113: invokestatic 132	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   116: aload_0
     //   117: monitorexit
     //   118: aload_2
@@ -506,7 +505,7 @@ public class e
     //   135: ifnonnull +16 -> 151
     //   138: ldc 40
     //   140: ldc_w 388
-    //   143: invokestatic 48	com/tencent/tmassistantbase/util/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   143: invokestatic 48	com/tencent/tmassistantbase/util/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   146: aconst_null
     //   147: astore_2
     //   148: goto -32 -> 116
@@ -517,7 +516,7 @@ public class e
     //   159: ifnonnull +16 -> 175
     //   162: ldc 40
     //   164: ldc_w 390
-    //   167: invokestatic 48	com/tencent/tmassistantbase/util/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   167: invokestatic 48	com/tencent/tmassistantbase/util/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   170: aconst_null
     //   171: astore_2
     //   172: goto -56 -> 116

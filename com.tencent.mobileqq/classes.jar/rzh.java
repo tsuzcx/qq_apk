@@ -1,41 +1,43 @@
-import android.os.Parcel;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
 
 public class rzh
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public String mMsgData;
-  public String mPushId;
+  public rzh(ViolaVideoView paramViolaVideoView) {}
   
-  protected rzh(Parcel paramParcel)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.mPushId = paramParcel.readString();
-    this.mMsgData = paramParcel.readString();
-  }
-  
-  protected rzh(String paramString)
-  {
-    this.mMsgData = paramString;
-    try
-    {
-      parseJson(new JSONObject(paramString));
+    if (!ViolaVideoView.a(this.a).a()) {
       return;
     }
-    catch (JSONException paramString)
+    long l = ViolaVideoView.a(this.a).a();
+    double d = paramInt / 100.0D;
+    paramInt = (int)(l * d);
+    qol.a(ViolaVideoView.a(this.a), paramInt);
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    ViolaVideoView.a(this.a, true);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (!ViolaVideoView.a(this.a).a()) {}
+    int i;
+    do
     {
-      sai.b("WSPushMsgActionData parse failed : " + paramString.getLocalizedMessage());
-    }
-  }
-  
-  protected void parseJson(JSONObject paramJSONObject)
-  {
-    this.mPushId = paramJSONObject.optString("pushid");
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    paramParcel.writeString(this.mPushId);
-    paramParcel.writeString(this.mMsgData);
+      return;
+      ViolaVideoView.a(this.a, false);
+      i = paramSeekBar.getProgress();
+      long l = ViolaVideoView.a(this.a).a();
+      i = (int)(i / 100.0D * l);
+      ViolaVideoView.a(this.a).d(i);
+    } while (ViolaVideoView.a(this.a) == null);
+    ViolaVideoView.a(this.a).b(i);
   }
 }
 

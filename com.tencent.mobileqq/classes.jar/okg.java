@@ -1,24 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class okg
-  extends ohe
+class okg
+  implements ViewFactory.FoundClickableViewListener
 {
-  public okg(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  okg(oke paramoke) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public void onFound(ViewBase paramViewBase)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.self.SelfFragment", 2, "onGetFollowAndFansResultAndForbidden retCode:" + paramInt1 + ", followCnt:" + paramInt2 + ", fansCnt:" + paramInt3 + ", isForbidden" + paramBoolean);
+    if ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null)) {
+      return;
     }
-    if (paramInt1 == 0) {
-      this.a.a(paramInt2, paramInt3, paramBoolean);
-    }
+    paramViewBase.setOnClickListener(new okh(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     okg
  * JD-Core Version:    0.7.0.1
  */

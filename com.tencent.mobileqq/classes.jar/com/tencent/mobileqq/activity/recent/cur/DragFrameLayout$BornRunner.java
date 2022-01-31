@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.cur;
 
-import ahcz;
+import ahpo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;

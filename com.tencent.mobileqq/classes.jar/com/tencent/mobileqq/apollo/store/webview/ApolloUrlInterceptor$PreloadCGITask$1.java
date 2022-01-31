@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import aiwb;
+import ajkd;
 
 public class ApolloUrlInterceptor$PreloadCGITask$1
   implements Runnable
 {
-  public ApolloUrlInterceptor$PreloadCGITask$1(aiwb paramaiwb) {}
+  public ApolloUrlInterceptor$PreloadCGITask$1(ajkd paramajkd) {}
   
   public void run()
   {
-    aiwb.a(this.a);
+    ajkd.a(this.a);
   }
 }
 

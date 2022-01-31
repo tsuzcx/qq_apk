@@ -1,76 +1,75 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-import java.util.List;
+import android.os.IBinder;
+import cooperation.qzone.remote.IActionListener;
 
 public class bhkg
-  extends QQUIEventReceiver<bhkc, bikt>
+  implements IActionListener
 {
-  public bhkg(@NonNull bhkc parambhkc)
+  private IBinder a;
+  
+  public bhkg(IBinder paramIBinder)
   {
-    super(parambhkc);
+    this.a = paramIBinder;
   }
   
-  public void a(@NonNull bhkc parambhkc, @NonNull bikt parambikt)
+  public IBinder asBinder()
   {
-    parambhkc = parambhkc.a;
-    if (parambhkc != null)
-    {
-      Object localObject = parambhkc.a(parambikt.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.pack_id);
-      if (!(localObject instanceof biox))
-      {
-        urk.d(this.TAG, "DoodleEmojiDownloadEventReceiver no FacePackage found by pack id = " + parambikt.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.pack_id);
-        return;
-      }
-      localObject = (biox)localObject;
-      if (parambikt.jdField_a_of_type_Int == 0)
-      {
-        if (parambikt.jdField_a_of_type_Boolean)
-        {
-          urk.b(this.TAG, "notify ui we finish downloading");
-          ((biox)localObject).jdField_b_of_type_Boolean = false;
-          ((biox)localObject).g = parambikt.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.getLocalEmojiFolderPath();
-          ((biox)localObject).c = 0;
-          ((biox)localObject).d = 0;
-          parambhkc.a((bion)localObject);
-          return;
-        }
-        urk.b(this.TAG, "notify ui we new progress : " + parambikt.jdField_b_of_type_Long + " / " + parambikt.jdField_a_of_type_Long);
-        ((biox)localObject).jdField_b_of_type_Boolean = true;
-        ((biox)localObject).g = null;
-        ((biox)localObject).c = ((int)parambikt.jdField_a_of_type_Long);
-        ((biox)localObject).d = ((int)parambikt.jdField_b_of_type_Long);
-        parambhkc.a((bion)localObject);
-        return;
-      }
-      if (parambikt.jdField_b_of_type_Boolean)
-      {
-        bhkc.a((biox)localObject, parambikt.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem);
-        ((biox)localObject).a.clear();
-        parambhkc.a((bion)localObject);
-        return;
-      }
-      ((biox)localObject).jdField_b_of_type_Boolean = false;
-      ((biox)localObject).g = null;
-      ((biox)localObject).c = 0;
-      ((biox)localObject).d = 0;
-      parambhkc.a((bion)localObject);
-      urk.e(this.TAG, "DoodleEmojiDownloadEventReceiver download error = " + parambikt.jdField_a_of_type_Int);
-      urq.a("0X80076C9");
-      urq.b("0X80075DE");
-      return;
-    }
-    urk.b(this.TAG, "DoodleEmojiDownloadEventReceiver adapter is null");
+    return this.a;
   }
   
-  public Class acceptEventClass()
+  /* Error */
+  public void onRecvFromMsg(cooperation.qzone.remote.RecvMsg paramRecvMsg)
   {
-    return bikt.class;
+    // Byte code:
+    //   0: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: aload_2
+    //   5: ldc 28
+    //   7: invokevirtual 32	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_1
+    //   11: ifnull +33 -> 44
+    //   14: aload_2
+    //   15: iconst_1
+    //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   19: aload_1
+    //   20: aload_2
+    //   21: iconst_0
+    //   22: invokevirtual 42	cooperation/qzone/remote/RecvMsg:writeToParcel	(Landroid/os/Parcel;I)V
+    //   25: aload_0
+    //   26: getfield 15	bhkg:a	Landroid/os/IBinder;
+    //   29: iconst_1
+    //   30: aload_2
+    //   31: aconst_null
+    //   32: iconst_1
+    //   33: invokeinterface 48 5 0
+    //   38: pop
+    //   39: aload_2
+    //   40: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   43: return
+    //   44: aload_2
+    //   45: iconst_0
+    //   46: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   49: goto -24 -> 25
+    //   52: astore_1
+    //   53: aload_2
+    //   54: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   57: aload_1
+    //   58: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	59	0	this	bhkg
+    //   0	59	1	paramRecvMsg	cooperation.qzone.remote.RecvMsg
+    //   3	51	2	localParcel	android.os.Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   4	10	52	finally
+    //   14	25	52	finally
+    //   25	39	52	finally
+    //   44	49	52	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhkg
  * JD-Core Version:    0.7.0.1
  */

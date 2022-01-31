@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.proxy;
 
-import akeq;
-import akes;
+import aktc;
+import akte;
 
 public class MpfileTaskProxy$3
   implements Runnable
 {
-  public MpfileTaskProxy$3(akeq paramakeq, String paramString1, String paramString2, String[] paramArrayOfString, akes paramakes) {}
+  public MpfileTaskProxy$3(aktc paramaktc, String paramString1, String paramString2, String[] paramArrayOfString, akte paramakte) {}
   
   public void run()
   {
-    this.this$0.a.a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 2, this.jdField_a_of_type_Akes);
+    this.this$0.a.a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 2, this.jdField_a_of_type_Akte);
   }
 }
 

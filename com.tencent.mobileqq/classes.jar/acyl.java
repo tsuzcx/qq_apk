@@ -1,34 +1,28 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.support.v4.util.ArraySet;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class acyl
-  extends ajrb
+public class acyl
 {
-  acyl(acyj paramacyj) {}
+  private static ArraySet<Long> a = new ArraySet();
   
-  public void a(boolean paramBoolean)
+  public static void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedpointHandler", 2, "troopChatPie RedpointObserver  onDataChange");
-    }
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((auqh)acyj.a(this.a).a.getManager(36)).a(4, String.valueOf(130500));
-    if (this.a.b == null) {
-      this.a.b = ((ImageView)acyj.a(this.a).c.findViewById(2131309284));
-    }
-    if (this.a.b == null) {
-      return;
-    }
-    if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1))
+    a.clear();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if (!a.contains(Long.valueOf(paramMessageRecord.uniseq)))
     {
-      this.a.b.setVisibility(0);
-      return;
+      a.add(Long.valueOf(paramMessageRecord.uniseq));
+      axqw.b(paramQQAppInterface, "dc00898", "", "", "0X800A52B", "0X800A52B", 0, 0, "", "", "", "");
     }
-    this.a.b.setVisibility(8);
+  }
+  
+  public static void a(MessageRecord paramMessageRecord)
+  {
+    a.add(Long.valueOf(paramMessageRecord.uniseq));
   }
 }
 

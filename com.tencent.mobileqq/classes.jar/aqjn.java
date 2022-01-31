@@ -1,32 +1,23 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.fragment.SimpleDebugFragment;
 
-class aqjn
-  implements TextWatcher
+public class aqjn
+  implements RadioGroup.OnCheckedChangeListener
 {
-  aqjn(aqjm paramaqjm) {}
+  public aqjn(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (aqjm.a(this.a) != null)
+    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
     {
-      if (TextUtils.isEmpty(paramCharSequence)) {
-        break label45;
-      }
-      if (!aqjm.b(this.a))
-      {
-        aqjm.b(this.a, true);
-        aqjm.a(this.a, 1);
-      }
+    default: 
+      return;
+    case 2131379429: 
+      axmt.a(0);
+      return;
     }
-    return;
-    label45:
-    this.a.c();
+    axmt.a(1);
   }
 }
 

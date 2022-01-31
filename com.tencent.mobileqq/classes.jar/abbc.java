@@ -1,6 +1,26 @@
-public abstract interface abbc
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import java.lang.ref.WeakReference;
+
+public class abbc
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public abbc(EmosmActivity paramEmosmActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.jdField_a_of_type_Boolean) {}
+    while (!anqu.a(this.a)) {
+      return;
+    }
+    this.a.jdField_a_of_type_Boolean = true;
+    EmojiHomeUiPlugin.openEmojiHomePage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 2);
+    axqw.b(this.a.app, "CliOper", "", "", "EmosSetting", "ForwardEmojiHome", 0, 0, "", "", "", "");
+  }
 }
 
 

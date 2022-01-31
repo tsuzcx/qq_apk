@@ -13,7 +13,7 @@ class BaseLibManager$1
   public void run()
   {
     String str1 = StorageUtil.getPreference().getString("downloadUrl", null);
-    String str2 = StorageUtil.getPreference().getString("version", "1.10.0.00173");
+    String str2 = StorageUtil.getPreference().getString("version", "1.12.1.00001");
     QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "updateBaseLib start. baseLibVersion=" + str2);
     QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "forceUpdateBaseLib current requestVersion is:" + str2);
     MiniAppCmdUtil.getInstance().updateBaseLib(str2, true, true, new BaseLibManager.1.1(this, str1, str2));

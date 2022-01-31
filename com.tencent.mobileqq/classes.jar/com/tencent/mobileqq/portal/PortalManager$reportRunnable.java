@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.util.SparseArrayCompat;
-import beey;
+import bfms;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -49,7 +49,7 @@ public class PortalManager$reportRunnable
     if (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
     {
       localObject1 = new ArrayList(100);
-      localObject2 = new beey(60);
+      localObject2 = new bfms(60);
       int m = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(i);
       Object localObject3 = ((ArrayList)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(m)).iterator();
       while (((Iterator)localObject3).hasNext())
@@ -59,22 +59,22 @@ public class PortalManager$reportRunnable
         for (j = 1000;; j = 60000)
         {
           l = localLong.longValue() / j * j;
-          if (((beey)localObject2).a(l) == null) {
+          if (((bfms)localObject2).a(l) == null) {
             break label171;
           }
-          ((beey)localObject2).a(l, Integer.valueOf(((Integer)((beey)localObject2).a(l)).intValue() + 1));
+          ((bfms)localObject2).a(l, Integer.valueOf(((Integer)((bfms)localObject2).a(l)).intValue() + 1));
           break;
         }
-        ((beey)localObject2).a(l, Integer.valueOf(1));
+        ((bfms)localObject2).a(l, Integer.valueOf(1));
       }
       k = 0;
       j = 0;
-      while (k < ((beey)localObject2).a())
+      while (k < ((bfms)localObject2).a())
       {
         localObject3 = new RedPacketServlet.BrashReportItem();
-        l = ((beey)localObject2).a(k);
+        l = ((bfms)localObject2).a(k);
         ((RedPacketServlet.BrashReportItem)localObject3).time = l;
-        ((RedPacketServlet.BrashReportItem)localObject3).count = ((int)((Integer)((beey)localObject2).a(l)).intValue());
+        ((RedPacketServlet.BrashReportItem)localObject3).count = ((int)((Integer)((bfms)localObject2).a(l)).intValue());
         ((ArrayList)localObject1).add(localObject3);
         j += ((RedPacketServlet.BrashReportItem)localObject3).count;
         k += 1;

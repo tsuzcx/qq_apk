@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity.2;
-import mqq.app.QQPermissionCallback;
+import android.view.animation.Interpolator;
 
-public class alww
-  implements QQPermissionCallback
+class alww
+  implements Interpolator
 {
-  public alww(LocationSelectActivity.2 param2) {}
+  alww(alwv paramalwv) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public float getInterpolation(float paramFloat)
   {
-    babr.a(this.a.this$0, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    LocationSelectActivity.a(this.a.this$0);
+    if (paramFloat < 0.2094D) {
+      return (float)(-34.0D * (paramFloat - 0.18D) * (paramFloat - 0.18D) + 1.08D);
+    }
+    if (paramFloat < 0.404D) {
+      return (float)(5.9D * (paramFloat - 0.34D) * (paramFloat - 0.34D) + 0.95D);
+    }
+    if (paramFloat < 0.6045D) {
+      return (float)(-3.0D * (paramFloat - 0.53D) * (paramFloat - 0.53D) + 1.02D);
+    }
+    if (paramFloat < 0.8064D) {
+      return (float)((paramFloat - 0.72D) * (paramFloat - 0.72D) + 0.99D);
+    }
+    return (float)(-0.3D * (paramFloat - 0.915D) * (paramFloat - 0.915D) + 1.001D);
   }
 }
 

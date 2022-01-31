@@ -1,16 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.nearby.widget.GradientAnimTextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.OldBigDataChannelManager.1.1;
+import mqq.observer.AccountObserver;
+import mqq.os.MqqHandler;
 
 public class atbu
-  implements ValueAnimator.AnimatorUpdateListener
+  extends AccountObserver
 {
-  public atbu(GradientAnimTextView paramGradientAnimTextView) {}
+  atbu(atbt paramatbt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
   {
-    GradientAnimTextView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    ThreadManager.getFileThreadHandler().post(new OldBigDataChannelManager.1.1(this));
   }
 }
 

@@ -1,41 +1,37 @@
-import android.content.Intent;
-import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
 import com.tencent.qphone.base.util.QLog;
 
-class mad
-  implements lxu
+public class mad
+  extends MagicFaceDataEntity
 {
-  mad(mac parammac, long paramLong) {}
-  
-  public void a(boolean paramBoolean)
+  public mad(VideoAppInterface paramVideoAppInterface, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
   {
-    if (paramBoolean)
-    {
-      if (mac.a(this.jdField_a_of_type_Mac)) {
-        return;
-      }
-      if (this.jdField_a_of_type_Mac.a.getIntent().getBooleanExtra("isDoubleVideoMeeting", false)) {
-        this.jdField_a_of_type_Mac.a("0X80051FE");
-      }
-      for (;;)
-      {
-        QLog.w("VideoInviteUILock", 1, "SlideAcceptListener, seq[" + this.jdField_a_of_type_Long + "]");
-        this.jdField_a_of_type_Mac.a.d = true;
-        this.jdField_a_of_type_Mac.a.c(this.jdField_a_of_type_Long);
-        return;
-        if (this.jdField_a_of_type_Mac.a.b) {
-          this.jdField_a_of_type_Mac.a("0X8004201");
-        } else {
-          this.jdField_a_of_type_Mac.a("0X8004205");
-        }
-      }
+    super(paramVideoAppInterface, paramString1, paramString2, paramString3, paramBoolean, paramInt);
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte, short paramShort1, short paramShort2, short paramShort3, short paramShort4, boolean paramBoolean)
+  {
+    super.a(paramString, paramArrayOfByte, paramShort1, paramShort2, paramShort3, paramShort4, paramBoolean);
+    if (paramBoolean) {
+      QLog.d("SwitchFaceMagicFaceDataEntity", 2, "WL_DEBUG onReceivePeerFaceFeature uin = " + paramString + ", width = " + paramShort1 + ", height = " + paramShort2 + ", frameWidth = " + paramShort3 + ", frameHeight = " + paramShort4);
     }
-    if (this.jdField_a_of_type_Mac.a.b)
-    {
-      this.jdField_a_of_type_Mac.a("0X800439E");
-      return;
-    }
-    this.jdField_a_of_type_Mac.a("0X80043FD");
+  }
+  
+  public void c()
+  {
+    super.c();
+    c(0);
+    c(1);
+    a(true);
+    a(null);
+  }
+  
+  public void d()
+  {
+    super.d();
+    b(0);
+    b(1);
   }
 }
 

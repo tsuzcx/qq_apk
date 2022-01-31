@@ -1,68 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
-final class bgrc
-  extends Drawable.ConstantState
+public class bgrc
+  extends amgr
 {
-  int jdField_a_of_type_Int;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  Drawable b = null;
-  Drawable c = null;
-  Drawable d = null;
-  Drawable e = null;
-  Drawable f = null;
-  Drawable g = null;
+  public bgrc(LocationDetailActivity paramLocationDetailActivity) {}
   
-  bgrc() {}
-  
-  bgrc(bgrc parambgrc)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    if ((parambgrc.b != null) && (parambgrc.b.getConstantState() != null))
+    super.onAddColorNote(paramBundle, paramBoolean);
+    QLog.e("PoiMapActivity", 1, "[ColorNote exit]");
+    if (this.a.v)
     {
-      this.b = parambgrc.b.getConstantState().newDrawable();
-      this.b.setBounds(parambgrc.b.getBounds());
+      axqw.b(null, "dc00898", "", "", "0X800A991", "0X800A991", 4, 0, "", "", "", "");
+      return;
     }
-    if ((parambgrc.c != null) && (parambgrc.c.getConstantState() != null))
-    {
-      this.c = parambgrc.c.getConstantState().newDrawable();
-      this.c.setBounds(parambgrc.c.getBounds());
-    }
-    if ((parambgrc.d != null) && (parambgrc.d.getConstantState() != null))
-    {
-      this.d = parambgrc.d.getConstantState().newDrawable();
-      this.d.setBounds(parambgrc.d.getBounds());
-    }
-    if ((parambgrc.e != null) && (parambgrc.e.getConstantState() != null))
-    {
-      this.e = parambgrc.e.getConstantState().newDrawable();
-      this.e.setBounds(parambgrc.e.getBounds());
-    }
-    if ((parambgrc.f != null) && (parambgrc.f.getConstantState() != null))
-    {
-      this.f = parambgrc.f.getConstantState().newDrawable();
-      this.f.setBounds(parambgrc.f.getBounds());
-    }
-    if ((parambgrc.g != null) && (parambgrc.g.getConstantState() != null))
-    {
-      this.g = parambgrc.g.getConstantState().newDrawable();
-      this.g.setBounds(parambgrc.g.getBounds());
-    }
-    if ((parambgrc.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (parambgrc.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState() != null))
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parambgrc.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(parambgrc.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds());
-    }
-    this.jdField_a_of_type_Int = parambgrc.jdField_a_of_type_Int;
-  }
-  
-  public int getChangingConfigurations()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new bgrb(new bgrc(this));
+    axqw.b(null, "dc00898", "", "", "0X800A990", "0X800A990", 4, 0, "", "", "", "");
   }
 }
 

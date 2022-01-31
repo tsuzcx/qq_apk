@@ -1,17 +1,26 @@
 public class ajmh
 {
-  public int a;
   public long a;
   public String a;
-  public int b;
   public long b;
-  public String b;
-  public long c;
-  public String c;
+  
+  public ajmh(String paramString, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajmh
  * JD-Core Version:    0.7.0.1
  */

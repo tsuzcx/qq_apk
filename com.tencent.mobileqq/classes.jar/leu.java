@@ -1,40 +1,33 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.DeviceCapabilityExamination;
+import com.tencent.av.app.VideoAppInterface;
 
-public class leu
+public final class leu
+  implements les
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  public leu(long paramLong1, int paramInt, let paramlet, lcs paramlcs, VideoAppInterface paramVideoAppInterface, long paramLong2, les paramles) {}
   
-  public static leu a()
+  public void a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2)
   {
-    lao locallao = kvz.a(BaseApplicationImpl.getContext());
-    if (!locallao.a())
-    {
-      leu localleu = new leu();
-      if (localleu.a(locallao)) {}
-      return localleu;
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    paramString2 = DeviceCapabilityExamination.a(this.jdField_a_of_type_Int, paramInt1, paramInt3, this.jdField_a_of_type_Let.a, paramString1, paramInt2, l1 - l2);
+    paramString2.f = this.jdField_a_of_type_Lcs.jdField_a_of_type_Int;
+    paramString2.g = this.jdField_a_of_type_Lcs.b;
+    paramString2.h = this.jdField_a_of_type_Lcs.c;
+    paramString2.i = this.jdField_a_of_type_Lcs.d;
+    if ((paramInt1 == 1) && (this.jdField_a_of_type_Let.a()) && (this.jdField_a_of_type_Lcs.jdField_a_of_type_Boolean)) {
+      new mur(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.b).a(this.jdField_a_of_type_Let.d, new lev(this, paramString2, paramInt1, paramString1, paramInt2, paramInt3));
     }
-    return null;
-  }
-  
-  public boolean a(lao paramlao)
-  {
-    try
+    for (;;)
     {
-      this.jdField_a_of_type_Int = paramlao.a("OpenGLBlowUp/IsOpen", 0);
-      this.b = paramlao.a("OpenGLBlowUp/width", 0);
-      this.c = paramlao.a("OpenGLBlowUp/level", 0);
-      this.jdField_a_of_type_JavaLangString = paramlao.a("OpenGLBlowUp/versionname", "");
-      if (QLog.isColorLevel()) {
-        QLog.i("RendererConfig", 2, "OpenGLSharpenConfig isOpen: " + this.jdField_a_of_type_Int + " width: " + this.b + " level: " + this.c + " versionName: " + this.jdField_a_of_type_JavaLangString);
+      com.tencent.av.mediacodec.NativeCodec.printLog = false;
+      return;
+      paramString2.j = -10000;
+      DeviceCapabilityExamination.a(paramString2, this.jdField_a_of_type_Int, paramInt1);
+      if (this.jdField_a_of_type_Les != null) {
+        this.jdField_a_of_type_Les.a(paramInt1, paramString1, paramInt2, paramInt3, null);
       }
-      return true;
     }
-    catch (Exception paramlao) {}
-    return false;
   }
 }
 

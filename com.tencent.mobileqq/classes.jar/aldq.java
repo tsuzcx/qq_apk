@@ -1,16 +1,28 @@
-class aldq
-  implements aldw
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
+
+public class aldq
+  implements View.OnTouchListener
 {
-  aldq(aldo paramaldo) {}
+  public aldq(ScanningSurfaceView paramScanningSurfaceView) {}
   
-  public void a(aldz paramaldz, boolean paramBoolean, byte[] paramArrayOfByte)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    aldo.a(this.a, (aleb)paramaldz, paramBoolean, paramArrayOfByte);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return true;
+      ScanningSurfaceView.a(this.a, paramMotionEvent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aldq
  * JD-Core Version:    0.7.0.1
  */

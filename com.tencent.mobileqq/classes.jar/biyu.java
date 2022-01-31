@@ -1,19 +1,21 @@
-import android.os.Handler;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity;
-import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity.1;
-import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity.1.1.1;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class biyu
-  implements bjaf
+class biyu
+  implements View.OnClickListener
 {
-  public biyu(QzoneEditPictureActivity.1 param1) {}
+  biyu(biyt parambiyt, int paramInt) {}
   
-  public void b(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QzoneEditPictureActivity.a(this.a.this$0).a != null) {
-      QzoneHandlerThreadFactory.getMainHandler().post(new QzoneEditPictureActivity.1.1.1(this));
-    }
+    if (!biyt.a()) {}
+    do
+    {
+      return;
+      biyt.a(this.jdField_a_of_type_Biyt, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Biyt.notifyDataSetChanged();
+    } while (biyt.a(this.jdField_a_of_type_Biyt) == null);
+    biyt.a(this.jdField_a_of_type_Biyt).a(this.jdField_a_of_type_Int);
   }
 }
 

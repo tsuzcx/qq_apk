@@ -1,29 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
+import cooperation.qwallet.plugin.QWalletPrivacyUtils;
 
-class agwy
-  implements mcf
+public class agwy
+  implements DialogInterface.OnClickListener
 {
-  agwy(agwx paramagwx) {}
+  public agwy(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onError " + paramInt);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onStart " + paramString);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onFinish " + paramString);
-    }
+    QWalletPrivacyUtils.setHasClickAgree(this.a.getActivity().app);
+    this.a.a();
   }
 }
 

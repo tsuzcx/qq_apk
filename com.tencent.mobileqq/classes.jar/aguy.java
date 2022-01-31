@@ -1,21 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbTranslucentBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aguy
-  implements View.OnClickListener
+class aguy
+  implements DialogInterface.OnClickListener
 {
-  public aguy(SpringHbTranslucentBrowserActivity paramSpringHbTranslucentBrowserActivity) {}
+  aguy(aguv paramaguv, Runnable paramRunnable) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("springHb_SpringHbTranslucentBrowserActivity", 2, "点击视频");
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aguy
  * JD-Core Version:    0.7.0.1
  */

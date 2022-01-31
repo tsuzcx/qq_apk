@@ -1,38 +1,65 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.17;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class qqv
-  implements View.OnClickListener
+  implements qnb
 {
-  public qqv(ReadInJoyListViewGroup.17 param17) {}
+  private qqv(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (!this.a.b)
+    boolean bool2 = true;
+    VideoFeedsRecyclerView localVideoFeedsRecyclerView;
+    if (VideoFeedsRecommendFragment.a(this.a) != null)
     {
-      paramView = new Intent(this.a.this$0.a(), ReadInJoyDeliverBiuActivity.class);
-      paramView.putExtra("arg_article_info", this.a.a);
-      paramView.putExtra("biu_src", 2);
-      paramView.putExtra("arg_from_type", 7);
-      paramView.putExtra("is_modified_biu", true);
-      long l = 0L;
-      if (this.a.a.fusionBiuInfo != null) {
-        l = this.a.a.fusionBiuInfo.a;
+      VideoFeedsRecommendFragment.a(this.a).a.d(paramBoolean);
+      if ((!VideoFeedsRecommendFragment.a(this.a).b) && ((VideoFeedsRecommendFragment.a(this.a).itemView.getParent() instanceof VideoFeedsRecyclerView)))
+      {
+        localVideoFeedsRecyclerView = (VideoFeedsRecyclerView)VideoFeedsRecommendFragment.a(this.a).itemView.getParent();
+        if (paramBoolean) {
+          break label201;
+        }
+        bool1 = true;
+        localVideoFeedsRecyclerView.setScrollable(bool1);
       }
-      paramView.putExtra("modified_feeds_id", l);
-      paramView.putExtra("should_show_dialog", false);
-      this.a.this$0.a().startActivity(paramView);
-      this.a.this$0.a().overridePendingTransition(0, 0);
     }
-    ReadInJoyListViewGroup.a(this.a.this$0).setVisibility(4);
+    if (paramBoolean)
+    {
+      VideoFeedsRecommendFragment.a(this.a).setNeedDetectOrientation(this.a.getActivity(), false);
+      label112:
+      if (!VideoFeedsRecommendFragment.b(this.a))
+      {
+        localVideoFeedsRecyclerView = VideoFeedsRecommendFragment.a(this.a);
+        if (paramBoolean) {
+          break label223;
+        }
+      }
+    }
+    label201:
+    label223:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localVideoFeedsRecyclerView.setScrollable(bool1);
+      if ((!paramBoolean) && (VideoFeedsRecommendFragment.c(this.a)))
+      {
+        VideoFeedsRecommendFragment.a(this.a).a();
+        VideoFeedsRecommendFragment.a(this.a, false);
+      }
+      if (VideoFeedsRecommendFragment.a(this.a) != null) {
+        VideoFeedsRecommendFragment.a(this.a).a(paramBoolean);
+      }
+      return;
+      bool1 = false;
+      break;
+      VideoFeedsRecommendFragment.a(this.a, VideoFeedsRecommendFragment.a(this.a));
+      break label112;
+    }
+  }
+  
+  public void b()
+  {
+    this.a.b(true);
   }
 }
 

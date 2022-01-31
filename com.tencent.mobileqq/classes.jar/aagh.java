@@ -1,20 +1,142 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.activity.AddAccountActivity.3.1;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
-public final class aagh
-  implements DialogInterface.OnCancelListener
+public class aagh
+  extends AccountObserver
 {
-  public aagh(aagn paramaagn, aagm paramaagm) {}
+  public aagh(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onCheckQuickRegisterAccount(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_Aagn.a) {
-      awqx.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
+    super.onCheckQuickRegisterAccount(paramBoolean, paramInt, paramArrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_AddAccountActivity", 2, "onCheckQuickRegisterAccount|isSuccess= " + paramBoolean + ",code=" + paramInt);
     }
-    if (this.jdField_a_of_type_Aagm != null) {
-      this.jdField_a_of_type_Aagm.a();
+    if (!this.a.isFinishing()) {}
+    try
+    {
+      this.a.dismissDialog(1);
+      if ((paramBoolean) && (paramInt == 0))
+      {
+        paramArrayOfByte = new Intent(this.a, RegisterByNicknameAndPwdActivity.class);
+        paramArrayOfByte.putExtra("key_register_binduin", this.a.app.getCurrentAccountUin());
+        paramArrayOfByte.putExtra("key_register_from_quick_register", true);
+        paramArrayOfByte.putExtra("key_register_is_phone_num_registered", true);
+        paramArrayOfByte.putExtra("not_need_verify_sms", true);
+        this.a.startActivity(paramArrayOfByte);
+        return;
+      }
     }
-    paramDialogInterface.dismiss();
+    catch (Exception paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+      paramArrayOfByte = new Intent(this.a, RegisterPhoneNumActivity.class);
+      paramArrayOfByte.putExtra("key_register_from", 1);
+      this.a.startActivity(paramArrayOfByte);
+    }
+  }
+  
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  {
+    QLog.d("AddAccountActivity", 1, "onLoginFailed ret=" + paramInt1);
+    if (!this.a.isFinishing()) {}
+    try
+    {
+      this.a.dismissDialog(0);
+      this.a.runOnUiThread(new AddAccountActivity.3.1(this));
+      if (QLog.isColorLevel()) {
+        QLog.d("AddAccountActivity", 2, "onLoginFailed errorMsg = " + paramString2 + " ret=" + paramInt1);
+      }
+      if ((paramString2 == null) || (paramString2.equals("")))
+      {
+        bcpw.a(this.a, 2131694607, 0).a();
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+      if (!TextUtils.isEmpty(paramString3))
+      {
+        Intent localIntent = new Intent(this.a, NotificationActivity.class);
+        localIntent.putExtra("type", 8);
+        if (paramInt1 == 40)
+        {
+          localIntent.putExtra("msg", paramString2);
+          localIntent.putExtra("errorver", paramInt2);
+        }
+        for (;;)
+        {
+          localIntent.putExtra("loginalias", paramString1);
+          localIntent.putExtra("loginret", paramInt1);
+          localIntent.putExtra("errorUrl", paramString3);
+          localIntent.putExtra("expiredSig", paramArrayOfByte);
+          this.a.startActivity(localIntent);
+          return;
+          localIntent.putExtra("msg", paramString2 + " " + paramString3);
+        }
+      }
+      if (paramInt1 == 2008)
+      {
+        bbcv.a(this.a, 230, ajyc.a(2131699810), ajyc.a(2131699811), "OK", null, new aagi(this), null).show();
+        bcpw.a(this.a, 2131693129, 0).a();
+        return;
+      }
+      bbcv.a(this.a, 230, ajyc.a(2131699814), paramString2, new aagj(this), null).show();
+    }
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    QLog.d("AddAccountActivity", 1, "onLoginSuccess");
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    QLog.d("AddAccountActivity", 1, "onLoginTimeout");
+    if (!this.a.isFinishing()) {}
+    try
+    {
+      this.a.dismissDialog(0);
+      bcpw.a(this.a, 2131694607, 0).a();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    if (!this.a.isFinishing()) {}
+    try
+    {
+      this.a.dismissDialog(0);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

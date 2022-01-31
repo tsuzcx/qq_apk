@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARRecognition;
-
-public final class akkq
-  implements Parcelable.Creator<ARRecognition>
+public class akkq
 {
-  public ARRecognition a(Parcel paramParcel)
-  {
-    return new ARRecognition(paramParcel);
-  }
+  public void a() {}
   
-  public ARRecognition[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new ARRecognition[paramInt];
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akkq
  * JD-Core Version:    0.7.0.1
  */

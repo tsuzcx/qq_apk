@@ -1,33 +1,53 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDateVideoCollectionList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollection;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class toe
-  extends QQUIEventReceiver<tob, syp>
+  extends syq
 {
-  public toe(@NonNull tob paramtob)
-  {
-    super(paramtob);
-  }
+  public long a;
+  public String a;
+  public ArrayList<VideoCollectionItem> a;
+  public boolean a;
+  public int b;
+  public int c = -1;
   
-  public void a(@NonNull tob paramtob, @NonNull syp paramsyp)
+  public toe(String paramString, qqstory_service.RspDateVideoCollectionList paramRspDateVideoCollectionList)
   {
-    if ((paramsyp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramsyp.jdField_a_of_type_JavaUtilList == null)) {
-      return;
-    }
-    if (tob.b(paramtob))
+    super(paramRspDateVideoCollectionList.result);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (paramRspDateVideoCollectionList.is_end.get() == 1) {}
+    for (;;)
     {
-      tob.b(paramtob, true);
-      urk.b("VideoCoverListGroupHolder", "base info return , notify list while idle");
-      return;
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_JavaLangString = paramRspDateVideoCollectionList.next_cookie.get().toStringUtf8();
+      this.b = paramRspDateVideoCollectionList.total_video_count.get();
+      this.jdField_a_of_type_Long = paramRspDateVideoCollectionList.seqno.get();
+      this.c = paramRspDateVideoCollectionList.is_friend.get();
+      paramRspDateVideoCollectionList = paramRspDateVideoCollectionList.collection_list.get().iterator();
+      while (paramRspDateVideoCollectionList.hasNext())
+      {
+        qqstory_struct.DateVideoCollection localDateVideoCollection = (qqstory_struct.DateVideoCollection)paramRspDateVideoCollectionList.next();
+        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
+        localVideoCollectionItem.convertFrom("Q.qqstory.memories:GetDateCollectionListResponse", paramString, localDateVideoCollection);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
+      }
+      bool = false;
     }
-    paramtob.d();
-    urk.b("VideoCoverListGroupHolder", "base info return , notify list now");
   }
   
-  public Class acceptEventClass()
+  public String toString()
   {
-    return syp.class;
+    return "GetDateCollectionListResponse{isEnd=" + this.jdField_a_of_type_Boolean + ", nextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", seq=" + this.jdField_a_of_type_Long + ", mTotalVideoCount=" + this.b + ", mIsFriend=" + this.c + '}';
   }
 }
 

@@ -1,19 +1,19 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bice;
+import bjtb;
 
 public class EditPicSave$4
   implements Runnable
 {
-  public EditPicSave$4(bice parambice) {}
+  public EditPicSave$4(bjtb parambjtb) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {
       return;
     }
-    bice localbice = this.this$0;
-    localbice.jdField_a_of_type_Int += this.this$0.b;
+    bjtb localbjtb = this.this$0;
+    localbjtb.jdField_a_of_type_Int += this.this$0.b;
     if (this.this$0.jdField_a_of_type_Int > 99)
     {
       this.this$0.jdField_a_of_type_Int = 99;

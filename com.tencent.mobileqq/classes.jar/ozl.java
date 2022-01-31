@@ -1,13 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
-
-public class ozl
-  implements ViewBase.IBuilder
+class ozl
+  implements pao
 {
-  public ViewBase build(VafContext paramVafContext)
+  ozl(ozk paramozk) {}
+  
+  public void a(int paramInt)
   {
-    return new ozi(paramVafContext);
+    ozj.a(this.a.a, paramInt);
   }
 }
 

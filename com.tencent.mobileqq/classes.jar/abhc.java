@@ -1,25 +1,10 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-
-public class abhc
-  extends ajjh
+public abstract interface abhc
 {
-  public abhc(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  protected void onGetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
-    }
-  }
+  public abstract void a(byte[] paramArrayOfByte);
   
-  protected void onSetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!paramBoolean1) {
-      this.a.a(2131653546, 1);
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
-  }
+  public abstract void b(byte[] paramArrayOfByte);
 }
 
 

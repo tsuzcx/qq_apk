@@ -1,21 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.23.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class ayaq
-  implements TVK_IMediaPlayer.OnCompletionListener
+class ayaq
+  implements DialogInterface.OnCancelListener
 {
-  public ayaq(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  ayaq(ayao paramayao, String paramString, int paramInt) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "onCompletion");
-    }
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.23.1(this));
+    this.jdField_a_of_type_Ayao.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
   }
 }
 

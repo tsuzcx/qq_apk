@@ -4,15 +4,15 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.qphone.base.util.QLog;
-import xrh;
+import yak;
 
 public class StartSmartDevice
   extends AsyncStep
 {
   public int a()
   {
-    xrh localxrh = (xrh)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51);
-    QLog.i("smartdevice", 1, "start device when device bind flag:" + localxrh.a());
+    yak localyak = (yak)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51);
+    QLog.i("smartdevice", 1, "start device when device bind flag:" + localyak.a());
     return 7;
   }
 }

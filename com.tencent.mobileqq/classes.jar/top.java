@@ -1,78 +1,44 @@
-import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspShareVideoCollectionList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupFeed;
+import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class top
-  extends SimpleJob<Object>
+  extends syq
 {
-  public top(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, StoryVideoItem paramStoryVideoItem, long paramLong1, long paramLong2, int paramInt, String paramString2)
-  {
-    super(paramString1);
-  }
+  public long a;
+  public String a;
+  public ArrayList<ShareGroupCollectionItem> a;
+  public boolean a;
+  public int b;
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public top(String paramString, qqstory_service.RspShareVideoCollectionList paramRspShareVideoCollectionList)
   {
-    int j = 1;
+    super(paramRspShareVideoCollectionList.result);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.b = paramRspShareVideoCollectionList.total_share_group_count.get();
+    this.jdField_a_of_type_JavaLangString = paramRspShareVideoCollectionList.next_cookie.get().toStringUtf8();
+    this.jdField_a_of_type_Long = paramRspShareVideoCollectionList.seqno.get();
+    if (paramRspShareVideoCollectionList.is_end.get() == 1) {}
     for (;;)
     {
-      try
+      this.jdField_a_of_type_Boolean = bool;
+      paramRspShareVideoCollectionList = paramRspShareVideoCollectionList.collection_list.get().iterator();
+      while (paramRspShareVideoCollectionList.hasNext())
       {
-        paramJobContext = new JSONObject();
-        paramJobContext.put("author_id", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid + "");
-        paramJobContext.put("author_type", "1");
-        paramJobContext.put("video_type", "1");
-        paramJobContext.put("video_time", this.jdField_a_of_type_Long + "");
-        paramJobContext.put("play_time", this.b + "");
-        paramJobContext.put("video_restrict", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mBanType + "");
-        if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
-        {
-          i = 1;
-          paramJobContext.put("content_type", i);
-          if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalCreateTime > 0L) {
-            break label426;
-          }
-          i = j;
-          paramJobContext.put("content_origin", i);
-          paramJobContext.put("mobile_type", Build.MODEL);
-          paramJobContext.put("wifi_ssid", vlt.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()));
-          paramJobContext.put("wifi_mac", vlt.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()));
-          long l1;
-          if (VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder) > 0L)
-          {
-            l1 = VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder);
-            paramJobContext.put("load_time", l1 + "");
-            urp.a("story_grp", "play_video_js", this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a().mReportData.from, this.jdField_a_of_type_Int, new String[] { paramJobContext.toString(), "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-            this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.d = 3;
-          }
-          else
-          {
-            l1 = System.currentTimeMillis();
-            long l2 = VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder);
-            l1 -= l2;
-            continue;
-          }
-          return null;
-        }
+        qqstory_struct.ShareGroupFeed localShareGroupFeed = (qqstory_struct.ShareGroupFeed)paramRspShareVideoCollectionList.next();
+        ShareGroupCollectionItem localShareGroupCollectionItem = new ShareGroupCollectionItem();
+        localShareGroupCollectionItem.convertFrom(paramString, localShareGroupFeed);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localShareGroupCollectionItem);
       }
-      catch (JSONException paramJobContext)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, 2, "reportTroopVideo exception:" + QLog.getStackTraceString(paramJobContext));
-        }
-      }
-      int i = 2;
-      continue;
-      label426:
-      i = 2;
+      bool = false;
     }
   }
 }

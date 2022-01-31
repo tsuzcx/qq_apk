@@ -1,23 +1,6 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class sux
-  extends QQUIEventReceiver<suo, sjc>
+public abstract interface sux
 {
-  public sux(@NonNull suo paramsuo)
-  {
-    super(paramsuo);
-  }
-  
-  public void a(@NonNull suo paramsuo, @NonNull sjc paramsjc)
-  {
-    paramsuo.a.b(paramsjc);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return sjc.class;
-  }
+  public abstract void a(int paramInt);
 }
 
 

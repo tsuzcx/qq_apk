@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.location.net;
 
-import aqyw;
-import aqzc;
+import aruk;
+import aruq;
 
 public class LocationHandler$7
   implements Runnable
 {
-  public LocationHandler$7(aqzc paramaqzc, aqyw paramaqyw, boolean paramBoolean) {}
+  public LocationHandler$7(aruq paramaruq, aruk paramaruk, boolean paramBoolean) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Aqyw, this.jdField_a_of_type_Boolean);
+    this.this$0.a(this.jdField_a_of_type_Aruk, this.jdField_a_of_type_Boolean);
   }
 }
 

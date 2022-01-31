@@ -1,55 +1,143 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.AccountDetail.jce.SetRecvMsgStateRsp;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import com.tencent.biz.JoinGroupHandler.2;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
 
-class mvy
-  extends ajpe
+public class mvy
 {
-  private mut b;
+  protected int a;
+  protected long a;
+  protected akim a;
+  protected Context a;
+  public bcpq a;
+  protected QQAppInterface a;
+  protected Runnable a;
+  protected String a;
+  protected mwb a;
+  protected long b;
   
-  public mvy(mut parammut1, mut parammut2)
+  public mvy(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, mwb parammwb)
   {
-    this.b = parammut2;
+    this.jdField_a_of_type_JavaLangRunnable = new JoinGroupHandler.2(this);
+    this.jdField_a_of_type_Akim = new mwa(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Mwb = parammwb;
+  }
+  
+  private void a(int paramInt1, int paramInt2)
+  {
+    new bcqc(this.jdField_a_of_type_AndroidContentContext).a(paramInt1, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865), 0, paramInt2);
+  }
+  
+  private void a(TroopInfo paramTroopInfo)
+  {
+    if (paramTroopInfo.cGroupOption != 3)
+    {
+      paramTroopInfo = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidContentContext, paramTroopInfo.troopuin, paramTroopInfo.troopname, paramTroopInfo.cGroupOption, this.jdField_a_of_type_Int, paramTroopInfo.joinTroopQuestion, paramTroopInfo.joinTroopAnswer, null, this.jdField_a_of_type_JavaLangString, null);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramTroopInfo);
+      this.jdField_a_of_type_Mwb.b();
+      return;
+    }
+    a(2131720495, 1);
+    this.jdField_a_of_type_Mwb.a();
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    try
+    {
+      if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing()))
+      {
+        long l1 = System.currentTimeMillis();
+        long l2 = this.b;
+        if ((!paramBoolean) && (l1 - l2 < 1000L))
+        {
+          ThreadManager.getUIHandlerV2().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
+          return;
+        }
+        this.jdField_a_of_type_Bcpq.dismiss();
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  private void b(long paramLong)
+  {
+    try
+    {
+      akhq localakhq = (akhq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+      this.jdField_a_of_type_Long = paramLong;
+      localakhq.a(paramLong, 8390784);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      a(2131719993, 0);
+      this.jdField_a_of_type_Mwb.a();
+    }
+  }
+  
+  private void c()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Bcpq == null)
+      {
+        this.jdField_a_of_type_Bcpq = new bcpq(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865));
+        this.jdField_a_of_type_Bcpq.c(2131694930);
+        this.jdField_a_of_type_Bcpq.c(false);
+        this.jdField_a_of_type_Bcpq.setOnDismissListener(new mvz(this));
+      }
+      this.jdField_a_of_type_Bcpq.show();
+      this.b = System.currentTimeMillis();
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
   
   public void a()
   {
-    this.b = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akim);
   }
   
-  public void a(boolean paramBoolean, SetRecvMsgStateRsp paramSetRecvMsgStateRsp)
+  public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailGroupListContainer", 2, "onGetRecvMsgState isSuccess = " + paramBoolean);
-    }
-    if ((paramBoolean) && (paramSetRecvMsgStateRsp.result == 0))
+    if (!bbev.d(this.jdField_a_of_type_AndroidContentContext))
     {
-      mut.b(this.a, this.a.jdField_a_of_type_Int);
-      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-        this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("setting_status_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_Int).commit();
-      }
+      a(2131694607, 0);
+      this.jdField_a_of_type_Mwb.a();
+      return;
     }
+    if (0L == paramLong)
+    {
+      this.jdField_a_of_type_Mwb.a();
+      return;
+    }
+    this.jdField_a_of_type_Long = paramLong;
+    c();
+    b(paramLong);
   }
   
-  public void a(boolean paramBoolean, nbu paramnbu)
+  public void b()
   {
-    if ((paramBoolean) && (paramnbu != null)) {
-      if (paramnbu.e != 3) {}
-    }
-    while (this.b == null) {
-      for (;;)
-      {
-        rtr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.a.jdField_a_of_type_JavaLangString);
-        return;
-        if ((paramnbu.e == 6) && (this.b != null)) {
-          mut.a(this.b, paramnbu);
-        }
-      }
-    }
-    mut.a(this.b, 2131629887);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akim);
+    ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    a(true);
   }
 }
 

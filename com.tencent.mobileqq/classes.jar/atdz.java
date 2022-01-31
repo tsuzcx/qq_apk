@@ -1,16 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class atdz
-  implements View.OnClickListener
+final class atdz
+  implements DialogInterface.OnClickListener
 {
-  public atdz(OCRResultActivity paramOCRResultActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.doOnBackPressed();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

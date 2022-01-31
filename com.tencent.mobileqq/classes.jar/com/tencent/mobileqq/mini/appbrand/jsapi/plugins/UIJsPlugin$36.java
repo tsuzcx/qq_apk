@@ -2,28 +2,32 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
+import com.tencent.mobileqq.mini.appbrand.page.AppBrandPage;
 import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
-import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import org.json.JSONObject;
+import com.tencent.mobileqq.minigame.jsapi.GameBrandRuntime;
+import com.tencent.mobileqq.minigame.ui.GameActivity;
 
 class UIJsPlugin$36
   implements Runnable
 {
-  UIJsPlugin$36(UIJsPlugin paramUIJsPlugin, JsRuntime paramJsRuntime, JSONObject paramJSONObject, String paramString, int paramInt) {}
+  UIJsPlugin$36(UIJsPlugin paramUIJsPlugin, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
   
   public void run()
   {
-    Object localObject = ((AppBrandPageContainer)this.this$0.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(this.val$webview.getPageWebViewId());
-    if (localObject != null) {}
-    for (localObject = ((AbsAppBrandPage)localObject).getCurrentWebviewContainer();; localObject = null)
-    {
-      if (localObject != null)
-      {
-        ((WebviewContainer)localObject).updateScrollView(this.val$jsonObject);
-        this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
+    if (this.this$0.isMiniGameRuntime()) {
+      if ((((GameBrandRuntime)this.this$0.jsPluginEngine.appBrandRuntime).activity instanceof GameActivity)) {
+        ((GameActivity)((GameBrandRuntime)this.this$0.jsPluginEngine.appBrandRuntime).activity).hideMiniAIOEntrance();
       }
+    }
+    for (;;)
+    {
+      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
       return;
+      AbsAppBrandPage localAbsAppBrandPage = ((AppBrandPageContainer)this.this$0.jsPluginEngine.appBrandRuntime.getContainer()).getCurrentPage();
+      if ((localAbsAppBrandPage instanceof AppBrandPage)) {
+        ((AppBrandPage)localAbsAppBrandPage).hideMiniAIOEntrance();
+      }
     }
   }
 }

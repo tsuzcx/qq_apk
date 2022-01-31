@@ -1,31 +1,39 @@
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.Friends;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-public class veu
+public abstract interface veu
+  extends vho
 {
+  public abstract void Y_();
+  
+  public abstract int a();
+  
+  public abstract Bitmap a();
+  
+  public abstract Bitmap a(int paramInt);
+  
   @NonNull
-  protected final Friends a;
-  protected boolean a;
+  public abstract DoodleLayout a();
   
-  public veu(@NonNull Friends paramFriends)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
-  }
+  public abstract void a(Bitmap paramBitmap);
   
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract byte[] a(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean d_();
 }
 
 

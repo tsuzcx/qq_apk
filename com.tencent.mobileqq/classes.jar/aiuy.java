@@ -1,6 +1,8 @@
+import javax.microedition.khronos.opengles.GL;
+
 public abstract interface aiuy
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public abstract GL a(GL paramGL);
 }
 
 

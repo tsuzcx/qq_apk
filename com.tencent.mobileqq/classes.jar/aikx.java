@@ -1,97 +1,176 @@
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.AppActivity;
+import mqq.manager.Manager;
+import mqq.observer.BusinessObserver;
 
 public class aikx
-  extends aiks
+  implements Manager, BusinessObserver
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  boolean d;
+  public static String a;
+  private aiky jdField_a_of_type_Aiky;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
   public aikx(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface);
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.c(), 0);
-    this.jdField_a_of_type_Int = paramQQAppInterface.getInt("hire_priority", 1);
-    this.jdField_b_of_type_Int = paramQQAppInterface.getInt("hire_action", 0);
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getString("hire_word", "");
-    this.jdField_a_of_type_Long = paramQQAppInterface.getLong("hire_for", 0L);
-    this.jdField_b_of_type_Long = paramQQAppInterface.getLong("hire_end", 0L);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    paramQQAppInterface = BaseApplicationImpl.getContext();
+    jdField_a_of_type_JavaLangString = paramQQAppInterface.getFilesDir().getAbsoluteFile() + File.separator + "WeatherResource";
+    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("weather_resources", 0);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this);
   }
   
-  public int a(aisu paramaisu, int paramInt, AppInterface paramAppInterface, Context paramContext)
+  public long a()
   {
-    if ((NetConnInfoCenter.getServerTime() > this.jdField_b_of_type_Long) || (this.d) || (!this.c)) {
-      return super.a(paramaisu, paramInt, paramAppInterface, paramContext);
+    long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_weather_res_version", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 2, "getConfigVersion version=" + l);
     }
-    if (this.jdField_b_of_type_Int > 0)
+    return l;
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 2, "updateResourceVersion version=" + paramLong);
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_weather_res_version", paramLong).commit();
+  }
+  
+  public void a(aiky paramaiky)
+  {
+    this.jdField_a_of_type_Aiky = paramaiky;
+  }
+  
+  public void a(AppActivity paramAppActivity)
+  {
+    if ((ajzv.c()) && (!this.jdField_a_of_type_Boolean))
     {
-      if (ApolloUtil.c(5, this.jdField_b_of_type_Int))
-      {
-        paramContext = new ApolloActionData();
-        paramContext.actionId = this.jdField_b_of_type_Int;
-        paramContext.actionType = 0;
-        aisl.a(paramaisu, 6, paramContext);
-        this.d = true;
-        paramAppInterface.getApp().getSharedPreferences("apollo_sp" + paramAppInterface.getCurrentAccountUin(), 0).edit().putLong("hire_end", NetConnInfoCenter.getServerTime()).commit();
-        return 0;
+      if (QLog.isColorLevel()) {
+        QLog.d("weatherManager", 2, "updateWeatherInfo  from  LocaleManager.isLocaleUpdatedByUser()");
       }
-      QLog.w("AplloDrawerStatus", 2, "HireDrawerStatus resource is not ready, actionId:" + this.jdField_b_of_type_Int);
-      super.a(paramaisu, paramInt, paramAppInterface, paramContext);
-      aitw.a(paramAppInterface, ApolloUtil.c(this.jdField_b_of_type_Int) + "/d.zip", ApolloUtil.d(this.jdField_b_of_type_Int));
-      return 0;
+      this.jdField_a_of_type_Boolean = true;
+      aikz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramAppActivity);
     }
-    QLog.w("AplloDrawerStatus", 2, "HireDrawerStatus action is not correct, actionId:" + this.jdField_b_of_type_Int);
-    super.a(paramaisu, paramInt, paramAppInterface, paramContext);
-    paramAppInterface.getApp().getSharedPreferences("apollo_sp" + paramAppInterface.getCurrentAccountUin(), 0).edit().putLong("hire_end", NetConnInfoCenter.getServerTime()).commit();
-    return 0;
-  }
-  
-  public void a(aisu paramaisu, Context paramContext, QQAppInterface paramQQAppInterface)
-  {
-    paramaisu = new Intent();
-    paramaisu.putExtra("extra_key_url_append", "&tab=interactive&suin=" + paramQQAppInterface.getCurrentAccountUin());
-    ApolloUtil.a(paramContext, paramaisu, "drawer", aiys.ai, null);
-    a(paramQQAppInterface);
-    bajr.a(null, "cmshow", "Apollo", "0X80065F002", 0, 0, new String[] { String.valueOf(this.jdField_b_of_type_Int) });
-  }
-  
-  public void a(aisu paramaisu, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (!this.c) {}
-    boolean bool;
+    Long localLong;
     do
     {
       return;
-      bool = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.c(), 0).getBoolean("hire_bubble_click", false);
-    } while ((NetConnInfoCenter.getServerTime() > this.jdField_b_of_type_Long) || (bool));
-    this.jdField_b_of_type_Boolean = true;
-    aisl.a(paramaisu, this.jdField_a_of_type_JavaLangString, 7, 0);
-    bajr.a(null, "cmshow", "Apollo", "0X80065F001", 0, 0, new String[] { String.valueOf(this.jdField_b_of_type_Int) });
+      localLong = Long.valueOf(BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0).getLong("drawer_last_success_time", 0L));
+      if (QLog.isColorLevel()) {
+        QLog.d("weatherManager", 2, "updateWeatherInfo successTime:" + localLong + ",currentTime:" + System.currentTimeMillis());
+      }
+    } while (Math.abs(System.currentTimeMillis() - localLong.longValue()) <= 3600000L);
+    aikz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramAppActivity);
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public boolean a(long paramLong, String paramString)
   {
-    if (paramQQAppInterface == null) {
-      return;
+    boolean bool = true;
+    try
+    {
+      bbdj.a(jdField_a_of_type_JavaLangString, false);
+      bbdj.a(paramString, jdField_a_of_type_JavaLangString, false);
+      if (bool)
+      {
+        a(paramLong);
+        return bool;
+      }
     }
-    paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.c(), 0).edit().putBoolean("hire_bubble_click", true).commit();
+    catch (Exception paramString)
+    {
+      do
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.e("weatherManager", 2, "pareseRulesFromZip : delete and uncompress Exception=>", paramString);
+          }
+          bool = false;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("weatherManager", 2, "pareseRulesFromZip : delete and uncompressZip failure, parse from Res");
+    }
+    return bool;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this);
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("weatherManager", 2, new Object[] { "WeatherManager onReceive type:" + paramInt, ",bundle:", paramBundle });
+      }
+    } while ((paramInt != 6666) && (paramInt != 8888));
+    int j;
+    SharedPreferences.Editor localEditor;
+    if (paramBoolean)
+    {
+      String str1 = paramBundle.getString("KEY_TEMPER");
+      String str2 = paramBundle.getString("area_info");
+      int i = paramBundle.getInt("adcode");
+      String str3 = paramBundle.getString("o_wea_code");
+      j = paramBundle.getInt("show_flag");
+      if (QLog.isColorLevel()) {
+        QLog.d("WeatherSetting", 2, "onReceive show_flag:" + j + ",temp:" + str1 + ",area_name" + str2 + "adcode" + i + ",o_wea_code" + str3);
+      }
+      localEditor = BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0).edit();
+      if (j != 1) {
+        break label421;
+      }
+      if ((str1 != null) && (!str1.equals("")) && (!TextUtils.isEmpty(str2)))
+      {
+        Long localLong = Long.valueOf(System.currentTimeMillis());
+        localEditor.putLong("pa_send_time", localLong.longValue());
+        localEditor.putString("cur_temp", str1);
+        localEditor.putString("cur_code", str3);
+        localEditor.putString("cur_city", str2);
+        localEditor.putInt("cur_adcode", i);
+        localEditor.putBoolean("show_flag", true);
+        localEditor.putLong("drawer_last_success_time", localLong.longValue());
+        localEditor.putString("drawer_cur_city", str2);
+        localEditor.putString("drawer_cur_temp", str1);
+        localEditor.putInt("drawer_cur_adcode", i);
+        localEditor.putString("drawer_cur_code", str3);
+        localEditor.putBoolean("drawer_show_flag", true);
+      }
+    }
+    for (;;)
+    {
+      localEditor.commit();
+      if (this.jdField_a_of_type_Aiky == null) {
+        break;
+      }
+      this.jdField_a_of_type_Aiky.a(paramInt, paramBoolean, paramBundle);
+      return;
+      label421:
+      if (j == 0) {
+        localEditor.putBoolean("show_flag", false);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aikx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,28 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import java.nio.ByteBuffer;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
 public class ahoj
+  extends ahoa
 {
-  public static ByteBuffer a(int paramInt1, int paramInt2)
-  {
-    try
-    {
-      if (ahoi.c)
-      {
-        ByteBuffer localByteBuffer1 = CameraGLSurfaceView.allocate(paramInt1, paramInt2);
-        ahoi.b = true;
-        ByteBuffer localByteBuffer2 = localByteBuffer1;
-        if (localByteBuffer1 == null)
-        {
-          localByteBuffer2 = ByteBuffer.allocateDirect(paramInt2);
-          ahoi.b = false;
-        }
-        return localByteBuffer2;
-      }
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        Object localObject = null;
-        continue;
-        localObject = null;
-      }
-    }
-  }
+  public Button a;
+  public RelativeLayout a;
+  public TextView a;
+  public TroopLabelLayout a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public RelativeLayout b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahoj
  * JD-Core Version:    0.7.0.1
  */

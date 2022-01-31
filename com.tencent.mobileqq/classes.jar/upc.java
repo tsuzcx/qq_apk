@@ -1,30 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class upc
-  extends QQUIEventReceiver<uoh, tna>
+public abstract interface upc
 {
-  public upc(@NonNull uoh paramuoh)
-  {
-    super(paramuoh);
-  }
+  public abstract void L_();
   
-  public void a(@NonNull uoh paramuoh, @NonNull tna paramtna)
-  {
-    urk.a(this.TAG, "play video groupId=%s, %s", paramtna.jdField_a_of_type_Tjs, paramtna.b);
-    if ((uoh.a(paramuoh).equals(paramtna.jdField_a_of_type_JavaLangString)) && ((paramtna.jdField_a_of_type_Tjs instanceof tjh)))
-    {
-      uiw localuiw = ((tjh)paramtna.jdField_a_of_type_Tjs).a;
-      if (localuiw != null) {
-        paramuoh.a(localuiw.jdField_a_of_type_JavaLangString, paramtna.b, true);
-      }
-    }
-  }
+  public abstract void M_();
   
-  public Class acceptEventClass()
-  {
-    return tna.class;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void b(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void f();
 }
 
 

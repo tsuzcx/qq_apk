@@ -14,7 +14,7 @@ public enum AdIPCManager
   
   private static final String TAG = "AdIPCManager";
   private WeakReference<AdIPCManager.Adapter> adapter;
-  private Map<String, AdIPCManager.a> map = new HashMap();
+  private Map<String, AdIPCManager.Handler> map = new HashMap();
   
   private AdIPCManager() {}
   
@@ -26,9 +26,9 @@ public enum AdIPCManager
     return null;
   }
   
-  private AdIPCManager.a getHandler(String paramString)
+  private AdIPCManager.Handler getHandler(String paramString)
   {
-    return (AdIPCManager.a)this.map.get(paramString);
+    return (AdIPCManager.Handler)this.map.get(paramString);
   }
   
   public AdIPCManager.Result receive(String paramString, AdIPCManager.Params paramParams)
@@ -40,7 +40,7 @@ public enum AdIPCManager
     return paramString.receive(paramParams);
   }
   
-  public boolean register(String paramString, AdIPCManager.a parama)
+  public boolean register(String paramString, AdIPCManager.Handler paramHandler)
   {
     boolean bool;
     if (TextUtils.isEmpty(paramString)) {
@@ -50,7 +50,7 @@ public enum AdIPCManager
     {
       AdLog.i("AdIPCManager", String.format("register action:%s result:%b", new Object[] { paramString, Boolean.valueOf(bool) }));
       return bool;
-      if (parama == null)
+      if (paramHandler == null)
       {
         bool = false;
       }
@@ -60,7 +60,7 @@ public enum AdIPCManager
       }
       else
       {
-        this.map.put(paramString, parama);
+        this.map.put(paramString, paramHandler);
         bool = true;
       }
     }

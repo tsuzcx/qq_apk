@@ -1,21 +1,16 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import dov.com.qq.im.QIMCameraCaptureUnit.13;
 
-class bigc
-  implements begw
+public class bigc
+  implements DialogInterface.OnCancelListener
 {
-  bigc(bigb parambigb, begr parambegr) {}
+  public bigc(QIMCameraCaptureUnit.13 param13) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      this.jdField_a_of_type_Bigb.c();
-    }
+    this.a.this$0.a.setCameraPermissionResult(false);
   }
 }
 

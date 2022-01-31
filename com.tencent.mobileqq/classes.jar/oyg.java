@@ -1,14 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
-
-public class oyg
-  implements ViewBase.IBuilder
+public abstract class oyg
 {
-  public ViewBase build(VafContext paramVafContext)
+  public Object a;
+  private String a;
+  
+  public oyg(String paramString)
   {
-    return new oyf(paramVafContext);
+    this.a = paramString;
   }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public abstract void a(oya paramoya);
 }
 
 

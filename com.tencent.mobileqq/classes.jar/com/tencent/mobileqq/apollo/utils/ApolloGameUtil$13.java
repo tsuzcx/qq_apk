@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aing;
-import aipj;
-import ajab;
+import ajae;
+import ajch;
+import ajod;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,18 +17,18 @@ import com.tencent.qphone.base.util.QLog;
 final class ApolloGameUtil$13
   implements Runnable
 {
-  ApolloGameUtil$13(int paramInt, String paramString, ajab paramajab) {}
+  ApolloGameUtil$13(int paramInt, String paramString, ajod paramajod) {}
   
   public void run()
   {
     Object localObject1 = BaseApplicationImpl.getContext();
     try
     {
-      Object localObject2 = aing.a(this.jdField_a_of_type_Int);
+      Object localObject2 = ajae.a(this.jdField_a_of_type_Int);
       if (localObject2 == null) {
         return;
       }
-      Object localObject3 = ((aipj)localObject2).a();
+      Object localObject3 = ((ajch)localObject2).a();
       if ((localObject3 != null) && (((CmGameStartChecker.StartCheckParam)localObject3).game != null))
       {
         localObject3 = ((CmGameStartChecker.StartCheckParam)localObject3).game.name;
@@ -38,7 +38,7 @@ final class ApolloGameUtil$13
         localIntent.putExtra("jump_cm_extendinfo", this.jdField_a_of_type_JavaLangString);
         localIntent.setFlags(337641472);
         localObject1 = null;
-        Activity localActivity = ((aipj)localObject2).a();
+        Activity localActivity = ((ajch)localObject2).a();
         if ((localActivity instanceof ApolloGameActivity))
         {
           localObject2 = ((ApolloGameActivity)localActivity).a();
@@ -47,7 +47,7 @@ final class ApolloGameUtil$13
             localObject1 = ApolloUtil.a();
           }
         }
-        ApolloGameUtil.a(localActivity, this.jdField_a_of_type_Int, localIntent, (String)localObject3, (Bitmap)localObject1, this.jdField_a_of_type_Ajab);
+        ApolloGameUtil.a(localActivity, this.jdField_a_of_type_Int, localIntent, (String)localObject3, (Bitmap)localObject1, this.jdField_a_of_type_Ajod);
         return;
       }
     }

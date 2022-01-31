@@ -1,20 +1,19 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class atuq
-  implements QQPermissionCallback
+class atuq
+  implements View.OnClickListener
 {
-  public atuq(CustomCoverFragment paramCustomCoverFragment, FragmentActivity paramFragmentActivity) {}
+  atuq(atup paramatup) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    babr.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    CustomCoverFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileCustomCoverFragment, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    paramView = new Intent(atup.a(this.a), QQBrowserActivity.class);
+    paramView.putExtra("url", "http://nearby.qq.com/nearby-topic/topicTags.html");
+    atup.a(this.a).startActivity(paramView);
   }
 }
 

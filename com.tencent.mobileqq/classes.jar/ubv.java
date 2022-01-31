@@ -1,16 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.reactive.SimpleObserver;
 
-class ubv
-  implements View.OnClickListener
+public class ubv<T>
+  extends SimpleObserver<T>
 {
-  ubv(ubt paramubt) {}
+  private ubv(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void onClick(View paramView)
+  public void onCancel()
   {
-    this.a.b();
-    this.a.a.i();
+    super.onCancel();
+    veg.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  CANCEL", new Object[] { this.b.b });
+    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
+    this.b.b = null;
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    veg.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  ERROR", new Object[] { this.b.b });
+    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
+    this.b.b = null;
+  }
+  
+  public void onNext(T paramT)
+  {
+    super.onNext(paramT);
+    veg.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s] DONE", new Object[] { this.b.b });
+    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
+    this.b.b = null;
   }
 }
 

@@ -20,7 +20,7 @@ class TroopAlbumPlugin$2$1$2
     paramDialogInterface.dismiss();
     paramDialogInterface = BaseApplicationImpl.sApplication.getRuntime().getAccount();
     Intent localIntent = new Intent();
-    String str = this.this$2.this$1.val$jsContext.getActivity().getResources().getString(2131651973);
+    String str = this.this$2.this$1.val$jsContext.getActivity().getResources().getString(2131717766);
     QzonePluginProxyActivity.a(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
     localIntent.putExtra("aid", "jhan_plxz");
     localIntent.putExtra("success_tips", str);

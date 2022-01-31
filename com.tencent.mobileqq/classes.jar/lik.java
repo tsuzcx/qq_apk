@@ -1,19 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.random.RandomController.5;
 import com.tencent.qphone.base.util.QLog;
 
-public class lik
-  implements DialogInterface.OnClickListener
+class lik
+  implements lif
 {
-  public lik(RandomController.5 param5) {}
+  lik(lij paramlij) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(long paramLong, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RandomController", 2, " [random room owner] kick member fail because of network bad");
+    lcl.c("AVMagicfacePlayer", "play video begin." + paramString);
+    if (this.a.jdField_b_of_type_Lif != null) {
+      this.a.jdField_b_of_type_Lif.a(paramLong, paramString);
     }
-    this.a.this$0.c = false;
+  }
+  
+  public void a(long paramLong, String arg3, int paramInt)
+  {
+    QLog.w("AVMagicfacePlayer", 1, "onEndMagicPlay, id[" + ??? + "], reason[" + paramInt + "], seq[" + paramLong + "]");
+    if (this.a.jdField_b_of_type_Lif != null) {
+      this.a.jdField_b_of_type_Lif.a(paramLong, ???, paramInt);
+    }
+    synchronized (this.a)
+    {
+      if ((this.a.jdField_b_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_Lih != null)) {
+        this.a.a(paramLong, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Lih, this.a.jdField_a_of_type_Lig, this.a.jdField_a_of_type_Lif);
+      }
+      return;
+    }
+  }
+  
+  public void a(long paramLong, String paramString, boolean paramBoolean)
+  {
+    lcl.c("AVMagicfacePlayer", "play audio begin. id = " + paramString + ", repeat = " + paramBoolean);
+    if (paramBoolean)
+    {
+      this.a.a(this.a.jdField_a_of_type_JavaLangString, 100);
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_JavaLangString, 1);
+  }
+  
+  public void b(long paramLong, String paramString)
+  {
+    lcl.c("AVMagicfacePlayer", "play audio end. id = " + paramString);
+    this.a.a(this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

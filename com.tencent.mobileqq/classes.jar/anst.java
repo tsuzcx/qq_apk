@@ -1,72 +1,77 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.widget.TextView;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class anst
-  extends anoj
+class anst
+  extends ayvz
 {
-  public anst(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
-  
-  protected void a(int paramInt)
+  anst(anss paramanss, Looper paramLooper)
   {
-    arjg.a(this.a.a, ExtendFriendLimitChatMatchFragment.a(this.a).app);
+    super(paramLooper);
   }
   
-  protected void a(boolean paramBoolean1, ArrayList<anpw> paramArrayList, boolean paramBoolean2)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ExtendFriendLimitChatMatchFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean1);
-    }
-    int i;
-    if (paramBoolean1)
+    Object localObject = (ayqm)paramMessage.obj;
+    if ((localObject == null) || (((ayqm)localObject).c != this.a.a())) {}
+    do
     {
-      if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-        break label205;
-      }
-      paramArrayList = (anpw)paramArrayList.get(0);
-      if (paramArrayList == null) {
-        break label196;
-      }
-      i = paramArrayList.b;
-      if (i > 0) {
-        break label120;
-      }
-      QLog.e("ExtendFriendLimitChatMatchFragment", 2, "TagInfo count wrong");
-    }
-    for (;;)
-    {
-      if ((paramArrayList.a != null) && (paramArrayList.a.size() > 0))
+      do
       {
-        if (ExtendFriendLimitChatMatchFragment.a(this.a) == null) {
-          break;
+        do
+        {
+          return;
+          switch (paramMessage.what)
+          {
+          case 1002: 
+          case 1006: 
+          case 1007: 
+          default: 
+            return;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("FavroamingManager", 2, "start uploadFace favEmoticon");
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("FavroamingManager", 2, "finish uploadFace favEmoticon resId=" + ((ayqm)localObject).g);
         }
-        ExtendFriendLimitChatMatchFragment.a(this.a).a(paramArrayList.a);
-      }
+      } while (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet() < this.a.jdField_b_of_type_Int);
+      this.a.f();
       return;
-      label120:
-      String str = i + BaseApplication.getContext().getResources().getString(2131633248);
-      if (ExtendFriendLimitChatMatchFragment.a(this.a) != null) {
-        ExtendFriendLimitChatMatchFragment.a(this.a).setText(str);
-      } else {
-        QLog.e("ExtendFriendLimitChatMatchFragment", 2, "mMatchCountTxt is null");
+      if (anss.a(this.a) == null)
+      {
+        QLog.e("FavroamingManager", 1, "app is null");
+        return;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("FavroamingManager", 2, "STATUS_SEND_AND_SAVE_FINISHED resId=" + ((ayqm)localObject).g);
+      }
+      paramMessage = ((ansr)this.a.a()).a(((ayqm)localObject).g);
+      localObject = (ajwa)anss.b(this.a).a(72);
+    } while ((localObject == null) || (paramMessage == null) || (paramMessage.isMarkFace));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramMessage);
+    ((ajwa)localObject).a(localArrayList, 1);
+    return;
+    QLog.i("FavroamingManager", 1, "upload fav error:" + ((ayqm)localObject).g);
+    if (anss.c(this.a) != null) {}
+    for (int i = bbev.b(anss.d(this.a).getApplication());; i = -1)
+    {
+      bbrj.a("emotionType", "emotionActionFav", "4", "", "", i + "", ((ayqm)localObject).g, "", "", "");
+      return;
+      QLog.i("FavroamingManager", 1, "upload fav cancel:" + ((ayqm)localObject).g);
+      return;
     }
-    QLog.e("ExtendFriendLimitChatMatchFragment", 2, "mHeadsPanleView is null");
-    return;
-    label196:
-    QLog.e("ExtendFriendLimitChatMatchFragment", 2, "TagInfo null");
-    return;
-    label205:
-    QLog.e("ExtendFriendLimitChatMatchFragment", 2, "TagInfo size 0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anst
  * JD-Core Version:    0.7.0.1
  */

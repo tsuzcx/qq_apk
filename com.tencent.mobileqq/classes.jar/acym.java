@@ -1,128 +1,191 @@
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.SparseArray;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.helper.TroopAddFriendTipsHelper.1;
-import com.tencent.mobileqq.activity.aio.helper.TroopAddFriendTipsHelper.2;
-import com.tencent.mobileqq.activity.aio.helper.TroopAddFriendTipsHelper.3;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
-import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.mini.sdk.LaunchParam;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLDecoder;
+import java.util.HashMap;
 
 public class acym
-  implements acxg
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  
-  public acym(BaseChatPie paramBaseChatPie)
+  public static void a(PlusPanel paramPlusPanel, acxp paramacxp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramBaseChatPie.a();
-  }
-  
-  private void a(String paramString)
-  {
-    Object localObject = (ajtg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if (localObject != null)
-    {
-      localObject = ((ajtg)localObject).a();
-      if (localObject != null) {
-        ((TroopBatchAddFriendMgr)localObject).g(paramString);
-      }
+    if (paramPlusPanel == null) {
+      return;
     }
-  }
-  
-  public void a()
-  {
-    ThreadManager.post(new TroopAddFriendTipsHelper.1(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("uin")), 2, null, true);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) {}
-    switch (paramInt)
+    switch (paramacxp.a)
     {
     default: 
-      return;
-    case 2: 
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      return;
-    case 6: 
-      a();
-      return;
+      b(paramPlusPanel, paramacxp);
     }
-    a(null);
-  }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if (!str1.equalsIgnoreCase(paramMessageRecord.frienduin)) {}
     for (;;)
     {
+      paramPlusPanel.b(paramacxp.b);
       return;
-      TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((ajtg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a();
-      String str2;
-      if ((paramMessageRecord != null) && (paramMessageRecord.msgtype == -1012) && (localTroopBatchAddFriendMgr.b("newMember"))) {
-        str2 = paramMessageRecord.getExtInfoFromExtStr("troop_new_member_uin");
-      }
+      Bundle localBundle = new Bundle();
+      localBundle.putString("extra.GROUP_UIN", paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      localBundle.putString("selfSet_leftViewText", ajyc.a(2131715716));
+      BulkSendMessageFragment.a(paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), localBundle);
+    }
+  }
+  
+  public static boolean a(Context paramContext, String paramString, BaseChatPie paramBaseChatPie, acxp paramacxp)
+  {
+    com.tencent.TMG.utils.QLog.i("TroopPlusPanelUtils", 1, "troopFormLog openMiniApp:url :" + paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return MiniAppLauncher.startMiniApp(paramContext, paramString.replace("$UIN$", paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).replace("$GCODE$", paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).replace("$APPID$", String.valueOf(paramacxp.b)), 2016, paramBaseChatPie.a(), null);
+  }
+  
+  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    com.tencent.TMG.utils.QLog.i("TroopPlusPanelUtils", 1, "troopFormLog openTroopFormMiniAppInTroopAIO:url :" + paramString1);
+    if ((TextUtils.isEmpty(paramString1)) || (paramContext == null)) {
+      return false;
+    }
+    HashMap localHashMap;
+    if (paramString1.startsWith("mqqapi://microapp/open?"))
+    {
+      paramString1 = paramString1.substring(paramString1.indexOf("?") + 1);
+      localHashMap = new HashMap();
+    }
+    for (;;)
+    {
+      int i;
+      String str;
       try
       {
-        QLog.d("TroopAddFriendTipsHelper", 1, "checkTipsTriggerInAio update newMemberUin = " + aqca.a(str2) + " troop:" + str1);
-        if ((localTroopBatchAddFriendMgr.a(str1)) && (!azgu.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str1))) {
-          ThreadManager.getSubThreadHandler().postDelayed(new TroopAddFriendTipsHelper.2(this, str2, str1), 1000L);
-        }
-        if ((paramMessageRecord != null) && (!paramMessageRecord.isSendFromLocal()) && (paramMessageRecord.mMessageInfo != null) && (!mnf.a(paramMessageRecord)) && ((paramMessageRecord.mMessageInfo.a.a()) || (paramMessageRecord.mMessageInfo.l.a())) && (localTroopBatchAddFriendMgr.b("atMeOrReplyMe")) && (localTroopBatchAddFriendMgr.e(paramMessageRecord.senderuin))) {
-          localTroopBatchAddFriendMgr.a(str1, paramMessageRecord.senderuin, paramMessageRecord.time, paramMessageRecord.shmsgseq);
-        }
-        if ((paramMessageRecord == null) || (!paramMessageRecord.isSendFromLocal())) {
-          continue;
-        }
-        if (paramMessageRecord.atInfoList != null)
+        String[] arrayOfString = paramString1.split("&");
+        int j = arrayOfString.length;
+        i = 0;
+        if (i < j)
         {
-          i = 1;
-          if (((i | paramMessageRecord instanceof MessageForReplyText) == 0) || (!localTroopBatchAddFriendMgr.b("atMeOrReplyMe"))) {
-            continue;
+          paramString1 = arrayOfString[i].split("=");
+          if ((paramString1 == null) || (paramString1.length != 2)) {
+            break label488;
           }
-          localTroopBatchAddFriendMgr.a(paramMessageRecord, str1);
-          return;
+          Object localObject = paramString1[0];
+          str = URLDecoder.decode(paramString1[1]);
+          if (!localObject.contains("extraData"))
+          {
+            paramString1 = str;
+            if (!localObject.contains("path")) {}
+          }
+          else
+          {
+            paramString1 = str.replace("$GCODE$", "groupid=" + paramString2 + "&groupname=" + paramString3 + "&uinType=" + paramInt);
+          }
+          localHashMap.put(localObject, paramString1);
         }
       }
-      catch (XorCipherException localXorCipherException)
+      catch (Exception paramString1)
+      {
+        com.tencent.qphone.base.util.QLog.e("TroopPlusPanelUtils", 1, "troopFormLog openTroopFormMiniAppInTroopAIO, " + com.tencent.qphone.base.util.QLog.getStackTraceString(paramString1));
+      }
+      if (!TextUtils.isEmpty((CharSequence)localHashMap.get("appid")))
+      {
+        paramString1 = new LaunchParam();
+        paramString1.miniAppId = ((String)localHashMap.get("appid"));
+        paramString2 = (String)localHashMap.get("path");
+        paramString3 = (String)localHashMap.get("extraData");
+        str = (String)localHashMap.get("envVersion");
+        try
+        {
+          if (!TextUtils.isEmpty(paramString2)) {
+            paramString1.entryPath = URLDecoder.decode(paramString2.replaceAll("%(?![0-9a-fA-F]{2})", "%25").replaceAll("\\+", "%2B"), "UTF-8");
+          }
+          if (!TextUtils.isEmpty(paramString3)) {
+            paramString1.navigateExtData = URLDecoder.decode(paramString3, "UTF-8");
+          }
+          if (!TextUtils.isEmpty(str)) {
+            paramString1.envVersion = URLDecoder.decode(str, "UTF-8");
+          }
+        }
+        catch (UnsupportedEncodingException paramString2)
+        {
+          for (;;)
+          {
+            com.tencent.qphone.base.util.QLog.e("TroopPlusPanelUtils", 1, "troopFormLog openTroopFormMiniAppInTroopAIO, " + com.tencent.qphone.base.util.QLog.getStackTraceString(paramString2));
+          }
+        }
+        paramString1.scene = 2016;
+        com.tencent.TMG.utils.QLog.i("TroopPlusPanelUtils", 1, "troopFormLog openTroopFormMiniAppInTroopAIO:argumentMap :" + localHashMap.toString());
+        MiniAppLauncher.launchMiniAppById(paramContext, paramString1.miniAppId, paramString1.entryPath, paramString1.navigateExtData, paramString1.envVersion, paramString1.reportData, paramString1.scene);
+        return true;
+        return MiniAppLauncher.startMiniApp(paramContext, paramString1, 2016, null);
+      }
+      return false;
+      label488:
+      i += 1;
+    }
+  }
+  
+  public static boolean a(TroopAIOAppInfo paramTroopAIOAppInfo, BaseChatPie paramBaseChatPie, acxp paramacxp)
+  {
+    if ((paramTroopAIOAppInfo != null) && (paramBaseChatPie != null) && (MiniAppLauncher.isMiniAppUrl(paramTroopAIOAppInfo.url)))
+    {
+      a(paramBaseChatPie.a(), paramTroopAIOAppInfo.url, paramBaseChatPie, paramacxp);
+      return true;
+    }
+    return false;
+  }
+  
+  private static void b(PlusPanel paramPlusPanel, acxp paramacxp)
+  {
+    if (paramacxp.a >= 0) {}
+    do
+    {
+      Object localObject;
+      do
+      {
+        return;
+        localObject = null;
+        if (paramPlusPanel.jdField_a_of_type_AndroidUtilSparseArray != null) {
+          localObject = (TroopAIOAppInfo)paramPlusPanel.jdField_a_of_type_AndroidUtilSparseArray.get(paramacxp.b);
+        }
+      } while ((localObject == null) || (((TroopAIOAppInfo)localObject).url == null));
+      paramacxp = ((TroopAIOAppInfo)localObject).url.replace("$UIN$", paramPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).replace("$GCODE$", paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).replace("$APPID$", String.valueOf(paramacxp.b));
+      int j = 0;
+      int i = j;
+      try
+      {
+        if (TextUtils.equals(new URI(paramacxp).getScheme(), "mqqapi"))
+        {
+          localObject = bbej.a(paramPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), paramacxp);
+          i = j;
+          if (localObject != null)
+          {
+            ((bbds)localObject).c();
+            i = 1;
+          }
+        }
+      }
+      catch (URISyntaxException localURISyntaxException)
       {
         for (;;)
         {
-          localXorCipherException.printStackTrace();
-          continue;
-          int i = 0;
+          i = j;
         }
       }
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    ThreadManager.postImmediately(new TroopAddFriendTipsHelper.3(this, paramBoolean, paramString), null, true);
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 2, 6, 11 };
+    } while (i != 0);
+    localObject = new Intent(paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramacxp);
+    ((Intent)localObject).putExtra("selfSet_leftViewText", ajyc.a(2131715712));
+    paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().startActivity((Intent)localObject);
   }
 }
 

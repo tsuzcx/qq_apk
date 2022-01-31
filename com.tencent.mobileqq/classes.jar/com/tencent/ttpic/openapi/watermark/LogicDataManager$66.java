@@ -1,5 +1,8 @@
 package com.tencent.ttpic.openapi.watermark;
 
+import com.tencent.ttpic.openapi.model.WMElement;
+import java.util.HashMap;
+
 class LogicDataManager$66
   extends LogicDataManager.LogicValueProvider
 {
@@ -10,7 +13,22 @@ class LogicDataManager$66
   
   public String getValue()
   {
-    return LogicDataManager.access$4300(this.this$0);
+    return super.getValue();
+  }
+  
+  public String getValue(WMElement paramWMElement)
+  {
+    if (paramWMElement.textSource.equals("")) {
+      paramWMElement = getValue();
+    }
+    String str;
+    do
+    {
+      return paramWMElement;
+      str = (String)this.this$0.mFollowData.get(paramWMElement.textSource);
+      paramWMElement = str;
+    } while (str != null);
+    return "";
   }
 }
 

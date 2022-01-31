@@ -1,27 +1,31 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-
-public class agmd
-  implements OnCompositionLoadedListener
+final class agmd
+  extends aglx
 {
-  public agmd(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
-  
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public boolean a()
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    TroopUnAccalimedRedPacketList.a(this.a).setImageDrawable(localLottieDrawable);
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (!super.a(paramString)) {}
+    String[] arrayOfString;
+    do
+    {
+      return false;
+      arrayOfString = agmo.a(paramString);
+    } while ((arrayOfString != null) && ((("image".equals(arrayOfString[0])) && (agmo.a(arrayOfString[1])) && (!arrayOfString[1].equals("gif"))) || (agmo.b(paramString))));
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmd
  * JD-Core Version:    0.7.0.1
  */

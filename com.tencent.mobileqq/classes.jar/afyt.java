@@ -1,34 +1,16 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.RebindActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
 
 public class afyt
-  extends atog
+  extends apwx
 {
-  public afyt(RebindActivity paramRebindActivity) {}
+  public afyt(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  public void a(View paramView)
   {
-    this.a.b();
-    if (paramBoolean)
-    {
-      paramBundle = new Intent(this.a, BindVerifyActivity.class);
-      paramBundle.putExtra("kSrouce", this.a.jdField_a_of_type_Int);
-      paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-      paramBundle.putExtra("kBindType", RebindActivity.a(this.a));
-      paramBundle.putExtra("keyReqBindMode", 1);
-      paramBundle.putExtra("k_country_code", RebindActivity.a(this.a));
-      paramBundle.putExtra("cmd_param_is_from_uni", RebindActivity.a(this.a));
-      paramBundle.putExtra("cmd_param_is_from_change_bind", RebindActivity.b(this.a));
-      paramBundle.addFlags(67108864);
-      paramBundle.putExtra("k_is_block", this.a.getIntent().getBooleanExtra("k_is_block", false));
-      paramBundle.putExtra("key_is_from_qqhotspot", this.a.getIntent().getBooleanExtra("key_is_from_qqhotspot", false));
-      paramBundle.putExtra("key_is_from_qav_multi_call", this.a.getIntent().getBooleanExtra("key_is_from_qav_multi_call", false));
-      this.a.startActivityForResult(paramBundle, 1);
-      return;
-    }
-    this.a.b(2131652912);
+    axqw.b(this.a.a, "dc00898", "", "", "0X800A0BF", "0X800A0BF", 2, 0, "", "", "", "");
+    FileSearchActivity.a(this.a.getActivity(), 13, this.a.a());
   }
 }
 

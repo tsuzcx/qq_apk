@@ -1,23 +1,30 @@
-import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.util.ArrayList;
 
-final class alhi
-  implements ArkEnvironmentManager.LibraryLoader
+public class alhi
+  extends alhu
 {
-  public boolean Load()
+  public long a;
+  public ArrayList<alcl> a;
+  public boolean a;
+  
+  public alhi()
   {
-    ArkAppCenter.f();
-    return ArkAppCenter.b;
+    this.b = 4L;
+    this.jdField_a_of_type_JavaUtilArrayList = null;
   }
   
-  public boolean isLibraryLoad()
+  public String toString()
   {
-    return ArkAppCenter.b;
+    StringBuilder localStringBuilder = new StringBuilder().append("ARLocalFaceRecogResult{recogType = ").append(this.b).append(",isTimeOut = ").append(this.jdField_a_of_type_Boolean).append(",frameIdx = ").append(this.jdField_a_of_type_Long).append(", faceDatas.size = ");
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
+    for (int i = this.jdField_a_of_type_JavaUtilArrayList.size();; i = 0) {
+      return i + '}';
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alhi
  * JD-Core Version:    0.7.0.1
  */

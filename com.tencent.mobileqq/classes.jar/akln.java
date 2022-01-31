@@ -1,38 +1,23 @@
+import com.tencent.mobileqq.app.automator.step.CleanCache.1;
+import java.io.File;
+import java.util.Comparator;
+
 public class akln
+  implements Comparator<File>
 {
-  private aklo jdField_a_of_type_Aklo = new aklo();
-  private aklp jdField_a_of_type_Aklp = new aklp();
+  public akln(CleanCache.1 param1) {}
   
-  public akln()
+  public int a(File paramFile1, File paramFile2)
   {
-    this.jdField_a_of_type_Aklo.a();
-    this.jdField_a_of_type_Aklp.a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Aklo.c();
-    this.jdField_a_of_type_Aklp.c();
-  }
-  
-  public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
-  {
-    if (paramInt1 == 36197)
-    {
-      this.jdField_a_of_type_Aklp.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
-      return;
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
     }
-    if (paramInt1 == 3553)
-    {
-      this.jdField_a_of_type_Aklo.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
-      return;
-    }
-    throw new RuntimeException("textureType must be GLES11Ext.GL_TEXTURE_EXTERNAL_OES or GLES20.GL_TEXTURE_2D.");
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akln
  * JD-Core Version:    0.7.0.1
  */

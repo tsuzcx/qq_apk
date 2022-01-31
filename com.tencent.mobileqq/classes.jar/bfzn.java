@@ -1,21 +1,18 @@
-import android.os.IInterface;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
-public abstract interface bfzn
-  extends IInterface
+public class bfzn
+  extends ThreadLocal<Boolean>
 {
-  public abstract void a();
+  public bfzn(XRecyclerView paramXRecyclerView) {}
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  protected Boolean a()
+  {
+    return Boolean.valueOf(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfzn
  * JD-Core Version:    0.7.0.1
  */

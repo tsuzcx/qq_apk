@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel android:id="@id/ebv" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/eby" android:layout_width="fill_parent" android:layout_height="39.0dip" android:layout_alignParentBottom="true">
-        <TextView android:textSize="17.0sp" android:textColor="#ff00a5e0" android:gravity="center" android:id="@id/ebw" android:background="@drawable/aa8" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/qlh" android:layout_weight="1.0" />
-        <TextView android:textSize="17.0sp" android:textColor="#ff00a5e0" android:gravity="center" android:id="@id/listen_panel_send_tv" android:background="@drawable/aa8" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/qln" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/eby" android:layout_width="fill_parent" android:layout_height="75.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="17.0sp" android:textColor="@color/skin_color_button_common_white" android:gravity="center" android:id="@id/ebw" android:layout_width="0.0dip" android:layout_height="45.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="3.0dip" android:text="@string/qlh" android:layout_weight="1.0" style="@style/e2" />
+        <TextView android:textSize="17.0sp" android:textColor="@color/skin_color_button_blue" android:gravity="center" android:id="@id/listen_panel_send_tv" android:layout_width="0.0dip" android:layout_height="45.0dip" android:layout_marginLeft="3.0dip" android:layout_marginRight="16.0dip" android:text="@string/qln" android:layout_weight="1.0" style="@style/e0" />
     </LinearLayout>
     <RelativeLayout android:id="@id/atf" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_above="@id/eby" android:layout_alignParentTop="true">
         <com.tencent.widget.ListView android:id="@id/d_r" android:focusable="true" android:focusableInTouchMode="true" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" android:layout_centerHorizontal="true" />

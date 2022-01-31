@@ -1,47 +1,18 @@
-import java.io.File;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-class vnk
-  extends vnh
+public class vnk
+  implements vvq
 {
-  vnk(vni paramvni, vnq paramvnq, File paramFile) {}
+  public vnk(DoodleLayout paramDoodleLayout) {}
   
-  public void onFailure(String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_Vnq.onFailure(paramString);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaIoFile.exists()) {
-      this.jdField_a_of_type_JavaIoFile.delete();
+    this.a.c();
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 3);
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_Vni.b.size())
-    {
-      File localFile = new File((String)this.jdField_a_of_type_Vni.b.get(i));
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-      i += 1;
-    }
-    this.jdField_a_of_type_Vni.b = new ArrayList();
-    this.jdField_a_of_type_Vnq.onFinish(paramBoolean);
-  }
-  
-  public void onProgress(String paramString)
-  {
-    this.jdField_a_of_type_Vnq.onProgress(paramString);
-  }
-  
-  public void onStart()
-  {
-    this.jdField_a_of_type_Vnq.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    this.jdField_a_of_type_Vnq.onSuccess(paramString);
   }
 }
 

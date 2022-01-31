@@ -1,43 +1,55 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-public abstract class wme
-  extends mmn
+class wme
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private wme(wlx paramwlx) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (paramInt != 0)
-    {
-      a(false, paramInt, null, paramBundle);
-      return;
+    float f1 = paramMotionEvent2.getY() - wlx.a(this.a);
+    if (wlx.b(this.a) < wlx.c(this.a)) {
+      return false;
     }
-    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
-    try
+    if ((f1 > 0.0F) && (wlx.d(this.a) < wlx.e(this.a)))
     {
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d6.UploadFileRspBody)localRspBody.upload_file_rsp.get();
-      if (paramArrayOfByte.int32_ret_code.has())
+      f2 = wlx.d(this.a);
+      f1 = Math.abs(f1) + f2;
+      localwlx = this.a;
+      if (f1 > wlx.e(this.a))
       {
-        a(true, 0, paramArrayOfByte, paramBundle);
-        return;
+        i = wlx.e(this.a);
+        wlx.b(localwlx, i);
       }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, null, paramBundle);
-      return;
+    while ((f1 >= 0.0F) || (wlx.d(this.a) <= wlx.f(this.a))) {
+      for (;;)
+      {
+        float f2;
+        if (wlx.a(this.a) != null)
+        {
+          wlx.a(this.a).getLayoutParams().height = wlx.d(this.a);
+          wlx.a(this.a).requestLayout();
+        }
+        return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+        i = (int)f1;
+      }
     }
-    a(false, -1, null, paramBundle);
+    f1 = wlx.d(this.a) - Math.abs(f1);
+    wlx localwlx = this.a;
+    if (f1 < wlx.f(this.a)) {}
+    for (int i = wlx.f(this.a);; i = (int)f1)
+    {
+      wlx.b(localwlx, i);
+      break;
+    }
   }
-  
-  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wme
  * JD-Core Version:    0.7.0.1
  */

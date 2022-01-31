@@ -1,30 +1,22 @@
-public abstract interface qmo
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+
+class qmo
+  implements View.OnAttachStateChangeListener
 {
-  public abstract void a();
+  qmo(qmm paramqmm, osp paramosp) {}
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  public void onViewAttachedToWindow(View paramView)
+  {
+    osm.a().a(this.jdField_a_of_type_Osp);
+  }
   
-  public abstract void a(long paramLong);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
-  
-  public abstract void k();
+  public void onViewDetachedFromWindow(View paramView)
+  {
+    osm.a().b(this.jdField_a_of_type_Osp);
+    this.jdField_a_of_type_Qmm.a.removeCallbacksAndMessages(null);
+  }
 }
 
 

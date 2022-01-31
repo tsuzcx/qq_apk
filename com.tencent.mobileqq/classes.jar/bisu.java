@@ -1,11 +1,31 @@
-import android.graphics.Bitmap;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
 
-public class bisu
+class bisu
+  implements bjob<bism>
 {
-  public int a;
-  public long a = -1L;
-  public Bitmap a;
-  public String a;
+  bisu(biss parambiss, AEGIFOutlineTextView paramAEGIFOutlineTextView) {}
+  
+  public void a(@Nullable bism parambism)
+  {
+    if (parambism != null)
+    {
+      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextColor(parambism.a);
+      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineColor(parambism.b);
+      if (parambism.a.equals("#ccffffff"))
+      {
+        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadowParam(3.0F, 0.0F, 1.0F, "#73000000");
+        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadow(true);
+        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setStroke(false);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadow(false);
+    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setStroke(true);
+  }
 }
 
 

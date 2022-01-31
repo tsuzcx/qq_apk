@@ -1,94 +1,99 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory.Options;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.PortraitImageview;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import com.tencent.mobileqq.activity.photo.RegionView;
+import com.tencent.qphone.base.util.QLog;
 
 public class agmv
+  extends AsyncTask<Void, Void, Bitmap>
 {
-  private static volatile agmv a;
+  private int jdField_a_of_type_Int;
   
-  private agmv()
-  {
-    agpq.a().a();
-  }
+  private agmv(PhotoCropActivity paramPhotoCropActivity) {}
   
-  public static agmv a()
+  protected Bitmap a(Void... paramVarArgs)
   {
-    if (a == null) {}
     try
     {
-      if (a == null) {
-        a = new agmv();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public int a(String paramString, int paramInt, String... paramVarArgs)
-  {
-    agpq.a().a();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 0);
-    localBundle.putString("module", paramString);
-    localBundle.putInt("def_value", paramInt);
-    localBundle.putStringArray("sub_keys", paramVarArgs);
-    paramString = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getConfig", localBundle);
-    int i = paramInt;
-    if (paramString != null)
-    {
-      i = paramInt;
-      if (paramString.isSuccess())
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_Boolean) {}
+      for (paramVarArgs = Bitmap.Config.ARGB_8888;; paramVarArgs = Bitmap.Config.RGB_565)
       {
-        i = paramInt;
-        if (paramString.data != null) {
-          i = paramString.data.getInt("res_get_value");
-        }
+        localOptions.inPreferredConfig = paramVarArgs;
+        localOptions.inJustDecodeBounds = true;
+        bbdr.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString, localOptions);
+        localOptions.inSampleSize = agqs.a(localOptions, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.g, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.g);
+        localOptions.inJustDecodeBounds = false;
+        paramVarArgs = bbdr.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString, localOptions);
+        return new aywy(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString).a(paramVarArgs);
       }
+      return null;
     }
-    return i;
-  }
-  
-  public String a(String paramString)
-  {
-    agpq.a().a();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 2);
-    localBundle.putString("module", paramString);
-    paramString = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getConfig", localBundle);
-    if ((paramString != null) && (paramString.isSuccess()) && (paramString.data != null)) {
-      return paramString.data.getString("res_get_value");
-    }
-    return "";
-  }
-  
-  public String a(String paramString1, String paramString2, String... paramVarArgs)
-  {
-    agpq.a().a();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 1);
-    localBundle.putString("module", paramString1);
-    localBundle.putString("def_value", paramString2);
-    localBundle.putStringArray("sub_keys", paramVarArgs);
-    paramVarArgs = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getConfig", localBundle);
-    paramString1 = paramString2;
-    if (paramVarArgs != null)
+    catch (OutOfMemoryError paramVarArgs)
     {
-      paramString1 = paramString2;
-      if (paramVarArgs.isSuccess())
-      {
-        paramString1 = paramString2;
-        if (paramVarArgs.data != null) {
-          paramString1 = paramVarArgs.data.getString("res_get_value");
-        }
+      this.jdField_a_of_type_Int = 1;
+      return null;
+    }
+    catch (Exception paramVarArgs)
+    {
+      this.jdField_a_of_type_Int = 2;
+      QLog.d("PhotoCropActivity", 1, "LoadBitmapTask err " + paramVarArgs);
+    }
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setRestrict(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.d);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setImageBitmap(paramBitmap);
+      paramBitmap = new ViewGroup.LayoutParams(-1, -1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView = new RegionView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.e, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.f, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.h, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, paramBitmap);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView, paramBitmap);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidOsHandler != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 250L);
+      }
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.getIntent().getBooleanExtra("open_chat_from_avator", false))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setRestrict(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.d);
+      paramBitmap = new ViewGroup.LayoutParams(-1, -1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView = new RegionView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.e, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.f, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.h, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, paramBitmap);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView, paramBitmap);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 1) {
+      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, ajyc.a(2131708061), 0).a();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.finish();
+      return;
+      if (this.jdField_a_of_type_Int == 2) {
+        bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, ajyc.a(2131708062), 0).a();
+      } else {
+        bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, ajyc.a(2131708060), 0).a();
       }
     }
-    return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmv
  * JD-Core Version:    0.7.0.1
  */

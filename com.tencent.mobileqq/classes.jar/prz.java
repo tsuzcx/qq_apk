@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public final class prz
-  implements Parcelable.Creator<UrlJumpInfo>
+class prz
+  implements View.OnTouchListener
 {
-  public UrlJumpInfo a(Parcel paramParcel)
-  {
-    return new UrlJumpInfo(paramParcel);
-  }
+  prz(prw paramprw, LinearLayout paramLinearLayout) {}
   
-  public UrlJumpInfo[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new UrlJumpInfo[paramInt];
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
   }
 }
 

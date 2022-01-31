@@ -1,150 +1,117 @@
 package com.tencent.av.opengl.effects;
 
+import android.os.Build.VERSION;
 import android.os.SystemClock;
-import android.text.TextUtils;
-import autt;
-import awly;
-import babp;
+import android.support.annotation.NonNull;
+import avtc;
+import axle;
+import bbct;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import lbk;
-import lfi;
-import mhr;
+import lmb;
+import lpo;
+import lpp;
+import lpz;
+import msq;
 
 public class AEFilterSupport
 {
   private static int jdField_a_of_type_Int = 0;
   private static long jdField_a_of_type_Long;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static final Object jdField_a_of_type_JavaLangObject;
   private static Runnable jdField_a_of_type_JavaLangRunnable;
-  private static int b = 0;
+  private static lpo jdField_a_of_type_Lpo;
+  private static final lpp jdField_a_of_type_Lpp = new lpp(21, 4, 1.1F, 3.0F);
+  private static int jdField_b_of_type_Int = 0;
+  private static final lpp jdField_b_of_type_Lpp = new lpp(21, 4, 1.4F, 2.7F);
+  private static int jdField_c_of_type_Int;
+  private static final lpp jdField_c_of_type_Lpp = new lpp(27, 8, 1.8F, 5.0F);
+  
+  static
+  {
+    jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public static int a()
+  {
+    if (jdField_c_of_type_Int != 0) {
+      return jdField_c_of_type_Int;
+    }
+    String str1 = msq.a("machineMiddleLine");
+    String str2 = msq.a("machineHighLine");
+    jdField_b_of_type_Lpp.a(str1);
+    jdField_c_of_type_Lpp.a(str2);
+    lpo locallpo = a();
+    if (jdField_c_of_type_Lpp.a(locallpo)) {
+      jdField_c_of_type_Int = 7;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AEFilterSupport", 2, String.format("getCurMachineLevel, level: %s, middle[%s], high[%s], cur[%s], config[%s, %s]", new Object[] { Integer.valueOf(jdField_c_of_type_Int), jdField_b_of_type_Lpp, jdField_c_of_type_Lpp, locallpo, str1, str2 }));
+      }
+      return jdField_c_of_type_Int;
+      if (jdField_b_of_type_Lpp.a(locallpo)) {
+        jdField_c_of_type_Int = 4;
+      } else {
+        jdField_c_of_type_Int = 3;
+      }
+    }
+  }
+  
+  @NonNull
+  public static lpo a()
+  {
+    if (jdField_a_of_type_Lpo == null)
+    {
+      lpo locallpo = new lpo();
+      locallpo.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
+      locallpo.jdField_b_of_type_Float = ((float)bbct.d() / 1.073742E+009F);
+      locallpo.jdField_b_of_type_Int = bbct.b();
+      locallpo.jdField_a_of_type_Float = ((float)lmb.c() / 1048576.0F);
+      jdField_a_of_type_Lpo = locallpo;
+    }
+    return jdField_a_of_type_Lpo;
+  }
   
   public static boolean a()
   {
-    if (!lfi.a())
+    boolean bool = true;
+    if (!lpz.a())
     {
       if (QLog.isColorLevel()) {
         QLog.i("AEFilterSupport", 2, "isSupportPtuNew, not support AEKit.");
       }
       return false;
     }
-    String str1;
-    float f1;
-    float f2;
-    int j;
-    int i;
-    float f4;
-    int k;
-    float f3;
-    String str2;
-    if (b == 0)
+    if (jdField_b_of_type_Int == 0)
     {
-      str1 = mhr.b();
-      f1 = 3.0F;
-      f2 = 1.1F;
-      if (!TextUtils.isEmpty(str1))
-      {
-        String[] arrayOfString = str1.split(";");
-        int m = arrayOfString.length;
-        j = 0;
-        i = 4;
-        f4 = f2;
-        k = i;
-        f3 = f1;
-        if (j >= m) {
-          break label258;
-        }
-        str2 = arrayOfString[j];
-        if (str2 == null)
-        {
-          f4 = f1;
-          k = i;
-          f3 = f2;
-        }
+      String str = msq.a("ptuNewRenderLimit");
+      jdField_a_of_type_Lpp.a(str);
+      lpo locallpo = a();
+      if (!jdField_a_of_type_Lpp.a(locallpo)) {
+        break label114;
+      }
+      jdField_b_of_type_Int = 1;
+      if (QLog.isColorLevel()) {
+        QLog.i("AEFilterSupport", 2, String.format("isSupportPtuNew, flag: %s, line: %s, cur: %s, config[%s]", new Object[] { Integer.valueOf(jdField_b_of_type_Int), jdField_a_of_type_Lpp, locallpo, str }));
       }
     }
+    if (jdField_b_of_type_Int == 1) {}
     for (;;)
     {
-      j += 1;
-      f2 = f3;
-      i = k;
-      f1 = f4;
+      return bool;
+      label114:
+      jdField_b_of_type_Int = -1;
       break;
-      int n = str2.indexOf('=');
-      f3 = f2;
-      k = i;
-      f4 = f1;
-      if (n > 0)
-      {
-        f3 = f2;
-        k = i;
-        f4 = f1;
-        if (n < str2.length())
-        {
-          try
-          {
-            String str3 = str2.substring(0, n);
-            f3 = Float.parseFloat(str2.substring(n + 1));
-            if ("MemoryLimit".equalsIgnoreCase(str3))
-            {
-              f1 = f3;
-            }
-            else if ("CpuNumLimit".equalsIgnoreCase(str3))
-            {
-              i = (int)f3;
-            }
-            else
-            {
-              bool = "CpuFreqLimit".equalsIgnoreCase(str3);
-              if (bool) {
-                f2 = f3;
-              }
-            }
-          }
-          catch (Throwable localThrowable)
-          {
-            localThrowable.printStackTrace();
-            f3 = f2;
-            k = i;
-            f4 = f1;
-          }
-          continue;
-          k = 4;
-          f3 = f1;
-          f4 = f2;
-          label258:
-          f1 = (float)babp.d() / 1.073742E+009F;
-          i = babp.b();
-          f2 = (float)lbk.c() / 1048576.0F;
-          if ((f3 <= f1) && (k <= i) && (f4 <= f2))
-          {
-            b = 1;
-            if (QLog.isColorLevel()) {
-              QLog.i("AEFilterSupport", 2, String.format("isSupportPtuNew, memory[%s, %s], cpuNum[%s, %s], cpuFreq[%s, %s], config[%s]", new Object[] { Float.valueOf(f3), Float.valueOf(f1), Integer.valueOf(k), Integer.valueOf(i), Float.valueOf(f4), Float.valueOf(f2), str1 }));
-            }
-            if (b != 1) {
-              break label394;
-            }
-          }
-          label394:
-          for (boolean bool = true;; bool = false)
-          {
-            return bool;
-            b = -1;
-            break;
-          }
-          f3 = f2;
-          k = i;
-          f4 = f1;
-        }
-      }
+      bool = false;
     }
   }
   
   public static boolean a(int paramInt)
   {
     boolean bool = true;
-    if (!lfi.a())
+    if (!lpz.a())
     {
       if (QLog.isColorLevel()) {
         QLog.i("AEFilterSupport", 2, "isAEKitSoReady, not support AEKit.");
@@ -156,7 +123,7 @@ public class AEFilterSupport
       return bool;
       if (jdField_a_of_type_Int != 1)
       {
-        if (awly.a())
+        if (axle.a())
         {
           jdField_a_of_type_Int = 1;
           return true;
@@ -183,7 +150,7 @@ public class AEFilterSupport
   
   private static void b()
   {
-    if (!lfi.a())
+    if (!lpz.a())
     {
       if (QLog.isColorLevel()) {
         QLog.i("AEFilterSupport", 2, "checkAndLoadAEKitSo, not support AEKit.");
@@ -194,9 +161,9 @@ public class AEFilterSupport
     if (QLog.isColorLevel()) {
       l1 = SystemClock.elapsedRealtime();
     }
-    boolean bool = awly.a();
+    boolean bool = axle.a();
     if (!bool) {
-      bool = autt.a(false);
+      bool = avtc.a(false);
     }
     for (;;)
     {

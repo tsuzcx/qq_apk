@@ -14,8 +14,8 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import com.tencent.gdtad.views.xijing.GdtButtonData;
 import com.tencent.gdtad.views.xijing.GdtTextData;
-import yny;
-import ypk;
+import yxs;
+import yze;
 
 public class GdtCanvasAppBtnView
   extends TextView
@@ -65,7 +65,7 @@ public class GdtCanvasAppBtnView
   {
     if ((paramGdtCanvasAppBtnComponentData == null) || (!paramGdtCanvasAppBtnComponentData.isValid()))
     {
-      yny.d("GdtAppBtnUIPresenter", "init error");
+      yxs.d("GdtAppBtnUIPresenter", "init error");
       return;
     }
     try
@@ -80,7 +80,7 @@ public class GdtCanvasAppBtnView
       setLines(1);
       setGravity(17);
       setEllipsize(TextUtils.TruncateAt.END);
-      int j = ypk.a(5.0F, paramContext.getResources());
+      int j = yze.a(5.0F, paramContext.getResources());
       setPadding(j, 0, j, 0);
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         setText(this.jdField_a_of_type_JavaLangString);
@@ -161,7 +161,7 @@ public class GdtCanvasAppBtnView
     }
     catch (Exception paramString)
     {
-      yny.d("GdtAppBtnUIPresenter", "setDownloadingUI error", paramString);
+      yxs.d("GdtAppBtnUIPresenter", "setDownloadingUI error", paramString);
     }
   }
   

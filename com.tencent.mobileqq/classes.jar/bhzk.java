@@ -1,32 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-final class bhzk
-  implements mcf
+public class bhzk
+  implements BusinessObserver
 {
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onError " + paramInt);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onStart " + paramString);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onFinish " + paramString);
-    }
-  }
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhzk
  * JD-Core Version:    0.7.0.1
  */

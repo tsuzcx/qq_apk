@@ -1,42 +1,21 @@
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.ProxyDrawable;
-import com.tencent.widget.BubblePopupWindow;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.sdk.core.auth.ui.PermissionSettingFragment;
 
 public class behx
-  extends ProxyDrawable
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  int b;
+  public behx(PermissionSettingFragment paramPermissionSettingFragment, String paramString, boolean paramBoolean) {}
   
-  public behx(BubblePopupWindow paramBubblePopupWindow, Drawable paramDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramDrawable);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    invalidateSelf();
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    Rect localRect = getBounds();
-    if (this.b > this.jdField_a_of_type_Int)
-    {
-      int i = paramCanvas.save();
-      paramCanvas.clipRect(this.jdField_a_of_type_Int, 0, this.b, localRect.height());
-      this.mCurrDrawable.draw(paramCanvas);
-      paramCanvas.restoreToCount(i);
-    }
+    PermissionSettingFragment.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreAuthUiPermissionSettingFragment).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentQqminiSdkCoreAuthUiPermissionSettingFragment.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     behx
  * JD-Core Version:    0.7.0.1
  */

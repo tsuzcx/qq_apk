@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import abai;
-import ascz;
-import awrb;
+import aszd;
+import axra;
 
-public class Leba$6
+class Leba$6
   implements Runnable
 {
-  public Leba$6(abai paramabai, ascz paramascz) {}
+  Leba$6(Leba paramLeba, aszd paramaszd) {}
   
   public void run()
   {
     int i = this.a.b();
-    new awrb(this.this$0.a).a("dc00899").b("grp_lbs").c("entry").d("exp").a(new String[] { "", String.valueOf(i), "", "" }).a();
+    new axra(this.this$0.a).a("dc00899").b("grp_lbs").c("entry").d("exp").a(new String[] { "", String.valueOf(i), "", "" }).a();
   }
 }
 

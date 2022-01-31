@@ -1,22 +1,73 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.profile.CoverDetailFragment;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.text.TextUtils;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import org.json.JSONObject;
 
-public class atul
-  implements URLDrawable.URLDrawableListener
+class atul
+  extends AsyncTask<Integer, Void, Bundle>
 {
-  public atul(CoverDetailFragment paramCoverDetailFragment) {}
+  atul(atuk paramatuk) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  protected Bundle a(Integer... paramVarArgs)
   {
-    CoverDetailFragment.b(this.a).setImageDrawable(this.a.a(paramURLDrawable));
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("downloadcode", paramVarArgs[0].intValue());
+    try
+    {
+      paramVarArgs = (HttpURLConnection)new URL("http://tiantian.qq.com/qiqimanage/qunpack/android/58.json").openConnection();
+      paramVarArgs.setConnectTimeout(5000);
+      paramVarArgs.setReadTimeout(30000);
+      paramVarArgs.setRequestMethod("GET");
+      paramVarArgs.setRequestProperty("Connection", "Keep-Alive");
+      paramVarArgs.connect();
+      paramVarArgs = new BufferedReader(new InputStreamReader(paramVarArgs.getInputStream()));
+      Object localObject = new StringBuffer();
+      for (;;)
+      {
+        String str = paramVarArgs.readLine();
+        if (str == null) {
+          break;
+        }
+        ((StringBuffer)localObject).append(str).append("\n");
+      }
+      localObject = ((StringBuffer)localObject).toString();
+      paramVarArgs.close();
+      paramVarArgs = new JSONObject((String)localObject);
+      if (paramVarArgs.optInt("errCode", -1) == 0)
+      {
+        paramVarArgs = paramVarArgs.optJSONObject("data");
+        if (paramVarArgs != null)
+        {
+          paramVarArgs = paramVarArgs.optJSONObject("package");
+          if (paramVarArgs != null)
+          {
+            localBundle.putString("DownPackage", paramVarArgs.optString("package"));
+            localBundle.putString("DownUrl", paramVarArgs.optString("url"));
+            localBundle.putString("DownAppId", paramVarArgs.optString("appid"));
+          }
+        }
+      }
+      return localBundle;
+    }
+    catch (Exception paramVarArgs) {}
+    return null;
+  }
+  
+  protected void a(Bundle paramBundle)
+  {
+    if (paramBundle != null)
+    {
+      this.a.b = paramBundle.getString("DownPackage");
+      this.a.d = paramBundle.getString("DownUrl");
+      this.a.c = paramBundle.getString("DownAppId");
+      if ((!TextUtils.isEmpty(this.a.b)) && (!TextUtils.isEmpty(this.a.c)) && (!TextUtils.isEmpty(this.a.d))) {
+        this.a.a(paramBundle.getInt("downloadcode"));
+      }
+    }
   }
 }
 

@@ -1,543 +1,478 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import android.widget.ListAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity.QueryPhotoTask.1;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity.QueryPhotoTask.2;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GestureSelectGridView;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.util.QZLog;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
+import mqq.app.AppRuntime;
 
 public class agca
-  extends AsyncTask<Object, Object, List<LocalMediaInfo>>
 {
-  public agca(PhotoListActivity paramPhotoListActivity) {}
+  public static volatile int a;
+  private static volatile agca jdField_a_of_type_Agca;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  public HashMap<String, andx> a;
+  protected List<andx> a;
+  public boolean a;
   
-  protected List<LocalMediaInfo> a(Object... paramVarArgs)
+  private agca()
   {
-    badi.a();
-    int i = -1;
-    if (this.a.jdField_b_of_type_JavaLangString.equals("$RecentAlbumId"))
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    jdField_a_of_type_Int = 0;
+  }
+  
+  public static agca a()
+  {
+    if (jdField_a_of_type_Agca == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      i = 100;
-      if (PhotoListActivity.c(this.a)) {
-        i = QzoneConfig.getInstance().getConfig("PhotoAlbum", "MaxRecentPhotoNum", 200);
+      if (jdField_a_of_type_Agca == null) {
+        jdField_a_of_type_Agca = new agca();
+      }
+      return jdField_a_of_type_Agca;
+    }
+  }
+  
+  public andx a(long paramLong)
+  {
+    Iterator localIterator = a().iterator();
+    while (localIterator.hasNext())
+    {
+      andx localandx = (andx)localIterator.next();
+      if (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == paramLong) {
+        return localandx;
       }
     }
-    int j;
-    Object localObject1;
-    if (((PhotoListActivity.c(this.a)) && (this.a.jdField_b_of_type_JavaLangString.equals("$RecentAlbumId"))) || ((this.a.l) && (this.a.k)))
-    {
-      j = QzoneConfig.getInstance().getConfig("PhotoAlbum", "RecentPhotoLimitSize", 20480);
-      k = QzoneConfig.getInstance().getConfig("PhotoAlbum", "RecentPhotoLimitWidth", 100);
-      localObject1 = QzoneConfig.getInstance().getConfig("PhotoAlbum", "RecentPhotoBlockPaths", "MagazineUnlock");
-      paramVarArgs = null;
-      if (localObject1 != null) {
-        paramVarArgs = PhotoListActivity.a(this.a, (String)localObject1);
-      }
-      paramVarArgs = baaf.a(this.a, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString, i, this.a.jdField_a_of_type_Afzz, j, k, true, paramVarArgs, this.a.k, this.a.jdField_e_of_type_Long);
-    }
+    return null;
+  }
+  
+  public List<andx> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     for (;;)
     {
-      badi.a("PEAK", "getAlbumMedias");
-      if (paramVarArgs != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectPhotoTrace", 2, "photoList is null");
-      }
-      localObject1 = null;
-      return localObject1;
-      if (PhotoListActivity.a(this.a))
+      andx localandx;
+      boolean bool;
+      synchronized (this.jdField_a_of_type_JavaUtilList)
       {
-        if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (this.a.jdField_b_of_type_JavaLangString.equals("$CustomAlbumId")))
-        {
-          paramVarArgs = new ArrayList();
-          paramVarArgs.addAll(vhg.a().b());
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (!localIterator.hasNext()) {
+          break label265;
         }
-        else
+        localandx = (andx)localIterator.next();
+        if ((localandx == null) || (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) || (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 905L)) {
+          continue;
+        }
+        if (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == ndh.jdField_a_of_type_Int)
         {
-          paramVarArgs = baaf.a(this.a, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString, i, this.a.jdField_a_of_type_Afzz, 0, 0, true, null, false, this.a.jdField_e_of_type_Long, 1);
+          bool = false;
+          if (!(localAppRuntime instanceof QQAppInterface)) {
+            break label273;
+          }
+          bool = ((QQAppInterface)localAppRuntime).a().a();
+          break label273;
+        }
+        if ((localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 1130L) && (bhvh.k()))
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("Q.lebatab.mgr", 2, "getLebaMgrList hide leba kandian");
         }
       }
-      else {
-        paramVarArgs = baaf.b(this.a, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString, i, this.a.jdField_a_of_type_Afzz, this.a.jdField_e_of_type_Long);
+      if (((localAppRuntime instanceof QQAppInterface)) && (ajzq.a((QQAppInterface)localAppRuntime, localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.lebatab.mgr", 2, "getLebaMgrList, " + localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId + " is filtered");
+        }
+      }
+      else if (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.cDataType != 1)
+      {
+        localList2.add(localandx);
+        continue;
+        label265:
+        ajzq.a(localList2);
+        return localList2;
+        label273:
+        if (!bool) {}
       }
     }
-    if (((PhotoListActivity.d(this.a)) || (PhotoListActivity.e(this.a))) && (QzoneConfig.getInstance().getConfig("PhotoAlbum", "paranoramaOpenCheck", 1) != 0))
-    {
-      PhotoListActivity.a(this.a, paramVarArgs);
-      if ((this.a.jdField_c_of_type_JavaUtilArrayList == null) || (this.a.jdField_c_of_type_JavaUtilArrayList.size() == 0)) {
-        break label670;
-      }
-      i = 0;
-      label446:
-      if (i >= this.a.jdField_c_of_type_JavaUtilArrayList.size()) {
-        break label670;
-      }
-      localObject1 = (String)this.a.jdField_c_of_type_JavaUtilArrayList.get(i);
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label511;
-      }
-      QZLog.e("PhotoListActivity:QueryPhotoTask", "doInBackground: filter photo error, tempPath null");
-      j = i;
+  }
+  
+  public List<andx> a(Context paramContext, QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.lebatab.mgr", 4, String.format(Locale.getDefault(), "reloadLebaItems [%s, %s, %s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), paramContext, paramQQAppInterface }));
     }
-    for (;;)
+    ArrayList localArrayList1 = new ArrayList();
+    List localList = paramQQAppInterface.a();
+    ArrayList localArrayList2;
+    if (localList != null)
     {
-      i = j + 1;
-      break label446;
-      QLog.i("PhotoListActivity", 2, "@panoramatest isnot fromqzone");
-      break;
-      label511:
-      j = i;
-      if (!new File((String)localObject1).exists()) {
-        if ((((String)localObject1).startsWith("http")) && (this.a.jdField_b_of_type_JavaUtilHashMap != null))
-        {
-          j = i;
-          if (this.a.jdField_b_of_type_JavaUtilHashMap.containsKey(localObject1)) {}
-        }
-        else
-        {
-          this.a.jdField_c_of_type_JavaUtilArrayList.remove(i);
-          i -= 1;
-          if ((!PhotoListActivity.f(this.a)) && (!PhotoListActivity.e(this.a)) && (!PhotoListActivity.d(this.a)))
+      paramContext = paramQQAppInterface.a().a;
+      if ((paramContext == null) && (QLog.isDevelopLevel())) {
+        QLog.i("Q.lebatab.mgr", 4, "reloadLebaItems wholePeopleChecker is null");
+      }
+      Object localObject = new ArrayList(localList);
+      localArrayList2 = new ArrayList();
+      localObject = ((List)localObject).iterator();
+      boolean bool1 = false;
+      while (((Iterator)localObject).hasNext())
+      {
+        LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)((Iterator)localObject).next();
+        if (localLebaPluginInfo != null) {
+          if ((localLebaPluginInfo.uiResId == 770L) && (paramContext != null) && (!paramContext.jdField_a_of_type_Boolean))
           {
-            j = i;
-            if (!PhotoListActivity.a(this.a)) {}
+            if (QLog.isDevelopLevel()) {
+              QLog.i("Q.lebatab.mgr", 4, "reloadLebaItems wholePeople entry switch is off ");
+            }
           }
           else
           {
-            j = i;
-            if (this.a.jdField_c_of_type_JavaUtilHashMap != null)
+            boolean bool2 = bool1;
+            if (localLebaPluginInfo.uiResId == 770L) {
+              bool2 = true;
+            }
+            andx localandx = new andx();
+            try
             {
-              j = i;
-              if (this.a.jdField_c_of_type_JavaUtilHashMap.containsKey(localObject1))
+              localandx.jdField_a_of_type_Long = localLebaPluginInfo.uiResId;
+              localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo = localLebaPluginInfo;
+              if (!ajzq.a(localandx)) {
+                break label298;
+              }
+              this.jdField_a_of_type_JavaUtilHashMap.put(localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strPkgName, localandx);
+              bool1 = bool2;
+            }
+            catch (Exception localException)
+            {
+              bool1 = bool2;
+            }
+            if (QLog.isColorLevel())
+            {
+              bool1 = bool2;
+              if (localException != null)
               {
-                this.a.jdField_c_of_type_JavaUtilHashMap.remove(localObject1);
-                j = i;
+                QLog.d("Q.lebatab.mgr", 2, localException.toString());
+                bool1 = bool2;
+                continue;
+                label298:
+                localArrayList2.add(localandx);
+                bool1 = bool2;
               }
             }
           }
         }
+      }
+      if (paramContext != null) {
+        paramContext.a(bool1);
+      }
+      Collections.sort(localArrayList2, new ajzr());
+      paramContext = (avpq)paramQQAppInterface.getManager(36);
+      if (paramContext != null) {
+        break label442;
       }
     }
-    label670:
-    if (this.a.L)
+    label442:
+    for (paramContext = null;; paramContext = paramContext.a())
     {
-      i = paramVarArgs.size() - 1;
-      while (i >= 0)
-      {
-        localObject1 = (LocalMediaInfo)paramVarArgs.get(i);
-        if ((!((LocalMediaInfo)localObject1).path.endsWith(".gif")) && ((((LocalMediaInfo)localObject1).mediaHeight < this.a.u) || (((LocalMediaInfo)localObject1).mediaWidth < this.a.t))) {
-          paramVarArgs.remove(i);
-        }
-        if ((((LocalMediaInfo)localObject1).path.endsWith(".gif")) && (((LocalMediaInfo)localObject1).fileSize > this.a.jdField_v_of_type_Int)) {
-          paramVarArgs.remove(i);
-        }
-        i -= 1;
+      a(paramQQAppInterface, localArrayList2, paramContext);
+      paramContext = a(paramQQAppInterface);
+      ajzq.a(localArrayList1, paramContext);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.lebatab.mgr", 2, "reloadLebaItems, info.size=" + localList.size() + ", alldatasize=" + this.jdField_a_of_type_JavaUtilList.size() + ", pluginShowList=" + paramContext.size());
       }
-    }
-    if (this.a.N)
-    {
-      i = paramVarArgs.size() - 1;
-      while (i >= 0)
-      {
-        if (!((LocalMediaInfo)paramVarArgs.get(i)).path.endsWith(".mp4")) {
-          paramVarArgs.remove(i);
-        }
-        i -= 1;
-      }
-    }
-    this.a.q = 0;
-    this.a.r = 0;
-    long l1 = System.currentTimeMillis();
-    long l2 = baaf.jdField_a_of_type_Long;
-    if (baaf.jdField_a_of_type_JavaUtilHashMap.containsKey(this.a.jdField_b_of_type_JavaLangString)) {}
-    for (int k = ((Integer)baaf.jdField_a_of_type_JavaUtilHashMap.get(this.a.jdField_b_of_type_JavaLangString)).intValue();; k = 0)
-    {
-      Object localObject2;
-      if ((this.a.C) && (this.a.jdField_b_of_type_JavaLangString.equals("$RecentAlbumId")))
-      {
-        localObject1 = paramVarArgs.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (LocalMediaInfo)((Iterator)localObject1).next();
-          if ((localObject2 != null) && (!TextUtils.isEmpty(((LocalMediaInfo)localObject2).path)))
-          {
-            PhotoListActivity.a().remove(((LocalMediaInfo)localObject2).path);
-            if (this.a.jdField_c_of_type_JavaUtilHashMap != null) {
-              this.a.jdField_c_of_type_JavaUtilHashMap.remove(((LocalMediaInfo)localObject2).path);
-            }
-          }
-        }
-        paramVarArgs.addAll(0, PhotoListActivity.a().values());
-      }
-      if ((this.a.D) && (this.a.jdField_b_of_type_JavaLangString.equals("$VideoAlbumId")))
-      {
-        localObject1 = paramVarArgs.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (LocalMediaInfo)((Iterator)localObject1).next();
-          if ((localObject2 != null) && (!TextUtils.isEmpty(((LocalMediaInfo)localObject2).path)))
-          {
-            PhotoListActivity.a().remove(((LocalMediaInfo)localObject2).path);
-            if (this.a.jdField_c_of_type_JavaUtilHashMap != null) {
-              this.a.jdField_c_of_type_JavaUtilHashMap.remove(((LocalMediaInfo)localObject2).path);
-            }
-          }
-        }
-        localObject1 = PhotoListActivity.a().values();
-        if (localObject1 != null)
-        {
-          localObject1 = ((Collection)localObject1).iterator();
-          i = 0;
-          label1194:
-          if (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (LocalMediaInfo)((Iterator)localObject1).next();
-            if ((localObject2 == null) || (!"video/mp4".equals(((LocalMediaInfo)localObject2).mMimeType))) {
-              break label2272;
-            }
-            paramVarArgs.add(i, localObject2);
-            i += 1;
-          }
-        }
-      }
-      label2185:
-      label2272:
-      for (;;)
-      {
-        break label1194;
-        agdo.a(paramVarArgs, null, PhotoListActivity.a(this.a));
-        int n = paramVarArgs.size();
-        localObject1 = new ArrayList(n);
-        i = 0;
-        int m = 0;
-        Object localObject3;
-        if (m < paramVarArgs.size())
-        {
-          localObject2 = (LocalMediaInfo)paramVarArgs.get(m);
-          if (((LocalMediaInfo)localObject2).path == null) {
-            j = i;
-          }
-          for (;;)
-          {
-            m += 1;
-            i = j;
-            break;
-            int i1 = baaf.a((LocalMediaInfo)localObject2);
-            if (((PhotoListActivity.e(this.a)) || (PhotoListActivity.d(this.a)) || (PhotoListActivity.g(this.a)) || (PhotoListActivity.a(this.a))) && (this.a.K))
-            {
-              ((LocalMediaInfo)localObject2).position = Integer.valueOf(m);
-              ((ArrayList)localObject1).add(((LocalMediaInfo)localObject2).path);
-              if ((this.a.jdField_c_of_type_JavaUtilArrayList != null) && (this.a.jdField_c_of_type_JavaUtilArrayList.contains(((LocalMediaInfo)localObject2).path)))
-              {
-                ((LocalMediaInfo)localObject2).selectStatus = 1;
-                if (!this.a.d.contains(((LocalMediaInfo)localObject2).position)) {
-                  this.a.d.add(((LocalMediaInfo)localObject2).position);
-                }
-                if ((this.a.K) && (i1 == 1))
-                {
-                  localObject3 = this.a;
-                  ((PhotoListActivity)localObject3).q += 1;
-                  if (this.a.q == 1) {
-                    this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)localObject2);
-                  }
-                }
-                if ((this.a.C) && (this.a.jdField_c_of_type_JavaUtilHashMap != null) && (!this.a.jdField_c_of_type_JavaUtilHashMap.containsKey(((LocalMediaInfo)localObject2).path))) {
-                  this.a.jdField_c_of_type_JavaUtilHashMap.put(((LocalMediaInfo)localObject2).path, localObject2);
-                }
-                j = i;
-                if (TextUtils.isEmpty(((LocalMediaInfo)localObject2).mMimeType)) {
-                  continue;
-                }
-                j = i;
-                if (!"image/gif".equals(((LocalMediaInfo)localObject2).mMimeType)) {
-                  continue;
-                }
-                localObject2 = this.a;
-                ((PhotoListActivity)localObject2).r += 1;
-                j = i;
-              }
-            }
-            else
-            {
-              if (i1 == 0) {
-                j = i;
-              }
-              for (;;)
-              {
-                ((LocalMediaInfo)localObject2).position = Integer.valueOf(m);
-                ((ArrayList)localObject1).add(((LocalMediaInfo)localObject2).path);
-                i = j;
-                break;
-                j = i;
-                if (i1 == 1) {
-                  j = i + 1;
-                }
-              }
-            }
-            if ((this.a.jdField_c_of_type_JavaUtilArrayList != null) && (this.a.jdField_c_of_type_JavaUtilArrayList.size() < this.a.jdField_i_of_type_Int) && (this.a.m != null) && (((LocalMediaInfo)localObject2).path.equals(this.a.m)))
-            {
-              ((LocalMediaInfo)localObject2).selectStatus = 1;
-              this.a.jdField_c_of_type_JavaUtilArrayList.add(((LocalMediaInfo)localObject2).path);
-              this.a.d.add(((LocalMediaInfo)localObject2).position);
-              if ((!PhotoListActivity.f(this.a)) && (!PhotoListActivity.e(this.a)) && (!PhotoListActivity.d(this.a)) && (!PhotoListActivity.h(this.a)))
-              {
-                j = i;
-                if (!PhotoListActivity.a(this.a)) {}
-              }
-              else
-              {
-                this.a.jdField_c_of_type_JavaUtilHashMap.put(((LocalMediaInfo)localObject2).path, localObject2);
-                j = i;
-              }
-            }
-            else if ((this.a.jdField_v_of_type_Boolean) && (l1 - l2 <= 60000L) && (k == paramVarArgs.size()) && (((LocalMediaInfo)localObject2).path.equals(baaf.jdField_a_of_type_JavaLangString)))
-            {
-              ((LocalMediaInfo)localObject2).selectStatus = 3;
-              j = i;
-            }
-            else
-            {
-              j = i;
-              if (!PhotoListActivity.i(this.a))
-              {
-                ((LocalMediaInfo)localObject2).selectStatus = 2;
-                j = i;
-              }
-            }
-          }
-        }
-        if (((PhotoListActivity.f(this.a)) || (PhotoListActivity.e(this.a)) || (PhotoListActivity.d(this.a)) || (PhotoListActivity.j(this.a)) || (PhotoListActivity.g(this.a)) || (PhotoListActivity.a(this.a))) && ((this.a.K) || (this.a.jdField_b_of_type_Boolean)))
-        {
-          System.currentTimeMillis();
-          if (PhotoListActivity.jdField_a_of_type_JavaUtilHashMap == null)
-          {
-            PhotoListActivity.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-            i = 0;
-            label2042:
-            if (i >= n) {
-              break label2185;
-            }
-            localObject2 = (LocalMediaInfo)paramVarArgs.get(i);
-            if (((LocalMediaInfo)localObject2).path != null) {
-              break label2168;
-            }
-          }
-          for (;;)
-          {
-            i += 1;
-            break label2042;
-            localObject2 = this.a.jdField_c_of_type_JavaUtilArrayList.iterator();
-            while (((Iterator)localObject2).hasNext())
-            {
-              localObject3 = (String)((Iterator)localObject2).next();
-              if ((PhotoListActivity.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject3)) && (!this.a.jdField_c_of_type_JavaUtilHashMap.containsKey(localObject3))) {
-                this.a.jdField_c_of_type_JavaUtilHashMap.put(localObject3, PhotoListActivity.jdField_a_of_type_JavaUtilHashMap.get(localObject3));
-              }
-            }
-            PhotoListActivity.jdField_a_of_type_JavaUtilHashMap.clear();
-            break;
-            label2168:
-            PhotoListActivity.jdField_a_of_type_JavaUtilHashMap.put(((LocalMediaInfo)localObject2).path, localObject2);
-          }
-          System.currentTimeMillis();
-        }
-        if (n > 1000) {
-          PhotoListActivity.jdField_a_of_type_JavaUtilArrayList = (ArrayList)localObject1;
-        }
-        for (this.a.y = true;; this.a.y = false)
-        {
-          localObject1 = paramVarArgs;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("PhotoListActivity", 2, "QueryPhotoTask,doInBackground,mediaList.size :" + paramVarArgs.size());
-          return paramVarArgs;
-          this.a.jdField_b_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
-        }
-      }
+      return localArrayList1;
     }
   }
   
-  protected void a(List<LocalMediaInfo> paramList)
+  public List<andx> a(QQAppInterface paramQQAppInterface)
   {
-    int m = 0;
-    this.a.runOnUiThread(new PhotoListActivity.QueryPhotoTask.2(this));
-    Object localObject;
-    if (paramList == null)
+    ArrayList localArrayList = new ArrayList();
+    boolean bool = axmt.a();
+    for (;;)
     {
-      if ((!this.a.C) || (!this.a.jdField_b_of_type_JavaLangString.equals("$RecentAlbumId")))
+      andx localandx;
+      synchronized (this.jdField_a_of_type_JavaUtilList)
       {
-        localObject = paramList;
-        if (this.a.D)
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localandx = (andx)localIterator.next();
+        if ((localandx == null) || (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) || (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 905L)) {
+          continue;
+        }
+        if ((localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 1130L) && (bhvh.k()))
         {
-          localObject = paramList;
-          if (!this.a.jdField_b_of_type_JavaLangString.equals("$VideoAlbumId")) {}
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("Q.lebatab.mgr", 2, "hide leba kandian");
         }
       }
-      else
+      StringBuilder localStringBuilder;
+      if (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == ndh.jdField_a_of_type_Int)
       {
-        paramList = new LocalMediaInfo();
-        paramList.mMimeType = "mobileqq/camera";
-        localObject = new ArrayList();
-        ((List)localObject).add(0, paramList);
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder().append("getLebaShowList isNowTabAdded:");
+          paramQQAppInterface.a();
+          QLog.d("Q.qqstory.fourTab", 2, ndh.c + "  isNowTabShow:" + paramQQAppInterface.a().jdField_a_of_type_Boolean + "  isSDKAPISupportStory:" + ssw.i());
+        }
+        if ((!paramQQAppInterface.a().a()) || (localandx.jdField_a_of_type_Byte == 1)) {}
       }
-      this.a.jdField_a_of_type_Agbx.a((List)localObject);
-      this.a.jdField_a_of_type_Agbx.notifyDataSetChanged();
-      this.a.g();
-      bbmy.a(this.a, ajjy.a(2131642318), 1000).a();
+      else if (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == ndh.jdField_a_of_type_Int)
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder().append("getLebaShowList isNowTabAdded:");
+          paramQQAppInterface.a();
+          QLog.d("Q.qqstory.fourTab", 2, ndh.c + "  isNowTabShow:" + paramQQAppInterface.a().jdField_a_of_type_Boolean + "  isSDKAPISupportStory:" + ssw.i());
+        }
+        if ((!paramQQAppInterface.a().a()) || (localandx.jdField_a_of_type_Byte == 1)) {}
+      }
+      else if (ajzq.a(paramQQAppInterface, localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.lebatab.mgr", 2, "getLebaShowList, " + localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId + " is filtered");
+        }
+      }
+      else if (bool)
+      {
+        if (((localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.showInSimpleMode != 0)) || (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 0L)) {
+          localArrayList.add(localandx);
+        }
+      }
+      else if ((localandx.jdField_a_of_type_Byte == 0) || (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 0L))
+      {
+        localArrayList.add(localandx);
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.mgr", 2, "alldatasize=" + this.jdField_a_of_type_JavaUtilList.size() + ", result" + andx.a(localArrayList));
+    }
+    ajzq.a(localArrayList);
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      jdField_a_of_type_Int = 0;
       return;
     }
-    if (((!this.a.C) && (!this.a.L)) || ((this.a.jdField_b_of_type_JavaLangString.equals("$RecentAlbumId")) || ((this.a.D) && (this.a.jdField_b_of_type_JavaLangString.equals("$VideoAlbumId")))))
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    Object localObject = a();
+    if (localObject == null) {}
+    for (;;)
     {
-      localObject = new LocalMediaInfo();
-      ((LocalMediaInfo)localObject).mMimeType = "mobileqq/camera";
-      paramList.add(0, localObject);
-    }
-    this.a.jdField_a_of_type_Agbx.a(paramList);
-    label289:
-    int i;
-    if (paramList.isEmpty())
-    {
-      bbmy.a(this.a, ajjy.a(2131642321), 1000).a();
-      if (this.a.jdField_i_of_type_Boolean)
+      return;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        this.a.jdField_i_of_type_Boolean = false;
-        if (this.a.s != -1) {
-          break label800;
-        }
-        i = PhotoListActivity.n;
-        label322:
-        if (i != -1) {
-          break label827;
-        }
-        localObject = (LinkedHashMap)baaf.jdField_b_of_type_JavaUtilHashMap.get(this.a.jdField_b_of_type_JavaLangString);
-        if (localObject == null) {
-          break label877;
-        }
-        j = ((LinkedHashMap)localObject).size();
-        if (j <= 0) {
-          break label877;
-        }
-      }
-    }
-    label416:
-    label547:
-    label565:
-    label827:
-    label860:
-    label877:
-    for (int j = ((Integer)((LinkedHashMap)localObject).get(localObject.keySet().toArray()[(j - 1)])).intValue();; j = i)
-    {
-      i = j;
-      int k;
-      if (j == -1)
-      {
-        i = j;
-        if (this.a.jdField_v_of_type_Boolean)
-        {
-          localObject = paramList.iterator();
-          k = 0;
-          i = j;
-          if (((Iterator)localObject).hasNext())
+        andx localandx = (andx)((Iterator)localObject).next();
+        if (localandx != null) {
+          if (localandx.jdField_a_of_type_Byte == 0)
           {
-            if (((LocalMediaInfo)((Iterator)localObject).next()).selectStatus != 3) {
-              break label811;
-            }
-            i = k;
-          }
-        }
-      }
-      if ((i == -1) && (this.a.jdField_b_of_type_JavaLangString.equals("$RecentAlbumId")) && (!this.a.jdField_c_of_type_JavaUtilArrayList.isEmpty()))
-      {
-        k = paramList.size();
-        localObject = (String)this.a.jdField_c_of_type_JavaUtilArrayList.get(this.a.jdField_c_of_type_JavaUtilArrayList.size() - 1);
-        j = 0;
-        if (j < k) {
-          if (((String)localObject).equals(((LocalMediaInfo)paramList.get(j)).path)) {
-            i = j;
-          }
-        }
-      }
-      for (;;)
-      {
-        j = this.a.jdField_a_of_type_Agbx.getCount();
-        if (j == 0)
-        {
-          j = m;
-          if (!PhotoListActivity.a(this.a)) {
-            break label860;
-          }
-          if ((this.a.jdField_c_of_type_JavaUtilArrayList != null) && (this.a.jdField_c_of_type_JavaUtilArrayList.size() > 0))
-          {
-            paramList = (String)this.a.jdField_c_of_type_JavaUtilArrayList.get(this.a.jdField_c_of_type_JavaUtilArrayList.size() - 1);
-            i = this.a.jdField_b_of_type_JavaUtilArrayList.indexOf(paramList);
-            if ((i >= 0) && (i < this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.a().getCount())) {
-              this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setSelection(i);
+            if (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) {
+              axqw.b(paramQQAppInterface, "CliStatus", "", "", "trends_tab", "Clk_plug_in_s", 0, 0, "1", String.valueOf(localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId), "", "");
             }
           }
-        }
-        for (;;)
-        {
-          this.a.jdField_a_of_type_Agbx.notifyDataSetChanged();
-          this.a.g();
-          if (!PhotoListActivity.a(this.a)) {
-            break;
+          else if ((localandx.jdField_a_of_type_Byte == 1) && (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null)) {
+            axqw.b(paramQQAppInterface, "CliStatus", "", "", "trends_tab", "Clk_plug_in_s", 0, 0, "0", String.valueOf(localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId), "", "");
           }
-          PhotoListActivity.a(this.a, this.a.jdField_c_of_type_JavaUtilArrayList, this.a.jdField_c_of_type_JavaUtilHashMap);
-          vhg.a().b(this.a.jdField_c_of_type_JavaUtilArrayList, PhotoListActivity.jdField_a_of_type_JavaUtilHashMap);
-          return;
-          if ((!this.a.L) || (paramList.size() != 1)) {
-            break label289;
-          }
-          bbmy.a(this.a, ajjy.a(2131642299), 1000).a();
-          if (this.a.jdField_e_of_type_AndroidWidgetTextView == null) {
-            break label289;
-          }
-          this.a.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
-          break label289;
-          i = this.a.s;
-          break label322;
-          k += 1;
-          break label416;
-          j += 1;
-          break label518;
-          PhotoListActivity.n = -1;
-          break label547;
-          if (i > j - 1)
-          {
-            j -= 1;
-            break label565;
-          }
-          j = m;
-          if (i < 0) {
-            break label565;
-          }
-          j = i;
-          break label565;
-          this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setSelection(j);
         }
       }
     }
   }
   
-  protected void onPreExecute()
+  public void a(QQAppInterface paramQQAppInterface, long paramLong1, boolean paramBoolean, long paramLong2, long paramLong3)
   {
-    super.onPreExecute();
-    this.a.runOnUiThread(new PhotoListActivity.QueryPhotoTask.1(this));
+    int i = 1;
+    int k = 1;
+    for (;;)
+    {
+      int j;
+      synchronized (this.jdField_a_of_type_JavaUtilList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        j = i;
+        if (!localIterator.hasNext()) {
+          break label290;
+        }
+        andx localandx = (andx)localIterator.next();
+        if ((localandx == null) || (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) || (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId != paramLong1)) {
+          continue;
+        }
+        if (paramBoolean)
+        {
+          i = 0;
+          localandx.jdField_a_of_type_Byte = ((byte)i);
+          if (paramLong3 == -9223372036854775808L)
+          {
+            localandx.b = paramLong2;
+            i = k;
+            j = i;
+            if (!QLog.isDevelopLevel()) {
+              break label290;
+            }
+            QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, name = " + localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName + " status:" + paramBoolean);
+            if ((paramQQAppInterface != null) && (i == 1)) {
+              ThreadManager.post(new LebaShowListManager.1(this, (avpq)paramQQAppInterface.getManager(36), paramLong1, paramBoolean, paramLong3, paramLong2), 5, null, true);
+            }
+            if (QLog.isDevelopLevel()) {
+              QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, ret = " + i);
+            }
+          }
+        }
+        else
+        {
+          i = 1;
+          continue;
+        }
+        if (paramLong2 == localandx.b)
+        {
+          localandx.b = paramLong3;
+          i = k;
+        }
+      }
+      i = -2147483648;
+      continue;
+      label290:
+      i = j;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, List<andx> paramList, List<BusinessInfoCheckUpdate.AppSetting> paramList1)
+  {
+    int i;
+    if (QLog.isDevelopLevel())
+    {
+      ??? = new StringBuilder().append("setAllLebaList, ");
+      if (paramList != null) {
+        break label111;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      QLog.i("Q.lebatab.mgr", 4, i);
+      synchronized (this.jdField_a_of_type_JavaUtilList)
+      {
+        this.jdField_a_of_type_JavaUtilList.clear();
+        if (paramList != null) {
+          this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+        }
+        a(paramList1);
+        if (paramQQAppInterface != null)
+        {
+          paramQQAppInterface = (akfg)paramQQAppInterface.a(31);
+          if (paramQQAppInterface != null) {
+            paramQQAppInterface.notifyUI(1, true, null);
+          }
+        }
+        return;
+        label111:
+        i = paramList.size();
+      }
+    }
+  }
+  
+  public void a(List<BusinessInfoCheckUpdate.AppSetting> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilList)
+      {
+        Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
+        continue;
+        if (!localIterator1.hasNext()) {
+          break;
+        }
+        andx localandx = (andx)localIterator1.next();
+        if ((localandx == null) || (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null)) {
+          continue;
+        }
+        long l = localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId;
+        if (l == 0L) {
+          continue;
+        }
+        Iterator localIterator2 = paramList.iterator();
+        if (!localIterator2.hasNext()) {
+          continue;
+        }
+        BusinessInfoCheckUpdate.AppSetting localAppSetting = (BusinessInfoCheckUpdate.AppSetting)localIterator2.next();
+        if ((localAppSetting == null) || (localAppSetting.appid.get() != l)) {
+          continue;
+        }
+        if (localAppSetting.setting.get())
+        {
+          b = 0;
+          localandx.jdField_a_of_type_Byte = b;
+          if (QLog.isDevelopLevel()) {
+            QLog.i("Q.lebatab.mgr", 4, "updateAllLebaListFlag, name = " + localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName + " cCurFlag:" + localandx.jdField_a_of_type_Byte);
+          }
+          localandx.b = localAppSetting.modify_ts.get();
+        }
+      }
+      byte b = 1;
+    }
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    paramQQAppInterface = a();
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = paramQQAppInterface.iterator();
+      while (paramQQAppInterface.hasNext())
+      {
+        andx localandx = (andx)paramQQAppInterface.next();
+        if ((localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == paramLong)) {
+          return localandx.jdField_a_of_type_Byte == 0;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public List<andx> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        andx localandx = (andx)localIterator.next();
+        if ((localandx != null) && (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId != 905L) && ((localandx.jdField_a_of_type_Byte == 0) || (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == 0L))) {
+          localArrayList.add(localandx);
+        }
+      }
+    }
+    return localList1;
   }
 }
 

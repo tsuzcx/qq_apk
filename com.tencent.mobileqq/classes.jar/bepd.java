@@ -1,32 +1,14 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.os.Bundle;
+import android.os.IInterface;
 
-public class bepd
-  implements View.OnSystemUiVisibilityChangeListener
+public abstract interface bepd
+  extends IInterface
 {
-  public bepd(XPanelContainer paramXPanelContainer) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
-  {
-    if (paramInt == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      if (XPanelContainer.b != bool)
-      {
-        XPanelContainer.a(this.a, true);
-        XPanelContainer.b = bool;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("XPanelContainer", 2, "onSystemUiVisibilityChange..visibility =  " + paramInt + " context = " + this.a.getContext().getClass().getName());
-      }
-      return;
-    }
-  }
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bepd
  * JD-Core Version:    0.7.0.1
  */

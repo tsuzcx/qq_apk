@@ -1,142 +1,112 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel.1.1;
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class aouh
-  extends aodp
+  extends aoue
 {
-  aouh(aoug paramaoug) {}
-  
-  protected void a(int paramInt, long paramLong, String paramString)
+  public aouh(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    bgwq.a(this.a.jdField_a_of_type_AndroidAppActivity, paramInt);
-    if (paramLong != this.a.jdField_a_of_type_Aotf.a().nSessionId) {
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  protected ImageView a(acun paramacun)
+  {
+    if (paramacun == null) {}
+    while (!(paramacun instanceof adxa)) {
+      return null;
+    }
+    return ((adxa)paramacun).a;
+  }
+  
+  protected void a(acun paramacun, ImageView paramImageView)
+  {
+    if (paramacun == null) {}
+    while (!(paramacun instanceof adxa)) {
       return;
     }
-    apck.a(paramLong, paramInt, paramString);
+    ((adxa)paramacun).a = paramImageView;
   }
   
-  protected void a(long paramLong1, long paramLong2)
+  protected void a(View paramView, acun paramacun, ChatMessage paramChatMessage, int paramInt)
   {
-    super.a(paramLong1, paramLong2);
-    if ((paramLong1 == this.a.jdField_a_of_type_Aotf.a()) && (this.a.jdField_a_of_type_Aotc != null)) {
-      this.a.jdField_a_of_type_Aotc.a();
-    }
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    if (paramLong != this.a.jdField_a_of_type_Aotf.a().nSessionId) {}
-    while ((paramString2 == null) || (paramString2.length() <= 0) || (paramInt == 0)) {
-      return;
-    }
-    apck.a(paramString2);
-  }
-  
-  protected void a(aooa paramaooa)
-  {
-    if ((TextUtils.isEmpty(paramaooa.a)) || (TextUtils.isEmpty(paramaooa.b))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("C2CFileModel<FileAssistant>", 2, "OnThumbDownLoad error : [fileId] = " + paramaooa.a + " [path] = " + paramaooa.b);
-      }
-    }
-    while (this.a.jdField_a_of_type_Aovn == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Aovn.a(paramaooa.a, paramaooa.b);
-  }
-  
-  protected void a(Integer paramInteger, long paramLong, String paramString)
-  {
-    apck.a(paramLong, paramInteger.intValue(), paramString);
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
-  {
-    if (!paramBoolean) {}
+    if (paramChatMessage == null) {}
     do
     {
       do
       {
         do
         {
-          return;
-          paramInt = this.a.e();
-          if (paramInt != 4) {
-            break;
-          }
-        } while (this.a.jdField_a_of_type_Aovn == null);
-        this.a.jdField_a_of_type_Aovn.a(String.valueOf(paramLong), paramString2);
-        return;
+          do
+          {
+            do
+            {
+              return;
+              QLog.i("TroopFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
+            } while (paramInt == -1);
+            paramacun = (MessageForTroopFile)paramChatMessage;
+            paramView = TroopFileTransferManager.a(this.a, Long.parseLong(paramChatMessage.frienduin));
+          } while (paramView == null);
+          paramacun = bakj.a(this.a, paramacun);
+        } while (paramacun == null);
         if (paramInt != 0) {
           break;
         }
-      } while ((this.a.d() != paramLong) || (this.a.jdField_a_of_type_Aovn == null));
-      this.a.jdField_a_of_type_Aovn.a(String.valueOf(paramLong), paramString2);
+      } while ((paramacun.b != 0) && (paramacun.b != 1));
+      axqw.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", 2, 0, "", "", "", "");
+      paramView.a(paramacun.a);
       return;
-    } while (!QLog.isColorLevel());
-    QLog.i("C2CFileModel<FileAssistant>", 2, "OnZipImageThumbDownloadCompleted : sessionId[" + paramLong + "]  thumbPath[" + paramString2 + "] but current file browser can not handle");
+    } while ((paramInt != 1) || (paramacun.b != 2));
+    axqw.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", 2, 0, "", "", "", "");
+    a(new aoui(this, paramChatMessage.frienduin, paramacun));
   }
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, long paramLong1, long paramLong2, String paramString2, long paramLong3)
+  protected boolean a(ChatMessage paramChatMessage)
   {
-    if (!paramBoolean) {
-      apck.a(paramLong3, paramInt, paramString1);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    if (paramLong2 != this.a.jdField_a_of_type_Aotf.a()) {}
+    if (paramChatMessage == null) {}
     do
     {
-      return;
-      paramString = this.a.jdField_a_of_type_Aotf.a();
-    } while ((paramString == null) || ((paramString.getCloudType() == 0) && (paramString.nOpType == 10)) || (this.a.jdField_a_of_type_Aovo == null));
-    this.a.jdField_a_of_type_Aovo.a(paramString.fProgress);
+      do
+      {
+        do
+        {
+          return false;
+        } while (!(paramChatMessage instanceof MessageForTroopFile));
+        paramChatMessage = (MessageForTroopFile)paramChatMessage;
+        paramChatMessage = bakj.a(this.a, paramChatMessage);
+      } while (paramChatMessage == null);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileBubblePauseHandler", 1, "needShowPauseIcon: current file status[" + paramChatMessage.b + "]");
+      }
+    } while ((paramChatMessage.b != 0) && (paramChatMessage.b != 1));
+    return true;
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  protected boolean b(ChatMessage paramChatMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CFileModel<FileAssistant>", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    bgwq.a(this.a.jdField_a_of_type_AndroidAppActivity, paramInt2);
-    if (paramLong2 != this.a.jdField_a_of_type_Aotf.a()) {}
-    while (this.a.jdField_a_of_type_Aovo == null) {
-      return;
-    }
-    if (!paramBoolean)
+    if (paramChatMessage == null) {}
+    do
     {
-      apck.a(paramLong2, paramInt2, paramString2);
-      this.a.jdField_a_of_type_Aovo.g();
-      return;
-    }
-    if (this.a.e() == 2)
-    {
-      new Handler().postDelayed(new C2CFileModel.1.1(this), 1000L);
-      return;
-    }
-    this.a.jdField_a_of_type_Aovo.f();
+      do
+      {
+        do
+        {
+          return false;
+        } while (!(paramChatMessage instanceof MessageForTroopFile));
+        paramChatMessage = (MessageForTroopFile)paramChatMessage;
+        paramChatMessage = bakj.a(this.a, paramChatMessage);
+      } while (paramChatMessage == null);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileBubblePauseHandler", 1, "needShowResumeIcon: current file status[" + paramChatMessage.b + "]");
+      }
+    } while ((paramChatMessage.b != 3) && (paramChatMessage.b != 2));
+    return true;
   }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    if (paramLong2 != this.a.jdField_a_of_type_Aotf.a()) {}
-    while (this.a.jdField_a_of_type_Aovo == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Aovo.d();
-  }
-  
-  protected void c(int paramInt, String paramString)
-  {
-    apck.a(paramString);
-  }
-  
-  protected void d() {}
 }
 
 

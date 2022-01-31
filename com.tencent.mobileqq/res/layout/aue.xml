@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.tencent.mobileqq.widget.RoundCorneredRelativeLayout android:id="@id/content" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="121.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.extendfriend.wiget.FeedBannerItemGradientLinearLayout android:id="@id/aag" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.extendfriend.wiget.FeedBannerItemGradientLinearLayout android:id="@id/fjp" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <ImageView android:id="@id/bav" android:layout_width="118.0dip" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_alignParentRight="true" />
-    <View android:id="@id/bgh" android:background="#19000000" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/h90" android:background="#19000000" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <TextView android:textSize="25.0dip" android:textStyle="normal" android:textColor="#ffffffff" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:layout_marginTop="14.0dip" android:layout_marginBottom="3.0dip" android:text="@string/fj5" android:layout_alignParentTop="true" />
     <ImageView android:id="@id/cwt" android:background="@drawable/ac7" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="6.5dip" android:layout_below="@id/title" android:layout_alignParentLeft="true" />
     <TextView android:textSize="12.0dip" android:textStyle="normal" android:textColor="#ffffffff" android:id="@id/jns" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginTop="0.5dip" android:text="xx人在线等待和你相遇" android:layout_below="@id/title" />

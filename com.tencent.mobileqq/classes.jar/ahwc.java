@@ -1,30 +1,30 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class ahwc
-  extends ajqr
+class ahwc
+  implements Handler.Callback
 {
-  public ahwc(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  ahwc(ahwb paramahwb) {}
   
-  public void a(Object paramObject)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
-    }
-    if (paramObject != null) {
-      this.a.stopTitleProgress();
-    }
-    switch (((Integer)paramObject).intValue())
+    switch (paramMessage.what)
     {
-    default: 
-      return;
     }
-    QQSpecialCareSettingActivity.a(this.a);
+    for (;;)
+    {
+      return false;
+      this.a.a(null);
+      continue;
+      if (ahwb.a(this.a) != null) {
+        ahwb.a(this.a).k();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahwc
  * JD-Core Version:    0.7.0.1
  */

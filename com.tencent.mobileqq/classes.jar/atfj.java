@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.TranslateResult.Record;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.9.1;
 
-public final class atfj
-  implements Parcelable.Creator<TranslateResult.Record>
+public class atfj
+  implements bcmz
 {
-  public TranslateResult.Record a(Parcel paramParcel)
-  {
-    return new TranslateResult.Record(paramParcel);
-  }
+  public atfj(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public TranslateResult.Record[] a(int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return new TranslateResult.Record[paramInt];
+    ChooseInterestTagActivity.a(this.a).post(new ChooseInterestTagActivity.9.1(this, paramInt1));
   }
 }
 

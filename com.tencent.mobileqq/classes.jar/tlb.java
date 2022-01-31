@@ -1,49 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqForbidVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class tlb
-  implements View.OnClickListener
+public class tlb
+  extends syv<tlc>
 {
-  tlb(tla paramtla) {}
+  public final String a;
+  public String b = "";
   
-  public void onClick(View paramView)
+  public tlb(tla paramtla, String paramString)
   {
-    if ((tla.a(this.a) != null) && (tla.a(this.a).a()))
+    this.jdField_a_of_type_JavaLangString = sxp.a("StorySvc.forbid_video");
+    this.b = paramString;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public tlc a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspForbidVideo localRspForbidVideo = new qqstory_service.RspForbidVideo();
+    try
     {
-      tla.a(this.a).c();
-      int i;
-      if (tla.a(this.a) != null)
-      {
-        i = urp.a(tla.a(this.a).a);
-        if (!this.a.a()) {
-          break label121;
-        }
-      }
-      label121:
-      for (paramView = "1";; paramView = "2")
-      {
-        urp.a("home_page", "cancel_reply", i, 0, new String[] { paramView, urp.a(tla.a(this.a)), "5", tla.a(this.a) });
-        return;
-        i = 0;
-        break;
-      }
+      localRspForbidVideo.mergeFrom(paramArrayOfByte);
+      return new tlc(this.jdField_a_of_type_Tla, localRspForbidVideo);
     }
-    this.a.a();
-    if (this.a.a())
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      paramView = "2";
-      if (!this.a.b()) {
-        break label188;
-      }
+      paramArrayOfByte.printStackTrace();
     }
-    label188:
-    for (String str = "2";; str = "1")
-    {
-      urp.a("play_video", "close_reply", 0, 3, new String[] { paramView, str });
-      return;
-      paramView = "1";
-      break;
-    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqForbidVideo localReqForbidVideo = new qqstory_service.ReqForbidVideo();
+    localReqForbidVideo.vid.set(this.b);
+    return localReqForbidVideo.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "ReportIgnoreVideoRequest{, vid='" + this.b + '\'' + '}';
   }
 }
 

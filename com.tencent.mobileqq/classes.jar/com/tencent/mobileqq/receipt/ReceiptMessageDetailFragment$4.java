@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.receipt;
 
-import awbk;
+import axas;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -29,7 +29,7 @@ class ReceiptMessageDetailFragment$4
     }
     ReceiptMessageDetailFragment.a(this.this$0).addObserver(ReceiptMessageDetailFragment.a(this.this$0), false);
     QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c");
-    ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).a().a(ReceiptMessageDetailFragment.a(this.this$0), ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).getCurrentAccountUin()), ReceiptMessageDetailFragment.a(this.this$0), awbk.a(ReceiptMessageDetailFragment.b(this.this$0))));
+    ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).a().a(ReceiptMessageDetailFragment.a(this.this$0), ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).getCurrentAccountUin()), ReceiptMessageDetailFragment.a(this.this$0), axas.a(ReceiptMessageDetailFragment.b(this.this$0))));
   }
 }
 

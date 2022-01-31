@@ -1,96 +1,79 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.Manager;
+import org.json.JSONObject;
 
-public abstract class anag<T extends CustomEmotionBase>
-  implements Manager
+public class anag
 {
-  protected QQAppInterface a;
-  protected String a;
-  protected CopyOnWriteArrayList<WeakReference<ancp>> a;
-  protected AtomicBoolean a;
+  private int a;
+  private int b = 1;
+  private int c = 1;
   
-  public anag(QQAppInterface paramQQAppInterface)
+  public anag()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
+    this.jdField_a_of_type_Int = 1;
   }
   
-  protected abstract int a();
-  
-  protected abstract ajgl<T> a();
-  
-  protected abstract anae<T> a();
-  
-  public void a()
+  public static anag a(ampi paramampi)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-  }
-  
-  public void a(ancp paramancp)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      if (((WeakReference)localIterator.next()).get() == paramancp) {
-        return;
+    anag localanag = new anag();
+    if (paramampi != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchBusinessConfBean", 2, "parse taskid->" + paramampi.jdField_a_of_type_Int + " content->" + paramampi.jdField_a_of_type_JavaLangString);
       }
     }
-    paramancp = new WeakReference(paramancp);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramancp);
+    try
+    {
+      paramampi = new JSONObject(paramampi.jdField_a_of_type_JavaLangString);
+      localanag.a(paramampi.optInt("business_switch_message", 1));
+      localanag.b(paramampi.optInt("business_switch_contact", 1));
+      localanag.c(paramampi.optInt("business_switch_dongtai", 1));
+      return localanag;
+    }
+    catch (Exception paramampi)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("SearchBusinessConfBean", 2, "parse error->" + paramampi.toString());
+    }
+    return localanag;
+  }
+  
+  void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
+    return this.jdField_a_of_type_Int == 1;
   }
   
-  public void b()
+  void b(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    ajgl localajgl;
-    do
-    {
-      return;
-      localajgl = a();
-    } while (localajgl == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomEmotionRoamingManagerBase", 2, "------------start syncRoaming----------");
-    }
-    localajgl.a();
+    this.b = paramInt;
   }
   
-  public void b(ancp paramancp)
+  public boolean b()
   {
-    if (paramancp == null) {}
-    WeakReference localWeakReference;
-    do
-    {
-      return;
-      Iterator localIterator;
-      while (!localIterator.hasNext()) {
-        localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      }
-      localWeakReference = (WeakReference)localIterator.next();
-    } while (localWeakReference.get() != paramancp);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localWeakReference);
+    return this.b == 1;
   }
   
-  public void onDestroy()
+  void c(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.c = paramInt;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 1;
+  }
+  
+  public String toString()
+  {
+    return String.format("mBusinessSwitchTabMessage:%d, mBusinessSwitchTabContact:%d, mBusinessSwitchTabDongtai:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anag
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
 
-public class oyq
-  implements ViewBase.IBuilder
+class oyq
+  implements Animation.AnimationListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  oyq(oyp paramoyp, ImageView paramImageView, boolean paramBoolean) {}
+  
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    return new oyp(paramVafContext);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(oyp.a(this.jdField_a_of_type_Oyp, this.jdField_a_of_type_Boolean));
+    paramAnimation.setInterpolator(new AnticipateInterpolator());
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

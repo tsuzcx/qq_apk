@@ -1,197 +1,111 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.opengl.EGL14;
-import android.opengl.EGLConfig;
-import android.opengl.EGLContext;
-import android.opengl.EGLDisplay;
-import android.opengl.EGLSurface;
-import android.opengl.GLES20;
-import android.util.Log;
-import android.view.Surface;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.TextView;
+import java.util.ArrayList;
 
 public class bisz
-  implements SurfaceTexture.OnFrameAvailableListener
+  extends RecyclerView.Adapter<bitb>
 {
-  private static final String jdField_a_of_type_JavaLangString = bisz.class.getSimpleName();
-  int jdField_a_of_type_Int;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext = EGL14.EGL_NO_CONTEXT;
-  private EGLDisplay jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.EGL_NO_DISPLAY;
-  private EGLSurface jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  private bitb jdField_a_of_type_Bitb;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  private boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  private int jdField_a_of_type_Int = -1;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private biso jdField_a_of_type_Biso;
+  private ArrayList<bisk> jdField_a_of_type_JavaUtilArrayList;
   
-  public bisz(int paramInt1, int paramInt2)
+  public bisz(Context paramContext, biso parambiso)
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      throw new IllegalArgumentException();
-    }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    e();
-    b();
-    d();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Biso = parambiso;
+    a(this.jdField_a_of_type_Biso.a());
+    a(this.jdField_a_of_type_Biso.a());
   }
   
-  private void a(String paramString)
+  private void a(RecyclerView paramRecyclerView)
   {
-    int i = EGL14.eglGetError();
-    if (i != 12288) {
-      throw new RuntimeException(paramString + ": EGL error: 0x" + Integer.toHexString(i));
-    }
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
   }
   
-  private void d()
+  private void a(ArrayList<bisk> paramArrayList)
   {
-    this.jdField_a_of_type_Bitb = new bitb();
-    this.jdField_a_of_type_Bitb.a();
-    if (this.jdField_b_of_type_Boolean) {
-      Log.d(jdField_a_of_type_JavaLangString, "textureID=" + this.jdField_a_of_type_Bitb.a());
-    }
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Bitb.a());
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(this.jdField_a_of_type_Int * this.jdField_b_of_type_Int * 4);
-    this.jdField_a_of_type_JavaNioByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
   
-  private void e()
+  public bitb a(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.eglGetDisplay(0);
-    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay == EGL14.EGL_NO_DISPLAY) {
-      throw new RuntimeException("unable to get EGL14 display");
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      this.jdField_a_of_type_AndroidContentContext = paramViewGroup.getContext();
     }
-    Object localObject = new int[2];
-    if (!EGL14.eglInitialize(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (int[])localObject, 0, (int[])localObject, 1))
-    {
-      this.jdField_a_of_type_AndroidOpenglEGLDisplay = null;
-      throw new RuntimeException("unable to initialize EGL14");
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558522, paramViewGroup, false);
+    if (paramInt != 0) {
+      paramViewGroup.setVisibility(4);
     }
-    localObject = new EGLConfig[1];
-    int[] arrayOfInt = new int[1];
-    EGLDisplay localEGLDisplay = this.jdField_a_of_type_AndroidOpenglEGLDisplay;
-    int i = localObject.length;
-    if (!EGL14.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12339, 1, 12344 }, 0, (EGLConfig[])localObject, 0, i, arrayOfInt, 0)) {
-      throw new RuntimeException("unable to find RGB888+recordable ES2 EGL config");
-    }
-    this.jdField_a_of_type_AndroidOpenglEGLContext = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, localObject[0], EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
-    a("eglCreateContext");
-    if (this.jdField_a_of_type_AndroidOpenglEGLContext == null) {
-      throw new RuntimeException("null context");
-    }
-    i = this.jdField_a_of_type_Int;
-    int j = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.eglCreatePbufferSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, localObject[0], new int[] { 12375, i, 12374, j, 12344 }, 0);
-    a("eglCreatePbufferSurface");
-    if (this.jdField_a_of_type_AndroidOpenglEGLSurface == null) {
-      throw new RuntimeException("surface was null");
-    }
-  }
-  
-  public Bitmap a()
-  {
-    try
-    {
-      Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
-      this.jdField_a_of_type_JavaNioByteBuffer.rewind();
-      GLES20.glReadPixels(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 6408, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
-      this.jdField_a_of_type_JavaNioByteBuffer.rewind();
-      localBitmap.copyPixelsFromBuffer(this.jdField_a_of_type_JavaNioByteBuffer);
-      return localBitmap;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "getFrameBitmap() OOM!");
-    }
-    return null;
-  }
-  
-  public Surface a()
-  {
-    return this.jdField_a_of_type_AndroidViewSurface;
+    return new bitb(paramViewGroup);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay != EGL14.EGL_NO_DISPLAY)
-    {
-      EGL14.eglDestroySurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLSurface);
-      EGL14.eglDestroyContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLContext);
-      EGL14.eglReleaseThread();
-      EGL14.eglTerminate(this.jdField_a_of_type_AndroidOpenglEGLDisplay);
+    bitb localbitb = (bitb)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForLayoutPosition(this.jdField_a_of_type_Int);
+    if (localbitb != null) {
+      localbitb.a(false);
     }
-    this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.EGL_NO_DISPLAY;
-    this.jdField_a_of_type_AndroidOpenglEGLContext = EGL14.EGL_NO_CONTEXT;
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
-    this.jdField_a_of_type_AndroidViewSurface.release();
-    this.jdField_a_of_type_Bitb = null;
-    this.jdField_a_of_type_AndroidViewSurface = null;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Bitb.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, paramBoolean);
-  }
-  
-  public void b()
-  {
-    if (!EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLContext)) {
-      throw new RuntimeException("eglMakeCurrent failed");
-    }
-  }
-  
-  public void c()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    for (;;)
     {
-      for (;;)
-      {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (!bool) {
-          try
-          {
-            this.jdField_a_of_type_JavaLangObject.wait(2500L);
-            if (!this.jdField_a_of_type_Boolean) {
-              throw new RuntimeException("frame wait timed out");
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            throw new RuntimeException(localInterruptedException);
-          }
-        }
+      if (this.jdField_a_of_type_Int >= 0) {
+        ((bisk)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int - 1)).a(false);
+      }
+      this.jdField_a_of_type_Int = -1;
+      return;
+      if (this.jdField_a_of_type_Int >= 0) {
+        notifyItemChanged(this.jdField_a_of_type_Int);
       }
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bitb.a("before updateTexImage");
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
   }
   
-  public void onFrameAvailable(SurfaceTexture arg1)
+  public void a(bitb parambitb, int paramInt)
   {
-    Log.d(jdField_a_of_type_JavaLangString, " new frame available");
-    if (this.jdField_b_of_type_Boolean) {
-      Log.d(jdField_a_of_type_JavaLangString, "new frame available");
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (parambitb.getLayoutPosition() == 0)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
-      }
+      localObject = new FrameLayout.LayoutParams(bawz.a(this.jdField_a_of_type_AndroidContentContext, 33.0F), bawz.a(this.jdField_a_of_type_AndroidContentContext, 33.0F));
+      ((FrameLayout.LayoutParams)localObject).setMargins(0, 0, bawz.a(this.jdField_a_of_type_AndroidContentContext, 51.0F), 0);
+      parambitb.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
+    Object localObject = ((bisk)this.jdField_a_of_type_JavaUtilArrayList.get(parambitb.getLayoutPosition() - 1)).a;
+    parambitb.a.setText((CharSequence)localObject);
+    if (this.jdField_a_of_type_Int == parambitb.getLayoutPosition()) {
+      parambitb.a(true);
+    }
+    for (;;)
+    {
+      parambitb.itemView.setOnClickListener(new bita(this, parambitb, (String)localObject));
+      return;
+      parambitb.a(false);
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size() + 1;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt != 0) {
+      return 0;
+    }
+    return 1;
   }
 }
 

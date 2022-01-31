@@ -43,7 +43,7 @@ public class BrandPagePool
     this.mLoadingRootView = null;
     View localView1 = localView2;
     if (localView2 == null) {
-      localView1 = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131493678, null);
+      localView1 = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559247, null);
     }
     return localView1;
   }
@@ -80,7 +80,7 @@ public class BrandPagePool
     if (this.mLoadingRootView != null) {
       return;
     }
-    this.mLoadingRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131493678, null);
+    this.mLoadingRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559247, null);
   }
 }
 

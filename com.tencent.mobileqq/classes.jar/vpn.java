@@ -1,18 +1,23 @@
-import android.view.View;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
+import java.util.Iterator;
+import java.util.List;
 
 public class vpn
-  implements beno
+  implements ViewPager.OnPageChangeListener
 {
-  public vpn(SegmentList paramSegmentList) {}
+  public vpn(FaceViewPager paramFaceViewPager) {}
   
-  public void a_(View paramView) {}
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public void e() {}
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
   
-  public void e(boolean paramBoolean)
+  public void onPageSelected(int paramInt)
   {
-    this.a.requestDisallowInterceptTouchEvent(paramBoolean);
+    Iterator localIterator = FaceViewPager.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((vpo)localIterator.next()).b(paramInt);
+    }
   }
 }
 

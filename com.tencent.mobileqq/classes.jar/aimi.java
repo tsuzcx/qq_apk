@@ -1,28 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.1;
+import java.util.Comparator;
 
-public class aimi
-  implements View.OnClickListener
+final class aimi
+  implements Comparator<String>
 {
-  public aimi(CmGameLoadingView.1 param1) {}
-  
-  public void onClick(View paramView)
+  public int a(String paramString1, String paramString2)
   {
-    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131636290));
-    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-    this.a.this$0.setProgressViewVisibility(true);
-    this.a.a.a(2);
+    if ("★".equals(paramString2)) {}
+    do
+    {
+      return 1;
+      if ("★".equals(paramString1)) {
+        return -1;
+      }
+      if ("#".equals(paramString2)) {
+        return -1;
+      }
+    } while ("#".equals(paramString1));
+    return paramString1.compareTo(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aimi
  * JD-Core Version:    0.7.0.1
  */

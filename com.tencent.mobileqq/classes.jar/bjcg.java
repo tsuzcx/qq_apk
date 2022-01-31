@@ -1,33 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.11.1;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
 
-public class bjcg
-  implements TVK_SDKMgr.InstallListener
+public final class bjcg
+  implements Parcelable.Creator<QIMFilterCategoryItem>
 {
-  public bjcg(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public QIMFilterCategoryItem a(Parcel paramParcel)
   {
-    ShortVideoPlayActivity.a(this.a, false);
-    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
-    this.a.a(ajjy.a(2131648235));
-    ShortVideoPlayActivity.c(this.a, 3000);
-    ShortVideoPlayActivity.d(this.a, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onInstalledFailed:" + paramInt);
-    }
+    return new QIMFilterCategoryItem(paramParcel);
   }
   
-  public void onInstalledSuccessed()
+  public QIMFilterCategoryItem[] a(int paramInt)
   {
-    ShortVideoPlayActivity.a(this.a, true);
-    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
-    this.a.a.post(new ShortVideoPlayActivity.11.1(this));
+    return new QIMFilterCategoryItem[paramInt];
   }
 }
 

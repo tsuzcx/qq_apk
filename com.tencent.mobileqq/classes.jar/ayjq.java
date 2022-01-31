@@ -1,38 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.text.format.Time;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import java.io.File;
+import java.io.FilenameFilter;
 
-class ayjq
-  implements View.OnTouchListener
+public class ayjq
+  implements FilenameFilter
 {
-  ayjq(ayjp paramayjp) {}
+  public ayjq(ShareAppLogHelper paramShareAppLogHelper) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean accept(File paramFile, String paramString)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.15F);
-      this.a.c.setAlpha(0.5F);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-    }
-    for (;;)
+    if ((!paramString.endsWith(".log")) && (!paramString.endsWith(".zip")) && (!paramString.endsWith(".qlog"))) {}
+    do
     {
       return false;
-      if ((i == 3) || (i == 1))
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-        this.a.c.setAlpha(1.0F);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      }
-    }
+      paramFile = ShareAppLogHelper.a(this.a, paramString);
+    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayjq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-
-public class naf
-  implements View.OnClickListener
+class naf
+  implements bfos
 {
-  public naf(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  naf(nae paramnae) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    ReadInJoyNativeAdFragment.a(this.a).dismiss();
-    ReadInJoyNativeAdFragment.b(this.a);
+    nae.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     naf
  * JD-Core Version:    0.7.0.1
  */

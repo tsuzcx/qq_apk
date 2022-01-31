@@ -1,23 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
 
-public class apfv
-  implements View.OnClickListener
+class apfv
+  implements apgc
 {
-  public apfv(SendBottomBar paramSendBottomBar) {}
+  apfv(apfu paramapfu) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (SendBottomBar.a(this.a).isChecked())
-    {
-      SendBottomBar.b(this.a, true);
-      apci.a("0X800942B");
-      return;
-    }
-    SendBottomBar.c(this.a, false);
-    SendBottomBar.b(this.a, false);
+    FileSelectorSearchGroupFragment.a(this.a.a).a();
   }
 }
 

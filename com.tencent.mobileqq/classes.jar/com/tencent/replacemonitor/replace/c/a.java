@@ -10,10 +10,10 @@ import com.tencent.replacemonitor.MonitorStep;
 import com.tencent.replacemonitor.MonitorTask;
 import com.tencent.replacemonitor.replace.st.ReplaceMonitorLog;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.e;
-import com.tencent.tmassistantbase.util.l;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.d;
+import com.tencent.tmassistantbase.util.k;
+import com.tencent.tmassistantbase.util.q;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -67,15 +67,15 @@ public class a
     localReplaceMonitorLog.isTDownloadApp = paramMonitorTask.isTencentDownload;
     localReplaceMonitorLog.externalParams = paramMonitorTask.externalParams;
     localReplaceMonitorLog.doReport();
-    ac.c("WashMonitor", "ReplaceMonitorImpl >>onMonitorFinish 检测到洗包，开始上报" + localReplaceMonitorLog.build());
+    ab.c("WashMonitor", "ReplaceMonitorImpl >>onMonitorFinish 检测到洗包，开始上报" + localReplaceMonitorLog.build());
   }
   
   public long a(MonitorTask paramMonitorTask)
   {
-    ac.c("WashMonitor", "ReplaceMonitorImpl >>addTask task = " + paramMonitorTask);
+    ab.c("WashMonitor", "ReplaceMonitorImpl >>addTask task = " + paramMonitorTask);
     if (paramMonitorTask != null)
     {
-      ac.c("WashMonitor", "ReplaceMonitorImpl >>addTask task.packageName = " + paramMonitorTask.packageName + " task.versionCode = " + paramMonitorTask.versionCode + " task.appType = " + paramMonitorTask.appType);
+      ab.c("WashMonitor", "ReplaceMonitorImpl >>addTask task.packageName = " + paramMonitorTask.packageName + " task.versionCode = " + paramMonitorTask.versionCode + " task.appType = " + paramMonitorTask.appType);
       paramMonitorTask.id = com.tencent.replacemonitor.replace.b.a.a().a(paramMonitorTask);
       int i = this.c.a(paramMonitorTask);
       this.d.put(Integer.valueOf(i), Long.valueOf(paramMonitorTask.id));
@@ -101,19 +101,19 @@ public class a
     if (paramContext != null)
     {
       com.tencent.replacemonitor.a.a = paramContext.getSharedPreferences("replace_monitor_spf", 0).getLong("md5_check_max_file_size", 209715200L);
-      ac.d("WashMonitor", "ReplaceMonitorImpl ReplaceMonitorImpl MD5_CHECK_MAX_FILE_SIZE = " + com.tencent.replacemonitor.a.a);
+      ab.d("WashMonitor", "ReplaceMonitorImpl ReplaceMonitorImpl MD5_CHECK_MAX_FILE_SIZE = " + com.tencent.replacemonitor.a.a);
     }
     for (;;)
     {
       com.tencent.replacemonitor.replace.b.a.a();
       return;
-      ac.d("WashMonitor", "ReplaceMonitorImpl ReplaceMonitorImpl context = null");
+      ab.d("WashMonitor", "ReplaceMonitorImpl ReplaceMonitorImpl context = null");
     }
   }
   
   public void a(MonitorListener paramMonitorListener)
   {
-    ac.c("WashMonitor", "ReplaceMonitorImpl >>register listener = " + paramMonitorListener);
+    ab.c("WashMonitor", "ReplaceMonitorImpl >>register listener = " + paramMonitorListener);
     Object localObject;
     for (;;)
     {
@@ -142,27 +142,27 @@ public class a
   
   public void a(MonitorTask paramMonitorTask, MonitorStep paramMonitorStep)
   {
-    ac.c("WashMonitor", "ReplaceMonitorImpl >>execSync task = " + paramMonitorTask + " step = " + paramMonitorStep);
+    ab.c("WashMonitor", "ReplaceMonitorImpl >>execSync task = " + paramMonitorTask + " step = " + paramMonitorStep);
     if (paramMonitorTask != null)
     {
-      ac.c("WashMonitor", "ReplaceMonitorImpl >>execSync task.packageName = " + paramMonitorTask.packageName + " task.versionCode = " + paramMonitorTask.versionCode + " task.appType = " + paramMonitorTask.appType);
+      ab.c("WashMonitor", "ReplaceMonitorImpl >>execSync task.packageName = " + paramMonitorTask.packageName + " task.versionCode = " + paramMonitorTask.versionCode + " task.appType = " + paramMonitorTask.appType);
       paramMonitorTask = new com.tencent.replacemonitor.replace.c(paramMonitorTask, paramMonitorStep, this);
-      l.a().post(paramMonitorTask);
+      k.a().post(paramMonitorTask);
     }
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    paramString = r.c(paramString);
-    ac.c("WashMonitor", "ReplaceMonitorImpl >>onAppInstalled packageInfo = " + paramString);
+    paramString = q.c(paramString);
+    ab.c("WashMonitor", "ReplaceMonitorImpl >>onAppInstalled packageInfo = " + paramString);
     if (paramString == null) {}
     for (;;)
     {
       return;
       Object localObject1 = com.tencent.replacemonitor.replace.b.a.a().a(paramString.packageName, paramString.versionCode);
-      Object localObject2 = com.tencent.replacemonitor.replace.b.a.a().b(r.a(paramString));
-      ac.c("WashMonitor", "ReplaceMonitorImpl >>onAppInstalled tasks = " + e.b((List)localObject1) + " tasksByName = " + e.b((List)localObject2));
-      if (!e.a((List)localObject1))
+      Object localObject2 = com.tencent.replacemonitor.replace.b.a.a().b(q.a(paramString));
+      ab.c("WashMonitor", "ReplaceMonitorImpl >>onAppInstalled tasks = " + d.b((List)localObject1) + " tasksByName = " + d.b((List)localObject2));
+      if (!d.a((List)localObject1))
       {
         paramString = ((List)localObject1).iterator();
         while (paramString.hasNext())
@@ -170,17 +170,17 @@ public class a
           localObject1 = (MonitorTask)paramString.next();
           if (((MonitorTask)localObject1).lastStep == MonitorStep.BEFORE_INSTALL)
           {
-            ac.c("WashMonitor", "ReplaceMonitorImpl >>onAppInstalled 执行安装中检测  " + ((MonitorTask)localObject1).appName);
+            ab.c("WashMonitor", "ReplaceMonitorImpl >>onAppInstalled 执行安装中检测  " + ((MonitorTask)localObject1).appName);
             a((MonitorTask)localObject1, MonitorStep.INSTALLING);
           }
           else if (((MonitorTask)localObject1).lastStep == MonitorStep.INSTALLING)
           {
-            ac.c("WashMonitor", "ReplaceMonitorImpl >>onAppInstalled 发现覆盖安装，执行安装后检测  " + ((MonitorTask)localObject1).appName);
+            ab.c("WashMonitor", "ReplaceMonitorImpl >>onAppInstalled 发现覆盖安装，执行安装后检测  " + ((MonitorTask)localObject1).appName);
             a((MonitorTask)localObject1, MonitorStep.AFTER_INSTALL);
           }
         }
       }
-      else if (!e.a((List)localObject2))
+      else if (!d.a((List)localObject2))
       {
         localObject1 = ((List)localObject2).iterator();
         while (((Iterator)localObject1).hasNext())
@@ -188,17 +188,17 @@ public class a
           localObject2 = (MonitorTask)((Iterator)localObject1).next();
           if ((((MonitorTask)localObject2).packageName.equals(paramString.packageName)) && (((MonitorTask)localObject2).versionCode < paramString.versionCode))
           {
-            ac.c("WashMonitor", "ReplaceMonitorImpl >>onAppInstalled " + ((MonitorTask)localObject2).appName + " 发现安装了更高版本，不做洗包判定并删除任务");
+            ab.c("WashMonitor", "ReplaceMonitorImpl >>onAppInstalled " + ((MonitorTask)localObject2).appName + " 发现安装了更高版本，不做洗包判定并删除任务");
             com.tencent.replacemonitor.replace.b.a.a().b((MonitorTask)localObject2);
           }
           else if (((MonitorTask)localObject2).lastStep == MonitorStep.BEFORE_INSTALL)
           {
-            ac.c("WashMonitor", "ReplaceMonitorImpl >>onAppInstalled 发现同名应用安装，执行安装中检测  " + ((MonitorTask)localObject2).appName);
+            ab.c("WashMonitor", "ReplaceMonitorImpl >>onAppInstalled 发现同名应用安装，执行安装中检测  " + ((MonitorTask)localObject2).appName);
             a((MonitorTask)localObject2, MonitorStep.INSTALLING);
           }
-          else if ((((MonitorTask)localObject2).lastStep == MonitorStep.INSTALLING) && (!r.a(((MonitorTask)localObject2).packageName)))
+          else if ((((MonitorTask)localObject2).lastStep == MonitorStep.INSTALLING) && (!q.a(((MonitorTask)localObject2).packageName)))
           {
-            ac.c("WashMonitor", "ReplaceMonitorImpl >>onAppInstalled,发现已安装应用被卸载，但是appName相同包名不同的应用被安装，执行安装后检测  " + ((MonitorTask)localObject2).appName);
+            ab.c("WashMonitor", "ReplaceMonitorImpl >>onAppInstalled,发现已安装应用被卸载，但是appName相同包名不同的应用被安装，执行安装后检测  " + ((MonitorTask)localObject2).appName);
             a((MonitorTask)localObject2, MonitorStep.AFTER_INSTALL);
           }
         }
@@ -213,7 +213,7 @@ public class a
   
   public void b(MonitorTask paramMonitorTask)
   {
-    ac.c("WashMonitor", "ReplaceMonitorImpl >>deleteTask task = " + paramMonitorTask);
+    ab.c("WashMonitor", "ReplaceMonitorImpl >>deleteTask task = " + paramMonitorTask);
     if (paramMonitorTask != null) {
       com.tencent.replacemonitor.replace.b.a.a().b(paramMonitorTask);
     }
@@ -226,26 +226,26 @@ public class a
     {
       try
       {
-        ac.c("WashMonitor", "ReplaceMonitorImpl >>onMonitorFinish task == null || result == null");
+        ab.c("WashMonitor", "ReplaceMonitorImpl >>onMonitorFinish task == null || result == null");
         return;
       }
       finally {}
-      ac.c("WashMonitor", "ReplaceMonitorImpl >>onMonitorFinish " + paramMonitorTask.appName + paramMonitorResult.step + " 检测结果为" + paramMonitorResult.resultCode);
+      ab.c("WashMonitor", "ReplaceMonitorImpl >>onMonitorFinish " + paramMonitorTask.appName + paramMonitorResult.step + " 检测结果为" + paramMonitorResult.resultCode);
       if (paramMonitorResult.resultCode == 1) {
         b(paramMonitorTask, paramMonitorResult);
       }
       a(paramMonitorTask, paramMonitorResult);
       if ((paramMonitorResult.resultCode == 1) || (paramMonitorResult.step == MonitorStep.AFTER_INSTALL))
       {
-        ac.c("WashMonitor", "ReplaceMonitorImpl >>onMonitorFinish 删除已经检测到洗包或完整执行的任务");
+        ab.c("WashMonitor", "ReplaceMonitorImpl >>onMonitorFinish 删除已经检测到洗包或完整执行的任务");
         com.tencent.replacemonitor.replace.b.a.a().b(paramMonitorTask);
         if (paramMonitorResult.step == MonitorStep.INSTALLING) {
-          l.a().postDelayed(new c(this, paramMonitorTask), 1800000L);
+          k.a().postDelayed(new c(this, paramMonitorTask), 1800000L);
         }
       }
       else
       {
-        ac.c("WashMonitor", "ReplaceMonitorImpl >>onMonitorFinish " + paramMonitorTask.packageName + " " + paramMonitorTask.appName + paramMonitorResult.step + "检测通过，更新MonitorTask.lastStep");
+        ab.c("WashMonitor", "ReplaceMonitorImpl >>onMonitorFinish " + paramMonitorTask.packageName + " " + paramMonitorTask.appName + paramMonitorResult.step + "检测通过，更新MonitorTask.lastStep");
         paramMonitorTask.lastStep = paramMonitorResult.step;
         com.tencent.replacemonitor.replace.b.a.a().a(paramMonitorTask);
       }

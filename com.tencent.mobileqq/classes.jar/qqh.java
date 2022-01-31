@@ -1,16 +1,25 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
 public class qqh
-  implements nyx
+  implements TopGestureLayout.OnGestureListener
 {
-  public qqh(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, nyx paramnyx) {}
+  public qqh(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void a(int paramInt)
+  public void flingLToR()
   {
-    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew).setVisibility(8);
-    if (this.jdField_a_of_type_Nyx != null) {
-      this.jdField_a_of_type_Nyx.a(paramInt);
+    if ((VideoFeedsPlayActivity.a(this.a) != null) && (VideoFeedsPlayActivity.a(this.a).a())) {
+      return;
+    }
+    VideoFeedsPlayActivity.a(this.a, true);
+    this.a.d();
+  }
+  
+  public void flingRToL()
+  {
+    if (VideoFeedsPlayActivity.a(this.a) != null) {
+      VideoFeedsPlayActivity.a(this.a).b();
     }
   }
 }

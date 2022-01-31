@@ -1,10 +1,12 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface adtd
+class adtd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(View paramView);
+  adtd(adta paramadta) {}
   
-  public abstract void b(View paramView);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

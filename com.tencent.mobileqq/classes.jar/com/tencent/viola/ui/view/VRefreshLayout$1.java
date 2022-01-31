@@ -2,6 +2,8 @@ package com.tencent.viola.ui.view;
 
 import com.tencent.viola.ui.component.VRefresh;
 import com.tencent.viola.ui.dom.DomObject;
+import java.util.Iterator;
+import java.util.List;
 import org.json.JSONArray;
 
 class VRefreshLayout$1
@@ -14,15 +16,22 @@ class VRefreshLayout$1
     if (VRefreshLayout.access$000(this.this$0) != null) {
       VRefreshLayout.access$000(this.this$0).onStateEnd();
     }
-    JSONArray localJSONArray = new JSONArray();
+    if (VRefreshLayout.access$100(this.this$0) != null)
+    {
+      localObject = VRefreshLayout.access$100(this.this$0).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((VRefreshLayout.OnHeaderStateChangeListener)((Iterator)localObject).next()).onStateEnd();
+      }
+    }
+    Object localObject = new JSONArray();
     if ((this.this$0.getComponent() != null) && (this.this$0.getComponent().getDomObject() != null))
     {
       String str = this.this$0.getComponent().getDomObject().getRef();
       if (str != null) {
-        localJSONArray.put(str);
+        ((JSONArray)localObject).put(str);
       }
-      localJSONArray.put("idle");
-      this.this$0.getComponent().refreshFireEvent("idle", localJSONArray, VRefreshLayout.access$100(this.this$0));
+      ((JSONArray)localObject).put("idle");
+      this.this$0.getComponent().refreshFireEvent("idle", (JSONArray)localObject, VRefreshLayout.access$200(this.this$0));
     }
   }
 }

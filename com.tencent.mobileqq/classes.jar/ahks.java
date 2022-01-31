@@ -1,27 +1,29 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.4.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ahks
-  implements spg<spb>
+class ahks
+  implements View.OnClickListener
 {
-  public ahks(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  ahks(ahkf paramahkf) {}
   
-  public void a(boolean paramBoolean, spb paramspb)
+  public void onClick(View paramView)
   {
-    urk.b(P2VEditMusicDialog.a(), "onAddressUpdate.");
-    if ((paramBoolean) && (paramspb != null))
+    this.a.a(-1, null);
+    if (akva.a().a() == 4)
     {
-      urk.a(P2VEditMusicDialog.a(), "onAddressUpdate success, address=%s", paramspb);
-      this.a.a.post(new P2VEditMusicDialog.4.1(this, paramspb));
+      axqw.b(ahkf.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, akuz.b(), akva.b(), akva.a(), "1");
+      akva.a().a(ahkf.a(this.a));
       return;
     }
-    urk.e(P2VEditMusicDialog.a(), "onAddressUpdate failed.");
+    axqw.b(ahkf.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, akuz.b(), akva.b(), akva.a(), "1");
+    UpgradeDetailActivity.a(ahkf.a(this.a), akva.a().a(), true, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahks
  * JD-Core Version:    0.7.0.1
  */

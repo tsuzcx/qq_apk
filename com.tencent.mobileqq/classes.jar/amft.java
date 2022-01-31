@@ -1,99 +1,157 @@
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 public class amft
 {
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private static amft jdField_a_of_type_Amft;
+  public int a;
+  public String a;
+  private final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public final boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f;
+  public boolean f;
+  public int g;
+  public boolean g;
+  public int h = -1;
+  public int i = -1;
   
-  public static amft a(alzs[] paramArrayOfalzs)
+  public amft()
   {
-    amft localamft = new amft();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    for (;;)
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = -1;
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_f_of_type_Int = -1;
+    this.jdField_g_of_type_Int = -1;
+  }
+  
+  public static amft a()
+  {
+    if (jdField_a_of_type_Amft == null) {}
+    try
     {
-      try
-      {
-        if (i < paramArrayOfalzs.length)
-        {
-          String str = paramArrayOfalzs[i].a;
-          JSONObject localJSONObject = new JSONObject(str);
-          if (localJSONObject.has("enable_third_app_share_for_backend"))
-          {
-            if (localJSONObject.optInt("enable_third_app_share_for_backend", 0) == 1)
-            {
-              bool = true;
-              localamft.jdField_a_of_type_Boolean = bool;
-            }
-          }
-          else
-          {
-            if (localJSONObject.has("enable_third_app_share_big_image_by_server"))
-            {
-              if (localJSONObject.optInt("enable_third_app_share_big_image_by_server", 0) != 1) {
-                break label207;
-              }
-              bool = true;
-              localamft.b = bool;
-            }
-            if (localJSONObject.has("sdk_share_verify_appinfo_timeout_duration")) {
-              localamft.jdField_a_of_type_Long = localJSONObject.optInt("sdk_share_verify_appinfo_timeout_duration", 0);
-            }
-            localStringBuilder.append("config: ").append(str).append(",");
-            i += 1;
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("SDKShareConfProcessor", 2, "parse, content:" + localStringBuilder.toString());
-          }
-          return localamft;
-        }
+      if (jdField_a_of_type_Amft == null) {
+        jdField_a_of_type_Amft = new amft();
       }
-      catch (JSONException paramArrayOfalzs)
-      {
-        QLog.d("SDKShareConfProcessor", 2, "parse, failed!");
-        paramArrayOfalzs.printStackTrace();
-        return null;
-      }
-      boolean bool = false;
-      continue;
-      label207:
-      bool = false;
+      return jdField_a_of_type_Amft;
+    }
+    finally {}
+  }
+  
+  private void a(SharedPreferences paramSharedPreferences)
+  {
+    QLog.i("Q.camera.adapter.CameraAttrs", 1, "[loadValueFromPref] + BEGIN");
+    this.jdField_b_of_type_Boolean = paramSharedPreferences.getBoolean("sysCameraOn", false);
+    this.jdField_a_of_type_JavaLangString = paramSharedPreferences.getString("str_sysMinVersion", "1.0.0");
+    this.jdField_b_of_type_JavaLangString = paramSharedPreferences.getString("str_sysMaxVersion", "1000.0.0");
+    this.jdField_c_of_type_Boolean = paramSharedPreferences.getBoolean("disableCameraSDK", true);
+    this.jdField_d_of_type_Boolean = paramSharedPreferences.getBoolean("readCamNumException", false);
+    this.jdField_e_of_type_Boolean = paramSharedPreferences.getBoolean("disableFrontCamera", false);
+    this.jdField_f_of_type_Boolean = paramSharedPreferences.getBoolean("beBlurredPreviewAfterTakePic", false);
+    this.jdField_b_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate0", -1);
+    this.jdField_c_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate90", -1);
+    this.jdField_d_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate180", -1);
+    this.jdField_e_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate270", -1);
+    this.jdField_f_of_type_Int = paramSharedPreferences.getInt("int_backCamRotate0", -1);
+    this.jdField_g_of_type_Int = paramSharedPreferences.getInt("int_backCamRotate90", -1);
+    this.h = paramSharedPreferences.getInt("int_backCamRotate180", -1);
+    this.i = paramSharedPreferences.getInt("int_backCamRotate270", -1);
+    this.jdField_g_of_type_Boolean = paramSharedPreferences.getBoolean("frontCamFlipH", false);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.camera.adapter.CameraAttrs", 2, "[loadValueFromPref] + END");
     }
   }
   
-  public long a()
+  public void a()
   {
-    return this.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains("sysCameraOn")) {
+      return;
+    }
+    SharedPreferences localSharedPreferences = amfw.a(BaseApplicationImpl.getContext());
+    this.jdField_b_of_type_Boolean = localSharedPreferences.getBoolean("sysCameraOn", false);
+    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString("str_sysMinVersion", "1.0.0");
+    this.jdField_b_of_type_JavaLangString = localSharedPreferences.getString("str_sysMaxVersion", "1000.0.0");
+    this.jdField_a_of_type_JavaUtilArrayList.add("sysCameraOn");
   }
   
-  public boolean a()
+  public void a(SharedPreferences paramSharedPreferences, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Boolean;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.camera.adapter.CameraAttrs", 4, "[loadConfigAndSave] + BEGIN");
+    }
+    int j = paramSharedPreferences.getInt("qcamera_conf_version", 0);
+    if ((j != this.jdField_a_of_type_Int) && (paramBoolean))
+    {
+      this.jdField_a_of_type_Int = j;
+      a(paramSharedPreferences);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.camera.adapter.CameraAttrs", 4, "[loadConfigAndSave] + END");
+    }
   }
   
-  public boolean b()
+  public void b()
   {
-    return this.b;
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains("disableCameraSDK")) {
+      return;
+    }
+    this.jdField_c_of_type_Boolean = amfw.a(BaseApplicationImpl.getContext()).getBoolean("disableCameraSDK", true);
+    this.jdField_a_of_type_JavaUtilArrayList.add("disableCameraSDK");
   }
   
-  public String toString()
+  public void c()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("serverShareEntryEnable:").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("serverShareImageEnable:").append(this.b);
-    localStringBuilder.append("timeout_duration:").append(this.jdField_a_of_type_Long);
-    return super.toString();
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains("readCamNumException")) {
+      return;
+    }
+    SharedPreferences localSharedPreferences = amfw.a(BaseApplicationImpl.getContext());
+    this.jdField_d_of_type_Boolean = localSharedPreferences.getBoolean("readCamNumException", false);
+    this.jdField_e_of_type_Boolean = localSharedPreferences.getBoolean("disableFrontCamera", false);
+    this.jdField_a_of_type_JavaUtilArrayList.add("readCamNumException");
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains("int_frontCamRotate0")) {
+      return;
+    }
+    SharedPreferences localSharedPreferences = amfw.a(BaseApplicationImpl.getContext());
+    this.jdField_b_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate0", -1);
+    this.jdField_c_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate90", -1);
+    this.jdField_d_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate180", -1);
+    this.jdField_e_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate270", -1);
+    this.jdField_f_of_type_Int = localSharedPreferences.getInt("int_backCamRotate0", -1);
+    this.jdField_g_of_type_Int = localSharedPreferences.getInt("int_backCamRotate90", -1);
+    this.h = localSharedPreferences.getInt("int_backCamRotate180", -1);
+    this.i = localSharedPreferences.getInt("int_backCamRotate270", -1);
+    this.jdField_a_of_type_JavaUtilArrayList.add("int_frontCamRotate0");
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains("frontCamFlipH")) {
+      return;
+    }
+    this.jdField_g_of_type_Boolean = amfw.a(BaseApplicationImpl.getContext()).getBoolean("frontCamFlipH", false);
+    this.jdField_a_of_type_JavaUtilArrayList.add("frontCamFlipH");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amft
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,11 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build.VERSION;
-import android.util.LruCache;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import java.lang.ref.SoftReference;
-import java.util.Set;
-
-public class bgln
-  extends LruCache<Integer, BitmapDrawable>
+public abstract interface bgln
+  extends bglo
 {
-  public bgln(FastAnimationDrawable paramFastAnimationDrawable, int paramInt)
-  {
-    super(paramInt);
-  }
+  public abstract void b(boolean paramBoolean, String paramString);
   
-  protected void a(boolean paramBoolean, Integer paramInteger, BitmapDrawable paramBitmapDrawable1, BitmapDrawable paramBitmapDrawable2)
-  {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      FastAnimationDrawable.a(this.a).add(new SoftReference(paramBitmapDrawable1.getBitmap()));
-      if (QLog.isColorLevel()) {
-        QLog.d("FastAnimationDrawable", 2, "remove key:" + paramInteger + " bitmap:" + paramBitmapDrawable1.getBitmap());
-      }
-    }
-  }
+  public abstract void e(String paramString);
+  
+  public abstract void f(String paramString);
 }
 
 

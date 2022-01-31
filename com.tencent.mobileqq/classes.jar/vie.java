@@ -1,147 +1,67 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.takevideo.tag.TagItemEntry;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import javax.annotation.Nonnull;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoi.2.1;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoi.2.2;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
 public class vie
+  implements bftk
 {
-  private final int jdField_a_of_type_Int = 20;
-  private atmp jdField_a_of_type_Atmp;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<vik> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private uwb jdField_a_of_type_Uwb;
-  private final vih jdField_a_of_type_Vih;
-  private vik jdField_a_of_type_Vik;
-  private int b = 1;
+  vie(vic paramvic) {}
   
-  public vie(vih paramvih, atmp paramatmp)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_Vih = paramvih;
-    this.jdField_a_of_type_Atmp = paramatmp;
-  }
-  
-  public static List<vik> a(atmp paramatmp)
-  {
-    Object localObject = a(paramatmp, TagItemEntry.class, TagItemEntry.class.getSimpleName(), null, null);
-    paramatmp = (atmp)localObject;
-    if (localObject == null) {
-      paramatmp = new ArrayList();
-    }
-    localObject = new ArrayList();
-    paramatmp = paramatmp.iterator();
-    while (paramatmp.hasNext()) {
-      ((List)localObject).add(new vik((TagItemEntry)paramatmp.next()));
-    }
-    return localObject;
-  }
-  
-  public static List<? extends atmo> a(atmp paramatmp, Class<? extends atmo> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    return paramatmp.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
-  }
-  
-  public static void a(atmp paramatmp, List<vik> paramList)
-  {
-    try
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
     {
-      Object localObject = a(paramatmp, TagItemEntry.class, TagItemEntry.class.getSimpleName(), null, null);
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          TagItemEntry localTagItemEntry = (TagItemEntry)((Iterator)localObject).next();
-          localTagItemEntry.setStatus(1001);
-          paramatmp.b(localTagItemEntry);
-        }
+      paramView.c(l);
+      return;
+    }
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    paramListView = (PullRefreshHeader)paramView;
+    long l;
+    if (this.a.jdField_a_of_type_Long == 0L)
+    {
+      l = System.currentTimeMillis();
+      paramListView.a(l);
+      if (!bbev.g(this.a.a())) {
+        break label118;
       }
+      if (this.a.jdField_a_of_type_Tfb != null) {
+        this.a.jdField_a_of_type_Tfb.a();
+      }
+      this.a.f();
+      new Handler(Looper.getMainLooper()).postDelayed(new EditVideoPoi.2.1(this), 300L);
     }
-    finally
+    for (;;)
     {
-      paramatmp.a().b();
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      paramatmp.b(((vik)paramList.next()).a());
-    }
-    paramatmp.a().c();
-    paramatmp.a().b();
-  }
-  
-  public List<vik> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  @Nullable
-  public vik a()
-  {
-    return this.jdField_a_of_type_Vik;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Uwb = null;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = 1;
-    this.jdField_a_of_type_Vik = null;
-  }
-  
-  public void a(List<vik> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public void a(@Nonnull uwb paramuwb)
-  {
-    urk.a("EditVideoTagPresenter", "%s refresh data, behavior:%s", this, paramuwb);
-    this.jdField_a_of_type_Uwb = paramuwb;
-    if (paramuwb.jdField_a_of_type_Boolean) {}
-    for (paramuwb = new tak(paramuwb.jdField_a_of_type_Int, paramuwb.jdField_a_of_type_Long, "", 20);; paramuwb = new tak("", 20))
-    {
-      slv.a().a(paramuwb, new vif(this));
-      return;
-    }
-  }
-  
-  public void a(vik paramvik)
-  {
-    this.jdField_a_of_type_Vik = paramvik;
-  }
-  
-  public boolean a()
-  {
-    return this.b == 1;
-  }
-  
-  public boolean a(uwb paramuwb)
-  {
-    if (this.jdField_a_of_type_Uwb != null) {
-      if (this.jdField_a_of_type_Uwb.equals(paramuwb)) {}
-    }
-    while (paramuwb != null)
-    {
+      ((aavx)paramView.getTag()).a = true;
       return true;
-      return false;
+      l = this.a.jdField_a_of_type_Long;
+      break;
+      label118:
+      new Handler(Looper.getMainLooper()).postDelayed(new EditVideoPoi.2.2(this), 300L);
     }
-    return false;
   }
   
-  public void b(@Nonnull uwb paramuwb)
+  public void b(int paramInt, View paramView, ListView paramListView)
   {
-    urk.a("EditVideoTagPresenter", "%s loadMore data, behavior:%s", this, paramuwb);
-    this.jdField_a_of_type_Uwb = paramuwb;
-    if (paramuwb.jdField_a_of_type_Boolean) {}
-    for (paramuwb = new tak(paramuwb.jdField_a_of_type_Int, paramuwb.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, 20);; paramuwb = new tak(this.jdField_a_of_type_JavaLangString, 20))
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
     {
-      slv.a().a(paramuwb, new vig(this));
+      paramView.b(l);
       return;
     }
   }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

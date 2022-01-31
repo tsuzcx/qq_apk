@@ -1,14 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class qys
-  implements ViewFactory.FoundClickableViewListener
+  extends Handler
 {
-  qys(qyr paramqyr) {}
+  private qys(qyp paramqyp) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void handleMessage(Message paramMessage)
   {
-    paramViewBase.setOnClickListener(new qyt(this));
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      qyp.a(this.a);
+      qyp.a(this.a).sendEmptyMessageDelayed(0, qyp.a(this.a));
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(qyp.a(this.a), 2, "prePlay timeout, try rePlay");
+    }
+    if ((this.a.e()) && (qyp.a(this.a).a() == qyp.a(this.a)))
+    {
+      qyp.b(this.a);
+      return;
+    }
+    qyp.a(this.a, false);
+    this.a.a(qyp.a(this.a));
+    qyp.a(this.a, qyp.a(this.a));
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
 import android.os.Parcel;
-import aoig;
-import ayqd;
+import aoza;
+import azqt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.io.File;
@@ -19,16 +19,20 @@ public class AIOFilePicData
   public long b;
   public String b;
   public boolean b;
+  public int c;
   public String c;
   public boolean c;
+  public int d;
   public String d;
   public boolean d;
+  public int e;
   public String e;
   public boolean e;
   public String f;
   public boolean f;
   public String g;
   public String h;
+  public String i;
   
   public AIOFilePicData()
   {
@@ -129,35 +133,39 @@ public class AIOFilePicData
     for (;;)
     {
       this.jdField_f_of_type_Boolean = bool;
+      this.i = paramParcel.readString();
+      this.jdField_c_of_type_Int = paramParcel.readInt();
+      this.jdField_d_of_type_Int = paramParcel.readInt();
+      this.jdField_e_of_type_Int = paramParcel.readInt();
       return;
       bool = false;
     }
   }
   
-  public void a(ayqd paramayqd)
+  public void a(azqt paramazqt)
   {
-    if (paramayqd == null) {
+    if (paramazqt == null) {
       return;
     }
     String str;
-    if (paramayqd.jdField_d_of_type_JavaLangString != null)
+    if (paramazqt.jdField_d_of_type_JavaLangString != null)
     {
-      str = paramayqd.jdField_d_of_type_JavaLangString;
+      str = paramazqt.jdField_d_of_type_JavaLangString;
       this.jdField_b_of_type_JavaLangString = str;
-      if (paramayqd.jdField_c_of_type_JavaLangString == null) {
+      if (paramazqt.jdField_c_of_type_JavaLangString == null) {
         break label108;
       }
-      str = paramayqd.jdField_c_of_type_JavaLangString;
+      str = paramazqt.jdField_c_of_type_JavaLangString;
       label34:
       this.jdField_c_of_type_JavaLangString = str;
-      if (paramayqd.jdField_a_of_type_JavaLangString == null) {
+      if (paramazqt.jdField_a_of_type_JavaLangString == null) {
         break label114;
       }
-      str = paramayqd.jdField_a_of_type_JavaLangString;
+      str = paramazqt.jdField_a_of_type_JavaLangString;
       label51:
       this.jdField_d_of_type_JavaLangString = str;
-      this.g = paramayqd.g;
-      if (paramayqd.jdField_b_of_type_Int != 12) {
+      this.g = paramazqt.g;
+      if (paramazqt.jdField_b_of_type_Int != 12) {
         break label120;
       }
     }
@@ -167,8 +175,8 @@ public class AIOFilePicData
     for (boolean bool = true;; bool = false)
     {
       this.jdField_d_of_type_Boolean = bool;
-      this.jdField_a_of_type_Long = paramayqd.jdField_c_of_type_Long;
-      this.jdField_h_of_type_Long = paramayqd.jdField_c_of_type_Long;
+      this.jdField_a_of_type_Long = paramazqt.jdField_c_of_type_Long;
+      this.jdField_h_of_type_Long = paramazqt.jdField_c_of_type_Long;
       this.jdField_e_of_type_Boolean = false;
       return;
       str = "I:N";
@@ -275,6 +283,10 @@ public class AIOFilePicData
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
+      paramParcel.writeString(this.i);
+      paramParcel.writeInt(this.jdField_c_of_type_Int);
+      paramParcel.writeInt(this.jdField_d_of_type_Int);
+      paramParcel.writeInt(this.jdField_e_of_type_Int);
       return;
     }
   }

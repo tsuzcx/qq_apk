@@ -1,117 +1,166 @@
-import android.graphics.Rect;
-import android.support.annotation.NonNull;
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import android.view.animation.AnimationSet;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.ListView;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Map;
+import java.util.Set;
 
-public class oya
+public abstract class oya
 {
-  public static void a(@NonNull View paramView, String paramString)
+  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
+  private rap jdField_a_of_type_Rap;
+  
+  public abstract int a();
+  
+  public final Activity a()
   {
-    if (a()) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      a(paramView, localJSONObject);
-      a(paramString, "logViewHierarchy: " + localJSONObject.toString());
-      return;
+    return this.jdField_a_of_type_Rap.a();
+  }
+  
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public AnimationSet a()
+  {
+    return this.jdField_a_of_type_Rap.a();
+  }
+  
+  public final baxk a()
+  {
+    return this.jdField_a_of_type_Rap.a();
+  }
+  
+  public ReadInJoyBaseListViewGroup a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
+  }
+  
+  public AbsListView a()
+  {
+    if (this.jdField_a_of_type_Rap != null) {
+      return this.jdField_a_of_type_Rap.a();
     }
-    catch (Exception paramView)
-    {
-      QLog.e(paramString, 1, "[logViewHierarchy] ", paramView);
+    return null;
+  }
+  
+  public Boolean a()
+  {
+    return null;
+  }
+  
+  public Integer a(int paramInt)
+  {
+    return Integer.valueOf(this.jdField_a_of_type_Rap.getItemViewType(paramInt));
+  }
+  
+  public final Object a(int paramInt)
+  {
+    return this.jdField_a_of_type_Rap.getItem(paramInt);
+  }
+  
+  public final rap a()
+  {
+    return this.jdField_a_of_type_Rap;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(View paramView, ArticleInfo paramArticleInfo, int paramInt) {}
+  
+  public void a(View paramView, ListView paramListView) {}
+  
+  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt) {}
+  
+  public final void a(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup = paramReadInJoyBaseListViewGroup;
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {}
+  
+  public void a(List<BaseArticleInfo> paramList) {}
+  
+  public void a(Map<Integer, qar> paramMap) {}
+  
+  public void a(Map<Long, qar> paramMap, boolean paramBoolean) {}
+  
+  public void a(Set<Long> paramSet, Map<Long, qar> paramMap) {}
+  
+  public final void a(rap paramrap)
+  {
+    this.jdField_a_of_type_Rap = paramrap;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
     }
   }
   
-  public static void a(@NonNull View paramView, @NonNull JSONObject paramJSONObject)
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
+  
+  public final boolean a()
   {
-    int i = paramView.getLeft();
-    int j = paramView.getRight();
-    int k = paramView.getTop();
-    int m = paramView.getBottom();
-    Object localObject1 = paramView.getClass().getSimpleName();
-    Object localObject2 = new Rect(i, k, j, m);
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("name", localObject1);
-    localJSONObject.put("visibility", paramView.getVisibility());
-    localJSONObject.put("bounds", localObject2);
-    paramJSONObject.put("view", localJSONObject);
-    if ((paramView instanceof ViewGroup))
-    {
-      j = ((ViewGroup)paramView).getChildCount();
-      localObject1 = new JSONArray();
-      i = 0;
-      while (i < j)
-      {
-        localObject2 = new JSONObject();
-        a(((ViewGroup)paramView).getChildAt(i), (JSONObject)localObject2);
-        ((JSONArray)localObject1).put(localObject2);
-        i += 1;
-      }
-      paramJSONObject.put("children", localObject1);
-    }
+    return this.jdField_a_of_type_Rap.c;
   }
   
-  public static void a(@NonNull ViewBase paramViewBase, String paramString)
+  public boolean a(int paramInt)
   {
-    if (a()) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      a(paramViewBase, localJSONObject);
-      a(paramString, "logViewBaseHierarchy: " + localJSONObject.toString());
-      return;
-    }
-    catch (Exception paramViewBase)
-    {
-      QLog.e(paramString, 1, "[logViewBaseHierarchy] ", paramViewBase);
-    }
+    return false;
   }
   
-  private static void a(@NonNull ViewBase paramViewBase, @NonNull JSONObject paramJSONObject)
+  public int b()
   {
-    Object localObject1 = new Rect(paramViewBase.getDrawLeft(), paramViewBase.getDrawTop(), paramViewBase.getWidth(), paramViewBase.getHeight());
-    Object localObject2 = paramViewBase.getClass().getSimpleName();
-    Object localObject3 = paramViewBase.getName();
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("name", localObject2);
-    localJSONObject.put("id", localObject3);
-    localJSONObject.put("visibility", paramViewBase.getVisibility());
-    localJSONObject.put("bounds", localObject1);
-    paramJSONObject.put("view", localJSONObject);
-    if ((paramViewBase instanceof Layout))
-    {
-      localObject1 = ((Layout)paramViewBase).getSubViews();
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
-      {
-        paramViewBase = new JSONArray();
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (ViewBase)((Iterator)localObject1).next();
-          localObject3 = new JSONObject();
-          a((ViewBase)localObject2, (JSONObject)localObject3);
-          paramViewBase.put(localObject3);
-        }
-        paramJSONObject.put("children", paramViewBase);
-      }
-    }
+    return this.jdField_a_of_type_Rap.a();
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void b() {}
+  
+  public void b(View paramView, ListView paramListView) {}
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
+  
+  public int c()
   {
-    QLog.d(paramString1, 1, paramString2);
+    return this.jdField_a_of_type_Rap.b();
   }
   
-  public static boolean a()
+  public void c() {}
+  
+  public final int d()
   {
-    return true;
+    return this.jdField_a_of_type_Rap.getCount();
   }
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
 }
 
 

@@ -1,6 +1,19 @@
-public abstract interface npr
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.TopBarInfo;
+
+public final class npr
+  implements Parcelable.Creator<VideoInfo.TopBarInfo>
 {
-  public abstract void a();
+  public VideoInfo.TopBarInfo a(Parcel paramParcel)
+  {
+    return new VideoInfo.TopBarInfo(paramParcel);
+  }
+  
+  public VideoInfo.TopBarInfo[] a(int paramInt)
+  {
+    return new VideoInfo.TopBarInfo[paramInt];
+  }
 }
 
 

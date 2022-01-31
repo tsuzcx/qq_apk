@@ -1,18 +1,34 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.3.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import mqq.os.MqqHandler;
-
 public class trn
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements trm
 {
-  trn(trk paramtrk) {}
+  private tqk jdField_a_of_type_Tqk;
+  private trp jdField_a_of_type_Trp;
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public trn(tqk paramtqk, trp paramtrp)
   {
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
-    return false;
+    this.jdField_a_of_type_Tqk = paramtqk;
+    this.jdField_a_of_type_Trp = paramtrp;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Tqk != null) {
+      this.jdField_a_of_type_Tqk.c(this.jdField_a_of_type_Trp);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Tqk != null) {
+      this.jdField_a_of_type_Tqk.d(this.jdField_a_of_type_Trp);
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Tqk != null) {
+      this.jdField_a_of_type_Tqk.e(this.jdField_a_of_type_Trp);
+    }
   }
 }
 

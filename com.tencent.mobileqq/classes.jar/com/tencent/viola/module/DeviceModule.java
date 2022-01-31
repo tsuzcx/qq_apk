@@ -26,9 +26,14 @@ public class DeviceModule
   public static final String TAG = "DeviceModule";
   private AudioManager mAudioManager;
   private ViolaBrightnessController mBrightnessController;
+  private Handler mHandler;
+  private int mHorizontalAngle = 20;
+  private int mLastOrientation = 1;
+  private long mLastOrientationTime = 0L;
   private OrientationDetector.OnOrientationChangedListener mListener;
   private float mMaxVolume;
   private OrientationDetector mOrientationDetector;
+  private int mVerticalAngle = 30;
   private ContentObserver mVolumeChangedObserver;
   
   private void initAudioManager()
@@ -67,13 +72,28 @@ public class DeviceModule
       if (this.mListener == null) {
         this.mListener = new DeviceModule.1(this, paramString);
       }
-      if ((this.mOrientationDetector == null) && ((getViolaInstance().getContext() instanceof Activity))) {
+      if ((this.mOrientationDetector == null) && ((getViolaInstance().getContext() instanceof Activity)))
+      {
         this.mOrientationDetector = new OrientationDetector((Activity)getViolaInstance().getContext(), this.mListener);
+        this.mOrientationDetector.setHorizontalAngle(this.mHorizontalAngle);
+        this.mOrientationDetector.setVerticalAngle(this.mVerticalAngle);
+        this.mHandler = new Handler();
       }
       if (this.mOrientationDetector != null) {
         this.mOrientationDetector.enable(true);
       }
     }
+  }
+  
+  @JSMethod(uiThread=false)
+  public void getOrientationChangedWithAngle(JSONObject paramJSONObject, String paramString)
+  {
+    if (paramJSONObject != null)
+    {
+      this.mVerticalAngle = paramJSONObject.optInt("verticalAngle", 30);
+      this.mHorizontalAngle = paramJSONObject.optInt("horizontalAngle", 30);
+    }
+    getOrientationChanged(paramString);
   }
   
   @JSMethod

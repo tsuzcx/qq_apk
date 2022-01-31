@@ -1,93 +1,120 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
-import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
-import com.tencent.mobileqq.widget.CircleProgress;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.TextUtils;
+import java.lang.reflect.Method;
 
 public class ahiu
-  implements Animator.AnimatorListener
 {
-  public ahiu(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public static String a()
   {
-    if (!this.a.s)
-    {
-      if (ahhj.a == 2) {
-        this.a.jdField_a_of_type_Awir.e();
-      }
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      if (NewFlowCameraActivity.i(this.a))
-      {
-        AVCodec.get().retake();
-        urk.c("PTV.NewFlowCameraActivity", "AVCodec.get().retake() by mbRetake flag");
-        NewFlowCameraActivity.i(this.a, false);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_Ahlj.y();
-      if (NewFlowCameraActivity.j(this.a))
-      {
-        if (ahhj.a != 1) {
-          break label235;
-        }
-        NewFlowCameraActivity.a(this.a, true);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_Double = 0.0D;
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.f();
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.reset();
-        this.a.I();
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, "start recording start time=" + this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_Long);
-        }
-        this.a.s = true;
-        if (this.a.g) {
-          this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(4);
-        }
-        return;
-        label235:
-        this.a.jdField_a_of_type_Awir.c(true);
-      }
+    if (a()) {
+      return a("ro.miui.ui.version.name", "");
     }
-    if (this.a.g) {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    }
-    paramAnimator = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    int i = aciy.a(59.0F, this.a.getResources());
-    paramAnimator.width = i;
-    paramAnimator.height = i;
-    paramAnimator.addRule(13);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramAnimator);
-    paramAnimator = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.getLayoutParams();
-    i = aciy.a(84.0F, this.a.getResources());
-    paramAnimator.width = i;
-    paramAnimator.height = i;
-    paramAnimator.addRule(13);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setLayoutParams(paramAnimator);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
+    return "";
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  private static String a(String paramString1, String paramString2)
   {
-    this.a.s = false;
+    try
+    {
+      Class localClass = Class.forName("android.os.SystemProperties");
+      paramString1 = (String)localClass.getMethod("get", new Class[] { String.class, String.class }).invoke(localClass, new Object[] { paramString1, paramString2 });
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return paramString2;
+  }
+  
+  public static boolean a()
+  {
+    return !TextUtils.isEmpty(a("ro.miui.ui.version.name", ""));
+  }
+  
+  public static String b()
+  {
+    if (c()) {
+      return a("ro.build.version.emui", "");
+    }
+    return "";
+  }
+  
+  public static boolean b()
+  {
+    String str = a();
+    try
+    {
+      if (!str.isEmpty())
+      {
+        int i = Integer.valueOf(str.substring(1)).intValue();
+        if (i >= 6) {
+          return true;
+        }
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return false;
+  }
+  
+  public static String c()
+  {
+    if (e()) {
+      return a("ro.build.display.id", "");
+    }
+    return "";
+  }
+  
+  public static boolean c()
+  {
+    return !TextUtils.isEmpty(a("ro.build.version.emui", ""));
+  }
+  
+  private static String d()
+  {
+    return a("ro.build.display.id", "");
+  }
+  
+  public static boolean d()
+  {
+    String str = b();
+    return ("EmotionUI 3".equals(str)) || (str.contains("EmotionUI_3.1"));
+  }
+  
+  public static boolean e()
+  {
+    return d().toLowerCase().contains("flyme");
+  }
+  
+  public static boolean f()
+  {
+    String str = c();
+    int i;
+    try
+    {
+      if (!str.isEmpty()) {
+        if (str.toLowerCase().contains("os")) {
+          i = Integer.valueOf(str.substring(9, 10)).intValue();
+        } else {
+          i = Integer.valueOf(str.substring(6, 7)).intValue();
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    while (i < 4) {
+      return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ahiu
  * JD-Core Version:    0.7.0.1
  */

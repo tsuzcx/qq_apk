@@ -1,32 +1,51 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
 public class abdd
-  implements View.OnLongClickListener
+  implements acay
 {
-  public abdd(MainFragment paramMainFragment) {}
+  public abdd(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(Editable paramEditable)
   {
-    if (this.a.a() == MainFragment.b)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainFragment", 2, "Mainfragment onLongClick");
-      }
-      paramView = (Conversation)this.a.a(Conversation.class);
-      if (paramView != null)
-      {
-        paramView = paramView.a().a();
-        if (paramView != null) {
-          artn.a(this.a.getActivity(), paramView.a(), paramView.a(), paramView.b(), "conversation_tab_bottom");
-        }
-      }
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      ForwardTroopListFragment.a(this.a).setVisibility(8);
     }
-    return true;
+    for (;;)
+    {
+      if (ForwardTroopListFragment.a(this.a) != null) {
+        ForwardTroopListFragment.a(this.a).a(paramEditable);
+      }
+      return;
+      ForwardTroopListFragment.a(this.a).setVisibility(0);
+    }
+  }
+  
+  public void a(ResultRecord paramResultRecord)
+  {
+    if (paramResultRecord != null) {
+      ForwardTroopListFragment.a(this.a, paramResultRecord.a, paramResultRecord.a());
+    }
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (ForwardTroopListFragment.a(this.a) == null))
+    {
+      ForwardTroopListFragment.a(this.a, ContactSearchFragment.a(8, 2097176, null, null, ForwardTroopListFragment.a(this.a)));
+      FragmentTransaction localFragmentTransaction = this.a.getActivity().getSupportFragmentManager().beginTransaction();
+      localFragmentTransaction.add(2131375187, ForwardTroopListFragment.a(this.a));
+      localFragmentTransaction.commitAllowingStateLoss();
+    }
   }
 }
 

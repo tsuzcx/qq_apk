@@ -1,28 +1,20 @@
-import android.graphics.drawable.Drawable;
+import android.support.v4.view.MotionEventCompat;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
 public class rej
-  implements Comparable<rej>
+  implements View.OnTouchListener
 {
-  public int a;
-  public Drawable a;
-  public String a;
+  public rej(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview) {}
   
-  public rej(String paramString, int paramInt, Drawable paramDrawable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-  }
-  
-  public int a(rej paramrej)
-  {
-    if (this.jdField_a_of_type_Int < paramrej.jdField_a_of_type_Int) {
-      return -1;
+    if ((MotionEventCompat.getActionMasked(paramMotionEvent) == 0) && (ReadInJoyNavigationGridview.a(this.a) != null)) {
+      ReadInJoyNavigationGridview.a(this.a).a();
     }
-    if (this.jdField_a_of_type_Int > paramrej.jdField_a_of_type_Int) {
-      return 1;
-    }
-    return 0;
+    return true;
   }
 }
 

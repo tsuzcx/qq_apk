@@ -1,17 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity.10.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class agir
-  implements View.OnClickListener
+public class agir
+  extends ajxl
 {
-  agir(agiq paramagiq) {}
+  public agir(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onClick(View paramView)
+  public void onGetFriendsHasBindPhone(boolean paramBoolean, int paramInt, List<String> paramList)
   {
-    ((NewPhotoPreviewActivity)this.a.a.get()).a.toggle();
+    if (QLog.isColorLevel()) {
+      if (paramList != null) {
+        break label95;
+      }
+    }
+    label95:
+    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
+    {
+      QLog.i("BindNumberActivity", 2, String.format("onGetFriendsHasBindPhone [%s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), localObject }));
+      if (paramBoolean) {
+        this.a.runOnUiThread(new BindNumberActivity.10.1(this, paramInt, paramList));
+      }
+      this.a.app.removeObserver(this.a.a);
+      this.a.a = null;
+      return;
+    }
   }
 }
 

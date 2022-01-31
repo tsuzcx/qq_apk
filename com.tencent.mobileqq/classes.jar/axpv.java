@@ -1,30 +1,31 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.statistics.DailyReport;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import java.io.File;
 
 public class axpv
+  extends bbwf
 {
-  File a;
-  
-  public axpv(File paramFile)
+  public axpv(DailyReport paramDailyReport, String paramString1, String paramString2)
   {
-    this.a = paramFile;
+    super(paramString1, paramString2);
   }
   
-  axpw a(String paramString)
+  public void onDone(bbwg parambbwg)
   {
-    return new axpw(this, paramString);
+    super.onDone(parambbwg);
+    long l = parambbwg.a().getLong("id");
+    VasWebviewUtil.reportVasStatus("AvatarPendant", "AvatarPendantOn", String.valueOf(l), 0, 0, 0, 0, bbby.a(new File(bbby.b(l, 4))), "");
   }
   
-  File a(String paramString)
+  public boolean onStart(bbwg parambbwg)
   {
-    if (!this.a.exists()) {
-      this.a.mkdirs();
-    }
-    return new File(this.a, paramString);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axpv
  * JD-Core Version:    0.7.0.1
  */

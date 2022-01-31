@@ -30,6 +30,8 @@ public class Renderer
   
   private static native int nReadPixels(long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Buffer paramBuffer, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, Object paramObject, Runnable paramRunnable);
   
+  private static native int nReadPixelsEx(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Buffer paramBuffer, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, Object paramObject, Runnable paramRunnable);
+  
   private static native void nRender(long paramLong1, long paramLong2);
   
   private static native void nResetUserTime(long paramLong);
@@ -85,6 +87,16 @@ public class Renderer
       throw new ReadOnlyBufferException();
     }
     if (nReadPixels(getNativeObject(), this.mEngine.getNativeObject(), paramInt1, paramInt2, paramInt3, paramInt4, paramPixelBufferDescriptor.storage, paramPixelBufferDescriptor.storage.remaining(), paramPixelBufferDescriptor.left, paramPixelBufferDescriptor.top, paramPixelBufferDescriptor.type.ordinal(), paramPixelBufferDescriptor.alignment, paramPixelBufferDescriptor.stride, paramPixelBufferDescriptor.format.ordinal(), paramPixelBufferDescriptor.handler, paramPixelBufferDescriptor.callback) < 0) {
+      throw new BufferOverflowException();
+    }
+  }
+  
+  public void readPixels(@NonNull RenderTarget paramRenderTarget, @IntRange(from=0L) int paramInt1, @IntRange(from=0L) int paramInt2, @IntRange(from=0L) int paramInt3, @IntRange(from=0L) int paramInt4, @NonNull Texture.PixelBufferDescriptor paramPixelBufferDescriptor)
+  {
+    if (paramPixelBufferDescriptor.storage.isReadOnly()) {
+      throw new ReadOnlyBufferException();
+    }
+    if (nReadPixelsEx(getNativeObject(), this.mEngine.getNativeObject(), paramRenderTarget.getNativeObject(), paramInt1, paramInt2, paramInt3, paramInt4, paramPixelBufferDescriptor.storage, paramPixelBufferDescriptor.storage.remaining(), paramPixelBufferDescriptor.left, paramPixelBufferDescriptor.top, paramPixelBufferDescriptor.type.ordinal(), paramPixelBufferDescriptor.alignment, paramPixelBufferDescriptor.stride, paramPixelBufferDescriptor.format.ordinal(), paramPixelBufferDescriptor.handler, paramPixelBufferDescriptor.callback) < 0) {
       throw new BufferOverflowException();
     }
   }

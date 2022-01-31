@@ -1,54 +1,26 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.UpdateUserInfoEventReceiver.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class ugg
-  extends QQUIEventReceiver<uga, sxr>
+final class ugg
+  implements URLDrawable.URLDrawableListener
 {
-  public ugg(@NonNull uga paramuga)
+  ugg(ImageView paramImageView, Drawable paramDrawable) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super(paramuga);
+    veg.d("BannerVideoInfoWidget", "failed to parse the url drawable, error " + paramThrowable);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
   
-  public void a(@NonNull uga paramuga, @NonNull sxr paramsxr)
-  {
-    if (TextUtils.equals(paramsxr.jdField_a_of_type_JavaLangString, String.valueOf(paramuga.hashCode())))
-    {
-      if ((paramsxr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramsxr.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null))
-      {
-        urk.b("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", paramsxr);
-        paramuga.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramsxr.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-        paramuga.jdField_a_of_type_JavaLangString = paramsxr.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;
-        if (uga.a(paramuga) != -1) {
-          paramuga.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = uga.a(paramuga);
-        }
-        if (uga.b(paramuga) != -1) {
-          paramuga.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.shareGroupCount = uga.b(paramuga);
-        }
-        ((FriendListHandler)tfy.a().a(1)).c(paramsxr.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, false);
-        ThreadManager.post(new MemoriesProfilePresenter.UpdateUserInfoEventReceiver.1(this, paramuga), 5, null, false);
-      }
-      for (;;)
-      {
-        uga.a(paramuga).a(paramsxr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
-        return;
-        bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131640742) + paramsxr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.getErrorMessage(), 0);
-        urk.e("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", new Object[] { paramsxr });
-      }
-    }
-    urk.b("Q.qqstory.memories.MemoriesProfilePresenter", "ignore this update user info event: %s.", paramsxr);
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public Class acceptEventClass()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return sxr.class;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
   }
 }
 

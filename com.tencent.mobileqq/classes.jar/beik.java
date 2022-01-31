@@ -1,23 +1,34 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.widget.DynamicGridView;
+import java.io.ByteArrayOutputStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 
-public class beik
-  implements AdapterView.OnItemClickListener
+class beik
+  extends ByteArrayOutputStream
 {
-  public beik(DynamicGridView paramDynamicGridView) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  beik(beij parambeij, int paramInt)
   {
-    if ((!this.a.a()) && (this.a.isEnabled()) && (DynamicGridView.a(this.a) != null)) {
-      DynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    super(paramInt);
+  }
+  
+  public String toString()
+  {
+    if ((this.count > 0) && (this.buf[(this.count - 1)] == 13)) {}
+    for (int i = this.count - 1;; i = this.count) {
+      try
+      {
+        String str = new String(this.buf, 0, i, beij.a(this.a).name());
+        return str;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        throw new AssertionError(localUnsupportedEncodingException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beik
  * JD-Core Version:    0.7.0.1
  */

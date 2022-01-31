@@ -1,71 +1,45 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
+import java.util.Set;
 
-class auzn
-  extends Handler
+public class auzn
+  implements ajtg
 {
-  protected WeakReference<auzm> a;
+  private WeakReference<ProfileHeaderView> a;
   
-  public auzn(auzm paramauzm1, Looper paramLooper, auzm paramauzm2)
+  public auzn(ProfileHeaderView paramProfileHeaderView)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramauzm2);
+    this.a = new WeakReference(paramProfileHeaderView);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    auzm localauzm = (auzm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localauzm == null)
+    if ((paramBoolean) && (paramInt == 66) && ((paramObject instanceof Set)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("HWAudioEncoder", 2, "AudioEncodeHandler.handleMessage: encoder is null");
+      paramObject = (Set)paramObject;
+      ProfileHeaderView localProfileHeaderView = (ProfileHeaderView)this.a.get();
+      if (localProfileHeaderView == null) {
+        break label80;
       }
-      return;
-    }
-    int i = paramMessage.what;
-    switch (i)
-    {
-    default: 
-      throw new RuntimeException("Unhandled msg what=" + i);
-    case 1: 
-      paramMessage = (Object[])paramMessage.obj;
-      try
+      if (paramObject.contains(localProfileHeaderView.jdField_a_of_type_Auuw.a.jdField_a_of_type_JavaLangString))
       {
-        localauzm.a((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
-        auzm.a(this.jdField_a_of_type_Auzm);
-        return;
-      }
-    case 2: 
-      this.jdField_a_of_type_Auzm.a();
-      return;
-    case 3: 
-      paramMessage = (String)paramMessage.obj;
-      try
-      {
-        auzm.a(this.jdField_a_of_type_Auzm, paramMessage);
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler start fail.", paramMessage);
-        auzm.a(this.jdField_a_of_type_Auzm);
-        return;
+        localProfileHeaderView.b(localProfileHeaderView.jdField_a_of_type_Auuw, false);
+        localProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
       }
     }
-    this.jdField_a_of_type_Auzm.b();
+    label80:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "Can't get reference to ProfileHeadView.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auzn
  * JD-Core Version:    0.7.0.1
  */

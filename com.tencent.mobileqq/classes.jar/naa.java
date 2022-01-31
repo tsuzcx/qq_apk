@@ -1,32 +1,24 @@
-import android.support.v4.view.ViewPager.PageTransformer;
-import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager;
+import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.Context;
+import android.os.Build.VERSION;
 
-public class naa
-  implements ViewPager.PageTransformer
+public final class naa
 {
-  private naa(VerticleViewPager paramVerticleViewPager) {}
-  
-  public void transformPage(View paramView, float paramFloat)
+  @TargetApi(11)
+  public static void a(Context paramContext, String paramString)
   {
-    if (paramFloat < -1.0F)
+    if (Build.VERSION.SDK_INT >= 11)
     {
-      paramView.setAlpha(0.0F);
+      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, paramString));
       return;
     }
-    if (paramFloat <= 1.0F)
-    {
-      paramView.setAlpha(1.0F);
-      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
-      paramView.setTranslationY(paramView.getHeight() * paramFloat);
-      return;
-    }
-    paramView.setAlpha(0.0F);
+    ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     naa
  * JD-Core Version:    0.7.0.1
  */

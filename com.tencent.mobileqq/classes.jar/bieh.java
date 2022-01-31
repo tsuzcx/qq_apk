@@ -1,25 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import java.util.Iterator;
+import java.util.List;
 
 class bieh
-  implements DialogInterface.OnDismissListener
+  implements ThreadPool.Job<Void>
 {
-  bieh(bief parambief) {}
+  bieh(bidy parambidy, List paramList) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    paramDialogInterface = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a;
-    if (paramDialogInterface != null) {
-      paramDialogInterface.b();
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramJobContext.hasNext())
+    {
+      long l = ((Long)paramJobContext.next()).longValue();
+      this.jdField_a_of_type_Bidy.a(l);
     }
-    this.a.jdField_a_of_type_Bigb.a(true, 0.0F, 0.0F, 0.0F, 0.0F);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bieh
  * JD-Core Version:    0.7.0.1
  */

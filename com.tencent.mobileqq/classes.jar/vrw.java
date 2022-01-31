@@ -1,16 +1,51 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class vrw
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract class vrw
 {
-  public vrw(RotateCircleImageView paramRotateCircleImageView) {}
+  protected final int a;
+  protected Context a;
+  protected final String a;
+  protected vrx a;
+  protected boolean a;
+  protected boolean b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public vrw(Context paramContext, String paramString, int paramInt)
   {
-    RotateCircleImageView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public abstract int a();
+  
+  public abstract int a(int paramInt);
+  
+  public abstract View a(int paramInt, ViewGroup paramViewGroup);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, View paramView);
+  
+  public void a(vrx paramvrx)
+  {
+    this.jdField_a_of_type_Vrx = paramvrx;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

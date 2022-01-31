@@ -1,84 +1,48 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QQDingdongSoundData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
 
 public class amzl
-  extends amza
+  extends amyi<amzk>
 {
-  public amzl(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.dingdong.ring", paramQQAppInterface);
-  }
-  
   public int a()
   {
-    return 10050;
+    return 580;
   }
   
-  public Class<? extends XmlData> a()
+  @NonNull
+  public amzk a()
   {
-    return QQDingdongSoundData.class;
+    return amzk.a();
   }
   
-  public String a()
-  {
-    return "dingdongDownloadAudioSoundDuration";
-  }
-  
-  public void a(String paramString)
+  @NonNull
+  public amzk a(@NonNull ampi[] paramArrayOfampi)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQDingdongSoundHandler", 2, "download success: " + paramString);
+      QLog.d("QVIP.PERF.ConfigProcessor", 1, paramArrayOfampi[0].a);
     }
-    try
-    {
-      bace.a(paramString, mge.a(), false);
-      super.a(paramString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    return amzk.a(paramArrayOfampi[0].a);
   }
   
-  public void a(boolean paramBoolean)
+  public Class<amzk> a()
   {
-    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
-    if ((localQQDingdongSoundData != null) && (!localQQDingdongSoundData.autoDownload))
-    {
-      localQQDingdongSoundData.autoDownload = true;
-      amyo.a(localQQDingdongSoundData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
+    return amzk.class;
   }
   
   public boolean a()
   {
-    return true;
+    return false;
   }
   
-  public String b()
+  @NonNull
+  public amzk b()
   {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
-    if (localQQDingdongSoundData == null) {
-      return super.h();
-    }
-    return localQQDingdongSoundData.autoDownload;
+    return amzk.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amzl
  * JD-Core Version:    0.7.0.1
  */

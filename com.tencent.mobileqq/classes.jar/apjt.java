@@ -1,15 +1,59 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ScrollView;
+import com.tencent.kwstudio.office.preview.IHostInterface.IDownloadListener;
 
-class apjt
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public final class apjt
+  implements aysa
 {
-  apjt(apjo paramapjo) {}
+  private final IHostInterface.IDownloadListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener;
+  private final String jdField_a_of_type_JavaLangString;
   
-  public void onGlobalLayout()
+  private apjt(String paramString, IHostInterface.IDownloadListener paramIDownloadListener)
   {
-    if (this.a.a != null) {
-      this.a.a.fullScroll(130);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener = paramIDownloadListener;
+  }
+  
+  public void onResp(aysx paramaysx)
+  {
+    int i = 0;
+    if (paramaysx.jdField_a_of_type_Int == 3) {}
+    label74:
+    label80:
+    for (;;)
+    {
+      return;
+      boolean bool;
+      if (paramaysx.jdField_a_of_type_Int == 0)
+      {
+        bool = true;
+        if (!bool) {
+          break label74;
+        }
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener == null) {
+          break label80;
+        }
+        if (bool) {
+          this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramaysx.jdField_a_of_type_Long, 1.0F);
+        }
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadFinished(this.jdField_a_of_type_JavaLangString, bool, i);
+        return;
+        bool = false;
+        break;
+        i = paramaysx.b;
+      }
+    }
+  }
+  
+  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
+  {
+    if (paramLong2 != 0L)
+    {
+      float f = (float)paramLong1 / (float)paramLong2;
+      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener != null) {
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramLong2, f);
+      }
     }
   }
 }

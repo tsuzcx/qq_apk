@@ -1,23 +1,23 @@
 package cooperation.qqreader.host;
 
-import bfpk;
+import bgxr;
 import com.tencent.common.config.AppSetting;
 
 public class ReaderAppSetting
 {
   public static String buildNum()
   {
-    return "4370";
+    return "4440";
   }
   
   public static boolean enableTalkBack()
   {
-    return AppSetting.c;
+    return AppSetting.d;
   }
   
   public static String getQUA()
   {
-    return bfpk.a();
+    return bgxr.a();
   }
   
   public static boolean isDebugVersion()
@@ -27,7 +27,7 @@ public class ReaderAppSetting
   
   public static String subVersion()
   {
-    return "8.2.6";
+    return "8.2.8";
   }
 }
 

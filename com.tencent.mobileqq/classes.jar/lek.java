@@ -1,489 +1,110 @@
-import android.os.Build;
-import android.os.Build.VERSION;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class lek
+class lek
+  extends ajxl
 {
-  public static String A = b + h + j;
-  public static String B = b + h + k;
-  public static String C = b + i + l;
-  public static String D = b + i + m;
-  public static String E = b + i + n;
-  public static String F = b + i + o;
-  public static String G = b + i + p;
-  public static String H = c + h + j;
-  public static String I = c + h + k;
-  public static String J = c + i + l;
-  public static String K = c + i + m;
-  public static String L = c + i + n;
-  public static String M = c + i + o;
-  public static String N = c + i + p;
-  public static String O = d + h + j;
-  public static String P = d + h + k;
-  public static String Q = d + i + l;
-  public static String R = d + i + m;
-  public static String S = d + i + n;
-  public static String T = d + i + o;
-  public static String U = d + i + p;
-  public static String V = e + h + j;
-  public static String W = e + h + k;
-  public static String X = e + i + l;
-  public static String Y = e + i + m;
-  public static String Z = e + i + n;
-  public static String a;
-  public static String aa = e + i + o;
-  public static String ab = e + i + p;
-  public static String ac = jdField_a_of_type_JavaLangString + s + t;
-  public static String ad = jdField_a_of_type_JavaLangString + s + u;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static String e;
-  public static String f;
-  public static String g;
-  public static String h;
-  public static String i;
-  public static String j;
-  public static String k;
-  public static String l;
-  public static String m;
-  public static String n;
-  public static String o;
-  public static String p;
-  public static String q;
-  public static String r;
-  public static String s;
-  public static String t;
-  public static String u;
-  public static String v;
-  public static String w;
-  public static String x;
-  public static String y;
-  public static String z;
-  @Deprecated
-  lao a;
+  lek(lej paramlej) {}
   
-  static
+  protected void onAddFriend(String paramString)
   {
-    jdField_a_of_type_JavaLangString = "sharp/hwcodec_new/";
-    b = jdField_a_of_type_JavaLangString + "avc_decoder/";
-    c = jdField_a_of_type_JavaLangString + "avc_encoder/";
-    d = jdField_a_of_type_JavaLangString + "hevc_decoder/";
-    e = jdField_a_of_type_JavaLangString + "hevc_encoder/";
-    f = jdField_a_of_type_JavaLangString + "async/";
-    g = jdField_a_of_type_JavaLangString + "test/";
-    h = "white_list/";
-    i = "black_list/";
-    j = "min_sdk";
-    k = "min_version";
-    l = "model";
-    m = "product";
-    n = "fingerprint";
-    o = "sdk";
-    p = "version";
-    q = "codec";
-    r = "disable_sdk";
-    s = "async/";
-    t = "min_sdk";
-    u = "codec";
-    v = "async_min_sdk";
-    w = g + j;
-    x = g + r;
-    y = g + q;
-    z = g + v;
+    super.onAddFriend(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d(lej.jdField_a_of_type_JavaLangString, 2, "onAddFriend 进入好友列表" + paramString);
+    }
+    lej.a(this.a, paramString, 4);
+    this.a.a(paramString);
   }
   
-  public lek()
+  protected void onGetAutoInfo(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_Lao = null;
+    if (QLog.isColorLevel()) {
+      QLog.d(lej.jdField_a_of_type_JavaLangString, 2, "onGetAutoInfo  isSuccess= " + paramBoolean + ",uin=" + paramString1 + ",remark=" + paramString2 + ",groupId" + paramInt);
+    }
   }
   
-  public boolean a(lao paramlao)
+  protected void onQueryUinSafetyFlag(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
   {
-    if (Build.VERSION.SDK_INT < 16) {}
+    if (paramInt1 == 147)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(lej.jdField_a_of_type_JavaLangString, 2, "onQueryUinSafetyFlag isSuccess=" + paramBoolean + ",status=" + paramInt2 + ",uin=" + paramLong);
+      }
+      if ((!paramBoolean) || (paramInt2 == 0)) {
+        lej.a(this.a, String.valueOf(paramLong));
+      }
+    }
+    else
+    {
+      return;
+    }
+    lej.a(this.a, String.valueOf(paramLong), 3, paramInt2);
+  }
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    super.onUpdateAddFriend(paramBoolean1, paramBoolean2, paramBoolean3, paramString, paramBundle);
+    int i = paramBundle.getInt("friend_setting");
+    if (QLog.isColorLevel()) {
+      QLog.d(lej.jdField_a_of_type_JavaLangString, 2, "onUpdateAddFriend 请求加好友回调  isSuccess= " + paramBoolean1 + ",addSuccess=" + paramBoolean2 + ",reqestUin=" + paramString + ",friendSetting" + i);
+    }
+    if ((paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().equals(paramString)) && (i == 0)) {
+      this.a.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  protected void onUpdateAddFriendSetting(boolean paramBoolean, Bundle paramBundle)
+  {
+    String str = paramBundle.getString("uin");
+    int i = paramBundle.getInt("friend_setting");
+    if (QLog.isColorLevel()) {
+      QLog.d(lej.jdField_a_of_type_JavaLangString, 2, "onUpdateAddFriendSetting  isSuccess= " + paramBoolean + ",uin" + str + ",friendSetting=" + i);
+    }
+    FriendListHandler localFriendListHandler = (FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().equals(str)) && (i == 0)) {
+      this.a.jdField_a_of_type_Boolean = true;
+    }
+    do
+    {
+      return;
+      localFriendListHandler.a(str, null, i, (byte)0, "", this.a.jdField_a_of_type_Int, 0, true, null, true, "", "");
+    } while (!paramBoolean);
+    if (this.a.a(str) == 2) {
+      this.a.c(str);
+    }
     for (;;)
     {
-      return false;
-      try
-      {
-        Object localObject = a(paramlao, O);
-        if ((localObject == null) || (Build.VERSION.SDK_INT < localObject[0])) {
-          continue;
-        }
-        localObject = a(paramlao, T);
-        int i1;
-        if (localObject != null)
-        {
-          i1 = 0;
-          for (;;)
-          {
-            if (i1 >= localObject.length) {
-              break label76;
-            }
-            if (Build.VERSION.SDK_INT == localObject[i1]) {
-              break;
-            }
-            i1 += 1;
-          }
-        }
-        label76:
-        localObject = a(paramlao, Q);
-        if (localObject != null)
-        {
-          i1 = 0;
-          for (;;)
-          {
-            if (i1 >= localObject.length) {
-              break label120;
-            }
-            if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-              break;
-            }
-            i1 += 1;
-          }
-        }
-        label120:
-        localObject = a(paramlao, R);
-        if (localObject != null)
-        {
-          i1 = 0;
-          for (;;)
-          {
-            if (i1 >= localObject.length) {
-              break label164;
-            }
-            if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-              break;
-            }
-            i1 += 1;
-          }
-        }
-        label164:
-        paramlao = a(paramlao, S);
-        if (paramlao != null)
-        {
-          i1 = 0;
-          for (;;)
-          {
-            if (i1 >= paramlao.length) {
-              break label213;
-            }
-            boolean bool = Build.PRODUCT.equalsIgnoreCase(paramlao[i1]);
-            if (bool) {
-              break;
-            }
-            i1 += 1;
-          }
-        }
-        return true;
-      }
-      catch (Exception paramlao)
-      {
-        paramlao.printStackTrace();
-        return false;
-      }
+      paramBundle.getStringArrayList("user_question");
+      paramBundle.getBoolean("contact_bothway");
+      return;
+      lej.a(this.a, str, 1);
+      this.a.a(str);
     }
   }
   
-  public boolean a(lao paramlao, int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    try
-    {
-      int[] arrayOfInt = a(paramlao, ac);
-      if (arrayOfInt == null) {
-        return false;
-      }
-      if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT >= arrayOfInt[0]))
-      {
-        paramlao = a(paramlao, ad);
-        if (paramlao != null)
-        {
-          boolean bool = mft.a(paramlao, paramInt);
-          if (bool) {
-            return true;
-          }
-        }
-      }
-    }
-    catch (Exception paramlao) {}
-    return false;
-  }
-  
-  int[] a(lao paramlao, String paramString)
-  {
-    if (Build.VERSION.SDK_INT < 16) {
-      return null;
-    }
-    return paramlao.a(paramString);
-  }
-  
-  String[] a(lao paramlao, String paramString)
-  {
-    if (Build.VERSION.SDK_INT < 16) {
-      return null;
-    }
-    return paramlao.a(paramString);
-  }
-  
-  public boolean b(lao paramlao)
-  {
-    if (Build.VERSION.SDK_INT < 19) {}
-    for (;;)
-    {
-      return false;
-      try
-      {
-        Object localObject = a(paramlao, V);
-        if ((localObject == null) || (Build.VERSION.SDK_INT < localObject[0])) {
-          continue;
-        }
-        localObject = a(paramlao, aa);
-        int i1;
-        if (localObject != null)
-        {
-          i1 = 0;
-          for (;;)
-          {
-            if (i1 >= localObject.length) {
-              break label76;
-            }
-            if (Build.VERSION.SDK_INT == localObject[i1]) {
-              break;
-            }
-            i1 += 1;
-          }
-        }
-        label76:
-        localObject = a(paramlao, X);
-        if (localObject != null)
-        {
-          i1 = 0;
-          for (;;)
-          {
-            if (i1 >= localObject.length) {
-              break label120;
-            }
-            if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-              break;
-            }
-            i1 += 1;
-          }
-        }
-        label120:
-        localObject = a(paramlao, Y);
-        if (localObject != null)
-        {
-          i1 = 0;
-          for (;;)
-          {
-            if (i1 >= localObject.length) {
-              break label164;
-            }
-            if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-              break;
-            }
-            i1 += 1;
-          }
-        }
-        label164:
-        paramlao = a(paramlao, Z);
-        if (paramlao != null)
-        {
-          i1 = 0;
-          for (;;)
-          {
-            if (i1 >= paramlao.length) {
-              break label213;
-            }
-            boolean bool = Build.PRODUCT.equalsIgnoreCase(paramlao[i1]);
-            if (bool) {
-              break;
-            }
-            i1 += 1;
-          }
-        }
-        return true;
-      }
-      catch (Exception paramlao)
-      {
-        paramlao.printStackTrace();
-        return false;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(lej.jdField_a_of_type_JavaLangString, 2, "好友onUpdateCustomHead success = " + paramBoolean + ", uin = " + paramString);
     }
   }
   
-  public boolean c(lao paramlao)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if (Build.VERSION.SDK_INT < 16) {}
-    for (;;)
-    {
-      return false;
-      try
-      {
-        Object localObject = a(paramlao, A);
-        if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]))
-        {
-          localObject = a(paramlao, F);
-          int i1;
-          if (localObject != null)
-          {
-            i1 = 0;
-            for (;;)
-            {
-              if (i1 >= localObject.length) {
-                break label76;
-              }
-              if (Build.VERSION.SDK_INT == localObject[i1]) {
-                break;
-              }
-              i1 += 1;
-            }
-          }
-          label76:
-          localObject = a(paramlao, C);
-          if (localObject != null)
-          {
-            i1 = 0;
-            for (;;)
-            {
-              if (i1 >= localObject.length) {
-                break label120;
-              }
-              if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-                break;
-              }
-              i1 += 1;
-            }
-          }
-          label120:
-          localObject = a(paramlao, D);
-          if (localObject != null)
-          {
-            i1 = 0;
-            for (;;)
-            {
-              if (i1 >= localObject.length) {
-                break label164;
-              }
-              if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                break;
-              }
-              i1 += 1;
-            }
-          }
-          label164:
-          paramlao = a(paramlao, E);
-          if (paramlao != null)
-          {
-            i1 = 0;
-            for (;;)
-            {
-              if (i1 >= paramlao.length) {
-                break label206;
-              }
-              boolean bool = Build.PRODUCT.equalsIgnoreCase(paramlao[i1]);
-              if (bool) {
-                break;
-              }
-              i1 += 1;
-            }
-          }
-          label206:
-          return true;
-        }
-      }
-      catch (Exception paramlao) {}
+    super.onUpdateDelFriend(paramBoolean, paramObject);
+    paramObject = String.valueOf((Long)paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d(lej.jdField_a_of_type_JavaLangString, 2, "onUpdateDelFriend 删除好友" + paramObject);
     }
-    return false;
-  }
-  
-  public boolean d(lao paramlao)
-  {
-    if (Build.VERSION.SDK_INT < 19) {}
-    for (;;)
-    {
-      return false;
-      try
-      {
-        Object localObject = a(paramlao, H);
-        if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]))
-        {
-          localObject = a(paramlao, M);
-          int i1;
-          if (localObject != null)
-          {
-            i1 = 0;
-            for (;;)
-            {
-              if (i1 >= localObject.length) {
-                break label76;
-              }
-              if (Build.VERSION.SDK_INT == localObject[i1]) {
-                break;
-              }
-              i1 += 1;
-            }
-          }
-          label76:
-          localObject = a(paramlao, J);
-          if (localObject != null)
-          {
-            i1 = 0;
-            for (;;)
-            {
-              if (i1 >= localObject.length) {
-                break label120;
-              }
-              if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-                break;
-              }
-              i1 += 1;
-            }
-          }
-          label120:
-          localObject = a(paramlao, K);
-          if (localObject != null)
-          {
-            i1 = 0;
-            for (;;)
-            {
-              if (i1 >= localObject.length) {
-                break label164;
-              }
-              if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                break;
-              }
-              i1 += 1;
-            }
-          }
-          label164:
-          paramlao = a(paramlao, L);
-          if (paramlao != null)
-          {
-            i1 = 0;
-            for (;;)
-            {
-              if (i1 >= paramlao.length) {
-                break label206;
-              }
-              boolean bool = Build.PRODUCT.equalsIgnoreCase(paramlao[i1]);
-              if (bool) {
-                break;
-              }
-              i1 += 1;
-            }
-          }
-          label206:
-          return true;
-        }
-      }
-      catch (Exception paramlao) {}
-    }
-    return false;
+    lej.a(this.a, paramObject, 0);
+    this.a.a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lek
  * JD-Core Version:    0.7.0.1
  */

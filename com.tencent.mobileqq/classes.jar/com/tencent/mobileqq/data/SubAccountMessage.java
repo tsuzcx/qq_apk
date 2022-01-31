@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atnz;
-import azzz;
+import aukm;
+import aulx;
+import bbbd;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.io.UnsupportedEncodingException;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="subUin,senderuin,time")
 public class SubAccountMessage
-  extends atmo
+  extends aukm
   implements Comparable<SubAccountMessage>
 {
   public static final String SUB_EXTR_RED_PACKET = "RED_PACKET";
@@ -25,17 +25,17 @@ public class SubAccountMessage
   public int longMsgCount;
   public int longMsgId;
   public int longMsgIndex;
-  @atnz
+  @aulx
   public CharSequence mEmoRecentMsg;
-  @atnz
+  @aulx
   public String mTimeString;
-  @atnz
+  @aulx
   public String msg;
   public byte[] msgData;
   public long msgUid;
   public long msgseq;
   public int msgtype;
-  @atnz
+  @aulx
   public boolean needNotify;
   public String selfuin;
   public String sendername;
@@ -149,7 +149,7 @@ public class SubAccountMessage
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("SubAccountMessage");
-    localStringBuilder.append(",subUin:").append(this.subUin).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",senderName:").append(this.sendername).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",msgType:").append(this.msgtype).append(",subExtr:").append(this.subExtr).append(",msg:").append(azzz.a(this.msg));
+    localStringBuilder.append(",subUin:").append(this.subUin).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",senderName:").append(this.sendername).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",msgType:").append(this.msgtype).append(",subExtr:").append(this.subExtr).append(",msg:").append(bbbd.a(this.msg));
     return localStringBuilder.toString();
   }
 }

@@ -1,26 +1,21 @@
-import android.support.v7.widget.RecyclerView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View;
 
-class wso
-  implements CompoundButton.OnCheckedChangeListener
+final class wso
+  implements bfoq
 {
-  wso(wsj paramwsj) {}
+  wso(wsq paramwsq, bfol parambfol) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramCompoundButton = wsj.d(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      paramCompoundButton.setVisibility(i);
-      return;
+    if (this.jdField_a_of_type_Wsq != null) {
+      this.jdField_a_of_type_Wsq.a(true);
     }
+    this.jdField_a_of_type_Bfol.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wso
  * JD-Core Version:    0.7.0.1
  */

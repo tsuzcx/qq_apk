@@ -1,12 +1,23 @@
-public abstract interface akvt
+public class akvt
 {
-  public abstract void a();
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
   
-  public abstract void a(int paramInt);
+  public akvt(String paramString, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akvt
  * JD-Core Version:    0.7.0.1
  */

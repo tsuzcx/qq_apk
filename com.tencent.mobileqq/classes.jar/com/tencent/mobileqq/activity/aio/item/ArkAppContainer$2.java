@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adaj;
+import adll;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkAppContainer$2
   implements Runnable
 {
-  public ArkAppContainer$2(adaj paramadaj, String paramString) {}
+  public ArkAppContainer$2(adll paramadll, String paramString) {}
   
   public void run()
   {

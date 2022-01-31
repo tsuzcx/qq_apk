@@ -56,6 +56,7 @@
                             "setRichText:": "$id_attribute_text",
                             "setNumberOfLinesString:":"0",
                             "setTextColorString:":"#999999",
+                             "setTextAlignmentString:": "$text_align",
                             "setFontSizeString:": "$attribute_text_size",
                             "setLineSpace:":"13"
                         }

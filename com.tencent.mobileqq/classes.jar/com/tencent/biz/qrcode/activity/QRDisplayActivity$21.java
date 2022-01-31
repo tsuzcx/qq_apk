@@ -1,8 +1,8 @@
 package com.tencent.biz.qrcode.activity;
 
 import android.view.View;
-import azve;
-import vsk;
+import bawi;
+import wfg;
 
 class QRDisplayActivity$21
   implements Runnable
@@ -11,9 +11,9 @@ class QRDisplayActivity$21
   
   public void run()
   {
-    vsk localvsk = new vsk(this.this$0.d, this.this$0);
-    this.this$0.d.setAccessibilityDelegate(localvsk);
-    azve.a(this.this$0.a, false);
+    wfg localwfg = new wfg(this.this$0.d, this.this$0);
+    this.this$0.d.setAccessibilityDelegate(localwfg);
+    bawi.a(this.this$0.a, false);
   }
 }
 

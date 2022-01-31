@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.bless;
 
 import android.os.Message;
-import bace;
-import bacm;
-import beez;
+import bbdj;
+import bbdr;
+import bfmt;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,7 +16,7 @@ class BlessResultActivity$3
   {
     try
     {
-      long l = bace.a(this.a);
+      long l = bbdj.a(this.a);
       if (l < 25600L)
       {
         localObject = this.this$0.a.obtainMessage(1004);
@@ -24,9 +24,9 @@ class BlessResultActivity$3
         return;
       }
       Object localObject = BlessResultActivity.a(this.a);
-      bacm.a(BaseApplication.getContext(), this.a, (String)localObject, 160, 160);
+      bbdr.a(BaseApplication.getContext(), this.a, (String)localObject, 160, 160);
       if (QLog.isColorLevel()) {
-        QLog.d("BlessResultActivity", 2, "share ptv to FC. srcLen:" + l + " ,objLen:" + bace.a((String)localObject) + " , thumbPath:" + (String)localObject);
+        QLog.d("BlessResultActivity", 2, "share ptv to FC. srcLen:" + l + " ,objLen:" + bbdj.a((String)localObject) + " , thumbPath:" + (String)localObject);
       }
       Message localMessage = this.this$0.a.obtainMessage(1004);
       localMessage.obj = localObject;

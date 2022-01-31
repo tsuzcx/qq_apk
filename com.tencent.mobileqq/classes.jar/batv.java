@@ -1,189 +1,126 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vip.KCWraperV2.1;
-import com.tencent.mobileqq.vip.KCWraperV2.2;
-import com.tencent.mobileqq.vip.KingCardActivationFragment;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_dc04233;
-import dualsim.common.IKcActivationViewer;
-import dualsim.common.IKingCardInterface;
-import dualsim.common.OrderCheckResult;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
-import tmsdk.common.KcSdkShellManager;
 
-public class batv
-  extends batu
+class batv
+  implements AdapterView.OnItemClickListener
 {
-  public AtomicBoolean a = new AtomicBoolean(false);
+  batv(batu parambatu) {}
   
-  private void a(OrderCheckResult paramOrderCheckResult)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i = 1;
-    String str1;
-    if (paramOrderCheckResult != null)
-    {
-      str1 = paramOrderCheckResult.toString();
-      a(str1);
-      if (paramOrderCheckResult != null) {
-        break label30;
-      }
-    }
-    label30:
-    label46:
-    boolean bool2;
-    do
-    {
+    int j = 0;
+    paramAdapterView = paramView.getTag();
+    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null)) {
       return;
-      str1 = "result == null";
-      break;
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (localObject != null) {
-        break label186;
-      }
-      str1 = null;
-      if (TextUtils.isEmpty(str1)) {
-        break label206;
-      }
-      bool2 = a(str1, paramOrderCheckResult);
-    } while (!(localObject instanceof QQAppInterface));
-    Object localObject = (QQAppInterface)localObject;
-    String str2 = paramOrderCheckResult.phoneNum;
-    ajve localajve = (ajve)((QQAppInterface)localObject).a(27);
-    boolean bool1;
-    label113:
-    long l;
-    if (paramOrderCheckResult.operator == 1)
+    }
+    this.a.jdField_a_of_type_Bbjc.b();
+    switch (((bbjh)paramAdapterView).a.c)
     {
-      if (paramOrderCheckResult.kingcard != 1) {
-        break label196;
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Int = ((int)paramLong);
+      if (paramLong != 7L) {
+        break;
       }
-      bool1 = true;
-      localajve.a(str1, str2, bool1, paramOrderCheckResult.product, "");
-      l = Long.parseLong(str1);
-      if (paramOrderCheckResult.kingcard != 1) {
-        break label201;
+      paramAdapterView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, Face2FaceAddFriendActivity.class);
+      paramAdapterView.putExtra("activity_from_type", 1);
+      paramAdapterView.putExtra("activity_troop_uin", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramAdapterView);
+      return;
+      paramLong = 0L;
+      continue;
+      paramLong = 1L;
+      continue;
+      paramLong = 3L;
+      continue;
+      paramLong = 2L;
+      continue;
+      paramLong = 4L;
+      continue;
+      paramLong = 5L;
+      continue;
+      paramLong = 7L;
+    }
+    int i;
+    if ((paramLong == 2L) || (paramLong == 3L)) {
+      if (!WXShareHelper.a().a()) {
+        i = 2131720906;
       }
     }
     for (;;)
     {
-      new LpReportInfo_dc04233(l, i).report();
-      if (!bool2) {
-        break;
-      }
-      localajve.a(((TicketManager)((QQAppInterface)localObject).getManager(2)).getSkey(str1), str1);
-      return;
-      label186:
-      str1 = ((AppRuntime)localObject).getAccount();
-      break label46;
-      label196:
-      bool1 = false;
-      break label113;
-      label201:
-      i = 0;
-    }
-    label206:
-    QLog.e("KC.TMSManager", 1, "tmsQuery can't get uin");
-  }
-  
-  public String a()
-  {
-    return "KC.KCWraperV2";
-  }
-  
-  void a(ViewGroup paramViewGroup)
-  {
-    Object localObject = KcSdkShellManager.getInstance().getKingCardInterface();
-    if (localObject != null)
-    {
-      localObject = ((IKingCardInterface)localObject).generateActivationView(paramViewGroup.getContext());
-      if (localObject != null)
+      if (i != -1)
       {
-        paramViewGroup.addView(((IKcActivationViewer)localObject).getWebView());
-        ((IKcActivationViewer)localObject).startLoad();
+        this.a.b(false);
+        bcpw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(i), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+        this.a.jdField_a_of_type_Int = -1;
+        this.a.b = -1;
+        if (!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+          break;
+        }
+        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+        return;
+        if (WXShareHelper.a().b()) {
+          break label680;
+        }
+        i = 2131720907;
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopShareUtility", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
+      }
+      if ((this.a.jdField_a_of_type_Int == 5) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember))
+      {
+        this.a.g();
+        if (!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+          break;
+        }
+        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
         return;
       }
-      QLog.e("KC.TMSManager", 1, "activationViewer == null");
-    }
-    QLog.e("KC.TMSManager", 1, "kingCardInterface == null");
-  }
-  
-  public void a(baue parambaue, boolean paramBoolean)
-  {
-    ThreadManager.post(new KCWraperV2.2(this, parambaue, paramBoolean), 5, null, false);
-  }
-  
-  void a(Runnable paramRunnable)
-  {
-    a("load jar");
-    if (this.a.get()) {
-      return;
-    }
-    Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    File localFile = new File(baud.a().a(localContext));
-    if (!localFile.exists())
-    {
-      if (paramRunnable != null) {
-        paramRunnable.run();
-      }
-      a(false);
-      return;
-    }
-    ThreadManager.post(new KCWraperV2.1(this, localFile, localContext), 5, null, false);
-  }
-  
-  boolean a()
-  {
-    if (this.a.get()) {
-      return true;
-    }
-    if (!new File(baud.a().a(BaseApplicationImpl.getApplication())).exists()) {
-      return false;
-    }
-    synchronized (this.a)
-    {
-      try
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim()) && (!TroopInfo.isQidianPrivateTroop((QQAppInterface)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime(), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)))
       {
-        if (QLog.isColorLevel()) {
-          QLog.e(a(), 1, "wait load");
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+          this.a.jdField_a_of_type_Boolean = true;
         }
-        this.a.wait(500L);
-        if (QLog.isColorLevel()) {
-          QLog.e(a(), 1, "wait end");
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
+        if ((TroopInfo.hasPayPrivilege(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopPrivilegeFlag, 512))) {}
+        for (paramInt = 1;; paramInt = 0)
         {
-          localInterruptedException.printStackTrace();
-          QLog.e(a(), 1, localInterruptedException, new Object[0]);
+          i = j;
+          if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.cGroupOption == 1) {
+            i = 1;
+          }
+          if ((paramInt | i) == 0) {
+            break;
+          }
+          this.a.b(true);
+          this.a.c();
+          return;
         }
+        this.a.e();
+        return;
       }
-      return this.a.get();
+      this.a.b(true);
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+        this.a.jdField_a_of_type_Boolean = false;
+      }
+      this.a.b = 0;
+      batu.a(this.a);
+      return;
+      label680:
+      i = -1;
     }
-  }
-  
-  boolean a(Activity paramActivity)
-  {
-    PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
-    return true;
-  }
-  
-  boolean b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("KC.TMSManager", 1, "supportActivationView == true");
-    }
-    return true;
   }
 }
 

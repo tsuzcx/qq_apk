@@ -1,17 +1,23 @@
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+
 public class ogf
+  extends Editable.Factory
 {
-  public int a;
-  public String a;
-  public String b;
+  public ogf(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public String toString()
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    return "styleID = " + this.jdField_a_of_type_JavaLangString + ", proteusData = " + this.b + ", rankWeight = " + this.jdField_a_of_type_Int;
+    if ((paramCharSequence instanceof ods)) {
+      return (Editable)paramCharSequence;
+    }
+    return new ods(paramCharSequence, 3, 20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ogf
  * JD-Core Version:    0.7.0.1
  */

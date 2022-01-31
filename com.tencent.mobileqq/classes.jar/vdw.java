@@ -1,11 +1,17 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class vdw
+class vdw
+  implements View.OnClickListener
 {
-  public int a;
-  public long a = -1L;
-  public Bitmap a;
-  public String a;
+  vdw(vdu paramvdu) {}
+  
+  public void onClick(View paramView)
+  {
+    if (vdu.a(this.a) != null) {
+      vdu.a(this.a).O_();
+    }
+  }
 }
 
 

@@ -1,114 +1,152 @@
-import android.animation.ValueAnimator;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewStub;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
-import android.view.animation.LinearInterpolator;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
+import android.text.TextUtils;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.oidb.cmd0xd79.Oidb_0xd79.ReqBody;
+import tencent.im.oidb.cmd0xd79.Oidb_0xd79.RspBody;
+import tencent.im.oidb.cmd0xd79.Oidb_0xd79.content;
 
 public class ayld
+  extends ajtd
 {
-  protected final Context a;
-  protected final View.OnClickListener a;
-  protected View a;
-  protected final ViewStub a;
-  protected ayjp a;
-  protected aylb a;
-  protected final aylh a;
-  protected boolean a;
+  private AtomicInteger a = new AtomicInteger();
   
-  public ayld(ViewStub paramViewStub, Context paramContext, View.OnClickListener paramOnClickListener, aylh paramaylh)
+  public ayld(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Aylh = paramaylh;
+    super(paramQQAppInterface);
   }
   
-  private void a(View paramView, int paramInt1, int paramInt2, Interpolator paramInterpolator, boolean paramBoolean)
+  private void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt1, paramInt2 });
-    localValueAnimator.setDuration(200L);
-    localValueAnimator.setInterpolator(paramInterpolator);
-    localValueAnimator.addUpdateListener(new ayle(this, paramView));
-    localValueAnimator.addListener(new aylf(this, paramBoolean, paramView, paramInt2));
-    localValueAnimator.start();
-  }
-  
-  private void a(ayjp paramayjp, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, 100 });; localValueAnimator = ValueAnimator.ofInt(new int[] { 100, 0 }))
+    String str = null;
+    try
     {
-      localValueAnimator.setDuration(200L);
-      localValueAnimator.setInterpolator(new LinearInterpolator());
-      localValueAnimator.addUpdateListener(new aylg(this, paramayjp));
-      localValueAnimator.start();
-      return;
-    }
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-    GridView localGridView = (GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131310818);
-    this.jdField_a_of_type_Aylb = new aylb(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    localGridView.setAdapter(this.jdField_a_of_type_Aylb);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Ayjp = null;
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  public boolean a(ayjp paramayjp, aylj paramaylj)
-  {
-    b();
-    int i;
-    if (this.jdField_a_of_type_Ayjp != null)
-    {
-      i = ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams()).height;
-      if (this.jdField_a_of_type_Ayjp == paramayjp)
+      Oidb_0xd79.RspBody localRspBody = new Oidb_0xd79.RspBody();
+      parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+      int i = localRspBody.uint32_ret.get();
+      localRspBody.uint64_seq.get();
+      localRspBody.uint64_uin.get();
+      paramFromServiceMsg = str;
+      if (localRspBody.uint32_compress_flag.get() == 0)
       {
-        a(paramayjp, false);
-        a(this.jdField_a_of_type_AndroidViewView, i, 0, new DecelerateInterpolator(), true);
-        this.jdField_a_of_type_Ayjp = null;
-        return false;
+        paramObject = new Oidb_0xd79.content();
+        paramObject.mergeFrom(localRspBody.bytes_raw_content.get().toByteArray());
+        paramFromServiceMsg = str;
+        if (paramObject.bytes_slice_content.has()) {
+          paramFromServiceMsg = paramObject.bytes_slice_content.get();
+        }
       }
-      a(this.jdField_a_of_type_Ayjp, false);
+      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.size() > 0))
+      {
+        paramObject = new ArrayList(paramFromServiceMsg.size());
+        paramFromServiceMsg = paramFromServiceMsg.iterator();
+        while (paramFromServiceMsg.hasNext())
+        {
+          str = a(((ByteStringMicro)paramFromServiceMsg.next()).toStringUtf8());
+          if (!TextUtils.isEmpty(str)) {
+            paramObject.add(str);
+          }
+        }
+        if (i != 0) {
+          break label224;
+        }
+      }
+    }
+    catch (Exception paramFromServiceMsg)
+    {
+      QLog.d("ParticipleHandler", 1, paramFromServiceMsg, new Object[0]);
+      return;
+    }
+    label224:
+    for (boolean bool = true;; bool = false)
+    {
+      notifyUI(1, bool, paramObject);
+      return;
+      notifyUI(1, false, null);
+      return;
+    }
+  }
+  
+  public String a(String paramString)
+  {
+    char[] arrayOfChar = paramString.toCharArray();
+    int k = paramString.length() - 1;
+    int i = 0;
+    while ((i <= k) && (arrayOfChar[i] <= ' ') && (arrayOfChar[i] != '\024')) {
+      i += 1;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aylb.a(paramaylj);
-      this.jdField_a_of_type_Ayjp = paramayjp;
-      int[] arrayOfInt = new int[2];
-      paramayjp.a.getLocationInWindow(arrayOfInt);
-      int j = (int)Math.ceil(paramaylj.a.size() / 3.0F);
-      j = vms.a(this.jdField_a_of_type_AndroidContentContext, j * 56 - 13 + 30);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      a(paramayjp, true);
-      a(this.jdField_a_of_type_AndroidViewView, i, j, new AccelerateInterpolator(), false);
-      return true;
-      i = 0;
+      int j;
+      if ((j >= i) && (arrayOfChar[j] <= ' ') && ((j == 0) || (arrayOfChar[(j - 1)] != '\024')))
+      {
+        j -= 1;
+      }
+      else
+      {
+        if ((i == 0) && (j == k)) {
+          return paramString;
+        }
+        return paramString.substring(i, j + 1);
+        j = k;
+      }
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    a(paramQQAppInterface, paramString, "");
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    try
+    {
+      Oidb_0xd79.ReqBody localReqBody = new Oidb_0xd79.ReqBody();
+      localReqBody.uint64_seq.set(this.a.incrementAndGet());
+      paramQQAppInterface = paramQQAppInterface.c();
+      localReqBody.uint64_uin.set(Long.parseLong(paramQQAppInterface));
+      localReqBody.uint32_compress_flag.set(0);
+      localReqBody.bytes_content.set(ByteStringMicro.copyFrom(paramString1.getBytes()));
+      if (!TextUtils.isEmpty(paramString2)) {
+        localReqBody.uint64_sender_uin.set(Long.parseLong(paramString2));
+      }
+      localReqBody.bytes_qua.set(ByteStringMicro.copyFrom(("and_" + AppSetting.a() + "_" + "8.2.8").getBytes()));
+      sendPbReq(makeOIDBPkg("OidbSvc.0xd79", 3449, 1, localReqBody.toByteArray()));
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.d("ParticipleHandler", 1, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return ayle.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramFromServiceMsg.isSuccess()) && (TextUtils.equals(paramFromServiceMsg.getServiceCmd(), "OidbSvc.0xd79"))) {
+      a(paramFromServiceMsg, paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayld
  * JD-Core Version:    0.7.0.1
  */

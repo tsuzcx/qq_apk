@@ -1,30 +1,35 @@
-import com.tencent.image.NativeGifImage;
-import java.io.File;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyShareFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class poh
-  extends NativeGifImage
+  implements ViewBase.OnClickListener
 {
-  poh(pog parampog, File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
-  {
-    super(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
-  }
+  poh(poc parampoc) {}
   
-  public void executeNewTask()
+  public void onClick(ViewBase paramViewBase)
   {
-    if (this.mCurrentLoop == 1) {
+    olr.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    paramViewBase = pob.a(this.a.jdField_a_of_type_Pob, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getData());
+    if (paramViewBase == null)
+    {
+      QLog.e(pob.a(this.a.jdField_a_of_type_Pob), 1, "daily share info is null");
       return;
     }
-    super.executeNewTask();
-  }
-  
-  public void reset()
-  {
-    super.reset();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("share_info_intent", paramViewBase.toString());
+    PublicFragmentActivity.a(pob.a(this.a.jdField_a_of_type_Pob).getContext(), localIntent, ReadInJoyDailyShareFragment.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     poh
  * JD-Core Version:    0.7.0.1
  */

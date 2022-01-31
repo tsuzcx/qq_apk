@@ -1,51 +1,35 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aczv
-  implements begw
+  extends AsyncTask<String, Void, Bitmap>
 {
-  public aczv(ApolloItemBuilder paramApolloItemBuilder, adac paramadac, ApolloActionData paramApolloActionData, begr parambegr) {}
+  public aczv(VoicePrintUtils.VoicePrintView paramVoicePrintView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected Bitmap a(String... paramVarArgs)
   {
-    switch (paramInt)
+    paramVarArgs = paramVarArgs[0];
+    if (BaseApplicationImpl.sImageCache.get(paramVarArgs) == null)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.cancel();
-      return;
-      if ((1 == this.jdField_a_of_type_Adac.f) || (this.jdField_a_of_type_Adac.f == 2))
-      {
-        ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext);
+      Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
       }
-      else
-      {
-        if (3 == this.jdField_a_of_type_Adac.f)
-        {
-          paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url)) {
-            paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url);
-          }
-          for (;;)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-            break;
-            paramView.putExtra("url", aiys.T + "&id=" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId);
-          }
-        }
-        if (4 != this.jdField_a_of_type_Adac.f) {
-          aael.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Adac.a.uniseq);
-        }
-      }
+      BaseApplicationImpl.sImageCache.put(paramVarArgs, localBitmap);
     }
+    return null;
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    VoicePrintUtils.VoicePrintView.a(this.a);
+    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
+    this.a.invalidate();
   }
 }
 

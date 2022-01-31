@@ -1,31 +1,27 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.2;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class njk
-  implements wiu
+  implements TVK_SDKMgr.InstallListener
 {
-  public njk(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  public njk(AdvertisementVideoPreloadManager.2 param2) {}
   
-  public void a(Bundle paramBundle)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      ReadInJoyArticleDetailActivity.a(this.a, paramBundle.getByteArray("decryptResult"));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArticleDetail", 2, "请求返回时间" + System.currentTimeMillis());
-      }
-      if (ReadInJoyArticleDetailActivity.a(this.a) == null) {
-        this.a.jdField_a_of_type_JavaLangString = null;
-      }
-      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
-    }
+    nji.c("installSDK onInstalledFailed arg0=" + paramInt);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    nji.c("installSDK onInstalledSuccessed");
+    nji.a(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     njk
  * JD-Core Version:    0.7.0.1
  */

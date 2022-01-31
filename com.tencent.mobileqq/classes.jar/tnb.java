@@ -1,39 +1,55 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqSimpleInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tnb
-  extends tmo
+  extends syv
 {
-  public ImageView a;
-  private tnd jdField_a_of_type_Tnd;
-  private vky jdField_a_of_type_Vky;
+  public List<String> a = new ArrayList();
   
-  public tnb(@NonNull ViewGroup paramViewGroup)
+  public String a()
   {
-    super(paramViewGroup);
+    return sxp.a("StorySvc.get_date_video_list");
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public syq a(byte[] paramArrayOfByte)
   {
-    return paramViewGroup;
+    qqstory_service.RspSimpleInfoList localRspSimpleInfoList = new qqstory_service.RspSimpleInfoList();
+    try
+    {
+      localRspSimpleInfoList.mergeFrom(paramArrayOfByte);
+      return new tor(localRspSimpleInfoList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      veg.b("Q.qqstory.net:GetSimpleInfoListResponse", a(), paramArrayOfByte);
+    }
+    return null;
   }
   
-  public void a(int paramInt)
+  protected byte[] a()
   {
-    urk.b(this.jdField_a_of_type_JavaLangString, "setVisibility ignore");
+    qqstory_service.ReqSimpleInfoList localReqSimpleInfoList = new qqstory_service.ReqSimpleInfoList();
+    ArrayList localArrayList = new ArrayList();
+    if (this.a != null)
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(ByteStringMicro.copyFromUtf8((String)localIterator.next()));
+      }
+    }
+    localReqSimpleInfoList.vid_list.addAll(localArrayList);
+    return localReqSimpleInfoList.toByteArray();
   }
   
-  protected void b()
+  public String toString()
   {
-    super.b();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131313205));
-    ((StoryPlayerGroupHolder)a()).a.setOnTouchListener(new tne(this, null));
-    this.jdField_a_of_type_Tnd = new tnd(this, null);
-    this.jdField_a_of_type_Vky = new vky(a(), this.jdField_a_of_type_Tnd);
-    this.jdField_a_of_type_Vky.a(50);
+    return "GetSimpleInfoListResponse{vidList='" + this.a + '\'' + '}';
   }
 }
 

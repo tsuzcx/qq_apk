@@ -1,15 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class nsl
-  implements bbmu
+class nsl
+  implements QQPermissionCallback
 {
-  public nsl(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  nsl(nsk paramnsk, BaseActivity paramBaseActivity) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (ReadInJoyDeliverBiuActivity.b(this.a)) {
-      this.a.finish();
-    }
+    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
+    bbcv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
+    nsf.a(this.jdField_a_of_type_Nsk.a, 5);
   }
 }
 

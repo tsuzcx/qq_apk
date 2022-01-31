@@ -1,44 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-
-class apxc
-  extends Handler
+public abstract interface apxc
 {
-  apxc(apxb paramapxb) {}
+  public abstract void loadFinish(int paramInt1, int paramInt2, String paramString);
   
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    case 5: 
-    default: 
-      return;
-    case 0: 
-      this.a.a();
-      return;
-    case 1: 
-      apxb.a(this.a);
-      return;
-    case 6: 
-      apxb.b(this.a);
-      return;
-    case 2: 
-      apxb.c(this.a);
-      return;
-    case 3: 
-      apxb.d(this.a);
-      return;
-    case 4: 
-      apxb.e(this.a);
-      return;
-    }
-    apxb.f(this.a);
-  }
+  public abstract void loadFinish(int paramInt1, boolean paramBoolean, int paramInt2, String paramString);
+  
+  public abstract void openFile(String paramString1, String paramString2, long paramLong, boolean paramBoolean);
+  
+  public abstract void updatePage(int paramInt1, int paramInt2);
+  
+  public abstract void webLog(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apxc
  * JD-Core Version:    0.7.0.1
  */

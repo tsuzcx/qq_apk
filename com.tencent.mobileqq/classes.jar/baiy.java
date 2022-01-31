@@ -1,37 +1,63 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 
-final class baiy
-  extends ClickableSpan
+public abstract class baiy
+  extends mxm
 {
-  baiy(Context paramContext, aslp paramaslp) {}
-  
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_Aslp.b());
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicHelper", 2, "mVideoData.topicInfo.getTopicJumpUrl() :" + this.jdField_a_of_type_Aslp.b());
+    boolean bool2 = false;
+    mobileqq_mp.FollowResponse localFollowResponse;
+    if (paramInt == 0) {
+      localFollowResponse = new mobileqq_mp.FollowResponse();
     }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    for (;;)
+    {
+      try
+      {
+        localFollowResponse.mergeFrom(paramArrayOfByte);
+        if (!((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.has()) {
+          break label146;
+        }
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (paramInt != 0) {
+          break label146;
+        }
+        bool1 = true;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        bool1 = bool2;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("TroopBindPubAccountProtocol", 2, paramArrayOfByte.toString());
+        bool1 = bool2;
+        continue;
+      }
+      a(bool1, paramBundle);
+      return;
+      boolean bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("TroopBindPubAccountProtocol", 2, "follow pubAccount failed, errorCode=" + paramInt);
+        bool1 = bool2;
+        continue;
+        label146:
+        bool1 = false;
+      }
+    }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#00aced"));
-    paramTextPaint.setUnderlineText(false);
-  }
+  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baiy
  * JD-Core Version:    0.7.0.1
  */

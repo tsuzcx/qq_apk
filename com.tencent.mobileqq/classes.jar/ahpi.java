@@ -1,21 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.widget.MyGridView;
+import com.tencent.widget.SingleLineTextView;
 
-class ahpi
-  implements View.OnTouchListener
+public class ahpi
+  extends ahoa
 {
-  ahpi(ahph paramahph) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      ahph.a(this.a).x = ((int)paramMotionEvent.getRawX());
-      ahph.a(this.a).y = ((int)paramMotionEvent.getRawY());
-    }
-    return false;
-  }
+  public ImageView a;
+  public TextView a;
+  public DragTextView a;
+  public MyGridView a;
+  public SingleLineTextView a;
 }
 
 

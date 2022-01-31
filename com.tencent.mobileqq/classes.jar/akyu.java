@@ -1,17 +1,70 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Rect;
-import com.tencent.mobileqq.ar.view.ViewfinderView;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
+import java.util.TreeMap;
 
 public class akyu
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public akyu(ViewfinderView paramViewfinderView, Rect paramRect) {}
+  static String a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static String a()
   {
-    ViewfinderView.a(this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView.postInvalidate(this.jdField_a_of_type_AndroidGraphicsRect.left - 6, this.jdField_a_of_type_AndroidGraphicsRect.top - 6, this.jdField_a_of_type_AndroidGraphicsRect.right + 6, this.jdField_a_of_type_AndroidGraphicsRect.bottom + 6);
+    if (a == null) {
+      if (!bbay.a()) {
+        break label56;
+      }
+    }
+    label56:
+    for (String str = bbuv.a(ajsf.aW) + "pddata/prd/" + "ar_promotion" + File.separator;; str = BaseApplicationImpl.getApplication().getFilesDir() + "/pddata/prd/" + "ar_promotion" + File.separator)
+    {
+      a = str;
+      return a;
+    }
+  }
+  
+  public static String a(akyo paramakyo)
+  {
+    if (paramakyo == null) {
+      return null;
+    }
+    paramakyo = (akyp)paramakyo.a().get(Integer.valueOf(0));
+    if (paramakyo == null) {
+      return null;
+    }
+    return a(paramakyo);
+  }
+  
+  public static String a(akyp paramakyp)
+  {
+    return paramakyp.d + "entry" + File.separator;
+  }
+  
+  private static String a(String paramString, int paramInt)
+  {
+    return a() + paramString + File.separator + paramInt + File.separator;
+  }
+  
+  public static String a(String paramString1, int paramInt, String paramString2)
+  {
+    return a(paramString1, paramInt) + paramString2 + ".zip";
+  }
+  
+  public static String b(akyo paramakyo)
+  {
+    paramakyo = (akyp)paramakyo.a().get(Integer.valueOf(0));
+    if (paramakyo == null) {
+      return null;
+    }
+    return b(paramakyo);
+  }
+  
+  public static String b(akyp paramakyp)
+  {
+    return paramakyp.d + "guide" + File.separator;
+  }
+  
+  public static final String b(String paramString1, int paramInt, String paramString2)
+  {
+    return a(paramString1, paramInt) + paramString2 + File.separator;
   }
 }
 

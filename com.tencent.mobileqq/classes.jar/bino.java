@@ -1,15 +1,25 @@
+import android.annotation.TargetApi;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import android.view.animation.Transformation;
+import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
 public class bino
-  implements View.OnLayoutChangeListener
+  implements bbkq<Float>
 {
-  public bino(GLTextureView paramGLTextureView) {}
+  public bino(AEBeautyProviderView paramAEBeautyProviderView, AEProviderContainerView paramAEProviderContainerView, View paramView) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  @TargetApi(11)
+  public void a(bbkk<Float> parambbkk, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    this.a.a(this.a.getSurfaceTexture(), 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+    paramFloat = paramFloat1.floatValue();
+    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView != null) {
+      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.setBackGroundAlpha(paramFloat);
+    }
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
+    }
+    AEBeautyProviderView.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView, paramFloat);
   }
 }
 

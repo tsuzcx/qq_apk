@@ -1,18 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
 public class abux
-  implements atgq
+  implements Comparator<ChatMessage>
 {
-  public abux(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public abux(QQLSActivity paramQQLSActivity) {}
   
-  public void a(int paramInt, atgr paramatgr)
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    if ((!TextUtils.isEmpty(TextPreviewTranslateActivity.a(this.a))) && (!TextPreviewTranslateActivity.a(this.a).equals(paramatgr.b)))
-    {
-      TextPreviewTranslateActivity.a(this.a, paramatgr.b);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.c(this.a), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+    if (paramChatMessage1.shmsgseq == paramChatMessage2.shmsgseq) {
+      return 0;
     }
+    if (paramChatMessage1.shmsgseq > paramChatMessage2.shmsgseq) {
+      return 1;
+    }
+    return -1;
   }
 }
 

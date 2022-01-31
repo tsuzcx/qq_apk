@@ -1,29 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import Wallet.RedPackGrapInfo;
+import android.animation.Animator;
+import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
+import java.util.List;
 
-class agyu
-  implements View.OnClickListener
+public class agyu
+  implements IRedPacket.OnGetAvailableListListener
 {
-  agyu(agxq paramagxq) {}
+  public agyu(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onClick(View paramView)
+  public void OnGetAvailableList(List<RedPackGrapInfo> paramList)
   {
-    if (akgo.a().a() == 4) {
-      awqx.b(agxq.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, akgn.b(), akgo.b(), akgo.a(), "0");
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
     }
-    for (;;)
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      this.a.a(14, 0);
-      this.a.a(-1, null);
-      return;
-      awqx.b(agxq.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, akgn.b(), akgo.b(), akgo.a(), "0");
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null)
+      {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+        TroopUnAccalimedRedPacketList.a(this.a).setText(ajyc.a(2131715796));
+      }
     }
+    do
+    {
+      return;
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).a(paramList);
+      }
+    } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
+    TroopUnAccalimedRedPacketList.a(this.a).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agyu
  * JD-Core Version:    0.7.0.1
  */

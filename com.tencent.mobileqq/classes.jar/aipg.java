@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
 
 class aipg
-  implements View.OnClickListener
+  extends akim
 {
   aipg(aipf paramaipf) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    aipf.a(this.a, true);
-    this.a.a();
-    aipf.a(this.a, -1, -1);
+    Bitmap localBitmap = this.a.a.a(113, paramString);
+    if (localBitmap != null) {
+      this.a.a(paramString, localBitmap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aipg
  * JD-Core Version:    0.7.0.1
  */

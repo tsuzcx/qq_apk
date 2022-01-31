@@ -1,115 +1,192 @@
-import android.graphics.Bitmap;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nex
 {
-  private static Bitmap a(Bitmap paramBitmap)
+  public String a;
+  public ney a;
+  public nez a;
+  public nfa a;
+  public boolean a;
+  public String b;
+  public String c;
+  
+  private void a(JSONObject paramJSONObject)
   {
-    if (paramBitmap == null) {
-      return null;
+    if (paramJSONObject.has("title")) {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("title");
     }
-    try
-    {
-      int i = paramBitmap.getWidth();
-      int j = paramBitmap.getHeight();
-      localBitmap = paramBitmap;
-      if (i * j > 8000)
-      {
-        double d = Math.sqrt(8000.0D / (i * j));
-        localBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)(i * d), (int)(j * d), true);
-      }
+    if (paramJSONObject.has("video")) {
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("video");
     }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      for (;;)
-      {
-        System.gc();
-        paramBitmap.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoShareUtils", 2, "scaleBitmapForWeChat ERROR OutOfMemoryError");
-        }
-        localBitmap = null;
-      }
+    if (paramJSONObject.has("picture")) {
+      this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("picture");
     }
-    catch (Exception paramBitmap)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoShareUtils", 2, "scaleBitmapForWeChat ERROR e=" + paramBitmap.getMessage());
-        }
-        Bitmap localBitmap = null;
-      }
+    if (paramJSONObject.has("picture_attr")) {
+      c(paramJSONObject.getJSONObject("picture_attr"));
     }
-    return localBitmap;
+    if (paramJSONObject.has("video_attr")) {
+      d(paramJSONObject.getJSONObject("video_attr"));
+    }
   }
   
-  public static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, boolean paramBoolean, String paramString4, run paramrun)
+  private void b(JSONObject paramJSONObject)
   {
-    int k = 0;
-    int j = 0;
-    if (paramString1 == null) {}
-    for (paramBaseActivity = "";; paramBaseActivity = paramString1)
+    this.jdField_a_of_type_Ney = null;
+    if (paramJSONObject != null)
     {
-      if (paramString2 == null) {}
-      for (paramString1 = "";; paramString1 = paramString2)
-      {
-        int i;
-        if (!WXShareHelper.a().a()) {
-          i = 2131655008;
-        }
-        for (;;)
-        {
-          if (i != -1) {
-            vvp.a(0, i);
-          }
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("VideoShareUtils", 2, "title=" + paramBaseActivity + ", description=" + paramString1 + ", shareUrl=" + paramString3 + ", toWeChat=" + paramBoolean);
-            }
-            return;
-            if (WXShareHelper.a().b()) {
-              break label274;
-            }
-            i = 2131655009;
-            break;
-            paramString2 = String.valueOf(System.currentTimeMillis());
-            paramrun = new ney(paramString2, paramrun);
-            WXShareHelper.a().a(paramrun);
-            if ((!paramBoolean) || (TextUtils.isEmpty(paramString4))) {
-              break label178;
-            }
-            WxShareHelperFromReadInjoy.a().b(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, paramString4);
-          }
-          label178:
-          if (bgmq.t(obz.a()) == 1)
-          {
-            paramString4 = WXShareHelper.a();
-            paramBitmap = a(paramBitmap);
-            if (paramBoolean) {}
-            for (i = j;; i = 1)
-            {
-              paramString4.c(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, i);
-              break;
-            }
-          }
-          paramString4 = WxShareHelperFromReadInjoy.a();
-          paramBitmap = a(paramBitmap);
-          if (paramBoolean) {}
-          for (i = k;; i = 1)
-          {
-            paramString4.b(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, i);
-            break;
-          }
-          label274:
-          i = -1;
-        }
+      this.jdField_a_of_type_Ney = new ney();
+      if (paramJSONObject.has("articleid")) {
+        this.jdField_a_of_type_Ney.jdField_a_of_type_Long = paramJSONObject.getLong("articleid");
       }
+      if (paramJSONObject.has("id")) {
+        this.jdField_a_of_type_Ney.jdField_b_of_type_Long = paramJSONObject.getLong("id");
+      }
+      if (paramJSONObject.has("jumpurl")) {
+        this.jdField_a_of_type_Ney.jdField_a_of_type_JavaLangString = paramJSONObject.getString("jumpurl");
+      }
+      if (paramJSONObject.has("msgtype")) {
+        this.jdField_a_of_type_Ney.jdField_a_of_type_Int = paramJSONObject.getInt("msgtype");
+      }
+      if (paramJSONObject.has("tasktype")) {
+        this.jdField_a_of_type_Ney.jdField_b_of_type_Int = paramJSONObject.getInt("tasktype");
+      }
+      if (paramJSONObject.has("time")) {
+        this.jdField_a_of_type_Ney.c = paramJSONObject.getLong("time");
+      }
+      if (paramJSONObject.has("uniqueid")) {
+        this.jdField_a_of_type_Ney.d = paramJSONObject.getLong("uniqueid");
+      }
+      if (paramJSONObject.has("rowkey")) {
+        this.jdField_a_of_type_Ney.jdField_b_of_type_JavaLangString = paramJSONObject.getString("rowkey");
+      }
+    }
+  }
+  
+  private void c(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_Nez = null;
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_Nez = new nez();
+      if (paramJSONObject.has("cover")) {
+        this.jdField_a_of_type_Nez.jdField_a_of_type_JavaLangString = paramJSONObject.getString("cover");
+      }
+      if (paramJSONObject.has("cover_orig")) {
+        this.jdField_a_of_type_Nez.jdField_b_of_type_JavaLangString = paramJSONObject.getString("cover_orig");
+      }
+      if (paramJSONObject.has("large")) {
+        this.jdField_a_of_type_Nez.jdField_a_of_type_Int = paramJSONObject.getInt("large");
+      }
+    }
+  }
+  
+  private void d(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_Nfa = null;
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_Nfa = new nfa();
+      if (paramJSONObject.has("busitype")) {
+        this.jdField_a_of_type_Nfa.jdField_a_of_type_Int = paramJSONObject.getInt("busitype");
+      }
+      if (paramJSONObject.has("cover")) {
+        this.jdField_a_of_type_Nfa.jdField_a_of_type_JavaLangString = paramJSONObject.getString("cover");
+      }
+      if (paramJSONObject.has("cover_orig")) {
+        this.jdField_a_of_type_Nfa.jdField_d_of_type_JavaLangString = paramJSONObject.getString("cover_orig");
+      }
+      if (paramJSONObject.has("fulltime")) {
+        this.jdField_a_of_type_Nfa.jdField_b_of_type_Int = paramJSONObject.getInt("fulltime");
+      }
+      if (paramJSONObject.has("h5url")) {
+        this.jdField_a_of_type_Nfa.jdField_b_of_type_JavaLangString = paramJSONObject.getString("h5url");
+      }
+      if (paramJSONObject.has("preheight")) {
+        this.jdField_a_of_type_Nfa.jdField_c_of_type_Int = paramJSONObject.getInt("preheight");
+      }
+      if (paramJSONObject.has("prewidth")) {
+        this.jdField_a_of_type_Nfa.jdField_d_of_type_Int = paramJSONObject.getInt("prewidth");
+      }
+      if (paramJSONObject.has("vid")) {
+        this.jdField_a_of_type_Nfa.jdField_c_of_type_JavaLangString = paramJSONObject.getString("vid");
+      }
+      if (paramJSONObject.has("large")) {
+        this.jdField_a_of_type_Nfa.e = paramJSONObject.getInt("large");
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (paramString.has("msg"))
+        {
+          Object localObject = paramString.getJSONObject("msg");
+          if (((JSONObject)localObject).has("item"))
+          {
+            localObject = ((JSONObject)localObject).getJSONArray("item");
+            int i;
+            JSONArray localJSONArray;
+            if (localObject == null)
+            {
+              i = 0;
+              break label189;
+              if (j >= i) {
+                continue;
+              }
+              localJSONArray = ((JSONArray)localObject).getJSONArray(j);
+              if (localJSONArray == null)
+              {
+                k = 0;
+                break label194;
+                if (m >= k) {
+                  break label200;
+                }
+                a(localJSONArray.getJSONObject(m));
+                m += 1;
+                continue;
+              }
+            }
+            else
+            {
+              i = ((JSONArray)localObject).length();
+              break label189;
+            }
+            int k = localJSONArray.length();
+            break label194;
+          }
+        }
+        if (!paramString.has("msg_attr")) {
+          break;
+        }
+        b(paramString.getJSONObject("msg_attr"));
+        return;
+      }
+      catch (JSONException paramString) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("DynamicInfo", 2, "DynamicInfo Exception:" + paramString.getMessage());
+      return;
+      label189:
+      int j = 0;
+      continue;
+      label194:
+      int m = 0;
+      continue;
+      label200:
+      j += 1;
     }
   }
 }

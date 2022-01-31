@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import bfpk;
+import bgxr;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,7 +56,7 @@ public class LpReportInfo_dc02216
     }
     for (;;)
     {
-      localHashMap.put("qua", bfpk.a());
+      localHashMap.put("qua", bgxr.a());
       LpReportUtils.safePut(localHashMap, "platform", this.platform);
       localHashMap.put("actiontype", String.valueOf(this.actiontype));
       localHashMap.put("subactiontype", String.valueOf(this.subactiontype));

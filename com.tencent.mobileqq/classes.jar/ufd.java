@@ -1,26 +1,18 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.PlaybackThread;
 
-class ufd
-  extends tco
+public class ufd
+  implements ufa
 {
-  ufd(ufc paramufc) {}
+  public ufd(MediaPlayer paramMediaPlayer) {}
   
-  public void a()
+  public void a(uey paramuey)
   {
-    super.a();
-    ufc.a(this.a, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    urp.a("home_page", "suc_share", 2, paramInt, new String[] { urp.b(ufc.a(this.a).a) + "", urp.a(ufc.a(this.a).a) + "", ufc.a(this.a).a.feedId });
-  }
-  
-  public void b(int paramInt)
-  {
-    super.b(paramInt);
-    urp.a("home_page", "share_chanel", 2, paramInt, new String[] { urp.b(ufc.a(this.a).a) + "", urp.a(ufc.a(this.a).a) + "", ufc.a(this.a).a.feedId });
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread != null) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.a()) && (!this.a.e) && (this.a.jdField_a_of_type_Uew.b() < 2000000L) && (!this.a.jdField_a_of_type_Uew.b()))
+    {
+      this.a.e = true;
+      this.a.jdField_a_of_type_Ufe.sendMessage(this.a.jdField_a_of_type_Ufe.obtainMessage(200, 701, 0));
+    }
   }
 }
 

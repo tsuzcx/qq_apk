@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.activity.qwallet.red;
 
-import agql;
-import agwj;
+import ahda;
+import ahiy;
+import ahje;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -45,10 +44,9 @@ public class QWRedConfig
   
   private static String a(AppRuntime paramAppRuntime)
   {
-    StringBuilder localStringBuilder = new StringBuilder(paramAppRuntime.getApplication().getFilesDir().getPath());
-    localStringBuilder.append("/QWallet/").append(paramAppRuntime.getAccount()).append("/.config/");
-    localStringBuilder.append(".redConfig");
-    return localStringBuilder.toString();
+    paramAppRuntime = new StringBuilder(ahje.c).append(paramAppRuntime.getAccount()).append("/.config/");
+    paramAppRuntime.append(".redConfig");
+    return paramAppRuntime.toString();
   }
   
   private void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -89,7 +87,7 @@ public class QWRedConfig
     String str = a(paramQQAppInterface);
     try
     {
-      QWRedConfig localQWRedConfig1 = (QWRedConfig)agwj.a(str);
+      QWRedConfig localQWRedConfig1 = (QWRedConfig)ahiy.a(str);
       QWRedConfig localQWRedConfig2 = localQWRedConfig1;
       if (localQWRedConfig1 == null) {
         localQWRedConfig2 = new QWRedConfig();
@@ -137,74 +135,74 @@ public class QWRedConfig
     return QWRedConfig.RedInfo.transToReportStr(localLinkedList);
   }
   
-  public agql getShowInfoByPath(String paramString)
+  public ahda getShowInfoByPath(String paramString)
   {
     paramString = a(paramString);
     if (paramString != null) {
       return paramString.getShowInfo();
     }
-    return new agql(false, false, "", "");
+    return new ahda(false, false, "", "");
   }
   
   /* Error */
-  public void parseConfig(agmo paramagmo)
+  public void parseConfig(agzd paramagzd)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
     //   3: ifnull +17 -> 20
-    //   6: ldc 222
+    //   6: ldc 210
     //   8: aload_1
-    //   9: getfield 225	agmo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   12: invokevirtual 230	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   9: getfield 213	agzd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   12: invokevirtual 218	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   15: istore_2
     //   16: iload_2
     //   17: ifne +6 -> 23
     //   20: aload_0
     //   21: monitorexit
     //   22: return
-    //   23: invokestatic 171	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   23: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   26: ifeq +55 -> 81
-    //   29: ldc 173
+    //   29: ldc 161
     //   31: iconst_2
     //   32: new 63	java/lang/StringBuilder
     //   35: dup
-    //   36: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   39: ldc 232
-    //   41: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   39: ldc 220
+    //   41: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   44: aload_1
-    //   45: getfield 234	agmo:jdField_a_of_type_Long	J
-    //   48: invokevirtual 237	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   51: ldc 239
-    //   53: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: getfield 222	agzd:jdField_a_of_type_Long	J
+    //   48: invokevirtual 225	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   51: ldc 227
+    //   53: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: aload_0
-    //   57: getfield 241	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:version	J
-    //   60: invokevirtual 237	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   63: ldc 239
-    //   65: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: getfield 229	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:version	J
+    //   60: invokevirtual 225	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   63: ldc 227
+    //   65: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   68: aload_1
-    //   69: getfield 242	agmo:b	Ljava/lang/String;
-    //   72: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   78: invokestatic 183	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   69: getfield 230	agzd:b	Ljava/lang/String;
+    //   72: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   81: aload_1
-    //   82: getfield 234	agmo:jdField_a_of_type_Long	J
+    //   82: getfield 222	agzd:jdField_a_of_type_Long	J
     //   85: aload_0
-    //   86: getfield 241	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:version	J
+    //   86: getfield 229	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:version	J
     //   89: lcmp
     //   90: ifle -70 -> 20
     //   93: aload_0
     //   94: aload_1
-    //   95: getfield 242	agmo:b	Ljava/lang/String;
-    //   98: invokestatic 244	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:parseConfigToPathInfos	(Ljava/lang/String;)Ljava/util/List;
+    //   95: getfield 230	agzd:b	Ljava/lang/String;
+    //   98: invokestatic 232	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:parseConfigToPathInfos	(Ljava/lang/String;)Ljava/util/List;
     //   101: putfield 27	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:pathInfos	Ljava/util/List;
     //   104: aload_0
     //   105: aload_1
-    //   106: getfield 234	agmo:jdField_a_of_type_Long	J
-    //   109: putfield 241	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:version	J
+    //   106: getfield 222	agzd:jdField_a_of_type_Long	J
+    //   109: putfield 229	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:version	J
     //   112: aload_0
-    //   113: invokevirtual 247	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:saveConfig	()V
+    //   113: invokevirtual 235	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:saveConfig	()V
     //   116: goto -96 -> 20
     //   119: astore_1
     //   120: aload_0
@@ -214,7 +212,7 @@ public class QWRedConfig
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	124	0	this	QWRedConfig
-    //   0	124	1	paramagmo	agmo
+    //   0	124	1	paramagzd	agzd
     //   15	2	2	bool	boolean
     // Exception table:
     //   from	to	target	type

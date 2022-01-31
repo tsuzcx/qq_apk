@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aadg;
+import aamz;
 
 public class BaseChatPie$75$1
   implements Runnable
 {
-  public BaseChatPie$75$1(aadg paramaadg) {}
+  public BaseChatPie$75$1(aamz paramaamz) {}
   
   public void run()
   {

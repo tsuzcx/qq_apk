@@ -1,35 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.qphone.base.util.QLog;
-
-public class qqq
-  extends AnimatorListenerAdapter
+public abstract interface qqq
 {
-  public qqq(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public abstract void a(qqo paramqqo);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    ReadInJoyListViewGroup.a(this.a).setLayerType(0, null);
-    ReadInJoyListViewGroup.a(this.a).setVisibility(8);
-    this.a.a.setAlpha(1.0F);
-    if (ReadInJoyListViewGroup.a(this.a) != null) {
-      ReadInJoyListViewGroup.a(this.a).i();
-    }
-    ReadInJoyListViewGroup.a(this.a).setVisibility(8);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.videoanimation", 2, "trans animation end");
-    }
-  }
+  public abstract void a(qqo paramqqo, int paramInt);
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-  }
+  public abstract void a(qqo paramqqo, int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(qqo paramqqo, boolean paramBoolean);
+  
+  public abstract void b(qqo paramqqo);
+  
+  public abstract void c(qqo paramqqo);
+  
+  public abstract void d(qqo paramqqo);
+  
+  public abstract void e(qqo paramqqo);
 }
 
 

@@ -1,126 +1,81 @@
-import com.tencent.av.AVFunChat.AVFunChatMessage;
+import android.content.Context;
+import android.util.Xml;
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.apache.http.Header;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.message.BasicNameValuePair;
+import org.xmlpull.v1.XmlSerializer;
 
-public abstract interface lbe
+abstract class lbe
+  extends lax
 {
-  public abstract void H();
+  private static String a(List<String> paramList, String paramString)
+  {
+    XmlSerializer localXmlSerializer;
+    StringWriter localStringWriter;
+    try
+    {
+      localXmlSerializer = Xml.newSerializer();
+      localStringWriter = new StringWriter();
+      localXmlSerializer.setOutput(localStringWriter);
+      localXmlSerializer.startDocument("UTF-8", Boolean.valueOf(true));
+      localXmlSerializer.startTag("", "TranslateArrayRequest");
+      localXmlSerializer.startTag("", "AppId");
+      localXmlSerializer.endTag("", "AppId");
+      localXmlSerializer.startTag("", "Texts");
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        localXmlSerializer.startTag("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "string");
+        localXmlSerializer.text(str);
+        localXmlSerializer.endTag("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "string");
+      }
+      localXmlSerializer.endTag("", "Texts");
+    }
+    catch (Exception paramList)
+    {
+      paramList.printStackTrace();
+      return null;
+    }
+    localXmlSerializer.startTag("", "To");
+    localXmlSerializer.text(paramString);
+    localXmlSerializer.endTag("", "To");
+    localXmlSerializer.endTag("", "TranslateArrayRequest");
+    localXmlSerializer.endDocument();
+    paramList = localStringWriter.toString();
+    return paramList;
+  }
   
-  public abstract long a(long paramLong);
+  public static void a(Context paramContext, Header[] paramArrayOfHeader, List<String> paramList, String paramString, lam paramlam)
+  {
+    paramList = new StringEntity(a(paramList, paramString), "UTF-8");
+    a().a(paramContext, "http://api.microsofttranslator.com/V2/Http.svc/TranslateArray", paramArrayOfHeader, paramList, "application/xml", paramlam);
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, long paramLong);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(int paramInt1, String paramString1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean, String paramString3, int paramInt2, int paramInt3);
-  
-  public abstract void a(String paramString, int paramInt, long paramLong);
-  
-  public abstract void a(String paramString, int paramInt, long paramLong, byte[] paramArrayOfByte);
-  
-  public abstract void a(String paramString, int paramInt, byte[] paramArrayOfByte);
-  
-  public abstract void a(String paramString, long paramLong, int paramInt);
-  
-  public abstract void a(String paramString, long paramLong1, long paramLong2, long paramLong3);
-  
-  public abstract void a(String paramString, AVFunChat.AVFunChatMessage paramAVFunChatMessage);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(String paramString, boolean paramBoolean);
-  
-  public abstract void a(String paramString, byte[] paramArrayOfByte, long paramLong);
-  
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  public abstract void b(long paramLong1, long paramLong2, long paramLong3);
-  
-  public abstract void b(long paramLong1, long paramLong2, byte[] paramArrayOfByte);
-  
-  public abstract void b(String paramString, int paramInt, long paramLong, byte[] paramArrayOfByte);
-  
-  public abstract void b(String paramString, int paramInt, byte[] paramArrayOfByte);
-  
-  public abstract void b(String paramString, long paramLong, byte[] paramArrayOfByte);
-  
-  public abstract void b(String paramString, byte[] paramArrayOfByte, long paramLong);
-  
-  public abstract void b(byte[] paramArrayOfByte, long paramLong);
-  
-  public abstract void c(int paramInt, String paramString);
-  
-  public abstract void c(String paramString, int paramInt);
-  
-  public abstract void c(String paramString, byte[] paramArrayOfByte, long paramLong);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract int d();
-  
-  public abstract void d(int paramInt, String paramString);
-  
-  public abstract void d(String paramString);
-  
-  public abstract void d(String paramString, int paramInt);
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract int e(String paramString);
-  
-  public abstract void e(String paramString);
-  
-  public abstract void e(String paramString, int paramInt);
-  
-  public abstract void e(byte[] paramArrayOfByte);
-  
-  public abstract void f(int paramInt);
-  
-  public abstract void f(String paramString);
-  
-  public abstract void g(int paramInt);
-  
-  public abstract void g(String paramString);
-  
-  public abstract void g(String paramString, int paramInt);
-  
-  public abstract void h(String paramString);
-  
-  public abstract void h(String paramString, int paramInt);
-  
-  public abstract void i(String paramString);
-  
-  public abstract void j(String paramString);
-  
-  public abstract void k(String paramString);
-  
-  public abstract void l(String paramString);
-  
-  public abstract void m(String paramString);
-  
-  public abstract void n(String paramString);
-  
-  public abstract void o(String paramString);
-  
-  public abstract void p(String paramString);
-  
-  public abstract void q(String paramString);
-  
-  public abstract void r(String paramString);
-  
-  public abstract void s(String paramString);
-  
-  public abstract void t(String paramString);
-  
-  public abstract void u(String paramString);
-  
-  public abstract void v(String paramString);
-  
-  public abstract void w(String paramString);
+  public static void a(Context paramContext, Header[] paramArrayOfHeader, Map<String, String> paramMap, lao paramlao)
+  {
+    ArrayList localArrayList = new ArrayList(4);
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      localArrayList.add(new BasicNameValuePair((String)localEntry.getKey(), (String)localEntry.getValue()));
+    }
+    paramMap = new UrlEncodedFormEntity(localArrayList);
+    a().a(paramContext, "https://datamarket.accesscontrol.windows.net/v2/OAuth2-13", paramArrayOfHeader, paramMap, "application/x-www-form-urlencoded", paramlao);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     lbe
  * JD-Core Version:    0.7.0.1
  */

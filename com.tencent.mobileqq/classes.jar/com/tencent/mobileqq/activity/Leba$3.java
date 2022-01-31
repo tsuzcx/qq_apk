@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import abai;
-import ajqy;
+import akfi;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class Leba$3
+class Leba$3
   implements Runnable
 {
-  public Leba$3(abai paramabai) {}
+  Leba$3(Leba paramLeba) {}
   
   public void run()
   {
-    ((ajqy)this.this$0.a.a(87)).a(false, false);
+    ((akfi)this.this$0.a.a(87)).a(false, false);
   }
 }
 

@@ -1,10 +1,29 @@
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public abstract interface ates
+public class ates
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public ates(NearbyGuideActivity paramNearbyGuideActivity) {}
   
-  public abstract void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong);
+  public void onClick(View paramView)
+  {
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (!this.a.isFinishing()))
+    {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.a.jdField_a_of_type_AndroidAppDialog = null;
+      this.a.d(ajyc.a(2131707179));
+      if (this.a.jdField_a_of_type_Atbx == null) {
+        this.a.jdField_a_of_type_Atbx = ((atbx)this.a.app.a(60));
+      }
+      this.a.jdField_a_of_type_Atbx.a(NearbyPeopleProfileActivity.c, 5);
+      this.a.e("0X8005909");
+    }
+  }
 }
 
 

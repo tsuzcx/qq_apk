@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.database;
 
 import android.os.Parcel;
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShareGroupEntry
-  extends atmo
+  extends aukm
 {
   public int allowStrangerVisitAndPost;
   public String backgroundUrl;
@@ -21,7 +21,7 @@ public class ShareGroupEntry
   public String name;
   public int ownerType;
   public String ownerUnionId;
-  @atoc
+  @auma
   public String shareGroupId;
   public int type;
   public int videoCount;

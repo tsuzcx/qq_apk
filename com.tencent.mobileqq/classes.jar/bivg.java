@@ -1,16 +1,6 @@
-import android.graphics.Bitmap;
-
-class bivg
-  implements aliw
+public abstract interface bivg
 {
-  bivg(bivf parambivf) {}
-  
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
-  {
-    if (bivf.a(this.a) != null) {
-      bivf.a(this.a).a(paramString1, 1, paramString2, paramBitmap);
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

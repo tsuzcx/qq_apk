@@ -6,7 +6,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import bacm;
+import bbdr;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
@@ -16,14 +16,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 import mqq.os.MqqHandler;
-import oqi;
-import rct;
+import pbj;
+import rph;
 
 public class ReadInJoyHeadImageView
   extends KandianUrlImageView
-  implements IView, oqi
+  implements IView, pbj
 {
-  private static final Drawable b = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841200));
+  private static final Drawable b = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841279));
   private long a;
   
   public ReadInJoyHeadImageView(Context paramContext)
@@ -47,8 +47,8 @@ public class ReadInJoyHeadImageView
   private void a()
   {
     setRound(true);
-    a(bacm.a());
-    this.jdField_a_of_type_Rct.a(false);
+    a(bbdr.a());
+    this.jdField_a_of_type_Rph.a(false);
   }
   
   private void a(ReadInJoyUserInfo paramReadInJoyUserInfo)

@@ -1,25 +1,18 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.Comparator;
+import android.os.Parcel;
+import android.support.v4.os.ParcelableCompatCreatorCallbacks;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.SavedState;
 
-public class ucx
-  implements Comparator<CommentEntry>
+public final class ucx
+  implements ParcelableCompatCreatorCallbacks<XViewPager.SavedState>
 {
-  public ucx(ucw paramucw) {}
-  
-  public int a(CommentEntry paramCommentEntry1, CommentEntry paramCommentEntry2)
+  public XViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
   {
-    if ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status == 0)) {
-      if (paramCommentEntry1.replyTime >= paramCommentEntry2.replyTime) {}
-    }
-    while ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status != 0))
-    {
-      return -1;
-      if (paramCommentEntry1.replyTime > paramCommentEntry2.replyTime) {
-        return 1;
-      }
-      return 0;
-    }
-    return 1;
+    return new XViewPager.SavedState(paramParcel, paramClassLoader);
+  }
+  
+  public XViewPager.SavedState[] a(int paramInt)
+  {
+    return new XViewPager.SavedState[paramInt];
   }
 }
 

@@ -1,12 +1,21 @@
-public class ahuc
+import android.app.Activity;
+import android.content.Intent;
+
+public abstract interface ahuc
 {
-  public String a;
-  public String b;
-  public String c;
+  public abstract String a();
+  
+  public abstract void a(Activity paramActivity);
+  
+  public abstract void a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(Activity paramActivity, Intent paramIntent);
+  
+  public abstract void c_(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahuc
  * JD-Core Version:    0.7.0.1
  */

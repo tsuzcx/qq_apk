@@ -1,37 +1,27 @@
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
 
-public class aivb
-  extends Animation
+public abstract interface aivb
+  extends aivy
 {
-  private final int a;
-  private final int b;
-  private final int c;
-  private final int d;
-  private final int e;
-  private final int f;
+  public abstract void bulkApolloBarrages(String paramString1, String paramString2, boolean paramBoolean);
   
-  public aivb(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    this.e = paramInt1;
-    this.f = paramInt2;
-    this.d = paramInt5;
-    this.c = paramInt6;
-    this.a = paramInt3;
-    this.b = paramInt4;
-  }
+  public abstract int getHeight();
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    float f1 = this.e;
-    float f2 = this.a;
-    float f3 = this.d;
-    float f4 = this.f;
-    float f5 = this.b;
-    float f6 = this.c;
-    paramTransformation.getMatrix().preTranslate((1.0F - paramFloat) * (1.0F - paramFloat) * f1 + 2.0F * paramFloat * (1.0F - paramFloat) * f2 + paramFloat * paramFloat * f3, (1.0F - paramFloat) * (1.0F - paramFloat) * f4 + 2.0F * paramFloat * (1.0F - paramFloat) * f5 + paramFloat * paramFloat * f6);
-  }
+  public abstract int getInitHeight();
+  
+  public abstract long getLuaState();
+  
+  public abstract aitm getRenderImpl();
+  
+  public abstract int getWidth();
+  
+  public abstract ApolloRenderDriver getWorker();
+  
+  public abstract void removeAllApolloBarrages(boolean paramBoolean);
+  
+  public abstract void setBubbleType(int paramInt);
+  
+  public abstract void setVisibility(int paramInt);
 }
 
 

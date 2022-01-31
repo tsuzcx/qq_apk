@@ -1,6 +1,6 @@
 package cooperation.qwallet.plugin;
 
-import ajjy;
+import ajyc;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.content.IntentFilter;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbmy;
+import bcpw;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.pluginsdk.IPluginActivity;
@@ -301,7 +301,7 @@ public class QWalletPluginProxyActivity
         if (l - this.lastTipsTime > 3000L)
         {
           this.lastTipsTime = l;
-          bbmy.a(this, ajjy.a(2131645650), 0).a();
+          bcpw.a(this, ajyc.a(2131711438), 0).a();
         }
         return;
       }

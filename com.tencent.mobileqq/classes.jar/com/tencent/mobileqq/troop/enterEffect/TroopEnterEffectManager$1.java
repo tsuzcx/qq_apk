@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
 import android.os.Handler;
-import ayqp;
-import ayrg;
+import azrf;
+import azrw;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TroopEnterEffectManager$1
   implements Runnable
 {
-  public TroopEnterEffectManager$1(ayrg paramayrg, String paramString) {}
+  public TroopEnterEffectManager$1(azrw paramazrw, String paramString) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Ayqp = this.this$0.a();
-    if (this.this$0.jdField_a_of_type_Ayqp.a.get()) {
+    this.this$0.jdField_a_of_type_Azrf = this.this$0.a();
+    if (this.this$0.jdField_a_of_type_Azrf.a.get()) {
       this.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectManager.1.1(this));
     }
   }

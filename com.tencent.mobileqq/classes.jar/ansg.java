@@ -1,44 +1,31 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class ansg
-  implements anui
+class ansg
+  implements Handler.Callback
 {
-  public ansg(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  ansg(ansf paramansf) {}
   
-  public void a(String paramString, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (!paramString.equals(ExtendFriendSquareFragment.a(this.a)))
+    switch (paramMessage.what)
     {
-      ExtendFriendSquareFragment.a(this.a, paramString);
-      if (!anoe.a.equals(ExtendFriendSquareFragment.a(this.a))) {
-        break label187;
-      }
-      ExtendFriendSquareFragment.a(this.a, false);
     }
-    label187:
-    for (boolean bool1 = ExtendFriendSquareFragment.f(this.a);; bool1 = false)
+    do
     {
-      boolean bool2 = ExtendFriendSquareFragment.a(this.a, false, paramString);
-      long l = Math.abs(System.currentTimeMillis() - ExtendFriendSquareFragment.b(this.a));
-      if ((!bool2) || (l > 60000L) || (bool1))
-      {
-        ExtendFriendSquareFragment.b(this.a, false);
-        this.a.a.a();
-        this.a.a.notifyDataSetChanged();
-        this.a.a.a(false);
-        ExtendFriendSquareFragment.a(this.a);
-        ExtendFriendSquareFragment.a(this.a).removeMessages(11);
-        ExtendFriendSquareFragment.a(this.a).sendEmptyMessageDelayed(11, 500L);
-        return;
-      }
-      ExtendFriendSquareFragment.b(this.a, true);
-      return;
-    }
+      return true;
+      this.a.b = true;
+      QLog.i("EmoticonFromGroup_DBManager", 1, "set db tag, mCanWriteDataToDB = true.");
+    } while (this.a.b() < 300);
+    ansf.a(this.a).clear();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ansg
  * JD-Core Version:    0.7.0.1
  */

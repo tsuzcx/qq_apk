@@ -1,25 +1,19 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import java.io.InputStream;
 
-class mzi
-  implements DialogInterface.OnCancelListener
+public class mzi
 {
-  mzi(mzd parammzd, JsResult paramJsResult, Context paramContext) {}
+  public InputStream a;
+  public String a;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public mzi(String paramString, InputStream paramInputStream)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    if (this.jdField_a_of_type_Mzd.a > 2) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mzi
  * JD-Core Version:    0.7.0.1
  */

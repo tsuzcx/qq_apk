@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.data;
 
-import aymp;
+import aznf;
 import com.tencent.mobileqq.data.MessageRecord;
 
 class TroopAioKeywordTipManager$3$1

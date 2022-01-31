@@ -1,33 +1,30 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-final class bilr
-  implements Animator.AnimatorListener
+class bilr
+  implements bjob<bivx>
 {
-  bilr(bils parambils, ValueAnimator paramValueAnimator) {}
+  bilr(bilj parambilj) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(@Nullable bivx parambivx)
   {
-    if (this.jdField_a_of_type_Bils != null) {
-      this.jdField_a_of_type_Bils.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Bils != null) {
-      this.jdField_a_of_type_Bils.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Bils != null) {
-      this.jdField_a_of_type_Bils.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
+    if (parambivx == null) {}
+    do
+    {
+      return;
+      bilj.a(this.a).q();
+      if (parambivx == bivx.a)
+      {
+        bilj.a(this.a);
+        return;
+      }
+      if (parambivx == bivx.c)
+      {
+        bilj.a(this.a).setVisibility(8);
+        return;
+      }
+    } while (parambivx != bivx.b);
+    bilj.a(this.a).setVisibility(8);
   }
 }
 

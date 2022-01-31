@@ -1,50 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.icebreaking.AIOIceBreakView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.CustomImgView;
+import java.io.File;
+import java.util.Comparator;
 
-public class ajzg
-  implements View.OnClickListener
+class ajzg
+  implements Comparator<File>
 {
-  public ajzg(AIOIceBreakView paramAIOIceBreakView) {}
+  ajzg(ajzf paramajzf) {}
   
-  public void onClick(View paramView)
+  public int a(File paramFile1, File paramFile2)
   {
-    int i = 1;
-    QLog.i("IceBreak.HotPic", 2, "onClick.");
-    URLImageView localURLImageView = (URLImageView)((CustomImgView)paramView).a;
-    paramView = (aelm)paramView.getTag();
-    if ((localURLImageView.getDrawable() instanceof URLDrawable))
+    long l2 = 0L;
+    if (paramFile1 != null) {}
+    for (long l1 = paramFile1.lastModified();; l1 = 0L)
     {
-      if (((URLDrawable)localURLImageView.getDrawable()).getStatus() == 1) {
-        AIOIceBreakView.a(this.a, paramView);
+      if (paramFile2 != null) {
+        l2 = paramFile2.lastModified();
       }
-    }
-    else if (AIOIceBreakView.a(this.a).a.a != 1044) {
-      if (AIOIceBreakView.a(this.a).a.a != 0) {
-        break label167;
-      }
-    }
-    for (;;)
-    {
-      awqx.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CB", "0X800A4CB", i, 0, "", "", "", "");
-      if (AIOIceBreakView.a(this.a) != null) {
-        AIOIceBreakView.a(this.a).a(localURLImageView);
-      }
-      return;
-      if (!QLog.isColorLevel()) {
+      if (l2 >= l1) {
         break;
       }
-      QLog.e("IceBreak.HotPic", 2, "onClick:URLDrawable status != successed");
-      break;
-      label167:
-      i = 2;
+      return -1;
     }
+    if (l2 > l1) {
+      return 1;
+    }
+    return 0;
   }
 }
 

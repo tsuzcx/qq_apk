@@ -1,7 +1,7 @@
 package com.tencent.tmdownloader;
 
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.t;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.s;
 import com.tencent.tmdownloader.internal.remote.a;
 
 class g
@@ -13,21 +13,21 @@ class g
   {
     try
     {
-      ac.c("RemoteOpProxy", "<postReport> process:" + t.e() + ", getServiceInterface()");
+      ab.c("RemoteOpProxy", "<postReport> process:" + s.e() + ", getServiceInterface()");
       a locala = (a)this.c.getServiceInterface();
       if (locala != null)
       {
-        ac.c("RemoteOpProxy", "<postReport> process:" + t.e());
+        ab.c("RemoteOpProxy", "<postReport> process:" + s.e());
         locala.a(this.a, this.b);
         return;
       }
-      ac.c("RemoteOpProxy", "<postReport> null == serviceInterface, initTMAssistantDownloadSDK,process:" + t.e());
+      ab.c("RemoteOpProxy", "<postReport> null == serviceInterface, initTMAssistantDownloadSDK,process:" + s.e());
       this.c.initTMAssistantDownloadSDK();
       return;
     }
     catch (Exception localException)
     {
-      ac.c("RemoteOpProxy", "<postReport> process:" + t.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
+      ab.c("RemoteOpProxy", "<postReport> process:" + s.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
       localException.printStackTrace();
     }
   }

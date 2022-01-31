@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import amoa;
 import android.content.SharedPreferences;
+import aneh;
 
 public class PhoneContactManagerImp$1
   implements Runnable
@@ -14,7 +14,7 @@ public class PhoneContactManagerImp$1
     PhoneContactManagerImp.a(this.this$0);
     this.this$0.g = this.this$0.a.getLong("key_contacts_switches", 0L);
     if (PhoneContactManagerImp.a(this.this$0) != null) {
-      amoa localamoa = (amoa)PhoneContactManagerImp.a(this.this$0).getManager(41);
+      aneh localaneh = (aneh)PhoneContactManagerImp.a(this.this$0).getManager(41);
     }
     this.this$0.k();
   }

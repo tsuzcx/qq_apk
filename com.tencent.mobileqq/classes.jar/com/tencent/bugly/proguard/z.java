@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.KeyFactory;
@@ -987,18 +988,30 @@ public class z
     paramParcel.writeBundle(paramMap);
   }
   
+  public static void a(Class<?> paramClass, String paramString, Object paramObject1, Object paramObject2)
+  {
+    try
+    {
+      paramClass = paramClass.getDeclaredField(paramString);
+      paramClass.setAccessible(true);
+      paramClass.set(null, paramObject1);
+      return;
+    }
+    catch (Exception paramClass) {}
+  }
+  
   /* Error */
   public static void a(String paramString1, String paramString2, int paramInt)
   {
     // Byte code:
-    //   0: ldc_w 567
+    //   0: ldc_w 580
     //   3: iconst_1
     //   4: anewarray 4	java/lang/Object
     //   7: dup
     //   8: iconst_0
     //   9: aload_0
     //   10: aastore
-    //   11: invokestatic 569	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   11: invokestatic 582	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   14: pop
     //   15: aload_1
     //   16: ifnull +13 -> 29
@@ -1010,20 +1023,20 @@ public class z
     //   30: new 36	java/io/File
     //   33: dup
     //   34: aload_0
-    //   35: invokespecial 570	java/io/File:<init>	(Ljava/lang/String;)V
+    //   35: invokespecial 583	java/io/File:<init>	(Ljava/lang/String;)V
     //   38: astore 6
     //   40: aload 6
     //   42: invokevirtual 40	java/io/File:exists	()Z
     //   45: ifne +26 -> 71
     //   48: aload 6
-    //   50: invokevirtual 574	java/io/File:getParentFile	()Ljava/io/File;
+    //   50: invokevirtual 587	java/io/File:getParentFile	()Ljava/io/File;
     //   53: ifnull +12 -> 65
     //   56: aload 6
-    //   58: invokevirtual 574	java/io/File:getParentFile	()Ljava/io/File;
-    //   61: invokevirtual 577	java/io/File:mkdirs	()Z
+    //   58: invokevirtual 587	java/io/File:getParentFile	()Ljava/io/File;
+    //   61: invokevirtual 590	java/io/File:mkdirs	()Z
     //   64: pop
     //   65: aload 6
-    //   67: invokevirtual 580	java/io/File:createNewFile	()Z
+    //   67: invokevirtual 593	java/io/File:createNewFile	()Z
     //   70: pop
     //   71: aconst_null
     //   72: astore 5
@@ -1034,7 +1047,7 @@ public class z
     //   79: aload 5
     //   81: astore_3
     //   82: aload 6
-    //   84: invokevirtual 582	java/io/File:length	()J
+    //   84: invokevirtual 595	java/io/File:length	()J
     //   87: iload_2
     //   88: i2l
     //   89: lcmp
@@ -1043,11 +1056,11 @@ public class z
     //   94: astore 4
     //   96: aload 5
     //   98: astore_3
-    //   99: new 584	java/io/FileOutputStream
+    //   99: new 597	java/io/FileOutputStream
     //   102: dup
     //   103: aload 6
     //   105: iconst_0
-    //   106: invokespecial 587	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   106: invokespecial 600	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   109: astore_0
     //   110: aload_0
     //   111: astore 4
@@ -1055,32 +1068,32 @@ public class z
     //   114: astore_3
     //   115: aload_0
     //   116: aload_1
-    //   117: ldc_w 589
-    //   120: invokevirtual 593	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   123: invokevirtual 597	java/io/FileOutputStream:write	([B)V
+    //   117: ldc_w 602
+    //   120: invokevirtual 606	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   123: invokevirtual 610	java/io/FileOutputStream:write	([B)V
     //   126: aload_0
     //   127: astore 4
     //   129: aload_0
     //   130: astore_3
     //   131: aload_0
-    //   132: invokevirtual 600	java/io/FileOutputStream:flush	()V
+    //   132: invokevirtual 613	java/io/FileOutputStream:flush	()V
     //   135: aload_0
-    //   136: invokevirtual 601	java/io/FileOutputStream:close	()V
-    //   139: ldc_w 603
+    //   136: invokevirtual 614	java/io/FileOutputStream:close	()V
+    //   139: ldc_w 616
     //   142: iconst_0
     //   143: anewarray 4	java/lang/Object
-    //   146: invokestatic 569	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   146: invokestatic 582	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   149: pop
     //   150: return
     //   151: aload_0
     //   152: astore 4
     //   154: aload 5
     //   156: astore_3
-    //   157: new 584	java/io/FileOutputStream
+    //   157: new 597	java/io/FileOutputStream
     //   160: dup
     //   161: aload 6
     //   163: iconst_1
-    //   164: invokespecial 587	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   164: invokespecial 600	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   167: astore_0
     //   168: goto -58 -> 110
     //   171: astore_0
@@ -1096,7 +1109,7 @@ public class z
     //   189: aload 4
     //   191: ifnull -52 -> 139
     //   194: aload 4
-    //   196: invokevirtual 601	java/io/FileOutputStream:close	()V
+    //   196: invokevirtual 614	java/io/FileOutputStream:close	()V
     //   199: goto -60 -> 139
     //   202: astore_0
     //   203: aload_0
@@ -1109,7 +1122,7 @@ public class z
     //   218: aload_3
     //   219: ifnull +7 -> 226
     //   222: aload_3
-    //   223: invokevirtual 601	java/io/FileOutputStream:close	()V
+    //   223: invokevirtual 614	java/io/FileOutputStream:close	()V
     //   226: aload_0
     //   227: athrow
     // Local variable table:
@@ -1178,10 +1191,10 @@ public class z
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
-    //   3: ldc_w 637
+    //   3: ldc_w 650
     //   6: iconst_0
     //   7: anewarray 4	java/lang/Object
-    //   10: invokestatic 569	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   10: invokestatic 582	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   13: pop
     //   14: aload_0
     //   15: ifnull +15 -> 30
@@ -1189,9 +1202,9 @@ public class z
     //   19: ifnull +11 -> 30
     //   22: aload_0
     //   23: aload_1
-    //   24: invokevirtual 638	java/io/File:equals	(Ljava/lang/Object;)Z
+    //   24: invokevirtual 651	java/io/File:equals	(Ljava/lang/Object;)Z
     //   27: ifeq +16 -> 43
-    //   30: ldc_w 640
+    //   30: ldc_w 653
     //   33: iconst_0
     //   34: anewarray 4	java/lang/Object
     //   37: invokestatic 178	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
@@ -1204,7 +1217,7 @@ public class z
     //   50: aload_0
     //   51: invokevirtual 43	java/io/File:canRead	()Z
     //   54: ifne +16 -> 70
-    //   57: ldc_w 642
+    //   57: ldc_w 655
     //   60: iconst_0
     //   61: anewarray 4	java/lang/Object
     //   64: invokestatic 178	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
@@ -1212,21 +1225,21 @@ public class z
     //   68: iconst_0
     //   69: ireturn
     //   70: aload_1
-    //   71: invokevirtual 574	java/io/File:getParentFile	()Ljava/io/File;
+    //   71: invokevirtual 587	java/io/File:getParentFile	()Ljava/io/File;
     //   74: ifnull +21 -> 95
     //   77: aload_1
-    //   78: invokevirtual 574	java/io/File:getParentFile	()Ljava/io/File;
+    //   78: invokevirtual 587	java/io/File:getParentFile	()Ljava/io/File;
     //   81: invokevirtual 40	java/io/File:exists	()Z
     //   84: ifne +11 -> 95
     //   87: aload_1
-    //   88: invokevirtual 574	java/io/File:getParentFile	()Ljava/io/File;
-    //   91: invokevirtual 577	java/io/File:mkdirs	()Z
+    //   88: invokevirtual 587	java/io/File:getParentFile	()Ljava/io/File;
+    //   91: invokevirtual 590	java/io/File:mkdirs	()Z
     //   94: pop
     //   95: aload_1
     //   96: invokevirtual 40	java/io/File:exists	()Z
     //   99: ifne +8 -> 107
     //   102: aload_1
-    //   103: invokevirtual 580	java/io/File:createNewFile	()Z
+    //   103: invokevirtual 593	java/io/File:createNewFile	()Z
     //   106: pop
     //   107: aload_1
     //   108: invokevirtual 40	java/io/File:exists	()Z
@@ -1239,27 +1252,27 @@ public class z
     //   125: aload_0
     //   126: invokespecial 52	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   129: astore_3
-    //   130: new 644	java/util/zip/ZipOutputStream
+    //   130: new 657	java/util/zip/ZipOutputStream
     //   133: dup
-    //   134: new 646	java/io/BufferedOutputStream
+    //   134: new 659	java/io/BufferedOutputStream
     //   137: dup
-    //   138: new 584	java/io/FileOutputStream
+    //   138: new 597	java/io/FileOutputStream
     //   141: dup
     //   142: aload_1
-    //   143: invokespecial 647	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   146: invokespecial 650	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   149: invokespecial 651	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   143: invokespecial 660	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   146: invokespecial 663	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   149: invokespecial 664	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   152: astore 4
     //   154: aload 4
     //   156: bipush 8
-    //   158: invokevirtual 654	java/util/zip/ZipOutputStream:setMethod	(I)V
+    //   158: invokevirtual 667	java/util/zip/ZipOutputStream:setMethod	(I)V
     //   161: aload 4
-    //   163: new 656	java/util/zip/ZipEntry
+    //   163: new 669	java/util/zip/ZipEntry
     //   166: dup
     //   167: aload_0
-    //   168: invokevirtual 657	java/io/File:getName	()Ljava/lang/String;
-    //   171: invokespecial 658	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   174: invokevirtual 662	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
+    //   168: invokevirtual 670	java/io/File:getName	()Ljava/lang/String;
+    //   171: invokespecial 671	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   174: invokevirtual 675	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
     //   177: sipush 5000
     //   180: newarray byte
     //   182: astore_0
@@ -1273,7 +1286,7 @@ public class z
     //   195: aload_0
     //   196: iconst_0
     //   197: iload_2
-    //   198: invokevirtual 664	java/util/zip/ZipOutputStream:write	([BII)V
+    //   198: invokevirtual 677	java/util/zip/ZipOutputStream:write	([BII)V
     //   201: goto -18 -> 183
     //   204: astore 5
     //   206: aload_3
@@ -1294,11 +1307,11 @@ public class z
     //   233: aload_0
     //   234: ifnull +7 -> 241
     //   237: aload_0
-    //   238: invokevirtual 665	java/util/zip/ZipOutputStream:close	()V
-    //   241: ldc_w 667
+    //   238: invokevirtual 678	java/util/zip/ZipOutputStream:close	()V
+    //   241: ldc_w 680
     //   244: iconst_0
     //   245: anewarray 4	java/lang/Object
-    //   248: invokestatic 569	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   248: invokestatic 582	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   251: pop
     //   252: iconst_0
     //   253: ireturn
@@ -1310,17 +1323,17 @@ public class z
     //   263: invokevirtual 125	java/lang/Throwable:printStackTrace	()V
     //   266: goto -159 -> 107
     //   269: aload 4
-    //   271: invokevirtual 668	java/util/zip/ZipOutputStream:flush	()V
+    //   271: invokevirtual 681	java/util/zip/ZipOutputStream:flush	()V
     //   274: aload 4
-    //   276: invokevirtual 671	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   276: invokevirtual 684	java/util/zip/ZipOutputStream:closeEntry	()V
     //   279: aload_3
     //   280: invokevirtual 361	java/io/FileInputStream:close	()V
     //   283: aload 4
-    //   285: invokevirtual 665	java/util/zip/ZipOutputStream:close	()V
-    //   288: ldc_w 667
+    //   285: invokevirtual 678	java/util/zip/ZipOutputStream:close	()V
+    //   288: ldc_w 680
     //   291: iconst_0
     //   292: anewarray 4	java/lang/Object
-    //   295: invokestatic 569	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   295: invokestatic 582	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   298: pop
     //   299: iconst_1
     //   300: ireturn
@@ -1352,11 +1365,11 @@ public class z
     //   346: aload_0
     //   347: ifnull +7 -> 354
     //   350: aload_0
-    //   351: invokevirtual 665	java/util/zip/ZipOutputStream:close	()V
-    //   354: ldc_w 667
+    //   351: invokevirtual 678	java/util/zip/ZipOutputStream:close	()V
+    //   354: ldc_w 680
     //   357: iconst_0
     //   358: anewarray 4	java/lang/Object
-    //   361: invokestatic 569	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   361: invokestatic 582	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   364: pop
     //   365: aload_1
     //   366: athrow
@@ -1467,24 +1480,24 @@ public class z
     //   3: bipush 16
     //   5: newarray byte
     //   7: astore_3
-    //   8: new 696	java/io/DataInputStream
+    //   8: new 709	java/io/DataInputStream
     //   11: dup
     //   12: new 49	java/io/FileInputStream
     //   15: dup
     //   16: new 36	java/io/File
     //   19: dup
-    //   20: ldc_w 698
-    //   23: invokespecial 570	java/io/File:<init>	(Ljava/lang/String;)V
+    //   20: ldc_w 711
+    //   23: invokespecial 583	java/io/File:<init>	(Ljava/lang/String;)V
     //   26: invokespecial 52	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   29: invokespecial 699	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   29: invokespecial 712	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   32: astore_2
     //   33: aload_2
     //   34: astore_1
     //   35: aload_2
     //   36: aload_3
-    //   37: invokevirtual 702	java/io/DataInputStream:readFully	([B)V
+    //   37: invokevirtual 715	java/io/DataInputStream:readFully	([B)V
     //   40: aload_2
-    //   41: invokevirtual 703	java/io/DataInputStream:close	()V
+    //   41: invokevirtual 716	java/io/DataInputStream:close	()V
     //   44: aload_3
     //   45: astore_1
     //   46: ldc 2
@@ -1496,7 +1509,7 @@ public class z
     //   53: astore_2
     //   54: aload_2
     //   55: astore_1
-    //   56: ldc_w 705
+    //   56: ldc_w 718
     //   59: iconst_1
     //   60: anewarray 4	java/lang/Object
     //   63: dup
@@ -1508,33 +1521,33 @@ public class z
     //   71: aload_2
     //   72: ifnull +7 -> 79
     //   75: aload_2
-    //   76: invokevirtual 703	java/io/DataInputStream:close	()V
-    //   79: ldc_w 707
-    //   82: invokestatic 712	javax/crypto/KeyGenerator:getInstance	(Ljava/lang/String;)Ljavax/crypto/KeyGenerator;
+    //   76: invokevirtual 716	java/io/DataInputStream:close	()V
+    //   79: ldc_w 720
+    //   82: invokestatic 725	javax/crypto/KeyGenerator:getInstance	(Ljava/lang/String;)Ljavax/crypto/KeyGenerator;
     //   85: astore_1
     //   86: aload_1
     //   87: sipush 128
-    //   90: new 714	java/security/SecureRandom
+    //   90: new 727	java/security/SecureRandom
     //   93: dup
-    //   94: invokespecial 715	java/security/SecureRandom:<init>	()V
-    //   97: invokevirtual 719	javax/crypto/KeyGenerator:init	(ILjava/security/SecureRandom;)V
+    //   94: invokespecial 728	java/security/SecureRandom:<init>	()V
+    //   97: invokevirtual 732	javax/crypto/KeyGenerator:init	(ILjava/security/SecureRandom;)V
     //   100: aload_1
-    //   101: invokevirtual 723	javax/crypto/KeyGenerator:generateKey	()Ljavax/crypto/SecretKey;
-    //   104: invokeinterface 728 1 0
+    //   101: invokevirtual 736	javax/crypto/KeyGenerator:generateKey	()Ljavax/crypto/SecretKey;
+    //   104: invokeinterface 741 1 0
     //   109: astore_1
     //   110: goto -64 -> 46
     //   113: aload_1
     //   114: ifnull +7 -> 121
     //   117: aload_1
-    //   118: invokevirtual 703	java/io/DataInputStream:close	()V
+    //   118: invokevirtual 716	java/io/DataInputStream:close	()V
     //   121: aload_2
     //   122: athrow
     //   123: astore_1
     //   124: aload_1
-    //   125: invokestatic 730	com/tencent/bugly/proguard/x:b	(Ljava/lang/Throwable;)Z
+    //   125: invokestatic 743	com/tencent/bugly/proguard/x:b	(Ljava/lang/Throwable;)Z
     //   128: ifne +7 -> 135
     //   131: aload_1
-    //   132: invokevirtual 731	java/lang/Exception:printStackTrace	()V
+    //   132: invokevirtual 744	java/lang/Exception:printStackTrace	()V
     //   135: aconst_null
     //   136: astore_1
     //   137: goto -91 -> 46
@@ -1639,40 +1652,40 @@ public class z
     //   8: ifne +5 -> 13
     //   11: aconst_null
     //   12: areturn
-    //   13: ldc_w 637
+    //   13: ldc_w 650
     //   16: iconst_0
     //   17: anewarray 4	java/lang/Object
-    //   20: invokestatic 569	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   20: invokestatic 582	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   23: pop
-    //   24: new 788	java/io/ByteArrayInputStream
+    //   24: new 801	java/io/ByteArrayInputStream
     //   27: dup
     //   28: aload_1
-    //   29: ldc_w 589
-    //   32: invokevirtual 593	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   35: invokespecial 789	java/io/ByteArrayInputStream:<init>	([B)V
+    //   29: ldc_w 602
+    //   32: invokevirtual 606	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   35: invokespecial 802	java/io/ByteArrayInputStream:<init>	([B)V
     //   38: astore 4
-    //   40: new 791	java/io/ByteArrayOutputStream
+    //   40: new 804	java/io/ByteArrayOutputStream
     //   43: dup
-    //   44: invokespecial 792	java/io/ByteArrayOutputStream:<init>	()V
+    //   44: invokespecial 805	java/io/ByteArrayOutputStream:<init>	()V
     //   47: astore 5
-    //   49: new 644	java/util/zip/ZipOutputStream
+    //   49: new 657	java/util/zip/ZipOutputStream
     //   52: dup
     //   53: aload 5
-    //   55: invokespecial 651	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   55: invokespecial 664	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   58: astore_1
     //   59: aload_1
     //   60: astore_0
     //   61: aload_1
     //   62: bipush 8
-    //   64: invokevirtual 654	java/util/zip/ZipOutputStream:setMethod	(I)V
+    //   64: invokevirtual 667	java/util/zip/ZipOutputStream:setMethod	(I)V
     //   67: aload_1
     //   68: astore_0
     //   69: aload_1
-    //   70: new 656	java/util/zip/ZipEntry
+    //   70: new 669	java/util/zip/ZipEntry
     //   73: dup
     //   74: aload_2
-    //   75: invokespecial 658	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   78: invokevirtual 662	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
+    //   75: invokespecial 671	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   78: invokevirtual 675	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
     //   81: aload_1
     //   82: astore_0
     //   83: sipush 1024
@@ -1682,7 +1695,7 @@ public class z
     //   90: astore_0
     //   91: aload 4
     //   93: aload_2
-    //   94: invokevirtual 793	java/io/ByteArrayInputStream:read	([B)I
+    //   94: invokevirtual 806	java/io/ByteArrayInputStream:read	([B)I
     //   97: istore_3
     //   98: iload_3
     //   99: ifle +52 -> 151
@@ -1692,7 +1705,7 @@ public class z
     //   105: aload_2
     //   106: iconst_0
     //   107: iload_3
-    //   108: invokevirtual 664	java/util/zip/ZipOutputStream:write	([BII)V
+    //   108: invokevirtual 677	java/util/zip/ZipOutputStream:write	([BII)V
     //   111: goto -22 -> 89
     //   114: astore_2
     //   115: aload_1
@@ -1707,37 +1720,37 @@ public class z
     //   130: aload_1
     //   131: ifnull +7 -> 138
     //   134: aload_1
-    //   135: invokevirtual 665	java/util/zip/ZipOutputStream:close	()V
-    //   138: ldc_w 667
+    //   135: invokevirtual 678	java/util/zip/ZipOutputStream:close	()V
+    //   138: ldc_w 680
     //   141: iconst_0
     //   142: anewarray 4	java/lang/Object
-    //   145: invokestatic 569	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   145: invokestatic 582	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   148: pop
     //   149: aconst_null
     //   150: areturn
     //   151: aload_1
     //   152: astore_0
     //   153: aload_1
-    //   154: invokevirtual 671	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   154: invokevirtual 684	java/util/zip/ZipOutputStream:closeEntry	()V
     //   157: aload_1
     //   158: astore_0
     //   159: aload_1
-    //   160: invokevirtual 668	java/util/zip/ZipOutputStream:flush	()V
+    //   160: invokevirtual 681	java/util/zip/ZipOutputStream:flush	()V
     //   163: aload_1
     //   164: astore_0
     //   165: aload_1
-    //   166: invokevirtual 796	java/util/zip/ZipOutputStream:finish	()V
+    //   166: invokevirtual 809	java/util/zip/ZipOutputStream:finish	()V
     //   169: aload_1
     //   170: astore_0
     //   171: aload 5
-    //   173: invokevirtual 799	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   173: invokevirtual 812	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   176: astore_2
     //   177: aload_1
-    //   178: invokevirtual 665	java/util/zip/ZipOutputStream:close	()V
-    //   181: ldc_w 667
+    //   178: invokevirtual 678	java/util/zip/ZipOutputStream:close	()V
+    //   181: ldc_w 680
     //   184: iconst_0
     //   185: anewarray 4	java/lang/Object
-    //   188: invokestatic 569	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   188: invokestatic 582	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   191: pop
     //   192: aload_2
     //   193: areturn
@@ -1755,11 +1768,11 @@ public class z
     //   213: aload_0
     //   214: ifnull +7 -> 221
     //   217: aload_0
-    //   218: invokevirtual 665	java/util/zip/ZipOutputStream:close	()V
-    //   221: ldc_w 667
+    //   218: invokevirtual 678	java/util/zip/ZipOutputStream:close	()V
+    //   221: ldc_w 680
     //   224: iconst_0
     //   225: anewarray 4	java/lang/Object
-    //   228: invokestatic 569	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   228: invokestatic 582	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   231: pop
     //   232: aload_1
     //   233: athrow
@@ -1825,7 +1838,7 @@ public class z
       x.c("[Util] Zip %d bytes data with type %s", new Object[] { Integer.valueOf(i), localObject });
       try
       {
-        localObject = aa.a(paramInt);
+        localObject = ad.a(paramInt);
         if (localObject == null)
         {
           return null;
@@ -1833,7 +1846,7 @@ public class z
         }
         else
         {
-          paramArrayOfByte = ((ab)localObject).a(paramArrayOfByte);
+          paramArrayOfByte = ((ae)localObject).a(paramArrayOfByte);
           return paramArrayOfByte;
         }
       }
@@ -1872,12 +1885,12 @@ public class z
     x.c("rqdp{  enD:} %d %d", new Object[] { Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(paramInt) });
     try
     {
-      ag localag = a.a(paramInt);
-      if (localag == null) {
+      aj localaj = a.a(paramInt);
+      if (localaj == null) {
         return null;
       }
-      localag.a(paramString);
-      paramArrayOfByte = localag.b(paramArrayOfByte);
+      localaj.a(paramString);
+      paramArrayOfByte = localaj.b(paramArrayOfByte);
       return paramArrayOfByte;
     }
     catch (Throwable paramArrayOfByte)
@@ -1908,8 +1921,8 @@ public class z
   
   public static String b(String paramString1, String paramString2)
   {
-    if ((com.tencent.bugly.crashreport.common.info.a.b() != null) && (com.tencent.bugly.crashreport.common.info.a.b().F != null)) {
-      return com.tencent.bugly.crashreport.common.info.a.b().F.getString(paramString1, paramString2);
+    if ((com.tencent.bugly.crashreport.common.info.a.b() != null) && (com.tencent.bugly.crashreport.common.info.a.b().H != null)) {
+      return com.tencent.bugly.crashreport.common.info.a.b().H.getString(paramString1, paramString2);
     }
     return "";
   }
@@ -2078,7 +2091,7 @@ public class z
       x.c("[Util] Unzip %d bytes data with type %s", new Object[] { Integer.valueOf(i), localObject });
       try
       {
-        localObject = aa.a(paramInt);
+        localObject = ad.a(paramInt);
         if (localObject == null)
         {
           return null;
@@ -2086,7 +2099,7 @@ public class z
         }
         else
         {
-          paramArrayOfByte = ((ab)localObject).b(paramArrayOfByte);
+          paramArrayOfByte = ((ae)localObject).b(paramArrayOfByte);
           return paramArrayOfByte;
         }
       }
@@ -2123,12 +2136,12 @@ public class z
     }
     try
     {
-      ag localag = a.a(paramInt);
-      if (localag == null) {
+      aj localaj = a.a(paramInt);
+      if (localaj == null) {
         return null;
       }
-      localag.a(paramString);
-      paramArrayOfByte = localag.a(paramArrayOfByte);
+      localaj.a(paramString);
+      paramArrayOfByte = localaj.a(paramArrayOfByte);
       return paramArrayOfByte;
     }
     catch (Throwable paramArrayOfByte)
@@ -2165,7 +2178,7 @@ public class z
     //   0: aconst_null
     //   1: astore_2
     //   2: aload_0
-    //   3: invokestatic 947	com/tencent/bugly/crashreport/common/info/AppInfo:f	(Landroid/content/Context;)Z
+    //   3: invokestatic 960	com/tencent/bugly/crashreport/common/info/AppInfo:f	(Landroid/content/Context;)Z
     //   6: ifeq +24 -> 30
     //   9: new 496	java/util/ArrayList
     //   12: dup
@@ -2173,28 +2186,28 @@ public class z
     //   14: anewarray 180	java/lang/String
     //   17: dup
     //   18: iconst_0
-    //   19: ldc_w 949
+    //   19: ldc_w 962
     //   22: aastore
-    //   23: invokestatic 955	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
-    //   26: invokespecial 958	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   23: invokestatic 968	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
+    //   26: invokespecial 971	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
     //   29: areturn
     //   30: new 496	java/util/ArrayList
     //   33: dup
     //   34: invokespecial 497	java/util/ArrayList:<init>	()V
     //   37: astore_3
-    //   38: ldc_w 960
+    //   38: ldc_w 973
     //   41: astore_0
     //   42: new 36	java/io/File
     //   45: dup
-    //   46: ldc_w 960
-    //   49: invokespecial 570	java/io/File:<init>	(Ljava/lang/String;)V
+    //   46: ldc_w 973
+    //   49: invokespecial 583	java/io/File:<init>	(Ljava/lang/String;)V
     //   52: invokevirtual 40	java/io/File:exists	()Z
     //   55: ifeq +295 -> 350
     //   58: new 36	java/io/File
     //   61: dup
-    //   62: ldc_w 960
-    //   65: invokespecial 570	java/io/File:<init>	(Ljava/lang/String;)V
-    //   68: invokevirtual 963	java/io/File:canExecute	()Z
+    //   62: ldc_w 973
+    //   65: invokespecial 583	java/io/File:<init>	(Ljava/lang/String;)V
+    //   68: invokevirtual 976	java/io/File:canExecute	()Z
     //   71: ifne +6 -> 77
     //   74: goto +276 -> 350
     //   77: new 496	java/util/ArrayList
@@ -2207,10 +2220,10 @@ public class z
     //   88: aastore
     //   89: dup
     //   90: iconst_1
-    //   91: ldc_w 965
+    //   91: ldc_w 978
     //   94: aastore
-    //   95: invokestatic 955	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
-    //   98: invokespecial 958	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   95: invokestatic 968	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
+    //   98: invokespecial 971	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
     //   101: astore_0
     //   102: aload_0
     //   103: aload_1
@@ -2220,8 +2233,8 @@ public class z
     //   113: aload_0
     //   114: iconst_3
     //   115: anewarray 180	java/lang/String
-    //   118: invokeinterface 969 2 0
-    //   123: checkcast 971	[Ljava/lang/String;
+    //   118: invokeinterface 982 2 0
+    //   123: checkcast 984	[Ljava/lang/String;
     //   126: invokevirtual 201	java/lang/Runtime:exec	([Ljava/lang/String;)Ljava/lang/Process;
     //   129: astore_0
     //   130: new 45	java/io/BufferedReader
@@ -2345,7 +2358,7 @@ public class z
     //   345: aconst_null
     //   346: astore_1
     //   347: goto -174 -> 173
-    //   350: ldc_w 973
+    //   350: ldc_w 986
     //   353: astore_0
     //   354: goto -277 -> 77
     // Local variable table:

@@ -1,69 +1,81 @@
-import SWEET_NEW_BASE.sweet_rsp_comm;
-import SWEET_NEW_PAIR.sweet_pair_byebye_rsp;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.QzoneExternalRequest;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import mqq.app.MobileQQ;
 
 public class bgqh
-  extends bgqc
+  implements bgqg
 {
-  public QQAppInterface a()
+  public boolean a(int paramInt, Bundle paramBundle)
   {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    return null;
-  }
-  
-  public QzoneExternalRequest a(Intent paramIntent)
-  {
-    return new bgqi(this, paramIntent);
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("currentUin", paramLong1);
-    localIntent.putExtra("friendUin", paramLong2);
-    a(localIntent);
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    Object localObject = a();
-    int i;
-    if (localObject != null)
+    Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    long l;
+    String str;
+    switch (paramInt)
     {
-      localObject = (apqq)((QQAppInterface)localObject).a(153);
-      paramIntent = String.valueOf(paramIntent.getLongExtra("friendUin", -1L));
-      if (paramFromServiceMsg == null) {
-        break label98;
-      }
-      i = paramFromServiceMsg.getResultCode();
-    }
-    while (i == 1000)
-    {
-      paramFromServiceMsg = (sweet_pair_byebye_rsp)bgfq.a(paramFromServiceMsg.getWupBuffer(), "sweet_pair_byebye");
-      if (paramFromServiceMsg != null)
+    case 3: 
+    default: 
+      return true;
+    case 1: 
+      localObject1 = paramBundle.getString("installAppName");
+      paramBundle = paramBundle.getString("installAppUrl");
+      l = 0L;
+      for (;;)
       {
-        paramFromServiceMsg = paramFromServiceMsg.rsp_comm;
-        if (paramFromServiceMsg.retcode == 0) {
-          ((apqq)localObject).a(true, paramFromServiceMsg.retcode, paramFromServiceMsg.errmsg, paramIntent);
+        try
+        {
+          localObject2 = new URL(paramBundle);
+        }
+        catch (MalformedURLException localMalformedURLException)
+        {
+          Object localObject2;
+          localMalformedURLException.printStackTrace();
+          continue;
+        }
+        try
+        {
+          paramInt = ((URL)localObject2).openConnection().getContentLength();
+          l = paramInt;
+        }
+        catch (IOException localIOException)
+        {
+          localIOException.printStackTrace();
         }
       }
-      else
-      {
-        return;
-        label98:
-        i = -1;
-        continue;
-      }
-      ((apqq)localObject).a(false, paramFromServiceMsg.retcode, paramFromServiceMsg.errmsg, paramIntent);
-      return;
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putLong("_filesize_from_dlg", l);
+      ((Bundle)localObject2).putString("_filename_from_dlg", (String)localObject1);
+      ((Bundle)localObject2).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_qfav");
+      apcy.a().b(paramBundle, (Bundle)localObject2);
+      return true;
+    case 2: 
+      l = paramBundle.getLong("previewSize", -1L);
+      str = paramBundle.getString("previewName");
+      Intent localIntent = new Intent(((QQAppInterface)localObject1).getApplication().getBaseContext(), FilePreviewActivity.class);
+      localIntent.addFlags(268435456);
+      localIntent.putExtra("offline_file_type", 0);
+      localIntent.putExtra("offline_file_name", str);
+      localIntent.putExtra("offline_file_size", l);
+      ((QQAppInterface)localObject1).a().a(new apcq(paramBundle));
+      QLog.i("FavoritesRemoteCommandHandler", 1, "open zip favorite,open new activity");
+      ((QQAppInterface)localObject1).getApplication().getBaseContext().startActivity(localIntent);
+      return true;
+    case 4: 
+      str = paramBundle.getString("configKey");
+      paramBundle.putString("configInfo", apee.a(((QQAppInterface)localObject1).getApp().getBaseContext(), str));
+      return true;
     }
-    ((apqq)localObject).a(false, -1, null, null);
+    paramBundle.putBoolean("isVideoChatting", ((QQAppInterface)localObject1).c());
+    return true;
   }
 }
 

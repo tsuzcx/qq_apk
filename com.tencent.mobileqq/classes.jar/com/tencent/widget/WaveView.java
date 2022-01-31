@@ -9,8 +9,8 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
-import befo;
-import beos;
+import bfni;
+import bfwm;
 import com.tencent.qphone.base.util.QLog;
 
 public class WaveView
@@ -21,7 +21,7 @@ public class WaveView
   private float jdField_a_of_type_Float;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Path jdField_a_of_type_AndroidGraphicsPath;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new beos(this));
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new bfwm(this));
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private Path jdField_b_of_type_AndroidGraphicsPath;
   public int c;
@@ -67,7 +67,7 @@ public class WaveView
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.g);
     this.jdField_b_of_type_AndroidGraphicsPaint.setAlpha(38);
     this.i = getResources().getDisplayMetrics().widthPixels;
-    this.h = getResources().getDimensionPixelSize(2131166990);
+    this.h = getResources().getDimensionPixelSize(2131298082);
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     jdField_a_of_type_Int = (int)(this.jdField_a_of_type_Float * 4.0F + 0.5D);
     this.c = jdField_a_of_type_Int;
@@ -115,7 +115,7 @@ public class WaveView
   
   private void d()
   {
-    if (!befo.e()) {
+    if (!bfni.e()) {
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
@@ -123,7 +123,7 @@ public class WaveView
   
   private void e()
   {
-    if (!befo.e()) {
+    if (!bfni.e()) {
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1003);

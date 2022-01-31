@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.dating;
 
-import amvz;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import azvv;
-import babr;
-import bafb;
+import anmh;
+import bawz;
+import bbcv;
+import bbgg;
 
 public final class DatingUtil$1
   implements Runnable
@@ -16,18 +16,18 @@ public final class DatingUtil$1
   
   public void run()
   {
-    Object localObject = new amvz(this);
-    localObject = babr.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, this.jdField_a_of_type_JavaLangString, 0, 2131654515, (DialogInterface.OnClickListener)localObject, null);
+    Object localObject = new anmh(this);
+    localObject = bbcv.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, this.jdField_a_of_type_JavaLangString, 0, 2131720411, (DialogInterface.OnClickListener)localObject, null);
     if (localObject != null)
     {
-      ((TextView)((bafb)localObject).findViewById(2131299557)).setVisibility(8);
-      TextView localTextView = (TextView)((bafb)localObject).findViewById(2131299579);
+      ((TextView)((bbgg)localObject).findViewById(2131365125)).setVisibility(8);
+      TextView localTextView = (TextView)((bbgg)localObject).findViewById(2131365147);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 17;
       localTextView.setLayoutParams(localLayoutParams);
-      localTextView.setMinHeight(azvv.a(this.jdField_a_of_type_AndroidAppActivity, 35.0F));
+      localTextView.setMinHeight(bawz.a(this.jdField_a_of_type_AndroidAppActivity, 35.0F));
       localTextView.setGravity(17);
-      ((bafb)localObject).show();
+      ((bbgg)localObject).show();
     }
   }
 }

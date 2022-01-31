@@ -1,73 +1,117 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.widget.AbsListView.LayoutParams;
+import Wallet.RedInfoSyncReq;
+import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig;
+import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig.RedInfo;
+import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager.1;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.manager.Manager;
 
 public class ahcy
-  extends ahbj
+  implements agzj, Manager
 {
-  private int a;
-  private int b;
-  private int c;
-  private int d;
+  private QWRedConfig jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public View a(int paramInt, Object paramObject, ahbe paramahbe, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahdb paramahdb)
+  public ahcy(QQAppInterface paramQQAppInterface)
   {
-    int i;
-    if (paramView == null)
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "QWalletRedManager init");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig = QWRedConfig.readConfig(paramQQAppInterface);
+    a();
+  }
+  
+  private void a()
+  {
+    ThreadManager.executeOnSubThread(new QWalletRedManager.1(this));
+  }
+  
+  public ahda a(String paramString)
+  {
+    ahda localahda = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getShowInfoByPath(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "getShowInfo path=" + paramString + ",res=" + localahda);
+    }
+    return localahda;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getNotShowListStr();
+  }
+  
+  public void a(String paramString)
+  {
+    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getCurShowRedInfosByPath(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "doClick" + paramString + "|" + localList);
+    }
+    paramString = new LinkedList();
+    Iterator localIterator = localList.iterator();
+    while (localIterator.hasNext())
     {
-      paramahbe = null;
-      if (!"TroopAssistantEmptyItemBuilder".equals(paramahbe))
-      {
-        paramView = View.inflate(paramContext, 2131496927, null);
-        paramView.setTag("TroopAssistantEmptyItemBuilder");
-        paramahbe = paramContext.getResources();
-        this.b = paramahbe.getDimensionPixelSize(2131167512);
-        this.a = paramahbe.getDimensionPixelSize(2131167517);
-        this.c = paramahbe.getDimensionPixelSize(2131167519);
-        i = paramahbe.getDimensionPixelSize(2131167794);
-        this.d = (paramahbe.getDimensionPixelSize(2131167795) + i);
-      }
-      i = paramViewGroup.getMeasuredHeight() - this.a - this.b - 10 - this.d;
-      if (i <= this.c) {
-        break label210;
-      }
-      label124:
-      paramahbe = new AbsListView.LayoutParams(-1, -1);
-      paramahbe.width = -1;
-      paramahbe.height = i;
-      paramView.setLayoutParams(paramahbe);
-      if ((paramObject instanceof Integer))
-      {
-        paramObject = (Integer)paramObject;
-        paramahbe = (TextView)paramView.findViewById(2131311922);
-        if (paramObject.intValue() != 4) {
-          break label219;
-        }
-        paramahbe.setText(2131654519);
+      QWRedConfig.RedInfo localRedInfo = (QWRedConfig.RedInfo)localIterator.next();
+      if (localRedInfo.doClick()) {
+        paramString.add(localRedInfo);
       }
     }
-    for (;;)
+    if (paramString.size() > 0)
     {
-      paramView.setTag(-1, Integer.valueOf(paramInt));
-      return paramView;
-      paramahbe = paramView.getTag();
-      break;
-      label210:
-      i = this.c;
-      break label124;
-      label219:
-      paramahbe.setText(2131629447);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.saveConfig();
+      agwv.a(RedInfoSyncReq.createReq(paramString), new ahcz(this));
+    }
+    if (localList.size() > 0) {
+      VACDReportUtil.a(null, "QWalletStat", "QWalletRedClick", "QWalletRedClick", QWRedConfig.RedInfo.transToReportStr(localList), 0, null);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, agzd paramagzd)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.parseConfig(paramagzd);
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if (paramList == null) {}
+    LinkedList localLinkedList;
+    do
+    {
+      return;
+      localLinkedList = new LinkedList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        localLinkedList.addAll(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getCurShowRedInfosByPath(str));
+      }
+    } while (localLinkedList.size() <= 0);
+    VACDReportUtil.a(null, "QWalletStat", "QWalletRedShow", "QWalletRedShow", QWRedConfig.RedInfo.transToReportStr(localLinkedList), 0, null);
+  }
+  
+  public void b(String paramString)
+  {
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.add(paramString);
+    a(localLinkedList);
+  }
+  
+  public void onDestroy()
+  {
+    agzf localagzf = (agzf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245);
+    if (localagzf != null) {
+      localagzf.d("redPoint", this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahcy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
+import com.tencent.qphone.base.util.QLog;
 
-public class aeld
-  implements aelf
+class aeld
+  implements bgwm
 {
-  public aeld(StickerBubbleListView paramStickerBubbleListView, int[] paramArrayOfInt) {}
+  aeld(aelc paramaelc) {}
   
-  public void a(View paramView)
+  public void a(int paramInt, String... paramVarArgs)
   {
-    if ((paramView.getTag() instanceof Integer))
+    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null))
     {
-      paramView = (Integer)paramView.getTag();
-      this.jdField_a_of_type_ArrayOfInt[0] = paramView.intValue();
+      QLog.i(aelc.a, 2, "error get pskey...");
+      return;
     }
+    aelc.a(this.a, paramVarArgs[0]);
   }
 }
 

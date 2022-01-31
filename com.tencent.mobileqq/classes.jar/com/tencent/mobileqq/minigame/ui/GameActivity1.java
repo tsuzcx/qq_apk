@@ -1,57 +1,37 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import alrv;
-import aluq;
+import amgo;
+import amkg;
+import amkh;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Build;
-import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bbqo;
-import bdct;
-import bdle;
-import bdlu;
-import bdnw;
-import bdsu;
-import bjeh;
+import bctn;
+import begs;
+import bepk;
+import beqe;
+import besl;
+import bffu;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.MiniSDKClientQIPCModule;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.lang.reflect.Method;
 
 public class GameActivity1
   extends BaseActivity
 {
-  protected alrv mColorNoteController;
-  private bdlu mUIProxy;
-  
-  private static boolean enableXiaoMiNotch(Activity paramActivity)
-  {
-    try
-    {
-      paramActivity = paramActivity.getWindow();
-      Window.class.getMethod("addExtraFlags", new Class[] { Integer.TYPE }).invoke(paramActivity, new Object[] { Integer.valueOf(1792) });
-      if (QLog.isColorLevel()) {
-        QLog.i("qqBaseActivity", 1, "enableXiaoMiNotch true");
-      }
-      return true;
-    }
-    catch (Exception paramActivity)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("qqBaseActivity", 1, "enableXiaoMiNotch Exception", paramActivity);
-      }
-    }
-    return false;
-  }
+  protected amgo mColorNoteController;
+  private amkh mColorNoteServiceListenr;
+  private beqe mUIProxy;
   
   private void initUIProxy(Intent paramIntent)
   {
@@ -59,7 +39,10 @@ public class GameActivity1
       return;
     }
     paramIntent = (MiniAppInfo)paramIntent.getParcelableExtra("KEY_APPINFO");
-    this.mUIProxy = bdle.a().a(paramIntent);
+    if (paramIntent != null) {
+      ThreadManagerV2.excute(new GameActivity1.5(this), 16, null, true);
+    }
+    this.mUIProxy = bepk.a().a(paramIntent);
   }
   
   /* Error */
@@ -69,33 +52,33 @@ public class GameActivity1
     //   0: aconst_null
     //   1: astore_3
     //   2: aload_0
-    //   3: invokestatic 107	com/tencent/qqmini/proxyimpl/MiniSdkUtil:convertSDK2QQConfig	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   3: invokestatic 72	com/tencent/qqmini/proxyimpl/MiniSdkUtil:convertSDK2QQConfig	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
     //   6: astore_2
-    //   7: invokestatic 113	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   7: invokestatic 78	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   10: astore_0
     //   11: aload_0
     //   12: astore_1
     //   13: aload_0
     //   14: iconst_0
-    //   15: invokevirtual 117	android/os/Parcel:setDataPosition	(I)V
+    //   15: invokevirtual 82	android/os/Parcel:setDataPosition	(I)V
     //   18: aload_0
     //   19: astore_1
     //   20: aload_0
     //   21: aload_2
-    //   22: getfield 123	com/tencent/mobileqq/mini/apkg/MiniAppConfig:config	Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
+    //   22: getfield 88	com/tencent/mobileqq/mini/apkg/MiniAppConfig:config	Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
     //   25: iconst_0
-    //   26: invokevirtual 127	android/os/Parcel:writeParcelable	(Landroid/os/Parcelable;I)V
+    //   26: invokevirtual 92	android/os/Parcel:writeParcelable	(Landroid/os/Parcelable;I)V
     //   29: aload_0
     //   30: astore_1
     //   31: aload_0
-    //   32: invokevirtual 131	android/os/Parcel:marshall	()[B
+    //   32: invokevirtual 96	android/os/Parcel:marshall	()[B
     //   35: astore_2
     //   36: aload_2
     //   37: astore_1
     //   38: aload_0
     //   39: ifnull +9 -> 48
     //   42: aload_0
-    //   43: invokevirtual 134	android/os/Parcel:recycle	()V
+    //   43: invokevirtual 99	android/os/Parcel:recycle	()V
     //   46: aload_2
     //   47: astore_1
     //   48: aload_1
@@ -105,24 +88,24 @@ public class GameActivity1
     //   52: astore_0
     //   53: aload_0
     //   54: astore_1
-    //   55: ldc 64
+    //   55: ldc 101
     //   57: iconst_1
-    //   58: new 136	java/lang/StringBuilder
+    //   58: new 103	java/lang/StringBuilder
     //   61: dup
-    //   62: invokespecial 137	java/lang/StringBuilder:<init>	()V
-    //   65: ldc 139
-    //   67: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   62: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   65: ldc 106
+    //   67: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   70: aload_2
-    //   71: invokestatic 149	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   74: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   80: invokestatic 155	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   71: invokestatic 116	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   74: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   80: invokestatic 126	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   83: aload_3
     //   84: astore_1
     //   85: aload_0
     //   86: ifnull -38 -> 48
     //   89: aload_0
-    //   90: invokevirtual 134	android/os/Parcel:recycle	()V
+    //   90: invokevirtual 99	android/os/Parcel:recycle	()V
     //   93: aconst_null
     //   94: areturn
     //   95: astore_0
@@ -131,7 +114,7 @@ public class GameActivity1
     //   98: aload_1
     //   99: ifnull +7 -> 106
     //   102: aload_1
-    //   103: invokevirtual 134	android/os/Parcel:recycle	()V
+    //   103: invokevirtual 99	android/os/Parcel:recycle	()V
     //   106: aload_0
     //   107: athrow
     //   108: astore_0
@@ -141,11 +124,11 @@ public class GameActivity1
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	116	0	paramMiniAppInfo	MiniAppInfo
-    //   12	91	1	localObject1	Object
-    //   6	41	2	localObject2	Object
+    //   12	91	1	localObject1	java.lang.Object
+    //   6	41	2	localObject2	java.lang.Object
     //   50	21	2	localThrowable1	Throwable
     //   112	1	2	localThrowable2	Throwable
-    //   1	83	3	localObject3	Object
+    //   1	83	3	localObject3	java.lang.Object
     // Exception table:
     //   from	to	target	type
     //   7	11	50	java/lang/Throwable
@@ -190,49 +173,35 @@ public class GameActivity1
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    bdct.a(getApplicationContext(), null);
+    begs.a(getApplicationContext());
     try
     {
       super.getIntent().putExtra("fling_action_key", 0);
       this.mNeedStatusTrans = false;
-      requestWindowFeature(1);
-      getWindow().setFormat(-2);
-      setRequestedOrientation(1);
-      bjeh.a(this);
-      if (bjeh.b())
-      {
-        if ((Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) && ((Build.VERSION.SDK_INT == 26) || (Build.VERSION.SDK_INT == 27))) {
-          enableXiaoMiNotch(this);
-        }
-      }
-      else
-      {
-        boolean bool = super.doOnCreate(paramBundle);
-        RelativeLayout localRelativeLayout = new RelativeLayout(this);
-        setContentView(localRelativeLayout);
-        FrameLayout localFrameLayout = new FrameLayout(this);
-        localRelativeLayout.addView(localFrameLayout, new RelativeLayout.LayoutParams(-1, -1));
-        initUIProxy(getIntent());
-        this.mUIProxy.onCreate(this, paramBundle, localFrameLayout);
-        paramBundle = (MiniAppInfo)getIntent().getParcelableExtra("KEY_APPINFO");
-        this.mColorNoteController = new alrv(this, false, true);
-        this.mColorNoteController.a(this);
-        this.mColorNoteController.a(new GameActivity1.1(this, paramBundle));
-        this.mColorNoteController.a(new GameActivity1.2(this));
-        this.mColorNoteController.a(new GameActivity1.3(this));
-        if ((paramBundle != null) && (!TextUtils.isEmpty(paramBundle.appId)) && (!TextUtils.isEmpty(paramBundle.name))) {
-          bdsu.a(paramBundle, 24, "1");
-        }
-        return bool;
-      }
+      bffu.b(this);
+      boolean bool = super.doOnCreate(paramBundle);
+      RelativeLayout localRelativeLayout = new RelativeLayout(this);
+      setContentView(localRelativeLayout);
+      FrameLayout localFrameLayout = new FrameLayout(this);
+      localRelativeLayout.addView(localFrameLayout, new RelativeLayout.LayoutParams(-1, -1));
+      initUIProxy(getIntent());
+      this.mUIProxy.onCreate(this, paramBundle, localFrameLayout);
+      MiniSDKClientQIPCModule.registerModule();
+      paramBundle = (MiniAppInfo)getIntent().getParcelableExtra("KEY_APPINFO");
+      this.mColorNoteController = new amgo(this, false, true);
+      this.mColorNoteController.a(this);
+      this.mColorNoteController.a(new GameActivity1.1(this, paramBundle));
+      this.mColorNoteController.a(new GameActivity1.2(this));
+      this.mColorNoteController.a(new GameActivity1.3(this));
+      this.mColorNoteServiceListenr = new GameActivity1.4(this);
+      this.mColorNoteController.a(this.mColorNoteServiceListenr);
+      return bool;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
         QLog.e("qqBaseActivity", 1, "[MiniEng]禁用右滑关闭失败:" + localThrowable.getMessage());
-        continue;
-        bjeh.c(this);
       }
     }
   }
@@ -244,7 +213,7 @@ public class GameActivity1
       this.mColorNoteController.c();
     }
     this.mUIProxy.onDestroy(this);
-    super.doOnDestroy();
+    MiniSDKClientQIPCModule.unRegisterModule();
     QLog.i("qqBaseActivity", 1, "[MiniEng]doOnDestroy " + this);
   }
   
@@ -263,7 +232,7 @@ public class GameActivity1
   
   public void doOnNewIntent(Intent paramIntent)
   {
-    bdnw.b("qqBaseActivity", "--doOnNewIntent");
+    besl.b("qqBaseActivity", "--doOnNewIntent");
     super.doOnNewIntent(paramIntent);
     initUIProxy(paramIntent);
     this.mUIProxy.onNewIntent(this, paramIntent);
@@ -271,36 +240,37 @@ public class GameActivity1
   
   public void doOnPause()
   {
-    bdnw.b("qqBaseActivity", "doOnPause ");
+    besl.b("qqBaseActivity", "doOnPause ");
     super.doOnPause();
     this.mUIProxy.onPause(this);
     if (this.mColorNoteController != null) {
       this.mColorNoteController.b();
     }
-    aluq.a(this, 2, true);
+    amkg.a(this, 2, true);
   }
   
   public void doOnResume()
   {
     super.doOnResume();
     this.mUIProxy.onResume(this);
-    bbqo.a(this);
+    bctn.a(this);
     if (this.mColorNoteController != null) {
       this.mColorNoteController.a();
     }
-    aluq.a(this, 2, false);
+    amkg.a(BaseApplicationImpl.getContext(), 2, false);
   }
   
   public void doOnStart()
   {
     super.doOnStart();
-    bdnw.b("qqBaseActivity", "doOnStart game");
+    besl.b("qqBaseActivity", "doOnStart game");
     this.mUIProxy.onStart(this);
   }
   
   public void doOnStop()
   {
     super.doOnStop();
+    ThreadManagerV2.excute(new GameActivity1.6(this), 16, null, true);
     this.mUIProxy.onStop(this);
   }
   
@@ -310,7 +280,7 @@ public class GameActivity1
     super.doOnWindowFocusChanged(paramBoolean);
   }
   
-  public alrv getColorNoteController()
+  public amgo getColorNoteController()
   {
     return this.mColorNoteController;
   }

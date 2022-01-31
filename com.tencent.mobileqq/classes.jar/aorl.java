@@ -1,16 +1,23 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 
-final class aorl
-  implements View.OnClickListener
+public class aorl
 {
-  aorl(Activity paramActivity, String paramString) {}
+  public int a;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  FileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo;
+  AsyncImageView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+  EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+  public int b;
+  ImageView b;
   
-  public void onClick(View paramView)
-  {
-    apck.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-  }
+  public aorl(aork paramaork) {}
 }
 
 

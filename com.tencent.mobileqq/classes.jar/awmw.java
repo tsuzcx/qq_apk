@@ -1,166 +1,201 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.opengl.GLES20;
-import android.opengl.Matrix;
-import android.util.Log;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.List;
+import java.util.Set;
 
 public class awmw
+  extends awms
 {
-  private int jdField_a_of_type_Int;
-  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(this.jdField_a_of_type_ArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-  private final float[] jdField_a_of_type_ArrayOfFloat = { -1.0F, -1.0F, 0.0F, 0.0F, 0.0F, 1.0F, -1.0F, 0.0F, 1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
-  private int jdField_b_of_type_Int = -12345;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
-  private int jdField_c_of_type_Int;
-  private float[] jdField_c_of_type_ArrayOfFloat = new float[16];
-  private int d;
-  private int e;
-  private int f;
+  private CharSequence c;
   
-  public awmw()
+  public awmw(QQAppInterface paramQQAppInterface, int paramInt, String paramString, List<awmu> paramList)
   {
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_a_of_type_ArrayOfFloat).position(0);
-    Matrix.setIdentityM(this.jdField_c_of_type_ArrayOfFloat, 0);
+    super(paramQQAppInterface, paramInt, paramString, paramList);
   }
   
-  private int a(int paramInt, String paramString)
+  public TroopInfo a()
   {
-    int i = GLES20.glCreateShader(paramInt);
-    a("glCreateShader type=" + paramInt);
-    GLES20.glShaderSource(i, paramString);
-    GLES20.glCompileShader(i);
-    paramString = new int[1];
-    GLES20.glGetShaderiv(i, 35713, paramString, 0);
-    if (paramString[0] == 0)
-    {
-      Log.e("TextureRender", "Could not compile shader " + paramInt + ":");
-      Log.e("TextureRender", " " + GLES20.glGetShaderInfoLog(i));
-      GLES20.glDeleteShader(i);
-      return 0;
+    return this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
+  }
+  
+  public CharSequence a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop()) && (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.hasSetTroopName())) {
+      return c();
     }
-    return i;
+    return super.a();
   }
   
-  private int a(String paramString1, String paramString2)
+  protected void a()
   {
-    int i = a(35633, paramString1);
-    if (i == 0) {}
     int j;
-    do
+    int i;
+    int k;
+    label54:
+    int m;
+    if (awvy.a(this.jdField_b_of_type_Int))
     {
-      return 0;
-      j = a(35632, paramString2);
-    } while (j == 0);
-    int k = GLES20.glCreateProgram();
-    a("glCreateProgram");
-    if (k == 0) {
-      Log.e("TextureRender", "Could not create program");
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      if (this.jdField_a_of_type_JavaUtilList != null)
+      {
+        localSpannableStringBuilder.append("包含: ");
+        j = this.jdField_b_of_type_JavaUtilList.size() - 1;
+        i = 0;
+        if (j >= 0)
+        {
+          k = 1;
+          if (i >= 10) {
+            break label132;
+          }
+        }
+        label132:
+        for (m = 1;; m = 0)
+        {
+          if ((m & k) == 0) {
+            break label138;
+          }
+          localSpannableStringBuilder.append(awvy.a((String)this.jdField_b_of_type_JavaUtilList.get(j), (String)this.jdField_c_of_type_JavaUtilList.get(j), 6, false));
+          i += 1;
+          localSpannableStringBuilder.append("、");
+          j -= 1;
+          break;
+          k = 0;
+          break label54;
+        }
+        label138:
+        k = 0;
+        j = i;
+        i = k;
+        if (i < this.jdField_a_of_type_JavaUtilList.size())
+        {
+          k = 1;
+          label159:
+          if (j >= 10) {
+            break label284;
+          }
+          m = 1;
+          label168:
+          if ((m & k) == 0) {
+            break label336;
+          }
+          localObject = (awmu)this.jdField_a_of_type_JavaUtilList.get(i);
+          k = j;
+          if (!this.jdField_a_of_type_JavaUtilSet.contains(localObject))
+          {
+            if (this.jdField_c_of_type_JavaUtilList.size() != 1) {
+              break label290;
+            }
+            m = ((awmu)localObject).a;
+            label226:
+            if (m != 66) {
+              break label300;
+            }
+            localObject = ((awmu)localObject).c;
+          }
+        }
+        for (;;)
+        {
+          label240:
+          k = j;
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            k = j + 1;
+            localSpannableStringBuilder.append((CharSequence)localObject);
+            localSpannableStringBuilder.append("、");
+          }
+          label284:
+          label290:
+          label300:
+          do
+          {
+            i += 1;
+            j = k;
+            break;
+            k = 0;
+            break label159;
+            m = 0;
+            break label168;
+            m = ((awmu)localObject).jdField_b_of_type_Int;
+            break label226;
+            if (m == 88)
+            {
+              localObject = ((awmu)localObject).jdField_b_of_type_JavaLangString;
+              break label240;
+            }
+            k = j;
+          } while (m != 99);
+          localObject = ((awmu)localObject).d;
+        }
+      }
+      label336:
+      if ((localSpannableStringBuilder.length() > 0) && (localSpannableStringBuilder.charAt(localSpannableStringBuilder.length() - 1) == '、')) {}
+      for (this.jdField_a_of_type_JavaLangCharSequence = localSpannableStringBuilder.subSequence(0, localSpannableStringBuilder.length() - 1);; this.jdField_a_of_type_JavaLangCharSequence = localSpannableStringBuilder)
+      {
+        this.jdField_c_of_type_JavaLangCharSequence = (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.wMemberNum + ajyc.a(2131702549));
+        return;
+      }
     }
-    GLES20.glAttachShader(k, i);
-    a("glAttachShader");
-    GLES20.glAttachShader(k, j);
-    a("glAttachShader");
-    GLES20.glLinkProgram(k);
-    paramString1 = new int[1];
-    GLES20.glGetProgramiv(k, 35714, paramString1, 0);
-    if (paramString1[0] != 1)
+    this.jdField_a_of_type_JavaLangCharSequence = ajyc.a(2131702558);
+    Object localObject = new SpannableStringBuilder();
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.hasSetTroopName()) {
+      ((SpannableStringBuilder)localObject).append(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.wMemberNum));
+    }
+    label593:
+    label597:
+    for (;;)
     {
-      Log.e("TextureRender", "Could not link program: ");
-      Log.e("TextureRender", GLES20.glGetProgramInfoLog(k));
-      GLES20.glDeleteProgram(k);
-      return 0;
+      this.jdField_c_of_type_JavaLangCharSequence = ((CharSequence)localObject);
+      return;
+      if ((!this.jdField_a_of_type_JavaUtilSet.isEmpty()) && (this.jdField_a_of_type_JavaUtilList != null))
+      {
+        j = this.jdField_b_of_type_JavaUtilList.size() - 1;
+        i = 0;
+        if (j >= 0)
+        {
+          k = 1;
+          label511:
+          if (i >= 10) {
+            break label593;
+          }
+        }
+        for (m = 1;; m = 0)
+        {
+          if ((m & k) == 0) {
+            break label597;
+          }
+          ((SpannableStringBuilder)localObject).append(awvy.a((String)this.jdField_b_of_type_JavaUtilList.get(j), (String)this.jdField_c_of_type_JavaUtilList.get(j), 6, false));
+          if (j > 0) {
+            ((SpannableStringBuilder)localObject).append("、");
+          }
+          j -= 1;
+          i += 1;
+          break;
+          k = 0;
+          break label511;
+        }
+      }
     }
-    return k;
   }
   
-  public int a()
+  public void a(View paramView)
   {
-    return this.jdField_b_of_type_Int;
+    super.a(paramView);
+    if (!awvy.a(this.jdField_b_of_type_Int)) {
+      awvy.a(paramView, this);
+    }
   }
   
-  public void a()
+  public String d()
   {
-    this.jdField_a_of_type_Int = a("uniform mat4 uMVPMatrix;\nuniform mat4 uSTMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n  gl_Position = uMVPMatrix * aPosition;\n  vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n}\n", "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform samplerExternalOES sTexture;\nvoid main() {\n  gl_FragColor = texture2D(sTexture, vTextureCoord);\n}\n");
-    if (this.jdField_a_of_type_Int == 0) {
-      throw new RuntimeException("failed creating program");
-    }
-    this.e = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "aPosition");
-    a("glGetAttribLocation aPosition");
-    if (this.e == -1) {
-      throw new RuntimeException("Could not get attrib location for aPosition");
-    }
-    this.f = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "aTextureCoord");
-    a("glGetAttribLocation aTextureCoord");
-    if (this.f == -1) {
-      throw new RuntimeException("Could not get attrib location for aTextureCoord");
-    }
-    this.jdField_c_of_type_Int = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "uMVPMatrix");
-    a("glGetUniformLocation uMVPMatrix");
-    if (this.jdField_c_of_type_Int == -1) {
-      throw new RuntimeException("Could not get attrib location for uMVPMatrix");
-    }
-    this.d = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "uSTMatrix");
-    a("glGetUniformLocation uSTMatrix");
-    if (this.d == -1) {
-      throw new RuntimeException("Could not get attrib location for uSTMatrix");
-    }
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    this.jdField_b_of_type_Int = arrayOfInt[0];
-    GLES20.glBindTexture(36197, this.jdField_b_of_type_Int);
-    a("glBindTexture mTextureID");
-    GLES20.glTexParameterf(36197, 10241, 9728.0F);
-    GLES20.glTexParameterf(36197, 10240, 9729.0F);
-    GLES20.glTexParameteri(36197, 10242, 33071);
-    GLES20.glTexParameteri(36197, 10243, 33071);
-    a("glTexParameter");
-  }
-  
-  @TargetApi(11)
-  public void a(SurfaceTexture paramSurfaceTexture)
-  {
-    a("onDrawFrame start");
-    paramSurfaceTexture.getTransformMatrix(this.jdField_c_of_type_ArrayOfFloat);
-    GLES20.glClearColor(0.0F, 1.0F, 0.0F, 1.0F);
-    GLES20.glClear(16640);
-    GLES20.glUseProgram(this.jdField_a_of_type_Int);
-    a("glUseProgram");
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(36197, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-    GLES20.glVertexAttribPointer(this.e, 3, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
-    a("glVertexAttribPointer maPosition");
-    GLES20.glEnableVertexAttribArray(this.e);
-    a("glEnableVertexAttribArray maPositionHandle");
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(3);
-    GLES20.glVertexAttribPointer(this.f, 2, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
-    a("glVertexAttribPointer maTextureHandle");
-    GLES20.glEnableVertexAttribArray(this.f);
-    a("glEnableVertexAttribArray maTextureHandle");
-    Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
-    GLES20.glUniformMatrix4fv(this.jdField_c_of_type_Int, 1, false, this.jdField_b_of_type_ArrayOfFloat, 0);
-    GLES20.glUniformMatrix4fv(this.d, 1, false, this.jdField_c_of_type_ArrayOfFloat, 0);
-    GLES20.glDrawArrays(5, 0, 4);
-    a("glDrawArrays");
-    GLES20.glFinish();
-  }
-  
-  public void a(String paramString)
-  {
-    int i = GLES20.glGetError();
-    if (i != 0)
-    {
-      Log.e("TextureRender", paramString + ": glError " + i);
-      throw new RuntimeException(paramString + ": glError " + i);
-    }
+    return this.jdField_c_of_type_JavaLangCharSequence.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awmw
  * JD-Core Version:    0.7.0.1
  */

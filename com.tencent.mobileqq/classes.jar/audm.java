@@ -1,26 +1,12 @@
-public class audm
+public abstract interface audm
 {
-  public int a;
-  public byte[] a;
-  public int b;
+  public abstract void a();
   
-  public audm(byte[] paramArrayOfByte, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.b = 0;
-  }
-  
-  public audm(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.b = paramInt1;
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     audm
  * JD-Core Version:    0.7.0.1
  */

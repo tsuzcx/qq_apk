@@ -1,43 +1,44 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 
 class avaz
-  implements avbe
+  implements Animation.AnimationListener
 {
   avaz(avay paramavay) {}
   
-  public void a(long paramLong)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Iterator localIterator = avay.a(this.a).iterator();
-    boolean bool = false;
-    if (localIterator.hasNext())
-    {
-      avat localavat = (avat)localIterator.next();
-      if ((paramLong != localavat.jdField_a_of_type_Long) || (!avay.a(this.a).a(localavat.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))) {
-        break label114;
+    if (!avay.a(this.a)) {
+      for (;;)
+      {
+        int j = (int)(avay.a(this.a) * (Math.random() * 2.0D - 1.0D));
+        int i = (int)Math.sqrt(avay.a(this.a) * avay.a(this.a) - j * j);
+        if (Math.random() > 0.5D) {}
+        while ((avay.b(this.a) + j) * (avay.b(this.a) + j) + (avay.c(this.a) + i) * (avay.c(this.a) + i) <= avay.d(this.a) * avay.d(this.a))
+        {
+          avay.a(this.a, new TranslateAnimation(avay.b(this.a), avay.b(this.a) + j, avay.c(this.a), avay.c(this.a) + i));
+          avay.a(this.a, j + avay.b(this.a));
+          avay.b(this.a, i + avay.c(this.a));
+          avay.a(this.a).setAnimationListener(avay.a(this.a));
+          avay.a(this.a).setDuration(avay.a(this.a) * (int)(50.0D + Math.random() * 30.0D));
+          avay.a(this.a).startAnimation(avay.a(this.a));
+          return;
+          i = -i;
+        }
       }
-      this.a.a(paramLong);
-      bool = true;
     }
-    label114:
-    for (;;)
-    {
-      break;
-      QLog.d(avay.a, 1, new Object[] { "notifyCheckStatus uniseq:", Long.valueOf(paramLong), ", invalid:", Boolean.valueOf(bool) });
-      return;
-    }
+    avay.a(this.a, false);
   }
   
-  public void a(long paramLong, int paramInt)
-  {
-    QLog.d(avay.a, 1, new Object[] { "notifyError uniseq:", Long.valueOf(paramLong), ", errCode:", Integer.valueOf(paramInt) });
-    this.a.a(paramLong);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avaz
  * JD-Core Version:    0.7.0.1
  */

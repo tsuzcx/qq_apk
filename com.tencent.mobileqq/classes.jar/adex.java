@@ -1,23 +1,68 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
-import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.qphone.base.util.QLog;
 
 public class adex
-  implements begw
 {
-  public adex(FlashPicItemBuilder paramFlashPicItemBuilder, MessageForPic paramMessageForPic, begr parambegr) {}
+  public adew a = new adew();
+  public adew b = new adew();
+  public adew c = new adew();
+  public adew d = new adew();
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    switch (paramInt)
+    this.a.a(this.b);
+    this.c.a(this.d);
+    this.b.a(this.d);
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    this.a.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    this.b.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    this.c.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
+      this.a.a(this.b);
+      this.c.a(this.d);
+      this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
+      this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
       return;
-      FlashPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
     }
+    this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
+    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  public void a(adex paramadex)
+  {
+    this.a.a(paramadex.a);
+    this.b.a(paramadex.b);
+    this.c.a(paramadex.c);
+    this.d.a(paramadex.d);
+  }
+  
+  public void b(adex paramadex)
+  {
+    if (paramadex.d == this.c)
+    {
+      this.a = paramadex.a;
+      this.c = paramadex.c;
+      this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
+    }
+    do
+    {
+      return;
+      if (this.d == paramadex.c)
+      {
+        this.d.a(paramadex.d);
+        this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("TransPathJob", 2, "TransPathJob merge point error");
   }
 }
 

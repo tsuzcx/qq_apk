@@ -1,28 +1,28 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class abqc
-  implements aibl
+  implements View.OnClickListener
 {
-  public abqc(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public abqc(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    SearchMightKnowFragment.a(this.a).setVisibility(0);
-    SearchMightKnowFragment.a(this.a).setVisibility(8);
-  }
-  
-  public void a(String paramString) {}
-  
-  public void a(List<MayKnowRecommend> paramList) {}
-  
-  public void b()
-  {
-    SearchMightKnowFragment.a(this.a).setVisibility(8);
-    SearchMightKnowFragment.a(this.a).setVisibility(0);
+    if (NotifyPushSettingActivity.a(this.a) == null)
+    {
+      NotifyPushSettingActivity.a(this.a, new abqi(this.a, this.a.app, NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a)));
+      abqi.a(NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a));
+    }
+    if (NotifyPushSettingActivity.a(this.a))
+    {
+      int i = (int)NetConnInfoCenter.getServerTime();
+      int j = SettingCloneUtil.readValueForInt(this.a.getApplicationContext(), null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", 2147483647);
+      NotifyPushSettingActivity.a(this.a).a(j - i);
+    }
+    NotifyPushSettingActivity.a(this.a).show();
   }
 }
 

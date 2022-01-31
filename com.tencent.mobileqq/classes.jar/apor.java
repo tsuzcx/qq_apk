@@ -1,60 +1,44 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment.15.1;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment.15.2;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment.15.3;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.CookieManager;
-import com.tencent.smtt.sdk.CookieSyncManager;
-import java.util.Map;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
-public class apor
-  implements WtTicketPromise
+class apor
+  implements AdapterView.OnItemClickListener
 {
-  public apor(NearbyHybridFragment paramNearbyHybridFragment) {}
+  apor(apoq paramapoq) {}
   
-  public void Done(Ticket paramTicket)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramTicket != null)
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby.NearbyHybridFragment", 2, "preGetKeyInPreloadService : Done");
+      do
+      {
+        return;
+        ((FileBrowserActivity)this.a.a.a).a.b();
+        paramAdapterView = ((bbjh)paramAdapterView).a;
+        paramAdapterView.a.onClick(paramView);
+      } while (!"export_auto_open".equals(((FileBrowserActivity)this.a.a.a).a.a()));
+      if (paramAdapterView.c == 2)
+      {
+        axqw.b(null, "dc00898", "", "", "0X800A3B8", "0X800A3B8", 0, 0, "", "", "", "");
+        return;
       }
-      String str = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
-      this.a.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie("now.qq.com", "p_skey=" + str);
-      CookieSyncManager.getInstance().sync();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putString("pskey", "" + str).commit();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putLong("pskey_t", System.currentTimeMillis()).commit();
-      com.tencent.mobileqq.fragment.NowLiveFragment.b = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new NearbyHybridFragment.15.1(this));
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("nearby.NearbyHybridFragment", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new NearbyHybridFragment.15.2(this));
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("nearby.NearbyHybridFragment", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new NearbyHybridFragment.15.3(this));
+      if (paramAdapterView.c == 27)
+      {
+        axqw.b(null, "dc00898", "", "", "0X800A3B9", "0X800A3B9", 0, 0, "", "", "", "");
+        return;
+      }
+    } while (paramAdapterView.c != 6);
+    axqw.b(null, "dc00898", "", "", "0X800A3BA", "0X800A3BA", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apor
  * JD-Core Version:    0.7.0.1
  */

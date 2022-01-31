@@ -1,80 +1,38 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import mqq.app.BaseActivity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 
 public class lza
 {
-  View a;
-  View b;
-  
-  public lza(View paramView)
+  protected static int a(Context paramContext, String paramString, int paramInt)
   {
-    this.a = paramView.findViewById(2131306784);
-    this.b = paramView.getRootView().findViewById(2131306785);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString, paramInt);
   }
   
-  static void a(View paramView, int paramInt)
+  protected static long a(Context paramContext, String paramString, long paramLong)
   {
-    if (paramView == null) {
-      return;
-    }
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-    localLayoutParams.height = paramInt;
-    paramView.setLayoutParams(localLayoutParams);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getLong(paramString, paramLong);
   }
   
-  public void a(BaseActivity paramBaseActivity)
+  protected static void a(Context paramContext, String paramString, int paramInt)
   {
-    if ((paramBaseActivity == null) || (this.a == null)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (ImmersiveUtils.isSupporImmersive() == 1) {
-            break;
-          }
-          this.a.setVisibility(8);
-        } while (this.b == null);
-        this.b.setVisibility(8);
-        return;
-        int i = ImmersiveUtils.getStatusBarHeight(paramBaseActivity);
-        QLog.w("QavStatusBar", 1, "adjust, height[" + i + "]");
-        if (i > 0)
-        {
-          a(this.a, i);
-          a(this.b, i);
-        }
-      } while (AudioHelper.a(0) != 1);
-      this.a.setBackgroundColor(2140405971);
-    } while (this.b == null);
-    this.b.setBackgroundColor(2140405971);
+    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putInt(paramString, paramInt).commit();
   }
   
-  public void a(boolean paramBoolean)
+  protected static void a(Context paramContext, String paramString, long paramLong)
   {
-    if (this.a != null)
-    {
-      QLog.w("QavStatusBar", 1, "setBackgroundColor, bDoubleScreen[" + paramBoolean + "]");
-      if (paramBoolean) {
-        this.a.setBackgroundColor(-16777216);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.setBackgroundColor(0);
+    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putLong(paramString, paramLong).commit();
   }
   
-  public boolean a()
+  protected static void a(Context paramContext, String paramString, boolean paramBoolean)
   {
-    return (this.a != null) && (this.a.getVisibility() == 0);
+    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putBoolean(paramString, paramBoolean).commit();
+  }
+  
+  protected static boolean a(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean(paramString, paramBoolean);
   }
 }
 

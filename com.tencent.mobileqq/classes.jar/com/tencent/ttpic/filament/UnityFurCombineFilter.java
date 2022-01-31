@@ -32,6 +32,7 @@ public class UnityFurCombineFilter
     this.furFilter.clearGLSLSelf();
     this.noFurFilter.clearGLSLSelf();
     GLES20.glDeleteTextures(this.tex.length, this.tex, 0);
+    this.mIsApplied = false;
   }
   
   public void getTexture(int paramInt)
@@ -42,6 +43,9 @@ public class UnityFurCombineFilter
   
   public void init()
   {
+    if (this.mIsApplied) {
+      return;
+    }
     this.furFilter.updateParams(this.config);
     this.noFurFilter.updateParams(this.config);
     this.furFilter.ApplyGLSLFilter();
@@ -52,6 +56,7 @@ public class UnityFurCombineFilter
     GlUtil.loadTexture(this.tex[0], localBitmap);
     localBitmap.recycle();
     setFurValue(UnityFurConfig.FurValueType.DENSITY, this.config.g_Density);
+    this.mIsApplied = true;
   }
   
   public Frame render(Frame paramFrame)

@@ -7,6 +7,7 @@ public final class enum_mood_modify_define
 {
   private static enum_mood_modify_define[] __values;
   public static final int _enum_modify_content = 1;
+  public static final int _enum_modify_ugcright = 2;
   public static final enum_mood_modify_define enum_modify_content;
   private String __T = new String();
   private int __value;

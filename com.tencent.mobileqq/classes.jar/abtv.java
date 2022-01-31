@@ -1,24 +1,6 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import mqq.os.MqqHandler;
-
-public class abtv
-  extends MqqHandler
+public abstract interface abtv
 {
-  public abtv(SubLoginActivity paramSubLoginActivity) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1982: 
-      this.a.finish();
-      return;
-    }
-    this.a.c();
-  }
+  public abstract void onBackPressed();
 }
 
 

@@ -1,23 +1,14 @@
-import android.app.Activity;
-
 class apnl
-  implements aagm
+  implements aptu
 {
   apnl(apnk paramapnk) {}
   
   public void a()
   {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    this.a.a.s();
   }
   
   public void b() {}
-  
-  public void c()
-  {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
-  }
 }
 
 

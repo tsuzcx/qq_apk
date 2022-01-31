@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
-import asjt;
+import atfx;
 
 class NearbyAppInterface$3
   implements Runnable

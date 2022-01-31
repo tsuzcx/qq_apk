@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdcz;
-import bdhd;
-import bdyn;
+import begz;
+import belg;
+import bffu;
 import com.tencent.qqmini.sdk.core.widget.KeyboardLayout;
 
 class InputJsPlugin$4
-  implements bdhd
+  implements belg
 {
   InputJsPlugin$4(InputJsPlugin paramInputJsPlugin) {}
   
@@ -16,7 +16,7 @@ class InputJsPlugin$4
       InputJsPlugin.access$300(this.this$0).setVisibility(8);
     }
     if ((this.this$0.mMiniAppContext != null) && (this.this$0.mMiniAppContext.a() != null)) {
-      bdyn.a(this.this$0.mMiniAppContext.a());
+      bffu.a(this.this$0.mMiniAppContext.a());
     }
   }
   

@@ -1,42 +1,57 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.photo.MediaPlayHelper.2;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import java.util.HashMap;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.40.1;
 
 public class agaj
-  implements TVK_SDKMgr.InstallListener
+  extends ajvl
 {
-  public agaj(MediaPlayHelper.2 param2) {}
+  public agaj(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  protected void a(boolean paramBoolean, Long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(agai.a(this.a.this$0), 2, "onInstalledFailed:" + paramInt);
+    if (this.a.c != null) {
+      this.a.c.dismiss();
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_entrance", "MediaPlayHelper");
-    localHashMap.put("param_erroCode", String.valueOf(paramInt));
-    localHashMap.put("param_result", "0");
-    awrn.a(BaseApplication.getContext()).a(null, "actInstallTVK", false, 0L, 0L, localHashMap, "");
   }
   
-  public void onInstalledSuccessed()
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(agai.a(this.a.this$0), 2, "onInstalledSuccessed");
+    if (paramBoolean)
+    {
+      axqw.b(this.a.b, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
+      this.a.a(paramLong2 + "");
+      if (this.a.jdField_a_of_type_Agaw != null) {
+        this.a.jdField_a_of_type_Agaw.a();
+      }
+      if (this.a.k)
+      {
+        this.a.d(paramLong2 + "");
+        if (this.a.jdField_a_of_type_Agay != null) {
+          this.a.jdField_a_of_type_Agay.notifyDataSetChanged();
+        }
+      }
     }
-    if ((this.a.this$0.b != null) && (this.a.this$0.a != null)) {
-      this.a.this$0.a.sendEmptyMessage(6);
+    for (;;)
+    {
+      if (this.a.c != null) {
+        this.a.c.dismiss();
+      }
+      return;
+      bcpw.a(this.a.getActivity(), 1, this.a.getString(2131693710), 0).b(this.a.getActivity().getTitleBarHeight());
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_entrance", "MediaPlayHelper");
-    localHashMap.put("param_erroCode", "0");
-    localHashMap.put("param_result", "1");
-    awrn.a(BaseApplication.getContext()).a(null, "actInstallTVK", true, 0L, 0L, localHashMap, "");
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
+  {
+    this.a.getActivity().runOnUiThread(new ChatHistoryTroopMemberFragment.40.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
+  }
+  
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    if (this.a.c != null) {
+      this.a.c.dismiss();
+    }
   }
 }
 

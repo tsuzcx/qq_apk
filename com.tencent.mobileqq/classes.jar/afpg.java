@@ -1,36 +1,29 @@
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 
-public class afpg
+class afpg
+  implements bfoq
 {
-  public static String a(MessageRecord paramMessageRecord)
+  afpg(afpe paramafpe, boolean paramBoolean, Friends paramFriends, bfol parambfol) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramMessageRecord instanceof MessageForText))
+    if (!bbev.g(afpe.a(this.jdField_a_of_type_Afpe))) {
+      bcpw.a(afpe.a(this.jdField_a_of_type_Afpe), 1, 2131692321, 0).a();
+    }
+    for (;;)
     {
-      paramMessageRecord = (MessageForText)paramMessageRecord;
-      if (paramMessageRecord.sb != null) {
-        return paramMessageRecord.sb.toString();
+      this.jdField_a_of_type_Bfol.e();
+      return;
+      paramView = (FriendListHandler)afpe.a(this.jdField_a_of_type_Afpe).a(1);
+      if (this.jdField_a_of_type_Boolean) {
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
+      } else {
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
       }
-      return paramMessageRecord.msg;
     }
-    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-      return String.valueOf(MessageForMixedMsg.getTextFromMixedMsg((MessageForMixedMsg)paramMessageRecord));
-    }
-    if ((paramMessageRecord instanceof MessageForReplyText))
-    {
-      paramMessageRecord = (MessageForReplyText)paramMessageRecord;
-      if (paramMessageRecord.sb != null) {
-        return paramMessageRecord.sb.toString();
-      }
-      return paramMessageRecord.msg;
-    }
-    if ((paramMessageRecord instanceof MessageForArkApp)) {
-      return ((MessageForArkApp)paramMessageRecord).getJumpUrl();
-    }
-    return "";
   }
 }
 

@@ -1,46 +1,23 @@
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahvs
-  implements basv
+  implements aiak
 {
-  public ahvs(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public ahvs(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(bass parambass)
+  public void a_(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onPrepared: mDuration=" + this.a.b);
+      QLog.i("PTV.NewFlowCameraActivity", 2, "onPictureToken path " + paramString);
     }
-    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid())) {
-      apcb.a(2131625742);
-    }
-    do
-    {
-      do
-      {
-        return;
-        azzn.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.e, this.a.f, this.a.jdField_a_of_type_Bass.d(), this.a.jdField_a_of_type_Bass.e());
-      } while (this.a.j != 10);
-      parambass.a(localSurfaceHolder);
-      this.a.jdField_a_of_type_Int = parambass.c();
-    } while (this.a.jdField_a_of_type_Int <= 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "此时的时长为" + ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
-    }
-    this.a.d.setText(ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
-    this.a.jdField_a_of_type_AndroidWidgetSeekBar.setMax(this.a.jdField_a_of_type_Int);
+    this.a.a.b();
+    NewFlowCameraActivity.a(this.a, paramString, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahvs
  * JD-Core Version:    0.7.0.1
  */

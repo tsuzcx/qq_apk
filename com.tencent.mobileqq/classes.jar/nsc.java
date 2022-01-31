@@ -1,8 +1,21 @@
+import java.util.Comparator;
+import org.json.JSONObject;
+
 public class nsc
+  implements Comparator<JSONObject>
 {
-  public static final nsc a = new nsc();
+  String a;
   
-  public void a() {}
+  public nsc(String paramString)
+  {
+    this.a = paramString;
+  }
+  
+  public int a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  {
+    long l = paramJSONObject1.optLong(this.a);
+    return (int)(paramJSONObject2.optLong(this.a) - l);
+  }
 }
 
 

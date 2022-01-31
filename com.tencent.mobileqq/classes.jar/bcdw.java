@@ -1,16 +1,10 @@
-import java.util.Comparator;
-
-class bcdw
-  implements Comparator<String>
+public abstract interface bcdw
 {
-  public int a(String paramString1, String paramString2)
-  {
-    return paramString1.compareTo(paramString2);
-  }
+  public abstract bcdq b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcdw
  * JD-Core Version:    0.7.0.1
  */

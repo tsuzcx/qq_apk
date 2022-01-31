@@ -1,25 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule.4;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import java.util.Comparator;
 
-class pac
-  implements oqy
+public class pac
+  implements Comparator<TabChannelCoverInfo>
 {
-  pac(ozx paramozx, RecommendFollowInfo paramRecommendFollowInfo) {}
+  public pac(ChannelCoverInfoModule.4 param4) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public int a(TabChannelCoverInfo paramTabChannelCoverInfo1, TabChannelCoverInfo paramTabChannelCoverInfo2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = false;
-      ozx.a(this.jdField_a_of_type_Ozx, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-      ozx.a(this.jdField_a_of_type_Ozx).notifyDataSetChanged();
-      return;
-    }
-    bbmy.a(ozx.c(this.jdField_a_of_type_Ozx).getContext(), 1, 2131652679, 0).a();
+    return paramTabChannelCoverInfo1.seq - paramTabChannelCoverInfo2.seq;
   }
 }
 

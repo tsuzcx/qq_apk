@@ -1,417 +1,288 @@
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.QAVHrMeeting.1;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class bbfu
 {
-  public static String a = "com.qq.hotact";
-  
-  public static int a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public static int a(long paramLong)
   {
-    int i = 1;
-    if (!bbfv.a(paramQQAppInterface)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("WholePeopleConstant", 2, "getLebaRednumOrPoint, check wholePeopleEntryIsOpen return false, not show redtouch");
-      }
-    }
-    do
-    {
-      return 0;
-      if ((paramQQAppInterface.a().a != null) && (paramQQAppInterface.a().a.b)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("WholePeopleConstant", 2, "getLebaRednumOrPoint, check wholePeopleEntryIsOpen return false, not show redtouch");
-    return 0;
-    paramQQAppInterface = (atax)paramQQAppInterface.getManager(160);
-    RedTouchItem localRedTouchItem1 = paramQQAppInterface.a(10013);
-    RedTouchItem localRedTouchItem2 = paramQQAppInterface.a(10014);
-    int j;
-    if ((paramQQAppInterface.a(localRedTouchItem1, false)) && (localRedTouchItem1.passThroughLevel >= 1)) {
-      if (localRedTouchItem1.redtouchType == 2)
-      {
-        j = localRedTouchItem1.count + 0;
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      int k = i;
-      int m = j;
-      if (paramQQAppInterface.a(localRedTouchItem2, false))
-      {
-        k = i;
-        m = j;
-        if (localRedTouchItem2.passThroughLevel >= 2)
-        {
-          if (localRedTouchItem2.redtouchType != 2) {
-            break label247;
-          }
-          m = j + localRedTouchItem2.count;
-          k = i;
-        }
-      }
-      label183:
-      if (QLog.isColorLevel()) {
-        QLog.d("WholePeopleConstant", 2, "getLebaRednumOrPoint redNum=" + m + ", redPoint=" + k + ", unreadMsg=" + localRedTouchItem2);
-      }
-      if (paramBoolean) {}
-      for (;;)
-      {
-        return m;
-        j = 0;
-        break;
-        label247:
-        k = i + 1;
-        m = j;
-        break label183;
-        m = k;
-      }
-      i = 0;
-      j = 0;
-    }
+    return (int)(0x3 & paramLong);
   }
   
-  public static BusinessInfoCheckUpdate.AppInfo a(int paramInt1, int paramInt2)
+  public static Bundle a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
   {
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = new BusinessInfoCheckUpdate.AppInfo();
-    if (QLog.isColorLevel()) {
-      QLog.i("WholePeopleConstant", 2, "getMsgRedTouch redNum:" + paramInt1 + " redPoint:" + paramInt2);
-    }
-    if ((paramInt1 <= 0) && (paramInt2 <= 0)) {
-      return localAppInfo;
-    }
-    if (paramInt1 > 0)
-    {
-      localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-      if (paramInt1 > 99) {
-        localRedTypeInfo.red_content.set("99+");
-      }
-      for (;;)
-      {
-        localRedTypeInfo.red_type.set(5);
-        localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
-        localAppInfo.red_display_info.red_type_info.add(localRedTypeInfo);
-        localAppInfo.iNewFlag.set(1);
-        return localAppInfo;
-        localRedTypeInfo.red_content.set(String.valueOf(paramInt1));
-      }
-    }
-    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-    localRedTypeInfo.red_type.set(0);
-    localRedTypeInfo.red_desc.set("");
-    localRedTypeInfo.red_content.set("");
-    localAppInfo.red_display_info.red_type_info.add(localRedTypeInfo);
-    localAppInfo.iNewFlag.set(1);
-    return localAppInfo;
-  }
-  
-  public static EIPCResult a(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WholePeopleConstant", 2, "clearMsgRedPoint");
-    }
-    paramString = null;
-    Bundle localBundle = new Bundle();
-    paramBundle = new EIPCResult();
-    paramBundle.data = localBundle;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    if (paramString == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WholePeopleConstant", 2, "clearMsgRedPoint, app is null");
-      }
-      paramBundle.code = -1;
-      return paramBundle;
-    }
-    ((atax)paramString.getManager(160)).a(10014);
-    paramBundle.code = 0;
-    return paramBundle;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, RedTouch paramRedTouch)
-  {
-    Object localObject1;
-    Object localObject2;
-    int j;
-    boolean bool2;
-    int i;
-    boolean bool1;
+    long l1 = 0L;
+    paramBundle = paramBundle.getString("uin");
+    paramQQAppInterface = ((ajvk)paramQQAppInterface.getManager(53)).a(paramBundle);
+    int i = -1;
+    long l2;
     if (paramQQAppInterface != null)
     {
-      localObject1 = (atax)paramQQAppInterface.getManager(160);
-      paramQQAppInterface = ((atax)localObject1).a(10013);
-      localObject2 = ((atax)localObject1).a(10014);
-      if (!((atax)localObject1).a(paramQQAppInterface, false)) {
-        break label1102;
+      l2 = paramQQAppInterface.mOrigin;
+      l1 = paramQQAppInterface.mOriginExtra;
+      if (b(l2)) {
+        i = paramQQAppInterface.mSelfRight;
       }
-      if (paramQQAppInterface.redtouchType != 2) {
-        break label205;
-      }
-      j = paramQQAppInterface.count;
-      bool2 = false;
-      i = 0;
-      j += 0;
-      bool1 = true;
     }
     for (;;)
     {
-      int k = i;
-      int m = j;
-      if (((atax)localObject1).a((RedTouchItem)localObject2, false))
-      {
-        k = i;
-        m = j;
-        if (((RedTouchItem)localObject2).passThroughLevel >= 1)
-        {
-          if (((RedTouchItem)localObject2).redtouchType != 2) {
-            break label269;
-          }
-          m = j + ((RedTouchItem)localObject2).count;
-          k = i;
-        }
+      paramQQAppInterface = new Bundle();
+      paramQQAppInterface.putLong("Origin", l2);
+      paramQQAppInterface.putLong("OriginExtra", l1);
+      paramQQAppInterface.putInt("SelfRight", i);
+      if (AudioHelper.e()) {
+        QLog.w("QAVHrMeeting", 1, "GetDiscussOrigin, uin[" + paramBundle + "], Origin[" + l2 + "], OriginExtra[" + l1 + "], mSelfRight[" + i + "]");
       }
-      label123:
-      if (QLog.isColorLevel()) {
-        QLog.i("WholePeopleConstant", 2, "updateEntryRedTouch redNum:" + m + " redPoint:" + k + " hasUnnormal:" + bool2 + " isText:" + bool1);
-      }
-      if ((m <= 0) && (k <= 0) && (!bool2)) {
-        paramRedTouch.b();
-      }
-      label205:
-      do
-      {
-        for (;;)
-        {
-          return;
-          if (paramQQAppInterface.redtouchType == 1)
-          {
-            bool1 = true;
-            bool2 = false;
-            i = 1;
-            j = 0;
-            break;
-          }
-          if ((paramQQAppInterface.redtouchType != 3) && (paramQQAppInterface.redtouchType != 4)) {
-            break label1102;
-          }
-          if (paramQQAppInterface.redtouchType == 4) {}
-          for (bool1 = true;; bool1 = false)
-          {
-            bool2 = true;
-            i = 0;
-            j = 0;
-            break;
-          }
-          k = i + 1;
-          m = j;
-          break label123;
-          if (m > 0)
-          {
-            paramQQAppInterface = new BusinessInfoCheckUpdate.RedTypeInfo();
-            localObject1 = new BusinessInfoCheckUpdate.AppInfo();
-            if (m > 99) {
-              paramQQAppInterface.red_content.set("99+");
-            }
-            for (;;)
-            {
-              paramQQAppInterface.red_type.set(5);
-              paramQQAppInterface.red_desc.set("{'cn':'#FF0000'}");
-              ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.add(paramQQAppInterface);
-              ((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.set(1);
-              paramRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject1);
-              return;
-              paramQQAppInterface.red_content.set(String.valueOf(m));
-            }
-          }
-          if ((bool2) && (bool1))
-          {
-            localObject1 = new BusinessInfoCheckUpdate.RedTypeInfo();
-            localObject2 = new BusinessInfoCheckUpdate.AppInfo();
-            ((BusinessInfoCheckUpdate.RedTypeInfo)localObject1).red_content.set(paramQQAppInterface.tips);
-            ((BusinessInfoCheckUpdate.RedTypeInfo)localObject1).red_type.set(5);
-            ((BusinessInfoCheckUpdate.RedTypeInfo)localObject1).red_desc.set("{'cn':'#FF0000'}");
-            ((BusinessInfoCheckUpdate.AppInfo)localObject2).red_display_info.red_type_info.add((MessageMicro)localObject1);
-            ((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.set(1);
-            paramRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject2);
-            return;
-          }
-          if ((!bool2) || (bool1)) {
-            break label1031;
-          }
-          localObject1 = new BusinessInfoCheckUpdate.AppInfo();
-          if (!TextUtils.isEmpty(paramQQAppInterface.icon))
-          {
-            if (!TextUtils.isEmpty(paramQQAppInterface.tips))
-            {
-              localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
-              ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_content.set(paramQQAppInterface.tips);
-              ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(4);
-              ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_desc.set("{'cn':'#00000000','cr':'#888888'}");
-              ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.add((MessageMicro)localObject2);
-              localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
-              ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_content.set(azvv.a(BaseApplicationImpl.sApplication.getApplicationContext(), 3.0F) + "");
-              ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(9);
-              ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.add((MessageMicro)localObject2);
-            }
-            localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
-            ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_content.set(paramQQAppInterface.icon);
-            ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(3);
-            paramQQAppInterface = new JSONObject();
-            try
-            {
-              paramQQAppInterface.put("dot", 1);
-              ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_desc.set(paramQQAppInterface.toString());
-              ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.add((MessageMicro)localObject2);
-              ((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.set(1);
-              paramRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject1);
-              try
-              {
-                paramQQAppInterface = (TextView)paramRedTouch.findViewById(30);
-                localObject1 = (LinearLayout.LayoutParams)paramQQAppInterface.getLayoutParams();
-                ((LinearLayout.LayoutParams)localObject1).weight = 1.0F;
-                ((LinearLayout.LayoutParams)localObject1).width = 0;
-                paramQQAppInterface.setEllipsize(TextUtils.TruncateAt.END);
-                paramQQAppInterface.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-                paramQQAppInterface = paramRedTouch.findViewById(100);
-                paramQQAppInterface.setPadding(aciy.a(160.0F, paramQQAppInterface.getResources()), paramQQAppInterface.getPaddingTop(), paramQQAppInterface.getPaddingRight(), paramQQAppInterface.getPaddingBottom());
-                return;
-              }
-              catch (Exception paramQQAppInterface) {}
-              if (QLog.isColorLevel())
-              {
-                QLog.i("WholePeopleConstant", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
-                return;
-              }
-            }
-            catch (JSONException localJSONException)
-            {
-              for (;;)
-              {
-                localJSONException.printStackTrace();
-              }
-            }
-          }
-        }
-        localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
-        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_content.set(paramQQAppInterface.tips);
-        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(4);
-        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_desc.set("{'cn':'#00000000','cr':'#888888'}");
-        ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.add((MessageMicro)localObject2);
-        paramQQAppInterface = new BusinessInfoCheckUpdate.RedTypeInfo();
-        paramQQAppInterface.red_type.set(0);
-        paramQQAppInterface.red_desc.set("");
-        paramQQAppInterface.red_content.set("");
-        ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.add(paramQQAppInterface);
-        ((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.set(1);
-        paramRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject1);
-        try
-        {
-          paramQQAppInterface = (TextView)paramRedTouch.findViewById(30);
-          localObject1 = (LinearLayout.LayoutParams)paramQQAppInterface.getLayoutParams();
-          ((LinearLayout.LayoutParams)localObject1).weight = 1.0F;
-          ((LinearLayout.LayoutParams)localObject1).width = 0;
-          paramQQAppInterface.setEllipsize(TextUtils.TruncateAt.END);
-          paramQQAppInterface.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-          paramQQAppInterface = paramRedTouch.findViewById(100);
-          paramQQAppInterface.setPadding(aciy.a(160.0F, paramQQAppInterface.getResources()), paramQQAppInterface.getPaddingTop(), paramQQAppInterface.getPaddingRight(), paramQQAppInterface.getPaddingBottom());
-          return;
-        }
-        catch (Exception paramQQAppInterface) {}
-      } while (!QLog.isColorLevel());
-      label269:
-      QLog.i("WholePeopleConstant", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
-      return;
-      label1031:
-      paramQQAppInterface = new BusinessInfoCheckUpdate.RedTypeInfo();
-      localObject1 = new BusinessInfoCheckUpdate.AppInfo();
-      paramQQAppInterface.red_type.set(0);
-      paramQQAppInterface.red_desc.set("");
-      paramQQAppInterface.red_content.set("");
-      ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.add(paramQQAppInterface);
-      ((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.set(1);
-      paramRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject1);
-      return;
-      label1102:
-      bool1 = true;
-      bool2 = false;
+      return paramQQAppInterface;
       i = 0;
-      j = 0;
+      continue;
+      l2 = 0L;
     }
   }
   
-  public static EIPCResult b(String paramString, Bundle paramBundle, int paramInt)
+  public static String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WholePeopleConstant", 2, "getMsgRedPoint");
-    }
-    paramString = null;
-    paramBundle = new Bundle();
-    EIPCResult localEIPCResult = new EIPCResult();
-    localEIPCResult.data = paramBundle;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    if (paramString == null)
+    return BaseApplicationImpl.getApplication().getResources().getString(2131693360);
+  }
+  
+  public static String a(ajvk paramajvk, String paramString1, String paramString2)
+  {
+    paramajvk = paramajvk.a(paramString1);
+    if (paramajvk != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WholePeopleConstant", 2, "getMsgRedPoint, app is null");
-      }
-      localEIPCResult.code = -1;
-      return localEIPCResult;
-    }
-    paramString = (atax)paramString.getManager(160);
-    RedTouchItem localRedTouchItem = paramString.a(10014);
-    int i;
-    if (paramString.a(localRedTouchItem, false)) {
-      if (localRedTouchItem.redtouchType == 2)
-      {
-        i = localRedTouchItem.count + 0;
-        paramInt = 0;
+      paramajvk = (DiscussionMemberInfo)paramajvk.get(paramString2);
+      if (paramajvk != null) {
+        if (!TextUtils.isEmpty(paramajvk.inteRemark)) {
+          paramajvk = paramajvk.inteRemark;
+        }
       }
     }
     for (;;)
     {
-      paramBundle.putInt("redPointCount", paramInt);
-      paramBundle.putInt("redNumCount", i);
-      if (QLog.isColorLevel()) {
-        QLog.i("WholePeopleConstant", 2, "getMsgRedPoint redPointCount:" + paramInt + " redNumCount:" + i);
+      paramString1 = paramajvk;
+      if (TextUtils.isEmpty(paramajvk)) {
+        paramString1 = a();
       }
-      localEIPCResult.code = 0;
-      return localEIPCResult;
-      paramInt = 1;
-      i = 0;
-      continue;
-      paramInt = 0;
-      i = 0;
+      return paramString1;
+      if (!TextUtils.isEmpty(paramajvk.memberName)) {
+        paramajvk = paramajvk.memberName;
+      } else {
+        paramajvk = "";
+      }
     }
+  }
+  
+  static void a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    Object localObject1 = (ajvk)paramQQAppInterface.getManager(53);
+    Object localObject2 = (ajvi)paramQQAppInterface.a(6);
+    QLog.d("QAVHrMeeting", 1, "HR_meeting Finish quit DiscussionId[" + paramLong + "]");
+    ((ajvi)localObject2).c(paramLong);
+    ((ajvk)localObject1).c(String.valueOf(paramLong));
+    localObject1 = paramQQAppInterface.a().a();
+    localObject2 = ((aktg)localObject1).b(String.valueOf(paramLong), 3000);
+    if (localObject2 != null) {
+      ((aktg)localObject1).b((RecentUser)localObject2);
+    }
+    ((ajvi)paramQQAppInterface.a(6)).a();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, DiscussionInfo paramDiscussionInfo)
+  {
+    DiscussionInfo localDiscussionInfo = paramDiscussionInfo;
+    if (paramDiscussionInfo == null) {
+      localDiscussionInfo = ((ajvk)paramQQAppInterface.getManager(53)).a(String.valueOf(paramLong));
+    }
+    if (localDiscussionInfo == null) {}
+    while (((localDiscussionInfo.mOrigin & 0x2) == 2L) || ((localDiscussionInfo.mOrigin & 0x4) != 4L)) {
+      return;
+    }
+    a(paramQQAppInterface, paramLong);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Intent paramIntent, int paramInt, long paramLong)
+  {
+    if (paramInt != 2) {}
+    DiscussionInfo localDiscussionInfo;
+    do
+    {
+      return;
+      localDiscussionInfo = ((ajvk)paramQQAppInterface.getManager(53)).a(String.valueOf(paramLong));
+    } while ((localDiscussionInfo == null) || (!localDiscussionInfo.isDiscussHrMeeting()));
+    paramInt = paramIntent.getIntExtra("quitReson", -1);
+    if ((paramInt != 20) && (paramInt != 7)) {
+      a(paramQQAppInterface, paramLong, localDiscussionInfo);
+    }
+    if (a(localDiscussionInfo.mSelfRight)) {
+      ((ajvi)paramQQAppInterface.a(6)).a(paramLong);
+    }
+    QLog.e("QAVHrMeeting", 1, "do Report, lFlag=" + localDiscussionInfo.mOrigin);
+    paramLong = paramQQAppInterface.a().a();
+    long l = System.currentTimeMillis();
+    akwj.a(paramQQAppInterface).a(paramLong, l);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getString("uin");
+    ((ajvi)paramQQAppInterface.a(6)).a(Long.valueOf(paramBundle).longValue(), 1);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, DiscussionInfo paramDiscussionInfo, DiscussionMemberInfo paramDiscussionMemberInfo)
+  {
+    if (!paramDiscussionInfo.isDiscussHrMeeting()) {
+      return;
+    }
+    paramDiscussionMemberInfo.memberName = a();
+    paramDiscussionMemberInfo.inteRemark = paramDiscussionMemberInfo.memberName;
+    a(paramQQAppInterface, paramDiscussionInfo.uin, paramDiscussionMemberInfo.memberUin, null);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord.msgtype == -2016) || (paramMessageRecord.msgtype == -4008) || (paramMessageRecord.istroop != 3000)) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (QLog.isColorLevel()) {
+              QLog.w("QAVHrMeeting", 1, "onMsgUpdae, curFriendUin[" + paramMessageRecord.frienduin + "], senderuin[" + paramMessageRecord.senderuin + "], isSendFromLocal[" + paramMessageRecord.isSendFromLocal() + "], isSend[" + paramMessageRecord.isSend() + "], msgtype[" + paramMessageRecord.msgtype + "], isread[" + paramMessageRecord.isread + "], msgseq[" + paramMessageRecord.msgseq + "], uniseq[" + paramMessageRecord.uniseq + "], msg[" + AudioHelper.a(paramMessageRecord.msg) + "]");
+            }
+            if (!paramMessageRecord.isSend()) {
+              break;
+            }
+          } while (!paramMessageRecord.isSendFromLocal());
+          localObject = ((ajvk)paramQQAppInterface.getManager(53)).a(paramMessageRecord.frienduin);
+        } while ((localObject == null) || (!((DiscussionInfo)localObject).isDiscussHrMeeting()) || (a(((DiscussionInfo)localObject).mSelfRight)) || (((DiscussionInfo)localObject).getHrExtra() != 1));
+        ((ajvi)paramQQAppInterface.a(6)).a(Long.valueOf(paramMessageRecord.frienduin).longValue(), 2);
+        return;
+      } while (paramMessageRecord.msgtype != -1000);
+      localObject = (ajvk)paramQQAppInterface.getManager(53);
+      paramMessageRecord = ((ajvk)localObject).a(paramMessageRecord.frienduin);
+    } while ((paramMessageRecord == null) || (!paramMessageRecord.isHidden()) || (paramMessageRecord.getHrExtra() != 1));
+    paramMessageRecord.mOriginExtra = 2L;
+    ((ajvk)localObject).a(paramMessageRecord);
+    a("onMsgUpdae", paramQQAppInterface, paramMessageRecord);
+    a(paramQQAppInterface, paramMessageRecord.uin);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = (ajvi)paramQQAppInterface.a(6);
+    paramQQAppInterface.notifyUI(1000, true, null);
+    ArrayList localArrayList = new ArrayList(2);
+    localArrayList.add(paramString);
+    localArrayList.add(1, Boolean.valueOf(true));
+    paramQQAppInterface.notifyUI(1001, true, localArrayList);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, bbfv parambbfv)
+  {
+    AudioHelper.b("获取hr信息_delay_" + paramString2);
+    String str = "http://pubacc.mobile.qq.com/mqqweb-rtx2qq/mqqweb/get_nickname_video_meeting_for_hr?uin=" + paramString2 + "&discid=" + paramString1;
+    ThreadManager.post(new QAVHrMeeting.1("QAVHrMeeting_" + AudioHelper.b(), str, paramString2, paramQQAppInterface, paramString1, parambbfv), 5, null, false);
+  }
+  
+  public static void a(String paramString, QQAppInterface paramQQAppInterface, DiscussionInfo paramDiscussionInfo)
+  {
+    if ((paramDiscussionInfo.mOrigin & 0x2) != 2L) {
+      return;
+    }
+    boolean bool = a(paramDiscussionInfo.mSelfRight);
+    long l = paramDiscussionInfo.uiControlFlag;
+    ajvk localajvk;
+    if (bool)
+    {
+      localajvk = (ajvk)paramQQAppInterface.getManager(53);
+      paramQQAppInterface = (ajvi)paramQQAppInterface.a(6);
+      if (paramDiscussionInfo.getHrExtra() != 1) {
+        break label176;
+      }
+      localajvk.a(paramDiscussionInfo.uin);
+      paramQQAppInterface.notifyUI(1004, true, paramDiscussionInfo.uin);
+    }
+    for (;;)
+    {
+      QLog.w("QAVHrMeeting", 1, "checkHrConfHidden[" + paramString + "], mSelfRight[" + paramDiscussionInfo.mSelfRight + "][" + bool + "], uiControlFlag[" + l + "->" + paramDiscussionInfo.uiControlFlag + "], getHrExtra[" + paramDiscussionInfo.getHrExtra() + "]");
+      return;
+      label176:
+      localajvk.b(paramDiscussionInfo.uin);
+      Long.parseLong(paramDiscussionInfo.uin);
+      paramQQAppInterface = paramDiscussionInfo.discussionName;
+    }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == -1) || ((paramInt & 0x8) == 8);
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    return (paramLong & 1L) == 1L;
+  }
+  
+  public static int b(long paramLong)
+  {
+    long l2 = 0L;
+    boolean bool = false;
+    Object localObject1 = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject2 = new Bundle();
+    ((Bundle)localObject2).putString("uin", String.valueOf(paramLong));
+    localObject1 = ((VideoAppInterface)localObject1).a(5, 0, 0, (Bundle)localObject2, null);
+    int i = -1;
+    long l1;
+    if (localObject1 != null)
+    {
+      l2 = ((Bundle)localObject1).getLong("Origin", 0L);
+      l1 = ((Bundle)localObject1).getLong("OriginExtra", 0L);
+      i = ((Bundle)localObject1).getInt("SelfRight", 0);
+    }
+    for (;;)
+    {
+      localObject2 = new StringBuilder().append("getStasks, relationId[").append(paramLong).append("], mOrigin[").append(l2).append("], mOriginExtra[").append(l1).append("], mSelfRight[").append(i).append("], rsp[");
+      if (localObject1 != null) {
+        bool = true;
+      }
+      QLog.w("QAVHrMeeting", 1, bool + "]");
+      return i;
+      l1 = 0L;
+    }
+  }
+  
+  public static boolean b(long paramLong)
+  {
+    return (0x6 & paramLong) != 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbfu
  * JD-Core Version:    0.7.0.1
  */

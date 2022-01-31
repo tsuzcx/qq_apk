@@ -1,98 +1,52 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class nyq
-  implements BusinessObserver
+public class nyq
+  implements AladdinConfigHandler
 {
-  nyq(nym paramnym, BaseCommentData paramBaseCommentData) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    paramInt = 1;
-    String str = "";
-    if (paramBoolean) {}
-    for (;;)
+    QLog.d("VideoSoftAdConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = ooi.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      try
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("VideoSoftAdConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (paramInt1 == 200)
       {
-        byte[] arrayOfByte = paramBundle.getByteArray("data");
-        if (arrayOfByte == null) {
-          break label201;
+        if ((TextUtils.equals(str1, "ad_guide_area")) && (!TextUtils.isEmpty(str2))) {
+          bhvh.a("sp_key_ad_soft_total_area", str2.trim());
         }
-        paramBundle = new WebSsoBody.WebSsoResponseBody();
-        try
-        {
-          paramBundle.mergeFrom(arrayOfByte);
-          int i = paramBundle.ret.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("ReadInJoyCommentSSOModule", 2, "commentReport ret=" + paramBundle.data.get());
-          }
-          if (i == 0) {
-            break label170;
-          }
-          try
-          {
-            paramBundle = new JSONObject(paramBundle.data.get()).optString("msg");
-            paramInt = 0;
-          }
-          catch (JSONException paramBundle)
-          {
-            paramBundle.printStackTrace();
-            paramInt = 0;
-            paramBundle = str;
-            continue;
-          }
-          if (paramInt == 0) {
-            nym.a(this.jdField_a_of_type_Nym).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, paramBundle);
-          }
-          return;
+        if ((TextUtils.equals(str1, "ad_max_num")) && (!TextUtils.isEmpty(str2))) {
+          bhvh.a("sp_key_ad_soft_ad_max", str2.trim());
         }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          localInvalidProtocolBufferMicroException.printStackTrace();
-          continue;
-        }
-        paramBundle.printStackTrace();
-      }
-      catch (Exception paramBundle)
-      {
-        paramInt = 0;
-      }
-      for (;;)
-      {
-        for (;;)
-        {
-          paramBundle = str;
-          break;
-          try
-          {
-            label170:
-            nym.a(this.jdField_a_of_type_Nym).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
-            paramBundle = str;
-          }
-          catch (Exception paramBundle)
-          {
-            paramInt = 1;
-          }
+        if ((TextUtils.equals(str1, "kd_max_num")) && (!TextUtils.isEmpty(str2))) {
+          bhvh.a("sp_key_ad_soft_kd_max", str2.trim());
         }
       }
-      label201:
-      paramInt = 0;
-      paramBundle = str;
+    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    if (paramInt == 200)
+    {
+      bhvh.a("sp_key_ad_soft_total_area", "0");
+      bhvh.a("sp_key_ad_soft_ad_max", "25");
+      bhvh.a("sp_key_ad_soft_kd_max", "25");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nyq
  * JD-Core Version:    0.7.0.1
  */

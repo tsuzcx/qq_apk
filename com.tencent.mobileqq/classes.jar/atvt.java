@@ -1,20 +1,14 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-
-public class atvt
-  extends RecyclerView.ItemDecoration
+class atvt
+  implements atwf
 {
-  private final int jdField_a_of_type_Int = (int)(3.0F * PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity));
+  atvt(atvq paramatvq, atvv paramatvv) {}
   
-  private atvt(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void a(boolean paramBoolean, String paramString)
   {
-    paramRect.right = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Atvq.c(paramString);
+    if (this.jdField_a_of_type_Atvv != null) {
+      this.jdField_a_of_type_Atvv.a(paramBoolean, paramString);
+    }
   }
 }
 

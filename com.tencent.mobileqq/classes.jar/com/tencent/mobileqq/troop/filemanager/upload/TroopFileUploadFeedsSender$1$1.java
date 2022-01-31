@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
 import android.text.TextUtils;
-import axgr;
-import ayoq;
-import ayrz;
-import aysb;
-import ayub;
-import ayuc;
+import aygv;
+import azpg;
+import azsp;
+import azsr;
+import azur;
+import azus;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForTroopFile;
@@ -15,27 +15,27 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class TroopFileUploadFeedsSender$1$1
   implements Runnable
 {
-  public TroopFileUploadFeedsSender$1$1(ayuc paramayuc, String paramString, ayoq paramayoq) {}
+  public TroopFileUploadFeedsSender$1$1(azus paramazus, String paramString, azpg paramazpg) {}
   
   public void run()
   {
     Object localObject = this.jdField_a_of_type_JavaLangString;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Ayoq.b)) {
-      localObject = this.jdField_a_of_type_Ayoq.b;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Azpg.b)) {
+      localObject = this.jdField_a_of_type_Azpg.b;
     }
-    QQAppInterface localQQAppInterface = ayrz.a();
+    QQAppInterface localQQAppInterface = azsp.a();
     if (localQQAppInterface == null)
     {
-      aysb.a("TroopFileUploadFeedsSender", aysb.a, "[" + this.jdField_a_of_type_Ayuc.a.jdField_a_of_type_JavaLangString + "] addToSendCache app=null");
+      azsr.a("TroopFileUploadFeedsSender", azsr.a, "[" + this.jdField_a_of_type_Azus.a.jdField_a_of_type_JavaLangString + "] addToSendCache app=null");
       return;
     }
-    localObject = (MessageForTroopFile)localQQAppInterface.a().a(String.valueOf(this.jdField_a_of_type_Ayuc.a.d), 1, (String)localObject);
+    localObject = (MessageForTroopFile)localQQAppInterface.a().a(String.valueOf(this.jdField_a_of_type_Azus.a.d), 1, (String)localObject);
     if (localObject != null)
     {
-      ((axgr)localQQAppInterface.getManager(272)).a((MessageRecord)localObject);
+      ((aygv)localQQAppInterface.getManager(272)).a((MessageRecord)localObject);
       return;
     }
-    aysb.a("TroopFileUploadFeedsSender", aysb.a, "[" + this.jdField_a_of_type_Ayuc.a.jdField_a_of_type_JavaLangString + "] addToSendCache can't find troopFile Msg, troop[" + this.jdField_a_of_type_Ayuc.a.d + "], id:" + this.jdField_a_of_type_Ayoq.b);
+    azsr.a("TroopFileUploadFeedsSender", azsr.a, "[" + this.jdField_a_of_type_Azus.a.jdField_a_of_type_JavaLangString + "] addToSendCache can't find troopFile Msg, troop[" + this.jdField_a_of_type_Azus.a.d + "], id:" + this.jdField_a_of_type_Azpg.b);
   }
 }
 

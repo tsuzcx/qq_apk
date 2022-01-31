@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity.ScanSpaceTask;
-import com.tencent.mobileqq.widget.CircleProgressBar;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import mqq.os.MqqHandler;
 
 public class abmg
-  implements abme
+  extends MqqHandler
 {
-  public abmg(QQSettingCleanActivity.ScanSpaceTask paramScanSpaceTask) {}
+  public abmg(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.this$0.a.setPercent(paramInt);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 2014: 
+      this.a.finish();
+      return;
+    }
+    this.a.finish();
   }
 }
 

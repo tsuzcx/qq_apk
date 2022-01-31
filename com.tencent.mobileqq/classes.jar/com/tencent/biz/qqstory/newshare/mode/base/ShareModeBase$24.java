@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.newshare.mode.base;
 
-import tcm;
-import tdo;
-import tet;
+import tpi;
+import tqk;
+import trp;
 
 public class ShareModeBase$24
   implements Runnable
 {
-  public ShareModeBase$24(tdo paramtdo, tet paramtet) {}
+  public ShareModeBase$24(tqk paramtqk, trp paramtrp) {}
   
   public void run()
   {

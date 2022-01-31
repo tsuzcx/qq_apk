@@ -1,18 +1,19 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.support.v7.widget.LinearSmoothScroller;
-
 class wzs
-  extends LinearSmoothScroller
+  extends wzu
 {
-  wzs(wzr paramwzr, Context paramContext)
+  public wzs(wyw paramwyw, wzv paramwzv, String paramString)
   {
-    super(paramContext);
+    super(paramwyw, paramwzv, paramString);
   }
   
-  public PointF computeScrollVectorForPosition(int paramInt)
+  public void a()
   {
-    return this.a.a(paramInt);
+    this.jdField_a_of_type_Wyw.a.a();
+    wzg localwzg = a();
+    this.jdField_a_of_type_Wyw.a.a(localwzg.e, localwzg.jdField_a_of_type_JavaLangString, localwzg.jdField_a_of_type_Int, new wzt(this));
+    this.jdField_a_of_type_Wzv.b(this);
+    this.jdField_a_of_type_Wzu = new wzf(this.jdField_a_of_type_Wyw, this.jdField_a_of_type_Wzv, this.c);
+    b();
   }
 }
 

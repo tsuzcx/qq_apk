@@ -1,87 +1,41 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
-public class amdc
-  extends alzl<amdb>
+class amdc
+  implements bfoq
 {
-  public static amdb a()
-  {
-    return (amdb)alzw.a().a(489);
-  }
+  amdc(amdb paramamdb, Context paramContext, bfol parambfol) {}
   
-  public int a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return 489;
-  }
-  
-  @NonNull
-  public amdb a(int paramInt)
-  {
-    return new amdb();
-  }
-  
-  @Nullable
-  public amdb a(alzs[] paramArrayOfalzs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onParsed ");
+    switch (paramInt)
+    {
     }
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return amdb.a(paramArrayOfalzs);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      do
+      {
+        return;
+        paramView = this.jdField_a_of_type_Amdb.b + this.jdField_a_of_type_Amdb.jdField_a_of_type_JavaLangString;
+      } while ((TextUtils.isEmpty(paramView)) || ((!paramView.startsWith("http://")) && (!paramView.startsWith("https://"))));
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      if ((this.jdField_a_of_type_Amdb.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Amdb.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+        axqw.b((QQAppInterface)this.jdField_a_of_type_Amdb.jdField_a_of_type_JavaLangRefWeakReference.get(), "P_CliOper", "aio_search", "", "aio_hotword", "search_hotword", 0, 0, "", "", this.jdField_a_of_type_Amdb.jdField_a_of_type_JavaLangString, "");
+      }
     }
-    return null;
-  }
-  
-  public Class<amdb> a()
-  {
-    return amdb.class;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onReqNoReceive ");
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(amdb paramamdb)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onUpdate " + paramamdb.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amdc
  * JD-Core Version:    0.7.0.1
  */

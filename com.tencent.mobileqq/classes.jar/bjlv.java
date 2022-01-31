@@ -1,6 +1,18 @@
-public abstract interface bjlv
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
+
+public class bjlv
+  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  public abstract void a();
+  public bjlv(CropVideoActivity paramCropVideoActivity) {}
+  
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    float f = paramScaleGestureDetector.getScaleFactor();
+    CropVideoActivity.a(this.a).b(f, f, 1.0F);
+    return true;
+  }
 }
 
 

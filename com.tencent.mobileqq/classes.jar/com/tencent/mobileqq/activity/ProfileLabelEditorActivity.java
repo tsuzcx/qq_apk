@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import abiq;
-import abir;
-import abis;
-import abit;
-import abiu;
-import abiw;
-import ajfi;
-import ajfo;
-import ajjj;
+import absq;
+import absr;
+import abss;
+import abst;
+import absu;
+import absw;
+import ajtk;
+import ajtq;
+import ajxn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -18,12 +18,12 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import auaj;
-import awqx;
-import babr;
-import bace;
-import bafb;
-import bbmy;
+import auzp;
+import axqw;
+import bbcv;
+import bbdj;
+import bbgg;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -50,13 +50,13 @@ public class ProfileLabelEditorActivity
   extends IphoneTitleBarActivity
 {
   public float a;
-  public abiw a;
-  private ajfo a;
+  public absw a;
+  private ajtq a;
   public Context a;
   public GridView a;
   public LinearLayout a;
   public TextView a;
-  public auaj a;
+  public auzp a;
   public Card a;
   public ProfileLabelPanel a;
   public List<ProfileLabelInfo> a;
@@ -67,7 +67,7 @@ public class ProfileLabelEditorActivity
   public ProfileLabelEditorActivity()
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Ajfo = new abiq(this);
+    this.jdField_a_of_type_Ajtq = new absq(this);
   }
   
   /* Error */
@@ -217,7 +217,7 @@ public class ProfileLabelEditorActivity
   
   private List<ProfileLabelInfo> a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataCard = ((ajjj)this.app.getManager(51)).b(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqDataCard = ((ajxn)this.app.getManager(51)).b(paramString);
     if (this.jdField_a_of_type_ComTencentMobileqqDataCard != null)
     {
       this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqDataCard.getLabelList();
@@ -296,14 +296,14 @@ public class ProfileLabelEditorActivity
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        b(2131654148);
+        b(2131720038);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.d("ProfileLabelEditorActivity", 2, "saveEdit save labes num = " + this.jdField_a_of_type_JavaUtilList.size());
       }
       this.jdField_a_of_type_Boolean = true;
-      ((ajfi)this.app.a(2)).a(this.jdField_a_of_type_JavaUtilList);
+      ((ajtk)this.app.a(2)).a(this.jdField_a_of_type_JavaUtilList);
       return;
     }
     finish();
@@ -313,8 +313,8 @@ public class ProfileLabelEditorActivity
   {
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      this.jdField_a_of_type_Abiw = new abiw(this, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Abiw);
+      this.jdField_a_of_type_Absw = new absw(this, this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Absw);
       a(this.jdField_a_of_type_JavaUtilList.size());
     }
     Object localObject = new File(BaseApplicationImpl.getApplication().getFilesDir(), "labelList");
@@ -324,7 +324,7 @@ public class ProfileLabelEditorActivity
     for (;;)
     {
       return;
-      localObject = new ByteArrayInputStream(bace.a((File)localObject));
+      localObject = new ByteArrayInputStream(bbdj.a((File)localObject));
       try
       {
         ObjectInputStream localObjectInputStream = new ObjectInputStream((InputStream)localObject);
@@ -373,7 +373,7 @@ public class ProfileLabelEditorActivity
   
   private void c(List<ProfileLabelTypeInfo> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel = new ProfileLabelPanel(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Auaj, paramList, new abis(this));
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel = new ProfileLabelPanel(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Auzp, paramList, new abss(this));
     paramList = new LinearLayout.LayoutParams(-1, (int)(202.0F * this.jdField_a_of_type_Float));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel, paramList);
   }
@@ -424,13 +424,13 @@ public class ProfileLabelEditorActivity
   
   public void a()
   {
-    super.setContentView(2131493836);
+    super.setContentView(2131559404);
     getWindow().setBackgroundDrawable(null);
-    super.setTitle(getString(2131654145));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131309736));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131311028));
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131311025));
-    setRightButton(2131652985, new abir(this));
+    super.setTitle(getString(2131720035));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375491));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131376837));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131376834));
+    setRightButton(2131718812, new absr(this));
     enableRightHighlight(true);
   }
   
@@ -439,7 +439,7 @@ public class ProfileLabelEditorActivity
     if (paramInt > 7) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131654144) + " (" + paramInt + "/" + 7 + ")");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131720034) + " (" + paramInt + "/" + 7 + ")");
   }
   
   public void a(ProfileLabelInfo paramProfileLabelInfo, List<ProfileLabelInfo> paramList)
@@ -452,7 +452,7 @@ public class ProfileLabelEditorActivity
         if (((ProfileLabelInfo)paramList.get(i)).labelId.equals(paramProfileLabelInfo.labelId))
         {
           paramList.remove(i);
-          awqx.b(this.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
+          axqw.b(this.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
         }
         i += 1;
       }
@@ -487,29 +487,29 @@ public class ProfileLabelEditorActivity
   
   public void b(int paramInt)
   {
-    bbmy.a(this.jdField_a_of_type_AndroidContentContext, paramInt, 1).b(getResources().getDimensionPixelSize(2131167766));
+    bcpw.a(this.jdField_a_of_type_AndroidContentContext, paramInt, 1).b(getResources().getDimensionPixelSize(2131298865));
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    addObserver(this.jdField_a_of_type_Ajfo);
+    addObserver(this.jdField_a_of_type_Ajtq);
     this.jdField_a_of_type_AndroidContentContext = this;
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Auaj = new auaj();
+    this.jdField_a_of_type_Auzp = new auzp();
     getResources();
     a();
     c();
-    awqx.b(this.app, "CliOper", "", "", "card_mall", "0X80066C8", 0, 0, "", "", "", "");
+    axqw.b(this.app, "CliOper", "", "", "card_mall", "0X80066C8", 0, 0, "", "", "", "");
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.removeObserver(this.jdField_a_of_type_Ajfo);
-    this.jdField_a_of_type_Auaj.a();
-    this.jdField_a_of_type_Auaj = null;
+    this.app.removeObserver(this.jdField_a_of_type_Ajtq);
+    this.jdField_a_of_type_Auzp.a();
+    this.jdField_a_of_type_Auzp = null;
   }
   
   public boolean isWrapContent()
@@ -521,7 +521,7 @@ public class ProfileLabelEditorActivity
   {
     if (a())
     {
-      babr.a(this, 230).setMessage(getString(2131654143)).setPositiveButton(2131655020, new abiu(this)).setNegativeButton(2131628983, new abit(this)).show();
+      bbcv.a(this, 230).setMessage(getString(2131720033)).setPositiveButton(2131720918, new absu(this)).setNegativeButton(2131694647, new abst(this)).show();
       return true;
     }
     finish();

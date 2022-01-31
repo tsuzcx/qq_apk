@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import amzo;
+import anpw;
 
 public class QavSoData
   extends QavSoDataBase
 {
   public String getSharedPreferencesName()
   {
-    return "preload_" + amzo.e();
+    return "preload_" + anpw.e();
   }
   
   public String getStrResName()
   {
-    return amzo.e();
+    return anpw.e();
   }
 }
 

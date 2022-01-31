@@ -1,37 +1,43 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqreader.net.BaseCgiTask;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class bfmi
 {
-  private BaseCgiTask jdField_a_of_type_CooperationQqreaderNetBaseCgiTask;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public bfmi(BaseCgiTask paramBaseCgiTask, String paramString)
+  public static void a(Object paramObject)
   {
-    this.jdField_a_of_type_CooperationQqreaderNetBaseCgiTask = paramBaseCgiTask;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    a((String)null, paramObject);
   }
   
-  public JSONObject a()
+  public static void a(String paramString)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      return localJSONObject2;
+    if (paramString == null) {
+      throw new AssertionError();
     }
-    catch (JSONException localJSONException)
+    throw new AssertionError(paramString);
+  }
+  
+  public static void a(String paramString, Object paramObject)
+  {
+    if (paramObject != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      QLog.e("ReaderCgiResponse", 2, "json format error", localJSONException);
+      a(paramString, bool);
+      return;
     }
-    return localJSONObject1;
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      a(paramString);
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    a((String)null, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfmi
  * JD-Core Version:    0.7.0.1
  */

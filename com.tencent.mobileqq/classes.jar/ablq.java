@@ -1,12 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
-class ablq
-  implements DialogInterface.OnClickListener
+public class ablq
+  extends atzl
 {
-  ablq(ablp paramablp) {}
+  public ablq(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    LoginInfoActivity.a(this.a);
+    LoginInfoActivity.b(this.a);
+  }
 }
 
 

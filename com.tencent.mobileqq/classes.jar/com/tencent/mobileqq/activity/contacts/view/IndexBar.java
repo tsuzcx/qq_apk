@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.view;
 
-import afhc;
+import afsz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -20,7 +20,7 @@ public class IndexBar
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = -1;
-  private afhc jdField_a_of_type_Afhc;
+  private afsz jdField_a_of_type_Afsz;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private boolean jdField_a_of_type_Boolean;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
@@ -84,10 +84,10 @@ public class IndexBar
   {
     this.jdField_b_of_type_Int = paramContext.getResources().getColor(17170444);
     this.jdField_c_of_type_Int = paramContext.getResources().getColor(17170444);
-    this.jdField_a_of_type_Float = paramContext.getResources().getDimensionPixelSize(2131165987);
-    this.jdField_b_of_type_Float = paramContext.getResources().getDimensionPixelSize(2131165988);
-    this.jdField_c_of_type_Float = paramContext.getResources().getDimension(2131165984);
-    this.jdField_d_of_type_Float = paramContext.getResources().getDimension(2131165986);
+    this.jdField_a_of_type_Float = paramContext.getResources().getDimensionPixelSize(2131297062);
+    this.jdField_b_of_type_Float = paramContext.getResources().getDimensionPixelSize(2131297063);
+    this.jdField_c_of_type_Float = paramContext.getResources().getDimension(2131297059);
+    this.jdField_d_of_type_Float = paramContext.getResources().getDimension(2131297061);
     if (paramAttributeSet != null)
     {
       paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.IndexBar);
@@ -187,8 +187,8 @@ public class IndexBar
     {
       return bool;
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Afhc != null) {
-        this.jdField_a_of_type_Afhc.c(false);
+      if (this.jdField_a_of_type_Afsz != null) {
+        this.jdField_a_of_type_Afsz.c(false);
       }
       invalidate();
       return true;
@@ -197,22 +197,22 @@ public class IndexBar
         if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (i >= 0) && (i < this.jdField_a_of_type_ArrayOfJavaLangString.length))
         {
           this.jdField_a_of_type_Int = i;
-          if (this.jdField_a_of_type_Afhc != null)
+          if (this.jdField_a_of_type_Afsz != null)
           {
             Rect localRect = new Rect();
             this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int], 0, this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int].length(), localRect);
             k = this.jdField_a_of_type_ArrayOfJavaLangString.length;
             f1 = this.e / k * (this.jdField_a_of_type_Int + 1);
             float f2 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int]) / 2.0F;
-            this.jdField_a_of_type_Afhc.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], j, f1 - f2);
+            this.jdField_a_of_type_Afsz.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], j, f1 - f2);
           }
         }
         invalidate();
       }
     } while (paramMotionEvent.getAction() != 0);
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Afhc != null) {
-      this.jdField_a_of_type_Afhc.c(true);
+    if (this.jdField_a_of_type_Afsz != null) {
+      this.jdField_a_of_type_Afsz.c(true);
     }
     invalidate();
     return true;
@@ -231,9 +231,9 @@ public class IndexBar
     invalidate();
   }
   
-  public void setOnIndexBarTouchListener(afhc paramafhc)
+  public void setOnIndexBarTouchListener(afsz paramafsz)
   {
-    this.jdField_a_of_type_Afhc = paramafhc;
+    this.jdField_a_of_type_Afsz = paramafsz;
   }
 }
 

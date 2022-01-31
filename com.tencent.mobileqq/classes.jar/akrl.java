@@ -1,29 +1,37 @@
+import java.util.Comparator;
+
 public class akrl
+  implements Comparator<akrm>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = 0;
+  private int a;
   
-  public akrl()
+  public akrl(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    this.a = paramInt;
   }
   
-  public String toString()
+  public int a(akrm paramakrm1, akrm paramakrm2)
   {
-    return "POIInfo{latitude = " + this.jdField_a_of_type_Int + ", longitude = " + this.jdField_b_of_type_Int + ", name = " + this.jdField_a_of_type_JavaLangString + ", addr = " + this.jdField_b_of_type_JavaLangString + ", dist = " + this.c + '}';
+    if (this.a == 2) {
+      if (paramakrm1.b <= paramakrm2.b) {}
+    }
+    while (paramakrm1.a > paramakrm2.a)
+    {
+      return -1;
+      if (paramakrm1.b < paramakrm2.b) {
+        return 1;
+      }
+      return 0;
+    }
+    if (paramakrm1.a < paramakrm2.a) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akrl
  * JD-Core Version:    0.7.0.1
  */

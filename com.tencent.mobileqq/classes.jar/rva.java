@@ -1,11 +1,18 @@
-class rva
+public abstract interface rva
 {
-  String a;
-  String b;
-  String c;
-  String d;
-  String e;
-  String f;
+  public abstract void a(String paramString);
+  
+  public abstract boolean b();
+  
+  public abstract String c();
+  
+  public abstract boolean c();
+  
+  public abstract String d();
+  
+  public abstract boolean d();
+  
+  public abstract String e();
 }
 
 

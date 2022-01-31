@@ -39,6 +39,7 @@ public final class group_feeds$GroupFeedsMessage
   public final PBBytesField bytes_app_open_param = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_batch_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_comment_author_nickname = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_extra_data = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_feeds_author_nickname = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_group_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_group_nickname = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -49,6 +50,7 @@ public final class group_feeds$GroupFeedsMessage
   public final PBInt32Field int32_app_id = PBField.initInt32(0);
   public final PBInt32Field int32_photo_num = PBField.initInt32(0);
   public final PBInt32Field int32_vote_status = PBField.initInt32(0);
+  public group_feeds.GroupFeedsMessage.MemoCtrlInfo memo_ctrl_info = new group_feeds.GroupFeedsMessage.MemoCtrlInfo();
   public group_feeds.GroupFeedsMessage.ThemeBrief msg_theme_brief = new group_feeds.GroupFeedsMessage.ThemeBrief();
   public group_feeds.GroupFeedsMessage.Vote msg_vote_content = new group_feeds.GroupFeedsMessage.Vote();
   public final PBUInt32Field opt_uint32_ctl_flag = PBField.initUInt32(0);
@@ -60,6 +62,7 @@ public final class group_feeds$GroupFeedsMessage
   public final PBRepeatMessageField<group_feeds.GroupFeedsMessage.VoteStatistic> rpt_vote_statistic = PBField.initRepeatMessage(group_feeds.GroupFeedsMessage.VoteStatistic.class);
   public final PBUInt32Field uint32_NC_feeds_terinal_ctrl = PBField.initUInt32(0);
   public final PBUInt32Field uint32_edu_organization_id = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_expire_time = PBField.initUInt32(0);
   public final PBRepeatField<Integer> uint32_reported_id = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   
   static
@@ -73,7 +76,8 @@ public final class group_feeds$GroupFeedsMessage
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 45, 53, 58, 66, 82, 98, 104, 114, 122, 128, 154, 162, 168, 178, 184, 192, 202, 210, 216, 226, 232, 242, 248, 256, 400 }, new String[] { "enum_feeds_type", "rpt_feeds_content", "fixed32_win_width", "fixed32_win_height", "bytes_feeds_author_nickname", "bytes_comment_author_nickname", "bytes_group_nickname", "msg_vote_content", "rpt_my_vote_option_id_list", "rpt_vote_statistic", "rpt_vote_record", "int32_vote_status", "bytes_group_name", "bytes_app_name", "rpt_notify_uin_list", "bytes_app_open_param", "int32_app_id", "uint32_reported_id", "bytes_album_name", "bytes_batch_id", "int32_photo_num", "bytes_msg_resid", "uint32_edu_organization_id", "msg_theme_brief", "uint32_NC_feeds_terinal_ctrl", "rpt_concern_uin", "opt_uint32_ctl_flag" }, new Object[] { Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, null, Integer.valueOf(0), null, null, Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), localByteStringMicro6, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro7, localByteStringMicro8, Integer.valueOf(0), localByteStringMicro9, Integer.valueOf(0), null, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0) }, GroupFeedsMessage.class);
+    ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 45, 53, 58, 66, 82, 98, 104, 114, 122, 128, 154, 162, 168, 178, 184, 192, 202, 210, 216, 226, 232, 242, 248, 256, 400, 410, 416, 426 }, new String[] { "enum_feeds_type", "rpt_feeds_content", "fixed32_win_width", "fixed32_win_height", "bytes_feeds_author_nickname", "bytes_comment_author_nickname", "bytes_group_nickname", "msg_vote_content", "rpt_my_vote_option_id_list", "rpt_vote_statistic", "rpt_vote_record", "int32_vote_status", "bytes_group_name", "bytes_app_name", "rpt_notify_uin_list", "bytes_app_open_param", "int32_app_id", "uint32_reported_id", "bytes_album_name", "bytes_batch_id", "int32_photo_num", "bytes_msg_resid", "uint32_edu_organization_id", "msg_theme_brief", "uint32_NC_feeds_terinal_ctrl", "rpt_concern_uin", "opt_uint32_ctl_flag", "bytes_extra_data", "uint32_expire_time", "memo_ctrl_info" }, new Object[] { Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, null, Integer.valueOf(0), null, null, Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), localByteStringMicro6, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro7, localByteStringMicro8, Integer.valueOf(0), localByteStringMicro9, Integer.valueOf(0), null, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro10, Integer.valueOf(0), null }, GroupFeedsMessage.class);
   }
 }
 

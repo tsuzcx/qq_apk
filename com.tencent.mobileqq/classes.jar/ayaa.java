@@ -1,40 +1,31 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ListView;
+import android.text.TextUtils;
 
-class ayaa
-  implements Animator.AnimatorListener
+public class ayaa
 {
-  ayaa(axzw paramaxzw) {}
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public ayaa(axzz paramaxzz, axwe paramaxwe)
   {
-    axzw.a(this.a).setPadding(azvv.a(axzw.a(this.a).getContext(), 8.0F), -axzw.a(this.a), 0, 0);
-    axzw.a(this.a).setVisibility(8);
-    axzw.a(this.a, false);
-    axzw.b(this.a, false);
+    if (paramaxwe == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramaxwe.a("c");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_JavaLangString = paramaxwe.a("r");
+    }
+    this.b = axas.a(axuy.a(paramaxwe), false);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public ayaa(axzz paramaxzz, String paramString1, String paramString2)
   {
-    axzw.a(this.a).setPadding(azvv.a(axzw.a(this.a).getContext(), 8.0F), -axzw.a(this.a), 0, 0);
-    axzw.a(this.a).setVisibility(8);
-    axzw.a(this.a, false);
-    axzw.b(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    axzw.a(this.a).setPadding(azvv.a(axzw.a(this.a).getContext(), 8.0F), 0, 0, 0);
-    axzw.a(this.a, true);
-    axzw.b(this.a, true);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayaa
  * JD-Core Version:    0.7.0.1
  */

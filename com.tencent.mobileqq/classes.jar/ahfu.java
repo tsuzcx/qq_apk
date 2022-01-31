@@ -1,9 +1,33 @@
-import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew;
+import android.text.TextUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ahfu
-  extends awhb
 {
-  public ahfu(CameraPreviewNew paramCameraPreviewNew) {}
+  public JSONArray a = new JSONArray();
+  
+  public static ahfu a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    ahfu localahfu = new ahfu();
+    localahfu.a = a(new JSONObject(paramString));
+    return localahfu;
+  }
+  
+  private static JSONArray a(JSONObject paramJSONObject)
+  {
+    JSONArray localJSONArray = new JSONArray();
+    paramJSONObject = paramJSONObject.optJSONArray("module_config");
+    int i = 0;
+    while (i < paramJSONObject.length())
+    {
+      localJSONArray.put(paramJSONObject.optJSONObject(i));
+      i += 1;
+    }
+    return localJSONArray;
+  }
 }
 
 

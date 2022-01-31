@@ -1,132 +1,32 @@
-import android.graphics.Matrix;
-import android.graphics.RectF;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class biky
+class biky
+  extends Handler
 {
-  private static final Matrix a = new Matrix();
-  
-  public static bilu a(RectF paramRectF1, RectF paramRectF2)
+  biky(biku parambiku, Looper paramLooper)
   {
-    bilu localbilu = new bilu(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF1.equals(paramRectF2)) {
-      return localbilu;
-    }
-    localbilu.c = Math.max(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-    RectF localRectF = new RectF();
-    a.setScale(localbilu.c, localbilu.c, paramRectF2.centerX(), paramRectF2.centerY());
-    a.mapRect(localRectF, paramRectF2);
-    localbilu.a += paramRectF1.centerX() - localRectF.centerX();
-    float f = localbilu.b;
-    localbilu.b = (paramRectF1.centerY() - localRectF.centerY() + f);
-    return localbilu;
+    super(paramLooper);
   }
   
-  public static bilu a(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
+  public void handleMessage(Message paramMessage)
   {
-    bilu localbilu = new bilu(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF2.contains(paramRectF1)) {}
-    RectF localRectF;
-    do
+    switch (paramMessage.what)
     {
-      return localbilu;
-      if ((paramRectF2.width() < paramRectF1.width()) && (paramRectF2.height() < paramRectF1.height())) {
-        localbilu.c = Math.min(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-      }
-      localRectF = new RectF();
-      a.setScale(localbilu.c, localbilu.c, paramFloat1, paramFloat2);
-      a.mapRect(localRectF, paramRectF2);
-      if (localRectF.width() < paramRectF1.width()) {
-        localbilu.a += paramRectF1.centerX() - localRectF.centerX();
-      }
-      while (localRectF.height() < paramRectF1.height())
-      {
-        paramFloat1 = localbilu.b;
-        localbilu.b = (paramRectF1.centerY() - localRectF.centerY() + paramFloat1);
-        return localbilu;
-        if (localRectF.left > paramRectF1.left) {
-          localbilu.a += paramRectF1.left - localRectF.left;
-        } else if (localRectF.right < paramRectF1.right) {
-          localbilu.a += paramRectF1.right - localRectF.right;
-        }
-      }
-      if (localRectF.top > paramRectF1.top)
-      {
-        paramFloat1 = localbilu.b;
-        localbilu.b = (paramRectF1.top - localRectF.top + paramFloat1);
-        return localbilu;
-      }
-    } while (localRectF.bottom >= paramRectF1.bottom);
-    paramFloat1 = localbilu.b;
-    localbilu.b = (paramRectF1.bottom - localRectF.bottom + paramFloat1);
-    return localbilu;
-  }
-  
-  public static void a(RectF paramRectF1, RectF paramRectF2)
-  {
-    paramRectF2.offset(paramRectF1.centerX() - paramRectF2.centerX(), paramRectF1.centerY() - paramRectF2.centerY());
-  }
-  
-  public static void a(RectF paramRectF1, RectF paramRectF2, float paramFloat)
-  {
-    a(paramRectF1, paramRectF2, paramFloat, paramFloat, paramFloat, paramFloat);
-  }
-  
-  public static void a(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    if ((paramRectF1.isEmpty()) || (paramRectF2.isEmpty())) {
+    default: 
+      return;
+    case 1: 
+      xhe.a("mystatus_shoot", "comp_recomm", 0, 0, new String[0]);
+      paramMessage = paramMessage.getData();
+      int i = paramMessage.getInt("sceneLvOne");
+      paramMessage = paramMessage.getString("sceneName");
+      this.a.a(i, paramMessage, true);
       return;
     }
-    float f2 = paramFloat1;
-    float f1 = paramFloat3;
-    if (paramRectF1.width() < paramFloat1 + paramFloat3)
-    {
-      f1 = 0.0F;
-      f2 = 0.0F;
-    }
-    paramFloat3 = paramFloat2;
-    paramFloat1 = paramFloat4;
-    if (paramRectF1.height() < paramFloat2 + paramFloat4)
-    {
-      paramFloat1 = 0.0F;
-      paramFloat3 = 0.0F;
-    }
-    paramFloat2 = paramRectF1.width();
-    paramFloat4 = paramRectF1.height();
-    paramFloat2 = Math.min((paramFloat2 - f2 - f1) / paramRectF2.width(), (paramFloat4 - paramFloat3 - paramFloat1) / paramRectF2.height());
-    paramRectF2.set(0.0F, 0.0F, paramRectF2.width() * paramFloat2, paramFloat2 * paramRectF2.height());
-    paramRectF2.offset(paramRectF1.centerX() + (f2 - f1) / 2.0F - paramRectF2.centerX(), paramRectF1.centerY() + (paramFloat3 - paramFloat1) / 2.0F - paramRectF2.centerY());
-  }
-  
-  public static bilu b(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
-  {
-    bilu localbilu = new bilu(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF2.contains(paramRectF1)) {}
-    RectF localRectF;
-    do
-    {
-      return localbilu;
-      if ((paramRectF2.width() < paramRectF1.width()) || (paramRectF2.height() < paramRectF1.height())) {
-        localbilu.c = Math.max(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-      }
-      localRectF = new RectF();
-      a.setScale(localbilu.c, localbilu.c, paramFloat1, paramFloat2);
-      a.mapRect(localRectF, paramRectF2);
-      if (localRectF.left > paramRectF1.left) {
-        localbilu.a += paramRectF1.left - localRectF.left;
-      }
-      while (localRectF.top > paramRectF1.top)
-      {
-        paramFloat1 = localbilu.b;
-        localbilu.b = (paramRectF1.top - localRectF.top + paramFloat1);
-        return localbilu;
-        if (localRectF.right < paramRectF1.right) {
-          localbilu.a += paramRectF1.right - localRectF.right;
-        }
-      }
-    } while (localRectF.bottom >= paramRectF1.bottom);
-    paramFloat1 = localbilu.b;
-    localbilu.b = (paramRectF1.bottom - localRectF.bottom + paramFloat1);
-    return localbilu;
+    xhe.a("mystatus_shoot", "exp_recomm", 0, 0, new String[0]);
+    this.a.d();
   }
 }
 

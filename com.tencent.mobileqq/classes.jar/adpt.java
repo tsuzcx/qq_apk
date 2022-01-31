@@ -1,16 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.content.Context;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class adpt
-  implements ValueAnimator.AnimatorUpdateListener
+class adpt
+  implements bcvx
 {
-  public adpt(SixCombolEffectView paramSixCombolEffectView) {}
+  adpt(adps paramadps, ChatMessage paramChatMessage, Context paramContext) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    apue.a(this.jdField_a_of_type_Adps.a, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

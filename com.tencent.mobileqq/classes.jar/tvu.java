@@ -1,27 +1,54 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import java.util.List;
 
 public class tvu
-  extends QQUIEventReceiver<tvd, sxr>
+  extends BaseAdapter
 {
-  public tvu(@NonNull tvd paramtvd)
+  private tvu(VideoCoverListBar paramVideoCoverListBar) {}
+  
+  public String a(int paramInt)
   {
-    super(paramtvd);
+    return (String)VideoCoverListBar.a(this.a).get(paramInt);
   }
   
-  public void a(@NonNull tvd paramtvd, @NonNull sxr paramsxr)
+  public int getCount()
   {
-    if (paramsxr.a.isSuccess())
+    return VideoCoverListBar.a(this.a).size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return 0;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      urk.a(paramtvd.b, "receive user info event. %s.", paramsxr.toString());
-      paramtvd.i();
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131561330, null);
+      paramViewGroup = new tvv(this, paramView);
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      paramViewGroup.a(paramInt);
+      return paramView;
+      paramViewGroup = (tvv)paramView.getTag();
     }
   }
   
-  public Class acceptEventClass()
+  public int getViewTypeCount()
   {
-    return sxr.class;
+    return 1;
   }
 }
 

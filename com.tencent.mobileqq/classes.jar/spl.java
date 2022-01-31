@@ -1,26 +1,40 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class spl
-  extends sfo
 {
-  public long a;
-  public final String a;
-  public final boolean a;
-  public String b;
-  public boolean b;
-  public String c;
+  public List<String> a;
   public String d;
+  public int e;
+  public String e;
+  public int f;
+  public int g;
   
-  public spl(ErrorMessage paramErrorMessage, String paramString, boolean paramBoolean)
+  public spl(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_e_of_type_Int = paramInt;
   }
   
-  public String toString()
+  public spl a(JSONObject paramJSONObject, int paramInt)
   {
-    return "DeleteStoryVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", groupId='" + this.c + '\'' + ", feedId='" + this.d + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", localDelete=" + this.jdField_a_of_type_Boolean + ", isRemoveMember=" + this.jdField_b_of_type_Boolean + '}';
+    this.d = paramJSONObject.optString("transId", "");
+    this.g = paramJSONObject.optInt("min_limit", paramInt);
+    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("wording");
+    this.f = paramJSONObject.optInt("text_id", -1);
+    paramJSONObject = paramJSONObject.optJSONArray("transList");
+    if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+    {
+      this.a = new ArrayList();
+      paramInt = 0;
+      while (paramInt < paramJSONObject.length())
+      {
+        this.a.add(paramJSONObject.getString(paramInt));
+        paramInt += 1;
+      }
+    }
+    return this;
   }
 }
 

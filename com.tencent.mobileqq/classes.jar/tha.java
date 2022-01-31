@@ -1,17 +1,14 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Comparator;
 
-public class tha
-  implements View.OnTouchListener
+class tha
+  implements Comparator<tsr>
 {
-  public tha(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  tha(tgz paramtgz) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(tsr paramtsr1, tsr paramtsr2)
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    return thg.a(paramtsr1.a.mCreateTime, paramtsr2.a.mCreateTime);
   }
 }
 

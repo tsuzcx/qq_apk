@@ -1,7 +1,7 @@
 package com.tencent.tmassistantbase.network;
 
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.m;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.l;
 
 public abstract class PostHttpRequest
 {
@@ -15,7 +15,7 @@ public abstract class PostHttpRequest
     if (paramArrayOfByte == null) {
       return false;
     }
-    paramArrayOfByte = new Thread(new f(this, paramArrayOfByte), m.c.name());
+    paramArrayOfByte = new Thread(new f(this, paramArrayOfByte), l.c.name());
     try
     {
       paramArrayOfByte.start();
@@ -23,7 +23,7 @@ public abstract class PostHttpRequest
     }
     catch (OutOfMemoryError paramArrayOfByte)
     {
-      ac.e("PostHttpRequest", "<sendRequest>low memory!");
+      ab.e("PostHttpRequest", "<sendRequest>low memory!");
     }
     return false;
   }

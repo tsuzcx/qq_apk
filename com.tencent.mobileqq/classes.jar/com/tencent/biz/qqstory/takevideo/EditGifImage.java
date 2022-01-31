@@ -21,14 +21,14 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView.ScaleType;
-import awrn;
-import axwd;
-import bacm;
-import bbmy;
-import befq;
-import bgfc;
-import bggt;
-import bglo;
+import axrl;
+import aywk;
+import bbdr;
+import bcpw;
+import bfnk;
+import bhnr;
+import bhpn;
+import bhuj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.URLDrawable;
@@ -41,28 +41,28 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
-import urk;
-import urq;
-import ury;
-import usa;
-import utf;
-import uur;
-import uut;
-import uwe;
-import vfh;
+import veg;
+import vem;
+import veu;
+import vew;
+import vgb;
+import vhn;
+import vhp;
+import vja;
+import vsd;
 
 public class EditGifImage
-  extends uur
-  implements Handler.Callback, View.OnTouchListener, bglo, Runnable
+  extends vhn
+  implements Handler.Callback, View.OnTouchListener, bhuj, Runnable
 {
   public static final int a;
   float jdField_a_of_type_Float;
   long jdField_a_of_type_Long = 0L;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  public befq a;
+  public bfnk a;
   URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   public FastAnimationDrawable a;
-  usa jdField_a_of_type_Usa;
+  vew jdField_a_of_type_Vew;
   public boolean a;
   float jdField_b_of_type_Float;
   int jdField_b_of_type_Int = 0;
@@ -80,13 +80,13 @@ public class EditGifImage
   
   static
   {
-    jdField_a_of_type_Int = bggt.e;
+    jdField_a_of_type_Int = bhpn.e;
   }
   
-  public EditGifImage(@NonNull uut paramuut)
+  public EditGifImage(@NonNull vhp paramvhp)
   {
-    super(paramuut);
-    this.jdField_a_of_type_Befq = new befq(Looper.getMainLooper(), this);
+    super(paramvhp);
+    this.jdField_a_of_type_Bfnk = new bfnk(Looper.getMainLooper(), this);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
   }
@@ -130,7 +130,7 @@ public class EditGifImage
       localHashMap.put("module_exposeStatus", this.j + "");
       localHashMap.put("module_showStatus", this.h + "");
       localHashMap.put("module_resetStatus", this.i + "");
-      awrn.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "GifAntishakeModule", true, 0L, 0L, localHashMap, null);
+      axrl.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "GifAntishakeModule", true, 0L, 0L, localHashMap, null);
       return;
     }
     catch (Exception paramString1)
@@ -141,7 +141,7 @@ public class EditGifImage
   
   private void a(ArrayList<String> paramArrayList)
   {
-    ((EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).b = paramArrayList;
+    ((EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).b = paramArrayList;
     this.jdField_b_of_type_Boolean = true;
   }
   
@@ -160,7 +160,7 @@ public class EditGifImage
           {
             str1 = "module_clickToPublishPhotoFrameNum";
             localHashMap.put(str1, this.jdField_b_of_type_Int + "");
-            awrn.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "GifChooser", true, 0L, 0L, localHashMap, null);
+            axrl.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "GifChooser", true, 0L, 0L, localHashMap, null);
             return;
           }
           str1 = "module_clickToPublishVideoFrameNum";
@@ -182,17 +182,17 @@ public class EditGifImage
     {
       if (this.jdField_b_of_type_CooperationQzoneWidgetFastAnimationDrawable == null)
       {
-        EditLocalGifSource localEditLocalGifSource = (EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
+        EditLocalGifSource localEditLocalGifSource = (EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
-        localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b();
-        localURLDrawableOptions.mLoadingDrawable = axwd.a;
-        localURLDrawableOptions.mFailedDrawable = axwd.a;
+        localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
+        localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b();
+        localURLDrawableOptions.mLoadingDrawable = aywk.a;
+        localURLDrawableOptions.mFailedDrawable = aywk.a;
         localURLDrawableOptions.mPlayGifImage = true;
-        this.jdField_b_of_type_CooperationQzoneWidgetFastAnimationDrawable = new FastAnimationDrawable(this.jdField_a_of_type_Uwe.getActivity().getApplicationContext(), localEditLocalGifSource.b, localEditLocalGifSource.jdField_a_of_type_Long, this);
+        this.jdField_b_of_type_CooperationQzoneWidgetFastAnimationDrawable = new FastAnimationDrawable(this.jdField_a_of_type_Vja.getActivity().getApplicationContext(), localEditLocalGifSource.b, localEditLocalGifSource.jdField_a_of_type_Long, this);
         localEditLocalGifSource.jdField_a_of_type_JavaLangString = null;
       }
-      this.jdField_a_of_type_Befq.post(new EditGifImage.2(this));
+      this.jdField_a_of_type_Bfnk.post(new EditGifImage.2(this));
     }
   }
   
@@ -202,23 +202,23 @@ public class EditGifImage
     {
       if (this.jdField_b_of_type_CooperationQzoneWidgetFastAnimationDrawable == null)
       {
-        EditLocalGifSource localEditLocalGifSource = (EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
+        EditLocalGifSource localEditLocalGifSource = (EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
-        localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b();
-        localURLDrawableOptions.mLoadingDrawable = axwd.a;
-        localURLDrawableOptions.mFailedDrawable = axwd.a;
+        localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
+        localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b();
+        localURLDrawableOptions.mLoadingDrawable = aywk.a;
+        localURLDrawableOptions.mFailedDrawable = aywk.a;
         localURLDrawableOptions.mPlayGifImage = true;
-        this.jdField_b_of_type_CooperationQzoneWidgetFastAnimationDrawable = new FastAnimationDrawable(this.jdField_a_of_type_Uwe.getActivity().getApplicationContext(), localEditLocalGifSource.jdField_a_of_type_JavaUtilArrayList, localEditLocalGifSource.jdField_a_of_type_Long, this);
+        this.jdField_b_of_type_CooperationQzoneWidgetFastAnimationDrawable = new FastAnimationDrawable(this.jdField_a_of_type_Vja.getActivity().getApplicationContext(), localEditLocalGifSource.jdField_a_of_type_JavaUtilArrayList, localEditLocalGifSource.jdField_a_of_type_Long, this);
         localEditLocalGifSource.jdField_a_of_type_JavaLangString = null;
       }
-      this.jdField_a_of_type_Befq.post(new EditGifImage.3(this));
+      this.jdField_a_of_type_Bfnk.post(new EditGifImage.3(this));
     }
   }
   
-  public void Z_()
+  public void X_()
   {
-    super.Z_();
+    super.X_();
     if (this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
       this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
     }
@@ -230,7 +230,7 @@ public class EditGifImage
     float[] arrayOfFloat = new float[9];
     ((Matrix)localObject).getValues(arrayOfFloat);
     float f4 = arrayOfFloat[0];
-    localObject = this.jdField_a_of_type_Uwe.getActivity().getResources().getDisplayMetrics();
+    localObject = this.jdField_a_of_type_Vja.getActivity().getResources().getDisplayMetrics();
     int k = ((DisplayMetrics)localObject).widthPixels;
     int m = ((DisplayMetrics)localObject).heightPixels;
     int n = paramBitmap.getWidth();
@@ -247,7 +247,7 @@ public class EditGifImage
     for (;;)
     {
       paramBitmap = new RectF(0.0F, 0.0F, f3, f2);
-      urk.c("EditPicActivity.EditGifImage", "getDisplayBounds " + paramBitmap + " scale " + f1 + " old scale " + f4);
+      veg.c("EditPicActivity.EditGifImage", "getDisplayBounds " + paramBitmap + " scale " + f1 + " old scale " + f4);
       return paramBitmap;
       f3 = k;
       f1 = k / n;
@@ -259,7 +259,7 @@ public class EditGifImage
   {
     super.a();
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)a(2131301451));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)a(2131367061));
     this.jdField_a_of_type_ComTencentImageURLImageView.setOnTouchListener(this);
     this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     ThreadManager.post(this, 8, null, false);
@@ -289,7 +289,7 @@ public class EditGifImage
     do
     {
       return;
-      localArrayList = ((EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList;
+      localArrayList = ((EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList;
     } while ((paramLruCache == null) || (paramLruCache.size() != localArrayList.size()));
     ArrayList localArrayList = new ArrayList();
     int k = 0;
@@ -300,13 +300,13 @@ public class EditGifImage
       }
       k += 1;
     }
-    this.jdField_a_of_type_Usa = new usa(this);
-    this.jdField_a_of_type_Usa.execute(new ArrayList[] { localArrayList });
+    this.jdField_a_of_type_Vew = new vew(this);
+    this.jdField_a_of_type_Vew.execute(new ArrayList[] { localArrayList });
   }
   
-  public void a(@NonNull vfh paramvfh)
+  public void a(@NonNull vsd paramvsd)
   {
-    paramvfh.a.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    paramvsd.a.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
     a("PublishBtn", this.d + "");
     if (this.jdField_a_of_type_Boolean) {
       f();
@@ -332,7 +332,7 @@ public class EditGifImage
     if (QLog.isColorLevel()) {
       QLog.d("EditPicActivity.EditGifImage", 2, "EditGifImage onDestroy");
     }
-    this.jdField_a_of_type_Befq.removeMessages(999);
+    this.jdField_a_of_type_Bfnk.removeMessages(999);
     if (this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null)
     {
       this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
@@ -345,16 +345,16 @@ public class EditGifImage
       this.jdField_b_of_type_CooperationQzoneWidgetFastAnimationDrawable.a();
       this.jdField_b_of_type_CooperationQzoneWidgetFastAnimationDrawable = null;
     }
-    if ((this.jdField_a_of_type_Usa != null) && (this.jdField_a_of_type_Usa.getStatus() == AsyncTask.Status.RUNNING))
+    if ((this.jdField_a_of_type_Vew != null) && (this.jdField_a_of_type_Vew.getStatus() == AsyncTask.Status.RUNNING))
     {
-      this.jdField_a_of_type_Usa.cancel(false);
-      this.jdField_a_of_type_Usa = null;
+      this.jdField_a_of_type_Vew.cancel(false);
+      this.jdField_a_of_type_Vew = null;
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Uwe.getActivity().isFinishing()) {
+    if (this.jdField_a_of_type_Vja.getActivity().isFinishing()) {
       QLog.e("EditPicActivity.EditGifImage", 1, "handleMessage isFinishing" + paramMessage.what);
     }
     do
@@ -369,8 +369,8 @@ public class EditGifImage
             return false;
             if (paramMessage.what == 998)
             {
-              bbmy.a(this.jdField_a_of_type_Uwe.getActivity().getApplicationContext(), this.jdField_a_of_type_Uwe.getActivity().getResources().getString(2131654444), 0).a();
-              this.jdField_a_of_type_Uwe.a(0, null, 2130772028, 0);
+              bcpw.a(this.jdField_a_of_type_Vja.getActivity().getApplicationContext(), this.jdField_a_of_type_Vja.getActivity().getResources().getString(2131720339), 0).a();
+              this.jdField_a_of_type_Vja.a(0, null, 2130772028, 0);
               return false;
             }
             if (paramMessage.what != 999) {
@@ -387,9 +387,9 @@ public class EditGifImage
               this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a(((ViewGroup.LayoutParams)localObject).width, ((ViewGroup.LayoutParams)localObject).height);
               this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
             }
-            localObject = (ury)a(ury.class);
+            localObject = (veu)a(veu.class);
           } while (localObject == null);
-          ((ury)localObject).a((int)paramMessage.width(), (int)paramMessage.height());
+          ((veu)localObject).a((int)paramMessage.width(), (int)paramMessage.height());
           return false;
           if (paramMessage.what != 995) {
             break;
@@ -411,11 +411,11 @@ public class EditGifImage
       return false;
       if (paramMessage.what == 997)
       {
-        this.jdField_a_of_type_Uut.jdField_a_of_type_Utf.a(false, false);
+        this.jdField_a_of_type_Vhp.jdField_a_of_type_Vgb.a(false, false);
         return false;
       }
     } while (paramMessage.what != 996);
-    this.jdField_a_of_type_Uut.jdField_a_of_type_Utf.a(true, false);
+    this.jdField_a_of_type_Vhp.jdField_a_of_type_Vgb.a(true, false);
     this.jdField_b_of_type_Long = System.currentTimeMillis();
     a("AutoOptimizationBtn", "exposeAntishake");
     this.j = true;
@@ -436,24 +436,24 @@ public class EditGifImage
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
       if ((Math.abs(f1 - this.jdField_a_of_type_Float) < 10.0F) && (Math.abs(f2 - this.jdField_b_of_type_Float) < 10.0F)) {
-        if (this.jdField_a_of_type_Uut.jdField_b_of_type_Int != 21)
+        if (this.jdField_a_of_type_Vhp.jdField_b_of_type_Int != 21)
         {
-          if (this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int != 2)
+          if (this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int != 2)
           {
-            this.jdField_a_of_type_Uut.a(5);
-            urq.b("0X80075D7");
+            this.jdField_a_of_type_Vhp.a(5);
+            vem.b("0X80075D7");
           }
-          else if (this.jdField_a_of_type_Uut.jdField_b_of_type_Int == 0)
+          else if (this.jdField_a_of_type_Vhp.jdField_b_of_type_Int == 0)
           {
-            this.jdField_a_of_type_Uut.a(27);
+            this.jdField_a_of_type_Vhp.a(27);
           }
-          else if (this.jdField_a_of_type_Uut.jdField_b_of_type_Int == 27)
+          else if (this.jdField_a_of_type_Vhp.jdField_b_of_type_Int == 27)
           {
-            this.jdField_a_of_type_Uut.a(0);
+            this.jdField_a_of_type_Vhp.a(0);
           }
         }
         else {
-          this.jdField_a_of_type_Uut.a(0);
+          this.jdField_a_of_type_Vhp.a(0);
         }
       }
     }
@@ -463,15 +463,15 @@ public class EditGifImage
   {
     Object localObject1;
     Object localObject2;
-    if (this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a() != null)
+    if (this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a() != null)
     {
       this.jdField_a_of_type_Boolean = false;
-      localObject1 = this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
+      localObject1 = this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
       localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b();
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = axwd.a;
-      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = axwd.a;
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b();
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = aywk.a;
+      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = aywk.a;
       ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
       localObject2 = URLDrawable.getDrawable(new File((String)localObject1), (URLDrawable.URLDrawableOptions)localObject2);
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
@@ -484,39 +484,39 @@ public class EditGifImage
       if ((((BitmapFactory.Options)localObject2).outWidth < jdField_a_of_type_Int) || (((BitmapFactory.Options)localObject2).outHeight < jdField_a_of_type_Int))
       {
         QLog.e("EditPicActivity.EditGifImage", 1, "bitmapPath:" + (String)localObject1 + " too small width:" + ((BitmapFactory.Options)localObject2).outWidth + " height:" + ((BitmapFactory.Options)localObject2).outHeight);
-        this.jdField_a_of_type_Befq.sendEmptyMessage(998);
+        this.jdField_a_of_type_Bfnk.sendEmptyMessage(998);
         return;
-        if (((this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalGifSource)) && (((EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList != null) && (((EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList.size() > 0))
+        if (((this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalGifSource)) && (((EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList != null) && (((EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList.size() > 0))
         {
           this.jdField_a_of_type_Boolean = true;
-          localObject1 = ((EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList;
-          this.f = bgfc.a().a((ArrayList)localObject1);
+          localObject1 = ((EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList;
+          this.f = bhnr.a().a((ArrayList)localObject1);
           this.jdField_b_of_type_Int = ((ArrayList)localObject1).size();
-          if ((((EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_Boolean) && (((EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).b != null) && (((EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).b.size() > 1))
+          if ((((EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_Boolean) && (((EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).b != null) && (((EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).b.size() > 1))
           {
-            this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable = new FastAnimationDrawable(this.jdField_a_of_type_Uwe.getActivity().getApplicationContext(), ((EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).b, ((EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_Long, this);
+            this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable = new FastAnimationDrawable(this.jdField_a_of_type_Vja.getActivity().getApplicationContext(), ((EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).b, ((EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_Long, this);
             this.jdField_b_of_type_Boolean = true;
             this.d = true;
             label472:
-            switch (((EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_Int)
+            switch (((EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_Int)
             {
             }
           }
           for (;;)
           {
-            localObject1 = (String)((EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList.get(0);
+            localObject1 = (String)((EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList.get(0);
             this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable);
             break;
-            this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable = new FastAnimationDrawable(this.jdField_a_of_type_Uwe.getActivity().getApplicationContext(), ((EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList, ((EditLocalGifSource)this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_Long, this);
+            this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable = new FastAnimationDrawable(this.jdField_a_of_type_Vja.getActivity().getApplicationContext(), ((EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList, ((EditLocalGifSource)this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_Long, this);
             this.jdField_b_of_type_Boolean = false;
             this.d = false;
             break label472;
             this.c = true;
-            this.jdField_a_of_type_Befq.obtainMessage(996).sendToTarget();
+            this.jdField_a_of_type_Bfnk.obtainMessage(996).sendToTarget();
             continue;
             this.g = true;
             this.c = false;
-            this.jdField_a_of_type_Befq.sendEmptyMessage(997);
+            this.jdField_a_of_type_Bfnk.sendEmptyMessage(997);
             if (QLog.isColorLevel()) {
               QLog.d("QzoneVision", 2, "MSG_CANNOT_ANTISHAKE");
             }
@@ -525,17 +525,17 @@ public class EditGifImage
       }
       else
       {
-        Object localObject3 = this.jdField_a_of_type_Uwe.getActivity().getResources().getDisplayMetrics();
+        Object localObject3 = this.jdField_a_of_type_Vja.getActivity().getResources().getDisplayMetrics();
         int k = a((BitmapFactory.Options)localObject2, ((DisplayMetrics)localObject3).widthPixels, ((DisplayMetrics)localObject3).heightPixels);
         ((BitmapFactory.Options)localObject2).inJustDecodeBounds = false;
         ((BitmapFactory.Options)localObject2).inSampleSize = k;
         try
         {
-          localObject2 = bacm.a((String)localObject1, (BitmapFactory.Options)localObject2);
+          localObject2 = bbdr.a((String)localObject1, (BitmapFactory.Options)localObject2);
           if (localObject2 == null)
           {
             QLog.e("EditPicActivity.EditGifImage", 1, "decode" + null);
-            this.jdField_a_of_type_Uwe.a(0, null, 2130772028, 0);
+            this.jdField_a_of_type_Vja.a(0, null, 2130772028, 0);
             return;
           }
         }
@@ -553,15 +553,15 @@ public class EditGifImage
           localObject3 = localBitmap;
           if (localObject1 != null)
           {
-            k = bacm.b((String)localObject1);
+            k = bbdr.b((String)localObject1);
             localObject3 = localBitmap;
             if (k != 0)
             {
               localObject3 = localBitmap;
               if (k % 90 == 0)
               {
-                if (this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
-                  this.jdField_a_of_type_Uut.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_b_of_type_Int = k;
+                if (this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
+                  this.jdField_a_of_type_Vhp.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_b_of_type_Int = k;
                 }
                 if (QLog.isColorLevel()) {
                   QLog.d("EditPicActivity.EditGifImage", 2, "has exif rotate" + k);
@@ -575,7 +575,7 @@ public class EditGifImage
             }
           }
           this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject3);
-          this.jdField_a_of_type_Befq.obtainMessage(999, localObject3).sendToTarget();
+          this.jdField_a_of_type_Bfnk.obtainMessage(999, localObject3).sendToTarget();
           return;
         }
       }

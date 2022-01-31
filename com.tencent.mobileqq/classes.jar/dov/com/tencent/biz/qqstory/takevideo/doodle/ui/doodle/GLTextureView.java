@@ -10,16 +10,16 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import bino;
-import binq;
-import binr;
-import bins;
-import bint;
-import binu;
-import binv;
-import binx;
-import biny;
-import bioa;
+import bkej;
+import bkel;
+import bkem;
+import bken;
+import bkeo;
+import bkep;
+import bkeq;
+import bkes;
+import bket;
+import bkev;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
@@ -30,12 +30,12 @@ public class GLTextureView
   implements TextureView.SurfaceTextureListener
 {
   private static int jdField_a_of_type_Int;
-  private static final binx jdField_a_of_type_Binx = new binx(null);
+  private static final bkes jdField_a_of_type_Bkes = new bkes(null);
   private GLSurfaceView.Renderer jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer;
-  private bint jdField_a_of_type_Bint;
-  private binu jdField_a_of_type_Binu;
-  private binv jdField_a_of_type_Binv;
-  private biny jdField_a_of_type_Biny;
+  private bkeo jdField_a_of_type_Bkeo;
+  private bkep jdField_a_of_type_Bkep;
+  private bkeq jdField_a_of_type_Bkeq;
+  private bket jdField_a_of_type_Bket;
   private GLTextureView.GLThread jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread;
   private Runnable jdField_a_of_type_JavaLangRunnable = new GLTextureView.2(this);
   private final WeakReference<GLTextureView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
@@ -89,7 +89,7 @@ public class GLTextureView
   {
     jdField_a_of_type_Int = a(getContext(), "ro.opengles.version", 0).intValue();
     setSurfaceTextureListener(this);
-    addOnLayoutChangeListener(new bino(this));
+    addOnLayoutChangeListener(new bkej(this));
   }
   
   @TargetApi(14)
@@ -242,18 +242,18 @@ public class GLTextureView
   
   public void setEGLConfigChooser(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    setEGLConfigChooser(new binq(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
+    setEGLConfigChooser(new bkel(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
   }
   
-  public void setEGLConfigChooser(bint parambint)
+  public void setEGLConfigChooser(bkeo parambkeo)
   {
     b();
-    this.jdField_a_of_type_Bint = parambint;
+    this.jdField_a_of_type_Bkeo = parambkeo;
   }
   
   public void setEGLConfigChooser(boolean paramBoolean)
   {
-    setEGLConfigChooser(new bioa(this, paramBoolean));
+    setEGLConfigChooser(new bkev(this, paramBoolean));
   }
   
   public void setEGLContextClientVersion(int paramInt)
@@ -262,21 +262,21 @@ public class GLTextureView
     this.e = paramInt;
   }
   
-  public void setEGLContextFactory(binu parambinu)
+  public void setEGLContextFactory(bkep parambkep)
   {
     b();
-    this.jdField_a_of_type_Binu = parambinu;
+    this.jdField_a_of_type_Bkep = parambkep;
   }
   
-  public void setEGLWindowSurfaceFactory(binv parambinv)
+  public void setEGLWindowSurfaceFactory(bkeq parambkeq)
   {
     b();
-    this.jdField_a_of_type_Binv = parambinv;
+    this.jdField_a_of_type_Bkeq = parambkeq;
   }
   
-  public void setGLWrapper(biny parambiny)
+  public void setGLWrapper(bket parambket)
   {
-    this.jdField_a_of_type_Biny = parambiny;
+    this.jdField_a_of_type_Bket = parambket;
   }
   
   public void setPreserveEGLContextOnPause(boolean paramBoolean)
@@ -292,14 +292,14 @@ public class GLTextureView
   public void setRenderer(GLSurfaceView.Renderer paramRenderer)
   {
     b();
-    if (this.jdField_a_of_type_Bint == null) {
-      this.jdField_a_of_type_Bint = new bioa(this, true);
+    if (this.jdField_a_of_type_Bkeo == null) {
+      this.jdField_a_of_type_Bkeo = new bkev(this, true);
     }
-    if (this.jdField_a_of_type_Binu == null) {
-      this.jdField_a_of_type_Binu = new binr(this, null);
+    if (this.jdField_a_of_type_Bkep == null) {
+      this.jdField_a_of_type_Bkep = new bkem(this, null);
     }
-    if (this.jdField_a_of_type_Binv == null) {
-      this.jdField_a_of_type_Binv = new bins(null);
+    if (this.jdField_a_of_type_Bkeq == null) {
+      this.jdField_a_of_type_Bkeq = new bken(null);
     }
     this.jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer = paramRenderer;
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread = new GLTextureView.GLThread(this.jdField_a_of_type_JavaLangRefWeakReference);

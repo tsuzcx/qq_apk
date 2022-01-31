@@ -17,13 +17,11 @@ import com.tencent.tmassistant.common.jce.RomInfo;
 import com.tencent.tmassistant.common.jce.RspHead;
 import com.tencent.tmassistant.common.jce.Terminal;
 import com.tencent.tmassistantbase.common.a;
-import com.tencent.tmassistantbase.common.e;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.ah;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.ag;
 import com.tencent.tmassistantbase.util.f;
-import com.tencent.tmassistantbase.util.g;
-import com.tencent.tmassistantbase.util.p;
+import com.tencent.tmassistantbase.util.o;
 import java.util.List;
 
 public class ProtocolPackage
@@ -34,24 +32,24 @@ public class ProtocolPackage
   
   public static byte[] buildPostData(Request paramRequest)
   {
-    ac.c(TAG, "enter");
+    ab.c(TAG, "enter");
     if (paramRequest == null)
     {
-      ac.c(TAG, "null == request");
-      ac.c(TAG, "exit");
+      ab.c(TAG, "null == request");
+      ab.c(TAG, "exit");
       return null;
     }
     paramRequest.head.encryptWithPack = 0;
     if (paramRequest.body.length > 256)
     {
-      paramRequest.body = ah.a(paramRequest.body);
-      ac.c(TAG, "zip process");
+      paramRequest.body = ag.a(paramRequest.body);
+      ab.c(TAG, "zip process");
       paramRequest.head.encryptWithPack = ((byte)(paramRequest.head.encryptWithPack | 0x1));
     }
     paramRequest.body = encrypt(paramRequest.body, "ji*9^&43U0X-~./(".getBytes());
-    ac.c(TAG, "encrypt process");
+    ab.c(TAG, "encrypt process");
     paramRequest.head.encryptWithPack = ((byte)(paramRequest.head.encryptWithPack | 0x2));
-    ac.c(TAG, "exit");
+    ab.c(TAG, "exit");
     return jceStructToUTF8Byte(paramRequest);
   }
   
@@ -68,17 +66,17 @@ public class ProtocolPackage
   
   public static Request buildRequest(JceStruct paramJceStruct)
   {
-    ac.c(TAG, "enter");
+    ab.c(TAG, "enter");
     if (paramJceStruct == null)
     {
-      ac.c(TAG, "null == jceRequestStruce");
-      ac.c(TAG, "exit");
+      ab.c(TAG, "null == jceRequestStruce");
+      ab.c(TAG, "exit");
       return null;
     }
     Request localRequest = new Request();
     localRequest.head = getReqHead(paramJceStruct);
     localRequest.body = jceStructToUTF8Byte(paramJceStruct);
-    ac.c(TAG, "exit");
+    ab.c(TAG, "exit");
     return localRequest;
   }
   
@@ -97,14 +95,14 @@ public class ProtocolPackage
     }
     catch (Exception paramArrayOfByte)
     {
-      ac.b(TAG, "exception: ", paramArrayOfByte);
+      ab.b(TAG, "exception: ", paramArrayOfByte);
     }
     return null;
   }
   
   private static JceStruct createFromRequest(JceStruct paramJceStruct)
   {
-    ac.c(TAG, "enter");
+    ab.c(TAG, "enter");
     if (paramJceStruct == null) {
       return null;
     }
@@ -113,14 +111,14 @@ public class ProtocolPackage
     try
     {
       paramJceStruct = (JceStruct)Class.forName(paramJceStruct).newInstance();
-      ac.c(TAG, "exit");
+      ab.c(TAG, "exit");
       return paramJceStruct;
     }
     catch (ClassNotFoundException paramJceStruct)
     {
       for (;;)
       {
-        ac.b(TAG, "exception: ", paramJceStruct);
+        ab.b(TAG, "exception: ", paramJceStruct);
         paramJceStruct.printStackTrace();
         paramJceStruct = null;
       }
@@ -129,7 +127,7 @@ public class ProtocolPackage
     {
       for (;;)
       {
-        ac.b(TAG, "exception: ", paramJceStruct);
+        ab.b(TAG, "exception: ", paramJceStruct);
         paramJceStruct.printStackTrace();
         paramJceStruct = null;
       }
@@ -138,7 +136,7 @@ public class ProtocolPackage
     {
       for (;;)
       {
-        ac.b(TAG, "exception: ", paramJceStruct);
+        ab.b(TAG, "exception: ", paramJceStruct);
         paramJceStruct.printStackTrace();
         paramJceStruct = null;
       }
@@ -147,12 +145,12 @@ public class ProtocolPackage
   
   public static byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return new f().a(paramArrayOfByte1, paramArrayOfByte2);
+    return new com.tencent.tmassistantbase.util.e().a(paramArrayOfByte1, paramArrayOfByte2);
   }
   
   public static byte[] encrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return new f().b(paramArrayOfByte1, paramArrayOfByte2);
+    return new com.tencent.tmassistantbase.util.e().b(paramArrayOfByte1, paramArrayOfByte2);
   }
   
   /* Error */
@@ -218,7 +216,7 @@ public class ProtocolPackage
     //   99: getstatic 18	com/tencent/tmassistant/common/ProtocolPackage:TAG	Ljava/lang/String;
     //   102: ldc 139
     //   104: aload 4
-    //   106: invokestatic 143	com/tencent/tmassistantbase/util/ac:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   106: invokestatic 143	com/tencent/tmassistantbase/util/ab:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   109: aload_0
     //   110: astore_3
     //   111: aload_1
@@ -260,7 +258,7 @@ public class ProtocolPackage
     //   171: getstatic 18	com/tencent/tmassistant/common/ProtocolPackage:TAG	Ljava/lang/String;
     //   174: ldc 139
     //   176: aload_1
-    //   177: invokestatic 143	com/tencent/tmassistantbase/util/ac:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   177: invokestatic 143	com/tencent/tmassistantbase/util/ab:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   180: aload_1
     //   181: invokevirtual 241	java/io/IOException:printStackTrace	()V
     //   184: aload_0
@@ -269,7 +267,7 @@ public class ProtocolPackage
     //   187: getstatic 18	com/tencent/tmassistant/common/ProtocolPackage:TAG	Ljava/lang/String;
     //   190: ldc 139
     //   192: aload_1
-    //   193: invokestatic 143	com/tencent/tmassistantbase/util/ac:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   193: invokestatic 143	com/tencent/tmassistantbase/util/ab:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   196: aload_1
     //   197: invokevirtual 241	java/io/IOException:printStackTrace	()V
     //   200: goto -44 -> 156
@@ -277,7 +275,7 @@ public class ProtocolPackage
     //   204: getstatic 18	com/tencent/tmassistant/common/ProtocolPackage:TAG	Ljava/lang/String;
     //   207: ldc 139
     //   209: aload_1
-    //   210: invokestatic 143	com/tencent/tmassistantbase/util/ac:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   210: invokestatic 143	com/tencent/tmassistantbase/util/ab:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   213: aload_1
     //   214: invokevirtual 241	java/io/IOException:printStackTrace	()V
     //   217: goto -91 -> 126
@@ -285,7 +283,7 @@ public class ProtocolPackage
     //   221: getstatic 18	com/tencent/tmassistant/common/ProtocolPackage:TAG	Ljava/lang/String;
     //   224: ldc 139
     //   226: aload_0
-    //   227: invokestatic 143	com/tencent/tmassistantbase/util/ac:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   227: invokestatic 143	com/tencent/tmassistantbase/util/ab:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   230: aload_0
     //   231: invokevirtual 241	java/io/IOException:printStackTrace	()V
     //   234: goto -100 -> 134
@@ -308,7 +306,7 @@ public class ProtocolPackage
     //   261: getstatic 18	com/tencent/tmassistant/common/ProtocolPackage:TAG	Ljava/lang/String;
     //   264: ldc 139
     //   266: aload_1
-    //   267: invokestatic 143	com/tencent/tmassistantbase/util/ac:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   267: invokestatic 143	com/tencent/tmassistantbase/util/ab:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   270: aload_1
     //   271: invokevirtual 241	java/io/IOException:printStackTrace	()V
     //   274: goto -24 -> 250
@@ -316,7 +314,7 @@ public class ProtocolPackage
     //   278: getstatic 18	com/tencent/tmassistant/common/ProtocolPackage:TAG	Ljava/lang/String;
     //   281: ldc 139
     //   283: aload_1
-    //   284: invokestatic 143	com/tencent/tmassistantbase/util/ac:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   284: invokestatic 143	com/tencent/tmassistantbase/util/ab:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   287: aload_1
     //   288: invokevirtual 241	java/io/IOException:printStackTrace	()V
     //   291: goto -33 -> 258
@@ -387,11 +385,11 @@ public class ProtocolPackage
   
   public static ReqHead getReqHead(JceStruct paramJceStruct)
   {
-    ac.c(TAG, "enter");
+    ab.c(TAG, "enter");
     if (paramJceStruct == null)
     {
-      ac.c(TAG, "null == jceRequestStruce");
-      ac.c(TAG, "exit");
+      ab.c(TAG, "null == jceRequestStruce");
+      ab.c(TAG, "exit");
       return null;
     }
     ReqHead localReqHead = new ReqHead();
@@ -416,10 +414,10 @@ public class ProtocolPackage
       paramJceStruct.brand = GlobalUtil.getInstance().getBrand();
       paramJceStruct.mode = GlobalUtil.getInstance().getModel();
       localReqHead.terminal = paramJceStruct;
-      localReqHead.terminalExtra = g.a().b();
+      localReqHead.terminalExtra = f.a().b();
       localReqHead.assistantAPILevel = GlobalUtil.getInstance().getQQDownloaderAPILevel();
       localReqHead.assistantVersionCode = GlobalUtil.getInstance().getQQDownloaderVersionCode();
-      paramJceStruct = p.b();
+      paramJceStruct = o.b();
       localObject = new Net();
       if (paramJceStruct != null)
       {
@@ -448,7 +446,7 @@ public class ProtocolPackage
       localReqHead.romInfo = paramJceStruct;
       GlobalUtil.getInstance().getQimei();
       GlobalUtil.getInstance().getQadid();
-      ac.c(TAG, "exit");
+      ab.c(TAG, "exit");
       return localReqHead;
       paramJceStruct = (JceStruct)localObject;
       if (!((String)localObject).endsWith("Req")) {
@@ -472,11 +470,11 @@ public class ProtocolPackage
   
   public static Response unpackPackage(byte[] paramArrayOfByte)
   {
-    ac.c(TAG, "enter");
+    ab.c(TAG, "enter");
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 4))
     {
-      ac.c(TAG, "null == dataBuffer || dataBuffer.length < 4");
-      ac.c(TAG, "exit");
+      ab.c(TAG, "null == dataBuffer || dataBuffer.length < 4");
+      ab.c(TAG, "exit");
       return null;
     }
     Response localResponse = new Response();
@@ -490,35 +488,35 @@ public class ProtocolPackage
         if ((localResponse.head.encryptWithPack & 0x2) == 2)
         {
           localResponse.body = decrypt(localResponse.body, "ji*9^&43U0X-~./(".getBytes());
-          ac.c(TAG, "decrypt process");
+          ab.c(TAG, "decrypt process");
         }
         if ((localResponse.head.encryptWithPack & 0x1) == 1)
         {
-          localResponse.body = ah.b(localResponse.body);
-          ac.c(TAG, "unzip process");
+          localResponse.body = ag.b(localResponse.body);
+          ab.c(TAG, "unzip process");
         }
         if (!TextUtils.isEmpty(localResponse.head.phoneGuid)) {
           GlobalUtil.getInstance().setPhoneGuid(localResponse.head.phoneGuid);
         }
       }
-      ac.c(TAG, "exit");
+      ab.c(TAG, "exit");
       return localResponse;
     }
     catch (Exception paramArrayOfByte)
     {
       paramArrayOfByte.printStackTrace();
-      ac.b(TAG, "exception: ", paramArrayOfByte);
+      ab.b(TAG, "exception: ", paramArrayOfByte);
     }
     return null;
   }
   
   public static Request unpackRequestPackage(byte[] paramArrayOfByte)
   {
-    ac.c(TAG, "enter");
+    ab.c(TAG, "enter");
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 4))
     {
-      ac.c(TAG, "null == dataBuffer || dataBuffer.length < 4");
-      ac.c(TAG, "exit");
+      ab.c(TAG, "null == dataBuffer || dataBuffer.length < 4");
+      ab.c(TAG, "exit");
       return null;
     }
     Request localRequest = new Request();
@@ -530,27 +528,27 @@ public class ProtocolPackage
       if ((localRequest.head.encryptWithPack & 0x2) == 2)
       {
         localRequest.body = decrypt(localRequest.body, "ji*9^&43U0X-~./(".getBytes());
-        ac.c(TAG, "decrypt process");
+        ab.c(TAG, "decrypt process");
       }
       if ((localRequest.head.encryptWithPack & 0x1) == 1)
       {
-        localRequest.body = ah.b(localRequest.body);
-        ac.c(TAG, "unzip process");
+        localRequest.body = ag.b(localRequest.body);
+        ab.c(TAG, "unzip process");
       }
-      ac.c(TAG, "exit");
+      ab.c(TAG, "exit");
       return localRequest;
     }
     catch (Exception paramArrayOfByte)
     {
       paramArrayOfByte.printStackTrace();
-      ac.b(TAG, "exception: ", paramArrayOfByte);
+      ab.b(TAG, "exception: ", paramArrayOfByte);
     }
     return null;
   }
   
   public static JceStruct unpageageJceResponse(JceStruct paramJceStruct, byte[] paramArrayOfByte)
   {
-    ac.c(TAG, "enter");
+    ab.c(TAG, "enter");
     if ((paramJceStruct != null) && (paramArrayOfByte != null))
     {
       paramJceStruct = createFromRequest(paramJceStruct);
@@ -560,18 +558,18 @@ public class ProtocolPackage
           paramArrayOfByte = new JceInputStream(paramArrayOfByte);
           paramArrayOfByte.setServerEncoding("utf-8");
           paramJceStruct.readFrom(paramArrayOfByte);
-          ac.c(TAG, "exit");
+          ab.c(TAG, "exit");
           return paramJceStruct;
         }
         catch (Exception paramJceStruct)
         {
           paramJceStruct.printStackTrace();
-          ac.b(TAG, "exception: ", paramJceStruct);
+          ab.b(TAG, "exception: ", paramJceStruct);
           return null;
         }
       }
     }
-    ac.c(TAG, "exit");
+    ab.c(TAG, "exit");
     return null;
   }
   

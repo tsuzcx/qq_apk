@@ -1,17 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class qrn
-  extends omr
+  extends RecyclerView.OnScrollListener
 {
-  public qrn(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  public qrn(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    super(paramString);
+    if (paramInt == 0)
+    {
+      VideoFeedsRecyclerView.a(this.a, false);
+      return;
+    }
+    VideoFeedsRecyclerView.a(this.a, true);
   }
   
-  public void a(oml paramoml)
-  {
-    paramoml.e();
-  }
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 

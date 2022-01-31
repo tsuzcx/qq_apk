@@ -1,19 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class pgr
-  implements View.OnTouchListener
+  implements pol
 {
-  pgr(pgn parampgn, LinearLayout paramLinearLayout) {}
+  pgr(pgp parampgp, List paramList, ArticleInfo paramArticleInfo, pax parampax) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()))
+    {
+      QLog.i("PackProteusItem", 1, "[onItemClick] position overflow, position = " + paramInt + ", size = " + this.jdField_a_of_type_JavaUtilList.size());
+      return;
     }
-    return false;
+    try
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
+      paramTemplateBean = (BaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      this.jdField_a_of_type_Pax.a().a().a(paramTemplateBean, paramViewBase.getNativeView(), paramInt, paramInt);
+      return;
+    }
+    catch (Exception paramViewBase)
+    {
+      QLog.e("PackProteusItem", 1, "[onItemClick], e = " + paramViewBase);
+    }
   }
 }
 

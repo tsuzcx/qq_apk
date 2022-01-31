@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adsm;
+import aedl;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import com.tencent.image.URLDrawable;
@@ -11,11 +11,11 @@ import java.io.File;
 public class TroopGiftMsgItemBuilder$2
   implements Runnable
 {
-  public TroopGiftMsgItemBuilder$2(adsm paramadsm, BubbleImageView paramBubbleImageView, String paramString, int paramInt) {}
+  public TroopGiftMsgItemBuilder$2(aedl paramaedl, BubbleImageView paramBubbleImageView, String paramString, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getTag(2131307015).equals(this.jdField_a_of_type_JavaLangString))
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getTag(2131372727).equals(this.jdField_a_of_type_JavaLangString))
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(this.jdField_a_of_type_Int);

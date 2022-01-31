@@ -1,21 +1,49 @@
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.AlbumListActivity;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import java.util.ArrayList;
 
 public class afza
-  implements View.OnClickListener
+  implements bfoq
 {
-  public afza(AlbumListActivity paramAlbumListActivity) {}
+  public afza(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, bfol parambfol, ArrayList paramArrayList) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.r) {
-      algw.a().a("callbackArk", null, null);
+    if (paramView != null)
+    {
+      paramView = this.jdField_a_of_type_Bfol.a(paramInt);
+      if (paramView == null) {
+        return;
+      }
+      if (!TextUtils.isEmpty(paramView))
+      {
+        if (!paramView.equals(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getActivity().getResources().getString(2131689936))) {
+          break label92;
+        }
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.a != null)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.a.h();
+        }
+      }
     }
-    if (this.a.s) {
-      awqx.b(null, "dc00898", "", "", "0X800A6E0", "0X800A6E0", 0, 0, "", "", "", "");
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      label92:
+      if (paramView.equals(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getActivity().getResources().getString(2131693384))) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.a(this.jdField_a_of_type_JavaUtilArrayList);
+      } else if (paramView.equals(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getActivity().getResources().getString(2131693396))) {
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 20) {
+          bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getActivity(), 2131692766, 0).a();
+        } else {
+          this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.b(this.jdField_a_of_type_JavaUtilArrayList);
+        }
+      }
     }
-    this.a.onBackPressed();
   }
 }
 

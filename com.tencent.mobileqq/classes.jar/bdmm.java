@@ -1,103 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.AppMode;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
 
-public final class bdmm
-  implements Parcelable.Creator<AppMode>
+public class bdmm
+  implements View.OnClickListener
 {
-  public AppMode a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    AppMode localAppMode = new AppMode();
-    if (paramParcel.readInt() == 1)
-    {
-      bool1 = true;
-      localAppMode.a = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label163;
-      }
-      bool1 = true;
-      label37:
-      localAppMode.b = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label168;
-      }
-      bool1 = true;
-      label53:
-      localAppMode.c = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label173;
-      }
-      bool1 = true;
-      label69:
-      localAppMode.d = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label178;
-      }
-      bool1 = true;
-      label85:
-      localAppMode.e = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label183;
-      }
-      bool1 = true;
-      label101:
-      localAppMode.f = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label188;
-      }
-      bool1 = true;
-      label117:
-      localAppMode.g = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label193;
-      }
-      bool1 = true;
-      label133:
-      localAppMode.h = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label198;
-      }
-    }
-    label163:
-    label168:
-    label173:
-    label178:
-    label183:
-    label188:
-    label193:
-    label198:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localAppMode.i = bool1;
-      return localAppMode;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label37;
-      bool1 = false;
-      break label53;
-      bool1 = false;
-      break label69;
-      bool1 = false;
-      break label85;
-      bool1 = false;
-      break label101;
-      bool1 = false;
-      break label117;
-      bool1 = false;
-      break label133;
-    }
-  }
+  public bdmm(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
   
-  public AppMode[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new AppMode[paramInt];
+    bdhk.b(bdhm.a().a("200").k(ApkFileDownloadFragment.a(this.a).b).j("1").l("0").m(ApkFileDownloadFragment.a(this.a).a).a(ApkFileDownloadFragment.a(this.a).h).b(ApkFileDownloadFragment.a(this.a).f).g(ApkFileDownloadFragment.a(this.a).e));
+    ApkFileDownloadFragment.a(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdmm
  * JD-Core Version:    0.7.0.1
  */

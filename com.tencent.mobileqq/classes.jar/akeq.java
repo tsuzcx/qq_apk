@@ -1,110 +1,69 @@
-import android.content.ContentValues;
-import android.os.Handler;
-import android.os.Looper;
-import com.dataline.mpfile.MpfileTaskRecord;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.MpfileTaskProxy.1;
-import com.tencent.mobileqq.app.proxy.MpfileTaskProxy.2;
-import com.tencent.mobileqq.app.proxy.MpfileTaskProxy.3;
-import com.tencent.mobileqq.app.proxy.MpfileTaskProxy.4;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AccountNotMatchException;
 
 public class akeq
-  extends akej
 {
-  List<MpfileTaskRecord> a;
+  private ajzm jdField_a_of_type_Ajzm = new akes(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aker(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public akeq(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  public akeq(String paramString)
   {
-    super(paramQQAppInterface, paramProxyManager);
-    this.jdField_a_of_type_JavaUtilList = null;
-  }
-  
-  private String a(long paramLong, int paramInt)
-  {
-    String str = MpfileTaskRecord.tableName();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("select * ").append("from " + str + " ");
-    if (paramLong != -1L) {
-      localStringBuilder.append("where " + str + ".msgId < ? ");
-    }
-    localStringBuilder.append("limit " + paramInt + " ");
-    return localStringBuilder.toString();
-  }
-  
-  public long a(MpfileTaskRecord paramMpfileTaskRecord)
-  {
-    eu localeu = new eu(false, false);
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() == localLooper.getThread())
+    try
     {
-      a(paramMpfileTaskRecord, null);
-      return 0L;
-    }
-    new Handler(localLooper).post(new MpfileTaskProxy.4(this, paramMpfileTaskRecord, localeu));
-    localeu.a(-1L);
-    return 0L;
-  }
-  
-  public List<MpfileTaskRecord> a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null)
-    {
-      Object localObject = MpfileTaskRecord.tableName();
-      atmp localatmp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localatmp.b("create index if not exists " + (String)localObject + "_index ON " + (String)localObject + "(fileId, msgId)");
-      List localList = localatmp.a(MpfileTaskRecord.class, a(-1L, 15), null);
-      localObject = localList;
-      if (localList == null) {
-        localObject = new ArrayList();
+      this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramString));
+      paramString = new IntentFilter();
+      paramString.addAction("com.tencent.mobileqq.addLbsObserver");
+      paramString.addAction("com.tencent.mobileqq.removeLbsObserver");
+      paramString.addAction("com.tencent.mobileqq.getStreetViewUrl");
+      paramString.addAction("com.tencent.mobileqq.unregisterReceiver");
+      paramString.addAction("com.tencent.mobileqq.getLbsShareSearch");
+      paramString.addAction("com.tencent.mobileqq.getLbsShareShop");
+      paramString.addAction("com.tencent.mobileqq.getShareShopDetail");
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQMapActivityProxy", 2, "QQMapActivityProxy-create, registerReceiver:" + hashCode() + ", " + this.jdField_a_of_type_AndroidContentBroadcastReceiver.hashCode());
       }
-      this.jdField_a_of_type_JavaUtilList = ((List)localObject);
-      localatmp.a();
-    }
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  protected void a() {}
-  
-  public void a(atmo paramatmo, akes paramakes)
-  {
-    eu localeu = new eu(false, false);
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() == localLooper.getThread())
-    {
-      paramatmo = ((MpfileTaskRecord)paramatmo).clone();
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, MpfileTaskRecord.tableName(), paramatmo, 0, paramakes);
       return;
     }
-    new Handler(localLooper).post(new MpfileTaskProxy.1(this, paramatmo, paramakes, localeu));
-    localeu.a(-1L);
+    catch (AccountNotMatchException paramString)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMapActivityProxy", 2, "AccountNotMatchException " + paramString.toString());
+        }
+      }
+    }
   }
   
-  public void a(String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, akes paramakes)
+  public void a()
   {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() == localLooper.getThread())
+    if (QLog.isColorLevel()) {
+      QLog.d("QQMapActivityProxy", 2, "onDestory,  hashCode=" + hashCode());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajzm);
+    }
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramString1, paramContentValues, paramString2, paramArrayOfString, 1, paramakes);
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       return;
     }
-    new Handler(localLooper).post(new MpfileTaskProxy.2(this, paramString1, paramContentValues, paramString2, paramArrayOfString, paramakes));
-  }
-  
-  public void a(String paramString1, String paramString2, String[] paramArrayOfString, akes paramakes)
-  {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() == localLooper.getThread())
+    catch (Exception localException)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramString1, paramString2, paramArrayOfString, 2, paramakes);
-      return;
+      while (!QLog.isColorLevel()) {}
+      QLog.w("QQMapActivityProxy", 2, "onDestory, mBroadcastReceiver throw an exception when receive UNREGISTER_RECEIVER : " + localException.toString());
     }
-    new Handler(localLooper).post(new MpfileTaskProxy.3(this, paramString1, paramString2, paramArrayOfString, paramakes));
   }
-  
-  protected void b() {}
 }
 
 

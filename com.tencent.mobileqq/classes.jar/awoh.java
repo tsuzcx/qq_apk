@@ -1,53 +1,41 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.app.MobileQQ;
-
-public class awoh
-  extends URLDrawableParams
+public abstract class awoh
+  implements awog
 {
-  private ProtocolDownloader a;
+  private int a;
+  private int b;
+  public boolean f = true;
+  public int r;
+  public int s;
   
-  public awoh(MobileQQ paramMobileQQ)
+  public int a()
   {
-    super(paramMobileQQ);
-  }
-  
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
-  {
-    if ((("http".equals(paramString)) || ("https".equals(paramString))) && (this.a == null)) {
-      this.a = new axrg();
-    }
     return this.a;
   }
   
-  public String doGetLocalFilePath(String paramString)
+  public Object a(String paramString)
   {
     return null;
   }
   
-  public ApngSoLoader getApngSoLoader()
+  public void a(int paramInt1, int paramInt2)
   {
-    return baon.a();
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public Drawable getDefaultLoadingDrawable()
+  public int b()
   {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130846730);
+    return this.b;
   }
   
-  public Drawable getDefualtFailedDrawable()
+  public void b(int paramInt)
   {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130846730);
+    this.s = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awoh
  * JD-Core Version:    0.7.0.1
  */

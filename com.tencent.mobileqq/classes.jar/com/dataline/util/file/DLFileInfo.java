@@ -3,12 +3,12 @@ package com.dataline.util.file;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ev;
+import go;
 
 public class DLFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DLFileInfo> CREATOR = new ev();
+  public static final Parcelable.Creator<DLFileInfo> CREATOR = new go();
   public int a;
   public long a;
   public String a;

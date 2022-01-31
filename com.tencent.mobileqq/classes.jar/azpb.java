@@ -1,33 +1,52 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.widget.AdapterView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class azpb
-  implements behk
+class azpb
+  extends Handler
 {
-  public azpb(WheelPickerLayout paramWheelPickerLayout) {}
-  
-  public void a(AdapterView<?> paramAdapterView) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  azpb(azpa paramazpa, Looper paramLooper)
   {
-    WheelPickerLayout.a(this.a, paramView, 1);
-    WheelPickerLayout.a(this.a, paramView, true);
-    if ((paramView != null) && (paramView.getTag() != null))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
+    default: 
+    case 2: 
+    case 3: 
+    case 4: 
+      do
       {
-        if (i != paramInt)
+        do
         {
-          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), false);
-        }
-        paramInt += 1;
-      }
+          return;
+          this.a.a = ((List)paramMessage.obj);
+          this.a.a(1000);
+          return;
+          this.a.a = ((List)paramMessage.obj);
+          azpa.a(this.a);
+          this.a.notifyObservers(Integer.valueOf(101));
+        } while (!QLog.isColorLevel());
+        QLog.d("TroopFeedsDataManager", 2, "end load feed: " + System.currentTimeMillis());
+        return;
+        this.a.a = ((List)paramMessage.obj);
+        azpa.b(this.a);
+        this.a.notifyObservers(Integer.valueOf(105));
+      } while (!QLog.isColorLevel());
+      QLog.d("TroopFeedsDataManager.troop.notification_center.auto_pull_down", 2, "end auto pull down feed");
+      return;
+    case 5: 
+      azpa.c(this.a);
+      this.a.notifyObservers(Integer.valueOf(1010));
+      return;
     }
+    azpa.d(this.a);
+    this.a.notifyObservers(Integer.valueOf(103));
   }
 }
 

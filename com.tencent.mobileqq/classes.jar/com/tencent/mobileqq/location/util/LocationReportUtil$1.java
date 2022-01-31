@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.location.util;
 
 import android.os.Handler;
-import ardg;
-import baig;
+import aryy;
+import bbjn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,19 +13,19 @@ public final class LocationReportUtil$1
   
   public void run()
   {
-    if (ardg.a())
+    if (aryy.a())
     {
       if (QLog.isColorLevel()) {
         QLog.d("LocationReportUtil", 2, new Object[] { "run: invoked. need stop report. ", " reporting: ", Boolean.valueOf(this.a) });
       }
       return;
     }
-    long l = System.currentTimeMillis() / 1000L - ardg.a();
-    baig.a(BaseApplicationImpl.getApplication(), this.a, (int)l);
+    long l = System.currentTimeMillis() / 1000L - aryy.a();
+    bbjn.a(BaseApplicationImpl.getApplication(), this.a, (int)l);
     if (QLog.isColorLevel()) {
       QLog.d("LocationReportUtil", 2, new Object[] { "updateLocationBgReport.run: invoked. ", " sProcBgAliveTimeSecond: ", Long.valueOf(l), " reporting: ", Boolean.valueOf(this.a) });
     }
-    ardg.a().postDelayed(this, 30000L);
+    aryy.a().postDelayed(this, 30000L);
   }
 }
 

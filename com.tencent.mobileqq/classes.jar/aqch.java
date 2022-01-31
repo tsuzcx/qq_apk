@@ -1,85 +1,56 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-public class aqch
-  implements BusinessObserver
+class aqch
+  implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int;
-  private final SparseArray<WeakReference<aqcj>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  aqch(aqce paramaqce) {}
   
-  private void a(boolean paramBoolean, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int j = 0;
-    int i;
-    if (paramBundle != null) {
-      i = paramBundle.getInt("req_id");
-    }
-    for (;;)
+    int i = aqce.a(this.a);
+    if (paramMotionEvent.getAction() == 0)
     {
-      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
-      {
-        localObject1 = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        if (localObject1 == null) {
-          break label149;
-        }
-        localObject2 = (aqcj)((WeakReference)localObject1).get();
-        localObject1 = localObject2;
-        if (localObject2 == null)
-        {
-          this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
-          return;
-        }
-        i = paramBundle.getInt("result");
-        j = paramBundle.getInt("jump_result");
-        ??? = paramBundle.getString("jump_url");
-        localObject2 = paramBundle.getString("ext_info");
-        paramBundle = (Bundle)???;
-        if (localObject1 == null) {
-          break label148;
-        }
-        ((aqcj)localObject1).a(paramBoolean, i, j, paramBundle, (String)localObject2);
-        return;
+      paramMotionEvent = paramView.findViewById(2131366637);
+      if (paramMotionEvent != null) {
+        paramMotionEvent.setBackgroundColor(Color.argb(25, 0, 0, 0));
       }
-      Object localObject1 = null;
-      Object localObject2 = null;
-      paramBundle = null;
-      i = 0;
-      continue;
-      label148:
-      return;
-      label149:
-      localObject1 = null;
+      if (i != 1) {}
     }
-  }
-  
-  int a(aqcj paramaqcj)
-  {
-    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    do
     {
-      SparseArray localSparseArray2 = this.jdField_a_of_type_AndroidUtilSparseArray;
-      int i = this.jdField_a_of_type_Int + 1;
-      this.jdField_a_of_type_Int = i;
-      localSparseArray2.append(i, new WeakReference(paramaqcj));
-      i = this.jdField_a_of_type_Int;
-      return i;
-    }
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, paramBundle);
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return false;
+            } while (i != 3);
+            paramView = (ImageView)paramView.findViewById(2131366643);
+          } while (paramView == null);
+          paramView.setImageResource(2130839614);
+          return false;
+        } while (paramMotionEvent.getAction() != 1);
+        paramMotionEvent = paramView.findViewById(2131366637);
+        if (paramMotionEvent != null) {
+          paramMotionEvent.setBackgroundColor(Color.argb(0, 0, 0, 0));
+        }
+      } while ((i == 1) || (i != 3));
+      paramView = (ImageView)paramView.findViewById(2131366643);
+    } while (paramView == null);
+    paramView.setImageResource(2130839613);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqch
  * JD-Core Version:    0.7.0.1
  */

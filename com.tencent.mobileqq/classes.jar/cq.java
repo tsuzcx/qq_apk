@@ -1,29 +1,30 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.dataline.activities.PrinterOptionActivity;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class cq
-  implements CompoundButton.OnCheckedChangeListener
+class cq
+  implements aptu
 {
-  public cq(PrinterOptionActivity paramPrinterOptionActivity) {}
+  cq(cm paramcm, DataLineMsgRecord paramDataLineMsgRecord, FileManagerEntity paramFileManagerEntity, String paramString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean)
+    int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      PrinterOptionActivity.a(this.a).setVisibility(0);
-      PrinterOptionActivity.a(this.a).setText(2131625800);
+      aptv.b(apue.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_Cm.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692827));
+      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Cm.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.jdField_a_of_type_Cm.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_Cm.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), 0, false);
+      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId = localFileManagerEntity.nSessionId;
+      this.jdField_a_of_type_Cm.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(i).c(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId);
       return;
     }
-    if (PrinterOptionActivity.b(this.a))
-    {
-      PrinterOptionActivity.a(this.a).setVisibility(0);
-      PrinterOptionActivity.a(this.a).setText(2131625780);
-      return;
-    }
-    PrinterOptionActivity.a(this.a).setVisibility(4);
+    aptv.b(apue.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_Cm.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692827));
+    this.jdField_a_of_type_Cm.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId);
   }
+  
+  public void b() {}
 }
 
 

@@ -1,83 +1,69 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import mqq.manager.Manager;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StGetTCBTicketReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetTCBTicketRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import org.json.JSONObject;
-import tencent.im.cs.cmd0x388.cmd0x388.ExtensionCommPicTryUp;
 
 public class bezt
-  implements Manager
+  extends bfad
 {
-  private atqq jdField_a_of_type_Atqq = new bezu(this);
-  private axvo jdField_a_of_type_Axvo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public RemoteCommand.OnInvokeFinishLinstener a;
-  private String jdField_a_of_type_JavaLangString;
+  private INTERFACE.StGetTCBTicketReq a = new INTERFACE.StGetTCBTicketReq();
   
-  public bezt(QQAppInterface paramQQAppInterface)
+  public bezt(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Axvo = paramQQAppInterface.a();
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.c();
-  }
-  
-  public void a(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    if (paramBundle == null) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener = paramOnInvokeFinishLinstener;
-      paramOnInvokeFinishLinstener = new axvt();
-      paramOnInvokeFinishLinstener.jdField_b_of_type_Int = 24;
-      paramOnInvokeFinishLinstener.jdField_c_of_type_Int = 20;
-      paramOnInvokeFinishLinstener.jdField_a_of_type_JavaLangString = "actQqComicPicUpload";
-      paramOnInvokeFinishLinstener.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramOnInvokeFinishLinstener.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramOnInvokeFinishLinstener.jdField_a_of_type_Boolean = true;
-      paramOnInvokeFinishLinstener.i = paramBundle.getString("localPath");
-      paramOnInvokeFinishLinstener.jdField_a_of_type_Atqq = this.jdField_a_of_type_Atqq;
-      Object localObject = paramBundle.getString("comicId");
-      String str1 = paramBundle.getString("picMd5");
-      String str2 = paramBundle.getString("actionData");
-      paramBundle = new JSONObject();
-      try
-      {
-        paramBundle.put("comicId", localObject);
-        paramBundle.put("picMd5", str1);
-        paramBundle.put("actionData", str2);
-        localObject = new cmd0x388.ExtensionCommPicTryUp();
-        ((cmd0x388.ExtensionCommPicTryUp)localObject).rpt_bytes_extinfo.add(ByteStringMicro.copyFrom(paramBundle.toString().getBytes()));
-        paramOnInvokeFinishLinstener.jdField_a_of_type_ArrayOfByte = ((cmd0x388.ExtensionCommPicTryUp)localObject).toByteArray();
-        if (this.jdField_a_of_type_Axvo == null) {
-          continue;
-        }
-        this.jdField_a_of_type_Axvo.a(paramOnInvokeFinishLinstener);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
+    this.a.appid.set(paramString1);
+    this.a.envId.set(paramString2);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
     }
   }
   
-  public void onDestroy()
+  protected String a()
   {
-    this.jdField_a_of_type_Axvo = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    return "mini_app_info";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    INTERFACE.StGetTCBTicketRsp localStGetTCBTicketRsp = new INTERFACE.StGetTCBTicketRsp();
+    try
+    {
+      localStGetTCBTicketRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetTCBTicketRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("ticket", localStGetTCBTicketRsp.ticket.get());
+        paramArrayOfByte.put("createTime", localStGetTCBTicketRsp.createTime.get());
+        paramArrayOfByte.put("period", localStGetTCBTicketRsp.period.get());
+        return paramArrayOfByte;
+      }
+      besl.a("GetTcbTicketRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      besl.a("GetTcbTicketRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  public byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetTCBTicket";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bezt
  * JD-Core Version:    0.7.0.1
  */

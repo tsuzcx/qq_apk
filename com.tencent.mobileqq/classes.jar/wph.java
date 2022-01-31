@@ -1,45 +1,12 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.widget.ListView;
 
-public class wph
-  implements belq
+class wph
+  extends RecyclerView.ViewHolder
 {
-  public wph(RefreshView paramRefreshView) {}
-  
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public wph(wpf paramwpf, View paramView)
   {
-    if (this.a.jdField_a_of_type_Int == 2)
-    {
-      this.a.jdField_a_of_type_Wpa.ar_();
-      return;
-    }
-    this.a.jdField_a_of_type_Wpa.c(0L);
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Int != 2)
-    {
-      RefreshView.a(this.a, false);
-      this.a.a(RefreshView.a(this.a));
-      this.a.jdField_a_of_type_Wpa.a(0L);
-      this.a.jdField_a_of_type_Int = 2;
-      RefreshView.a(this.a);
-    }
-    return false;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Int != 2) {
-      this.a.jdField_a_of_type_Wpa.b(0L);
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.a();
+    super(paramView);
   }
 }
 

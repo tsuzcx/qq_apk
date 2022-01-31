@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import aysv;
+import aztl;
 
 public class TroopFileDownloadMgr$8
   implements Runnable
 {
-  public TroopFileDownloadMgr$8(aysv paramaysv, int paramInt) {}
+  public TroopFileDownloadMgr$8(aztl paramaztl, int paramInt) {}
   
   public void run()
   {

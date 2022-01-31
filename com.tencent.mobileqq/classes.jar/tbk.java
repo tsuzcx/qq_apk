@@ -1,68 +1,99 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetEmoticonPackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.EmoticonPack;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class tbk
-  extends slu
+public abstract class tbk<M, VH extends tbj<M>>
+  extends RecyclerView.Adapter<tbj<M>>
 {
-  public final long a;
-  public final String a;
-  public final List<tbl> a;
-  public final boolean a;
-  public final byte[] a;
+  protected Context a;
+  protected View a;
+  protected tbh a;
+  protected tbi a;
+  protected View b;
   
-  public tbk(qqstory_service.RspGetEmoticonPackList paramRspGetEmoticonPackList, byte[] paramArrayOfByte, long paramLong)
+  public tbk(Context paramContext)
   {
-    super(paramRspGetEmoticonPackList.result);
-    boolean bool;
-    ArrayList localArrayList;
-    if (paramRspGetEmoticonPackList.is_end.get() != 0)
-    {
-      bool = true;
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramRspGetEmoticonPackList.next_cookie.get().toStringUtf8();
-      localArrayList = new ArrayList();
-      paramRspGetEmoticonPackList = paramRspGetEmoticonPackList.pack_list.get();
-      if (paramRspGetEmoticonPackList != null) {
-        paramRspGetEmoticonPackList = paramRspGetEmoticonPackList.iterator();
-      }
-    }
-    else
-    {
-      for (;;)
-      {
-        if (!paramRspGetEmoticonPackList.hasNext()) {
-          break label151;
-        }
-        tbl localtbl = new tbl((qqstory_struct.EmoticonPack)paramRspGetEmoticonPackList.next());
-        if (localtbl.a())
-        {
-          localArrayList.add(localtbl);
-          continue;
-          bool = false;
-          break;
-        }
-        urk.d("GetEmojiPackInfoListResponse", "found invalid data we ignore it : " + localtbl);
-      }
-    }
-    label151:
-    this.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(localArrayList);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
-    System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte.length);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public String toString()
+  public int a()
   {
-    return "GetEmojiPackInfoListResponse{mEmojiPackList.size=" + this.jdField_a_of_type_JavaUtilList.size() + ", mIsEnd=" + this.jdField_a_of_type_Boolean + ", mNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    int i = 0;
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      i = 1;
+    }
+    int j = i;
+    if (this.b != null) {
+      j = i + 1;
+    }
+    return j;
   }
+  
+  public final tbj a(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (paramInt == 1024) {
+      paramViewGroup = new tbj(this.jdField_a_of_type_AndroidViewView);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Tbh != null) {
+        paramViewGroup.itemView.setOnClickListener(new tbl(this, paramViewGroup));
+      }
+      if (this.jdField_a_of_type_Tbi != null) {
+        paramViewGroup.itemView.setOnLongClickListener(new tbm(this, paramViewGroup));
+      }
+      return paramViewGroup;
+      if (paramInt == 1025) {
+        paramViewGroup = new tbj(this.b);
+      } else {
+        paramViewGroup = b(paramViewGroup, paramInt);
+      }
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    if (paramView == null)
+    {
+      Log.w("HeaderAndFooterAdapter", "add the header view is null");
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    notifyDataSetChanged();
+  }
+  
+  public void a(tbh paramtbh)
+  {
+    this.jdField_a_of_type_Tbh = paramtbh;
+  }
+  
+  public void a(tbi paramtbi)
+  {
+    this.jdField_a_of_type_Tbi = paramtbi;
+  }
+  
+  public final void a(tbj paramtbj, int paramInt)
+  {
+    switch (paramtbj.getItemViewType())
+    {
+    default: 
+      b(paramtbj, paramInt);
+    }
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public abstract VH b(ViewGroup paramViewGroup, int paramInt);
+  
+  public abstract void b(VH paramVH, int paramInt);
 }
 
 

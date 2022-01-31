@@ -1,49 +1,71 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.drawable.LayerDrawable;
-import android.os.Handler;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.profile.view.helper.HeartRiseLayerDrawable.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ocr.TranslateController;
+import com.tencent.mobileqq.ocr.TranslateController.ImageTranslateTask;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aubq
-  extends LayerDrawable
+  implements alex
 {
-  public aubq(int paramInt, Resources paramResources)
-  {
-    super(aubr.a(paramInt, paramResources, a(paramResources)));
-  }
+  public aubq(TranslateController.ImageTranslateTask paramImageTranslateTask, algt paramalgt) {}
   
-  public static Bitmap a(Resources paramResources)
+  public void a(int paramInt, String paramString, algo paramalgo)
   {
-    Paint localPaint = new Paint();
-    localPaint.setColor(paramResources.getColor(2131100847));
-    Bitmap localBitmap = Bitmap.createBitmap(126, 126, Bitmap.Config.ARGB_4444);
-    localBitmap.setDensity(paramResources.getDisplayMetrics().densityDpi);
-    paramResources = new Canvas(localBitmap);
-    paramResources.rotate(45.0F);
-    paramResources.translate(0.0F, -88.0F);
-    paramResources.drawRect(56, 56, 126, 126, localPaint);
-    paramResources.drawCircle(56, 91, 35, localPaint);
-    paramResources.drawCircle(91, 56, 35, localPaint);
-    return localBitmap;
-  }
-  
-  public void a(Handler paramHandler, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < getNumberOfLayers())
+    Object localObject;
+    label82:
+    boolean bool;
+    if (QLog.isColorLevel())
     {
-      HeartRiseLayerDrawable.1 local1 = new HeartRiseLayerDrawable.1(this, i, paramInt1, paramInt2);
-      if (i % 2 == 0) {}
-      for (long l = i * 200;; l = i * 130)
+      if (paramalgo != null)
       {
-        paramHandler.postDelayed(local1, l);
-        i += 1;
-        break;
+        localObject = paramalgo.a;
+        QLog.d("TranslateController", 2, "imageTranslate, retCode:" + paramInt + ",sessionId:" + paramString + ",result: " + localObject);
       }
+    }
+    else
+    {
+      int i = 0;
+      if ((paramalgo == null) || (paramalgo.a == null)) {
+        break label241;
+      }
+      paramString = paramalgo.a;
+      i = 1;
+      paramalgo = this.jdField_a_of_type_Algt.a.b;
+      localObject = this.jdField_a_of_type_Algt.a.a;
+      paramString.c = paramalgo;
+      if ((apvb.a((String)localObject)) && (!((String)localObject).equals(paramalgo))) {
+        apvb.c((String)localObject);
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateController$ImageTranslateTask.this$0;
+      if (paramInt != 0) {
+        break label260;
+      }
+      bool = true;
+      label149:
+      TranslateController.a((TranslateController)localObject, bool, paramalgo, paramString);
+      paramalgo = new HashMap();
+      paramalgo.put("costTime", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Algt.c));
+      paramalgo.put("retCode", String.valueOf(paramInt));
+      if (i == 0) {
+        break label266;
+      }
+    }
+    label260:
+    label266:
+    for (paramString = "1";; paramString = "0")
+    {
+      paramalgo.put("hasResult", paramString);
+      axrl.a(BaseApplicationImpl.getContext()).a("", "SCAN_IMAGE_TRANSLATE_COST", true, 0L, 0L, paramalgo, "", false);
+      return;
+      localObject = null;
+      break;
+      label241:
+      paramString = new TranslateResult(2);
+      paramString.b = 1002;
+      break label82;
+      bool = false;
+      break label149;
     }
   }
 }

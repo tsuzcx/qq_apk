@@ -1,33 +1,33 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class abpu
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+public class abpu
+  implements CompoundButton.OnCheckedChangeListener
 {
-  abpr jdField_a_of_type_Abpr;
-  Button jdField_a_of_type_AndroidWidgetButton;
+  public abpu(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public abpu(abpt paramabpt, View paramView, abpr paramabpr)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super(paramView);
-    this.jdField_a_of_type_Abpr = paramabpr;
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131307761));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Abpr != null) {
-      this.jdField_a_of_type_Abpr.a(paramView, getPosition());
-    }
-    while (!QLog.isColorLevel()) {
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131718625), "qqsetting_lock_screen_whenexit_key", paramBoolean);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      axqw.b(localQQAppInterface, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, 0, paramCompoundButton, "", "", "");
+      if (QLog.isDevelopLevel()) {
+        QLog.i("qqls", 4, "collectPerformance qqls setting isChecked=" + paramBoolean);
+      }
+      paramCompoundButton = new HashMap();
+      paramCompoundButton.put("param_ls_setting", paramBoolean + "");
+      axrl.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, paramCompoundButton, "");
       return;
     }
-    QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
   }
 }
 

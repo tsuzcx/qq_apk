@@ -1,29 +1,39 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.YearNodeInfo;
-import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 public class taa
-  extends slu
+  extends QQUIEventReceiver<szv, tkk>
 {
-  public List<MomeriesYearNode> a = new ArrayList();
-  
-  public taa() {}
-  
-  public taa(qqstory_service.RspProfileYearNodeList paramRspProfileYearNodeList)
+  public taa(@NonNull szv paramszv)
   {
-    super(paramRspProfileYearNodeList.result);
-    paramRspProfileYearNodeList = paramRspProfileYearNodeList.year_node_list.get().iterator();
-    while (paramRspProfileYearNodeList.hasNext())
+    super(paramszv);
+  }
+  
+  public void a(@NonNull szv paramszv, @NonNull tkk paramtkk)
+  {
+    if (paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
+    CommentEntry localCommentEntry;
+    do
     {
-      qqstory_struct.YearNodeInfo localYearNodeInfo = (qqstory_struct.YearNodeInfo)paramRspProfileYearNodeList.next();
-      MomeriesYearNode localMomeriesYearNode = new MomeriesYearNode();
-      localMomeriesYearNode.convertFrom(localYearNodeInfo);
-      this.a.add(localMomeriesYearNode);
-    }
+      return;
+      Iterator localIterator;
+      while (!localIterator.hasNext()) {
+        localIterator = paramszv.a.iterator();
+      }
+      localCommentEntry = (CommentEntry)localIterator.next();
+    } while ((paramtkk.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.authorUnionId) == null) && (paramtkk.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.replierUnionId) == null));
+    paramszv.f();
+    veg.e(this.TAG, "UserIconUpdateReceiver FeedCommentLego need to update");
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tkk.class;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import aguz;
+import ahho;
 import android.os.Build.VERSION;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -21,7 +21,7 @@ public class SpringHbTranslucentBrowserActivity$9
     }
     localObject = ((WebViewFragment)localObject).getWebView();
     if (Build.VERSION.SDK_INT >= 19) {
-      ((CustomWebView)localObject).evaluateJavascript(this.a, new aguz(this));
+      ((CustomWebView)localObject).evaluateJavascript(this.a, new ahho(this));
     }
     for (;;)
     {

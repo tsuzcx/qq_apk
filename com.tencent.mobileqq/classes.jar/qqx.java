@@ -1,16 +1,81 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class qqx
-  extends omr
+  extends ozi
 {
-  public qqx(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  private qqx(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    super(paramString);
+    VideoFeedsPlayActivity.a("handleDoFavoriteResult isSuccess = " + paramBoolean + ", operationType = " + paramInt + ", cid = " + paramString2);
+    if (TextUtils.isEmpty(paramString1)) {}
+    do
+    {
+      return;
+      paramString1 = VideoFeedsRecommendFragment.a(this.a).a(paramString1);
+    } while (paramString1 == null);
+    if (paramBoolean)
+    {
+      if (paramInt != 1) {
+        break label235;
+      }
+      paramString1.a.add(paramString2);
+      if (!paramString1.d)
+      {
+        paramString2 = new ArrayList(paramString1.a);
+        oze.a().a(this.a.getActivity(), VideoFeedsRecommendFragment.a(this.a).c(), 2, paramString1.g, paramString2);
+      }
+    }
+    label134:
+    if (paramString1.e)
+    {
+      paramString2 = new bcpw(this.a.getActivity().getApplicationContext());
+      paramString2.d(2000);
+      if (!paramBoolean) {
+        break label243;
+      }
+      paramString2.a(bcpw.a(2));
+      paramString2.c(2131692325);
+      paramString2.b(this.a.getActivity().getApplicationContext().getResources().getDimensionPixelSize(2131298865) - (int)bbdh.a(this.a.getActivity().getApplicationContext(), 5.0F));
+    }
+    for (;;)
+    {
+      paramString1.e = false;
+      return;
+      label235:
+      if (paramInt != 2) {
+        break label134;
+      }
+      break label134;
+      break;
+      label243:
+      paramString2.a(bcpw.a(1));
+      paramString2.c(2131692326);
+      paramString2.b(this.a.getActivity().getApplicationContext().getResources().getDimensionPixelSize(2131298865) - (int)bbdh.a(this.a.getActivity().getApplicationContext(), 5.0F));
+      paramString1.d = false;
+    }
   }
   
-  public void a(oml paramoml)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList)
   {
-    paramoml.b(ReadInJoyListViewGroup.a(this.a), this.a.a);
+    VideoFeedsPlayActivity.a("handleFavoriteStatus isSuccess = " + paramBoolean1 + ", rowkey = " + paramString + ", isFavorite = " + paramBoolean2);
+    if ((!paramBoolean1) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      return;
+      paramString = VideoFeedsRecommendFragment.a(this.a).a(paramString);
+    } while (paramString == null);
+    paramString.d = paramBoolean2;
+    paramString.a.addAll(paramArrayList);
   }
 }
 

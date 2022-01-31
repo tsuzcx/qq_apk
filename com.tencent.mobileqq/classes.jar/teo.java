@@ -1,8 +1,20 @@
-public abstract interface teo
+public class teo
 {
-  public abstract void a(boolean paramBoolean);
+  @vym(a="oa_task_id")
+  public int a;
+  @vym(a="bg_url")
+  public String a;
+  @vym(a="is_comp_able")
+  public boolean a;
+  @vym(a="comp_vid")
+  public String b;
+  @vym(a="icon_url")
+  public String c;
   
-  public abstract void b(boolean paramBoolean);
+  public String toString()
+  {
+    return "CompInfoBase{, comparedVid='" + this.b + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.c + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
+  }
 }
 
 

@@ -1,516 +1,357 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageForLongMsg;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PicMessageExtraData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build.VERSION;
+import android.provider.Settings.Secure;
+import android.provider.Settings.SettingNotFoundException;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.location.ui.MapUtils.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.tencentmap.mapsdk.maps.Projection;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
+import java.net.URLEncoder;
 import java.util.List;
-import localpb.richMsg.RichMsg.PicRec;
-import tencent.im.msg.hummer.resv3.CustomFaceExtPb.ResvAttr;
-import tencent.im.msg.hummer.resv6.NotOnlineImageExtPb.ResvAttr;
-import tencent.im.msg.im_msg_body.CustomFace;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.NotOnlineImage;
-import tencent.im.msg.im_msg_body.RichText;
 
-class aryd
-  extends atqp
+public class aryd
 {
-  ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = null;
+  private static Boolean a;
   
-  aryd(aryc paramaryc, ArrayList paramArrayList, HashMap paramHashMap, MessageRecord paramMessageRecord, arxn paramarxn, arya paramarya) {}
-  
-  private int a(MessageForPic paramMessageForPic, atpw paramatpw)
+  private static double a(double paramDouble)
   {
-    im_msg_body.RichText localRichText = new im_msg_body.RichText();
-    im_msg_body.Elem localElem = new im_msg_body.Elem();
-    Object localObject = "";
-    if (paramatpw.jdField_a_of_type_JavaLangObject != null) {
-      if ((paramatpw.jdField_a_of_type_JavaLangObject instanceof im_msg_body.NotOnlineImage))
+    return 3.141592653589793D * paramDouble / 180.0D;
+  }
+  
+  private static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
+  {
+    paramDouble1 = a(paramDouble1);
+    paramDouble3 = a(paramDouble3);
+    paramDouble2 = a(paramDouble2);
+    paramDouble4 = a(paramDouble4);
+    double d = Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D);
+    return Math.asin(Math.sqrt(Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D) + d)) * 2.0D * 6378137.0D;
+  }
+  
+  public static double a(LatLng paramLatLng1, LatLng paramLatLng2)
+  {
+    return a(paramLatLng1.latitude, paramLatLng1.longitude, paramLatLng2.latitude, paramLatLng2.longitude);
+  }
+  
+  public static int a(Context paramContext)
+  {
+    int j = 0;
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (;;)
+    {
+      try
       {
-        localElem.not_online_image.set((im_msg_body.NotOnlineImage)paramatpw.jdField_a_of_type_JavaLangObject);
-        if (paramMessageForPic.picExtraData != null)
-        {
-          localObject = paramMessageForPic.picExtraData.getOfflineImageResvAttr();
-          localElem.not_online_image.bytes_pb_reserve.set(ByteStringMicro.copyFrom(((NotOnlineImageExtPb.ResvAttr)((NotOnlineImageExtPb.ResvAttr)localObject).get()).toByteArray()), true);
+        i = Settings.Secure.getInt(paramContext.getContentResolver(), "location_mode");
+        if (QLog.isColorLevel()) {
+          QLog.d("MapUtils", 2, "getLocationMode: invoked. locationMode: " + i);
         }
-        if (paramatpw.b)
+        return i;
+      }
+      catch (Settings.SettingNotFoundException paramContext)
+      {
+        paramContext.printStackTrace();
+        i = j;
+        continue;
+      }
+      paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "location_providers_allowed");
+      int i = j;
+      if (!TextUtils.isEmpty(paramContext)) {
+        if ((paramContext.contains("gps")) && (paramContext.contains("network")))
         {
-          if (!localElem.not_online_image.res_id.has()) {
-            break label314;
+          i = 3;
+        }
+        else if (paramContext.contains("gps"))
+        {
+          i = 1;
+        }
+        else
+        {
+          i = j;
+          if (paramContext.contains("network")) {
+            i = 2;
           }
-          localObject = localElem.not_online_image.res_id.get().toStringUtf8();
         }
+      }
+    }
+  }
+  
+  private static Object a(Object paramObject, String paramString)
+  {
+    if (paramObject == null) {
+      return null;
+    }
+    try
+    {
+      paramString = paramObject.getClass().getDeclaredField(paramString);
+      paramString.setAccessible(true);
+      paramObject = paramString.get(paramObject);
+      return paramObject;
+    }
+    catch (NoSuchFieldException paramObject)
+    {
+      paramObject.printStackTrace();
+      return null;
+    }
+    catch (IllegalAccessException paramObject)
+    {
+      paramObject.printStackTrace();
+    }
+    return null;
+  }
+  
+  static String a(double paramDouble)
+  {
+    if (paramDouble < 60.0D)
+    {
+      if (Math.round(paramDouble) <= 0L) {}
+      for (i = 1;; i = (int)Math.round(paramDouble)) {
+        return i + "分钟";
+      }
+    }
+    if (paramDouble < 1440.0D)
+    {
+      i = (int)(paramDouble / 60.0D);
+      j = (int)Math.round(paramDouble - i * 60);
+      return i + "小时" + j + "分钟";
+    }
+    int i = (int)(paramDouble / 1440.0D);
+    int j = (int)(paramDouble / 60.0D - i * 24);
+    int k = (int)Math.round(paramDouble - j * 60 - i * 24 * 60);
+    return i + "天" + j + "小时" + k + "分钟";
+  }
+  
+  public static void a()
+  {
+    a = null;
+  }
+  
+  static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2)
+  {
+    if (a(paramActivity))
+    {
+      String str = String.format("qqmap://map/routeplan?type=%s&from=%s&fromcoord=%f,%f&to=%s&tocoord=%f,%f&policy=1&referer=qq", new Object[] { paramString1, paramString2, Double.valueOf(paramLatLng1.latitude), Double.valueOf(paramLatLng1.longitude), paramString3, Double.valueOf(paramLatLng2.latitude), Double.valueOf(paramLatLng2.longitude) });
+      try
+      {
+        Intent localIntent = Intent.parseUri(str, 0);
+        localIntent.addCategory("android.intent.category.BROWSABLE");
+        localIntent.setComponent(null);
+        localIntent.setSelector(null);
+        localIntent.putExtra("big_brother_source_key", "biz_src_location_share");
+        paramActivity.startActivity(localIntent);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqmap", 2, "launchQQMap: " + str);
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.qqmap", 2, "launchQQMap: " + str, localException);
+        }
+        axqw.b(null, "CliOper", "", "", "0X800A972", "0X800A972", 1, 0, "0", "0", "0", "");
       }
     }
     for (;;)
     {
-      paramMessageForPic.uuid = ((String)localObject);
-      paramMessageForPic.path = ((String)localObject);
-      paramMessageForPic.md5 = bace.c(arxu.a);
-      paramMessageForPic.thumbMsgUrl = localElem.not_online_image.str_thumb_url.get();
-      paramMessageForPic.thumbHeight = localElem.not_online_image.uint32_thumb_height.get();
-      paramMessageForPic.thumbWidth = localElem.not_online_image.uint32_thumb_width.get();
-      paramMessageForPic.msgData = paramMessageForPic.getSerialPB().toByteArray();
-      if (QLog.isColorLevel()) {
-        QLog.d("PicMultiMsgProcessor", 2, " pic resp uuid = " + (String)localObject + " picMsgMD5 = " + paramMessageForPic.md5 + " hasCode = " + paramMessageForPic.hashCode());
-      }
-      int i = 1;
-      for (;;)
+      try
       {
-        if (i != 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PicMultiMsgProcessor", 2, "updateMessageForPic success");
-          }
-          localRichText.elems.add(localElem);
-          if (paramatpw.jdField_a_of_type_Int == 0)
-          {
-            i = 0;
-            paramMessageForPic.richText = localRichText;
-            return i;
-            label314:
-            if (!localElem.not_online_image.download_path.has()) {
-              break label597;
-            }
-            localObject = localElem.not_online_image.download_path.get().toStringUtf8();
-            break;
-            if ((paramatpw.jdField_a_of_type_JavaLangObject instanceof im_msg_body.CustomFace))
-            {
-              localElem.custom_face.set((im_msg_body.CustomFace)paramatpw.jdField_a_of_type_JavaLangObject);
-              if (paramMessageForPic.picExtraData != null)
-              {
-                CustomFaceExtPb.ResvAttr localResvAttr = paramMessageForPic.picExtraData.getCustomFaceResvAttr();
-                localElem.custom_face.bytes_pb_reserve.set(ByteStringMicro.copyFrom(((CustomFaceExtPb.ResvAttr)localResvAttr.get()).toByteArray()), true);
-              }
-              if (paramatpw.b)
-              {
-                if (localElem.custom_face.str_file_path.has()) {
-                  localObject = localElem.custom_face.str_file_path.get();
-                }
-                paramMessageForPic.uuid = ((String)localObject);
-                paramMessageForPic.path = ((String)localObject);
-                paramMessageForPic.md5 = bace.c(arxu.a);
-                paramMessageForPic.msgData = paramMessageForPic.getSerialPB().toByteArray();
-              }
-              i = 1;
-              continue;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.e("PicMultiMsgProcessor", 2, "WTF, picResult.mExtraObj is " + paramatpw.jdField_a_of_type_JavaLangObject.getClass().getSimpleName());
-            }
-            i = 0;
-            continue;
-          }
-          if (paramatpw.jdField_a_of_type_Atpr == null) {
-            break label591;
-          }
+        paramString1 = String.format("qqmap://map/routeplan?type=%s&from=%s&fromcoord=%f,%f&to=%s&tocoord=%f,%f&referer=qq", new Object[] { paramString1, paramString2, Double.valueOf(paramLatLng1.latitude), Double.valueOf(paramLatLng1.longitude), paramString3, Double.valueOf(paramLatLng2.latitude), Double.valueOf(paramLatLng2.longitude) });
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqmap", 2, "launchQQMap, mapparam = " + paramString1);
         }
-      }
-      label591:
-      for (int j = paramatpw.jdField_a_of_type_Atpr.jdField_a_of_type_Int;; j = -1)
-      {
-        i = j;
+        paramString1 = URLEncoder.encode(paramString1, "UTF-8");
+        paramString1 = "http://mapdownload.map.qq.com/outindex?key=qq&referer=qq2&channel=10041881%2C10041882&intention=" + paramString1;
+        paramString2 = new Intent(paramActivity, QQBrowserActivity.class);
+        paramString2.putExtra("big_brother_source_key", "biz_src_location_share");
+        paramString2.putExtra("url", paramString1);
+        paramActivity.startActivity(paramString2);
         if (!QLog.isColorLevel()) {
           break;
         }
-        QLog.e("PicMultiMsgProcessor", 2, "[requestUploadPics] Bad picture element");
-        i = j;
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.e("PicMultiMsgProcessor", 2, "updateMessageForPic failed, add empty element");
-        }
-        i = -1;
-        break;
-      }
-      label597:
-      localObject = "";
-    }
-  }
-  
-  private boolean a(ArrayList<atpw> paramArrayList)
-  {
-    int k = 0;
-    boolean bool1 = false;
-    int n = 0;
-    int j = 0;
-    Object localObject1;
-    int i;
-    label152:
-    int m;
-    boolean bool2;
-    label288:
-    Object localObject2;
-    label483:
-    int i1;
-    if (n < this.b.size())
-    {
-      localObject1 = (MessageRecord)this.b.get(n);
-      i = k;
-      if (j < paramArrayList.size())
-      {
-        i = k;
-        if (((atpw)paramArrayList.get(j)).b) {
-          i = 1;
-        }
-      }
-      if (((localObject1 instanceof MessageForPic)) || (((localObject1 instanceof MessageForReplyText)) && (((MessageForReplyText)localObject1).getSourceMessage() != null) && ((((MessageForReplyText)localObject1).getSourceMessage() instanceof MessageForPic))))
-      {
-        if ((j >= paramArrayList.size()) && (QLog.isColorLevel())) {
-          QLog.e("PicMultiMsgProcessor", 2, "WTF, The count of MessageForPics is not equal to the count of PicResults");
-        }
-        if ((localObject1 instanceof MessageForReplyText))
-        {
-          localObject1 = (MessageForPic)((MessageForReplyText)localObject1).getSourceMessage();
-          if (QLog.isColorLevel()) {
-            QLog.d("PicMultiMsgProcessor", 2, "updateMessageForPic for MessageForPic, MsgIndex[" + n + "], resultIndex[" + j + "]");
-          }
-          m = a((MessageForPic)localObject1, (atpw)paramArrayList.get(j));
-          k = i;
-          bool2 = bool1;
-          if (m != 0)
-          {
-            b(m);
-            if (!this.jdField_a_of_type_Aryc.a(m)) {
-              break label288;
-            }
-            bool2 = true;
-            k = i;
-          }
-        }
-        for (;;)
-        {
-          i = j + 1;
-          j = k;
-          bool1 = bool2;
-          n += 1;
-          k = j;
-          j = i;
-          break;
-          localObject1 = (MessageForPic)localObject1;
-          break label152;
-          localObject2 = this.jdField_a_of_type_Aryc.a.a().a((MessageRecord)localObject1, aryc.a(), false);
-          ((MessageRecord)localObject2).setId(((MessageForPic)localObject1).getId());
-          ((MessageRecord)localObject2).setStatus(((MessageForPic)localObject1).getStatus());
-          this.b.set(n, localObject2);
-          bool2 = this.jdField_a_of_type_Aryc.a.a().a(this.jdField_a_of_type_JavaUtilHashMap, (MessageRecord)localObject2);
-          if (QLog.isColorLevel()) {
-            QLog.e("PicMultiMsgProcessor", 2, String.format("updateMessageForPic errCode:%d, update:%s, uniseq:%d", new Object[] { Integer.valueOf(m), Boolean.valueOf(bool2), Long.valueOf(((MessageRecord)localObject2).uniseq) }));
-          }
-          k = 1;
-          bool2 = bool1;
-        }
-      }
-      if (((localObject1 instanceof MessageForMixedMsg)) || (((localObject1 instanceof MessageForReplyText)) && (((MessageForReplyText)localObject1).getSourceMessage() != null) && ((((MessageForReplyText)localObject1).getSourceMessage() instanceof MessageForMixedMsg)))) {
-        if ((localObject1 instanceof MessageForReplyText))
-        {
-          localObject1 = (MessageForMixedMsg)((MessageForReplyText)localObject1).getSourceMessage();
-          if (((MessageForMixedMsg)localObject1).msgElemList == null) {
-            break label814;
-          }
-          i1 = 0;
-          label494:
-          m = j;
-          k = i;
-          bool2 = bool1;
-          if (i1 >= ((MessageForMixedMsg)localObject1).msgElemList.size()) {
-            break label824;
-          }
-          localObject2 = (MessageRecord)((MessageForMixedMsg)localObject1).msgElemList.get(i1);
-          if (!(localObject2 instanceof MessageForPic)) {
-            break label1719;
-          }
-          if ((j >= paramArrayList.size()) && (QLog.isColorLevel())) {
-            QLog.e("PicMultiMsgProcessor", 2, "WTF, The count of MessageForPics is not equal to the count of PicResults");
-          }
-          localObject2 = (MessageForPic)localObject2;
-          if (QLog.isColorLevel()) {
-            QLog.d("PicMultiMsgProcessor", 2, "updateMessageForPic for MessageForMixedMsg, MsgIndex[" + n + "], subMsgIndex[" + i1 + ", resultIndex[" + j + "]");
-          }
-          m = a((MessageForPic)localObject2, (atpw)paramArrayList.get(j));
-          k = i;
-          bool2 = bool1;
-          if (m != 0)
-          {
-            b(m);
-            if (!this.jdField_a_of_type_Aryc.a(m)) {
-              break label724;
-            }
-            bool2 = true;
-            k = i;
-          }
-          label686:
-          i = j + 1;
-          j = k;
-          bool1 = bool2;
-        }
-      }
-    }
-    for (;;)
-    {
-      i1 += 1;
-      k = j;
-      j = i;
-      i = k;
-      break label494;
-      localObject1 = (MessageForMixedMsg)localObject1;
-      break label483;
-      label724:
-      localObject2 = this.jdField_a_of_type_Aryc.a.a().a((MessageRecord)localObject2, ajjy.a(2131642366), false);
-      ((MessageForMixedMsg)localObject1).msgElemList.set(i1, localObject2);
-      if (QLog.isColorLevel()) {
-        QLog.e("PicMultiMsgProcessor", 2, String.format("updateMessageForMixedMsg errCode:%d, uniseq:%d", new Object[] { Integer.valueOf(m), Long.valueOf(((MessageRecord)localObject2).uniseq) }));
-      }
-      k = 1;
-      bool2 = bool1;
-      break label686;
-      label814:
-      bool2 = bool1;
-      k = i;
-      m = j;
-      label824:
-      i = m;
-      j = k;
-      bool1 = bool2;
-      break;
-      if ((((MessageRecord)localObject1).msgtype == -1036) || (((localObject1 instanceof MessageForReplyText)) && (((MessageForReplyText)localObject1).getSourceMessage() != null) && (((MessageForReplyText)localObject1).getSourceMessage().msgtype == -1036))) {
-        if ((localObject1 instanceof MessageForReplyText))
-        {
-          localObject1 = (MessageForLongMsg)((MessageForReplyText)localObject1).getSourceMessage();
-          label905:
-          localObject1 = ((MessageForLongMsg)localObject1).longMsgFragmentList.iterator();
-        }
-      }
-      label1705:
-      label1716:
-      for (;;)
-      {
-        label965:
-        Object localObject3;
-        if (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (MessageRecord)((Iterator)localObject1).next();
-          if (!(localObject2 instanceof MessageForMixedMsg)) {
-            continue;
-          }
-          localObject2 = (MessageForMixedMsg)localObject2;
-          if (((MessageForMixedMsg)localObject2).msgElemList == null) {
-            continue;
-          }
-          m = 0;
-          if (m >= ((MessageForMixedMsg)localObject2).msgElemList.size()) {
-            break label1716;
-          }
-          localObject3 = (MessageRecord)((MessageForMixedMsg)localObject2).msgElemList.get(m);
-          if (!(localObject3 instanceof MessageForPic)) {
-            break label1705;
-          }
-          if ((j >= paramArrayList.size()) && (QLog.isColorLevel())) {
-            QLog.e("PicMultiMsgProcessor", 2, "WTF, The count of MessageForPics is not equal to the count of PicResults");
-          }
-          localObject3 = (MessageForPic)localObject3;
-          if (QLog.isColorLevel()) {
-            QLog.d("PicMultiMsgProcessor", 2, "updateMessageForPic for MessageForMixedMsg, MsgIndex[" + n + "], subMsgIndex[" + m + ", resultIndex[" + j + "]");
-          }
-          i1 = a((MessageForPic)localObject3, (atpw)paramArrayList.get(j));
-          k = i;
-          bool2 = bool1;
-          if (i1 != 0)
-          {
-            b(i1);
-            if (this.jdField_a_of_type_Aryc.a(i1))
-            {
-              bool2 = true;
-              k = i;
-            }
-          }
-          else
-          {
-            label1147:
-            i = j + 1;
-            j = k;
-            bool1 = bool2;
-          }
-        }
-        for (;;)
-        {
-          m += 1;
-          k = j;
-          j = i;
-          i = k;
-          break label965;
-          localObject1 = (MessageForLongMsg)localObject1;
-          break label905;
-          localObject3 = this.jdField_a_of_type_Aryc.a.a().a((MessageRecord)localObject3, ajjy.a(2131642367), false);
-          ((MessageForMixedMsg)localObject2).msgElemList.set(m, localObject3);
-          if (QLog.isColorLevel()) {
-            QLog.e("PicMultiMsgProcessor", 2, String.format("updateMessageForLongMsg errCode:%d, uniseq:%d", new Object[] { Integer.valueOf(i1), Long.valueOf(((MessageRecord)localObject3).uniseq) }));
-          }
-          k = 1;
-          bool2 = bool1;
-          break label1147;
-          k = i;
-          i = j;
-          j = k;
-          break;
-          if (((localObject1 instanceof MessageForStructing)) || (((localObject1 instanceof MessageForReplyText)) && (((MessageForReplyText)localObject1).getSourceMessage() != null) && ((((MessageForReplyText)localObject1).getSourceMessage() instanceof MessageForMixedMsg))))
-          {
-            if ((localObject1 instanceof MessageForReplyText))
-            {
-              localObject1 = (MessageForStructing)((MessageForReplyText)localObject1).getSourceMessage();
-              localObject2 = ((MessageForStructing)localObject1).structingMsg;
-            }
-            for (;;)
-            {
-              if ((localObject2 != null) && ((localObject2 instanceof StructMsgForImageShare)))
-              {
-                localObject2 = ((StructMsgForImageShare)localObject2).getFirstImageElement();
-                if ((localObject2 != null) && (((awwr)localObject2).a != null))
-                {
-                  localObject2 = ((awwr)localObject2).a;
-                  if (QLog.isColorLevel()) {
-                    QLog.d("PicMultiMsgProcessor", 2, "updateMessageForPic for MessageForPic, MsgIndex[" + n + "], resultIndex[" + j + "]");
-                  }
-                  if (((MessageForStructing)localObject1).isHotPicsStruct())
-                  {
-                    localObject1 = new PicMessageExtraData();
-                    ((PicMessageExtraData)localObject1).imageBizType = 2;
-                    ((MessageForPic)localObject2).picExtraData = ((PicMessageExtraData)localObject1);
-                  }
-                  k = a((MessageForPic)localObject2, (atpw)paramArrayList.get(j));
-                  bool2 = bool1;
-                  if (k != 0)
-                  {
-                    b(k);
-                    bool2 = bool1;
-                    if (this.jdField_a_of_type_Aryc.a(k)) {
-                      bool2 = true;
-                    }
-                  }
-                  k = j + 1;
-                  j = i;
-                  bool1 = bool2;
-                  i = k;
-                  break;
-                  localObject1 = (MessageForStructing)localObject1;
-                  localObject2 = ((MessageForStructing)localObject1).structingMsg;
-                  continue;
-                  if (k != 0)
-                  {
-                    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isReMultiMsg) {
-                      awqx.b(this.jdField_a_of_type_Aryc.a, "CliOper", "", "", "0X800662B", "0X800662B", 0, 1, 0, "", "", "", "");
-                    }
-                    if (QLog.isColorLevel()) {
-                      QLog.e("PicMultiMsgProcessor", 2, "requestUploadPics isPicMsgModify");
-                    }
-                    this.jdField_a_of_type_Aryc.a.a().a().a(this.b, null);
-                  }
-                  if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isReMultiMsg) {
-                    awqx.b(this.jdField_a_of_type_Aryc.a, "CliOper", "", "", "0X800662A", "0X800662A", 0, 1, 0, "", "", "", "");
-                  }
-                  return bool1;
-                }
-              }
-            }
-          }
-          k = i;
-          i = j;
-          j = k;
-          break;
-          k = i;
-          i = j;
-          j = k;
-        }
-      }
-      label1719:
-      k = i;
-      i = j;
-      j = k;
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramInt));
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, ArrayList<atpw> paramArrayList)
-  {
-    if ((paramInt == 0) && (paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PicMultiMsgProcessor", 2, "onForwardMultiMsgPicsUpload success[" + paramArrayList.size() + "]");
-      }
-      boolean bool2 = a(paramArrayList);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicMultiMsgProcessor", 2, "updateMsgRecords done, goto onPackAndSendMsg");
-      }
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("totalCount", String.valueOf(paramArrayList.size()));
-      awrn localawrn;
-      if (this.jdField_a_of_type_JavaUtilArrayList != null)
-      {
-        localHashMap.put("errCount", String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()));
-        localHashMap.put("errCodeStr", Arrays.asList(new ArrayList[] { this.jdField_a_of_type_JavaUtilArrayList }).toString());
-        localHashMap.put("errCode", String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.get(0)));
-        localawrn = awrn.a(BaseApplication.getContext());
-        if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-          break label261;
-        }
-      }
-      label261:
-      for (bool1 = true;; bool1 = false)
-      {
-        localawrn.a(null, "MultiMsgPicSendResult", bool1, 0L, paramArrayList.size(), localHashMap, null);
-        bool1 = bool2;
-        if (!bool1) {
-          break label317;
-        }
-        this.jdField_a_of_type_Arxn.a(1, 1, this.jdField_a_of_type_Arya);
+        QLog.d("Q.qqmap", 2, "launchQQMap, download = " + paramString1);
         return;
-        localHashMap.put("errCount", "0");
-        localHashMap.put("errCode", "0");
+      }
+      catch (UnsupportedEncodingException paramString1)
+      {
+        paramString1.printStackTrace();
+        paramString1 = new Intent(paramActivity, QQBrowserActivity.class);
+        paramString1.putExtra("big_brother_source_key", "biz_src_location_share");
+        paramString1.putExtra("url", "http://mapdownload.map.qq.com/outindex?key=qq&referer=qq2&channel=10041881%2C10041882");
+        paramActivity.startActivity(paramString1);
+      }
+      if (!QLog.isColorLevel()) {
         break;
       }
+      QLog.d("Q.qqmap", 2, "launchQQMap, download = http://mapdownload.map.qq.com/outindex?key=qq&referer=qq2&channel=10041881%2C10041882");
+      return;
+      axqw.b(null, "CliOper", "", "", "0X800A972", "0X800A972", 2, 0, "0", "0", "0", "");
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("PicMultiMsgProcessor", 2, "onForwardMultiMsgPicsUpload failed");
+  }
+  
+  public static void a(View paramView, String paramString)
+  {
+    if (AppSetting.d) {
+      paramView.setContentDescription(paramString);
     }
-    paramArrayList = awrn.a(BaseApplication.getContext());
-    if (paramInt == 0) {}
-    for (boolean bool1 = true;; bool1 = false)
+  }
+  
+  public static void a(ImageView paramImageView, String paramString)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestWidth = paramImageView.getWidth();
+    localURLDrawableOptions.mRequestHeight = paramImageView.getHeight();
+    localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
+    localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
+    paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
+  }
+  
+  public static void a(TencentMap paramTencentMap)
+  {
+    if (paramTencentMap != null) {
+      a(a(a(a(a(paramTencentMap, "m"), "a"), "b"), "b"), "b", null);
+    }
+  }
+  
+  public static void a(TencentMap paramTencentMap, int paramInt)
+  {
+    if (paramTencentMap != null)
     {
-      paramArrayList.a(null, "MultiMsgPicSendFail", bool1, 0L, 0L, null, null);
-      bool1 = true;
+      paramTencentMap = a(a(a(a(paramTencentMap.getUiSettings(), "a"), "a"), "d"), "W");
+      if ((paramTencentMap instanceof ViewGroup)) {
+        ((ViewGroup)paramTencentMap).setVisibility(paramInt);
+      }
+    }
+  }
+  
+  private static void a(Object paramObject1, String paramString, Object paramObject2)
+  {
+    if (paramObject1 == null) {
+      return;
+    }
+    try
+    {
+      paramString = paramObject1.getClass().getDeclaredField(paramString);
+      paramString.setAccessible(true);
+      paramString.set(paramObject1, paramObject2);
+      return;
+    }
+    catch (NoSuchFieldException paramObject1)
+    {
+      paramObject1.printStackTrace();
+      return;
+    }
+    catch (IllegalAccessException paramObject1)
+    {
+      paramObject1.printStackTrace();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, TextView paramTextView)
+  {
+    if (paramTextView.getWidth() == 0)
+    {
+      paramTextView.post(new MapUtils.1(paramString1, paramString2, paramTextView));
+      return;
+    }
+    String str = paramString1 + paramString2;
+    float f2 = paramTextView.getWidth();
+    float f1 = paramTextView.getPaint().measureText(paramString1);
+    float f3 = paramTextView.getPaint().measureText(paramString2);
+    if (f1 + f3 <= f2)
+    {
+      paramTextView.setText(str);
+      return;
+    }
+    float f4 = paramTextView.getPaint().measureText("...");
+    while ((f1 + f4 + f3 > f2) && (paramString1.length() > 0))
+    {
+      paramString1 = paramString1.substring(0, paramString1.length() - 1);
+      f1 = paramTextView.getPaint().measureText(paramString1);
+    }
+    paramTextView.setText(paramString1 + "..." + paramString2);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if (a == null) {
+      a = Boolean.valueOf(a(paramContext, "com.tencent.map"));
+    }
+    return a.booleanValue();
+  }
+  
+  public static boolean a(Context paramContext, TencentMap paramTencentMap, LatLng paramLatLng)
+  {
+    boolean bool1 = false;
+    int i = paramContext.getResources().getDisplayMetrics().heightPixels;
+    paramContext = new Rect(0, 0, paramContext.getResources().getDisplayMetrics().widthPixels, i);
+    paramTencentMap = paramTencentMap.getProjection();
+    if (paramTencentMap == null) {}
+    boolean bool2;
+    do
+    {
+      return bool1;
+      paramTencentMap = paramTencentMap.toScreenLocation(paramLatLng);
+      bool2 = paramContext.contains(paramTencentMap.x, paramTencentMap.y);
+      bool1 = bool2;
+    } while (!QLog.isColorLevel());
+    QLog.d("MapUtils", 2, "[map][init]isLocationInScreen: invoked. location: " + paramLatLng + " screen: " + paramTencentMap + " inScreen: " + bool2);
+    return bool2;
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    boolean bool = false;
+    long l = System.currentTimeMillis();
+    paramContext = paramContext.getPackageManager().getInstalledPackages(0);
+    int i;
+    if (paramContext != null)
+    {
+      i = 0;
+      if (i < paramContext.size()) {
+        if (((PackageInfo)paramContext.get(i)).packageName.equals(paramString))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.qqmap", 2, new Object[] { "isAppInstalled: true destPackageName: ", paramString, " time = " + (System.currentTimeMillis() - l) });
+          }
+          bool = true;
+        }
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      return bool;
+      i += 1;
       break;
     }
-    label317:
-    this.jdField_a_of_type_Arxn.a(0, 1, this.jdField_a_of_type_Arya);
+    QLog.d("Q.qqmap", 2, new Object[] { "isAppInstalled: false destPackageName: ", paramString, " time = " + (System.currentTimeMillis() - l) });
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aryd
  * JD-Core Version:    0.7.0.1
  */

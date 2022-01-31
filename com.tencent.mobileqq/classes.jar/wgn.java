@@ -1,29 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import java.util.List;
+import mqq.observer.BusinessObserver;
 
-class wgn
-  implements View.OnClickListener
+public class wgn
+  implements BusinessObserver
 {
-  wgn(wgm paramwgm, int paramInt) {}
+  public wgn(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, List<String> paramList1, List<String> paramList2) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Int < wgm.a(this.jdField_a_of_type_Wgm).size())
+    switch (paramInt)
     {
-      wgm.b(this.jdField_a_of_type_Wgm).remove(this.jdField_a_of_type_Int);
-      ((ArrayList)this.jdField_a_of_type_Wgm.a.a()).remove(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Wgm.notifyDataSetChanged();
-      if (CommodityListView.a(this.jdField_a_of_type_Wgm.a) != null) {
-        CommodityListView.a(this.jdField_a_of_type_Wgm.a).a(wgm.c(this.jdField_a_of_type_Wgm).size());
-      }
+    default: 
+      return;
     }
+    if (paramBoolean)
+    {
+      a(paramBoolean, paramBundle.getStringArrayList("nickname_list"), paramBundle.getStringArrayList("uin_list"));
+      return;
+    }
+    this.b.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wgn
  * JD-Core Version:    0.7.0.1
  */

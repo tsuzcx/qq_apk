@@ -13,8 +13,8 @@ import android.os.ParcelUuid;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.SparseArray;
-import bdfz;
-import bdnw;
+import beka;
+import besl;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -32,7 +32,7 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
   extends BluetoothGattCallback
 {
   List<Integer> blueToothConnListeners = new ArrayList();
-  Map<Integer, bdfz> blueToothServiceListeners = new HashMap();
+  Map<Integer, beka> blueToothServiceListeners = new HashMap();
   Runnable connTimeoutJob;
   BluetoothGatt gatt;
   long lastConnectionTime;
@@ -63,7 +63,7 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
   
   public void connectGatt(Context paramContext, boolean paramBoolean, long paramLong, int paramInt)
   {
-    bdnw.a("BluetoothJsPlugin", "BluetoothDeviceExtend.connectGatt autoConnect=" + paramBoolean + ",timeout=" + paramLong + ",callbackId=" + paramInt);
+    besl.a("BluetoothJsPlugin", "BluetoothDeviceExtend.connectGatt autoConnect=" + paramBoolean + ",timeout=" + paramLong + ",callbackId=" + paramInt);
     if (!this.blueToothConnListeners.contains(Integer.valueOf(paramInt))) {
       this.blueToothConnListeners.add(Integer.valueOf(paramInt));
     }
@@ -80,9 +80,9 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
       if (this.gatt == null) {
         throw new RuntimeException("connectGatt is null");
       }
-      BluetoothJsPlugin.access$300(this.this$0).removeCallbacks(this.connTimeoutJob);
+      BluetoothJsPlugin.access$400(this.this$0).removeCallbacks(this.connTimeoutJob);
     } while (paramLong <= 0L);
-    BluetoothJsPlugin.access$300(this.this$0).postDelayed(this.connTimeoutJob, paramLong);
+    BluetoothJsPlugin.access$400(this.this$0).postDelayed(this.connTimeoutJob, paramLong);
   }
   
   public boolean containsUUID(List<ParcelUuid> paramList)
@@ -95,7 +95,7 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
   
   public void destory()
   {
-    bdnw.a("BluetoothJsPlugin", "BluetoothDeviceExtend.destory,,,,,,");
+    besl.a("BluetoothJsPlugin", "BluetoothDeviceExtend.destory,,,,,,");
     disconnectGatt();
     synchronized (this.blueToothServiceListeners)
     {
@@ -106,9 +106,9 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
   
   public boolean disconnectGatt()
   {
-    bdnw.a("BluetoothJsPlugin", "BluetoothDeviceExtend.disconnectGatt,,,,,,");
+    besl.a("BluetoothJsPlugin", "BluetoothDeviceExtend.disconnectGatt,,,,,,");
     this.state = 0;
-    BluetoothJsPlugin.access$300(this.this$0).removeCallbacks(this.connTimeoutJob);
+    BluetoothJsPlugin.access$400(this.this$0).removeCallbacks(this.connTimeoutJob);
     if (this.gatt == null) {
       return false;
     }
@@ -139,14 +139,14 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
     return "";
   }
   
-  public void getServices(bdfz parambdfz)
+  public void getServices(beka parambeka)
   {
-    bdnw.a("BluetoothJsPlugin", "BluetoothDeviceExtend.getServices callbackId=" + parambdfz.b);
+    besl.a("BluetoothJsPlugin", "BluetoothDeviceExtend.getServices callbackId=" + parambeka.b);
     if (this.gatt == null) {
       throw new RuntimeException("getService exception, state=" + this.state + ",gatt=" + this.gatt);
     }
-    if (!this.blueToothServiceListeners.containsKey(Integer.valueOf(parambdfz.b))) {
-      this.blueToothServiceListeners.put(Integer.valueOf(parambdfz.b), parambdfz);
+    if (!this.blueToothServiceListeners.containsKey(Integer.valueOf(parambeka.b))) {
+      this.blueToothServiceListeners.put(Integer.valueOf(parambeka.b), parambeka);
     }
     if (this.services != null) {
       onServicesDiscovered(this.gatt, 0);
@@ -156,18 +156,18 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
       return;
       if (this.lastConnectionTime + 600L > System.currentTimeMillis())
       {
-        BluetoothJsPlugin.access$300(this.this$0).postDelayed(new BluetoothJsPlugin.BluetoothDeviceExtend.2(this, parambdfz), 600L);
+        BluetoothJsPlugin.access$400(this.this$0).postDelayed(new BluetoothJsPlugin.BluetoothDeviceExtend.2(this, parambeka), 600L);
         return;
       }
     } while (this.gatt.discoverServices());
-    parambdfz.b();
+    parambeka.b();
   }
   
   public boolean notifyBLECharacteristicValueChange(BluetoothGattCharacteristic paramBluetoothGattCharacteristic, boolean paramBoolean)
   {
     int j = 1;
     boolean bool2 = false;
-    bdnw.a("BluetoothJsPlugin", "BluetoothDeviceExtend.notifyBLECharacteristicValueChange c=" + paramBluetoothGattCharacteristic + ",state=" + paramBoolean);
+    besl.a("BluetoothJsPlugin", "BluetoothDeviceExtend.notifyBLECharacteristicValueChange c=" + paramBluetoothGattCharacteristic + ",state=" + paramBoolean);
     boolean bool1 = bool2;
     if (this.gatt != null)
     {
@@ -241,12 +241,12 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
   
   public void onCharacteristicRead(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic, int paramInt)
   {
-    bdnw.a("BluetoothJsPlugin", "BluetoothDeviceExtend.onCharacteristicRead gatt=" + paramBluetoothGatt + ",characteristic=" + paramBluetoothGattCharacteristic + ",status=" + paramInt);
+    besl.a("BluetoothJsPlugin", "BluetoothDeviceExtend.onCharacteristicRead gatt=" + paramBluetoothGatt + ",characteristic=" + paramBluetoothGattCharacteristic + ",status=" + paramInt);
   }
   
   public void onCharacteristicWrite(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic, int paramInt)
   {
-    bdnw.a("BluetoothJsPlugin", "BluetoothDeviceExtend.onCharacteristicWrite gatt=" + paramBluetoothGatt + ",characteristic=" + paramBluetoothGattCharacteristic + ",status=" + paramInt);
+    besl.a("BluetoothJsPlugin", "BluetoothDeviceExtend.onCharacteristicWrite gatt=" + paramBluetoothGatt + ",characteristic=" + paramBluetoothGattCharacteristic + ",status=" + paramInt);
   }
   
   /* Error */
@@ -271,10 +271,10 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
     //   38: iload_3
     //   39: invokevirtual 128	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   42: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   45: invokestatic 137	bdnw:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   45: invokestatic 137	besl:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   48: aload_0
     //   49: getfield 45	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin$BluetoothDeviceExtend:this$0	Lcom/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin;
-    //   52: invokestatic 179	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin:access$300	(Lcom/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin;)Landroid/os/Handler;
+    //   52: invokestatic 179	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin:access$400	(Lcom/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin;)Landroid/os/Handler;
     //   55: aload_0
     //   56: getfield 101	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin$BluetoothDeviceExtend:connTimeoutJob	Ljava/lang/Runnable;
     //   59: invokevirtual 185	android/os/Handler:removeCallbacks	(Ljava/lang/Runnable;)V
@@ -290,20 +290,20 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
     //   79: putfield 259	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin$BluetoothDeviceExtend:lastConnectionTime	J
     //   82: aload_0
     //   83: getfield 45	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin$BluetoothDeviceExtend:this$0	Lcom/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin;
-    //   86: invokestatic 383	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin:access$600	(Lcom/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin;)Ljava/util/HashMap;
+    //   86: invokestatic 383	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin:access$700	(Lcom/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin;)Ljava/util/HashMap;
     //   89: astore_1
     //   90: aload_1
     //   91: monitorenter
     //   92: aload_0
     //   93: getfield 45	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin$BluetoothDeviceExtend:this$0	Lcom/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin;
-    //   96: invokestatic 383	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin:access$600	(Lcom/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin;)Ljava/util/HashMap;
+    //   96: invokestatic 383	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin:access$700	(Lcom/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin;)Ljava/util/HashMap;
     //   99: aload_0
     //   100: getfield 89	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin$BluetoothDeviceExtend:mDevicesId	Ljava/lang/String;
     //   103: invokevirtual 384	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   106: ifne +19 -> 125
     //   109: aload_0
     //   110: getfield 45	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin$BluetoothDeviceExtend:this$0	Lcom/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin;
-    //   113: invokestatic 383	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin:access$600	(Lcom/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin;)Ljava/util/HashMap;
+    //   113: invokestatic 383	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin:access$700	(Lcom/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin;)Ljava/util/HashMap;
     //   116: aload_0
     //   117: getfield 89	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin$BluetoothDeviceExtend:mDevicesId	Ljava/lang/String;
     //   120: aload_0
@@ -343,18 +343,18 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
     //   198: iload_2
     //   199: invokevirtual 128	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   202: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   205: invokestatic 137	bdnw:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   205: invokestatic 137	besl:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   208: aload_0
     //   209: getfield 75	com/tencent/qqmini/sdk/core/plugins/BluetoothJsPlugin$BluetoothDeviceExtend:blueToothServiceListeners	Ljava/util/Map;
     //   212: iload_2
     //   213: invokestatic 143	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   216: invokeinterface 409 2 0
-    //   221: checkcast 236	bdfz
+    //   221: checkcast 236	beka
     //   224: astore 6
     //   226: iload 4
     //   228: ifeq +52 -> 280
     //   231: aload 6
-    //   233: invokevirtual 411	bdfz:a	()Ljava/lang/String;
+    //   233: invokevirtual 411	beka:a	()Ljava/lang/String;
     //   236: pop
     //   237: goto -89 -> 148
     //   240: astore 5
@@ -381,7 +381,7 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
     //   275: istore 4
     //   277: goto -147 -> 130
     //   280: aload 6
-    //   282: invokevirtual 277	bdfz:b	()Ljava/lang/String;
+    //   282: invokevirtual 277	beka:b	()Ljava/lang/String;
     //   285: pop
     //   286: goto -138 -> 148
     //   289: aload_0
@@ -420,7 +420,7 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
     //   146	13	5	localIterator	Iterator
     //   240	5	5	localObject1	Object
     //   249	5	5	localObject2	Object
-    //   224	57	6	localbdfz	bdfz
+    //   224	57	6	localbeka	beka
     // Exception table:
     //   from	to	target	type
     //   137	148	240	finally
@@ -442,7 +442,7 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
   
   public void onServicesDiscovered(BluetoothGatt paramBluetoothGatt, int paramInt)
   {
-    bdnw.a("BluetoothJsPlugin", "BluetoothDeviceExtend.onServicesDiscovered gatt=" + paramBluetoothGatt + ",status=" + paramInt);
+    besl.a("BluetoothJsPlugin", "BluetoothDeviceExtend.onServicesDiscovered gatt=" + paramBluetoothGatt + ",status=" + paramInt);
     Object localObject1 = null;
     Object localObject2;
     boolean bool;
@@ -490,10 +490,10 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
             break label273;
           }
           paramInt = ((Integer)paramBluetoothGatt.next()).intValue();
-          localObject2 = (bdfz)this.blueToothServiceListeners.get(Integer.valueOf(paramInt));
+          localObject2 = (beka)this.blueToothServiceListeners.get(Integer.valueOf(paramInt));
           if (localObject1 != null)
           {
-            ((bdfz)localObject2).a((JSONObject)localObject1);
+            ((beka)localObject2).a((JSONObject)localObject1);
             continue;
             bool = false;
             break;
@@ -506,7 +506,7 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
           }
           catch (JSONException localJSONException) {}
         }
-        ((bdfz)localObject2).b();
+        ((beka)localObject2).b();
       }
       label273:
       return;
@@ -515,7 +515,7 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
   
   public int readCharacteristic(BluetoothGattCharacteristic paramBluetoothGattCharacteristic)
   {
-    bdnw.a("BluetoothJsPlugin", "BluetoothDeviceExtend.readCharacteristic c=" + paramBluetoothGattCharacteristic + ",state=" + this.state + ",gatt=" + this.gatt);
+    besl.a("BluetoothJsPlugin", "BluetoothDeviceExtend.readCharacteristic c=" + paramBluetoothGattCharacteristic + ",state=" + this.state + ",gatt=" + this.gatt);
     if (paramBluetoothGattCharacteristic == null) {
       throw new RuntimeException("readCharacteristic exception, state=" + this.state + ",gatt=" + this.gatt);
     }
@@ -585,7 +585,7 @@ class BluetoothJsPlugin$BluetoothDeviceExtend
   
   public boolean writeCharacteristic(BluetoothGattCharacteristic paramBluetoothGattCharacteristic)
   {
-    bdnw.a("BluetoothJsPlugin", "BluetoothDeviceExtend.writeCharacteristic c=" + paramBluetoothGattCharacteristic + ",state=" + this.state + ",gatt=" + this.gatt);
+    besl.a("BluetoothJsPlugin", "BluetoothDeviceExtend.writeCharacteristic c=" + paramBluetoothGattCharacteristic + ",state=" + this.state + ",gatt=" + this.gatt);
     if ((this.gatt == null) || (paramBluetoothGattCharacteristic == null)) {
       throw new RuntimeException("writeCharacteristic exception, state=" + this.state + ",gatt=" + this.gatt);
     }

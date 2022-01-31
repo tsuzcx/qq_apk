@@ -2,14 +2,14 @@ package com.tencent.mobileqq.systemmsg;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import axcy;
+import ayda;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class FriendSystemMsgController$1
   implements Runnable
 {
-  public FriendSystemMsgController$1(axcy paramaxcy, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  public FriendSystemMsgController$1(ayda paramayda, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
   
   public void run()
   {

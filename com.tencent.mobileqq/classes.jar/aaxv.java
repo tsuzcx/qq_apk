@@ -1,23 +1,25 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class aaxv
-  implements CompoundButton.OnCheckedChangeListener
+class aaxv
+  extends ajyt
 {
-  public aaxv(GeneralSettingActivity paramGeneralSettingActivity) {}
+  aaxv(aaxu paramaaxu, BaseActivity paramBaseActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.removeObserver(this);
+    if (paramBoolean)
     {
-      awqx.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "System_icon", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131653552), "qqsetting_notify_icon_key", paramBoolean);
+      if ((this.jdField_a_of_type_Aaxu.a != null) && (this.jdField_a_of_type_Aaxu.a.isShowing())) {
+        this.jdField_a_of_type_Aaxu.a.dismiss();
+      }
+      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, ajyc.a(2131702592), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
       return;
     }
+    if ((this.jdField_a_of_type_Aaxu.a != null) && (this.jdField_a_of_type_Aaxu.a.isShowing())) {
+      this.jdField_a_of_type_Aaxu.a.dismiss();
+    }
+    bcpw.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, ajyc.a(2131702593), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import afdi;
+import afpe;
 import com.tencent.qphone.base.util.QLog;
 
 class AlphabetFriendAdapter$1$2
@@ -15,7 +15,7 @@ class AlphabetFriendAdapter$1$2
     }
     this.a.this$0.b();
     this.a.this$0.c();
-    afdi.a(this.a.this$0);
+    afpe.a(this.a.this$0);
   }
 }
 

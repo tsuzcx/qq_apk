@@ -1,51 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
-class ajzk
-  extends ajjh
+public class ajzk
+  implements View.OnClickListener
 {
-  ajzk(ajzj paramajzj) {}
+  public ajzk(IphoneTitleBarActivity paramIphoneTitleBarActivity) {}
   
-  protected void onReqLastChatTime(boolean paramBoolean, String paramString1, String paramString2, Long paramLong)
+  public void onClick(View paramView)
   {
-    int j = 1;
-    ajjj localajjj;
-    int i;
-    Object localObject;
-    if (paramBoolean)
-    {
-      localajjj = (ajjj)this.a.a.getManager(51);
-      ExtensionInfo localExtensionInfo = localajjj.a(paramString2, true);
-      i = 0;
-      localObject = localExtensionInfo;
-      if (localExtensionInfo == null)
-      {
-        localObject = new ExtensionInfo();
-        ((ExtensionInfo)localObject).uin = paramString2;
-        i = 1;
-      }
-      if (((ExtensionInfo)localObject).lastIceBreakChatTs >= paramLong.longValue()) {
-        break label152;
-      }
-      ((ExtensionInfo)localObject).lastIceBreakChatTs = paramLong.longValue();
-      i = j;
-    }
-    label152:
-    for (;;)
-    {
-      if (i != 0) {
-        localajjj.a((ExtensionInfo)localObject);
-      }
-      if (ajzj.a(this.a) == null) {}
-      for (localObject = null;; localObject = (ajzn)ajzj.a(this.a).get())
-      {
-        if (localObject != null) {
-          ((ajzn)localObject).a(paramBoolean, paramString1, paramString2, paramLong);
-        }
-        return;
-      }
-    }
+    this.a.onBackEvent();
   }
 }
 

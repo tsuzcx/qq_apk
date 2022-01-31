@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.os.Bundle;
-import ayoq;
-import ayqd;
-import azih;
-import azim;
-import azin;
+import azpg;
+import azqt;
+import bajk;
+import bajp;
+import bajq;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.util.UUID;
 public class TroopFileManager$5$1
   implements Runnable
 {
-  public TroopFileManager$5$1(azim paramazim, Bundle paramBundle, int paramInt1, ByteStringMicro paramByteStringMicro, boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
+  public TroopFileManager$5$1(bajp parambajp, Bundle paramBundle, int paramInt1, ByteStringMicro paramByteStringMicro, boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
   
   public void run()
   {
@@ -27,15 +27,15 @@ public class TroopFileManager$5$1
     boolean bool;
     String str;
     long l;
-    azin localazin;
-    synchronized (this.jdField_a_of_type_Azim.a)
+    bajq localbajq;
+    synchronized (this.jdField_a_of_type_Bajp.a)
     {
       m = this.jdField_a_of_type_AndroidOsBundle.getInt("reqFor");
       bool = this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFirstPage");
       str = this.jdField_a_of_type_AndroidOsBundle.getString("parentFileId");
       l = this.jdField_a_of_type_AndroidOsBundle.getLong("uin_filter");
-      localazin = (azin)this.jdField_a_of_type_Azim.a.d.get(str + l);
-      if (localazin == null) {
+      localbajq = (bajq)this.jdField_a_of_type_Bajp.a.d.get(str + l);
+      if (localbajq == null) {
         return;
       }
       if (m != 1) {}
@@ -59,42 +59,42 @@ public class TroopFileManager$5$1
           return;
           localObject1 = finally;
           throw localObject1;
-          localazin.jdField_a_of_type_Long = 0L;
-          this.jdField_a_of_type_Azim.a.a(null, false, str, l);
+          localbajq.jdField_a_of_type_Long = 0L;
+          this.jdField_a_of_type_Bajp.a.a(null, false, str, l);
           continue;
-          localazin.jdField_b_of_type_Boolean = false;
-          this.jdField_a_of_type_Azim.a.a(null, false, str, l);
+          localbajq.jdField_b_of_type_Boolean = false;
+          this.jdField_a_of_type_Bajp.a.a(null, false, str, l);
           continue;
-          if (localazin.jdField_a_of_type_JavaUtilList != null) {
-            if ((localazin.jdField_a_of_type_JavaUtilList.size() < 15) && (!localazin.jdField_a_of_type_Boolean) && (localazin.d <= 3))
+          if (localbajq.jdField_a_of_type_JavaUtilList != null) {
+            if ((localbajq.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbajq.jdField_a_of_type_Boolean) && (localbajq.d <= 3))
             {
-              localazin.d += 1;
-              this.jdField_a_of_type_Azim.a.b(str, l);
+              localbajq.d += 1;
+              this.jdField_a_of_type_Bajp.a.b(str, l);
             }
             else
             {
-              localazin.d = 0;
-              this.jdField_a_of_type_Azim.a.a(localazin.jdField_a_of_type_JavaUtilList, localazin.jdField_a_of_type_Boolean, str, l);
+              localbajq.d = 0;
+              this.jdField_a_of_type_Bajp.a.a(localbajq.jdField_a_of_type_JavaUtilList, localbajq.jdField_a_of_type_Boolean, str, l);
               continue;
-              if (localazin.jdField_a_of_type_JavaUtilList != null) {
-                if ((localazin.jdField_a_of_type_JavaUtilList.size() < 15) && (!localazin.jdField_a_of_type_Boolean) && (localazin.d <= 3))
+              if (localbajq.jdField_a_of_type_JavaUtilList != null) {
+                if ((localbajq.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbajq.jdField_a_of_type_Boolean) && (localbajq.d <= 3))
                 {
-                  localazin.d += 1;
-                  localazin.jdField_b_of_type_Boolean = false;
-                  this.jdField_a_of_type_Azim.a.b(str, l);
+                  localbajq.d += 1;
+                  localbajq.jdField_b_of_type_Boolean = false;
+                  this.jdField_a_of_type_Bajp.a.b(str, l);
                 }
                 else
                 {
-                  localazin.jdField_b_of_type_Boolean = false;
-                  localazin.d = 0;
-                  this.jdField_a_of_type_Azim.a.a(localazin.jdField_a_of_type_JavaUtilList, localazin.jdField_a_of_type_Boolean, str, l);
+                  localbajq.jdField_b_of_type_Boolean = false;
+                  localbajq.d = 0;
+                  this.jdField_a_of_type_Bajp.a.a(localbajq.jdField_a_of_type_JavaUtilList, localbajq.jdField_a_of_type_Boolean, str, l);
                 }
               }
             }
           }
         }
       }
-      localazin.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro;
+      localbajq.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro;
       if (this.jdField_a_of_type_Boolean)
       {
         localObject2 = this.jdField_a_of_type_JavaUtilList;
@@ -114,56 +114,56 @@ public class TroopFileManager$5$1
         {
           label514:
           return;
-          localazin.jdField_a_of_type_Long = 0L;
-          this.jdField_a_of_type_Azim.a.a(null, false, str, l);
+          localbajq.jdField_a_of_type_Long = 0L;
+          this.jdField_a_of_type_Bajp.a.a(null, false, str, l);
           continue;
-          localazin.jdField_b_of_type_Boolean = false;
-          this.jdField_a_of_type_Azim.a.a(null, false, str, l);
+          localbajq.jdField_b_of_type_Boolean = false;
+          this.jdField_a_of_type_Bajp.a.a(null, false, str, l);
           continue;
-          if (localazin.jdField_a_of_type_JavaUtilList != null) {
-            if ((localazin.jdField_a_of_type_JavaUtilList.size() < 15) && (!localazin.jdField_a_of_type_Boolean) && (localazin.d <= 3))
+          if (localbajq.jdField_a_of_type_JavaUtilList != null) {
+            if ((localbajq.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbajq.jdField_a_of_type_Boolean) && (localbajq.d <= 3))
             {
-              localazin.d += 1;
-              this.jdField_a_of_type_Azim.a.b(str, l);
+              localbajq.d += 1;
+              this.jdField_a_of_type_Bajp.a.b(str, l);
             }
             else
             {
-              localazin.d = 0;
-              this.jdField_a_of_type_Azim.a.a(localazin.jdField_a_of_type_JavaUtilList, localazin.jdField_a_of_type_Boolean, str, l);
+              localbajq.d = 0;
+              this.jdField_a_of_type_Bajp.a.a(localbajq.jdField_a_of_type_JavaUtilList, localbajq.jdField_a_of_type_Boolean, str, l);
               continue;
-              if (localazin.jdField_a_of_type_JavaUtilList != null) {
-                if ((localazin.jdField_a_of_type_JavaUtilList.size() < 15) && (!localazin.jdField_a_of_type_Boolean) && (localazin.d <= 3))
+              if (localbajq.jdField_a_of_type_JavaUtilList != null) {
+                if ((localbajq.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbajq.jdField_a_of_type_Boolean) && (localbajq.d <= 3))
                 {
-                  localazin.d += 1;
-                  localazin.jdField_b_of_type_Boolean = false;
-                  this.jdField_a_of_type_Azim.a.b(str, l);
+                  localbajq.d += 1;
+                  localbajq.jdField_b_of_type_Boolean = false;
+                  this.jdField_a_of_type_Bajp.a.b(str, l);
                 }
                 else
                 {
-                  localazin.jdField_b_of_type_Boolean = false;
-                  localazin.d = 0;
-                  this.jdField_a_of_type_Azim.a.a(localazin.jdField_a_of_type_JavaUtilList, localazin.jdField_a_of_type_Boolean, str, l);
+                  localbajq.jdField_b_of_type_Boolean = false;
+                  localbajq.d = 0;
+                  this.jdField_a_of_type_Bajp.a.a(localbajq.jdField_a_of_type_JavaUtilList, localbajq.jdField_a_of_type_Boolean, str, l);
                 }
               }
             }
           }
         }
       }
-      localazin.jdField_a_of_type_Boolean = this.jdField_b_of_type_Boolean;
-      localazin.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localbajq.jdField_a_of_type_Boolean = this.jdField_b_of_type_Boolean;
+      localbajq.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
       if (!bool) {
         break label977;
       }
-      localazin.jdField_a_of_type_Int = this.c;
-      Object localObject2 = this.jdField_a_of_type_Azim.a.a();
-      localazin.jdField_a_of_type_JavaUtilList.clear();
-      localazin.jdField_a_of_type_JavaUtilMap.clear();
+      localbajq.jdField_a_of_type_Int = this.c;
+      Object localObject2 = this.jdField_a_of_type_Bajp.a.a();
+      localbajq.jdField_a_of_type_JavaUtilList.clear();
+      localbajq.jdField_a_of_type_JavaUtilMap.clear();
       localObject2 = ((Collection)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        ??? = (ayoq)((Iterator)localObject2).next();
-        this.jdField_a_of_type_Azim.a.b.put(((ayoq)???).jdField_a_of_type_JavaUtilUUID, ???);
-        this.jdField_a_of_type_Azim.a.c.put(((ayoq)???).b, ???);
+        ??? = (azpg)((Iterator)localObject2).next();
+        this.jdField_a_of_type_Bajp.a.b.put(((azpg)???).jdField_a_of_type_JavaUtilUUID, ???);
+        this.jdField_a_of_type_Bajp.a.c.put(((azpg)???).b, ???);
       }
       if (!QLog.isDevelopLevel()) {
         break label2859;
@@ -187,7 +187,7 @@ public class TroopFileManager$5$1
       {
       case 2: 
       default: 
-        localObject6 = this.jdField_a_of_type_Azim.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a();
+        localObject6 = this.jdField_a_of_type_Bajp.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a();
         localObject7 = this.jdField_a_of_type_JavaUtilList.iterator();
       }
       Object localObject4;
@@ -198,17 +198,17 @@ public class TroopFileManager$5$1
         if (!((Iterator)localObject7).hasNext()) {
           break label1745;
         }
-        localObject4 = (ayoq)((Iterator)localObject7).next();
-        if (((ayoq)localObject4).jdField_d_of_type_Boolean)
+        localObject4 = (azpg)((Iterator)localObject7).next();
+        if (((azpg)localObject4).jdField_d_of_type_Boolean)
         {
-          if (((ayoq)localObject4).b == null) {
+          if (((azpg)localObject4).b == null) {
             continue;
           }
-          ??? = (ayoq)this.jdField_a_of_type_Azim.a.c.get(((ayoq)localObject4).b);
+          ??? = (azpg)this.jdField_a_of_type_Bajp.a.c.get(((azpg)localObject4).b);
           if (??? == null)
           {
-            ((ayoq)localObject4).jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
-            this.jdField_a_of_type_Azim.a.c.put(((ayoq)localObject4).b, localObject4);
+            ((azpg)localObject4).jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
+            this.jdField_a_of_type_Bajp.a.c.put(((azpg)localObject4).b, localObject4);
             Iterator localIterator = ((List)localObject6).iterator();
             for (;;)
             {
@@ -216,66 +216,66 @@ public class TroopFileManager$5$1
               if (!localIterator.hasNext()) {
                 break;
               }
-              ??? = (ayqd)localIterator.next();
-              if (((ayoq)localObject4).b.equals(((ayqd)???).i))
+              ??? = (azqt)localIterator.next();
+              if (((azpg)localObject4).b.equals(((azqt)???).i))
               {
-                ayoq localayoq2 = new ayoq();
-                localayoq2.jdField_a_of_type_JavaUtilUUID = ((ayqd)???).jdField_a_of_type_JavaUtilUUID;
-                localayoq2.b = ((ayqd)???).e;
-                localayoq2.f = ((ayqd)???).i;
-                localayoq2.a((ayqd)???, this.jdField_a_of_type_Azim.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-                ((ayoq)localObject4).a(localayoq2);
+                azpg localazpg2 = new azpg();
+                localazpg2.jdField_a_of_type_JavaUtilUUID = ((azqt)???).jdField_a_of_type_JavaUtilUUID;
+                localazpg2.b = ((azqt)???).e;
+                localazpg2.f = ((azqt)???).i;
+                localazpg2.a((azqt)???, this.jdField_a_of_type_Bajp.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+                ((azpg)localObject4).a(localazpg2);
               }
             }
-            localazin.jdField_a_of_type_Boolean = this.jdField_b_of_type_Boolean;
+            localbajq.jdField_a_of_type_Boolean = this.jdField_b_of_type_Boolean;
             break;
           }
-          ((ayoq)???).b((ayoq)localObject4);
-          this.jdField_a_of_type_Azim.a.b.put(((ayoq)???).jdField_a_of_type_JavaUtilUUID, ???);
-          if (localazin.jdField_a_of_type_JavaUtilMap.get(((ayoq)???).b) == null)
+          ((azpg)???).b((azpg)localObject4);
+          this.jdField_a_of_type_Bajp.a.b.put(((azpg)???).jdField_a_of_type_JavaUtilUUID, ???);
+          if (localbajq.jdField_a_of_type_JavaUtilMap.get(((azpg)???).b) == null)
           {
-            localazin.jdField_a_of_type_JavaUtilList.add(???);
-            localazin.jdField_a_of_type_JavaUtilMap.put(((ayoq)???).b, ???);
+            localbajq.jdField_a_of_type_JavaUtilList.add(???);
+            localbajq.jdField_a_of_type_JavaUtilMap.put(((azpg)???).b, ???);
           }
-          this.jdField_a_of_type_Azim.a.c.put(((ayoq)???).b, ???);
+          this.jdField_a_of_type_Bajp.a.c.put(((azpg)???).b, ???);
           continue;
         }
         if (QLog.isColorLevel()) {
-          QLog.e("TroopFileManager", 2, "onRspFileListV2: fileName = " + ((ayoq)localObject4).jdField_c_of_type_JavaLangString + ", filePath = " + ((ayoq)localObject4).b + ", sha = " + ((ayoq)localObject4).jdField_d_of_type_JavaLangString);
+          QLog.e("TroopFileManager", 2, "onRspFileListV2: fileName = " + ((azpg)localObject4).jdField_c_of_type_JavaLangString + ", filePath = " + ((azpg)localObject4).b + ", sha = " + ((azpg)localObject4).jdField_d_of_type_JavaLangString);
         }
-        ??? = this.jdField_a_of_type_Azim.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(((ayoq)localObject4).b);
+        ??? = this.jdField_a_of_type_Bajp.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(((azpg)localObject4).b);
         if (??? == null)
         {
-          ((ayoq)localObject4).jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
-          ((ayoq)localObject4).jdField_d_of_type_Long = ((ayoq)localObject4).jdField_c_of_type_Long;
+          ((azpg)localObject4).jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
+          ((azpg)localObject4).jdField_d_of_type_Long = ((azpg)localObject4).jdField_c_of_type_Long;
         }
         for (;;)
         {
-          if ((((ayoq)localObject4).e == 1) || (((ayoq)localObject4).e == 3) || (((ayoq)localObject4).e == 2) || (((ayoq)localObject4).e == 12)) {
+          if ((((azpg)localObject4).e == 1) || (((azpg)localObject4).e == 3) || (((azpg)localObject4).e == 2) || (((azpg)localObject4).e == 12)) {
             break label1743;
           }
-          ??? = (ayoq)this.jdField_a_of_type_Azim.a.c.get(((ayoq)localObject4).b);
+          ??? = (azpg)this.jdField_a_of_type_Bajp.a.c.get(((azpg)localObject4).b);
           if (??? == null) {
             break label2891;
           }
-          ((ayoq)???).b((ayoq)localObject4);
+          ((azpg)???).b((azpg)localObject4);
           localObject4 = ???;
-          ((ayoq)localObject4).a(this.jdField_a_of_type_Azim.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azim.a.jdField_a_of_type_Long);
-          this.jdField_a_of_type_Azim.a.b.put(((ayoq)localObject4).jdField_a_of_type_JavaUtilUUID, localObject4);
-          if (localazin.jdField_a_of_type_JavaUtilMap.get(((ayoq)localObject4).b) == null)
+          ((azpg)localObject4).a(this.jdField_a_of_type_Bajp.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bajp.a.jdField_a_of_type_Long);
+          this.jdField_a_of_type_Bajp.a.b.put(((azpg)localObject4).jdField_a_of_type_JavaUtilUUID, localObject4);
+          if (localbajq.jdField_a_of_type_JavaUtilMap.get(((azpg)localObject4).b) == null)
           {
-            localazin.jdField_a_of_type_JavaUtilList.add(localObject4);
-            localazin.jdField_a_of_type_JavaUtilMap.put(((ayoq)localObject4).b, localObject4);
+            localbajq.jdField_a_of_type_JavaUtilList.add(localObject4);
+            localbajq.jdField_a_of_type_JavaUtilMap.put(((azpg)localObject4).b, localObject4);
           }
-          this.jdField_a_of_type_Azim.a.c.put(((ayoq)localObject4).b, localObject4);
+          this.jdField_a_of_type_Bajp.a.c.put(((azpg)localObject4).b, localObject4);
           break;
-          ((ayoq)localObject4).jdField_a_of_type_JavaUtilUUID = ((ayqd)???).jdField_a_of_type_JavaUtilUUID;
-          ((ayoq)localObject4).a((ayqd)???, this.jdField_a_of_type_Azim.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          if (((ayoq)localObject4).e == 9)
+          ((azpg)localObject4).jdField_a_of_type_JavaUtilUUID = ((azqt)???).jdField_a_of_type_JavaUtilUUID;
+          ((azpg)localObject4).a((azqt)???, this.jdField_a_of_type_Bajp.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          if (((azpg)localObject4).e == 9)
           {
-            ??? = (ayoq)this.jdField_a_of_type_Azim.a.c.get(((ayqd)???).i);
+            ??? = (azpg)this.jdField_a_of_type_Bajp.a.c.get(((azqt)???).i);
             if (??? != null) {
-              ((ayoq)???).a((ayoq)localObject4);
+              ((azpg)???).a((azpg)localObject4);
             }
           }
         }
@@ -284,17 +284,17 @@ public class TroopFileManager$5$1
       int k;
       if (!"/".equals(str))
       {
-        localObject4 = (ayoq)this.jdField_a_of_type_Azim.a.c.get(str);
+        localObject4 = (azpg)this.jdField_a_of_type_Bajp.a.c.get(str);
         if (localObject4 != null)
         {
-          ??? = ((ayoq)localObject4).jdField_a_of_type_JavaUtilMap.keySet();
+          ??? = ((azpg)localObject4).jdField_a_of_type_JavaUtilMap.keySet();
           localObject6 = new ArrayList();
           ??? = ((Set)???).iterator();
           while (((Iterator)???).hasNext()) {
             ((List)localObject6).add((String)((Iterator)???).next());
           }
-          int n = localazin.jdField_a_of_type_JavaUtilList.size();
-          synchronized (this.jdField_a_of_type_Azim.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager)
+          int n = localbajq.jdField_a_of_type_JavaUtilList.size();
+          synchronized (this.jdField_a_of_type_Bajp.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager)
           {
             localObject6 = ((List)localObject6).iterator();
             while (((Iterator)localObject6).hasNext())
@@ -302,21 +302,21 @@ public class TroopFileManager$5$1
               localObject7 = (String)((Iterator)localObject6).next();
               int j = 0;
               i = 0;
-              localObject7 = (ayoq)((ayoq)localObject4).jdField_a_of_type_JavaUtilMap.get(localObject7);
+              localObject7 = (azpg)((azpg)localObject4).jdField_a_of_type_JavaUtilMap.get(localObject7);
               if (localObject7 != null)
               {
-                if ((n <= 0) || (localazin.jdField_a_of_type_JavaUtilList.get(n - 1) == null)) {
+                if ((n <= 0) || (localbajq.jdField_a_of_type_JavaUtilList.get(n - 1) == null)) {
                   break label2726;
                 }
-                int i1 = ((ayoq)localazin.jdField_a_of_type_JavaUtilList.get(n - 1)).a();
-                if (((ayoq)localObject7).a() >= i1)
+                int i1 = ((azpg)localbajq.jdField_a_of_type_JavaUtilList.get(n - 1)).a();
+                if (((azpg)localObject7).a() >= i1)
                 {
                   k = 0;
                   label1984:
                   j = i;
                   if (k < n)
                   {
-                    if ((localObject7 == null) || (((ayoq)localObject7).b == null) || (localazin.jdField_a_of_type_JavaUtilList.get(k) == null) || (!((ayoq)localObject7).b.equals(((ayoq)localazin.jdField_a_of_type_JavaUtilList.get(k)).b))) {
+                    if ((localObject7 == null) || (((azpg)localObject7).b == null) || (localbajq.jdField_a_of_type_JavaUtilList.get(k) == null) || (!((azpg)localObject7).b.equals(((azpg)localbajq.jdField_a_of_type_JavaUtilList.get(k)).b))) {
                       break label2723;
                     }
                     i = 1;
@@ -324,7 +324,7 @@ public class TroopFileManager$5$1
                   }
                 }
                 i = j;
-                if (((ayoq)localObject7).a() <= i1)
+                if (((azpg)localObject7).a() <= i1)
                 {
                   i = j;
                   if (!this.jdField_b_of_type_Boolean) {
@@ -334,13 +334,13 @@ public class TroopFileManager$5$1
                 label2075:
                 if (i == 0)
                 {
-                  ((ayoq)localObject4).jdField_a_of_type_JavaUtilMap.remove(((ayoq)localObject7).b);
-                  this.jdField_a_of_type_Azim.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(((ayoq)localObject7).jdField_a_of_type_JavaUtilUUID, true);
+                  ((azpg)localObject4).jdField_a_of_type_JavaUtilMap.remove(((azpg)localObject7).b);
+                  this.jdField_a_of_type_Bajp.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(((azpg)localObject7).jdField_a_of_type_JavaUtilUUID, true);
                 }
               }
             }
           }
-          this.jdField_a_of_type_Azim.a.d(localayoq1);
+          this.jdField_a_of_type_Bajp.a.d(localazpg1);
         }
       }
       if (!this.jdField_a_of_type_Boolean) {
@@ -351,67 +351,67 @@ public class TroopFileManager$5$1
       for (;;)
       {
         return;
-        localazin.jdField_a_of_type_Long = 0L;
-        this.jdField_a_of_type_Azim.a.a(null, false, str, l);
+        localbajq.jdField_a_of_type_Long = 0L;
+        this.jdField_a_of_type_Bajp.a.a(null, false, str, l);
         continue;
-        localazin.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_Azim.a.a(null, false, str, l);
+        localbajq.jdField_b_of_type_Boolean = false;
+        this.jdField_a_of_type_Bajp.a.a(null, false, str, l);
         continue;
-        if (localazin.jdField_a_of_type_JavaUtilList != null) {
-          if ((localazin.jdField_a_of_type_JavaUtilList.size() < 15) && (!localazin.jdField_a_of_type_Boolean) && (localazin.d <= 3))
+        if (localbajq.jdField_a_of_type_JavaUtilList != null) {
+          if ((localbajq.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbajq.jdField_a_of_type_Boolean) && (localbajq.d <= 3))
           {
-            localazin.d += 1;
-            this.jdField_a_of_type_Azim.a.b(str, l);
+            localbajq.d += 1;
+            this.jdField_a_of_type_Bajp.a.b(str, l);
           }
           else
           {
-            localazin.d = 0;
-            this.jdField_a_of_type_Azim.a.a(localazin.jdField_a_of_type_JavaUtilList, localazin.jdField_a_of_type_Boolean, str, l);
+            localbajq.d = 0;
+            this.jdField_a_of_type_Bajp.a.a(localbajq.jdField_a_of_type_JavaUtilList, localbajq.jdField_a_of_type_Boolean, str, l);
             continue;
-            if (localazin.jdField_a_of_type_JavaUtilList != null) {
-              if ((localazin.jdField_a_of_type_JavaUtilList.size() < 15) && (!localazin.jdField_a_of_type_Boolean) && (localazin.d <= 3))
+            if (localbajq.jdField_a_of_type_JavaUtilList != null) {
+              if ((localbajq.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbajq.jdField_a_of_type_Boolean) && (localbajq.d <= 3))
               {
-                localazin.d += 1;
-                localazin.jdField_b_of_type_Boolean = false;
-                this.jdField_a_of_type_Azim.a.b(str, l);
+                localbajq.d += 1;
+                localbajq.jdField_b_of_type_Boolean = false;
+                this.jdField_a_of_type_Bajp.a.b(str, l);
               }
               else
               {
-                localazin.jdField_b_of_type_Boolean = false;
-                localazin.d = 0;
-                this.jdField_a_of_type_Azim.a.a(localazin.jdField_a_of_type_JavaUtilList, localazin.jdField_a_of_type_Boolean, str, l);
+                localbajq.jdField_b_of_type_Boolean = false;
+                localbajq.d = 0;
+                this.jdField_a_of_type_Bajp.a.a(localbajq.jdField_a_of_type_JavaUtilList, localbajq.jdField_a_of_type_Boolean, str, l);
                 continue;
-                localazin.jdField_a_of_type_Long = 0L;
-                this.jdField_a_of_type_Azim.a.a(null, false, str, l);
+                localbajq.jdField_a_of_type_Long = 0L;
+                this.jdField_a_of_type_Bajp.a.a(null, false, str, l);
                 break label974;
-                localazin.jdField_b_of_type_Boolean = false;
-                this.jdField_a_of_type_Azim.a.a(null, false, str, l);
+                localbajq.jdField_b_of_type_Boolean = false;
+                this.jdField_a_of_type_Bajp.a.a(null, false, str, l);
                 break label974;
-                if (localazin.jdField_a_of_type_JavaUtilList == null) {
+                if (localbajq.jdField_a_of_type_JavaUtilList == null) {
                   break label974;
                 }
-                if ((localazin.jdField_a_of_type_JavaUtilList.size() < 15) && (!localazin.jdField_a_of_type_Boolean) && (localazin.d <= 3))
+                if ((localbajq.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbajq.jdField_a_of_type_Boolean) && (localbajq.d <= 3))
                 {
-                  localazin.d += 1;
-                  this.jdField_a_of_type_Azim.a.b(str, l);
+                  localbajq.d += 1;
+                  this.jdField_a_of_type_Bajp.a.b(str, l);
                   break label974;
                 }
-                localazin.d = 0;
-                this.jdField_a_of_type_Azim.a.a(localazin.jdField_a_of_type_JavaUtilList, localazin.jdField_a_of_type_Boolean, str, l);
+                localbajq.d = 0;
+                this.jdField_a_of_type_Bajp.a.a(localbajq.jdField_a_of_type_JavaUtilList, localbajq.jdField_a_of_type_Boolean, str, l);
                 break label974;
-                if (localazin.jdField_a_of_type_JavaUtilList == null) {
+                if (localbajq.jdField_a_of_type_JavaUtilList == null) {
                   break label974;
                 }
-                if ((localazin.jdField_a_of_type_JavaUtilList.size() < 15) && (!localazin.jdField_a_of_type_Boolean) && (localazin.d <= 3))
+                if ((localbajq.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbajq.jdField_a_of_type_Boolean) && (localbajq.d <= 3))
                 {
-                  localazin.d += 1;
-                  localazin.jdField_b_of_type_Boolean = false;
-                  this.jdField_a_of_type_Azim.a.b(str, l);
+                  localbajq.d += 1;
+                  localbajq.jdField_b_of_type_Boolean = false;
+                  this.jdField_a_of_type_Bajp.a.b(str, l);
                   break label974;
                 }
-                localazin.jdField_b_of_type_Boolean = false;
-                localazin.d = 0;
-                this.jdField_a_of_type_Azim.a.a(localazin.jdField_a_of_type_JavaUtilList, localazin.jdField_a_of_type_Boolean, str, l);
+                localbajq.jdField_b_of_type_Boolean = false;
+                localbajq.d = 0;
+                this.jdField_a_of_type_Bajp.a.a(localbajq.jdField_a_of_type_JavaUtilList, localbajq.jdField_a_of_type_Boolean, str, l);
                 break label974;
                 label2723:
                 break label2894;

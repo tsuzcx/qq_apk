@@ -1,15 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
 
 class aefl
-  implements DialogInterface.OnClickListener
+  extends acun
 {
-  aefl(aefe paramaefe, bafb parambafb) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Bafb.dismiss();
-  }
+  aefl(aefi paramaefi) {}
 }
 
 

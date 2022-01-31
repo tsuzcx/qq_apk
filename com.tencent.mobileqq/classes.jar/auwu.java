@@ -1,95 +1,110 @@
-import com.tencent.mobileqq.audiotrans.AudioTransClientTransInfo.IntC2SFailedRsp;
-import com.tencent.mobileqq.audiotrans.AudioTransClientTransInfo.IntHead;
-import com.tencent.mobileqq.audiotrans.AudioTransClientTransInfo.IntRspBody;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.MsfSocketInputBuffer;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class auwu
 {
-  public void a(MsfSocketInputBuffer paramMsfSocketInputBuffer)
+  public int a;
+  public Bitmap a;
+  public String a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public Bitmap c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  
+  public auwu(int paramInt)
   {
-    byte[] arrayOfByte = new byte[paramMsfSocketInputBuffer.getBufferlen()];
-    System.arraycopy(paramMsfSocketInputBuffer.getBuffer(), 0, arrayOfByte, 0, arrayOfByte.length);
-    a(arrayOfByte);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public boolean a(byte[] paramArrayOfByte)
+  public static auwu a(int paramInt, String paramString)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length > 60))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PeakAudioTransHandler", 2, "decodeS2CData data error");
-      }
-      return false;
-    }
-    Object localObject = null;
+    if (TextUtils.isEmpty(paramString)) {}
     for (;;)
     {
+      return null;
       try
       {
-        for (;;)
+        paramString = a(paramString);
+        if (TextUtils.isEmpty(paramString)) {
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PraiseInfo", 2, "content:" + paramString);
+        }
+        paramString = new JSONObject(paramString);
+        auwu localauwu = new auwu(paramInt);
+        localauwu.jdField_a_of_type_JavaLangString = paramString.optString("name");
+        localauwu.jdField_b_of_type_JavaLangString = paramString.optString("text");
+        if (paramString.has("color"))
         {
-          paramArrayOfByte = kwg.a(paramArrayOfByte);
-          localObject = paramArrayOfByte.a;
-          paramArrayOfByte = paramArrayOfByte.b;
-          AudioTransClientTransInfo.IntHead localIntHead = new AudioTransClientTransInfo.IntHead();
-          try
-          {
-            localObject = (AudioTransClientTransInfo.IntHead)localIntHead.mergeFrom((byte[])localObject);
-            if (!((AudioTransClientTransInfo.IntHead)localObject).uint32_error_no.has()) {
-              break label353;
-            }
-            i = ((AudioTransClientTransInfo.IntHead)localObject).uint32_error_no.get();
-            if (((AudioTransClientTransInfo.IntHead)localObject).enum_body_type.has())
-            {
-              j = ((AudioTransClientTransInfo.IntHead)localObject).enum_body_type.get();
-              long l = 0L;
-              if (((AudioTransClientTransInfo.IntHead)localObject).str_session_id.has()) {
-                l = Long.valueOf(((AudioTransClientTransInfo.IntHead)localObject).str_session_id.get()).longValue();
-              }
-              QLog.d("SubTitleProtocoDataCodec", 2, "onReceive result:" + i + " sessionid:" + l + " bodyType:" + j);
-              paramArrayOfByte = (AudioTransClientTransInfo.IntRspBody)new AudioTransClientTransInfo.IntRspBody().mergeFrom(paramArrayOfByte);
-              if (i == 0)
-              {
-                if ((j != 10) || (!QLog.isColorLevel())) {
-                  break;
-                }
-                QLog.d("PeakAudioTransHandler", 2, "decodeS2CData INT_C2S_HEART_BEAT_RSP heartbeat !");
-                return false;
-              }
-            }
-          }
-          catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-          {
-            paramArrayOfByte.printStackTrace();
-            QLog.e("SubTitleProtocoDataCodec", 2, "decodeS2CData exception = " + paramArrayOfByte.getMessage(), paramArrayOfByte);
-            return false;
+          String str = paramString.optString("color").trim();
+          paramString = str;
+          if (str.startsWith("0x")) {
+            paramString = str.substring(2);
           }
         }
+        try
+        {
+          localauwu.jdField_b_of_type_Int = Color.parseColor("#" + paramString);
+          return localauwu;
+        }
+        catch (Exception paramString)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("PraiseInfo", 2, "color invalid");
+            }
+          }
+        }
+        return null;
       }
-      catch (OutOfMemoryError paramArrayOfByte)
+      catch (JSONException paramString)
       {
-        QLog.e("SubTitleProtocoDataCodec", 2, "decodeS2CData OOM!!");
-        paramArrayOfByte = (byte[])localObject;
-        continue;
-        paramArrayOfByte = (AudioTransClientTransInfo.IntC2SFailedRsp)paramArrayOfByte.msg_failed_rsp.get();
-        QLog.d("SubTitleProtocoDataCodec", 2, "create session rsp fail msg: " + ((AudioTransClientTransInfo.IntHead)localObject).uint32_error_no.get() + " uint32_errcode = " + paramArrayOfByte.uint32_errcode.get() + " str_errmsg = " + paramArrayOfByte.str_errmsg.get());
-        return false;
+        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with JsonException.", paramString);
+        return null;
       }
-      int j = 0;
-      continue;
-      label353:
-      int i = 0;
+      catch (IOException paramString)
+      {
+        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with IOException.", paramString);
+      }
     }
+  }
+  
+  private static String a(String paramString)
+  {
+    File localFile = new File(paramString);
+    if (!localFile.exists()) {
+      QLog.e("PraiseInfo", 1, paramString + " not exist!");
+    }
+    do
+    {
+      return null;
+      try
+      {
+        paramString = bbdj.b(localFile);
+        return paramString;
+      }
+      catch (OutOfMemoryError paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PraiseInfo", 2, paramString.getMessage());
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auwu
  * JD-Core Version:    0.7.0.1
  */

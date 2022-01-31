@@ -1,23 +1,30 @@
-import java.util.ArrayList;
+import android.content.Context;
+import com.rookery.translate.AITranslator;
+import com.rookery.translate.AITranslator.TranslatorType;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
 import java.util.List;
 
 public class lar
+  implements lbr
 {
-  String jdField_a_of_type_JavaLangString = "";
-  List<lax> jdField_a_of_type_JavaUtilList = new ArrayList();
-  las jdField_a_of_type_Las = new las(this);
-  lat jdField_a_of_type_Lat = new lat(this);
-  lau jdField_a_of_type_Lau = new lau(this);
-  lav jdField_a_of_type_Lav = new lav(this);
-  law jdField_a_of_type_Law = new law(this);
-  boolean jdField_a_of_type_Boolean = true;
-  String b = "";
+  public lar(AITranslator paramAITranslator, String paramString1, long paramLong, Context paramContext, aecm paramaecm, String paramString2, Language paramLanguage, lbq paramlbq, List paramList1, List paramList2, int paramInt, AITranslator.TranslatorType paramTranslatorType) {}
   
-  public lar(lap paramlap) {}
+  public void a(TranslateError paramTranslateError, Long paramLong)
+  {
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aecm, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lbq, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComRookeryTranslateAITranslator$TranslatorType, paramTranslateError, paramLong);
+  }
+  
+  public void a(List<Language> paramList, List<String> paramList1, Long paramLong)
+  {
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aecm, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lbq, 0, AITranslator.TranslatorType.MS, paramList, paramList1, this.jdField_a_of_type_JavaUtilList, paramLong);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     lar
  * JD-Core Version:    0.7.0.1
  */

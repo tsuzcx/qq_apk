@@ -1,75 +1,83 @@
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.hardware.Camera;
-import android.support.annotation.RequiresApi;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
-import com.tencent.youtufacetrack.YoutuFaceTracker;
-import com.tencent.youtufacetrack.YoutuFaceTracker.FaceStatus;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqie
+  implements AdapterView.OnItemClickListener
 {
-  protected aqib a;
-  protected aqit a;
-  public YoutuFaceTracker a;
-  public AtomicInteger a;
-  protected String[] a;
+  public aqie(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public aqie()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "libYTCommon.so", "libYTFaceTrackPro.so", "libYTNextCV.so", "libYTAGReflectLiveCheck.so", "libYTPoseDetect.so", "libfacetrackwrap.so" };
-  }
-  
-  @RequiresApi(api=18)
-  public static aqie a(int paramInt, Intent paramIntent, aqit paramaqit)
-  {
-    if (paramInt == 3) {
-      return new aqij(paramIntent, paramaqit);
-    }
-    if (paramInt == 2) {
-      return new aqil(paramIntent, paramaqit);
-    }
-    QLog.e("qq_Identification.Model", 0, "create IdentificationBaseModel error :" + paramInt);
-    return null;
-  }
-  
-  public int a(Context paramContext, String paramString)
-  {
-    return -1;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Aqib != null) {
-      this.jdField_a_of_type_Aqib.a();
-    }
-    if (this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker != null)
+    boolean bool = true;
+    paramAdapterView = (aszr)this.a.jdField_a_of_type_Aszo.a(paramInt);
+    if (paramAdapterView.jdField_a_of_type_Int == 1)
     {
-      this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker.destroy();
-      this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker = null;
-      YoutuFaceTracker.GlobalRelease();
+      this.a.a(this.a.jdField_a_of_type_Aszo.a());
+      paramView = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a();
     }
-  }
-  
-  public void a(QQIdentiferActivity paramQQIdentiferActivity, Camera paramCamera, int paramInt) {}
-  
-  public void a(boolean paramBoolean, Activity paramActivity) {}
-  
-  public boolean a(String paramString)
-  {
-    return false;
-  }
-  
-  public YoutuFaceTracker.FaceStatus[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    YoutuFaceTracker.FaceStatus[] arrayOfFaceStatus = null;
-    if (this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker != null) {
-      arrayOfFaceStatus = this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker.DoDetectionProcessYUV(paramArrayOfByte, paramInt1, paramInt2);
+    switch (paramAdapterView.jdField_a_of_type_Int)
+    {
+    default: 
+      label96:
+      atbp.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "click_op_button", paramAdapterView.jdField_a_of_type_Int);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.NearbyHybridFragment", 2, "onItemClick:" + paramAdapterView.jdField_c_of_type_JavaLangString + ", " + paramAdapterView.jdField_a_of_type_JavaLangString);
+      }
+      if ((paramAdapterView.jdField_c_of_type_Int == 1) && (!TextUtils.isEmpty(paramAdapterView.e)) && (this.a.getActivity() != null) && (bbfd.a(this.a.getActivity(), paramAdapterView.e)) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
+        if (TextUtils.isEmpty(paramAdapterView.d)) {
+          break;
+        }
+      }
+      break;
     }
-    return arrayOfFaceStatus;
+    for (;;)
+    {
+      try
+      {
+        paramView = new Intent("android.intent.action.VIEW", Uri.parse(paramAdapterView.d));
+        paramView.setFlags(268435456);
+        BaseApplicationImpl.getContext().startActivity(paramView);
+        if (bool) {
+          break;
+        }
+        this.a.a(paramAdapterView);
+      }
+      catch (Exception paramView)
+      {
+        QLog.d("nearby.NearbyHybridFragment", 2, "jump to app with scheme Excepyion e = " + paramView.getMessage());
+        bool = false;
+        continue;
+      }
+      bool = bbfd.a(this.a.getActivity(), paramAdapterView.e, this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin());
+      continue;
+      paramView.a(39);
+      break label96;
+      paramView.a(25);
+      break label96;
+      paramView.a(23);
+      paramView.a(26);
+      break label96;
+      paramView.a(40);
+      break label96;
+      if (this.a.jdField_a_of_type_Aszo == null) {
+        break label96;
+      }
+      this.a.jdField_a_of_type_Aszo.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
+      break label96;
+      paramView.a(41);
+      break label96;
+      bool = false;
+    }
   }
 }
 

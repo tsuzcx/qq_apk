@@ -1,22 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import java.util.List;
 
-public class aexg
-  implements View.OnClickListener
+public abstract interface aexg
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
-  
-  protected aexg(aexd paramaexd) {}
-  
-  public void onClick(View paramView)
-  {
-    if (aexd.a(this.jdField_a_of_type_Aexd) != null) {
-      aexd.a(this.jdField_a_of_type_Aexd).a(this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract void a(List<aewh> paramList, String paramString1, String paramString2);
 }
 
 

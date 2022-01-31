@@ -1,89 +1,109 @@
-import android.graphics.Bitmap;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.List;
+import QC.LoginInfo;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.manager.TicketManager;
 
 public class bbwn
-  extends bbzt
 {
-  protected List<Friend> a;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<String, JceStruct> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private String b;
+  private String c = "req";
+  private String d = "rsp";
   
-  public bbwn(List<Friend> paramList)
+  public bbwn(String paramString1, String paramString2)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString1;
+    if (!ajtw.a().containsKey(paramString2)) {
+      ajtw.a(paramString2, new int[] { 13 });
+    }
   }
   
-  public int getCount()
+  public bbwn(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString1;
+    if (!ajtw.a().containsKey(paramString2)) {
+      ajtw.a(paramString2, new int[] { 13 });
+    }
+    this.c = paramString3;
+    this.d = paramString4;
   }
   
-  public Object getItem(int paramInt)
+  public static LoginInfo a()
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    try
+    {
+      Object localObject = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localObject == null) {
+        return null;
+      }
+      String str = ((AppInterface)localObject).getCurrentAccountUin();
+      localObject = ((TicketManager)((AppInterface)localObject).getManager(2)).getSkey(str);
+      LoginInfo localLoginInfo = new LoginInfo();
+      localLoginInfo.lUin = Long.parseLong(str);
+      localLoginInfo.iKeyType = 1;
+      localLoginInfo.sSKey = ((String)localObject);
+      localLoginInfo.iOpplat = 2;
+      localLoginInfo.sClientVer = bbct.c();
+      return localLoginInfo;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("JceProtocol", 1, localException, new Object[0]);
     }
     return null;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, UniPacket paramUniPacket)
   {
-    if (paramView == null)
+    awyx.b(this);
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramUniPacket.getFuncName()))
     {
-      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2131496812, paramViewGroup, false);
-      paramViewGroup = new bbwq();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302951));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312436));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131312528));
-      paramView.setTag(paramViewGroup);
+      paramToServiceMsg = (JceStruct)this.jdField_a_of_type_JavaUtilHashMap.get(paramUniPacket.getFuncName());
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramUniPacket.getFuncName());
+      return paramUniPacket.getByClass(this.d, paramToServiceMsg);
     }
-    while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      return paramView;
-      paramViewGroup = (bbwq)paramView.getTag();
-    }
-    Friend localFriend = (Friend)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject;
-    if ((localFriend.c == null) || ("".equals(localFriend.c)))
-    {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFriend.b);
-      if ((localFriend.d == null) || ("".equals(localFriend.d))) {
-        localFriend.d = bcac.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), localFriend.a);
-      }
-      localObject = bbzz.a().a(localFriend.d);
-      if (localObject != null) {
-        break label290;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839687);
-      localObject = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-      bbzz.a().a(localFriend.d, new bbwo(this, (ImageView)localObject));
-    }
-    for (;;)
-    {
-      if (!this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.a(localFriend.a)) {
-        break label302;
-      }
-      paramViewGroup.b.setText(2131626262);
-      return paramView;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFriend.c);
-      break;
-      label290:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
-    }
-    label302:
-    paramViewGroup.b.setText("");
-    return paramView;
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket, int paramInt)
+  {
+    paramUniPacket.setServantName(this.b);
+    paramUniPacket.setFuncName(paramToServiceMsg.extraData.getString("funcName"));
+    paramUniPacket.setRequestId(paramInt);
+    paramUniPacket.put(this.c, paramToServiceMsg.extraData.get("req"));
+  }
+  
+  public void a(String paramString, JceStruct paramJceStruct1, JceStruct paramJceStruct2, ajtg paramajtg, boolean paramBoolean)
+  {
+    awyx.a(this);
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramJceStruct2);
+    paramJceStruct2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    paramajtg = ((akfw)paramJceStruct2.a(13)).createToServiceMsg(this.jdField_a_of_type_JavaLangString, paramajtg, paramBoolean);
+    paramajtg.extraData.putSerializable("req", paramJceStruct1);
+    paramajtg.extraData.putString("funcName", paramString);
+    paramJceStruct2.sendToService(paramajtg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbwn
  * JD-Core Version:    0.7.0.1
  */

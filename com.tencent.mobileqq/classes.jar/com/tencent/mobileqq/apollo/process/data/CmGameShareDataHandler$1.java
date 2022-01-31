@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import aiqc;
+import ajda;
 
 public class CmGameShareDataHandler$1
   implements Runnable
 {
-  public CmGameShareDataHandler$1(aiqc paramaiqc) {}
+  public CmGameShareDataHandler$1(ajda paramajda) {}
   
   public void run()
   {
-    aiqc.a(this.this$0);
+    ajda.a(this.this$0);
   }
 }
 

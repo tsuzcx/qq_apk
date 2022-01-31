@@ -1,13 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nkh
-  implements ohc
+class nkh
+  implements DialogInterface.OnCancelListener
 {
-  public nkh(ReadInJoyChannelActivity paramReadInJoyChannelActivity, int paramInt) {}
+  nkh(nke paramnke, JsResult paramJsResult, Context paramContext) {}
   
-  public void a(ohe paramohe)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramohe.h(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    if (this.jdField_a_of_type_Nke.a > 2) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    }
   }
 }
 

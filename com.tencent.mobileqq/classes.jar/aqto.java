@@ -1,36 +1,30 @@
 import android.app.Activity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
 
 public class aqto
-  extends batl
+  implements View.OnClickListener
 {
-  public aqto(UiApiPlugin paramUiApiPlugin, String paramString, JSONObject paramJSONObject) {}
+  public aqto(TextHeaderView paramTextHeaderView, Activity paramActivity, MessageRecord paramMessageRecord, MessageForStructing paramMessageForStructing) {}
   
-  public void onDone(batm parambatm)
+  public void onClick(View paramView)
   {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      return;
-    }
-    if (parambatm.a == 0)
+    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
     {
-      parambatm = axoa.d(this.jdField_a_of_type_JavaLangString);
-      if (new File(parambatm).exists())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, parambatm, 0);
-        return;
-      }
+      paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      paramView.putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramView, 0);
+      paramView = aqst.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 0);
+      yod.a(ajae.a(), "769", "205019", paramView, "76901", "1", "160", new String[] { aqst.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "", "20" });
+      ((bbqp)ajae.a().getBusinessHandler(71)).a(3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("pa_msgId"), TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, null, -2);
   }
 }
 

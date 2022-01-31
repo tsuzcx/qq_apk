@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import acrn;
+import adcg;
 
 public class VoiceTextEditPanel$9$2
   implements Runnable
 {
-  public VoiceTextEditPanel$9$2(acrn paramacrn) {}
+  public VoiceTextEditPanel$9$2(adcg paramadcg) {}
   
   public void run()
   {

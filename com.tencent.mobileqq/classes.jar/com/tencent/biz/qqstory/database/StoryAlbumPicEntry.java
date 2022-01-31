@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import atmo;
+import aukm;
 
 public class StoryAlbumPicEntry
-  extends atmo
+  extends aukm
 {
   public static final int PIC_STATE_BLACK_POI = 4;
   public static final int PIC_STATE_DEFAULT = 1;

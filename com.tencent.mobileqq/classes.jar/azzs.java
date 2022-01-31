@@ -1,28 +1,17 @@
-import android.content.ClipData;
-import android.view.View;
-import java.io.File;
-
 public class azzs
 {
-  public ClipData a;
-  public View a;
-  File a;
-  
-  azzs(File paramFile, View paramView, ClipData paramClipData)
-  {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidContentClipData = paramClipData;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidContentClipData != null);
-  }
+  @bazc(a="type")
+  public int a;
+  @bazc(a="title")
+  public String a;
+  @bazc(a="content_text")
+  public String b;
+  @bazc(a="kid")
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azzs
  * JD-Core Version:    0.7.0.1
  */

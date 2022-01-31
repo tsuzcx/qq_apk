@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.view;
 
-import airu;
-import aisd;
-import aisu;
-import ajaz;
+import ajes;
+import ajfb;
+import ajfs;
+import ajpb;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.Iterator;
 public class ApolloDrawerInfoViewListener$2
   implements Runnable
 {
-  public ApolloDrawerInfoViewListener$2(ajaz paramajaz, boolean paramBoolean, Object paramObject) {}
+  public ApolloDrawerInfoViewListener$2(ajpb paramajpb, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {
@@ -20,23 +20,23 @@ public class ApolloDrawerInfoViewListener$2
     {
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangObject != null))
       {
-        if (ajaz.a(this.this$0).get() == null) {
+        if (ajpb.a(this.this$0).get() == null) {
           return;
         }
         Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaLangObject;
         if ((localObject2 != null) && (((ArrayList)localObject2).size() != 0))
         {
-          Object localObject1 = (aisu)ajaz.a(this.this$0).get();
-          airu localairu = ((aisu)localObject1).a();
-          localObject1 = ((aisu)localObject1).a();
-          if ((localairu != null) && (localObject1 != null))
+          Object localObject1 = (ajfs)ajpb.a(this.this$0).get();
+          ajes localajes = ((ajfs)localObject1).a();
+          localObject1 = ((ajfs)localObject1).a();
+          if ((localajes != null) && (localObject1 != null))
           {
             localObject2 = ((ArrayList)localObject2).iterator();
             while (((Iterator)localObject2).hasNext())
             {
               String str = (String)((Iterator)localObject2).next();
-              if (str.equals(((aisd)localObject1).b)) {
-                localairu.a(str, true);
+              if (str.equals(((ajfb)localObject1).b)) {
+                localajes.a(str, true);
               }
             }
           }

@@ -1,20 +1,40 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import com.tencent.qphone.base.util.QLog;
 
 class pnw
-  extends pnc
+  extends osp
 {
-  pnw(pnn parampnn, AppInterface paramAppInterface) {}
+  pnw(pnr parampnr) {}
   
-  public Drawable a()
+  public void h(int paramInt)
   {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_video_selected");
+    boolean bool;
+    if (paramInt < 3)
+    {
+      bool = true;
+      QLog.d(pnr.a(this.a), 1, "visibility changed, visible :  " + bool);
+      if (!bool) {
+        break label66;
+      }
+      pnr.c(this.a);
+    }
+    for (;;)
+    {
+      if (paramInt == 5) {
+        osm.a().b(this);
+      }
+      return;
+      bool = false;
+      break;
+      label66:
+      if (pnr.a(this.a) != null) {
+        pnr.a(this.a).b();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pnw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,23 @@
-public abstract interface azpf
+import org.json.JSONObject;
+
+public class azpf
 {
-  public abstract int a(int paramInt);
+  public String a;
+  public String b;
+  public String c;
   
-  public abstract String a(int paramInt1, int paramInt2);
+  public static azpf a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
+    {
+      azpf localazpf = new azpf();
+      localazpf.a = paramJSONObject.optString("apurl");
+      localazpf.c = paramJSONObject.optString("img");
+      localazpf.b = paramJSONObject.optString("rl");
+      return localazpf;
+    }
+    return null;
+  }
 }
 
 

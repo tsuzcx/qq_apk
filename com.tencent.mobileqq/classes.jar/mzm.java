@@ -1,25 +1,56 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.content.Intent;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-class mzm
-  implements DialogInterface.OnCancelListener
+final class mzm
+  implements mzb
 {
-  mzm(mzd parammzd, JsResult paramJsResult, Context paramContext) {}
+  mzm(WeakReference paramWeakReference, String paramString1, int paramInt, String paramString2) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void loaded(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    if (this.jdField_a_of_type_Mzd.a > 2) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject;
+    if (paramString != null)
+    {
+      paramString = (ayxq)paramString.getManager(193);
+      localObject = this.jdField_a_of_type_JavaLangString;
+      if (!BidDownloader.a(paramInt)) {
+        break label172;
+      }
+    }
+    label172:
+    for (long l = this.jdField_a_of_type_Int;; l = -1L)
+    {
+      paramString.a((String)localObject, l);
+      QLog.i(mzl.jdField_a_of_type_JavaLangString, 1, "finish predown bid=" + this.b + ", code=" + paramInt);
+      mzl.a();
+      if (mzl.b() == 0)
+      {
+        paramString = new Intent("com.tencent.process.tmdownloader.exit");
+        localObject = new ArrayList();
+        ((ArrayList)localObject).add("com.tencent.mobileqq:TMAssistantDownloadSDKService");
+        paramString.putStringArrayListExtra("procNameList", (ArrayList)localObject);
+        paramString.putExtra("verify", mzl.a((ArrayList)localObject, false));
+        if (QLog.isColorLevel()) {
+          QLog.d(mzl.jdField_a_of_type_JavaLangString, 2, "sendBroadcast to close TMAssistant sdk process");
+        }
+        BaseApplicationImpl.getContext().sendBroadcast(paramString);
+      }
+      return;
     }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mzm
  * JD-Core Version:    0.7.0.1
  */

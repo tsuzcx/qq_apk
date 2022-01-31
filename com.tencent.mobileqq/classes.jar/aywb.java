@@ -1,22 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.data.TroopInfo;
-
-class aywb
-  implements CompoundButton.OnCheckedChangeListener
+public class aywb
 {
-  aywb(aywa paramaywa, aywe paramaywe) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    if ((paramCompoundButton.isEnabled()) && (!((TroopInfo)this.jdField_a_of_type_Aywe.a).troopuin.equals(aywa.a(this.jdField_a_of_type_Aywa)))) {
-      this.jdField_a_of_type_Aywe.b = Boolean.valueOf(paramBoolean);
-    }
-  }
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aywb
  * JD-Core Version:    0.7.0.1
  */

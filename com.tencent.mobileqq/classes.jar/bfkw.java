@@ -1,17 +1,40 @@
-import cooperation.qqpim.QQPimGetTipsInfoIPC.NoticeClickTipsRunnable;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.sharp.jni.TraeAudioManager;
 
 public class bfkw
-  implements EIPCResultCallback
+  extends bfky
 {
-  public bfkw(QQPimGetTipsInfoIPC.NoticeClickTipsRunnable paramNoticeClickTipsRunnable) {}
+  public bfkw(TraeAudioManager paramTraeAudioManager)
+  {
+    super(paramTraeAudioManager);
+  }
   
-  public void onCallback(EIPCResult paramEIPCResult) {}
+  public String a()
+  {
+    return "BluetoohHeadsetCheckFake";
+  }
+  
+  public void a() {}
+  
+  void a(Context paramContext, Intent paramIntent) {}
+  
+  void a(IntentFilter paramIntentFilter) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(Context paramContext, bfkz parambfkz)
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfkw
  * JD-Core Version:    0.7.0.1
  */

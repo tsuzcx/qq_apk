@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo;
 
-import aigh;
+import aita;
 
 public class ApolloRender$13$1
   extends IApolloRunnableTask
 {
-  public ApolloRender$13$1(aigh paramaigh, int paramInt1, int paramInt2) {}
+  public ApolloRender$13$1(aita paramaita, int paramInt1, int paramInt2) {}
   
   public String a()
   {

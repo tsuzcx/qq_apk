@@ -1,16 +1,6 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.widget.MessageProgressView;
-
-public class adoc
-  extends acju
+public abstract interface adoc
 {
-  public RelativeLayout a;
-  public DoodleMsgLayout a;
-  public MessageProgressView a;
-  
-  public adoc(ScribbleItemBuilder paramScribbleItemBuilder) {}
+  public abstract String a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

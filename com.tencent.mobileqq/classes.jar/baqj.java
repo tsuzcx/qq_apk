@@ -1,21 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-
-public class baqj
+public abstract interface baqj
 {
-  public static int a(int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt < 0)
-    {
-      QLog.e("Q.qqhead.VasFaceManager", 1, "unknown DynamicSource", new RuntimeException("DynamicFaceDrawable don't have " + paramInt));
-      i = 7;
-    }
-    return i;
-  }
+  public abstract int a(int paramInt);
+  
+  public abstract String a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baqj
  * JD-Core Version:    0.7.0.1
  */

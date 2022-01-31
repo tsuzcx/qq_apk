@@ -1,104 +1,23 @@
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import com.tencent.mobileqq.addon.DiyPendantSticker;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class aied
-  extends acow
-  implements aieh
+  implements aaqe
 {
-  double jdField_a_of_type_Double;
-  aieg jdField_a_of_type_Aieg = aieg.a();
-  String jdField_a_of_type_JavaLangString;
-  List<aief> jdField_a_of_type_JavaUtilList;
-  Paint b = new Paint();
-  int c;
-  int d;
+  public aied(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public aied(Resources paramResources)
-  {
-    super(paramResources);
-  }
+  public void a() {}
   
-  public List<aief> a()
-  {
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilList != null)
-        {
-          localList1 = this.jdField_a_of_type_JavaUtilList;
-          return localList1;
-        }
-        List localList1 = this.jdField_a_of_type_Aieg.a(this);
-        if ((localList1 == null) || (localList1.isEmpty())) {
-          break label188;
-        }
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        if (i < localList1.size())
-        {
-          DiyPendantSticker localDiyPendantSticker = (DiyPendantSticker)localList1.get(i);
-          int j = -16777216;
-          try
-          {
-            int k = Color.parseColor(localDiyPendantSticker.fontColor);
-            j = k;
-          }
-          catch (Exception localException)
-          {
-            QLog.e("DiyPendantDrawable", 1, new Object[] { "parse sticker text color failed.", localException.getMessage() });
-            continue;
-          }
-          this.jdField_a_of_type_JavaUtilList.add(new aiee(this, i, localDiyPendantSticker.angle, localDiyPendantSticker.text, localDiyPendantSticker.fontId, localDiyPendantSticker.fontType, j));
-          i += 1;
-          continue;
-        }
-        localList2 = this.jdField_a_of_type_JavaUtilList;
-      }
-      finally {}
-      continue;
-      label188:
-      List localList2 = null;
-    }
-  }
+  public void b() {}
   
-  public void b(String paramString)
+  public void c()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    super.draw(paramCanvas);
-    Object localObject = a();
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((aief)((Iterator)localObject).next()).a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-    }
-  }
-  
-  protected void onBoundsChange(Rect paramRect)
-  {
-    int i = paramRect.width();
-    this.c = Math.abs(paramRect.height() - i);
-    this.jdField_a_of_type_Double = (i / 250.0D);
-    this.d = ((int)(100.0D * this.jdField_a_of_type_Double));
+    this.a.e = 2;
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aied
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aifg;
-import aiwn;
-import aiyu;
-import awbk;
-import axkd;
-import axkk;
-import axku;
+import airz;
+import ajkp;
+import ajmw;
+import axas;
+import ayki;
+import aykp;
+import ayla;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -19,16 +19,16 @@ import mqq.app.MobileQQ;
 final class ApolloUtil$3
   implements Runnable
 {
-  ApolloUtil$3(int paramInt, boolean paramBoolean, CharSequence paramCharSequence, aiyu paramaiyu, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ChatMessage paramChatMessage) {}
+  ApolloUtil$3(int paramInt, boolean paramBoolean, CharSequence paramCharSequence, ajmw paramajmw, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ChatMessage paramChatMessage) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_Int == 2) && (!this.jdField_a_of_type_Boolean)) {}
     for (int j = 0;; j = 1)
     {
-      Object localObject1 = (axkd)this.jdField_a_of_type_JavaLangCharSequence;
+      Object localObject1 = (ayki)this.jdField_a_of_type_JavaLangCharSequence;
       ArrayList localArrayList = new ArrayList();
-      Object localObject2 = (axkk[])((axkd)localObject1).getSpans(0, ((axkd)localObject1).length(), axkk.class);
+      Object localObject2 = (aykp[])((ayki)localObject1).getSpans(0, ((ayki)localObject1).length(), aykp.class);
       if ((localObject2 != null) && (localObject2.length > 0))
       {
         int n = localObject2.length;
@@ -41,17 +41,17 @@ final class ApolloUtil$3
           }
           int i1 = localObject2[k].a();
           m = i;
-          if (axku.a(i1))
+          if (ayla.a(i1))
           {
             m = i;
             if (i1 >= 0)
             {
               m = i;
-              if (i1 < awbk.a.length)
+              if (i1 < axas.a.length)
               {
                 if (j != 0)
                 {
-                  i = ApolloUtil.a(this.jdField_a_of_type_Aiyu, awbk.a[i1], this.jdField_a_of_type_Int);
+                  i = ApolloUtil.a(this.jdField_a_of_type_Ajmw, axas.a[i1], this.jdField_a_of_type_Int);
                   if (i > 0) {
                     localArrayList.add(Integer.valueOf(i));
                   }
@@ -67,8 +67,8 @@ final class ApolloUtil$3
       if ((j == 0) && (m != 0)) {
         ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
-      if ((localArrayList.size() == 0) && (1 == aifg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
-        ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (axkd)localObject1, localArrayList);
+      if ((localArrayList.size() == 0) && (1 == airz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
+        ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (ayki)localObject1, localArrayList);
       }
       for (int i = 1;; i = 0)
       {
@@ -79,7 +79,7 @@ final class ApolloUtil$3
           if (QLog.isColorLevel()) {
             QLog.d("ApolloUtil", 2, new Object[] { "[playApolloEmoticonAction] send action list to play, actionList=", localArrayList });
           }
-          localObject2 = aiwn.a();
+          localObject2 = ajkp.a();
           localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
           localChatMessage = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
           if (i == 0) {
@@ -89,7 +89,7 @@ final class ApolloUtil$3
         label369:
         for (localObject1 = localArrayList;; localObject1 = null)
         {
-          ((aiwn)localObject2).a(localQQAppInterface, localChatMessage, localArrayList, (ArrayList)localObject1);
+          ((ajkp)localObject2).a(localQQAppInterface, localChatMessage, localArrayList, (ArrayList)localObject1);
           localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
           if (localObject1 != null)
           {

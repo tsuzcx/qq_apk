@@ -1,45 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
+import android.os.IInterface;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-class aejg
-  extends Handler
+public abstract interface aejg
+  extends IInterface
 {
-  aejg(aejb paramaejb, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    case 3: 
-    default: 
-    case 1: 
-    case 2: 
-    case 4: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a(null, false);
-          return;
-          paramMessage = paramMessage.obj;
-        } while (!(paramMessage instanceof azjn));
-        this.a.a((azjn)paramMessage);
-        return;
-      } while (aejb.j(this.a) == null);
-      aejb.k(this.a).a();
-      return;
-    }
-    String str = (String)paramMessage.obj;
-    int i = paramMessage.arg1;
-    bbmy.a(this.a.a, str, i).b(this.a.a.getTitleBarHeight());
-  }
+  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
+  
+  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
+  
+  public abstract void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3);
+  
+  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

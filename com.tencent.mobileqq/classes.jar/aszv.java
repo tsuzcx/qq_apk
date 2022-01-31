@@ -1,16 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
 
-final class aszv
-  implements aslu
+public class aszv
+  implements wxw
 {
-  aszv(atac paramatac, int paramInt) {}
+  public aszv(NearbyJsInterface paramNearbyJsInterface, wxu paramwxu, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void a(Bundle paramBundle)
   {
-    QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
-    if (this.jdField_a_of_type_Atac != null) {
-      this.jdField_a_of_type_Atac.a(false, null, true, this.jdField_a_of_type_Int);
-    }
+    paramBundle = paramBundle.getString("nearbyVideoConfig");
+    this.jdField_a_of_type_Wxu.b(new aszw(this, paramBundle));
   }
 }
 

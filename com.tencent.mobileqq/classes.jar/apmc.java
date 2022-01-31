@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class apmc
-  implements DialogInterface.OnClickListener
+  implements aple
 {
-  apmc(apma paramapma, bafb parambafb) {}
+  apmc(aply paramaply) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Apma.c();
-    this.jdField_a_of_type_Bafb.dismiss();
+    this.a.a(false, apsz.a(this.a.a.a()), this.a.c(), new apmd(this));
+  }
+  
+  public void b()
+  {
+    aply.b(this.a);
   }
 }
 

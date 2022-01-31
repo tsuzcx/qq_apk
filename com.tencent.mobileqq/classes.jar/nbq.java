@@ -1,28 +1,14 @@
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import OnlinePushPack.SvcRespPushMsg;
 
-public class nbq
-  implements apca
+public abstract interface nbq
 {
-  public nbq(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  public abstract void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg);
   
-  public void a()
-  {
-    yny.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
-    if (ReadInJoyNativeAdAppVideoView.a(this.a) == 6)
-    {
-      ReadInJoyNativeAdAppVideoView.a(this.a).start();
-      ReadInJoyNativeAdAppVideoView.e(this.a, 5);
-      ReadInJoyNativeAdAppVideoView.a(this.a);
-      ReadInJoyNativeAdAppVideoView.f(this.a, 2);
-    }
-  }
-  
-  public void b() {}
+  public abstract void a(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nbq
  * JD-Core Version:    0.7.0.1
  */

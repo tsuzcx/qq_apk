@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.QavPanel;
-
-public class lxi
-  implements View.OnClickListener
+class lxi
+  implements bgka
 {
-  public lxi(QavPanel paramQavPanel) {}
+  lxi(lxh paramlxh) {}
   
-  public void onClick(View paramView)
+  public void a(bgjz parambgjz)
   {
-    if ((this.a.a != null) && (this.a.a.a != null)) {
-      this.a.a.a.a(true);
-    }
+    parambgjz.b();
+    parambgjz.a();
   }
 }
 

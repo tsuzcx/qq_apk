@@ -1,25 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class vet
-  implements View.OnClickListener
+public abstract interface vet
+  extends vho
 {
-  vet(ves paramves, vev paramvev) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    if (!this.jdField_a_of_type_Vev.a()) {
-      this.jdField_a_of_type_Vev.b();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Ves.a != null) {
-        this.jdField_a_of_type_Ves.a.a(this.jdField_a_of_type_Ves);
-      }
-      return;
-      this.jdField_a_of_type_Vev.c();
-    }
-  }
+  public abstract void b(int paramInt);
 }
 
 

@@ -1,15 +1,14 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-
-final class aiyq
-  implements BusinessObserver
+public class aiyq
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public String a;
+  public String b;
+  public String c;
+  
+  public aiyq(String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloConfigDataReport", 2, new Object[] { "interceptReport onReceive isSuccess:", Boolean.valueOf(paramBoolean), ",bundle", paramBundle.toString() });
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

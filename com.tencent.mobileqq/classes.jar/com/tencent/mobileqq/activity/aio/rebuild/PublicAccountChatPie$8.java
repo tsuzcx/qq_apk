@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aegy;
-import rol;
+import aerv;
+import sbc;
 
 public class PublicAccountChatPie$8
   implements Runnable
 {
-  public PublicAccountChatPie$8(aegy paramaegy) {}
+  public PublicAccountChatPie$8(aerv paramaerv) {}
   
   public void run()
   {
-    rol.a().b(this.this$0.a);
+    sbc.a().b(this.this$0.a);
   }
 }
 

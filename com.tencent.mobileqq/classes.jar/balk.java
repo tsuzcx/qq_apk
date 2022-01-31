@@ -1,74 +1,56 @@
-import android.os.IBinder;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
-public final class balk
+public class balk
 {
-  private static Class<?> jdField_a_of_type_JavaLangClass;
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static Method b;
-  private static Method c;
-  private static Method d;
+  private static final Drawable a = new ColorDrawable(-5658199);
   
-  static
+  public static String a(String paramString1, String paramString2)
   {
-    try
+    return "https://qun.qq.com/qqweb/m/qun/rank/rank.html?from=31&_wv=1031&_bid=2468&uin=" + paramString1 + "&gc=" + paramString2;
+  }
+  
+  protected static void a()
+  {
+    int i = 0;
+    while (i < 20)
     {
-      jdField_a_of_type_JavaLangClass = Class.forName("android.os.ServiceManager");
-      jdField_a_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("getService", new Class[] { String.class });
-      b = jdField_a_of_type_JavaLangClass.getDeclaredMethod("addService", new Class[] { String.class, IBinder.class });
-      c = jdField_a_of_type_JavaLangClass.getDeclaredMethod("checkService", new Class[] { String.class });
-      d = jdField_a_of_type_JavaLangClass.getDeclaredMethod("listServices", new Class[0]);
-      return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      localClassNotFoundException.printStackTrace();
-      return;
-    }
-    catch (SecurityException localSecurityException)
-    {
-      localSecurityException.printStackTrace();
-      return;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      localNoSuchMethodException.printStackTrace();
+      Object localObject = String.format("http://pub.idqqimg.com/pc/misc/groupgift/global_troop_level_%d.png", new Object[] { Integer.valueOf(i) });
+      URLDrawable.removeMemoryCacheByUrl((String)localObject);
+      localObject = ayog.a((String)localObject);
+      if ((localObject != null) && (((File)localObject).exists()) && (((File)localObject).isFile())) {
+        ((File)localObject).delete();
+      }
+      i += 1;
     }
   }
   
-  public static IBinder a(String paramString)
+  public static boolean a(Context paramContext)
   {
-    return (IBinder)a(jdField_a_of_type_JavaLangReflectMethod, new Object[] { paramString });
-  }
-  
-  private static Object a(Method paramMethod, Object... paramVarArgs)
-  {
-    try
-    {
-      paramMethod = paramMethod.invoke(null, paramVarArgs);
-      return paramMethod;
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
+    String str = new SimpleDateFormat("yyyy年MM月dd日").format(localCalendar.getTime());
+    if ((!TextUtils.isEmpty(str)) && (str.equals(bbaj.a(paramContext, "glamour_has_update_today")))) {
+      return false;
     }
-    catch (IllegalArgumentException paramMethod)
+    if (localCalendar.get(11) >= 4)
     {
-      paramMethod.printStackTrace();
-      return null;
+      a();
+      bbaj.a(paramContext, "glamour_has_update_today", str);
     }
-    catch (IllegalAccessException paramMethod)
-    {
-      paramMethod.printStackTrace();
-      return null;
-    }
-    catch (InvocationTargetException paramMethod)
-    {
-      paramMethod.printStackTrace();
-    }
-    return null;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     balk
  * JD-Core Version:    0.7.0.1
  */

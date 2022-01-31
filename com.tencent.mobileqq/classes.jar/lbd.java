@@ -1,77 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
-class lbd
-  extends BroadcastReceiver
+public class lbd
+  extends law
 {
-  lbd(lbc paramlbc) {}
+  private String jdField_a_of_type_JavaLangString = "qqi_android";
+  private byte[] jdField_a_of_type_ArrayOfByte = { -124, -103, -119, 53, -84, -31, 44, -41, 18, 66, -17, 11, -91, -20, 57, -47, 11, -75, -75, 104, 32, 86, -43, -40, -17, 110, -103, -69, -10, -60, 125, 94, 113, -10, -57, -17, 56, 34, 69, -69, -13, -5, -102, -37, 9, -125, 124, -87, -89, -122, 103, 57, 119, -111, 83, -38 };
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public String a()
   {
-    if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_ReceiveSharpMsg"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(lbc.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp msg");
-      }
-      paramContext = paramIntent.getBundleExtra("msgData");
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getByteArray("value");
-        if (paramContext != null) {
-          this.a.jdField_a_of_type_Lbb.a(0L, paramContext, null);
-        }
-      }
-    }
-    label154:
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_ReceiveSharpAckMsg")) {
-                  break label154;
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.d(lbc.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp ack msg");
-                }
-                if (!paramIntent.getBooleanExtra("timeout", false)) {
-                  break;
-                }
-              } while (!QLog.isColorLevel());
-              QLog.d(lbc.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp timeout msg");
-              return;
-              paramContext = paramIntent.getBundleExtra("msgData");
-            } while (paramContext == null);
-            paramContext = paramContext.getByteArray("value");
-          } while (paramContext == null);
-          this.a.jdField_a_of_type_Lbb.b(0L, paramContext, null);
-          return;
-        } while (!paramIntent.getAction().equals("SmartDevice_DeviceUnBindRst"));
-        paramContext = paramIntent.getExtras();
-      } while (paramContext == null);
-      i = paramContext.getInt("deviceoprstcode");
-      paramContext = Long.valueOf(paramContext.getLong("deviceopdin", 0L));
-    } while ((i != 0) || (paramContext.longValue() == 0L) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d == null) || (!this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d.equals(String.valueOf(paramContext))));
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1000);
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return a(this.jdField_a_of_type_ArrayOfByte, a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     lbd
  * JD-Core Version:    0.7.0.1
  */

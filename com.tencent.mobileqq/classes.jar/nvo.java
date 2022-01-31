@@ -1,23 +1,22 @@
-public class nvo
+import android.text.Editable;
+import android.widget.EditText;
+
+public final class nvo
+  implements asko<char[]>
 {
-  public int a;
-  public boolean a = true;
-  public int b;
-  public boolean b = true;
-  public int c;
-  public boolean c = true;
-  public int d;
-  public boolean d;
+  public nvo(EditText paramEditText) {}
   
-  public nvo()
+  public void a(char[] paramArrayOfChar)
   {
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_d_of_type_Int = 1;
+    int i = this.a.getSelectionStart();
+    int j = this.a.getSelectionEnd();
+    this.a.getEditableText().replace(i, j, String.valueOf(paramArrayOfChar));
+    this.a.requestFocus();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nvo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,41 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 class trv
-  implements tsr
+  implements AdapterView.OnItemClickListener
 {
-  trv(trt paramtrt, tqj paramtqj, Object paramObject) {}
+  trv(tru paramtru) {}
   
-  public boolean a(tso paramtso, int paramInt1, int paramInt2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return this.jdField_a_of_type_Tqj.a(this.jdField_a_of_type_Trt, 0, paramInt1, this.jdField_a_of_type_Trt.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
+    if (tru.a(this.a).a().isShowing()) {
+      tru.a(this.a).a().dismiss();
+    }
+    int i = ((bbjh)paramView.getTag()).a.c;
+    if ((i == 9) || (i == 10)) {
+      if (!WXShareHelper.a().a()) {
+        paramInt = 2131720906;
+      }
+    }
+    for (;;)
+    {
+      if (paramInt != -1)
+      {
+        wim.a(1, paramInt);
+        return;
+        if (!WXShareHelper.a().b()) {
+          paramInt = 2131720907;
+        }
+      }
+      else
+      {
+        this.a.a(i);
+        return;
+      }
+      paramInt = -1;
+    }
   }
 }
 

@@ -1,13 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-public class adoh
-  extends acju
+class adoh
+  implements bfoq
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  adoh(adof paramadof, MessageForDeviceFile paramMessageForDeviceFile, bfol parambfol) {}
   
-  public adoh(adod paramadod) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    this.jdField_a_of_type_Adof.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    this.jdField_a_of_type_Adof.b();
+    this.jdField_a_of_type_Bfol.dismiss();
+  }
 }
 
 

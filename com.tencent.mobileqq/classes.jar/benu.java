@@ -1,32 +1,54 @@
-import android.view.View;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnInfoListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class benu
+  implements VideoPlayerProxy.OnInfoListener
 {
-  public int a;
-  public View a;
-  public int b;
-  public int c;
-  public int d;
+  public benu(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public void a()
+  public boolean onInfo(VideoPlayerProxy paramVideoPlayerProxy, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.b = -1;
-    this.c = 0;
-    this.d = 0;
-    this.jdField_a_of_type_AndroidViewView = null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[").append("menuType = ").append(this.jdField_a_of_type_Int).append(",").append("menuId = ").append(this.b).append(",").append("menuWidth = ").append(this.c).append(",").append("menuHeight = ").append(this.d).append(",").append("menuView = ").append(this.jdField_a_of_type_AndroidViewView).append("]");
-    return localStringBuilder.toString();
+    besl.b("MiniAppVideoPlayer", "onInfo: " + paramInt1 + " " + paramInt1);
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      besl.a("MiniAppVideoPlayer", "video player PLAYER_INFO_START_BUFFERING--------------");
+      try
+      {
+        paramVideoPlayerProxy = new JSONObject();
+        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+        this.a.jdField_a_of_type_Begy.a("onVideoLoadStart", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+        besl.a("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoLoadStart = " + paramVideoPlayerProxy.toString());
+      }
+      catch (JSONException paramVideoPlayerProxy)
+      {
+        paramVideoPlayerProxy.printStackTrace();
+      }
+      continue;
+      besl.a("MiniAppVideoPlayer", "video player PLAYER_INFO_ENDOF_BUFFERING--------------");
+      try
+      {
+        paramVideoPlayerProxy = new JSONObject();
+        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+        this.a.jdField_a_of_type_Begy.a("onVideoLoadedData", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+        besl.a("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoLoadedData = " + paramVideoPlayerProxy.toString());
+      }
+      catch (JSONException paramVideoPlayerProxy)
+      {
+        paramVideoPlayerProxy.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     benu
  * JD-Core Version:    0.7.0.1
  */

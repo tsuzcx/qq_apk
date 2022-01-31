@@ -1,20 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-final class azza
-  implements ValueAnimator.AnimatorUpdateListener
+public class azza
+  implements DialogInterface.OnClickListener
 {
-  azza(atgo paramatgo) {}
+  public azza(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    this.a.a(paramValueAnimator.intValue());
+    this.a.c();
+    if (ReciteRecordLayout.a(this.a) != null) {
+      ReciteRecordLayout.a(this.a).e();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azza
  * JD-Core Version:    0.7.0.1
  */

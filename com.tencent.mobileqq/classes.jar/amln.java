@@ -1,83 +1,19 @@
-import org.json.JSONObject;
-
-public class amln
+class amln
+  implements ango
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString = "";
-  private String c = "";
-  private String d = "";
-  private String e = "";
-  private String f = "";
+  amln(amll paramamll) {}
   
-  public static amln a(JSONObject paramJSONObject)
+  public long a()
   {
-    if (paramJSONObject == null) {
-      return null;
+    if (amll.a(this.a) != null) {
+      return amll.a(this.a).a();
     }
-    amln localamln = new amln();
-    localamln.jdField_a_of_type_Int = paramJSONObject.getInt("type");
-    localamln.jdField_a_of_type_JavaLangString = paramJSONObject.getString("color");
-    localamln.jdField_a_of_type_Float = ((float)paramJSONObject.getDouble("alpha"));
-    localamln.jdField_b_of_type_JavaLangString = paramJSONObject.getString("text");
-    localamln.c = paramJSONObject.getString("tcolor");
-    localamln.d = paramJSONObject.getString("icon");
-    localamln.f = paramJSONObject.getString("tshow");
-    localamln.e = paramJSONObject.getString("tpress");
-    localamln.jdField_b_of_type_Int = paramJSONObject.getInt("click");
-    return localamln;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String d()
-  {
-    return this.d;
-  }
-  
-  public String e()
-  {
-    return this.e;
-  }
-  
-  public String f()
-  {
-    return this.f;
+    return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amln
  * JD-Core Version:    0.7.0.1
  */

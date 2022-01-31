@@ -2,7 +2,7 @@ package com.tencent.open.agent;
 
 import android.graphics.drawable.Drawable;
 import android.os.Message;
-import axry;
+import aysf;
 
 class CardContainer$3
   implements Runnable
@@ -12,7 +12,7 @@ class CardContainer$3
   public void run()
   {
     String str = this.this$0.a();
-    this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = Drawable.createFromPath(axry.a(str));
+    this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = Drawable.createFromPath(aysf.a(str));
     if (this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {
       Message.obtain(this.this$0.jdField_a_of_type_AndroidOsHandler, 10001).sendToTarget();

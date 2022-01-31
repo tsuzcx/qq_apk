@@ -1,21 +1,21 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyFragmentWithSubChannel;
+import java.util.List;
 
-public class ojb
-  implements AdapterView.OnItemClickListener
+class ojb
+  extends ojq
 {
-  public ojb(ReadInJoyFragmentWithSubChannel paramReadInJoyFragmentWithSubChannel) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  ojb(oio paramoio, boolean paramBoolean, List paramList)
   {
-    this.a.a(paramView, paramInt);
+    super(paramoio, null);
+  }
+  
+  void a(ojt paramojt)
+  {
+    paramojt.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, oio.c(this.jdField_a_of_type_Oio), 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ojb
  * JD-Core Version:    0.7.0.1
  */

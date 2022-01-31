@@ -1,4 +1,7 @@
-class bjld {}
+public abstract interface bjld
+{
+  public abstract void a(int paramInt);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

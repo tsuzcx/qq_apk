@@ -1,28 +1,44 @@
-import android.view.View;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import cooperation.qqreader.ui.ReaderHomePageActivity;
-import cooperation.qqreader.utils.ReaderSplashActivityUtils.1.1;
+import android.os.Handler;
+import android.os.Looper;
 
 public class bfnh
-  implements EnterCallback
 {
-  bfnh(bfng parambfng) {}
+  private static Handler a;
   
-  public void onCloseLoadingView()
+  public static void a(Runnable paramRunnable)
   {
-    bfng.a(this.a);
+    try
+    {
+      if (a == null) {
+        a = new Handler(Looper.getMainLooper());
+      }
+      a.post(paramRunnable);
+      return;
+    }
+    finally {}
   }
   
-  public void onEnterComplete() {}
-  
-  public void onShowLoadingView(View paramView)
+  public static void a(Runnable paramRunnable, long paramLong)
   {
-    bfng.a(this.a).runOnUiThread(new ReaderSplashActivityUtils.1.1(this, paramView));
+    try
+    {
+      if (a == null) {
+        a = new Handler(Looper.getMainLooper());
+      }
+      a.postDelayed(paramRunnable, paramLong);
+      return;
+    }
+    finally {}
+  }
+  
+  public static boolean a()
+  {
+    return Looper.getMainLooper().getThread() == Thread.currentThread();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfnh
  * JD-Core Version:    0.7.0.1
  */

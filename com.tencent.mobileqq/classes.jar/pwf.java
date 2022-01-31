@@ -1,26 +1,26 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
-import com.tencent.widget.ListView;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class pwf
-  extends avkk<avon, avww>
+  implements pca
 {
-  public pwf(HybridSearchFragment paramHybridSearchFragment, ListView paramListView, azwg paramazwg)
-  {
-    super(paramListView, paramazwg);
-  }
+  public pwf(ComponentContentRecommend paramComponentContentRecommend, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  protected avri<avon, avww> a(int paramInt)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (((avon)a(paramInt) instanceof avmy)) {
-      return new avsr(this.jdField_a_of_type_Azwg, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment), null);
+    if (QLog.isColorLevel()) {
+      QLog.d(ComponentContentRecommend.a, 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean);
     }
-    return new pwb(this.jdField_a_of_type_Azwg, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment));
-  }
-  
-  protected avwx a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new avwq(paramViewGroup, 2131496780);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = false;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      ComponentContentRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend).notifyDataSetChanged();
+      return;
+    }
+    bcpw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.getContext(), 1, 2131718502, 0).a();
   }
 }
 

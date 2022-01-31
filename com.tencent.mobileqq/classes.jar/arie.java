@@ -1,132 +1,146 @@
-import android.content.SharedPreferences;
-import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.managers.CUOpenCardGuideMng.GuideConfigData.1;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class arie
+  extends WebViewPlugin
 {
-  public long a;
-  public final String a;
-  public final ArrayList<Integer> a;
-  public boolean a;
-  public arif[] a;
-  public String b;
-  public boolean b;
+  private int jdField_a_of_type_Int;
+  private wxu jdField_a_of_type_Wxu;
+  final wxw jdField_a_of_type_Wxw = new arif(this);
+  private int b;
   
-  public arie(String paramString)
+  public arie()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ArrayOfArif = new arif[6];
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfArif.length)
-    {
-      this.jdField_a_of_type_ArrayOfArif[i] = null;
-      i += 1;
-    }
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaUtilArrayList = babp.a();
-    ThreadManager.post(new CUOpenCardGuideMng.GuideConfigData.1(this), 5, null, false);
+    this.mPluginNameSpace = "nowlive";
   }
   
-  public void a()
+  private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
+      localJSONObject.put("state", paramInt1);
+      localJSONObject.put("progress", paramInt2);
+      callJs("window.__WEBVIEW_GETPLUGININFO && window.__WEBVIEW_GETPLUGININFO(" + localJSONObject.toString() + ");");
       return;
-      a(BaseApplicationImpl.getApplication().getSharedPreferences("ChinaUnicomPhoneCard" + this.jdField_a_of_type_JavaLangString, 4).getString("config_content", ""));
-    } while (!QLog.isColorLevel());
-    QLog.i("CUOpenCardGuideMng", 2, "init");
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
   }
   
-  public void a(String paramString)
+  private void a(int paramInt, String paramString)
   {
-    int j = 0;
-    int i = 0;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.equals(paramString))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("CUOpenCardGuideMng", 2, "parseConfig config not change");
-      }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("errcode", paramInt);
+      localJSONObject.put("desc", paramString);
+      callJs("window.__WEBVIEW_INSTALL && window.__WEBVIEW_INSTALL(" + localJSONObject.toString() + ");");
+      return;
     }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("NowWebViewPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
+    }
+    if ((this.jdField_a_of_type_Wxu == null) || (paramString1 == null) || (!"nowlive".equals(paramString2)) || (paramString3 == null)) {}
+    label318:
     do
     {
-      return;
-      if (!TextUtils.isEmpty(paramString)) {
-        break;
-      }
-      this.jdField_b_of_type_Boolean = false;
-      while (i < this.jdField_a_of_type_ArrayOfArif.length)
+      return false;
+      if ("getPluginInfo".equals(paramString3))
       {
-        this.jdField_a_of_type_ArrayOfArif[i] = null;
-        i += 1;
+        this.jdField_a_of_type_Wxu.i();
+        a(this.jdField_a_of_type_Int, this.b);
       }
-      this.jdField_b_of_type_JavaLangString = "";
-    } while (!QLog.isColorLevel());
-    QLog.i("CUOpenCardGuideMng", 2, "parseConfig config is empty");
-    return;
-    for (;;)
-    {
-      Object localObject;
-      try
+      for (;;)
       {
-        localObject = new JSONObject(paramString);
-        if (!((JSONObject)localObject).has("isNeedShowGuide")) {
-          break label359;
-        }
-        this.jdField_b_of_type_Boolean = ((JSONObject)localObject).getBoolean("isNeedShowGuide");
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      finally {}
-      if ((i < this.jdField_a_of_type_ArrayOfArif.length) && (i < aric.a.length))
-      {
-        if (((JSONObject)localObject).has(aric.a[i])) {
-          this.jdField_a_of_type_ArrayOfArif[i] = arif.a(((JSONObject)localObject).getJSONObject(aric.a[i]));
-        } else {
-          this.jdField_a_of_type_ArrayOfArif[i] = null;
-        }
-      }
-      else
-      {
-        this.jdField_b_of_type_JavaLangString = paramString;
-        if (!QLog.isColorLevel()) {
+        return true;
+        if ("openRoom".equals(paramString3))
+        {
+          if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("NowWebViewPlugin", 2, "handleJsRequest arg = " + paramVarArgs[0]);
+          }
+          paramJsBridgeListener = paramVarArgs[0];
+          if (TextUtils.isEmpty(paramJsBridgeListener)) {
+            break;
+          }
+          this.jdField_a_of_type_Wxu.a(Long.valueOf(paramJsBridgeListener).longValue());
           continue;
         }
-        localObject = new StringBuilder(300);
-        ((StringBuilder)localObject).append("parseConfig:").append("\n");
-        ((StringBuilder)localObject).append("config: ").append(paramString).append("\n");
-        ((StringBuilder)localObject).append("mIsShowGuide: ").append(this.jdField_b_of_type_Boolean).append("\n");
-        i = j;
-        while ((i < this.jdField_a_of_type_ArrayOfArif.length) && (i < aric.a.length))
+        if ("install".equals(paramString3))
         {
-          ((StringBuilder)localObject).append(aric.a[i]).append(": ").append(this.jdField_a_of_type_ArrayOfArif[i]).append("\n");
-          i += 1;
+          if (QLog.isColorLevel()) {
+            QLog.d("NowWebViewPlugin", 2, "handleJsRequest install arg = " + paramVarArgs[0]);
+          }
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+            paramJsBridgeListener = paramVarArgs[0];
+          }
+          for (;;)
+          {
+            try
+            {
+              i = Integer.valueOf(paramJsBridgeListener).intValue();
+              paramJsBridgeListener = this.jdField_a_of_type_Wxu;
+              if (i == 1) {
+                bool = true;
+              }
+              paramJsBridgeListener.b(bool);
+            }
+            catch (NumberFormatException paramJsBridgeListener)
+            {
+              paramJsBridgeListener.printStackTrace();
+            }
+            int i = 0;
+          }
         }
-        QLog.i("CUOpenCardGuideMng", 2, ((StringBuilder)localObject).toString());
-        continue;
-        label359:
-        i = 0;
-        continue;
+        if (!"preload".equals(paramString3)) {
+          break label318;
+        }
+        this.jdField_a_of_type_Wxu.g();
       }
-      i += 1;
+    } while (!QLog.isColorLevel());
+    QLog.w("NowWebViewPlugin", 2, "NOT support method " + paramString3 + " yet!!");
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_Wxu = wxu.a();
+    this.jdField_a_of_type_Wxu.a();
+    this.jdField_a_of_type_Wxu.h(this.jdField_a_of_type_Wxw);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Wxu != null)
+    {
+      this.jdField_a_of_type_Wxu.b();
+      this.jdField_a_of_type_Wxu.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arie
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,12 @@
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
-import java.util.Comparator;
+import android.hardware.Camera;
 
-public final class avvl
-  implements Comparator<avpr>
+public abstract interface avvl
 {
-  public int a(avpr paramavpr1, avpr paramavpr2)
-  {
-    int j = Long.signum(paramavpr2.b() - paramavpr1.b());
-    int i = j;
-    if (j == 0) {
-      i = PublicAccountSearchEngine.a(paramavpr1, paramavpr2);
-    }
-    return i;
-  }
+  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avvl
  * JD-Core Version:    0.7.0.1
  */

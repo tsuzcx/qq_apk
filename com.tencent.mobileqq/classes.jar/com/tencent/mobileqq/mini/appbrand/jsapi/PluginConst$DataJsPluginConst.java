@@ -4,6 +4,7 @@ public class PluginConst$DataJsPluginConst
 {
   public static final String API_AUTHORIZE = "authorize";
   public static final String API_GET_GROUP_INFO = "getGroupInfo";
+  public static final String API_GET_GROUP_INFO_EXTRA = "getGroupInfoExtra";
   public static final String API_GET_NATIVE_USER_INFO = "getNativeUserInfo";
   public static final String API_GET_NATIVE_WERUN_DATA = "getNativeWeRunData";
   public static final String API_GET_PHONE_NUMBER = "getPhoneNumber";

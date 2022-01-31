@@ -1,21 +1,16 @@
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import java.util.List;
 
-public class ron
-  implements Comparator<rof>
+class ron
+  extends osp
 {
-  public ron(rol paramrol) {}
+  ron(rom paramrom) {}
   
-  public int a(rof paramrof1, rof paramrof2)
+  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
   {
-    long l1 = paramrof1.a;
-    long l2 = paramrof2.a;
-    if (l2 > l1) {
-      return 1;
+    if (paramBoolean) {
+      rom.a(this.a, rom.a(this.a, paramList));
     }
-    if (l2 < l1) {
-      return -1;
-    }
-    return 0;
   }
 }
 

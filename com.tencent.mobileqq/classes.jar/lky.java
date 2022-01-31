@@ -1,104 +1,85 @@
-import android.graphics.Canvas;
-import android.graphics.LinearGradient;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.Shader.TileMode;
+import java.util.Comparator;
+import java.util.List;
 
 public class lky
-  extends lka
 {
-  public LinearGradient a;
+  public static final Object a;
+  public static final Comparator<lky> a;
+  private static lky b;
+  private static int c;
+  public int a;
+  public aykp a;
+  private lky a;
   public int b;
-  public Rect b;
-  public int c;
-  public int d;
-  public int e;
   
-  public lky()
+  static
   {
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
+    jdField_a_of_type_JavaLangObject = new Object();
+    jdField_a_of_type_JavaUtilComparator = new lkz();
   }
   
-  public void a(long paramLong)
+  private lky(aykp paramaykp, int paramInt1, int paramInt2)
   {
-    paramLong -= this.jdField_a_of_type_Long;
-    int j = 0;
-    int i;
-    if ((paramLong > 0L) && (paramLong < 200L))
+    this.jdField_a_of_type_Aykp = paramaykp;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public static lky a(aykp paramaykp, int paramInt1, int paramInt2)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      i = (int)(255L * paramLong / 200L);
-      a(i);
-      if (paramLong >= 200L) {
-        break label164;
+      if (jdField_b_of_type_Lky != null)
+      {
+        lky locallky = jdField_b_of_type_Lky;
+        jdField_b_of_type_Lky = locallky.jdField_a_of_type_Lky;
+        locallky.a(paramaykp, paramInt1, paramInt2);
+        c -= 1;
+        return locallky;
       }
-      this.d = ((int)(255L * paramLong / 200L));
+      return new lky(paramaykp, paramInt1, paramInt2);
     }
+  }
+  
+  private void a(aykp paramaykp, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Lky = null;
+    this.jdField_a_of_type_Aykp = paramaykp;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public static void a(List<lky> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {}
     for (;;)
     {
-      i = (int)(this.c - paramLong * this.c / 750L);
-      a(0, i, this.jdField_b_of_type_AndroidGraphicsRect.right, this.jdField_b_of_type_Int + i);
       return;
-      if ((paramLong >= 200L) && (paramLong <= 700L))
+      int i = paramList.size() - 1;
+      while (i >= 0)
       {
-        i = 255;
-        break;
-      }
-      i = j;
-      if (paramLong <= 700L) {
-        break;
-      }
-      i = j;
-      if (paramLong >= 750L) {
-        break;
-      }
-      i = (int)(255L * (paramLong - 750L) / -50L);
-      break;
-      label164:
-      if ((paramLong >= 200L) && (paramLong <= 650L)) {
-        this.d = 255;
-      } else if ((paramLong > 650L) && (paramLong < 750L)) {
-        this.d = ((int)(255L * (paramLong - 750L) / -100L));
+        lky locallky = (lky)paramList.remove(i);
+        if (locallky != null) {
+          locallky.a();
+        }
+        i -= 1;
       }
     }
   }
   
-  public void a(Canvas paramCanvas, Paint paramPaint)
+  public void a()
   {
-    paramPaint.setAlpha(this.d);
-    paramPaint.setShader(this.jdField_a_of_type_AndroidGraphicsLinearGradient);
-    paramCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRect, paramPaint);
-    paramPaint.setAlpha(255);
-    paramPaint.setShader(null);
-    super.a(paramCanvas, paramPaint);
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_AndroidGraphicsLinearGradient = null;
-    this.jdField_b_of_type_AndroidGraphicsRect = null;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.e != paramInt)
+    a(null, -1, -1);
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      this.e = paramInt;
-      c();
+      if (c < 50)
+      {
+        this.jdField_a_of_type_Lky = jdField_b_of_type_Lky;
+        jdField_b_of_type_Lky = this;
+        c += 1;
+      }
+      return;
     }
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_b_of_type_Int = (paramInt1 * 454 / 750);
-    this.c = (paramInt1 * -190 / 750);
-    this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2 / 2);
-    c();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidGraphicsLinearGradient = new LinearGradient(0.0F, 0.0F, 0.0F, this.jdField_b_of_type_AndroidGraphicsRect.bottom, this.e, 0, Shader.TileMode.CLAMP);
   }
 }
 

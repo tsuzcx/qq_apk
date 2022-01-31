@@ -1,51 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.bubble.BubbleDiyEntity;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Handler;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
 class anex
-  implements ajfe
+  implements View.OnClickListener
 {
-  anex(aned paramaned, Bundle paramBundle1, MessengerService paramMessengerService, Bundle paramBundle2) {}
+  anex(aneu paramaneu, String paramString) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramObject != null)) {}
-    try
+    aneu.a(this.jdField_a_of_type_Aneu).removeCallbacks(aneu.a(this.jdField_a_of_type_Aneu));
+    aneu.a(this.jdField_a_of_type_Aneu).run();
+    int i = aneu.a(this.jdField_a_of_type_Aneu).a.getSelectionStart();
+    paramView = aneu.a(this.jdField_a_of_type_Aneu).a.getEditableText();
+    if ((i < 0) || (i >= paramView.length()))
     {
-      if ((paramObject instanceof List))
-      {
-        paramObject = (List)paramObject;
-        if (!paramObject.isEmpty())
-        {
-          this.jdField_a_of_type_AndroidOsBundle.putString("diyText", ((BubbleDiyEntity)paramObject.get(0)).diyText);
-          this.jdField_a_of_type_AndroidOsBundle.putString("isDiy", "1");
-          this.jdField_a_of_type_AndroidOsBundle.putString("tl", ((BubbleDiyEntity)paramObject.get(0)).topLeftId);
-          this.jdField_a_of_type_AndroidOsBundle.putString("tr", ((BubbleDiyEntity)paramObject.get(0)).topRightId);
-          this.jdField_a_of_type_AndroidOsBundle.putString("bl", ((BubbleDiyEntity)paramObject.get(0)).bottomLeftId);
-          this.jdField_a_of_type_AndroidOsBundle.putString("br", ((BubbleDiyEntity)paramObject.get(0)).bottomRightId);
-        }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
-        return;
-        this.jdField_a_of_type_AndroidOsBundle.putString("diyText", "");
-      }
+      paramView.append(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    catch (Exception paramObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.emoji.web.MessengerService", 2, paramObject.getMessage());
-      }
-    }
+    paramView.insert(i, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anex
  * JD-Core Version:    0.7.0.1
  */

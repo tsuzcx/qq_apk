@@ -1,28 +1,22 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.fragment.SimpleDebugFragment;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.7.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 public class appy
-  implements RadioGroup.OnCheckedChangeListener
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public appy(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
+  appy(appp paramappp) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
-    {
-    default: 
-      return;
-    case 2131313595: 
-      awnu.a(0);
-      return;
-    }
-    awnu.a(1);
+    new Handler(Looper.getMainLooper()).post(new VideoFilePresenter.7.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     appy
  * JD-Core Version:    0.7.0.1
  */

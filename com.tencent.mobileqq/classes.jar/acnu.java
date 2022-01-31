@@ -1,42 +1,26 @@
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PAMessage;
-
 public class acnu
 {
-  public static LruCache<String, PAMessage> a = new LruCache(50);
-  
-  public static PAMessage a(MessageRecord paramMessageRecord)
-  {
-    return a(paramMessageRecord.frienduin, paramMessageRecord.shmsgseq, paramMessageRecord.msgUid, paramMessageRecord.msgData);
-  }
-  
-  public static PAMessage a(String paramString, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
-  {
-    String str = a(paramString, paramLong1, paramLong2);
-    PAMessage localPAMessage = (PAMessage)a.get(str);
-    paramString = localPAMessage;
-    if (localPAMessage == null)
-    {
-      paramArrayOfByte = rry.a(paramArrayOfByte);
-      paramString = paramArrayOfByte;
-      if (paramArrayOfByte != null)
-      {
-        a.put(str, paramArrayOfByte);
-        paramString = paramArrayOfByte;
-      }
-    }
-    return paramString;
-  }
-  
-  private static String a(String paramString, long paramLong1, long paramLong2)
-  {
-    return paramString + "&" + paramLong1 + "&" + paramLong2;
-  }
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acnu
  * JD-Core Version:    0.7.0.1
  */

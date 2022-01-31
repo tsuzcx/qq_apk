@@ -1,26 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class arce
-  implements View.OnClickListener
+  implements EIPCResultCallback
 {
-  arce(arbz paramarbz, arbp paramarbp) {}
+  arce(arcd paramarcd, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (this.jdField_a_of_type_Arbz.jdField_a_of_type_Arbp.a()) {}
-    while (paramView.isSelected()) {
-      return;
+    switch (paramEIPCResult.code)
+    {
     }
-    this.jdField_a_of_type_Arbz.a(paramView);
-    this.jdField_a_of_type_Arbz.jdField_a_of_type_Int = 3;
-    arbp.a(this.jdField_a_of_type_Arbz.jdField_a_of_type_Arbp, Integer.valueOf(3));
-    awqx.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 1, 0, "0", "0", "0", "");
+    for (;;)
+    {
+      axqw.b(null, "dc00898", "", "", "0X800AC2D", "0X800AC2D", 0, 0, String.valueOf(System.currentTimeMillis() - arcd.a(this.jdField_a_of_type_Arcd)), String.valueOf(this.jdField_a_of_type_Long), "", "");
+      return;
+      arcd.a(this.jdField_a_of_type_Arcd).a(2, paramEIPCResult.data);
+      continue;
+      arcd.a(this.jdField_a_of_type_Arcd).a(1, paramEIPCResult.data);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     arce
  * JD-Core Version:    0.7.0.1
  */

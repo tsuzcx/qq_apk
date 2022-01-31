@@ -1,42 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
-import java.util.List;
+import java.io.File;
+import java.io.FileFilter;
 
-public class oqk
+final class oqk
+  implements FileFilter
 {
-  private int jdField_a_of_type_Int = 1;
-  private List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> jdField_a_of_type_JavaUtilList;
-  private int b;
-  private int c;
-  private int d;
-  
-  public ReadInJoyUserInfoModule.Request0xb81Params a()
+  public boolean accept(File paramFile)
   {
-    return new ReadInJoyUserInfoModule.Request0xb81Params(this, null);
-  }
-  
-  public oqk a(int paramInt)
-  {
-    this.b = paramInt;
-    return this;
-  }
-  
-  public oqk a(List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    return this;
-  }
-  
-  public oqk b(int paramInt)
-  {
-    this.c = paramInt;
-    return this;
-  }
-  
-  public oqk c(int paramInt)
-  {
-    this.d = paramInt;
-    return this;
+    return paramFile.getName().endsWith(".json");
   }
 }
 

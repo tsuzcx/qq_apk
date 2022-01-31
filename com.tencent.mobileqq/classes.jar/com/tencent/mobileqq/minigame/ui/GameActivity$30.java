@@ -7,7 +7,7 @@ class GameActivity$30
   
   public void run()
   {
-    this.this$0.finish();
+    this.this$0.execJS.run();
   }
 }
 

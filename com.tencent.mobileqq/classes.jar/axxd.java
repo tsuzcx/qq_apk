@@ -1,47 +1,96 @@
-import android.content.res.XmlResourceParser;
-import org.xmlpull.v1.XmlPullParser;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.biz.now.NowVideoLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class axxd
+  extends axuo
 {
-  private axxe jdField_a_of_type_Axxe;
-  private XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
+  private QQAppInterface a;
   
-  private void a()
+  protected int b()
   {
-    String str1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "extension");
-    String str2 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "mimetype");
-    this.jdField_a_of_type_Axxe.a(str1, str2);
+    return 18;
   }
   
-  public axxe a()
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Axxe = new axxe();
-    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
-    if (i != 1)
+    Object localObject1 = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsgItemLayout18", 2, "getView.");
+    }
+    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
+    paramContext.getResources();
+    if ((paramBundle instanceof QQAppInterface)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBundle);
+    }
+    Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    paramBundle = null;
+    if (((Iterator)localObject2).hasNext())
     {
-      String str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
-      if (i == 2) {
-        if (!str.equals("MimeTypes")) {}
+      axun localaxun = (axun)((Iterator)localObject2).next();
+      if (!"live".equals(localaxun.a)) {
+        break label255;
+      }
+      paramBundle = (axvw)localaxun;
+    }
+    label247:
+    label255:
+    for (;;)
+    {
+      break;
+      if (paramBundle == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("StructMsgItemLayout18", 2, "getView itemLive is null.");
+        }
+        return null;
+      }
+      if (paramView != null)
+      {
+        paramContext = (axxe)paramView.getTag();
+        localObject2 = null;
+        localObject1 = paramView;
+        paramView = paramContext;
+        paramContext = (Context)localObject2;
+        if (paramView != null) {
+          break label247;
+        }
+        paramView = new axxe();
+        paramView.jdField_a_of_type_Axvw = paramBundle;
+        paramView.jdField_a_of_type_ComTencentBizNowNowVideoLayout = paramContext;
       }
       for (;;)
       {
-        i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.next();
-        break;
-        if (str.equals("type"))
-        {
-          a();
-          continue;
-          if ((i != 3) || (!str.equals("MimeTypes"))) {}
+        ((View)localObject1).setTag(paramView);
+        paramView = ((View)localObject1).findViewById(2131376581);
+        if (paramView != null) {
+          paramView.setOnClickListener(paramBundle.a);
         }
+        if (paramContext != null) {
+          paramContext.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message);
+        }
+        return localObject1;
+        localObject2 = paramBundle.a(paramContext, null, null);
+        paramContext = (NowVideoLayout)((View)localObject2).findViewById(2131376581);
+        paramContext.a();
+        paramView = (View)localObject1;
+        localObject1 = localObject2;
+        break;
+        paramContext = paramView.jdField_a_of_type_ComTencentBizNowNowVideoLayout;
       }
     }
-    return this.jdField_a_of_type_Axxe;
   }
   
-  public axxe a(XmlResourceParser paramXmlResourceParser)
+  public String b()
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlResourceParser;
-    return a();
+    return "Layout18";
   }
 }
 

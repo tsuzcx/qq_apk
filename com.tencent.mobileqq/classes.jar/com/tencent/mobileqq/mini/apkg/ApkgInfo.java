@@ -381,6 +381,7 @@ public class ApkgInfo
     String str = this.appConfig.config.version;
     this.appConfig = paramMiniAppConfig;
     this.appConfig.config.version = str;
+    init(null);
   }
 }
 

@@ -1,88 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class alwm
-  implements DialogInterface.OnDismissListener
 {
-  public alwm(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private HashMap<String, alwn> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public alwm(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearchFriendActivity", 2, "onDismiss|pickerType : " + this.a.i);
-    }
-    if (this.a.i == 0)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  public alwn a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
-      this.a.jdField_a_of_type_Ajfw.a(this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int);
-      paramDialogInterface = this.a.jdField_a_of_type_Ajfw.a(this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int);
-      if (AppSetting.c)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(ajjy.a(2131636559) + paramDialogInterface);
-        azve.a(this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, ajjy.a(2131636562) + paramDialogInterface);
-      }
       if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearchFriendActivity", 2, "onDismiss|mCurAgeIndex1 : " + this.a.f + ", mCurAgeIndex2 : " + this.a.g + ", mAgeSelectIndex1 : " + this.a.jdField_b_of_type_Int + ", mAgeSelectIndex2 : " + this.a.jdField_c_of_type_Int);
+        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.getPreprocessor in valid param");
       }
-      awqx.b(this.a.app, "CliOper", "", "", "0X8004243", "0X8004243", 0, 0, this.a.jdField_b_of_type_Int + "", this.a.jdField_c_of_type_Int + "", "", "");
+      return null;
     }
-    for (;;)
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = null;
-      if (ConditionSearchFriendActivity.a(this.a) > 0)
-      {
-        this.a.jdField_e_of_type_AndroidViewView.scrollBy(0, -ConditionSearchFriendActivity.a(this.a));
-        ConditionSearchFriendActivity.a(this.a, 0);
+      paramString = (alwn)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      return paramString;
+    }
+  }
+  
+  public void a(String paramString, alwn paramalwn)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramalwn == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.setPreprocessor in valid param");
       }
       return;
-      if (this.a.i == 3)
-      {
-        this.a.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
-        this.a.jdField_a_of_type_Ajfw.b(this.a.d);
-        if (AppSetting.c)
-        {
-          this.a.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(ajjy.a(2131636561) + ajfw.c[this.a.d]);
-          azve.a(this.a.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem, ajjy.a(2131636572) + ajfw.c[this.a.d]);
-        }
-        awqx.b(this.a.app, "CliOper", "", "", "0X8006F0B", "0X8006F0B", 0, 0, this.a.d + "", "", "", "");
-      }
-      else
-      {
-        this.a.jdField_c_of_type_AndroidWidgetTextView = null;
-        paramDialogInterface = ConditionSearchFriendActivity.a(this.a);
-        String[] arrayOfString = new String[4];
-        arrayOfString[0] = this.a.jdField_b_of_type_JavaLangString;
-        arrayOfString[1] = this.a.jdField_a_of_type_ArrayOfJavaLangString[0];
-        arrayOfString[2] = this.a.jdField_a_of_type_ArrayOfJavaLangString[1];
-        arrayOfString[3] = this.a.jdField_a_of_type_ArrayOfJavaLangString[2];
-        if (this.a.i == 1)
-        {
-          this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
-          this.a.jdField_a_of_type_Ajfw.a(0, paramDialogInterface);
-          this.a.jdField_a_of_type_Ajfw.b(arrayOfString);
-          if (AppSetting.c)
-          {
-            this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(ajjy.a(2131636558) + paramDialogInterface);
-            azve.a(this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem, ajjy.a(2131636557) + paramDialogInterface);
-          }
-        }
-        else if (this.a.i == 2)
-        {
-          this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
-          this.a.jdField_a_of_type_Ajfw.a(1, paramDialogInterface);
-          this.a.jdField_a_of_type_Ajfw.c(arrayOfString);
-          if (AppSetting.c)
-          {
-            this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(ajjy.a(2131636568) + paramDialogInterface);
-            azve.a(this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem, ajjy.a(2131636569) + paramDialogInterface);
-          }
-        }
-      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, new Object[] { "AAShare.setPreprocessor app=", paramString });
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramalwn);
+      return;
     }
   }
 }

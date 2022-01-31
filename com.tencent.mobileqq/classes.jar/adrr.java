@@ -1,45 +1,30 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 class adrr
-  extends batl
+  extends ClickableSpan
 {
-  adrr(adro paramadro, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  adrr(adqy paramadqy) {}
   
-  public void onCancel(batm parambatm)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onCancel| task:" + parambatm);
-    }
-  }
-  
-  public void onDone(batm parambatm)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onDone| task:" + parambatm);
-    }
-    if (parambatm.b()) {}
-    do
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
     {
-      return;
-      parambatm.a().getInt("type");
-    } while (parambatm.a() == -1);
-    parambatm = new Message();
-    parambatm.what = adro.jdField_a_of_type_Int;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambatm);
+      paramView = bfol.a(this.a.jdField_a_of_type_AndroidContentContext);
+      paramView.b(2131720365);
+      paramView.c(2131690596);
+      paramView.a(new adrs(this));
+      paramView.a(new adrt(this, paramView));
+      paramView.show();
+      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005975", "0X8005975", 0, 0, "", "", "", "");
+    }
   }
   
-  public boolean onStart(batm parambatm)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onStart| task:" + parambatm);
-    }
-    return true;
+    paramTextPaint.setColor(-12541697);
   }
 }
 

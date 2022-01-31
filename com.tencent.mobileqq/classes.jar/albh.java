@@ -1,37 +1,25 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.1;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.2;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.music.SongInfo;
-
-public final class albh
-  implements arzq
+class albh
+  extends alxx
 {
-  private String a;
+  albh(albg paramalbg) {}
   
-  public albh(String paramString)
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
   {
-    this.a = paramString;
+    if (albg.a(this.a) != null) {
+      albg.a(this.a).a(paramArrayOfFloat);
+    }
   }
   
-  public String getToken()
+  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    return albg.a();
-  }
-  
-  public void onPlaySongChanged(SongInfo paramSongInfo)
-  {
-    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.2(this, paramSongInfo));
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.1(this, paramInt));
+    if (albg.a(this.a) != null) {
+      albg.a(this.a).a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     albh
  * JD-Core Version:    0.7.0.1
  */

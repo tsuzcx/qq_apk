@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ar.model;
 
-import akso;
-import akwn;
+import alha;
+import alkz;
 
 public class QQARSession$15
   implements Runnable
 {
-  public QQARSession$15(akwn paramakwn) {}
+  public QQARSession$15(alkz paramalkz) {}
   
   public void run()
   {
-    if ((akwn.b(this.this$0)) && (this.this$0.a == 2) && (akwn.a(this.this$0) != null)) {
-      akwn.a(this.this$0).a(0, 4);
+    if ((alkz.b(this.this$0)) && (this.this$0.a == 2) && (alkz.a(this.this$0) != null)) {
+      alkz.a(this.this$0).a(0, 4);
     }
   }
 }

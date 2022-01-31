@@ -1,30 +1,42 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.QavPanelSoundWaveView;
+import android.os.Bundle;
+import android.os.RemoteCallbackList;
+import android.os.RemoteException;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.qphone.base.util.QLog;
 
-public class lxt
-  extends BroadcastReceiver
+class lxt
+  extends mxm
 {
-  public lxt(QavPanel paramQavPanel) {}
+  lxt(lxs paramlxs, String paramString, int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle arg3)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "sendNearbyVideoChatPbReq, cmd " + this.jdField_a_of_type_JavaLangString + "==>onResult, errorCode:" + paramInt);
+    }
+    synchronized (this.jdField_a_of_type_Lxs.a.a)
     {
-      do
+      int j = this.jdField_a_of_type_Lxs.a.a.beginBroadcast();
+      int i = 0;
+      for (;;)
       {
-        return;
-        if (!"android.intent.action.SCREEN_ON".equals(paramIntent.getAction())) {
-          break;
+        if (i < j) {
+          try
+          {
+            ((lwt)this.jdField_a_of_type_Lxs.a.a.getBroadcastItem(i)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt, paramArrayOfByte);
+            i += 1;
+          }
+          catch (RemoteException paramArrayOfByte)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "callBack RemoteException", paramArrayOfByte);
+            }
+          }
         }
-      } while ((this.a.a == null) || (!this.a.b) || (this.a.a.getVisibility() != 0));
-      this.a.a.f();
+      }
+      this.jdField_a_of_type_Lxs.a.a.finishBroadcast();
       return;
-    } while ((!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction())) || (this.a.a == null));
-    this.a.a.g();
+    }
   }
 }
 

@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-class addn
-  implements apca
+public class addn
+  implements adfj
 {
-  addn(addm paramaddm, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct) {}
+  public addn(DoodlePanel paramDoodlePanel) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    ((xvq)this.jdField_a_of_type_Addm.a.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
-    addl.a(this.jdField_a_of_type_Addm.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
+    if (DoodlePanel.a(this.a) != null)
+    {
+      if (DoodlePanel.a(this.a) != null) {
+        DoodlePanel.a(this.a).setTemplateID(paramInt);
+      }
+      DoodlePanel.a(this.a);
+      bbaj.a(this.a.getContext(), "aio_doodle_template_picker_select", String.valueOf(paramInt));
+    }
   }
-  
-  public void b() {}
 }
 
 

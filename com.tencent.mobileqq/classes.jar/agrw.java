@@ -1,24 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import mqq.app.AppRuntime;
 
 public class agrw
-  implements agrf
+  extends atzo
 {
-  public agrw(DrawHbFragment paramDrawHbFragment, View paramView) {}
-  
-  public void a(int paramInt)
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131302444).setVisibility(8);
-      return;
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp))) {
+      agsb.a().a = ((get_albumlist_num_rsp)paramBundle).album_num;
     }
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131302444).setVisibility(0);
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(NewPhotoListActivity.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agrw
  * JD-Core Version:    0.7.0.1
  */

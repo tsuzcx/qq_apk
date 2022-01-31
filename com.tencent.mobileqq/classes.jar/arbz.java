@@ -1,170 +1,87 @@
-import android.annotation.SuppressLint;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.util.ArrayList;
 
-class arbz
+public class arbz
 {
-  int jdField_a_of_type_Int = 0;
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  View jdField_d_of_type_AndroidViewView;
-  TextView jdField_d_of_type_AndroidWidgetTextView;
-  View jdField_e_of_type_AndroidViewView;
-  TextView jdField_e_of_type_AndroidWidgetTextView;
-  View jdField_f_of_type_AndroidViewView;
-  TextView jdField_f_of_type_AndroidWidgetTextView;
-  View jdField_g_of_type_AndroidViewView;
-  TextView jdField_g_of_type_AndroidWidgetTextView;
-  View h;
-  View i;
+  private static volatile arbz jdField_a_of_type_Arbz;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new arcb(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new arca(this);
+  private ArrayList<arcc> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  arbz(arbp paramarbp, View paramView)
+  private arbz(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131309774);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131309788));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131309787));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131309773);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131309786));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131309775));
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131309778);
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131309777);
-    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131309771);
-    this.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131309785);
-    this.jdField_g_of_type_AndroidViewView = paramView.findViewById(2131309781);
-    this.h = paramView.findViewById(2131309779);
-    this.i = paramView.findViewById(2131309783);
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131309782));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131309780));
-    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131309784));
-    if (beog.a())
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    a(true);
+  }
+  
+  public static arbz a(Context paramContext)
+  {
+    if (jdField_a_of_type_Arbz == null) {}
+    try
     {
-      this.jdField_g_of_type_AndroidViewView.setBackgroundResource(2130844446);
-      this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(arbp.a(paramarbp).getResources().getColor(2131100106));
-      this.h.setBackgroundResource(2130844446);
-      this.jdField_f_of_type_AndroidWidgetTextView.setTextColor(arbp.a(paramarbp).getResources().getColor(2131100106));
-      this.i.setBackgroundResource(2130844446);
-      this.jdField_g_of_type_AndroidWidgetTextView.setTextColor(arbp.a(paramarbp).getResources().getColor(2131100106));
-      paramView.findViewById(2131299698).setBackgroundColor(Color.parseColor("#282828"));
-      paramView.findViewById(2131299699).setBackgroundColor(Color.parseColor("#282828"));
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(-1);
+      if (jdField_a_of_type_Arbz == null) {
+        jdField_a_of_type_Arbz = new arbz(paramContext);
+      }
+      return jdField_a_of_type_Arbz;
     }
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new arca(this, paramarbp));
-    this.jdField_c_of_type_AndroidViewView.setOnClickListener(new arcb(this, paramarbp));
-    if (beog.a())
-    {
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130844447);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
+    finally {}
+  }
+  
+  public void a(arcc paramarcc)
+  {
+    if ((!this.jdField_a_of_type_JavaUtilArrayList.contains(paramarcc)) && (paramarcc != null)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramarcc);
     }
-    this.jdField_g_of_type_AndroidViewView.setOnClickListener(new arcc(this, paramarbp));
-    this.h.setOnClickListener(new arcd(this, paramarbp));
-    this.i.setOnClickListener(new arce(this, paramarbp));
   }
   
-  private String a()
+  public void a(boolean paramBoolean)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      return "drive";
-    case 2: 
-      return "bus";
-    }
-    return "walk";
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-  }
-  
-  void a(int paramInt)
-  {
-    this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_f_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_e_of_type_AndroidViewView.setVisibility(8);
-    LocationRoom.Venue localVenue = arbp.a(this.jdField_a_of_type_Arbp).a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(localVenue.b);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(localVenue.c);
-    b(paramInt);
-  }
-  
-  void a(View paramView)
-  {
-    this.jdField_g_of_type_AndroidViewView.setSelected(false);
-    this.h.setSelected(false);
-    this.i.setSelected(false);
-    paramView.setSelected(true);
-  }
-  
-  void a(arcv paramarcv)
-  {
-    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_f_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_e_of_type_AndroidViewView.setVisibility(0);
-    LocationRoom.Venue localVenue = arbp.a(this.jdField_a_of_type_Arbp).a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(localVenue.b);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(localVenue.c);
-    if (paramarcv != null) {}
-    for (int j = paramarcv.jdField_a_of_type_JavaLangInteger.intValue();; j = 1)
-    {
-      b(j);
+    if (this.jdField_a_of_type_Boolean == paramBoolean) {
       return;
     }
-  }
-  
-  @SuppressLint({"SetTextI18n", "DefaultLocale"})
-  void a(arcv paramarcv, LocationRoom.Venue paramVenue)
-  {
-    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_f_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_e_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramVenue.b);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramVenue.c);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(arcl.a(paramarcv.jdField_a_of_type_Float));
-    if (paramarcv.b < 1000.0F) {}
-    for (paramVenue = String.format(arbp.a(this.jdField_a_of_type_Arbp).getResources().getString(2131628362), new Object[] { Integer.valueOf(Math.round(paramarcv.b)) });; paramVenue = String.format(arbp.a(this.jdField_a_of_type_Arbp).getResources().getString(2131628361), new Object[] { Double.valueOf(paramarcv.b / 1000.0D) }))
+    if (paramBoolean)
     {
-      this.jdField_d_of_type_AndroidWidgetTextView.setText(paramVenue);
-      b(paramarcv.jdField_a_of_type_JavaLangInteger.intValue());
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
+      localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
+      localIntentFilter.addAction("tencent.av.v2q.StopVideoChat");
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      localIntentFilter.addAction("VolumeBtnDown");
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
       return;
     }
+    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
   }
   
-  void b()
+  public boolean a()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Int = 1;
-      a(this.jdField_g_of_type_AndroidViewView);
-      return;
-    case 2: 
-      a(this.h);
-      return;
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+      return false;
     }
-    a(this.i);
+    return true;
+  }
+  
+  public void b(arcc paramarcc)
+  {
+    if ((paramarcc != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramarcc))) {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(paramarcc);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arbz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,45 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.view.ApolloMainViewBinder.1;
-import com.tencent.mobileqq.apollo.view.ApolloMainViewBinder.1.1.1;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.4;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajcf
-  implements Animation.AnimationListener
+  implements bcwh
 {
-  public ajcf(ApolloMainViewBinder.1 param1) {}
+  public ajcf(CmGameCommonShare.4 param4) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(BaseResp paramBaseResp)
   {
-    this.a.a.setVisibility(8);
-    this.a.a.postDelayed(new ApolloMainViewBinder.1.1.1(this), 300L);
+    if (paramBaseResp == null) {
+      return;
+    }
+    QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[shareResult2WXFriendOrCircle], resp.errCode:" + paramBaseResp.errCode);
+    if (paramBaseResp.errCode == 0) {
+      if (this.a.a == 0) {
+        ajcd.a(this.a.this$0, 0, 2);
+      }
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      ajcd.a(this.a.this$0, 0, 3);
+      continue;
+      if (paramBaseResp.errCode == -2)
+      {
+        if (this.a.a == 0) {
+          ajcd.a(this.a.this$0, 2, 2);
+        } else {
+          ajcd.a(this.a.this$0, 2, 3);
+        }
+      }
+      else if (this.a.a == 0) {
+        ajcd.a(this.a.this$0, 1, 2);
+      } else {
+        ajcd.a(this.a.this$0, 1, 3);
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,109 +1,38 @@
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
+import android.graphics.Rect;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.Transformation;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.BounceScrollView;
 
-public class atsh
+class atsh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public Drawable a;
-  public Transformation a;
-  public ArrayList<Animation> a;
-  public float b = 1.0F;
-  public float c = 1.0F;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j = 255;
+  atsh(atsa paramatsa) {}
   
-  public atsh()
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
-  {
-    this.f = paramInt1;
-    this.g = paramInt2;
-    this.h = paramInt3;
-    this.i = paramInt4;
-  }
-  
-  public void a(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramAnimation);
-    paramAnimation.start();
-  }
-  
-  public boolean a(Canvas paramCanvas)
-  {
-    if ((this.j != 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+    Object localObject = new Rect();
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getRootView().getHeight() - ((Rect)localObject).bottom;
+    if (i <= 0) {}
+    int j;
+    do
     {
-      paramCanvas.save();
-      paramCanvas.translate(this.f, this.g);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.j);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.h, this.i);
-      paramCanvas.scale(this.b, this.c, this.h / 2, this.i / 2);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      paramCanvas.restore();
-    }
-    paramCanvas = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    boolean bool = false;
-    if (paramCanvas.hasNext())
-    {
-      Animation localAnimation = (Animation)paramCanvas.next();
-      if ((bool) || (localAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation))) {}
-      for (bool = true;; bool = false) {
-        break;
-      }
-    }
-    return bool;
-  }
-  
-  public void a_(Drawable paramDrawable) {}
-  
-  public void c()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void c(Canvas paramCanvas)
-  {
-    if ((this.j != 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
-    {
-      paramCanvas.save();
-      paramCanvas.translate(this.f, this.g);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.j);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.h, this.i);
-      paramCanvas.scale(this.b, this.c, this.h / 2, this.i / 2);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      paramCanvas.restore();
-    }
-  }
-  
-  public boolean c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    boolean bool = false;
-    if (localIterator.hasNext())
-    {
-      Animation localAnimation = (Animation)localIterator.next();
-      if ((bool) || (localAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation))) {}
-      for (bool = true;; bool = false) {
-        break;
-      }
-    }
-    return bool;
+      return;
+      j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getScrollY();
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getCurrentFocus();
+    } while ((localObject == null) || (!(localObject instanceof EditText)) || (((View)localObject).getParent() == null));
+    int k = ((ViewGroup)((View)localObject).getParent()).getBottom();
+    int m = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getMeasuredHeight();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollBy(0, k + i - m - j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsh
  * JD-Core Version:    0.7.0.1
  */

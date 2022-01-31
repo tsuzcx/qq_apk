@@ -15,7 +15,7 @@ class RandomController$6
   {
     RandomController.a(this.this$0).a().removeCallbacks(RandomController.d(this.this$0));
     if (!RandomController.a(this.this$0).a()) {
-      PopupDialog.a(RandomController.a(this.this$0).getApp().getApplicationContext(), RandomController.a(this.this$0).getApp().getString(2131630334), RandomController.a(this.this$0, RandomController.d(this.this$0)));
+      PopupDialog.a(RandomController.a(this.this$0).getApp().getApplicationContext(), RandomController.a(this.this$0).getApp().getString(2131696031), RandomController.a(this.this$0, RandomController.d(this.this$0)));
     }
     do
     {

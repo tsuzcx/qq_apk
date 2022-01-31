@@ -1,22 +1,25 @@
-import android.graphics.Point;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 
 public class aekw
+  extends aekt
 {
-  private int jdField_a_of_type_Int;
-  private aekm jdField_a_of_type_Aekm;
-  private aekn jdField_a_of_type_Aekn;
-  private Point jdField_a_of_type_AndroidGraphicsPoint;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  
-  aekw(Point paramPoint, String paramString, boolean paramBoolean, aekn paramaekn, aekm paramaekm, int paramInt)
+  public aekw(QQAppInterface paramQQAppInterface, aell paramaell, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, acvj paramacvj)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Aekn = paramaekn;
-    this.jdField_a_of_type_Aekm = paramaekm;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
+    }
+    this.a.b.setVisibility(0);
+    this.a.b.setTextColor(-8947849);
+    this.a.b.setText("QQ企业红包");
+    return false;
   }
 }
 

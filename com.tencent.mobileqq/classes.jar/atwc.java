@@ -1,29 +1,46 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_feeds_write.DelFeedRsp;
+import com.tencent.qphone.base.util.QLog;
 
-public class atwc
-  extends RecyclerView.ViewHolder
+final class atwc
+  implements athx
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public RelativeLayout a;
-  public MessageProgressView a;
-  public ImageView b;
+  atwc(atwf paramatwf, String paramString) {}
   
-  public atwc(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramView);
-    float f = 2.0F * PersonalityLabelGalleryActivity.a(paramPersonalityLabelGalleryActivity);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131305823));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131305764));
-    ((CornerImageView)this.jdField_a_of_type_AndroidWidgetImageView).setRadius(f);
-    ((CornerImageView)this.jdField_a_of_type_AndroidWidgetImageView).setPressMask(true);
-    this.b = ((ImageView)paramView.findViewById(2131300290));
-    ((CornerImageView)this.b).setRadius(f);
+    boolean bool = true;
+    if (paramInt == 0) {
+      paramBundle = new ilive_feeds_write.DelFeedRsp();
+    }
+    for (;;)
+    {
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramInt = paramBundle.ret.get();
+        if (paramInt == 0)
+        {
+          if (this.jdField_a_of_type_Atwf != null) {
+            this.jdField_a_of_type_Atwf.a(bool, this.jdField_a_of_type_JavaLangString);
+          }
+          return;
+        }
+        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, ret=" + paramInt + ",msg=" + paramBundle.err_msg.get().toStringUtf8());
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, e=" + paramArrayOfByte.toString());
+        continue;
+      }
+      bool = false;
+      continue;
+      QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
+    }
   }
 }
 

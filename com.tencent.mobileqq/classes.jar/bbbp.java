@@ -1,35 +1,39 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
-class bbbp
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public final class bbbp
+  extends BroadcastReceiver
 {
-  bbbp(bbbo parambbbo, View paramView) {}
+  public bbbp(BaseApplicationImpl paramBaseApplicationImpl) {}
   
-  public void onGlobalLayout()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.height();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "heightDiff:" + i);
-    }
-    if (i > 150)
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    int i;
+    do
     {
-      this.jdField_a_of_type_Bbbo.c = true;
-      this.jdField_a_of_type_Bbbo.a(false, 0);
-    }
-    while (!this.jdField_a_of_type_Bbbo.c) {
-      return;
-    }
-    this.jdField_a_of_type_Bbbo.c = false;
+      do
+      {
+        return;
+      } while (!"tencent.video.q2v.debug".equals(paramIntent.getAction()));
+      i = paramIntent.getIntExtra("_debug_Event_index", -1);
+      int j = paramIntent.getIntExtra("_debug_Event_value", -1);
+      if ((i >= 0) && (i < 35))
+      {
+        AudioHelper.a[i] = j;
+        QLog.w("AudioHelper", 1, "ReceiverDebugValue, [" + i + "]=[" + j + "]");
+      }
+    } while (i != 2);
+    AudioHelper.a(this.a.getApplicationContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbbp
  * JD-Core Version:    0.7.0.1
  */

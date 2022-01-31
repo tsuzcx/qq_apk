@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.launch;
 
-import bbmy;
+import bcpw;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 
 class AppBrandLaunchManager$4
@@ -10,7 +10,7 @@ class AppBrandLaunchManager$4
   
   public void run()
   {
-    bbmy.a(AppBrandLaunchManager.access$100(this.this$0), GameWnsUtils.gameDisableHint(), 0).a();
+    bcpw.a(AppBrandLaunchManager.access$100(this.this$0), GameWnsUtils.gameDisableHint(), 0).a();
   }
 }
 

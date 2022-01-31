@@ -1,29 +1,27 @@
-class bdlk
-  implements bdls
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+
+public class bdlk
+  implements DialogInterface.OnCancelListener
 {
-  bdlk(bdli parambdli, bdls parambdls) {}
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void a(int paramInt, String paramString, bdlq parambdlq)
+  public bdlk(bdlc parambdlc, String paramString1, String paramString2)
   {
-    try
-    {
-      if (this.jdField_a_of_type_Bdls != null) {
-        this.jdField_a_of_type_Bdls.a(paramInt, paramString, parambdlq);
-      }
-      if (paramInt != 0) {
-        bdli.a(this.jdField_a_of_type_Bdli, parambdlq);
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      bdnw.d("minisdk-start_AppRuntimeLoaderManager", "runtime load result exception!", paramString);
-    }
+    this.jdField_a_of_type_JavaLangString = bdjc.a(paramString1, "NEWYYB");
+    this.b = paramString2;
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.jdField_a_of_type_Bdlc.a(this.b);
+    bdjc.a("720", this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdlk
  * JD-Core Version:    0.7.0.1
  */

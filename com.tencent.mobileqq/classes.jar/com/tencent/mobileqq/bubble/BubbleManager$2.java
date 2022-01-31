@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.bubble;
 
-import baio;
+import bbjv;
 
 class BubbleManager$2
   implements Runnable
@@ -9,9 +9,9 @@ class BubbleManager$2
   
   public void run()
   {
-    baio.a(null, "AIO_bubble_craete_bubble_info");
+    bbjv.a(null, "AIO_bubble_craete_bubble_info");
     this.this$0.a(this.a, true);
-    baio.a("AIO_bubble_craete_bubble_info", null);
+    bbjv.a("AIO_bubble_craete_bubble_info", null);
   }
 }
 

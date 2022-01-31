@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.message.messageclean;
 
-import abme;
-import akdm;
-import awtx;
-import baht;
+import abwf;
+import akry;
+import axty;
+import bbiz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,15 +14,15 @@ public class ScanSpaceManager$ScanSpaceTask
   
   public void run()
   {
-    long l1 = baht.a();
-    long l2 = baht.a(BaseApplicationImpl.getApplication());
-    long l3 = baht.b();
-    long l4 = baht.b(BaseApplicationImpl.getApplication());
+    long l1 = bbiz.a();
+    long l2 = bbiz.a(BaseApplicationImpl.getApplication());
+    long l3 = bbiz.b();
+    long l4 = bbiz.b(BaseApplicationImpl.getApplication());
     this.this$0.a = (l1 + l2);
     this.this$0.c = (l3 + l4);
-    akdm localakdm = new akdm(this);
-    this.this$0.b = awtx.a().a(localakdm, 0, 98);
-    localakdm.a(100);
+    akry localakry = new akry(this);
+    this.this$0.b = axty.a().a(localakry, 0, 98);
+    localakry.a(100);
     QLog.d("ScanSpaceManager", 1, "SpaceInfo total: " + this.this$0.a + " ava: " + this.this$0.c + " qq: " + this.this$0.b);
     QLog.d("ScanSpaceManager", 1, "SpaceInfo totalIner: " + l1 + " totalExter: " + l2 + " avaInter: " + l3 + " avaExter: " + l4);
     ScanSpaceManager.a(this.this$0, true);

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import auuv;
+import avuj;
 import com.tencent.ttpic.openapi.filter.RenderBuffer;
 import java.util.Map;
 
@@ -11,17 +11,17 @@ class CameraCaptureView$8
   
   public void run()
   {
-    if (!this.this$0.a.containsKey(auuv.d)) {
-      this.this$0.a.put(auuv.d, new RenderBuffer(this.a, this.b, 33984));
+    if (!this.this$0.a.containsKey(avuj.d)) {
+      this.this$0.a.put(avuj.d, new RenderBuffer(this.a, this.b, 33984));
     }
-    if (!this.this$0.a.containsKey(auuv.e)) {
-      this.this$0.a.put(auuv.e, new RenderBuffer(this.this$0.f, this.this$0.g, 33984));
+    if (!this.this$0.a.containsKey(avuj.e)) {
+      this.this$0.a.put(avuj.e, new RenderBuffer(this.this$0.f, this.this$0.g, 33984));
     }
-    if (!this.this$0.a.containsKey(auuv.f)) {
-      this.this$0.a.put(auuv.f, new RenderBuffer(this.c, this.d, 33984));
+    if (!this.this$0.a.containsKey(avuj.f)) {
+      this.this$0.a.put(avuj.f, new RenderBuffer(this.c, this.d, 33984));
     }
-    if (!this.this$0.a.containsKey(auuv.g)) {
-      this.this$0.a.put(auuv.g, new RenderBuffer(this.this$0.h, this.this$0.i, 33984));
+    if (!this.this$0.a.containsKey(avuj.g)) {
+      this.this$0.a.put(avuj.g, new RenderBuffer(this.this$0.h, this.this$0.i, 33984));
     }
     this.this$0.a(false);
   }

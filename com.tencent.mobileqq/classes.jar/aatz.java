@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class aatz
-  extends bajp
+  implements View.OnClickListener
 {
-  public aatz(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
-  {
-    super(paramInt);
-  }
+  public aatz(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    azyk.a(this.a, this.a.app.getCurrentAccountUin(), "inside.myCardButton", 1, 3, 1, "", true);
-    awqx.b(this.a.app, "CliOper", "", "", "card_mall", "0X8004DBF", 0, 0, "", "", "", "");
-    VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "defaultcard", "click_card_mine", "", 1, 0, 0, "", "", "");
-    this.a.b(2);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    ChatSettingForTroop.h(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
   }
 }
 

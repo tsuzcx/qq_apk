@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util;
 
-import rus;
+import shk;
 
 class ReadInjoyWebShareHelper$6$1
   implements Runnable
@@ -9,7 +9,7 @@ class ReadInjoyWebShareHelper$6$1
   
   public void run()
   {
-    rus.c(this.a.this$0);
+    shk.c(this.a.this$0);
   }
 }
 

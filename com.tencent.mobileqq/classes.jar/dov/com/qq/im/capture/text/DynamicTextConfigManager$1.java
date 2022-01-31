@@ -1,23 +1,23 @@
 package dov.com.qq.im.capture.text;
 
-import bhma;
-import bhmb;
-import bhmd;
+import bjgs;
+import bjgt;
+import bjgv;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 class DynamicTextConfigManager$1
   implements Runnable
 {
-  DynamicTextConfigManager$1(DynamicTextConfigManager paramDynamicTextConfigManager, DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, bhmd parambhmd) {}
+  DynamicTextConfigManager$1(DynamicTextConfigManager paramDynamicTextConfigManager, DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, bjgv parambjgv) {}
   
   public void run()
   {
     Iterator localIterator = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean.fontInfos.iterator();
     while (localIterator.hasNext())
     {
-      bhma localbhma = (bhma)localIterator.next();
-      DynamicTextConfigManager.a(this.this$0).a(localbhma, this.jdField_a_of_type_Bhmd);
+      bjgs localbjgs = (bjgs)localIterator.next();
+      DynamicTextConfigManager.a(this.this$0).a(localbjgs, this.jdField_a_of_type_Bjgv);
     }
   }
 }

@@ -1,28 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
-
-public class aqwg
-  implements DialogInterface.OnClickListener
+class aqwg
 {
-  public aqwg(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (FloatingScreenPermission.requestPermission(BaseApplicationImpl.getContext()))
-    {
-      ListenTogetherOverlayFragment.a(this.a, true);
-      return;
-    }
-    ListenTogetherOverlayFragment.a(this.a).finish();
-  }
+  private static final aqwd a = new aqwd(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqwg
  * JD-Core Version:    0.7.0.1
  */

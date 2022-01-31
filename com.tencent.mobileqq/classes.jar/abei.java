@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.view.View;
 
-public class abei
-  implements DialogInterface.OnClickListener
+class abei
+  implements bfps
 {
-  public abei(NotificationActivity paramNotificationActivity) {}
+  abei(abeh paramabeh, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.finish();
+    this.jdField_a_of_type_Abeh.a = false;
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abei
  * JD-Core Version:    0.7.0.1
  */

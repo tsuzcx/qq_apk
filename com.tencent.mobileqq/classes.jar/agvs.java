@@ -1,43 +1,43 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report.SpringHbReportManager;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report.SpringHbReportManager.ReportInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.os.SystemClock;
 
-public class agvs
+public abstract class agvs
 {
-  public static void a(String paramString, int paramInt1, int paramInt2, Map<String, String> paramMap)
+  private long jdField_a_of_type_Long;
+  private agvr jdField_a_of_type_Agvr;
+  private long b;
+  
+  public agvs(long paramLong)
   {
-    a(paramString, paramInt1, paramInt2, paramMap, false);
+    a(paramLong);
   }
   
-  public static void a(String paramString, int paramInt1, int paramInt2, Map<String, String> paramMap, boolean paramBoolean)
+  public final void a()
   {
-    paramString = SpringHbReportManager.ReportInfo.create(paramString, paramInt1, paramInt2, paramMap, paramBoolean);
-    if ((paramString == null) || (!paramString.isValid()))
+    long l = this.jdField_a_of_type_Long - SystemClock.elapsedRealtime();
+    if (l > 1000L)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("springHb_report_SpringHbReporter", 2, "[report] reportInfo is invalid" + paramString);
-      }
+      b(l);
       return;
     }
-    paramMap = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramMap instanceof QQAppInterface))
-    {
-      ((SpringHbReportManager)((QQAppInterface)paramMap).getManager(344)).a(paramString);
-      return;
-    }
-    paramMap = new Bundle();
-    paramMap.putSerializable("key1", paramString);
-    QIPCClientHelper.getInstance().callServer("SpringHbIPCModule", "ReportData", paramMap, null);
+    b();
   }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Agvr != null) {
+      this.jdField_a_of_type_Agvr.a(paramLong);
+    }
+    this.b = paramLong;
+    this.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() + 1000L * paramLong);
+  }
+  
+  public abstract void b();
+  
+  public abstract void b(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agvs
  * JD-Core Version:    0.7.0.1
  */

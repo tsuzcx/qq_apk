@@ -1,116 +1,39 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.util.WeakReference;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aghl
-  extends agfo
+  extends aggy
 {
-  private List<String> a;
-  
-  private aghl(AlbumListFragment paramAlbumListFragment)
+  public aghl(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    super(paramAlbumListFragment);
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
   }
   
-  public static agfk b(AlbumListFragment paramAlbumListFragment)
+  protected boolean b()
   {
-    if ((jdField_a_of_type_Agfk == null) || (jdField_a_of_type_Agfk.jdField_a_of_type_MqqUtilWeakReference.get() != paramAlbumListFragment)) {}
-    try
-    {
-      if ((jdField_a_of_type_Agfk == null) || (jdField_a_of_type_Agfk.jdField_a_of_type_MqqUtilWeakReference.get() != paramAlbumListFragment)) {
-        jdField_a_of_type_Agfk = new aghl(paramAlbumListFragment);
-      }
-      return jdField_a_of_type_Agfk;
-    }
-    finally {}
+    return true;
   }
   
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  protected void g()
   {
-    paramView = super.a(paramInt, paramView, paramViewGroup);
-    paramViewGroup = (AlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((paramViewGroup != null) && (paramViewGroup.isAdded()) && (!paramViewGroup.isDetached()) && (!paramViewGroup.isRemoving()))
-    {
-      paramViewGroup = paramViewGroup.a;
-      if (paramViewGroup != null)
-      {
-        paramViewGroup = paramViewGroup.a(paramInt);
-        if ((paramViewGroup != null) && ((paramView instanceof TextView))) {
-          ((TextView)paramView).setText(paramViewGroup.name);
-        }
-      }
-    }
-    return paramView;
+    this.e = true;
+    super.g();
   }
   
-  public void a(int paramInt)
+  protected void u()
   {
-    super.a(-1);
+    super.u();
   }
   
-  protected void a(Intent paramIntent)
+  protected void v()
   {
-    if (paramIntent.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 0) == 5) {
-      paramIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 6);
-    }
-    super.a(paramIntent);
-    this.jdField_a_of_type_Aggf.b = paramIntent.getStringExtra("ALBUM_NAME");
-    paramIntent = (AlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((paramIntent != null) && (paramIntent.isAdded()) && (!paramIntent.isDetached()) && (!paramIntent.isRemoving()))
-    {
-      paramIntent = bgwg.a(paramIntent.getActivity().getApplicationContext(), this.jdField_a_of_type_Aggf.a, "pref_select_album");
-      if (!TextUtils.isEmpty(paramIntent)) {
-        break label176;
-      }
-    }
-    label176:
-    for (paramIntent = new ArrayList();; paramIntent = bgwg.a(paramIntent))
-    {
-      this.jdField_a_of_type_JavaUtilList = paramIntent;
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-        this.jdField_a_of_type_Aggf.c = ((String)this.jdField_a_of_type_JavaUtilList.get(0));
-      }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_Aggf.c)) {
-        this.jdField_a_of_type_Aggf.c = "$RecentAlbumId";
-      }
-      return;
-    }
+    super.v();
   }
   
-  protected void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
+  protected void y()
   {
-    super.a(paramQQAlbumInfo, paramInt, paramIntent);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Aggf.b)) {
-      paramIntent.putExtra("ALBUM_NAME", this.jdField_a_of_type_Aggf.b);
-    }
-    paramIntent = (AlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((paramIntent != null) && (paramIntent.isAdded()) && (!paramIntent.isDetached()) && (!paramIntent.isRemoving()) && (this.jdField_a_of_type_JavaUtilList != null)) {
-      if (!TextUtils.isEmpty(paramQQAlbumInfo._id))
-      {
-        if ((this.jdField_a_of_type_JavaUtilList.contains(paramQQAlbumInfo._id)) && (!TextUtils.equals(paramQQAlbumInfo._id, (CharSequence)this.jdField_a_of_type_JavaUtilList.get(0)))) {
-          this.jdField_a_of_type_JavaUtilList.remove(paramQQAlbumInfo._id);
-        }
-        if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-          break label198;
-        }
-        this.jdField_a_of_type_JavaUtilList.add(paramQQAlbumInfo._id);
-      }
-    }
-    for (;;)
-    {
-      bgwg.a(paramIntent.getActivity().getApplicationContext(), this.jdField_a_of_type_Aggf.a, "pref_select_album", bgwg.a(this.jdField_a_of_type_JavaUtilList.iterator()));
-      return;
-      label198:
-      this.jdField_a_of_type_JavaUtilList.set(0, paramQQAlbumInfo._id);
-    }
+    this.a = "MiniPieForTroop";
   }
 }
 

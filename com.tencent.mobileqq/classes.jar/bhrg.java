@@ -1,25 +1,18 @@
-import android.os.Handler;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
-
-class bhrg
-  implements sjq
+public abstract interface bhrg
 {
-  bhrg(bhrf parambhrf) {}
+  public abstract String a();
   
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    this.a.a.b();
-    if (paramInt == 0)
-    {
-      this.a.a.a.sendEmptyMessage(3);
-      return;
-    }
-    this.a.a.a.sendEmptyMessage(5);
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2);
+  
+  public abstract void d(boolean paramBoolean);
+  
+  public abstract void j();
+  
+  public abstract void setBannerHeight(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhrg
  * JD-Core Version:    0.7.0.1
  */

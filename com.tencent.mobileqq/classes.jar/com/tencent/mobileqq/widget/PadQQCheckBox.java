@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import ajjy;
+import ajyc;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -35,9 +35,9 @@ public class PadQQCheckBox
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.PadQQCheckBox);
     this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(0, true);
     this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getString(1);
-    LayoutInflater.from(paramContext).inflate(2131493788, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298626));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298634));
+    LayoutInflater.from(paramContext).inflate(2131559359, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364184));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364192));
     setChecked(this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
     paramAttributeSet.recycle();
@@ -64,7 +64,7 @@ public class PadQQCheckBox
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
     if (this.jdField_a_of_type_Boolean) {}
-    for (String str = ajjy.a(2131642078);; str = ajjy.a(2131642077))
+    for (String str = ajyc.a(2131707863);; str = ajyc.a(2131707862))
     {
       paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence + str);
       return;
@@ -75,13 +75,13 @@ public class PadQQCheckBox
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840241);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840289);
     }
     for (;;)
     {
       refreshDrawableState();
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840239);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840287);
     }
   }
   

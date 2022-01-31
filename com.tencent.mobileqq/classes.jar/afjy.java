@@ -1,104 +1,52 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.widget.Scroller;
-import com.tencent.mobileqq.activity.fling.TopContentLayout;
-import com.tencent.mobileqq.activity.fling.TopContentLayout.OnOutScreenListener;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class afjy
-  extends GestureDetector.SimpleOnGestureListener
+  extends afjv
+  implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  
-  public afjy(TopContentLayout paramTopContentLayout, Context paramContext)
+  public afjy(Context paramContext, QQAppInterface paramQQAppInterface, aipp paramaipp, atyy paramatyy)
   {
-    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, 50.0F, paramContext.getResources().getDisplayMetrics());
+    super(paramContext, paramQQAppInterface, paramaipp, paramatyy);
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public View a(int paramInt, View paramView)
   {
-    int i;
-    int j;
-    if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
+    View localView;
+    if (paramView != null)
     {
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, false);
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getWidth();
-      j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
-      if (paramFloat1 <= 0.0F) {
-        break label96;
-      }
-      i -= j;
+      localView = paramView;
+      if ((paramView.getTag() instanceof afjz)) {}
     }
-    for (;;)
+    else
     {
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startScroll((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, i, 0, 350);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.invalidate();
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label96:
-      i = -j;
+      localView = LayoutInflater.from(this.a).inflate(2131561129, null);
     }
+    localView.setOnClickListener(this);
+    localView.setTag(new afjz());
+    return localView;
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onClick(View paramView)
   {
-    float f1;
-    if (!TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
-    {
-      f1 = Math.abs(paramFloat2 / paramFloat1);
-      float f2 = Math.abs(paramMotionEvent1.getX() - paramMotionEvent2.getX());
-      if ((paramFloat1 < 0.0F) && (f1 < 0.5F) && (f2 > this.jdField_a_of_type_Float))
-      {
-        TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, true);
-        if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) != null) {
-          TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startDrag();
-        }
-        return true;
-      }
-      f1 = paramFloat1;
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, f1, paramFloat2);
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendBindContactGuideBuilder", 2, "start PhoneLaunchActivity");
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewWidth();
-    int j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
-    if ((paramFloat1 < 0.0F) && (j < i)) {
-      if (Math.abs(paramFloat1) > i - j) {
-        paramFloat1 = i - j;
-      }
-    }
-    for (;;)
-    {
-      f1 = paramFloat1;
-      if (Math.abs(paramFloat1) <= 0.0F) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.movingViewTransBy((int)paramFloat1, 0.0F);
-      f1 = paramFloat1;
-      if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) == null) {
-        break;
-      }
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).outing((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout);
-      f1 = paramFloat1;
-      break;
-      paramFloat1 = -paramFloat1;
-      continue;
-      if ((paramFloat1 > 0.0F) && (j > 0))
-      {
-        if (Math.abs(paramFloat1) > j) {
-          paramFloat1 = -j;
-        } else {
-          paramFloat1 = -paramFloat1;
-        }
-      }
-      else {
-        paramFloat1 = 0.0F;
-      }
-    }
+    Intent localIntent = new Intent(paramView.getContext(), BindNumberActivity.class);
+    localIntent.putExtra("kSrouce", 15);
+    ((Activity)paramView.getContext()).startActivityForResult(localIntent, 230);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afjy
  * JD-Core Version:    0.7.0.1
  */

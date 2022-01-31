@@ -1,25 +1,12 @@
-import com.tencent.biz.qqstory.base.preload.PreloadQueue;
+import android.view.View;
 
-public final class sid
+public class sid
 {
-  protected int a = 0;
-  
-  public PreloadQueue a()
-  {
-    PreloadQueue localPreloadQueue = new PreloadQueue();
-    PreloadQueue.access$002(localPreloadQueue, this.a);
-    return localPreloadQueue;
-  }
-  
-  public sid a(int paramInt)
-  {
-    this.a = paramInt;
-    return this;
-  }
+  private View a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sid
  * JD-Core Version:    0.7.0.1
  */

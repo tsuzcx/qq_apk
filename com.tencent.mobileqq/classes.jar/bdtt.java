@@ -1,66 +1,21 @@
-import NS_MINI_APP_MISC.MISC.StTrans4RoomidReq;
-import NS_MINI_APP_MISC.MISC.StTrans4RoomidRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import org.json.JSONObject;
+import android.text.ClipboardManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-public class bdtt
-  extends bdtz
+class bdtt
+  implements View.OnClickListener
 {
-  private MISC.StTrans4RoomidReq a = new MISC.StTrans4RoomidReq();
+  bdtt(bdts parambdts) {}
   
-  public bdtt(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.a.appid.set(paramString1);
-    this.a.groupid.set(paramString2);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_misc";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    MISC.StTrans4RoomidRsp localStTrans4RoomidRsp = new MISC.StTrans4RoomidRsp();
-    try
-    {
-      localStTrans4RoomidRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStTrans4RoomidRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("openId", localStTrans4RoomidRsp.openid.get());
-        paramArrayOfByte.put("tinyId", localStTrans4RoomidRsp.tinyid.get());
-        paramArrayOfByte.put("roomId", localStTrans4RoomidRsp.roomid.get());
-        return paramArrayOfByte;
-      }
-      bdnw.a("GetTransRoomIdRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      bdnw.a("GetTransRoomIdRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "Trans4Roomid";
+    ((ClipboardManager)this.a.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bdtt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import acyp;
-import ajtg;
-import azgu;
+import adjr;
+import akhq;
+import bahx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class TroopRobotHelper$5
   implements Runnable
 {
-  public TroopRobotHelper$5(acyp paramacyp, long paramLong) {}
+  public TroopRobotHelper$5(adjr paramadjr, long paramLong) {}
   
   public void run()
   {
@@ -20,10 +20,10 @@ public class TroopRobotHelper$5
       do
       {
         return;
-      } while (!azgu.d((QQAppInterface)localObject));
-      localObject = (ajtg)((QQAppInterface)localObject).a(20);
+      } while (!bahx.d((QQAppInterface)localObject));
+      localObject = (akhq)((QQAppInterface)localObject).a(20);
     } while (localObject == null);
-    ((ajtg)localObject).f(this.a);
+    ((akhq)localObject).f(this.a);
   }
 }
 

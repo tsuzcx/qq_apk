@@ -1,48 +1,42 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCPUMonitor.1.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class qmw
-  extends Handler
+public final class qmw
+  extends BroadcastReceiver
 {
-  public qmw(BaseTabbar paramBaseTabbar) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramMessage.what)
+    paramContext = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
     {
-    default: 
-    case 0: 
-      int i;
+      if (QLog.isColorLevel()) {
+        QLog.d(qmv.a(), 2, "Intent.ACTION_SCREEN_OFF");
+      }
+      if ((qmv.a().get() == 0) && (qmv.b().get() < qmv.a()))
+      {
+        qmv.a(new Thread(new VideoFeedsCPUMonitor.1.1(this)));
+        qmv.a().set(1);
+        qmv.a().start();
+      }
+    }
+    do
+    {
       do
       {
         return;
-        BaseTabbar.a(this.a, 0.0F);
-        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
-        this.a.invalidate();
-        i = paramMessage.arg1;
-        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
-      } while (i == 1);
-      BaseTabbar.a(this.a, BaseTabbar.a(this.a), BaseTabbar.b(this.a));
-      return;
-    case 1: 
-      if (BaseTabbar.a(this.a) < 1.0F)
-      {
-        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
-        this.a.invalidate();
-        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
-        return;
+      } while (!"android.intent.action.SCREEN_ON".equals(paramContext));
+      if (QLog.isColorLevel()) {
+        QLog.d(qmv.a(), 2, "Intent.ACTION_SCREEN_ON");
       }
-      sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(2), 10L);
-      return;
+    } while (qmv.a().get() != 1);
+    if ((qmv.a() != null) && (qmv.a().isAlive())) {
+      qmv.a().interrupt();
     }
-    BaseTabbar.a(this.a);
-    this.a.a(BaseTabbar.a(this.a), BaseTabbar.b(this.a));
-    BaseTabbar.a(this.a, 1.0F);
-    BaseTabbar.a(this.a, BaseTabbar.b(this.a));
-    this.a.invalidate();
-    BaseTabbar.a(this.a).set(false);
+    qmv.a().set(3);
   }
 }
 

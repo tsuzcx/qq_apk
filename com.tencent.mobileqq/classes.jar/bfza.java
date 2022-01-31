@@ -1,32 +1,35 @@
-import cooperation.qzone.panorama.widget.PanoramaView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 
-public class bfza
-  implements bfyg
+class bfza
+  implements View.OnLayoutChangeListener
 {
-  public bfza(PanoramaView paramPanoramaView) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a()
+  private bfza(bfyx parambfyx) {}
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (PanoramaView.a(this.a) != null) {
-      PanoramaView.a(this.a).onPanoramaClick();
+    bfyx.a(this.jdField_a_of_type_Bfyx).removeOnLayoutChangeListener(this);
+    if (bfyx.a(this.jdField_a_of_type_Bfyx).getItemCount() > bfyx.c(this.jdField_a_of_type_Bfyx) + bfyx.d(this.jdField_a_of_type_Bfyx))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PagerSnapHelper", 2, "onLayoutChange: ");
+      }
+      paramView = this.jdField_a_of_type_Bfyx.a(bfyx.a(this.jdField_a_of_type_Bfyx));
+      if ((!this.jdField_a_of_type_Bfyx.a(paramView)) || (this.jdField_a_of_type_Boolean)) {
+        bfyx.a(this.jdField_a_of_type_Bfyx, paramView, this.jdField_a_of_type_Boolean);
+      }
+      this.jdField_a_of_type_Boolean = false;
     }
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (PanoramaView.a(this.a) != null) {
-      PanoramaView.a(this.a).a(paramFloat);
-    }
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.a.a(paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfza
  * JD-Core Version:    0.7.0.1
  */

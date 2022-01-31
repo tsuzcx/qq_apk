@@ -1,6 +1,13 @@
-public abstract interface qhu
+import android.widget.ImageView;
+import android.widget.TextView;
+
+class qhu
+  extends qhw
 {
-  public abstract void a(qht paramqht, boolean paramBoolean);
+  public ImageView a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

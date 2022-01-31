@@ -3,14 +3,16 @@ package com.tencent.qqmini.sdk.report;
 import NS_COMM.COMM.Entry;
 import NS_MINI_REPORT.REPORT.SingleDcData;
 import android.content.SharedPreferences;
-import bdnw;
-import bdsq;
-import bdsr;
-import bdzf;
+import besl;
+import beyn;
+import beyo;
+import bfgt;
+import bfgv;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public final class MiniProgramLpReportDC04884$1
   implements Runnable
@@ -20,11 +22,15 @@ public final class MiniProgramLpReportDC04884$1
   public void run()
   {
     if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
-      bdnw.a("MiniProgramLpReportDC04", "reportApiReportcalled with args: " + this.a);
+      besl.a("MiniProgramLpReportDC04", "reportApiReportcalled with args: " + this.a);
     }
-    Object localObject = bdzf.a().getString("version", "1.10.0.00173");
-    localObject = bdsq.a(9, String.valueOf(6), new ArrayList(Arrays.asList(new COMM.Entry[] { bdsq.a("appid", this.b), bdsq.a("miniapp_version", this.c), bdsq.a("baselib_version", (String)localObject), bdsq.a("apiResult", this.a) })), null);
-    bdsr.a().a((REPORT.SingleDcData)localObject);
+    Object localObject = bfgv.a().getString("version", "1.12.1.00001");
+    localObject = new ArrayList(Arrays.asList(new COMM.Entry[] { beyn.a("appid", this.b), beyn.a("miniapp_version", this.c), beyn.a("baselib_version", (String)localObject), beyn.a("apiResult", this.a) }));
+    if (!bfgt.a()) {
+      ((ArrayList)localObject).addAll(beyn.a());
+    }
+    localObject = beyn.a(9, String.valueOf(6), (List)localObject, null);
+    beyo.a().a((REPORT.SingleDcData)localObject);
   }
 }
 

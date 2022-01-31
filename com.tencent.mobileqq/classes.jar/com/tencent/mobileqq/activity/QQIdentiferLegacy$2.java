@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bbmy;
+import bcpw;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
 class QQIdentiferLegacy$2
@@ -10,7 +10,7 @@ class QQIdentiferLegacy$2
   
   public void run()
   {
-    bbmy.a(QQIdentiferLegacy.a(this.this$0), this.a, 1).b(QQIdentiferLegacy.a(this.this$0).getTitleBarHeight());
+    bcpw.a(QQIdentiferLegacy.a(this.this$0), this.a, 1).b(QQIdentiferLegacy.a(this.this$0).getTitleBarHeight());
   }
 }
 

@@ -1,8 +1,7 @@
-public abstract interface vbz
+public class vbz
+  extends ssk
 {
-  public abstract void a(uyv paramuyv, float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  public abstract void a(vcb paramvcb);
+  public String a;
 }
 
 

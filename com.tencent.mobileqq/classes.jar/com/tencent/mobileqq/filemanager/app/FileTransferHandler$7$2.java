@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aofe;
+import aovy;
 import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
 
 class FileTransferHandler$7$2

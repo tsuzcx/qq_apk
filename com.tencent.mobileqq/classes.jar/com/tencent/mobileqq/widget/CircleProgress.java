@@ -43,11 +43,11 @@ public class CircleProgress
   private void a()
   {
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_b_of_type_Int = getResources().getColor(2131099993);
-    this.e = getResources().getColor(2131099950);
+    this.jdField_b_of_type_Int = getResources().getColor(2131165578);
+    this.e = getResources().getColor(2131165535);
     this.d = 51;
     this.f = 255;
-    this.c = getResources().getColor(2131099982);
+    this.c = getResources().getColor(2131165567);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);

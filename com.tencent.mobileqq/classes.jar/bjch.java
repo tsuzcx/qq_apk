@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.12;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.TemplateData;
 
-public class bjch
-  implements DialogInterface.OnClickListener
+public final class bjch
+  implements Parcelable.Creator<TemplateData>
 {
-  public bjch(ShortVideoPlayActivity.12 param12) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public TemplateData a(Parcel paramParcel)
   {
-    this.a.this$0.s();
+    return new TemplateData(paramParcel);
+  }
+  
+  public TemplateData[] a(int paramInt)
+  {
+    return new TemplateData[paramInt];
   }
 }
 

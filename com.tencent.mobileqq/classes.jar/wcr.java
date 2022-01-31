@@ -1,46 +1,192 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
-public class wcr
-  implements alsd
+public abstract class wcr<T>
 {
-  public wcr(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
+  protected Context a;
+  private SegmentList jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
+  private wco jdField_a_of_type_Wco;
+  protected boolean a;
   
-  public ColorNote getColorNote()
+  public wcr(Context paramContext)
   {
-    if ((SubscribeHybirdFragment.a(this.a) == null) || (SubscribeHybirdFragment.a(this.a) == null)) {
-      QLog.e("SubscribeHybirdFragment", 1, "initColorNote, shareInfoBean is null");
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void R_() {}
+  
+  protected void T_() {}
+  
+  public abstract int a();
+  
+  protected int a(int paramInt)
+  {
+    return 0;
+  }
+  
+  public abstract View a(int paramInt, vas paramvas, ViewGroup paramViewGroup);
+  
+  protected SegmentList a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
+  }
+  
+  public abstract String a();
+  
+  public vas a(int paramInt)
+  {
+    SegmentList localSegmentList = a();
+    if (localSegmentList == null)
+    {
+      vxs.a("segment:" + a() + " have not attach to listView. It can not check isOnScreen.", new Object[0]);
+      return null;
     }
-    byte[] arrayOfByte;
-    Object localObject;
-    String str1;
-    String str2;
-    String str3;
+    int i = 0;
+    if (i < localSegmentList.getChildCount())
+    {
+      vas localvas = (vas)localSegmentList.getChildAt(i).getTag();
+      if (localvas == null) {}
+      while ((!localvas.a.equals(a())) || (localvas.b != paramInt))
+      {
+        i += 1;
+        break;
+      }
+      return localvas;
+    }
+    return null;
+  }
+  
+  public abstract vas a(int paramInt, ViewGroup paramViewGroup);
+  
+  protected void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(wco paramwco, SegmentList paramSegmentList)
+  {
+    this.jdField_a_of_type_Wco = paramwco;
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList = paramSegmentList;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(vas paramvas)
+  {
+    SegmentList localSegmentList = a();
+    if (localSegmentList == null) {
+      vxs.a("segment:" + a() + " have not attach to listView. It can not check isOnScreen.", new Object[0]);
+    }
+    int i;
+    int j;
+    int k;
     do
     {
-      return null;
-      arrayOfByte = wef.a(new SubscribeColorNoteReserveBean(SubscribeHybirdFragment.a(this.a).toByteArray(), SubscribeHybirdFragment.a(this.a).pageType));
-      localObject = new vxn();
-      ((vxn)localObject).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = SubscribeHybirdFragment.a(this.a);
-      ((vxn)localObject).jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = SubscribeHybirdFragment.a(this.a);
-      str1 = SubscribeHybirdFragment.a(this.a).id.get();
-      str2 = ((vxn)localObject).c();
-      ((vxn)localObject).d();
-      str3 = ((vxn)localObject).e();
-      localObject = ((vxn)localObject).f();
-    } while (TextUtils.isEmpty(str1));
-    return new alsl().a(16908291).a(str1).b(str2).c((String)localObject).d(str3).a(arrayOfByte).a();
+      do
+      {
+        return false;
+      } while (paramvas == null);
+      i = localSegmentList.getFirstVisiblePosition();
+      j = localSegmentList.getLastVisiblePosition();
+      k = paramvas.c;
+    } while ((k < i) || (k > j));
+    return true;
+  }
+  
+  public void a_(vas paramvas) {}
+  
+  protected boolean a_(boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public String b()
+  {
+    return "";
+  }
+  
+  protected void b() {}
+  
+  public void b_(vas paramvas) {}
+  
+  protected void c() {}
+  
+  public void c(vas paramvas) {}
+  
+  public final void c(boolean paramBoolean)
+  {
+    
+    if (this.jdField_a_of_type_Wco != null)
+    {
+      this.jdField_a_of_type_Wco.a(a(), paramBoolean);
+      this.jdField_a_of_type_Wco.notifyDataSetChanged();
+    }
+    uym.b("Q.qqstory.home.position", new Object[] { "notifyDataSetChanged ", Boolean.valueOf(paramBoolean) });
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int d()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return a();
+    }
+    return 0;
+  }
+  
+  protected void d() {}
+  
+  public void d(int paramInt)
+  {
+    paramInt = this.jdField_a_of_type_Wco.a(this, paramInt);
+    a().setSelection(paramInt);
+  }
+  
+  protected boolean d()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList == null) {
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList.a(a());
+    return true;
+  }
+  
+  protected void e() {}
+  
+  public void e_(boolean paramBoolean)
+  {
+    if (paramBoolean != this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Boolean = paramBoolean;
+    }
+  }
+  
+  protected int f_()
+  {
+    return 1;
+  }
+  
+  public void g_(int paramInt) {}
+  
+  public void k() {}
+  
+  protected void m()
+  {
+    if (this.jdField_a_of_type_Wco == null) {
+      return;
+    }
+    this.jdField_a_of_type_Wco.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wcr
  * JD-Core Version:    0.7.0.1
  */

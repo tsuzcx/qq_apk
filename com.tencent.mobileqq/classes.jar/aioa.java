@@ -1,34 +1,19 @@
-import com.tencent.common.app.AppInterface;
-
-public abstract interface aioa
+class aioa
+  implements bfrx
 {
-  public abstract int a(int paramInt);
+  aioa(ainv paramainv) {}
   
-  public abstract int a(aijf paramaijf, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat);
-  
-  public abstract int a(AppInterface paramAppInterface);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, AppInterface paramAppInterface);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract int b(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt, String paramString);
+  public void onScrollStateChanged(int paramInt)
+  {
+    if (paramInt != 4097) {
+      return;
+    }
+    this.a.e();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aioa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,59 @@
+import android.content.Context;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoam
-  extends aodp
 {
-  public aoam(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  private static aoam a;
   
-  protected void a(int paramInt, String paramString1, String paramString2)
+  public static aoam a()
   {
-    super.a(paramInt, paramString1, paramString2);
-    this.a.c(false);
-  }
-  
-  protected void a(Integer paramInteger, long paramLong, String paramString)
-  {
-    apck.a(paramLong, paramInteger.intValue(), paramString);
-  }
-  
-  protected void a(String paramString1, boolean paramBoolean, int paramInt1, String paramString2, List<WeiYunFileInfo> paramList, int paramInt2)
-  {
-    QfileCloudFileTabView.b(this.a, true);
-    QfileCloudFileTabView.c(this.a, paramBoolean);
-    this.a.jdField_c_of_type_Int = paramInt2;
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+    if (a == null) {}
+    try
     {
-      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
-      paramInt1 = apck.a(localWeiYunFileInfo.jdField_c_of_type_JavaLangString);
-      String str;
-      if (paramInt1 == 0)
-      {
-        str = QfileCloudFileTabView.a(this.a).a().a(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo.e, 3, localWeiYunFileInfo);
-        if (str != null) {
-          localWeiYunFileInfo.h = str;
-        }
+      if (a == null) {
+        a = new aoam();
       }
-      else if (2 == paramInt1)
-      {
-        str = QfileCloudFileTabView.b(this.a).a().b(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo.e, 2, localWeiYunFileInfo);
-        if (str != null) {
-          localWeiYunFileInfo.h = str;
-        }
-      }
+      return a;
     }
-    if (!paramString1.equals(this.a.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if (QfileCloudFileTabView.b(this.a)) {
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    if (!this.a.jdField_a_of_type_JavaLangString.equalsIgnoreCase("picture")) {
-      this.a.setListFooter();
-    }
-    this.a.jdField_c_of_type_JavaLangString = paramString2;
-    this.a.jdField_c_of_type_Boolean = true;
-    this.a.g();
-    this.a.a();
+    finally {}
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public anxd a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, anyb paramanyb, BaseChatPie paramBaseChatPie, int paramInt4, boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_Anzd.notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionPanelListViewAdapterBuilder", 2, "getAdapter panelType = " + paramInt2);
+    }
+    switch (paramInt2)
+    {
+    case 10: 
+    case 11: 
+    default: 
+      return null;
+    case 1: 
+      return new aocn(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanyb, paramBaseChatPie, paramInt4);
+    case 6: 
+      return new anxf(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramanyb, paramBaseChatPie, paramInt4);
+    case 8: 
+      return new anxo(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramanyb, paramInt4);
+    case 7: 
+      return new anzr(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramanyb, paramInt4);
+    case 4: 
+      return new aoav(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanyb, paramBaseChatPie);
+    case 5: 
+      return new aobg(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanyb);
+    case 3: 
+      return new aobu(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanyb, paramInt4, paramBoolean);
+    case 2: 
+      return new aocd(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramanyb, paramBaseChatPie, paramInt4);
+    case 9: 
+      return new aocg(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramanyb, paramInt4);
+    case 12: 
+      return new anzp(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramanyb);
+    }
+    return new anxr(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanyb, paramBaseChatPie);
   }
 }
 

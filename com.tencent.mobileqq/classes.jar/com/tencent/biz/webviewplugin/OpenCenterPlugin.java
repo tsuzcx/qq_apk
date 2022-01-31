@@ -1,9 +1,9 @@
 package com.tencent.biz.webviewplugin;
 
 import android.app.Activity;
-import bayt;
-import bayu;
-import bbac;
+import bcbn;
+import bcbo;
+import bcdb;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.open.adapter.OpenAppClient;
 import com.tencent.open.appcommon.js.BaseInterface;
@@ -21,8 +21,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class OpenCenterPlugin
-  extends bayt
-  implements bayu
+  extends bcbn
+  implements bcbo
 {
   private Map<String, BaseInterface> a;
   

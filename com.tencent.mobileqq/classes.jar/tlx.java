@@ -1,41 +1,49 @@
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.Spannable.Factory;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tlx
-  implements View.OnTouchListener
+  extends syq
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public List<tly> a;
+  
+  public tlx(ErrorMessage paramErrorMessage)
   {
-    Object localObject = ((TextView)paramView).getText();
-    localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
-    paramView = (TextView)paramView;
-    int i = paramMotionEvent.getAction();
-    if ((i == 1) || (i == 0))
+    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public tlx(qqstory_service.RspBatchFeedLike paramRspBatchFeedLike)
+  {
+    super(paramRspBatchFeedLike.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspBatchFeedLike = paramRspBatchFeedLike.feed_like_info_list.get().iterator();
+    while (paramRspBatchFeedLike.hasNext())
     {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramView.getTotalPaddingLeft();
-      int n = paramView.getTotalPaddingTop();
-      int i1 = paramView.getScrollX();
-      int i2 = paramView.getScrollY();
-      paramMotionEvent = paramView.getLayout();
-      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
-      paramMotionEvent = (ClickableSpan[])((Spannable)localObject).getSpans(j, j, ClickableSpan.class);
-      if (paramMotionEvent.length != 0)
+      Object localObject = (qqstory_struct.FeedLikeInfo)paramRspBatchFeedLike.next();
+      tly localtly = new tly();
+      localtly.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedLikeInfo)localObject).feed_id.get().toStringUtf8();
+      localtly.b = ((qqstory_struct.FeedLikeInfo)localObject).has_like.get();
+      localtly.jdField_a_of_type_Int = ((qqstory_struct.FeedLikeInfo)localObject).like_total_count.get();
+      localtly.jdField_a_of_type_JavaUtilList = new ArrayList();
+      localObject = ((qqstory_struct.FeedLikeInfo)localObject).like_list.get().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        if (i == 1) {
-          paramMotionEvent[0].onClick(paramView);
-        }
-        return true;
+        LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)((Iterator)localObject).next());
+        localLikeEntry.feedId = localtly.jdField_a_of_type_JavaLangString;
+        localtly.jdField_a_of_type_JavaUtilList.add(localLikeEntry);
       }
+      this.jdField_a_of_type_JavaUtilList.add(localtly);
     }
-    return false;
   }
 }
 

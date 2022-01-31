@@ -1,32 +1,45 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import com.tencent.widget.SingleLineTextView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QwAdapter;
+import java.util.List;
 
-public class ahau
-  extends ahbb
+class ahau
+  implements IRedPacket.OnGetSkinListener
 {
-  public View a(int paramInt, Object paramObject, ahbe paramahbe, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahdb paramahdb)
+  ahau(ahas paramahas) {}
+  
+  public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
   {
-    if ((paramView != null) && ((paramView.getTag() instanceof ahbc))) {}
-    paramObject = super.a(paramInt, paramObject, paramahbe, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramahdb);
-    paramahbe = (ahbc)paramObject.getTag();
-    paramViewGroup = paramContext.getResources();
-    paramView = paramViewGroup.getColorStateList(2131101333);
-    paramViewGroup = paramViewGroup.getColorStateList(2131101260);
-    paramahbe.a.setTextColor(paramViewGroup);
-    paramahbe.b.setTextColor(paramView);
-    paramahbe.a.setExtendTextColor(paramView, 0);
-    paramObject.findViewById(2131309349).setBackgroundResource(2130839101);
-    return paramObject;
+    ahap localahap = ahar.a(ahas.a(this.a), paramRedPacketInfoBase.skinId);
+    List localList;
+    if (localahap != null)
+    {
+      localList = ahas.a(this.a).getList();
+      QLog.d("HbSkinLogic", 2, "redl iscache = " + ahap.jdField_a_of_type_Boolean + " info.iscache = " + paramRedPacketInfoBase.isCache);
+      if ((ahap.jdField_a_of_type_Boolean == paramRedPacketInfoBase.isCache) && (!localList.contains(localahap))) {
+        break label98;
+      }
+      QLog.d("HbSkinLogic", 2, "no add in list...");
+    }
+    label98:
+    while ((paramRedPacketInfoBase.background == null) && (paramRedPacketInfoBase.animInfo == null)) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramRedPacketInfoBase.title)) {
+      paramRedPacketInfoBase.title = ahas.a();
+    }
+    localahap.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = paramRedPacketInfoBase;
+    QLog.d("HbSkinLogic", 2, "redl add to list show!");
+    localList.add(localahap);
+    ahap.a(localList);
+    ahas.a(this.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahau
  * JD-Core Version:    0.7.0.1
  */

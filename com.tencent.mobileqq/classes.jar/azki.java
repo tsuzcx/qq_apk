@@ -1,20 +1,41 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
 
-public class azki
+class azki
+  implements View.OnClickListener
 {
-  private static Handler a;
+  azki(azkh paramazkh) {}
   
-  public static void a(Runnable paramRunnable)
+  public void onClick(View paramView)
   {
-    if (a == null)
+    Object localObject = (azlz)paramView.getTag();
+    if (((azlz)localObject).b == 1)
     {
-      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("TroopMemberDBThread", 0);
-      localHandlerThread.start();
-      a = new Handler(localHandlerThread.getLooper());
+      this.a.a.a.a(((azlz)localObject).a, null);
+      if (((azlz)localObject).a == null) {}
+      for (paramView = "";; paramView = ((azlz)localObject).a)
+      {
+        axqw.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, paramView, "", "", "");
+        return;
+      }
     }
-    a.post(paramRunnable);
+    this.a.a.a.a(((azlz)localObject).d, ((azlz)localObject).a);
+    if (((azlz)localObject).d == null)
+    {
+      paramView = "";
+      if (((azlz)localObject).a != null) {
+        break label148;
+      }
+    }
+    label148:
+    for (localObject = "";; localObject = ((azlz)localObject).a)
+    {
+      axqw.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, paramView, (String)localObject, "", "");
+      return;
+      paramView = ((azlz)localObject).d;
+      break;
+    }
   }
 }
 

@@ -1,14 +1,13 @@
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 public class ueb
-  extends vql
+  implements ufl
 {
-  public ueb(StoryDetailFragment paramStoryDetailFragment) {}
+  public ueb(TextureVideoView paramTextureVideoView) {}
   
-  public boolean a(boolean paramBoolean)
+  public void a(ufk paramufk, int paramInt)
   {
-    this.a.d();
-    return true;
+    this.a.f = paramInt;
   }
 }
 

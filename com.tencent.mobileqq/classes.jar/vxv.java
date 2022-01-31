@@ -1,22 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
 
-class vxv
-  implements View.OnClickListener
+abstract interface vxv
 {
-  vxv(vxu paramvxu) {}
+  public abstract void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener);
   
-  public void onClick(View paramView)
-  {
-    if ((this.a.a() instanceof SubscribeBaseFragment)) {
-      ((SubscribeBaseFragment)this.a.a()).a(this.a.a(2));
-    }
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vxv
  * JD-Core Version:    0.7.0.1
  */

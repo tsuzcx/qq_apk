@@ -1,18 +1,18 @@
 package cooperation.qqdataline;
 
-import ajjy;
+import ajyc;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
-import babh;
-import badq;
-import bbms;
-import bbmy;
-import beez;
-import bfcz;
-import bfgs;
+import bbcl;
+import bbev;
+import bcpq;
+import bcpw;
+import bfmt;
+import bgkq;
+import bgoj;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
@@ -25,28 +25,28 @@ public class DatalineBridgeActivity
 {
   private long jdField_a_of_type_Long;
   private Bundle jdField_a_of_type_AndroidOsBundle;
-  private bbms jdField_a_of_type_Bbms;
-  private beez jdField_a_of_type_Beez;
-  private bfcz jdField_a_of_type_Bfcz;
+  private bcpq jdField_a_of_type_Bcpq;
+  private bfmt jdField_a_of_type_Bfmt;
+  private bgkq jdField_a_of_type_Bgkq;
   private String jdField_a_of_type_JavaLangString;
   
   private void a(int paramInt)
   {
     QLog.e("DatalineBridgeActivity", 1, "[DatalineBridgeActivity] handleFailed errCode:" + paramInt);
-    int i = getResources().getDimensionPixelSize(2131167766);
-    String str = ajjy.a(2131636955);
+    int i = getResources().getDimensionPixelSize(2131298865);
+    String str = ajyc.a(2131702739);
     if (-4 == paramInt) {
-      str = ajjy.a(2131636973);
+      str = ajyc.a(2131702757);
     }
     for (;;)
     {
-      bbmy.a(this.app.getApp(), 1, str, 0).b(i);
+      bcpw.a(this.app.getApp(), 1, str, 0).b(i);
       finish();
       return;
       if ((-5 == paramInt) || (-1 == paramInt) || (-3 == paramInt) || (-2 == paramInt)) {
-        str = ajjy.a(2131636968);
+        str = ajyc.a(2131702752);
       } else if (-6 == paramInt) {
-        str = ajjy.a(2131636971);
+        str = ajyc.a(2131702755);
       }
     }
   }
@@ -62,7 +62,7 @@ public class DatalineBridgeActivity
     }
     if (paramPluginBaseInfo == null)
     {
-      if (!this.jdField_a_of_type_Bfcz.isReady())
+      if (!this.jdField_a_of_type_Bgkq.isReady())
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("DatalineBridgeActivity", 4, "[DatalineBridgeActivity] queryPluginInfo is no ready and query it");
@@ -72,7 +72,7 @@ public class DatalineBridgeActivity
           a(-5);
           return;
         }
-        this.jdField_a_of_type_Beez.sendEmptyMessageDelayed(1001, 400L);
+        this.jdField_a_of_type_Bfmt.sendEmptyMessageDelayed(1001, 400L);
         return;
       }
       a(-1);
@@ -81,7 +81,7 @@ public class DatalineBridgeActivity
     if (QLog.isDevelopLevel()) {
       QLog.d("DatalineBridgeActivity", 4, "[DatalineBridgeActivity] queryPluginInfo mState : " + paramPluginBaseInfo.mState + " progress:" + paramPluginBaseInfo.mDownloadProgress);
     }
-    if ((-2 != paramPluginBaseInfo.mState) && (4 != paramPluginBaseInfo.mState) && (!badq.g(getApplicationContext())) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L))
+    if ((-2 != paramPluginBaseInfo.mState) && (4 != paramPluginBaseInfo.mState) && (!bbev.g(getApplicationContext())) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L))
     {
       a(-4);
       return;
@@ -95,7 +95,7 @@ public class DatalineBridgeActivity
       a(-6);
       return;
     case 0: 
-      this.jdField_a_of_type_Bfcz.a("qqdataline.apk");
+      this.jdField_a_of_type_Bgkq.a("qqdataline.apk");
     case 1: 
     case 2: 
       if (i != 0)
@@ -103,7 +103,7 @@ public class DatalineBridgeActivity
         a(-5);
         return;
       }
-      this.jdField_a_of_type_Beez.sendEmptyMessageDelayed(1001, 400L);
+      this.jdField_a_of_type_Bfmt.sendEmptyMessageDelayed(1001, 400L);
       return;
     case 3: 
       if (i != 0)
@@ -111,7 +111,7 @@ public class DatalineBridgeActivity
         a(-5);
         return;
       }
-      this.jdField_a_of_type_Beez.sendEmptyMessageDelayed(1001, 400L);
+      this.jdField_a_of_type_Bfmt.sendEmptyMessageDelayed(1001, 400L);
       return;
     case 4: 
       b();
@@ -127,13 +127,13 @@ public class DatalineBridgeActivity
       if (this.app == null) {
         return false;
       }
-      this.jdField_a_of_type_Bfcz = ((bfcz)this.app.getManager(27));
-      if (this.jdField_a_of_type_Bfcz == null)
+      this.jdField_a_of_type_Bgkq = ((bgkq)this.app.getManager(27));
+      if (this.jdField_a_of_type_Bgkq == null)
       {
         a(-6);
         return false;
       }
-      Object localObject1 = this.jdField_a_of_type_Bfcz.a("qqdataline.apk");
+      Object localObject1 = this.jdField_a_of_type_Bgkq.a("qqdataline.apk");
       if ((localObject1 != null) && (((PluginBaseInfo)localObject1).mState != 4)) {
         return false;
       }
@@ -153,7 +153,7 @@ public class DatalineBridgeActivity
       localObject1 = this.app.getAccount();
       try
       {
-        localObject2 = babh.a(this.app, this.app.getAccount());
+        localObject2 = bbcl.a(this.app, this.app.getAccount());
         localObject1 = localObject2;
       }
       catch (Exception localException)
@@ -196,7 +196,7 @@ public class DatalineBridgeActivity
     Object localObject1 = this.app.getAccount();
     try
     {
-      localObject2 = babh.a(this.app, this.app.getAccount());
+      localObject2 = bbcl.a(this.app, this.app.getAccount());
       localObject1 = localObject2;
     }
     catch (Exception localException)
@@ -207,7 +207,7 @@ public class DatalineBridgeActivity
         localException.printStackTrace();
       }
       localIntent.putExtra("userQqResources", 2);
-      DatalinePluginProxyActivity.a(this, localException, localIntent, this.jdField_a_of_type_JavaLangString, -1, this.jdField_a_of_type_Bbms);
+      DatalinePluginProxyActivity.a(this, localException, localIntent, this.jdField_a_of_type_JavaLangString, -1, this.jdField_a_of_type_Bcpq);
       overridePendingTransition(0, 0);
     }
     localObject2 = localObject1;
@@ -225,16 +225,16 @@ public class DatalineBridgeActivity
   
   public void a()
   {
-    this.jdField_a_of_type_Bfcz = ((bfcz)this.app.getManager(27));
+    this.jdField_a_of_type_Bgkq = ((bgkq)this.app.getManager(27));
     QLog.i("DatalineBridgeActivity", 1, "[DatalineBridgeActivity] onPluginManagerLoaded SUPPORT_NETWORKING:true");
-    if (this.jdField_a_of_type_Bfcz == null) {
+    if (this.jdField_a_of_type_Bgkq == null) {
       a(-6);
     }
     for (;;)
     {
       return;
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      PluginInfo localPluginInfo = this.jdField_a_of_type_Bfcz.a("qqdataline.apk");
+      PluginInfo localPluginInfo = this.jdField_a_of_type_Bgkq.a("qqdataline.apk");
       int j = 0;
       int i = j;
       if (localPluginInfo != null)
@@ -246,16 +246,16 @@ public class DatalineBridgeActivity
       }
       for (i = 1; i == 0; i = j)
       {
-        if (this.jdField_a_of_type_Bbms != null)
+        if (this.jdField_a_of_type_Bcpq != null)
         {
-          this.jdField_a_of_type_Bbms.a(ajjy.a(2131636967));
-          this.jdField_a_of_type_Bbms.show();
+          this.jdField_a_of_type_Bcpq.a(ajyc.a(2131702751));
+          this.jdField_a_of_type_Bcpq.show();
         }
-        this.jdField_a_of_type_Beez.sendEmptyMessageDelayed(1001, 400L);
+        this.jdField_a_of_type_Bfmt.sendEmptyMessageDelayed(1001, 400L);
         return;
         label122:
         QLog.i("DatalineBridgeActivity", 1, "[DatalineBridgeActivity] onPluginManagerLoaded start down or install...");
-        this.jdField_a_of_type_Bfcz.a("qqdataline.apk");
+        this.jdField_a_of_type_Bgkq.a("qqdataline.apk");
       }
     }
   }
@@ -265,14 +265,14 @@ public class DatalineBridgeActivity
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getBundleExtra("_param_");
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("componetname");
-    this.jdField_a_of_type_Beez = new beez(this);
+    this.jdField_a_of_type_Bfmt = new bfmt(this);
     if (a()) {
       return true;
     }
-    this.jdField_a_of_type_Bbms = new bbms(this, getResources().getDimensionPixelSize(2131167766));
-    this.jdField_a_of_type_Bbms.a(ajjy.a(2131636969));
-    this.jdField_a_of_type_Bbms.setOnDismissListener(new bfgs(this));
-    this.jdField_a_of_type_Beez.postDelayed(new DatalineBridgeActivity.2(this), 300L);
+    this.jdField_a_of_type_Bcpq = new bcpq(this, getResources().getDimensionPixelSize(2131298865));
+    this.jdField_a_of_type_Bcpq.a(ajyc.a(2131702753));
+    this.jdField_a_of_type_Bcpq.setOnDismissListener(new bgoj(this));
+    this.jdField_a_of_type_Bfmt.postDelayed(new DatalineBridgeActivity.2(this), 300L);
     return true;
   }
   
@@ -288,7 +288,7 @@ public class DatalineBridgeActivity
         QLog.d("DatalineBridgeActivity", 4, "[DatalineBridgeActivity]  ACTION_QUERY!");
       }
       if (!isFinishing()) {
-        a("qqdataline.apk", this.jdField_a_of_type_Bfcz.a("qqdataline.apk"));
+        a("qqdataline.apk", this.jdField_a_of_type_Bgkq.a("qqdataline.apk"));
       }
     }
   }
@@ -296,15 +296,15 @@ public class DatalineBridgeActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Bbms != null)
+    if (this.jdField_a_of_type_Bcpq != null)
     {
-      this.jdField_a_of_type_Bbms.dismiss();
-      this.jdField_a_of_type_Bbms = null;
+      this.jdField_a_of_type_Bcpq.dismiss();
+      this.jdField_a_of_type_Bcpq = null;
     }
-    if (this.jdField_a_of_type_Beez != null) {
-      this.jdField_a_of_type_Beez.removeMessages(1001);
+    if (this.jdField_a_of_type_Bfmt != null) {
+      this.jdField_a_of_type_Bfmt.removeMessages(1001);
     }
-    if ((this.jdField_a_of_type_Bfcz == null) || (QLog.isDevelopLevel())) {
+    if ((this.jdField_a_of_type_Bgkq == null) || (QLog.isDevelopLevel())) {
       QLog.d("QPlugin", 4, "DatalineBridgeActivity onDestroy");
     }
   }

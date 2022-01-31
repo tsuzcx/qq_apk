@@ -1,34 +1,38 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-
 class atst
-  implements Animator.AnimatorListener
+  implements amng
 {
-  atst(atsk paramatsk, View paramView) {}
+  atst(atsa paramatsa) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public int a()
   {
-    this.jdField_a_of_type_Atsk.l();
+    return 1;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a(int paramInt)
   {
-    this.jdField_a_of_type_Atsk.l();
+    return 2;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public String a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Atsk.f) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (paramInt2 >= 0)
+    {
+      paramInt1 = paramInt2;
+      if (paramInt2 <= 1) {}
     }
+    else
+    {
+      paramInt1 = 0;
+    }
+    if (paramInt1 == 0) {
+      return ajyc.a(2131707285);
+    }
+    return ajyc.a(2131707256);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atst
  * JD-Core Version:    0.7.0.1
  */

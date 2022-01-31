@@ -1,27 +1,62 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.os.MqqHandler;
 
-public class ahlh
+class ahlh
+  implements View.OnClickListener
 {
-  public int a;
-  ahli jdField_a_of_type_Ahli = new ahli(this.jdField_a_of_type_Ahlg);
-  String jdField_a_of_type_JavaLangString;
-  public AtomicInteger a;
-  volatile boolean jdField_a_of_type_Boolean;
-  public int b;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
-  public int c;
-  public String c;
-  public String d;
+  ahlh(ahkf paramahkf, Bundle paramBundle) {}
   
-  public ahlh(ahlg paramahlg)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+    if (ahkf.a(this.jdField_a_of_type_Ahkf) != null)
+    {
+      paramView = ahkf.a(this.jdField_a_of_type_Ahkf).obtainMessage(30);
+      ahkf.a(this.jdField_a_of_type_Ahkf).sendMessageDelayed(paramView, 2500L);
+    }
+    paramView = this.jdField_a_of_type_AndroidOsBundle.getString("activity");
+    if (!TextUtils.isEmpty(paramView)) {}
+    try
+    {
+      paramView = Class.forName(paramView);
+      if (paramView != null)
+      {
+        paramView = new Intent(ahkf.a(this.jdField_a_of_type_Ahkf).getApplicationContext(), paramView);
+        String str = this.jdField_a_of_type_AndroidOsBundle.getString("action");
+        if (!TextUtils.isEmpty(str)) {
+          paramView.setAction(str);
+        }
+        str = this.jdField_a_of_type_AndroidOsBundle.getString("category");
+        if (!TextUtils.isEmpty(str)) {
+          paramView.addCategory(str);
+        }
+        str = this.jdField_a_of_type_AndroidOsBundle.getString("url");
+        if (!TextUtils.isEmpty(str)) {
+          paramView.putExtra("url", str);
+        }
+        paramView.setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
+        paramView.putExtra("force_no_reload", true);
+        ahkf.a(this.jdField_a_of_type_Ahkf).startActivity(paramView);
+      }
+      axqw.a(ahkf.a(this.jdField_a_of_type_Ahkf).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 4, 0, "", "", "", "");
+      return;
+    }
+    catch (ClassNotFoundException paramView)
+    {
+      for (;;)
+      {
+        paramView = null;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahlh
  * JD-Core Version:    0.7.0.1
  */

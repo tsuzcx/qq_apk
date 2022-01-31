@@ -1,55 +1,25 @@
-import android.content.Context;
-import android.content.res.AssetManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import mqq.app.AppRuntime;
 
 public class reb
+  implements View.OnClickListener
 {
-  private Map<String, String[]> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+  public reb(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public reb(Context paramContext, String paramString)
+  public void onClick(View paramView)
   {
-    a(paramContext, paramString);
-  }
-  
-  private void a(Context paramContext, String paramString)
-  {
-    b(paramContext, paramString);
-  }
-  
-  private boolean a(String paramString)
-  {
-    return (paramString == null) || (paramString.endsWith(".geojson")) || (paramString.equals("manifest"));
-  }
-  
-  private void b(Context paramContext, String paramString)
-  {
-    try
+    ReadInJoyListViewGroup.b(this.a);
+    paramView = ((KandianMergeManager)onk.a().getManager(162)).a();
+    if ((paramView != null) && (paramView.isFromNotification))
     {
-      String[] arrayOfString = paramContext.getAssets().list(paramString);
-      if (arrayOfString != null)
-      {
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, arrayOfString);
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
-        {
-          String str = arrayOfString[i];
-          if (!a(str)) {
-            b(paramContext, paramString + "/" + str);
-          }
-          i += 1;
-        }
-      }
+      onk.a(this.a.getContext(), 5, false, paramView.mMsgId);
       return;
     }
-    catch (IOException paramContext)
-    {
-      QLog.e("Q.readinjoy.proteus", 1, "addFolderChild", paramContext);
-    }
+    onk.a(this.a.getContext(), 3);
   }
 }
 

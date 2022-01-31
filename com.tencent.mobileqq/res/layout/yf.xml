@@ -2,8 +2,8 @@
 <RelativeLayout android:layout_width="@dimen/a7l" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <FrameLayout android:id="@id/g8n" android:layout_width="@dimen/a74" android:layout_height="@dimen/a73" android:layout_centerHorizontal="true" android:contentDescription="@null">
-        <ImageView android:id="@id/g8k" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/com" android:scaleType="fitXY" android:contentDescription="@null" />
-        <ImageView android:id="@id/g8l" android:background="@drawable/w7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@null" />
+        <ImageView android:id="@id/g8k" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/com" android:scaleType="centerCrop" android:contentDescription="@null" />
+        <ImageView android:id="@id/g8l" android:background="@drawable/w7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:contentDescription="@null" />
         <TextView android:textSize="17.0dip" android:textColor="#ff445a6c" android:gravity="center" android:id="@id/g8m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@null" />
         <RelativeLayout android:id="@id/gba" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true">
             <com.tencent.av.ui.ArcBackGroundTextView android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" app:arcHeight="14.5dip" app:circleRadius="28.0dip" />

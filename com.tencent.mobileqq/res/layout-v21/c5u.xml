@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dov.com.qq.im.AECamera.View.WatermarkEditView android:id="@id/lc3" android:background="@color/alw" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<dov.com.qq.im.ae.camera.ui.watermark.WatermarkEditView android:id="@id/lc3" android:background="@color/alw" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/b8i">
-        <dov.com.qq.im.AECamera.View.WatermarkListView android:id="@id/lfz" android:layout_width="250.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <dov.com.qq.im.ae.camera.ui.watermark.WatermarkListView android:id="@id/lfz" android:layout_width="250.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true" />
         <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:id="@id/m_u" android:paddingLeft="11.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="45.0dip" android:text="@string/j6l" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
         <TextView android:textSize="16.0sp" android:textColor="#ff3cb6ff" android:id="@id/m_v" android:paddingRight="11.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="45.0dip" android:text="@string/j6j" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
     </RelativeLayout>
     <DatePicker android:id="@id/bdm" android:background="@color/al3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/b8h" android:layout_alignParentBottom="true" android:spinnersShown="true" android:calendarViewShown="false" android:datePickerMode="spinner" />
-</dov.com.qq.im.AECamera.View.WatermarkEditView>
+</dov.com.qq.im.ae.camera.ui.watermark.WatermarkEditView>

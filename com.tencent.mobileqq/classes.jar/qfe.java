@@ -1,13 +1,17 @@
-public abstract interface qfe
-  extends qfs
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+
+public class qfe
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  public qfe(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
+  public void onClick(View paramView)
+  {
+    ReadInJoyDeliverVideoActivity.b(this.a, true);
+    ReadInJoyDeliverVideoActivity.b(this.a);
+  }
 }
 
 

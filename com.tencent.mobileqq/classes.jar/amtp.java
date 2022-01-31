@@ -1,25 +1,85 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.Setting;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amtp
-  implements Parcelable.Creator<Setting>
+public class amtp
+  extends ampb<amto>
 {
-  public Setting a(Parcel paramParcel)
+  public static amto a()
   {
-    Setting localSetting = new Setting();
-    localSetting.readFromParcel(paramParcel);
-    return localSetting;
+    return (amto)ampm.a().a(426);
   }
   
-  public Setting[] a(int paramInt)
+  public static boolean e()
   {
-    return new Setting[paramInt];
+    amto localamto = a();
+    if (localamto != null) {}
+    for (boolean bool = localamto.c();; bool = false)
+    {
+      QLog.d("OpenSdkConfProcessor", 1, new Object[] { "isUseThirdTransformPkgName, useThirdTransformPkgName = ", Boolean.valueOf(bool) });
+      return bool;
+    }
+  }
+  
+  public int a()
+  {
+    return 426;
+  }
+  
+  @NonNull
+  public amto a(int paramInt)
+  {
+    return new amto();
+  }
+  
+  @Nullable
+  public amto a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    {
+      new amto();
+      return amto.a(paramArrayOfampi);
+    }
+    return null;
+  }
+  
+  public Class<amto> a()
+  {
+    return amto.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amto paramamto)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenSdkConfProcessor", 2, "onUpdate " + paramamto.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amtp
  * JD-Core Version:    0.7.0.1
  */

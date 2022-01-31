@@ -1,9 +1,9 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.app.Activity;
-import babr;
-import bafb;
-import bbmy;
+import bbcv;
+import bbgg;
+import bcpw;
 
 class ShareProxyImpl$4$1
   implements Runnable
@@ -14,10 +14,10 @@ class ShareProxyImpl$4$1
   {
     if ((this.val$finalErrCode == -100070004L) || (this.val$finalErrCode == -1000710003L))
     {
-      babr.a(this.this$1.val$activity, 233, this.this$1.val$activity.getString(2131653599), this.val$finalErrMsg, new ShareProxyImpl.4.1.1(this), null).show();
+      bbcv.a(this.this$1.val$activity, 233, this.this$1.val$activity.getString(2131719480), this.val$finalErrMsg, new ShareProxyImpl.4.1.1(this), null).show();
       return;
     }
-    bbmy.a(this.this$1.val$activity, 1, 2131628632, 1).a();
+    bcpw.a(this.this$1.val$activity, 1, 2131694282, 1).a();
   }
 }
 

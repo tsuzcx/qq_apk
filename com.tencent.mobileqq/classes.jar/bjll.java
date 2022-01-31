@@ -1,19 +1,14 @@
-import android.opengl.EGLContext;
+import java.util.List;
 
-public class bjll
+public abstract interface bjll
 {
-  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  public bjlw a;
-  private Object jdField_a_of_type_JavaLangObject;
+  public abstract void a();
   
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = null;
-      return;
-    }
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(long paramLong, boolean paramBoolean);
+  
+  public abstract void a(List<Long> paramList);
 }
 
 

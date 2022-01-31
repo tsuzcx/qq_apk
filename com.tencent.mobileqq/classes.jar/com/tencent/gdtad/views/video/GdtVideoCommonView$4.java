@@ -1,7 +1,7 @@
 package com.tencent.gdtad.views.video;
 
 import android.widget.TextView;
-import ypk;
+import yze;
 
 class GdtVideoCommonView$4
   implements Runnable
@@ -10,7 +10,7 @@ class GdtVideoCommonView$4
   
   public void run()
   {
-    GdtVideoCommonView.a(this.this$0).setText(ypk.a(GdtVideoCommonView.a(this.this$0)));
+    GdtVideoCommonView.a(this.this$0).setText(yze.a(GdtVideoCommonView.a(this.this$0)));
   }
 }
 

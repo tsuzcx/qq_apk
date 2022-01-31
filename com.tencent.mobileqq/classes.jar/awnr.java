@@ -1,22 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import com.tencent.mobileqq.search.activity.ContactSearchActivity;
+import java.util.List;
 
-class awnr
-  extends axmg
+public class awnr
+  implements awof
 {
-  awnr(awnq paramawnq) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  public List<awog> a;
   
-  public boolean a(int paramInt)
+  public awnr(List<awog> paramList, String paramString, int paramInt)
   {
-    QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("emptyCallback postSwitch %d", new Object[] { Integer.valueOf(paramInt) }));
-    awnq.a(this.a).set(-2147483648);
-    awnq.b(this.a).set(-2147483648);
-    return super.a(paramInt);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public String a()
+  {
+    return ajyc.a(2131705373);
+  }
+  
+  public List<awog> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    ContactSearchActivity.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 197437, true);
+    awvy.a(this.jdField_a_of_type_JavaLangString, 20, 0, paramView);
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awnr
  * JD-Core Version:    0.7.0.1
  */

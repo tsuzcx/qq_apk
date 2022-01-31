@@ -1,12 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
-class apie
-  implements DialogInterface.OnClickListener
+public class apie
+  extends BroadcastReceiver
 {
-  apie(apic paramapic) {}
+  public apie(FileBrowserActivity paramFileBrowserActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  @TargetApi(5)
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
+  }
 }
 
 

@@ -1,31 +1,80 @@
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.1;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.2;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class amvp
-  extends ajjh
+  extends ampb<amvq>
 {
-  public amvp(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
-  
-  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
+  public int a()
   {
-    if (!this.a.a) {
-      return;
-    }
-    this.a.runOnUiThread(new BaseMsgBoxActivity.1.2(this, paramBoolean, paramString1, paramString2));
+    return 368;
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  @NonNull
+  public amvq a(int paramInt)
   {
-    if (!this.a.a) {
-      return;
+    return new amvq();
+  }
+  
+  @Nullable
+  public amvq a(ampi[] paramArrayOfampi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onParsed]");
     }
-    this.a.runOnUiThread(new BaseMsgBoxActivity.1.1(this, paramBoolean, paramString));
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    {
+      amvq localamvq = new amvq();
+      localamvq.a(paramArrayOfampi);
+      return localamvq;
+    }
+    return new amvq();
+  }
+  
+  public Class<amvq> a()
+  {
+    return amvq.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(amvq paramamvq)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onUpdate]");
+    }
+  }
+  
+  public int b()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)onk.a();
+    if (localQQAppInterface != null)
+    {
+      String str = localQQAppInterface.c();
+      return bbjn.N(localQQAppInterface.getApp(), str);
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amvp
  * JD-Core Version:    0.7.0.1
  */

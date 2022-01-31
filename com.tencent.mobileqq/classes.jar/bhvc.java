@@ -1,17 +1,12 @@
-import android.support.annotation.NonNull;
+import android.graphics.drawable.Drawable;
 
-public abstract class bhvc
+public abstract interface bhvc
 {
-  @NonNull
-  public abstract bhve a();
-  
-  public abstract void a(@NonNull bhvf parambhvf);
-  
-  public abstract void b(@NonNull bhvf parambhvf);
+  public abstract void a(Drawable paramDrawable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhvc
  * JD-Core Version:    0.7.0.1
  */

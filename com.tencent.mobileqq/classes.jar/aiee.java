@@ -1,136 +1,137 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Rect;
-import android.text.TextUtils;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aiee
-  implements aief
+  extends ajvl
 {
-  double jdField_a_of_type_Double;
-  int jdField_a_of_type_Int;
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  int c;
-  int d;
+  public aiee(SelectMemberActivity paramSelectMemberActivity) {}
   
-  aiee(aied paramaied, int paramInt1, double paramDouble, String paramString, int paramInt2, int paramInt3, int paramInt4)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
   {
-    this.jdField_a_of_type_Double = (0.0174532925199433D * paramDouble);
-    this.d = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt4;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt3;
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    Object localObject = this.jdField_a_of_type_Aied.jdField_a_of_type_Aieg.a(this.jdField_a_of_type_Aied, this.d);
-    float f;
-    if (localObject != null)
+    if (!paramBoolean) {
+      SelectMemberActivity.jdField_b_of_type_Boolean = false;
+    }
+    if (this.a.jdField_a_of_type_Bcpq != null)
     {
-      Rect localRect1 = this.jdField_a_of_type_Aied.getBounds();
-      int i = localRect1.width();
-      int j = localRect1.height();
-      i = (int)(i / 2 + Math.sin(this.jdField_a_of_type_Double) * this.jdField_a_of_type_Aied.d);
-      j = (int)(j / 2 - Math.cos(this.jdField_a_of_type_Double) * this.jdField_a_of_type_Aied.d);
-      int k = (int)(((Bitmap)localObject).getWidth() * this.jdField_a_of_type_Aied.jdField_a_of_type_Double);
-      int m = (int)(((Bitmap)localObject).getHeight() * this.jdField_a_of_type_Aied.jdField_a_of_type_Double);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(i - k / 2, j - m / 2 + this.jdField_a_of_type_Aied.c / 2, k / 2 + i, m / 2 + j + this.jdField_a_of_type_Aied.c / 2);
-      Rect localRect2;
-      if (this.jdField_a_of_type_AndroidGraphicsRect.left < localRect1.left)
+      this.a.jdField_a_of_type_Bcpq.dismiss();
+      if (paramBoolean)
       {
-        localRect2 = this.jdField_a_of_type_AndroidGraphicsRect;
-        localRect2.right += localRect1.left - this.jdField_a_of_type_AndroidGraphicsRect.left;
-        this.jdField_a_of_type_AndroidGraphicsRect.left = localRect1.left;
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsRect.top < localRect1.top)
-      {
-        localRect2 = this.jdField_a_of_type_AndroidGraphicsRect;
-        localRect2.bottom += localRect1.top - this.jdField_a_of_type_AndroidGraphicsRect.top;
-        this.jdField_a_of_type_AndroidGraphicsRect.top = localRect1.top;
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsRect.right > localRect1.right)
-      {
-        localRect2 = this.jdField_a_of_type_AndroidGraphicsRect;
-        localRect2.left += localRect1.right - this.jdField_a_of_type_AndroidGraphicsRect.right;
-        this.jdField_a_of_type_AndroidGraphicsRect.right = localRect1.right;
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsRect.bottom > localRect1.bottom)
-      {
-        localRect2 = this.jdField_a_of_type_AndroidGraphicsRect;
-        localRect2.top += localRect1.bottom - this.jdField_a_of_type_AndroidGraphicsRect.bottom;
-        this.jdField_a_of_type_AndroidGraphicsRect.bottom = localRect1.bottom;
-      }
-      paramCanvas.drawBitmap((Bitmap)localObject, null, this.jdField_a_of_type_AndroidGraphicsRect, paramPaint);
-      if (QLog.isColorLevel()) {
-        QLog.d("DiyPendantDrawable", 2, "draw sticker index = " + this.d + "scaleFactor=" + this.jdField_a_of_type_Aied.jdField_a_of_type_Double + ", x=" + i + ", y=" + j + ", w=" + k + ", h=" + m);
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        i = (int)(10.0D * this.jdField_a_of_type_Aied.jdField_a_of_type_Double);
-        this.jdField_b_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidGraphicsRect.left + i, this.jdField_a_of_type_AndroidGraphicsRect.top + i, this.jdField_a_of_type_AndroidGraphicsRect.right - i, this.jdField_a_of_type_AndroidGraphicsRect.bottom - i);
-        f = baau.a(this.jdField_a_of_type_Aied.b, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_JavaLangString);
-        if (this.jdField_b_of_type_Int != 1) {
-          break label891;
+        if (QLog.isColorLevel()) {
+          QLog.d("SelectMemberActivity", 2, "create discussion success: roomId: " + paramLong + ", mSubType: " + this.a.jdField_b_of_type_Int + ", mEntrance: " + this.a.d);
         }
-        localObject = new Paint();
-        ((Paint)localObject).setTextSize(f);
-        i = (int)((Paint)localObject).measureText(this.jdField_a_of_type_JavaLangString);
-        j = (int)Math.min(f + 10.0D * this.jdField_a_of_type_Aied.jdField_a_of_type_Double, this.jdField_b_of_type_AndroidGraphicsRect.height());
-        localObject = this.jdField_a_of_type_Aied.jdField_a_of_type_Aieg.a(this.jdField_a_of_type_Aied, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, f, this.c, i, j, paramPaint);
-        if (localObject != null)
+        paramString = new ArrayList();
+        Iterator localIterator = this.a.e.iterator();
+        while (localIterator.hasNext())
         {
-          i = this.jdField_a_of_type_AndroidGraphicsRect.centerX();
-          j = this.jdField_a_of_type_AndroidGraphicsRect.centerY();
-          this.jdField_b_of_type_AndroidGraphicsRect.set(i - ((Bitmap)localObject).getWidth() / 2, j - ((Bitmap)localObject).getHeight() / 2, i + ((Bitmap)localObject).getWidth() / 2, j + ((Bitmap)localObject).getHeight() / 2);
-          paramCanvas.drawBitmap((Bitmap)localObject, null, this.jdField_b_of_type_AndroidGraphicsRect, paramPaint);
-        }
-        if (QLog.isColorLevel())
-        {
-          if ("draw textInfo text = " + this.jdField_a_of_type_JavaLangString + " fontId = " + this.jdField_a_of_type_Int + " fontType = " + 1 + " color = " + this.c + " fontBitmap Existed = " + localObject == null) {
-            break label885;
+          ResultRecord localResultRecord = (ResultRecord)localIterator.next();
+          if (localResultRecord.jdField_a_of_type_Int == 5)
+          {
+            if (localResultRecord.jdField_a_of_type_JavaLangString.startsWith("pstn")) {
+              localResultRecord.jdField_a_of_type_JavaLangString = localResultRecord.jdField_a_of_type_JavaLangString.substring("pstn".length());
+            }
+            paramString.add(localResultRecord.jdField_a_of_type_JavaLangString);
           }
-          bool = true;
-          QLog.d("DiyPendantDrawable", 2, new Object[] { Boolean.valueOf(bool) });
+          else if ((localResultRecord.jdField_a_of_type_Int == 4) && (localResultRecord.jdField_a_of_type_JavaLangString.startsWith("+")))
+          {
+            paramString.add(localResultRecord.jdField_a_of_type_JavaLangString);
+          }
         }
+        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", paramLong);
+        if (this.a.d == 12) {
+          this.a.jdField_a_of_type_AndroidContentIntent.putExtra("select_memeber_discussion_memeber_count", this.a.e.size() + 1);
+        }
+        this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set", this.a.e);
+        this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
+        this.a.finish();
       }
     }
-    label885:
-    label891:
+    else
+    {
+      return;
+    }
+    QLog.d("SelectMemberActivity", 1, "create discussion fail, errCode=" + paramInt);
+    if (paramInt == 1000)
+    {
+      bcpw.a(this.a, this.a.getString(2131697862), 2000).b(this.a.jdField_c_of_type_AndroidViewView.getHeight());
+      axqw.b(this.a.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
+      return;
+    }
+    bcpw.a(this.a, this.a.getString(2131691815), 2000).b(this.a.jdField_c_of_type_AndroidViewView.getHeight());
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  {
+    if (this.a.jdField_a_of_type_Bcpq != null)
+    {
+      this.a.jdField_a_of_type_Bcpq.dismiss();
+      if (!paramBoolean) {
+        break label231;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectMemberActivity", 2, "add discussion member success: roomId: " + paramLong);
+      }
+      paramArrayList = new ArrayList();
+      Iterator localIterator = this.a.e.iterator();
+      while (localIterator.hasNext())
+      {
+        ResultRecord localResultRecord = (ResultRecord)localIterator.next();
+        if (localResultRecord.jdField_a_of_type_Int == 5)
+        {
+          if (localResultRecord.jdField_a_of_type_JavaLangString.startsWith("pstn")) {
+            localResultRecord.jdField_a_of_type_JavaLangString = localResultRecord.jdField_a_of_type_JavaLangString.substring("pstn".length());
+          }
+          paramArrayList.add(localResultRecord.jdField_a_of_type_JavaLangString);
+        }
+      }
+      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", paramLong);
+      this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set", this.a.e);
+      if (!paramBoolean) {
+        break label213;
+      }
+      this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
+    }
+    for (;;)
+    {
+      this.a.finish();
+      return;
+      label213:
+      this.a.setResult(1, this.a.jdField_a_of_type_AndroidContentIntent);
+    }
+    label231:
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectMemberActivity", 2, "add discussion member fail");
+    }
+    if (paramInt == 1000) {
+      axqw.b(this.a.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
+    }
+    bcpw.a(this.a, this.a.getString(2131691810), 2000).b(this.a.jdField_c_of_type_AndroidViewView.getHeight());
+  }
+  
+  protected void a(Object[] paramArrayOfObject)
+  {
+    if (this.a.jdField_a_of_type_Bcpq != null) {
+      this.a.jdField_a_of_type_Bcpq.dismiss();
+    }
+    if (paramArrayOfObject == null) {}
+    String str;
     do
     {
       return;
-      bool = false;
-      break;
-      paramPaint = this.jdField_a_of_type_Aied.jdField_a_of_type_Aieg.a(this.jdField_a_of_type_Aied, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      if (paramPaint != null) {
-        this.jdField_a_of_type_Aied.b.setTypeface(paramPaint);
-      }
-      this.jdField_a_of_type_Aied.b.setColor(this.c);
-      this.jdField_a_of_type_Aied.b.setTextAlign(Paint.Align.CENTER);
-      this.jdField_a_of_type_Aied.b.setTextSize(f);
-      localObject = this.jdField_a_of_type_Aied.b.getFontMetrics();
-      f = (this.jdField_b_of_type_AndroidGraphicsRect.bottom + this.jdField_b_of_type_AndroidGraphicsRect.top - ((Paint.FontMetrics)localObject).bottom - ((Paint.FontMetrics)localObject).top) / 2.0F;
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_AndroidGraphicsRect.centerX(), f, this.jdField_a_of_type_Aied.b);
-    } while (!QLog.isColorLevel());
-    if ("draw textInfo text = " + this.jdField_a_of_type_JavaLangString + " fontId = " + this.jdField_a_of_type_Int + " fontType = " + this.jdField_b_of_type_Int + " color = " + this.c + " localTypeFace Existed = " + paramPaint != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("DiyPendantDrawable", 2, new Object[] { Boolean.valueOf(bool) });
-      return;
-    }
+      str = (String)paramArrayOfObject[0];
+    } while (!this.a.jdField_c_of_type_JavaLangString.equals(str));
+    int i = ((Integer)paramArrayOfObject[1]).intValue();
+    QLog.d("SelectMemberActivity", 2, "add discussion member failed, error code: " + i);
+    bcpw.a(this.a, this.a.getString(2131691810), 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aiee
  * JD-Core Version:    0.7.0.1
  */

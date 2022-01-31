@@ -1,19 +1,33 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import java.util.List;
 
-public class afmq
-  implements afpx
+class afmq
+  implements View.OnClickListener
 {
-  public afmq(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
+  afmq(afmp paramafmp) {}
   
-  public void a(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    this.a.a.a(paramMotionEvent);
+    afmr localafmr = (afmr)paramView.getTag();
+    if ((localafmr == null) || (!(localafmr instanceof afmr))) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+    paramView = (View)paramView.getParent();
+    if ((paramView instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)paramView).d();
+    }
+    afmp.a(this.a, localafmr.a);
+    this.a.jdField_a_of_type_JavaUtilList.add(afmp.a(this.a).remove(this.a.getCount() - localafmr.b - 1));
+    this.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afmq
  * JD-Core Version:    0.7.0.1
  */

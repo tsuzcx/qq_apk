@@ -1,16 +1,21 @@
 package com.tencent.youtu.ytagreflectlivecheck.jni;
 
 import android.util.Base64;
+import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface;
+import com.tencent.youtu.ytagreflectlivecheck.data.YTActReflectData;
 import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.DataPack;
+import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.EncodeReflectData;
 import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.FullPack;
 import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.RawImgData;
 import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.Timeval;
+import com.tencent.youtu.ytagreflectlivecheck.jni.model.ActionReflectReq;
 import com.tencent.youtu.ytagreflectlivecheck.jni.model.ColorImgData;
 import com.tencent.youtu.ytagreflectlivecheck.jni.model.FaceFrame;
 import com.tencent.youtu.ytagreflectlivecheck.jni.model.PersonLive;
 import com.tencent.youtu.ytagreflectlivecheck.jni.model.PersonLiveReq;
 import com.tencent.youtu.ytagreflectlivecheck.jni.model.ReflectColorData;
 import com.tencent.youtu.ytagreflectlivecheck.jni.model.ReflectLiveReq;
+import com.tencent.youtu.ytagreflectlivecheck.jni.model.YTImageInfo;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
@@ -24,21 +29,56 @@ public class JNIUtils
   public ReflectColorData reflect_data = null;
   public String session_id = null;
   
-  public static ReflectLiveReq getReflectLiveReq(FullPack paramFullPack, String paramString)
+  public static ActionReflectReq getActionReflectLiveReq(FullPack paramFullPack, EncodeReflectData paramEncodeReflectData, YTActReflectData paramYTActReflectData, String paramString)
+  {
+    ActionReflectReq localActionReflectReq = new ActionReflectReq();
+    localActionReflectReq.app_id = YTAGReflectLiveCheckInterface.mAppId;
+    localActionReflectReq.color_data = paramString;
+    localActionReflectReq.platform = 2;
+    localActionReflectReq.select_data = paramYTActReflectData.select_data;
+    localActionReflectReq.reflect_data = translation(paramFullPack.AGin);
+    if (paramFullPack != null) {
+      localActionReflectReq.reflect_data = translation(paramFullPack.AGin);
+    }
+    if (paramEncodeReflectData != null)
+    {
+      localActionReflectReq.encode_reflect_data = new String(paramEncodeReflectData.encode_reflect_data);
+      localActionReflectReq.reserve = new String(paramEncodeReflectData.reserve);
+    }
+    localActionReflectReq.live_image = new YTImageInfo(paramYTActReflectData.best);
+    localActionReflectReq.eye_image = new YTImageInfo(paramYTActReflectData.eye);
+    localActionReflectReq.mouth_image = new YTImageInfo(paramYTActReflectData.mouth);
+    localActionReflectReq.compare_image = null;
+    localActionReflectReq.mode = 1;
+    localActionReflectReq.session_id = null;
+    return localActionReflectReq;
+  }
+  
+  public static ReflectLiveReq getReflectLiveReq(FullPack paramFullPack, EncodeReflectData paramEncodeReflectData, String paramString)
   {
     ReflectLiveReq localReflectLiveReq = new ReflectLiveReq();
     localReflectLiveReq.color_data = paramString;
     localReflectLiveReq.platform = 2;
-    localReflectLiveReq.reflect_data = translation(paramFullPack.AGin);
-    localReflectLiveReq.live_image = new String(Base64.encode(paramFullPack.frames, 2));
+    if (paramFullPack != null)
+    {
+      localReflectLiveReq.reflect_data = translation(paramFullPack.AGin);
+      localReflectLiveReq.live_image = new String(Base64.encode(paramFullPack.frames, 2));
+    }
+    if (paramEncodeReflectData != null)
+    {
+      localReflectLiveReq.encode_reflect_data = new String(paramEncodeReflectData.encode_reflect_data);
+      localReflectLiveReq.reserve = new String(paramEncodeReflectData.reserve);
+      localReflectLiveReq.live_image = new String(paramEncodeReflectData.live_image);
+    }
     localReflectLiveReq.compare_image = null;
     localReflectLiveReq.session_id = null;
+    localReflectLiveReq.app_id = YTAGReflectLiveCheckInterface.mAppId;
     return localReflectLiveReq;
   }
   
   public static Timeval getTimeval()
   {
-    long l = System.nanoTime() / 1000L;
+    long l = System.currentTimeMillis() * 1000L;
     return new Timeval(l / 1000000L, (int)(l % 1000000L));
   }
   

@@ -1,22 +1,21 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.ViewStub;
+import android.view.ViewStub.OnInflateListener;
 
-final class scx
-  implements Comparator<sdg>
+class scx
+  implements ViewStub.OnInflateListener
 {
-  public int a(sdg paramsdg1, sdg paramsdg2)
+  scx(scu paramscu) {}
+  
+  public void onInflate(ViewStub paramViewStub, View paramView)
   {
-    if ((paramsdg1 == paramsdg2) || (paramsdg1.b == paramsdg2.b)) {
-      return 0;
-    }
-    if (paramsdg1.b < paramsdg2.b) {
-      return -1;
-    }
-    return 1;
+    this.a.a = paramView;
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     scx
  * JD-Core Version:    0.7.0.1
  */

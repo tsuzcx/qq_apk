@@ -299,6 +299,11 @@ public class VideoFilterBase
     this.mParamList.put(paramUniformParam.name, paramUniformParam);
   }
   
+  public void apply()
+  {
+    ApplyGLSLFilter();
+  }
+  
   public void beforeRender(int paramInt1, int paramInt2, int paramInt3) {}
   
   public boolean canUseBlendMode()

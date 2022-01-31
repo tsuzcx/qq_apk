@@ -1,123 +1,162 @@
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import cooperation.qwallet.plugin.QWalletHelper;
 
 public class bghf
+  extends RemoteCommand
 {
-  public static void a(String paramString1, String paramString2)
+  private static Bundle jdField_a_of_type_AndroidOsBundle;
+  boolean jdField_a_of_type_Boolean;
+  
+  public bghf(String paramString, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
-    {
-      return;
-      awrn.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, new HashMap(), null);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2);
+    super(paramString);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static void a(String paramString1, String paramString2, long paramLong)
+  public static Bundle a(Bundle paramBundle)
   {
-    awrn.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, paramLong, 0L, new HashMap(), null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " duration:" + paramLong);
+    try
+    {
+      Bundle localBundle = jdField_a_of_type_AndroidOsBundle;
+      jdField_a_of_type_AndroidOsBundle = paramBundle;
+      return localBundle;
+    }
+    finally
+    {
+      paramBundle = finally;
+      throw paramBundle;
     }
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    String str;
-    do
-    {
-      return;
-      HashMap localHashMap = new HashMap();
-      str = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        str = "unfinedsource";
-      }
-      localHashMap.put("refer", str);
-      awrn.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " refer = " + str);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", paramString3);
-    localHashMap.put("reserve", paramString4);
-    awrn.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " resultCode:" + paramString3 + " reserve:" + paramString4);
+    paramQQAppInterface = PluginCommunicationHandler.getInstance();
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.register(new bghf("cacomicetinfo", true));
     }
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  private void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(paramString3, paramString4);
-    localHashMap.put("reserve", paramString5);
-    awrn.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " key:" + paramString3 + " value:" + paramString4 + ", reserve:" + paramString5);
+    Intent localIntent = new Intent();
+    localIntent.addCategory("android.intent.category.LAUNCHER");
+    localIntent.addFlags(268435456);
+    sgj.a(localIntent, paramQQAppInterface, BaseApplication.getContext(), paramString, -1);
+  }
+  
+  private boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = (akdi)paramQQAppInterface.getManager(56);
+    if (paramQQAppInterface != null) {
+      return paramQQAppInterface.b(paramString) != null;
+    }
+    return false;
+  }
+  
+  private Bundle b(Bundle paramBundle)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicRemoteCommand", 2, "onRemoteInvoke cannot get QQAppInterface");
+      }
+      return null;
+    }
+    localObject = (QQAppInterface)localObject;
+    String str = paramBundle.getString("cacomicetinfo");
+    if ("Remotecall_getPublicAccountState".equals(str))
+    {
+      paramBundle = paramBundle.getString("uin");
+      if (!TextUtils.isEmpty(paramBundle))
+      {
+        boolean bool = a((QQAppInterface)localObject, paramBundle);
+        paramBundle = new Bundle();
+        paramBundle.putBoolean("state", bool);
+        return paramBundle;
+      }
+    }
+    else
+    {
+      if (!"Remotecall_showPublicAccountDetail".equals(str)) {
+        break label123;
+      }
+      paramBundle = paramBundle.getString("uin");
+      if (!TextUtils.isEmpty(paramBundle)) {
+        a((QQAppInterface)localObject, paramBundle);
+      }
+    }
+    for (;;)
+    {
+      return null;
+      label123:
+      if ("Remotecall_getUserStatus".equals(str))
+      {
+        paramBundle = new Bundle();
+        if (VipUtils.b((QQAppInterface)localObject)) {
+          paramBundle.putInt("userStatus", 3);
+        }
+        for (;;)
+        {
+          return paramBundle;
+          if (VipUtils.c((QQAppInterface)localObject)) {
+            paramBundle.putInt("userStatus", 2);
+          } else {
+            paramBundle.putInt("userStatus", 1);
+          }
+        }
+      }
+      if ("Remotecall_initQbPlugin".equals(str)) {
+        try
+        {
+          QWalletHelper.preloadQWallet((AppInterface)localObject);
+          if (QLog.isColorLevel()) {
+            QLog.i("VipComicRemoteCommand", 2, "preloadQWallet()");
+          }
+          paramBundle = new Bundle();
+          paramBundle.putBoolean("success", true);
+          return paramBundle;
+        }
+        catch (Exception paramBundle)
+        {
+          paramBundle.printStackTrace();
+        }
+      } else if ("Remotecall_showComicBar".equals(str))
+      {
+        if (((QQAppInterface)localObject).getHandler(Conversation.class) != null) {
+          a(paramBundle);
+        }
+      }
+      else if (QLog.isColorLevel()) {
+        QLog.d("VipComicRemoteCommand", 2, "onRemoteInvoke unknow invokeCmd");
+      }
     }
   }
   
-  public static void a(String paramString1, String paramString2, HashMap<String, String> paramHashMap)
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.putAll(paramHashMap);
-    awrn.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2);
+    paramBundle = b(paramBundle);
+    if (paramOnInvokeFinishLinstener != null) {
+      paramOnInvokeFinishLinstener.onInvokeFinish(paramBundle);
     }
-  }
-  
-  public static void b(String paramString1, String paramString2, String paramString3)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    String str;
-    do
-    {
-      return;
-      HashMap localHashMap = new HashMap();
-      str = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        str = "unfinedsource";
-      }
-      localHashMap.put("event_result", str);
-      awrn.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " refer = " + str);
-  }
-  
-  public static void b(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    String str;
-    do
-    {
-      return;
-      HashMap localHashMap = new HashMap();
-      str = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        str = "unfinedsource";
-      }
-      paramString3 = paramString4;
-      if (TextUtils.isEmpty(paramString4)) {
-        paramString3 = "0";
-      }
-      localHashMap.put("refer", str);
-      localHashMap.put("type", paramString3);
-      awrn.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " refer = " + str + "type =" + paramString3);
+    return paramBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bghf
  * JD-Core Version:    0.7.0.1
  */

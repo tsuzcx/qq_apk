@@ -1,56 +1,28 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.IInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.QZoneClickReport;
 
-public abstract interface adye
-  extends IInterface
+class adye
+  implements View.OnClickListener
 {
-  public abstract int a(long paramLong, int paramInt);
+  adye(adyc paramadyc) {}
   
-  public abstract Intent a(long paramLong, int paramInt);
-  
-  public abstract Intent a(long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract MessageForShortVideo a(long paramLong);
-  
-  public abstract String a(String paramString1, String paramString2);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(long paramLong, int paramInt);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong, int paramInt, Bundle paramBundle);
-  
-  public abstract void a(adyh paramadyh);
-  
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(long[] paramArrayOfLong);
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void b(long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void b(String paramString, int paramInt);
-  
-  public abstract void c();
-  
-  public abstract void c(long paramLong);
-  
-  public abstract void d(long paramLong);
-  
-  public abstract void e(long paramLong);
+  public void onClick(View paramView)
+  {
+    if (((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    {
+      paramView = new bgxs();
+      paramView.c = "330";
+      paramView.d = "3";
+      paramView.e = "2";
+      QZoneClickReport.startReportImediately(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView);
+      paramView = bgyf.a();
+      bgxy.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, paramView, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, 0, 0);
+    }
+  }
 }
 
 

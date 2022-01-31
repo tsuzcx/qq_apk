@@ -1,10 +1,10 @@
 package dov.com.tencent.mobileqq.shortvideo.util.videoconverter;
 
-import ajed;
+import ahwa;
 import android.os.Bundle;
-import atmp;
-import atmr;
-import baig;
+import aukn;
+import aukp;
+import bbjn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +23,7 @@ public class ShortVideoTravellerManager
 {
   public static final String a;
   Bundle jdField_a_of_type_AndroidOsBundle;
-  private atmp jdField_a_of_type_Atmp;
+  private aukn jdField_a_of_type_Aukn;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Object jdField_a_of_type_JavaLangObject;
   WeakReference<MessengerService> jdField_a_of_type_JavaLangRefWeakReference;
@@ -32,7 +32,7 @@ public class ShortVideoTravellerManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = ajed.aT + "/tencent/qim/travellervideos/";
+    jdField_a_of_type_JavaLangString = ahwa.jdField_a_of_type_JavaLangString + "/tencent/qim/travellervideos/";
   }
   
   private void a(List<ShortVideoTravellerManager.TravellerVideoItem> paramList)
@@ -45,23 +45,23 @@ public class ShortVideoTravellerManager
     do
     {
       return;
-      this.jdField_a_of_type_Atmp.a(ShortVideoTravellerManager.TravellerVideoItem.class);
-      atmr localatmr = this.jdField_a_of_type_Atmp.a();
+      this.jdField_a_of_type_Aukn.a(ShortVideoTravellerManager.TravellerVideoItem.class);
+      aukp localaukp = this.jdField_a_of_type_Aukn.a();
       try
       {
-        localatmr.a();
+        localaukp.a();
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
           ShortVideoTravellerManager.TravellerVideoItem localTravellerVideoItem = (ShortVideoTravellerManager.TravellerVideoItem)paramList.next();
-          this.jdField_a_of_type_Atmp.b(localTravellerVideoItem);
+          this.jdField_a_of_type_Aukn.b(localTravellerVideoItem);
         }
       }
       finally
       {
-        localatmr.b();
+        localaukp.b();
       }
-      localatmr.b();
+      localaukp.b();
     } while (!QLog.isColorLevel());
     QLog.d("ShortVideoTravellerManager", 2, "saveVideoListToDB");
   }
@@ -94,7 +94,7 @@ public class ShortVideoTravellerManager
         paramString = finally;
         throw paramString;
       }
-      baig.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
+      bbjn.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
       if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
         this.jdField_a_of_type_JavaUtilArrayList.clear();
       }

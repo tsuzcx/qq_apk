@@ -1,34 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tribe.async.async.JobSegment;
 
-public class aace
-  implements View.OnTouchListener
+class aace
+  extends asix<JobSegment>
 {
-  public aace(AutoRemarkActivity paramAutoRemarkActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  aace(aacd paramaacd, JobSegment paramJobSegment)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
+    super(paramJobSegment);
+  }
+  
+  public void a(JobSegment paramJobSegment, boolean paramBoolean, asiu paramasiu)
+  {
+    if (paramBoolean)
     {
+      aacd.a(this.a, paramasiu);
+      return;
     }
-    do
-    {
-      return false;
-      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-    } while (!paramView.isActive());
-    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
-    return false;
+    aacd.a(this.a, new AppInfoError(5, "appInfo error"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aace
  * JD-Core Version:    0.7.0.1
  */

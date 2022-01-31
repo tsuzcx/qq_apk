@@ -1,21 +1,37 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.TroopManager;
+import org.json.JSONObject;
 
 public class zzf
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public zzf(AssistantSettingActivity paramAssistantSettingActivity, TroopManager paramTroopManager) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public zzf(zze paramzze) {}
+  
+  public boolean a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(paramBoolean);
+    try
+    {
+      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("type"));
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("lib_name").trim();
+      this.b = paramJSONObject.getString("func_name").trim();
+      return true;
+    }
+    catch (Exception paramJSONObject)
+    {
+      zyz.a("KingKongNativePatch", "Parse fingerprint error!");
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zzf
  * JD-Core Version:    0.7.0.1
  */

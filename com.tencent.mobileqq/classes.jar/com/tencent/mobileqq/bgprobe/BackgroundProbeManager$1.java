@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.bgprobe;
 
-import allq;
+import amae;
 
 public final class BackgroundProbeManager$1
   implements Runnable
 {
-  public BackgroundProbeManager$1(allq paramallq) {}
+  public BackgroundProbeManager$1(amae paramamae) {}
   
   public void run()
   {
-    allq.a(this.a);
+    amae.a(this.a);
   }
 }
 

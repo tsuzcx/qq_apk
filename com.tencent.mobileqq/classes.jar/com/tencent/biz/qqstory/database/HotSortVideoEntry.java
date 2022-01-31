@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.database;
 
-import atmo;
+import aukm;
 import com.tencent.biz.qqstory.network.pb.qqstory_group.HotVideoCard;
 import com.tencent.biz.qqstory.network.pb.qqstory_group.HotVideoItem;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.List;
 
 public class HotSortVideoEntry
-  extends atmo
+  extends aukm
 {
   public String coverURL;
   public String feedId;

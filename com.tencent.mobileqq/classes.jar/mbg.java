@@ -1,14 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoLayerUI;
 
-class mbg
-  implements View.OnClickListener
+public class mbg
+  extends Handler
 {
-  mbg(mbf parammbf) {}
+  public mbg(AVActivity paramAVActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    mbf.a(this.a);
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
+      return;
+    }
+    long l = mtm.a(paramMessage.obj);
+    this.a.a(l, "handleMessage", true);
+    if (this.a.jdField_a_of_type_Miq != null) {
+      this.a.jdField_a_of_type_Miq.n();
+    }
+    if (this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI != null) {
+      this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI.k(this.a.jdField_a_of_type_Miq.a);
+    }
+    this.a.g(-1031L);
   }
 }
 

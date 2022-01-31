@@ -1,66 +1,27 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import org.json.JSONArray;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
 public class txo
-  extends ukz
+  extends Subscriber.SingleEventSubscriberNoRefect<tld>
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  txk a;
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public txo(@NonNull txk paramtxk)
   {
-    switch (paramInt1)
-    {
-    default: 
-      urk.d("AddVideoMiddleCode", "unknown request code %d", new Object[] { Integer.valueOf(paramInt1) });
-      a(paramInt2, paramIntent);
-      e();
-      return;
-    }
-    if (paramInt2 == -1) {}
-    for (;;)
-    {
-      try
-      {
-        LinkedHashSet localLinkedHashSet = (LinkedHashSet)paramIntent.getSerializableExtra("extra_checked_vidset");
-        if ((localLinkedHashSet != null) && (localLinkedHashSet.size() > 0))
-        {
-          urk.d("AddVideoMiddleCode", "let's add video to group, count = %d, collection = %s", new Object[] { Integer.valueOf(localLinkedHashSet.size()), new JSONArray(localLinkedHashSet).toString() });
-          ArrayList localArrayList = new ArrayList();
-          localArrayList.addAll(localLinkedHashSet);
-          sis.a(this.jdField_a_of_type_JavaLangString, localArrayList, this.jdField_a_of_type_Int);
-          paramIntent.putExtra("totalPublishVideoCount", localLinkedHashSet.size());
-          paramIntent.putExtra("isAddFromExist", true);
-          a(paramInt2, paramIntent);
-          e();
-          return;
-        }
-      }
-      catch (ClassCastException localClassCastException)
-      {
-        urk.c("AddVideoMiddleCode", "StoryPickerFragment return illegal value", localClassCastException);
-        Object localObject = null;
-        continue;
-        urk.d("AddVideoMiddleCode", "do not add video to group, exit ! result=%s, retValue=%s", new Object[] { Integer.valueOf(paramInt2), localObject });
-        paramInt2 = 0;
-        continue;
-      }
-      urk.d("AddVideoMiddleCode", "add video to group cancel by user");
+    this.a = paramtxk;
+  }
+  
+  protected void a(@NonNull tld paramtld)
+  {
+    if (paramtld.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      this.a.a(paramtld.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void a(Bundle paramBundle1, Bundle paramBundle2)
+  public Class acceptEventClass()
   {
-    this.jdField_a_of_type_JavaLangString = paramBundle2.getString("shareGroupId");
-    this.b = paramBundle2.getString("shareGroupName");
-    this.jdField_a_of_type_Int = paramBundle2.getInt("add_video_source");
-    urk.a("AddVideoMiddleCode", "shareGroupId = %s, shareGroupName = %s, source=%d", this.jdField_a_of_type_JavaLangString, this.b, Integer.valueOf(this.jdField_a_of_type_Int));
-    StoryPickerFragment.a(a(), null, this.b, 1000, 2);
+    return tld.class;
   }
 }
 

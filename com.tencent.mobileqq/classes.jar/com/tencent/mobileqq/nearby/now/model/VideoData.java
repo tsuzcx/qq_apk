@@ -3,21 +3,21 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import asld;
-import aslp;
-import aslq;
+import athh;
+import atht;
+import athu;
 import java.util.ArrayList;
 
 public class VideoData
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoData> CREATOR = new aslq();
+  public static final Parcelable.Creator<VideoData> CREATOR = new athu();
   public int a;
   public long a;
-  public aslp a;
+  public atht a;
   public LocationInfo a;
   public String a;
-  public ArrayList<asld> a;
+  public ArrayList<athh> a;
   public boolean a;
   public int b;
   public long b;

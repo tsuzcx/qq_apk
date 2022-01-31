@@ -27,7 +27,7 @@ class GameUserInfoBtnManager$1$1
       GameUserInfoBtnManager.access$100(this.this$1.this$0).getApiProxy().doAddFriend(GameUserInfoBtnManager.access$000(this.this$1.this$0), paramUserInfoButtonParam.openId, new GameUserInfoBtnManager.1.1.2(this, paramUserInfoButtonParam));
       return;
     }
-    GameUserInfoBtnManager.access$100(this.this$1.this$0).getApiProxy().getUserInfo(paramUserInfoButtonParam.withCredentials, paramUserInfoButtonParam.lang, new GameUserInfoBtnManager.1.1.3(this, paramUserInfoButtonParam));
+    GameUserInfoBtnManager.access$100(this.this$1.this$0).postRunnable(new GameUserInfoBtnManager.1.1.3(this, paramUserInfoButtonParam));
   }
 }
 

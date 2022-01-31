@@ -1,30 +1,51 @@
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
-public class bikj
+class bikj
+  implements bjob<Boolean>
 {
-  public final int a;
-  public final Drawable a;
-  public final String a;
-  public final String b;
+  bikj(bikc parambikc) {}
   
-  public bikj(@NonNull String paramString1, @NonNull String paramString2, Drawable paramDrawable, int paramInt)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("SelectedItem{");
-    localStringBuilder.append("category='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", name='").append(this.b).append('\'');
-    localStringBuilder.append(", drawable=").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    localStringBuilder.append(", isDynamic=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    if (paramBoolean == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if (!paramBoolean.booleanValue()) {
+          break label200;
+        }
+        if (bikc.a(this.a).a())
+        {
+          bikc.c(this.a).setVisibility(0);
+          bikc.a(this.a).setVisibility(8);
+          bikc.a(this.a).setVisibility(8);
+          bikc.a(this.a).setEntryPresent(false);
+          return;
+        }
+        if (!bikc.a(this.a).b()) {
+          break;
+        }
+        bikc.c(this.a).setVisibility(0);
+        bikc.a(this.a).setVisibility(0);
+        bikc.a(this.a).setEntryPresent(true);
+      } while (!bikc.b(this.a));
+      bikc.a(this.a).setVisibility(0);
+      return;
+    } while (!bikc.a(this.a).c());
+    bikc.c(this.a).setVisibility(0);
+    bikc.a(this.a).setVisibility(8);
+    bikc.a(this.a).setVisibility(8);
+    bikc.a(this.a).setEntryPresent(false);
+    return;
+    label200:
+    bikc.a(this.a).setVisibility(8);
+    bikc.a(this.a).setVisibility(8);
   }
 }
 

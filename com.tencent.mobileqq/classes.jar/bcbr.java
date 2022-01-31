@@ -1,65 +1,32 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener.1;
-import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener.2;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.lang.ref.WeakReference;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.webviewplugin.Hole;
 
-public class bcbr
-  extends aqrd
+class bcbr
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public long b;
-  String jdField_b_of_type_JavaLangString;
-  WeakReference<WebView> jdField_b_of_type_JavaLangRefWeakReference;
+  bcbr(bcbq parambcbq, View paramView, DisplayMetrics paramDisplayMetrics) {}
   
-  public bcbr(WebView paramWebView, long paramLong, String paramString)
+  public void onGlobalLayout()
   {
-    super(paramWebView, paramLong, paramString);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramWebView);
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if ((localWebView == null) || (paramObject == null)) {
-      return;
-    }
-    String str = "'undefined'";
-    if ((paramObject instanceof String))
-    {
-      paramObject = ((String)paramObject).replace("\\", "\\\\").replace("'", "\\'");
-      str = "'" + paramObject + "'";
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
     for (;;)
     {
-      new Handler(Looper.getMainLooper()).post(new OpenJsBridge.OpenJsBridgeListener.1(this, paramString, str, localWebView));
+      this.jdField_a_of_type_Bcbq.jdField_a_of_type_ComTencentBizWebviewpluginHole.setHole((this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidViewView.getLeft() + this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidViewView.getRight()) / 2 - 1, (this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidViewView.getTop() + this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidViewView.getBottom()) / 2 - 1, (int)(30.0F * this.jdField_a_of_type_AndroidUtilDisplayMetrics.density));
+      this.jdField_a_of_type_Bcbq.jdField_a_of_type_ComTencentBizWebviewpluginHole.invalidate();
       return;
-      if (((paramObject instanceof Number)) || ((paramObject instanceof Long)) || ((paramObject instanceof Integer)) || ((paramObject instanceof Double)) || ((paramObject instanceof Float))) {
-        str = paramObject.toString();
-      } else if ((paramObject instanceof Boolean)) {
-        str = paramObject.toString();
-      }
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("OpenJsBridge", 4, "onNoMatchMethod");
-    }
-    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if (localWebView == null) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new OpenJsBridge.OpenJsBridgeListener.2(this, paramString, localWebView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcbr
  * JD-Core Version:    0.7.0.1
  */

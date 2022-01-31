@@ -1,51 +1,289 @@
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.style.StrikethroughSpan;
-import android.util.SparseArray;
-import android.widget.Button;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class azsc
-  extends azjp
 {
-  public azsc(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
-  
-  public void a(SparseArray<azkc> paramSparseArray)
+  public static int a(int paramInt1, int paramInt2)
   {
-    int j = 0;
-    this.a.jdField_a_of_type_AndroidUtilSparseArray = paramSparseArray;
-    Object localObject = (azkc)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
-    if (localObject != null)
-    {
-      paramSparseArray = ((azkc)localObject).a;
-      if (localObject == null) {
-        break label120;
-      }
-      localObject = ((azkc)localObject).b;
-      label55:
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label126;
-      }
-      j = paramSparseArray.indexOf((String)localObject);
+    if (paramInt2 == 404) {
+      paramInt2 = 303;
     }
-    label120:
-    label126:
-    for (int i = ((String)localObject).length() + j;; i = 0)
+    do
     {
-      paramSparseArray = new SpannableString(paramSparseArray);
-      paramSparseArray.setSpan(new StrikethroughSpan(), j, i, 18);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(paramSparseArray);
+      return paramInt2;
+      if ((paramInt2 - 400 >= 0) && (paramInt2 - 400 < 100)) {
+        return 304;
+      }
+      if ((paramInt2 - 500 >= 0) && (paramInt2 - 500 < 100)) {
+        return 305;
+      }
+      if (paramInt1 == 9024) {
+        return 303;
+      }
+      if (paramInt1 == 9060) {
+        return 304;
+      }
+      if (paramInt1 == 9061) {
+        return 305;
+      }
+      if ((paramInt1 == 9052) || (paramInt1 == 9055) || (paramInt1 == 9053)) {
+        break;
+      }
+      paramInt2 = paramInt1;
+    } while (paramInt1 != 9054);
+    return 307;
+  }
+  
+  @Deprecated
+  public static void a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt1, int paramInt2)
+  {
+    if (paramItem == null) {
       return;
-      paramSparseArray = "30金豆秀一下";
-      break;
-      localObject = null;
-      break label55;
+    }
+    QQAppInterface localQQAppInterface = azsp.a();
+    switch (paramInt1)
+    {
+    case 4: 
+    case 5: 
+    case 7: 
+    case 8: 
+    default: 
+      return;
+    case 2: 
+    case 6: 
+      bakj.a(localQQAppInterface, "upload", true, paramItem.transferBeginTime, paramItem.UploadIp, paramLong + "", apvb.a(paramItem.FileName), paramItem.FilePath, paramInt2, paramItem.transferedSize, paramItem.ProgressTotal, paramItem.uploadUrl, paramItem.rspHeadStr, paramItem.retryTimes);
+      return;
+    case 10: 
+      bakj.a(localQQAppInterface, "download", false, paramItem.transferBeginTime, paramItem.DownloadIp, paramLong + "", apvb.a(paramItem.FileName), paramItem.FilePath, paramInt2, paramItem.transferedSize, paramItem.ProgressTotal, paramItem.downUrlStr4Report, paramItem.rspHeadStr, paramItem.retryTimes);
+      return;
+    case 9: 
+    case 11: 
+      bakj.a(localQQAppInterface, "download", true, paramItem.transferBeginTime, paramItem.DownloadIp, paramLong + "", apvb.a(paramItem.FileName), paramItem.FilePath, paramInt2, paramItem.transferedSize, paramItem.ProgressTotal, paramItem.downUrlStr4Report, paramItem.rspHeadStr, paramItem.retryTimes);
+      return;
+    }
+    bakj.a(localQQAppInterface, "upload", false, paramItem.transferBeginTime, paramItem.UploadIp, paramLong + "", apvb.a(paramItem.FileName), paramItem.FilePath, paramInt2, paramItem.transferedSize, paramItem.ProgressTotal, paramItem.uploadUrl, paramItem.rspHeadStr, paramItem.retryTimes);
+  }
+  
+  public static void a(long paramLong, TroopFileTransferManager.Item paramItem, azsd paramazsd)
+  {
+    if ((paramItem == null) || (paramazsd == null)) {}
+    do
+    {
+      return;
+      localObject = azsp.a();
+    } while (localObject == null);
+    Object localObject = ((QQAppInterface)localObject).getCurrentAccountUin();
+    String str = azsp.a();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_group_code", String.valueOf(paramLong));
+    localHashMap.put("param_self_uin", localObject);
+    localHashMap.put("param_file_name", paramItem.FileName);
+    localHashMap.put("param_suffix", apvb.a(paramItem.FileName));
+    localHashMap.put("param_file_size", String.valueOf(paramItem.ProgressTotal));
+    localHashMap.put("param_uuid", paramItem.FilePath);
+    localHashMap.put("param_store_type", String.valueOf(paramItem.BusId));
+    localHashMap.put("param_result", String.valueOf(0));
+    localHashMap.put("param_sub_reason", String.valueOf(0));
+    localHashMap.put("param_http_status_code", String.valueOf(paramazsd.jdField_e_of_type_Int));
+    localHashMap.put("param_err_msg", "");
+    localHashMap.put("param_flash_transfer", String.valueOf(paramazsd.jdField_a_of_type_Boolean));
+    localHashMap.put("param_retry_count", String.valueOf(paramItem.retryTimes));
+    localHashMap.put("param_proxy_type", String.valueOf(paramazsd.jdField_b_of_type_Int));
+    localHashMap.put("param_net_type", str);
+    localHashMap.put("param_security_time", String.valueOf(paramazsd.jdField_f_of_type_Long));
+    localHashMap.put("param_check_time", String.valueOf(paramazsd.jdField_g_of_type_Long));
+    localHashMap.put("param_server_ip", String.valueOf(paramazsd.jdField_b_of_type_JavaLangString));
+    localHashMap.put("param_server_port", String.valueOf(paramazsd.jdField_a_of_type_Int));
+    localHashMap.put("param_file_url", paramazsd.jdField_a_of_type_JavaLangString);
+    localHashMap.put("param_start_size", String.valueOf(paramazsd.jdField_a_of_type_Long));
+    localHashMap.put("param_transfer_size", String.valueOf(paramazsd.jdField_b_of_type_Long));
+    localHashMap.put("param_transfer_time", String.valueOf(paramazsd.jdField_c_of_type_Long));
+    localHashMap.put("param_transfer_speed", String.valueOf(paramazsd.jdField_e_of_type_Long));
+    localHashMap.put("param_fromType", String.valueOf(paramazsd.jdField_g_of_type_Int));
+    paramLong = paramazsd.jdField_d_of_type_Long;
+    long l = System.currentTimeMillis();
+    if (paramazsd.jdField_d_of_type_Long == 0L) {
+      paramLong = l;
+    }
+    if (paramLong < 1L) {}
+    for (paramLong = 0L;; paramLong = l - paramLong)
+    {
+      l = paramLong;
+      if (paramLong < 0L) {
+        l = 0L;
+      }
+      azsr.c("TroopFileDataReporter", azsr.jdField_a_of_type_Int, "[GroupSend]reportUploadSucInfo. reportType:actGroupFileUp params:" + localHashMap.toString());
+      axrl.a(BaseApplication.getContext()).a((String)localObject, "actGroupFileUp", true, l, 1, localHashMap, "");
+      return;
+    }
+  }
+  
+  public static void a(long paramLong, TroopFileTransferManager.Item paramItem, String paramString, azsd paramazsd)
+  {
+    if ((paramItem == null) || (paramazsd == null)) {}
+    do
+    {
+      return;
+      localObject = azsp.a();
+    } while (localObject == null);
+    Object localObject = ((QQAppInterface)localObject).getCurrentAccountUin();
+    String str = azsp.a();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_group_code", String.valueOf(paramLong));
+    localHashMap.put("param_self_uin", localObject);
+    localHashMap.put("param_file_name", paramItem.FileName);
+    localHashMap.put("param_suffix", apvb.a(paramItem.FileName));
+    localHashMap.put("param_file_size", String.valueOf(paramItem.ProgressTotal));
+    localHashMap.put("param_uuid", paramItem.FilePath);
+    localHashMap.put("param_store_type", String.valueOf(paramItem.BusId));
+    localHashMap.put("param_result", String.valueOf(paramazsd.jdField_c_of_type_Int));
+    localHashMap.put("param_sub_reason", String.valueOf(paramazsd.jdField_d_of_type_Int));
+    localHashMap.put("param_http_status_code", String.valueOf(paramazsd.jdField_e_of_type_Int));
+    localHashMap.put("param_server_return_code", String.valueOf(paramazsd.jdField_f_of_type_Int));
+    localHashMap.put("param_err_msg", paramazsd.jdField_c_of_type_JavaLangString);
+    localHashMap.put("param_retry_count", String.valueOf(paramItem.retryTimes));
+    localHashMap.put("param_proxy_type", String.valueOf(paramazsd.jdField_b_of_type_Int));
+    localHashMap.put("param_net_type", str);
+    localHashMap.put("param_security_time", String.valueOf(paramazsd.jdField_f_of_type_Long));
+    localHashMap.put("param_check_time", String.valueOf(paramazsd.jdField_g_of_type_Long));
+    localHashMap.put("param_server_ip", String.valueOf(paramazsd.jdField_b_of_type_JavaLangString));
+    localHashMap.put("param_server_port", String.valueOf(paramazsd.jdField_a_of_type_Int));
+    localHashMap.put("param_file_url", paramazsd.jdField_a_of_type_JavaLangString);
+    localHashMap.put("param_start_size", String.valueOf(paramazsd.jdField_a_of_type_Long));
+    localHashMap.put("param_transfer_size", String.valueOf(paramazsd.jdField_b_of_type_Long));
+    localHashMap.put("param_transfer_time", String.valueOf(paramazsd.jdField_c_of_type_Long));
+    localHashMap.put("param_transfer_speed", String.valueOf(paramazsd.jdField_e_of_type_Long));
+    localHashMap.put("param_fromType", String.valueOf(paramazsd.jdField_g_of_type_Int));
+    paramLong = paramazsd.jdField_d_of_type_Long;
+    long l = System.currentTimeMillis();
+    if (paramazsd.jdField_d_of_type_Long == 0L) {
+      paramLong = l;
+    }
+    if (paramLong < 1L) {}
+    for (paramLong = 0L;; paramLong = l - paramLong)
+    {
+      l = paramLong;
+      if (paramLong < 0L) {
+        l = 0L;
+      }
+      azsr.c("TroopFileDataReporter", azsr.jdField_a_of_type_Int, "[GroupSend]reportUploadFailInfo. reportType:" + paramString + " params:" + localHashMap.toString());
+      axrl.a(BaseApplication.getContext()).a((String)localObject, paramString, false, l, 1, localHashMap, "");
+      return;
+    }
+  }
+  
+  public static void b(long paramLong, TroopFileTransferManager.Item paramItem, azsd paramazsd)
+  {
+    if ((paramItem == null) || (paramazsd == null)) {}
+    do
+    {
+      return;
+      localObject = azsp.a();
+    } while (localObject == null);
+    Object localObject = ((QQAppInterface)localObject).getCurrentAccountUin();
+    String str = azsp.a();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_group_code", String.valueOf(paramLong));
+    localHashMap.put("param_self_uin", localObject);
+    localHashMap.put("param_file_name", paramItem.FileName);
+    localHashMap.put("param_suffix", apvb.a(paramItem.FileName));
+    localHashMap.put("param_file_size", String.valueOf(paramItem.ProgressTotal));
+    localHashMap.put("param_uuid", paramItem.FilePath);
+    localHashMap.put("param_store_type", String.valueOf(paramItem.BusId));
+    localHashMap.put("param_life_left_second", String.valueOf(paramazsd.h));
+    localHashMap.put("param_result", String.valueOf(0));
+    localHashMap.put("param_sub_reason", String.valueOf(0));
+    localHashMap.put("param_http_status_code", String.valueOf(paramazsd.jdField_e_of_type_Int));
+    localHashMap.put("param_err_msg", "");
+    localHashMap.put("param_retry_count", String.valueOf(paramItem.retryTimes));
+    localHashMap.put("param_proxy_type", String.valueOf(paramazsd.jdField_b_of_type_Int));
+    localHashMap.put("param_net_type", str);
+    localHashMap.put("param_security_time", String.valueOf(paramazsd.jdField_f_of_type_Long));
+    localHashMap.put("param_server_ip", String.valueOf(paramazsd.jdField_b_of_type_JavaLangString));
+    localHashMap.put("param_server_port", String.valueOf(paramazsd.jdField_a_of_type_Int));
+    localHashMap.put("param_file_url", paramazsd.jdField_a_of_type_JavaLangString);
+    localHashMap.put("param_start_size", String.valueOf(paramazsd.jdField_a_of_type_Long));
+    localHashMap.put("param_transfer_size", String.valueOf(paramazsd.jdField_b_of_type_Long));
+    localHashMap.put("param_transfer_time", String.valueOf(paramazsd.jdField_c_of_type_Long));
+    localHashMap.put("param_transfer_speed", String.valueOf(paramazsd.jdField_e_of_type_Long));
+    localHashMap.put("param_fromType", String.valueOf(paramazsd.jdField_g_of_type_Int));
+    paramLong = paramazsd.jdField_d_of_type_Long;
+    long l = System.currentTimeMillis();
+    if (paramazsd.jdField_d_of_type_Long == 0L) {
+      paramLong = l;
+    }
+    if (paramLong < 1L) {}
+    for (paramLong = 0L;; paramLong = l - paramLong)
+    {
+      l = paramLong;
+      if (paramLong < 0L) {
+        l = 0L;
+      }
+      azsr.c("TroopFileDataReporter", azsr.jdField_a_of_type_Int, "[GroupDownload]reportDownloadSucInfo. reportType:actGroupFileDown params:" + localHashMap.toString());
+      axrl.a(BaseApplication.getContext()).a((String)localObject, "actGroupFileDown", true, l, 1, localHashMap, "");
+      return;
+    }
+  }
+  
+  public static void b(long paramLong, TroopFileTransferManager.Item paramItem, String paramString, azsd paramazsd)
+  {
+    if ((paramItem == null) || (paramazsd == null)) {}
+    do
+    {
+      return;
+      localObject = azsp.a();
+    } while (localObject == null);
+    Object localObject = ((QQAppInterface)localObject).getCurrentAccountUin();
+    String str = azsp.a();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_group_code", String.valueOf(paramLong));
+    localHashMap.put("param_self_uin", localObject);
+    localHashMap.put("param_file_name", paramItem.FileName);
+    localHashMap.put("param_suffix", apvb.a(paramItem.FileName));
+    localHashMap.put("param_file_size", String.valueOf(paramItem.ProgressTotal));
+    localHashMap.put("param_uuid", paramItem.FilePath);
+    localHashMap.put("param_store_type", String.valueOf(paramItem.BusId));
+    localHashMap.put("param_life_left_second", String.valueOf(paramazsd.h));
+    localHashMap.put("param_result", String.valueOf(paramazsd.jdField_c_of_type_Int));
+    localHashMap.put("param_sub_reason", String.valueOf(paramazsd.jdField_d_of_type_Int));
+    localHashMap.put("param_http_status_code", String.valueOf(paramazsd.jdField_e_of_type_Int));
+    localHashMap.put("param_server_return_code", String.valueOf(paramazsd.jdField_f_of_type_Int));
+    localHashMap.put("param_err_msg", paramazsd.jdField_c_of_type_JavaLangString);
+    localHashMap.put("param_retry_count", String.valueOf(paramItem.retryTimes));
+    localHashMap.put("param_proxy_type", String.valueOf(paramazsd.jdField_b_of_type_Int));
+    localHashMap.put("param_net_type", str);
+    localHashMap.put("param_security_time", String.valueOf(paramazsd.jdField_f_of_type_Long));
+    localHashMap.put("param_server_ip", String.valueOf(paramazsd.jdField_b_of_type_JavaLangString));
+    localHashMap.put("param_server_port", String.valueOf(paramazsd.jdField_a_of_type_Int));
+    localHashMap.put("param_file_url", paramazsd.jdField_a_of_type_JavaLangString);
+    localHashMap.put("param_start_size", String.valueOf(paramazsd.jdField_a_of_type_Long));
+    localHashMap.put("param_transfer_size", String.valueOf(paramazsd.jdField_b_of_type_Long));
+    localHashMap.put("param_transfer_time", String.valueOf(paramazsd.jdField_c_of_type_Long));
+    localHashMap.put("param_transfer_speed", String.valueOf(paramazsd.jdField_e_of_type_Long));
+    localHashMap.put("param_fromType", String.valueOf(paramazsd.jdField_g_of_type_Int));
+    paramLong = paramazsd.jdField_d_of_type_Long;
+    long l = System.currentTimeMillis();
+    if (paramazsd.jdField_d_of_type_Long == 0L) {
+      paramLong = l;
+    }
+    if (paramLong < 1L) {}
+    for (paramLong = 0L;; paramLong = l - paramLong)
+    {
+      l = paramLong;
+      if (paramLong < 0L) {
+        l = 0L;
+      }
+      azsr.c("TroopFileDataReporter", azsr.jdField_a_of_type_Int, "[GroupDownload]reportDownloadFailInfo. reportType:" + paramString + " params:" + localHashMap.toString());
+      axrl.a(BaseApplication.getContext()).a((String)localObject, paramString, false, l, 1, localHashMap, "");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azsc
  * JD-Core Version:    0.7.0.1
  */

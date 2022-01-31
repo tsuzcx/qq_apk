@@ -1,91 +1,57 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONException;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
 import org.json.JSONObject;
 
 public class baqw
-  extends baqp
+  implements View.OnTouchListener
 {
-  public static baqw a = new baqw();
+  public baqw(TroopGiftActionButton paramTroopGiftActionButton, TextView paramTextView) {}
   
-  public static String a(Context paramContext, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramContext = a.getDir(paramContext, "specialRing." + paramInt);
-    return paramContext + File.separator + paramInt + ".wav";
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, baof parambaof, boolean paramBoolean)
-  {
-    a.download(paramQQAppInterface, "specialRing." + paramInt, parambaof, paramBoolean);
-  }
-  
-  public static boolean a(Context paramContext, int paramInt)
-  {
-    Object localObject = "specialRing." + paramInt;
-    paramContext = a.getDir(paramContext, (String)localObject);
-    if (!new File(paramContext).exists()) {
-      return false;
-    }
-    localObject = new String[3];
-    localObject[0] = ".wav";
-    localObject[1] = ".json";
-    localObject[2] = ".jpg";
-    int j = localObject.length;
-    int i = 0;
-    while (i < j)
+    if (paramMotionEvent.getAction() == 0)
     {
-      String str = localObject[i];
-      if (!new File(paramContext, paramInt + str).exists())
-      {
-        QLog.e("RingUpdateCallback", 1, "missing: " + paramInt + str);
-        return false;
+      this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+      paramMotionEvent = new ScaleAnimation(1.0F, 1.1F, 1.0F, 1.1F, 1, 0.5F, 1, 0.5F);
+      paramMotionEvent.setDuration(100L);
+      paramMotionEvent.setAnimationListener(new baqx(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(paramMotionEvent);
+      paramMotionEvent = new ImageView(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext());
+      Object localObject = new GradientDrawable();
+      ((GradientDrawable)localObject).setShape(1);
+      ((GradientDrawable)localObject).setCornerRadius(bawz.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F));
+      ((GradientDrawable)localObject).setColor(Color.parseColor(TroopGiftActionButton.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton).optString("buttonEffectColor")));
+      ((GradientDrawable)localObject).setAlpha(192);
+      paramMotionEvent.setImageDrawable((Drawable)localObject);
+      localObject = new RelativeLayout.LayoutParams(bawz.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F), bawz.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F));
+      ((RelativeLayout.LayoutParams)localObject).addRule(13);
+      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.addView(paramMotionEvent, (ViewGroup.LayoutParams)localObject);
+      localObject = new ScaleAnimation(1.0F, 1.7F, 1.0F, 1.7F, 1, 0.5F, 1, 0.5F);
+      ((ScaleAnimation)localObject).setDuration(150L);
+      ((ScaleAnimation)localObject).setAnimationListener(new baqy(this, paramMotionEvent));
+      paramMotionEvent.startAnimation((Animation)localObject);
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a.onClick(paramView);
       }
-      i += 1;
     }
     return true;
-  }
-  
-  public static String b(Context paramContext, int paramInt)
-  {
-    paramContext = a.getDir(paramContext, "specialRing." + paramInt);
-    paramContext = bace.a(new File(paramContext + File.separator + paramInt + ".json"));
-    if (!TextUtils.isEmpty(paramContext)) {
-      try
-      {
-        paramContext = new JSONObject(paramContext).optString("name", null);
-        return paramContext;
-      }
-      catch (JSONException paramContext)
-      {
-        QLog.e("RingUpdateCallback", 1, "getName error", paramContext);
-        return null;
-      }
-    }
-    QLog.e("RingUpdateCallback", 1, "getName missing json: " + paramInt);
-    return null;
-  }
-  
-  public long getBID()
-  {
-    return 37L;
-  }
-  
-  protected String getRootDir()
-  {
-    return "ring";
-  }
-  
-  protected String getScidPrefix()
-  {
-    return "specialRing.";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     baqw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,20 @@
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import android.content.DialogInterface.OnCancelListener;
 
-public class aade
-  implements DialogInterface.OnClickListener
+class aade
+  implements DialogInterface.OnCancelListener
 {
-  public aade(BaseChatPie paramBaseChatPie) {}
+  aade(aada paramaada) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    Intent localIntent = new Intent(this.a.a, FavEmosmManageActivity.class);
-    this.a.a.startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    this.a.jdField_a_of_type_Aabp.d();
+    aaet.a(this.a.jdField_a_of_type_Aabm, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aade
  * JD-Core Version:    0.7.0.1
  */

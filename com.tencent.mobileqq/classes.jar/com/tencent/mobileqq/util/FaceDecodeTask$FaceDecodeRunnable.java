@@ -2,7 +2,7 @@ package com.tencent.mobileqq.util;
 
 import android.os.Process;
 import android.text.TextUtils;
-import azwe;
+import baxi;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.ArrayList;
 

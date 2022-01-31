@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.conn;
 
-import auwu;
+import avwl;
 import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;

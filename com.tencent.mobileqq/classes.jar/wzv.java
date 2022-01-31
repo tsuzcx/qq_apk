@@ -1,16 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-
-class wzv
-  implements View.OnClickListener
+public class wzv
 {
-  wzv(wzt paramwzt) {}
+  public wzv(wyw paramwyw) {}
   
-  public void onClick(View paramView)
-  {
-    wzt.a(this.a).setVisibility(8);
-  }
+  public void a(wzu paramwzu) {}
+  
+  public void b(wzu paramwzu) {}
 }
 
 

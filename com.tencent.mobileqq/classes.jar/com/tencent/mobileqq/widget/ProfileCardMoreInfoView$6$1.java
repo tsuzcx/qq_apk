@@ -18,7 +18,7 @@ class ProfileCardMoreInfoView$6$1
       return;
       localView = (View)this.a.this$0.jdField_a_of_type_JavaUtilHashMap.get("map_key_troop_mem_recent_said");
     } while ((!this.a.this$0.g) || (localView == null));
-    ProfileCardMoreInfoView.a(localView, this.a.this$0.jdField_a_of_type_Atwx);
+    ProfileCardMoreInfoView.a(localView, this.a.this$0.jdField_a_of_type_Auuw);
   }
 }
 

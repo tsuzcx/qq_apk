@@ -4,17 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdcr;
-import bdct;
-import bdgc;
-import bdgd;
-import bdle;
+import begs;
+import bekc;
+import bekd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.tissue.TissueEnvImpl;
-import com.tencent.mobileqq.minigame.ui.GameActivity1;
-import com.tencent.qqmini.sdk.launcher.shell.ProcessType;
+import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -123,6 +120,7 @@ public class MiniSdkLauncher
       localMiniAppInfo.appMode.isAppStore = paramMiniAppInfo.appMode.g;
       localMiniAppInfo.appMode.isWangKa = paramMiniAppInfo.appMode.h;
       localMiniAppInfo.appMode.isInterLoading = paramMiniAppInfo.appMode.i;
+      localMiniAppInfo.appMode.isLimitedAccess = paramMiniAppInfo.appMode.j;
     }
     localMiniAppInfo.shareId = paramMiniAppInfo.shareId;
     localMiniAppInfo.via = paramMiniAppInfo.via;
@@ -181,6 +179,7 @@ public class MiniSdkLauncher
     localMiniAppInfo.iconUrl = paramMiniAppInfo.iconUrl;
     localMiniAppInfo.downloadUrl = paramMiniAppInfo.downloadUrl;
     localMiniAppInfo.appType = paramMiniAppInfo.getReportType();
+    localMiniAppInfo.setReportType(paramMiniAppInfo.getReportType());
     localMiniAppInfo.version = paramMiniAppInfo.version;
     localMiniAppInfo.versionId = paramMiniAppInfo.versionId;
     localMiniAppInfo.desc = paramMiniAppInfo.desc;
@@ -266,6 +265,7 @@ public class MiniSdkLauncher
       localMiniAppInfo.appMode.g = paramMiniAppInfo.appMode.isAppStore;
       localMiniAppInfo.appMode.h = paramMiniAppInfo.appMode.isWangKa;
       localMiniAppInfo.appMode.i = paramMiniAppInfo.appMode.isInterLoading;
+      localMiniAppInfo.appMode.j = paramMiniAppInfo.appMode.isLimitedAccess;
     }
     localMiniAppInfo.shareId = paramMiniAppInfo.shareId;
     localMiniAppInfo.via = paramMiniAppInfo.via;
@@ -303,7 +303,7 @@ public class MiniSdkLauncher
   
   public static void initSDK(Context paramContext)
   {
-    bdct.a(paramContext, new bdcr(paramContext).a(true).a(paramContext.getPackageName() + ":mini6", GameActivity1.class, bdle.a().a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver1"), ProcessType.MINI_GAME).a(paramContext.getPackageName() + ":mini7", bdle.a().a("com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI3"), bdle.a().a("com.tencent.mobileqq.mini.app.AppBrandTaskPreloadReceiver7"), ProcessType.MINI_APP).a());
+    begs.a(paramContext);
     sSdkInited = true;
   }
   
@@ -320,24 +320,30 @@ public class MiniSdkLauncher
           initSDK(paramContext);
         }
         boolean bool = enableFlutter();
-        if (bool)
-        {
-          if (bdgd.a == null) {
-            bdgd.a = new TissueEnvImpl();
-          }
-          if ((!TextUtils.isEmpty(bdgd.a.getNativeLibDir())) && (bdgd.a(bdgd.a.getNativeLibDir())))
-          {
-            if ((bool) && (i != 0)) {
-              bdct.a(paramContext);
-            }
-            return;
-          }
-          i = 0;
+        if (!bool) {
+          break label113;
+        }
+        if (bekd.a == null) {
+          bekd.a = new TissueEnvImpl();
+        }
+        if ((TextUtils.isEmpty(bekd.a.getNativeLibDir())) || (!bekd.a(bekd.a.getNativeLibDir()))) {
           continue;
         }
-        i = 0;
+        if ((bool) && (i != 0)) {
+          begs.b(paramContext);
+        }
+      }
+      catch (Throwable paramContext)
+      {
+        QLog.e("MiniSdkLauncher", 1, "startMiniApp exception!", paramContext);
+        continue;
       }
       finally {}
+      return;
+      i = 0;
+      continue;
+      label113:
+      i = 0;
     }
   }
   
@@ -347,15 +353,25 @@ public class MiniSdkLauncher
       return;
     }
     if (paramActivity != null) {}
-    for (Object localObject = paramActivity.getApplicationContext();; localObject = BaseApplicationImpl.getApplication())
+    for (;;)
     {
-      if (!sSdkInited)
+      try
       {
-        sSdkInited = true;
-        initSDK((Context)localObject);
+        localObject = paramActivity.getApplicationContext();
+        if (!sSdkInited)
+        {
+          sSdkInited = true;
+          initSDK((Context)localObject);
+        }
+        begs.a(paramActivity, convert(paramMiniAppConfig), paramBundle, null);
+        return;
       }
-      bdct.a(paramActivity, convert(paramMiniAppConfig), paramBundle, null);
-      return;
+      catch (Throwable paramActivity)
+      {
+        QLog.e("MiniSdkLauncher", 1, "startMiniApp exception!", paramActivity);
+        return;
+      }
+      Object localObject = BaseApplicationImpl.getApplication();
     }
   }
 }

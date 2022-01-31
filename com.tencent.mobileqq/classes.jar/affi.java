@@ -1,47 +1,14 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class affi
-  extends atog
 {
-  private affi(PhoneContactFragment paramPhoneContactFragment) {}
-  
-  private void g(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, String.format("refreshResult [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (this.a.c)
-    {
-      if (this.a.a != null) {
-        this.a.a.a(this.a.b(), paramBoolean, null);
-      }
-      if (paramBoolean) {
-        this.a.c();
-      }
-      this.a.c = false;
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, String.format("onHideContact [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    this.a.c();
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, String.format("onQueryBindState [%s, %s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) }));
-    }
-    g(paramBoolean1);
-  }
+  public ProgressBar a;
+  public TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     affi
  * JD-Core Version:    0.7.0.1
  */

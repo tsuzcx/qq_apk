@@ -1,22 +1,29 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
 
 public class afhh
-  extends View.AccessibilityDelegate
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public afhh(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  public afhh(TroopView paramTroopView) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void onGlobalLayout()
   {
-    if (paramInt != 4096) {
-      super.sendAccessibilityEvent(paramView, paramInt);
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
+    {
+      TroopView.a(this.a);
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afhh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,155 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.RoundRectBitmap;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.data.ThumbWidthHeightDP;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.io.OutputStream;
-import java.net.URL;
+import java.io.Writer;
+import org.xmlpull.v1.XmlSerializer;
 
 public class axum
-  extends axoa
+  implements XmlSerializer
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  XmlSerializer jdField_a_of_type_OrgXmlpullV1XmlSerializer;
+  
+  public axum(AbsStructMsg paramAbsStructMsg, XmlSerializer paramXmlSerializer)
   {
-    return new File(paramDownloadParams.url.getFile());
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = paramXmlSerializer;
   }
   
-  public boolean a()
+  public XmlSerializer attribute(String paramString1, String paramString2, String paramString3)
   {
-    return false;
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.attribute(paramString1, paramString2, paramString3);
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void cdsect(String paramString)
   {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inDensity = 160;
-    localOptions.inTargetDensity = 160;
-    localOptions.inScreenDensity = 160;
-    localOptions.inJustDecodeBounds = false;
-    String str = paramFile.getAbsolutePath();
-    if (!bace.b(str))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoForPicThumbDownloader", 2, "decodeFile file not exits. just return");
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.cdsect(paramString);
+  }
+  
+  public void comment(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.comment(paramString);
+  }
+  
+  public void docdecl(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.docdecl(paramString);
+  }
+  
+  public void endDocument()
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endDocument();
+  }
+  
+  public XmlSerializer endTag(String paramString1, String paramString2)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endTag(paramString1, paramString2);
+  }
+  
+  public void entityRef(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.entityRef(paramString);
+  }
+  
+  public void flush()
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.flush();
+  }
+  
+  public int getDepth()
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getDepth();
+  }
+  
+  public boolean getFeature(String paramString)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getFeature(paramString);
+  }
+  
+  public String getName()
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getName();
+  }
+  
+  public String getNamespace()
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getNamespace();
+  }
+  
+  public String getPrefix(String paramString, boolean paramBoolean)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getPrefix(paramString, paramBoolean);
+  }
+  
+  public Object getProperty(String paramString)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getProperty(paramString);
+  }
+  
+  public void ignorableWhitespace(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.ignorableWhitespace(paramString);
+  }
+  
+  public void processingInstruction(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.processingInstruction(paramString);
+  }
+  
+  public void setFeature(String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setFeature(paramString, paramBoolean);
+  }
+  
+  public void setOutput(OutputStream paramOutputStream, String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(paramOutputStream, paramString);
+  }
+  
+  public void setOutput(Writer paramWriter)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(paramWriter);
+  }
+  
+  public void setPrefix(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setPrefix(paramString1, paramString2);
+  }
+  
+  public void setProperty(String paramString, Object paramObject)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setProperty(paramString, paramObject);
+  }
+  
+  public void startDocument(String paramString, Boolean paramBoolean)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startDocument(paramString, paramBoolean);
+  }
+  
+  public XmlSerializer startTag(String paramString1, String paramString2)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startTag(paramString1, paramString2);
+  }
+  
+  public XmlSerializer text(String paramString)
+  {
+    if (paramString != null) {
+      try
+      {
+        XmlSerializer localXmlSerializer = this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(axas.a(paramString, false));
+        return localXmlSerializer;
       }
-      return null;
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("StructMsg", 4, "XmlSerializer . text  IllegalArgumentException。。。。。");
+        }
+      }
     }
-    paramURLDrawableHandler = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath(), localOptions);
-    SafeBitmapFactory.decodeFile(str, localOptions);
-    paramDownloadParams = ThumbWidthHeightDP.resizeAndClipBitmap(paramURLDrawableHandler, paramDownloadParams, ThumbWidthHeightDP.getThumbWidthHeightDP(false), false);
-    if (!paramURLDrawableHandler.equals(paramDownloadParams.mBitmap)) {
-      paramURLDrawableHandler.recycle();
-    }
-    paramFile = new RoundRectBitmap(new axwr(paramFile.getAbsolutePath()).a(paramDownloadParams.mBitmap), paramDownloadParams.mCornerRadius, paramDownloadParams.mBoardColor, paramDownloadParams.mBorderWidth);
-    paramFile.mDisplayWidth = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
-    paramFile.mDisplayHeight = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().heightPixels;
-    return paramFile;
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(paramString);
+  }
+  
+  public XmlSerializer text(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(paramArrayOfChar, paramInt1, paramInt2);
   }
 }
 

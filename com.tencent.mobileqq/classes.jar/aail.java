@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class aail
-  implements apca
+  implements DialogInterface.OnClickListener
 {
-  public aail(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList) {}
+  public aail(AddRequestActivity paramAddRequestActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    apck.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+    this.a.a.cancel();
   }
-  
-  public void b() {}
 }
 
 

@@ -1,52 +1,74 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 
 public class aqdp
-  extends GestureDetector.SimpleOnGestureListener
 {
-  public aqdp(HiBoomTextView paramHiBoomTextView) {}
+  public View a;
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    if (this.a.jdField_a_of_type_Aqdv != null)
-    {
-      this.a.jdField_a_of_type_Aqdv.a(this.a);
-      return true;
+    if (paramDrawable == null) {
+      return;
     }
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    aqcz localaqcz = aqcx.a().a(this.a.jdField_a_of_type_Int, this.a.b, this.a.jdField_a_of_type_Aqcy);
-    if (this.a.b())
+    if (paramBoolean1)
     {
-      localaqcz.a(true);
-      this.a.invalidate();
-      return true;
-    }
-    if (HiBoomTextView.a(this.a)) {
-      this.a.a();
-    }
-    for (;;)
-    {
-      return super.onSingleTapConfirmed(paramMotionEvent);
-      if (localaqcz.jdField_a_of_type_Int == 3)
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.addRule(13);
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      if (!paramBoolean2)
       {
-        this.a.a(true);
+        this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
+        this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bbkx.a(140.0F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
       }
-      else if (localaqcz.jdField_a_of_type_Int == 4)
+      for (;;)
       {
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.invalidate();
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+        if (paramInt >= 2) {
+          break;
+        }
+        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
+        return;
+        this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
+        this.jdField_a_of_type_AndroidWidgetImageView.setMaxWidth(bbkx.a(120.0F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bbkx.a(120.0F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
       }
+      if (paramInt == 2)
+      {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839628);
+        return;
+      }
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839629);
+      return;
     }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramDrawable, null, null, null);
+    if (paramDrawable != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqdp
  * JD-Core Version:    0.7.0.1
  */

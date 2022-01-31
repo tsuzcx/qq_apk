@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.data.MessageForPic;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.widget.GridView;
 
-class adnq
+public class adnq
+  extends actr
 {
-  int jdField_a_of_type_Int;
-  MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  
-  public adnq(MessageForPic paramMessageForPic, String paramString, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public RelativeLayout a;
+  public GridView a;
+  public RelativeLayout b;
+  public TextView b;
 }
 
 

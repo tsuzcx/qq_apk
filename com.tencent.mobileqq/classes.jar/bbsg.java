@@ -1,24 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class bbsg
-  extends BroadcastReceiver
+class bbsg
+  extends hl
 {
-  public bbsg(WXShareHelper paramWXShareHelper) {}
+  bbsg(bbse parambbse) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(ChatMessage paramChatMessage, int paramInt)
   {
-    if (WXShareHelper.a(this.a) != null) {
-      WXShareHelper.a(this.a).handleIntent(paramIntent, this.a);
+    if ((bbse.a(this.a) < 0) || (bbse.b(this.a) < bbse.a(this.a)))
+    {
+      bbse.a(this.a).shouldStartAnimation = true;
+      bbse.a(this.a).startAnimation(false, false);
+      if (bbse.a(this.a) > 0) {
+        bbse.c(this.a);
+      }
     }
   }
+  
+  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbsg
  * JD-Core Version:    0.7.0.1
  */

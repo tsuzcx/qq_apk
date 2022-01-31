@@ -1,317 +1,390 @@
-import android.content.res.Resources;
+import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
-import android.graphics.Point;
-import android.graphics.RectF;
-import android.graphics.Typeface;
-import android.support.annotation.NonNull;
-import android.text.InputFilter;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Matrix;
+import android.net.Uri;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseReq;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
+import com.tencent.mm.opensdk.modelmsg.ShowMessageFromWX.Req;
+import com.tencent.mm.opensdk.modelmsg.WXImageObject;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
+import com.tencent.mm.opensdk.modelmsg.WXMiniProgramObject;
+import com.tencent.mm.opensdk.modelmsg.WXTextObject;
+import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.share.WXShareFromQZHelper.1;
+import cooperation.qzone.share.WXShareFromQZHelper.2;
+import cooperation.qzone.share.WXShareFromQZHelper.3;
+import cooperation.qzone.share.WXShareFromQZHelper.4;
+import cooperation.qzone.share.WXShareFromQZHelper.5;
+import cooperation.qzone.util.QZLog;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
 public class bhlr
-  extends DynamicTextItem
+  implements IWXAPIEventHandler
 {
-  float jdField_a_of_type_Float = 0.0F;
-  Resources jdField_a_of_type_AndroidContentResResources = BaseApplicationImpl.getContext().getResources();
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private InputFilter jdField_a_of_type_AndroidTextInputFilter;
-  StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  bhlp jdField_a_of_type_Bhlp = null;
-  ArrayList<bhlp> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  float jdField_b_of_type_Float = 0.0F;
-  private int jdField_b_of_type_Int;
-  private TextPaint jdField_b_of_type_AndroidTextTextPaint;
-  boolean jdField_b_of_type_Boolean = false;
-  float jdField_c_of_type_Float = 0.0F;
-  private int jdField_c_of_type_Int;
-  float jdField_d_of_type_Float = 0.0F;
-  private int jdField_d_of_type_Int;
-  private float jdField_e_of_type_Float;
-  private int jdField_e_of_type_Int;
-  private int f;
-  private int g;
+  private static bhlr jdField_a_of_type_Bhlr;
+  public static String a;
+  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  public static final String b;
+  private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wx34b037fdb0f655ee", true);
+  private CopyOnWriteArrayList<bhls> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference = null;
   
-  public bhlr(int paramInt, @NonNull List<String> paramList)
+  static
   {
-    super(paramInt, paramList);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-16777216);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_b_of_type_AndroidTextTextPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_b_of_type_AndroidTextTextPaint.setColor(-16777216);
-    this.jdField_b_of_type_AndroidTextTextPaint.setStrokeWidth(aciy.a(3.0F, BaseApplicationImpl.getContext().getResources()));
+    jdField_a_of_type_JavaLangString = bhlr.class.getSimpleName();
+    b = bbuv.a(ajsf.aW + "photo/");
   }
   
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
+  private bhlr()
   {
-    this.jdField_b_of_type_Boolean = true;
-    if (this.jdField_b_of_type_Boolean)
+    a();
+  }
+  
+  public static bhlr a()
+  {
+    if (jdField_a_of_type_Bhlr == null) {}
+    synchronized (jdField_a_of_type_ArrayOfByte)
     {
-      this.g = paramInt;
-      this.jdField_d_of_type_Int = aciy.a(paramFloat1, BaseApplicationImpl.getApplication().getResources());
-      this.jdField_e_of_type_Int = aciy.a(paramFloat2, BaseApplicationImpl.getApplication().getResources());
-      this.f = aciy.a(paramFloat3, BaseApplicationImpl.getApplication().getResources());
+      if (jdField_a_of_type_Bhlr == null) {
+        jdField_a_of_type_Bhlr = new bhlr();
+      }
+      return jdField_a_of_type_Bhlr;
     }
   }
   
-  private void a(boolean paramBoolean, float paramFloat, int paramInt)
+  public static void a(Activity paramActivity)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Boolean)
+    if (paramActivity != null)
     {
-      this.jdField_b_of_type_Int = aciy.a(paramFloat, BaseApplicationImpl.getContext().getResources());
-      this.jdField_c_of_type_Int = paramInt;
+      Intent localIntent = new Intent(BaseApplication.getContext(), QQBrowserDelegationActivity.class);
+      localIntent.putExtra("url", QzoneConfig.getInstance().getConfig("H5Url", "WeiXinDownload", "http://app.qq.com/#id=detail&appid=100733732"));
+      localIntent.putExtra("fromQZone", true);
+      localIntent.addFlags(268435456);
+      paramActivity.startActivity(localIntent);
     }
   }
   
-  private boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, int paramInt6, Point paramPoint)
+  public static void a(Activity paramActivity, BaseReq paramBaseReq)
   {
-    int j = paramInt3;
-    while (j >= paramInt4)
-    {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(j);
-      this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(j);
-      StaticLayout localStaticLayout1 = bhno.a(paramString, 0, paramString.length(), this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, paramInt6);
-      StaticLayout localStaticLayout2 = bhno.a(paramString, 0, paramString.length(), this.jdField_b_of_type_AndroidTextTextPaint, paramInt1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, paramInt6);
-      this.jdField_b_of_type_AndroidTextStaticLayout = localStaticLayout1;
-      this.jdField_a_of_type_AndroidTextStaticLayout = localStaticLayout2;
-      paramInt3 = 1;
-      int i = 1;
-      if (localStaticLayout1.getLineCount() > 1)
+    if ((paramActivity != null) && (paramBaseReq != null)) {
+      for (;;)
       {
-        if (localStaticLayout1.getLineVisibleEnd(1) < paramString.length()) {
-          i = 0;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("BasicTextRegionTextItem", 2, "[" + paramString.length() + "," + paramInt5 + "," + localStaticLayout1.getLineEnd(0));
-        }
-        paramInt3 = i;
-        if (paramString.length() >= paramInt5)
+        Object localObject2;
+        Object localObject1;
+        try
         {
-          paramInt3 = i;
-          if (localStaticLayout1.getLineEnd(0) < paramInt5) {
-            paramInt3 = 0;
+          localObject2 = ((ShowMessageFromWX.Req)paramBaseReq).message.messageExt;
+          paramBaseReq = axbj.b((String)localObject2);
+          if ((paramBaseReq.get("actiontype") != null) && (((String)paramBaseReq.get("actiontype")).equals("schema")) && (paramBaseReq.get("schema") != null))
+          {
+            localObject1 = Uri.decode((String)paramBaseReq.get("schema"));
+            if ((TextUtils.isEmpty((CharSequence)localObject1)) || ((!((String)localObject1).startsWith("mqzone")) && (!((String)localObject1).startsWith("mqqzone")) && (!((String)localObject1).startsWith("mqqapi://qzoneschema")))) {
+              break;
+            }
+            localObject2 = new Intent();
+            ((Intent)localObject2).putExtra("cmd", "Schema");
+            ((Intent)localObject2).putExtra("schema", (String)localObject1);
+            bgxy.a(paramActivity, bgyf.a(), (Intent)localObject2);
+            paramActivity = (String)paramBaseReq.get("appid");
+            if (paramActivity == null)
+            {
+              i = 0;
+              new LpReportInfo_pf00064(2000, 3000, i).reportImediately();
+              return;
+            }
+            int i = Integer.parseInt(paramActivity);
+            continue;
+          }
+          if ((paramBaseReq.get("appid") == null) || (!((String)paramBaseReq.get("appid")).equals("1000398")) || ((!paramBaseReq.containsKey("albumId")) && (!paramBaseReq.containsKey("aid")))) {
+            break;
+          }
+          localObject1 = new Intent();
+          ((Intent)localObject1).putExtra("cmd", "Schema");
+          if ("1".equals(paramBaseReq.get("pagetype")))
+          {
+            paramBaseReq = ((String)localObject2).replace("aid", "albumid");
+            ((Intent)localObject1).putExtra("schema", "mqzone://arouse/album?" + paramBaseReq + "&source=doNotJumpQzone");
+            bgxy.a(paramActivity, bgyf.a(), (Intent)localObject1);
+            return;
+          }
+        }
+        catch (Throwable paramActivity)
+        {
+          paramActivity.printStackTrace();
+          return;
+        }
+        if ("0".equals(paramBaseReq.get("pagetype"))) {
+          ((Intent)localObject1).putExtra("schema", "mqzone://arouse/photofromwxapp?" + (String)localObject2 + "&source=doNotJumpQzone");
+        }
+      }
+    }
+  }
+  
+  public static byte[] a(Bitmap paramBitmap, int paramInt)
+  {
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    paramBitmap.compress(Bitmap.CompressFormat.JPEG, paramInt, localByteArrayOutputStream);
+    return localByteArrayOutputStream.toByteArray();
+  }
+  
+  public String a(String paramString)
+  {
+    if (paramString == null) {
+      return String.valueOf(System.currentTimeMillis());
+    }
+    return paramString + System.currentTimeMillis();
+  }
+  
+  public void a()
+  {
+    try
+    {
+      this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.registerApp("wx34b037fdb0f655ee");
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
+    }
+  }
+  
+  public void a(Activity paramActivity, Intent paramIntent)
+  {
+    if (this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI != null)
+    {
+      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
+      this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.handleIntent(paramIntent, this);
+    }
+  }
+  
+  public void a(Context paramContext, ArrayList<File> paramArrayList)
+  {
+    Intent localIntent = new Intent();
+    localIntent.setComponent(new ComponentName("com.tencent.mm", "com.tencent.mm.ui.tools.ShareToTimeLineUI"));
+    localIntent.setAction("android.intent.action.SEND_MULTIPLE");
+    localIntent.setFlags(268435456);
+    localIntent.setType("image/*");
+    ArrayList localArrayList = new ArrayList();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext()) {
+      localArrayList.add(Uri.fromFile((File)paramArrayList.next()));
+    }
+    localIntent.putParcelableArrayListExtra("android.intent.extra.STREAM", localArrayList);
+    FileProvider7Helper.intentCompatForN(BaseApplicationImpl.getApplication(), localIntent);
+    paramContext.startActivity(localIntent);
+  }
+  
+  public void a(bhls parambhls)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(parambhls)) {
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(parambhls);
+      }
+      return;
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    Object localObject = new WXTextObject(paramString);
+    paramString = new WXMediaMessage();
+    paramString.mediaObject = ((WXMediaMessage.IMediaObject)localObject);
+    localObject = new SendMessageToWX.Req();
+    ((SendMessageToWX.Req)localObject).transaction = a("text");
+    ((SendMessageToWX.Req)localObject).message = paramString;
+    ((SendMessageToWX.Req)localObject).scene = paramInt;
+    if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq((BaseReq)localObject)) {
+      ThreadManager.getUIHandler().post(new WXShareFromQZHelper.3(this));
+    }
+  }
+  
+  public void a(String paramString1, Bitmap paramBitmap, String paramString2, String paramString3, int paramInt)
+  {
+    paramString3 = new WXMediaMessage(new WXWebpageObject(paramString3));
+    paramString3.description = paramString2;
+    paramString3.title = paramString1;
+    paramString3.thumbData = WXShareHelper.a(paramBitmap, false, true);
+    paramString1 = new SendMessageToWX.Req();
+    paramString1.transaction = a("webpage");
+    paramString1.message = paramString3;
+    paramString1.scene = paramInt;
+    if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramString1)) {
+      ThreadManager.getUIHandler().post(new WXShareFromQZHelper.1(this));
+    }
+  }
+  
+  public void a(String paramString1, Bitmap paramBitmap, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
+  {
+    WXMiniProgramObject localWXMiniProgramObject = new WXMiniProgramObject();
+    localWXMiniProgramObject.webpageUrl = paramString3;
+    localWXMiniProgramObject.userName = paramString5;
+    if (!TextUtils.isEmpty(paramString6))
+    {
+      localWXMiniProgramObject.path = (paramString4 + "&sk=" + paramString6);
+      paramString3 = new WXMediaMessage(localWXMiniProgramObject);
+      paramString3.title = paramString1;
+      paramString3.description = paramString2;
+      if (paramBitmap == null) {
+        break label431;
+      }
+      try
+      {
+        float f = Math.min(400.0F / paramBitmap.getWidth(), 400.0F / paramBitmap.getHeight());
+        paramString1 = new Matrix();
+        paramString1.postScale(f, f);
+        paramString1 = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), paramString1, true);
+        paramString3.thumbData = a(paramString1, 100);
+        QZLog.e(jdField_a_of_type_JavaLangString, "wxshare thumbData:" + paramString3.thumbData.length);
+        int j = 4;
+        int i = 100;
+        while ((paramString3.thumbData != null) && (paramString3.thumbData.length >= 131072))
+        {
+          j -= 1;
+          if (j > 0)
+          {
+            i -= 10;
+            paramString3.thumbData = a(paramString1, i);
+            QZLog.e(jdField_a_of_type_JavaLangString, "wxshare thumbData -- :" + paramString3.thumbData.length);
+            continue;
+            paramString1 = new SendMessageToWX.Req();
           }
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("BasicTextRegionTextItem", 2, "==>" + localStaticLayout1.getHeight() + " ==>" + paramInt2 + " ==>" + j + " ==>" + paramInt4);
-      }
-      if (localStaticLayout1.getHeight() > paramInt2) {
-        paramInt3 = 0;
-      }
-      if (paramInt3 != 0)
+      catch (Throwable paramString1)
       {
-        float f1 = super.a(localStaticLayout1);
-        float f2 = localStaticLayout1.getHeight();
-        paramPoint.set((int)(paramInt1 - f1), (int)(paramInt2 - f2));
-        return true;
-      }
-      paramPoint.set(0, 0);
-      j -= 1;
-    }
-    return false;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Bhlp.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public InputFilter a()
-  {
-    if (this.jdField_a_of_type_AndroidTextInputFilter == null) {
-      this.jdField_a_of_type_AndroidTextInputFilter = new bhls(this, 20);
-    }
-    return this.jdField_a_of_type_AndroidTextInputFilter;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(paramInt);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    super.a(paramInt, paramString);
-    Object localObject1 = super.b(paramInt);
-    paramString = (String)localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      paramString = "  ";
-    }
-    Object localObject2 = a(10, paramString);
-    Object localObject3 = new Point[this.jdField_a_of_type_JavaUtilArrayList.size()];
-    paramString = new float[this.jdField_a_of_type_JavaUtilArrayList.size()];
-    localObject1 = new boolean[this.jdField_a_of_type_JavaUtilArrayList.size()];
-    StaticLayout[] arrayOfStaticLayout1 = new StaticLayout[this.jdField_a_of_type_JavaUtilArrayList.size()];
-    StaticLayout[] arrayOfStaticLayout2 = new StaticLayout[this.jdField_a_of_type_JavaUtilArrayList.size()];
-    int[] arrayOfInt = new int[this.jdField_a_of_type_JavaUtilArrayList.size()];
-    paramInt = 0;
-    float f1;
-    float f2;
-    while (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      localObject3[paramInt] = new Point(0, 0);
-      bhlp localbhlp = (bhlp)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      localObject1[paramInt] = 0;
-      f1 = localbhlp.jdField_c_of_type_Int;
-      f2 = localbhlp.jdField_d_of_type_Int;
-      localObject1[paramInt] = a((int)f1, (int)f2, localbhlp.h, localbhlp.g, (String)localObject2, localbhlp.jdField_a_of_type_Int, localbhlp.i, localObject3[paramInt]);
-      arrayOfStaticLayout1[paramInt] = this.jdField_b_of_type_AndroidTextStaticLayout;
-      arrayOfStaticLayout2[paramInt] = this.jdField_a_of_type_AndroidTextStaticLayout;
-      paramString[paramInt] = this.jdField_b_of_type_AndroidTextStaticLayout.getPaint().getTextSize();
-      paramInt += 1;
-    }
-    localObject2 = new float[this.jdField_a_of_type_JavaUtilArrayList.size()];
-    paramInt = 0;
-    if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      localObject3 = (bhlp)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramString[paramInt]);
-      this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(paramString[paramInt]);
-      arrayOfInt[paramInt] = arrayOfStaticLayout1[paramInt].getLineCount();
-      if (localObject1[paramInt] != 0)
-      {
-        f1 = aciy.a(((bhlp)localObject3).jdField_c_of_type_Int, this.jdField_a_of_type_AndroidContentResResources);
-        f2 = aciy.a(((bhlp)localObject3).jdField_d_of_type_Int, this.jdField_a_of_type_AndroidContentResResources);
-        localObject2[paramInt] = (super.a(arrayOfStaticLayout1[paramInt]) * arrayOfStaticLayout1[paramInt].getHeight() / (f2 * f1));
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("BasicTextRegionTextItem", 2, "scale:" + localObject2[paramInt] + " index:" + paramInt);
-        }
-        paramInt += 1;
-        break;
-        localObject2[paramInt] = 0.0F;
-      }
-    }
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-    paramInt = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-    if (paramInt >= 0) {
-      if ((localObject1[paramInt] == 1) && (localObject1[i] == 1)) {
-        i = paramInt;
+        QZLog.e(jdField_a_of_type_JavaLangString, "excetion:" + paramString1.getMessage());
+        ThreadManager.getUIHandler().post(new WXShareFromQZHelper.4(this));
       }
     }
     for (;;)
     {
-      paramInt -= 1;
+      paramString1.transaction = a("webpage");
+      paramString1.message = paramString3;
+      paramString1.scene = paramInt;
+      boolean bool = this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramString1);
+      if (!bool)
+      {
+        QZLog.e(jdField_a_of_type_JavaLangString, "wxshare failed ,ret:" + bool);
+        ThreadManager.getUIHandler().post(new WXShareFromQZHelper.5(this));
+      }
+      return;
+      localWXMiniProgramObject.path = paramString4;
       break;
-      if (localObject2[paramInt] > localObject2[i])
-      {
-        int j;
-        if ((localObject1[paramInt] == 1) && (localObject1[i] == 1) && (arrayOfInt[paramInt] > arrayOfInt[i])) {
-          j = 1;
-        }
-        for (;;)
-        {
-          if (j == 0)
-          {
-            i = paramInt;
-            break;
-            j = 0;
-            continue;
-            if (QLog.isColorLevel()) {
-              QLog.i("BasicTextRegionTextItem", 2, "curIndex:" + i);
-            }
-            this.jdField_a_of_type_Bhlp = ((bhlp)this.jdField_a_of_type_JavaUtilArrayList.get(i));
-            this.jdField_b_of_type_AndroidTextStaticLayout = arrayOfStaticLayout1[i];
-            this.jdField_a_of_type_AndroidTextStaticLayout = arrayOfStaticLayout2[i];
-            this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramString[i]);
-            this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(paramString[i]);
-            return;
-          }
-        }
-      }
+      paramString1.recycle();
+      continue;
+      label431:
+      QZLog.e(jdField_a_of_type_JavaLangString, "wxshare bmp null");
     }
   }
   
-  public void a(Canvas paramCanvas)
+  public void a(String paramString, byte[] paramArrayOfByte, int paramInt)
   {
-    paramCanvas.save();
-    paramCanvas.drawBitmap(this.jdField_a_of_type_Bhlp.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_b_of_type_AndroidTextStaticLayout != null)
+    WXImageObject localWXImageObject = new WXImageObject();
+    localWXImageObject.imagePath = paramString;
+    paramString = new WXMediaMessage();
+    paramString.mediaObject = localWXImageObject;
+    if (paramInt == 0)
     {
-      this.jdField_c_of_type_Float = super.a(this.jdField_b_of_type_AndroidTextStaticLayout);
-      this.jdField_d_of_type_Float = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
-      this.jdField_a_of_type_Float = (this.jdField_a_of_type_Bhlp.jdField_e_of_type_Int + (this.jdField_a_of_type_Bhlp.jdField_c_of_type_Int - this.jdField_c_of_type_Float) / 2.0F);
-      this.jdField_b_of_type_Float = (this.jdField_a_of_type_Bhlp.f + (this.jdField_a_of_type_Bhlp.jdField_d_of_type_Int - this.jdField_d_of_type_Float) / 2.0F);
-      paramCanvas.translate(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_b_of_type_AndroidTextTextPaint.setStrokeWidth(this.jdField_b_of_type_Int);
-        this.jdField_b_of_type_AndroidTextTextPaint.setColor(this.jdField_c_of_type_Int);
-        this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-      }
-      if (this.jdField_b_of_type_Boolean)
-      {
-        this.jdField_b_of_type_AndroidTextTextPaint.setStrokeWidth(this.jdField_d_of_type_Int);
-        this.jdField_b_of_type_AndroidTextTextPaint.setColor(this.g);
-        paramCanvas.translate(this.jdField_e_of_type_Int, this.f);
-        this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-        paramCanvas.translate(-this.jdField_e_of_type_Int, -this.f);
-      }
-      this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-      if (super.b(0))
-      {
-        this.jdField_a_of_type_AndroidGraphicsRectF.left = (0.0F - this.jdField_e_of_type_Float);
-        this.jdField_a_of_type_AndroidGraphicsRectF.top = (0.0F - this.jdField_e_of_type_Float);
-        this.jdField_a_of_type_AndroidGraphicsRectF.right = (this.jdField_c_of_type_Float + this.jdField_e_of_type_Float * 2.0F);
-        this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (this.jdField_d_of_type_Float + this.jdField_e_of_type_Float * 2.0F);
-        paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+      paramString.thumbData = paramArrayOfByte;
+      if ((paramString.thumbData == null) || ((paramString.thumbData != null) && (paramString.thumbData.length > 32768))) {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "wxmsg.thumbData is invalid");
       }
     }
-    paramCanvas.restore();
-  }
-  
-  public void a(Typeface paramTypeface)
-  {
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+    paramArrayOfByte = new SendMessageToWX.Req();
+    paramArrayOfByte.transaction = a("img");
+    paramArrayOfByte.message = paramString;
+    paramArrayOfByte.scene = paramInt;
+    if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramArrayOfByte)) {
+      ThreadManager.getUIHandler().post(new WXShareFromQZHelper.2(this));
+    }
   }
   
   public boolean a()
   {
-    return true;
+    try
+    {
+      boolean bool = this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.isWXAppInstalled();
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "isWXinstalled error ", localThrowable);
+    }
+    return false;
   }
   
-  public float b()
+  public void b(bhls parambhls)
   {
-    return this.jdField_a_of_type_Bhlp.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    {
+      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(parambhls)) {
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(parambhls);
+      }
+      return;
+    }
   }
   
-  public int b()
+  public boolean b()
   {
-    return 0;
+    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() >= 620756993;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() >= 553779201;
+  }
+  
+  public void onReq(BaseReq paramBaseReq)
+  {
+    if (this.jdField_a_of_type_MqqUtilWeakReference != null) {}
+    for (Activity localActivity = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();; localActivity = null)
+    {
+      a(localActivity, paramBaseReq);
+      return;
+    }
+  }
+  
+  public void onResp(BaseResp paramBaseResp)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      if (localIterator.hasNext()) {
+        ((bhls)localIterator.next()).a(paramBaseResp);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhlr
  * JD-Core Version:    0.7.0.1
  */

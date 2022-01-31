@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import bfgs;
 
 class DebugJsPlugin$1
   implements DialogInterface.OnClickListener
@@ -13,6 +14,7 @@ class DebugJsPlugin$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     DebugJsPlugin.access$100(this.this$0).edit().putBoolean(DebugJsPlugin.access$000(this.this$0) + "_deubg", this.val$enableDebug);
+    bfgs.a(this.this$0.mMiniAppContext);
   }
 }
 

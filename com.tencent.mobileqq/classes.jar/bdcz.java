@@ -1,34 +1,28 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.mini.util.DisplayUtil;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.open.widget.MaxHeightScrollView;
 
-public abstract interface bdcz
+public class bdcz
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract int a();
+  public bdcz(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
   
-  public abstract int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  public abstract Activity a();
-  
-  public abstract Context a();
-  
-  public abstract MiniAppInfo a();
-  
-  public abstract <T> T a(bdft<T> parambdft);
-  
-  public abstract String a();
-  
-  public abstract byte[] a(int paramInt);
-  
-  public abstract boolean b();
-  
-  public abstract boolean e();
-  
-  public abstract boolean f();
+  public void onGlobalLayout()
+  {
+    if ((DisplayUtil.hasNavBar(this.a)) && (DisplayUtil.isNavigationBarExist(this.a)))
+    {
+      int i = QuickLoginAuthorityActivity.a(this.a).a();
+      int j = DisplayUtil.getNavigationBarHeight(this.a);
+      QuickLoginAuthorityActivity.a(this.a).setMaxHeight(i - j);
+    }
+    QuickLoginAuthorityActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdcz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,10 @@
-import android.view.View;
-
 public abstract interface acsn
 {
-  public abstract void a(View paramView, int paramInt);
+  public abstract void a();
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 

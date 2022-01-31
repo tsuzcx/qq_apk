@@ -1,33 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.statistics.UEC.UECItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class awsc
-  implements Parcelable.Creator<UEC.UECItem>
+class awsc
+  implements View.OnClickListener
 {
-  public UEC.UECItem a(Parcel paramParcel)
-  {
-    UEC.UECItem localUECItem = new UEC.UECItem();
-    localUECItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localUECItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localUECItem.jdField_a_of_type_Long = paramParcel.readLong();
-    localUECItem.jdField_b_of_type_Int = paramParcel.readInt();
-    localUECItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localUECItem.c = paramParcel.readString();
-    localUECItem.d = paramParcel.readString();
-    localUECItem.e = paramParcel.readString();
-    localUECItem.f = paramParcel.readString();
-    return localUECItem;
-  }
+  awsc(awsa paramawsa, awol paramawol) {}
   
-  public UEC.UECItem[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new UEC.UECItem[paramInt];
+    this.jdField_a_of_type_Awol.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awsc
  * JD-Core Version:    0.7.0.1
  */

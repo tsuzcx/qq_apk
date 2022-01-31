@@ -1,15 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import rcx;
+import android.app.Activity;
+import onk;
 
 class ReadinjoyTabFrame$12
   implements Runnable
 {
-  ReadinjoyTabFrame$12(ReadinjoyTabFrame paramReadinjoyTabFrame, long paramLong, int paramInt1, int paramInt2) {}
+  ReadinjoyTabFrame$12(ReadinjoyTabFrame paramReadinjoyTabFrame, Activity paramActivity, int paramInt, String paramString) {}
   
   public void run()
   {
-    rcx.a().b(this.this$0.a, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
+    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+      onk.a(this.this$0.a(), this.jdField_a_of_type_Int, true, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

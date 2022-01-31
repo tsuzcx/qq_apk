@@ -1,37 +1,20 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 
 class aplx
-  implements DialogInterface.OnClickListener
+  implements aptu
 {
-  aplx(apln paramapln) {}
+  aplx(aplw paramaplw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramInt == 1)
-    {
-      if (apln.a(this.a))
-      {
-        this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aphf.e.intValue());
-        this.a.l();
-      }
-      awrn.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_next", 0, 1, 0);
+    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.a.d());
+    if (this.a.a.a != null) {
+      this.a.a.a.d();
     }
-    while (paramInt != 0) {
-      return;
-    }
-    paramDialogInterface = this.a.jdField_a_of_type_AndroidAppActivity;
-    Activity localActivity = this.a.jdField_a_of_type_AndroidAppActivity;
-    paramDialogInterface.setResult(0);
-    awrn.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
-    this.a.jdField_a_of_type_AndroidAppActivity.finish();
   }
+  
+  public void b() {}
 }
 
 

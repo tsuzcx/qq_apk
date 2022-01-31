@@ -1,16 +1,30 @@
-import android.support.v4.app.FragmentActivity;
+import android.app.Activity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 class adrk
-  implements bbgb
+  extends ClickableSpan
 {
-  adrk(adrj paramadrj) {}
+  adrk(adqy paramadqy) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    aciy.n = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramView = bfol.a(this.a.jdField_a_of_type_AndroidContentContext);
+      paramView.b(2131720351);
+      paramView.c(2131690596);
+      paramView.a(new adrl(this));
+      paramView.a(new adrm(this, paramView));
+      paramView.show();
+      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

@@ -14,7 +14,7 @@ import android.text.TextUtils.TruncateAt;
 import android.text.method.SingleLineTransformationMethod;
 import android.text.method.TransformationMethod;
 import android.util.AttributeSet;
-import axkd;
+import ayki;
 import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 
 public class TitledImageView
@@ -128,12 +128,12 @@ public class TitledImageView
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence instanceof axkd))
+    if ((this.jdField_a_of_type_JavaLangCharSequence instanceof ayki))
     {
       this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
       return;
     }
-    this.jdField_a_of_type_JavaLangCharSequence = new axkd(paramCharSequence, 1, 16);
+    this.jdField_a_of_type_JavaLangCharSequence = new ayki(paramCharSequence, 1, 16);
   }
   
   public void settextBgRadius(int paramInt)

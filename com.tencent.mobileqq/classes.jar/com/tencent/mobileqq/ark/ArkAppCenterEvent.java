@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark;
 
-import alel;
+import alsz;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -19,7 +19,7 @@ public class ArkAppCenterEvent
       {
         Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
         if (localEntry.getValue() != null) {
-          ((alel)localEntry.getValue()).a(paramInt, paramString, paramObject);
+          ((alsz)localEntry.getValue()).a(paramInt, paramString, paramObject);
         }
       }
     }

@@ -1,30 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
-class aidd
-  implements View.OnClickListener
+public class aidd
+  extends Handler
 {
-  aidd(aida paramaida) {}
+  public aidd(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof aidj)) {
-      return;
+    switch (paramMessage.what)
+    {
     }
-    paramView = (aidj)paramView;
-    if ((paramView.a != null) && (paramView.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)) {
-      this.a.jdField_a_of_type_Aidf.a(paramView.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, paramView.a.jdField_a_of_type_Int);
-    }
-    if ((paramView.a != null) && (paramView.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null)) {
-      this.a.jdField_a_of_type_Aidf.a(paramView.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo);
-    }
-    new awrb(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("send_to").d("clk_grp").a(new String[] { "1" }).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aidd
  * JD-Core Version:    0.7.0.1
  */

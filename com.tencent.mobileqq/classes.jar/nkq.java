@@ -1,35 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class nkq
-  extends ohe
+  implements bceb
 {
-  public nkq(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
+  public nkq(CustomWebView paramCustomWebView, nkr paramnkr) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(String paramString, Bundle paramBundle, long paramLong)
   {
-    if (ReadInJoyFeedsActivity.a(this.a) == 1)
+    switch (this.jdField_a_of_type_Nkr.a)
     {
-      ((KandianMergeManager)this.a.app.getManager(162)).b(1);
+    default: 
+      return;
+    case 1: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString);
+      return;
+    case 2: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrlOriginal(paramString);
+      return;
+    case 3: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadData(paramString, this.jdField_a_of_type_Nkr.c, this.jdField_a_of_type_Nkr.d);
       return;
     }
-    ReadInJoyFeedsActivity.b(this.a, paramInt1);
-    ((nhr)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
-  }
-  
-  public void b(int paramInt)
-  {
-    this.a.a(paramInt);
-  }
-  
-  public void c(int paramInt)
-  {
-    ReadInJoyFeedsActivity.a(this.a, paramInt);
-    if ((paramInt > 0) && (ReadInJoyFeedsActivity.a(this.a) == 0)) {
-      ((nhr)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadDataWithBaseURL(paramString, this.jdField_a_of_type_Nkr.b, this.jdField_a_of_type_Nkr.c, this.jdField_a_of_type_Nkr.d, this.jdField_a_of_type_Nkr.e);
   }
 }
 

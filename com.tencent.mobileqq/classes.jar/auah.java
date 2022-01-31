@@ -1,41 +1,31 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Set;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.widget.OCRBottomTabView;
 
 public class auah
-  implements ajfe
+  implements TextWatcher
 {
-  private WeakReference<ProfileHeaderView> a;
+  public auah(OCRResultActivity paramOCRResultActivity) {}
   
-  public auah(ProfileHeaderView paramProfileHeaderView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a = new WeakReference(paramProfileHeaderView);
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (paramInt == 66) && ((paramObject instanceof Set)))
+    if (paramEditable.toString().trim().length() == 0)
     {
-      paramObject = (Set)paramObject;
-      ProfileHeaderView localProfileHeaderView = (ProfileHeaderView)this.a.get();
-      if (localProfileHeaderView == null) {
-        break label80;
-      }
-      if (paramObject.contains(localProfileHeaderView.jdField_a_of_type_Atwx.a.jdField_a_of_type_JavaLangString))
-      {
-        localProfileHeaderView.b(localProfileHeaderView.jdField_a_of_type_Atwx, false);
-        localProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-      }
-    }
-    label80:
-    while (!QLog.isColorLevel()) {
+      this.a.c.setEnabled(false);
+      this.a.d.setEnabled(false);
+      this.a.b.setEnabled(false);
       return;
     }
-    QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "Can't get reference to ProfileHeadView.");
+    this.a.c.setEnabled(true);
+    this.a.d.setEnabled(true);
+    this.a.b.setEnabled(true);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

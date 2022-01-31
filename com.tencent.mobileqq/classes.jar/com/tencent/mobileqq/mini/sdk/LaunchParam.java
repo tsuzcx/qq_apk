@@ -33,8 +33,11 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_COLOR_NOTE = 1131;
   public static final int LAUNCH_SCENE_CONTACTS = 2006;
   public static final int LAUNCH_SCENE_DESKTOP_BOUTIQUE_RECOMMEND = 3008;
+  public static final int LAUNCH_SCENE_DESKTOP_DITTO_QUICK_MATCH = 3013;
+  public static final int LAUNCH_SCENE_DESKTOP_DITTO_RECOMMEND = 3012;
   public static final int LAUNCH_SCENE_DESKTOP_EVERYONE_PLAYING = 3007;
   public static final int LAUNCH_SCENE_DESKTOP_FRIENDS_PK = 3009;
+  public static final int LAUNCH_SCENE_DESKTOP_FRIENDS_PLAYING_MORE = 3004;
   public static final int LAUNCH_SCENE_DESKTOP_MORE = 3005;
   public static final int LAUNCH_SCENE_DESKTOP_MY_APP = 3003;
   public static final int LAUNCH_SCENE_DESKTOP_POPULARITY_LIST = 3010;
@@ -75,11 +78,13 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_QZONE_FRIEND_PLAYING_THIRD = 2090;
   public static final int LAUNCH_SCENE_QZONE_SHUOSHUO_LIST = 2060;
   public static final int LAUNCH_SCENE_QZONE_SWEET_WIDGET = 2088;
+  public static final int LAUNCH_SCENE_SAFE_MINIAPP_SCHEME = 2089;
   public static final int LAUNCH_SCENE_SCHEME = 2016;
   public static final int LAUNCH_SCENE_SEARCH = 2005;
   public static final int LAUNCH_SCENE_SEARCH_HAS_USED = 1027;
   public static final int LAUNCH_SCENE_SEARCH_RESULT_FIND = 1006;
   public static final int LAUNCH_SCENE_SEARCH_RESULT_TOP = 1005;
+  public static final int LAUNCH_SCENE_SETTING_ME = 2066;
   public static final int LAUNCH_SCENE_SHARE_C2C = 1007;
   public static final int LAUNCH_SCENE_SHARE_GROUP = 1008;
   public static final int LAUNCH_SCENE_SHARE_OPEN_SDK = 1036;

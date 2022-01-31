@@ -1,34 +1,304 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.av.ui.MultiMembersVideoUI;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.os.RemoteException;
+import android.text.TextUtils;
+import com.tencent.av.redpacket.config.AVRedPacketConfigManager.1;
+import com.tencent.av.redpacket.config.AVRedPacketConfigManager.2;
+import com.tencent.av.service.AVRedPacketConfig;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.io.File;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class lun
-  implements AdapterView.OnItemClickListener
+  implements alxs, Handler.Callback, Manager
 {
-  public lun(MultiMembersVideoUI paramMultiMembersVideoUI) {}
+  public alxp a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  public AVRedPacketConfig a;
+  public QQAppInterface a;
+  public Object a;
+  public String a;
+  public lwk a;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public volatile boolean a;
+  public String b;
+  public lwk b;
+  public volatile boolean b;
+  public volatile boolean c;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public lun(QQAppInterface paramQQAppInterface)
   {
-    if (this.a.jdField_a_of_type_Mgy == null) {}
-    do
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Alxp = ((alxp)paramQQAppInterface.getManager(191));
+    this.jdField_a_of_type_Alxp.a(this);
+  }
+  
+  public int a()
+  {
+    AVRedPacketConfig localAVRedPacketConfig = a();
+    if (localAVRedPacketConfig == null) {}
+    for (int i = 0;; i = localAVRedPacketConfig.version)
     {
-      return;
-      paramAdapterView = (lul)paramView.getTag();
-      if (paramAdapterView != null) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("AVRedPacketConfigManger", 2, "getConfigVersion:" + i);
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("MultiMembersVideoUI", 2, "onItemClick-->holder is null");
-    return;
-    if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() > 8) && ((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2)))
+      return i;
+    }
+  }
+  
+  public AVRedPacketConfig a()
+  {
+    return a(true);
+  }
+  
+  public AVRedPacketConfig a(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig == null) && (paramBoolean))
     {
-      this.a.jdField_a_of_type_Mgy.a(paramAdapterView.jdField_a_of_type_Long, paramAdapterView.jdField_a_of_type_Int, paramInt, true);
+      a();
+      if (QLog.isColorLevel()) {
+        QLog.d("AVRedPacketConfigManger", 2, "getAVRedPacketConfig:" + this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig);
+      }
+    }
+    return this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig;
+  }
+  
+  MqqHandler a()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("QAV_RedPacketResDownload", 0);
+        this.jdField_a_of_type_AndroidOsHandlerThread.start();
+        QLog.w("AVRedPacketConfigManger", 1, "getDownloadHandle, 创建mDownloadHandleThread");
+      }
+      if (this.jdField_a_of_type_MqqOsMqqHandler == null)
+      {
+        this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+        QLog.w("AVRedPacketConfigManger", 1, "getDownloadHandle, 创建mDownloadHandle");
+      }
+      MqqHandler localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
+      return localMqqHandler;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig == null)
+      {
+        this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig = AVRedPacketConfig.readFromFile(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        if (QLog.isColorLevel()) {
+          QLog.d("AVRedPacketConfigManger", 2, "loadConfigFromFile,redPacketConfig =   " + this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig);
+        }
+      }
       return;
     }
-    this.a.jdField_a_of_type_Mgy.a(paramAdapterView.jdField_a_of_type_Long, paramAdapterView.jdField_a_of_type_Int, paramInt, false);
+  }
+  
+  public void a(AVRedPacketConfig paramAVRedPacketConfig, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketConfigManger", 2, "onGetConfig ,isNewConfig = " + paramBoolean + ",config = " + paramAVRedPacketConfig);
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig = paramAVRedPacketConfig;
+      lwk locallwk = this.jdField_a_of_type_Lwk;
+      if (locallwk != null) {}
+      try
+      {
+        this.jdField_a_of_type_Lwk.a(true, paramAVRedPacketConfig);
+        this.jdField_a_of_type_Boolean = false;
+        if ((paramBoolean) && (this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig != null)) {
+          this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.saveToFile(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("AVRedPacketConfigManger", 2, "onGetConfig finish, isGettingConfig =" + this.jdField_a_of_type_Boolean);
+        }
+        return;
+      }
+      catch (RemoteException paramAVRedPacketConfig)
+      {
+        for (;;)
+        {
+          paramAVRedPacketConfig.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null)
+      {
+        this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+        this.jdField_a_of_type_MqqOsMqqHandler = null;
+        QLog.w("AVRedPacketConfigManger", 1, "clearDownloadHandle[" + paramString + "], 释放mDownloadHandle");
+      }
+      if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+        this.jdField_a_of_type_AndroidOsHandlerThread = null;
+        QLog.w("AVRedPacketConfigManger", 1, "clearDownloadHandle[" + paramString + "], 释放mDownloadHandleThread");
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketConfigManger", 2, "onDownloadUpdate,url =   " + paramString1 + ",md5 = " + paramString2 + ",percent = " + paramInt);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketConfigManger", 2, "onDownloadFinish,url =   " + paramString1 + ",md5 = " + paramString2 + ",errCode = " + paramInt + ",path = " + paramString3 + ",userData = " + paramObject);
+    }
+    String str = null;
+    int i;
+    if ((paramObject instanceof Integer))
+    {
+      i = ((Integer)paramObject).intValue();
+      if (i != 1) {
+        break label182;
+      }
+      paramObject = this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL;
+      ltx.a(i, paramInt);
+      if (!paramString3.endsWith("/")) {
+        break label204;
+      }
+    }
+    label182:
+    label204:
+    for (str = paramString3;; str = paramString3 + File.separator)
+    {
+      if ((!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString1)) && (paramString1.equals(paramObject)))
+      {
+        paramString3 = a();
+        if (paramString3 == null) {
+          break label230;
+        }
+        paramString3.post(new AVRedPacketConfigManager.2(this, paramInt, str, paramString2, i, paramString1));
+      }
+      return;
+      paramObject = str;
+      if (i != 2) {
+        break;
+      }
+      paramObject = this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl;
+      break;
+    }
+    label230:
+    QLog.w("AVRedPacketConfigManger", 1, "onDownloadFinish, downloadHandle is null");
+  }
+  
+  public void a(lwk paramlwk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketConfigManger", 2, "downloadRes");
+    }
+    if (this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig == null)
+    {
+      QLog.d("AVRedPacketConfigManger", 1, "downloadRes, redPacketConfig is null");
+      return;
+    }
+    Object localObject = (ayxq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
+    ((ayxq)localObject).a(this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL);
+    ((ayxq)localObject).a(this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl);
+    localObject = a();
+    if (localObject != null)
+    {
+      ((MqqHandler)localObject).post(new AVRedPacketConfigManager.1(this, paramlwk));
+      return;
+    }
+    QLog.w("AVRedPacketConfigManger", 1, "downloadRes, downloadHandle is null");
+  }
+  
+  public void b()
+  {
+    a(a(), false);
+    ltx.a(false);
+  }
+  
+  public void b(String paramString)
+  {
+    paramString = AVRedPacketConfig.parse(paramString);
+    if (paramString == null) {
+      AVRedPacketConfig.deleteLocalConfig(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    }
+    for (;;)
+    {
+      ltx.a(true);
+      return;
+      a(paramString, true);
+    }
+  }
+  
+  public void b(lwk paramlwk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketConfigManger", 2, "getAVRedPacketConfig,start");
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AVRedPacketConfigManger", 2, "getAVRedPacketConfig,isGettingConfig =   " + this.jdField_a_of_type_Boolean);
+      }
+      this.jdField_a_of_type_Lwk = paramlwk;
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        paramlwk = this.jdField_a_of_type_Lwk;
+        if (paramlwk == null) {}
+      }
+      try
+      {
+        this.jdField_a_of_type_Lwk.a(true, this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig);
+        return;
+      }
+      catch (RemoteException paramlwk)
+      {
+        for (;;)
+        {
+          paramlwk.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.d("AVRedPacketConfigManger", 2, "getAVRedPacketConfig,error    ", paramlwk);
+          }
+        }
+      }
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 100) {
+      mns.f();
+    }
+    return true;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_Alxp.b(this);
+    a("onDestroy");
   }
 }
 

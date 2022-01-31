@@ -1,50 +1,52 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
 public class lkj
-  extends lka
+  extends BroadcastReceiver
 {
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  public lkj(CameraUtils paramCameraUtils) {}
   
-  public lkj()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    a(255);
-  }
-  
-  public void a(long paramLong)
-  {
-    int i = (int)((paramLong - this.a) % 4000L * this.h / 2000L - this.c);
-    a(this.g, i, this.g + this.b, this.c + i);
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.e != paramInt)
-    {
-      this.e = paramInt;
-      c();
+    if (paramIntent == null) {
+      return;
     }
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.b = (paramInt1 * 70 / 160);
-    this.c = (paramInt1 * 70 / 160);
-    this.d = (paramInt1 * 5 / 160);
-    this.f = paramInt1;
-    this.h = (this.c + paramInt2);
-    c();
-  }
-  
-  public void c()
-  {
-    if (this.e == 0) {}
-    for (int i = this.d;; i = this.f - this.d - this.b)
+    paramContext = paramIntent.getStringExtra("camera_id");
+    int i = paramIntent.getIntExtra("availability", 1);
+    long l = mtm.a(paramIntent);
+    CameraUtils.a(this.a).put(paramContext, Integer.valueOf(i));
+    if ((i == 1) && (this.a.b(l)))
     {
-      this.g = i;
+      paramContext = CameraUtils.a(this.a).entrySet().iterator();
+      do
+      {
+        if (!paramContext.hasNext()) {
+          break;
+        }
+      } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
+    }
+    for (boolean bool = false;; bool = true)
+    {
+      if (AudioHelper.e()) {
+        QLog.w("CameraUtils", 1, "CameraAvailabilityReceiver, sendReopenCameraMsg, result[" + bool + "], seq[" + l + "]");
+      }
+      if (!bool) {
+        break;
+      }
+      CameraUtils.a(this.a).a("CameraAvailabilityReceiver", l, -1, -1);
+      return;
+      if (AudioHelper.e()) {
+        QLog.w("CameraUtils", 1, "CameraAvailabilityReceiver, removeReopenCameraMsg, seq[" + i + "]");
+      }
+      CameraUtils.a(this.a).a(l);
       return;
     }
   }

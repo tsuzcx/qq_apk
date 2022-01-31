@@ -2,12 +2,12 @@ package com.tencent.open.appcommon.js;
 
 import android.os.Handler;
 import android.os.Looper;
-import aqrd;
-import aqre;
-import bcbf;
-import bcbr;
-import bcds;
-import bcdy;
+import arlv;
+import arlw;
+import bdfg;
+import bdfs;
+import bdht;
+import bdhz;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
@@ -28,7 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class BaseInterface
-  extends aqre
+  extends arlw
 {
   protected static final Pattern HTTPS_PATTERN = Pattern.compile("^https://(\\w+\\.)+qq\\.com/.*");
   protected static final int NO_AUTH_CODE = -1;
@@ -44,7 +44,7 @@ public abstract class BaseInterface
   
   public void addResult(WebView paramWebView, long paramLong1, String paramString, long paramLong2, int paramInt)
   {
-    bcds.c("BaseInterface", "callBatch addResult result : " + paramString + ", timeout : " + paramLong2 + ", queueLimit : " + paramInt);
+    bdht.c("BaseInterface", "callBatch addResult result : " + paramString + ", timeout : " + paramLong2 + ", queueLimit : " + paramInt);
     if (this.firstIn)
     {
       Timer localTimer = ThreadManager.getTimer();
@@ -58,7 +58,7 @@ public abstract class BaseInterface
       this.batchCallbackQueue.add(paramString);
       if ((this.batchCallbackQueue.size() >= this.optLef) || (this.batchCallbackQueue.size() >= paramInt))
       {
-        bcds.c("BaseInterface", "callBatch one batch complete , call batchCallback once !!!");
+        bdht.c("BaseInterface", "callBatch one batch complete , call batchCallback once !!!");
         this.mTask.cancel();
         this.firstIn = true;
         batchCallback(paramWebView, paramLong1);
@@ -90,16 +90,16 @@ public abstract class BaseInterface
       new Handler(Looper.getMainLooper()).post(new BaseInterface.2(this, paramLong, localArrayList, paramWebView));
       return;
     }
-    bcds.c("BaseInterface", "Response<callBatch> AsyncInterface no need response");
+    bdht.c("BaseInterface", "Response<callBatch> AsyncInterface no need response");
   }
   
   protected void batchCallbackError(WebView paramWebView, long paramLong, String paramString)
   {
-    bcds.c("BaseInterface", "batchCallbackError guid : " + paramLong + ", msg : " + paramString);
+    bdht.c("BaseInterface", "batchCallbackError guid : " + paramLong + ", msg : " + paramString);
     new Handler(Looper.getMainLooper()).post(new BaseInterface.3(this, paramLong, paramString, paramWebView));
   }
   
-  public void call(String paramString, List<String> paramList, aqrd paramaqrd)
+  public void call(String paramString, List<String> paramList, arlv paramarlv)
   {
     int j = 0;
     long l2 = System.currentTimeMillis();
@@ -143,7 +143,7 @@ public abstract class BaseInterface
                     continue;
                   }
                   localObject3 = "";
-                  bcds.b("TIME", (String)localObject3 + "]:Reflct find method cost::time6-time5=" + (l1 - l2));
+                  bdht.b("TIME", (String)localObject3 + "]:Reflct find method cost::time6-time5=" + (l1 - l2));
                   if (localObject1 == null) {
                     break label427;
                   }
@@ -160,63 +160,63 @@ public abstract class BaseInterface
                     continue;
                   }
                   localObject5 = "";
-                  bcds.b("TIME", (String)localObject5 + "]:Invoke find method cost:time7-time6=" + (l2 - l1));
+                  bdht.b("TIME", (String)localObject5 + "]:Invoke find method cost:time7-time6=" + (l2 - l1));
                   localObject1 = ((Method)localObject1).getReturnType();
                   if ((localObject1 != Void.TYPE) && (localObject1 != Void.class)) {
                     break label493;
                   }
-                  if (!(paramaqrd instanceof bcbr)) {
+                  if (!(paramarlv instanceof bdfs)) {
                     continue;
                   }
-                  ((bcbr)paramaqrd).a(paramString, null);
+                  ((bdfs)paramarlv).a(paramString, null);
                   return;
                 }
                 catch (IllegalAccessException localIllegalAccessException)
                 {
-                  if (paramaqrd == null) {
+                  if (paramarlv == null) {
                     break label427;
                   }
-                  if (!(paramaqrd instanceof bcbr)) {
+                  if (!(paramarlv instanceof bdfs)) {
                     break label618;
                   }
-                  ((bcbr)paramaqrd).b(paramString);
+                  ((bdfs)paramarlv).b(paramString);
                   QLog.d("BaseInterface", 4, "cannot found match method,maybe your method using args type is NO String? request method:class:" + getClass().getSimpleName() + paramString + " args:" + paramList);
-                  if (paramaqrd == null) {
+                  if (paramarlv == null) {
                     continue;
                   }
-                  if (!(paramaqrd instanceof bcbr)) {
+                  if (!(paramarlv instanceof bdfs)) {
                     break label646;
                   }
-                  ((bcbr)paramaqrd).b(paramString);
+                  ((bdfs)paramarlv).b(paramString);
                   return;
-                  if (paramaqrd == null) {
+                  if (paramarlv == null) {
                     continue;
                   }
                   if (!customCallback()) {
                     break label545;
                   }
-                  if ((paramaqrd instanceof bcbr)) {
+                  if ((paramarlv instanceof bdfs)) {
                     continue;
                   }
-                  paramaqrd.a(localObject4.toString());
+                  paramarlv.a(localObject4.toString());
                   return;
                 }
                 catch (IllegalArgumentException localIllegalArgumentException)
                 {
                   for (;;)
                   {
-                    if (paramaqrd != null)
+                    if (paramarlv != null)
                     {
-                      if (!(paramaqrd instanceof bcbr)) {
+                      if (!(paramarlv instanceof bdfs)) {
                         break;
                       }
-                      ((bcbr)paramaqrd).b(paramString);
+                      ((bdfs)paramarlv).b(paramString);
                     }
                   }
-                  if (!(paramaqrd instanceof bcbr)) {
+                  if (!(paramarlv instanceof bdfs)) {
                     break label587;
                   }
-                  ((bcbr)paramaqrd).a(paramString, localObject4);
+                  ((bdfs)paramarlv).a(paramString, localObject4);
                   return;
                 }
                 catch (InvocationTargetException localInvocationTargetException)
@@ -224,39 +224,39 @@ public abstract class BaseInterface
                   Object localObject4;
                   for (;;)
                   {
-                    if (paramaqrd != null)
+                    if (paramarlv != null)
                     {
-                      if (!(paramaqrd instanceof bcbr)) {
+                      if (!(paramarlv instanceof bdfs)) {
                         break;
                       }
-                      ((bcbr)paramaqrd).b(paramString);
+                      ((bdfs)paramarlv).b(paramString);
                     }
                   }
-                  paramaqrd.a(localObject4);
+                  paramarlv.a(localObject4);
                   return;
                 }
                 catch (Exception localException1)
                 {
                   for (;;)
                   {
-                    if (paramaqrd != null) {
-                      if ((paramaqrd instanceof bcbr))
+                    if (paramarlv != null) {
+                      if ((paramarlv instanceof bdfs))
                       {
-                        ((bcbr)paramaqrd).b(paramString);
+                        ((bdfs)paramarlv).b(paramString);
                         continue;
-                        paramaqrd.a();
+                        paramarlv.a();
                         continue;
-                        paramaqrd.a();
+                        paramarlv.a();
                         continue;
-                        paramaqrd.a();
+                        paramarlv.a();
                       }
                       else
                       {
-                        paramaqrd.a();
+                        paramarlv.a();
                       }
                     }
                   }
-                  paramaqrd.a();
+                  paramarlv.a();
                   return;
                 }
                 i += 1;
@@ -277,7 +277,7 @@ public abstract class BaseInterface
           continue;
           Object localObject5 = ((Method)localObject1).getName();
           continue;
-          paramaqrd.a(null);
+          paramarlv.a(null);
           return;
         }
       }
@@ -288,7 +288,7 @@ public abstract class BaseInterface
     }
   }
   
-  public void callBatch(WebView paramWebView, HashMap<String, aqre> paramHashMap, long paramLong1, String paramString, long paramLong2, int paramInt)
+  public void callBatch(WebView paramWebView, HashMap<String, arlw> paramHashMap, long paramLong1, String paramString, long paramLong2, int paramInt)
   {
     label102:
     String str3;
@@ -320,13 +320,13 @@ public abstract class BaseInterface
           }
           catch (JSONException paramHashMap)
           {
-            bcds.b("BaseInterface", "callBatch request params format err", paramHashMap);
+            bdht.b("BaseInterface", "callBatch request params format err", paramHashMap);
             batchCallbackError(paramWebView, paramLong1, "callBatch request params format err");
             return;
           }
           catch (UnsupportedEncodingException paramHashMap)
           {
-            bcds.b("BaseInterface", "callBatch decode params format err", paramHashMap);
+            bdht.b("BaseInterface", "callBatch decode params format err", paramHashMap);
             batchCallbackError(paramWebView, paramLong1, "callBatch callBatch decode params format err");
             return;
           }
@@ -346,14 +346,14 @@ public abstract class BaseInterface
           }
           catch (Exception paramString)
           {
-            bcds.e("BaseInterface", "callBatch args error : " + paramString.toString());
+            bdht.e("BaseInterface", "callBatch args error : " + paramString.toString());
             this.optLef -= 1;
           }
         }
-        if (bcbf.jdField_a_of_type_JavaUtilArrayList.contains(str1)) {
+        if (bdfg.jdField_a_of_type_JavaUtilArrayList.contains(str1)) {
           localArrayList.add(str2);
         }
-        paramString = (Class)bcbf.jdField_a_of_type_JavaUtilHashMap.get(str3);
+        paramString = (Class)bdfg.jdField_a_of_type_JavaUtilHashMap.get(str3);
       } while (paramString == null);
       Method[] arrayOfMethod = paramString.getMethods();
       localObject = null;
@@ -372,7 +372,7 @@ public abstract class BaseInterface
     {
       try
       {
-        bcds.b("BaseInterface", "callBatch <call> class : " + localObject.getClass().getName() + " , method : " + str1 + "\n , args : " + localArrayList.toString());
+        bdht.b("BaseInterface", "callBatch <call> class : " + localObject.getClass().getName() + " , method : " + str1 + "\n , args : " + localArrayList.toString());
         if (localArrayList.size() != 0) {
           continue;
         }
@@ -385,7 +385,7 @@ public abstract class BaseInterface
       }
       catch (Exception paramString)
       {
-        bcds.c("BaseInterface", "callBatch error", paramString);
+        bdht.c("BaseInterface", "callBatch error", paramString);
       }
       break;
       j += 1;
@@ -433,7 +433,7 @@ public abstract class BaseInterface
   public boolean hasRight()
   {
     if (!this.jsRight) {
-      bcds.e("AppStore", " js interface has no permission, " + this.currentUrl);
+      bdht.e("AppStore", " js interface has no permission, " + this.currentUrl);
     }
     return this.jsRight;
   }
@@ -443,7 +443,7 @@ public abstract class BaseInterface
     this.currentUrl = paramString.toLowerCase();
     try
     {
-      if ((bcdy.a(this.currentUrl)) || (this.currentUrl.startsWith("file://")))
+      if ((bdhz.a(this.currentUrl)) || (this.currentUrl.startsWith("file://")))
       {
         this.jsRight = true;
         return;

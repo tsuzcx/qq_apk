@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.utils;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.BaseActivity;
-import mjg;
+import muf;
 
 final class ShortcutUtils$1
   implements DialogInterface.OnClickListener
@@ -12,7 +12,7 @@ final class ShortcutUtils$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    mjg.a(this.val$activity);
+    muf.a(this.val$activity);
   }
 }
 

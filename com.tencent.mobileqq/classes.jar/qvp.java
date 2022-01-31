@@ -1,20 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoySlideAnimLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-
-public class qvp
-  implements ValueAnimator.AnimatorUpdateListener
+class qvp
+  implements qtx
 {
-  public qvp(SlideActiveAnimController paramSlideActiveAnimController, float paramFloat) {}
+  qvp(qvn paramqvn) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(qty paramqty, qub paramqub, int paramInt1, int paramInt2, Object paramObject)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoySlideAnimLayout.a.setTranslationY(this.jdField_a_of_type_Float - paramValueAnimator.floatValue());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setTranslationY(-paramValueAnimator.floatValue());
+    if (paramInt2 == 0) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramInt2 == 1) || (paramInt2 == 2));
+        if (paramInt2 != 3) {
+          break;
+        }
+        this.a.a(this.a.b(), "video playing", 1);
+      } while (this.a.b());
+      this.a.a(true, "PLAY_STATE_PLAYING");
+      return;
+    } while ((paramInt2 == 4) || (paramInt2 == 5) || (paramInt2 == 6) || (paramInt2 != 7));
   }
 }
 

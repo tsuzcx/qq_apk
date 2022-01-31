@@ -1,28 +1,24 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher.Event;
+import android.os.Handler;
+import android.os.Message;
 
-public class sfo
-  implements Dispatcher.Event
+class sfo
+  extends Handler
 {
-  public ErrorMessage a = new ErrorMessage();
+  sfo(sfn paramsfn) {}
   
-  public String a()
+  public void handleMessage(Message paramMessage)
   {
-    return this.a.getErrorMessage();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("{\"_class\":\"SimpleBaseEvent\", \"errorInfo\":");
-    if (this.a == null) {}
-    for (String str = "null";; str = "\"" + this.a + "\"") {
-      return str + "}";
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sfo
  * JD-Core Version:    0.7.0.1
  */

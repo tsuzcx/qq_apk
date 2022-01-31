@@ -1,18 +1,18 @@
 package com.tencent.biz.webviewplugin;
 
-import xde;
+import xme;
 
 public class PubAccountWebViewHttpBridge$1
   implements Runnable
 {
-  public PubAccountWebViewHttpBridge$1(xde paramxde) {}
+  public PubAccountWebViewHttpBridge$1(xme paramxme) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    xde.a(this.this$0);
+    xme.a(this.this$0);
     this.this$0.a = (System.currentTimeMillis() - l);
-    xde.b(this.this$0);
+    xme.b(this.this$0);
   }
 }
 

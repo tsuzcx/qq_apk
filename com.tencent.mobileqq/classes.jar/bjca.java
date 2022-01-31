@@ -1,34 +1,78 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.3.1;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bjca
-  implements INetInfoHandler
+  implements Cloneable
 {
-  bjca(bjbz parambjbz) {}
+  public int a;
+  public String a;
+  public List<MusicItemInfo> a;
+  public boolean a;
+  public boolean b = true;
   
-  public void onNetMobile2None() {}
+  public bjca() {}
   
-  public void onNetMobile2Wifi(String paramString)
+  public bjca(JSONObject paramJSONObject)
   {
-    Thread.currentThread().getId();
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      bjbz.a(this.a);
+    if (paramJSONObject.has("categoryName")) {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("categoryName");
     }
-    while (bjbz.a(this.a) == null) {
-      return;
+    if (paramJSONObject.has("tagid")) {
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("tagid");
     }
-    bjbz.a(this.a).post(new LbsFilterStatusManager.3.1(this));
+    if (paramJSONObject.has("enabled")) {
+      this.b = paramJSONObject.getBoolean("enabled");
+    }
+    this.jdField_a_of_type_Boolean = "1".equals(paramJSONObject.optString("random_position"));
+    if (paramJSONObject.has("content"))
+    {
+      paramJSONObject = paramJSONObject.getJSONArray("content");
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramJSONObject.length())
+      {
+        MusicItemInfo localMusicItemInfo = new MusicItemInfo(paramJSONObject.optString(i));
+        localMusicItemInfo.mTagName = this.jdField_a_of_type_JavaLangString;
+        localArrayList.add(localMusicItemInfo);
+        i += 1;
+      }
+      this.jdField_a_of_type_JavaUtilList = localArrayList;
+    }
   }
   
-  public void onNetNone2Mobile(String paramString) {}
+  public bjca a()
+  {
+    try
+    {
+      bjca localbjca = (bjca)super.clone();
+      return localbjca;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      localCloneNotSupportedException.printStackTrace();
+    }
+    return null;
+  }
   
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
+  public MusicItemInfo a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        MusicItemInfo localMusicItemInfo = (MusicItemInfo)localIterator.next();
+        if (localMusicItemInfo.mItemId == paramInt) {
+          return localMusicItemInfo;
+        }
+      }
+    }
+    return null;
+  }
 }
 
 

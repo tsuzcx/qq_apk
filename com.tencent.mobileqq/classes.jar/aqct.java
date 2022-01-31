@@ -1,23 +1,27 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hiboom.FontBubble;
-import java.util.List;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public abstract interface aqct<T>
+class aqct
+  implements URLDrawable.URLDrawableListener
 {
-  public abstract int a();
+  aqct(aqcs paramaqcs) {}
   
-  public abstract String a(Context paramContext);
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public abstract String a(FontBubble paramFontBubble);
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public abstract List<FontBubble> a(QQAppInterface paramQQAppInterface, T paramT);
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public abstract void a(ajrm paramajrm);
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable.setBounds(bbdr.a(paramURLDrawable, 36, 100, this.a.a));
+    aqcs.a(this.a).setImageDrawable(paramURLDrawable);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqct
  * JD-Core Version:    0.7.0.1
  */

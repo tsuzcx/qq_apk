@@ -1,31 +1,42 @@
+import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.ClipData.Item;
 import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View.OnLongClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
 class atss
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnLongClickListener
 {
-  atss(atsk paramatsk, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  atss(atsa paramatsa) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  @TargetApi(11)
+  public boolean onLongClick(View paramView)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
+    if (this.a.a.getChildCount() <= 1) {
+      return true;
+    }
+    Object localObject = new ClipData.Item("");
+    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new attd(this.a, paramView), paramView, 0);
+    localObject = atsa.a(this.a, (PicInfo)paramView.getTag(), null);
+    ((RelativeLayout)localObject).setVisibility(4);
+    atsa.a(this.a, (RelativeLayout)localObject);
+    int i = this.a.a.indexOfChild(paramView);
+    if (i != -1)
     {
-      return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-atsk.a(this.jdField_a_of_type_Atsk) * (1.0F - f));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_Atsk.f);
-    this.b.setAlpha(f);
+      this.a.a.removeView(paramView);
+      this.a.a.addView(atsa.a(this.a), i);
+      return true;
+    }
+    paramView.setVisibility(4);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atss
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,18 @@
-class utm
-  implements vbw
+import java.util.ArrayList;
+import java.util.List;
+
+public class utm
+  extends ssk
 {
-  utm(uth paramuth) {}
+  public String a;
+  public ArrayList<String> a;
+  public List<String> a;
+  public boolean a;
   
-  public void a()
+  public utm(String paramString)
   {
-    urk.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
-    uth.a(this.a);
-  }
-  
-  public void a(String paramString)
-  {
-    urk.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
-    uut localuut = this.a.a;
-    if (this.a.a.a()) {}
-    for (String str = "2";; str = "1")
-    {
-      localuut.a("download_face", 0, 0, new String[] { str, paramString });
-      urq.b("0X80075DD");
-      if (!((uyz)sqg.a(8)).a(paramString, true)) {
-        urk.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
-      }
-      return;
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    urk.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

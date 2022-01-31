@@ -1,29 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ApolloActionPush;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class aigb
-  implements aigc
+  extends akim
 {
   aigb(aiga paramaiga) {}
   
-  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if ((aiga.a(this.a) != null) && (paramApolloActionPush != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
-      }
-      if ((aiga.a(this.a).jdField_a_of_type_Int == paramInt) && (paramInt == aiga.a(this.a).jdField_a_of_type_Int) && (!TextUtils.isEmpty(aiga.a(this.a).jdField_a_of_type_JavaLangString)) && (aiga.a(this.a).jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
-        this.a.a(paramApolloActionPush);
-      }
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      aiga.a(this.a, paramString, localBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aigb
  * JD-Core Version:    0.7.0.1
  */

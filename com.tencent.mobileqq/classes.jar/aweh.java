@@ -1,220 +1,88 @@
-import android.os.Build.VERSION;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.SignatureHandler;
+import com.tencent.mobileqq.richstatus.HistorySignItem;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aweh
+  extends awet
 {
-  public static int a(ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  private aweh(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  protected void a(boolean paramBoolean, List<byte[]> paramList, List<Integer> paramList1)
   {
-    VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:APPID=" + AppSetting.a() + " subVersion=" + "8.2.6" + " buildnum=" + "4370", null);
-    String str;
-    if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_video_"))
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      str = "new_qq_android_native_short_video_" + paramSVConfigItem.versionCode;
-      if (paramSVConfigItem.name.equalsIgnoreCase(str))
-      {
-        if (paramSVConfigItem.versionCode < 65)
-        {
-          VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInShortVideo=" + 65, null);
-          return -2;
-        }
-      }
-      else {
-        return -4;
+      localObject = new StringBuilder().append("onDeleteStatus. isSuccess=").append(paramBoolean).append(", keyListSize=").append(paramList.size()).append(", errorCodeSize=");
+      if (paramList1 != null) {
+        break label231;
       }
     }
-    else if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_filter_"))
+    label231:
+    for (paramList1 = "null";; paramList1 = Integer.valueOf(paramList1.size()))
     {
-      str = "new_qq_android_native_short_filter_" + paramSVConfigItem.versionCode;
-      if (paramSVConfigItem.name.equalsIgnoreCase(str))
+      QLog.d("SignatureHistoryFragment", 2, paramList1);
+      if ((SignatureHistoryFragment.a(this.a) != null) && (SignatureHistoryFragment.a(this.a).isShowing())) {
+        SignatureHistoryFragment.a(this.a).dismiss();
+      }
+      if ((!paramBoolean) || (paramList == null)) {
+        break label419;
+      }
+      if (this.a.getActivity() != null) {
+        this.a.a(2, 2131691514);
+      }
+      paramList = paramList.iterator();
+      for (;;)
       {
-        if (paramSVConfigItem.versionCode < 59)
-        {
-          VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInPendant=" + 59, null);
-          return -2;
+        if (!paramList.hasNext()) {
+          break label244;
         }
-      }
-      else {
-        return -4;
-      }
-    }
-    else if (paramSVConfigItem.name.startsWith("new_qq_android_native_art_filter_"))
-    {
-      str = "new_qq_android_native_art_filter_" + paramSVConfigItem.versionCode;
-      if (paramSVConfigItem.name.equalsIgnoreCase(str))
-      {
-        if (paramSVConfigItem.versionCode < 7)
+        paramList1 = (byte[])paramList.next();
+        localObject = SignatureHistoryFragment.b(this.a).iterator();
+        if (((Iterator)localObject).hasNext())
         {
-          VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInArt=" + 7, null);
-          return -2;
-        }
-      }
-      else {
-        return -4;
-      }
-    }
-    else if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_other_"))
-    {
-      str = "new_qq_android_native_short_other_" + paramSVConfigItem.versionCode;
-      if (paramSVConfigItem.name.equalsIgnoreCase(str))
-      {
-        if (paramSVConfigItem.versionCode < 1)
-        {
-          VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInOther=" + 1, null);
-          return -2;
-        }
-      }
-      else {
-        return -4;
-      }
-    }
-    else
-    {
-      if (paramSVConfigItem.name.startsWith("msf_quic_lib")) {
-        return ball.a(paramSVConfigItem);
-      }
-      if (paramSVConfigItem.name.startsWith("new_qq_android_native_portrait_filter_"))
-      {
-        str = "new_qq_android_native_portrait_filter_" + paramSVConfigItem.versionCode;
-        if (paramSVConfigItem.name.equalsIgnoreCase(str))
-        {
-          if (paramSVConfigItem.versionCode < 9)
-          {
-            VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInPortrait=" + 9, null);
-            return -2;
+          HistorySignItem localHistorySignItem = (HistorySignItem)((Iterator)localObject).next();
+          if ((localHistorySignItem == null) || (localHistorySignItem.richStatus == null) || (!localHistorySignItem.richStatus.feedsId.equals(new String(paramList1)))) {
+            break;
           }
-        }
-        else {
-          return -4;
-        }
-      }
-      else
-      {
-        if (paramSVConfigItem.name.startsWith("new_qq_android_native_object_tracking_")) {
-          return awfn.a(paramSVConfigItem);
-        }
-        if (paramSVConfigItem.name.startsWith("new_qq_android_native_ptu_res_")) {
-          return awex.a(paramSVConfigItem);
+          ((Iterator)localObject).remove();
         }
       }
     }
-    return 0;
-  }
-  
-  private static boolean a()
-  {
-    boolean bool = lbk.e();
-    VideoEnvironment.a("ShortVideoResourceManager", "isArmV7aAndNeon:isNeon=" + bool + ",SDK_INT=" + Build.VERSION.SDK_INT, null);
-    return (bool) && (Build.VERSION.SDK_INT >= 15);
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
-  {
-    boolean bool1 = true;
-    if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_video_"))
-    {
-      boolean bool2 = VideoEnvironment.a(paramSVConfigItem.versionCode);
-      VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload[Builtin Mode]:needDownload=" + bool2 + ",itemConfig.name=" + paramSVConfigItem.name, null);
-      bool1 = bool2;
-      if (bool2) {
-        bool1 = VideoEnvironment.d(paramAppInterface);
-      }
+    label244:
+    if (SignatureHistoryFragment.b(this.a).size() == 0) {
+      SignatureHistoryFragment.a(this.a, 3);
+    }
+    SignatureHistoryFragment.a(this.a).clear();
+    SignatureHistoryFragment.b(this.a, false);
+    SignatureHistoryFragment.a(this.a).setText(2131719635);
+    SignatureHistoryFragment.b(this.a, false);
+    if (SignatureHistoryFragment.a(this.a) != null) {
+      SignatureHistoryFragment.a(this.a).notifyDataSetChanged();
     }
     for (;;)
     {
-      VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:needDownload=" + bool1 + ",itemConfig.name=" + paramSVConfigItem.name, null);
-      return bool1;
-      if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_filter_")) {
-        bool1 = a();
-      } else if (paramSVConfigItem.name.startsWith("new_qq_android_native_art_filter_")) {
-        bool1 = awed.a(paramAppInterface, paramSVConfigItem);
-      } else if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_other_")) {
-        bool1 = awep.a(paramAppInterface, paramSVConfigItem);
-      } else if (paramSVConfigItem.name.startsWith("msf_quic_lib")) {
-        bool1 = ball.a(paramAppInterface, paramSVConfigItem);
-      } else if (paramSVConfigItem.name.startsWith("new_qq_android_native_portrait_filter_")) {
-        bool1 = aweq.a(paramAppInterface, paramSVConfigItem);
-      } else if (paramSVConfigItem.name.startsWith("new_qq_android_native_object_tracking_")) {
-        bool1 = awfn.a(paramAppInterface, paramSVConfigItem);
-      }
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (paramString.startsWith("new_qq_android_native_short_video_")) {
-      return VideoEnvironment.e(paramQQAppInterface);
-    }
-    if (paramString.startsWith("new_qq_android_native_short_filter_")) {
-      return awlw.a(VideoEnvironment.a());
-    }
-    if (paramString.startsWith("new_qq_android_native_art_filter_")) {
-      return awed.a();
-    }
-    if (paramString.startsWith("new_qq_android_native_short_other_")) {
-      return awep.a();
-    }
-    if (paramString.startsWith("msf_quic_lib")) {
-      return ball.a(paramQQAppInterface);
-    }
-    if (paramString.startsWith("new_qq_android_native_portrait_filter_")) {
-      return aweq.a();
-    }
-    if (paramString.startsWith("new_qq_android_native_object_tracking_")) {
-      return awfn.a();
-    }
-    return false;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    boolean bool1 = true;
-    if (paramString1 == null) {}
-    do
-    {
-      return false;
-      if (paramString1.startsWith("new_qq_android_native_short_video_"))
+      if ((paramBoolean) && (this.a.getActivity() != null))
       {
-        bool1 = VideoEnvironment.a(paramQQAppInterface, paramString3, paramInt);
-        if (bool1)
-        {
-          VideoEnvironment.a(false, paramQQAppInterface);
-          return bool1;
-        }
-        VideoEnvironment.a(true, paramQQAppInterface);
-        return bool1;
-      }
-      if (paramString1.startsWith("new_qq_android_native_short_filter_"))
-      {
-        boolean bool2 = awdu.a(paramString2, paramString3);
-        if (!bool2) {}
-        for (;;)
-        {
-          awdu.a(bool1);
-          return bool2;
-          bool1 = false;
+        BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).edit().putBoolean(SignatureHistoryFragment.b(this.a) + "_has_history_sig_del_key", true).apply();
+        if (this.a.a != null) {
+          this.a.a.a(Long.parseLong(SignatureHistoryFragment.a(this.a)));
         }
       }
-      if (paramString1.startsWith("new_qq_android_native_art_filter_")) {
-        return awed.a(paramQQAppInterface, paramString2, paramString3, paramInt);
+      return;
+      label419:
+      if (this.a.getActivity() != null) {
+        this.a.a(1, 2131699356);
       }
-      if (paramString1.startsWith("new_qq_android_native_short_other_")) {
-        return awep.a(paramQQAppInterface, paramString2, paramString3, paramInt);
-      }
-      if (paramString1.startsWith("msf_quic_lib")) {
-        return ball.a(paramQQAppInterface, paramString2, paramString3, paramInt);
-      }
-      if (paramString1.startsWith("new_qq_android_native_portrait_filter_")) {
-        return aweq.a(paramQQAppInterface, paramString2, paramString3, paramInt);
-      }
-      if (paramString1.startsWith("new_qq_android_native_object_tracking_")) {
-        return awfn.a(paramQQAppInterface, paramString2, paramString3, paramInt);
-      }
-    } while (!paramString1.startsWith("new_qq_android_native_ptu_res_"));
-    return awex.a(paramString2, paramString3);
+    }
   }
 }
 

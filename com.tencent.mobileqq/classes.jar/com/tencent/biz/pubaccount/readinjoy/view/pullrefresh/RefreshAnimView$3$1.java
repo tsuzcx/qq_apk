@@ -2,18 +2,18 @@ package com.tencent.biz.pubaccount.readinjoy.view.pullrefresh;
 
 import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
-import rem;
+import rra;
 
 public class RefreshAnimView$3$1
   implements Runnable
 {
-  public RefreshAnimView$3$1(rem paramrem) {}
+  public RefreshAnimView$3$1(rra paramrra) {}
   
   public void run()
   {
     RefreshAnimView.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView).setText(this.a.jdField_a_of_type_JavaLangString);
     if (this.a.jdField_a_of_type_Boolean) {
-      RefreshAnimView.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView).setCompoundDrawablesWithIntrinsicBounds(2130848209, 0, 0, 0);
+      RefreshAnimView.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView).setCompoundDrawablesWithIntrinsicBounds(2130848439, 0, 0, 0);
     }
     for (;;)
     {
@@ -22,7 +22,7 @@ public class RefreshAnimView$3$1
       localAlphaAnimation.setFillAfter(true);
       RefreshAnimView.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView).startAnimation(localAlphaAnimation);
       return;
-      RefreshAnimView.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView).setCompoundDrawablesWithIntrinsicBounds(2130848210, 0, 0, 0);
+      RefreshAnimView.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView).setCompoundDrawablesWithIntrinsicBounds(2130848440, 0, 0, 0);
     }
   }
 }

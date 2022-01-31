@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import addx;
-import adef;
+import adoz;
+import adph;
 import android.text.TextPaint;
 import android.widget.TextView;
-import apck;
+import apue;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class FileItemBuilder$9
   implements Runnable
 {
-  public FileItemBuilder$9(addx paramaddx, adef paramadef, FileManagerEntity paramFileManagerEntity) {}
+  public FileItemBuilder$9(adoz paramadoz, adph paramadph, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    TextView localTextView = this.jdField_a_of_type_Adef.a;
+    TextView localTextView = this.jdField_a_of_type_Adph.a;
     String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strSrcName;
-    boolean bool = addx.a(this.this$0);
-    int j = this.jdField_a_of_type_Adef.a.getMeasuredWidth();
-    TextPaint localTextPaint = this.jdField_a_of_type_Adef.a.getPaint();
-    if (addx.a(this.this$0)) {}
+    boolean bool = adoz.a(this.this$0);
+    int j = this.jdField_a_of_type_Adph.a.getMeasuredWidth();
+    TextPaint localTextPaint = this.jdField_a_of_type_Adph.a.getPaint();
+    if (adoz.a(this.this$0)) {}
     for (int i = 2;; i = 3)
     {
-      localTextView.setText(apck.a(str, bool, j, localTextPaint, i));
+      localTextView.setText(apue.a(str, bool, j, localTextPaint, i));
       return;
     }
   }

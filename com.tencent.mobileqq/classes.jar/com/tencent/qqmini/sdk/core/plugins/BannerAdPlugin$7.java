@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
-import bdnw;
+import beka;
+import besl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class BannerAdPlugin$7
   implements Runnable
 {
-  BannerAdPlugin$7(BannerAdPlugin paramBannerAdPlugin, String paramString, int paramInt, bdfz parambdfz) {}
+  BannerAdPlugin$7(BannerAdPlugin paramBannerAdPlugin, String paramString, int paramInt, beka parambeka) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ class BannerAdPlugin$7
     }
     catch (JSONException localJSONException)
     {
-      bdnw.d("BannerAdPlugin", "bannerErrorStateCallback error", localJSONException);
+      besl.d("BannerAdPlugin", "bannerErrorStateCallback error", localJSONException);
     }
   }
 }

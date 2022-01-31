@@ -1,14 +1,24 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+
 public class atop
+  implements Animation.AnimationListener
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
+  public atop(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public String toString()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return "QuickSendObject{mOriginMD5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mOriginSize=" + this.jdField_a_of_type_Long + ", mThumbMD5='" + this.b + '\'' + ", mQuickSendFailed=" + this.jdField_a_of_type_Boolean + '}';
+    paramAnimation = this.a;
+    paramAnimation.k += 1;
+    if (NearbyPeopleProfileActivity.a(this.a) != null) {
+      NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

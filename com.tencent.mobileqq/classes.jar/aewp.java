@@ -1,81 +1,43 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
-import java.lang.ref.WeakReference;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class aewp
-  extends Handler
+class aewp
+  implements URLDrawable.URLDrawableListener
 {
-  public WeakReference<TroopView> a;
+  aewp(aewn paramaewn) {}
   
-  public aewp(TroopView paramTroopView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.a = new WeakReference(paramTroopView);
+    aewn.a(this.a).remove(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadCanceled");
+    }
   }
   
-  private void a()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    TroopView localTroopView = (TroopView)this.a.get();
-    if (localTroopView == null) {}
-    do
-    {
-      return;
-      if (TroopView.a(localTroopView) != null) {
-        TroopView.a(localTroopView).setRefreshing(false);
-      }
-    } while (TroopView.a(localTroopView) == null);
-    TroopView.a(localTroopView).setRefresh(false);
+    aewn.a(this.a, paramURLDrawable);
+    aewn.a(this.a).remove(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadFialed");
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    TroopView localTroopView = (TroopView)this.a.get();
-    if (localTroopView == null) {
-      return;
+    long l1 = System.currentTimeMillis();
+    long l2 = aewn.a(this.a);
+    aewn.a(this.a, paramURLDrawable, l1 - l2);
+    aewn.a(this.a, true);
+    aewn.a(this.a).remove(paramURLDrawable);
+    this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener downloadSuccess");
     }
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      TroopView.c(localTroopView);
-      TroopView.a(localTroopView, 1, 2131628948);
-      return;
-    case 4: 
-      TroopView.a(localTroopView, true);
-      return;
-    case 5: 
-      TroopView.a(localTroopView, false);
-      return;
-    case 13: 
-      TroopView.a(localTroopView, 1, 2131628948);
-      a();
-      return;
-    case 14: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label178;
-        }
-        TroopView.d(localTroopView);
-        if (TroopView.a(localTroopView) == null) {
-          break;
-        }
-        TroopView.a(localTroopView).a(0);
-        TroopView.a(localTroopView).sendEmptyMessageDelayed(15, 800L);
-        return;
-      }
-      label178:
-      a();
-      TroopView.a(localTroopView, 1, 2131653904);
-      return;
-    }
-    a();
   }
 }
 

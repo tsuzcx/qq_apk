@@ -31,9 +31,9 @@ public class QFileListPullMoreLayout
   public QFileListPullMoreLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131494762, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131307012));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131307013));
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560334, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131372724));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372725));
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   

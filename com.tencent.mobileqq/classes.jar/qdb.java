@@ -1,17 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-
-final class qdb
-  extends AnimatorListenerAdapter
+public class qdb
+  implements Cloneable
 {
-  qdb(View paramView) {}
+  public int a = 0;
+  public long a;
+  public long b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public qdb a()
   {
-    this.a.setAlpha(1.0F);
-    this.a.setLayerType(0, null);
-    this.a.setVisibility(8);
+    try
+    {
+      qdb localqdb = (qdb)super.clone();
+      return localqdb;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    return null;
   }
 }
 

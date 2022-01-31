@@ -1,279 +1,79 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableHandler;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class aitu
-  extends axoa
+  implements GLSurfaceView.EGLContextFactory
 {
-  public static int a;
-  public static int b = 2;
-  public static int c = 3;
+  private aitu(ApolloSurfaceView paramApolloSurfaceView) {}
   
-  static
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    jdField_a_of_type_Int = 1;
+    QLog.d("ApolloSurfaceView", 1, "[createContext], id:" + Thread.currentThread().getId());
+    paramEGL10 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
+    this.a.mIsDestroy.set(false);
+    return paramEGL10;
   }
   
-  public static URLDrawable a(String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2)
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    return a(false, paramString1, paramURLDrawableOptions, paramString2);
-  }
-  
-  public static URLDrawable a(String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2, boolean paramBoolean)
-  {
-    return a(false, paramString1, paramURLDrawableOptions, paramString2, paramBoolean);
-  }
-  
-  public static URLDrawable a(boolean paramBoolean, String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2)
-  {
-    return a(paramBoolean, paramString1, paramURLDrawableOptions, paramString2, false);
-  }
-  
-  public static URLDrawable a(boolean paramBoolean1, String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2, boolean paramBoolean2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return null;
-    }
-    if (!paramBoolean1) {}
-    for (String str = aiys.k + "boxcard/" + paramString1;; str = paramString1)
+    QLog.d("ApolloSurfaceView", 1, "[destroyContext], id:" + Thread.currentThread().getId());
+    Object localObject;
+    if (ApolloSurfaceView.access$700(this.a))
     {
-      File localFile = new File(str);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = paramURLDrawableOptions;
-      if (paramURLDrawableOptions == null)
+      localObject = ajae.a();
+      if (localObject != null)
       {
-        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mExtraInfo = null;
+        if (!(localObject instanceof QQAppInterface)) {
+          break label161;
+        }
+        localObject = ApolloCmdChannel.getChannel((QQAppInterface)localObject);
       }
-      if (localURLDrawableOptions.mLoadingDrawable == null) {
-        localURLDrawableOptions.mLoadingDrawable = axwd.a;
-      }
-      if (localURLDrawableOptions.mFailedDrawable == null) {
-        localURLDrawableOptions.mFailedDrawable = axwd.a;
-      }
-      if (localURLDrawableOptions.mExtraInfo == null) {
-        localURLDrawableOptions.mExtraInfo = new aitv();
-      }
-      paramBoolean1 = paramBoolean2;
-      if ((localURLDrawableOptions.mExtraInfo instanceof aitv))
+    }
+    for (;;)
+    {
+      if (localObject != null)
       {
-        paramURLDrawableOptions = (aitv)localURLDrawableOptions.mExtraInfo;
-        if (!TextUtils.isEmpty(str)) {
-          paramURLDrawableOptions.jdField_a_of_type_JavaLangString = str;
-        }
-        if (!TextUtils.isEmpty(paramString2)) {
-          paramURLDrawableOptions.jdField_b_of_type_JavaLangString = paramString2;
-        }
-        if (paramURLDrawableOptions.jdField_a_of_type_Int != jdField_a_of_type_Int)
-        {
-          paramBoolean1 = paramBoolean2;
-          if (!paramURLDrawableOptions.jdField_b_of_type_Boolean) {}
-        }
-        else
-        {
-          paramBoolean1 = true;
-        }
-      }
-      if ((!paramBoolean1) && (localFile.exists()))
-      {
-        paramURLDrawableOptions = URLDrawable.getDrawable(localFile, localURLDrawableOptions);
-        paramString1 = paramURLDrawableOptions;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ApolloImageDownloader", 2, "getDrawable file exsit path->" + str + ",url:" + paramString2);
-          paramString1 = paramURLDrawableOptions;
+        ((ApolloCmdChannel)localObject).callbackDirect(this.a.isJsRuntime(), this.a.getLuaState(), 0, "sc.force_stop_game.local", "{}");
+        ((ApolloCmdChannel)localObject).destroyMusic();
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloSurfaceView", 2, "destroyContext, closeGame)");
         }
       }
       for (;;)
       {
-        return paramString1;
-        try
-        {
-          paramString1 = URLDrawable.getDrawable(new URL("apollo_image", "", paramString1), localURLDrawableOptions);
+        this.a.mIsDestroy.set(true);
+        if (this.a.mRender != null) {
+          this.a.mRender.onDestroy();
         }
-        catch (Exception paramString1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloImageDownloader", 2, paramString1.getMessage());
-          }
-          paramString1 = null;
+        if (paramEGL10 != null) {
+          paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
         }
-      }
-    }
-  }
-  
-  public static final String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 3) {
-      return "https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_" + paramInt2 + "/task_detail.gif";
-    }
-    return "https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_item_" + paramInt2 + "/task_detail.png";
-  }
-  
-  public static final String a(String paramString)
-  {
-    return "https://cmshow.gtimg.cn/client/img/" + paramString;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return false;
-      String str = aiys.k + paramString.substring(paramString.lastIndexOf("/") + 1);
-      if (new File(str).exists()) {
-        return true;
-      }
-      paramString = a(true, str, null, paramString, true);
-    } while (paramString == null);
-    paramString.startDownload();
-    return false;
-  }
-  
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadStarted();
-    }
-    if ((paramDownloadParams.mExtraInfo != null) && ((paramDownloadParams.mExtraInfo instanceof aitv)))
-    {
-      paramOutputStream = (aitv)paramDownloadParams.mExtraInfo;
-      paramDownloadParams = paramOutputStream.jdField_a_of_type_JavaLangString;
-      paramOutputStream = paramOutputStream.jdField_b_of_type_JavaLangString;
-      paramDownloadParams = new File(paramDownloadParams);
-      if (paramDownloadParams.exists())
-      {
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.length());
+        return;
+        label161:
+        if (!(localObject instanceof CmGameAppInterface)) {
+          break label226;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloImageDownloader", 2, "downloadImage file exsit url->" + paramOutputStream);
-        }
-      }
-      int i;
-      do
-      {
-        return paramDownloadParams;
-        paramDownloadParams.getParentFile().mkdirs();
-        if ((BaseApplicationImpl.sApplication != null) && (!badq.g(BaseApplicationImpl.sApplication)) && (paramURLDrawableHandler != null)) {
-          paramURLDrawableHandler.onFileDownloadFailed(0);
-        }
-        batm localbatm = new batm(paramOutputStream, paramDownloadParams);
-        localbatm.b = 1;
-        localbatm.p = false;
-        localbatm.q = true;
-        localbatm.r = true;
-        i = bato.a(localbatm, null);
-        if (i != 0) {
-          break;
-        }
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.length());
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ApolloImageDownloader", 2, "url->" + paramOutputStream + " result->0");
-      return paramDownloadParams;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloImageDownloader", 2, "url->" + paramOutputStream + " result->" + i);
-      }
-    }
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadFailed(0);
-    }
-    return null;
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    Bitmap localBitmap = null;
-    aitv localaitv;
-    if ((paramFile != null) && (paramDownloadParams.mExtraInfo != null) && ((paramDownloadParams.mExtraInfo instanceof aitv)))
-    {
-      localaitv = (aitv)paramDownloadParams.mExtraInfo;
-      if (localaitv.jdField_a_of_type_Int != jdField_a_of_type_Int) {
-        break label102;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localBitmap = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath());
-        localBitmap = bacm.a(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-        paramFile = localBitmap;
-        return paramFile;
-      }
-      catch (Throwable localThrowable)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloImageDownloader", 2, localThrowable.getMessage());
-        }
-      }
-      label102:
-      do
-      {
-        return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
-      } while (localaitv.jdField_a_of_type_Int != b);
-      if (paramFile.exists())
-      {
-        paramURLDrawableHandler = new BitmapFactory.Options();
-        paramURLDrawableHandler.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(paramFile.getPath(), paramURLDrawableHandler);
-        paramURLDrawableHandler.inSampleSize = bacm.a(paramURLDrawableHandler, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight);
-        paramURLDrawableHandler.inJustDecodeBounds = false;
-        paramURLDrawableHandler.inPreferredConfig = Bitmap.Config.RGB_565;
-        try
-        {
-          paramFile = BitmapFactory.decodeFile(paramFile.getPath(), paramURLDrawableHandler);
-          if (paramFile != null) {
-            if (localaitv.jdField_a_of_type_Boolean)
-            {
-              i = 2130848702;
-              paramDownloadParams = bacm.a(paramFile, i, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, true);
-              paramFile = paramDownloadParams;
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("ApolloImageDownloader", 2, "ApolloItemBuilder decodeFile bgBitmap:" + paramDownloadParams);
-              return paramDownloadParams;
-            }
-          }
-        }
-        catch (OutOfMemoryError paramFile)
-        {
-          for (;;)
-          {
-            QLog.e("ApolloImageDownloader", 1, "decode server pic oom!!");
-            System.gc();
-            paramFile = localThrowable;
-            continue;
-            int i = 2130848509;
-          }
-          paramDownloadParams = paramFile;
-        }
-      }
-    }
-    for (;;)
-    {
-      paramFile = paramDownloadParams;
-      if (!QLog.isColorLevel()) {
+        QLog.i("cmgame_process.", 1, "[destroyContext] in game.");
+        localObject = ajae.a();
         break;
+        if ((this.a.mApolloWorker != null) && (this.a.mApolloWorker.a != null)) {
+          this.a.mApolloWorker.a.a("if(\"undefined\" != typeof clearSprite && clearSprite){clearSprite();}");
+        }
       }
-      QLog.d("ApolloImageDownloader", 2, "ApolloItemBuilder decodeFile bgBitmap:" + paramDownloadParams);
-      return paramDownloadParams;
-      paramDownloadParams = null;
+      label226:
+      localObject = null;
     }
   }
 }

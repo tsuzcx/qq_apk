@@ -1,81 +1,92 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
 public class ayof
-  extends ayoe
+  extends aypt
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  public ayof(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    int i = 0;
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
-    }
-    for (;;)
+    super("AIOPhotoImageDownloader", paramBaseApplicationImpl);
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    try
     {
-      JSONObject localJSONObject;
-      try
-      {
-        paramJSONObject = paramJSONObject.getJSONArray("content");
-        if (i >= paramJSONObject.length()) {
-          break label283;
-        }
-        localJSONObject = paramJSONObject.getJSONObject(i);
-        int j = localJSONObject.getInt("type");
-        if (j == 5)
-        {
-          if (localJSONObject.has("file_path")) {
-            localTroopFeedItem.linkUrl = localJSONObject.getString("file_path");
-          }
-          localTroopFeedItem.type = 0;
-          if (localJSONObject.has("sharesize")) {
-            localTroopFeedItem.ex_1 = ("" + localJSONObject.getLong("sharesize"));
-          }
-          boolean bool = localJSONObject.has("bus_id");
-          if (bool) {}
-          try
-          {
-            localTroopFeedItem.content = ("" + localJSONObject.getLong("bus_id"));
-            if (!localJSONObject.has("sharefile")) {
-              break label308;
-            }
-            localTroopFeedItem.title = localJSONObject.getString("sharefile");
-          }
-          catch (JSONException localJSONException)
-          {
-            localTroopFeedItem.content = ("" + localJSONObject.getString("bus_id"));
-            continue;
-          }
-        }
-        if (j != 3) {
-          break label308;
-        }
+      paramURLDrawableHandler.publishProgress(9900);
+      paramURLDrawableHandler = paramDownloadParams.urlStr;
+      boolean bool = "aiothumb".equals(paramDownloadParams.url.getProtocol());
+      if (QLog.isColorLevel()) {
+        a("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile START,cacheFile=" + paramFile.getAbsolutePath() + ",url=" + paramURLDrawableHandler);
       }
-      catch (JSONException paramJSONObject)
+      if ((GifDrawable.isGifFile(paramFile)) && (!bool))
       {
-        paramJSONObject.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          break label332;
+        }
+        a("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile END,GIF image,cacheFile=" + paramFile.getAbsolutePath() + ",url=" + paramURLDrawableHandler);
         return null;
       }
-      if (localJSONObject.has("pic_id"))
-      {
-        localTroopFeedItem.picPath = ("http://gdynamic.qpic.cn/gdynamic/" + localJSONObject.getString("pic_id") + "/109");
-        break label308;
-        label283:
-        if ((baip.a(localTroopFeedItem.linkUrl)) || (baip.a(localTroopFeedItem.content))) {
-          break;
+      paramDownloadParams = new BitmapFactory.Options();
+      paramDownloadParams.inPreferredConfig = aywk.a;
+      paramDownloadParams.inDensity = 160;
+      paramDownloadParams.inTargetDensity = 160;
+      paramDownloadParams.inScreenDensity = 160;
+      if (bool) {
+        try
+        {
+          paramDownloadParams.inJustDecodeBounds = false;
+          paramDownloadParams = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramDownloadParams);
+          if (paramDownloadParams != null) {
+            return new aywy(paramFile.getAbsolutePath()).a(paramDownloadParams);
+          }
+          paramFile.delete();
+          throw new IOException("step:decode error, not valid pic");
         }
-        return localTroopFeedItem;
+        catch (OutOfMemoryError paramFile)
+        {
+          throw paramFile;
+        }
       }
-      label308:
-      i += 1;
+      if (!QLog.isColorLevel()) {
+        break label332;
+      }
     }
+    catch (Exception paramURLDrawableHandler)
+    {
+      paramDownloadParams = a(paramURLDrawableHandler);
+      if (paramDownloadParams != null)
+      {
+        paramFile = paramDownloadParams;
+        if (paramDownloadParams.length() != 0) {}
+      }
+      else
+      {
+        paramFile = paramURLDrawableHandler.toString();
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.e("AIOPhotoImageDownloader", 2, paramFile);
+        a("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile FAIL,exceptionmsg:" + paramFile);
+      }
+      throw paramURLDrawableHandler;
+    }
+    a("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile END,is not Thumb,cacheFile=" + paramFile.getAbsolutePath() + ",url=" + paramURLDrawableHandler);
+    label332:
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayof
  * JD-Core Version:    0.7.0.1
  */

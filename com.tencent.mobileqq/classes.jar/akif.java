@@ -1,147 +1,64 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.text.Editable;
+import android.widget.EditText;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.ArrayList;
 
 public class akif
-  implements ajfe
 {
-  public static final String TAG = "AppletsObserver";
+  private int a;
+  private int b;
   
-  protected void onAppletsSettingSwitchChange(int paramInt) {}
-  
-  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList) {}
-  
-  protected void onGetAppletsPushUnreadInfo(Object paramObject) {}
-  
-  protected void onGetAppletsSettingSwitch(boolean paramBoolean, List<akio> paramList)
+  public akif(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsObserver", 2, "onGetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
-    }
-    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject1 instanceof QQAppInterface)) {}
-    for (localObject1 = (agxk)((QQAppInterface)localObject1).getManager(315);; localObject1 = null)
-    {
-      if (localObject1 == null) {
-        return;
-      }
-      HashSet localHashSet = new HashSet();
-      if ((paramList != null) && (paramBoolean) && (paramList.size() > 0))
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          Object localObject2 = (akio)paramList.next();
-          if ((((akio)localObject2).a != null) && (((akio)localObject2).a.size() > 0) && (((akio)localObject2).a.get(0) != null) && (((AppletItem)((akio)localObject2).a.get(0)).a() == 1L))
-          {
-            localObject2 = (AppletItem)((akio)localObject2).a.get(0);
-            if (((AppletItem)localObject2).b() == 1) {}
-            for (paramBoolean = true;; paramBoolean = false)
-            {
-              ((agxk)localObject1).a(paramBoolean);
-              onAppletsSettingSwitchChange(((AppletItem)localObject2).b());
-              break;
-            }
-          }
-          if ((((akio)localObject2).a != null) && (((akio)localObject2).a.size() > 0))
-          {
-            localObject2 = ((akio)localObject2).a.iterator();
-            while (((Iterator)localObject2).hasNext())
-            {
-              AppletItem localAppletItem = (AppletItem)((Iterator)localObject2).next();
-              if ((localAppletItem.a() != 1L) && (localAppletItem.b() != 1)) {
-                localHashSet.add(String.valueOf(localAppletItem.a()));
-              }
-            }
-          }
-        }
-      }
-      ((agxk)localObject1).a(localHashSet);
-      return;
-    }
+    TroopManager.a(paramQQAppInterface);
   }
   
-  protected void onReceiveAppletsMessageUnreadInfo(Map<String, Integer> paramMap) {}
-  
-  protected void onSetAppletsSettingSwitch(boolean paramBoolean, List<AppletItem> paramList)
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, String paramString, int paramInt, ChatMessage paramChatMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsObserver", 2, "onSetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
+    String str;
+    if (paramEditText != null)
+    {
+      str = "";
+      if (paramInt != 0) {
+        break label166;
+      }
+      this.a = ((int)(Math.random() * TroopManager.c.size()));
+      if (TroopManager.c.size() != 1) {
+        break label124;
+      }
+      str = (String)TroopManager.c.get(0);
+      TroopManager.a(paramQQAppInterface);
     }
-    agxk localagxk = null;
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {
-      localagxk = (agxk)((QQAppInterface)localObject).getManager(315);
-    }
-    if (localagxk == null) {}
+    label166:
     for (;;)
     {
+      Object localObject = (ajxn)paramQQAppInterface.getManager(51);
+      localObject = bbcl.h(paramQQAppInterface, paramChatMessage.frienduin, paramChatMessage.senderuin);
+      paramEditText.setText(bafh.a(paramQQAppInterface, paramContext, paramString, paramChatMessage.senderuin, (String)localObject, false, paramEditText, true, true));
+      paramEditText.append(str);
+      paramEditText.setSelection(paramEditText.getText().length());
       return;
-      if ((paramList != null) && (paramBoolean))
+      label124:
+      if (this.a < TroopManager.c.size())
       {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
+        str = (String)TroopManager.c.get(this.a);
+        TroopManager.c.remove(this.a);
+        continue;
+        if (this.b < TroopManager.d.size())
         {
-          localObject = (AppletItem)paramList.next();
-          int i = ((AppletItem)localObject).b();
-          if (((AppletItem)localObject).a() == 1L)
-          {
-            if (i == 1) {}
-            for (paramBoolean = true;; paramBoolean = false)
-            {
-              localagxk.a(paramBoolean);
-              onAppletsSettingSwitchChange(i);
-              break;
-            }
-          }
-          if (localagxk != null) {
-            if (i == 0) {
-              localagxk.c(String.valueOf(((AppletItem)localObject).a()));
-            } else {
-              localagxk.d(String.valueOf(((AppletItem)localObject).a()));
-            }
-          }
+          str = (String)TroopManager.d.get(this.b);
+          this.b = ((this.b + 1) % TroopManager.d.size());
         }
       }
     }
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return;
-    case 1: 
-      onGetAppletsDetail(paramBoolean, (List)paramObject);
-      return;
-    case 2: 
-      onGetAppletsSettingSwitch(paramBoolean, (List)paramObject);
-      return;
-    case 3: 
-      onSetAppletsSettingSwitch(paramBoolean, (List)paramObject);
-      return;
-    case 8: 
-      onReceiveAppletsMessageUnreadInfo((Map)paramObject);
-      return;
-    }
-    onGetAppletsPushUnreadInfo(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akif
  * JD-Core Version:    0.7.0.1
  */

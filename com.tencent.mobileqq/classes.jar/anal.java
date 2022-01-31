@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public final class anal
+public class anal
 {
-  public static amzw a(QQAppInterface paramQQAppInterface, anao paramanao, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return new anaw(paramQQAppInterface, paramanao);
-    case 0: 
-      return new anaw(paramQQAppInterface, paramanao);
-    }
-    return new amzx(paramQQAppInterface, paramanao);
-  }
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anal
  * JD-Core Version:    0.7.0.1
  */

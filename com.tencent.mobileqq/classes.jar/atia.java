@@ -1,27 +1,20 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
+import android.os.Bundle;
 
-public class atia
-  implements Handler.Callback
+class atia
+  extends mxl
 {
-  public atia(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
+  atia(athz paramathz, atig paramatig) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.f();
+    if (this.jdField_a_of_type_Atig != null) {
+      this.jdField_a_of_type_Atig.a(paramInt, paramArrayOfByte, paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atia
  * JD-Core Version:    0.7.0.1
  */

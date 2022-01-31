@@ -1,36 +1,54 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aacs
-  implements bhxa
+class aacs
+  extends aacr
 {
-  public aacs(BaseChatPie paramBaseChatPie) {}
-  
-  public Activity a()
+  public aacs(aabm paramaabm, long paramLong)
   {
-    return this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    super(paramaabm, 3, paramLong);
   }
   
-  public SessionInfo a()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    return this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  public boolean a()
-  {
-    return this.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onLocationFinish: errCode=" + paramInt + ", info=" + paramSosoLbsInfo + ", isActive=" + this.jdField_a_of_type_Boolean);
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    if (paramInt == 0)
+    {
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("nation", paramSosoLbsInfo.a.c);
+        localJSONObject.put("province", paramSosoLbsInfo.a.d);
+        localJSONObject.put("city", paramSosoLbsInfo.a.e);
+        localJSONObject.put("district", paramSosoLbsInfo.a.g);
+        aaet.a(this.jdField_a_of_type_Aabm, localJSONObject);
+        return;
+      }
+      catch (JSONException paramSosoLbsInfo)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("DoraemonOpenAPI.sensor", 2, paramSosoLbsInfo.getMessage(), paramSosoLbsInfo);
+          }
+        }
+      }
+    }
+    aaet.a(this.jdField_a_of_type_Aabm, paramInt, "error " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aacs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.av.ui;
 
-import lxz;
+import miq;
 
 public class QavVideoRecordUICtrl$2
   implements Runnable
 {
-  public QavVideoRecordUICtrl$2(lxz paramlxz) {}
+  public QavVideoRecordUICtrl$2(miq parammiq) {}
   
   public void run()
   {
-    lxz.a(this.this$0, 0);
+    miq.a(this.this$0, 0);
   }
 }
 

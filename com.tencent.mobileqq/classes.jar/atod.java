@@ -1,24 +1,16 @@
-public class atod
+public abstract interface atod
 {
-  public String a;
-  public String b;
-  public String c;
+  public abstract void a(int paramInt);
   
-  public atod(String paramString1, String paramString2, String paramString3)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public String toString()
-  {
-    return "PhoneInfo{countryCode='" + this.a + '\'' + ", areaCode='" + this.b + '\'' + ", rawPhoneNum='" + this.c + '\'' + '}';
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atod
  * JD-Core Version:    0.7.0.1
  */

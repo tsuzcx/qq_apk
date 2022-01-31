@@ -1,18 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.config.AladdinListener;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class ocw
+  implements ViewBase.IBuilder
 {
-  public static ArrayList<AladdinListener> a = new ArrayList();
-  
-  public static void a(AladdinListener paramAladdinListener)
+  public ViewBase build(VafContext paramVafContext)
   {
-    a.add(paramAladdinListener);
-  }
-  
-  public static void b(AladdinListener paramAladdinListener)
-  {
-    a.remove(paramAladdinListener);
+    return new ocv(paramVafContext);
   }
 }
 

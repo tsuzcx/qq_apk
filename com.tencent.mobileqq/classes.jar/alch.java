@@ -1,43 +1,42 @@
-import android.annotation.TargetApi;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-class alch
-  implements ArkViewImplement.LoadCallback
+public class alch
+  extends ayxn
 {
-  alch(alcg paramalcg, alff paramalff, alfb paramalfb, int paramInt, adai paramadai) {}
+  alce jdField_a_of_type_Alce;
+  alcg jdField_a_of_type_Alcg;
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public alch(QQAppInterface paramQQAppInterface, alcg paramalcg, alce paramalce)
   {
-    onLoadState(paramInt1);
+    super(paramQQAppInterface, paramalcg.b);
+    this.jdField_a_of_type_Alcg = paramalcg;
+    this.jdField_a_of_type_Alce = paramalce;
   }
   
-  @TargetApi(14)
-  public void onLoadState(int paramInt)
+  protected void realCancel()
   {
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_Alff.a.setVisibility(0);
-      alcg.a(this.jdField_a_of_type_Alcg, this.jdField_a_of_type_Alfb, this.jdField_a_of_type_Alff);
-      this.jdField_a_of_type_Alff.b.setVisibility(0);
-      this.jdField_a_of_type_Alfb.a(this.jdField_a_of_type_Alff, this.jdField_a_of_type_Alcg);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realCancel");
     }
-    for (;;)
-    {
-      QLog.d("ArkAdapterItemForTextMsg", 1, new Object[] { "ArkFold.attachArkView.appName:", this.jdField_a_of_type_Alcg.a.appName, ", position=", Integer.valueOf(this.jdField_a_of_type_Int), ",state=", Integer.valueOf(paramInt) });
-      this.jdField_a_of_type_Alfb.a(this.jdField_a_of_type_Adai, this.jdField_a_of_type_Int);
-      return;
-      this.jdField_a_of_type_Alff.a.setVisibility(8);
-      this.jdField_a_of_type_Alff.b.setVisibility(8);
+  }
+  
+  protected void realStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realStart");
     }
+    alce.a(this.jdField_a_of_type_Alce, this.jdField_a_of_type_Alcg);
+  }
+  
+  public String toString()
+  {
+    return "[DownloadTask] mInfo=" + this.jdField_a_of_type_Alcg + ", mDownloader=" + this.jdField_a_of_type_Alce;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alch
  * JD-Core Version:    0.7.0.1
  */

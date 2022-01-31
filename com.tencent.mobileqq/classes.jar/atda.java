@@ -1,14 +1,27 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.component.network.utils.NetworkUtils;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+
 public class atda
-  extends atcu
+  implements View.OnClickListener
 {
-  public boolean a()
+  public atda(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  
+  public void onClick(View paramView)
   {
-    return true;
+    if (!NetworkUtils.isNetworkAvailable(this.a))
+    {
+      bcpw.a(this.a, 1, 2131694609, 1).a();
+      return;
+    }
+    this.a.d();
+    this.a.a("invite_page", "clk_exit");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atda
  * JD-Core Version:    0.7.0.1
  */

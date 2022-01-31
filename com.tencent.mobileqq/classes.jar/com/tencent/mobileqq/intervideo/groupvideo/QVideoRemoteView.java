@@ -5,11 +5,11 @@ import android.widget.RemoteViews;
 public class QVideoRemoteView
   extends RemoteViews
 {
-  private int NID = 2130841532;
+  private int NID = 2130841622;
   
   public QVideoRemoteView(String paramString)
   {
-    this(paramString, 2131494030);
+    this(paramString, 2131559601);
   }
   
   public QVideoRemoteView(String paramString, int paramInt)

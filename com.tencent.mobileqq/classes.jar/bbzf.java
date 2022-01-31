@@ -1,20 +1,25 @@
-import android.text.Editable;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
-
-class bbzf
-  implements Comparator<Friend>
+public class bbzf
 {
-  bbzf(bbze parambbze, Editable paramEditable) {}
+  public long a;
+  public String a = "";
+  public long b;
+  public String b = "";
+  public long c;
+  public String c = "";
+  public long d;
+  public String d;
+  public long e;
+  public long f;
   
-  public int a(Friend paramFriend1, Friend paramFriend2)
+  public bbzf()
   {
-    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1);
+    this.jdField_d_of_type_Long = 999L;
+    this.jdField_d_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbzf
  * JD-Core Version:    0.7.0.1
  */

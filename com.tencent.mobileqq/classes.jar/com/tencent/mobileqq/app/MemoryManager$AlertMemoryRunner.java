@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajlz;
+import akai;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -11,9 +11,9 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.Pair;
-import awrn;
-import azzh;
-import babp;
+import axrl;
+import bbal;
+import bbct;
 import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -131,13 +131,13 @@ class MemoryManager$AlertMemoryRunner
         QLog.e("Q.Memory.MemoryManager", 2, "AlertMemoryRunner exception, actionType=" + this.jdField_a_of_type_Int, localThrowable);
         localThrowable.printStackTrace();
         return;
-        l1 = babp.e();
-        l2 = babp.d();
+        l1 = bbct.e();
+        l2 = bbct.d();
         if (!QLog.isColorLevel()) {
           continue;
         }
         QLog.d("Q.Memory.MemoryManager", 2, "clear memory, availMemSize=" + l1 / 1048576L + "M, totalMemSize=" + l2 / 1048576L + "M");
-        l3 = ajlz.a().jdField_a_of_type_Int * l2 / 100L;
+        l3 = akai.a().jdField_a_of_type_Int * l2 / 100L;
         if (l1 < l3) {
           continue;
         }
@@ -154,7 +154,7 @@ class MemoryManager$AlertMemoryRunner
         return;
         MemoryManager.a().a(l3, l1);
         l4 = l5 - l4;
-        l5 = ajlz.a().jdField_a_of_type_Long;
+        l5 = akai.a().jdField_a_of_type_Long;
         if (l4 >= l5) {
           continue;
         }
@@ -170,7 +170,7 @@ class MemoryManager$AlertMemoryRunner
         if ((localRunningAppProcessInfo.importance == 100) || ((localRunningAppProcessInfo.importance == 200) && ((localRunningAppProcessInfo.importance != 200) || (localRunningAppProcessInfo.importanceReasonCode == 0))) || (a(str))) {
           continue;
         }
-        ((ArrayList)localObject4).add(Pair.create(str, Long.valueOf(babp.a(localRunningAppProcessInfo.pid))));
+        ((ArrayList)localObject4).add(Pair.create(str, Long.valueOf(bbct.a(localRunningAppProcessInfo.pid))));
         continue;
       }
       finally
@@ -178,12 +178,12 @@ class MemoryManager$AlertMemoryRunner
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
         this.jdField_a_of_type_AndroidContentContext = null;
       }
-      long l1 = babp.e();
-      long l2 = babp.d();
+      long l1 = bbct.e();
+      long l2 = bbct.d();
       if (QLog.isColorLevel()) {
         QLog.d("Q.Memory.MemoryManager", 2, "check memory, availMemSize=" + l1 / 1048576L + "M, totalMemSize=" + l2 / 1048576L + "M");
       }
-      l2 = l2 * ajlz.a().jdField_a_of_type_Int / 100L;
+      l2 = l2 * akai.a().jdField_a_of_type_Int / 100L;
       if (l1 >= l2)
       {
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
@@ -197,12 +197,12 @@ class MemoryManager$AlertMemoryRunner
       continue;
       long l4;
       label637:
-      azzh.a((ArrayList)localObject4);
+      bbal.a((ArrayList)localObject4);
       Object localObject4 = (ActivityManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("activity");
       Object localObject3 = localObject2.edit();
       ((SharedPreferences.Editor)localObject3).putLong("lastClearTime", System.currentTimeMillis());
       ((SharedPreferences.Editor)localObject3).commit();
-      localObject3 = awrn.a(BaseApplication.getContext());
+      localObject3 = axrl.a(BaseApplication.getContext());
       localObject4 = new HashMap();
       ((HashMap)localObject4).put("osVersion", Build.VERSION.RELEASE);
       ((HashMap)localObject4).put("deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
@@ -210,7 +210,7 @@ class MemoryManager$AlertMemoryRunner
       ((HashMap)localObject4).put("totalMemSize", String.valueOf(l2));
       ((HashMap)localObject4).put("warningMemSize", String.valueOf(l3));
       ((HashMap)localObject4).put("time", String.valueOf(l4 / 60000L));
-      ((awrn)localObject3).a("", "MemoryClear", true, 0L, 0L, (HashMap)localObject4, "");
+      ((axrl)localObject3).a("", "MemoryClear", true, 0L, 0L, (HashMap)localObject4, "");
     }
   }
 }

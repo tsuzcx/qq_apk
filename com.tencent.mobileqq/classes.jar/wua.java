@@ -1,37 +1,26 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-class wua
-  extends Handler
+public class wua
+  implements wtu
 {
-  wua(wtw paramwtw, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public wua(VideoPlayerView paramVideoPlayerView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    if ((VideoPlayerView.a(this.a) != null) && (!paramBoolean) && (this.a.e != null) && (this.a.e.getVisibility() == 0))
     {
-    default: 
-      return;
-    case 1: 
-      wye.a("mystatus_shoot", "comp_recomm", 0, 0, new String[0]);
-      paramMessage = paramMessage.getData();
-      int i = paramMessage.getInt("sceneLvOne");
-      paramMessage = paramMessage.getString("sceneName");
-      this.a.a(i, paramMessage, true);
-      return;
+      this.a.e.setVisibility(8);
+      VideoPlayerView.a(this.a, "");
     }
-    wye.a("mystatus_shoot", "exp_recomm", 0, 0, new String[0]);
-    this.a.e();
+    if (VideoPlayerView.a(this.a) != null) {
+      VideoPlayerView.a(this.a).a(paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wua
  * JD-Core Version:    0.7.0.1
  */

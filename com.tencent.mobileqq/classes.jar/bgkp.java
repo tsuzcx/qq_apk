@@ -1,14 +1,9 @@
-import android.app.Activity;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
-class bgkp
-  implements bfqx
+public class bgkp
 {
-  bgkp(bgkn parambgkn, int paramInt) {}
-  
-  public void onFail(Activity paramActivity, String paramString)
-  {
-    bbmy.a(paramActivity, paramString, 0).b(this.jdField_a_of_type_Int);
-  }
+  static final Executor a = ;
 }
 
 

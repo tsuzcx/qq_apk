@@ -1,17 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend.4.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.LinearLayout;
 
-public class plv
-  implements oqy
+class plv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public plv(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  plv(plp paramplp) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramBoolean) && (paramInt == 2)) {
-      ThreadManager.post(new ComponentHeaderTopicRecommend.4.1(this), 5, null, true);
-    }
+    plp.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    plp.a(this.a).requestLayout();
   }
 }
 

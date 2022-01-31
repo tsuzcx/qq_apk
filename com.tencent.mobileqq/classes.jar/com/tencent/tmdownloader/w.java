@@ -1,7 +1,7 @@
 package com.tencent.tmdownloader;
 
 import android.os.Handler;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 
 class w
   implements Runnable
@@ -18,7 +18,7 @@ class w
     }
     catch (InterruptedException localInterruptedException)
     {
-      ac.b("TMADownloadSDKService", "exception:", localInterruptedException);
+      ab.b("TMADownloadSDKService", "exception:", localInterruptedException);
       localInterruptedException.printStackTrace();
     }
   }

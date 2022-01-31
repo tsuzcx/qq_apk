@@ -1,73 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopFileData;
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class azib
+  implements azif
 {
-  public static Map<Long, azib> a;
-  public long a;
-  public Map<String, TroopFileData> b = new HashMap();
+  public azib(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
   
-  static
+  public void a(Bitmap paramBitmap)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public azib(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public static azib a(long paramLong)
-  {
-    try
-    {
-      azib localazib2 = (azib)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-      azib localazib1 = localazib2;
-      if (localazib2 == null)
-      {
-        localazib1 = new azib(paramLong);
-        jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localazib1);
-      }
-      return localazib1;
-    }
-    finally {}
-  }
-  
-  public TroopFileData a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    TroopFileData localTroopFileData1 = null;
-    try
-    {
-      if (this.b != null) {
-        localTroopFileData1 = (TroopFileData)this.b.get(paramString);
-      }
-      TroopFileData localTroopFileData2 = localTroopFileData1;
-      if (localTroopFileData1 == null)
-      {
-        paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-        localTroopFileData2 = (TroopFileData)paramQQAppInterface.a(TroopFileData.class, paramString);
-        paramQQAppInterface.a();
-      }
-      return localTroopFileData2;
-    }
-    finally {}
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString, TroopFileData paramTroopFileData)
-  {
-    try
-    {
-      if (this.b != null) {
-        this.b.put(paramTroopFileData.fileUrl, paramTroopFileData);
-      }
-      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      paramQQAppInterface.a(paramTroopFileData);
-      paramQQAppInterface.a();
-      return;
-    }
-    finally {}
+    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bcwh);
+    WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
   }
 }
 

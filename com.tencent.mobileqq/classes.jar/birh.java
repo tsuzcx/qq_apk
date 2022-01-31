@@ -1,37 +1,98 @@
-import android.content.Context;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.ttpic.openapi.manager.FeatureManager;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager;
+import java.io.File;
+import java.util.HashMap;
 
 public class birh
-  extends bird
 {
-  @NonNull
-  public final srb a;
-  @NonNull
-  public final String c;
+  private static boolean jdField_a_of_type_Boolean;
+  private final int jdField_a_of_type_Int = 0;
+  private final String jdField_a_of_type_JavaLangString = "AEFontManager";
+  private HashMap<String, Typeface> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final int[] jdField_a_of_type_ArrayOfInt = { 0, 1 };
+  private final int b = 1;
   
-  public birh(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull srb paramsrb)
+  public static birh a()
   {
-    super(paramInt1, paramString1, paramInt2);
-    this.c = paramString2;
-    this.a = paramsrb;
+    if (!jdField_a_of_type_Boolean)
+    {
+      birj.a().a();
+      jdField_a_of_type_Boolean = true;
+    }
+    return birj.a();
+  }
+  
+  private void b(@NonNull String paramString, @NonNull Typeface paramTypeface)
+  {
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    int j = arrayOfInt.length;
+    int i = 0;
+    if (i < j)
+    {
+      switch (arrayOfInt[i])
+      {
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        LogicDataManager.getInstance().putTypeface(paramString, paramTypeface);
+      }
+    }
   }
   
   @NonNull
-  public bire a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public Typeface a(@Nullable String paramString)
   {
-    return new birj(paramContext, paramViewGroup, null);
+    if (paramString != null)
+    {
+      if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) == null) {
+        return Typeface.DEFAULT;
+      }
+      return (Typeface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    }
+    return Typeface.DEFAULT;
   }
   
-  @NonNull
-  public Class<? extends bire> a()
+  public void a()
   {
-    return birj.class;
+    a("jianqiaohei.ttf", FeatureManager.getResourceDir());
   }
   
-  public boolean a()
+  public void a(@Nullable String paramString, @Nullable Typeface paramTypeface)
   {
-    return true;
+    if ((paramString == null) || (paramTypeface == null)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramTypeface);
+    b(paramString, paramTypeface);
+  }
+  
+  public void a(@Nullable String paramString1, @Nullable String paramString2)
+  {
+    Object localObject = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      localObject = FeatureManager.getResourceDir();
+    }
+    paramString2 = new File((String)localObject, paramString1);
+    localObject = Typeface.DEFAULT;
+    if (paramString2.exists()) {
+      try
+      {
+        a(paramString1, Typeface.createFromFile(paramString2));
+        return;
+      }
+      catch (RuntimeException paramString1)
+      {
+        bizq.d("AEFontManager", "【ERROR】Typeface.createFromFile");
+        return;
+      }
+    }
+    bizq.a("AEFontManager", "文件不存在" + paramString2.getAbsolutePath());
   }
 }
 

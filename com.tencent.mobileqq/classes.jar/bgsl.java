@@ -1,54 +1,54 @@
-import android.os.Binder;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable;
+import cooperation.qqpim.QQPimGetTipsInfoIPC.NoticeClickTipsRunnable;
+import cooperation.qqpim.QQPimTipsInfo;
+import eipc.EIPCResult;
 
-public abstract class bgsl
-  extends Binder
-  implements bgsk
+public class bgsl
+  extends QIPCModule
 {
-  public bgsl()
+  public bgsl(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC, String paramString)
   {
-    attachInterface(this, "cooperation.wadl.ipc.IWadlServiceCallBack");
+    super(paramString);
   }
   
-  public static bgsk a(IBinder paramIBinder)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (paramIBinder == null) {
+    if (QLog.isColorLevel()) {
+      QLog.i(bgsj.a, 2, "QQPimGetTipsInfoIPC.onCall()" + paramString);
+    }
+    if (bgsj.g.equals(paramString)) {
+      if (QQPimGetTipsInfoIPC.a() != -1) {}
+    }
+    while ((!bgsj.h.equals(paramString)) || (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L))
+    {
+      do
+      {
+        do
+        {
+          return null;
+        } while (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L);
+        QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
+        if (QQPimGetTipsInfoIPC.a() == 0)
+        {
+          QQPimGetTipsInfoIPC.a(-1);
+          ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.GetContactTipsRunnable(this.a, QQPimGetTipsInfoIPC.a(this.a), QQPimGetTipsInfoIPC.b(this.a)), null, true);
+          return null;
+        }
+      } while (QQPimGetTipsInfoIPC.a() != 1);
+      QQPimGetTipsInfoIPC.a(-1);
+      ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.NoticeClickTipsRunnable(this.a, null), null, true);
       return null;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.wadl.ipc.IWadlServiceCallBack");
-    if ((localIInterface != null) && ((localIInterface instanceof bgsk))) {
-      return (bgsk)localIInterface;
-    }
-    return new bgsm(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.wadl.ipc.IWadlServiceCallBack");
-      return true;
-    }
-    paramParcel1.enforceInterface("cooperation.wadl.ipc.IWadlServiceCallBack");
-    paramParcel2 = paramParcel1.readString();
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(paramParcel2, paramParcel1);
-      return true;
-    }
+    QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
+    paramString = new QQPimTipsInfo();
+    paramString.a = 0;
+    QQPimGetTipsInfoIPC.a(this.a).a(paramString);
+    return null;
   }
 }
 

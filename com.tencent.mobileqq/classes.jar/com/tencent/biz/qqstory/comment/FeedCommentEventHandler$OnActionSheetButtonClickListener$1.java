@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.comment;
 
-import smt;
-import smw;
+import szp;
+import szs;
 
 public class FeedCommentEventHandler$OnActionSheetButtonClickListener$1
   implements Runnable
 {
-  public FeedCommentEventHandler$OnActionSheetButtonClickListener$1(smw paramsmw) {}
+  public FeedCommentEventHandler$OnActionSheetButtonClickListener$1(szs paramszs) {}
   
   public void run()
   {
-    smt.a(this.a.a, smw.a(this.a), smw.a(this.a));
+    szp.a(this.a.a, szs.a(this.a), szs.a(this.a));
   }
 }
 

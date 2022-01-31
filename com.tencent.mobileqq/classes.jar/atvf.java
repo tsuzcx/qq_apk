@@ -1,11 +1,17 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public abstract interface atvf
+public class atvf
+  extends atuy
 {
-  public abstract void a(long paramLong, atve paramatve);
+  public ImageView e;
+  public ImageView f;
+  public TextView g;
   
-  public abstract void a(List<PersonalityLabelPhoto> paramList, long paramLong);
+  public atvf(atve paramatve)
+  {
+    super(paramatve);
+  }
 }
 
 

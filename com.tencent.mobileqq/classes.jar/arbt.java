@@ -1,33 +1,39 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.location.ui.MapWidget;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
 class arbt
-  implements View.OnClickListener
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  arbt(arbp paramarbp, Activity paramActivity) {}
+  arbt(arbn paramarbn) {}
   
-  public void onClick(View paramView)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    if (this.jdField_a_of_type_Arbp.a()) {
-      return;
+    switch (paramInt)
+    {
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
-    }
-    arbp.a(this.jdField_a_of_type_Arbp).setClickable(false);
-    arbp.a(this.jdField_a_of_type_Arbp).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840206));
-    arbp.a(this.jdField_a_of_type_Arbp).a(true);
-    awqx.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoBaseItem", 2, "video start buffering !");
+      }
+      if (arbn.a(this.a) != null) {
+        arbn.a(this.a).a(this.a.b, 0);
+      }
+      this.a.c = 6;
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoBaseItem", 2, "video end buffering !");
+      }
+    } while (arbn.a(this.a) == null);
+    arbn.a(this.a).a(this.a.b, 1);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arbt
  * JD-Core Version:    0.7.0.1
  */

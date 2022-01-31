@@ -1,35 +1,16 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-public abstract class aard
-  extends ClickableSpan
+public class aard
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public aard(ChatHistory paramChatHistory) {}
   
-  public aard(EditInfoActivity paramEditInfoActivity, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.b;; i = this.jdField_a_of_type_Int)
-    {
-      paramTextPaint.setColor(i);
-      paramTextPaint.setUnderlineText(false);
-      return;
-    }
+    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
 }
 

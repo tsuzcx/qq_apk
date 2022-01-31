@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import aqnu;
+import arhz;
 
 public class NowDataReporter$1
   implements Runnable
 {
-  public NowDataReporter$1(aqnu paramaqnu, long paramLong) {}
+  public NowDataReporter$1(arhz paramarhz, long paramLong) {}
   
   public void run()
   {

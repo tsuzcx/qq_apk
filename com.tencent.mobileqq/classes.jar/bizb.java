@@ -1,17 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.util.QZLog;
-
 class bizb
-  implements View.OnClickListener
 {
-  bizb(biza parambiza) {}
-  
-  public void onClick(View paramView)
-  {
-    QZLog.d("QzoneEditPicturePartSav", 2, "onClick save button");
-    this.a.a.a(19);
-  }
+  public static biza a = new biza();
 }
 
 

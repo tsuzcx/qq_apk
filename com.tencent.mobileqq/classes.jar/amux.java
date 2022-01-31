@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 
-public class amux
+class amux
+  implements bjip
 {
-  amuu jdField_a_of_type_Amuu;
-  FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  amux(amuw paramamuw) {}
   
-  protected amux(DataReportSettingFragment paramDataReportSettingFragment) {}
+  public void a(String paramString)
+  {
+    ((QIMMusicConfigManager)bjae.a(2)).a(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amux
  * JD-Core Version:    0.7.0.1
  */

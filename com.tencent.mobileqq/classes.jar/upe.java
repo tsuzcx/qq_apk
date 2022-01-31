@@ -1,22 +1,21 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.List;
 
 public class upe
-  extends QQUIEventReceiver<uoh, upd>
 {
-  public upe(@NonNull uoh paramuoh)
-  {
-    super(paramuoh);
-  }
+  public int a;
+  public String a;
+  public List<CommentEntry> a;
+  public boolean a;
+  public boolean b;
   
-  public void a(@NonNull uoh paramuoh, @NonNull upd paramupd)
+  public upe(boolean paramBoolean1, List<CommentEntry> paramList, int paramInt, boolean paramBoolean2, String paramString)
   {
-    paramuoh.a(paramupd);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return upd.class;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramBoolean2;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

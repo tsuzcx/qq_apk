@@ -1,27 +1,21 @@
 package com.tencent.mobileqq.data;
 
-import aael;
-import acyg;
-import aebk;
-import aecp;
-import aedo;
-import aejb;
-import ajjj;
-import ajjy;
-import ajtv;
-import akbm;
-import akdt;
-import akhb;
-import alxu;
-import alxv;
-import alyc;
-import amdd;
-import amde;
-import amss;
-import amst;
-import amsu;
-import amsv;
-import amxd;
+import aaod;
+import adjh;
+import aemj;
+import aeno;
+import aeoo;
+import ajxn;
+import ajyc;
+import akif;
+import akpy;
+import aksf;
+import akvn;
+import amnk;
+import amnl;
+import amns;
+import amtf;
+import amtg;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -34,40 +28,45 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import aqax;
-import aqay;
-import aqux;
-import aqvv;
-import areu;
-import arnf;
-import asau;
-import asbg;
-import atxx;
-import awav;
-import awqx;
-import awrb;
-import axdz;
-import axfb;
-import axfs;
-import ayrg;
-import azef;
-import azgh;
-import azlj;
-import azpj;
-import azsq;
-import azzx;
-import baae;
-import babh;
-import babr;
-import bacn;
-import bade;
-import bafb;
-import baig;
-import baoz;
-import bbmy;
-import bcad;
-import bcqv;
-import bfpr;
+import aniz;
+import anja;
+import anjb;
+import anjc;
+import annl;
+import aquz;
+import aqva;
+import arqn;
+import arrl;
+import asaw;
+import asji;
+import aswy;
+import asxk;
+import auvw;
+import axad;
+import axqw;
+import axra;
+import ayeb;
+import ayfe;
+import ayfv;
+import azrw;
+import bafh;
+import bahk;
+import bamn;
+import baqn;
+import batu;
+import bbbb;
+import bbbi;
+import bbcl;
+import bbcv;
+import bbds;
+import bbej;
+import bbgg;
+import bbjn;
+import bbqw;
+import bcpw;
+import bded;
+import bduw;
+import bgxy;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -85,6 +84,7 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -111,15 +111,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Map;
-import mpl;
 import mqq.os.MqqHandler;
 import mqq.util.WeakReference;
+import nam;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rtr;
-import tij;
-import urp;
+import sgj;
+import tvf;
+import vel;
 
 public class MessageForGrayTips$HightlightClickableSpan
   extends ClickableSpan
@@ -151,7 +151,7 @@ public class MessageForGrayTips$HightlightClickableSpan
       do
       {
         return;
-      } while (!((ajjj)paramQQAppInterface.getManager(51)).b(paramString));
+      } while (!((ajxn)paramQQAppInterface.getManager(51)).b(paramString));
       if (QLog.isColorLevel()) {
         QLog.d("MessageForGrayTips", 2, "deleteFriend " + paramString);
       }
@@ -170,11 +170,11 @@ public class MessageForGrayTips$HightlightClickableSpan
     if (paramQQAppInterface == null) {
       return;
     }
-    paramQQAppInterface = ajjy.a(2131640812);
+    paramQQAppInterface = ajyc.a(2131706597);
     if (this.item.mMsg_A_ActionData != null) {
       paramQQAppInterface = this.item.mMsg_A_ActionData;
     }
-    babr.a(this.context, null, paramQQAppInterface, null, 2131625035, 2131626251, new amsu(this), new amsv(this)).show();
+    bbcv.a(this.context, null, paramQQAppInterface, null, 2131690596, 2131691834, new anjb(this), new anjc(this)).show();
   }
   
   /* Error */
@@ -251,8 +251,8 @@ public class MessageForGrayTips$HightlightClickableSpan
     //   133: invokevirtual 219	mqq/util/WeakReference:get	()Ljava/lang/Object;
     //   136: checkcast 57	com/tencent/mobileqq/app/QQAppInterface
     //   139: bipush 23
-    //   141: invokevirtual 96	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lajfb;
-    //   144: checkcast 221	ajsi
+    //   141: invokevirtual 96	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lajtd;
+    //   144: checkcast 221	akgs
     //   147: astore 5
     //   149: aload 4
     //   151: ldc 223
@@ -290,7 +290,7 @@ public class MessageForGrayTips$HightlightClickableSpan
     //   215: aload_0
     //   216: getfield 33	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:context	Landroid/content/Context;
     //   219: aload 4
-    //   221: invokevirtual 258	ajsi:b	(Ljava/lang/String;Landroid/content/Context;Landroid/content/Intent;)V
+    //   221: invokevirtual 258	akgs:b	(Ljava/lang/String;Landroid/content/Context;Landroid/content/Intent;)V
     //   224: goto +81 -> 305
     //   227: aload 4
     //   229: ifnull -100 -> 129
@@ -299,7 +299,7 @@ public class MessageForGrayTips$HightlightClickableSpan
     //   236: aload_0
     //   237: getfield 37	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:message	Lcom/tencent/mobileqq/data/MessageRecord;
     //   240: getfield 41	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
-    //   243: invokestatic 263	rtr:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   243: invokestatic 263	sgj:b	(Ljava/lang/String;)Ljava/lang/String;
     //   246: invokevirtual 215	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   249: pop
     //   250: goto -121 -> 129
@@ -338,7 +338,7 @@ public class MessageForGrayTips$HightlightClickableSpan
     //   0	309	2	paramString2	String
     //   1	307	3	bool	boolean
     //   56	219	4	localObject	Object
-    //   147	61	5	localajsi	ajsi
+    //   147	61	5	localakgs	akgs
     // Exception table:
     //   from	to	target	type
     //   106	129	253	java/lang/Exception
@@ -369,7 +369,7 @@ public class MessageForGrayTips$HightlightClickableSpan
     }
     try
     {
-      paramString1 = bade.a((QQAppInterface)this.mApp.get(), this.context, str);
+      paramString1 = bbej.a((QQAppInterface)this.mApp.get(), this.context, str);
       if (paramString1 != null)
       {
         paramString1.a();
@@ -410,19 +410,19 @@ public class MessageForGrayTips$HightlightClickableSpan
       paramString.a().n(true);
       return true;
     } while ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("mqzone://arouse/lovermainpage")) || (this.mApp == null));
-    areu.a((QQAppInterface)this.mApp.get(), this.context, 2080, "");
+    asaw.a((QQAppInterface)this.mApp.get(), this.context, 2080, "");
     return false;
     label133:
     if (paramString.equals("http://imgcache.qq.com/lightalk/lightalk_pay/qq/index.html?_wv=1025&type=")) {
-      awqx.b(null, "CliOper", "", "", "0X80070EB", "0X80070EB", 0, 0, "", "", "", "");
+      axqw.b(null, "CliOper", "", "", "0X80070EB", "0X80070EB", 0, 0, "", "", "", "");
     }
-    amxd.a(paramString);
+    annl.a(paramString);
     if ((this.message != null) && ((this.message instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)this.message).tipParam.b == 131078))
     {
-      ayrg.a("Grp_AIO", "grey_clk", new String[] { this.message.frienduin });
-      baig.q(this.context, ((BaseActivity)this.context).app.getCurrentAccountUin(), this.message.frienduin);
+      azrw.a("Grp_AIO", "grey_clk", new String[] { this.message.frienduin });
+      bbjn.q(this.context, ((BaseActivity)this.context).app.getCurrentAccountUin(), this.message.frienduin);
     }
-    if ((this.message != null) && (this.message.istroop == 1) && (arnf.a((BaseActivity)this.context, paramString, this.message)))
+    if ((this.message != null) && (this.message.istroop == 1) && (asji.a((BaseActivity)this.context, paramString, this.message)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("MessageForGrayTips", 2, "mini app jump handled");
@@ -439,15 +439,15 @@ public class MessageForGrayTips$HightlightClickableSpan
     for (;;)
     {
       localIntent.putExtra("big_brother_source_key", str);
-      rtr.a(this.message, localIntent, paramString);
+      sgj.a(this.message, localIntent, paramString);
       this.context.startActivity(localIntent);
       paramString = (QQAppInterface)this.mApp.get();
       if ((paramString != null) && ((this.message instanceof MessageForGrayTips)) && (String.valueOf(11).equals(this.message.getExtInfoFromExtStr("gray_tips_serviceType")))) {
-        awqx.b(paramString, "dc00898", "", "", "0X8009328", "0X8009328", 0, 0, "", "", "", "");
+        axqw.b(paramString, "dc00898", "", "", "0X8009328", "0X8009328", 0, 0, "", "", "", "");
       }
       return true;
       if (this.message.istroop == 1008) {
-        str = rtr.b(this.message.frienduin);
+        str = sgj.b(this.message.frienduin);
       } else {
         str = "biz_src_jc_aio";
       }
@@ -544,24 +544,24 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                       return;
                                                     case 1: 
                                                       if ((this.message != null) && (this.message.msgtype == -2049)) {
-                                                        bcad.a().a(((QQAppInterface)this.mApp.get()).getCurrentAccountUin(), "", "", "2000", "2012", "0", false);
+                                                        bded.a().a(((QQAppInterface)this.mApp.get()).getCurrentAccountUin(), "", "", "2000", "2012", "0", false);
                                                       }
                                                       if ((this.message != null) && ((this.message instanceof MessageForUniteGrayTip)))
                                                       {
                                                         localObject5 = ((MessageForUniteGrayTip)this.message).tipParam;
                                                         if (localObject5 != null)
                                                         {
-                                                          if (((aqax)localObject5).b != 2359297) {
+                                                          if (((aquz)localObject5).b != 2359297) {
                                                             break label509;
                                                           }
-                                                          awqx.b(null, "P_CliOper", "cmshow", "", "Apollo", "Invitetip_clk", 0, 0, "", "", "", "");
-                                                          if (asbg.b(((aqax)localObject5).b))
+                                                          axqw.b(null, "P_CliOper", "cmshow", "", "Apollo", "Invitetip_clk", 0, 0, "", "", "", "");
+                                                          if (asxk.b(((aquz)localObject5).b))
                                                           {
                                                             if (!TextUtils.isEmpty(this.item.mMsgActionData)) {
                                                               break label1262;
                                                             }
                                                             paramView = this.item.mMsg_A_ActionData;
-                                                            asau.a((QQAppInterface)localObject3, (MessageForUniteGrayTip)this.message, ((aqax)localObject5).b, paramView);
+                                                            aswy.a((QQAppInterface)localObject3, (MessageForUniteGrayTip)this.message, ((aquz)localObject5).b, paramView);
                                                           }
                                                         }
                                                       }
@@ -570,43 +570,43 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                       {
                                                         clickWebMsg(paramView);
                                                         return;
-                                                        if (((aqax)localObject5).b == 2359298)
+                                                        if (((aquz)localObject5).b == 2359298)
                                                         {
-                                                          awqx.b(null, "P_CliOper", "cmshow", "", "Apollo", "clk_intro", 0, 0, "", "", "", "");
+                                                          axqw.b(null, "P_CliOper", "cmshow", "", "Apollo", "clk_intro", 0, 0, "", "", "", "");
                                                           break;
                                                         }
-                                                        if (((aqax)localObject5).b == 2490369)
+                                                        if (((aquz)localObject5).b == 2490369)
                                                         {
-                                                          awqx.b(null, "dc00898", "", "", "0X8007F12", "0X8007F12", 0, 0, "", "", "", "");
+                                                          axqw.b(null, "dc00898", "", "", "0X8007F12", "0X8007F12", 0, 0, "", "", "", "");
                                                           break;
                                                         }
-                                                        if (((aqax)localObject5).b == 2621441)
+                                                        if (((aquz)localObject5).b == 2621441)
                                                         {
                                                           paramView = ((MessageForUniteGrayTip)this.message).appGuideTipsOpKey;
                                                           if (TextUtils.isEmpty(paramView)) {
                                                             break;
                                                           }
-                                                          awqx.b(null, "dc00898", "", "", paramView, paramView, 0, 0, "", "", "", "");
+                                                          axqw.b(null, "dc00898", "", "", paramView, paramView, 0, 0, "", "", "", "");
                                                           break;
                                                         }
-                                                        if (((aqax)localObject5).b == 3145729)
+                                                        if (((aquz)localObject5).b == 3145729)
                                                         {
-                                                          awqx.b(null, "dc00898", "", "", "0X800812B", "0X800812B", 0, 0, "", "", "", "");
+                                                          axqw.b(null, "dc00898", "", "", "0X800812B", "0X800812B", 0, 0, "", "", "", "");
                                                           break;
                                                         }
-                                                        if (((aqax)localObject5).b == 131078)
+                                                        if (((aquz)localObject5).b == 131078)
                                                         {
                                                           VasWebviewUtil.reportCommercialDrainage(((QQAppInterface)this.mApp.get()).c(), "style", "0X8009133", "", 1, 0, 0, "", "", "0");
                                                           break;
                                                         }
-                                                        if (((aqax)localObject5).b == 2097154)
+                                                        if (((aquz)localObject5).b == 2097154)
                                                         {
                                                           if (TextUtils.isEmpty(this.item.mMsgActionData)) {}
                                                           for (paramView = this.item.mMsg_A_ActionData; !TextUtils.isEmpty(paramView); paramView = this.item.mMsgActionData)
                                                           {
                                                             for (;;)
                                                             {
-                                                              Object localObject1 = mpl.a(paramView);
+                                                              Object localObject1 = nam.a(paramView);
                                                               if (!((Map)localObject1).containsKey("type")) {
                                                                 break;
                                                               }
@@ -614,7 +614,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                               try
                                                               {
                                                                 i = Integer.parseInt((String)localObject1);
-                                                                awqx.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "qq_vip", "0X8009CA6", i, 0, "", "", "", "");
+                                                                axqw.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "qq_vip", "0X8009CA6", i, 0, "", "", "", "");
                                                               }
                                                               catch (NumberFormatException localNumberFormatException) {}
                                                             }
@@ -625,7 +625,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                             break;
                                                           }
                                                         }
-                                                        if (((aqax)localObject5).b == 655384)
+                                                        if (((aquz)localObject5).b == 655384)
                                                         {
                                                           localObject2 = this.message.getExtInfoFromExtStr("love_c2c_aio_businessSubtype");
                                                           paramView = (View)localObject2;
@@ -635,7 +635,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                           LpReportInfo_dc03950.report(new LpReportInfo_dc03950("16", paramView, "", "2"));
                                                           break;
                                                         }
-                                                        if (((aqax)localObject5).b == 2097153)
+                                                        if (((aquz)localObject5).b == 2097153)
                                                         {
                                                           paramView = this.message.getExtInfoFromExtStr("friendIconType");
                                                           if (TextUtils.isEmpty(paramView)) {
@@ -653,7 +653,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                           LpReportInfo_dc03950.report(new LpReportInfo_dc03950("16", "7", "2"));
                                                           break;
                                                         }
-                                                        if (((aqax)localObject5).b != 655397) {
+                                                        if (((aquz)localObject5).b != 655397) {
                                                           break;
                                                         }
                                                         paramView = this.message.getExtInfoFromExtStr("uint64_busi_type");
@@ -664,11 +664,11 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                         }
                                                         for (;;)
                                                         {
-                                                          awqx.b((QQAppInterface)localObject3, "CliOper", "", "", "0X800A561", "0X800A561", i, 0, "" + (String)localObject2, "" + paramView, "web", "");
+                                                          axqw.b((QQAppInterface)localObject3, "CliOper", "", "", "0X800A561", "0X800A561", i, 0, "" + (String)localObject2, "" + paramView, "web", "");
                                                           if (!"1008".equals(localObject2)) {
                                                             break;
                                                           }
-                                                          awqx.b(null, "dc00898", "", "", "0X800A639", "0X800A639", i - 1, 0, "", "", "", "");
+                                                          axqw.b(null, "dc00898", "", "", "0X800A639", "0X800A639", i - 1, 0, "", "", "", "");
                                                           break;
                                                           if (this.message.istroop == 1) {
                                                             i = 2;
@@ -690,7 +690,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                       }
                                                       for (;;)
                                                       {
-                                                        awqx.b((QQAppInterface)localObject3, "CliOper", "", "", "0X800A561", "0X800A561", i, 0, "" + (String)localObject2, "" + paramView, "mqq", "");
+                                                        axqw.b((QQAppInterface)localObject3, "CliOper", "", "", "0X800A561", "0X800A561", i, 0, "" + (String)localObject2, "" + paramView, "mqq", "");
                                                         clickPluginMsg(this.item.mMsgActionData, this.item.mMsg_A_ActionData);
                                                         return;
                                                         if (this.message.istroop == 1) {
@@ -707,7 +707,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                       i = 2;
                                                       paramView = TroopInfoActivity.a(this.frienduin, 4);
                                                       paramView.putInt("t_s_f", 1001);
-                                                      azlj.a(this.context, paramView, i);
+                                                      bamn.a(this.context, paramView, i);
                                                       return;
                                                     case 17: 
                                                       localObject2 = new Intent(this.context, PermisionPrivacyActivity.class);
@@ -717,7 +717,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                         if (!TextUtils.isEmpty(paramView))
                                                         {
                                                           ((Intent)localObject2).putExtra("scrollflag", paramView);
-                                                          awqx.b((QQAppInterface)this.mApp.get(), "P_CliOper", "invite_friend", "", "auto_pass", "clk_set_entry", 0, 0, this.frienduin, "", "", "");
+                                                          axqw.b((QQAppInterface)this.mApp.get(), "P_CliOper", "invite_friend", "", "auto_pass", "clk_set_entry", 0, 0, this.frienduin, "", "", "");
                                                         }
                                                         this.context.startActivity((Intent)localObject2);
                                                         return;
@@ -726,11 +726,11 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                       paramView = (QQAppInterface)this.mApp.get();
                                                     }
                                                   } while ((this.context == null) || (paramView == null));
-                                                  atxx.a(paramView, this.context, this.frienduin, "" + this.item.uin, 4, -1);
+                                                  auvw.a(paramView, this.context, this.frienduin, "" + this.item.uin, 4, -1);
                                                   return;
                                                   paramView = (QQAppInterface)this.mApp.get();
                                                 } while ((this.context == null) || (paramView == null));
-                                                atxx.a(paramView, this.context, this.frienduin, "" + this.item.uin, 4, -1);
+                                                auvw.a(paramView, this.context, this.frienduin, "" + this.item.uin, 4, -1);
                                                 paramView = paramView.getCurrentAccountUin();
                                                 localObject2 = (TroopManager)((QQAppInterface)this.mApp.get()).getManager(52);
                                                 if (localObject2 == null) {
@@ -743,21 +743,21 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                 if (((TroopInfo)localObject2).isTroopOwner(paramView)) {}
                                                 for (paramView = "1";; paramView = "2")
                                                 {
-                                                  azzx.a("Grp_manage", "recall_msg", "clk_mberName", 0, 0, new String[] { this.frienduin, paramView });
+                                                  bbbb.a("Grp_manage", "recall_msg", "clk_mberName", 0, 0, new String[] { this.frienduin, paramView });
                                                   return;
                                                 }
                                               } while (this.context == null);
                                               paramView = new Intent(this.context, EditInfoActivity.class);
                                               localObject2 = String.valueOf(this.item.uin);
-                                              localObject3 = babh.i((QQAppInterface)this.mApp.get(), this.frienduin, (String)localObject2);
+                                              localObject3 = bbcl.i((QQAppInterface)this.mApp.get(), this.frienduin, (String)localObject2);
                                               paramView.putExtra("edit_type", 0);
                                               paramView.putExtra("troopUin", this.frienduin);
                                               paramView.putExtra("uin", (String)localObject2);
-                                              paramView.putExtra("title", this.context.getResources().getString(2131632095));
+                                              paramView.putExtra("title", this.context.getResources().getString(2131697815));
                                               paramView.putExtra("isTroopNick", true);
                                               paramView.putExtra("default_text", (String)localObject3);
                                               paramView.putExtra("max_num", 60);
-                                              paramView.putExtra("default_hint", ajjy.a(2131640820));
+                                              paramView.putExtra("default_hint", ajyc.a(2131706605));
                                               paramView.putExtra("auto_remark", true);
                                               this.context.startActivity(paramView);
                                               return;
@@ -771,14 +771,14 @@ public class MessageForGrayTips$HightlightClickableSpan
                                               paramView.updateForTroopChatSetting((TroopInfo)localObject2, this.context.getResources(), ((QQAppInterface)this.mApp.get()).getCurrentAccountUin());
                                               paramView.isMember = true;
                                             }
-                                            new azsq((SplashActivity)this.context, paramView).a(paramView);
+                                            new batu((SplashActivity)this.context, paramView).a(paramView);
                                             return;
                                             if (QLog.isColorLevel()) {
                                               QLog.d("reactive", 2, "onclick graytip");
                                             }
-                                            awqx.b(null, "dc00898", "", "", "0X8007603", "0X8007603", 0, 0, "", "", "", "");
+                                            axqw.b(null, "dc00898", "", "", "0X8007603", "0X8007603", 0, 0, "", "", "", "");
                                             paramView = new Intent(this.context, QQBrowserActivity.class);
-                                            localObject2 = amde.a().a(this.frienduin);
+                                            localObject2 = amtg.a().a(this.frienduin);
                                             if (QLog.isColorLevel()) {
                                               QLog.d("MessageForGrayTips", 2, String.format("goToC2CWebPage, url: %s", new Object[] { localObject2 }));
                                             }
@@ -793,16 +793,16 @@ public class MessageForGrayTips$HightlightClickableSpan
                                             {
                                               paramView = ((MessageForUniteGrayTip)this.message).tipParam;
                                               if ((paramView != null) && (2097154 == paramView.b)) {
-                                                awqx.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "qq_vip", "0X8009CA7", 0, 0, "", "", "", "");
+                                                axqw.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "qq_vip", "0X8009CA7", 0, 0, "", "", "", "");
                                               }
                                               if (paramView != null) {
-                                                asau.b((QQAppInterface)localObject3, (MessageForUniteGrayTip)this.message, paramView.b);
+                                                aswy.b((QQAppInterface)localObject3, (MessageForUniteGrayTip)this.message, paramView.b);
                                               }
                                             }
                                           } while ((this.message == null) || (!(this.message instanceof MessageForUniteGrayTip)));
                                           paramView = ((MessageForUniteGrayTip)this.message).tipParam;
                                         } while ((paramView == null) || (2097155 != paramView.b));
-                                        awqx.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800A1BD", "0X800A1BD", 0, 0, "", "", "", "");
+                                        axqw.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800A1BD", "0X800A1BD", 0, 0, "", "", "", "");
                                         return;
                                         if (QLog.isColorLevel()) {
                                           QLog.d("specialCare", 2, "onclick graytip");
@@ -819,10 +819,10 @@ public class MessageForGrayTips$HightlightClickableSpan
                                         paramView.putExtra("param_groupcode", this.frienduin);
                                         paramView.putExtra("param_type", 1);
                                         paramView.putExtra("param_subtype", 1);
-                                        paramView.putExtra("param_done_button_wording", this.context.getString(2131631842));
+                                        paramView.putExtra("param_done_button_wording", this.context.getString(2131697556));
                                         paramView.putExtra("param_only_friends", true);
                                         paramView.putExtra("param_is_troop_admin", true);
-                                        paramView.putExtra("param_title", this.context.getString(2131630660));
+                                        paramView.putExtra("param_title", this.context.getString(2131696363));
                                         paramView.putExtra("param_max", 100);
                                         this.context.startActivity(paramView);
                                         return;
@@ -830,7 +830,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                       } while (paramView == null);
                                       localObject2 = new Intent(this.context, EditInfoActivity.class);
                                       ((Intent)localObject2).putExtra("edit_type", 2);
-                                      ((Intent)localObject2).putExtra("title", ajjy.a(2131640832));
+                                      ((Intent)localObject2).putExtra("title", ajyc.a(2131706617));
                                       if (paramView.hasSetNewTroopName) {
                                         ((Intent)localObject2).putExtra("default_text", paramView.troopname);
                                       }
@@ -838,28 +838,28 @@ public class MessageForGrayTips$HightlightClickableSpan
                                       ((Intent)localObject2).putExtra("canPostNull", false);
                                       ((Activity)this.context).startActivityForResult((Intent)localObject2, 13010);
                                       return;
-                                      azgh.a(this.context, this.frienduin);
-                                      azzx.a("Grp_edu", "Grp_AIO", "graybar_showmore", 0, 0, new String[] { this.frienduin });
+                                      bahk.a(this.context, this.frienduin);
+                                      bbbb.a("Grp_edu", "Grp_AIO", "graybar_showmore", 0, 0, new String[] { this.frienduin });
                                       return;
                                     } while ((this.message == null) || (!(this.message instanceof MessageForUniteGrayTip)));
                                     paramView = (MessageForUniteGrayTip)this.message;
                                   } while (this.mApp == null);
-                                  localObject2 = (bcqv)((QQAppInterface)this.mApp.get()).a(85);
+                                  localObject2 = (bduw)((QQAppInterface)this.mApp.get()).a(85);
                                 } while (localObject2 == null);
-                                ((bcqv)localObject2).a(paramView.extUin, paramView.masterUin, paramView.taskId, paramView.uniseq, paramView.istroop);
+                                ((bduw)localObject2).a(paramView.extUin, paramView.masterUin, paramView.taskId, paramView.uniseq, paramView.istroop);
                                 return;
                                 paramView = new Intent(this.context, EditActivity.class);
-                                paramView.putExtra("title", 2131627905).putExtra("current", this.item.remark).putExtra("action", 103).putExtra("limit", 96).putExtra("canPostNull", true).putExtra("multiLine", false);
+                                paramView.putExtra("title", 2131693546).putExtra("current", this.item.remark).putExtra("action", 103).putExtra("limit", 96).putExtra("canPostNull", true).putExtra("multiLine", false);
                                 if ((this.context instanceof BaseActivity)) {
                                   ((BaseActivity)this.context).startActivityForResult(paramView, 13008);
                                 }
                                 for (;;)
                                 {
-                                  awqx.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800797A", "0X800797A", 0, 0, "", "", "", "");
+                                  axqw.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800797A", "0X800797A", 0, 0, "", "", "", "");
                                   if (!"from_batch_add_frd_for_troop".equals(this.item.mMsgActionData)) {
                                     break;
                                   }
-                                  awqx.b((QQAppInterface)this.mApp.get(), "dc00899", "Grp_addFrd", "", "Frd_AIO", "setRefTips_clk", 0, 0, "", "", "", "");
+                                  axqw.b((QQAppInterface)this.mApp.get(), "dc00899", "Grp_addFrd", "", "Frd_AIO", "setRefTips_clk", 0, 0, "", "", "", "");
                                   return;
                                   this.context.startActivity(paramView);
                                 }
@@ -868,7 +868,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                 if ((i != -1) && ((i != 0) || (!"from_batch_add_frd_for_troop".equals(this.item.mMsgActionData)))) {
                                   break label7545;
                                 }
-                                localObject2 = ((ajjj)((QQAppInterface)this.mApp.get()).getManager(51)).e(this.frienduin);
+                                localObject2 = ((ajxn)((QQAppInterface)this.mApp.get()).getManager(51)).e(this.frienduin);
                                 if (localObject2 != null)
                                 {
                                   i = ((Friends)localObject2).groupid;
@@ -880,14 +880,14 @@ public class MessageForGrayTips$HightlightClickableSpan
                                 }
                                 for (;;)
                                 {
-                                  awqx.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X8007979", "0X8007979", 0, 0, "", "", "", "");
+                                  axqw.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X8007979", "0X8007979", 0, 0, "", "", "", "");
                                   if (!"from_batch_add_frd_for_troop".equals(this.item.mMsgActionData)) {
                                     break;
                                   }
                                   if (QLog.isDevelopLevel()) {
                                     QLog.i("MessageForGrayTips", 4, String.format(Locale.getDefault(), "ACTION_FRIEND_GROUP_SETTING gid: %s, groupId: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.item.groupId) }));
                                   }
-                                  awqx.b((QQAppInterface)this.mApp.get(), "dc00899", "Grp_addFrd", "", "Frd_AIO", "setGrpTips_clk", 0, 0, "", "", "", "");
+                                  axqw.b((QQAppInterface)this.mApp.get(), "dc00899", "Grp_addFrd", "", "Frd_AIO", "setGrpTips_clk", 0, 0, "", "", "", "");
                                   return;
                                   i = 0;
                                   break label3214;
@@ -904,7 +904,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                             } while ((localObject5 == null) || (((ChatFragment)localObject5).a() == null));
                             localObject5 = ((ChatFragment)localObject5).a();
                             ((BaseChatPie)localObject5).a.setText("");
-                            localObject2 = azef.a((QQAppInterface)this.mApp.get(), this.context, this.frienduin, (String)localObject2, (String)localObject3, false, ((BaseChatPie)localObject5).a, true);
+                            localObject2 = bafh.a((QQAppInterface)this.mApp.get(), this.context, this.frienduin, (String)localObject2, (String)localObject3, false, ((BaseChatPie)localObject5).a, true);
                             ((BaseChatPie)localObject5).a.setText((CharSequence)localObject2);
                             ((BaseChatPie)localObject5).a.append(paramView);
                             ((BaseChatPie)localObject5).a.setSelection(((BaseChatPie)localObject5).a.getText().length());
@@ -928,7 +928,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                 if (!TextUtils.isEmpty((CharSequence)localObject3))
                                 {
                                   bool1 = true;
-                                  paramView = azef.a((QQAppInterface)this.mApp.get(), this.context, this.frienduin, paramView, (String)localObject2, false, ((BaseChatPie)localObject5).a, true, bool1);
+                                  paramView = bafh.a((QQAppInterface)this.mApp.get(), this.context, this.frienduin, paramView, (String)localObject2, false, ((BaseChatPie)localObject5).a, true, bool1);
                                   ((BaseChatPie)localObject5).a.setText(paramView);
                                   ((BaseChatPie)localObject5).a.append((CharSequence)localObject3);
                                   ((BaseChatPie)localObject5).a.setSelection(((BaseChatPie)localObject5).a.getText().length());
@@ -942,8 +942,8 @@ public class MessageForGrayTips$HightlightClickableSpan
                               }
                               bool1 = false;
                             }
-                            tij.a(this.context, this.item.mMsgActionData, "HightLight_Feed_Id", 1005);
-                            urp.a("story_grp", "aio_grey", 0, 0, new String[] { "", "", "", "" });
+                            tvf.a(this.context, this.item.mMsgActionData, "HightLight_Feed_Id", 1005);
+                            vel.a("story_grp", "aio_grey", 0, 0, new String[] { "", "", "", "" });
                             return;
                             paramView = this.item.mMsgActionData;
                           } while (TextUtils.isEmpty(paramView));
@@ -988,28 +988,28 @@ public class MessageForGrayTips$HightlightClickableSpan
                           }
                         } while ((this.message == null) || (!(this.message instanceof MessageForUniteGrayTip)));
                         paramView = ((MessageForUniteGrayTip)this.message).tipParam;
-                        i = azpj.a(azpj.a(paramView.d, 0));
-                        paramView = azpj.a(paramView.d, 1);
-                        akhb.a(this.context, (QQAppInterface)this.mApp.get(), this.item.mMsgActionData, this.item.mMsg_A_ActionData, i, paramView);
+                        i = baqn.a(baqn.a(paramView.d, 0));
+                        paramView = baqn.a(paramView.d, 1);
+                        akvn.a(this.context, (QQAppInterface)this.mApp.get(), this.item.mMsgActionData, this.item.mMsg_A_ActionData, i, paramView);
                         return;
                         localObject5 = this.frienduin;
                         i = this.message.istroop;
                         j = this.message.getConfessTopicId();
                         localObject6 = new ConfessInfo();
                         ((ConfessInfo)localObject6).parseFromJsonStr(this.message.getExtInfoFromExtStr("ext_key_confess_info"));
-                      } while ((!(this.context instanceof FragmentActivity)) || (((FragmentActivity)this.context).isFinishing()) || (akbm.a(i) != 1032));
+                      } while ((!(this.context instanceof FragmentActivity)) || (((FragmentActivity)this.context).isFinishing()) || (akpy.a(i) != 1032));
                       localObject7 = ((FragmentActivity)this.context).getChatFragment().a();
                       localObject2 = null;
                       paramView = (View)localObject2;
                       if (localObject7 != null)
                       {
                         paramView = (View)localObject2;
-                        if ((localObject7 instanceof aecp)) {
-                          paramView = (aecp)localObject7;
+                        if ((localObject7 instanceof aeno)) {
+                          paramView = (aeno)localObject7;
                         }
                       }
                     } while (paramView == null);
-                    paramView = babr.a(this.context, 0, alxu.f, alxu.g, 2131625035, 2131629116, new amss(this, (QQAppInterface)localObject3, (String)localObject5, i, j, (ConfessInfo)localObject6, paramView), new amst(this));
+                    paramView = bbcv.a(this.context, 0, amnk.f, amnk.g, 2131690596, 2131694793, new aniz(this, (QQAppInterface)localObject3, (String)localObject5, i, j, (ConfessInfo)localObject6, paramView), new anja(this));
                   } while (((FragmentActivity)this.context).isFinishing());
                   paramView.show();
                   return;
@@ -1017,8 +1017,8 @@ public class MessageForGrayTips$HightlightClickableSpan
                 paramView = ((FragmentActivity)this.context).getChatFragment();
               } while ((paramView == null) || (paramView.a() == null));
               paramView = paramView.a();
-            } while (!(paramView instanceof aebk));
-            ((aebk)paramView).f(this.item.mMsgActionData);
+            } while (!(paramView instanceof aemj));
+            ((aemj)paramView).f(this.item.mMsgActionData);
             return;
             if (!BaseChatItemLayout.a) {
               break;
@@ -1039,7 +1039,7 @@ public class MessageForGrayTips$HightlightClickableSpan
         }
         localObject2 = ((FragmentActivity)this.context).getChatFragment();
       } while ((localObject2 == null) || (((ChatFragment)localObject2).a() == null));
-      aqay.a(this.message);
+      aqva.a(this.message);
       localObject2 = ((ChatFragment)localObject2).a();
       if ((((BaseChatPie)localObject2).a != null) && (((BaseChatPie)localObject2).a.getEditableText() != null)) {
         break;
@@ -1082,14 +1082,14 @@ public class MessageForGrayTips$HightlightClickableSpan
       }
       ((BaseChatPie)localObject2).c = "";
       ((BaseChatPie)localObject2).a.setSelection(i);
-      ((BaseChatPie)localObject2).aA();
+      ((BaseChatPie)localObject2).aC();
       return;
       i = 0;
       if (i < ((JSONArray)localObject3).length())
       {
         localObject5 = ((JSONArray)localObject3).getJSONObject(i);
-        localObject6 = ((JSONObject)localObject5).optString(awav.k);
-        int n = ((JSONObject)localObject5).optInt(awav.l);
+        localObject6 = ((JSONObject)localObject5).optString(axad.k);
+        int n = ((JSONObject)localObject5).optInt(axad.l);
         localObject5 = new JSONArray((String)localObject6);
         if ((localObject5 != null) && (((JSONArray)localObject5).length() == 0))
         {
@@ -1122,7 +1122,7 @@ public class MessageForGrayTips$HightlightClickableSpan
             }
             bool1 = true;
             label4926:
-            localObject6 = azef.a((QQAppInterface)localObject8, localContext, str, (String)localObject6, (String)localObject7, false, localXEditTextEx, bool1);
+            localObject6 = bafh.a((QQAppInterface)localObject8, localContext, str, (String)localObject6, (String)localObject7, false, localXEditTextEx, bool1);
             if ((localObject6 == null) || (((SpannableString)localObject6).length() == 0)) {
               break;
             }
@@ -1173,7 +1173,7 @@ public class MessageForGrayTips$HightlightClickableSpan
             continue;
           }
           i = 1;
-          awqx.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800A613", "0X800A613", 0, 0, i + "", "", "", "");
+          axqw.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800A613", "0X800A613", 0, 0, i + "", "", "", "");
         }
         catch (RuntimeException paramView)
         {
@@ -1184,16 +1184,16 @@ public class MessageForGrayTips$HightlightClickableSpan
           QLog.i("MessageForGrayTips", 1, "0X800A613", paramView);
           continue;
         }
-        aael.a(this.context, localJSONException, (ChatMessage)this.message);
+        aaod.a(this.context, localJSONException, (ChatMessage)this.message);
         return;
         i = 2;
         continue;
         if (paramView.istroop == 1)
         {
-          bool1 = azlj.a(localJSONException, this.message.frienduin, localJSONException.c());
-          bool2 = azlj.b(localJSONException, this.message.frienduin, localJSONException.c());
+          bool1 = bamn.a(localJSONException, this.message.frienduin, localJSONException.c());
+          bool2 = bamn.b(localJSONException, this.message.frienduin, localJSONException.c());
           localObject2 = paramView.tipParam.c;
-          localObject5 = ajjy.a(2131640824) + localJSONException.getApp().getString(2131632219);
+          localObject5 = ajyc.a(2131706609) + localJSONException.getApp().getString(2131697944);
           if (bool1)
           {
             if (((String)localObject2).startsWith((String)localObject5))
@@ -1251,7 +1251,7 @@ public class MessageForGrayTips$HightlightClickableSpan
             if ((paramView.getChatFragment() != null) && (paramView.getChatFragment().a() != null) && ((this.message instanceof ChatMessage)))
             {
               paramView.getChatFragment().a().a((ChatMessage)this.message);
-              ((ayrg)localJSONException.getManager(231)).a(this.item.mMsgActionData);
+              ((azrw)localJSONException.getManager(231)).a(this.item.mMsgActionData);
               if (QLog.isColorLevel()) {
                 QLog.d("TroopEnterEffect", 2, "click nolongerPrompt id = " + this.item.mMsgActionData);
               }
@@ -1271,7 +1271,7 @@ public class MessageForGrayTips$HightlightClickableSpan
             VasWebviewUtil.reportCommercialDrainage(localJSONException.c(), "style", "0X8009133", "", 1, 0, 0, "", "", "3");
             return;
             if (this.context != null) {
-              baoz.a(this.item.mMsgActionData, this.context);
+              bbqw.a(this.item.mMsgActionData, this.context);
             }
             if ((this.mApp.get() == null) || (this.message == null) || (!(this.message instanceof MessageForUniteGrayTip))) {
               break;
@@ -1290,9 +1290,9 @@ public class MessageForGrayTips$HightlightClickableSpan
             if ((this.mApp.get() == null) || (this.message == null) || (!(this.message instanceof MessageForUniteGrayTip))) {
               break;
             }
-            areu.a((QQAppInterface)this.mApp.get(), this.context, 2080, "6");
+            asaw.a((QQAppInterface)this.mApp.get(), this.context, 2080, "6");
             return;
-            if (axfs.a()) {
+            if (ayfv.a()) {
               break;
             }
             try
@@ -1303,31 +1303,31 @@ public class MessageForGrayTips$HightlightClickableSpan
               localObject5 = localObject4[0];
               l = Long.parseLong(localObject4[1]);
               i = this.message.istroop;
-              localObject2 = axfs.a((String)localObject5, paramView, (String)localObject2);
-              QLog.i("MessageForGrayTips" + axdz.i, 1, "click to modify tencent docs auth. frienduin = " + paramView + ", uinType = " + i + ", msgSeq = " + l + ", docsGrayTipsInfo = " + localObject2);
+              localObject2 = ayfv.a((String)localObject5, paramView, (String)localObject2);
+              QLog.i("MessageForGrayTips" + ayeb.i, 1, "click to modify tencent docs auth. frienduin = " + paramView + ", uinType = " + i + ", msgSeq = " + l + ", docsGrayTipsInfo = " + localObject2);
               if (localObject2 == null) {
                 break;
               }
-              if (((DocsGrayTipsInfo)localObject2).s.equals(axdz.k))
+              if (((DocsGrayTipsInfo)localObject2).s.equals(ayeb.k))
               {
                 paramView = ((DocsGrayTipsInfo)localObject2).t;
                 if (TextUtils.isEmpty(paramView)) {
                   break;
                 }
-                axfs.a(this.context, paramView);
-                awqx.b(null, "dc00898", "", "", "0X8009C79", "0X8009C79", 0, 0, "", "", "", "");
+                ayfv.a(this.context, paramView);
+                axqw.b(null, "dc00898", "", "", "0X8009C79", "0X8009C79", 0, 0, "", "", "", "");
                 return;
               }
             }
             catch (Exception paramView)
             {
-              QLog.e("MessageForGrayTips" + axdz.i, 1, " docs gray tips action exception =" + paramView.toString());
+              QLog.e("MessageForGrayTips" + ayeb.i, 1, " docs gray tips action exception =" + paramView.toString());
               return;
             }
           }
         }
       }
-      paramView = (axfb)((QQAppInterface)this.mApp.get()).a(122);
+      paramView = (ayfe)((QQAppInterface)this.mApp.get()).a(122);
       if (i == 1)
       {
         paramView.b((DocsGrayTipsInfo)localObject2, l);
@@ -1336,7 +1336,7 @@ public class MessageForGrayTips$HightlightClickableSpan
       paramView.a((DocsGrayTipsInfo)localObject2, l);
       return;
       Object localObject4 = (QQAppInterface)this.mApp.get();
-      if ((localObject4 == null) || (!alxu.a((AppInterface)localObject4))) {
+      if ((localObject4 == null) || (!amnk.a((AppInterface)localObject4))) {
         break;
       }
       if (this.message.isSelfConfessor()) {
@@ -1344,20 +1344,20 @@ public class MessageForGrayTips$HightlightClickableSpan
       }
       for (localObject2 = this.message.frienduin;; localObject2 = ((QQAppInterface)localObject4).getAccount())
       {
-        alxu.b((QQAppInterface)localObject4, alyc.a(this.message.frienduin, this.message.istroop, this.message.getConfessTopicId()), false);
-        localObject5 = (alxv)((QQAppInterface)localObject4).a(125);
+        amnk.b((QQAppInterface)localObject4, amns.a(this.message.frienduin, this.message.istroop, this.message.getConfessTopicId()), false);
+        localObject5 = (amnl)((QQAppInterface)localObject4).a(125);
         if (localObject5 != null) {
-          ((alxv)localObject5).notifyUI(9, true, new Object[] { this.message.frienduin, Integer.valueOf(this.message.getConfessTopicId()), Integer.valueOf(this.message.istroop) });
+          ((amnl)localObject5).notifyUI(9, true, new Object[] { this.message.frienduin, Integer.valueOf(this.message.getConfessTopicId()), Integer.valueOf(this.message.istroop) });
         }
-        alxu.a((AppInterface)localObject4, this.context, paramView, (String)localObject2, this.message.getConfessTopicId(), this.message.isSelfConfessor());
-        awqx.b((QQAppInterface)localObject4, "dc00898", "", "", "0X8009574", "0X8009574", 0, 0, this.message.getConfessTopicId() + "", "", paramView, (String)localObject2);
+        amnk.a((AppInterface)localObject4, this.context, paramView, (String)localObject2, this.message.getConfessTopicId(), this.message.isSelfConfessor());
+        axqw.b((QQAppInterface)localObject4, "dc00898", "", "", "0X8009574", "0X8009574", 0, 0, this.message.getConfessTopicId() + "", "", paramView, (String)localObject2);
         return;
         paramView = this.message.frienduin;
       }
       if (this.message.istroop != 1044) {
         break;
       }
-      aqux.a(this.context, this.frienduin, this.item.mMsgActionData, this.item.mMsg_A_ActionData);
+      arqn.a(this.context, this.frienduin, this.item.mMsgActionData, this.item.mMsg_A_ActionData);
       return;
       if (this.context == null) {
         break;
@@ -1367,7 +1367,7 @@ public class MessageForGrayTips$HightlightClickableSpan
       try
       {
         i = Integer.parseInt(this.item.mMsgActionData);
-        awqx.b(null, "dc00898", "", "", "0X800997A", "0X800997A", i, i, "", "", "", "");
+        axqw.b(null, "dc00898", "", "", "0X800997A", "0X800997A", i, i, "", "", "", "");
         return;
       }
       catch (NumberFormatException paramView)
@@ -1384,18 +1384,18 @@ public class MessageForGrayTips$HightlightClickableSpan
       }
       paramView = TroopInfoActivity.a(this.item.mMsgActionData, 2);
       paramView.putInt("t_s_f", 1000);
-      azlj.a(this.context, paramView, 2);
-      awqx.b(null, "dc00898", "", "", "0X800997B", "0X800997B", 0, 0, "", "", "", "");
+      bamn.a(this.context, paramView, 2);
+      axqw.b(null, "dc00898", "", "", "0X800997B", "0X800997B", 0, 0, "", "", "", "");
       return;
-      if (akdt.d) {
-        this.context.startActivity(akdt.a);
+      if (aksf.d) {
+        this.context.startActivity(aksf.a);
       }
       for (;;)
       {
         try
         {
           i = Integer.parseInt(this.item.mMsgActionData);
-          awqx.b(null, "dc00898", "", "", "0X8009AD0", "0X8009AD0", i, i, "", "", "", "");
+          axqw.b(null, "dc00898", "", "", "0X8009AD0", "0X8009AD0", i, i, "", "", "", "");
           return;
         }
         catch (NumberFormatException paramView) {}
@@ -1416,13 +1416,13 @@ public class MessageForGrayTips$HightlightClickableSpan
       paramView = this.item.mMsg_A_ActionData;
       localObject2 = this.item.mMsgActionData;
       if ((!TextUtils.isEmpty(paramView)) && (paramView.contains("docs.qq.com/form"))) {
-        axfs.a(this.context, paramView, (String)localObject2);
+        ayfv.a(this.context, paramView, (String)localObject2);
       }
       for (;;)
       {
-        awqx.b(null, "dc00898", "", this.frienduin, "0X8009FD1", "0X8009FD1", 0, 0, "", "", "", "");
+        axqw.b(null, "dc00898", "", this.frienduin, "0X8009FD1", "0X8009FD1", 0, 0, "", "", "", "");
         return;
-        if (axfs.a(paramView)) {
+        if (ayfv.a(paramView)) {
           MiniAppLauncher.startMiniApp(this.context, paramView, 0, null);
         }
       }
@@ -1432,12 +1432,12 @@ public class MessageForGrayTips$HightlightClickableSpan
         if ((paramView != null) && (paramView.a() != null))
         {
           paramView = paramView.a();
-          if ((paramView instanceof aedo)) {
-            ((aedo)paramView).bv();
+          if ((paramView instanceof aeoo)) {
+            ((aeoo)paramView).bx();
           }
         }
       }
-      awqx.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800A013", "0X800A013", 0, 0, "", "", "", "");
+      axqw.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800A013", "0X800A013", 0, 0, "", "", "", "");
       return;
       paramView = new ProfileActivity.AllInOne(this.item.mMsgActionData, 1);
       ProfileActivity.b(this.context, paramView);
@@ -1449,43 +1449,43 @@ public class MessageForGrayTips$HightlightClickableSpan
       }
       if (this.message.istroop == 1)
       {
-        aqvv.a((QQAppInterface)localObject4, this.context, 1, this.frienduin, 0);
+        arrl.a((QQAppInterface)localObject4, this.context, 1, this.frienduin, 0);
         return;
       }
       if (this.message.istroop != 0) {
         break;
       }
-      aqvv.a((QQAppInterface)this.mApp.get(), this.context, 2, this.frienduin, 0);
+      arrl.a((QQAppInterface)this.mApp.get(), this.context, 2, this.frienduin, 0);
       return;
       if (!(this.context instanceof FragmentActivity)) {
         break;
       }
       paramView = ((FragmentActivity)this.context).getChatFragment();
-      if ((paramView == null) || (paramView.a() == null) || (!(paramView.a() instanceof aejb))) {
+      if ((paramView == null) || (paramView.a() == null) || (!(paramView.a() instanceof TroopChatPie))) {
         break;
       }
-      paramView = (aejb)paramView.a();
+      paramView = (TroopChatPie)paramView.a();
       localObject2 = paramView.a();
       if ((TextUtils.isEmpty(this.frienduin)) || (!this.frienduin.equals(localObject2)) || (!(this.message instanceof ChatMessage))) {
         break;
       }
-      ((acyg)paramView.a(41)).b(1);
+      ((adjh)paramView.a(41)).b(1);
       ((TroopManager)((QQAppInterface)localObject4).getManager(52)).a().a((QQAppInterface)localObject4, this.context, paramView.a, this.frienduin, 0, (ChatMessage)this.message);
-      adta.c = 3;
-      adta.a = this.message.senderuin;
-      new awrb((QQAppInterface)localObject4).a("dc00899").b("Grp_AIO").c("newman_join").d("clk_bar").a(new String[] { localObject2, "", "" + azlj.b((QQAppInterface)localObject4, (String)localObject2) }).a();
+      aedz.c = 3;
+      aedz.a = this.message.senderuin;
+      new axra((QQAppInterface)localObject4).a("dc00899").b("Grp_AIO").c("newman_join").d("clk_bar").a(new String[] { localObject2, "", "" + bamn.b((QQAppInterface)localObject4, (String)localObject2) }).a();
       return;
       paramView = ((TroopManager)((QQAppInterface)this.mApp.get()).getManager(52)).c(this.frienduin);
       localObject2 = new ArrayList(Arrays.asList(this.item.mMsgActionData.split(",")));
       LpReportInfo_pf00064.allReport(40, 3, 2);
-      bfpr.a((Activity)this.context, ((QQAppInterface)localObject4).c(), 1, 0, Long.parseLong(this.frienduin), paramView.troopname, "$RecentAlbumId", baae.d, (ArrayList)localObject2, -1, 0, 3);
+      bgxy.a((Activity)this.context, ((QQAppInterface)localObject4).c(), 1, 0, Long.parseLong(this.frienduin), paramView.troopname, "$RecentAlbumId", bbbi.d, (ArrayList)localObject2, -1, 0, 3);
       return;
       i = QzoneConfig.getInstance().getConfig("aio_qzone_troop_gray_tips", "troop_gray_tips_cool_down", 24);
-      paramView = String.format(ajjy.a(2131654581), new Object[] { Integer.valueOf(i) });
-      bbmy.a(BaseApplication.getContext(), 0, paramView, 0).a();
+      paramView = String.format(ajyc.a(2131720477), new Object[] { Integer.valueOf(i) });
+      bcpw.a(BaseApplication.getContext(), 0, paramView, 0).a();
       l = System.currentTimeMillis() / 1000L;
       LocalMultiProcConfig.putLong4Uin("aio_qzone_troop_gray_tips", i * 60 * 60 + l, this.item.uin);
-      aael.a(this.context, (QQAppInterface)localObject4, (ChatMessage)this.message);
+      aaod.a(this.context, (QQAppInterface)localObject4, (ChatMessage)this.message);
       LpReportInfo_pf00064.allReport(40, 3, 3);
       return;
       label7534:

@@ -1,88 +1,75 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommonBottomData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class qxx
-  extends qxr
-  implements View.OnClickListener
+public class qxx
+  implements qxt
 {
-  private View b = this.jdField_a_of_type_AndroidViewView.findViewById(2131297813);
-  private View c = this.jdField_a_of_type_AndroidViewView.findViewById(2131297827);
-  private View d = this.jdField_a_of_type_AndroidViewView.findViewById(2131298946);
+  private int jdField_a_of_type_Int;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<VideoInfo> jdField_a_of_type_JavaUtilArrayList;
+  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private npv jdField_a_of_type_Npv;
+  private qxz jdField_a_of_type_Qxz;
+  private qyf jdField_a_of_type_Qyf;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public qxx(qxv paramqxv, View paramView, BaseData paramBaseData)
+  public qxx(Activity paramActivity, ArrayList<VideoInfo> paramArrayList, int paramInt, Bundle paramBundle, qyf paramqyf)
   {
-    super(paramView, paramBaseData);
-    this.d.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Qyf = paramqyf;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramBundle.getString("VIDEO_COMMON_DATA");
+    this.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("VIDEO_BUSINESS_INFO");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onk.a());
+    this.jdField_a_of_type_Qxz = new qxz(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Qxz);
   }
   
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  public void a()
   {
-    int i = 0;
-    paramBaseData1 = (CommonBottomData)paramBaseData2;
-    if ((paramBaseData1.p == 14) && (paramBaseData1.b))
-    {
-      this.d.setVisibility(0);
-      if (!paramBaseData1.a) {
-        break label148;
-      }
-      this.c.setVisibility(0);
-      if (paramBaseData2.p != 14) {
-        break label123;
-      }
-      this.c.getLayoutParams().height = azvv.a(this.c.getContext(), 6.0F);
-      label78:
-      paramBaseData1 = (LinearLayout.LayoutParams)this.b.getLayoutParams();
-      if (paramBaseData2.p != 14) {
-        break label160;
-      }
-    }
-    for (;;)
-    {
-      paramBaseData1.rightMargin = i;
-      paramBaseData1.leftMargin = i;
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       return;
-      this.d.setVisibility(8);
-      break;
-      label123:
-      this.c.getLayoutParams().height = azvv.a(this.c.getContext(), 10.0F);
-      break label78;
-      label148:
-      this.c.setVisibility(8);
-      break label78;
-      label160:
-      i = azvv.a(this.b.getContext(), 12.0F);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    if (this.jdField_a_of_type_Npv == null) {
+      this.jdField_a_of_type_Npv = ((npv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(90));
+    }
+    Object localObject2 = this.jdField_a_of_type_Qyf.a();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new VideoInfo();
+    }
+    if (((VideoInfo)localObject1).a != null) {}
+    for (int i = ((VideoInfo)localObject1).a.jdField_a_of_type_Int;; i = 0)
+    {
+      localObject2 = new ArrayList(this.jdField_a_of_type_Qyf.a());
+      this.jdField_a_of_type_Npv.a(this.jdField_a_of_type_Qxz, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), (VideoInfo)localObject1, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList, ((VideoInfo)localObject1).i, -1L, true, i, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, null, this.jdField_b_of_type_Int, null, this.jdField_a_of_type_ArrayOfByte, 1, 1, (ArrayList)localObject2);
+      return;
     }
   }
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    ArticleInfo localArticleInfo;
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.p == 14)
-    {
-      paramView = (BaseActivity)this.jdField_a_of_type_AndroidViewView.getContext();
-      if ((paramView != null) && ((paramView instanceof FastWebActivity))) {
-        ((FastWebActivity)paramView).a();
-      }
-      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b;
-      i = (int)localArticleInfo.mChannelID;
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.a.c()) {
-        break label84;
-      }
+    if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size() - 5) {
+      a();
     }
-    label84:
-    for (paramView = "2";; paramView = "1")
-    {
-      raz.a(localArticleInfo, "0X800900A", obz.a(localArticleInfo, i, paramView));
-      return;
-    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Qxz);
   }
 }
 

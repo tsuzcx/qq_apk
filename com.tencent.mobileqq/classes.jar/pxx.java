@@ -1,18 +1,56 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
+import android.os.Looper;
+import android.text.TextPaint;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class pxx
-  implements Parcelable.Creator<LikeAnimationInfo>
+public class pxx
+  extends osp
 {
-  public LikeAnimationInfo a(Parcel paramParcel)
-  {
-    return new LikeAnimationInfo(paramParcel);
-  }
+  public pxx(ComponentHeaderUgc paramComponentHeaderUgc) {}
   
-  public LikeAnimationInfo[] a(int paramInt)
+  public void b(long paramLong, boolean paramBoolean)
   {
-    return new LikeAnimationInfo[paramInt];
+    int i;
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      i = 1;
+      if (i != 0) {
+        break label32;
+      }
+      QLog.e("ComponentHeaderUgc", 2, "Please call this method in main thread!!!");
+    }
+    label32:
+    ArticleInfo localArticleInfo;
+    do
+    {
+      return;
+      i = 0;
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("ComponentHeaderUgc", 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
+      }
+      localArticleInfo = this.a.jdField_a_of_type_Pvb.a.a();
+    } while (paramLong != localArticleInfo.mSocialFeedInfo.a.a);
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131702284));
+      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
+      localArticleInfo.mSocialFeedInfo.h = 2;
+      localArticleInfo.isNeedShowBtnWhenFollowed = true;
+    }
+    for (;;)
+    {
+      osm.a().b();
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131702289));
+      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
+      localArticleInfo.mSocialFeedInfo.h = 1;
+    }
   }
 }
 

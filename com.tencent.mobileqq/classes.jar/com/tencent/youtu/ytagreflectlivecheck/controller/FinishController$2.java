@@ -2,12 +2,12 @@ package com.tencent.youtu.ytagreflectlivecheck.controller;
 
 import com.tencent.youtu.ytagreflectlivecheck.manager.ProcessManager.ProcessFinishResult;
 import com.tencent.youtu.ytagreflectlivecheck.requester.LightDiffResponse;
-import com.tencent.youtu.ytagreflectlivecheck.requester.UploadVideoRequester.UploadVideoResponse;
+import com.tencent.youtu.ytagreflectlivecheck.requester.UploadVideoRequesterV2.UploadVideoResponse;
 import com.tencent.youtu.ytcommon.tools.YTException;
 import com.tencent.youtu.ytcommon.tools.wejson.WeJson;
 
 class FinishController$2
-  implements UploadVideoRequester.UploadVideoResponse
+  implements UploadVideoRequesterV2.UploadVideoResponse
 {
   FinishController$2(FinishController paramFinishController, ProcessManager.ProcessFinishResult paramProcessFinishResult, long paramLong) {}
   
@@ -23,7 +23,7 @@ class FinishController$2
       LightDiffResponse localLightDiffResponse = (LightDiffResponse)new WeJson().fromJson(paramString, LightDiffResponse.class);
       if (localLightDiffResponse != null)
       {
-        if (localLightDiffResponse.getError_code() == 0)
+        if ((localLightDiffResponse.reflect_live_code == 0) && (localLightDiffResponse.picture_live_code == 0))
         {
           this.val$checkResult.onSuccess(true, localLightDiffResponse, paramString, this.val$tag);
           return;

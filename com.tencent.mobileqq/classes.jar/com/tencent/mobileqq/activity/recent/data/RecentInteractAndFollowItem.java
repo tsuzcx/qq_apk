@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import akaq;
+import akpc;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
@@ -40,7 +40,7 @@ public class RecentInteractAndFollowItem
       ((MessageForInteractAndFollow)localObject1).parse();
       if (((MessageForInteractAndFollow)localObject1).type == 1)
       {
-        this.mTitleName = paramContext.getString(2131628747);
+        this.mTitleName = paramContext.getString(2131694399);
         label84:
         this.mUnreadFlag = 3;
         this.mDisplayTime = ((MessageForInteractAndFollow)localObject1).timeStamp;
@@ -48,12 +48,12 @@ public class RecentInteractAndFollowItem
         if (localObject2 == null) {
           break label321;
         }
-        this.mUnreadNum = ((akaq)localObject2).a(((MessageForInteractAndFollow)localObject1).frienduin, ((MessageForInteractAndFollow)localObject1).istroop);
+        this.mUnreadNum = ((akpc)localObject2).a(((MessageForInteractAndFollow)localObject1).frienduin, ((MessageForInteractAndFollow)localObject1).istroop);
         label125:
         localObject2 = a();
         ((MsgSummary)localObject2).strContent = ((MessageForInteractAndFollow)localObject1).context;
         a(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-        if (!AppSetting.c) {
+        if (!AppSetting.d) {
           break;
         }
         paramQQAppInterface = new StringBuilder(24);
@@ -72,12 +72,12 @@ public class RecentInteractAndFollowItem
         return;
         if (((MessageForInteractAndFollow)localObject1).type == 2)
         {
-          this.mTitleName = paramContext.getString(2131628746);
+          this.mTitleName = paramContext.getString(2131694398);
           break label84;
         }
         if (((MessageForInteractAndFollow)localObject1).type == 3)
         {
-          this.mTitleName = paramContext.getString(2131628748);
+          this.mTitleName = paramContext.getString(2131694400);
           break label84;
         }
         if (!QLog.isColorLevel()) {

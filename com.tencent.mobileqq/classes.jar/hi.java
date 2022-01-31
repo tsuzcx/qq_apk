@@ -1,45 +1,95 @@
-import com.immersion.touchsensesdk.IConnection;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.IMMRRsp;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.etrump.mixlayout.ETDecoration;
+import com.etrump.mixlayout.ETEngine;
+import com.etrump.mixlayout.ETTextView;
+import java.lang.ref.WeakReference;
 
 public class hi
-  implements IConnection
+  extends Handler
 {
-  private oidb_0xa4d.IMMRRsp a;
-  
-  public hi(oidb_0xa4d.IMMRRsp paramIMMRRsp)
+  public hi(Looper paramLooper)
   {
-    this.a = paramIMMRRsp;
+    super(paramLooper);
   }
   
-  public void disconnect() {}
-  
-  public int getContentLength()
+  public void handleMessage(Message paramMessage)
   {
-    return this.a.bytes_rsp_data.get().toByteArray().length;
-  }
-  
-  public long getLastModified()
-  {
-    return this.a.int64_last_modified.get();
-  }
-  
-  public int getResponseCode()
-  {
-    return this.a.int32_ret.get();
-  }
-  
-  public byte[] readAllData()
-  {
-    return this.a.bytes_rsp_data.get().toByteArray();
+    int i;
+    ETEngine localETEngine;
+    Bitmap localBitmap;
+    switch (paramMessage.what)
+    {
+    default: 
+    case 2: 
+      do
+      {
+        return;
+        paramMessage = (hj)paramMessage.obj;
+      } while (paramMessage == null);
+      i = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      int j = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      if ((ETTextView.access$300() != null) && ((ETTextView.access$300().getWidth() < i) || (ETTextView.access$300().getHeight() < j)))
+      {
+        ETTextView.access$300().recycle();
+        ETTextView.access$302(null);
+      }
+      if (ETTextView.access$300() == null)
+      {
+        ETTextView.access$302(Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888));
+        localETEngine = ETEngine.getInstanceForAnimation();
+        ??? = paramMessage.jdField_a_of_type_Ha.a(localETEngine, false);
+        if (??? != null) {
+          ((ETDecoration)???).gotoFrame(paramMessage.jdField_a_of_type_Int);
+        }
+        paramMessage.jdField_a_of_type_Ha.a(localETEngine, ETTextView.access$300(), (ETDecoration)???, true);
+        if (??? != null) {
+          ((ETDecoration)???).deleteDescriptor();
+        }
+        localBitmap = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap;
+        if (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+          break label308;
+        }
+      }
+      break;
+    }
+    for (;;)
+    {
+      synchronized (ETTextView.access$400((ETTextView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get()))
+      {
+        if ((localBitmap.isRecycled()) || (((ETTextView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get()).mMsgId != paramMessage.jdField_a_of_type_Long)) {
+          break label303;
+        }
+        localBitmap.eraseColor(0);
+        localETEngine.native_cloneBitmap(ETTextView.access$300(), localBitmap);
+        i = 1;
+        if (i == 0) {
+          break;
+        }
+        ETTextView.access$500().obtainMessage(1, paramMessage).sendToTarget();
+        return;
+        ETTextView.access$300().eraseColor(0);
+      }
+      if (ETTextView.access$300() == null) {
+        break;
+      }
+      ETTextView.access$300().recycle();
+      ETTextView.access$302(null);
+      return;
+      label303:
+      i = 0;
+      continue;
+      label308:
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     hi
  * JD-Core Version:    0.7.0.1
  */

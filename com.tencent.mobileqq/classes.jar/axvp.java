@@ -1,118 +1,256 @@
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.MultiForwardActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.transfile.TransFileController.1;
-import com.tencent.mobileqq.transfile.TransFileController.1.1.1;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare.1.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.util.BinderWarpper;
+import java.io.File;
+import mqq.app.AccountNotMatchException;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import tencent.im.msg.im_msg_body.RichText;
 
-public class axvp
-  implements atqq
+public final class axvp
+  implements View.OnClickListener
 {
-  public axvp(TransFileController.1 param1, boolean paramBoolean, String paramString) {}
-  
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onClick(View paramView)
   {
-    return null;
-  }
-  
-  public void a(atqr paramatqr) {}
-  
-  public void b(atqr paramatqr)
-  {
-    int j = 0;
-    Object localObject;
-    boolean bool;
-    if (QLog.isColorLevel())
+    Object localObject1 = paramView.findViewById(2131376583);
+    if (localObject1 == null) {}
+    do
     {
-      localObject = new StringBuilder().append(" onSend result is null ? ");
-      if (paramatqr != null) {
-        break label70;
-      }
-      bool = true;
-      localObject = ((StringBuilder)localObject).append(bool).append(" result is: ");
-      if (paramatqr != null) {
-        break label76;
-      }
-    }
-    label70:
-    label76:
-    for (int i = -99;; i = paramatqr.a)
-    {
-      QLog.i("NearbyPeoplePhotoUploadProcessor", 2, i);
-      if (paramatqr != null) {
-        break label84;
-      }
       return;
-      bool = false;
-      break;
-    }
-    label84:
-    if (paramatqr.a == 0)
+      paramView = ((View)localObject1).getTag(2131376583);
+    } while (!(paramView instanceof StructMsgForImageShare));
+    StructMsgForImageShare localStructMsgForImageShare = (StructMsgForImageShare)paramView;
+    Context localContext = ((View)localObject1).getContext();
+    label392:
+    Intent localIntent;
+    try
     {
-      bool = true;
-      label94:
-      localObject = (ajfi)this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2);
-      if (localObject == null) {
-        break label226;
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(localStructMsgForImageShare.currentAccountUin);
+      AbsShareMsg.doReport(paramView, localStructMsgForImageShare);
+      if (localStructMsgForImageShare.msgId > 0L)
+      {
+        axqw.b(paramView, "P_CliOper", "Pb_account_lifeservice", localStructMsgForImageShare.uin, "mp_msg_msgpic_click", "aio_morpic_click", 0, 0, "", "", Long.toString(localStructMsgForImageShare.msgId), "");
+        ThreadManager.getSubThreadHandler().postDelayed(new StructMsgForImageShare.1.1(this, localStructMsgForImageShare, paramView), 0L);
       }
-      ((ajfi)localObject).a(bool, this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-      if (bool) {
-        break label233;
-      }
-      azyk.a("TransferRequest.onSend", paramatqr.b, paramatqr.toString());
-      if (!"FROM_MINI_APP".equals(this.jdField_a_of_type_JavaLangString)) {
-        break label394;
-      }
-      if (!bool) {
-        break label396;
-      }
-      i = j;
-      if (!bool) {
-        break label403;
+      if ((localStructMsgForImageShare.getFirstImageElement() != null) && (localStructMsgForImageShare.getFirstImageElement().a()))
+      {
+        axqw.b(null, "dc00898", "", "", "0X800A28", "0X800A28", 0, 0, "", "4", Long.toString(localStructMsgForImageShare.mSourceAppid), ForwardUtils.b(localStructMsgForImageShare.uinType));
+        if (QLog.isColorLevel()) {
+          QLog.d("StructMsg", 2, "大图点击=0X800A28, appid=" + localStructMsgForImageShare.mSourceAppid + ", fileType=4");
+        }
       }
     }
-    label133:
-    label151:
-    label170:
-    for (paramatqr = "ok";; paramatqr = "upload failed")
+    catch (AccountNotMatchException paramView)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_AndroidContentIntent.putExtra("param_result_code", i);
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_AndroidContentIntent.putExtra("param_result_desc", paramatqr);
-      ajfv.a().a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_AndroidContentIntent);
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("StructMsg", 2, paramView.getStackTrace().toString());
+        }
+      }
+      if ((paramView.getStatus() != 0) || (paramView.isDownloadStarted())) {
+        break label392;
+      }
+      paramView.startDownload();
       return;
-      bool = false;
-      break label94;
-      label226:
-      azyk.a(null);
-      break label133;
-      label233:
-      if (((Integer)asfc.a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(-1))).intValue() != 1) {
-        asfc.a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(1));
+      localIntent = new Intent(localContext, AIOGalleryActivity.class);
+      localIntent.putExtra("curType", localStructMsgForImageShare.uinType);
+      localIntent.putExtra("_id", localStructMsgForImageShare.uniseq);
+      localIntent.putExtra("appid", localStructMsgForImageShare.mSourceAppid);
+      localIntent.putExtra("image_share_by_server", ((axwt)localObject2).a());
+      localIntent.putExtra("urlAtServer", ((axwt)localObject2).T);
+      localIntent.putExtra("KEY_FILE_ID", ((axwt)localObject2).c);
+      localIntent.putExtra("picMD5", ((axwt)localObject2).U);
+      localIntent.putExtra("url", ((axwt)localObject2).S);
+      localIntent.putExtra("friendUin", localStructMsgForImageShare.uin);
+      localIntent.putExtra("KEY_MSG_VERSION_CODE", localStructMsgForImageShare.messageVersion);
+      localIntent.putExtra("isSend", localStructMsgForImageShare.mIsSend);
+      localIntent.putExtra("KEY_BUSI_TYPE", 1030);
+      localIntent.putExtra("IS_FROMOTHER_TERMINAL_KEY", bbet.c(localStructMsgForImageShare.mIsSend));
+      localIntent.putExtra("uin", localStructMsgForImageShare.uin);
+      if (localStructMsgForImageShare.mIsSend != 1) {
+        break label1351;
       }
-      if (this.jdField_a_of_type_Boolean) {
-        ThreadManager.getUIHandler().post(new TransFileController.1.1.1(this));
+    }
+    axqw.b(null, "CliOper", "", "", "0X800567A", "0X800567A", 0, 0, localStructMsgForImageShare.mMsgServiceID + "", "", "", "");
+    axqw.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
+    int i = 0;
+    Object localObject2 = localStructMsgForImageShare.getFirstImageElement();
+    if (localObject2 != null)
+    {
+      if ((!bbet.b(localStructMsgForImageShare.mIsSend)) && (((axwt)localObject2).a != null))
+      {
+        paramView = advu.a(localContext, ((axwt)localObject2).a);
+        if (paramView != null) {
+          if (paramView.getStatus() == 2)
+          {
+            paramView.restartDownload();
+            return;
+          }
+        }
       }
-      if (baig.ae(this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) == 2) {
-        break label151;
+      paramView = localStructMsgForImageShare.currentAccountUin;
+      localIntent.putExtra("KEY_TROOP_CODE", paramView);
+      localIntent.putExtra("fileSize", ((axwt)localObject2).d);
+      localIntent.putExtra("KEY_TIME", ((axwt)localObject2).e);
+      localIntent.putExtra("KEY_SUB_VERSION", 5);
+      localIntent.putExtra("KEY_FILE_SIZE_FLAG", 0);
+      localIntent.putExtra("uniSeq", localStructMsgForImageShare.uniseq);
+      localIntent.putExtra("KEY_THUMBNAL_BOUND", xpx.a((View)localObject1));
+      localObject2 = ((axwt)localObject2).a;
+      if (localObject2 != null)
+      {
+        localIntent.addFlags(603979776);
+        paramView = ((MessageForPic)localObject2).selfuin;
+        if (!((MessageForPic)localObject2).isMultiMsg) {
+          break label1603;
+        }
       }
-      paramatqr = (ajfi)this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2);
-      localObject = new ArrayList();
-      ((ArrayList)localObject).add(Integer.valueOf(42104));
-      paramatqr.a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0, (ArrayList)localObject);
-      break label151;
-      break;
-      i = -10002;
-      break label170;
+    }
+    label1603:
+    for (;;)
+    {
+      try
+      {
+        localObject3 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+        localObject1 = paramView;
+        if ((localObject3 instanceof QQAppInterface)) {
+          localObject1 = ((AppRuntime)localObject3).getAccount();
+        }
+        paramView = (View)localObject1;
+      }
+      catch (Exception localException)
+      {
+        Object localObject3;
+        AIOImageData localAIOImageData;
+        int j;
+        label1351:
+        continue;
+        if ((!localObject2[7].equals("scrawl_link")) || (localObject2.length < 9)) {
+          continue;
+        }
+        String str = localObject2[8];
+        continue;
+        if ((localStructMsgForImageShare.mMsgActionData == null) || (!localStructMsgForImageShare.mMsgActionData.startsWith("ScreenShotShare"))) {
+          continue;
+        }
+        localAIOImageData.jdField_b_of_type_Int = 2;
+        localAIOImageData.a = localStructMsgForImageShare.getBytes();
+        if ((!bbet.b(((MessageForPic)localObject2).issend)) || (TextUtils.isEmpty(((MessageForPic)localObject2).path)) || (!new File(((MessageForPic)localObject2).path).exists())) {
+          continue;
+        }
+        localAIOImageData.jdField_b_of_type_JavaLangString = ((MessageForPic)localObject2).path;
+        continue;
+        if (localStructMsgForImageShare.mImageBizType != 2) {
+          continue;
+        }
+        if ((!bbet.b(((MessageForPic)localObject2).issend)) || (TextUtils.isEmpty(((MessageForPic)localObject2).path)) || (!TextUtils.isEmpty(((MessageForPic)localObject2).md5)) || (!new File(((MessageForPic)localObject2).path).exists())) {
+          continue;
+        }
+        localAIOImageData.jdField_b_of_type_JavaLangString = ((MessageForPic)localObject2).path;
+        localAIOImageData.jdField_b_of_type_Int = 4;
+        continue;
+        paramView.putBoolean("extra.FROM_AIO", true);
+        paramView.putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ((Activity)localContext).getClass().getName());
+        continue;
+        str = "";
+        continue;
+      }
+      localObject3 = new AIOImageProviderService(paramView, ((MessageForPic)localObject2).frienduin, ((MessageForPic)localObject2).istroop, (ChatMessage)localObject2);
+      localAIOImageData = aehy.a((MessageForPic)localObject2);
+      if (localStructMsgForImageShare.message != null)
+      {
+        localAIOImageData.g = localStructMsgForImageShare.message.time;
+        localAIOImageData.i = localStructMsgForImageShare.message.shmsgseq;
+      }
+      if ((localStructMsgForImageShare.mMsgActionData != null) && (localStructMsgForImageShare.mMsgActionData.startsWith("comic_plugin.apk")))
+      {
+        localAIOImageData.jdField_b_of_type_Int = 1;
+        localAIOImageData.a = localStructMsgForImageShare.getBytes();
+        localObject2 = aehv.a(localStructMsgForImageShare);
+        localAIOImageData.d = aehv.a((String[])localObject2);
+        if ((localObject2 != null) && (localObject2.length >= 8))
+        {
+          if (localObject2[7].equals("link"))
+          {
+            localObject1 = localObject2[4];
+            bghg.a(null, paramView, localContext, "3009", "2", "40054", localObject2[0], new String[] { localObject2[2], localObject2[4], localObject1 });
+          }
+        }
+        else
+        {
+          paramView = new Bundle();
+          paramView.putParcelable("extra.IMAGE_PROVIDER", new BinderWarpper(((AIOImageProviderService)localObject3).asBinder()));
+          paramView.putParcelable("extra.EXTRA_CURRENT_IMAGE", localAIOImageData);
+          paramView.putInt("forward_source_uin_type", localStructMsgForImageShare.uinType);
+          if (((localContext instanceof SplashActivity)) || ((localContext instanceof ChatActivity)) || ((localContext instanceof ChatHistoryActivity)) || ((localContext instanceof PublicFragmentActivity)) || ((localContext instanceof ChatHistory)))
+          {
+            if (!(localContext instanceof MultiForwardActivity)) {
+              continue;
+            }
+            localObject1 = ((BaseActivity)localContext).getAppInterface();
+            if ((localObject1 instanceof QQAppInterface))
+            {
+              paramView.putBoolean("extra.FROM_AIO", true);
+              paramView.putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", SplashActivity.class.getName());
+              paramView.putString("uin", ((MultiForwardActivity)localContext).getChatFragment().a().a().a);
+              localObject2 = paramView.getString("extra.GROUP_UIN");
+              if ((localObject2 != null) && (((QQAppInterface)localObject1).b((String)localObject2) == 2)) {
+                paramView.putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ChatActivity.class.getName());
+              }
+            }
+          }
+          localIntent.putExtras(paramView);
+          localContext.startActivity(localIntent);
+          i = 1;
+          j = 0;
+          if (i != 0) {
+            j = 1;
+          }
+          axqw.b(null, "P_CliOper", "Pb_account_lifeservice", localStructMsgForImageShare.uin, "0X80055C7", "0X80055C7", 0, j, "" + localStructMsgForImageShare.msgId, "" + localStructMsgForImageShare.templateIDForPortal, "", localStructMsgForImageShare.mMsgUrl);
+          paramView = new StringBuilder().append("MSGID=").append(Long.toString(localStructMsgForImageShare.msgId)).append(";TEPLATEID=").append(localStructMsgForImageShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(axun.a(localStructMsgForImageShare.mMsgUrl));
+          axqw.b(null, "P_CliOper", "Pb_account_lifeservice", localStructMsgForImageShare.uin, "0X8005D49", "0X8005D49", 0, j, paramView.toString(), "", "", "");
+          return;
+          paramView = localStructMsgForImageShare.uin;
+          break;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axvp
  * JD-Core Version:    0.7.0.1
  */

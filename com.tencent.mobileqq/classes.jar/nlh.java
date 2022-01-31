@@ -1,18 +1,24 @@
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import java.net.URL;
+
 public class nlh
+  implements spd
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
+  public nlh(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public nlh(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    ReadInJoyNativeAdFragment.b(this.a, 3);
+  }
+  
+  public void a(URL paramURL, rpg paramrpg)
+  {
+    ReadInJoyNativeAdFragment.b(this.a, 2);
+    ReadInJoyNativeAdFragment.a(this.a).setPublicAccountImageDownListener(null);
+    ReadInJoyNativeAdFragment.a(this.a, null);
   }
 }
 

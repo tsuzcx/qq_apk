@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.gamecenter.adapter.QQGamePubFeedsAdapter.FeedsItemVH.2.1;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
 
-public class apwk
-  implements apym
+public abstract interface apwk
 {
-  apwk(apwh paramapwh) {}
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    ThreadManager.getUIHandler().post(new QQGamePubFeedsAdapter.FeedsItemVH.2.1(this, paramInt1));
-  }
+  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
   
-  public void a(boolean paramBoolean, int paramInt) {}
+  public abstract void a(String paramString, long paramLong, Bundle paramBundle);
   
-  public void b(boolean paramBoolean, int paramInt) {}
+  public abstract void b(int paramInt, Bundle paramBundle);
+  
+  public abstract void c(int paramInt, Bundle paramBundle);
+  
+  public abstract void d(int paramInt, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apwk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,48 @@
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
-class aoxn
-  implements arkm
+public class aoxn
 {
-  aoxn(aoxj paramaoxj) {}
+  int jdField_a_of_type_Int;
+  public aoxp a;
+  aoxr jdField_a_of_type_Aoxr;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int = 0;
+  String jdField_b_of_type_JavaLangString;
   
-  public void a(int paramInt)
+  aoxn(aowt paramaowt, String paramString1, String paramString2, int paramInt, MessageRecord paramMessageRecord)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Aoxp = new aoxo(this, paramaowt, paramMessageRecord);
+  }
+  
+  void a()
+  {
+    if ((this.jdField_a_of_type_Aoxr != null) && (this.jdField_b_of_type_Int == 0))
     {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task suc. status[" + this.jdField_b_of_type_Int + "]");
+      }
+      this.jdField_b_of_type_Int = 1;
+      this.jdField_a_of_type_Aoxr.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Aoxp);
     }
-    do
-    {
-      do
-      {
-        return;
-        QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_GAIN");
-      } while (aoxj.a(this.a));
-      aoxj.b(this.a);
+    while (!QLog.isColorLevel()) {
       return;
-      QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_LOSS");
-    } while (!aoxj.a(this.a));
-    aoxj.a(this.a);
+    }
+    QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task fail. status[" + this.jdField_b_of_type_Int + "]");
+  }
+  
+  void b()
+  {
+    if ((this.jdField_a_of_type_Aoxr != null) && ((this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 0)))
+    {
+      this.jdField_a_of_type_Aoxr.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_b_of_type_Int = 4;
+    }
   }
 }
 

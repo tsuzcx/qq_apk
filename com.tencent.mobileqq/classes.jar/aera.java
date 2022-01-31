@@ -1,27 +1,21 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.book.BookEditText;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aera
-  implements InputFilter
+class aera
+  implements View.OnClickListener
 {
-  public aera(BookEditText paramBookEditText) {}
+  aera(aequ paramaequ) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onClick(View paramView)
   {
-    this.a.a(paramSpanned.toString());
-    if (this.a.a(paramCharSequence.toString()) == 0) {
-      BookEditText.a(this.a);
+    if (!this.a.N) {
+      aequ.b(this.a);
     }
-    while (!axkd.a(paramCharSequence.toString())) {
-      return paramCharSequence.subSequence(paramInt1, paramInt2 - paramInt1);
-    }
-    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aera
  * JD-Core Version:    0.7.0.1
  */

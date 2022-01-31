@@ -1,44 +1,23 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class afbo
-  implements View.OnClickListener
+public final class afbo
+  implements DialogInterface.OnClickListener
 {
-  afbo(afbk paramafbk) {}
+  public afbo(boolean paramBoolean, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = (RecommendTroopItem)paramView.getTag(-1);
-    if ((paramView == null) || (TextUtils.isEmpty(paramView.uin)))
-    {
-      QLog.d("NotifyAndRecAdapter", 2, "del troop but troop is empty");
-      return;
+    if (this.jdField_a_of_type_Boolean) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
     }
-    ajqt.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, 2, paramView.uin, new afbp(this));
-    this.a.b.remove(paramView);
-    this.a.notifyDataSetChanged();
-    if ((this.a.b != null) && (this.a.b.size() == 0)) {
-      this.a.jdField_a_of_type_Afaw.a().sendEmptyMessage(100);
-    }
-    if (afbk.a(this.a) != null)
-    {
-      ajqt localajqt = (ajqt)afbk.a(this.a).getManager(22);
-      if ((this.a.b != null) && (this.a.b.size() == 0)) {
-        localajqt.a(1);
-      }
-      localajqt.a(paramView.uin);
-    }
-    awqx.b(null, "P_CliOper", "Grp_recom", "", "msg_page", "Clk_unlike", 0, 0, paramView.uin, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afbo
  * JD-Core Version:    0.7.0.1
  */

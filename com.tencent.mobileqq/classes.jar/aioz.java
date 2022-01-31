@@ -1,22 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.widget.AbsListView;
 
-final class aioz
-  implements EIPCResultCallback
+class aioz
+  implements bfob
 {
-  aioz(long paramLong) {}
+  aioz(aiov paramaiov) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    paramEIPCResult = paramEIPCResult.data.getString("respData");
-    aing.a().callbackFromRequest(this.a, 0, "cs.check_pubAccount_state.local", paramEIPCResult);
+    aiov.a(this.a, paramInt);
+    if (paramInt == 0)
+    {
+      aiov.a(this.a, null, null);
+      aiov.a(this.a).b();
+      return;
+    }
+    aiov.a(this.a).c();
+    aiov.a(this.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aioz
  * JD-Core Version:    0.7.0.1
  */

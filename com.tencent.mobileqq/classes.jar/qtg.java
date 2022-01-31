@@ -1,6 +1,29 @@
-public abstract interface qtg
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
+public class qtg
 {
-  public abstract void a(boolean paramBoolean);
+  public static long a;
+  
+  public static void a()
+  {
+    a = System.currentTimeMillis();
+  }
+  
+  public static void a(Context paramContext)
+  {
+    long l = System.currentTimeMillis();
+    if (l - a < 10000L)
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_starttime", String.valueOf(l - a));
+      onk.d(paramContext, onk.a(), true, localHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsStartStatistic", 2, "doReportStartTime param_starttime=" + (l - a));
+      }
+    }
+  }
 }
 
 

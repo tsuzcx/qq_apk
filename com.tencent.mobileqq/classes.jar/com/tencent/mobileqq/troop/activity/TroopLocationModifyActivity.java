@@ -3,7 +3,7 @@ package com.tencent.mobileqq.troop.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import bbmy;
+import bcpw;
 
 public class TroopLocationModifyActivity
   extends TroopCreateMapViewSupportActivity
@@ -51,7 +51,7 @@ public class TroopLocationModifyActivity
     if (i == 0)
     {
       if (bool) {
-        bbmy.a(this, 2131654680, 0).b(getTitleBarHeight());
+        bcpw.a(this, 2131720578, 0).b(getTitleBarHeight());
       }
       for (;;)
       {
@@ -62,20 +62,20 @@ public class TroopLocationModifyActivity
         setResult(-1, localIntent);
         finish();
         break;
-        bbmy.a(this, 2131654685, 0).b(getTitleBarHeight());
+        bcpw.a(this, 2131720583, 0).b(getTitleBarHeight());
       }
     }
     if (i == 1002) {
-      str = getString(2131654693);
+      str = getString(2131720591);
     }
     for (;;)
     {
-      bbmy.a(this, str, 0).b(getTitleBarHeight());
+      bcpw.a(this, str, 0).b(getTitleBarHeight());
       break;
       if (bool) {
-        str = getString(2131654679);
+        str = getString(2131720577);
       } else {
-        str = getString(2131654684);
+        str = getString(2131720582);
       }
     }
   }

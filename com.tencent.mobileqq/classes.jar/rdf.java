@@ -1,16 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.Map;
 
 public class rdf
-  implements ValueAnimator.AnimatorUpdateListener
+  extends oyg
 {
-  public rdf(ZImageView paramZImageView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public rdf(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Map paramMap, boolean paramBoolean)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.setAlpha(i);
+    super(paramString);
+  }
+  
+  public void a(oya paramoya)
+  {
+    paramoya.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
   }
 }
 

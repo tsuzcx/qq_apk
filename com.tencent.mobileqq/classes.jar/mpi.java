@@ -1,29 +1,18 @@
-import android.app.Activity;
-import android.view.View;
+import java.util.ArrayList;
 
-class mpi
-  implements begw
+public class mpi
 {
-  mpi(mpf parammpf, Activity paramActivity, String paramString, begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      mpf.a(this.jdField_a_of_type_Mpf, this.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      mpf.a(this.jdField_a_of_type_Mpf, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public static ArrayList<ldw> a;
+  public String a = "20000005011710261000100000426100";
+  public boolean a;
+  public String b = "0";
+  public boolean b;
+  public String c = "0";
+  public boolean c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mpi
  * JD-Core Version:    0.7.0.1
  */

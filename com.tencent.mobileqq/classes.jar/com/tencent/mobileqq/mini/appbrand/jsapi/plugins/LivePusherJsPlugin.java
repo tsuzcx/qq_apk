@@ -71,7 +71,7 @@ public class LivePusherJsPlugin
         {
           JSONObject localJSONObject3 = new JSONObject(paramString2);
           localObject = localJSONObject3.optString("type");
-          AppBrandTask.runTaskOnUiThread(new LivePusherJsPlugin.4(this, localJSONObject3.optInt("livePusherId"), (String)localObject, paramInt, localJSONObject3));
+          AppBrandTask.runTaskOnUiThread(new LivePusherJsPlugin.4(this, paramJsRuntime, localJSONObject3.optInt("livePusherId"), (String)localObject, paramInt, localJSONObject3));
         }
         catch (JSONException localJSONException4)
         {

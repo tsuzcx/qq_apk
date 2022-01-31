@@ -1,16 +1,17 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
-import bdcz;
-import bdde;
-import bddh;
-import bddu;
-import bdel;
-import bdfx;
-import bdfz;
-import bdnw;
+import begz;
+import behf;
+import behi;
+import beil;
+import bejy;
+import beka;
+import besl;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
@@ -23,28 +24,28 @@ public class SettingsJsPlugin
   private static final String TAG = "SettingsJsPlugin";
   private ChannelProxy mProxy;
   
-  private void callbackSettingEvent(bdde parambdde, bdfz parambdfz)
+  private void callbackSettingEvent(behf parambehf, beka parambeka)
   {
-    if (parambdde == null) {
+    if (parambehf == null) {
       return;
     }
-    Object localObject = parambdde.a(6);
+    Object localObject = parambehf.a(6);
     JSONArray localJSONArray;
     for (;;)
     {
       try
       {
-        parambdde = new JSONObject();
+        parambehf = new JSONObject();
         localJSONArray = new JSONArray();
         localObject = ((List)localObject).iterator();
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
-        bddh localbddh = (bddh)((Iterator)localObject).next();
+        behi localbehi = (behi)((Iterator)localObject).next();
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("scope", localbddh.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("scope", localbehi.jdField_a_of_type_JavaLangString);
         int i;
-        if (localbddh.jdField_a_of_type_Int == 2)
+        if (localbehi.jdField_a_of_type_Int == 2)
         {
           i = 1;
           localJSONObject.put("state", i);
@@ -55,52 +56,52 @@ public class SettingsJsPlugin
           i = 0;
         }
       }
-      catch (JSONException parambdde)
+      catch (JSONException parambehf)
       {
-        bdnw.d("SettingsJsPlugin", parambdfz.jdField_a_of_type_JavaLangString + " error.", parambdde);
-        parambdfz.b();
+        besl.d("SettingsJsPlugin", parambeka.jdField_a_of_type_JavaLangString + " error.", parambehf);
+        parambeka.b();
         return;
       }
     }
-    parambdde.put("authSetting", localJSONArray);
-    parambdfz.a(parambdde);
+    parambehf.put("authSetting", localJSONArray);
+    parambeka.a(parambehf);
   }
   
-  private void callbackSettingEvent(bdfz parambdfz)
+  private void callbackSettingEvent(beka parambeka)
   {
-    callbackSettingEvent(MiniAppEnv.g().getAuthSate(this.mApkgInfo.d), parambdfz);
+    callbackSettingEvent(MiniAppEnv.g().getAuthSate(this.mApkgInfo.d), parambeka);
   }
   
-  private void openSettingActivity(Activity paramActivity, bdfx parambdfx)
+  private void openSettingActivity(Activity paramActivity, bejy parambejy)
   {
-    if (parambdfx == null)
+    if (parambejy == null)
     {
-      bdnw.d("SettingsJsPlugin", "openSettingActivity, appInfo:" + parambdfx);
+      besl.d("SettingsJsPlugin", "openSettingActivity, appInfo:" + parambejy);
       return;
     }
-    bddu.a(paramActivity, parambdfx.d, parambdfx.c, 5);
+    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).openPermissionSettingsActivity(paramActivity, parambejy.d, parambejy.c);
   }
   
-  public void getSetting(bdfz parambdfz)
+  public void getSetting(beka parambeka)
   {
     String str = this.mApkgInfo.d;
-    bdde localbdde = MiniAppEnv.g().getAuthSate(str);
-    if (localbdde == null)
+    behf localbehf = MiniAppEnv.g().getAuthSate(str);
+    if (localbehf == null)
     {
-      bdnw.d("SettingsJsPlugin", "getSetting, but authorizeCenter is null?!");
+      besl.d("SettingsJsPlugin", "getSetting, but authorizeCenter is null?!");
       return;
     }
-    if (localbdde.a())
+    if (localbehf.a())
     {
-      callbackSettingEvent(localbdde, parambdfz);
+      callbackSettingEvent(localbehf, parambeka);
       return;
     }
-    this.mProxy.getAuthList(str, new SettingsJsPlugin.2(this, localbdde, parambdfz));
+    this.mProxy.getAuthList(str, new SettingsJsPlugin.2(this, localbehf, parambeka));
   }
   
-  public void openSetting(bdfz parambdfz)
+  public void openSetting(beka parambeka)
   {
-    bdel.a().a(new SettingsJsPlugin.1(this, parambdfz));
+    beil.a().a(new SettingsJsPlugin.1(this, parambeka));
     openSettingActivity(this.mMiniAppContext.a(), this.mApkgInfo);
   }
 }

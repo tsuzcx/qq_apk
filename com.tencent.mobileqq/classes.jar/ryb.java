@@ -1,16 +1,17 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
 
-abstract interface ryb
+public class ryb
+  implements View.OnClickListener
 {
-  public abstract void a(Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed);
+  public ryb(BridgeModule paramBridgeModule, String paramString) {}
   
-  public abstract void a(Context paramContext, int paramInt, ArrayList<stSimpleMetaFeed> paramArrayList, stSimpleMetaFeed paramstSimpleMetaFeed);
-  
-  public abstract void a(Context paramContext, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt);
-  
-  public abstract boolean a(Context paramContext, int paramInt, ArrayList<stSimpleMetaFeed> paramArrayList, stSimpleMetaFeed paramstSimpleMetaFeed);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, new JSONObject());
+  }
 }
 
 

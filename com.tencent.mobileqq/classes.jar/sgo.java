@@ -1,39 +1,29 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil.19;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class sgo
-  implements slx<tas, tcd>
+public class sgo
+  implements baho
 {
-  sgo(sgm paramsgm) {}
+  public sgo(PublicAccountUtil.19 param19) {}
   
-  public void a(tas arg1, tcd paramtcd, ErrorMessage paramErrorMessage)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (paramErrorMessage.isSuccess()) {}
-    for (;;)
-    {
-      synchronized (this.a.jdField_b_of_type_JavaLangObject)
-      {
-        this.a.jdField_a_of_type_Sgq = paramtcd.jdField_a_of_type_Sgq;
-        this.a.jdField_a_of_type_Sgq.a();
-        urk.b("Q.qqstory.publish:VideoServerInfoManager", "get server inf %s", this.a.jdField_a_of_type_Sgq);
-        this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      }
-      synchronized (this.a.jdField_a_of_type_JavaLangObject)
-      {
-        this.a.jdField_a_of_type_JavaLangObject.notifyAll();
-        return;
-        paramtcd = finally;
-        throw paramtcd;
-        urk.b("Q.qqstory.publish:VideoServerInfoManager", "get server info:%s", paramErrorMessage);
+    if (paramJSONObject != null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result :" + paramJSONObject);
       }
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sgo
  * JD-Core Version:    0.7.0.1
  */

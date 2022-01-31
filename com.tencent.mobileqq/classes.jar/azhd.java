@@ -1,45 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
-public class azhd
+public final class azhd
+  implements QQPermissionCallback
 {
-  public static List<TroopFileTansferItemEntity> a(QQAppInterface paramQQAppInterface, long paramLong)
+  public azhd(BaseActivity paramBaseActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    TroopFileTansferItemEntity localTroopFileTansferItemEntity = new TroopFileTansferItemEntity();
-    localTroopFileTansferItemEntity.troopuin = paramLong;
-    return paramQQAppInterface.a(TroopFileTansferItemEntity.class, "select * from " + localTroopFileTansferItemEntity.getTableName() + " where troopuin = ?", new String[] { "" + paramLong });
+    if (!this.a.isFinishing()) {
+      bbcv.b(this.a);
+    }
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Map<UUID, ? extends atmo> paramMap, long paramLong)
-  {
-    if (paramMap == null) {
-      QLog.e("SerializableManager", 4, "bad Entity Param");
-    }
-    Object localObject;
-    do
-    {
-      return false;
-      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localObject = new TroopFileTansferItemEntity();
-      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
-    } while (!paramQQAppInterface.a(((TroopFileTansferItemEntity)localObject).getTableName()));
-    paramMap = paramMap.values().iterator();
-    while (paramMap.hasNext())
-    {
-      localObject = (atmo)paramMap.next();
-      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
-      ((atmo)localObject).setStatus(1000);
-      paramQQAppInterface.a((atmo)localObject);
-    }
-    return true;
-  }
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

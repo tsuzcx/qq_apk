@@ -1,64 +1,56 @@
-import android.content.Context;
-import android.os.Looper;
-import android.view.LayoutInflater;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import Wallet.AcsMsg;
+import Wallet.AcsPullMsgRsp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class akjx
+class akjx
+  implements acsw
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private volatile boolean jdField_a_of_type_Boolean;
+  akjx(akjw paramakjw, String paramString) {}
   
-  public akjx(Context paramContext)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495067, null));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131313672));
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout)
-  {
-    QLog.d("ARTransferPromotionUIContainer", 2, "attachToRootViewGroup");
-    if (this.jdField_a_of_type_Boolean) {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ActivateFriends.Manager", 2, "getReminderListByday onProcessReminderList isSucc : " + paramBoolean);
+      }
+      if (paramBoolean)
+      {
+        akjw.a(this.jdField_a_of_type_Akjw).edit().putString("sp_key_fetch_reminder_list_time", this.jdField_a_of_type_JavaLangString).apply();
+        paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
+        if (paramBundle != null)
+        {
+          Object localObject = paramBundle.msgs;
+          if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+          {
+            akjw.a(this.jdField_a_of_type_Akjw).a();
+            akjw.a(this.jdField_a_of_type_Akjw).a((List)localObject);
+            paramBundle = new ArrayList();
+            localObject = ((ArrayList)localObject).iterator();
+            while (((Iterator)localObject).hasNext()) {
+              paramBundle.add(((AcsMsg)((Iterator)localObject).next()).msg_id);
+            }
+          }
+        }
+      }
       return;
     }
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(12);
-    localLayoutParams.bottomMargin = aciy.a(57.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    paramRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, localLayoutParams);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void b(RelativeLayout paramRelativeLayout)
-  {
-    QLog.d("ARTransferPromotionUIContainer", 2, "disattachFromRootViewGroup");
-    if (!this.jdField_a_of_type_Boolean) {}
-    while (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      return;
+    catch (Throwable paramBundle)
+    {
+      QLog.e("ActivateFriends.Manager", 1, "checkTodayReminder throw an exception: " + paramBundle);
     }
-    paramRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    this.jdField_a_of_type_Boolean = false;
+    acsq.a(paramBundle, new akjy(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akjx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,9 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.List;
 
-public class ozu
-  implements ViewBase.IBuilder
+public abstract interface ozu
 {
-  public ViewBase build(VafContext paramVafContext)
-  {
-    return new ozt(paramVafContext);
-  }
+  public abstract List<ArticleInfo> a(int paramInt, List<ArticleInfo> paramList1, List<ArticleInfo> paramList2);
 }
 
 

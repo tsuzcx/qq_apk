@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.teamwork;
 
-import axfs;
-import axft;
+import ayfv;
+import ayfw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.Iterator;
@@ -10,14 +10,14 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class TeamWorkUtils$ProcessTDFileScheduler$1
   implements Runnable
 {
-  public TeamWorkUtils$ProcessTDFileScheduler$1(axft paramaxft, QQAppInterface paramQQAppInterface) {}
+  public TeamWorkUtils$ProcessTDFileScheduler$1(ayfw paramayfw, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    Iterator localIterator = axft.a(this.this$0).iterator();
+    Iterator localIterator = ayfw.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
-      axfs.a((MessageRecord)localIterator.next(), this.a);
+      ayfv.a((MessageRecord)localIterator.next(), this.a);
       localIterator.remove();
     }
   }

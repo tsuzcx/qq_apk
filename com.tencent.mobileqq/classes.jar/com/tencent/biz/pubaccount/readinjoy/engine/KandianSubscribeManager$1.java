@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import java.util.Iterator;
 import java.util.List;
-import ogv;
+import osg;
 
 class KandianSubscribeManager$1
   implements Runnable
@@ -14,9 +14,9 @@ class KandianSubscribeManager$1
     Iterator localIterator = KandianSubscribeManager.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
-      ogv localogv = (ogv)localIterator.next();
-      if (localogv != null) {
-        localogv.C_();
+      osg localosg = (osg)localIterator.next();
+      if (localosg != null) {
+        localosg.A_();
       }
     }
   }

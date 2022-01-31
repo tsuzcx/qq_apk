@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import bdld;
-import bdnw;
+import bepj;
+import besl;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
 
 public class AppBrandLaunchManager$MiniAppSubProcessorInfo$1
   implements Runnable
 {
-  public AppBrandLaunchManager$MiniAppSubProcessorInfo$1(bdld parambdld) {}
+  public AppBrandLaunchManager$MiniAppSubProcessorInfo$1(bepj parambepj) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class AppBrandLaunchManager$MiniAppSubProcessorInfo$1
       if (this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo != null) {
         str2 = this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.name;
       }
-      bdnw.b("minisdk-start_AppBrandLaunchManager", "recycle process=" + this.a.jdField_a_of_type_JavaLangString + " appId=" + str1 + " appName=" + str2);
+      besl.b("minisdk-start_AppBrandLaunchManager", "recycle process=" + this.a.jdField_a_of_type_JavaLangString + " appId=" + str1 + " appName=" + str2);
       this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherAppBrandLaunchManager.forceKillProcess(this.a);
       return;
     }

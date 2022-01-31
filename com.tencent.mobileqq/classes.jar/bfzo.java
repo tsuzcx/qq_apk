@@ -1,73 +1,70 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
-public abstract class bfzo
-  extends Binder
-  implements bfzn
+public class bfzo
+  extends RecyclerView.OnScrollListener
 {
-  public bfzo()
-  {
-    attachInterface(this, "cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-  }
+  public bfzo(XRecyclerView paramXRecyclerView) {}
   
-  public static bfzn a(IBinder paramIBinder)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (paramIBinder == null) {
-      return null;
+    int i = 0;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if ((paramInt == 0) && (XRecyclerView.c(this.a) == 2)) {
+      this.a.a();
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-    if ((localIInterface != null) && ((localIInterface instanceof bfzn))) {
-      return (bfzn)localIInterface;
-    }
-    return new bfzp(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    int j = paramRecyclerView.getChildCount();
+    boolean bool;
+    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      a(paramParcel1.readFloat());
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      c();
-      paramParcel2.writeNoException();
-      return true;
-    case 4: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      b();
-      paramParcel2.writeNoException();
-      return true;
+      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
+      i = paramRecyclerView.getItemCount();
+      paramRecyclerView = paramRecyclerView.findFirstVisibleItemPositions(null);
+      int k = XRecyclerView.a(this.a).a();
+      if (i - j <= paramRecyclerView[0] + k)
+      {
+        bool = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("XRecyclerView", 2, new Object[] { "totalItemCount=%d, firstVisibleItem=%d, visibleThreshold=%d, isCloseToTheEnd=%b", Integer.valueOf(i), Integer.valueOf(paramRecyclerView[0]), Integer.valueOf(k), Boolean.valueOf(bool) });
+        }
+        if (bool) {
+          XRecyclerView.a(this.a).b(true);
+        }
+      }
     }
-    paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-    a(paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    for (;;)
+    {
+      XRecyclerView.c(this.a, paramInt);
+      return;
+      bool = false;
+      break;
+      if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager))
+      {
+        paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+        if (paramRecyclerView.getItemCount() - j <= paramRecyclerView.findFirstVisibleItemPosition() + XRecyclerView.a(this.a).a()) {
+          i = 1;
+        }
+        if (i != 0) {
+          XRecyclerView.a(this.a).b(true);
+        }
+      }
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    XRecyclerView.a(this.a, XRecyclerView.a(this.a) + paramInt1);
+    XRecyclerView.b(this.a, XRecyclerView.b(this.a) + paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfzo
  * JD-Core Version:    0.7.0.1
  */

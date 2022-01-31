@@ -1,10 +1,41 @@
-public abstract interface uya
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
+import android.widget.ImageView;
+
+public class uya
+  extends wcf<uyd>
 {
-  public abstract void a(int paramInt);
+  private LruCache<uyd, Drawable> a = new uyb(this, 5242880);
   
-  public abstract void a(uxu paramuxu);
+  public LruCache<uyd, Drawable> a()
+  {
+    return this.a;
+  }
   
-  public abstract boolean a(uxx paramuxx);
+  public wcg a(ImageView paramImageView, uyd paramuyd)
+  {
+    return new uye(paramImageView, paramuyd);
+  }
+  
+  public void a()
+  {
+    super.a();
+    b();
+  }
+  
+  public void b()
+  {
+    super.b();
+    try
+    {
+      this.a.evictAll();
+      return;
+    }
+    catch (Exception localException)
+    {
+      this.a = new uyc(this, 5242880);
+    }
+  }
 }
 
 

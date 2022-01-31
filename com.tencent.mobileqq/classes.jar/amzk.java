@@ -1,121 +1,50 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.PttSilkAndChangeVoiceSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import org.json.JSONObject;
 
 public class amzk
-  extends amza
 {
-  public amzk(QQAppInterface paramQQAppInterface)
+  private int a = 1;
+  
+  @NonNull
+  public static amzk a()
   {
-    super("qq.android.ptt.so.658", paramQQAppInterface);
+    return new amzk();
   }
   
-  public int a()
+  @NonNull
+  public static amzk a(@Nullable String paramString)
   {
-    return 10007;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return PttSilkAndChangeVoiceSoData.class;
-  }
-  
-  public String a()
-  {
-    return "actEarlyPttSilkAndChangeVoiceSo";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "download success: " + paramString);
-    }
-    for (;;)
+    amzk localamzk = new amzk();
+    try
     {
-      try
-      {
-        str = auct.a();
-        if ((str != null) && (!str.equals("")))
-        {
-          bace.a(str);
-          if (new File(str).mkdir())
-          {
-            bace.a(paramString, str, false);
-            if (QLog.isColorLevel()) {
-              QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip success: " + paramString);
-            }
-          }
-        }
+      if (!TextUtils.isEmpty(paramString)) {
+        localamzk.a = new JSONObject(paramString).getInt("use_apm");
       }
-      catch (Exception localException)
-      {
-        String str;
-        localException.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip failed: " + localException.getMessage());
-        continue;
-      }
-      try
-      {
-        if (!auct.a)
-        {
-          bace.a(auct.b());
-          bace.c(str, auct.b());
-        }
-        super.a(paramString);
-        return;
-      }
-      finally {}
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    Object localObject = (PttSilkAndChangeVoiceSoData)a();
-    if (localObject == null) {
-      return false;
-    }
-    int i = lbk.f();
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload cpuArch = " + i + " isUserNeedDownload try match version=" + "8.2.6" + " data.version=" + ((PttSilkAndChangeVoiceSoData)localObject).version);
-    }
-    localObject = this.a.getPreferences();
-    if (!((SharedPreferences)localObject).getBoolean("hasReportedCpuArch", false))
-    {
-      axte.a();
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putBoolean("hasReportedCpuArch", true);
-      ((SharedPreferences.Editor)localObject).commit();
-    }
-    if (i > 2) {}
-    for (boolean bool = true;; bool = false)
-    {
       if (QLog.isColorLevel()) {
-        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload return " + bool);
+        QLog.e("QVIP.SDK.ConfigProcessor", 1, " : " + localamzk.toString());
       }
-      return bool;
+      return localamzk;
     }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.e("QVIP.SDK.ConfigProcessor", 1, "json parse error:" + paramString);
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    return "QVipPerfLevelConfig{use_apm=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amzk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.API;
 
-import akzp;
-import akzr;
+import alob;
+import alod;
 import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -10,11 +10,11 @@ import org.json.JSONArray;
 public class ArkAppDownloadModule$2$1
   implements Runnable
 {
-  public ArkAppDownloadModule$2$1(akzr paramakzr, ArrayList paramArrayList) {}
+  public ArkAppDownloadModule$2$1(alod paramalod, ArrayList paramArrayList) {}
   
   public void run()
   {
-    ark.VariantWrapper localVariantWrapper1 = this.jdField_a_of_type_Akzr.jdField_a_of_type_Akzp.a(this.jdField_a_of_type_Akzr.jdField_a_of_type_Long);
+    ark.VariantWrapper localVariantWrapper1 = this.jdField_a_of_type_Alod.jdField_a_of_type_Alob.a(this.jdField_a_of_type_Alod.jdField_a_of_type_Long);
     if (localVariantWrapper1 == null)
     {
       QLog.d("ark.download.module", 1, "onQueryPackageStateVia Callback is null");
@@ -23,7 +23,7 @@ public class ArkAppDownloadModule$2$1
     ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
     localVariantWrapper2.SetNull();
     ark.VariantWrapper localVariantWrapper3 = localVariantWrapper1.Create();
-    JSONArray localJSONArray = akzp.a(this.jdField_a_of_type_Akzr.jdField_a_of_type_Akzp, this.jdField_a_of_type_JavaUtilArrayList, "QueryPackageStateVia");
+    JSONArray localJSONArray = alob.a(this.jdField_a_of_type_Alod.jdField_a_of_type_Alob, this.jdField_a_of_type_JavaUtilArrayList, "QueryPackageStateVia");
     String str = "";
     if (localJSONArray != null) {
       str = localJSONArray.toString();

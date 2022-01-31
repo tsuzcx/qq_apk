@@ -1,57 +1,23 @@
-import android.os.Build.VERSION;
-import java.util.AbstractCollection;
-import java.util.ArrayDeque;
-import java.util.concurrent.ArrayBlockingQueue;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.6;
 
-public class aloj<T>
+public class aloj
+  implements DialogInterface.OnClickListener
 {
-  final AbstractCollection<T> a;
+  public aloj(ArkAppDownloadModule.6 param6) {}
   
-  public aloj(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 9)
-    {
-      this.a = new ArrayDeque();
-      return;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    this.a = new ArrayBlockingQueue(30);
-  }
-  
-  public T a()
-  {
-    if (Build.VERSION.SDK_INT >= 9)
-    {
-      if ((this.a instanceof ArrayDeque)) {
-        return ((ArrayDeque)this.a).poll();
-      }
-    }
-    else if ((this.a instanceof ArrayBlockingQueue)) {
-      return ((ArrayBlockingQueue)this.a).poll();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(T paramT)
-  {
-    if (Build.VERSION.SDK_INT >= 9) {
-      if ((this.a instanceof ArrayDeque)) {
-        ((ArrayDeque)this.a).offer(paramT);
-      }
-    }
-    while (!(this.a instanceof ArrayBlockingQueue)) {
-      return;
-    }
-    ((ArrayBlockingQueue)this.a).offer(paramT);
+    axqw.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "8", "", this.a.b, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aloj
  * JD-Core Version:    0.7.0.1
  */

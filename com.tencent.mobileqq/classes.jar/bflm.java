@@ -1,21 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.mobileqq.shortvideo.resource.BeautyResource;
 
-class bflm
-  extends ajpe
+public class bflm
+  implements BeautyResource
 {
-  bflm(bfll parambfll, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public String getBeautyFilePath()
   {
-    paramString = new Bundle();
-    paramString.putBoolean("isSuccess", paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(paramString);
+    return avsd.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bflm
  * JD-Core Version:    0.7.0.1
  */

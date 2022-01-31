@@ -1,47 +1,45 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
 public class smo
-  extends soi
+  extends smk<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  qqstory_service.RspAddFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment;
-  soj jdField_a_of_type_Soj;
+  private int jdField_a_of_type_Int;
+  private Intent jdField_a_of_type_AndroidContentIntent;
   
-  public smo(qqstory_service.RspAddFeedComment paramRspAddFeedComment, soj paramsoj)
+  public smo(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
   {
-    super(paramRspAddFeedComment.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment = paramRspAddFeedComment;
-    this.jdField_a_of_type_Soj = paramsoj;
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
   }
   
-  public smo(soj paramsoj)
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
   {
-    this.jdField_a_of_type_Soj = paramsoj;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Soj.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Soj.a(paramInt, paramBundle);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Soj.a(paramInt, paramString);
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Soj.a(paramBoolean, paramBundle);
+    boolean bool = false;
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      sni.a(paramContext, null, 0, null, null, (WSRedDotPushMsg)this.jdField_a_of_type_Smd, 2);
+      paramWSPushStrategyInfo = sni.a();
+      if ((paramWSPushStrategyInfo != null) && ((paramContext instanceof Activity))) {
+        paramWSPushStrategyInfo.a((Activity)paramContext);
+      }
+      sni.a();
+      bool = true;
+    }
+    while (this.jdField_a_of_type_Int != 6) {
+      return bool;
+    }
+    sjs.a((Activity)paramContext, this.jdField_a_of_type_AndroidContentIntent, (WSRedDotPushMsg)this.jdField_a_of_type_Smd);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     smo
  * JD-Core Version:    0.7.0.1
  */

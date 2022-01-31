@@ -1,12 +1,21 @@
-public abstract interface bgob
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
+
+public class bgob
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3);
+  public bgob(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public abstract void a(String paramString, long paramLong1, long paramLong2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bgmt.a(this.a, 5, null);
+    this.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgob
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import kzz;
+import lkp;
 
 class CameraUtils$NoPreviewRunnable
   implements Runnable
@@ -15,8 +15,8 @@ class CameraUtils$NoPreviewRunnable
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Kzz != null) {}
-    for (boolean bool = this.this$0.jdField_a_of_type_Kzz.c();; bool = false)
+    if (this.this$0.jdField_a_of_type_Lkp != null) {}
+    for (boolean bool = this.this$0.jdField_a_of_type_Lkp.c();; bool = false)
     {
       if (AudioHelper.e()) {
         QLog.w("CameraUtils", 1, "NoPreviewRunnable.run, seq[" + this.a + "], isCameraOpened[" + bool + "], seq[" + this.a + "]");

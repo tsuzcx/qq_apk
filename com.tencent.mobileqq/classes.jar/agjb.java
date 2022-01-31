@@ -1,70 +1,68 @@
-import java.io.FileInputStream;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class agjb
-  extends agja
+  extends aume
 {
-  private static final byte[] a;
-  private static final byte[] b;
+  public agjb(BindVerifyActivity paramBindVerifyActivity) {}
   
-  static
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    jdField_a_of_type_ArrayOfByte = "WEBP".getBytes();
-    jdField_b_of_type_ArrayOfByte = "RIFF".getBytes();
-  }
-  
-  public agjb(String paramString)
-  {
-    super(paramString);
-    this.jdField_a_of_type_JavaLangString = "PhotoIncompatibleWebp";
-    this.jdField_b_of_type_JavaLangString = "reportGenerateWebp";
-  }
-  
-  static boolean a(String paramString)
-  {
-    byte[] arrayOfByte = new byte[16];
+    if (QLog.isColorLevel()) {
+      QLog.i("BindVerifyActivity", 2, "onBindMobile [" + paramBoolean + ", " + paramBundle + "]");
+    }
+    this.a.b();
     int i;
-    for (;;)
+    if (paramBoolean)
     {
-      try
-      {
-        new FileInputStream(paramString).read(arrayOfByte);
-        if (arrayOfByte.length >= 12) {
-          break label98;
-        }
-        return false;
+      i = paramBundle.getInt("k_result");
+      if ((i == 104) || (i == 0)) {
+        this.a.b();
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
-      if (i >= jdField_b_of_type_ArrayOfByte.length) {
-        break label103;
-      }
-      if (jdField_b_of_type_ArrayOfByte[i] != arrayOfByte[i]) {
-        break;
-      }
-      i += 1;
     }
     for (;;)
     {
-      if (i < 12)
+      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
+      BindVerifyActivity.a(this.a, null);
+      return;
+      if (i == 107)
       {
-        int j = jdField_a_of_type_ArrayOfByte[(i - 8)];
-        int k = arrayOfByte[i];
-        if (j == k) {
-          i += 1;
+        this.a.a(paramBundle);
+      }
+      else if (i == 106)
+      {
+        this.a.a();
+        if (this.a.getIntent().getBooleanExtra("k_is_block", false)) {
+          axqw.b(this.a.app, "CliOper", "", "", "0X80053D5", "0X80053D5", 2, 0, "", "", "", "");
         }
       }
       else
       {
-        return true;
+        this.a.a(1, a(i));
+        continue;
+        this.a.a(1, this.a.getString(2131718737));
       }
-      return false;
-      label98:
-      i = 0;
-      break;
-      label103:
-      i = 8;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BindVerifyActivity", 2, "onRebindMobile [" + paramBoolean + ", " + paramBundle + "]");
+    }
+    this.a.b();
+    if (paramBoolean) {
+      this.a.b();
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
+      BindVerifyActivity.a(this.a, null);
+      return;
+      this.a.a(1, this.a.getString(2131718737));
     }
   }
 }

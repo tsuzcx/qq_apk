@@ -1,17 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
 
-class tvy
-  implements DialogInterface.OnDismissListener
+public class tvy
 {
-  tvy(tvw paramtvw) {}
+  private twm jdField_a_of_type_Twm;
+  private two jdField_a_of_type_Two;
+  private twq jdField_a_of_type_Twq = new tvz(this);
+  public txk a;
+  private ujp jdField_a_of_type_Ujp;
+  private twq b = new twa(this);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(MsgTabPlayInfo paramMsgTabPlayInfo)
   {
-    if (tvw.a(this.a) != null) {
-      tvw.a(this.a).c(false);
-    }
+    this.jdField_a_of_type_Txk = new txk(new txb(paramMsgTabPlayInfo));
+    this.jdField_a_of_type_Ujp = new ujp(this.jdField_a_of_type_Txk);
+    this.jdField_a_of_type_Ujp.b();
+  }
+  
+  public void a(HomeFeedPlayInfo paramHomeFeedPlayInfo)
+  {
+    this.jdField_a_of_type_Txk = new txk(new twh(paramHomeFeedPlayInfo));
+    this.jdField_a_of_type_Ujp = new ujp(this.jdField_a_of_type_Txk);
+  }
+  
+  public void onClickTestDown(View paramView)
+  {
+    this.jdField_a_of_type_Txk.a(this.b);
+    this.jdField_a_of_type_Txk.b(this.jdField_a_of_type_Twq);
+    this.jdField_a_of_type_Txk.a(this.jdField_a_of_type_Two, 2, 1, null);
+  }
+  
+  public void onClickTestUp(View paramView)
+  {
+    this.jdField_a_of_type_Txk.b(this.b);
+    this.jdField_a_of_type_Txk.a(this.jdField_a_of_type_Twq);
+    this.jdField_a_of_type_Txk.a(this.jdField_a_of_type_Two, 0, 1, null);
   }
 }
 

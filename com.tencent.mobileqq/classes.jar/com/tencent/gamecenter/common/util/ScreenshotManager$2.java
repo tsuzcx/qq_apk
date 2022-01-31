@@ -1,23 +1,23 @@
 package com.tencent.gamecenter.common.util;
 
-import yez;
-import yfn;
-import yfp;
+import yod;
+import yor;
+import yot;
 
 public class ScreenshotManager$2
   implements Runnable
 {
-  public ScreenshotManager$2(yfn paramyfn, String paramString, yfp paramyfp) {}
+  public ScreenshotManager$2(yor paramyor, String paramString, yot paramyot) {}
   
   public void run()
   {
-    if (this.this$0.a(yfn.a(this.this$0), this.jdField_a_of_type_JavaLangString))
+    if (this.this$0.a(yor.a(this.this$0), this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Yfp.a(0, "succ");
-      yez.a("gamecenter_shot_key", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Yot.a(0, "succ");
+      yod.a("gamecenter_shot_key", this.jdField_a_of_type_JavaLangString);
       return;
     }
-    this.jdField_a_of_type_Yfp.a(-200, "save file fail");
+    this.jdField_a_of_type_Yot.a(-200, "save file fail");
   }
 }
 

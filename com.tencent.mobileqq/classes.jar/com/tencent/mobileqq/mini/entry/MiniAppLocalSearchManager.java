@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.entry;
 
 import NS_COMM.COMM.StCommonExt;
-import amcz;
-import amda;
-import atmo;
-import atmp;
-import atmq;
+import amtb;
+import amtc;
+import aukm;
+import aukn;
+import auko;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -69,16 +69,16 @@ public class MiniAppLocalSearchManager
     //   43: invokestatic 95	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   46: return
     //   47: aload_2
-    //   48: invokevirtual 101	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Latmq;
-    //   51: invokevirtual 107	atmq:createEntityManager	()Latmp;
+    //   48: invokevirtual 101	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lauko;
+    //   51: invokevirtual 107	auko:createEntityManager	()Laukn;
     //   54: astore_3
     //   55: aload_3
     //   56: ifnull -10 -> 46
     //   59: aload_3
-    //   60: invokevirtual 113	atmp:a	()Latmr;
+    //   60: invokevirtual 113	aukn:a	()Laukp;
     //   63: astore_2
     //   64: aload_2
-    //   65: invokevirtual 117	atmr:a	()V
+    //   65: invokevirtual 117	aukp:a	()V
     //   68: aload_1
     //   69: invokeinterface 121 1 0
     //   74: astore_1
@@ -90,7 +90,7 @@ public class MiniAppLocalSearchManager
     //   86: aload_1
     //   87: invokeinterface 130 1 0
     //   92: checkcast 132	com/tencent/mobileqq/mini/entry/MiniAppLocalSearchEntity
-    //   95: invokespecial 56	com/tencent/mobileqq/mini/entry/MiniAppLocalSearchManager:updateEntity	(Latmp;Latmo;)Z
+    //   95: invokespecial 56	com/tencent/mobileqq/mini/entry/MiniAppLocalSearchManager:updateEntity	(Laukn;Laukm;)Z
     //   98: pop
     //   99: goto -24 -> 75
     //   102: astore_1
@@ -102,16 +102,16 @@ public class MiniAppLocalSearchManager
     //   114: aload_1
     //   115: invokestatic 137	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   118: aload_2
-    //   119: invokevirtual 140	atmr:b	()V
+    //   119: invokevirtual 140	aukp:b	()V
     //   122: return
     //   123: aload_2
-    //   124: invokevirtual 143	atmr:c	()V
+    //   124: invokevirtual 143	aukp:c	()V
     //   127: aload_2
-    //   128: invokevirtual 140	atmr:b	()V
+    //   128: invokevirtual 140	aukp:b	()V
     //   131: return
     //   132: astore_1
     //   133: aload_2
-    //   134: invokevirtual 140	atmr:b	()V
+    //   134: invokevirtual 140	aukp:b	()V
     //   137: aload_1
     //   138: athrow
     // Local variable table:
@@ -119,7 +119,7 @@ public class MiniAppLocalSearchManager
     //   0	139	0	this	MiniAppLocalSearchManager
     //   0	139	1	paramList	List<MiniAppLocalSearchEntity>
     //   3	131	2	localObject	Object
-    //   54	32	3	localatmp	atmp
+    //   54	32	3	localaukn	aukn
     // Exception table:
     //   from	to	target	type
     //   68	75	102	java/lang/Exception
@@ -131,31 +131,31 @@ public class MiniAppLocalSearchManager
     //   123	127	132	finally
   }
   
-  private boolean updateEntity(atmp paramatmp, atmo paramatmo)
+  private boolean updateEntity(aukn paramaukn, aukm paramaukm)
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    if (paramatmp.a()) {
-      if (paramatmo.getStatus() == 1000)
+    if (paramaukn.a()) {
+      if (paramaukm.getStatus() == 1000)
       {
-        paramatmp.b(paramatmo);
-        if (paramatmo.getStatus() == 1001) {
+        paramaukn.b(paramaukm);
+        if (paramaukm.getStatus() == 1001) {
           bool1 = true;
         }
-        paramatmp.a();
+        paramaukn.a();
       }
     }
     do
     {
       return bool1;
-      if ((paramatmo.getStatus() != 1001) && (paramatmo.getStatus() != 1002)) {
+      if ((paramaukm.getStatus() != 1001) && (paramaukm.getStatus() != 1002)) {
         break;
       }
-      bool1 = paramatmp.a(paramatmo);
+      bool1 = paramaukn.a(paramaukm);
       break;
       bool1 = bool2;
     } while (!QLog.isColorLevel());
-    QLog.d("MiniAppLocalSearchManager", 2, "updateEntity em closed e=" + paramatmo.getTableName());
+    QLog.d("MiniAppLocalSearchManager", 2, "updateEntity em closed e=" + paramaukm.getTableName());
     return false;
   }
   
@@ -173,9 +173,9 @@ public class MiniAppLocalSearchManager
       return null;
     }
     localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    amcz localamcz = amda.a();
-    if (localamcz != null) {}
-    for (boolean bool = localamcz.b();; bool = false)
+    amtb localamtb = amtc.a();
+    if (localamtb != null) {}
+    for (boolean bool = localamtb.b();; bool = false)
     {
       if (!bool)
       {
@@ -188,7 +188,7 @@ public class MiniAppLocalSearchManager
       if (localObject == null) {
         break;
       }
-      return ((atmp)localObject).a(MiniAppLocalSearchEntity.class, MiniAppLocalSearchEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+      return ((aukn)localObject).a(MiniAppLocalSearchEntity.class, MiniAppLocalSearchEntity.class.getSimpleName(), false, null, null, null, null, null, null);
     }
   }
   

@@ -1,6 +1,8 @@
+import com.tencent.mobileqq.data.ChatMessage;
+
 public abstract interface acuq
 {
-  public abstract void a(int paramInt);
+  public abstract void a_(ChatMessage paramChatMessage);
 }
 
 

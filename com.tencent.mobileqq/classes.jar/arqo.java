@@ -1,73 +1,114 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
-import java.util.List;
+import tencent.media_relation.media_relation.MediaRelationInfo;
 
 public class arqo
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
-  public View a;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private arqp jdField_a_of_type_Arqp;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
+  public static String a = "ListenTogetherAIOStatusHelper";
   
-  public arqo(arqn paramarqn, View paramView, arqp paramarqp)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131302750));
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(2130838739);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(null);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131302713));
-    this.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131302759));
-    this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(arqn.a(paramarqn).getResources().getColor(2131101267));
-    this.jdField_a_of_type_Arqp = paramarqp;
-    paramarqn.a(this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView);
-    paramView.setOnClickListener(this);
-    paramView.setTag(this);
-  }
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Arqp != null)
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, "setIsGroupListenTogetherOpen, app = " + paramQQAppInterface + " troopuin:" + paramString + " isOpen:" + paramBoolean);
+    }
+    if (paramQQAppInterface != null)
     {
-      int i = getAdapterPosition();
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgBackup.BackupAndMigrateListAdapter", 2, "BackupAndMigrateItemHolder onCheckedChanged: " + i + ", isChecked = " + paramBoolean);
+      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
+      if (paramQQAppInterface != null)
+      {
+        paramString = paramQQAppInterface.b(paramString);
+        if (paramString != null)
+        {
+          paramString.setIsListenTogether(paramBoolean);
+          paramQQAppInterface.b(paramString);
+          if (QLog.isColorLevel()) {
+            QLog.i(a, 2, "setIsGroupListenTogetherOpen troopinfo saved");
+          }
+        }
       }
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean);
-      arqn.a(this.jdField_a_of_type_Arqn).setValueAt(i, Boolean.valueOf(paramBoolean));
-      this.jdField_a_of_type_Arqp.a(this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), (RecentBaseData)arqn.a(this.jdField_a_of_type_Arqn).get(i));
     }
   }
   
-  public void onClick(View paramView)
+  public static boolean a(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_Arqp != null)
+    media_relation.MediaRelationInfo localMediaRelationInfo;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
+      localMediaRelationInfo = new media_relation.MediaRelationInfo();
+    }
+    try
     {
-      bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-      paramView = this.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (bool) {
-        break label32;
+      localMediaRelationInfo.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = localMediaRelationInfo;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i;
+        long l;
+        paramArrayOfByte = null;
+        localException.printStackTrace();
       }
     }
-    label32:
-    for (boolean bool = true;; bool = false)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.create_time.has()))
     {
-      paramView.setChecked(bool);
+      i = paramArrayOfByte.create_time.get();
+      l = NetConnInfoCenter.getServerTime();
+    }
+    return i >= l - 604800L;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, "setIsC2CListenTogetherOpen, app = " + paramQQAppInterface + " frienduin:" + paramString + " isOpen:" + paramBoolean);
+    }
+    Friends localFriends;
+    Object localObject;
+    if (paramQQAppInterface != null)
+    {
+      ajxn localajxn = (ajxn)paramQQAppInterface.getManager(51);
+      if (localajxn != null)
+      {
+        localFriends = localajxn.e(paramString);
+        if ((localFriends == null) || (!localFriends.isFriend())) {
+          paramBoolean = false;
+        }
+        ExtensionInfo localExtensionInfo = localajxn.a(paramString);
+        localObject = localExtensionInfo;
+        if (localExtensionInfo == null)
+        {
+          localObject = new ExtensionInfo();
+          ((ExtensionInfo)localObject).uin = paramString;
+        }
+        boolean bool = ((ExtensionInfo)localObject).isListenTogetherOpen;
+        if (bool != paramBoolean)
+        {
+          ((ExtensionInfo)localObject).isListenTogetherOpen = paramBoolean;
+          localajxn.a((ExtensionInfo)localObject);
+          ((FriendListHandler)paramQQAppInterface.a(1)).notifyUI(3, true, paramString);
+        }
+        if (QLog.isColorLevel())
+        {
+          paramString = a;
+          localObject = new StringBuilder().append("setIsC2CListenTogetherOpen extensionInfo saved, old=").append(bool).append(" new:").append(paramBoolean).append(" friend:");
+          if (localFriends == null) {
+            break label234;
+          }
+        }
+      }
+    }
+    label234:
+    for (paramQQAppInterface = Boolean.valueOf(localFriends.isFriend());; paramQQAppInterface = "null")
+    {
+      QLog.i(paramString, 2, paramQQAppInterface);
       return;
     }
   }

@@ -1,6 +1,22 @@
-public abstract interface aisn
+import java.util.Arrays;
+
+public class aisn
 {
-  public abstract void b(aisk paramaisk);
+  public int a;
+  public boolean a;
+  public int[] a;
+  public int b;
+  public int[] b;
+  public int c;
+  public int d;
+  public int e;
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("userStatus:").append(this.d).append(",roleId:").append(this.jdField_a_of_type_Int).append(",dressIds:").append(Arrays.toString(this.jdField_a_of_type_ArrayOfInt)).append(",threeRoleId:").append(this.jdField_b_of_type_Int).append(",threeDressIds:").append(Arrays.toString(this.jdField_b_of_type_ArrayOfInt));
+    return localStringBuilder.toString();
+  }
 }
 
 

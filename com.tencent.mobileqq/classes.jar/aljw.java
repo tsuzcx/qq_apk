@@ -1,13 +1,16 @@
-public class aljw
+class aljw
 {
-  public static int a(float paramFloat)
-  {
-    return Float.floatToIntBits(paramFloat);
-  }
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  int b;
+  int c;
+  int d;
+  int e;
+  int f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aljw
  * JD-Core Version:    0.7.0.1
  */

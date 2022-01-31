@@ -8,7 +8,9 @@ import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.handler.ReportHandler.DownloadReportObject;
 import com.tencent.component.network.module.report.ImageDownloadReporter;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import mpl;
+import java.util.HashMap;
+import java.util.Map;
+import nam;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 
@@ -21,6 +23,7 @@ public class MiniProgramLpReportDC05325
   public static final int RESOURCE_TYPE_OTHER = 10;
   public static final int RESOURCE_TYPE_PLUGIN = 5;
   private static ImageDownloadReporter downloadReporter;
+  private static Map<Long, Boolean> reportedList = new HashMap();
   
   public static String getHeader(DownloadResult paramDownloadResult, String paramString)
   {
@@ -64,7 +67,7 @@ public class MiniProgramLpReportDC05325
   
   public static String getNetworkType()
   {
-    String str = mpl.a();
+    String str = nam.a();
     if (str == null) {
       return "unknown";
     }
@@ -114,7 +117,7 @@ public class MiniProgramLpReportDC05325
     if (paramDownloadResult == null) {
       return;
     }
-    MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC05325.1(paramMiniAppConfig, paramDownloadResult, paramInt));
+    MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC05325.1(paramDownloadResult, paramMiniAppConfig, paramInt));
   }
 }
 

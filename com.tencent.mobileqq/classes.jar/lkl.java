@@ -1,139 +1,51 @@
-import android.graphics.Rect;
-import com.tencent.av.redpacket.AVRedPacketManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class lkl
-  extends lko
+  extends Handler
 {
-  public lkg a;
-  public boolean a;
-  public lla[] a;
-  public int b;
-  public lla[] b;
-  public int c;
-  public int d;
-  public int e;
+  WeakReference<CameraUtils> a;
   
-  public lkl(lkg paramlkg)
+  public lkl(CameraUtils paramCameraUtils, Looper paramLooper)
   {
-    this.jdField_a_of_type_ArrayOfLla = new lla[6];
-    this.jdField_b_of_type_ArrayOfLla = new lla[6];
-    this.jdField_a_of_type_Lkg = paramlkg;
-    this.jdField_c_of_type_ArrayOfLla = this.jdField_a_of_type_ArrayOfLla;
-    this.jdField_b_of_type_Long = 1800L;
+    super(paramLooper);
+    this.a = new WeakReference(paramCameraUtils);
   }
   
   public void a(long paramLong)
   {
-    super.a(paramLong);
-    Rect localRect = this.jdField_a_of_type_Lkg.a();
-    int i;
-    int j;
-    int k;
-    int m;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = (localRect.left + localRect.right - this.d) / 2;
-      j = (localRect.top + localRect.bottom - this.e) / 2;
-      k = (localRect.left + localRect.right + this.d) / 2;
-      m = localRect.top;
-      a(i, j, k, (localRect.bottom + m + this.e) / 2);
-      if (this.jdField_a_of_type_Lkg.a == null) {
-        break label237;
-      }
-      a(this.jdField_a_of_type_Lkg.a());
-    }
-    for (;;)
-    {
-      b(this.jdField_a_of_type_Lkg.a());
-      return;
-      i = (localRect.left + localRect.right - this.jdField_b_of_type_Int) / 2;
-      j = (localRect.top + localRect.bottom - this.jdField_c_of_type_Int) / 2;
-      k = (localRect.left + localRect.right + this.jdField_b_of_type_Int) / 2;
-      m = localRect.top;
-      a(i, j, k, (localRect.bottom + m + this.jdField_c_of_type_Int) / 2);
-      break;
-      label237:
-      a(0);
-    }
+    removeMessages(1);
   }
   
-  public void a(AVRedPacketManager paramAVRedPacketManager)
+  public void a(String paramString, long paramLong, int paramInt1, int paramInt2)
   {
-    int k = 0;
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = k;
-      if (i >= this.jdField_a_of_type_ArrayOfLla.length) {
-        break;
-      }
-      this.jdField_a_of_type_ArrayOfLla[i] = new lla(paramAVRedPacketManager.a("qav_redpacket_focus_" + i * 6 + ".png"));
-      i += 1;
-    }
-    while (j < this.jdField_b_of_type_ArrayOfLla.length)
-    {
-      this.jdField_b_of_type_ArrayOfLla[j] = new lla(paramAVRedPacketManager.a("qav_redpacket_focus_big_" + j * 6 + ".png"));
-      j += 1;
-    }
+    QLog.w("CameraUtils", 1, "sendReopenCameraMsg[" + paramString + "], size[" + paramInt1 + ", " + paramInt2 + "], subthread[" + getLooper().getThread().getId() + "], seq[" + paramLong + "]");
+    a(paramLong);
+    paramString = obtainMessage(1);
+    paramString.arg1 = paramInt1;
+    paramString.arg2 = paramInt2;
+    paramString.obj = Long.valueOf(paramLong);
+    sendMessageDelayed(paramString, 1000L);
   }
   
-  public void a(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label45;
+    if ((this.a != null) && (this.a.get() != null) && (paramMessage != null) && (paramMessage.what == 1)) {
+      if (!(paramMessage.obj instanceof Long)) {
+        break label75;
       }
     }
-    label45:
-    for (lla[] arrayOflla = this.jdField_b_of_type_ArrayOfLla;; arrayOflla = this.jdField_a_of_type_ArrayOfLla)
+    label75:
+    for (long l = Long.valueOf(0L).longValue();; l = 0L)
     {
-      this.jdField_c_of_type_ArrayOfLla = arrayOflla;
-      this.jdField_b_of_type_Long = (this.jdField_c_of_type_ArrayOfLla.length * 300);
+      CameraUtils.a((CameraUtils)this.a.get(), l, paramMessage.arg1, paramMessage.arg2);
+      super.handleMessage(paramMessage);
       return;
     }
-  }
-  
-  public void b()
-  {
-    int j = 0;
-    super.b();
-    lla[] arrayOflla = this.jdField_a_of_type_ArrayOfLla;
-    int k = arrayOflla.length;
-    int i = 0;
-    lla locallla;
-    while (i < k)
-    {
-      locallla = arrayOflla[i];
-      if (locallla != null) {
-        locallla.a();
-      }
-      i += 1;
-    }
-    arrayOflla = this.jdField_b_of_type_ArrayOfLla;
-    k = arrayOflla.length;
-    i = j;
-    while (i < k)
-    {
-      locallla = arrayOflla[i];
-      if (locallla != null) {
-        locallla.a();
-      }
-      i += 1;
-    }
-    this.jdField_a_of_type_Lkg = null;
-    this.jdField_a_of_type_ArrayOfLla = null;
-    this.jdField_b_of_type_ArrayOfLla = null;
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_b_of_type_Int = (paramInt1 * 380 / 750);
-    this.jdField_c_of_type_Int = (paramInt1 * 380 / 750);
-    this.d = (paramInt1 * 500 / 750);
-    this.e = (paramInt1 * 500 / 750);
   }
 }
 

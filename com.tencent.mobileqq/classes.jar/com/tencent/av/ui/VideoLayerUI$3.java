@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
-import lqb;
-import mjg;
+import mat;
+import muf;
 
 class VideoLayerUI$3
   implements Runnable
@@ -10,8 +10,8 @@ class VideoLayerUI$3
   
   public void run()
   {
-    lqb.a(this.this$0.a, 1055);
-    mjg.a(2);
+    mat.a(this.this$0.a, 1055);
+    muf.a(2);
   }
 }
 

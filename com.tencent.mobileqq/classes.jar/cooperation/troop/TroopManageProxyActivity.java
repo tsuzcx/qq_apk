@@ -3,31 +3,31 @@ package cooperation.troop;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import awqx;
-import bfcz;
-import bfdi;
+import axqw;
+import bgkq;
+import bgkz;
 
 public class TroopManageProxyActivity
   extends TroopBaseProxyActivity
 {
   public static void a(String paramString1, String paramString2, Class paramClass, Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString3, String paramString4, int paramInt)
   {
-    bfdi localbfdi = new bfdi(1);
-    localbfdi.jdField_b_of_type_JavaLangString = paramString1;
-    localbfdi.d = paramString2;
-    localbfdi.jdField_a_of_type_JavaLangString = paramString4;
-    localbfdi.e = paramString3;
-    localbfdi.jdField_a_of_type_JavaLangClass = paramClass;
-    localbfdi.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbfdi.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    bgkz localbgkz = new bgkz(1);
+    localbgkz.jdField_b_of_type_JavaLangString = paramString1;
+    localbgkz.d = paramString2;
+    localbgkz.jdField_a_of_type_JavaLangString = paramString4;
+    localbgkz.e = paramString3;
+    localbgkz.jdField_a_of_type_JavaLangClass = paramClass;
+    localbgkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbgkz.jdField_a_of_type_AndroidAppDialog = paramDialog;
     paramIntent.putExtra("userQqResources", 1);
     paramIntent.putExtra("param_plugin_gesturelock", true);
-    localbfdi.jdField_a_of_type_AndroidContentIntent.putExtra("useSkinEngine", true);
-    localbfdi.jdField_b_of_type_Int = paramInt;
-    localbfdi.c = 10000;
-    localbfdi.f = null;
-    bfcz.a(paramActivity, localbfdi);
-    awqx.b(null, "P_CliOper", "BizTechReport", "", "troop_manage_plugin", "load_plugin_v2", 0, 0, null, null, null, null);
+    localbgkz.jdField_a_of_type_AndroidContentIntent.putExtra("useSkinEngine", true);
+    localbgkz.jdField_b_of_type_Int = paramInt;
+    localbgkz.c = 10000;
+    localbgkz.f = null;
+    bgkq.a(paramActivity, localbgkz);
+    axqw.b(null, "P_CliOper", "BizTechReport", "", "troop_manage_plugin", "load_plugin_v2", 0, 0, null, null, null, null);
   }
   
   public String getPluginID()

@@ -1,12 +1,40 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class agwh
+class agwh
+  extends BroadcastReceiver
 {
-  public static void a(String paramString)
+  private agwh(agvz paramagvz) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QWalletPerTrace", 2, "markTimeStamp " + paramString);
+    int i;
+    String str1;
+    if ("grap_idiom_hb_result_action".equals(paramIntent.getAction()))
+    {
+      i = paramIntent.getIntExtra("grap_hb_state", 0);
+      paramContext = paramIntent.getStringExtra("listid");
+      str1 = paramIntent.getStringExtra("grap_hb_frienduin");
+      if ((i != 1) && (i != 10)) {
+        break label59;
+      }
+      agvz.a(this.a, paramContext, str1, 1, true);
     }
+    label59:
+    String str2;
+    do
+    {
+      do
+      {
+        return;
+      } while (i != 12);
+      str2 = paramIntent.getStringExtra("grap_hb_idiom");
+      i = paramIntent.getIntExtra("grap_hb_seq", 0);
+      paramIntent = paramIntent.getStringExtra("grap_idiom_alpha");
+    } while (this.a.a(paramContext) == null);
+    agvz.a(this.a, paramContext, str1, 1, false);
+    this.a.a(paramContext, str2, paramIntent, i);
   }
 }
 

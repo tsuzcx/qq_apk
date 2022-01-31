@@ -1,8 +1,8 @@
 package cooperation.qzone.contentbox;
 
-import atmp;
-import atmq;
-import bfug;
+import aukn;
+import auko;
+import bhcq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
 import cooperation.qzone.util.QZLog;
@@ -10,14 +10,14 @@ import cooperation.qzone.util.QZLog;
 public class QZoneMsgManager$2
   implements Runnable
 {
-  public QZoneMsgManager$2(bfug parambfug, QZoneMsgEntityNew paramQZoneMsgEntityNew) {}
+  public QZoneMsgManager$2(bhcq parambhcq, QZoneMsgEntityNew paramQZoneMsgEntityNew) {}
   
   public void run()
   {
-    atmp localatmp = null;
-    Object localObject4 = null;
-    localObject2 = localObject4;
-    localObject1 = localatmp;
+    Object localObject3 = null;
+    aukn localaukn2 = null;
+    localaukn1 = localaukn2;
+    localObject1 = localObject3;
     for (;;)
     {
       try
@@ -26,8 +26,8 @@ public class QZoneMsgManager$2
         if (localQQAppInterface != null) {
           continue;
         }
-        localObject2 = localObject4;
-        localObject1 = localatmp;
+        localaukn1 = localaukn2;
+        localObject1 = localObject3;
         QZLog.e("QZoneMsgManager", "saveMsgToDB error app == null");
         if (0 != 0) {
           throw new NullPointerException();
@@ -36,8 +36,12 @@ public class QZoneMsgManager$2
       catch (Throwable localThrowable)
       {
         QQAppInterface localQQAppInterface;
-        localObject1 = localObject2;
+        localObject1 = localaukn1;
         QZLog.e("QZoneMsgManager", 1, localThrowable, new Object[0]);
+        if (localaukn1 == null) {
+          continue;
+        }
+        localaukn1.a();
         return;
       }
       finally
@@ -45,31 +49,31 @@ public class QZoneMsgManager$2
         if (localObject1 == null) {
           continue;
         }
-        ((atmp)localObject1).a();
+        ((aukn)localObject1).a();
       }
       return;
-      localObject2 = localObject4;
-      localObject1 = localatmp;
+      localaukn1 = localaukn2;
+      localObject1 = localObject3;
       this.a.writeArkNewsToBuffer();
-      localObject2 = localObject4;
-      localObject1 = localatmp;
-      localatmp = localQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localObject2 = localatmp;
-      localObject1 = localatmp;
+      localaukn1 = localaukn2;
+      localObject1 = localObject3;
+      localaukn2 = localQQAppInterface.getEntityManagerFactory().createEntityManager();
+      localaukn1 = localaukn2;
+      localObject1 = localaukn2;
       if (this.a.getStatus() == 1000)
       {
-        localObject2 = localatmp;
-        localObject1 = localatmp;
-        localatmp.a(this.a);
-        if (localatmp != null) {
-          localatmp.a();
+        localaukn1 = localaukn2;
+        localObject1 = localaukn2;
+        localaukn2.a(this.a);
+        if (localaukn2 != null) {
+          localaukn2.a();
         }
       }
       else
       {
-        localObject2 = localatmp;
-        localObject1 = localatmp;
-        localatmp.a(this.a);
+        localaukn1 = localaukn2;
+        localObject1 = localaukn2;
+        localaukn2.a(this.a);
       }
     }
   }

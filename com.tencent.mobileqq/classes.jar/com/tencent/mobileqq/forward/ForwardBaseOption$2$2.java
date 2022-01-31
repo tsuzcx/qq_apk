@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.forward;
 
 import android.content.res.Resources;
-import aphp;
-import apht;
-import badq;
-import bbmy;
+import aqbc;
+import aqbg;
+import bbev;
+import bcpw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class ForwardBaseOption$2$2
   implements Runnable
 {
-  public ForwardBaseOption$2$2(apht paramapht) {}
+  public ForwardBaseOption$2$2(aqbg paramaqbg) {}
   
   public void run()
   {
-    if (badq.a(BaseApplication.getContext()) != 0) {
-      bbmy.a(this.a.a.a.getApp(), 2, 2131627117, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131167766));
+    if (bbev.a(BaseApplication.getContext()) != 0) {
+      bcpw.a(this.a.a.a.getApp(), 2, 2131692755, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
     }
   }
 }

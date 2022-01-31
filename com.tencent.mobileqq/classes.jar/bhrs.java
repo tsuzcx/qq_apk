@@ -1,34 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import java.util.HashMap;
 
-class bhrs
-  implements EIPClientConnectListener
+public class bhrs
 {
-  bhrs(bhrr parambhrr) {}
+  public String a;
+  public HashMap<String, String> a;
   
-  public void connectFailed()
+  public bhrs(bhrr parambhrr)
   {
-    bhrr.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "connectFailed!");
-    }
-  }
-  
-  public void connectSuccess(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      bhrr.a(this.a, paramEIPCConnection.procName);
-    }
-    bhrr.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "connectSuccess:" + bhrr.a(this.a));
-    }
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhrs
  * JD-Core Version:    0.7.0.1
  */

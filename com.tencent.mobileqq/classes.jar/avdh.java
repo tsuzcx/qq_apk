@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
-
 public class avdh
-  implements DialogInterface.OnClickListener
 {
-  public avdh(SignatureEditFragment paramSignatureEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static avdg a(String paramString)
   {
-    paramDialogInterface.dismiss();
+    if (bbjw.a(paramString)) {
+      return new avdg();
+    }
+    if ((paramString.equalsIgnoreCase("qinterest")) || (paramString.equalsIgnoreCase("bodong")) || (paramString.equalsIgnoreCase("qqgame"))) {}
+    for (Object localObject = new avdj();; localObject = new avdg())
+    {
+      ((avdg)localObject).f = paramString;
+      return localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avdh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,15 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.view.QIMSlidingTabView;
 
 public class bjkx
+  implements View.OnClickListener
 {
-  public static void a(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("crashKind", "" + paramInt);
-    awrn.a(VideoEnvironment.a()).a(null, "sv_filter_egl_crash_exp", true, 0L, 0L, localHashMap, "");
-  }
+  public bjkx(QIMSlidingTabView paramQIMSlidingTabView, int paramInt) {}
   
-  public static void a(String paramString, long paramLong)
+  public void onClick(View paramView)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("time", "" + paramLong);
-    localHashMap.put("filter_id", bjky.jdField_a_of_type_JavaLangString);
-    localHashMap.put("front_camera", String.valueOf(bjky.jdField_a_of_type_Boolean));
-    awrn.a(VideoEnvironment.a()).a(null, paramString, true, paramLong, bjjl.c, localHashMap, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("PerformenceDataTag", 2, "reportPerformance : tag = " + paramString + " ; duration = " + paramLong + " ; filter_id = " + bjky.jdField_a_of_type_JavaLangString + " ; front_camera = " + bjky.jdField_a_of_type_Boolean);
-    }
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.a(this.jdField_a_of_type_Int);
   }
 }
 

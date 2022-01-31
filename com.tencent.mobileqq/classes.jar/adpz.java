@@ -1,26 +1,24 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.data.MessageForPic;
 
 public class adpz
+  implements bfoq
 {
-  public float a;
-  public int a;
-  public adpx a;
-  public ValueAnimator a;
-  public boolean a;
-  public float b;
-  public int b;
-  public ValueAnimator b;
-  public boolean b;
-  public int c;
-  public ValueAnimator c;
-  public int d;
-  public ValueAnimator d;
-  public int e;
-  public int f;
-  public int g;
+  public adpz(FlashPicItemBuilder paramFlashPicItemBuilder, MessageForPic paramMessageForPic, bfol parambfol) {}
   
-  public adpz(SixCombolEffectView paramSixCombolEffectView) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      FlashPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+    }
+  }
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajce;
-import ajch;
+import ajqg;
+import ajqj;
 
 public class ApolloPanel$1$2
   implements Runnable
 {
-  public ApolloPanel$1$2(ajch paramajch) {}
+  public ApolloPanel$1$2(ajqj paramajqj) {}
   
   public void run()
   {

@@ -1,127 +1,276 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.commonsdk.util.HexUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.troop.homework.config.BeginnerGuideDownloadManager.1;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Hashtable;
-import java.util.LinkedList;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class azwi
+public class azwi
 {
-  int jdField_a_of_type_Int = 10;
-  azwj jdField_a_of_type_Azwj = null;
-  Hashtable<String, FaceInfo> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  LinkedList<FaceInfo> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  boolean jdField_a_of_type_Boolean = false;
-  protected int b;
-  Hashtable<String, FaceInfo> jdField_b_of_type_JavaUtilHashtable = new Hashtable();
-  boolean jdField_b_of_type_Boolean = false;
-  boolean c = false;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public abstract Bitmap a(int paramInt1, String paramString, int paramInt2, byte paramByte);
-  
-  public void a()
+  public azwi(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      asfl.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    int i = j;
+    if (!TextUtils.isEmpty(this.b))
+    {
+      if (!TextUtils.isEmpty(this.c)) {
+        break label71;
+      }
+      i = j;
     }
-    this.jdField_a_of_type_Boolean = true;
+    while (i != 0)
+    {
+      throw new IllegalArgumentException("args error");
+      label71:
+      i = j;
+      if (a(this.jdField_a_of_type_JavaLangString)) {
+        i = 0;
+      }
+    }
   }
   
-  public abstract void a(int paramInt1, String paramString, int paramInt2, long paramLong);
-  
-  public void a(azwj paramazwj)
+  private static File a()
   {
-    this.jdField_a_of_type_Azwj = paramazwj;
+    return new File(ajsf.aW + "homework_troop");
   }
   
-  public abstract void a(AppInterface paramAppInterface);
-  
-  protected void a(FaceInfo paramFaceInfo)
+  private void a(Handler paramHandler, int paramInt, boolean paramBoolean)
   {
-    if (paramFaceInfo == null) {}
+    ThreadManager.postImmediately(new BeginnerGuideDownloadManager.1(this, paramHandler, paramInt, paramBoolean), null, true);
+    paramHandler.sendEmptyMessage(1111);
+  }
+  
+  private void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    label162:
+    label193:
     for (;;)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("FaceDecoderBase", 2, "enqueueDecode, iRunningRequests=" + this.jdField_b_of_type_Int + ", pause=" + this.jdField_a_of_type_Boolean + ",faceinfo=" + paramFaceInfo.toString());
-      }
+      TroopManager localTroopManager;
       try
       {
-        this.jdField_a_of_type_JavaUtilLinkedList.remove(paramFaceInfo);
-        if (paramFaceInfo.jdField_b_of_type_Boolean)
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.parseConfig");
+        }
+        localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+        paramString = azwk.a(paramString, "config.cfg");
+        if (!paramBoolean) {
+          break label162;
+        }
+        switch (paramInt)
         {
-          this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramFaceInfo);
-          paramFaceInfo.a(FaceInfo.k);
-          if ((this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int) || (this.jdField_a_of_type_Boolean)) {
-            continue;
+        case 5: 
+        case 6: 
+          if (QLog.isColorLevel()) {
+            QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.parseConfig Publish not match");
           }
-          e();
+          label86:
           return;
         }
       }
-      catch (Exception localException)
+      finally {}
+      localTroopManager.a.a = paramString;
+      continue;
+      localTroopManager.a.b = paramString;
+      continue;
+      for (;;)
       {
-        for (;;)
+        if (!QLog.isColorLevel()) {
+          break label193;
+        }
+        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.parseConfig Submit not match");
+        break label86;
+        localTroopManager.a.c = paramString;
+        break label86;
+        localTroopManager.a.d = paramString;
+        break label86;
+        break;
+        switch (paramInt)
         {
-          if (QLog.isColorLevel())
-          {
-            QLog.e("FaceDecoderBase", 2, "enqueueDecode", localException);
-            continue;
-            this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramFaceInfo);
-          }
         }
       }
     }
   }
   
-  public boolean a()
+  private boolean a(String paramString)
   {
-    return this.jdField_a_of_type_Boolean;
+    try
+    {
+      new URL(paramString);
+      return true;
+    }
+    catch (MalformedURLException paramString) {}
+    return false;
   }
   
-  public final boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3)
+  private static String b(String paramString)
   {
-    return a(paramString, paramInt1, paramBoolean1, paramInt2, paramBoolean2, paramByte, paramInt3, 100, false);
+    long l = System.currentTimeMillis();
+    try
+    {
+      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
+      paramString = str1;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        paramString = new File(paramString);
+        if (!paramString.exists()) {
+          break;
+        }
+        try
+        {
+          String str2 = bfjx.a(paramString);
+          paramString = str2;
+          if (str2 == null) {
+            paramString = "";
+          }
+        }
+        catch (IOException paramString)
+        {
+          paramString = "";
+        }
+      }
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        paramString = "";
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, new Object[] { "BeginnerGuideDownloadManager$calcMD5", " md5:" + paramString + ", cost:" + (System.currentTimeMillis() - l) });
+    }
+    return paramString;
   }
   
-  public abstract boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3, int paramInt4, boolean paramBoolean3);
-  
-  public void b()
+  private boolean b(Handler paramHandler, int paramInt, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("FaceDecoderBase", 2, "resume");
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.postDownload");
     }
-    this.jdField_a_of_type_Boolean = false;
-    while ((this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())) {
-      e();
+    File localFile1 = a();
+    File localFile2 = new File(localFile1, this.b);
+    Object localObject = this.b.substring(0, this.b.lastIndexOf("."));
+    localFile1 = new File(localFile1, (String)localObject + "_src");
+    if ((!localFile1.exists()) && (!localFile1.mkdirs()))
+    {
+      paramHandler.sendEmptyMessage(1120);
+      return false;
     }
+    localObject = new ArrayList();
+    String[] arrayOfString = localFile1.list();
+    String str = localFile1.getAbsolutePath();
+    Message localMessage = Message.obtain();
+    localMessage.what = 1110;
+    localMessage.arg1 = paramInt;
+    localMessage.obj = str;
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.postDownload begin unzip");
+      }
+      ((ArrayList)localObject).addAll(nay.a(localFile2));
+      if (Arrays.asList(arrayOfString).containsAll((Collection)localObject))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "zip file already unzip");
+        }
+        a(str, paramInt, paramBoolean);
+        paramHandler.sendMessage(localMessage);
+        return true;
+      }
+      nay.b(localFile2.getAbsolutePath(), localFile1.getAbsolutePath());
+      if (Arrays.asList(localFile1.list()).containsAll((Collection)localObject))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "zip file unzip success");
+        }
+        a(str, paramInt, paramBoolean);
+        paramHandler.sendMessage(localMessage);
+        return true;
+      }
+      throw new Exception("trigger catch");
+    }
+    catch (Exception localException)
+    {
+      paramHandler.sendEmptyMessage(1120);
+      if (QLog.isColorLevel()) {
+        QLog.d("BeginnerGuideDownloadManager", 2, "zip file unzip error ", localException);
+      }
+      paramHandler = ((ArrayList)localObject).iterator();
+      while (paramHandler.hasNext())
+      {
+        File localFile3 = new File(localFile1, (String)paramHandler.next());
+        if ((localFile3.exists()) && (!localFile3.delete()) && (QLog.isColorLevel())) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "zip file unzip del error");
+        }
+      }
+    }
+    return false;
   }
   
-  public void c()
+  public boolean a(Handler paramHandler, int paramInt, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      asfl.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.startDownload");
     }
-    this.jdField_a_of_type_JavaUtilHashtable.clear();
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-  }
-  
-  public void d()
-  {
+    File localFile = a();
+    if ((!localFile.exists()) && (!localFile.mkdirs())) {
+      return false;
+    }
+    localFile = new File(localFile, this.b);
+    if ((localFile.exists()) && (this.c.equalsIgnoreCase(b(localFile.getAbsolutePath()))))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.startDownload: file exists, no need to start download again");
+      }
+      a(paramHandler, paramInt, paramBoolean);
+      return true;
+    }
+    ayry localayry = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
+    ayrv localayrv = new ayrv();
+    localayrv.jdField_a_of_type_Boolean = true;
+    localayrv.jdField_e_of_type_Boolean = true;
+    localayrv.jdField_a_of_type_Aysa = new azwj(this, paramHandler, paramInt, paramBoolean);
+    localayrv.jdField_a_of_type_Int = 0;
+    localayrv.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localayrv.c = localFile.getAbsolutePath();
+    localayrv.jdField_e_of_type_Int = 0;
+    localayry.a(localayrv);
     if (QLog.isColorLevel()) {
-      asfl.a(2, "FaceDecoderBase", "destory", new Object[0]);
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.startDownload sendReq success");
     }
-    c();
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Azwj = null;
-    this.jdField_a_of_type_Boolean = false;
+    return true;
   }
-  
-  protected abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azwi
  * JD-Core Version:    0.7.0.1
  */

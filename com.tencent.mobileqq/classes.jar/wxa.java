@@ -1,73 +1,54 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class wxa
+public final class wxa
 {
-  private String a = "0";
-  private String b = "0";
-  private String c = wwt.c;
-  private String d = "1";
-  private String e = "1";
-  
-  public static wxa a(String paramString)
+  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    wxa localwxa = new wxa();
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.setData(Uri.parse(paramString2));
+    localIntent.putExtra("srcAction", paramString3);
+    localIntent.putExtra("srcPackageName", paramString4);
+    localIntent.putExtra("srcClassName", paramString5);
+    localIntent.putExtra("params_appid", paramString1);
     try
     {
-      paramString = new JSONObject(paramString);
-      if (paramString != null)
-      {
-        localwxa.a = paramString.optString("subscribe_entrance_enable", "0");
-        localwxa.b = paramString.optString("is_open_sharing", "0");
-        localwxa.c = paramString.optString("subscribe_account_title", wwt.c);
-        localwxa.d = paramString.optString("newfollowlist", "1");
-        localwxa.e = paramString.optString("subscribe_publish_entrance_enable", "1");
-      }
-      return localwxa;
+      paramContext.startActivity(localIntent);
+      return true;
     }
-    catch (JSONException paramString)
+    catch (ActivityNotFoundException paramContext) {}
+    return false;
+  }
+  
+  public static boolean b(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    PackageManager localPackageManager = paramContext.getPackageManager();
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.setData(Uri.parse(paramString1));
+    if (localPackageManager.queryIntentActivities(localIntent, 0).size() != 0)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
+      if (a(paramContext, paramString2, paramString1, paramString3, paramString4, paramString5)) {
+        return true;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("DataProviderApi", 2, "start scheme:" + paramString1 + " failed!");
+      }
+      return false;
     }
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String d()
-  {
-    return this.d;
-  }
-  
-  public String e()
-  {
-    return this.e;
-  }
-  
-  public String toString()
-  {
-    return "k =subscribe_entrance_enable , value = " + this.a + ",k =is_open_sharing , value = " + this.b + ",k =subscribe_account_title , value = " + this.c + ",k =subscribeAccountNewFollowListSwitch , value = " + this.d + ",k =subscribeAccountPublishEntranceSwitch , value = " + this.e;
+    if (QLog.isColorLevel()) {
+      QLog.d("DataProviderApi", 2, "scheme:" + paramString1 + " is not found!");
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wxa
  * JD-Core Version:    0.7.0.1
  */

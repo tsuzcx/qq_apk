@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
+import android.view.View;
+import android.widget.SimpleAdapter.ViewBinder;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 
-class qgc
-  implements DialogInterface.OnShowListener
+public class qgc
+  implements SimpleAdapter.ViewBinder
 {
-  qgc(qfy paramqfy, begr parambegr) {}
+  public qgc(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public boolean setViewValue(View paramView, Object paramObject, String paramString)
   {
-    qfy.a(this.jdField_a_of_type_Qfy, "mShareActionSheet onShow()");
-    this.jdField_a_of_type_Begr.getWindow().clearFlags(8);
+    if (((paramView instanceof TextView)) && ((paramObject instanceof CharSequence)))
+    {
+      ((TextView)paramView).setText((CharSequence)paramObject);
+      return true;
+    }
+    return false;
   }
 }
 

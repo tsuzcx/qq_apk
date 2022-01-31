@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.apollo.cmgame;
 
-import aijr;
-import aijs;
-import aing;
-import aiqf;
-import aiqi;
-import aiqo;
-import aiys;
-import aizl;
+import aiwk;
+import aiwl;
+import ajae;
+import ajdd;
+import ajdg;
+import ajdm;
+import ajmu;
+import ajnn;
 import android.os.Bundle;
 import android.text.TextUtils;
-import awrn;
-import badq;
-import bajr;
+import axrl;
+import bbev;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
@@ -28,6 +27,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.pb.apollo.STCheckGame.STCheckGameRsp;
 import com.tencent.pb.apollo.STCheckGame.STGameConfInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -36,13 +36,13 @@ import java.util.HashMap;
 import mqq.observer.BusinessObserver;
 
 public class CmGameStartChecker
-  implements aiqo, BusinessObserver
+  implements ajdm, BusinessObserver
 {
   private volatile int jdField_a_of_type_Int;
   public long a;
-  private aiqf jdField_a_of_type_Aiqf;
+  private ajdd jdField_a_of_type_Ajdd;
   private CmGameStartChecker.StartCheckParam jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam;
-  private WeakReference<aijs> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<aiwl> jdField_a_of_type_JavaLangRefWeakReference;
   public long b;
   private WeakReference<AppInterface> b;
   public long c;
@@ -56,11 +56,11 @@ public class CmGameStartChecker
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      aijs localaijs = (aijs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localaijs != null)
+      aiwl localaiwl = (aiwl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localaiwl != null)
       {
         QLog.e("cmgame_process.CmGameStartChecker", 1, new Object[] { "callBackGameCheckFail:", Long.valueOf(paramLong), ",startCheckParam:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam });
-        localaijs.onGameCheckFinish(paramLong, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, null);
+        localaiwl.onGameCheckFinish(paramLong, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, null);
       }
     }
   }
@@ -69,11 +69,11 @@ public class CmGameStartChecker
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      aijs localaijs = (aijs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localaijs != null)
+      aiwl localaiwl = (aiwl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localaiwl != null)
       {
         QLog.e("cmgame_process.CmGameStartChecker", 1, new Object[] { "callBackGameFail:", Long.valueOf(paramLong), ",startCheckParam:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam });
-        localaijs.onGameFailed(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, paramLong);
+        localaiwl.onGameFailed(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, paramLong);
       }
     }
   }
@@ -83,16 +83,16 @@ public class CmGameStartChecker
     if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
       return;
     }
-    if (aing.b(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam))
+    if (ajae.b(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam))
     {
       b();
       return;
     }
-    aijs localaijs = (aijs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    aiwl localaiwl = (aiwl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     this.jdField_a_of_type_Int += 1;
     if (this.jdField_a_of_type_Int == 1)
     {
-      localaijs.onGameCheckRetry(1);
+      localaiwl.onGameCheckRetry(1);
       a(1);
       return;
     }
@@ -101,7 +101,7 @@ public class CmGameStartChecker
       a(-17L);
       return;
     }
-    localaijs.onGameCheckRetry(2);
+    localaiwl.onGameCheckRetry(2);
   }
   
   public String a(int paramInt, String paramString)
@@ -125,7 +125,7 @@ public class CmGameStartChecker
   
   public void a(int paramInt)
   {
-    if ((this.jdField_b_of_type_JavaLangRefWeakReference.get() == null) || ((!badq.d(((AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get()).getApp())) && (!aing.b(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam))))
+    if ((this.jdField_b_of_type_JavaLangRefWeakReference.get() == null) || ((!bbev.d(((AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get()).getApp())) && (!ajae.b(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam))))
     {
       QLog.e("cmgame_process.CmGameStartChecker", 1, "[checkGame] none network");
       a(-10L);
@@ -143,7 +143,7 @@ public class CmGameStartChecker
       {
         return;
       } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
-      paramString = (aijs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramString = (aiwl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     } while (paramString == null);
     QLog.d("cmgame_process.CmGameStartChecker", 2, "[onDownloadProgress] progress:" + paramInt1);
     paramString.onDownloadGameResProgress(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, paramInt1);
@@ -159,26 +159,26 @@ public class CmGameStartChecker
         return;
         this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.startT = -1L;
       } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
-      paramString = (aijs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramString = (aiwl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     } while (paramString == null);
     QLog.d("cmgame_process.CmGameStartChecker", 2, "gameCheckListener.onDownloadGameResStart startCheckParam:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
     paramString.onDownloadGameResStart(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
   }
   
-  public void a(aijr paramaijr, long paramLong)
+  public void a(aiwk paramaiwk, long paramLong)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) {}
-    aijs localaijs;
+    aiwl localaiwl;
     do
     {
       do
       {
         return;
       } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localaijs = (aijs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localaijs == null);
+      localaiwl = (aiwl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localaiwl == null);
     QLog.d("cmgame_process.CmGameStartChecker", 2, "[onDownloadConfirm] startCheckParam:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-    localaijs.onDownloadConfirm(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, paramaijr, paramLong);
+    localaiwl.onDownloadConfirm(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, paramaiwk, paramLong);
   }
   
   protected void a(Bundle paramBundle)
@@ -197,7 +197,7 @@ public class CmGameStartChecker
       if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
         break label1898;
       }
-      localObject1 = (aijs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject1 = (aiwl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       k = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId;
       m = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameMode;
       localObject4 = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.from;
@@ -288,7 +288,7 @@ public class CmGameStartChecker
               if (localObject1 != null)
               {
                 QLog.d("cmgame_process.CmGameStartChecker", 2, "onGetGameKey gameCheckListener.onSsoCmdRuleRsp startCheckParam:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-                ((aijs)localObject1).onSsoCmdRuleRsp(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, (String)localObject2);
+                ((aiwl)localObject1).onSsoCmdRuleRsp(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, (String)localObject2);
               }
             }
             for (;;)
@@ -340,7 +340,7 @@ public class CmGameStartChecker
                   }
                   this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game = ((ApolloGameData)localObject4);
                   this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.viewMode = ((ApolloGameData)localObject4).viewMode;
-                  ((aijs)localObject1).onGetGameData(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+                  ((aiwl)localObject1).onGetGameData(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
                 }
               }
               if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game != null) {
@@ -357,8 +357,8 @@ public class CmGameStartChecker
               this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.transInfo = new String(((STCheckGame.STCheckGameRsp)localObject3).transInfo.get().toByteArray());
             }
             this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.delayMs = ((STCheckGame.STCheckGameRsp)localObject3).delayMs.get();
-            aifg.b = str4;
-            aifg.jdField_c_of_type_JavaLangString = str5;
+            airz.b = str4;
+            airz.jdField_c_of_type_JavaLangString = str5;
             localObject3 = (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
             if (localObject3 != null) {
               ApolloGameUtil.a((AppInterface)localObject3, n);
@@ -368,7 +368,7 @@ public class CmGameStartChecker
             }
             QLog.i("cmgame_process.CmGameStartChecker", 1, "[game_launch_cost], check game:" + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.startT));
             if (bool1) {
-              aing.a(ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId));
+              ajae.a(ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId));
             }
             localObject4 = new HashMap();
             ((HashMap)localObject4).put("param_gameId", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId));
@@ -383,33 +383,33 @@ public class CmGameStartChecker
     for (Object localObject2 = "1";; localObject2 = "0")
     {
       ((HashMap)localObject4).put("param_update", localObject2);
-      awrn.a(((AppInterface)localObject3).getApp()).a(((AppInterface)localObject3).getCurrentAccountUin(), "cmgame_checkgame_update", true, 0L, 0L, (HashMap)localObject4, "", false);
+      axrl.a(((AppInterface)localObject3).getApp()).a(((AppInterface)localObject3).getCurrentAccountUin(), "cmgame_checkgame_update", true, 0L, 0L, (HashMap)localObject4, "", false);
       QLog.d("CmGameStat", 1, new Object[] { "cmgame_checkgame_update, needUpdate=", Boolean.valueOf(bool1), " [gameId=", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId), "]" });
       if (localObject1 != null) {
-        ((aijs)localObject1).onGameCheckFinish(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.retCode, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, null);
+        ((aiwl)localObject1).onGameCheckFinish(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.retCode, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, null);
       }
-      if (aizl.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.isWhiteUsr, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId))
+      if (ajnn.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.isWhiteUsr, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId))
       {
-        localObject1 = new aiqi();
-        ((aiqi)localObject1).jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);
-        ((aiqi)localObject1).jdField_a_of_type_Long = l2;
-        ((aiqi)localObject1).jdField_b_of_type_Long = l1;
-        ((aiqi)localObject1).jdField_a_of_type_ArrayOfByte = paramBundle;
-        ((aiqi)localObject1).jdField_b_of_type_Boolean = bool2;
-        ((aiqi)localObject1).jdField_a_of_type_Boolean = bool1;
-        ((aiqi)localObject1).jdField_c_of_type_JavaLangString = str3;
-        ((aiqi)localObject1).jdField_e_of_type_JavaLangString = str1;
-        ((aiqi)localObject1).jdField_d_of_type_JavaLangString = str2;
-        ((aiqi)localObject1).jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId;
-        ((aiqi)localObject1).jdField_a_of_type_Int = i1;
-        ((aiqi)localObject1).jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter;
-        ((aiqi)localObject1).f = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.from;
-        ((aiqi)localObject1).jdField_d_of_type_Int = 0;
-        ((aiqi)localObject1).jdField_c_of_type_Long = System.currentTimeMillis();
-        ((aiqi)localObject1).jdField_e_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.delayMs;
-        this.jdField_a_of_type_Aiqf = new aiqf((aiqi)localObject1, this);
-        bool3 = this.jdField_a_of_type_Aiqf.a();
-        aing.a(new Object[] { "[checkRes], serverVersion:" + i1 + ", isPatch:" + bool2, ", isUpdate:" + bool1, ",delay:", Integer.valueOf(((aiqi)localObject1).jdField_e_of_type_Int) });
+        localObject1 = new ajdg();
+        ((ajdg)localObject1).jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);
+        ((ajdg)localObject1).jdField_a_of_type_Long = l2;
+        ((ajdg)localObject1).jdField_b_of_type_Long = l1;
+        ((ajdg)localObject1).jdField_a_of_type_ArrayOfByte = paramBundle;
+        ((ajdg)localObject1).jdField_b_of_type_Boolean = bool2;
+        ((ajdg)localObject1).jdField_a_of_type_Boolean = bool1;
+        ((ajdg)localObject1).jdField_c_of_type_JavaLangString = str3;
+        ((ajdg)localObject1).jdField_e_of_type_JavaLangString = str1;
+        ((ajdg)localObject1).jdField_d_of_type_JavaLangString = str2;
+        ((ajdg)localObject1).jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId;
+        ((ajdg)localObject1).jdField_a_of_type_Int = i1;
+        ((ajdg)localObject1).jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter;
+        ((ajdg)localObject1).f = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.from;
+        ((ajdg)localObject1).jdField_d_of_type_Int = 0;
+        ((ajdg)localObject1).jdField_c_of_type_Long = System.currentTimeMillis();
+        ((ajdg)localObject1).jdField_e_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.delayMs;
+        this.jdField_a_of_type_Ajdd = new ajdd((ajdg)localObject1, this);
+        bool3 = this.jdField_a_of_type_Ajdd.a();
+        ajae.a(new Object[] { "[checkRes], serverVersion:" + i1 + ", isPatch:" + bool2, ", isUpdate:" + bool1, ",delay:", Integer.valueOf(((ajdg)localObject1).jdField_e_of_type_Int) });
         QLog.i("cmgame_process.CmGameStartChecker", 1, "onGetGameKey [cmgame_pack_main], response, gameId:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId + ",ver:" + i1 + ",isPatch:" + bool2 + ",isUpdate:" + bool1);
         if (bool3) {
           break;
@@ -439,9 +439,9 @@ public class CmGameStartChecker
     }
   }
   
-  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam, aijs paramaijs)
+  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam, aiwl paramaiwl)
   {
-    if ((paramStartCheckParam == null) || (paramaijs == null)) {
+    if ((paramStartCheckParam == null) || (paramaiwl == null)) {
       if (QLog.isColorLevel()) {
         QLog.d("cmgame_process.CmGameStartChecker", 2, "[launchGame],startCheckParam == null || gameStartCheckListener == nul");
       }
@@ -456,7 +456,7 @@ public class CmGameStartChecker
       }
       ApolloGameStateMachine.a().a();
       ApolloGameStateMachine.a().a(1);
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaijs);
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaiwl);
       this.jdField_a_of_type_Int = 0;
       if (!paramStartCheckParam.isRunning) {
         break;
@@ -487,7 +487,7 @@ public class CmGameStartChecker
     this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.viewMode = ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.mGameType);
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      paramString = (aijs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramString = (aiwl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (paramString != null)
       {
         QLog.d("cmgame_process.CmGameStartChecker", 2, new Object[] { "gameCheckListener.onDownloadGameResDown startCheckParam:", this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam });
@@ -514,18 +514,18 @@ public class CmGameStartChecker
     if (QLog.isColorLevel()) {
       QLog.d("cmgame_process.CmGameStartChecker", 2, " checkLife  life =" + i);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.retCode == aiys.jdField_a_of_type_Long)
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.retCode == ajmu.jdField_a_of_type_Long)
     {
       if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
-        localObject = (aijs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject = (aiwl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
         if (localObject != null)
         {
           QLog.d("cmgame_process.CmGameStartChecker", 2, "gameCheckListener.onGameLifeTipShow startCheckParam:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-          ((aijs)localObject).onGameLifeTipShow(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+          ((aiwl)localObject).onGameLifeTipShow(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
         }
       }
-      bajr.a(null, "cmshow", "Apollo", "game_times_short", 0, 0, new String[] { "" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId });
+      VipUtils.a(null, "cmshow", "Apollo", "game_times_short", 0, 0, new String[] { "" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId });
       return;
     }
     a();
@@ -534,7 +534,7 @@ public class CmGameStartChecker
   public void c(int paramInt, String paramString)
   {
     QLog.e("cmgame_process.CmGameStartChecker", 1, "[onDownloadFailure], ret:" + paramInt);
-    aing.a(new Object[] { "[downloadRes], failed ret:", Integer.valueOf(paramInt), ", packName:", paramString });
+    ajae.a(new Object[] { "[downloadRes], failed ret:", Integer.valueOf(paramInt), ", packName:", paramString });
     b(-12L);
   }
   
@@ -593,7 +593,7 @@ public class CmGameStartChecker
     //   93: aload_0
     //   94: getfield 34	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam	Lcom/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam;
     //   97: getfield 654	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:isWhiteUsr	Z
-    //   100: invokestatic 827	aipi:a	(Z)Ljava/lang/String;
+    //   100: invokestatic 827	ajcg:a	(Z)Ljava/lang/String;
     //   103: aload 14
     //   105: invokevirtual 822	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   108: ifeq +1051 -> 1159
@@ -759,7 +759,7 @@ public class CmGameStartChecker
     //   437: lsub
     //   438: lstore 12
     //   440: aconst_null
-    //   441: invokestatic 869	bbth:a	(Landroid/content/Context;)I
+    //   441: invokestatic 869	bcxh:a	(Landroid/content/Context;)I
     //   444: istore 6
     //   446: new 612	java/util/HashMap
     //   449: dup
@@ -787,7 +787,7 @@ public class CmGameStartChecker
     //   497: pop
     //   498: aload 15
     //   500: invokevirtual 152	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   503: invokestatic 630	awrn:a	(Landroid/content/Context;)Lawrn;
+    //   503: invokestatic 630	axrl:a	(Landroid/content/Context;)Laxrl;
     //   506: astore 14
     //   508: aload 15
     //   510: invokevirtual 633	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
@@ -807,7 +807,7 @@ public class CmGameStartChecker
     //   535: aload_3
     //   536: ldc 117
     //   538: iconst_0
-    //   539: invokevirtual 638	awrn:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   539: invokevirtual 638	axrl:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   542: lload 10
     //   544: lconst_0
     //   545: lcmp
@@ -844,7 +844,7 @@ public class CmGameStartChecker
     //   601: iload 5
     //   603: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   606: aastore
-    //   607: invokestatic 794	bajr:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
+    //   607: invokestatic 794	com/tencent/mobileqq/utils/VipUtils:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
     //   610: ldc_w 640
     //   613: iconst_1
     //   614: bipush 9
@@ -912,7 +912,7 @@ public class CmGameStartChecker
     //   718: lload 12
     //   720: invokestatic 54	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   723: aastore
-    //   724: invokestatic 720	aing:a	([Ljava/lang/Object;)V
+    //   724: invokestatic 720	ajae:a	([Ljava/lang/Object;)V
     //   727: return
     //   728: iload 7
     //   730: istore_1
@@ -984,7 +984,7 @@ public class CmGameStartChecker
     //   868: lsub
     //   869: lstore 12
     //   871: aconst_null
-    //   872: invokestatic 869	bbth:a	(Landroid/content/Context;)I
+    //   872: invokestatic 869	bcxh:a	(Landroid/content/Context;)I
     //   875: istore 6
     //   877: new 612	java/util/HashMap
     //   880: dup
@@ -1012,7 +1012,7 @@ public class CmGameStartChecker
     //   928: pop
     //   929: aload 15
     //   931: invokevirtual 152	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   934: invokestatic 630	awrn:a	(Landroid/content/Context;)Lawrn;
+    //   934: invokestatic 630	axrl:a	(Landroid/content/Context;)Laxrl;
     //   937: astore 14
     //   939: aload 15
     //   941: invokevirtual 633	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
@@ -1032,7 +1032,7 @@ public class CmGameStartChecker
     //   966: aload_3
     //   967: ldc 117
     //   969: iconst_0
-    //   970: invokevirtual 638	awrn:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   970: invokevirtual 638	axrl:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   973: lload 10
     //   975: lconst_0
     //   976: lcmp
@@ -1069,7 +1069,7 @@ public class CmGameStartChecker
     //   1032: iload 5
     //   1034: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   1037: aastore
-    //   1038: invokestatic 794	bajr:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
+    //   1038: invokestatic 794	com/tencent/mobileqq/utils/VipUtils:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
     //   1041: ldc_w 640
     //   1044: iconst_1
     //   1045: bipush 9
@@ -1137,7 +1137,7 @@ public class CmGameStartChecker
     //   1149: lload 12
     //   1151: invokestatic 54	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   1154: aastore
-    //   1155: invokestatic 720	aing:a	([Ljava/lang/Object;)V
+    //   1155: invokestatic 720	ajae:a	([Ljava/lang/Object;)V
     //   1158: return
     //   1159: iload 7
     //   1161: istore_1
@@ -1218,7 +1218,7 @@ public class CmGameStartChecker
     //   1307: lsub
     //   1308: lstore 12
     //   1310: aconst_null
-    //   1311: invokestatic 869	bbth:a	(Landroid/content/Context;)I
+    //   1311: invokestatic 869	bcxh:a	(Landroid/content/Context;)I
     //   1314: istore 6
     //   1316: new 612	java/util/HashMap
     //   1319: dup
@@ -1246,7 +1246,7 @@ public class CmGameStartChecker
     //   1371: pop
     //   1372: aload 16
     //   1374: invokevirtual 152	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1377: invokestatic 630	awrn:a	(Landroid/content/Context;)Lawrn;
+    //   1377: invokestatic 630	axrl:a	(Landroid/content/Context;)Laxrl;
     //   1380: astore 15
     //   1382: aload 16
     //   1384: invokevirtual 633	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
@@ -1266,7 +1266,7 @@ public class CmGameStartChecker
     //   1409: aload 14
     //   1411: ldc 117
     //   1413: iconst_0
-    //   1414: invokevirtual 638	awrn:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   1414: invokevirtual 638	axrl:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   1417: lload 10
     //   1419: lconst_0
     //   1420: lcmp
@@ -1303,7 +1303,7 @@ public class CmGameStartChecker
     //   1476: iload 5
     //   1478: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   1481: aastore
-    //   1482: invokestatic 794	bajr:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
+    //   1482: invokestatic 794	com/tencent/mobileqq/utils/VipUtils:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
     //   1485: ldc_w 640
     //   1488: iconst_1
     //   1489: bipush 9
@@ -1371,7 +1371,7 @@ public class CmGameStartChecker
     //   1593: lload 12
     //   1595: invokestatic 54	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   1598: aastore
-    //   1599: invokestatic 720	aing:a	([Ljava/lang/Object;)V
+    //   1599: invokestatic 720	ajae:a	([Ljava/lang/Object;)V
     //   1602: aload_3
     //   1603: athrow
     //   1604: iload 4

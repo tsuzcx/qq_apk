@@ -1,23 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class aglm
-  extends BroadcastReceiver
+  implements DialogInterface.OnCancelListener
 {
-  public aglm(SendHbActivity paramSendHbActivity) {}
+  public aglm(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (SendHbActivity.a(this.a)) && ((this.a.a & 0x40) > 0)) {
-      this.a.finish();
-    }
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aglm
  * JD-Core Version:    0.7.0.1
  */

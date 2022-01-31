@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import agtk;
+import ahfz;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView.ViewHolder;
@@ -9,11 +9,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
+import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.BaseExposureReport;
+import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppModuleExposureData;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppModuleInfo;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.HongBaoResBuilder;
+import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.lang.ref.WeakReference;
 
@@ -29,22 +34,24 @@ class MiniAppDesktopAdapter$ModuleViewHolder
   {
     super(paramView);
     this.mActivityReference = new WeakReference(paramActivity);
-    this.mModuleText = ((TextView)paramView.findViewById(2131304535));
-    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131304534));
+    this.mModuleText = ((TextView)paramView.findViewById(2131370217));
+    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131370216));
   }
   
   public void update(DesktopAppModuleInfo paramDesktopAppModuleInfo)
   {
     this.mModuleText.setText(paramDesktopAppModuleInfo.moduleTitle);
-    Object localObject2 = MiniAppUtils.getAppInterface();
-    if (localObject2 != null)
+    AppInterface localAppInterface = MiniAppUtils.getAppInterface();
+    Object localObject1;
+    Object localObject2;
+    if (localAppInterface != null)
     {
-      Object localObject1 = (agtk)((AppInterface)localObject2).getManager(342);
-      if ((localObject1 == null) || (!((agtk)localObject1).h())) {
-        break label193;
+      localObject1 = (ahfz)localAppInterface.getManager(342);
+      if ((localObject1 == null) || (!((ahfz)localObject1).h())) {
+        break label343;
       }
-      DesktopDataManager localDesktopDataManager = (DesktopDataManager)((AppInterface)localObject2).getManager(336);
-      localObject2 = ((agtk)localObject1).a();
+      DesktopDataManager localDesktopDataManager = (DesktopDataManager)localAppInterface.getManager(336);
+      localObject2 = ((ahfz)localObject1).a();
       localObject1 = localObject2;
       if (localDesktopDataManager != null)
       {
@@ -63,21 +70,38 @@ class MiniAppDesktopAdapter$ModuleViewHolder
         }
       }
     }
-    if ((paramDesktopAppModuleInfo.getModuleType() == 1) || (paramDesktopAppModuleInfo.getModuleType() == 2))
+    int j = paramDesktopAppModuleInfo.getModuleType();
+    if ((j == 1) || (j == 2))
     {
+      int i;
       if (paramDesktopAppModuleInfo.appStoreInfo != null)
       {
         this.mAppStoreInfo = paramDesktopAppModuleInfo.appStoreInfo;
         this.mMoreMiniApp.setVisibility(0);
+        paramDesktopAppModuleInfo = new MiniAppConfig(paramDesktopAppModuleInfo.appStoreInfo);
+        localObject1 = paramDesktopAppModuleInfo.launchParam;
+        if (j == 1)
+        {
+          i = 3005;
+          label222:
+          ((LaunchParam)localObject1).scene = i;
+          localObject1 = new MiniAppExposureManager.MiniAppModuleExposureData(paramDesktopAppModuleInfo, "page_view", "expo");
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(this.mAppStoreInfo.appId).append("_").append(this.mAppStoreInfo.verType).append("_").append(j).append("_").append(paramDesktopAppModuleInfo.launchParam.scene);
+          paramDesktopAppModuleInfo = ((StringBuilder)localObject2).toString();
+          ((MiniAppExposureManager)localAppInterface.getManager(322)).putReportDataToMap(paramDesktopAppModuleInfo, (MiniAppExposureManager.BaseExposureReport)localObject1);
+        }
       }
       for (;;)
       {
-        this.mMoreMiniApp.setOnClickListener(new MiniAppDesktopAdapter.ModuleViewHolder.1(this));
+        this.mMoreMiniApp.setOnClickListener(new MiniAppDesktopAdapter.ModuleViewHolder.1(this, j));
         return;
-        label193:
-        this.mModuleText.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131101336));
-        this.mMoreMiniApp.setImageResource(2130848851);
+        label343:
+        this.mModuleText.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131166931));
+        this.mMoreMiniApp.setImageResource(2130849076);
         break;
+        i = 3004;
+        break label222;
         this.mMoreMiniApp.setVisibility(8);
       }
     }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ajtg;
+import akhq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,12 +11,12 @@ class SelectMemberActivity$1
   
   public void run()
   {
-    ajtg localajtg = (ajtg)this.this$0.app.a(20);
-    if (localajtg != null) {}
+    akhq localakhq = (akhq)this.this$0.app.a(20);
+    if (localakhq != null) {}
     try
     {
-      localajtg.b(Long.valueOf(this.this$0.c));
-      localajtg.a(Long.valueOf(this.this$0.c));
+      localakhq.b(Long.valueOf(this.this$0.c));
+      localakhq.a(Long.valueOf(this.this$0.c));
       return;
     }
     catch (NumberFormatException localNumberFormatException)

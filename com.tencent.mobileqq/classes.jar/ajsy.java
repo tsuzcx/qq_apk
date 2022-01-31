@@ -1,159 +1,233 @@
-import android.os.SystemClock;
-import android.util.Printer;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ThreadSetting;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import android.os.Bundle;
+import android.os.Looper;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.BaseBusinessHandler.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
-class ajsy
-  implements Printer
+public abstract class ajsy
+  extends akbx
 {
-  public static int a;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int = 0;
-  private long jdField_c_of_type_Long;
+  public static final int BG_OBSERVERS = 2;
+  public static final int DEFAULT_OBSERVER = 0;
+  private static final String SEQ_KEY = ajsy.class.getName();
+  public static final int UI_OBSERVERS = 1;
+  private static MqqHandler bgHandler = ThreadManager.getSubThreadHandler();
+  private static int notReportedCallNum;
+  private static int reportThreshold = -1;
+  private static MqqHandler uiHandler = new MqqHandler(Looper.getMainLooper());
+  protected Set<String> allowCmdSet;
+  private Map<Long, ajtg> bgObserverMap = new HashMap();
+  private long seq;
+  private Map<Long, ajtg> uiObserverMap = new HashMap();
   
-  static
+  private void dispatchMessage(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2, ajtg paramajtg, MqqHandler paramMqqHandler)
   {
-    jdField_a_of_type_Int = 200;
-  }
-  
-  ajsy(int paramInt, String paramString)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  private static String a(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0) || (!paramString.startsWith(">>>"))) {
-      return null;
-    }
-    int i = paramString.indexOf('(');
-    if (i == -1) {
-      return null;
-    }
-    int j = paramString.indexOf(')', i);
-    if (j == -1) {
-      return null;
-    }
-    String str1 = paramString.substring(i + 1, j);
-    int k = paramString.indexOf("} ", j);
-    if (k == -1) {
-      return null;
-    }
-    j = paramString.indexOf('@', k + 2);
-    i = j;
-    if (j == -1)
+    paramObject = new BaseBusinessHandler.1(this, paramajtg, paramInt, paramMqqHandler, paramBoolean1, paramObject);
+    if (paramBoolean2)
     {
-      j = paramString.indexOf(':', k + 2);
-      i = j;
-      if (j == -1)
-      {
-        i = paramString.indexOf(' ', k + 2);
-        if (i == -1) {
-          break label150;
-        }
-      }
-    }
-    String str2 = paramString.substring(k + 2, i);
-    i = paramString.indexOf(": ", i);
-    if (i == -1)
-    {
-      return null;
-      label150:
-      return null;
-    }
-    return String.format("%s|%s|%s", new Object[] { str1, str2, paramString.substring(i + 2) });
-  }
-  
-  void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TM.global.LooperPrinter", 2, "setting threshold, threshold=" + paramInt);
-    }
-    jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void println(String paramString)
-  {
-    if (paramString.startsWith(">>"))
-    {
-      this.jdField_c_of_type_Long = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_JavaLangString = paramString;
-      if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_c_of_type_Int)) {
-        UnifiedMonitor.a().reportStackIfTimeout(this.jdField_c_of_type_Int);
-      }
-    }
-    while ((this.jdField_c_of_type_Long == 0L) || (!paramString.startsWith("<<"))) {
+      paramMqqHandler.postAtFrontOfQueue(paramObject);
       return;
     }
-    this.jdField_a_of_type_Long += 1L;
-    long l = SystemClock.uptimeMillis() - this.jdField_c_of_type_Long;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_b_of_type_Long += l;
-    Object localObject = null;
-    paramString = (String)localObject;
-    if (QLog.isColorLevel())
-    {
-      if (!ThreadSetting.logcatBgTaskMonitor) {
-        break label192;
-      }
-      paramString = a(this.jdField_a_of_type_JavaLangString);
-      QLog.d("AutoMonitor", 2, this.jdField_b_of_type_JavaLangString + ", cost=" + l + ", " + paramString);
-    }
-    while (l > jdField_a_of_type_Int) {
-      if (!UnifiedMonitor.a().whetherReportThisTime(this.jdField_c_of_type_Int))
-      {
-        this.jdField_b_of_type_Int = 0;
-        return;
-        label192:
-        paramString = (String)localObject;
-        if (l >= 200L)
-        {
-          paramString = a(this.jdField_a_of_type_JavaLangString);
-          QLog.e("AutoMonitor", 2, this.jdField_b_of_type_JavaLangString + " OOT cost=" + l + ", " + paramString);
-        }
-      }
-      else
-      {
-        HashMap localHashMap;
-        if (paramString == null)
-        {
-          paramString = a(this.jdField_a_of_type_JavaLangString);
-          localHashMap = new HashMap(8);
-          localObject = BaseActivity.sTopActivity;
-          if (localObject == null) {
-            break label338;
-          }
-        }
-        label338:
-        for (localObject = localObject.getClass().getName();; localObject = "")
-        {
-          localHashMap.put("act", localObject);
-          UnifiedMonitor.a().addEvent(this.jdField_c_of_type_Int, paramString, (int)l, this.jdField_b_of_type_Int, localHashMap);
-          this.jdField_b_of_type_Int = 0;
-          return;
-          break;
-        }
-      }
-    }
-    if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_c_of_type_Int)) {
-      UnifiedMonitor.a().notifyNotTimeout(this.jdField_c_of_type_Int);
-    }
-    this.jdField_b_of_type_Int += 1;
+    paramMqqHandler.post(paramObject);
   }
   
-  public String toString()
+  protected void addBusinessObserver(ToServiceMsg paramToServiceMsg, ajtg paramajtg, boolean paramBoolean)
   {
-    return super.toString() + "(msgCount = " + this.jdField_a_of_type_Long + ", totalCost = " + this.jdField_b_of_type_Long + ")";
+    if ((paramajtg == null) || (paramBoolean)) {}
+    synchronized (this.bgObserverMap)
+    {
+      ???.put(Long.valueOf(this.seq), paramajtg);
+      paramToServiceMsg = paramToServiceMsg.extraData;
+      paramajtg = SEQ_KEY;
+      long l = this.seq;
+      this.seq = (1L + l);
+      paramToServiceMsg.putLong(paramajtg, l);
+      return;
+      ??? = this.uiObserverMap;
+    }
   }
+  
+  public ToServiceMsg createToServiceMsg(String paramString)
+  {
+    return new ToServiceMsg("mobileqq.service", getCurrentAccountUin(), paramString);
+  }
+  
+  public ToServiceMsg createToServiceMsg(String paramString, ajtg paramajtg)
+  {
+    return createToServiceMsg(paramString, paramajtg, false);
+  }
+  
+  ToServiceMsg createToServiceMsg(String arg1, ajtg paramajtg, boolean paramBoolean)
+  {
+    ToServiceMsg localToServiceMsg = createToServiceMsg(???);
+    if ((paramajtg == null) || (paramBoolean)) {}
+    synchronized (this.bgObserverMap)
+    {
+      ???.put(Long.valueOf(this.seq), paramajtg);
+      paramajtg = localToServiceMsg.extraData;
+      String str = SEQ_KEY;
+      long l = this.seq;
+      this.seq = (1L + l);
+      paramajtg.putLong(str, l);
+      return localToServiceMsg;
+      ??? = this.uiObserverMap;
+    }
+  }
+  
+  public final <T> T decodePacket(byte[] paramArrayOfByte, String paramString, T paramT)
+  {
+    UniPacket localUniPacket = new UniPacket(true);
+    try
+    {
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      return localUniPacket.getByClass(paramString, paramT);
+    }
+    catch (Exception paramArrayOfByte) {}
+    return null;
+  }
+  
+  public abstract String getCurrentAccountUin();
+  
+  public abstract List<ajtg> getObservers(int paramInt);
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    return false;
+  }
+  
+  public final void notifyUI(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    notifyUI(paramInt, paramBoolean, paramObject, false);
+  }
+  
+  public void notifyUI(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2)
+  {
+    List localList = getObservers(0);
+    Iterator localIterator;
+    Object localObject;
+    if ((localList != null) && (localList.size() > 0)) {
+      try
+      {
+        localIterator = localList.iterator();
+        while (localIterator.hasNext())
+        {
+          localObject = (ajtg)localIterator.next();
+          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass())))
+          {
+            long l = System.currentTimeMillis();
+            ((ajtg)localObject).onUpdate(paramInt, paramBoolean1, paramObject);
+            l = System.currentTimeMillis() - l;
+            if ((l > 100L) && (QLog.isColorLevel()))
+            {
+              localObject = new Exception("run too long!");
+              QLog.d("BaseBusinessHandler.notifyUI", 2, "defaultObserver onUpdate cost:" + l, (Throwable)localObject);
+            }
+          }
+        }
+      }
+      finally {}
+    }
+    localList = getObservers(1);
+    if ((localList != null) && (localList.size() > 0)) {
+      try
+      {
+        localIterator = localList.iterator();
+        while (localIterator.hasNext())
+        {
+          localObject = (ajtg)localIterator.next();
+          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass()))) {
+            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, (ajtg)localObject, uiHandler);
+          }
+        }
+      }
+      finally {}
+    }
+    localList = getObservers(2);
+    if ((localList != null) && (localList.size() > 0)) {
+      try
+      {
+        localIterator = localList.iterator();
+        while (localIterator.hasNext())
+        {
+          localObject = (ajtg)localIterator.next();
+          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass()))) {
+            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, (ajtg)localObject, bgHandler);
+          }
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public void notifyUI(ToServiceMsg paramToServiceMsg, int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    long l;
+    MqqHandler localMqqHandler;
+    if (paramToServiceMsg.extraData.containsKey(SEQ_KEY))
+    {
+      l = paramToServiceMsg.extraData.getLong(SEQ_KEY);
+      synchronized (this.uiObserverMap)
+      {
+        paramToServiceMsg = (ajtg)this.uiObserverMap.remove(Long.valueOf(l));
+        localMqqHandler = uiHandler;
+        if (paramToServiceMsg != null) {}
+      }
+    }
+    for (;;)
+    {
+      synchronized (this.bgObserverMap)
+      {
+        paramToServiceMsg = (ajtg)this.bgObserverMap.remove(Long.valueOf(l));
+        localMqqHandler = bgHandler;
+        if (paramToServiceMsg != null)
+        {
+          dispatchMessage(paramInt, paramBoolean, paramObject, false, paramToServiceMsg, localMqqHandler);
+          return;
+          paramToServiceMsg = finally;
+          throw paramToServiceMsg;
+        }
+      }
+      notifyUI(paramInt, paramBoolean, paramObject);
+      return;
+    }
+  }
+  
+  protected abstract Class<? extends ajtg> observerClass();
+  
+  public void onDestroy() {}
+  
+  public abstract void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
+  
+  protected akav removeMessageObserver(ToServiceMsg paramToServiceMsg)
+  {
+    if ((paramToServiceMsg == null) || (!paramToServiceMsg.extraData.containsKey(SEQ_KEY))) {
+      return null;
+    }
+    synchronized (this.uiObserverMap)
+    {
+      long l = paramToServiceMsg.extraData.getLong(SEQ_KEY);
+      if (akav.class.isInstance((ajtg)this.uiObserverMap.get(Long.valueOf(l))))
+      {
+        paramToServiceMsg = (akav)this.uiObserverMap.remove(Long.valueOf(l));
+        return paramToServiceMsg;
+      }
+    }
+    return null;
+  }
+  
+  public abstract void send(ToServiceMsg paramToServiceMsg);
+  
+  public abstract void sendPbReq(ToServiceMsg paramToServiceMsg);
 }
 
 

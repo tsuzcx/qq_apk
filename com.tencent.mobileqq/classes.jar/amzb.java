@@ -1,164 +1,95 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.FaceModelsData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amzb
-  extends amza
+  extends amyi<amza>
 {
-  private int a;
-  private boolean d;
+  static amza a = new amza();
   
-  public amzb(QQAppInterface paramQQAppInterface)
+  public static amza c()
   {
-    super("qq.android.ar.face.models_v7.1.5", paramQQAppInterface);
+    amza localamza2 = (amza)ampm.a().a(444);
+    amza localamza1 = localamza2;
+    if (localamza2 == null) {
+      localamza1 = a;
+    }
+    return localamza1;
   }
   
   public int a()
   {
-    return 10061;
+    return 444;
   }
   
-  public Class<? extends XmlData> a()
+  @NonNull
+  public amza a()
   {
-    return FaceModelsData.class;
+    return a;
   }
   
-  public String a()
+  @NonNull
+  public amza a(@NonNull ampi[] paramArrayOfampi)
   {
-    return null;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "restoreState");
-    }
-    a().loadState = 0;
-    a().Version = 0;
-    amyo.a(a(), new String[0]);
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    super.a(paramLong1, paramLong2);
-    this.jdField_a_of_type_Int = ((int)(100L * paramLong1 / paramLong2));
-    akoa.a(0, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download progress: " + this.jdField_a_of_type_Int);
-    }
-  }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
-  {
-    if (!paramBoolean) {
-      akoa.a(0, false);
-    }
-    super.a(paramXmlData, paramBoolean, paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download finish: " + paramBoolean);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download success: " + paramString);
-    }
-    if (akoc.a(paramString) != 0)
+    amza localamza = new amza();
+    int m = paramArrayOfampi.length;
+    int i = 0;
+    int j = 0;
+    while (i < m)
     {
-      a();
-      akoa.a(0, false);
-    }
-    for (;;)
-    {
-      super.a(paramString);
-      return;
-      akoa.a(0, true);
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008358", "0X8008358", 0, 0, "", "", "model", "");
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("res_type", "model");
-      awrn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "FaceResDownloadSuccess", true, 0L, 0L, localHashMap, "", true);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (!this.d) {
-      this.d = paramBoolean;
-    }
-    super.a(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download restart userClick = " + paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public void b(XmlData paramXmlData)
-  {
-    super.b(paramXmlData);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download begin");
-    }
-  }
-  
-  public boolean b()
-  {
-    if (this.d)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceModelsDownloadHandler", 2, "isNetValid2Download by user ");
-      }
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "isNetValid2Download by startup ");
-    }
-    return super.b();
-  }
-  
-  public boolean e()
-  {
-    if (!this.d)
-    {
-      if (!akoa.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      Object localObject = paramArrayOfampi[i];
+      if (j > ((ampi)localObject).jdField_a_of_type_Int)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("FaceModelsDownloadHandler", 2, "pre download config disable ");
+        i += 1;
+      }
+      else
+      {
+        int k = ((ampi)localObject).jdField_a_of_type_Int;
+        j = k;
+        for (;;)
+        {
+          try
+          {
+            if (paramArrayOfampi[0].jdField_a_of_type_JavaLangString == null) {
+              break;
+            }
+            localObject = new JSONObject(paramArrayOfampi[0].jdField_a_of_type_JavaLangString);
+            localamza.a = ((JSONObject)localObject).optBoolean("enable", false);
+            if (((JSONObject)localObject).optInt("dltc", 0) != 1) {
+              break label166;
+            }
+            bool = true;
+            localamza.b = bool;
+            j = k;
+          }
+          catch (JSONException localJSONException)
+          {
+            veg.e("QVipDiyTemplateProcessor", "parsed : " + paramArrayOfampi[0].jdField_a_of_type_JavaLangString + " error:" + localJSONException);
+            j = k;
+          }
+          break;
+          label166:
+          boolean bool = false;
         }
-        return false;
-      }
-      if (BaseActivity.sTopActivity == null) {
-        break label81;
       }
     }
-    label81:
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceModelsDownloadHandler", 2, "downloadResource later " + bool);
-      }
-      if (bool) {
-        break;
-      }
-      return super.e();
-    }
+    return localamza;
+  }
+  
+  public Class<amza> a()
+  {
+    return amza.class;
+  }
+  
+  @NonNull
+  public amza b()
+  {
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amzb
  * JD-Core Version:    0.7.0.1
  */

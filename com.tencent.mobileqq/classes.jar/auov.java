@@ -1,55 +1,101 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.media.ExifInterface;
+import android.text.TextUtils;
+import com.tencent.image.JpegExifReader;
+import com.tencent.mobileqq.pic.CompressInfo;
+import java.io.IOException;
 
 public class auov
-  implements URLDrawableDownListener
+  extends auos
 {
-  public auov(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  auov(CompressInfo paramCompressInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadCancelled: ");
-    }
+    super(paramCompressInfo);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  protected int a(CompressInfo paramCompressInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadFailed: ");
+    switch (paramCompressInfo.jdField_g_of_type_Int)
+    {
+    default: 
+      return -1;
+    case 0: 
+    case 1: 
+      return 1;
     }
-    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
+    return 2;
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  protected boolean d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadInterrupted: ");
+    boolean bool1 = true;
+    if (this.k == 1)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_g_of_type_Boolean) && (auoy.b(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c)))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c;
+        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.f = (this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + ajyc.a(2131708173));
+        aune.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " compress()", ajyc.a(2131708174));
+      }
+      for (;;)
+      {
+        return bool1;
+        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e = auoy.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_g_of_type_Int);
+        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e))
+        {
+          aune.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " destPath is empty");
+          return false;
+        }
+        if (bbdj.b(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e))
+        {
+          aune.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " destPath exist. return true");
+          return true;
+        }
+        try
+        {
+          Bitmap localBitmap = bbdr.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c, null);
+          if (localBitmap == null)
+          {
+            aune.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " bm == null, maybe is broken");
+            return false;
+          }
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.a(true);
+          aune.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " decodeFile oom, execute commonCompress()");
+          this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e = "";
+          return c();
+        }
+        boolean bool2 = auoy.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e, localOutOfMemoryError, a(), this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo);
+        if (!JpegExifReader.isCrashJpeg(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c)) {}
+        try
+        {
+          if (!bbdr.a(new ExifInterface(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c), new ExifInterface(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e))) {
+            aune.b(this.jdField_a_of_type_JavaLangString, "compress()", "Failed to save exif");
+          }
+          bool1 = bool2;
+          if (localOutOfMemoryError != null)
+          {
+            localOutOfMemoryError.recycle();
+            return bool2;
+          }
+        }
+        catch (IOException localIOException)
+        {
+          for (;;)
+          {
+            aune.b(this.jdField_a_of_type_JavaLangString, "compress()", "cannot read exif, " + localIOException.getMessage());
+          }
+        }
+      }
     }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadProgressed: " + paramURLDrawable + " / " + paramInt);
-    }
-    ReceiptMessageDetailFragment.a(this.a).setLevel(paramInt);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
-    ReceiptMessageDetailFragment.a(this.a, paramURLDrawable);
-    ReceiptMessageDetailFragment.b(this.a);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auov
  * JD-Core Version:    0.7.0.1
  */

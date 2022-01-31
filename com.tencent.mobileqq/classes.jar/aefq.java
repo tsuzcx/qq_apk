@@ -1,27 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class aefq
-  implements belq
+  implements Animation.AnimationListener
 {
-  aefq(aefe paramaefe) {}
+  aefq(aefp paramaefp) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    aefe.a(this.a).setPullType(0);
-    aefe.a(this.a).c(aefe.i);
-    aefe.a(this.a, 0, this.a.a.a());
+    if (aefp.a(this.a) != null) {
+      aefp.a(this.a).b();
+    }
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    return false;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void b(int paramInt, View paramView, ListView paramListView) {}
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

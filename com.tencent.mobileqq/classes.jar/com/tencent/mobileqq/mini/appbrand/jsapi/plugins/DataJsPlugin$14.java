@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import Wallet.FocusMpIdRsp;
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
-import bbmy;
+import bcpw;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import mqq.observer.BusinessObserver;
@@ -21,10 +21,10 @@ class DataJsPlugin$14
     if ((paramBundle == null) || (paramBundle.err_code != 0))
     {
       this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
-      bbmy.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, ajjy.a(2131636946), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131167766));
+      bcpw.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, ajyc.a(2131702730), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131298865));
       return;
     }
-    bbmy.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, ajjy.a(2131636950), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131167766));
+    bcpw.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, ajyc.a(2131702734), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131298865));
     this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
   }
 }

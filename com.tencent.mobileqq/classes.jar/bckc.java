@@ -1,13 +1,8 @@
-public class bckc
+import android.view.View;
+
+public abstract interface bckc
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  public abstract void a(View paramView, int paramInt);
 }
 
 

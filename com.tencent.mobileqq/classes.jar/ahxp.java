@@ -1,88 +1,36 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahxp
-  implements MediaPlayer.OnPreparedListener
+  extends ahxt
 {
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  boolean jdField_a_of_type_Boolean;
-  
-  public ahxp(ahxk paramahxk, JSONObject paramJSONObject, String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
   public void a()
   {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
-      this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
-      this.jdField_a_of_type_Ahxk.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-      return;
-    }
-    catch (Exception localException1)
-    {
-      ahxk.a(this.jdField_a_of_type_Ahxk, "-->handleJsRequest exception:" + localException1.toString());
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("code", 2);
-        localJSONObject.put("errorMessage", "exception");
-        this.jdField_a_of_type_Ahxk.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
+    RMVideoStateMgr.a().a.q();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoIdleState", 2, "[@] initState end");
     }
   }
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public boolean a()
   {
-    if (ahxk.a(this.jdField_a_of_type_Ahxk).a()) {}
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        ahxk.a(this.jdField_a_of_type_Ahxk, "-->play failed");
-        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Ahxk.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        return;
-        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 0);
-      }
-      return;
+    RMVideoStateMgr.a().a("RMVideoIdleState");
+    return true;
+  }
+  
+  public void b()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoIdleState", 2, "[@] realDeleteVideoSegment ...");
     }
-    catch (Exception paramMediaPlayer)
-    {
-      ahxk.a(this.jdField_a_of_type_Ahxk, "-->handleJsRequest exception:" + paramMediaPlayer.toString());
-      try
-      {
-        paramMediaPlayer = new JSONObject();
-        paramMediaPlayer.put("code", 2);
-        paramMediaPlayer.put("errorMessage", "exception");
-        this.jdField_a_of_type_Ahxk.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
-        return;
-      }
-      catch (Exception paramMediaPlayer)
-      {
-        paramMediaPlayer.printStackTrace();
-      }
-    }
+    localRMVideoStateMgr.a.a(100);
+    localRMVideoStateMgr.a(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahxp
  * JD-Core Version:    0.7.0.1
  */

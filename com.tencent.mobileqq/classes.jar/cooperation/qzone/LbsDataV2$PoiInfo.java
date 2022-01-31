@@ -3,12 +3,12 @@ package cooperation.qzone;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfpb;
+import bgxi;
 
 public class LbsDataV2$PoiInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PoiInfo> CREATOR = new bfpb();
+  public static final Parcelable.Creator<PoiInfo> CREATOR = new bgxi();
   public String address;
   public String city = "";
   public String country = "";

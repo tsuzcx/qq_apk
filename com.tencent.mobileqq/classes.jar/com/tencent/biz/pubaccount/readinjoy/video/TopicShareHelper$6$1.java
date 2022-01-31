@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bbms;
-import pyo;
+import bcpq;
+import qko;
 
 class TopicShareHelper$6$1
   implements Runnable
@@ -10,8 +10,8 @@ class TopicShareHelper$6$1
   
   public void run()
   {
-    if ((pyo.a(this.a.this$0) != null) && (pyo.a(this.a.this$0).isShowing())) {
-      pyo.a(this.a.this$0).dismiss();
+    if ((qko.a(this.a.this$0) != null) && (qko.a(this.a.this$0).isShowing())) {
+      qko.a(this.a.this$0).dismiss();
     }
   }
 }

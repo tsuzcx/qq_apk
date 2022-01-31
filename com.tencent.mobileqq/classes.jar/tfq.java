@@ -1,15 +1,17 @@
+import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.2.1;
 
-class tfq
-  implements tfu
+public class tfq
+  implements syt<tgm, tgn>
 {
-  tfq(tfp paramtfp) {}
+  tfq(tfn paramtfn) {}
   
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  public void a(@NonNull tgm paramtgm, @Nullable tgn paramtgn, @NonNull ErrorMessage paramErrorMessage)
   {
-    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
+    this.a.b.post(new MsgTabNodeListLoader.2.1(this, paramtgm, paramtgn, paramErrorMessage));
   }
 }
 

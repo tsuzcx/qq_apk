@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
+import android.graphics.NinePatch;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Shader.TileMode;
@@ -32,6 +33,7 @@ public class RegionDrawable
   private final Rect mDstRect = new Rect();
   private Handler mMainHandler = new RegionDrawable.1(this, Looper.getMainLooper());
   private boolean mMutated;
+  private NinePatch mNinePatch;
   private RegionBitmap mRegionBitmap;
   private int mRegionDrawableState;
   private RegionDrawable.RegionState mRegionState;
@@ -110,18 +112,24 @@ public class RegionDrawable
     {
       this.mBitmap = paramBitmap;
       if (paramBitmap == null) {
-        break label26;
+        break label62;
       }
       computeBitmapSize();
     }
     for (;;)
     {
       invalidateSelf();
+      paramBitmap = this.mBitmap.getNinePatchChunk();
+      if ((paramBitmap == null) || (!NinePatch.isNinePatchChunk(paramBitmap))) {
+        break;
+      }
+      this.mNinePatch = new NinePatch(this.mBitmap, paramBitmap, null);
       return;
-      label26:
+      label62:
       this.mBitmapHeight = -1;
       this.mBitmapWidth = -1;
     }
+    this.mNinePatch = null;
   }
   
   public void draw(Canvas paramCanvas)
@@ -138,21 +146,24 @@ public class RegionDrawable
         localObject2 = localRegionState.mTileModeX;
         localTileMode = localRegionState.mTileModeY;
         if ((localObject2 != null) || (localTileMode != null)) {
-          break label162;
+          break label165;
         }
         localRegionState.mPaint.setShader(null);
         localRegionState.mRebuildShader = false;
         copyBounds(this.mDstRect);
       }
       if (localRegionState.mPaint.getShader() != null) {
-        break label211;
+        break label233;
       }
       if (this.mApplyGravity)
       {
         Gravity.apply(localRegionState.mGravity, this.mBitmapWidth, this.mBitmapHeight, getBounds(), this.mDstRect);
         this.mApplyGravity = false;
       }
-      paramCanvas.drawBitmap(localBitmap, null, this.mDstRect, localRegionState.mPaint);
+      if (this.mNinePatch == null) {
+        break label214;
+      }
+      this.mNinePatch.draw(paramCanvas, this.mDstRect);
     }
     for (;;)
     {
@@ -160,7 +171,7 @@ public class RegionDrawable
         this.mRegionBitmap.draw(paramCanvas, localRegionState.mPaint);
       }
       return;
-      label162:
+      label165:
       Paint localPaint = localRegionState.mPaint;
       Object localObject1 = localObject2;
       if (localObject2 == null) {
@@ -172,7 +183,10 @@ public class RegionDrawable
       }
       localPaint.setShader(new BitmapShader(localBitmap, (Shader.TileMode)localObject1, (Shader.TileMode)localObject2));
       break;
-      label211:
+      label214:
+      paramCanvas.drawBitmap(localBitmap, null, this.mDstRect, localRegionState.mPaint);
+      continue;
+      label233:
       if (this.mApplyGravity)
       {
         copyBounds(this.mDstRect);

@@ -1,36 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.XListView;
-
-class afsz
-  implements begh
+public abstract interface afsz
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  public abstract void a(String paramString, int paramInt, float paramFloat);
   
-  afsz(afsu paramafsu) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-    this.b = paramInt3;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (this.jdField_a_of_type_Afsu.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == this.jdField_a_of_type_Afsu.jdField_a_of_type_Afte) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i(afsu.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, scrollState = " + paramInt + ", lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
-      }
-    } while ((this.b == 0) || (this.jdField_a_of_type_Int != this.b) || (paramInt != 0));
-    if (QLog.isColorLevel()) {
-      QLog.i(afsu.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, reach bottom, lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
-    }
-    afsu.a(this.jdField_a_of_type_Afsu);
-  }
+  public abstract void c(boolean paramBoolean);
 }
 
 

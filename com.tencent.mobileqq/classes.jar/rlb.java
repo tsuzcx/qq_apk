@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.LinearLayout;
 
-public class rlb
-  implements DialogInterface.OnDismissListener
+class rlb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public rlb(BridgeModule paramBridgeModule) {}
+  rlb(rky paramrky) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!BridgeModule.access$300(this.a)) {}
-    BridgeModule.access$302(this.a, false);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    rky.a(this.a).getLayoutParams().height = i;
+    rky.a(this.a).requestLayout();
   }
 }
 

@@ -1,34 +1,30 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.biz.qqstory.view.xrecyclerview.XRecyclerView;
+import android.content.Context;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class vrj
-  extends RecyclerView.OnScrollListener
 {
-  public vrj(XRecyclerView paramXRecyclerView) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public static vrn a(Context paramContext, String paramString)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    paramInt = paramRecyclerView.getChildCount();
-    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+    paramContext = vrn.a(paramContext);
+    if (paramContext != null)
     {
-      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
-      int i = paramRecyclerView.getItemCount();
-      int[] arrayOfInt = paramRecyclerView.findFirstVisibleItemPositions(null);
-      if (i - paramInt > paramRecyclerView.getSpanCount() * 3 + arrayOfInt[0]) {
-        break label76;
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
+      {
+        vrn localvrn = (vrn)paramContext.next();
+        if (TextUtils.equals(paramString, localvrn.a)) {
+          return localvrn;
+        }
       }
     }
-    label76:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt != 0) {
-        XRecyclerView.a(this.a).b(false);
-      }
-      return;
-    }
+    return null;
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return !TextUtils.isEmpty(bbaj.a(paramContext, "qqstory_savedMusicList"));
   }
 }
 

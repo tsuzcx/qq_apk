@@ -1,146 +1,264 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.LinearLayout;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AuthorizationItem;
+import android.content.res.Resources;
+import android.content.res.XmlResourceParser;
+import android.os.Build.VERSION;
+import android.util.Log;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
-public class behs
-  extends begr
-  implements View.OnClickListener
+public final class behs
+  extends behr
 {
-  private final List<beht> jdField_a_of_type_JavaUtilList;
-  private ypi jdField_a_of_type_Ypi;
-  private final ypj jdField_a_of_type_Ypj;
+  private Context a;
   
-  public behs(Activity paramActivity, ypj paramypj, ypi paramypi, List<beht> paramList)
+  public behs(Context paramContext)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Ypj = paramypj;
-    this.jdField_a_of_type_Ypi = paramypi;
-    f();
+    this.a = paramContext;
   }
   
-  private AuthorizationItem a(beht parambeht, int paramInt, String paramString)
+  private behj a(XmlPullParser paramXmlPullParser)
   {
-    return new AuthorizationItem(getContext(), paramString, parambeht, paramInt);
-  }
-  
-  private void f()
-  {
-    LinearLayout localLinearLayout1 = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131493414, null);
-    LinearLayout localLinearLayout2 = (LinearLayout)localLinearLayout1.findViewById(2131302702);
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    try
     {
-      int k = this.jdField_a_of_type_JavaUtilList.size();
-      int j = 0;
-      if (j < k)
+      behj localbehj = new behj();
+      int i = 0;
+      Object localObject;
+      for (;;)
       {
-        int i;
-        if ((beht)this.jdField_a_of_type_JavaUtilList.get(j) != AuthorizationItem.d)
-        {
-          if (k != 1) {
-            break label145;
-          }
-          i = 3;
-        }
-        for (;;)
-        {
-          localLinearLayout2.addView(a((beht)this.jdField_a_of_type_JavaUtilList.get(j), i, this.jdField_a_of_type_Ypj.a(((beht)this.jdField_a_of_type_JavaUtilList.get(j)).b)));
-          j += 1;
+        localObject = localbehj;
+        if (i >= paramXmlPullParser.getAttributeCount()) {
           break;
-          label145:
-          if (k == 2)
-          {
-            if (j == 0) {
-              i = 0;
-            } else {
-              i = 2;
-            }
-          }
-          else if (j == 0) {
-            i = 0;
-          } else if (j < k - 1) {
-            i = 1;
-          } else {
-            i = 2;
-          }
         }
+        localObject = paramXmlPullParser.getAttributeName(i);
+        String str = paramXmlPullParser.getAttributeValue(i);
+        if ("name".equals(localObject)) {
+          localbehj.jdField_a_of_type_JavaLangString = str;
+        }
+        i += 1;
       }
+      return localObject;
     }
-    a(localLinearLayout1);
-    localLinearLayout1.findViewById(2131297933).setOnClickListener(this);
-    localLinearLayout1.findViewById(2131297956).setOnClickListener(this);
-    localLinearLayout1.findViewById(2131302967).setOnClickListener(this);
+    catch (Exception paramXmlPullParser)
+    {
+      besl.d("PermissionParser", paramXmlPullParser.getMessage(), paramXmlPullParser);
+      localObject = null;
+    }
   }
   
-  public void onClick(View paramView)
+  private behk a(XmlPullParser paramXmlPullParser)
   {
-    Object localObject;
-    switch (paramView.getId())
+    behk localbehk;
+    int i;
+    String str1;
+    String str2;
+    try
     {
-    default: 
-      return;
-    case 2131302967: 
-      if (QLog.isColorLevel()) {
-        QLog.d("ActionSheet", 2, "onClick to show authorize description");
+      localbehk = new behk();
+      i = 0;
+      if (i >= paramXmlPullParser.getAttributeCount()) {
+        break label235;
       }
-      paramView = new behp(getContext());
-      localObject = paramView.getWindow();
-      if (localObject != null) {
-        ((Window)localObject).setWindowAnimations(2131689474);
+      str1 = paramXmlPullParser.getAttributeName(i);
+      str2 = paramXmlPullParser.getAttributeValue(i);
+      if ("id".equals(str1)) {
+        localbehk.jdField_a_of_type_JavaLangString = str2;
+      } else if ("name".equals(str1)) {
+        localbehk.b = a(str2);
       }
-      paramView.show();
-      return;
-    case 2131297933: 
-      if (QLog.isColorLevel()) {
-        QLog.d("ActionSheet", 2, "onClick to cancel authorize dialog");
-      }
-      if (this.jdField_a_of_type_Ypi != null)
-      {
-        this.jdField_a_of_type_Ypj.a = 2;
-        this.jdField_a_of_type_Ypi.a(this.jdField_a_of_type_Ypj);
-      }
-      dismiss();
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ActionSheet", 2, "onClick to confirm authorize user info");
-    }
-    paramView = PreferenceManager.getDefaultSharedPreferences(getContext().getApplicationContext());
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    catch (Exception paramXmlPullParser)
     {
-      localObject = (beht)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Ypj.a(((beht)localObject).b)))
+      besl.d("PermissionParser", paramXmlPullParser.getMessage(), paramXmlPullParser);
+      return null;
+    }
+    if ("description".equals(str1)) {
+      localbehk.c = a(str2);
+    } else if ("description-reject".equals(str1)) {
+      localbehk.d = a(str2);
+    } else if ("built-in".equals(str1)) {
+      localbehk.jdField_a_of_type_Boolean = Boolean.parseBoolean(str2);
+    } else if ("min-sdk-version".equals(str1)) {
+      if (!a(str2)) {
+        break label270;
+      }
+    }
+    label270:
+    for (int j = Integer.parseInt(str2);; j = 1)
+    {
+      if (Build.VERSION.SDK_INT < j)
       {
-        paramView.edit().putBoolean(((beht)localObject).b, true).apply();
-        if (QLog.isColorLevel()) {
-          QLog.d("ActionSheet", 2, "record " + ((beht)localObject).b + " authorize");
+        Log.i("PermissionParser", "Ignore permission " + localbehk + ". Required min-sdk-version is " + j);
+        return null;
+        label235:
+        if (belh.a(localbehk.d)) {
+          localbehk.d = this.a.getString(2131694234);
         }
+        return localbehk;
       }
       i += 1;
+      break;
     }
-    if (this.jdField_a_of_type_Ypi != null)
+  }
+  
+  private String a(String paramString)
+  {
+    String str = paramString;
+    if (!belh.a(paramString))
     {
-      this.jdField_a_of_type_Ypj.a = 0;
-      this.jdField_a_of_type_Ypi.a(this.jdField_a_of_type_Ypj);
+      str = paramString;
+      if ('@' == paramString.charAt(0))
+      {
+        paramString = paramString.substring(1);
+        str = paramString;
+        if (a(paramString)) {
+          str = this.a.getString(Integer.parseInt(paramString));
+        }
+      }
     }
-    dismiss();
+    return str;
+  }
+  
+  private String a(XmlPullParser paramXmlPullParser)
+  {
+    if (paramXmlPullParser.next() == 4) {
+      return paramXmlPullParser.getText();
+    }
+    return null;
+  }
+  
+  private void a(behj parambehj, String paramString)
+  {
+    if ((parambehj == null) || (paramString == null)) {
+      return;
+    }
+    if (parambehj.jdField_a_of_type_JavaUtilList == null) {
+      parambehj.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    parambehj.jdField_a_of_type_JavaUtilList.add(paramString);
+  }
+  
+  private static boolean a(String paramString)
+  {
+    return paramString.matches("\\d+(\\.\\d+)?");
+  }
+  
+  private void b()
+  {
+    Object localObject3 = null;
+    a();
+    XmlResourceParser localXmlResourceParser = this.a.getResources().getXml(2131886085);
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (localXmlResourceParser.getEventType() != 1)
+    {
+      String str = localXmlResourceParser.getName();
+      Object localObject6;
+      Object localObject5;
+      Object localObject4;
+      switch (localXmlResourceParser.getEventType())
+      {
+      default: 
+        localObject6 = localObject1;
+        localObject5 = localObject2;
+        localObject4 = localObject3;
+      }
+      for (;;)
+      {
+        localXmlResourceParser.next();
+        localObject3 = localObject4;
+        localObject2 = localObject5;
+        localObject1 = localObject6;
+        break;
+        if ("permission".equals(str))
+        {
+          localObject6 = a(localXmlResourceParser);
+          localObject4 = localObject3;
+          localObject5 = localObject2;
+        }
+        else if ("event".equals(str))
+        {
+          localObject5 = a(localXmlResourceParser);
+          localObject4 = localObject3;
+          localObject6 = localObject1;
+        }
+        else
+        {
+          localObject4 = localObject3;
+          localObject5 = localObject2;
+          localObject6 = localObject1;
+          if ("request-permission".equals(str))
+          {
+            localObject4 = a(localXmlResourceParser);
+            localObject5 = localObject2;
+            localObject6 = localObject1;
+            continue;
+            if ("permission".equals(str))
+            {
+              a(localObject1);
+              localObject4 = localObject3;
+              localObject5 = localObject2;
+              localObject6 = localObject1;
+            }
+            else if ("event".equals(str))
+            {
+              a(localObject2);
+              localObject4 = localObject3;
+              localObject5 = localObject2;
+              localObject6 = localObject1;
+            }
+            else
+            {
+              localObject4 = localObject3;
+              localObject5 = localObject2;
+              localObject6 = localObject1;
+              if ("request-permission".equals(str))
+              {
+                a(localObject2, localObject3);
+                localObject4 = localObject3;
+                localObject5 = localObject2;
+                localObject6 = localObject1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      b();
+      return true;
+    }
+    catch (XmlPullParserException localXmlPullParserException)
+    {
+      besl.d("PermissionParser", localXmlPullParserException.getMessage(), localXmlPullParserException);
+      return false;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        besl.d("PermissionParser", localIOException.getMessage(), localIOException);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        besl.d("PermissionParser", localException.getMessage(), localException);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     behs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,89 +1,72 @@
-import android.content.Context;
+import Wallet.PopDialog;
+import Wallet.SkinInfo;
+import android.app.Dialog;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.recent.data.RecentItemContactsGuideData;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.ThemeImageView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import cooperation.qwallet.plugin.QwAdapter;
+import java.util.List;
 
-public class ahav
-  extends ahbj
+class ahav
+  implements AdapterView.OnItemClickListener
 {
-  View.OnTouchListener a;
-  protected String a;
+  ahav(ahas paramahas) {}
   
-  ahav()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new ahaw(this);
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentContactsGuideItemBuilder", 0, "RecentContactsGuideItemBuilder constructed");
-    }
-  }
-  
-  public View a(int paramInt, Object paramObject, ahbe paramahbe, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahdb paramahdb)
-  {
-    paramViewGroup = null;
-    paramahbe = paramViewGroup;
-    if (paramView != null)
+    Object localObject2 = null;
+    paramAdapterView = ahas.a(this.a).getList();
+    ahap localahap = (ahap)paramAdapterView.get(paramInt);
+    if (0L != localahap.a.skin_permission_state)
     {
-      paramahbe = paramViewGroup;
-      if ((paramView.getTag() instanceof ahax)) {
-        paramahbe = (ahax)paramView.getTag();
-      }
+      ahap.c = ((ahap)paramAdapterView.get(paramInt)).a.skin_id;
+      ahas.a(this.a).notifyDataSetChanged();
+      return;
     }
-    if (paramahbe == null)
-    {
-      paramahbe = new ahax();
-      paramView = a(paramContext, 2131493308, paramahbe);
-      paramahbe.a = ((ThemeImageView)paramView.findViewById(2131299137));
-      paramView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      paramViewGroup = paramahbe.a.getLayoutParams();
-      int i = uwv.a(BaseApplicationImpl.getApplication().getResources());
-      int j = (int)(i * 0.5D + 0.5D);
-      paramViewGroup.width = i;
-      paramViewGroup.height = j;
-      paramahbe.a.setLayoutParams(paramViewGroup);
-      paramahbe.a.setMaskShape(beog.b);
-      paramView.setTag(paramahbe);
+    String str1 = localahap.a.pop_dialog.dialog_title;
+    String str2 = localahap.a.pop_dialog.dialog_tips;
+    paramView = localahap.a.pop_dialog.left_tips;
+    Object localObject1 = localahap.a.pop_dialog.right_tips;
+    paramAdapterView = paramView;
+    if (TextUtils.isEmpty(paramView)) {
+      paramAdapterView = null;
+    }
+    paramView = (View)localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      paramView = null;
+    }
+    if ((paramAdapterView == null) && (paramView == null)) {
+      paramAdapterView = ajyc.a(2131705430);
     }
     for (;;)
     {
-      if ((paramObject instanceof RecentItemContactsGuideData))
+      if (TextUtils.isEmpty(paramAdapterView))
       {
-        paramObject = (RecentItemContactsGuideData)paramObject;
-        if ((paramObject.mUser != null) && ((paramObject.mUser.extraInfo instanceof arel)))
-        {
-          paramObject = (arel)paramObject.mUser.extraInfo;
-          if (paramObject.a != null)
-          {
-            paramahbe.a.setImageDrawable(paramObject.a);
-            paramObject.a.setURLDrawableListener(null);
-          }
-          LoginWelcomeManager.a += 1;
+        localObject1 = null;
+        if (!TextUtils.isEmpty(paramView)) {
+          break label229;
         }
       }
-      this.jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-      if (AppSetting.c) {
-        paramView.setContentDescription(ajjy.a(2131647361));
+      for (;;)
+      {
+        paramAdapterView = bbcv.a(ahas.a(this.a), 230, str1, str2, paramAdapterView, paramView, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject1);
+        paramAdapterView.setCancelable(false);
+        paramAdapterView.setCanceledOnTouchOutside(false);
+        paramAdapterView.show();
+        return;
+        localObject1 = new ahaw(this, localahap);
+        break;
+        label229:
+        localObject2 = new ahax(this, localahap);
       }
-      paramView.setOnClickListener(paramOnClickListener);
-      paramView.setOnLongClickListener(paramOnLongClickListener);
-      paramView.setTag(-1, Integer.valueOf(paramInt));
-      return paramView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahav
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,16 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
+import java.util.List;
 
 public class qhb
+  extends osp
 {
-  public static long a;
+  public qhb(FollowingListFragment paramFollowingListFragment) {}
   
-  public static void a()
+  public void b(boolean paramBoolean1, List<qbc> paramList, long paramLong, boolean paramBoolean2)
   {
-    a = System.currentTimeMillis();
-  }
-  
-  public static void a(Context paramContext)
-  {
-    long l = System.currentTimeMillis();
-    if (l - a < 10000L)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_starttime", String.valueOf(l - a));
-      obz.d(paramContext, obz.a(), true, localHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsStartStatistic", 2, "doReportStartTime param_starttime=" + (l - a));
-      }
+    FollowingListFragment.a(this.a, paramList);
+    if (FollowingListFragment.a(this.a) != null) {
+      FollowingListFragment.a(this.a).notifyDataSetChanged();
     }
   }
 }

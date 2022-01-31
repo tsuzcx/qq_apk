@@ -1,48 +1,56 @@
 package com.tencent.qqmini.sdk.runtime.app;
 
 import android.content.Context;
-import bdlq;
-import bdlr;
-import bdnw;
-import bdug;
-import bdwv;
-import bdwx;
-import bdwz;
-import bdxa;
-import bdxb;
-import bdxc;
-import bdxz;
+import bepv;
+import bepw;
+import besl;
+import bfam;
+import bfan;
+import bfao;
+import bfdj;
+import bfdl;
+import bfdn;
+import bfdo;
+import bfdp;
+import bfdq;
+import bfds;
+import bfer;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class AppRuntimeLoader
-  extends bdlq
+  extends bepv
 {
-  public static final bdlr<AppRuntimeLoader> CREATOR = new bdug();
+  public static final bepw<AppRuntimeLoader> CREATOR = new bfam();
   public static final String TAG = "AppRuntimeLoader";
-  private bdwv apkgLoadTask;
-  private bdwx baselibLoadTask;
-  private bdwz preloadFlagTask;
-  public bdxa runtimeCreateTask;
-  private bdxb runtimeInitTask;
-  public bdxc serviceInitTask;
+  private bfdj apkgLoadTask;
+  private bfdl baselibLoadTask;
+  private bfan pageCreateTask;
+  private bfao pageInitTask;
+  private bfdn preloadFlagTask;
+  public bfdo runtimeCreateTask;
+  private bfdp runtimeInitTask;
+  public bfdq serviceCreateTask;
+  public bfds serviceInitTask;
   
   public AppRuntimeLoader(Context paramContext)
   {
     super(paramContext);
   }
   
-  public bdxz[] createTasks()
+  public bfer[] createTasks()
   {
     Context localContext = this.mContext;
-    this.runtimeCreateTask = new bdxa(localContext, this);
-    this.runtimeInitTask = new bdxb(localContext, this);
-    this.baselibLoadTask = new bdwx(localContext, this);
-    this.apkgLoadTask = new bdwv(localContext, this);
-    this.serviceInitTask = new bdxc(localContext, this);
-    this.preloadFlagTask = new bdwz(localContext, this);
-    this.runtimeInitTask.a(this.preloadFlagTask.a(this.serviceInitTask.a(this.baselibLoadTask).a(this.runtimeCreateTask))).a(this.apkgLoadTask);
-    addTasks(new bdxz[] { this.runtimeInitTask, this.preloadFlagTask, this.serviceInitTask, this.baselibLoadTask, this.runtimeCreateTask, this.apkgLoadTask });
-    return new bdxz[] { this.runtimeInitTask };
+    this.runtimeCreateTask = new bfdo(localContext, this);
+    this.serviceCreateTask = new bfdq(localContext, this);
+    this.runtimeInitTask = new bfdp(localContext, this);
+    this.baselibLoadTask = new bfdl(localContext, this);
+    this.apkgLoadTask = new bfdj(localContext, this);
+    this.serviceInitTask = new bfds(localContext, this);
+    this.preloadFlagTask = new bfdn(localContext, this);
+    this.pageCreateTask = new bfan(localContext, this);
+    this.pageInitTask = new bfao(localContext, this);
+    this.runtimeInitTask.a(this.preloadFlagTask.a(this.serviceInitTask.a(this.serviceCreateTask.a(this.runtimeCreateTask)).a(this.baselibLoadTask)).a(this.pageInitTask.a(this.pageCreateTask.a(this.runtimeCreateTask)).a(this.baselibLoadTask))).a(this.apkgLoadTask);
+    return new bfer[] { this.runtimeInitTask };
   }
   
   public void loadMiniAppInfo(MiniAppInfo paramMiniAppInfo)
@@ -51,39 +59,39 @@ public class AppRuntimeLoader
     this.apkgLoadTask.a(paramMiniAppInfo);
   }
   
-  public void onTaskDone(bdxz parambdxz)
+  public void onTaskDone(bfer parambfer)
   {
-    if (parambdxz == null) {
+    if (parambfer == null) {
       return;
     }
-    bdnw.a("AppRuntimeLoader", "onTaskDone " + parambdxz);
-    if (!parambdxz.d())
+    besl.a("AppRuntimeLoader", "onTaskDone " + parambfer);
+    if (!parambfer.d())
     {
       notifyRuntimeEvent(12, new Object[0]);
-      onRuntimeLoadResult(parambdxz.jdField_a_of_type_Int, parambdxz.jdField_a_of_type_JavaLangString);
+      onRuntimeLoadResult(parambfer.jdField_a_of_type_Int, parambfer.jdField_a_of_type_JavaLangString);
       return;
     }
-    if (parambdxz == this.preloadFlagTask) {
+    if (parambfer == this.preloadFlagTask) {
       notifyRuntimeEvent(3, new Object[0]);
     }
     for (;;)
     {
-      super.onTaskDone(parambdxz);
+      super.onTaskDone(parambfer);
       return;
-      if (parambdxz == this.runtimeCreateTask)
+      if (parambfer == this.runtimeCreateTask)
       {
         if (this.runtimeCreateTask.d()) {
           this.mRuntime = this.runtimeCreateTask.a();
         }
       }
-      else if (parambdxz == this.runtimeInitTask)
+      else if (parambfer == this.runtimeInitTask)
       {
         if (this.runtimeInitTask.d()) {
           notifyRuntimeEvent(4, new Object[0]);
         }
         this.mIsRunning = false;
       }
-      else if ((parambdxz == this.apkgLoadTask) && (this.apkgLoadTask.d()) && (this.mMiniAppInfo != null))
+      else if ((parambfer == this.apkgLoadTask) && (this.apkgLoadTask.d()) && (this.mMiniAppInfo != null))
       {
         this.mMiniAppInfo.apkgInfo = this.apkgLoadTask.a();
       }

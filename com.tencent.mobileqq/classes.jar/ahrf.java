@@ -1,110 +1,135 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.net.Uri;
+import android.os.Build;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class ahrf
-  extends aiab
+  implements ufm, ufn, ufo, ufp
 {
-  public ahrf(RecentMemberInnerFrame paramRecentMemberInnerFrame)
-  {
-    super(paramRecentMemberInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, paramRecentMemberInnerFrame.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, RecentMemberInnerFrame.a(paramRecentMemberInnerFrame), 1, true);
-  }
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "N1T", "ZTE A2015", "MI 1S", "GT-S7568I", "ZTE N909" };
+  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "SM-A7000", "HM NOTE 1S", "MI 2S" };
+  private static final String[] c = { "vivo X6D" };
+  private static final String[] d = { "MI 4" };
+  private static final String[] e = { "Nexus 5" };
+  private static final String[] f = { "Nexus 5" };
+  private static final String[] g = { "OPPO R7sm" };
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private ahrg jdField_a_of_type_Ahrg;
+  private Uri jdField_a_of_type_AndroidNetUri;
+  private TextureVideoView jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private boolean jdField_a_of_type_Boolean;
+  private volatile boolean jdField_b_of_type_Boolean;
   
-  public int getCount()
+  private void a()
   {
-    if (RecentMemberInnerFrame.a(this.a) == null) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity.GuideVideoHandler", 2, "handleError");
     }
-    return RecentMemberInnerFrame.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < RecentMemberInnerFrame.a(this.a).size())) {
-      return RecentMemberInnerFrame.a(this.a).get(paramInt);
+    if (this.jdField_a_of_type_Ahrg != null) {
+      this.jdField_a_of_type_Ahrg.a();
     }
-    return null;
   }
   
-  public long getItemId(int paramInt)
+  public static boolean a(String[] paramArrayOfString)
   {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if ((paramView != null) && (paramView.getTag() != null))
+    boolean bool2 = false;
+    String str = Build.MODEL;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity.GuideVideoHandler", 2, "isNotSupportLoopVideo model=" + str);
+    }
+    boolean bool1 = bool2;
+    int j;
+    int i;
+    if (str != null)
     {
-      localObject = (ahrg)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
+      j = paramArrayOfString.length;
+      i = 0;
     }
-    RecentUser localRecentUser;
     for (;;)
     {
-      localRecentUser = (RecentUser)getItem(paramInt);
-      if (localRecentUser != null) {
-        break;
-      }
-      return paramViewGroup;
-      paramView = new ahrg(this.a, null);
-      paramViewGroup = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2131496808, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131298635));
-      paramView.c = ((ImageView)paramViewGroup.findViewById(2131302061));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131304981));
-      paramViewGroup.setTag(paramView);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b(localRecentUser.uin))
-    {
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      paramView.c.setImageBitmap(a(1, localRecentUser.uin));
-      localObject = RecentMemberInnerFrame.a(this.a).b(localRecentUser.uin);
-      if (localObject != null) {
-        break label323;
-      }
-      localObject = "";
-      label189:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      paramView.jdField_a_of_type_JavaLangString = localRecentUser.uin;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.contains(localRecentUser.uin))) {
-        break label333;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
-      label249:
-      if (AppSetting.c)
+      bool1 = bool2;
+      if (i < j)
       {
-        if ((!paramView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) || (!paramView.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())) {
-          break label344;
+        if (str.equals(paramArrayOfString[i])) {
+          bool1 = true;
         }
-        paramViewGroup.setContentDescription((String)localObject + ajjy.a(2131647410));
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public void a(ufk paramufk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity.GuideVideoHandler", 2, "MediaPlayer onCompletion has been called.   at " + paramufk.b() + " mIsPause" + this.jdField_a_of_type_Boolean);
+    }
+    this.jdField_a_of_type_Int = paramufk.b();
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      paramufk.c();
+      paramufk.a(true);
+    }
+    if ((a(c)) && (!this.jdField_a_of_type_Boolean))
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVideoURI(this.jdField_a_of_type_AndroidNetUri);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.start();
+    }
+  }
+  
+  public boolean a(ufk paramufk, int paramInt1, int paramInt2)
+  {
+    paramufk = new StringBuilder(64);
+    paramufk.append("bgVideo error-- what=");
+    paramufk.append(paramInt1);
+    paramufk.append(" extra=");
+    paramufk.append(paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity.GuideVideoHandler", 2, paramufk.toString());
+    }
+    a();
+    paramufk = Build.MODEL;
+    if (paramufk != null)
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("crashModel", paramufk);
+      axrl.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext()).a(null, "newHandGuide_error", true, 0L, 0L, localHashMap, "", false);
+    }
+    return true;
+  }
+  
+  public void a_(ufk paramufk)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.E();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity.GuideVideoHandler", 2, "MediaPlayer onPrepared has been called. talkback=" + AppSetting.d + " videoPrepareTime=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+  }
+  
+  public boolean a_(ufk paramufk, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 3)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginActivity.GuideVideoHandler", 2, "onInfo what===>" + paramInt1);
+      }
+      if (a(f)) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(103);
       }
     }
-    for (;;)
-    {
-      paramViewGroup.setOnClickListener(this.a);
-      return paramViewGroup;
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      break;
-      label323:
-      localObject = babh.a((Friends)localObject);
-      break label189;
-      label333:
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-      break label249;
-      label344:
-      paramViewGroup.setContentDescription((String)localObject + ajjy.a(2131647407));
-    }
+    return false;
   }
 }
 

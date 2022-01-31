@@ -1,23 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
-
-public final class amsg
-  implements Parcelable.Creator<IntimateInfo.CommonTroopInfo>
+public class amsg
 {
-  public IntimateInfo.CommonTroopInfo a(Parcel paramParcel)
-  {
-    return new IntimateInfo.CommonTroopInfo(paramParcel);
-  }
-  
-  public IntimateInfo.CommonTroopInfo[] a(int paramInt)
-  {
-    return new IntimateInfo.CommonTroopInfo[paramInt];
-  }
+  public int a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amsg
  * JD-Core Version:    0.7.0.1
  */

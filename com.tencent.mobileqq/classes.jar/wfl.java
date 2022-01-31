@@ -1,21 +1,10 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.mobileqq.pb.PBStringField;
-
-public class wfl
-  implements whu
+public abstract interface wfl
 {
-  public wfl(VideoPlayerView paramVideoPlayerView) {}
-  
-  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
-  {
-    wye.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "finish_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     wfl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,53 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aupd
-  implements atpa
+public final class aupd
 {
-  private WeakReference<ReceiptMessageDetailFragment> a;
+  public final List<aupe> a = new ArrayList();
   
-  public aupd(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  private void a(String paramString)
   {
-    this.a = new WeakReference(paramReceiptMessageDetailFragment);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(atpb paramatpb)
-  {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
-    if (localReceiptMessageDetailFragment == null) {
-      return;
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("c2c");
+        if (paramString.length() > 0)
+        {
+          int j = paramString.length();
+          int i = 0;
+          while (i < j)
+          {
+            aupe localaupe = new aupe();
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            localaupe.jdField_a_of_type_Int = localJSONObject.optInt("appid");
+            localaupe.d = localJSONObject.optString("title");
+            localaupe.e = localJSONObject.optString("iconNormal");
+            localaupe.f = localJSONObject.optString("iconPress");
+            localaupe.g = localJSONObject.optString("iconNightNormal");
+            localaupe.h = localJSONObject.optString("iconNightPress");
+            localaupe.jdField_b_of_type_Int = localJSONObject.optInt("redDotID");
+            localaupe.jdField_c_of_type_JavaLangString = localJSONObject.optString("redDotPath");
+            localaupe.jdField_a_of_type_JavaLangString = localJSONObject.optString("actionType");
+            localaupe.jdField_b_of_type_JavaLangString = localJSONObject.optString("action");
+            localaupe.jdField_c_of_type_Int = localJSONObject.optInt("order");
+            localaupe.a();
+            localaupe.b();
+            this.a.add(localaupe);
+            i += 1;
+          }
+        }
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("AIOPanelIconConfigProcessor", 1, paramString, new Object[0]);
+      }
     }
-    switch (paramatpb.a)
-    {
-    default: 
-      return;
-    case -1: 
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(7);
-      return;
-    }
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(6);
   }
 }
 

@@ -1,74 +1,87 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Book;
-import com.tencent.mobileqq.data.IPSiteModel.Comic;
-import com.tencent.mobileqq.data.IPSiteModel.Game;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
-import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
-import com.tencent.mobileqq.data.IPSiteModel.Video;
-import com.tencent.mobileqq.data.VipIPSiteInfo;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class amtr
-  implements Parcelable.Creator
+public class amtr
+  implements ampd<String>
 {
-  public VipIPSiteInfo a(Parcel paramParcel)
+  public ArrayList<amts> a = new ArrayList();
+  
+  public void a(String paramString)
   {
-    VipIPSiteInfo localVipIPSiteInfo = new VipIPSiteInfo();
-    localVipIPSiteInfo.ipID = paramParcel.readInt();
-    localVipIPSiteInfo.ipName = paramParcel.readString();
-    localVipIPSiteInfo.ipDesc = paramParcel.readString();
-    localVipIPSiteInfo.ipUrl = paramParcel.readString();
-    localVipIPSiteInfo.itemSize = paramParcel.readInt();
-    localVipIPSiteInfo.strType = paramParcel.readString();
-    localVipIPSiteInfo.extId = paramParcel.readInt();
-    localVipIPSiteInfo.extStr = paramParcel.readString();
-    localVipIPSiteInfo.ipLogo = paramParcel.readString();
-    localVipIPSiteInfo.ipContent = paramParcel.readString();
-    if (localVipIPSiteInfo.ipList == null) {
-      localVipIPSiteInfo.ipList = new ArrayList();
-    }
-    localVipIPSiteInfo.ipList.clear();
-    if ("gxzb".equals(localVipIPSiteInfo.strType)) {
-      paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Gxzb.class.getClassLoader());
-    }
-    do
+    this.a.clear();
+    if (TextUtils.isEmpty(paramString))
     {
-      return localVipIPSiteInfo;
-      if ("game".equals(localVipIPSiteInfo.strType))
+      QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config content is empty");
+      return;
+    }
+    for (;;)
+    {
+      int i;
+      try
       {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Game.class.getClassLoader());
-        return localVipIPSiteInfo;
+        paramString = new JSONObject(paramString).optJSONArray("random_list");
+        if (paramString != null)
+        {
+          i = 0;
+          if (i < paramString.length())
+          {
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            amts localamts = new amts();
+            localamts.a = localJSONObject.optString("nick", "");
+            localamts.b = localJSONObject.optString("headid", "");
+            localamts.c = localJSONObject.optString("url", "");
+            if ((!TextUtils.isEmpty(localamts.a)) && (!TextUtils.isEmpty(localamts.b)) && (!TextUtils.isEmpty(localamts.c))) {
+              break label230;
+            }
+            if (!QLog.isColorLevel()) {
+              break label235;
+            }
+            QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse.find invalid,index=", Integer.valueOf(i) });
+            break label235;
+            if (j == 0) {
+              break label240;
+            }
+            this.a.add(localamts);
+            break label240;
+          }
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse=", toString() });
+        return;
       }
-      if ("goods".equals(localVipIPSiteInfo.strType))
+      catch (JSONException paramString)
       {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Goods.class.getClassLoader());
-        return localVipIPSiteInfo;
+        QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config.getException.", paramString);
+        return;
       }
-      if ("video".equals(localVipIPSiteInfo.strType))
-      {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Video.class.getClassLoader());
-        return localVipIPSiteInfo;
-      }
-      if ("book".equals(localVipIPSiteInfo.strType))
-      {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Book.class.getClassLoader());
-        return localVipIPSiteInfo;
-      }
-    } while (!"comic".equals(localVipIPSiteInfo.strType));
-    paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Comic.class.getClassLoader());
-    return localVipIPSiteInfo;
+      label230:
+      int j = 1;
+      continue;
+      label235:
+      j = 0;
+      continue;
+      label240:
+      i += 1;
+    }
   }
   
-  public VipIPSiteInfo[] a(int paramInt)
+  public String toString()
   {
-    return new VipIPSiteInfo[paramInt];
+    if (this.a.size() > 0) {
+      return this.a.toString();
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amtr
  * JD-Core Version:    0.7.0.1
  */

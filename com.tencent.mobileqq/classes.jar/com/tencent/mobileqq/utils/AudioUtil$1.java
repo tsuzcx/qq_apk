@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.utils;
 
-import arki;
-import baan;
+import asgl;
+import bbbr;
 
 public final class AudioUtil$1
   implements Runnable
 {
   public void run()
   {
-    arki.a().a(baan.a());
+    asgl.a().a(bbbr.a());
   }
 }
 

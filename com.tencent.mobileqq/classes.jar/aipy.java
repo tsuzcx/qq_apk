@@ -1,33 +1,15 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
 
-final class aipy
-  implements EIPCResultCallback
+public abstract interface aipy
 {
-  aipy(String paramString, long paramLong) {}
+  public abstract void a(DiscussionInfo paramDiscussionInfo);
   
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    paramEIPCResult = paramEIPCResult.data;
-    int i = paramEIPCResult.getInt("type");
-    if (i == 1)
-    {
-      paramEIPCResult = paramEIPCResult.getString("nickName");
-      aing.a().callbackGetNick(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
-    }
-    while (i != 2) {
-      return;
-    }
-    paramEIPCResult = (Bitmap)paramEIPCResult.getParcelable("head");
-    aing.a().callbackGetHead(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
-  }
+  public abstract void a(TroopInfo paramTroopInfo, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aipy
  * JD-Core Version:    0.7.0.1
  */

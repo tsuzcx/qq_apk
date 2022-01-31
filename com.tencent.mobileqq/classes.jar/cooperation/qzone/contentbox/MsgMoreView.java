@@ -6,9 +6,10 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import bajq;
-import bftu;
-import bfum;
+import android.widget.TextView;
+import bbkx;
+import bhce;
+import bhcw;
 import cooperation.qzone.contentbox.model.MQBottomCell;
 import cooperation.qzone.contentbox.model.MQMsg;
 import java.util.ArrayList;
@@ -16,10 +17,10 @@ import java.util.ArrayList;
 public class MsgMoreView
   extends FrameLayout
 {
-  private static final int jdField_a_of_type_Int = bajq.b(24.0F);
+  private static final int jdField_a_of_type_Int = bbkx.b(24.0F);
   private Context jdField_a_of_type_AndroidContentContext;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private bfum jdField_a_of_type_Bfum;
+  private bhcw jdField_a_of_type_Bhcw;
   private MQMsg jdField_a_of_type_CooperationQzoneContentboxModelMQMsg;
   
   public MsgMoreView(@NonNull Context paramContext)
@@ -43,12 +44,12 @@ public class MsgMoreView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131496392, this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131297425));
-    setOnClickListener(new bftu(this));
+    LayoutInflater.from(paramContext).inflate(2131561991, this);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131362965));
+    setOnClickListener(new bhce(this));
   }
   
-  public void setData(MQMsg paramMQMsg)
+  public void setData(MQMsg paramMQMsg, boolean paramBoolean)
   {
     int j = 0;
     this.jdField_a_of_type_CooperationQzoneContentboxModelMQMsg = paramMQMsg;
@@ -75,11 +76,14 @@ public class MsgMoreView
         i = paramMQMsg.userAvatar.size();
       }
     }
+    if (paramBoolean) {
+      ((TextView)findViewById(2131370438)).setTextColor(-7500397);
+    }
   }
   
-  public void setMsgOnClickListener(bfum parambfum)
+  public void setMsgOnClickListener(bhcw parambhcw)
   {
-    this.jdField_a_of_type_Bfum = parambfum;
+    this.jdField_a_of_type_Bhcw = parambhcw;
   }
 }
 

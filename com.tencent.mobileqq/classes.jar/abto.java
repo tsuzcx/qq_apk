@@ -1,23 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.util.Pair;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class abto
-  implements DialogInterface.OnClickListener
+public class abto
+  extends aimv
 {
-  abto(abtn paramabtn, axam paramaxam, Pair paramPair) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Axam.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!axam.a(this.jdField_a_of_type_Abtn.a.app))
-    {
-      this.jdField_a_of_type_Abtn.a.setTitle("");
-      axal.a(this.jdField_a_of_type_Abtn.a.app, this.jdField_a_of_type_Abtn.a, null);
-    }
-    this.jdField_a_of_type_Abtn.a.finish();
-  }
+  public abtm a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
 }
 
 

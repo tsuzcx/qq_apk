@@ -1,65 +1,78 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqLikeFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Stack;
 
 public class snp
-  extends soh
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int b = -1;
+  private static int jdField_a_of_type_Int = 3;
+  private static String jdField_a_of_type_JavaLangString = "PublicAccountImageCollectionActivityManager";
+  private static Stack<Activity> jdField_a_of_type_JavaUtilStack;
+  private static snp jdField_a_of_type_Snp;
   
-  public snp(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
+  public static snp a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public String a()
-  {
-    return snm.b;
-  }
-  
-  public soi a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspLikeFeed localRspLikeFeed = new qqstory_service.RspLikeFeed();
-    try
-    {
-      localRspLikeFeed.mergeFrom(paramArrayOfByte);
-      return new snq(localRspLikeFeed);
+    if (jdField_a_of_type_Snp == null) {
+      jdField_a_of_type_Snp = new snp();
     }
-    catch (Exception paramArrayOfByte)
-    {
-      urk.d("Q.qqstory:FeedLikeDataProvider", "" + paramArrayOfByte);
-    }
-    return null;
+    return jdField_a_of_type_Snp;
   }
   
-  protected byte[] a()
+  private void b()
   {
-    qqstory_service.ReqLikeFeed localReqLikeFeed = new qqstory_service.ReqLikeFeed();
-    localReqLikeFeed.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    PBUInt32Field localPBUInt32Field = localReqLikeFeed.operation;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 2)
+    Activity localActivity = (Activity)jdField_a_of_type_JavaUtilStack.firstElement();
+    if (localActivity != null)
     {
-      localPBUInt32Field.set(i);
-      localReqLikeFeed.source.set(this.jdField_a_of_type_Int);
-      if (this.b != -1) {
-        localReqLikeFeed.type.set(this.b);
+      localActivity.finish();
+      jdField_a_of_type_JavaUtilStack.remove(localActivity);
+    }
+  }
+  
+  public int a()
+  {
+    if (jdField_a_of_type_JavaUtilStack != null)
+    {
+      int i = jdField_a_of_type_JavaUtilStack.size();
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "getActivityStackNum = " + i);
       }
-      return localReqLikeFeed.toByteArray();
+      return i;
+    }
+    return 0;
+  }
+  
+  public void a()
+  {
+    if ((jdField_a_of_type_JavaUtilStack != null) && (jdField_a_of_type_JavaUtilStack.size() > jdField_a_of_type_Int))
+    {
+      int j = jdField_a_of_type_JavaUtilStack.size();
+      int k = jdField_a_of_type_Int;
+      int i = 0;
+      while (i < j - k)
+      {
+        b();
+        i += 1;
+      }
+    }
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    if (jdField_a_of_type_JavaUtilStack == null) {
+      jdField_a_of_type_JavaUtilStack = new Stack();
+    }
+    jdField_a_of_type_JavaUtilStack.add(paramActivity);
+  }
+  
+  public void b(Activity paramActivity)
+  {
+    if ((jdField_a_of_type_JavaUtilStack != null) && (paramActivity != null)) {
+      jdField_a_of_type_JavaUtilStack.remove(paramActivity);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     snp
  * JD-Core Version:    0.7.0.1
  */

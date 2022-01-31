@@ -1,6 +1,16 @@
-public abstract interface ndw
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+
+public class ndw
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public ndw(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.b = false;
+  }
 }
 
 

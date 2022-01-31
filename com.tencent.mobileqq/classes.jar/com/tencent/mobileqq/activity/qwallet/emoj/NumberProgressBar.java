@@ -10,7 +10,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
-import azvv;
+import bawz;
 
 public class NumberProgressBar
   extends View
@@ -34,7 +34,7 @@ public class NumberProgressBar
   public NumberProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.ringWidth = azvv.a(paramContext, 5.0F);
+    this.ringWidth = bawz.a(paramContext, 5.0F);
     this.progressTitle = "xx";
     this.progress = 0.0F;
     this.paint = new Paint();
@@ -74,7 +74,7 @@ public class NumberProgressBar
       this.paint.setShader(null);
       this.paint.setStyle(Paint.Style.FILL);
       this.paint.setColor(-1);
-      this.paint.setTextSize(azvv.c(getContext(), 16.0F));
+      this.paint.setTextSize(bawz.c(getContext(), 16.0F));
       this.paint.getTextBounds(str, 0, str.length(), this.rec);
       i = this.rec.width();
       j = this.rec.height();
@@ -82,7 +82,7 @@ public class NumberProgressBar
         break;
       }
       paramCanvas.drawText(str, (paramCanvas.getWidth() - i) / 2, (j + paramCanvas.getHeight()) / 2, this.paint);
-      this.paint.setTextSize(azvv.c(getContext(), 16.0F));
+      this.paint.setTextSize(bawz.c(getContext(), 16.0F));
       return;
       paramCanvas.drawArc(this.arcElements, -90.0F, -this.progress, false, this.paint);
     }

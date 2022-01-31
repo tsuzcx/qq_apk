@@ -1,41 +1,18 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.io.File;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qphone.base.util.QLog;
 
 class aobn
-  implements begw
+  implements ased
 {
-  aobn(aobm paramaobm, FileInfo paramFileInfo, begr parambegr) {}
+  aobn(aobm paramaobm, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    if ((!apdh.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())) || (apdh.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())))
-    {
-      apck.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c());
-      this.jdField_a_of_type_Aobm.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("PicEmoticonInfo", 2, "forward, [play back] ready to send msg,magicvalue:" + this.jdField_a_of_type_Aobm.jdField_a_of_type_Aobk.a.magicValue);
     }
-    try
-    {
-      paramView = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      paramView.setData(Uri.fromFile(new File(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())));
-      this.jdField_a_of_type_Aobm.a.a.a.sendBroadcast(paramView);
-      label104:
-      this.jdField_a_of_type_Aobm.a.a.f();
-      if (this.jdField_a_of_type_Begr.isShowing()) {
-        this.jdField_a_of_type_Begr.dismiss();
-      }
-      return;
-      apcb.a(2131626809);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      break label104;
-    }
+    this.jdField_a_of_type_Aobm.jdField_a_of_type_Aobk.a.magicValue = this.jdField_a_of_type_JavaLangString;
+    aaod.a(this.jdField_a_of_type_Aobm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aobm.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aobm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Aobm.jdField_a_of_type_Aobk.a);
   }
 }
 

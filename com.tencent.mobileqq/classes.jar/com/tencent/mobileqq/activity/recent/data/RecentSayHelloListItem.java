@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import akaq;
-import akbm;
-import amvy;
+import akpc;
+import akpy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import axkd;
-import azzz;
-import babh;
+import anmg;
+import ayki;
+import bbbd;
+import bbcl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
@@ -73,27 +73,27 @@ public class RecentSayHelloListItem
         this.mDisplayTime = ((QQMessageFacade.Message)localObject1).time;
         if ((localObject2 != null) && (localObject1 != null))
         {
-          this.mUnreadNum = ((akaq)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
-          if (akbm.d((MessageRecord)localObject1)) {
+          this.mUnreadNum = ((akpc)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
+          if (akpy.d((MessageRecord)localObject1)) {
             this.mUnreadFlag = 3;
           }
           localMsgSummary = super.a();
           this.mHasFlowerMsg = false;
           this.mExtraInfoColor = 0;
           this.mMsgExtroInfo = null;
-          if (!amvy.a(paramQQAppInterface, a(), 1001)) {
+          if (!anmg.a(paramQQAppInterface, a(), 1001)) {
             break label366;
           }
-          this.mMsgExtroInfo = paramContext.getResources().getString(2131627646);
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131101360);
+          this.mMsgExtroInfo = paramContext.getResources().getString(2131693287);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131166955);
           if (localObject2 != null) {
-            localMsgSummary.strContent = ((akaq)localObject2).a(a(), 1001, paramContext.getResources().getString(2131627645), 0);
+            localMsgSummary.strContent = ((akpc)localObject2).a(a(), 1001, paramContext.getResources().getString(2131693286), 0);
           }
           label171:
-          localObject2 = babh.q(paramQQAppInterface, a());
+          localObject2 = bbcl.q(paramQQAppInterface, a());
           localObject1 = localObject2;
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            localObject1 = babh.b(paramQQAppInterface, a(), false);
+            localObject1 = bbcl.b(paramQQAppInterface, a(), false);
           }
           localObject2 = localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -104,7 +104,7 @@ public class RecentSayHelloListItem
           super.a(paramQQAppInterface);
           a(paramQQAppInterface, localMsgSummary);
           super.a(paramQQAppInterface, paramContext, localMsgSummary);
-          if (AppSetting.c)
+          if (AppSetting.d)
           {
             paramQQAppInterface = new StringBuilder(24);
             paramQQAppInterface.append(this.mTitleName);
@@ -128,11 +128,11 @@ public class RecentSayHelloListItem
         this.mDisplayTime = 0L;
         break label78;
         label366:
-        if (amvy.b(paramQQAppInterface, a(), 1001))
+        if (anmg.b(paramQQAppInterface, a(), 1001))
         {
           this.mHasFlowerMsg = true;
-          this.mMsgExtroInfo = paramContext.getResources().getString(2131628749);
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131101360);
+          this.mMsgExtroInfo = paramContext.getResources().getString(2131694401);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131166955);
           break label171;
         }
         super.a((QQMessageFacade.Message)localObject1, a(), paramQQAppInterface, paramContext, localMsgSummary);
@@ -170,13 +170,13 @@ public class RecentSayHelloListItem
     } while (this.mDisplayTime > l);
     this.mDisplayTime = l;
     paramMsgSummary.bShowDraft = true;
-    paramMsgSummary.mDraft = new axkd(paramQQAppInterface.getSummary(), 3, 16);
+    paramMsgSummary.mDraft = new ayki(paramQQAppInterface.getSummary(), 3, 16);
   }
   
   public boolean a(FansEntity paramFansEntity)
   {
     boolean bool = false;
-    if ((this.age != paramFansEntity.age) || (this.gender != paramFansEntity.gender) || (this.career != paramFansEntity.career) || (this.constellation != paramFansEntity.constellation) || (this.vip != paramFansEntity.vip) || (this.charmIcon != paramFansEntity.charmIcon) || (this.charmLevel != paramFansEntity.charmLevel) || (this.commonId != paramFansEntity.commonId) || (!azzz.a(this.common, paramFansEntity.common)))
+    if ((this.age != paramFansEntity.age) || (this.gender != paramFansEntity.gender) || (this.career != paramFansEntity.career) || (this.constellation != paramFansEntity.constellation) || (this.vip != paramFansEntity.vip) || (this.charmIcon != paramFansEntity.charmIcon) || (this.charmLevel != paramFansEntity.charmLevel) || (this.commonId != paramFansEntity.commonId) || (!bbbd.a(this.common, paramFansEntity.common)))
     {
       this.age = paramFansEntity.age;
       this.gender = paramFansEntity.gender;

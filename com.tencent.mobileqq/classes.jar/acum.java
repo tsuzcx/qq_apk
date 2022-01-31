@@ -1,11 +1,11 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class acum
-  extends acuw
+public abstract interface acum
 {
-  public ImageView a;
-  public ColorView a;
+  public abstract void a(View paramView, MotionEvent paramMotionEvent);
+  
+  public abstract void a(View paramView, boolean paramBoolean);
 }
 
 

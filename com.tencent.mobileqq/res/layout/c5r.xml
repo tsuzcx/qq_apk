@@ -2,5 +2,4 @@
 <FrameLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="bottom|center" android:id="@id/lw0" android:paddingLeft="5.0dip" android:paddingTop="6.0dip" android:paddingRight="5.0dip" android:paddingBottom="3.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:shadowColor="@color/bx" android:shadowDy="2.0" android:shadowRadius="4.0" />
-    <ImageView android:layout_gravity="bottom|center" android:id="@id/l9u" android:visibility="invisible" android:layout_width="70.0dip" android:layout_height="35.0dip" android:layout_marginBottom="-5.0dip" android:scaleType="fitXY" />
 </FrameLayout>

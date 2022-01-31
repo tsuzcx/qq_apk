@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.utils;
 
-import azie;
-import azix;
+import bajh;
+import baka;
 
 public class TroopFileTransferManager$5$1
   implements Runnable
 {
-  public TroopFileTransferManager$5$1(azix paramazix, TroopFileTransferManager.Item paramItem) {}
+  public TroopFileTransferManager$5$1(baka parambaka, TroopFileTransferManager.Item paramItem) {}
   
   public void run()
   {
-    azie localazie = new azie(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Azix.a.e, 3, 210);
-    this.jdField_a_of_type_Azix.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, localazie);
+    bajh localbajh = new bajh(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Baka.a.e, 3, 210);
+    this.jdField_a_of_type_Baka.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, localbajh);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent.parcelUtils;
 
-import ahee;
-import ahef;
+import ahqu;
+import ahqv;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class ParcelHelper
         if (i < j)
         {
           Field localField = arrayOfField[i];
-          if ((((localField.getModifiers() & 0x10) != 0) && ((localField.getModifiers() & 0x8) != 0)) || (localField.isAnnotationPresent(ahee.class)) || (("$jacocoData".endsWith(localField.getName())) && (localField.getType() == [Z.class))) {
+          if ((((localField.getModifiers() & 0x10) != 0) && ((localField.getModifiers() & 0x8) != 0)) || (localField.isAnnotationPresent(ahqu.class)) || (("$jacocoData".endsWith(localField.getName())) && (localField.getType() == [Z.class))) {
             break label153;
           }
           localField.setAccessible(true);
@@ -45,7 +45,7 @@ public class ParcelHelper
   
   private static void a(Object paramObject)
   {
-    if (!paramObject.getClass().isAnnotationPresent(ahef.class)) {
+    if (!paramObject.getClass().isAnnotationPresent(ahqv.class)) {
       throw new RuntimeException("Object to Parcel must describe @ParcelObject");
     }
   }
@@ -215,11 +215,11 @@ public class ParcelHelper
     //   278: aload 4
     //   280: astore_3
     //   281: aload_0
-    //   282: invokestatic 156	ahei:a	(Ljava/lang/Object;)Laheg;
+    //   282: invokestatic 156	ahqy:a	(Ljava/lang/Object;)Lahqw;
     //   285: aload_0
     //   286: aload 4
     //   288: aload_1
-    //   289: invokevirtual 161	aheg:a	(Ljava/lang/Object;Landroid/os/Parcel;Ljava/util/ArrayList;)V
+    //   289: invokevirtual 161	ahqw:a	(Ljava/lang/Object;Landroid/os/Parcel;Ljava/util/ArrayList;)V
     //   292: aload 4
     //   294: ifnull +8 -> 302
     //   297: aload 4
@@ -379,11 +379,11 @@ public class ParcelHelper
     //   49: aload_1
     //   50: astore_2
     //   51: aload_0
-    //   52: invokestatic 156	ahei:a	(Ljava/lang/Object;)Laheg;
+    //   52: invokestatic 156	ahqy:a	(Ljava/lang/Object;)Lahqw;
     //   55: aload_0
     //   56: aload 4
     //   58: aload_1
-    //   59: invokevirtual 175	aheg:a	(Ljava/lang/Object;Ljava/util/ArrayList;Landroid/os/Parcel;)Z
+    //   59: invokevirtual 175	ahqw:a	(Ljava/lang/Object;Ljava/util/ArrayList;Landroid/os/Parcel;)Z
     //   62: pop
     //   63: aload_1
     //   64: astore_2

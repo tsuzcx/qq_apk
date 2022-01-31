@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import antz;
-import anum;
+import aojh;
+import aokl;
+import aokz;
+import bbkx;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedInputStream;
@@ -15,16 +17,27 @@ public class ExtendFriendVoiceView$1
   
   public void run()
   {
-    Object localObject = antz.a("expand_voice_animation.json");
-    try
+    Object localObject;
+    int j;
+    if (ExtendFriendVoiceView.a(this.this$0) == 0)
     {
-      localObject = new BufferedInputStream(new FileInputStream((String)localObject));
-      LottieComposition.Factory.fromInputStream(this.this$0.getContext(), (InputStream)localObject, new anum(this));
-      return;
+      localObject = aokl.a("expand_voice_animation.json");
+      j = bbkx.a(19.0F);
     }
-    catch (Exception localException)
+    for (int i = bbkx.a(19.0F);; i = bbkx.a(17.0F))
     {
-      QLog.e("ExtendFriendVoiceView", 1, "loadVoiceAnimation fail.", localException);
+      try
+      {
+        localObject = new BufferedInputStream(new FileInputStream((String)localObject));
+        LottieComposition.Factory.fromInputStream(this.this$0.getContext(), (InputStream)localObject, new aokz(this, j, i));
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ExtendFriendVoiceView", 1, "loadVoiceAnimation fail.", localException);
+      }
+      localObject = aojh.a("expand_voice_animation2.json");
+      j = bbkx.a(16.0F);
     }
   }
 }

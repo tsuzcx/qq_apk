@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import ajed;
-import aoig;
-import apck;
-import atmo;
-import atnz;
-import azzz;
-import bace;
+import ajsf;
+import android.text.TextUtils;
+import aoza;
+import apue;
+import aukm;
+import aulx;
+import bbbd;
+import bbdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -49,26 +50,28 @@ public class DataLineMsgRecord
   public static final int MSG_TYPE_DATALINE_TEXT = -1000;
   public static final int MSG_TYPE_DATALINE_VIDEO = -2009;
   public static final int PC_DEV_TYPE = 0;
-  @atnz
+  @aulx
   public boolean bIsApkFile;
-  @atnz
+  @aulx
   public boolean bIsMoloImage;
-  @atnz
+  @aulx
   public boolean bIsResendOrRecvFile = false;
-  @atnz
+  @aulx
   public boolean bIsSended;
-  @atnz
+  @aulx
   public boolean bIsTransfering;
+  @aulx
+  public boolean bNoInsertFm;
   public int busId;
-  @atnz
+  @aulx
   public int dataline_type;
-  @atnz
+  @aulx
   public long entityID;
-  @atnz
+  @aulx
   public int fileFrom;
-  @atnz
+  @aulx
   public long fileMsgStatus;
-  @atnz
+  @aulx
   public String fileUuid;
   public String filename;
   public long filesize;
@@ -76,38 +79,48 @@ public class DataLineMsgRecord
   public int groupId;
   public int groupIndex;
   public int groupSize;
-  @atnz
+  @aulx
   public boolean isReportPause = false;
   public boolean issuc;
   public byte[] md5;
-  @atnz
+  @aulx
   public int nAppStatus;
-  @atnz
+  @aulx
   public int nOpType;
-  @atnz
+  @aulx
   public long nServerIp;
-  @atnz
+  @aulx
   public long nServerPort;
-  @atnz
+  @aulx
   public long nWeiyunSessionId = 0L;
+  @aulx
+  public int nWeiyunSrcType;
   public String path;
   public float progress;
   public String serverPath;
   public long sessionid;
-  @atnz
+  @aulx
   public String strMoloIconUrl;
-  @atnz
+  @aulx
   public String strMoloKey;
-  @atnz
+  @aulx
   public String strMoloSource;
-  @atnz
+  @aulx
   public String strMoloSrcIconUrl;
+  @aulx
+  public String strWeiyunDir;
+  @aulx
+  public String strWeiyunId;
+  @aulx
+  public String strWeiyunMd5;
+  @aulx
+  public String strWeiyunSha;
   public String thumbPath;
-  @atnz
+  @aulx
   public long uOwnerUin;
-  @atnz
+  @aulx
   public byte[] vTokenKey;
-  @atnz
+  @aulx
   public byte[] vUrlNotify;
   
   public DataLineMsgRecord()
@@ -117,7 +130,7 @@ public class DataLineMsgRecord
   
   public DataLineMsgRecord(int paramInt)
   {
-    this.selfuin = String.valueOf(ajed.z);
+    this.selfuin = String.valueOf(ajsf.z);
     this.frienduin = this.selfuin;
     this.senderuin = this.selfuin;
     this.istroop = 6000;
@@ -126,6 +139,8 @@ public class DataLineMsgRecord
     this.fileFrom = 0;
     this.nOpType = -1;
     this.bIsSended = false;
+    this.bNoInsertFm = false;
+    this.nWeiyunSrcType = 0;
   }
   
   public static int getDevTypeBySeId(long paramLong)
@@ -197,7 +212,7 @@ public class DataLineMsgRecord
       }
       localObject2 = ((DatalineMsgData.MsgData)localObject1).uint32_isapkfile;
       if (!paramDataLineMsgRecord.bIsApkFile) {
-        break label507;
+        break label602;
       }
       paramInt = 1;
     }
@@ -258,6 +273,19 @@ public class DataLineMsgRecord
       ((DatalineMsgData.MsgData)localObject1).uint32_busId.set(paramDataLineMsgRecord.busId);
       ((DatalineMsgData.MsgData)localObject1).uint32_forwardTroopFileEntranc.set(paramDataLineMsgRecord.forwardTroopFileEntrance);
       ((DatalineMsgData.MsgData)localObject1).bool_sended.set(paramDataLineMsgRecord.bIsSended);
+      if (!TextUtils.isEmpty(paramDataLineMsgRecord.strWeiyunId)) {
+        ((DatalineMsgData.MsgData)localObject1).str_weiyunid.set(paramDataLineMsgRecord.strWeiyunId);
+      }
+      if (!TextUtils.isEmpty(paramDataLineMsgRecord.strWeiyunDir)) {
+        ((DatalineMsgData.MsgData)localObject1).str_weiyundirkey.set(paramDataLineMsgRecord.strWeiyunDir);
+      }
+      ((DatalineMsgData.MsgData)localObject1).uint32_weiyunsrctype.set(paramDataLineMsgRecord.nWeiyunSrcType);
+      if (!TextUtils.isEmpty(paramDataLineMsgRecord.strWeiyunMd5)) {
+        ((DatalineMsgData.MsgData)localObject1).str_weiyunmd5.set(paramDataLineMsgRecord.strWeiyunMd5);
+      }
+      if (!TextUtils.isEmpty(paramDataLineMsgRecord.strWeiyunSha)) {
+        ((DatalineMsgData.MsgData)localObject1).str_weiyunsha.set(paramDataLineMsgRecord.strWeiyunSha);
+      }
       return ((DatalineMsgData.MsgData)localObject1).toByteArray();
       if (paramInt == 105) {
         localObject1 = new ByteArrayOutputStream();
@@ -280,10 +308,10 @@ public class DataLineMsgRecord
   
   public static void unpackMsgData(DataLineMsgRecord paramDataLineMsgRecord, byte[] paramArrayOfByte, int paramInt)
   {
-    boolean bool3 = true;
+    boolean bool2 = true;
     long l2 = 0L;
     Object localObject1 = null;
-    boolean bool2 = false;
+    int i = 0;
     if (paramInt == 106) {}
     for (;;)
     {
@@ -299,88 +327,88 @@ public class DataLineMsgRecord
             paramArrayOfByte = ((DatalineMsgData.MsgData)localObject2).str_msg.get();
             paramDataLineMsgRecord.msg = paramArrayOfByte;
             if (!((DatalineMsgData.MsgData)localObject2).uint64_filemsgstatus.has()) {
-              break label808;
+              break label937;
             }
             l1 = ((DatalineMsgData.MsgData)localObject2).uint64_filemsgstatus.get();
             paramDataLineMsgRecord.fileMsgStatus = l1;
             if (!((DatalineMsgData.MsgData)localObject2).uint64_weiyunsessionid.has()) {
-              break label814;
+              break label943;
             }
             l1 = ((DatalineMsgData.MsgData)localObject2).uint64_weiyunsessionid.get();
             paramDataLineMsgRecord.nWeiyunSessionId = l1;
             if (!((DatalineMsgData.MsgData)localObject2).str_molokey.has()) {
-              break label820;
+              break label949;
             }
             paramArrayOfByte = ((DatalineMsgData.MsgData)localObject2).str_molokey.get();
             paramDataLineMsgRecord.strMoloKey = paramArrayOfByte;
             if (!((DatalineMsgData.MsgData)localObject2).str_moloiconurl.has()) {
-              break label825;
+              break label954;
             }
             paramArrayOfByte = ((DatalineMsgData.MsgData)localObject2).str_moloiconurl.get();
             paramDataLineMsgRecord.strMoloIconUrl = paramArrayOfByte;
             if (!((DatalineMsgData.MsgData)localObject2).str_molosource.has()) {
-              break label830;
+              break label959;
             }
             paramArrayOfByte = ((DatalineMsgData.MsgData)localObject2).str_molosource.get();
             paramDataLineMsgRecord.strMoloSource = paramArrayOfByte;
             if (!((DatalineMsgData.MsgData)localObject2).str_molosrcurl.has()) {
-              break label835;
+              break label964;
             }
             paramArrayOfByte = ((DatalineMsgData.MsgData)localObject2).str_molosrcurl.get();
             paramDataLineMsgRecord.strMoloSrcIconUrl = paramArrayOfByte;
             if (!((DatalineMsgData.MsgData)localObject2).uint32_isapkfile.has()) {
-              break label845;
+              break label975;
             }
             if (((DatalineMsgData.MsgData)localObject2).uint32_isapkfile.get() != 1) {
-              break label840;
+              break label969;
             }
             bool1 = true;
             paramDataLineMsgRecord.bIsApkFile = bool1;
             if (!((DatalineMsgData.MsgData)localObject2).fixed32_ip.has()) {
-              break label850;
+              break label981;
             }
             l1 = ((DatalineMsgData.MsgData)localObject2).fixed32_ip.get();
             paramDataLineMsgRecord.nServerIp = l1;
             if (!((DatalineMsgData.MsgData)localObject2).uint32_port.has()) {
-              break label856;
+              break label987;
             }
             l1 = ((DatalineMsgData.MsgData)localObject2).uint32_port.get();
             paramDataLineMsgRecord.nServerPort = l1;
             if (!((DatalineMsgData.MsgData)localObject2).bytes_url_notify.has()) {
-              break label862;
+              break label993;
             }
             paramArrayOfByte = ((DatalineMsgData.MsgData)localObject2).bytes_url_notify.get().toByteArray();
             paramDataLineMsgRecord.vUrlNotify = paramArrayOfByte;
             if (!((DatalineMsgData.MsgData)localObject2).bytes_tokenkey.has()) {
-              break label867;
+              break label998;
             }
             paramArrayOfByte = ((DatalineMsgData.MsgData)localObject2).bytes_tokenkey.get().toByteArray();
             paramDataLineMsgRecord.vTokenKey = paramArrayOfByte;
             if (!((DatalineMsgData.MsgData)localObject2).uint32_ismoloimage.has()) {
-              break label877;
+              break label1009;
             }
             if (((DatalineMsgData.MsgData)localObject2).uint32_ismoloimage.get() != 1) {
-              break label872;
+              break label1003;
             }
-            bool1 = bool3;
+            bool1 = bool2;
             paramDataLineMsgRecord.bIsMoloImage = bool1;
             if (!((DatalineMsgData.MsgData)localObject2).uint32_fileFrom.has()) {
-              break label882;
+              break label1015;
             }
             paramInt = ((DatalineMsgData.MsgData)localObject2).uint32_fileFrom.get();
             paramDataLineMsgRecord.fileFrom = paramInt;
-            paramArrayOfByte = (byte[])localObject1;
-            if (((DatalineMsgData.MsgData)localObject2).str_fileUuid.has()) {
-              paramArrayOfByte = ((DatalineMsgData.MsgData)localObject2).str_fileUuid.get();
+            if (!((DatalineMsgData.MsgData)localObject2).str_fileUuid.has()) {
+              break label1020;
             }
+            paramArrayOfByte = ((DatalineMsgData.MsgData)localObject2).str_fileUuid.get();
             paramDataLineMsgRecord.fileUuid = paramArrayOfByte;
             if (!((DatalineMsgData.MsgData)localObject2).uint32_nOpType.has()) {
-              break label887;
+              break label1025;
             }
             paramInt = ((DatalineMsgData.MsgData)localObject2).uint32_nOpType.get();
             paramDataLineMsgRecord.nOpType = paramInt;
             if (!((DatalineMsgData.MsgData)localObject2).uint64_entityID.has()) {
-              break label892;
+              break label1030;
             }
             l1 = ((DatalineMsgData.MsgData)localObject2).uint64_entityID.get();
             paramDataLineMsgRecord.entityID = l1;
@@ -390,20 +418,45 @@ public class DataLineMsgRecord
             }
             paramDataLineMsgRecord.uOwnerUin = l1;
             if (!((DatalineMsgData.MsgData)localObject2).uint32_busId.has()) {
-              break label898;
+              break label1036;
             }
             paramInt = ((DatalineMsgData.MsgData)localObject2).uint32_busId.get();
             paramDataLineMsgRecord.busId = paramInt;
             if (!((DatalineMsgData.MsgData)localObject2).uint32_forwardTroopFileEntranc.has()) {
-              break label903;
+              break label1041;
             }
             paramInt = ((DatalineMsgData.MsgData)localObject2).uint32_forwardTroopFileEntranc.get();
             paramDataLineMsgRecord.forwardTroopFileEntrance = paramInt;
-            bool1 = bool2;
-            if (((DatalineMsgData.MsgData)localObject2).bool_sended.has()) {
-              bool1 = ((DatalineMsgData.MsgData)localObject2).bool_sended.get();
+            if (!((DatalineMsgData.MsgData)localObject2).bool_sended.has()) {
+              break label1046;
             }
+            bool1 = ((DatalineMsgData.MsgData)localObject2).bool_sended.get();
             paramDataLineMsgRecord.bIsSended = bool1;
+            if (!((DatalineMsgData.MsgData)localObject2).str_weiyunid.has()) {
+              break label1052;
+            }
+            paramArrayOfByte = ((DatalineMsgData.MsgData)localObject2).str_weiyunid.get();
+            paramDataLineMsgRecord.strWeiyunId = paramArrayOfByte;
+            if (!((DatalineMsgData.MsgData)localObject2).str_weiyundirkey.has()) {
+              break label1057;
+            }
+            paramArrayOfByte = ((DatalineMsgData.MsgData)localObject2).str_weiyundirkey.get();
+            paramDataLineMsgRecord.strWeiyunDir = paramArrayOfByte;
+            paramInt = i;
+            if (((DatalineMsgData.MsgData)localObject2).uint32_weiyunsrctype.has()) {
+              paramInt = ((DatalineMsgData.MsgData)localObject2).uint32_weiyunsrctype.get();
+            }
+            paramDataLineMsgRecord.nWeiyunSrcType = paramInt;
+            if (!((DatalineMsgData.MsgData)localObject2).str_weiyunmd5.has()) {
+              break label1062;
+            }
+            paramArrayOfByte = ((DatalineMsgData.MsgData)localObject2).str_weiyunmd5.get();
+            paramDataLineMsgRecord.strWeiyunMd5 = paramArrayOfByte;
+            paramArrayOfByte = (byte[])localObject1;
+            if (((DatalineMsgData.MsgData)localObject2).str_weiyunsha.has()) {
+              paramArrayOfByte = ((DatalineMsgData.MsgData)localObject2).str_weiyunsha.get();
+            }
+            paramDataLineMsgRecord.strWeiyunSha = paramArrayOfByte;
             return;
           }
         }
@@ -427,9 +480,9 @@ public class DataLineMsgRecord
         try
         {
           ((ByteArrayInputStream)localObject1).read((byte[])localObject2);
-          paramDataLineMsgRecord.fileMsgStatus = azzz.a((byte[])localObject2);
+          paramDataLineMsgRecord.fileMsgStatus = bbbd.a((byte[])localObject2);
           ((ByteArrayInputStream)localObject1).read((byte[])localObject2);
-          paramDataLineMsgRecord.nWeiyunSessionId = azzz.a((byte[])localObject2);
+          paramDataLineMsgRecord.nWeiyunSessionId = bbbd.a((byte[])localObject2);
           paramArrayOfByte = new byte[paramArrayOfByte.length - 16];
           ((ByteArrayInputStream)localObject1).read(paramArrayOfByte);
           paramDataLineMsgRecord.msg = new String(paramArrayOfByte, "UTF-8");
@@ -447,7 +500,7 @@ public class DataLineMsgRecord
         localObject2 = new byte[paramArrayOfByte.length - 8];
         System.arraycopy(paramArrayOfByte, 0, localObject1, 0, 8);
         System.arraycopy(paramArrayOfByte, 8, localObject2, 0, localObject2.length);
-        paramDataLineMsgRecord.fileMsgStatus = azzz.a((byte[])localObject1);
+        paramDataLineMsgRecord.fileMsgStatus = bbbd.a((byte[])localObject1);
         paramDataLineMsgRecord.msg = new String((byte[])localObject2, "UTF-8");
         return;
       }
@@ -457,62 +510,77 @@ public class DataLineMsgRecord
         paramDataLineMsgRecord.fileMsgStatus = 0L;
       }
       return;
-      label808:
+      label937:
       long l1 = 0L;
       continue;
-      label814:
+      label943:
       l1 = 0L;
       continue;
-      label820:
+      label949:
       paramArrayOfByte = null;
       continue;
-      label825:
+      label954:
       paramArrayOfByte = null;
       continue;
-      label830:
+      label959:
       paramArrayOfByte = null;
       continue;
-      label835:
+      label964:
       paramArrayOfByte = null;
       continue;
-      label840:
+      label969:
       boolean bool1 = false;
       continue;
-      label845:
+      label975:
       bool1 = false;
       continue;
-      label850:
+      label981:
       l1 = 0L;
       continue;
-      label856:
+      label987:
       l1 = 0L;
       continue;
-      label862:
+      label993:
       paramArrayOfByte = null;
       continue;
-      label867:
+      label998:
       paramArrayOfByte = null;
       continue;
-      label872:
+      label1003:
       bool1 = false;
       continue;
-      label877:
+      label1009:
       bool1 = false;
       continue;
-      label882:
+      label1015:
       paramInt = 0;
       continue;
-      label887:
+      label1020:
+      paramArrayOfByte = null;
+      continue;
+      label1025:
       paramInt = -1;
       continue;
-      label892:
+      label1030:
       l1 = 0L;
       continue;
-      label898:
+      label1036:
       paramInt = 0;
       continue;
-      label903:
+      label1041:
       paramInt = 0;
+      continue;
+      label1046:
+      bool1 = false;
+      continue;
+      label1052:
+      paramArrayOfByte = null;
+      continue;
+      label1057:
+      paramArrayOfByte = null;
+      continue;
+      label1062:
+      paramArrayOfByte = null;
     }
   }
   
@@ -520,7 +588,7 @@ public class DataLineMsgRecord
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (bace.b(this.path))
+    if (bbdj.b(this.path))
     {
       bool1 = bool2;
       if (this.strMoloKey == null) {
@@ -549,7 +617,7 @@ public class DataLineMsgRecord
     prewrite();
   }
   
-  public Class<? extends atmo> getClassForTable()
+  public Class<? extends aukm> getClassForTable()
   {
     return DataLineMsgRecord.class;
   }
@@ -587,7 +655,7 @@ public class DataLineMsgRecord
     if (localFileManagerEntity == null)
     {
       localFileManagerEntity = new FileManagerEntity();
-      localFileManagerEntity.nSessionId = apck.a().longValue();
+      localFileManagerEntity.nSessionId = apue.a().longValue();
       this.entityID = localFileManagerEntity.nSessionId;
       switch (this.nOpType)
       {

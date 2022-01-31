@@ -1,12 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class aybh
-  implements View.OnClickListener
+public abstract interface aybh
 {
-  aybh(aybe paramaybe) {}
-  
-  public void onClick(View paramView) {}
+  public abstract void a();
 }
 
 

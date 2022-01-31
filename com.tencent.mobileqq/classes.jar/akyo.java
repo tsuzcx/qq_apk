@@ -1,34 +1,57 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.TreeMap;
 
 public class akyo
-  implements View.OnTouchListener
 {
-  public akyo(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
+  public long a;
+  private ArCloudConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
+  public String a;
+  public HashMap<Integer, String> a;
+  private final TreeMap<Integer, akyp> jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
+  public boolean a;
+  public long b;
+  public String b;
+  public long c = 0L;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public akyo()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanEntryProviderContainerView", 2, String.format("dispatchTouchEvent onTabClickListener", new Object[0]));
-    }
-    long l = System.currentTimeMillis();
-    if (l - ScanEntryProviderContainerView.a(this.a) <= 1000L)
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public ArCloudConfigInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
+  }
+  
+  public String a(int paramInt)
+  {
+    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+  }
+  
+  public TreeMap<Integer, akyp> a()
+  {
+    return this.jdField_a_of_type_JavaUtilTreeMap;
+  }
+  
+  public String toString()
+  {
+    String str = "id[" + this.jdField_a_of_type_JavaLangString + "], recoglizeMask[" + this.c + "]";
+    Object localObject = str;
+    if (QLog.isDevelopLevel())
     {
-      QLog.i("ScanEntryProviderContainerView", 1, "avoid user fast click");
-      return false;
+      localObject = this.jdField_a_of_type_JavaUtilTreeMap.values().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        akyp localakyp = (akyp)((Iterator)localObject).next();
+        str = str + "\n" + localakyp;
+      }
+      localObject = str + ", begin[" + this.jdField_a_of_type_Long + "], end[" + this.jdField_b_of_type_Long + "], title[" + this.jdField_b_of_type_JavaLangString + "], tips[" + this.jdField_a_of_type_JavaUtilHashMap.size() + "]";
     }
-    ScanEntryProviderContainerView.a(this.a, l);
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-      return false;
-    }
-    paramView = (Integer)paramView.getTag();
-    ScanEntryProviderContainerView.a(this.a).a(paramView.intValue(), new akyp(this, paramView));
-    return false;
+    return localObject;
   }
 }
 

@@ -7,21 +7,21 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import obj;
-import obz;
-import opw;
-import pex;
-import pfh;
-import pjg;
-import pmu;
+import omu;
+import onk;
+import pax;
+import pqr;
+import prb;
+import pvb;
+import pyp;
 
 public class ComponentContentSpecialTopic
   extends RelativeLayout
-  implements pex
+  implements pqr
 {
   double jdField_a_of_type_Double;
   KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  pjg jdField_a_of_type_Pjg;
+  pvb jdField_a_of_type_Pvb;
   
   public ComponentContentSpecialTopic(Context paramContext)
   {
@@ -49,48 +49,48 @@ public class ComponentContentSpecialTopic
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131494292, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559863, this, true);
   }
   
   public void a() {}
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_Pjg = new pjg();
+    this.jdField_a_of_type_Pvb = new pvb();
     this.jdField_a_of_type_Double = 0.0D;
     a(a(paramContext));
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131302227));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367846));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof opw))
+    if ((paramObject instanceof pax))
     {
-      paramObject = (opw)paramObject;
-      this.jdField_a_of_type_Pjg.a(paramObject);
+      paramObject = (pax)paramObject;
+      this.jdField_a_of_type_Pvb.a(paramObject);
       b();
       paramObject = paramObject.a();
       if (paramObject != null) {
-        obj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, obz.a(paramObject.mFirstPagePicUrl), getContext());
+        omu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, onk.a(paramObject.mFirstPagePicUrl), getContext());
       }
     }
   }
   
-  public void a(pfh parampfh)
+  public void a(prb paramprb)
   {
-    this.jdField_a_of_type_Pjg.a(parampfh);
+    this.jdField_a_of_type_Pvb.a(paramprb);
   }
   
   public void b()
   {
     ArticleInfo localArticleInfo;
-    if (this.jdField_a_of_type_Pjg.a != null)
+    if (this.jdField_a_of_type_Pvb.a != null)
     {
-      localArticleInfo = this.jdField_a_of_type_Pjg.a.a();
+      localArticleInfo = this.jdField_a_of_type_Pvb.a.a();
       if (localArticleInfo != null) {
         break label28;
       }
@@ -99,7 +99,7 @@ public class ComponentContentSpecialTopic
     while ((this.jdField_a_of_type_Double != 0.0D) && (this.jdField_a_of_type_Double == localArticleInfo.mTopicPicWHRatio)) {
       return;
     }
-    pmu.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localArticleInfo.mTopicPicWHRatio);
+    pyp.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localArticleInfo.mTopicPicWHRatio);
     this.jdField_a_of_type_Double = localArticleInfo.mTopicPicWHRatio;
   }
 }

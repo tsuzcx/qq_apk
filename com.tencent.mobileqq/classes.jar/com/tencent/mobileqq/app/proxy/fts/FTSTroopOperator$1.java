@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.proxy.fts;
 
-import akep;
-import akfa;
-import akfb;
+import aktb;
+import aktm;
+import aktn;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Message;
-import apre;
-import atmp;
-import atmq;
-import awao;
-import awat;
+import aqkt;
+import aukn;
+import auko;
+import awzw;
+import axab;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
@@ -29,28 +29,28 @@ import java.util.concurrent.ConcurrentHashMap;
 public class FTSTroopOperator$1
   implements Runnable
 {
-  public FTSTroopOperator$1(akfb paramakfb) {}
+  public FTSTroopOperator$1(aktn paramaktn) {}
   
   public void run()
   {
-    if (!akfb.a(this.this$0))
+    if (!aktn.a(this.this$0))
     {
-      akfb.a(this.this$0);
-      if (akfb.b(this.this$0) >= 5)
+      aktn.a(this.this$0);
+      if (aktn.b(this.this$0) >= 5)
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.fts.troop.operator", 2, "checkTroopTimeStamp failed");
         }
         return;
       }
-      this.this$0.jdField_a_of_type_Akfa.postDelayed(this, 5000L);
+      this.this$0.jdField_a_of_type_Aktm.postDelayed(this, 5000L);
       return;
     }
     this.this$0.b();
     Object localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    Object localObject2 = akfb.a(this.this$0).a();
-    Object localObject3 = ((atmp)localObject1).a(FTSTroopTime.class, FTSTroopTime.class.getSimpleName(), false, null, null, null, null, null, null);
-    ((atmp)localObject1).a();
+    Object localObject2 = aktn.a(this.this$0).a();
+    Object localObject3 = ((aukn)localObject1).a(FTSTroopTime.class, FTSTroopTime.class.getSimpleName(), false, null, null, null, null, null, null);
+    ((aukn)localObject1).a();
     if (localObject2 != null)
     {
       localObject1 = new HashMap();
@@ -120,16 +120,16 @@ public class FTSTroopOperator$1
         }
       }
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      if (awao.a != null)
+      if (awzw.a != null)
       {
         this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-        if (awao.a.a != null)
+        if (awzw.a.a != null)
         {
           this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-          if (awao.a.a.size() > 0)
+          if (awzw.a.a.size() > 0)
           {
             this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-            localObject3 = awao.a.a.entrySet().iterator();
+            localObject3 = awzw.a.a.entrySet().iterator();
             if (((Iterator)localObject3).hasNext())
             {
               Map.Entry localEntry = (Map.Entry)((Iterator)localObject3).next();
@@ -157,11 +157,11 @@ public class FTSTroopOperator$1
               }
             }
             this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-            awao.a.a.clear();
+            awzw.a.a.clear();
           }
         }
       }
-      i = apre.b(this.this$0.jdField_a_of_type_ComTencentMobileqqFtsFTSDatabase, "TroopIndex");
+      i = aqkt.b(this.this$0.jdField_a_of_type_ComTencentMobileqqFtsFTSDatabase, "TroopIndex");
       if (QLog.isColorLevel()) {
         QLog.d("Q.fts.troop.operator", 2, "FTSDatabaseHelper.queryItemCount = " + i);
       }
@@ -188,29 +188,29 @@ public class FTSTroopOperator$1
         QLog.d("Q.fts.troop.operator", 2, "checkTroopTimeStamp optList.size:" + ((ArrayList)localObject2).size());
       }
     }
-    akfb.a(this.this$0).f();
+    aktn.a(this.this$0).f();
     localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
     int i = ((SharedPreferences)localObject1).getInt("is_first_upgrade_to_500", 0);
     if (i == 0)
     {
       ((SharedPreferences)localObject1).edit().putInt("is_first_upgrade_to_500", 1).commit();
-      if (akfb.a(this.this$0) == null) {
-        akfb.a(this.this$0, new FTSTroopOperator.1.1(this));
+      if (aktn.a(this.this$0) == null) {
+        aktn.a(this.this$0, new FTSTroopOperator.1.1(this));
       }
-      this.this$0.jdField_a_of_type_Akfa.postDelayed(akfb.a(this.this$0), 86400000L);
+      this.this$0.jdField_a_of_type_Aktm.postDelayed(aktn.a(this.this$0), 86400000L);
     }
     for (;;)
     {
-      this.this$0.jdField_a_of_type_Akfa.obtainMessage(1, this.this$0).sendToTarget();
-      this.this$0.jdField_a_of_type_Akfa.obtainMessage(1, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(4)).sendToTarget();
+      this.this$0.jdField_a_of_type_Aktm.obtainMessage(1, this.this$0).sendToTarget();
+      this.this$0.jdField_a_of_type_Aktm.obtainMessage(1, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(4)).sendToTarget();
       return;
       if (i == 1) {
         ((SharedPreferences)localObject1).edit().putInt("is_first_upgrade_to_500", 2).commit();
       }
-      if (akfb.a(this.this$0) != null)
+      if (aktn.a(this.this$0) != null)
       {
-        this.this$0.jdField_a_of_type_Akfa.removeCallbacks(akfb.a(this.this$0));
-        akfb.a(this.this$0, null);
+        this.this$0.jdField_a_of_type_Aktm.removeCallbacks(aktn.a(this.this$0));
+        aktn.a(this.this$0, null);
       }
     }
   }

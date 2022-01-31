@@ -1,18 +1,45 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.BezierSideBarView;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
 public class qnd
-  implements ValueAnimator.AnimatorUpdateListener
+  extends npw
 {
-  public qnd(BezierSideBarView paramBezierSideBarView, ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener) {}
+  private qnd(qnc paramqnc) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    BezierSideBarView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView.invalidate();
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener != null) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener.onAnimationUpdate(paramValueAnimator);
+    if (paramBundle.getBoolean("is_from_first_recommend_video"))
+    {
+      VideoInfo.EntranceDownloadInfo localEntranceDownloadInfo = (VideoInfo.EntranceDownloadInfo)paramBundle.getParcelable("value_entrance_download_info");
+      if (localEntranceDownloadInfo == null) {
+        break label32;
+      }
+      qnc.a(this.a, localEntranceDownloadInfo);
+    }
+    for (;;)
+    {
+      return;
+      label32:
+      qnc.a(this.a, paramBundle.getString("VALUE_COOKIE"));
+      if (paramBoolean)
+      {
+        paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
+        if ((paramBundle != null) && (paramBundle.size() > 0))
+        {
+          paramBundle = (VideoInfo)paramBundle.get(0);
+          qnc.a(this.a, paramBundle);
+        }
+      }
+      while (paramBundle != null)
+      {
+        ThreadManager.post(new VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1(this, paramBundle), 5, null, true);
+        return;
+        paramBundle = null;
+      }
     }
   }
 }

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akje;
-import aklt;
-import akmg;
+import akxq;
+import alaf;
+import alas;
 
 public class GeneralAR3DRenderable$1
   implements Runnable
 {
-  public GeneralAR3DRenderable$1(akmg paramakmg) {}
+  public GeneralAR3DRenderable$1(alas paramalas) {}
   
   public void run()
   {
-    if (akmg.a(this.this$0) != 9) {}
+    if (alas.a(this.this$0) != 9) {}
     do
     {
       return;
-      if (akmg.a(this.this$0) != null) {
-        akmg.a(this.this$0).b(0, 1);
+      if (alas.a(this.this$0) != null) {
+        alas.a(this.this$0).b(0, 1);
       }
-    } while (akmg.a(this.this$0) == null);
-    akmg.a(this.this$0).a();
+    } while (alas.a(this.this$0) == null);
+    alas.a(this.this$0).a();
   }
 }
 

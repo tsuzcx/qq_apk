@@ -1,80 +1,57 @@
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import android.os.ResultReceiver;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public abstract class auqb
-  extends auqa
+public class auqb
+  extends ampb<auqc>
 {
-  public ResultReceiver a;
-  
-  public static auqb a(Bundle paramBundle)
+  public int a()
   {
-    if (paramBundle == null) {
-      return null;
-    }
-    int i = paramBundle.getInt("redpoint.fromReceiverIPCCode", -1);
-    Object localObject = (Class)jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    if (localObject != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseReq getReq", 2, "class name is " + ((Class)localObject).getName());
-      }
-      try
-      {
-        localObject = (auqb)((Class)localObject).newInstance();
-        ((auqb)localObject).b(paramBundle);
-        return localObject;
-      }
-      catch (Exception paramBundle)
-      {
-        return null;
-      }
-    }
-    return null;
+    return 495;
   }
   
-  public void a(Bundle paramBundle)
+  @NonNull
+  public auqc a(int paramInt)
   {
-    super.a(paramBundle);
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
-    {
-      Parcel localParcel = Parcel.obtain();
-      this.jdField_a_of_type_AndroidOsResultReceiver.writeToParcel(localParcel, 0);
-      localParcel.setDataPosition(0);
-      ResultReceiver localResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
-      localParcel.recycle();
-      paramBundle.putParcelable("redpoint.fromReceiverKey", localResultReceiver);
-    }
+    return new auqc();
   }
   
-  public abstract void a(QQAppInterface paramQQAppInterface, Bundle paramBundle);
-  
-  public final boolean a(Bundle paramBundle)
+  @Nullable
+  public auqc a(ampi[] paramArrayOfampi)
   {
-    if ((paramBundle == null) || (this.jdField_a_of_type_AndroidOsResultReceiver == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseReq doCallback", 2, "bundle == null or fromReceiver == null");
-      }
-      return false;
+    auqc localauqc = new auqc();
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null)) {
+      auqc.a(localauqc, paramArrayOfampi[0].a);
     }
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramBundle);
+    return localauqc;
+  }
+  
+  public Class<auqc> a()
+  {
+    return auqc.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(auqc paramauqc) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
     return true;
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    super.b(paramBundle);
-    this.jdField_a_of_type_AndroidOsResultReceiver = ((ResultReceiver)paramBundle.getParcelable("redpoint.fromReceiverKey"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     auqb
  * JD-Core Version:    0.7.0.1
  */

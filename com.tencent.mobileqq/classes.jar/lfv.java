@@ -1,71 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.app.InviteMemberObserverWithoutCache.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 public class lfv
+  implements Observer
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString = null;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int = 0;
-  String jdField_c_of_type_JavaLangString = null;
-  int d = 0;
-  int e = 0;
+  Handler a = null;
   
-  public void a(String paramString, long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, FilterDesc paramFilterDesc, VideoMaterial paramVideoMaterial, PendantItem paramPendantItem, lfc paramlfc, int paramInt4)
+  private void a(Object paramObject)
   {
-    String str;
-    label34:
-    label43:
-    StringBuilder localStringBuilder;
-    if ((paramFilterDesc == null) || (paramFilterDesc.name == null))
-    {
-      paramFilterDesc = "null";
-      if ((paramPendantItem != null) && (paramPendantItem.getId() != null)) {
-        break label522;
-      }
-      str = "null";
-      if (paramVideoMaterial != null) {
-        break label532;
-      }
-      paramVideoMaterial = "null";
-      if ((paramInt1 != this.jdField_a_of_type_Int) || (paramInt2 != this.jdField_b_of_type_Int) || (paramInt3 != this.jdField_c_of_type_Int) || (paramBoolean != this.jdField_b_of_type_Boolean) || (this.d != paramlfc.jdField_a_of_type_ArrayOfByte.length) || (this.jdField_a_of_type_Boolean != paramlfc.jdField_a_of_type_Boolean) || (this.e != paramInt4) || (!TextUtils.equals(paramFilterDesc, this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(str, this.jdField_b_of_type_JavaLangString)) || (!TextUtils.equals(paramVideoMaterial, this.jdField_c_of_type_JavaLangString)))
-      {
-        localStringBuilder = new StringBuilder().append("RenderInfoLog, frameIndex[").append(paramLong).append("], width[").append(this.jdField_a_of_type_Int).append("->").append(paramInt1).append("], height[").append(this.jdField_b_of_type_Int).append("->").append(paramInt2).append("], angle[").append(this.jdField_c_of_type_Int).append("->").append(paramInt3).append("], needfacedata[").append(this.jdField_b_of_type_Boolean).append("->").append(paramBoolean).append("], mDataLen[").append(this.d).append("->").append(paramlfc.jdField_a_of_type_ArrayOfByte.length).append("], mBeautyLevel[").append(this.e).append("->").append(paramInt4).append("], isFront[").append(this.jdField_a_of_type_Boolean).append("->").append(paramlfc.jdField_a_of_type_Boolean).append("], getFrameAngle[").append(lfm.a(paramlfc.jdField_a_of_type_Boolean)).append("], fAngle[").append((paramlfc.d - lfm.a(paramlfc.jdField_a_of_type_Boolean) - 1 + 4) % 4).append("], strFilterDesc[").append(paramFilterDesc).append("], strPendantItem[").append(str).append("], pendantItem[");
-        if ((paramPendantItem != null) && (paramPendantItem.getId() != null)) {
-          break label542;
-        }
-      }
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("qav.GAudioUIObserver", 2, "OnUpdate，msgType = " + i);
     }
-    label522:
-    label532:
-    label542:
-    for (paramPendantItem = "null";; paramPendantItem = paramPendantItem.getId())
+    if (paramObject.length < 4)
     {
-      QLog.w(paramString, 1, paramPendantItem + "], strFilters[" + paramVideoMaterial + "]");
-      this.jdField_a_of_type_Boolean = paramlfc.jdField_a_of_type_Boolean;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_b_of_type_Int = paramInt2;
-      this.jdField_c_of_type_Int = paramInt3;
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_JavaLangString = paramFilterDesc;
-      this.jdField_b_of_type_JavaLangString = str;
-      this.jdField_c_of_type_JavaLangString = paramVideoMaterial;
-      this.d = paramlfc.jdField_a_of_type_ArrayOfByte.length;
-      this.e = paramInt4;
+      if (QLog.isColorLevel()) {
+        QLog.d("qav.GAudioUIObserver", 2, "quit for message length");
+      }
       return;
-      paramFilterDesc = paramFilterDesc.name;
-      break;
-      str = paramPendantItem.getId();
-      break label34;
-      paramVideoMaterial = paramVideoMaterial.toString();
-      break label43;
     }
+    switch (i)
+    {
+    default: 
+      return;
+    }
+    a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (ArrayList)paramObject[3]);
+  }
+  
+  protected void a(long paramLong1, long paramLong2, ArrayList<lom> paramArrayList) {}
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
+    {
+      if (this.a == null) {
+        this.a = new Handler(paramObservable);
+      }
+      this.a.post(new InviteMemberObserverWithoutCache.1(this, paramObject));
+      return;
+    }
+    a(paramObject);
   }
 }
 

@@ -1,30 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.jsp.AECameraPlugin;
-import java.io.File;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-public class aqrh
-  implements axrt
+class aqrh
+  extends AnimatorListenerAdapter
 {
-  public aqrh(AECameraPlugin paramAECameraPlugin, String paramString1, String paramString2, String paramString3) {}
+  aqrh(aqrd paramaqrd) {}
   
-  public void onResp(axsq paramaxsq)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramaxsq.b == 0) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      AECameraPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, 2);
-      paramaxsq = AECameraPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, this.jdField_a_of_type_JavaLangString, "downloading succeeded");
-      this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin.callJs(this.b, new String[] { paramaxsq.toString() });
-      vlm.a(BaseApplicationImpl.getApplication(), new File(this.c));
-      return;
-    }
-    AECameraPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, 3);
-    paramaxsq = AECameraPlugin.b(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, this.jdField_a_of_type_JavaLangString, "downloading failed");
-    this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin.callJs(this.b, new String[] { paramaxsq.toString() });
+    super.onAnimationEnd(paramAnimator);
+    this.a.d.setVisibility(8);
+    this.a.a.setVisibility(8);
+    this.a.a.setFocusable(false);
+    aqrd.a(this.a).sendEmptyMessage(3);
   }
-  
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
 }
 
 

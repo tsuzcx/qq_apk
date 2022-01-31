@@ -1,21 +1,27 @@
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 
-public class bbde
+final class bbde
+  implements DialogInterface.OnClickListener
 {
-  public static int a;
-  public static ArrayList<String> a;
-  public static boolean a;
-  public static boolean b;
+  bbde(Activity paramActivity) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_Int = -1;
+    if (paramInt == 1)
+    {
+      paramDialogInterface = new Intent("android.settings.action.MANAGE_WRITE_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
+      this.a.startActivity(paramDialogInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbde
  * JD-Core Version:    0.7.0.1
  */

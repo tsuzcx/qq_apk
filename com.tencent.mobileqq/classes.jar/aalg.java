@@ -1,40 +1,10 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 
 public class aalg
-  extends mps
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public aalg(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
-  {
-    if ((this.a.isFinishing()) || (this.a.m)) {}
-    do
-    {
-      do
-      {
-        return;
-        this.a.p();
-        if (this.a.b != null) {
-          this.a.b.removeCallbacksAndMessages(null);
-        }
-        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.chatopttroop", 2, "openIdObserver success");
-        }
-      } while (paramOpenID.openID.equals(this.a.e));
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.chatopttroop", 2, "-->onGetOpenId--openid doesn't equal current openid");
-      }
-      this.a.s();
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.chatopttroop", 2, "openIdObserver fail");
-  }
+  public aalg(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
 }
 
 

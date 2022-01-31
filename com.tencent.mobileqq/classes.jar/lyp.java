@@ -1,32 +1,36 @@
-import android.view.View;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.ReqGroupVideo.ReqCreateShareUrl;
+import com.tencent.av.ReqGroupVideo.RspCreateShareUrl;
+import com.tencent.av.common.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
 
-public class lyp
-  implements QQPermissionCallback
+class lyp
+  extends lhg<ReqGroupVideo.ReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl>
 {
-  public lyp(VideoControlUI paramVideoControlUI, String paramString, long paramLong, View paramView) {}
+  lyp(lyn paramlyn) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqCreateShareUrl paramReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl paramRspCreateShareUrl, Object paramObject)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "onClick_Camera, deny, i[" + paramInt + "], mRequestPermissionIng[" + this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p = false;
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.e(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "onClick_Camera, grant, i[" + paramInt + "], mRequestPermissionIng[" + this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p = false;
-    if ("android.permission.CAMERA".equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
+    this.a.jdField_a_of_type_Boolean = false;
+    paramReqCreateShareUrl = paramRspCreateShareUrl.share_url_with_no_sig.get().toStringUtf8();
+    paramObject = paramRspCreateShareUrl.share_url.get().toStringUtf8();
+    paramRspCreateShareUrl = (common.ErrorInfo)paramRspCreateShareUrl.result.get();
+    int i = lhd.a(paramRspCreateShareUrl);
+    QLog.w("ShareChat", 1, "requestGetUrlFromServer.callback, result[" + i + "], bytes_errmsg[" + paramRspCreateShareUrl.bytes_errmsg.get().toStringUtf8() + "], share_url_with_no_sig[" + paramReqCreateShareUrl + "], share_url[" + paramObject + "], seq[" + paramLong + "]");
+    if (i == 0)
+    {
+      this.a.c = paramObject;
+      this.a.b = paramReqCreateShareUrl;
+      bbfn.a().a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, this.a.c);
     }
-    while (!"android.permission.RECORD_AUDIO".equals(this.jdField_a_of_type_JavaLangString)) {
+    for (;;)
+    {
+      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
       return;
+      if (i != 11001) {}
     }
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
   }
 }
 

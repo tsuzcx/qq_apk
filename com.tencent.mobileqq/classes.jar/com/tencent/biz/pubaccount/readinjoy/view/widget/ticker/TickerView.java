@@ -14,12 +14,12 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
 import com.tencent.mobileqq.R.styleable;
-import rir;
-import ris;
-import rit;
-import riu;
-import riv;
-import riw;
+import rvh;
+import rvi;
+import rvj;
+import rvk;
+import rvl;
+import rvm;
 
 public class TickerView
   extends View
@@ -32,8 +32,8 @@ public class TickerView
   protected final Paint a;
   private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private String jdField_a_of_type_JavaLangString;
-  private final rir jdField_a_of_type_Rir = new rir(this.jdField_a_of_type_Ris);
-  private final ris jdField_a_of_type_Ris = new ris(this.jdField_a_of_type_AndroidGraphicsPaint);
+  private final rvh jdField_a_of_type_Rvh = new rvh(this.jdField_a_of_type_Rvi);
+  private final rvi jdField_a_of_type_Rvi = new rvi(this.jdField_a_of_type_AndroidGraphicsPaint);
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
@@ -67,7 +67,7 @@ public class TickerView
   private int a()
   {
     if (this.jdField_a_of_type_Boolean) {}
-    for (float f = this.jdField_a_of_type_Rir.b();; f = this.jdField_a_of_type_Rir.a()) {
+    for (float f = this.jdField_a_of_type_Rvh.b();; f = this.jdField_a_of_type_Rvh.a()) {
       return (int)f + getPaddingLeft() + getPaddingRight();
     }
   }
@@ -98,8 +98,8 @@ public class TickerView
   
   private void a(Canvas paramCanvas)
   {
-    float f1 = this.jdField_a_of_type_Rir.b();
-    float f2 = this.jdField_a_of_type_Ris.a();
+    float f1 = this.jdField_a_of_type_Rvh.b();
+    float f2 = this.jdField_a_of_type_Rvi.a();
     a(paramCanvas, this.jdField_c_of_type_Int, this.jdField_a_of_type_AndroidGraphicsRect, f1, f2);
   }
   
@@ -137,47 +137,47 @@ public class TickerView
   
   private int b()
   {
-    return (int)this.jdField_a_of_type_Ris.a() + getPaddingTop() + getPaddingBottom();
+    return (int)this.jdField_a_of_type_Rvi.a() + getPaddingTop() + getPaddingBottom();
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Ris.a();
+    this.jdField_a_of_type_Rvi.a();
     a();
     invalidate();
   }
   
   protected void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
-    riw localriw = new riw(this, paramContext.getResources());
+    rvm localrvm = new rvm(this, paramContext.getResources());
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.TickerView, paramInt1, paramInt2);
     paramInt1 = paramAttributeSet.getResourceId(0, -1);
     if (paramInt1 != -1)
     {
       paramContext = paramContext.obtainStyledAttributes(paramInt1, R.styleable.TickerView);
-      localriw.a(paramContext);
+      localrvm.a(paramContext);
       paramContext.recycle();
     }
-    localriw.a(paramAttributeSet);
+    localrvm.a(paramAttributeSet);
     this.jdField_b_of_type_AndroidViewAnimationInterpolator = jdField_a_of_type_AndroidViewAnimationInterpolator;
     this.jdField_b_of_type_Long = paramAttributeSet.getInt(11, 350);
     this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(10, false);
-    this.jdField_c_of_type_Int = localriw.jdField_a_of_type_Int;
-    if (localriw.jdField_b_of_type_Int != 0) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(localriw.jdField_c_of_type_Float, localriw.jdField_a_of_type_Float, localriw.jdField_b_of_type_Float, localriw.jdField_b_of_type_Int);
+    this.jdField_c_of_type_Int = localrvm.jdField_a_of_type_Int;
+    if (localrvm.jdField_b_of_type_Int != 0) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(localrvm.jdField_c_of_type_Float, localrvm.jdField_a_of_type_Float, localrvm.jdField_b_of_type_Float, localrvm.jdField_b_of_type_Int);
     }
-    if (localriw.jdField_d_of_type_Int != 0)
+    if (localrvm.jdField_d_of_type_Int != 0)
     {
-      this.e = localriw.jdField_d_of_type_Int;
+      this.e = localrvm.jdField_d_of_type_Int;
       setTypeface(this.jdField_a_of_type_AndroidGraphicsPaint.getTypeface());
     }
-    setTextColor(localriw.jdField_c_of_type_Int);
-    setTextSize(localriw.jdField_d_of_type_Float);
+    setTextColor(localrvm.jdField_c_of_type_Int);
+    setTextSize(localrvm.jdField_d_of_type_Float);
     switch (paramAttributeSet.getInt(12, 0))
     {
     default: 
       if (isInEditMode()) {
-        setCharacterLists(new String[] { rit.a() });
+        setCharacterLists(new String[] { rvj.a() });
       }
       break;
     }
@@ -188,32 +188,32 @@ public class TickerView
       {
       default: 
         throw new IllegalArgumentException("Unsupported ticker_defaultPreferredScrollingDirection: " + paramInt1);
-        setCharacterLists(new String[] { rit.a() });
+        setCharacterLists(new String[] { rvj.a() });
         continue;
-        setCharacterLists(new String[] { rit.b() });
+        setCharacterLists(new String[] { rvj.b() });
       }
     }
-    this.jdField_a_of_type_Ris.a(0);
+    this.jdField_a_of_type_Rvi.a(0);
     if (a()) {
-      setText(localriw.jdField_a_of_type_JavaLangString, false);
+      setText(localrvm.jdField_a_of_type_JavaLangString, false);
     }
     for (;;)
     {
       paramAttributeSet.recycle();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new riu(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new riv(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new rvk(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new rvl(this));
       return;
-      this.jdField_a_of_type_Ris.a(1);
+      this.jdField_a_of_type_Rvi.a(1);
       break;
-      this.jdField_a_of_type_Ris.a(2);
+      this.jdField_a_of_type_Rvi.a(2);
       break;
-      this.jdField_b_of_type_JavaLangString = localriw.jdField_a_of_type_JavaLangString;
+      this.jdField_b_of_type_JavaLangString = localrvm.jdField_a_of_type_JavaLangString;
     }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Rir.a() != null;
+    return this.jdField_a_of_type_Rvh.a() != null;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -221,8 +221,8 @@ public class TickerView
     super.onDraw(paramCanvas);
     paramCanvas.save();
     a(paramCanvas);
-    paramCanvas.translate(0.0F, this.jdField_a_of_type_Ris.b());
-    this.jdField_a_of_type_Rir.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.translate(0.0F, this.jdField_a_of_type_Rvi.b());
+    this.jdField_a_of_type_Rvh.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint);
     paramCanvas.restore();
   }
   
@@ -261,7 +261,7 @@ public class TickerView
   
   public void setCharacterLists(String... paramVarArgs)
   {
-    this.jdField_a_of_type_Rir.a(paramVarArgs);
+    this.jdField_a_of_type_Rvh.a(paramVarArgs);
     if (this.jdField_b_of_type_JavaLangString != null)
     {
       setText(this.jdField_b_of_type_JavaLangString, false);
@@ -271,7 +271,7 @@ public class TickerView
   
   public void setDigitalAnimWidthSpeedIncrement(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Rir.a(paramBoolean);
+    this.jdField_a_of_type_Rvh.a(paramBoolean);
   }
   
   public void setGravity(int paramInt)
@@ -285,12 +285,12 @@ public class TickerView
   
   public void setIgnoreWidthAnim(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Rir.b(paramBoolean);
+    this.jdField_a_of_type_Rvh.b(paramBoolean);
   }
   
   public void setPreferredScrollingDirection(int paramInt)
   {
-    this.jdField_a_of_type_Ris.a(paramInt);
+    this.jdField_a_of_type_Rvi.a(paramInt);
   }
   
   public void setText(String paramString)
@@ -312,7 +312,7 @@ public class TickerView
     if (paramString == null) {}
     for (char[] arrayOfChar = new char[0];; arrayOfChar = paramString.toCharArray())
     {
-      this.jdField_a_of_type_Rir.a(arrayOfChar);
+      this.jdField_a_of_type_Rvh.a(arrayOfChar);
       setContentDescription(paramString);
       if (!paramBoolean) {
         break;
@@ -326,8 +326,8 @@ public class TickerView
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       return;
     }
-    this.jdField_a_of_type_Rir.a(1.0F);
-    this.jdField_a_of_type_Rir.a();
+    this.jdField_a_of_type_Rvh.a(1.0F);
+    this.jdField_a_of_type_Rvh.a();
     a();
     invalidate();
   }

@@ -1,12 +1,9 @@
-import android.widget.TextView;
-
-public class adrv
-  extends acjc
+class adrv
+  implements bfos
 {
-  public TextView b;
-  public TextView c;
+  adrv(adru paramadru) {}
   
-  public adrv(adrt paramadrt) {}
+  public void onDismiss() {}
 }
 
 

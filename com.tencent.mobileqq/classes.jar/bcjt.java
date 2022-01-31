@@ -1,38 +1,34 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import mqq.manager.WtloginManager;
-import mqq.observer.SSOAccountObserver;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
-class bcjt
-  extends SSOAccountObserver
+public class bcjt
+  implements TextWatcher
 {
-  bcjt(bcjn parambcjn, OpenSDKAppInterface paramOpenSDKAppInterface, bcjv parambcjv) {}
+  public bcjt(ClearableEditText paramClearableEditText) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramBundle == null) {}
-    for (paramString = "null";; paramString = Integer.valueOf(paramBundle.getInt("code")))
+    paramCharSequence = this.a.getText().toString();
+    if (this.a.isFocused())
     {
-      QLog.d("SSOAccountObserver", 1, new Object[] { "-->getTicketNoPasswd onFailed", ", action", Integer.valueOf(paramInt1), ", code=", paramString });
-      this.jdField_a_of_type_Bcjv.a();
+      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
+        this.a.setClearButtonVisible(false);
+      }
+    }
+    else {
       return;
     }
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    QLog.d("SSOAccountObserver", 1, "-->getTicketNoPasswd onGetTicketNoPasswd");
-    if ((!paramBundle.getBoolean("fake_callback")) && (paramInt == 4096)) {
-      bcgd.a(paramString, System.currentTimeMillis());
+    if ((ClearableEditText.a(this.a)) || (ClearableEditText.b(this.a)))
+    {
+      this.a.setClearButtonVisible(true);
+      return;
     }
-    WtloginManager localWtloginManager = (WtloginManager)this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getManager(1);
-    bciz localbciz = new bciz();
-    localbciz.jdField_b_of_type_JavaLangString = new String(paramArrayOfByte);
-    localbciz.jdField_a_of_type_JavaLangString = Long.toString(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(localWtloginManager, paramString));
-    localbciz.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp");
-    localbciz.jdField_b_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp_key");
-    this.jdField_a_of_type_Bcjv.a(localbciz);
+    this.a.setClearButtonVisible(false);
   }
 }
 

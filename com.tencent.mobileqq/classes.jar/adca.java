@@ -1,37 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
-import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class adca
-  implements View.OnClickListener
+public class adca
+  implements CompoundButton.OnCheckedChangeListener
 {
-  adca(adbx paramadbx) {}
+  public adca(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramView = (MessageForArkFlashChat)paramView.getTag();
-    apgn localapgn;
-    String str1;
-    if (paramView != null)
+    if (paramBoolean)
     {
-      localapgn = ((FlashChatManager)this.a.a.getManager(217)).a;
-      str1 = localapgn.c;
-      String str2 = localapgn.f;
-      String str3 = localapgn.g;
-      if (QLog.isColorLevel()) {
-        QLog.d("FlashChat", 2, "mSourceOnClickListener clickAppMsg url = " + str1 + ", actionData = " + str2 + ", actionDataA = " + str3);
+      if ((VoiceTextEditPanel.a(this.a).get() > 0) && (bbjw.a(VoiceTextEditPanel.a(this.a))) && (!VoiceTextEditPanel.a(this.a).isEnabled())) {
+        this.a.setSendEnable(true);
       }
-      if (!this.a.a(str1, str2, str3)) {
-        break label116;
+      if (VoiceTextEditPanel.a(this.a) != null) {
+        VoiceTextEditPanel.a(this.a).edit().putBoolean("businessinfo_ptt_vt_send_type_" + VoiceTextEditPanel.a(this.a).getCurrentAccountUin(), true).commit();
       }
-    }
-    label116:
-    while (!this.a.a(str1, localapgn.b, paramView)) {
+      VoiceTextEditPanel.a(this.a).setText(2131719278);
+      if (this.a.a())
+      {
+        axqw.b(null, "dc00898", "", "", "0X800A1D8", "0X800A1D8", 2, 0, "", "", "", "");
+        return;
+      }
+      axqw.b(null, "dc00898", "", "", "0X800A1D8", "0X800A1D8", 1, 0, "", "", "", "");
       return;
     }
+    if (VoiceTextEditPanel.a(this.a) != null) {
+      VoiceTextEditPanel.a(this.a).edit().putBoolean("businessinfo_ptt_vt_send_type_" + VoiceTextEditPanel.a(this.a).getCurrentAccountUin(), false).commit();
+    }
+    VoiceTextEditPanel.a(this.a).setText(2131719276);
+    if ((VoiceTextEditPanel.a(this.a).get() == 5) && (bbjw.a(VoiceTextEditPanel.a(this.a)))) {
+      this.a.setSendEnable(false);
+    }
+    if (this.a.a())
+    {
+      axqw.b(null, "dc00898", "", "", "0X800A1D9", "0X800A1D9", 2, 0, "", "", "", "");
+      return;
+    }
+    axqw.b(null, "dc00898", "", "", "0X800A1D9", "0X800A1D9", 1, 0, "", "", "", "");
   }
 }
 

@@ -1,8 +1,8 @@
 package cooperation.qzone;
 
+import aabk;
 import android.content.Intent;
 import android.os.Bundle;
-import zrr;
 
 public class QzoneFeedsPluginProxyActivity
   extends QzonePluginProxyActivity
@@ -16,7 +16,7 @@ public class QzoneFeedsPluginProxyActivity
   {
     super.onResume();
     if (getIntent().getIntExtra("hc_code", 0) != 0) {
-      zrr.a().a(getIntent().getIntExtra("hc_code", 0), true);
+      aabk.a().a(getIntent().getIntExtra("hc_code", 0), true);
     }
   }
   

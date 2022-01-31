@@ -1,23 +1,29 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-
-class akyc
-  implements Animator.AnimatorListener
+public class akyc
 {
-  akyc(akyb paramakyb) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public akyc(akyb paramakyb, int paramInt1, int paramInt2)
   {
-    if (akyb.a(this.a) != null) {
-      akyb.a(this.a).a();
-    }
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public boolean a()
+  {
+    return this.c == 1;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public boolean b()
+  {
+    return this.c == 2;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 3;
+  }
 }
 
 

@@ -1,79 +1,34 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.CellInfo;
 
-class bgxe
+public final class bgxe
+  implements Parcelable.Creator<LbsDataV2.CellInfo>
 {
-  private static final SharedPreferences a = BaseApplicationImpl.sApplication.getRuntime().getApplication().getSharedPreferences("ae_camera_multi_process_sp", 4);
-  
-  static int a(@NonNull String paramString, int paramInt)
+  public LbsDataV2.CellInfo a(Parcel paramParcel)
   {
-    return a.getInt(paramString, paramInt);
+    LbsDataV2.CellInfo localCellInfo = new LbsDataV2.CellInfo();
+    if (paramParcel != null)
+    {
+      localCellInfo.mcc = paramParcel.readInt();
+      localCellInfo.mnc = paramParcel.readInt();
+      localCellInfo.lac = paramParcel.readInt();
+      localCellInfo.cellId = paramParcel.readInt();
+      localCellInfo.rssi = paramParcel.readInt();
+      localCellInfo.stationLat = paramParcel.readDouble();
+      localCellInfo.stationLon = paramParcel.readDouble();
+    }
+    return localCellInfo;
   }
   
-  static long a(@NonNull String paramString, long paramLong)
+  public LbsDataV2.CellInfo[] a(int paramInt)
   {
-    return a.getLong(paramString, paramLong);
-  }
-  
-  @Nullable
-  static String a(@NonNull String paramString1, String paramString2)
-  {
-    return a.getString(paramString1, paramString2);
-  }
-  
-  static void a(@NonNull String paramString)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.remove(paramString);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString, int paramInt)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putInt(paramString, paramInt);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString, long paramLong)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putLong(paramString, paramLong);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString1, String paramString2)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putString(paramString1, paramString2);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString, boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putBoolean(paramString, paramBoolean);
-    localEditor.apply();
-  }
-  
-  static boolean a(@NonNull String paramString)
-  {
-    return a.contains(paramString);
-  }
-  
-  static boolean a(@NonNull String paramString, boolean paramBoolean)
-  {
-    return a.getBoolean(paramString, paramBoolean);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgxe
  * JD-Core Version:    0.7.0.1
  */

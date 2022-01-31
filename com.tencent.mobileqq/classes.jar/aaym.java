@@ -1,27 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aaym
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public aaym(GroupManagerActivity paramGroupManagerActivity) {}
+  public aaym(DialogActivity paramDialogActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "mWaitingDialogControlHandler operationFinished = " + GroupManagerActivity.b(this.a));
-    }
-    GroupManagerActivity.b(this.a, true);
-    if (GroupManagerActivity.b(this.a))
-    {
-      this.a.a(true);
-      return;
-    }
-    paramMessage = GroupManagerActivity.a(this.a).obtainMessage(0);
-    GroupManagerActivity.a(this.a).sendMessageDelayed(paramMessage, 60000L);
-    GroupManagerActivity.c(this.a, true);
+    this.a.finish();
   }
 }
 

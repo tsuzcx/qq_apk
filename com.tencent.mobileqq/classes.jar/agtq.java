@@ -1,35 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import mqq.util.WeakReference;
 
 class agtq
-  implements InvocationHandler
+  implements agmj
 {
-  public agtx a;
+  agtq(agtp paramagtp) {}
   
-  public agtq(agtx paramagtx)
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    this.a = paramagtx;
-  }
-  
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
-  {
-    QLog.i("springHb_SpringEntryManager", 2, "callbackInvocationHandler method: " + paramMethod.getName());
-    try
+    if (bkpe.a((Activity)this.a.a.get(), paramLocalMediaInfo))
     {
-      paramObject = paramMethod.invoke(this.a, paramArrayOfObject);
-      return paramObject;
+      agtp.a(this.a, paramLocalMediaInfo);
+      xhe.a("mystatus_localupload", "pic_select", 0, 0, new String[0]);
+      return;
     }
-    catch (Throwable paramObject)
-    {
-      QLog.i("springHb_SpringEntryManager", 1, QLog.getStackTraceString(paramObject));
-    }
-    return null;
+    ((NewPhotoListActivity)this.a.a.get()).d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agtq
  * JD-Core Version:    0.7.0.1
  */

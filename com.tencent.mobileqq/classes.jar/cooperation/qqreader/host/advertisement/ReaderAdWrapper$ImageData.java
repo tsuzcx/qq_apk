@@ -1,7 +1,7 @@
 package cooperation.qqreader.host.advertisement;
 
 import android.text.TextUtils;
-import yjt;
+import ysw;
 
 public class ReaderAdWrapper$ImageData
 {
@@ -9,11 +9,11 @@ public class ReaderAdWrapper$ImageData
   public String url;
   public int width;
   
-  ReaderAdWrapper$ImageData(yjt paramyjt)
+  ReaderAdWrapper$ImageData(ysw paramysw)
   {
-    this.url = paramyjt.jdField_a_of_type_JavaLangString;
-    this.width = paramyjt.jdField_a_of_type_Int;
-    this.height = paramyjt.b;
+    this.url = paramysw.jdField_a_of_type_JavaLangString;
+    this.width = paramysw.jdField_a_of_type_Int;
+    this.height = paramysw.b;
   }
   
   public boolean isValid()

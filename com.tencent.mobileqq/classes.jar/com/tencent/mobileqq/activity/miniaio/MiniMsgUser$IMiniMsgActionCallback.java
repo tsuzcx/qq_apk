@@ -2,6 +2,8 @@ package com.tencent.mobileqq.activity.miniaio;
 
 public abstract interface MiniMsgUser$IMiniMsgActionCallback
 {
+  public abstract void onFromMiniAIOToAIO();
+  
   public abstract void onGoToConversation();
   
   public abstract void onOpenMiniAIOCallback();

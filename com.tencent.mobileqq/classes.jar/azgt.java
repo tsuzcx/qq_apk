@@ -1,56 +1,30 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.LruCache;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
 public class azgt
-  extends Handler
+  extends ClickableSpan
 {
-  public void handleMessage(Message paramMessage)
+  public azgt(TroopBarPublishActivity paramTroopBarPublishActivity, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramMessage.what == 1001) {}
-    try
+    TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, 2002, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.t);
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.getVisibility() == 0)) {}
+    for (int i = 2;; i = 1)
     {
-      paramMessage = (String)paramMessage.obj;
-      if (QLog.isColorLevel()) {
-        QLog.d("NonMainAppListViewFaceLoader", 2, "DecodeHandler handle MSG_DECODE_FACE_BITMAP uin:" + paramMessage);
-      }
-      Bitmap localBitmap1 = bacm.a((String)this.a.b.get(paramMessage), null);
-      if (localBitmap1 != null)
-      {
-        Bitmap localBitmap2 = this.a.a(localBitmap1);
-        if (localBitmap2 != null)
-        {
-          Message localMessage = Message.obtain();
-          Bundle localBundle = new Bundle();
-          localBundle.putParcelable("bmp", localBitmap2);
-          localBundle.putString("uin", paramMessage);
-          localMessage.obj = localBundle;
-          localMessage.what = 1002;
-          this.a.a.sendMessage(localMessage);
-          if (QLog.isColorLevel()) {
-            QLog.d("NonMainAppListViewFaceLoader", 2, "decodeFile, uin:" + paramMessage);
-          }
-        }
-        if ((localBitmap1 != null) && (!localBitmap1.isRecycled())) {
-          localBitmap1.recycle();
-        }
-      }
+      axqw.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_add_topic", i, 0, "", "", "", "");
       return;
     }
-    catch (OutOfMemoryError paramMessage)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NonMainAppListViewFaceLoader", 2, "decodeFile, OutOfMemoryError");
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NonMainAppListViewFaceLoader", 2, "decodeFile, exception:" + paramMessage.toString());
-    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

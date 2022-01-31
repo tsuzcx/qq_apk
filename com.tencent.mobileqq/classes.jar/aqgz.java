@@ -1,19 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
 
 class aqgz
-  implements DialogInterface.OnClickListener
+  implements aaqe
 {
-  aqgz(aqgx paramaqgx) {}
+  aqgz(aqgy paramaqgy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.k();
+    this.a.a.setResult(-1);
+    this.a.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqgz
  * JD-Core Version:    0.7.0.1
  */

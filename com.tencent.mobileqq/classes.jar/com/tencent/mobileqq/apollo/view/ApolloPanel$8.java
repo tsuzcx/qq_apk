@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajdl;
+import ajrn;
 import android.widget.LinearLayout;
-import bajr;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.ApolloActionPackage;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.widget.HorizontalListView;
 import java.util.Iterator;
 import java.util.List;
@@ -17,9 +17,9 @@ class ApolloPanel$8
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Ajdl != null) && (this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.this$0.jdField_a_of_type_ComTencentWidgetHorizontalListView != null))
+    if ((this.this$0.jdField_a_of_type_Ajrn != null) && (this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.this$0.jdField_a_of_type_ComTencentWidgetHorizontalListView != null))
     {
-      this.this$0.jdField_a_of_type_Ajdl.a(this.a);
+      this.this$0.jdField_a_of_type_Ajrn.a(this.a);
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
         break label148;
       }
@@ -35,7 +35,7 @@ class ApolloPanel$8
     for (;;)
     {
       this.this$0.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
-      this.this$0.jdField_a_of_type_Ajdl.notifyDataSetChanged();
+      this.this$0.jdField_a_of_type_Ajrn.notifyDataSetChanged();
       if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
         break label167;
       }
@@ -65,7 +65,7 @@ class ApolloPanel$8
     label257:
     for (int i = 2;; i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)
     {
-      bajr.a(null, "cmshow", "Apollo", "tabreddot", i, 0, new String[] { String.valueOf(localApolloActionPackage.packageId) });
+      VipUtils.a(null, "cmshow", "Apollo", "tabreddot", i, 0, new String[] { String.valueOf(localApolloActionPackage.packageId) });
       break label177;
       break;
     }

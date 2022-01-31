@@ -1,21 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AgentActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin.7;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-class bbtp
-  implements DialogInterface.OnClickListener
+public class bbtp
+  implements TVK_SDKMgr.InstallListener
 {
-  bbtp(bbto parambbto, int paramInt, String paramString) {}
+  public bbtp(HealthBusinessPlugin.7 param7) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onInstallProgress(float paramFloat)
   {
-    paramDialogInterface.dismiss();
-    AgentActivity.a(this.jdField_a_of_type_Bbto.a.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.a.this$0.c = ((int)(100.0F * paramFloat));
+    this.a.this$0.b.sendEmptyMessage(2);
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    this.a.this$0.d = paramInt;
+    this.a.this$0.b.sendEmptyMessage(1);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    this.a.this$0.b.sendEmptyMessage(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbtp
  * JD-Core Version:    0.7.0.1
  */

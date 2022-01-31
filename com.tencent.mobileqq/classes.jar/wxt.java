@@ -1,27 +1,39 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class wxt
+  implements BusinessObserver
 {
-  private static final String jdField_a_of_type_JavaLangString = wxt.class.getName();
-  private static wxr jdField_a_of_type_Wxr;
-  private static String b;
-  private static String c;
+  public wxt(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public static wxr a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (b == null) {
-      b = BaseApplicationImpl.getApplication().getPackageName();
+    if (QLog.isColorLevel()) {
+      QLog.d("EditUniqueTitleActivity", 2, "setUniqueTitle, onReceive. type=" + paramInt + ", isSuccess=" + paramBoolean);
     }
-    if (c == null) {
-      c = BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath();
-    }
-    if (jdField_a_of_type_Wxr == null)
+    if (!paramBoolean)
     {
-      jdField_a_of_type_Wxr = new wxu(b, c);
-      urk.b(jdField_a_of_type_JavaLangString, "init FileCache");
+      EditUniqueTitleActivity.a(this.a, -1);
+      return;
     }
-    return jdField_a_of_type_Wxr;
+    paramBundle = paramBundle.getByteArray("data");
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    try
+    {
+      localOIDBSSOPkg.mergeFrom(paramBundle);
+      paramInt = localOIDBSSOPkg.uint32_result.get();
+      EditUniqueTitleActivity.a(this.a, paramInt);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      EditUniqueTitleActivity.a(this.a, -1);
+    }
   }
 }
 

@@ -1,16 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-class pih
-  implements View.OnClickListener
+public class pih
+  implements ViewBase.OnClickListener
 {
-  pih(pig parampig) {}
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
   
-  public void onClick(View paramView)
+  public pih(BaseArticleInfo paramBaseArticleInfo, Context paramContext)
   {
-    paramView = this.a.jdField_a_of_type_Qoe.a();
-    if (paramView != null) {
-      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if (AdvertisementInfo.class.isInstance(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))
+    {
+      paramViewBase = (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+      if (paramViewBase.mLocalInfo != null)
+      {
+        String str = paramViewBase.mLocalInfo.b;
+        if (!TextUtils.isEmpty(str))
+        {
+          onk.e(this.jdField_a_of_type_AndroidContentContext, str);
+          nmf.a(new nyg().a(this.jdField_a_of_type_AndroidContentContext).a(nmf.a).b(nmf.Z).a(paramViewBase).d(nmf.aN).a());
+        }
+      }
     }
   }
 }

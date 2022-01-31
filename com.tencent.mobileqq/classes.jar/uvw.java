@@ -1,151 +1,183 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoSpreadGroupList;
-import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 public class uvw
-  extends uur
 {
-  public SparseArray<srx> a;
+  private static uvt jdField_a_of_type_Uvt = new uvt();
+  public int a;
+  private String jdField_a_of_type_JavaLangString = "";
+  public List<uvs> a;
+  public boolean a;
+  private int b;
   
-  public uvw(@NonNull uut paramuut)
+  public uvw()
   {
-    super(paramuut);
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(6);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  @NonNull
-  private List<Long> a(@NonNull List<String> paramList)
+  public uvw(uvw paramuvw)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramuvw.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_JavaLangString = paramuvw.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramuvw.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Int = paramuvw.jdField_a_of_type_Int;
+    this.b = paramuvw.b;
+  }
+  
+  private boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public uvx a(int paramInt1, int paramInt2)
+  {
+    boolean bool = true;
+    int i;
+    ArrayList localArrayList;
+    for (;;)
     {
-      String str = (String)paramList.next();
       try
       {
-        localArrayList.add(Long.valueOf(Long.valueOf(str).longValue()));
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        urk.e("Q.qqstory.publish.edit.EditVideoPermission", "can't format uin:%s", new Object[] { str });
-      }
-    }
-    return localArrayList;
-  }
-  
-  private void f()
-  {
-    Activity localActivity = a().getActivity();
-    if (localActivity != null)
-    {
-      Intent localIntent = new Intent(localActivity, ShareToActivity.class);
-      srx localsrx = (srx)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Uut.a());
-      if (!srx.a(localsrx)) {
-        localIntent.putStringArrayListExtra("share_to_group_key", new ArrayList(localsrx.a));
-      }
-      localActivity.startActivityForResult(localIntent, 5555);
-    }
-  }
-  
-  private void g()
-  {
-    urx localurx = (urx)super.a(urx.class);
-    if (srx.a((srx)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Uut.a())))
-    {
-      localurx.b(2130845746);
-      return;
-    }
-    localurx.b(2130845747);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == 5555)
-    {
-      if (paramInt2 == 1)
-      {
-        paramIntent = paramIntent.getStringArrayListExtra("share_to_group_key");
-        if (paramIntent != null) {
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_Uut.a(), new srx(paramIntent));
-        }
-      }
-      this.jdField_a_of_type_Uut.a(0);
-      g();
-    }
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    f();
-  }
-  
-  public void a(int paramInt, @NonNull vfh paramvfh)
-  {
-    super.a(paramInt, paramvfh);
-    ??? = (srx)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (srx.a((srx)???)) {}
-    for (;;)
-    {
-      return;
-      List localList = a(((srx)???).a);
-      if (localList.size() > 0) {}
-      synchronized (this.jdField_a_of_type_Uut)
-      {
-        qqstory_struct.VideoSpreadGroupList localVideoSpreadGroupList = new qqstory_struct.VideoSpreadGroupList();
-        byte[] arrayOfByte = paramvfh.a.spreadGroupBytes;
-        if (arrayOfByte != null) {}
-        try
+        uvx localuvx1 = new uvx();
+        if (paramInt1 == 0)
         {
-          localVideoSpreadGroupList.mergeFrom(paramvfh.a.spreadGroupBytes);
-          localVideoSpreadGroupList.group_list.set(localList);
-          localVideoSpreadGroupList.visibility_type.set(2);
-          localVideoSpreadGroupList.setHasFlag(true);
-          paramvfh.a.spreadGroupBytes = localVideoSpreadGroupList.toByteArray();
-          urk.d("Q.qqstory.publish.edit.EditVideoPermission", "editVideoPrePublish fragment index = %d, qq-group count %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(localList.size()) });
-          if (!QLog.isColorLevel()) {
+          localuvx1.jdField_a_of_type_Boolean = bool;
+          if (this.jdField_a_of_type_JavaUtilList.size() <= paramInt1) {
+            break label330;
+          }
+          i = paramInt2;
+          if (paramInt1 + paramInt2 > this.jdField_a_of_type_JavaUtilList.size()) {
+            i = this.jdField_a_of_type_JavaUtilList.size() - paramInt1;
+          }
+          if ((paramInt1 + i >= this.jdField_a_of_type_JavaUtilList.size()) && (a())) {
+            localuvx1.b = true;
+          }
+          localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+          localuvx1.jdField_a_of_type_JavaUtilList = localArrayList.subList(paramInt1, paramInt1 + i);
+          paramInt2 = paramInt1 + i;
+          if (paramInt2 >= this.jdField_a_of_type_JavaUtilList.size()) {
+            break label309;
+          }
+          uvs localuvs1 = (uvs)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
+          Iterator localIterator = localuvx1.jdField_a_of_type_JavaUtilList.iterator();
+          if (!localuvs1.b) {
+            break label309;
+          }
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          uvs localuvs2 = (uvs)localIterator.next();
+          if ((!localuvs2.b) || (!localuvs2.c.equals(localuvs1.c))) {
             continue;
           }
-          QLog.d("zivonchen", 2, "editVideoPrePublish fragmentIndex = " + paramInt + ", shareGroupArray: " + paramvfh.a.spreadGroupBytes);
-          return;
+          localIterator.remove();
+          veg.d("Q.qqstory.home.data.FeedListPageLoaderBase", "remove one fail info:%s", new Object[] { localuvs2 });
+          continue;
         }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          for (;;)
-          {
-            urk.c("Q.qqstory.publish.edit.EditVideoPermission", "editVideoPrePublish error", localInvalidProtocolBufferMicroException);
-          }
-        }
+        bool = false;
       }
+      finally {}
     }
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    if (localuvx2.jdField_a_of_type_JavaUtilList.isEmpty())
     {
+      localuvx2.jdField_a_of_type_JavaUtilList = localArrayList.subList(paramInt1, paramInt1 + i);
+      veg.d("Q.qqstory.home.data.FeedListPageLoaderBase", "bad luck for you have too much fail %s", new Object[] { localuvx2.jdField_a_of_type_JavaUtilList });
     }
     for (;;)
     {
-      return super.a(paramMessage);
-      g();
+      label309:
+      this.b = (localuvx2.jdField_a_of_type_JavaUtilList.size() + paramInt1);
+      return localuvx2;
+      label330:
+      localuvx2.b = a();
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaLangString = "";
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Int = 0;
+      this.b = 0;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(List<uvs> paramList, String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      veg.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId list:set next cookie data count:%d, cookie:%s, isEnd:%b", new Object[] { Integer.valueOf(paramList.size()), paramString, Boolean.valueOf(paramBoolean) });
+      veg.a("Q.qqstory.home.data.FeedListPageLoaderBase", "add feed list:%s", paramList);
+      return;
+    }
+    finally
+    {
+      paramList = finally;
+      throw paramList;
+    }
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_a_of_type_Int = this.b;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void c()
+  {
+    try
+    {
+      if (veg.a()) {
+        veg.a("Q.qqstory.home.data.FeedListPageLoaderBase", "before sort curpos:%d -- %s", Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilList);
+      }
+      Collections.sort(this.jdField_a_of_type_JavaUtilList, jdField_a_of_type_Uvt);
+      if (veg.a()) {
+        veg.a("Q.qqstory.home.data.FeedListPageLoaderBase", "after* sort curpos:%d -- %s", Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilList);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public String toString()
+  {
+    try
+    {
+      String str = "FeedIdListCache{mFeedIdListCache=" + this.jdField_a_of_type_JavaUtilList + ", mFeedIdNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mIsEnd=" + this.jdField_a_of_type_Boolean + ", mCurFeedIdPosition=" + this.jdField_a_of_type_Int + ", mTempFeedIdPosition=" + this.b + '}';
+      return str;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }

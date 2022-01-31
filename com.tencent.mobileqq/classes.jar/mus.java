@@ -1,28 +1,92 @@
-import android.view.View;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.highway.config.HwServlet;
+import com.tencent.mobileqq.highway.openup.SessionInfo;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtReq;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
+import java.io.File;
+import java.util.UUID;
 
-class mus
-  implements behi
+public abstract class mus
 {
-  mus(muq parammuq) {}
+  private final int jdField_a_of_type_Int;
+  protected AppInterface a;
+  final String jdField_a_of_type_JavaLangString;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected mus(AppInterface paramAppInterface, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "onItemClick!");
+    this.jdField_a_of_type_JavaLangString = ("FileUpload_" + paramInt + "_" + paramLong);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  public static void a(AppInterface paramAppInterface)
+  {
+    if (paramAppInterface != null) {
+      paramAppInterface.getHwEngine().preConnect();
     }
-    paramAdapterView = (nbu)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (this.a.jdField_a_of_type_Mua != null) {
-      this.a.jdField_a_of_type_Mua.a(paramAdapterView);
+  }
+  
+  public static byte[] a(String paramString, AppInterface paramAppInterface)
+  {
+    try
+    {
+      String str = paramAppInterface.getCurrentAccountUin();
+      if (SessionInfo.getInstance(str).getHttpconn_sig_session() != null)
+      {
+        int i = SessionInfo.getInstance(str).getHttpconn_sig_session().length;
+        paramString = new byte[i];
+        System.arraycopy(SessionInfo.getInstance(str).getHttpconn_sig_session(), 0, paramString, 0, i);
+        return paramString;
+      }
+      HwServlet.getConfig(paramAppInterface, str);
+      QLog.w(paramString, 1, "getSig, fail");
+      return null;
     }
-    this.a.a(paramAdapterView);
+    finally {}
+  }
+  
+  protected boolean a(String paramString, muu parammuu)
+  {
+    long l = new File(paramString).length();
+    String str = aleu.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    if (l == 0L)
+    {
+      parammuu.a(-10001, str, "", null);
+      return false;
+    }
+    Object localObject = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    if ((localObject == null) || (localObject.length == 0))
+    {
+      parammuu.a(-10003, str, "", null);
+      return false;
+    }
+    byte[] arrayOfByte = aleu.a(paramString);
+    if ((arrayOfByte == null) || (arrayOfByte.length == 0))
+    {
+      parammuu.a(-10002, str, "", null);
+      return false;
+    }
+    mut localmut = new mut(this, str, l, arrayOfByte, parammuu);
+    Bdh_extinfo.CommFileExtReq localCommFileExtReq = new Bdh_extinfo.CommFileExtReq();
+    localCommFileExtReq.uint32_action_type.set(0);
+    localCommFileExtReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
+    localObject = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, paramString, 0, (byte[])localObject, arrayOfByte, localmut, localCommFileExtReq.toByteArray());
+    int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask((Transaction)localObject);
+    if (i != 0) {
+      parammuu.a(i, str, "", null);
+    }
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestToUpload, localFile[" + paramString + "], sessionId[" + str + "]");
+    return i == 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mus
  * JD-Core Version:    0.7.0.1
  */

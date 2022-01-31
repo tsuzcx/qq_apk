@@ -1,92 +1,27 @@
-import android.database.Cursor;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public abstract class atmo
+class atmo
+  implements View.OnTouchListener
 {
-  public static final int DETACHED = 1002;
-  public static final int MANAGED = 1001;
-  public static final int NEW = 1000;
-  public static final int REMOVED = 1003;
-  long _id = -1L;
-  int _status = 1000;
+  atmo(atlu paramatlu) {}
   
-  public atmo deepCopyByReflect()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
-    {
-      atmo localatmo = (atmo)getClass().newInstance();
-      if (localatmo != null)
-      {
-        Field[] arrayOfField = getClass().getFields();
-        int j = arrayOfField.length;
-        int i = 0;
-        while (i < j)
-        {
-          Field localField = arrayOfField[i];
-          if (!localField.isAccessible()) {
-            localField.setAccessible(true);
-          }
-          localField.set(localatmo, localField.get(this));
-          i += 1;
-        }
-        localatmo._status = 1000;
-        localatmo.postRead();
-      }
-      return localatmo;
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131370404).setAlpha(0.5F);
     }
-    catch (Exception localException)
+    for (;;)
     {
-      QLog.d("Entity", 1, " deepCopyByReflect:failed" + getClass().getName() + " exception e: = " + localException.getMessage());
-      localException.printStackTrace();
+      return false;
+      this.a.a.findViewById(2131370404).setAlpha(1.0F);
     }
-    return null;
-  }
-  
-  protected boolean entityByCursor(Cursor paramCursor)
-  {
-    return false;
-  }
-  
-  protected Class<? extends atmo> getClassForTable()
-  {
-    return getClass();
-  }
-  
-  public long getId()
-  {
-    return this._id;
-  }
-  
-  public int getStatus()
-  {
-    return this._status;
-  }
-  
-  public String getTableName()
-  {
-    return getClass().getSimpleName();
-  }
-  
-  protected void postRead() {}
-  
-  protected void postwrite() {}
-  
-  protected void prewrite() {}
-  
-  public void setId(long paramLong)
-  {
-    this._id = paramLong;
-  }
-  
-  public void setStatus(int paramInt)
-  {
-    this._status = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atmo
  * JD-Core Version:    0.7.0.1
  */

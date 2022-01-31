@@ -1,31 +1,18 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.VisibleSetParam;
 
-public class qec
-  extends DataSetObserver
+public final class qec
+  implements Parcelable.Creator<VisibleSetParam>
 {
-  public qec(VideoFeedsListView paramVideoFeedsListView) {}
-  
-  public void onChanged()
+  public VisibleSetParam a(Parcel paramParcel)
   {
-    VideoFeedsListView localVideoFeedsListView = this.a;
-    if (VideoFeedsListView.a(this.a) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      VideoFeedsListView.a(localVideoFeedsListView, bool);
-      return;
-    }
+    return new VisibleSetParam(paramParcel);
   }
   
-  public void onInvalidated()
+  public VisibleSetParam[] a(int paramInt)
   {
-    VideoFeedsListView localVideoFeedsListView = this.a;
-    if (VideoFeedsListView.a(this.a) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      VideoFeedsListView.a(localVideoFeedsListView, bool);
-      return;
-    }
+    return new VisibleSetParam[paramInt];
   }
 }
 

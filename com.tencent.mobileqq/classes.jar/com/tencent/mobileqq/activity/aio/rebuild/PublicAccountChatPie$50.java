@@ -1,26 +1,21 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aegy;
-import aeii;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import aerv;
+import com.tencent.ark.ark;
 
 public class PublicAccountChatPie$50
   implements Runnable
 {
-  public PublicAccountChatPie$50(aegy paramaegy) {}
+  public PublicAccountChatPie$50(aerv paramaerv) {}
   
   public void run()
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    try
     {
-      localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(13);
-      if ((localObject != null) && (((WebProcessManager)localObject).e())) {
-        ((WebProcessManager)localObject).a(-1, new aeii(this));
-      }
+      ark.arkNotify("com.tencent.weather", "pubaccountPendantRefresh", "", "json");
+      return;
     }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
   }
 }
 

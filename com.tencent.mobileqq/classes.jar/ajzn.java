@@ -1,10 +1,21 @@
-public abstract interface ajzn
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ajzn
+  implements ajtf
 {
-  public abstract void a(String paramString, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, Long paramLong);
-  
-  public abstract void b(String paramString, boolean paramBoolean);
+  public List<String> a(AppInterface paramAppInterface)
+  {
+    if (((paramAppInterface instanceof QQAppInterface)) && (((QQAppInterface)paramAppInterface).a().a()))
+    {
+      paramAppInterface = new ArrayList();
+      paramAppInterface.add("100000");
+      return paramAppInterface;
+    }
+    return null;
+  }
 }
 
 

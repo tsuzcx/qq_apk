@@ -1,19 +1,26 @@
-import android.view.View;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import android.content.Context;
+import com.tencent.ad.tangram.dialog.AdProgressDialogAdapter;
 
 public class ysi
-  implements yrz
+  implements AdProgressDialogAdapter
 {
-  public ysi(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
+  private bcpq a;
   
-  public void a(View paramView)
+  public void dismiss()
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    if ((this.a != null) && (this.a.isShowing())) {
+      this.a.dismiss();
     }
-    this.a.a();
+  }
+  
+  public void show(Context paramContext, int paramInt)
+  {
+    if ((this.a == null) && (paramContext != null) && (paramContext.getResources() != null)) {
+      this.a = new bcpq(paramContext, paramInt);
+    }
+    if (this.a != null) {
+      this.a.show();
+    }
   }
 }
 

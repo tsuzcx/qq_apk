@@ -2,14 +2,14 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bdfz;
-import bdnw;
+import beka;
+import besl;
 import org.json.JSONObject;
 
 class StorageJsPlugin$6
   implements StorageJsPlugin.StorageTask
 {
-  StorageJsPlugin$6(StorageJsPlugin paramStorageJsPlugin, String paramString, bdfz parambdfz) {}
+  StorageJsPlugin$6(StorageJsPlugin paramStorageJsPlugin, String paramString, beka parambeka) {}
   
   public String run()
   {
@@ -24,7 +24,7 @@ class StorageJsPlugin$6
       }
       catch (Exception localException)
       {
-        bdnw.d("StorageJsPlugin", this.val$req.a + " result error." + localException);
+        besl.d("StorageJsPlugin", this.val$req.a + " result error." + localException);
         return this.val$req.a("json error");
       }
     }

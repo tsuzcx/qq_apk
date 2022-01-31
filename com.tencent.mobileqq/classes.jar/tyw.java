@@ -1,29 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
 
 public class tyw
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, tna>
+  extends wdh
 {
-  public tyw(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  public tyw(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tna paramtna)
+  public boolean a(boolean paramBoolean)
   {
-    if ((paramQQStoryShareGroupProfileActivity.a().equals(paramtna.jdField_a_of_type_JavaLangString)) && ((paramtna.jdField_a_of_type_Tjs instanceof tkd)))
-    {
-      paramtna = ((tkd)paramtna.jdField_a_of_type_Tjs).a;
-      if (paramtna != null) {
-        paramQQStoryShareGroupProfileActivity.a(paramtna.jdField_a_of_type_JavaLangString);
-      }
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tna.class;
+    StoryPlayerCommentListView.a(this.a).a(StoryPlayerCommentListView.a(this.a).a());
+    return true;
   }
 }
 

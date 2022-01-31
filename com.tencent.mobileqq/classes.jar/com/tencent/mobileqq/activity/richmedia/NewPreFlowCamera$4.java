@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,7 +16,7 @@ class NewPreFlowCamera$4
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      bbmy.a(BaseApplicationImpl.getContext(), 2131652956, 0).a();
+      bcpw.a(BaseApplicationImpl.getContext(), 2131718781, 0).a();
       NewPreFlowCamera.a(this.this$0, -1);
       return;
     }

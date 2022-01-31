@@ -5,12 +5,12 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
-import atte;
+import aurc;
 
 public class ImageSwitchAnimView
   extends View
 {
-  private atte a = new atte(getContext(), 0, 0, 0, 0, 0, 0, 0, 0);
+  private aurc a = new aurc(getContext(), 0, 0, 0, 0, 0, 0, 0, 0);
   
   public ImageSwitchAnimView(Context paramContext)
   {

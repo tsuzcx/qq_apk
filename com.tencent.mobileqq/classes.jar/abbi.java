@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.LebaListMgrActivity.4.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
 public class abbi
-  extends ajqx
+  implements View.OnClickListener
 {
-  public abbi(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public abbi(FontSettingActivity paramFontSettingActivity) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
-    }
-    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
-      return;
-    }
-    paramObject = afqa.a().a();
-    this.a.runOnUiThread(new LebaListMgrActivity.4.1(this, paramObject));
+    this.a.c();
   }
 }
 

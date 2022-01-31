@@ -1,23 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import mqq.util.WeakReference;
 
 class agtz
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  agtz(agty paramagty) {}
+  agtz(agtw paramagtw) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.a();
+    if (((NewPhotoListActivity)this.a.a.get()).c != null) {
+      ((NewPhotoListActivity)this.a.a.get()).c.setClickable(true);
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agtz
  * JD-Core Version:    0.7.0.1
  */

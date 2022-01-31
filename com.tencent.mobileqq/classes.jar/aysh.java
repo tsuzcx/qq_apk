@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class aysh
-  implements View.OnClickListener
+  extends akav
 {
-  aysh(ayse paramayse) {}
+  aysh(aysg paramaysg) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, akaw paramakaw)
   {
-    this.a.b(paramView);
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramakaw);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aysh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,32 @@
-public abstract interface sub
+import android.annotation.TargetApi;
+import java.net.URL;
+
+@TargetApi(14)
+public class sub
 {
-  public abstract void a();
+  public static URL a(URL paramURL)
+  {
+    String str = paramURL.getHost();
+    int k = str.indexOf(':');
+    Object localObject = paramURL;
+    if (k != -1)
+    {
+      localObject = str.substring(0, k);
+      int j = paramURL.getPort();
+      int i = j;
+      if (j == -1) {
+        i = Integer.valueOf(str.substring(k + 1)).intValue();
+      }
+      veg.b("URLChecker", "url is not initilized correctly, so re-create it");
+      localObject = new URL(paramURL.getProtocol(), (String)localObject, i, paramURL.getFile());
+    }
+    return localObject;
+  }
   
-  public abstract void b();
+  public static boolean a(URL paramURL)
+  {
+    return paramURL.getHost().indexOf(':') == -1;
+  }
 }
 
 

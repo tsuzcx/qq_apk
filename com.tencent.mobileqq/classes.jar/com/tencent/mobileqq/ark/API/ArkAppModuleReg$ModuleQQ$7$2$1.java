@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ark.API;
 
-import alat;
-import albb;
+import alpf;
+import alpp;
 
 public class ArkAppModuleReg$ModuleQQ$7$2$1
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$7$2$1(albb paramalbb) {}
+  public ArkAppModuleReg$ModuleQQ$7$2$1(alpp paramalpp) {}
   
   public void run()
   {
-    alat.a(this.a.a.this$0, this.a.a.a, this.a.a.jdField_b_of_type_JavaLangString, 16L, this.a.a.jdField_b_of_type_Long, 2);
+    alpf.a(this.a.a.this$0, this.a.a.a, this.a.a.jdField_b_of_type_JavaLangString, 16L, this.a.a.jdField_b_of_type_Long, 2);
   }
 }
 

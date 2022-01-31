@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import abpa;
+import abze;
 
 public class RegisterQQNumberActivity$4$1
   implements Runnable
 {
-  public RegisterQQNumberActivity$4$1(abpa paramabpa) {}
+  public RegisterQQNumberActivity$4$1(abze paramabze) {}
   
   public void run()
   {
-    this.a.a.a(2131651340, 1);
+    this.a.a.a(2131717132, 1);
   }
 }
 

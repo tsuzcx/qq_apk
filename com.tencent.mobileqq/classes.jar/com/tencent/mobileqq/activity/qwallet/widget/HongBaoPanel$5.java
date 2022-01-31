@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import acnc;
-import agqj;
-import agqm;
+import acxv;
+import ahcy;
+import ahdb;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,19 +13,19 @@ class HongBaoPanel$5
   
   public void onItemClick(View paramView, int paramInt)
   {
-    agqm localagqm = this.this$0.mAdapter.getPanelDataAtPos(paramInt);
+    ahdb localahdb = this.this$0.mAdapter.getPanelDataAtPos(paramInt);
     if (QLog.isColorLevel()) {
-      if ("OnHolderItemClickListener onItemClick  panelData=" + localagqm != null) {
+      if ("OnHolderItemClickListener onItemClick  panelData=" + localahdb != null) {
         break label126;
       }
     }
     label126:
-    for (paramView = "null";; paramView = localagqm + ",p=" + paramInt)
+    for (paramView = "null";; paramView = localahdb + ",p=" + paramInt)
     {
       QLog.d("HongBaoPanel", 2, paramView);
-      acnc.a(this.this$0.mApp, this.this$0.mActivity, this.this$0.mSessionInfo, localagqm, this.this$0.mAdapter.getDatas(), 3);
-      if ((this.this$0.redManager != null) && (localagqm != null)) {
-        this.this$0.redManager.a(localagqm.a);
+      acxv.a(this.this$0.mApp, this.this$0.mActivity, this.this$0.mSessionInfo, localahdb, this.this$0.mAdapter.getDatas(), 3);
+      if ((this.this$0.redManager != null) && (localahdb != null)) {
+        this.this$0.redManager.a(localahdb.a);
       }
       this.this$0.mAdapter.notifyItemChanged(paramInt);
       return;

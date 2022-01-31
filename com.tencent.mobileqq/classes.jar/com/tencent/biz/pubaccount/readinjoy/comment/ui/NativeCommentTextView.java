@@ -9,18 +9,17 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
-import bajq;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import ntt;
-import nvf;
-import nwk;
-import nwx;
-import nzg;
-import nzh;
+import ofd;
+import ogq;
+import ohv;
+import oii;
+import okr;
+import oks;
 
 public class NativeCommentTextView
   extends ReadInJoyYAFolderTextView
@@ -31,8 +30,8 @@ public class NativeCommentTextView
   private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
   private View jdField_a_of_type_AndroidViewView;
   private String jdField_a_of_type_JavaLangString = "NativeCommentTextView";
-  private nwk jdField_a_of_type_Nwk;
-  private nwx jdField_a_of_type_Nwx;
+  private ohv jdField_a_of_type_Ohv;
+  private oii jdField_a_of_type_Oii;
   
   public NativeCommentTextView(Context paramContext)
   {
@@ -55,25 +54,25 @@ public class NativeCommentTextView
   private void b()
   {
     QLog.d(this.jdField_a_of_type_JavaLangString, 2, "showAnchorAniation");
-    if ((this.jdField_a_of_type_Nwx == null) || (this.jdField_a_of_type_Nwx.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {}
+    if ((this.jdField_a_of_type_Oii == null) || (this.jdField_a_of_type_Oii.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {}
     View localView;
     do
     {
       do
       {
         return;
-      } while (!this.jdField_a_of_type_Nwx.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAnchor);
+      } while (!this.jdField_a_of_type_Oii.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAnchor);
       if (this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable == null) {
         this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(-15550475);
       }
       localView = this.jdField_a_of_type_AndroidViewView;
     } while (localView == null);
     QLog.d(this.jdField_a_of_type_JavaLangString, 2, "showAnchorAniation start");
-    this.jdField_a_of_type_Nwx.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAnchor = false;
+    this.jdField_a_of_type_Oii.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAnchor = false;
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, 26, 0, 26, 0 });
     localValueAnimator.setDuration(2400L);
     localValueAnimator.setStartDelay(600L);
-    localValueAnimator.addUpdateListener(new nzg(this, localView));
+    localValueAnimator.addUpdateListener(new okr(this, localView));
     localValueAnimator.start();
   }
   
@@ -105,16 +104,16 @@ public class NativeCommentTextView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Nwk == null) {
+    if (this.jdField_a_of_type_Ohv == null) {
       return;
     }
     if (this.jdField_a_of_type_Int == -1)
     {
-      setBackgroundResource(2130848147);
-      this.jdField_a_of_type_Nwk.a(this.jdField_a_of_type_Nwx);
+      setBackgroundResource(2130848378);
+      this.jdField_a_of_type_Ohv.a(this.jdField_a_of_type_Oii);
       return;
     }
-    ((nvf)this.jdField_a_of_type_Nwk).a(this.jdField_a_of_type_Nwx, ntt.a(this.jdField_a_of_type_Nwx, this.jdField_a_of_type_Int));
+    ((ogq)this.jdField_a_of_type_Ohv).a(this.jdField_a_of_type_Oii, ofd.a(this.jdField_a_of_type_Oii, this.jdField_a_of_type_Int));
   }
   
   public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -129,64 +128,54 @@ public class NativeCommentTextView
   
   public boolean onLongClick(View paramView)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_Nwk == null)) {
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_Ohv == null)) {
       return false;
     }
     if (this.jdField_a_of_type_Int == -1)
     {
       setBackgroundColor(Color.parseColor("#EDEDED"));
-      this.jdField_a_of_type_Nwk.a(this.jdField_a_of_type_Nwk.a(), this, this.jdField_a_of_type_Nwx, new nzh(this));
+      this.jdField_a_of_type_Ohv.a(this.jdField_a_of_type_Ohv.a(), this, this.jdField_a_of_type_Oii, new oks(this));
     }
     return true;
   }
   
-  public void setCommentModel(nwx paramnwx)
+  public void setCommentModel(oii paramoii)
   {
-    this.jdField_a_of_type_Nwx = paramnwx;
-    if ((this.jdField_a_of_type_Nwx == null) || (this.jdField_a_of_type_Nwx.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {
+    this.jdField_a_of_type_Oii = paramoii;
+    if ((this.jdField_a_of_type_Oii == null) || (this.jdField_a_of_type_Oii.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {
       return;
     }
     setShouldCallClick(true);
     setMaxLines(100);
-    setText(this.jdField_a_of_type_Nwx.jdField_a_of_type_JavaLangCharSequence);
+    setText(this.jdField_a_of_type_Oii.jdField_a_of_type_JavaLangCharSequence);
     setSpanText("");
     setOnClickListener(this);
     setOnLongClickListener(this);
     b();
   }
   
-  public void setModel(nwk paramnwk, View paramView)
+  public void setModel(ohv paramohv, View paramView)
   {
-    if ((paramView == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (paramnwk == null)) {
+    if ((paramView == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (paramohv == null)) {
       return;
     }
-    this.jdField_a_of_type_Nwk = paramnwk;
+    this.jdField_a_of_type_Ohv = paramohv;
     this.jdField_a_of_type_AndroidViewView = paramView;
     b();
   }
   
-  public void setModel(nwk paramnwk, View paramView, int paramInt)
+  public void setModel(ohv paramohv, View paramView, int paramInt)
   {
-    if ((paramView == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (paramnwk == null)) {
+    if ((paramView == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (paramohv == null)) {
       return;
     }
     this.jdField_a_of_type_Int = paramInt;
-    if ((this.jdField_a_of_type_Nwx != null) && (this.jdField_a_of_type_Nwx.c != null) && (this.jdField_a_of_type_Nwx.c.size() > paramInt)) {
-      setText((CharSequence)this.jdField_a_of_type_Nwx.c.get(paramInt));
+    if ((this.jdField_a_of_type_Oii != null) && (this.jdField_a_of_type_Oii.c != null) && (this.jdField_a_of_type_Oii.c.size() > paramInt)) {
+      setText((CharSequence)this.jdField_a_of_type_Oii.c.get(paramInt));
     }
-    if (paramInt == 0) {
-      setPadding(bajq.b(9.0F), bajq.b(12.0F), bajq.b(9.0F), bajq.b(12.0F));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Nwk = paramnwk;
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      b();
-      return;
-      if (paramInt == 1) {
-        setPadding(bajq.b(9.0F), bajq.b(0.0F), bajq.b(9.0F), bajq.b(12.0F));
-      }
-    }
+    this.jdField_a_of_type_Ohv = paramohv;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    b();
   }
 }
 

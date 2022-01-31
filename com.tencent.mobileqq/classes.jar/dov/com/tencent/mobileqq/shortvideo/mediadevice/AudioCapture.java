@@ -1,18 +1,18 @@
 package dov.com.tencent.mobileqq.shortvideo.mediadevice;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.media.AudioRecord;
 import android.os.SystemClock;
-import awhb;
-import awii;
-import awje;
-import bjjo;
-import bjkb;
-import bjkg;
-import bjki;
-import bjkk;
-import bjla;
+import axgh;
+import axho;
+import axik;
+import bkzz;
+import blam;
+import blar;
+import blat;
+import blav;
+import blbl;
 import com.tencent.maxvideo.common.AVIOStruct;
 import com.tencent.maxvideo.common.ControlFlagEnum;
 import com.tencent.maxvideo.mediadevice.AVCodec;
@@ -22,7 +22,7 @@ import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class AudioCapture
-  extends awhb
+  extends axgh
 {
   public static int a;
   public static int b;
@@ -35,7 +35,7 @@ public class AudioCapture
   volatile boolean jdField_a_of_type_Boolean = false;
   byte[] jdField_a_of_type_ArrayOfByte = null;
   long jdField_b_of_type_Long;
-  public AtomicReference<bjla> b;
+  public AtomicReference<blbl> b;
   boolean jdField_b_of_type_Boolean = false;
   byte[] jdField_b_of_type_ArrayOfByte = null;
   public int c;
@@ -82,9 +82,9 @@ public class AudioCapture
     this.jdField_h_of_type_Int = 0;
   }
   
-  public void a(bjkg parambjkg)
+  public void a(blar paramblar)
   {
-    a(parambjkg, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+    a(paramblar, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
   }
   
   void a(byte[] paramArrayOfByte, int paramInt1, long paramLong, boolean paramBoolean, int paramInt2)
@@ -100,28 +100,28 @@ public class AudioCapture
       j = this.jdField_h_of_type_Int;
       this.jdField_h_of_type_Int = (j + 1);
       ((AVIOStruct)localObject).pFrameIndex = j;
-      ((AVIOStruct)localObject).aBitrate = awje.n;
-      ((AVIOStruct)localObject).pCodec = awje.jdField_b_of_type_Int;
+      ((AVIOStruct)localObject).aBitrate = axik.n;
+      ((AVIOStruct)localObject).pCodec = axik.jdField_b_of_type_Int;
       ((AVIOStruct)localObject).pControlFlag = ControlFlagEnum.WRITE_FRAME_DATA_AND_CLOSE_FILE.getValue();
-      ((AVIOStruct)localObject).aChannel = awje.o;
-      ((AVIOStruct)localObject).aFormat = awje.p;
-      ((AVIOStruct)localObject).aSampleRate = awje.q;
+      ((AVIOStruct)localObject).aChannel = axik.o;
+      ((AVIOStruct)localObject).aFormat = axik.p;
+      ((AVIOStruct)localObject).aSampleRate = axik.q;
       if ((paramArrayOfByte != null) && (paramInt1 > 0))
       {
         byte[] arrayOfByte = new byte[paramInt1];
         System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramInt1);
-        bjkk.a().a().handleAudio(arrayOfByte, (AVIOStruct)localObject, (int)paramLong);
+        blav.a().a().handleAudio(arrayOfByte, (AVIOStruct)localObject, (int)paramLong);
         paramArrayOfByte = (SVHwEncoder)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
         if (paramArrayOfByte != null)
         {
-          localObject = new bjkb();
-          ((bjkb)localObject).jdField_a_of_type_ArrayOfByte = arrayOfByte;
-          ((bjkb)localObject).jdField_a_of_type_Int = 0;
-          ((bjkb)localObject).jdField_b_of_type_Int = arrayOfByte.length;
-          ((bjkb)localObject).jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-          ((bjkb)localObject).jdField_a_of_type_Boolean = false;
-          ((bjkb)localObject).jdField_b_of_type_Boolean = false;
-          paramArrayOfByte.a((bjkb)localObject, false);
+          localObject = new blam();
+          ((blam)localObject).jdField_a_of_type_ArrayOfByte = arrayOfByte;
+          ((blam)localObject).jdField_a_of_type_Int = 0;
+          ((blam)localObject).jdField_b_of_type_Int = arrayOfByte.length;
+          ((blam)localObject).jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+          ((blam)localObject).jdField_a_of_type_Boolean = false;
+          ((blam)localObject).jdField_b_of_type_Boolean = false;
+          paramArrayOfByte.a((blam)localObject, false);
         }
         a(paramInt2, new Object[] { Integer.valueOf(0) });
       }
@@ -186,7 +186,7 @@ public class AudioCapture
       boolean bool;
       if (!this.jdField_g_of_type_Boolean)
       {
-        bool = awii.a(awii.p);
+        bool = axho.a(axho.p);
         if ((!bool) || (this.jdField_d_of_type_Int >= 5)) {
           break label303;
         }
@@ -222,9 +222,9 @@ public class AudioCapture
     }
   }
   
-  public void b(bjkg parambjkg)
+  public void b(blar paramblar)
   {
-    a(parambjkg);
+    a(paramblar);
   }
   
   void b(byte[] paramArrayOfByte, int paramInt1, long paramLong, boolean paramBoolean, int paramInt2)
@@ -234,7 +234,7 @@ public class AudioCapture
       if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicReference.get() == null) {
         break label59;
       }
-      ((bjla)this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).a(paramArrayOfByte, 0, paramInt1);
+      ((blbl)this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).a(paramArrayOfByte, 0, paramInt1);
     }
     for (;;)
     {
@@ -260,10 +260,10 @@ public class AudioCapture
           bool = this.jdField_f_of_type_Boolean;
           return bool;
         }
-        this.jdField_e_of_type_Int = AudioRecord.getMinBufferSize(awje.q, awje.o, awje.p);
+        this.jdField_e_of_type_Int = AudioRecord.getMinBufferSize(axik.q, axik.o, axik.p);
         if ((this.jdField_e_of_type_Int == -2) || (this.jdField_e_of_type_Int == -1))
         {
-          if (bjkk.a().a().a(this, 3, "init audio failed")) {
+          if (blav.a().a().a(this, 3, "init audio failed")) {
             break label187;
           }
           a(3, new Object[] { "init audio failed" });
@@ -317,7 +317,7 @@ public class AudioCapture
       try
       {
         this.jdField_a_of_type_AndroidMediaAudioRecord.release();
-        a(6, new Object[] { ajjy.a(2131634996) });
+        a(6, new Object[] { ajyc.a(2131700780) });
       }
       catch (Exception localException)
       {
@@ -349,17 +349,17 @@ public class AudioCapture
       try
       {
         b();
-        this.jdField_a_of_type_AndroidMediaAudioRecord = new AudioRecord(1, awje.q, awje.o, awje.p, this.jdField_e_of_type_Int);
+        this.jdField_a_of_type_AndroidMediaAudioRecord = new AudioRecord(1, axik.q, axik.o, axik.p, this.jdField_e_of_type_Int);
         if (this.jdField_a_of_type_AndroidMediaAudioRecord.getState() == 0)
         {
-          a(5, new Object[] { ajjy.a(2131634995) });
+          a(5, new Object[] { ajyc.a(2131700779) });
           return false;
         }
       }
       catch (Exception localException)
       {
         QLog.e(this.jdField_a_of_type_JavaLangString, 2, localException, new Object[0]);
-        a(5, new Object[] { ajjy.a(2131634993) });
+        a(5, new Object[] { ajyc.a(2131700777) });
         return false;
       }
       this.jdField_b_of_type_Boolean = true;
@@ -422,7 +422,7 @@ public class AudioCapture
   
   public void g()
   {
-    if (!bjki.jdField_a_of_type_Boolean) {
+    if (!blat.jdField_a_of_type_Boolean) {
       return;
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -435,7 +435,7 @@ public class AudioCapture
   
   public void h()
   {
-    if (bjki.jdField_a_of_type_Boolean) {
+    if (blat.jdField_a_of_type_Boolean) {
       return;
     }
     a(2, new Object[] { Integer.valueOf(0) });

@@ -1,37 +1,42 @@
 package com.tencent.biz.subscribe.widget;
 
+import ajsf;
+import android.app.Activity;
 import android.content.Intent;
-import aphp;
+import android.net.Uri;
+import android.widget.Toast;
+import bbdj;
 import java.io.File;
-import java.net.URI;
-import wfw;
+import mqq.app.MobileQQ;
+import wuu;
 
 public class SubscribeQRCodeShareHelper$5
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$5(wfw paramwfw) {}
+  public SubscribeQRCodeShareHelper$5(wuu paramwuu) {}
   
   public void run()
   {
-    if (wfw.a(this.this$0))
+    String str;
+    if ((wuu.a(this.this$0)) && (!wuu.a(this.this$0).isFinishing()))
     {
-      String str = wfw.b(this.this$0);
-      File localFile = new File(str);
-      Intent localIntent = new Intent();
-      localIntent.putExtra("forward_type", 1);
-      localIntent.putExtra("forward_filepath", str);
-      localIntent.putExtra("forward_thumb", str);
-      localIntent.putExtra("forward_urldrawable", true);
-      localIntent.putExtra("forward_urldrawable_big_url", localFile.toURI().toString());
-      localIntent.putExtra("forward_urldrawable_thumb_url", localFile.toURI().toString());
-      localIntent.putExtra("key_help_forward_pic", true);
-      localIntent.putExtra("selection_mode", 1);
-      localIntent.putExtra("forward_ability_entrence_show_in_share", false);
-      localIntent.putExtra("filePath", str);
-      localIntent.putExtra("shareQQType", 13);
-      localIntent.putExtra("reqType", 1);
-      aphp.a(wfw.a(this.this$0), localIntent, 21);
+      localObject = wuu.a(this.this$0, wuu.a(this.this$0));
+      str = wuu.a(this.this$0, ajsf.bc);
+      if (!bbdj.d((String)localObject, str))
+      {
+        bbdj.a(str, true);
+        Toast.makeText(wuu.a(this.this$0), "save failed", 0).show();
+      }
     }
+    else
+    {
+      return;
+    }
+    Object localObject = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+    ((Intent)localObject).setData(Uri.fromFile(new File(str)));
+    wuu.a(this.this$0).sendBroadcast((Intent)localObject);
+    MobileQQ.sMobileQQ.onSendBroadcast(wuu.a(this.this$0), (Intent)localObject);
+    Toast.makeText(wuu.a(this.this$0), "save:" + str, 0).show();
   }
 }
 

@@ -2,15 +2,15 @@ package dov.com.qq.im;
 
 import android.app.Activity;
 import android.view.WindowManager.BadTokenException;
-import bafb;
-import bhdi;
-import bhzc;
+import bbgg;
+import bify;
+import bjqu;
 import com.tencent.qphone.base.util.QLog;
 
 public class QIMCameraCaptureUnit$2
   implements Runnable
 {
-  public QIMCameraCaptureUnit$2(bhdi parambhdi, String paramString) {}
+  public QIMCameraCaptureUnit$2(bify parambify, String paramString) {}
   
   public void run()
   {
@@ -20,11 +20,11 @@ public class QIMCameraCaptureUnit$2
     }
     try
     {
-      this.this$0.B();
-      if (!bhdi.a(this.this$0).isShowing())
+      this.this$0.z();
+      if (!bify.a(this.this$0).isShowing())
       {
-        bhdi.a(this.this$0).setCancelable(false);
-        bhdi.a(this.this$0).show();
+        bify.a(this.this$0).setCancelable(false);
+        bify.a(this.this$0).show();
       }
       QLog.e("QIMCameraCaptureUnit", 2, "onCameraStarted error = " + this.a);
       return;

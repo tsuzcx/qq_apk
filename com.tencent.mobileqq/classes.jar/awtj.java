@@ -1,69 +1,19 @@
-import java.util.HashMap;
+import java.lang.ref.WeakReference;
 
 class awtj
-  implements Comparable<awtj>
 {
-  public int a;
-  public String a;
-  public HashMap<String, awtj> a;
+  int jdField_a_of_type_Int = -1;
+  WeakReference<awta> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public awtj()
+  public awtj(int paramInt, awta paramawta)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
-  }
-  
-  public awtj(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a(awtj paramawtj)
-  {
-    return paramawtj.jdField_a_of_type_Int - this.jdField_a_of_type_Int;
-  }
-  
-  public awtj a(String paramString)
-  {
-    return (awtj)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap.isEmpty();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
-    }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
-    }
-    return ((awtj)paramObject).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaLangString.hashCode();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("FdNode{");
-    localStringBuilder.append("text='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", appearTimes=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramawta);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awtj
  * JD-Core Version:    0.7.0.1
  */

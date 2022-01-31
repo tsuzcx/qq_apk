@@ -1,28 +1,15 @@
-import com.tencent.mobileqq.activity.qwallet.emoj.HandRecognizer.OnPreviewFrameHandlerListener;
-import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.model.BusinessAlbumInfo;
 
-class bheh
-  implements HandRecognizer.OnPreviewFrameHandlerListener
+public class bheh
 {
-  bheh(bhec parambhec) {}
-  
-  public void getHandRecognizeResult(int paramInt)
+  public static String a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onPreviewFrame: getHandRecognizeResult=" + paramInt);
-    }
-    if (paramInt >= this.a.g)
-    {
-      bhec.a(this.a);
-      if (bhec.a(this.a)) {
-        this.a.ae();
-      }
-    }
+    return BusinessAlbumInfo.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bheh
  * JD-Core Version:    0.7.0.1
  */

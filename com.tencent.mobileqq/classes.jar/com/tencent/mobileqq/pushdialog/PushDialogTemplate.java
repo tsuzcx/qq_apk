@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.pushdialog;
 
-import atmo;
-import atnz;
+import aukm;
+import aulx;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -18,20 +18,20 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x122.submsgtype0x122.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0x122.submsgtype0x122.TemplParam;
 
 public class PushDialogTemplate
-  extends atmo
+  extends aukm
 {
-  @atnz
+  @aulx
   private static final byte[] KV_SEPARATOR = { 64, 33 };
-  @atnz
+  @aulx
   private static final byte[] PARAM_SEPARATOR = { 35, 33 };
-  @atnz
+  @aulx
   private static final String TAG = "PushDialogTemplate";
   public long busi_id;
   public long busi_type;
   public int c2c_type;
   public int ctrl_flag;
   public int friend_banned_flag = -1;
-  @atnz
+  @aulx
   private List<submsgtype0x122.TemplParam> mParamList;
   public long mUin;
   public byte[] reserv;

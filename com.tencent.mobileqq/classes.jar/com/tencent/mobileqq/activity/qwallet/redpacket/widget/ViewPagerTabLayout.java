@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.widget;
 
-import agvt;
-import agvu;
+import ahii;
+import ahij;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -34,7 +34,7 @@ public class ViewPagerTabLayout
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private agvu jdField_a_of_type_Agvu;
+  private ahij jdField_a_of_type_Ahij;
   private Context jdField_a_of_type_AndroidContentContext;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
@@ -82,7 +82,7 @@ public class ViewPagerTabLayout
     if ((localTextView != null) && (paramString != null)) {
       localTextView.setText(paramString);
     }
-    paramView.setOnClickListener(new agvt(this));
+    paramView.setOnClickListener(new ahii(this));
     if (this.jdField_a_of_type_Boolean) {}
     for (paramString = new LinearLayout.LayoutParams(0, -1, 1.0F);; paramString = new LinearLayout.LayoutParams(-2, -1))
     {
@@ -401,9 +401,9 @@ public class ViewPagerTabLayout
     invalidate();
   }
   
-  public void setOnTabSelectListener(agvu paramagvu)
+  public void setOnTabSelectListener(ahij paramahij)
   {
-    this.jdField_a_of_type_Agvu = paramagvu;
+    this.jdField_a_of_type_Ahij = paramahij;
   }
   
   public void setScrollOnTabClick(boolean paramBoolean)

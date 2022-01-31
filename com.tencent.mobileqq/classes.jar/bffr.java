@@ -1,32 +1,78 @@
-import android.app.Dialog;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qlink.QlinkLeakHelper.2.1;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import java.io.StringWriter;
+import java.lang.reflect.InvocationTargetException;
 
-public final class bffr
-  implements View.OnClickListener
+public class bffr
 {
-  public void onClick(View paramView)
+  public static String a()
   {
-    if (this.a != null) {
-      this.a.dismiss();
+    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
+    StringWriter localStringWriter = new StringWriter();
+    int j = arrayOfStackTraceElement.length;
+    int i = 0;
+    while (i < j)
+    {
+      localStringWriter.write(arrayOfStackTraceElement[i].toString());
+      localStringWriter.write("\n");
+      i += 1;
     }
-    bbmy.a(BaseApplicationImpl.getApplication(), ajjy.a(2131644098) + "/Tencent/MobileQQ/log/", 1).a();
-    paramView = ThreadManager.newFreeHandlerThread("qlink-leaker", 10);
-    paramView.start();
-    paramView = paramView.getLooper();
-    if (paramView != null) {
-      new Handler(paramView).post(new QlinkLeakHelper.2.1(this));
+    localStringWriter.flush();
+    return localStringWriter.toString();
+  }
+  
+  public static String a(Throwable paramThrowable)
+  {
+    return a(paramThrowable, false);
+  }
+  
+  private static String a(Throwable paramThrowable, boolean paramBoolean)
+  {
+    if (paramThrowable == null) {
+      return "";
     }
+    Object localObject1 = Thread.currentThread();
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (!paramBoolean)
+    {
+      localStringBuilder.append("Exception in thread \"");
+      localStringBuilder.append(((Thread)localObject1).getName());
+      localStringBuilder.append("\"");
+      localStringBuilder.append(paramThrowable.toString());
+    }
+    localObject1 = paramThrowable.getStackTrace();
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject2 = localObject1[i];
+      localStringBuilder.append("\tat ");
+      localStringBuilder.append(localObject2);
+      localStringBuilder.append("\n");
+      i += 1;
+    }
+    if ((paramThrowable instanceof InvocationTargetException)) {}
+    for (paramThrowable = ((InvocationTargetException)paramThrowable).getTargetException();; paramThrowable = paramThrowable.getCause())
+    {
+      if (paramThrowable != null)
+      {
+        localStringBuilder.append("caused by: ");
+        localStringBuilder.append(paramThrowable.toString());
+        localStringBuilder.append("\n");
+        localStringBuilder.append(a(paramThrowable, true));
+      }
+      return localStringBuilder.toString();
+    }
+  }
+  
+  public static boolean a()
+  {
+    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bffr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,24 @@
-public class wzc
-  implements wyu
+import com.tencent.qphone.base.util.QLog;
+
+class wzc
+  extends wzr
 {
-  public arey a(String paramString)
+  wzc(wyw paramwyw, wze paramwze, String paramString)
   {
-    return new arfk(paramString).a();
+    super(paramwyw);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "mixAudio end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "mixAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Wyw.a));
+      this.jdField_a_of_type_Wyw.a = System.currentTimeMillis();
+    }
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Wze.a(this.jdField_a_of_type_JavaLangString, false, "mixAudio done.");
+    }
   }
 }
 

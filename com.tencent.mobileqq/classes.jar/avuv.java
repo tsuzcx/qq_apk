@@ -1,38 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
 
 public class avuv
-  extends avuy
+  extends Animation
 {
-  public avuv(GroupSearchEngine paramGroupSearchEngine, avuz paramavuz, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramavuz, paramString, paramInt);
-  }
+  public avuv(CircleBarView paramCircleBarView) {}
   
-  public avom a(List<avon> paramList, String paramString)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    return null;
-  }
-  
-  public List<avom> a(avvn paramavvn)
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = -1;
-    paramavvn.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", 16);
-    paramavvn.a.putInt("SEARCH_REQUEST_EXTRA_PAGE", 0);
-    ArrayList localArrayList = new ArrayList();
-    paramavvn = this.jdField_a_of_type_Avuz.a(paramavvn);
-    if (paramavvn != null) {
-      localArrayList.addAll(paramavvn);
+    super.applyTransformation(paramFloat, paramTransformation);
+    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
+    CircleBarView.b(this.a, 30.0F);
+    if (CircleBarView.a(this.a) != null)
+    {
+      if (CircleBarView.a(this.a) != null) {
+        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
+      }
+      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
     }
-    return localArrayList;
+    this.a.postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avuv
  * JD-Core Version:    0.7.0.1
  */

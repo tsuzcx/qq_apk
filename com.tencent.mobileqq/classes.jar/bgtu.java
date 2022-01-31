@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import cooperation.qqreader.ReaderSplashImpl.3.1;
 
-final class bgtu
-  implements apca
+public class bgtu
+  implements EnterCallback
 {
-  bgtu(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
+  bgtu(bgtr parambgtr) {}
   
-  public void a()
+  public void onCloseLoadingView() {}
+  
+  public void onEnterComplete() {}
+  
+  public void onShowLoadingView(View paramView)
   {
-    apck.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
+    bgtr.a(this.a).runOnUiThread(new ReaderSplashImpl.3.1(this, paramView));
   }
-  
-  public void b() {}
 }
 
 

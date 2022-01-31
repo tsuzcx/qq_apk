@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.video.discovery;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qks;
+import qwx;
 
 public class DiscoveryInfo$TopicVideoCard
   implements Parcelable
 {
-  public static final Parcelable.Creator<TopicVideoCard> CREATOR = new qks();
+  public static final Parcelable.Creator<TopicVideoCard> CREATOR = new qwx();
   public int a;
   public long a;
   public String a;

@@ -1,12 +1,9 @@
 public class angb
-{
-  public String a;
-  public String b;
-  public String c;
-}
+  implements angp
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     angb
  * JD-Core Version:    0.7.0.1
  */

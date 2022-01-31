@@ -1,33 +1,21 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
 public class agng
-  implements View.OnFocusChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public agng(LingHbFragment paramLingHbFragment) {}
+  public agng(PhotoListActivity paramPhotoListActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      LingHbFragment.a(this.a).a(this.a.c.getText().toString(), false);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("LingHbFragment", 2, "onFocusChange:" + paramBoolean);
-      }
-      return;
-      LingHbFragment.a(this.a).a();
-    }
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agng
  * JD-Core Version:    0.7.0.1
  */

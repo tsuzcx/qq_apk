@@ -1,14 +1,19 @@
-class ovy
-  implements pjw
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
+
+public class ovy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ovy(ovx paramovx, opw paramopw) {}
+  public ovy(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    qpj localqpj = this.jdField_a_of_type_Opw.a().a();
-    if (localqpj != null) {
-      localqpj.a(null, this.jdField_a_of_type_Opw.a(), 1);
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = ReadInJoySelfFragment.a(this.a).getLayoutParams();
+    paramValueAnimator.height = i;
+    ReadInJoySelfFragment.a(this.a).setLayoutParams(paramValueAnimator);
   }
 }
 

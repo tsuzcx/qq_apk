@@ -1,51 +1,44 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallbackTimeOut;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class alpa
-  implements View.OnClickListener
+final class alpa
+  implements ArkAppMgr.IGetAppPathByNameCallbackTimeOut
 {
-  public alpa(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  alpa(String paramString1, String paramString2, alpc paramalpc) {}
   
-  public void onClick(View paramView)
+  public void onGetAppPathByNameTimeout(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null))
     {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.a.jdField_a_of_type_AndroidAppDialog = null;
-    }
-    if (this.a.jdField_a_of_type_Int == 0) {
-      awqx.b(this.a.app, "CliOper", "", "", "0X80064E3", "0X80064E3", 0, 0, "", "", "", "");
-    }
-    while ((this.a.jdField_a_of_type_Boolean) && (this.a.b) && (!this.a.isFinishing()))
-    {
-      this.a.finish();
-      return;
-      if (this.a.getIntent().getIntExtra("source_activity", 0) == 1) {
-        awqx.b(this.a.app, "CliOper", "", "", "0X80064EE", "0X80064EE", 0, 0, "", "", "", "");
+      paramString = ark.Application.Create(this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path);
+      if (paramString != null)
+      {
+        boolean bool = paramString.CheckShareUrlLegality(this.b);
+        paramString.Release();
+        if (bool)
+        {
+          this.jdField_a_of_type_Alpc.a(true);
+          ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality, url is in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+        }
       }
-    }
-    if (this.a.c)
-    {
-      alqg.a(this.a.app.getCurrentAccountUin(), -1);
-      this.a.c = false;
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardId)))
-    {
-      this.a.finish();
+      else
+      {
+        return;
+      }
+      this.jdField_a_of_type_Alpc.a(false);
+      ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality, url is not in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
       return;
     }
-    BusinessCardEditActivity.a(this.a, false, true, true);
+    this.jdField_a_of_type_Alpc.a(false);
+    altd.a(aloz.a(), this.jdField_a_of_type_JavaLangString, "ArkCheckShareUrlLegality", paramInt, 0, 0L, 0L, 0L, "", "");
+    ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality,getAppInfo is failed and msg=%s", new Object[] { paramString }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alpa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,23 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
 
-class nwl
-  implements begh
+public class nwl
+  implements mzb
 {
-  nwl(nwk paramnwk) {}
+  public nwl(ReadInJoyNewFeedsActivity.2 param2) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void loaded(String paramString, int paramInt)
   {
-    if (this.a.a != null)
-    {
-      paramInt1 = nwk.a(this.a, paramInt1);
-      this.a.a.onScroll(paramInt1);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
     }
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nwl
  * JD-Core Version:    0.7.0.1
  */

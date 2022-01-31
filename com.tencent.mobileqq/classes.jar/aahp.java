@@ -1,20 +1,27 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class aahp
   implements View.OnClickListener
 {
-  public aahp(ChatHistory paramChatHistory) {}
+  public aahp(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
   
   public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.a.b > 1000L)
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.isShowing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getWindow() != null)) {}
+    try
     {
-      this.a.b = l;
-      this.a.b();
-      awqx.b(this.a.app, "CliOper", "", "", "0X800568D", "0X800568D", this.a.k, 0, "", "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.dismiss();
+      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, -1, this.jdField_a_of_type_JavaLangString);
+      label58:
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a = null;
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      break label58;
     }
   }
 }

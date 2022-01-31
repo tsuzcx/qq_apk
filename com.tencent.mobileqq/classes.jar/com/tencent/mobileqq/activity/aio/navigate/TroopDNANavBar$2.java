@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.activity.aio.navigate;
 
-import aduv;
+import aefu;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
-import awqx;
+import axqw;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopDNANavBar$2
   implements Runnable
 {
-  public TroopDNANavBar$2(aduv paramaduv) {}
+  public TroopDNANavBar$2(aefu paramaefu) {}
   
   public void run()
   {
     Object localObject = PreferenceManager.getDefaultSharedPreferences(this.this$0.jdField_a_of_type_AndroidContentContext);
-    int i = ((SharedPreferences)localObject).getInt(aduv.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), 0);
+    int i = ((SharedPreferences)localObject).getInt(aefu.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), 0);
     if (QLog.isColorLevel()) {
       QLog.d("NavigateBarManager.TroopDNANavBar", 2, String.format("onShow guide count: %s", new Object[] { Integer.valueOf(i) }));
     }
     localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putInt(aduv.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), i + 1).commit();
+    ((SharedPreferences.Editor)localObject).putInt(aefu.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), i + 1).commit();
     ((SharedPreferences.Editor)localObject).apply();
-    awqx.b(null, "dc00898", "", "", "0X800A468", "0X800A468", 0, 0, "", "", "", "");
+    axqw.b(null, "dc00898", "", "", "0X800A468", "0X800A468", 0, 0, "", "", "", "");
   }
 }
 

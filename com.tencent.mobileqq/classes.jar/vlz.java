@@ -1,39 +1,42 @@
-import android.view.View;
+import android.location.Location;
+import android.location.LocationListener;
+import android.os.Bundle;
+import java.util.List;
 
-public class vlz
-  extends vmd
+class vlz
+  implements LocationListener
 {
-  public int a;
+  vlz(vlv paramvlv) {}
   
-  public vlz(vmi paramvmi, View paramView, int paramInt)
+  public void onLocationChanged(Location paramLocation)
   {
-    super(paramvmi, paramView);
-    this.a = paramInt;
+    if (paramLocation != null)
+    {
+      veg.a("DoodleEmojiManager", "onLocationChanged, location : %s", paramLocation);
+      if (this.a.b.size() >= 10)
+      {
+        this.a.b.remove(0);
+        veg.b("DoodleEmojiManager", "onLocationChanged, LocationList size > 5, remove the first location.");
+      }
+      this.a.b.add(new Location(paramLocation));
+      return;
+    }
+    veg.d("DoodleEmojiManager", "onLocationChanged, location is null.");
   }
   
-  public int a()
+  public void onProviderDisabled(String paramString)
   {
-    urk.e("NullOptionElement", "getOptionIndex() on %d", new Object[] { Integer.valueOf(this.a) });
-    return this.a;
+    veg.a("DoodleEmojiManager", "onProviderDisabled, provider: %s .", paramString);
   }
   
-  public CharSequence a()
+  public void onProviderEnabled(String paramString)
   {
-    urk.e("NullOptionElement", "getText() on %d", new Object[] { Integer.valueOf(this.a) });
-    return "";
+    veg.a("DoodleEmojiManager", "onProviderEnabled, provider: %s .", paramString);
   }
   
-  public void a(CharSequence paramCharSequence)
+  public void onStatusChanged(String paramString, int paramInt, Bundle paramBundle)
   {
-    urk.e("NullOptionElement", "setText() on %d", new Object[] { Integer.valueOf(this.a) });
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public CharSequence b()
-  {
-    urk.e("NullOptionElement", "getHint() on %d", new Object[] { Integer.valueOf(this.a) });
-    return "";
+    veg.a("DoodleEmojiManager", "onStatusChanged, provider: %s , status: %s .", paramString, Integer.valueOf(paramInt));
   }
 }
 

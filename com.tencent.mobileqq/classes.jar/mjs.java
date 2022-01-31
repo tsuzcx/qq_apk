@@ -1,16 +1,32 @@
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoControlUI;
 
 public class mjs
-  extends mjt
+  extends mck
 {
-  public mjs(VideoAppInterface paramVideoAppInterface, long paramLong)
+  public mjs(VideoControlUI paramVideoControlUI) {}
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    super(paramVideoAppInterface, 64, paramLong);
+    if (this.a.g()) {}
+    do
+    {
+      return;
+      if (this.a.h()) {
+        break;
+      }
+    } while (!paramBoolean);
+    this.a.b.update(null, new Object[] { Integer.valueOf(110), Long.valueOf(paramLong) });
+    this.a.a.a(paramLong, paramInt);
   }
   
-  public void a(String paramString, mjv parammjv)
+  protected void f(long paramLong)
   {
-    super.a(paramString, parammjv);
+    if (this.a.g()) {}
+    while ((!this.a.h()) || (!this.a.a.b(0))) {
+      return;
+    }
+    this.a.a.a(paramLong, 0, true);
   }
 }
 

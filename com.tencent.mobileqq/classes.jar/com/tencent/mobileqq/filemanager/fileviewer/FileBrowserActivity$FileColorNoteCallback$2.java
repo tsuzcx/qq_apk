@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
-import aoqw;
+import apif;
 
 public class FileBrowserActivity$FileColorNoteCallback$2
   implements Runnable
 {
-  public FileBrowserActivity$FileColorNoteCallback$2(aoqw paramaoqw) {}
+  public FileBrowserActivity$FileColorNoteCallback$2(apif paramapif) {}
   
   public void run()
   {

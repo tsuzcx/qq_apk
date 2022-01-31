@@ -1,122 +1,61 @@
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import android.os.Handler;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendVoicePlayer.2;
-import com.tencent.qphone.base.util.MD5;
+import android.os.Bundle;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class anua
+  extends anwf
 {
-  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new anub(this);
-  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private anuc jdField_a_of_type_Anuc;
-  private baka jdField_a_of_type_Baka;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  public anua(MessengerService paramMessengerService) {}
   
-  public anua(anuc paramanuc, BaseActivity paramBaseActivity)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    this.jdField_a_of_type_Anuc = paramanuc;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("audio"));
-  }
-  
-  public void a()
-  {
+    int i = 2;
+    if (this.a.a != null) {}
     try
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_Baka != null)
-        {
-          this.jdField_a_of_type_Baka.f();
-          this.jdField_a_of_type_Baka = null;
-        }
-        b();
-        return;
+      Message localMessage = Message.obtain(null, 5);
+      int j = Integer.valueOf(paramEmoticonPackage.epId).intValue();
+      if (paramInt == 0) {
+        i = 0;
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ExtendFriendVoicePlayer", 1, "stop e=" + localException);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (!a(paramString)) {
-      ThreadManager.executeOnFileThread(new ExtendFriendVoicePlayer.2(this, paramString));
-    }
-  }
-  
-  public boolean a(String arg1)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
-      QLog.e("ExtendFriendVoicePlayer", 2, "playLocal file but activity isFinish");
-    }
-    String str;
-    for (;;)
-    {
-      return false;
-      str = ???;
-      try
+      for (;;)
       {
-        if (!apdh.a(???))
-        {
-          str = axoy.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin(), MD5.toMD5(???), 23, null);
-          File localFile = new File(str);
-          if ((!localFile.exists()) || (localFile.length() <= 0L))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.e("ExtendFriendVoicePlayer", 2, String.format("playLocal file not exist : %s", new Object[] { ??? }));
-            return false;
+        paramEmoticonPackage = new Bundle();
+        paramEmoticonPackage.putInt("packetid", j);
+        paramEmoticonPackage.putInt("peoriodtype", 1);
+        paramEmoticonPackage.putInt("resultcode", i);
+        localMessage.setData(paramEmoticonPackage);
+        this.a.a.send(localMessage);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.emoji.web.MessengerService", 2, "resp to sever: ");
+        }
+        return;
+        if (paramInt != 11007) {
+          if (paramInt == 11001) {
+            i = 1;
+          } else if (paramInt == 11000) {
+            i = 6;
+          } else {
+            i = -1;
           }
         }
       }
-      catch (Exception ???)
-      {
-        QLog.e("ExtendFriendVoicePlayer", 1, "playLocal", ???);
-        return false;
-      }
+      return;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    catch (Exception paramEmoticonPackage)
     {
-      if (this.jdField_a_of_type_Baka != null)
-      {
-        this.jdField_a_of_type_Baka.f();
-        this.jdField_a_of_type_Baka = null;
-      }
-      this.jdField_a_of_type_Baka = new baka(str, new Handler(), 1);
-      this.jdField_a_of_type_Baka.b();
-      this.jdField_a_of_type_Baka.a(this.jdField_a_of_type_Anuc);
-      this.jdField_a_of_type_Baka.c();
-      if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
-        this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2);
-      }
-      return true;
+      return;
     }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendVoicePlayer", 2, "abandonAudioFocus");
-    }
-    if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
-      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
-    }
+    catch (RemoteException paramEmoticonPackage) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anua
  * JD-Core Version:    0.7.0.1
  */

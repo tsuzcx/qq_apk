@@ -1,27 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.Contacts;
 
 public class aavv
-  implements baxq
+  extends atzl
 {
-  private WeakReference<aqeb> a;
+  public aavv(Contacts paramContacts) {}
   
-  public aavv(aqeb paramaqeb)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a = new WeakReference(paramaqeb);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      aqeb localaqeb = (aqeb)this.a.get();
-      if (localaqeb != null) {
-        localaqeb.a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendProfileCardActivity", 2, "check friend's profile and preload web-process!");
-      }
+    if (Contacts.a(this.a)) {
+      Contacts.a(this.a);
     }
   }
 }

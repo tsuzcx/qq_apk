@@ -1,15 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aaow
-  implements View.OnClickListener
+public final class aaow
+  implements DialogInterface.OnClickListener
 {
-  public aaow(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aaow(aaqe paramaaqe, aaqf paramaaqf) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DiscussionInfoCardActivity.a(this.a);
+    if (this.jdField_a_of_type_Aaqe != null) {
+      this.jdField_a_of_type_Aaqe.a();
+    }
+    mqz.e(true, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    mqz.b(this.jdField_a_of_type_Aaqf.a);
   }
 }
 

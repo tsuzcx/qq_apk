@@ -1,111 +1,129 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Context;
+import com.tencent.av.app.VideoAppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class mju
-  implements ITransactionCallback
+public class mju
 {
-  long jdField_a_of_type_Long = 0L;
+  public static final String a;
+  private final int jdField_a_of_type_Int = 15;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bfms<mee> jdField_a_of_type_Bfms;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private lsk jdField_a_of_type_Lsk;
+  private int jdField_b_of_type_Int = 1000;
+  private bfms<mee> jdField_b_of_type_Bfms;
+  private bfms<mee> c;
   
-  mju(mjt parammjt, String paramString, long paramLong, byte[] paramArrayOfByte, mjv parammjv) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  static
   {
-    QLog.w(this.jdField_a_of_type_Mjt.jdField_a_of_type_JavaLangString, 1, "onFailed, sessionId[" + this.jdField_a_of_type_JavaLangString + "], retCode[" + paramInt + "]");
-    paramArrayOfByte = bach.a(this.jdField_a_of_type_ArrayOfByte);
-    this.jdField_a_of_type_Mjv.a(paramInt, this.jdField_a_of_type_JavaLangString, "", paramArrayOfByte);
+    jdField_a_of_type_JavaLangString = mju.class.getSimpleName();
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public mju(Context paramContext, VideoAppInterface paramVideoAppInterface, lsk paramlsk)
   {
-    String str2 = "";
-    String str1;
-    if (paramArrayOfByte != null) {
-      str1 = str2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_Lsk = paramlsk;
+    this.jdField_a_of_type_Bfms = new bfms(15);
+    this.jdField_b_of_type_Bfms = new bfms(15);
+    this.c = new bfms(15);
+  }
+  
+  private boolean a(ArrayList<mlj> paramArrayList, long paramLong)
+  {
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext()) {
+      if (((mlj)paramArrayList.next()).a == paramLong) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public mee a(long paramLong)
+  {
+    boolean bool2 = false;
+    Object localObject2 = (mee)this.jdField_a_of_type_Bfms.a(paramLong);
+    Object localObject1 = localObject2;
+    boolean bool1;
+    if (localObject2 == null)
+    {
+      localObject2 = (mee)this.c.a(paramLong);
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = localObject2;
+        int i;
+        if (this.c.a() > 0)
+        {
+          i = this.c.a() - 1;
+          localObject1 = (mee)this.c.a(i);
+          this.jdField_a_of_type_Bfms.a(paramLong, localObject1);
+          this.c.a(i);
+        }
+        localObject2 = localObject1;
+        bool1 = bool2;
+        if (localObject1 == null)
+        {
+          localObject2 = new mee(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, String.format("%s_%s", new Object[] { jdField_a_of_type_JavaLangString, Integer.valueOf(1000) }), 0L, false);
+          ((mee)localObject2).h(2130841651);
+          ((mee)localObject2).a(String.valueOf(paramLong), 0);
+          ((mee)localObject2).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+          ((mee)localObject2).a(true);
+          ((mee)localObject2).e(false);
+          i = this.jdField_b_of_type_Int;
+          this.jdField_b_of_type_Int = (i + 1);
+          ((mee)localObject2).c(i);
+          ((mee)localObject2).a(muf.a(this.jdField_a_of_type_AndroidContentContext, 12.0F));
+          ((mee)localObject2).j(12);
+          ((mee)localObject2).k(-1);
+          ((mee)localObject2).h(true);
+          ((mee)localObject2).a(1);
+          this.jdField_a_of_type_Bfms.a(paramLong, localObject2);
+          this.jdField_a_of_type_Lsk.a((lsh)localObject2);
+          bool1 = bool2;
+        }
+      }
     }
     for (;;)
     {
-      int i;
-      try
-      {
-        localObject2 = new Bdh_extinfo.CommFileExtRsp();
-        str1 = str2;
-        ((Bdh_extinfo.CommFileExtRsp)localObject2).mergeFrom(paramArrayOfByte);
-        str1 = str2;
-        str2 = ((Bdh_extinfo.CommFileExtRsp)localObject2).bytes_download_url.get().toStringUtf8();
-        str1 = str2;
-        boolean bool = TextUtils.isEmpty(str2);
-        if (!bool) {
-          continue;
-        }
-        i = -10010;
-        str1 = str2;
-      }
-      catch (Exception localException2)
-      {
-        Object localObject2;
-        StringBuilder localStringBuilder;
-        i = -10012;
-        continue;
-        paramArrayOfByte = null;
-        continue;
-      }
-      str2 = bach.a(this.jdField_a_of_type_ArrayOfByte);
-      localObject2 = this.jdField_a_of_type_Mjt.jdField_a_of_type_JavaLangString;
-      localStringBuilder = new StringBuilder().append("onSuccess, sessionId[").append(this.jdField_a_of_type_JavaLangString).append("], respData[");
-      Object localObject1;
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte = Integer.valueOf(paramArrayOfByte.length);
-        QLog.w((String)localObject2, 1, paramArrayOfByte + "], retCode[" + i + "], md5[" + str2 + "], url[" + str1 + "]");
-        AudioHelper.a(this.jdField_a_of_type_Mjt.jdField_a_of_type_JavaLangString, paramHashMap, false);
-        this.jdField_a_of_type_Mjv.a(i, this.jdField_a_of_type_JavaLangString, str1, str2);
-        return;
-        try
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.w(this.jdField_a_of_type_Mjt.jdField_a_of_type_JavaLangString, 1, "onSuccess, sessionId[" + this.jdField_a_of_type_JavaLangString + "], 原始url[" + str2 + "]");
-          }
-          str1 = befm.a(str2);
-          i = 0;
-        }
-        catch (Exception localException1)
-        {
-          i = -10011;
-          localObject1 = str2;
-        }
-      }
-      else
-      {
-        i = 0;
-        localObject1 = localException2;
-      }
+      ((mee)localObject2).a(2, Boolean.valueOf(bool1));
+      return localObject2;
+      bool1 = true;
+      localObject2 = localObject1;
     }
   }
   
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
+  public void a(ArrayList<mlj> paramArrayList)
   {
-    QLog.w(this.jdField_a_of_type_Mjt.jdField_a_of_type_JavaLangString, 1, "onTransStart, sessionId[" + this.jdField_a_of_type_JavaLangString + "]");
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    if (QLog.isColorLevel())
+    int j = this.jdField_a_of_type_Bfms.a();
+    if (j <= 0) {
+      return;
+    }
+    int i = 0;
+    if (i < j)
     {
-      long l = System.currentTimeMillis();
-      if (this.jdField_a_of_type_Long < l)
+      long l = this.jdField_a_of_type_Bfms.a(i);
+      mee localmee = (mee)this.jdField_a_of_type_Bfms.a(i);
+      if (a(paramArrayList, l)) {
+        this.jdField_b_of_type_Bfms.a(l, localmee);
+      }
+      for (;;)
       {
-        QLog.w(this.jdField_a_of_type_Mjt.jdField_a_of_type_JavaLangString, 1, "onUpdateProgress, sessionId[" + this.jdField_a_of_type_JavaLangString + "], transferedSize[" + paramInt + "], totalSize[" + this.b + "]");
-        this.jdField_a_of_type_Long = (l + 2000L);
+        i += 1;
+        break;
+        if (this.c.a() + this.jdField_a_of_type_Bfms.a() < 15) {
+          this.c.a(l, localmee);
+        } else {
+          this.jdField_a_of_type_Lsk.a(localmee);
+        }
       }
     }
+    paramArrayList = this.jdField_a_of_type_Bfms;
+    this.jdField_a_of_type_Bfms = this.jdField_b_of_type_Bfms;
+    this.jdField_b_of_type_Bfms = paramArrayList;
+    this.jdField_b_of_type_Bfms.a();
   }
 }
 

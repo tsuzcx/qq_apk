@@ -1,27 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
 public class afyf
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public afyf(NewStyleCountryActivity paramNewStyleCountryActivity) {}
+  public afyf(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, aask paramaask) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.jdField_a_of_type_Afym.show();
-      this.a.b.setAnimation(null);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      NewStyleCountryActivity.a(this.a).setVisibility(8);
-    }
+    this.jdField_a_of_type_Aask.a(false);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

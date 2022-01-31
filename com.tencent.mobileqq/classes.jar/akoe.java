@@ -1,37 +1,58 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.memory.QLogReporter.1;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class akoe
 {
-  Context a;
-  public athi a;
-  public bafb a;
+  private static volatile akoe a;
+  public static final SimpleDateFormat a;
   
-  public akoe(Context paramContext, athi paramathi)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Athi = paramathi;
-    this.jdField_a_of_type_Bafb = babr.a(this.jdField_a_of_type_AndroidContentContext, 230);
-    paramContext = new akof(this);
-    this.jdField_a_of_type_Bafb.setPositiveButton(2131624629, paramContext);
-    this.jdField_a_of_type_Bafb.setNegativeButton(2131624628, paramContext);
-    this.jdField_a_of_type_Bafb.setMessage(2131624631);
+    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy.MM.dd");
+  }
+  
+  public static akoe a()
+  {
+    if (jdField_a_of_type_Akoe == null) {}
+    try
+    {
+      if (jdField_a_of_type_Akoe == null) {
+        jdField_a_of_type_Akoe = new akoe();
+      }
+      return jdField_a_of_type_Akoe;
+    }
+    finally {}
   }
   
   public void a()
   {
-    if (!this.jdField_a_of_type_Bafb.isShowing()) {
-      this.jdField_a_of_type_Bafb.show();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceUIController", 2, "doOnClickFeedBack");
-    }
-    awqx.b(null, "dc00898", "", "", "0X8008352", "0X8008352", 0, 0, "", "", "", "");
+    if (new GregorianCalendar().get(11) < 2) {}
+    SharedPreferences localSharedPreferences;
+    long l1;
+    Calendar localCalendar;
+    String str;
+    do
+    {
+      return;
+      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qlog_reporter", 0);
+      l1 = System.currentTimeMillis();
+      long l2 = localSharedPreferences.getLong("LastLogSizeReportTime", 0L);
+      localCalendar = Calendar.getInstance();
+      localCalendar.setTimeInMillis(l2);
+      str = jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime());
+      localCalendar.setTimeInMillis(l1);
+    } while (str.equals(jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime())));
+    ThreadManager.executeOnSubThread(new QLogReporter.1(this, localSharedPreferences, l1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akoe
  * JD-Core Version:    0.7.0.1
  */

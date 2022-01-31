@@ -1,108 +1,83 @@
-import android.os.SystemClock;
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class omq
+  extends RecyclerView.Adapter
 {
-  public static final int[] a = { 0, 1, 2, 3, 4 };
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<pbb> jdField_a_of_type_JavaUtilList = new ArrayList();
+  rrr jdField_a_of_type_Rrr;
+  private List<pbb> b = new ArrayList();
   
-  public static SparseArray<oml> a(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup)
+  public omq(Context paramContext, List<pbb> paramList1, List<pbb> paramList2)
   {
-    SparseArray localSparseArray = new SparseArray();
-    int i = 0;
-    if (i < a.length)
-    {
-      int j = a[i];
-      oml localoml = a(j);
-      if (localoml == null) {
-        QLog.d("HandlerFactory", 2, new Object[] { "create handler fail, id : ", Integer.valueOf(j) });
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localoml.a(paramReadInJoyBaseListViewGroup);
-        localSparseArray.put(j, localoml);
-      }
-    }
-    return localSparseArray;
+    this.jdField_a_of_type_JavaUtilList = paramList1;
+    this.b = paramList2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public static Object a(SparseArray<oml> paramSparseArray, omr paramomr)
+  private void a(int paramInt, pbb parampbb)
   {
-    if (paramomr == null) {
-      return null;
+    if (paramInt == 0) {
+      bhvh.a("readinjoy_show_recommend_reason_in_title_b", parampbb.c);
     }
-    int i = -1;
+  }
+  
+  public int getItemCount()
+  {
     int j = 0;
-    Object localObject = null;
-    long l1;
-    if (j < paramSparseArray.size())
+    if (this.jdField_a_of_type_JavaUtilList != null) {}
+    for (int i = this.jdField_a_of_type_JavaUtilList.size();; i = 0)
     {
-      l1 = SystemClock.currentThreadTimeMillis();
-      paramomr.a((oml)paramSparseArray.valueAt(j));
-      if (paramomr.a == null) {
-        break label189;
+      if (this.b != null) {
+        j = this.b.size();
       }
-      if (localObject == null)
-      {
-        localObject = paramomr.a;
-        i = ((oml)paramSparseArray.valueAt(j)).a();
-        paramomr.a = null;
-      }
-    }
-    label189:
-    for (;;)
-    {
-      long l2 = SystemClock.currentThreadTimeMillis();
-      QLog.d("HandlerFactory", 2, new Object[] { "execute with return value handler job , id : ", Integer.valueOf(paramSparseArray.keyAt(j)), ", jobName : ", paramomr.a(), ", cost : ", Long.valueOf(l2 - l1) });
-      j += 1;
-      break;
-      throw new RuntimeException("has more than one handler return value. preHandlerID : " + i + ", now : " + ((oml)paramSparseArray.valueAt(j)).a());
-      return localObject;
+      return i + 0 + j;
     }
   }
   
-  public static oml a(int paramInt)
+  public int getItemViewType(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      return new nnb();
-    case 2: 
-      return new omn();
-    case 0: 
-      return new oms();
-    case 3: 
-      return new omm();
+    if (paramInt < this.b.size()) {
+      return 0;
     }
-    return new ong();
+    return 1;
   }
   
-  public static void a(SparseArray<oml> paramSparseArray, omr paramomr)
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (paramomr == null) {}
+    omt localomt = (omt)paramViewHolder;
+    if (paramInt >= this.b.size())
+    {
+      paramInt -= this.b.size();
+      paramViewHolder = (pbb)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      localomt.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
     for (;;)
     {
+      localomt.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewHolder.b);
+      localomt.b.setText(paramViewHolder.d);
+      localomt.itemView.setOnClickListener(new omr(this, localomt, paramViewHolder, paramInt));
       return;
-      int i = 0;
-      while (i < paramSparseArray.size())
-      {
-        long l1 = SystemClock.currentThreadTimeMillis();
-        paramomr.a((oml)paramSparseArray.valueAt(i));
-        long l2 = SystemClock.currentThreadTimeMillis();
-        QLog.d("HandlerFactory", 2, new Object[] { "execute handler job , id : ", Integer.valueOf(paramSparseArray.keyAt(i)), ", jobName : ", paramomr.a(), ", cost : ", Long.valueOf(l2 - l1) });
-        i += 1;
-      }
+      paramViewHolder = (pbb)this.b.get(paramInt);
+      localomt.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new omt(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559950, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     omq
  * JD-Core Version:    0.7.0.1
  */

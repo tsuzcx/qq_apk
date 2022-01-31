@@ -1,30 +1,47 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
 
 public class bhoq
-  implements bajj<Float>
 {
-  public bhoq(AdvancedProviderView paramAdvancedProviderView, QIMProviderContainerView paramQIMProviderContainerView, View paramView) {}
+  private static Field a;
   
-  @TargetApi(11)
-  public void a(bajd<Float> parambajd, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  private static void a(Throwable paramThrowable)
   {
-    paramFloat = paramFloat1.floatValue();
-    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) {
-      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setBackGroundAlpha(paramFloat);
+    try
+    {
+      if (a == null) {
+        a = Throwable.class.getDeclaredField("detailMessage");
+      }
+      a.setAccessible(true);
+      a.set(paramThrowable, "QzoneCatchedException:" + paramThrowable.getMessage());
+      return;
     }
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
+    catch (Throwable paramThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QZoneExceptionReport", 2, "addStackTag failed", paramThrowable);
     }
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, paramFloat);
+  }
+  
+  public static final void a(Throwable paramThrowable, String paramString)
+  {
+    if (paramThrowable == null) {
+      return;
+    }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = Log.getStackTraceString(paramThrowable);
+    }
+    a(paramThrowable);
+    QLog.d("QZoneExceptionReport", 2, "", paramThrowable);
+    axps.a(paramThrowable, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhoq
  * JD-Core Version:    0.7.0.1
  */

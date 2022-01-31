@@ -1,44 +1,47 @@
-import android.content.Context;
-import com.tencent.kwstudio.office.base.IGlobal;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsReaderGlobal;
-import java.io.File;
-import java.io.InputStream;
-import java.util.concurrent.Executor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aosg
-  implements IGlobal
+class aosg
+  implements View.OnClickListener
 {
-  private final TdsReaderGlobal a;
+  aosg(aosf paramaosf, View paramView) {}
   
-  private aosg(TdsReaderGlobal paramTdsReaderGlobal)
+  public void onClick(View paramView)
   {
-    this.a = paramTdsReaderGlobal;
-  }
-  
-  public Context getApplicationContext()
-  {
-    return TdsReaderGlobal.a(this.a);
-  }
-  
-  public Executor getExecutor()
-  {
-    return TdsReaderGlobal.a(this.a);
-  }
-  
-  public String getFileDir()
-  {
-    Context localContext = getApplicationContext();
-    File localFile2 = localContext.getExternalFilesDir(null);
-    File localFile1 = localFile2;
-    if (localFile2 == null) {
-      localFile1 = localContext.getFilesDir();
+    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((localObject instanceof aopv))
+    {
+      localObject = (FileInfo)((aopv)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+      if (paramView.getId() != 2131364979) {
+        break label149;
+      }
+      paramView = (bfol)bfoy.a(this.jdField_a_of_type_Aosf.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, null);
+      paramView.a(ajyc.a(2131709619));
+      paramView.a(ajyc.a(2131709615), 3);
+      paramView.d(ajyc.a(2131709616));
+      paramView.a(new aosh(this, (FileInfo)localObject, paramView));
+      paramView.show();
     }
-    return localFile1.getAbsolutePath();
-  }
-  
-  public InputStream getResourceAsStream(String paramString)
-  {
-    return null;
+    label149:
+    while (paramView.getId() != 2131366634)
+    {
+      do
+      {
+        return;
+        if ((localObject instanceof aosr))
+        {
+          localObject = (FileInfo)((aosr)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "unknow Object");
+      return;
+    }
+    paramView = apue.a((FileInfo)localObject);
+    apvk.a(QfileBaseLocalFileTabView.a(this.jdField_a_of_type_Aosf.a), this.jdField_a_of_type_Aosf.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramView);
   }
 }
 

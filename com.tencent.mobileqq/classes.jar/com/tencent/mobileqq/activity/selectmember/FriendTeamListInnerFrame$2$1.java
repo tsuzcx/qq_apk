@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ahqv;
+import aidn;
 import android.view.View;
 
 public class FriendTeamListInnerFrame$2$1
   implements Runnable
 {
-  public FriendTeamListInnerFrame$2$1(ahqv paramahqv, View paramView) {}
+  public FriendTeamListInnerFrame$2$1(aidn paramaidn, View paramView) {}
   
   public void run()
   {

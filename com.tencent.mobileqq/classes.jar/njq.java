@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 
 public class njq
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public njq(ReadInJoyBaseActivity paramReadInJoyBaseActivity) {}
+  public njq(AdControlView paramAdControlView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.onBackEvent();
+    super.onAnimationCancel(paramAnimator);
+    this.a.b = false;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.a.b = false;
+    this.a.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     njq
  * JD-Core Version:    0.7.0.1
  */

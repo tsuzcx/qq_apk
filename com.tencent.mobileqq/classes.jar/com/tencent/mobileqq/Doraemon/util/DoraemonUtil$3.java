@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.Doraemon.util;
 
+import aabm;
 import org.json.JSONObject;
-import zrt;
 
 public final class DoraemonUtil$3
   implements Runnable
 {
-  public DoraemonUtil$3(zrt paramzrt, JSONObject paramJSONObject) {}
+  public DoraemonUtil$3(aabm paramaabm, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Zrt.onTrigger(this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_Aabm.onTrigger(this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

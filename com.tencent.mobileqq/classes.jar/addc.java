@@ -1,47 +1,97 @@
-import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-abstract class addc
+public class addc
 {
-  protected int a;
-  protected adid a;
-  protected String a;
-  protected int b;
-  protected String b;
+  private long jdField_a_of_type_Long;
+  private addv jdField_a_of_type_Addv = new addv();
+  private ArrayList<adem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public int a()
+  public long a()
   {
-    return this.jdField_b_of_type_Int;
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public addv a()
+  {
+    return this.jdField_a_of_type_Addv;
   }
   
   public String a()
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public abstract void a();
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(adid paramadid)
-  {
-    this.jdField_a_of_type_Adid = paramadid;
-  }
-  
-  public boolean a(String paramString)
-  {
-    a();
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    {
+      adem localadem = (adem)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      if (localadem != null)
+      {
+        if (localadem.a > 0) {
+          return String.valueOf(localadem.a());
+        }
+        return String.valueOf(localadem.b());
+      }
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = -1;
-    return true;
+    return "";
   }
   
-  public abstract boolean b(String paramString);
+  public ArrayList<adem> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(adem paramadem, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramadem == null) {}
+    do
+    {
+      return;
+      if (paramBoolean1) {
+        this.jdField_a_of_type_Addv.a(paramadem);
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramadem);
+    } while (!paramBoolean2);
+    this.jdField_a_of_type_Long += paramadem.a();
+  }
+  
+  public void a(List<adem> paramList, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    long l;
+    if (paramList != null)
+    {
+      l = 0L;
+      if ((paramBoolean1) || (paramBoolean2))
+      {
+        Iterator localIterator = paramList.iterator();
+        l = 0L;
+        if (localIterator.hasNext())
+        {
+          adem localadem = (adem)localIterator.next();
+          if (paramBoolean1) {
+            this.jdField_a_of_type_Addv.a(localadem);
+          }
+          if (!paramBoolean2) {
+            break label103;
+          }
+          l = localadem.a() + l;
+        }
+      }
+    }
+    label103:
+    for (;;)
+    {
+      break;
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      if (paramBoolean2) {
+        this.jdField_a_of_type_Long = (l + this.jdField_a_of_type_Long);
+      }
+      return;
+    }
+  }
 }
 
 

@@ -4,7 +4,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StGetNAppForJumpRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bakc;
+import bblm;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -16,6 +16,7 @@ public class MiniAppGetNativeAppInfoServlet
 {
   public static final String KEY_APP_ID = "key_app_id";
   public static final String KEY_APP_NAME = "key_app_id";
+  public static final String KEY_DOWNLOAD_URL = "key_download_url";
   public static final String KEY_ERR_MSG = "err_msg";
   public static final String KEY_EXT = "key_ext";
   public static final String KEY_NATIVE_APP_ID = "key_native_app_id";
@@ -40,6 +41,7 @@ public class MiniAppGetNativeAppInfoServlet
       paramBundle.putString("key_app_id", localStGetNAppForJumpRsp.appName.get());
       paramBundle.putString("key_native_app_id", localStGetNAppForJumpRsp.native_appid.get());
       paramBundle.putInt("key_only_open", localStGetNAppForJumpRsp.onlyOpen.get());
+      paramBundle.putString("key_download_url", localStGetNAppForJumpRsp.android_donwload_url.get());
       notifyObserver(paramIntent, 1030, true, paramBundle, MiniAppObserver.class);
       return;
     }
@@ -67,7 +69,7 @@ public class MiniAppGetNativeAppInfoServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetNAppForJump");
-      paramPacket.putSendData(bakc.a((byte[])localObject1));
+      paramPacket.putSendData(bblm.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;

@@ -1,49 +1,20 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
 
-class bjdv
-  implements axrt
+public class bjdv
+  implements View.OnClickListener
 {
-  bjdv(bjds parambjds) {}
+  public bjdv(HummingActivity paramHummingActivity) {}
   
-  public void onResp(axsq paramaxsq)
+  public void onClick(View paramView)
   {
-    Object localObject = (FilterDesc)paramaxsq.jdField_a_of_type_Axsp.a();
-    if (paramaxsq.jdField_a_of_type_Int != 0) {
-      krx.c("CaptureVideoFilterManager", "download file failed. errorCode: " + paramaxsq.b + ", errorMsg: " + paramaxsq.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
-    }
-    for (;;)
-    {
+    if (bjdp.b()) {
       return;
-      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(paramaxsq.jdField_a_of_type_Axsp.c)))
-      {
-        krx.c("CaptureVideoFilterManager", "download file failed: md5 is not match.");
-        bace.d(paramaxsq.jdField_a_of_type_Axsp.c);
-        return;
-      }
-      krx.c("CaptureVideoFilterManager", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
-      try
-      {
-        localObject = bjds.b;
-        bace.a(paramaxsq.jdField_a_of_type_Axsp.c, (String)localObject, false);
-        bace.d(paramaxsq.jdField_a_of_type_Axsp.c);
-        if ((bjds.a(this.a).decrementAndGet() == 0) && (bjds.a(this.a) != null))
-        {
-          bjds.a(this.a).a(true);
-          return;
-        }
-      }
-      catch (IOException paramaxsq)
-      {
-        paramaxsq.printStackTrace();
-        krx.c("CaptureVideoFilterManager", "unzip file failed.");
-      }
     }
+    HummingActivity.a(this.a, 2);
+    HummingActivity.b(this.a);
   }
-  
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,16 +1,27 @@
-import android.graphics.PointF;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract interface uyi
+public class uyi
+  extends QQUIEventReceiver<uyh, tcf>
 {
-  public abstract void a();
+  public uyi(uyh paramuyh1, @NonNull uyh paramuyh2)
+  {
+    super(paramuyh2);
+  }
   
-  public abstract void a(float paramFloat);
+  public void a(@NonNull uyh paramuyh, @NonNull tcf paramtcf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.playernew.StoryPlayerActivity", 2, "GetStoryListReceiver");
+    }
+    paramuyh.b(paramtcf.a);
+  }
   
-  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
-  
-  public abstract boolean a(uyj paramuyj);
-  
-  public abstract void b();
+  public Class acceptEventClass()
+  {
+    return tcf.class;
+  }
 }
 
 

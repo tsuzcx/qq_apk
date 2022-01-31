@@ -1,368 +1,114 @@
-import android.content.Intent;
-import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import mqq.app.AppRuntime;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class spz
-  extends spe
+  extends spv
 {
-  public static String a;
-  public static String b = a(-128);
-  public static String c = "key_last_get_config_time";
-  private long a;
-  public spv a;
-  
-  static
+  public spz(int paramInt, sqp paramsqp)
   {
-    jdField_a_of_type_JavaLangString = "key_get_video_source_tag_config_time";
-  }
-  
-  public spz()
-  {
-    this.jdField_a_of_type_Spv = ((spv)skt.a(spv.class, new Object[0]));
-    super.a(BaseApplicationImpl.getApplication());
-  }
-  
-  public static String a(int paramInt)
-  {
-    return "qqstory_config_version_of_type__" + paramInt;
-  }
-  
-  public static void a(int paramInt)
-  {
-    ((spz)sqg.a(10)).b("follow_capture_guide_count", Integer.valueOf(paramInt));
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return ((Integer)((spz)sqg.a(10)).b("integer_show_follow_capture_tip" + paramString, Integer.valueOf(0))).intValue() == 0;
-  }
-  
-  public static String b()
-  {
-    return BaseApplicationImpl.getApplication().getRuntime().getAccount();
-  }
-  
-  public static int c()
-  {
-    return ((Integer)((spz)sqg.a(10)).b("int_upload_video_size_limit", Integer.valueOf(5120))).intValue() * 1024;
-  }
-  
-  public static void c(boolean paramBoolean)
-  {
-    urk.a("Q.qqstory.config.StoryConfigManager", "setShowSyncToQzone :%s", Boolean.valueOf(paramBoolean));
-    spz localspz = (spz)sqg.a(10);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    super(2);
+    this.jdField_a_of_type_JavaLangString = "Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter";
+    this.jdField_a_of_type_Boolean = false;
+    Object localObject = new squ();
+    ((squ)localObject).a(paramInt);
+    ((squ)localObject).a(paramsqp);
+    a((sqq)localObject);
+    paramsqp = new sqt();
+    localObject = ((spq)tdc.a(30)).c();
+    if (localObject != null)
     {
-      localspz.b("integer_show_sync_to_qzone_btn", Integer.valueOf(i));
-      if (!paramBoolean) {
-        localspz.b("integer_enable_sync_to_qzone", Integer.valueOf(-1));
-      }
-      return;
-    }
-  }
-  
-  public static boolean c()
-  {
-    return ((Boolean)((spz)sqg.a(10)).b("boolean_enable_cq_mode", Boolean.valueOf(true))).booleanValue();
-  }
-  
-  public static int d()
-  {
-    return ((Integer)((spz)sqg.a(10)).b("int_high_bitrate", Integer.valueOf(3000))).intValue() * 1000;
-  }
-  
-  public static String d()
-  {
-    return (String)((spz)sqg.a(10)).c("follow_capture_config", "");
-  }
-  
-  public static void d()
-  {
-    ((spz)sqg.a(10)).b("integer_show_sync_to_qzone_tip", Integer.valueOf(1));
-  }
-  
-  public static void d(boolean paramBoolean)
-  {
-    urk.a("Q.qqstory.config.StoryConfigManager", "setSyncToQzone :%s", Boolean.valueOf(paramBoolean));
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ((spz)sqg.a(10)).b("integer_enable_sync_to_qzone", Integer.valueOf(i));
-      return;
-    }
-  }
-  
-  public static boolean d()
-  {
-    if (Build.VERSION.SDK_INT < 24) {
-      return false;
-    }
-    return ((Boolean)((spz)sqg.a(10)).b("boolean_need_high_profile", Boolean.valueOf(false))).booleanValue();
-  }
-  
-  public static int e()
-  {
-    return ((Integer)((spz)sqg.a(10)).b("follow_capture_guide_count", Integer.valueOf(0))).intValue();
-  }
-  
-  public static String e()
-  {
-    return (String)((spz)sqg.a(10)).b("key_take_video_node_config", "");
-  }
-  
-  public static void e()
-  {
-    ((spz)sqg.a(10)).c("follow_capture_config");
-  }
-  
-  public static void e(String paramString)
-  {
-    ((spz)sqg.a(10)).b("integer_show_follow_capture_tip" + paramString, Integer.valueOf(1));
-  }
-  
-  public static void e(boolean paramBoolean)
-  {
-    urk.a("Q.qqstory.config.StoryConfigManager", "setSyncToQzoneDefaultValue :%s", Boolean.valueOf(paramBoolean));
-    spz localspz = (spz)sqg.a(10);
-    if (((Integer)localspz.b("integer_enable_sync_to_qzone", Integer.valueOf(-1))).intValue() == -1)
-    {
-      urk.b("Q.qqstory.config.StoryConfigManager", "setSyncToQzoneDefaultValue work");
-      if (!paramBoolean) {
-        break label64;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        sra localsra = (sra)((Iterator)localObject).next();
+        switch (localsra.a)
+        {
+        default: 
+          break;
+        case 2: 
+          paramsqp.a(localsra);
+          break;
+        case 4: 
+          paramsqp.b(localsra);
+          break;
+        case 3: 
+          paramsqp.c(localsra);
+        }
       }
     }
-    label64:
-    for (int i = 1;; i = 0)
-    {
-      localspz.b("integer_enable_sync_to_qzone", Integer.valueOf(i));
-      return;
-    }
+    paramsqp.a(new sqy());
+    a(paramsqp);
   }
   
-  public static boolean e()
+  private static boolean a(String paramString1, String paramString2)
   {
+    return (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString2));
+  }
+  
+  public static boolean a(@NonNull sqb paramsqb, int paramInt)
+  {
+    Object localObject = paramsqb.a();
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      AddressItem localAddressItem = ((sqc)((List)localObject).get(0)).a;
+      localObject = ((sqc)((List)localObject).get(((List)localObject).size() - 1)).a;
+      if ((localAddressItem == null) || (localObject == null))
+      {
+        veg.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "initAlbumNameByPOI find no poi item :" + paramsqb);
+        paramsqb.b = "";
+        return false;
+      }
+      if ((paramInt <= 5) && (a(localAddressItem.building, ((AddressItem)localObject).building)))
+      {
+        paramsqb.b = localAddressItem.building;
+        return true;
+      }
+      if ((paramInt <= 4) && (a(localAddressItem.district, ((AddressItem)localObject).district)))
+      {
+        paramsqb.b = localAddressItem.district;
+        return true;
+      }
+      if ((paramInt <= 3) && (a(localAddressItem.city, ((AddressItem)localObject).city)))
+      {
+        paramsqb.b = localAddressItem.city;
+        return true;
+      }
+      if ((paramInt <= 2) && (a(localAddressItem.province, ((AddressItem)localObject).province)))
+      {
+        paramsqb.b = localAddressItem.province;
+        return true;
+      }
+      if ((paramInt <= 1) && (a(localAddressItem.country, ((AddressItem)localObject).country)))
+      {
+        paramsqb.b = localAddressItem.country;
+        return true;
+      }
+    }
+    paramsqb.b = "";
     return false;
   }
   
-  public static String f()
+  protected List<sqc> a()
   {
-    return (String)((spz)sqg.a(10)).b("key_story_album_config", "");
-  }
-  
-  public static void f(String paramString)
-  {
-    ((spz)sqg.a(10)).c("follow_capture_config", paramString);
-  }
-  
-  public static void f(boolean paramBoolean)
-  {
-    ((spz)sqg.a(10)).b("key_take_video_node_config_clicked", Boolean.valueOf(paramBoolean));
-  }
-  
-  public static boolean f()
-  {
-    int i = ((Integer)((spz)sqg.a(10)).b("integer_show_sync_to_qzone_btn", Integer.valueOf(0))).intValue();
-    urk.a("Q.qqstory.config.StoryConfigManager", "isShowSyncToQzone :%d", Integer.valueOf(i));
-    return i == 1;
-  }
-  
-  public static String g()
-  {
-    return (String)((spz)sqg.a(10)).b("key_story_home_album_entra_confg", "");
-  }
-  
-  public static void g(String paramString)
-  {
-    ((spz)sqg.a(10)).b("key_take_video_node_config", paramString);
-  }
-  
-  public static void g(boolean paramBoolean)
-  {
-    ((spz)sqg.a(10)).b("key_qa_entrance", Boolean.valueOf(paramBoolean));
-  }
-  
-  public static boolean g()
-  {
-    int i = ((Integer)((spz)sqg.a(10)).b("integer_enable_sync_to_qzone", Integer.valueOf(-1))).intValue();
-    urk.a("Q.qqstory.config.StoryConfigManager", "isSyncToQzone :%s", Integer.valueOf(i));
-    return i == 1;
-  }
-  
-  public static String h()
-  {
-    return (String)((spz)sqg.a(10)).c("thumbnail_config", "");
-  }
-  
-  public static void h(String paramString)
-  {
-    ((spz)sqg.a(10)).b("key_story_album_config", paramString);
-  }
-  
-  public static boolean h()
-  {
-    return ((Integer)((spz)sqg.a(10)).b("integer_show_sync_to_qzone_tip", Integer.valueOf(0))).intValue() == 0;
-  }
-  
-  public static void i(String paramString)
-  {
-    ((spz)sqg.a(10)).b("key_story_home_album_entra_confg", paramString);
-  }
-  
-  public static boolean i()
-  {
-    spz localspz = (spz)sqg.a(10);
-    if (((Integer)localspz.b("sp_key_user_first_enter_album", Integer.valueOf(-1))).intValue() == -1)
+    veg.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get start Pic list=" + super.a().size());
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = super.a().iterator();
+    while (localIterator.hasNext())
     {
-      localspz.b("sp_key_user_first_enter_album", Integer.valueOf(0));
-      return true;
+      sqc localsqc = (sqc)localIterator.next();
+      if (localsqc.a != null) {
+        localArrayList.add(localsqc);
+      }
     }
-    return false;
+    veg.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get end Pic list=" + localArrayList.size());
+    return localArrayList;
   }
   
-  public static void j(String paramString)
-  {
-    ((spz)sqg.a(10)).c("thumbnail_config", paramString);
-  }
-  
-  public static boolean j()
-  {
-    return ((Boolean)((spz)sqg.a(10)).b("key_take_video_node_config_clicked", Boolean.valueOf(false))).booleanValue();
-  }
-  
-  public int a()
-  {
-    return ((Integer)b("qqstory_black_status", Integer.valueOf(0))).intValue();
-  }
-  
-  public long a()
-  {
-    return ((Long)b("recent_story_refresh_time", Long.valueOf(0L))).longValue();
-  }
-  
-  public String a()
-  {
-    return (String)b("qqstory_retry_proto_list", "");
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    b("has_show_play_guide_vertical", Boolean.valueOf(paramBoolean));
-  }
-  
-  public boolean a()
-  {
-    return ((Boolean)b("has_show_play_guide_vertical", Boolean.valueOf(false))).booleanValue();
-  }
-  
-  public boolean a(int paramInt, Intent paramIntent, ConfigurationService.Config paramConfig)
-  {
-    return this.jdField_a_of_type_Spv.a(paramInt, paramIntent, paramConfig);
-  }
-  
-  public int b()
-  {
-    return baig.a(QQStoryContext.a().a(), b, QQStoryContext.a().a());
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public <V> V b(@NonNull String paramString, @NonNull V paramV)
-  {
-    return super.a(paramString + "_" + b(), paramV);
-  }
-  
-  public void b(long paramLong)
-  {
-    c(c, Long.valueOf(paramLong));
-  }
-  
-  public void b(String paramString)
-  {
-    b("qqstory_retry_proto_list", paramString);
-  }
-  
-  public <V> void b(@NonNull String paramString, @NonNull V paramV)
-  {
-    super.a(paramString + "_" + b(), paramV);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    b("has_show_play_guide_horizontal", Boolean.valueOf(paramBoolean));
-  }
-  
-  public boolean b()
-  {
-    return ((Boolean)b("has_show_play_guide_horizontal", Boolean.valueOf(false))).booleanValue();
-  }
-  
-  public long c()
-  {
-    return ((Long)c(c, Long.valueOf(0L))).longValue();
-  }
-  
-  public <V> V c(@NonNull String paramString, @NonNull V paramV)
-  {
-    return super.a(paramString, paramV);
-  }
-  
-  public String c()
-  {
-    return (String)b("key_video_source_tag_info_config", "");
-  }
-  
-  public void c()
-  {
-    urk.b("Q.qqstory.config.StoryConfigManager", "getBlackStatus");
-    int i = ((Integer)b("qqstory_black_status_last_update_time", Integer.valueOf(0))).intValue();
-    int j = ((Integer)b("qqstory_black_status_update_interval", Integer.valueOf(14400))).intValue();
-    long l = NetConnInfoCenter.getServerTime();
-    if (l > j + i)
-    {
-      szi localszi = new szi();
-      localszi.b = QQStoryContext.a().b();
-      slv.a().a(localszi, new sqa(this, l));
-    }
-  }
-  
-  public void c(long paramLong)
-  {
-    c(jdField_a_of_type_JavaLangString, Long.valueOf(paramLong));
-  }
-  
-  public <V> void c(@NonNull String paramString)
-  {
-    super.a(paramString);
-  }
-  
-  public <V> void c(@NonNull String paramString, @NonNull V paramV)
-  {
-    super.a(paramString, paramV);
-  }
-  
-  public long d()
-  {
-    return ((Long)c(jdField_a_of_type_JavaLangString, Long.valueOf(0L))).longValue();
-  }
-  
-  public void d(String paramString)
-  {
-    b("key_video_source_tag_info_config", paramString);
-  }
+  protected void c(List<sqb> paramList) {}
 }
 
 

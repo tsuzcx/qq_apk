@@ -1,14 +1,18 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+
 public class afzj
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public boolean d;
-  public boolean e = true;
+  public afzj(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    ChatHistoryTroopMemberFragment.b(this.a);
+    new axra(this.a.getActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.c }).a();
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import bfpr;
+import bgxy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.AppRuntime;
@@ -12,7 +12,7 @@ public final class QZoneHelper$10
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      bfpr.a((QQAppInterface)localAppRuntime, "QQPublicAccount");
+      bgxy.a((QQAppInterface)localAppRuntime, "QQPublicAccount");
     }
   }
 }

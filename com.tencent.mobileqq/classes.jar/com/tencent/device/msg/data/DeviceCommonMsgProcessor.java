@@ -1,31 +1,31 @@
 package com.tencent.device.msg.data;
 
 import com.tencent.litetransfersdk.Session;
-import xvn;
+import yer;
 
 public class DeviceCommonMsgProcessor
 {
-  static String a(xvn paramxvn1, xvn paramxvn2)
+  static String a(yer paramyer1, yer paramyer2)
   {
-    if ((paramxvn1 == null) || (paramxvn2 == null)) {
+    if ((paramyer1 == null) || (paramyer2 == null)) {
       return null;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{");
     localStringBuilder.append("\"");
-    localStringBuilder.append(paramxvn1.a);
+    localStringBuilder.append(paramyer1.a);
     localStringBuilder.append("\"");
     localStringBuilder.append(":");
     localStringBuilder.append("\"");
-    localStringBuilder.append(paramxvn1.b);
+    localStringBuilder.append(paramyer1.b);
     localStringBuilder.append("\"");
     localStringBuilder.append(",");
     localStringBuilder.append("\"");
-    localStringBuilder.append(paramxvn2.a);
+    localStringBuilder.append(paramyer2.a);
     localStringBuilder.append("\"");
     localStringBuilder.append(":");
     localStringBuilder.append("\"");
-    localStringBuilder.append(paramxvn2.b);
+    localStringBuilder.append(paramyer2.b);
     localStringBuilder.append("\"");
     localStringBuilder.append("}");
     return localStringBuilder.toString();

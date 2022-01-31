@@ -1,31 +1,28 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class acgm
-  implements Comparator<MessageRecord>
+  extends lnt
 {
-  public acgm(ActivateFriendActivity paramActivateFriendActivity) {}
+  public acgm(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  protected void a(int paramInt, long paramLong)
   {
-    long l2 = paramMessageRecord1.time - paramMessageRecord2.time;
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = paramMessageRecord1.getId() - paramMessageRecord2.getId();
-    }
-    if (l1 > 0L) {
-      return -1;
-    }
-    if (l1 < 0L) {
-      return 1;
-    }
-    return 0;
+    this.a.c();
+  }
+  
+  protected void a(int paramInt, long paramLong1, long paramLong2)
+  {
+    this.a.c();
+  }
+  
+  protected void b(int paramInt, long paramLong)
+  {
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acgm
  * JD-Core Version:    0.7.0.1
  */

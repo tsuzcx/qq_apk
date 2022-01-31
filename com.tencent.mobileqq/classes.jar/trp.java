@@ -1,19 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.1;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.HashMap;
+import java.util.Map;
 
 public class trp
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  trp(trk paramtrk) {}
+  public int a;
+  public StoryVideoItem a;
+  public Map<String, String> a = new HashMap();
+  public final String b = "Q.qqstory.share." + getClass().getSimpleName();
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public final void a(String paramString1, String paramString2)
   {
-    ThreadManager.executeOnSubThread(new VideoViewTVKImpl.5.1(this, paramTVK_IMediaPlayer));
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.5.2(this));
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      this.a.put(paramString1, paramString2);
+    }
   }
 }
 

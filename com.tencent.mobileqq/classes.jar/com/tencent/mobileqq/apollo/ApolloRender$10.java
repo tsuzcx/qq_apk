@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.apollo;
 
-import ajad;
-import ajag;
+import ajof;
+import ajoi;
 
 final class ApolloRender$10
   implements Runnable
 {
-  ApolloRender$10(String paramString1, String paramString2, String[] paramArrayOfString, ajad paramajad, boolean paramBoolean, String paramString3, String paramString4, String paramString5) {}
+  ApolloRender$10(String paramString1, String paramString2, String[] paramArrayOfString, ajof paramajof, boolean paramBoolean, String paramString3, String paramString4, String paramString5) {}
   
   public void run()
   {
     String str = this.jdField_a_of_type_JavaLangString.toUpperCase();
     if (str.equals("GET")) {
-      ajag.a(this.b, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Ajad);
+      ajoi.a(this.b, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Ajof);
     }
     while (!str.equals("POST")) {
       return;
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      ajag.a(this.b, this.c, this.d, this.e, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Ajad);
+      ajoi.a(this.b, this.c, this.d, this.e, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Ajof);
       return;
     }
-    ajag.a(this.b, this.c, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Ajad);
+    ajoi.a(this.b, this.c, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Ajof);
   }
 }
 

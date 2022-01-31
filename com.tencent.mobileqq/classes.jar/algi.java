@@ -1,35 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-
-public class algi
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface algi
 {
-  public algi(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  public abstract void a(int paramInt, algs paramalgs, long paramLong);
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      AboutActivity.a(5);
-      if (!this.a.b().equals("close")) {
-        this.a.b();
-      }
-      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is opened and IDE debug is also open ,state=%s", new Object[] { AboutActivity.b() }));
-      ArkAppCenter.a(true);
-      return;
-    }
-    AboutActivity.a(0);
-    this.a.c();
-    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is closed and IDE debug is also closed,state=%s", new Object[] { AboutActivity.b() }));
-    ArkAppCenter.a(false);
-  }
+  public abstract void a(algk paramalgk);
+  
+  public abstract void a(algl paramalgl);
+  
+  public abstract void a(algm paramalgm);
+  
+  public abstract void a(algn paramalgn);
+  
+  public abstract void a(algu paramalgu);
+  
+  public abstract void b(algl paramalgl);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     algi
  * JD-Core Version:    0.7.0.1
  */

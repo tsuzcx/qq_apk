@@ -1,7 +1,7 @@
 package com.tencent.open.appstore.dl;
 
-import bccu;
-import bcds;
+import bdgv;
+import bdht;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
@@ -9,17 +9,17 @@ import com.tencent.tmdownloader.TMAssistantDownloadClient;
 public class DownloadManagerV2$23
   implements Runnable
 {
-  public DownloadManagerV2$23(bccu parambccu, TMAssistantDownloadClient paramTMAssistantDownloadClient, int paramInt1, String paramString1, int paramInt2, String paramString2) {}
+  public DownloadManagerV2$23(bdgv parambdgv, TMAssistantDownloadClient paramTMAssistantDownloadClient, int paramInt1, String paramString1, int paramInt2, String paramString2) {}
   
   public void run()
   {
-    bcds.b("DownloadManagerV2", "OnDownloadStateChanged,clientKey:" + this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient + ",state:" + this.jdField_a_of_type_Int + ",url:" + this.jdField_a_of_type_JavaLangString);
-    int i = bccu.a(this.jdField_a_of_type_Int);
-    bcds.a("DownloadManagerV2", "onStateChanged url: +++++loacalState=" + i + " +++++downloadInfo=" + this.this$0.b(this.jdField_a_of_type_JavaLangString));
-    DownloadInfo localDownloadInfo = bccu.a(this.this$0, this.jdField_a_of_type_JavaLangString, i);
+    bdht.b("DownloadManagerV2", "OnDownloadStateChanged,clientKey:" + this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient + ",state:" + this.jdField_a_of_type_Int + ",url:" + this.jdField_a_of_type_JavaLangString);
+    int i = bdgv.a(this.jdField_a_of_type_Int);
+    bdht.a("DownloadManagerV2", "onStateChanged url: +++++loacalState=" + i + " +++++downloadInfo=" + this.this$0.b(this.jdField_a_of_type_JavaLangString));
+    DownloadInfo localDownloadInfo = bdgv.a(this.this$0, this.jdField_a_of_type_JavaLangString, i);
     if (localDownloadInfo == null)
     {
-      bcds.d("DownloadManagerV2", "OnDownloadSDKTaskStateChanged info == null");
+      bdht.d("DownloadManagerV2", "OnDownloadSDKTaskStateChanged info == null");
       return;
     }
     if (this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient != null) {}
@@ -33,14 +33,14 @@ public class DownloadManagerV2$23
         int j = (int)((float)l1 * 100.0F / (float)l2);
         localDownloadInfo.f = j;
         localDownloadInfo.l = localTMAssistantDownloadTaskInfo.mSavePath;
-        bcds.a("DownloadManagerV2", "OnDownloadSDKTaskStateChanged info progress = " + j + ", " + localTMAssistantDownloadTaskInfo.mReceiveDataLen + "|" + localTMAssistantDownloadTaskInfo.mTotalDataLen);
+        bdht.a("DownloadManagerV2", "OnDownloadSDKTaskStateChanged info progress = " + j + ", " + localTMAssistantDownloadTaskInfo.mReceiveDataLen + "|" + localTMAssistantDownloadTaskInfo.mTotalDataLen);
       }
       switch (i)
       {
       default: 
         return;
       case -2: 
-        bccu.a(this.this$0, -2, localDownloadInfo, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
+        bdgv.a(this.this$0, -2, localDownloadInfo, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
         return;
       }
     }
@@ -48,7 +48,7 @@ public class DownloadManagerV2$23
     {
       for (;;)
       {
-        bcds.c("DownloadManagerV2", "getDownloadTaskState>>>", localException);
+        bdht.c("DownloadManagerV2", "getDownloadTaskState>>>", localException);
         Object localObject = null;
       }
       this.this$0.a(2, localDownloadInfo);

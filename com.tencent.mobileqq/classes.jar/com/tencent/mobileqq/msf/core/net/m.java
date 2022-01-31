@@ -3403,8 +3403,9 @@ public class m
   public long l()
   {
     long l1 = 0L;
-    if (this.g != null) {
-      l1 = this.g.a();
+    h localh = this.g;
+    if (localh != null) {
+      l1 = localh.a();
     }
     return l1;
   }

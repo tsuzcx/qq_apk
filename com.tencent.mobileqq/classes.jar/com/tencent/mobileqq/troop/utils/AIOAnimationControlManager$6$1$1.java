@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.utils;
 
-import azfo;
-import azfw;
-import azfx;
+import bagr;
+import bagz;
+import baha;
 
 public class AIOAnimationControlManager$6$1$1
   implements Runnable
 {
-  public AIOAnimationControlManager$6$1$1(azfx paramazfx) {}
+  public AIOAnimationControlManager$6$1$1(baha parambaha) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_Azfo.a = 1;
-    this.a.a.jdField_a_of_type_Azfo.a(this.a.a.jdField_a_of_type_Boolean);
+    this.a.a.jdField_a_of_type_Bagr.a = 1;
+    this.a.a.jdField_a_of_type_Bagr.a(this.a.a.jdField_a_of_type_Boolean);
   }
 }
 

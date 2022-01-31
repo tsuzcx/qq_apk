@@ -1,18 +1,31 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditScrollerView;
 
-class adci
-  extends acjc
+public class adci
+  implements Animator.AnimatorListener
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  View d;
+  public adci(VoiceTextEditScrollerView paramVoiceTextEditScrollerView, int paramInt) {}
   
-  adci(adch paramadch) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView) != null)
+    {
+      if (this.jdField_a_of_type_Int == 0) {
+        VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView).j();
+      }
+    }
+    else {
+      return;
+    }
+    VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView).k();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

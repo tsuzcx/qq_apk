@@ -1,13 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aavc
-  implements DialogInterface.OnClickListener
+public class aavc
+  extends bbqu
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aavc(ChatSettingForTroop paramChatSettingForTroop) {}
+  
+  protected void onGetMyTroopEffect(boolean paramBoolean, Object paramObject)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.chatopttroop", 2, "onGetMyTroopEffect  result = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.a.a(true);
     }
   }
 }

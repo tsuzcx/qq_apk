@@ -1,25 +1,30 @@
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
 
-public class ahtf
-  implements Comparator<CommonlyUsedTroop>
+class ahtf
+  implements actw
 {
-  protected ahtf(ahtc paramahtc) {}
+  ahtf(ahte paramahte) {}
   
-  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
+  public void a(AudioPlayer paramAudioPlayer)
   {
-    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
-      return 1;
+    if (ahte.a(this.a))
+    {
+      ahte.a(this.a, false);
+      ahte.a(this.a);
     }
-    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
-      return -1;
-    }
-    return 0;
   }
+  
+  public void a(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void b(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahtf
  * JD-Core Version:    0.7.0.1
  */

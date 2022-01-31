@@ -1,16 +1,23 @@
-public abstract interface aklm
+import com.tencent.mobileqq.app.automator.step.CleanCache.1;
+import java.io.File;
+import java.util.Comparator;
+
+public class aklm
+  implements Comparator<File>
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public aklm(CleanCache.1 param1) {}
   
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void h();
+  public int a(File paramFile1, File paramFile2)
+  {
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aklm
  * JD-Core Version:    0.7.0.1
  */

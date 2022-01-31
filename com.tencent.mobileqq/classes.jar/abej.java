@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.view.View;
+import android.widget.TextView;
 
-public class abej
-  implements DialogInterface.OnClickListener
+class abej
+  implements bfps
 {
-  public abej(NotificationActivity paramNotificationActivity) {}
+  abej(abeh paramabeh, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.finish();
+    this.jdField_a_of_type_Abeh.a = false;
+    if ((this.jdField_a_of_type_AndroidViewView instanceof TextView)) {
+      this.jdField_a_of_type_Abeh.a((TextView)this.jdField_a_of_type_AndroidViewView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abej
  * JD-Core Version:    0.7.0.1
  */

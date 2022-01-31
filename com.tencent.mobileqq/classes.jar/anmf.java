@@ -1,387 +1,236 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiBaseInfo;
+import appoint.define.appoint_define.StrangerInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.emosm.EmosmPb.SmallYellowItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anmf
-  extends anht
 {
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  public static final int h;
   public int a;
-  private Drawable a;
+  public long a;
+  public String a;
   public int b;
-  public boolean b;
-  public String d;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public int e;
+  public int f;
   
-  static
+  public anmf()
   {
-    jdField_a_of_type_JavaLangString = ajjy.a(2131648909);
-    jdField_b_of_type_JavaLangString = ajjy.a(2131648912);
-    jdField_c_of_type_JavaLangString = ajjy.a(2131648911);
-    int j = anhr.jdField_b_of_type_Int / 20;
-    if (anhr.jdField_b_of_type_Int % 20 == 0) {}
-    for (int i = 0;; i = 1)
-    {
-      h = i + j;
-      return;
-    }
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
   }
   
-  public anmf(int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  public static anmf a(appoint_define.StrangerInfo paramStrangerInfo)
   {
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt3;
-    this.d = paramString;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public static final int a(int[] paramArrayOfInt)
-  {
-    return (paramArrayOfInt.length + 19) / 20;
-  }
-  
-  public static List<anjy> a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    return a(paramQQAppInterface, 7, paramInt);
-  }
-  
-  public static List<anjy> a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
-  {
-    if (paramQQAppInterface == null)
-    {
-      QLog.e("SystemAndEmojiEmoticonInfo", 1, "getEmoticonList app = null");
-      return null;
+    Object localObject;
+    if ((paramStrangerInfo == null) || (paramStrangerInfo.uint64_tinyid.get() == 0L)) {
+      localObject = null;
     }
-    ArrayList localArrayList1 = angd.a().a(1).b();
-    ArrayList localArrayList2 = angd.a().a(2).b();
-    ArrayList localArrayList3 = new ArrayList(localArrayList1.size() + localArrayList2.size());
-    if ((paramInt2 != 2) && (paramInt2 != 3))
-    {
-      i = 0;
-      while (i < paramInt1)
-      {
-        localArrayList3.add(new anmf(7, 3, -1, jdField_a_of_type_JavaLangString, false));
-        i += 1;
-      }
-      paramQQAppInterface = ((anho)paramQQAppInterface.getManager(172)).a();
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 1))
-      {
-        j = 0;
-        i = 0;
-        for (;;)
-        {
-          if ((j >= paramQQAppInterface.size()) || (i >= paramInt1 * 3))
-          {
-            if (i >= paramInt1 * 3) {
-              break;
-            }
-            j = i % paramInt1;
-            if (j == 0) {
-              break;
-            }
-            i = 0;
-            while (i < paramInt1 - j)
-            {
-              localArrayList3.add(new anmf(7, 1, -1, "", false));
-              i += 1;
-            }
-          }
-          EmosmPb.SmallYellowItem localSmallYellowItem = (EmosmPb.SmallYellowItem)paramQQAppInterface.get(j);
-          int k = 1;
-          if (localSmallYellowItem.type.get() == 2) {
-            k = 2;
-          }
-          localArrayList3.add(new anmf(7, k, localSmallYellowItem.id.get(), "", true));
-          j += 1;
-          i += 1;
-        }
-      }
-      QLog.e("SystemAndEmojiEmoticonInfo", 1, "CommonlyUsedSystemEmoji IS NULL");
-    }
-    int i = 0;
-    while (i < paramInt1)
-    {
-      localArrayList3.add(new anmf(7, 3, -1, jdField_b_of_type_JavaLangString, false));
-      i += 1;
-    }
-    int j = localArrayList1.size();
-    i = 0;
-    if (i < j)
-    {
-      if (((Integer)localArrayList1.get(i)).intValue() == -1) {
-        localArrayList3.add(new anmf(7, 1, 0, "", false));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localArrayList3.add(new anmf(7, 1, ((Integer)localArrayList1.get(i)).intValue(), "", false));
-      }
-    }
-    j = localArrayList1.size() % paramInt1;
-    if (j > 0)
-    {
-      i = 0;
-      while (i < paramInt1 - j)
-      {
-        localArrayList3.add(new anmf(7, 1, -1, "", false));
-        i += 1;
-      }
-    }
-    if (paramInt2 != 2)
-    {
-      paramInt2 = 0;
-      while (paramInt2 < paramInt1)
-      {
-        localArrayList3.add(new anmf(7, 3, -1, jdField_c_of_type_JavaLangString, false));
-        paramInt2 += 1;
-      }
-      paramInt2 = 0;
-      while (paramInt2 < localArrayList2.size())
-      {
-        localArrayList3.add(new anmf(7, 2, ((Integer)localArrayList2.get(paramInt2)).intValue(), "", false));
-        paramInt2 += 1;
-      }
-      i = localArrayList2.size() % paramInt1;
-      if (i > 0)
-      {
-        paramInt2 = 0;
-        while (paramInt2 < paramInt1 - i)
-        {
-          localArrayList3.add(new anmf(7, 2, -1, "", false));
-          paramInt2 += 1;
-        }
-      }
-    }
-    return localArrayList3;
-  }
-  
-  public static List<anht> a(int[] paramArrayOfInt)
-  {
-    ArrayList localArrayList = new ArrayList(paramArrayOfInt.length + anhr.jdField_b_of_type_Int);
-    int j = anhr.jdField_b_of_type_Int % 20;
-    int i = anhr.jdField_b_of_type_Int - 1;
-    while (i >= anhr.jdField_b_of_type_Int - j)
-    {
-      localArrayList.add(new anmf(7, 2, i, "", false));
-      i -= 1;
-    }
-    i = 0;
-    while (i < 20 - j)
-    {
-      localArrayList.add(new anmf(7, 2, -1, "", false));
-      i += 1;
-    }
-    i = anhr.jdField_b_of_type_Int - j - 1;
-    while (i >= 0)
-    {
-      localArrayList.add(new anmf(7, 2, i, "", false));
-      i -= 1;
-    }
-    j = paramArrayOfInt.length;
-    i = 0;
-    while (i < j)
-    {
-      localArrayList.add(new anmf(7, 1, paramArrayOfInt[i], "", false));
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = a(paramQQAppInterface, 0);
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
-    {
-      int i = 0;
-      while ((i < 84) && (i < paramQQAppInterface.size()))
-      {
-        Object localObject = (anjy)paramQQAppInterface.get(i);
-        if ((localObject instanceof anmf))
-        {
-          localObject = (anmf)localObject;
-          if ((((anmf)localObject).jdField_c_of_type_Int != 3) && (((anmf)localObject).jdField_b_of_type_Int != -1))
-          {
-            localObject = (URLDrawable)((anmf)localObject).a(false);
-            if ((localObject != null) && (((URLDrawable)localObject).getStatus() != 1)) {
-              ((URLDrawable)localObject).startDownload();
-            }
-          }
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public Drawable a(int paramInt, boolean paramBoolean)
-  {
-    int i;
-    if ((1 == this.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int != -1))
-    {
-      if ((paramInt < 0) || (paramInt >= axjs.jdField_a_of_type_Int)) {
-        throw new IllegalArgumentException("invaid sys emotcation index: " + paramInt);
-      }
-      i = axjs.jdField_b_of_type_ArrayOfInt[paramInt];
-    }
-    while (i == -1)
-    {
-      QLog.e("SystemAndEmojiEmoticonInfo", 1, "getSystemEmojiStaticImg index error 11; index = " + paramInt);
-      return null;
-      if ((2 == this.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int != -1))
-      {
-        if (paramInt < 0) {
-          throw new IllegalArgumentException("invaid emoji index: " + paramInt);
-        }
-        if ((paramInt >= 0) && (paramInt < axjs.jdField_b_of_type_Int)) {
-          i = 2130839808 + paramInt;
-        } else {
-          QLog.e("SystemAndEmojiEmoticonInfo", 1, "getSystemEmojiStaticImg index error; index = " + paramInt);
-        }
-      }
-      else
-      {
-        i = -1;
-      }
-    }
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplication.getContext().getResources().getDrawable(2130837708);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        try
-        {
-          URL localURL = new URL("protocol_vas_extension_image", "RESOURCE_IMG", i + "");
-          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-          localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-          localURLDrawableOptions.mUseThreadPool = paramBoolean;
-          return URLDrawable.getDrawable(localURL, localURLDrawableOptions);
-        }
-        catch (MalformedURLException localMalformedURLException)
-        {
-          localMalformedURLException.printStackTrace();
-          QLog.e("SystemAndEmojiEmoticonInfo", 1, "getSystemEmojiStaticImg url exception e = " + localMalformedURLException.getMessage());
-        }
-        localException = localException;
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-        QLog.e("SystemAndEmojiEmoticonInfo", 1, "SystemAndEmojiEmoticonInfo getdrawable exception e: = " + localException.getMessage());
-      }
-    }
-    return null;
-  }
-  
-  public Drawable a(Context paramContext, float paramFloat)
-  {
-    return a(this.jdField_b_of_type_Int, true);
-  }
-  
-  public Drawable a(boolean paramBoolean)
-  {
-    return a(this.jdField_b_of_type_Int, paramBoolean);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
-  {
-    if (this.jdField_b_of_type_Int == -1) {
-      return;
-    }
-    int i = paramEditText.getSelectionStart();
-    int j = paramEditText.getSelectionEnd();
-    Editable localEditable = paramEditText.getEditableText();
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (paramContext = axku.c(this.jdField_b_of_type_Int);; paramContext = axku.a(this.jdField_b_of_type_Int))
-    {
-      localEditable.replace(i, j, paramContext);
-      paramEditText.requestFocus();
-      a(paramQQAppInterface, paramSessionInfo);
-      if (this.jdField_b_of_type_Boolean) {
-        awqx.b(paramQQAppInterface, "CliOper", "", "", "ep_mall", "0X800717F", 0, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", "", "");
-      }
-      if ((paramQQAppInterface != null) && (axku.a(this.jdField_b_of_type_Int)) && (paramSessionInfo != null)) {
-        bajr.a(paramQQAppInterface, "cmshow", "Apollo", "0X800812C", ApolloUtil.b(paramSessionInfo.jdField_a_of_type_Int), 0, new String[] { String.valueOf(this.jdField_b_of_type_Int), String.valueOf(aifg.a(paramQQAppInterface)) });
-      }
-      angd.a().a(this.jdField_a_of_type_Int).a(this.jdField_b_of_type_Int, 1);
-      return;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    EmosmPb.SmallYellowItem localSmallYellowItem = new EmosmPb.SmallYellowItem();
-    localSmallYellowItem.id.set(this.jdField_b_of_type_Int);
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (int i = 1;; i = 2)
-    {
-      localSmallYellowItem.type.set(i);
-      long l = System.currentTimeMillis();
-      localSmallYellowItem.ts.set(l);
-      String str2 = "";
-      String str1 = str2;
-      if (paramSessionInfo != null)
-      {
-        str1 = str2;
-        if (!TextUtils.isEmpty(paramSessionInfo.jdField_b_of_type_JavaLangString)) {
-          str1 = paramSessionInfo.jdField_b_of_type_JavaLangString;
-        }
-      }
-      QLog.d("SystemAndEmojiEmoticonInfo", 1, "send saveemoji type = " + i + ";id = " + this.jdField_b_of_type_Int + ";ts = " + l + ";troopUin = " + str1);
-      if (paramQQAppInterface != null)
-      {
-        paramQQAppInterface = (anho)paramQQAppInterface.getManager(172);
-        if (paramQQAppInterface != null) {
-          paramQQAppInterface.a(localSmallYellowItem);
-        }
-      }
-      return;
-    }
-  }
-  
-  public Drawable b(Context paramContext, float paramFloat)
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if ((this.jdField_a_of_type_Int == 1) && (this.jdField_b_of_type_Int != -1)) {
-      localObject1 = axku.a(this.jdField_b_of_type_Int, true);
-    }
+    anmf localanmf;
     do
     {
-      do
+      return localObject;
+      localanmf = new anmf();
+      if (paramStrangerInfo.uint64_tinyid.has()) {
+        localanmf.jdField_a_of_type_Long = paramStrangerInfo.uint64_tinyid.get();
+      }
+      if (paramStrangerInfo.uint32_age.has()) {
+        localanmf.jdField_a_of_type_Int = paramStrangerInfo.uint32_age.get();
+      }
+      if (paramStrangerInfo.uint32_gender.has()) {
+        localanmf.jdField_b_of_type_Int = paramStrangerInfo.uint32_gender.get();
+      }
+      if (paramStrangerInfo.bytes_nickname.has()) {
+        localanmf.jdField_a_of_type_JavaLangString = paramStrangerInfo.bytes_nickname.get().toStringUtf8();
+      }
+      if (paramStrangerInfo.uint32_dating.has()) {
+        localanmf.jdField_c_of_type_Int = paramStrangerInfo.uint32_dating.get();
+      }
+      if (paramStrangerInfo.uint32_list_idx.has()) {
+        localanmf.f = paramStrangerInfo.uint32_list_idx.get();
+      }
+      if (paramStrangerInfo.str_constellation.has()) {
+        localanmf.jdField_b_of_type_JavaLangString = paramStrangerInfo.str_constellation.get();
+      }
+      if (paramStrangerInfo.uint32_profession.has()) {
+        localanmf.d = paramStrangerInfo.uint32_profession.get();
+      }
+      if (paramStrangerInfo.uint32_marriage.has()) {
+        localanmf.e = paramStrangerInfo.uint32_marriage.get();
+      }
+      localObject = localanmf;
+    } while (!paramStrangerInfo.str_vipinfo.has());
+    localanmf.jdField_c_of_type_JavaLangString = paramStrangerInfo.str_vipinfo.get();
+    return localanmf;
+  }
+  
+  public static anmf a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return null;
+    }
+    localanmf = new anmf();
+    for (;;)
+    {
+      try
       {
-        return localObject1;
-        localObject1 = localObject2;
-      } while (this.jdField_a_of_type_Int != 2);
-      localObject1 = localObject2;
-    } while (this.jdField_b_of_type_Int == -1);
-    return super.b(paramContext, paramFloat);
+        localanmf.jdField_a_of_type_Long = paramJSONObject.getLong("open_id");
+        localanmf.jdField_a_of_type_JavaLangString = paramJSONObject.getString("nickname");
+        localanmf.jdField_a_of_type_Int = paramJSONObject.getInt("age");
+        localanmf.jdField_b_of_type_Int = paramJSONObject.getInt("gender");
+        localanmf.jdField_c_of_type_Int = paramJSONObject.getInt("state");
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        paramJSONObject = null;
+        continue;
+      }
+      try
+      {
+        localanmf.jdField_b_of_type_JavaLangString = paramJSONObject.getString("constellation");
+        localanmf.d = paramJSONObject.getInt("profession");
+        localanmf.e = paramJSONObject.getInt("emotion");
+        localanmf.f = paramJSONObject.getInt("listIdx");
+        localanmf.jdField_c_of_type_JavaLangString = paramJSONObject.getString("vip");
+        paramJSONObject = localanmf;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        paramJSONObject = localanmf;
+      }
+    }
+    return paramJSONObject;
+  }
+  
+  public static String a(List<anmf> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return "";
+    }
+    JSONArray localJSONArray = new JSONArray();
+    paramList = paramList.iterator();
+    int i = 0;
+    if (paramList.hasNext())
+    {
+      JSONObject localJSONObject = a((anmf)paramList.next());
+      if (localJSONObject == null) {
+        break label83;
+      }
+      localJSONArray.put(localJSONObject);
+      i += 1;
+    }
+    label83:
+    for (;;)
+    {
+      if (i >= 20) {
+        return localJSONArray.toString();
+      }
+      break;
+    }
+  }
+  
+  public static JSONObject a(anmf paramanmf)
+  {
+    if (paramanmf == null) {
+      return null;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("open_id", paramanmf.jdField_a_of_type_Long);
+      localJSONObject.put("nickname", paramanmf.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("age", paramanmf.jdField_a_of_type_Int);
+      localJSONObject.put("gender", paramanmf.jdField_b_of_type_Int);
+      localJSONObject.put("state", paramanmf.jdField_c_of_type_Int);
+      localJSONObject.put("constellation", paramanmf.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("profession", paramanmf.d);
+      localJSONObject.put("emotion", paramanmf.e);
+      localJSONObject.put("listIdx", paramanmf.f);
+      localJSONObject.put("vip", paramanmf.jdField_c_of_type_JavaLangString);
+      return localJSONObject;
+    }
+    catch (JSONException paramanmf)
+    {
+      paramanmf.printStackTrace();
+    }
+    return localJSONObject;
+  }
+  
+  public static void a(List<anmf> paramList, String paramString)
+  {
+    if ((paramList == null) || (TextUtils.isEmpty(paramString))) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramString = new JSONArray(paramString);
+        int j = paramString.length();
+        int i = 0;
+        while (i < j)
+        {
+          anmf localanmf = a(paramString.getJSONObject(i));
+          if (localanmf != null) {
+            paramList.add(localanmf);
+          }
+          i += 1;
+        }
+        return;
+      }
+      catch (JSONException paramList)
+      {
+        paramList.printStackTrace();
+      }
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool = true;
+    if (paramObject == null) {}
+    do
+    {
+      return false;
+      if (paramObject == this) {
+        return true;
+      }
+    } while (paramObject.getClass() != getClass());
+    if (((anmf)paramObject).jdField_a_of_type_Long == this.jdField_a_of_type_Long) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public int hashCode()
+  {
+    return Long.valueOf(this.jdField_a_of_type_Long).hashCode();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[").append(this.jdField_a_of_type_Long).append(",").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_b_of_type_Int).append(",").append(this.jdField_c_of_type_Int).append(",").append(this.jdField_b_of_type_JavaLangString).append(",").append(this.d).append(",").append(this.e).append(",").append(this.f).append(",").append(this.jdField_c_of_type_JavaLangString).append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anmf
  * JD-Core Version:    0.7.0.1
  */

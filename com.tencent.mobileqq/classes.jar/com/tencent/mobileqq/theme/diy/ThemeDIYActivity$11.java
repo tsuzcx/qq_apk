@@ -7,9 +7,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.view.View;
-import bbmy;
-import bbom;
-import becs;
+import bcpw;
+import bcrn;
+import bfki;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -68,14 +68,14 @@ class ThemeDIYActivity$11
         }
         paramMessage = (ResData)paramMessage.obj;
       } while (paramMessage == null);
-      Object localObject = this.this$0.mContext.getResources().getDrawable(2130846370);
+      Object localObject = this.this$0.mContext.getResources().getDrawable(2130846557);
       try
       {
         URL localURL = new URL("themediydownloader", paramMessage.path, paramMessage.url);
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
         localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-        localURLDrawableOptions.mUseSharpPImage = becs.a(BaseApplicationImpl.getApplication());
+        localURLDrawableOptions.mUseSharpPImage = bfki.a(BaseApplicationImpl.getApplication());
         localObject = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
         if (((URLDrawable)localObject).getStatus() != 1)
         {
@@ -175,7 +175,7 @@ class ThemeDIYActivity$11
       this.this$0.mHandler.removeMessages(24);
       this.this$0.mIsSaving.set(false);
       this.this$0.setProgessDialog(false, 0);
-      bbmy.a(this.this$0.mContext, 2131654319, 3000).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131167766));
+      bcpw.a(this.this$0.mContext, 2131720213, 3000).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131298865));
       return;
       if (paramMessage.obj == null)
       {
@@ -193,12 +193,12 @@ class ThemeDIYActivity$11
       if (paramMessage.obj == null) {
         break;
       }
-      bbmy.a(this.this$0.mContext, paramMessage.obj.toString(), 3600).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131167766));
+      bcpw.a(this.this$0.mContext, paramMessage.obj.toString(), 3600).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131298865));
       return;
       if (paramMessage.obj == null) {
         break;
       }
-      bbmy.a(this.this$0.mContext, paramMessage.obj.toString(), 3600).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131167766));
+      bcpw.a(this.this$0.mContext, paramMessage.obj.toString(), 3600).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131298865));
       return;
       if (1 != paramMessage.arg1) {
         break;

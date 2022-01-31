@@ -1,110 +1,66 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.s2c.msgtype0x210.submsgtype0xf9.submsgtype0xf9.Video;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RspBody;
+import tencent.im.oidb.cmd0x791.oidb_0x791.SetRedDotRes;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class mxv
+class mxv
+  implements BusinessObserver
 {
-  public int a;
-  public VideoCoverView a;
-  public String a;
-  public String b;
+  mxv(mxq parammxq) {}
   
-  public mxv() {}
-  
-  public mxv(int paramInt, String paramString1, String paramString2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public static mxv a(int paramInt, JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return null;
+    if (paramBoolean) {
+      try
+      {
+        Object localObject = paramBundle.getByteArray("data");
+        paramBundle = new oidb_sso.OIDBSSOPkg();
+        paramBundle.mergeFrom((byte[])localObject);
+        if ((paramBundle != null) && (paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()))
+        {
+          if (paramBundle.bytes_bodybuffer.get() == null) {
+            return;
+          }
+          localObject = new oidb_0x791.RspBody();
+          ((oidb_0x791.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
+          localObject = (oidb_0x791.SetRedDotRes)((oidb_0x791.RspBody)localObject).msg_set_reddot_res.get();
+          if (localObject != null)
+          {
+            paramBundle = "";
+            localObject = ((oidb_0x791.SetRedDotRes)localObject).rpt_uint64_failed_uin.get().iterator();
+            while (((Iterator)localObject).hasNext())
+            {
+              long l = ((Long)((Iterator)localObject).next()).longValue();
+              paramBundle = paramBundle + String.valueOf(l) + ",";
+            }
+            if ((!TextUtils.isEmpty(paramBundle)) && (QLog.isColorLevel()))
+            {
+              QLog.d("SplashActivityQ.qqstory.redPoint", 2, "setRedDotInfo failed result is:" + paramBundle);
+              return;
+            }
+          }
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
     }
-    try
-    {
-      mxv localmxv = new mxv();
-      localmxv.jdField_a_of_type_Int = paramInt;
-      localmxv.jdField_a_of_type_JavaLangString = paramJSONObject.getString("str_cover");
-      localmxv.b = paramJSONObject.getString("str_src");
-      return localmxv;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static mxv a(int paramInt, submsgtype0xf9.Video paramVideo)
-  {
-    if (paramVideo == null) {
-      return null;
-    }
-    try
-    {
-      mxv localmxv = new mxv();
-      localmxv.b = paramVideo.str_src.get();
-      localmxv.jdField_a_of_type_JavaLangString = paramVideo.str_cover.get();
-      localmxv.jdField_a_of_type_Int = paramInt;
-      return localmxv;
-    }
-    catch (Exception paramVideo)
-    {
-      paramVideo.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static mxv a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    try
-    {
-      mxv localmxv = new mxv();
-      localmxv.jdField_a_of_type_Int = paramJSONObject.getInt("index");
-      localmxv.jdField_a_of_type_JavaLangString = paramJSONObject.getString("cover");
-      localmxv.b = paramJSONObject.getString("src");
-      return localmxv;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-    return null;
-  }
-  
-  public JSONObject a()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("index", this.jdField_a_of_type_Int);
-      localJSONObject.put("cover", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("src", this.b);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return null;
-  }
-  
-  public String toString()
-  {
-    return "mVideoSrc " + this.b + " mVideoCoverPic " + this.jdField_a_of_type_JavaLangString + " mVideoIndex " + this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     mxv
  * JD-Core Version:    0.7.0.1
  */

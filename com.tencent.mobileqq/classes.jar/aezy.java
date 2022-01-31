@@ -1,71 +1,35 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.app.FriendListHandler.AddBatchPhoneFriendResult;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
 
 public class aezy
-  extends ajjh
+  extends RecyclerView.OnScrollListener
 {
-  public aezy(SystemMsgListView paramSystemMsgListView) {}
+  public boolean a;
   
-  public void onAddBatchPhoneFriend(boolean paramBoolean, ArrayList<FriendListHandler.AddBatchPhoneFriendResult> paramArrayList)
+  public aezy(ZhituPanelView paramZhituPanelView) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (paramBoolean) {
-      SystemMsgListView.a(this.a).c();
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
+    {
+      GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
+      if ((localGridLayoutManager.findLastCompletelyVisibleItemPosition() + 1 == localGridLayoutManager.getItemCount()) && (this.jdField_a_of_type_Boolean)) {
+        ((aezz)paramRecyclerView.getAdapter()).a();
+      }
     }
   }
   
-  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetConnectionsPerson " + paramBoolean + " " + paramInt1 + " " + paramInt2);
-    }
-    if (paramBoolean)
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt2 > 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      localafav = SystemMsgListView.a(this.a).a();
-      if ((localafav != null) && (localafav.a()) && (localafav.a == paramInt2) && (!SystemMsgListView.a(this.a, paramInt2, paramInt3))) {
-        SystemMsgListView.a(this.a).a(0L);
-      }
-    }
-    while (paramInt1 != 1205)
-    {
-      afav localafav;
+      this.jdField_a_of_type_Boolean = bool;
       return;
-    }
-    SystemMsgListView.a(this.a).a(0L);
-  }
-  
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetMayKnowRecommend " + paramBoolean);
-    }
-    if (paramBoolean) {
-      SystemMsgListView.a(this.a).c();
-    }
-  }
-  
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
-  {
-    if (paramBoolean) {
-      SystemMsgListView.a(this.a).c();
-    }
-  }
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
-  {
-    if (paramBoolean1)
-    {
-      paramString = paramBundle.getString("uin");
-      int i = paramBundle.getInt("source_id");
-      paramBundle = paramBundle.getString("extra");
-      if (((i == 3006) || (i == 3075)) && ("ContactMatchBuilder".equals(paramBundle))) {
-        this.a.a(paramString);
-      }
-      if (bjmr.a(i)) {
-        SystemMsgListView.a(this.a).c();
-      }
     }
   }
 }

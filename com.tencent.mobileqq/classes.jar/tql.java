@@ -1,6 +1,18 @@
-public abstract interface tql
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
+class tql
+  extends tpo
 {
-  public abstract void a_(tqg paramtqg);
+  tql(tqk paramtqk, StoryVideoItem paramStoryVideoItem, trq paramtrq)
+  {
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Trq.a = ((String)a("result"));
+    return true;
+  }
 }
 
 

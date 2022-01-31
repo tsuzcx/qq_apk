@@ -21,23 +21,23 @@ public class SharpPDecoderHelper
     this.mDecoder.closeDecoder();
   }
   
-  public void closeDecoder(int paramInt)
+  public void closeDecoder(long paramLong)
   {
-    this.mDecoder.closeDecoder(paramInt);
+    this.mDecoder.closeDecoder(paramLong);
   }
   
-  public int createDecoder()
+  public long createDecoder()
   {
     try
     {
-      int i = this.mDecoder.createDecoder();
-      return i;
+      long l = this.mDecoder.createDecoder();
+      return l;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
       ImageManagerEnv.getLogger().e("SharpPDecoderHelper", new Object[] { "createDecoder catch a UnsatisfiedLinkError:" + Log.getStackTraceString(localUnsatisfiedLinkError) });
     }
-    return -1;
+    return -1L;
   }
   
   public Bitmap decodeSharpP(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
@@ -127,17 +127,17 @@ public class SharpPDecoderHelper
     }
   }
   
-  public Bitmap decodeSharpP2GifFrame(int paramInt1, int paramInt2, int paramInt3, int paramInt4, SharpPDecoderWrapper.WriteableInteger paramWriteableInteger, Bitmap paramBitmap)
+  public Bitmap decodeSharpP2GifFrame(long paramLong, int paramInt1, int paramInt2, int paramInt3, SharpPDecoderWrapper.WriteableInteger paramWriteableInteger, Bitmap paramBitmap)
   {
     try
     {
-      Bitmap localBitmap1 = this.mDecoder.decodeSharpP2GifFrame(paramInt1, paramInt2, paramInt3, paramInt4, paramWriteableInteger, paramBitmap);
+      Bitmap localBitmap1 = this.mDecoder.decodeSharpP2GifFrame(paramLong, paramInt1, paramInt2, paramInt3, paramWriteableInteger, paramBitmap);
       paramBitmap = localBitmap1;
       localBitmap1 = paramBitmap;
       if (paramBitmap == null)
       {
         this.mDecoder.closeDecoder();
-        localBitmap1 = this.mDecoder.decodeSharpP2GifFrame(paramInt1, paramInt2, paramInt3, paramInt4, paramWriteableInteger, paramBitmap);
+        localBitmap1 = this.mDecoder.decodeSharpP2GifFrame(paramLong, paramInt1, paramInt2, paramInt3, paramWriteableInteger, paramBitmap);
       }
       this.mDecoder.closeDecoder();
       return localBitmap1;
@@ -146,18 +146,18 @@ public class SharpPDecoderHelper
     {
       localOutOfMemoryError = localOutOfMemoryError;
       ImageManagerEnv.getLogger().e("SharpPDecoderHelper", new Object[] { "decodeSharpP2GifFrame catch an OutOfMemoryError:" + Log.getStackTraceString(localOutOfMemoryError) });
-      i = paramInt3 / 2;
+      i = paramInt2 / 2;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
       try
       {
-        paramInt3 = paramInt4 / 2;
+        paramInt2 = paramInt3 / 2;
         Bitmap localBitmap2 = paramBitmap;
         if (paramBitmap == null)
         {
           this.mDecoder.closeDecoder();
-          localBitmap2 = this.mDecoder.decodeSharpP2GifFrame(paramInt1, paramInt2, i, paramInt3, paramWriteableInteger, paramBitmap);
+          localBitmap2 = this.mDecoder.decodeSharpP2GifFrame(paramLong, paramInt1, i, paramInt2, paramWriteableInteger, paramBitmap);
         }
         this.mDecoder.closeDecoder();
         return localBitmap2;
@@ -166,7 +166,7 @@ public class SharpPDecoderHelper
       {
         int i;
         Bitmap localBitmap3;
-        paramInt3 = i;
+        paramInt2 = i;
       }
       localUnsatisfiedLinkError = localUnsatisfiedLinkError;
       ImageManagerEnv.getLogger().e("SharpPDecoderHelper", new Object[] { "decodeSharpP2GifFrame catch a UnsatisfiedLinkError:" + Log.getStackTraceString(localUnsatisfiedLinkError) });
@@ -174,7 +174,7 @@ public class SharpPDecoderHelper
       if (paramBitmap == null)
       {
         this.mDecoder.closeDecoder();
-        localBitmap3 = this.mDecoder.decodeSharpP2GifFrame(paramInt1, paramInt2, paramInt3, paramInt4, paramWriteableInteger, paramBitmap);
+        localBitmap3 = this.mDecoder.decodeSharpP2GifFrame(paramLong, paramInt1, paramInt2, paramInt3, paramWriteableInteger, paramBitmap);
       }
       this.mDecoder.closeDecoder();
       return localBitmap3;
@@ -183,7 +183,7 @@ public class SharpPDecoderHelper
     if (paramBitmap == null)
     {
       this.mDecoder.closeDecoder();
-      this.mDecoder.decodeSharpP2GifFrame(paramInt1, paramInt2, paramInt3, paramInt4, paramWriteableInteger, paramBitmap);
+      this.mDecoder.decodeSharpP2GifFrame(paramLong, paramInt1, paramInt2, paramInt3, paramWriteableInteger, paramBitmap);
     }
     this.mDecoder.closeDecoder();
     throw localObject1;

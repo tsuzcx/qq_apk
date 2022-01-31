@@ -1,12 +1,12 @@
 package com.tencent.common.galleryactivity;
 
 import android.widget.TextView;
-import xha;
+import xqa;
 
 public class GalleryPageView$3
   implements Runnable
 {
-  public GalleryPageView$3(xha paramxha) {}
+  public GalleryPageView$3(xqa paramxqa) {}
   
   public void run()
   {

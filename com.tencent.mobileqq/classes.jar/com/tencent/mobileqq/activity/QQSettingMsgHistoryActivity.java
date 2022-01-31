@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import ajed;
-import ajfi;
-import akdc;
-import akdh;
+import ajsf;
+import ajtk;
+import akro;
+import akrt;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -17,33 +17,33 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import aqes;
-import aqgq;
-import avhd;
-import awcz;
-import axwd;
-import azzz;
-import badf;
-import bajr;
-import baot;
-import bbms;
-import befo;
-import bheo;
+import aqyu;
+import aras;
+import awgw;
+import axch;
+import aywk;
+import bbbd;
+import bbek;
+import bbqp;
+import bcpq;
+import bfni;
+import bihe;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Vector;
-import vup;
-import yfa;
+import whm;
+import yoe;
 
 public class QQSettingMsgHistoryActivity
   extends IphoneTitleBarActivity
-  implements akdh, ViewTreeObserver.OnGlobalLayoutListener
+  implements akrt, ViewTreeObserver.OnGlobalLayoutListener
 {
   private static volatile ScanSpaceManager jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager;
   static final String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getFilesDir() + File.separator + "ChatHistoryEventConfig.json";
@@ -52,7 +52,7 @@ public class QQSettingMsgHistoryActivity
   private View jdField_a_of_type_AndroidViewView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bbms jdField_a_of_type_Bbms;
+  bcpq jdField_a_of_type_Bcpq;
   private BounceScrollView jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView;
   boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int;
@@ -83,7 +83,7 @@ public class QQSettingMsgHistoryActivity
   private void a(long paramLong)
   {
     this.jdField_a_of_type_Long -= paramLong;
-    String str = akdc.a(this.jdField_a_of_type_Long);
+    String str = akro.a(this.jdField_a_of_type_Long);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
   }
   
@@ -108,7 +108,7 @@ public class QQSettingMsgHistoryActivity
     //   26: invokevirtual 128	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
     //   29: aload_1
     //   30: iconst_0
-    //   31: invokestatic 133	bfpr:a	(Lmqq/app/AppRuntime;Z)V
+    //   31: invokestatic 133	bgxy:a	(Lmqq/app/AppRuntime;Z)V
     //   34: aload_1
     //   35: invokestatic 136	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:c	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   38: aload_1
@@ -120,16 +120,16 @@ public class QQSettingMsgHistoryActivity
     //   50: invokestatic 145	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:c	()V
     //   53: aload_1
     //   54: invokestatic 147	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:b	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
-    //   57: invokestatic 151	badp:a	()V
-    //   60: invokestatic 154	aqyb:b	()V
-    //   63: aload_0
-    //   64: ifnull +12 -> 76
-    //   67: aload_0
-    //   68: aload_1
-    //   69: invokevirtual 157	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   72: invokestatic 162	bfhn:a	(Landroid/app/Activity;Ljava/lang/String;)Z
-    //   75: pop
-    //   76: invokestatic 165	com/tencent/mobileqq/ark/ArkAppCenter:b	()V
+    //   57: invokestatic 151	bbeu:a	()V
+    //   60: invokestatic 154	com/tencent/mobileqq/ark/ArkAppCenter:b	()V
+    //   63: invokestatic 157	artr:b	()V
+    //   66: aload_0
+    //   67: ifnull +12 -> 79
+    //   70: aload_0
+    //   71: aload_1
+    //   72: invokevirtual 160	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   75: invokestatic 165	bgpf:a	(Landroid/app/Activity;Ljava/lang/String;)Z
+    //   78: pop
     //   79: aload_1
     //   80: invokestatic 171	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:deleteAllH5Data	(Lcom/tencent/common/app/AppInterface;)V
     //   83: new 50	java/io/File
@@ -143,12 +143,12 @@ public class QQSettingMsgHistoryActivity
     //   102: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   105: aload_1
     //   106: invokevirtual 177	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   109: invokestatic 182	bach:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   109: invokestatic 182	bbdm:b	(Ljava/lang/String;)Ljava/lang/String;
     //   112: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   115: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   118: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
-    //   121: invokestatic 188	ew:a	(Ljava/io/File;)V
-    //   124: invokestatic 192	mol:b	()Ljava/lang/String;
+    //   121: invokestatic 188	gp:a	(Ljava/io/File;)V
+    //   124: invokestatic 192	mzk:b	()Ljava/lang/String;
     //   127: astore_0
     //   128: aload_0
     //   129: ifnull +14 -> 143
@@ -156,8 +156,8 @@ public class QQSettingMsgHistoryActivity
     //   135: dup
     //   136: aload_0
     //   137: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
-    //   140: invokestatic 188	ew:a	(Ljava/io/File;)V
-    //   143: invokestatic 194	mol:d	()Ljava/lang/String;
+    //   140: invokestatic 188	gp:a	(Ljava/io/File;)V
+    //   143: invokestatic 194	mzk:d	()Ljava/lang/String;
     //   146: astore_0
     //   147: aload_0
     //   148: ifnull +14 -> 162
@@ -165,8 +165,8 @@ public class QQSettingMsgHistoryActivity
     //   154: dup
     //   155: aload_0
     //   156: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
-    //   159: invokestatic 188	ew:a	(Ljava/io/File;)V
-    //   162: invokestatic 196	mol:a	()Ljava/lang/String;
+    //   159: invokestatic 188	gp:a	(Ljava/io/File;)V
+    //   162: invokestatic 196	mzk:a	()Ljava/lang/String;
     //   165: astore_0
     //   166: aload_0
     //   167: ifnull +14 -> 181
@@ -174,8 +174,8 @@ public class QQSettingMsgHistoryActivity
     //   173: dup
     //   174: aload_0
     //   175: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
-    //   178: invokestatic 188	ew:a	(Ljava/io/File;)V
-    //   181: invokestatic 197	mol:c	()Ljava/lang/String;
+    //   178: invokestatic 188	gp:a	(Ljava/io/File;)V
+    //   181: invokestatic 197	mzk:c	()Ljava/lang/String;
     //   184: astore_0
     //   185: aload_0
     //   186: ifnull +14 -> 200
@@ -183,7 +183,7 @@ public class QQSettingMsgHistoryActivity
     //   192: dup
     //   193: aload_0
     //   194: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
-    //   197: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   197: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   200: new 50	java/io/File
     //   203: dup
     //   204: new 31	java/lang/StringBuilder
@@ -196,21 +196,21 @@ public class QQSettingMsgHistoryActivity
     //   222: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   225: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   228: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
-    //   231: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   231: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   234: new 50	java/io/File
     //   237: dup
     //   238: invokestatic 210	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   241: invokevirtual 44	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
     //   244: ldc 212
     //   246: invokespecial 215	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   249: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   249: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   252: new 50	java/io/File
     //   255: dup
     //   256: invokestatic 210	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   259: invokevirtual 44	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
     //   262: ldc 217
     //   264: invokespecial 215	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   267: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   267: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   270: aload_1
     //   271: invokevirtual 116	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   274: ldc 219
@@ -231,26 +231,26 @@ public class QQSettingMsgHistoryActivity
     //   321: pop
     //   322: new 50	java/io/File
     //   325: dup
-    //   326: getstatic 245	ajed:cs	Ljava/lang/String;
+    //   326: getstatic 245	ajsf:ct	Ljava/lang/String;
     //   329: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
-    //   332: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   332: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   335: invokestatic 250	com/tencent/smtt/sdk/CacheManager:getCacheFileBaseDir	()Ljava/io/File;
     //   338: astore_0
     //   339: aload_0
     //   340: ifnull +7 -> 347
     //   343: aload_0
-    //   344: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   344: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   347: invokestatic 253	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	()V
     //   350: new 50	java/io/File
     //   353: dup
-    //   354: getstatic 256	ajed:cv	Ljava/lang/String;
+    //   354: getstatic 256	ajsf:cw	Ljava/lang/String;
     //   357: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
     //   360: astore_0
     //   361: aload_0
     //   362: invokevirtual 259	java/io/File:exists	()Z
     //   365: ifeq +7 -> 372
     //   368: aload_0
-    //   369: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   369: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   372: aload_0
     //   373: invokevirtual 259	java/io/File:exists	()Z
     //   376: ifne +8 -> 384
@@ -259,50 +259,50 @@ public class QQSettingMsgHistoryActivity
     //   383: pop
     //   384: new 50	java/io/File
     //   387: dup
-    //   388: getstatic 265	ajed:br	Ljava/lang/String;
+    //   388: getstatic 265	ajsf:bt	Ljava/lang/String;
     //   391: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
     //   394: astore_0
     //   395: aload_0
     //   396: invokevirtual 259	java/io/File:exists	()Z
     //   399: ifeq +7 -> 406
     //   402: aload_0
-    //   403: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   403: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   406: new 50	java/io/File
     //   409: dup
-    //   410: getstatic 268	ajed:bs	Ljava/lang/String;
+    //   410: getstatic 268	ajsf:bu	Ljava/lang/String;
     //   413: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
     //   416: astore_0
     //   417: aload_0
     //   418: invokevirtual 259	java/io/File:exists	()Z
     //   421: ifeq +7 -> 428
     //   424: aload_0
-    //   425: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   425: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   428: new 50	java/io/File
     //   431: dup
-    //   432: getstatic 271	ajed:cE	Ljava/lang/String;
+    //   432: getstatic 271	ajsf:cG	Ljava/lang/String;
     //   435: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
     //   438: astore_0
     //   439: aload_0
     //   440: invokevirtual 259	java/io/File:exists	()Z
     //   443: ifeq +7 -> 450
     //   446: aload_0
-    //   447: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   447: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   450: new 50	java/io/File
     //   453: dup
-    //   454: getstatic 274	ajed:cA	Ljava/lang/String;
+    //   454: getstatic 274	ajsf:cB	Ljava/lang/String;
     //   457: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
     //   460: astore_0
     //   461: aload_0
     //   462: invokevirtual 259	java/io/File:exists	()Z
     //   465: ifeq +7 -> 472
     //   468: aload_0
-    //   469: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   469: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   472: new 50	java/io/File
     //   475: dup
     //   476: new 31	java/lang/StringBuilder
     //   479: dup
     //   480: invokespecial 34	java/lang/StringBuilder:<init>	()V
-    //   483: getstatic 277	ajed:aU	Ljava/lang/String;
+    //   483: getstatic 277	ajsf:aW	Ljava/lang/String;
     //   486: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   489: ldc_w 279
     //   492: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -313,80 +313,80 @@ public class QQSettingMsgHistoryActivity
     //   503: invokevirtual 259	java/io/File:exists	()Z
     //   506: ifeq +7 -> 513
     //   509: aload_0
-    //   510: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   510: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   513: new 50	java/io/File
     //   516: dup
-    //   517: getstatic 282	ajed:bt	Ljava/lang/String;
+    //   517: getstatic 282	ajsf:bv	Ljava/lang/String;
     //   520: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
     //   523: astore_0
     //   524: aload_0
     //   525: invokevirtual 259	java/io/File:exists	()Z
     //   528: ifeq +7 -> 535
     //   531: aload_0
-    //   532: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   532: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   535: new 50	java/io/File
     //   538: dup
-    //   539: getstatic 285	ajed:bu	Ljava/lang/String;
+    //   539: getstatic 285	ajsf:bw	Ljava/lang/String;
     //   542: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
     //   545: astore_0
     //   546: aload_0
     //   547: invokevirtual 259	java/io/File:exists	()Z
     //   550: ifeq +7 -> 557
     //   553: aload_0
-    //   554: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   554: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   557: new 50	java/io/File
     //   560: dup
-    //   561: getstatic 288	ajed:bv	Ljava/lang/String;
+    //   561: getstatic 288	ajsf:bx	Ljava/lang/String;
     //   564: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
     //   567: astore_0
     //   568: aload_0
     //   569: invokevirtual 259	java/io/File:exists	()Z
     //   572: ifeq +7 -> 579
     //   575: aload_0
-    //   576: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   576: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   579: new 50	java/io/File
     //   582: dup
-    //   583: getstatic 291	ajed:bw	Ljava/lang/String;
+    //   583: getstatic 291	ajsf:by	Ljava/lang/String;
     //   586: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
     //   589: astore_0
     //   590: aload_0
     //   591: invokevirtual 259	java/io/File:exists	()Z
     //   594: ifeq +7 -> 601
     //   597: aload_0
-    //   598: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   598: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   601: new 50	java/io/File
     //   604: dup
-    //   605: getstatic 294	ajed:bx	Ljava/lang/String;
+    //   605: getstatic 294	ajsf:bz	Ljava/lang/String;
     //   608: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
     //   611: astore_0
     //   612: aload_0
     //   613: invokevirtual 259	java/io/File:exists	()Z
     //   616: ifeq +7 -> 623
     //   619: aload_0
-    //   620: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   620: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   623: new 50	java/io/File
     //   626: dup
-    //   627: getstatic 297	ajed:by	Ljava/lang/String;
+    //   627: getstatic 297	ajsf:bA	Ljava/lang/String;
     //   630: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
     //   633: astore_0
     //   634: aload_0
     //   635: invokevirtual 259	java/io/File:exists	()Z
     //   638: ifeq +7 -> 645
     //   641: aload_0
-    //   642: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   642: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   645: new 50	java/io/File
     //   648: dup
-    //   649: getstatic 300	ajed:cO	Ljava/lang/String;
+    //   649: getstatic 300	ajsf:cQ	Ljava/lang/String;
     //   652: invokespecial 183	java/io/File:<init>	(Ljava/lang/String;)V
     //   655: astore_0
     //   656: aload_0
     //   657: invokevirtual 259	java/io/File:exists	()Z
     //   660: ifeq +7 -> 667
     //   663: aload_0
-    //   664: invokestatic 188	ew:a	(Ljava/io/File;)V
+    //   664: invokestatic 188	gp:a	(Ljava/io/File;)V
     //   667: invokestatic 305	com/tencent/mobileqq/vas/VasQuickUpdateManager:cleanCache	()V
-    //   670: invokestatic 308	bjiq:b	()V
-    //   673: invokestatic 312	aemi:f	()V
+    //   670: invokestatic 308	bkzb:b	()V
+    //   673: invokestatic 312	aexd:f	()V
     //   676: return
     //   677: astore_0
     //   678: invokestatic 317	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -413,9 +413,9 @@ public class QQSettingMsgHistoryActivity
     //   9	17	2	localIntent	Intent
     // Exception table:
     //   from	to	target	type
-    //   0	63	677	java/lang/Exception
-    //   67	76	677	java/lang/Exception
-    //   76	128	677	java/lang/Exception
+    //   0	66	677	java/lang/Exception
+    //   70	79	677	java/lang/Exception
+    //   79	128	677	java/lang/Exception
     //   132	143	677	java/lang/Exception
     //   143	147	677	java/lang/Exception
     //   151	162	677	java/lang/Exception
@@ -449,7 +449,7 @@ public class QQSettingMsgHistoryActivity
       return;
     }
     BaseApplication.getContext().getPackageName();
-    a(azzz.a(BaseApplication.getContext()) + "thumbnails/");
+    a(bbbd.a(BaseApplication.getContext()) + "thumbnails/");
   }
   
   private static void a(String paramString)
@@ -473,22 +473,22 @@ public class QQSettingMsgHistoryActivity
   public static void a(String paramString, boolean paramBoolean)
   {
     int j = 0;
-    while (j < ajfi.jdField_a_of_type_JavaUtilVector.size())
+    while (j < ajtk.jdField_a_of_type_JavaUtilVector.size())
     {
-      a(ajfi.jdField_a_of_type_JavaLangString + ((Integer)ajfi.jdField_a_of_type_JavaUtilVector.get(j)).intValue() + "/");
+      a(ajtk.jdField_a_of_type_JavaLangString + ((Integer)ajtk.jdField_a_of_type_JavaUtilVector.get(j)).intValue() + "/");
       j += 1;
     }
-    a(ajfi.jdField_a_of_type_JavaLangString + "background" + "/");
-    a(ajed.aU + "temp" + "/");
-    a(ajfi.jdField_a_of_type_JavaLangString + "temp" + "/");
-    a(ajfi.jdField_a_of_type_JavaLangString + "HDAvatar" + "/");
-    a(ajed.cm);
-    a(ajfi.jdField_a_of_type_JavaLangString + "voice" + "/");
-    a(yfa.a() + "/");
-    a(ajed.cx);
-    a(aqes.jdField_a_of_type_JavaLangString);
-    a(aqgq.jdField_a_of_type_JavaLangString);
-    a(avhd.jdField_a_of_type_JavaLangString);
+    a(ajtk.jdField_a_of_type_JavaLangString + "background" + "/");
+    a(ajsf.aW + "temp" + "/");
+    a(ajtk.jdField_a_of_type_JavaLangString + "temp" + "/");
+    a(ajtk.jdField_a_of_type_JavaLangString + "HDAvatar" + "/");
+    a(ajsf.cn);
+    a(ajtk.jdField_a_of_type_JavaLangString + "voice" + "/");
+    a(yoe.a() + "/");
+    a(ajsf.cy);
+    a(aqyu.jdField_a_of_type_JavaLangString);
+    a(aras.jdField_a_of_type_JavaLangString);
+    a(awgw.a());
   }
   
   private void b(int paramInt)
@@ -521,8 +521,8 @@ public class QQSettingMsgHistoryActivity
     if (n < 1) {}
     for (localObject = "<1%";; localObject = n + "%")
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(getString(2131632967), new Object[] { localObject }));
-      localObject = akdc.a(paramLong1);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(getString(2131698703), new Object[] { localObject }));
+      localObject = akro.a(paramLong1);
       this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       this.jdField_a_of_type_Long = paramLong1;
       QLog.d("QQSettingMsgHistoryActivity", 1, "showSpaceInfo qqSpaceLength: " + j + " phoneSpaceLength: " + k + " avaliableSpaceLength: " + m);
@@ -532,9 +532,9 @@ public class QQSettingMsgHistoryActivity
   
   private static void b(QQAppInterface paramQQAppInterface)
   {
-    if (axwd.a != null)
+    if (aywk.a != null)
     {
-      a(axwd.a.getAbsolutePath());
+      a(aywk.a.getAbsolutePath());
       if ((paramQQAppInterface.getApp() instanceof BaseApplicationImpl))
       {
         BaseApplicationImpl.getApplication();
@@ -549,26 +549,26 @@ public class QQSettingMsgHistoryActivity
   
   static void c()
   {
-    a(ajed.aU + "photo/");
+    a(ajsf.aW + "photo/");
   }
   
   private static void c(QQAppInterface paramQQAppInterface)
   {
     paramQQAppInterface = paramQQAppInterface.getManager(10);
     if (paramQQAppInterface == null) {}
-    while (!(paramQQAppInterface instanceof awcz)) {
+    while (!(paramQQAppInterface instanceof axch)) {
       return;
     }
-    ((awcz)paramQQAppInterface).a = null;
+    ((axch)paramQQAppInterface).a = null;
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131299303);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131304804);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131309842));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131299304));
-    this.jdField_c_of_type_JavaLangString = getResources().getString(2131625019);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364866);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131370466);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131375601));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364867));
+    this.jdField_c_of_type_JavaLangString = getResources().getString(2131690580);
   }
   
   private void e()
@@ -576,8 +576,8 @@ public class QQSettingMsgHistoryActivity
     if ((jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager != null) && (jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.a()))
     {
       b(jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.b, jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.a(), jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.b(), jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.c());
-      bheo.a(this);
-      if (befo.c()) {
+      bihe.a(this);
+      if (bfni.c()) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOverScrollMode(0);
       }
       return;
@@ -592,19 +592,19 @@ public class QQSettingMsgHistoryActivity
   
   private void f()
   {
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131298596);
-    this.jdField_d_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131307405);
-    this.e = this.jdField_c_of_type_AndroidViewView.findViewById(2131305745);
-    this.f = this.jdField_c_of_type_AndroidViewView.findViewById(2131305714);
-    this.g = this.jdField_c_of_type_AndroidViewView.findViewById(2131307152);
-    this.h = this.jdField_c_of_type_AndroidViewView.findViewById(2131305712);
-    this.i = this.jdField_c_of_type_AndroidViewView.findViewById(2131305710);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131307404));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131299069));
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131364154);
+    this.jdField_d_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131373116);
+    this.e = this.jdField_c_of_type_AndroidViewView.findViewById(2131371441);
+    this.f = this.jdField_c_of_type_AndroidViewView.findViewById(2131371410);
+    this.g = this.jdField_c_of_type_AndroidViewView.findViewById(2131372864);
+    this.h = this.jdField_c_of_type_AndroidViewView.findViewById(2131371408);
+    this.i = this.jdField_c_of_type_AndroidViewView.findViewById(2131371406);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131373115));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131364629));
     ((GradientDrawable)this.g.getBackground()).setColor(Color.parseColor("#00CAFC"));
     ((GradientDrawable)this.h.getBackground()).setColor(Color.parseColor("#FFCC00"));
     ((GradientDrawable)this.i.getBackground()).setColor(Color.parseColor("#EBEDF5"));
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131167163);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131298255);
     this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int / 8);
     this.jdField_c_of_type_Int = getResources().getDisplayMetrics().widthPixels;
     this.jdField_d_of_type_Int = (this.jdField_c_of_type_Int - this.jdField_a_of_type_Int * 2 - this.jdField_b_of_type_Int * 2);
@@ -624,10 +624,10 @@ public class QQSettingMsgHistoryActivity
     }
     if (j == 2)
     {
-      setTitle(2131653818);
+      setTitle(2131719702);
       return;
     }
-    setTitle(2131633640);
+    setTitle(2131699409);
   }
   
   public void a(int paramInt)
@@ -639,8 +639,8 @@ public class QQSettingMsgHistoryActivity
   {
     b(100);
     b(paramLong1, paramLong2, paramLong3, paramLong4);
-    bheo.a(this);
-    if (befo.c()) {
+    bihe.a(this);
+    if (bfni.c()) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOverScrollMode(0);
     }
   }
@@ -653,7 +653,7 @@ public class QQSettingMsgHistoryActivity
     b(0);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    if (befo.c()) {
+    if (bfni.c()) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOverScrollMode(2);
     }
   }
@@ -661,33 +661,33 @@ public class QQSettingMsgHistoryActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131495504);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)findViewById(2131309893));
-    setTitle(2131625924);
+    super.setContentView(2131561092);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)findViewById(2131375652));
+    setTitle(2131691500);
     d();
     f();
     e();
     this.jdField_b_of_type_JavaLangString = this.app.getCurrentAccountUin();
     setVolumeControlStream(3);
-    if (badf.a(this)) {
-      bajr.a(this.app, "Safe_SpaceClean", "SpaceClean_", "enter_MsgHistory_had_installed_secure", 0, 0, null);
+    if (bbek.a(this)) {
+      VipUtils.a(this.app, "Safe_SpaceClean", "SpaceClean_", "enter_MsgHistory_had_installed_secure", 0, 0, null);
     }
     for (;;)
     {
       g();
       return true;
-      bajr.a(this.app, "Safe_SpaceClean", "SpaceClean_", "enter_MsgHistory_had_not_intalled_secure", 0, 0, null);
+      VipUtils.a(this.app, "Safe_SpaceClean", "SpaceClean_", "enter_MsgHistory_had_not_intalled_secure", 0, 0, null);
     }
   }
   
   public void doOnDestroy()
   {
-    if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing())) {
+    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing())) {
       dismissDialog(1);
     }
     super.doOnDestroy();
     a();
-    vup.a(this);
+    whm.a(this);
   }
   
   public void doOnPostResume()
@@ -704,7 +704,7 @@ public class QQSettingMsgHistoryActivity
   public void doOnStart()
   {
     super.doOnStart();
-    ((baot)this.app.a(71)).a(new String[] { this.app.getCurrentAccountUin() }, new int[] { 42255 });
+    ((bbqp)this.app.a(71)).a(new String[] { this.app.getCurrentAccountUin() }, new int[] { 42255 });
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -734,7 +734,7 @@ public class QQSettingMsgHistoryActivity
   
   public String setLastActivityName()
   {
-    return getString(2131625153);
+    return getString(2131690714);
   }
 }
 

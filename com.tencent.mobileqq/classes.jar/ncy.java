@@ -1,37 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import com.tencent.mobileqq.data.LebaPluginInfo;
 
-class ncy
-  extends BroadcastReceiver
+public class ncy
+  extends Handler
 {
-  ncy(ncw paramncw) {}
+  public ncy(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a == 1)
+    StringBuilder localStringBuilder = new StringBuilder();
+    switch (paramMessage.what)
     {
-      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
-      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
-      this.a.a(null, 0, 13, i, paramIntent);
-    }
-    try
-    {
-      paramContext.unregisterReceiver(this.a.b);
-      label50:
-      this.a.b = null;
-      this.a.a = 0;
+    case -1: 
+    default: 
+      return;
+    case 0: 
+      this.a.a.jdField_a_of_type_Byte = 0;
+      LebaSearchPluginManagerActivity.a(this.a);
+      localStringBuilder.append(this.a.getString(2131696285));
+      localStringBuilder.append(this.a.getString(2131696283));
+      localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
+      bcpw.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
       return;
     }
-    catch (Exception paramContext)
-    {
-      break label50;
-    }
+    this.a.a.jdField_a_of_type_Byte = 1;
+    LebaSearchPluginManagerActivity.a(this.a);
+    localStringBuilder.append(this.a.getString(2131696285));
+    localStringBuilder.append(this.a.getString(2131696279));
+    localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
+    bcpw.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ncy
  * JD-Core Version:    0.7.0.1
  */

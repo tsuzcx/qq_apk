@@ -13,6 +13,7 @@ public class SubscribeDraftBean
   private int height;
   private String mCoverUrl;
   private String mDescribe;
+  private String mDescribeSource;
   private transient CertifiedAccountMeta.StFeed mDraftFeed;
   private long mDraftId;
   private int mDraftType = TYPE_VIDEO;
@@ -33,6 +34,11 @@ public class SubscribeDraftBean
   public String getDescirbe()
   {
     return this.mDescribe;
+  }
+  
+  public String getDescirbeSource()
+  {
+    return this.mDescribeSource;
   }
   
   public int getDrafTtype()
@@ -75,6 +81,11 @@ public class SubscribeDraftBean
   {
     this.mDescribe = paramString;
     return this;
+  }
+  
+  public void setDescribeSource(String paramString)
+  {
+    this.mDescribeSource = paramString;
   }
   
   public SubscribeDraftBean setDrafTtype(int paramInt)

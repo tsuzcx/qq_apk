@@ -8,7 +8,6 @@ class ARGLSurfaceView$13
   public void run()
   {
     this.this$0.native_onSensorChanged(this.val$x, this.val$y, this.val$z, this.val$timestamp, 1);
-    this.this$0.native_updateAccel(this.val$x, this.val$y, this.val$z);
   }
 }
 

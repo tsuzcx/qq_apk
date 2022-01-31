@@ -1,15 +1,8 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.graphics.Bitmap;
 
-class aczq
-  extends acjc
+public abstract interface aczq
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView b;
-  TextView c;
-  TextView d;
-  
-  aczq(aczo paramaczo) {}
+  public abstract Bitmap a();
 }
 
 

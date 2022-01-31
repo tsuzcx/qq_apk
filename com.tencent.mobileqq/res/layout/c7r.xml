@@ -2,12 +2,12 @@
 <com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout android:id="@id/ldr" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="horizontal" android:id="@id/m90" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/lo9" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.tencent.mobileqq.colornote.anim.MusicDanceImageView android:layout_gravity="center_vertical" android:id="@id/lo9" android:layout_width="wrap_content" android:layout_height="wrap_content" />
         <LinearLayout android:orientation="vertical" android:id="@id/m91" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/lo_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.tencent.mobileqq.colornote.anim.MusicDanceImageView android:layout_gravity="center_vertical" android:id="@id/lo_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </LinearLayout>
     <View android:id="@id/cgl" android:focusable="true" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_centerInParent="true" />
     <RelativeLayout android:id="@id/lfv" android:background="@drawable/hbj" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_centerInParent="true">
-        <View android:background="@drawable/au9" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" />
+        <View android:background="@drawable/cfw" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" />
     </RelativeLayout>
 </com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout>

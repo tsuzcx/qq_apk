@@ -2,41 +2,41 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.Iterator;
 import java.util.Set;
-import qhp;
-import qhq;
-import qhu;
-import qhw;
-import qiy;
+import qtu;
+import qtv;
+import qtz;
+import qub;
+import qvd;
 
 public class VideoPlayManager$1$4
   implements Runnable
 {
-  public VideoPlayManager$1$4(qhq paramqhq) {}
+  public VideoPlayManager$1$4(qtv paramqtv) {}
   
   public void run()
   {
-    qhp.a(this.a.a, qhp.a(this.a.a), qhp.a(this.a.a), 7, null);
-    if (qhp.a(this.a.a) != null)
+    qtu.a(this.a.a, qtu.a(this.a.a), qtu.a(this.a.a), 7, null);
+    if (qtu.a(this.a.a) != null)
     {
-      Iterator localIterator = qhp.a(this.a.a).iterator();
+      Iterator localIterator = qtu.a(this.a.a).iterator();
       while (localIterator.hasNext())
       {
-        qhu localqhu = (qhu)localIterator.next();
-        if (localqhu != null) {
-          localqhu.a(qhp.a(this.a.a), qhp.a(this.a.a).a());
+        qtz localqtz = (qtz)localIterator.next();
+        if (localqtz != null) {
+          localqtz.a(qtu.a(this.a.a), qtu.a(this.a.a).a());
         }
       }
     }
-    if (qhp.a(this.a.a) != null)
+    if (qtu.a(this.a.a) != null)
     {
-      qhp.a(this.a.a).e = -1;
-      qhp.a(this.a.a).d = 0L;
-      qhp.c(this.a.a, null);
+      qtu.a(this.a.a).e = -1;
+      qtu.a(this.a.a).d = 0L;
+      qtu.c(this.a.a, null);
     }
-    if (qhp.a(this.a.a) != null)
+    if (qtu.a(this.a.a) != null)
     {
-      qhp.a(this.a.a).m();
-      qhp.a(this.a.a, null);
+      qtu.a(this.a.a).m();
+      qtu.a(this.a.a, null);
     }
   }
 }

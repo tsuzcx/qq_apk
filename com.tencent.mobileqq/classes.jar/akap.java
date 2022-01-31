@@ -1,11 +1,8 @@
 public class akap
 {
-  public boolean a;
-  
-  public akap(akak paramakak)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public int a;
+  public long a;
+  public short a;
 }
 
 

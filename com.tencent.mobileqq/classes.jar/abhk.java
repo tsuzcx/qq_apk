@@ -1,13 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
-public class abhk
-  implements View.OnClickListener
+class abhk
+  implements aylk
 {
-  public abhk(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  abhk(abhj paramabhj, CompoundButton paramCompoundButton, boolean paramBoolean, int paramInt) {}
   
-  public void onClick(View paramView) {}
+  public void onCancel()
+  {
+    this.jdField_a_of_type_Abhj.a.a(this.jdField_a_of_type_AndroidWidgetCompoundButton, false);
+  }
+  
+  public void onConfirm()
+  {
+    this.jdField_a_of_type_Abhj.a.b();
+    GeneralSettingActivity.a(this.jdField_a_of_type_Abhj.a, this.jdField_a_of_type_AndroidWidgetCompoundButton, true, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+  }
 }
 
 

@@ -1,56 +1,44 @@
-import android.annotation.TargetApi;
-import android.os.SystemClock;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
-@TargetApi(14)
 public class sjo
-  extends vnh
+  implements bfzp
 {
-  private int jdField_a_of_type_Int = 941000;
-  private long jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-  private String jdField_a_of_type_JavaLangString;
-  private sjq jdField_a_of_type_Sjq;
-  private String b;
+  public sjo(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public sjo(String paramString1, String paramString2, sjq paramsjq)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Sjq = paramsjq;
+    sne.b("WSRecommendFragment", "endOfRefresh");
+    WSRecommendFragment.a(this.a).d();
   }
   
-  public void a(int paramInt)
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    sne.b("WSRecommendFragment", "startLoadMore");
+    WSRecommendFragment.a(this.a).a(false, false, "");
   }
   
-  public void onFailure(String paramString)
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
   {
-    if (paramString.equals(String.valueOf(941001))) {
-      this.jdField_a_of_type_Sjq.a(941001, paramString, "");
+    sne.b("WSRecommendFragment", "startTopRefresh");
+    if (WSRecommendFragment.a(this.a)) {
+      WSRecommendFragment.a(this.a, false);
     }
-    for (;;)
+    do
     {
-      urk.d(sjj.jdField_a_of_type_JavaLangString, "combine audio fail %s, %d", new Object[] { paramString, Integer.valueOf(this.jdField_a_of_type_Int) });
-      vlm.g(this.jdField_a_of_type_JavaLangString);
       return;
-      if (paramString.equals(String.valueOf(941002))) {
-        this.jdField_a_of_type_Sjq.a(941002, paramString, "");
-      } else {
-        this.jdField_a_of_type_Sjq.a(this.jdField_a_of_type_Int, paramString, "");
+      if (!WSRecommendFragment.b(this.a)) {
+        WSRecommendFragment.b(this.a, true);
       }
-    }
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    urk.a(sjj.jdField_a_of_type_JavaLangString, "combine music success take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_Sjq.a(0, "", this.b);
-    vlm.g(this.jdField_a_of_type_JavaLangString);
+      WSRecommendFragment.a(this.a, System.currentTimeMillis());
+      WSRecommendFragment.a(this.a).a(true, false, "");
+    } while (WSRecommendFragment.c(this.a));
+    WSRecommendFragment.a(this.a).a("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sjo
  * JD-Core Version:    0.7.0.1
  */

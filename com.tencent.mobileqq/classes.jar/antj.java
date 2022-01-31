@@ -1,22 +1,24 @@
-import android.graphics.drawable.Drawable;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
-public abstract interface antj
+class antj
+  extends DataSetObserver
 {
-  public abstract void setLastUpdatedLabel(CharSequence paramCharSequence);
+  antj(anti paramanti, DragSortListView paramDragSortListView) {}
   
-  public abstract void setLoadingDrawable(Drawable paramDrawable);
+  public void onChanged()
+  {
+    this.jdField_a_of_type_Anti.notifyDataSetChanged();
+  }
   
-  public abstract void setPullLabel(CharSequence paramCharSequence);
-  
-  public abstract void setRefreshResultLabel(CharSequence paramCharSequence);
-  
-  public abstract void setRefreshingLabel(CharSequence paramCharSequence);
-  
-  public abstract void setReleaseLabel(CharSequence paramCharSequence);
+  public void onInvalidated()
+  {
+    this.jdField_a_of_type_Anti.notifyDataSetInvalidated();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     antj
  * JD-Core Version:    0.7.0.1
  */

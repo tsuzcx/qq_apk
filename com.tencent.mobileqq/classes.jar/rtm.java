@@ -1,14 +1,6 @@
-import org.json.JSONObject;
-
-class rtm
-  implements rlp
+public abstract interface rtm
 {
-  rtm(rsv paramrsv) {}
-  
-  public void a(String paramString, JSONObject paramJSONObject)
-  {
-    this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -1,33 +1,32 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class abyx
-  implements View.OnClickListener
+  extends MqqHandler
 {
-  public abyx(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public abyx(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a.d == 15) && (TroopMemberListActivity.a(this.a).size() > 0))
+    switch (paramMessage.what)
     {
-      paramView = new Intent();
-      paramView.putExtra("param_deleted_uins", TroopMemberListActivity.a(this.a));
-      this.a.setResult(-1, paramView);
-      if ((this.a.e == null) || (!this.a.e.equals(this.a.app.getCurrentAccountUin()))) {
-        break label159;
-      }
     }
-    label159:
-    for (int i = 0;; i = 1)
+    do
     {
-      awqx.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.b, "" + i, "1", TroopMemberListActivity.a(this.a).toString());
+      return;
       this.a.finish();
       return;
-    }
+      paramMessage = (String)paramMessage.obj;
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        RegisterPhoneNumActivity.a(this.a).a(paramMessage);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
   }
 }
 

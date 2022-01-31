@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import nny;
-import noy;
-import qoe;
+import nzj;
+import oaj;
+import rap;
 
 public class ReadInJoyBaseAdapter$21
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$21(qoe paramqoe) {}
+  public ReadInJoyBaseAdapter$21(rap paramrap) {}
   
   public void run()
   {
-    if ((((nny)qoe.a().getManager(307)).a(this.this$0, this.this$0.a)) && (qoe.a(this.this$0) != null)) {
-      qoe.a(this.this$0).a(this.this$0, this.this$0.a);
+    if ((((nzj)rap.a().getManager(307)).a(this.this$0, this.this$0.a)) && (rap.a(this.this$0) != null)) {
+      rap.a(this.this$0).a(this.this$0, this.this$0.a);
     }
   }
 }

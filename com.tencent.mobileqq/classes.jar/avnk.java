@@ -1,162 +1,156 @@
-import android.content.Context;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
-import java.util.List;
+import com.tencent.mobileqq.data.Friends;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class avnk
-  extends avpv
 {
-  public long a;
-  String a;
-  public List<avon> a;
-  public boolean a;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  public List<String> b;
-  public boolean b;
-  String c;
-  public boolean c;
-  public String d;
-  public String e;
-  private String f;
+  private static final Pattern a = Pattern.compile("@?\\{uin:\\d+,nick(name)?:.*?\\}");
   
-  public avnk() {}
-  
-  public avnk(String paramString1, long paramLong1, String paramString2, List<avon> paramList, long paramLong2, String paramString3, String paramString4, List<String> paramList1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString5, String paramString6)
+  public static newest_feeds_req a(int paramInt, long paramLong1, ArrayList<Long> paramArrayList, long paramLong2, String paramString)
   {
-    this.f = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_JavaLangString = paramString3;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "GroupBaseNetSearchModel ,moreUrl = " + paramString3);
-    }
-    this.jdField_c_of_type_JavaLangString = paramString4;
-    this.jdField_b_of_type_JavaUtilList = paramList1;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
-    this.e = paramString6;
-    this.d = paramString5;
+    return new newest_feeds_req(paramInt, paramLong1, paramArrayList, paramLong2, paramString, bgxr.a(), null);
   }
   
-  public int a()
+  public static newest_feeds_req a(Intent paramIntent)
   {
-    return 1;
+    if (paramIntent == null) {
+      return new newest_feeds_req();
+    }
+    paramIntent = paramIntent.getSerializableExtra("req");
+    if ((paramIntent != null) && ((paramIntent instanceof newest_feeds_req))) {
+      return (newest_feeds_req)paramIntent;
+    }
+    return new newest_feeds_req();
   }
   
-  public String a()
+  public static Intent a(Intent paramIntent, newest_feeds_req paramnewest_feeds_req)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return "";
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
     }
-    return this.jdField_a_of_type_JavaLangString;
+    localIntent.putExtra("req", paramnewest_feeds_req);
+    return localIntent;
   }
   
-  public List<avon> a()
+  public static String a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "getResultList." + this.jdField_a_of_type_JavaUtilList);
-    }
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "onMoreAction. searchKey=" + this.f + " groupName=" + this.jdField_a_of_type_JavaLangString + " groupMask=" + this.jdField_a_of_type_Long);
-    }
-    if (this.jdField_a_of_type_Long == 1002L) {
-      avwa.a(this.jdField_a_of_type_JavaUtilList, this.f);
-    }
-    if (this.jdField_a_of_type_Long == 1701L)
-    {
-      localObject = avwf.a("pages/search-results/search-results?mode=search&q=" + this.f);
-      localObject = avwf.a("https://m.q.qq.com/a/p/1108291530?via=2005_2&referer=2005&s=" + (String)localObject);
-      localObject = "mqqapi://microapp/open?url=" + (String)localObject;
-      MiniAppLauncher.startMiniApp(paramView.getContext(), (String)localObject, 2005, null);
-    }
+    if ("".equals(paramString)) {}
+    int j;
+    int i;
     do
     {
-      return;
-      ActiveEntitySearchActivity.jdField_b_of_type_Boolean = true;
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        break;
+      return null;
+      int k = paramString.indexOf("uin:");
+      j = paramString.indexOf(",");
+      i = 0;
+      if (k != -1) {
+        i = k + 4;
       }
-      localObject = bade.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), this.jdField_b_of_type_JavaLangString);
-      if (localObject != null)
-      {
-        ((bacn)localObject).c();
-        return;
-      }
-    } while ((!this.jdField_b_of_type_JavaLangString.startsWith("http://")) && (!this.jdField_b_of_type_JavaLangString.startsWith("https://")));
-    long l1 = Double.valueOf(NetSearchEngine.a * 1000000.0D).longValue();
-    long l2 = Double.valueOf(NetSearchEngine.b * 1000000.0D).longValue();
-    Object localObject = this.jdField_b_of_type_JavaLangString + "&keyword=" + URLEncoder.encode(this.f) + "&gpstype=1&lon=" + Long.valueOf(l2) + "&lat=" + Long.valueOf(l1);
-    if (QLog.isColorLevel()) {}
-    try
-    {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "onMoreAction,moreUrl = " + this.jdField_b_of_type_JavaLangString + ",dstUrl = " + aqca.a((String)localObject));
-      paramView = paramView.getContext();
-      Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-      localIntent.putExtra("url", (String)localObject);
-      paramView.startActivity(localIntent);
-      return;
+    } while ((i == 0) || (j == -1));
+    return paramString.substring(i, j);
+  }
+  
+  public static String a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {
+      localObject = null;
     }
-    catch (XorCipherException localXorCipherException)
+    Matcher localMatcher;
+    do
     {
+      return localObject;
+      localMatcher = a.matcher(paramString);
+      localObject = paramString;
+    } while (!localMatcher.find());
+    String str2 = localMatcher.group();
+    String str3 = a(str2);
+    String str1 = "";
+    Object localObject = str1;
+    if (!TextUtils.isEmpty(str3))
+    {
+      ajxn localajxn = (ajxn)paramQQAppInterface.getManager(51);
+      localObject = str1;
+      if (localajxn != null)
+      {
+        localObject = localajxn.e(str3);
+        if (localObject == null) {
+          break label153;
+        }
+      }
+    }
+    label151:
+    label153:
+    for (localObject = ((Friends)localObject).getFriendNickWithAlias();; localObject = "")
+    {
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        localObject = b(str2);
+      }
       for (;;)
       {
-        localXorCipherException.printStackTrace();
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label151;
+        }
+        paramString = paramString.replace(str2, "@" + (String)localObject + " ");
+        break;
+      }
+      break;
+    }
+  }
+  
+  public static ArrayList<Long> a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = (ajxn)paramQQAppInterface.getManager(51);
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    Object localObject = paramQQAppInterface.d();
+    if (localObject != null)
+    {
+      paramQQAppInterface = new ArrayList(((ArrayList)localObject).size());
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Friends localFriends = (Friends)((Iterator)localObject).next();
+        if ((localFriends != null) && (Friends.isValidUin(localFriends.uin))) {
+          paramQQAppInterface.add(Long.valueOf(Long.parseLong(localFriends.uin)));
+        }
       }
     }
-    ActiveEntitySearchActivity.a(paramView.getContext(), this.f, this.jdField_a_of_type_JavaLangString, new long[] { this.jdField_a_of_type_Long });
-  }
-  
-  public int b()
-  {
-    return (int)this.jdField_a_of_type_Long;
-  }
-  
-  public String b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "getKeyword." + this.f);
+    for (;;)
+    {
+      return paramQQAppInterface;
+      paramQQAppInterface = null;
     }
-    return this.f;
   }
   
-  public String c()
+  public static String b(String paramString)
   {
-    if (this.jdField_c_of_type_JavaLangString == null) {
-      return ajjy.a(2131639552);
-    }
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public String d()
-  {
-    if (this.jdField_b_of_type_JavaLangString == null) {
-      return "";
-    }
-    return this.jdField_b_of_type_JavaLangString;
+    if (TextUtils.isEmpty(paramString)) {}
+    int j;
+    int i;
+    do
+    {
+      return null;
+      int k = paramString.indexOf(",nick:");
+      j = paramString.indexOf("}");
+      i = 0;
+      if (k != -1) {
+        i = k + 6;
+      }
+    } while ((j == -1) || (i == 0));
+    return paramString.substring(i, j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avnk
  * JD-Core Version:    0.7.0.1
  */

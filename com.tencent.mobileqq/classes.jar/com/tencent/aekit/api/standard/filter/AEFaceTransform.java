@@ -30,7 +30,6 @@ public class AEFaceTransform
 {
   private AIAttr aiAttr;
   private VideoFilterBase fillFilter = new VideoFilterBase(BaseFilter.getFragmentShader(0));
-  private boolean isApplied;
   private final HashSet<BeautyRealConfig.TYPE> jsonType = new HashSet(Arrays.asList(new BeautyRealConfig.TYPE[] { BeautyRealConfig.TYPE.BASIC4, BeautyRealConfig.TYPE.BASIC3, BeautyRealConfig.TYPE.FACE_SHORTEN, BeautyRealConfig.TYPE.NOSE }));
   private List<List<PointF>> mAllFacePoints = null;
   private BeautyParam mBeautyParam = new BeautyParam(BeautyParam.MeshType.PITU, true);
@@ -66,12 +65,12 @@ public class AEFaceTransform
   
   public void apply()
   {
-    if (!this.isApplied)
+    if (!this.mIsApplied)
     {
       this.mBeautyTransformList.initial();
       this.fillFilter.ApplyGLSLFilter();
       this.mRemodelFilter.init();
-      this.isApplied = true;
+      this.mIsApplied = true;
     }
   }
   
@@ -92,7 +91,7 @@ public class AEFaceTransform
       this.mTextureTmp = null;
     }
     this.mHairMaskFrame.clear();
-    this.isApplied = false;
+    this.mIsApplied = false;
   }
   
   public void closeAIBeautyConfig()
@@ -102,7 +101,7 @@ public class AEFaceTransform
   
   public boolean isValid()
   {
-    return this.isApplied;
+    return this.mIsApplied;
   }
   
   public String printParamInfo()
@@ -112,12 +111,12 @@ public class AEFaceTransform
   
   public Frame render(Frame paramFrame)
   {
-    if ((this.mBeautyTransformList != null) && (this.isApplied == true)) {
+    if ((this.mBeautyTransformList != null) && (this.mIsApplied)) {
       paramFrame = this.mBeautyTransformList.process(paramFrame, this.mAllFacePoints, this.mStatusList, this.mFaceScale, this.mFacesAngles, this.mPhoneRotate, this.mIsAgeDetectOn);
     }
     for (;;)
     {
-      if ((this.mRemodelFilter != null) && (this.isApplied == true)) {
+      if ((this.mRemodelFilter != null) && (this.mIsApplied)) {
         paramFrame = this.mRemodelFilter.process(paramFrame, this.mAllFacePoints, this.mStatusList, this.mFacesAngles, this.mFaceScale, this.mIsAgeDetectOn);
       }
       for (;;)
@@ -137,10 +136,10 @@ public class AEFaceTransform
           {
             GlUtil.loadTexture(this.mTextureTmp[0], localBitmap);
             this.fillFilter.RenderProcess(this.mTextureTmp[0], localBitmap.getWidth(), localBitmap.getWidth() * paramFrame.height / paramFrame.width, -1, 0.0D, this.mHairMaskFrame);
-            if ((this.mBeautyTransformList != null) && (this.isApplied == true)) {
+            if ((this.mBeautyTransformList != null) && (this.mIsApplied)) {
               this.mHairMaskFrame = this.mBeautyTransformList.process(this.mHairMaskFrame, this.mAllFacePoints, this.mStatusList, this.mFaceScale * paramFrame.width / localBitmap.getWidth(), this.mFacesAngles, this.mPhoneRotate, this.mIsAgeDetectOn);
             }
-            if ((this.mRemodelFilter != null) && (this.isApplied == true)) {
+            if ((this.mRemodelFilter != null) && (this.mIsApplied)) {
               this.mHairMaskFrame = this.mRemodelFilter.process(this.mHairMaskFrame, this.mAllFacePoints, this.mStatusList, this.mFacesAngles, this.mFaceScale * paramFrame.width / localBitmap.getWidth(), this.mIsAgeDetectOn);
             }
             this.mHairAttr.setMaskFrame(this.mHairMaskFrame);

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.mainpage;
 
-import ajjy;
-import amda;
-import bbmy;
+import ajyc;
+import amtc;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class MainPageFragment$3$1
@@ -17,12 +17,12 @@ class MainPageFragment$3$1
       this.this$1.val$miniAppInfo.topType = 0;
       MainPageFragment.access$500(this.this$1.this$0, this.this$1.val$miniAppInfo);
     }
-    if (amda.g())
+    if (amtc.g())
     {
-      bbmy.a(BaseApplicationImpl.getApplication(), ajjy.a(2131640645) + amda.c() + ajjy.a(2131640641), 0).a();
+      bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131706430) + amtc.c() + ajyc.a(2131706426), 0).a();
       return;
     }
-    bbmy.a(BaseApplicationImpl.getApplication(), ajjy.a(2131628633), 0).a();
+    bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131694283), 0).a();
   }
 }
 

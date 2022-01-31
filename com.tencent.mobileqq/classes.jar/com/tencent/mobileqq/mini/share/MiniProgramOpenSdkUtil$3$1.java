@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.mini.share;
 
 import android.os.Bundle;
-import android.os.Handler;
-import apmt;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import aqgh;
 import com.tencent.mobileqq.mini.launch.CmdCallback.Stub;
 import com.tencent.mobileqq.mini.share.opensdk.OpenSdkShareModel;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +15,7 @@ class MiniProgramOpenSdkUtil$3$1
   public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
   {
     QLog.d("MiniProgramOpenSdkUtil", 2, "onCmdResult() called with: succ = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
-    apmt.a("KEY_STAGE_1_UPLOAD_IMAGE", paramBoolean);
+    aqgh.a("KEY_STAGE_1_UPLOAD_IMAGE", paramBoolean);
     if ((paramBoolean) && (paramBundle != null))
     {
       paramBundle = paramBundle.getString("imageUrl", "").replaceFirst("https*://", "");
@@ -27,8 +25,11 @@ class MiniProgramOpenSdkUtil$3$1
       MiniProgramOpenSdkUtil.access$300(this.this$0.val$context, this.this$0.val$intent, this.this$0.val$finalNotEmptyPicUri, this.val$arkShareJson, this.val$openSdkShareModel);
       return;
     }
-    ThreadManagerV2.getUIHandlerV2().post(new MiniProgramOpenSdkUtil.3.1.1(this));
-    MiniProgramOpenSdkUtil.access$100(this.this$0.val$context);
+    MiniProgramOpenSdkUtil.access$200(this.val$arkShareJson, "");
+    this.val$openSdkShareModel.imageUrl = "";
+    this.val$openSdkShareModel.jsonStr = this.val$arkShareJson.toString();
+    MiniProgramOpenSdkUtil.access$300(this.this$0.val$context, this.this$0.val$intent, "", this.val$arkShareJson, this.val$openSdkShareModel);
+    QLog.e("MiniProgramOpenSdkUtil", 1, "performUploadArkShareImage failed, NotEmptyPicUri = " + this.this$0.val$finalNotEmptyPicUri);
   }
 }
 

@@ -1,27 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import cooperation.liveroom.LiveRoomProxyActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
-class own
-  implements View.OnClickListener
+public class own
+  implements Animation.AnimationListener
 {
-  own(owl paramowl, int paramInt, qoe paramqoe, opw paramopw) {}
+  public own(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_Int == 120) {
-      LiveRoomProxyActivity.open(this.jdField_a_of_type_Qoe.a(), this.jdField_a_of_type_Opw.a().mSocialFeedInfo.a.c, "kandian feed click");
-    }
-    qpj localqpj;
-    do
-    {
-      return;
-      localqpj = this.jdField_a_of_type_Qoe.a();
-    } while (localqpj == null);
-    localqpj.a(paramView, this.jdField_a_of_type_Opw.a(), 2);
+    ReadInjoyIMAXAdFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

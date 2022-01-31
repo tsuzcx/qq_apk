@@ -1,18 +1,30 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIPosters;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.POIPosterData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
 
 public class tom
-  implements tgk
+  extends syq
 {
-  public tom(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public final ArrayList<teh> a = new ArrayList();
   
-  public void a()
+  public tom(qqstory_service.RspGetPOIPosters paramRspGetPOIPosters)
   {
-    urk.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoaded");
+    a(paramRspGetPOIPosters);
   }
   
-  public void b()
+  private void a(qqstory_service.RspGetPOIPosters paramRspGetPOIPosters)
   {
-    urk.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoadedFailed");
+    int i = 0;
+    while (i < paramRspGetPOIPosters.poi_posters.size())
+    {
+      Object localObject = (qqstory_struct.POIPosterData)paramRspGetPOIPosters.poi_posters.get(i);
+      localObject = new teh(((qqstory_struct.POIPosterData)localObject).poster_name.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).name.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).thumb_url.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).poster_url.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).poster_json_layout_desc.get().toStringUtf8());
+      this.a.add(localObject);
+      i += 1;
+    }
   }
 }
 

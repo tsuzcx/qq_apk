@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.mini.servlet;
 
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import amtc;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.text.TextUtils;
-import bakc;
+import bblm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -136,7 +137,7 @@ public class MiniAppAbstractServlet
           continue;
         }
         localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bakc.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bblm.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         localBundle.putLong("retCode", localStQWebRsp.retCode.get());
         localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
@@ -178,6 +179,7 @@ public class MiniAppAbstractServlet
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     Object localObject = null;
+    paramPacket.setTimeout(amtc.a("MiniAppMsfTimeoutValue", 8000));
     if (paramPacket != null) {}
     for (paramPacket = paramPacket.toMsg();; paramPacket = null)
     {
@@ -190,7 +192,7 @@ public class MiniAppAbstractServlet
         this.page = paramIntent.getStringExtra("key_page");
         paramIntent.putExtra("key_sso_cmd_start_time_millis", System.currentTimeMillis());
         if ((!TextUtils.isEmpty(str2)) && (!"0000000000".equals(str2))) {
-          break label160;
+          break label174;
         }
         this.miniAppConfig = MiniProgramReportHelper.miniAppConfigForPreload();
       }
@@ -207,7 +209,7 @@ public class MiniAppAbstractServlet
           QLog.i("miniapp-cmd", 1, "send request cmd=" + str1 + " traceId=" + paramPacket);
         }
         return;
-        label160:
+        label174:
         MiniAppInfo localMiniAppInfo = new MiniAppInfo();
         localMiniAppInfo.appId = str2;
         this.miniAppConfig = new MiniAppConfig(localMiniAppInfo);

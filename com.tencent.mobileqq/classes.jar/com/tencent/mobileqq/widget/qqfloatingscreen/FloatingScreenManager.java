@@ -5,13 +5,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.View;
-import bbqn;
-import bbqp;
-import bbqq;
-import bbqs;
-import bbqt;
-import bbqz;
+import bcpw;
+import bctm;
+import bctn;
+import bcto;
+import bctp;
+import bctr;
+import bcts;
+import bcty;
+import bcua;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
 import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IFullScreenEnterListener;
 import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
 import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
@@ -25,7 +29,7 @@ public class FloatingScreenManager
   public static final String QQFS_SP_NAME = "qqfs_floating_sp";
   private static final String TAG = "FloatingScreenManager";
   private static FloatingScreenManager mFloatingManager;
-  private bbqz mWrapperFactory = new bbqz();
+  private bcua mWrapperFactory = new bcua();
   
   public static FloatingScreenManager getInstance()
   {
@@ -62,7 +66,7 @@ public class FloatingScreenManager
       return i;
       try
       {
-        bbqn.b(paramInt);
+        bctm.b(paramInt);
         if (!FloatingScreenPermission.checkPermission(paramContext)) {
           continue;
         }
@@ -70,6 +74,7 @@ public class FloatingScreenManager
           QLog.d("FloatingScreenManager", 2, new Object[] { "enterFloatingScree:", paramView.toString() });
         }
         sendWindowClosedBroadcastWithId(paramContext, paramInt);
+        bctn.a(BaseApplicationImpl.getContext(), 50, 2);
         FloatingScreenParams localFloatingScreenParams = paramFloatingScreenParams;
         if (paramFloatingScreenParams == null) {
           localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setShapeType(2).build();
@@ -93,7 +98,7 @@ public class FloatingScreenManager
         if (j != 0) {
           continue;
         }
-        bbqn.a(paramInt);
+        bctm.a(paramInt);
         i = j;
       }
       finally {}
@@ -127,8 +132,8 @@ public class FloatingScreenManager
           i = 3;
           continue;
         }
-        if ((paramContext instanceof bbqt)) {
-          ((bbqt)paramContext).a(localFloatingScreenParams);
+        if ((paramContext instanceof bcts)) {
+          ((bcts)paramContext).a(localFloatingScreenParams);
         }
         i = paramContext.a(localFloatingScreenParams, paramView);
       }
@@ -136,19 +141,61 @@ public class FloatingScreenManager
     }
   }
   
+  public int enterWatchTogetherFloatingScreen(Context paramContext, WatchTogetherFloatingView paramWatchTogetherFloatingView, FloatingScreenParams paramFloatingScreenParams)
+  {
+    int i = 1;
+    if ((paramContext == null) || (paramWatchTogetherFloatingView == null)) {
+      i = 2;
+    }
+    for (;;)
+    {
+      return i;
+      try
+      {
+        if (!FloatingScreenPermission.checkPermission(paramContext)) {
+          continue;
+        }
+        if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool"))
+        {
+          bcpw.a(paramContext, 2131699584, 0).a();
+          i = -1;
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("FloatingScreenManager", 2, new Object[] { "enterLocationFloatingScreen:", paramWatchTogetherFloatingView.toString() });
+        }
+        FloatingScreenParams localFloatingScreenParams = paramFloatingScreenParams;
+        if (paramFloatingScreenParams == null) {
+          localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setShapeType(1).build();
+        }
+        paramContext = this.mWrapperFactory.a(paramContext, 2);
+        if (paramContext == null)
+        {
+          i = 3;
+          continue;
+        }
+        if ((paramContext instanceof bcty)) {
+          ((bcty)paramContext).a(localFloatingScreenParams);
+        }
+        i = paramContext.a(localFloatingScreenParams, paramWatchTogetherFloatingView);
+      }
+      finally {}
+    }
+  }
+  
   public void quitFloatingScreen()
   {
-    bbqs localbbqs = this.mWrapperFactory.a(null, 0);
-    if (localbbqs != null) {
-      localbbqs.a(4);
+    bctr localbctr = this.mWrapperFactory.a(null, 0);
+    if (localbctr != null) {
+      localbctr.b(4);
     }
   }
   
   public void quitFloatingScreen(int paramInt)
   {
-    bbqs localbbqs = this.mWrapperFactory.a(null, paramInt);
-    if (localbbqs != null) {
-      localbbqs.a(4);
+    bctr localbctr = this.mWrapperFactory.a(null, paramInt);
+    if (localbctr != null) {
+      localbctr.b(4);
     }
   }
   
@@ -163,9 +210,19 @@ public class FloatingScreenManager
   public IVideoOuterStatusListener setFloatingVideoListener(IVideoInnerStatusListener paramIVideoInnerStatusListener)
   {
     IVideoOuterStatusListener localIVideoOuterStatusListener = null;
-    bbqs localbbqs = this.mWrapperFactory.a(null, 0);
-    if (localbbqs != null) {
-      localIVideoOuterStatusListener = localbbqs.a(paramIVideoInnerStatusListener);
+    bctr localbctr = this.mWrapperFactory.a(null, 0);
+    if (localbctr != null) {
+      localIVideoOuterStatusListener = localbctr.a(paramIVideoInnerStatusListener);
+    }
+    return localIVideoOuterStatusListener;
+  }
+  
+  public IVideoOuterStatusListener setFloatingVideoListener(IVideoInnerStatusListener paramIVideoInnerStatusListener, int paramInt)
+  {
+    IVideoOuterStatusListener localIVideoOuterStatusListener = null;
+    bctr localbctr = this.mWrapperFactory.a(null, paramInt);
+    if (localbctr != null) {
+      localIVideoOuterStatusListener = localbctr.a(paramIVideoInnerStatusListener);
     }
     return localIVideoOuterStatusListener;
   }
@@ -173,25 +230,41 @@ public class FloatingScreenManager
   @Deprecated
   public void setFullScreenListener(IFullScreenEnterListener paramIFullScreenEnterListener)
   {
-    bbqs localbbqs = this.mWrapperFactory.a(null, 0);
-    if (localbbqs != null) {
-      localbbqs.a(paramIFullScreenEnterListener);
+    bctr localbctr = this.mWrapperFactory.a(null, 0);
+    if (localbctr != null) {
+      localbctr.a(paramIFullScreenEnterListener);
     }
   }
   
-  public void setFullScreenViewClickListener(bbqp parambbqp)
+  public void setFullScreenViewClickListener(bcto parambcto)
   {
-    bbqs localbbqs = this.mWrapperFactory.a(null, 0);
-    if (localbbqs != null) {
-      localbbqs.a(parambbqp);
+    bctr localbctr = this.mWrapperFactory.a(null, 0);
+    if (localbctr != null) {
+      localbctr.a(parambcto);
     }
   }
   
-  public void setWindowClickListener(int paramInt, bbqq parambbqq)
+  public void setWindowClickListener(int paramInt, bctp parambctp)
   {
-    bbqs localbbqs = this.mWrapperFactory.a(null, paramInt);
-    if (localbbqs != null) {
-      localbbqs.a(parambbqq);
+    bctr localbctr = this.mWrapperFactory.a(null, paramInt);
+    if (localbctr != null) {
+      localbctr.a(parambctp);
+    }
+  }
+  
+  public void updateFloatingWindowRatio(float paramFloat, int paramInt)
+  {
+    bctr localbctr = this.mWrapperFactory.a(null, paramInt);
+    if (localbctr != null) {
+      localbctr.a(paramFloat);
+    }
+  }
+  
+  public void updateFloatingWindowShape(int paramInt1, int paramInt2)
+  {
+    bctr localbctr = this.mWrapperFactory.a(null, paramInt2);
+    if (localbctr != null) {
+      localbctr.a(paramInt1);
     }
   }
 }

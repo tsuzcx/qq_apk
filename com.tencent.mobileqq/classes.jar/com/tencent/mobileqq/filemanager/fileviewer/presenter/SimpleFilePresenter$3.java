@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import aovk;
-import aoxw;
-import axfb;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import apmx;
+import appk;
+import ayfe;
 import java.util.List;
 
 public class SimpleFilePresenter$3
   implements Runnable
 {
-  public SimpleFilePresenter$3(aoxw paramaoxw, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, boolean paramBoolean, int paramInt, List paramList) {}
+  public SimpleFilePresenter$3(appk paramappk, String paramString, boolean paramBoolean, int paramInt, List paramList) {}
   
   public void run()
   {
     List localList2 = null;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.m.split("\\$");
+    Object localObject = this.jdField_a_of_type_JavaLangString.split("\\$");
     String str1;
     String str2;
     String str3;
@@ -26,21 +25,21 @@ public class SimpleFilePresenter$3
       str3 = localObject[1];
       bool = this.jdField_a_of_type_Boolean;
       if (this.jdField_a_of_type_Int != 0) {
-        break label108;
+        break label105;
       }
       localObject = this.jdField_a_of_type_JavaUtilList;
       if (this.jdField_a_of_type_Int != 1) {
-        break label113;
+        break label110;
       }
     }
-    label108:
-    label113:
+    label105:
+    label110:
     for (List localList1 = this.jdField_a_of_type_JavaUtilList;; localList1 = null)
     {
       if (this.jdField_a_of_type_Int == 3000) {
         localList2 = this.jdField_a_of_type_JavaUtilList;
       }
-      axfb.a(str1, str2, str3, false, bool, 1, (List)localObject, localList1, localList2);
+      ayfe.a(str1, str2, str3, false, bool, 1, (List)localObject, localList1, localList2);
       return;
       localObject = null;
       break;

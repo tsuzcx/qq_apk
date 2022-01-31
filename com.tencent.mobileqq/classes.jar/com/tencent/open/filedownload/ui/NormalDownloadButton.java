@@ -1,6 +1,6 @@
 package com.tencent.open.filedownload.ui;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.util.AttributeSet;
 
@@ -24,15 +24,15 @@ public class NormalDownloadButton
   
   protected String a(int paramInt)
   {
-    return ajjy.a(2131641810);
+    return ajyc.a(2131707595);
   }
   
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return ajjy.a(2131641811);
+      return ajyc.a(2131707596);
     }
-    return ajjy.a(2131641809);
+    return ajyc.a(2131707594);
   }
 }
 

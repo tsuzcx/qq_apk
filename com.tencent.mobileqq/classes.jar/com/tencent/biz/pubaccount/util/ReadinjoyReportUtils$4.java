@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.util;
 
 import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-import ndn;
-import ocg;
+import noo;
+import onr;
 
 public final class ReadinjoyReportUtils$4
   implements Runnable
@@ -11,16 +11,16 @@ public final class ReadinjoyReportUtils$4
   
   public void run()
   {
-    ocg localocg = new ocg();
+    onr localonr = new onr();
     if (this.a.mUnreadNum > 0) {}
     for (int i = 1;; i = 0)
     {
-      localocg.b("reddot_position", "" + (this.a.mPosition + 1));
+      localonr.b("reddot_position", "" + (this.a.mPosition + 1));
       if (i != 0) {}
       for (String str = "1";; str = "0")
       {
-        localocg.b("reddot_state", str);
-        ndn.a(null, null, "0X800978E", "0X800978E", 0, 0, "", "", "", localocg.a(), false);
+        localonr.b("reddot_state", str);
+        noo.a(null, null, "0X800978E", "0X800978E", 0, 0, "", "", "", localonr.a(), false);
         return;
       }
     }

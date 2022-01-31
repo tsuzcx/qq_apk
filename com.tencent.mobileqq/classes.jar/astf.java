@@ -1,26 +1,21 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
 class astf
-  implements Handler.Callback
+  extends RecyclerView.ViewHolder
 {
-  astf(aste paramaste) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public boolean handleMessage(Message paramMessage)
+  public astf(astc paramastc, View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      aste.a(this.a);
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378393));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     astf
  * JD-Core Version:    0.7.0.1
  */

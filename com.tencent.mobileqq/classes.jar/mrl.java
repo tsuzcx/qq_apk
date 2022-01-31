@@ -1,129 +1,67 @@
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.biz.huanjiplugin.TranslucentActivty;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class mrl
+final class mrl
+  implements mro
 {
-  private static volatile mrl jdField_a_of_type_Mrl;
-  int jdField_a_of_type_Int = 0;
-  private bfcz jdField_a_of_type_Bfcz;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new mrm(this);
-  String jdField_a_of_type_JavaLangString;
-  mrn jdField_a_of_type_Mrn;
+  mrl(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, String paramString) {}
   
-  public static mrl a()
+  private void a(Context paramContext)
   {
-    if (jdField_a_of_type_Mrl == null) {}
-    try
+    if ((paramContext instanceof JumpActivity)) {
+      ((Activity)paramContext).finish();
+    }
+  }
+  
+  public void a(int paramInt1, mrq parammrq, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      if (jdField_a_of_type_Mrl == null) {
-        jdField_a_of_type_Mrl = new mrl();
-      }
-      return jdField_a_of_type_Mrl;
+    default: 
+      a(this.jdField_a_of_type_AndroidContentContext);
     }
-    finally {}
-  }
-  
-  public mrk a(String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("HuanjiPlugin", 2, "queryStatuspackageName = " + paramString1 + "pluginId =" + paramString2 + "version = " + paramString3);
-    }
-    if ((this.jdField_a_of_type_Bfcz == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-      return null;
-    }
-    paramString1 = this.jdField_a_of_type_Bfcz.a("qhuanji_plugin.apk");
-    if ((paramString1 != null) && (QLog.isColorLevel())) {
-      QLog.w("HuanjiPlugin", 2, "queryPluginstate = " + paramString1.mState + "pluginSize =" + paramString1.mLength + "version = " + paramString1.mVersion);
-    }
-    paramString2 = new mrk();
-    if (paramString1 != null)
-    {
-      if (paramString1.mState == 0) {
-        mrk.jdField_a_of_type_Int = 0;
-      }
-      for (;;)
-      {
-        mrk.jdField_a_of_type_Long = paramString1.mLength;
-        return paramString2;
-        if (paramString1.mState == 2) {
-          mrk.jdField_a_of_type_Int = 1;
-        } else if ((paramString1.mState == 4) && (paramString1.mVersion.equals(paramString3))) {
-          mrk.jdField_a_of_type_Int = 2;
-        } else if ((paramString1.mState == 4) && (!paramString1.mVersion.equals(paramString3))) {
-          mrk.jdField_a_of_type_Int = 3;
-        }
-      }
-    }
-    mrk.jdField_a_of_type_Int = 0;
-    return paramString2;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.jdField_a_of_type_Mrn != null) {
-      this.jdField_a_of_type_Mrn.a(paramInt1, paramInt2, paramInt3);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bfcz = ((bfcz)paramQQAppInterface.getManager(27));
-  }
-  
-  public boolean a(String paramString1, int paramInt, String paramString2, mrn parammrn)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("HuanjiPlugin", 2, "huanjiDownloadstartParam = " + paramString2);
-    }
-    awrb localawrb = new awrb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_huanji").c("Grp_download");
-    String str;
-    if (paramInt == 2)
-    {
-      str = "Clk_start";
-      localawrb.d(str).a(new String[] { paramString1 }).a();
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_JavaLangString = paramString2;
-      paramString1 = this.jdField_a_of_type_Bfcz.a("qhuanji_plugin.apk");
-      this.jdField_a_of_type_Mrn = parammrn;
-      if ((paramString1 == null) || (paramString1.mState == 4)) {
-        break label163;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("HuanjiPlugin", 2, "换机插件还未安装 installPlugin");
-      }
-      this.jdField_a_of_type_Bfcz.installPlugin("qhuanji_plugin.apk", this.jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener);
-    }
-    label163:
     do
     {
-      return true;
-      str = "Clk_download";
-      break;
-      if (paramInt == 2)
+      do
       {
-        paramString1 = new Intent(BaseApplicationImpl.getApplication().getApplicationContext(), TranslucentActivty.class);
-        paramString1.putExtra("startParam", paramString2);
-        paramString1.addFlags(268435456);
-        paramString1.putExtras(paramString1);
-        BaseApplicationImpl.getApplication().getApplicationContext().startActivity(paramString1);
-        return true;
+        return;
+        bgjy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, 1);
+        return;
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", parammrq.jdField_a_of_type_JavaLangString);
+        if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+          localIntent.addFlags(268435456);
+        }
+        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+        a(this.jdField_a_of_type_AndroidContentContext);
+        return;
+        ((arfe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(236)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, "4", "openRoom");
+        return;
+        if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+        {
+          mri.a(this.jdField_a_of_type_AndroidContentContext, parammrq.b, parammrq.c, new mrm(this));
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "context is not Activity");
+      return;
+      if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+      {
+        mri.a(this.jdField_a_of_type_AndroidContentContext, parammrq.b, parammrq.c, new mrn(this));
+        return;
       }
-    } while (this.jdField_a_of_type_Mrn == null);
-    this.jdField_a_of_type_Mrn.a(3, 4, 100);
-    return true;
+    } while (!QLog.isColorLevel());
+    QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "context is not Activity");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mrl
  * JD-Core Version:    0.7.0.1
  */

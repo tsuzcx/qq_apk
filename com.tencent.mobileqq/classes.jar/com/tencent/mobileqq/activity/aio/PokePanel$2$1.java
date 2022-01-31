@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acnp;
+import acyi;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 

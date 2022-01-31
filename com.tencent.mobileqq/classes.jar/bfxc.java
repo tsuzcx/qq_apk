@@ -1,20 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-
-public class bfxc
-  implements View.OnClickListener
+public abstract interface bfxc
 {
-  public bfxc(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
-  
-  public void onClick(View paramView)
-  {
-    QzoneWebMusicJsPlugin.access$300(this.a, "buttonclick");
-  }
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfxc
  * JD-Core Version:    0.7.0.1
  */

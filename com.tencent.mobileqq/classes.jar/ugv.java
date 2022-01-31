@@ -1,35 +1,65 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
 
 public class ugv
-  extends QQUIEventReceiver<ugr, ugu>
+  extends QQUIEventReceiver<ugn, ttd>
 {
-  public ugv(ugr paramugr)
+  public ugv(@NonNull ugn paramugn)
   {
-    super(paramugr);
+    super(paramugn);
   }
   
-  public void a(@NonNull ugr paramugr, @NonNull ugu paramugu)
+  public void a(@NonNull ugn paramugn, @NonNull ttd paramttd)
   {
-    if (paramugu.jdField_a_of_type_Boolean)
-    {
-      if (paramugu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-      {
-        ugr.a(paramugr, paramugu.jdField_a_of_type_JavaUtilList, true);
-        ugr.a(paramugr).a(true);
-      }
-      return;
+    if (TextUtils.equals(String.valueOf(paramugn.hashCode()), paramttd.jdField_a_of_type_JavaLangString)) {
+      b(paramugn, paramttd);
     }
-    ugr.a(paramugr, paramugu);
-    ugr.a(paramugr).remove(ugr.b());
-    ugr.a(paramugr);
   }
   
   public Class acceptEventClass()
   {
-    return ugu.class;
+    return ttd.class;
+  }
+  
+  public void b(ugn paramugn, ttd paramttd)
+  {
+    paramugn = ((StoryPlayerGroupHolder)paramugn.a()).a();
+    if (paramugn != null) {
+      paramugn.c(false);
+    }
+    if (paramttd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+      return;
+    }
+    boolean bool = tsu.a(paramttd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    switch (paramttd.jdField_a_of_type_Int)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131701164), 0).a();
+      return;
+    case 2: 
+      if (bool) {}
+      for (paramugn = "2";; paramugn = "1")
+      {
+        vel.a("play_video", "down_suc", 0, 0, new String[] { paramugn, "", "", paramttd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+        bcpw.a(BaseApplicationImpl.getContext(), 2, sxp.a(2131699708), 0).a();
+        return;
+      }
+    }
+    if (bool) {}
+    for (paramugn = "2";; paramugn = "1")
+    {
+      vel.a("play_video", "down_fail", 0, 0, new String[] { paramugn, "", "", paramttd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131701165), 0).a();
+      return;
+    }
   }
 }
 

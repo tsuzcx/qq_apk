@@ -1,24 +1,27 @@
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView.1.1;
+import com.tencent.qphone.base.util.QLog;
 
-public class wzd
-  implements wzb
+class wzd
+  extends wzr
 {
-  public wzd(SingleLyricView paramSingleLyricView) {}
-  
-  public void a()
+  wzd(wyw paramwyw, wze paramwze, String paramString1, String paramString2)
   {
-    SingleLyricView.a(this.a).b();
+    super(paramwyw);
   }
   
-  public void a(long paramLong)
+  public void a(boolean paramBoolean)
   {
-    this.a.post(new SingleLyricView.1.1(this, paramLong));
-  }
-  
-  public void b()
-  {
-    SingleLyricView.a(this.a).c();
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineUnit end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "combineAudioAndVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Wyw.a));
+      this.jdField_a_of_type_Wyw.a = System.currentTimeMillis();
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Wze.a(this.jdField_a_of_type_JavaLangString, true, "cmobine auido video done.");
+      return;
+    }
+    this.jdField_a_of_type_Wze.a(this.b, false, "cmobine auido video done.");
   }
 }
 

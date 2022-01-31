@@ -1,21 +1,14 @@
-public class ajar
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+
+class ajar
+  implements MediaPlayer.OnCompletionListener
 {
-  public static final int a;
-  public static final long a;
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  public long b;
-  public long c;
-  public long d;
+  ajar(ajao paramajao) {}
   
-  static
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    jdField_a_of_type_JavaLangString = babp.i();
-    b = babp.e();
-    c = babp.g();
-    jdField_a_of_type_Int = babp.b();
-    jdField_a_of_type_Long = babp.a();
+    this.a.a(10);
   }
 }
 

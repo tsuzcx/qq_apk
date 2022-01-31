@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
 
-class lzf
-  implements DialogInterface.OnClickListener
+public class lzf
+  extends OrientationEventListener
 {
-  lzf(lze paramlze) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public lzf(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, Context paramContext, int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.a.jdField_a_of_type_Long, true);
+    super(paramContext, paramInt);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    this.a.a();
   }
 }
 

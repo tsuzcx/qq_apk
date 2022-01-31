@@ -1,15 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class apmd
-  implements DialogInterface.OnClickListener
+  implements aptu
 {
-  apmd(apma paramapma, bafb parambafb) {}
+  apmd(apmc paramapmc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Bafb.dismiss();
+    int i = this.a.a.g();
+    if (this.a.a.f() == 6000) {
+      if (i == 0) {
+        if (this.a.a.h() == 2) {
+          aply.c(this.a.a);
+        }
+      }
+    }
+    for (;;)
+    {
+      if (this.a.a.a != null) {
+        this.a.a.a.d();
+      }
+      return;
+      aply.a(this.a.a);
+      continue;
+      aply.c(this.a.a);
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.i("DatalineFileModel<FileAssistant>", 2, "DatalineFileModel doStartDownload : error, this file is not from dataline");
+      }
+    }
   }
+  
+  public void b() {}
 }
 
 

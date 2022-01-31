@@ -1,114 +1,65 @@
 import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.qav.observer.FilterableObservable.1;
-import java.util.Iterator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NowShowVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.PhotoWallView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
+import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
 
 public class bcoa
+  extends ajtp
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private final List<bcob> jdField_a_of_type_JavaUtilList = new Vector();
-  private Handler jdField_b_of_type_AndroidOsHandler;
-  private final List<bcob> jdField_b_of_type_JavaUtilList = new Vector();
+  private WeakReference<PhotoWallView> a;
   
-  bcoa()
+  public bcoa(PhotoWallView paramPhotoWallView)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    if (this.jdField_b_of_type_AndroidOsHandler == null)
-    {
-      HandlerThread localHandlerThread = new HandlerThread("FilterableObservable-bg-thread");
-      localHandlerThread.start();
-      this.jdField_b_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
-    }
+    this.a = new WeakReference(paramPhotoWallView);
   }
   
-  private void a(bcob parambcob, Handler paramHandler, int paramInt, Object... paramVarArgs)
+  public void a(int paramInt, List<NowLiveGallary.RspBody.PhotoInfo> paramList)
   {
-    paramHandler.post(new FilterableObservable.1(this, parambcob, paramInt, paramVarArgs));
-  }
-  
-  public void a()
-  {
-    try
+    if (this.a != null) {}
+    for (PhotoWallView localPhotoWallView = (PhotoWallView)this.a.get();; localPhotoWallView = null)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_b_of_type_JavaUtilList.clear();
-      if (this.jdField_b_of_type_AndroidOsHandler != null) {
-        this.jdField_b_of_type_AndroidOsHandler.getLooper().quit();
-      }
-      this.jdField_a_of_type_AndroidOsHandler = null;
-      this.jdField_b_of_type_AndroidOsHandler = null;
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(bcob parambcob)
-  {
-    if (parambcob != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(parambcob);
-      this.jdField_b_of_type_JavaUtilList.remove(parambcob);
-      return;
-    }
-    finally
-    {
-      parambcob = finally;
-      throw parambcob;
-    }
-  }
-  
-  public void a(bcob parambcob, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        this.jdField_b_of_type_JavaUtilList.add(parambcob);
+      if (localPhotoWallView == null) {
         return;
       }
-      finally {}
-      this.jdField_a_of_type_JavaUtilList.add(parambcob);
-    }
-  }
-  
-  public void a(Class<? extends bcob> paramClass, int paramInt, Object... paramVarArgs)
-  {
-    Iterator localIterator;
-    bcob localbcob;
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      if (paramInt != 0)
       {
-        localbcob = (bcob)localIterator.next();
-        if ((paramClass != null) && (localbcob != null) && (paramClass.isAssignableFrom(localbcob.getClass()))) {
-          a(localbcob, this.jdField_a_of_type_AndroidOsHandler, paramInt, paramVarArgs);
+        if (QLog.isColorLevel()) {
+          QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay errorCode:" + paramInt);
         }
+        localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+        return;
       }
-    }
-    synchronized (this.jdField_b_of_type_JavaUtilList)
-    {
-      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay size:" + paramList.size());
+      }
+      localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.clear();
+      paramInt = 0;
+      while (paramInt < paramList.size())
       {
-        localbcob = (bcob)localIterator.next();
-        if ((paramClass != null) && (localbcob != null) && (paramClass.isAssignableFrom(localbcob.getClass()))) {
-          a(localbcob, this.jdField_b_of_type_AndroidOsHandler, paramInt, paramVarArgs);
-        }
+        Object localObject = (NowLiveGallary.RspBody.PhotoInfo)paramList.get(paramInt);
+        localObject = new NowShowVideoInfo(((NowLiveGallary.RspBody.PhotoInfo)localObject).cover.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).video.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).timestamp.get());
+        localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+        paramInt += 1;
       }
+      if (localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+        axqw.b((QQAppInterface)this.b.get(), "dc00899", "NOW", "", "qq_zlk", "replay_exp", 0, 0, localPhotoWallView.jdField_a_of_type_JavaLangString, "", "", "");
+      }
+      localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcoa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,75 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-class amuq
-  implements DialogInterface.OnClickListener
+public class amuq
+  extends ampb<amup>
 {
-  amuq(amup paramamup) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    EditText localEditText = (EditText)((bafb)paramDialogInterface).findViewById(2131304989);
-    paramDialogInterface = (EditText)((bafb)paramDialogInterface).findViewById(2131296363);
-    if ((TextUtils.isEmpty(localEditText.getText().toString())) || (TextUtils.isEmpty(paramDialogInterface.getText().toString())))
+    return 390;
+  }
+  
+  @NonNull
+  public amup a(int paramInt)
+  {
+    return new amup();
+  }
+  
+  @Nullable
+  public amup a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
     {
-      bbmy.a(this.a.a.getActivity(), 1, ajjy.a(2131636982), 0).a();
-      return;
+      amup localamup = amup.a(paramArrayOfampi[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("QConfPushProcessor", 0, "onParsed " + paramArrayOfampi[0].a);
+      }
+      return localamup;
     }
-    amvn localamvn = new amvn();
-    localamvn.a = localEditText.getText().toString();
-    localamvn.jdField_b_of_type_JavaLangString = paramDialogInterface.getText().toString();
-    localamvn.jdField_b_of_type_Boolean = true;
-    amvk.a().a(localamvn);
-    this.a.a.a.notifyDataSetChanged();
+    return new amup();
+  }
+  
+  public Class<amup> a()
+  {
+    return amup.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amup paramamup)
+  {
+    ((asep)BaseApplicationImpl.getApplication().getRuntime().getManager(308)).a(paramamup);
+    if (QLog.isColorLevel()) {
+      QLog.d("QConfPushProcessor", 0, "onUpdate " + paramamup);
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amuq
  * JD-Core Version:    0.7.0.1
  */

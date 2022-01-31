@@ -1,17 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
 
 public class riu
-  implements ValueAnimator.AnimatorUpdateListener
+  implements rki
 {
-  public riu(TickerView paramTickerView) {}
+  public riu(FastWebActivity paramFastWebActivity, int paramInt, BaseData paramBaseData) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public BaseData a()
   {
-    TickerView.a(this.a).a(paramValueAnimator.getAnimatedFraction());
-    TickerView.a(this.a);
-    this.a.invalidate();
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+  }
+  
+  public void a()
+  {
+    rkh localrkh = FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).a(this.jdField_a_of_type_Int);
+    if (localrkh != null)
+    {
+      rnr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.app, (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, localrkh.jdField_a_of_type_Float, localrkh.jdField_a_of_type_Long);
+      return;
+    }
+    rnr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.app, (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
   }
 }
 

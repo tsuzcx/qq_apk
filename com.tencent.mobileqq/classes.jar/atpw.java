@@ -1,12 +1,15 @@
-public class atpw
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class atpw
+  implements DialogInterface.OnClickListener
 {
-  public int a = -2;
-  public atpr a;
-  public atpv a;
-  public Object a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  atpw(atpi paramatpi) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

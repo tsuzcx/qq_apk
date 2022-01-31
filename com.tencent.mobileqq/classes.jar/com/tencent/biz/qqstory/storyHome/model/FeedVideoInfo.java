@@ -4,11 +4,11 @@ import com.tencent.biz.qqstory.model.BaseUIItem;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import java.util.ArrayList;
 import java.util.List;
-import sfp;
+import ssl;
 
 public class FeedVideoInfo
   extends BaseUIItem
-  implements sfp
+  implements ssl
 {
   public String feedId;
   public boolean mIsVideoEnd;

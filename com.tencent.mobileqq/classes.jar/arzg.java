@@ -1,91 +1,165 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.location.window.FloatMapWidget;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import java.util.HashMap;
 
-class arzg
-  implements arze
+public class arzg
+  implements baxl
 {
-  private IBinder a;
+  private aruk jdField_a_of_type_Aruk;
+  private arup jdField_a_of_type_Arup = new arzh(this);
+  private aruq jdField_a_of_type_Aruq;
+  private arym jdField_a_of_type_Arym;
+  private baxk jdField_a_of_type_Baxk;
+  private baxl jdField_a_of_type_Baxl;
+  private FloatMapWidget jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget;
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
+  private HashMap<String, arzk> jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
   
-  arzg(IBinder paramIBinder)
+  public arzg(QQAppInterface paramQQAppInterface)
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_Aruq = aruq.a(paramQQAppInterface);
   }
   
-  public IBinder asBinder()
+  private void b()
   {
-    return this.a;
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.setOnMapLoadedCallback();
+    e();
+    this.jdField_a_of_type_Baxk = new baxk((AppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    this.jdField_a_of_type_Baxk.a(this);
   }
   
-  /* Error */
-  public void onPlaySongChanged(com.tencent.mobileqq.music.SongInfo paramSongInfo)
+  private void c()
   {
-    // Byte code:
-    //   0: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: aload_2
-    //   5: ldc 28
-    //   7: invokevirtual 32	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_1
-    //   11: ifnull +33 -> 44
-    //   14: aload_2
-    //   15: iconst_1
-    //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   19: aload_1
-    //   20: aload_2
-    //   21: iconst_0
-    //   22: invokevirtual 42	com/tencent/mobileqq/music/SongInfo:writeToParcel	(Landroid/os/Parcel;I)V
-    //   25: aload_0
-    //   26: getfield 15	arzg:a	Landroid/os/IBinder;
-    //   29: iconst_2
-    //   30: aload_2
-    //   31: aconst_null
-    //   32: iconst_1
-    //   33: invokeinterface 48 5 0
-    //   38: pop
-    //   39: aload_2
-    //   40: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   43: return
-    //   44: aload_2
-    //   45: iconst_0
-    //   46: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   49: goto -24 -> 25
-    //   52: astore_1
-    //   53: aload_2
-    //   54: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   57: aload_1
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	59	0	this	arzg
-    //   0	59	1	paramSongInfo	com.tencent.mobileqq.music.SongInfo
-    //   3	51	2	localParcel	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	52	finally
-    //   14	25	52	finally
-    //   25	39	52	finally
-    //   44	49	52	finally
+    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new arzi(this);
+    AppNetConnInfo.registerConnectionChangeReceiver(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
   }
   
-  public void onPlayStateChanged(int paramInt)
+  private void d()
   {
-    Parcel localParcel = Parcel.obtain();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "onBadNetSituation: invoked. ", " TAG: ", "LocationShareController" });
+    }
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if (localBaseActivity != null)
+    {
+      arzl localarzl = arzl.a(localBaseActivity.app);
+      if ((this.jdField_a_of_type_Aruk != null) && (this.jdField_a_of_type_Aruk.equals(localarzl.a().a())))
+      {
+        arvk.b(localBaseActivity);
+        localarzl.a = true;
+      }
+    }
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_Arym = new arzj(this);
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.setListener(this.jdField_a_of_type_Arym);
+  }
+  
+  public Bitmap a(String paramString)
+  {
+    Object localObject2 = (arzk)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    long l = System.currentTimeMillis();
+    Object localObject1;
+    if (localObject2 != null)
+    {
+      if ((l - ((arzk)localObject2).jdField_a_of_type_Long < 4000L) && (((arzk)localObject2).jdField_a_of_type_AndroidGraphicsBitmap != null)) {
+        return ((arzk)localObject2).jdField_a_of_type_AndroidGraphicsBitmap;
+      }
+      localObject1 = localObject2;
+      if (l - ((arzk)localObject2).b < 2000L) {
+        return null;
+      }
+    }
+    else
+    {
+      localObject1 = new arzk(null);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject1);
+    }
+    ((arzk)localObject1).b = l;
+    localObject2 = this.jdField_a_of_type_Baxk.a(1, paramString);
+    if (localObject2 == null) {
+      this.jdField_a_of_type_Baxk.a(paramString, 200, false, 1, true, (byte)0, 4);
+    }
+    for (;;)
+    {
+      return localObject2;
+      ((arzk)localObject1).jdField_a_of_type_Long = l;
+      ((arzk)localObject1).jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
+    }
+  }
+  
+  public void a()
+  {
     try
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerCallback");
-      localParcel.writeInt(paramInt);
-      this.a.transact(1, localParcel, null, 1);
+      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+      this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = null;
+      if (this.jdField_a_of_type_Baxk != null) {
+        this.jdField_a_of_type_Baxk.d();
+      }
+      this.jdField_a_of_type_Arym = null;
+      this.jdField_a_of_type_Aruq.b(this.jdField_a_of_type_Arup);
+      this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget = null;
       return;
     }
-    finally
+    catch (Exception localException)
     {
-      localParcel.recycle();
+      for (;;)
+      {
+        QLog.e("LocationShareController", 1, "onFragmentDestroy: failed. ", localException);
+      }
+    }
+  }
+  
+  public void a(aruk paramaruk, CameraPosition paramCameraPosition, FloatMapWidget paramFloatMapWidget, ImageView paramImageView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget = paramFloatMapWidget;
+    this.jdField_a_of_type_Aruk = paramaruk;
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.a(null, this.jdField_a_of_type_Aruq.a(this.jdField_a_of_type_Aruk), paramCameraPosition, bawz.a(BaseApplicationImpl.context, 10.0F), null);
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.setMapLogoVisibility(8);
+    b();
+    c();
+    this.jdField_a_of_type_Aruq.a(this.jdField_a_of_type_Arup);
+    if (bfwa.a()) {}
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "[location] onDecodeTaskCompleted invoked. ", "remainingTasks = [" + paramInt1 + "], uin = [" + paramString + "], avatar = [" + paramBitmap + "]" });
+    }
+    Bitmap localBitmap = bbdr.c(paramBitmap, 16, 16);
+    arzk localarzk = (arzk)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    long l = System.currentTimeMillis();
+    paramBitmap = localarzk;
+    if (localarzk == null)
+    {
+      paramBitmap = new arzk(null);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramBitmap);
+    }
+    paramBitmap.jdField_a_of_type_Long = l;
+    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.a(paramString, localBitmap);
+    if (this.jdField_a_of_type_Baxl != null) {
+      this.jdField_a_of_type_Baxl.onDecodeTaskCompleted(paramInt1, paramInt2, paramString, localBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arzg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,14 @@
-public class aktp
+public abstract interface aktp
 {
-  public float a;
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public abstract void a();
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("xMIN:").append(this.a).append(",xMAX:").append(this.b).append(",yMIN:").append(this.c).append(",yMAX:").append(this.d);
-    return localStringBuilder.toString();
-  }
+  public abstract boolean a();
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aktp
  * JD-Core Version:    0.7.0.1
  */

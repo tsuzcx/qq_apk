@@ -1,42 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
 
-class wqc
-  implements Animator.AnimatorListener
+public class wqc
+  implements amkj
 {
-  wqc(wqa paramwqa) {}
+  public wqc(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onColorNoteAnimFinish()
   {
-    if (wqa.a(this.a) != null) {
-      wqa.a(this.a).a();
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (wqa.a(this.a) != null) {
-      wqa.a(this.a).a();
-    }
-    if (wqa.a(this.a) != null)
+    if (this.a.getActivity() != null)
     {
-      wqa.a(wqa.a(this.a), null);
-      wqa.a(this.a).a();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (wqa.a(this.a) != null) {
-      wqa.a(this.a).a();
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wqc
  * JD-Core Version:    0.7.0.1
  */

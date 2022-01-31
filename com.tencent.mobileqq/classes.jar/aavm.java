@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aavm
-  implements bele
+  implements Animation.AnimationListener
 {
-  public aavm(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aavm(ContactBindedActivity paramContactBindedActivity) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    FriendProfileCardActivity.a(this.a, paramInt1);
-    if ((paramInt1 + paramInt2 != paramInt3) || (paramInt3 <= 0) || (this.a.d()) || (!badq.d(this.a))) {}
-    while ((this.a.a == null) || (!this.a.a.a())) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim end");
     }
-    this.a.a.a();
-    this.a.d(true);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim start");
+    }
   }
 }
 

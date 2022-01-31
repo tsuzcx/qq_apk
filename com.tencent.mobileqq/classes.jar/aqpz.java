@@ -1,23 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import com.tencent.mobileqq.gallery.view.GalleryUrlImageView;
 
-public final class aqpz
-  implements Parcelable.Creator<NewTogetherRoomMessageData>
+public class aqpz
+  extends aqom
 {
-  public NewTogetherRoomMessageData a(Parcel paramParcel)
-  {
-    return new NewTogetherRoomMessageData(paramParcel);
-  }
+  public GalleryUrlImageView a;
   
-  public NewTogetherRoomMessageData[] a(int paramInt)
-  {
-    return new NewTogetherRoomMessageData[paramInt];
-  }
+  public aqpz(aqpr paramaqpr) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqpz
  * JD-Core Version:    0.7.0.1
  */

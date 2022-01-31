@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class abit
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public abit(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  public abit(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.finish();
+    GroupManagerActivity.a(this.a, null);
   }
 }
 

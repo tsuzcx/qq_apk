@@ -1,133 +1,50 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.graphics.Bitmap;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import mqq.app.AppRuntime;
 
-public class aqeb
+class aqeb
+  implements baxl
 {
-  public HashMap<String, String> a;
-  protected boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
+  aqeb(aqdz paramaqdz) {}
   
-  public aqeb(String paramString1, String paramString2)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    this("default", paramString1, paramString2);
-  }
-  
-  protected aqeb(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    this.d = paramString3;
-    c();
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    QLog.i("Forward.Preview.Dialog", 1, "onDecodeTaskCompleted uin: " + paramString);
+    if (aqdz.a(this.a) == null) {}
+    while (aqdz.a(this.a).a()) {
+      return;
     }
-    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-    if ((localObject == null) || (((List)localObject).size() <= 0)) {
-      return false;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (paramString.equals(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName)) {
-        return true;
+    paramInt2 = aqdz.a(this.a).findFirstVisibleItemPosition();
+    int i = aqdz.a(this.a).getChildCount();
+    paramInt1 = 1;
+    label74:
+    if (paramInt1 < i) {
+      if (((String)((Pair)aqdz.a(this.a).a.get(paramInt2 + paramInt1 - 1)).first).equals(paramString))
+      {
+        aqeg localaqeg = (aqeg)aqdz.a(this.a).getChildViewHolder(aqdz.a(this.a).getChildAt(paramInt1));
+        if (!(localaqeg instanceof aqef)) {
+          break label170;
+        }
+        ((aqef)localaqeg).a.setImageBitmap(paramBitmap);
       }
     }
-    return false;
-  }
-  
-  protected String a()
-  {
-    return this.d + this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      d();
-    }
-    aqdy.a(this);
-    this.jdField_a_of_type_Boolean = true;
-    if (!(this instanceof aqea)) {
-      aqdy.e(this.d);
-    }
-  }
-  
-  public void b()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_b_of_type_Boolean = true;
-    } while ((this instanceof aqea));
-    aqdy.d(this.d);
-  }
-  
-  void c()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put("loss", "0");
-      this.jdField_a_of_type_JavaUtilHashMap.put("benefit", "0");
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
-      return;
-    }
-  }
-  
-  public void d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    Object localObject2 = BaseApplicationImpl.getApplication();
-    HashMap localHashMap1 = new HashMap();
     for (;;)
     {
-      String str;
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        localHashMap1.putAll(this.jdField_a_of_type_JavaUtilHashMap);
-        if (localObject2 != null)
-        {
-          ??? = ((BaseApplicationImpl)localObject2).getApplicationContext();
-          localObject2 = ((BaseApplicationImpl)localObject2).getRuntime();
-          if (localObject2 != null)
-          {
-            localObject2 = ((AppRuntime)localObject2).getAccount();
-            str = this.c;
-            if (!this.jdField_b_of_type_Boolean) {
-              break label98;
-            }
-            awrn.a((Context)???).a((String)localObject2, str, true, 0L, 0L, localHashMap1, null);
-          }
-        }
-        c();
-        return;
-      }
-      label98:
-      awrn.a((Context)???).a((String)localObject2, str, false, 0L, 0L, localHashMap2, null);
+      paramInt1 += 1;
+      break label74;
+      break;
+      label170:
+      QLog.e("Forward.Preview.Dialog", 2, "onDecodeTaskCompleted viewHolder in wrong instance ! ");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqeb
  * JD-Core Version:    0.7.0.1
  */

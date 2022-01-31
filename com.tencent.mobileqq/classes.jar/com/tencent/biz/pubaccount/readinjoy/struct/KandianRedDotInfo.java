@@ -4,12 +4,15 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
-import obz;
+import onk;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class KandianRedDotInfo
   implements Serializable
@@ -22,6 +25,7 @@ public class KandianRedDotInfo
   public ArrayList<Long> articleIDList = new ArrayList();
   public String cookie;
   public String extInfo;
+  public KandianRedDotInfo.DailyFloatingWindowData floatingWinData = new KandianRedDotInfo.DailyFloatingWindowData();
   public String forderStatus;
   public byte[] msgData;
   public long strategyID;
@@ -48,33 +52,71 @@ public class KandianRedDotInfo
     if (!(paramMessageRecord instanceof MessageForStructing)) {
       return null;
     }
-    Object localObject = (MessageForStructing)paramMessageRecord;
-    ((MessageForStructing)localObject).parse();
-    if (((MessageForStructing)localObject).structingMsg == null) {
+    MessageForStructing localMessageForStructing = (MessageForStructing)paramMessageRecord;
+    localMessageForStructing.parse();
+    if (localMessageForStructing.structingMsg == null) {
       return null;
     }
-    paramString = new KandianRedDotInfo(paramString);
-    paramString.cookie = ((MessageForStructing)localObject).structingMsg.mMsgActionData;
-    paramString.forderStatus = ((MessageForStructing)localObject).structingMsg.reportEventFolderStatusValue;
-    paramString.extInfo = ((MessageForStructing)localObject).structingMsg.mExtraData;
+    KandianRedDotInfo localKandianRedDotInfo = new KandianRedDotInfo(paramString);
+    localKandianRedDotInfo.cookie = localMessageForStructing.structingMsg.mMsgActionData;
+    localKandianRedDotInfo.forderStatus = localMessageForStructing.structingMsg.reportEventFolderStatusValue;
+    localKandianRedDotInfo.extInfo = localMessageForStructing.structingMsg.mExtraData;
+    localKandianRedDotInfo.msgData = paramMessageRecord.msgData;
     try
     {
-      paramString.algorithmID = Long.valueOf(((MessageForStructing)localObject).structingMsg.mAlgorithmIds).longValue();
-      paramString.strategyID = Long.valueOf(((MessageForStructing)localObject).structingMsg.mStrategyIds).longValue();
-      localObject = obz.a(paramMessageRecord);
-      if ((localObject != null) && (!((List)localObject).isEmpty()))
+      localKandianRedDotInfo.algorithmID = Long.valueOf(localMessageForStructing.structingMsg.mAlgorithmIds).longValue();
+      localKandianRedDotInfo.strategyID = Long.valueOf(localMessageForStructing.structingMsg.mStrategyIds).longValue();
+      QLog.d("KandianRedDotInfo", 1, "createRedDotFromMessageRecord | mr isRead " + paramMessageRecord.isread);
+      if (("kandian_daily_red_pnt".equalsIgnoreCase(paramString)) && (!paramMessageRecord.isread)) {}
+      try
       {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
+        paramString = new JSONObject(localMessageForStructing.structingMsg.mMsgActionData);
+        if (paramString != null)
         {
-          String str = (String)((Iterator)localObject).next();
+          if (localKandianRedDotInfo.floatingWinData == null) {
+            localKandianRedDotInfo.floatingWinData = new KandianRedDotInfo.DailyFloatingWindowData();
+          }
+          localKandianRedDotInfo.floatingWinData.type = paramString.optInt("type", 0);
+          localKandianRedDotInfo.floatingWinData.url = paramString.optString("url", "");
+          int i = paramString.optInt("remove", 0);
+          KandianRedDotInfo.DailyFloatingWindowData localDailyFloatingWindowData = localKandianRedDotInfo.floatingWinData;
+          if (i != 1) {
+            break label510;
+          }
+          bool = true;
+          localDailyFloatingWindowData.remove = bool;
+          localKandianRedDotInfo.floatingWinData.topicID = paramString.optString("topicID", "");
+          localKandianRedDotInfo.floatingWinData.rowkey = paramString.optString("push_rowkey", "");
+          QLog.d("KandianRedDotInfo", 1, "createRedDotFromMessageRecord | init floatingWindowData  " + localKandianRedDotInfo.floatingWinData.toString());
+          paramString.put("algorithmIds", localMessageForStructing.structingMsg.mAlgorithmIds);
+          paramString.put("reportEventFolderStatusValue", localMessageForStructing.structingMsg.reportEventFolderStatusValue);
+          paramString.put("strategyIds", localMessageForStructing.structingMsg.mStrategyIds);
+          localKandianRedDotInfo.cookie = paramString.toString();
+          QLog.d("KandianRedDotInfo", 1, "createRedDotFromMessageRecord | origin_actionData is " + localMessageForStructing.structingMsg.mMsgActionData + "\n recombined_actionData is " + localKandianRedDotInfo.cookie);
+        }
+      }
+      catch (JSONException paramString)
+      {
+        for (;;)
+        {
+          boolean bool;
+          QLog.d("KandianRedDotInfo", 2, "createRedDotFromMessageRecord | exception " + paramString.getMessage());
+        }
+      }
+      paramMessageRecord = onk.a(paramMessageRecord);
+      if ((paramMessageRecord != null) && (!paramMessageRecord.isEmpty()))
+      {
+        paramMessageRecord = paramMessageRecord.iterator();
+        while (paramMessageRecord.hasNext())
+        {
+          paramString = (String)paramMessageRecord.next();
           try
           {
-            paramString.articleIDList.add(Long.valueOf(str));
+            localKandianRedDotInfo.articleIDList.add(Long.valueOf(paramString));
           }
-          catch (NumberFormatException localNumberFormatException)
+          catch (NumberFormatException paramString)
           {
-            localNumberFormatException.printStackTrace();
+            paramString.printStackTrace();
           }
         }
       }
@@ -84,15 +126,17 @@ public class KandianRedDotInfo
       for (;;)
       {
         localException.printStackTrace();
+        continue;
+        label510:
+        bool = false;
       }
-      paramString.msgData = paramMessageRecord.msgData;
     }
-    return paramString;
+    return localKandianRedDotInfo;
   }
   
   public static KandianRedDotInfo getRedDotFromDisk(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
   {
-    return (KandianRedDotInfo)obz.a(paramAppRuntime, paramString, paramBoolean);
+    return (KandianRedDotInfo)onk.a(paramAppRuntime, paramString, paramBoolean);
   }
   
   public MessageRecord getMessageRecord()
@@ -103,6 +147,24 @@ public class KandianRedDotInfo
     return null;
   }
   
+  public String getRowkey()
+  {
+    try
+    {
+      Object localObject = (MessageForStructing)getMessageRecord();
+      if ((localObject != null) && (((MessageForStructing)localObject).structingMsg != null) && (!TextUtils.isEmpty(((MessageForStructing)localObject).structingMsg.mMsgActionData)))
+      {
+        localObject = new JSONObject(((MessageForStructing)localObject).structingMsg.mMsgActionData).optString("push_rowkey", "");
+        return localObject;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("KandianRedDotInfo", 2, localException, new Object[0]);
+    }
+    return "";
+  }
+  
   public boolean hasArticleID()
   {
     return (this.articleIDList != null) && (!this.articleIDList.isEmpty());
@@ -110,12 +172,17 @@ public class KandianRedDotInfo
   
   public void removeFromDiskAsync(boolean paramBoolean)
   {
-    obz.a(this.type, paramBoolean);
+    onk.a(this.type, paramBoolean);
   }
   
   public void saveToDiskAsync(boolean paramBoolean)
   {
-    obz.a(this.type, this, true);
+    onk.a(this.type, this, true);
+  }
+  
+  public boolean shouldRemoveFloatingRedPntArticleId()
+  {
+    return (this.floatingWinData != null) && (this.floatingWinData.remove);
   }
   
   public String toString()

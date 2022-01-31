@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.magicface;
 
-import kxb;
+import lhq;
 
 public class FaceItem
-  extends kxb
+  extends lhq
 {
   private String attr;
   private String compress_res_md5;

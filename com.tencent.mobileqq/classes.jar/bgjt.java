@@ -1,9 +1,8 @@
 import android.os.Bundle;
-import org.json.JSONObject;
 
-abstract interface bgjt
+public abstract interface bgjt
 {
-  public abstract void a(JSONObject paramJSONObject, Bundle paramBundle);
+  public abstract void a(Bundle paramBundle);
 }
 
 

@@ -1,35 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import dov.com.qq.im.capture.control.CaptureAsyncStep.BindTroopMemberClient;
 
 public class bjbc
+  implements wxw
 {
-  private bjbd jdField_a_of_type_Bjbd;
-  private ConcurrentHashMap<Integer, bjbg> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  public bjbc(CaptureAsyncStep.BindTroopMemberClient paramBindTroopMemberClient) {}
   
-  public bjbg a(int paramInt)
+  public void a(Bundle paramBundle)
   {
-    return (bjbg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public void a(bjbg parambjbg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FrameAdapter", 2, "addFrame, index=" + parambjbg.a);
+    paramBundle = paramBundle.getString("nickName");
+    if (paramBundle == null) {
+      paramBundle = "";
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(parambjbg.a), parambjbg);
-    if (this.jdField_a_of_type_Bjbd != null) {
-      this.jdField_a_of_type_Bjbd.a();
+    for (;;)
+    {
+      AppInterface localAppInterface = bjae.a();
+      if ((localAppInterface instanceof PeakAppInterface)) {
+        ((PeakAppInterface)localAppInterface).a(paramBundle);
+      }
+      this.a.a.b();
+      return;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
   }
 }
 

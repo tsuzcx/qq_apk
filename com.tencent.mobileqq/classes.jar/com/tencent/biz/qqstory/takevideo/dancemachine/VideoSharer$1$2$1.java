@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.takevideo.dancemachine;
 
-import ajjy;
-import bbmy;
-import uxn;
-import uxo;
+import ajyc;
+import bcpw;
+import vkj;
+import vkk;
 
 public class VideoSharer$1$2$1
   implements Runnable
 {
-  public VideoSharer$1$2$1(uxo paramuxo) {}
+  public VideoSharer$1$2$1(vkk paramvkk) {}
   
   public void run()
   {
-    bbmy.a(this.a.a.this$0.a, 1, ajjy.a(2131650572), 0).a();
+    bcpw.a(this.a.a.this$0.a, 1, ajyc.a(2131716363), 0).a();
   }
 }
 

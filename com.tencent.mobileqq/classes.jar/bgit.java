@@ -1,36 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class bgit
-  extends BroadcastReceiver
+  implements FilenameFilter
 {
   bgit(bgis parambgis) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean accept(File paramFile, String paramString)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneDynamicAlbumPlugin", 2, paramContext);
-    }
-    paramIntent = paramIntent.getStringExtra("runningProcessName");
-    if ((("com.tencent.process.stopping".equals(paramContext)) && (!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("com.tencent.mobileqq:tool"))) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
-    {
-      bgis.a(this.a, true);
-      this.a.b();
-    }
-    while (((!"com.tencent.process.starting".equals(paramContext)) || (TextUtils.isEmpty(paramIntent)) || (!paramIntent.equals("com.tencent.mobileqq:tool")) || (!bgis.a(this.a))) && (!"tencent.av.v2q.StopVideoChat".equals(paramContext))) {
-      return;
-    }
-    bgis.a(this.a, false);
-    this.a.c();
+    return (paramFile != null) && (paramFile.isDirectory()) && (bgis.a(this.a).matcher(paramString).matches());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgit
  * JD-Core Version:    0.7.0.1
  */

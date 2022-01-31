@@ -1,8 +1,17 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+
 public class agao
+  implements View.OnTouchListener
 {
-  public int a;
-  public long a;
-  public String a;
+  public agao(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

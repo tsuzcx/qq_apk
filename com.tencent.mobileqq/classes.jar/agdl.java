@@ -1,17 +1,34 @@
+import android.view.KeyEvent;
 import android.view.View;
-import com.tencent.image.URLImageView;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-class agdl
-  implements begj
+public class agdl
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  agdl(agdk paramagdk) {}
+  protected agdl(agdk paramagdk) {}
   
-  public void b(View paramView)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof agdm))) {
-      ((agdm)paramView).a.setImageDrawable(null);
+    if (paramInt == 3)
+    {
+      this.a.a();
+      return true;
     }
+    return false;
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
+    {
+      if (paramKeyEvent.getAction() == 1) {
+        this.a.a();
+      }
+      return true;
+    }
+    return false;
   }
 }
 

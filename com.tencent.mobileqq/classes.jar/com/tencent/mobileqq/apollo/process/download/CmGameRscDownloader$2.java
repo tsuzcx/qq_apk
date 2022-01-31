@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.apollo.process.download;
 
-import aiqf;
-import aiqi;
-import aiys;
-import bace;
+import ajdd;
+import ajdg;
+import ajmu;
+import bbdj;
 
 public class CmGameRscDownloader$2
   implements Runnable
 {
-  public CmGameRscDownloader$2(aiqf paramaiqf) {}
+  public CmGameRscDownloader$2(ajdd paramajdd) {}
   
   public void run()
   {
-    String str = aiys.s + aiqf.a(this.this$0).jdField_a_of_type_JavaLangString + ".patch";
-    bace.a(aiqf.a(this.this$0).jdField_a_of_type_ArrayOfByte, str);
-    aiqf.a(this.this$0);
+    String str = ajmu.s + ajdd.a(this.this$0).jdField_a_of_type_JavaLangString + ".patch";
+    bbdj.a(ajdd.a(this.this$0).jdField_a_of_type_ArrayOfByte, str);
+    ajdd.a(this.this$0);
   }
 }
 

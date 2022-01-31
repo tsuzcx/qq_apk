@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import oql;
+import pbm;
 
 public class ReadInJoyUserInfoRepository$1
   implements Runnable
 {
-  public ReadInJoyUserInfoRepository$1(oql paramoql, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
+  public ReadInJoyUserInfoRepository$1(pbm parampbm, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
   
   public void run()
   {
-    if (oql.a(this.this$0) != null) {
-      oql.a(this.this$0).a(this.a);
+    if (pbm.a(this.this$0) != null) {
+      pbm.a(this.this$0).a(this.a);
     }
   }
 }

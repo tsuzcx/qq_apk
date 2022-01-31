@@ -1,37 +1,27 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import java.util.ArrayList;
-
-class aswu
-  implements View.OnClickListener
+public class aswu
 {
-  aswu(asvw paramasvw, int paramInt) {}
+  public final long a;
+  public final String a;
+  public final boolean a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
   
-  public void onClick(View paramView)
+  public aswu(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
-    PicInfo localPicInfo = (PicInfo)paramView.getTag();
-    if (localPicInfo == null) {
-      return;
-    }
-    begr localbegr = begr.a(this.jdField_a_of_type_Asvw.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-    if (this.jdField_a_of_type_Int != 0) {
-      localbegr.c(this.jdField_a_of_type_Asvw.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131628911));
-    }
-    localbegr.c(ajjy.a(2131641475));
-    if (this.jdField_a_of_type_Asvw.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
-      localbegr.a(ajjy.a(2131641558), 3);
-    }
-    localbegr.c(2131625035);
-    localbegr.a(new aswv(this, paramView, localPicInfo, localbegr));
-    localbegr.show();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aswu
  * JD-Core Version:    0.7.0.1
  */

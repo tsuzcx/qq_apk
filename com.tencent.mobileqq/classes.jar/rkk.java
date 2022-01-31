@@ -1,22 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-class rkk
-  implements Animation.AnimationListener
+public abstract interface rkk
 {
-  rkk(rki paramrki) {}
+  public abstract int a(BaseData paramBaseData);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    rkg.a(this.a.a).getActivity().doOnBackPressed();
-    rkg.a(this.a.a).getActivity().overridePendingTransition(0, 0);
-  }
+  public abstract rkj a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract boolean a(BaseData paramBaseData);
 }
 
 

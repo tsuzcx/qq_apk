@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.newshare.job;
 
-import tda;
-import txr;
+import tpw;
+import ukn;
 
 public class ShareGroupAvatarSaveFileJob$1
   implements Runnable
 {
-  public ShareGroupAvatarSaveFileJob$1(tda paramtda, txr paramtxr) {}
+  public ShareGroupAvatarSaveFileJob$1(tpw paramtpw, ukn paramukn) {}
   
   public void run()
   {
-    tda.a(this.this$0, tda.a(this.this$0, this.a));
+    tpw.a(this.this$0, tpw.a(this.this$0, this.a));
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class DatingRecentDetail
-  extends atmo
+  extends aukm
 {
-  @atoc
+  @auma
   public String datingId;
 }
 

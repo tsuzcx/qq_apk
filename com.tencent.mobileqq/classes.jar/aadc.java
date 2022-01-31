@@ -1,31 +1,20 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.widget.XEditTextEx;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aadc
-  implements adzb
+class aadc
+  implements View.OnClickListener
 {
-  public aadc(BaseChatPie paramBaseChatPie) {}
+  aadc(aada paramaada) {}
   
-  public boolean a(PhotoListPanel paramPhotoListPanel)
+  public void onClick(View paramView)
   {
-    return false;
-  }
-  
-  public boolean b(PhotoListPanel paramPhotoListPanel)
-  {
-    if (this.a.K) {}
-    while ((this.a.o()) || (this.a.a == null) || (this.a.a.getText() == null) || (this.a.a.getText().length() <= 0)) {
-      return false;
-    }
-    this.a.aq();
-    return true;
+    this.a.a.d();
+    aada.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aadc
  * JD-Core Version:    0.7.0.1
  */

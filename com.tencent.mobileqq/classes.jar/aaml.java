@@ -1,18 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.Conversation;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aaml
-  implements DialogInterface.OnDismissListener
+  implements bjos
 {
-  public aaml(Conversation paramConversation) {}
+  public aaml(BaseChatPie paramBaseChatPie) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public Activity a()
   {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
-    }
-    this.a.a(1134057, 50L, true);
+    return this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+  }
+  
+  public SessionInfo a()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  }
+  
+  public boolean a()
+  {
+    return this.a.c();
   }
 }
 

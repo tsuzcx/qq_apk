@@ -1,15 +1,12 @@
-import android.support.annotation.NonNull;
-import java.util.List;
-
-public abstract interface bidp
-  extends biga
+public abstract interface bidp<T>
 {
-  @NonNull
-  public abstract List<String> a(int paramInt);
+  public abstract void a(int paramInt, String paramString, T paramT);
+  
+  public abstract void a(T paramT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bidp
  * JD-Core Version:    0.7.0.1
  */

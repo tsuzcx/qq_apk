@@ -1,47 +1,20 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.dataline.util.file.DLFileInfo;
-import com.dataline.util.widget.AsyncImageView;
-import com.dataline.util.widget.WaitTextView;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.dataline.activities.LiteActivity;
 
 public class do
-  implements Cloneable
+  implements TextWatcher
 {
-  int jdField_a_of_type_Int;
-  public Button a;
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public DLFileInfo a;
-  public AsyncImageView a;
-  public WaitTextView a;
-  public TextView b;
-  public TextView c;
+  public do(LiteActivity paramLiteActivity) {}
   
-  public do(dk paramdk) {}
-  
-  public Object clone()
+  public void afterTextChanged(Editable paramEditable)
   {
-    try
-    {
-      localObject = super.clone();
-      return localObject;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      do
-      {
-        Object localObject = this;
-      } while (!QLog.isColorLevel());
-      QLog.d("DatalineFilesAdapter", 2, "ItemHolder clone failed." + localCloneNotSupportedException.toString());
-    }
-    return this;
+    this.a.q();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

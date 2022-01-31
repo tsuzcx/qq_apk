@@ -1,29 +1,19 @@
-import android.os.Handler;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class asol
-  implements asou
+  implements DialogInterface.OnClickListener
 {
-  asol(asoi paramasoi) {}
+  asol(asoh paramasoh) {}
   
-  public void a(asot paramasot)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Asor != null) {
-      this.a.jdField_a_of_type_Asor.a();
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-    paramasot = asoi.a(this.a).a;
-    if (this.a.c()) {}
-    for (int i = 1;; i = 2)
-    {
-      asms.a(paramasot, i);
-      return;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asol
  * JD-Core Version:    0.7.0.1
  */

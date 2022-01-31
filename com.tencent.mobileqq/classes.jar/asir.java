@@ -1,28 +1,37 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
 
-public class asir
-  implements begw
+public abstract class asir
 {
-  public asir(NearbyGuideActivity paramNearbyGuideActivity, begr parambegr) {}
+  public asiu a;
+  public MiniAppActivity a;
   
-  public void OnClick(View paramView, int paramInt)
+  public asir(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Begr.cancel();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.a);
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = paramMiniAppActivity;
+  }
+  
+  public abstract void a();
+  
+  public void a(asiu paramasiu)
+  {
+    this.jdField_a_of_type_Asiu = paramasiu;
+    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity.jdField_a_of_type_Asiu = paramasiu;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.f();
+  }
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public void c()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     asir
  * JD-Core Version:    0.7.0.1
  */

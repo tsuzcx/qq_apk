@@ -1,54 +1,64 @@
-import android.text.TextUtils;
+import android.annotation.TargetApi;
+import android.support.annotation.NonNull;
+import java.io.File;
 
+@TargetApi(14)
 public class svm
+  extends sve
 {
-  public int a;
-  public String a;
-  public int b;
-  
-  public svm()
+  public svm(@NonNull String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    spz localspz = (spz)sqg.a(10);
-    String str = vlf.a();
-    this.jdField_a_of_type_JavaLangString = ((String)localspz.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_Int = ((Integer)localspz.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int))).intValue();
-    this.b = ((Integer)localspz.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(this.b))).intValue();
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, str))
+    super(paramArrayOfString);
+  }
+  
+  protected void a(String[] paramArrayOfString, svf paramsvf)
+  {
+    int n = paramArrayOfString.length;
+    int i = 0;
+    if (i < n)
     {
-      this.jdField_a_of_type_JavaLangString = str;
-      this.jdField_a_of_type_Int = 0;
-      localspz.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
-      localspz.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
-    }
-    urk.a(svc.b(), "MsgTabShowCounter(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a()
-  {
-    b();
-    this.jdField_a_of_type_Int += 1;
-    ((spz)sqg.a(10)).b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
-    urk.a(svc.b(), "addAutoShowCount(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a()
-  {
-    b();
-    urk.a(svc.b(), "shouldAutoShow(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
-    return this.jdField_a_of_type_Int < this.b;
-  }
-  
-  public void b()
-  {
-    String str = vlf.a();
-    if (!TextUtils.equals(str, this.jdField_a_of_type_JavaLangString))
-    {
-      spz localspz = (spz)sqg.a(10);
-      this.jdField_a_of_type_JavaLangString = str;
-      this.jdField_a_of_type_Int = 0;
-      localspz.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
-      localspz.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
+      File localFile1 = new File(paramArrayOfString[i]);
+      double d = a(localFile1);
+      File[] arrayOfFile = localFile1.listFiles();
+      if (arrayOfFile == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        long l = System.currentTimeMillis();
+        int i1 = arrayOfFile.length;
+        int k = 0;
+        int j = 0;
+        for (;;)
+        {
+          if (j < i1)
+          {
+            if (j % 150 == 0) {}
+            try
+            {
+              Thread.sleep(100L);
+              File localFile2 = arrayOfFile[j];
+              int m = k;
+              if (l - localFile2.lastModified() > 86400000L)
+              {
+                a(localFile2);
+                m = k + 1;
+              }
+              j += 1;
+              k = m;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              for (;;)
+              {
+                veg.e("Q.qqstory.cleaner:TimeCleanStep", "sleep error ,InterruptedException");
+              }
+            }
+          }
+        }
+        paramsvf.jdField_b_of_type_Double = (d - a(localFile1) + paramsvf.jdField_b_of_type_Double);
+        paramsvf.jdField_b_of_type_Int = (k + paramsvf.jdField_b_of_type_Int);
+      }
     }
   }
 }

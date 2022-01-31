@@ -1,18 +1,18 @@
 package dov.com.qq.im;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
-import bbmy;
-import bhdi;
-import bhzb;
-import bhzc;
+import bcpw;
+import bify;
+import bjqt;
+import bjqu;
 import com.tencent.common.app.BaseApplicationImpl;
 import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
 
 public class QIMCameraCaptureUnit$7
   implements Runnable
 {
-  public QIMCameraCaptureUnit$7(bhdi parambhdi, int paramInt) {}
+  public QIMCameraCaptureUnit$7(bify parambify, int paramInt) {}
   
   public void run()
   {
@@ -26,28 +26,28 @@ public class QIMCameraCaptureUnit$7
         do
         {
           return;
-          bbmy.a(BaseApplicationImpl.getApplication(), ajjy.a(2131643979), 1).a();
-          Activity localActivity = this.this$0.jdField_a_of_type_Bhzc.a();
+          bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131709764), 1).a();
+          Activity localActivity = this.this$0.jdField_a_of_type_Bjqu.a();
           if ((localActivity != null) && (!localActivity.isFinishing())) {
-            this.this$0.jdField_a_of_type_Bhzb.a(2);
+            this.this$0.jdField_a_of_type_Bjqt.a(2);
           }
         } while (!this.this$0.h);
-        this.this$0.M();
+        this.this$0.K();
         return;
         if ((this.this$0.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.a()) && (this.this$0.h))
         {
           this.this$0.b(null, false);
           return;
         }
-        bbmy.a(BaseApplicationImpl.getContext(), this.this$0.jdField_a_of_type_JavaLangString, 0).a();
+        bcpw.a(BaseApplicationImpl.getContext(), this.this$0.jdField_a_of_type_JavaLangString, 0).a();
         this.this$0.g();
-        this.this$0.N();
+        this.this$0.L();
       } while (!this.this$0.h);
-      this.this$0.L();
+      this.this$0.J();
       return;
-      bbmy.a(BaseApplicationImpl.getContext(), ajjy.a(2131643981), 0).a();
+      bcpw.a(BaseApplicationImpl.getContext(), ajyc.a(2131709766), 0).a();
     } while (!this.this$0.h);
-    this.this$0.L();
+    this.this$0.J();
   }
 }
 

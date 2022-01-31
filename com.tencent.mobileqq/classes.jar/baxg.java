@@ -1,58 +1,74 @@
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.util.FaceDecodeTask;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import mqq.os.MqqHandler;
 
-public class baxg
+public final class baxg
+  extends MqqHandler
 {
-  private static baxg jdField_a_of_type_Baxg;
-  private ArrayList<baxe> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-  private LinkedList<baxd> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  
-  private baxe a(int paramInt1, int paramInt2)
+  public baxg(Looper paramLooper)
   {
-    return new baxe(paramInt1, paramInt2);
+    super(paramLooper);
   }
   
-  public static baxg a()
+  public void handleMessage(Message paramMessage)
   {
-    if (jdField_a_of_type_Baxg == null) {}
-    try
+    if (paramMessage == null) {}
+    label4:
+    baxh localbaxh;
+    label143:
+    label150:
+    do
     {
-      if (jdField_a_of_type_Baxg == null) {
-        jdField_a_of_type_Baxg = new baxg();
-      }
-      return jdField_a_of_type_Baxg;
-    }
-    finally {}
-  }
-  
-  public baxe a(baxd parambaxd, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 5)
-    {
-      this.jdField_a_of_type_JavaUtilLinkedList.add(parambaxd);
-      return null;
-    }
-    baxe localbaxe = a(paramInt1, paramInt2);
-    localbaxe.a(parambaxd);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localbaxe);
-    return localbaxe;
-  }
-  
-  public void a(baxe parambaxe)
-  {
-    if (parambaxe != null)
-    {
-      parambaxe.c();
-      this.jdField_a_of_type_JavaUtilArrayList.remove(parambaxe);
-      if ((this.jdField_a_of_type_JavaUtilArrayList.size() < 5) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()))
+      do
       {
-        parambaxe = (baxd)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
-        baxe localbaxe = a(parambaxe.getRenderWidth(), parambaxe.getRenderHeight());
-        localbaxe.a(parambaxe);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localbaxe);
-        parambaxe.onSetRenderer(localbaxe);
-      }
+        int i;
+        do
+        {
+          break label4;
+          do
+          {
+            return;
+          } while (paramMessage.what != FaceDecodeTask.jdField_a_of_type_Int);
+          if (FaceDecodeTask.b.size() <= 0) {
+            break label150;
+          }
+          i = 0;
+          if (i >= FaceDecodeTask.b.size()) {
+            break label143;
+          }
+          paramMessage = (FaceDecodeTask)FaceDecodeTask.b.get(i);
+          if ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+            break;
+          }
+          localbaxh = (baxh)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
+        } while (localbaxh == null);
+        if (paramMessage.jdField_a_of_type_Boolean)
+        {
+          paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b = 2;
+          localbaxh.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          localbaxh.a(paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
+        }
+        FaceDecodeTask.b.clear();
+        return;
+        paramMessage = (FaceDecodeTask)paramMessage.obj;
+      } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
+      localbaxh = (baxh)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localbaxh == null);
+    if (paramMessage.jdField_a_of_type_Boolean)
+    {
+      paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b = 2;
+      localbaxh.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+      return;
     }
+    localbaxh.a(paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

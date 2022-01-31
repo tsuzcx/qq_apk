@@ -1,33 +1,62 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.ArrayList;
+import android.opengl.GLES20;
 
 public class avyf
-  extends avyh
 {
-  public LinearLayout a;
+  private int a;
+  private int b;
+  private int c;
+  private int d;
   
-  public avyf(ViewGroup paramViewGroup)
+  public avyf(int paramInt1, int paramInt2)
   {
-    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131496773, paramViewGroup, false);
-    this.c = ((TextView)this.b.findViewById(2131304741));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131303679));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131304761);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131303176));
+    this.c = paramInt1;
+    this.d = paramInt2;
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenFramebuffers(1, arrayOfInt, 0);
+    this.b = arrayOfInt[0];
+    GLES20.glBindFramebuffer(36160, this.b);
+    a();
   }
   
-  public LinearLayout a()
+  public void a()
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    GLES20.glBindFramebuffer(36160, 0);
+    avyg.a(0);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt < 0)
+    {
+      veg.d("AvEditor.FrameBuffer", "invalid textureId " + paramInt);
+      return;
+    }
+    int i = paramInt;
+    if (paramInt == 0) {
+      i = avyg.a(1)[0];
+    }
+    GLES20.glActiveTexture(33984);
+    avyg.a(i);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    GLES20.glTexImage2D(3553, 0, 6408, this.c, this.d, 0, 6408, 5121, null);
+    GLES20.glViewport(0, 0, this.c, this.d);
+    GLES20.glBindFramebuffer(36160, this.b);
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, i, 0);
+    GLES20.glClear(16384);
+    this.a = i;
+  }
+  
+  public void b()
+  {
+    GLES20.glDeleteFramebuffers(1, new int[] { this.b }, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avyf
  * JD-Core Version:    0.7.0.1
  */

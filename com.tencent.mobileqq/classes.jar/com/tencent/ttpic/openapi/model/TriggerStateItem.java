@@ -217,10 +217,18 @@ public class TriggerStateItem
     this.mIsStateValid = false;
   }
   
-  public boolean isTriggerState(String paramString)
+  public boolean isTriggerState(ArrayList<String> paramArrayList)
   {
-    if ((this.mStateMap != null) && (this.mStateMap.containsKey(paramString))) {
-      return ((Integer)this.mStateMap.get(paramString)).intValue() == this.mCurrentState;
+    if (paramArrayList != null)
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        String str = (String)paramArrayList.next();
+        if ((this.mStateMap != null) && (this.mStateMap.containsKey(str)) && (((Integer)this.mStateMap.get(str)).intValue() == this.mCurrentState)) {
+          return true;
+        }
+      }
     }
     return false;
   }

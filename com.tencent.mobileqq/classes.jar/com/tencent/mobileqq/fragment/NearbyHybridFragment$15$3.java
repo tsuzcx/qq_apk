@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.fragment;
 
-import apor;
+import aqif;
 
 public class NearbyHybridFragment$15$3
   implements Runnable
 {
-  public NearbyHybridFragment$15$3(apor paramapor) {}
+  public NearbyHybridFragment$15$3(aqif paramaqif) {}
   
   public void run()
   {

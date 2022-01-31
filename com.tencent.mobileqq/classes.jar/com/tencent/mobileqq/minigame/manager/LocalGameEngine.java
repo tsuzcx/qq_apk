@@ -13,7 +13,7 @@ public class LocalGameEngine
   public static final String LIBNAME_PNG_SO = "png-armeabi";
   public static final String LIBNAME_PNG_SO_ARMV7A = "png-armeabi-v7a";
   public static final String LOCAL_ENGINE_FLAG = "soTest";
-  public static final String LOCAL_ENGINE_VERSION = "1.10.0.00173";
+  public static final String LOCAL_ENGINE_VERSION = "1.12.1.00001";
   public static final String LOG_TAG = "LocalGameEngine";
   private static volatile LocalGameEngine sInstance;
   public BaseLibInfo mLocalBaseLibInfo;
@@ -42,7 +42,7 @@ public class LocalGameEngine
   {
     this.mLocalBaseLibInfo = new BaseLibInfo();
     this.mLocalBaseLibInfo.baseLibUrl = "assets://mini";
-    this.mLocalBaseLibInfo.baseLibVersion = GameWnsUtils.getGameEngineVersion("1.10.0.00173");
+    this.mLocalBaseLibInfo.baseLibVersion = GameWnsUtils.getGameEngineVersion("1.12.1.00001");
     QLog.i("LocalGameEngine", 1, "[MiniEng]initLocalBaseLibInfo start");
     long l = System.currentTimeMillis();
     QLog.i("LocalGameEngine", 1, "[MiniEng]initLocalBaseLibInfo cost=" + (System.currentTimeMillis() - l));
@@ -57,7 +57,7 @@ public class LocalGameEngine
   
   private void initLocalEngineVersion()
   {
-    this.mLocalEngineVersion = new EngineVersion(GameWnsUtils.getGameEngineVersion("1.10.0.00173"));
+    this.mLocalEngineVersion = new EngineVersion(GameWnsUtils.getGameEngineVersion("1.12.1.00001"));
   }
   
   private boolean isQQSpeedPackage()

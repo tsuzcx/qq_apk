@@ -1,82 +1,31 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.PlayerGestureGroupHolder.OnViewPagerGestureListener.1;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tnd
-  extends GestureDetector.SimpleOnGestureListener
+  extends syp
 {
-  private tnd(tnb paramtnb) {}
+  public List<uvs> a = new ArrayList();
+  public boolean b;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public tnd(qqstory_service.RspStoryFeedIdList paramRspStoryFeedIdList)
   {
-    int i = 0;
-    Object localObject = (StoryPlayerGroupHolder)this.a.a();
-    if (((StoryPlayerGroupHolder)localObject).a() == null) {
-      return super.onDoubleTap(paramMotionEvent);
-    }
-    localObject = (ttr)((StoryPlayerGroupHolder)localObject).b(ttr.class);
-    if ((localObject != null) && (((ttr)localObject).d()))
-    {
-      try
-      {
-        localObject = (AnimationDrawable)this.a.a().getResources().getDrawable(2130845842);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        ((AnimationDrawable)localObject).start();
-        int j = 0;
-        while (i < ((AnimationDrawable)localObject).getNumberOfFrames())
-        {
-          j += ((AnimationDrawable)localObject).getDuration(i);
-          i += 1;
-        }
-        ThreadManager.getUIHandler().postDelayed(new PlayerGestureGroupHolder.OnViewPagerGestureListener.1(this, (AnimationDrawable)localObject), j);
-      }
-      catch (OutOfMemoryError paramMotionEvent)
-      {
-        awpu.a(paramMotionEvent);
-        return false;
-      }
-      urk.c(this.a.jdField_a_of_type_JavaLangString, "onDoubleTap handle");
-    }
+    super(paramRspStoryFeedIdList.result, paramRspStoryFeedIdList.is_end, paramRspStoryFeedIdList.next_cookie);
+    if (paramRspStoryFeedIdList.is_today_end.get() == 1) {}
     for (;;)
     {
-      return super.onDoubleTap(paramMotionEvent);
-      urk.c(this.a.jdField_a_of_type_JavaLangString, "onDoubleTap not handle");
-    }
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    super.onLongPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    paramMotionEvent = (StoryPlayerGroupHolder)this.a.a();
-    VideoViewVideoHolder localVideoViewVideoHolder = paramMotionEvent.a();
-    if (localVideoViewVideoHolder != null) {
-      switch (localVideoViewVideoHolder.a())
+      this.b = bool;
+      paramRspStoryFeedIdList = paramRspStoryFeedIdList.feed_seq_info_list.get().iterator();
+      while (paramRspStoryFeedIdList.hasNext())
       {
+        uvs localuvs = new uvs((qqstory_struct.FeedSeqInfo)paramRspStoryFeedIdList.next());
+        this.a.add(localuvs);
       }
-    }
-    for (;;)
-    {
-      urk.c(this.a.jdField_a_of_type_JavaLangString, "onSingleTapConfirmed");
-      return true;
-      paramMotionEvent.a(true, true);
-      urp.a("play_video", "clk_video", 0, 0, new String[] { "", "2", "", "" });
-      continue;
-      paramMotionEvent.a(false, true);
-      urp.a("play_video", "clk_video", 0, 0, new String[] { "", "1", "", "" });
+      bool = false;
     }
   }
 }

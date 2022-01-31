@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.view.widget;
 
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import java.lang.ref.WeakReference;
-import rho;
-import rhr;
+import rue;
+import ruh;
 
 public class TabLayoutCompat$TabLayoutOnPageChangeListener
   implements ViewPager.OnPageChangeListener
@@ -60,11 +60,11 @@ public class TabLayoutCompat$TabLayoutOnPageChangeListener
     label105:
     for (boolean bool = true;; bool = false)
     {
-      rho localrho1 = TabLayoutCompat.a(localTabLayoutCompat);
+      rue localrue1 = TabLayoutCompat.a(localTabLayoutCompat);
       localTabLayoutCompat.b(localTabLayoutCompat.a(paramInt), bool);
-      rho localrho2 = localTabLayoutCompat.a(paramInt);
-      if ((TabLayoutCompat.a(localTabLayoutCompat) != null) && (localrho2 != null)) {
-        TabLayoutCompat.a(localTabLayoutCompat).a(localrho2, localrho1, 0);
+      rue localrue2 = localTabLayoutCompat.a(paramInt);
+      if ((TabLayoutCompat.a(localTabLayoutCompat) != null) && (localrue2 != null)) {
+        TabLayoutCompat.a(localTabLayoutCompat).a(localrue2, localrue1, 0);
       }
       return;
     }

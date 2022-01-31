@@ -1,45 +1,35 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.CompInfoBase;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBaseVidList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class tbw
-  extends slu
+class tbw
+  implements syt<tmq, tok>
 {
-  public final List<taj> a = new ArrayList();
+  tbw(tbu paramtbu) {}
   
-  public tbw(qqstory_service.RspStoryPlayerTagInfo paramRspStoryPlayerTagInfo)
+  public void a(@NonNull tmq paramtmq, @Nullable tok paramtok, @NonNull ErrorMessage paramErrorMessage)
   {
-    super(paramRspStoryPlayerTagInfo.result);
-    Iterator localIterator = paramRspStoryPlayerTagInfo.tag_info.get().iterator();
-    Object localObject;
-    String str;
-    qqstory_struct.TagInfoBase localTagInfoBase;
-    if (localIterator.hasNext())
+    veg.b("AddressDataProvider", "requestAddress Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramtok != null))
     {
-      localObject = (qqstory_struct.TagInfoBaseVidList)localIterator.next();
-      str = ((qqstory_struct.TagInfoBaseVidList)localObject).vid.get().toStringUtf8();
-      localTagInfoBase = (qqstory_struct.TagInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).tag_info.get();
-      if (!((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.has()) {
-        break label163;
-      }
+      veg.a("AddressDataProvider", "requestAddress onCmdRespond success : %s .", paramtok.toString());
+      this.a.jdField_a_of_type_JavaLangObject = new tbx(paramtok.a, paramtok.c, paramtok.d, paramtok.e, paramtok.f, paramtmq.d, paramtmq.e);
+      this.a.a("country", paramtok.a);
+      this.a.a("province", paramtok.c);
+      this.a.a("city", paramtok.d);
+      this.a.a("district", paramtok.e);
+      this.a.a("street", paramtok.f);
+      this.a.a("longitude", paramtmq.d);
+      this.a.a("latitude", paramtmq.e);
+      this.a.a("time", System.currentTimeMillis());
+      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
     }
-    label163:
-    for (paramRspStoryPlayerTagInfo = new vid((qqstory_struct.CompInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.get());; paramRspStoryPlayerTagInfo = null)
+    for (;;)
     {
-      if (((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.has()) {}
-      for (localObject = ((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.get().toStringUtf8();; localObject = null)
-      {
-        this.a.add(new taj(str, new vil(localTagInfoBase), paramRspStoryPlayerTagInfo, (String)localObject));
-        break;
-        return;
-      }
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+      veg.d("AddressDataProvider", "requestAddress onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramtmq });
+      this.a.a(false, null);
     }
   }
 }

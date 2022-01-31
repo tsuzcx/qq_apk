@@ -1,236 +1,114 @@
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.JumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.articlesummary.articlesummary.BiuMultiLevel;
-import tencent.im.oidb.articlesummary.articlesummary.BiuOneLevelItem;
-import tencent.im.oidb.articlesummary.articlesummary.JumpInfo;
-import tencent.im.oidb.articlesummary.feeds_info.BiuMultiLevel;
-import tencent.im.oidb.articlesummary.feeds_info.BiuOneLevelItem;
-import tencent.im.oidb.articlesummary.feeds_info.JumpInfo;
-import tencent.im.oidb.articlesummary.feeds_info.UGCVoiceInfo;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class pqm
-  implements Cloneable
 {
-  public Long a;
-  public List<SocializeFeedsInfo.BiuCommentInfo> a;
-  public Long b;
+  private List<pqp> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public pqm()
+  public static pqm a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    return pqo.a();
   }
   
-  public SpannableStringBuilder a(ArticleInfo paramArticleInfo, String paramString, oqi paramoqi)
+  public pqp a()
   {
-    return SocializeFeedsInfo.a(paramArticleInfo, paramString, paramoqi, this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public CharSequence a()
-  {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    int i = localList.size();
-    String str = ((SocializeFeedsInfo.BiuCommentInfo)localList.get(i - 1)).jdField_a_of_type_JavaLangString;
-    Object localObject;
-    label82:
-    SocializeFeedsInfo.BiuCommentInfo localBiuCommentInfo;
-    if ((!TextUtils.isEmpty(str)) && ((str.startsWith(":")) || (str.startsWith("："))))
+    pqp localpqp1 = new pqp();
+    long l = NetConnInfoCenter.getServerTime();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      localObject = str.substring(1);
-      localSpannableStringBuilder.append((CharSequence)localObject);
-      i -= 2;
-      if (i < 0) {
-        break label326;
-      }
-      localBiuCommentInfo = (SocializeFeedsInfo.BiuCommentInfo)localList.get(i);
-      switch (localBiuCommentInfo.c)
+      pqp localpqp2 = (pqp)localIterator.next();
+      if (localpqp2.jdField_a_of_type_Long + localpqp2.jdField_a_of_type_Int > l)
       {
-      default: 
-        localObject = ReadInJoyUserInfoModule.a(localBiuCommentInfo.jdField_a_of_type_JavaLangLong.longValue(), null);
-        if (localObject != null)
-        {
-          localObject = ((ReadInJoyUserInfo)localObject).nick;
-          label150:
-          str = "@" + (String)localObject;
-          localObject = str;
-          if (localBiuCommentInfo.c == 1) {
-            localObject = str + " ";
-          }
-          if (localBiuCommentInfo.jdField_a_of_type_JavaLangString != null) {
-            break label317;
-          }
-        }
-        break;
+        localpqp1.jdField_a_of_type_JavaUtilSet.addAll(localpqp2.jdField_a_of_type_JavaUtilSet);
+        localpqp1.b.addAll(localpqp2.b);
       }
     }
-    label264:
-    label301:
-    label317:
-    for (str = "";; str = localBiuCommentInfo.jdField_a_of_type_JavaLangString)
-    {
-      localSpannableStringBuilder.append((CharSequence)localObject).append(str);
-      do
-      {
-        i -= 1;
-        break label82;
-        localObject = str;
-        if (str != null) {
-          break;
-        }
-        localObject = "";
-        break;
-      } while (localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo == null);
-      if (SocializeFeedsInfo.JumpInfo.a(localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo) == null)
-      {
-        localObject = "";
-        if (localBiuCommentInfo.jdField_a_of_type_JavaLangString != null) {
-          break label301;
-        }
-      }
-      for (str = "";; str = localBiuCommentInfo.jdField_a_of_type_JavaLangString)
-      {
-        localSpannableStringBuilder.append((CharSequence)localObject).append(str);
-        break;
-        localObject = SocializeFeedsInfo.JumpInfo.a(localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo);
-        break label264;
-      }
-      localObject = ReadInJoyUserInfoModule.a();
-      break label150;
-    }
-    label326:
-    return localSpannableStringBuilder;
+    localpqp1.b.removeAll(localpqp1.jdField_a_of_type_JavaUtilSet);
+    QLog.e("UserReadUnReadInfoManager", 1, "getEffectUserReadInfo:" + localpqp1);
+    return localpqp1;
   }
   
-  public pqm a()
+  public void a()
   {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Boolean = false;
+    QLog.e("UserReadUnReadInfoManager", 1, "clearUserReadUnRead");
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    int j = 0;
+    pqp localpqp = new pqp();
+    localpqp.jdField_a_of_type_Long = NetConnInfoCenter.getServerTime();
     try
     {
-      pqm localpqm = (pqm)super.clone();
-      try
+      localpqp.jdField_a_of_type_Int = (paramJSONObject.getInt("effective_time") * 1000);
+      Object localObject = paramJSONObject.optJSONArray("clicked_rowkey");
+      JSONArray localJSONArray = paramJSONObject.optJSONArray("expose_rowkey");
+      int i;
+      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
       {
-        localpqm.jdField_a_of_type_JavaUtilList = new ArrayList();
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext())
+        i = 0;
+        while (i < ((JSONArray)localObject).length())
         {
-          SocializeFeedsInfo.BiuCommentInfo localBiuCommentInfo = (SocializeFeedsInfo.BiuCommentInfo)localIterator.next();
-          localpqm.jdField_a_of_type_JavaUtilList.add(localBiuCommentInfo.a());
+          String str = ((JSONArray)localObject).getString(i);
+          localpqp.jdField_a_of_type_JavaUtilSet.add(str);
+          i += 1;
         }
-        return localpqm;
       }
-      catch (CloneNotSupportedException localCloneNotSupportedException2) {}
-      return null;
+      if ((localJSONArray != null) && (localJSONArray.length() > 0))
+      {
+        i = j;
+        while (i < localJSONArray.length())
+        {
+          localObject = localJSONArray.getString(i);
+          localpqp.b.add(localObject);
+          i += 1;
+        }
+      }
+      return;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException1) {}
-  }
-  
-  public articlesummary.BiuMultiLevel a()
-  {
-    articlesummary.BiuMultiLevel localBiuMultiLevel = new articlesummary.BiuMultiLevel();
-    if (this.jdField_a_of_type_JavaLangLong != null) {
-      localBiuMultiLevel.uint64_origin_feeds_id.set(this.jdField_a_of_type_JavaLangLong.longValue());
-    }
-    if (this.jdField_b_of_type_JavaLangLong != null) {
-      localBiuMultiLevel.uint64_origin_feeds_type.set(this.jdField_b_of_type_JavaLangLong.longValue());
-    }
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0))
+    catch (Exception localException)
     {
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        SocializeFeedsInfo.BiuCommentInfo localBiuCommentInfo = (SocializeFeedsInfo.BiuCommentInfo)localIterator.next();
-        articlesummary.BiuOneLevelItem localBiuOneLevelItem = new articlesummary.BiuOneLevelItem();
-        localBiuOneLevelItem.uint32_biu_time.set(localBiuCommentInfo.jdField_a_of_type_Int);
-        localBiuOneLevelItem.uint64_uin.set(localBiuCommentInfo.jdField_a_of_type_JavaLangLong.longValue());
-        if (localBiuCommentInfo.jdField_b_of_type_JavaLangLong != null) {
-          localBiuOneLevelItem.uint64_feeds_id.set(localBiuCommentInfo.jdField_b_of_type_JavaLangLong.longValue());
-        }
-        if (!TextUtils.isEmpty(localBiuCommentInfo.jdField_b_of_type_JavaLangString)) {
-          localBiuOneLevelItem.bytes_biu_comments.set(ByteStringMicro.copyFromUtf8(localBiuCommentInfo.jdField_b_of_type_JavaLangString));
-        }
-        localBiuOneLevelItem.feeds_type.set(localBiuCommentInfo.jdField_b_of_type_Int);
-        localBiuOneLevelItem.op_type.set(localBiuCommentInfo.c);
-        if (localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo != null)
-        {
-          localBiuOneLevelItem.msg_jump_info.set(new articlesummary.JumpInfo());
-          localBiuOneLevelItem.msg_jump_info.uint64_id.set(localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo.a());
-          localBiuOneLevelItem.msg_jump_info.bytes_jump_url.set(ByteStringMicro.copyFromUtf8(localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo.b()));
-          localBiuOneLevelItem.msg_jump_info.bytes_wording.set(ByteStringMicro.copyFromUtf8(localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo.a()));
-        }
-        localArrayList.add(localBiuOneLevelItem);
-      }
-      localBiuMultiLevel.rpt_biu_mutli_level.set(localArrayList);
+      QLog.e("UserReadUnReadInfoManager", 1, "", localException);
+      QLog.i("UserReadUnReadInfoManager", 1, "addUserReadInfo:" + paramJSONObject);
+      this.jdField_a_of_type_JavaUtilList.add(localpqp);
     }
-    return localBiuMultiLevel;
   }
   
-  public feeds_info.BiuMultiLevel a()
+  public void a(boolean paramBoolean)
   {
-    feeds_info.BiuMultiLevel localBiuMultiLevel = new feeds_info.BiuMultiLevel();
-    if (this.jdField_a_of_type_JavaLangLong != null) {
-      localBiuMultiLevel.uint64_origin_feeds_id.set(this.jdField_a_of_type_JavaLangLong.longValue());
-    }
-    if (this.jdField_b_of_type_JavaLangLong != null) {
-      localBiuMultiLevel.uint64_origin_feeds_type.set(this.jdField_b_of_type_JavaLangLong.longValue());
-    }
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0))
-    {
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        SocializeFeedsInfo.BiuCommentInfo localBiuCommentInfo = (SocializeFeedsInfo.BiuCommentInfo)localIterator.next();
-        feeds_info.BiuOneLevelItem localBiuOneLevelItem = new feeds_info.BiuOneLevelItem();
-        localBiuOneLevelItem.uint32_biu_time.set(localBiuCommentInfo.jdField_a_of_type_Int);
-        localBiuOneLevelItem.uint64_uin.set(localBiuCommentInfo.jdField_a_of_type_JavaLangLong.longValue());
-        if (localBiuCommentInfo.jdField_b_of_type_JavaLangLong != null) {
-          localBiuOneLevelItem.uint64_feeds_id.set(localBiuCommentInfo.jdField_b_of_type_JavaLangLong.longValue());
-        }
-        if (!TextUtils.isEmpty(localBiuCommentInfo.jdField_b_of_type_JavaLangString)) {
-          localBiuOneLevelItem.bytes_biu_comments.set(ByteStringMicro.copyFromUtf8(localBiuCommentInfo.jdField_b_of_type_JavaLangString));
-        }
-        localBiuOneLevelItem.feeds_type.set(localBiuCommentInfo.jdField_b_of_type_Int);
-        localBiuOneLevelItem.op_type.set(localBiuCommentInfo.c);
-        if (localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo != null)
-        {
-          localBiuOneLevelItem.msg_jump_info.set(new feeds_info.JumpInfo());
-          localBiuOneLevelItem.msg_jump_info.uint64_id.set(localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo.a());
-          localBiuOneLevelItem.msg_jump_info.bytes_jump_url.set(ByteStringMicro.copyFromUtf8(localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo.b()));
-          localBiuOneLevelItem.msg_jump_info.bytes_wording.set(ByteStringMicro.copyFromUtf8(localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo.a()));
-        }
-        if (localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo != null)
-        {
-          localBiuOneLevelItem.msg_voice_info.set(new feeds_info.UGCVoiceInfo());
-          localBiuOneLevelItem.msg_voice_info.bytes_voice_url.set(ByteStringMicro.copyFromUtf8(localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo.jdField_a_of_type_JavaLangString));
-          localBiuOneLevelItem.msg_voice_info.uint32_duration.set(localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo.jdField_a_of_type_Int);
-          localBiuOneLevelItem.msg_voice_info.uint32_file_size.set(localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo.jdField_b_of_type_Int);
-        }
-        localArrayList.add(localBiuOneLevelItem);
-      }
-      localBiuMultiLevel.rpt_biu_mutli_level.set(localArrayList);
-    }
-    return localBiuMultiLevel;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public String toString()
+  public boolean a()
   {
-    return "BiuInfo{oriFeedId=" + this.jdField_a_of_type_JavaLangLong + "BiuCommentList=" + this.jdField_a_of_type_JavaUtilList + "oriFeedType" + this.jdField_b_of_type_JavaLangLong;
+    pqp localpqp = a();
+    return (!localpqp.jdField_a_of_type_JavaUtilSet.isEmpty()) || (!localpqp.b.isEmpty());
+  }
+  
+  public void b()
+  {
+    QLog.e("UserReadUnReadInfoManager", 1, "onStart");
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void c()
+  {
+    QLog.e("UserReadUnReadInfoManager", 1, "onStop");
+    a();
   }
 }
 

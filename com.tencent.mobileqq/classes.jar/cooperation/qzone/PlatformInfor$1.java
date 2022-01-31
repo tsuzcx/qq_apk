@@ -1,16 +1,16 @@
 package cooperation.qzone;
 
 import android.content.Context;
-import bfpj;
+import bgxq;
 
 public class PlatformInfor$1
   implements Runnable
 {
-  public PlatformInfor$1(bfpj parambfpj, Context paramContext) {}
+  public PlatformInfor$1(bgxq parambgxq, Context paramContext) {}
   
   public void run()
   {
-    bfpj.a(this.this$0, SharpPDec.a(this.a));
+    bgxq.a(this.this$0, SharpPDec.a(this.a));
   }
 }
 

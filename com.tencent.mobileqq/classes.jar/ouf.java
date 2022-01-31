@@ -1,14 +1,24 @@
-class ouf
-  implements pjw
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
+import com.tencent.mobileqq.widget.AutoFitTextView;
+
+public class ouf
+  implements bcji
 {
-  ouf(ouc paramouc, opw paramopw) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
+  AutoFitTextView jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView;
+  ImageView b;
   
-  public void a()
+  public ouf(oud paramoud) {}
+  
+  public int a()
   {
-    qpj localqpj = this.jdField_a_of_type_Opw.a().a();
-    if (localqpj != null) {
-      localqpj.a(null, this.jdField_a_of_type_Opw.a(), 1);
-    }
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth();
   }
 }
 

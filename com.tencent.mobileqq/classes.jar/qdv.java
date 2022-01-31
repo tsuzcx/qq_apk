@@ -1,21 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
-
 public class qdv
-  extends AnimatorListenerAdapter
 {
-  public qdv(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
-  }
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public int c;
+  public String c = "";
+  public String d = "";
 }
 
 

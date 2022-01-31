@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bbms;
+import bcpq;
 
 class LoginVerifyCodeActivity$5
   implements Runnable
@@ -11,8 +11,8 @@ class LoginVerifyCodeActivity$5
     {
       if ((LoginVerifyCodeActivity.a(this.this$0) == null) && (!this.this$0.isFinishing()))
       {
-        LoginVerifyCodeActivity.a(this.this$0, new bbms(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
-        LoginVerifyCodeActivity.a(this.this$0).c(2131629253);
+        LoginVerifyCodeActivity.a(this.this$0, new bcpq(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+        LoginVerifyCodeActivity.a(this.this$0).c(2131694930);
       }
       if ((LoginVerifyCodeActivity.a(this.this$0) != null) && (!LoginVerifyCodeActivity.a(this.this$0).isShowing())) {
         LoginVerifyCodeActivity.a(this.this$0).show();

@@ -1,33 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class arkj
+  implements DialogInterface.OnClickListener
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
+  arkj(arkh paramarkh, bbgg parambbgg) {}
   
-  arkj(arki paramarki)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Looper localLooper2 = Looper.myLooper();
-    Looper localLooper1 = localLooper2;
-    if (localLooper2 == null) {
-      localLooper1 = Looper.getMainLooper();
-    }
-    if (localLooper1 != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler = new arkk(this, localLooper1, paramarki);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler = null;
-  }
-  
-  Handler a()
-  {
-    return this.jdField_a_of_type_AndroidOsHandler;
+    this.jdField_a_of_type_Bbgg.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arkj
  * JD-Core Version:    0.7.0.1
  */

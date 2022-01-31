@@ -1,71 +1,29 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class baly
+final class baly
+  extends ClickableSpan
 {
-  public String a;
-  public JSONObject a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  baly(String paramString, MessageRecord paramMessageRecord) {}
   
-  public baly(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    this.b = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
+    asou.a(paramView.getContext(), str, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
   }
   
-  public JSONObject a(Context paramContext)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    Object localObject = null;
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_OrgJsonJSONObject != null)
-        {
-          paramContext = this.jdField_a_of_type_OrgJsonJSONObject;
-          return paramContext;
-        }
-        if ((paramContext == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-        {
-          QLog.e("TaskInfo", 1, "readLocalJsonFile, context or json_name null, context=" + paramContext + ", json_name=" + this.jdField_a_of_type_JavaLangString);
-          paramContext = localObject;
-          continue;
-        }
-        paramContext = new File(paramContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
-      }
-      finally {}
-      if (paramContext.exists()) {
-        paramContext = bace.a(paramContext);
-      }
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramContext);
-        paramContext = this.jdField_a_of_type_OrgJsonJSONObject;
-      }
-      catch (Exception paramContext)
-      {
-        for (;;)
-        {
-          this.jdField_a_of_type_OrgJsonJSONObject = null;
-          QLog.e("TaskInfo", 1, "readLocalJsonFile, exception=" + MsfSdkUtils.getStackTraceString(paramContext));
-        }
-      }
-    }
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baly
  * JD-Core Version:    0.7.0.1
  */

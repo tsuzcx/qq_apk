@@ -1,14 +1,26 @@
-import android.support.annotation.NonNull;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.CircleProgress;
-
-public abstract interface auum
+public class auum
 {
-  public abstract boolean a(@NonNull TextView paramTextView, @NonNull CircleProgress paramCircleProgress, long paramLong, float paramFloat);
+  public float a;
+  public int a;
+  public int b;
+  public int c;
+  
+  public auum(int paramInt1, float paramFloat, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
+  
+  public String toString()
+  {
+    return super.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auum
  * JD-Core Version:    0.7.0.1
  */

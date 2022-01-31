@@ -1,58 +1,77 @@
-import android.text.TextUtils;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopGift;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class adso
-  implements URLDrawable.DownloadListener
+  extends ClickableSpan
 {
-  adso(adsm paramadsm, URLDrawable paramURLDrawable, MessageForTroopGift paramMessageForTroopGift, adst paramadst) {}
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Context> b;
   
-  public void onFileDownloadFailed(int paramInt)
+  adso(adqy paramadqy, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.isFromNearby)
-    {
-      ajnb.a("gift_aio", "fail_obj", this.jdField_a_of_type_Adsm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
-      return;
-    }
-    if (mnf.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift)) {}
-    for (paramInt = 2;; paramInt = 1)
-    {
-      awqx.b(this.jdField_a_of_type_Adsm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_flower", "", "grp_aio", "objicon_fail", paramInt, 0, this.jdField_a_of_type_Adsm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "0", "" + mje.a(this.jdField_a_of_type_Adsm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adsm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Adsm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-      return;
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramContext);
   }
   
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  public void onClick(View paramView)
   {
-    int i;
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable))
+    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (Context)this.b.get();
+    if ((paramView == null) || (localObject == null)) {}
+    long l;
+    do
     {
-      i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.objColor;
-      if (i != 0) {
-        break label136;
-      }
-      i = -2138570752;
-    }
-    label136:
-    for (;;)
-    {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.interactId)) {
-        this.jdField_a_of_type_Adsm.a(((RegionDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getBitmap(), i, this.jdField_a_of_type_Adst.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.giftPicId + "");
-      }
       do
       {
         return;
-      } while (!QLog.isColorLevel());
-      QLog.e("TroopGiftMsgItemBuilder", 2, "drawable.getCurrDrawable() instanceof  RegionDrawable = " + (this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable));
-      return;
+      } while (!(localObject instanceof Activity));
+      if (!bbev.d((Context)localObject))
+      {
+        bcpw.a((Context)localObject, 2131692321, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131298865));
+        return;
+      }
+      l = System.currentTimeMillis();
+      if ((adqy.a(this.jdField_a_of_type_Adqy) == 0L) || (l <= adqy.a(this.jdField_a_of_type_Adqy)) || (l - adqy.a(this.jdField_a_of_type_Adqy) > 800L)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
+    return;
+    adqy.a(this.jdField_a_of_type_Adqy, l);
+    if (bbev.h((Context)localObject))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString(bdkm.b, "100868074");
+      localBundle.putString(bdkm.j, "https://shouji.sogou.com/proxy/linkto.php?site=20141110sogouinputapk");
+      localBundle.putString(bdkm.f, "com.sohu.inputmethod.sogou");
+      localBundle.putInt(bdkm.k, 2);
+      localBundle.putString(bdkm.i, "ANDROIDQQ.MSG.SOUGOU");
+      localBundle.putString(bdkm.l, ajyc.a(2131705322));
+      localBundle.putBoolean(bdkm.x, false);
+      bdki.a((Activity)localObject, localBundle, "biz_src_yyb", null, 0);
     }
+    for (;;)
+    {
+      axqw.b(paramView, "CliOper", "", "", "0X80047CF", "0X80047CF", 0, 0, "", "", "", "");
+      return;
+      localObject = bbej.a(paramView, (Context)localObject, "qapp://detail?param=" + adqy.a("id=100868074&channelId=2800&packageName=com.sohu.inputmethod.sogou&via=MSG.SOUGOU"));
+      if (localObject != null) {
+        ((bbds)localObject).c();
+      }
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

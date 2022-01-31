@@ -1,36 +1,21 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class tgf
-  implements begw
+class tgf
+  implements ajvb
 {
-  tgf(StoryVideoItem paramStoryVideoItem, begr parambegr) {}
+  tgf(tgc paramtgc) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    switch (paramInt)
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface)) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
     {
-    default: 
-      paramView = "16384";
-      QQUserUIItem localQQUserUIItem = ((sqs)sqg.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid);
-      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
-        new syc().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoUrl());
+      if (localObject != null) {
+        ((ssv)((QQAppInterface)localObject).a(98)).notifyUI(1023, true, Boolean.valueOf(paramBoolean));
       }
-      break;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
       return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      urk.d("Q.qqstory.player.PlayModeUtils", "report video error because evil uin is empty.");
     }
   }
 }

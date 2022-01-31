@@ -1,31 +1,36 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.AgeSelectionActivity;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
 public class aain
-  implements bbrx
+  implements amnf
 {
-  public aain(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aodw paramaodw) {}
+  public aain(AgeSelectionActivity paramAgeSelectionActivity) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (paramInt == 2)
+    if ((AgeSelectionActivity.a(this.a) != null) && (AgeSelectionActivity.a(this.a).isShowing())) {
+      AgeSelectionActivity.a(this.a).dismiss();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      apcb.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131627191));
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-          if (bace.b(localFileManagerEntity.getFilePath())) {
-            this.jdField_a_of_type_Aodw.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
-          } else {
-            this.jdField_a_of_type_Aodw.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
-          }
-        }
+    }
+    for (;;)
+    {
+      AgeSelectionActivity.a(this.a);
+      AgeSelectionActivity.b(this.a);
+      if ((AgeSelectionActivity.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+        AgeSelectionActivity.a(this.a).a(2);
       }
+      return;
+      AgeSelectionActivity.a(this.a, paramInt2);
+      continue;
+      AgeSelectionActivity.b(this.a, paramInt2);
+      continue;
+      AgeSelectionActivity.c(this.a, paramInt2);
     }
   }
 }

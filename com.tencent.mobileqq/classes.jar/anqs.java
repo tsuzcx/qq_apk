@@ -1,45 +1,43 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import java.io.File;
+import java.io.RandomAccessFile;
 
 public class anqs
-  extends RecyclerView.OnScrollListener
+  extends RandomAccessFile
 {
-  public anqs(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  private final byte[] a = new byte[8];
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public anqs(String paramString1, String paramString2)
   {
-    if (paramInt == 0)
-    {
-      URLDrawable.resume();
-      return;
-    }
-    URLDrawable.pause();
+    super(new File(paramString1), paramString2);
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public int read()
   {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if ((!ExtendFriendGroupFragment.a(this.a)) && (!ExtendFriendGroupFragment.b(this.a)) && (this.a.a != null) && (ExtendFriendGroupFragment.a(this.a) != null) && (ExtendFriendGroupFragment.a(this.a).a() > 0) && (this.a.a.findViewByPosition(ExtendFriendGroupFragment.a(this.a).getItemCount() - 1) != null))
-    {
-      if (badq.g(ExtendFriendGroupFragment.a(this.a)))
-      {
-        ExtendFriendGroupFragment.a(this.a, true);
-        ExtendFriendGroupFragment.a(this.a).a(0, true);
-        awqx.b(ExtendFriendGroupFragment.a(this.a), "dc00898", "", "", "0X80092D9", "0X80092D9", 0, 0, "", "", "", "");
-      }
+    int i = -1;
+    if (read(this.a, 0, 1) != -1) {
+      i = this.a[0] & 0xFF;
     }
-    else {
-      return;
+    return i;
+  }
+  
+  public int read(byte[] paramArrayOfByte)
+  {
+    return read(paramArrayOfByte, 0, paramArrayOfByte.length);
+  }
+  
+  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    long l = super.getFilePointer();
+    paramInt2 = super.read(paramArrayOfByte, paramInt1, paramInt2);
+    if (paramInt2 > -1) {
+      anqu.a(paramArrayOfByte, paramInt1, paramInt2, l);
     }
-    ExtendFriendGroupFragment.a(this.a).a(1, true);
+    return paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anqs
  * JD-Core Version:    0.7.0.1
  */

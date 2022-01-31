@@ -9,17 +9,17 @@ class GameActivity$5
   
   public void run()
   {
-    if (GameActivity.access$300(this.this$0)) {
-      if (GameActivity.access$400(this.this$0) != null) {
-        GameActivity.access$400(this.this$0).setText(this.val$msg);
+    if (GameActivity.access$200(this.this$0)) {
+      if (GameActivity.access$300(this.this$0) != null) {
+        GameActivity.access$300(this.this$0).setText(this.val$msg);
       }
     }
     for (;;)
     {
-      GameActivity.access$602(this.this$0, this.val$msg);
+      GameActivity.access$502(this.this$0, this.val$msg);
       return;
-      if (GameActivity.access$500(this.this$0) != null) {
-        GameActivity.access$500(this.this$0).setText(this.val$msg);
+      if (GameActivity.access$400(this.this$0) != null) {
+        GameActivity.access$400(this.this$0).setText(this.val$msg);
       }
     }
   }

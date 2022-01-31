@@ -1,26 +1,33 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aari
-  implements bbom
+  implements View.OnClickListener
 {
-  public aari(EmosmActivity paramEmosmActivity) {}
+  public aari(ChatHistory paramChatHistory) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    if (paramInt2 == 0) {
-      this.a.b = 1;
-    }
-    for (;;)
+    if (this.a.d > 1)
     {
-      this.a.c = false;
-      this.a.runOnUiThread(this.a.a);
-      return;
-      if (paramInt2 == 1) {
-        this.a.b = 2;
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838767);
+      paramView = this.a;
+      paramView.d -= 1;
+      if (this.a.d <= 1)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840187);
       }
+      this.a.e = ((this.a.d - 1) * 8);
+      this.a.jdField_a_of_type_Aarj.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      this.a.t();
     }
   }
 }

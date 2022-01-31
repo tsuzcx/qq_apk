@@ -1,12 +1,20 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
-public abstract interface bhfr
+public class bhfr
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(int paramInt, View paramView);
+  public bhfr(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.a.getPlayMode();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhfr
  * JD-Core Version:    0.7.0.1
  */

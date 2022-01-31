@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import ajjy;
+import ajyc;
 import android.widget.TextView;
-import npv;
-import npx;
+import obg;
+import obi;
 
 class GiftPackageGialog$2$1$1
   implements Runnable
@@ -12,7 +12,7 @@ class GiftPackageGialog$2$1$1
   
   public void run()
   {
-    npv.c(this.a.a.a).setText(ajjy.a(2131639481));
+    obg.c(this.a.a.a).setText(ajyc.a(2131705266));
   }
 }
 

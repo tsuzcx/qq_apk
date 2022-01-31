@@ -1,56 +1,19 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
-class rst
-  implements bakb
+public class rst
+  implements AdapterView.OnItemClickListener
 {
-  rst(rss paramrss) {}
+  public rst(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramString = new JSONObject();
-    if (paramInt1 == 8) {}
-    for (;;)
-    {
-      try
-      {
-        paramString.put("retCode", -1);
-        paramString.put("msg", "fail");
-        paramString.put("localId", this.a.d());
-        if (this.a.jdField_a_of_type_Bbac.a() != null) {
-          this.a.jdField_a_of_type_Bbac.a().callJs(rsv.h, new String[] { paramString.toString() });
-        }
-        awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2F", "0X8005D2F", 0, 0, "1", "", "", "");
-        if (this.a.jdField_a_of_type_Baka != null) {
-          this.a.jdField_a_of_type_Baka.f();
-        }
-        this.a.jdField_a_of_type_Baka = null;
-        return;
-      }
-      catch (JSONException localJSONException1)
-      {
-        localJSONException1.printStackTrace();
-        continue;
-      }
-      if (paramInt1 == 4) {
-        try
-        {
-          paramString.put("retCode", 0);
-          paramString.put("msg", ajjy.a(2131642991) + this.a.d() + ajjy.a(2131642985));
-          paramString.put("localId", this.a.d());
-        }
-        catch (JSONException localJSONException2)
-        {
-          localJSONException2.printStackTrace();
-        }
-      }
+    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.a) != null)) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
   }
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 

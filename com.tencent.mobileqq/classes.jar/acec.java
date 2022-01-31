@@ -1,14 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import mqq.os.MqqHandler;
 
 public class acec
-  implements DialogInterface.OnDismissListener
+  extends MqqHandler
 {
-  public acec(UpgradeActivity paramUpgradeActivity) {}
+  public acec(SubAccountUgActivity paramSubAccountUgActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void handleMessage(Message paramMessage)
   {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
     this.a.finish();
   }
 }

@@ -1,15 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.util.List;
-
-final class rad
-  implements rah
+public abstract interface rad
 {
-  rad(raf paramraf) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean, List<BaseData> paramList)
-  {
-    this.a.b(paramList);
-  }
+  public abstract void b();
 }
 
 

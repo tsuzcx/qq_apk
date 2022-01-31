@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
+import aukm;
 
 public class PushBannerReportLog
-  extends atmo
+  extends aukm
 {
   public String log = "";
   

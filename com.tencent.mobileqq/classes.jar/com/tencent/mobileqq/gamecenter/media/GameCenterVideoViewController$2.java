@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.media;
 
 import android.content.Context;
-import bbmy;
+import bcpw;
 
 class GameCenterVideoViewController$2
   implements Runnable
@@ -10,7 +10,7 @@ class GameCenterVideoViewController$2
   
   public void run()
   {
-    bbmy.a(this.this$0.getContext(), 1, this.this$0.getContext().getString(2131652572), 0).b(0);
+    bcpw.a(this.this$0.getContext(), 1, this.this$0.getContext().getString(2131718391), 0).b(0);
   }
 }
 

@@ -1,16 +1,16 @@
 package cooperation.qzone.util;
 
-import bgfw;
-import bgfx;
+import bhoo;
+import bhop;
 
 public class QZoneDistributedAppCtrl$1
   implements Runnable
 {
-  public QZoneDistributedAppCtrl$1(bgfw parambgfw, bgfx parambgfx) {}
+  public QZoneDistributedAppCtrl$1(bhoo parambhoo, bhop parambhop) {}
   
   public void run()
   {
-    bgfw.a(this.this$0, this.a);
+    bhoo.a(this.this$0, this.a);
   }
 }
 

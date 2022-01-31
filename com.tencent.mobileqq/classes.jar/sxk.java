@@ -1,38 +1,64 @@
-import com.tencent.biz.qqstory.network.handler.GetUserIconHandler.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import android.media.MediaMetadataRetriever;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
 public class sxk
+  implements sxb
 {
-  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  public static boolean a;
+  public sxk(StoryVideoUploadTask paramStoryVideoUploadTask) {}
   
-  public static void a(String paramString)
+  public void a(sxa paramsxa)
   {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
+    swy localswy = (swy)paramsxa;
+    ((sxh)this.a.a).g = localswy.a.a;
+    ((sxh)this.a.a).h = localswy.a.c;
+    ((sxh)this.a.a).a = localswy.b;
+    localMediaMetadataRetriever = new MediaMetadataRetriever();
+    for (;;)
     {
-      if (!jdField_a_of_type_JavaUtilSet.contains(paramString))
+      try
       {
-        jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        jdField_a_of_type_JavaUtilSet.add(paramString);
+        localMediaMetadataRetriever.setDataSource(localswy.b);
+        String str = localMediaMetadataRetriever.extractMetadata(24);
+        paramsxa = str;
+        if (str == null) {
+          paramsxa = "0";
+        }
+        int i = Integer.valueOf(paramsxa).intValue();
+        j = Integer.valueOf(localMediaMetadataRetriever.extractMetadata(18)).intValue();
+        k = Integer.valueOf(localMediaMetadataRetriever.extractMetadata(19)).intValue();
+        if (i % 180 <= 0) {
+          continue;
+        }
+        ((sxh)this.a.a).d = k;
+        ((sxh)this.a.a).e = j;
       }
-      if (!jdField_a_of_type_Boolean)
+      catch (Exception paramsxa)
       {
-        jdField_a_of_type_Boolean = true;
-        ThreadManager.post(new GetUserIconHandler.1(), 5, null, true);
+        int j;
+        int k;
+        long l;
+        veg.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "format fail", paramsxa);
+        localMediaMetadataRetriever.release();
+        continue;
       }
+      finally
+      {
+        localMediaMetadataRetriever.release();
+      }
+      l = StoryVideoUploadTask.a(localswy.b);
+      if (l > 0L)
+      {
+        veg.a("Q.qqstory.publish.upload:StoryVideoUploadTask", "video old duration=%d, new duration=%d", Long.valueOf(((sxh)this.a.a).b), Long.valueOf(l));
+        ((sxh)this.a.a).b = l;
+        veg.a("Q.qqstory.publish.upload:StoryVideoUploadTask", "generate vid=%s, duration=%d mp4=%s", ((sxh)this.a.a).a(), Long.valueOf(((sxh)this.a.a).b), ((sxh)this.a.a).a);
+      }
+      ((sxh)this.a.a).c = vyi.a(localswy.b);
+      this.a.a(1, new ErrorMessage());
       return;
+      ((sxh)this.a.a).d = j;
+      ((sxh)this.a.a).e = k;
     }
-  }
-  
-  public static void a(ArrayList<String> paramArrayList)
-  {
-    paramArrayList = new sxl(paramArrayList);
-    sxm localsxm = new sxm();
-    sof.a().a(paramArrayList, localsxm);
   }
 }
 

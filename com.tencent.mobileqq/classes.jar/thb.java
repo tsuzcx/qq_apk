@@ -1,15 +1,27 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.Collections;
+import java.util.List;
 
-public class thb
-  implements Comparator<QQUserUIItem>
+class thb
+  extends SimpleObserver<List<tsr>>
 {
-  public thb(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  thb(tgy paramtgy, thc paramthc, tfi paramtfi) {}
   
-  public int a(QQUserUIItem paramQQUserUIItem1, QQUserUIItem paramQQUserUIItem2)
+  public void a(List<tsr> paramList)
   {
-    return ajgh.a(paramQQUserUIItem1.mComparePartInt, paramQQUserUIItem1.mCompareSpell, paramQQUserUIItem2.mComparePartInt, paramQQUserUIItem2.mCompareSpell);
+    super.onNext(paramList);
+    if (this.jdField_a_of_type_Thc != null) {
+      this.jdField_a_of_type_Thc.a(this.jdField_a_of_type_Tfi, Collections.emptyList());
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    if (this.jdField_a_of_type_Thc != null) {
+      this.jdField_a_of_type_Thc.a(this.jdField_a_of_type_Tfi, paramError);
+    }
   }
 }
 

@@ -1,507 +1,653 @@
-import android.content.BroadcastReceiver;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.content.IntentFilter;
-import android.media.AudioManager;
-import android.media.AudioRecord;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.core.proxy.VoIPProxy;
-import com.tencent.qqmini.sdk.core.proxy.VoIPProxy.MultiUserInfo;
-import com.tencent.qqmini.sdk.core.proxy.VoIPProxy.VoIPListener;
-import java.util.Collection;
-import java.util.HashSet;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Environment;
+import android.os.Process;
+import android.os.StatFs;
+import android.text.TextUtils;
+import com.tencent.smtt.sdk.WebView;
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Method;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bdey
 {
-  public static volatile bdey a;
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = -1L;
-  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bdez(this);
-  private bdfb jdField_a_of_type_Bdfb;
-  private bdfd jdField_a_of_type_Bdfd;
-  private bdfe jdField_a_of_type_Bdfe;
-  private VoIPProxy.VoIPListener jdField_a_of_type_ComTencentQqminiSdkCoreProxyVoIPProxy$VoIPListener = new bdfa(this);
-  private VoIPProxy jdField_a_of_type_ComTencentQqminiSdkCoreProxyVoIPProxy;
-  private Map<Long, bdfh> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private boolean jdField_b_of_type_Boolean;
+  public static final String a = "file:///android_asset" + File.separator + "Page/system";
   
-  private int a(boolean paramBoolean)
+  public static int a()
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      bdnw.d("VoIPManager", "cant op mic currently");
-      return -1;
-    }
-    int j = this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVoIPProxy.enableLocalAudio(paramBoolean);
-    int i;
-    if (j == 0) {
-      if (paramBoolean)
-      {
-        i = 1;
-        this.jdField_a_of_type_Int = i;
-        bdfh localbdfh = a(this.jdField_a_of_type_Long);
-        if (localbdfh != null) {
-          localbdfh.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        }
-        bdnw.b("VoIPManager", "OpMic " + paramBoolean);
-      }
-    }
+    return bcxm.a().a().getSharedPreferences("qzoneappcenter", 4).getInt("appTabVersionCode", -1);
+  }
+  
+  public static long a()
+  {
+    StatFs localStatFs = new StatFs(d());
+    long l = localStatFs.getAvailableBlocks();
+    return localStatFs.getBlockSize() * l;
+  }
+  
+  /* Error */
+  public static long a(java.io.InputStream paramInputStream, String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: new 21	java/io/File
+    //   3: dup
+    //   4: aload_1
+    //   5: invokespecial 77	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore_1
+    //   9: aload_1
+    //   10: invokevirtual 81	java/io/File:exists	()Z
+    //   13: ifne +8 -> 21
+    //   16: aload_1
+    //   17: invokevirtual 84	java/io/File:mkdir	()Z
+    //   20: pop
+    //   21: new 21	java/io/File
+    //   24: dup
+    //   25: aload_1
+    //   26: aload_2
+    //   27: invokespecial 87	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   30: astore 4
+    //   32: new 89	java/io/FileOutputStream
+    //   35: dup
+    //   36: aload 4
+    //   38: invokespecial 92	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   41: astore_2
+    //   42: aload_2
+    //   43: astore_1
+    //   44: sipush 4096
+    //   47: newarray byte
+    //   49: astore 5
+    //   51: aload_2
+    //   52: astore_1
+    //   53: aload_0
+    //   54: aload 5
+    //   56: invokevirtual 98	java/io/InputStream:read	([B)I
+    //   59: istore_3
+    //   60: iconst_m1
+    //   61: iload_3
+    //   62: if_icmpeq +32 -> 94
+    //   65: aload_2
+    //   66: astore_1
+    //   67: aload_2
+    //   68: aload 5
+    //   70: iconst_0
+    //   71: iload_3
+    //   72: invokevirtual 102	java/io/FileOutputStream:write	([BII)V
+    //   75: goto -24 -> 51
+    //   78: astore_0
+    //   79: aload_2
+    //   80: astore_1
+    //   81: aload_0
+    //   82: athrow
+    //   83: astore_0
+    //   84: aload_1
+    //   85: ifnull +7 -> 92
+    //   88: aload_1
+    //   89: invokevirtual 105	java/io/FileOutputStream:close	()V
+    //   92: aload_0
+    //   93: athrow
+    //   94: aload_2
+    //   95: astore_1
+    //   96: aload_2
+    //   97: invokevirtual 108	java/io/FileOutputStream:flush	()V
+    //   100: aload_2
+    //   101: ifnull +7 -> 108
+    //   104: aload_2
+    //   105: invokevirtual 105	java/io/FileOutputStream:close	()V
+    //   108: aload 4
+    //   110: invokevirtual 111	java/io/File:length	()J
+    //   113: lreturn
+    //   114: astore_0
+    //   115: goto -7 -> 108
+    //   118: astore_1
+    //   119: goto -27 -> 92
+    //   122: astore_0
+    //   123: aconst_null
+    //   124: astore_1
+    //   125: goto -41 -> 84
+    //   128: astore_0
+    //   129: aconst_null
+    //   130: astore_1
+    //   131: goto -50 -> 81
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	134	0	paramInputStream	java.io.InputStream
+    //   0	134	1	paramString1	String
+    //   0	134	2	paramString2	String
+    //   59	13	3	i	int
+    //   30	79	4	localFile	File
+    //   49	20	5	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   44	51	78	java/lang/Exception
+    //   53	60	78	java/lang/Exception
+    //   67	75	78	java/lang/Exception
+    //   96	100	78	java/lang/Exception
+    //   44	51	83	finally
+    //   53	60	83	finally
+    //   67	75	83	finally
+    //   81	83	83	finally
+    //   96	100	83	finally
+    //   104	108	114	java/lang/Exception
+    //   88	92	118	java/lang/Exception
+    //   32	42	122	finally
+    //   32	42	128	java/lang/Exception
+  }
+  
+  public static String a(WebView paramWebView, HashMap<String, arlw> paramHashMap, String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    JSONArray localJSONArray1 = new JSONArray();
+    label736:
     for (;;)
     {
-      return j;
-      i = 2;
-      break;
-      bdnw.d("VoIPManager", "multiOperator null");
+      try
+      {
+        localJSONObject.put("r", "-1");
+        localJSONObject.put("data", localJSONArray1);
+        JSONArray localJSONArray2 = new JSONArray(URLDecoder.decode(paramString, "UTF-8"));
+        int i = 0;
+        String str1;
+        String str2;
+        Object localObject;
+        if (i < localJSONArray2.length())
+        {
+          paramWebView = localJSONArray2.optJSONObject(i);
+          if (paramWebView == null) {
+            break label736;
+          }
+          paramString = paramWebView.optString("ns");
+          str1 = paramWebView.optString("method");
+          str2 = paramWebView.optString("guid");
+          paramWebView = paramWebView.optString("args");
+          bdht.c("Common", "nameSpace:" + paramString + ",methodName=" + str1 + ",paramsStr=" + paramWebView);
+          localObject = new ArrayList();
+        }
+        int j;
+        Method[] arrayOfMethod;
+        int k;
+        i += 1;
+      }
+      catch (UnsupportedEncodingException paramWebView)
+      {
+        try
+        {
+          paramWebView = new JSONArray(paramWebView);
+          j = 0;
+          if (j < paramWebView.length())
+          {
+            ((List)localObject).add(paramWebView.getString(j));
+            j += 1;
+          }
+          else
+          {
+            paramWebView = (Class)bdfg.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+            if (bdfg.jdField_a_of_type_JavaUtilArrayList.contains(str1)) {
+              ((List)localObject).add(str2);
+            }
+            if (paramWebView != null)
+            {
+              arrayOfMethod = paramWebView.getMethods();
+              k = arrayOfMethod.length;
+              j = 0;
+              if (j < k)
+              {
+                paramWebView = arrayOfMethod[j];
+                if ((paramWebView.getName().equals(str1)) && (paramWebView.getParameterTypes().length == ((List)localObject).size()))
+                {
+                  if (paramWebView == null) {
+                    break label736;
+                  }
+                  paramString = paramHashMap.get(paramString);
+                  try
+                  {
+                    bdht.c("Common", "callBatch <call> class : " + paramString.getClass().getName() + " , method : " + str1 + "\n , args : " + localObject.toString());
+                    if (((List)localObject).size() != 0) {
+                      continue;
+                    }
+                    paramString = paramWebView.invoke(paramString, new Object[0]);
+                    paramWebView = paramWebView.getReturnType();
+                    if ((paramWebView == Void.TYPE) || (paramWebView == Void.class) || (paramString == null)) {
+                      break label736;
+                    }
+                    if (!(paramString instanceof String)) {
+                      continue;
+                    }
+                    ((String)paramString).replace("\\", "\\\\").replace("'", "\\'");
+                    paramWebView = (String)paramString;
+                    paramString = new JSONObject();
+                    localObject = new JSONArray();
+                    paramString.put("guid", str2);
+                    paramString.put("r", 0);
+                    paramString.put("data", paramWebView);
+                    ((JSONArray)localObject).put("interface." + str1);
+                    ((JSONArray)localObject).put(paramString);
+                    localJSONArray1.put(localObject);
+                  }
+                  catch (Exception paramWebView)
+                  {
+                    bdht.c("Common", "callBatch error", paramWebView);
+                  }
+                  paramWebView = paramWebView;
+                  bdht.b("Common", "callBatch decode params format err", paramWebView);
+                  return localJSONObject.toString();
+                }
+              }
+            }
+          }
+        }
+        catch (Exception paramWebView)
+        {
+          bdht.e("Common", "callBatch args error : " + paramWebView.toString());
+        }
+      }
+      catch (JSONException paramWebView)
+      {
+        bdht.b("Common", "callBatch request params format err", paramWebView);
+        continue;
+        j += 1;
+        continue;
+        paramString = paramWebView.invoke(paramString, ((List)localObject).toArray());
+        continue;
+        if (((paramString instanceof Number)) || ((paramString instanceof Long)) || ((paramString instanceof Integer)) || ((paramString instanceof Double)) || ((paramString instanceof Float)))
+        {
+          paramWebView = paramString.toString();
+        }
+        else if ((paramString instanceof Boolean))
+        {
+          paramWebView = paramString.toString();
+          continue;
+          localJSONObject.put("r", 0);
+          localJSONObject.put("data", localJSONArray1);
+          bdht.c("Common", "Response<callBatch> syncCallBatch result : " + localJSONObject);
+        }
+        else
+        {
+          paramWebView = "";
+          continue;
+          paramWebView = null;
+        }
+      }
     }
   }
   
-  public static bdey a()
+  public static String a(Map<String, String> paramMap)
   {
-    if (jdField_a_of_type_Bdey == null) {}
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = paramMap.keySet().iterator();
+    int i = 1;
+    if (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramMap.get(str1);
+      if (i != 0)
+      {
+        localStringBuilder.append(str1 + "=" + URLEncoder.encode(str2, "utf-8"));
+        i = 0;
+      }
+      for (;;)
+      {
+        break;
+        if (str2 != null) {
+          localStringBuilder.append("&" + str1 + "=" + URLEncoder.encode(str2, "utf-8"));
+        } else {
+          localStringBuilder.append("&" + str1 + "=");
+        }
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static HashMap<String, String> a(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    if (paramString != null)
+    {
+      Object localObject;
+      if (!paramString.startsWith("?"))
+      {
+        localObject = paramString;
+        if (!paramString.startsWith("&")) {}
+      }
+      else
+      {
+        localObject = paramString.substring(1);
+      }
+      paramString = ((String)localObject).split("&");
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
+      {
+        localObject = paramString[i].split("=");
+        if (localObject.length > 1)
+        {
+          String str = URLDecoder.decode(localObject[1]);
+          localHashMap.put(localObject[0], str);
+        }
+        i += 1;
+      }
+    }
+    return localHashMap;
+  }
+  
+  public static void a()
+  {
     try
     {
-      if (jdField_a_of_type_Bdey == null) {
-        jdField_a_of_type_Bdey = new bdey();
+      bdht.b("Common", "<initSystemFolder> begin to init system file... ");
+      File localFile = new File(c());
+      if (!localFile.exists()) {
+        localFile.mkdirs();
       }
-      return jdField_a_of_type_Bdey;
+      a(true);
+      return;
     }
     finally {}
   }
   
-  private bdfh a(long paramLong)
+  public static void a(int paramInt)
   {
-    bdfh localbdfh = null;
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      localbdfh = (bdfh)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-    }
-    return localbdfh;
+    SharedPreferences.Editor localEditor = bcxm.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
+    localEditor.putInt("appTabVersionCode", paramInt);
+    localEditor.commit();
   }
   
-  private JSONArray a()
+  public static void a(long paramLong1, long paramLong2)
   {
-    Object localObject1 = null;
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    SharedPreferences.Editor localEditor = bcxm.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
+    localEditor.putLong("remaxage", paramLong1);
+    localEditor.putLong("relasttime", paramLong2);
+    localEditor.commit();
+  }
+  
+  public static void a(String paramString)
+  {
+    bdht.c("Common", "setResourceMD5=" + paramString);
+    SharedPreferences.Editor localEditor = bcxm.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
+    localEditor.putString("relastmd5", paramString);
+    localEditor.commit();
+  }
+  
+  /* Error */
+  public static void a(boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: invokestatic 420	java/util/concurrent/Executors:newSingleThreadScheduledExecutor	()Ljava/util/concurrent/ScheduledExecutorService;
+    //   6: astore_3
+    //   7: new 422	com/tencent/open/appcommon/Common$1
+    //   10: dup
+    //   11: invokespecial 423	com/tencent/open/appcommon/Common$1:<init>	()V
+    //   14: astore 4
+    //   16: iload_0
+    //   17: ifeq +24 -> 41
+    //   20: ldc2_w 424
+    //   23: lstore_1
+    //   24: aload_3
+    //   25: aload 4
+    //   27: lload_1
+    //   28: getstatic 431	java/util/concurrent/TimeUnit:SECONDS	Ljava/util/concurrent/TimeUnit;
+    //   31: invokeinterface 437 5 0
+    //   36: pop
+    //   37: ldc 2
+    //   39: monitorexit
+    //   40: return
+    //   41: lconst_0
+    //   42: lstore_1
+    //   43: goto -19 -> 24
+    //   46: astore_3
+    //   47: ldc 2
+    //   49: monitorexit
+    //   50: aload_3
+    //   51: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	52	0	paramBoolean	boolean
+    //   23	20	1	l	long
+    //   6	19	3	localScheduledExecutorService	java.util.concurrent.ScheduledExecutorService
+    //   46	5	3	localObject	Object
+    //   14	12	4	local1	com.tencent.open.appcommon.Common.1
+    // Exception table:
+    //   from	to	target	type
+    //   3	16	46	finally
+    //   24	37	46	finally
+  }
+  
+  public static boolean a()
+  {
+    if (Environment.getExternalStorageState().equals("mounted")) {}
+    while (new File("/mnt/sdcard-ext").isDirectory()) {
+      return true;
+    }
+    return false;
+  }
+  
+  public static long[] a()
+  {
+    SharedPreferences localSharedPreferences = bcxm.a().a().getSharedPreferences("qzoneappcenter", 4);
+    return new long[] { localSharedPreferences.getLong("remaxage", 0L), localSharedPreferences.getLong("relasttime", 0L) };
+  }
+  
+  public static String[] a(String paramString)
+  {
+    String str2;
+    String str1;
+    if (paramString.toLowerCase().startsWith("sd://"))
     {
-      localObject2 = this.jdField_a_of_type_JavaUtilMap.keySet();
-      localObject1 = new HashSet();
-      localObject2 = ((Set)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
+      str2 = paramString.substring("sd://".length());
+      int i = str2.indexOf("?");
+      if (i != -1)
       {
-        bdfh localbdfh = a(((Long)((Iterator)localObject2).next()).longValue());
-        if (localbdfh != null) {
-          ((Set)localObject1).add(localbdfh.jdField_a_of_type_JavaLangString);
+        str1 = str2.substring(0, i);
+        paramString = str2.substring(i + 1);
+        if (new File(g() + File.separator + str1).exists())
+        {
+          str2 = "file:///" + g() + File.separator + str1;
+          str1 = paramString;
         }
-      }
-      localObject1 = new JSONArray((Collection)localObject1);
-    }
-    Object localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = new JSONArray();
-    }
-    return localObject2;
-  }
-  
-  private void a(int paramInt)
-  {
-    bdnw.a("VoIPManager", "switchAudioRoute " + paramInt);
-    if (paramInt == -1) {
-      if (e()) {
-        this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVoIPProxy.setAudioRoute(0);
-      }
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVoIPProxy.setAudioRoute(1);
-      return;
-      if (paramInt == 1)
-      {
-        this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVoIPProxy.setAudioRoute(0);
-        return;
-      }
-    } while (paramInt != 2);
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVoIPProxy.setAudioRoute(1);
-  }
-  
-  private void a(long paramLong)
-  {
-    bdnw.b("VoIPManager", "qavInitSDK");
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVoIPProxy.init(this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVoIPProxy$VoIPListener);
-  }
-  
-  private void a(bdfh parambdfh)
-  {
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(parambdfh.jdField_a_of_type_Long), parambdfh);
-    }
-  }
-  
-  private void a(List<VoIPProxy.MultiUserInfo> paramList)
-  {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilMap.keySet();
-    Object localObject2 = new HashSet();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext()) {
-      ((Set)localObject2).add(Long.valueOf(((VoIPProxy.MultiUserInfo)localIterator.next()).mUin));
-    }
-    ((Set)localObject1).retainAll((Collection)localObject2);
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      localObject1 = (VoIPProxy.MultiUserInfo)paramList.next();
-      if (a(((VoIPProxy.MultiUserInfo)localObject1).mUin) == null)
-      {
-        localObject2 = new bdfh(this, null);
-        ((bdfh)localObject2).jdField_a_of_type_Long = ((VoIPProxy.MultiUserInfo)localObject1).mUin;
-        ((bdfh)localObject2).jdField_a_of_type_JavaLangString = ((VoIPProxy.MultiUserInfo)localObject1).mOpenId;
-        ((bdfh)localObject2).jdField_a_of_type_Int = 1;
-        a((bdfh)localObject2);
-      }
-    }
-  }
-  
-  private int b(boolean paramBoolean)
-  {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      bdnw.d("VoIPManager", "cant op mute currently");
-      return -1;
-    }
-    int j = this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVoIPProxy.enableRemoteAudio(paramBoolean);
-    int i;
-    if (j == 0) {
-      if (paramBoolean)
-      {
-        i = 1;
-        this.jdField_b_of_type_Int = i;
-        bdnw.b("VoIPManager", "OpMute " + paramBoolean);
       }
     }
     for (;;)
     {
-      return j;
-      i = 2;
-      break;
-      bdnw.d("VoIPManager", "multiOperator null");
-    }
-  }
-  
-  private bdfh b(long paramLong)
-  {
-    bdfh localbdfh = null;
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      localbdfh = (bdfh)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-    }
-    return localbdfh;
-  }
-  
-  private JSONArray b()
-  {
-    JSONArray localJSONArray = new JSONArray();
-    if (this.jdField_a_of_type_JavaUtilMap != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        if (((bdfh)localEntry.getValue()).jdField_a_of_type_Boolean) {
-          localJSONArray.put(((bdfh)localEntry.getValue()).jdField_a_of_type_JavaLangString);
-        }
+      paramString = str1;
+      if (!TextUtils.isEmpty(str1)) {
+        paramString = "&" + str1;
       }
-    }
-    return localJSONArray;
-  }
-  
-  private void b()
-  {
-    bdnw.b("VoIPManager", "exitRoom!");
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVoIPProxy.exitRoom();
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVoIPProxy.unInit();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-  }
-  
-  private boolean d()
-  {
-    AudioRecord localAudioRecord = new AudioRecord(1, 44100, 16, 1, 44100);
-    for (;;)
-    {
-      try
-      {
-        if (localAudioRecord.getRecordingState() != 1)
-        {
-          Boolean localBoolean1 = Boolean.valueOf(false);
-          localAudioRecord.startRecording();
-          if (localAudioRecord.getRecordingState() != 3)
-          {
-            localAudioRecord.stop();
-            localBoolean1 = Boolean.valueOf(false);
-          }
-          localAudioRecord.stop();
-          return localBoolean1.booleanValue();
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        bdnw.d("VoIPManager", "validateMicAvailability", localThrowable);
-        return false;
-      }
-      finally
-      {
-        localAudioRecord.release();
-      }
-      Boolean localBoolean2 = Boolean.valueOf(true);
-    }
-  }
-  
-  private boolean e()
-  {
-    return ((AudioManager)MiniAppEnv.g().getContext().getSystemService("audio")).isWiredHeadsetOn();
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (this.jdField_b_of_type_Boolean)
-      {
-        MiniAppEnv.g().getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        b();
-        this.jdField_b_of_type_Boolean = false;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(bdfb parambdfb)
-  {
-    this.jdField_a_of_type_Bdfb = parambdfb;
-  }
-  
-  public void a(bdfc parambdfc, bdfe parambdfe, byte[] paramArrayOfByte, bdfd parambdfd)
-  {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        if (this.jdField_b_of_type_Boolean)
-        {
-          bdnw.d("VoIPManager", "不能重复进房");
-          if (parambdfd != null) {
-            parambdfd.onError(-3);
-          }
-          return;
-        }
-        a();
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          if (d())
-          {
-            a(parambdfc.jdField_a_of_type_Long);
-            this.jdField_a_of_type_Boolean = true;
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_Bdfd = parambdfd;
-          this.jdField_a_of_type_Long = parambdfc.jdField_a_of_type_Long;
-          i = this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVoIPProxy.joinRoom(parambdfc.jdField_a_of_type_Long, parambdfc.jdField_a_of_type_Int, parambdfc.jdField_a_of_type_JavaLangString);
-          if (i != 0) {
-            break label179;
-          }
-          this.jdField_a_of_type_Bdfe = parambdfe;
-          this.jdField_b_of_type_Boolean = true;
-          parambdfc = new IntentFilter();
-          parambdfc.addAction("android.intent.action.HEADSET_PLUG");
-          MiniAppEnv.g().getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, parambdfc);
-          this.jdField_a_of_type_JavaUtilMap.clear();
-          continue;
-        }
-        if (parambdfd == null) {
-          continue;
-        }
-      }
-      finally {}
-      parambdfd.onError(-2);
+      bdht.c("Common", "url params= " + str2 + " " + paramString);
+      return new String[] { str2, paramString };
+      str2 = "file:///android_asset/Page/system/" + str1;
+      str1 = paramString;
       continue;
-      label179:
-      bdnw.d("VoIPManager", "joinRoom ret = " + i);
-      if (this.jdField_a_of_type_Bdfd != null)
-      {
-        this.jdField_a_of_type_Bdfd.onError(i);
-        this.jdField_a_of_type_Bdfd = null;
-      }
+      paramString = "";
+      str1 = str2;
+      break;
+      str1 = "";
+      str2 = paramString;
     }
   }
   
-  /* Error */
-  public void a(bdfe parambdfe, bdff parambdff)
+  public static void b(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: getfield 382	bdfe:jdField_a_of_type_Boolean	Z
-    //   6: ifne +46 -> 52
-    //   9: iconst_1
-    //   10: istore 5
-    //   12: aload_0
-    //   13: iload 5
-    //   15: invokespecial 384	bdey:a	(Z)I
-    //   18: istore_3
-    //   19: aload_0
-    //   20: aload_1
-    //   21: getfield 385	bdfe:jdField_b_of_type_Boolean	Z
-    //   24: invokespecial 387	bdey:b	(Z)I
-    //   27: istore 4
-    //   29: iload_3
-    //   30: ifne +8 -> 38
-    //   33: iload 4
-    //   35: ifeq +23 -> 58
-    //   38: aload_2
-    //   39: ifnull +10 -> 49
-    //   42: aload_2
-    //   43: iconst_m1
-    //   44: invokeinterface 392 2 0
-    //   49: aload_0
-    //   50: monitorexit
-    //   51: return
-    //   52: iconst_0
-    //   53: istore 5
-    //   55: goto -43 -> 12
-    //   58: aload_2
-    //   59: ifnull -10 -> 49
-    //   62: aload_2
-    //   63: invokeinterface 395 1 0
-    //   68: goto -19 -> 49
-    //   71: astore_1
-    //   72: aload_0
-    //   73: monitorexit
-    //   74: aload_1
-    //   75: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	76	0	this	bdey
-    //   0	76	1	parambdfe	bdfe
-    //   0	76	2	parambdff	bdff
-    //   18	12	3	i	int
-    //   27	7	4	j	int
-    //   10	44	5	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	9	71	finally
-    //   12	29	71	finally
-    //   42	49	71	finally
-    //   62	68	71	finally
+    bdht.c("Common", "setLastResourceZipMd5=" + paramString);
+    SharedPreferences.Editor localEditor = bcxm.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
+    localEditor.putString("lastresourcezipmd5", paramString);
+    localEditor.commit();
   }
   
-  /* Error */
-  public boolean a()
+  public static void b(boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 41	bdey:jdField_a_of_type_Int	I
-    //   6: istore_1
-    //   7: iload_1
-    //   8: iconst_2
-    //   9: if_icmpne +9 -> 18
-    //   12: iconst_1
-    //   13: istore_2
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: iload_2
-    //   17: ireturn
-    //   18: iconst_0
-    //   19: istore_2
-    //   20: goto -6 -> 14
-    //   23: astore_3
-    //   24: aload_0
-    //   25: monitorexit
-    //   26: aload_3
-    //   27: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	28	0	this	bdey
-    //   6	4	1	i	int
-    //   13	7	2	bool	boolean
-    //   23	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	23	finally
+    SharedPreferences.Editor localEditor = bcxm.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
+    localEditor.putBoolean("appstoreclearcache", paramBoolean);
+    localEditor.commit();
   }
   
-  /* Error */
-  public boolean b()
+  public static boolean b()
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_2
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 43	bdey:jdField_b_of_type_Int	I
-    //   8: istore_1
-    //   9: iload_1
-    //   10: iconst_1
-    //   11: if_icmpne +7 -> 18
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: iload_2
-    //   17: ireturn
-    //   18: iconst_0
-    //   19: istore_2
-    //   20: goto -6 -> 14
-    //   23: astore_3
-    //   24: aload_0
-    //   25: monitorexit
-    //   26: aload_3
-    //   27: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	28	0	this	bdey
-    //   8	4	1	i	int
-    //   1	19	2	bool	boolean
-    //   23	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	9	23	finally
+    return bcxm.a().a().getSharedPreferences("qzoneappcenter", 4).getBoolean("appstoreclearcache", false);
   }
   
-  public boolean c()
+  public static String c()
+  {
+    return e() + File.separator + ".AppCenterWebBuffer_QQ";
+  }
+  
+  public static void c(String paramString)
+  {
+    SharedPreferences.Editor localEditor = bcxm.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
+    localEditor.putString("appstoreagentversion", paramString);
+    localEditor.commit();
+  }
+  
+  public static String d()
   {
     try
     {
-      boolean bool = this.jdField_b_of_type_Boolean;
-      return bool;
+      if ("mounted".equals(Environment.getExternalStorageState())) {
+        return Environment.getExternalStorageDirectory().getAbsolutePath();
+      }
+      if (new File("/mnt/sdcard-ext").isDirectory()) {
+        return "/mnt/sdcard-ext";
+      }
+    }
+    catch (Exception localException) {}
+    return ".";
+  }
+  
+  public static void d(String paramString)
+  {
+    try
+    {
+      SharedPreferences.Editor localEditor = bcxm.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
+      localEditor.putString("sdhtmldir", paramString);
+      localEditor.commit();
+      return;
     }
     finally
     {
-      localObject = finally;
-      throw localObject;
+      paramString = finally;
+      throw paramString;
     }
+  }
+  
+  public static String e()
+  {
+    String str = bbuw.a().a();
+    if (!TextUtils.isEmpty(str)) {
+      return str;
+    }
+    return ".";
+  }
+  
+  public static String f()
+  {
+    return g() + File.separator + "qapp_center_index.htm";
+  }
+  
+  public static String g()
+  {
+    String str = q();
+    bdht.b("Common", "<getSDResDir> getSDResDir=" + str);
+    if (TextUtils.isEmpty(str)) {
+      return "";
+    }
+    return c() + File.separator + str;
+  }
+  
+  public static String h()
+  {
+    return c() + File.separator + "tmp";
+  }
+  
+  public static String i()
+  {
+    return c() + File.separator + "system_old_";
+  }
+  
+  public static String j()
+  {
+    return c() + File.separator + "resource.zip";
+  }
+  
+  public static String k()
+  {
+    return c() + File.separator + "resource.diff";
+  }
+  
+  public static String l()
+  {
+    return c() + File.separator + "resource_merged.zip";
+  }
+  
+  public static String m()
+  {
+    return "file:///android_asset" + File.separator + "Page/system";
+  }
+  
+  public static String n()
+  {
+    return bcxm.a().a().getSharedPreferences("qzoneappcenter", 4).getString("relastmd5", "");
+  }
+  
+  public static String o()
+  {
+    return bcxm.a().a().getSharedPreferences("qzoneappcenter", 4).getString("lastresourcezipmd5", "");
+  }
+  
+  public static String p()
+  {
+    return bcxm.a().a().getSharedPreferences("qzoneappcenter", 4).getString("appstoreagentversion", "");
+  }
+  
+  public static String q()
+  {
+    return bcxm.a().a().getSharedPreferences("qzoneappcenter", 4).getString("sdhtmldir", "");
+  }
+  
+  public static String r()
+  {
+    int i = Process.myPid();
+    try
+    {
+      Object localObject = bcxm.a().a();
+      if (localObject != null)
+      {
+        localObject = ((ActivityManager)((Context)localObject).getSystemService("activity")).getRunningAppProcesses().iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
+          if (localRunningAppProcessInfo.pid == i)
+          {
+            localObject = localRunningAppProcessInfo.processName;
+            return localObject;
+          }
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      bdht.c("Common", "exception happened!");
+      return "";
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdey
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,20 @@
-class wuq
-  implements wpy
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+
+public abstract class wuq
+  implements URLDrawable.URLDrawableListener
 {
-  wuq(wuh paramwuh, Runnable paramRunnable) {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wuq
  * JD-Core Version:    0.7.0.1
  */

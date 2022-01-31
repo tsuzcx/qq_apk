@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.pic;
 
-import ajhz;
-import ajke;
+import ajwd;
+import ajyk;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
-import arxu;
-import atox;
-import atpg;
-import atpl;
-import atpn;
-import atps;
-import atpt;
-import atpv;
-import atqb;
-import atqg;
-import atqm;
-import axoa;
-import axpm;
-import axvo;
-import axwd;
-import baac;
-import badq;
-import bfcq;
+import asty;
+import aumv;
+import aune;
+import aunj;
+import aunl;
+import aunq;
+import aunr;
+import aunt;
+import aunz;
+import auoe;
+import auok;
+import ayog;
+import aypt;
+import ayvv;
+import aywk;
+import bbbg;
+import bbev;
+import bgkh;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -60,22 +60,22 @@ public class PicPreDownloader
   public static boolean b;
   volatile int jdField_a_of_type_Int = 0;
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  atqb jdField_a_of_type_Atqb;
-  public atqg a;
+  aunz jdField_a_of_type_Aunz;
+  public auoe a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   Runnable jdField_a_of_type_JavaLangRunnable = new PicPreDownloader.1(this);
-  List<atpv> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
+  List<aunt> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
   public Map<String, Integer> a;
   ConcurrentLinkedQueue<PicPreDownloader.PicPreDownRunner> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   LinkedBlockingQueue<MessageForStructing> jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue = new LinkedBlockingQueue(100);
-  PriorityBlockingQueue<atpv> jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue = new PriorityBlockingQueue();
+  PriorityBlockingQueue<aunt> jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue = new PriorityBlockingQueue();
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   public AtomicInteger a;
   MqqHandler jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
-  List<atpv> b;
-  public PriorityBlockingQueue<atpv> b;
-  List<atpv> c = Collections.synchronizedList(new LinkedList());
-  List<atpv> d = Collections.synchronizedList(new LinkedList());
+  List<aunt> b;
+  public PriorityBlockingQueue<aunt> b;
+  List<aunt> c = Collections.synchronizedList(new LinkedList());
+  List<aunt> d = Collections.synchronizedList(new LinkedList());
   
   static
   {
@@ -92,14 +92,14 @@ public class PicPreDownloader
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
     localIntentFilter.addAction("android.intent.action.SCREEN_ON");
     localIntentFilter.addAction("android.intent.action.USER_PRESENT");
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new atpt(paramQQAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aunr(paramQQAppInterface.getCurrentAccountUin());
     paramQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    this.jdField_a_of_type_Atqg = new atqg();
-    DeviceProfileManager.a(this.jdField_a_of_type_Atqg);
+    this.jdField_a_of_type_Auoe = new auoe();
+    DeviceProfileManager.a(this.jdField_a_of_type_Auoe);
     ThreadManager.post(new PicPreDownloader.2(this, paramQQAppInterface), 5, null, true);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Atqb = ((atqb)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(73));
-    atpg.a("PIC_TAG_PRELOAD", "onInit", "Finished");
+    this.jdField_a_of_type_Aunz = ((aunz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(73));
+    aune.a("PIC_TAG_PRELOAD", "onInit", "Finished");
   }
   
   private void a(PicPreDownloader.PicPreDownRunner paramPicPreDownRunner)
@@ -134,10 +134,10 @@ public class PicPreDownloader
         Iterator localIterator = localCollection.iterator();
         while (localIterator.hasNext())
         {
-          atpv localatpv = (atpv)localIterator.next();
-          if (paramMessageForPic.subMsgId == localatpv.jdField_a_of_type_Atpn.jdField_g_of_type_Int)
+          aunt localaunt = (aunt)localIterator.next();
+          if (paramMessageForPic.subMsgId == localaunt.jdField_a_of_type_Aunl.jdField_g_of_type_Int)
           {
-            atpg.a("PIC_TAG_PRELOAD", "getPriority", "uuid: " + paramMessageForPic.uuid + " subMsgId: " + paramMessageForPic.subMsgId);
+            aune.a("PIC_TAG_PRELOAD", "getPriority", "uuid: " + paramMessageForPic.uuid + " subMsgId: " + paramMessageForPic.subMsgId);
             int i = localInteger.intValue();
             return i;
           }
@@ -148,29 +148,29 @@ public class PicPreDownloader
     return -1;
   }
   
-  atpv a()
+  aunt a()
   {
     int i;
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       i = this.jdField_a_of_type_JavaUtilList.size();
-      atpv localatpv1;
+      aunt localaunt1;
       if (i > 0)
       {
-        atpg.a("PIC_TAG_PRELOAD", "getPicRequest", "get a pic request from AIORequests");
-        localatpv1 = (atpv)this.jdField_a_of_type_JavaUtilList.get(i - 1);
+        aune.a("PIC_TAG_PRELOAD", "getPicRequest", "get a pic request from AIORequests");
+        localaunt1 = (aunt)this.jdField_a_of_type_JavaUtilList.get(i - 1);
         this.jdField_a_of_type_JavaUtilList.remove(i - 1);
-        return localatpv1;
+        return localaunt1;
       }
       synchronized (this.jdField_b_of_type_JavaUtilList)
       {
         i = this.jdField_b_of_type_JavaUtilList.size();
         if (i > 0)
         {
-          atpg.a("PIC_TAG_PRELOAD", "getPicRequest", "get a pic request from C2CRequests");
-          localatpv1 = (atpv)this.jdField_b_of_type_JavaUtilList.get(i - 1);
+          aune.a("PIC_TAG_PRELOAD", "getPicRequest", "get a pic request from C2CRequests");
+          localaunt1 = (aunt)this.jdField_b_of_type_JavaUtilList.get(i - 1);
           this.jdField_b_of_type_JavaUtilList.remove(i - 1);
-          return localatpv1;
+          return localaunt1;
         }
       }
     }
@@ -179,10 +179,10 @@ public class PicPreDownloader
       i = this.c.size();
       if (i > 0)
       {
-        atpg.a("PIC_TAG_PRELOAD", "getPicRequest", "get a pic request from DiscussionRequests");
-        atpv localatpv2 = (atpv)this.c.get(i - 1);
+        aune.a("PIC_TAG_PRELOAD", "getPicRequest", "get a pic request from DiscussionRequests");
+        aunt localaunt2 = (aunt)this.c.get(i - 1);
         this.c.remove(i - 1);
-        return localatpv2;
+        return localaunt2;
       }
     }
     synchronized (this.d)
@@ -190,17 +190,17 @@ public class PicPreDownloader
       i = this.d.size();
       if (i > 0)
       {
-        atpg.a("PIC_TAG_PRELOAD", "getPicRequest", "get a pic request from GroupRequests");
-        atpv localatpv3 = (atpv)this.d.get(i - 1);
+        aune.a("PIC_TAG_PRELOAD", "getPicRequest", "get a pic request from GroupRequests");
+        aunt localaunt3 = (aunt)this.d.get(i - 1);
         this.d.remove(i - 1);
-        return localatpv3;
+        return localaunt3;
       }
     }
-    atpg.a("PIC_TAG_PRELOAD", "getPicRequest", "cannot get any request");
+    aune.a("PIC_TAG_PRELOAD", "getPicRequest", "cannot get any request");
     return null;
   }
   
-  atpv a(String paramString, Collection<atpv> paramCollection)
+  aunt a(String paramString, Collection<aunt> paramCollection)
   {
     for (;;)
     {
@@ -209,22 +209,22 @@ public class PicPreDownloader
         Iterator localIterator = paramCollection.iterator();
         if (localIterator.hasNext())
         {
-          atpv localatpv = (atpv)localIterator.next();
-          if (localatpv.jdField_a_of_type_Atpn == null) {
+          aunt localaunt = (aunt)localIterator.next();
+          if (localaunt.jdField_a_of_type_Aunl == null) {
             continue;
           }
-          if (localatpv.jdField_a_of_type_Atpn.jdField_e_of_type_Int == 1)
+          if (localaunt.jdField_a_of_type_Aunl.jdField_e_of_type_Int == 1)
           {
             bool = true;
-            int i = axwd.a(localatpv.jdField_a_of_type_Atpn.jdField_e_of_type_JavaLangString, bool);
-            String str = axvo.a(localatpv.jdField_a_of_type_Atpn.f, localatpv.jdField_a_of_type_Atpn.jdField_g_of_type_JavaLangString, i);
+            int i = aywk.a(localaunt.jdField_a_of_type_Aunl.jdField_e_of_type_JavaLangString, bool);
+            String str = ayvv.a(localaunt.jdField_a_of_type_Aunl.f, localaunt.jdField_a_of_type_Aunl.jdField_g_of_type_JavaLangString, i);
             if ((paramString == null) || (!paramString.equals(str))) {
               continue;
             }
-            paramCollection.remove(localatpv);
-            this.jdField_a_of_type_JavaUtilMap.remove(localatpv.jdField_a_of_type_Atpn.jdField_g_of_type_JavaLangString);
-            a(localatpv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, -5);
-            return localatpv;
+            paramCollection.remove(localaunt);
+            this.jdField_a_of_type_JavaUtilMap.remove(localaunt.jdField_a_of_type_Aunl.jdField_g_of_type_JavaLangString);
+            a(localaunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, -5);
+            return localaunt;
           }
         }
         else
@@ -237,9 +237,9 @@ public class PicPreDownloader
     }
   }
   
-  Collection<atpv> a(int paramInt)
+  Collection<aunt> a(int paramInt)
   {
-    atpg.a("PIC_TAG_PRELOAD", "getRequestsByPriority", "priority=" + paramInt);
+    aune.a("PIC_TAG_PRELOAD", "getRequestsByPriority", "priority=" + paramInt);
     switch (paramInt)
     {
     default: 
@@ -259,7 +259,7 @@ public class PicPreDownloader
   public void a()
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    atpg.a("PIC_TAG_PRELOAD", "picPreDownloadOff", "mIsPicPreloadSuitable:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+    aune.a("PIC_TAG_PRELOAD", "picPreDownloadOff", "mIsPicPreloadSuitable:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
     if ((this.jdField_a_of_type_MqqOsMqqHandler != null) && (this.jdField_a_of_type_JavaLangRunnable != null))
     {
       this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
@@ -270,47 +270,47 @@ public class PicPreDownloader
   void a(MessageForPic paramMessageForPic)
   {
     if (paramMessageForPic.hasThumbFile()) {}
-    atpv localatpv;
+    aunt localaunt;
     for (;;)
     {
       return;
-      if ((baac.a(paramMessageForPic.msgtype)) || (paramMessageForPic.msgtype == -3001) || (paramMessageForPic.msgtype == -30002) || (paramMessageForPic.msgtype == -30003)) {}
+      if ((bbbg.a(paramMessageForPic.msgtype)) || (paramMessageForPic.msgtype == -3001) || (paramMessageForPic.msgtype == -30002) || (paramMessageForPic.msgtype == -30003)) {}
       for (int i = 1; i == 0; i = 0)
       {
-        this.jdField_a_of_type_Atqb.a(paramMessageForPic);
-        localatpv = atpl.a(5, 1536, 2);
+        this.jdField_a_of_type_Aunz.a(paramMessageForPic);
+        localaunt = aunj.a(5, 1536, 2);
         localObject = paramMessageForPic.getPicDownloadInfo();
         if (localObject != null) {
-          ((atpn)localObject).h = 1;
+          ((aunl)localObject).h = 1;
         }
-        localatpv.a(paramMessageForPic, (atpn)localObject);
-        i = atps.a();
+        localaunt.a(paramMessageForPic, (aunl)localObject);
+        i = aunq.a();
         if ((jdField_a_of_type_Boolean) || (i == 0)) {
           break label152;
         }
-        atpg.a("PIC_TAG_PRELOAD", "screenOFF", "no preDownload,networkType:" + i);
-        this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.add(localatpv);
+        aune.a("PIC_TAG_PRELOAD", "screenOFF", "no preDownload,networkType:" + i);
+        this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.add(localaunt);
         return;
       }
     }
     label152:
     String str = "consumeThumb";
     Object localObject = str;
-    if (localatpv != null)
+    if (localaunt != null)
     {
       localObject = str;
-      if (localatpv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
-        localObject = "consumeThumb" + ", msgSeq = " + localatpv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.shmsgseq;
+      if (localaunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
+        localObject = "consumeThumb" + ", msgSeq = " + localaunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.shmsgseq;
       }
     }
-    a(new PicPreDownloader.PicPreDownRunner(this, new PicPreDownloader.7(this, localatpv), (String)localObject));
-    atpg.a("PIC_TAG_PRELOAD", "run picreq thumb", "uniseq:" + paramMessageForPic.uniseq + ",subMsgId:" + paramMessageForPic.subMsgId);
+    a(new PicPreDownloader.PicPreDownRunner(this, new PicPreDownloader.7(this, localaunt), (String)localObject));
+    aune.a("PIC_TAG_PRELOAD", "run picreq thumb", "uniseq:" + paramMessageForPic.uniseq + ",subMsgId:" + paramMessageForPic.subMsgId);
   }
   
   public void a(MessageForPic paramMessageForPic, int paramInt)
   {
     a(paramMessageForPic);
-    if ((atox.d != 2L) && (atox.d != 0L))
+    if ((aumv.d != 2L) && (aumv.d != 0L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("PIC_TAG_PRELOAD", 2, "productFromAIO(): PicAuDownTimePoint is not DOWNLOAD_POINT_AIO or DOWNLOAD_POINT_ALL");
@@ -335,15 +335,15 @@ public class PicPreDownloader
   
   public void a(MessageForPic paramMessageForPic, long paramLong)
   {
-    if ((this.jdField_a_of_type_Atqg instanceof atqg)) {
-      this.jdField_a_of_type_Atqg.a(paramMessageForPic, paramLong);
+    if ((this.jdField_a_of_type_Auoe instanceof auoe)) {
+      this.jdField_a_of_type_Auoe.a(paramMessageForPic, paramLong);
     }
   }
   
   void a(MessageRecord paramMessageRecord)
   {
-    int i = atps.a();
-    atpg.a("PIC_TAG_PRELOAD", "setMessageRecordNetworkType", "network=" + i);
+    int i = aunq.a();
+    aune.a("PIC_TAG_PRELOAD", "setMessageRecordNetworkType", "network=" + i);
     if ((paramMessageRecord instanceof MessageForPic)) {
       ((MessageForPic)paramMessageRecord).preDownNetworkType = i;
     }
@@ -366,7 +366,7 @@ public class PicPreDownloader
   
   void a(MessageRecord paramMessageRecord, int paramInt)
   {
-    atpg.a("PIC_TAG_PRELOAD", "setNotPredownloadReason", "Reson=" + paramInt);
+    aune.a("PIC_TAG_PRELOAD", "setNotPredownloadReason", "Reson=" + paramInt);
     if ((paramMessageRecord instanceof MessageForPic)) {
       ((MessageForPic)paramMessageRecord).mNotPredownloadReason = paramInt;
     }
@@ -416,44 +416,44 @@ public class PicPreDownloader
           i += 1;
         }
       }
-    } while ((!(paramMessageRecord instanceof MessageForStructing)) || (!atqm.jdField_a_of_type_Boolean));
+    } while ((!(paramMessageRecord instanceof MessageForStructing)) || (!auok.jdField_a_of_type_Boolean));
     c(paramMessageRecord, paramInt1, paramInt2);
   }
   
   public void a(String paramString)
   {
-    atpv localatpv = a(paramString, this.jdField_a_of_type_JavaUtilList);
-    if (localatpv != null)
+    aunt localaunt = a(paramString, this.jdField_a_of_type_JavaUtilList);
+    if (localaunt != null)
     {
-      atpg.a("PIC_TAG_PRELOAD", "", "drop", "From AIORequests, uniseq:" + localatpv.jdField_a_of_type_Atpn.jdField_a_of_type_Long + ",key:" + paramString + ",cmd:" + localatpv.jdField_a_of_type_Int);
+      aune.a("PIC_TAG_PRELOAD", "", "drop", "From AIORequests, uniseq:" + localaunt.jdField_a_of_type_Aunl.jdField_a_of_type_Long + ",key:" + paramString + ",cmd:" + localaunt.jdField_a_of_type_Int);
       return;
     }
-    localatpv = a(paramString, this.jdField_b_of_type_JavaUtilList);
-    if (localatpv != null)
+    localaunt = a(paramString, this.jdField_b_of_type_JavaUtilList);
+    if (localaunt != null)
     {
-      atpg.a("PIC_TAG_PRELOAD", "", "drop", "From AIORequests, uniseq:" + localatpv.jdField_a_of_type_Atpn.jdField_a_of_type_Long + ",key:" + paramString + ",cmd:" + localatpv.jdField_a_of_type_Int);
+      aune.a("PIC_TAG_PRELOAD", "", "drop", "From AIORequests, uniseq:" + localaunt.jdField_a_of_type_Aunl.jdField_a_of_type_Long + ",key:" + paramString + ",cmd:" + localaunt.jdField_a_of_type_Int);
       return;
     }
-    localatpv = a(paramString, this.c);
-    if (localatpv != null)
+    localaunt = a(paramString, this.c);
+    if (localaunt != null)
     {
-      atpg.a("PIC_TAG_PRELOAD", "", "drop", "From AIORequests, uniseq:" + localatpv.jdField_a_of_type_Atpn.jdField_a_of_type_Long + ",key:" + paramString + ",cmd:" + localatpv.jdField_a_of_type_Int);
+      aune.a("PIC_TAG_PRELOAD", "", "drop", "From AIORequests, uniseq:" + localaunt.jdField_a_of_type_Aunl.jdField_a_of_type_Long + ",key:" + paramString + ",cmd:" + localaunt.jdField_a_of_type_Int);
       return;
     }
-    localatpv = a(paramString, this.d);
-    if (localatpv != null)
+    localaunt = a(paramString, this.d);
+    if (localaunt != null)
     {
-      atpg.a("PIC_TAG_PRELOAD", "", "drop", "From AIORequests, uniseq:" + localatpv.jdField_a_of_type_Atpn.jdField_a_of_type_Long + ",key:" + paramString + ",cmd:" + localatpv.jdField_a_of_type_Int);
+      aune.a("PIC_TAG_PRELOAD", "", "drop", "From AIORequests, uniseq:" + localaunt.jdField_a_of_type_Aunl.jdField_a_of_type_Long + ",key:" + paramString + ",cmd:" + localaunt.jdField_a_of_type_Int);
       return;
     }
-    atpg.a("PIC_TAG_PRELOAD", "", "drop", "Cannot be found in the request stacks");
+    aune.a("PIC_TAG_PRELOAD", "", "drop", "Cannot be found in the request stacks");
   }
   
   public boolean a()
   {
     boolean bool1 = false;
-    boolean bool2 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131629640), "qqsetting_auto_receive_pic_key", true);
-    if ((badq.b(BaseApplication.getContext()) == 1) || (bool2)) {}
+    boolean bool2 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131695321), "qqsetting_auto_receive_pic_key", true);
+    if ((bbev.b(BaseApplication.getContext()) == 1) || (bool2)) {}
     for (int i = 1;; i = 0)
     {
       if (("1".equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(ServerConfigManager.ConfigType.common, "UseLocalFlowSet"))) || (i != 0)) {
@@ -470,14 +470,14 @@ public class PicPreDownloader
     Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramMessageForPic.uuid);
     if (localInteger == null)
     {
-      atpg.a("PIC_TAG_PRELOAD", "filter", "uuid=" + paramMessageForPic.uuid + ", priority=" + paramInt + ", cannot be found in the PriorityMap");
+      aune.a("PIC_TAG_PRELOAD", "filter", "uuid=" + paramMessageForPic.uuid + ", priority=" + paramInt + ", cannot be found in the PriorityMap");
       return bool2;
     }
     Collection localCollection = a(localInteger.intValue());
-    atpg.a("PIC_TAG_PRELOAD", "filter", "priority: " + paramInt + ", uniseq: " + paramMessageForPic.uniseq + ", subMsgId:" + paramMessageForPic.subMsgId);
+    aune.a("PIC_TAG_PRELOAD", "filter", "priority: " + paramInt + ", uniseq: " + paramMessageForPic.uniseq + ", subMsgId:" + paramMessageForPic.subMsgId);
     if (localCollection == null)
     {
-      atpg.a("PIC_TAG_PRELOAD", "filter", "originalRequests == null");
+      aune.a("PIC_TAG_PRELOAD", "filter", "originalRequests == null");
       return false;
     }
     Object localObject1 = null;
@@ -489,8 +489,8 @@ public class PicPreDownloader
         Iterator localIterator = localCollection.iterator();
         if (localIterator.hasNext())
         {
-          localObject2 = (atpv)localIterator.next();
-          if (paramMessageForPic.subMsgId != ((atpv)localObject2).jdField_a_of_type_Atpn.jdField_g_of_type_Int) {
+          localObject2 = (aunt)localIterator.next();
+          if (paramMessageForPic.subMsgId != ((aunt)localObject2).jdField_a_of_type_Aunl.jdField_g_of_type_Int) {
             break label339;
           }
           bool1 = true;
@@ -499,7 +499,7 @@ public class PicPreDownloader
         }
         if ((!bool1) || (paramInt <= localInteger.intValue()))
         {
-          atpg.a("PIC_TAG_PRELOAD", "filter", "No need to update the picReq");
+          aune.a("PIC_TAG_PRELOAD", "filter", "No need to update the picReq");
           return bool1;
         }
       }
@@ -514,32 +514,32 @@ public class PicPreDownloader
       localCollection.remove(localObject1);
       ((Collection)localObject2).add(localObject1);
       this.jdField_a_of_type_JavaUtilMap.put(paramMessageForPic.uuid, Integer.valueOf(paramInt));
-      atpg.a("PIC_TAG_PRELOAD", "filter", "update the picReq");
+      aune.a("PIC_TAG_PRELOAD", "filter", "update the picReq");
       return bool1;
     }
   }
   
-  atpv b()
+  aunt b()
   {
     int i;
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       i = this.jdField_a_of_type_JavaUtilList.size();
-      atpv localatpv1;
+      aunt localaunt1;
       if (i > 0)
       {
-        atpg.a("PIC_TAG_PRELOAD", "getPicRequestWithoutRemove", "get a pic request from AIORequests");
-        localatpv1 = (atpv)this.jdField_a_of_type_JavaUtilList.get(i - 1);
-        return localatpv1;
+        aune.a("PIC_TAG_PRELOAD", "getPicRequestWithoutRemove", "get a pic request from AIORequests");
+        localaunt1 = (aunt)this.jdField_a_of_type_JavaUtilList.get(i - 1);
+        return localaunt1;
       }
       synchronized (this.jdField_b_of_type_JavaUtilList)
       {
         i = this.jdField_b_of_type_JavaUtilList.size();
         if (i > 0)
         {
-          atpg.a("PIC_TAG_PRELOAD", "getPicRequestWithoutRemove", "get a pic request from C2CRequests");
-          localatpv1 = (atpv)this.jdField_b_of_type_JavaUtilList.get(i - 1);
-          return localatpv1;
+          aune.a("PIC_TAG_PRELOAD", "getPicRequestWithoutRemove", "get a pic request from C2CRequests");
+          localaunt1 = (aunt)this.jdField_b_of_type_JavaUtilList.get(i - 1);
+          return localaunt1;
         }
       }
     }
@@ -548,9 +548,9 @@ public class PicPreDownloader
       i = this.c.size();
       if (i > 0)
       {
-        atpg.a("PIC_TAG_PRELOAD", "getPicRequestWithoutRemove", "get a pic request from DiscussionRequests");
-        atpv localatpv2 = (atpv)this.c.get(i - 1);
-        return localatpv2;
+        aune.a("PIC_TAG_PRELOAD", "getPicRequestWithoutRemove", "get a pic request from DiscussionRequests");
+        aunt localaunt2 = (aunt)this.c.get(i - 1);
+        return localaunt2;
       }
     }
     synchronized (this.d)
@@ -558,26 +558,26 @@ public class PicPreDownloader
       i = this.d.size();
       if (i > 0)
       {
-        atpg.a("PIC_TAG_PRELOAD", "getPicRequestWithoutRemove", "get a pic request from GroupRequests");
-        atpv localatpv3 = (atpv)this.d.get(i - 1);
-        return localatpv3;
+        aune.a("PIC_TAG_PRELOAD", "getPicRequestWithoutRemove", "get a pic request from GroupRequests");
+        aunt localaunt3 = (aunt)this.d.get(i - 1);
+        return localaunt3;
       }
     }
-    atpg.a("PIC_TAG_PRELOAD", "getPicRequestWithoutRemove", "cannot get any request");
+    aune.a("PIC_TAG_PRELOAD", "getPicRequestWithoutRemove", "cannot get any request");
     return null;
   }
   
   public void b()
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    atpg.a("PIC_TAG_PRELOAD", "picPreDownloadOn", "mIsPicPreloadSuitable:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+    aune.a("PIC_TAG_PRELOAD", "picPreDownloadOn", "mIsPicPreloadSuitable:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
     f();
   }
   
   public void b(MessageForPic paramMessageForPic, int paramInt)
   {
     a(paramMessageForPic);
-    if ((atox.d != 2L) && (atox.d != 0L))
+    if ((aumv.d != 2L) && (aumv.d != 0L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("PIC_TAG_PRELOAD", 2, "productFromAIO(): PicAuDownTimePoint is not DOWNLOAD_POINT_AIO or DOWNLOAD_POINT_ALL");
@@ -609,7 +609,7 @@ public class PicPreDownloader
     do
     {
       return;
-      if ((atox.d != 1L) && (atox.d != 0L))
+      if ((aumv.d != 1L) && (aumv.d != 0L))
       {
         if (QLog.isColorLevel()) {
           QLog.d("PIC_TAG_PRELOAD", 2, "productFromMsg(): PicAuDownTimePoint is not DOWNLOAD_POINT_MSG or DOWNLOAD_POINT_ALL");
@@ -630,37 +630,37 @@ public class PicPreDownloader
     if ((paramMessageRecord instanceof MessageForPic))
     {
       localObject = (MessageForPic)paramMessageRecord;
-      ((MessageForPic)localObject).getReportInfo().b = atps.a();
+      ((MessageForPic)localObject).getReportInfo().b = aunq.a();
       ((MessageForPic)localObject).getReportInfo().jdField_a_of_type_Long = System.currentTimeMillis();
       ((MessageForPic)localObject).getReportInfo().jdField_a_of_type_Int = 0;
     }
     a(paramMessageRecord, paramInt, 1);
-    axpm.a(paramMessageRecord);
+    aypt.a(paramMessageRecord);
   }
   
   void b(MessageRecord paramMessageRecord, int paramInt1, int paramInt2)
   {
     if ((paramMessageRecord instanceof MessageForPic)) {
-      atpg.a("PIC_TAG_PRELOAD", "add", "START uniseq:" + ((MessageForPic)paramMessageRecord).uniseq + ",suMsgId:" + ((MessageForPic)paramMessageRecord).subMsgId + ",priority:" + paramInt2);
+      aune.a("PIC_TAG_PRELOAD", "add", "START uniseq:" + ((MessageForPic)paramMessageRecord).uniseq + ",suMsgId:" + ((MessageForPic)paramMessageRecord).subMsgId + ",priority:" + paramInt2);
     }
     int i;
     int j;
     int k;
     if ((paramMessageRecord.isMultiMsg) && (!paramMessageRecord.isSend()))
     {
-      localObject = arxu.a().a();
+      localObject = asty.a().a();
       if (localObject != null)
       {
         i = ((SessionInfo)localObject).jdField_a_of_type_Int;
         localObject = ((SessionInfo)localObject).jdField_a_of_type_JavaLangString;
-        i = atps.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, (String)localObject);
-        j = atps.a();
+        i = aunq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, (String)localObject);
+        j = aunq.a();
         k = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject);
         if ((j == 0) || (k != 2)) {
           break label243;
         }
         if ((paramMessageRecord instanceof MessageForPic)) {
-          atpg.a("PIC_TAG_PRELOAD", "add", "num group skip, uniseq:" + paramMessageRecord.uniseq + ",suMsgId:" + ((MessageForPic)paramMessageRecord).subMsgId + "priority:" + paramInt2);
+          aune.a("PIC_TAG_PRELOAD", "add", "num group skip, uniseq:" + paramMessageRecord.uniseq + ",suMsgId:" + ((MessageForPic)paramMessageRecord).subMsgId + "priority:" + paramInt2);
         }
       }
     }
@@ -676,13 +676,13 @@ public class PicPreDownloader
         i = paramMessageRecord.istroop;
         localObject = paramMessageRecord.frienduin;
         break;
-        localObject = this.jdField_a_of_type_Atqg.a(i, j);
+        localObject = this.jdField_a_of_type_Auoe.a(i, j);
         if ((localObject[0] != 0) && ((paramInt1 & 0x1) == 1)) {}
         int m;
         for (boolean bool = true;; bool = false)
         {
           m = localObject[1];
-          atpg.a("PIC_TAG_PRELOAD", "add", "preDownThumb=" + bool + " preDownBig=" + m);
+          aune.a("PIC_TAG_PRELOAD", "add", "preDownThumb=" + bool + " preDownBig=" + m);
           if (!(paramMessageRecord instanceof MessageForPic)) {
             break label693;
           }
@@ -690,13 +690,13 @@ public class PicPreDownloader
           if ((((MessageForPic)localObject).path != null) || (((MessageForPic)localObject).uuid != null) || (((MessageForPic)localObject).md5 != null)) {
             break;
           }
-          atpg.a("PIC_TAG_PRELOAD", "add", "pic.path == null && pic.uuid == null && pic.md5 == null");
+          aune.a("PIC_TAG_PRELOAD", "add", "pic.path == null && pic.uuid == null && pic.md5 == null");
           a(paramMessageRecord, -3);
           return;
         }
         if (a((MessageForPic)localObject, paramInt2))
         {
-          atpg.a("PIC_TAG_PRELOAD", "filter", "skip uniseq:" + ((MessageForPic)localObject).uniseq + ",suMsgId:" + ((MessageForPic)localObject).subMsgId + "priority:" + paramInt2);
+          aune.a("PIC_TAG_PRELOAD", "filter", "skip uniseq:" + ((MessageForPic)localObject).uniseq + ",suMsgId:" + ((MessageForPic)localObject).subMsgId + "priority:" + paramInt2);
           return;
         }
         if (bool) {
@@ -707,14 +707,14 @@ public class PicPreDownloader
           if (k == 1) {
             break label547;
           }
-          atpg.a("PIC_TAG_PRELOAD", "add", "The troop is not MSG_FILTER_VALUE.MSG_FILTER_OPEN");
+          aune.a("PIC_TAG_PRELOAD", "add", "The troop is not MSG_FILTER_VALUE.MSG_FILTER_OPEN");
           a(paramMessageRecord, -7);
         }
         for (;;)
         {
-          atpg.a("PIC_TAG_PRELOAD", "add", "FINISH uniseq:" + ((MessageForPic)localObject).uniseq + ",suMsgId:" + ((MessageForPic)localObject).subMsgId + ",priority:" + paramInt2);
+          aune.a("PIC_TAG_PRELOAD", "add", "FINISH uniseq:" + ((MessageForPic)localObject).uniseq + ",suMsgId:" + ((MessageForPic)localObject).subMsgId + ",priority:" + paramInt2);
           return;
-          if (this.jdField_a_of_type_Atqg.a((MessageForPic)localObject))
+          if (this.jdField_a_of_type_Auoe.a((MessageForPic)localObject))
           {
             if ((b((MessageForPic)localObject, paramInt2)) && (m != 0))
             {
@@ -726,10 +726,10 @@ public class PicPreDownloader
                 if ((!((MessageForPic)localObject).checkGif()) || (((MessageForPic)localObject).isSendFromLocal()) || (paramInt2 != 5) || (((MessageForPic)localObject).hasThumbFile())) {
                   break label681;
                 }
-                atpg.a("PIC_TAG_PRELOAD", "addBigPicRequest", "not hasThumbFile,download thumb,uniseq: " + ((MessageForPic)localObject).uniseq + ", priority: " + paramInt2);
+                aune.a("PIC_TAG_PRELOAD", "addBigPicRequest", "not hasThumbFile,download thumb,uniseq: " + ((MessageForPic)localObject).uniseq + ", priority: " + paramInt2);
                 a((MessageForPic)localObject);
                 break;
-                atpg.a("PIC_TAG_PRELOAD", "add", "handlingNum.get() >= MAX_HANDLING_THREADS");
+                aune.a("PIC_TAG_PRELOAD", "add", "handlingNum.get() >= MAX_HANDLING_THREADS");
               }
             }
           }
@@ -747,92 +747,92 @@ public class PicPreDownloader
       try
       {
         this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.add(paramMessageRecord);
-        atpg.a("PIC_TAG_PRELOAD", "structMsg-screenOFF", "no preDownload,networkType:" + j);
+        aune.a("PIC_TAG_PRELOAD", "structMsg-screenOFF", "no preDownload,networkType:" + j);
         return;
       }
       catch (Exception paramMessageRecord)
       {
         for (;;)
         {
-          atpg.a("PIC_TAG_PRELOAD", "structMsg-screenOFF", "no preDownload exception happened,networkType:" + j);
+          aune.a("PIC_TAG_PRELOAD", "structMsg-screenOFF", "no preDownload exception happened,networkType:" + j);
         }
       }
     }
     Object localObject = "addToQuene-MessageForStructing" + ", msgSeq = " + paramMessageRecord.shmsgseq;
     a(new PicPreDownloader.PicPreDownRunner(this, new PicPreDownloader.6(this, paramMessageRecord), (String)localObject));
-    atpg.a("PIC_TAG_PRELOAD", "structMsg-add ", "finish preDownload uniseq =" + paramMessageRecord.uniseq);
+    aune.a("PIC_TAG_PRELOAD", "structMsg-add ", "finish preDownload uniseq =" + paramMessageRecord.uniseq);
   }
   
   boolean b(MessageForPic paramMessageForPic, int paramInt)
   {
     if (paramMessageForPic.hasBigFile())
     {
-      atpg.a("PIC_TAG_PRELOAD", "addBigPicRequest", "hasBigFile, uniseq: " + paramMessageForPic.uniseq + ", priority: " + paramInt);
+      aune.a("PIC_TAG_PRELOAD", "addBigPicRequest", "hasBigFile, uniseq: " + paramMessageForPic.uniseq + ", priority: " + paramInt);
       if (QLog.isColorLevel()) {
         QLog.d("PIC_TAG_PRELOAD_TROOP", 2, "try to download, but the big picture already exists");
       }
-      atps.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPic);
+      aunq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPic);
     }
     do
     {
       return false;
-      if (((!ajke.a(paramMessageForPic)) && (!ajhz.a(paramMessageForPic))) || (axoa.b(axwd.a(paramMessageForPic, 1, null).toString()) == null)) {
+      if (((!ajyk.a(paramMessageForPic)) && (!ajwd.a(paramMessageForPic))) || (ayog.b(aywk.a(paramMessageForPic, 1, null).toString()) == null)) {
         break;
       }
-      atpg.a("PIC_TAG_PRELOAD", "addBigPicRequest", "hasFlashPicFile, uniseq: " + paramMessageForPic.uniseq + ", priority: " + paramInt);
+      aune.a("PIC_TAG_PRELOAD", "addBigPicRequest", "hasFlashPicFile, uniseq: " + paramMessageForPic.uniseq + ", priority: " + paramInt);
     } while (!QLog.isColorLevel());
     QLog.d("PIC_TAG_PRELOAD_TROOP", 2, "try to download, but the picture already exists");
     return false;
     if (QLog.isColorLevel()) {
       QLog.d("PIC_TAG_PRELOAD_TROOP", 2, "real download a big picture");
     }
-    atpg.a("PIC_TAG_PRELOAD", "addBigPicRequest", " START uniseq: " + paramMessageForPic.uniseq + ", suMsgId: " + paramMessageForPic.subMsgId + ", priority:" + paramInt);
+    aune.a("PIC_TAG_PRELOAD", "addBigPicRequest", " START uniseq: " + paramMessageForPic.uniseq + ", suMsgId: " + paramMessageForPic.subMsgId + ", priority:" + paramInt);
     int i;
-    atpv localatpv;
+    aunt localaunt;
     Object localObject;
     List localList;
-    if (atps.a() == 0)
+    if (aunq.a() == 0)
     {
       i = 1536;
-      localatpv = atpl.a(6, i, 2);
+      localaunt = aunj.a(6, i, 2);
       localObject = paramMessageForPic.getPicDownloadInfo();
       if (localObject != null)
       {
-        ((atpn)localObject).h = 1;
-        ((atpn)localObject).jdField_e_of_type_JavaLangString = "chatimg";
+        ((aunl)localObject).h = 1;
+        ((aunl)localObject).jdField_e_of_type_JavaLangString = "chatimg";
       }
-      localatpv.a(paramMessageForPic, (atpn)localObject);
+      localaunt.a(paramMessageForPic, (aunl)localObject);
       localList = null;
       localObject = "";
-      i = atps.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPic.istroop, paramMessageForPic.frienduin);
+      i = aunq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPic.istroop, paramMessageForPic.frienduin);
       if (paramInt != 5) {
         break label517;
       }
       localList = this.jdField_a_of_type_JavaUtilList;
-      localatpv.jdField_e_of_type_Int = 5;
+      localaunt.jdField_e_of_type_Int = 5;
       localObject = "AIORequests";
       switch (i)
       {
       default: 
-        localatpv.f = 2;
+        localaunt.f = 2;
       }
     }
     for (;;)
     {
       if (localList != null)
       {
-        atpg.a("PIC_TAG_PRELOAD", "addBigPicRequest", "successfully to add the pic request to " + (String)localObject);
-        localList.add(localatpv);
+        aune.a("PIC_TAG_PRELOAD", "addBigPicRequest", "successfully to add the pic request to " + (String)localObject);
+        localList.add(localaunt);
         d();
-        this.jdField_a_of_type_JavaUtilMap.put(localatpv.jdField_a_of_type_Atpn.jdField_g_of_type_JavaLangString, Integer.valueOf(localatpv.jdField_e_of_type_Int));
+        this.jdField_a_of_type_JavaUtilMap.put(localaunt.jdField_a_of_type_Aunl.jdField_g_of_type_JavaLangString, Integer.valueOf(localaunt.jdField_e_of_type_Int));
       }
-      atpg.a("PIC_TAG_PRELOAD", "addBigPicRequest", "END uniseq: " + paramMessageForPic.uniseq + ", suMsgId: " + paramMessageForPic.subMsgId + ", priority: " + paramInt);
+      aune.a("PIC_TAG_PRELOAD", "addBigPicRequest", "END uniseq: " + paramMessageForPic.uniseq + ", suMsgId: " + paramMessageForPic.subMsgId + ", priority: " + paramInt);
       return true;
       i = 1537;
       break;
-      localatpv.f = 4;
+      localaunt.f = 4;
       continue;
-      localatpv.f = 3;
+      localaunt.f = 3;
       continue;
       label517:
       if (paramInt == 1) {
@@ -840,20 +840,20 @@ public class PicPreDownloader
         {
         default: 
           localList = this.d;
-          localatpv.jdField_e_of_type_Int = 2;
-          localatpv.f = localatpv.jdField_e_of_type_Int;
+          localaunt.jdField_e_of_type_Int = 2;
+          localaunt.f = localaunt.jdField_e_of_type_Int;
           localObject = "GroupRequests";
           break;
         case 3: 
           localList = this.jdField_b_of_type_JavaUtilList;
-          localatpv.jdField_e_of_type_Int = 4;
-          localatpv.f = localatpv.jdField_e_of_type_Int;
+          localaunt.jdField_e_of_type_Int = 4;
+          localaunt.f = localaunt.jdField_e_of_type_Int;
           localObject = "C2CRequests";
           break;
         case 2: 
           localList = this.c;
-          localatpv.jdField_e_of_type_Int = 3;
-          localatpv.f = localatpv.jdField_e_of_type_Int;
+          localaunt.jdField_e_of_type_Int = 3;
+          localaunt.f = localaunt.jdField_e_of_type_Int;
           localObject = "DiscussionRequests";
         }
       }
@@ -885,7 +885,7 @@ public class PicPreDownloader
     }
     if (paramMessageRecord.isSendFromLocal())
     {
-      atpg.a("PIC_TAG_PRELOAD", "add", "MessageRecord isSendFromLocal");
+      aune.a("PIC_TAG_PRELOAD", "add", "MessageRecord isSendFromLocal");
       return;
     }
     b(paramMessageRecord, paramInt1, paramInt2);
@@ -894,7 +894,7 @@ public class PicPreDownloader
   void d()
   {
     Object localObject1;
-    if (this.jdField_a_of_type_JavaUtilList.size() + this.jdField_b_of_type_JavaUtilList.size() + this.c.size() + this.d.size() > this.jdField_a_of_type_Atqg.jdField_a_of_type_Int) {
+    if (this.jdField_a_of_type_JavaUtilList.size() + this.jdField_b_of_type_JavaUtilList.size() + this.c.size() + this.d.size() > this.jdField_a_of_type_Auoe.jdField_a_of_type_Int) {
       localObject1 = null;
     }
     for (;;)
@@ -903,33 +903,33 @@ public class PicPreDownloader
       {
         if (this.d.size() > 0)
         {
-          localObject1 = (atpv)this.d.remove(0);
+          localObject1 = (aunt)this.d.remove(0);
           if (localObject1 != null)
           {
-            this.jdField_a_of_type_JavaUtilMap.remove(((atpv)localObject1).jdField_a_of_type_Atpn.jdField_g_of_type_JavaLangString);
-            localObject1 = this.jdField_a_of_type_Atqg;
-            ((atqg)localObject1).O += 1L;
-            atpg.a("PIC_TAG_PRELOAD", "checkRequestListSize", "over max request list size: " + this.jdField_a_of_type_Atqg.jdField_a_of_type_Int + ", remove a request");
+            this.jdField_a_of_type_JavaUtilMap.remove(((aunt)localObject1).jdField_a_of_type_Aunl.jdField_g_of_type_JavaLangString);
+            localObject1 = this.jdField_a_of_type_Auoe;
+            ((auoe)localObject1).O += 1L;
+            aune.a("PIC_TAG_PRELOAD", "checkRequestListSize", "over max request list size: " + this.jdField_a_of_type_Auoe.jdField_a_of_type_Int + ", remove a request");
           }
           return;
         }
         synchronized (this.c)
         {
           if (this.c.size() > 0) {
-            localObject1 = (atpv)this.c.remove(0);
+            localObject1 = (aunt)this.c.remove(0);
           }
         }
       }
       synchronized (this.jdField_b_of_type_JavaUtilList)
       {
         if (this.jdField_b_of_type_JavaUtilList.size() > 0) {
-          atpv localatpv1 = (atpv)this.jdField_b_of_type_JavaUtilList.remove(0);
+          aunt localaunt1 = (aunt)this.jdField_b_of_type_JavaUtilList.remove(0);
         }
       }
       synchronized (this.jdField_a_of_type_JavaUtilList)
       {
         if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-          atpv localatpv2 = (atpv)this.jdField_a_of_type_JavaUtilList.remove(0);
+          aunt localaunt2 = (aunt)this.jdField_a_of_type_JavaUtilList.remove(0);
         }
       }
     }
@@ -937,37 +937,37 @@ public class PicPreDownloader
   
   void e()
   {
-    atpg.a("PIC_TAG_PRELOAD", "consumeThumb", "START");
-    int i = atps.a();
+    aune.a("PIC_TAG_PRELOAD", "consumeThumb", "START");
+    int i = aunq.a();
     if ((!jdField_a_of_type_Boolean) && (i != 0))
     {
-      atpg.a("PIC_TAG_PRELOAD", "screenOFF", "no preDownload,networkType:" + i);
+      aune.a("PIC_TAG_PRELOAD", "screenOFF", "no preDownload,networkType:" + i);
       return;
     }
     Object localObject3 = this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.iterator();
-    atpv localatpv;
+    aunt localaunt;
     Object localObject2;
     if (((Iterator)localObject3).hasNext())
     {
-      localatpv = (atpv)((Iterator)localObject3).next();
+      localaunt = (aunt)((Iterator)localObject3).next();
       localObject2 = "consumeAllThumbsInPendingQueue-thumbPendingQueue";
       localObject1 = localObject2;
-      if (localatpv != null)
+      if (localaunt != null)
       {
         localObject1 = localObject2;
-        if (localatpv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
-          localObject1 = "consumeAllThumbsInPendingQueue-thumbPendingQueue" + ", msgSeq = " + localatpv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.shmsgseq;
+        if (localaunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
+          localObject1 = "consumeAllThumbsInPendingQueue-thumbPendingQueue" + ", msgSeq = " + localaunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.shmsgseq;
         }
       }
-      a(new PicPreDownloader.PicPreDownRunner(this, new PicPreDownloader.8(this, localatpv), (String)localObject1));
-      if (localatpv.jdField_a_of_type_Atpn == null) {
+      a(new PicPreDownloader.PicPreDownRunner(this, new PicPreDownloader.8(this, localaunt), (String)localObject1));
+      if (localaunt.jdField_a_of_type_Aunl == null) {
         break label356;
       }
     }
     label356:
-    for (Object localObject1 = "uniseq:" + localatpv.jdField_a_of_type_Atpn.jdField_a_of_type_Long;; localObject1 = "")
+    for (Object localObject1 = "uniseq:" + localaunt.jdField_a_of_type_Aunl.jdField_a_of_type_Long;; localObject1 = "")
     {
-      atpg.a("PIC_TAG_PRELOAD", "run picreq thumb", (String)localObject1);
+      aune.a("PIC_TAG_PRELOAD", "run picreq thumb", (String)localObject1);
       break;
       this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.clear();
       localObject1 = this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.iterator();
@@ -978,23 +978,23 @@ public class PicPreDownloader
         {
           localObject3 = "consumeAllThumbsInPendingQueue-structMsgPengdingQueue" + ", msgSeq = " + ((MessageForStructing)localObject2).shmsgseq;
           a(new PicPreDownloader.PicPreDownRunner(this, new PicPreDownloader.9(this, (MessageForStructing)localObject2), (String)localObject3));
-          atpg.a("PIC_TAG_PRELOAD", "structMsg-add ", "finish MessageForStructing preDownload uniseq =" + ((MessageForStructing)localObject2).uniseq);
+          aune.a("PIC_TAG_PRELOAD", "structMsg-add ", "finish MessageForStructing preDownload uniseq =" + ((MessageForStructing)localObject2).uniseq);
         }
       }
       this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.clear();
-      atpg.a("PIC_TAG_PRELOAD", "consumeThumb", "END");
+      aune.a("PIC_TAG_PRELOAD", "consumeThumb", "END");
       return;
     }
   }
   
   public void f()
   {
-    atpg.a("PIC_TAG_PRELOAD", "consume", "START");
+    aune.a("PIC_TAG_PRELOAD", "consume", "START");
     if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      atpg.a("PIC_TAG_PRELOAD", "consume", "!mIsPicPreloadSuitable.get() failed");
+      aune.a("PIC_TAG_PRELOAD", "consume", "!mIsPicPreloadSuitable.get() failed");
     }
     int k;
-    atpv localatpv;
+    aunt localaunt;
     int i;
     int j;
     do
@@ -1004,7 +1004,7 @@ public class PicPreDownloader
         return;
         if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 1)
         {
-          atpg.a("PIC_TAG_PRELOAD", "consume", "handlingNum.get() >= MAX_HANDLING_THREADS");
+          aune.a("PIC_TAG_PRELOAD", "consume", "handlingNum.get() >= MAX_HANDLING_THREADS");
           return;
         }
         localObject = b();
@@ -1013,91 +1013,91 @@ public class PicPreDownloader
         if (localObject != null)
         {
           bool1 = bool2;
-          if (((atpv)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null)
+          if (((aunt)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null)
           {
             bool1 = bool2;
-            if (((atpv)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic.thumbWidthHeightDP != null)
+            if (((aunt)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic.thumbWidthHeightDP != null)
             {
-              bool1 = ((atpv)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic.thumbWidthHeightDP.useCustomSize();
-              atpg.a("PIC_TAG_PRELOAD", "consume", "isBigImage=" + bool1);
+              bool1 = ((aunt)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic.thumbWidthHeightDP.useCustomSize();
+              aune.a("PIC_TAG_PRELOAD", "consume", "isBigImage=" + bool1);
             }
           }
         }
-        k = atps.a();
+        k = aunq.a();
         if ((!jdField_a_of_type_Boolean) && (k != 0) && (!bool1))
         {
-          atpg.a("PIC_TAG_PRELOAD", "screenOFF", "no preDownload,networkType:" + k + ",isBigImage=" + bool1);
+          aune.a("PIC_TAG_PRELOAD", "screenOFF", "no preDownload,networkType:" + k + ",isBigImage=" + bool1);
           return;
         }
-        localatpv = a();
-        if (localatpv == null) {
+        localaunt = a();
+        if (localaunt == null) {
           break label911;
         }
-        if (localatpv.jdField_a_of_type_Atpn == null)
+        if (localaunt.jdField_a_of_type_Aunl == null)
         {
-          atpg.b("PIC_TAG_PRELOAD", "consume", "picReq.downinfo == null");
-          a(localatpv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, -4);
+          aune.b("PIC_TAG_PRELOAD", "consume", "picReq.downinfo == null");
+          a(localaunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, -4);
           return;
         }
-        this.jdField_a_of_type_JavaUtilMap.remove(localatpv.jdField_a_of_type_Atpn.jdField_g_of_type_JavaLangString);
-        i = atps.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localatpv.jdField_a_of_type_Atpn.b, localatpv.jdField_a_of_type_Atpn.c);
-        j = this.jdField_a_of_type_Atqg.a(localatpv.jdField_a_of_type_Atpn.d, i, k, bfcq.a(localatpv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.imageType));
-        a(localatpv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, j);
+        this.jdField_a_of_type_JavaUtilMap.remove(localaunt.jdField_a_of_type_Aunl.jdField_g_of_type_JavaLangString);
+        i = aunq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaunt.jdField_a_of_type_Aunl.b, localaunt.jdField_a_of_type_Aunl.c);
+        j = this.jdField_a_of_type_Auoe.a(localaunt.jdField_a_of_type_Aunl.d, i, k, bgkh.a(localaunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.imageType));
+        a(localaunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, j);
         if (j >= 0) {
           break;
         }
-        atpg.a("PIC_TAG_PRELOAD", "consume", "overLimit and put request back to list, uinType=" + i + " networkType=" + k);
-        localObject = a(localatpv.jdField_e_of_type_Int);
+        aune.a("PIC_TAG_PRELOAD", "consume", "overLimit and put request back to list, uinType=" + i + " networkType=" + k);
+        localObject = a(localaunt.jdField_e_of_type_Int);
       } while (localObject == null);
-      ((Collection)localObject).add(localatpv);
-      this.jdField_a_of_type_JavaUtilMap.put(localatpv.jdField_a_of_type_Atpn.jdField_g_of_type_JavaLangString, Integer.valueOf(localatpv.jdField_e_of_type_Int));
+      ((Collection)localObject).add(localaunt);
+      this.jdField_a_of_type_JavaUtilMap.put(localaunt.jdField_a_of_type_Aunl.jdField_g_of_type_JavaLangString, Integer.valueOf(localaunt.jdField_e_of_type_Int));
       d();
       return;
-      if ((localatpv.jdField_a_of_type_Int != 6) || (this.jdField_a_of_type_Atqg.a(i, k)[1] != 0)) {
+      if ((localaunt.jdField_a_of_type_Int != 6) || (this.jdField_a_of_type_Auoe.a(i, k)[1] != 0)) {
         break;
       }
-      atpg.a("PIC_TAG_PRELOAD", "consume", "Network changed, put the picReq back to list, uintype:" + localatpv.jdField_a_of_type_Atpn.b + ", networkType:" + k + ", uniseq:" + localatpv.jdField_a_of_type_Atpn.jdField_a_of_type_Long);
-      localObject = a(localatpv.jdField_e_of_type_Int);
+      aune.a("PIC_TAG_PRELOAD", "consume", "Network changed, put the picReq back to list, uintype:" + localaunt.jdField_a_of_type_Aunl.b + ", networkType:" + k + ", uniseq:" + localaunt.jdField_a_of_type_Aunl.jdField_a_of_type_Long);
+      localObject = a(localaunt.jdField_e_of_type_Int);
     } while (localObject == null);
-    ((Collection)localObject).add(localatpv);
-    this.jdField_a_of_type_JavaUtilMap.put(localatpv.jdField_a_of_type_Atpn.jdField_g_of_type_JavaLangString, Integer.valueOf(localatpv.jdField_e_of_type_Int));
+    ((Collection)localObject).add(localaunt);
+    this.jdField_a_of_type_JavaUtilMap.put(localaunt.jdField_a_of_type_Aunl.jdField_g_of_type_JavaLangString, Integer.valueOf(localaunt.jdField_e_of_type_Int));
     d();
     return;
-    this.jdField_b_of_type_JavaUtilConcurrentPriorityBlockingQueue.add(localatpv);
-    localatpv.f = localatpv.jdField_e_of_type_Int;
-    localatpv.jdField_e_of_type_Int = 6;
-    this.jdField_a_of_type_JavaUtilMap.put(localatpv.jdField_a_of_type_Atpn.jdField_g_of_type_JavaLangString, Integer.valueOf(6));
-    if (localatpv.jdField_a_of_type_Int == 6) {}
+    this.jdField_b_of_type_JavaUtilConcurrentPriorityBlockingQueue.add(localaunt);
+    localaunt.f = localaunt.jdField_e_of_type_Int;
+    localaunt.jdField_e_of_type_Int = 6;
+    this.jdField_a_of_type_JavaUtilMap.put(localaunt.jdField_a_of_type_Aunl.jdField_g_of_type_JavaLangString, Integer.valueOf(6));
+    if (localaunt.jdField_a_of_type_Int == 6) {}
     for (Object localObject = " big";; localObject = " thumb")
     {
-      atpg.a("PIC_TAG_PRELOAD", "run picreq" + (String)localObject, "uniseq:" + localatpv.jdField_a_of_type_Atpn.jdField_a_of_type_Long + "subMsgId:" + localatpv.jdField_a_of_type_Atpn.jdField_g_of_type_Int + ",priority:" + localatpv.jdField_e_of_type_Int);
+      aune.a("PIC_TAG_PRELOAD", "run picreq" + (String)localObject, "uniseq:" + localaunt.jdField_a_of_type_Aunl.jdField_a_of_type_Long + "subMsgId:" + localaunt.jdField_a_of_type_Aunl.jdField_g_of_type_Int + ",priority:" + localaunt.jdField_e_of_type_Int);
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-      if ((localatpv.jdField_a_of_type_Int == 6) && (!new File(localatpv.jdField_a_of_type_Atpn.c()).exists()))
+      if ((localaunt.jdField_a_of_type_Int == 6) && (!new File(localaunt.jdField_a_of_type_Aunl.c()).exists()))
       {
-        this.jdField_a_of_type_Atqg.a(localatpv.jdField_a_of_type_Atpn.d, k);
+        this.jdField_a_of_type_Auoe.a(localaunt.jdField_a_of_type_Aunl.d, k);
         j = -2147483648;
         i = j;
-        if (localatpv != null)
+        if (localaunt != null)
         {
           i = j;
-          if (localatpv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
-            i = atps.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localatpv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.istroop, localatpv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin);
+          if (localaunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
+            i = aunq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.istroop, localaunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin);
           }
         }
-        this.jdField_a_of_type_Atqb.b(k, i);
+        this.jdField_a_of_type_Aunz.b(k, i);
       }
       String str = "consume";
       localObject = str;
-      if (localatpv != null)
+      if (localaunt != null)
       {
         localObject = str;
-        if (localatpv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
-          localObject = "consume" + ", msgSeq = " + localatpv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.shmsgseq;
+        if (localaunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
+          localObject = "consume" + ", msgSeq = " + localaunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.shmsgseq;
         }
       }
-      a(new PicPreDownloader.PicPreDownRunner(this, new PicPreDownloader.10(this, localatpv), (String)localObject));
+      a(new PicPreDownloader.PicPreDownRunner(this, new PicPreDownloader.10(this, localaunt), (String)localObject));
       label911:
-      atpg.a("PIC_TAG_PRELOAD", "consume", "END");
+      aune.a("PIC_TAG_PRELOAD", "consume", "END");
       return;
     }
   }
@@ -1125,7 +1125,7 @@ public class PicPreDownloader
         localException.printStackTrace();
       }
     }
-    DeviceProfileManager.b(this.jdField_a_of_type_Atqg);
+    DeviceProfileManager.b(this.jdField_a_of_type_Auoe);
   }
 }
 

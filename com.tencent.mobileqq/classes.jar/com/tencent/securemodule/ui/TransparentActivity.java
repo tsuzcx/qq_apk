@@ -10,20 +10,20 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
+import com.tencent.securemodule.ai;
+import com.tencent.securemodule.ak;
+import com.tencent.securemodule.al;
+import com.tencent.securemodule.am;
+import com.tencent.securemodule.an;
+import com.tencent.securemodule.ao;
+import com.tencent.securemodule.ap;
+import com.tencent.securemodule.aq;
+import com.tencent.securemodule.as;
+import com.tencent.securemodule.e;
 import com.tencent.securemodule.impl.AppInfo;
 import com.tencent.securemodule.impl.SecureService;
 import com.tencent.securemodule.service.IControlService;
-import sm.ai;
-import sm.ak;
-import sm.al;
-import sm.am;
-import sm.an;
-import sm.ao;
-import sm.ap;
-import sm.aq;
-import sm.as;
-import sm.e;
-import sm.u;
+import com.tencent.securemodule.u;
 
 public class TransparentActivity
   extends Activity

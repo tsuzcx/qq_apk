@@ -1,21 +1,18 @@
-public class bamb
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+
+class bamb
+  implements bame
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  bamb(balw parambalw, String paramString) {}
   
-  public bamb(int paramInt1, String paramString1, int paramInt2, String paramString2)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    if (paramInt == 0) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bamb
  * JD-Core Version:    0.7.0.1
  */

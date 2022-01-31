@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import adll;
+import adwl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ class PokePanel$2
     }
     PokePanel.a(this.this$0, this.jdField_a_of_type_JavaLangString);
     PokePanel.a(this.this$0, this.jdField_a_of_type_JavaUtilArrayList);
-    ArrayList localArrayList = adll.a(PokePanel.a(this.this$0), this.this$0.a);
+    ArrayList localArrayList = adwl.a(PokePanel.a(this.this$0), this.this$0.a);
     this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
       ThreadManager.getUIHandler().post(new PokePanel.2.1(this));

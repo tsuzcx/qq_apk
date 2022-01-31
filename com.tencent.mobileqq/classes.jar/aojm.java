@@ -1,45 +1,52 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
-class aojm
-  implements aojh
+public class aojm
+  extends aojk
 {
-  aojm(aojj paramaojj, boolean paramBoolean) {}
-  
-  public void a(int paramInt, String paramString)
+  public aojm(aojj paramaojj, aoix paramaoix)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_Aojj.jdField_a_of_type_Aotv.a() + "]on Error[" + paramInt + "]msg[" + paramString + "]");
-    }
-    if ((paramInt == -25081) || (paramInt == -6101) || (paramInt == -7003))
+    super(paramaojj, paramaoix);
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.jdField_a_of_type_Aoix.a();
+    this.jdField_a_of_type_Aoix.a().a(paramInt);
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    super.a(paramInt1, paramInt2);
+    switch (paramInt1)
     {
-      this.jdField_a_of_type_Aojj.jdField_a_of_type_Aotv.a(true);
-      apcb.a(2131627250);
-    }
-    if (this.jdField_a_of_type_Aojj.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      aojh localaojh = (aojh)this.jdField_a_of_type_Aojj.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localaojh != null) {
-        localaojh.a(paramInt, paramString);
+    default: 
+      return false;
+    case 103: 
+      this.jdField_a_of_type_Aoix.a().a();
+    case 104: 
+      this.jdField_a_of_type_Aojj.a(0, paramInt2);
+    case 105: 
+      for (;;)
+      {
+        return true;
+        this.jdField_a_of_type_Aojj.a(0, paramInt2);
       }
     }
+    this.jdField_a_of_type_Aoix.a().a();
+    this.jdField_a_of_type_Aojj.a(0, paramInt2);
+    this.jdField_a_of_type_Aojj.b(paramInt1, paramInt2);
+    return false;
   }
   
-  public void a(String paramString1, String paramString2)
+  public void b()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_Aojj.jdField_a_of_type_Aotv.a() + "]onGetUrlCookies");
-    }
-    this.jdField_a_of_type_Aojj.a(this.jdField_a_of_type_Aojj.jdField_a_of_type_Aotv, this.jdField_a_of_type_Boolean);
+    super.b();
+    this.jdField_a_of_type_Aoix.a().a();
   }
-  
-  public void aF_() {}
-  
-  public void aG_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aojm
  * JD-Core Version:    0.7.0.1
  */

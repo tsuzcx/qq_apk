@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import azzo;
+import bbas;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -11,7 +11,7 @@ class SystemDragUtils$2$1
   
   public void run()
   {
-    azzo.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    bbas.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

@@ -8,24 +8,24 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import xrh;
-import xuu;
-import xvq;
+import yak;
+import ydx;
+import yeu;
 
 public class DevLittleVideoItemBuilder$7
   implements Runnable
 {
-  public DevLittleVideoItemBuilder$7(xuu paramxuu, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
+  public DevLittleVideoItemBuilder$7(ydx paramydx, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
   
   public void run()
   {
-    xrh localxrh = (xrh)this.this$0.a.a(51);
-    xvq localxvq = (xvq)this.this$0.a.a(49);
+    yak localyak = (yak)this.this$0.a.a(51);
+    yeu localyeu = (yeu)this.this$0.a.a(49);
     for (;;)
     {
-      synchronized (localxvq.a)
+      synchronized (localyeu.a)
       {
-        Iterator localIterator = localxvq.a.entrySet().iterator();
+        Iterator localIterator = localyeu.a.entrySet().iterator();
         if (localIterator.hasNext())
         {
           if (((MessageRecord)((Map.Entry)localIterator.next()).getValue()).uniseq != this.a.uniseq) {
@@ -34,8 +34,8 @@ public class DevLittleVideoItemBuilder$7
           i = 1;
           if ((i == 0) && (!TextUtils.isEmpty(this.a.thumbFileKey)))
           {
-            long l = localxrh.a(this.a.thumbFileKey, this.a.coverkey2, 2154);
-            localxvq.a.put(Long.valueOf(l), this.a);
+            long l = localyak.a(this.a.thumbFileKey, this.a.coverkey2, 2154);
+            localyeu.a.put(Long.valueOf(l), this.a);
           }
           return;
         }

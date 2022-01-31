@@ -1,15 +1,15 @@
 package cooperation.qzone.webviewplugin;
 
-import bgjg;
+import bhsa;
 
 public class QzoneQunFeedJsPlugin$6
   implements Runnable
 {
-  public QzoneQunFeedJsPlugin$6(bgjg parambgjg) {}
+  public QzoneQunFeedJsPlugin$6(bhsa parambhsa) {}
   
   public void run()
   {
-    bgjg.a(this.this$0, bgjg.a(this.this$0));
+    bhsa.a(this.this$0, bhsa.a(this.this$0));
   }
 }
 

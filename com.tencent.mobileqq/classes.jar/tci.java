@@ -1,170 +1,105 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.CardEntry;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class tci
-  implements tfc
+  implements tck
 {
-  private tcm jdField_a_of_type_Tcm = new tck(this);
-  private tcn jdField_a_of_type_Tcn;
-  private final tcp jdField_a_of_type_Tcp = new tcj(this);
-  private tdo jdField_a_of_type_Tdo;
-  private tfc jdField_a_of_type_Tfc;
-  private tfd jdField_a_of_type_Tfd;
+  private String a;
   
-  public tci() {}
-  
-  private tci(@NonNull Activity paramActivity)
+  public tci()
   {
-    this.jdField_a_of_type_Tfd = new tey(paramActivity);
+    this.jdField_a_of_type_JavaLangString = "Q.qqstory:DiscoverManager";
   }
   
-  public static tci a(@NonNull Activity paramActivity)
+  private QQStoryContext a()
   {
-    return new tci(paramActivity);
+    return QQStoryContext.a();
   }
   
-  public static tci a(@NonNull Activity paramActivity, tfd paramtfd)
+  public static List<? extends aukm> a(aukn paramaukn, Class<? extends aukm> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
   {
-    return new tci().a(paramtfd);
+    return paramaukn.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
   }
   
-  public tci a()
+  private void a(CardItem paramCardItem)
   {
-    if (this.jdField_a_of_type_Tfd.a() == null) {
-      return this;
+    aukn localaukn = a().a().createEntityManager();
+    localaukn.a().a();
+    try
+    {
+      CardEntry localCardEntry1 = paramCardItem.toCardEntry();
+      paramCardItem = a(localaukn, CardEntry.class, CardEntry.class.getSimpleName(), CardEntry.getCardIdSelection(), new String[] { paramCardItem.cardId });
+      if (paramCardItem == null) {
+        return;
+      }
+      paramCardItem = paramCardItem.iterator();
+      while (paramCardItem.hasNext())
+      {
+        CardEntry localCardEntry2 = (CardEntry)paramCardItem.next();
+        localCardEntry2.PBData = localCardEntry1.PBData;
+        localaukn.a(localCardEntry2);
+        veg.a(this.jdField_a_of_type_JavaLangString, "update db cardId=%s id=%d", localCardEntry2.cardId, Long.valueOf(localCardEntry2.getId()));
+      }
     }
-    this.jdField_a_of_type_Tfd.jdField_a_of_type_Boolean = false;
-    return this;
-  }
-  
-  public tci a(int paramInt)
-  {
-    Activity localActivity = this.jdField_a_of_type_Tfd.a();
-    if (localActivity == null) {
-      return this;
+    finally
+    {
+      localaukn.a().b();
     }
-    this.jdField_a_of_type_Tfd.jdField_a_of_type_JavaLangString = localActivity.getString(paramInt);
-    return this;
+    localaukn.a().b();
   }
   
-  public tci a(@NonNull String paramString)
+  public DiscoverBannerVideoEntry a(String paramString)
   {
-    this.jdField_a_of_type_Tfd.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public tci a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_Tdo == null) {
-      throw new IllegalStateException("Error: mShareMode is null! StoryShare should init mode() first!");
+    paramString = a(QQStoryContext.a().a().createEntityManager(), DiscoverBannerVideoEntry.class, DiscoverBannerVideoEntry.class.getSimpleName(), "bannerId=?", new String[] { paramString });
+    if ((paramString != null) && (paramString.size() > 0)) {
+      return (DiscoverBannerVideoEntry)paramString.get(0);
     }
-    this.jdField_a_of_type_Tdo.b.put(paramString1, paramString2);
-    return this;
-  }
-  
-  public tci a(@NonNull List<int[]> paramList)
-  {
-    this.jdField_a_of_type_Tfd.jdField_a_of_type_JavaUtilList = paramList;
-    return this;
-  }
-  
-  public tci a(tcn paramtcn)
-  {
-    this.jdField_a_of_type_Tcn = paramtcn;
-    return this;
-  }
-  
-  public tci a(@NonNull tdo paramtdo)
-  {
-    this.jdField_a_of_type_Tdo = paramtdo;
-    this.jdField_a_of_type_Tdo.a(this.jdField_a_of_type_Tfd.a());
-    this.jdField_a_of_type_Tdo.jdField_a_of_type_Tcm = this.jdField_a_of_type_Tcm;
-    this.jdField_a_of_type_Tfc = new tcl(this);
-    return this;
-  }
-  
-  public tci a(tfd paramtfd)
-  {
-    this.jdField_a_of_type_Tfd = paramtfd;
-    return this;
+    return null;
   }
   
   public void a() {}
   
-  public void a(int paramInt) {}
-  
-  public boolean a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void a(String paramString, tof paramtof)
   {
-    if (paramInt1 == 29782)
+    aukn localaukn = a().a().createEntityManager();
+    localaukn.a().a();
+    try
     {
-      Activity localActivity = this.jdField_a_of_type_Tfd.a();
-      if ((paramInt2 == -1) && (localActivity != null)) {}
-      for (;;)
+      if (paramtof.jdField_b_of_type_JavaUtilList.size() == paramtof.jdField_a_of_type_JavaUtilList.size())
       {
-        try
+        DiscoverBannerVideoEntry localDiscoverBannerVideoEntry = new DiscoverBannerVideoEntry();
+        localDiscoverBannerVideoEntry.bannerId = paramString;
+        localDiscoverBannerVideoEntry.totalCount = paramtof.jdField_b_of_type_Int;
+        paramString = new ArrayList(paramtof.jdField_b_of_type_JavaUtilList.size());
+        int i = 0;
+        while (i < paramtof.jdField_b_of_type_JavaUtilList.size())
         {
-          azsq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), (Activity)localActivity, paramInt2, paramIntent);
-          if (this.jdField_a_of_type_Tcn != null) {
-            this.jdField_a_of_type_Tcn.a(1);
-          }
-          if (this.jdField_a_of_type_Tcn != null) {
-            this.jdField_a_of_type_Tcn.a();
-          }
+          DiscoverBannerVideoEntry.BannerInfo localBannerInfo = new DiscoverBannerVideoEntry.BannerInfo();
+          localBannerInfo.b = ((String)paramtof.jdField_b_of_type_JavaUtilList.get(i));
+          localBannerInfo.jdField_a_of_type_JavaLangString = ((String)paramtof.jdField_a_of_type_JavaUtilList.get(i));
+          paramString.add(localBannerInfo);
+          i += 1;
         }
-        catch (Exception paramIntent)
-        {
-          if (this.jdField_a_of_type_Tcn == null) {
-            continue;
-          }
-          this.jdField_a_of_type_Tcn.c(1);
-          if (this.jdField_a_of_type_Tcn == null) {
-            continue;
-          }
-          this.jdField_a_of_type_Tcn.a();
-          continue;
-        }
-        return true;
-        if (this.jdField_a_of_type_Tcn != null) {
-          this.jdField_a_of_type_Tcn.d(1);
-        }
-        if (this.jdField_a_of_type_Tcn != null) {
-          this.jdField_a_of_type_Tcn.a();
-        }
+        localDiscoverBannerVideoEntry.bannerInfoList = paramString;
+        localDiscoverBannerVideoEntry.nextCookie = paramtof.jdField_a_of_type_JavaLangString;
+        localaukn.b(localDiscoverBannerVideoEntry);
       }
+      localaukn.a().c();
+      return;
     }
-    return false;
-  }
-  
-  public tci b()
-  {
-    urk.a("StoryShare", "show(): %s", toString());
-    if (this.jdField_a_of_type_Tdo == null) {
-      if (this.jdField_a_of_type_Tcn != null) {
-        this.jdField_a_of_type_Tcn.c(0);
-      }
-    }
-    do
+    finally
     {
-      return this;
-      this.jdField_a_of_type_Tfd.a(this.jdField_a_of_type_Tfc);
-      if (this.jdField_a_of_type_Tcn != null) {
-        this.jdField_a_of_type_Tcn.b();
-      }
-      this.jdField_a_of_type_Tfd.d();
-    } while (this.jdField_a_of_type_Tcn == null);
-    this.jdField_a_of_type_Tcn.c();
-    return this;
+      localaukn.a().b();
+    }
   }
   
   public void b() {}
-  
-  public void c() {}
 }
 
 

@@ -1,31 +1,31 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollection;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.biz.qqstory.database.LiveVideoEntry;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class tcf
-  extends slu
+  extends ssk
 {
-  public List<VideoCollectionItem> a = new ArrayList();
+  public int a;
+  public long a;
+  public LiveVideoEntry a;
+  public String a;
+  public List<StoryVideoItem> a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
   
-  public tcf(String paramString, qqstory_service.RspCollectionViewCount paramRspCollectionViewCount)
+  public tcf()
   {
-    super(paramRspCollectionViewCount.result);
-    paramRspCollectionViewCount = paramRspCollectionViewCount.collection_list.get();
-    if (paramRspCollectionViewCount != null)
-    {
-      paramRspCollectionViewCount = paramRspCollectionViewCount.iterator();
-      while (paramRspCollectionViewCount.hasNext())
-      {
-        qqstory_struct.DateVideoCollection localDateVideoCollection = (qqstory_struct.DateVideoCollection)paramRspCollectionViewCount.next();
-        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
-        localVideoCollectionItem.convertFrom("Q.qqstory.net:UpdateCollectionViewCountResponse", paramString, localDateVideoCollection);
-        this.a.add(localVideoCollectionItem);
-      }
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    return "PlayerVideoListEvent{context='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", label='" + this.jdField_c_of_type_JavaLangString + '\'' + ", topicId=" + this.jdField_a_of_type_Long + ", mStoryVideoItems=" + this.jdField_a_of_type_JavaUtilList + ", totalTime=" + this.jdField_b_of_type_Long + ", videoCount=" + this.jdField_a_of_type_Int + ", isFromCache=" + this.jdField_a_of_type_Boolean + ", isEnd=" + this.jdField_b_of_type_Boolean + ", interactStatus=" + this.jdField_c_of_type_Boolean + ", liveVideoInfo=" + this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLiveVideoEntry + '}';
   }
 }
 

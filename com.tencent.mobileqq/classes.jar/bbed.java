@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public final class bbed
-  implements Parcelable.Creator<WebSoService.WebSoState.WebSo3>
+class bbed
+  implements View.OnClickListener
 {
-  public WebSoService.WebSoState.WebSo3 a(Parcel paramParcel)
-  {
-    return new WebSoService.WebSoState.WebSo3(paramParcel);
-  }
+  bbed(bbds parambbds) {}
   
-  public WebSoService.WebSoState.WebSo3[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new WebSoService.WebSoState.WebSo3[paramInt];
+    if ((bbds.a(this.a) != null) && (bbds.a(this.a).isShowing())) {
+      bbds.a(this.a).dismiss();
+    }
+    ((BaseActivity)this.a.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbed
  * JD-Core Version:    0.7.0.1
  */

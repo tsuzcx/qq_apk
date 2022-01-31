@@ -5,11 +5,11 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import antj;
+import aojv;
 
 public abstract class LoadingLayoutBase
   extends FrameLayout
-  implements antj
+  implements aojv
 {
   public LoadingLayoutBase(Context paramContext)
   {

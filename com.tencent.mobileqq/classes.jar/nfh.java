@@ -1,119 +1,196 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.account_detail_dynamic_list.AccountDetailDynamicListRequest;
+import com.tencent.mobileqq.mp.account_detail_dynamic_list.AccountDetailDynamicListResponse;
+import com.tencent.mobileqq.mp.account_detail_dynamic_list.RetInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import mqq.app.AppRuntime;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import java.util.List;
+import mqq.app.NewIntent;
 
 public class nfh
-  implements alzn<String>
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private ArrayList<rsq> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
-  private boolean jdField_a_of_type_Boolean;
+  static long a = -1L;
   
-  public static nfh a(String paramString)
+  public static int a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, byte[] paramArrayOfByte, boolean paramBoolean2)
   {
+    int j = 0;
+    Object localObject;
+    label235:
     try
     {
-      nfh localnfh = (nfh)amaf.a(paramString, nfh.class);
-      return localnfh;
-    }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + paramString, localQStorageInstantiateException);
-    }
-    return null;
-  }
-  
-  public static nfh a(alzs[] paramArrayOfalzs)
-  {
-    nfh localnfh = null;
-    int i = 0;
-    while (i < paramArrayOfalzs.length)
-    {
-      localnfh = a(paramArrayOfalzs[i].jdField_a_of_type_JavaLangString);
-      i += 1;
-    }
-    return localnfh;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        baig.f(((QQAppInterface)localAppRuntime).getApplication(), this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      AppRuntime localAppRuntime;
-      return;
-    }
-    QLog.e("PublicAccountConfProcessor", 2, "updateEqqConfig fail");
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfProcessor", 2, "parseConfigXml xml: " + paramString);
-    }
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
+      localObject = new account_detail_dynamic_list.AccountDetailDynamicListResponse();
+      try
       {
-        this.jdField_a_of_type_JavaLangString = paramString;
-        paramString = paramString.trim();
-        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8"))).getElementsByTagName("public-account-folder");
-        int j = paramString.getLength();
-        Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-        if ((localObject1 instanceof QQAppInterface))
+        ((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).mergeFrom(paramArrayOfByte);
+        i = j;
+        if (((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).ret_info.has())
         {
-          QQAppInterface localQQAppInterface = (QQAppInterface)localObject1;
-          localObject1 = ((AppRuntime)localObject1).getApplication();
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(j);
-          int i = 0;
-          while (i < j)
+          i = j;
+          if (((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).ret_info.ret_code.get() == 0)
           {
-            Object localObject2 = (Element)paramString.item(i);
-            localObject2 = new rsq(localQQAppInterface, (Context)localObject1, Integer.parseInt(((Element)localObject2).getElementsByTagName("id").item(0).getFirstChild().getNodeValue()), ((Element)localObject2).getElementsByTagName("name").item(0).getFirstChild().getNodeValue(), ((Element)localObject2).getElementsByTagName("icon").item(0).getFirstChild().getNodeValue());
-            this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-            i += 1;
+            if ((!((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).puin.has()) || (!((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).last_msg_id.has()) || (!((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).msg_cnt.has())) {
+              break label396;
+            }
+            l1 = ((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).puin.get();
+            l2 = ((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).last_msg_id.get();
+            l3 = ((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).msg_cnt.get();
+            if (QLog.isColorLevel()) {
+              QLog.d("AccountDetailDynamicListModel", 2, "updateAccountDetailDynamicInfo puin:" + l1 + " last_msg_id:" + l2 + " msg_cnt:" + l3 + " isFirstEnter:" + paramBoolean1 + " isFromDB:" + paramBoolean2);
+            }
+            localArrayList = nfg.a(paramQQAppInterface).a(l1);
+            if ((!paramBoolean1) || (!paramBoolean2) || (localArrayList == null)) {
+              break label235;
+            }
+            boolean bool = localArrayList.isEmpty();
+            if (bool) {
+              break label235;
+            }
+            i = 6;
           }
-          this.jdField_a_of_type_Boolean = true;
         }
       }
-      else if (QLog.isColorLevel())
+      catch (Exception paramQQAppInterface)
       {
-        QLog.d("PublicAccountConfProcessor", 2, "parsePublicAccountConfigXml xml is empty");
-        return;
+        for (;;)
+        {
+          long l1;
+          long l2;
+          long l3;
+          ArrayList localArrayList;
+          int i = 2;
+        }
+      }
+      return i;
+    }
+    finally {}
+    localArrayList = new ArrayList();
+    if (((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).msg_infos.has())
+    {
+      localObject = ((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).msg_infos.get();
+      if (localObject == null)
+      {
+        i = 0;
+        break label415;
       }
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PublicAccountConfProcessor", 2, "parsePublicAccountConfigXml error", paramString);
+      if (j < i)
+      {
+        String str = ((ByteStringMicro)((List)localObject).get(j)).toStringUtf8();
+        localArrayList.add(str);
+        if (!QLog.isColorLevel()) {
+          break label421;
+        }
+        QLog.d("AccountDetailDynamicListModel", 2, "updateAccountDetailDynamicInfo jsonBody" + str);
+        break label421;
+        i = ((List)localObject).size();
       }
-      paramString.printStackTrace();
+      else
+      {
+        if (l3 == localArrayList.size())
+        {
+          i = nfg.a(paramQQAppInterface).a(paramArrayOfByte, paramBoolean1, l1, l2, l3, localArrayList, paramBoolean2);
+          break;
+        }
+        i = 5;
+        break;
+        label396:
+        i = 4;
+        break;
+      }
+      label415:
+      j = 0;
+      continue;
+      label421:
+      j += 1;
     }
   }
   
-  public void b()
+  private static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, int paramInt, akdo paramakdo)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      rsp.a(this.jdField_a_of_type_JavaUtilArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList last_msg_id:" + paramLong2 + "  msg_cnt:" + paramInt + "  mLastMSgID: " + a);
     }
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), nou.class);
+    localNewIntent.putExtra("cmd", "pull_account_detail_dynamic_list");
+    Object localObject = new account_detail_dynamic_list.AccountDetailDynamicListRequest();
+    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).versionInfo.set("8.2.8,3,4440");
+    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).puin.set(paramLong1);
+    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).last_msg_id.set(paramLong2);
+    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).msg_cnt.set(paramInt);
+    localNewIntent.putExtra("data", ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).toByteArray());
+    boolean bool;
+    label204:
+    int i;
+    if (paramLong2 == 0L)
+    {
+      bool = true;
+      localNewIntent.putExtra("isFirstEnter", bool);
+      a = paramLong2;
+      localObject = (akdi)paramQQAppInterface.getManager(56);
+      if (localObject == null) {
+        break label350;
+      }
+      localObject = ((akdi)localObject).a(String.valueOf(paramLong1));
+      if (localObject == null) {
+        break label350;
+      }
+      if (((AccountDetail)localObject).followType != 1) {
+        break label344;
+      }
+      paramInt = 1;
+      i = noo.a(paramQQAppInterface, String.valueOf(paramLong1), (AccountDetail)localObject);
+    }
+    for (;;)
+    {
+      String str1 = paramLong1 + "";
+      String str2 = paramLong2 + "";
+      if (paramInt != 0) {}
+      for (localObject = "02";; localObject = "01")
+      {
+        noo.a(null, str1, "0X80077FF", "0X80077FF", 0, 0, "1", str2, (String)localObject, String.valueOf(i), false);
+        localNewIntent.setObserver(new nfi(paramQQAppInterface, bool, paramakdo));
+        paramQQAppInterface.startServlet(localNewIntent);
+        if (QLog.isColorLevel()) {
+          QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList exit");
+        }
+        return;
+        bool = false;
+        break;
+      }
+      label344:
+      paramInt = 0;
+      break label204;
+      label350:
+      i = 1;
+      paramInt = 0;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, akdo paramakdo)
+  {
+    nfg.a(paramQQAppInterface).a(paramQQAppInterface, paramLong, paramakdo);
+    a(paramQQAppInterface, paramLong, 0L, 25, paramakdo);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, long paramLong, akdo paramakdo)
+  {
+    new localnew = nfg.a(paramQQAppInterface).a(paramLong);
+    if ((localnew != null) && (localnew.b > 0L))
+    {
+      if (a != localnew.b) {
+        a(paramQQAppInterface, paramLong, localnew.b, 25, paramakdo);
+      }
+      return;
+    }
+    a(paramQQAppInterface, paramLong, paramakdo);
   }
 }
 

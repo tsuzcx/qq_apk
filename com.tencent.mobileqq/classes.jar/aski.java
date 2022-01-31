@@ -1,28 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.Emoticon;
 
-public class aski
-  extends Handler
+class aski
+  implements asko<aobk>
 {
-  public aski(StoryPlayController paramStoryPlayController) {}
+  aski(askd paramaskd, boolean paramBoolean, SessionInfo paramSessionInfo) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(aobk paramaobk)
   {
-    switch (paramMessage.what)
+    if ((paramaobk != null) && (paramaobk.a != null))
     {
+      if (this.jdField_a_of_type_Boolean) {
+        askd.a(this.jdField_a_of_type_Askd.a, "0X800A937", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramaobk.a.epId);
+      }
     }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
+    else {
       return;
-      StoryPlayController.a(this.a, this.a.a);
     }
+    askd.a(this.jdField_a_of_type_Askd.a, "0X800A936", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramaobk.a.epId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aski
  * JD-Core Version:    0.7.0.1
  */

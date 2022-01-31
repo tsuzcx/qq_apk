@@ -1,48 +1,63 @@
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import org.json.JSONObject;
+
 class aswf
-  implements alxq
+  implements ServiceConnection
 {
-  aswf(asvw paramasvw) {}
+  aswf(aswe paramaswe) {}
   
-  public int a()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 4;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    int i = 3;
-    if (paramInt2 < 0) {}
-    for (paramInt1 = 0;; paramInt1 = paramInt2)
+    aswe.a(this.a, asvm.a(paramIBinder));
+    try
     {
-      if (paramInt1 > 3) {
-        paramInt1 = i;
-      }
-      for (;;)
+      aswe.a(this.a).a(aswe.a(this.a));
+      if (aswe.a(this.a) != null)
       {
-        switch (paramInt1)
-        {
-        default: 
-          return "";
-        case 0: 
-          return ajjy.a(2131641517);
-        case 1: 
-          return ajjy.a(2131641488);
-        case 2: 
-          return ajjy.a(2131641458);
-        }
-        return ajjy.a(2131641490);
+        paramComponentName = new JSONObject();
+        paramComponentName.put("code", "0");
+        aswe.a(this.a).a(paramComponentName);
+        aswe.a(this.a, null);
+      }
+      return;
+    }
+    catch (Exception paramComponentName)
+    {
+      paramComponentName.printStackTrace();
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    try
+    {
+      if (aswe.a(this.a) != null) {
+        aswe.a(this.a).b(aswe.a(this.a));
+      }
+      if (aswe.a(this.a) != null)
+      {
+        paramComponentName = new JSONObject();
+        paramComponentName.put("code", "1");
+        aswe.a(this.a).a(paramComponentName);
+        aswe.a(this.a, null);
       }
     }
+    catch (Exception paramComponentName)
+    {
+      for (;;)
+      {
+        paramComponentName.printStackTrace();
+      }
+    }
+    aswe.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aswf
  * JD-Core Version:    0.7.0.1
  */

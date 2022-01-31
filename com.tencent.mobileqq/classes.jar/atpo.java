@@ -1,54 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 public class atpo
-  extends atpn
+  implements View.OnClickListener
 {
-  public atpn a()
-  {
-    return this;
-  }
+  atpo(atpi paramatpi) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_c_of_type_Long = paramLong;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.g = paramString;
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_f_of_type_JavaLangString = paramString;
+    paramView = bfol.a(this.a.a);
+    paramView.a(2131718049, 1);
+    paramView.c(2131690596);
+    paramView.a(new atpp(this, paramView));
+    paramView.show();
   }
 }
 

@@ -1,67 +1,103 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.pluginsdk.PluginUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.troop.file.MoveFileActivity;
 import com.tencent.qphone.base.util.QLog;
-import dalvik.system.DexClassLoader;
-import java.io.File;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
-class xan
-  implements mod
+public class xan
+  extends BaseAdapter
+  implements bfob
 {
-  xan(xam paramxam, long paramLong, Context paramContext, boolean paramBoolean, mod parammod) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public void loaded(int paramInt, String paramString)
+  private xan(MoveFileActivity paramMoveFileActivity) {}
+  
+  public int getCount()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ViewPluginManager", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ViewPluginManager", 4, "transToLocalUrl transUrl:" + paramString);
-    }
-    this.jdField_a_of_type_Xam.d = mof.a(this.jdField_a_of_type_Xam.jdField_a_of_type_JavaLangString);
-    String str = mol.a(this.jdField_a_of_type_Xam.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_Xam.jdField_a_of_type_JavaLangString + "/" + this.jdField_a_of_type_Xam.b;
-    try
+    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null)
     {
-      Object localObject = new File(this.jdField_a_of_type_Xam.c);
-      if (!this.jdField_a_of_type_Xam.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.jdField_a_of_type_Xam.a(this.jdField_a_of_type_Xam.jdField_a_of_type_JavaLangString), "-1").equals(this.jdField_a_of_type_Xam.d))
-      {
-        if (!((File)localObject).exists()) {
-          break label379;
-        }
-        bace.a(((File)localObject).getAbsolutePath());
-        this.jdField_a_of_type_Xam.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(this.jdField_a_of_type_Xam.a(this.jdField_a_of_type_Xam.jdField_a_of_type_JavaLangString), mof.a(this.jdField_a_of_type_Xam.jdField_a_of_type_JavaLangString)).commit();
-        ((File)localObject).mkdirs();
+      paramViewGroup = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getLayoutInflater().inflate(2131560335, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity), false);
+      paramView = new xao(null);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131366508));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131366507));
+      paramView.b = ((TextView)paramViewGroup.findViewById(2131364183));
+      paramViewGroup.setTag(paramView);
+    }
+    paramView = (xao)paramViewGroup.getTag();
+    azpg localazpg = (azpg)MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
+    if (localazpg != null)
+    {
+      if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, paramInt)) {
+        break label162;
       }
-      for (;;)
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localazpg.c);
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843115);
+    }
+    while (paramInt == MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity))
+    {
+      paramView.b.setVisibility(0);
+      return paramViewGroup;
+      label162:
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131706895));
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843117);
+    }
+    paramView.b.setVisibility(4);
+    return paramViewGroup;
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.b = paramInt3;
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      QLog.e("IphoneTitleBarActivity", 4, "onScrollStateChanged=SCROLL_STATE_IDLE");
+      if (this.jdField_a_of_type_Int == this.b - 2)
       {
-        if (!((File)localObject).exists()) {
-          ((File)localObject).mkdirs();
+        if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity)) {
+          break label44;
         }
-        localObject = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Xam.b).getCanonicalPath();
-        this.jdField_a_of_type_Xam.jdField_a_of_type_JavaLangClassLoader = new DexClassLoader(str, this.jdField_a_of_type_Xam.c, (String)localObject, this.jdField_a_of_type_AndroidContentContext.getClassLoader());
-        this.jdField_a_of_type_Xam.jdField_a_of_type_Xah = new xah(this.jdField_a_of_type_AndroidContentContext, 0, str, null, null, this.jdField_a_of_type_Boolean);
-        if (this.jdField_a_of_type_Mod == null) {
-          break;
-        }
-        this.jdField_a_of_type_Mod.loaded(paramInt, paramString);
-        return;
-        label379:
-        ((File)localObject).mkdirs();
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(true);
       }
+    }
+    label44:
+    do
+    {
       return;
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ViewPluginManager", 2, "create classloader failed:" + paramString.toString());
-      }
-    }
+      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(false);
+    } while (bakj.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a) == 0);
+    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xan
  * JD-Core Version:    0.7.0.1
  */

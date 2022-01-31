@@ -1,33 +1,33 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import java.lang.ref.WeakReference;
 
 class qja
-  implements qhn
+  implements MediaPlayer.OnPreparedListener
 {
-  qja(qiy paramqiy) {}
+  qja(qiz paramqiz) {}
   
-  public List<pxn> a(List<VideoInfo> paramList)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
+    try
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      paramMediaPlayer.start();
+      qiz.a(this.a).a = true;
+      paramMediaPlayer = (qjc)qiz.a(this.a).get();
+      if (paramMediaPlayer != null)
       {
-        Object localObject = (VideoInfo)paramList.next();
-        if (localObject != null)
-        {
-          localObject = pxq.a((VideoInfo)localObject);
-          if (localObject != null) {
-            localArrayList.add(qoe.a((BaseArticleInfo)localObject, true));
-          }
-        }
+        paramMediaPlayer.a(qiz.a(this.a));
+        this.a.a(true, "ugc voice play");
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      for (;;)
+      {
+        paramMediaPlayer.printStackTrace();
       }
     }
-    return localArrayList;
   }
 }
 

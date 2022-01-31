@@ -1,28 +1,23 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class abci
-  extends MqqHandler
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abci(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public abci(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onGlobalLayout()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 2014: 
-      this.a.finish();
-      return;
-    }
-    this.a.finish();
+    this.a.getWindow().getDecorView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    ForwardRecentActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abci
  * JD-Core Version:    0.7.0.1
  */

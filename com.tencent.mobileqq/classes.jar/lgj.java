@@ -1,11 +1,19 @@
-import com.tencent.aekit.openrender.internal.VideoFilterBase;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class lgj
-  extends VideoFilterBase
+public class lgj
+  extends BroadcastReceiver
 {
-  lgj(lgi paramlgi)
+  public lgj(VideoAppInterface paramVideoAppInterface) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(lgi.a(), lgi.b());
+    paramContext = paramIntent.getAction();
+    QLog.d(VideoAppInterface.c(), 2, String.format("onReceive action=%s", new Object[] { paramContext }));
+    System.exit(0);
   }
 }
 

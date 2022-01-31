@@ -1,19 +1,19 @@
 package com.etrump.mixlayout;
 
-import ajjj;
+import ajxn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
-import fv;
+import ho;
 
 public class FontManager$4
   implements Runnable
 {
-  public FontManager$4(fv paramfv, String paramString, int paramInt1, int paramInt2) {}
+  public FontManager$4(ho paramho, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((ajjj)this.this$0.a.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
-    fv.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, localExtensionInfo, this.jdField_a_of_type_Int, this.b);
+    ExtensionInfo localExtensionInfo = ((ajxn)this.this$0.a.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
+    ho.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, localExtensionInfo, this.jdField_a_of_type_Int, this.b);
   }
 }
 

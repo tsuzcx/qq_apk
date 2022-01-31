@@ -1,21 +1,37 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.OldBigDataChannelManager.1.1;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
+import com.tencent.qphone.base.util.QLog;
 
 public class asfq
-  extends AccountObserver
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  asfq(asfp paramasfp) {}
+  public asfq(MedalGuideView paramMedalGuideView) {}
   
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ThreadManager.getFileThreadHandler().post(new OldBigDataChannelManager.1.1(this));
+    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
+    f = ((Float)paramValueAnimator.getAnimatedValue("translate")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
+    f = paramValueAnimator.getAnimatedFraction();
+    if ((!this.a.c) && (f >= 0.8857143F))
+    {
+      this.a.c = true;
+      this.a.jdField_a_of_type_Bfnk.sendEmptyMessage(4);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("MedalWallMng", 4, "send MSG_START_3D_ROTATE");
+      }
+    }
+    if (f >= 1.0F) {
+      paramValueAnimator.removeAllUpdateListeners();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asfq
  * JD-Core Version:    0.7.0.1
  */

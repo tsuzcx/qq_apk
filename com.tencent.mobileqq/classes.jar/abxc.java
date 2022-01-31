@@ -1,89 +1,125 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.net.URLEncoder;
 
 public class abxc
-  extends Handler
+  implements aiky
 {
-  public abxc(TroopInfoActivity paramTroopInfoActivity) {}
+  public abxc(QQSettingMe paramQQSettingMe) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramMessage.what == 1) {
-      this.a.f();
+    if (this.a.jdField_c_of_type_Boolean)
+    {
+      if (!paramBoolean) {
+        break label387;
+      }
+      paramInt = paramBundle.getInt("show_flag");
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "onWeatherUpdateResult show_flag:" + paramInt);
+      }
+      if (paramInt != 0) {
+        break label91;
+      }
+      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.setClickable(false);
+      this.a.g.setVisibility(4);
     }
+    label90:
+    label91:
     do
     {
-      return;
-      if (paramMessage.what == 2)
+      int i;
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_OWNER_NAME");
-        }
-        this.a.a(2, this.a.a.getTroopOwnerName(), this.a.a.isFetchedTroopOwnerUin());
-        return;
-      }
-      if (paramMessage.what == 4)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_INFO");
-        }
-        if ((this.a.a.dwGroupFlagExt & 0x800) != 0L) {
-          this.a.a(7, this.a.a.troopAuthenticateInfo, false);
-        }
-        this.a.a(2, this.a.a.troopOwnerNick, this.a.a.isFetchedTroopOwnerUin());
-        if ((this.a.a.troopOwnerNick == null) && (!TextUtils.isEmpty(this.a.a.troopowneruin))) {
-          TroopInfoActivity.c(this.a);
-        }
-        this.a.k();
-        if (!TextUtils.isEmpty(this.a.a.mRichFingerMemo)) {}
-        for (paramMessage = this.a.a.mRichFingerMemo;; paramMessage = this.a.getResources().getString(2131630759))
+        String str1;
+        String str2;
+        Object localObject;
+        do
         {
-          this.a.a(6, paramMessage, this.a.a.isOwnerOrAdim());
-          if (this.a.a.troopClass != null) {
-            break;
+          break label90;
+          do
+          {
+            return;
+          } while (paramInt != 1);
+          str1 = paramBundle.getString("KEY_TEMPER");
+          str2 = paramBundle.getString("o_wea_code");
+          localObject = paramBundle.getString("area_info");
+          paramInt = paramBundle.getInt("adcode");
+          if (QLog.isColorLevel()) {
+            QLog.d("QQSettingRedesign", 2, "onWeatherUpdateResult temp:" + str1 + " o_wea_code:" + str2 + " area_name:" + (String)localObject + "adcode:" + paramInt);
           }
-          TroopInfoActivity.d(this.a);
-          return;
+        } while ((str1 == null) || (str1.equals("")) || (TextUtils.isEmpty((CharSequence)localObject)));
+        this.a.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.a.g.setVisibility(0);
+        this.a.jdField_c_of_type_AndroidWidgetLinearLayout.setClickable(true);
+        this.a.d.setText(str1);
+        paramBundle = ((String)localObject).split("-");
+        TextView localTextView = this.a.g;
+        if (paramBundle.length == 2) {
+          paramBundle = paramBundle[1];
         }
-      }
-      if (paramMessage.what == 5)
-      {
+        for (;;)
+        {
+          localTextView.setText(paramBundle);
+          try
+          {
+            paramBundle = URLEncoder.encode((String)localObject, "utf-8");
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("&city=").append(paramBundle).append("&adcode=").append(paramInt);
+            this.a.g.setTag(((StringBuilder)localObject).toString());
+            this.a.f.setText("o");
+            QQSettingMe.a(this.a, str1);
+            QQSettingMe.b(this.a, str2);
+            return;
+            paramBundle = paramBundle[0];
+          }
+          catch (Exception paramBundle)
+          {
+            for (;;)
+            {
+              paramBundle = (Bundle)localObject;
+            }
+          }
+        }
+        i = paramBundle.getInt("uint32_result");
         if (QLog.isColorLevel()) {
-          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_CLASS");
+          QLog.d("QQSettingRedesign", 2, "onWeatherUpdateResult resultCode:" + i);
         }
-        this.a.a(4, this.a.a.troopClass, this.a.a.isOwnerOrAdim());
-        return;
+      } while ((paramInt != 6666) || (i != 191005));
+      if (Build.VERSION.SDK_INT < 23) {
+        break label602;
       }
-      if (paramMessage.what == 6)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_TAGS");
-        }
-        paramMessage = TroopInfoActivity.a(this.a, this.a.a);
-        this.a.a(8, paramMessage, true, 2, true);
-        return;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) {
+        break label594;
       }
-      if (paramMessage.what == 7)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_INTEREST");
-        }
-        paramMessage = new ArrayList();
-        if (!TextUtils.isEmpty(this.a.a.tribeName)) {
-          paramMessage.add(this.a.a.tribeName);
-        }
-        this.a.a(9, paramMessage, true, 1, true);
-        TroopInfoActivity.e(this.a);
-        return;
+      paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSharedPreferences("apollo_sp" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
+      long l = paramBundle.getLong("sp_key_request_permission", 0L);
+      if (NetConnInfoCenter.getServerTime() - l >= 86400L) {
+        break;
       }
-    } while (paramMessage.what != 8);
-    TroopInfoActivity.e(this.a);
+    } while (!QLog.isColorLevel());
+    label387:
+    QLog.e("QQSettingRedesign", 2, "User requestPermissions but has requested in 24 h");
+    return;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.requestPermissions(new abxd(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    paramBundle.edit().putLong("sp_key_request_permission", NetConnInfoCenter.getServerTime()).commit();
+    return;
+    label594:
+    this.a.g();
+    return;
+    label602:
+    this.a.g();
   }
 }
 

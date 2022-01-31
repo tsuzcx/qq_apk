@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.List;
 import mqq.app.MobileQQ;
 
@@ -18,15 +17,12 @@ class QfileBaseRecentFileTabView$2$1
     if (QLog.isDevelopLevel()) {
       QLog.e("crashBUG", 1, "Thread id: " + Thread.currentThread().getId() + " queryFileEntitiesFromDB addAll");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0.jdField_a_of_type_JavaUtilList.clear();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
     if (QLog.isColorLevel()) {
-      QLog.i(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "queryFileEntitiesFromDB end size[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0.jdField_a_of_type_JavaUtilList.size() + "]");
+      QLog.i(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "queryFileEntitiesFromDB end size[" + this.jdField_a_of_type_JavaUtilList.size() + "]");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0.a(this.jdField_a_of_type_JavaUtilList);
+    if (QLog.isColorLevel()) {
+      QLog.i(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "initFileEntities size[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0.jdField_a_of_type_JavaUtilList.size() + "]");
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0.a();
     SharedPreferences localSharedPreferences = QfileBaseRecentFileTabView.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0).getApplication().getSharedPreferences("OfflineFileMerge" + QfileBaseRecentFileTabView.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0).c(), 0);

@@ -1,32 +1,30 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import bdit;
-import bdlv;
-import bdnw;
-import bdyl;
+import android.text.TextUtils;
+import beqf;
+import besl;
 import org.json.JSONObject;
 
 public class MiniAppInfoLoadingFragment$1$2
   implements Runnable
 {
-  public MiniAppInfoLoadingFragment$1$2(bdlv parambdlv, JSONObject paramJSONObject) {}
+  public MiniAppInfoLoadingFragment$1$2(beqf parambeqf, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    String str = "";
+    String str1 = "";
     long l = 0L;
     if (this.jdField_a_of_type_OrgJsonJSONObject != null)
     {
       l = this.jdField_a_of_type_OrgJsonJSONObject.optLong("retCode");
-      str = this.jdField_a_of_type_OrgJsonJSONObject.optString("errMsg");
+      str1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("errMsg");
     }
-    bdnw.d("MiniAppInfoLoadingFragment", "getAppInfoById failed. retCode=" + l + " errMsg=" + str);
-    if (bdyl.a())
-    {
-      bdit.a(this.jdField_a_of_type_Bdlv.a.getActivity(), 1, "" + str + l, 1).a();
-      return;
+    String str2 = str1;
+    if (TextUtils.isEmpty(str1)) {
+      str2 = "网络请求错误，无法加载";
     }
-    bdit.a(this.jdField_a_of_type_Bdlv.a.getActivity(), 1, "" + str, 1).a();
+    besl.d("MiniAppInfoLoadingFragment", "getAppInfoById failed. retCode=" + l + " errMsg=" + str2);
+    MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Beqf.a, str2, l);
   }
 }
 

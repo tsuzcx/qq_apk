@@ -1,44 +1,47 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Build.VERSION;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import mqq.app.NewIntent;
 import org.json.JSONObject;
 
-final class aize
-  implements aizi
+public class aize
 {
-  aize(int paramInt) {}
-  
-  public void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3)
+  public static void a(AppInterface paramAppInterface, int paramInt, String paramString, aizf paramaizf)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt2 + ",from:" + paramInt3 + ",cmd:" + paramString3);
-    }
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+    if (paramAppInterface == null) {
       return;
     }
     try
     {
-      paramQQAppInterface = aizc.a(paramInt2, paramArrayOfInt);
-      if (paramQQAppInterface == null)
-      {
-        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
-        return;
-      }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
+      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.2.8");
+      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
+      localUniSsoServerReq.comm.set((MessageMicro)localObject);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("cmd", "apollo_aio_game.get_playing_usernum");
+      ((JSONObject)localObject).put("from", paramString);
+      ((JSONObject)localObject).put("gameId", paramInt);
+      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
+      paramString = new NewIntent(BaseApplicationImpl.getContext(), aiwi.class);
+      paramString.putExtra("timeout", 10000L);
+      paramString.putExtra("cmd", "apollo_aio_game.get_playing_usernum");
+      paramString.putExtra("data", localUniSsoServerReq.toByteArray());
+      paramString.setObserver(paramaizf);
+      paramAppInterface.startServlet(paramString);
       return;
     }
-    if (this.a == 1000) {
-      paramQQAppInterface.put("uin", paramString1);
+    catch (Exception paramAppInterface)
+    {
+      QLog.e("cmgame_process._CmGameSSOReq", 1, "[queryUserAudioStatus] failed ", paramAppInterface);
     }
-    paramQQAppInterface.put("openId", paramString2);
-    paramString1 = new Bundle();
-    paramString1.putString("resData", paramQQAppInterface.toString());
-    paramQQAppInterface = EIPCResult.createResult(0, paramString1);
-    aind.a().callbackResult(paramInt1, paramQQAppInterface);
   }
 }
 

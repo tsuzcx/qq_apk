@@ -3,8 +3,8 @@ package com.tencent.qqmini.proxyimpl;
 import NS_MINI_INTERFACE.INTERFACE.StGetAuthListRsp;
 import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
-import bddn;
-import bddp;
+import beho;
+import behq;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -41,11 +41,11 @@ class ChannelProxyImpl$1
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (INTERFACE.StUserAuthInfo)((Iterator)localObject1).next();
-            bddn localbddn = new bddn();
-            localbddn.jdField_a_of_type_JavaLangString = ((INTERFACE.StUserAuthInfo)localObject2).scope.get();
-            localbddn.b = ((INTERFACE.StUserAuthInfo)localObject2).desc.get();
-            localbddn.jdField_a_of_type_Int = ((INTERFACE.StUserAuthInfo)localObject2).authState.get();
-            localArrayList1.add(localbddn);
+            beho localbeho = new beho();
+            localbeho.jdField_a_of_type_JavaLangString = ((INTERFACE.StUserAuthInfo)localObject2).scope.get();
+            localbeho.b = ((INTERFACE.StUserAuthInfo)localObject2).desc.get();
+            localbeho.jdField_a_of_type_Int = ((INTERFACE.StUserAuthInfo)localObject2).authState.get();
+            localArrayList1.add(localbeho);
           }
           if (this.val$result == null) {
             break label208;
@@ -67,10 +67,10 @@ class ChannelProxyImpl$1
       while (paramJSONObject.hasNext())
       {
         localObject1 = (INTERFACE.StUserSettingInfo)paramJSONObject.next();
-        localObject2 = new bddp();
-        ((bddp)localObject2).jdField_a_of_type_JavaLangString = ((INTERFACE.StUserSettingInfo)localObject1).settingItem.get();
-        ((bddp)localObject2).jdField_a_of_type_Int = ((INTERFACE.StUserSettingInfo)localObject1).authState.get();
-        ((bddp)localObject2).b = ((INTERFACE.StUserSettingInfo)localObject1).desc.get();
+        localObject2 = new behq();
+        ((behq)localObject2).jdField_a_of_type_JavaLangString = ((INTERFACE.StUserSettingInfo)localObject1).settingItem.get();
+        ((behq)localObject2).jdField_a_of_type_Int = ((INTERFACE.StUserSettingInfo)localObject1).authState.get();
+        ((behq)localObject2).b = ((INTERFACE.StUserSettingInfo)localObject1).desc.get();
       }
     } while (this.val$result == null);
     this.val$result.onReceiveResult(true, localArrayList1, localArrayList2);

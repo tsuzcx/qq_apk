@@ -1,17 +1,8 @@
-import android.view.View;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-
 public abstract interface vkg
 {
-  public abstract void a();
+  public abstract void U_();
   
-  public abstract void a(int paramInt, View paramView);
-  
-  public abstract void a(View paramView, int paramInt1, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt2);
-  
-  public abstract void a(View paramView, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt);
-  
-  public abstract boolean a(View paramView, int paramInt);
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

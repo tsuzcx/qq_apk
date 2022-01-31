@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
 import java.util.Iterator;
 import java.util.List;
-import ooq;
+import ozr;
 
 public class ArticleInfoModule$27
   implements Runnable
 {
-  public ArticleInfoModule$27(ooq paramooq, List paramList) {}
+  public ArticleInfoModule$27(ozr paramozr, List paramList) {}
   
   public void run()
   {

@@ -1,24 +1,10 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-class bieq
-  extends QQUIEventReceiver<bief, bikv>
+public abstract interface bieq
 {
-  public bieq(@NonNull bief parambief)
-  {
-    super(parambief);
-  }
-  
-  public void a(@NonNull bief parambief, @NonNull bikv parambikv) {}
-  
-  public Class acceptEventClass()
-  {
-    return bikv.class;
-  }
+  public abstract void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bieq
  * JD-Core Version:    0.7.0.1
  */

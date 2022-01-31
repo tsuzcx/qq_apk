@@ -1,35 +1,20 @@
 package cooperation.qqreader;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Handler.Callback;
-import android.os.SystemClock;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import bbac;
-import bfcz;
-import bfdi;
-import bflf;
-import bflg;
-import bfmm;
-import bfne;
+import bgsx;
+import bgsy;
+import bgvo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import cooperation.qqreader.proxy.ReaderInterfacePluginBuilder;
-import cooperation.qqreader.proxy.ReaderInterfacePluginProxy;
-import cooperation.qqreader.proxy.ReaderJsCallback;
-import cooperation.qqreader.proxy.ReaderJsPluginBuilder;
-import cooperation.qqreader.proxy.ReaderJsPluginProxy;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
 import mqq.manager.WtloginManager;
-import mqq.os.MqqHandler;
 import oicq.wlogin_sdk.request.WtloginHelper;
 
 public final class QRBridgeUtil
@@ -38,19 +23,11 @@ public final class QRBridgeUtil
   private static final int MESSAGE_TICKET_OK = 1000;
   private static final String TAG = "QRBridgeUtil";
   private static AppInterface sAppInterface;
-  public static volatile boolean sIsPluginReady;
   private static Map<String, String> sPSkeyMap = new HashMap();
-  public static ReaderInterfacePluginBuilder sReaderInterfacePluginBuilder;
-  public static ReaderJsPluginBuilder sReaderJsPluginBuilder;
-  
-  private static void checkPluginInstalled()
-  {
-    ThreadManager.getSubThreadHandler().post(new QRBridgeUtil.1());
-  }
   
   public static void clearReaderBookCache()
   {
-    ThreadManagerV2.executeOnFileThread(new QRBridgeUtil.2());
+    ThreadManagerV2.executeOnFileThread(new QRBridgeUtil.1());
   }
   
   public static AppInterface getAppInterface()
@@ -59,15 +36,6 @@ public final class QRBridgeUtil
       sAppInterface = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
     }
     return sAppInterface;
-  }
-  
-  @Nullable
-  public static ReaderJsPluginProxy getJsPlugin(bbac parambbac, ReaderJsCallback paramReaderJsCallback)
-  {
-    if (sReaderJsPluginBuilder == null) {
-      return null;
-    }
-    return sReaderJsPluginBuilder.create(paramReaderJsCallback);
   }
   
   public static String getPSkey(String paramString1, String paramString2)
@@ -93,17 +61,8 @@ public final class QRBridgeUtil
         break;
       }
       return "";
-      bfne.a("QRBridgeUtil", "mApp null return null skey");
+      bgvo.a("QRBridgeUtil", "mApp null return null skey");
     }
-  }
-  
-  @Nullable
-  public static ReaderInterfacePluginProxy getReaderInterfacePlugin()
-  {
-    if (sReaderInterfacePluginBuilder == null) {
-      return null;
-    }
-    return sReaderInterfacePluginBuilder.create();
   }
   
   public static String getSKey(QQAppInterface paramQQAppInterface)
@@ -134,7 +93,7 @@ public final class QRBridgeUtil
     if (localAppRuntime != null) {
       return ((TicketManager)localAppRuntime.getManager(2)).getSkey(paramString);
     }
-    bfne.a("QRBridgeUtil", "mApp null return null skey");
+    bgvo.a("QRBridgeUtil", "mApp null return null skey");
     return "";
   }
   
@@ -147,54 +106,22 @@ public final class QRBridgeUtil
       if (paramString != null) {
         return new String(WtloginHelper.GetTicketSig(paramString, 524288));
       }
-      bfne.a("QRBridgeUtil", "get sig info null");
+      bgvo.a("QRBridgeUtil", "get sig info null");
     }
     return "";
-  }
-  
-  public static boolean isPluginReady()
-  {
-    if (sIsPluginReady)
-    {
-      bfne.d("QRBridgeUtil", "ReaderPlugin is ready");
-      return true;
-    }
-    if (!bfmm.a()) {
-      checkPluginInstalled();
-    }
-    return sIsPluginReady;
-  }
-  
-  public static void loadReaderPluginModule(Context paramContext)
-  {
-    bfne.d("QRBridgeUtil", "load plugin start");
-    Intent localIntent = new Intent(paramContext, VipProxyRreLoadReaderProcess.class);
-    localIntent.putExtra("userQqResources", 2);
-    localIntent.putExtra("useSkinEngine", false);
-    localIntent.putExtra("params_remote_connect_at_launch", true);
-    localIntent.putExtra("sendTime", SystemClock.elapsedRealtime());
-    localIntent.putExtra("isMiddlePagePreloadProcess", true);
-    bfdi localbfdi = new bfdi(0);
-    localbfdi.b = "qqreaderplugin.apk";
-    localbfdi.d = "qqreader";
-    localbfdi.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localbfdi.e = "com.qqreader.ReaderPreloadReaderProcess";
-    localbfdi.jdField_a_of_type_AndroidContentIntent = localIntent;
-    bfcz.b(paramContext, localbfdi);
-    bfne.d("QRBridgeUtil", "load plugin end");
   }
   
   public static String preloadPSkey(AppRuntime paramAppRuntime, String paramString1, String paramString2)
   {
     if (paramAppRuntime == null)
     {
-      bfne.a("QRBridgeUtil", "Unable to get pskey due to null app runtime");
+      bgvo.a("QRBridgeUtil", "Unable to get pskey due to null app runtime");
       return "";
     }
-    bfne.b("QRBridgeUtil", "Try to preload pSkey");
+    bgvo.c("QRBridgeUtil", "Try to preload pSkey");
     paramAppRuntime = (TicketManager)paramAppRuntime.getManager(2);
-    bflg localbflg = new bflg(paramString2);
-    paramAppRuntime.GetPskey(paramString1, 16L, new String[] { paramString2 }, localbflg);
+    bgsy localbgsy = new bgsy(paramString2);
+    paramAppRuntime.GetPskey(paramString1, 16L, new String[] { paramString2 }, localbgsy);
     return "";
   }
   
@@ -206,7 +133,7 @@ public final class QRBridgeUtil
     }
     localObject = (WtloginManager)((AppRuntime)localObject).getManager(1);
     if (!((WtloginManager)localObject).IsNeedLoginWithPasswd(paramString, 16)) {
-      ((WtloginManager)localObject).GetStWithoutPasswd(paramString, 16L, 16L, new bflf(paramCallback));
+      ((WtloginManager)localObject).GetStWithoutPasswd(paramString, 16L, 16L, new bgsx(paramCallback));
     }
     for (boolean bool = true;; bool = false) {
       return bool;

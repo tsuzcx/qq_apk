@@ -1,34 +1,39 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager.3;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class uwb
+  implements syt<tlz, syq>
 {
-  public int a;
-  public long a;
-  public boolean a;
+  public uwb(FeedManager.3 param3) {}
   
-  public boolean equals(Object paramObject)
+  public void a(@NonNull tlz paramtlz, @Nullable syq paramsyq, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this == paramObject) {}
-    do
+    paramtlz = (tma)paramsyq;
+    paramsyq = new uwf();
+    paramsyq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    if ((paramErrorMessage.isFail()) || (paramtlz == null)) {
+      uwa.a().remove(this.a.a);
+    }
+    for (;;)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      veg.a("Q.qqstory.home.data.FeedManager", "request feed item, net rec , feed id: %s , err :%d", this.a.a, Integer.valueOf(paramErrorMessage.errorCode));
+      ste.a().dispatch(paramsyq);
+      return;
+      if (!paramtlz.a.isEmpty())
+      {
+        paramsyq.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem = this.a.this$0.a(((uxp)paramtlz.a.get(0)).a());
       }
-      paramObject = (uwb)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-        return false;
+      else
+      {
+        veg.e("Q.qqstory.home.data.FeedManager", "request feed item, no data return for feedId:%s", new Object[] { this.a.a });
+        uwa.a().remove(this.a.a);
       }
-    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int * 31 + (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32);
-  }
-  
-  public String toString()
-  {
-    return "EditBehavior{hasMusic=" + this.jdField_a_of_type_Boolean + ", musicType=" + this.jdField_a_of_type_Int + ", musicId=" + this.jdField_a_of_type_Long + '}';
+    }
   }
 }
 

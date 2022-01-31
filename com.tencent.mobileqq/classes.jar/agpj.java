@@ -1,35 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import com.tencent.image.URLImageView;
 
 class agpj
-  implements EIPCResultCallback
+  implements bfod
 {
-  agpj(agph paramagph, agpe paramagpe, DownloadParam paramDownloadParam) {}
+  agpj(agpi paramagpi) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void b(View paramView)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
-    {
-      i = paramEIPCResult.data.getInt("result_code");
-      paramEIPCResult = (PreloadManager.PathResult)paramEIPCResult.data.getSerializable("path_result");
-      if (this.jdField_a_of_type_Agpe != null) {
-        this.jdField_a_of_type_Agpe.onResult(i, paramEIPCResult);
-      }
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof agpk))) {
+      ((agpk)paramView).a.setImageDrawable(null);
     }
-    while (this.jdField_a_of_type_Agpe == null)
-    {
-      int i;
-      return;
-    }
-    this.jdField_a_of_type_Agpe.onResult(1, PreloadManager.PathResult.getFailRes(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.url));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agpj
  * JD-Core Version:    0.7.0.1
  */

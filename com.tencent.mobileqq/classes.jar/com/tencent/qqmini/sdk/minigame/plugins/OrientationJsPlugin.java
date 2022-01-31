@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
 import android.view.OrientationEventListener;
-import bdcz;
-import bdnw;
+import begz;
+import besl;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 
 public class OrientationJsPlugin
@@ -13,15 +13,15 @@ public class OrientationJsPlugin
   private String lastOrientation;
   private OrientationEventListener mOrientationListener;
   
-  public void onCreate(bdcz parambdcz)
+  public void onCreate(begz parambegz)
   {
-    super.onCreate(parambdcz);
+    super.onCreate(parambegz);
     if (this.mMiniAppContext.a() != null)
     {
-      this.mOrientationListener = new OrientationJsPlugin.GameOrientationListener(this, parambdcz.a(), 3);
+      this.mOrientationListener = new OrientationJsPlugin.GameOrientationListener(this, parambegz.a(), 3);
       if (this.mOrientationListener.canDetectOrientation())
       {
-        bdnw.b("OrientationJsPlugin", "can detect orientation, start listening Orientation change");
+        besl.b("OrientationJsPlugin", "can detect orientation, start listening Orientation change");
         this.mOrientationListener.enable();
       }
     }
@@ -29,7 +29,7 @@ public class OrientationJsPlugin
     {
       return;
     }
-    bdnw.b("OrientationJsPlugin", "can not detect orientation");
+    besl.b("OrientationJsPlugin", "can not detect orientation");
     this.mOrientationListener.disable();
   }
 }

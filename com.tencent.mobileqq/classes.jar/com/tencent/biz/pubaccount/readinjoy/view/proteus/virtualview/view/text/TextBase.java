@@ -21,6 +21,7 @@ public abstract class TextBase
   private static final String TEXT_ALIGNMENT_RIGHT = "2";
   protected String drawableLeftPath;
   protected int mEllipsize = TextUtils.TruncateAt.END.ordinal();
+  protected Boolean mEnableClickSpan;
   protected Boolean mEnableMarquee;
   protected float mLineSpaceExtra = 0.0F;
   protected float mLineSpaceMultipiler = 1.0F;
@@ -164,64 +165,70 @@ public abstract class TextBase
     {
       do
       {
-        return bool1;
-        this.mText = paramString;
-        return bool2;
-        Object localObject = Utils.toDouble(paramString);
-        if (localObject != null)
+        do
         {
-          this.mTextSize = Utils.dp2px(((Double)localObject).doubleValue());
+          return bool1;
+          this.mText = paramString;
           return bool2;
-        }
-        LogUtil.QLog.d("TextBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
-        return bool2;
-        this.mTextColor = Utils.parseColor(paramString);
-        return bool2;
-        localObject = Utils.toDouble(paramString);
-        if (localObject != null)
-        {
-          this.mTextSize = Utils.dp2px(((Double)localObject).doubleValue());
-          this.mTextStyle = 1;
+          Object localObject = Utils.toDouble(paramString);
+          if (localObject != null)
+          {
+            this.mTextSize = Utils.dp2px(((Double)localObject).doubleValue());
+            return bool2;
+          }
+          LogUtil.QLog.d("TextBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
           return bool2;
-        }
-        LogUtil.QLog.d("TextBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
-        return bool2;
-        localObject = Utils.toInteger(paramString);
-        if (localObject != null)
-        {
-          this.mMaxLines = ((Integer)localObject).intValue();
+          this.mTextColor = Utils.parseColor(paramString);
           return bool2;
-        }
-        LogUtil.QLog.d("TextBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
-        return bool2;
-        if ("CenterVerticle".equals(paramString))
-        {
+          localObject = Utils.toDouble(paramString);
+          if (localObject != null)
+          {
+            this.mTextSize = Utils.dp2px(((Double)localObject).doubleValue());
+            this.mTextStyle = 1;
+            return bool2;
+          }
+          LogUtil.QLog.d("TextBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
+          return bool2;
+          localObject = Utils.toInteger(paramString);
+          if (localObject != null)
+          {
+            this.mMaxLines = ((Integer)localObject).intValue();
+            return bool2;
+          }
+          LogUtil.QLog.d("TextBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
+          return bool2;
+          if ("CenterVerticle".equals(paramString))
+          {
+            this.mGravity |= 0x20;
+            return bool2;
+          }
+          this.mGravity |= 0x4;
           this.mGravity |= 0x20;
           return bool2;
-        }
-        this.mGravity |= 0x4;
-        this.mGravity |= 0x20;
+          if ("0".equals(paramString))
+          {
+            this.mGravity |= 0x1;
+            return bool2;
+          }
+          if ("1".equals(paramString))
+          {
+            this.mGravity |= 0x4;
+            return bool2;
+          }
+          bool1 = bool2;
+        } while (!"2".equals(paramString));
+        this.mGravity |= 0x2;
         return bool2;
-        if ("0".equals(paramString))
-        {
-          this.mGravity |= 0x1;
-          return bool2;
-        }
-        if ("1".equals(paramString))
-        {
-          this.mGravity |= 0x4;
-          return bool2;
-        }
+        this.drawableLeftPath = paramString;
+        setDrawableLeft(this.drawableLeftPath);
+        return bool2;
         bool1 = bool2;
-      } while (!"2".equals(paramString));
-      this.mGravity |= 0x2;
-      return bool2;
-      this.drawableLeftPath = paramString;
-      setDrawableLeft(this.drawableLeftPath);
+      } while (TextUtils.isEmpty(paramString));
+      this.mEnableMarquee = Boolean.valueOf(TextUtils.equals("1", paramString));
       return bool2;
       bool1 = bool2;
     } while (TextUtils.isEmpty(paramString));
-    this.mEnableMarquee = Boolean.valueOf(TextUtils.equals("1", paramString));
+    this.mEnableClickSpan = Boolean.valueOf(TextUtils.equals("1", paramString));
     return bool2;
   }
   

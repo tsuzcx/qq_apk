@@ -1,170 +1,120 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.RectF;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.camera.CameraObserver.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
 
 public class lkg
-  extends lka
+  implements Observer
 {
-  public Path a;
-  public RectF a;
-  public String a;
-  lkh a;
-  public boolean a;
-  public int b;
-  public long b;
-  public volatile boolean b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
-  public int o;
+  Handler a = null;
   
-  public lkg()
+  private void a(Object paramObject)
   {
-    this.jdField_b_of_type_Long = 3000L;
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    a(255);
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public void a(long paramLong)
-  {
-    long l1 = this.jdField_a_of_type_Long;
-    if (this.jdField_b_of_type_Long == 0L) {}
-    int i1;
-    do
-    {
+    long l = 0L;
+    if (paramObject == null) {
       return;
-      i1 = (int)((paramLong - l1) * this.g / this.jdField_b_of_type_Long - this.c);
-      a(this.f, i1, this.f + this.jdField_b_of_type_Int, this.c + i1);
-      if ((this.jdField_a_of_type_Lkh != null) && (this.jdField_b_of_type_Boolean) && (i1 > this.c))
+    }
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    if (QLog.isDevelopLevel()) {
+      QLog.w("CameraObserver", 1, "OnUpdate, msgType[" + i + "]");
+    }
+    boolean bool;
+    switch (i)
+    {
+    default: 
+      return;
+    case 1: 
+      if (paramObject.length > 1)
       {
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_Lkh.a();
-        if (QLog.isColorLevel()) {
-          QLog.d("RedPacketGameParticleEmoji", 2, "call onShow  top = " + i1 + ",mHeight = " + this.c);
+        bool = ((Boolean)paramObject[1]).booleanValue();
+        if (paramObject.length <= 2) {
+          break label317;
         }
       }
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = (i1 + this.n);
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (this.jdField_a_of_type_AndroidGraphicsRectF.top + this.i);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.f + this.jdField_b_of_type_Int / 2 - this.l / 2, this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.f + this.jdField_b_of_type_Int / 2 + this.l / 2, this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.f + this.jdField_b_of_type_Int / 2, this.jdField_a_of_type_AndroidGraphicsRectF.bottom + this.m);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    super.a(paramCanvas, paramPaint);
-    if (this.jdField_a_of_type_Boolean)
+      break;
+    }
+    label317:
+    for (l = ((Long)paramObject[2]).longValue();; l = 0L)
     {
-      paramPaint.setColor(-706970);
-      paramPaint.setStyle(Paint.Style.FILL);
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.j, this.j, paramPaint);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, paramPaint);
-      paramPaint.setColor(-3398);
-      paramPaint.setTextSize(this.k);
-      paramPaint.setTextAlign(Paint.Align.CENTER);
-      Paint.FontMetrics localFontMetrics = paramPaint.getFontMetrics();
-      float f1 = this.jdField_a_of_type_AndroidGraphicsRectF.centerY();
-      float f2 = localFontMetrics.ascent;
-      f2 = (localFontMetrics.descent + f2) / 2.0F;
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), f1 - f2, paramPaint);
+      a(l, bool);
+      return;
+      a();
+      return;
+      bool = ((Boolean)paramObject[1]).booleanValue();
+      i = ((Integer)paramObject[2]).intValue();
+      if (paramObject.length > 3) {
+        l = ((Long)paramObject[3]).longValue();
+      }
+      a(l, bool, i);
+      return;
+      if (paramObject.length > 1) {
+        l = ((Long)paramObject[1]).longValue();
+      }
+      a(l);
+      return;
+      bool = ((Boolean)paramObject[1]).booleanValue();
+      if (paramObject.length > 2) {
+        l = ((Long)paramObject[2]).longValue();
+      }
+      b(l, bool);
+      return;
+      b();
+      return;
+      a(((Boolean)paramObject[1]).booleanValue());
+      return;
+      try
+      {
+        paramObject = (byte[])paramObject[1];
+        a(paramObject);
+        return;
+      }
+      catch (Exception paramObject)
+      {
+        for (;;)
+        {
+          paramObject.printStackTrace();
+          paramObject = null;
+        }
+      }
+      b(((Boolean)paramObject[1]).booleanValue());
+      return;
     }
   }
   
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  @Deprecated
+  protected void a() {}
   
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  protected void a(long paramLong) {}
   
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidGraphicsRectF = null;
-    this.jdField_a_of_type_AndroidGraphicsPath = null;
-    this.jdField_a_of_type_Lkh = null;
-  }
+  protected void a(long paramLong, boolean paramBoolean) {}
   
-  public void b(int paramInt)
+  protected void a(long paramLong, boolean paramBoolean, int paramInt) {}
+  
+  protected void a(boolean paramBoolean) {}
+  
+  protected void a(byte[] paramArrayOfByte) {}
+  
+  protected void b() {}
+  
+  protected void b(long paramLong, boolean paramBoolean) {}
+  
+  protected void b(boolean paramBoolean) {}
+  
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (this.d != paramInt)
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
     {
-      this.d = paramInt;
-      c();
+      if (this.a == null) {
+        this.a = new Handler(paramObservable);
+      }
+      this.a.post(new CameraObserver.1(this, paramObject));
+      return;
     }
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_b_of_type_Int = (paramInt1 * 176 / 750);
-    this.c = (paramInt1 * 176 / 750);
-    this.e = paramInt1;
-    this.g = (this.c + paramInt2);
-    c();
-    this.h = (paramInt1 * 360 / 750);
-    this.i = (paramInt1 * 70 / 750);
-    this.j = (paramInt1 * 5 / 750);
-    this.k = (paramInt1 * 32 / 750);
-    this.l = (paramInt1 * 28 / 750);
-    this.m = (paramInt1 * 16 / 750);
-    this.n = (paramInt1 * -143 / 750);
-    this.o = (paramInt1 * 10 / 750);
-  }
-  
-  public void b(long paramLong)
-  {
-    if (this.jdField_b_of_type_Long != paramLong) {
-      this.jdField_b_of_type_Long = paramLong;
-    }
-    QLog.d("RedPacketGameParticleEmoji", 2, "WL_DEBUG setDuration duration = " + paramLong);
-  }
-  
-  public void c()
-  {
-    this.f = ((this.e - this.jdField_b_of_type_Int * 3) * (this.d + 1) / 4 + this.jdField_b_of_type_Int * this.d);
-    int i3 = this.f + this.jdField_b_of_type_Int / 2 - this.h / 2;
-    int i1 = this.h + i3;
-    int i2 = i3;
-    if (i3 < this.o)
-    {
-      i2 = this.o;
-      i1 = this.h + i2;
-    }
-    i3 = i1;
-    if (i1 > this.e - this.o)
-    {
-      i3 = this.e - this.o;
-      i2 = i3 - this.h;
-    }
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = i2;
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = i3;
+    a(paramObject);
   }
 }
 

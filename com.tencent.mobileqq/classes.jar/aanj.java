@@ -1,26 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.46.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.BaseChatPie.82;
 
 public class aanj
-  extends BroadcastReceiver
+  implements View.OnTouchListener
 {
-  public aanj(Conversation paramConversation) {}
+  public aanj(BaseChatPie.82 param82) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramContext = paramIntent.getStringExtra("wording");
-    int i = paramIntent.getIntExtra("timetowait", 360000);
-    this.a.jdField_a_of_type_Agxq.jdField_a_of_type_Int = i;
-    this.a.jdField_a_of_type_Agxq.jdField_a_of_type_JavaLangString = paramContext;
-    this.a.jdField_a_of_type_Agxq.a(18, 2);
-    this.a.jdField_a_of_type_Agxq.a(-1, null);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class).postDelayed(new Conversation.46.1(this), i);
-    awqx.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
+    return true;
   }
 }
 

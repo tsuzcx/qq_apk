@@ -1,31 +1,39 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.core.common.ILoggerFactory;
+import com.tencent.shadow.core.common.Logger;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class aree
-  extends ajpe
+  implements ILoggerFactory
 {
-  public aree(LoginWelcomeManager paramLoginWelcomeManager, Bundle paramBundle) {}
+  private static aree jdField_a_of_type_Aree = new aree();
+  private final ConcurrentMap<String, Logger> jdField_a_of_type_JavaUtilConcurrentConcurrentMap = new ConcurrentHashMap();
   
-  public void a(boolean paramBoolean, String paramString)
+  public static ILoggerFactory a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+    return jdField_a_of_type_Aree;
+  }
+  
+  public Logger getLogger(String paramString)
+  {
+    Logger localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.get(paramString);
+    if (localLogger != null) {
+      paramString = localLogger;
     }
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    aref localaref;
+    do
     {
-      localBundle.putInt("result", i);
-      this.jdField_a_of_type_AndroidOsBundle.putString("uin", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager.b();
-      return;
-    }
+      return paramString;
+      localaref = new aref(this, paramString);
+      localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.putIfAbsent(paramString, localaref);
+      paramString = localLogger;
+    } while (localLogger != null);
+    return localaref;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aree
  * JD-Core Version:    0.7.0.1
  */

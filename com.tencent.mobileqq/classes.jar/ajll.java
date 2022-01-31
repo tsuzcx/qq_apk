@@ -1,170 +1,141 @@
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.LikeRankingInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import mqq.manager.Manager;
+import mqq.app.AppRuntime;
 
 public class ajll
-  implements Manager
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = -1L;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  LikeRankingInfo jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo;
-  String jdField_a_of_type_JavaLangString;
-  List<LikeRankingInfo> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean;
-  boolean b = true;
-  boolean c = true;
+  private static ajll jdField_a_of_type_Ajll;
+  ajlk jdField_a_of_type_Ajlk;
+  ajlm jdField_a_of_type_Ajlm = new ajlm();
+  ajlo jdField_a_of_type_Ajlo;
   
-  public ajll(QQAppInterface paramQQAppInterface)
+  static ajll a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo = new LikeRankingInfo();
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.uin = Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue();
+    if (jdField_a_of_type_Ajll == null) {
+      jdField_a_of_type_Ajll = new ajll();
     }
-    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-    this.b = paramQQAppInterface.getBoolean("notify_on_like_ranking_list", true);
-    this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.totalLikeCount = paramQQAppInterface.getInt("like_ranking_list_total_like_count", -1);
-    this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.likeCountOfToday = paramQQAppInterface.getInt("like_ranking_list_today_like_count", -1);
-    this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.rankingNum = paramQQAppInterface.getInt("like_ranking_list_ranking_num", 0);
-    this.c = paramQQAppInterface.getBoolean("partake__like_ranking_list", true);
+    return jdField_a_of_type_Ajll;
   }
   
-  public LikeRankingInfo a()
+  static SharedPreferences a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo;
+    return BaseApplication.getContext().getSharedPreferences("config_qq.android.tmg_opensdk", 4);
   }
   
-  public List<LikeRankingInfo> a()
+  public static String a()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return null;
-    }
-    return new ArrayList(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramInt1 != this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.likeCountOfToday) || (paramInt3 != this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.totalLikeCount) || (paramInt2 != this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.rankingNum))
+    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localObject == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("LikeRankingListManager", 2, String.format("updateMyRank todayVoteCount:%d rank:%d total:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
+        QLog.i("TMG_Downloader", 2, "getFilesDir is null");
       }
-      this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.totalLikeCount = paramInt3;
-      this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.likeCountOfToday = paramInt1;
-      this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.rankingNum = paramInt2;
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
-      localEditor.putInt("like_ranking_list_total_like_count", paramInt3);
-      localEditor.putInt("like_ranking_list_today_like_count", paramInt1);
-      localEditor.putInt("like_ranking_list_ranking_num", paramInt2);
-      localEditor.commit();
+      localObject = "";
+    }
+    String str;
+    File localFile;
+    do
+    {
+      return localObject;
+      str = ((File)localObject).getParent() + "/txlib/tmg/";
+      localFile = new File(str);
+      localObject = str;
+    } while (localFile.exists());
+    localFile.mkdirs();
+    return str;
+  }
+  
+  public static String a(ajlk paramajlk)
+  {
+    return a() + "tmg_sdk_" + paramajlk.a + "_" + paramajlk.b + ".zip";
+  }
+  
+  public static void a()
+  {
+    ArrayList localArrayList = bbdj.a(a());
+    if (localArrayList != null)
+    {
+      int i = 0;
+      while (i < localArrayList.size())
+      {
+        QLog.e("TMG_Downloader", 1, String.format("ListSoDirs file i=" + i + ", name=" + (String)localArrayList.get(i), new Object[0]));
+        i += 1;
+      }
     }
   }
   
-  public void a(long paramLong)
+  static void a(String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
-    localEditor.putLong("like_ranking_list_animation_time", paramLong);
+    SharedPreferences.Editor localEditor = a().edit();
+    localEditor.putString("tmg_opensdk_download_md5", paramString);
     localEditor.commit();
   }
   
-  public void a(List<LikeRankingInfo> paramList, int paramInt, boolean paramBoolean)
+  static String b()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return a().getString("tmg_opensdk_download_md5", null);
   }
   
-  public void a(boolean paramBoolean)
+  public static boolean b(ajlk paramajlk)
   {
-    if (this.b == paramBoolean) {
-      return;
-    }
-    this.b = paramBoolean;
-    PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit().putBoolean("notify_on_like_ranking_list" + this.jdField_a_of_type_JavaLangString, this.b).commit();
-  }
-  
-  public boolean a()
-  {
-    return this.b;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.c == paramBoolean) {
-      return;
-    }
-    this.c = paramBoolean;
-    PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit().putBoolean("partake__like_ranking_list" + this.jdField_a_of_type_JavaLangString, this.c).commit();
-    atbe.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
-  }
-  
-  public boolean b()
-  {
-    boolean bool = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).getBoolean("notify_on_like_ranking_list" + this.jdField_a_of_type_JavaLangString, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("LikeRankingListManager", 2, "getNotificationSwitch=" + bool);
-    }
-    return bool;
-  }
-  
-  public boolean c()
-  {
-    this.c = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).getBoolean("partake__like_ranking_list" + this.jdField_a_of_type_JavaLangString, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("LikeRankingListManager", 2, "getPartakeRankingEnabled=" + this.c);
-    }
-    return this.c;
-  }
-  
-  public boolean d()
-  {
-    boolean bool2 = false;
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(l);
-    int i = localCalendar1.get(11);
-    boolean bool1 = bool2;
-    if (i >= 22)
-    {
-      bool1 = bool2;
-      if (i < 24)
-      {
-        if (this.jdField_a_of_type_Long < 0L) {
-          this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("like_ranking_list_animation_time", 0L);
-        }
-        Calendar localCalendar2 = Calendar.getInstance();
-        localCalendar2.setTimeInMillis(this.jdField_a_of_type_Long);
-        if (localCalendar2.get(1) == localCalendar1.get(1))
-        {
-          bool1 = bool2;
-          if (localCalendar2.get(6) == localCalendar1.get(6)) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
+    String str1 = paramajlk.b;
+    paramajlk = a(paramajlk);
+    String str2 = b();
+    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TMG_Downloader", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
       }
     }
-    return bool1;
+    do
+    {
+      return false;
+      if (bbdj.a(paramajlk)) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d("TMG_Downloader", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramajlk }));
+    return false;
+    a();
+    return true;
   }
   
-  public void onDestroy() {}
+  boolean a(ajlk paramajlk)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface))
+    {
+      if (((QQAppInterface)localAppRuntime).getManager(21) == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("TMG_Downloader", 4, "innerDownload, getNetEngine 为空");
+        }
+        return false;
+      }
+    }
+    else if (QLog.isDevelopLevel()) {
+      QLog.d("TMG_Downloader", 4, "appRuntime 不是 QQAppInterface");
+    }
+    this.jdField_a_of_type_Ajlk = paramajlk;
+    return this.jdField_a_of_type_Ajlm.a(paramajlk, this.jdField_a_of_type_Ajlo);
+  }
+  
+  boolean a(ajlk paramajlk, ajlo paramajlo)
+  {
+    this.jdField_a_of_type_Ajlo = paramajlo;
+    return a(paramajlk);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajll
  * JD-Core Version:    0.7.0.1
  */

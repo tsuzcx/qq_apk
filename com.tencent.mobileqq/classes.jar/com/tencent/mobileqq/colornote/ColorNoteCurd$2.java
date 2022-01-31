@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.colornote;
 
-import alrw;
+import amgp;
 
 public class ColorNoteCurd$2
   implements Runnable
 {
-  public ColorNoteCurd$2(alrw paramalrw, int paramInt, String paramString) {}
+  public ColorNoteCurd$2(amgp paramamgp, int paramInt1, String paramString, int paramInt2) {}
   
   public void run()
   {
-    alrw.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    amgp.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

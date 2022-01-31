@@ -2,19 +2,19 @@ package com.tencent.biz.pubaccount.weishi_new;
 
 import com.tencent.biz.pubaccount.weishi_new.download.RockDownloadListenerWrapper;
 import com.tencent.mobileqq.data.RockDownloadInfo;
-import rwm;
-import sai;
+import sji;
+import sne;
 
 public class WSRecommendAdapter$1
   extends RockDownloadListenerWrapper
 {
-  public WSRecommendAdapter$1(rwm paramrwm) {}
+  public WSRecommendAdapter$1(sji paramsji) {}
   
   public void onDownloadSuccess(RockDownloadInfo paramRockDownloadInfo)
   {
     super.onDownloadSuccess(paramRockDownloadInfo);
-    rwm.b += 1;
-    sai.d("WSRecommendAdapter", "RockDownloadSuccess openDownloadWSCount = " + rwm.b);
+    sji.b += 1;
+    sne.d("WSRecommendAdapter", "RockDownloadSuccess openDownloadWSCount = " + sji.b);
   }
 }
 

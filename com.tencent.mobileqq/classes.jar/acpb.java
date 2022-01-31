@@ -1,69 +1,38 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 public class acpb
-  extends Drawable
+  extends WebChromeClient
 {
-  public int a;
-  public Bitmap a;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  boolean jdField_a_of_type_Boolean;
+  private acpb(UpgradeDetailActivity paramUpgradeDetailActivity) {}
   
-  public void a(Bitmap paramBitmap, int paramInt)
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, paramInt, paramBitmap.getHeight());
+    super.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
+    paramGeolocationPermissionsCallback.invoke(paramString, true, false);
   }
   
-  public void draw(Canvas paramCanvas)
+  public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      QLog.e("VoicePrintView", 1, "onDraw(), bmp==null");
-    }
-    int i;
-    do
-    {
-      return;
-      i = 0;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        i = paramCanvas.save();
-        paramCanvas.scale(-1.0F, 1.0F, this.jdField_a_of_type_Int / 2.0F, getBounds().exactCenterY());
-      }
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-    } while (!this.jdField_a_of_type_Boolean);
-    paramCanvas.restoreToCount(i);
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-      super.invalidateSelf();
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onProgressChanged: " + paramInt + "%");
     }
   }
   
-  public void setColorFilter(ColorFilter paramColorFilter)
+  public void onReceivedTitle(WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
-    super.invalidateSelf();
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onReceivedTitle:" + paramString);
+    }
+    this.a.setTitle(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acpb
  * JD-Core Version:    0.7.0.1
  */

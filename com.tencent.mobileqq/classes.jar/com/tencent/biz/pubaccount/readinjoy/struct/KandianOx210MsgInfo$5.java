@@ -2,21 +2,21 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bgmq;
+import bhvh;
 import com.tencent.mobileqq.app.QQAppInterface;
-import ppn;
+import qbj;
 
 public class KandianOx210MsgInfo$5
   implements Runnable
 {
-  public KandianOx210MsgInfo$5(ppn paramppn, QQAppInterface paramQQAppInterface) {}
+  public KandianOx210MsgInfo$5(qbj paramqbj, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = bgmq.a(this.a, true, false).edit();
+    SharedPreferences.Editor localEditor = bhvh.a(this.a, true, false).edit();
     localEditor.putString("kandian_push_0x210_msg_for_follow_show_in_folder", this.this$0.a());
     localEditor.putLong("kandian_push_0x210_c5_msg_time", this.this$0.d);
-    bgmq.a(localEditor, true);
+    bhvh.a(localEditor, true);
   }
 }
 

@@ -1,32 +1,33 @@
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class ajzz
+  implements ajtf
 {
-  public ajjj a;
-  public akaq a;
-  public akeu a;
-  public arom a;
-  public Map<String, RecentUser> a;
-  public Map<String, MessageRecord> b = new HashMap();
-  public Map<String, MessageRecord> c = new HashMap();
-  public Map<String, MessageRecord> d = new HashMap();
-  public Map<String, MessageRecord> e = new HashMap();
-  public Map<String, List<MessageRecord>> f = new HashMap();
-  public Map<String, List<MessageRecord>> g = new HashMap();
+  private List<String> a = new ArrayList();
   
-  public ajzz(QQAppInterface paramQQAppInterface)
+  public List<String> a(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Ajjj = ((ajjj)paramQQAppInterface.getManager(51));
-    this.jdField_a_of_type_Arom = ((arom)paramQQAppInterface.getManager(37));
-    this.jdField_a_of_type_Akeu = paramQQAppInterface.a().a();
-    this.jdField_a_of_type_Akaq = paramQQAppInterface.a();
+    if (((paramAppInterface instanceof QQAppInterface)) && (!this.a.isEmpty())) {
+      return this.a;
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.a.isEmpty()) {
+      this.a.add("100066");
+    }
+  }
+  
+  public void b()
+  {
+    if (!this.a.isEmpty()) {
+      this.a.remove("100066");
+    }
   }
 }
 

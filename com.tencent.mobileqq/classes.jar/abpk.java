@@ -1,26 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class abpk
-  extends ajen
+  implements DialogInterface.OnClickListener
 {
-  public abpk(RewardNoticeActivity paramRewardNoticeActivity) {}
+  public abpk(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      if (!TextUtils.isEmpty(this.a.f)) {
-        bbmy.a(this.a.app.getApp(), 2, this.a.f, 0).a();
-      }
-      if (this.a.a == 13) {
-        this.a.b();
-      }
-      this.a.finish();
-      return;
-    }
-    bbmy.a(this.a.app.getApp(), 1, ajjy.a(2131647654), 0).a();
+    this.a.finish();
   }
 }
 

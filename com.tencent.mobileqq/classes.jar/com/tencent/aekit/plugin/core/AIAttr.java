@@ -6,6 +6,8 @@ public class AIAttr
   private long mNextSurfaceTime;
   private long mSurfaceTime;
   private int outTexture = -1;
+  private int texHeight;
+  private int texWidth;
   
   public AIAttr(AIAttrProvider paramAIAttrProvider)
   {
@@ -56,6 +58,16 @@ public class AIAttr
     return this.mSurfaceTime;
   }
   
+  public int getTexHeight()
+  {
+    return this.texHeight;
+  }
+  
+  public int getTexWidth()
+  {
+    return this.texWidth;
+  }
+  
   public void setFaceAttr(Object paramObject)
   {
     if (this.aiAttrProvider != null) {
@@ -76,6 +88,22 @@ public class AIAttr
   public void setSurfaceTime(long paramLong)
   {
     this.mSurfaceTime = paramLong;
+  }
+  
+  public void setTexHeight(int paramInt)
+  {
+    this.texHeight = paramInt;
+  }
+  
+  public void setTexWidth(int paramInt)
+  {
+    this.texWidth = paramInt;
+  }
+  
+  public void setTexWidthAndHeight(int paramInt1, int paramInt2)
+  {
+    this.texWidth = paramInt1;
+    this.texHeight = paramInt2;
   }
 }
 

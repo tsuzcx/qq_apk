@@ -1,8 +1,9 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-
-public abstract interface advq
+public class advq
 {
-  public abstract void a(AIOImageData paramAIOImageData, boolean paramBoolean);
+  public static boolean a(String paramString)
+  {
+    return ("2658655094".equals(paramString)) || ("3142131160".equals(paramString));
+  }
 }
 
 

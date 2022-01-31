@@ -1,26 +1,23 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.widget.CheckBox;
 
-public class apfz
+class apfz
   implements View.OnClickListener
 {
-  public apfz(SendBottomBar paramSendBottomBar) {}
+  apfz(apfx paramapfx, awog paramawog) {}
   
   public void onClick(View paramView)
   {
-    String str1 = ajjy.a(2131648001) + aonm.b() + ajjy.a(2131648007);
-    paramView = null;
-    String str2 = ajjy.a(2131648019);
-    if (SendBottomBar.a(this.a).g() != -1)
-    {
-      str1 = ajjy.a(2131648025);
-      paramView = ajjy.a(2131648021);
-      str2 = ajjy.a(2131648018);
+    apfw localapfw = (apfw)this.jdField_a_of_type_Awog;
+    localapfw.a(paramView);
+    paramView = (CheckBox)paramView.findViewById(2131366225);
+    if (paramView.getVisibility() == 0) {
+      paramView.setChecked(localapfw.b());
     }
-    this.a.a = babr.a(SendBottomBar.a(this.a), 230, paramView, str1, ajjy.a(2131648017), str2, new apga(this), new apgb(this));
-    this.a.a.show();
+    if (apfx.a(this.jdField_a_of_type_Apfx) != null) {
+      apfx.a(this.jdField_a_of_type_Apfx).a();
+    }
   }
 }
 

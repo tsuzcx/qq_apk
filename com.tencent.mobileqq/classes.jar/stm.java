@@ -1,58 +1,58 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckActivity;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class stm
-  extends slz
 {
-  public static String a = skt.a("StorySvc.check_activity");
+  public long a;
+  public String a;
+  public byte[] a;
   public String b;
-  public final String c;
+  public String c;
+  public String d;
+  public String e;
   
-  public stm(String paramString)
+  public stm()
   {
-    this.c = paramString;
+    this.jdField_a_of_type_ArrayOfByte = new byte[1];
   }
   
-  public String a()
+  public void a()
   {
-    return a;
-  }
-  
-  public slu a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspCheckActivity localRspCheckActivity = new qqstory_service.RspCheckActivity();
     try
     {
-      localRspCheckActivity.mergeFrom(paramArrayOfByte);
-      return new stn(localRspCheckActivity);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("t", this.jdField_a_of_type_Long);
+      localJSONObject.put("ak", bbdm.a(this.jdField_a_of_type_ArrayOfByte));
+      ((tcv)tdc.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", localJSONObject.toString());
+      veg.a("Q.qqstory.publish:VideoServerInfoManager", "save -> %s", localJSONObject);
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
   }
   
-  protected byte[] a()
+  public boolean a()
   {
-    qqstory_service.ReqCheckActivity localReqCheckActivity = new qqstory_service.ReqCheckActivity();
-    if (!TextUtils.isEmpty(this.c)) {
-      localReqCheckActivity.adcode.set(Long.valueOf(this.c).longValue());
+    if (this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis())
+    {
+      veg.b("Q.qqstory.publish:VideoServerInfoManager", "server inf validate %s", this);
+      return true;
     }
-    urk.a("MsgTabCheckActiveRequest", "client version=%s", "8.2.6");
-    localReqCheckActivity.version.set("8.2.6");
-    return localReqCheckActivity.toByteArray();
+    veg.d("Q.qqstory.publish:VideoServerInfoManager", "server inf invalidate %s", new Object[] { this });
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Long <= NetConnInfoCenter.getServerTimeMillis() + 600000L;
   }
   
   public String toString()
   {
-    return "MsgTabCheckActiveRequest{value='" + this.b + '\'' + ", adCode='" + this.c + '\'' + '}';
+    return "ServerInfo{, userIp='" + this.jdField_a_of_type_JavaLangString + '\'' + ", serverIp1='" + this.b + '\'' + ", serverIp2='" + this.c + '\'' + ", backupServerIp1='" + this.d + '\'' + ", backupServerIp2='" + this.e + '\'' + ", expireTime=" + this.jdField_a_of_type_Long + "" + '\'' + '}';
   }
 }
 

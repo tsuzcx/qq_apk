@@ -1,154 +1,69 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.fragment.NearbyBaseFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.TabBarView;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class atqm
+class atqm
+  implements ViewPager.OnPageChangeListener
 {
-  public static int a;
-  public static String a;
-  public static boolean a;
-  public static boolean b;
+  atqm(atpi paramatpi) {}
   
-  static
-  {
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = "struct_msg_pic_pre";
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public static int a()
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (BaseApplicationImpl.sProcessId == 1)
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      return BaseApplicationImpl.getApplication().getSharedPreferences(localQQAppInterface.getCurrentAccountUin() + "_" + jdField_a_of_type_JavaLangString, 0).getInt("mStructMsgPicSwitch", 0);
+    if (QLog.isColorLevel()) {
+      atbp.a("onPageSelected", new Object[] { Integer.valueOf(paramInt) });
     }
-    return 0;
-  }
-  
-  public static void a(int paramInt)
-  {
-    if (BaseApplicationImpl.sProcessId == 1)
-    {
-      jdField_a_of_type_Int = paramInt;
-      b = true;
-      Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject = BaseApplicationImpl.getApplication().getSharedPreferences(((QQAppInterface)localObject).getCurrentAccountUin() + "_" + jdField_a_of_type_JavaLangString, 0).edit();
-      ((SharedPreferences.Editor)localObject).putInt("mStructMsgPicSwitch", paramInt);
-      ((SharedPreferences.Editor)localObject).commit();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
+    Object localObject = (NearbyBaseFragment)this.a.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentByTag("android:switcher:2131379339:" + paramInt);
+    if (localObject != null) {
+      ((NearbyBaseFragment)localObject).aT_();
     }
-  }
-  
-  public static void a(awul paramawul, List<String> paramList)
-  {
-    if ((paramawul != null) && ((paramawul instanceof awum)))
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2)
     {
-      paramawul = ((awum)paramawul).a;
-      if ((paramawul != null) && (paramawul.size() > 0)) {
-        paramawul = paramawul.iterator();
+      if (paramInt == 0) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       }
     }
     else
     {
-      while (paramawul.hasNext())
-      {
-        a((awul)paramawul.next(), paramList);
-        continue;
-        if ((paramawul != null) && ((paramawul instanceof awwo)))
-        {
-          paramawul = ((awwo)paramawul).S;
-          if ((TextUtils.isEmpty(paramawul)) || (!paramawul.startsWith("http"))) {
-            break;
-          }
-        }
+      if (paramInt != 0) {
+        break label289;
+      }
+      localaxra = new axra(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("datatab_exp");
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e != 2) {
+        break label283;
       }
     }
-    try
+    label283:
+    for (localObject = "1";; localObject = "2")
     {
-      if (a(new URL(paramawul).getHost())) {
-        paramList.add(paramawul);
+      localaxra.a(new String[] { localObject }).a();
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      localaxra = new axra(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("exp_pub").e(atpi.a(this.a).uin);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2) {}
+      for (localObject = "1";; localObject = "2")
+      {
+        localaxra.a(new String[] { localObject }).a();
+        break;
       }
+    }
+    label289:
+    axra localaxra = new axra(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("feedtab_exp").e(atpi.a(this.a).uin);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2) {}
+    for (localObject = "1";; localObject = "2")
+    {
+      localaxra.a(new String[] { localObject }).a();
       return;
     }
-    catch (MalformedURLException paramawul)
-    {
-      paramawul.printStackTrace();
-    }
-  }
-  
-  public static void a(MessageForStructing paramMessageForStructing, QQAppInterface paramQQAppInterface)
-  {
-    int i = atps.a();
-    if (!b)
-    {
-      jdField_a_of_type_Int = a();
-      b = true;
-    }
-    if ((i != 0) && (jdField_a_of_type_Int == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("StructMsgPicPreDelegate", 2, "not wifi not pre download");
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (paramMessageForStructing != null)
-      {
-        paramQQAppInterface = paramMessageForStructing.structingMsg;
-        ArrayList localArrayList = new ArrayList();
-        if ((paramQQAppInterface != null) && ((paramQQAppInterface instanceof AbsShareMsg)))
-        {
-          localObject = ((AbsShareMsg)paramQQAppInterface).getStructMsgItemLists();
-          if ((localObject != null) && (((List)localObject).size() > 0))
-          {
-            localObject = ((List)localObject).iterator();
-            while (((Iterator)localObject).hasNext()) {
-              a((awul)((Iterator)localObject).next(), localArrayList);
-            }
-          }
-        }
-        if (localArrayList.size() <= 0) {
-          break;
-        }
-        Object localObject = new axrk();
-        ((axrk)localObject).b = paramQQAppInterface.mMsgServiceID;
-        ((axrk)localObject).c = paramQQAppInterface.mMsgTemplateID;
-        ((axrk)localObject).jdField_a_of_type_JavaLangString = String.valueOf(paramMessageForStructing.istroop);
-        ((axrk)localObject).jdField_a_of_type_Boolean = true;
-        paramMessageForStructing = localArrayList.iterator();
-        while (paramMessageForStructing.hasNext()) {
-          a((String)paramMessageForStructing.next(), (axrk)localObject);
-        }
-      }
-    }
-  }
-  
-  public static void a(String paramString, axrk paramaxrk)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("http"))) {
-      axrg.a(paramString, paramaxrk, null, 1);
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool = Pattern.compile("((\\.|^)(qq\\.com|soso\\.com|gtimg\\.cn|url\\.cn|qpic\\.cn|qlogo\\.cn|idqqimg\\.com)$)").matcher(paramString).find();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("StructMsgPicPreDelegate", 4, " host = " + paramString + " ,isTencentDomain = " + bool);
-    }
-    return bool;
   }
 }
 

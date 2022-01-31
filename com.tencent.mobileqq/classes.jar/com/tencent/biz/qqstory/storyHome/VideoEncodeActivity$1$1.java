@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import ajjy;
-import bbmy;
+import ajyc;
+import bcpw;
 
 class VideoEncodeActivity$1$1
   implements Runnable
@@ -11,7 +11,7 @@ class VideoEncodeActivity$1$1
   public void run()
   {
     this.a.this$0.b();
-    bbmy.a(this.a.this$0, ajjy.a(2131650342), 0).a();
+    bcpw.a(this.a.this$0, ajyc.a(2131716133), 0).a();
   }
 }
 

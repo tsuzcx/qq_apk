@@ -1,21 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.image.URLImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
-class xcz
-  implements Animation.AnimationListener
+public class xcz
+  implements View.OnClickListener
 {
-  xcz(xcv paramxcv, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  public xcz(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    this.a.e();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -12,24 +12,24 @@ import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewParent;
-import azld;
+import bamh;
 import com.tencent.mobileqq.R.styleable;
-import rif;
-import rig;
-import rih;
+import ruv;
+import ruw;
+import rux;
 
 public class RollViewPager
   extends ViewPager
 {
   protected float a;
-  private int jdField_a_of_type_Int;
+  protected int a;
   private ViewPager.PageTransformer jdField_a_of_type_AndroidSupportV4ViewViewPager$PageTransformer;
   private String jdField_a_of_type_JavaLangString = "BannerAdapter";
-  protected rif a;
-  private rig jdField_a_of_type_Rig;
-  private rih jdField_a_of_type_Rih;
+  protected ruv a;
+  private ruw jdField_a_of_type_Ruw;
+  private rux jdField_a_of_type_Rux;
   protected float b;
-  protected int b;
+  private int b;
   protected float c;
   protected float d;
   private float e = 1.0F;
@@ -52,7 +52,7 @@ public class RollViewPager
     this.e = paramAttributeSet.getFloat(1, 1.0F);
     this.f = paramAttributeSet.getFloat(0, 1.0F);
     paramAttributeSet.recycle();
-    this.jdField_b_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
   }
   
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
@@ -84,18 +84,18 @@ public class RollViewPager
       return bool2;
     case 0: 
     case 261: 
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_Rif.a();
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_Ruv.a();
       requestDisallowInterceptTouchEvent(true);
       this.c = f1;
       this.jdField_a_of_type_Float = f1;
       this.d = f2;
       this.jdField_b_of_type_Float = f2;
-      if (this.jdField_a_of_type_Rig != null) {
-        this.jdField_a_of_type_Rig.a(0);
+      if (this.jdField_a_of_type_Ruw != null) {
+        this.jdField_a_of_type_Ruw.a(0);
       }
       return super.dispatchTouchEvent(paramMotionEvent);
     case 2: 
-      if (this.jdField_a_of_type_Int <= 1)
+      if (this.jdField_b_of_type_Int <= 1)
       {
         getParent().requestDisallowInterceptTouchEvent(false);
         bool1 = bool3;
@@ -105,12 +105,12 @@ public class RollViewPager
         this.c = f1;
         this.d = f2;
         return bool1;
-        if ((f3 < f4) && (Math.abs(f2 - this.jdField_b_of_type_Float) > this.jdField_b_of_type_Int)) {
+        if ((f3 < f4) && (Math.abs(f2 - this.jdField_b_of_type_Float) > this.jdField_a_of_type_Int)) {
           getParent().requestDisallowInterceptTouchEvent(false);
         }
         for (;;)
         {
-          if ((f3 <= f4) || (Math.abs(f1 - this.jdField_a_of_type_Float) <= this.jdField_b_of_type_Int)) {
+          if ((f3 <= f4) || (Math.abs(f1 - this.jdField_a_of_type_Float) <= this.jdField_a_of_type_Int)) {
             break label280;
           }
           bool1 = super.dispatchTouchEvent(paramMotionEvent);
@@ -124,7 +124,7 @@ public class RollViewPager
     }
     requestDisallowInterceptTouchEvent(false);
     bool2 = super.dispatchTouchEvent(paramMotionEvent);
-    if ((Math.abs(f1 - this.jdField_a_of_type_Float) < this.jdField_b_of_type_Int) && (Math.abs(f2 - this.jdField_b_of_type_Float) < this.jdField_b_of_type_Int))
+    if ((Math.abs(f1 - this.jdField_a_of_type_Float) < this.jdField_a_of_type_Int) && (Math.abs(f2 - this.jdField_b_of_type_Float) < this.jdField_a_of_type_Int))
     {
       requestDisallowInterceptTouchEvent(false);
       performClick();
@@ -132,13 +132,13 @@ public class RollViewPager
     for (;;)
     {
       bool2 = bool1;
-      if (this.jdField_a_of_type_Rig == null) {
+      if (this.jdField_a_of_type_Ruw == null) {
         break;
       }
-      this.jdField_a_of_type_Rig.a(1);
+      this.jdField_a_of_type_Ruw.a(1);
       return bool1;
-      if (this.jdField_a_of_type_Rih != null) {
-        this.jdField_a_of_type_Rih.a();
+      if (this.jdField_a_of_type_Rux != null) {
+        this.jdField_a_of_type_Rux.c();
       }
       bool1 = bool2;
     }
@@ -153,7 +153,7 @@ public class RollViewPager
     }
     catch (IllegalArgumentException paramMotionEvent)
     {
-      azld.a("avatarWallViewPager", "ote_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
+      bamh.a("avatarWallViewPager", "ote_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
       paramMotionEvent.printStackTrace();
     }
     return false;
@@ -187,7 +187,7 @@ public class RollViewPager
     }
     catch (IllegalArgumentException paramMotionEvent)
     {
-      azld.a("avatarWallViewPager", "te_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
+      bamh.a("avatarWallViewPager", "te_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
       paramMotionEvent.printStackTrace();
     }
     return false;
@@ -196,17 +196,17 @@ public class RollViewPager
   public void setAdapter(PagerAdapter paramPagerAdapter)
   {
     super.setAdapter(paramPagerAdapter);
-    this.jdField_a_of_type_Rif = ((rif)paramPagerAdapter);
+    this.jdField_a_of_type_Ruv = ((ruv)paramPagerAdapter);
   }
   
-  public void setOnTouchStateChangeListener(rig paramrig)
+  public void setOnTouchStateChangeListener(ruw paramruw)
   {
-    this.jdField_a_of_type_Rig = paramrig;
+    this.jdField_a_of_type_Ruw = paramruw;
   }
   
-  public void setOnUserFling(rih paramrih)
+  public void setOnUserFling(rux paramrux)
   {
-    this.jdField_a_of_type_Rih = paramrih;
+    this.jdField_a_of_type_Rux = paramrux;
   }
   
   public void setPageTransformer(boolean paramBoolean, ViewPager.PageTransformer paramPageTransformer)

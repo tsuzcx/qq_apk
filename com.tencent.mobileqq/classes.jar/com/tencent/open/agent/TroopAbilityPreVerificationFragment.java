@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -9,13 +9,13 @@ import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.Window;
-import babr;
-import bafb;
-import bbms;
-import bbmy;
-import bbzl;
-import bbzm;
-import bbzn;
+import bbcv;
+import bbgg;
+import bcpq;
+import bcpw;
+import bddl;
+import bddm;
+import bddn;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.OpenID;
@@ -29,8 +29,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import mmj;
-import mps;
+import mxi;
+import nat;
 import tencent.im.oidb.oidb_0xb60.ClientInfo;
 import tencent.im.oidb.oidb_0xb60.GetPrivilegeReq;
 import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
@@ -48,11 +48,11 @@ public abstract class TroopAbilityPreVerificationFragment
   public Bundle a;
   protected Handler a;
   public FragmentActivity a;
-  public bafb a;
-  protected bbms a;
+  public bbgg a;
+  protected bcpq a;
   protected QQAppInterface a;
   public String a;
-  private mps jdField_a_of_type_Mps = new bbzm(this);
+  private nat jdField_a_of_type_Nat = new bddm(this);
   public String b;
   public String c = "";
   public String d = "";
@@ -100,21 +100,21 @@ public abstract class TroopAbilityPreVerificationFragment
   
   private void e()
   {
-    if ((this.jdField_a_of_type_Bafb != null) && (!this.jdField_a_of_type_Bafb.isShowing()))
+    if ((this.jdField_a_of_type_Bbgg != null) && (!this.jdField_a_of_type_Bbgg.isShowing()))
     {
-      this.jdField_a_of_type_Bafb.show();
+      this.jdField_a_of_type_Bbgg.show();
       return;
     }
-    if (this.jdField_a_of_type_Bafb == null)
+    if (this.jdField_a_of_type_Bbgg == null)
     {
-      this.jdField_a_of_type_Bafb = babr.a(getActivity(), 230);
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new bbzl(this);
+      this.jdField_a_of_type_Bbgg = bbcv.a(getActivity(), 230);
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new bddl(this);
     }
-    this.jdField_a_of_type_Bafb.setMessage(2131629880);
-    this.jdField_a_of_type_Bafb.setTitle(2131626648);
-    this.jdField_a_of_type_Bafb.setNegativeButton(ajjy.a(2131649347), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-    this.jdField_a_of_type_Bafb.setPositiveButton(ajjy.a(2131649343), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-    this.jdField_a_of_type_Bafb.show();
+    this.jdField_a_of_type_Bbgg.setMessage(2131695561);
+    this.jdField_a_of_type_Bbgg.setTitle(2131692234);
+    this.jdField_a_of_type_Bbgg.setNegativeButton(ajyc.a(2131715137), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+    this.jdField_a_of_type_Bbgg.setPositiveButton(ajyc.a(2131715133), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+    this.jdField_a_of_type_Bbgg.show();
   }
   
   private void f()
@@ -123,7 +123,7 @@ public abstract class TroopAbilityPreVerificationFragment
     this.jdField_a_of_type_AndroidOsBundle.putString("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     if ((localOpenID == null) || (TextUtils.isEmpty(localOpenID.openID)))
     {
-      b(ajjy.a(2131649342));
+      b(ajyc.a(2131715132));
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(this.c);
       QLog.d("TroopAbility.PreVerification", 1, "-->checkAccountDiff, get openId from server.");
       return;
@@ -164,17 +164,17 @@ public abstract class TroopAbilityPreVerificationFragment
     ((oidb_0xb60.ClientInfo)localObject2).sdk_version.set(this.f);
     ((oidb_0xb60.ClientInfo)localObject2).platform.set(1);
     QLog.i("TroopAbility.PreVerification", 1, "send type=" + this.jdField_a_of_type_Int + ", appid=" + this.c);
-    mmj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bbzn(this), ((oidb_0xb60.ReqBody)localObject1).toByteArray(), "OidbSvc.0xb60_1", 2912, 1, null, 0L);
+    mxi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bddn(this), ((oidb_0xb60.ReqBody)localObject1).toByteArray(), "OidbSvc.0xb60_1", 2912, 1, null, 0L);
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Mps);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Nat);
   }
   
   public void a(String paramString)
   {
-    bbmy.a(getActivity(), 1, paramString, 0).b(getActivity().getTitleBarHeight());
+    bcpw.a(getActivity(), 1, paramString, 0).b(getActivity().getTitleBarHeight());
   }
   
   public abstract void a(boolean paramBoolean);
@@ -183,24 +183,24 @@ public abstract class TroopAbilityPreVerificationFragment
   
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Mps);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Nat);
   }
   
   protected void b(String paramString)
   {
-    if (this.jdField_a_of_type_Bbms == null) {
-      this.jdField_a_of_type_Bbms = new bbms(getActivity(), getActivity().getTitleBarHeight());
+    if (this.jdField_a_of_type_Bcpq == null) {
+      this.jdField_a_of_type_Bcpq = new bcpq(getActivity(), getActivity().getTitleBarHeight());
     }
     d();
-    this.jdField_a_of_type_Bbms.a(paramString);
+    this.jdField_a_of_type_Bcpq.a(paramString);
     if (getActivity().isResume()) {
-      this.jdField_a_of_type_Bbms.show();
+      this.jdField_a_of_type_Bcpq.show();
     }
   }
   
   public void c()
   {
-    b(ajjy.a(2131649345));
+    b(ajyc.a(2131715135));
     g();
   }
   
@@ -213,8 +213,8 @@ public abstract class TroopAbilityPreVerificationFragment
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing()) && (getActivity().isResume())) {
-      this.jdField_a_of_type_Bbms.dismiss();
+    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing()) && (getActivity().isResume())) {
+      this.jdField_a_of_type_Bcpq.dismiss();
     }
   }
   
@@ -244,7 +244,7 @@ public abstract class TroopAbilityPreVerificationFragment
     a();
     if (!a())
     {
-      a(ajjy.a(2131649338));
+      a(ajyc.a(2131715127));
       return;
     }
     f();

@@ -1,26 +1,21 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.smtt.sdk.TbsReaderView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
-class aors
-  implements DialogInterface.OnClickListener
+public class aors
+  implements View.OnTouchListener
 {
-  aors(aorq paramaorq, String paramString1, String paramString2) {}
+  public aors(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    aorp.a(this.jdField_a_of_type_Aorq.jdField_a_of_type_Aorp).userStatistics(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("_filename_from_dlg", this.jdField_a_of_type_Aorq.jdField_a_of_type_AndroidAppActivity.getString(2131629108));
-    paramDialogInterface.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_jc_file");
-    Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
-    paramDialogInterface.putString("big_brother_source_key", "biz_src_jc_file");
-    localIntent.putExtra("param", paramDialogInterface);
-    localIntent.putExtra("url", this.b);
-    this.jdField_a_of_type_Aorq.jdField_a_of_type_AndroidAppActivity.sendBroadcast(localIntent);
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.a.a.dismiss();
+      return true;
+    }
+    return false;
   }
 }
 

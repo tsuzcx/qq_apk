@@ -1,15 +1,19 @@
 package com.tencent.mobileqq.minigame.ui;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+
 class GameActivity$11
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
   GameActivity$11(GameActivity paramGameActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    GameActivity.access$1800(this.this$0);
-    GameActivity.access$1900(this.this$0);
-    GameActivity.access$2000(this.this$0);
+    GameActivity.access$1600(this.this$0).setVisibility(8);
+    GameActivity.access$1700(this.this$0).setVisibility(8);
   }
 }
 

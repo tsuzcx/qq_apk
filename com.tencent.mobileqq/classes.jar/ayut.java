@@ -1,33 +1,61 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
-import java.lang.ref.WeakReference;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.RoundRectBitmap;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.data.ThumbWidthHeightDP;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
 
 public class ayut
+  extends ayog
 {
-  protected ImageView a;
-  protected SessionInfo a;
-  protected QQAppInterface a;
-  protected RedDotAnimateView a;
-  protected WeakReference<BaseActivity> a;
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    return new File(paramDownloadParams.url.getFile());
+  }
   
-  public void a() {}
+  public boolean a()
+  {
+    return false;
+  }
   
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean1, aejb paramaejb, boolean paramBoolean2) {}
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c() {}
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inDensity = 160;
+    localOptions.inTargetDensity = 160;
+    localOptions.inScreenDensity = 160;
+    localOptions.inJustDecodeBounds = false;
+    String str = paramFile.getAbsolutePath();
+    if (!bbdj.b(str))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoForPicThumbDownloader", 2, "decodeFile file not exits. just return");
+      }
+      return null;
+    }
+    paramURLDrawableHandler = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath(), localOptions);
+    SafeBitmapFactory.decodeFile(str, localOptions);
+    paramDownloadParams = ThumbWidthHeightDP.resizeAndClipBitmap(paramURLDrawableHandler, paramDownloadParams, ThumbWidthHeightDP.getThumbWidthHeightDP(false), false);
+    if (!paramURLDrawableHandler.equals(paramDownloadParams.mBitmap)) {
+      paramURLDrawableHandler.recycle();
+    }
+    paramFile = new RoundRectBitmap(new aywy(paramFile.getAbsolutePath()).a(paramDownloadParams.mBitmap), paramDownloadParams.mCornerRadius, paramDownloadParams.mBoardColor, paramDownloadParams.mBorderWidth);
+    paramFile.mDisplayWidth = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    paramFile.mDisplayHeight = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().heightPixels;
+    return paramFile;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayut
  * JD-Core Version:    0.7.0.1
  */

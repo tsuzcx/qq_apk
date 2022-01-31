@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.view.View;
 import android.view.animation.Animation;
-import ond;
-import qoj;
+import oys;
+import rau;
 
 public class ReadInJoyBaseAdapter$17$2
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$17$2(qoj paramqoj, Animation paramAnimation) {}
+  public ReadInJoyBaseAdapter$17$2(rau paramrau, Animation paramAnimation) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Qoj.a.f.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.jdField_a_of_type_Rau.a.f.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
 }
 

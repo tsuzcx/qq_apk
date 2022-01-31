@@ -1,361 +1,320 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.hardware.Camera.Size;
-import android.media.MediaRecorder;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.1;
-import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.2;
-import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.3;
-import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.4;
-import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.5;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import mqq.os.MqqHandler;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.widget.ThemeImageView;
+import com.tencent.widget.ThemeLabelTextView;
 
-public class afjv
-  extends bhdi
-  implements View.OnClickListener
+public abstract class afjv
 {
-  private MediaRecorder jdField_a_of_type_AndroidMediaMediaRecorder;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private bbip jdField_a_of_type_Bbip;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new QFaceUnlockCameraCaptureUnit.1(this);
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int jdField_c_of_type_Int;
-  private RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
-  private Button jdField_d_of_type_AndroidWidgetButton;
-  private RelativeLayout jdField_d_of_type_AndroidWidgetRelativeLayout;
-  private String jdField_d_of_type_JavaLangString;
-  private int e = 155;
-  private int f = 211;
+  public static final int[] a;
+  public static final int[] b;
+  public static final int[] c = { 2131369915 };
+  public aipp a;
+  protected Context a;
+  public atyy a;
+  protected bfvm a;
+  public QQAppInterface a;
+  protected int b;
   
-  public afjv(bhzc parambhzc, bhzb parambhzb)
+  static
   {
-    super(parambhzc, parambhzb);
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131691507 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130839239 };
   }
   
-  private Camera.Size a(List<Camera.Size> paramList1, List<Camera.Size> paramList2)
+  public afjv(Context paramContext, QQAppInterface paramQQAppInterface, aipp paramaipp, atyy paramatyy)
   {
-    if ((paramList1 == null) || (paramList2 == null))
-    {
-      paramList2 = null;
-      return paramList2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aipp = paramaipp;
+    this.jdField_a_of_type_Atyy = paramatyy;
+    this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297275);
+  }
+  
+  public static void a(View paramView, boolean paramBoolean)
+  {
+    if (paramView == null) {
+      return;
     }
-    HashSet localHashSet = new HashSet(paramList1);
-    Iterator localIterator = paramList2.iterator();
-    paramList1 = null;
-    int i = -1;
+    if (paramBoolean)
+    {
+      paramView.setBackgroundResource(2130839134);
+      return;
+    }
+    if (ThemeUtil.isDefaultTheme())
+    {
+      paramView.setBackgroundResource(2130839132);
+      return;
+    }
+    paramView.setBackgroundResource(2130839129);
+  }
+  
+  public static void a(TextView paramTextView, int paramInt1, int paramInt2, StringBuilder paramStringBuilder)
+  {
+    int j;
+    int i;
+    switch (paramInt1)
+    {
+    default: 
+      paramTextView.setBackgroundResource(2130845021);
+      j = 0;
+      i = 0;
+    }
     for (;;)
     {
-      paramList2 = paramList1;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      paramList2 = (Camera.Size)localIterator.next();
-      if (localHashSet.contains(paramList2))
+      if ((paramInt2 > 0) && ((paramInt1 == 0) || (paramInt1 == 1)))
       {
-        int j = paramList2.width * paramList2.height;
-        if (j > i)
-        {
-          i = j;
-          paramList1 = paramList2;
+        paramTextView.setText(String.valueOf(paramInt2));
+        if ((paramStringBuilder == null) || (!AppSetting.d)) {
+          break label225;
         }
+        paramStringBuilder.append(",").append(String.valueOf(paramInt2));
+        i = 1;
       }
-    }
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    ThreadManager.getSubThreadHandler().post(new QFaceUnlockCameraCaptureUnit.4(this, paramBoolean));
-  }
-  
-  private void c(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaRecorder != null)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaRecorder.setPreviewDisplay(null);
-      this.jdField_a_of_type_AndroidMediaMediaRecorder.setOnErrorListener(null);
-    }
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QFaceUnlockCameraCaptureUnit", 0, "releaseRecord begin");
-      }
-      this.jdField_a_of_type_AndroidMediaMediaRecorder.release();
-      if (paramBoolean) {
-        this.jdField_a_of_type_AndroidOsHandler.post(new QFaceUnlockCameraCaptureUnit.5(this));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QFaceUnlockCameraCaptureUnit", 0, "releaseRecord end");
-      }
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
       for (;;)
       {
-        QLog.e("QFaceUnlockCameraCaptureUnit", 1, "releaseRecord failed, IllegalStateException: " + localIllegalStateException.getMessage());
+        paramTextView.setCompoundDrawablesWithIntrinsicBounds(j, 0, 0, 0);
+        if (i != 0)
+        {
+          if ((paramTextView instanceof ThemeLabelTextView)) {
+            ((ThemeLabelTextView)paramTextView).setSupportMaskView(true);
+          }
+          paramTextView.setVisibility(0);
+          return;
+          j = 2130845020;
+          paramTextView.setBackgroundResource(2130845021);
+          i = j;
+          if (paramStringBuilder == null) {
+            break label231;
+          }
+          i = j;
+          if (!AppSetting.d) {
+            break label231;
+          }
+          paramStringBuilder.append(",男");
+          j = 2130845020;
+          i = 1;
+          break;
+          j = 2130845018;
+          paramTextView.setBackgroundResource(2130845019);
+          i = j;
+          if (paramStringBuilder == null) {
+            break label231;
+          }
+          i = j;
+          if (!AppSetting.d) {
+            break label231;
+          }
+          paramStringBuilder.append(",女");
+          j = 2130845018;
+          i = 1;
+          break;
+          paramTextView.setText("");
+          continue;
+        }
+        paramTextView.setVisibility(8);
+        return;
+        label225:
+        i = 1;
       }
+      label231:
+      j = i;
+      i = 1;
     }
-    catch (Exception localException)
+  }
+  
+  public static void b(View paramView, int paramInt)
+  {
+    if (paramView == null) {
+      return;
+    }
+    Object localObject = paramView.getLayoutParams();
+    if (localObject == null) {
+      localObject = new AbsListView.LayoutParams(-1, paramInt);
+    }
+    for (;;)
     {
-      for (;;)
-      {
-        QLog.e("QFaceUnlockCameraCaptureUnit", 1, "releaseRecord failed, Exception: " + localException.getMessage());
+      paramView.setMinimumHeight(paramInt);
+      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      return;
+      ((ViewGroup.LayoutParams)localObject).width = -1;
+      ((ViewGroup.LayoutParams)localObject).height = paramInt;
+    }
+  }
+  
+  public static void b(View paramView, boolean paramBoolean)
+  {
+    if (paramView == null) {
+      return;
+    }
+    int i = paramView.getPaddingBottom();
+    int j = paramView.getPaddingTop();
+    int k = paramView.getPaddingRight();
+    int m = paramView.getPaddingLeft();
+    if (paramBoolean) {
+      paramView.setBackgroundResource(2130839134);
+    }
+    for (;;)
+    {
+      paramView.setPadding(m, j, k, i);
+      return;
+      if (ThemeUtil.isDefaultTheme()) {
+        paramView.setBackgroundResource(2130839132);
+      } else {
+        paramView.setBackgroundResource(2130839129);
       }
     }
-    this.jdField_a_of_type_AndroidMediaMediaRecorder = null;
-  }
-  
-  private void l()
-  {
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_AndroidWidgetButton.setText(2131633267);
-    this.jdField_d_of_type_AndroidWidgetButton.setVisibility(0);
-    this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-  }
-  
-  private void n()
-  {
-    ThreadManager.getSubThreadHandler().post(new QFaceUnlockCameraCaptureUnit.3(this));
   }
   
   protected int a()
   {
-    return 2131493492;
+    return 0;
   }
   
-  public View a()
+  public abstract View a(int paramInt, View paramView);
+  
+  protected View a(Context paramContext, int paramInt, afjx paramafjx)
   {
-    View localView = super.a();
-    ((TextView)localView.findViewById(2131298297)).setOnClickListener(this);
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setFunctionFlag(3);
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.f();
-    this.jdField_d_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131307050));
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_d_of_type_AndroidWidgetButton.setText(2131633267);
-    this.jdField_d_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131300799));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131300284));
-    int i = aciy.a(this.e, a().getResources());
-    this.jdField_a_of_type_Bbip = new bbip();
-    this.jdField_a_of_type_Bbip.a(aciy.a(this.e + this.f, a().getResources()));
-    this.jdField_a_of_type_Bbip.a(i);
-    this.jdField_a_of_type_Bbip.c(1);
-    if (Build.VERSION.SDK_INT > 15) {
-      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setBackground(this.jdField_a_of_type_Bbip);
+    View localView = LayoutInflater.from(paramContext).inflate(paramInt, null);
+    if (this.jdField_a_of_type_Aipp != null) {
+      return this.jdField_a_of_type_Bfvm.a(paramContext, localView, paramafjx, -1);
     }
-    for (;;)
+    paramafjx.g = localView;
+    paramafjx.a = null;
+    return localView;
+  }
+  
+  protected bfvm a(Context paramContext)
+  {
+    int i = paramContext.getResources().getDimensionPixelSize(2131298603);
+    int j = paramContext.getResources().getDimensionPixelSize(2131298604);
+    paramContext = c;
+    int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt2 = jdField_b_of_type_ArrayOfInt;
+    return new afjw(this, 1, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+  }
+  
+  protected void a() {}
+  
+  protected void a(Context paramContext, View paramView, int paramInt, Object paramObject, bfvn parambfvn, View.OnClickListener paramOnClickListener)
+  {
+    if (this.jdField_a_of_type_Bfvm != null) {}
+    for (int i = this.jdField_a_of_type_Bfvm.a(paramContext, paramView, paramInt, paramObject, parambfvn, paramOnClickListener);; i = 0)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131310649));
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131309291));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131300287));
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_JavaLangString);
-      return localView;
-      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(this.jdField_a_of_type_Bbip);
-    }
-  }
-  
-  protected auuv a()
-  {
-    auuv localauuv = super.a();
-    localauuv.l(3);
-    localauuv.i(1);
-    localauuv.a(false);
-    return localauuv;
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    if (QLog.isColorLevel()) {
-      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onActivityResult");
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    a().getWindow().setFlags(1024, 1024);
-    a().requestWindowFeature(1);
-    super.a(paramBundle);
-    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bhzc.a().getIntent().getStringExtra("key_face_unlock_code");
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
-    {
-      this.jdField_c_of_type_JavaLangString = "6978";
-      QLog.e("QFaceUnlockCameraCaptureUnit", 1, "verification code is null, use default code");
-    }
-  }
-  
-  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult)
-  {
-    super.a(paramVideoCaptureResult);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    ThreadManager.getUIHandler().post(new QFaceUnlockCameraCaptureUnit.2(this));
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    super.a(paramBoolean, paramString);
-    if (paramBoolean)
-    {
-      this.jdField_d_of_type_AndroidWidgetButton.setEnabled(true);
-      return;
-    }
-    QLog.e("QFaceUnlockCameraCaptureUnit", 1, "Camera start fail!");
-  }
-  
-  public boolean a()
-  {
-    return super.a();
-  }
-  
-  public void c()
-  {
-    super.c();
-  }
-  
-  public void d()
-  {
-    super.d();
-    if (QLog.isColorLevel()) {
-      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onActivityPause");
-    }
-    b(false);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-  }
-  
-  public void e()
-  {
-    super.e();
-    if (QLog.isColorLevel()) {
-      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onDestroy");
-    }
-  }
-  
-  public void f()
-  {
-    super.f();
-    if (QLog.isColorLevel()) {
-      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onActivityResume");
-    }
-  }
-  
-  public void g()
-  {
-    int i = 0;
-    l();
-    if (alrg.d()) {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setVisibility(8);
-      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+      if ((this.jdField_a_of_type_Aipp != null) && (this.jdField_a_of_type_Aipp.a != -1))
       {
-        ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
-        if (this.jdField_c_of_type_Boolean) {
-          i = 8;
+        if (paramInt != this.jdField_a_of_type_Aipp.a) {
+          paramView.scrollTo(0, 0);
         }
-        localViewGroup.setVisibility(i);
       }
-      this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      else {
+        return;
       }
-      if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-        this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      }
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      paramView.scrollTo(i, 0);
       return;
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
     }
   }
   
-  public void h()
+  protected void a(View paramView)
   {
-    super.h();
-  }
-  
-  protected void i()
-  {
-    super.i();
-  }
-  
-  public void j() {}
-  
-  public void k() {}
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131298297)
+    if (!bbbd.a("tag_swip_icon_menu_item", paramView.getTag())) {}
+    for (;;)
     {
-      a().finish();
-      a().overridePendingTransition(2130772036, 2130772218);
+      return;
+      if (!bbev.g(this.jdField_a_of_type_AndroidContentContext))
+      {
+        bcpw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692321), 0).b(c());
+        return;
+      }
+      Object localObject1 = paramView.getTag(-1);
+      Object localObject2 = paramView.getTag(-2);
+      if ((!(localObject1 instanceof Integer)) || (!(localObject2 instanceof Integer)))
+      {
+        if (!QLog.isDevelopLevel()) {
+          continue;
+        }
+        QLog.i("Q.newfriend", 4, "SystemMsgListAdpater onClick tag is not int");
+        return;
+      }
+      int i = ((Integer)localObject1).intValue();
+      int j = ((Integer)localObject2).intValue();
+      localObject1 = null;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.newfriend", 2, "SystemMsgListAdpater onClick position = " + i + "nMenuStrId = " + j + "v.getId() = " + paramView.getId());
+      }
+      try
+      {
+        paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(j);
+        if (!bbbd.a(paramView, this.jdField_a_of_type_AndroidContentContext.getResources().getString(jdField_a_of_type_ArrayOfInt[0]))) {
+          continue;
+        }
+        a();
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          paramView = localObject1;
+          if (QLog.isDevelopLevel())
+          {
+            QLog.i("Q.newfriend", 4, localException.toString());
+            paramView = localObject1;
+          }
+        }
+      }
     }
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    if (paramView == null) {}
+    View localView;
     do
     {
       return;
-      super.onClick(paramView);
-      switch (paramView.getId())
+      localView = paramView.findViewById(2131375333);
+      if ((localView == paramView) || (localView == null))
       {
-      default: 
+        b(paramView, paramInt);
         return;
       }
-      if (this.jdField_c_of_type_Int == 0)
-      {
-        this.jdField_c_of_type_Int = 1;
-        this.jdField_d_of_type_AndroidWidgetButton.setText(2131633270);
-        this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        n();
-        return;
-      }
-    } while (this.jdField_c_of_type_Int != 1);
-    this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_c_of_type_Int = 2;
-    b(true);
+      paramView = localView.getLayoutParams();
+    } while (paramView == null);
+    paramView.width = -1;
+    paramView.height = paramInt;
+    localView.setLayoutParams(paramView);
+  }
+  
+  public void a(atyy paramatyy)
+  {
+    this.jdField_a_of_type_Atyy = paramatyy;
+  }
+  
+  public void b(View paramView)
+  {
+    if ((paramView instanceof ThemeImageView)) {
+      ((ThemeImageView)paramView).setSupportMaskView(true);
+    }
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afjv
  * JD-Core Version:    0.7.0.1
  */

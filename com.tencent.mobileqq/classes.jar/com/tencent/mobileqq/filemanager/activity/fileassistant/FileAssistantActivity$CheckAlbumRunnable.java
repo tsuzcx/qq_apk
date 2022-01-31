@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
-import amgz;
-import amha;
+import amxd;
+import amxe;
 import android.content.ContentResolver;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -20,8 +20,8 @@ class FileAssistantActivity$CheckAlbumRunnable
   public void run()
   {
     int i = 7;
-    amgz localamgz = amha.a();
-    if (!localamgz.a()) {
+    amxd localamxd = amxe.a();
+    if (!localamxd.a()) {
       QLog.w("FileAssistantActivity", 2, "no config, exit");
     }
     do
@@ -36,9 +36,9 @@ class FileAssistantActivity$CheckAlbumRunnable
           int k = ((Calendar)localObject1).get(7);
           int j = ((Calendar)localObject1).get(11);
           if (k == 1) {}
-          while ((localamgz.a() != i) || (localamgz.b() > j))
+          while ((localamxd.a() != i) || (localamxd.b() > j))
           {
-            QLog.w("FileAssistantActivity", 2, i + "-" + localamgz.a() + ", " + j + "-" + localamgz.b() + ", not correct time, exit");
+            QLog.w("FileAssistantActivity", 2, i + "-" + localamxd.a() + ", " + j + "-" + localamxd.b() + ", not correct time, exit");
             return;
             i = k - 1;
           }
@@ -49,7 +49,7 @@ class FileAssistantActivity$CheckAlbumRunnable
             QLog.w("FileAssistantActivity", 2, str + "-" + (String)localObject4 + ", showed, exit");
             return;
           }
-          ((Calendar)localObject1).add(5, -localamgz.c());
+          ((Calendar)localObject1).add(5, -localamxd.c());
           ((Calendar)localObject1).set(11, 0);
           ((Calendar)localObject1).set(12, 0);
           ((Calendar)localObject1).set(13, 0);
@@ -80,14 +80,14 @@ class FileAssistantActivity$CheckAlbumRunnable
           }
         }
         i = ((Cursor)localObject1).getCount();
-        if (i >= localamgz.d()) {
+        if (i >= localamxd.d()) {
           break;
         }
-        QLog.w("FileAssistantActivity", 2, i + "-" + localamgz.d() + ", limit not achieved, exit");
+        QLog.w("FileAssistantActivity", 2, i + "-" + localamxd.d() + ", limit not achieved, exit");
       } while (localObject1 == null);
       ((Cursor)localObject1).close();
       return;
-      this.this$0.runOnUiThread(new FileAssistantActivity.CheckAlbumRunnable.1(this, localamgz, i));
+      this.this$0.runOnUiThread(new FileAssistantActivity.CheckAlbumRunnable.1(this, localamxd, i));
     } while (localObject1 == null);
     ((Cursor)localObject1).close();
     return;

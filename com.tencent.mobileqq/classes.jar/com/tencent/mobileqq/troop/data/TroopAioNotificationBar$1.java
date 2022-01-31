@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.data;
 
-import aymv;
+import aznl;
 
 public class TroopAioNotificationBar$1
   implements Runnable
 {
-  public TroopAioNotificationBar$1(aymv paramaymv) {}
+  public TroopAioNotificationBar$1(aznl paramaznl) {}
   
   public void run()
   {
-    aymv.a(this.this$0, -1);
+    aznl.a(this.this$0, -1);
   }
 }
 

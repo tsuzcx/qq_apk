@@ -1,38 +1,42 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.Stream;
 
-class tgy
-  extends PagerAdapter
+public class tgy
 {
-  private List<View> jdField_a_of_type_JavaUtilList;
+  private int jdField_a_of_type_Int = 1;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b = true;
   
-  public tgy(List<View> paramList)
+  public void a(@NonNull tfi paramtfi, thc paramthc)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.b)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("MsgTabVideoPreloaderDataProvider", 2, "下载vidList和VideoInfo");
+        }
+        Stream.of(paramtfi).map(new tfy("MsgTabPreloader")).map(new tfv(null)).subscribe(new tgz(this, paramthc, paramtfi));
+      }
+    }
+    else {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MsgTabVideoPreloaderDataProvider", 2, "只加载vidList");
+    }
+    Stream.of(paramtfi).map(new tfy("MsgTabPreloader")).subscribe(new thb(this, paramthc, paramtfi));
   }
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public void a(boolean paramBoolean)
   {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public int getCount()
+  public void b(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    this.b = paramBoolean;
   }
 }
 

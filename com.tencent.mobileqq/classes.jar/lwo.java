@@ -1,15 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.QavBeautyMenuPanel;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class lwo
-  implements DialogInterface.OnClickListener
+public abstract class lwo
+  extends Binder
+  implements lwn
 {
-  public lwo(QavBeautyMenuPanel paramQavBeautyMenuPanel) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static lwn a(IBinder paramIBinder)
   {
-    paramDialogInterface.dismiss();
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IAVServiceCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof lwn))) {
+      return (lwn)localIInterface;
+    }
+    return new lwp(paramIBinder);
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.av.service.IAVServiceCallback");
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceCallback");
+    a(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
+    return true;
   }
 }
 

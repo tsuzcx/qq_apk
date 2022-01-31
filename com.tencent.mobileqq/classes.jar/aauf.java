@@ -1,18 +1,19 @@
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.ChatSettingForTroop.ClearChatRecordTask;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aauf
-  implements View.OnClickListener
+  implements bckz
 {
-  public aauf(FriendProfileCardActivity paramFriendProfileCardActivity, begr parambegr) {}
+  public aauf(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(View paramView)
+  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    if (FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity) == 98) {
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X800A97D", "0X800A97D", 3, 0, "0", "0", "", "");
-    }
-    this.jdField_a_of_type_Begr.a.onClick(null);
+    ThreadManager.post(new ChatSettingForTroop.ClearChatRecordTask(this.a), 5, null, false);
+    bbbb.a("Grp_set_new", "grpData_admin", "confirm_delRecord", 0, 0, new String[] { this.a.a.troopUin, bbbb.a(this.a.a) });
   }
 }
 

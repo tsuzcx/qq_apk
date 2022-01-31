@@ -1,6 +1,6 @@
-class rxd
+public abstract interface rxd
 {
-  private static final rxc a = new rxc(null);
+  public abstract void a(int paramInt);
 }
 
 

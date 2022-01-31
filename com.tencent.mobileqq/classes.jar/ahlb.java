@@ -1,104 +1,76 @@
-import com.tencent.maxvideo.common.MessageStruct;
-import com.tencent.maxvideo.mediadevice.AVCodec.AVCodecCallback;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager.27.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import cooperation.qzone.report.lp.LpReportInfo_dc00307;
+import cooperation.qzone.report.lp.LpReportManager;
+import java.net.URLEncoder;
+import mqq.os.MqqHandler;
 
-public abstract class ahlb
+public class ahlb
+  implements View.OnClickListener
 {
-  public abstract void a();
+  ahlb(ahkf paramahkf, String paramString, Long paramLong, int paramInt) {}
   
-  public void a(awhf paramawhf, boolean paramBoolean, int paramInt1, int paramInt2) {}
-  
-  public void a(AVCodec.AVCodecCallback paramAVCodecCallback, MessageStruct paramMessageStruct) {}
-  
-  public void a(Object paramObject, int paramInt, Object... paramVarArgs)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoState", 2, "[@] notify called eventId=" + paramInt);
+    if (!ahkf.a(this.jdField_a_of_type_Ahkf)) {
+      return;
     }
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if ((paramObject instanceof AudioCapture)) {
-      switch (paramInt)
+    ahkf.a(this.jdField_a_of_type_Ahkf, false);
+    new Handler().postDelayed(new BannerManager.27.1(this), 1000L);
+    paramView = (QQAppInterface)ahkf.a(this.jdField_a_of_type_Ahkf).getAppRuntime();
+    String str = paramView.getCurrentAccountUin();
+    Object localObject = new StringBuilder(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append("uin=");
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append("&plat=1");
+    ((StringBuilder)localObject).append("&app=1");
+    ((StringBuilder)localObject).append("&version=8.2.8.4440");
+    ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
+    ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
+    ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
+    localObject = ((StringBuilder)localObject).toString();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("portraitOnly", true);
+    localIntent.putExtra("url", (String)localObject);
+    localIntent.putExtra("uin", str);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("hide_more_button", true);
+    VasWebviewUtil.openQQBrowserActivity(ahkf.a(this.jdField_a_of_type_Ahkf), (String)localObject, 32768L, localIntent, false, -1);
+    if (this.jdField_a_of_type_JavaLangLong.longValue() == 3L)
+    {
+      paramView = paramView.getHandler(Conversation.class);
+      if (paramView == null) {}
+    }
+    try
+    {
+      paramView.sendMessage(paramView.obtainMessage(1134044));
+      paramView = new LpReportInfo_dc00307(LpReportInfo_dc00307.ACTION_TYPE_RED_PACK, LpReportInfo_dc00307.SUB_ACTION_TYPE_RED_PACK_CLICK, this.jdField_a_of_type_Int);
+      LpReportManager.getInstance().reportToDC00307(paramView, false, true);
+      axqw.a(ahkf.a(this.jdField_a_of_type_Ahkf).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 9, 0, "", "", "", "");
+      return;
+    }
+    catch (Exception paramView)
+    {
+      for (;;)
       {
+        paramView.fillInStackTrace();
       }
     }
-    label304:
-    label332:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            localRMVideoStateMgr.i();
-            return;
-          } while (!(paramObject instanceof awix));
-          QLog.d("faceuu", 2, " notify EVENT_SET_CAMERA_PARAM eventId" + paramInt + ", rmStateMgr:" + localRMVideoStateMgr);
-          if (localRMVideoStateMgr == null) {
-            break label392;
-          }
-          switch (paramInt)
-          {
-          default: 
-            return;
-          case 2: 
-            if ((paramVarArgs == null) || (localRMVideoStateMgr.a == null)) {
-              break label332;
-            }
-            if (!(paramVarArgs[0] instanceof awim)) {
-              break label304;
-            }
-            paramObject = (awim)paramVarArgs[0];
-            try
-            {
-              localRMVideoStateMgr.a.a(paramObject.a, paramObject.b);
-              QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[success]");
-              return;
-            }
-            catch (NullPointerException paramObject)
-            {
-              paramObject.printStackTrace();
-            }
-          }
-        } while (localRMVideoStateMgr == null);
-        QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM:rmStateMgr=" + localRMVideoStateMgr + " viewST=" + localRMVideoStateMgr.a);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("faceuu", 2, "RMVideoState viewST:" + localRMVideoStateMgr.a);
-        }
-      } while (localRMVideoStateMgr.a == null);
-      localRMVideoStateMgr.a.t();
-      return;
-      QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM: no CustomSize obj[0]=" + paramVarArgs[0]);
-      return;
-      QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[2]:obj=" + paramVarArgs);
-    } while (localRMVideoStateMgr == null);
-    QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[2]:viewST=" + localRMVideoStateMgr.a);
-    return;
-    label392:
-    QLog.d("faceuu", 2, " notify EVENT_SET_CAMERA_PARAM  rmStateMgr==null");
   }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public abstract void b();
-  
-  public void f() {}
-  
-  public void g() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahlb
  * JD-Core Version:    0.7.0.1
  */

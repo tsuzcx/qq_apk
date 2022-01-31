@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
 import android.content.res.AssetManager;
-import awkd;
-import awke;
+import axjj;
+import axjk;
 
 public class GameplayEngine
 {
   private long jdField_a_of_type_Long = 0L;
-  private awkd jdField_a_of_type_Awkd = new awkd(new Game3DNativeEvent());
+  private axjj jdField_a_of_type_Axjj = new axjj(new Game3DNativeEvent());
   
   private native int createEngineContext(AssetManager paramAssetManager);
   
@@ -19,9 +19,9 @@ public class GameplayEngine
   
   private native int onSurfaceOperateNative(long paramLong, int paramInt1, int paramInt2, int paramInt3);
   
-  public void a(awke paramawke)
+  public void a(axjk paramaxjk)
   {
-    this.jdField_a_of_type_Awkd.a(paramawke, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Axjj.a(paramaxjk, this.jdField_a_of_type_Long);
   }
 }
 

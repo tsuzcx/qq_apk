@@ -1,7 +1,17 @@
-public abstract interface azxl {}
+public class azxl
+{
+  public int a;
+  public Object a;
+  
+  public azxl(int paramInt, Object paramObject)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azxl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.out.webPlugins;
 
-import anad;
 import android.os.Bundle;
 import android.text.TextUtils;
+import anql;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppPlugin$3
-  extends anad
+  extends anql
 {
   MiniAppPlugin$3(MiniAppPlugin paramMiniAppPlugin) {}
   

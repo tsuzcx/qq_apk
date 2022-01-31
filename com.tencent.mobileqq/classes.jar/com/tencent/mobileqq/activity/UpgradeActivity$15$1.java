@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acdz;
+import acoo;
 
 public class UpgradeActivity$15$1
   implements Runnable
 {
-  public UpgradeActivity$15$1(acdz paramacdz) {}
+  public UpgradeActivity$15$1(acoo paramacoo) {}
   
   public void run()
   {

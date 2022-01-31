@@ -1,8 +1,31 @@
-public abstract interface vqk
+import android.text.Editable;
+import android.text.TextWatcher;
+
+public class vqk
+  implements TextWatcher
 {
-  public abstract void a();
+  public vqk(vqi paramvqi) {}
   
-  public abstract boolean a(boolean paramBoolean);
+  public void afterTextChanged(Editable paramEditable)
+  {
+    String str = vye.a(paramEditable.toString(), 30);
+    if (str.length() < paramEditable.length()) {
+      paramEditable.replace(0, paramEditable.length(), str);
+    }
+    this.a.jdField_a_of_type_JavaLangString = paramEditable.toString();
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramCharSequence = paramCharSequence.toString();
+    this.a.jdField_a_of_type_JavaLangString = paramCharSequence;
+    veg.b("Q.qqstory.record.label.QQStoryAddVideoLabelView", "keyword = " + this.a.jdField_a_of_type_JavaLangString);
+    if (this.a.jdField_a_of_type_Vql != null) {
+      this.a.jdField_a_of_type_Vql.a(this.a.jdField_a_of_type_JavaLangString);
+    }
+  }
 }
 
 

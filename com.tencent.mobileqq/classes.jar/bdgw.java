@@ -1,70 +1,25 @@
-import android.text.TextUtils;
-import android.util.Log;
-import java.lang.reflect.Field;
+import android.os.Bundle;
 
-public class bdgw
+class bdgw
+  implements bdkf
 {
-  public static Object a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = Class.forName(paramString).newInstance();
-      return paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      Log.e("ReflectionUtil", "ClassNotFoundException: ");
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (IllegalAccessException paramString)
-    {
-      Log.e("ReflectionUtil", "IllegalAccessException: ");
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (InstantiationException paramString)
-    {
-      Log.e("ReflectionUtil", "InstantiationException: ");
-      paramString.printStackTrace();
-    }
-    return null;
-  }
+  bdgw(bdgv parambdgv) {}
   
-  public static Object a(String paramString1, String paramString2)
+  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    try
-    {
-      paramString1 = Class.forName(paramString1);
-      paramString1 = paramString1.getField(paramString2).get(paramString1);
-      return paramString1;
-    }
-    catch (NoSuchFieldException paramString1)
-    {
-      Log.w("ReflectionUtil", "NoSuchFieldException: " + paramString1.getMessage());
-      return null;
-    }
-    catch (IllegalAccessException paramString1)
-    {
-      Log.w("ReflectionUtil", "IllegalAccessException: " + paramString1.getMessage());
-      return null;
-    }
-    catch (ClassNotFoundException paramString1)
-    {
-      Log.w("ReflectionUtil", "ClassNotFoundException: " + paramString1.getMessage());
-    }
-    return null;
+    bdht.b("DownloadManagerV2", "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("PackageName", paramString1);
+    localBundle.putString("Code", paramString2);
+    localBundle.putInt("VersionCode", paramInt);
+    localBundle.putBoolean("IsSuccess", paramBoolean);
+    localBundle.putAll(paramBundle);
+    bdgv.a(this.a, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdgw
  * JD-Core Version:    0.7.0.1
  */

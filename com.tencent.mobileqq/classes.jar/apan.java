@@ -1,10 +1,24 @@
-import android.os.Bundle;
-
 public abstract interface apan
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle);
+  public abstract int a();
   
-  public abstract void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle);
+  public abstract long a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(aozv paramaozv);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(long paramLong);
+  
+  public abstract int b();
+  
+  public abstract long b();
 }
 
 

@@ -10,6 +10,8 @@ public abstract interface IGameLauncher
   
   public abstract int launchGame();
   
+  public abstract boolean launchSubpackage(@NonNull String paramString);
+  
   public abstract void setCurrentGame(MiniGameInfo paramMiniGameInfo);
 }
 

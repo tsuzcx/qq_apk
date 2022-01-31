@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import ajjy;
+import ajyc;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.text.TextUtils;
-import atmo;
-import atnv;
-import atnz;
-import atoc;
-import azkm;
-import azkn;
+import aukm;
+import ault;
+import aulx;
+import auma;
+import balq;
+import balr;
 import com.tencent.mobileqq.activity.photo.TroopClipPic;
 import com.tencent.mobileqq.app.GroupIconHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -34,7 +34,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
-import mpl;
+import nam;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,7 +47,7 @@ import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 import tencent.im.oidb.cmd0x8f9.oidb_0x8f9.GroupFeedsRecord;
 
 public class TroopInfo
-  extends atmo
+  extends aukm
   implements Serializable
 {
   public static final int ALLOW_HISTORY_MSG_READ_FOR_NEW_MEMBER = 4;
@@ -75,7 +75,7 @@ public class TroopInfo
   public static final int PAY_PRIVILEGE_GROUP_FEE = 64;
   public static final int PAY_PRIVILEGE_PAY_TO_JOIN_TROOP = 128;
   public static final int QIDIAN_PRIVATE_TROOP_FLAG = 32;
-  public static final String QIDIAN_TROOP_MEMBER_DEF_NICK = ajjy.a(2131649665);
+  public static final String QIDIAN_TROOP_MEMBER_DEF_NICK = ajyc.a(2131715455);
   public static final int QZONE_TROOP_ENTRANCE = 131072;
   public static final int SET_DEFAULT_PIC = 1;
   public static final String TABLE_NAME = "TroopInfoV2";
@@ -124,6 +124,7 @@ public class TroopInfo
   public long dwTimeStamp;
   public int eliminated;
   public int exitTroopReason = 0;
+  public String feeds_id;
   public String fingertroopmemo;
   public int gameSwitchStatus;
   public int groupFlagExt4;
@@ -140,7 +141,7 @@ public class TroopInfo
   public String joinTroopAnswer;
   public String joinTroopQuestion;
   public long lastMsgTime;
-  @atnv(a=0)
+  @ault(a=0)
   public long lastShareLbsMsgUniseq;
   public String mAtOrReplyMeUins;
   HashMap<Integer, String> mCachedLevelMap;
@@ -166,10 +167,10 @@ public class TroopInfo
   public int mTroopFileVideoIsWhite;
   public long mTroopFileVideoReqInterval;
   public float mTroopNeedPayNumber = 0.0F;
-  @atnz
+  @aulx
   public List<TroopClipPic> mTroopPicList = new ArrayList(8);
   public String mTroopPicListJson = "";
-  @atnz
+  @aulx
   public Set<String> mTroopVerifyingPics = new HashSet();
   public int maxAdminNum;
   public int maxInviteMemNum;
@@ -195,6 +196,7 @@ public class TroopInfo
   public String troopLevelMap;
   public int troopLon;
   public long troopPrivilegeFlag;
+  public int troopRepeatType;
   public int troopTypeExt = -1;
   public String troopcode;
   public short troopface;
@@ -203,7 +205,7 @@ public class TroopInfo
   public String troopname;
   public String troopowneruin;
   public int trooptype;
-  @atoc
+  @auma
   public String troopuin;
   public long udwCmdUinRingtoneID;
   public String uin;
@@ -566,8 +568,8 @@ public class TroopInfo
       break;
       this.mRichFingerMemo = "";
       break label72;
-      this.mRichFingerMemo = mpl.c(this.mRichFingerMemo);
-      this.mRichFingerMemo = mpl.b(this.mRichFingerMemo);
+      this.mRichFingerMemo = nam.c(this.mRichFingerMemo);
+      this.mRichFingerMemo = nam.b(this.mRichFingerMemo);
       break label90;
       bool1 = false;
       break label228;
@@ -661,29 +663,31 @@ public class TroopInfo
         label1306:
         this.mCanSearchByKeywords = bool;
         if (paramCursor.getInt(paramCursor.getColumnIndex("mCanSearchByTroopUin")) != 1) {
-          break label2280;
+          break label2343;
         }
         bool = true;
         label1332:
         this.mCanSearchByTroopUin = bool;
         if (paramCursor.getInt(paramCursor.getColumnIndex("isNewTroop")) != 1) {
-          break label2285;
+          break label2348;
         }
         bool = true;
         label1358:
         this.isNewTroop = bool;
         if (paramCursor.getInt(paramCursor.getColumnIndex("hasSetNewTroopHead")) != 1) {
-          break label2290;
+          break label2353;
         }
         bool = true;
         label1384:
         this.hasSetNewTroopHead = bool;
         if (paramCursor.getInt(paramCursor.getColumnIndex("hasSetNewTroopName")) != 1) {
-          break label2295;
+          break label2358;
         }
         bool = true;
         this.hasSetNewTroopName = bool;
         this.eliminated = paramCursor.getInt(paramCursor.getColumnIndex("eliminated"));
+        this.feeds_id = paramCursor.getString(paramCursor.getColumnIndex("feeds_id"));
+        this.troopRepeatType = paramCursor.getInt(paramCursor.getColumnIndex("troopRepeatType"));
       }
       try
       {
@@ -698,7 +702,7 @@ public class TroopInfo
         this.allowMemberModifTroopName = paramCursor.getInt(paramCursor.getColumnIndex("allowMemberModifTroopName"));
         this.oldTroopName = paramCursor.getString(paramCursor.getColumnIndex("oldTroopName"));
         this.mIsFreezed = paramCursor.getInt(paramCursor.getColumnIndex("mIsFreezed"));
-        label1643:
+        label1681:
         int i = paramCursor.getColumnIndex("troopCreditLevel");
         if (i >= 0) {
           this.troopCreditLevel = paramCursor.getLong(i);
@@ -791,6 +795,10 @@ public class TroopInfo
         if (i >= 0) {
           this.isAllowHistoryMsgFlag = paramCursor.getInt(i);
         }
+        i = paramCursor.getColumnIndex("troopRepeatType");
+        if (i >= 0) {
+          this.troopRepeatType = paramCursor.getInt(i);
+        }
         if (com.tencent.TMG.utils.QLog.isColorLevel()) {
           com.tencent.TMG.utils.QLog.d("TroopInfo", 0, "fightgag._troopinfo.dwGagTimeStamp_me = " + this.dwGagTimeStamp_me + ",troopuin = " + this.troopuin);
         }
@@ -799,21 +807,21 @@ public class TroopInfo
         continue;
         bool = false;
         break label1306;
-        label2280:
+        label2343:
         bool = false;
         break label1332;
-        label2285:
+        label2348:
         bool = false;
         break label1358;
-        label2290:
+        label2353:
         bool = false;
         break label1384;
-        label2295:
+        label2358:
         bool = false;
       }
       catch (Exception localException)
       {
-        break label1643;
+        break label1681;
       }
     }
   }
@@ -844,7 +852,7 @@ public class TroopInfo
   public String getAdminShow(Context paramContext)
   {
     if (TextUtils.isEmpty(this.adminNameShow)) {
-      return paramContext.getString(2131654496);
+      return paramContext.getString(2131720392);
     }
     return this.adminNameShow;
   }
@@ -853,12 +861,12 @@ public class TroopInfo
   {
     String str = "";
     if ((this.troopPrivilegeFlag & 0x6100000) == 0L) {
-      str = paramResources.getString(2131631072);
+      str = paramResources.getString(2131696784);
     }
     while (((this.troopPrivilegeFlag & 0x2000000) != 33554432L) && ((this.troopPrivilegeFlag & 0x4000000) != 67108864L) && ((this.troopPrivilegeFlag & 0x100000) != 1048576L)) {
       return str;
     }
-    return paramResources.getString(2131631073);
+    return paramResources.getString(2131696785);
   }
   
   public String getInviteModeWording(Resources paramResources)
@@ -871,7 +879,7 @@ public class TroopInfo
       if (((i != 1) && (i != 6)) || (isOnlyTroopMemberInviteOption())) {
         break label68;
       }
-      str = paramResources.getString(2131631077);
+      str = paramResources.getString(2131696789);
     }
     label68:
     do
@@ -880,13 +888,13 @@ public class TroopInfo
       i = this.cGroupOption;
       break;
       if ((this.troopPrivilegeFlag & 0x6100000) == 0L) {
-        return paramResources.getString(2131631076);
+        return paramResources.getString(2131696788);
       }
       if ((this.troopPrivilegeFlag & 0x100000) == 1048576L) {
-        return paramResources.getString(2131631077);
+        return paramResources.getString(2131696789);
       }
     } while (((this.troopPrivilegeFlag & 0x4000000) != 67108864L) && ((this.troopPrivilegeFlag & 0x2000000) != 33554432L));
-    return paramResources.getString(2131631078);
+    return paramResources.getString(2131696790);
   }
   
   public String getLatestMemo()
@@ -957,7 +965,7 @@ public class TroopInfo
   public String getOwnerShow(Context paramContext)
   {
     if (TextUtils.isEmpty(this.ownerNameShow)) {
-      return paramContext.getString(2131654654);
+      return paramContext.getString(2131720550);
     }
     return this.ownerNameShow;
   }
@@ -1444,87 +1452,87 @@ public class TroopInfo
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 1263	atmo:prewrite	()V
-    //   4: new 1216	org/json/JSONArray
+    //   1: invokespecial 1271	aukm:prewrite	()V
+    //   4: new 1224	org/json/JSONArray
     //   7: dup
-    //   8: invokespecial 1264	org/json/JSONArray:<init>	()V
+    //   8: invokespecial 1272	org/json/JSONArray:<init>	()V
     //   11: astore_1
     //   12: aload_0
-    //   13: getfield 246	com/tencent/mobileqq/data/TroopInfo:mTroopPicList	Ljava/util/List;
-    //   16: invokeinterface 327 1 0
+    //   13: getfield 248	com/tencent/mobileqq/data/TroopInfo:mTroopPicList	Ljava/util/List;
+    //   16: invokeinterface 329 1 0
     //   21: astore_2
     //   22: aload_2
-    //   23: invokeinterface 284 1 0
+    //   23: invokeinterface 286 1 0
     //   28: ifeq +83 -> 111
     //   31: aload_2
-    //   32: invokeinterface 288 1 0
-    //   37: checkcast 329	com/tencent/mobileqq/activity/photo/TroopClipPic
+    //   32: invokeinterface 290 1 0
+    //   37: checkcast 331	com/tencent/mobileqq/activity/photo/TroopClipPic
     //   40: astore_3
     //   41: aload_3
-    //   42: getfield 1239	com/tencent/mobileqq/activity/photo/TroopClipPic:id	Ljava/lang/String;
-    //   45: invokestatic 311	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   42: getfield 1247	com/tencent/mobileqq/activity/photo/TroopClipPic:id	Ljava/lang/String;
+    //   45: invokestatic 313	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   48: ifne -26 -> 22
-    //   51: new 1227	org/json/JSONObject
+    //   51: new 1235	org/json/JSONObject
     //   54: dup
-    //   55: invokespecial 1265	org/json/JSONObject:<init>	()V
+    //   55: invokespecial 1273	org/json/JSONObject:<init>	()V
     //   58: astore 4
     //   60: aload 4
-    //   62: ldc_w 1225
+    //   62: ldc_w 1233
     //   65: aload_3
-    //   66: getfield 1239	com/tencent/mobileqq/activity/photo/TroopClipPic:id	Ljava/lang/String;
-    //   69: invokevirtual 1268	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   66: getfield 1247	com/tencent/mobileqq/activity/photo/TroopClipPic:id	Ljava/lang/String;
+    //   69: invokevirtual 1276	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   72: pop
     //   73: aload_3
-    //   74: getfield 1242	com/tencent/mobileqq/activity/photo/TroopClipPic:clipInfo	Ljava/lang/String;
-    //   77: invokestatic 311	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   74: getfield 1250	com/tencent/mobileqq/activity/photo/TroopClipPic:clipInfo	Ljava/lang/String;
+    //   77: invokestatic 313	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   80: ifne +16 -> 96
     //   83: aload 4
-    //   85: ldc_w 1231
+    //   85: ldc_w 1239
     //   88: aload_3
-    //   89: getfield 1242	com/tencent/mobileqq/activity/photo/TroopClipPic:clipInfo	Ljava/lang/String;
-    //   92: invokevirtual 1268	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   89: getfield 1250	com/tencent/mobileqq/activity/photo/TroopClipPic:clipInfo	Ljava/lang/String;
+    //   92: invokevirtual 1276	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   95: pop
     //   96: aload_1
     //   97: aload 4
-    //   99: invokevirtual 1271	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   99: invokevirtual 1279	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
     //   102: pop
     //   103: goto -81 -> 22
     //   106: astore_2
     //   107: aload_2
-    //   108: invokevirtual 1243	org/json/JSONException:printStackTrace	()V
+    //   108: invokevirtual 1251	org/json/JSONException:printStackTrace	()V
     //   111: aload_0
     //   112: aload_1
-    //   113: invokevirtual 1272	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   116: putfield 255	com/tencent/mobileqq/data/TroopInfo:mTroopPicListJson	Ljava/lang/String;
-    //   119: invokestatic 692	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   113: invokevirtual 1280	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   116: putfield 257	com/tencent/mobileqq/data/TroopInfo:mTroopPicListJson	Ljava/lang/String;
+    //   119: invokestatic 694	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   122: ifeq +43 -> 165
     //   125: ldc 61
     //   127: iconst_0
-    //   128: ldc_w 1274
+    //   128: ldc_w 1282
     //   131: iconst_3
-    //   132: anewarray 1165	java/lang/Object
+    //   132: anewarray 1173	java/lang/Object
     //   135: dup
     //   136: iconst_0
     //   137: aload_0
-    //   138: getfield 864	com/tencent/mobileqq/data/TroopInfo:troopuin	Ljava/lang/String;
+    //   138: getfield 866	com/tencent/mobileqq/data/TroopInfo:troopuin	Ljava/lang/String;
     //   141: aastore
     //   142: dup
     //   143: iconst_1
     //   144: aload_0
-    //   145: getfield 818	com/tencent/mobileqq/data/TroopInfo:mTroopAvatarId	I
-    //   148: invokestatic 1075	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   145: getfield 820	com/tencent/mobileqq/data/TroopInfo:mTroopAvatarId	I
+    //   148: invokestatic 1083	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   151: aastore
     //   152: dup
     //   153: iconst_2
     //   154: aload_0
-    //   155: getfield 255	com/tencent/mobileqq/data/TroopInfo:mTroopPicListJson	Ljava/lang/String;
+    //   155: getfield 257	com/tencent/mobileqq/data/TroopInfo:mTroopPicListJson	Ljava/lang/String;
     //   158: aastore
-    //   159: invokestatic 1256	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   162: invokestatic 1259	com/tencent/TMG/utils/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   159: invokestatic 1264	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   162: invokestatic 1267	com/tencent/TMG/utils/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   165: return
     //   166: astore_2
     //   167: aload_2
-    //   168: invokevirtual 1260	java/lang/Exception:printStackTrace	()V
+    //   168: invokevirtual 1268	java/lang/Exception:printStackTrace	()V
     //   171: goto -60 -> 111
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1605,7 +1613,7 @@ public class TroopInfo
       try
       {
         group_feeds.GroupFeedsMessage localGroupFeedsMessage = (group_feeds.GroupFeedsMessage)paramGroupFeedsRecord.msg_feeds_content.get();
-        paramGroupFeedsRecord = azkm.a(String.valueOf(paramGroupFeedsRecord.uint32_feeds_type.get()), localGroupFeedsMessage.toByteArray(), true);
+        paramGroupFeedsRecord = balq.a(String.valueOf(paramGroupFeedsRecord.uint32_feeds_type.get()), localGroupFeedsMessage.toByteArray(), true);
         if (paramGroupFeedsRecord == null) {
           continue;
         }

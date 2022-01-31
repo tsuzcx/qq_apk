@@ -15,15 +15,15 @@ class MiniAppDesktop$2
   {
     if (paramInt4 != paramInt8)
     {
-      QLog.d("MiniAppDesktop", 1, "navigation bar change. rootView Height = " + MiniAppDesktop.access$200(this.this$0).getHeight() + ", mode = " + MiniAppDesktop.access$300(this.this$0));
-      MiniAppDesktop.access$400(this.this$0).checkContentViewLayoutChanged(MiniAppDesktop.access$200(this.this$0).getHeight());
-      if (MiniAppDesktop.access$300(this.this$0) == 3) {}
+      QLog.d("MiniAppDesktop", 1, "navigation bar change. rootView Height = " + MiniAppDesktop.access$100(this.this$0).getHeight() + ", mode = " + MiniAppDesktop.access$200(this.this$0));
+      MiniAppDesktop.access$300(this.this$0).checkContentViewLayoutChanged(MiniAppDesktop.access$100(this.this$0).getHeight());
+      if (MiniAppDesktop.access$200(this.this$0) == 3) {}
     }
     else
     {
       return;
     }
-    MiniAppDesktop.access$400(this.this$0).postDelayed(new MiniAppDesktop.2.1(this), 50L);
+    MiniAppDesktop.access$300(this.this$0).postDelayed(new MiniAppDesktop.2.1(this), 50L);
   }
 }
 

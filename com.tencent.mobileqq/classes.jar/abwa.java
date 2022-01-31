@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class abwa
-  extends ldc
+  implements DialogInterface.OnDismissListener
 {
-  public abwa(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public abwa(QQMapActivity paramQQMapActivity) {}
   
-  protected void a(int paramInt, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.c();
-  }
-  
-  protected void a(int paramInt, long paramLong1, long paramLong2)
-  {
-    this.a.c();
-  }
-  
-  protected void b(int paramInt, long paramLong)
-  {
-    this.a.c();
+    if ((this.a.l) && (!this.a.m) && (!this.a.k)) {
+      this.a.finish();
+    }
+    this.a.m = false;
   }
 }
 

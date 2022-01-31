@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.app;
 
-import ajgd;
-import akgo;
-import akgt;
-import bahs;
+import ajuf;
+import akva;
+import akvf;
+import bbiy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class ConfigHandler$11
   implements Runnable
 {
-  public ConfigHandler$11(ajgd paramajgd) {}
+  public ConfigHandler$11(ajuf paramajuf) {}
   
   public void run()
   {
-    Object localObject = akgo.a().a();
+    Object localObject = akva.a().a();
     if ((localObject == null) || (((UpgradeDetailWrapper)localObject).a == null)) {
       return;
     }
-    boolean bool = bahs.b();
-    int i = bahs.b();
+    boolean bool = bbiy.b();
+    int i = bbiy.b();
     int j = ((UpgradeDetailWrapper)localObject).a.a;
     if ((bool) && (j == i)) {}
     for (i = 1;; i = 0)
@@ -28,9 +28,9 @@ public class ConfigHandler$11
       if (i != 0) {
         break;
       }
-      akgo.a().a((QQAppInterface)localObject, true);
-      bahs.b(j);
-      bahs.b(true);
+      akva.a().a((QQAppInterface)localObject, true);
+      bbiy.b(j);
+      bbiy.b(true);
       return;
     }
   }

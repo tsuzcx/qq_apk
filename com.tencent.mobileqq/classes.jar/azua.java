@@ -1,35 +1,32 @@
-import org.json.JSONArray;
-import org.json.JSONException;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.Map;
+import java.util.UUID;
 
-public class azua
+class azua
+  extends xbc
 {
-  public float a;
-  public int a;
-  public String a;
-  public String b;
+  azua(aztz paramaztz) {}
   
-  public azua(aztz paramaztz, String paramString, float paramFloat)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    this.b = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public JSONArray a()
-  {
-    JSONArray localJSONArray = new JSONArray();
-    try
+    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
+    do
     {
-      localJSONArray.put(this.b);
-      localJSONArray.put(this.jdField_a_of_type_Float);
-      return localJSONArray;
-    }
-    catch (JSONException localJSONException) {}
-    return localJSONArray;
+      do
+      {
+        return;
+        paramBundle = paramBundle.getString("itemKey");
+      } while (paramBundle == null);
+      paramBundle = UUID.fromString(paramBundle);
+      paramBundle = (TroopFileTransferManager.Item)this.a.jdField_a_of_type_JavaUtilMap.get(paramBundle);
+    } while (paramBundle == null);
+    aztz.a(this.a, paramBundle, paramBoolean, paramInt1, paramInt2, paramString1, paramString2, paramString3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azua
  * JD-Core Version:    0.7.0.1
  */

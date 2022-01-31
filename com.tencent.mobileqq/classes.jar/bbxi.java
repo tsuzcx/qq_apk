@@ -1,42 +1,113 @@
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.model.GetVirtualListResult;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.vip.diy.common.DIYImageView;
 
 public class bbxi
-  implements bcjx
+  extends bhyx
 {
-  public bbxi(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bbxi(String paramString1, View paramView, @NonNull String paramString2)
+  {
+    super(paramString1, paramView);
+    if ((paramView != null) && ((paramView instanceof DIYImageView))) {
+      this.jdField_a_of_type_AndroidWidgetImageView = ((DIYImageView)paramView).a();
+    }
+    this.jdField_a_of_type_JavaLangString = paramString2;
+  }
+  
+  private ImageView.ScaleType a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return ImageView.ScaleType.CENTER_CROP;
+    }
+    if ("center_crop".equals(paramString)) {
+      return ImageView.ScaleType.CENTER_CROP;
+    }
+    if ("fit_center".equals(paramString)) {
+      return ImageView.ScaleType.FIT_CENTER;
+    }
+    return ImageView.ScaleType.CENTER_CROP;
+  }
   
   public void a()
   {
-    boolean bool = true;
-    GetVirtualListResult localGetVirtualListResult = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
-    if (localGetVirtualListResult != null)
+    super.a();
+    if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null)) {}
+    ViewGroup.LayoutParams localLayoutParams1;
+    ViewGroup.LayoutParams localLayoutParams2;
+    do
     {
-      QLog.d("OpenAuthorityFragment", 1, "getVirtualList onSuccess null != virtualResult");
-      bcjw localbcjw = this.a.jdField_a_of_type_Bcjw;
-      if (localGetVirtualListResult.a == 0) {}
-      for (;;)
-      {
-        localbcjw.a(bool, localGetVirtualListResult);
-        return;
-        bool = false;
+      return;
+      if ((this.jdField_a_of_type_AndroidViewView.getParent() != null) && ((this.jdField_a_of_type_AndroidViewView.getParent() instanceof ViewGroup))) {
+        ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).setClipChildren(false);
       }
-    }
-    QLog.d("OpenAuthorityFragment", 1, "getVirtualList onSuccess null == virtualResult");
-    this.a.jdField_a_of_type_Bcjw.a(false, null);
+      localLayoutParams1 = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams2 = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    } while ((localLayoutParams1 == null) || (localLayoutParams2 == null));
+    localLayoutParams2.width = localLayoutParams1.width;
+    localLayoutParams2.height = localLayoutParams1.height;
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams2);
   }
   
-  public void a(int paramInt, String paramString)
+  protected void a(String paramString)
   {
-    QLog.d("OpenAuthorityFragment", 1, new Object[] { "getVirtualList onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
-    this.a.jdField_a_of_type_Bcjw.a(false, null);
+    String str = paramString;
+    if (!paramString.startsWith("http")) {
+      str = this.jdField_a_of_type_JavaLangString + paramString;
+    }
+    if (!bfng.a(str)) {}
+    do
+    {
+      return;
+      paramString = URLDrawable.URLDrawableOptions.obtain();
+      if ((this.jdField_a_of_type_Int > 0) && (this.b > 0))
+      {
+        paramString.mRequestWidth = this.jdField_a_of_type_Int;
+        paramString.mRequestHeight = this.b;
+      }
+      paramString.mLoadingDrawable = aywk.a;
+      paramString.mFailedDrawable = aywk.a;
+      paramString.mPlayGifImage = false;
+      paramString = URLDrawable.getDrawable(str, paramString);
+    } while (paramString == null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    super.a(paramString1, paramString2);
+    if (!(this.jdField_a_of_type_AndroidViewView instanceof DIYImageView)) {
+      vxs.a("JsonInflateViewModel current view type illegal!", new Object[0]);
+    }
+    do
+    {
+      return;
+      if ("content".equals(paramString1))
+      {
+        a(paramString2);
+        return;
+      }
+    } while (!"scale_type".equals(paramString1));
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(a(paramString2));
+  }
+  
+  protected void b()
+  {
+    super.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbxi
  * JD-Core Version:    0.7.0.1
  */

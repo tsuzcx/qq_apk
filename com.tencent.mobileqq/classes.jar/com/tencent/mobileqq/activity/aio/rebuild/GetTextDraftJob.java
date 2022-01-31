@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import arig;
+import asei;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -12,17 +12,17 @@ import mqq.os.MqqHandler;
 public class GetTextDraftJob
   implements Runnable
 {
-  private arig jdField_a_of_type_Arig;
+  private asei jdField_a_of_type_Asei;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private WeakReference<BaseChatPie> b;
   
-  public GetTextDraftJob(MqqHandler paramMqqHandler, SessionInfo paramSessionInfo, arig paramarig, QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie)
+  public GetTextDraftJob(MqqHandler paramMqqHandler, SessionInfo paramSessionInfo, asei paramasei, QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie)
   {
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Arig = paramarig;
+    this.jdField_a_of_type_Asei = paramasei;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     this.b = new WeakReference(paramBaseChatPie);
   }
@@ -38,12 +38,12 @@ public class GetTextDraftJob
       QLog.e("Q.aio.BaseChatPie", 1, "AIO---GetTextDraftJob app == null");
       return;
     }
-    if (this.jdField_a_of_type_Arig == null)
+    if (this.jdField_a_of_type_Asei == null)
     {
       QLog.e("Q.aio.BaseChatPie", 1, "AIO---GetTextDraftJob mDraftManager == null");
       return;
     }
-    localObject = this.jdField_a_of_type_Arig.b((QQAppInterface)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    localObject = this.jdField_a_of_type_Asei.b((QQAppInterface)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
     if ((localObject != null) && (((DraftTextInfo)localObject).sourceMsgText != null))
     {
       this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new GetTextDraftJob.1(this, (DraftTextInfo)localObject), 500L);

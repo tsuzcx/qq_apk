@@ -1,6 +1,31 @@
-public abstract interface bjdx
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+
+public class bjdx
+  implements bjdz
 {
-  public abstract void a(boolean paramBoolean);
+  private File a;
+  
+  public void a()
+  {
+    try
+    {
+      bjed localbjed = (bjed)bjae.a().c(10);
+      localbjed.a(this.a);
+      localbjed.c();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("HumSongRecognizer", 2, "recognize: Failed. info: exception = ", localThrowable);
+    }
+  }
+  
+  public void a(File paramFile)
+  {
+    this.a = paramFile;
+  }
 }
 
 

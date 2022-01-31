@@ -1,38 +1,23 @@
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class asry
-  implements URLDrawableDownListener
+public class asry
+  implements View.OnClickListener
 {
-  asry(asrx paramasrx, asrz paramasrz, int paramInt) {}
+  public asry(MultiCardFragment paramMultiCardFragment) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Asrz.a(this.jdField_a_of_type_Int, false);
-    this.jdField_a_of_type_Asrz.a(this.jdField_a_of_type_Int);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if ((paramInt > 0) && (paramInt < 10000)) {
-      this.jdField_a_of_type_Asrz.b(this.jdField_a_of_type_Int, paramInt / 100);
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
     }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_Asrz.a(this.jdField_a_of_type_Int, true);
-    this.jdField_a_of_type_Asrz.a(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asry
  * JD-Core Version:    0.7.0.1
  */

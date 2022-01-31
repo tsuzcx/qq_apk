@@ -1,38 +1,70 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.2.1;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.2.2;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class baeu
-  implements ArkViewImplement.LoadCallback
+  extends ampb<baev>
 {
-  baeu(baes parambaes) {}
-  
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public static baev a()
   {
-    onLoadState(paramInt1);
+    baev localbaev = (baev)ampm.a().a(547);
+    if (QLog.isColorLevel()) {
+      QLog.d("TDCRecomTroopConfigProcessor", 2, "getConfigBean configBean = " + localbaev);
+    }
+    return localbaev;
   }
   
-  public void onLoadState(int paramInt)
+  public int a()
   {
-    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.1(this, paramInt));
-    if (paramInt == 0) {}
-    do
-    {
-      return;
-      baes.a(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQCustomArkDialog", 2, new Object[] { "arkView init finish,load state = ", Integer.valueOf(paramInt), ";outsideShowDialog = ", Boolean.valueOf(baes.a(this.a)), ";alreadyShowDialog:", Boolean.valueOf(baes.b(this.a)) });
-      }
-    } while (!baes.a(this.a));
-    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.2(this));
+    return 547;
+  }
+  
+  @NonNull
+  public baev a(int paramInt)
+  {
+    return new baev();
+  }
+  
+  @Nullable
+  public baev a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi == null) || (paramArrayOfampi.length == 0)) {
+      return null;
+    }
+    paramArrayOfampi = paramArrayOfampi[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("TDCRecomTroopConfigProcessor", 2, " onParsed,configID:547, content:" + paramArrayOfampi);
+    }
+    return baev.a(paramArrayOfampi);
+  }
+  
+  public Class<baev> a()
+  {
+    return baev.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(baev parambaev) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baeu
  * JD-Core Version:    0.7.0.1
  */

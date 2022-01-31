@@ -1,9 +1,24 @@
-import com.tencent.mobileqq.app.utils.NumberWheelView;
-import com.tencent.widget.VerticalGallery;
+import org.xmlpull.v1.XmlSerializer;
 
-public abstract interface akht
+final class akht
+  extends axwq
 {
-  public abstract void a(NumberWheelView paramNumberWheelView, VerticalGallery paramVerticalGallery);
+  akht(String paramString)
+  {
+    super(paramString);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "picture");
+    if (this.S == null) {}
+    for (String str = "";; str = this.S)
+    {
+      paramXmlSerializer.attribute(null, "cover", str);
+      paramXmlSerializer.endTag(null, "picture");
+      return;
+    }
+  }
 }
 
 

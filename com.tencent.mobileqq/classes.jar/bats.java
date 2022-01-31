@@ -1,10 +1,22 @@
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.troopreward.OrientationAdapterImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class bats
+public class bats
+  extends Handler
 {
-  public void a(long paramLong, int paramInt, Bundle paramBundle) {}
+  public bats(OrientationAdapterImageView paramOrientationAdapterImageView) {}
   
-  public void a(Bundle paramBundle) {}
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.a.invalidate();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("OrientationAdapterImageView", 2, "handleMessage:" + this.a.jdField_a_of_type_Int + "," + this.a.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+  }
 }
 
 

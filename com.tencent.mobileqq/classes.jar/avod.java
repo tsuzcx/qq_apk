@@ -1,49 +1,55 @@
 import android.view.View;
-import java.util.List;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class avod
-  implements avom
+  implements URLDrawableDownListener
 {
-  public static final String a;
-  private final List<avon> a;
-  private final String b;
+  public avod(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  static
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    jdField_a_of_type_JavaLangString = ajjy.a(2131639597);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadCancelled: ");
+    }
   }
   
-  public avod(List<avon> paramList, String paramString)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadFailed: ");
+    }
+    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
   }
   
-  public int a()
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    return 2147483647;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadInterrupted: ");
+    }
   }
   
-  public String a()
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    return jdField_a_of_type_JavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadProgressed: " + paramURLDrawable + " / " + paramInt);
+    }
+    ReceiptMessageDetailFragment.a(this.a).setLevel(paramInt);
   }
   
-  public List<avon> a()
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView) {}
-  
-  public String b()
-  {
-    return this.b;
+    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
+    ReceiptMessageDetailFragment.a(this.a, paramURLDrawable);
+    ReceiptMessageDetailFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avod
  * JD-Core Version:    0.7.0.1
  */

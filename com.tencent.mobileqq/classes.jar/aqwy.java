@@ -1,78 +1,73 @@
-import android.graphics.Paint.Align;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import QC.FontInfo;
+import QC.FontRecommendRsp;
+import QC.ItemBase;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aqwy
+  implements aqwv<FontRecommendRsp>
 {
-  public int a;
-  public Paint.Align a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g;
-  public boolean g;
-  public int h;
-  public boolean h;
-  
-  public aqwy()
+  public int a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_f_of_type_Boolean = true;
+    return 3;
   }
   
-  public void a(int paramInt, String paramString)
+  public String a(Context paramContext)
   {
-    this.jdField_e_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    return bbpp.a(paramContext, "font", "mvip.gexinghua.mobile.font.client_tab_store");
   }
   
-  public boolean a()
+  public String a(FontBubble paramFontBubble)
   {
-    return (this.jdField_e_of_type_Int == this.jdField_f_of_type_Int) && (TextUtils.equals(this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString)) && (this.jdField_e_of_type_Int != 0) && (this.jdField_b_of_type_JavaLangString != null);
+    return bbpp.a("fontPreview").replace("[id]", Integer.toString(paramFontBubble.fontId));
   }
   
-  public boolean a(int paramInt, String paramString)
+  public List<FontBubble> a(QQAppInterface paramQQAppInterface, FontRecommendRsp paramFontRecommendRsp)
   {
-    return (paramInt == this.jdField_e_of_type_Int) && (TextUtils.equals(paramString, this.jdField_b_of_type_JavaLangString)) && (paramInt != 0) && (paramString != null);
+    int j = ((akfw)paramQQAppInterface.a(13)).b();
+    paramQQAppInterface = new ArrayList();
+    if (paramFontRecommendRsp.vItems != null)
+    {
+      paramFontRecommendRsp = paramFontRecommendRsp.vItems.iterator();
+      if (paramFontRecommendRsp.hasNext())
+      {
+        FontInfo localFontInfo = (FontInfo)paramFontRecommendRsp.next();
+        FontBubble localFontBubble = new FontBubble();
+        localFontBubble.viewType = 1;
+        localFontBubble.fontId = localFontInfo.item.itemId;
+        if (localFontInfo.linkBubbleID > 0) {}
+        for (int i = localFontInfo.linkBubbleID;; i = j)
+        {
+          localFontBubble.bubbleId = i;
+          localFontBubble.name = localFontInfo.name;
+          localFontBubble.engine = localFontInfo.engine;
+          localFontBubble.feeType = localFontInfo.feeType;
+          localFontBubble.payUrl = localFontInfo.payUrl;
+          localFontBubble.title = localFontInfo.title;
+          localFontBubble.msg = localFontInfo.msg;
+          localFontBubble.btn = localFontInfo.btn;
+          localFontBubble.picUrl = localFontInfo.strPicUrl;
+          localFontBubble.panelType = 3;
+          paramQQAppInterface.add(localFontBubble);
+          break;
+        }
+      }
+    }
+    return paramQQAppInterface;
   }
   
-  public void b(int paramInt, String paramString)
+  public void a(akfw paramakfw)
   {
-    this.jdField_f_of_type_Int = paramInt;
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean b(int paramInt, String paramString)
-  {
-    return (paramInt == this.jdField_f_of_type_Int) && (TextUtils.equals(paramString, this.jdField_c_of_type_JavaLangString)) && (paramInt != 0) && (paramString != null);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("FloatParams[\niconCenterX:").append(this.jdField_a_of_type_Int).append("\niconCenterY:").append(this.jdField_b_of_type_Int).append("\nalignRight:").append(this.jdField_a_of_type_Boolean).append("\nuserClosed:").append(this.jdField_b_of_type_Boolean).append("\nalbumUrl:").append(this.jdField_a_of_type_JavaLangString).append("\nshowIcon:").append(this.jdField_c_of_type_Boolean).append("\nisForeground:").append(this.jdField_f_of_type_Boolean).append("\ntmpGoneForSomePage:").append(this.g).append("\ncurrentListenType:").append(this.jdField_e_of_type_Int).append("\ncurrentListenUin:").append(this.jdField_b_of_type_JavaLangString).append("\ncurrentAIOType:").append(this.jdField_f_of_type_Int).append("\ncurrentAIOUin:").append(this.jdField_c_of_type_JavaLangString).append("\ntextNeedCenter:").append(this.jdField_e_of_type_Boolean).append("\nshowIconValueChanged:").append(this.jdField_d_of_type_Boolean).append("\n]");
-    return localStringBuilder.toString();
+    paramakfw.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqwy
  * JD-Core Version:    0.7.0.1
  */

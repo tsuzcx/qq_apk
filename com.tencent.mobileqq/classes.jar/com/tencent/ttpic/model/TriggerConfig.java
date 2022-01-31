@@ -6,8 +6,10 @@ import com.tencent.ttpic.openapi.model.FaceItem;
 import com.tencent.ttpic.openapi.model.FaceStyleItem;
 import com.tencent.ttpic.openapi.model.NodeItemJava;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.StickerItem.TriggerArea;
 import com.tencent.ttpic.openapi.model.StickerItem.ValueRange;
 import com.tencent.ttpic.openapi.model.cosfun.CosFun.CosFunItem;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,6 +18,7 @@ public class TriggerConfig
 {
   public final int BODY_TRIGGER_ANGLE_TOLERANCE = 15;
   public int activateTriggerCount;
+  public int activateTriggerCountOnce;
   public int activateTriggerTotalCount;
   public boolean alwaysTriggered;
   public boolean audioNeedAdjust;
@@ -36,8 +39,10 @@ public class TriggerConfig
   public int randomGroupNum;
   public boolean renderForBitmap;
   private StickerItem stickerItem;
+  public ArrayList<StickerItem.TriggerArea> triggerArea;
   public int triggerFrameDurationTime;
   public int triggerFrameStartTime;
+  public int triggerHandPoint;
   private String triggerType;
   private Pattern triggerWordsPattern;
   
@@ -111,6 +116,9 @@ public class TriggerConfig
     this.hotAreaStartFrame = paramStickerItem.redPacketStartFrame;
     this.hotAreaEndFrame = paramStickerItem.redPacketEndFrame;
     this.hotArea = paramStickerItem.hotArea;
+    this.triggerArea = paramStickerItem.triggerArea;
+    this.triggerHandPoint = paramStickerItem.triggerHandPoint;
+    this.activateTriggerCountOnce = paramStickerItem.activateTriggerCountOnce;
     this.stickerItem = paramStickerItem;
   }
   
@@ -140,6 +148,11 @@ public class TriggerConfig
       return 270;
     }
     return 315;
+  }
+  
+  public StickerItem getStickerItem()
+  {
+    return this.stickerItem;
   }
   
   public String getStickerItemId()

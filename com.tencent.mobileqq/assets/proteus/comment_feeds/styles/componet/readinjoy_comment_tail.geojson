@@ -17,7 +17,7 @@
             "event_type": "cmd_comment_dot_click",
             "view_id": "id_comment_tail_3_dot",
             "align_parent_right":"YES",
-            "margin_right":"18",
+            "margin_right":"16",
             "height": {
                 "type": "relative",
                 "value": "18"
@@ -158,7 +158,6 @@
                         ]
                     }
                 }
-
             ]
         }
     ]

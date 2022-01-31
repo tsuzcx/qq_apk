@@ -1,23 +1,53 @@
-import java.util.Formatter;
+import android.app.Activity;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnControllerClickListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import java.lang.ref.WeakReference;
 
-public final class beob
-  implements beoc
+public class beob
+  implements VideoPlayerProxy.OnControllerClickListener
 {
-  final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  final Formatter jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder);
-  final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[1];
+  public beob(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public String a(int paramInt)
+  public void onAttationClick(VideoPlayerProxy paramVideoPlayerProxy) {}
+  
+  public void onBackClick(VideoPlayerProxy paramVideoPlayerProxy)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangObject[0] = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
-    this.jdField_a_of_type_JavaUtilFormatter.format("%02d", this.jdField_a_of_type_ArrayOfJavaLangObject);
-    return this.jdField_a_of_type_JavaUtilFormatter.toString();
+    besl.a("MiniAppVideoPlayer", "video player onBackClick");
+    if ((Activity)this.a.a.get() == null) {}
+    while (!this.a.c) {
+      return;
+    }
+    this.a.g();
+  }
+  
+  public void onBackOnFullScreenClick(VideoPlayerProxy paramVideoPlayerProxy)
+  {
+    besl.a("MiniAppVideoPlayer", "video player onBackOnFullScreenClick");
+    if ((Activity)this.a.a.get() == null) {}
+    while (!this.a.c) {
+      return;
+    }
+    this.a.g();
+  }
+  
+  public void onCacheClick(VideoPlayerProxy paramVideoPlayerProxy) {}
+  
+  public void onFeedbackClick(VideoPlayerProxy paramVideoPlayerProxy) {}
+  
+  public void onFullScreenClick(VideoPlayerProxy paramVideoPlayerProxy)
+  {
+    if (this.a.c)
+    {
+      this.a.g();
+      return;
+    }
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beob
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.BaseVMPeakActivity;
-import dov.com.qq.im.giftext.fragment.AEGIFChunkPreviewFragment.2.1;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
 
-public class bhti
-  implements biao
+class bhti
+  implements View.OnClickListener
 {
-  bhti(bhtg parambhtg) {}
+  bhti(bhth parambhth) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    QLog.e("AEGIFChunkPreviewFragment", 4, "pngsCreateWorkingQueueCompleteGIF index: " + paramInt);
-    if (paramInt == 0) {
-      bhtg.a(this.a, paramString);
+    if ((this.a.mRuntime.a() != null) && (this.a.mRuntime.a() != null))
+    {
+      paramView = bgyc.a("qzone", String.valueOf(1), this.a.mRuntime.a().getAccount(), this.a.mRuntime.a().getAccount());
+      this.a.mRuntime.a().loadUrl(paramView);
     }
-    ((bhsf)bhtg.b(this.a).get(paramInt)).c = paramString;
-    ((bhsf)bhtg.b(this.a).get(paramInt)).a = 13;
-    bhtg.a(this.a).runOnUiThread(new AEGIFChunkPreviewFragment.2.1(this, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhti
  * JD-Core Version:    0.7.0.1
  */

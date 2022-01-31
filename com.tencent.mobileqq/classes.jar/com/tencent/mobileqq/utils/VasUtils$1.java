@@ -3,7 +3,7 @@ package com.tencent.mobileqq.utils;
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import bbmy;
+import bcpw;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatFragment;
 
@@ -21,7 +21,7 @@ public final class VasUtils$1
       {
         localFragmentActivity.getChatFragment().a().aa();
         if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          bbmy.a(this.jdField_a_of_type_AndroidContentContext, 0, this.jdField_a_of_type_JavaLangString, 0).a();
+          bcpw.a(this.jdField_a_of_type_AndroidContentContext, 0, this.jdField_a_of_type_JavaLangString, 0).a();
         }
       }
     }

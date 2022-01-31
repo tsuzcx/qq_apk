@@ -1,21 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
-import android.widget.ImageView;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class tmk
-  implements ValueAnimator.AnimatorUpdateListener
+public class tmk
+  extends syp
 {
-  tmk(tmj paramtmj) {}
+  public List<CommentEntry> a = new ArrayList();
+  public int b;
+  public String c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public tmk(qqstory_service.RspFeedCommentList paramRspFeedCommentList)
   {
-    if (Build.VERSION.SDK_INT >= 16)
+    super(paramRspFeedCommentList.result, paramRspFeedCommentList.feed_comment_info.is_end, paramRspFeedCommentList.feed_comment_info.next_cookie);
+    this.c = paramRspFeedCommentList.feed_comment_info.feed_id.get().toStringUtf8();
+    this.b = paramRspFeedCommentList.feed_comment_info.comment_total_num.get();
+    paramRspFeedCommentList = paramRspFeedCommentList.feed_comment_info.comment_list.get().iterator();
+    while (paramRspFeedCommentList.hasNext())
     {
-      this.a.a.setImageAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-      return;
+      CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)paramRspFeedCommentList.next());
+      localCommentEntry.feedId = this.c;
+      this.a.add(localCommentEntry);
     }
-    this.a.a.setImageResource(2130849314);
   }
 }
 

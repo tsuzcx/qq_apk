@@ -1,37 +1,44 @@
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
-import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qidian.proto.mobileqq_qidian.CompanyShowCaseInfo;
 
-class bduz
-  extends WebChromeClient
+public class bduz
 {
-  bduz(bdux parambdux) {}
+  public String a = "";
+  public String b = "";
+  public String c = "";
   
-  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  public bduz() {}
+  
+  public bduz(mobileqq_qidian.CompanyShowCaseInfo paramCompanyShowCaseInfo)
   {
-    if (paramConsoleMessage != null)
-    {
-      if (paramConsoleMessage.messageLevel() != ConsoleMessage.MessageLevel.ERROR) {
-        break label135;
-      }
-      bdnw.d("TAG_CHROMIUM", "PageWebView: " + paramConsoleMessage.message() + " line:" + paramConsoleMessage.lineNumber() + "  page:" + bdux.a(this.a));
-      bdsu.a(paramConsoleMessage.lineNumber() + ": " + paramConsoleMessage.message(), bdux.a(this.a).a(), bdux.a(this.a));
+    a(paramCompanyShowCaseInfo);
+  }
+  
+  public mobileqq_qidian.CompanyShowCaseInfo a()
+  {
+    mobileqq_qidian.CompanyShowCaseInfo localCompanyShowCaseInfo = new mobileqq_qidian.CompanyShowCaseInfo();
+    localCompanyShowCaseInfo.string_show_case_title.set(this.a);
+    localCompanyShowCaseInfo.string_show_case_link.set(this.b);
+    localCompanyShowCaseInfo.string_show_case_image.set(this.c);
+    return localCompanyShowCaseInfo;
+  }
+  
+  public void a(mobileqq_qidian.CompanyShowCaseInfo paramCompanyShowCaseInfo)
+  {
+    if (paramCompanyShowCaseInfo.string_show_case_title.has()) {
+      this.a = paramCompanyShowCaseInfo.string_show_case_title.get();
     }
-    for (;;)
-    {
-      return super.onConsoleMessage(paramConsoleMessage);
-      label135:
-      if (paramConsoleMessage.messageLevel() == ConsoleMessage.MessageLevel.WARNING) {
-        bdnw.c("TAG_CHROMIUM", "PageWebView: " + paramConsoleMessage.message() + " line:" + paramConsoleMessage.lineNumber() + "  page:" + bdux.a(this.a));
-      } else {
-        bdnw.b("TAG_CHROMIUM", "PageWebView: " + paramConsoleMessage.message());
-      }
+    if (paramCompanyShowCaseInfo.string_show_case_link.has()) {
+      this.b = paramCompanyShowCaseInfo.string_show_case_link.get();
+    }
+    if (paramCompanyShowCaseInfo.string_show_case_image.has()) {
+      this.c = paramCompanyShowCaseInfo.string_show_case_image.get();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bduz
  * JD-Core Version:    0.7.0.1
  */

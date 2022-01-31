@@ -1,39 +1,21 @@
-public class nro
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.SingleLineTextView;
+
+class nro
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
+  String jdField_a_of_type_JavaLangString;
+  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
+  SingleLineTextView b;
   
-  public nro(float paramFloat1, float paramFloat2)
-  {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-  }
-  
-  public nro(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-  }
-  
-  public nro(nro paramnro)
-  {
-    this.a = paramnro.a;
-    this.b = paramnro.b;
-  }
-  
-  public void a(nro paramnro)
-  {
-    float f = this.a;
-    this.a = paramnro.a;
-    paramnro.a = f;
-    f = this.b;
-    this.b = paramnro.b;
-    paramnro.b = f;
-  }
+  nro(nrm paramnrm) {}
 }
 
 

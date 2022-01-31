@@ -1,59 +1,100 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public abstract class atrd
-  extends alzl<atrf>
+class atrd
+  implements bfoq
 {
-  public int a()
-  {
-    return c();
-  }
+  atrd(atrc paramatrc, bfol parambfol) {}
   
-  @NonNull
-  public atrf a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new atrf();
-  }
-  
-  @Nullable
-  public atrf a(alzs[] paramArrayOfalzs)
-  {
-    atrf localatrf = new atrf();
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0) && (paramArrayOfalzs[0] != null)) {
-      atrf.a(localatrf, paramArrayOfalzs[0].a);
+    switch (paramInt)
+    {
+    default: 
+      if (this.jdField_a_of_type_Bfol != null) {
+        this.jdField_a_of_type_Bfol.dismiss();
+      }
+      return;
     }
-    return localatrf;
-  }
-  
-  public Class<atrf> a()
-  {
-    return atrf.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(atrf paramatrf) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  abstract int c();
-  
-  public boolean c()
-  {
-    return true;
+    this.jdField_a_of_type_Atrc.a.f = true;
+    Object localObject1 = this.jdField_a_of_type_Atrc.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
+    paramView = (View)localObject1;
+    if (bbjw.a((String)localObject1))
+    {
+      paramView = (View)localObject1;
+      if (atqu.a(this.jdField_a_of_type_Atrc.a) != null) {
+        paramView = atqu.a(this.jdField_a_of_type_Atrc.a).uin;
+      }
+    }
+    if (bbjw.a(paramView)) {
+      paramView = "0";
+    }
+    for (;;)
+    {
+      long l;
+      if (this.jdField_a_of_type_Atrc.a.a.jdField_a_of_type_Long == 0L) {
+        if (atqu.a(this.jdField_a_of_type_Atrc.a) != null)
+        {
+          l = atqu.a(this.jdField_a_of_type_Atrc.a).tinyId;
+          label160:
+          if ((!"0".equals(paramView)) || (l != 0L))
+          {
+            Object localObject2 = null;
+            paramInt = 20003;
+            localObject1 = null;
+            if (this.jdField_a_of_type_Atrc.a.a.app != null) {
+              localObject1 = this.jdField_a_of_type_Atrc.a.a.app.a(false);
+            }
+            if (((localObject1 == null) || (!((HotChatManager)localObject1).b(this.jdField_a_of_type_Atrc.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.d))) && (this.jdField_a_of_type_Atrc.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h != 33) && (this.jdField_a_of_type_Atrc.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h != 4))
+            {
+              localObject1 = localObject2;
+              if (this.jdField_a_of_type_Atrc.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h != 31) {}
+            }
+            else
+            {
+              paramInt = 20012;
+              localObject1 = this.jdField_a_of_type_Atrc.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.d;
+            }
+            xkq.a(this.jdField_a_of_type_Atrc.a.a, this.jdField_a_of_type_Atrc.a.a.jdField_a_of_type_Long, paramView, (String)localObject1, paramInt, "", this.jdField_a_of_type_Atrc.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_AndroidOsBundle);
+          }
+          axqw.b(this.jdField_a_of_type_Atrc.a.a.app, "CliOper", "", "", "0X8004828", "0X8004828", 0, 0, "", "", "", "");
+          if ((atqu.a(this.jdField_a_of_type_Atrc.a) != null) && (atqu.a(this.jdField_a_of_type_Atrc.a).iIsGodFlag == 1))
+          {
+            if (atqu.a(this.jdField_a_of_type_Atrc.a).gender != 0) {
+              break label622;
+            }
+            axqw.b(this.jdField_a_of_type_Atrc.a.a.app, "CliOper", "", "", "0X800528E", "0X800528E", 0, 0, "", "", "", "");
+          }
+        }
+      }
+      for (;;)
+      {
+        axqw.b(this.jdField_a_of_type_Atrc.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_report", 0, 0, "", "", "", "");
+        if (!ProfileActivity.c(this.jdField_a_of_type_Atrc.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h)) {
+          break;
+        }
+        axqw.b(this.jdField_a_of_type_Atrc.a.a.app, "CliOper", "", "", "0X800523E", "0X800523E", 0, 0, "", "", "", "");
+        break;
+        l = 0L;
+        break label160;
+        l = this.jdField_a_of_type_Atrc.a.a.jdField_a_of_type_Long;
+        break label160;
+        label622:
+        if (atqu.a(this.jdField_a_of_type_Atrc.a).gender == 1) {
+          axqw.b(this.jdField_a_of_type_Atrc.a.a.app, "CliOper", "", "", "0X800528F", "0X800528F", 0, 0, "", "", "", "");
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atrd
  * JD-Core Version:    0.7.0.1
  */

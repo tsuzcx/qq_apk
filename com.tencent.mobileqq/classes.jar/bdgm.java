@@ -1,17 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.appstore.component.CommonTitleBar;
 
-final class bdgm
-  extends AnimatorListenerAdapter
+public class bdgm
+  implements View.OnClickListener
 {
-  public void onAnimationEnd(Animator paramAnimator)
+  public bdgm(CommonTitleBar paramCommonTitleBar) {}
+  
+  public void onClick(View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
+    if (CommonTitleBar.a(this.a) != null) {
+      CommonTitleBar.a(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdgm
  * JD-Core Version:    0.7.0.1
  */

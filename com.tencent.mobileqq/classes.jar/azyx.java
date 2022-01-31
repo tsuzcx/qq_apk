@@ -1,40 +1,25 @@
-import android.annotation.TargetApi;
-import android.app.ActivityManager;
-import android.content.Context;
-import android.graphics.Paint;
-import android.os.PowerManager;
-import android.view.View;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-@Deprecated
 public class azyx
+  implements bcjx
 {
-  public static int a(Context paramContext)
-  {
-    return ((ActivityManager)paramContext.getSystemService("activity")).getMemoryClass();
-  }
+  public azyx(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  @TargetApi(11)
-  public static void a(View paramView, int paramInt, Paint paramPaint)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    if (befo.e()) {
-      paramView.setLayerType(paramInt, paramPaint);
-    }
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    try
-    {
-      boolean bool = ((PowerManager)paramContext.getSystemService("power")).isScreenOn();
-      return bool;
-    }
-    catch (Exception paramContext) {}
-    return false;
+    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azyx
  * JD-Core Version:    0.7.0.1
  */

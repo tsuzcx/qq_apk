@@ -1,36 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.dataline.mpfile.MpfileTaskInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 public final class dh
-  implements Parcelable.Creator<MpfileTaskInfo>
+  implements DialogInterface.OnClickListener
 {
-  public MpfileTaskInfo a(Parcel paramParcel)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MpfileTaskInfo localMpfileTaskInfo = new MpfileTaskInfo();
-    localMpfileTaskInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localMpfileTaskInfo.jdField_g_of_type_Int = paramParcel.readInt();
-    localMpfileTaskInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.h = paramParcel.readString();
-    localMpfileTaskInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_d_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_e_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_f_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_g_of_type_Long = paramParcel.readLong();
-    return localMpfileTaskInfo;
-  }
-  
-  public MpfileTaskInfo[] a(int paramInt)
-  {
-    return new MpfileTaskInfo[paramInt];
+    paramDialogInterface.dismiss();
   }
 }
 

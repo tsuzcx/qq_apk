@@ -1,15 +1,22 @@
-public class pqx
+import android.widget.PopupWindow.OnDismissListener;
+
+class pqx
+  implements PopupWindow.OnDismissListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
+  pqx(pqt parampqt, bfsi parambfsi) {}
   
-  public pqx(String paramString)
+  public void onDismiss()
   {
-    this.d = paramString;
+    this.jdField_a_of_type_Bfsi.a(1.0F);
+    if (this.jdField_a_of_type_Pqt.a.b)
+    {
+      qtu localqtu = this.jdField_a_of_type_Pqt.a.a();
+      if (localqtu != null)
+      {
+        localqtu.c();
+        this.jdField_a_of_type_Pqt.a.b = false;
+      }
+    }
   }
 }
 

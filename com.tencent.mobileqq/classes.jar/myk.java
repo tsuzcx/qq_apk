@@ -1,71 +1,48 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.widget.TextView;
 
 class myk
-  implements INetInfoHandler
+  implements Handler.Callback
 {
-  myh a;
+  myk(myj parammyj) {}
   
-  public myk(myh parammyh1, myh parammyh2)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a = parammyh2;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onNetMobile2None()
-  {
-    myh.c("onNetMobile2None");
-    if (this.a != null) {
-      myh.b(this.a);
+    int i;
+    if (paramMessage.what == 291) {
+      switch (this.a.jdField_a_of_type_Int)
+      {
+      default: 
+        i = 0;
+      }
     }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    myh.c("onNetMobile2Wifi");
-    if (this.a != null) {
-      myh.b(this.a);
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    myh.c("onNetNone2Mobile");
-    if (this.a != null) {
-      myh.b(this.a);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    myh.c("onNetNone2Wifi");
-    if (this.a != null) {
-      myh.b(this.a);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    myh.c("onNetWifi2Mobile");
-    if (this.a != null) {
-      myh.b(this.a);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    myh.c("onNetWifi2None");
-    if (this.a != null) {
-      myh.b(this.a);
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(i));
+      paramMessage = this.a;
+      paramMessage.jdField_a_of_type_Int += 1;
+      if (this.a.jdField_a_of_type_Int == 4) {
+        this.a.jdField_a_of_type_Int = 0;
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(291, 1000L);
+      return false;
+      i = 2131696355;
+      continue;
+      i = 2131696356;
+      continue;
+      i = 2131696357;
+      continue;
+      i = 2131696358;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     myk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.biz.TroopRedpoint;
 
-import ajed;
+import ajsf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.dating.MsgBoxListActivity;
 import com.tencent.qphone.base.util.QLog;
-import mmy;
+import mxx;
 
 public class TroopRedTouchManager$1
   implements Runnable
 {
-  public TroopRedTouchManager$1(mmy parammmy, QQAppInterface paramQQAppInterface) {}
+  public TroopRedTouchManager$1(mxx parammxx, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.this$0.a = MsgBoxListActivity.a(this.a, ajed.I);
+    this.this$0.a = MsgBoxListActivity.a(this.a, ajsf.I);
     if (QLog.isColorLevel()) {
       QLog.d("nearby.redpoint", 2, "asyn nearbyMsgBoxUnReadNum=" + this.this$0.a);
     }

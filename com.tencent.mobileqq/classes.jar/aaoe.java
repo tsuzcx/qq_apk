@@ -1,25 +1,45 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-class aaoe
-  extends ajkn
+final class aaoe
+  implements auoo
 {
-  aaoe(aaod paramaaod, BaseActivity paramBaseActivity) {}
+  aaoe(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.removeObserver(this);
-    if (paramBoolean)
+    return null;
+  }
+  
+  public void a(auop paramauop) {}
+  
+  public void b(auop paramauop)
+  {
+    try
     {
-      if ((this.jdField_a_of_type_Aaod.a != null) && (this.jdField_a_of_type_Aaod.a.isShowing())) {
-        this.jdField_a_of_type_Aaod.a.dismiss();
+      if (paramauop.jdField_a_of_type_Int == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.resIDForLongMsg = paramauop.c;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, null, false);
+        return;
       }
-      bbmy.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, ajjy.a(2131636808), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, result.errStr=" + paramauop.b + ",result.errStr=" + paramauop.jdField_a_of_type_JavaLangString);
+      }
+      asts.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
       return;
     }
-    if ((this.jdField_a_of_type_Aaod.a != null) && (this.jdField_a_of_type_Aaod.a.isShowing())) {
-      this.jdField_a_of_type_Aaod.a.dismiss();
+    catch (Exception paramauop)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, catch exception", paramauop);
+      }
+      asts.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
     }
-    bbmy.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, ajjy.a(2131636809), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
   }
 }
 

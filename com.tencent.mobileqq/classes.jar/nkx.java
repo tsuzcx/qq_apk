@@ -1,29 +1,43 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.16.1;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class nkx
-  extends ohe
+class nkx
+  extends nky
 {
-  public nkx(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  nkx(nkw paramnkw) {}
   
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(View paramView)
+  protected void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "onComponentLastReadShow");
+    if ((paramBoolean) && (paramList != null) && (!paramList.isEmpty()))
+    {
+      paramList = (EncryptUinInfo)paramList.get(0);
+      if ((paramList.jdField_a_of_type_Int != 0) || (paramList.jdField_a_of_type_Long != this.a.mApp.getLongAccountUin()) || (TextUtils.isEmpty(paramList.jdField_a_of_type_JavaLangString))) {
+        break label113;
+      }
+      nkw.a(this.a, paramList.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: " + nkw.a(this.a));
+      }
     }
-    this.a.runOnUiThread(new ReadInJoyNewFeedsActivity.16.1(this));
+    label113:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: failed，code=" + paramList.jdField_a_of_type_Int);
   }
   
-  public void b(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.f(paramInt);
+    if (paramInt == 1)
+    {
+      super.onUpdate(paramInt, paramBoolean, paramObject);
+      this.a.mApp.removeObserver(nkw.a(this.a));
+    }
   }
-  
-  public void c(int paramInt) {}
 }
 
 

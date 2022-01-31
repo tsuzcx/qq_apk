@@ -1,31 +1,61 @@
-import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class amxc
-  extends loi
+  extends ampb<amxf>
 {
-  public static int a(Context paramContext, String paramString)
+  public static amxf a()
   {
-    return a(paramContext, "TencentDocGrayTips_ShowTimes_" + paramString, 0);
+    return (amxf)ampm.a().a(497);
   }
   
-  public static long a(Context paramContext, String paramString)
+  public int a()
   {
-    return a(paramContext, "TencentDocGrayTips_LastShowTime_" + paramString, 0L);
+    return 497;
   }
   
-  public static void b(Context paramContext, String paramString, int paramInt)
+  @NonNull
+  public amxf a(int paramInt)
   {
-    a(paramContext, "TencentDocGrayTips_ShowTimes_" + paramString, paramInt);
+    return new amxf();
   }
   
-  public static void b(Context paramContext, String paramString, long paramLong)
+  @Nullable
+  public amxf a(ampi[] paramArrayOfampi)
   {
-    a(paramContext, "TencentDocGrayTips_LastShowTime_" + paramString, paramLong);
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
+      return amxf.a(paramArrayOfampi);
+    }
+    return null;
+  }
+  
+  public Class<amxf> a()
+  {
+    return amxf.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amxf paramamxf) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amxc
  * JD-Core Version:    0.7.0.1
  */

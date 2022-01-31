@@ -4,23 +4,23 @@ import NS_MOBILE_MAIN_PAGE.PhotoWall;
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
 import android.os.Parcel;
 import android.text.TextUtils;
-import atmo;
-import atnz;
-import atoc;
+import aukm;
+import aulx;
+import auma;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class QZonePhotoWall
-  extends atmo
+  extends aukm
 {
   public String attachInfo;
-  @atnz
+  @aulx
   public int curListSize;
   public int hasMore;
   public int totalPic;
-  @atoc
+  @auma
   public String uin;
   public byte[] vPhotoIds;
   public byte[] vPhotoTimes;

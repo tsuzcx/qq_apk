@@ -1,21 +1,23 @@
-import android.support.v7.widget.StaggeredGridLayoutManager.ExceptionListener;
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aqfe
-  implements StaggeredGridLayoutManager.ExceptionListener
+class aqfe
+  implements DialogInterface.OnClickListener
 {
-  public aqfe(HotPicPageView paramHotPicPageView) {}
+  aqfe(aqfb paramaqfb) {}
   
-  public void onGetPositionErr(View paramView, boolean paramBoolean, int paramInt, Exception paramException)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.e("HotPicManagerHotPicPageView", 1, "onGetPositionErr 1  final p:" + paramInt + " rescue:" + paramBoolean + " v:" + paramView + " error: " + paramException);
+    if (this.a.c) {
+      bded.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "51", "0", false);
+    }
+    aqeq.a(this.a.jdField_a_of_type_AndroidAppActivity, true, "addToQQFavorites", this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqfe
  * JD-Core Version:    0.7.0.1
  */

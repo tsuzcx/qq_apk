@@ -2,6 +2,8 @@ package com.tencent.viola.ui.dom;
 
 import android.text.TextUtils;
 import com.tencent.viola.ui.dom.style.FlexConvertUtils;
+import com.tencent.viola.utils.ViolaUtils;
+import java.util.ArrayList;
 import org.json.JSONObject;
 
 public class DomObjectWaterfallList
@@ -36,6 +38,19 @@ public class DomObjectWaterfallList
   public int getLineSpacing()
   {
     return this.mLineSpacing;
+  }
+  
+  public void layoutAfter()
+  {
+    super.layoutAfter();
+    float f1 = ViolaUtils.getListContentWidth(this);
+    float f2 = ViolaUtils.getListContentHeight(this);
+    if (((this.mLastLayoutWidth != f1) || (this.mLastLayoutHeight != f2)) && (getEvents().contains("contentSizeChanged")))
+    {
+      ViolaUtils.fireContentSizeChange(this, f1, f2);
+      this.mLastLayoutWidth = f1;
+      this.mLastLayoutHeight = f2;
+    }
   }
   
   public void parseFromJson(JSONObject paramJSONObject)

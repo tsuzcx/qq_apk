@@ -1,17 +1,14 @@
-import android.accounts.AccountManagerCallback;
-import android.accounts.AccountManagerFuture;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
 
-class amod
-  implements AccountManagerCallback<Boolean>
+public class amod
 {
-  amod(amoa paramamoa) {}
+  public Rect a;
+  public String a;
   
-  public void run(AccountManagerFuture<Boolean> paramAccountManagerFuture)
+  public amod(Rect paramRect, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "removeSyncAccount | is done = " + paramAccountManagerFuture.isDone());
-    }
+    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

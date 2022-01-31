@@ -1,27 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic;
 
-class acwj
-  implements begw
+public final class acwj
+  implements Parcelable.Creator<ForwardUtils.Section_Pic>
 {
-  acwj(acwe paramacwe, ChatMessage paramChatMessage, begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ForwardUtils.Section_Pic a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      acwe.a(this.jdField_a_of_type_Acwe, (MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      awqx.b(acwe.a(this.jdField_a_of_type_Acwe), "dc00899", "Grp_chatRecord", "", "remove_file", "tips_det", 0, 0, acwe.a(this.jdField_a_of_type_Acwe).a, "", "", "");
-      continue;
-      awqx.b(acwe.a(this.jdField_a_of_type_Acwe), "dc00899", "Grp_chatRecord", "", "remove_file", "Clk_cel", 0, 0, acwe.a(this.jdField_a_of_type_Acwe).a, "", "", "");
-    }
+    return new ForwardUtils.Section_Pic(paramParcel);
+  }
+  
+  public ForwardUtils.Section_Pic[] a(int paramInt)
+  {
+    return new ForwardUtils.Section_Pic[paramInt];
   }
 }
 

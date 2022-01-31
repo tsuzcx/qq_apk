@@ -21,7 +21,7 @@ public class ExtendFriendFooterView
   public ExtendFriendFooterView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131495168, this, true);
+    LayoutInflater.from(paramContext).inflate(2131560743, this, true);
   }
 }
 

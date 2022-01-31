@@ -1,60 +1,48 @@
-public class aquv
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+
+class aquv
+  implements anwc
 {
-  public static int a = 1;
-  public static int b = 2;
-  private static int c;
-  private static int d;
+  aquv(aquu paramaquu) {}
   
-  private static int a(int paramInt)
+  public void a(View paramView)
   {
-    if (paramInt == 0) {
-      return 1;
+    String str = bbpp.a("aioEmojiStickerDetail");
+    ViewParent localViewParent = paramView.getParent();
+    if (localViewParent != null)
+    {
+      localViewParent = localViewParent.getParent();
+      if ((localViewParent instanceof ChatXListView)) {
+        EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
+      }
     }
-    if ((paramInt == 1) || (paramInt == 3000)) {
-      return 2;
+    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
+    paramView.setFlags(268435456);
+    paramView.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
+    int i;
+    if (EmojiStickerManager.a().a == 0) {
+      i = 1;
     }
-    return 0;
-  }
-  
-  public static void a()
-  {
-    awqx.b(null, "dc00898", "", "", "0X80097F3", "0X80097F3", d, 0, String.valueOf(d), "", "", "");
-    awqx.b(null, "dc00898", "", "", "0X8009C74", "0X8009C74", c, 0, String.valueOf(c), "", "", "");
-  }
-  
-  public static void a(int paramInt)
-  {
-    d = b;
-    awqx.b(null, "dc00898", "", "", "0X80097F0", "0X80097F0", a(paramInt), 0, String.valueOf(paramInt), "", "", "");
-  }
-  
-  public static void b()
-  {
-    awqx.b(null, "dc00898", "", "", "0X80097F4", "0X80097F4", d, 0, String.valueOf(d), "", "", "");
-    awqx.b(null, "dc00898", "", "", "0X8009C75", "0X8009C75", c, 0, String.valueOf(c), "", "", "");
-  }
-  
-  public static void b(int paramInt)
-  {
-    d = a;
-    c = 3;
-    awqx.b(null, "dc00898", "", "", "0X80097F1", "0X80097F1", a(paramInt), 0, String.valueOf(paramInt), "", "", "");
-  }
-  
-  public static void c()
-  {
-    awqx.b(null, "dc00898", "", "", "0X8009C73", "0X8009C73", c, 0, String.valueOf(c), "", "", "");
-  }
-  
-  public static void c(int paramInt)
-  {
-    awqx.b(null, "dc00898", "", "", "0X80097F2", "0X80097F2", a(paramInt), 0, String.valueOf(paramInt), "", "", "");
-  }
-  
-  public static void d(int paramInt)
-  {
-    c = paramInt;
-    awqx.b(null, "dc00898", "", "", "0X8009C72", "0X8009C72", c, 0, String.valueOf(c), "", "", "");
+    for (;;)
+    {
+      VasWebviewUtil.reportCommercialDrainage(this.a.a.c(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      return;
+      if (EmojiStickerManager.a().a == 1) {
+        i = 2;
+      } else if (EmojiStickerManager.a().a == 3000) {
+        i = 3;
+      } else {
+        i = -1;
+      }
+    }
   }
 }
 

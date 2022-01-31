@@ -1,30 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.WindowManager;
-
-class bbll
-  implements Animator.AnimatorListener
+public abstract interface bbll
 {
-  bbll(bblh parambblh) {}
+  public abstract void a(int paramInt1, String paramString, int paramInt2);
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (bblh.a(this.a) != null)
-    {
-      bblh.a(this.a).removeViewImmediate(bblh.a(this.a));
-      bblh.a(this.a, null);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void b(String paramString, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbll
  * JD-Core Version:    0.7.0.1
  */

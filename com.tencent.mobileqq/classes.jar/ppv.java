@@ -1,71 +1,25 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pts.nativemodule.IPTSLoadFeeds;
 import com.tencent.qphone.base.util.QLog;
 
 public class ppv
-  implements Cloneable
+  implements IPTSLoadFeeds
 {
-  public int a;
-  public long a;
-  public String a;
-  public ppw a;
-  public ppx a;
-  public ppy a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
+  private final String jdField_a_of_type_JavaLangString = "PTSLoadFeedsModule";
+  private ppe jdField_a_of_type_Ppe = new ppw(this);
   
-  public Object clone()
+  public ppv()
   {
-    try
-    {
-      localppv = (ppv)super.clone();
-      QLog.e("NewPolymericInfo", 2, "PackArticleInfo item clone failed. exception = " + localCloneNotSupportedException1);
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException1)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_Ppy != null) {
-          localppv.jdField_a_of_type_Ppy = ((ppy)this.jdField_a_of_type_Ppy.clone());
-        }
-        if (this.jdField_a_of_type_Ppx != null) {
-          localppv.jdField_a_of_type_Ppx = ((ppx)this.jdField_a_of_type_Ppx.clone());
-        }
-        if (this.jdField_a_of_type_Ppw != null) {
-          localppv.jdField_a_of_type_Ppw = ((ppw)this.jdField_a_of_type_Ppw.clone());
-        }
-        return localppv;
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException2)
-      {
-        ppv localppv;
-        break label76;
-      }
-      localCloneNotSupportedException1 = localCloneNotSupportedException1;
-      localppv = null;
-    }
-    label76:
-    return localppv;
+    ppd.a().a(this.jdField_a_of_type_Ppe);
   }
   
-  public String toString()
+  public void loadFeeds(long paramLong1, long paramLong2, int paramInt, long paramLong3)
   {
-    return "PackArticleInfo = {\ncellStyleID = " + this.i + "\narticleID = " + this.jdField_a_of_type_Long + "\narticleTitle = " + this.jdField_a_of_type_JavaLangString + "\narticleSummary = " + this.jdField_b_of_type_JavaLangString + "\nfirstPagePicUrl = " + this.jdField_c_of_type_JavaLangString + "\narticleContentUrl = " + this.jdField_d_of_type_JavaLangString + "\nsubscribeID = " + this.jdField_e_of_type_JavaLangString + "\nsubscribeName = " + this.jdField_f_of_type_JavaLangString + "\nstrategyID = " + this.jdField_a_of_type_Int + "\nalgorithmID = " + this.jdField_b_of_type_Long + "\nfeedsID = " + this.jdField_c_of_type_Long + "\nfeedsType = " + this.jdField_b_of_type_Int + "\ninnerUniqID = " + this.jdField_g_of_type_JavaLangString + "\nisGallery = " + this.jdField_c_of_type_Int + "\ngalleryPicNum = " + this.jdField_d_of_type_Int + "\nvideoInfo = " + this.jdField_a_of_type_Ppy + "\nbuttonWording = " + this.h + "\nisUgc = " + this.jdField_a_of_type_Boolean + "\nplayCount=" + this.jdField_f_of_type_Int + "commentCount=" + this.jdField_g_of_type_Int + "isGifCoverUrl = " + this.jdField_e_of_type_Int + "\n";
+    oso localoso = (oso)((QQAppInterface)onk.a()).getManager(163);
+    QLog.i("PTSLoadFeedsModule", 1, "[loadFeeds], channelID = " + paramLong1 + ", limitCount = " + paramInt);
+    if (localoso != null) {
+      localoso.a().a((int)paramLong1, paramInt, 9223372036854775807L, true, paramLong3);
+    }
   }
 }
 

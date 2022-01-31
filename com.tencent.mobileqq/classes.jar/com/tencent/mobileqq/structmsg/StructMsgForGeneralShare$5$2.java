@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.structmsg;
 
-import adqx;
-import awqx;
-import awvd;
+import aebw;
+import axqw;
+import axvf;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 public class StructMsgForGeneralShare$5$2
   implements Runnable
 {
-  public StructMsgForGeneralShare$5$2(awvd paramawvd, adqx paramadqx, QQAppInterface paramQQAppInterface) {}
+  public StructMsgForGeneralShare$5$2(axvf paramaxvf, aebw paramaebw, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -22,11 +22,11 @@ public class StructMsgForGeneralShare$5$2
     }
     String str2 = "";
     String str1;
-    if ((this.jdField_a_of_type_Adqx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_Adqx.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)) {
-      if (this.jdField_a_of_type_Adqx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+    if ((this.jdField_a_of_type_Aebw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_Aebw.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)) {
+      if (this.jdField_a_of_type_Aebw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
       {
-        str1 = this.jdField_a_of_type_Adqx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-        str2 = this.jdField_a_of_type_Adqx.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
+        str1 = this.jdField_a_of_type_Aebw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+        str2 = this.jdField_a_of_type_Aebw.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
       }
     }
     for (;;)
@@ -35,7 +35,7 @@ public class StructMsgForGeneralShare$5$2
       if (localPortalManager != null) {}
       for (int j = localPortalManager.a();; j = -1)
       {
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004FFA", "0X8004FFA", 0, 0, "" + j, "" + i, "" + str1, str2);
+        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004FFA", "0X8004FFA", 0, 0, "" + j, "" + i, "" + str1, str2);
         return;
         i = 2;
         break;

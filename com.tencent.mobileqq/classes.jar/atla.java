@@ -1,21 +1,10 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
-
-public class atla
-  implements BusinessObserver
+public abstract interface atla
 {
-  public void a() {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramInt == 0) {
-      a();
-    }
-  }
+  public abstract boolean a(atkx paramatkx, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atla
  * JD-Core Version:    0.7.0.1
  */

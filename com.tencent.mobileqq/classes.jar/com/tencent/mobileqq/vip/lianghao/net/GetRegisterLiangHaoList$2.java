@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.vip.lianghao.net;
 
-import bavm;
-import bavu;
-import bavv;
+import bbyg;
+import bbyo;
+import bbyp;
 import java.util.List;
 
 public class GetRegisterLiangHaoList$2
   implements Runnable
 {
-  public GetRegisterLiangHaoList$2(bavu parambavu, bavm parambavm, bavv parambavv) {}
+  public GetRegisterLiangHaoList$2(bbyo parambbyo, bbyg parambbyg, bbyp parambbyp) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Bavm != null) && (this.jdField_a_of_type_Bavm.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Bavm.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Bavm.jdField_a_of_type_JavaUtilList.size() > 0))
+    if ((this.jdField_a_of_type_Bbyg != null) && (this.jdField_a_of_type_Bbyg.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Bbyg.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Bbyg.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      this.jdField_a_of_type_Bavv.a(this.jdField_a_of_type_Bavm);
+      this.jdField_a_of_type_Bbyp.a(this.jdField_a_of_type_Bbyg);
       return;
     }
-    this.jdField_a_of_type_Bavv.a(-1, "");
+    this.jdField_a_of_type_Bbyp.a(-1, "");
   }
 }
 

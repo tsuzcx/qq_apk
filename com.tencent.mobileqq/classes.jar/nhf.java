@@ -1,23 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-import org.json.JSONObject;
+import com.tencent.widget.ListView;
 
-final class nhf
-  implements ViewFactory.FoundClickableViewListener
+public abstract interface nhf
 {
-  nhf(String paramString, JSONObject paramJSONObject) {}
-  
-  public void onFound(ViewBase paramViewBase)
-  {
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-    {
-    default: 
-      paramViewBase.setOnClickListener(new nhh(this));
-      return;
-    }
-    paramViewBase.setOnClickListener(new nhg(this));
-  }
+  public abstract void a(ListView paramListView);
 }
 
 

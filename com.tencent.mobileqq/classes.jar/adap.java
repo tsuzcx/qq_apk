@@ -1,44 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 
 class adap
-  extends Handler
+  implements adar
 {
-  adap(adao paramadao, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  adap(adao paramadao, adaq paramadaq) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    if (paramMessage.obj == null)
+    if (paramBoolean)
     {
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 4: 
-        adao.a(this.a);
-        return;
-      }
-      adao.a(this.a, true);
+      adao.a(this.jdField_a_of_type_Adao, this.jdField_a_of_type_Adaq.a());
+      this.jdField_a_of_type_Adaq.a();
       return;
     }
-    WeakReference localWeakReference = (WeakReference)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      adao.a(this.a, localWeakReference);
-      return;
-    case 2: 
-      adao.b(this.a, localWeakReference);
-      return;
-    }
-    adao.c(this.a, localWeakReference);
+    QLog.e("FriendShipViewManager", 1, "director.prepare not ready, cannot play anim, type = " + this.jdField_a_of_type_Adaq.a());
+    adao.a(this.jdField_a_of_type_Adao, 0);
   }
 }
 

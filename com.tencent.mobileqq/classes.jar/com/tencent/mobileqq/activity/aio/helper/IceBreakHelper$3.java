@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import acxh;
+import adii;
 
 public class IceBreakHelper$3
   implements Runnable
 {
-  public IceBreakHelper$3(acxh paramacxh) {}
+  public IceBreakHelper$3(adii paramadii) {}
   
   public void run()
   {

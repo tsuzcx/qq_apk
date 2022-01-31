@@ -1,107 +1,86 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import android.util.Pair;
+import appoint.define.appoint_define.PublisherInfo;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.message.MsgProxyUtils.3;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
-import com.tencent.mobileqq.data.FeedsManager;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForFoldMsg;
-import com.tencent.mobileqq.data.MessageForFunnyFace;
-import com.tencent.mobileqq.data.MessageForLongMsg;
-import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.data.MessageForMedalNews;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPLNews;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForQzoneFeed;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.data.StrangerInfo;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard;
+import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard.NearbyMyTabConfig;
+import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard.NearbyMyTabConfigExtraVal;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBFloatField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.now.ilive_feeds_near_anchor.GetNearAnchorReq;
+import com.tencent.pb.now.ilive_feeds_near_anchor.GetNearAnchorRsp;
+import com.tencent.pb.now.ilive_nearby_user_control.EnterNearbyUserContrlReq;
+import com.tencent.pb.now.ilive_nearby_user_control.EnterNearbyUserContrlRsp;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MobileQQ;
+import mqq.app.NewIntent;
+import mqq.manager.TicketManager;
+import mqq.observer.BusinessObserver;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0x4f0.cmd0x4f0.RspBody;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.ReqBody;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.RspBody;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.UdcUinData;
+import tencent.im.oidb.cmd0x66b.Oidb_0x66b.ReqBody;
+import tencent.im.oidb.cmd0x66b.Oidb_0x66b.RspBody;
+import tencent.im.oidb.cmd0x66b.Oidb_0x66b.RspConfigItem;
+import tencent.im.oidb.cmd0x66b.Oidb_0x66b.RspLikeInfo;
+import tencent.im.oidb.cmd0x66b.Oidb_0x66b.RspPansocialInfo;
+import tencent.im.oidb.cmd0x77f.cmd0x77f.ReqBody;
+import tencent.im.oidb.cmd0x77f.cmd0x77f.VisitProfRec;
+import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.NearbyConfig;
+import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.SelfInfo;
+import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import tencent.im.oidb.cmd0xafc.cmd0xafc.HeartBeat;
+import tencent.im.oidb.cmd0xafc.cmd0xafc.Location;
+import tencent.im.oidb.cmd0xafc.cmd0xafc.NearbyEnter;
+import tencent.im.oidb.cmd0xafc.cmd0xafc.NearbyExit;
+import tencent.im.oidb.cmd0xafc.cmd0xafc.ReqBody;
+import tencent.im.oidb.cmd0xafc.cmd0xafc.RspBody;
+import tencent.sso.accretion.flower_info.SFlowerInfoRsp;
 
 public class akbm
+  extends ajtd
 {
-  static Comparator<MessageRecord> jdField_a_of_type_JavaUtilComparator = new akbn();
-  private static ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  public static final int[] a;
-  public static final String[] a;
-  public static final int[] b;
-  public static final String[] b;
-  public static final int[] c;
-  public static final String[] c;
-  public static final int[] d;
-  public static final int[] e;
-  public static final int[] f;
-  public static final int[] g;
-  public static final int[] h;
-  public static final int[] i;
-  public static final int[] j;
-  public static final int[] k;
-  public static final int[] l;
-  public static final int[] m;
-  public static final int[] n;
-  public static final int[] o;
-  public static final int[] p;
-  public static final int[] q;
-  public static final int[] r;
-  public static final int[] s;
-  public static final int[] t;
-  public static final int[] u;
-  public static final int[] v;
-  public static final int[] w;
+  NearbyAppInterface a;
   
-  static
+  public akbm(AppInterface paramAppInterface)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { -1004, -1001, -1002, -2012, -2006, -4001, 193, 734, 230, -4002, -4003, -4004, -2015, -1014, -2061, -4008, -4009, -4012, -2021, -2018, -1040, -1039, -4005, -3009, -4020, -3010, -3011, -2019, -7006, -1041, -1043, -1044, -1045, -5000, -5006, -1017, 1018, -1042, 2024, -1026, -1027, -1028, -5005, -1046, -2027, -2037, -3013, -3014, -3015, -5007, -2030, -4021, -4022, -5011, -1013, -5020, -5022, -5023, -2060, -2023, -2062, -2065, -2064, -3016, -2063, -5041, -2073, -7007 };
-    jdField_b_of_type_ArrayOfInt = new int[] { -2031, -2035, -2036, -2038, -2042, -2043, -5040, -5021 };
-    jdField_c_of_type_ArrayOfInt = new int[] { -3006, -2035, -2036, -2038 };
-    d = new int[] { -4004, -4003, -4009, -4020, -3010, -3011, -1044, -1026, -1027, -5005, -4021, -4022, -5011, -3014, -2064, -7005 };
-    e = new int[] { -1034, -1042, -2015, -2061, -2003, -2004, -2009, -1001, -2076, -2012, -1013, -2030, -1019, -1018, -1014, -1043, -1045, -5000, -5001, -1024, -1028, 2024, -2042, -5005, -1046, -2027, -2037, -5006, -4011, -4012, -2029, -2034, -2033, -2041, -2060, -2062, -2065, -2063, -2066, -3016, -7007 };
-    f = new int[] { -1004, -1012, -4002, -4003, -4004, -1047, -1013, -2030, -4009, -4012, -1016, -1017, -1050, -2021, -1041, -1043, -1044, -1045, -5000, -5001, 1018, -2016, 2024, -2042, -5005, -5006, -1046, -3013, -3014, -2029, -2034, -2033, -2043, -2041, -5011, -2049, -2063, -3016 };
-    g = new int[] { -4003, -4020, -4004, -4009, -5011 };
-    h = new int[] { -2006, -1034, -1042, -2015, -2061, -4002, -4003, -4004, -1001, -1047, -1013, -2030, -1019, -1018, -2012, -1014, -1004, -1016, -1017, -1050, -2021, -3011, -4020, -3009, -3010, -1041, -1043, -1044, -1045, -5000, -5001, -1024, -1028, 1018, 2024, -2042, -1012, -1046, -2027, -2029, -2043, -4021, -4022, -2049, -5021, -5023, -2065, -2060, -4023, -2062, -7007 };
-    i = new int[0];
-    j = new int[0];
-    k = new int[] { 1008 };
-    l = new int[] { -1000, -2000, -2002, -2005, -1035, -1036, -1037, -20000, -2007, -2011, -2010, -1051 };
-    m = new int[] { -2000, -2002, -2007, -2058, -2011, -2020, -2022, -1051, -1035, -2057, -7001, -2071 };
-    n = new int[] { -1001, -2009, -2016, -4008 };
-    o = new int[] { -2030, -1047, -5040 };
-    p = new int[] { -5040, -5020, -5021, -5022, -5023 };
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ajed.H, ajed.w, ajed.aa, ajed.ai, ajed.aj, ajed.D, ajed.G, ajed.aL };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { ajed.az };
-    q = new int[] { 0, 1000, 1004, 1020, 1006, 1001, 10002, 10004, 1009, 1003, 1005, 1008, 1023, 1021, 1022, 1024, 1025, 1010, 7400, 1037, 1044, 1032, 1033, 1034, 1036, 1038 };
-    r = new int[] { 1033, 1034 };
-    s = new int[] { 1000, 1004, 1020 };
-    t = new int[] { 1, 3000, 1006, 7000, 9501, 10005, 1033, 1034, 1036 };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { ajed.H, ajed.aa };
-    u = new int[] { 1001, 10002, 1010 };
-    v = new int[] { 0, 1, 3000, 1025, 1024 };
-    w = new int[] { 0, 1, 3000 };
+    super(paramAppInterface);
+    if ((paramAppInterface instanceof NearbyAppInterface)) {
+      this.a = ((NearbyAppInterface)paramAppInterface);
+    }
   }
   
   public static int a(int paramInt)
@@ -109,2271 +88,968 @@ public class akbm
     switch (paramInt)
     {
     default: 
-      return paramInt;
-    case 1001: 
-    case 10002: 
-      return 1001;
-    case 1010: 
-      return 1010;
-    case 1009: 
-      return 1009;
-    }
-    return 1032;
-  }
-  
-  public static int a(int paramInt1, int paramInt2)
-  {
-    return alyc.a(paramInt1, paramInt2);
-  }
-  
-  public static int a(String paramString)
-  {
-    if (paramString.startsWith("mr_discusssion")) {
-      return 3000;
-    }
-    if (paramString.startsWith("mr_friend")) {
+      return 2;
+    case 1: 
       return 0;
     }
     return 1;
   }
   
-  public static int a(List<MessageRecord> paramList, QQAppInterface paramQQAppInterface)
+  public static void a(AppInterface paramAppInterface, int paramInt)
   {
-    int i2;
-    if ((paramList == null) || (paramList.isEmpty())) {
-      i2 = 0;
-    }
-    HashSet localHashSet;
-    int i1;
-    do
-    {
-      return i2;
-      localHashSet = new HashSet();
-      paramList = paramList.iterator();
-      i1 = 0;
-      i2 = i1;
-    } while (!paramList.hasNext());
-    MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-    if ((!localMessageRecord.isread) && (!localMessageRecord.isLongMsg())) {
-      i1 += 1;
-    }
-    for (;;)
-    {
-      break;
-      i2 = i1;
-      if (!localMessageRecord.isread)
-      {
-        i2 = i1;
-        if (localMessageRecord.isLongMsg())
-        {
-          if (paramQQAppInterface.a().a(localMessageRecord)) {
-            break;
-          }
-          i2 = i1;
-          if (!localHashSet.contains(b(localMessageRecord)))
-          {
-            i2 = i1 + 1;
-            localHashSet.add(b(localMessageRecord));
-          }
-        }
-      }
-      i1 = i2;
-    }
+    paramAppInterface.reportClickEvent("CliOper", "", "", "Neiggbor", "ReqGetEncounter", 0, paramInt, "", "", "", "");
   }
   
-  public static MessageRecord a(List<MessageRecord> paramList)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, BusinessObserver paramBusinessObserver)
   {
-    Object localObject;
-    if ((paramList == null) || (paramList.isEmpty()))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      localObject = null;
-      return localObject;
-    }
-    int i1 = paramList.size() - 1;
-    for (;;)
-    {
-      if (i1 < 0) {
-        break label82;
-      }
-      MessageRecord localMessageRecord = (MessageRecord)paramList.get(i1);
-      if (!TextUtils.equals(localMessageRecord.frienduin, ajed.az))
+      localJSONObject.put("client_ver", "8.2.8");
+      localJSONObject.put("from", paramString2);
+      if ("1".equals(paramString2))
       {
-        localObject = localMessageRecord;
-        if (localMessageRecord.msgtype != -2006) {
-          break;
-        }
-        localObject = localMessageRecord;
-        if ((localMessageRecord instanceof MessageForFoldMsg)) {
-          break;
+        byte[] arrayOfByte = paramQQAppInterface.a().k(paramString1);
+        if (arrayOfByte != null) {
+          localJSONObject.put("chat_sig", new String(bbca.encode(arrayOfByte, 0)));
         }
       }
-      i1 -= 1;
-    }
-    label82:
-    return null;
-  }
-  
-  public static String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(jdField_a_of_type_ArrayOfInt.length * 8);
-    localStringBuilder.append("not in (");
-    int i1 = 0;
-    if (i1 < jdField_a_of_type_ArrayOfInt.length)
-    {
-      localStringBuilder.append(jdField_a_of_type_ArrayOfInt[i1]);
-      if (i1 == jdField_a_of_type_ArrayOfInt.length - 1) {
-        localStringBuilder.append(")");
+      localJSONObject.put("targetuin", paramString1);
+      localJSONObject.put("operation", paramString3);
+      int i;
+      if ("1".equals(paramString2)) {
+        i = 3077;
       }
       for (;;)
       {
-        i1 += 1;
-        break;
-        localStringBuilder.append(",");
-      }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return ajed.H;
-    case 1001: 
-    case 10002: 
-      return ajed.H;
-    case 1010: 
-      return ajed.aa;
-    }
-    return ajed.w;
-  }
-  
-  public static String a(MessageRecord paramMessageRecord)
-  {
-    int i1 = 1033;
-    if (paramMessageRecord.istroop == 1032)
-    {
-      if (paramMessageRecord.isSelfConfessor()) {}
-      for (;;)
-      {
-        return alyc.a(paramMessageRecord.senderuin, i1, paramMessageRecord.getConfessTopicId());
-        i1 = 1034;
-      }
-    }
-    if ((paramMessageRecord.istroop == 1033) || (paramMessageRecord.istroop == 1034)) {
-      return alyc.a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.getConfessTopicId());
-    }
-    return paramMessageRecord.senderuin;
-  }
-  
-  public static String a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "0";
-    }
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
-      return (String)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
-    }
-    paramString = MD5.toMD5(str);
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 3000) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramString);
-    return paramString;
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    String str;
-    if (e(paramInt)) {
-      str = paramString + "&" + paramInt;
-    }
-    do
-    {
-      return str;
-      str = paramString;
-    } while (paramString != null);
-    return "0";
-  }
-  
-  public static List<MessageRecord> a(List<MessageRecord> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-      if ((!n(localMessageRecord.msgtype)) && (((localMessageRecord.istroop != 3000) && (localMessageRecord.istroop != 1)) || (localMessageRecord.shmsgseq > 0L))) {
-        localArrayList.add(localMessageRecord);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static List<MessageRecord> a(List<MessageRecord> paramList1, List<MessageRecord> paramList2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramList1 == null) || (paramList2 == null)) {
-      return null;
-    }
-    paramList2 = paramList2.iterator();
-    label191:
-    for (;;)
-    {
-      MessageRecord localMessageRecord1;
-      if (paramList2.hasNext())
-      {
-        localMessageRecord1 = (MessageRecord)paramList2.next();
-        Iterator localIterator = paramList1.iterator();
-        MessageRecord localMessageRecord2;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localMessageRecord2 = (MessageRecord)localIterator.next();
-        } while ((localMessageRecord1.getId() != localMessageRecord1.getId()) || (localMessageRecord1.shmsgseq != localMessageRecord2.shmsgseq) || (localMessageRecord1.msgtype != localMessageRecord2.msgtype) || (localMessageRecord1.time != localMessageRecord2.time) || (localMessageRecord1.msgUid != localMessageRecord2.msgUid) || (localMessageRecord1.longMsgIndex != localMessageRecord2.longMsgIndex) || (localMessageRecord1.longMsgId != localMessageRecord2.longMsgId));
-      }
-      for (int i1 = 1;; i1 = 0)
-      {
-        if (i1 != 0) {
-          break label191;
-        }
-        localArrayList.add(localMessageRecord1);
-        break;
-        return localArrayList;
-      }
-    }
-  }
-  
-  public static List<MessageRecord> a(List<MessageRecord> paramList, boolean paramBoolean)
-  {
-    return a(paramList, paramBoolean, 15);
-  }
-  
-  public static List<MessageRecord> a(List<MessageRecord> paramList, boolean paramBoolean, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return localArrayList;
-    }
-    if (paramBoolean) {
-      Collections.sort(paramList, new akbo());
-    }
-    long l1 = ((MessageRecord)paramList.get(paramList.size() - 1)).shmsgseq;
-    int i2 = paramList.size() - 1;
-    int i1 = 0;
-    int i3;
-    while (i2 >= 0)
-    {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.get(i2);
-      if ((s(localMessageRecord.msgtype)) && (localMessageRecord.shmsgseq == 0L))
-      {
-        localArrayList.add(0, paramList.get(i2));
-        i3 = i1;
-        i2 -= 1;
-        i1 = i3;
-      }
-      else if (l1 - localMessageRecord.shmsgseq <= 1L)
-      {
-        if ((l1 != localMessageRecord.shmsgseq) || (i2 >= paramList.size() - 1)) {
-          break label224;
-        }
-      }
-    }
-    for (;;)
-    {
-      l1 = ((MessageRecord)paramList.get(i2)).shmsgseq;
-      localArrayList.add(0, paramList.get(i2));
-      i3 = i1;
-      if (i1 < paramInt) {
-        break;
-      }
-      return localArrayList;
-      label224:
-      i1 += 1;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = paramQQAppInterface.a().b(paramString, paramInt1).iterator();
-    while (localIterator.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      if (paramInt2 == localMessageRecord.msgtype) {
-        switch (paramInt2)
-        {
-        default: 
-          paramQQAppInterface.a().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
-          break;
-        case -3010: 
-          paramQQAppInterface.a().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
-          break;
-        case -4020: 
-          paramQQAppInterface.a().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
-          break;
-        case -4022: 
-          paramQQAppInterface.a().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
-          break;
-        case -4021: 
-          paramQQAppInterface.a().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
-          break;
-        case -3011: 
-          if (!bffo.a()) {
-            paramQQAppInterface.a().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
-          }
-          break;
-        }
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
-  {
-    for (;;)
-    {
-      int i2;
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          break label450;
-        }
-        l1 = System.currentTimeMillis();
-        i2 = 0;
-        i3 = 0;
-        List localList = paramQQAppInterface.a(1).c(paramString, 1);
-        if (localList != null) {
-          break label447;
-        }
-        localList = paramQQAppInterface.a(1).c(paramString, 1, 1L + paramLong, 2147483647L);
-        if ((localList != null) && (localList.size() > 0))
-        {
-          i4 = localList.size() - 1;
-          i2 = 0;
-          i1 = 0;
-          i3 = 0;
-          if (i4 >= 0)
-          {
-            MessageRecord localMessageRecord = (MessageRecord)localList.get(i4);
-            if (localMessageRecord.shmsgseq > paramLong)
-            {
-              if ((!a(localMessageRecord)) && (localMessageRecord.msgtype != -2006)) {
-                break label426;
-              }
-              paramQQAppInterface.a().b(paramString, 1, localMessageRecord.uniseq);
-              if (QLog.isColorLevel())
-              {
-                QLog.d(".troop.del_abnormal_troop_local_msg", 2, "delAbnormalLocalTroopMsg: " + paramLong + ", " + localMessageRecord.getBaseInfoString());
-                i2 += 1;
-                i1 = localMessageRecord.msgtype;
-                i3 = 1;
-                break label456;
-              }
-              QLog.d(".troop.del_abnormal_troop_local_msg", 1, "delAbnormalLocalTroopMsg: " + paramLong + ", " + localMessageRecord.getUserLogString());
-              continue;
-            }
-          }
-          if (!QLog.isColorLevel()) {}
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(".troop.del_abnormal_troop_local_msg", 2, "delAbnormalLocalTroopMsg:" + paramQQAppInterface.toString());
-        }
+        localJSONObject.put("sourceid", i);
+        localJSONObject.put("sub_sourceid", paramInt);
+        paramString1 = new NewIntent(paramQQAppInterface.getApplication().getApplicationContext(), mxh.class);
+        paramString1.putExtra("cmd", "MQUpdateSvc_com_qq_buluo.web.follow_user");
+        paramString2 = new WebSsoBody.WebSsoRequestBody();
+        paramString2.type.set(0);
+        paramString2.data.set(localJSONObject.toString());
+        paramString1.putExtra("data", paramString2.toByteArray());
+        paramString1.setObserver(paramBusinessObserver);
+        paramQQAppInterface.startServlet(paramString1);
         return;
-      }
-      for (;;)
-      {
-        QLog.d(".troop.del_abnormal_troop_local_msg", 2, "---delAbnormalLocalTroopMsg---:" + paramString + "," + paramLong + "," + (System.currentTimeMillis() - l1));
-        if (i1 == 0) {
-          break;
+        boolean bool = "6".equals(paramString2);
+        if (bool) {
+          i = 3089;
+        } else {
+          i = 3076;
         }
-        awqx.b(paramQQAppInterface, "dc00899", "BizTechReport", "", "Grp_msg", "del_abnormal_local_msg", 0, 0, paramString, i2 + "", i3 + "", "");
-        return;
-        label426:
-        i5 = i1;
-        i1 = i3;
-        i3 = i5;
-        break label456;
-        i1 = 0;
       }
-      label447:
-      continue;
-      label450:
-      long l1 = 0L;
-      continue;
-      label456:
-      int i5 = i4 - 1;
-      int i4 = i3;
-      int i3 = i1;
-      int i1 = i4;
-      i4 = i5;
-    }
-  }
-  
-  public static void a(MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      paramMessageRecord.extLong |= 0x1;
-      paramMessageRecord.saveExtInfoToExtStr("one_way", "true");
       return;
     }
-    paramMessageRecord.removeExtInfoToExtStr("one_way");
+    catch (Exception paramQQAppInterface) {}
   }
   
-  public static void a(String paramString, int paramInt, List<MessageRecord> paramList, QQAppInterface paramQQAppInterface)
+  public static void a(NearbyAppInterface paramNearbyAppInterface, long[] paramArrayOfLong, BusinessObserver paramBusinessObserver)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new JSONArray();
+    if ((paramArrayOfLong != null) && (paramArrayOfLong.length > 0))
     {
-      return;
-      Object localObject2 = new ArrayList();
-      HashMap localHashMap = new HashMap();
-      ArrayList localArrayList = new ArrayList();
-      Object localObject1 = paramQQAppInterface.a();
-      Object localObject3 = paramList.iterator();
-      int i1 = 0;
-      int i2 = 0;
-      Object localObject4;
-      label166:
-      int i3;
-      if (((Iterator)localObject3).hasNext())
+      int i = 0;
+      while (i < paramArrayOfLong.length)
       {
-        localObject4 = (MessageRecord)((Iterator)localObject3).next();
-        String str1;
-        if (((MessageRecord)localObject4).isLongMsg())
-        {
-          str1 = b((MessageRecord)localObject4);
-          if (localHashMap.containsKey(str1)) {
-            if (Math.abs(((MessageRecord)((ArrayList)localHashMap.get(str1)).get(0)).time - ((MessageRecord)localObject4).time) <= 480L)
-            {
-              ((ArrayList)localHashMap.get(str1)).add(localObject4);
-              ((List)localObject2).add(localObject4);
-              i3 = i1;
-              i1 = i2;
-              i2 = i3;
-            }
-          }
+        ((JSONArray)localObject).put(paramArrayOfLong[i]);
+        i += 1;
+      }
+    }
+    try
+    {
+      localJSONObject.put("uins", localObject);
+      paramArrayOfLong = new NewIntent(paramNearbyAppInterface.getApplication().getApplicationContext(), mxh.class);
+      paramArrayOfLong.putExtra("cmd", "MQUpdateSvc_com_qq_buluo.web.encrypt_uins");
+      localObject = new WebSsoBody.WebSsoRequestBody();
+      ((WebSsoBody.WebSsoRequestBody)localObject).type.set(0);
+      ((WebSsoBody.WebSsoRequestBody)localObject).data.set(localJSONObject.toString());
+      paramArrayOfLong.putExtra("data", ((WebSsoBody.WebSsoRequestBody)localObject).toByteArray());
+      paramArrayOfLong.setObserver(paramBusinessObserver);
+      paramNearbyAppInterface.startServlet(paramArrayOfLong);
+      return;
+    }
+    catch (Exception paramNearbyAppInterface) {}
+  }
+  
+  private boolean a(oidb_0xada.ReqBody paramReqBody)
+  {
+    paramReqBody.uid.set(Long.parseLong(this.mApp.getCurrentAccountUin()));
+    paramReqBody.tinyid.set(Long.parseLong(this.mApp.getCurrentAccountUin()));
+    Object localObject = (TicketManager)this.mApp.getManager(2);
+    String str = ((TicketManager)localObject).getA2(this.mApp.getCurrentAccountUin());
+    localObject = ((TicketManager)localObject).getSkey(this.mApp.getCurrentAccountUin());
+    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+    {
+      paramReqBody.a2.set(str);
+      paramReqBody.platform.set(1);
+      paramReqBody.version.set("8.2.8");
+      paramReqBody.version_code.set(anet.a(BaseApplicationImpl.sApplication));
+      paramReqBody.original_id.set(this.mApp.getCurrentAccountUin());
+      paramReqBody.original_key.set((String)localObject);
+      paramReqBody.original_id_type.set(1);
+      return true;
+    }
+    return false;
+  }
+  
+  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
+      return;
+    }
+    Object localObject = new cmd0x4f0.RspBody();
+    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
+    boolean bool = paramToServiceMsg.extraData.getBoolean("is_first_page");
+    if (i == 0)
+    {
+      label88:
+      long l1;
+      label110:
+      long l2;
+      label132:
+      long l3;
+      if (((cmd0x4f0.RspBody)localObject).bytes_cookie.has())
+      {
+        paramToServiceMsg = ((cmd0x4f0.RspBody)localObject).bytes_cookie.get().toByteArray();
+        if (!((cmd0x4f0.RspBody)localObject).uint32_completed.has()) {
+          break label232;
         }
+        i = ((cmd0x4f0.RspBody)localObject).uint32_completed.get();
+        if (!((cmd0x4f0.RspBody)localObject).uint32_total_visitor.has()) {
+          break label238;
+        }
+        l1 = ((cmd0x4f0.RspBody)localObject).uint32_total_visitor.get();
+        if (!((cmd0x4f0.RspBody)localObject).uint32_unread_visitor.has()) {
+          break label244;
+        }
+        l2 = ((cmd0x4f0.RspBody)localObject).uint32_unread_visitor.get();
+        l3 = l1 - l2;
+        if (!((cmd0x4f0.RspBody)localObject).rpt_msg_vistor_info.has()) {
+          break label250;
+        }
+      }
+      label232:
+      label238:
+      label244:
+      label250:
+      for (paramFromServiceMsg = ((cmd0x4f0.RspBody)localObject).rpt_msg_vistor_info.get();; paramFromServiceMsg = null)
+      {
+        if ((paramFromServiceMsg == null) || (paramFromServiceMsg.isEmpty())) {
+          break label255;
+        }
+        paramObject = new ArrayList();
+        localObject = paramFromServiceMsg.iterator();
         for (;;)
         {
-          i3 = i1;
-          i1 = i2;
-          i2 = i3;
-          break;
-          i3 = i1 + 1;
-          String str2 = b(str1, i3);
-          localHashMap.put(str2, localHashMap.get(str1));
-          paramQQAppInterface = null;
-          i1 = 0;
-          for (;;)
-          {
-            if (i1 < localArrayList.size())
-            {
-              paramQQAppInterface = (Pair)localArrayList.get(i1);
-              if (!((String)paramQQAppInterface.first).equals(str1)) {}
-            }
-            else
-            {
-              if (paramQQAppInterface != null)
-              {
-                localArrayList.remove(i1);
-                localArrayList.add(i1, new Pair(str2, paramQQAppInterface.second));
-              }
-              paramQQAppInterface = new ArrayList();
-              paramQQAppInterface.add(localObject4);
-              localHashMap.put(str1, paramQQAppInterface);
-              localArrayList.add(new Pair(str1, Integer.valueOf(i2)));
-              i1 = i3;
-              break;
-            }
-            i1 += 1;
+          paramFromServiceMsg = paramObject;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
           }
-          paramQQAppInterface = new ArrayList();
-          paramQQAppInterface.add(localObject4);
-          localHashMap.put(str1, paramQQAppInterface);
-          localArrayList.add(new Pair(str1, Integer.valueOf(i2)));
-          break label166;
-          i3 = i2 + 1;
-          i2 = i1;
-          i1 = i3;
+          paramFromServiceMsg = StrangerInfo.convertFrom((appoint_define.PublisherInfo)((Iterator)localObject).next());
+          if (paramFromServiceMsg != null) {
+            paramObject.add(paramFromServiceMsg);
+          }
+        }
+        paramToServiceMsg = null;
+        break;
+        i = 0;
+        break label88;
+        l1 = 0L;
+        break label110;
+        l2 = 0L;
+        break label132;
+      }
+      label255:
+      paramFromServiceMsg = null;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.nearby.visitor", 2, "handleGetRecentVisitors|c");
+      }
+      int j;
+      if (QLog.isColorLevel())
+      {
+        paramObject = new StringBuilder().append("handleGetRecentVisitors|cookie lenght: ");
+        if (paramToServiceMsg != null) {
+          break label509;
+        }
+        j = 0;
+        paramObject = paramObject.append(j).append(",compleFlag: ").append(i).append(",totalVisitor: ").append(l1).append(",newVisitor:").append(l2).append(",hisVisitor:").append(l3).append(",visitorCount: ");
+        if (paramFromServiceMsg != null) {
+          break label516;
+        }
+        j = 0;
+        label364:
+        localObject = paramObject.append(j).append(",visitor info is: ");
+        if (paramFromServiceMsg != null) {
+          break label525;
         }
       }
-      paramList.removeAll((Collection)localObject2);
-      if ((!localHashMap.isEmpty()) && (!localArrayList.isEmpty()))
+      label516:
+      label525:
+      for (paramObject = null;; paramObject = paramFromServiceMsg.toString())
       {
-        if (((awao)localObject1).a(paramString, paramInt) != null)
+        QLog.i("Q.nearby.visitor", 2, paramObject);
+        if ((!bool) || (paramFromServiceMsg == null) || (paramFromServiceMsg.isEmpty())) {
+          break label617;
+        }
+        paramObject = this.a.getEntityManagerFactory().createEntityManager();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("DELETE FROM ");
+        ((StringBuilder)localObject).append(StrangerInfo.class.getSimpleName());
+        ((StringBuilder)localObject).append(";");
+        paramObject.b(((StringBuilder)localObject).toString());
+        localObject = paramFromServiceMsg.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          paramObject.a((StrangerInfo)((Iterator)localObject).next());
+        }
+        label509:
+        j = paramToServiceMsg.length;
+        break;
+        j = paramFromServiceMsg.size();
+        break label364;
+      }
+      paramObject = atbg.a("nearby_visitor_file", this.a.getAccount(), 0).edit();
+      if (l1 > 0L)
+      {
+        paramObject.putLong("sp_nearby_total_visitor", l1);
+        if (l2 > 0L) {
+          paramObject.putLong("sp_nearby_new_visitor", l2);
+        }
+        if (l3 > 0L) {
+          paramObject.putLong("sp_nearby_his_visitor", l3);
+        }
+        paramObject.commit();
+      }
+      label617:
+      notifyUI(11, true, new Object[] { paramFromServiceMsg, paramToServiceMsg, Integer.valueOf(i), Long.valueOf(l1), "", Boolean.valueOf(bool), Long.valueOf(l2), Long.valueOf(l3) });
+      return;
+    }
+    if (((cmd0x4f0.RspBody)localObject).str_error_tips.has()) {}
+    for (paramToServiceMsg = ((cmd0x4f0.RspBody)localObject).str_error_tips.get();; paramToServiceMsg = "")
+    {
+      notifyUI(11, false, new Object[] { null, null, Integer.valueOf(-1), Long.valueOf(-1L), paramToServiceMsg, Boolean.valueOf(bool), Long.valueOf(-1L), Long.valueOf(-1L) });
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("NearbyHandler", 2, "handleGetRecentVisitors: result is: " + i + " errorTips: " + paramToServiceMsg);
+      return;
+    }
+  }
+  
+  cmd0x77f.VisitProfRec a(atbf paramatbf)
+  {
+    cmd0x77f.VisitProfRec localVisitProfRec = new cmd0x77f.VisitProfRec();
+    localVisitProfRec.uint64_tinyid.set(paramatbf.jdField_a_of_type_Long);
+    localVisitProfRec.uint32_seq.set(paramatbf.jdField_a_of_type_Int);
+    if (paramatbf.c > 0) {
+      localVisitProfRec.uint32_enter_count.set(paramatbf.c);
+    }
+    if (paramatbf.d > 0) {
+      localVisitProfRec.uint32_visit_duration.set(paramatbf.d);
+    }
+    if (paramatbf.e > 0) {
+      localVisitProfRec.uint32_visit_pic_count.set(paramatbf.e);
+    }
+    if (paramatbf.f > 0) {
+      localVisitProfRec.uint32_opflag.set(paramatbf.f);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyHandler", 2, "convert2VisitRec ,record =" + paramatbf);
+    }
+    return localVisitProfRec;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyHandler", 2, "notifyExitNearby");
+    }
+    notifyUI(20, true, new Object[0]);
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, int paramInt)
+  {
+    Object localObject = new oidb_0xada.ReqBody();
+    if (!a((oidb_0xada.ReqBody)localObject))
+    {
+      QLog.e("NearbyHandler", 1, "oidb_0xada getNowLivingAvatar failed");
+      return;
+    }
+    ilive_feeds_near_anchor.GetNearAnchorReq localGetNearAnchorReq = new ilive_feeds_near_anchor.GetNearAnchorReq();
+    localGetNearAnchorReq.longitude.set(paramFloat1);
+    localGetNearAnchorReq.latitude.set(paramFloat2);
+    localGetNearAnchorReq.start.set(0);
+    localGetNearAnchorReq.num.set(paramInt);
+    localGetNearAnchorReq.source.set(1);
+    localGetNearAnchorReq.gender_filter.set(0);
+    ((oidb_0xada.ReqBody)localObject).cmd.set(24833);
+    ((oidb_0xada.ReqBody)localObject).subcmd.set(1);
+    ((oidb_0xada.ReqBody)localObject).busi_buf.set(ByteStringMicro.copyFrom(localGetNearAnchorReq.toByteArray()));
+    localObject = makeOIDBPkg("OidbSvc.0xada_0", 2778, 0, ((oidb_0xada.ReqBody)localObject).toByteArray());
+    ((ToServiceMsg)localObject).addAttribute("innerReq", "ilive_feeds_near_anchor");
+    sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, String paramString1, String paramString2, String paramString3)
+  {
+    notifyUI(16, true, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8), Integer.valueOf(paramInt9), paramString1, paramString2, paramString3 });
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    cmd0xafc.ReqBody localReqBody = new cmd0xafc.ReqBody();
+    cmd0xafc.Location localLocation;
+    Object localObject;
+    if (paramInt == 1)
+    {
+      String str = "OidbSvc.0xafc_1";
+      localLocation = new cmd0xafc.Location();
+      if (paramSosoLbsInfo == null)
+      {
+        localObject = null;
+        if ((paramSosoLbsInfo == null) || (localObject == null)) {
+          break label314;
+        }
+        if ((((SosoInterface.SosoLocation)localObject).a == 0.0D) || (((SosoInterface.SosoLocation)localObject).b == 0.0D)) {
+          break label234;
+        }
+        localLocation.int32_lat.set((int)(((SosoInterface.SosoLocation)localObject).a * 1000000.0D));
+        localLocation.int32_lon.set((int)(((SosoInterface.SosoLocation)localObject).b * 1000000.0D));
+        localLocation.int32_coo.set(1);
+        if (QLog.isColorLevel()) {
+          QLog.d("nearby.heart_beat", 2, "send_oidb_0xafc: gpsType=GPS_GCJ02");
+        }
+        label119:
+        paramSosoLbsInfo = new cmd0xafc.NearbyEnter();
+        paramSosoLbsInfo.msg_location.set(localLocation);
+        localReqBody.msg_nearby_enter.set(paramSosoLbsInfo);
+        paramSosoLbsInfo = str;
+      }
+    }
+    for (;;)
+    {
+      label148:
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.heart_beat", 2, "send_oidb_0xafc: cmd=" + paramSosoLbsInfo);
+      }
+      paramSosoLbsInfo = makeOIDBPkg(paramSosoLbsInfo, 2812, paramInt, localReqBody.toByteArray());
+      paramSosoLbsInfo.extraData.putBoolean("req_pb_protocol_flag", true);
+      paramSosoLbsInfo.extraData.putLong("request_start_time", SystemClock.uptimeMillis());
+      send(paramSosoLbsInfo);
+      label234:
+      do
+      {
+        do
         {
-          paramQQAppInterface = new ArrayList();
-          localObject2 = localHashMap.keySet().iterator();
+          return;
+          localObject = paramSosoLbsInfo.a;
+          break;
+          if ((((SosoInterface.SosoLocation)localObject).c == 0.0D) || (((SosoInterface.SosoLocation)localObject).d == 0.0D)) {
+            break label119;
+          }
+          localLocation.int32_lat.set((int)(((SosoInterface.SosoLocation)localObject).c * 1000000.0D));
+          localLocation.int32_lon.set((int)(((SosoInterface.SosoLocation)localObject).d * 1000000.0D));
+          localLocation.int32_coo.set(0);
+          if (!QLog.isColorLevel()) {
+            break label119;
+          }
+          QLog.d("nearby.heart_beat", 2, "send_oidb_0xafc: gpsType=GPS_WGS84");
+          break label119;
+        } while (!QLog.isColorLevel());
+        QLog.d("nearby.heart_beat", 2, "send_oidb_0xafc: lbsInfo=" + paramSosoLbsInfo + ", location=" + localObject);
+        return;
+        if (paramInt == 2)
+        {
+          paramSosoLbsInfo = "OidbSvc.0xafc_2";
+          localObject = new cmd0xafc.NearbyExit();
+          localReqBody.msg_nearby_exit.set((MessageMicro)localObject);
+          break label148;
+        }
+      } while (paramInt != 3);
+      label314:
+      paramSosoLbsInfo = "OidbSvc.0xafc_3";
+      localObject = new cmd0xafc.HeartBeat();
+      localReqBody.msg_heart_beat.set((MessageMicro)localObject);
+    }
+  }
+  
+  public void a(NearbyMyTabCard paramNearbyMyTabCard)
+  {
+    notifyUI(4, true, new Object[] { paramNearbyMyTabCard });
+  }
+  
+  public void a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg, Object paramObject)
+  {
+    paramToServiceMsg = new cmd0xafc.RspBody();
+    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    paramFromServiceMsg = paramFromServiceMsg.getServiceCmd();
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.heart_beat", 2, "handle_oidb_0xafc: cmd=" + paramFromServiceMsg + ", result=" + i);
+    }
+    boolean bool;
+    if (i == 0)
+    {
+      bool = true;
+      if (!bool) {
+        break label376;
+      }
+      if (!paramToServiceMsg.uint32_heart_beat_interval.has()) {
+        break label368;
+      }
+      i = paramToServiceMsg.uint32_heart_beat_interval.get() * 1000;
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.heart_beat", 2, "handle_oidb_0xafc: interval=" + i);
+      }
+      if (i >= 60000) {
+        break label365;
+      }
+      i = 60000;
+      label148:
+      if (paramToServiceMsg.msg_self_info.has())
+      {
+        paramObject = (oidb_0x8dd.SelfInfo)paramToServiceMsg.msg_self_info.get();
+        paramObject.str_third_line_info.set(paramObject.str_third_line_info.get().trim());
+        j = paramObject.uint32_gender.get();
+        int k = a(j);
+        paramObject.uint32_gender.set(k);
+        this.a.a(paramObject);
+        ((ampe)this.a.getManager(210)).a(this.a, paramObject);
+        if (QLog.isColorLevel()) {
+          QLog.d("nearby.heart_beat", 2, "handle_oidb_0xafc: gender=" + j + ", newGender=" + k);
+        }
+      }
+      j = i;
+      if (paramToServiceMsg.msg_config.has())
+      {
+        paramToServiceMsg = (oidb_0x8dd.NearbyConfig)paramToServiceMsg.msg_config.get();
+        j = i;
+        if (QLog.isColorLevel()) {
+          QLog.d("nearby.heart_beat", 2, "handle_oidb_0xafc: NearbyConfig has");
+        }
+      }
+    }
+    label365:
+    label368:
+    label376:
+    for (int j = i;; j = 60000)
+    {
+      notifyUI(17, bool, new Object[] { paramFromServiceMsg, Integer.valueOf(j) });
+      return;
+      bool = false;
+      break;
+      break label148;
+      i = 60000;
+      break label148;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NewNearbyMyTab", 2, "handleClearRedTouch| isSuccess = " + paramFromServiceMsg.isSuccess());
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NewNearbyMyTab", 2, "getNearbyMyTabCard| uin = " + paramString);
+    }
+    Oidb_0x66b.ReqBody localReqBody = new Oidb_0x66b.ReqBody();
+    oidb_0x5eb.ReqBody localReqBody1 = new oidb_0x5eb.ReqBody();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Long.valueOf(Long.parseLong(paramString)));
+    localReqBody1.rpt_uint64_uins.set(localArrayList);
+    localReqBody1.uint32_req_nick.set(1);
+    localReqBody1.uint32_req_stranger_nick.set(1);
+    localReqBody1.uint32_req_gender.set(1);
+    localReqBody1.uint32_req_god_flag.set(1);
+    localReqBody1.uint32_req_age.set(1);
+    localReqBody.bytes_reqbody_5eb.set(ByteStringMicro.copyFrom(localReqBody1.toByteArray()));
+    localReqBody.uint32_req_likeinfo.set(1);
+    localReqBody.uint32_req_pansocialinfo.set(1);
+    localReqBody.uint32_req_giftinfo.set(1);
+    localReqBody.uint32_req_configinfo.set(1);
+    localReqBody.uint32_req_visitor.set(3);
+    paramString = makeOIDBPkg("OidbSvc.0x66b", 1643, 0, localReqBody.toByteArray());
+    paramString.extraData.putBoolean("req_pb_protocol_flag", true);
+    paramString.extraData.putLong("request_start_time", SystemClock.uptimeMillis());
+    send(paramString);
+  }
+  
+  public void a(List<atbf> paramList, boolean paramBoolean)
+  {
+    int j = 0;
+    int k = paramList.size();
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyHandler", 2, "reportNearbyListBehavior,dataSize = " + k + ",isCache = " + paramBoolean);
+    }
+    if (k < 1) {
+      return;
+    }
+    if (k <= 200)
+    {
+      localObject1 = new cmd0x77f.ReqBody();
+      Object localObject2 = ((cmd0x77f.ReqBody)localObject1).uint32_listtype;
+      if (paramBoolean) {}
+      for (int i = 1;; i = 0)
+      {
+        ((PBUInt32Field)localObject2).set(i);
+        ((cmd0x77f.ReqBody)localObject1).uint32_list_ruleid.set(((atbf)paramList.get(0)).b);
+        i = j;
+        while (i < k)
+        {
+          localObject2 = a((atbf)paramList.get(i));
+          ((cmd0x77f.ReqBody)localObject1).rpt_msg_visit_prof_rec.add((MessageMicro)localObject2);
+          i += 1;
+        }
+      }
+      paramList = makeOIDBPkg("OidbSvc.0x77f_1", 1919, 1, ((cmd0x77f.ReqBody)localObject1).toByteArray());
+      paramList.extraData.putBoolean("req_pb_protocol_flag", true);
+      send(paramList);
+      return;
+    }
+    Object localObject1 = paramList.subList(0, 200);
+    paramList = paramList.subList(200, k);
+    a((List)localObject1, paramBoolean);
+    a(paramList, paramBoolean);
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.hotChatDistance", 2, "NearbyHandler.checkIn,  lat=" + paramInt1 + ", lon=" + paramInt2);
+    }
+    if ((paramInt1 != 0) && (paramInt2 != 0))
+    {
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", getCurrentAccountUin(), "EncounterSvc.ReqGetEncounter");
+      localToServiceMsg.extraData.putInt("localLat", paramInt1);
+      localToServiceMsg.extraData.putInt("localLon", paramInt2);
+      localToServiceMsg.extraData.putBoolean("isCheckInReq", true);
+      send(localToServiceMsg);
+      return true;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.check.auth", 2, "checkNearbyUserAuth");
+    }
+    Object localObject = new oidb_0xada.ReqBody();
+    if (!a((oidb_0xada.ReqBody)localObject))
+    {
+      QLog.e("nearby.check.auth", 1, "oidb_0xada checkNearbyAuth config0xadaFileds failed");
+      return;
+    }
+    long l = this.a.getLongAccountUin();
+    ilive_nearby_user_control.EnterNearbyUserContrlReq localEnterNearbyUserContrlReq = new ilive_nearby_user_control.EnterNearbyUserContrlReq();
+    localEnterNearbyUserContrlReq.user_id.set(l);
+    localEnterNearbyUserContrlReq.user_type.set(0);
+    localEnterNearbyUserContrlReq.source.set("qq_android_nearby");
+    ((oidb_0xada.ReqBody)localObject).cmd.set(1008);
+    ((oidb_0xada.ReqBody)localObject).subcmd.set(1);
+    ((oidb_0xada.ReqBody)localObject).busi_buf.set(ByteStringMicro.copyFrom(localEnterNearbyUserContrlReq.toByteArray()));
+    localObject = makeOIDBPkg("OidbSvc.0xada_0", 2778, 0, ((oidb_0xada.ReqBody)localObject).toByteArray());
+    ((ToServiceMsg)localObject).addAttribute("innerReq", "ilive_nearby_user_control");
+    sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewNearbyMyTab", 2, "handleGetNearbyMyTab");
+    }
+    Object localObject1 = new Oidb_0x66b.RspBody();
+    int k = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject1);
+    label797:
+    label853:
+    label1124:
+    boolean bool2;
+    if (k == 0)
+    {
+      paramFromServiceMsg = new oidb_0x5eb.RspBody();
+      paramObject = new NearbyMyTabCard();
+      Object localObject2;
+      if (((Oidb_0x66b.RspBody)localObject1).bytes_rspbody_5eb.has()) {
+        localObject2 = ((Oidb_0x66b.RspBody)localObject1).bytes_rspbody_5eb.get().toByteArray();
+      }
+      try
+      {
+        paramFromServiceMsg.mergeFrom((byte[])localObject2);
+        if ((paramFromServiceMsg.rpt_msg_uin_data.has()) && (paramFromServiceMsg.rpt_msg_uin_data.size() > 0))
+        {
+          paramFromServiceMsg = (oidb_0x5eb.UdcUinData)paramFromServiceMsg.rpt_msg_uin_data.get().get(0);
+          paramObject.uin = Long.valueOf(paramFromServiceMsg.uint64_uin.get());
+          paramObject.nickName = paramFromServiceMsg.bytes_stranger_nick.get().toStringUtf8();
+          paramObject.carrier = paramFromServiceMsg.uint32_profession.get();
+          paramObject.gender = paramFromServiceMsg.uint32_gender.get();
+          if ((paramObject.gender == 1) || (paramObject.gender == 2)) {
+            atbg.a(paramObject.uin + "", "self_gender", Integer.valueOf(paramObject.gender));
+          }
+          paramObject.age = paramFromServiceMsg.uint32_age.get();
+          paramObject.godFlag = paramFromServiceMsg.uint32_god_flag.get();
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        try
+        {
           for (;;)
           {
-            if (!((Iterator)localObject2).hasNext()) {
-              break label766;
+            paramFromServiceMsg.mergeFrom((byte[])localObject2);
+            paramObject.giftNum = paramFromServiceMsg.num.get();
+            if (!((Oidb_0x66b.RspBody)localObject1).stConfigList.has()) {
+              break label853;
             }
-            localObject3 = (String)((Iterator)localObject2).next();
-            localObject4 = (ArrayList)localHashMap.get(localObject3);
-            if (!((ArrayList)localObject4).isEmpty()) {
-              if ((((MessageRecord)((ArrayList)localObject4).get(0)).longMsgCount <= ((ArrayList)localObject4).size()) || (((MessageRecord)((ArrayList)localObject4).get(0)).isSendFromLocal()))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("Q.msg.MsgProxyUtils", 2, "mergeLongMsg: complete online msg: uin=" + paramString + ",istroop=" + paramInt + ",key=" + (String)localObject3);
-                }
-                ((awao)localObject1).a(paramString, paramInt, (String)localObject3);
-              }
-              else if (((awao)localObject1).a(paramString, paramInt, (String)localObject3))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("Q.msg.MsgProxyUtils", 2, "mergeLongMsg: incomplete online msg: uin=" + paramString + ",istroop=" + paramInt + ",key=" + (String)localObject3);
-                }
-                paramQQAppInterface.add(localObject3);
-                localObject4 = localArrayList.iterator();
-                if (((Iterator)localObject4).hasNext())
-                {
-                  if (!TextUtils.equals((CharSequence)((Pair)((Iterator)localObject4).next()).first, (CharSequence)localObject3)) {
-                    break;
-                  }
-                  ((Iterator)localObject4).remove();
-                }
-              }
-            }
-          }
-          label766:
-          if (!paramQQAppInterface.isEmpty())
-          {
-            paramQQAppInterface = paramQQAppInterface.iterator();
-            while (paramQQAppInterface.hasNext()) {
-              localHashMap.remove((String)paramQQAppInterface.next());
-            }
-          }
-        }
-        i2 = localArrayList.size() - 1;
-        while (i2 >= 0)
-        {
-          paramQQAppInterface = (Pair)localArrayList.get(i2);
-          localObject2 = (ArrayList)localHashMap.get(paramQQAppInterface.first);
-          try
-          {
-            Collections.sort((List)localObject2, jdField_a_of_type_JavaUtilComparator);
-            localObject1 = new ArrayList();
-            localObject2 = ((ArrayList)localObject2).iterator();
-            i1 = 0;
+            localObject2 = ((Oidb_0x66b.RspBody)localObject1).stConfigList.get();
+            paramFromServiceMsg = new boolean[2];
+            FromServiceMsg tmp472_471 = paramFromServiceMsg;
+            tmp472_471[0] = 0;
+            FromServiceMsg tmp478_472 = tmp472_471;
+            tmp478_472[1] = 0;
+            tmp478_472;
+            localObject2 = ((List)localObject2).iterator();
             for (;;)
             {
               if (!((Iterator)localObject2).hasNext()) {
-                break label1084;
+                break label797;
               }
-              localObject3 = (MessageRecord)((Iterator)localObject2).next();
-              if (!c((MessageRecord)localObject3)) {
+              localRspConfigItem = (Oidb_0x66b.RspConfigItem)((Iterator)localObject2).next();
+              if ((!localRspConfigItem.uint32_id.has()) || (localRspConfigItem.uint32_id.get() != 10001)) {
                 break;
               }
-              ((ArrayList)localObject1).add(localObject3);
-            }
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel())
-              {
-                QLog.d("Q.msg.MsgProxyUtils", 2, "sort long msg error", localException);
-                continue;
-                i3 = i1;
-                if (!localException.isEmpty())
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("Q.msg.MsgProxyUtils", 2, "mergeLongMsg: uin=" + paramString + ",istroop=" + paramInt + ",key=" + b((MessageRecord)localException.get(0)));
-                  }
-                  paramList.add(i1 + ((Integer)paramQQAppInterface.second).intValue(), new MessageForLongMsg(localException));
-                  localException.clear();
-                  i3 = i1 + 1;
-                }
-                paramList.add(i3 + ((Integer)paramQQAppInterface.second).intValue(), localObject3);
-                i1 = i3 + 1;
-              }
-            }
-            label1084:
-            if (!localException.isEmpty())
-            {
               if (QLog.isColorLevel()) {
-                QLog.d("Q.msg.MsgProxyUtils", 2, "mergeLongMsg: uin=" + paramString + ",istroop=" + paramInt + ",key=" + b((MessageRecord)localException.get(0)));
+                QLog.d("Q.nearby", 2, "handleGetNearbyMyTab|shield date entrance");
               }
-              paramList.add(((Integer)paramQQAppInterface.second).intValue() + i1, new MessageForLongMsg(localException));
-              localException.clear();
             }
-            i2 -= 1;
+            paramFromServiceMsg = paramFromServiceMsg;
+            if (QLog.isColorLevel()) {
+              QLog.e("NewNearbyMyTab", 2, "fail to decode 5eb_rspBody", paramFromServiceMsg);
+            }
           }
+          paramObject.likeTotalNum = paramFromServiceMsg.likeTotalNum;
+          paramObject.newLikeNum = paramFromServiceMsg.newLikeNum;
         }
-      }
-    }
-  }
-  
-  public static void a(List<MessageRecord> paramList, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    do
-    {
-      String str;
-      do
-      {
-        return;
-        ArrayList localArrayList = new ArrayList(8);
-        str = null;
-        Iterator localIterator = paramList.iterator();
-        while (localIterator.hasNext())
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
-          MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-          if (localMessageRecord == null)
+          for (;;)
           {
-            localArrayList.add(localMessageRecord);
-          }
-          else
-          {
-            str = localMessageRecord.frienduin;
-            if ((localMessageRecord.msgtype == -2006) || (!localMessageRecord.isValid)) {
-              localArrayList.add(localMessageRecord);
-            }
-            for (;;)
+            Oidb_0x66b.RspConfigItem localRspConfigItem;
+            paramObject.giftNum = 0;
+            if (QLog.isColorLevel())
             {
-              break;
-              if ((localMessageRecord.msgtype == -2015) && ((localMessageRecord instanceof MessageForQzoneFeed)))
-              {
-                ((MessageForQzoneFeed)localMessageRecord).parse();
-                if (bfpr.m())
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.i("Q.msg.MsgProxyUtils", 2, "QZoneFeeds ,空间下发配置屏蔽 aiofeeds，不再显示");
-                  }
-                  localArrayList.add(localMessageRecord);
-                }
-                else if (((MessageForQzoneFeed)localMessageRecord).isOldStructMsg)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.i("Q.msg.MsgProxyUtils", 2, "QZoneFeeds ,空间aio feeds格式不兼容，不再显示");
-                  }
-                  localArrayList.add(localMessageRecord);
-                }
-                else if (FeedsManager.isShowStatus(localMessageRecord.frienduin))
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.i("Q.msg.MsgProxyUtils", 2, "QZoneFeeds ,当前会话列表中有新动态，先将aio中的feeds隐藏，避免aio中的feeds跳变");
-                  }
-                  localArrayList.add(localMessageRecord);
-                }
-              }
-            }
-          }
-        }
-        paramList.removeAll(localArrayList);
-      } while ((str == null) || (!FeedsManager.isShowStatus(str)) || (paramQQAppInterface == null));
-      paramQQAppInterface = (acjz)paramQQAppInterface.getManager(282);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.a(paramList, false);
-  }
-  
-  public static void a(List<MessageRecord> paramList, MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    if (paramList != null)
-    {
-      if ((paramMessageRecord.istroop == 3000) || (paramMessageRecord.istroop == 1)) {
-        c(paramList, paramMessageRecord, paramBoolean);
-      }
-    }
-    else {
-      return;
-    }
-    if (c(paramMessageRecord.istroop))
-    {
-      b(paramList, paramMessageRecord, paramBoolean);
-      return;
-    }
-    paramList.add(paramMessageRecord);
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    if (j.length == 0) {}
-    for (;;)
-    {
-      return false;
-      int[] arrayOfInt = j;
-      int i2 = arrayOfInt.length;
-      int i1 = 0;
-      while (i1 < i2)
-      {
-        if (arrayOfInt[i1] == paramInt) {
-          return true;
-        }
-        i1 += 1;
-      }
-    }
-  }
-  
-  public static boolean a(int paramInt1, int paramInt2)
-  {
-    return ((a(paramInt1) == 1001) || (a(paramInt1) == 10002)) && (paramInt2 != -3001) && (paramInt2 != -3000) && (paramInt2 != -1032) && (paramInt2 != -1031) && (paramInt2 != -1003);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
-  {
-    if (paramInt == 1) {
-      return !((HotChatManager)paramQQAppInterface.getManager(60)).b(paramString);
-    }
-    paramQQAppInterface = w;
-    int i2 = paramQQAppInterface.length;
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      if (paramQQAppInterface[i1] == paramInt) {
-        return true;
-      }
-      i1 += 1;
-    }
-    return false;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord.istroop == 1)
-    {
-      if (((HotChatManager)paramQQAppInterface.getManager(60)).b(paramMessageRecord.frienduin)) {
-        return true;
-      }
-    }
-    else if (paramMessageRecord.istroop == 1026) {
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if (paramInt == 3000)
-    {
-      ajhh localajhh = (ajhh)paramQQAppInterface.getManager(53);
-      DiscussionInfo localDiscussionInfo = localajhh.a(paramString, true);
-      if ((localDiscussionInfo == null) || (localDiscussionInfo.isHidden())) {
-        return true;
-      }
-      paramQQAppInterface = localajhh.a(paramString, paramQQAppInterface.getCurrentAccountUin());
-      if (paramQQAppInterface != null) {
-        return (paramQQAppInterface.flag & 0x1) == 1;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MsgProxyUtils", 2, String.format("isDiscussionFilter, discuss meminfo not find, uin:%s, uinType: %d ", new Object[] { paramString, Integer.valueOf(paramInt) }));
-      }
-    }
-    return false;
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    boolean bool2 = false;
-    int[] arrayOfInt = f;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    boolean bool1;
-    if (i1 < i2) {
-      if (arrayOfInt[i1] == paramMessageRecord.msgtype) {
-        bool1 = true;
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          i1 += 1;
-          break;
-          bool1 = bool2;
-        } while (!i(paramMessageRecord.msgtype));
-        bool1 = bool2;
-      } while (!(paramMessageRecord instanceof MessageForUniteGrayTip));
-      paramMessageRecord = (MessageForUniteGrayTip)paramMessageRecord;
-      bool1 = bool2;
-    } while (paramMessageRecord.tipParam == null);
-    return paramMessageRecord.tipParam.f;
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    return (paramMessageRecord1.isLongMsg()) && (paramMessageRecord2.isLongMsg()) && (paramMessageRecord1.longMsgId == paramMessageRecord2.longMsgId) && (paramMessageRecord1.longMsgCount == paramMessageRecord2.longMsgCount) && (TextUtils.equals(paramMessageRecord1.senderuin, paramMessageRecord2.senderuin)) && (Math.abs(paramMessageRecord1.time - paramMessageRecord2.time) <= 480L);
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, boolean paramBoolean)
-  {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    if (paramMessageRecord1.msgtype == paramMessageRecord2.msgtype) {
-      if (paramMessageRecord1.msgUid != 0L) {
-        if (paramBoolean)
-        {
-          bool1 = bool2;
-          if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
-          {
-            bool1 = bool2;
-            if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
-              bool1 = true;
-            }
-          }
-          paramBoolean = bool1;
-          if (!bool1) {
-            if (paramMessageRecord1.msgtype != -2005)
-            {
-              paramBoolean = bool1;
-              if (paramMessageRecord1.msgtype != -2002) {}
-            }
-            else if (paramMessageRecord2.istroop == 1008)
-            {
-              paramBoolean = bool1;
-              if (paramMessageRecord1.msgtype != -2005) {}
-            }
-            else
-            {
-              paramBoolean = bool1;
-              if (c(paramMessageRecord1, paramMessageRecord2)) {
-                paramBoolean = true;
-              }
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if ((paramBoolean) && (QLog.isColorLevel())) {
-        QLog.w("Q.msg.MsgProxyUtils", 2, "friend---------------msgFilter istroop: " + paramMessageRecord2.istroop + " friendUin: " + paramMessageRecord2.frienduin + " senderUin: " + paramMessageRecord2.senderuin + " LOC_shmsgseq: " + paramMessageRecord1.shmsgseq + " NEW_shmsgseq:" + paramMessageRecord1.shmsgseq + " LOC_msgType: " + paramMessageRecord1.msgtype + " NEW_msgType" + paramMessageRecord2.msgtype + " LOC_msgtime: " + paramMessageRecord1.time + " NEW_msgtime:" + paramMessageRecord2.time + " LOC_msgUid:" + paramMessageRecord1.msgUid + " NEW_msgUid:" + paramMessageRecord2.msgUid + " LOC_msgContent: " + paramMessageRecord1.getLogColorContent() + " NEW_msgContent:" + paramMessageRecord2.getLogColorContent());
-      }
-      return paramBoolean;
-      paramBoolean = bool1;
-      if (c(paramMessageRecord1, paramMessageRecord2))
-      {
-        paramBoolean = true;
-        continue;
-        paramBoolean = bool1;
-        if (c(paramMessageRecord1, paramMessageRecord2))
-        {
-          paramBoolean = true;
-          continue;
-          if ((paramMessageRecord1.msgtype == -1000) && (paramMessageRecord2.msgtype == -2007))
-          {
-            paramBoolean = bool1;
-            if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
-            {
-              paramBoolean = bool1;
-              if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
-                paramBoolean = true;
-              }
-            }
-          }
-          else if ((paramMessageRecord1.msgtype == -2001) && (paramMessageRecord2.msgtype == -2000))
-          {
-            paramBoolean = bool1;
-            if (paramMessageRecord1.time == paramMessageRecord2.time)
-            {
-              paramBoolean = bool1;
-              if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
-                paramBoolean = true;
-              }
-            }
-          }
-          else if ((paramMessageRecord1.msgtype == -1000) && (paramMessageRecord2.msgtype == -2011))
-          {
-            paramBoolean = bool1;
-            if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
-            {
-              paramBoolean = bool1;
-              if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
-                paramBoolean = true;
-              }
-            }
-          }
-          else if ((paramMessageRecord1.msgtype == -1000) && (paramMessageRecord2.msgtype == -2022))
-          {
-            paramBoolean = bool1;
-            if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
-            {
-              paramBoolean = bool1;
-              if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
-                paramBoolean = true;
-              }
-            }
-          }
-          else if ((paramMessageRecord1.msgtype == -1000) && (paramMessageRecord2.msgtype == -2025))
-          {
-            paramBoolean = bool1;
-            if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
-            {
-              paramBoolean = bool1;
-              if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
-                paramBoolean = true;
-              }
-            }
-          }
-          else if (aqay.a(paramMessageRecord1))
-          {
-            paramBoolean = bool1;
-            if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
-            {
-              paramBoolean = bool1;
-              if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
-                paramBoolean = true;
-              }
-            }
-          }
-          else if ((paramMessageRecord2.msgtype == -1051) && ((paramMessageRecord1.msgtype == -1000) || (paramMessageRecord1.msgtype == -2011)))
-          {
-            paramBoolean = bool1;
-            if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
-            {
-              paramBoolean = bool1;
-              if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
-                paramBoolean = true;
-              }
-            }
-          }
-          else if ((paramMessageRecord1.msgtype == -2011) && (paramMessageRecord2.msgtype == -1000))
-          {
-            paramBoolean = bool1;
-            if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
-            {
-              paramBoolean = bool1;
-              if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
-                paramBoolean = true;
-              }
-            }
-          }
-          else if ((paramMessageRecord1.msgtype == -1035) && (paramMessageRecord2.msgtype == -1051))
-          {
-            paramBoolean = bool1;
-            if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
-            {
-              paramBoolean = bool1;
-              if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
-                paramBoolean = true;
-              }
-            }
-          }
-          else if ((paramMessageRecord2.msgtype == -1035) && (paramMessageRecord1.msgtype == -1051))
-          {
-            paramBoolean = bool1;
-            if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
-            {
-              paramBoolean = bool1;
-              if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
-                paramBoolean = true;
-              }
-            }
-          }
-          else if ((paramMessageRecord1.msgtype == -1000) && (paramMessageRecord2.msgtype == -5012))
-          {
-            paramBoolean = bool1;
-            if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
-            {
-              paramBoolean = bool1;
-              if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
-                paramBoolean = true;
-              }
-            }
-          }
-          else
-          {
-            paramBoolean = bool1;
-            if (paramMessageRecord1.msgtype == -1000)
-            {
-              paramBoolean = bool1;
-              if (paramMessageRecord2.msgtype == -2071)
-              {
-                paramBoolean = bool1;
-                if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
-                {
-                  paramBoolean = bool1;
-                  if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
-                    paramBoolean = true;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    boolean bool = true;
-    if ((paramMessageRecord1.frienduin == null) || (!paramMessageRecord1.frienduin.equals(paramMessageRecord2.frienduin))) {
-      paramBoolean1 = false;
-    }
-    label68:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              do
-                              {
-                                return paramBoolean1;
-                                if (paramBoolean1) {
-                                  break label285;
-                                }
-                                if (paramBoolean2) {
-                                  break label68;
-                                }
-                                if (Math.abs(paramMessageRecord1.time - paramMessageRecord2.time) >= 30L) {
-                                  break;
-                                }
-                                paramBoolean1 = bool;
-                              } while (b(paramMessageRecord1, paramMessageRecord2));
-                              return false;
-                              if (paramMessageRecord1.shmsgseq != paramMessageRecord2.shmsgseq) {
-                                break;
-                              }
-                              paramBoolean1 = bool;
-                            } while (paramMessageRecord1.msgtype == paramMessageRecord2.msgtype);
-                            if (paramMessageRecord1.msgtype != -1000) {
-                              break;
-                            }
-                            paramBoolean1 = bool;
-                          } while (paramMessageRecord2.msgtype == -2007);
-                          paramBoolean1 = bool;
-                        } while (paramMessageRecord1.msgtype == -2006);
-                        paramBoolean1 = bool;
-                      } while (paramMessageRecord2.msgtype == -2006);
-                      if (paramMessageRecord1.msgtype != -1000) {
-                        break;
-                      }
-                      paramBoolean1 = bool;
-                    } while (paramMessageRecord2.msgtype == -2011);
-                    paramBoolean1 = bool;
-                  } while (aqay.a(paramMessageRecord1));
-                  if (paramMessageRecord2.msgtype != -1051) {
-                    break;
-                  }
-                  paramBoolean1 = bool;
-                } while (paramMessageRecord1.msgtype == -1000);
-                paramBoolean1 = bool;
-              } while (paramMessageRecord1.msgtype == -2011);
-              if (paramMessageRecord1.msgtype != -2011) {
-                break;
-              }
-              paramBoolean1 = bool;
-            } while (paramMessageRecord2.msgtype == -1000);
-            if (paramMessageRecord2.msgtype != -1051) {
-              break;
-            }
-            paramBoolean1 = bool;
-          } while (paramMessageRecord1.msgtype == -1035);
-          if (paramMessageRecord1.msgtype != -1051) {
-            break;
-          }
-          paramBoolean1 = bool;
-        } while (paramMessageRecord2.msgtype == -1035);
-        return false;
-        return false;
-        if (!paramMessageRecord1.isSendFromLocal()) {
-          return false;
-        }
-        if ((paramMessageRecord1.extraflag != 32772) && (paramMessageRecord1.extraflag != 32768)) {
-          if (paramMessageRecord1.msgtype == -1035)
-          {
-            if (paramMessageRecord1.extraflag != 32770) {
-              return false;
-            }
-          }
-          else {
-            return false;
-          }
-        }
-        if (paramMessageRecord1.msgtype == -2006) {
-          return false;
-        }
-        if ((paramMessageRecord1.senderuin == null) || (!paramMessageRecord1.senderuin.equals(paramMessageRecord2.senderuin))) {
-          return false;
-        }
-        if ((paramMessageRecord1.msgUid == 0L) || (paramMessageRecord2.msgUid == 0L) || (paramMessageRecord1.msgUid != paramMessageRecord2.msgUid)) {
-          break;
-        }
-        paramBoolean1 = bool;
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.msg.MsgProxyUtils", 2, "compTroopMsgContent RewriteSeq: find msg by uid=" + paramMessageRecord1.msgUid);
-      return true;
-      if ((Math.abs(paramMessageRecord1.time - paramMessageRecord2.time) >= 510L) && (Math.abs(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) >= 2L)) {
-        break;
-      }
-      paramBoolean1 = bool;
-    } while (b(paramMessageRecord1, paramMessageRecord2));
-    label285:
-    return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int i2 = arrayOfString.length;
-    int i1 = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i1 < i2)
-      {
-        if (arrayOfString[i1].equals(paramString)) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i1 += 1;
-    }
-  }
-  
-  public static boolean a(String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (((a(paramInt) == 1001) || (a(paramInt) == 10002)) && ((!ajed.H.equals(paramString)) && (((a(paramInt) == 1001) || (a(paramInt) == 10002)) && ((!ajed.I.equals(paramString)) && ((a(paramInt) != 1009) || (!ajed.w.equals(paramString))) && ((a(paramInt) != 1010) || (!ajed.aa.equals(paramString))) && ((a(paramInt) != 1001) || (!ajed.ai.equals(paramString))) && ((a(paramInt) != 1010) || (!ajed.aj.equals(paramString))) && ((a(paramInt) != 1010) || (!ajed.H.equals(paramString))) && ((a(paramInt) != 1010) || (!ajed.ai.equals(paramString))) && ((a(paramInt) != 1032) || (!ajed.aL.equals(paramString))) && ((a(paramInt) != 1044) || (!ajed.aS.equals(paramString))))))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(String paramString, int paramInt, List<MessageRecord> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    Object localObject;
-    do
-    {
-      while (!paramList.hasNext())
-      {
-        do
-        {
-          return false;
-          paramString = new HashMap();
-          paramList = paramList.iterator();
-          paramInt = 0;
-          if (paramList.hasNext())
-          {
-            localObject = (MessageRecord)paramList.next();
-            String str;
-            if (((MessageRecord)localObject).isLongMsg())
-            {
-              str = b((MessageRecord)localObject);
-              if (paramString.containsKey(str)) {
-                if (Math.abs(((MessageRecord)((ArrayList)paramString.get(str)).get(0)).time - ((MessageRecord)localObject).time) <= 480L) {
-                  ((ArrayList)paramString.get(str)).add(localObject);
-                }
-              }
-            }
-            for (;;)
-            {
-              break;
-              paramInt += 1;
-              paramString.put(b(str, paramInt), paramString.get(str));
-              ArrayList localArrayList = new ArrayList();
-              localArrayList.add(localObject);
-              paramString.put(str, localArrayList);
+              QLog.e("NewNearbyMyTab", 2, "fail to decode SFlowerInfoRsp", localInvalidProtocolBufferMicroException);
               continue;
-              localArrayList = new ArrayList();
-              localArrayList.add(localObject);
-              paramString.put(str, localArrayList);
-            }
-          }
-        } while (paramString.isEmpty());
-        paramList = paramString.keySet().iterator();
-      }
-      localObject = (ArrayList)paramString.get((String)paramList.next());
-    } while ((((ArrayList)localObject).isEmpty()) || (((MessageRecord)((ArrayList)localObject).get(0)).longMsgCount <= ((ArrayList)localObject).size()) || (((MessageRecord)((ArrayList)localObject).get(0)).isSendFromLocal()));
-    return true;
-  }
-  
-  public static boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    if ((!e(paramInt1)) && (!e(paramInt2))) {
-      return TextUtils.equals(paramString1, paramString2);
-    }
-    return (paramInt1 == paramInt2) && (TextUtils.equals(paramString1, paramString2));
-  }
-  
-  public static boolean a(List<MessageRecord> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return false;
-    }
-    int i2 = paramList.size();
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.get(i1);
-      if ((localMessageRecord.msgtype != -2006) || ((localMessageRecord instanceof MessageForFoldMsg))) {
-        return true;
-      }
-      i1 += 1;
-    }
-    return false;
-  }
-  
-  public static byte[] a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)awbi.a(-2017);
-    MessageRecord.copyMessageRecordBaseField(localMessageForTroopFile, paramMessageRecord1);
-    localMessageForTroopFile.doParse();
-    paramMessageRecord1 = (MessageForTroopFile)awbi.a(-2017);
-    MessageRecord.copyMessageRecordBaseField(paramMessageRecord1, paramMessageRecord2);
-    paramMessageRecord1.doParse();
-    localMessageForTroopFile.bisID = paramMessageRecord1.bisID;
-    localMessageForTroopFile.dspFileName = paramMessageRecord1.dspFileName;
-    localMessageForTroopFile.dspFileSize = paramMessageRecord1.dspFileSize;
-    localMessageForTroopFile.fileSize = paramMessageRecord1.fileSize;
-    localMessageForTroopFile.fileName = paramMessageRecord1.fileName;
-    localMessageForTroopFile.url = paramMessageRecord1.url;
-    if ((paramMessageRecord1.width != 0) && (paramMessageRecord1.height != 0))
-    {
-      localMessageForTroopFile.width = paramMessageRecord1.width;
-      localMessageForTroopFile.height = paramMessageRecord1.height;
-    }
-    if (paramMessageRecord1.duration != 0) {
-      localMessageForTroopFile.duration = paramMessageRecord1.duration;
-    }
-    localMessageForTroopFile.serial();
-    return localMessageForTroopFile.msgData;
-  }
-  
-  static String[] a(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramString != null)
-    {
-      localObject1 = localObject2;
-      if (paramString.length() > 0)
-      {
-        localObject1 = localObject2;
-        if (paramString.charAt(0) == '\026') {
-          localObject1 = paramString.split("\\|");
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public static String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(h.length * 8);
-    localStringBuilder.append("not in (");
-    int i1 = 0;
-    if (i1 < h.length)
-    {
-      localStringBuilder.append(h[i1]);
-      if (i1 == h.length - 1) {
-        localStringBuilder.append(")");
-      }
-      for (;;)
-      {
-        i1 += 1;
-        break;
-        localStringBuilder.append(",");
-      }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static String b(MessageRecord paramMessageRecord)
-  {
-    return paramMessageRecord.longMsgId + "&" + paramMessageRecord.senderuin + "&" + paramMessageRecord.longMsgCount;
-  }
-  
-  public static String b(String paramString, int paramInt)
-  {
-    return paramString + "&" + paramInt;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
-  {
-    ThreadManager.post(new MsgProxyUtils.3(paramQQAppInterface, paramString, paramInt1, paramInt2), 8, null, true);
-  }
-  
-  public static void b(List<MessageRecord> paramList, MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    int i3 = 0;
-    if (paramList == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MsgProxyUtils", 2, "insertToListByTime, list is null");
-      }
-      return;
-    }
-    Iterator localIterator = paramList.iterator();
-    int i2 = 0;
-    for (;;)
-    {
-      int i1 = i3;
-      MessageRecord localMessageRecord;
-      if (localIterator.hasNext())
-      {
-        localMessageRecord = (MessageRecord)localIterator.next();
-        if (localMessageRecord.time <= paramMessageRecord.time) {
-          break label88;
-        }
-        i1 = 1;
-      }
-      for (;;)
-      {
-        if (i1 != 0) {
-          break label163;
-        }
-        paramList.add(paramMessageRecord);
-        return;
-        label88:
-        if (localMessageRecord.time != paramMessageRecord.time) {
-          break;
-        }
-        if (((localMessageRecord instanceof MessageForUniteGrayTip)) && ((paramMessageRecord instanceof MessageForUniteGrayTip)))
-        {
-          if (((MessageForUniteGrayTip)localMessageRecord).tipParam.d <= ((MessageForUniteGrayTip)paramMessageRecord).tipParam.d) {
-            break;
-          }
-          i1 = 1;
-        }
-        else
-        {
-          if (paramBoolean) {
-            break;
-          }
-          i1 = 1;
-        }
-      }
-      i2 += 1;
-    }
-    label163:
-    paramList.add(i2, paramMessageRecord);
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    if (k.length == 0) {}
-    for (;;)
-    {
-      return false;
-      int[] arrayOfInt = k;
-      int i2 = arrayOfInt.length;
-      int i1 = 0;
-      while (i1 < i2)
-      {
-        if (arrayOfInt[i1] == paramInt) {
-          return true;
-        }
-        i1 += 1;
-      }
-    }
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord.isOpenTroopMessage) {
-      return true;
-    }
-    if (paramMessageRecord.istroop == 1)
-    {
-      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.f(paramMessageRecord.frienduin))) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
-    }
-    return false;
-  }
-  
-  public static boolean b(MessageRecord paramMessageRecord)
-  {
-    boolean bool2 = false;
-    int[] arrayOfInt = e;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    boolean bool1;
-    if (i1 < i2) {
-      if (arrayOfInt[i1] == paramMessageRecord.msgtype) {
-        bool1 = true;
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          i1 += 1;
-          break;
-          bool1 = bool2;
-        } while (!i(paramMessageRecord.msgtype));
-        bool1 = bool2;
-      } while (!(paramMessageRecord instanceof MessageForUniteGrayTip));
-      paramMessageRecord = (MessageForUniteGrayTip)paramMessageRecord;
-      bool1 = bool2;
-    } while (paramMessageRecord.tipParam == null);
-    return paramMessageRecord.tipParam.f;
-  }
-  
-  private static boolean b(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    boolean bool = true;
-    if (paramMessageRecord1.msgtype != paramMessageRecord2.msgtype) {
-      bool = false;
-    }
-    String str;
-    Object localObject;
-    label513:
-    label579:
-    label1109:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              return bool;
-                              str = paramMessageRecord1.msg;
-                              localObject = paramMessageRecord2.msg;
-                              if (paramMessageRecord2.msgtype != -1000) {
-                                break;
-                              }
-                            } while (TextUtils.equals(str, (CharSequence)localObject));
-                            return false;
-                            if (paramMessageRecord2.msgtype == -2002)
-                            {
-                              if (((paramMessageRecord2 instanceof MessageForPtt)) && ((paramMessageRecord1 instanceof MessageForPtt)) && (((MessageForPtt)paramMessageRecord1).urlAtServer != null) && (((MessageForPtt)paramMessageRecord1).urlAtServer.length() > 0) && (((MessageForPtt)paramMessageRecord2).urlAtServer != null) && (((MessageForPtt)paramMessageRecord2).urlAtServer.length() > 0)) {
-                                return ((MessageForPtt)paramMessageRecord1).urlAtServer.equals(((MessageForPtt)paramMessageRecord2).urlAtServer);
-                              }
-                              return false;
-                            }
-                            if (paramMessageRecord2.msgtype == -2011)
-                            {
-                              if (QLog.isColorLevel()) {
-                                QLog.d("Debug", 2, "c2c" + Arrays.toString(paramMessageRecord1.msgData) + " : " + Arrays.toString(paramMessageRecord2.msgData));
-                              }
-                              return Arrays.equals(paramMessageRecord2.msgData, paramMessageRecord1.msgData);
-                            }
-                            if (paramMessageRecord2.msgtype != -2000) {
-                              break label579;
-                            }
-                            if ((str == null) || (localObject == null) || (str.length() <= 0) || (((String)localObject).length() <= 0) || (str.charAt(0) != '\026') || (((String)localObject).charAt(0) != '\026')) {
-                              break label513;
-                            }
-                            paramMessageRecord1 = a((String)localObject);
-                            localObject = a(str);
-                            if ((paramMessageRecord1 == null) || (localObject == null)) {
-                              return false;
-                            }
-                            if ((!paramMessageRecord1[1].equals(localObject[1])) || (!paramMessageRecord1[2].equals(localObject[2]))) {
-                              return false;
-                            }
-                            if ((paramMessageRecord2.issend != 2) && (!paramMessageRecord2.isSendFromLocal())) {
-                              break;
-                            }
-                          } while (!QLog.isColorLevel());
-                          QLog.d("Q.msg.MsgProxyUtils", 2, "-------->compMsgContent: samePic: picSize:" + paramMessageRecord1[1] + ",picType:" + paramMessageRecord1[2] + ",isSend == true");
-                          return true;
-                          if (!str.contains(ajed.aU)) {
-                            break;
-                          }
-                          paramMessageRecord2 = localObject[0].split("/");
-                          paramMessageRecord2 = paramMessageRecord2[(paramMessageRecord2.length - 1)].split("\\.")[0];
-                          str = MD5.toMD5(paramMessageRecord1[4]);
-                          if (!str.equals(paramMessageRecord2)) {
-                            break label1303;
-                          }
-                        } while (!QLog.isColorLevel());
-                        QLog.d("Q.msg.MsgProxyUtils", 2, "-------->compMsgContent: samePic: picSize:" + paramMessageRecord1[1] + ",picType:" + paramMessageRecord1[2] + ",Path:" + str);
-                        return true;
-                        return localObject[0].equals(paramMessageRecord1[0]);
-                        if ((((MessageForPic)paramMessageRecord1).uuid != null) && (((MessageForPic)paramMessageRecord1).uuid.length() > 0) && (((MessageForPic)paramMessageRecord2).uuid != null) && (((MessageForPic)paramMessageRecord2).uuid.length() > 0)) {
-                          return ((MessageForPic)paramMessageRecord1).uuid.equals(((MessageForPic)paramMessageRecord2).uuid);
-                        }
-                        return false;
-                        if ((paramMessageRecord2.msgtype == -2007) && (paramMessageRecord1.msgtype == -2007)) {
-                          return Arrays.equals(paramMessageRecord2.msgData, paramMessageRecord1.msgData);
-                        }
-                        if ((paramMessageRecord2.msgtype == -2058) && (paramMessageRecord1.msgtype == -2058))
-                        {
-                          if (((!(paramMessageRecord2 instanceof MessageForMarketFace)) || (!(paramMessageRecord1 instanceof MessageForMarketFace))) && ((!(paramMessageRecord2 instanceof MessageForText)) || (!(paramMessageRecord1 instanceof MessageForText))) && ((!(paramMessageRecord2 instanceof MessageForPic)) || (!(paramMessageRecord1 instanceof MessageForPic)))) {
-                            break label1303;
-                          }
-                          return Arrays.equals(paramMessageRecord2.msgData, paramMessageRecord1.msgData);
-                        }
-                        if ((paramMessageRecord2.msgtype == -1035) && (paramMessageRecord1.msgtype == -1035)) {
-                          return Arrays.equals(paramMessageRecord2.msgData, paramMessageRecord1.msgData);
-                        }
-                        if ((paramMessageRecord2.msgtype != -1034) || (paramMessageRecord1.msgtype != -1034)) {
-                          break;
-                        }
-                      } while ((paramMessageRecord2.time == paramMessageRecord1.time) && (paramMessageRecord2.uniseq == paramMessageRecord1.uniseq));
-                      return false;
-                      if ((paramMessageRecord2.msgtype != -1042) || (paramMessageRecord1.msgtype != -1042)) {
-                        break;
-                      }
-                    } while (paramMessageRecord2.time == paramMessageRecord1.time);
-                    return false;
-                    if ((paramMessageRecord2.msgtype != -2015) || (paramMessageRecord1.msgtype != -2015)) {
-                      break;
-                    }
-                  } while ((paramMessageRecord2.time == paramMessageRecord1.time) && (paramMessageRecord2.uniseq == paramMessageRecord1.uniseq));
-                  return false;
-                  if ((paramMessageRecord2.msgtype != -7007) || (paramMessageRecord1.msgtype != -7007)) {
-                    break;
-                  }
-                } while ((paramMessageRecord2.time == paramMessageRecord1.time) && (paramMessageRecord2.uniseq == paramMessageRecord1.uniseq));
-                return false;
-                if ((paramMessageRecord2.msgtype == -2010) && (paramMessageRecord1.msgtype == -2010)) {
-                  return ((MessageForFunnyFace)paramMessageRecord2).msgEquals((MessageForFunnyFace)paramMessageRecord1);
+              NearbyMyTabCard.NearbyMyTabConfig localNearbyMyTabConfig = new NearbyMyTabCard.NearbyMyTabConfig();
+              localNearbyMyTabConfig.configId = localRspConfigItem.uint32_id.get();
+              localNearbyMyTabConfig.strName = localRspConfigItem.str_name.get();
+              localNearbyMyTabConfig.strUrl = localRspConfigItem.str_url.get();
+              localNearbyMyTabConfig.iconUrl = localRspConfigItem.str_picurl.get();
+              localNearbyMyTabConfig.tips = localRspConfigItem.str_tips.get();
+              localNearbyMyTabConfig.extraVal = ((NearbyMyTabCard.NearbyMyTabConfigExtraVal)atyq.a.get(Integer.valueOf(localNearbyMyTabConfig.configId)));
+              paramObject.configList.add(localNearbyMyTabConfig);
+              if ((localNearbyMyTabConfig.extraVal != null) && (localNearbyMyTabConfig.extraVal.pathId != 0)) {
+                if (localNearbyMyTabConfig.extraVal.pathId == 100511) {
+                  paramFromServiceMsg[0] = 1;
+                } else if (localNearbyMyTabConfig.extraVal.pathId == 100517) {
+                  paramFromServiceMsg[1] = 1;
                 }
-                if ((paramMessageRecord2.msgtype == -2060) && (paramMessageRecord1.msgtype == -2060)) {
-                  return ((MessageForPLNews)paramMessageRecord2).msgEquals((MessageForPLNews)paramMessageRecord1);
-                }
-                if ((paramMessageRecord2.msgtype == -2062) && (paramMessageRecord1.msgtype == -2062)) {
-                  return ((MessageForMedalNews)paramMessageRecord2).msgEquals((MessageForMedalNews)paramMessageRecord1);
-                }
-                if (paramMessageRecord2.msgtype != -2065) {
-                  break;
-                }
-              } while (paramMessageRecord2.uniseq == paramMessageRecord1.uniseq);
-              return false;
-              if (paramMessageRecord2.msgtype != -4023) {
-                break;
               }
-            } while (paramMessageRecord2.uniseq == paramMessageRecord1.uniseq);
-            return false;
-            if (paramMessageRecord2.msgtype != -2066) {
-              break;
             }
-          } while (paramMessageRecord2.uniseq == paramMessageRecord1.uniseq);
-          return false;
-          if (paramMessageRecord2.msgtype != -2005) {
-            break label1109;
           }
-          if ((!(paramMessageRecord2 instanceof MessageForFile)) || (!(paramMessageRecord1 instanceof MessageForFile))) {
-            break;
+          int j = 0;
+          int i = 0;
+          boolean bool1;
+          while (i < paramFromServiceMsg.length)
+          {
+            j |= this.a.a().a(i, paramFromServiceMsg[i]);
+            i += 1;
           }
-        } while ((paramMessageRecord2.msgUid == paramMessageRecord1.msgUid) && (paramMessageRecord2.msgseq == paramMessageRecord1.msgseq));
-        return false;
-        return false;
-        if (paramMessageRecord2.msgtype == -2017) {
-          return false;
+          if (!bool1) {
+            break label853;
+          }
+          notifyUI(12, true, null);
+          if (!((Oidb_0x66b.RspBody)localObject1).rpt_msg_vistor_info.has()) {
+            break label1124;
+          }
+          paramObject.visitors.clear();
+          paramFromServiceMsg = ((Oidb_0x66b.RspBody)localObject1).rpt_msg_vistor_info.get().iterator();
+          while (paramFromServiceMsg.hasNext())
+          {
+            localObject1 = (appoint_define.PublisherInfo)paramFromServiceMsg.next();
+            if (localObject1 != null)
+            {
+              localObject1 = StrangerInfo.convertFrom((appoint_define.PublisherInfo)localObject1);
+              if (localObject1 != null) {
+                paramObject.visitors.add(localObject1);
+              }
+            }
+          }
+          if (!QLog.isColorLevel()) {
+            break label978;
+          }
+          QLog.i("NearbyHandler", 2, "handleGetNearbyMyTab visitor info is: " + paramObject.visitors.toString());
+          for (;;)
+          {
+            label978:
+            atyq.a(this.a, paramObject);
+            this.a.a(paramObject);
+            notifyUI(3, true, new Object[] { paramObject });
+            if (!QLog.isDevelopLevel()) {
+              break label1326;
+            }
+            paramFromServiceMsg = "";
+            i = 0;
+            while (i < paramObject.configList.size())
+            {
+              paramFromServiceMsg = paramFromServiceMsg + ((NearbyMyTabCard.NearbyMyTabConfig)paramObject.configList.get(i)).configId + ((NearbyMyTabCard.NearbyMyTabConfig)paramObject.configList.get(i)).strName + ((NearbyMyTabCard.NearbyMyTabConfig)paramObject.configList.get(i)).strUrl + "\n";
+              i += 1;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("NearbyHandler", 2, "handleGetNearbyMyTay has no visitor info.");
+            }
+          }
+          QLog.d("NewNearbyMyTab", 2, "handleGetNearbyMyTab---->uin =" + paramObject.uin + "nickName = " + paramObject.nickName + " profression = " + paramObject.carrier + " gender = " + paramObject.gender + "age =" + paramObject.age + " likeTotalNum = " + paramObject.likeTotalNum + "likeNewNum = " + paramObject.newLikeNum + "charmVale =" + paramObject.charmValue + "charmLevel =" + paramObject.charmLevel + "charmCurrent =" + paramObject.currentCharm + "charmNext" + paramObject.nextCharm + " giftNum = " + paramObject.giftNum + "config = " + paramFromServiceMsg);
         }
-        if (paramMessageRecord2.msgtype != -5008) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.MsgProxyUtils", 2, new Object[] { "AAShare.compMsgContent recRecord.msgUid=", Long.valueOf(paramMessageRecord2.msgUid), ",cacheRecord.msgUid,", Long.valueOf(paramMessageRecord1.msgUid) });
-        }
-      } while (paramMessageRecord2.msgUid == paramMessageRecord1.msgUid);
-      return false;
-      if (paramMessageRecord2.msgtype == -2022)
+      }
+      if (((Oidb_0x66b.RspBody)localObject1).stLikeInfo.has())
       {
-        if ((!TextUtils.isEmpty(((MessageForShortVideo)paramMessageRecord2).md5)) && (!TextUtils.isEmpty(((MessageForShortVideo)paramMessageRecord1).md5))) {
-          return ((MessageForShortVideo)paramMessageRecord1).md5.equals(((MessageForShortVideo)paramMessageRecord2).md5);
+        paramFromServiceMsg = (Oidb_0x66b.RspLikeInfo)((Oidb_0x66b.RspBody)localObject1).stLikeInfo.get();
+        i = paramFromServiceMsg.uint32_total.get();
+        j = paramFromServiceMsg.uint32_new.get();
+        paramFromServiceMsg = this.a.b();
+        if ((paramFromServiceMsg == null) || (i > paramFromServiceMsg.likeTotalNum))
+        {
+          paramObject.likeTotalNum = i;
+          paramObject.newLikeNum = j;
+          this.a.a(0);
         }
-        if ((!TextUtils.isEmpty(((MessageForShortVideo)paramMessageRecord2).uuid)) && (!TextUtils.isEmpty(((MessageForShortVideo)paramMessageRecord1).uuid))) {
-          return ((MessageForShortVideo)paramMessageRecord1).uuid.equals(((MessageForShortVideo)paramMessageRecord2).uuid);
-        }
-        return false;
       }
-    } while (TextUtils.equals(str, (CharSequence)localObject));
-    label1303:
-    return false;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramString == null) || (paramString.contains("&")))
-    {
-      bool1 = false;
-      return bool1;
-    }
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int i2 = arrayOfString.length;
-    int i1 = 0;
-    for (;;)
-    {
-      if (i1 >= i2) {
-        break label58;
-      }
-      bool1 = bool2;
-      if (paramString.equals(arrayOfString[i1])) {
-        break;
-      }
-      i1 += 1;
-    }
-    label58:
-    arrayOfString = jdField_b_of_type_ArrayOfJavaLangString;
-    i2 = arrayOfString.length;
-    i1 = 0;
-    for (;;)
-    {
-      if (i1 >= i2) {
-        break label95;
-      }
-      bool1 = bool2;
-      if (paramString.equals(arrayOfString[i1])) {
-        break;
-      }
-      i1 += 1;
-    }
-    label95:
-    return false;
-  }
-  
-  public static boolean b(List<MessageRecord> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return false;
-    }
-    int i2 = paramList.size();
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.get(i1);
-      if ((!a(localMessageRecord)) && (localMessageRecord.msgtype != -2006)) {
-        return true;
-      }
-      i1 += 1;
-    }
-    return false;
-  }
-  
-  public static String c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(e.length * 8);
-    localStringBuilder.append("not in (");
-    int i1 = 0;
-    if (i1 < e.length)
-    {
-      localStringBuilder.append(e[i1]);
-      if (i1 == e.length - 1) {
-        localStringBuilder.append(")");
-      }
-      for (;;)
+      else
       {
-        i1 += 1;
-        break;
-        localStringBuilder.append(",");
+        if (((Oidb_0x66b.RspBody)localObject1).stPansocialInfo.has())
+        {
+          paramFromServiceMsg = (Oidb_0x66b.RspPansocialInfo)((Oidb_0x66b.RspBody)localObject1).stPansocialInfo.get();
+          paramObject.charmValue = paramFromServiceMsg.uint32_charm.get();
+          paramObject.charmLevel = paramFromServiceMsg.uint32_charmlevel.get();
+          paramObject.currentCharm = paramFromServiceMsg.uint32_charmlevelvalue.get();
+          paramObject.nextCharm = paramFromServiceMsg.uint32_nextcharmlevelvalue.get();
+        }
+        if (((Oidb_0x66b.RspBody)localObject1).bytes_rspbody_gift.has())
+        {
+          localObject2 = ((Oidb_0x66b.RspBody)localObject1).bytes_rspbody_gift.get().toByteArray();
+          paramFromServiceMsg = new flower_info.SFlowerInfoRsp();
+        }
+      }
+      label1326:
+      if (k != 0) {
+        break label1491;
+      }
+      bool2 = true;
+      label1334:
+      paramObject = new HashMap();
+      if (!bool2) {
+        break label1497;
       }
     }
-    return localStringBuilder.toString();
-  }
-  
-  public static String c(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord.istroop == 1000) || (paramMessageRecord.istroop == 1004))
+    label1491:
+    label1497:
+    for (paramFromServiceMsg = "0";; paramFromServiceMsg = "-1")
     {
-      if (paramMessageRecord.isSend()) {
-        return paramMessageRecord.selfuin;
-      }
-      return paramMessageRecord.frienduin;
-    }
-    if ((paramMessageRecord.istroop == 1) && (mnf.b(paramMessageRecord))) {
-      return "80000000";
-    }
-    return paramMessageRecord.senderuin;
-  }
-  
-  public static void c(List<MessageRecord> paramList, MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    int i3 = 0;
-    if (paramList == null)
-    {
+      paramObject.put("param_FailCode", paramFromServiceMsg);
+      paramObject.put("param_NetType", String.valueOf(bbev.a(BaseApplication.getContext())));
+      paramObject.put("param_DeviceType", String.valueOf(agqf.a()));
+      long l = paramToServiceMsg.extraData.getLong("request_start_time");
+      l = SystemClock.uptimeMillis() - l;
+      axrl.a(BaseApplicationImpl.getContext()).a(getCurrentAccountUin(), "actGetNearbyMyTab", bool2, l, 0L, paramObject, "");
       if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MsgProxyUtils", 2, "insertToListBySeq, list is null");
+        QLog.i("NearbyHandler", 2, "handleGetNearbyMyTab, isSuccess=" + bool2 + ",duration=" + l);
+      }
+      return;
+      notifyUI(3, false, null);
+      break;
+      bool2 = false;
+      break label1334;
+    }
+  }
+  
+  public void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null))
+    {
+      notifyUI(19, false, new Object[] { null });
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.nearby.now", 2, "handleLiveFeedNearbyAnchor req == null || res == null");
       }
       return;
     }
-    Iterator localIterator = paramList.iterator();
-    int i2 = 0;
-    for (;;)
+    paramToServiceMsg = new oidb_0xada.RspBody();
+    parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    if (!paramToServiceMsg.busi_buf.has())
     {
-      int i1 = i3;
-      MessageRecord localMessageRecord;
-      if (localIterator.hasNext())
+      QLog.i("NearbyHandler", 1, "handleLiveFeedNearbyAnchor rspBody.busi_buf is null");
+      notifyUI(19, false, new Object[] { null });
+      return;
+    }
+    paramFromServiceMsg = new ilive_feeds_near_anchor.GetNearAnchorRsp();
+    try
+    {
+      paramFromServiceMsg.mergeFrom(paramToServiceMsg.busi_buf.get().toByteArray());
+      if ((paramFromServiceMsg.ret.get() == 0) && (paramFromServiceMsg.anchor_infos.size() > 0))
       {
-        localMessageRecord = (MessageRecord)localIterator.next();
-        if (localMessageRecord.shmsgseq <= paramMessageRecord.shmsgseq) {
-          break label88;
-        }
-        i1 = 1;
-      }
-      for (;;)
-      {
-        if (i1 != 0) {
-          break label163;
-        }
-        paramList.add(paramMessageRecord);
+        notifyUI(19, true, new Object[] { paramFromServiceMsg.anchor_infos.get() });
         return;
-        label88:
-        if (localMessageRecord.shmsgseq != paramMessageRecord.shmsgseq) {
-          break;
-        }
-        if (((localMessageRecord instanceof MessageForUniteGrayTip)) && ((paramMessageRecord instanceof MessageForUniteGrayTip)))
-        {
-          if (((MessageForUniteGrayTip)localMessageRecord).tipParam.d <= ((MessageForUniteGrayTip)paramMessageRecord).tipParam.d) {
-            break;
-          }
-          i1 = 1;
-        }
-        else
-        {
-          if (paramBoolean) {
-            break;
-          }
-          i1 = 1;
-        }
       }
-      i2 += 1;
     }
-    label163:
-    paramList.add(i2, paramMessageRecord);
+    catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+    {
+      QLog.e("NearbyHandler", 1, "handleLiveFeedNearbyAnchor InvalidProtocolBufferMicroException", paramToServiceMsg);
+      notifyUI(19, false, new Object[] { null });
+      return;
+    }
+    notifyUI(19, false, new Object[] { null });
   }
   
-  public static boolean c(int paramInt)
+  public void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool2 = false;
-    int[] arrayOfInt = q;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    for (;;)
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null))
     {
-      boolean bool1 = bool2;
-      if (i1 < i2)
+      notifyUI(21, false, new Object[] { Integer.valueOf(-1), "" });
+      if (QLog.isColorLevel()) {
+        QLog.w("nearby.check.auth", 2, "handlNearbyUserCheckAuth req == null || res == null");
+      }
+      return;
+    }
+    paramToServiceMsg = new oidb_0xada.RspBody();
+    try
+    {
+      i = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
+      QLog.d("nearby.check.auth", 1, "handlNearbyUserCheckAuth oidbRet=" + i);
+      if (i != 0)
       {
-        if (arrayOfInt[i1] == paramInt) {
-          bool1 = true;
-        }
+        notifyUI(21, false, new Object[] { Integer.valueOf(-2), "" });
+        return;
       }
-      else {
-        return bool1;
-      }
-      i1 += 1;
     }
-  }
-  
-  public static boolean c(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    return (d(paramMessageRecord)) && (!a(paramMessageRecord.frienduin, paramMessageRecord.istroop)) && (paramQQAppInterface.a().a(paramMessageRecord.frienduin));
-  }
-  
-  public static boolean c(MessageRecord paramMessageRecord)
-  {
-    return ((paramMessageRecord instanceof MessageForText)) || ((paramMessageRecord instanceof MessageForPic)) || ((paramMessageRecord instanceof MessageForMixedMsg)) || ((paramMessageRecord instanceof MessageForReplyText));
-  }
-  
-  private static boolean c(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    boolean bool = true;
-    if (paramMessageRecord1.msgtype == -1034) {
-      bool = b(paramMessageRecord1, paramMessageRecord2);
-    }
-    do
+    catch (Exception paramToServiceMsg)
     {
-      return bool;
-      if (paramMessageRecord1.msgtype == -1042) {
-        return b(paramMessageRecord1, paramMessageRecord2);
+      QLog.e("nearby.check.auth", 1, "handlNearbyUserCheckAuth exp=" + paramToServiceMsg.toString());
+      notifyUI(21, false, new Object[] { Integer.valueOf(-4), "" });
+      return;
+    }
+    if (!paramToServiceMsg.busi_buf.has())
+    {
+      QLog.w("nearby.check.auth", 1, "handlNearbyUserCheckAuth rspBody.busi_buf is null");
+      notifyUI(21, false, new Object[] { Integer.valueOf(-3), "" });
+      return;
+    }
+    paramFromServiceMsg = new ilive_nearby_user_control.EnterNearbyUserContrlRsp();
+    paramFromServiceMsg.mergeFrom(paramToServiceMsg.busi_buf.get().toByteArray());
+    int i = paramFromServiceMsg.check_ret.get();
+    paramToServiceMsg = paramFromServiceMsg.check_msg.get();
+    notifyUI(21, true, new Object[] { Integer.valueOf(i), paramToServiceMsg });
+    QLog.d("nearby.check.auth", 1, "handlNearbyUserCheckAuth checkRet=" + i + ", checkMsg=" + paramToServiceMsg);
+  }
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OidbSvc.0x8dd");
+      this.allowCmdSet.add("EncounterSvc.ReqGetEncounter");
+      this.allowCmdSet.add("RoamClientSvr.GetQualify");
+      this.allowCmdSet.add("OidbSvc.0x66b");
+      this.allowCmdSet.add("NeighborSvc.ReqGetPoint");
+      this.allowCmdSet.add("OidbSvc.0x9c7_0");
+      this.allowCmdSet.add("OidbSvc.0x686");
+      this.allowCmdSet.add("OidbSvc.0x4f0_0");
+      this.allowCmdSet.add("OidbSvc.0x6be");
+      this.allowCmdSet.add("OidbSvc.0xafc_1");
+      this.allowCmdSet.add("OidbSvc.0xafc_2");
+      this.allowCmdSet.add("OidbSvc.0xafc_3");
+      this.allowCmdSet.add("OidbSvc.0xada_0");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return akbn.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    if (msgCmdFilter(str)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("msgCmdFilter", 2, "cmdfilter error=" + str);
       }
-      if ((paramMessageRecord1.msgtype != -2000) && (paramMessageRecord1.msgtype != -1000)) {
-        break;
-      }
-    } while ((Math.abs(paramMessageRecord1.time - paramMessageRecord2.time) < 30L) && (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) && (b(paramMessageRecord1, paramMessageRecord2)));
+    }
     do
     {
       do
       {
-        return false;
-        if (paramMessageRecord1.msgtype == -2002) {
-          return b(paramMessageRecord1, paramMessageRecord2);
+        do
+        {
+          return;
+          checkReportErrorToMM(paramFromServiceMsg);
+        } while ("EncounterSvc.ReqGetEncounter".equals(str));
+        if ("OidbSvc.0x66b".equals(str))
+        {
+          b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          return;
         }
-        if (paramMessageRecord1.msgtype == -2005) {
-          return b(paramMessageRecord1, paramMessageRecord2);
+        if ("NeighborSvc.ReqGetPoint".equals(str))
+        {
+          if (paramToServiceMsg.extraData.getBoolean("req_street_view")) {}
+          for (int i = 5;; i = 6)
+          {
+            akbi.a(this, i, paramToServiceMsg, paramFromServiceMsg, paramObject);
+            return;
+          }
         }
-        if (paramMessageRecord1.msgtype == -5007) {
-          return b(paramMessageRecord1, paramMessageRecord2);
+        if ("OidbSvc.0x9c7_0".equals(str))
+        {
+          akbi.c(this, 10, paramToServiceMsg, paramFromServiceMsg, paramObject);
+          return;
         }
-      } while ((Math.abs(paramMessageRecord1.time - paramMessageRecord2.time) >= 30L) || (paramMessageRecord1.shmsgseq != paramMessageRecord2.shmsgseq));
+        if ("OidbSvc.0x686".equals(str))
+        {
+          akbi.b(this, 8, paramToServiceMsg, paramFromServiceMsg, paramObject);
+          return;
+        }
+        if ("OidbSvc.0x4f0_0".equals(str))
+        {
+          e(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          return;
+        }
+        if ("OidbSvc.0x6be".equals(str))
+        {
+          a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          return;
+        }
+        if (("OidbSvc.0xafc_1".equals(str)) || ("OidbSvc.0xafc_2".equals(str)) || ("OidbSvc.0xafc_3".equals(str)))
+        {
+          a(paramFromServiceMsg, paramToServiceMsg, paramObject);
+          return;
+        }
+      } while (!"OidbSvc.0xada_0".equals(str));
+      str = (String)paramToServiceMsg.getAttribute("innerReq", "");
       if (QLog.isColorLevel()) {
-        QLog.i("Q.msg.MsgProxyUtils", 2, "other equal : mr.shmsgseq = " + paramMessageRecord1.shmsgseq);
+        QLog.d("NearbyHandler", 2, "NearbyHandler onReceive oxada, innerReq=" + str);
       }
-    } while (!b(paramMessageRecord1, paramMessageRecord2));
-    return true;
-  }
-  
-  public static boolean c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!ajed.ai.equals(paramString)) && (!ajed.aj.equals(paramString))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean c(List<MessageRecord> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return false;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-      if ((localMessageRecord != null) && (localMessageRecord.msgtype != -2006) && (localMessageRecord.msgtype != -2058)) {
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  public static String d()
-  {
-    if (i.length == 0) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder(i.length * 8);
-    localStringBuilder.append("not in (");
-    int i1 = 0;
-    if (i1 < i.length)
-    {
-      localStringBuilder.append(i[i1]);
-      if (i1 == i.length - 1) {
-        localStringBuilder.append(")");
-      }
-      for (;;)
+      if ("ilive_feeds_near_anchor".equals(str))
       {
-        i1 += 1;
-        break;
-        localStringBuilder.append(",");
+        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
       }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static boolean d(int paramInt)
-  {
-    boolean bool2 = false;
-    int[] arrayOfInt = s;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i1 < i2)
-      {
-        if (arrayOfInt[i1] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i1 += 1;
-    }
-  }
-  
-  public static boolean d(MessageRecord paramMessageRecord)
-  {
-    return ((paramMessageRecord.extLong & 0x1) == 1) && (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("one_way")));
-  }
-  
-  public static boolean d(String paramString)
-  {
-    return (ajed.ak.equals(paramString)) || (ajed.al.equals(paramString));
-  }
-  
-  public static boolean e(int paramInt)
-  {
-    boolean bool2 = false;
-    int[] arrayOfInt = t;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i1 < i2)
-      {
-        if (arrayOfInt[i1] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i1 += 1;
-    }
-  }
-  
-  public static boolean e(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord.istroop == 1)
-    {
-      paramMessageRecord = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(true).a(paramMessageRecord.frienduin);
-      if ((paramMessageRecord != null) && (paramMessageRecord.isGameRoom)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static boolean e(String paramString)
-  {
-    return ajed.am.equals(paramString);
-  }
-  
-  public static boolean f(int paramInt)
-  {
-    int[] arrayOfInt = e;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      if (arrayOfInt[i1] == paramInt) {
-        return false;
-      }
-      i1 += 1;
-    }
-    return true;
-  }
-  
-  public static boolean f(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord.msgtype == -5008) && (paramMessageRecord.shmsgseq == 0L)) {
-      return "1".equals(paramMessageRecord.getExtInfoFromExtStr("troop_mini_app_sys"));
-    }
-    return false;
-  }
-  
-  public static boolean f(String paramString)
-  {
-    return ajed.ak.equals(paramString);
-  }
-  
-  public static boolean g(int paramInt)
-  {
-    boolean bool2 = false;
-    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i1 < i2)
-      {
-        if (arrayOfInt[i1] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i1 += 1;
-    }
-  }
-  
-  public static boolean g(String paramString)
-  {
-    return ajed.al.equals(paramString);
-  }
-  
-  public static boolean h(int paramInt)
-  {
-    boolean bool2 = false;
-    int[] arrayOfInt = h;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i1 < i2)
-      {
-        if (arrayOfInt[i1] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i1 += 1;
-    }
-  }
-  
-  public static boolean i(int paramInt)
-  {
-    boolean bool2 = false;
-    int[] arrayOfInt = p;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i1 < i2)
-      {
-        if (arrayOfInt[i1] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i1 += 1;
-    }
-  }
-  
-  public static boolean j(int paramInt)
-  {
-    boolean bool2 = i(paramInt);
-    boolean bool1 = bool2;
-    if (!bool2) {
-      bool1 = awbk.a(paramInt);
-    }
-    return bool1;
-  }
-  
-  public static boolean k(int paramInt)
-  {
-    boolean bool2 = false;
-    int[] arrayOfInt = jdField_b_of_type_ArrayOfInt;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i1 < i2)
-      {
-        if (arrayOfInt[i1] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i1 += 1;
-    }
-  }
-  
-  public static boolean l(int paramInt)
-  {
-    boolean bool2 = false;
-    int[] arrayOfInt = jdField_c_of_type_ArrayOfInt;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i1 < i2)
-      {
-        if (arrayOfInt[i1] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i1 += 1;
-    }
-  }
-  
-  public static boolean m(int paramInt)
-  {
-    if (i.length == 0) {}
-    for (;;)
-    {
-      return false;
-      int[] arrayOfInt = i;
-      int i2 = arrayOfInt.length;
-      int i1 = 0;
-      while (i1 < i2)
-      {
-        if (arrayOfInt[i1] == paramInt) {
-          return true;
-        }
-        i1 += 1;
-      }
-    }
-  }
-  
-  public static boolean n(int paramInt)
-  {
-    boolean bool2 = false;
-    int[] arrayOfInt = d;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i1 < i2)
-      {
-        if (arrayOfInt[i1] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i1 += 1;
-    }
-  }
-  
-  public static boolean o(int paramInt)
-  {
-    boolean bool2 = false;
-    int[] arrayOfInt = l;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i1 < i2)
-      {
-        if (arrayOfInt[i1] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i1 += 1;
-    }
-  }
-  
-  public static boolean p(int paramInt)
-  {
-    boolean bool2 = false;
-    int[] arrayOfInt = m;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i1 < i2)
-      {
-        if (arrayOfInt[i1] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i1 += 1;
-    }
-  }
-  
-  public static boolean q(int paramInt)
-  {
-    return paramInt == -2006;
-  }
-  
-  public static boolean r(int paramInt)
-  {
-    return (a(paramInt) == 1001) || (a(paramInt) == 10002) || (a(paramInt) == 1009) || (a(paramInt) == 1010) || (a(paramInt) == 1032);
-  }
-  
-  public static boolean s(int paramInt)
-  {
-    boolean bool2 = false;
-    int[] arrayOfInt = o;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i1 < i2)
-      {
-        if (arrayOfInt[i1] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i1 += 1;
-    }
-  }
-  
-  public static boolean t(int paramInt)
-  {
-    return paramInt == 1025;
-  }
-  
-  public static boolean u(int paramInt)
-  {
-    return (paramInt == 1001) || (paramInt == 10002);
-  }
-  
-  public static boolean v(int paramInt)
-  {
-    boolean bool2 = false;
-    int[] arrayOfInt = v;
-    int i2 = arrayOfInt.length;
-    int i1 = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i1 < i2)
-      {
-        if (arrayOfInt[i1] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i1 += 1;
-    }
+    } while (!"ilive_nearby_user_control".equals(str));
+    d(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

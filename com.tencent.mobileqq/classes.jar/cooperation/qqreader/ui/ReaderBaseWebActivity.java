@@ -5,75 +5,78 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Window;
-import bflt;
-import bfly;
-import bfmb;
-import bfmm;
-import bfne;
-import bfnm;
+import bgty;
+import bgud;
+import bguh;
+import bguw;
+import bgvo;
+import bgvt;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import cooperation.qqreader.host.ChannelIdHelper;
 import cooperation.qqreader.utils.QRDebugEnvUrlUtils;
 
 public class ReaderBaseWebActivity
   extends QQBrowserActivity
 {
-  public static String a;
   private static boolean jdField_a_of_type_Boolean;
-  private bfmb jdField_a_of_type_Bfmb;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "-1";
-  }
+  private bguh jdField_a_of_type_Bguh;
   
   private void a()
   {
     if (!jdField_a_of_type_Boolean)
     {
       jdField_a_of_type_Boolean = true;
-      bfnm.a(this);
-      if ("-1".equals(jdField_a_of_type_JavaLangString))
+      bgvt.a(this);
+      ChannelIdHelper.initChannelId(getIntent());
+      if ((!bgvt.jdField_a_of_type_Boolean) && (!"Meizu_M040".equals(Build.MANUFACTURER + "_" + Build.MODEL)))
       {
-        Bundle localBundle = getIntent().getExtras();
-        if (localBundle != null) {
-          jdField_a_of_type_JavaLangString = localBundle.getString("ChannelID");
-        }
-      }
-      if ((!bfnm.jdField_a_of_type_Boolean) && (!"Meizu_M040".equals(Build.MANUFACTURER + "_" + Build.MODEL)))
-      {
-        bfne.c("WebLog_QQBrowserActivity", "HardAcc true");
+        bgvo.d("WebLog_QQBrowserActivity", "HardAcc true");
         getWindow().addFlags(16777216);
       }
       if (QRDebugEnvUrlUtils.isDebugEnv()) {
         QRDebugEnvUrlUtils.initTestEnv(this);
       }
-      bfnm.a(this);
+      bgvt.a(this);
     }
   }
   
   @Nullable
-  public bfmb a(TouchWebView paramTouchWebView)
+  public bguh a(TouchWebView paramTouchWebView)
   {
-    if ((this.jdField_a_of_type_Bfmb == null) && (paramTouchWebView != null) && (paramTouchWebView.getPluginEngine() != null))
+    if ((this.jdField_a_of_type_Bguh == null) && (paramTouchWebView != null) && (paramTouchWebView.getPluginEngine() != null))
     {
       paramTouchWebView = paramTouchWebView.getPluginEngine();
       if (paramTouchWebView != null)
       {
         paramTouchWebView = paramTouchWebView.a(207, true);
-        if ((paramTouchWebView instanceof bfmb)) {
-          this.jdField_a_of_type_Bfmb = ((bfmb)paramTouchWebView);
+        if ((paramTouchWebView instanceof bguh)) {
+          this.jdField_a_of_type_Bguh = ((bguh)paramTouchWebView);
         }
       }
     }
-    return this.jdField_a_of_type_Bfmb;
+    return this.jdField_a_of_type_Bguh;
+  }
+  
+  protected void a(Intent paramIntent)
+  {
+    if (paramIntent == null)
+    {
+      bgvo.a("WebLog_QQBrowserActivity", "[putReaderExtra] intent = null");
+      return;
+    }
+    paramIntent.putExtra("fragmentStyle", 4);
+    paramIntent.putExtra("tabBarStyle", 2);
+    paramIntent.putExtra("titleBarStyle", 3);
+    paramIntent.putExtra("hide_more_button", true);
+    paramIntent.putExtra("isScreenOrientationPortrait", true);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     a();
-    if (!bflt.a())
+    if (!bgty.a())
     {
       paramBundle = new Intent(this, ForceUserUpdateActivity.class);
       paramBundle.putExtra("origin_intent", getIntent());
@@ -83,7 +86,7 @@ public class ReaderBaseWebActivity
       return true;
     }
     super.doOnCreate(paramBundle);
-    new bfly(this).a();
+    new bgud(this).a();
     return true;
   }
   
@@ -91,7 +94,8 @@ public class ReaderBaseWebActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    bfmm.a(this, true);
+    a(getIntent());
+    bguw.a(this, true);
     super.onCreate(paramBundle);
   }
 }

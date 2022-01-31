@@ -1,16 +1,20 @@
-import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 
 public class ahdp
-  extends ahdm
+  implements View.OnClickListener
 {
-  public ahdp(Context paramContext)
+  public ahdp(ChooseItemView paramChooseItemView) {}
+  
+  public void onClick(View paramView)
   {
-    this.a = paramContext.getString(2131626189);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahdp
  * JD-Core Version:    0.7.0.1
  */

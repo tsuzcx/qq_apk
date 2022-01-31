@@ -1,40 +1,25 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.OverlappingImgLayout;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ThemeImageView;
-import java.util.List;
 
 public class afau
-  implements azwh
+  implements MediaPlayer.OnErrorListener
 {
-  public afau(OverlappingImgLayout paramOverlappingImgLayout) {}
+  public afau(BlessActivity paramBlessActivity) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    do
-    {
-      return;
-      paramInt1 = 0;
-      while (paramInt1 < OverlappingImgLayout.a(this.a).length)
-      {
-        if ((paramInt1 < 3) && (paramString.equals(OverlappingImgLayout.a(this.a)[paramInt1])))
-        {
-          ((ThemeImageView)OverlappingImgLayout.a(this.a).get(paramInt1)).setImageBitmap(paramBitmap);
-          if (QLog.isColorLevel()) {
-            QLog.d("OverlappingImgLayout", 2, "mDecodeTaskCompletionListener update");
-          }
-        }
-        paramInt1 += 1;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("OverlappingImgLayout", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onError what=" + paramInt1 + ", extra=" + paramInt2);
+    }
+    BlessActivity.a(this.a, true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afau
  * JD-Core Version:    0.7.0.1
  */

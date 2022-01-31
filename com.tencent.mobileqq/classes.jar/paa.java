@@ -1,31 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.qphone.base.util.QLog;
-
-class paa
-  implements oqy
+public class paa
 {
-  paa(ozx paramozx, RecommendFollowInfo paramRecommendFollowInfo) {}
+  public int a;
+  public long a;
+  public boolean a;
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public paa(long paramLong, int paramInt)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
-    }
-    if (paramBoolean)
-    {
-      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-      if (paramInt == 2) {}
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        paramString.isFollowed = paramBoolean;
-        ozx.a(this.jdField_a_of_type_Ozx, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-        ozx.a(this.jdField_a_of_type_Ozx).notifyDataSetChanged();
-        return;
-      }
-    }
-    bbmy.a(ozx.a(this.jdField_a_of_type_Ozx).getContext(), 1, 2131652679, 0).a();
+    this(paramLong, paramInt, false);
+  }
+  
+  public paa(long paramLong, int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    return "BatchFollowModel{followUin=" + this.jdField_a_of_type_Long + ", accountType=" + this.jdField_a_of_type_Int + ", isFollowed=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

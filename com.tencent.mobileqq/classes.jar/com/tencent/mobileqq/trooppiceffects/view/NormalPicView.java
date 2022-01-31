@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import azsl;
+import batp;
 
 public class NormalPicView
   extends ImageView
-  implements azsl
+  implements batp
 {
   public NormalPicView(Context paramContext)
   {

@@ -1,27 +1,19 @@
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+
 public class wyi
+  extends ajxl
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  public wyi(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public wyi(int paramInt, String paramString)
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 30);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramString });
+    localBundle.putSerializable("observer_type", Integer.valueOf(2));
+    this.a.a(3, localBundle);
   }
 }
 

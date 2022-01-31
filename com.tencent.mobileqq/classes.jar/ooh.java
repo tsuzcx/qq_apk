@@ -1,6 +1,19 @@
-public abstract interface ooh<T>
+import com.tencent.biz.pubaccount.readinjoy.config.AladdinListener;
+import java.util.ArrayList;
+
+public class ooh
 {
-  public abstract void a(T paramT);
+  public static ArrayList<AladdinListener> a = new ArrayList();
+  
+  public static void a(AladdinListener paramAladdinListener)
+  {
+    a.add(paramAladdinListener);
+  }
+  
+  public static void b(AladdinListener paramAladdinListener)
+  {
+    a.remove(paramAladdinListener);
+  }
 }
 
 

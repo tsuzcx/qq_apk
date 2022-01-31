@@ -1,12 +1,26 @@
-class apjp
-  implements baim
+import java.util.HashMap;
+
+public final class apjp
+  implements ayrz
 {
-  apjp(apjo paramapjo) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(aysw paramaysw, aysx paramaysx)
   {
-    apjo.a(this.a, baik.a(paramInt));
-    apjo.a(this.a).height = apjo.a(this.a);
+    if ((paramaysw == null) || (paramaysx == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramaysw instanceof ayrv));
+      paramaysw = (ayrv)paramaysw;
+      paramaysw.jdField_a_of_type_Long += paramaysx.c;
+      paramaysx.c = 0L;
+      paramaysx = "bytes=" + paramaysw.jdField_a_of_type_Long + "-";
+      paramaysw.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysx);
+      paramaysx = paramaysw.jdField_a_of_type_JavaLangString;
+    } while (!paramaysx.contains("range="));
+    paramaysx = paramaysx.substring(0, paramaysx.lastIndexOf("range="));
+    paramaysw.jdField_a_of_type_JavaLangString = (paramaysx + "range=" + paramaysw.jdField_a_of_type_Long);
   }
 }
 

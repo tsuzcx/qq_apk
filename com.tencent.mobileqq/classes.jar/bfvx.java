@@ -1,41 +1,43 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData;
-import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
-import cooperation.qzone.model.CoverCacheData.PackageInfo;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.widget.TCWNumberPicker;
 
-public final class bfvx
-  implements Parcelable.Creator<CoverCacheData>
+public class bfvx
+  implements InputFilter
 {
-  public CoverCacheData a(Parcel paramParcel)
-  {
-    CoverCacheData localCoverCacheData = new CoverCacheData();
-    if (paramParcel != null)
-    {
-      localCoverCacheData.jdField_a_of_type_Long = paramParcel.readLong();
-      localCoverCacheData.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localCoverCacheData.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localCoverCacheData.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localCoverCacheData.jdField_a_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo = ((CoverCacheData.PackageInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo = ((CoverCacheData.GameCoverInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-      localCoverCacheData.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(getClass().getClassLoader());
-      localCoverCacheData.jdField_a_of_type_Int = paramParcel.readInt();
-      localCoverCacheData.jdField_b_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localCoverCacheData.jdField_c_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localCoverCacheData.jdField_b_of_type_Int = paramParcel.readInt();
-    }
-    return localCoverCacheData;
-  }
+  private bfvx(TCWNumberPicker paramTCWNumberPicker) {}
   
-  public CoverCacheData[] a(int paramInt)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    return null;
+    int i = 0;
+    if (TCWNumberPicker.a(this.a) == null)
+    {
+      paramCharSequence = TCWNumberPicker.a(this.a).filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+      return paramCharSequence;
+    }
+    String str = String.valueOf(paramCharSequence.subSequence(paramInt1, paramInt2));
+    paramSpanned = String.valueOf(String.valueOf(paramSpanned.subSequence(0, paramInt3)) + str + paramSpanned.subSequence(paramInt4, paramSpanned.length())).toLowerCase();
+    String[] arrayOfString = TCWNumberPicker.a(this.a);
+    paramInt2 = arrayOfString.length;
+    paramInt1 = i;
+    for (;;)
+    {
+      if (paramInt1 >= paramInt2) {
+        break label154;
+      }
+      paramCharSequence = str;
+      if (arrayOfString[paramInt1].toLowerCase().startsWith(paramSpanned)) {
+        break;
+      }
+      paramInt1 += 1;
+    }
+    label154:
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfvx
  * JD-Core Version:    0.7.0.1
  */

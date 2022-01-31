@@ -1,52 +1,37 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.graphics.drawable.Drawable;
+import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
+import cooperation.vip.vipcomponent.util.VipResourcesListener;
 
-class bhzy
-  implements AdapterView.OnItemClickListener
+public class bhzy
 {
-  bhzy(bhzq parambhzq) {}
+  public static bhzy a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static bhzy a()
   {
-    if (bhzq.a(this.a) != null) {
-      bcpa.a(bhzq.a(this.a).hashCode());
-    }
-    paramAdapterView = bhzq.a(this.a).a(paramInt);
-    if (bhzq.a(this.a).a() == paramInt) {
-      if (paramAdapterView.c) {
-        bhzq.a(this.a, true);
-      }
-    }
-    for (;;)
+    if (a == null) {}
+    try
     {
-      urp.a("textEdit_patten", "clk_patten", bhzq.b(this.a), 0, new String[] { "", paramAdapterView.a });
-      return;
-      if (paramAdapterView.d)
-      {
-        if (badq.d(paramView.getContext()))
-        {
-          bbmy.a(bhzq.a(this.a).getContext(), ajjy.a(2131648626), 0).a();
-          bhzq.a(this.a, paramAdapterView);
-        }
-        else
-        {
-          bhzq.b(this.a);
-        }
+      if (a == null) {
+        a = new bhzy();
       }
-      else
-      {
-        bbmy.a(bhzq.a(this.a).getContext(), ajjy.a(2131648624), 0).a();
-        continue;
-        bhzq.a(this.a).a(paramInt);
-        bhzq.a(this.a, paramAdapterView);
-      }
+      return a;
     }
+    finally {}
+  }
+  
+  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, VipResourcesListener paramVipResourcesListener)
+  {
+    return QzoneHuangzuanVipIconShow.getInstance().getLayers(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString1, paramInt3, paramInt4, paramString2, paramVipResourcesListener, 0);
+  }
+  
+  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt3, VipResourcesListener paramVipResourcesListener)
+  {
+    return a(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString, paramInt3, 100, null, paramVipResourcesListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhzy
  * JD-Core Version:    0.7.0.1
  */

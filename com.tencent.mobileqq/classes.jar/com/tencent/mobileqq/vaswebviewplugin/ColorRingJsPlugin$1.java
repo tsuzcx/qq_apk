@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import atmp;
-import atmq;
+import aukn;
+import auko;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import org.json.JSONException;
@@ -25,8 +25,8 @@ class ColorRingJsPlugin$1
         if (this.this$0.mBrowserApp != null)
         {
           localObject = this.this$0.mBrowserApp.getEntityManagerFactory(null).createEntityManager();
-          localExtensionInfo = (ExtensionInfo)((atmp)localObject).a(ExtensionInfo.class, this.this$0.mBrowserApp.getAccount());
-          ((atmp)localObject).a();
+          localExtensionInfo = (ExtensionInfo)((aukn)localObject).a(ExtensionInfo.class, this.this$0.mBrowserApp.getAccount());
+          ((aukn)localObject).a();
           localJSONObject.put("result", 0);
           localObject = new JSONObject();
           if (localExtensionInfo == null)

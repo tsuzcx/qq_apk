@@ -1,57 +1,39 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryPlayerTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
 public class tai
-  extends slz<tbw>
+  extends taz
 {
-  public final List<String> a;
+  public static final String a;
+  public static final String b = sxp.a("StorySvc.like_feed");
+  protected tan a;
+  private boolean a;
+  protected String c;
   
-  public tai(List<String> paramList)
+  static
   {
-    this.a = paramList;
+    jdField_a_of_type_JavaLangString = sxp.a("StorySvc.feed_like_list_715");
   }
   
-  public String a()
+  public tai(tan paramtan, boolean paramBoolean)
   {
-    return "StorySvc.get_video_tag_778";
+    this.jdField_a_of_type_Tan = paramtan;
+    this.c = this.jdField_a_of_type_Tan.a.feedId;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public slu a(byte[] paramArrayOfByte)
+  public static void a(CommentLikeFeedItem paramCommentLikeFeedItem, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    qqstory_service.RspStoryPlayerTagInfo localRspStoryPlayerTagInfo = new qqstory_service.RspStoryPlayerTagInfo();
-    try
-    {
-      localRspStoryPlayerTagInfo.mergeFrom(paramArrayOfByte);
-      return new tbw(localRspStoryPlayerTagInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        urk.e("Q.qqstory.net:GetStoryPlayerTagInfoRequest", paramArrayOfByte.toString());
-      }
-    }
+    tbb.a().a(new tal(paramCommentLikeFeedItem.feedId, paramBoolean, paramInt1, paramInt2), new tam());
   }
   
-  protected byte[] a()
+  public void a()
   {
-    qqstory_service.ReqStoryPlayerTagInfo localReqStoryPlayerTagInfo = new qqstory_service.ReqStoryPlayerTagInfo();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqStoryPlayerTagInfo.vid_list.add(ByteStringMicro.copyFromUtf8(str));
-    }
-    localReqStoryPlayerTagInfo.client.set(2);
-    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.2.6"));
-    return localReqStoryPlayerTagInfo.toByteArray();
+    a(this.c, this.jdField_a_of_type_Boolean);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    tbb.a().a(new taj(this, paramString, paramBoolean), new tak(this));
   }
 }
 

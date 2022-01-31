@@ -1,29 +1,23 @@
-import java.util.Observable;
-import java.util.Observer;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqal
-  implements Observer
+class aqal
+  implements aqac
 {
-  protected void a() {}
+  aqal(aqak paramaqak) {}
   
-  protected void b() {}
+  public void a(int paramInt) {}
   
-  protected void c() {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
   {
-    switch (((Integer)paramObject).intValue())
-    {
-    default: 
-      return;
-    case 1: 
-      a();
-      return;
-    case 2: 
-      b();
-      return;
-    }
-    c();
+    QLog.d("FlutterMainQIPCModule", 1, String.format("onResult, isSuccess: %s, installDir: %s", new Object[] { Boolean.valueOf(paramBoolean1), paramString }));
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("KEY_INSTALL_RESULT", paramBoolean1);
+    localBundle.putString("KEY_INSTALL_DIR", paramString);
+    localBundle.putBoolean("KEY_IS_APP_EXIST", paramBoolean3);
+    localBundle.putBoolean("KEY_IS_ENGINE_EXIST", paramBoolean2);
+    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "FlutterSubQIPCModule", "ACTION_INSTALL_RESULT", localBundle, null);
   }
 }
 

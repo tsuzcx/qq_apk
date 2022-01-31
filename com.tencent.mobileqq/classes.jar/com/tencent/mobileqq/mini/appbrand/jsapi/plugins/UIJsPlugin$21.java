@@ -1,29 +1,19 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
-import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
-import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
-import com.tencent.mobileqq.mini.webview.JsRuntime;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
+import mqq.os.MqqHandler;
 
 class UIJsPlugin$21
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  UIJsPlugin$21(UIJsPlugin paramUIJsPlugin, JsRuntime paramJsRuntime, JSONObject paramJSONObject1, String paramString1, int paramInt1, String paramString2, Boolean paramBoolean, JSONObject paramJSONObject2, String paramString3, JSONObject paramJSONObject3, int paramInt2) {}
+  UIJsPlugin$21(UIJsPlugin paramUIJsPlugin, PageWebview paramPageWebview) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AbsAppBrandPage localAbsAppBrandPage = ((AppBrandPageContainer)this.this$0.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(this.val$webview.getPageWebViewId());
-    WebviewContainer localWebviewContainer = null;
-    if (localAbsAppBrandPage != null) {
-      localWebviewContainer = localAbsAppBrandPage.getCurrentWebviewContainer();
-    }
-    if (localWebviewContainer != null)
-    {
-      localWebviewContainer.updateImageView(this.val$postionObj, this.val$data, this.val$viewId, this.val$iconPath, this.val$clickable, this.val$style);
-      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, this.val$result, this.val$callbackId);
-    }
+    ThreadManager.getUIHandler().post(new UIJsPlugin.21.1(this, paramValueAnimator));
   }
 }
 

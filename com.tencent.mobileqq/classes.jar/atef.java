@@ -1,25 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.widget.ParticipleView;
-import java.util.List;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
 
 public class atef
-  extends axky
+  extends DataSetObserver
 {
-  public atef(OCRResultActivity paramOCRResultActivity) {}
+  public atef(PlayerInvitePanel paramPlayerInvitePanel) {}
   
-  protected void a(boolean paramBoolean, List<String> paramList)
+  public void onChanged()
   {
-    super.a(paramBoolean, paramList);
-    OCRResultActivity.c(this.a);
-    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
-    {
-      this.a.a.setParticipleItems(paramList);
-      this.a.a.a();
-      OCRResultActivity.d(this.a);
-      return;
-    }
-    bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131642038), 0).a();
+    super.onChanged();
+    this.a.a();
   }
 }
 

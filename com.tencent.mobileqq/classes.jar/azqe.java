@@ -1,31 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.4.1;
-import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-public class azqe
-  implements azwq
+class azqe
+  implements DialogInterface.OnClickListener
 {
-  public azqe(TroopGiftAnimationController.5 param5) {}
+  azqe(azpt paramazpt, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
   
-  public void onLoadingStateChanged(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt1 == 0) && (paramInt2 == 1) && ((this.a.this$0.a instanceof TroopGiftToPersonalSurfaceView)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopGiftAnimationController", 2, "onLoadingStateChanged: curState = " + paramInt2);
-      }
-      Bitmap localBitmap = azlj.a(this.a.this$0.a(String.valueOf(this.a.a.receiverUin), null));
-      this.a.this$0.a.b(new TroopGiftAnimationController.5.4.1(this, localBitmap));
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c(this.jdField_a_of_type_JavaUtilUUID);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azqe
  * JD-Core Version:    0.7.0.1
  */

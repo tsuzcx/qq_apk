@@ -6,10 +6,10 @@ import android.view.KeyEvent;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import bdcy;
-import bdfz;
-import bdnw;
-import bdyn;
+import begy;
+import beka;
+import besl;
+import bffu;
 import com.tencent.qqmini.sdk.core.widget.KeyboardLayout;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 class InputJsPlugin$6
   implements TextView.OnEditorActionListener
 {
-  InputJsPlugin$6(InputJsPlugin paramInputJsPlugin, EditText paramEditText, bdfz parambdfz, KeyboardLayout paramKeyboardLayout, Context paramContext) {}
+  InputJsPlugin$6(InputJsPlugin paramInputJsPlugin, EditText paramEditText, beka parambeka, KeyboardLayout paramKeyboardLayout, Context paramContext) {}
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
@@ -38,14 +38,14 @@ class InputJsPlugin$6
       InputJsPlugin.access$400(this.this$0, this.val$context, this.val$currentET);
       this.val$req.a.a("onKeyboardComplete", paramKeyEvent.toString(), 0);
       if ((this.val$context instanceof Activity)) {
-        bdyn.a((Activity)this.val$context);
+        bffu.a((Activity)this.val$context);
       }
     }
     catch (JSONException paramTextView)
     {
       for (;;)
       {
-        bdnw.d("NetworkJsPlugin", "onEditorAction callback exception", paramTextView);
+        besl.d("NetworkJsPlugin", "onEditorAction callback exception", paramTextView);
       }
     }
     return true;

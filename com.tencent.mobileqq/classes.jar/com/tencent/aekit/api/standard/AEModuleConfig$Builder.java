@@ -9,6 +9,7 @@ public class AEModuleConfig$Builder
   private boolean enableDefaultBasic3 = true;
   private boolean enableDumpFilterParams = false;
   private boolean enableProfiler = false;
+  private boolean enableReducedMeidaLibrary = false;
   private boolean enableResourceCheck;
   private boolean isFramebufferFetchEnable = true;
   private boolean isLoadSo = true;
@@ -52,6 +53,12 @@ public class AEModuleConfig$Builder
   public Builder setEnableProfiler(boolean paramBoolean)
   {
     this.enableProfiler = paramBoolean;
+    return this;
+  }
+  
+  public Builder setEnableReducedMeidaLibrary(boolean paramBoolean)
+  {
+    this.enableReducedMeidaLibrary = paramBoolean;
     return this;
   }
   

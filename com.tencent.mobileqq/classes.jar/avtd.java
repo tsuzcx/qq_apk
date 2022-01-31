@@ -1,172 +1,118 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
-import com.tencent.mobileqq.search.rich.ArkAppView;
+import android.app.Application;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qmcf.QmcfManager;
+import com.tencent.mobileqq.qmcf.QmcfSwitchStrategy;
+import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport;
+import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport.BoyItem;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.sveffects.SdkContext;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class avtd
-  extends avtt
-  implements avsz
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ArkAppView jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView;
-  private WeakReference<avtg> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
+  private static avtd jdField_a_of_type_Avtd;
+  private int jdField_a_of_type_Int = -1;
   
-  public avtd(avth paramavth, Context paramContext)
+  public static avtd a()
   {
-    super(paramavth, paramContext);
-  }
-  
-  public View a(Context paramContext)
-  {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131495467, null, false);
-    this.jdField_a_of_type_AndroidViewView = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView = ((ArkAppView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297240));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    ((ArkAppRootLayout)paramContext).setDisableParentReturn(false);
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a()
-  {
-    this.b = false;
-    a(1);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (jdField_a_of_type_Avtd == null) {
+      jdField_a_of_type_Avtd = new avtd();
     }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
+    return jdField_a_of_type_Avtd;
   }
   
-  public void a(int paramInt)
+  public void a(BoyDataReport paramBoyDataReport)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    avtg localavtg;
-    do
+    HashMap localHashMap = new HashMap();
+    paramBoyDataReport = paramBoyDataReport.mBoyData.iterator();
+    Object localObject2;
+    while (paramBoyDataReport.hasNext())
     {
-      return;
-      localavtg = (avtg)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localavtg == null);
-    localavtg.a(paramInt);
-  }
-  
-  public void a(avtb paramavtb)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView == null) || (paramavtb == null)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView.a(paramavtb, this);
-  }
-  
-  public void a(avtg paramavtg)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramavtg);
-  }
-  
-  public void a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    this.b = true;
-    a(1);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {}
-    TextView localTextView;
-    label124:
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Boolean)
+      localObject1 = (BoyDataReport.BoyItem)paramBoyDataReport.next();
+      if (localHashMap.containsKey(((BoyDataReport.BoyItem)localObject1).mId))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkNodeView", 2, "onLoadFailed, show no result");
+        localObject2 = (avte)localHashMap.get(((BoyDataReport.BoyItem)localObject1).mId);
+        ((avte)localObject2).b();
+        if (((BoyDataReport.BoyItem)localObject1).status >= 1) {
+          ((avte)localObject2).a();
         }
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        a(false);
-        return;
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      if (!paramBoolean) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new avte(this));
-      localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131309313);
-      if (localTextView != null)
+      else
       {
-        if (paramString != null) {
-          break label169;
-        }
-        localTextView.setText(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext().getResources().getString(2131624689));
-      }
-      paramString = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131309306);
-    } while (paramString == null);
-    if (paramBoolean) {}
-    for (paramInt = 2130838480;; paramInt = 2130838479)
-    {
-      paramString.setBackgroundDrawable(paramString.getResources().getDrawable(paramInt));
-      return;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
-      break;
-      label169:
-      localTextView.setText(paramString);
-      break label124;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    boolean bool = paramBoolean;
-    if (paramBoolean)
-    {
-      bool = paramBoolean;
-      if (this.b)
-      {
-        bool = paramBoolean;
-        if (this.jdField_a_of_type_Boolean) {
-          bool = false;
+        localObject2 = ((BoyDataReport.BoyItem)localObject1).mId;
+        if (((BoyDataReport.BoyItem)localObject1).status >= 1) {}
+        for (int i = 1;; i = 0)
+        {
+          localObject2 = new avte(this, (String)localObject2, 1, i);
+          localHashMap.put(((BoyDataReport.BoyItem)localObject1).mId, localObject2);
+          break;
         }
       }
     }
-    super.a(bool);
-  }
-  
-  public View b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    }
-  }
-  
-  public void c() {}
-  
-  public void d()
-  {
-    this.jdField_a_of_type_AndroidViewView = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView != null)
+    paramBoyDataReport = new HashMap();
+    paramBoyDataReport.put("param_manufacture", Build.MANUFACTURER);
+    paramBoyDataReport.put("param_model", Build.MODEL);
+    paramBoyDataReport.put("param_sdk", String.valueOf(Build.VERSION.SDK_INT));
+    Object localObject1 = localHashMap.keySet().iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView.a();
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView = null;
+      localObject2 = ((Iterator)localObject1).next();
+      paramBoyDataReport.put(localObject2, String.valueOf(((avte)localHashMap.get(localObject2)).a()));
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    super.d();
+    axrl.a(BaseApplicationImpl.getContext()).a(null, "dg_action_match", true, 0L, 0L, paramBoyDataReport, "");
   }
   
-  public void e() {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (this.jdField_a_of_type_Int == -1) {
+      this.jdField_a_of_type_Int = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).getInt("entranceReportAlready", 0);
+    }
+    Object localObject;
+    int i;
+    int j;
+    axrl localaxrl;
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      this.jdField_a_of_type_Int = 1;
+      localObject = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).edit();
+      ((SharedPreferences.Editor)localObject).putInt("entranceReportAlready", this.jdField_a_of_type_Int);
+      ((SharedPreferences.Editor)localObject).commit();
+      i = QmcfManager.getInstance().getCurrSwitchStrategy().getEntranceState();
+      j = QmcfManager.getInstance().getCurrFrameType();
+      localObject = new HashMap();
+      ((HashMap)localObject).put("param_hasPoseEntrance", String.valueOf(paramBoolean1));
+      ((HashMap)localObject).put("param_hasFaceEntrance", String.valueOf(paramBoolean2));
+      ((HashMap)localObject).put("param_entanceState", String.valueOf(i));
+      ((HashMap)localObject).put("param_frameType", String.valueOf(j));
+      ((HashMap)localObject).put("param_manufacture", Build.MANUFACTURER);
+      ((HashMap)localObject).put("param_model", Build.MODEL);
+      ((HashMap)localObject).put("param_sdk", String.valueOf(Build.VERSION.SDK_INT));
+      localaxrl = axrl.a(BaseApplicationImpl.getContext());
+      if ((!paramBoolean1) || (!paramBoolean2)) {
+        break label283;
+      }
+    }
+    label283:
+    for (boolean bool = true;; bool = false)
+    {
+      localaxrl.a(null, "dg_entrance_state", bool, 0L, 0L, (HashMap)localObject, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("DanceGameReporter", 2, String.format("reportDGEntranceState, hasPose[%s], hasFace[%s], state[%s], frameTpye[%s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(i), Integer.valueOf(j) }));
+      }
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avtd
  * JD-Core Version:    0.7.0.1
  */

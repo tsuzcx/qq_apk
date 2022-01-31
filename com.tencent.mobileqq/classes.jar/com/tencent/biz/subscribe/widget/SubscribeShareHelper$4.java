@@ -6,23 +6,23 @@ import android.graphics.BitmapFactory;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.IOException;
 import java.util.Map;
-import mpl;
-import vxn;
-import wfz;
+import nam;
+import wkp;
+import wva;
 
 public class SubscribeShareHelper$4
   implements Runnable
 {
-  public SubscribeShareHelper$4(wfz paramwfz, Map paramMap, Runnable paramRunnable) {}
+  public SubscribeShareHelper$4(wva paramwva, Map paramMap, Runnable paramRunnable) {}
   
   public void run()
   {
     try
     {
-      if (wfz.a(this.this$0) == null) {
+      if (wva.a(this.this$0) == null) {
         return;
       }
-      localObject = mpl.a(BaseApplicationImpl.getContext(), wfz.a(this.this$0).e(), "GET", null, null);
+      localObject = nam.a(BaseApplicationImpl.getContext(), wva.a(this.this$0).e(), "GET", null, null);
       if (localObject == null) {
         break label132;
       }

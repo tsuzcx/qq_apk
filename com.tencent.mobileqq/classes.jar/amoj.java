@@ -1,94 +1,93 @@
-import android.accounts.AbstractAccountAuthenticator;
-import android.accounts.Account;
-import android.accounts.AccountAuthenticatorResponse;
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.util.Pair;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 
 public class amoj
-  extends AbstractAccountAuthenticator
 {
-  private Context a;
+  public float a;
+  public int a;
+  public String a;
+  public ArrayList<Pair<String, Float>> a;
+  Set<Integer> a;
+  public boolean a;
+  public int b;
+  public int c = 36;
   
-  public amoj(Context paramContext)
+  public amoj(String paramString)
   {
-    super(paramContext);
-    this.a = paramContext;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = amob.a(paramString, this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Float = amob.a(paramString);
+    this.b = this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.c = a(this.b);
+    this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1));
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b));
+      if (this.b % 2 != 0) {
+        break label172;
+      }
+    }
+    for (;;)
+    {
+      if (i != 0)
+      {
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(2));
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 2));
+      }
+      return;
+      label172:
+      i = 0;
+    }
   }
   
-  public Bundle addAccount(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, String paramString1, String paramString2, String[] paramArrayOfString, Bundle paramBundle)
+  private int a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "addAccount");
+    if (paramInt <= 2) {
+      paramInt = amob.a.nextInt(8) - 4 + 74;
     }
-    paramAccountAuthenticatorResponse = new Bundle();
-    paramAccountAuthenticatorResponse.putInt("errorCode", 6);
-    paramAccountAuthenticatorResponse.putString("errorMessage", "Manually add account is unsupported");
-    return paramAccountAuthenticatorResponse;
+    for (;;)
+    {
+      return paramInt / 4 * 4;
+      if (paramInt <= 4) {
+        paramInt = amob.a.nextInt(8) - 4 + 70;
+      } else if (paramInt <= 6) {
+        paramInt = amob.a.nextInt(8) - 4 + 66;
+      } else if (paramInt <= 8) {
+        paramInt = amob.a.nextInt(8) - 4 + 62;
+      } else {
+        paramInt = amob.a.nextInt(8) - 4 + 60;
+      }
+    }
   }
   
-  public Bundle confirmCredentials(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, Bundle paramBundle)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "onfirmCredentials");
+    if (this.jdField_a_of_type_Boolean) {
+      if (this.b % 3 != 0) {
+        break label56;
+      }
     }
-    return null;
-  }
-  
-  public Bundle editProperties(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, String paramString)
-  {
-    return null;
-  }
-  
-  public Bundle getAccountRemovalAllowed(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "getAccountRemovalAllowed");
+    label56:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 3));
+      }
+      return;
     }
-    if ("Success".equals(BaseApplicationImpl.sInjectResult)) {
-      amoa.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), paramAccount);
-    }
-    return super.getAccountRemovalAllowed(paramAccountAuthenticatorResponse, paramAccount);
-  }
-  
-  public Bundle getAuthToken(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String paramString, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "getAuthToken");
-    }
-    return null;
-  }
-  
-  public String getAuthTokenLabel(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "getAuthTokenLabel");
-    }
-    return "QQ通讯录同步@Authenticator";
-  }
-  
-  public Bundle hasFeatures(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String[] paramArrayOfString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "hasFeatures");
-    }
-    return null;
-  }
-  
-  public Bundle updateCredentials(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String paramString, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "getAuthToken");
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amoj
  * JD-Core Version:    0.7.0.1
  */

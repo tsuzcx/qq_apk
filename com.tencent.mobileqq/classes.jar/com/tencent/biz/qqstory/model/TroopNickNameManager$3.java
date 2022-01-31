@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.model;
 
-import sqo;
+import tdk;
 
 public class TroopNickNameManager$3
   implements Runnable
 {
-  public TroopNickNameManager$3(sqo paramsqo) {}
+  public TroopNickNameManager$3(tdk paramtdk) {}
   
   public void run()
   {

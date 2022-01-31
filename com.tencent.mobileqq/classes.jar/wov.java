@@ -1,30 +1,30 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.biz.ui.CustomMenuBar;
+import android.app.Activity;
+import android.content.Context;
+import java.lang.ref.WeakReference;
 
 public class wov
-  implements View.OnTouchListener
+  extends wmh
 {
-  public wov(CustomMenuBar paramCustomMenuBar, ImageView paramImageView) {}
+  protected WeakReference<Context> a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public wov(Context paramContext, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    super(paramContext, paramInt);
+    this.a = new WeakReference(paramContext);
+  }
+  
+  public boolean a()
+  {
+    Context localContext = (Context)this.a.get();
+    return ((localContext instanceof Activity)) && (((Activity)localContext).isFinishing());
+  }
+  
+  public void show()
+  {
+    if (a()) {
+      return;
     }
-    for (;;)
-    {
-      return false;
-      if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b)
-      {
-        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(4);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842572);
-      }
-    }
+    super.show();
   }
 }
 

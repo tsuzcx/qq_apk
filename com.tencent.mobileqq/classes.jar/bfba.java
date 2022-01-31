@@ -1,114 +1,37 @@
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-public class bfba<K, V>
-  implements Map<K, V>
+public class bfba<E>
 {
-  private final HashMap<K, V> a = new HashMap();
-  private final HashMap<V, K> b = new HashMap();
+  private bfay<T, E>.bfaz<T> jdField_a_of_type_Bfaz;
+  private E jdField_a_of_type_JavaLangObject;
+  private bfay<T, E>.bfaz<T> b;
   
-  public K a(Object paramObject)
+  public bfba(bfay parambfay) {}
+  
+  public bfay<T, E>.bfaz<T> a()
   {
-    return this.b.get(paramObject);
+    return this.jdField_a_of_type_Bfaz;
   }
   
-  public K b(Object paramObject)
+  public bfba a(bfay<T, E>.bfaz<T> parambfay)
   {
-    paramObject = this.b.remove(paramObject);
-    if (paramObject != null) {
-      this.a.remove(paramObject);
-    }
-    return paramObject;
+    this.jdField_a_of_type_Bfaz = parambfay;
+    return this;
   }
   
-  public void clear()
+  public bfba a(E paramE)
   {
-    this.a.clear();
-    this.b.clear();
+    this.jdField_a_of_type_JavaLangObject = paramE;
+    return this;
   }
   
-  public boolean containsKey(Object paramObject)
+  public bfba b(bfay<T, E>.bfaz<T> parambfay)
   {
-    return this.a.containsKey(paramObject);
-  }
-  
-  public boolean containsValue(Object paramObject)
-  {
-    return this.b.containsKey(paramObject);
-  }
-  
-  public Set<Map.Entry<K, V>> entrySet()
-  {
-    return this.a.entrySet();
-  }
-  
-  public V get(Object paramObject)
-  {
-    return this.a.get(paramObject);
-  }
-  
-  public boolean isEmpty()
-  {
-    return this.a.isEmpty();
-  }
-  
-  public Set<K> keySet()
-  {
-    return this.a.keySet();
-  }
-  
-  public V put(K paramK, V paramV)
-  {
-    if ((paramK == null) || (paramV == null)) {
-      return null;
-    }
-    Object localObject = remove(paramK);
-    b(paramV);
-    this.a.put(paramK, paramV);
-    this.b.put(paramV, paramK);
-    return localObject;
-  }
-  
-  public void putAll(Map<? extends K, ? extends V> paramMap)
-  {
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
-    {
-      Object localObject2 = (Map.Entry)paramMap.next();
-      Object localObject1 = ((Map.Entry)localObject2).getKey();
-      localObject2 = ((Map.Entry)localObject2).getValue();
-      if ((localObject1 != null) && (localObject2 != null)) {
-        put(localObject1, localObject2);
-      }
-    }
-  }
-  
-  public V remove(Object paramObject)
-  {
-    paramObject = this.a.remove(paramObject);
-    if (paramObject != null) {
-      this.b.remove(paramObject);
-    }
-    return paramObject;
-  }
-  
-  public int size()
-  {
-    return this.a.size();
-  }
-  
-  public Collection<V> values()
-  {
-    return this.a.values();
+    this.b = parambfay;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfba
  * JD-Core Version:    0.7.0.1
  */

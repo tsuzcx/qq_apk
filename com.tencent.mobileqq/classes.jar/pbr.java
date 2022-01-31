@@ -1,65 +1,44 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeShareView;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class pbr
-  implements behi
 {
-  public pbr(NativeShareView paramNativeShareView) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public JSONObject a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeShareView", 2, "OnItemClickListener : position = " + paramInt + ", view = " + paramView + ", id = " + paramLong);
-    }
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null) {
-      return;
-    }
-    if (NativeShareView.a(this.a) != null) {
-      NativeShareView.a(this.a).run();
-    }
-    int i = ((avgw)paramAdapterView).a.c;
-    paramInt = 0;
-    switch (i)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
+      localJSONObject.put("businessId", this.jdField_a_of_type_Int);
+      localJSONObject.put("businessType", this.jdField_b_of_type_Int);
+      localJSONObject.put("businessName", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("jumpUrl", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("businessIconUrl", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("fansCount", this.jdField_c_of_type_Int);
+      return localJSONObject;
     }
-    for (;;)
+    catch (JSONException localJSONException)
     {
-      paramAdapterView = new JSONObject();
-      try
-      {
-        paramAdapterView.put("channel_type", paramInt);
-        ndn.a(null, "", "0X800A3BE", "0X800A3BE", 0, 0, "", "", "", paramAdapterView.toString(), false);
-        return;
-        paramInt = 6;
-        rvu.c();
-        continue;
-        rvu.a((Activity)NativeShareView.a(this.a));
-        paramInt = 1;
-        continue;
-        rvu.a((BaseActivity)NativeShareView.a(this.a));
-        paramInt = 2;
-        continue;
-        rvu.b((Activity)NativeShareView.a(this.a));
-        paramInt = 3;
-        continue;
-        rvu.c((Activity)NativeShareView.a(this.a));
-        paramInt = 4;
-      }
-      catch (JSONException paramView)
-      {
-        for (;;)
-        {
-          QLog.e("NativeShareView", 1, paramView, new Object[0]);
-        }
-      }
+      QLog.e("SelfInfoModule", 1, "toJson error. " + localJSONException);
     }
+    return localJSONObject;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_Int = paramJSONObject.getInt("businessId");
+    this.jdField_b_of_type_Int = paramJSONObject.getInt("businessType");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("businessName");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("jumpUrl");
+    this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("businessIconUrl");
+    this.jdField_c_of_type_Int = paramJSONObject.getInt("fansCount");
   }
 }
 

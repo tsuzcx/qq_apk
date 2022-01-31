@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard.data;
 
-import alqc;
+import ames;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -15,7 +15,7 @@ import org.json.JSONException;
 public class CardUinInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CardUinInfo> CREATOR = new alqc();
+  public static final Parcelable.Creator<CardUinInfo> CREATOR = new ames();
   public String a;
   public boolean a;
   public boolean b;

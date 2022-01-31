@@ -1,17 +1,23 @@
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
 class adok
-  implements QQPermissionCallback
+  implements bfoq
 {
-  adok(adoi paramadoi, AppActivity paramAppActivity) {}
+  adok(adoj paramadoj, MessageForDeviceFile paramMessageForDeviceFile, bfol parambfol) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    babr.b(this.jdField_a_of_type_MqqAppAppActivity);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      this.jdField_a_of_type_Adoj.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
   }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

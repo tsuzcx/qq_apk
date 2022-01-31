@@ -1,17 +1,26 @@
+import android.content.Context;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+
 public class amhq
+  implements amhn
 {
-  public int a;
-  public int b = 3145728;
-  public int c = 3145728;
-  
-  public amhq(amhp paramamhp)
+  public void a(Context paramContext, ColorNote paramColorNote)
   {
-    this.jdField_a_of_type_Int = 512000;
+    String str = paramColorNote.getSubType();
+    Object localObject = str.split("-");
+    if (localObject.length > 0) {
+      str = localObject[0];
+    }
+    if (localObject.length > 1) {
+      localObject = localObject[1];
+    }
+    paramColorNote = paramColorNote.getReserve();
+    bgpf.a(paramContext, "", Long.parseLong(str), paramColorNote);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amhq
  * JD-Core Version:    0.7.0.1
  */

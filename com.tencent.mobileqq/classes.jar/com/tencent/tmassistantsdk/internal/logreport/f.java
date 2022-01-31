@@ -3,8 +3,8 @@ package com.tencent.tmassistantsdk.internal.logreport;
 import android.os.Handler;
 import com.tencent.tmassistantbase.network.INetworkChangedObserver;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.l;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.k;
 
 class f
   implements INetworkChangedObserver
@@ -13,7 +13,7 @@ class f
   
   public void onNetworkChanged()
   {
-    ac.c("LogReportManager", "onNetworkChanged,netState:" + GlobalUtil.getNetStatus());
+    ab.c("LogReportManager", "onNetworkChanged,netState:" + GlobalUtil.getNetStatus());
     Class[] arrayOfClass = e.d();
     int j = arrayOfClass.length;
     int i = 0;
@@ -38,7 +38,7 @@ class f
         }
       }
     }
-    l.a().post(new g(this));
+    k.a().post(new g(this));
   }
 }
 

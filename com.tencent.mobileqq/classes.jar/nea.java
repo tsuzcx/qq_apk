@@ -1,18 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoAdInfo;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class nea
-  implements Parcelable.Creator<VideoAdInfo>
+public class nea
+  implements View.OnClickListener
 {
-  public VideoAdInfo a(Parcel paramParcel)
-  {
-    return new VideoAdInfo(paramParcel);
-  }
+  public nea(EqqAccountDetailActivity paramEqqAccountDetailActivity, nmv paramnmv, String paramString) {}
   
-  public VideoAdInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new VideoAdInfo[paramInt];
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_Nmv.g)) || (TextUtils.isEmpty(this.jdField_a_of_type_Nmv.f)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.jdField_a_of_type_JavaLangString, 2, "buildMapItemForEqq no lat or lng");
+      }
+      return;
+    }
+    paramView = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, QQMapActivity.class);
+    paramView.putExtra("lat", this.jdField_a_of_type_Nmv.g);
+    paramView.putExtra("lon", this.jdField_a_of_type_Nmv.f);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      paramView.putExtra("loc", this.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.startActivity(paramView);
+    axqw.b(EqqAccountDetailActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "CliOper", "", "", "Biz_card", "Biz_card_map", 0, 0, EqqAccountDetailActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "", "", "");
+    EqqAccountDetailActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Nmv.jdField_a_of_type_JavaLangString);
   }
 }
 

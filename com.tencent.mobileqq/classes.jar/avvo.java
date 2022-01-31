@@ -1,35 +1,29 @@
-import android.text.TextUtils;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderView;
 
 public class avvo
+  implements Animation.AnimationListener
 {
-  public int a;
-  public String a;
+  public avvo(ProviderContainerView paramProviderContainerView) {}
   
-  public avvo(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public boolean a(String paramString)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return this.jdField_a_of_type_JavaLangString.equals(paramString);
+    if (ProviderContainerView.a(this.a) != null)
+    {
+      ProviderContainerView.a(this.a).setAlpha(1.0F);
+      ProviderContainerView.a(this.a).setVisibility(0);
     }
-    return false;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("keyword:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" status:").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avvo
  * JD-Core Version:    0.7.0.1
  */

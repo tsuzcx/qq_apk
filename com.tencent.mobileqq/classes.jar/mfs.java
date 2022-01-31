@@ -1,144 +1,17 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Build.VERSION;
-import com.tencent.av.VideoController;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class mfs
+  extends lfu
 {
-  public static int a(int paramInt)
-  {
-    if (paramInt == 3000) {
-      return 1;
-    }
-    if (paramInt == 1) {
-      return 2;
-    }
-    return 0;
-  }
+  public mfs(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public static void a(Intent paramIntent)
+  protected void a(long paramLong1, long paramLong2, ArrayList<ldw> paramArrayList)
   {
-    if (paramIntent != null) {}
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    int j = 4;
-    Object localObject = VideoController.a();
-    if (localObject != null)
-    {
-      localObject = ((VideoController)localObject).a();
-      i = j;
-      if (((kvq)localObject).d != 3) {
-        if (((kvq)localObject).d != 4) {
-          break label120;
-        }
-      }
-    }
-    label120:
-    for (int i = j;; i = 2)
-    {
-      awqx.b(null, "dc00898", "", "", paramString, paramString, i, 0, String.valueOf(paramInt), "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.i("AVUtil", 2, "beautyReport tag[" + paramString + "], from[" + i + "], r1[" + paramInt + "]");
-      }
-      return;
-    }
-  }
-  
-  public static void a(String paramString, boolean paramBoolean)
-  {
-    SettingCloneUtil.writeValue(BaseApplicationImpl.getContext(), paramString, null, "qqsetting_avcall_notify_key", paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.i("AVUtil", 2, "saveAllowAVNotify, isAllow[" + paramBoolean + "]");
-    }
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = false;
-    if (Build.VERSION.SDK_INT > 28) {
-      bool = true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("CompatModeTag", 2, "isUseCompatMode [" + bool + "], SDK_INT[" + Build.VERSION.SDK_INT + "]");
-    }
-    return bool;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 2) || (paramInt == 1);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    String str = "qqsetting_avcall_notify_key" + paramString;
-    boolean bool2 = SettingCloneUtil.getSharedPreferences().contains(str);
-    if (bool2) {}
-    for (boolean bool1 = SettingCloneUtil.readValue(localBaseApplication, paramString, null, "qqsetting_avcall_notify_key", true);; bool1 = SettingCloneUtil.readValue(localBaseApplication, null, null, "qqsetting_avcall_notify_key", true))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AVUtil", 2, "isAVNotifyEnable, av_enable[" + bool1 + "], isNewKeyExist[" + bool2 + "]");
-      }
-      return bool1;
-    }
-  }
-  
-  public static int b(int paramInt)
-  {
-    int i = 0;
-    if (paramInt == 3000) {
-      i = 1004;
-    }
-    do
-    {
-      return i;
-      if (paramInt == 1) {
-        return 1000;
-      }
-    } while (paramInt != 0);
-    return 0;
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == 1) || (paramInt == 3000);
-  }
-  
-  public static boolean b(String paramString)
-  {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    boolean bool2 = QQNotificationManager.getInstance().areNotificationsEnabled(localBaseApplication);
-    boolean bool1;
-    if (bool2) {
-      bool1 = a(paramString);
-    }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.i("AVUtil", 2, "isAllowAVNotify, system_enable[false]");
-    return bool2;
-  }
-  
-  public static int c(int paramInt)
-  {
-    int i = 1000;
-    if (paramInt == 2) {
-      i = 1004;
-    }
-    while (paramInt != 1) {
-      return i;
-    }
-    return 1000;
+    ThreadManager.getUIHandler().post(new MultiVideoCtrlLayerUIBase.1.1(this));
   }
 }
 

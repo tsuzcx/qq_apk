@@ -1,12 +1,20 @@
-class rip
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+
+public class rip
+  implements MessageQueue.IdleHandler
 {
-  final int jdField_a_of_type_Int;
-  final int b;
+  public rip(FastWebActivity paramFastWebActivity) {}
   
-  public rip(rio paramrio, int paramInt1, int paramInt2)
+  public boolean queueIdle()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if (FastWebActivity.a(this.a).c == 0) {}
+    for (String str = "";; str = FastWebActivity.a(this.a).p)
+    {
+      rmu.a(FastWebActivity.a(this.a).o, FastWebActivity.a(this.a).j, String.valueOf(FastWebActivity.a(this.a).d), FastWebActivity.a(this.a).l, FastWebActivity.a(this.a).c(), str, FastWebActivity.a(this.a).m, FastWebActivity.a(this.a).n, FastWebActivity.a(this.a), FastWebActivity.b(this.a));
+      return false;
+    }
   }
 }
 

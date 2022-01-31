@@ -1,17 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public final class aafg
-  implements DialogInterface.OnClickListener
+public class aafg
+  implements View.OnClickListener
 {
-  public aafg(aagm paramaagm) {}
+  public aafg(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a != null) {
-      this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "add account");
     }
-    paramDialogInterface.dismiss();
+    if (!aumi.a().a(this.a.app, this.a)) {
+      return;
+    }
+    if ((this.a.a != null) && (this.a.a.size() - 1 >= 8))
+    {
+      bcpw.a(this.a, 2131694030, 0).a();
+      return;
+    }
+    AccountManageActivity.a(this.a, ayao.a(this.a.app));
+    paramView = new Intent();
+    paramView.setPackage(this.a.getPackageName());
+    paramView.setClass(this.a, AddAccountActivity.class);
+    this.a.startActivityForResult(paramView, 1000);
+    this.a.overridePendingTransition(2130771997, 2130771990);
+    ayan.c(this.a.app, this.a);
+    axqw.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_add", 0, 0, "", "", "", "");
   }
 }
 

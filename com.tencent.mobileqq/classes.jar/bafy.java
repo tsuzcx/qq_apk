@@ -1,46 +1,39 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 
-class bafy
-  implements View.OnClickListener
+public class bafy
+  implements Animation.AnimationListener
 {
-  bafy(bafw parambafw, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bafy(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Bafw.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
-    {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bafw, 0);
-      if (this.jdField_a_of_type_Bafw.c)
-      {
-        if (!this.jdField_a_of_type_Bafw.jdField_a_of_type_Boolean) {
-          break label93;
-        }
-        this.jdField_a_of_type_Bafw.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bafw.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-      }
+    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+      return;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bafw.c = false;
-      label93:
-      try
-      {
-        if (this.jdField_a_of_type_Bafw.isShowing()) {
-          this.jdField_a_of_type_Bafw.dismiss();
-        }
-        return;
-      }
-      catch (Exception paramView) {}
-      this.jdField_a_of_type_Bafw.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bafw.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+    if (paramAnimation == this.a.b) {
+      VisitorTroopCardFragment.a(this.a, false);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusable(true);
+    this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation)) {
+      VisitorTroopCardFragment.a(this.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bafy
  * JD-Core Version:    0.7.0.1
  */

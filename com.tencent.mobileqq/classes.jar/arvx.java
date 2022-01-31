@@ -1,59 +1,39 @@
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class arvx
-  extends arum
+  implements DialogInterface.OnClickListener
 {
-  public arvx(MultiCardFragment paramMultiCardFragment) {}
+  public arvx(LocationDialogUtil.6 param6) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "onPageSelected() called with: position = [" + paramInt + "]");
+      QLog.d("LocationDialogUtil", 2, new Object[] { "onClick: invoked. showStartShareLocationDialog  ", " which: ", Integer.valueOf(paramInt) });
     }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "ViewPager onPageScrollStateChanged() called with: state = [" + paramInt + "]");
+    if (BaseActivity.sTopActivity != null) {
+      LocationShareFragment.b(BaseActivity.sTopActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.b);
     }
-    switch (paramInt)
+    try
     {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return;
-          MultiCardFragment.a(this.a);
-          MultiCardFragment.a(this.a, true);
-          if ((MultiCardFragment.a(this.a) != null) && (MultiCardFragment.a(this.a).a() > MultiCardFragment.a(this.a).a()))
-          {
-            MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
-            MultiCardFragment.a(this.a).a();
-          }
-        } while (MultiCardFragment.a(this.a) == null);
-        MultiCardFragment.a(this.a).setViewPagerBusy(false);
-        return;
-        MultiCardFragment.b(this.a, true);
-        MultiCardFragment.a(this.a, false);
-      } while (MultiCardFragment.a(this.a) == null);
-      MultiCardFragment.a(this.a, MultiCardFragment.a(this.a).a());
+      aruq.a(BaseActivity.sTopActivity.app).a(true);
+      label79:
+      arvk.a(this.a.b, "0X800A769");
       return;
     }
-    MultiCardFragment.b(this.a, true);
-    MultiCardFragment.a(this.a, false);
+    catch (Throwable paramDialogInterface)
+    {
+      break label79;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arvx
  * JD-Core Version:    0.7.0.1
  */

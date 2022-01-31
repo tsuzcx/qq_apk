@@ -1,41 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.TbsReaderView.ReaderCallback;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
-class aoru
-  implements TbsReaderView.ReaderCallback
+public class aoru
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aoru(aorp paramaorp, aorv paramaorv) {}
+  public aoru(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onCallBackAction(Integer paramInteger, Object paramObject1, Object paramObject2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LocalTbsViewManager<FileAssistant>", 1, "recv actionType[" + paramInteger + "]");
-    }
-    if (paramInteger.intValue() == 5012)
-    {
-      int i = ((Integer)paramObject1).intValue();
-      if (QLog.isColorLevel()) {
-        QLog.i("LocalTbsViewManager<FileAssistant>", 1, "err Code[" + i + "]");
-      }
-      if (i != 0) {
-        break label129;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "canOpenFile return ok 1-------");
-      }
-      if (this.jdField_a_of_type_Aorv != null) {
-        this.jdField_a_of_type_Aorv.b(true);
-      }
-    }
-    label129:
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "canOpenFile return ok 2-------");
-      }
-    } while (this.jdField_a_of_type_Aorv == null);
-    this.jdField_a_of_type_Aorv.b(false);
+    FileAssistantActivity.a(this.a).getLayoutParams().height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    FileAssistantActivity.a(this.a).requestLayout();
   }
 }
 

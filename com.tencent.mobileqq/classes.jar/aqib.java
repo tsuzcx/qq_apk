@@ -1,12 +1,25 @@
-import com.tencent.youtu.ytagreflectlivecheck.jni.model.ReflectLiveReq;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout;
 
-public abstract interface aqib
+public class aqib
+  implements TouchWebView.OnScrollChangedListener
 {
-  public abstract void a();
+  public aqib(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public abstract void a(ReflectLiveReq paramReflectLiveReq);
-  
-  public abstract void a(byte[][] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    if (paramInt4 > paramInt2) {
+      if (paramInt2 == 0) {
+        this.a.a.b();
+      }
+    }
+    while ((paramInt4 >= paramInt2) || (paramInt2 < this.a.c.getHeight())) {
+      return;
+    }
+    this.a.a.a();
+  }
 }
 
 

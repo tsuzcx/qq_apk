@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.adapter;
 
-import aicw;
+import aipp;
 
 public class SystemMsgListAdapter$2
   implements Runnable
 {
-  public SystemMsgListAdapter$2(aicw paramaicw) {}
+  public SystemMsgListAdapter$2(aipp paramaipp) {}
   
   public void run()
   {

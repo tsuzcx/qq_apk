@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.FrameLayout.LayoutParams;
+import com.tencent.pts.bridge.PTSJSBridge;
 import com.tencent.pts.core.PTSAppInstance;
 import com.tencent.pts.ui.PTSNodeAttribute;
 import com.tencent.pts.ui.PTSNodeInfo;
@@ -17,6 +18,7 @@ import com.tencent.pts.utils.PTSLog;
 import com.tencent.pts.utils.PTSTimeCostUtil;
 import com.tencent.pts.utils.PTSValueConvertUtil;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
@@ -109,6 +111,50 @@ public abstract class PTSNodeVirtual<T extends View>
   private int getWidth()
   {
     return this.mNodeInfo.getStyle().getWidth();
+  }
+  
+  private void handleTapEvent(PTSNodeInfo paramPTSNodeInfo, String paramString)
+  {
+    Object localObject1 = null;
+    Object localObject2;
+    if (paramPTSNodeInfo != null) {
+      localObject2 = paramPTSNodeInfo.getUniqueID();
+    }
+    for (;;)
+    {
+      try
+      {
+        int j = Integer.valueOf((String)localObject2).intValue();
+        String str = paramPTSNodeInfo.getAttributes().getAttributeID();
+        paramPTSNodeInfo = paramPTSNodeInfo.getEventInfo();
+        if ((paramPTSNodeInfo != null) && (paramPTSNodeInfo.size() > 0))
+        {
+          int i = paramPTSNodeInfo.size();
+          localObject2 = new String[i];
+          String[] arrayOfString = new String[i];
+          Iterator localIterator = paramPTSNodeInfo.entrySet().iterator();
+          i = 0;
+          paramPTSNodeInfo = (PTSNodeInfo)localObject2;
+          localObject1 = arrayOfString;
+          if (localIterator.hasNext())
+          {
+            paramPTSNodeInfo = (Map.Entry)localIterator.next();
+            localObject2[i] = ((String)paramPTSNodeInfo.getKey());
+            arrayOfString[i] = ((String)paramPTSNodeInfo.getValue());
+            i += 1;
+            continue;
+          }
+          this.mAppInstance.getJSBridge().callJSEventFunction(paramString, j, "tap", str, paramPTSNodeInfo, localObject1, null, null, this.mAppInstance);
+          return;
+        }
+      }
+      catch (NumberFormatException paramPTSNodeInfo)
+      {
+        PTSLog.e(this.TAG, "[bindTapEvent], e = " + paramPTSNodeInfo);
+        return;
+      }
+      paramPTSNodeInfo = null;
+    }
   }
   
   private void setAttributes(String paramString, Object paramObject)

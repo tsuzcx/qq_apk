@@ -1,25 +1,6 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-
-class aegt
-  implements woi
+public abstract interface aegt
 {
-  aegt(aego paramaego) {}
-  
-  public void a()
-  {
-    asii localasii = this.a.jdField_a_of_type_Asii;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 10002) {}
-    for (int i = 8;; i = 6)
-    {
-      localasii.a(false, true, i);
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    this.a.jdField_a_of_type_Asii.a();
-  }
+  public abstract void a(long paramLong);
 }
 
 

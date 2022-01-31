@@ -2,7 +2,6 @@ package com.tencent.ttpic.openapi.offlineset.utils;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.os.Environment;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import java.io.BufferedReader;
@@ -57,11 +56,14 @@ public class FileOfflineUtil
   {
     try
     {
-      Object localObject = Environment.getExternalStorageDirectory();
+      Object localObject = AEModule.getContext().getExternalFilesDir(null);
       localObject = ((File)localObject).getAbsolutePath() + File.separator + OFFELINE_DIR;
       return localObject;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
     return "/sdcard" + File.separator + OFFELINE_DIR;
   }
   

@@ -1,16 +1,17 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 
-public class puc
+class puc
   implements View.OnClickListener
 {
-  public puc(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  puc(pub parampub) {}
   
   public void onClick(View paramView)
   {
-    this.a.getActivity().finish();
+    paramView = this.a.jdField_a_of_type_Rap.a();
+    if (paramView != null) {
+      paramView.a(null, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
   }
 }
 

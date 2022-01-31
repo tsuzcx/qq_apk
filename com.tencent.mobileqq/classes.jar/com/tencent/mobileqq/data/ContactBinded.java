@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
+import aukm;
 
 public class ContactBinded
-  extends atmo
+  extends aukm
 {
   public boolean isReaded;
   public long timestamp;

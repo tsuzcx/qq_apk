@@ -1,101 +1,52 @@
 import android.content.Context;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.text.TextUtils;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
 public class vlt
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private static String b = "";
+  private static vlt a = new vlt();
   
-  public static String a(Context paramContext)
+  public static vlt a()
   {
-    b(paramContext);
-    return jdField_a_of_type_JavaLangString;
+    return a;
   }
   
-  public static boolean a(Context paramContext)
+  public void a(Context paramContext, ImageView paramImageView, String paramString, int paramInt1, int paramInt2, URLDrawable.URLDrawableListener paramURLDrawableListener)
   {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static String b(Context paramContext)
-  {
-    b(paramContext);
-    return b;
-  }
-  
-  private static void b(Context paramContext)
-  {
-    if ((!jdField_a_of_type_Boolean) && (paramContext != null))
+    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
     {
-      paramContext = paramContext.getApplicationContext();
-      jdField_a_of_type_Boolean = true;
-      AppNetConnInfo.registerNetChangeReceiver(paramContext, new vlu(paramContext));
-      c(paramContext);
+      veg.e("ImageLoader", "ImageView or uri is null.");
+      return;
     }
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static String c(Context paramContext)
-  {
-    if (paramContext != null) {}
+    veg.b("ImageLoader", "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
+    paramContext = URLDrawable.URLDrawableOptions.obtain();
+    if ((paramInt1 > 0) && (paramInt2 > 0))
+    {
+      paramContext.mRequestWidth = paramInt1;
+      paramContext.mRequestHeight = paramInt2;
+    }
+    paramContext.mFailedDrawable = aywk.a;
+    paramContext.mLoadingDrawable = aywk.a;
+    paramContext.mUseAutoScaleParams = false;
+    paramContext = URLDrawable.getDrawable(paramString, paramContext);
+    if (paramURLDrawableListener != null)
+    {
+      if (paramContext.getStatus() != 1) {
+        break label154;
+      }
+      veg.b("ImageLoader", "URLDrawable's status is SUCCESSED.");
+      paramURLDrawableListener.onLoadSuccessed(paramContext);
+    }
     for (;;)
     {
-      try
-      {
-        paramContext = (WifiManager)paramContext.getSystemService("wifi");
-        if (paramContext != null)
-        {
-          paramContext = paramContext.getConnectionInfo();
-          if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.getSSID())))
-          {
-            paramContext = paramContext.getSSID().replace("\"", "");
-            return paramContext;
-          }
-        }
-      }
-      catch (Throwable paramContext)
-      {
-        paramContext.printStackTrace();
-        return "";
-      }
-      paramContext = "";
-    }
-  }
-  
-  private static void c(Context paramContext)
-  {
-    WifiInfo localWifiInfo;
-    if (paramContext != null)
-    {
-      localWifiInfo = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
-      if (localWifiInfo != null)
-      {
-        if (!TextUtils.isEmpty(localWifiInfo.getBSSID())) {
-          break label55;
-        }
-        paramContext = "";
-        jdField_a_of_type_JavaLangString = paramContext;
-        if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-          break label63;
-        }
-      }
-    }
-    label55:
-    label63:
-    for (paramContext = "";; paramContext = localWifiInfo.getSSID())
-    {
-      b = paramContext;
+      paramContext.setURLDrawableListener(paramURLDrawableListener);
+      paramImageView.setImageDrawable(paramContext);
       return;
-      paramContext = localWifiInfo.getBSSID();
-      break;
+      label154:
+      veg.b("ImageLoader", "start load URLDrawable.");
     }
   }
 }

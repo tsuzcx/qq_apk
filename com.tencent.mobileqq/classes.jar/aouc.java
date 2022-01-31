@@ -1,21 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aouc
-  extends aotz
+class aouc
+  implements View.OnClickListener
 {
-  private final String a;
+  aouc(aoub paramaoub) {}
   
-  public aouc(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface, paramFileManagerEntity);
-    this.jdField_a_of_type_JavaLangString = "VideoForDisc<QFile>";
-  }
-  
-  public void a(aojh paramaojh)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType = 1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, new aoud(this, paramaojh));
+    acun localacun = (acun)actn.a(paramView);
+    int i;
+    ChatMessage localChatMessage;
+    if (localacun != null)
+    {
+      i = -1;
+      localChatMessage = apue.a(localacun.a);
+      if (!this.a.b(localChatMessage)) {
+        break label76;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      this.a.a(paramView, localacun, localChatMessage, i);
+      if (this.a.a != null) {
+        this.a.a.g(localacun.a);
+      }
+      return;
+      label76:
+      if (this.a.a(localChatMessage)) {
+        i = 1;
+      }
+    }
   }
 }
 

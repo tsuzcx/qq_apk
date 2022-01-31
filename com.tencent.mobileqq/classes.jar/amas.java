@@ -1,71 +1,73 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import java.util.ArrayList;
+import javax.annotation.Nonnull;
 
 public class amas
 {
-  protected String a = "";
-  
-  public amas() {}
-  
-  public amas(String paramString)
+  @android.support.annotation.Nullable
+  public static ArrayList<RockDownloadInfo> a(@NonNull RockDownloadInfo paramRockDownloadInfo)
   {
-    if (paramString != null) {
-      this.a = paramString;
-    }
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    return aman.a(localRockDownloaderTask);
   }
   
-  public amat a()
+  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable amam paramamam)
   {
-    if ((this instanceof amat)) {
-      return (amat)this;
-    }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkAIDictConfBean object");
-    return null;
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    localRockDownloaderTask.setQueryAPKListener(paramamam);
+    aman.b(localRockDownloaderTask);
   }
   
-  public amau a()
+  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable RockDownloadListener paramRockDownloadListener)
   {
-    if ((this instanceof amau)) {
-      return (amau)this;
+    if (!bbev.a(BaseApplicationImpl.context))
+    {
+      if (paramRockDownloadListener != null)
+      {
+        paramRockDownloadListener.onDownloadFail(paramRockDownloadInfo, ajyc.a(2131713490), 10009);
+        paramRockDownloadListener.onDownloadFinish(paramRockDownloadInfo);
+      }
+      return;
     }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordConfBean object");
-    return null;
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    localRockDownloaderTask.setRockDownloadListener(paramRockDownloadListener);
+    aman.a(localRockDownloaderTask);
   }
   
-  public amav a()
+  public static boolean a(@Nonnull RockDownloadInfo paramRockDownloadInfo)
   {
-    if ((this instanceof amav)) {
-      return (amav)this;
-    }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordSDKShareConfBean object");
-    return null;
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    return aman.b(localRockDownloaderTask);
   }
   
-  public amaw a()
+  public static boolean b(@Nonnull RockDownloadInfo paramRockDownloadInfo)
   {
-    if ((this instanceof amaw)) {
-      return (amaw)this;
-    }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkMsgAIDisableConfBean object");
-    return null;
-  }
-  
-  public amax a()
-  {
-    if ((this instanceof amax)) {
-      return (amax)this;
-    }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkPlatformConfigBean object");
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.a;
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    return aman.a(localRockDownloaderTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amas
  * JD-Core Version:    0.7.0.1
  */

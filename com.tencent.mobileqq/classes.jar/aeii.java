@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.50;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class aeii
-  implements baxq
+class aeii
+  implements DialogInterface.OnDismissListener
 {
-  public aeii(PublicAccountChatPie.50 param50) {}
+  aeii(aeif paramaeif) {}
   
-  public void a(boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean) {
-      this.a.this$0.a.a();
-    }
+    aeif.a(this.a, null);
   }
 }
 

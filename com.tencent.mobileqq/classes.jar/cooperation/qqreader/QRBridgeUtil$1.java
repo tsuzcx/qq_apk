@@ -1,15 +1,31 @@
 package cooperation.qqreader;
 
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import eipc.EIPCClient;
+import bbdj;
+import bgsv;
+import bgvo;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
+import mqq.app.AppRuntime;
 
 final class QRBridgeUtil$1
   implements Runnable
 {
   public void run()
   {
-    QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "download_reader_plugin", new Bundle());
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject == null)
+    {
+      bgvo.a("QRBridgeUtil", "App runtime is null, unable to clear reader cache");
+      return;
+    }
+    bgsv localbgsv = new bgsv();
+    File localFile = ((AppRuntime)localObject).getSecurityBusinessRootFile(localbgsv);
+    if (localFile != null) {}
+    for (localObject = localFile.getAbsolutePath();; localObject = localbgsv.oldBusinessDir(((AppRuntime)localObject).getAccount()).getAbsolutePath())
+    {
+      bbdj.a((String)localObject + File.separator + "Online", false);
+      return;
+    }
   }
 }
 

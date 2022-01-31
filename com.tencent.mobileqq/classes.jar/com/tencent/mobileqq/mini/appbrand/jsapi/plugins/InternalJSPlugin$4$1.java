@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.text.TextUtils;
+import com.tencent.mobileqq.mini.apkg.ApkgInfo;
+import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
+import com.tencent.mobileqq.mini.report.InnerAppReportDc4239;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -30,8 +33,9 @@ class InternalJSPlugin$4$1
             {
               paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(paramDialogInterface.optString("path")));
               if (paramDialogInterface == null) {
-                break label328;
+                break label368;
               }
+              paramDialogInterface.setPackage(this.this$1.val$packageName);
               paramDialogInterface.addFlags(67108864);
               paramDialogInterface.putExtra("big_brother_source_key", "biz_src_miniapp");
               if (paramDialogInterface.resolveActivity(this.this$1.val$activity.getPackageManager()) == null) {
@@ -39,6 +43,7 @@ class InternalJSPlugin$4$1
               }
               this.this$1.val$activity.startActivity(paramDialogInterface);
               this.this$1.this$0.jsPluginEngine.callbackJsEventOK(this.this$1.val$webview, this.this$1.val$eventName, null, this.this$1.val$callbackId);
+              InnerAppReportDc4239.innerAppReport(this.this$1.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "openapp", null);
               return;
             }
             localIntent = this.this$1.val$pm.getLaunchIntentForPackage(this.this$1.val$packageName);
@@ -73,7 +78,7 @@ class InternalJSPlugin$4$1
     }
     this.this$1.this$0.jsPluginEngine.callbackJsEventFail(this.this$1.val$webview, this.this$1.val$eventName, null, this.this$1.val$callbackId);
     return;
-    label328:
+    label368:
     this.this$1.this$0.jsPluginEngine.callbackJsEventFail(this.this$1.val$webview, this.this$1.val$eventName, null, this.this$1.val$callbackId);
   }
 }

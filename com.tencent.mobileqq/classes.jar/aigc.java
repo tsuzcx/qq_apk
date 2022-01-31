@@ -1,12 +1,13 @@
-import com.tencent.mobileqq.data.ApolloActionPush;
-
-public abstract interface aigc
+public class aigc
 {
-  public abstract void a(int paramInt, ApolloActionPush paramApolloActionPush);
+  public int a;
+  public aukm a;
+  
+  protected aigc(aiga paramaiga) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aigc
  * JD-Core Version:    0.7.0.1
  */

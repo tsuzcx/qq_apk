@@ -1,19 +1,24 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
+import org.json.JSONObject;
 
 class UIJsPlugin$25
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  UIJsPlugin$25(UIJsPlugin paramUIJsPlugin, PageWebview paramPageWebview) {}
+  UIJsPlugin$25(UIJsPlugin paramUIJsPlugin, JsRuntime paramJsRuntime, JSONObject paramJSONObject1, String paramString, JSONObject paramJSONObject2, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    ThreadManager.getUIHandler().post(new UIJsPlugin.25.1(this, paramValueAnimator));
+    WebviewContainer localWebviewContainer = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
+    if (localWebviewContainer != null)
+    {
+      localWebviewContainer.updateTextArea(this.val$jsonObject);
+      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, this.val$result, this.val$callbackId);
+      return;
+    }
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, "container is null", this.val$callbackId);
   }
 }
 

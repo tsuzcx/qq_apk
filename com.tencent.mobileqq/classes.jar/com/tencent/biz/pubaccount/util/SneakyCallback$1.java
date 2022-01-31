@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.util;
 
 import com.tencent.qphone.base.util.QLog;
-import rvw;
+import sip;
 
 public class SneakyCallback$1
   implements Runnable
 {
-  public SneakyCallback$1(rvw paramrvw) {}
+  public SneakyCallback$1(sip paramsip) {}
   
   public void run()
   {
     try
     {
-      rvw.a(this.this$0, 1);
+      sip.a(this.this$0, 1);
       return;
     }
     catch (Throwable localThrowable)

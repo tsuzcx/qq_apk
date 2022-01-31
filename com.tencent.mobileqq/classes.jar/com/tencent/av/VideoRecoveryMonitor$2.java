@@ -1,15 +1,15 @@
 package com.tencent.av;
 
-import ktn;
+import lec;
 
 public class VideoRecoveryMonitor$2
   implements Runnable
 {
-  public VideoRecoveryMonitor$2(ktn paramktn) {}
+  public VideoRecoveryMonitor$2(lec paramlec) {}
   
   public void run()
   {
-    ktn.a(this.this$0);
+    lec.a(this.this$0);
   }
 }
 

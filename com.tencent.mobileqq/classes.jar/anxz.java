@@ -1,17 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-
-public class anxz
-  implements DialogInterface.OnDismissListener
+public abstract class anxz
+  extends anyc
 {
-  public anxz(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a.a(null);
-    LocalFileBrowserActivity.a(this.a);
-  }
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
 }
 
 

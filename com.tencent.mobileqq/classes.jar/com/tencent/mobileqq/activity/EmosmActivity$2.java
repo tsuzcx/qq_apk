@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import ajed;
-import arnz;
-import bace;
+import ajsf;
+import askd;
+import bbdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonTab;
@@ -21,21 +21,21 @@ class EmosmActivity$2
     {
       if (localObject1 != null)
       {
-        localObject1 = ((arnz)((QQAppInterface)localObject1).getManager(14)).a(this.a);
+        localObject1 = ((askd)((QQAppInterface)localObject1).getManager(14)).a(this.a);
         if ((localObject1 == null) || ((!((EmoticonTab)localObject1).aioHave) && (!((EmoticonTab)localObject1).kandianHave)))
         {
-          Object localObject2 = ajed.bJ + this.a;
+          Object localObject2 = ajsf.bR + this.a;
           localObject1 = new File((String)localObject2);
           localObject2 = new File((String)localObject2 + "del");
           if (!((File)localObject1).renameTo((File)localObject2)) {
             break label134;
           }
-          bace.a(((File)localObject2).getAbsolutePath());
+          bbdj.a(((File)localObject2).getAbsolutePath());
         }
       }
       return;
       label134:
-      bace.a(((File)localObject1).getAbsolutePath());
+      bbdj.a(((File)localObject1).getAbsolutePath());
       return;
     }
   }

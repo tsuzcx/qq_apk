@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
+import beka;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class SensorJsPlugin$3
   implements Runnable
 {
-  SensorJsPlugin$3(SensorJsPlugin paramSensorJsPlugin, bdfz parambdfz) {}
+  SensorJsPlugin$3(SensorJsPlugin paramSensorJsPlugin, beka parambeka) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ class SensorJsPlugin$3
           if (j != 20) {
             break label201;
           }
-          if (this.this$0.startGyroscope(this.val$req.jdField_a_of_type_Bdcy, i))
+          if (this.this$0.startGyroscope(this.val$req.jdField_a_of_type_Begy, i))
           {
             SensorJsPlugin.access$202(this.this$0, true);
             this.val$req.a();

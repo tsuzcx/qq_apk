@@ -1,16 +1,19 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView;
 
-class atfn
-  implements Comparator<String>
+public class atfn
+  implements View.OnClickListener
 {
-  atfn(atfm paramatfm) {}
+  public atfn(InterestTagItemView paramInterestTagItemView) {}
   
-  public int a(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 0;
+    if ((paramView == InterestTagItemView.a(this.a)) || (paramView == this.a))
+    {
+      InterestTagItemView.a(this.a).a(InterestTagItemView.a(this.a));
+      this.a.a();
     }
-    return paramString2.length() - paramString1.length();
   }
 }
 

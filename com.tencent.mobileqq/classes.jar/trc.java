@@ -1,15 +1,16 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class trc
-  implements tss
+class trc
+  extends tpo
 {
-  public trc(TextureVideoView paramTextureVideoView) {}
-  
-  public boolean a_(tso paramtso, int paramInt1, int paramInt2)
+  trc(tqk paramtqk, StoryVideoItem paramStoryVideoItem, trt paramtrt)
   {
-    if (this.a.a != null) {
-      this.a.a.a_(paramtso, paramInt1, paramInt2);
-    }
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Trt.e = ((String)a("result"));
     return true;
   }
 }

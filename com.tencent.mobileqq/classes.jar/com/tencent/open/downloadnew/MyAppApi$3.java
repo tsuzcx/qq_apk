@@ -1,12 +1,12 @@
 package com.tencent.open.downloadnew;
 
 import android.app.Activity;
-import bchb;
+import bdlc;
 
 public class MyAppApi$3
   implements Runnable
 {
-  public MyAppApi$3(bchb parambchb, Activity paramActivity) {}
+  public MyAppApi$3(bdlc parambdlc, Activity paramActivity) {}
   
   public void run()
   {

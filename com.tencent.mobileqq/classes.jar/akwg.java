@@ -1,23 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArModelResource;
+import android.annotation.TargetApi;
+import android.content.Context;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
-public final class akwg
-  implements Parcelable.Creator<ArModelResource>
+public class akwg
 {
-  public ArModelResource a(Parcel paramParcel)
+  @TargetApi(23)
+  public static void a(AppActivity paramAppActivity, int paramInt, QQPermissionCallback paramQQPermissionCallback)
   {
-    return new ArModelResource(paramParcel);
+    if (paramAppActivity != null) {
+      paramAppActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+    }
   }
   
-  public ArModelResource[] a(int paramInt)
+  @TargetApi(23)
+  public static boolean a(Context paramContext)
   {
-    return new ArModelResource[paramInt];
+    return (paramContext != null) && (paramContext.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (paramContext.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akwg
  * JD-Core Version:    0.7.0.1
  */

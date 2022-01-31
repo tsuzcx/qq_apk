@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bfup;
-import bfuq;
+import bhcz;
+import bhda;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.app.common.ParcelableWrapper;
 import com.tencent.component.app.common.SmartParcelable;
@@ -25,7 +25,7 @@ import java.util.Set;
 public class ExoticEvent
   implements Parcelable
 {
-  public static final Parcelable.Creator<ExoticEvent> CREATOR = new bfup();
+  public static final Parcelable.Creator<ExoticEvent> CREATOR = new bhcz();
   private static final String TAG = "ExoticEvent";
   private static final int TYPE_BYTE_ARRAY = 5;
   private static final int TYPE_CHAR_ARRAY = 6;
@@ -87,12 +87,12 @@ public class ExoticEvent
     }
   }
   
-  private ExoticEvent(bfuq parambfuq, int paramInt, String paramString)
+  private ExoticEvent(bhda parambhda, int paramInt, String paramString)
   {
-    this.mTypes = bfuq.a(parambfuq);
+    this.mTypes = bhda.a(parambhda);
     this.what = paramInt;
     this.sourceName = paramString;
-    this.param = bfuq.a(parambfuq);
+    this.param = bhda.a(parambhda);
   }
   
   private static Object foreachReadFromParcel(Parcel paramParcel, List<Integer> paramList, ClassLoader paramClassLoader)
@@ -297,17 +297,17 @@ public class ExoticEvent
     }
   }
   
-  private static boolean foreachType(bfuq parambfuq)
+  private static boolean foreachType(bhda parambhda)
   {
-    int i = getType(bfuq.b(parambfuq));
-    bfuq.a(parambfuq).add(Integer.valueOf(i));
+    int i = getType(bhda.b(parambhda));
+    bhda.a(parambhda).add(Integer.valueOf(i));
     switch (i)
     {
     }
     for (;;)
     {
-      return bfuq.a(parambfuq);
-      Object localObject1 = (Object[])bfuq.b(parambfuq);
+      return bhda.a(parambhda);
+      Object localObject1 = (Object[])bhda.b(parambhda);
       Object localObject2 = new Object[localObject1.length];
       i = 0;
       Object localObject3;
@@ -316,19 +316,19 @@ public class ExoticEvent
         if (i >= localObject1.length) {
           break label147;
         }
-        localObject3 = new bfuq(parambfuq, localObject1[i]);
-        if (!foreachType((bfuq)localObject3))
+        localObject3 = new bhda(parambhda, localObject1[i]);
+        if (!foreachType((bhda)localObject3))
         {
-          bfuq.a(parambfuq, false);
+          bhda.a(parambhda, false);
           break;
         }
-        localObject2[i] = bfuq.a((bfuq)localObject3);
+        localObject2[i] = bhda.a((bhda)localObject3);
         i += 1;
       }
       label147:
-      bfuq.a(parambfuq, localObject2);
+      bhda.a(parambhda, localObject2);
       continue;
-      localObject2 = (List)bfuq.b(parambfuq);
+      localObject2 = (List)bhda.b(parambhda);
       localObject1 = new ArrayList(((List)localObject2).size());
       localObject2 = ((List)localObject2).iterator();
       for (;;)
@@ -336,18 +336,18 @@ public class ExoticEvent
         if (!((Iterator)localObject2).hasNext()) {
           break label242;
         }
-        localObject3 = new bfuq(parambfuq, ((Iterator)localObject2).next());
-        if (!foreachType((bfuq)localObject3))
+        localObject3 = new bhda(parambhda, ((Iterator)localObject2).next());
+        if (!foreachType((bhda)localObject3))
         {
-          bfuq.a(parambfuq, false);
+          bhda.a(parambhda, false);
           break;
         }
-        ((List)localObject1).add(bfuq.a((bfuq)localObject3));
+        ((List)localObject1).add(bhda.a((bhda)localObject3));
       }
       label242:
-      bfuq.a(parambfuq, localObject1);
+      bhda.a(parambhda, localObject1);
       continue;
-      localObject2 = (Set)bfuq.b(parambfuq);
+      localObject2 = (Set)bhda.b(parambhda);
       localObject1 = new LinkedHashSet();
       localObject2 = ((Set)localObject2).iterator();
       for (;;)
@@ -355,18 +355,18 @@ public class ExoticEvent
         if (!((Iterator)localObject2).hasNext()) {
           break label331;
         }
-        localObject3 = new bfuq(parambfuq, ((Iterator)localObject2).next());
-        if (!foreachType((bfuq)localObject3))
+        localObject3 = new bhda(parambhda, ((Iterator)localObject2).next());
+        if (!foreachType((bhda)localObject3))
         {
-          bfuq.a(parambfuq, false);
+          bhda.a(parambhda, false);
           break;
         }
-        ((Set)localObject1).add(bfuq.a((bfuq)localObject3));
+        ((Set)localObject1).add(bhda.a((bhda)localObject3));
       }
       label331:
-      bfuq.a(parambfuq, localObject1);
+      bhda.a(parambhda, localObject1);
       continue;
-      localObject2 = (Map)bfuq.b(parambfuq);
+      localObject2 = (Map)bhda.b(parambhda);
       localObject1 = new LinkedHashMap();
       localObject2 = ((Map)localObject2).entrySet().iterator();
       for (;;)
@@ -379,20 +379,20 @@ public class ExoticEvent
         localObject4 = ((Map.Entry)localObject4).getValue();
         if ((localObject3 != null) && (localObject4 != null))
         {
-          localObject3 = new bfuq(parambfuq, localObject3);
-          localObject4 = new bfuq(parambfuq, localObject4);
-          if ((!foreachType((bfuq)localObject3)) || (!foreachType((bfuq)localObject4)))
+          localObject3 = new bhda(parambhda, localObject3);
+          localObject4 = new bhda(parambhda, localObject4);
+          if ((!foreachType((bhda)localObject3)) || (!foreachType((bhda)localObject4)))
           {
-            bfuq.a(parambfuq, false);
+            bhda.a(parambhda, false);
             break;
           }
-          ((Map)localObject1).put(bfuq.a((bfuq)localObject3), bfuq.a((bfuq)localObject4));
+          ((Map)localObject1).put(bhda.a((bhda)localObject3), bhda.a((bhda)localObject4));
         }
       }
       label485:
-      bfuq.a(parambfuq, localObject1);
+      bhda.a(parambhda, localObject1);
       continue;
-      bfuq.a(parambfuq, false);
+      bhda.a(parambhda, false);
     }
   }
   
@@ -621,7 +621,7 @@ public class ExoticEvent
     for (;;)
     {
       return null;
-      paramObject = new bfuq(paramObject, null);
+      paramObject = new bhda(paramObject, null);
       try
       {
         bool = foreachType(paramObject);

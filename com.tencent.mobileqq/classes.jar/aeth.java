@@ -1,20 +1,43 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import android.app.Dialog;
+import android.os.Handler;
+import java.util.HashMap;
 
 class aeth
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bduv
 {
-  aeth(aetg paramaetg) {}
+  aeth(aerv paramaerv) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (FrameLayout.LayoutParams)this.a.a.a.getLayoutParams();
-    paramValueAnimator.topMargin = i;
-    this.a.a.a.setLayoutParams(paramValueAnimator);
+    if ((!paramBoolean) || (paramHashMap == null))
+    {
+      this.a.E(2);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
+      return;
+    }
+    if (((Integer)paramHashMap.get("result")).intValue() == 0)
+    {
+      this.a.E(1);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
+      return;
+    }
+    this.a.ao = true;
+    this.a.bE();
+    if ((aerv.a(this.a) != null) && (aerv.a(this.a).isShowing())) {
+      aerv.a(this.a).dismiss();
+    }
+    this.a.bF();
+  }
+  
+  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    if ((!paramBoolean) || (paramHashMap == null)) {
+      return;
+    }
+    this.a.ar = true;
+    this.a.aq = ((Boolean)paramHashMap.get("result")).booleanValue();
+    this.a.bE();
+    this.a.bF();
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
+import aukm;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="host,cookieKey")
 public class PreloadCookie
-  extends atmo
+  extends aukm
 {
   public String cookieKey;
   public long hitCount;

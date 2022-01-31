@@ -1,56 +1,56 @@
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class apar
+public class apar
+  extends aozs
 {
-  protected apas a;
-  protected QQAppInterface a;
-  protected ChatMessage a;
+  aouj jdField_a_of_type_Aouj = null;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  String b = "OfflinePreviewController<FileAssistant>";
   
-  public apar(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public apar(QQAppInterface paramQQAppInterface, String paramString)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e(this.b, 1, " init OfflinePreviewController error,uuid is null,stack:" + apue.a());
+    }
+    a();
   }
   
-  public static apar a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public int a()
   {
-    if (paramChatMessage == null)
+    return 1;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Aouj = new apas(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aouj);
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is null");
-      return null;
+      QLog.e(this.b, 1, " init OfflinePreviewController error,uuid is null,stack:" + apue.a());
+      if (this.jdField_a_of_type_Aool != null) {
+        this.jdField_a_of_type_Aool.a(false, "", "", -100005L, "", "", null, this.jdField_a_of_type_JavaLangString, null);
+      }
+      return false;
     }
-    if ((paramChatMessage instanceof MessageForFile)) {
-      return new apal(paramQQAppInterface, paramChatMessage);
-    }
-    if ((paramChatMessage instanceof MessageForTroopFile)) {
-      return new apau(paramQQAppInterface, paramChatMessage);
-    }
-    QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is not support. messageType[" + paramChatMessage.getClass().getName() + "]");
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString);
+    return true;
   }
   
-  public abstract long a();
-  
-  public abstract apao a();
-  
-  public abstract String a();
-  
-  public void a(apas paramapas)
+  public void b()
   {
-    this.jdField_a_of_type_Apas = paramapas;
+    if (this.jdField_a_of_type_Aouj != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aouj);
+    }
   }
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
 }
 
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
-import aorp;
-import aorv;
+import apiz;
+import apjf;
 import com.tencent.smtt.sdk.TbsReaderView;
 
 class SimpleFileViewer$6
   implements Runnable
 {
-  SimpleFileViewer$6(SimpleFileViewer paramSimpleFileViewer, String paramString, aorv paramaorv) {}
+  SimpleFileViewer$6(SimpleFileViewer paramSimpleFileViewer, String paramString, apjf paramapjf) {}
   
   public void run()
   {
-    TbsReaderView localTbsReaderView = aorp.a().a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aorv);
+    TbsReaderView localTbsReaderView = apiz.a().a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apjf);
     if ((SimpleFileViewer.a(this.this$0) != null) && (SimpleFileViewer.a(this.this$0, SimpleFileViewer.a(this.this$0), localTbsReaderView, true))) {
       SimpleFileViewer.a(this.this$0, localTbsReaderView);
     }

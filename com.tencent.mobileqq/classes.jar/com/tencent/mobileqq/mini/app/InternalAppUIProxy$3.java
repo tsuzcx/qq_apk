@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.app;
 
-import ajjy;
+import ajyc;
 import android.os.Handler;
 import android.os.Message;
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -19,10 +19,10 @@ class InternalAppUIProxy$3
     if (str != null) {}
     for (;;)
     {
-      bbmy.a(localBaseApplication, 1, str, 1).a();
+      bcpw.a(localBaseApplication, 1, str, 1).a();
       InternalAppUIProxy.access$100(this.this$0).postDelayed(new InternalAppUIProxy.3.1(this), 1000L);
       return;
-      str = ajjy.a(2131640015);
+      str = ajyc.a(2131705800);
     }
   }
 }

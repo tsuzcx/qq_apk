@@ -1,34 +1,25 @@
-import android.os.Bundle;
+import android.content.Context;
 
-class ajdz
-  extends ajjh
+public abstract class ajdz
 {
-  ajdz(ajdy paramajdy) {}
+  abstract int a(Context paramContext);
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
-  {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a(1, paramString);
-    }
-  }
+  abstract String a();
   
-  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (paramBoolean) {
-      this.a.a(1, paramString);
-    }
-  }
+  abstract void a();
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  void a(String paramString1, String paramString2, ajea paramajea)
   {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a(2, null);
+    if (("destroy".equals(paramString2)) && (paramajea != null))
+    {
+      a();
+      paramajea.a(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajdz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,110 @@
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenActivityPlugin.1;
+import com.tencent.av.smallscreen.SmallScreenActivityPlugin.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class lzb
-  extends lru
 {
-  public lzb(VideoControlUI paramVideoControlUI) {}
+  private static volatile lzb jdField_a_of_type_Lzb;
+  VideoController jdField_a_of_type_ComTencentAvVideoController;
+  public VideoAppInterface a;
+  boolean jdField_a_of_type_Boolean = false;
+  public boolean b = true;
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  private lzb(VideoAppInterface paramVideoAppInterface)
   {
-    if (this.a.g()) {}
-    do
-    {
-      return;
-      if (this.a.h()) {
-        break;
-      }
-    } while (!paramBoolean);
-    this.a.b.update(null, new Object[] { Integer.valueOf(110), Long.valueOf(paramLong) });
-    this.a.a.a(paramLong, paramInt);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
   }
   
-  protected void f(long paramLong)
+  public static lzb a(VideoAppInterface paramVideoAppInterface)
   {
-    if (this.a.g()) {}
-    while ((!this.a.h()) || (!this.a.a.b(0))) {
+    if (jdField_a_of_type_Lzb == null) {}
+    try
+    {
+      if (jdField_a_of_type_Lzb == null) {
+        jdField_a_of_type_Lzb = new lzb(paramVideoAppInterface);
+      }
+      return jdField_a_of_type_Lzb;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (lzj.f()) {
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void a(long paramLong, boolean paramBoolean)
+  {
+    boolean bool1 = true;
+    boolean bool2 = VideoController.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
+    if ((QLog.isColorLevel()) || (!bool2) || (paramBoolean)) {
+      QLog.w("SmallScreenActivityPlugin", 1, "onPauseRender, isQuit[" + paramBoolean + "], isScreenOn[" + bool2 + "], seq[" + paramLong + "]");
+    }
+    lgf locallgf;
+    if (!paramBoolean)
+    {
+      if (!lzj.f()) {
+        break label159;
+      }
+      locallgf = this.jdField_a_of_type_ComTencentAvVideoController.a();
+      int i = locallgf.d;
+      paramBoolean = bool1;
+      if (i != 2) {
+        if (i != 4) {
+          break label154;
+        }
+      }
+    }
+    label154:
+    for (paramBoolean = bool1;; paramBoolean = false)
+    {
+      ThreadManager.post(new SmallScreenActivityPlugin.2(this, paramLong, bool2, paramBoolean), 5, null, false);
+      lzj.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp(), locallgf);
       return;
     }
-    this.a.a.a(paramLong, 0, true);
+    label159:
+    lzj.a(paramLong, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (lzj.f())
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) || (!lzj.f());
+  }
+  
+  public void b()
+  {
+    long l = AudioHelper.b();
+    if (QLog.isColorLevel()) {
+      QLog.w("SmallScreenActivityPlugin", 1, "onResume, seq[" + l + "]");
+    }
+    if (lzj.f())
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.b = true;
+      ThreadManager.post(new SmallScreenActivityPlugin.1(this, l), 5, null, false);
+    }
+    lzj.a(l, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 0);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

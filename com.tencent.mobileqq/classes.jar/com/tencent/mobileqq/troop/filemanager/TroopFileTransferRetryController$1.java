@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import ayrw;
-import ayrx;
+import azsm;
+import azsn;
 
 public class TroopFileTransferRetryController$1
   implements Runnable
 {
-  public TroopFileTransferRetryController$1(ayrw paramayrw, String paramString) {}
+  public TroopFileTransferRetryController$1(azsm paramazsm, String paramString) {}
   
   public void run()
   {

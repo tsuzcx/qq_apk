@@ -1,10 +1,17 @@
+import android.os.IInterface;
+
 public abstract interface alel
+  extends IInterface
 {
-  public abstract void a(int paramInt, String paramString, Object paramObject);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alel
  * JD-Core Version:    0.7.0.1
  */

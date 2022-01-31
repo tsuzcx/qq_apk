@@ -2,7 +2,7 @@ package com.tencent.replacemonitor.replace.st;
 
 import com.tencent.replacemonitor.MonitorStep;
 import com.tencent.replacemonitor.MonitorType;
-import com.tencent.tmassistantbase.util.e;
+import com.tencent.tmassistantbase.util.d;
 
 public class ReplaceMonitorLog
   extends ReplaceBaseLog
@@ -22,7 +22,7 @@ public class ReplaceMonitorLog
   
   public String build()
   {
-    return this.packageName + "|" + this.versionCode + "|" + this.fileSize + "|" + this.channelId + "|" + this.yybAppId + "|" + this.yybApkId + "|" + this.replacePackageName + "|" + this.replaceVersionCode + "|" + this.replaceFileSize + "|" + this.replaceChannelId + "|" + this.replaceFileMd5 + "|" + this.additionalId + "|" + this.traceId + "|" + this.appType + "|" + this.replaceInterval + "|" + this.step + "|" + this.monitorType + "|" + this.isTDownloadApp + "|" + e.a(this.externalParams, "&");
+    return this.packageName + "|" + this.versionCode + "|" + this.fileSize + "|" + this.channelId + "|" + this.yybAppId + "|" + this.yybApkId + "|" + this.replacePackageName + "|" + this.replaceVersionCode + "|" + this.replaceFileSize + "|" + this.replaceChannelId + "|" + this.replaceFileMd5 + "|" + this.additionalId + "|" + this.traceId + "|" + this.appType + "|" + this.replaceInterval + "|" + this.step + "|" + this.monitorType + "|" + this.isTDownloadApp + "|" + d.a(this.externalParams, "&");
   }
   
   public int getType()

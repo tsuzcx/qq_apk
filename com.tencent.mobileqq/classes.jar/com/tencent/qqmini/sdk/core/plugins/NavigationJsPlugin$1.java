@@ -1,25 +1,24 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import android.app.Activity;
-import bdnw;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.ResultReceiver;
+import beka;
+import besl;
 
 class NavigationJsPlugin$1
-  implements Runnable
+  extends ResultReceiver
 {
-  NavigationJsPlugin$1(NavigationJsPlugin paramNavigationJsPlugin, Activity paramActivity) {}
-  
-  public void run()
+  NavigationJsPlugin$1(NavigationJsPlugin paramNavigationJsPlugin, Handler paramHandler, beka parambeka)
   {
-    try
-    {
-      if (!this.val$activity.moveTaskToBack(false)) {
-        this.val$activity.finish();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      bdnw.d("NavigationJsPlugin", "Failed to moveTaskBack");
+    super(paramHandler);
+  }
+  
+  protected void onReceiveResult(int paramInt, Bundle paramBundle)
+  {
+    besl.a("NavigationJsPlugin", "onReceiveResult resultCode : " + paramInt);
+    if (paramInt != 0) {
+      this.val$req.b();
     }
   }
 }

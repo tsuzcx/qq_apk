@@ -1,45 +1,83 @@
 import android.os.Bundle;
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil.3.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
+import java.util.List;
+import mqq.manager.TicketManager;
 
 public class baai
-  extends ajrv
 {
-  baai(baah parambaah) {}
-  
-  protected void b(int paramInt, Bundle paramBundle)
+  public bahp a(QQAppInterface paramQQAppInterface, baho parambaho, String paramString, int paramInt)
   {
-    Object localObject = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localObject != null) {
-      ((QQAppInterface)localObject).removeObserver(baah.a(this.a));
-    }
-    if (paramInt != 1) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SecSvcObserver", 2, "invalid notification type for onGetUinSafetyWordingConfig:" + Integer.toString(paramInt));
-      }
-    }
-    while (paramBundle == null) {
-      return;
-    }
-    String str = paramBundle.getString("config_name");
-    localObject = str;
-    if (!TextUtils.isEmpty(str))
+    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
+    String str = paramQQAppInterface.getCurrentAccountUin();
+    if (localObject != null) {}
+    for (localObject = ((TicketManager)localObject).getSkey(str);; localObject = null)
     {
-      localObject = str;
-      if (TextUtils.equals("SenstiveMessageTipsCfg", str)) {
-        localObject = "SensMsgTipsCfg";
-      }
+      HashMap localHashMap = new HashMap();
+      Bundle localBundle = new Bundle();
+      localBundle.putString("bkn", "5381");
+      localBundle.putString("gid", paramString);
+      localBundle.putString("Cookie", String.format("uin=%s;skey=%s", new Object[] { str, localObject }));
+      localBundle.putString("Referer", "http://qun.qq.com");
+      localHashMap.put("BUNDLE", localBundle);
+      localHashMap.put("CONTEXT", paramQQAppInterface.getApp().getApplicationContext());
+      paramQQAppInterface = new bahp("http://qun.qq.com/cgi-bin/qun/web/kewen/get_search_keywords", "POST", parambaho, paramInt, localBundle);
+      paramQQAppInterface.a(localHashMap);
+      return paramQQAppInterface;
     }
-    ThreadManager.post(new AntiFraudConfigFileUtil.3.1(this, (String)localObject, paramBundle.getInt("effect_time", 0), paramBundle.getString("md5"), paramBundle.getString("download_url")), 5, null, false);
+  }
+  
+  public bahp a(QQAppInterface paramQQAppInterface, baho parambaho, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
+    String str = paramQQAppInterface.getCurrentAccountUin();
+    if (localObject != null) {}
+    for (localObject = ((TicketManager)localObject).getSkey(str);; localObject = null)
+    {
+      HashMap localHashMap = new HashMap();
+      Bundle localBundle = new Bundle();
+      localBundle.putString("bkn", "5381");
+      localBundle.putString("key", paramString);
+      localBundle.putString("start", String.valueOf(paramInt1));
+      localBundle.putString("num", String.valueOf(paramInt2));
+      localBundle.putString("Cookie", String.format("uin=%s;skey=%s", new Object[] { str, localObject }));
+      localBundle.putString("Referer", "http://qun.qq.com");
+      localHashMap.put("BUNDLE", localBundle);
+      localHashMap.put("CONTEXT", paramQQAppInterface.getApp().getApplicationContext());
+      paramQQAppInterface = new bahp("http://qun.qq.com/cgi-bin/qun/web/kewen/search", "POST", parambaho, paramInt3, localBundle);
+      paramQQAppInterface.a(localHashMap);
+      return paramQQAppInterface;
+    }
+  }
+  
+  public bahp a(QQAppInterface paramQQAppInterface, baho parambaho, String paramString, List<Integer> paramList, int paramInt)
+  {
+    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
+    String str = paramQQAppInterface.getCurrentAccountUin();
+    if (localObject != null) {}
+    for (localObject = ((TicketManager)localObject).getSkey(str);; localObject = null)
+    {
+      HashMap localHashMap = new HashMap();
+      Bundle localBundle = new Bundle();
+      localBundle.putString("bkn", "5381");
+      localBundle.putString("kid", paramString);
+      if ((paramList != null) && (!paramList.isEmpty())) {
+        localBundle.putString("pid_list", paramList.toString());
+      }
+      localBundle.putString("Cookie", String.format("uin=%s;skey=%s", new Object[] { str, localObject }));
+      localBundle.putString("Referer", "http://qun.qq.com");
+      localHashMap.put("BUNDLE", localBundle);
+      localHashMap.put("CONTEXT", paramQQAppInterface.getApp().getApplicationContext());
+      paramQQAppInterface = new bahp("http://qun.qq.com/cgi-bin/qun/web/kewen/get_kewen_info", "POST", parambaho, paramInt, localBundle);
+      paramQQAppInterface.a(localHashMap);
+      return paramQQAppInterface;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baai
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,39 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class absg
-  extends RecyclerView.ItemDecoration
+  extends aqkl
 {
-  private int jdField_a_of_type_Int;
+  public absg(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public absg(abry paramabry, int paramInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "onBandIntimateRelationship");
+    }
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
+      QLog.d("intimate_relationship", 1, String.format("onBandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
+    }
+    while (!paramBoolean) {
+      return;
+    }
+    ProfileCardMoreActivity.a(this.a);
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    paramRect.right = this.jdField_a_of_type_Int;
-    paramRect.bottom = this.jdField_a_of_type_Int;
-    paramRect.left = this.jdField_a_of_type_Int;
-    if (paramRecyclerView.getChildPosition(paramView) != 0) {
-      paramRect.right = this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "ProfileCard onDisbandIntimateRelationship");
     }
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
+      QLog.d("intimate_relationship", 1, String.format("ProfileCard onDisbandIntimateRelationship, friendUin: %s", new Object[] { paramString }));
+    }
+    while (!paramBoolean1) {
+      return;
+    }
+    ProfileCardMoreActivity.a(this.a);
   }
 }
 

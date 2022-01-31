@@ -1,50 +1,36 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdcy;
-import bdfx;
-import bdfz;
-import bdnz;
+import android.text.TextUtils;
+import beiu;
+import beka;
+import besl;
+import java.io.File;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 class FileJsPlugin$4
-  implements bdnz
+  implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$4(FileJsPlugin paramFileJsPlugin, int paramInt, String paramString, bdfz parambdfz) {}
+  FileJsPlugin$4(FileJsPlugin paramFileJsPlugin, beka parambeka, long paramLong) {}
   
-  public void onInitApkgInfo(int paramInt, bdfx parambdfx, String paramString)
+  public String run()
   {
-    parambdfx = new JSONObject();
     try
     {
-      parambdfx.put("taskId", this.val$loadTaskId);
-      parambdfx.put("moduleName", this.val$moduleName);
-      if (paramInt == 0) {
-        parambdfx.put("state", "success");
+      String str1 = new JSONObject(this.val$req.b).optString("path");
+      String str2 = beiu.a().a(str1);
+      besl.a("FileJsPlugin", "accessFile [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], aboFilePath:" + str2);
+      if ((TextUtils.isEmpty(str2)) || (!new File(str2).exists())) {
+        return FileJsPlugin.access$100(this.this$0, this.val$req, null, "no such file or directory \"" + str1 + "\"");
       }
-      for (;;)
-      {
-        this.val$req.a.a("onLoadSubPackageTaskStateChange", parambdfx.toString(), 0);
-        return;
-        parambdfx.put("state", "fail");
-      }
-      try
-      {
-        parambdfx.put("taskId", this.val$loadTaskId);
-        parambdfx.put("moduleName", this.val$moduleName);
-        parambdfx.put("state", "fail");
-        this.val$req.a.a("onLoadSubPackageTaskStateChange", parambdfx.toString(), 0);
-        paramString.printStackTrace();
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          localThrowable.printStackTrace();
-        }
-      }
+      str1 = FileJsPlugin.access$200(this.this$0, this.val$req, null);
+      return str1;
     }
-    catch (Throwable paramString) {}
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return "";
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.question.bean;
 
-import atmo;
+import aukm;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import tencent.im.oidb.cmd0xbe7.oidb_cmd0xbe7.QuestionInfo;
 
 public class QuestionSquareBean
-  extends atmo
+  extends aukm
 {
   public int answerNum;
   public int fanNum;

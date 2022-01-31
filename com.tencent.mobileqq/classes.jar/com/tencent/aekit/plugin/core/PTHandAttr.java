@@ -23,6 +23,8 @@ public class PTHandAttr
   public static final int HAND_LABEL_ST_ILOVEYOU = 215;
   public static final int[] handTypes = { 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215 };
   protected float confidence = 0.0F;
+  private int detectHeight;
+  private int detectWidth;
   private long gestureTime = 0L;
   private List<PointF> handPointList = null;
   protected int handType = 0;
@@ -30,6 +32,16 @@ public class PTHandAttr
   public float getConfidence()
   {
     return this.confidence;
+  }
+  
+  public int getDetectHeight()
+  {
+    return this.detectHeight;
+  }
+  
+  public int getDetectWidth()
+  {
+    return this.detectWidth;
   }
   
   public long getGestureDetectTime()
@@ -47,9 +59,27 @@ public class PTHandAttr
     return this.handType;
   }
   
+  public int getHandTypeIndex()
+  {
+    if (this.handType >= 201) {
+      return this.handType - 201;
+    }
+    return -1;
+  }
+  
   public void setConfidence(float paramFloat)
   {
     this.confidence = paramFloat;
+  }
+  
+  public void setDetectHeight(int paramInt)
+  {
+    this.detectHeight = paramInt;
+  }
+  
+  public void setDetectWidth(int paramInt)
+  {
+    this.detectWidth = paramInt;
   }
   
   public void setGestureTime(long paramLong)

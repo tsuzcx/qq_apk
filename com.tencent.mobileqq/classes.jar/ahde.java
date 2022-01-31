@@ -1,12 +1,23 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
-public abstract interface ahde
+public final class ahde
+  implements Parcelable.Creator<RedPacketInfoBase>
 {
-  public abstract void a(View paramView, int paramInt);
+  public RedPacketInfoBase a(Parcel paramParcel)
+  {
+    return new RedPacketInfoBase(paramParcel);
+  }
+  
+  public RedPacketInfoBase[] a(int paramInt)
+  {
+    return new RedPacketInfoBase[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahde
  * JD-Core Version:    0.7.0.1
  */

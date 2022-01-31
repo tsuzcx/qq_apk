@@ -5,7 +5,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.Iterator;
 import java.util.List;
-import ogy;
+import osj;
 import tencent.im.oidb.cmd0x978.oidb_cmd0x978.OneFollowOperationResult;
 import tencent.im.oidb.cmd0x978.oidb_cmd0x978.RspFollowOperationResult;
 
@@ -20,7 +20,7 @@ class UserOperationModule$1$1
     while (localIterator.hasNext())
     {
       oidb_cmd0x978.OneFollowOperationResult localOneFollowOperationResult = (oidb_cmd0x978.OneFollowOperationResult)localIterator.next();
-      ogy.a().b(localOneFollowOperationResult.uint64_dst_uin.get(), localOneFollowOperationResult.enum_follow_status.get());
+      osj.a().b(localOneFollowOperationResult.uint64_dst_uin.get(), localOneFollowOperationResult.enum_follow_status.get());
     }
   }
 }

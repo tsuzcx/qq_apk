@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import agtk;
-import agud;
-import agug;
+import ahfz;
+import ahgs;
+import ahgv;
 
 class SpringHbConversationEntry$6$1$1
   implements Runnable
 {
-  SpringHbConversationEntry$6$1$1(SpringHbConversationEntry.6.1 param1, int paramInt, agtk paramagtk) {}
+  SpringHbConversationEntry$6$1$1(SpringHbConversationEntry.6.1 param1, int paramInt, ahfz paramahfz) {}
   
   public void run()
   {
-    agud.e(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbConversationEntry$6$1.a.a);
+    ahgs.e(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbConversationEntry$6$1.a.a);
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbConversationEntry$6$1.a.a.c(-this.jdField_a_of_type_Int);
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbConversationEntry$6$1.a.a.a(0, 1000L);
-    this.jdField_a_of_type_Agtk.b();
+    this.jdField_a_of_type_Ahfz.b();
   }
 }
 

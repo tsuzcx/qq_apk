@@ -1,73 +1,51 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.PublicAcntSearchActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import java.util.List;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class avof
-  implements avom
+  extends akav
 {
-  public static final String a;
-  private int jdField_a_of_type_Int;
-  private final List<avon> jdField_a_of_type_JavaUtilList;
-  private final String b;
+  public avof(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  static
+  public void a(long paramLong1, int paramInt, long paramLong2)
   {
-    jdField_a_of_type_JavaLangString = ajjy.a(2131639573);
-  }
-  
-  public avof(List<avon> paramList, String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return avis.a("pref_fts_native_search_public_account_max_num", 3);
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_Int == 12) {
-      return ajjy.a(2131639598) + rsp.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext());
-    }
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<avon> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    avwf.a(this.b, 50, 0, paramView);
-    Context localContext = paramView.getContext();
-    if ((localContext != null) && ((localContext instanceof BaseActivity))) {
-      awqx.b(((BaseActivity)localContext).app, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D1C", "0X8005D1C", 0, 1, 0, "0", "", this.b, "");
-    }
-    if ((paramView.getContext() instanceof UniteSearchActivity))
+    if (ReceiptMessageDetailFragment.c(this.a) == paramLong1)
     {
-      avwf.a("all_result", "clk_public_uin_more", new String[] { "" + this.b });
-      avsv.a(null, 0, this.jdField_a_of_type_Int, "0X8009D53", 0, 0, null, null);
+      if (paramInt != 0) {
+        break label109;
+      }
+      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c succs with readtime: " + paramLong2);
+      if (paramLong2 > 0L) {
+        ReceiptMessageDetailFragment.a(this.a, 1, 1, true);
+      }
+      if (this.a.isAdded())
+      {
+        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = this.a;
+        if (paramLong2 <= 0L) {
+          break label104;
+        }
+        paramInt = 1;
+        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, true);
+      }
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
     }
-    PublicAcntSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int);
-  }
-  
-  public String b()
-  {
-    return this.b;
+    label104:
+    label109:
+    do
+    {
+      return;
+      paramInt = 0;
+      break;
+      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c fail with reply code: " + paramInt);
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+    } while (!this.a.isAdded());
+    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avof
  * JD-Core Version:    0.7.0.1
  */

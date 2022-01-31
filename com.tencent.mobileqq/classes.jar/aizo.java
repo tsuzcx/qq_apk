@@ -1,20 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.data.ApolloGameData;
+import java.util.ArrayList;
+import java.util.List;
 
-class aizo
-  implements AdapterView.OnItemClickListener
+public class aizo
 {
-  aizo(aizn paramaizn, String paramString) {}
+  public String a;
+  public List<Integer> a;
+  public String b;
+  public List<ApolloGameData> b = new ArrayList();
+  public List<String> c = new ArrayList();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public aizo(aizk paramaizk)
   {
-    paramAdapterView = this.jdField_a_of_type_Aizn.a.obtainMessage();
-    paramAdapterView.what = ((int)paramLong);
-    paramAdapterView.obj = this.jdField_a_of_type_JavaLangString;
-    paramAdapterView.sendToTarget();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
 }
 

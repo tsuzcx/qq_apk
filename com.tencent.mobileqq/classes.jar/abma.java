@@ -1,82 +1,47 @@
-import android.os.AsyncTask;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.map.lib.basemap.data.GeoPoint;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import org.apache.http.client.HttpClient;
+import tencent.im.oidb.oidb_0x5e1.RspBody;
+import tencent.im.oidb.oidb_0x5e1.UdcUinData;
 
 public class abma
-  extends AsyncTask<GeoPoint, Void, String>
+  extends atzn
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected GeoPoint a;
-  protected HttpClient a;
+  public abma(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public abma(QQMapActivity paramQQMapActivity, GeoPoint paramGeoPoint, TextView paramTextView)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = paramGeoPoint;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_AndroidWidgetTextView.setTag(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint);
+    bcpw.a(this.a, paramString2, 0).a();
+    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
+    LoginInfoActivity.a(this.a).setVisibility(4);
   }
   
-  protected String a(GeoPoint... paramVarArgs)
+  public void a(oidb_0x5e1.RspBody paramRspBody)
   {
-    int i = 0;
-    if (i < 3)
+    LoginInfoActivity.a(this.a, paramRspBody);
+    int i = ((oidb_0x5e1.UdcUinData)paramRspBody.rpt_msg_uin_data.get(0)).user_login_guard_face.get();
+    TextView localTextView = LoginInfoActivity.b(this.a);
+    if (i == 1)
     {
-      if (isCancelled())
-      {
-        localObject = "";
-        label17:
-        return localObject;
-      }
-      paramVarArgs = bahp.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D, this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D, 3, this.jdField_a_of_type_OrgApacheHttpClientHttpClient);
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append(i).append(" time: ReverseGeocode.getFromLocation, address: ");
-        if (paramVarArgs != null) {
-          break label125;
-        }
-      }
-      label125:
-      for (Object localObject = "";; localObject = paramVarArgs)
-      {
-        QLog.i("fetch_address", 2, (String)localObject);
-        if (paramVarArgs != null)
-        {
-          localObject = paramVarArgs;
-          if (paramVarArgs.length() > 0) {
-            break label17;
-          }
-        }
-        i += 1;
-        break;
+      paramRspBody = this.a.getString(2131692277);
+      localTextView.setText(paramRspBody);
+      LoginInfoActivity.a(this.a).setVisibility(4);
+      LoginInfoActivity.b(this.a).setVisibility(0);
+      if (i != 1) {
+        break label122;
       }
     }
-    return "";
-  }
-  
-  protected void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("fetch_address", 2, "get address finish, onPostExecute, result:" + paramString);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    label122:
+    for (paramRspBody = "1";; paramRspBody = "0")
     {
-      GeoPoint localGeoPoint = (GeoPoint)this.jdField_a_of_type_AndroidWidgetTextView.getTag();
-      if ((localGeoPoint.getLatitudeE6() == this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6()) && (localGeoPoint.getLongitudeE6() == this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6()) && (paramString != null) && (paramString.length() > 0))
-      {
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
-          break label115;
-        }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      }
+      axqw.b(null, "dc00898", "", "", "0X800AA7A", "0X800AA7A", 0, 0, paramRspBody, "", "", "");
+      return;
+      paramRspBody = this.a.getString(2131692284);
+      break;
     }
-    return;
-    label115:
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.g = paramString;
   }
 }
 

@@ -1,20 +1,15 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class atbs
-  extends atbt
+final class atbs
+  implements atyf
 {
-  public atbs(String paramString, atcb paramatcb)
-  {
-    super(paramString, paramatcb);
-  }
+  atbs(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    super.a();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130838998);
-    this.jdField_a_of_type_Int = -1;
+    atbr.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
   }
 }
 

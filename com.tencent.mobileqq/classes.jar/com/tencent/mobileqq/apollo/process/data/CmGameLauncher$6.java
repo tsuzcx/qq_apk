@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import aipj;
+import ajch;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 public class CmGameLauncher$6
   extends IApolloRunnableTask
 {
-  public CmGameLauncher$6(aipj paramaipj, ApolloCmdChannel paramApolloCmdChannel) {}
+  public CmGameLauncher$6(ajch paramajch, ApolloCmdChannel paramApolloCmdChannel) {}
   
   public String a()
   {
@@ -18,7 +18,7 @@ public class CmGameLauncher$6
   public void run()
   {
     if (this.a != null) {
-      this.a.requestData(aipj.a(this.this$0).getLuaState(), "cs.make_room_min.local", "{}", true, true);
+      this.a.requestData(ajch.a(this.this$0).getLuaState(), "cs.make_room_min.local", "{}", true, true);
     }
   }
 }

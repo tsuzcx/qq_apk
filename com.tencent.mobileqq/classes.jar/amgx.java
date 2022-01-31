@@ -1,58 +1,59 @@
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.view.View;
+
 public class amgx
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private float jdField_a_of_type_Float;
+  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
+  private View jdField_a_of_type_AndroidViewView;
+  private float b;
   
-  public int a()
+  public amgx(View paramView)
   {
-    return this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
   }
   
-  public String a()
+  private void b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_AndroidViewView.setPivotX(this.jdField_a_of_type_Float);
+    this.jdField_a_of_type_AndroidViewView.setPivotY(this.b);
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 1.0F, 0.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 1.0F, 0.0F });
+    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
+    {
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.setDuration(500L);
+    }
   }
   
-  public void a(int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    b();
   }
   
-  public void a(String paramString)
+  public void a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  public int b()
+  public void a(amkj paramamkj, boolean paramBoolean, int paramInt)
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "WatchTogetherBean{version=" + this.jdField_a_of_type_Int + ", jumpType=" + this.jdField_b_of_type_Int + ", jumpUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", jumpExtensionInfo='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
+    {
+      Animator localAnimator = wfe.a(this.jdField_a_of_type_AndroidViewView, (int)this.jdField_a_of_type_Float + paramInt, (int)this.b, this.jdField_a_of_type_AndroidViewView.getHeight() / 2, 1.0F);
+      localAnimator.addListener(new amgy(this, paramamkj, paramBoolean));
+      localAnimator.setDuration(300L);
+      localAnimator.start();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amgx
  * JD-Core Version:    0.7.0.1
  */

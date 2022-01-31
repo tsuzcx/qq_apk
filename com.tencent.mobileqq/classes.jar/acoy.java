@@ -1,15 +1,25 @@
-class acoy
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+
+public class acoy
+  implements DialogInterface.OnClickListener
 {
-  String jdField_a_of_type_JavaLangString;
+  public acoy(UpgradeActivity paramUpgradeActivity) {}
   
-  public acoy(acow paramacow, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    axqw.b(this.a.app, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
+    if (UpgradeActivity.a(this.a)) {
+      axqw.b(this.a.app, "CliOper", "", "", "0X800714C", "0X800714C", 0, 0, "", "", "", "");
+    }
+    UpgradeActivity.a(this.a, false);
+    axqw.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, akuz.b(), String.valueOf(2), akva.a(), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acoy
  * JD-Core Version:    0.7.0.1
  */

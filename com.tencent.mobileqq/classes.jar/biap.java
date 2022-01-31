@@ -1,97 +1,45 @@
-import android.graphics.PointF;
-import android.graphics.SurfaceTexture;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.filter.BaseFilter;
-import com.tencent.filter.SurfaceTextureFilter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.video.PngsCreator.1;
-import dov.com.qq.im.video.PngsCreator.2;
-import dov.com.qq.im.video.PngsCreator.3;
-import dov.com.qq.im.video.PngsCreator.4;
-import dov.com.qq.im.video.PngsCreator.5;
-import java.io.File;
-import java.util.List;
-
 public class biap
 {
-  private static String jdField_a_of_type_JavaLangString = biap.class.getSimpleName();
-  private double jdField_a_of_type_Double = 1.0D;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private bhrz jdField_a_of_type_Bhrz = new bhrz();
-  private biaq jdField_a_of_type_Biaq;
-  private biau jdField_a_of_type_Biau;
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new SurfaceTextureFilter();
-  private List<List<List<PointF>>> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString = Environment.getExternalStorageDirectory().getPath() + "/Android/data/com.tencent.mobileqq/cache/gifPreview/";
-  private List<List<float[]>> jdField_b_of_type_JavaUtilList;
-  private String c;
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public biap(String paramString, List<List<List<PointF>>> paramList, List<List<float[]>> paramList1, double paramDouble, boolean paramBoolean)
+  public biap(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_b_of_type_JavaUtilList = paramList1;
-    this.jdField_a_of_type_Double = paramDouble;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    paramList = new HandlerThread("PngCreatorHT");
-    paramList.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramList.getLooper());
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.1(this, paramString));
+    this.f = paramInt1;
+    this.e = paramInt2;
+    this.b = paramInt3;
+    this.a = paramInt4;
+    this.c = paramInt5;
+    this.d = paramInt6;
   }
   
-  public void a()
+  public int a()
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.5(this));
+    return this.f;
   }
   
-  public void a(biaq parambiaq)
+  public int b()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.c = (this.jdField_b_of_type_JavaLangString + System.currentTimeMillis());
-    try
-    {
-      new File(this.c).mkdirs();
-      QLog.d(jdField_a_of_type_JavaLangString, 4, new Object[] { "pngDir = ", this.c });
-      this.jdField_a_of_type_Biaq = parambiaq;
-      this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.2(this));
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    return this.e;
   }
   
-  public void a(String paramString)
+  public int c()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.3(this, paramString));
+    return this.c - this.b;
   }
   
-  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public int d()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.4(this, paramString1, paramInt1, paramString2, paramString3, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramFloat4));
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.d - this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     biap
  * JD-Core Version:    0.7.0.1
  */

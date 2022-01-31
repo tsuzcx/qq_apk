@@ -1,43 +1,15 @@
-public class bgmy
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bgmy
+  implements DialogInterface.OnClickListener
 {
-  private static bgmy jdField_a_of_type_Bgmy = new bgmy();
-  private bgmz jdField_a_of_type_Bgmz;
-  bgna jdField_a_of_type_Bgna;
+  bgmy(bgmt parambgmt) {}
   
-  public static bgmy a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return jdField_a_of_type_Bgmy;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bgmz = null;
-  }
-  
-  public void a(bgmz parambgmz)
-  {
-    this.jdField_a_of_type_Bgmz = parambgmz;
-  }
-  
-  public void a(bgna parambgna)
-  {
-    this.jdField_a_of_type_Bgna = parambgna;
-  }
-  
-  public void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
-  {
-    if (this.jdField_a_of_type_Bgmz == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bgmz.a(paramString, paramLong1, paramArrayOfLong, paramLong2);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    bgna localbgna = this.jdField_a_of_type_Bgna;
-    if ((localbgna != null) && (!"0X8009831".equals(paramString1)) && (!"0X8009830".equals(paramString1)) && (!"0X800982E".equals(paramString1)) && (!"0X800982F".equals(paramString1))) {
-      localbgna.a(paramString2);
-    }
+    this.a.a("0X8004857", 1);
+    paramDialogInterface.dismiss();
   }
 }
 

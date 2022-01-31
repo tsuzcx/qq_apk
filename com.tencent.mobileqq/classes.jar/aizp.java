@@ -1,49 +1,95 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloGameShare.2;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aizp
-  implements bbsh
+  extends BaseAdapter
 {
-  public aizp(ApolloGameShare.2 param2) {}
+  public Context a;
+  private List<ApolloGameData> a;
+  private List<String> b = new ArrayList();
   
-  public void a(BaseResp paramBaseResp)
+  public aizp(aizo paramaizo, Context paramContext)
   {
-    if (paramBaseResp == null) {}
-    do
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramaizo != null)
     {
-      do
-      {
-        return;
-      } while ((aizn.a(this.a.this$0) == null) || (!aizn.a(this.a.this$0).equals(paramBaseResp.transaction)));
-      QLog.i("ApolloGameShare", 1, "[shareResult2WXFriendOrCircle], resp.errCode:" + paramBaseResp.errCode);
-    } while (paramBaseResp.errCode != 0);
-    paramBaseResp = this.a.this$0.a();
-    int j;
-    int i;
-    if (paramBaseResp == null)
+      this.jdField_a_of_type_JavaUtilList = paramaizo.b;
+      this.b = paramaizo.c;
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1;
+    if (paramView == null)
     {
-      j = -1;
-      if (1 != this.a.a) {
-        break label159;
+      paramViewGroup = new aizq(this);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558788, null);
+      paramView.setPadding(0, 0, 0, 0);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131368573));
+      paramViewGroup.b = ((CornerImageView)paramView.findViewById(2131368574));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378176));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368575));
+      float f = muf.a(this.jdField_a_of_type_AndroidContentContext, 5.0F);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(f);
+      paramViewGroup.b.setRadius(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f, f, f, f });
+      paramView.setTag(paramViewGroup);
+      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = ((int)muf.a(this.jdField_a_of_type_AndroidContentContext, 103.0F));
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = ((int)muf.a(this.jdField_a_of_type_AndroidContentContext, 58.0F));
+      localObject1 = (ApolloGameData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      localObject2 = URLDrawable.getDrawable(((ApolloGameData)localObject1).listCoverUrl, (URLDrawable.URLDrawableOptions)localObject2);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable((Drawable)localObject2);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(Integer.valueOf(((ApolloGameData)localObject1).gameId));
+      if (!((ApolloGameData)localObject1).isGameApp) {
+        break label333;
       }
-      i = 3;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838323);
     }
     for (;;)
     {
-      bajr.a(aizn.a(this.a.this$0), "cmshow", "Apollo", "share_url_succeed", j, i, new String[] { Integer.toString(aizn.a(this.a.this$0)) });
-      return;
-      j = ApolloUtil.b(paramBaseResp.a.a);
-      break;
-      label159:
-      if (2 == this.a.a) {
-        i = 4;
-      } else {
-        i = -1;
+      localObject1 = (String)this.b.get(paramInt);
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        paramViewGroup.b.setVisibility(0);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
       }
+      return paramView;
+      paramViewGroup = (aizq)paramView.getTag();
+      break;
+      label333:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
   }
 }

@@ -1,162 +1,135 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketProxy.1;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketProxy.2;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import java.util.List;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class agqx
-  implements IRedPacket
+  extends agqu
 {
+  protected int a;
+  protected agqy a;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  private final String jdField_a_of_type_JavaLangString = "VideoPlayControllerForAIO";
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private ImageView b;
+  
   public agqx()
   {
-    agpq.a().a();
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public JSONObject getPopAd(int paramInt1, int paramInt2)
+  public void a()
   {
-    agpq.a().a();
-    Object localObject1 = new Bundle();
-    ((Bundle)localObject1).putInt("key_func", 4);
-    ((Bundle)localObject1).putInt("key_skin_id", paramInt1);
-    ((Bundle)localObject1).putInt("key_channel", paramInt2);
-    localObject2 = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "red_packet", (Bundle)localObject1);
-    if ((localObject2 != null) && (((EIPCResult)localObject2).isSuccess()))
-    {
-      localObject1 = ((EIPCResult)localObject2).data.getString("pop_ad_tips");
-      String str = ((EIPCResult)localObject2).data.getString("pop_ad_url");
-      paramInt1 = ((EIPCResult)localObject2).data.getInt("pop_ad_url_type");
-      try
-      {
-        localObject2 = new JSONObject();
-        return null;
-      }
-      catch (JSONException localJSONException1)
-      {
-        try
-        {
-          ((JSONObject)localObject2).putOpt("pop_ad_tips", localObject1);
-          ((JSONObject)localObject2).putOpt("pop_ad_url", str);
-          ((JSONObject)localObject2).putOpt("pop_ad_url_type", Integer.valueOf(paramInt1));
-          return localObject2;
-        }
-        catch (JSONException localJSONException2)
-        {
-          return localObject2;
-        }
-        localJSONException1 = localJSONException1;
-        return null;
-      }
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.b = null;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(paramInt);
     }
   }
   
-  public List<String> getReadyResList()
+  public void a(int paramInt, String paramString)
   {
-    return null;
+    if (paramInt == 0) {
+      b(8);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
+      if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365743));
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    }
   }
   
-  public void getSkin(RedPacketInfoBase paramRedPacketInfoBase, IRedPacket.OnGetSkinListener paramOnGetSkinListener)
+  public void a(agqy paramagqy)
   {
-    if ((paramRedPacketInfoBase == null) || (paramOnGetSkinListener == null)) {
+    this.jdField_a_of_type_Agqy = paramagqy;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371919));
+    this.b = ((ImageView)paramView.findViewById(2131371918));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131371920));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    }
+    return false;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    if (this.b == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is null.");
+      }
+    }
+    do
+    {
+      do
+      {
+        return false;
+        if (this.b.getVisibility() != 0) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, event.getRawX() = " + paramMotionEvent.getRawX() + " , event.getRawY() = " + paramMotionEvent.getRawY() + " , mCenterPlayBtn left = " + this.b.getLeft() + " , top = " + this.b.getTop() + " , right = " + this.b.getRight() + ", bottom = " + this.b.getBottom());
+        }
+      } while (!new Rect(this.b.getLeft(), this.b.getTop(), this.b.getRight(), this.b.getBottom()).contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()));
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, playbtn contains event");
+      }
+      return true;
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is not visible.");
+    return false;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.b != null)
+    {
+      if ((this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0)) {
+        this.b.setVisibility(8);
+      }
+    }
+    else {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCModule", 2, "getSkin | skinId = " + paramRedPacketInfoBase.skinId + ",skinType=" + paramRedPacketInfoBase.skinType);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("key_func", 1);
-    localBundle.putParcelable("key_red_packet_info", paramRedPacketInfoBase);
-    localBundle.putParcelable("key_callback", agph.a(new RedPacketProxy.1(this, null, paramOnGetSkinListener)));
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "red_packet", localBundle, null);
+    this.b.setVisibility(paramInt);
   }
   
-  public JSONObject getTail(int paramInt1, int paramInt2)
+  public void e(int paramInt)
   {
-    return null;
+    this.jdField_a_of_type_Int = paramInt;
   }
-  
-  public void getVoiceRateRes(RedPacketInfoBase paramRedPacketInfoBase, IRedPacket.OnGetSkinListener paramOnGetSkinListener)
-  {
-    if ((paramRedPacketInfoBase == null) || (paramOnGetSkinListener == null)) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("key_func", 5);
-    localBundle.putParcelable("key_red_packet_info", paramRedPacketInfoBase);
-    localBundle.putParcelable("key_callback", agph.a(new RedPacketProxy.2(this, null, paramOnGetSkinListener)));
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "red_packet", localBundle, null);
-  }
-  
-  public boolean isRiskSwitchOpen()
-  {
-    agpq.a().a();
-    boolean bool2 = false;
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("key_func", 2);
-    localObject = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "red_packet", (Bundle)localObject);
-    boolean bool1 = bool2;
-    if (localObject != null)
-    {
-      bool1 = bool2;
-      if (((EIPCResult)localObject).isSuccess()) {
-        bool1 = ((EIPCResult)localObject).data.getBoolean("key_is_risk_switch_open");
-      }
-    }
-    return bool1;
-  }
-  
-  public void onActiveAccount() {}
-  
-  public boolean onGetThemeConfig(int paramInt)
-  {
-    agpq.a().a();
-    boolean bool2 = false;
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("key_func", 6);
-    ((Bundle)localObject).putInt("theme_id", paramInt);
-    localObject = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "red_packet", (Bundle)localObject);
-    boolean bool1 = bool2;
-    if (localObject != null)
-    {
-      bool1 = bool2;
-      if (((EIPCResult)localObject).isSuccess()) {
-        bool1 = ((EIPCResult)localObject).data.getBoolean("key_theme_exist");
-      }
-    }
-    return bool1;
-  }
-  
-  public void onUpdate(int paramInt) {}
-  
-  public void registRedPacketSkinListObserver(BusinessObserver paramBusinessObserver) {}
-  
-  public void reqGroupAvailableList(String paramString, int paramInt, IRedPacket.OnGetAvailableListListener paramOnGetAvailableListListener) {}
-  
-  public void requestRedPacketSkinList()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("key_func", 3);
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "red_packet", localBundle, null);
-  }
-  
-  public void requestRedPacketSkinList(String paramString1, String paramString2, int paramInt) {}
-  
-  public void setSelectedSkin(int paramInt, BusinessObserver paramBusinessObserver) {}
-  
-  public void unregistRedPacketSkinListObserver(BusinessObserver paramBusinessObserver) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agqx
  * JD-Core Version:    0.7.0.1
  */

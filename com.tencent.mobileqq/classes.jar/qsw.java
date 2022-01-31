@@ -1,16 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView.1.1;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class qsw
-  implements axbx
+class qsw
+  extends AnimatorListenerAdapter
 {
-  public qsw(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView) {}
+  qsw(qst paramqst, qms paramqms) {}
   
-  public void a(axba paramaxba)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ReadInJoySkinSlideDownView.a(this.a, paramaxba);
-    this.a.a.post(new ReadInJoySkinSlideDownView.1.1(this, paramaxba));
+    this.jdField_a_of_type_Qst.b(this.jdField_a_of_type_Qms);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    qst.a(this.jdField_a_of_type_Qst).setRepeatCount(0);
   }
 }
 

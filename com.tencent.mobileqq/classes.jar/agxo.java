@@ -1,38 +1,21 @@
-import android.view.View;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 
 public class agxo
+  extends bcsq
 {
-  public int a;
-  public View a;
-  public boolean a;
-  public int b;
+  public agxo(RedPacketKSongFragment paramRedPacketKSongFragment, bcsr parambcsr) {}
   
-  public agxo(int paramInt1, int paramInt2)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return paramInt >= 2;
-  }
-  
-  public boolean a()
-  {
-    return this.b >= 2;
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer(20);
-    localStringBuffer.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.b).append(",").append(this.jdField_a_of_type_Boolean).append(",").append(this.jdField_a_of_type_AndroidViewView).append("]");
-    return localStringBuffer.toString();
+    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.a.release();
+    this.jdField_a_of_type_Bcsr.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agxo
  * JD-Core Version:    0.7.0.1
  */

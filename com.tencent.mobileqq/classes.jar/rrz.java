@@ -1,130 +1,56 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.PAReportInfo;
-import com.tencent.biz.pubaccount.util.PAReportManager.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.widget.BaseAdapter;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import mqq.manager.Manager;
 
-public class rrz
-  implements Handler.Callback, Manager
+public abstract class rrz<T>
+  extends BaseAdapter
+  implements rsb
 {
-  private volatile int jdField_a_of_type_Int = -1;
-  private atmp jdField_a_of_type_Atmp;
-  private beez jdField_a_of_type_Beez;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<PAReportInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int jdField_a_of_type_Int;
+  private HashMap<T, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public rrz(QQAppInterface paramQQAppInterface)
+  protected void a(T paramT)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Atmp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_Beez = new beez(ThreadManager.getSubThreadLooper(), this);
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    localHashMap.put(paramT, Integer.valueOf(i));
   }
   
-  public void a()
+  protected void a(List<T> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "scheduleReport ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
-    }
-    if ((this.jdField_a_of_type_JavaUtilList.size() == 0) && (this.jdField_a_of_type_Int == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PAReport", 2, "scheduleReport ... No need query DB");
-      }
-    }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_JavaUtilList.size() != 0) {
-        break;
-      }
-    } while (this.jdField_a_of_type_Beez.hasMessages(100001));
-    this.jdField_a_of_type_Beez.sendEmptyMessageDelayed(100001, 3000L);
-    return;
-    this.jdField_a_of_type_Beez.sendEmptyMessage(100002);
-  }
-  
-  public void a(PAReportInfo paramPAReportInfo)
-  {
-    this.jdField_a_of_type_Beez.post(new PAReportManager.1(this, paramPAReportInfo));
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "queryDatabases ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Int == -1) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b().a(PAReportInfo.class.getSimpleName());
-    }
-    List localList2 = this.jdField_a_of_type_Atmp.a(PAReportInfo.class, true, null, (String[])null, null, null, null, String.valueOf(20));
-    if (localList2 != null) {}
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.addAll(localList2);
-      this.jdField_a_of_type_Beez.sendEmptyMessage(100002);
-      return;
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      a(paramList.next());
     }
   }
   
-  public void c()
+  protected void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "reporting ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {}
-    for (;;)
-    {
-      return;
-      Object localObject1 = (PAReportInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-      if (!this.jdField_a_of_type_Atmp.b((atmo)localObject1)) {
-        continue;
-      }
-      this.jdField_a_of_type_Int -= 1;
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        this.jdField_a_of_type_JavaUtilList.remove(0);
-        ??? = new ArrayList();
-        localObject1 = ((PAReportInfo)localObject1).msgIds.split("\\|");
-        int j = localObject1.length;
-        int i = 0;
-        if (i >= j) {
-          continue;
-        }
-        ((List)???).add(localObject1[i]);
-        i += 1;
-      }
-    }
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public T getItem(int paramInt)
   {
-    if (paramMessage.what == 100001)
-    {
-      b();
-      return true;
-    }
-    if (paramMessage.what == 100002)
-    {
-      c();
-      return true;
-    }
-    return false;
+    return null;
   }
   
-  public void onDestroy()
+  public final long getItemId(int paramInt)
   {
-    this.jdField_a_of_type_Atmp.a();
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_Int = -1;
-      return;
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
+      return -1L;
     }
+    Object localObject = getItem(paramInt);
+    if (this.jdField_a_of_type_JavaUtilHashMap.get(localObject) != null) {
+      return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
+    }
+    return paramInt;
+  }
+  
+  public final boolean hasStableIds()
+  {
+    return true;
   }
 }
 

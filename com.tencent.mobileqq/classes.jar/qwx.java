@@ -1,21 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo.TopicVideoCard;
 
-public class qwx
-  implements nwe
+public final class qwx
+  implements Parcelable.Creator<DiscoveryInfo.TopicVideoCard>
 {
-  public qwx(FastWebActivity paramFastWebActivity) {}
-  
-  public void a() {}
-  
-  public void onClick(View paramView)
+  public DiscoveryInfo.TopicVideoCard a(Parcel paramParcel)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    this.a.a(false, null, null);
+    return new DiscoveryInfo.TopicVideoCard(paramParcel);
+  }
+  
+  public DiscoveryInfo.TopicVideoCard[] a(int paramInt)
+  {
+    return new DiscoveryInfo.TopicVideoCard[paramInt];
   }
 }
 

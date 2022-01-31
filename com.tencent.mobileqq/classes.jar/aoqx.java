@@ -1,22 +1,14 @@
-public final class aoqx
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+
+public class aoqx
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private final Class jdField_a_of_type_JavaLangClass;
-  private final Object jdField_a_of_type_JavaLangObject;
+  public aoqx(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public aoqx(Object paramObject, Class paramClass)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-  }
-  
-  public Class a()
-  {
-    return this.jdField_a_of_type_JavaLangClass;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
+    this.a.av_();
   }
 }
 

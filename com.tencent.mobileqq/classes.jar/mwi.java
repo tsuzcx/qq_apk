@@ -1,30 +1,25 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.ImageView;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.widget.QQMapView;
 
 public class mwi
-  implements begw
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public mwi(AccountDetailActivity paramAccountDetailActivity) {}
+  public mwi(PoiMapActivity paramPoiMapActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onPreDraw()
   {
-    if (this.a.o) {
-      return;
-    }
-    this.a.o = true;
-    switch (paramInt)
+    this.a.o = PoiMapActivity.e(this.a).getMeasuredHeight();
+    PoiMapActivity.a(this.a, PoiMapActivity.a(this.a).getMeasuredHeight());
+    if ((this.a.o > 0) && (PoiMapActivity.a(this.a) > 0))
     {
+      this.a.a((this.a.o - PoiMapActivity.b(this.a)) / 2 + this.a.u, false);
+      PoiMapActivity.f(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+      PoiMapActivity.b(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
     }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      this.a.q();
-      continue;
-      this.a.E();
-      continue;
-      this.a.G();
-    }
+    return true;
   }
 }
 

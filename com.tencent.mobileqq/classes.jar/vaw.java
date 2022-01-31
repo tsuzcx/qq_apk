@@ -1,59 +1,27 @@
-import android.util.SparseBooleanArray;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.app.Activity;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class vaw
-  implements uzu
+  implements wcn
 {
-  private vaw(DoodleLayout paramDoodleLayout) {}
-  
-  public void a()
+  public void a(SegmentList paramSegmentList)
   {
-    this.a.a().c();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.a().a(paramInt);
-  }
-  
-  public void a(boolean paramBoolean, uyw paramuyw)
-  {
-    uyh localuyh = this.a.a();
-    if (paramBoolean)
-    {
-      localuyh.a(true);
-      switch (this.a.b)
-      {
-      }
-      for (;;)
-      {
-        this.a.c(3);
-        return;
-        this.a.a().b(false);
-      }
+    if (!(paramSegmentList instanceof MystoryListView)) {
+      throw new IllegalArgumentException("arg should match type!");
     }
-    if (paramuyw.jdField_a_of_type_Int != -1) {
-      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, true);
-    }
-    for (;;)
-    {
-      localuyh.a(paramuyw);
-      localuyh.a(false);
-      this.a.a(new View[] { this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
-      this.a.c(0);
-      this.a.d(0);
-      this.a.jdField_a_of_type_Vav.i();
-      return;
-      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, false);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.a.jdField_a_of_type_Vav != null) {
-      this.a.jdField_a_of_type_Vav.b(3, paramInt);
-    }
+    paramSegmentList = (MystoryListView)paramSegmentList;
+    Activity localActivity = paramSegmentList.jdField_a_of_type_AndroidAppActivity;
+    Object localObject = paramSegmentList.jdField_a_of_type_Vat;
+    boolean bool = paramSegmentList.a();
+    paramSegmentList.a(sxp.a(localActivity, 5));
+    paramSegmentList.a(new vcs(localActivity, (vat)localObject));
+    paramSegmentList.a(new vcr(localActivity));
+    paramSegmentList.a(new vci(localActivity));
+    localObject = new vbd(localActivity, localActivity, 10, (vat)localObject, bool);
+    paramSegmentList.a((wcr)localObject);
+    paramSegmentList.a(new vdl(localActivity, "FeedSegment", ajyc.a(2131707053) + ssi.a + "\n拍摄一段视频，分享眼前的世界", 2130845698, 2130845699));
+    ((vbd)localObject).e_(true);
   }
 }
 

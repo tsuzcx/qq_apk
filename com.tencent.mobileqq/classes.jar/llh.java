@@ -1,31 +1,19 @@
-import com.tencent.av.redpacket.ui.RedPacketShareFragment;
-import com.tencent.av.redpacket.ui.RedPacketShareFragment.3;
-import com.tencent.av.redpacket.ui.RedPacketShareFragment.3.1;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class llh
-  implements bbsh
 {
-  public llh(RedPacketShareFragment.3.1 param1) {}
+  String jdField_a_of_type_JavaLangString = "";
+  List<lln> jdField_a_of_type_JavaUtilList = new ArrayList();
+  lli jdField_a_of_type_Lli = new lli(this);
+  llj jdField_a_of_type_Llj = new llj(this);
+  llk jdField_a_of_type_Llk = new llk(this);
+  lll jdField_a_of_type_Lll = new lll(this);
+  llm jdField_a_of_type_Llm = new llm(this);
+  boolean jdField_a_of_type_Boolean = true;
+  String b = "";
   
-  public void a(BaseResp paramBaseResp)
-  {
-    if ((RedPacketShareFragment.d(this.a.a.this$0) == null) || (!RedPacketShareFragment.d(this.a.a.this$0).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND onWXShareResp resp.errCode = " + paramBaseResp.errCode);
-    switch (paramBaseResp.errCode)
-    {
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      RedPacketShareFragment.a("0X8008CF8", 3);
-    }
-  }
+  public llh(llf paramllf) {}
 }
 
 

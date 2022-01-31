@@ -1,39 +1,91 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.CircleImageView;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
 
-class ukh
-  extends sgl<ujx, uda>
+public class ukh
 {
-  ukh(ujx paramujx)
+  public static void a(Context paramContext, LinearLayout paramLinearLayout, int paramInt1, QQUserUIItem paramQQUserUIItem, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    super(paramujx);
-  }
-  
-  public void a(@NonNull ujx paramujx, @NonNull uda paramuda)
-  {
-    Object localObject = paramujx.a(paramuda.jdField_a_of_type_JavaLangString);
-    if ((localObject == null) || (paramuda.jdField_a_of_type_Boolean))
+    Object localObject1 = LayoutInflater.from(paramContext);
+    int i = vzo.a(paramContext, paramInt1);
+    if ((paramInt2 != 1) || (!paramBoolean))
     {
-      urk.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramuda.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramuda.jdField_a_of_type_Boolean) });
+      localObject1 = ((LayoutInflater)localObject1).inflate(2131561358, null);
+      localObject2 = (CircleImageView)((View)localObject1).findViewById(2131367816);
+      localObject3 = ((CircleImageView)localObject2).getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject3).height = i;
+      ((ViewGroup.LayoutParams)localObject3).width = i;
+      ((CircleImageView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+      ((CircleImageView)localObject2).setBorderColor(-1);
+      ((CircleImageView)localObject2).setBorderWidth(vzo.a(paramContext, 1.0F));
+      vzo.a((ImageView)localObject2, paramQQUserUIItem.headUrl, i, i, new uxx(null, null));
+      paramQQUserUIItem = new LinearLayout.LayoutParams(i, i);
+      if (paramInt2 != -1) {
+        paramQQUserUIItem.setMargins(-actn.a(8.0F, paramContext.getResources()), 0, 0, 0);
+      }
+      paramLinearLayout.addView((View)localObject1, paramQQUserUIItem);
       return;
     }
-    if (!(localObject instanceof uio))
+    Object localObject2 = ((LayoutInflater)localObject1).inflate(2131561359, null);
+    Object localObject3 = (TextView)((View)localObject2).findViewById(2131377627);
+    if (paramInt3 > 99) {}
+    for (localObject1 = "99+";; localObject1 = paramInt3 + "")
     {
-      urk.e(this.TAG, "that is error type!");
-      return;
+      ((TextView)localObject3).setText((CharSequence)localObject1);
+      ((TextView)localObject3).setVisibility(0);
+      localObject1 = ((View)localObject2).findViewById(2131367817);
+      localObject3 = ((View)localObject1).getLayoutParams();
+      paramInt1 = vzo.a(paramContext, paramInt1 - 2);
+      ((ViewGroup.LayoutParams)localObject3).height = paramInt1;
+      ((ViewGroup.LayoutParams)localObject3).width = paramInt1;
+      ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+      localObject1 = localObject2;
+      break;
     }
-    localObject = (uio)localObject;
-    ((CommentLikeFeedItem)((uio)localObject).a).mLikeCount = paramuda.b;
-    ((uio)localObject).b(paramuda.jdField_a_of_type_JavaUtilList, true);
-    ujx.a(paramujx).b(paramuda.jdField_a_of_type_JavaLangString);
   }
   
-  public Class acceptEventClass()
+  public static boolean a()
   {
-    return uda.class;
+    return (((tcv)tdc.a(10)).a() & 0x1) != 0;
   }
   
-  public void b(@NonNull ujx paramujx, @NonNull uda paramuda) {}
+  public static boolean a(ShareGroupItem paramShareGroupItem)
+  {
+    boolean bool = true;
+    int i = ((tcv)tdc.a(10)).a();
+    if (paramShareGroupItem.isPublic()) {
+      return (i & 0x1) != 0;
+    }
+    if ((i & 0x2) != 0) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public static boolean a(ShareGroupFeedItem paramShareGroupFeedItem)
+  {
+    if (paramShareGroupFeedItem != null)
+    {
+      paramShareGroupFeedItem = paramShareGroupFeedItem.getOwner();
+      if ((paramShareGroupFeedItem != null) && (paramShareGroupFeedItem.type == 2))
+      {
+        veg.b("ShareGroupUtil", "屏蔽掉圈子类型 %s", paramShareGroupFeedItem);
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 

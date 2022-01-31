@@ -1,9 +1,19 @@
-class adgt
-  implements begy
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+
+public class adgt
+  implements adgz
 {
-  adgt(adgs paramadgs) {}
+  public adgt(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void onDismiss() {}
+  public void a()
+  {
+    this.a.b();
+  }
+  
+  public void b()
+  {
+    this.a.b();
+  }
 }
 
 

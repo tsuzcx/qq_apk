@@ -1,45 +1,69 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class aswq
-  implements alxp
+public class aswq
+  implements BusinessObserver
 {
-  aswq(asvw paramasvw, IphonePickerView paramIphonePickerView, begr parambegr) {}
+  public aswq(MusicPlayerActivity paramMusicPlayerActivity, Intent paramIntent) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_Begr != null) && (this.jdField_a_of_type_Begr.isShowing()))
+    if (paramBoolean) {}
+    try
     {
-      asvw.a(this.jdField_a_of_type_Asvw, this.jdField_a_of_type_Asvw.c, false);
-      this.jdField_a_of_type_Begr.dismiss();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
+      Object localObject = paramBundle.getByteArray("data");
+      if (localObject != null)
       {
-        if ((paramInt1 == 0) || (paramInt1 == 1)) {
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+        paramBundle = new GetAppInfoProto.GetAppinfoResponse();
+        paramBundle.mergeFrom((byte[])localObject);
+        if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
+        {
+          GetAppInfoProto.AndroidInfo localAndroidInfo = paramBundle.androidInfo;
+          localObject = xmt.a(paramBundle.iconsURL, 16);
+          this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_url", localAndroidInfo.sourceUrl.get());
+          Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+          paramBundle = (Bundle)localObject;
+          if (localObject == null) {
+            paramBundle = "";
+          }
+          localIntent.putExtra("struct_share_key_source_icon", paramBundle);
+          this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_name", localAndroidInfo.messagetail.get());
+          this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_a_action_data", localAndroidInfo.packName.get());
         }
-        this.jdField_a_of_type_Asvw.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
+      }
+    }
+    catch (Exception paramBundle)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MusicPlayerActivity", 2, paramBundle.getMessage());
+        }
+      }
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
+      this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 0);
+    }
+    paramBundle = axuy.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+    if (paramBundle == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MusicPlayerActivity", 2, "build struct msg fail");
       }
       return;
-      this.jdField_a_of_type_Asvw.e = paramInt2;
-      continue;
-      this.jdField_a_of_type_Asvw.f = paramInt2;
-      continue;
-      this.jdField_a_of_type_Asvw.g = paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aswq
  * JD-Core Version:    0.7.0.1
  */

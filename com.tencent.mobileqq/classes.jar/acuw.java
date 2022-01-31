@@ -1,17 +1,26 @@
-import android.view.View;
-
-public abstract class acuw
+public class acuw
 {
-  private View a;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
   
-  public View a()
+  public acuw(String paramString)
   {
-    return this.a;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(View paramView)
+  public long a()
   {
-    this.a = paramView;
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

@@ -1,52 +1,36 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.CardProfile;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
-class awzs
-  extends URLDrawableDownListener.Adapter
+public class awzs
 {
-  awzs(awzo paramawzo) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public static ArrayList<CardProfile> a(List<CardProfile> paramList1, List<CardProfile> paramList2)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadCancelled");
+    HashSet localHashSet = new HashSet();
+    ArrayList localArrayList = new ArrayList();
+    paramList1 = paramList1.iterator();
+    paramList2 = paramList2.iterator();
+    while (paramList1.hasNext())
+    {
+      CardProfile localCardProfile = (CardProfile)paramList1.next();
+      localHashSet.add(Long.valueOf(localCardProfile.lEctID));
+      localArrayList.add(localCardProfile);
     }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadFailed ,cause = " + paramThrowable);
+    while (paramList2.hasNext())
+    {
+      paramList1 = (CardProfile)paramList2.next();
+      if (!localHashSet.contains(Long.valueOf(paramList1.lEctID))) {
+        localArrayList.add(paramList1);
+      }
     }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    int i = paramView.getLayoutParams().height * paramURLDrawable.getIntrinsicWidth() / paramURLDrawable.getIntrinsicHeight();
-    paramView.getLayoutParams().width = i;
-    paramView.setBackgroundDrawable(paramURLDrawable);
-    paramView.requestLayout();
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadSuccessed");
-    }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awzs
  * JD-Core Version:    0.7.0.1
  */

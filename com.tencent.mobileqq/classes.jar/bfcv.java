@@ -1,17 +1,18 @@
-import android.support.annotation.NonNull;
-import java.util.concurrent.ThreadFactory;
-
-public final class bfcv
-  implements ThreadFactory
+class bfcv
+  implements besd
 {
-  public Thread newThread(@NonNull Runnable paramRunnable)
+  bfcv(bfct parambfct) {}
+  
+  public void a(int paramInt, String paramString, besc parambesc)
   {
-    return new Thread(paramRunnable, "PluginDex2Oat");
+    if ((paramInt == 0) && (parambesc != null)) {
+      this.a.a(parambesc.b, parambesc.h);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfcv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment.ViewHolder.1.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class nsu
-  implements oqi
+class nsu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  nsu(nst paramnst) {}
+  nsu(nss paramnss) {}
   
-  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramReadInJoyUserInfo != null) && (this.a.a != null)) {
-      ThreadManager.getUIHandler().post(new ReadInjoyFriendsBiuComponentFragment.ViewHolder.1.1(this));
-    }
-    if (paramReadInJoyUserInfo != null) {}
-    for (paramReadInJoyUserInfo = paramReadInJoyUserInfo.nick;; paramReadInJoyUserInfo = "null")
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    nss.a(this.a).setTranslationY(-i);
+    paramValueAnimator = nss.a(this.a).getLayoutParams();
+    paramValueAnimator.height = (nss.a(this.a) - i);
+    QLog.d("IconTabController", 1, "hideWithAnimation: " + paramValueAnimator.height);
+    if (paramValueAnimator.height < 0)
     {
-      QLog.d("ReadInjoyFriendsBiuComponentFragment", 1, new Object[] { "setComments infoSuccess nick = ", paramReadInJoyUserInfo, "  uin:" + paramString, " mContents:" + this.a.a });
-      return;
+      actn.a("IconTabController", "", new IllegalStateException("hideWithAnimation" + paramValueAnimator.height));
+      paramValueAnimator.height = 0;
     }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    QLog.d("ReadInjoyFriendsBiuComponentFragment", 1, "setComments infoFailed. uin:" + paramString1 + " errMsg:" + paramString2);
+    nss.a(this.a).setLayoutParams(paramValueAnimator);
+    nss.a(this.a).setAlpha(paramValueAnimator.height / nss.a(this.a));
   }
 }
 

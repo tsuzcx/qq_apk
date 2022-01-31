@@ -1,21 +1,69 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.app.AppRuntime;
+import mqq.manager.AccountManager;
+import mqq.manager.WtloginManager;
 
-class bbxt
-  implements DialogInterface.OnClickListener
+public class bbxt
 {
-  bbxt(bbxq parambbxq) {}
+  private AppRuntime a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bbxt(AppRuntime paramAppRuntime)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.b(110405, "", "", "");
+    this.a = paramAppRuntime;
+  }
+  
+  public void a(Intent paramIntent, String paramString, bbxw parambbxw)
+  {
+    if ((paramIntent == null) || (TextUtils.isEmpty(paramString))) {
+      if (parambbxw != null) {
+        parambbxw.a(paramIntent, false, paramString, null, null);
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (QLog.isDevelopLevel()) {
+        bbxx.a("LHLoginMng -- lockLH", paramIntent);
+      }
+      Object localObject2 = paramIntent.getStringExtra("key_register_smscode");
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      Object localObject3 = paramIntent.getStringExtra("key_register_nick");
+      localObject2 = localObject3;
+      if (localObject3 == null) {
+        localObject2 = "";
+      }
+      String str = paramIntent.getStringExtra("key_register_password");
+      localObject3 = str;
+      if (str == null) {
+        localObject3 = "";
+      }
+      boolean bool = paramIntent.getBooleanExtra("key_register_chose_bind_phone", false);
+      if (bool)
+      {
+        paramIntent = new bbxv(paramIntent, paramString, parambbxw);
+        ((WtloginManager)this.a.getManager(1)).RegGetSMSVerifyLoginAccountWithLH(((String)localObject1).getBytes(), ((String)localObject2).getBytes(), paramString, "8.2.8", paramIntent);
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "lockLH, lhUin: %s, isBindPhoneNum: %s", new Object[] { paramString, Boolean.valueOf(bool) }));
+        return;
+        paramIntent = new bbxu(paramIntent, paramString, parambbxw);
+        parambbxw = (AccountManager)this.a.getManager(0);
+        aumi.a().a(this.a, false);
+        parambbxw.sendRegisterBySetPassWithLH((String)localObject3, (String)localObject2, (String)localObject1, paramString, false, "8.2.8", paramIntent);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbxt
  * JD-Core Version:    0.7.0.1
  */

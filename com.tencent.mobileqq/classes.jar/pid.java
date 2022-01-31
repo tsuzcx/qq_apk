@@ -1,140 +1,130 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUGCVoice;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButtonImp;
+import org.json.JSONObject;
 
 public class pid
-  extends pez
+  implements phs
 {
-  TextView a;
-  TextView b;
-  
-  public pid(Context paramContext, azwg paramazwg, qoe paramqoe)
+  protected View a(int paramInt, Context paramContext)
   {
-    super(paramContext, paramazwg, paramqoe);
-  }
-  
-  public pez a()
-  {
-    return l().t().n();
-  }
-  
-  public pez d()
-  {
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    localLinearLayout.setOnClickListener(new pie(this));
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() >= 2))
+    switch (paramInt)
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131494360, localLinearLayout, false);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localRelativeLayout.findViewById(2131311534));
-      this.b = ((TextView)localRelativeLayout.findViewById(2131304741));
-      Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
-      if (localObject != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(((DisplayMetrics)localObject).widthPixels / 2);
-        this.b.setMaxWidth(((DisplayMetrics)localObject).widthPixels / 4);
-      }
-      localObject = (LinearLayout)localRelativeLayout.findViewById(2131299134);
-      int i = 0;
-      while (i < 2)
-      {
-        ComponentTopicItemMulti localComponentTopicItemMulti = (ComponentTopicItemMulti)this.jdField_a_of_type_JavaUtilList.get(i);
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-        localLayoutParams.weight = 1.0F;
-        if (i < 1) {
-          localLayoutParams.rightMargin = aciy.a(0.75F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        }
-        if (i > 0) {
-          localLayoutParams.leftMargin = aciy.a(0.75F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        }
-        localComponentTopicItemMulti.setLayoutParams(localLayoutParams);
-        ((LinearLayout)localObject).addView(localComponentTopicItemMulti);
-        i += 1;
-      }
-      localLinearLayout.addView(localRelativeLayout);
+    default: 
+      return null;
+    case 22: 
+    case 80: 
+      return new ComponentContentUgcImage(paramContext);
+    case 36: 
+      return new ComponentContentGridImage(paramContext);
+    case 23: 
+    case 120: 
+      return new ComponentContentUgcVideo(paramContext);
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
+    return new ComponentContentUGCVoice(paramContext);
   }
   
-  public pez e()
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
     return null;
   }
   
-  public pez o()
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    super.o();
-    ArticleInfo localArticleInfo;
-    prv localprv;
-    if ((this.jdField_a_of_type_JavaLangObject instanceof opw))
+    long l2 = 0L;
+    long l1 = l2;
+    if (paramBaseArticleInfo.mSocialFeedInfo != null)
     {
-      localArticleInfo = ((opw)this.jdField_a_of_type_JavaLangObject).a();
-      localprv = localArticleInfo.mTopicRecommendFeedsInfo;
-      if ((localprv != null) && (localprv.jdField_a_of_type_JavaUtilArrayList != null) && (localprv.jdField_a_of_type_JavaUtilArrayList.size() >= 2)) {
-        break label57;
+      l1 = l2;
+      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+        l1 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
       }
     }
-    label271:
-    label281:
-    for (;;)
+    return new pdp().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l1).f(paramBaseArticleInfo).g(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).k(paramBaseArticleInfo).C(paramBaseArticleInfo).q(paramBaseArticleInfo).r(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).x(paramBaseArticleInfo).y(paramBaseArticleInfo).A(paramBaseArticleInfo).B(paramBaseArticleInfo).D(paramBaseArticleInfo).a("ReadInjoy_original_cell").E(paramBaseArticleInfo).H(paramBaseArticleInfo).L(paramBaseArticleInfo).l(paramBaseArticleInfo).I(paramBaseArticleInfo).t(paramBaseArticleInfo).u(paramBaseArticleInfo).O(paramBaseArticleInfo).P(paramBaseArticleInfo).a();
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pax parampax, int paramInt2)
+  {
+    ViewBase localViewBase = paramContainer.getVirtualView();
+    pll localpll = (pll)localViewBase.findViewBaseByName("id_middle_body_content");
+    if (localpll != null)
     {
-      return this;
-      label57:
-      if (localprv.jdField_a_of_type_Prw != null)
+      NativeMiddleBodyView localNativeMiddleBodyView = (NativeMiddleBodyView)localpll.getNativeView();
+      if (localNativeMiddleBodyView.a() == null)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(localprv.jdField_a_of_type_Prw.a);
-        label78:
-        if ((localprv.b == null) || (TextUtils.isEmpty(localprv.b.a))) {
-          break label271;
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+        localLayoutParams.setMargins(bbkx.a(12.0F), 0, bbkx.a(12.0F), 0);
+        localpll.a(localLayoutParams);
+        paramContainer = a(paramInt1, paramContainer.getContext());
+        if (paramContainer != null) {
+          localNativeMiddleBodyView.a(paramContainer, localLayoutParams);
         }
-        this.b.setVisibility(0);
-        this.b.setText(localprv.b.a);
-        if (!TextUtils.isEmpty(localprv.b.b)) {
-          break label251;
-        }
-        this.b.setCompoundDrawables(null, null, null, null);
-        this.b.setOnClickListener(null);
       }
-      for (;;)
-      {
-        if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 2)) {
-          break label281;
-        }
-        int i = 0;
-        while (i < 2)
-        {
-          ((ComponentTopicItemMulti)this.jdField_a_of_type_JavaUtilList.get(i)).a(localprv.jdField_a_of_type_JavaUtilArrayList.get(i));
-          ((ComponentTopicItemMulti)this.jdField_a_of_type_JavaUtilList.get(i)).setArticleInfo(localArticleInfo, ((opw)this.jdField_a_of_type_JavaLangObject).e());
-          i += 1;
-        }
-        break;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-        break label78;
-        label251:
-        this.b.setOnClickListener(new pif(this, localArticleInfo, localprv));
-        continue;
-        this.b.setVisibility(8);
-      }
+      a(paramInt1, parampax, localNativeMiddleBodyView);
     }
+    paramContainer = (pjx)localViewBase.findViewBaseByName("id_info_avator");
+    if (paramContainer != null) {
+      paramContainer.a(parampax);
+    }
+    paramContainer = (NativeButton)localViewBase.findViewBaseByName("id_super_topic_button");
+    if ((paramContainer != null) && (paramContainer.getNativeView() != null) && ((paramContainer.getNativeView() instanceof NativeButtonImp))) {
+      ((NativeButtonImp)paramContainer.getNativeView()).setTextColor(-1);
+    }
+    paramContainer = (pjv)localViewBase.findViewBaseByName("id_article_comment");
+    if (paramContainer != null) {
+      paramContainer.a(parampax);
+    }
+    pmr.a(localViewBase, parampax.a());
+    pen.a(localViewBase, parampax);
+    pmr.a(localViewBase, parampax);
+    pmr.b(localViewBase, parampax);
+  }
+  
+  protected void a(int paramInt, pax parampax, NativeMiddleBodyView paramNativeMiddleBodyView)
+  {
+    if ((paramNativeMiddleBodyView.a() == null) || (parampax.a() == null)) {
+      return;
+    }
+    rap localrap = parampax.a();
+    switch (paramInt)
+    {
+    default: 
+      throw new IllegalArgumentException("" + paramInt);
+    case 22: 
+    case 80: 
+      ((ComponentContentUgcImage)paramNativeMiddleBodyView.a()).a(parampax);
+      return;
+    case 36: 
+      paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.a();
+      ((ComponentContentGridImage)paramNativeMiddleBodyView).setMIReadInJoyModel(parampax);
+      paramNativeMiddleBodyView.a(ComponentContentGridImage.a(parampax.a()));
+      ((ComponentContentGridImage)paramNativeMiddleBodyView).setOnNoItemClickListener(new pie(this, parampax, localrap));
+      return;
+    case 23: 
+    case 120: 
+      paramNativeMiddleBodyView = (ComponentContentUgcVideo)paramNativeMiddleBodyView.a();
+      paramNativeMiddleBodyView.a(parampax);
+      ((ComponentContentUgcVideo)paramNativeMiddleBodyView).setOnClickListener(new pif(this, paramInt, localrap, parampax));
+      return;
+    }
+    ((ComponentContentUGCVoice)paramNativeMiddleBodyView.a()).a(parampax);
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pax parampax, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

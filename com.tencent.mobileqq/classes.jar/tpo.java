@@ -1,12 +1,37 @@
-import java.util.Comparator;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Map;
 
-public final class tpo
-  implements Comparator<tpt>
+public class tpo
+  extends trj
 {
-  public int a(tpt paramtpt1, tpt paramtpt2)
+  StoryVideoItem a;
+  public uld a;
+  
+  public tpo(StoryVideoItem paramStoryVideoItem)
   {
-    return paramtpt1.a - paramtpt2.a;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+    {
+      veg.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
+      b(false);
+      return;
+    }
+    tem localtem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout();
+    if (localtem != null)
+    {
+      this.jdField_a_of_type_Uld = new ula();
+      this.jdField_a_of_type_Uld.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new tpp(this, localtem));
+      return;
+    }
+    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+    b(true);
+  }
+  
+  protected void a(Map<String, Object> paramMap) {}
 }
 
 

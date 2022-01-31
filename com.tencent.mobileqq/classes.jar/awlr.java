@@ -1,32 +1,30 @@
-import android.opengl.EGLContext;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailFragment;
+import com.tencent.widget.ListView;
+import java.util.List;
 
 public class awlr
+  extends awlq<awlu, awyf>
 {
-  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  public awmn a;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  
-  public void a()
+  public awlr(FTSEntitySearchDetailFragment paramFTSEntitySearchDetailFragment, ListView paramListView, baxk parambaxk, List paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = null;
-      return;
-    }
+    super(paramListView, parambaxk, paramList, paramString, paramFTSEntitySearchDetailActivity);
   }
   
-  public void a(EGLContext paramEGLContext)
+  protected awrb a(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
-      return;
-    }
+    return new awqy(FTSEntitySearchDetailFragment.a(this.a));
+  }
+  
+  protected awwq a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new awwl(paramViewGroup, 2131562385);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awlr
  * JD-Core Version:    0.7.0.1
  */

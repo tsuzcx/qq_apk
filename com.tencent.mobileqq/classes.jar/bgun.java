@@ -1,8 +1,32 @@
-public abstract interface bgun<T>
+import cooperation.qqreader.js.JsCallParams;
+
+class bgun
 {
-  public abstract void a(int paramInt, String paramString, T paramT);
+  long jdField_a_of_type_Long;
+  JsCallParams jdField_a_of_type_CooperationQqreaderJsJsCallParams;
+  long b;
   
-  public abstract void a(T paramT);
+  bgun(String paramString1, String paramString2, String paramString3, long paramLong, String... paramVarArgs)
+  {
+    this.jdField_a_of_type_CooperationQqreaderJsJsCallParams = new JsCallParams(paramString1, paramString2, paramString3, paramVarArgs);
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = System.currentTimeMillis();
+  }
+  
+  void a()
+  {
+    this.b = System.currentTimeMillis();
+  }
+  
+  boolean a()
+  {
+    return System.currentTimeMillis() - this.b > this.jdField_a_of_type_Long;
+  }
+  
+  boolean a(bgun parambgun)
+  {
+    return this.jdField_a_of_type_CooperationQqreaderJsJsCallParams.a(parambgun.jdField_a_of_type_CooperationQqreaderJsJsCallParams);
+  }
 }
 
 

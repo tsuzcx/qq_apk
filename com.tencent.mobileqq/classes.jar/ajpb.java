@@ -1,203 +1,57 @@
-import android.text.TextUtils;
-import com.tencent.jungle.weather.WeatherReportInfo.GetWeatherMessageReq;
-import com.tencent.jungle.weather.WeatherReportInfo.PbReqMsgHead;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.apollo.view.ApolloDrawerInfoViewListener.1;
+import com.tencent.mobileqq.apollo.view.ApolloDrawerInfoViewListener.2;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.util.Enumeration;
-import java.util.regex.Pattern;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
 
 public class ajpb
-  extends akfx
+  extends bbqu
+  implements aive
 {
-  public ajpb(PublicAccountHandler paramPublicAccountHandler, String paramString, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private int jdField_a_of_type_Int = 0;
+  private WeakReference<ajfs> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public ajpb(ajfs paramajfs, int paramInt)
   {
-    super(paramString, paramBoolean);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramajfs);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected void onApolloDressChange(boolean paramBoolean, Object paramObject)
   {
-    Object localObject1;
-    boolean bool;
-    if (QLog.isColorLevel())
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloDrawerInfoViewListener", 2, "[onApolloDressChange], result:" + paramBoolean + ",data:" + paramObject);
+    }
+    ThreadManager.post(new ApolloDrawerInfoViewListener.2(this, paramBoolean, paramObject), 5, null, true);
+  }
+  
+  public void onNotifyLongTouch(String paramString) {}
+  
+  public void onNotifyStatusChanged(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloDrawerInfoViewListener", 2, new Object[] { "[onNotifyStatusChanged], clickPart:", Integer.valueOf(paramInt), ",apolloId:", paramString });
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
     {
-      localObject1 = new StringBuilder().append("errCode ：").append(paramInt).append(" info is null ---> ");
-      if (paramSosoLbsInfo == null)
-      {
-        bool = true;
-        QLog.d("PublicAccountHandler", 2, bool);
+      ajes localajes = ((ajfs)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
+      if (localajes != null) {
+        localajes.a(ajfj.a(paramInt), null, paramString);
       }
     }
-    else
-    {
-      if ((paramInt != 0) || (paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
-        break label696;
-      }
+  }
+  
+  public void onSurfaceReady(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloDrawerInfoViewListener", 2, "[onSurfaceReady], w:" + paramInt1 + ",h:" + paramInt2);
     }
-    for (;;)
-    {
-      try
-      {
-        paramInt = Integer.parseInt(paramSosoLbsInfo.a.f);
-        if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountHandler", 2, "LocalInfo" + paramInt);
-        }
-        localObject1 = "8.2.6".replaceAll("\\.", "");
-        paramSosoLbsInfo = new WeatherReportInfo.PbReqMsgHead();
-        paramSosoLbsInfo.uint32_platform_type.set(1);
-        paramSosoLbsInfo.uint32_version.set(Integer.parseInt((String)localObject1));
-        localGetWeatherMessageReq = new WeatherReportInfo.GetWeatherMessageReq();
-        localGetWeatherMessageReq.pbReqMsgHead.set(paramSosoLbsInfo);
-        localGetWeatherMessageReq.uin.set(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.app.getCurrentAccountUin()).longValue());
-        localGetWeatherMessageReq.lat.set(this.jdField_a_of_type_Int);
-        localGetWeatherMessageReq.lng.set(this.b);
-        localGetWeatherMessageReq.fore_flag.set(0);
-        localGetWeatherMessageReq.area_id.set(this.c);
-        localGetWeatherMessageReq.adcode_from_mapsdk.set(paramInt);
-      }
-      catch (Throwable paramSosoLbsInfo)
-      {
-        try
-        {
-          for (;;)
-          {
-            paramSosoLbsInfo = new JSONObject();
-            if (this.d != 0) {
-              break label445;
-            }
-            localGetWeatherMessageReq.source.set(2);
-            paramSosoLbsInfo.put("platform", 109);
-            paramSosoLbsInfo.put("version", "8.2.6");
-            localObject1 = paramSosoLbsInfo.toString();
-            localObject2 = localGetWeatherMessageReq.extra;
-            paramSosoLbsInfo = (SosoInterface.SosoLbsInfo)localObject1;
-            if (TextUtils.isEmpty((CharSequence)localObject1)) {
-              paramSosoLbsInfo = "";
-            }
-            ((PBStringField)localObject2).set(paramSosoLbsInfo);
-            paramSosoLbsInfo = PublicAccountHandler.a;
-            localObject1 = paramSosoLbsInfo;
-            if (!TextUtils.isEmpty(paramSosoLbsInfo)) {
-              break label505;
-            }
-            try
-            {
-              localObject2 = NetworkInterface.getNetworkInterfaces();
-              for (;;)
-              {
-                localObject1 = paramSosoLbsInfo;
-                if (!((Enumeration)localObject2).hasMoreElements()) {
-                  break;
-                }
-                localObject1 = ((NetworkInterface)((Enumeration)localObject2).nextElement()).getInetAddresses();
-                InetAddress localInetAddress;
-                do
-                {
-                  if (!((Enumeration)localObject1).hasMoreElements()) {
-                    break;
-                  }
-                  localInetAddress = (InetAddress)((Enumeration)localObject1).nextElement();
-                } while ((localInetAddress.isLoopbackAddress()) || (!(localInetAddress instanceof Inet4Address)));
-                paramSosoLbsInfo = localInetAddress.getHostAddress().toString();
-              }
-              bool = false;
-            }
-            catch (Exception paramSosoLbsInfo)
-            {
-              label445:
-              localObject1 = "";
-              paramSosoLbsInfo.printStackTrace();
-            }
-          }
-          paramSosoLbsInfo = paramSosoLbsInfo;
-          if (QLog.isColorLevel()) {
-            QLog.e("PublicAccountHandler", 2, paramSosoLbsInfo, new Object[0]);
-          }
-          paramInt = 0;
-          continue;
-          if (this.d == -1)
-          {
-            localGetWeatherMessageReq.source.set(1);
-            continue;
-          }
-        }
-        catch (JSONException paramSosoLbsInfo)
-        {
-          WeatherReportInfo.GetWeatherMessageReq localGetWeatherMessageReq;
-          Object localObject2;
-          paramSosoLbsInfo.printStackTrace();
-          continue;
-          paramSosoLbsInfo.put("cmd", this.d);
-          localGetWeatherMessageReq.source.set(0);
-          continue;
-          label505:
-          if (!TextUtils.isEmpty((CharSequence)localObject1))
-          {
-            try
-            {
-              paramSosoLbsInfo = ((String)localObject1).split(Pattern.quote("."));
-              k = paramSosoLbsInfo.length;
-              j = 0;
-              paramInt = 0;
-            }
-            catch (Exception paramSosoLbsInfo)
-            {
-              try
-              {
-                int k;
-                int j;
-                paramInt = Integer.parseInt((String)localObject2);
-                j += 1;
-                paramInt = i | paramInt;
-              }
-              catch (Exception paramSosoLbsInfo)
-              {
-                continue;
-              }
-              paramSosoLbsInfo = paramSosoLbsInfo;
-              i = 0;
-            }
-            i = paramInt;
-            if (j < k)
-            {
-              localObject2 = paramSosoLbsInfo[j];
-              i = paramInt << 8;
-              paramSosoLbsInfo.printStackTrace();
-            }
-            PublicAccountHandler.a = (String)localObject1;
-            localGetWeatherMessageReq.ip.set(i);
-            paramSosoLbsInfo = this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.createToServiceMsg("QQWeatherReport.getWeatherInfo");
-            paramSosoLbsInfo.putWupBuffer(localGetWeatherMessageReq.toByteArray());
-            this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.sendPbReq(paramSosoLbsInfo);
-            if (QLog.isColorLevel()) {
-              QLog.d("PublicAccountHandler", 2, String.format("send tianqi lat=%d, lng=%d, type=%d, areaid = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.d), Integer.valueOf(this.c) }));
-            }
-            return;
-          }
-          int i = 0;
-          continue;
-          continue;
-        }
-      }
-      label696:
-      paramInt = 0;
-    }
+    ThreadManager.post(new ApolloDrawerInfoViewListener.1(this), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajpb
  * JD-Core Version:    0.7.0.1
  */

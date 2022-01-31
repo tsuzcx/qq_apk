@@ -1,26 +1,22 @@
-import android.graphics.SurfaceTexture;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.PublicMenuBar;
 
-public abstract interface bcpi
+public class bcpi
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public bcpi(PublicMenuBar paramPublicMenuBar, String paramString, int paramInt) {}
   
-  public abstract void a(int paramInt, Throwable paramThrowable);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(SurfaceTexture paramSurfaceTexture);
-  
-  public abstract void b();
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onClick(View paramView)
+  {
+    if (PublicMenuBar.a(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar) != null) {
+      PublicMenuBar.b(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcpi
  * JD-Core Version:    0.7.0.1
  */

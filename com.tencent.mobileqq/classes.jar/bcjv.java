@@ -1,8 +1,6 @@
 public abstract interface bcjv
 {
-  public abstract void a();
-  
-  public abstract void a(bciz parambciz);
+  public abstract void m();
 }
 
 

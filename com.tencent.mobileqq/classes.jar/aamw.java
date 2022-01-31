@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.activity.Conversation;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class aamw
-  extends ajuk
+  implements addu
 {
-  public aamw(Conversation paramConversation) {}
+  public aamw(BaseChatPie paramBaseChatPie) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void a(Bitmap paramBitmap, addc paramaddc, int paramInt)
   {
-    if (!(paramObject instanceof String)) {
-      return;
-    }
-    paramObject = (String)paramObject;
-    this.a.a(8, paramObject, -2147483648);
+    this.a.ap();
   }
 }
 

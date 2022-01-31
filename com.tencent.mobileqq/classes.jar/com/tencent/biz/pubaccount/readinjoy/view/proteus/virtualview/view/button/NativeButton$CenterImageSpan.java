@@ -31,6 +31,9 @@ class NativeButton$CenterImageSpan
     if (NativeButton.access$800(this.this$0) > 0) {
       return NativeButton.access$900(this.this$0);
     }
+    if (NativeButton.access$300(this.this$0).getComMeasuredHeight() > 0) {
+      return NativeButton.access$300(this.this$0).getComMeasuredHeight();
+    }
     if ((NativeButton.access$1000(this.this$0) != null) && (NativeButton.access$1100(this.this$0).mLayoutHeight > 0)) {
       return NativeButton.access$1200(this.this$0).mLayoutHeight;
     }
@@ -41,11 +44,17 @@ class NativeButton$CenterImageSpan
   {
     paramCharSequence = getDrawable();
     paramPaint = paramPaint.getFontMetricsInt();
+    int j;
     int i;
     if (TextUtils.isEmpty(NativeButton.access$200(this.this$0)))
     {
       paramCanvas.save();
-      i = (NativeButton.access$300(this.this$0).getMeasuredHeight() - paramCharSequence.getIntrinsicHeight()) / 2;
+      j = (NativeButton.access$300(this.this$0).getMeasuredHeight() - paramCharSequence.getIntrinsicHeight()) / 2;
+      Rect localRect = paramCharSequence.getBounds();
+      i = j;
+      if (localRect.bottom != getDrawableHeight()) {
+        i = j - (getDrawableHeight() - localRect.bottom) / 2;
+      }
       paramCanvas.translate(paramFloat, i);
       paramCharSequence.setBounds(0, 0, paramCharSequence.getIntrinsicWidth(), paramCharSequence.getIntrinsicHeight());
       paramCharSequence.draw(paramCanvas);
@@ -58,7 +67,7 @@ class NativeButton$CenterImageSpan
         LogUtils.d("NativeButton", NativeButton.access$600(this.this$0) + " : draw:  start:" + paramInt1 + " end:" + paramInt2 + " x:" + paramFloat + " top:" + paramInt3 + " y:" + paramInt4 + " bottom:" + paramInt5 + " fm:" + paramPaint + " drawable getIntrinsicHeight :" + paramCharSequence.getIntrinsicHeight() + " mTextSize :" + NativeButton.access$700(this.this$0) + "measureHeight: " + NativeButton.access$300(this.this$0).getMeasuredHeight() + "transY: " + i);
       }
       return;
-      int j = NativeButton.access$400(this.this$0);
+      j = NativeButton.access$400(this.this$0);
       i = j;
       if (NativeButton.access$300(this.this$0).getMeasuredHeight() > 0)
       {

@@ -1,25 +1,23 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-
-public class agmc
-  extends RecyclerView.OnScrollListener
+final class agmc
+  extends aglx
 {
-  public agmc(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public boolean a()
   {
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      aean.a(bool);
-      return;
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (!super.a(paramString)) {}
+    while (agmo.b(paramString)) {
+      return false;
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmc
  * JD-Core Version:    0.7.0.1
  */

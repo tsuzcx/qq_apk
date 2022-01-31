@@ -1,49 +1,52 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.content.Context;
+import android.support.v4.view.ViewPager;
+import android.view.animation.Interpolator;
+import android.widget.Scroller;
+import java.lang.reflect.Field;
 
 public class bjlp
+  extends Scroller
 {
-  public static String a;
-  private static final String[] a;
-  private static final String[] b = new String[0];
+  private int a = 750;
   
-  static
+  public bjlp(Context paramContext)
   {
-    jdField_a_of_type_JavaLangString = "ShortVideoGuideUtil";
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "N1T", "ZTE A2015" };
+    super(paramContext);
   }
   
-  public static boolean a(AppInterface paramAppInterface)
+  public bjlp(Context paramContext, Interpolator paramInterpolator)
   {
-    if (VideoEnvironment.a() == null) {}
-    do
-    {
-      do
-      {
-        return false;
-        if (ShortVideoUtils.a()) {
-          break;
-        }
-        ShortVideoUtils.a(paramAppInterface);
-      } while (!ShortVideoUtils.a());
-    } while ((awlw.a(BaseApplicationImpl.getContext()) == 2) || (!awhj.a().a()) || (awlw.a() == 2));
-    return true;
+    super(paramContext, paramInterpolator);
   }
   
-  public static boolean b(AppInterface paramAppInterface)
+  public void a(int paramInt)
   {
-    if (VideoEnvironment.a() == null) {}
-    do
+    this.a = paramInt;
+  }
+  
+  public void a(ViewPager paramViewPager)
+  {
+    try
     {
-      return false;
-      if (ShortVideoUtils.a()) {
-        break;
-      }
-      ShortVideoUtils.a(paramAppInterface);
-    } while (!ShortVideoUtils.a());
-    return true;
+      Field localField = ViewPager.class.getDeclaredField("mScroller");
+      localField.setAccessible(true);
+      localField.set(paramViewPager, this);
+      return;
+    }
+    catch (Exception paramViewPager)
+    {
+      paramViewPager.printStackTrace();
+    }
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
   }
 }
 

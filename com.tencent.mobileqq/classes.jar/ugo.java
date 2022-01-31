@@ -1,34 +1,53 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class ugo
-  extends SimpleJob<Object>
+  implements View.OnLongClickListener
 {
-  ugo(ugl paramugl, String paramString1, String paramString2)
-  {
-    super(paramString1);
-  }
+  ugo(ugn paramugn) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public boolean onLongClick(View paramView)
   {
-    paramJobContext = (spt)sqg.a(19);
-    paramVarArgs = paramJobContext.a(swm.a(this.jdField_a_of_type_Ugl.b));
-    ugq localugq = new ugq(this.jdField_a_of_type_Ugl.c);
-    ArrayList localArrayList = new ArrayList();
-    localugq.jdField_a_of_type_JavaUtilList = paramJobContext.a(this.jdField_a_of_type_JavaLangString, localArrayList);
-    localugq.jdField_a_of_type_JavaUtilArrayList = localArrayList;
-    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1)) {}
+    int i = 0;
+    switch (paramView.getId())
+    {
+    default: 
+    case 2131370398: 
+    case 2131376003: 
+      do
+      {
+        do
+        {
+          return true;
+          paramView = (tcv)tdc.a(10);
+          if (((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue()) {
+            break;
+          }
+          bool = true;
+          paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
+          paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+        } while (paramView == null);
+        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
+      } while (paramView == null);
+      if (bool) {}
+      for (;;)
+      {
+        paramView.a(i);
+        return true;
+        bool = false;
+        break;
+        i = 8;
+      }
+    }
+    paramView = (tcv)tdc.a(10);
+    if (!((Boolean)paramView.b("player_use_tvk", Boolean.valueOf(false))).booleanValue()) {}
     for (boolean bool = true;; bool = false)
     {
-      localugq.jdField_a_of_type_Boolean = bool;
-      sgi.a().dispatch(localugq);
-      urk.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localugq.jdField_a_of_type_JavaUtilList);
-      return null;
+      paramView.b("player_use_tvk", Boolean.valueOf(bool));
+      bcpw.a(this.a.b(), "UserTVK: " + bool, 0).a();
+      return true;
     }
   }
 }

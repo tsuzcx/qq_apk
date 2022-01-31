@@ -1,29 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import java.lang.ref.WeakReference;
 
 class axwm
-  implements axwp
+  implements View.OnTouchListener
 {
-  axwm(axwl paramaxwl) {}
+  axwm(axwk paramaxwk) {}
   
-  public Bitmap a(URL paramURL)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    String str = paramURL.getPath();
-    try
+    if (this.a.a != null)
     {
-      Bitmap localBitmap = axwl.a(this.a, str);
-      paramURL = localBitmap;
-      if (localBitmap == null) {
-        paramURL = axwl.b(this.a, str);
+      acxn localacxn = (acxn)this.a.a.get();
+      if (localacxn != null) {
+        return localacxn.onTouch(paramView, paramMotionEvent);
       }
-      return paramURL;
     }
-    catch (Throwable paramURL)
-    {
-      QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
-    }
-    return null;
+    return false;
   }
 }
 

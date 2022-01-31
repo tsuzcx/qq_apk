@@ -17,6 +17,7 @@ import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
+import com.tencent.mobileqq.mini.appbrand.jsapi.AdFrequencyLimit;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
@@ -38,8 +39,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import yjt;
-import ynv;
+import ysw;
+import yxr;
 
 public class RewardedVideoAdPlugin
   extends BaseJsPlugin
@@ -92,7 +93,7 @@ public class RewardedVideoAdPlugin
   
   private void handleLoadAndInformJs(boolean paramBoolean, String paramString)
   {
-    AppBrandTask.runTaskOnUiThreadDelay(new RewardedVideoAdPlugin.6(this, paramString, paramBoolean), 300L);
+    AppBrandTask.runTaskOnUiThreadDelay(new RewardedVideoAdPlugin.5(this, paramString, paramBoolean), 300L);
   }
   
   private void handleOnLoadAndInformJs(boolean paramBoolean, String paramString)
@@ -128,7 +129,7 @@ public class RewardedVideoAdPlugin
   
   private void handleShowAndInformJs(boolean paramBoolean, String paramString)
   {
-    AppBrandTask.runTaskOnUiThreadDelay(new RewardedVideoAdPlugin.7(this, paramString, paramBoolean), 300L);
+    AppBrandTask.runTaskOnUiThreadDelay(new RewardedVideoAdPlugin.6(this, paramString, paramBoolean), 300L);
   }
   
   private void informJs(JSONObject paramJSONObject, String paramString)
@@ -148,7 +149,7 @@ public class RewardedVideoAdPlugin
     }
     try
     {
-      this.adInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString))));
+      this.adInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString))));
       return;
     }
     catch (Throwable paramString)
@@ -351,7 +352,7 @@ public class RewardedVideoAdPlugin
         paramBundle.put("compId", paramString1);
       }
       informJs(paramBundle, "onRewardedVideoStateChange");
-      ThreadManagerV2.excute(new RewardedVideoAdPlugin.4(this, paramActivity, paramString2, paramString1, paramJsRuntime, paramInt2), 16, null, false);
+      ThreadManagerV2.excute(new RewardedVideoAdPlugin.3(this, paramActivity, paramString2, paramString1, paramJsRuntime, paramInt2), 16, null, false);
       return;
     }
     catch (JSONException paramBundle)
@@ -386,12 +387,12 @@ public class RewardedVideoAdPlugin
   private void setOnCloseListener(Activity paramActivity, String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
   {
     QLog.d("[minigame] RewardedVideoAdPlugin", 1, "setOnCloseListener");
-    MiniAppController.getInstance().setActivityResultListener(new RewardedVideoAdPlugin.3(this, paramString2, paramActivity, paramString1, paramJsRuntime, paramInt));
+    MiniAppController.getInstance().setActivityResultListener(new RewardedVideoAdPlugin.2(this, paramString2, paramActivity, paramString1, paramJsRuntime, paramInt));
   }
   
   public void getRewardedVideoADInfo(Activity paramActivity, MiniAppAd.StGetAdReq paramStGetAdReq, String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt1, int paramInt2)
   {
-    MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(paramStGetAdReq, new RewardedVideoAdPlugin.5(this, paramString2, paramJsRuntime, paramString1, paramInt1, paramInt2));
+    MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(paramStGetAdReq, new RewardedVideoAdPlugin.4(this, paramString2, paramJsRuntime, paramString1, paramInt1, paramInt2));
   }
   
   public String handleNativeRequest(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
@@ -497,10 +498,10 @@ public class RewardedVideoAdPlugin
     label473:
     if (this.ad != null) {
       if (this.gdtMotiveVideoPageData == null) {
-        break label631;
+        break label635;
       }
     }
-    label631:
+    label635:
     for (boolean bool2 = true;; bool2 = false)
     {
       handleShowAndInformJs(bool2, localJSONException);
@@ -508,11 +509,12 @@ public class RewardedVideoAdPlugin
       {
         this.gdtMotiveVideoPageData.refId = "biz_src_miniapp";
         this.gdtMotiveVideoPageData.containerType = 1;
-        this.gdtMotiveVideoPageData.resultReceiver = new RewardedVideoAdPlugin.2(this, new Handler(Looper.getMainLooper()), localJSONException, (Activity)localObject3, paramString1, paramJsRuntime, paramInt, bool1);
+        this.gdtMotiveVideoPageData.resultReceiver = new RewardedVideoAdPlugin.AdResultReceiver(new Handler(Looper.getMainLooper()), this, localJSONException, (Activity)localObject3, paramString1, paramJsRuntime, paramInt, bool1);
         if ((bool1) && (GameLoadManager.g().getGameEngine() != null)) {
           GameLoadManager.g().getGameEngine().handleFocusLoss();
         }
         GdtMotiveVideoFragment.a((Activity)localObject3, GdtMotiveVideoFragment.class, this.gdtMotiveVideoPageData);
+        AdFrequencyLimit.setRewardVideoAdShowing(true);
       }
       this.ad = null;
       this.adInfo = null;
@@ -520,6 +522,14 @@ public class RewardedVideoAdPlugin
       break;
       handleShowAndInformJs(false, localJSONException);
       break;
+    }
+  }
+  
+  public void onReceiveVideoClose(int paramInt1, Bundle paramBundle, String paramString1, Activity paramActivity, String paramString2, JsRuntime paramJsRuntime, int paramInt2, boolean paramBoolean)
+  {
+    onCloseAd(paramInt1, paramBundle, paramString1, paramActivity, paramString2, paramJsRuntime, paramInt2);
+    if ((paramBoolean) && (GameLoadManager.g().getGameEngine() != null)) {
+      GameLoadManager.g().getGameEngine().handleFocusGain();
     }
   }
   

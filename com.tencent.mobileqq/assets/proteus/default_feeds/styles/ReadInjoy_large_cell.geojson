@@ -14,7 +14,8 @@
             "setRemoteInfo:": {
                 "jump_src": "$jump_src_fg_button",
                 "jump_page": "$jump_page_fg_button",
-                "account_expose_card": "$account_expose_card"
+                "account_expose_card": "$account_expose_card",
+                "novel_corner_mark": "$novel_corner_mark"
             }
         },
         "subviews":[

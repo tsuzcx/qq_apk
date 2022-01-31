@@ -3,8 +3,8 @@ package com.tencent.mobileqq.shortvideo.util;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
-import awmh;
-import awmi;
+import axln;
+import axlo;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -32,7 +32,7 @@ public class ShortVideoTrimmer
     if (jdField_a_of_type_Int == 0) {}
     try
     {
-      File[] arrayOfFile = new File("/sys/devices/system/cpu/").listFiles(new awmh());
+      File[] arrayOfFile = new File("/sys/devices/system/cpu/").listFiles(new axln());
       if (arrayOfFile == null) {
         return 1;
       }
@@ -55,10 +55,10 @@ public class ShortVideoTrimmer
     //   0: invokestatic 55	java/lang/System:currentTimeMillis	()J
     //   3: lstore 5
     //   5: aload_1
-    //   6: invokestatic 58	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)Lawmi;
+    //   6: invokestatic 58	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)Laxlo;
     //   9: astore 9
     //   11: aload 9
-    //   13: getfield 62	awmi:jdField_a_of_type_Boolean	Z
+    //   13: getfield 62	axlo:jdField_a_of_type_Boolean	Z
     //   16: ifne +10 -> 26
     //   19: ldc 64
     //   21: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
@@ -67,7 +67,7 @@ public class ShortVideoTrimmer
     //   26: aload_1
     //   27: aload_2
     //   28: aload 9
-    //   30: invokestatic 69	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;Ljava/lang/String;Lawmi;)[Ljava/lang/String;
+    //   30: invokestatic 69	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;Ljava/lang/String;Laxlo;)[Ljava/lang/String;
     //   33: astore_1
     //   34: aload_1
     //   35: ifnonnull +11 -> 46
@@ -77,9 +77,9 @@ public class ShortVideoTrimmer
     //   45: ireturn
     //   46: aload_0
     //   47: invokestatic 77	com/tencent/video/decode/ShortVideoSoLoad:getShortVideoSoPath	(Landroid/content/Context;)Ljava/lang/String;
-    //   50: astore 13
+    //   50: astore 12
     //   52: invokestatic 82	com/tencent/mobileqq/shortvideo/VideoEnvironment:a	()Ljava/lang/String;
-    //   55: astore 12
+    //   55: astore 13
     //   57: getstatic 83	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_Boolean	Z
     //   60: ifne +39 -> 99
     //   63: new 32	java/io/File
@@ -87,9 +87,9 @@ public class ShortVideoTrimmer
     //   67: new 85	java/lang/StringBuilder
     //   70: dup
     //   71: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   74: aload 13
+    //   74: aload 12
     //   76: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: aload 12
+    //   79: aload 13
     //   81: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   84: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   87: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
@@ -119,7 +119,7 @@ public class ShortVideoTrimmer
     //   134: new 85	java/lang/StringBuilder
     //   137: dup
     //   138: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   141: aload 13
+    //   141: aload 12
     //   143: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   146: ldc 113
     //   148: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -161,9 +161,9 @@ public class ShortVideoTrimmer
     //   221: new 85	java/lang/StringBuilder
     //   224: dup
     //   225: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   228: aload 13
+    //   228: aload 12
     //   230: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: aload 12
+    //   233: aload 13
     //   235: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   238: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   241: invokeinterface 119 2 0
@@ -670,8 +670,8 @@ public class ShortVideoTrimmer
     //   1104	19	9	localObject2	Object
     //   103	1018	10	localObject3	Object
     //   116	1003	11	localObject4	Object
-    //   55	1147	12	localObject5	Object
-    //   50	276	13	localObject6	Object
+    //   50	1152	12	localObject5	Object
+    //   55	271	13	localObject6	Object
     //   381	353	13	localIOException1	java.io.IOException
     //   830	16	13	localObject7	Object
     //   848	45	13	localInterruptedException1	java.lang.InterruptedException
@@ -792,57 +792,57 @@ public class ShortVideoTrimmer
   }
   
   /* Error */
-  public static int a(Context paramContext, String paramString1, String paramString2, com.tencent.mobileqq.app.QQAppInterface paramQQAppInterface, awmj paramawmj, awfv paramawfv, awfx paramawfx)
+  public static int a(Context paramContext, String paramString1, String paramString2, com.tencent.mobileqq.app.QQAppInterface paramQQAppInterface, axlp paramaxlp, axfd paramaxfd, axff paramaxff)
   {
     // Byte code:
     //   0: invokestatic 55	java/lang/System:currentTimeMillis	()J
     //   3: lstore 9
-    //   5: new 60	awmi
+    //   5: new 60	axlo
     //   8: dup
-    //   9: invokespecial 220	awmi:<init>	()V
+    //   9: invokespecial 220	axlo:<init>	()V
     //   12: astore_3
     //   13: aload_3
     //   14: iconst_1
-    //   15: putfield 62	awmi:jdField_a_of_type_Boolean	Z
+    //   15: putfield 62	axlo:jdField_a_of_type_Boolean	Z
     //   18: aload_3
     //   19: aload 6
-    //   21: getfield 225	awfx:jdField_c_of_type_Int	I
+    //   21: getfield 225	axff:jdField_c_of_type_Int	I
     //   24: invokestatic 229	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   27: putfield 232	awmi:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   27: putfield 232	axlo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   30: aload_3
     //   31: aload 6
-    //   33: getfield 233	awfx:jdField_a_of_type_Int	I
-    //   36: putfield 234	awmi:jdField_a_of_type_Int	I
+    //   33: getfield 233	axff:jdField_a_of_type_Int	I
+    //   36: putfield 234	axlo:jdField_a_of_type_Int	I
     //   39: aload_3
     //   40: aload 6
-    //   42: getfield 237	awfx:jdField_b_of_type_Int	I
-    //   45: putfield 238	awmi:jdField_b_of_type_Int	I
+    //   42: getfield 237	axff:jdField_b_of_type_Int	I
+    //   45: putfield 238	axlo:jdField_b_of_type_Int	I
     //   48: aload_3
     //   49: aload 6
-    //   51: getfield 241	awfx:jdField_d_of_type_Int	I
+    //   51: getfield 241	axff:jdField_d_of_type_Int	I
     //   54: i2l
-    //   55: putfield 244	awmi:jdField_c_of_type_Long	J
+    //   55: putfield 244	axlo:jdField_c_of_type_Long	J
     //   58: aload_3
     //   59: aload 5
-    //   61: getfield 247	awfv:jdField_a_of_type_Int	I
-    //   64: putfield 248	awmi:jdField_c_of_type_Int	I
+    //   61: getfield 247	axfd:jdField_a_of_type_Int	I
+    //   64: putfield 248	axlo:jdField_c_of_type_Int	I
     //   67: aload_3
     //   68: aload 5
-    //   70: getfield 249	awfv:jdField_b_of_type_Int	I
-    //   73: putfield 250	awmi:jdField_d_of_type_Int	I
+    //   70: getfield 249	axfd:jdField_b_of_type_Int	I
+    //   73: putfield 250	axlo:jdField_d_of_type_Int	I
     //   76: aload_3
     //   77: bipush 25
-    //   79: putfield 253	awmi:jdField_e_of_type_Int	I
+    //   79: putfield 253	axlo:jdField_e_of_type_Int	I
     //   82: aload_3
     //   83: aload 5
-    //   85: getfield 255	awfv:jdField_b_of_type_Long	J
-    //   88: putfield 257	awmi:jdField_d_of_type_Long	J
+    //   85: getfield 255	axfd:jdField_b_of_type_Long	J
+    //   88: putfield 257	axlo:jdField_d_of_type_Long	J
     //   91: aload_3
     //   92: aload 5
-    //   94: getfield 259	awfv:jdField_a_of_type_Long	J
-    //   97: putfield 261	awmi:jdField_e_of_type_Long	J
+    //   94: getfield 259	axfd:jdField_a_of_type_Long	J
+    //   97: putfield 261	axlo:jdField_e_of_type_Long	J
     //   100: aload_3
-    //   101: getfield 62	awmi:jdField_a_of_type_Boolean	Z
+    //   101: getfield 62	axlo:jdField_a_of_type_Boolean	Z
     //   104: ifne +10 -> 114
     //   107: ldc 64
     //   109: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
@@ -851,7 +851,7 @@ public class ShortVideoTrimmer
     //   114: aload_1
     //   115: aload_2
     //   116: aload_3
-    //   117: invokestatic 263	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:b	(Ljava/lang/String;Ljava/lang/String;Lawmi;)[Ljava/lang/String;
+    //   117: invokestatic 263	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:b	(Ljava/lang/String;Ljava/lang/String;Laxlo;)[Ljava/lang/String;
     //   120: astore 6
     //   122: aload 6
     //   124: ifnonnull +11 -> 135
@@ -861,7 +861,7 @@ public class ShortVideoTrimmer
     //   134: ireturn
     //   135: aload_0
     //   136: invokestatic 77	com/tencent/video/decode/ShortVideoSoLoad:getShortVideoSoPath	(Landroid/content/Context;)Ljava/lang/String;
-    //   139: astore 14
+    //   139: astore 13
     //   141: invokestatic 82	com/tencent/mobileqq/shortvideo/VideoEnvironment:a	()Ljava/lang/String;
     //   144: astore_0
     //   145: getstatic 83	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_Boolean	Z
@@ -871,7 +871,7 @@ public class ShortVideoTrimmer
     //   155: new 85	java/lang/StringBuilder
     //   158: dup
     //   159: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   162: aload 14
+    //   162: aload 13
     //   164: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   167: aload_0
     //   168: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -892,20 +892,20 @@ public class ShortVideoTrimmer
     //   197: iconst_0
     //   198: anewarray 101	java/lang/String
     //   201: invokespecial 104	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
-    //   204: astore 15
-    //   206: aload 15
+    //   204: astore 14
+    //   206: aload 14
     //   208: iconst_1
     //   209: invokevirtual 108	java/lang/ProcessBuilder:redirectErrorStream	(Z)Ljava/lang/ProcessBuilder;
     //   212: pop
     //   213: new 110	java/util/ArrayList
     //   216: dup
     //   217: invokespecial 111	java/util/ArrayList:<init>	()V
-    //   220: astore 13
-    //   222: aload 13
+    //   220: astore 15
+    //   222: aload 15
     //   224: new 85	java/lang/StringBuilder
     //   227: dup
     //   228: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   231: aload 14
+    //   231: aload 13
     //   233: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   236: ldc 113
     //   238: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -917,7 +917,7 @@ public class ShortVideoTrimmer
     //   254: invokespecial 86	java/lang/StringBuilder:<init>	()V
     //   257: ldc 121
     //   259: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   262: aload 13
+    //   262: aload 15
     //   264: iconst_0
     //   265: invokeinterface 125 2 0
     //   270: checkcast 101	java/lang/String
@@ -932,7 +932,7 @@ public class ShortVideoTrimmer
     //   290: iload 7
     //   292: iload 8
     //   294: if_icmpge +25 -> 319
-    //   297: aload 13
+    //   297: aload 15
     //   299: aload 6
     //   301: iload 7
     //   303: aaload
@@ -943,19 +943,19 @@ public class ShortVideoTrimmer
     //   313: iadd
     //   314: istore 7
     //   316: goto -26 -> 290
-    //   319: aload 13
+    //   319: aload 15
     //   321: new 85	java/lang/StringBuilder
     //   324: dup
     //   325: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   328: aload 14
+    //   328: aload 13
     //   330: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   333: aload_0
     //   334: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   337: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   340: invokeinterface 119 2 0
     //   345: pop
-    //   346: aload 15
-    //   348: aload 13
+    //   346: aload 14
+    //   348: aload 15
     //   350: invokevirtual 129	java/lang/ProcessBuilder:command	(Ljava/util/List;)Ljava/lang/ProcessBuilder;
     //   353: pop
     //   354: new 85	java/lang/StringBuilder
@@ -963,8 +963,8 @@ public class ShortVideoTrimmer
     //   358: invokespecial 86	java/lang/StringBuilder:<init>	()V
     //   361: ldc 131
     //   363: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   366: aload 13
-    //   368: aload 13
+    //   366: aload 15
+    //   368: aload 15
     //   370: invokeinterface 134 1 0
     //   375: iconst_1
     //   376: isub
@@ -973,7 +973,7 @@ public class ShortVideoTrimmer
     //   385: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   388: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   391: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   394: aload 15
+    //   394: aload 14
     //   396: invokevirtual 138	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
     //   399: astore 14
     //   401: getstatic 17	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
@@ -1480,18 +1480,18 @@ public class ShortVideoTrimmer
     //   0	1377	1	paramString1	String
     //   0	1377	2	paramString2	String
     //   0	1377	3	paramQQAppInterface	com.tencent.mobileqq.app.QQAppInterface
-    //   0	1377	4	paramawmj	awmj
-    //   0	1377	5	paramawfv	awfv
-    //   0	1377	6	paramawfx	awfx
+    //   0	1377	4	paramaxlp	axlp
+    //   0	1377	5	paramaxfd	axfd
+    //   0	1377	6	paramaxff	axff
     //   288	1058	7	i	int
     //   285	1059	8	j	int
     //   3	626	9	l1	long
     //   612	15	11	l2	long
-    //   220	1086	13	localObject1	Object
+    //   139	1167	13	localObject1	Object
     //   1312	1	13	localInterruptedException1	java.lang.InterruptedException
     //   1324	1	13	localInterruptedException2	java.lang.InterruptedException
     //   1334	37	13	localInterruptedException3	java.lang.InterruptedException
-    //   139	316	14	localObject2	Object
+    //   204	251	14	localObject2	Object
     //   512	351	14	localIOException1	java.io.IOException
     //   980	15	14	localObject3	Object
     //   1104	50	14	localException1	Exception
@@ -1501,7 +1501,7 @@ public class ShortVideoTrimmer
     //   1350	1	14	localIOException2	java.io.IOException
     //   1360	1	14	localIOException3	java.io.IOException
     //   1368	1	14	localIOException4	java.io.IOException
-    //   204	636	15	localObject4	Object
+    //   220	620	15	localObject4	Object
     // Exception table:
     //   from	to	target	type
     //   470	478	502	java/io/IOException
@@ -1623,7 +1623,7 @@ public class ShortVideoTrimmer
     //   994	997	1368	java/io/IOException
   }
   
-  public static awmi a(String paramString)
+  public static axlo a(String paramString)
   {
     Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.lvcc.name(), "640|640|384|768|30");
     if ((localObject != null) && (((String)localObject).length() > 0))
@@ -1642,18 +1642,18 @@ public class ShortVideoTrimmer
         if (i <= 0) {
           j = 640;
         }
-        localObject = new awmi();
+        localObject = new axlo();
         localFile = new File(paramString);
         if (!localFile.exists())
         {
-          ((awmi)localObject).jdField_a_of_type_Boolean = false;
+          ((axlo)localObject).jdField_a_of_type_Boolean = false;
           a("[@] getCompressConfig : [!file.exists]");
         }
         paramString = a(paramString);
         if ((paramString != null) && (paramString.length == 5) && (paramString[0] == 0)) {
           break;
         }
-        ((awmi)localObject).jdField_a_of_type_Boolean = false;
+        ((axlo)localObject).jdField_a_of_type_Boolean = false;
         a("[@] getCompressConfig : values=" + paramString);
         if (paramString != null) {
           a("[@] getCompressConfig : values.length=" + paramString.length + " err=" + paramString[0]);
@@ -2063,15 +2063,15 @@ public class ShortVideoTrimmer
     //   62	105	225	java/lang/Exception
   }
   
-  private static String[] a(String paramString1, String paramString2, awmi paramawmi)
+  private static String[] a(String paramString1, String paramString2, axlo paramaxlo)
   {
     String str1 = "1";
     if (a() >= 2) {
       str1 = "2";
     }
-    String str2 = paramawmi.jdField_c_of_type_Int + "x" + String.valueOf(paramawmi.jdField_d_of_type_Int);
+    String str2 = paramaxlo.jdField_c_of_type_Int + "x" + String.valueOf(paramaxlo.jdField_d_of_type_Int);
     a("[@] generateCommand threads=" + str1 + "  resolution=" + str2);
-    return new String[] { "-d", "-y", "-threads", str1, "-copyts", "-copytb", "0", "-i", paramString1, "-metadata:s", "rotate=" + paramawmi.jdField_a_of_type_JavaLangString, "-acodec", "aac", "-vcodec", "libx264", "-preset", "ultrafast", "-tune", "fastdecode", "-profile:v", "High", "-level", "1.3", "-minrate", "300k", "-maxrate", "600k", "-bufsize", "800k", "-qmin", "1", "-qmax", String.valueOf(paramawmi.jdField_e_of_type_Int), "-qdiff", "3", "-bf", "3", "-coder", "1", "-refs", "1", "-s", str2, "-movflags", "faststart", paramString2 };
+    return new String[] { "-d", "-y", "-threads", str1, "-copyts", "-copytb", "0", "-i", paramString1, "-metadata:s", "rotate=" + paramaxlo.jdField_a_of_type_JavaLangString, "-acodec", "aac", "-vcodec", "libx264", "-preset", "ultrafast", "-tune", "fastdecode", "-profile:v", "High", "-level", "1.3", "-minrate", "300k", "-maxrate", "600k", "-bufsize", "800k", "-qmin", "1", "-qmax", String.valueOf(paramaxlo.jdField_e_of_type_Int), "-qdiff", "3", "-bf", "3", "-coder", "1", "-refs", "1", "-s", str2, "-movflags", "faststart", paramString2 };
   }
   
   /* Error */
@@ -2352,16 +2352,16 @@ public class ShortVideoTrimmer
     //   218	224	473	java/lang/Exception
   }
   
-  private static String[] b(String paramString1, String paramString2, awmi paramawmi)
+  private static String[] b(String paramString1, String paramString2, axlo paramaxlo)
   {
     String str1 = "1";
     if (a() >= 2) {
       str1 = "2";
     }
-    String str2 = paramawmi.jdField_c_of_type_Int + "x" + String.valueOf(paramawmi.jdField_d_of_type_Int);
+    String str2 = paramaxlo.jdField_c_of_type_Int + "x" + String.valueOf(paramaxlo.jdField_d_of_type_Int);
     a("[@] generateCommand threads=" + str1 + "  resolution=" + str2);
-    String str3 = paramawmi.jdField_e_of_type_Long / 1024L + "k";
-    return new String[] { "-d", "-y", "-threads", str1, "-copyts", "-copytb", "0", "-i", paramString1, "-metadata:s", "rotate=" + paramawmi.jdField_a_of_type_JavaLangString, "-acodec", "aac", "-vcodec", "libx264", "-preset", "ultrafast", "-tune", "fastdecode", "-profile:v", "High", "-level", "1.3", "-bufsize", "800k", "-minrate", str3, "-maxrate", str3, "-b", str3, "-r", String.valueOf(paramawmi.jdField_d_of_type_Long), "-bufsize", "800k", "-qdiff", "3", "-bf", "3", "-coder", "1", "-refs", "1", "-s", str2, "-movflags", "faststart", paramString2 };
+    String str3 = paramaxlo.jdField_e_of_type_Long / 1024L + "k";
+    return new String[] { "-d", "-y", "-threads", str1, "-copyts", "-copytb", "0", "-i", paramString1, "-metadata:s", "rotate=" + paramaxlo.jdField_a_of_type_JavaLangString, "-acodec", "aac", "-vcodec", "libx264", "-preset", "ultrafast", "-tune", "fastdecode", "-profile:v", "High", "-level", "1.3", "-bufsize", "800k", "-minrate", str3, "-maxrate", str3, "-b", str3, "-r", String.valueOf(paramaxlo.jdField_d_of_type_Long), "-bufsize", "800k", "-qdiff", "3", "-bf", "3", "-coder", "1", "-refs", "1", "-s", str2, "-movflags", "faststart", paramString2 };
   }
   
   public static native String getRealProperties(String paramString);

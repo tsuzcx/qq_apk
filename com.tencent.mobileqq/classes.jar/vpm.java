@@ -1,15 +1,17 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
 public class vpm
-  implements Handler.Callback
+  extends vne
 {
-  public vpm(SegmentList paramSegmentList) {}
+  public vpm(ElasticImageView paramElasticImageView) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(ValueAnimator paramValueAnimator)
   {
-    return SegmentList.a(this.a, paramMessage);
+    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    ElasticImageView.a(this.a, this.a.d);
+    veg.b("ElasticImageView", "updateAnimator:" + this.a.d);
+    ElasticImageView.a(this.a);
   }
 }
 

@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-
-public class apfn
-  implements bbrx
+public abstract interface apfn
 {
-  public apfn(QfileEditBottomBar paramQfileEditBottomBar) {}
-  
-  public void a(int paramInt)
-  {
-    QfileEditBottomBar.a(this.a);
-  }
+  public abstract void a(int paramInt);
 }
 
 

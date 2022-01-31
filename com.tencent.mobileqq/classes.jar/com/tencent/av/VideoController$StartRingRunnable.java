@@ -3,8 +3,8 @@ package com.tencent.av;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
-import kvq;
-import lbk;
+import lgf;
+import lmb;
 
 class VideoController$StartRingRunnable
   implements Runnable
@@ -19,18 +19,18 @@ class VideoController$StartRingRunnable
   
   public void run()
   {
-    if (this.this$0.a().jdField_n_of_type_Int < 0)
+    if (this.this$0.a().n < 0)
     {
-      lbk.a();
-      long l = lbk.c();
-      int i = lbk.f();
+      lmb.a();
+      long l = lmb.c();
+      int i = lmb.f();
       int j = Build.VERSION.SDK_INT;
       if ((i < 4) || (l / 1000L < 800L) || (j < 9)) {
-        this.this$0.a().jdField_n_of_type_Int = 0;
+        this.this$0.a().n = 0;
       }
     }
-    if ((this.this$0.a() != null) && (this.this$0.a().d == 1L) && (!TextUtils.isEmpty(this.this$0.a().jdField_n_of_type_JavaLangString))) {
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(30), this.jdField_a_of_type_JavaLangString, this.this$0.a().jdField_n_of_type_JavaLangString });
+    if ((this.this$0.a() != null) && (this.this$0.a().d == 1L) && (!TextUtils.isEmpty(this.this$0.a().o))) {
+      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(30), this.jdField_a_of_type_JavaLangString, this.this$0.a().o });
     }
     for (;;)
     {

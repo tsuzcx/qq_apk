@@ -1,50 +1,60 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.qphone.base.util.QLog;
-
 public class ayeh
-  implements URLDrawableHandler
+  implements ajtg
 {
-  public ayeh(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  public void a(int paramInt) {}
   
-  public void doCancel() {}
+  public void a(String paramString1, String paramString2) {}
   
-  public boolean isCancelled()
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return false;
-  }
-  
-  public void onFileDownloadFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload onFileDownloadFailed", new Object[0]));
+    switch (paramInt)
+    {
     }
-  }
-  
-  public void onFileDownloadStarted()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload onFileDownloadStarted", new Object[0]));
-    }
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload onFileDownloadSucceed", new Object[0]));
-    }
-  }
-  
-  public void publishProgress(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload publishProgress", new Object[0]));
-    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    return;
+                  } while (paramObject == null);
+                  paramObject = (Object[])paramObject;
+                } while (paramObject.length != 2);
+                a((String)paramObject[0], (String)paramObject[1]);
+                return;
+              } while (paramObject == null);
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length != 4);
+            a((String)paramObject[0], (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 2);
+        a(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    a(((Integer)paramObject[0]).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayeh
  * JD-Core Version:    0.7.0.1
  */

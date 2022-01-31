@@ -1,6 +1,20 @@
-public abstract interface bjdu
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+
+public class bjdu
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public bjdu(HummingActivity paramHummingActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if (bjdp.b()) {
+      return;
+    }
+    HummingActivity.a(this.a, 1);
+    HummingActivity.b(this.a);
+  }
 }
 
 

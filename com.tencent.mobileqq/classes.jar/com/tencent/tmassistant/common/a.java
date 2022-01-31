@@ -1,7 +1,7 @@
 package com.tencent.tmassistant.common;
 
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.t;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.s;
 
 class a
   implements Runnable
@@ -10,7 +10,7 @@ class a
   
   public void run()
   {
-    if (t.b()) {}
+    if (s.b()) {}
     try
     {
       this.b.a(this.a);
@@ -18,7 +18,7 @@ class a
     }
     catch (Exception localException)
     {
-      ac.c("DLSDK_PackageInstallReceiver", "halleytest installReport packageName = " + this.a, localException);
+      ab.c("DLSDK_PackageInstallReceiver", "halleytest installReport packageName = " + this.a, localException);
     }
   }
 }

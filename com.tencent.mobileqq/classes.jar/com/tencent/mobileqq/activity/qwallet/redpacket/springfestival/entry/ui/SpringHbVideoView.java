@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import agva;
-import agvb;
-import agvc;
-import agvd;
-import agve;
+import ahhp;
+import ahhq;
+import ahhr;
+import ahhs;
+import ahht;
 import android.content.Context;
 import android.os.Handler.Callback;
 import android.os.Looper;
@@ -14,9 +14,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import awnv;
-import babp;
-import befq;
+import axnq;
+import bbct;
+import bfnk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
@@ -32,9 +32,9 @@ public class SpringHbVideoView
   extends RelativeLayout
   implements Handler.Callback
 {
-  private agve jdField_a_of_type_Agve;
+  private ahht jdField_a_of_type_Ahht;
   private View jdField_a_of_type_AndroidViewView;
-  private befq jdField_a_of_type_Befq;
+  private bfnk jdField_a_of_type_Bfnk;
   private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
@@ -54,9 +54,9 @@ public class SpringHbVideoView
   
   private void h()
   {
-    this.jdField_a_of_type_Befq = new befq(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Bfnk = new bfnk(Looper.getMainLooper(), this);
     Context localContext = getContext();
-    awnv.b(BaseApplicationImpl.getContext());
+    axnq.b(BaseApplicationImpl.getContext());
     TVK_SDKMgr.setDebugEnable(true);
     if (TVK_SDKMgr.isInstalled(localContext))
     {
@@ -79,10 +79,10 @@ public class SpringHbVideoView
           this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setLoopback(false);
           this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(false);
           setFitView(false);
-          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new agva(this));
-          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new agvb(this));
-          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new agvc(this));
-          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new agvd(this));
+          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new ahhp(this));
+          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new ahhq(this));
+          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new ahhr(this));
+          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new ahhs(this));
           super.addView(this.jdField_a_of_type_AndroidViewView);
         }
       }
@@ -132,8 +132,8 @@ public class SpringHbVideoView
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(true);
     }
-    this.jdField_a_of_type_Befq.removeMessages(100);
-    this.jdField_a_of_type_Befq.sendEmptyMessageDelayed(100, 150L);
+    this.jdField_a_of_type_Bfnk.removeMessages(100);
+    this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(100, 150L);
   }
   
   public long b()
@@ -151,14 +151,14 @@ public class SpringHbVideoView
   public void b()
   {
     if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_Befq.post(new SpringHbVideoView.8(this));
+      this.jdField_a_of_type_Bfnk.post(new SpringHbVideoView.8(this));
     }
   }
   
   public void c()
   {
     if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_Befq.post(new SpringHbVideoView.9(this));
+      this.jdField_a_of_type_Bfnk.post(new SpringHbVideoView.9(this));
     }
   }
   
@@ -283,7 +283,7 @@ public class SpringHbVideoView
   {
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
     {
-      if (1.777778F > ((float)babp.j() + 0.0F) / (float)babp.i()) {
+      if (1.777778F > ((float)bbct.j() + 0.0F) / (float)bbct.i()) {
         this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setXYaxis(4);
       }
     }
@@ -308,9 +308,9 @@ public class SpringHbVideoView
     }
   }
   
-  public void setVideoListener(agve paramagve)
+  public void setVideoListener(ahht paramahht)
   {
-    this.jdField_a_of_type_Agve = paramagve;
+    this.jdField_a_of_type_Ahht = paramahht;
   }
   
   public void setVideoViewBlackColor(int paramInt)

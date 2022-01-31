@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.widget.media;
 
-import bdjt;
+import benw;
 
 public class MiniAppVideoPlayer$17
   implements Runnable
@@ -9,7 +9,7 @@ public class MiniAppVideoPlayer$17
   
   public void run()
   {
-    this.this$0.a(new bdjt(this));
+    this.this$0.a(new benw(this));
   }
 }
 

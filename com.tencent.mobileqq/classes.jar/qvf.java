@@ -1,20 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class qvf
+class qvf
+  implements qts
 {
-  public ReadInJoyBaseFragment a;
-  public qna a;
-  public boolean a;
-  public boolean b;
+  qvf(qvd paramqvd) {}
   
-  public qvf()
+  public List<qjl> a(List<VideoInfo> paramList)
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public ReadInJoyBaseFragment a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment;
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject = (VideoInfo)paramList.next();
+        if (localObject != null)
+        {
+          localObject = qjo.a((VideoInfo)localObject);
+          if (localObject != null) {
+            localArrayList.add(rap.a((BaseArticleInfo)localObject, true));
+          }
+        }
+      }
+    }
+    return localArrayList;
   }
 }
 

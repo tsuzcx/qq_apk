@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bdnw;
+import besl;
 import org.json.JSONObject;
 
 class NetworkJsPlugin$ConnectionChangeReceiver
@@ -31,7 +31,7 @@ class NetworkJsPlugin$ConnectionChangeReceiver
     }
     catch (Exception paramContext)
     {
-      bdnw.d("NetworkJsPlugin", "fail on network change", paramContext);
+      besl.d("NetworkJsPlugin", "fail on network change", paramContext);
     }
   }
 }

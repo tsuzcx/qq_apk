@@ -1,19 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.AVPbInfo;
-
-public final class lln
-  implements Parcelable.Creator<AVPbInfo>
+class lln
 {
-  public AVPbInfo a(Parcel paramParcel)
-  {
-    return new AVPbInfo(paramParcel);
-  }
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "";
   
-  public AVPbInfo[] a(int paramInt)
-  {
-    return new AVPbInfo[paramInt];
-  }
+  lln(llh paramllh) {}
 }
 
 

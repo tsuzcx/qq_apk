@@ -1,21 +1,19 @@
 public class awmi
 {
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public int d;
-  public long d;
-  public int e;
-  public long e;
+  public String b;
+  
+  public awmi() {}
+  
+  public awmi(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awmi
  * JD-Core Version:    0.7.0.1
  */

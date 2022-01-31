@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class phe
-  implements View.OnClickListener
+  implements ViewBase.OnClickListener
 {
-  phe(phd paramphd) {}
+  phe(pgz parampgz, pax parampax) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramView = this.a.jdField_a_of_type_Qoe.a();
-    if (paramView != null) {
-      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
+    pgz.a(this.jdField_a_of_type_Pgz, this.jdField_a_of_type_Pax, paramViewBase);
+    pgz.a(this.jdField_a_of_type_Pgz, this.jdField_a_of_type_Pax.a());
   }
 }
 

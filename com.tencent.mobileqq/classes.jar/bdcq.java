@@ -1,17 +1,20 @@
-import android.content.Context;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class bdcq
+class bdcq
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public List<bdcs> a = new ArrayList();
-  public boolean a;
+  bdcq(bdcp parambdcp, bczs parambczs) {}
   
-  bdcq(Context paramContext) {}
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Bczs.b = paramBoolean;
+    this.jdField_a_of_type_Bdcp.notifyDataSetChanged();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdcq
  * JD-Core Version:    0.7.0.1
  */

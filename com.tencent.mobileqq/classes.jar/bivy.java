@@ -1,186 +1,116 @@
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.animation.ValueAnimator;
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.util.Property;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
 
 public class bivy
-  extends Drawable
-  implements Animatable
+  extends bjof
 {
-  private int jdField_a_of_type_Int = 127;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  Property<bivy, Integer> jdField_a_of_type_AndroidUtilProperty = new bivz(this, Integer.class, "backAlpha");
+  private bivx jdField_a_of_type_Bivx;
+  private bjoa<bivx> jdField_a_of_type_Bjoa = new bjoa();
   private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 0;
+  private bivx jdField_b_of_type_Bivx;
   private boolean jdField_b_of_type_Boolean;
   
-  private int a()
+  public bivx a(biim parambiim)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
-    {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    String str;
+    if (this.jdField_b_of_type_Bivx == null) {
+      str = bihs.a;
     }
-    if (paramInt1 == 1)
+    try
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofInt(this.jdField_a_of_type_AndroidUtilProperty, new int[] { 0, 127 }) });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+      i = Integer.parseInt(str);
+      int j;
+      if (i >= 0)
       {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setStartDelay(0L);
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new biwa(this));
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new biwb(this));
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+        j = i;
+        if (i < bivx.a(parambiim).length) {}
       }
-      return;
-      if (paramInt1 == 2)
+      else
       {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofInt(this.jdField_a_of_type_AndroidUtilProperty, new int[] { 127, 0 }) });
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
+        j = 0;
+      }
+      this.jdField_b_of_type_Bivx = bivx.a(parambiim)[j];
+      if (QLog.isColorLevel()) {
+        QLog.i("AEVideoStoryCaptureModeViewModel", 2, "[getTestingMode], app_alg_entrance_id=" + j);
+      }
+      return this.jdField_b_of_type_Bivx;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        int i = 0;
       }
     }
   }
   
-  private void b(int paramInt)
+  public bjoa<bivx> a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return this.jdField_a_of_type_Bjoa;
   }
   
-  public void a()
+  public void a(@NonNull bivx parambivx)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
-    {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-    }
-    this.jdField_a_of_type_AndroidUtilProperty = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bivx = parambivx;
   }
   
   public void a(boolean paramBoolean)
   {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Bjoa.a() == null) {
+      if (this.jdField_a_of_type_Bivx != bivx.c) {}
+    }
+    while (this.jdField_a_of_type_Bjoa.a() == bivx.c)
+    {
+      return true;
+      return false;
+    }
+    return false;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public boolean a(Context paramContext)
+  public boolean b()
   {
-    if (paramContext == null) {
+    if (this.jdField_a_of_type_Bjoa.a() == null) {
+      if (this.jdField_a_of_type_Bivx != bivx.jdField_a_of_type_Bivx) {}
+    }
+    while (this.jdField_a_of_type_Bjoa.a() == bivx.jdField_a_of_type_Bivx)
+    {
+      return true;
       return false;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+    return false;
+  }
+  
+  public boolean c()
+  {
+    if (this.jdField_a_of_type_Bjoa.a() == null) {
+      if (this.jdField_a_of_type_Bivx != bivx.jdField_b_of_type_Bivx) {}
+    }
+    while (this.jdField_a_of_type_Bjoa.a() == bivx.jdField_b_of_type_Bivx)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+      return true;
+      return false;
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(0);
-    return true;
+    return false;
   }
   
-  public void draw(Canvas paramCanvas)
-  {
-    if (this.jdField_b_of_type_Int == 0) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(this.jdField_a_of_type_Int);
-    paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public boolean isRunning()
+  public boolean d()
   {
     return this.jdField_a_of_type_Boolean;
   }
   
-  protected void onBoundsChange(Rect paramRect)
+  public boolean e()
   {
-    super.onBoundsChange(paramRect);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(paramRect);
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsPaint != null) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
-    }
-  }
-  
-  public void start()
-  {
-    if (isRunning()) {
-      stop();
-    }
-    this.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("HintDrawable", 2, "start :" + this.jdField_b_of_type_Int);
-    }
-    if (this.jdField_b_of_type_Int == 1)
-    {
-      j = this.jdField_b_of_type_Int;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        i = 150;
-        a(j, i);
-      }
-    }
-    while (this.jdField_b_of_type_Int != 2) {
-      for (;;)
-      {
-        int j;
-        return;
-        int i = 300;
-      }
-    }
-    a(this.jdField_b_of_type_Int, 200);
-  }
-  
-  public void stop()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
-    {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-    }
-    this.jdField_b_of_type_Int = 0;
+    return this.jdField_b_of_type_Boolean;
   }
 }
 

@@ -11,11 +11,11 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdkh;
-import bdki;
-import bdkj;
-import bdkk;
-import bdyn;
+import beok;
+import beol;
+import beom;
+import beon;
+import bffu;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -28,17 +28,17 @@ import java.util.Set;
 
 public class BarrageView
   extends RelativeLayout
-  implements Comparator<bdki>
+  implements Comparator<beol>
 {
   private int jdField_a_of_type_Int = 500;
   private long jdField_a_of_type_Long = 9223372036854775807L;
   private final SparseArray<Animation> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private final List<bdki> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private final List<beol> jdField_a_of_type_JavaUtilList = new LinkedList();
   private Random jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
   private final Set<Animation> jdField_a_of_type_JavaUtilSet = new HashSet();
   private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 10;
-  private final List<bdki> jdField_b_of_type_JavaUtilList = new LinkedList();
+  private final List<beol> jdField_b_of_type_JavaUtilList = new LinkedList();
   private boolean jdField_b_of_type_Boolean = true;
   private int c = 15;
   private int d = 15;
@@ -75,24 +75,24 @@ public class BarrageView
   
   private Animation a(int paramInt, Animation.AnimationListener paramAnimationListener)
   {
-    Animation localAnimation = bdkh.a(getContext(), paramInt, -bdyn.a(getContext()));
+    Animation localAnimation = beok.a(getContext(), paramInt, -bffu.a(getContext()));
     localAnimation.setAnimationListener(paramAnimationListener);
     localAnimation.setDuration(3000L);
     return localAnimation;
   }
   
-  private TextView a(bdki parambdki, int paramInt1, int paramInt2)
+  private TextView a(beol parambeol, int paramInt1, int paramInt2)
   {
     TextView localTextView = new TextView(getContext());
     localTextView.setPadding(this.c, this.e, this.d, this.f);
     localTextView.setTextSize(paramInt1);
-    localTextView.setText(parambdki.jdField_a_of_type_JavaLangString);
-    localTextView.setTextColor(parambdki.jdField_a_of_type_Int);
-    parambdki = new RelativeLayout.LayoutParams(-2, -2);
-    parambdki.addRule(10);
-    parambdki.topMargin = paramInt2;
+    localTextView.setText(parambeol.jdField_a_of_type_JavaLangString);
+    localTextView.setTextColor(parambeol.jdField_a_of_type_Int);
+    parambeol = new RelativeLayout.LayoutParams(-2, -2);
+    parambeol.addRule(10);
+    parambeol.topMargin = paramInt2;
     Log.i("BarrageView", "createTextByBarrage: " + paramInt2);
-    localTextView.setLayoutParams(parambdki);
+    localTextView.setLayoutParams(parambeol);
     return localTextView;
   }
   
@@ -116,8 +116,8 @@ public class BarrageView
       int i2 = ((Integer)paramList.next()).intValue();
       if (this.jdField_a_of_type_AndroidUtilSparseArray.get(i2) == null)
       {
-        localTextView = a((bdki)this.jdField_a_of_type_JavaUtilList.get(i2), i1, m);
-        localAnimation = a(n, new bdkj(this, localTextView, i2));
+        localTextView = a((beol)this.jdField_a_of_type_JavaUtilList.get(i2), i1, m);
+        localAnimation = a(n, new beom(this, localTextView, i2));
         a(localTextView, localAnimation);
         this.jdField_a_of_type_AndroidUtilSparseArray.put(i2, localAnimation);
         m = i1 * 3 + m;
@@ -126,21 +126,21 @@ public class BarrageView
     paramList = this.jdField_b_of_type_JavaUtilList.iterator();
     while (paramList.hasNext())
     {
-      localTextView = a((bdki)paramList.next(), i1, m);
+      localTextView = a((beol)paramList.next(), i1, m);
       m += i1 * 3;
-      localAnimation = a(n, new bdkk(this, localTextView));
+      localAnimation = a(n, new beon(this, localTextView));
       a(localTextView, localAnimation);
       this.jdField_a_of_type_JavaUtilSet.add(localAnimation);
     }
     this.jdField_b_of_type_JavaUtilList.clear();
   }
   
-  public int a(bdki parambdki1, bdki parambdki2)
+  public int a(beol parambeol1, beol parambeol2)
   {
-    if (parambdki1.jdField_a_of_type_Long < parambdki2.jdField_a_of_type_Long) {
+    if (parambeol1.jdField_a_of_type_Long < parambeol2.jdField_a_of_type_Long) {
       return -1;
     }
-    if (parambdki1.jdField_a_of_type_Long == parambdki2.jdField_a_of_type_Long) {
+    if (parambeol1.jdField_a_of_type_Long == parambeol2.jdField_a_of_type_Long) {
       return 0;
     }
     return 1;
@@ -180,7 +180,7 @@ public class BarrageView
       long l;
       if (m < this.jdField_a_of_type_JavaUtilList.size())
       {
-        l = ((bdki)this.jdField_a_of_type_JavaUtilList.get(m)).jdField_a_of_type_Long * 1000L;
+        l = ((beol)this.jdField_a_of_type_JavaUtilList.get(m)).jdField_a_of_type_Long * 1000L;
         if (l <= paramLong) {}
       }
       else
@@ -200,12 +200,12 @@ public class BarrageView
     }
   }
   
-  public void a(bdki parambdki)
+  public void a(beol parambeol)
   {
-    this.jdField_b_of_type_JavaUtilList.add(parambdki);
+    this.jdField_b_of_type_JavaUtilList.add(parambeol);
   }
   
-  public void setBarrages(List<bdki> paramList)
+  public void setBarrages(List<beol> paramList)
   {
     if ((paramList == null) || (paramList.isEmpty())) {}
     do

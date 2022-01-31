@@ -1,18 +1,34 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.statistics.ReportControllerImpl;
 
-class axqy
-  implements ITransCallbackForReport
+public class axqy
+  extends aksv
 {
-  axqy(axqw paramaxqw) {}
-  
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public axqy(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    this.a.a(false, this.a.j, paramString1, paramString2);
+    super(paramQQAppInterface, paramProxyManager);
+  }
+  
+  protected void a()
+  {
+    axqw localaxqw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if ((localaxqw != null) && ((localaxqw instanceof ReportControllerImpl))) {
+      ((ReportControllerImpl)localaxqw).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager);
+    }
+  }
+  
+  protected void b()
+  {
+    axqw localaxqw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if ((localaxqw != null) && ((localaxqw instanceof ReportControllerImpl))) {
+      ((ReportControllerImpl)localaxqw).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axqy
  * JD-Core Version:    0.7.0.1
  */

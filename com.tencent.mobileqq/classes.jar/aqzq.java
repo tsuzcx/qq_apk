@@ -1,119 +1,77 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x857.TroopTips0x857.LbsShareChangePushInfo;
-import tencent.im.oidb.cmd0x857.TroopTips0x857.NotifyMsgBody;
-import tencent.im.oidb.location.qq_lbs_share.PushExtInfo;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.HotPicFooter.1;
+import mqq.os.MqqHandler;
 
 public class aqzq
+  implements aqyv
 {
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, long paramLong, TroopTips0x857.NotifyMsgBody paramNotifyMsgBody)
+  int jdField_a_of_type_Int = 1;
+  aqzo jdField_a_of_type_Aqzo;
+  public boolean a;
+  
+  public aqzq(HotPicPageView paramHotPicPageView, aqzo paramaqzo)
   {
-    paramNotifyMsgBody = (TroopTips0x857.LbsShareChangePushInfo)paramNotifyMsgBody.opt_lbs_share_change_plus_info.get();
-    aqzc localaqzc = aqzc.a(paramQQAppInterface);
-    long l = paramNotifyMsgBody.uint64_group_id.get();
-    int i = paramNotifyMsgBody.uint32_msg_type.get();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopLocationPushDecoder", 2, new Object[] { "processPacket: invoked. ", "msgSeq = [" + paramInt + "], msgTime = [" + paramLong + "], ", " pushType: ", Integer.valueOf(i), " sessionUin: ", Long.valueOf(l) });
+    this.jdField_a_of_type_Aqzo = paramaqzo;
+  }
+  
+  public RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new aqzu(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_AndroidContentContext).inflate(2131558553, paramViewGroup, false), null);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    StaggeredGridLayoutManager.LayoutParams localLayoutParams1 = null;
+    if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
+      localLayoutParams1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
     }
-    if (i == 4)
+    StaggeredGridLayoutManager.LayoutParams localLayoutParams2 = localLayoutParams1;
+    if (localLayoutParams1 == null)
     {
-      arde.b(paramQQAppInterface, String.valueOf(l));
-      localaqzc.notifyUI(5, true, new Object[] { Integer.valueOf(1), String.valueOf(l) });
-      ardf.a(paramQQAppInterface);
+      localLayoutParams2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
+      paramViewHolder.itemView.setLayoutParams(localLayoutParams2);
     }
-    for (;;)
+    localLayoutParams2.setFullSpan(true);
+    paramInt = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_Int;
+    if ((!this.jdField_a_of_type_Boolean) && (paramInt != -20) && (this.jdField_a_of_type_Int == 1))
     {
-      localaqzc.notifyUI(3, true, new Object[] { paramNotifyMsgBody });
+      aqzc.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramInt);
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      paramViewHolder.itemView.findViewById(2131367646).setVisibility(0);
+      paramViewHolder.itemView.findViewById(2131367647).setVisibility(4);
       return;
-      if ((i == 1) || (i == 2))
-      {
-        ardf.a(paramQQAppInterface, 1, String.valueOf(l), true);
-      }
-      else
-      {
-        if (i == 5)
-        {
-          paramInt = 4;
-          try
-          {
-            byte[] arrayOfByte = paramNotifyMsgBody.bytes_ext_info.get().toByteArray();
-            qq_lbs_share.PushExtInfo localPushExtInfo = new qq_lbs_share.PushExtInfo();
-            localPushExtInfo.mergeFrom(arrayOfByte);
-            i = localPushExtInfo.client_type.get();
-            paramInt = i;
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-          {
-            for (;;)
-            {
-              localInvalidProtocolBufferMicroException.printStackTrace();
-            }
-          }
-          arde.b(paramQQAppInterface, String.valueOf(l));
-          localaqzc.notifyUI(6, true, new Object[] { Integer.valueOf(1), String.valueOf(l), Integer.valueOf(paramInt) });
-          ardf.a(paramQQAppInterface);
-          continue;
-        }
-        if (i == 3) {
-          a(paramQQAppInterface, paramNotifyMsgBody.uint64_oper_uin.get(), l);
-        }
-      }
     }
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopLocationPushDecoder", 2, new Object[] { "onDecodeTroopLbsUserQuitRoom: invoked. ", " operateUin: ", Long.valueOf(paramLong1), " sessionUin: ", Long.valueOf(paramLong2) });
-    }
-    if (paramLong1 == paramQQAppInterface.getLongAccountUin()) {
-      aqzc.a(paramQQAppInterface).a(new aqyw(1, String.valueOf(paramLong2)), false);
-    }
-  }
-  
-  static void a(QQAppInterface paramQQAppInterface, TroopTips0x857.LbsShareChangePushInfo paramLbsShareChangePushInfo)
-  {
-    paramQQAppInterface = aqzc.a(paramQQAppInterface);
-    long l = paramLbsShareChangePushInfo.uint64_group_id.get();
-    paramQQAppInterface.a.a(1, String.valueOf(l));
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopLocationPushDecoder", 2, new Object[] { "onPushRoomMemberChanged: invoked. ", " troopUin: ", Long.valueOf(l) });
-    }
-  }
-  
-  static void a(QQAppInterface paramQQAppInterface, TroopTips0x857.LbsShareChangePushInfo paramLbsShareChangePushInfo, int paramInt)
-  {
-    paramQQAppInterface = aqzc.a(paramQQAppInterface);
-    long l1 = paramLbsShareChangePushInfo.uint64_group_id.get();
-    long l2 = paramLbsShareChangePushInfo.uint64_oper_uin.get();
-    paramLbsShareChangePushInfo = new aqyw(1, String.valueOf(l1));
-    paramQQAppInterface.a.a(1, String.valueOf(l1));
-    switch (paramInt)
+    if (HotPicPageView.b())
     {
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopLocationPushDecoder", 2, new Object[] { "[venue] troop onPushRoomVenueChanged: invoked. roomKey: ", paramLbsShareChangePushInfo + " opt: " + paramInt + " optUin: " + l2 });
-      }
+      paramViewHolder.itemView.findViewById(2131367647).setVisibility(0);
+      paramViewHolder.itemView.findViewById(2131367646).setVisibility(8);
       return;
-      paramQQAppInterface.a(paramLbsShareChangePushInfo, String.valueOf(l2));
-      continue;
-      paramQQAppInterface.a(paramLbsShareChangePushInfo);
-      continue;
-      paramQQAppInterface.b(paramLbsShareChangePushInfo);
     }
+    ThreadManager.getUIHandler().post(new HotPicPageView.HotPicFooter.1(this, paramViewHolder));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aqzq
  * JD-Core Version:    0.7.0.1
  */

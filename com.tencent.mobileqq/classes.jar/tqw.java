@@ -1,21 +1,18 @@
-public class tqw
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
+class tqw
+  extends tpm
 {
-  @vlq(a="clipNo")
-  int jdField_a_of_type_Int;
-  @vlq(a="fileSize")
-  long jdField_a_of_type_Long;
-  @vlq(a="errorMsg")
-  String jdField_a_of_type_JavaLangString;
-  @vlq(a="speedKBS")
-  int b;
-  @vlq(a="offset")
-  int c;
-  @vlq(a="callBackType")
-  int d;
-  @vlq(a="errorCode")
-  int e;
-  @vlq(a="errorDetailCode")
-  int f;
+  tqw(tqk paramtqk, StoryVideoItem paramStoryVideoItem, trq paramtrq)
+  {
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Trq.a = ((String)a("result"));
+    return true;
+  }
 }
 
 

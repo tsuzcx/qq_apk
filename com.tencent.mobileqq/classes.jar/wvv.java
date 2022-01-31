@@ -1,68 +1,49 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.videostory.capture.widgets.AEBottomListScrollView;
-import com.tencent.biz.videostory.capture.widgets.AEBottomListScrollView.ScrollStateListener.1;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
+import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public class wvv
-  implements wvq
+class wvv
+  implements xgx<CertifiedAccountWrite.StDoLikeRsp>
 {
-  private wvv(AEBottomListScrollView paramAEBottomListScrollView) {}
+  wvv(wvu paramwvu) {}
   
-  public void a()
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    if (AEBottomListScrollView.a(this.a) == null) {}
-    int i;
-    RecyclerView.ViewHolder localViewHolder;
-    do
+    RelativeFeedItemView.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView, true);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoLikeRsp == null))
     {
+      bcpw.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.getContext(), 1, paramString, 0).a();
       return;
-      i = AEBottomListScrollView.a(this.a).b();
-      localViewHolder = this.a.a(i);
-    } while (localViewHolder == null);
-    AEBottomListScrollView.a(this.a, localViewHolder, i);
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (AEBottomListScrollView.a(this.a) == null) {}
+    }
     int i;
-    int j;
-    do
+    String str;
+    if (paramStDoLikeRsp.like.status.get() == 1)
     {
-      return;
-      i = this.a.a();
-      j = AEBottomListScrollView.a(this.a).a();
-    } while (i == j);
-    AEBottomListScrollView.a(this.a, paramFloat, i, j, this.a.a(i), this.a.a(j));
-  }
-  
-  public void b()
-  {
-    if ((AEBottomListScrollView.a(this.a) == null) && (AEBottomListScrollView.a(this.a) == null)) {}
-    int i;
-    RecyclerView.ViewHolder localViewHolder;
-    do
+      i = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.likeInfo.count.get() + 1;
+      str = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+      if (paramStDoLikeRsp.like.status.get() != 1) {
+        break label270;
+      }
+    }
+    label270:
+    for (paramString = "like";; paramString = "cancel_like")
     {
+      xhe.a(str, "auth_feeds", paramString, 0, 0, new String[] { "", RelativeFeedItemView.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView) + "", this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+      wpw.a().a(new PraisedUpdateEvents(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), paramStDoLikeRsp.like.status.get(), i));
       return;
-      i = AEBottomListScrollView.a(this.a).b();
-      localViewHolder = this.a.a(i);
-    } while (localViewHolder == null);
-    AEBottomListScrollView.b(this.a, localViewHolder, i);
-    AEBottomListScrollView.c(this.a, localViewHolder, i);
-  }
-  
-  public void c()
-  {
-    this.a.post(new AEBottomListScrollView.ScrollStateListener.1(this));
-  }
-  
-  public void d()
-  {
-    AEBottomListScrollView.a(this.a);
+      i = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.likeInfo.count.get() - 1;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wvv
  * JD-Core Version:    0.7.0.1
  */

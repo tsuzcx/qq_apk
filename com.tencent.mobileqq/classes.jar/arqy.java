@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 public class arqy
-  implements DialogInterface.OnClickListener
+  implements arte
 {
-  public arqy(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
+  public arqy(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    ListenTogetherManager.a(this.a, paramString, paramInt1, paramInt2);
+  }
 }
 
 

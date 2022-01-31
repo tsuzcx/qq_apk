@@ -1,29 +1,35 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.widget.AdapterView;
 
 public class avqn
-  extends avqg
+  implements bfpe
 {
-  avom a(aewb paramaewb, List<avon> paramList, String paramString1, boolean paramBoolean, String paramString2)
-  {
-    avwe.a(80);
-    return new avns(paramaewb, paramList, paramString1, paramBoolean);
-  }
+  public avqn(IosTimepicker paramIosTimepicker) {}
   
-  avon a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
-  {
-    return null;
-  }
+  public void a(AdapterView<?> paramAdapterView) {}
   
-  avon a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return new avnt(paramrecord, paramString, paramCharSequence);
+    IosTimepicker.a(this.a, paramView, 1);
+    if (paramView.getTag() != null)
+    {
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt) {
+          IosTimepicker.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+        }
+        paramInt += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avqn
  * JD-Core Version:    0.7.0.1
  */

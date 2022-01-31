@@ -1,123 +1,122 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.opengl.GLES20;
+import com.tencent.av.opengl.utils.AVGLUtils;
+import com.tencent.av.video.effect.core.qqavimage.QQAVImageFilter;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.nio.ByteBuffer;
 
-class muv
-  implements nby
+public class muv
 {
-  muv(mut parammut) {}
+  int jdField_a_of_type_Int = -1;
+  QQAVImageFilter jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter = null;
+  ByteBuffer jdField_a_of_type_JavaNioByteBuffer = null;
+  byte[] jdField_a_of_type_ArrayOfByte = null;
+  int[] jdField_a_of_type_ArrayOfInt = new int[1];
+  int jdField_b_of_type_Int = -1;
+  byte[] jdField_b_of_type_ArrayOfByte = null;
+  int[] jdField_b_of_type_ArrayOfInt = new int[1];
+  int c = 0;
+  int d = 0;
+  int e = 0;
   
-  public void a(nbu paramnbu)
+  public muv(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (paramnbu == null) {}
-    label680:
-    do
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = (paramInt1 * paramInt2 * 3);
+    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(this.e);
+    this.jdField_b_of_type_ArrayOfByte = new byte[this.c * this.d * 4];
+    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+    GLES20.glGenTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
+    this.jdField_a_of_type_Int = AVGLUtils.initFrameBuffer(paramInt1, paramInt2, this.jdField_a_of_type_ArrayOfInt[0]);
+    this.jdField_b_of_type_Int = AVGLUtils.initFrameBuffer(paramInt1, paramInt2, this.jdField_b_of_type_ArrayOfInt[0]);
+    this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter = new mux();
+    this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter.init();
+    this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter.setQQAVEffectID("filter-test");
+    if (QLog.isColorLevel()) {
+      QLog.d("FilterProcess", 2, "mBeforeTextureId:" + this.jdField_a_of_type_ArrayOfInt[0] + "\nmBeforeTextureFbo:" + this.jdField_a_of_type_Int + "\nmAfterTextureId:" + this.jdField_b_of_type_ArrayOfInt[0] + "\nmAfterTextureFbo:" + this.jdField_b_of_type_Int);
+    }
+  }
+  
+  public long a()
+  {
+    if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length == 0)) {
+      return -1L;
+    }
+    if (this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter == null) {
+      return -2L;
+    }
+    if ((this.jdField_a_of_type_ArrayOfInt[0] == 0) || (this.jdField_b_of_type_ArrayOfInt[0] == 0)) {
+      return -3L;
+    }
+    long l = System.nanoTime();
+    int i = 0;
+    while (i < 70)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                    String str = paramnbu.jdField_c_of_type_JavaLangString;
-                    localObject = str;
-                    if (str == null) {
-                      localObject = "";
-                    }
-                    ndn.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.jdField_a_of_type_JavaLangString, "0X8005A28", "0X8005A28", 0, 0, (String)localObject, "", "", "", false);
-                    if (paramnbu.a != 3) {
-                      break label680;
-                    }
-                    if (paramnbu.jdField_c_of_type_Int != 7) {
-                      break;
-                    }
-                  } while ((TextUtils.isEmpty(paramnbu.g)) || (TextUtils.isEmpty(paramnbu.f)) || (TextUtils.isEmpty(paramnbu.b)));
-                  Object localObject = new Intent((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), QQMapActivity.class);
-                  ((Intent)localObject).putExtra("lat", paramnbu.g);
-                  ((Intent)localObject).putExtra("lon", paramnbu.f);
-                  ((Intent)localObject).putExtra("loc", paramnbu.b);
-                  ((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity((Intent)localObject);
-                  return;
-                  if (paramnbu.jdField_c_of_type_Int != 8) {
-                    break;
-                  }
-                  paramnbu = paramnbu.h;
-                } while (TextUtils.isEmpty(paramnbu));
-                paramnbu = paramnbu.trim();
-              } while (!Pattern.compile("[\\d-]+?").matcher(paramnbu).matches());
-              mut.b(this.a, paramnbu);
-              return;
-            } while (paramnbu.jdField_c_of_type_Int == 13);
-            if (paramnbu.jdField_c_of_type_Int == 11)
-            {
-              paramnbu = new Intent((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), ScannerActivity.class);
-              paramnbu.putExtra("from", this.a.jdField_a_of_type_JavaLangRefWeakReference.getClass().getName());
-              paramnbu.putExtra("finishAfterSucc", true);
-              ((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity(paramnbu);
-              return;
-            }
-          } while (paramnbu.jdField_c_of_type_Int == 16);
-          if (paramnbu.jdField_c_of_type_Int == 20)
-          {
-            mut.a(this.a);
-            return;
-          }
-          if (paramnbu.jdField_c_of_type_Int == 2)
-          {
-            wmi.b((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new wmk(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, mut.a(this.a));
-            return;
-          }
-          if (paramnbu.jdField_c_of_type_Int == 17)
-          {
-            wmi.a((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new wmk(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, mut.a(this.a));
-            return;
-          }
-          if (paramnbu.jdField_c_of_type_Int == 19)
-          {
-            wmi.a((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new wmk(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, mut.a(this.a), 9);
-            return;
-          }
-          if (paramnbu.jdField_c_of_type_Int == 18)
-          {
-            wmi.a((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new wmk(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, mut.a(this.a), 10);
-            return;
-          }
-        } while (paramnbu.jdField_c_of_type_Int == 21);
-        if (paramnbu.jdField_c_of_type_Int == 22)
-        {
-          paramnbu = paramnbu.jdField_c_of_type_JavaLangString;
-          mut.c(this.a, paramnbu);
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("AccountDetailGroupListContainer", 2, "unhandled event_id: " + paramnbu.jdField_c_of_type_Int);
+      a();
+      a(a(this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt[0], this.jdField_b_of_type_Int, this.jdField_b_of_type_ArrayOfInt[0]).jdField_a_of_type_Int, this.c, this.d, 6408, this.jdField_b_of_type_ArrayOfByte);
+      i += 1;
+    }
+    return (System.nanoTime() - l) / 1000L / 1000L;
+  }
+  
+  muw a(QQAVImageFilter paramQQAVImageFilter, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (paramQQAVImageFilter != null)
+    {
+      paramQQAVImageFilter.onOutputSizeChanged(this.c, this.d);
+      paramQQAVImageFilter.onDraw2(paramInt2, paramInt3);
+      return new muw(this, paramInt3, paramInt4);
+    }
+    return new muw(this, paramInt1, paramInt2);
+  }
+  
+  void a()
+  {
+    if ((this.jdField_a_of_type_JavaNioByteBuffer == null) || (this.jdField_a_of_type_ArrayOfByte == null)) {
       return;
-    } while (paramnbu.a != 1);
-    paramnbu = paramnbu.jdField_c_of_type_JavaLangString;
-    mut.c(this.a, paramnbu);
+    }
+    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    this.jdField_a_of_type_JavaNioByteBuffer.put(this.jdField_a_of_type_ArrayOfByte, 0, this.e);
+    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[0]);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameterf(3553, 10242, 33071.0F);
+    GLES20.glTexParameterf(3553, 10243, 33071.0F);
+    GLES20.glTexImage2D(3553, 0, 6407, this.c, this.d, 0, 6407, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+  }
+  
+  void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
+  {
+    GLES20.glBindFramebuffer(36160, paramInt1);
+    GLES20.glViewport(0, 0, paramInt2, paramInt3);
+    GLES20.glReadPixels(0, 0, paramInt2, paramInt3, paramInt4, 5121, ByteBuffer.wrap(paramArrayOfByte));
+    GLES20.glBindFramebuffer(36160, 0);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaNioByteBuffer != null)
+    {
+      this.jdField_a_of_type_JavaNioByteBuffer.clear();
+      this.jdField_a_of_type_JavaNioByteBuffer = null;
+    }
+    this.jdField_b_of_type_ArrayOfByte = null;
+    GLES20.glDeleteFramebuffers(2, new int[] { this.jdField_a_of_type_Int, this.jdField_b_of_type_Int }, 0);
+    GLES20.glDeleteTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+    GLES20.glDeleteTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
+    if (this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter != null)
+    {
+      this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter.destroy();
+      this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     muv
  * JD-Core Version:    0.7.0.1
  */

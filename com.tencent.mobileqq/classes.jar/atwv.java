@@ -1,20 +1,27 @@
+import java.util.List;
+
 public class atwv
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  public long a;
+  public atht a;
+  public List<atwt> a;
+  public boolean a;
   public String c;
   public int d;
+  public String d;
   public int e;
+  public String e;
   public int f;
+  public String f;
   public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
 }
 
 

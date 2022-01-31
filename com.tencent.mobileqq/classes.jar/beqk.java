@@ -1,96 +1,85 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.util.AndroidRuntimeException;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class beqk
-  implements Animator.AnimatorListener
 {
-  final float jdField_a_of_type_Float;
-  private final ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  public boolean a;
-  final float jdField_b_of_type_Float;
-  final int jdField_b_of_type_Int;
-  public final RecyclerView.ViewHolder b;
-  public boolean b;
-  final float jdField_c_of_type_Float;
-  final int jdField_c_of_type_Int;
-  boolean jdField_c_of_type_Boolean = false;
-  final float d;
-  float e;
-  float f;
-  private float g;
+  private final List<beql> a = new ArrayList();
   
-  beqk(beqc parambeqc, RecyclerView.ViewHolder paramViewHolder, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  beqk(bepo parambepo)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewHolder;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.d = paramFloat4;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new beql(this, parambeqc));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setTarget(paramViewHolder.itemView);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this);
-    a(0.0F);
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.setIsRecyclable(false);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.g = paramFloat;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramLong);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Float == this.jdField_c_of_type_Float) {}
-    for (this.e = this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.getTranslationX(); this.jdField_b_of_type_Float == this.d; this.e = (this.jdField_a_of_type_Float + this.g * (this.jdField_c_of_type_Float - this.jdField_a_of_type_Float)))
+    parambepo = (begu)parambepo.getClass().getAnnotation(begu.class);
+    if (parambepo == null) {}
+    do
     {
-      this.f = this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.getTranslationY();
       return;
+      parambepo = parambepo.a();
+    } while (parambepo == null);
+    int j = parambepo.length;
+    int i = 0;
+    label49:
+    beql localbeql;
+    Object localObject;
+    if (i < j)
+    {
+      String str = parambepo[i];
+      try
+      {
+        localbeql = new beql();
+        localObject = Class.forName(str);
+        if (!bepv.class.isAssignableFrom((Class)localObject)) {
+          throw new AndroidRuntimeException("RuntimeLoaderConfig requires child class of BaseAppRuntimeLoader, current class is " + str);
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        besl.c("RuntimeLoaderConfiguration", "", localThrowable);
+      }
     }
-    this.f = (this.jdField_b_of_type_Float + this.g * (this.d - this.jdField_b_of_type_Float));
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    a(1.0F);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (!this.jdField_c_of_type_Boolean) {
-      this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.setIsRecyclable(true);
+    for (;;)
+    {
+      i += 1;
+      break label49;
+      break;
+      localbeql.jdField_a_of_type_JavaLangClass = ((Class)localObject);
+      localObject = localbeql.jdField_a_of_type_JavaLangClass.getField("CREATOR");
+      if ((((Field)localObject).getModifiers() & 0x8) == 0) {
+        throw new AndroidRuntimeException("RuntimeLoader protocol requires the CREATOR object to be static on class " + localThrowable);
+      }
+      if (!bepw.class.isAssignableFrom(((Field)localObject).getType())) {
+        throw new AndroidRuntimeException("RuntimeLoader requires a BaseAppRuntimeLoader.Creator object called CREATOR on class " + localThrowable);
+      }
+      localbeql.jdField_a_of_type_Bepw = ((bepw)((Field)localObject).get(null));
+      this.a.add(localbeql);
     }
-    this.jdField_c_of_type_Boolean = true;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public List<beql> a()
+  {
+    return this.a;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{");
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      beql localbeql = (beql)localIterator.next();
+      if (localbeql != null) {
+        localStringBuilder.append("***Loader:").append(localbeql.jdField_a_of_type_JavaLangClass.getName()).append(", Creator:").append(localbeql.jdField_a_of_type_Bepw.getClass().getName()).append("***");
+      }
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beqk
  * JD-Core Version:    0.7.0.1
  */

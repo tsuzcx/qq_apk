@@ -1,39 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
 
-public class arje
-  extends ajjh
+class arje
+  implements ActionCallback
 {
-  public arje(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
+  arje(arjc paramarjc) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onResult(String paramString)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString))) {
-      this.a.b();
-    }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean)
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MatchChatMsgListFragment", 2, "onUpdateFriendInfo uin =" + paramString);
+      i = Integer.parseInt(paramString);
+      if (arjc.a(this.a) != null) {
+        arjc.a(this.a).a(i, "");
       }
-      int i = 0;
-      if (this.a.a(paramString)) {
-        i = 1;
-      }
-      if (i != 0) {
-        this.a.b();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        int i = -1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arje
  * JD-Core Version:    0.7.0.1
  */

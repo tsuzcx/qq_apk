@@ -1,151 +1,229 @@
-import android.view.MotionEvent;
-import android.view.VelocityTracker;
+import android.app.Activity;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class ahir
-  implements View.OnTouchListener
 {
-  public ahir(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  private static int jdField_a_of_type_Int;
+  private static Field jdField_a_of_type_JavaLangReflectField;
+  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private static Method b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  static
   {
-    long l2 = 0L;
-    if (!this.a.x) {
-      return false;
-    }
-    if ((!this.a.o) && (!this.a.v)) {
-      return false;
-    }
-    if (this.a.p)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "[@]onTouch mIsShootingPhoto= " + this.a.p);
-      }
-      return false;
-    }
-    NewFlowCameraActivity.f(this.a);
-    this.a.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    if (((paramMotionEvent.getAction() & 0xFF) == 5) && (!this.a.H))
-    {
-      int[] arrayOfInt = new int[2];
-      this.a.jdField_a_of_type_AndroidWidgetImageView.getLocationOnScreen(arrayOfInt);
-      int i = paramMotionEvent.getActionIndex();
-      this.a.a(paramMotionEvent, i, arrayOfInt[0], arrayOfInt[1]);
-    }
-    if (paramView.getId() == 2131300783)
-    {
-      NewFlowCameraActivity.a(this.a).a(paramMotionEvent, true);
-      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, true, this.a.jdField_a_of_type_AndroidWidgetImageView, this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.a);
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 4) || (NewFlowCameraActivity.a(this.a) == null) || (!NewFlowCameraActivity.a(this.a).isShown())) {}
-    }
     try
     {
-      if (GLGestureProxy.getInstance().checkSecendFinger(paramMotionEvent))
-      {
-        paramView = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
-        NewFlowCameraActivity.a(this.a).onTouchEvent(paramView);
-        paramView.recycle();
-      }
-      switch (paramMotionEvent.getAction())
-      {
-      case 2: 
-      default: 
-        return true;
-      }
+      jdField_a_of_type_JavaLangReflectMethod = Activity.class.getMethod("setStatusBarDarkIcon", new Class[] { Integer.TYPE });
     }
-    catch (Exception paramView)
+    catch (NoSuchMethodException localNoSuchMethodException2)
     {
-      for (;;)
+      try
       {
-        paramView.printStackTrace();
-        continue;
-        if (NewFlowCameraActivity.a(this.a) != null) {
-          NewFlowCameraActivity.a(this.a).c();
-        }
-        ajei.a(this.a.f);
-        if ((NewFlowCameraActivity.f(this.a)) && (NewFlowCameraActivity.g(this.a)))
+        b = Activity.class.getMethod("setStatusBarDarkIcon", new Class[] { Boolean.TYPE });
+      }
+      catch (NoSuchMethodException localNoSuchMethodException2)
+      {
+        try
         {
-          this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-          label395:
-          if (NewFlowCameraActivity.h(this.a)) {
-            break label545;
-          }
-          if (this.a.r != 10017) {
-            break label535;
-          }
-          if (awij.a().g()) {
-            this.a.i();
-          }
-        }
-        for (;;)
-        {
-          this.a.E = false;
-          this.a.F = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("PTV.NewFlowCameraActivity", 2, "[@]onTouch ACTION_DOWN, event = " + paramMotionEvent);
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("PTV.NewFlowCameraActivity", 2, "ACTION_DOWN isTemplateMode " + this.a.g);
-          break;
-          this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          break label395;
-          label535:
-          this.a.i();
-          continue;
-          label545:
-          if (this.a.u) {
-            this.a.h();
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, "[@]onTouch ACTION_UP, event = " + paramMotionEvent + " , recordFinish---startEdit");
-        }
-        if (NewFlowCameraActivity.h(this.a)) {
-          if (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+          for (;;)
           {
-            if (this.a.i) {
-              this.a.a("612", "3", "0", true);
-            }
-            long l3 = System.currentTimeMillis();
-            long l1 = l2;
-            if (NewFlowCameraActivity.b(this.a) > 0L)
+            jdField_a_of_type_JavaLangReflectField = WindowManager.LayoutParams.class.getField("statusBarColor");
+            try
             {
-              l1 = l2;
-              if (l3 - NewFlowCameraActivity.b(this.a) > 0L) {
-                l1 = l3 - NewFlowCameraActivity.b(this.a);
-              }
+              jdField_a_of_type_Int = View.class.getField("SYSTEM_UI_FLAG_LIGHT_STATUS_BAR").getInt(null);
+              return;
             }
-            NewFlowCameraActivity.a(this.a).put("captureDuration", String.valueOf(l1));
-            NewFlowCameraActivity.g(this.a);
-            if (this.a.r == 10004) {
-              urp.a("plus_shoot", "clk_shoot", 0, 0, new String[] { "2", "", "", "" });
+            catch (NoSuchFieldException localNoSuchFieldException2)
+            {
+              localNoSuchFieldException2.printStackTrace();
+              return;
             }
+            catch (IllegalAccessException localIllegalAccessException)
+            {
+              localIllegalAccessException.printStackTrace();
+            }
+            localNoSuchMethodException1 = localNoSuchMethodException1;
+            localNoSuchMethodException1.printStackTrace();
+            continue;
+            localNoSuchMethodException2 = localNoSuchMethodException2;
+            localNoSuchMethodException2.printStackTrace();
           }
-          else
+        }
+        catch (NoSuchFieldException localNoSuchFieldException1)
+        {
+          for (;;)
           {
-            this.a.i();
-            if (this.a.r == 10002) {
-              urp.a("video_shoot", "clk_shoot", 0, 0, new String[] { "2" });
-            } else if (this.a.r == 10004) {
-              urp.a("plus_shoot", "clk_shoot", 0, 0, new String[] { "1", "", "", "" });
-            }
+            localNoSuchFieldException1.printStackTrace();
           }
         }
       }
     }
+  }
+  
+  public static void a(Activity paramActivity, boolean paramBoolean)
+  {
+    a(paramActivity, paramBoolean, true);
+  }
+  
+  private static void a(Activity paramActivity, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (b != null) {}
+    while (!paramBoolean2) {
+      try
+      {
+        b.invoke(paramActivity, new Object[] { Boolean.valueOf(paramBoolean1) });
+        return;
+      }
+      catch (IllegalAccessException paramActivity)
+      {
+        paramActivity.printStackTrace();
+        return;
+      }
+      catch (InvocationTargetException paramActivity)
+      {
+        paramActivity.printStackTrace();
+        return;
+      }
+    }
+    a(paramActivity.getWindow(), paramBoolean1);
+  }
+  
+  private static void a(View paramView, boolean paramBoolean)
+  {
+    int j = paramView.getSystemUiVisibility();
+    if (paramBoolean) {}
+    for (int i = jdField_a_of_type_Int | j;; i = (jdField_a_of_type_Int ^ 0xFFFFFFFF) & j)
+    {
+      if (i != j) {
+        paramView.setSystemUiVisibility(i);
+      }
+      return;
+    }
+  }
+  
+  private static void a(Window paramWindow, int paramInt)
+  {
+    WindowManager.LayoutParams localLayoutParams = paramWindow.getAttributes();
+    if (jdField_a_of_type_JavaLangReflectField != null) {}
+    try
+    {
+      if (jdField_a_of_type_JavaLangReflectField.getInt(localLayoutParams) != paramInt)
+      {
+        jdField_a_of_type_JavaLangReflectField.set(localLayoutParams, Integer.valueOf(paramInt));
+        paramWindow.setAttributes(localLayoutParams);
+      }
+      return;
+    }
+    catch (IllegalAccessException paramWindow)
+    {
+      paramWindow.printStackTrace();
+    }
+  }
+  
+  public static void a(Window paramWindow, boolean paramBoolean)
+  {
+    if (Build.VERSION.SDK_INT < 23) {
+      a(paramWindow.getAttributes(), "MEIZU_FLAG_DARK_STATUS_BAR_ICON", paramBoolean);
+    }
+    View localView;
+    do
+    {
+      return;
+      localView = paramWindow.getDecorView();
+    } while (localView == null);
+    a(localView, paramBoolean);
+    a(paramWindow, 0);
+  }
+  
+  /* Error */
+  private static boolean a(WindowManager.LayoutParams paramLayoutParams, java.lang.String paramString, boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 145	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   4: aload_1
+    //   5: invokevirtual 148	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   8: astore_1
+    //   9: aload_1
+    //   10: iconst_1
+    //   11: invokevirtual 152	java/lang/reflect/Field:setAccessible	(Z)V
+    //   14: aload_1
+    //   15: aload_0
+    //   16: invokevirtual 60	java/lang/reflect/Field:getInt	(Ljava/lang/Object;)I
+    //   19: istore_3
+    //   20: aload_0
+    //   21: invokevirtual 145	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   24: ldc 154
+    //   26: invokevirtual 148	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   29: astore_1
+    //   30: aload_1
+    //   31: iconst_1
+    //   32: invokevirtual 152	java/lang/reflect/Field:setAccessible	(Z)V
+    //   35: aload_1
+    //   36: aload_0
+    //   37: invokevirtual 60	java/lang/reflect/Field:getInt	(Ljava/lang/Object;)I
+    //   40: istore 4
+    //   42: iload_2
+    //   43: ifeq +22 -> 65
+    //   46: iload_3
+    //   47: iload 4
+    //   49: ior
+    //   50: istore_3
+    //   51: iload 4
+    //   53: iload_3
+    //   54: if_icmpeq +26 -> 80
+    //   57: aload_1
+    //   58: aload_0
+    //   59: iload_3
+    //   60: invokevirtual 158	java/lang/reflect/Field:setInt	(Ljava/lang/Object;I)V
+    //   63: iconst_1
+    //   64: ireturn
+    //   65: iload_3
+    //   66: iconst_m1
+    //   67: ixor
+    //   68: iload 4
+    //   70: iand
+    //   71: istore_3
+    //   72: goto -21 -> 51
+    //   75: astore_0
+    //   76: aload_0
+    //   77: invokevirtual 66	java/lang/NoSuchFieldException:printStackTrace	()V
+    //   80: iconst_0
+    //   81: ireturn
+    //   82: astore_0
+    //   83: aload_0
+    //   84: invokevirtual 67	java/lang/IllegalAccessException:printStackTrace	()V
+    //   87: goto -7 -> 80
+    //   90: astore_0
+    //   91: aload_0
+    //   92: invokevirtual 159	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   95: goto -15 -> 80
+    //   98: astore_0
+    //   99: aload_0
+    //   100: invokevirtual 160	java/lang/Throwable:printStackTrace	()V
+    //   103: goto -23 -> 80
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	106	0	paramLayoutParams	WindowManager.LayoutParams
+    //   0	106	1	paramString	java.lang.String
+    //   0	106	2	paramBoolean	boolean
+    //   19	53	3	i	int
+    //   40	31	4	j	int
+    // Exception table:
+    //   from	to	target	type
+    //   0	42	75	java/lang/NoSuchFieldException
+    //   57	63	75	java/lang/NoSuchFieldException
+    //   0	42	82	java/lang/IllegalAccessException
+    //   57	63	82	java/lang/IllegalAccessException
+    //   0	42	90	java/lang/IllegalArgumentException
+    //   57	63	90	java/lang/IllegalArgumentException
+    //   0	42	98	java/lang/Throwable
+    //   57	63	98	java/lang/Throwable
   }
 }
 

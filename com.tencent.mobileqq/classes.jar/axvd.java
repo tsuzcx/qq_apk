@@ -1,19 +1,21 @@
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+
 public class axvd
+  implements View.OnLongClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public int e;
+  public axvd(StructMsgForGeneralShare paramStructMsgForGeneralShare, acxn paramacxn) {}
   
-  public String toString()
+  public boolean onLongClick(View paramView)
   {
-    return "PttSliceInfoBean{encodeType=" + this.jdField_a_of_type_Int + ", isfirst=" + this.jdField_a_of_type_Boolean + ", isLast=" + this.jdField_b_of_type_Boolean + ", voiceId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", offset=" + this.jdField_b_of_type_Int + ", vegPos='" + this.d + '\'' + ", md5='" + this.c + '\'' + ", chatType='" + this.e + '\'' + '}';
+    StructMsgForGeneralShare.clickedItemIndex = 0;
+    axun localaxun = (axun)paramView.getTag();
+    if (!TextUtils.isEmpty(localaxun.Q)) {
+      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localaxun.Q).intValue();
+    }
+    return this.jdField_a_of_type_Acxn.onLongClick(paramView);
   }
 }
 

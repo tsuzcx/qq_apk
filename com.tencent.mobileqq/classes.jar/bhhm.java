@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.LockedCategory;
+import cooperation.qzone.panorama.widget.PanoramaView;
 
-public final class bhhm
-  implements Parcelable.Creator<LockedCategory>
+public class bhhm
+  implements bhgt
 {
-  public LockedCategory a(Parcel paramParcel)
-  {
-    return new LockedCategory(paramParcel);
-  }
+  public bhhm(PanoramaView paramPanoramaView) {}
   
-  public LockedCategory[] a(int paramInt)
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return new LockedCategory[paramInt];
+    this.a.a(paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhhm
  * JD-Core Version:    0.7.0.1
  */

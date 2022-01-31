@@ -1,21 +1,26 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
 
-public class agoq
+class agoq
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public MessageRecord a;
-  public String a;
+  agoq(agop paramagop) {}
   
-  public agoq(int paramInt, String paramString, MessageRecord paramMessageRecord)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", this.a.a.t);
+    this.a.a.setResult(-1, paramDialogInterface);
+    this.a.a.finish();
+    PhotoPreviewActivity.a(this.a.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agoq
  * JD-Core Version:    0.7.0.1
  */

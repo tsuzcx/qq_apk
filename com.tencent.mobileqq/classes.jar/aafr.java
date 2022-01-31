@@ -1,10 +1,22 @@
+import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-public final class aafr
-  implements DialogInterface.OnClickListener
+public class aafr
+  implements DialogInterface.OnDismissListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public aafr(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if ((paramDialogInterface != null) && ((paramDialogInterface instanceof Dialog))) {
+      ((Dialog)paramDialogInterface).setOnDismissListener(null);
+    }
+    if (paramDialogInterface == this.a.c) {
+      this.a.c = null;
+    }
+  }
 }
 
 

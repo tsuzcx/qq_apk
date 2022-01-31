@@ -1,28 +1,9 @@
-class lig
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+
+public abstract interface lig
 {
-  public long a;
-  public final String a;
-  public long b;
-  public long c;
-  
-  public lig(String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramLong;
-    this.c = paramLong;
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Long < paramLong) {
-      this.jdField_a_of_type_Long = paramLong;
-    }
-    if (this.b > paramLong) {
-      this.b = paramLong;
-    }
-    this.c = ((this.c + paramLong) / 2L);
-  }
+  public abstract void a(Bitmap paramBitmap1, Bitmap paramBitmap2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, Rect paramRect);
 }
 
 

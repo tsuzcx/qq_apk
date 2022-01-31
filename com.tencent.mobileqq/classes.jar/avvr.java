@@ -1,25 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-import java.util.Set;
+import android.view.View;
 
-public class avvr
-  extends avtz
+public abstract interface avvr
 {
-  private Comparator<avoj> a = new avvs(this);
+  public abstract void a();
   
-  public avvr(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
-  {
-    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
-  }
-  
-  public Comparator<avoj> a()
-  {
-    return this.a;
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avvr
  * JD-Core Version:    0.7.0.1
  */

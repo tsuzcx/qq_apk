@@ -1,109 +1,46 @@
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import com.tencent.mobileqq.statistics.UnifiedMonitor.StackGetterJob;
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
 
-public class awsd
+class awsd
+  implements View.OnClickListener
 {
-  public float a;
-  public int a;
-  public long a;
-  public volatile UnifiedMonitor.StackGetterJob a;
-  public volatile String a;
-  public AbstractUnifiedMonitor.ThreadMonitorCallback a;
-  public boolean a;
-  public float b;
-  public int b;
-  public volatile long b;
-  public volatile boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e = 5;
-  public int f = 300;
-  public int g = 0;
-  public int h = 0;
-  public int i = 0;
+  awsd(awsa paramawsa, awpa paramawpa, Context paramContext) {}
   
-  public awsd()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_b_of_type_Int = 10;
-    this.jdField_a_of_type_Float = 0.001F;
-    this.jdField_b_of_type_Float = 0.1F;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 500;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-  }
-  
-  public awsd(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_b_of_type_Int = 10;
-    this.jdField_a_of_type_Float = 0.001F;
-    this.jdField_b_of_type_Float = 0.1F;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 500;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.i = paramInt4;
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((UnifiedMonitor.d()) && (paramInt != 9))
+    awso.a(null, 0, this.jdField_a_of_type_Awpa.c, "0X8009D5D", 0, 0, null, null);
+    awso.a(null, new ReportModelDC02528().module("all_result").action("clk_web_search").obj1("2073745984").ver1(this.jdField_a_of_type_Awpa.g).ver2(awso.a(UniteSearchActivity.d)).ver5("1").ver6("1").ver7("{experiment_id:" + awso.b + "}"));
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Awpa.l))
     {
-      if (this.jdField_a_of_type_Float > 0.0F)
-      {
-        this.jdField_a_of_type_Float = 1.0F;
-        this.jdField_b_of_type_Float = 1.0F;
-        this.jdField_b_of_type_Int = 2147483647;
+      paramView = awvv.b(this.jdField_a_of_type_Awpa.c);
+      paramView = awvv.a(this.jdField_a_of_type_Awpa.a(), 0, paramView);
+      localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.uniteSearch.SearchTemplatePresenter", 2, "open Browser append suffix url = " + paramView);
       }
-      if (paramInt == 0) {
-        this.jdField_a_of_type_Float = (4.0F * this.jdField_a_of_type_Float);
-      }
-      if (paramInt == 9) {
-        this.jdField_a_of_type_Float = (10.0F * this.jdField_a_of_type_Float);
-      }
-      if (Math.random() > this.jdField_a_of_type_Float) {
-        break label117;
-      }
-    }
-    label117:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
       return;
-      if (paramInt != 9)
-      {
-        this.jdField_a_of_type_Float *= 0.1F;
-        break;
-      }
-      this.jdField_a_of_type_Float = 0.0F;
-      break;
     }
+    paramView = awvv.a(awvv.a(this.jdField_a_of_type_Awpa.l, this.jdField_a_of_type_Awpa.a(), 0, awso.a(this.jdField_a_of_type_Awpa.c)), this.jdField_a_of_type_Awpa.c);
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.SearchTemplatePresenter", 2, "open Browser append suffix url = " + paramView);
+    }
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awsd
  * JD-Core Version:    0.7.0.1
  */

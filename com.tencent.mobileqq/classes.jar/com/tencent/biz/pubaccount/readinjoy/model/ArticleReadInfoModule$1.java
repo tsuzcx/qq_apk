@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import atmp;
+import aukn;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import oov;
+import ozw;
 
 public class ArticleReadInfoModule$1
   implements Runnable
 {
-  public ArticleReadInfoModule$1(oov paramoov) {}
+  public ArticleReadInfoModule$1(ozw paramozw) {}
   
   public void run()
   {
     List localList = this.this$0.a.a(ArticleReadInfo.class, true, null, null, null, null, null, null);
-    oov.a(this.this$0, localList);
-    oov.a(this.this$0).set(true);
+    ozw.a(this.this$0, localList);
+    ozw.a(this.this$0).set(true);
     QLog.d("ArticleReadInfoModule", 1, "article info read load from db finish");
   }
 }

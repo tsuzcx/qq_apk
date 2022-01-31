@@ -1,13 +1,27 @@
-class lax
+public abstract class lax
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = "";
+  private static laf a;
   
-  lax(lar paramlar) {}
+  public static laf a()
+  {
+    try
+    {
+      if (a == null) {
+        a = new laf();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public static boolean a()
+  {
+    return a != null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     lax
  * JD-Core Version:    0.7.0.1
  */

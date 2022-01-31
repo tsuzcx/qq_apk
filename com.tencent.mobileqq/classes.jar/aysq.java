@@ -1,26 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troop.filemanager.data.TroopMemberListRefresher.1.1;
-import java.util.List;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
 
-public class aysq
-  extends ajuc
+class aysq
+  implements ITransactionCallback
 {
   aysq(aysp paramaysp) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {}
-    while ((!paramBoolean) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("TAG_MultiMsg", 2, "BDH.Upload fail  : result:" + paramInt);
     }
-    ThreadManager.post(new TroopMemberListRefresher.1.1(this), 5, null, true);
+    this.a.d();
   }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TAG_MultiMsg", 2, "Multimsg upload file by BDH and onSuccess  ");
+    }
+    this.a.e();
+    paramArrayOfByte = new File(ayog.d(aysp.a(this.a)));
+    if (paramArrayOfByte.exists()) {
+      paramArrayOfByte.delete();
+    }
+  }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart() {}
+  
+  public void onUpdateProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aysq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.servlet;
 
-import awdb;
+import axcj;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,7 +11,7 @@ public final class QZoneNotifyServlet$3
   {
     try
     {
-      SosoInterface.a(awdb.a());
+      SosoInterface.a(axcj.a());
       return;
     }
     catch (Exception localException)

@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.VerticalGallery;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.portal.PortalManager.5.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class aurg
-  implements beop
+  extends ajxl
 {
-  public aurg(IosTimepicker paramIosTimepicker) {}
+  public aurg(PortalManager paramPortalManager) {}
   
-  public void b(VerticalGallery paramVerticalGallery)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    IosTimepicker.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("PortalManagerhead", 2, "onUpdateCustomHead isSuccess = " + paramBoolean + ", mobileNumber = " + paramString);
+    }
+    if (this.a.a.containsKey(paramString)) {
+      ThreadManager.getSubThreadHandler().post(new PortalManager.5.1(this, paramString, paramBoolean));
+    }
   }
 }
 

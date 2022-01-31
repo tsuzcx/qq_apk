@@ -1,87 +1,83 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoReaderConf;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class sfx
+class sfx
+  implements wxw
 {
-  public int a;
-  public List<QQUserUIItem> a;
-  public List<Long> b;
+  sfx(sfn paramsfn, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public sfx(AppInterface paramAppInterface, qqstory_struct.VideoReaderConf paramVideoReaderConf)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramVideoReaderConf.ban_type.get();
-    List localList = paramVideoReaderConf.user_list.get();
-    paramVideoReaderConf = paramVideoReaderConf.user_unionid_list.get();
-    sqs localsqs = (sqs)sqg.a(2);
-    if ((localList != null) && (!localList.isEmpty()) && (paramVideoReaderConf != null) && (!paramVideoReaderConf.isEmpty()) && (localList.size() == paramVideoReaderConf.size()))
+    String str2;
+    JSONObject localJSONObject;
+    if (paramBundle != null)
     {
-      int j = localList.size();
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(j);
-      int i = 0;
-      while (i < j)
+      if (this.jdField_a_of_type_Sfn.a != null) {
+        this.jdField_a_of_type_Sfn.l();
+      }
+      str2 = paramBundle.getString("pic_local_id");
+      localJSONObject = new JSONObject();
+    }
+    for (;;)
+    {
+      try
       {
-        String str = String.valueOf(localList.get(i));
-        Object localObject = ((ByteStringMicro)paramVideoReaderConf.get(i)).toStringUtf8();
-        localsqs.a((String)localObject, str);
-        localObject = a(paramAppInterface, (String)localObject, str, false);
-        if (localObject != null) {
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
+        if (!"-1".equals(str2)) {
+          continue;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, "StoryPlayVideoPrivacyActivity " + i + ": qq = " + str + ", user = " + localObject);
+        localJSONObject.put("retCode", -1);
+        localJSONObject.put("msg", "fail");
+        if (!this.jdField_a_of_type_Boolean) {
+          continue;
         }
-        i += 1;
+        axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
+        paramBundle = str2;
+        localJSONObject.put("localId", paramBundle);
       }
-    }
-  }
-  
-  private static QQUserUIItem a(AppInterface paramAppInterface, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    QQUserUIItem localQQUserUIItem = new QQUserUIItem();
-    localQQUserUIItem.qq = paramString2;
-    localQQUserUIItem.uid = paramString1;
-    paramAppInterface = ((ajjj)paramAppInterface.getManager(51)).e(String.valueOf(paramString2));
-    if (paramAppInterface == null) {
-      return null;
-    }
-    localQQUserUIItem.nickName = paramAppInterface.name;
-    localQQUserUIItem.remark = paramAppInterface.remark;
-    return localQQUserUIItem;
-  }
-  
-  public String toString()
-  {
-    int j = 0;
-    StringBuilder localStringBuilder = new StringBuilder().append("QQStoryBanInfo banType = ").append(this.jdField_a_of_type_Int).append(", uinSize = ");
-    if (this.jdField_a_of_type_JavaUtilList == null)
-    {
-      i = 0;
-      localStringBuilder = localStringBuilder.append(i).append(", grouplistSize =");
-      if (this.b != null) {
-        break label78;
+      catch (JSONException paramBundle)
+      {
+        String str1;
+        paramBundle.printStackTrace();
+        continue;
       }
-    }
-    label78:
-    for (int i = j;; i = this.b.size())
-    {
-      return i;
-      i = this.jdField_a_of_type_JavaUtilList.size();
-      break;
+      this.jdField_a_of_type_Sfn.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Sfn.c(this.b);
+      }
+      return;
+      axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
+      paramBundle = str2;
+      continue;
+      str1 = str2;
+      if (this.jdField_a_of_type_Boolean) {
+        str1 = "mqqpa://resourceid/" + str2;
+      }
+      paramBundle = paramBundle.getString("pic_local_path");
+      sfn.b.put(str1, paramBundle);
+      localJSONObject.put("retCode", 0);
+      localJSONObject.put("msg", ajyc.a(2131708768) + str1);
+      if (QLog.isColorLevel()) {
+        QLog.i("PublicAccountH5AbilityPlugin", 2, "下载成功，localld为  " + str1);
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, 0, "1", "", "", "");
+        paramBundle = str1;
+      }
+      else
+      {
+        axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, 0, "1", "", "", "");
+        paramBundle = str1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sfx
  * JD-Core Version:    0.7.0.1
  */

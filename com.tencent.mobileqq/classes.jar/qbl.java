@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class qbl
-  extends beem
+public class qbl
 {
-  qbl(qbi paramqbi, AlphaAnimation paramAlphaAnimation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Qbi.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-  }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a;
+  public long a;
+  public MessageRecord a;
+  public String a = "";
+  public long b;
+  public String b = "";
+  public String c = "";
 }
 
 

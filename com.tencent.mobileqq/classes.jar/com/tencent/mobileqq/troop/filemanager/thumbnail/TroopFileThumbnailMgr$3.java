@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
-import aytv;
+import azul;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
 public class TroopFileThumbnailMgr$3
   implements Runnable
 {
-  public TroopFileThumbnailMgr$3(aytv paramaytv, long paramLong, TroopFileTransferManager.Item paramItem, int paramInt) {}
+  public TroopFileThumbnailMgr$3(azul paramazul, long paramLong, TroopFileTransferManager.Item paramItem, int paramInt) {}
   
   public void run()
   {
-    aytv.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
+    azul.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import uut;
-import uvd;
+import vhp;
+import vhz;
 
 public class EditVideoPlayer$3
   implements Runnable
 {
-  public EditVideoPlayer$3(uvd paramuvd) {}
+  public EditVideoPlayer$3(vhz paramvhz) {}
   
   public void run()
   {

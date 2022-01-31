@@ -1,60 +1,93 @@
-import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import java.util.List;
 
 public class qfq
-  implements View.OnLayoutChangeListener
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public qfq(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<Long> jdField_a_of_type_JavaUtilList;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public qfq(Context paramContext, List<Long> paramList)
   {
-    this.a.removeOnLayoutChangeListener(this);
-    if ((VideoFeedsRecyclerView.a(this.a) != null) && (VideoFeedsRecyclerView.a(this.a)))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= paramInt)) {
+      return null;
+    }
+    if (paramView == null)
     {
-      paramInt1 = 0;
-      if (VideoFeedsRecyclerView.a(this.a) != 0) {
-        break label228;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559992, paramViewGroup, false);
+      paramViewGroup = new qfr();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375501));
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131368584));
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131378266));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      if (paramViewGroup != null)
+      {
+        long l = ((Long)this.jdField_a_of_type_JavaUtilList.get(paramInt)).longValue();
+        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(l);
+        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setNickNameByUin(l);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131374822, Integer.valueOf(paramInt));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+      }
+      return paramView;
+      if ((paramView.getTag() instanceof qfr)) {
+        paramViewGroup = (qfr)paramView.getTag();
+      } else {
+        paramViewGroup = null;
       }
     }
-    label227:
-    label228:
-    label244:
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    int i;
     do
     {
-      paramInt1 = (int)(this.a.getHeight() * 0.3D);
-      break label227;
-      paramView = VideoFeedsRecyclerView.a(this.a).getLayoutParams();
-      paramView.height = paramInt1;
-      VideoFeedsRecyclerView.a(this.a).setLayoutParams(paramView);
-      if (VideoFeedsRecyclerView.a(this.a) == 0)
+      do
       {
-        paramView = this.a.getLayoutManager().findViewByPosition(1);
-        if ((paramView != null) && (paramView.getHeight() > 0) && (VideoFeedsRecyclerView.b(this.a)))
-        {
-          paramInt1 = paramView.getHeight();
-          paramInt1 = (int)(this.a.getHeight() / 2.0F - paramInt1 / 2.0F);
-          VideoFeedsRecyclerView.a(this.a, paramInt1);
-          if ((!VideoFeedsRecyclerView.a(this.a).a(1)) || (VideoFeedsRecyclerView.a(this.a).b() == 1)) {
-            break label244;
-          }
-        }
-        for (paramInt1 = 1;; paramInt1 = 0)
-        {
-          if ((paramInt1 == 0) && (VideoFeedsRecyclerView.a(this.a) != null) && (VideoFeedsRecyclerView.a(this.a).b() != 1)) {
-            this.a.a(this.a.getChildViewHolder(paramView));
-          }
-          return;
-          if (VideoFeedsRecyclerView.a(this.a) != 1) {
-            break;
-          }
-          paramInt1 = 0;
-          break;
-        }
-      }
-    } while (VideoFeedsRecyclerView.a(this.a) != 1);
-    VideoFeedsRecyclerView.a(this.a, VideoFeedsRecyclerView.b(this.a));
+        return;
+      } while (paramView.getTag(2131374822) == null);
+      i = ((Integer)paramView.getTag(2131374822)).intValue();
+    } while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= i));
+    ohi.a(String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)), this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

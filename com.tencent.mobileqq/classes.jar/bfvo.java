@@ -1,43 +1,32 @@
-import NS_USER_ACTION_REPORT.ActionInfo;
-import NS_USER_ACTION_REPORT.ItemInfo;
-import java.util.ArrayList;
+import android.view.View;
 
-class bfvo
+public class bfvo
 {
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<ActionInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private String b;
+  public int a;
+  public View a;
+  public int b;
+  public int c;
+  public int d;
   
-  public ItemInfo a()
+  public void a()
   {
-    ItemInfo localItemInfo = new ItemInfo();
-    localItemInfo.item_id = this.jdField_a_of_type_JavaLangString;
-    localItemInfo.action_infos = this.jdField_a_of_type_JavaUtilArrayList;
-    localItemInfo.busi_info = this.b;
-    return localItemInfo;
+    this.jdField_a_of_type_Int = -1;
+    this.b = -1;
+    this.c = 0;
+    this.d = 0;
+    this.jdField_a_of_type_AndroidViewView = null;
   }
   
-  public bfvo a(ActionInfo paramActionInfo)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramActionInfo);
-    return this;
-  }
-  
-  public bfvo a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public bfvo b(String paramString)
-  {
-    this.b = paramString;
-    return this;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[").append("menuType = ").append(this.jdField_a_of_type_Int).append(",").append("menuId = ").append(this.b).append(",").append("menuWidth = ").append(this.c).append(",").append("menuHeight = ").append(this.d).append(",").append("menuView = ").append(this.jdField_a_of_type_AndroidViewView).append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfvo
  * JD-Core Version:    0.7.0.1
  */

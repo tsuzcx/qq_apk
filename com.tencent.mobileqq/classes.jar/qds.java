@@ -1,14 +1,60 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLazyLoadDelegate;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
 
-public class qds
-  extends nev
+public final class qds
 {
-  public qds(VideoFeedsLazyLoadDelegate paramVideoFeedsLazyLoadDelegate) {}
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
+  private String d;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public TopicInfo a()
   {
-    this.a.a(paramBoolean, paramBundle);
+    return new TopicInfo(this, null);
+  }
+  
+  public qds a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public qds a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public qds a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public qds b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public qds b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public qds c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public qds d(String paramString)
+  {
+    this.d = paramString;
+    return this;
   }
 }
 

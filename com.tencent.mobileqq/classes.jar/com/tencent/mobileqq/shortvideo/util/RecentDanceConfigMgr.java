@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import ajed;
+import ajsf;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
 import android.util.Base64;
-import atiu;
-import ausk;
-import autt;
-import awlz;
-import awmd;
-import axro;
-import axrr;
-import axsr;
-import azxx;
-import bace;
-import badq;
-import bech;
+import augt;
+import avrt;
+import avtc;
+import axlf;
+import axlj;
+import ayrv;
+import ayry;
+import aysy;
+import bazb;
+import bbdj;
+import bbev;
+import bfjx;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -79,7 +79,7 @@ public class RecentDanceConfigMgr
         if (paramQQAppInterface != null) {
           if (paramQQAppInterface.compress.get() == 1)
           {
-            paramQQAppInterface = atiu.a(paramQQAppInterface.content.get().toByteArray());
+            paramQQAppInterface = augt.a(paramQQAppInterface.content.get().toByteArray());
             if (paramQQAppInterface == null) {}
           }
         }
@@ -312,7 +312,7 @@ public class RecentDanceConfigMgr
   
   private static boolean a(AppInterface paramAppInterface, RecentDanceConfigMgr.DItemInfo paramDItemInfo)
   {
-    boolean bool = autt.a();
+    boolean bool = avtc.a();
     if (QLog.isColorLevel()) {
       QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus supportMediaCodec=" + bool);
     }
@@ -320,7 +320,7 @@ public class RecentDanceConfigMgr
     {
       if (paramDItemInfo.categoryID == 10)
       {
-        bool = awmd.g(paramAppInterface);
+        bool = axlj.g(paramAppInterface);
         if (QLog.isColorLevel()) {
           QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus isSupportDance=" + bool);
         }
@@ -364,7 +364,7 @@ public class RecentDanceConfigMgr
           i = 0;
           if (i < paramString.length())
           {
-            localDItemInfo = (RecentDanceConfigMgr.DItemInfo)azxx.a(paramString.getJSONObject(i), RecentDanceConfigMgr.DItemInfo.class);
+            localDItemInfo = (RecentDanceConfigMgr.DItemInfo)bazb.a(paramString.getJSONObject(i), RecentDanceConfigMgr.DItemInfo.class);
             if (localDItemInfo == null) {
               break label492;
             }
@@ -456,7 +456,7 @@ public class RecentDanceConfigMgr
     {
       try
       {
-        paramString = bech.a(new File(paramString));
+        paramString = bfjx.a(new File(paramString));
         return paramString;
       }
       catch (Exception paramString) {}
@@ -503,7 +503,7 @@ public class RecentDanceConfigMgr
   
   private static String c()
   {
-    Object localObject = new StringBuilder(ajed.aU);
+    Object localObject = new StringBuilder(ajsf.aW);
     ((StringBuilder)localObject).append("sv_config_icon");
     ((StringBuilder)localObject).append(File.separator);
     localObject = ((StringBuilder)localObject).toString();
@@ -527,14 +527,14 @@ public class RecentDanceConfigMgr
     Object localObject = Base64.decode(paramDItemInfo.icon_url, 0);
     if (localObject != null)
     {
-      bace.a((byte[])localObject, paramString);
+      bbdj.a((byte[])localObject, paramString);
       if (new File(paramString).exists())
       {
         localObject = b(paramString);
         if ((localObject != null) && (!"".equals(localObject)) && (((String)localObject).equalsIgnoreCase(paramDItemInfo.icon_md5))) {
           break label68;
         }
-        bace.d(paramString);
+        bbdj.d(paramString);
       }
     }
     return;
@@ -552,23 +552,23 @@ public class RecentDanceConfigMgr
   
   private static boolean c()
   {
-    return new File(ausk.a, "ptv_template_new.cfg").exists();
+    return new File(avrt.a, "ptv_template_new.cfg").exists();
   }
   
   private static void d(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
   {
-    axro localaxro = new axro();
-    localaxro.jdField_a_of_type_Axrt = new awlz(paramDItemInfo, paramString);
-    localaxro.jdField_a_of_type_JavaLangString = paramDItemInfo.icon_url;
-    localaxro.jdField_a_of_type_Int = 0;
-    localaxro.jdField_c_of_type_JavaLangString = (paramString + "_temp");
-    localaxro.jdField_c_of_type_Int = badq.a(axsr.a().a());
+    ayrv localayrv = new ayrv();
+    localayrv.jdField_a_of_type_Aysa = new axlf(paramDItemInfo, paramString);
+    localayrv.jdField_a_of_type_JavaLangString = paramDItemInfo.icon_url;
+    localayrv.jdField_a_of_type_Int = 0;
+    localayrv.jdField_c_of_type_JavaLangString = (paramString + "_temp");
+    localayrv.jdField_c_of_type_Int = bbev.a(aysy.a().a());
     try
     {
       paramString = BaseApplicationImpl.getApplication().getRuntime();
       if (QQAppInterface.class.isInstance(paramString))
       {
-        ((QQAppInterface)paramString).getNetEngine(0).a(localaxro);
+        ((QQAppInterface)paramString).getNetEngine(0).a(localayrv);
         if (QLog.isColorLevel()) {
           QLog.i("RecentDanceConfigMgr", 2, "processNetWork url: " + paramDItemInfo.icon_url);
         }

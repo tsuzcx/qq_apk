@@ -94,7 +94,10 @@ public final class PreDownloadConstants$2
     put(Integer.valueOf(10087), "minigame_splash_video");
     put(Integer.valueOf(10088), "qboss_predownload_res");
     put(Integer.valueOf(10089), "intimate_friendship");
-    put(Integer.valueOf(10090), "ae_res_a_package_download");
+    put(Integer.valueOf(10090), "qbar_ai_model");
+    put(Integer.valueOf(10091), "ae_res_a_package_download");
+    put(Integer.valueOf(10092), "flutter_engine_res");
+    put(Integer.valueOf(10093), "flutter_app_res");
   }
 }
 

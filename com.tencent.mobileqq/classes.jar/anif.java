@@ -1,23 +1,26 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Book;
 
-public class anif
-  implements DialogInterface.OnClickListener
+public final class anif
+  implements Parcelable.Creator
 {
-  public anif(EmoticonMainPanel paramEmoticonMainPanel) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public IPSiteModel.Book a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent(this.a.a, FavEmosmManageActivity.class);
-    paramDialogInterface.putExtra("camera_emo_mode", 1);
-    this.a.a.startActivity(paramDialogInterface);
-    awqx.b(((BaseActivity)this.a.a).app, "dc00898", "", "", "ep_mall", "0X800A36F", 0, 0, "", "", "", "");
+    IPSiteModel.Book localBook = new IPSiteModel.Book();
+    localBook.cover = paramParcel.readString();
+    localBook.desc = paramParcel.readString();
+    localBook.id = paramParcel.readString();
+    localBook.jumpUrl = paramParcel.readString();
+    localBook.name = paramParcel.readString();
+    localBook.recommDesc = paramParcel.readString();
+    localBook.authorName = paramParcel.readString();
+    return localBook;
+  }
+  
+  public IPSiteModel.Book[] a(int paramInt)
+  {
+    return new IPSiteModel.Book[paramInt];
   }
 }
 

@@ -1,35 +1,37 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.bluetooth.BluetoothAdapter;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import bdnw;
-import org.json.JSONException;
-import org.json.JSONObject;
+import beil;
+import beim;
+import beka;
+import besl;
 
 class BluetoothJsPlugin$1
-  extends BroadcastReceiver
+  implements beim
 {
-  BluetoothJsPlugin$1(BluetoothJsPlugin paramBluetoothJsPlugin) {}
+  BluetoothJsPlugin$1(BluetoothJsPlugin paramBluetoothJsPlugin, beka parambeka) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (BluetoothJsPlugin.access$000(this.this$0) == null) {}
-    while (!"android.bluetooth.adapter.action.STATE_CHANGED".equals(paramIntent.getAction())) {
-      return;
-    }
-    paramContext = new JSONObject();
-    try
+    boolean bool = false;
+    besl.a("BluetoothJsPlugin", "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
+    if (paramInt1 == 6)
     {
-      paramContext.put("available", BluetoothJsPlugin.access$000(this.this$0).isEnabled());
-      paramContext.put("discovering", BluetoothJsPlugin.BLEScan.access$200(BluetoothJsPlugin.access$100(this.this$0)));
-      paramContext = paramContext.toString();
-      bdnw.a("BluetoothJsPlugin", "onReceive state change data=" + paramContext);
-      this.this$0.sendSubscribeEvent("onBluetoothAdapterStateChange", paramContext);
-      return;
+      BluetoothJsPlugin.access$002(this.this$0, false);
+      if ((paramInt2 != -1) || (!BluetoothJsPlugin.access$100(this.this$0).isEnabled())) {
+        break label99;
+      }
+      this.val$req.a();
     }
-    catch (JSONException paramContext) {}
+    for (;;)
+    {
+      beil.a().b(this);
+      bool = true;
+      return bool;
+      label99:
+      this.val$req.b();
+    }
   }
 }
 

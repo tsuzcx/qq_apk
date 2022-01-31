@@ -14,8 +14,8 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.Scroller;
-import axmk;
-import axml;
+import aymr;
+import ayms;
 import com.tencent.qphone.base.util.QLog;
 import java.io.PrintStream;
 
@@ -41,8 +41,8 @@ public class ScrollLayout
   int mTouchSlop;
   int mTouchState = 0;
   VelocityTracker mVelocityTracker;
-  axmk onScreenChangeListener;
-  axml onScreenChangeListenerDataLoad;
+  aymr onScreenChangeListener;
+  ayms onScreenChangeListenerDataLoad;
   
   public ScrollLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -336,14 +336,14 @@ public class ScrollLayout
     }
   }
   
-  public void setOnScreenChangeListener(axmk paramaxmk)
+  public void setOnScreenChangeListener(aymr paramaymr)
   {
-    this.onScreenChangeListener = paramaxmk;
+    this.onScreenChangeListener = paramaymr;
   }
   
-  public void setOnScreenChangeListenerDataLoad(axml paramaxml)
+  public void setOnScreenChangeListenerDataLoad(ayms paramayms)
   {
-    this.onScreenChangeListenerDataLoad = paramaxml;
+    this.onScreenChangeListenerDataLoad = paramayms;
   }
   
   public void setToScreen(int paramInt1, int paramInt2)

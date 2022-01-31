@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.confess;
 
-import alyk;
+import amoa;
 
 public final class ConfessMsgUtil$2
   implements Runnable
 {
-  public ConfessMsgUtil$2(alyk paramalyk) {}
+  public ConfessMsgUtil$2(amoa paramamoa) {}
   
   public void run()
   {

@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.model;
 
-import spm;
+import tci;
 
 public class DiscoverManager$1
   implements Runnable
 {
   public void run()
   {
-    spm.a(this.this$0, this.a);
+    tci.a(this.this$0, this.a);
   }
 }
 

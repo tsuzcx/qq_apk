@@ -1,26 +1,14 @@
-import android.animation.ValueAnimator;
-import android.widget.Scroller;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
 
 public class adhx
+  implements adih
 {
-  public float a;
-  public int a;
-  public ValueAnimator a;
-  public Scroller a;
-  public boolean a;
-  public float b;
-  public int b;
-  public Scroller b;
-  public boolean b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  public void a(int paramInt) {}
   
-  public adhx(HeartCombolEffectView paramHeartCombolEffectView) {}
+  public int[] a()
+  {
+    return new int[6];
+  }
 }
 
 

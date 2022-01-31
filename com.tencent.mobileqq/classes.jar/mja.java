@@ -1,65 +1,115 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.Map;
 
-class mja
+public class mja
+  extends miw
 {
-  private Map<String, mjb> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private int a;
   
-  public mja(String[] paramArrayOfString)
+  public mja(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    if (paramArrayOfString != null)
-    {
-      int j = paramArrayOfString.length;
-      int i = 0;
-      if (i < j)
-      {
-        String str = paramArrayOfString[i];
-        if ("DEVICE_BLUETOOTHHEADSET".equals(str)) {
-          this.jdField_a_of_type_JavaUtilMap.put(str, new mjb(this, 2130841666, ajjy.a(2131649245), str));
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if ("DEVICE_EARPHONE".equals(str)) {
-            this.jdField_a_of_type_JavaUtilMap.put(str, new mjb(this, 2130841668, ajjy.a(2131649246), str));
-          } else if ("DEVICE_SPEAKERPHONE".equals(str)) {
-            this.jdField_a_of_type_JavaUtilMap.put(str, new mjb(this, 2130841671, ajjy.a(2131649249), str));
-          } else if ("DEVICE_WIREDHEADSET".equals(str)) {
-            this.jdField_a_of_type_JavaUtilMap.put(str, new mjb(this, 2130841673, ajjy.a(2131649247), str));
-          }
-        }
-      }
-    }
+    super(paramContext, paramVideoAppInterface);
+    this.jdField_a_of_type_Int = ((int)bbdh.a(paramContext, 100.0F));
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilMap.size();
+    return 4;
   }
   
-  public mjb a(String paramString)
+  public void a(int paramInt, Rect paramRect1, Rect paramRect2, HashMap<Long, mlj> paramHashMap)
   {
-    return (mjb)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    paramRect2.set(paramRect1.left, paramRect1.top - paramInt, paramRect1.right, paramRect1.bottom - paramInt);
   }
   
-  public void a(String paramString)
+  public void a(lgf paramlgf, mee[] paramArrayOfmee, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4)
   {
-    if (!TextUtils.isEmpty(paramString))
+    if (this.jdField_a_of_type_AndroidContentContext == null) {}
+  }
+  
+  public void a(mee[] paramArrayOfmee, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    int n = 0;
+    if (this.jdField_a_of_type_AndroidContentContext == null) {}
+    while (paramArrayOfmee == null) {
+      return;
+    }
+    int i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298952);
+    int i2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298949);
+    int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298950);
+    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298951);
+    if (paramInt5 == 0) {
+      i = m;
+    }
+    for (;;)
     {
-      mjb localmjb = (mjb)this.jdField_a_of_type_JavaUtilMap.get("DEVICE_BLUETOOTHHEADSET");
-      if (localmjb != null) {
-        localmjb.b = (ajjy.a(2131649248) + paramString + "）");
+      int j;
+      int k;
+      switch (paramInt1)
+      {
+      default: 
+        j = 0;
+        k = 0;
+        m = 0;
+        i = n;
+      }
+      for (;;)
+      {
+        paramArrayOfmee[1].b(m, k, j, i);
+        ljo.b(i2, i1);
+        ljo.a(m, k);
+        ljo.a(paramInt1);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.w("ScreenLayoutSliderWindow", 1, "setSmallVideoViewLayout, position[" + paramInt1 + "], width[" + paramInt2 + "], height[" + paramInt3 + "], layout[" + m + ", " + k + ", " + j + ", " + i + "], topOffset[" + paramInt4 + "], bottomOffset[" + paramInt5 + "], mGlSmallViewTopOffset[" + this.jdField_a_of_type_Int + "]");
+        return;
+        j = m + i1;
+        k = i + paramInt4;
+        i = k + i2;
+        continue;
+        m = paramInt2 - i1 - m;
+        j = m + i1;
+        k = i + paramInt4;
+        i = k + i2;
+        continue;
+        j = m + i1;
+        k = paramInt3 - i2 - i - paramInt5;
+        i = k + i2;
+        continue;
+        m = paramInt2 - i1 - m;
+        j = m + i1;
+        k = paramInt3 - i2 - i - paramInt5;
+        i = k + i2;
       }
     }
   }
   
-  public String[] a()
+  public void a(mee[] paramArrayOfmee, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
+    paramArrayOfmee[0].a(0, 0, 0, 0);
+    paramArrayOfmee[0].b(0, 0, paramInt1, paramInt2);
+    paramArrayOfmee[0].d(-15197410);
+    paramArrayOfmee[1].a(3, 3, 3, 3);
+    paramArrayOfmee[1].d(-15197410);
+    a(paramArrayOfmee, paramInt3, paramInt1, paramInt2, paramInt4, paramInt5);
+  }
+  
+  public boolean a()
+  {
+    mco localmco = new mco(null);
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(8004), localmco });
+      if (QLog.isDevelopLevel()) {
+        QLog.w("ScreenLayoutSliderWindow", 1, "canSwitchView, mBlock[" + localmco.jdField_b_of_type_Boolean + "], mBlockName[" + localmco.jdField_b_of_type_JavaLangString + "]");
+      }
+    }
+    return !localmco.jdField_b_of_type_Boolean;
   }
 }
 

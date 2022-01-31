@@ -1,25 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.subscribe.widget.AlphaLoadingView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+import java.util.HashMap;
 
 public class wft
-  extends Handler
+  implements View.OnClickListener
 {
-  public wft(AlphaLoadingView paramAlphaLoadingView) {}
+  public wft(QRCardActivity paramQRCardActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    if (!AlphaLoadingView.a(this.a))
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof Integer)) {
+      if (((Integer)localObject).intValue() != 0) {
+        break label101;
+      }
+    }
+    label101:
+    for (String str = (String)((TextView)paramView.findViewById(2131364692)).getText();; str = null)
     {
-      this.a.invalidate();
-      sendEmptyMessageDelayed(1, AlphaLoadingView.a(this.a));
+      if (((Integer)localObject).intValue() == 1)
+      {
+        this.a.a((String)this.a.a.d.get(this.a.h));
+        return;
+      }
+      QRCardActivity.a(this.a, paramView.getContext(), ((Integer)localObject).intValue(), null, str);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wft
  * JD-Core Version:    0.7.0.1
  */

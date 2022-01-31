@@ -1,36 +1,15 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import android.os.Handler;
 
 class vgg
-  implements ServiceConnection
+  implements avtk
 {
-  private vge a;
-  
-  public vgg(vge paramvge)
-  {
-    this.a = paramvge;
-  }
+  vgg(vgd paramvgd) {}
   
   public void a()
   {
-    this.a = null;
-  }
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    vge localvge = this.a;
-    if (localvge != null) {
-      localvge.a(paramComponentName, paramIBinder);
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    vge localvge = this.a;
-    if (localvge != null) {
-      localvge.a(paramComponentName);
-    }
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 10000L);
+    ((vlv)tdc.a(8)).a(vyo.a(this.a.jdField_a_of_type_Vhp.a), this.a.jdField_a_of_type_Vmi);
   }
 }
 

@@ -1,72 +1,80 @@
-import java.lang.reflect.Array;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
 public class aqam
+  extends QIPCModule
 {
-  static aqam[][] a;
-  public int a;
-  public int b;
+  private static volatile aqam a;
+  public static volatile boolean a;
   
-  static
+  private aqam(String paramString)
   {
-    jdField_a_of_type_Array2dOfAqam = (aqam[][])Array.newInstance(aqam.class, new int[] { 3, 3 });
-    int i = 0;
-    while (i < 3)
+    super(paramString);
+  }
+  
+  public static aqam a()
+  {
+    if (jdField_a_of_type_Aqam == null) {}
+    try
     {
-      int j = 0;
-      while (j < 3)
-      {
-        jdField_a_of_type_Array2dOfAqam[i][j] = new aqam(i, j);
-        j += 1;
+      if (jdField_a_of_type_Aqam == null) {
+        jdField_a_of_type_Aqam = new aqam("FlutterSubQIPCModule");
       }
-      i += 1;
+      return jdField_a_of_type_Aqam;
+    }
+    finally {}
+  }
+  
+  public static void a()
+  {
+    if (!jdField_a_of_type_Boolean) {}
+    try
+    {
+      QIPCClientHelper.getInstance().register(a());
+      jdField_a_of_type_Boolean = true;
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("FlutterSubQIPCModule", 1, "register", localException);
     }
   }
   
-  private aqam(int paramInt1, int paramInt2)
-  {
-    a(paramInt1, paramInt2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public static aqam a(int paramInt1, int paramInt2)
+  public static void b()
   {
     try
     {
-      a(paramInt1, paramInt2);
-      aqam localaqam = jdField_a_of_type_Array2dOfAqam[paramInt1][paramInt2];
-      return localaqam;
+      if (QIPCClientHelper.getInstance().getClient() != null)
+      {
+        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+        jdField_a_of_type_Boolean = false;
+      }
+      return;
     }
-    finally
+    catch (Exception localException)
     {
-      localObject = finally;
-      throw localObject;
+      QLog.d("FlutterSubQIPCModule", 1, "unregister", localException);
     }
   }
   
-  private static void a(int paramInt1, int paramInt2)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if ((paramInt1 < 0) || (paramInt1 > 2)) {
-      throw new IllegalArgumentException("row must be in range 0-2");
+    if ("ACTION_INSTALL_RESULT".equals(paramString))
+    {
+      boolean bool1 = paramBundle.getBoolean("KEY_INSTALL_RESULT");
+      paramString = paramBundle.getString("KEY_INSTALL_DIR");
+      boolean bool2 = paramBundle.getBoolean("KEY_IS_ENGINE_EXIST");
+      boolean bool3 = paramBundle.getBoolean("KEY_IS_APP_EXIST");
+      if (QLog.isColorLevel()) {
+        QLog.d("FlutterSubQIPCModule", 2, String.format("install finish isSuccess: %s, engineDir: %s, isEngineExist: %s, isAppExist: %s", new Object[] { Boolean.valueOf(bool1), paramString, Boolean.valueOf(bool2), Boolean.valueOf(bool3) }));
+      }
+      aqag.a(bool1, paramString, bool2, bool3);
     }
-    if ((paramInt2 < 0) || (paramInt2 > 2)) {
-      throw new IllegalArgumentException("column must be in range 0-2");
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public String toString()
-  {
-    return "(row=" + this.jdField_a_of_type_Int + ",clmn=" + this.b + ")";
+    return null;
   }
 }
 

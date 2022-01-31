@@ -1,26 +1,49 @@
-import android.util.Property;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import dov.com.qq.im.ae.play.PlayViewPagerAdapter;
 
 class biwu
-  extends Property<biwt, Integer>
+  implements bjob<bivx>
 {
-  biwu(biwt parambiwt, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  biwu(biwr parambiwr) {}
   
-  public Integer a(biwt parambiwt)
+  public void a(@Nullable bivx parambivx)
   {
-    if (parambiwt != null) {
-      return Integer.valueOf(biwt.a(parambiwt));
+    if (parambivx == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (parambivx != bivx.a) {
+            break;
+          }
+          if ((biwh.a == null) || (biwh.a != biqk.a())) {
+            bizg.a().g("none");
+          }
+        } while (!this.a.a());
+        biwr.a(this.a).setVisibility(8);
+        return;
+        if (parambivx != bivx.c) {
+          break;
+        }
+      } while (!this.a.a());
+      biwr.a(this.a).setVisibility(8);
+      return;
+    } while (parambivx != bivx.b);
+    biwr.c(this.a);
+    if (biwr.a(this.a) != null)
+    {
+      parambivx = biwr.a(this.a).a();
+      if ((!TextUtils.isEmpty(parambivx)) && (!"-1".equals(parambivx))) {
+        bizg.a().g(parambivx);
+      }
     }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(biwt parambiwt, Integer paramInteger)
-  {
-    if (parambiwt != null) {
-      biwt.a(parambiwt, paramInteger.intValue());
-    }
+    biwr.a(this.a).setVisibility(0);
+    biwr.d(this.a);
   }
 }
 

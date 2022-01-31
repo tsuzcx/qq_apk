@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
 import android.annotation.SuppressLint;
+import android.app.Application;
+import android.content.SharedPreferences;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.aekit.api.standard.ai.AEDetector;
@@ -20,6 +22,7 @@ import com.tencent.mobileqq.shortvideo.resource.GestureResource;
 import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.mobileqq.shortvideo.util.CameraInterFace;
+import com.tencent.mobileqq.sveffects.libsveffects.BuildConfig;
 import com.tencent.sveffects.SLog;
 import com.tencent.sveffects.SdkContext;
 import com.tencent.ttpic.baseutils.log.LogUtils;
@@ -180,6 +183,17 @@ public class QQFilterRenderManager
   
   private void initial()
   {
+    if (BuildConfig.DEBUG)
+    {
+      Application localApplication = SdkContext.getInstance().getApplication();
+      if (localApplication != null)
+      {
+        LogUtils.setEnable(localApplication.getSharedPreferences("mobileQQ", 0).getBoolean("sv_error_log", false));
+        return;
+      }
+      LogUtils.setEnable(false);
+      return;
+    }
     LogUtils.setEnable(false);
   }
   

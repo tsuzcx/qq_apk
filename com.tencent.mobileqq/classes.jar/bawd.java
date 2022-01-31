@@ -1,53 +1,34 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import android.text.TextUtils;
-import android.widget.RelativeLayout;
-import android.widget.VideoView;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
 final class bawd
-  implements MediaPlayer.OnErrorListener
+  implements DownloadParams.DecodeHandler
 {
-  bawd(int paramInt, bawf parambawf, VideoView paramVideoView, boolean paramBoolean) {}
-  
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipFunCallManager", 2, "playing onError what=" + paramInt1 + ", extra=" + paramInt2 + ", funcallid=" + this.jdField_a_of_type_Int);
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    if (this.jdField_a_of_type_Bawf != null) {
-      this.jdField_a_of_type_Bawf.a(paramInt1, paramInt2, this.jdField_a_of_type_Int);
-    }
-    paramMediaPlayer = bavz.a(null, this.jdField_a_of_type_Int, 7, null);
-    if (TextUtils.isEmpty(paramMediaPlayer)) {}
-    label159:
-    RelativeLayout localRelativeLayout;
+    Object localObject;
     do
     {
-      for (;;)
+      do
       {
-        return true;
-        if (new File(paramMediaPlayer).exists())
-        {
-          paramMediaPlayer = azvq.a(paramMediaPlayer);
-          if (paramMediaPlayer != null) {}
-          for (paramMediaPlayer = new BitmapDrawable(paramMediaPlayer); (paramMediaPlayer != null) && (this.jdField_a_of_type_AndroidWidgetVideoView != null); paramMediaPlayer = null)
-          {
-            if (this.jdField_a_of_type_Boolean != true) {
-              break label159;
-            }
-            this.jdField_a_of_type_AndroidWidgetVideoView.setBackgroundDrawable(paramMediaPlayer);
-            return true;
-          }
-        }
-      }
-      this.jdField_a_of_type_AndroidWidgetVideoView.setVisibility(8);
-      localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetVideoView.getParent();
-    } while (localRelativeLayout == null);
-    localRelativeLayout.setBackgroundDrawable(paramMediaPlayer);
-    return true;
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    if (paramDownloadParams[0] == 0) {
+      paramDownloadParams[0] = paramBitmap.getWidth();
+    }
+    if (paramDownloadParams[1] == 0) {
+      paramDownloadParams[1] = paramBitmap.getHeight();
+    }
+    return bbdr.d(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

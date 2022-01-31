@@ -1,64 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.1;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.MessageQueue.IdleHandler;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahtv
-  implements ahtw
+  implements MessageQueue.IdleHandler
 {
-  ahtv(ahtt paramahtt) {}
+  public ahtv(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void a(int paramInt)
+  public boolean queueIdle()
   {
-    if (ahtt.a(this.a) != null) {
-      ahtt.a(this.a).a(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, String paramString1, PublishVideoEntry paramPublishVideoEntry, String paramString2, long paramLong)
-  {
-    if ((paramInt == 0) && (paramPublishVideoEntry != null) && (paramString2 != null)) {
-      ahtt.a(this.a).a(paramPublishVideoEntry, paramString2);
+    if (axho.d(axho.b)) {
+      this.a.b(true);
     }
     for (;;)
     {
-      ThreadManager.excute(new EncodeVideoTask.2.2(this, paramInt, paramPublishVideoEntry, paramLong), 64, null, true);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EncodeVideoTask", 2, new Object[] { "composite error, fakeVid:", ahtt.e(this.a), ", errorCode:", Integer.valueOf(paramInt), ", errorMsg:", paramString1 });
+      if ((this.a.g) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
       }
-      ahtt.a(this.a).a(paramInt);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+      this.a.c.setEnabled(false);
+      if (QLog.isColorLevel()) {
+        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
+      }
+      return false;
+      this.a.j();
     }
-  }
-  
-  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("EncodeVideoTask", 2, "generate files|onNext file: " + paramString);
-    }
-    if (ahtt.b(this.a))
-    {
-      b(paramPublishVideoEntry, paramString);
-      return;
-    }
-    if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (bace.b(paramPublishVideoEntry.doodlePath)))
-    {
-      ahtt.a(paramString, paramPublishVideoEntry, ahtt.a(this.a));
-      return;
-    }
-    b(paramPublishVideoEntry, paramString);
-  }
-  
-  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    ThreadManager.excute(new EncodeVideoTask.2.1(this, paramString, paramPublishVideoEntry), 64, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahtv
  * JD-Core Version:    0.7.0.1
  */

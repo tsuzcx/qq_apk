@@ -1,80 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import aamx;
-import alij;
-import android.os.SystemClock;
-import baio;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import java.util.ArrayList;
-import java.util.Iterator;
-import svc;
+import aawo;
+import ajyc;
+import android.content.res.Resources;
+import bcpw;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class Conversation$33$1
   implements Runnable
 {
-  public Conversation$33$1(aamx paramaamx, boolean paramBoolean) {}
+  public Conversation$33$1(aawo paramaawo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aamx.a.e(true);
-    if (this.jdField_a_of_type_Aamx.a.g)
-    {
-      Conversation.a(this.jdField_a_of_type_Aamx.a, 800L);
-      Object localObject;
-      label108:
-      alij localalij;
-      if (this.jdField_a_of_type_Aamx.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader != null)
-      {
-        localObject = this.jdField_a_of_type_Aamx.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          i = 0;
-          ((PullRefreshHeader)localObject).a(i);
-        }
-      }
-      else
-      {
-        if (this.jdField_a_of_type_Aamx.a.jdField_a_of_type_Svc != null)
-        {
-          localObject = this.jdField_a_of_type_Aamx.a.jdField_a_of_type_Svc;
-          if (!this.jdField_a_of_type_Boolean) {
-            break label185;
-          }
-          i = 0;
-          ((svc)localObject).a(i);
-        }
-        if (this.jdField_a_of_type_Aamx.a.jdField_a_of_type_JavaUtilArrayList == null) {
-          break label195;
-        }
-        localObject = this.jdField_a_of_type_Aamx.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        label140:
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          localalij = (alij)((Iterator)localObject).next();
-        } while (localalij == null);
-        if (!this.jdField_a_of_type_Boolean) {
-          break label190;
-        }
-      }
-      label185:
-      label190:
-      for (int i = 0;; i = 2)
-      {
-        localalij.a(i);
-        break label140;
-        i = 2;
-        break;
-        i = 2;
-        break label108;
-      }
-    }
-    label195:
-    if (this.jdField_a_of_type_Aamx.a.c > 0L) {
-      baio.a("Conversation_PullToRefresh_cbSwitchToUI", SystemClock.uptimeMillis() - this.jdField_a_of_type_Aamx.a.c);
-    }
+    bcpw.a(this.a.a.a(), 1, ajyc.a(2131702588), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
   }
 }
 

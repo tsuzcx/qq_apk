@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-
 public class ajle
-  implements View.OnClickListener
 {
-  public ajle(IphoneTitleBarActivity paramIphoneTitleBarActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.onBackEvent();
-  }
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "0";
+  public String g = "0";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajle
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abct;
-import abcu;
-import abcv;
-import ajss;
-import akhz;
-import akib;
+import abmr;
+import abms;
+import abmt;
+import akhc;
+import akwl;
+import akwn;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,9 +17,9 @@ import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import atok;
-import badq;
-import bbms;
+import aumi;
+import bbev;
+import bcpq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -28,17 +28,17 @@ import mqq.observer.WtloginObserver;
 
 public class LoginVerifyCodeActivity
   extends RegisterNewBaseActivity
-  implements akhz, TextWatcher, View.OnClickListener, View.OnKeyListener
+  implements akwl, TextWatcher, View.OnClickListener, View.OnKeyListener
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131313038, 2131313039, 2131313040, 2131313041, 2131313042, 2131313043 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131378862, 2131378863, 2131378864, 2131378865, 2131378866, 2131378867 };
   private int jdField_a_of_type_Int = 60;
-  public ajss a;
-  private akib jdField_a_of_type_Akib;
+  public akhc a;
+  private akwn jdField_a_of_type_Akwn;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bbms jdField_a_of_type_Bbms;
+  private bcpq jdField_a_of_type_Bcpq;
   private Runnable jdField_a_of_type_JavaLangRunnable = new LoginVerifyCodeActivity.1(this);
   public SubAccountObserver a;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new abct(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new abmr(this);
   private boolean jdField_a_of_type_Boolean;
   private EditText[] jdField_a_of_type_ArrayOfAndroidWidgetEditText = new EditText[6];
   private String d;
@@ -46,23 +46,23 @@ public class LoginVerifyCodeActivity
   
   public LoginVerifyCodeActivity()
   {
-    this.jdField_a_of_type_MqqObserverSubAccountObserver = new abcu(this);
-    this.jdField_a_of_type_Ajss = new abcv(this);
+    this.jdField_a_of_type_MqqObserverSubAccountObserver = new abms(this);
+    this.jdField_a_of_type_Akhc = new abmt(this);
   }
   
   private void a()
   {
     int i = 0;
-    c(2131651398);
+    c(2131717190);
     b();
-    ((TextView)findViewById(2131312679)).setText(getString(2131651389, new Object[] { "+" + this.b + " " + this.jdField_a_of_type_JavaLangString }));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298083));
+    ((TextView)findViewById(2131378503)).setText(getString(2131717181, new Object[] { "+" + this.b + " " + this.jdField_a_of_type_JavaLangString }));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363635));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131651357) + "(" + this.jdField_a_of_type_Int + ")");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131717149) + "(" + this.jdField_a_of_type_Int + ")");
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
     while (i < 6)
     {
-      this.jdField_a_of_type_ArrayOfAndroidWidgetEditText[i] = ((EditText)findViewById(jdField_a_of_type_ArrayOfInt[i]).findViewById(2131312682));
+      this.jdField_a_of_type_ArrayOfAndroidWidgetEditText[i] = ((EditText)findViewById(jdField_a_of_type_ArrayOfInt[i]).findViewById(2131378506));
       this.jdField_a_of_type_ArrayOfAndroidWidgetEditText[i].addTextChangedListener(this);
       this.jdField_a_of_type_ArrayOfAndroidWidgetEditText[i].setOnKeyListener(this);
       i += 1;
@@ -76,10 +76,10 @@ public class LoginVerifyCodeActivity
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      atok.a().b(this.app, this.app.getCurrentAccountUin(), this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
+      aumi.a().b(this.app, this.app.getCurrentAccountUin(), this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
       return;
     }
-    atok.a().b(this.app, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
+    aumi.a().b(this.app, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
   }
   
   private void d(int paramInt)
@@ -87,24 +87,24 @@ public class LoginVerifyCodeActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131651357) + "(" + this.jdField_a_of_type_Int + ")");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131717149) + "(" + this.jdField_a_of_type_Int + ")");
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
   }
   
   private void e()
   {
-    b(2131651369);
-    if (atok.a().a(this.app, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver) != 0)
+    b(2131717161);
+    if (aumi.a().a(this.app, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver) != 0)
     {
       c();
-      a(2131652916, 1);
+      a(2131718741, 1);
     }
   }
   
   private void f()
   {
-    if (!badq.d(BaseApplication.getContext())) {
-      a(2131626719, 0);
+    if (!bbev.d(BaseApplication.getContext())) {
+      a(2131692321, 0);
     }
     Object localObject1;
     do
@@ -128,15 +128,15 @@ public class LoginVerifyCodeActivity
       if ((localObject1 == null) || (((String)localObject1).length() <= 0)) {
         break;
       }
-      b(2131651278);
+      b(2131717070);
       if (QLog.isColorLevel()) {
         QLog.d("LoginVerifyCodeActivity", 2, "commitSmsCode start...");
       }
-    } while (atok.a().a(this.app, this.b, this.jdField_a_of_type_JavaLangString, (String)localObject1, this.jdField_a_of_type_MqqObserverWtloginObserver) == 0);
+    } while (aumi.a().a(this.app, this.b, this.jdField_a_of_type_JavaLangString, (String)localObject1, this.jdField_a_of_type_MqqObserverWtloginObserver) == 0);
     c();
-    a(2131652916, 1);
+    a(2131718741, 1);
     return;
-    a(2131651289, 0);
+    a(2131717081, 0);
   }
   
   public void afterTextChanged(Editable paramEditable)
@@ -155,7 +155,7 @@ public class LoginVerifyCodeActivity
     label207:
     for (int k = localEditable.toString().length();; k = 0)
     {
-      View localView = findViewById(jdField_a_of_type_ArrayOfInt[j]).findViewById(2131303565);
+      View localView = findViewById(jdField_a_of_type_ArrayOfInt[j]).findViewById(2131369234);
       if ((localEditable != null) && (localEditable == paramEditable))
       {
         if (k <= 0) {
@@ -224,7 +224,7 @@ public class LoginVerifyCodeActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131495249);
+    setContentView(2131560828);
     paramBundle = getIntent();
     if (paramBundle != null)
     {
@@ -232,13 +232,13 @@ public class LoginVerifyCodeActivity
       this.jdField_a_of_type_Boolean = paramBundle.getBooleanExtra("isSubaccount", false);
     }
     if (this.jdField_a_of_type_Boolean) {
-      addObserver(this.jdField_a_of_type_Ajss);
+      addObserver(this.jdField_a_of_type_Akhc);
     }
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("phonenum");
     this.b = getIntent().getStringExtra("key");
     a();
-    this.jdField_a_of_type_Akib = new akib(null);
-    this.jdField_a_of_type_Akib.a(this, this);
+    this.jdField_a_of_type_Akwn = new akwn(null);
+    this.jdField_a_of_type_Akwn.a(this, this);
     return true;
   }
   
@@ -264,16 +264,16 @@ public class LoginVerifyCodeActivity
   
   public void onClick(View paramView)
   {
-    if (!badq.d(BaseApplication.getContext()))
+    if (!bbev.d(BaseApplication.getContext()))
     {
-      a(2131626719, 0);
+      a(2131692321, 0);
       return;
     }
     switch (paramView.getId())
     {
     default: 
       return;
-    case 2131298042: 
+    case 2131363592: 
       f();
       return;
     }
@@ -285,12 +285,12 @@ public class LoginVerifyCodeActivity
     super.onDestroy();
     c();
     if (this.jdField_a_of_type_Boolean) {
-      removeObserver(this.jdField_a_of_type_Ajss);
+      removeObserver(this.jdField_a_of_type_Akhc);
     }
-    if (this.jdField_a_of_type_Akib != null) {
-      this.jdField_a_of_type_Akib.a();
+    if (this.jdField_a_of_type_Akwn != null) {
+      this.jdField_a_of_type_Akwn.a();
     }
-    this.jdField_a_of_type_Akib = null;
+    this.jdField_a_of_type_Akwn = null;
   }
   
   public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)

@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.viola.adapter.IJSApiAdapter.OnInovkeCallback;
+import org.json.JSONObject;
 
-public class rwu
-  implements View.OnClickListener
+class rwu
+  implements qki
 {
-  public rwu(WSRecommendFragment paramWSRecommendFragment) {}
+  IJSApiAdapter.OnInovkeCallback a;
   
-  public void onClick(View paramView)
+  public rwu(IJSApiAdapter.OnInovkeCallback paramOnInovkeCallback)
   {
-    WSRecommendFragment.a(this.a).a();
-    WSRecommendFragment.a(this.a).a(true, true, "");
-    WSRecommendFragment.a(this.a).a("");
-    WSRecommendFragment.a(this.a).setVisibility(8);
-    this.a.a();
-    rzu.a(136, 1, null);
-    rzw.b(true);
+    this.a = paramOnInovkeCallback;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (this.a != null) {
+      this.a.callback(paramJSONObject);
+    }
   }
 }
 

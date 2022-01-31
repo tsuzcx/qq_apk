@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import apei;
-import apej;
+import apwc;
+import apwd;
 
 public class UniformDownloadUtil$3$1
   implements Runnable
 {
-  public UniformDownloadUtil$3$1(apej paramapej) {}
+  public UniformDownloadUtil$3$1(apwd paramapwd) {}
   
   public void run()
   {
-    apei.a(this.this$0.a, this.this$0.b);
+    apwc.a(this.this$0.a, this.this$0.b);
   }
 }
 

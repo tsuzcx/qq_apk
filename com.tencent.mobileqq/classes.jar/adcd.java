@@ -1,19 +1,35 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class adcd
-  extends acju
+  implements TextWatcher
 {
-  public TextView a;
-  public AutoStartProgressBar a;
-  public ArkAppLoadLayout a;
-  public ArkAppView a;
-  public String b;
-  public View c;
-  public View d;
+  public adcd(VoiceTextEditPanel paramVoiceTextEditPanel) {}
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    if (VoiceTextEditPanel.a(this.a).get() == 5)
+    {
+      VoiceTextEditPanel.a(this.a, paramEditable.toString());
+      if (!bbjw.a(VoiceTextEditPanel.a(this.a))) {
+        break label55;
+      }
+      this.a.setSendEnable(false);
+    }
+    for (;;)
+    {
+      this.a.c();
+      return;
+      label55:
+      this.a.setSendEnable(true);
+    }
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

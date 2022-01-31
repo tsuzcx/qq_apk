@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aebk;
-import aebt;
+import aemj;
+import aems;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.data.EqqDetail;
-import mqb;
+import nbc;
 
 public class BusinessCmrTmpChatPie$2$1
   implements Runnable
 {
-  public BusinessCmrTmpChatPie$2$1(aebt paramaebt, EqqDetail paramEqqDetail) {}
+  public BusinessCmrTmpChatPie$2$1(aems paramaems, EqqDetail paramEqqDetail) {}
   
   public void run()
   {
-    mqb.b(this.jdField_a_of_type_Aebt.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-    this.jdField_a_of_type_Aebt.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new BusinessCmrTmpChatPie.2.1.1(this));
+    nbc.b(this.jdField_a_of_type_Aems.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+    this.jdField_a_of_type_Aems.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new BusinessCmrTmpChatPie.2.1.1(this));
   }
 }
 

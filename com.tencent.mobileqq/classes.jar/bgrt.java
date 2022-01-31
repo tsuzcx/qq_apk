@@ -1,16 +1,10 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Bundle;
+import android.os.IInterface;
 
-class bgrt
-  implements View.OnTouchListener
+public abstract interface bgrt
+  extends IInterface
 {
-  bgrt(bgrr parambgrr) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return paramMotionEvent.getAction() == 2;
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
 }
 
 

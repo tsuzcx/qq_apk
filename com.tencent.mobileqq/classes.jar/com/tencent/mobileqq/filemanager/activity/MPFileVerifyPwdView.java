@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import ajgm;
+import ajuo;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -14,13 +14,13 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anyh;
-import anyi;
-import anyj;
-import anyk;
-import apcb;
-import badq;
-import bfhb;
+import aopa;
+import aopb;
+import aopc;
+import aopd;
+import aptv;
+import bbev;
+import bgos;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -35,7 +35,7 @@ public class MPFileVerifyPwdView
   View jdField_a_of_type_AndroidViewView = null;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private anyk jdField_a_of_type_Anyk;
+  private aopd jdField_a_of_type_Aopd;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Timer jdField_a_of_type_JavaUtilTimer = new Timer();
   private View jdField_b_of_type_AndroidViewView;
@@ -48,16 +48,16 @@ public class MPFileVerifyPwdView
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public View a(ViewGroup paramViewGroup, anyk paramanyk)
+  public View a(ViewGroup paramViewGroup, aopd paramaopd)
   {
-    this.jdField_a_of_type_Anyk = paramanyk;
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131494939, null).findViewById(2131313021);
+    this.jdField_a_of_type_Aopd = paramaopd;
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131560512, null).findViewById(2131378846);
     return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Anyk = null;
+    this.jdField_a_of_type_Aopd = null;
     if (this.jdField_a_of_type_JavaUtilTimer != null)
     {
       this.jdField_a_of_type_JavaUtilTimer.cancel();
@@ -68,23 +68,23 @@ public class MPFileVerifyPwdView
   @TargetApi(11)
   public void b()
   {
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131313024);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131306473));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378849);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372170));
     this.jdField_a_of_type_AndroidWidgetTextView.setLongClickable(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.addTextChangedListener(new anyh(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.addTextChangedListener(new aopa(this));
     if (Build.VERSION.SDK_INT >= 11)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextIsSelectable(false);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCustomSelectionActionModeCallback(new anyi(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setCustomSelectionActionModeCallback(new aopb(this));
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131313022));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131378847));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131304683));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131628711);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370340));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131694363);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#00a5e0"));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new anyj(this));
-    if (!badq.d(BaseApplicationImpl.getContext())) {
-      apcb.a(BaseApplicationImpl.getContext().getString(2131628946));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new aopc(this));
+    if (!bbev.d(BaseApplicationImpl.getContext())) {
+      aptv.a(BaseApplicationImpl.getContext().getString(2131694607));
     }
   }
   
@@ -105,7 +105,7 @@ public class MPFileVerifyPwdView
   {
     paramView = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
     if ((paramView == null) || (paramView.equals(""))) {
-      apcb.a(BaseApplicationImpl.getContext().getString(2131628730));
+      aptv.a(BaseApplicationImpl.getContext().getString(2131694382));
     }
     do
     {
@@ -114,19 +114,19 @@ public class MPFileVerifyPwdView
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#00a5e0"));
       if (paramView.length() < 6)
       {
-        apcb.a(BaseApplicationImpl.getContext().getString(2131628731));
+        aptv.a(BaseApplicationImpl.getContext().getString(2131694383));
         return;
       }
-      if (!badq.d(BaseApplicationImpl.getContext()))
+      if (!bbev.d(BaseApplicationImpl.getContext()))
       {
-        apcb.a(BaseApplicationImpl.getContext().getString(2131628946));
+        aptv.a(BaseApplicationImpl.getContext().getString(2131694607));
         return;
       }
-      ajgm localajgm = (ajgm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
-      localajgm.a().a(paramView);
-      this.jdField_a_of_type_Long = localajgm.a().a(2);
-    } while (this.jdField_a_of_type_Anyk == null);
-    this.jdField_a_of_type_Anyk.a(this.jdField_a_of_type_Long);
+      ajuo localajuo = (ajuo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
+      localajuo.a().a(paramView);
+      this.jdField_a_of_type_Long = localajuo.a().a(2);
+    } while (this.jdField_a_of_type_Aopd == null);
+    this.jdField_a_of_type_Aopd.a(this.jdField_a_of_type_Long);
   }
 }
 

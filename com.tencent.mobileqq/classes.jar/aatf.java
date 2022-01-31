@@ -1,15 +1,57 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aatf
-  implements View.OnClickListener
+  extends akav
 {
-  public aatf(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public aatf(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    ForwardTroopListFragment.a(this.a);
+    if (!ChatSettingActivity.c(this.a)) {
+      return;
+    }
+    ChatSettingActivity.c(this.a, false);
+    ChatSettingActivity.g(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "onInsertIntoBlackList, isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
+        ChatSettingActivity.a(this.a, true);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, "onInsertIntoBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
+      }
+      ChatSettingActivity.b(this.a);
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131719520, 1);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (!ChatSettingActivity.c(this.a)) {
+      return;
+    }
+    ChatSettingActivity.c(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "onRemoveFromBlackList, isSuccess=" + paramBoolean);
+    }
+    ChatSettingActivity.g(this.a);
+    if (paramBoolean)
+    {
+      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
+        ChatSettingActivity.a(this.a, false);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, "onRemoveFromBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
+      }
+      ChatSettingActivity.b(this.a);
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131719520, 1);
   }
 }
 

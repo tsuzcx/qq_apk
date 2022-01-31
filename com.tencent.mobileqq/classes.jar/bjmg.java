@@ -1,24 +1,18 @@
-import android.os.Build.VERSION;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.JBMR2VideoConverterImpl;
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class bjmg
+final class bjmg
+  implements EIPCResultCallback
 {
-  bjmj a;
-  
-  public bjmg()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (Build.VERSION.SDK_INT >= 18) {
-      this.a = new JBMR2VideoConverterImpl();
+    if (paramEIPCResult != null)
+    {
+      boolean bool = paramEIPCResult.data.getBoolean("key_result");
+      QLog.d("PeakIpcController", 2, "sendPic result:" + bool);
     }
-  }
-  
-  public boolean a(File paramFile, bjmh parambjmh, boolean paramBoolean)
-  {
-    if (this.a != null) {
-      return this.a.a(paramFile, parambjmh, paramBoolean);
-    }
-    return false;
   }
 }
 

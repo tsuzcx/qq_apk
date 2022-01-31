@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.view.View;
-import arxu;
+import asty;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
@@ -49,10 +49,10 @@ class MainFragment$2
           ((View)MainFragment.a(this.this$0).get("动态")).setSoundEffectsEnabled(bool);
         }
       }
-      if (arxu.a().a()) {
+      if (asty.a().a()) {
         break;
       }
-      arxu.a().a(MainFragment.a(this.this$0));
+      asty.a().a(MainFragment.a(this.this$0));
       return;
     }
   }

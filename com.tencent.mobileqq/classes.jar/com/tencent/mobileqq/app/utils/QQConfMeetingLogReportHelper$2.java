@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.utils;
 
-import akhx;
+import akwj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -12,12 +12,12 @@ import mqq.manager.TicketManager;
 public class QQConfMeetingLogReportHelper$2
   implements Runnable
 {
-  public QQConfMeetingLogReportHelper$2(akhx paramakhx, String paramString) {}
+  public QQConfMeetingLogReportHelper$2(akwj paramakwj, String paramString) {}
   
   public void run()
   {
     long l1 = System.currentTimeMillis();
-    Object localObject = ((QQAppInterface)akhx.a(this.this$0).get()).getCurrentAccountUin();
+    Object localObject = ((QQAppInterface)akwj.a(this.this$0).get()).getCurrentAccountUin();
     String str1 = "MSFSDK_LogReport" + (String)localObject;
     localObject = BaseApplicationImpl.sApplication.getRuntime();
     if (localObject != null)

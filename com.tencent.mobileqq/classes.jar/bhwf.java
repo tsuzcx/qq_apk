@@ -1,19 +1,20 @@
-public class bhwf<T>
-  extends bhwc<T>
+import android.app.Activity;
+
+public final class bhwf
+  implements bgkw
 {
-  public void a(T paramT)
-  {
-    super.a(paramT);
-  }
+  public bhwf(Activity paramActivity) {}
   
-  public void b(T paramT)
+  public void a(boolean paramBoolean)
   {
-    super.b(paramT);
+    if (!paramBoolean) {
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhwf
  * JD-Core Version:    0.7.0.1
  */

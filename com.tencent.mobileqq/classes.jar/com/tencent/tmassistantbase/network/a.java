@@ -4,7 +4,7 @@ import com.qq.taf.jce.JceStruct;
 import com.tencent.tmassistant.common.ProtocolPackage;
 import com.tencent.tmassistant.common.jce.ReqHead;
 import com.tencent.tmassistant.common.jce.Request;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 
 public abstract class a
 {
@@ -21,7 +21,7 @@ public abstract class a
   
   public int a(JceStruct paramJceStruct)
   {
-    ac.c("BaseNetEngine", ">>sendRequest enter requestJce = " + paramJceStruct);
+    ab.c("BaseNetEngine", ">>sendRequest enter requestJce = " + paramJceStruct);
     if (paramJceStruct == null) {
       a(0, -1, null, null);
     }
@@ -32,15 +32,15 @@ public abstract class a
       paramJceStruct = ProtocolPackage.buildRequest(paramJceStruct);
       if ((paramJceStruct == null) || (paramJceStruct.head == null))
       {
-        ac.c("BaseNetEngine", ">>sendRequest sendRequest == null || sendRequest.head == null");
+        ab.c("BaseNetEngine", ">>sendRequest sendRequest == null || sendRequest.head == null");
         a(0, -2, null, null);
         return -1;
       }
       i = paramJceStruct.head.requestId;
-      ac.c("BaseNetEngine", ">>sendRequest ret = " + i);
+      ab.c("BaseNetEngine", ">>sendRequest ret = " + i);
       paramJceStruct = ProtocolPackage.buildPostData(paramJceStruct);
     } while (!this.a.sendRequest(paramJceStruct));
-    ac.c("BaseNetEngine", ">>sendRequest success ret = " + i);
+    ab.c("BaseNetEngine", ">>sendRequest success ret = " + i);
     return i;
   }
   

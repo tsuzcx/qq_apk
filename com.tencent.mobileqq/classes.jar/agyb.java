@@ -1,30 +1,23 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
-class agyb
-  implements View.OnClickListener
+public class agyb
+  extends BroadcastReceiver
 {
-  agyb(agxq paramagxq) {}
+  public agyb(SendHbActivity paramSendHbActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (SendHbActivity.a(this.a)) && ((this.a.a & 0x40) > 0)) {
+      this.a.finish();
     }
-    paramView = new Bundle();
-    paramView.putBoolean("string_from", false);
-    paramView.putBoolean("string_uin", true);
-    paramView.putLong("device_din", 0L);
-    paramView.putInt("sTitleID", 0);
-    bfgz.a(agxq.a(this.a), paramView, "com.qqdataline.activity.LiteWifiphotoActivity");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agyb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,34 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.List;
-import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.GbarInfo;
-import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.RspBody;
-import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.RspInfo;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class abxi
-  extends mmn
+  extends ajtq
 {
-  public abxi(TroopInfoActivity paramTroopInfoActivity) {}
+  public abxi(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramBundle = new oidb_cmd0x6f6.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = paramBundle.rpt_msg_rsp_info.get();
-        if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
-        {
-          paramArrayOfByte = (oidb_cmd0x6f6.RspInfo)paramArrayOfByte.get(0);
-          if ((paramArrayOfByte != null) && (paramArrayOfByte.uint32_result.get() == 0))
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId = paramArrayOfByte.stgbarinfo.uint32_bid.get();
-            this.a.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId;
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeName = paramArrayOfByte.stgbarinfo.str_name.get().toStringUtf8();
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(7);
-            return;
-          }
-        }
-      }
-      catch (Exception paramArrayOfByte) {}
+    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
+      QQSettingSettingActivity.a(this.a, (Card)paramObject);
     }
+  }
+  
+  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if ((paramString != null) && (paramString.equals(this.a.app.getCurrentAccountUin())))
+    {
+      if (paramBoolean1) {
+        this.a.a(this.a.app.getCurrentAccountUin());
+      }
+      return;
+    }
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    QLog.e("QQSetting2Activity", 2, "onGetAllowSeeLoginDays isSuccess " + paramBoolean1 + "isAllow:" + paramBoolean2 + "uin " + str);
   }
 }
 

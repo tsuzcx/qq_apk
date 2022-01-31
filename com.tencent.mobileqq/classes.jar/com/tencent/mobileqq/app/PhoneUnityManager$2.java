@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.app;
 
-import ajoe;
-import ajof;
-import ajru;
+import akco;
+import akcp;
+import akge;
 import com.tencent.qphone.base.util.QLog;
 
 public class PhoneUnityManager$2
   implements Runnable
 {
-  public PhoneUnityManager$2(ajof paramajof) {}
+  public PhoneUnityManager$2(akcp paramakcp) {}
   
   public void run()
   {
     if (QLog.isDevelopLevel()) {
       QLog.i("MobileUnityManager", 4, "load phone local data");
     }
-    ajoe localajoe = this.this$0.a();
-    ((ajru)this.this$0.a.a(34)).notifyUI(9, true, localajoe);
+    akco localakco = this.this$0.a();
+    ((akge)this.this$0.a.a(34)).notifyUI(9, true, localakco);
   }
 }
 

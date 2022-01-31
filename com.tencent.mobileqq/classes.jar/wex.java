@@ -1,18 +1,21 @@
-class wex
-  implements wez
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+
+public class wex
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  wex(wet paramwet, adcg paramadcg) {}
+  public wex(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void a(boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!paramBoolean) {
-      wet.a(this.jdField_a_of_type_Wet, this.jdField_a_of_type_Adcg, true);
-    }
+    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wex
  * JD-Core Version:    0.7.0.1
  */

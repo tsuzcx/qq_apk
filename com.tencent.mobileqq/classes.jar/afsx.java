@@ -1,15 +1,8 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 
-class afsx
-  implements View.OnClickListener
+public abstract interface afsx
 {
-  afsx(afsu paramafsu) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-  }
+  public abstract View a();
 }
 
 

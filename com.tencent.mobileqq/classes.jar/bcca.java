@@ -1,23 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public class bcca
-  implements DialogInterface.OnClickListener
+class bcca
+  implements TouchWebView.OnScrollChangedListener
 {
-  public bcca(DownloadJSApi.2 param2) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bcca(bcbv parambcbv) {}
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bcgl.r, false);
-    bcbz.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_SwiftIphoneTitleBarUI", 2, "-->onScrollChanged:" + paramInt1 + "," + paramInt2 + "," + paramInt3 + "," + paramInt4);
+    }
+    if (ImmersiveUtils.isSupporImmersive() == 1) {}
+    for (paramInt1 = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());; paramInt1 = 0)
+    {
+      paramInt1 = paramInt1 + bawz.a(BaseApplicationImpl.getApplication(), 50.0F) + 180;
+      if (Math.abs(paramInt2 - this.jdField_a_of_type_Int) > 20) {
+        if (paramInt2 < paramInt1 / 3) {
+          this.jdField_a_of_type_Bcbv.a.t = true;
+        }
+      }
+      while (paramInt2 >= paramInt1 / 3) {
+        for (;;)
+        {
+          this.jdField_a_of_type_Int = paramInt2;
+          this.jdField_a_of_type_Bcbv.g();
+          return;
+          if (paramInt2 >= paramInt1) {
+            this.jdField_a_of_type_Bcbv.a.t = false;
+          }
+        }
+      }
+      this.jdField_a_of_type_Bcbv.a.t = true;
+      this.jdField_a_of_type_Int = paramInt2;
+      this.jdField_a_of_type_Bcbv.g();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcca
  * JD-Core Version:    0.7.0.1
  */

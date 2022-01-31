@@ -1,23 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
 
-public class atko
-  implements DialogInterface.OnClickListener
+class atko
+  extends Handler
 {
-  public atko(AutoReplyEditActivity paramAutoReplyEditActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  atko(atkm paramatkm, Looper paramLooper)
   {
-    if (!this.a.getActivity().isFinishing()) {
-      this.a.getActivity().finish();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
+    do
+    {
+      return;
+      if (this.a.jdField_a_of_type_Atkx != null)
+      {
+        int i = this.a.jdField_a_of_type_Atkx.a();
+        this.a.jdField_a_of_type_Atkv.a(i);
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoPlayerView", 2, "PROGRESS_MSG :" + i);
+        }
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2025, 100L);
+      return;
+      if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.getParent() != null) && (((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).getChildAt(0) != this.a.jdField_a_of_type_AndroidWidgetImageView))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("VideoPlayerView", 2, "UPDATE_COVER  mPlayer.getCurrentPosition()=" + this.a.jdField_a_of_type_Atkx.a());
+        }
+        ((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).removeView(this.a.jdField_a_of_type_AndroidWidgetImageView);
+        atkm.a(this.a).addView(this.a.jdField_a_of_type_AndroidWidgetImageView, 0, new RelativeLayout.LayoutParams(-1, -1));
+        atkm.a(this.a).requestLayout();
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("VideoPlayerView", 2, "UPDATE_COVER  2do nothing()=");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atko
  * JD-Core Version:    0.7.0.1
  */

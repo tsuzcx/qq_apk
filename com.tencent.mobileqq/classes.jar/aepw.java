@@ -1,34 +1,80 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.activity.bless.BlessActivity.7.1;
-import com.tencent.mobileqq.widget.QQVideoView;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
-public class aepw
-  implements MediaPlayer.OnPreparedListener
+class aepw
+  implements bcij<oidb_0x8e4.RspBody>
 {
-  public aepw(BlessActivity paramBlessActivity) {}
+  aepw(aepg paramaepg) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
+    if (paramRspBody == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "startAnotherRound failed! errorCode = " + paramInt);
+      }
     }
-    if (BlessActivity.a(this.a) != null) {
-      BlessActivity.a(this.a).start();
-    }
-    BlessActivity.a(this.a).postDelayed(new BlessActivity.7.1(this), 800L);
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
-    }
-    awqx.b(this.a.app, "CliOper", "", "", "0X800632D", "0X800632D", 0, 0, "", "", "", "");
+    do
+    {
+      bcpw.a(this.a.a(), 1, ajyc.a(2131705092), 1).a();
+      return;
+      while ((!paramRspBody.getBooleanExtra("finishAIO", false)) || (!(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity instanceof ChatActivity)))
+      {
+        Common.WifiPOIInfo localWifiPOIInfo = paramRspBody.poi_info;
+        HotChatInfo localHotChatInfo = HotChatInfo.createHotChat(localWifiPOIInfo, false, 0);
+        localHotChatInfo.isGameRoom = true;
+        paramRspBody = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(true);
+        Object localObject = paramRspBody.a();
+        if ((localObject != null) && (!((List)localObject).contains(localHotChatInfo))) {
+          ((List)localObject).add(localHotChatInfo);
+        }
+        paramRspBody.a(localHotChatInfo, 4);
+        localObject = this.a.a().getIntent();
+        paramRspBody = (oidb_0x8e4.RspBody)localObject;
+        if (localObject == null) {
+          paramRspBody = new Intent();
+        }
+        localObject = localWifiPOIInfo.bytes_uid.get().toStringUtf8();
+        paramRspBody.putExtra("uin", localHotChatInfo.troopUin + "");
+        paramRspBody.putExtra("uintype", 1);
+        paramRspBody.putExtra("troop_uin", localHotChatInfo.troopUin + "");
+        paramRspBody.putExtra("uinname", localHotChatInfo.name);
+        paramRspBody.putExtra("hotnamecode", (String)localObject);
+        paramRspBody.putExtra("isNeedShowLoading", false);
+        paramRspBody.putExtra("leftViewText", this.a.a().getString(2131690331));
+        atbg.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(awzw.a()));
+        paramInt = actn.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramRspBody);
+        if (paramInt != 0) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "openAIO by start SplashAct");
+        }
+        localObject = this.a.jdField_a_of_type_Bcis.a();
+        if (localObject != null) {
+          ((bcir)localObject).a();
+        }
+        this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramRspBody);
+      }
+      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+      return;
+    } while (paramInt != 2);
+    QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "openAIO rediectToAIOWithMt 2");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aepw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,42 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class akeb
-  implements View.OnClickListener
+public class akeb
+  extends BroadcastReceiver
 {
-  akeb(akdz paramakdz) {}
+  public akeb(QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
     {
-      awqx.b(null, "dc00898", "", "", "0X8009ACC", "0X8009ACC", 0, 0, "", "", "", "");
-      if (akdt.a != null) {
-        akdz.a(this.a).startActivity(akdt.a);
-      }
-      for (;;)
+      do
       {
-        this.a.dismiss();
-        return;
-        if (akdz.a(this.a) == null) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(akdz.a(), 2, "init MsgNotifyPushDialog.initPushOpeNotifyConfig");
-        }
-        akdt.a(akdz.a(this.a));
-        akdz.a(this.a).startActivity(akdt.a);
-      }
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel())
+        do
         {
-          QLog.d(akdz.a(), 2, "Start Activity Failed");
-          akdz.a(this.a).startActivity(badh.c(akdz.a(this.a)));
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d(akdz.a(), 2, "mAppInterface=null, use default intent");
+          return;
+          if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())))
+          {
+            aqya.a();
+            return;
           }
-          akdz.a(this.a).startActivity(badh.a(akdz.a(this.a)));
-        }
-      }
+        } while (!paramContext.equals("com.tencent.mobileqq.kickedLogin.otherDevice"));
+        paramContext = paramIntent.getStringExtra("kickedUin");
+      } while ((TextUtils.isEmpty(paramContext)) || (!paramContext.equals(this.a.getAccount())));
+      paramContext = this.a.getKickIntent();
+    } while (paramContext == null);
+    paramContext.putExtra("isSameDevice", false);
+    paramIntent = paramIntent.getStringExtra("msg");
+    if (!TextUtils.isEmpty(paramIntent)) {
+      paramContext.putExtra("msg", paramIntent);
     }
+    this.a.setKickIntent(paramContext);
   }
 }
 

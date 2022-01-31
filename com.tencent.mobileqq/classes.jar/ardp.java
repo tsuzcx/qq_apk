@@ -1,19 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ardp
-  implements DialogInterface.OnDismissListener
+public final class ardp
 {
-  ardp(ardo paramardo) {}
+  public boolean a;
+  public boolean b = true;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  private void a(String paramString)
   {
-    this.a.a = false;
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.a = paramString.optBoolean("input_status_gray_switch", false);
+      this.b = paramString.optBoolean("expand_chat_input_status_switch", true);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("InputStatusConfig", 1, paramString, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ardp
  * JD-Core Version:    0.7.0.1
  */

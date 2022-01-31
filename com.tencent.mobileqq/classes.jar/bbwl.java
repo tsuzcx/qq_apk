@@ -1,19 +1,18 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.os.Bundle;
 
-class bbwl
-  implements bcab
+public abstract interface bbwl
 {
-  bbwl(bbwk parambbwk, ImageView paramImageView) {}
+  public abstract int a(boolean paramBoolean, String paramString);
   
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-  }
+  public abstract bbwg a(String paramString);
+  
+  public abstract void a(bbwg parambbwg, bbwf parambbwf, Bundle paramBundle);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbwl
  * JD-Core Version:    0.7.0.1
  */

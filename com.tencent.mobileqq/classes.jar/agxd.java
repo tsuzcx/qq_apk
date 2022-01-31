@@ -1,31 +1,22 @@
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-class agxd
-  implements WtTicketPromise
+public class agxd
+  implements OnCompositionLoadedListener
 {
-  agxd(agwx paramagwx, agxe paramagxe) {}
+  public agxd(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
   
-  public void Done(Ticket paramTicket)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
-    {
-      paramTicket = new String(paramTicket._sig);
-      this.jdField_a_of_type_Agxe.a(paramTicket);
-      return;
-    }
-    this.jdField_a_of_type_Agwx.c("get skey is null");
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_Agwx.c("get skey failed");
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_Agwx.c("get skey time out");
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    this.a.d.setImageDrawable(localLottieDrawable);
   }
 }
 

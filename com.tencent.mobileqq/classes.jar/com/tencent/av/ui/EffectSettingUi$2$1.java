@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import lsp;
+import mdi;
 
 public class EffectSettingUi$2$1
   implements Runnable
 {
-  public EffectSettingUi$2$1(lsp paramlsp) {}
+  public EffectSettingUi$2$1(mdi parammdi) {}
   
   public void run()
   {

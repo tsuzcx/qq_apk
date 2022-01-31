@@ -9,7 +9,7 @@ public class LoginPopupRightMaskView
   public LoginPopupRightMaskView(Context paramContext)
   {
     super(paramContext);
-    setBackgroundResource(2130844458);
+    setBackgroundResource(2130844541);
   }
 }
 

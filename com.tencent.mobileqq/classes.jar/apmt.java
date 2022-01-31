@@ -1,190 +1,49 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
-public class apmt
+class apmt
+  implements aplf
 {
-  private static Map<String, Long> a = new HashMap();
+  apmt(apmp paramapmp) {}
   
-  public static void a()
+  public void a(apmy paramapmy)
   {
-    try
+    paramapmy = ((aplj)paramapmy).a();
+    if (paramapmy == null) {}
+    label12:
+    do
     {
-      a.clear();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    try
-    {
-      a.put(paramString, Long.valueOf(System.currentTimeMillis()));
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public static void a(String paramString, long paramLong)
-  {
-    try
-    {
-      String str = ((AppInterface)BaseApplicationImpl.sApplication.getRuntime()).getCurrentAccountUin();
-      QLog.d("ForwardStatisticsReporter", 1, new Object[] { paramString, "=", Long.valueOf(paramLong), ", uin=", bcam.a(str) });
-      awrn.a(BaseApplicationImpl.getApplication()).a(str, paramString, true, paramLong, 0L, null, "", false);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public static void a(String paramString, bciz parambciz)
-  {
-    try
-    {
-      a(paramString, parambciz, true);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public static void a(String paramString, bciz parambciz, HashMap<String, String> paramHashMap, boolean paramBoolean)
-  {
-    if (parambciz == null) {}
-    for (parambciz = "";; parambciz = parambciz.a)
-    {
-      a(paramString, parambciz, paramHashMap, paramBoolean);
-      return;
-    }
-  }
-  
-  public static void a(String paramString, bciz parambciz, boolean paramBoolean)
-  {
-    try
-    {
-      a(paramString, parambciz, null, paramBoolean);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, long paramLong, HashMap<String, String> paramHashMap, boolean paramBoolean)
-  {
-    for (;;)
-    {
-      Object localObject;
-      try
+      do
       {
-        localObject = (Long)a.get(paramString1);
-        if (localObject == null)
+        do
         {
-          QLog.e("ForwardStatisticsReporter", 1, new Object[] { "report invalid key =", paramString1 });
-          return;
-        }
-        a.remove(paramString1);
-        paramLong -= ((Long)localObject).longValue();
-        if ((paramHashMap == null) || (paramHashMap.isEmpty()))
-        {
-          QLog.d("ForwardStatisticsReporter", 1, new Object[] { paramString1, "=", Long.valueOf(paramLong), ", uin=", bcam.a(paramString2) });
-          awrn.a(BaseApplicationImpl.getApplication()).a(paramString2, paramString1, paramBoolean, paramLong, 0L, paramHashMap, "", false);
-          if (!"KEY_STAGE_2_TOTAL".equals(paramString1)) {
-            continue;
+          break label12;
+          do
+          {
+            return;
+          } while ((TextUtils.isEmpty(paramapmy.a())) || (apue.a(paramapmy.a()) != 0) || (!TextUtils.isEmpty(paramapmy.g())));
+          paramapmy = paramapmy.a();
+          if (paramapmy != null) {
+            break;
           }
-          a.clear();
-          continue;
+        } while (!QLog.isColorLevel());
+        QLog.i("DeviceFileModel<FileAssistant>", 2, "mEntity = null");
+        return;
+        if (TextUtils.isEmpty(paramapmy.strThumbPath)) {
+          break;
         }
-        localObject = new StringBuilder();
-      }
-      finally {}
-      Iterator localIterator = paramHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        ((StringBuilder)localObject).append((String)localEntry.getKey()).append("=").append((String)localEntry.getValue()).append(" ");
-      }
-      QLog.d("ForwardStatisticsReporter", 1, new Object[] { paramString1, "=", Long.valueOf(paramLong), ", uin=", bcam.a(paramString2), ", params[", ((StringBuilder)localObject).toString(), "]" });
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, HashMap<String, String> paramHashMap, boolean paramBoolean)
-  {
-    try
-    {
-      a(paramString1, paramString2, System.currentTimeMillis(), paramHashMap, paramBoolean);
+      } while (this.a.jdField_a_of_type_Apna == null);
+      this.a.jdField_a_of_type_Apna.a(String.valueOf(paramapmy.nSessionId), paramapmy.strThumbPath);
       return;
-    }
-    finally
-    {
-      paramString1 = finally;
-      throw paramString1;
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    try
-    {
-      a(paramString1, paramString2, null, paramBoolean);
-      return;
-    }
-    finally
-    {
-      paramString1 = finally;
-      throw paramString1;
-    }
-  }
-  
-  public static void a(String paramString, boolean paramBoolean)
-  {
-    try
-    {
-      a(paramString, ((AppInterface)BaseApplicationImpl.sApplication.getRuntime()).getCurrentAccountUin(), paramBoolean);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public static void b(String paramString)
-  {
-    try
-    {
-      a(paramString, true);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+      paramapmy = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramapmy.peerUin, paramapmy.peerType, paramapmy.msgSeq);
+    } while (paramapmy == null);
+    paramapmy = (MessageForDeviceSingleStruct)paramapmy;
+    yeo localyeo = ((yeu)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a();
+    apmp.a(this.a, localyeo.a(paramapmy, null, null));
   }
 }
 

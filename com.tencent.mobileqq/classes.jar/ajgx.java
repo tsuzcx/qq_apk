@@ -1,49 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class ajgx
-  extends BroadcastReceiver
+class ajgx
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ajgx(DeviceProfileManager paramDeviceProfileManager) {}
+  ajgx(ajgw paramajgw) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onGlobalLayout()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.e("DeviceProfileManager", 4, "onReceive");
-    }
-    if (paramIntent == null) {}
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramContext = paramIntent.getExtras();
-          if (paramContext != null)
-          {
-            DeviceProfileManager.a(this.a, (HashMap)paramContext.getSerializable("featureMapLV2"));
-            if (DeviceProfileManager.a() != null)
-            {
-              DeviceProfileManager.a().a = ((HashMap)paramContext.getSerializable("featureAccountMapLV2"));
-              return;
-            }
-          }
-        }
-        catch (Exception paramContext) {}
-      }
-    } while (!QLog.isDevelopLevel());
-    paramContext.printStackTrace();
+    ajgw.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajgx
  * JD-Core Version:    0.7.0.1
  */

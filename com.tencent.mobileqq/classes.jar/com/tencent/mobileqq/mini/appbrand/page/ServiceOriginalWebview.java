@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.webkit.JavascriptInterface;
-import bfpj;
+import bgxq;
+import bgxr;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -19,9 +20,11 @@ import com.tencent.mobileqq.mini.report.MiniAppStartState;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.util.StorageUtil;
+import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
 import com.tencent.mobileqq.mini.webview.BaseAppBrandWebview;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.ValueCallback;
+import common.config.service.QzoneConfig;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -81,7 +84,7 @@ public class ServiceOriginalWebview
           }
         }
       }
-      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + bfpj.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
+      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + bgxq.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
       str1 = str2;
       if (StorageUtil.getPreference().getBoolean(paramApkgInfo.appId + "_debug", false)) {
         str1 = str2 + "__qqConfig.debug=true;";
@@ -103,6 +106,32 @@ public class ServiceOriginalWebview
     removeJavascriptInterface("WeixinJSCore");
   }
   
+  public String getJsDefaultConfig(boolean paramBoolean)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("USER_DATA_PATH", MiniAppGlobal.STR_WXFILE + "usr");
+      localJSONObject.put("env", localObject);
+      localJSONObject.put("preload", paramBoolean);
+      int i = QzoneConfig.getInstance().getConfig("qqminiapp", "xprof_api_report", 0);
+      StringBuilder localStringBuilder = new StringBuilder().append("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = %1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.appContactInfo = {};__qqConfig.appContactInfo.operationInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo.apiAvailable = {'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'share':0,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0};__qqConfig.platform = 'android';__qqConfig.QUA='").append(bgxr.a()).append("';__qqConfig.frameworkInfo = {};__qqConfig.frameworkInfo.isAlpha=");
+      if (i == 0) {}
+      for (localObject = "false";; localObject = "true")
+      {
+        localObject = String.format((String)localObject + ";", new Object[] { localJSONObject });
+        QLog.d("miniapp-start", 2, "getJsDefaultConfig BaseAppBrandWebview String: " + (String)localObject);
+        return localObject;
+      }
+      return "";
+    }
+    catch (Exception localException)
+    {
+      QLog.e("miniapp-start", 2, "getJsDefaultConfig failed: " + localException);
+    }
+  }
+  
   public String getUrl()
   {
     return "";
@@ -119,12 +148,12 @@ public class ServiceOriginalWebview
     if (this.waServiceJSLoaded)
     {
       if (this.AppServiceJsLoaded) {
-        break label62;
+        break label63;
       }
       this.AppServiceJsLoaded = true;
       initAppServiceJs(paramApkgInfo, paramOnLoadServiceWebvieJsListener);
     }
-    label62:
+    label63:
     while (paramOnLoadServiceWebvieJsListener == null) {
       return;
     }

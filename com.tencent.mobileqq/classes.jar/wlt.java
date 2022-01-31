@@ -1,105 +1,141 @@
+import android.graphics.Rect;
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileListRspBody;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileListRspBody.Item;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 
-public abstract class wlt
-  extends mmn
+public class wlt
+  extends wpc<SubscribeDraftBean>
+  implements wpy
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static int a;
+  public static String a;
+  private int jdField_b_of_type_Int = ImmersiveUtils.a(19.0F);
+  private String jdField_b_of_type_JavaLangString;
+  private int c = ImmersiveUtils.a(3.0F);
+  
+  static
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder().append("GetFileListObserver, errorCode=").append(paramInt).append(", has data=");
-        if (paramArrayOfByte == null) {
-          break label73;
-        }
-      }
-      label73:
-      for (bool = true;; bool = false)
-      {
-        QLog.i("TroopFileProtocol", 2, bool);
-        a(false, false, 0, 0, 0, null, null, paramBundle);
-        return;
-      }
+    jdField_a_of_type_JavaLangString = "SubscribeDraftAdapter";
+    jdField_a_of_type_Int = ImmersiveUtils.a(4.0F);
+  }
+  
+  public wlt(Bundle paramBundle)
+  {
+    super(paramBundle);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 2;
+  }
+  
+  public ArrayList<Class> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(SubDraftChangeEvent.class);
+    return localArrayList;
+  }
+  
+  protected void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    if (((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex() % 2 == 0) {
+      paramRect.left = jdField_a_of_type_Int;
     }
-    Object localObject1 = new oidb_0x6d8.RspBody();
-    try
+    for (paramRect.right = (this.c / 2);; paramRect.right = jdField_a_of_type_Int)
     {
-      ((oidb_0x6d8.RspBody)localObject1).mergeFrom(paramArrayOfByte);
-      if (!((oidb_0x6d8.RspBody)localObject1).file_list_info_rsp.has())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopFileProtocol", 2, "no FileList rsp.");
-        }
-        a(false, false, 0, 0, 0, null, null, paramBundle);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileProtocol", 2, "merge data exception," + paramArrayOfByte.toString());
-      }
-      a(false, false, 0, 0, 0, null, null, paramBundle);
+      paramRect.bottom = this.jdField_b_of_type_Int;
       return;
+      paramRect.left = (this.c / 2);
     }
-    localObject1 = (oidb_0x6d8.GetFileListRspBody)((oidb_0x6d8.RspBody)localObject1).file_list_info_rsp.get();
-    if (((oidb_0x6d8.GetFileListRspBody)localObject1).int32_ret_code.has())
+  }
+  
+  public void a(Bundle paramBundle) {}
+  
+  public void a(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if ((paramSimpleBaseEvent instanceof SubDraftChangeEvent)) {
+      b();
+    }
+  }
+  
+  public void a(wpn paramwpn)
+  {
+    if ((paramwpn.d()) || (paramwpn.c())) {
+      b();
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if ((a() != null) && (a() != null) && (((PublicFragmentActivity)a()).app != null))
     {
-      i = ((oidb_0x6d8.GetFileListRspBody)localObject1).int32_ret_code.get();
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileProtocol", 2, "GetFileListObserver, retCode=" + i);
-      }
-      if (i < 0)
-      {
-        if (i == -1000)
-        {
-          a(true, false, 0, i, 0, null, null, paramBundle);
-          return;
-        }
-        a(false, false, 0, 0, 0, null, null, paramBundle);
+      this.jdField_b_of_type_JavaLangString = ((PublicFragmentActivity)a()).app.getAccount();
+      if (wsz.a().a(this.jdField_b_of_type_JavaLangString)) {
+        wsz.a().a(this.jdField_b_of_type_JavaLangString, new wlu(this));
       }
     }
     else
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileProtocol", 2, "GetFileListObserver, has not redCode");
-      }
-      a(false, false, 0, 0, 0, null, null, paramBundle);
       return;
     }
-    int i = ((oidb_0x6d8.GetFileListRspBody)localObject1).uint32_all_file_count.get();
-    boolean bool = ((oidb_0x6d8.GetFileListRspBody)localObject1).bool_is_end.get();
-    int j = ((oidb_0x6d8.GetFileListRspBody)localObject1).uint32_next_index.get();
-    paramArrayOfByte = ((oidb_0x6d8.GetFileListRspBody)localObject1).bytes_context.get();
-    Object localObject2 = ((oidb_0x6d8.GetFileListRspBody)localObject1).rpt_item_list.get();
-    localObject1 = new ArrayList();
-    localObject2 = ((List)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      ((List)localObject1).add(new ayoq((oidb_0x6d8.GetFileListRspBody.Item)((Iterator)localObject2).next()));
-    }
-    a(true, bool, i, paramInt, j, paramArrayOfByte, (List)localObject1, paramBundle);
+    a();
+    notifyDataSetChanged();
   }
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List<ayoq> paramList, Bundle paramBundle);
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((paramViewHolder instanceof wlv)) {
+      ((wlv)paramViewHolder).a((SubscribeDraftBean)b().get(paramInt));
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new wlv(this, new SubScribeDraftItemView(paramViewGroup.getContext(), this));
+  }
+  
+  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onDetachedFromRecyclerView(paramRecyclerView);
+    wpw.a().b(this);
+  }
+  
+  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.onViewAttachedToWindow(paramViewHolder);
+    wpw.a().a(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wlt
  * JD-Core Version:    0.7.0.1
  */

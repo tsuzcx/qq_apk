@@ -5,9 +5,9 @@ import android.text.TextUtils;
 import com.tencent.replacemonitor.MonitorStep;
 import com.tencent.replacemonitor.MonitorTask;
 import com.tencent.replacemonitor.replace.ReplaceMonitor;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.e;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.d;
+import com.tencent.tmassistantbase.util.q;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -25,7 +25,7 @@ public class a
   private a()
   {
     Object localObject = this.d.a();
-    if (!e.a((List)localObject))
+    if (!d.a((List)localObject))
     {
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
@@ -33,15 +33,15 @@ public class a
         MonitorTask localMonitorTask = (MonitorTask)((Iterator)localObject).next();
         if (localMonitorTask.lastStep == MonitorStep.INSTALLING)
         {
-          PackageInfo localPackageInfo = r.c(localMonitorTask.packageName);
+          PackageInfo localPackageInfo = q.c(localMonitorTask.packageName);
           if ((localPackageInfo != null) && (localPackageInfo.versionCode == localMonitorTask.versionCode) && (System.currentTimeMillis() - localPackageInfo.lastUpdateTime > 86400000L))
           {
-            ac.c("WashMonitor", "MonitorTaskCache>>MonitorTaskCache 发现超过24小时脏数据，删除 task.packageName = " + localMonitorTask.packageName);
+            ab.c("WashMonitor", "MonitorTaskCache>>MonitorTaskCache 发现超过24小时脏数据，删除 task.packageName = " + localMonitorTask.packageName);
             this.d.c(localMonitorTask);
           }
           else
           {
-            ac.c("WashMonitor", "MonitorTaskCache>>MonitorTaskCache 补充执行一次安装后检测 task.packageName = " + localMonitorTask.packageName);
+            ab.c("WashMonitor", "MonitorTaskCache>>MonitorTaskCache 补充执行一次安装后检测 task.packageName = " + localMonitorTask.packageName);
             ReplaceMonitor.get().execSync(localMonitorTask, MonitorStep.AFTER_INSTALL);
           }
         }
@@ -278,7 +278,7 @@ public class a
           localArrayList.add(localMonitorTask);
           continue;
         }
-        if (!e.a(localArrayList)) {
+        if (!d.a(localArrayList)) {
           break label183;
         }
       }
@@ -292,7 +292,7 @@ public class a
         }
       }
       label183:
-      if (e.a(localArrayList))
+      if (d.a(localArrayList))
       {
         localObject = this.d.a();
         if (localObject != null)
@@ -336,7 +336,7 @@ public class a
           localArrayList.add(localMonitorTask);
           continue;
         }
-        if (!e.a(localArrayList)) {
+        if (!d.a(localArrayList)) {
           break label161;
         }
       }
@@ -350,7 +350,7 @@ public class a
         }
       }
       label161:
-      if (e.a(localArrayList))
+      if (d.a(localArrayList))
       {
         localObject = this.d.a();
         if (localObject != null)

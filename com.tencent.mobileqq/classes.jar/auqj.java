@@ -1,76 +1,31 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.image.Utils;
-import java.io.File;
-import java.io.OutputStream;
-import org.apache.http.Header;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class auqj
-  extends axoa
+class auqj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  protected BaseApplicationImpl a;
+  auqj(auqi paramauqi, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
   
-  public auqj(BaseApplicationImpl paramBaseApplicationImpl)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = paramBaseApplicationImpl;
-  }
-  
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    if ((paramDownloadParams != null) && (paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof String)))
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
     {
-      paramOutputStream = (String)paramDownloadParams.tag;
-      paramDownloadParams = new File(ajed.ba);
-      paramDownloadParams.mkdirs();
-      paramDownloadParams = new File(paramDownloadParams, Utils.Crc64String(paramOutputStream));
-      if (paramDownloadParams.exists()) {
-        return paramDownloadParams;
-      }
-      if (bato.a(new batm(paramOutputStream, paramDownloadParams), null) == 0) {
-        return paramDownloadParams;
-      }
-    }
-    return null;
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    if ((paramDownloadParams != null) && (paramFile != null))
-    {
-      paramDownloadParams = paramDownloadParams.getHeader("isCircle");
-      if (paramDownloadParams != null)
-      {
-        paramDownloadParams = paramDownloadParams.getValue();
-        if (!TextUtils.isEmpty(paramDownloadParams))
-        {
-          int j = Integer.valueOf(paramDownloadParams).intValue();
-          int i = 90;
-          if (this.a != null) {
-            i = azvv.a(this.a, 30.0F);
-          }
-          paramDownloadParams = bacm.a(paramFile.getAbsolutePath(), i, i);
-          paramFile = paramDownloadParams;
-          if (j == 1)
-          {
-            if (paramDownloadParams != null) {
-              paramFile = bacm.a(paramDownloadParams, paramDownloadParams.getWidth(), paramDownloadParams.getWidth(), paramDownloadParams.getHeight());
-            }
-          }
-          else {
-            return paramFile;
-          }
-        }
-      }
-    }
-    return null;
+      return;
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-auqi.a(this.jdField_a_of_type_Auqi) * f);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_Auqi.f);
+    this.b.setAlpha(1.0F - f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     auqj
  * JD-Core Version:    0.7.0.1
  */

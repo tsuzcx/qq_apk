@@ -1,36 +1,24 @@
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+
 public class ppg
+  implements View.OnClickListener
 {
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public ppg(PTSFragment paramPTSFragment) {}
   
-  public ppg(Long paramLong, Integer paramInteger, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangInteger = paramInteger;
-  }
-  
-  public Long a()
-  {
-    return this.jdField_a_of_type_JavaLangLong;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String toString()
-  {
-    return "FollowingMember{uin='" + this.jdField_a_of_type_JavaLangLong + '\'' + ", nickname='" + this.jdField_a_of_type_JavaLangString + '\'' + ", headUrl='" + this.b + '\'' + '}';
+    paramView = paramView.getContext();
+    Intent localIntent = new Intent(paramView, AccountDetailActivity.class);
+    localIntent.putExtra("uin", String.valueOf(3434959637L));
+    localIntent.putExtra("uintype", 1008);
+    localIntent.putExtra("source", 121);
+    paramView.startActivity(localIntent);
+    noo.a(null, "", "0X8009941", "0X8009941", 0, 0, "", "", "", "", false);
   }
 }
 

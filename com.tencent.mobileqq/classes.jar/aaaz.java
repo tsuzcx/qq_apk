@@ -1,35 +1,47 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaaz
-  implements begw
 {
-  SubAccountInfo jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo;
+  public double a;
+  public long a;
+  public aabd a;
+  public String a;
   
-  public aaaz(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public aaaz()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a.dismiss();
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
+    this.jdField_a_of_type_Double = -1.0D;
   }
   
-  public void a(SubAccountInfo paramSubAccountInfo)
+  public void a(aaay paramaaay)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo = paramSubAccountInfo;
+    this.jdField_a_of_type_Double = Math.max(this.jdField_a_of_type_Double, paramaaay.jdField_a_of_type_Double);
+    this.jdField_a_of_type_Long = Math.max(this.jdField_a_of_type_Long, paramaaay.b);
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Long > 0L)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Long < 9223372036854775807L)
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_Double >= 0.0D) {
+          bool1 = true;
+        }
+      }
+    }
+    if ((!bool1) && (QLog.isColorLevel())) {
+      QLog.i("reportToDenta", 2, "failed" + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_Double);
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaaz
  * JD-Core Version:    0.7.0.1
  */

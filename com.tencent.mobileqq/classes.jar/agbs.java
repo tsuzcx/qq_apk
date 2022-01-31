@@ -1,24 +1,232 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.QQBlurView;
+import com.tencent.widget.ListView;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class agbs
-  implements wyj
+public class agbs
 {
-  agbs(agbr paramagbr, LocalMediaInfo paramLocalMediaInfo) {}
+  private agbv jdField_a_of_type_Agbv;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private apwx jdField_a_of_type_Apwx = new agbu(this);
+  private QQBlurView jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+  private View jdField_b_of_type_AndroidViewView;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private View jdField_c_of_type_AndroidViewView;
+  private ImageView jdField_c_of_type_AndroidWidgetImageView;
+  private View jdField_d_of_type_AndroidViewView;
+  private ImageView jdField_d_of_type_AndroidWidgetImageView;
+  private ImageView e;
   
-  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
+  public agbs(Context paramContext, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Agbr.a.a.f();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", paramLong);
-    localBundle.putBoolean("VIDEO_STORY_PHOTO_LIST_TO_EDIT", true);
-    localBundle.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", paramArrayList);
-    this.jdField_a_of_type_Agbr.a.a.getIntent().putExtra("VIDEO_STORY_MEDIA_TYPE", 100);
-    PhotoListActivity.a(this.jdField_a_of_type_Agbr.a.a, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, localBundle);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup;
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560447, null, false);
+    Object localObject = paramViewGroup;
+    if (!(paramViewGroup instanceof RelativeLayout))
+    {
+      localObject = new RelativeLayout(paramContext);
+      paramViewGroup.addView((View)localObject, new RelativeLayout.LayoutParams(-1, -1));
+    }
+    paramContext = new RelativeLayout.LayoutParams(-2, -2);
+    paramContext.addRule(12);
+    ((ViewGroup)localObject).addView(this.jdField_b_of_type_AndroidViewView, paramContext);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365463));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365460));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365465));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365461));
+    this.e = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365459));
+    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131365456);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.e.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_Apwx);
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_Apwx);
+    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_Apwx);
+    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_Apwx);
+    this.e.setOnClickListener(this.jdField_a_of_type_Apwx);
+    b();
+  }
+  
+  private void a(View paramView)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramView);
+    for (;;)
+    {
+      if (!localArrayList.isEmpty())
+      {
+        paramView = (View)localArrayList.remove(0);
+        if ((paramView instanceof ListView)) {
+          this.jdField_d_of_type_AndroidViewView = paramView;
+        }
+      }
+      else
+      {
+        return;
+      }
+      if ((paramView instanceof ViewGroup))
+      {
+        paramView = (ViewGroup)paramView;
+        int i = 0;
+        while (i < paramView.getChildCount())
+        {
+          localArrayList.add(paramView.getChildAt(i));
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  private boolean a()
+  {
+    if (!bbev.d(this.jdField_a_of_type_AndroidContentContext))
+    {
+      apue.a(this.jdField_a_of_type_AndroidContentContext.getString(2131693313));
+      return false;
+    }
+    return true;
+  }
+  
+  public int a()
+  {
+    return actn.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+  }
+  
+  public void a()
+  {
+    if (this.jdField_d_of_type_AndroidViewView == null)
+    {
+      a(this.jdField_a_of_type_AndroidViewView);
+      if (this.jdField_d_of_type_AndroidViewView == null) {
+        this.jdField_d_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView;
+      }
+    }
+    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    c();
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.jdField_b_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
+      return;
+    case 2: 
+      this.jdField_d_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
+      return;
+    case 3: 
+      this.jdField_c_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
+      return;
+    case 4: 
+      this.e.setEnabled(paramBoolean);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
+  }
+  
+  public void a(agbv paramagbv)
+  {
+    this.jdField_a_of_type_Agbv = paramagbv;
+  }
+  
+  public void a(List<Integer> paramList)
+  {
+    if (paramList == null) {}
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        switch (((Integer)paramList.next()).intValue())
+        {
+        default: 
+          break;
+        case 1: 
+          this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+          break;
+        case 2: 
+          this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
+          break;
+        case 3: 
+          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+          break;
+        case 4: 
+          this.e.setVisibility(0);
+          break;
+        case 5: 
+          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    a(1, paramBoolean);
+    a(2, paramBoolean);
+    a(3, paramBoolean);
+    a(4, paramBoolean);
+    a(5, paramBoolean);
+  }
+  
+  public void b()
+  {
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
+    }
+  }
+  
+  @TargetApi(19)
+  protected void c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
+    }
+    if (this.jdField_d_of_type_AndroidViewView == null) {
+      return;
+    }
+    if (!ThemeUtil.isDefaultOrDIYTheme(false))
+    {
+      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130838514);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_b_of_type_AndroidViewView.findViewById(2131378793));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(this.jdField_d_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(new ColorDrawable(Color.parseColor("#E5EBEDF5")));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c(-1);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8.0F);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(new agbt(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.d();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a();
   }
 }
 

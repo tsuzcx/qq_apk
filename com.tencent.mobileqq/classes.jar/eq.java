@@ -1,21 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.PrinterItemMsgRecord;
+import android.os.AsyncTask;
 
-class eq
-  implements DialogInterface.OnClickListener
+final class eq
+  implements aptu
 {
-  eq(ep paramep) {}
+  eq(AsyncTask paramAsyncTask, int paramInt, aptu paramaptu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataPrinterItemMsgRecord.status < 10) {
-      this.a.jdField_a_of_type_El.a.a(0, this.a.jdField_a_of_type_ComTencentMobileqqDataPrinterItemMsgRecord.uSessionID, true);
+    this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    if (this.jdField_a_of_type_Aptu != null) {
+      this.jdField_a_of_type_Aptu.a();
     }
-    this.a.jdField_a_of_type_El.a.a.a(this.a.jdField_a_of_type_ComTencentMobileqqDataPrinterItemMsgRecord);
-    this.a.jdField_a_of_type_El.b();
-    this.a.jdField_a_of_type_El.notifyDataSetChanged();
-    paramDialogInterface.dismiss();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aptu != null) {
+      this.jdField_a_of_type_Aptu.b();
+    }
   }
 }
 

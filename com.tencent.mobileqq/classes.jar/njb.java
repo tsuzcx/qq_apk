@@ -1,34 +1,50 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
 
-class njb
-  extends Handler
+public class njb
+  extends URLDrawableDownListener.Adapter
 {
-  private WeakReference<niz> a;
+  public njb(VideoCoverFragment paramVideoCoverFragment) {}
   
-  public njb(niz paramniz)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.a = new WeakReference(paramniz);
+    super.onLoadCancelled(paramView, paramURLDrawable);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    niz localniz = (niz)this.a.get();
-    if ((localniz == null) || (!localniz.b())) {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {}
+    while (!(paramView instanceof ImageView)) {
       return;
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    localniz.b();
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    int i = paramURLDrawable.getIntrinsicWidth();
+    int j = paramURLDrawable.getIntrinsicHeight();
+    localLayoutParams.width = (i * actn.a(23.0F, VideoCoverFragment.a(this.a).getResources()) / j);
+    paramView.setLayoutParams(localLayoutParams);
+    ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
+    paramView.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     njb
  * JD-Core Version:    0.7.0.1
  */

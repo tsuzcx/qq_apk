@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import asif;
-import atmp;
+import atej;
+import aukn;
 
 public class WerewolvesDataManager$3
   implements Runnable
 {
-  public WerewolvesDataManager$3(asif paramasif, RecentInviteUser paramRecentInviteUser) {}
+  public WerewolvesDataManager$3(atej paramatej, RecentInviteUser paramRecentInviteUser) {}
   
   public void run()
   {

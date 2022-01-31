@@ -1,26 +1,17 @@
-import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
+import android.app.Activity;
+import android.content.Intent;
 
-final class bgtn
-  implements UploadManager.IUploadStatusListener
+class bgtn
+  implements aptu
 {
-  public void onUploadJobAdded(String paramString, long paramLong) {}
+  bgtn(bgtm parambgtm, Activity paramActivity, Intent paramIntent) {}
   
-  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean)
-    {
-      if (paramStatusInfo.state != 6) {
-        break label26;
-      }
-      bgwo.a(paramString, "actFileWyUp", paramStatusInfo, false, paramLong);
-    }
-    label26:
-    while (paramStatusInfo.state != 5) {
-      return;
-    }
-    bgwo.a(paramString, "actFileWyUp", paramStatusInfo, true, paramLong);
+    aqbc.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 103);
   }
+  
+  public void b() {}
 }
 
 

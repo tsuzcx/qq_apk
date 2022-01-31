@@ -1,35 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class och
+  implements ViewBase.IBuilder
 {
-  public static int a(BaseArticleInfo paramBaseArticleInfo)
+  public ViewBase build(VafContext paramVafContext)
   {
-    int j = 0;
-    int i = j;
-    if (b(paramBaseArticleInfo))
-    {
-      i = j;
-      if (paramBaseArticleInfo.mSocialFeedInfo.a.b != null) {
-        i = paramBaseArticleInfo.mSocialFeedInfo.a.b.intValue();
-      }
-    }
-    return i;
-  }
-  
-  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return (paramBaseArticleInfo.mFeedType == 25) || ((paramBaseArticleInfo.mFeedType == 1) && (a(paramBaseArticleInfo) == 25));
-  }
-  
-  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return (paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.a != null);
+    return new ocg(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     och
  * JD-Core Version:    0.7.0.1
  */

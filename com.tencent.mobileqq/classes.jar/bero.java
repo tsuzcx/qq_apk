@@ -1,17 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-
-class bero
-  extends RecyclerView.ViewHolder
+public class bero
 {
-  bero(berm paramberm, View paramView)
-  {
-    super(paramView);
-  }
+  public bert a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bero
  * JD-Core Version:    0.7.0.1
  */

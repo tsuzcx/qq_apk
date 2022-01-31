@@ -1,54 +1,59 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import java.util.ArrayList;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class bibn
-  extends Handler
+public abstract class bibn
+  extends Binder
+  implements bibm
 {
-  public bibn(bibm parambibm) {}
-  
-  public void dispatchMessage(Message paramMessage)
+  public bibn()
   {
-    super.dispatchMessage(paramMessage);
-    switch (paramMessage.what)
+    attachInterface(this, "cooperation.wadl.ipc.IWadlServiceCallBack");
+  }
+  
+  public static bibm a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.wadl.ipc.IWadlServiceCallBack");
+    if ((localIInterface != null) && ((localIInterface instanceof bibm))) {
+      return (bibm)localIInterface;
+    }
+    return new bibo(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
     default: 
-      return;
-    case 1: 
-      if (bibm.a(this.a) != null)
-      {
-        urq.b("0X80080E3", urq.a);
-        paramMessage = new ArrayList();
-        paramMessage.add(Uri.parse(bibm.a(this.a)));
-        paramMessage = new Intent("", Uri.parse("pituopenapi://TTPTBEAUTIFY?back=1&v=490&refer=qqimageedit")).setClassName("com.tencent.ttpic", "com.tencent.ttpic.module.MainActivity").putParcelableArrayListExtra("android.intent.extra.STREAM", paramMessage);
-        paramMessage.putExtra("big_brother_source_key", "biz_src_jc_editor");
-        this.a.jdField_a_of_type_Bihj.getActivity().startActivityForResult(paramMessage, 100);
-      }
-      this.a.c();
-      return;
-    case 2: 
-      paramMessage = (Bitmap)paramMessage.obj;
-      this.a.jdField_a_of_type_Bigb.a(paramMessage, false);
-      if (this.a.jdField_a_of_type_Bigb.a != null)
-      {
-        this.a.jdField_a_of_type_Bigb.a.d();
-        this.a.jdField_a_of_type_Bigb.z();
-      }
-      this.a.jdField_a_of_type_Boolean = true;
-      return;
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.wadl.ipc.IWadlServiceCallBack");
+      return true;
     }
-    this.a.jdField_a_of_type_Bigb.a(0);
-    this.a.c();
+    paramParcel1.enforceInterface("cooperation.wadl.ipc.IWadlServiceCallBack");
+    paramParcel2 = paramParcel1.readString();
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramParcel2, paramParcel1);
+      return true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bibn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.app.utils;
 
-import ahay;
-import ajjj;
-import ajjy;
-import ajyv;
-import akeu;
-import alrm;
+import ahnn;
+import ajxn;
+import ajyc;
+import aknh;
+import aktg;
+import amgc;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import aqax;
-import aqay;
-import awqx;
-import badq;
+import aquz;
+import aqva;
+import axqw;
+import bbev;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
 import com.tencent.mobileqq.activity.Conversation;
@@ -133,7 +133,7 @@ public class FriendsStatusUtil
         break;
       }
       int i = (int)paramUpdateFriendStatusItem.a();
-      alrm.a(paramQQAppInterface).a(paramUpdateFriendStatusItem.jdField_a_of_type_JavaLangString, i);
+      amgc.a(paramQQAppInterface).a(paramUpdateFriendStatusItem.jdField_a_of_type_JavaLangString, i);
       if (!QLog.isColorLevel()) {
         break;
       }
@@ -144,16 +144,16 @@ public class FriendsStatusUtil
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Object localObject = ajjy.a(2131639153);
-    paramString = new aqax(paramString, paramQQAppInterface.getCurrentAccountUin(), (String)localObject, 0, -5023, 655393, 0L);
+    Object localObject = ajyc.a(2131704938);
+    paramString = new aquz(paramString, paramQQAppInterface.getCurrentAccountUin(), (String)localObject, 0, -5023, 655393, 0L);
     localObject = new Bundle();
     ((Bundle)localObject).putString("textColor", "#40A0FF");
     ((Bundle)localObject).putInt("key_action", 43);
     paramString.a(0, 6, (Bundle)localObject);
     localObject = new MessageForUniteGrayTip();
     ((MessageForUniteGrayTip)localObject).initGrayTipMsg(paramQQAppInterface, paramString);
-    aqay.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
-    awqx.b(paramQQAppInterface, "dc00898", "", "", "0X800A012", "0X800A012", 0, 0, "", "", "", "");
+    aqva.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
+    axqw.b(paramQQAppInterface, "dc00898", "", "", "0X800A012", "0X800A012", 0, 0, "", "", "", "");
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
@@ -171,15 +171,15 @@ public class FriendsStatusUtil
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
   {
-    Object localObject = ajyv.a(paramQQAppInterface);
+    Object localObject = aknh.a(paramQQAppInterface);
     boolean bool;
     RecentUser localRecentUser;
     if (paramInt2 == 1)
     {
       bool = true;
-      ((ajyv)localObject).a(paramString, paramInt1, bool);
+      ((aknh)localObject).a(paramString, paramInt1, bool);
       localObject = paramQQAppInterface.a().a();
-      localRecentUser = ((akeu)localObject).b(paramString, paramInt1);
+      localRecentUser = ((aktg)localObject).b(paramString, paramInt1);
       if (localRecentUser != null) {
         break label188;
       }
@@ -198,10 +198,10 @@ public class FriendsStatusUtil
         label128:
         if (localRecentUser.lastmsgtime == 0L)
         {
-          paramQQAppInterface = ahay.a(localRecentUser.uin, localRecentUser.getType());
-          ahay.a().a(paramQQAppInterface);
+          paramQQAppInterface = ahnn.a(localRecentUser.uin, localRecentUser.getType());
+          ahnn.a().a(paramQQAppInterface);
         }
-        ((akeu)localObject).a(localRecentUser);
+        ((aktg)localObject).a(localRecentUser);
       }
     }
     for (;;)
@@ -216,13 +216,13 @@ public class FriendsStatusUtil
       label188:
       localRecentUser.isHiddenChat = paramInt2;
       if (a(paramQQAppInterface, localRecentUser, paramInt2)) {
-        ((akeu)localObject).b(localRecentUser);
+        ((aktg)localObject).b(localRecentUser);
       }
       while (QLog.isColorLevel())
       {
         QLog.d("FriendsStatusUtil", 2, new Object[] { "recentuserHiddenFlag not null, uin:", paramString, " type:", Integer.valueOf(paramInt1) });
         return;
-        ((akeu)localObject).a(localRecentUser);
+        ((aktg)localObject).a(localRecentUser);
       }
     }
   }
@@ -277,14 +277,14 @@ public class FriendsStatusUtil
     if (QLog.isColorLevel()) {
       QLog.d("FriendsStatusUtil", 4, "setTopPosition operateTime: " + paramLong + " uin: " + paramString + " userType: " + paramInt + " needSend" + paramBoolean1);
     }
-    ajjj localajjj = (ajjj)paramQQAppInterface.getManager(51);
-    if (!localajjj.b(paramString)) {
+    ajxn localajxn = (ajxn)paramQQAppInterface.getManager(51);
+    if (!localajxn.b(paramString)) {
       return;
     }
     long l = 0L;
     Object localObject = paramExtensionInfo;
     if (paramExtensionInfo == null) {
-      localObject = localajjj.a(paramString);
+      localObject = localajxn.a(paramString);
     }
     if (localObject != null) {
       l = ((ExtensionInfo)localObject).openDoNotDisturbTime;
@@ -351,7 +351,7 @@ public class FriendsStatusUtil
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
   {
-    if (!badq.g(null)) {
+    if (!bbev.g(null)) {
       return;
     }
     long l = 0L;
@@ -391,12 +391,12 @@ public class FriendsStatusUtil
   public static void a(boolean paramBoolean, String paramString, QQAppInterface paramQQAppInterface)
   {
     if (paramBoolean) {}
-    for (Object localObject = ajjy.a(2131639151);; localObject = ajjy.a(2131639154))
+    for (Object localObject = ajyc.a(2131704936);; localObject = ajyc.a(2131704939))
     {
-      localObject = new aqax(paramString, paramQQAppInterface.getCurrentAccountUin(), (String)localObject, 0, -5023, 655385, 0L);
+      localObject = new aquz(paramString, paramQQAppInterface.getCurrentAccountUin(), (String)localObject, 0, -5023, 655385, 0L);
       MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-      localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, (aqax)localObject);
-      aqay.a(paramQQAppInterface, localMessageForUniteGrayTip);
+      localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, (aquz)localObject);
+      aqva.a(paramQQAppInterface, localMessageForUniteGrayTip);
       if (QLog.isColorLevel()) {
         QLog.d("FriendsStatusUtil", 2, new Object[] { "isOpen=", Boolean.valueOf(paramBoolean), "friendUin=", paramString });
       }
@@ -523,11 +523,11 @@ public class FriendsStatusUtil
   
   public static boolean a(QQAppInterface paramQQAppInterface, FriendsStatusUtil.UpdateFriendStatusItem paramUpdateFriendStatusItem, @Nullable ExtensionInfo paramExtensionInfo)
   {
-    ajjj localajjj = (ajjj)paramQQAppInterface.getManager(51);
+    ajxn localajxn = (ajxn)paramQQAppInterface.getManager(51);
     ExtensionInfo localExtensionInfo = paramExtensionInfo;
     if (paramExtensionInfo == null)
     {
-      paramExtensionInfo = localajjj.a(String.valueOf(paramUpdateFriendStatusItem.jdField_a_of_type_JavaLangString));
+      paramExtensionInfo = localajxn.a(String.valueOf(paramUpdateFriendStatusItem.jdField_a_of_type_JavaLangString));
       localExtensionInfo = paramExtensionInfo;
       if (paramExtensionInfo == null)
       {
@@ -551,7 +551,7 @@ public class FriendsStatusUtil
     if (localExtensionInfo.topPositionTime != l)
     {
       localExtensionInfo.topPositionTime = l;
-      localajjj.a(localExtensionInfo);
+      localajxn.a(localExtensionInfo);
       a(paramQQAppInterface, paramUpdateFriendStatusItem.jdField_a_of_type_JavaLangString, 0, l);
       return true;
     }
@@ -561,7 +561,7 @@ public class FriendsStatusUtil
   public static boolean a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
   {
     boolean bool = true;
-    paramQQAppInterface = (ajjj)paramQQAppInterface.getManager(51);
+    paramQQAppInterface = (ajxn)paramQQAppInterface.getManager(51);
     if ((paramRecentUser.getType() == 0) && (paramQQAppInterface.b(paramRecentUser.uin)))
     {
       paramQQAppInterface = paramQQAppInterface.a(String.valueOf(paramRecentUser.uin));
@@ -631,7 +631,7 @@ public class FriendsStatusUtil
     do
     {
       return false;
-      localObject = ((akeu)localObject).b(paramString, paramInt);
+      localObject = ((aktg)localObject).b(paramString, paramInt);
       if (localObject != null)
       {
         if (QLog.isColorLevel()) {
@@ -642,7 +642,7 @@ public class FriendsStatusUtil
           return bool;
         }
       }
-      paramQQAppInterface = ((ajjj)paramQQAppInterface.getManager(51)).a(String.valueOf(paramString));
+      paramQQAppInterface = ((ajxn)paramQQAppInterface.getManager(51)).a(String.valueOf(paramString));
     } while (paramQQAppInterface == null);
     if (QLog.isColorLevel()) {
       QLog.d("FriendsStatusUtil", 2, "isChatAtTop extensionInfo is: " + paramQQAppInterface.topPositionTime);
@@ -662,7 +662,7 @@ public class FriendsStatusUtil
         QLog.d("FriendsStatusUtil", 2, "setChatAtTop params error, return false.");
       }
     }
-    while (!badq.g(null)) {
+    while (!bbev.g(null)) {
       return false;
     }
     if (QLog.isColorLevel()) {
@@ -674,11 +674,11 @@ public class FriendsStatusUtil
   
   public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString, @Nullable ExtensionInfo paramExtensionInfo)
   {
-    ajjj localajjj = (ajjj)paramQQAppInterface.getManager(51);
+    ajxn localajxn = (ajxn)paramQQAppInterface.getManager(51);
     ExtensionInfo localExtensionInfo = paramExtensionInfo;
     if (paramExtensionInfo == null)
     {
-      paramExtensionInfo = localajjj.a(String.valueOf(paramString));
+      paramExtensionInfo = localajxn.a(String.valueOf(paramString));
       localExtensionInfo = paramExtensionInfo;
       if (paramExtensionInfo == null)
       {
@@ -696,7 +696,7 @@ public class FriendsStatusUtil
     for (int i = 1; localExtensionInfo.hiddenChatSwitch != i; i = 0)
     {
       localExtensionInfo.hiddenChatSwitch = i;
-      localajjj.a(localExtensionInfo);
+      localajxn.a(localExtensionInfo);
       a(paramQQAppInterface, paramString, 0, i);
       return true;
     }
@@ -705,11 +705,11 @@ public class FriendsStatusUtil
   
   public static boolean a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, String paramString, @Nullable ExtensionInfo paramExtensionInfo)
   {
-    ajjj localajjj = (ajjj)paramQQAppInterface.getManager(51);
+    ajxn localajxn = (ajxn)paramQQAppInterface.getManager(51);
     paramQQAppInterface = paramExtensionInfo;
     if (paramExtensionInfo == null)
     {
-      paramExtensionInfo = localajjj.a(String.valueOf(paramString));
+      paramExtensionInfo = localajxn.a(String.valueOf(paramString));
       paramQQAppInterface = paramExtensionInfo;
       if (paramExtensionInfo == null)
       {
@@ -775,7 +775,7 @@ public class FriendsStatusUtil
       paramQQAppInterface.messageEnablePreviewNew = j;
       paramQQAppInterface.messageEnableVibrateNew = k;
       paramQQAppInterface.messageEnableSoundNew = i;
-      localajjj.a(paramQQAppInterface);
+      localajxn.a(paramQQAppInterface);
       if (QLog.isColorLevel()) {
         QLog.d("FriendsStatusUtil", 2, new Object[] { "saveNotificationFlagSwitchToExtensionInfo: invoked. switch changed. ", " messageEnableSoundValue: ", Integer.valueOf(i) });
       }
@@ -797,7 +797,7 @@ public class FriendsStatusUtil
   
   public static boolean a(@NonNull String paramString, QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = (ajjj)paramQQAppInterface.getManager(51);
+    paramQQAppInterface = (ajxn)paramQQAppInterface.getManager(51);
     if (!paramQQAppInterface.b(paramString)) {}
     do
     {
@@ -917,11 +917,11 @@ public class FriendsStatusUtil
   
   public static boolean b(QQAppInterface paramQQAppInterface, FriendsStatusUtil.UpdateFriendStatusItem paramUpdateFriendStatusItem, @Nullable ExtensionInfo paramExtensionInfo)
   {
-    ajjj localajjj = (ajjj)paramQQAppInterface.getManager(51);
+    ajxn localajxn = (ajxn)paramQQAppInterface.getManager(51);
     paramQQAppInterface = paramExtensionInfo;
     if (paramExtensionInfo == null)
     {
-      paramExtensionInfo = localajjj.a(String.valueOf(paramUpdateFriendStatusItem.jdField_a_of_type_JavaLangString));
+      paramExtensionInfo = localajxn.a(String.valueOf(paramUpdateFriendStatusItem.jdField_a_of_type_JavaLangString));
       paramQQAppInterface = paramExtensionInfo;
       if (paramExtensionInfo == null)
       {
@@ -942,7 +942,7 @@ public class FriendsStatusUtil
     if (paramQQAppInterface.openDoNotDisturbTime != l)
     {
       paramQQAppInterface.openDoNotDisturbTime = l;
-      localajjj.a(paramQQAppInterface);
+      localajxn.a(paramQQAppInterface);
       return true;
     }
     return false;

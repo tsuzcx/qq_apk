@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
+import aaid;
 import android.widget.TextView;
-import zyl;
 
 public class AddRequestActivity$13$3
   implements Runnable
 {
-  public AddRequestActivity$13$3(zyl paramzyl) {}
+  public AddRequestActivity$13$3(aaid paramaaid) {}
   
   public void run()
   {
-    this.a.a.a((TextView)this.a.a.findViewById(2131304832));
+    this.a.a.a((TextView)this.a.a.findViewById(2131370497));
   }
 }
 

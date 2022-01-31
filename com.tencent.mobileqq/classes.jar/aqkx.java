@@ -1,40 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.soload.SoLoadUtilNew;
+import com.tencent.mobileqq.fts.FTSDatabase;
 
 public class aqkx
-  extends Handler
+  extends FTSDatabase
 {
-  public aqkx(GroupVideoLoadingFragment paramGroupVideoLoadingFragment, Looper paramLooper)
+  public boolean a()
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.arg1;
-    if (i < GroupVideoLoadingFragment.a(this.a)) {
-      return;
+    if ((Build.VERSION.SDK_INT < 18) && (!SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "sqlite_qq"))) {
+      aktb.a = false;
     }
-    GroupVideoLoadingFragment.b(this.a, i);
-    GroupVideoLoadingFragment.a(this.a).a(GroupVideoLoadingFragment.a(this.a), 0L);
-    paramMessage = Message.obtain();
-    if (GroupVideoLoadingFragment.a(this.a) >= 90) {
-      i += 1;
+    boolean bool = SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "FTSDatabaseV2");
+    if (!bool) {
+      aktb.a = false;
     }
-    for (;;)
-    {
-      paramMessage.arg1 = i;
-      sendMessageDelayed(paramMessage, 500L);
-      return;
-      i += 8;
-    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqkx
  * JD-Core Version:    0.7.0.1
  */

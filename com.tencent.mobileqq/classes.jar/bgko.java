@@ -1,21 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
+import java.io.File;
 
-class bgko
-  implements View.OnClickListener
+public abstract interface bgko
 {
-  bgko(bgkn parambgkn) {}
+  public abstract void a(File paramFile1, File paramFile2);
   
-  public void onClick(View paramView)
-  {
-    if ((this.a.mRuntime.a() != null) && (this.a.mRuntime.a() != null))
-    {
-      paramView = bfpv.a("qzone", String.valueOf(1), this.a.mRuntime.a().getAccount(), this.a.mRuntime.a().getAccount());
-      this.a.mRuntime.a().loadUrl(paramView);
-    }
-  }
+  public abstract void a(File paramFile1, File paramFile2, File paramFile3);
+  
+  public abstract void a(File paramFile1, File paramFile2, Throwable paramThrowable);
 }
 
 

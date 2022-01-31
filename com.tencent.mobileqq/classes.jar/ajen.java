@@ -1,41 +1,19 @@
-public class ajen
-  implements ajfe
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class ajen
+  implements DialogInterface.OnClickListener
 {
-  protected void a() {}
+  ajen(ajek paramajek) {}
   
-  protected void a(Object paramObject) {}
-  
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
-      a(paramObject);
-      return;
-    case 3: 
-      a();
-      return;
-    case 4: 
-      b(paramBoolean, paramObject);
-      return;
-    }
-    a(paramBoolean);
+    ajek.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajen
  * JD-Core Version:    0.7.0.1
  */

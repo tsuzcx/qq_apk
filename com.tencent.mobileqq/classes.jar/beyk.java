@@ -1,28 +1,77 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.buscard.BuscardPluginInstallActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.util.HashMap;
 
 public class beyk
-  extends BroadcastReceiver
 {
-  private beyk(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
+  private static final HashMap<String, beyl> a = new HashMap();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private static void a(beyl parambeyl)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("BuscardPluginInstallActivity", 4, "BuscardPluginOnResumeReceiver->onReceive, intent:" + paramIntent);
+    if (parambeyl != null) {
+      try
+      {
+        String str = parambeyl.a();
+        besl.a("MiniProgramLpReportDC05", "doReport " + str);
+        besl.a("MiniProgramLpReportDC05", "doReport " + parambeyl.toString());
+        Bundle localBundle = new Bundle();
+        localBundle.putStringArray("data", new String[] { str });
+        if (bfgt.a()) {}
+        for (str = "dc05115";; str = "dc05387")
+        {
+          localBundle.putString("log_key", str);
+          beot.a().a("cmd_dc_report_log_key_data", localBundle, null);
+          parambeyl.a();
+          return;
+        }
+        return;
+      }
+      catch (Exception parambeyl)
+      {
+        besl.d("MiniProgramLpReportDC05", "doReport ", parambeyl);
+      }
     }
-    if ((paramIntent == null) || (!"bridge.plugin.onresume.broadcast".equals(paramIntent.getAction()))) {
-      return;
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
+  {
+    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
+    {
+      paramMiniAppInfo = (beyl)a.get(paramMiniAppInfo.appId);
+      if (paramMiniAppInfo != null)
+      {
+        beyl.a(paramMiniAppInfo, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5);
+        a(paramMiniAppInfo);
+      }
     }
-    this.a.finish();
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt, long paramLong1, long paramLong2)
+  {
+    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
+    {
+      paramMiniAppInfo = (beyl)a.get(paramMiniAppInfo.appId);
+      if (paramMiniAppInfo != null) {
+        paramMiniAppInfo.a(paramLong2, paramLong1, paramInt);
+      }
+    }
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt, long paramLong, boolean paramBoolean)
+  {
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
+    {
+      paramMiniAppInfo = (beyl)a.get(paramMiniAppInfo.appId);
+      if (paramMiniAppInfo != null) {
+        paramMiniAppInfo.a(paramLong, paramInt, paramBoolean);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beyk
  * JD-Core Version:    0.7.0.1
  */

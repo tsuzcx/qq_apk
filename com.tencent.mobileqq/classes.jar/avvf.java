@@ -1,32 +1,25 @@
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
+import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView.1.1;
 
 public class avvf
-  implements avva
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  public avvf(NetSearchEngine paramNetSearchEngine, List paramList) {}
+  public avvf(FollowCaptureView paramFollowCaptureView) {}
   
-  public void a(List paramList) {}
-  
-  public void a(List paramList, int paramInt)
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    FollowCaptureView.a(this.a, paramSurfaceTexture);
+    this.a.queueEvent(new FollowCaptureView.1.1(this, paramSurfaceTexture));
+    if (!FollowCaptureView.a(this.a)) {
+      FollowCaptureView.a(this.a, true);
     }
-    avwf.a();
-    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).a.countDown();
-  }
-  
-  public void a(List paramList, avvo paramavvo)
-  {
-    a(paramList, paramavvo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avvf
  * JD-Core Version:    0.7.0.1
  */

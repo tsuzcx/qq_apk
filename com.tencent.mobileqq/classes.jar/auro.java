@@ -1,27 +1,49 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.revokemsg.RevokeMsgInfo;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import java.util.HashMap;
 
-public final class auro
-  implements Parcelable.Creator<RevokeMsgInfo>
+public class auro
 {
-  public RevokeMsgInfo a(Parcel paramParcel)
+  static HashMap<Integer, Bitmap> a;
+  public double a;
+  public float a;
+  public int a;
+  public Bitmap a;
+  public float[] a;
+  float b;
+  public int b;
+  public float c;
+  public float d;
+  
+  static
   {
-    RevokeMsgInfo localRevokeMsgInfo = new RevokeMsgInfo();
-    localRevokeMsgInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localRevokeMsgInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localRevokeMsgInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localRevokeMsgInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localRevokeMsgInfo.b = paramParcel.readLong();
-    localRevokeMsgInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    localRevokeMsgInfo.d = paramParcel.readString();
-    localRevokeMsgInfo.e = paramParcel.readInt();
-    return localRevokeMsgInfo;
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public RevokeMsgInfo[] a(int paramInt)
+  public static auro a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, Resources paramResources)
   {
-    return new RevokeMsgInfo[paramInt];
+    auro localauro = new auro();
+    float f = paramBitmap.getHeight() / paramBitmap.getWidth();
+    localauro.jdField_a_of_type_Int = ((int)(actn.a(8.0F, paramResources) + (float)Math.random() * actn.a(3.0F, paramResources)));
+    localauro.jdField_b_of_type_Int = ((int)(f * localauro.jdField_a_of_type_Int));
+    localauro.jdField_a_of_type_ArrayOfFloat = new float[2];
+    localauro.jdField_a_of_type_ArrayOfFloat[0] = paramFloat1;
+    localauro.jdField_a_of_type_ArrayOfFloat[1] = paramFloat2;
+    localauro.jdField_a_of_type_Float = ((float)Math.random() * actn.a(90.0F, paramResources) - actn.a(45.0F, paramResources));
+    localauro.jdField_a_of_type_Double = (2.0D * Math.random() * 3.141592653589793D - 3.141592653589793D);
+    if (localauro.jdField_a_of_type_Double >= 0.0D) {}
+    for (localauro.jdField_b_of_type_Float = (actn.a(10.0F, paramResources) + (float)Math.random() * actn.a(200.0F, paramResources));; localauro.jdField_b_of_type_Float = (-actn.a(10.0F, paramResources) - (float)Math.random() * actn.a(200.0F, paramResources)))
+    {
+      localauro.c = ((float)(localauro.jdField_b_of_type_Float * Math.cos(localauro.jdField_a_of_type_Double)));
+      localauro.d = ((float)(localauro.jdField_b_of_type_Float * Math.sin(localauro.jdField_a_of_type_Double)));
+      localauro.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(localauro.jdField_a_of_type_Int)));
+      if (localauro.jdField_a_of_type_AndroidGraphicsBitmap == null)
+      {
+        localauro.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(paramBitmap, localauro.jdField_a_of_type_Int, localauro.jdField_b_of_type_Int, true);
+        jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localauro.jdField_a_of_type_Int), localauro.jdField_a_of_type_AndroidGraphicsBitmap);
+      }
+      return localauro;
+    }
   }
 }
 

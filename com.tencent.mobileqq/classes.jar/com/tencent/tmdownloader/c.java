@@ -1,8 +1,8 @@
 package com.tencent.tmdownloader;
 
 import android.os.RemoteException;
+import com.tencent.tmassistantbase.util.aa;
 import com.tencent.tmassistantbase.util.ab;
-import com.tencent.tmassistantbase.util.ac;
 
 class c
   implements Runnable
@@ -15,7 +15,7 @@ class c
     {
       if ((this.a.mServiceInterface != null) && (this.a.mServiceCallback != null))
       {
-        ab.a(this.a.mServiceName + "BaseIPCClient registerServiceCallback");
+        aa.a(this.a.mServiceName + "BaseIPCClient registerServiceCallback");
         this.a.registerServiceCallback();
       }
       return;
@@ -27,7 +27,7 @@ class c
     }
     catch (Exception localException)
     {
-      ac.e("BaseIPCClient", "<onServiceConnected> service wrong, e = " + localException.getMessage());
+      ab.e("BaseIPCClient", "<onServiceConnected> service wrong, e = " + localException.getMessage());
     }
   }
 }

@@ -1,54 +1,53 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-class pww
-  implements pwp
+public class pww
+  extends ClickableSpan
+  implements rfs
 {
-  pww(pwu parampwu) {}
+  private int jdField_a_of_type_Int = -1;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  boolean jdField_a_of_type_Boolean;
   
-  public void a()
+  public pww(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader, ArticleInfo paramArticleInfo, int paramInt)
   {
-    pwu.a(this.a, NetConnInfoCenter.getServerTimeMillis());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(float paramFloat)
+  public void a(boolean paramBoolean)
   {
-    pwu.a(this.a, paramFloat);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
+    }
   }
   
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, false, 6, false);
+    rap.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.a.a.e());
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.jdField_a_of_type_Int;; i = Color.parseColor("#F8F8F8"))
     {
-    default: 
-      return;
-    case 0: 
-      pwu.a(this.a, 4);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoDeliverController", 2, "mVideoTransProcessorHandler mVideoMd5=" + paramString2 + ", mVideoUuid=" + paramString3 + ", mVideoUrl=" + paramString1);
-      }
-      pwu.b(this.a, NetConnInfoCenter.getServerTimeMillis());
-      ndn.a(pwu.a(this.a), "", "0X8008181", "0X8008181", 0, 0, String.valueOf(pwu.a(this.a)), String.valueOf(pwu.b(this.a)), String.valueOf(pwu.c(this.a) - pwu.d(this.a)), String.valueOf(pwu.e(this.a) - pwu.f(this.a)));
-      pwu.a(this.a, 0, pwu.a(this.a), pwu.b(this.a), paramString1, paramString2, paramString3);
-      paramString1 = pwl.a().a(pwu.a(this.a)).b(pwu.b(this.a)).d(paramString2).c(paramString1).e(paramString3).a(pwu.b(this.a)).b(pwu.g(this.a)).a();
-      pwu.a(this.a, paramString1);
-      return;
-    case 1001: 
-      pwu.b(this.a, 6);
-      return;
-    case 1002: 
-      pwu.b(this.a, 5);
-      return;
-    case 1003: 
-      pwu.b(this.a, 7);
-      return;
-    case 1004: 
-      pwu.b(this.a, 7);
-      pwu.c(this.a, 1004);
-      ndn.a(pwu.a(this.a), "", "0X8008181", "0X8008181", 0, 1, String.valueOf(pwu.a(this.a)), String.valueOf(pwu.b(this.a)), String.valueOf(pwu.c(this.a) - pwu.d(this.a)), String.valueOf(pwu.e(this.a) - pwu.f(this.a)));
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(actn.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.getResources()));
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
       return;
     }
-    pwu.b(this.a, 12);
   }
 }
 

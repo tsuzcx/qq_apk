@@ -1,23 +1,42 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import android.widget.TextView;
-import beih;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.mini.apkg.ApkgInfo;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.ArrayList;
 
 class CapsuleButton$4
-  implements Runnable
+  implements EIPCResultCallback
 {
-  CapsuleButton$4(CapsuleButton paramCapsuleButton) {}
+  CapsuleButton$4(CapsuleButton paramCapsuleButton, ApkgInfo paramApkgInfo) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if ((CapsuleButton.access$400() > 0) && (CapsuleButton.access$500(this.this$0) != null) && (!CapsuleButton.access$500(this.this$0).isAnimating()))
+    CapsuleButton.access$100(this.this$0).removeCallbacksAndMessages(Integer.valueOf(1000));
+    if (paramEIPCResult != null)
     {
-      CapsuleButton.access$600(this.this$0).setVisibility(0);
-      beih.a(CapsuleButton.access$600(this.this$0), 7, CapsuleButton.access$400(), 0);
-      return;
+      QLog.d("CapsuleButton", 1, "onMoreClick onCallback code : " + paramEIPCResult.code);
+      if (paramEIPCResult.code == 0)
+      {
+        paramEIPCResult = paramEIPCResult.data;
+        int i = paramEIPCResult.getInt("topType");
+        paramEIPCResult = paramEIPCResult.getIntegerArrayList("backHomeSceneList");
+        if ((paramEIPCResult != null) && (paramEIPCResult.size() > 0))
+        {
+          CapsuleButton.access$200(this.this$0).clear();
+          CapsuleButton.access$200(this.this$0).addAll(paramEIPCResult);
+        }
+        if (this.val$apkgInfo != null) {
+          this.val$apkgInfo.appConfig.config.topType = i;
+        }
+      }
     }
-    CapsuleButton.access$600(this.this$0).setVisibility(8);
+    AppBrandTask.runTaskOnUiThread(new CapsuleButton.4.1(this));
   }
 }
 

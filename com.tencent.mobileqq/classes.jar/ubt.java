@@ -1,56 +1,25 @@
 import android.view.View;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
-import com.tencent.common.app.AppInterface;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
 public class ubt
+  implements View.OnClickListener
 {
-  private atdi jdField_a_of_type_Atdi = new ubu(this);
-  public MystoryListView a;
-  protected NewMessageYellowBar a;
-  protected AppInterface a;
-  private boolean jdField_a_of_type_Boolean;
+  public ubt(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Atdi);
-    }
-  }
-  
-  public void a(AppInterface paramAppInterface, View paramView, MystoryListView paramMystoryListView)
-  {
-    if (!(paramView instanceof NewMessageYellowBar)) {
-      throw new IllegalArgumentException("StoryHomePushYellowBarHandler 传入View不对");
-    }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar = ((NewMessageYellowBar)paramView);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView = paramMystoryListView;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.setOnClickListener(new ubv(this));
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Atdi);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar == null) {
+    if (!bbev.g(this.a.jdField_a_of_type_AndroidViewView.getContext()))
+    {
+      bcpw.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131694607, 0).a();
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.a(0, 0);
-    ((mmy)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(70)).a(21);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Atdi);
-    }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Atdi);
-    }
+    veg.d(this.a.jdField_a_of_type_JavaLangString, "video view error, retry, show loading view");
+    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.a.a(10, true, "retry play");
   }
 }
 

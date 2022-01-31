@@ -1,46 +1,31 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class aiji
-  extends aijg
+  implements Animation.AnimationListener
 {
-  public void a(aijk paramaijk, Bitmap paramBitmap)
+  public aiji(SpecailCareListActivity paramSpecailCareListActivity, aijz paramaijz) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramBitmap == null) || (paramaijk == null) || (TextUtils.isEmpty(paramaijk.jdField_a_of_type_JavaLangCharSequence))) {
-      return;
-    }
-    String str2 = paramaijk.jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
-    paramaijk = str1 + paramaijk.jdField_a_of_type_JavaLangCharSequence;
-    this.a.put(paramaijk, new WeakReference(paramBitmap));
+    this.jdField_a_of_type_Aijz.a.clearAnimation();
+    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
+    paramAnimation.addRule(1, 2131367679);
+    paramAnimation.setMargins(0, (int)(24.0F * SpecailCareListActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, 0);
+    this.jdField_a_of_type_Aijz.a.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_Aijz.a.setVisibility(4);
   }
   
-  public Bitmap b(aijk paramaijk)
-  {
-    if ((paramaijk == null) || (TextUtils.isEmpty(paramaijk.jdField_a_of_type_JavaLangCharSequence))) {
-      return null;
-    }
-    String str2 = paramaijk.jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
-    paramaijk = str1 + paramaijk.jdField_a_of_type_JavaLangCharSequence;
-    paramaijk = (WeakReference)this.a.get(paramaijk);
-    if (paramaijk != null) {
-      return (Bitmap)paramaijk.get();
-    }
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aiji
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,66 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StGetUserHealthDataReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetUserHealthDataRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import org.json.JSONObject;
 
 public class bezv
-  extends RemoteCommand
+  extends bfad
 {
-  private boolean a;
+  private INTERFACE.StGetUserHealthDataReq a = new INTERFACE.StGetUserHealthDataReq();
   
-  public bezv(String paramString, boolean paramBoolean)
+  public bezv(COMM.StCommonExt paramStCommonExt, String paramString)
   {
-    super(paramString);
-    this.a = paramBoolean;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = PluginCommunicationHandler.getInstance();
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.register(new bezv("qqcomicemoticonipccmd", false));
+    this.a.appid.set(paramString);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
     }
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  protected String a()
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicEmoticonUploadRemoteCmd", 2, "onRemoteInvoke cannot get QQAppInterface");
-      }
+    return "mini_user_info";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    do
+    INTERFACE.StGetUserHealthDataRsp localStGetUserHealthDataRsp = new INTERFACE.StGetUserHealthDataRsp();
+    try
     {
-      do
+      localStGetUserHealthDataRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetUserHealthDataRsp != null)
       {
-        return null;
-        localObject = (QQAppInterface)localObject;
-      } while (!"Remotecall_uploadEmoticon".equals(paramBundle.getString("qqcomicemoticonipccmd")));
-      localObject = (bezt)((QQAppInterface)localObject).getManager(147);
-    } while (localObject == null);
-    ((bezt)localObject).a(paramBundle, paramOnInvokeFinishLinstener);
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("encryptedData", localStGetUserHealthDataRsp.encryptedData.get());
+        paramArrayOfByte.put("iv", localStGetUserHealthDataRsp.iv.get());
+        return paramArrayOfByte;
+      }
+      besl.a("GetUserHealthDataRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      besl.a("GetUserHealthDataRequest", "onResponse fail." + paramArrayOfByte);
+    }
     return null;
   }
   
-  public boolean isSynchronized()
+  public byte[] a()
   {
-    return this.a;
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetUserHealthData";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bezv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.file.MoveFileActivity;
 
-class xak
-  implements moc
+public class xak
+  implements DialogInterface.OnClickListener
 {
-  xak(xai paramxai, QQAppInterface paramQQAppInterface) {}
+  public xak(MoveFileActivity paramMoveFileActivity) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
-    }
-    if (paramInt == 0)
-    {
-      String str;
-      try
-      {
-        paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
-        str = paramString.optString("url");
-        paramInt = paramString.optInt("filesize");
-        if ((str != null) && (str.endsWith("patch")))
-        {
-          bace.a(mol.a(this.jdField_a_of_type_Xai.a) + this.jdField_a_of_type_Xai.a);
-          this.jdField_a_of_type_Xai.b();
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        this.jdField_a_of_type_Xai.a();
-        return;
-      }
-      if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
-      {
-        this.jdField_a_of_type_Xai.a(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
-      }
-      this.jdField_a_of_type_Xai.a();
-      return;
-    }
-    this.jdField_a_of_type_Xai.a();
+    paramDialogInterface.dismiss();
   }
-  
-  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xak
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class aasg
-  implements aiam
+  implements aptu
 {
-  public aasg(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public aasg(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aouq paramaouq) {}
   
-  public void a(View paramView)
+  public void a()
   {
-    if (ForwardFriendListActivity.a(this.a))
+    aptv.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131692829));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      ForwardFriendListActivity.b(this.a, paramView);
-      return;
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        if (bbdj.b(localFileManagerEntity.getFilePath())) {
+          this.jdField_a_of_type_Aouq.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
+        } else {
+          this.jdField_a_of_type_Aouq.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+        }
+      }
     }
-    ForwardFriendListActivity.c(this.a, paramView);
   }
   
-  public boolean a(String paramString, int paramInt)
-  {
-    return ForwardFriendListActivity.a(this.a, paramString, paramInt);
-  }
+  public void b() {}
 }
 
 

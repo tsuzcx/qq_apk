@@ -2,19 +2,19 @@ package com.tencent.biz.pubaccount;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo;
 import java.util.ArrayList;
-import nbk;
-import neu;
-import nev;
+import nml;
+import npv;
+import npw;
 
 public class VideoPlayRecommendHandler$2
   implements Runnable
 {
-  public VideoPlayRecommendHandler$2(neu paramneu, ArrayList paramArrayList1, nev paramnev, long paramLong1, VideoInfo paramVideoInfo, int paramInt1, ArrayList paramArrayList2, String paramString1, long paramLong2, boolean paramBoolean, int paramInt2, String paramString2, String paramString3, WeishiRedDotInfo paramWeishiRedDotInfo, int paramInt3, String paramString4, byte[] paramArrayOfByte, int paramInt4, int paramInt5, int paramInt6, ArrayList paramArrayList3) {}
+  public VideoPlayRecommendHandler$2(npv paramnpv, ArrayList paramArrayList1, npw paramnpw, long paramLong1, VideoInfo paramVideoInfo, int paramInt1, ArrayList paramArrayList2, String paramString1, long paramLong2, boolean paramBoolean, int paramInt2, String paramString2, String paramString3, WeishiRedDotInfo paramWeishiRedDotInfo, int paramInt3, String paramString4, byte[] paramArrayOfByte, int paramInt4, int paramInt5, int paramInt6, ArrayList paramArrayList3) {}
   
   public void run()
   {
-    ArrayList localArrayList = nbk.a(this.jdField_a_of_type_JavaUtilArrayList);
-    neu.a(this.this$0, this.jdField_a_of_type_Nev, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructWeishiRedDotInfo, this.jdField_c_of_type_Int, this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, localArrayList, this.jdField_d_of_type_Int, this.e, this.f, 0, this.jdField_c_of_type_JavaUtilArrayList);
+    ArrayList localArrayList = nml.a(this.jdField_a_of_type_JavaUtilArrayList);
+    npv.a(this.this$0, this.jdField_a_of_type_Npw, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructWeishiRedDotInfo, this.jdField_c_of_type_Int, this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, localArrayList, this.jdField_d_of_type_Int, this.e, this.f, 0, this.jdField_c_of_type_JavaUtilArrayList);
   }
 }
 

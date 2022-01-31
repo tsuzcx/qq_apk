@@ -1,19 +1,27 @@
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-class ubq
-  implements ulz<Integer>
+public class ubq
+  extends ubv<StoryVideoItem>
 {
-  ubq(ubn paramubn, spz paramspz) {}
-  
-  public void a(ErrorMessage paramErrorMessage)
+  public ubq(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    urk.e("QQStoryTakeVideoHelper", "get vip error.");
+    super(paramVideoViewVideoHolder, null);
   }
   
-  public void a(Integer paramInteger)
+  public void a(StoryVideoItem paramStoryVideoItem)
   {
-    urk.b("QQStoryTakeVideoHelper", "get vip competed, vip:" + paramInteger);
-    this.jdField_a_of_type_Spz.b("qqstory_i_am_vip", paramInteger);
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    veg.d(this.a.a, "VideoPrepareSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 

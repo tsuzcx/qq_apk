@@ -1,23 +1,21 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class aluz
-  implements DialogInterface.OnClickListener
+class aluz
+  implements DialogInterface.OnDismissListener
 {
-  public aluz(SwipePostTableLayout paramSwipePostTableLayout) {}
+  aluz(aluy paramaluy, bfol parambfol) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (SwipePostTableLayout.a(this.a).isShowing()) {
-      SwipePostTableLayout.a(this.a).dismiss();
-    }
-    aluq.a(this.a.a, true);
+    this.jdField_a_of_type_Bfol.dismiss();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearApp actionsheet is closed", new Object[0]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aluz
  * JD-Core Version:    0.7.0.1
  */

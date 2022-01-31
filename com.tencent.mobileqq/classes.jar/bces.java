@@ -1,12 +1,27 @@
-public abstract interface bces
+import java.util.Hashtable;
+
+public class bces
+  extends bcds
 {
-  public abstract void a(String paramString1, String paramString2, String paramString3);
+  Hashtable<String, Boolean> a = new Hashtable();
   
-  public abstract void b(String paramString1, String paramString2, String paramString3);
+  public void a(String paramString, boolean paramBoolean)
+  {
+    this.a.put(paramString, Boolean.valueOf(paramBoolean));
+  }
+  
+  public boolean a(String paramString, boolean paramBoolean)
+  {
+    paramString = (Boolean)this.a.get(paramString);
+    if (paramString == null) {
+      return paramBoolean;
+    }
+    return paramString.booleanValue();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bces
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.SigCommentListActivity;
-import com.tencent.mobileqq.app.SignatureManager.SigComments;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class abrv
-  extends ajsf
+class abrv
+  implements DialogInterface.OnClickListener
 {
-  public abrv(SigCommentListActivity paramSigCommentListActivity) {}
+  abrv(abru paramabru) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    List localList;
-    if (this.a.isResume())
-    {
-      this.a.stopTitleProgress();
-      if (!paramBoolean) {
-        break label175;
-      }
-      if ((paramObject instanceof Bundle))
-      {
-        paramObject = (SignatureManager.SigComments)((Bundle)paramObject).getSerializable("data");
-        paramBoolean = paramObject.isOver;
-        paramObject = paramObject.mlist;
-        localList = this.a.a.a();
-        if (paramObject.size() <= 0) {
-          break label128;
-        }
-        if (localList == null) {
-          break label113;
-        }
-        localList.addAll(localList.size(), paramObject);
-        this.a.a.a(localList, paramBoolean);
-        this.a.a.notifyDataSetChanged();
-      }
-    }
-    label113:
-    do
-    {
-      return;
-      this.a.a.a(paramObject, paramBoolean);
-      break;
-      if ((localList != null) && (localList.size() > 0)) {
-        this.a.a.a(localList, paramBoolean);
-      }
-      for (;;)
-      {
-        this.a.a.notifyDataSetChanged();
-        return;
-        SigCommentListActivity.a(this.a, 3);
-      }
-      paramObject = this.a.a.a();
-    } while ((paramObject != null) && (paramObject.size() > 0));
-    label128:
-    label175:
-    SigCommentListActivity.a(this.a, 2);
+    paramDialogInterface.dismiss();
   }
 }
 

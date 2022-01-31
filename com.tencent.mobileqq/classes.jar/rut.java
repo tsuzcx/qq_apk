@@ -1,12 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
 
-class rut
-  implements DialogInterface.OnCancelListener
+public class rut
+  implements ruw
 {
-  rut(rus paramrus) {}
+  public rut(ChannelTopBanner paramChannelTopBanner) {}
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.e();
+      return;
+    }
+    this.a.d();
+  }
 }
 
 

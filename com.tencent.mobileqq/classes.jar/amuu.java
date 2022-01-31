@@ -1,34 +1,87 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class amuu
-  implements View.OnLongClickListener, CompoundButton.OnCheckedChangeListener
+  extends ampb<bjiq>
 {
-  public amum a;
-  
-  protected amuu(DataReportSettingFragment paramDataReportSettingFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public int a()
   {
-    if (this.jdField_a_of_type_Amum != null)
-    {
-      this.jdField_a_of_type_Amum.a = paramBoolean;
-      amvk.a().e();
+    return 306;
+  }
+  
+  @NonNull
+  public bjiq a(int paramInt)
+  {
+    return new bjiq();
+  }
+  
+  @Nullable
+  public bjiq a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi == null) || (paramArrayOfampi.length == 0)) {
+      return null;
+    }
+    paramArrayOfampi = paramArrayOfampi[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMFilterConfigProcessor", 2, "handleGetQIMFilterConfig onParsed, content:" + paramArrayOfampi);
+    }
+    return new bjin().a(paramArrayOfampi, lco.e(), "temp_filter_zip", new amuv(this));
+  }
+  
+  public Class<bjiq> a()
+  {
+    return bjiq.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMFilterConfigProcessor", 2, "handleGetQIMFilterConfig onReqFailed");
     }
   }
   
-  public boolean onLongClick(View paramView)
+  public void a(bjiq parambjiq)
   {
-    babr.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.getActivity(), 230, null, ajjy.a(2131636987), new amuv(this), new amuw(this)).show();
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMFilterConfigProcessor", 2, "handleGetQIMFilterConfig onUpdate");
+    }
+  }
+  
+  public int b()
+  {
+    if (!new File(bkue.a + "filter_config_new.xml").exists()) {
+      return 0;
+    }
+    return bkqo.a(BaseApplicationImpl.getContext());
+  }
+  
+  public int b(int paramInt)
+  {
+    if (!new File(bkue.a + "filter_config_new.xml").exists())
+    {
+      QLog.i("QIMFilterConfigProcessor", 1, "config file not exist");
+      ampm.a().a(306, 0);
+      return 0;
+    }
+    return super.b(paramInt);
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amuu
  * JD-Core Version:    0.7.0.1
  */

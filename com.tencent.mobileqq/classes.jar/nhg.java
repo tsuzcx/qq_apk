@@ -1,22 +1,51 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.AccountDetail.view.ReadInJoyNewFeedsTopGestureLayout;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
 
-class nhg
-  implements ViewBase.OnClickListener
+public class nhg
+  extends TopGestureLayout.TopGestureDetector
 {
-  nhg(nhf paramnhf) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public nhg(ReadInJoyNewFeedsTopGestureLayout paramReadInJoyNewFeedsTopGestureLayout, Context paramContext)
   {
-    if (paramViewBase.getEventAttachedData() == null)
-    {
-      QLog.e("DailyHeaderViewController", 1, "[onClick] attach event data is null");
-      return;
+    super(paramReadInJoyNewFeedsTopGestureLayout, paramContext);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((this.a.isGestureIdle()) || (this.a.isGestureEnd())) {
+      return false;
     }
-    ngv.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject);
-    obz.a(paramViewBase.getNativeView().getContext(), paramViewBase.getEventAttachedData());
+    paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
+    int i;
+    if (this.a.hasGestureFlag(1)) {
+      if (paramMotionEvent1.getX() <= 0.2133333333333334D * bbct.i())
+      {
+        i = 1;
+        if ((i != 0) && (paramFloat1 < 0.0F) && (paramFloat2 < 0.5F) && (this.a.mOnFlingGesture != null))
+        {
+          this.a.setGestureFlag(-1);
+          if (!ReadInJoyNewFeedsTopGestureLayout.a(this.a)) {
+            this.a.mOnFlingGesture.flingLToR();
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      return false;
+      i = 0;
+      break;
+      if ((this.a.hasGestureFlag(2)) && (paramFloat1 > 0.0F) && (paramFloat2 < 0.5F) && (this.a.mOnFlingGesture != null))
+      {
+        this.a.setGestureFlag(-1);
+        if (!ReadInJoyNewFeedsTopGestureLayout.b(this.a)) {
+          this.a.mOnFlingGesture.flingRToL();
+        }
+      }
+    }
   }
 }
 

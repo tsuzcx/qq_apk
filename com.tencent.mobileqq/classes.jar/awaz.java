@@ -1,17 +1,14 @@
-public class awaz
+public abstract interface awaz
 {
-  public byte[] a;
-  public byte[] b;
+  public abstract void a(long paramLong);
   
-  public awaz(awax paramawax, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
-    this.b = paramArrayOfByte2;
-  }
+  public abstract void a(long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void a(Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awaz
  * JD-Core Version:    0.7.0.1
  */

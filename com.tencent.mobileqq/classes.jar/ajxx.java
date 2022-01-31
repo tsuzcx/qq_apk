@@ -1,38 +1,74 @@
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.QQComicStep;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.app.GroupIconHelper;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class ajxx
-  extends ajmm
 {
-  public ajxx(QQComicStep paramQQComicStep) {}
+  public byte a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<String> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
   
-  public void a(List<MessageRecord> paramList)
+  private ajxx(GroupIconHelper paramGroupIconHelper)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
+    this.jdField_a_of_type_Byte = 1;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public void a(byte paramByte)
+  {
+    if (paramByte == 3)
     {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Byte = 1;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_b_of_type_Int = 0;
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.c = false;
+      this.d = false;
+      this.e = false;
+    }
+    while (paramByte != 2) {
       return;
-      paramList = new ArrayList(paramList).iterator();
-      while (paramList.hasNext())
-      {
-        Object localObject = awuw.a(((MessageRecord)paramList.next()).msgData);
-        if ((localObject instanceof StructMsgForImageShare))
-        {
-          localObject = (StructMsgForImageShare)localObject;
-          if ((((StructMsgForImageShare)localObject).mMsgActionData != null) && (((StructMsgForImageShare)localObject).mMsgActionData.startsWith("comic_plugin.apk")))
-          {
-            String[] arrayOfString = ((StructMsgForImageShare)localObject).mMsgActionData.substring(((StructMsgForImageShare)localObject).mMsgActionData.indexOf("|") + 1).split("\\|");
-            if (arrayOfString.length >= 8) {
-              bezp.a(this.a.a.mApp, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], adww.a(((StructMsgForImageShare)localObject).mMsgActionData) });
-            }
-          }
-        }
-      }
+    }
+    this.jdField_b_of_type_Boolean = false;
+    this.e = true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nGroupIconInfo");
+    localStringBuilder.append("\n |-").append("isChanged:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("\n |-").append("state:").append(this.jdField_a_of_type_Byte);
+    localStringBuilder.append("\n |-").append("isSyncFace:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("\n |-").append("startTime:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("\n |-").append("faceUinSet:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("faceCount:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("\n |-").append("crateIconCount:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("\n |-").append("lastCreatedFaceUinSet:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("isPstnIcon:").append(this.c);
+    localStringBuilder.append("\n |-").append("hasRealPstnUser:").append(this.d);
+    localStringBuilder.append("\n |-").append("isFromCreate:").append(this.e);
+    try
+    {
+      localStringBuilder.append("\n |-").append("memberFaceList:").append(this.jdField_a_of_type_JavaUtilArrayList);
+      label243:
+      return localStringBuilder.toString();
+    }
+    catch (Exception localException)
+    {
+      break label243;
     }
   }
 }

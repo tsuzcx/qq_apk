@@ -1,40 +1,76 @@
-import android.util.Base64;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectOutputStream;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public class rpn
+public class rpn<T>
 {
-  public static final String a = ajjy.a(2131648873);
-  public static final String b = ajjy.a(2131648864);
-  public static final String c = ajjy.a(2131648868);
-  public static final String d = ajjy.a(2131648878);
-  public static final String e = ajjy.a(2131648866);
-  public static final String f = ajjy.a(2131648865);
-  public static final String g = ajjy.a(2131648863);
-  public static final String h = ajjy.a(2131648880);
-  public static final String i = ajjy.a(2131648872);
-  public static final String j = ajjy.a(2131648874);
-  public static final String k = ajjy.a(2131648877);
-  public static final String l = ajjy.a(2131648875);
-  public static final String m = ajjy.a(2131648882);
-  public static final String n = ajjy.a(2131648871);
-  public static final String o = ajjy.a(2131648867);
-  public static final String p = ajjy.a(2131648876);
+  public static final String a;
+  private int jdField_a_of_type_Int;
+  private T jdField_a_of_type_JavaLangObject;
+  private final rpo<T> jdField_a_of_type_Rpo;
   
-  public static String a(List<?> paramList)
+  static
   {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(localByteArrayOutputStream);
-    localObjectOutputStream.writeObject(paramList);
-    paramList = new String(Base64.encode(localByteArrayOutputStream.toByteArray(), 0));
-    localObjectOutputStream.close();
-    return paramList;
+    jdField_a_of_type_JavaLangString = "zimage." + rpn.class.getSimpleName();
+  }
+  
+  public rpn(T paramT, rpo<T> paramrpo)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    this.jdField_a_of_type_Rpo = paramrpo;
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public T a()
+  {
+    try
+    {
+      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+      return localObject1;
+    }
+    finally
+    {
+      localObject2 = finally;
+      throw localObject2;
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      this.jdField_a_of_type_Int += 1;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_a_of_type_Int -= 1;
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        if (QLog.isColorLevel()) {
+          rpq.a("Reference", " decReference 0 " + this.jdField_a_of_type_JavaLangObject);
+        }
+        if (this.jdField_a_of_type_JavaLangObject != null)
+        {
+          this.jdField_a_of_type_Rpo.a(this.jdField_a_of_type_JavaLangObject);
+          this.jdField_a_of_type_JavaLangObject = null;
+        }
+      }
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     rpn
  * JD-Core Version:    0.7.0.1
  */

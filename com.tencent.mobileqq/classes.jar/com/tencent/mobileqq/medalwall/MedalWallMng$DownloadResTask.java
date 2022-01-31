@@ -3,8 +3,8 @@ package com.tencent.mobileqq.medalwall;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import arjv;
-import befq;
+import asfy;
+import bfnk;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -12,11 +12,11 @@ import java.io.File;
 public class MedalWallMng$DownloadResTask
   implements Runnable
 {
-  final arjv a;
+  final asfy a;
   
-  public MedalWallMng$DownloadResTask(MedalWallMng paramMedalWallMng, arjv paramarjv)
+  public MedalWallMng$DownloadResTask(MedalWallMng paramMedalWallMng, asfy paramasfy)
   {
-    this.a = paramarjv;
+    this.a = paramasfy;
   }
   
   public void run()
@@ -34,7 +34,7 @@ public class MedalWallMng$DownloadResTask
       ((Message)localObject).what = 2;
       ((Message)localObject).arg1 = ((int)l2);
       ((Message)localObject).obj = this.a;
-      this.this$0.jdField_a_of_type_Befq.sendMessage((Message)localObject);
+      this.this$0.jdField_a_of_type_Bfnk.sendMessage((Message)localObject);
       return;
       long l1 = l2;
       try

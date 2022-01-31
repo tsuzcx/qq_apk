@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.business.sougou;
 
-import alot;
+import amdi;
 import java.util.ArrayList;
 
 class WordMatchManager$1
   implements Runnable
 {
-  WordMatchManager$1(WordMatchManager paramWordMatchManager, alot paramalot) {}
+  WordMatchManager$1(WordMatchManager paramWordMatchManager, amdi paramamdi) {}
   
   public void run()
   {

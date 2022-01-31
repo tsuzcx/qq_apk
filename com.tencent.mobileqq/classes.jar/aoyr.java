@@ -1,21 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class aoyr
-  implements View.OnClickListener
+public class aoyr
 {
-  aoyr(aoym paramaoym) {}
+  long a;
+  public FileManagerEntity a;
   
-  public void onClick(View paramView)
+  public aoyr(FileManagerEntity paramFileManagerEntity)
   {
-    if (this.a.a.a() != null) {
-      this.a.a.a().a();
-    }
+    this.a = paramFileManagerEntity;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoyr
  * JD-Core Version:    0.7.0.1
  */

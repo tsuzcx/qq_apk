@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import arfr;
+import asbt;
 
 public class LyricViewController$4
   implements Runnable
 {
-  public LyricViewController$4(arfr paramarfr) {}
+  public LyricViewController$4(asbt paramasbt) {}
   
   public void run()
   {

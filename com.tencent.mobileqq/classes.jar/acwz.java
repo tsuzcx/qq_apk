@@ -1,63 +1,55 @@
-import android.text.Editable;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.support.annotation.RequiresApi;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import java.util.List;
 
 class acwz
-  implements ActionMode.Callback
+  extends BaseAdapter
 {
-  int jdField_a_of_type_Int = 1;
-  int b = 2;
+  private List<String> jdField_a_of_type_JavaUtilList;
   
-  acwz(acwx paramacwx) {}
+  private acwz(acwp paramacwp) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void a(List<String> paramList)
   {
-    boolean bool = false;
-    if (paramMenuItem.getItemId() == this.jdField_a_of_type_Int)
-    {
-      awqx.b(this.jdField_a_of_type_Acwx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A513", "0X800A513", this.jdField_a_of_type_Acwx.a(), 0, "", "", "", "");
-      this.jdField_a_of_type_Acwx.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getText().insert(this.jdField_a_of_type_Acwx.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getSelectionStart(), "\n");
-      paramActionMode.finish();
-      bool = true;
-    }
-    while (paramMenuItem.getItemId() != this.b) {
-      return bool;
-    }
-    if (this.jdField_a_of_type_Acwx.a())
-    {
-      awqx.b(this.jdField_a_of_type_Acwx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A514", "0X800A514", this.jdField_a_of_type_Acwx.a(), 0, "", "", "", "");
-      this.jdField_a_of_type_Acwx.a(false);
-    }
-    for (;;)
-    {
-      paramActionMode.finish();
-      return true;
-      awqx.b(this.jdField_a_of_type_Acwx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009F28", "0X8009F28", this.jdField_a_of_type_Acwx.a(), 0, "", "", "", "");
-      this.jdField_a_of_type_Acwx.a();
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public int getCount()
   {
-    paramMenu.add(0, this.jdField_a_of_type_Int, 196608, ajjy.a(2131639174));
-    int i = this.b;
-    if (this.jdField_a_of_type_Acwx.a()) {}
-    for (paramActionMode = ajjy.a(2131639175);; paramActionMode = ajjy.a(2131639172))
-    {
-      paramMenu.add(0, i, 196608, paramActionMode);
-      return true;
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public Object getItem(int paramInt)
   {
-    return false;
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @RequiresApi(api=16)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_Acwp.a).inflate(2131559151, null);
+    }
+    paramView = (ImageView)paramViewGroup.findViewById(2131366798);
+    URLDrawable localURLDrawable = URLDrawable.getDrawable((String)this.jdField_a_of_type_JavaUtilList.get(paramInt), null);
+    localURLDrawable.setDecodeHandler(bavi.y);
+    paramView.setImageDrawable(localURLDrawable);
+    return paramViewGroup;
   }
 }
 

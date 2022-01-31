@@ -2,7 +2,7 @@ package com.tencent.replacemonitor.replace.c;
 
 import com.tencent.replacemonitor.MonitorStep;
 import com.tencent.replacemonitor.MonitorTask;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 
 class c
   implements Runnable
@@ -12,7 +12,7 @@ class c
   public void run()
   {
     MonitorTask localMonitorTask = com.tencent.replacemonitor.replace.b.a.a().a(this.a.id);
-    ac.c("WashMonitor", "ReplaceMonitorImpl>>执行安装后定时检查 task1 = " + localMonitorTask);
+    ab.c("WashMonitor", "ReplaceMonitorImpl>>执行安装后定时检查 task1 = " + localMonitorTask);
     if (localMonitorTask != null) {
       new com.tencent.replacemonitor.replace.c(localMonitorTask, MonitorStep.AFTER_INSTALL, this.b).run();
     }

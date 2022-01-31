@@ -1,21 +1,23 @@
-import android.os.Bundle;
-
 public class anfe
 {
-  int jdField_a_of_type_Int;
-  public Bundle a;
-  Runnable jdField_a_of_type_JavaLangRunnable;
+  private anfh a;
   
-  public anfe(int paramInt, Bundle paramBundle)
+  public static anfe a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    paramBundle.putInt("seq", paramInt);
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    return anfg.a();
+  }
+  
+  public anfh a()
+  {
+    if (this.a == null) {
+      this.a = new anfi();
+    }
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anfe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,24 @@
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+
 public class bgrq
+  extends bgsg
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  
-  public bgrq(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public bgrq(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext)
   {
-    this.f = paramInt1;
-    this.e = paramInt2;
-    this.b = paramInt3;
-    this.a = paramInt4;
-    this.c = paramInt5;
-    this.d = paramInt6;
+    super(paramContext);
   }
   
-  public int a()
+  public void onBackPressed()
   {
-    return this.f;
-  }
-  
-  public int b()
-  {
-    return this.e;
-  }
-  
-  public int c()
-  {
-    return this.c - this.b;
-  }
-  
-  public int d()
-  {
-    return this.d - this.a;
+    if (this.a.a) {
+      super.onBackPressed();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
   }
 }
 

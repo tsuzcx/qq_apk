@@ -1,31 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class anyp
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public anyp(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public anyp(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (badq.d(this.a.getActivity()))
-    {
-      UniformDownloadActivity.a(this.a).setVisibility(8);
-      if (apck.a())
-      {
-        apbx.a(this.a.getActivity(), 2131627035, 2131654705, new anyq(this));
-        return;
-      }
-      UniformDownloadActivity.a(this.a);
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-      return;
-    }
-    apcb.a(2131627028);
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    paramDialogInterface.dismiss();
   }
 }
 

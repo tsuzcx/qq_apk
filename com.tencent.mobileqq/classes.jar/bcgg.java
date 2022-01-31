@@ -1,324 +1,265 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import android.text.TextUtils.TruncateAt;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class bcgg
 {
-  public static long a()
+  int jdField_a_of_type_Int = 255;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  public View.OnClickListener a;
+  View jdField_a_of_type_AndroidViewView;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  CustomWebView jdField_a_of_type_ComTencentBizPubaccountCustomWebView = null;
+  String jdField_a_of_type_JavaLangString = null;
+  boolean jdField_a_of_type_Boolean = false;
+  View jdField_b_of_type_AndroidViewView;
+  FrameLayout jdField_b_of_type_AndroidWidgetFrameLayout;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  
+  public bcgg(Activity paramActivity, CustomWebView paramCustomWebView, ViewGroup paramViewGroup)
   {
-    return bcfa.a(bbtm.a().a(), null).a("Common_tips_dialog_interval");
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = paramCustomWebView;
+    a(paramViewGroup);
+    a();
   }
   
-  public static String a()
+  public View a()
   {
-    return bcfa.a(bbtm.a().a(), null).b("Common_myapp_download_url");
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public static String a(int paramInt, String paramString)
+  public ImageView a()
   {
-    if ("biz_src_zf_games".equals(paramString)) {
-      switch (paramInt)
-      {
-      default: 
-        paramString = "Common_GC_InstallYYB_Install_Words";
-      }
+    return this.jdField_b_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_b_of_type_AndroidWidgetTextView;
+  }
+  
+  public CharSequence a()
+  {
+    if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
+      return this.jdField_c_of_type_AndroidWidgetTextView.getText();
     }
-    for (;;)
-    {
-      return bcfa.a(bbtm.a().a(), null).b(paramString);
-      paramString = "Common_GC_InstallYYB_Install_Words";
-      continue;
-      paramString = "Common_GC_InstallYYB_Update_Words";
-      continue;
-      paramString = "Common_GC_UpdateYYB_Install_Words";
-      continue;
-      paramString = "Common_GC_UpdateYYB_Update_Words";
-      continue;
-      if ("biz_src_jc_update".equals(paramString)) {
-        switch (paramInt)
-        {
-        case 2: 
-        default: 
-          paramString = null;
-          break;
-        case 1: 
-          paramString = "Common_QQUpdate_InstallYYB_Update_Words";
-          break;
-        case 3: 
-          paramString = "Common_QQUpdate_UpdateYYB_Update_Words";
-          break;
-        }
-      } else {
-        switch (paramInt)
-        {
-        default: 
-          paramString = "Common_InstallYYB_Install_Words";
-          break;
-        case 1: 
-          paramString = "Common_InstallYYB_Install_Words";
-          break;
-        case 2: 
-          paramString = "Common_InstallYYB_Update_Words";
-          break;
-        case 3: 
-          paramString = "Common_UpdateYYB_Install_Words";
-          break;
-        case 4: 
-          paramString = "Common_UpdateYYB_Update_Words";
-        }
-      }
-    }
+    return null;
   }
   
-  public static void a()
+  void a()
   {
-    int i = 1;
-    if (!bcfa.a(bbtm.a().a(), null).b("Common_Show_Dialog_Flag")) {}
-    SharedPreferences.Editor localEditor;
-    do
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364676));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364686));
+    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364684));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368472));
+    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.valueOf("END"));
+    this.jdField_a_of_type_AndroidWidgetTextView.setMaxEms(9);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368469));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368429));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368457));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368441));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363370);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Boolean = false;
+    }
+    if (paramInt2 == 0)
     {
+      this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInt1);
+      this.jdField_a_of_type_Int = paramInt1;
+    }
+    while (this.jdField_a_of_type_Int == paramInt1) {
       return;
-      localObject = bbtm.a().a().getSharedPreferences("share_myAppApi", 0);
-      localEditor = ((SharedPreferences)localObject).edit();
-      if (bcfa.a(bbtm.a().a(), null).a("Common_Dialog_Only_Once_Flag"))
-      {
-        localEditor.putBoolean("SP_Has_shown_Dialog", true);
-        localEditor.commit();
-        return;
-      }
-      j = bcfa.a(bbtm.a().a(), null).a("Common_Max_Count");
-    } while ((j == -1) || (j == 0));
-    int j = ((SharedPreferences)localObject).getInt("SP_Show_Dialog_Count", 0);
-    Object localObject = ((SharedPreferences)localObject).getString("SP_Show_Dialog_Date", "");
-    String str = new SimpleDateFormat("yyyy年MM月dd日").format(new Date(System.currentTimeMillis()));
-    if (str.equals(localObject)) {
-      i = j + 1;
     }
-    localEditor.putInt("SP_Show_Dialog_Count", i);
-    localEditor.putString("SP_Show_Dialog_Date", str);
-    localEditor.commit();
+    a(this.jdField_a_of_type_Int, paramInt1, paramInt2);
   }
   
-  public static void a(long paramLong)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    SharedPreferences.Editor localEditor = bbtm.a().a().getSharedPreferences("share_myAppApi", 0).edit();
-    localEditor.putLong("SP_Lastest_require_time", paramLong);
-    localEditor.commit();
-  }
-  
-  public static boolean a()
-  {
-    return true;
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    SharedPreferences localSharedPreferences = bbtm.a().a().getSharedPreferences("share_myAppApi", 0);
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    long l = localSharedPreferences.getLong("SP_Lastest_require_time", paramLong);
-    if (paramLong - l >= b())
+    if (paramInt3 == 0)
     {
-      localEditor.putLong("SP_Lastest_require_time", paramLong);
-      localEditor.commit();
+      this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInt2);
+      return;
     }
-    while (paramLong == l) {
-      return true;
-    }
-    return false;
+    bbkk localbbkk = new bbkk(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), new bcgi(this, paramInt2));
+    localbbkk.setDuration(paramInt3);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localbbkk);
   }
   
-  public static long b()
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    return bcfa.a(bbtm.a().a(), null).a("Common_require_root_interval");
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
   }
   
-  public static void b()
+  public void a(View paramView)
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramView, new RelativeLayout.LayoutParams(-2, -1));
+      return;
+    }
+    catch (Exception paramView)
+    {
+      paramView.printStackTrace();
+    }
+  }
+  
+  void a(ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131562615, paramViewGroup, true);
+  }
+  
+  public void a(ImageView paramImageView)
+  {
+    this.jdField_c_of_type_AndroidWidgetImageView = paramImageView;
+  }
+  
+  public void a(CharSequence paramCharSequence)
+  {
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null)
+    {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
   {
     int i = 0;
-    SharedPreferences localSharedPreferences = bbtm.a().a().getSharedPreferences("share_myAppApi", 0);
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    int j = localSharedPreferences.getInt("tmast_wake_times", 0);
-    if (!b(localSharedPreferences.getLong("tmast_wake_last_time", 0L))) {}
-    for (;;)
+    if (!TextUtils.isEmpty(paramString2))
     {
-      localEditor.putInt("tmast_wake_times", i + 1);
-      localEditor.putLong("tmast_wake_last_time", System.currentTimeMillis());
-      return;
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(paramString2);
+      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_c_of_type_AndroidWidgetTextView.bringToFront();
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(0);
+      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundColor(0);
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+    if (!TextUtils.isEmpty(paramString3)) {}
+    try
+    {
+      int j = Color.parseColor(paramString3);
       i = j;
     }
-  }
-  
-  public static boolean b()
-  {
-    DownloadInfo localDownloadInfo = bcgo.a().a("1101070898");
-    Object localObject = "";
-    if (localDownloadInfo != null) {
-      localObject = localDownloadInfo.l;
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    catch (Exception paramString2)
     {
-      localObject = new File((String)localObject);
-      if ((localObject != null) && (((File)localObject).exists())) {
-        return false;
-      }
+      label75:
+      break label75;
     }
-    return true;
-  }
-  
-  public static boolean b(long paramLong)
-  {
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTime(new Date(System.currentTimeMillis()));
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.setTime(new Date(paramLong));
-    return (localCalendar2.get(1) == localCalendar1.get(1)) && (localCalendar2.get(6) - localCalendar1.get(6) == 0);
-  }
-  
-  public static boolean c()
-  {
-    return bcfa.a(bbtm.a().a(), null).a("Common_root_autoinstall_flag") <= 0;
-  }
-  
-  public static boolean d()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (bcev.a("com.tencent.android.qqdownloader") > 4001126)
+    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(i);
+    if (paramString1 != null)
     {
-      bool1 = bool2;
-      if (bcfa.a(bbtm.a().a(), null).b("Common_QQ_CARRY_IDENTITY")) {
-        bool1 = true;
-      }
+      this.jdField_a_of_type_JavaLangString = paramString1.trim();
+      b(new bcgh(this));
+      return;
     }
-    return bool1;
+    this.jdField_a_of_type_JavaLangString = null;
   }
   
-  public static boolean e()
+  public void a(boolean paramBoolean)
   {
-    Object localObject = bcfa.a(bbtm.a().a(), null).b("Common_Release_Control").trim();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    do
+    ImageView localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-      do
-      {
-        return true;
-      } while (((String)localObject).equals("-1"));
-      if (((String)localObject).equals("-2")) {
-        return false;
-      }
-      localObject = ((String)localObject).split(";");
-    } while (localObject == null);
-    String str1 = String.valueOf(bbtm.a().a());
-    if (str1 == null) {
-      return false;
+      localImageView.setVisibility(i);
+      return;
     }
-    int j = localObject.length;
-    int i = 0;
-    for (;;)
+  }
+  
+  public ImageView b()
+  {
+    return this.jdField_c_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public void b(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+  }
+  
+  public void b(CharSequence paramCharSequence)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    TextView localTextView;
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null)
     {
-      if (i >= j) {
-        break label115;
+      localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+      if (!paramBoolean) {
+        break label24;
       }
-      String str2 = localObject[i];
-      if ((str2.length() == 2) && (str1.endsWith(str2))) {
-        break;
-      }
-      i += 1;
     }
-    label115:
-    return false;
-  }
-  
-  public static boolean f()
-  {
-    if (!bcfa.a(bbtm.a().a(), null).b("Common_Show_Dialog_Flag")) {}
-    int i;
-    int j;
-    do
+    label24:
+    for (int i = 0;; i = 4)
     {
-      boolean bool;
-      do
-      {
-        return false;
-        localObject = bbtm.a().a().getSharedPreferences("share_myAppApi", 0);
-        bool = ((SharedPreferences)localObject).getBoolean("SP_Has_shown_Dialog", false);
-        if (!bcfa.a(bbtm.a().a(), null).a("Common_Dialog_Only_Once_Flag")) {
-          break;
-        }
-      } while (bool);
-      return true;
-      i = bcfa.a(bbtm.a().a(), null).a("Common_Max_Count");
-      bcds.c("OpenConfig-MyAppApi", " maxCount = " + i);
-      if ((i == -1) || (i == 0)) {
-        return true;
-      }
-      j = ((SharedPreferences)localObject).getInt("SP_Show_Dialog_Count", 0);
-      Object localObject = ((SharedPreferences)localObject).getString("SP_Show_Dialog_Date", "");
-      if (!new SimpleDateFormat("yyyy年MM月dd日").format(new Date(System.currentTimeMillis())).equals(localObject)) {
-        break;
-      }
-    } while (j >= i);
-    return true;
-    return true;
-  }
-  
-  public static boolean g()
-  {
-    return bcfa.a(bbtm.a().a(), null).b("Common_MyAppDownload_Flag");
-  }
-  
-  public static boolean h()
-  {
-    return bcfa.a(bbtm.a().a(), null).b("Common_Detail_Page");
-  }
-  
-  public static boolean i()
-  {
-    boolean bool2 = false;
-    boolean bool3 = bcfa.a(bbtm.a().a(), null).c("Common_tmast_wake");
-    long l1 = bcfa.a(bbtm.a().a(), null).a("Common_wake_limite");
-    long l2 = bcfa.a(bbtm.a().a(), null).a("Common_wake_interval") * 1000L;
-    SharedPreferences localSharedPreferences = bbtm.a().a().getSharedPreferences("share_myAppApi", 0);
-    int i = localSharedPreferences.getInt("tmast_wake_times", 0);
-    long l3 = localSharedPreferences.getLong("tmast_wake_last_time", 0L);
-    boolean bool4 = b(l3);
-    if (!bool4) {
-      i = 0;
+      localTextView.setVisibility(i);
+      return;
     }
-    bcds.c("TAMST_WAKE", ">>allowTmastWake allowWake = " + bool3 + " wakeLimit = " + l1 + " wakeInterval = " + l2 + " wakeTimes = " + i + " isToday = " + bool4);
-    boolean bool1 = bool2;
-    if (bool3)
+  }
+  
+  public TextView c()
+  {
+    return this.jdField_c_of_type_AndroidWidgetTextView;
+  }
+  
+  public void c(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    TextView localTextView;
+    if (this.jdField_c_of_type_AndroidWidgetTextView != null)
     {
-      bool1 = bool2;
-      if (i < l1) {
-        if (System.currentTimeMillis() - l3 <= l2)
-        {
-          bool1 = bool2;
-          if (bool4) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
+      localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
+      if (!paramBoolean) {
+        break label24;
       }
     }
-    return bool1;
-  }
-  
-  public static boolean j()
-  {
-    return bcfa.a(bbtm.a().a(), null).b("Common_yyb_wifi_download_Switch");
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localTextView.setVisibility(i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcgg
  * JD-Core Version:    0.7.0.1
  */

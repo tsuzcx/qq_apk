@@ -24,9 +24,10 @@ public class ImageDefaultConfig
   
   static
   {
-    int[] arrayOfInt1 = { 6, 200000 };
-    int[] arrayOfInt2 = { 8, 6000000 };
-    BYTE_ARRAY_LOCAL = new int[][] { { 6, 25000 }, arrayOfInt1, { 6, 1000000 }, arrayOfInt2 };
+    int[] arrayOfInt1 = { 6, 25000 };
+    int[] arrayOfInt2 = { 6, 200000 };
+    int[] arrayOfInt3 = { 8, 6000000 };
+    BYTE_ARRAY_LOCAL = new int[][] { arrayOfInt1, arrayOfInt2, { 6, 1000000 }, arrayOfInt3 };
     screenWidth = -1;
     smallScreem = false;
     bmpCount4Qzone = new int[] { 2, 1, 1 };

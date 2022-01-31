@@ -1,31 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.adapter.ILogAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class rka
-  implements ILogAdapter
+  implements pca
 {
-  public void callLog(String paramString1, int paramInt, String paramString2)
+  public rka(AuthorData paramAuthorData) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d(paramString1, 2, paramString2);
-      }
-      break;
+    this.a.a(true);
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    ArticleInfo localArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.c()) {
+      paramString = "2";
     }
-    do
+    for (;;)
     {
-      do
+      paramString = onk.a(localBaseApplication, localArticleInfo, 0, paramString);
+      if (paramBoolean) {
+        paramInt = 1;
+      }
+      try
       {
-        return;
-        QLog.e(paramString1, 2, paramString2);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.i(paramString1, 2, paramString2);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.w(paramString1, 2, paramString2);
+        for (;;)
+        {
+          paramString.put("is_done", paramInt);
+          rnr.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800898B", paramString.toString());
+          return;
+          paramString = "1";
+          break;
+          paramInt = 2;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+    }
   }
 }
 

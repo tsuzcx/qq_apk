@@ -1,23 +1,32 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.text.TextUtils;
+import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 class FileJsPlugin$11
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$11(FileJsPlugin paramFileJsPlugin, String paramString1, long paramLong, JsRuntime paramJsRuntime, String paramString2, int paramInt) {}
+  FileJsPlugin$11(FileJsPlugin paramFileJsPlugin, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt) {}
   
   public String run()
   {
-    String str = MiniAppFileManager.getInstance().getAbsolutePath(this.val$path);
-    QLog.d("[mini] FileJsPlugin", 1, "accessFile [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], aboFilePath:" + str);
-    if ((TextUtils.isEmpty(str)) || (!new File(str).exists())) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "no such file or directory \"" + this.val$path + "\"", this.val$callbackId);
+    if (MiniAppFileManager.getInstance().getWxFileType(this.val$filePath) == 9999) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "invalid path" + this.val$filePath, this.val$callbackId);
     }
+    String str = MiniAppFileManager.getInstance().getAbsolutePath(this.val$filePath);
+    if (TextUtils.isEmpty(str)) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "no such file or directory, open " + this.val$filePath, this.val$callbackId);
+    }
+    if (new VFSFile(str).isDirectory()) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "operation not permitted, unlink " + this.val$filePath, this.val$callbackId);
+    }
+    if (!new VFSFile(str).exists()) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "no such file or directory, open " + this.val$filePath, this.val$callbackId);
+    }
+    FileUtils.delete(str, false);
     return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, this.val$callbackId);
   }
 }

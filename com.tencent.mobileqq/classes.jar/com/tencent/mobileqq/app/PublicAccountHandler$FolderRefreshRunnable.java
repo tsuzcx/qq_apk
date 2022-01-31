@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.app;
 
-import ajoy;
+import akdi;
 import mqq.util.WeakReference;
-import ogy;
-import rol;
-import rqn;
+import osj;
+import sbc;
+import sdf;
 
 class PublicAccountHandler$FolderRefreshRunnable
   implements Runnable
 {
   private final WeakReference<QQAppInterface> a;
-  private final WeakReference<ajoy> b;
+  private final WeakReference<akdi> b;
   
-  public PublicAccountHandler$FolderRefreshRunnable(QQAppInterface paramQQAppInterface, ajoy paramajoy)
+  public PublicAccountHandler$FolderRefreshRunnable(QQAppInterface paramQQAppInterface, akdi paramakdi)
   {
     this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramajoy);
+    this.b = new WeakReference(paramakdi);
   }
   
   public void run()
   {
     Object localObject = (QQAppInterface)this.a.get();
-    ajoy localajoy = (ajoy)this.b.get();
-    if ((localObject != null) && (localajoy != null))
+    akdi localakdi = (akdi)this.b.get();
+    if ((localObject != null) && (localakdi != null))
     {
-      rqn.a().a((QQAppInterface)localObject, localajoy.a());
-      rol.a().c((QQAppInterface)localObject);
-      rqn.a().g((QQAppInterface)localObject);
-      localObject = ogy.a();
+      sdf.a().a((QQAppInterface)localObject, localakdi.a());
+      sbc.a().c((QQAppInterface)localObject);
+      sdf.a().g((QQAppInterface)localObject);
+      localObject = osj.a();
       if (localObject != null) {
-        ((ogy)localObject).e();
+        ((osj)localObject).e();
       }
     }
   }

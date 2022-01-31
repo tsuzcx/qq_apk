@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
@@ -11,12 +11,12 @@ import android.text.style.ForegroundColorSpan;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import bafb;
+import bbgg;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class ShortcutUtils$PermissionDialog
-  extends bafb
+  extends bbgg
 {
   private static final String CONFIG_SHORTCUT_DIALOG_HIDE = "mini_shortcut_dialog_hide";
   private static final String CONFIG_SHORTCUT_HELP_URL = "mini_shortcut_help_url";
@@ -42,7 +42,7 @@ class ShortcutUtils$PermissionDialog
   
   public static PermissionDialog createPermissionDialog(Activity paramActivity, String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    paramActivity = new PermissionDialog(paramActivity, 2131690181);
+    paramActivity = new PermissionDialog(paramActivity, 2131755791);
     paramActivity.setTitle(paramString1);
     paramActivity.setNegativeButton(paramString2, paramOnClickListener2);
     paramActivity.setPositiveButton(paramString3, paramOnClickListener1);
@@ -60,8 +60,8 @@ class ShortcutUtils$PermissionDialog
   
   public CharSequence getMessageContent()
   {
-    String str1 = ajjy.a(2131648215);
-    String str2 = ajjy.a(2131648219);
+    String str1 = ajyc.a(2131714003);
+    String str2 = ajyc.a(2131714007);
     SpannableString localSpannableString = new SpannableString(str1 + str2);
     localSpannableString.setSpan(new ShortcutUtils.PermissionDialog.2(this), str1.length(), str1.length() + str2.length(), 33);
     localSpannableString.setSpan(new ForegroundColorSpan(-15505507), str1.length(), str1.length() + str2.length(), 33);
@@ -70,12 +70,12 @@ class ShortcutUtils$PermissionDialog
   
   public void initUI()
   {
-    setContentView(2131493336);
+    setContentView(2131558897);
     this.text.setMovementMethod(LinkMovementMethod.getInstance());
     this.text.setText(getMessageContent());
-    this.mCheckBoxLayout = ((ViewGroup)findViewById(2131303262));
-    this.mCheckBox = ((CheckBox)findViewById(2131311804));
-    this.mCheckText = ((TextView)findViewById(2131312628));
+    this.mCheckBoxLayout = ((ViewGroup)findViewById(2131368929));
+    this.mCheckBox = ((CheckBox)findViewById(2131377619));
+    this.mCheckText = ((TextView)findViewById(2131378452));
     this.mCheckText.setOnClickListener(new ShortcutUtils.PermissionDialog.1(this));
   }
   

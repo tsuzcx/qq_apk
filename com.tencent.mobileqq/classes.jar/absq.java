@@ -1,24 +1,23 @@
-import android.content.Context;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
 public class absq
-  implements View.OnClickListener
+  extends ajtq
 {
-  public absq(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public absq(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void onClick(View paramView)
+  protected void onCardLabelUpdate(boolean paramBoolean, Object paramObject)
   {
-    this.a.b(1);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230721);
-    if (this.a.a().booleanValue())
+    if (paramBoolean)
     {
-      this.a.b();
-      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
+      this.a.setResult(-1);
+      this.a.b(2131720039);
+    }
+    for (;;)
+    {
+      this.a.a = false;
+      this.a.finish();
+      return;
+      this.a.b(2131720037);
     }
   }
 }

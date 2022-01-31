@@ -1,31 +1,25 @@
-import java.io.File;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-class sin
-  implements Comparable<sin>
+final class sin
+  implements bcwh
 {
-  public final long a;
-  public final File a;
-  
-  public sin(sim paramsim, File paramFile)
+  public void a(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Long = paramFile.lastModified();
-  }
-  
-  public int a(sin paramsin)
-  {
-    if (this.jdField_a_of_type_Long < paramsin.jdField_a_of_type_Long) {
-      return -1;
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      bcpw.a(BaseApplicationImpl.getContext(), 2, 2131719476, 1).a();
+    case -2: 
+      return;
     }
-    if (this.jdField_a_of_type_Long == paramsin.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return 1;
+    bcpw.a(BaseApplicationImpl.getContext(), 2, 2131719495, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sin
  * JD-Core Version:    0.7.0.1
  */

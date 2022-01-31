@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import anrn;
-import ansi;
+import aohz;
+import aoiu;
 
 public class ExtendFriendSearchFragment$2$1
   implements Runnable
 {
-  public ExtendFriendSearchFragment$2$1(anrn paramanrn) {}
+  public ExtendFriendSearchFragment$2$1(aohz paramaohz) {}
   
   public void run()
   {

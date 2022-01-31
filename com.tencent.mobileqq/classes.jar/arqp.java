@@ -1,8 +1,18 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
-public abstract interface arqp
+public class arqp
 {
-  public abstract void a(boolean paramBoolean, RecentBaseData paramRecentBaseData);
+  public static String a = new File(BaseApplicationImpl.getApplication().getFilesDir(), "ListenTogether_v828").getAbsolutePath();
+  
+  static
+  {
+    if (bbay.a())
+    {
+      a = new File(ajsf.aW, "ListenTogether_v828").getAbsolutePath();
+      return;
+    }
+  }
 }
 
 

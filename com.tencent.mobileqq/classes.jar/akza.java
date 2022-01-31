@@ -1,26 +1,79 @@
-import com.tencent.ark.ark.VariantWrapper;
+import android.content.IntentFilter;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class akza
-  implements alal
+public class akza
+  extends akyr
 {
-  akza(akyy paramakyy, long paramLong) {}
+  static PromotionConfigInfo b;
+  final String c = "SubProcessPromotionMgr_" + AudioHelper.b();
   
-  public void a(long paramLong)
+  public akza(AppInterface paramAppInterface)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Akyy.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
+    super(paramAppInterface);
+    a(paramAppInterface);
+    QLog.w(this.c, 1, "SubProcessPromotionMgr, sProcessId[" + BaseApplicationImpl.sProcessId + "], processName[" + BaseApplicationImpl.processName + "]");
   }
   
-  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  public void a(AppInterface paramAppInterface, akyt paramakyt)
   {
-    akyv.a(this.jdField_a_of_type_Akyy.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
+    if (a("snycGetConfig", paramAppInterface, paramakyt)) {
+      return;
+    }
+    paramakyt.a(a());
+  }
+  
+  public void a(AppInterface paramAppInterface, String paramString)
+  {
+    BusinessCommonConfig.notifyQQDownload(2, paramString, 0);
+  }
+  
+  void a(PromotionConfigInfo paramPromotionConfigInfo)
+  {
+    super.a(paramPromotionConfigInfo);
+    try
+    {
+      jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
+      return;
+    }
+    finally {}
+  }
+  
+  boolean a(AppInterface paramAppInterface)
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("tencent.businessnotify.qq.to.subprocess");
+    return paramAppInterface.getApp().registerReceiver(new akzb(this), localIntentFilter) != null;
+  }
+  
+  void b(AppInterface paramAppInterface) {}
+  
+  void b(String paramString)
+  {
+    try
+    {
+      paramString = bblp.a(this.jdField_b_of_type_JavaLangString, paramString);
+      a(paramString);
+      QLog.w(this.c, 1, "reloadConfigInfo, Uin[" + this.jdField_b_of_type_JavaLangString + "] configInfo[" + paramString + "]");
+      return;
+    }
+    finally {}
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akza
  * JD-Core Version:    0.7.0.1
  */

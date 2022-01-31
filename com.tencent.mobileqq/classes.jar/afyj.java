@@ -1,46 +1,38 @@
+import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
+import com.tencent.widget.FadeIconImageView;
+
 public class afyj
+  extends afxr
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  public static final int[] a;
+  public static final int[] b = { 2131364086 };
   
-  public afyj(String paramString)
+  static
   {
-    String[] arrayOfString = paramString.split(" ");
-    if (arrayOfString.length == 1)
-    {
-      this.jdField_a_of_type_JavaLangString = arrayOfString[0];
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    if (arrayOfString.length == 4)
-    {
-      this.b = arrayOfString[0];
-      this.c = arrayOfString[1];
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = arrayOfString[3];
-      return;
-    }
-    if (arrayOfString.length > 4)
-    {
-      int j = arrayOfString.length;
-      paramString = "";
-      int i = 0;
-      while (i < j - 4)
-      {
-        paramString = paramString + arrayOfString[i] + " ";
-        i += 1;
-      }
-      this.d = paramString;
-      this.b = arrayOfString[(j - 4)];
-      this.c = arrayOfString[(j - 3)];
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = arrayOfString[(j - 1)];
-      return;
-    }
-    throw new RuntimeException("format error!");
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131690730 };
+  }
+  
+  public afyj(FragmentActivity paramFragmentActivity)
+  {
+    super(paramFragmentActivity);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(8);
+  }
+  
+  protected int[] a()
+  {
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return jdField_a_of_type_ArrayOfInt;
   }
 }
 

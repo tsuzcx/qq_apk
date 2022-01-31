@@ -1,26 +1,22 @@
-import android.widget.TextView;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.6.1;
-
 public class algr
-  extends algu
 {
-  public algr(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void a(int paramInt)
+  public String toString()
   {
-    if (ArkIDESettingFragment.a(this.a) != null)
-    {
-      TextView localTextView = ArkIDESettingFragment.a(this.a);
-      ArkAppCenter.a().postToMainThread(new ArkIDESettingFragment.6.1(this, paramInt, localTextView));
-    }
+    return "StarInfo{faceID=" + this.jdField_a_of_type_Int + ", uin=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", pinyin_name='" + this.b + '\'' + ", wiki='" + this.c + '\'' + ", wikiTitle='" + this.d + '\'' + ", wikiURL='" + this.e + '\'' + ", confidence='" + this.jdField_a_of_type_Float + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     algr
  * JD-Core Version:    0.7.0.1
  */

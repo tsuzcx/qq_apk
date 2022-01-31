@@ -1,46 +1,38 @@
-import android.content.Context;
-import android.content.res.AssetManager;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.17;
 
 public class rdh
-  implements ComplementFileStringLoader
+  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString;
-  private rdp jdField_a_of_type_Rdp;
+  public rdh(ReadInJoyListViewGroup.17 param17) {}
   
-  public rdh(Context paramContext, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Rdp = new rdp(paramContext, paramString);
-  }
-  
-  public String loadFileAsString(String paramString)
-  {
-    AssetManager localAssetManager = this.jdField_a_of_type_AndroidContentContext.getAssets();
-    try
+    if (!this.a.b)
     {
-      InputStream localInputStream = this.jdField_a_of_type_Rdp.a(paramString);
-      Object localObject = localInputStream;
-      if (localInputStream == null) {
-        localObject = localAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+      paramView = new Intent(this.a.this$0.a(), ReadInJoyDeliverBiuActivity.class);
+      paramView.putExtra("arg_article_info", this.a.a);
+      paramView.putExtra("biu_src", 2);
+      paramView.putExtra("arg_from_type", 7);
+      paramView.putExtra("is_modified_biu", true);
+      long l = 0L;
+      if (this.a.a.fusionBiuInfo != null) {
+        l = this.a.a.fusionBiuInfo.a;
       }
-      localObject = rdz.a((InputStream)localObject);
-      return localObject;
+      paramView.putExtra("modified_feeds_id", l);
+      paramView.putExtra("should_show_dialog", false);
+      this.a.this$0.a().startActivity(paramView);
+      this.a.this$0.a().overridePendingTransition(0, 0);
     }
-    catch (IOException localIOException)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("AssetsComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
-        localIOException.printStackTrace();
-      }
-    }
-    return null;
+    ReadInJoyListViewGroup.a(this.a.this$0).setVisibility(4);
   }
 }
 

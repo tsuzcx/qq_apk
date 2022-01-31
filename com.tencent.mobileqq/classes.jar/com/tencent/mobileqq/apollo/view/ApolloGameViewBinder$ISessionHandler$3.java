@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajbl;
-import ajbu;
+import ajpn;
+import ajpw;
 
 public class ApolloGameViewBinder$ISessionHandler$3
   implements Runnable
 {
-  public ApolloGameViewBinder$ISessionHandler$3(ajbu paramajbu, ajbl paramajbl) {}
+  public ApolloGameViewBinder$ISessionHandler$3(ajpw paramajpw, ajpn paramajpn) {}
   
   public void run()
   {
-    ajbl.a(this.a);
+    ajpn.a(this.a);
   }
 }
 

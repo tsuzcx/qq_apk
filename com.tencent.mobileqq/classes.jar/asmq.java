@@ -1,83 +1,60 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+import java.util.Calendar;
 
 public class asmq
+  implements amng
 {
-  private static asmq a = new asmq();
+  private asmq(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public static asmq a()
+  public int a()
   {
-    return a;
+    return 3;
   }
   
-  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, int paramInt1, int paramInt2, URLDrawable.URLDrawableListener paramURLDrawableListener, boolean paramBoolean)
+  public int a(int paramInt)
   {
-    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
+    switch (paramInt)
     {
-      urk.e("ImageLoader", "ImageView or uri is null.");
-      return;
+    default: 
+      return 0;
+    case 0: 
+      return MsgBackupDateFragment.c(this.a) - MsgBackupDateFragment.d(this.a) + 1;
+    case 1: 
+      return 12;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageLoader", 2, "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
-    }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if ((paramInt1 > 0) && (paramInt2 > 0))
+    Calendar localCalendar = Calendar.getInstance();
+    if (MsgBackupDateFragment.b(this.a) == 1)
     {
-      localURLDrawableOptions.mRequestWidth = paramInt1;
-      localURLDrawableOptions.mRequestHeight = paramInt2;
-    }
-    Drawable localDrawable = paramDrawable1;
-    if (paramDrawable1 == null) {
-      localDrawable = axwd.a;
-    }
-    localURLDrawableOptions.mFailedDrawable = localDrawable;
-    paramDrawable1 = paramDrawable2;
-    if (paramDrawable2 == null) {
-      paramDrawable1 = axwd.a;
-    }
-    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
-    localURLDrawableOptions.mMemoryCacheKeySuffix = "now";
-    localURLDrawableOptions.mUseAutoScaleParams = false;
-    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    if (paramBoolean) {
-      paramString.setDecodeHandler(azue.a);
-    }
-    if (paramURLDrawableListener != null)
-    {
-      if (paramString.getStatus() != 1) {
-        break label208;
-      }
-      urk.b("ImageLoader", "URLDrawable's status is SUCCESSED.");
-      paramURLDrawableListener.onLoadSuccessed(paramString);
+      localCalendar.set(1, MsgBackupDateFragment.e(this.a) + MsgBackupDateFragment.d(this.a));
+      localCalendar.set(2, MsgBackupDateFragment.f(this.a));
+      localCalendar.set(5, 1);
     }
     for (;;)
     {
-      paramString.setURLDrawableListener(paramURLDrawableListener);
-      paramImageView.setImageDrawable(paramString);
-      return;
-      label208:
-      urk.b("ImageLoader", "start load URLDrawable.");
+      return localCalendar.getActualMaximum(5);
+      localCalendar.set(1, MsgBackupDateFragment.g(this.a) + MsgBackupDateFragment.d(this.a));
+      localCalendar.set(2, MsgBackupDateFragment.h(this.a));
+      localCalendar.set(5, 1);
     }
   }
   
-  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, URLDrawable.URLDrawableListener paramURLDrawableListener)
+  public String a(int paramInt1, int paramInt2)
   {
-    a(paramImageView, paramString, paramDrawable1, paramDrawable2, 0, 0, paramURLDrawableListener, false);
-  }
-  
-  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, URLDrawable.URLDrawableListener paramURLDrawableListener, boolean paramBoolean)
-  {
-    a(paramImageView, paramString, paramDrawable1, paramDrawable2, 0, 0, paramURLDrawableListener, paramBoolean);
+    switch (paramInt1)
+    {
+    default: 
+      return "";
+    case 0: 
+      return MsgBackupDateFragment.d(this.a) + paramInt2 + ajyc.a(2131706921);
+    case 1: 
+      return paramInt2 + 1 + ajyc.a(2131706904);
+    }
+    return paramInt2 + 1 + ajyc.a(2131706920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asmq
  * JD-Core Version:    0.7.0.1
  */

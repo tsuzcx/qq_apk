@@ -1,16 +1,10 @@
-import android.graphics.Bitmap;
-
-public class afii
+public abstract interface afii
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public String b;
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afii
  * JD-Core Version:    0.7.0.1
  */

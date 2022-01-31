@@ -1,26 +1,18 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.DynamicAvatar;
 
-public class anic
-  implements View.OnClickListener
+public final class anic
+  implements Parcelable.Creator<DynamicAvatar>
 {
-  public anic(EmoticonMainPanel paramEmoticonMainPanel) {}
-  
-  public void onClick(View paramView)
+  public DynamicAvatar a(Parcel paramParcel)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.a.b > 1000L)
-    {
-      this.a.b = l;
-      paramView = new Bundle();
-      paramView.putInt("AECAMERA_MODE", 202);
-      paramView.putInt("VIDEO_STORY_FROM_TYPE", bgww.h.a());
-      bgxa.a((BaseActivity)this.a.a, 120, paramView);
-      awqx.b(((BaseActivity)this.a.a).app, "dc00898", "", "", "ep_mall", "0X800A36E", 0, 0, "", "", "", "");
-    }
+    return new DynamicAvatar(paramParcel);
+  }
+  
+  public DynamicAvatar[] a(int paramInt)
+  {
+    return new DynamicAvatar[paramInt];
   }
 }
 

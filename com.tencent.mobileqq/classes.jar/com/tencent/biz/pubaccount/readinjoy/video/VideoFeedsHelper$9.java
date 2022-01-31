@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import qcn;
+import qol;
 
 public final class VideoFeedsHelper$9
   implements Runnable
@@ -13,7 +13,7 @@ public final class VideoFeedsHelper$9
   public void run()
   {
     if (this.jdField_a_of_type_Int > 0) {}
-    for (String str = qcn.e(this.jdField_a_of_type_Int);; str = this.jdField_a_of_type_JavaLangString)
+    for (String str = qol.e(this.jdField_a_of_type_Int);; str = this.jdField_a_of_type_JavaLangString)
     {
       ThreadManager.getUIHandler().post(new VideoFeedsHelper.9.1(this, str));
       return;

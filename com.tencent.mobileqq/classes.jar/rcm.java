@@ -1,29 +1,30 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.question.ReadInJoyQuestionBannerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.question.ReadInJoyQuestionBannerViewPager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class rcm
-  extends Handler
+  implements Animation.AnimationListener
 {
-  public rcm(ReadInJoyQuestionBannerViewPager paramReadInJoyQuestionBannerViewPager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public rcm(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    if ((ReadInJoyQuestionBannerViewPager.a(this.a)) || (!ReadInJoyQuestionBannerViewPager.b(this.a))) {}
-    while (ReadInJoyQuestionBannerViewPager.a(this.a).getCount() <= 1) {
+    ImageView localImageView = ReadInJoyFastWebBottomSocialView.c(this.a);
+    if (ReadInJoyFastWebBottomSocialView.a(this.a).a) {}
+    for (int i = 2130842305;; i = 2130842307)
+    {
+      localImageView.setImageResource(i);
+      paramAnimation.setInterpolator(new AnticipateInterpolator());
       return;
     }
-    paramMessage = this.a;
-    paramMessage.jdField_a_of_type_Int += 1;
-    this.a.jdField_a_of_type_Int %= ReadInJoyQuestionBannerViewPager.a(this.a).getCount();
-    this.a.setCurrentItem(this.a.jdField_a_of_type_Int, true);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 4000L);
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

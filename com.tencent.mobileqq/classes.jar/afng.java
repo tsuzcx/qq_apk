@@ -1,32 +1,57 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.mobileqq.data.ShowExternalTroop;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.List;
 
-class afng
-  implements View.OnClickListener
+public class afng
+  extends akim
 {
-  afng(afnf paramafnf) {}
+  public afng(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, List<ShowExternalTroop> paramList, List<String> paramList1)
   {
-    this.a.a.g = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131626377);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.a.d.setVisibility(8);
-    this.a.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131302804));
-    this.a.a.d.setVisibility(0);
-    this.a.a.d.setOnClickListener(this.a.a.b);
-    if (this.a.a.jdField_a_of_type_Afow != null) {
-      this.a.a.jdField_a_of_type_Afow.a();
+    this.a.b = false;
+    if ((!paramBoolean) || (paramList == null) || (paramList.size() == 0) || (paramInt != 0))
+    {
+      this.a.jdField_a_of_type_Int = 0;
+      if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
+        ShowExternalTroopListActivity.a(this.a);
+      }
+      if (!this.a.jdField_a_of_type_Boolean)
+      {
+        paramList = new ArrayList();
+        this.a.jdField_a_of_type_Aipf.a(paramList);
+        paramInt = this.a.getTitleBarHeight();
+        bcpw.a(this.a, 1, this.a.getString(2131696474), 0).b(paramInt);
+        return;
+      }
+      this.a.a();
+      return;
     }
+    if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
+      ShowExternalTroopListActivity.a(this.a);
+    }
+    this.a.c.setVisibility(0);
+    if (this.a.jdField_a_of_type_Aipf != null)
+    {
+      this.a.jdField_a_of_type_Int = paramList.size();
+      this.a.jdField_a_of_type_Aipf.a(paramList);
+    }
+    this.a.a(paramList1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afng
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,18 @@
-import java.io.InputStream;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 import java.util.List;
 
-public abstract interface rdq
+public class rdq
+  extends oyg
 {
-  public abstract InputStream a(String paramString);
+  public rdq(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
+  {
+    super(paramString);
+  }
   
-  public abstract List<String> a();
+  public void a(oya paramoya)
+  {
+    paramoya.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
+  }
 }
 
 

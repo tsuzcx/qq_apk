@@ -1,18 +1,18 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.support.annotation.NonNull;
 
-class vxz
-  implements vye
+public class vxz
 {
-  vxz(vxy paramvxy) {}
+  public void a(byte[] paramArrayOfByte) {}
   
-  public void a(CertifiedAccountMeta.StFeed paramStFeed)
+  @NonNull
+  public byte[] a(int paramInt)
   {
-    this.a.c(paramStFeed);
+    return new byte[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vxz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,46 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FilenameFilter;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
-final class bgfv
-  implements FilenameFilter
+public class bgfv
 {
-  bgfv(long paramLong1, long paramLong2) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
   {
-    if ((!paramString.startsWith("QAVSDK")) && (!paramString.startsWith("qavsdk"))) {}
-    long l;
-    do
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
+    try
     {
-      File localFile;
-      do
-      {
-        do
-        {
-          return false;
-        } while (paramString.split("_").length == 2);
-        localFile = new File(paramFile + File.separator + paramString);
-      } while ((localFile == null) || (!localFile.exists()));
-      l = localFile.lastModified();
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file dir: " + paramFile.getName());
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file name: " + paramString + " mStartTime: " + this.a + " mEndTime: " + this.b + " lastModifiedTime: " + l);
-      }
-    } while ((l < this.a) || (l > this.b));
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file name: " + paramString);
+      paramClass = (JceStruct)paramClass.newInstance();
+      paramClass.readFrom(new JceInputStream(paramArrayOfByte));
+      return paramClass;
     }
-    return true;
+    catch (IllegalAccessException paramClass)
+    {
+      paramClass.printStackTrace();
+      return null;
+    }
+    catch (InstantiationException paramClass)
+    {
+      for (;;)
+      {
+        paramClass.printStackTrace();
+      }
+    }
+  }
+  
+  public static byte[] a(JceStruct paramJceStruct)
+  {
+    if (paramJceStruct == null) {
+      return null;
+    }
+    JceOutputStream localJceOutputStream = new JceOutputStream();
+    localJceOutputStream.setServerEncoding("utf-8");
+    paramJceStruct.writeTo(localJceOutputStream);
+    return localJceOutputStream.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgfv
  * JD-Core Version:    0.7.0.1
  */

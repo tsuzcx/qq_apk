@@ -1,16 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class nch
-  implements DialogInterface.OnClickListener
+final class nch
+  implements BusinessObserver
 {
-  public nch(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, String paramString) {}
+  nch(QQAppInterface paramQQAppInterface, ncj paramncj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(paramDialogInterface, false, this.jdField_a_of_type_JavaLangString);
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        ncg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Ncj);
+      }
+    }
+    else
+    {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
+    }
+    this.jdField_a_of_type_Ncj.a();
   }
 }
 

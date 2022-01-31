@@ -1,40 +1,37 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.SwipListView;
 
-class afel
-  extends ViewPager.SimpleOnPageChangeListener
+public class afel
+  implements aiod
 {
-  afel(afeh paramafeh) {}
+  public afel(AddContactsView paramAddContactsView) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void a()
   {
-    if (paramInt == 1) {
-      afeh.a(this.a, afeh.a(this.a).getCurrentItem());
-    }
     if (QLog.isColorLevel()) {
-      QLog.i("ContactsViewController", 2, "mViewPager onPageScrollStateChanged mOccurSwitchAccountChangeTab:" + afeh.b(this.a) + "  mPageChangedByIndicator:" + afeh.a(this.a));
+      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled");
     }
-    if (afeh.a(this.a)) {
-      afeh.b(this.a, false);
-    }
+    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
   }
   
-  public void onPageSelected(int paramInt)
+  public void b()
   {
-    afeh.a(this.a, paramInt);
-    if (!afeh.a(this.a)) {
-      awqx.b(this.a.a, "dc00898", "", "", "0X8008059", "0X8008059", 0, 0, "", "", "", "");
-    }
     if (QLog.isColorLevel()) {
-      QLog.i("ContactsViewController", 2, "mViewPager onPageSelected mOccurSwitchAccountChangeTab:" + afeh.b(this.a) + " mPageChangedByIndicator:" + afeh.a(this.a));
+      QLog.d("AddContactsView", 2, "onRecommendsAvailable");
     }
-    afeh.a(this.a, false);
+    this.a.b.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afel
  * JD-Core Version:    0.7.0.1
  */

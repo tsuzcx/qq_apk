@@ -26,6 +26,10 @@ public final class DatalineMsgData$MsgData
   public final PBStringField str_molosrcurl = PBField.initString("");
   public final PBStringField str_msg = PBField.initString("");
   public final PBStringField str_reserve1 = PBField.initString("");
+  public final PBStringField str_weiyundirkey = PBField.initString("");
+  public final PBStringField str_weiyunid = PBField.initString("");
+  public final PBStringField str_weiyunmd5 = PBField.initString("");
+  public final PBStringField str_weiyunsha = PBField.initString("");
   public final PBUInt32Field uint32_busId = PBField.initUInt32(0);
   public final PBUInt32Field uint32_fileFrom = PBField.initUInt32(0);
   public final PBUInt32Field uint32_forwardTroopFileEntranc = PBField.initUInt32(0);
@@ -33,6 +37,7 @@ public final class DatalineMsgData$MsgData
   public final PBUInt32Field uint32_ismoloimage = PBField.initUInt32(0);
   public final PBUInt32Field uint32_nOpType = PBField.initUInt32(0);
   public final PBUInt32Field uint32_port = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_weiyunsrctype = PBField.initUInt32(0);
   public final PBUInt64Field uint64_OwnerUin = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_entityID = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_filemsgstatus = PBField.initUInt64(0L);
@@ -42,7 +47,7 @@ public final class DatalineMsgData$MsgData
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58, 66, 72, 85, 88, 98, 106, 112, 120, 130, 136, 144, 152, 160, 168, 176 }, new String[] { "str_msg", "uint64_filemsgstatus", "uint64_weiyunsessionid", "str_molokey", "str_moloiconurl", "str_molosource", "str_molosrcurl", "str_reserve1", "uint32_isapkfile", "fixed32_ip", "uint32_port", "bytes_url_notify", "bytes_tokenkey", "uint32_ismoloimage", "uint32_fileFrom", "str_fileUuid", "uint32_nOpType", "uint64_entityID", "uint64_OwnerUin", "uint32_busId", "uint32_forwardTroopFileEntranc", "bool_sended" }, new Object[] { "", Long.valueOf(0L), Long.valueOf(0L), "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false) }, MsgData.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58, 66, 72, 85, 88, 98, 106, 112, 120, 130, 136, 144, 152, 160, 168, 176, 186, 194, 200, 210, 218 }, new String[] { "str_msg", "uint64_filemsgstatus", "uint64_weiyunsessionid", "str_molokey", "str_moloiconurl", "str_molosource", "str_molosrcurl", "str_reserve1", "uint32_isapkfile", "fixed32_ip", "uint32_port", "bytes_url_notify", "bytes_tokenkey", "uint32_ismoloimage", "uint32_fileFrom", "str_fileUuid", "uint32_nOpType", "uint64_entityID", "uint64_OwnerUin", "uint32_busId", "uint32_forwardTroopFileEntranc", "bool_sended", "str_weiyunid", "str_weiyundirkey", "uint32_weiyunsrctype", "str_weiyunmd5", "str_weiyunsha" }, new Object[] { "", Long.valueOf(0L), Long.valueOf(0L), "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), "", "", Integer.valueOf(0), "", "" }, MsgData.class);
   }
 }
 

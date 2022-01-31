@@ -9,7 +9,9 @@ class VideoLayerUIBase$3
   
   public void run()
   {
-    this.this$0.a.a(new Object[] { Integer.valueOf(8005), this.a, this.b });
+    if (this.this$0.a != null) {
+      this.this$0.a.a(new Object[] { Integer.valueOf(8005), this.a, this.b });
+    }
   }
 }
 

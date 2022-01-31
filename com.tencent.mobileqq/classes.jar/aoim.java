@@ -1,25 +1,30 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
-class aoim
-  implements aoji
+public class aoim
+  implements View.OnTouchListener
 {
-  aoim(aoik paramaoik, FileManagerEntity paramFileManagerEntity) {}
+  public aoim(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  public void a() {}
-  
-  public void b()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType == 3000) {}
-    for (Object localObject = new aouc(this.jdField_a_of_type_Aoik.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);; localObject = new aotz(this.jdField_a_of_type_Aoik.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
+    switch (paramMotionEvent.getAction())
     {
-      aojd.a((aotv)localObject);
-      return;
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoim
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.search.fragment;
 
 import android.view.View;
-import avlu;
+import awln;
 import java.util.List;
 
 public class PublicAcntSearchFragment$2$1
   implements Runnable
 {
-  public PublicAcntSearchFragment$2$1(avlu paramavlu, boolean paramBoolean) {}
+  public PublicAcntSearchFragment$2$1(awln paramawln, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Avlu.a.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Avlu.a.jdField_c_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Avlu.a.jdField_c_of_type_JavaUtilList.size() > 0)) {
-      this.jdField_a_of_type_Avlu.a.h_(true);
+    this.jdField_a_of_type_Awln.a.jdField_c_of_type_AndroidViewView.setVisibility(8);
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Awln.a.jdField_c_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Awln.a.jdField_c_of_type_JavaUtilList.size() > 0)) {
+      this.jdField_a_of_type_Awln.a.g_(true);
     }
   }
 }

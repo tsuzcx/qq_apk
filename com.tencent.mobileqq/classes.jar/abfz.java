@@ -1,43 +1,25 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class abfz
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  public abfz(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public abfz(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    for (;;)
+    if (paramView.getId() == 2131364979)
     {
-      try
+      paramView = this.a.jdField_a_of_type_Abgk.a();
+      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (paramView != null))
       {
-        int i = paramMessage.what;
-        switch (i)
-        {
-        default: 
-          bool = false;
-          return bool;
-        }
+        bfol localbfol = (bfol)bfoy.a(this.a, null);
+        localbfol.a(2131693380, 3);
+        localbfol.c(2131690596);
+        localbfol.a(new abga(this, paramView, localbfol));
+        localbfol.show();
       }
-      finally {}
-      boolean bool = ((Boolean)paramMessage.obj).booleanValue();
-      NotifyPushSettingActivity.g(this.a).setChecked(bool);
-      break label163;
-      paramMessage = (String)paramMessage.obj;
-      NotifyPushSettingActivity.a(this.a, paramMessage);
-      break label163;
-      paramMessage = (String)paramMessage.obj;
-      NotifyPushSettingActivity.b(this.a, paramMessage);
-      break label163;
-      bool = ((Boolean)paramMessage.obj).booleanValue();
-      NotifyPushSettingActivity.h(this.a).setChecked(bool);
-      break label163;
-      NotifyPushSettingActivity.i(this.a).setChecked(((Boolean)paramMessage.obj).booleanValue());
-      label163:
-      bool = true;
     }
   }
 }

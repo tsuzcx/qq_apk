@@ -1,22 +1,12 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import android.hardware.Camera;
 
-public class avul
-  extends avuy
+public abstract interface avul
 {
-  public avul(GroupSearchEngine paramGroupSearchEngine, avuz paramavuz, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramavuz, paramString, paramInt);
-  }
-  
-  public avom a(List<avon> paramList, String paramString)
-  {
-    return new avmf(paramList, paramString, GroupSearchEngine.a(this.a));
-  }
+  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avul
  * JD-Core Version:    0.7.0.1
  */

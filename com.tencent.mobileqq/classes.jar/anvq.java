@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import mqq.util.WeakReference;
 
-public class anvq
-  implements DialogInterface.OnClickListener
+class anvq
+  extends VasQuickUpdateManager.CallBacker
 {
-  public anvq(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  anvq(anvp paramanvp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    this.a.a = false;
-    this.a.l = false;
-    this.a.doOnBackPressed();
+    paramString2 = (QQAppInterface)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (paramString2 == null) {}
+    while (!"emoji_app_vip_emoji_aio_android_config.json".equals(paramString1)) {
+      return;
+    }
+    ((VasQuickUpdateManager)paramString2.getManager(184)).removeCallBacker(this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+    paramString1 = VasQuickUpdateManager.getJSONFromLocal(paramString2, "emoji_app_vip_emoji_aio_android_config.json", false, null);
+    this.a.a(paramString1);
   }
 }
 

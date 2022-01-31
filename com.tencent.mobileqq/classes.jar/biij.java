@@ -1,8 +1,11 @@
-public abstract interface biij
+import java.io.File;
+
+public class biij
 {
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
+  public static final String a = biia.b + File.separator + "playshow";
+  public static final String b = a + File.separator + "crazyface_tmp";
+  public static final String c = a + File.separator + "qudong_tmp";
+  public static final String d = a + File.separator + "web_tmp";
 }
 
 

@@ -1,45 +1,54 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class nrq
-  implements URLDrawable.URLDrawableListener
+public class nrq
+  implements View.OnTouchListener
 {
-  nrq(nrp paramnrp, String paramString) {}
+  public nrq(ShopWebViewFragment paramShopWebViewFragment, JSONObject paramJSONObject1, JSONObject paramJSONObject2) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadFialed:" + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadProgressed");
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadSuccessed:" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (paramURLDrawable != null)
+    switch (paramMotionEvent.getAction())
     {
-      nrp.a(this.jdField_a_of_type_Nrp, new nrn(paramURLDrawable.getCurrDrawable(), nrp.a(this.jdField_a_of_type_Nrp), nrp.b(this.jdField_a_of_type_Nrp) - (nrp.c(this.jdField_a_of_type_Nrp) + nrp.d(this.jdField_a_of_type_Nrp))));
-      nrp.a(this.jdField_a_of_type_Nrp).setImageDrawable(nrp.a(this.jdField_a_of_type_Nrp));
-      nrp.a(this.jdField_a_of_type_Nrp, this.jdField_a_of_type_JavaLangString);
     }
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
+      return false;
+      int i = (int)(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c - paramMotionEvent.getY());
+      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
+      if ((i < 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d > 0)) {
+        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
+      }
+      if ((i > 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d < 0)) {
+        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
+      }
+      paramView = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment;
+      paramView.d = (i + paramView.d);
+      return false;
+      try
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("y_offset", this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d);
+        paramView = WebViewPlugin.toJsScript("onScroll", this.jdField_a_of_type_OrgJsonJSONObject, this.b);
+        if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.a != null)
+        {
+          this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.a.callJs(paramView);
+          return false;
+        }
+      }
+      catch (JSONException paramView)
+      {
+        paramView.printStackTrace();
+      }
+    }
+    return false;
   }
 }
 

@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.pts.nativemodule.IPTSAllInOneJump;
+import com.tencent.qphone.base.util.QLog;
 
-public final class pps
-  implements Parcelable.Creator<MultiBiuSameContent>
+public class pps
+  implements IPTSAllInOneJump
 {
-  public MultiBiuSameContent a(Parcel paramParcel)
-  {
-    return new MultiBiuSameContent(paramParcel);
-  }
+  public final String a = "PTSAllInOneJumpModule";
   
-  public MultiBiuSameContent[] a(int paramInt)
+  public void allInOneJump(String paramString)
   {
-    return new MultiBiuSameContent[paramInt];
+    QLog.i("PTSAllInOneJumpModule", 1, "[allInOneJump], url = " + paramString);
+    if (BaseActivity.sTopActivity != null) {
+      onk.a(BaseActivity.sTopActivity, paramString);
+    }
   }
 }
 

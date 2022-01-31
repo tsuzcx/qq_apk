@@ -34,12 +34,14 @@ public class MiniReportManager
   private static final String TAG = "MiniReportManager";
   private static SparseArray<MiniReportManager.CostTimeRecord> eventCostTimeSparseArray;
   private static SparseArray<String> eventNameSparseArray = new SparseArray();
+  private static ArrayList<String> eventNameToDC5332;
   private static ArrayList<Integer> eventNeedRecordTime = new ArrayList();
   public static HashMap<String, MiniReportManager.MiniAppLaunchState> launchStateMap;
   
   static
   {
     eventCostTimeSparseArray = new SparseArray();
+    eventNameToDC5332 = new ArrayList();
     eventNameSparseArray.put(1, "onlaunch");
     eventNameSparseArray.put(4, "basejsdownloadstart");
     eventNameSparseArray.put(5, "basejsdownloadend");
@@ -55,8 +57,8 @@ public class MiniReportManager
     eventNameSparseArray.put(15, "servicejsend");
     eventNameSparseArray.put(16, "basejsstart");
     eventNameSparseArray.put(17, "basejsready");
-    eventNameSparseArray.put(18, "basejsstart");
-    eventNameSparseArray.put(19, "basejsready");
+    eventNameSparseArray.put(18, "webviewjsstart");
+    eventNameSparseArray.put(19, "webviewjsready");
     eventNameSparseArray.put(2, "apponloaded");
     eventNameSparseArray.put(20, "apponhide");
     eventNameSparseArray.put(21, "apponshow");
@@ -204,6 +206,21 @@ public class MiniReportManager
     eventCostTimeSparseArray.put(627, new MiniReportManager.CostTimeRecord("preload_result", 626));
     eventCostTimeSparseArray.put(1022, new MiniReportManager.CostTimeRecord("game_first_launch_result", 1));
     eventCostTimeSparseArray.put(1023, new MiniReportManager.CostTimeRecord("game_twice_launch_result", 1));
+    eventCostTimeSparseArray.put(1008, new MiniReportManager.CostTimeRecord("game_after_launch_time_cost", 1));
+    eventNameToDC5332.add("launch_result");
+    eventNameToDC5332.add("app_download_result");
+    eventNameToDC5332.add("stepstartactivity");
+    eventNameToDC5332.add("steponcreate");
+    eventNameToDC5332.add("stepinitdatamustonresume");
+    eventNameToDC5332.add("steploadbaselibtimecost");
+    eventNameToDC5332.add("stepinitjspluginlist");
+    eventNameToDC5332.add("steponresume");
+    eventNameToDC5332.add("steploadgpkg");
+    eventNameToDC5332.add("stepinitruntime");
+    eventNameToDC5332.add("stepinitjspluginengine");
+    eventNameToDC5332.add("stepcreatesurfaceview");
+    eventNameToDC5332.add("stepfirstframefromgamelaunched");
+    eventNameToDC5332.add("stepfirstframefromcreate");
     launchStateMap = new HashMap();
   }
   
@@ -344,6 +361,11 @@ public class MiniReportManager
       }
     }
     return false;
+  }
+  
+  public static boolean needReportToDC5332(String paramString)
+  {
+    return eventNameToDC5332.contains(paramString);
   }
   
   public static void reportEventType(MiniAppConfig paramMiniAppConfig, int paramInt, String paramString)

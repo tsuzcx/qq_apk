@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aroh;
+import askl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class VerifyPhoneNumActivity$4
@@ -10,7 +10,7 @@ class VerifyPhoneNumActivity$4
   
   public void run()
   {
-    ((aroh)this.this$0.app.getManager(11)).g();
+    ((askl)this.this$0.app.getManager(11)).g();
   }
 }
 

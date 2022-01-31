@@ -1,12 +1,19 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
 
-public abstract interface vaj
+public class vaj
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public vaj(StoryListPresenter.4.1 param1) {}
   
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    vel.a("home_page", "clk_up_shoot", 0, 0, new String[0]);
+    this.a.a.this$0.jdField_a_of_type_Vat.a(false, true, 13, null);
+    this.a.a.this$0.jdField_a_of_type_Vdm.dismiss();
+  }
 }
 
 

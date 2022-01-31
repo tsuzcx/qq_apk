@@ -1,8 +1,19 @@
-import cooperation.weiyun.sdk.download.DownloadType;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import cooperation.qqreader.ui.ReaderHomeTabFragment;
+import cooperation.qqreader.view.ReaderTabBarView;
 
-public abstract interface bgvk
+public class bgvk
+  extends BroadcastReceiver
 {
-  public abstract void a(bgup parambgup, DownloadType paramDownloadType, bgvh parambgvh);
+  public bgvk(ReaderHomeTabFragment paramReaderHomeTabFragment) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    bgvm.c(this.a.getActivity());
+    ReaderHomeTabFragment.a(this.a).setUnReadMsg(1, 20);
+  }
 }
 
 

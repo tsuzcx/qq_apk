@@ -1,116 +1,76 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.ApngImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.utils.TroopNameHelper;
+import com.tencent.mobileqq.troop.utils.TroopNameHelper.GenTroopNameTask;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayDeque;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 public class balm
-  extends axwe
+  extends akim
 {
-  private static ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(0);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  balq jdField_a_of_type_Balq = new balq(this);
-  URLDrawableDownListener.Adapter jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new baln(this);
-  private ArrayDeque<balo> jdField_a_of_type_JavaUtilArrayDeque = new ArrayDeque();
-  private boolean jdField_a_of_type_Boolean = true;
+  public balm(TroopNameHelper paramTroopNameHelper) {}
   
-  public balm(ImageView paramImageView)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    if ((paramImageView instanceof URLImageView)) {
-      ((URLImageView)paramImageView).setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
-    }
-  }
-  
-  private Drawable a()
-  {
-    Object localObject = jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-    if (localDrawable != null)
+    this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(paramLong));
+    paramList = (TroopNameHelper.GenTroopNameTask)this.a.b.get(paramString);
+    if (paramList != null)
     {
-      localObject = localDrawable;
-      if ((localDrawable instanceof URLDrawable)) {
-        localObject = ((URLDrawable)localDrawable).getCurrDrawable();
-      }
-      return localObject;
+      TroopNameHelper.a(this.a, paramList);
+      this.a.b.remove(paramString);
     }
-    return localObject;
   }
   
-  private void b()
+  protected void a(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
   {
-    Object localObject = (balo)this.jdField_a_of_type_JavaUtilArrayDeque.poll();
-    if (localObject == null) {
-      this.jdField_a_of_type_Boolean = true;
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder(150);
+      ((StringBuilder)localObject).append("onOIDB0X899_0_Ret").append("| isSuccess = ").append(paramBoolean).append("| troopuin = ").append(paramLong1).append("| nFlag = ").append(paramInt1).append("| strErorMsg = ").append(paramString);
+      QLog.i("TroopNameHelper", 2, ((StringBuilder)localObject).toString());
     }
-    do
+    paramString = String.valueOf(paramLong1);
+    if ((paramInt1 == 1) && (paramBoolean) && (this.a.b.containsKey(paramString)))
+    {
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString);
+      if (localObject != null) {}
+    }
+    else
     {
       return;
-      this.jdField_a_of_type_Boolean = false;
-      localObject = ((balo)localObject).a(a());
-      if (((URLDrawable)localObject).getStatus() == 1)
+    }
+    if (paramList == null) {}
+    for (paramInt1 = 0;; paramInt1 = paramList.size())
+    {
+      if (paramInt1 == 1)
       {
-        b();
-        return;
+        paramList = (oidb_0x899.memberlist)paramList.get(0);
+        if ((paramList == null) || (!paramList.uint64_member_uin.has())) {
+          break;
+        }
+        paramList = String.valueOf(paramList.uint64_member_uin.get());
+        if ((paramList != null) && (!"".equals(paramList.trim()))) {
+          ((TroopInfo)localObject).troopowneruin = paramList.trim();
+        }
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    } while ((this.jdField_a_of_type_AndroidWidgetImageView instanceof URLImageView));
-    ((URLDrawable)localObject).setURLDrawableListener(this);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayDeque.clear();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(balo parambalo)
-  {
-    this.jdField_a_of_type_JavaUtilArrayDeque.add(parambalo);
-    if (this.jdField_a_of_type_Boolean) {
-      b();
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    a(new balp(paramString, paramInt));
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("ApngQueuePlayer", 1, "onLoadFialed: ", paramThrowable);
-    b();
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = ((ApngDrawable)paramURLDrawable.getCurrDrawable()).getImage();
-    if (paramURLDrawable.mFrameCount <= 1)
-    {
-      b();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b((TroopInfo)localObject);
+      paramList = (TroopNameHelper.GenTroopNameTask)this.a.b.get(paramString);
+      if ((paramList == null) || (paramList.a)) {
+        break;
+      }
+      TroopNameHelper.a(this.a, paramList);
       return;
     }
-    if ((paramURLDrawable.apngLoop > 0) && (paramURLDrawable.currentApngLoop >= paramURLDrawable.apngLoop)) {
-      paramURLDrawable.replay();
-    }
-    if (paramURLDrawable.apngLoop != 0)
-    {
-      this.jdField_a_of_type_Balq.a(paramURLDrawable);
-      return;
-    }
-    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     balm
  * JD-Core Version:    0.7.0.1
  */

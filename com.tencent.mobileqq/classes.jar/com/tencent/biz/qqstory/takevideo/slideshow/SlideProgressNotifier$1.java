@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo.slideshow;
 
 import android.app.Activity;
-import bbms;
+import bcpq;
 import com.tencent.qphone.base.util.QLog;
 
 class SlideProgressNotifier$1
@@ -14,7 +14,7 @@ class SlideProgressNotifier$1
     if (QLog.isColorLevel()) {
       QLog.d("QQProgressNotifier", 2, "SlideShowProgressUpdate : " + this.a + "%");
     }
-    SlideProgressNotifier.a(this.this$0).a(this.this$0.a.getString(2131633753) + " " + this.a + "%");
+    SlideProgressNotifier.a(this.this$0).a(this.this$0.a.getString(2131699535) + " " + this.a + "%");
   }
 }
 

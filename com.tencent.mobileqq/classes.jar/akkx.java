@@ -1,22 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class akkx
-  implements ValueAnimator.AnimatorUpdateListener
+class akkx
+  implements Comparator<Map.Entry<String, aukm>>
 {
-  public akkx(ARVideoRecordButtonView paramARVideoRecordButtonView) {}
+  akkx(akkw paramakkw) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a(Map.Entry<String, aukm> paramEntry1, Map.Entry<String, aukm> paramEntry2)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    ARVideoRecordButtonView.b(this.a, paramValueAnimator.floatValue());
-    ARVideoRecordButtonView.a(this.a);
+    paramEntry1 = ((String)paramEntry1.getKey()).split("&")[1];
+    int i = Integer.parseInt(paramEntry1.split("-")[0]);
+    int j = Integer.parseInt(paramEntry1.split("-")[1]);
+    paramEntry1 = ((String)paramEntry2.getKey()).split("&")[1];
+    int k = Integer.parseInt(paramEntry1.split("-")[0]);
+    int m = Integer.parseInt(paramEntry1.split("-")[1]);
+    if (i > k) {
+      return 1;
+    }
+    if (i == k) {
+      return j - m;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akkx
  * JD-Core Version:    0.7.0.1
  */

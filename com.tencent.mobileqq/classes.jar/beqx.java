@@ -1,23 +1,26 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.DebugInfo;
 
-class beqx
-  implements View.OnLongClickListener
+public final class beqx
+  implements Parcelable.Creator<DebugInfo>
 {
-  beqx(beqv parambeqv, bequ parambequ) {}
-  
-  public boolean onLongClick(View paramView)
+  public DebugInfo a(Parcel paramParcel)
   {
-    int i = this.jdField_a_of_type_Bequ.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_Beqv.a.a(this.jdField_a_of_type_Bequ.itemView, i);
-    }
-    return true;
+    DebugInfo localDebugInfo = new DebugInfo();
+    localDebugInfo.a = paramParcel.readString();
+    localDebugInfo.b = paramParcel.readString();
+    return localDebugInfo;
+  }
+  
+  public DebugInfo[] a(int paramInt)
+  {
+    return new DebugInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beqx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,9 @@
-public abstract interface rex
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+
+public class rex
+  extends osp
 {
-  public abstract void c();
+  public rex(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
 }
 
 

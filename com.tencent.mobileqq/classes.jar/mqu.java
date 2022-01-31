@@ -1,26 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class mqu
-  extends Handler
+class mqu
+  implements View.OnClickListener
 {
-  public mqu(SensorAPIJavaScript paramSensorAPIJavaScript) {}
+  mqu(mqt parammqt) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 5) {
-      this.a.a((String)paramMessage.obj);
-    }
-    while (paramMessage.what != 291) {
-      return;
-    }
-    this.a.updateMicStatus((String)paramMessage.obj);
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mqu
  * JD-Core Version:    0.7.0.1
  */

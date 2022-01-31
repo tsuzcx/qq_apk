@@ -1,65 +1,102 @@
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogReq;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.lang.ref.WeakReference;
+import java.net.URL;
+import java.util.List;
 
-public class aztw
+class aztw
+  extends xaw
 {
-  public QQAppInterface a;
-  public BusinessObserver a;
+  aztw(aztv paramaztv) {}
   
-  public aztw(QQAppInterface paramQQAppInterface)
+  public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new aztx(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public String a(int paramInt, JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject2 = new JSONObject();
-    try
+    if (!paramBoolean)
     {
-      localJSONObject2.put("status", paramInt);
-      JSONObject localJSONObject1 = paramJSONObject;
-      if (paramJSONObject == null) {
-        localJSONObject1 = new JSONObject();
-      }
-      localJSONObject2.put("data", localJSONObject1);
+      azsr.a("TroopZipInnerFileDownloadWorker", azsr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult isSuccess:false  errCode:" + paramInt1);
+      this.a.jdField_a_of_type_Azsd.c = 2;
+      this.a.a(true, bami.b, bami.A, 103);
+      return;
     }
-    catch (JSONException paramJSONObject)
+    azsr.c("TroopZipInnerFileDownloadWorker", azsr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult isSuccess:true  int32_ret_code:" + paramInt1);
+    if ((paramInt1 == 0) || ((TextUtils.isEmpty(paramString3)) && (paramInt2 == 0)))
     {
+      azsr.a("TroopZipInnerFileDownloadWorker", azsr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult. no host");
+      this.a.jdField_a_of_type_Azsd.c = 1;
+      this.a.jdField_a_of_type_Azsd.d = 101;
+      this.a.a(true, bami.c, bami.x, 1);
+      return;
+    }
+    paramString1 = apue.a(paramByteStringMicro1);
+    if (TextUtils.isEmpty(paramString1))
+    {
+      azsr.a("TroopZipInnerFileDownloadWorker", azsr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult. no string_download_url");
+      this.a.jdField_a_of_type_Azsd.c = 1;
+      this.a.jdField_a_of_type_Azsd.d = 102;
+      this.a.a(true, bami.b, bami.w, 1);
+      return;
+    }
+    paramString2 = bfng.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipInnerPath);
+    paramByteStringMicro1 = (QQAppInterface)this.b.get();
+    if ((paramByteStringMicro1 != null) && (bakj.b(paramByteStringMicro1)) && (bakj.c(paramByteStringMicro1)) && (paramBundle != null))
+    {
+      paramByteStringMicro1 = paramBundle.getString("strHttpsDomain");
+      if (!TextUtils.isEmpty(paramByteStringMicro1))
+      {
+        this.a.jdField_a_of_type_Boolean = true;
+        this.a.g = paramByteStringMicro1;
+        int i = (short)paramBundle.getInt("httpsPort", 0);
+        paramInt1 = i;
+        if (i != 0) {}
+      }
+    }
+    for (paramInt1 = 443;; paramInt1 = 0)
+    {
+      if (this.a.jdField_a_of_type_Boolean) {}
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("UnifiedDebugReporter", 2, "reportStatus: exception=" + paramJSONObject.getMessage());
+        this.a.f = ("/ftn_compress_getfile/rkey=" + paramString1 + "&filetype=" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipType + "&path=" + paramString2 + "&mType=Other");
+        paramString1 = paramString3 + ":" + paramInt1;
+        this.a.jdField_a_of_type_JavaUtilList.add(paramString1);
+        if (paramInt2 != 0)
+        {
+          paramString2 = this.a.a(paramInt2) + ":" + paramInt1;
+          this.a.jdField_a_of_type_JavaUtilList.add(paramString2);
         }
+        if (this.a.jdField_a_of_type_Boolean) {
+          paramString1 = "https://" + paramString1 + this.a.f;
+        }
+        for (;;)
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.PreviewUrl = paramString1;
+          try
+          {
+            paramString1 = new URL(paramString1);
+            this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp = paramString1.getHost();
+            azsr.c("TroopZipInnerFileDownloadWorker", azsr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult. str_download_dns:" + paramString3 + " int32_server_ip:" + paramInt2 + " int32_server_port:" + paramInt3 + " mUrlParm:" + this.a.f + " port:" + paramInt1 + " isHttps:" + this.a.jdField_a_of_type_Boolean + " httpsDomain:" + this.a.g);
+            this.a.g();
+            return;
+            paramString1 = "http://" + paramString1 + this.a.f;
+          }
+          catch (Exception paramString1)
+          {
+            for (;;)
+            {
+              paramString1.printStackTrace();
+            }
+          }
+        }
+        paramInt1 = paramInt3;
       }
-    }
-    return localJSONObject2.toString();
-  }
-  
-  public void a(long paramLong, int paramInt, JSONObject paramJSONObject)
-  {
-    RemoteDebugReportMsg.RemoteLogReq localRemoteLogReq = new RemoteDebugReportMsg.RemoteLogReq();
-    localRemoteLogReq.str_seq.set(String.valueOf(paramLong));
-    localRemoteLogReq.str_data.set(a(paramInt, paramJSONObject));
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), aztv.class);
-    localNewIntent.putExtra("extra_cmd", "ClubDebugging.report");
-    localNewIntent.putExtra("extra_data", localRemoteLogReq.toByteArray());
-    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("UnifiedDebugReporter", 2, "reportStatus: seq=" + paramLong + ", statusCode=" + paramInt + ", data=" + paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aztw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,74 +1,44 @@
-import android.content.IntentFilter;
-import com.tencent.av.so.DownloadInfo;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class lph
 {
-  int jdField_a_of_type_Int = 0;
-  DownloadInfo jdField_a_of_type_ComTencentAvSoDownloadInfo = null;
-  ArrayList<lpd> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static lph a;
   
-  lph()
+  public static lph a()
   {
-    a(BaseApplicationImpl.getApplication());
-    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
-    this.jdField_a_of_type_Int = lpj.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo);
-    QLog.d("QavSo", 1, String.format("SoMgr, mStatusSo[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-  }
-  
-  DownloadInfo a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvSoDownloadInfo == null) {
-      this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
+    if (a != null) {
+      return a;
     }
-    return this.jdField_a_of_type_ComTencentAvSoDownloadInfo;
-  }
-  
-  boolean a()
-  {
-    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
-    this.jdField_a_of_type_Int = lpj.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavSo", 4, String.format("checkResReady, mStatusSo[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-    }
-    return 11 != this.jdField_a_of_type_Int;
-  }
-  
-  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavSo", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("tencent.video.somgr.notify");
-    return paramBaseApplicationImpl.registerReceiver(new lpi(this), localIntentFilter) != null;
-  }
-  
-  boolean b()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  boolean c()
-  {
-    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = lpj.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo);
-    if (this.jdField_a_of_type_Int == 11)
+    try
     {
-      this.jdField_a_of_type_Int = 12;
-      BusinessCommonConfig.notifyQQDownload(3, null, 0);
+      a = new lph();
+      lph locallph = a;
+      return locallph;
     }
-    for (boolean bool = true;; bool = false)
+    catch (Exception localException) {}
+    return null;
+  }
+  
+  public float a()
+  {
+    float f;
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavSo", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusSo[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      f = Float.parseFloat(lgo.a(BaseApplicationImpl.getContext()).a("sharp/beauty_3/ratio", "1.0"));
+      if (f <= 0.0F) {
+        return 1.0F;
       }
-      return bool;
     }
+    catch (Exception localException)
+    {
+      return 1.0F;
+    }
+    return f;
+  }
+  
+  public boolean a()
+  {
+    return lgo.a(BaseApplicationImpl.getContext()).a("sharp/beauty_3/flag", 0) == 1;
   }
 }
 

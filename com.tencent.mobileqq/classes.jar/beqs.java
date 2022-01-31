@@ -1,12 +1,23 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.ApiScopeEntry;
 
-public abstract interface beqs
+public final class beqs
+  implements Parcelable.Creator<ApiScopeEntry>
 {
-  public abstract void a(View paramView, int paramInt);
+  public ApiScopeEntry a(Parcel paramParcel)
+  {
+    return new ApiScopeEntry(paramParcel);
+  }
+  
+  public ApiScopeEntry[] a(int paramInt)
+  {
+    return new ApiScopeEntry[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beqs
  * JD-Core Version:    0.7.0.1
  */

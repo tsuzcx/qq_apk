@@ -1,48 +1,30 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import mqq.util.WeakReference;
 
-class agtm
-  implements agpe
+public class agtm
+  extends agrm
 {
-  agtm(agtk paramagtk) {}
-  
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  protected agtm(AlbumListFragment paramAlbumListFragment)
   {
-    int j = 1;
-    int i;
-    if (paramInt == 0)
+    super(paramAlbumListFragment);
+  }
+  
+  public static agrj b(AlbumListFragment paramAlbumListFragment)
+  {
+    if ((a == null) || (a.a.get() != paramAlbumListFragment)) {}
+    try
     {
-      i = 1;
-      if (paramPathResult == null) {
-        break label114;
+      if ((a == null) || (a.a.get() != paramAlbumListFragment)) {
+        a = new agtm(paramAlbumListFragment);
       }
+      return a;
     }
-    for (;;)
-    {
-      if (((j & i) != 0) && (!baip.a(paramPathResult.filePath)))
-      {
-        Bitmap localBitmap = agtk.a(this.a, paramPathResult.filePath, false);
-        if (localBitmap != null)
-        {
-          agtk.a(this.a, localBitmap);
-          agtk.a(this.a, false);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("springHb_SpringEntryManager", 2, "getTransitionOrDefaultBitmap resCode:" + paramInt + ",pathRes:" + paramPathResult);
-      }
-      return;
-      i = 0;
-      break;
-      label114:
-      j = 0;
-    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agtm
  * JD-Core Version:    0.7.0.1
  */

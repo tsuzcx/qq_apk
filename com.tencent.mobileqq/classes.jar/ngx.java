@@ -1,18 +1,18 @@
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import java.lang.ref.WeakReference;
 
 class ngx
   implements View.OnClickListener
 {
-  ngx(ngv paramngv, String paramString) {}
+  ngx(nfu paramnfu, int paramInt, nmv paramnmv) {}
   
   public void onClick(View paramView)
   {
-    if ((ngv.a(this.jdField_a_of_type_Ngv) != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      obz.a(ngv.a(this.jdField_a_of_type_Ngv).getContext(), this.jdField_a_of_type_JavaLangString);
-    }
+    xbl.a((BaseActivity)this.jdField_a_of_type_Nfu.jdField_a_of_type_JavaLangRefWeakReference.get(), new xbn(this.jdField_a_of_type_Nfu.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nfu.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Nfu.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nfu.a(this.jdField_a_of_type_Nfu), this.jdField_a_of_type_Int);
+    nfu.a(this.jdField_a_of_type_Nfu, this.jdField_a_of_type_Nmv.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,49 +1,23 @@
-import GIFT_MALL_PROTOCOL.DouFuInfo;
-import GIFT_MALL_PROTOCOL.doufu_piece_rsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-class bfte
-  extends atdk
+public class bfte
+  extends bfvf
 {
-  public WeakReference<QQAppInterface> a;
+  public Drawable a;
   
-  protected void j(boolean paramBoolean, Bundle paramBundle)
+  public void a(SpannableString paramSpannableString)
   {
-    if (this.a == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver", 2, "onGetBirthDayNoticeData appRef==null");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("spanStyle", 2, "[ImageStyle] start:" + this.b + " end:" + this.c);
     }
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.a.get();
-      if (localQQAppInterface != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneObserver", 2, "onGetBirthDayNoticeData app == null ");
-    return;
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof doufu_piece_rsp)))
-    {
-      paramBundle = ((doufu_piece_rsp)paramBundle).doufu.iterator();
-      while (paramBundle.hasNext()) {
-        bftd.a(localQQAppInterface, (DouFuInfo)paramBundle.next());
-      }
-    }
-    localQQAppInterface.unRegistObserver(bftd.a());
+    paramSpannableString.setSpan(new bftd(this.a, 1), this.b, this.c, 17);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfte
  * JD-Core Version:    0.7.0.1
  */

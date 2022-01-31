@@ -1,30 +1,26 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import java.util.Comparator;
 
 public class sbe
-  implements TextWatcher
+  implements Comparator<saw>
 {
-  public sbe(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  public sbe(sbc paramsbc) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public int a(saw paramsaw1, saw paramsaw2)
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a, paramEditable.toString());
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((!TextUtils.isEmpty(paramCharSequence)) && (paramCharSequence.length() - paramInt2 + paramInt3 > 100)) {
-      bbmy.a(this.a, 0, this.a.getString(2131629872), 0).b(this.a.getTitleBarHeight());
+    long l1 = paramsaw1.a;
+    long l2 = paramsaw2.a;
+    if (l2 > l1) {
+      return 1;
     }
+    if (l2 < l1) {
+      return -1;
+    }
+    return 0;
   }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sbe
  * JD-Core Version:    0.7.0.1
  */

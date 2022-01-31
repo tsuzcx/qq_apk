@@ -1,56 +1,23 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
 import com.tencent.qphone.base.util.QLog;
 
-class aqzl
-  implements ajfe
+public class aqzl
+  implements DialogInterface.OnClickListener
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public aqzl(HotPicPageView paramHotPicPageView, aqzr paramaqzr, int paramInt) {}
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  protected void c(boolean paramBoolean, Object paramObject) {}
-  
-  protected void d(boolean paramBoolean, Object paramObject) {}
-  
-  protected void e(boolean paramBoolean, Object paramObject) {}
-  
-  protected void f(boolean paramBoolean, Object paramObject) {}
-  
-  protected void g(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationObserverBase", 2, new Object[] { "onUpdate: invoked. ", " type: ", Integer.valueOf(paramInt), " isSuccess: ", Boolean.valueOf(paramBoolean), " data: ", paramObject });
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      g(paramBoolean, paramObject);
-      return;
-    case 2: 
-      a(paramBoolean, paramObject);
-      return;
-    case 3: 
-      f(paramBoolean, paramObject);
-      return;
-    case 4: 
-      e(paramBoolean, paramObject);
-      return;
-    case 5: 
-      d(paramBoolean, paramObject);
-      return;
-    case 6: 
-      c(paramBoolean, paramObject);
-      return;
-    }
-    b(paramBoolean, paramObject);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.jdField_a_of_type_Aqzr, this.jdField_a_of_type_Int);
+    QLog.d("HotPicManagerHotPicPageView", 2, "User allowed downd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aqzl
  * JD-Core Version:    0.7.0.1
  */

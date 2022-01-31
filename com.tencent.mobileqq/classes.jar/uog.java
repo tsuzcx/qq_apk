@@ -1,10 +1,21 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
 
-public abstract interface uog
+public class uog
+  extends Handler
 {
-  public abstract void a(View paramView, VideoListFeedItem paramVideoListFeedItem, QQUserUIItem paramQQUserUIItem, int paramInt);
+  private uog(QQStoryMainController paramQQStoryMainController) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a.a(false);
+  }
 }
 
 

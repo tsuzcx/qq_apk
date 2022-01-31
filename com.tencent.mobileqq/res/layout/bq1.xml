@@ -46,7 +46,7 @@
                         <RelativeLayout android:id="@id/iuc" android:background="#fff3f5f8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="0.0dip" android:layout_below="@id/iuf">
                             <RelativeLayout android:id="@id/iui" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="8.5dip" android:layout_alignParentTop="true">
                                 <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/iuh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/caj" android:singleLine="true" />
-                                <ImageView android:id="@id/iud" android:background="@drawable/c1n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="11.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                                <ImageView android:id="@id/iud" android:background="@drawable/dfx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="11.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
                             </RelativeLayout>
                             <HorizontalScrollView android:id="@id/i1_" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="12.0dip" android:layout_below="@id/iui">
                                 <LinearLayout android:orientation="horizontal" android:id="@id/i1a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" />
@@ -134,7 +134,7 @@
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
-                <TextView android:textSize="14.0sp" android:textColor="#ff585858" android:gravity="left" android:layout_gravity="center|left" android:id="@id/j9s" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="13.0dip" android:layout_marginTop="12.5dip" android:text="@string/s57" />
+                <TextView android:textSize="14.0sp" android:textColor="#ffb0b3bf" android:gravity="left" android:layout_gravity="center|left" android:id="@id/j9s" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="13.0dip" android:layout_marginTop="12.5dip" android:text="@string/s57" />
             </LinearLayout>
         </LinearLayout>
     </com.qzone.widget.ExtendScrollView>

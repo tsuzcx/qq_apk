@@ -1,23 +1,28 @@
-import java.lang.ref.WeakReference;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 
-public class alos
+class alos
+  implements SensorEventListener
 {
-  public int a;
-  public String a;
-  public WeakReference<alor> a;
-  public int b = 0;
-  public int c = 0;
+  alos(alop paramalop) {}
   
-  public alos()
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    if (paramSensorEvent.sensor.getType() == 1) {
+      alop.a(this.a, paramSensorEvent);
+    }
+    while (paramSensorEvent.sensor.getType() != 3) {
+      return;
+    }
+    alop.b(this.a, paramSensorEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alos
  * JD-Core Version:    0.7.0.1
  */

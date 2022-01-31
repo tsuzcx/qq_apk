@@ -1,20 +1,25 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class aozg
-  implements View.OnClickListener
+  implements apac
 {
-  aozg(aozd paramaozd) {}
+  aozg(aoze paramaoze, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void b()
   {
-    this.a.a.finish();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType == 3000) {}
+    for (Object localObject = new aplo(this.jdField_a_of_type_Aoze.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);; localObject = new apll(this.jdField_a_of_type_Aoze.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
+    {
+      aozx.a((aplh)localObject);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aozg
  * JD-Core Version:    0.7.0.1
  */

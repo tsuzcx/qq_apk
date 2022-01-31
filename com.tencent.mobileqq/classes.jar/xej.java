@@ -1,60 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.ui.RefreshView;
 
-class xej
+public class xej
+  extends Handler
 {
-  private WebSoService.WebSoState.WebSo3 jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3;
-  private String jdField_a_of_type_JavaLangString;
+  public xej(RefreshView paramRefreshView) {}
   
-  private void a(xeh paramxeh, String paramString, WebSoService.WebSoState.WebSo3 paramWebSo3)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramWebSo3 != null) && (!TextUtils.isEmpty(paramString))) {
-      bbee.a("callJs");
-    }
-    try
+    switch (paramMessage.what)
     {
-      paramxeh.callJs(paramString, new String[] { this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.a() });
-      this.jdField_a_of_type_JavaLangString = null;
+    default: 
       return;
     }
-    catch (Exception paramxeh)
-    {
-      for (;;)
-      {
-        paramxeh.printStackTrace();
-      }
-    }
-  }
-  
-  public WebSoService.WebSoState.WebSo3 a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3;
-  }
-  
-  public void a()
-  {
-    bbee.a("clearJsCallback");
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3 = null;
-  }
-  
-  public void a(xeh paramxeh, WebSoService.WebSoState.WebSo3 paramWebSo3)
-  {
-    bbee.a("setUpWebso3");
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3 = paramWebSo3;
-    a(paramxeh, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3);
-  }
-  
-  public void a(xeh paramxeh, String paramString)
-  {
-    bbee.a("registerGetData");
-    this.jdField_a_of_type_JavaLangString = paramString;
-    a(paramxeh, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xej
  * JD-Core Version:    0.7.0.1
  */

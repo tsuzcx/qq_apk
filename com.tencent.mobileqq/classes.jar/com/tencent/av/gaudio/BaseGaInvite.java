@@ -12,12 +12,12 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Timer;
-import kvq;
-import lde;
-import ldf;
-import ldg;
-import mjg;
+import lgf;
+import lnv;
+import lnw;
+import lnx;
 import mqq.app.BaseActivity;
+import muf;
 
 public abstract class BaseGaInvite
   extends BaseActivity
@@ -31,8 +31,8 @@ public abstract class BaseGaInvite
   BaseGaInvite.GetGaFaceRunnable jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = null;
   public String a;
   Timer jdField_a_of_type_JavaUtilTimer = null;
-  ldf jdField_a_of_type_Ldf = new lde(this);
-  ldg jdField_a_of_type_Ldg = new ldg(this);
+  lnw jdField_a_of_type_Lnw = new lnv(this);
+  lnx jdField_a_of_type_Lnx = new lnx(this);
   public long[] a;
   public int b;
   public long b;
@@ -67,10 +67,10 @@ public abstract class BaseGaInvite
     String str = paramString1;
     if (paramTextView != null)
     {
-      float f = paramVideoAppInterface.getApp().getResources().getDimensionPixelSize(2131166153);
-      str = mjg.a(paramVideoAppInterface.getApp(), paramString1, paramTextView, f);
+      float f = paramVideoAppInterface.getApp().getResources().getDimensionPixelSize(2131297234);
+      str = muf.a(paramVideoAppInterface.getApp(), paramString1, paramTextView, f);
     }
-    paramTextView = paramVideoAppInterface.getApp().getString(2131630132);
+    paramTextView = paramVideoAppInterface.getApp().getString(2131695819);
     int i = paramVideoAppInterface.a(paramInt, paramString2);
     paramInt = i;
     if (i == 0) {
@@ -93,10 +93,10 @@ public abstract class BaseGaInvite
       this.jdField_a_of_type_JavaUtilTimer.cancel();
       this.jdField_a_of_type_JavaUtilTimer = null;
     }
-    if (this.jdField_a_of_type_Ldg != null)
+    if (this.jdField_a_of_type_Lnx != null)
     {
-      this.jdField_a_of_type_Ldg.removeMessages(0);
-      this.jdField_a_of_type_Ldg = null;
+      this.jdField_a_of_type_Lnx.removeMessages(0);
+      this.jdField_a_of_type_Lnx = null;
     }
   }
   
@@ -123,7 +123,7 @@ public abstract class BaseGaInvite
       this.jdField_b_of_type_Long = paramIntent.getLongExtra("friendUin", 0L);
       this.jdField_b_of_type_Int = paramIntent.getIntExtra("relationType", this.jdField_b_of_type_Int);
       this.jdField_a_of_type_ArrayOfLong = paramIntent.getLongArrayExtra("memberList");
-      i = mjg.c(this.jdField_b_of_type_Int);
+      i = muf.c(this.jdField_b_of_type_Int);
     } while (i == this.jdField_a_of_type_Int);
     QLog.w(this.jdField_b_of_type_JavaLangString, 1, "processIntent, mUinType与mRelationType不匹配，mRelationType[" + this.jdField_b_of_type_Int + "], uinTpye[" + i + "], mUinType[" + this.jdField_a_of_type_Int + "]");
   }
@@ -136,7 +136,7 @@ public abstract class BaseGaInvite
       if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
         break label121;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839053);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839081);
       if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
         break label156;
       }
@@ -145,7 +145,7 @@ public abstract class BaseGaInvite
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = new BaseGaInvite.GetGaFaceRunnable(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Ldf);
+      this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = new BaseGaInvite.GetGaFaceRunnable(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Lnw);
       this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable.a(paramString);
       return;
       label121:

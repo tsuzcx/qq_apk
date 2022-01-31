@@ -1,21 +1,13 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
-class aggq
-  implements apca
+public class aggq
 {
-  aggq(aggm paramaggm) {}
-  
-  public void a()
-  {
-    this.a.e();
-  }
-  
-  public void b()
-  {
-    ((NewPhotoListActivity)this.a.a.get()).c.setClickable(true);
-  }
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

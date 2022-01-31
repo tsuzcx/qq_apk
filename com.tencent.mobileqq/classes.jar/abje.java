@@ -1,56 +1,25 @@
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.OvershootInterpolator;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.mobileqq.portal.SanHuaView;
 
 public class abje
-  implements View.OnClickListener
+  extends OvershootInterpolator
 {
-  public abje(PublicAccountListActivity paramPublicAccountListActivity) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public abje(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  
+  public float getInterpolation(float paramFloat)
   {
-    switch (paramView.getId())
+    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
     {
-    default: 
-    case 2131302804: 
-    case 2131302832: 
-    case 2131298261: 
-      Object localObject;
-      do
-      {
-        return;
-        this.a.finish();
-        return;
-        abjt.a(this.a);
-        ndn.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573A", "0X800573A", 0, 0, "", "", "", "", false);
-        paramView = (auqh)this.a.app.getManager(36);
-        localObject = paramView.a("101000.101001");
-        if ((localObject != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject).iNewFlag.get() == 1)) {
-          awqx.b(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X80060E3", "0X80060E3", 0, 0, "", "", "", "");
-        }
-        paramView.b("101000.101001");
-        return;
-        localObject = (String)paramView.getTag(-1);
-        paramView = (String)paramView.getTag(-2);
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramView))) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.w("PublicAccountListActivity", 2, "onClick - uin = " + (String)localObject + ", name = " + paramView);
-      return;
-      mqb.a(this.a.app, this.a, paramView, (String)localObject, "IvrEnterpriseDetailEngineFalse");
-      return;
-    case 2131306411: 
-      abjt.a(this.a, (String)this.a.d.getTag());
-      ndn.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573D", "0X800573D", 0, 0, "", "", "", "", false);
-      return;
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+      HongbaoShowerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity).a();
     }
-    abjt.a(this.a, (String)this.a.d.getTag());
+    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
   }
 }
 

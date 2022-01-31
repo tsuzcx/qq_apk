@@ -1,23 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
-
-public final class bahg
-  implements Parcelable.Creator<QQRecorder.RecorderParam>
+public abstract interface bahg
 {
-  public QQRecorder.RecorderParam a(Parcel paramParcel)
-  {
-    return new QQRecorder.RecorderParam(paramParcel);
-  }
-  
-  public QQRecorder.RecorderParam[] a(int paramInt)
-  {
-    return new QQRecorder.RecorderParam[paramInt];
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bahg
  * JD-Core Version:    0.7.0.1
  */

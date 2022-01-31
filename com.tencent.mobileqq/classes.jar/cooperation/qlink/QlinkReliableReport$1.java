@@ -1,18 +1,18 @@
 package cooperation.qlink;
 
-import bffu;
+import bgnl;
 import com.tencent.qphone.base.util.QLog;
 
 public class QlinkReliableReport$1
   implements Runnable
 {
-  public QlinkReliableReport$1(bffu parambffu) {}
+  public QlinkReliableReport$1(bgnl parambgnl) {}
   
   public void run()
   {
     QLog.d("QlinkReliableReport", 2, "doStopReportTimer :  on timer");
-    bffu.a(this.this$0, null);
-    bffu.g();
+    bgnl.a(this.this$0, null);
+    bgnl.g();
   }
 }
 

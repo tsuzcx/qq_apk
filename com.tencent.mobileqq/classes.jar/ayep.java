@@ -1,40 +1,39 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class ayep
-  implements begw
+class ayep
+  implements WtTicketPromise
 {
-  public ayep(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, begr parambegr, URLDrawable paramURLDrawable, String paramString1, String paramString2) {}
+  ayep(ayeo paramayeo, Runnable paramRunnable) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void Done(Ticket paramTicket)
   {
-    paramView = this.jdField_a_of_type_Begr.a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131627752).equals(paramView))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TeamWorkFileImportHandler", 2, "--- pskey invalid retry ---  ");
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      azyk.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, Long.parseLong(this.jdField_a_of_type_JavaLangString), "0", null, 20006);
+    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TeamWorkFileImportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
     }
-    for (;;)
-    {
-      awqx.b(null, "dc00899", "grp_lbs", this.jdField_a_of_type_JavaLangString, "video", "clk_rep", 0, 0, "", "", "", "");
-      break;
-      if ((TextUtils.isEmpty(this.b)) || ("0".equals(this.b))) {
-        bbmy.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, 2, ajjy.a(2131649420), 0).a();
-      } else {
-        azyk.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, 0L, this.b, null, 20006);
-      }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TeamWorkFileImportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayep
  * JD-Core Version:    0.7.0.1
  */

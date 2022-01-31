@@ -1,25 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class abff
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public abff(NotificationActivity paramNotificationActivity) {}
+  public abff(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    if (this.a.d == 1) {
+      VipUtils.a(this.a, 1, bazo.a(3));
     }
-    this.a.finish();
+    for (;;)
+    {
+      this.a.D();
+      return;
+      if (this.a.d == 2) {
+        VipUtils.b(this.a, 1, bazo.a(6));
+      } else if (this.a.d == 3) {
+        VipUtils.a(this.a, true, 12, false, bazo.a(6));
+      } else if (this.a.d == 4) {
+        bbqw.a(this.a, bazo.a(6), "SVHHZLH", 0, false, false);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abff
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
 public class qrd
-  extends omr
+  extends npu
 {
-  public qrd(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
-  {
-    super(paramString);
-  }
+  private qrd(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void a(oml paramoml)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    paramoml.f();
+    VideoFeedsPlayActivity.a("onGetVideoPlayCount isSuccess: " + paramBoolean);
+    if ((!paramBoolean) || (paramBundle == null)) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        localObject = paramBundle.getString("VALUE_VIDEO_VID");
+      } while (localObject == null);
+      localObject = VideoFeedsRecommendFragment.a(this.a).b((String)localObject);
+    } while (localObject == null);
+    ((VideoInfo)localObject).s = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
+    VideoFeedsRecommendFragment.a(this.a).b((VideoInfo)localObject);
   }
 }
 

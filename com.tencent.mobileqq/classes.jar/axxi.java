@@ -1,7 +1,16 @@
-public abstract interface axxi
-  extends axrt
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.SingleLineTextView;
+
+public class axxi
 {
-  public abstract void a(axxh paramaxxh);
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public SingleLineTextView a;
+  
+  axxi(axxh paramaxxh) {}
 }
 
 

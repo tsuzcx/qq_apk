@@ -1,7 +1,7 @@
 package cooperation.qzone.util;
 
 import android.util.Log;
-import bgfr;
+import bhoj;
 import com.tencent.qphone.base.util.QLog;
 
 public class QZLog
@@ -45,16 +45,16 @@ public class QZLog
       d(paramString, j, paramVarArgs[0].toString());
       return;
     }
-    bgfr localbgfr = bgfr.a();
+    bhoj localbhoj = bhoj.a();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localbgfr.a(paramVarArgs[paramInt]);
+      localbhoj.a(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.d(paramString, j, localbgfr.toString(), paramThrowable);
-    localbgfr.a();
+    QLog.d(paramString, j, localbhoj.toString(), paramThrowable);
+    localbhoj.a();
   }
   
   public static void d(String paramString, int paramInt, Object... paramVarArgs)
@@ -75,16 +75,16 @@ public class QZLog
       QLog.e(paramString, j, paramVarArgs[0].toString(), paramThrowable);
       return;
     }
-    bgfr localbgfr = bgfr.a();
+    bhoj localbhoj = bhoj.a();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localbgfr.a(paramVarArgs[paramInt]);
+      localbhoj.a(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.e(paramString, j, localbgfr.toString(), paramThrowable);
-    localbgfr.a();
+    QLog.e(paramString, j, localbhoj.toString(), paramThrowable);
+    localbhoj.a();
   }
   
   public static void e(String paramString, int paramInt, Object... paramVarArgs)
@@ -138,16 +138,16 @@ public class QZLog
       i(paramString, j, paramVarArgs[0].toString());
       return;
     }
-    bgfr localbgfr = bgfr.a();
+    bhoj localbhoj = bhoj.a();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localbgfr.a(paramVarArgs[paramInt]);
+      localbhoj.a(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.i(paramString, j, localbgfr.toString(), paramThrowable);
-    localbgfr.a();
+    QLog.i(paramString, j, localbhoj.toString(), paramThrowable);
+    localbhoj.a();
   }
   
   public static void i(String paramString, int paramInt, Object... paramVarArgs)
@@ -209,16 +209,16 @@ public class QZLog
       QLog.w(paramString, j, paramVarArgs[0].toString());
       return;
     }
-    bgfr localbgfr = bgfr.a();
+    bhoj localbhoj = bhoj.a();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localbgfr.a(paramVarArgs[paramInt]);
+      localbhoj.a(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.w(paramString, j, localbgfr.toString(), paramThrowable);
-    localbgfr.a();
+    QLog.w(paramString, j, localbhoj.toString(), paramThrowable);
+    localbhoj.a();
   }
   
   public static void w(String paramString, int paramInt, Object... paramVarArgs)

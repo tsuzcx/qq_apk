@@ -1,22 +1,10 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
-
-public class avuk
-  extends avuy
+public abstract interface avuk
 {
-  public avuk(GroupSearchEngine paramGroupSearchEngine, avuz paramavuz, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramavuz, paramString, paramInt);
-  }
-  
-  public avom a(List<avon> paramList, String paramString)
-  {
-    return new avoe(paramList, paramString, GroupSearchEngine.a(this.a));
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avuk
  * JD-Core Version:    0.7.0.1
  */

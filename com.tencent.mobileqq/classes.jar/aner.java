@@ -1,41 +1,88 @@
+import android.accounts.Account;
+import android.annotation.SuppressLint;
+import android.content.AbstractThreadedSyncAdapter;
+import android.content.ContentProviderClient;
+import android.content.Context;
+import android.content.SyncResult;
 import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import mqq.app.MobileQQ;
 
-class aner
-  implements MiniAppLauncher.MiniAppLaunchListener
+public class aner
+  extends AbstractThreadedSyncAdapter
 {
-  aner(aned paramaned, Bundle paramBundle, MessengerService paramMessengerService) {}
+  private Context a;
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public aner(Context paramContext, boolean paramBoolean)
   {
-    Bundle localBundle;
-    if (paramBundle != null) {
-      localBundle = new Bundle();
+    super(paramContext, paramBoolean);
+    this.a = paramContext;
+  }
+  
+  public void onPerformSync(Account paramAccount, Bundle paramBundle, String paramString, ContentProviderClient paramContentProviderClient, SyncResult paramSyncResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync");
     }
-    try
+    if (!"Success".equals(BaseApplicationImpl.sInjectResult)) {}
+    do
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("ret", paramBundle.getLong("retCode", 0L));
-      if (!paramBoolean) {
-        localJSONObject.put("msg", paramBundle.getString("errMsg"));
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramAccount = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+          if ((paramAccount == null) || (!paramAccount.isLogin()))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync | app is null or not login, " + paramAccount);
+          }
+        }
+        catch (Throwable paramAccount)
+        {
+          for (;;)
+          {
+            QLog.e("ContactSync.SyncAdapter", 1, "onPerformSync exception", paramAccount);
+            paramAccount = null;
+          }
+          try
+          {
+            ((aneh)paramAccount.getManager(41)).a();
+            return;
+          }
+          catch (Throwable paramAccount) {}
+        }
       }
-      localBundle.putString("result", localJSONObject.toString());
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync | syncAllContacts exception", paramAccount);
+  }
+  
+  @SuppressLint({"NewApi"})
+  public void onSyncCanceled()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.SyncAdapter", 2, "onSyncCanceled()");
     }
-    catch (Throwable paramBundle)
-    {
-      QLog.e("launchMiniAppById", 1, "launchMiniAppById error,", paramBundle);
+    super.onSyncCanceled();
+  }
+  
+  @SuppressLint({"NewApi"})
+  public void onSyncCanceled(Thread paramThread)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.SyncAdapter", 2, "onSyncCanceled(thread)");
     }
+    super.onSyncCanceled(paramThread);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aner
  * JD-Core Version:    0.7.0.1
  */

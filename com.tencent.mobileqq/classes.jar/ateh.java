@@ -1,13 +1,18 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
 
 public class ateh
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public List<atei> a = new ArrayList();
-  public String b;
-  public String c;
+  public ateh(RecentUserInvitePanel paramRecentUserInvitePanel) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramView);
+    }
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aisc;
+import ajfa;
 
 class BaseChatPie$97
   implements Runnable
@@ -9,7 +9,8 @@ class BaseChatPie$97
   
   public void run()
   {
-    aisc.a(this.this$0.a, "receipt_msg", false);
+    this.this$0.au();
+    ajfa.a(this.this$0.a, "receipt_msg", false);
   }
 }
 

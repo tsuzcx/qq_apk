@@ -1,12 +1,34 @@
-class awls
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import java.util.List;
+
+public abstract class awls
+  implements awus<awlv>
 {
-  public int a = -1;
-  public boolean a;
-  public int b;
+  protected QQAppInterface a;
+  
+  public awls(QQAppInterface paramQQAppInterface)
+  {
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a() {}
+  
+  public abstract void a(String paramString, List<FTSEntity> paramList);
+  
+  public void b() {}
+  
+  public abstract void b(awvg paramawvg, awut<awlu> paramawut);
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awls
  * JD-Core Version:    0.7.0.1
  */

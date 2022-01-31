@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.search.fragment;
 
-import avlu;
+import awln;
 
 public class PublicAcntSearchFragment$2$2
   implements Runnable
 {
-  public PublicAcntSearchFragment$2$2(avlu paramavlu) {}
+  public PublicAcntSearchFragment$2$2(awln paramawln) {}
   
   public void run()
   {
-    this.a.a.i_(true);
-    this.a.a.h_(false);
+    this.a.a.h_(true);
+    this.a.a.g_(false);
   }
 }
 

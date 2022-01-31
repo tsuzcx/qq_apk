@@ -1,23 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.graphics.PointF;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import java.util.List;
 
 public class ahvb
-  implements View.OnClickListener
+  implements agwt
 {
-  public ahvb(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public ahvb(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List<List<PointF>> paramList)
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.a(this.a));
-    this.a.startActivity(paramView);
+    if ((this.a.F) && (paramInt1 > 0)) {
+      NewFlowCameraActivity.c = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahvb
  * JD-Core Version:    0.7.0.1
  */

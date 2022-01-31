@@ -1,330 +1,152 @@
-import com.qq.taf.jce.HexUtil;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.ShortVideoRspExtInfo;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.ShortVideoSureRspInfo;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.VideoInfo;
-import com.tencent.mobileqq.highway.segment.HwRequest;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.mobileqq.highway.utils.BdhLogUtil;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AccountNotMatchException;
 
 public class axva
-  implements ITransactionCallback
+  implements View.OnClickListener
 {
-  public int a;
-  public Transaction a;
+  private long jdField_a_of_type_Long;
   
-  public axva(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
+  public axva(StructMsgForAudioShare paramStructMsgForAudioShare) {}
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG>TransactionListener.onFailed  erroCode: " + paramInt);
-    }
-    badi.a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_Axvt.jdField_a_of_type_Long), "segment", "index: " + this.jdField_a_of_type_Int + "<BDH_LOG> step: resp onFailed errorCoed:" + paramInt + " BdhTransId : " + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId());
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor)
+    int j = 0;
+    Resources localResources = paramView.getContext().getResources();
+    long l = SystemClock.uptimeMillis();
+    if (l - this.jdField_a_of_type_Long >= 500L)
     {
-      if (((String)paramHashMap.get("param_BDH_Cache_Diff")).equals(String.valueOf(true)))
-      {
-        BdhLogUtil.LogEvent("R", "TransactionListener onFailed : cacheIp of trans Diff!  BdhTransId : " + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId());
-        ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, true);
-      }
-      paramHashMap = (axow)this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
-      if (paramHashMap != null) {
-        paramHashMap.b();
-      }
-      if (ShortVideoUploadProcessor.b(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) == 1) {
-        return;
-      }
-      ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, 1);
-      ShortVideoUploadProcessor.c(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, paramInt);
-      paramHashMap = this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_c_of_type_JavaUtilList.iterator();
-      if (paramHashMap.hasNext()) {
-        ((Transaction)paramHashMap.next()).cancelTransaction();
+      this.jdField_a_of_type_Long = l;
+      if ((paramView.getTag() instanceof AbsShareMsg)) {
+        break label47;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_c_of_type_JavaUtilList.clear();
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqHighwaySegmentRequestAck != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().cancelAckRequest(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqHighwaySegmentRequestAck);
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqHighwaySegmentRequestAck = null;
-    }
-    if (paramArrayOfByte != null) {
-      paramHashMap = new Bdh_extinfo.ShortVideoRspExtInfo();
-    }
-    try
-    {
-      paramHashMap.mergeFrom(paramArrayOfByte);
-      if ((paramHashMap.uint32_retry_flag.has()) && (paramHashMap.uint32_retry_flag.get() != 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG>TransactionListener  onFailed. don't rollback ");
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.e != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.e.b();
-          this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.e.jdField_a_of_type_Int = 0;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.d();
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ShortVideoUploadProcessor", 2, "<BDH_LOG>TransactionListener  onFailed !", paramArrayOfByte);
-        }
-      }
-    }
-    if (ShortVideoUploadProcessor.c(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) == 2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> TransactionListener.onFailed mVideoPreUpStatus = " + ShortVideoUploadProcessor.b(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) + " mVideoRecordStatus = " + ShortVideoUploadProcessor.c(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor));
-      }
-      badi.a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_Axvt.jdField_a_of_type_Long), "onFailed", "TransactionListener.onFailed mVideoPreUpStatus = " + ShortVideoUploadProcessor.b(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) + " mVideoRecordStatus = " + ShortVideoUploadProcessor.c(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor));
-      ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor);
-    }
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    badi.a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_Axvt.jdField_a_of_type_Long), "segment", "index: " + this.jdField_a_of_type_Int + "<BDH_LOG> step: resp onSuccess BdhTransId : " + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId());
+    label47:
+    AbsShareMsg localAbsShareMsg;
+    Context localContext;
+    Object localObject2;
+    Object localObject1;
+    SongInfo localSongInfo;
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor)
+      return;
+      localAbsShareMsg = (AbsShareMsg)paramView.getTag();
+      localContext = paramView.getContext();
+      localObject2 = null;
+      try
       {
-        this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_c_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-        if (((String)paramHashMap.get("param_BDH_Cache_Diff")).equals(String.valueOf(true)))
-        {
-          BdhLogUtil.LogEvent("R", "TransactionListener onSuccess : cacheIp of trans Diff!  BdhTransId : " + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId());
-          ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, true);
-        }
-        localObject1 = (axow)this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
+        localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(localAbsShareMsg.currentAccountUin);
         if (localObject1 != null) {
-          ((axow)localObject1).b();
+          MediaPlayerManager.a((QQAppInterface)localObject1).a(true);
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cacheIp == 0) {
-          break label451;
+        if ((localAbsShareMsg == null) || (localAbsShareMsg.mMsgServiceID != 2)) {
+          break label597;
         }
-        BdhLogUtil.LogEvent("R", "TransactionListener onSuccess : trans.cacheIp is : " + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cacheIp + " ( " + HwRequest.intToIP(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cacheIp) + " ) BdhTransId : " + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId());
-        if (ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) != 0) {
-          break label546;
-        }
-        ShortVideoUploadProcessor.e(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cacheIp);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_c_of_type_JavaUtilList.iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
-        }
-        localObject2 = (Transaction)((Iterator)localObject1).next();
-        if (((Transaction)localObject2).cacheIp == 0) {
-          ((Transaction)localObject2).cacheIp = ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor);
-        }
-      }
-      if (((Transaction)localObject2).cacheIp != ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor))
-      {
-        BdhLogUtil.LogEvent("R", "TransactionListener onSuccess : cacheIp Diff!  mCache_ip:" + ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) + " ( " + HwRequest.intToIP(ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor)) + " )t.cacheIp : " + ((Transaction)localObject2).cacheIp);
-        ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, true);
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqHighwaySegmentRequestAck != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqHighwaySegmentRequestAck.cacheIp_send = ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor);
-    }
-    label546:
-    for (;;)
-    {
-      label451:
-      if ((ShortVideoUploadProcessor.jdField_a_of_type_Boolean) && (paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ShortVideoUploadProcessor", 2, "<BDH_LOG>sendFileSliceByBDH onSuccess -> extendInfo is not null");
-        }
-        try
+        localObject2 = (StructMsgForAudioShare)localAbsShareMsg;
+        if (QQPlayerService.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare))
         {
-          localObject1 = new Bdh_extinfo.ShortVideoRspExtInfo();
-          ((Bdh_extinfo.ShortVideoRspExtInfo)localObject1).mergeFrom(paramArrayOfByte);
-          if (!((Bdh_extinfo.ShortVideoRspExtInfo)localObject1).msg_shortvideo_sure_rsp.has())
+          QQPlayerService.c(localContext);
+          paramView.setContentDescription(localResources.getString(2131690274));
+          return;
+        }
+      }
+      catch (AccountNotMatchException localAccountNotMatchException)
+      {
+        for (;;)
+        {
+          localObject1 = localObject2;
+          if (QLog.isDevelopLevel())
           {
-            if ((this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_c_of_type_JavaUtilList.isEmpty()) && (ShortVideoUploadProcessor.b(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) == 4)) {
-              this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.f(5);
-            }
-            return;
-            if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cacheIp != ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor))
-            {
-              BdhLogUtil.LogEvent("R", "TransactionListener onSuccess : cacheIp Diff!  mCache_ip:" + ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) + " ( " + HwRequest.intToIP(ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor)) + " )");
-              ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, true);
-            }
-          }
-          else
-          {
-            paramArrayOfByte = new Bdh_extinfo.ShortVideoSureRspInfo();
-            paramArrayOfByte.mergeFrom(((Bdh_extinfo.ShortVideoRspExtInfo)localObject1).msg_shortvideo_sure_rsp.toByteArray());
-            if (!paramArrayOfByte.msg_videoinfo.has())
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("ShortVideoUploadProcessor", 2, "<BDH_LOG>sendFileSliceByBDH onSuccess -> get rspInfo error : rspInfo.msg_videoinfo is null");
-              }
-              this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.f(4);
-              return;
-            }
-            localObject1 = (Bdh_extinfo.VideoInfo)paramArrayOfByte.msg_videoinfo.get();
-            if (!((Bdh_extinfo.VideoInfo)localObject1).bytes_bin_md5.has())
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("ShortVideoUploadProcessor", 2, "<BDH_LOG>sendFileSliceByBDH onSuccess -> get rspInfo error  : videoInfo.bytes_bin_md5 is null");
-              }
-              this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.f(4);
-              return;
-            }
-            localObject2 = ((Bdh_extinfo.VideoInfo)localObject1).bytes_bin_md5.get().toByteArray();
-            int i = ((Bdh_extinfo.VideoInfo)localObject1).uint32_size.get();
-            int j = ((Bdh_extinfo.VideoInfo)localObject1).uint32_time.get();
-            int k = ((Bdh_extinfo.VideoInfo)localObject1).uint32_format.get();
-            badi.a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_Axvt.jdField_a_of_type_Long), "svrcomp_r", "TransactionListener.onSuccess -> get MD5 from Server success!  MD5:" + HexUtil.bytes2HexStr((byte[])localObject2));
-            this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_Axvt.f = HexUtil.bytes2HexStr((byte[])localObject2);
-            this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_Axvt.f;
-            if (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap != null)
-            {
-              this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_fileMD5", this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_Axvt.f);
-              this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_videoDuration", String.valueOf(j));
-              this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_fileFormat", String.valueOf(k));
-              if (paramArrayOfByte.uint32_merge_cost.has())
-              {
-                k = paramArrayOfByte.uint32_merge_cost.get();
-                this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_cost_s_comp", String.valueOf(k));
-              }
-              this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_cost_s_store", String.valueOf(paramHashMap.get("tc_p:")));
-            }
-            this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_Axvt.i = ShortVideoUtils.a((MessageForShortVideo)this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_Axvt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, "mp4");
-            this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.f = paramArrayOfByte.bytes_fileid.get().toStringUtf8();
-            if (QLog.isColorLevel()) {
-              QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG>sendFileSliceByBDH onSuccess mResid = " + this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.f);
-            }
-            this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.q = i;
-            this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_c_of_type_Int = j;
-            this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.e.b();
-            this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.e.jdField_a_of_type_Int = 1;
-            if (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-            {
-              if (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_c_of_type_JavaUtilList.isEmpty()) {
-                break label1402;
-              }
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_c_of_type_JavaUtilList.iterator();
-              while (((Iterator)localObject1).hasNext()) {
-                ((Transaction)((Iterator)localObject1).next()).cancelTransaction();
-              }
-            }
-            if (!this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_c_of_type_JavaUtilList.isEmpty()) {
-              break label1386;
-            }
+            QLog.d("StructMsg", 4, localAccountNotMatchException.getStackTrace().toString());
+            localObject1 = localObject2;
           }
         }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        if ((localObject1 != null) && (((QQAppInterface)localObject1).c()))
         {
           if (QLog.isColorLevel()) {
-            QLog.e("ShortVideoUploadProcessor", 2, "sendFileSliceByBDH onSuccess ", paramArrayOfByte);
+            QLog.i("QQPlayerService", 2, "Video Chatting is going on, don't play music.");
+          }
+        }
+        else
+        {
+          localSongInfo = new SongInfo();
+          localSongInfo.a = ((StructMsgForAudioShare)localObject2).mContentSrc;
+          localSongInfo.jdField_b_of_type_JavaLangString = ((StructMsgForAudioShare)localObject2).mContentTitle;
+          localSongInfo.c = ((StructMsgForAudioShare)localObject2).mContentSummary;
+          localSongInfo.d = ((StructMsgForAudioShare)localObject2).mContentCover;
+          localSongInfo.e = ((StructMsgForAudioShare)localObject2).mMsgUrl;
+          if ("com.tencent.radio".equals(localAbsShareMsg.mSource_A_ActionData)) {
+            break label305;
           }
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> TransactionListener.onSuccess , mTransactions.isEmpty() = true,  mVideoPreUpStatus = " + ShortVideoUploadProcessor.b(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) + " mVideoRecordStatus = " + ShortVideoUploadProcessor.c(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) + " mEncodeFinish = " + this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + " mSendClicked = " + this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-    }
-    if (ShortVideoUploadProcessor.c(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.t();
-    }
-    if ((!ShortVideoUploadProcessor.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (ShortVideoUploadProcessor.b(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) == 0))
+    label305:
+    int i;
+    if (("1103394134".equals(Long.valueOf(localAbsShareMsg.mSourceAppid))) || ("企鹅FM".equals(localAbsShareMsg.mSourceName)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqHighwayProtocolBdh_extinfo$PicInfo, this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_JavaUtilList);
-      ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, 3);
+      localSongInfo.jdField_b_of_type_Int = 6;
+      i = 0;
+      j = 1;
     }
-    label1386:
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_c_of_type_JavaUtilList.clear();
-    label1402:
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
-    }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_Axqf;
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_Axqf;
-    ShortVideoUploadProcessor localShortVideoUploadProcessor2 = this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor;
-    long l = this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.q;
-    localShortVideoUploadProcessor2.s = l;
-    ((axqf)localObject2).e = l;
-    ((axqf)localObject1).jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.d(1007);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.b(false);
-    ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, true, paramArrayOfByte.uint32_merge_cost.get(), String.valueOf(paramHashMap.get("tc_p:")));
-  }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt)
-  {
     for (;;)
     {
-      Transaction localTransaction;
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor)
+      Intent localIntent = new Intent(localContext, MusicPlayerActivity.class);
+      if (((j != 0) || (i != 0)) && ("web".equals(localAbsShareMsg.mMsgAction)))
       {
-        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor;
-        ((ShortVideoUploadProcessor)localObject1).s += paramInt;
-        this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_Axqf.e = this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.s;
-        if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cacheIp == 0) {
-          break label317;
+        localIntent.putExtra("key_isReadModeEnabled", true);
+        localObject2 = localAbsShareMsg.mMsgUrl;
+        localObject1 = localObject2;
+        if (j != 0) {
+          localObject1 = (String)localObject2 + "&player=mqq";
         }
-        BdhLogUtil.LogEvent("R", "TransactionListener onUpdateProgress : trans.cacheIp is : " + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cacheIp + " ( " + HwRequest.intToIP(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cacheIp) + " ) BdhTransId : " + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId());
-        if (ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) != 0) {
-          break label365;
-        }
-        ShortVideoUploadProcessor.e(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cacheIp);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_c_of_type_JavaUtilList.iterator();
-        if (!((Iterator)localObject1).hasNext()) {
+        localIntent.putExtra("url", (String)localObject1);
+        localIntent.putExtra("param_force_internal_browser", true);
+        localIntent.putExtra("isAppShare", true);
+        localIntent.putExtra("appShareID", bbbo.a(localAbsShareMsg.mSourceAppid));
+        localIntent.putExtra("fromAio", true);
+        sgj.a(localIntent, localAbsShareMsg.mMsgUrl);
+      }
+      QQPlayerService.a(localIntent);
+      localObject2 = QQPlayerService.a();
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = new Bundle();
+        QQPlayerService.a((Bundle)localObject1);
+      }
+      ((Bundle)localObject1).putString("KEY_SOURCE_NAME", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare.getSourceName());
+      QQPlayerService.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare);
+      QQPlayerService.a(localContext, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare.getToken(), localSongInfo);
+      paramView.setContentDescription(localResources.getString(2131690272));
+      return;
+      if (("com.tencent.qqmusic".equals(localAbsShareMsg.mSource_A_ActionData)) || ("100497308".equals(Long.valueOf(localAbsShareMsg.mSourceAppid))) || ("QQ音乐".equals(localAbsShareMsg.mSourceName)))
+      {
+        localSongInfo.jdField_b_of_type_Int = 4;
+        i = 1;
+        continue;
+        label597:
+        if (!QLog.isColorLevel()) {
           break;
         }
-        localTransaction = (Transaction)((Iterator)localObject1).next();
-        if (localTransaction.cacheIp == 0) {
-          localTransaction.cacheIp = ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor);
-        }
+        QLog.d("QQPlayerService", 2, "msg is null or serviceId not audio_share");
+        return;
       }
-      if (localTransaction.cacheIp != ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor))
-      {
-        BdhLogUtil.LogEvent("R", "TransactionListener onUpdateProgress : cacheIp Diff!  mCache_ip:" + ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) + " ( " + HwRequest.intToIP(ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor)) + " )t.cacheIp : " + localTransaction.cacheIp);
-        ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, true);
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqHighwaySegmentRequestAck != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqHighwaySegmentRequestAck.cacheIp_send = ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor);
-    }
-    for (;;)
-    {
-      label317:
-      if ((this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.s < this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.q) && (!this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.o) && (!this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.k)) {
-        this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.i();
-      }
-      return;
-      label365:
-      if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cacheIp != ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor))
-      {
-        BdhLogUtil.LogEvent("R", "TransactionListener onUpdateProgress : cacheIp Diff!  mCache_ip:" + ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) + " ( " + HwRequest.intToIP(ShortVideoUploadProcessor.d(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor)) + " )");
-        ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, true);
-      }
+      i = 0;
     }
   }
 }

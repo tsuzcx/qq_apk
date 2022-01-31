@@ -1,8 +1,18 @@
-import android.view.View;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
 
 public class rvl
+  extends AnimatorListenerAdapter
 {
-  private View a;
+  public rvl(TickerView paramTickerView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    TickerView.a(this.a).a();
+    TickerView.a(this.a);
+    this.a.invalidate();
+  }
 }
 
 

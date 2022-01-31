@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.limitchat;
 
-import anod;
+import aoeo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 
@@ -11,9 +11,9 @@ public final class LimitChatUtil$2
   
   public void run()
   {
-    anod localanod = (anod)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127);
-    if (localanod != null) {
-      localanod.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    aoeo localaoeo = (aoeo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127);
+    if (localaoeo != null) {
+      localaoeo.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     }
   }
 }

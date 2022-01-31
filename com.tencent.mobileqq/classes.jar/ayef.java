@@ -1,21 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ayef
-  implements behj
+final class ayef
+  implements DialogInterface.OnClickListener
 {
-  public ayef(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  ayef(bbgg parambbgg) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopAvatarWallEditActivity.a(this.a);
-    return true;
+    if (this.a.isShowing()) {
+      this.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayef
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,17 @@
-public class biki
+import dov.com.qq.im.capture.view.CountDownView;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+
+class biki
+  implements bkva
 {
-  private int jdField_a_of_type_Int;
-  private bikd jdField_a_of_type_Bikd = new bikc();
-  private int b;
+  biki(bikh parambikh, bioz parambioz) {}
   
-  public bikg a()
+  public void a()
   {
-    return new bikg(this, null);
-  }
-  
-  public biki a(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_Int = paramInt;
+    if (bikc.a(this.jdField_a_of_type_Bikh.a) != null) {
+      bikc.a(this.jdField_a_of_type_Bikh.a).a(this.jdField_a_of_type_Bioz.a(), false);
     }
-    return this;
-  }
-  
-  public biki a(bikd parambikd)
-  {
-    if (parambikd != null) {
-      this.jdField_a_of_type_Bikd = parambikd;
-    }
-    return this;
-  }
-  
-  public biki b(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.b = paramInt;
-    }
-    return this;
+    bikc.a(this.jdField_a_of_type_Bikh.a).setTouchEnable(false);
   }
 }
 

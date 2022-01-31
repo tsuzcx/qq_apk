@@ -1,47 +1,44 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class shj
-  implements sho
+final class shj
+  implements DialogInterface.OnClickListener
 {
-  private shj(shg paramshg) {}
+  shj(int paramInt1, int paramInt2, Runnable paramRunnable) {}
   
-  public void a(shp paramshp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQStoryContext.a();
-    QQAppInterface localQQAppInterface = QQStoryContext.a();
-    awey localawey = aweg.a(2, 2);
-    MessageForShortVideo localMessageForShortVideo = paramshp.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-    awej localawej = localMessageForShortVideo.getDownloadInfo(localawey.b);
-    if (paramshp.jdField_a_of_type_Int == 2)
+    paramInt = 1;
+    bhvh.a("readinjoy_user_data_switch", Integer.valueOf(1));
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new JSONObject();
+    try
     {
-      localawej.i = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
-      localawej.a(localMessageForShortVideo.istroop, 1);
+      if (this.jdField_a_of_type_Int == 1) {
+        paramInt = 0;
+      }
+      paramDialogInterface.put("click_src", paramInt);
+      paramDialogInterface.put("user_data_alert_interval", this.b);
+      paramDialogInterface.put("click_opt", 2);
     }
-    for (;;)
+    catch (JSONException localJSONException)
     {
-      localawey.a(localawej);
-      localawey.a(new shk(this, paramshp.jdField_a_of_type_JavaLangString));
-      aweg.a(localawey, localQQAppInterface);
-      urk.b("AsyncFileDownloader", String.format("start download with shortvideo downloader, task = %s", new Object[] { paramshp }));
-      return;
-      localawej.h = ShortVideoUtils.a(localMessageForShortVideo, "mp4");
-      localawej.a(localMessageForShortVideo.istroop, 0);
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+    noo.a(null, "", "0X800A809", "0X800A809", 0, 0, "", "", "", paramDialogInterface.toString(), false);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public void b(shp paramshp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     shj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,136 @@
-import AccostSvc.MsgItem;
-import java.util.ArrayList;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.util.Printer;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqMessageQueue;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
-class ajzw
+public class ajzw
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<MsgItem> a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public long c;
-  public long d;
-  public long e;
+  public static int a;
+  private static AbstractUnifiedMonitor.ThreadMonitorCallback a;
   
-  public ajzw(long paramLong1, int paramInt, long paramLong2, long paramLong3, ArrayList<MsgItem> paramArrayList, String paramString)
+  static
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    jdField_a_of_type_Int = 100;
+    jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback = new ajzx();
   }
   
-  public ajzw(long paramLong, ArrayList<MsgItem> paramArrayList)
+  public static void a()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(0)) {
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(0);
+    UnifiedMonitor.a().setMonitoredThread(0, Looper.getMainLooper().getThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
+    ajzy localajzy = new ajzy(0);
+    localajzy.a(i, false);
+    Looper.getMainLooper().setMessageLogging(localajzy);
+    MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(localajzy);
+  }
+  
+  public static void b()
+  {
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(14)) {
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(14);
+    UnifiedMonitor.a().setMonitoredThread(14, Looper.getMainLooper().getThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
+    ajzy localajzy = new ajzy(14);
+    localajzy.a(i, false);
+    Looper.getMainLooper().setMessageLogging(localajzy);
+  }
+  
+  public static void c()
+  {
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(4)) {
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(4);
+    UnifiedMonitor.a().setMonitoredThread(4, ThreadManager.getSubThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
+    akhi localakhi = new akhi(4, "SubLooper");
+    localakhi.a(i, false);
+    ThreadManager.getSubThreadLooper().setMessageLogging(localakhi);
+  }
+  
+  public static void d()
+  {
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(18)) {
+      return;
+    }
+    Object localObject1 = MsfCore.sCore;
+    if (localObject1 == null)
+    {
+      QLog.e("AutoMonitor", 1, "msf core hasnot init");
+      return;
+    }
+    Object localObject2 = ((MsfCore)localObject1).getNetworkHandlerThread();
+    if (localObject2 == null)
+    {
+      QLog.e("AutoMonitor", 1, "network thread hasnot init");
+      return;
+    }
+    localObject1 = ((HandlerThread)localObject2).getLooper();
+    if (localObject1 == null)
+    {
+      QLog.e("AutoMonitor", 1, "network thread has not start");
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(18);
+    UnifiedMonitor.a().setMonitoredThread(18, (Thread)localObject2, jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
+    localObject2 = new akhi(18, "msf-network");
+    ((akhi)localObject2).a(i, false);
+    ((Looper)localObject1).setMessageLogging((Printer)localObject2);
+  }
+  
+  public static void e()
+  {
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(13)) {
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(13);
+    UnifiedMonitor.a().setMonitoredThread(13, ThreadManager.getRecentThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
+    akhi localakhi = new akhi(13, "RecentLooper");
+    localakhi.a(i, false);
+    ThreadManager.getRecentThreadLooper().setMessageLogging(localakhi);
+  }
+  
+  public static void f()
+  {
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(5)) {
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(5);
+    UnifiedMonitor.a().setMonitoredThread(5, ThreadManager.getFileThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
+    akhi localakhi = new akhi(5, "FileLooper");
+    localakhi.a(i, false);
+    ThreadManager.getFileThreadLooper().setMessageLogging(localakhi);
+  }
+  
+  public static void g()
+  {
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(6))
+    {
+      com.tencent.mobileqq.app.ThreadExcutor.sLooperMonitorSwitch = false;
+      return;
+    }
+    com.tencent.mobileqq.app.ThreadExcutor.sLooperMonitorSwitch = true;
+    com.tencent.mobileqq.app.ThreadExcutor.sThreshTime = UnifiedMonitor.a().getThreshold(6);
+  }
+  
+  public static void h()
+  {
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(19)) {
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(19);
+    UnifiedMonitor.a().setMonitoredThread(19, Looper.getMainLooper().getThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
+    ajzy localajzy = new ajzy(19);
+    localajzy.a(i, false);
+    Looper.getMainLooper().setMessageLogging(localajzy);
   }
 }
 

@@ -1,16 +1,50 @@
-import android.app.Activity;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.gamecenter.view.QQGameStatusView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqtj
   implements View.OnClickListener
 {
-  public aqtj(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
+  public aqtj(QQGameStatusView paramQQGameStatusView) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
+    if ((QQGameStatusView.a(this.a) == null) || (QQGameStatusView.a(this.a))) {}
+    do
+    {
+      do
+      {
+        return;
+        if (QQGameStatusView.a(this.a) == 1)
+        {
+          QQGameStatusView.a(this.a).b(QQGameStatusView.a(this.a));
+          return;
+        }
+        if (QQGameStatusView.a(this.a) == 2)
+        {
+          QQGameStatusView.a(this.a).a(QQGameStatusView.a(this.a));
+          return;
+        }
+        if (QQGameStatusView.a(this.a) == 3)
+        {
+          QQGameStatusView.a(this.a).c(QQGameStatusView.a(this.a));
+          return;
+        }
+        if (QQGameStatusView.a(this.a) == 5)
+        {
+          QQGameStatusView.a(this.a).d(QQGameStatusView.a(this.a));
+          return;
+        }
+      } while (QQGameStatusView.a(this.a) != 6);
+      if (!TextUtils.isEmpty(QQGameStatusView.b(this.a)))
+      {
+        QQGameStatusView.a(this.a).a(QQGameStatusView.a(this.a), QQGameStatusView.b(this.a));
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("QQGameStatusView", 1, "downloadFilePath is null,install faile");
   }
 }
 

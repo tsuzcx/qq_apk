@@ -1,6 +1,6 @@
 public abstract interface qju
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2);
+  public abstract void a(qjl paramqjl);
 }
 
 

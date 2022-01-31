@@ -1,20 +1,10 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 
-public class pbj
-  extends pba
+public abstract interface pbj
 {
-  public pbj(NativeCommentView paramNativeCommentView, int paramInt1, int paramInt2, int paramInt3, ArticleInfo paramArticleInfo)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  public abstract void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo);
   
-  public void onClick(View paramView)
-  {
-    obz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.a.a.a(), 4, false, 7, false);
-    qoe.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.a.a.e());
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

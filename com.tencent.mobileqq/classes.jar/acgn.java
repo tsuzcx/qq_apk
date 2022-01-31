@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import java.util.Comparator;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class acgn
-  implements Comparator<acia>
+  extends ayvz
 {
-  public acgn(ActivateFriendActivity paramActivateFriendActivity) {}
+  public acgn(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public int a(acia paramacia1, acia paramacia2)
+  public void handleMessage(Message paramMessage)
   {
-    long l = paramacia2.a - paramacia1.a;
-    if (l > 0L) {
-      return 1;
+    int i = paramMessage.what;
+    if ((i == 1003) || (i == 2003)) {
+      this.a.c();
     }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acgn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,21 @@
-import android.content.Intent;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
-import com.tencent.mobileqq.data.MayKnowRecommend;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
 import java.util.List;
 
 public class abnu
-  implements aibl
+  implements View.OnClickListener
 {
-  public abnu(RecommendFriendActivity paramRecommendFriendActivity) {}
+  public abnu(NearbyActivity paramNearbyActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    RecommendFriendActivity.a(this.a).setVisibility(0);
-  }
-  
-  public void a(String paramString)
-  {
-    RecommendFriendActivity.a(this.a, paramString);
-  }
-  
-  public void a(List<MayKnowRecommend> paramList)
-  {
-    Intent localIntent = this.a.getIntent();
-    int i = localIntent.getIntExtra("EntranceId", 0);
-    RecommendFriendActivity.a(this.a, localIntent, i, paramList);
-  }
-  
-  public void b()
-  {
-    RecommendFriendActivity.a(this.a).setVisibility(8);
+    int i = 0;
+    while (i < this.a.a.size())
+    {
+      ((View.OnClickListener)this.a.a.get(i)).onClick(paramView);
+      i += 1;
+    }
   }
 }
 

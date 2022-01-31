@@ -1,20 +1,20 @@
 package com.tencent.av.business.manager;
 
-import bace;
-import kwx;
-import kwy;
+import bbdj;
+import lhm;
+import lhn;
 
 public class Checker$1
   implements Runnable
 {
-  public Checker$1(kwx paramkwx, kwy paramkwy, String paramString) {}
+  public Checker$1(lhm paramlhm, lhn paramlhn, String paramString) {}
   
   public void run()
   {
-    if (bace.a(this.jdField_a_of_type_Kwy.jdField_a_of_type_JavaLangString)) {
-      this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Kwy);
+    if (bbdj.a(this.jdField_a_of_type_Lhn.jdField_a_of_type_JavaLangString)) {
+      this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Lhn);
     }
-    kwx.a(this.this$0);
+    lhm.a(this.this$0);
   }
 }
 

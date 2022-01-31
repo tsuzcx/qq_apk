@@ -1,47 +1,154 @@
-import android.os.SystemClock;
-import android.util.AndroidRuntimeException;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.manager.Manager;
+import org.json.JSONArray;
+import org.json.JSONException;
 
-public abstract class akgd
+public class akgd
+  implements Manager
 {
-  public boolean askGPS;
-  protected String callerRoute;
-  protected long geoCacheInterval;
-  protected long globalCacheInterval;
-  public boolean goonListener;
-  private boolean isRemoved;
-  public int level;
-  protected long levelCacheInterval;
-  public long maxCacheInterval;
-  protected int maxFailCount = 3;
-  public boolean reqLocation;
-  private boolean requesting;
-  public long sTime;
-  public String tag;
-  public boolean uiThread;
+  public static final String a;
+  public static boolean a;
+  private QQAppInterface a;
   
-  public akgd(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  static
   {
-    if ((paramInt == 0) || (paramInt == 1) || (paramInt == 3) || (paramInt == 4))
-    {
-      this.tag = paramString;
-      this.level = paramInt;
-      this.askGPS = paramBoolean2;
-      this.reqLocation = paramBoolean1;
-      this.goonListener = paramBoolean4;
-      this.uiThread = paramBoolean3;
-      this.maxCacheInterval = paramLong;
-      this.sTime = SystemClock.elapsedRealtime();
-      return;
-    }
-    throw new AndroidRuntimeException("invalid level=" + paramInt);
+    jdField_a_of_type_JavaLangString = akgd.class.getSimpleName();
   }
   
-  public void onConsecutiveFailure(int paramInt1, int paramInt2) {}
+  public akgd() {}
   
-  public abstract void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo);
+  public akgd(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
   
-  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
+  private static String a()
+  {
+    return (String)bhvh.a("search_keyword_list", "");
+  }
+  
+  private static void b(String paramString)
+  {
+    jdField_a_of_type_Boolean = true;
+    bhvh.a("search_keyword_list", paramString);
+  }
+  
+  public ArrayList<String> a()
+  {
+    localArrayList = new ArrayList();
+    Object localObject = a();
+    if (localObject != null) {
+      try
+      {
+        localObject = new JSONArray((String)localObject);
+        int i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          localArrayList.add(((JSONArray)localObject).optString(i));
+          i += 1;
+        }
+        return localArrayList;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public void a()
+  {
+    b("");
+  }
+  
+  public void a(int paramInt)
+  {
+    ArrayList localArrayList = a();
+    if ((localArrayList != null) && (paramInt < localArrayList.size())) {
+      localArrayList.remove(paramInt);
+    }
+    JSONArray localJSONArray = new JSONArray();
+    paramInt = 0;
+    while (paramInt < localArrayList.size())
+    {
+      localJSONArray.put(localArrayList.get(paramInt));
+      paramInt += 1;
+    }
+    b(localJSONArray.toString());
+  }
+  
+  public void a(String paramString)
+  {
+    int i = 0;
+    if (TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "addSearchHistory key word is null");
+      }
+      return;
+    }
+    ArrayList localArrayList = a();
+    if (localArrayList.size() >= 10) {
+      localArrayList.remove(localArrayList.size() - 1);
+    }
+    localArrayList.remove(paramString);
+    localArrayList.add(0, paramString);
+    paramString = new JSONArray();
+    while (i < localArrayList.size())
+    {
+      paramString.put(localArrayList.get(i));
+      i += 1;
+    }
+    b(paramString.toString());
+  }
+  
+  public void a(JSONArray paramJSONArray)
+  {
+    int j = 0;
+    if (paramJSONArray == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "addAllSearchHistory key word is null");
+      }
+      return;
+    }
+    ArrayList localArrayList2 = a();
+    ArrayList localArrayList1 = localArrayList2;
+    if (localArrayList2 == null) {
+      localArrayList1 = new ArrayList();
+    }
+    localArrayList2 = new ArrayList();
+    int i = 0;
+    while (i < paramJSONArray.length())
+    {
+      String str = paramJSONArray.optString(i);
+      if (!TextUtils.isEmpty(str))
+      {
+        localArrayList2.add(str);
+        localArrayList1.remove(str);
+      }
+      i += 1;
+    }
+    localArrayList2.addAll(localArrayList1);
+    paramJSONArray = new JSONArray();
+    if (localArrayList2.size() > 10) {
+      i = 10;
+    }
+    while (j < i)
+    {
+      paramJSONArray.put(localArrayList2.get(j));
+      j += 1;
+      continue;
+      i = localArrayList2.size();
+    }
+    b(paramJSONArray.toString());
+  }
+  
+  public void onDestroy() {}
 }
 
 

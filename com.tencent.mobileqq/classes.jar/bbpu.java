@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import com.tencent.mobileqq.vas.PendantInfo;
 
 public class bbpu
-  implements asbe
 {
-  public bbpu(NavBarAIO paramNavBarAIO) {}
+  public String a;
   
-  public void a()
+  public bbpu(PendantInfo paramPendantInfo, String paramString)
   {
-    NavBarAIO.a(this.a);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbpu
  * JD-Core Version:    0.7.0.1
  */

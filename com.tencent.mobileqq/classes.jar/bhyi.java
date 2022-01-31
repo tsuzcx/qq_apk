@@ -1,26 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
-import dov.com.qq.im.ptv.LightWeightProgress;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.ar.util.VipARUtils.4;
 
-class bhyi
-  implements View.OnClickListener
+public class bhyi
+  implements ModuleDownloadListener
 {
-  bhyi(bhyg parambhyg) {}
+  public bhyi(VipARUtils.4 param4) {}
   
-  public void onClick(View paramView)
+  public void onDownloadCanceled(String paramString)
   {
-    this.a.a.jdField_a_of_type_DovComQqImPtvLightWeightProgress.setStatus(true);
-    this.a.a.jdField_a_of_type_DovComQqImPtvBaseButton.setScaleX(1.0F);
-    this.a.a.jdField_a_of_type_DovComQqImPtvBaseButton.setScaleY(1.0F);
-    this.a.a.j();
-    aquv.b();
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("libTar.so")) {
+      return;
+    }
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bhye.c(), " onDownloadSucceed = ", bhye.d() });
+    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bhye.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhyi
  * JD-Core Version:    0.7.0.1
  */

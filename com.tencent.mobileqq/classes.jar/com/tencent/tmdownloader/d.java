@@ -1,7 +1,7 @@
 package com.tencent.tmdownloader;
 
 import android.content.Context;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 
 class d
   implements Runnable
@@ -10,7 +10,7 @@ class d
   
   public void run()
   {
-    ac.c("BaseIPCClient", "unInitTMAssistantDownloadSDK,clientKey:" + this.a.mClientKey + ",mServiceInterface:" + this.a.mServiceInterface + ",threadId:" + Thread.currentThread().getId());
+    ab.c("BaseIPCClient", "unInitTMAssistantDownloadSDK,clientKey:" + this.a.mClientKey + ",mServiceInterface:" + this.a.mServiceInterface + ",threadId:" + Thread.currentThread().getId());
     if ((this.a.mServiceInterface != null) && (this.a.mServiceCallback != null)) {}
     try
     {

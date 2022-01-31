@@ -1,10 +1,10 @@
 package dov.com.qq.im.capture.control;
 
 import android.text.TextUtils;
-import atmp;
-import atmr;
-import bhfc;
-import bhfm;
+import aukn;
+import aukp;
+import bizu;
+import bjae;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -25,7 +25,7 @@ import org.json.JSONObject;
 public class GetAllFullMusicInfoTask
   extends ParallGroup
 {
-  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)bhfm.a(2);
+  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)bjae.a(2);
   private List<FlowMusic> jdField_a_of_type_JavaUtilList;
   private List<FlowMusic> b = new ArrayList();
   private String jdField_c_of_type_JavaLangString;
@@ -143,7 +143,7 @@ public class GetAllFullMusicInfoTask
       localObject1 = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a.a();
       try
       {
-        ((atmr)localObject1).a();
+        ((aukp)localObject1).a();
         Iterator localIterator = this.b.iterator();
         while (localIterator.hasNext())
         {
@@ -153,13 +153,13 @@ public class GetAllFullMusicInfoTask
       }
       finally
       {
-        ((atmr)localObject1).b();
+        ((aukp)localObject1).b();
       }
-      ((atmr)localObject1).b();
+      ((aukp)localObject1).b();
       this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(4, true, this.b);
     }
     Object localObject1 = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager;
-    QIMMusicConfigManager.b(bhfc.a().getCurrentAccountUin());
+    QIMMusicConfigManager.b(bizu.a().getCurrentAccountUin());
   }
   
   public int a()

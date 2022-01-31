@@ -1,50 +1,26 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class afdv
-  implements begw
+public class afdv
+  implements View.OnClickListener
 {
-  afdv(afdq paramafdq, ajhf paramajhf, DiscussionInfo paramDiscussionInfo, boolean paramBoolean, begr parambegr) {}
+  public afdv(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_Ajhf;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo;
-    boolean bool;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      bool = true;
-      paramView.a((DiscussionInfo)localObject, bool);
-      this.jdField_a_of_type_Begr.e();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label154;
-      }
-      paramInt = 1;
-      label43:
-      paramView = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.uin;
-      ((ajex)this.jdField_a_of_type_Afdq.a.a(22)).notifyUI(18, true, new Object[] { paramView, Integer.valueOf(paramInt), Integer.valueOf(0), null });
-      localObject = new awrb(this.jdField_a_of_type_Afdq.a).a("dc00899").b("Grp_Dis_set").c("Grp_contactlist");
-      if (!this.jdField_a_of_type_Boolean) {
-        break label159;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener");
     }
-    label154:
-    label159:
-    for (paramView = "Clk_unstick";; paramView = "Clk_stick")
-    {
-      ((awrb)localObject).d(paramView).a();
-      return;
-      bool = false;
-      break;
-      paramInt = 0;
-      break label43;
-    }
+    axqw.b(null, "dc00899", "Grp_find_new", "", "grptab", "location_set_exp", 0, 0, "", "", "", "");
+    this.a.getActivity().requestPermissions(new afdw(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afdv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,29 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePanel;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vby
-  implements AdapterView.OnItemClickListener
+  extends QQUIEventReceiver<vbd, tzw>
 {
-  public vby(FacePanel paramFacePanel) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public vby(@NonNull vbd paramvbd)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setCurrentItem(paramInt);
-    if (DoodleLayout.a) {}
-    for (paramAdapterView = "2";; paramAdapterView = "1")
+    super(paramvbd);
+  }
+  
+  public void a(@NonNull vbd paramvbd, @NonNull tzw paramtzw)
+  {
+    veg.a(this.TAG, "play video groupId=%s, %s", paramtzw.jdField_a_of_type_Two, paramtzw.b);
+    if ((vbd.a(paramvbd).equals(paramtzw.jdField_a_of_type_JavaLangString)) && ((paramtzw.jdField_a_of_type_Two instanceof twd)))
     {
-      DoodleLayout.a("change_face", 0, 0, new String[] { paramAdapterView });
-      if (this.a.jdField_a_of_type_Vci != null)
-      {
-        paramAdapterView = this.a.jdField_a_of_type_Vci.a(paramInt);
-        if ((paramAdapterView != null) && ((paramAdapterView instanceof vbx)))
-        {
-          urq.a("0X80076C7", "", "", ((vbx)paramAdapterView).a, "");
-          urq.a("0X80075DC", ((vbx)paramAdapterView).a);
-        }
+      uvs localuvs = ((twd)paramtzw.jdField_a_of_type_Two).a;
+      if (localuvs != null) {
+        paramvbd.a(localuvs.jdField_a_of_type_JavaLangString, paramtzw.b, true);
       }
-      if (paramInt == 1)
-      {
-        urq.a("0X80076CC");
-        urq.b("0X80075E1");
-      }
-      return;
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tzw.class;
   }
 }
 

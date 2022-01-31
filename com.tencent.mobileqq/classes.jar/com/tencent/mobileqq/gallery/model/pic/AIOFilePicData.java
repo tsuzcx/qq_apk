@@ -21,10 +21,14 @@ public class AIOFilePicData
   public long f;
   public String f;
   public boolean f;
+  public int g;
   public String g;
   public boolean g;
+  public int h;
   public String h;
   public boolean h;
+  public int i;
+  public String i;
   
   public AIOFilePicData()
   {
@@ -60,6 +64,10 @@ public class AIOFilePicData
     this.jdField_f_of_type_Long = Long.valueOf(paramParcel.readString()).longValue();
     this.jdField_h_of_type_Boolean = Boolean.valueOf(paramParcel.readString()).booleanValue();
     this.jdField_h_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_i_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_g_of_type_Int = paramParcel.readInt();
+    this.jdField_h_of_type_Int = paramParcel.readInt();
+    this.jdField_i_of_type_Int = paramParcel.readInt();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -79,6 +87,10 @@ public class AIOFilePicData
     paramParcel.writeString(String.valueOf(this.jdField_f_of_type_Long));
     paramParcel.writeString(String.valueOf(this.jdField_h_of_type_Boolean));
     paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_i_of_type_JavaLangString);
+    paramParcel.writeInt(this.jdField_g_of_type_Int);
+    paramParcel.writeInt(this.jdField_h_of_type_Int);
+    paramParcel.writeInt(this.jdField_i_of_type_Int);
   }
 }
 

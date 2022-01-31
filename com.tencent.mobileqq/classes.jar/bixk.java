@@ -1,11 +1,13 @@
-import java.util.List;
-import javax.annotation.Nonnull;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
 
-public abstract interface bixk
+public class bixk
+  implements bcph
 {
-  public abstract void a(int paramInt, @Nonnull List<vik> paramList, boolean paramBoolean);
+  public bixk(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
   
-  public abstract void b(int paramInt, @Nonnull List<vik> paramList, boolean paramBoolean);
+  public void a(bcpf parambcpf) {}
+  
+  public void a(bcpf parambcpf, int paramInt1, int paramInt2) {}
 }
 
 

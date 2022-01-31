@@ -1,14 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.graphics.Bitmap;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 
-class biyx
-  implements CompoundButton.OnCheckedChangeListener
+public class biyx
 {
-  biyx(biyw parambiyw) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static Bitmap a(Bitmap paramBitmap, String paramString)
   {
-    biyw.a(this.a).f = paramBoolean;
+    if (!BitmapUtils.isLegal(paramBitmap)) {}
+    int i;
+    do
+    {
+      return paramBitmap;
+      i = BitmapUtils.getDegreeByExif(paramString) % 360;
+    } while (i == 0);
+    return BitmapUtils.rotateBitmap(paramBitmap, i);
   }
 }
 

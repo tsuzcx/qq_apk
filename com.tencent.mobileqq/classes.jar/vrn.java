@@ -1,21 +1,274 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.MusicConfigInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface vrn
+public class vrn
 {
-  public abstract void a(int paramInt);
+  public static final vrn a;
+  public static final vrn b;
+  public static final vrn c;
+  int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  String c;
+  public int d;
+  public String d;
+  public int e;
+  String e;
+  public int f;
+  String f;
+  public String g;
   
-  public abstract void a(View paramView, float paramFloat);
+  static
+  {
+    jdField_a_of_type_Vrn = new vrn(0, ajyc.a(2131710937));
+    jdField_b_of_type_Vrn = new vrn(1, ajyc.a(2131710934));
+    jdField_c_of_type_Vrn = new vrn(2, "QQ音乐曲库");
+  }
   
-  public abstract void a(View paramView, float paramFloat, MotionEvent paramMotionEvent);
+  public vrn()
+  {
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_e_of_type_JavaLangString = null;
+    this.jdField_f_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+  }
   
-  public abstract void a(View paramView, vrk paramvrk);
+  public vrn(int paramInt, String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_e_of_type_JavaLangString = null;
+    this.jdField_f_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
   
-  public abstract boolean a(View paramView);
+  public vrn(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  {
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_e_of_type_JavaLangString = null;
+    this.jdField_f_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+  }
   
-  public abstract boolean a(View paramView, vrq paramvrq, MotionEvent paramMotionEvent);
+  public vrn(qqstory_struct.MusicConfigInfo paramMusicConfigInfo)
+  {
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_e_of_type_JavaLangString = null;
+    this.jdField_f_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_b_of_type_JavaLangString = paramMusicConfigInfo.title.get().toStringUtf8();
+    this.jdField_d_of_type_JavaLangString = paramMusicConfigInfo.audio_url.get().toStringUtf8();
+    this.jdField_b_of_type_Int = 3;
+    this.jdField_a_of_type_JavaLangString = String.valueOf(paramMusicConfigInfo.id.get());
+  }
   
-  public abstract boolean b(View paramView);
+  public vrn(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_e_of_type_JavaLangString = null;
+    this.jdField_f_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_b_of_type_JavaLangString = paramString.optString("title");
+      this.jdField_d_of_type_JavaLangString = paramString.optString("audio_url");
+      if (paramString.has("type")) {}
+      for (this.jdField_b_of_type_Int = paramString.optInt("type");; this.jdField_b_of_type_Int = 2)
+      {
+        this.jdField_a_of_type_JavaLangString = paramString.optString("id");
+        return;
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("MusicInfo", 2, QLog.getStackTraceString(paramString));
+      }
+    }
+  }
+  
+  /* Error */
+  public static final ArrayList<vrn> a(Context paramContext)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: ldc 135
+    //   3: invokestatic 140	bbaj:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   6: astore_0
+    //   7: new 142	org/json/JSONArray
+    //   10: dup
+    //   11: aload_0
+    //   12: invokespecial 143	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   15: astore 4
+    //   17: aload 4
+    //   19: invokevirtual 146	org/json/JSONArray:length	()I
+    //   22: istore_2
+    //   23: new 148	java/util/ArrayList
+    //   26: dup
+    //   27: iload_2
+    //   28: invokespecial 151	java/util/ArrayList:<init>	(I)V
+    //   31: astore_0
+    //   32: iconst_0
+    //   33: istore_1
+    //   34: aload_0
+    //   35: astore_3
+    //   36: iload_1
+    //   37: iload_2
+    //   38: if_icmpge +53 -> 91
+    //   41: aload_0
+    //   42: new 2	vrn
+    //   45: dup
+    //   46: aload 4
+    //   48: iload_1
+    //   49: invokevirtual 153	org/json/JSONArray:optString	(I)Ljava/lang/String;
+    //   52: invokespecial 154	vrn:<init>	(Ljava/lang/String;)V
+    //   55: invokevirtual 158	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   58: pop
+    //   59: iload_1
+    //   60: iconst_1
+    //   61: iadd
+    //   62: istore_1
+    //   63: goto -29 -> 34
+    //   66: astore 4
+    //   68: aconst_null
+    //   69: astore_0
+    //   70: aload_0
+    //   71: astore_3
+    //   72: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   75: ifeq +16 -> 91
+    //   78: ldc 125
+    //   80: iconst_2
+    //   81: aload 4
+    //   83: invokestatic 129	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   86: invokestatic 132	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   89: aload_0
+    //   90: astore_3
+    //   91: aload_3
+    //   92: areturn
+    //   93: astore 4
+    //   95: goto -25 -> 70
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	98	0	paramContext	Context
+    //   33	30	1	i	int
+    //   22	17	2	j	int
+    //   35	57	3	localContext	Context
+    //   15	32	4	localJSONArray	JSONArray
+    //   66	16	4	localJSONException1	JSONException
+    //   93	1	4	localJSONException2	JSONException
+    // Exception table:
+    //   from	to	target	type
+    //   7	32	66	org/json/JSONException
+    //   41	59	93	org/json/JSONException
+  }
+  
+  public static final void a(Context paramContext, ArrayList<vrn> paramArrayList)
+  {
+    Object localObject = null;
+    if (paramArrayList != null)
+    {
+      int j = paramArrayList.size();
+      localObject = new JSONArray();
+      int i = 0;
+      while (i < j)
+      {
+        ((JSONArray)localObject).put(((vrn)paramArrayList.get(i)).a());
+        i += 1;
+      }
+      localObject = ((JSONArray)localObject).toString();
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      bbaj.a(paramContext, "qqstory_savedMusicList");
+      return;
+    }
+    bbaj.a(paramContext, "qqstory_savedMusicList", (String)localObject);
+  }
+  
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("title", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("audio_url", this.jdField_d_of_type_JavaLangString);
+      localJSONObject.put("type", 3);
+      localJSONObject.put("id", this.jdField_a_of_type_JavaLangString);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MusicInfo", 2, QLog.getStackTraceString(localJSONException));
+        }
+      }
+    }
+  }
+  
+  public void a(vrn paramvrn)
+  {
+    this.jdField_a_of_type_JavaLangString = paramvrn.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramvrn.jdField_b_of_type_JavaLangString;
+    this.jdField_c_of_type_JavaLangString = paramvrn.jdField_c_of_type_JavaLangString;
+    this.jdField_d_of_type_JavaLangString = paramvrn.jdField_d_of_type_JavaLangString;
+    this.jdField_e_of_type_JavaLangString = paramvrn.jdField_e_of_type_JavaLangString;
+    this.jdField_f_of_type_JavaLangString = paramvrn.jdField_f_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramvrn.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = paramvrn.jdField_b_of_type_Int;
+    this.jdField_c_of_type_Int = paramvrn.jdField_c_of_type_Int;
+    this.g = paramvrn.g;
+    this.jdField_d_of_type_Int = paramvrn.jdField_d_of_type_Int;
+    this.jdField_e_of_type_Int = paramvrn.jdField_e_of_type_Int;
+    this.jdField_f_of_type_Int = paramvrn.jdField_f_of_type_Int;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      return false;
+      if (paramObject == this) {
+        return true;
+      }
+    } while (paramObject.getClass() != getClass());
+    vrn localvrn = (vrn)paramObject;
+    if ((localvrn.jdField_b_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0)) {
+      return true;
+    }
+    if ((localvrn.jdField_b_of_type_Int == 1) && (this.jdField_b_of_type_Int == 1)) {
+      return true;
+    }
+    if ((localvrn.jdField_b_of_type_Int == this.jdField_b_of_type_Int) && (localvrn.jdField_b_of_type_JavaLangString != null) && (localvrn.jdField_b_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString)) && (localvrn.jdField_d_of_type_JavaLangString != null) && (localvrn.jdField_d_of_type_JavaLangString.equals(this.jdField_d_of_type_JavaLangString))) {
+      return true;
+    }
+    return super.equals(paramObject);
+  }
 }
 
 

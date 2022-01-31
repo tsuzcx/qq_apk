@@ -1,35 +1,55 @@
-import android.app.Activity;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback.1;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback.2;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class azau
-  implements bgnx
+  implements TVK_SDKMgr.OnLogListener
 {
-  public ayzz a;
+  public azau(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public azau(azar paramazar, ayzz paramayzz)
+  public int d(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Ayzz = paramayzz;
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString)
+  public int e(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Ayzz.g = 3;
-    this.jdField_a_of_type_Ayzz.c(paramString);
-    ((Activity)azar.a(this.jdField_a_of_type_Azar)).runOnUiThread(new AudioItem.AudioUploadCallback.1(this));
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
   }
   
-  public void b(int paramInt)
+  public int i(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Ayzz.g = 2;
-    ((Activity)azar.a(this.jdField_a_of_type_Azar)).runOnUiThread(new AudioItem.AudioUploadCallback.2(this));
+    if (QLog.isColorLevel()) {
+      QLog.i("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azau
  * JD-Core Version:    0.7.0.1
  */

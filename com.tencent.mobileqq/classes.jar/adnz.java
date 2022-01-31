@@ -1,22 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
-
-public class adnz
-  implements View.OnClickListener
+public abstract interface adnz
 {
-  public adnz(ScribbleItemBuilder paramScribbleItemBuilder) {}
-  
-  public void onClick(View paramView)
-  {
-    MessageRecord localMessageRecord = (MessageRecord)paramView.getTag();
-    if (localMessageRecord != null) {
-      ((FlashChatManager)this.a.a.getManager(217)).a(paramView.getContext(), localMessageRecord);
-    }
-  }
+  public abstract void a();
 }
 
 

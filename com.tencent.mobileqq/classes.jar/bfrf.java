@@ -1,16 +1,10 @@
-class bfrf
-  implements bfrd
+public abstract interface bfrf
 {
-  bfrf(bfre parambfre, bfrb parambfrb) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bfrb.a();
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfrf
  * JD-Core Version:    0.7.0.1
  */

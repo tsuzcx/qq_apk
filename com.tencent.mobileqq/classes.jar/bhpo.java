@@ -1,32 +1,147 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.video.decode.ShortVideoSoLoad;
+import cooperation.qzone.util.QZLog;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
+import java.io.InterruptedIOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MobileQQ;
 
-final class bhpo
-  implements ValueAnimator.AnimatorUpdateListener
+public class bhpo
 {
-  float jdField_a_of_type_Float = 1.0F;
-  final View jdField_a_of_type_AndroidViewView;
+  private static ConcurrentHashMap<String, Process> a = new ConcurrentHashMap(8, 0.75F, 2);
   
-  bhpo(View paramView)
+  public static int a(String paramString, String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    label263:
+    try
+    {
+      a(new File(a()));
+      Object localObject = new ArrayList();
+      ((ArrayList)localObject).add(a());
+      ((ArrayList)localObject).addAll(Arrays.asList(paramArrayOfString));
+      ((ArrayList)localObject).add(b());
+      paramArrayOfString = new ProcessBuilder((List)localObject).redirectErrorStream(true).start();
+      if (!TextUtils.isEmpty(paramString)) {
+        a.put(paramString, paramArrayOfString);
+      }
+      localObject = new BufferedReader(new InputStreamReader(paramArrayOfString.getInputStream()));
+      while (((BufferedReader)localObject).readLine() != null) {}
+      j = paramArrayOfString.waitFor();
+      i = j;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        a.remove(paramString);
+        i = j;
+      }
+    }
+    catch (InterruptedIOException paramArrayOfString)
+    {
+      for (;;)
+      {
+        QZLog.i("QZoneVideoCompressor", "process is terminated. key=" + paramString);
+        j = 0;
+        i = j;
+        if (!TextUtils.isEmpty(paramString))
+        {
+          a.remove(paramString);
+          i = j;
+        }
+      }
+    }
+    catch (Throwable paramArrayOfString)
+    {
+      for (;;)
+      {
+        int j = -1111;
+        QZLog.e("QZoneVideoCompressor", "trimByFFmpeg", paramArrayOfString);
+        int i = j;
+        if (!TextUtils.isEmpty(paramString))
+        {
+          a.remove(paramString);
+          i = j;
+        }
+      }
+    }
+    finally
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        break label263;
+      }
+      a.remove(paramString);
+    }
+    QZLog.i("QZoneVideoCompressor", 1, "trimByFFmpeg ret=" + i);
+    return i;
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static int a(String[] paramArrayOfString)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_Float = f;
-    this.jdField_a_of_type_AndroidViewView.invalidate();
-    if (QLog.isColorLevel()) {
-      QLog.d("PressScaleAnimDelegate ", 2, "do scale animtion, scale=" + f);
+    return a(null, paramArrayOfString);
+  }
+  
+  private static String a()
+  {
+    if (Build.VERSION.SDK_INT >= 16) {}
+    for (String str = "trim_process_pie";; str = "trim_process_pic") {
+      return ShortVideoSoLoad.getShortVideoSoPath(MobileQQ.getContext()) + str;
     }
+  }
+  
+  public static void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QZLog.w("QZoneVideoCompressor", "cancel: key is empty!");
+      return;
+    }
+    if (!a.containsKey(paramString))
+    {
+      QZLog.w("QZoneVideoCompressor", "cancel: process not exists or finished. key=" + paramString);
+      return;
+    }
+    Process localProcess = (Process)a.remove(paramString);
+    if (localProcess == null)
+    {
+      QZLog.w("QZoneVideoCompressor", "cancel: process == null. key=" + paramString);
+      return;
+    }
+    QZLog.i("QZoneVideoCompressor", "cancel: killProcess. key=" + paramString);
+    localProcess.destroy();
+  }
+  
+  private static boolean a(File paramFile)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramFile == null) || (!paramFile.exists())) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (paramFile.canExecute());
+      bool1 = bool2;
+    } while (paramFile.setExecutable(true));
+    return false;
+  }
+  
+  private static String b()
+  {
+    return ShortVideoSoLoad.getShortVideoSoPath(MobileQQ.getContext()) + VideoEnvironment.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhpo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,111 +1,36 @@
+import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class bfiz
+  implements bfjb
 {
-  private static int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean = true;
-  private int b = 3;
+  public bfiz(QSecFramework paramQSecFramework) {}
   
-  static
+  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-    int i = 0;
-    for (;;)
+    if (paramLong1 != 0L)
     {
-      if (i < arrayOfStackTraceElement.length)
-      {
-        if (bfiz.class.getName().equals(arrayOfStackTraceElement[i].getClassName())) {
-          jdField_a_of_type_Int = i;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("QSecFramework", 2, String.format("Native msg, cookie: %08X, delay: %d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
       }
-      else {
-        return;
+      paramObject1 = String.valueOf(paramLong1);
+      if (paramLong2 == 0L) {
+        break label84;
       }
-      i += 1;
-    }
-  }
-  
-  private StringBuilder a(int paramInt)
-  {
-    return new StringBuilder();
-  }
-  
-  private void a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3)
-  {
-    switch (paramInt1)
-    {
+      QSecFramework.a(this.a).sendMessageDelayed(QSecFramework.a(this.a).obtainMessage(1, paramObject1), 1000L * paramLong2);
     }
     for (;;)
     {
-      StringBuilder localStringBuilder;
-      try
-      {
-        localStringBuilder = a(paramInt3);
-        if (paramString2 != null) {
-          localStringBuilder.append(paramString2);
-        }
-        paramString2 = paramString1;
-        if (paramString1 == null) {
-          paramString2 = this.jdField_a_of_type_JavaLangString;
-        }
-        switch (paramInt2)
-        {
-        default: 
-          return;
-        }
-      }
-      finally {}
-      if (!QLog.isDevelopLevel())
-      {
-        continue;
-        if (!QLog.isColorLevel())
-        {
-          continue;
-          QLog.e(paramString2, paramInt1, localStringBuilder.toString());
-          continue;
-          QLog.w(paramString2, paramInt1, localStringBuilder.toString());
-          continue;
-          QLog.i(paramString2, paramInt1, localStringBuilder.toString());
-          continue;
-          QLog.d(paramString2, paramInt1, localStringBuilder.toString());
-        }
-      }
+      return 0;
+      label84:
+      QSecFramework.a(this.a).sendMessage(QSecFramework.a(this.a).obtainMessage(1, paramObject1));
     }
-  }
-  
-  public bfiz a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public bfiz a(String paramString1, int paramInt, String paramString2)
-  {
-    a(paramString1, paramInt, 6, paramString2, this.b);
-    return this;
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public bfiz b(String paramString1, int paramInt, String paramString2)
-  {
-    a(paramString1, paramInt, 4, paramString2, this.b);
-    return this;
-  }
-  
-  public bfiz c(String paramString1, int paramInt, String paramString2)
-  {
-    a(paramString1, paramInt, 3, paramString2, this.b);
-    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfiz
  * JD-Core Version:    0.7.0.1
  */

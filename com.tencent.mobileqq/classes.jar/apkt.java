@@ -1,15 +1,36 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class apkt
-  extends RecyclerView.ViewHolder
+public class apkt
+  extends aouj
 {
-  public int a = apkm.b;
+  public apkt(TroopFileDetailBrowserActivity paramTroopFileDetailBrowserActivity) {}
   
-  public apkt(View paramView)
+  protected void a(long paramLong, boolean paramBoolean, int paramInt, String paramString)
   {
-    super(paramView);
-    paramView.setTag(this);
+    if (!paramBoolean) {
+      if ((paramString != null) && (paramString.length() > 0)) {
+        apue.a(paramString);
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((this.a.b == null) || (this.a.app == null));
+        if (this.a.b.b() == paramLong) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.d("FileBrowserActivity<FileAssistant>", 4, "difference nSessionId");
+      return;
+    } while (this.a.app.a().b(paramLong) != null);
+    QLog.e("FileBrowserActivity<FileAssistant>", 1, "OnTroopFileCopyToC2cDisc->,but entity is null SessionId[" + paramLong + "]");
   }
 }
 

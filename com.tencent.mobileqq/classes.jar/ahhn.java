@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.FlowActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbTranslucentBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahhn
+  implements View.OnClickListener
 {
-  public static <T extends ahhm> T a(FlowActivity paramFlowActivity, int paramInt)
+  public ahhn(SpringHbTranslucentBrowserActivity paramSpringHbTranslucentBrowserActivity) {}
+  
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    return new ahho(paramFlowActivity);
+    QLog.i("springHb_SpringHbTranslucentBrowserActivity", 2, "点击视频");
   }
 }
 

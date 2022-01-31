@@ -1,30 +1,50 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-final class ajej
-  implements Animation.AnimationListener
+public class ajej
+  implements TVK_SDKMgr.OnLogListener
 {
-  ajej(View paramView) {}
+  public static String a = "cmgame_process.CmGameVideoLogImpl";
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int d(String paramString1, String paramString2)
   {
-    if ((this.a != null) && (this.a.getVisibility() == 0))
-    {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.getContext(), 2130772209);
-      paramAnimation.setAnimationListener(this);
-      this.a.startAnimation(paramAnimation);
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, paramString1 + ":" + paramString2);
     }
+    return 0;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public int e(String paramString1, String paramString2)
+  {
+    QLog.e(a, 1, paramString1 + ":" + paramString2);
+    return 0;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    QLog.w(a, 1, paramString1 + ":" + paramString2);
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajej
  * JD-Core Version:    0.7.0.1
  */

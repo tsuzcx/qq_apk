@@ -1,11 +1,12 @@
-class aoit
-  implements aoix
+public abstract interface aoit
 {
-  aoit(aoio paramaoio) {}
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoit
  * JD-Core Version:    0.7.0.1
  */

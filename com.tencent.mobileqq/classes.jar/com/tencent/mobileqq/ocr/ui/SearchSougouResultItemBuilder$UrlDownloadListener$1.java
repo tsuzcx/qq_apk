@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ocr.ui;
 
 import android.view.View;
-import atge;
+import audf;
 
 public class SearchSougouResultItemBuilder$UrlDownloadListener$1
   implements Runnable
 {
-  public SearchSougouResultItemBuilder$UrlDownloadListener$1(atge paramatge, View paramView) {}
+  public SearchSougouResultItemBuilder$UrlDownloadListener$1(audf paramaudf, View paramView) {}
   
   public void run()
   {

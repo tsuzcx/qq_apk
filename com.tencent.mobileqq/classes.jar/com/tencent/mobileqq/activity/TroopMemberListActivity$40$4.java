@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import acab;
+import ackn;
 import android.os.Handler;
 import android.os.Message;
-import baip;
+import bbjw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
@@ -15,12 +15,12 @@ import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 public class TroopMemberListActivity$40$4
   implements Runnable
 {
-  public TroopMemberListActivity$40$4(acab paramacab, List paramList) {}
+  public TroopMemberListActivity$40$4(ackn paramackn, List paramList) {}
   
   public void run()
   {
-    Object localObject1 = (TroopManager)this.jdField_a_of_type_Acab.a.app.getManager(52);
-    TroopInfo localTroopInfo = ((TroopManager)localObject1).b(this.jdField_a_of_type_Acab.a.b);
+    Object localObject1 = (TroopManager)this.jdField_a_of_type_Ackn.a.app.getManager(52);
+    TroopInfo localTroopInfo = ((TroopManager)localObject1).b(this.jdField_a_of_type_Ackn.a.b);
     if (localTroopInfo == null) {}
     label68:
     label124:
@@ -29,7 +29,7 @@ public class TroopMemberListActivity$40$4
       do
       {
         return;
-      } while (baip.a(localTroopInfo.troopowneruin));
+      } while (bbjw.a(localTroopInfo.troopowneruin));
       localTroopInfo.Administrator = "";
       int i;
       int j;
@@ -58,10 +58,10 @@ public class TroopMemberListActivity$40$4
         }
       }
       ((TroopManager)localObject1).b(localTroopInfo);
-      localObject1 = this.jdField_a_of_type_Acab.a.a.obtainMessage();
+      localObject1 = this.jdField_a_of_type_Ackn.a.a.obtainMessage();
       ((Message)localObject1).what = 11;
       ((Message)localObject1).obj = localTroopInfo;
-      this.jdField_a_of_type_Acab.a.a.sendMessage((Message)localObject1);
+      this.jdField_a_of_type_Ackn.a.a.sendMessage((Message)localObject1);
     } while (!QLog.isColorLevel());
     label204:
     QLog.i("TroopMemberListActivityget_troop_member", 2, localTroopInfo.Administrator);

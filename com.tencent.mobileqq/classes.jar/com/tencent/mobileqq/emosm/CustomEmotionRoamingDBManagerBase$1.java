@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emosm;
 
-import anae;
+import anqm;
 import java.util.List;
 
 public class CustomEmotionRoamingDBManagerBase$1
   implements Runnable
 {
-  public CustomEmotionRoamingDBManagerBase$1(anae paramanae, List paramList, int paramInt) {}
+  public CustomEmotionRoamingDBManagerBase$1(anqm paramanqm, List paramList, int paramInt) {}
   
   /* Error */
   public void run()
@@ -15,25 +15,25 @@ public class CustomEmotionRoamingDBManagerBase$1
     //   0: iconst_0
     //   1: istore_1
     //   2: aload_0
-    //   3: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Lanae;
-    //   6: getfield 31	anae:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   3: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Lanqm;
+    //   6: getfield 31	anqm:a	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   9: ifnonnull +4 -> 13
     //   12: return
     //   13: aload_0
-    //   14: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Lanae;
-    //   17: getfield 31	anae:a	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   20: invokevirtual 37	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Latmq;
-    //   23: invokevirtual 43	atmq:createEntityManager	()Latmp;
+    //   14: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Lanqm;
+    //   17: getfield 31	anqm:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   20: invokevirtual 37	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lauko;
+    //   23: invokevirtual 43	auko:createEntityManager	()Laukn;
     //   26: astore 7
     //   28: aload 7
     //   30: ifnull -18 -> 12
     //   33: aload 7
-    //   35: invokevirtual 48	atmp:a	()Latmr;
+    //   35: invokevirtual 48	aukn:a	()Laukp;
     //   38: astore 5
     //   40: aload 5
     //   42: astore 4
     //   44: aload 5
-    //   46: invokevirtual 52	atmr:a	()V
+    //   46: invokevirtual 52	aukp:a	()V
     //   49: iconst_0
     //   50: istore_2
     //   51: aload 5
@@ -84,13 +84,13 @@ public class CustomEmotionRoamingDBManagerBase$1
     //   183: astore 4
     //   185: aload 7
     //   187: aload 6
-    //   189: invokevirtual 99	atmp:a	(Latmo;)V
+    //   189: invokevirtual 99	aukn:a	(Laukm;)V
     //   192: goto +204 -> 396
     //   195: aload 5
     //   197: astore 4
     //   199: aload 7
     //   201: aload 6
-    //   203: invokevirtual 102	atmp:a	(Latmo;)Z
+    //   203: invokevirtual 102	aukn:a	(Laukm;)Z
     //   206: istore_3
     //   207: iload_3
     //   208: istore_2
@@ -99,7 +99,7 @@ public class CustomEmotionRoamingDBManagerBase$1
     //   214: astore 4
     //   216: aload 7
     //   218: aload 6
-    //   220: invokevirtual 105	atmp:b	(Latmo;)Z
+    //   220: invokevirtual 105	aukn:b	(Laukm;)Z
     //   223: istore_3
     //   224: iload_3
     //   225: istore_2
@@ -107,13 +107,13 @@ public class CustomEmotionRoamingDBManagerBase$1
     //   229: aload 5
     //   231: astore 4
     //   233: aload 5
-    //   235: invokevirtual 108	atmr:c	()V
+    //   235: invokevirtual 108	aukp:c	()V
     //   238: aload 5
     //   240: ifnull +8 -> 248
     //   243: aload 5
-    //   245: invokevirtual 110	atmr:b	()V
+    //   245: invokevirtual 110	aukp:b	()V
     //   248: aload 7
-    //   250: invokevirtual 111	atmp:a	()V
+    //   250: invokevirtual 111	aukn:a	()V
     //   253: invokestatic 70	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   256: ifeq -244 -> 12
     //   259: ldc 72
@@ -154,9 +154,9 @@ public class CustomEmotionRoamingDBManagerBase$1
     //   335: aload 5
     //   337: ifnull +8 -> 345
     //   340: aload 5
-    //   342: invokevirtual 110	atmr:b	()V
+    //   342: invokevirtual 110	aukp:b	()V
     //   345: aload 7
-    //   347: invokevirtual 111	atmp:a	()V
+    //   347: invokevirtual 111	aukn:a	()V
     //   350: goto -97 -> 253
     //   353: astore 5
     //   355: aconst_null
@@ -164,9 +164,9 @@ public class CustomEmotionRoamingDBManagerBase$1
     //   358: aload 4
     //   360: ifnull +8 -> 368
     //   363: aload 4
-    //   365: invokevirtual 110	atmr:b	()V
+    //   365: invokevirtual 110	aukp:b	()V
     //   368: aload 7
-    //   370: invokevirtual 111	atmp:a	()V
+    //   370: invokevirtual 111	aukn:a	()V
     //   373: aload 5
     //   375: athrow
     //   376: astore 5
@@ -189,15 +189,15 @@ public class CustomEmotionRoamingDBManagerBase$1
     //   1	399	1	i	int
     //   50	335	2	bool1	boolean
     //   206	19	3	bool2	boolean
-    //   42	322	4	localatmr1	atmr
-    //   38	303	5	localatmr2	atmr
+    //   42	322	4	localaukp1	aukp
+    //   38	303	5	localaukp2	aukp
     //   353	21	5	localObject1	Object
     //   376	1	5	localObject2	Object
     //   85	134	6	localCustomEmotionBase	com.tencent.mobileqq.data.CustomEmotionBase
     //   314	17	6	localException1	java.lang.Exception
     //   381	1	6	localException2	java.lang.Exception
     //   388	1	6	localException3	java.lang.Exception
-    //   26	343	7	localatmp	atmp
+    //   26	343	7	localaukn	aukn
     // Exception table:
     //   from	to	target	type
     //   33	40	314	java/lang/Exception

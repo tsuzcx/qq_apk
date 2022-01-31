@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import ajtd;
-import ajte;
-import ajtf;
+import akhn;
+import akho;
+import akhp;
 import android.os.SystemClock;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.pool.RecyclablePool;
@@ -14,10 +14,10 @@ public class ThreadRegulator
   implements MqqRegulatorCallback
 {
   private static ThreadRegulator jdField_a_of_type_ComTencentMobileqqAppThreadRegulator;
-  private volatile ajtf jdField_a_of_type_Ajtf;
-  private final RecyclablePool jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(ajtf.class, 2);
+  private volatile akhp jdField_a_of_type_Akhp;
+  private final RecyclablePool jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(akhp.class, 2);
   Runnable jdField_a_of_type_JavaLangRunnable = new ThreadRegulator.2(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new ajte(this, ThreadManager.getSubThreadLooper());
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new akho(this, ThreadManager.getSubThreadLooper());
   
   public static ThreadRegulator a()
   {
@@ -40,13 +40,13 @@ public class ThreadRegulator
   
   public void a(int paramInt)
   {
-    if (!ajtd.a().a()) {}
-    while (this.jdField_a_of_type_Ajtf != null) {
+    if (!akhn.a().a()) {}
+    while (this.jdField_a_of_type_Akhp != null) {
       return;
     }
-    this.jdField_a_of_type_Ajtf = ((ajtf)this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.obtain(ajtf.class));
-    this.jdField_a_of_type_Ajtf.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Ajtf.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_Akhp = ((akhp)this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.obtain(akhp.class));
+    this.jdField_a_of_type_Akhp.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Akhp.jdField_a_of_type_Long = SystemClock.uptimeMillis();
     try
     {
       ThreadExcutor.getInstance().shrinkMaxPoolSize(true);
@@ -70,10 +70,10 @@ public class ThreadRegulator
   
   public void b()
   {
-    if (this.jdField_a_of_type_Ajtf == null) {
+    if (this.jdField_a_of_type_Akhp == null) {
       return;
     }
-    while (this.jdField_a_of_type_Ajtf != null) {
+    while (this.jdField_a_of_type_Akhp != null) {
       try
       {
         Thread.sleep(100L);
@@ -103,7 +103,7 @@ public class ThreadRegulator
         if (!"MSF-Receiver".equals(paramThread.getName())) {
           break;
         }
-      } while (!ajtd.a().b());
+      } while (!akhn.a().b());
       paramThread.setPriority(1);
       return true;
     } while ("Rejected_Handler".equals(paramThread.getName()));

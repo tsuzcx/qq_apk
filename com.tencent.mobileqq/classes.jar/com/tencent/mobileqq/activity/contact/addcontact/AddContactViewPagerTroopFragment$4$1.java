@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import aete;
+import afea;
 
 public class AddContactViewPagerTroopFragment$4$1
   implements Runnable
 {
-  public AddContactViewPagerTroopFragment$4$1(aete paramaete) {}
+  public AddContactViewPagerTroopFragment$4$1(afea paramafea) {}
   
   public void run()
   {

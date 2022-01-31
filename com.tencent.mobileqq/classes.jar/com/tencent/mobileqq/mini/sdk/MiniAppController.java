@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.sdk;
 
 import NS_COMM.COMM.StCommonExt;
-import abju;
+import abtu;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
@@ -14,9 +14,9 @@ import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import aqeb;
-import badq;
-import befm;
+import aqyd;
+import bbev;
+import bfng;
 import com.tencent.av.gaudio.GaInviteLockActivity;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.VideoInviteActivity;
@@ -28,22 +28,38 @@ import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.appbrand.ui.AppBrandLaunchUI;
+import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI;
+import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI1;
+import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI2;
+import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI3;
+import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI4;
+import com.tencent.mobileqq.mini.appbrand.ui.InternalAppBrandUI;
 import com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
-import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.minigame.ui.GameActivity;
+import com.tencent.mobileqq.minigame.ui.GameActivity1;
+import com.tencent.mobileqq.minigame.ui.GameActivity2;
+import com.tencent.mobileqq.minigame.ui.GameActivity3;
+import com.tencent.mobileqq.minigame.ui.GameActivity4;
+import com.tencent.mobileqq.minigame.ui.GameActivity5;
+import com.tencent.mobileqq.minigame.ui.InternalGameActivity;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.QIMCameraCaptureActivity;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONObject;
 
@@ -61,8 +77,15 @@ public class MiniAppController
   public static final int ACTION_REQUEST_OPEN_GROUP_SELECTMEMBERS = 10;
   public static final int ACTION_REQUEST_SELECT_PHOTO = 8;
   public static final int ACTION_REQUEST_SHARE = 7;
+  private static final Set<String> MINI_GAME_ACTIVITY_SET;
+  private static final Set<String> MINI_PROGRAM_ACTIVITY_SET;
+  private static final int REPORT_FOREGROUND_RESERVES_AV_CONVERSATION = 4;
+  private static final int REPORT_FOREGROUND_RESERVES_CAMERA_PREVIEW = 3;
+  private static final int REPORT_FOREGROUND_RESERVES_MINI_GAME = 2;
+  private static final int REPORT_FOREGROUND_RESERVES_MINI_PROGRAM = 1;
+  private static final int REPORT_NO_FOREGROUND = 0;
   public static final String TAG = "MiniAppController";
-  private static aqeb hitPluginSession = new aqeb("mini_myfile", "com.tencent.mobileqq:mini");
+  private static aqyd hitPluginSession;
   private static MiniAppController instance;
   private static byte[] lock = new byte[0];
   private static Handler mainHander = new Handler(Looper.getMainLooper());
@@ -73,7 +96,17 @@ public class MiniAppController
   private SparseArray<BridgeInfo> bridgeMap = new SparseArray();
   private List<OutBaseJsPlugin> outJsPluginList = new ArrayList();
   
-  private static int checkIfCameraPreviewingOrAVConversationForeground(Context paramContext)
+  static
+  {
+    hitPluginSession = new aqyd("mini_myfile", "com.tencent.mobileqq:mini");
+    MINI_PROGRAM_ACTIVITY_SET = new HashSet();
+    MINI_GAME_ACTIVITY_SET = new HashSet();
+    MINI_PROGRAM_ACTIVITY_SET.addAll(Arrays.asList(new String[] { AppBrandLaunchUI.class.getName(), InternalAppBrandUI.class.getName(), AppBrandUI.class.getName(), AppBrandUI1.class.getName(), AppBrandUI2.class.getName(), AppBrandUI3.class.getName(), AppBrandUI4.class.getName() }));
+    MINI_GAME_ACTIVITY_SET.addAll(Arrays.asList(new String[] { InternalGameActivity.class.getName(), GameActivity.class.getName(), GameActivity1.class.getName(), GameActivity2.class.getName(), GameActivity3.class.getName(), GameActivity4.class.getName(), GameActivity5.class.getName() }));
+  }
+  
+  @MiniAppController.ReportForegroundType
+  private static int checkIfCameraPreviewingOrAVConversationOrMiniAppForeground(Context paramContext)
   {
     if (paramContext != null) {
       try
@@ -88,20 +121,19 @@ public class MiniAppController
             if ((localObject != null) && (((ActivityManager.RunningTaskInfo)localObject).topActivity != null))
             {
               localObject = ((ActivityManager.RunningTaskInfo)localObject).topActivity.getClassName();
-              QLog.d("MiniAppController", 2, new Object[] { "checkIfCameraPreviewingOrAVConversationForeground ", localObject });
+              QLog.d("MiniAppController", 1, new Object[] { "checkIfCameraPreviewingOrAVConversationOrMiniAppForeground ", localObject });
               if (QIMCameraCaptureActivity.class.getName().equals(localObject)) {
                 return 3;
               }
-              if ((!AVActivity.class.getName().equals(localObject)) && (!VideoInviteActivity.class.getName().equals(localObject)))
-              {
-                boolean bool = GaInviteLockActivity.class.getName().equals(localObject);
-                if (!bool) {
-                  break;
-                }
+              if ((AVActivity.class.getName().equals(localObject)) || (VideoInviteActivity.class.getName().equals(localObject)) || (GaInviteLockActivity.class.getName().equals(localObject))) {
+                break label182;
               }
-              else
-              {
-                return 4;
+              if (MINI_PROGRAM_ACTIVITY_SET.contains(localObject)) {
+                return 1;
+              }
+              boolean bool = MINI_GAME_ACTIVITY_SET.contains(localObject);
+              if (bool) {
+                return 2;
               }
             }
           }
@@ -109,10 +141,13 @@ public class MiniAppController
       }
       catch (Exception paramContext)
       {
-        QLog.e("MiniAppController", 2, "checkIfCameraPreviewingOrAVConversationForeground", paramContext);
+        QLog.e("MiniAppController", 1, "checkIfCameraPreviewingOrAVConversationOrMiniAppForeground", paramContext);
       }
+    } else {
+      return 0;
     }
-    return 0;
+    label182:
+    return 4;
   }
   
   private static void checkMiniAppEntityDB()
@@ -164,7 +199,7 @@ public class MiniAppController
     if ((paramLaunchParam != null) && (paramLaunchParam.scene == 2072)) {
       return true;
     }
-    paramString = befm.a(paramString);
+    paramString = bfng.a(paramString);
     return (paramString.containsKey("scene")) && (((String)paramString.get("scene")).equals(String.valueOf(2072)));
   }
   
@@ -207,7 +242,7 @@ public class MiniAppController
     }
     if ((paramContext != null) && ((paramContext instanceof Activity)))
     {
-      abju.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
+      abtu.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
       ((Activity)paramContext).overridePendingTransition(0, 0);
     }
   }
@@ -225,7 +260,7 @@ public class MiniAppController
     localIntent.putExtra("public_fragment_window_feature", 1);
     if ((paramContext != null) && ((paramContext instanceof Activity)))
     {
-      abju.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
+      abtu.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
       ((Activity)paramContext).overridePendingTransition(0, 0);
     }
   }
@@ -267,7 +302,7 @@ public class MiniAppController
   
   public static void startAppByAppid(Context paramContext, String paramString1, String paramString2, String paramString3, LaunchParam paramLaunchParam, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    if (!badq.g(paramContext)) {
+    if (!bbev.g(paramContext)) {
       AppBrandTask.runTaskOnUiThread(new MiniAppController.2(paramContext));
     }
     do
@@ -291,29 +326,24 @@ public class MiniAppController
         localIntent.putExtra("mini_receiver", new MiniAppController.4(new Handler(Looper.getMainLooper()), paramMiniAppLaunchListener));
       }
       localIntent.putExtra("public_fragment_window_feature", 1);
-      abju.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
+      abtu.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
     } while (!(paramContext instanceof Activity));
     ((Activity)paramContext).overridePendingTransition(0, 0);
   }
   
   public static void startAppByLink(Context paramContext, String paramString, int paramInt, LaunchParam paramLaunchParam, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    if (!badq.g(paramContext))
+    if (!bbev.g(paramContext))
     {
       AppBrandTask.runTaskOnUiThread(new MiniAppController.6(paramContext));
       return;
     }
-    int i = checkIfCameraPreviewingOrAVConversationForeground(paramContext);
-    int j = AppBrandLaunchManager.g().checkIfAnyMiniProcessForeground();
-    if ((isArkBattleUrl(paramString, paramLaunchParam)) && ((j != 0) || (i != 0)))
+    int i = checkIfCameraPreviewingOrAVConversationOrMiniAppForeground(paramContext);
+    if ((isArkBattleUrl(paramString, paramLaunchParam)) && (i != 0))
     {
-      QLog.e("MiniAppController", 1, "startAppByLink prohibit battle mini game open from ark, link:" + paramString);
-      if (j != 0) {}
-      for (paramInt = j;; paramInt = i)
-      {
-        MiniProgramLpReportDC04239.reportByQQ("ark", "ark_battle", "fail", String.valueOf(paramInt), "", "", "");
-        return;
-      }
+      QLog.e("MiniAppController", 1, "startAppByLink prohibit battle mini game open from ark, link:" + paramString + " check result " + i);
+      MiniProgramLpReportDC04239.reportByQQ("ark", "ark_battle", "fail", String.valueOf(i), "", "", "");
+      return;
     }
     if (TextUtils.isEmpty(paramString))
     {

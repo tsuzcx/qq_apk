@@ -1,37 +1,45 @@
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
+import android.os.Handler.Callback;
+import android.os.Message;
+import java.util.Arrays;
 
-public class ulh
+class ulh
+  implements Handler.Callback
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public uld a;
-  public int b;
+  private ulh(ulf paramulf) {}
   
-  public String a()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return "?";
+    int k = 0;
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 1: 
+      ulf.a(this.a, new Error((Throwable)paramMessage.obj));
+      return true;
     }
-    if (this.jdField_a_of_type_Uld == null) {
-      return this.jdField_a_of_type_JavaLangString;
+    paramMessage = (Bitmap[])paramMessage.obj;
+    int m = paramMessage.length;
+    int i = 0;
+    for (;;)
+    {
+      int j = k;
+      if (i < m)
+      {
+        if (paramMessage[i] == null) {
+          j = 1;
+        }
+      }
+      else
+      {
+        if (j == 0) {
+          ulf.a(this.a, Arrays.asList(paramMessage));
+        }
+        return true;
+      }
+      i += 1;
     }
-    return uls.a(new Object[] { this.jdField_a_of_type_JavaLangString, "/", this.jdField_a_of_type_Uld.a() });
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return a().equals(((ulh)paramObject).a());
-  }
-  
-  public int hashCode()
-  {
-    return a().hashCode();
-  }
-  
-  public String toString()
-  {
-    return a();
   }
 }
 

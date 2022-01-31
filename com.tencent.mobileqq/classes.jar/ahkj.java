@@ -1,30 +1,27 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class ahkj
-  implements axrt
+  implements View.OnClickListener
 {
-  ahkj(ahkg paramahkg) {}
+  ahkj(ahkf paramahkf) {}
   
-  public void onResp(axsq paramaxsq)
+  public void onClick(View paramView)
   {
-    FilterDesc localFilterDesc = (FilterDesc)paramaxsq.jdField_a_of_type_Axsp.a();
-    if (paramaxsq.jdField_a_of_type_Int != 0)
+    paramView = ajco.a();
+    if (paramView != null)
     {
-      krx.c("VideoFilterTools", "download IconFile failed. errorCode: " + paramaxsq.b + ", errorMsg: " + paramaxsq.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
-      return;
+      paramView.a(ahkf.a(this.a));
+      paramView.a();
+      ajco.i();
     }
-    if ((ahkg.a(this.a).decrementAndGet() == 0) && (ahkg.a(this.a) != null)) {
-      ahkg.a(this.a).a(true);
-    }
-    krx.c("VideoFilterTools", "download iconFile success. file: " + localFilterDesc.iconurl);
+    axqw.a(ahkf.a(this.a).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 10, 0, "", "", "", "");
   }
-  
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahkj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.open.agent;
 
-import ajjy;
-import amym;
+import ajyc;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
@@ -21,20 +20,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import azue;
-import bbvs;
-import bbxu;
-import bbxv;
-import bbxw;
-import bbxx;
-import bbxy;
-import bbxz;
-import bbya;
-import bbyb;
-import bbyc;
-import bbyd;
-import bbye;
-import bbyh;
+import anou;
+import bavi;
+import bczs;
+import bdbu;
+import bdbv;
+import bdbw;
+import bdbx;
+import bdby;
+import bdbz;
+import bdca;
+import bdcb;
+import bdcc;
+import bdcd;
+import bdce;
+import bdch;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLDrawableDownListener.Adapter;
@@ -63,16 +63,16 @@ public class OpenCardContainer
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   protected RelativeLayout a;
-  protected TextView a;
-  private bbyb jdField_a_of_type_Bbyb;
-  private bbyd jdField_a_of_type_Bbyd;
-  public bbye a;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bdcb jdField_a_of_type_Bdcb;
+  private bdcd jdField_a_of_type_Bdcd;
+  public bdce a;
   protected URLDrawableDownListener.Adapter a;
   public AnyScaleTypeImageView a;
   public OpenAuthorityAccountView a;
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
   private String jdField_a_of_type_JavaLangString = "";
-  protected List<bbyc> a;
+  protected List<bdcc> a;
   public boolean a;
   protected final int b;
   private View jdField_b_of_type_AndroidViewView;
@@ -81,23 +81,22 @@ public class OpenCardContainer
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private boolean jdField_b_of_type_Boolean;
   protected final int c;
-  private View jdField_c_of_type_AndroidViewView;
+  private View c;
   protected RelativeLayout c;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131625931 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130839215 };
-    jdField_c_of_type_ArrayOfInt = new int[] { 2131304236 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131691507 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130839239 };
+    jdField_c_of_type_ArrayOfInt = new int[] { 2131369915 };
   }
   
   public OpenCardContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new bbxu(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bbxv(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bdbu(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bdbv(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     new DisplayMetrics();
     paramAttributeSet = getResources().getDisplayMetrics();
@@ -114,8 +113,8 @@ public class OpenCardContainer
     }
     ValueAnimator localValueAnimator1 = ValueAnimator.ofInt(new int[] { 0, paramInt1 });
     ValueAnimator localValueAnimator2 = ValueAnimator.ofInt(new int[] { 0, paramInt2 });
-    localValueAnimator1.addUpdateListener(new bbxy(this, paramImageView));
-    localValueAnimator1.addListener(new bbxz(this, paramImageView));
+    localValueAnimator1.addUpdateListener(new bdby(this, paramImageView));
+    localValueAnimator1.addListener(new bdbz(this, paramImageView));
     localValueAnimator1.setDuration(300L);
     localValueAnimator2.setDuration(300L);
     paramImageView = new AnimatorSet();
@@ -135,7 +134,7 @@ public class OpenCardContainer
         return;
         try
         {
-          Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839687);
+          Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839736);
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
           localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject1);
           localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject1);
@@ -155,7 +154,7 @@ public class OpenCardContainer
           }
           if (paramString != null)
           {
-            paramString.setDecodeHandler(azue.a);
+            paramString.setDecodeHandler(bavi.a);
             if (paramString.getStatus() == 2) {
               paramString.restartDownload();
             }
@@ -211,8 +210,8 @@ public class OpenCardContainer
     if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
       ImmersiveUtils.a(false, ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getWindow());
     }
-    if (((this.jdField_a_of_type_AndroidContentContext instanceof PublicFragmentActivityForOpenSDK)) && (this.jdField_a_of_type_Bbyd != null)) {
-      this.jdField_a_of_type_Bbyd.a();
+    if (((this.jdField_a_of_type_AndroidContentContext instanceof PublicFragmentActivityForOpenSDK)) && (this.jdField_a_of_type_Bdcd != null)) {
+      this.jdField_a_of_type_Bdcd.a();
     }
     for (;;)
     {
@@ -230,14 +229,14 @@ public class OpenCardContainer
   
   public long a()
   {
-    if ((bbye.a(this.jdField_a_of_type_Bbye) != null) && (bbye.a(this.jdField_a_of_type_Bbye).size() > 0))
+    if ((bdce.a(this.jdField_a_of_type_Bdce) != null) && (bdce.a(this.jdField_a_of_type_Bdce).size() > 0))
     {
-      Iterator localIterator = bbye.a(this.jdField_a_of_type_Bbye).iterator();
+      Iterator localIterator = bdce.a(this.jdField_a_of_type_Bdce).iterator();
       while (localIterator.hasNext())
       {
-        bbyh localbbyh = (bbyh)localIterator.next();
-        if (localbbyh.jdField_a_of_type_Boolean) {
-          return localbbyh.jdField_a_of_type_Long;
+        bdch localbdch = (bdch)localIterator.next();
+        if (localbdch.jdField_a_of_type_Boolean) {
+          return localbdch.jdField_a_of_type_Long;
         }
       }
     }
@@ -249,7 +248,7 @@ public class OpenCardContainer
     localObject3 = null;
     try
     {
-      Object localObject1 = new amym(0, this.jdField_b_of_type_Int, 100);
+      Object localObject1 = new anou(0, this.jdField_b_of_type_Int, 100);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject1);
       localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject1);
@@ -331,7 +330,7 @@ public class OpenCardContainer
     return localStringBuilder.toString();
   }
   
-  public List<bbyc> a()
+  public List<bdcc> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -371,7 +370,7 @@ public class OpenCardContainer
   {
     setVisibility(0);
     if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
     }
     if (paramBitmap != null) {
       this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
@@ -417,7 +416,7 @@ public class OpenCardContainer
     }
   }
   
-  public boolean a(List<bbvs> paramList, String paramString)
+  public boolean a(List<bczs> paramList, String paramString)
   {
     int i = 0;
     Object localObject = paramList;
@@ -426,24 +425,23 @@ public class OpenCardContainer
     }
     this.jdField_a_of_type_JavaUtilList.clear();
     if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(paramString);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
     }
     if (((List)localObject).isEmpty())
     {
       QLog.d("OpenCardContainer", 2, "authList isEmpty");
       if (this.jdField_a_of_type_JavaUtilList.size() != 0) {
-        break label350;
+        break label342;
       }
     }
-    label350:
+    label342:
     for (boolean bool = true;; bool = false)
     {
       if (!bool) {
-        break label356;
+        break label348;
       }
       paramList = this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView;
       a(1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       if (QLog.isColorLevel()) {
         QLog.d("OpenCardContainer", 2, "--> has been authority.");
       }
@@ -453,17 +451,17 @@ public class OpenCardContainer
       paramString = ((List)localObject).iterator();
       while (paramString.hasNext())
       {
-        localObject = (bbvs)paramString.next();
-        bbyc localbbyc = new bbyc();
-        localbbyc.jdField_b_of_type_JavaLangString = ((bbvs)localObject).jdField_b_of_type_JavaLangString;
-        localbbyc.jdField_a_of_type_Int = ((bbvs)localObject).jdField_a_of_type_Int;
-        localbbyc.jdField_b_of_type_Int = ((bbvs)localObject).jdField_b_of_type_Int;
-        localbbyc.jdField_a_of_type_Boolean = ((bbvs)localObject).jdField_a_of_type_Boolean;
-        localbbyc.jdField_a_of_type_JavaLangString = ((bbvs)localObject).jdField_a_of_type_JavaLangString;
+        localObject = (bczs)paramString.next();
+        bdcc localbdcc = new bdcc();
+        localbdcc.jdField_b_of_type_JavaLangString = ((bczs)localObject).jdField_b_of_type_JavaLangString;
+        localbdcc.jdField_a_of_type_Int = ((bczs)localObject).jdField_a_of_type_Int;
+        localbdcc.jdField_b_of_type_Int = ((bczs)localObject).jdField_b_of_type_Int;
+        localbdcc.jdField_a_of_type_Boolean = ((bczs)localObject).jdField_a_of_type_Boolean;
+        localbdcc.jdField_a_of_type_JavaLangString = ((bczs)localObject).jdField_a_of_type_JavaLangString;
         if (QLog.isColorLevel()) {
-          paramList.append("--> Permission p, api: ").append(localbbyc.jdField_b_of_type_JavaLangString).append(" | flag: ").append(localbbyc.jdField_a_of_type_Int).append(" | id: ").append(localbbyc.jdField_b_of_type_Int).append(" | isNew: ").append(localbbyc.jdField_a_of_type_Boolean).append(" | title: ").append(localbbyc.jdField_a_of_type_JavaLangString).append("\n");
+          paramList.append("--> Permission p, api: ").append(localbdcc.jdField_b_of_type_JavaLangString).append(" | flag: ").append(localbdcc.jdField_a_of_type_Int).append(" | id: ").append(localbdcc.jdField_b_of_type_Int).append(" | isNew: ").append(localbdcc.jdField_a_of_type_Boolean).append(" | title: ").append(localbdcc.jdField_a_of_type_JavaLangString).append("\n");
         }
-        this.jdField_a_of_type_JavaUtilList.add(localbbyc);
+        this.jdField_a_of_type_JavaUtilList.add(localbdcc);
       }
       if (!QLog.isColorLevel()) {
         break;
@@ -471,25 +469,25 @@ public class OpenCardContainer
       QLog.d("OpenCardContainer", 2, paramList.toString());
       break;
     }
-    label356:
+    label348:
     a(0);
     if (QLog.isColorLevel()) {
       QLog.d("OpenCardContainer", 2, "--> has not been authority.");
     }
-    paramList = ajjy.a(2131642067);
-    label383:
+    paramList = ajyc.a(2131707852);
+    label375:
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      paramString = (bbyc)this.jdField_a_of_type_JavaUtilList.get(i);
+      paramString = (bdcc)this.jdField_a_of_type_JavaUtilList.get(i);
       if (i >= this.jdField_a_of_type_JavaUtilList.size() - 1) {
-        break label460;
+        break label452;
       }
     }
-    label460:
+    label452:
     for (paramList = paramList + paramString.jdField_a_of_type_JavaLangString + "、";; paramList = paramList + paramString.jdField_a_of_type_JavaLangString)
     {
       i += 1;
-      break label383;
+      break label375;
       break;
     }
   }
@@ -520,29 +518,29 @@ public class OpenCardContainer
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131296664));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131296665));
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView = ((OpenAuthorityAccountView)super.findViewById(2131296346));
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setOnClickListener(new bbxw(this));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131296667));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131301306));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131311615));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131311616));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297136));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297138));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297143));
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131297135);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362205));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362206));
+    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView = ((OpenAuthorityAccountView)super.findViewById(2131361882));
+    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setOnClickListener(new bdbw(this));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362208));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131366917));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131377428));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131377429));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362676));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362678));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362683));
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131362675);
     this.jdField_b_of_type_AndroidViewView.setFocusable(true);
     this.jdField_b_of_type_AndroidViewView.setFocusableInTouchMode(true);
     this.jdField_b_of_type_AndroidViewView.requestFocus();
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131299277);
-    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131313452);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)super.findViewById(2131313453));
-    this.jdField_a_of_type_Bbye = new bbye(this, this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Bbye);
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131364840);
+    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131379286);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)super.findViewById(2131379287));
+    this.jdField_a_of_type_Bdce = new bdce(this, this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Bdce);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setOverScrollFlingMode(2);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(new bbxx(this));
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(new bdbx(this));
   }
   
   public void setAdImageByURL(AnyScaleTypeImageView paramAnyScaleTypeImageView, String paramString)
@@ -554,7 +552,7 @@ public class OpenCardContainer
     }
     try
     {
-      paramAnyScaleTypeImageView = new amym(0, this.jdField_b_of_type_Int, 100);
+      paramAnyScaleTypeImageView = new anou(0, this.jdField_b_of_type_Int, 100);
       localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = paramAnyScaleTypeImageView;
       localURLDrawableOptions.mFailedDrawable = paramAnyScaleTypeImageView;
@@ -614,19 +612,19 @@ public class OpenCardContainer
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void setOnAccountEventListener(bbya parambbya)
+  public void setOnAccountEventListener(bdca parambdca)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setAccountEventListener(parambbya);
+    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setAccountEventListener(parambdca);
   }
   
-  public void setOnUpdateStatusBarListener(bbyd parambbyd)
+  public void setOnUpdateStatusBarListener(bdcd parambdcd)
   {
-    this.jdField_a_of_type_Bbyd = parambbyd;
+    this.jdField_a_of_type_Bdcd = parambdcd;
   }
   
-  public void setOndeleteVirtualListener(bbyb parambbyb)
+  public void setOndeleteVirtualListener(bdcb parambdcb)
   {
-    this.jdField_a_of_type_Bbyb = parambbyb;
+    this.jdField_a_of_type_Bdcb = parambdcb;
   }
 }
 

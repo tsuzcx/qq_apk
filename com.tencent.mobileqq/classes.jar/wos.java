@@ -1,20 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import android.view.View;
 
-class wos
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface wos
 {
-  wos(woq paramwoq, Container paramContainer) {}
+  public abstract void a(View paramView, int paramInt1, int paramInt2, Object paramObject);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getLayoutParams();
-    localLayoutParams.topMargin = paramValueAnimator.intValue();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.setLayoutParams(localLayoutParams);
-  }
+  public abstract void b(View paramView, int paramInt1, int paramInt2, Object paramObject);
 }
 
 

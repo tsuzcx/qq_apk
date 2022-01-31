@@ -1,23 +1,20 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 
-class aqho
-  implements TVK_IMediaPlayer.OnErrorListener
+public class aqho
+  implements View.OnClickListener
 {
-  aqho(aqhl paramaqhl) {}
+  public aqho(IphoneTitleBarFragment paramIphoneTitleBarFragment) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onClick(View paramView)
   {
-    this.a.c = 7;
-    if (aqhl.a(this.a) != null) {
-      aqhl.a(this.a).a(this.a.b, paramTVK_IMediaPlayer, paramInt1, paramInt2, paramInt3, paramString, paramObject);
-    }
-    return false;
+    this.a.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqho
  * JD-Core Version:    0.7.0.1
  */

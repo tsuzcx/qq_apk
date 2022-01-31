@@ -2,26 +2,26 @@ package cooperation.qzone;
 
 import android.os.Handler;
 import android.os.Message;
-import bfqh;
+import bgyo;
 
 public class QZoneLiveVideoDownLoadActivtyV2$2$1
   implements Runnable
 {
-  public QZoneLiveVideoDownLoadActivtyV2$2$1(bfqh parambfqh, float paramFloat) {}
+  public QZoneLiveVideoDownLoadActivtyV2$2$1(bgyo parambgyo, float paramFloat) {}
   
   public void run()
   {
     if ((int)(this.jdField_a_of_type_Float * 100.0F) > 0)
     {
-      this.jdField_a_of_type_Bfqh.a.a.removeMessages(1009);
-      this.jdField_a_of_type_Bfqh.a.a.obtainMessage(1004, 100, 0).sendToTarget();
-      this.jdField_a_of_type_Bfqh.a.a(false, true);
+      this.jdField_a_of_type_Bgyo.a.a.removeMessages(1009);
+      this.jdField_a_of_type_Bgyo.a.a.obtainMessage(1004, 100, 0).sendToTarget();
+      this.jdField_a_of_type_Bgyo.a.a(false, true);
     }
-    while (!this.jdField_a_of_type_Bfqh.a.e) {
+    while (!this.jdField_a_of_type_Bgyo.a.e) {
       return;
     }
-    this.jdField_a_of_type_Bfqh.a.a.removeMessages(1009);
-    this.jdField_a_of_type_Bfqh.a.a(true, true);
+    this.jdField_a_of_type_Bgyo.a.a.removeMessages(1009);
+    this.jdField_a_of_type_Bgyo.a.a(true, true);
   }
 }
 

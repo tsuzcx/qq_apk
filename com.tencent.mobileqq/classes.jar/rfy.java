@@ -1,23 +1,13 @@
-import android.view.animation.Animation;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class rfy
-  extends beem
 {
-  rfy(rfx paramrfx) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    super.onAnimationEnd(paramAnimation);
-    if (rfw.a(this.a.a) != null)
-    {
-      paramAnimation = new ArrayList();
-      paramAnimation.add(rfw.a(this.a.a));
-      rfw.a(this.a.a).a(paramAnimation, rfw.a(this.a.a));
-      bbmy.a(this.a.a.a, 2, 2131652624, 0).a();
-    }
-  }
+  private rfy(rfw paramrfw) {}
 }
 
 

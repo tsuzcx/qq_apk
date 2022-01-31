@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ahky;
-import ajjy;
-import awii;
+import ahxq;
+import ajyc;
+import axho;
 import com.tencent.qphone.base.util.QLog;
 
 public class RMVideoInitState$2
   implements Runnable
 {
-  public RMVideoInitState$2(ahky paramahky) {}
+  public RMVideoInitState$2(ahxq paramahxq) {}
   
   public void run()
   {
-    boolean bool = awii.a(awii.y);
+    boolean bool = axho.a(axho.y);
     if (bool)
     {
-      RMVideoStateMgr.a().a(1102, ajjy.a(2131647662), true);
+      RMVideoStateMgr.a().a(1102, ajyc.a(2131713450), true);
       return;
     }
     try
     {
       if ((!this.this$0.d) && (this.this$0.f)) {
-        RMVideoStateMgr.a().a(1102, ajjy.a(2131647668) + 1102, true);
+        RMVideoStateMgr.a().a(1102, ajyc.a(2131713456) + 1102, true);
       }
       RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
       if (QLog.isColorLevel()) {

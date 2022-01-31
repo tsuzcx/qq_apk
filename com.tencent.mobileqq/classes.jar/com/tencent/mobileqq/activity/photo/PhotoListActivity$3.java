@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agca;
+import agny;
 
 class PhotoListActivity$3
   implements Runnable
@@ -9,7 +9,7 @@ class PhotoListActivity$3
   
   public void run()
   {
-    new agca(this.this$0).execute(new Object[0]);
+    new agny(this.this$0).execute(new Object[0]);
   }
 }
 

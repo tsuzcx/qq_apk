@@ -1,13 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.5;
-
-public class rth
-  implements DialogInterface.OnClickListener
+public abstract interface rth
 {
-  public rth(PublicAccountH5AbilityPlugin.5 param5) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

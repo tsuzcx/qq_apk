@@ -1,28 +1,31 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.reflect.Method;
+import Wallet.GetRandomHbIdiomReq;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.observer.BusinessObserver;
 
-public class agwg
+class agwg
+  implements ahjt
 {
-  public static void a(String paramString)
+  agwg(agvz paramagvz, int paramInt, BusinessObserver paramBusinessObserver) {}
+  
+  public void a(String paramString)
   {
-    try
+    if (agvz.a(this.jdField_a_of_type_Agvz) != null)
     {
-      ClassLoader localClassLoader = BaseApplicationImpl.sApplication.getClassLoader();
-      if (localClassLoader == null) {
-        return;
-      }
-      localClassLoader.loadClass("cooperation.qwallet.plugin.QWalletPluginProxyActivity").getMethod("handleNoCatchCrash", new Class[] { String.class }).invoke(null, new Object[] { paramString });
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
+      GetRandomHbIdiomReq localGetRandomHbIdiomReq = new GetRandomHbIdiomReq();
+      localGetRandomHbIdiomReq.makeUin = agvz.a(this.jdField_a_of_type_Agvz).getLongAccountUin();
+      localGetRandomHbIdiomReq.sKey = paramString;
+      localGetRandomHbIdiomReq.appid = AppSetting.a();
+      localGetRandomHbIdiomReq.fromType = this.jdField_a_of_type_Int;
+      localGetRandomHbIdiomReq.platform = 0;
+      localGetRandomHbIdiomReq.qqVersion = "8.2.8";
+      agwv.a(localGetRandomHbIdiomReq, this.jdField_a_of_type_MqqObserverBusinessObserver);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agwg
  * JD-Core Version:    0.7.0.1
  */

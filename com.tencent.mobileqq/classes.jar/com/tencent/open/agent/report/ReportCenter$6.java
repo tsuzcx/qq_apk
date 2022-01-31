@@ -1,12 +1,12 @@
 package com.tencent.open.agent.report;
 
 import android.os.Bundle;
-import bcad;
+import bded;
 
 public class ReportCenter$6
   implements Runnable
 {
-  public ReportCenter$6(bcad parambcad, Bundle paramBundle, String paramString, boolean paramBoolean) {}
+  public ReportCenter$6(bded parambded, Bundle paramBundle, String paramString, boolean paramBoolean) {}
   
   /* Error */
   public void run()
@@ -24,12 +24,12 @@ public class ReportCenter$6
     //   18: ldc 43
     //   20: invokestatic 47	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   23: return
-    //   24: invokestatic 52	bbtm:a	()Lbbtm;
-    //   27: invokevirtual 55	bbtm:a	()Landroid/content/Context;
+    //   24: invokestatic 52	bcxm:a	()Lbcxm;
+    //   27: invokevirtual 55	bcxm:a	()Landroid/content/Context;
     //   30: aconst_null
-    //   31: invokestatic 60	bcfa:a	(Landroid/content/Context;Ljava/lang/String;)Lbcfa;
+    //   31: invokestatic 60	bdjb:a	(Landroid/content/Context;Ljava/lang/String;)Lbdjb;
     //   34: ldc 62
-    //   36: invokevirtual 65	bcfa:a	(Ljava/lang/String;)I
+    //   36: invokevirtual 65	bdjb:a	(Ljava/lang/String;)I
     //   39: istore_3
     //   40: iload_3
     //   41: ifne +254 -> 295

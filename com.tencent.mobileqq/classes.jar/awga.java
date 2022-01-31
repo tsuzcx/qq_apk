@@ -1,33 +1,12 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.robotchat.RobotChatTipLayout;
 
-class awga
-  implements awgc
+public abstract interface awga
 {
-  awga(awfz paramawfz) {}
-  
-  public void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat)
-  {
-    if (awfz.a(this.a) != null) {
-      awfz.a(this.a).a(this.a.a, paramFloat);
-    }
-  }
-  
-  public void a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
-  {
-    QLog.d("VideoCompressProcessor", 1, "hardware compress finish code: " + paramInt);
-    if (awfz.a(this.a) != null)
-    {
-      awfz.a(this.a).a(this.a.a, 1.0F);
-      awfz.a(this.a).a(this.a.a, 3);
-    }
-  }
-  
-  public void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean) {}
+  public abstract void a(RobotChatTipLayout paramRobotChatTipLayout);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     awga
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.open.agent.AuthorityControlFragment;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class bbup
-  implements DialogInterface.OnCancelListener
+public final class bbup
+  implements FilenameFilter
 {
-  public bbup(AuthorityControlFragment paramAuthorityControlFragment) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public boolean accept(File paramFile, String paramString)
   {
-    paramDialogInterface = this.a.getActivity();
-    if (paramDialogInterface != null) {
-      paramDialogInterface.doOnBackPressed();
-    }
+    return (paramString.endsWith(".hy")) || (paramString.endsWith(".fz")) || (paramString.endsWith(".hy3")) || (paramString.endsWith(".fz4"));
   }
 }
 

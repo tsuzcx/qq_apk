@@ -1,9 +1,6 @@
-public class ayby
-  extends skj
+public abstract interface ayby
 {
-  public String a;
-  public String b;
-  public String c;
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

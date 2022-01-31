@@ -1,65 +1,74 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView.SharedMemWriteFile;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
+import java.nio.ByteBuffer;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class axlh
-  implements axlf
+public class axlh
 {
-  private IBinder a;
+  public int a;
+  private long jdField_a_of_type_Long;
+  public CameraFilterGLView.SharedMemWriteFile a;
+  public ByteBuffer a;
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  axlh(IBinder paramIBinder)
+  public axlh(int paramInt)
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = false;
+    this.b = 0;
   }
   
-  public IBinder asBinder()
+  public void a()
   {
-    return this.a;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(0);
   }
   
-  public void onComplete(String paramString, int paramInt)
+  public boolean a(int paramInt1, int paramInt2, int paramInt3)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
+    int i = paramInt1 * paramInt2 * paramInt3;
+    if ((this.jdField_a_of_type_Boolean) && (this.b == i) && (this.jdField_a_of_type_JavaNioByteBuffer != null)) {
+      return true;
+    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaNioByteBuffer = null;
     try
     {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+      this.jdField_a_of_type_Long = PtvFilterUtils.getNativePtrIndex(paramInt1, paramInt2, paramInt3, this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Long == 0L) {
+        return false;
+      }
     }
-    finally
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      for (;;)
+      {
+        this.jdField_a_of_type_Long = 0L;
+      }
+      try
+      {
+        this.jdField_a_of_type_JavaNioByteBuffer = PtvFilterUtils.allocateSharedMem(this.jdField_a_of_type_Long);
+        if (this.jdField_a_of_type_JavaNioByteBuffer == null) {
+          return false;
+        }
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+      {
+        for (;;)
+        {
+          this.jdField_a_of_type_JavaNioByteBuffer = null;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        this.b = i;
+      }
     }
-  }
-  
-  public void onProgress(String paramString, long paramLong1, long paramLong2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
-      localParcel1.writeString(paramString);
-      localParcel1.writeLong(paramLong1);
-      localParcel1.writeLong(paramLong2);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axlh
  * JD-Core Version:    0.7.0.1
  */

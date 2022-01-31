@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ajex;
+import ajsz;
 
 class TroopFileItemBuilder$1$1
   implements Runnable
 {
-  TroopFileItemBuilder$1$1(TroopFileItemBuilder.1 param1, ajex paramajex) {}
+  TroopFileItemBuilder$1$1(TroopFileItemBuilder.1 param1, ajsz paramajsz) {}
   
   public void run()
   {

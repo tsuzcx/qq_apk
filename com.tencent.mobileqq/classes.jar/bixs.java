@@ -1,19 +1,17 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
+import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
 
 public class bixs
-  implements AdapterView.OnItemSelectedListener
+  implements DialogInterface.OnCancelListener
 {
-  public bixs(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public bixs(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
+    AEVideoShelfPreviewFragment.a(this.a).cancelSave();
   }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

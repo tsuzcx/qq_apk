@@ -1,79 +1,54 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.util.FaceDecodeTask;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
 
-public final class azwc
-  extends MqqHandler
+public class azwc
+  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  public azwc(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  private azwc(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (paramMessage == null) {}
-    label4:
-    azwd localazwd;
-    label143:
-    label150:
-    do
+    BaseScaleAndMoveBitmapView.a(this.a, false);
+    BaseScaleAndMoveBitmapView localBaseScaleAndMoveBitmapView = this.a;
+    localBaseScaleAndMoveBitmapView.c *= paramScaleGestureDetector.getScaleFactor();
+    this.a.c = Math.max(BaseScaleAndMoveBitmapView.a(this.a), Math.min(this.a.c, BaseScaleAndMoveBitmapView.b(this.a)));
+    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c <= this.a.getHeight())
     {
-      do
-      {
-        int i;
-        do
-        {
-          break label4;
-          do
-          {
-            return;
-          } while (paramMessage.what != FaceDecodeTask.jdField_a_of_type_Int);
-          if (FaceDecodeTask.b.size() <= 0) {
-            break label150;
-          }
-          i = 0;
-          if (i >= FaceDecodeTask.b.size()) {
-            break label143;
-          }
-          paramMessage = (FaceDecodeTask)FaceDecodeTask.b.get(i);
-          if ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-            break;
-          }
-          localazwd = (azwd)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
-        } while (localazwd == null);
-        if (paramMessage.jdField_a_of_type_Boolean)
-        {
-          paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b = 2;
-          localazwd.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          localazwd.a(paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-        FaceDecodeTask.b.clear();
-        return;
-        paramMessage = (FaceDecodeTask)paramMessage.obj;
-      } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
-      localazwd = (azwd)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localazwd == null);
-    if (paramMessage.jdField_a_of_type_Boolean)
-    {
-      paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b = 2;
-      localazwd.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-      return;
+      this.a.b = ((this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c);
+      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c > this.a.getWidth()) {
+        break label323;
+      }
+      this.a.jdField_a_of_type_Float = ((this.a.getWidth() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c) / 2.0F);
     }
-    localazwd.a(paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
+    for (;;)
+    {
+      veg.a("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "onScale %f", Float.valueOf(this.a.c));
+      this.a.invalidate();
+      return true;
+      if (this.a.b(0.0F) >= 0.0F)
+      {
+        this.a.b = 0.0F;
+        break;
+      }
+      if (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) > this.a.getHeight()) {
+        break;
+      }
+      this.a.b = (this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      break;
+      label323:
+      if (this.a.a(0.0F) >= 0.0F) {
+        this.a.jdField_a_of_type_Float = 0.0F;
+      } else if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) <= this.a.getWidth()) {
+        this.a.jdField_a_of_type_Float = (this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azwc
  * JD-Core Version:    0.7.0.1
  */

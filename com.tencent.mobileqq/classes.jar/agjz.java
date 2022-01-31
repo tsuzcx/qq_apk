@@ -1,33 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class agjz
-  implements ThreadExcutor.IThreadListener
+public class agjz
+  implements DialogInterface.OnClickListener
 {
-  agjz(agjw paramagjw, List paramList, Map paramMap, Bundle paramBundle) {}
+  public agjz(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Boolean)
     {
-      batm localbatm = new batm(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilMap, UUID.randomUUID().toString());
-      localbatm.a(this.jdField_a_of_type_AndroidOsBundle);
-      if (this.jdField_a_of_type_Agjw.a != null) {
-        this.jdField_a_of_type_Agjw.a.a(localbatm, agjw.a(this.jdField_a_of_type_Agjw), null);
-      }
+      paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
+      paramDialogInterface.putExtra("main_tab_id", 1);
+      paramDialogInterface.setFlags(603979776);
+      BaseActivity.sTopActivity.startActivity(paramDialogInterface);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA6", "0X8006AA6", 0, 0, "", "", "", "");
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
   }
-  
-  public void onPreRun() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agjz
  * JD-Core Version:    0.7.0.1
  */

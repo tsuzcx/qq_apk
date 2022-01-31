@@ -1,8 +1,25 @@
-public abstract interface afpj
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import java.lang.ref.WeakReference;
+
+class afpj
+  implements View.OnLongClickListener
 {
-  public abstract void a();
+  private WeakReference<afpe> a;
   
-  public abstract void b();
+  public afpj(afpe paramafpe)
+  {
+    this.a = new WeakReference(paramafpe);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    afpe localafpe = (afpe)this.a.get();
+    if (localafpe != null) {
+      return localafpe.onLongClick(paramView);
+    }
+    return false;
+  }
 }
 
 

@@ -1,49 +1,39 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.PatternLockUtils;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
 public class abda
-  implements View.OnClickListener
+  extends ajta
 {
-  public abda(MainFragment paramMainFragment, Dialog paramDialog) {}
+  public abda(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    QLog.flushLog();
-    boolean bool = ((CheckBox)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131298623)).isChecked();
-    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.d = bool;
-    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity(), MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getString(2131652800), "qqsetting_receivemsg_whenexit_key", bool);
-    SyncService.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.d);
-    int i = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).a().b();
-    int j = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).a().a();
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity().getSharedPreferences("unreadcount", 4).edit();
-    paramView.putInt("unread", i + j);
-    paramView.commit();
-    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.g();
-    MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).a = this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.d;
-    MainFragment.c = true;
-    if (QQPlayerService.a())
+    if (paramInt2 == 0)
     {
-      paramView = new Intent();
-      paramView.setAction("qqplayer_exit_action");
-      this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity().sendBroadcast(paramView);
+      this.a.a();
+      if (this.a.isResumed()) {
+        if (paramInt1 != 0) {
+          break label47;
+        }
+      }
     }
-    PatternLockUtils.setFirstEnterAfterLoginState(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity(), MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getCurrentAccountUin(), true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity().finish();
-    awqx.b(MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment), "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "0", "", "", "");
+    label47:
+    while (!this.a.isResumed())
+    {
+      bcpw.a(this.a.getActivity(), 2, ajyc.a(2131704838), 0).a();
+      do
+      {
+        return;
+      } while (paramInt1 != 1);
+      bcpw.a(this.a.getActivity(), 2, ajyc.a(2131704837), 0).a();
+      return;
+    }
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = this.a.getResources().getString(2131694927);
+    }
+    bcpw.a(this.a.getActivity(), 1, paramString1, 0).a();
   }
 }
 

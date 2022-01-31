@@ -1,60 +1,123 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.widget.AbsListView;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class qyu
-  implements qxs, qxu
+  extends qyp
+  implements qyx
 {
-  private static boolean a;
+  private int jdField_a_of_type_Int;
+  private final String jdField_a_of_type_JavaLangString = "ReadInjoyPlayer<" + Integer.toHexString(hashCode()) + ">";
+  public qyw a;
+  private String b;
+  private String c;
   
-  public static void f()
+  public qyu(int paramInt)
   {
-    a = false;
-    SharedPreferences.Editor localEditor = bgmq.a(obz.a(), true, false).edit();
-    localEditor.putBoolean("key_read_injoy_fast_web_share_guide", false);
-    localEditor.commit();
+    super(BaseApplicationImpl.getContext());
+    this.jdField_a_of_type_Qyw = new qyw(paramInt, this);
+    a(this.jdField_a_of_type_Qyw);
   }
   
-  public int a(BaseData paramBaseData)
+  private void a(String paramString, long paramLong)
   {
-    return 17;
-  }
-  
-  public qxr a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131494354, null);
-    ((TextView)paramContext.findViewById(2131312380)).setTextSize(0, Utils.dp2px(15.0D));
-    return new qyv(paramContext, paramBaseData);
-  }
-  
-  public void a() {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.p == 19;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    if (a) {
-      f();
+    if (paramString == null) {
+      return;
     }
+    a(paramString, 2, paramLong);
   }
   
-  public void e() {}
+  private void a(String paramString, long paramLong, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    a(paramString, 2, paramLong, paramInt);
+  }
+  
+  private boolean a(String paramString1, String paramString2)
+  {
+    boolean bool1 = TextUtils.isEmpty(this.b);
+    boolean bool2 = TextUtils.isEmpty(this.c);
+    int i;
+    int j;
+    if ((!bool1) || (!bool2))
+    {
+      i = 1;
+      if ((!bool1) && (!this.b.equals(paramString1))) {
+        break label89;
+      }
+      j = 1;
+      label49:
+      if ((!bool2) && (!this.c.equals(paramString2))) {
+        break label95;
+      }
+    }
+    label89:
+    label95:
+    for (int k = 1;; k = 0)
+    {
+      if ((i == 0) || (j == 0) || (k == 0)) {
+        break label101;
+      }
+      return true;
+      i = 0;
+      break;
+      j = 0;
+      break label49;
+    }
+    label101:
+    return false;
+  }
+  
+  private void b(String paramString, long paramLong, int paramInt)
+  {
+    if (paramString == null) {
+      return;
+    }
+    onx.a().a(paramString, "PubAccountArticleCenter.GetUrlByVid", new qyv(this, paramString, paramLong, paramInt));
+  }
+  
+  private void c(String paramString, long paramLong, int paramInt)
+  {
+    if (paramString == null) {
+      return;
+    }
+    a(paramString, paramString, 2, paramLong, paramInt);
+  }
+  
+  public void a(int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2)
+  {
+    this.b = paramString1;
+    this.c = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "openByBusiType: vid=" + paramString1 + ", url=" + paramString2 + ", busiType=" + paramInt1);
+    }
+    if ((paramInt1 == 1) || (paramInt1 == 3) || (paramInt1 == 7))
+    {
+      a(paramString1, paramLong);
+      return;
+    }
+    if ((paramInt1 == 2) || ((paramInt1 == 6) && (!TextUtils.isEmpty(paramString1))))
+    {
+      b(paramString1, paramLong, paramInt2);
+      return;
+    }
+    if (paramInt1 == 5)
+    {
+      c(paramString1, paramLong, paramInt2);
+      return;
+    }
+    a(paramString2, paramLong, paramInt2);
+  }
+  
+  public void a(qbx paramqbx)
+  {
+    paramqbx.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    paramqbx.i = b();
+    paramqbx.j = c();
+  }
 }
 
 

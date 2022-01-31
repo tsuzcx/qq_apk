@@ -1,65 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.widget.RelativeLayout;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavOperationMenuView;
+import com.tencent.av.ui.QavPanel;
 
-final class mid
-  implements axrt
+public class mid
+  implements mii
 {
-  mid(mif parammif) {}
+  public mid(QavPanel paramQavPanel) {}
   
-  public void onResp(axsq paramaxsq)
+  public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
   {
-    if (paramaxsq.jdField_a_of_type_Int == 3) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ScoreManager", 1, "Download init. url = " + ((axro)paramaxsq.jdField_a_of_type_Axsp).a);
-      }
-    }
-    do
+    if ((paramBoolean) && ((paramRelativeLayout instanceof QavOperationMenuView)))
     {
-      for (;;)
-      {
-        return;
-        if (paramaxsq.jdField_a_of_type_Int == 0)
-        {
-          File localFile = new File(((axro)paramaxsq.jdField_a_of_type_Axsp).c);
-          String str = attn.a(localFile.getAbsolutePath());
-          if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.a.b)))
-          {
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.i("ScoreManager", 1, "Download end. MD5 check error. url = " + ((axro)paramaxsq.jdField_a_of_type_Axsp).a + ", fileName = " + localFile.getAbsolutePath() + ", fileMD5 = " + str);
-            return;
-          }
-          try
-          {
-            paramaxsq = new File(this.a.c);
-            akuq.a(this.a.c, paramaxsq.getParentFile().getAbsolutePath() + File.separator);
-            if (QLog.isColorLevel()) {
-              QLog.i("ScoreManager", 1, "onDownloadComplete  path : " + paramaxsq.getParentFile().getAbsolutePath());
-            }
-            if (QLog.isColorLevel())
-            {
-              QLog.i("ScoreManager", 1, "qav_score_good : " + mgw.a("qav_score_good.jpg") + ", qav_score_normal : " + mgw.a("qav_score_normal.jpg") + ", qav_score_bad : " + mgw.a("qav_score_bad.jpg"));
-              return;
-            }
-          }
-          catch (Exception paramaxsq)
-          {
-            new File(this.a.c).delete();
-          }
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ScoreManager", 1, "Download end. uncompressZip error.");
-  }
-  
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScoreManager", 2, "onUpdateProgeress. url = " + ((axro)paramaxsp).a + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
+      paramRelativeLayout = (QavOperationMenuView)paramRelativeLayout;
+      paramRelativeLayout.a(this.a.a.b("BEAUTY_SKIN"));
+      paramRelativeLayout.a();
     }
   }
+  
+  public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean) {}
 }
 
 

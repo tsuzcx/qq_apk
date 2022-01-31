@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdef;
-import bdeg;
-import bdfz;
-import bdhf;
-import bdnw;
+import beif;
+import beig;
+import beka;
+import beli;
+import besl;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 class StorageJsPlugin$3
   implements StorageJsPlugin.StorageTask
 {
-  StorageJsPlugin$3(StorageJsPlugin paramStorageJsPlugin, bdfz parambdfz) {}
+  StorageJsPlugin$3(StorageJsPlugin paramStorageJsPlugin, beka parambeka) {}
   
   public String run()
   {
@@ -28,14 +28,14 @@ class StorageJsPlugin$3
       {
         localObject = ((Set)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          localHashSet.add(bdhf.b((String)((Iterator)localObject).next()));
+          localHashSet.add(beli.b((String)((Iterator)localObject).next()));
         }
       }
-      localException.put("keys", bdef.a(localHashSet));
+      localException.put("keys", beif.a(localHashSet));
     }
     catch (Exception localException)
     {
-      bdnw.d("StorageJsPlugin", this.val$req.a + " result error." + localException);
+      besl.d("StorageJsPlugin", this.val$req.a + " result error." + localException);
       return this.val$req.a("json error");
     }
     String str = this.val$req.a(localException);

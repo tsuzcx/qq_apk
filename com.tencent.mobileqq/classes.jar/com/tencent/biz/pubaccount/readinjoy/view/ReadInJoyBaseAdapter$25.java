@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import bgmq;
+import bhvh;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.AbsListView;
 import java.util.Calendar;
-import qoe;
+import rap;
 
 public class ReadInJoyBaseAdapter$25
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$25(qoe paramqoe, AbsListView paramAbsListView) {}
+  public ReadInJoyBaseAdapter$25(rap paramrap, AbsListView paramAbsListView) {}
   
   public void run()
   {
@@ -18,31 +18,31 @@ public class ReadInJoyBaseAdapter$25
     int j;
     long l1;
     long l2;
-    if ((qoe.a(this.this$0) == 0) && (bgmq.h(qoe.a()) > 0) && (this.a.getLastVisiblePosition() >= bgmq.h(qoe.a())) && (bgmq.g(qoe.a()) > 0))
+    if ((rap.a(this.this$0) == 0) && (bhvh.h(rap.a()) > 0) && (this.a.getLastVisiblePosition() >= bhvh.h(rap.a())) && (bhvh.g(rap.a()) > 0))
     {
-      qoe.a(this.this$0, this.a.getLastVisiblePosition());
-      i = bgmq.g(qoe.a());
-      j = bgmq.i(qoe.a());
+      rap.a(this.this$0, this.a.getLastVisiblePosition());
+      i = bhvh.g(rap.a());
+      j = bhvh.i(rap.a());
       Calendar localCalendar = Calendar.getInstance();
       localCalendar.set(10, 0);
       localCalendar.set(12, 0);
       localCalendar.set(13, 0);
       localCalendar.set(14, 0);
       l1 = localCalendar.getTimeInMillis();
-      l2 = bgmq.a(qoe.a());
+      l2 = bhvh.a(rap.a());
       if (l1 <= l2) {
         break label161;
       }
-      bgmq.j(qoe.a(), 1);
-      bgmq.a(qoe.a(), l1);
-      ((KandianMergeManager)qoe.a().getManager(162)).n();
+      bhvh.j(rap.a(), 1);
+      bhvh.a(rap.a(), l1);
+      ((KandianMergeManager)rap.a().getManager(162)).n();
     }
     label161:
     while ((l1 != l2) || (j >= i)) {
       return;
     }
-    bgmq.j(qoe.a(), j + 1);
-    ((KandianMergeManager)qoe.a().getManager(162)).n();
+    bhvh.j(rap.a(), j + 1);
+    ((KandianMergeManager)rap.a().getManager(162)).n();
   }
 }
 

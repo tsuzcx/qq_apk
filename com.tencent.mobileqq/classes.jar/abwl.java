@@ -1,16 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
-class abwl
-  implements DialogInterface.OnClickListener
+public class abwl
+  implements View.OnTouchListener
 {
-  abwl(abwj paramabwj, bafb parambafb) {}
+  public abwl(QQSettingMe paramQQSettingMe, ImageView paramImageView, TextView paramTextView, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    awqx.b(this.jdField_a_of_type_Abwj.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Abwj.a.a, "", "", "");
-    this.jdField_a_of_type_Bafb.cancel();
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      muf.a(this.jdField_a_of_type_AndroidWidgetImageView, 0.5F);
+      muf.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
+      muf.a(this.jdField_a_of_type_AndroidViewView, 0.5F);
+      continue;
+      muf.a(this.jdField_a_of_type_AndroidWidgetImageView, 1.0F);
+      muf.a(this.jdField_a_of_type_AndroidWidgetTextView, 1.0F);
+      muf.a(this.jdField_a_of_type_AndroidViewView, 1.0F);
+    }
   }
 }
 

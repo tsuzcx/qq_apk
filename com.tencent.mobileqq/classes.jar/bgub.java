@@ -1,6 +1,27 @@
-public abstract interface bgub
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+
+class bgub
+  implements INetInfoHandler
 {
-  public abstract void a(int paramInt);
+  bgub(bgua parambgua) {}
+  
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    bgua.a(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    bgua.a(this.a);
+  }
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

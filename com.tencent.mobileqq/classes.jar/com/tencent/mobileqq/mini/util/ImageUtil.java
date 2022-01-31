@@ -11,7 +11,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.text.TextUtils;
-import baip;
+import bbjw;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedInputStream;
@@ -343,7 +343,7 @@ public class ImageUtil
     //   0: aconst_null
     //   1: astore_2
     //   2: aload_0
-    //   3: invokestatic 204	baip:a	(Ljava/lang/String;)Z
+    //   3: invokestatic 204	bbjw:a	(Ljava/lang/String;)Z
     //   6: ifeq +7 -> 13
     //   9: aload_2
     //   10: astore_0
@@ -501,7 +501,7 @@ public class ImageUtil
   
   public static Bitmap getLocalCompressedBitmap(String paramString, BitmapFactory.Options paramOptions)
   {
-    if ((baip.a(paramString)) || (paramOptions == null)) {
+    if ((bbjw.a(paramString)) || (paramOptions == null)) {
       paramOptions = null;
     }
     Bitmap localBitmap;

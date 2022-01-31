@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aoly;
+import apcs;
 
 public class ThumbDownloadManager$2
   implements Runnable
 {
-  public ThumbDownloadManager$2(aoly paramaoly, String paramString) {}
+  public ThumbDownloadManager$2(apcs paramapcs, String paramString) {}
   
   public void run()
   {
-    aoly.a(this.this$0, this.a);
-    aoly.b(this.this$0, this.a);
+    apcs.a(this.this$0, this.a);
+    apcs.b(this.this$0, this.a);
   }
 }
 

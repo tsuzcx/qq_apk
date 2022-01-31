@@ -14,6 +14,8 @@ public abstract interface IReportDelegate
   
   public abstract void reportHttpData(HashMap<String, String> paramHashMap, String paramString);
   
+  public abstract void reportJsError(boolean paramBoolean, int paramInt, String paramString);
+  
   public abstract void reportPageProcess(String paramString1, String paramString2, String paramString3);
   
   public abstract void reportRunningData(HashMap<String, String> paramHashMap, String paramString);

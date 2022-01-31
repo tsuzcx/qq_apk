@@ -14,12 +14,12 @@ class GameGrowthGuardianManager$GuardInstructionDialogRealNameAuthenticate
   
   protected GameGrowthGuardianManager.DialogAction getNegativeDialogAction()
   {
-    return new GameGrowthGuardianManager.DialogAction(2131625035, new GameGrowthGuardianManager.GuardInstructionDialogRealNameAuthenticate.1(this));
+    return new GameGrowthGuardianManager.DialogAction(2131690596, new GameGrowthGuardianManager.GuardInstructionDialogRealNameAuthenticate.1(this));
   }
   
   protected GameGrowthGuardianManager.DialogAction getPositiveDialogAction()
   {
-    return new GameGrowthGuardianManager.DialogAction(2131631637, new GameGrowthGuardianManager.GuardInstructionDialogRealNameAuthenticate.2(this));
+    return new GameGrowthGuardianManager.DialogAction(2131697349, new GameGrowthGuardianManager.GuardInstructionDialogRealNameAuthenticate.2(this));
   }
 }
 

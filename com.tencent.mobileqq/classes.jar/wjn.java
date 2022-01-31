@@ -1,21 +1,24 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class wjn
-  implements bayf
+public class wjn
+  implements wkn
 {
-  wjn(wjk paramwjk, int paramInt, String paramString) {}
+  public wjn(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
   
-  public void a(Bundle paramBundle)
+  public void a()
   {
-    paramBundle.putInt("seq", this.jdField_a_of_type_Int);
-    paramBundle.putString("processName", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Wjk.a.a(144, paramBundle);
+    if (RecommendBannerFeedItemView.a(this.a) == null) {
+      return;
+    }
+    xhe.a(RecommendBannerFeedItemView.a(this.a).poster.id.get(), "auth_page", "recom_follow_b", 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wjn
  * JD-Core Version:    0.7.0.1
  */

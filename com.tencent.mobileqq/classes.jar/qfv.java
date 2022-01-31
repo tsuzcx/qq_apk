@@ -1,14 +1,23 @@
-import android.app.Activity;
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyTopicSelectionFragment;
+import java.util.List;
 
-class qfv
-  implements qnz
+public class qfv
+  extends osp
 {
-  qfv(qft paramqft, Activity paramActivity) {}
+  public qfv(ReadInJoyTopicSelectionFragment paramReadInJoyTopicSelectionFragment) {}
   
-  public void a(View paramView)
+  public void a(List<String> paramList, List<TopicInfo> paramList1)
   {
-    paramView.setTag(new qap(paramView, this.jdField_a_of_type_AndroidAppActivity));
+    if (paramList.size() == 0)
+    {
+      ReadInJoyTopicSelectionFragment.a(this.a).clear();
+      ReadInJoyTopicSelectionFragment.a(this.a).addAll(paramList1);
+      this.a.a.clear();
+      this.a.a.addAll(ReadInJoyTopicSelectionFragment.a(paramList1));
+      ReadInJoyTopicSelectionFragment.a(this.a).notifyDataSetChanged();
+      onk.a(ReadInJoyTopicSelectionFragment.a(this.a), ReadInJoyTopicSelectionFragment.a(this.a), "0");
+    }
   }
 }
 

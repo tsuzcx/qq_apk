@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.message.messageclean;
 
-import akdi;
+import akru;
 
 public class MessageCleanManager$3
   implements Runnable
 {
-  public MessageCleanManager$3(akdi paramakdi) {}
+  public MessageCleanManager$3(akru paramakru) {}
   
   public void run()
   {
-    if (!akdi.a(this.this$0)) {
-      akdi.c(this.this$0);
+    if (!akru.a(this.this$0)) {
+      akru.c(this.this$0);
     }
   }
 }

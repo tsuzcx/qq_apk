@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import ajph;
+import akdr;
 import com.tencent.mobileqq.flashchat.FlashChatManager;
 
 public class QIMNewFriendManager$1
   implements Runnable
 {
-  public QIMNewFriendManager$1(ajph paramajph, QQAppInterface paramQQAppInterface) {}
+  public QIMNewFriendManager$1(akdr paramakdr, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

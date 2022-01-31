@@ -9,6 +9,7 @@ import android.view.Window;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
@@ -41,6 +42,13 @@ class MiniAppVideoPlayer$15
     this.this$0.isFullScreen = true;
     MiniAppVideoPlayer.access$4100(this.this$0).setVisibility(0);
     MiniAppVideoPlayer.access$4200(this.this$0).setVisibility(0);
+    if (this.this$0.hideTimeDesc)
+    {
+      MiniAppVideoPlayer.access$3200(this.this$0).setVisibility(0);
+      MiniAppVideoPlayer.access$1900(this.this$0).setVisibility(0);
+      MiniAppVideoPlayer.access$3300(this.this$0).setVisibility(0);
+      MiniAppVideoPlayer.access$3200(this.this$0).setText(MiniAppVideoPlayer.access$1700(MiniAppVideoPlayer.access$800(this.this$0).getDuration()));
+    }
     if (this.this$0.webviewContainer != null)
     {
       MiniAppVideoPlayer.access$4302(this.this$0, this.this$0.webviewContainer.appBrandRuntime.getCurPage().getNavBar().getVisibility());
@@ -75,7 +83,7 @@ class MiniAppVideoPlayer$15
       if ((MiniAppVideoPlayer.access$4900(this.this$0) == 0) || (MiniAppVideoPlayer.access$4900(this.this$0) == 180))
       {
         if (j >= i) {
-          break label622;
+          break label690;
         }
         bool = false;
       }
@@ -84,26 +92,26 @@ class MiniAppVideoPlayer$15
     {
       i = DisplayUtil.getRealHeight(this.this$0.getContext());
       j = ImmersiveUtils.a();
-      label390:
-      label395:
+      label458:
+      label463:
       Object localObject;
       if (bool)
       {
         k = i;
         if (!bool) {
-          break label539;
+          break label607;
         }
         if (this.this$0.webviewContainer != null) {
-          break label544;
+          break label612;
         }
         localObject = new RelativeLayout.LayoutParams(k, j);
         ((RelativeLayout.LayoutParams)localObject).leftMargin = 0;
         ((RelativeLayout.LayoutParams)localObject).topMargin = 0;
         ((CoverVideoView)this.this$0.getParent()).setLayoutParams((ViewGroup.LayoutParams)localObject);
-        label443:
+        label511:
         localActivity.getWindow().getDecorView().setSystemUiVisibility(2);
         if (!bool) {
-          break label585;
+          break label653;
         }
         if (this.this$0.direction != -90)
         {
@@ -123,29 +131,29 @@ class MiniAppVideoPlayer$15
         MiniAppVideoPlayer.access$5100(this.this$0, bool);
         return;
         if (j <= i) {
-          break label622;
+          break label690;
         }
         bool = false;
         break;
         k = j;
-        break label390;
-        label539:
+        break label458;
+        label607:
         j = i;
-        break label395;
-        label544:
+        break label463;
+        label612:
         localObject = new FrameLayout.LayoutParams(k, j);
         ((FrameLayout.LayoutParams)localObject).leftMargin = 0;
         ((FrameLayout.LayoutParams)localObject).topMargin = 0;
         ((CoverVideoView)this.this$0.getParent()).setLayoutParams((ViewGroup.LayoutParams)localObject);
-        break label443;
-        label585:
+        break label511;
+        label653:
         if ((this.this$0.direction == 180) || (this.this$0.direction == -180)) {
           i = 9;
         } else {
           i = 1;
         }
       }
-      label622:
+      label690:
       bool = true;
     }
   }

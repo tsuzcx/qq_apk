@@ -1,68 +1,32 @@
-import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
 
 public class acpa
-  extends AsyncTask<Long, Void, Void>
+  implements DialogInterface.OnClickListener
 {
-  private Object jdField_a_of_type_JavaLangObject;
+  public acpa(UpgradeDetailActivity paramUpgradeDetailActivity, int paramInt) {}
   
-  public acpa(VipPngPlayAnimationDrawable paramVipPngPlayAnimationDrawable, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  protected Void a(Long... paramVarArgs)
-  {
-    try
+    switch (paramInt)
     {
-      long l1 = paramVarArgs[0].longValue();
-      long l2 = paramVarArgs[1].longValue();
-      long l3 = paramVarArgs[2].longValue();
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a((int)l3, this.jdField_a_of_type_JavaLangObject, (int)l2);
-      if ((paramVarArgs != null) && (!isCancelled()))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_AndroidGraphicsBitmap = paramVarArgs;
-        l2 = SystemClock.uptimeMillis();
-        if (l2 < l1)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable, l1 - l2);
-          return null;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable);
-        return null;
-      }
+    default: 
+      return;
+    case 0: 
+      akva.a().b(false);
+      paramDialogInterface.dismiss();
+      UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 3);
+      return;
     }
-    catch (OutOfMemoryError paramVarArgs)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("VipPngPlayAnimationDrawable", 4, "", paramVarArgs);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_Boolean = true;
-      return null;
-    }
-    catch (Throwable paramVarArgs)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("VipPngPlayAnimationDrawable", 4, "", paramVarArgs);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_Boolean = true;
-    }
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_Acpa = null;
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acpa
  * JD-Core Version:    0.7.0.1
  */

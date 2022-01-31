@@ -1,23 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.16.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.core.ViolaEnvironment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import mqq.app.MobileQQ;
 
-public class rnc
-  implements rnl
+class rnc
+  implements bcwh
 {
-  public rnc(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
+  rnc(rnb paramrnb, ArticleInfo paramArticleInfo, int paramInt) {}
   
-  public void a() {}
-  
-  public void a(String paramString)
+  public void a(BaseResp paramBaseResp)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_BIZ_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    boolean bool = true;
+    if ((rnb.a(this.jdField_a_of_type_Rnb) == null) || (!rnb.a(this.jdField_a_of_type_Rnb).equals(paramBaseResp.transaction))) {
+      return;
     }
-    if (QLog.isColorLevel()) {
-      ThreadManager.post(new ViolaBaseView.16.1(this, paramString), 8, null, true);
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      wim.b(1, 2131719476);
+      bool = false;
+    }
+    for (;;)
+    {
+      paramBaseResp = (AppInterface)onk.a();
+      rnr.a(paramBaseResp.getApplication().getApplicationContext(), paramBaseResp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false, bool);
+      return;
+      wim.b(2, 2131719495);
+      continue;
+      bool = false;
     }
   }
 }

@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import com.tencent.mobileqq.app.QQAppInterface;
+import nzn;
 
 class ReadinjoyTabFrame$33
   implements Runnable
@@ -9,7 +10,10 @@ class ReadinjoyTabFrame$33
   
   public void run()
   {
-    ReadinjoyTabFrame.a(this.this$0).b();
+    if (this.this$0.a == null) {
+      return;
+    }
+    ((nzn)this.this$0.a.a(163)).a();
   }
 }
 

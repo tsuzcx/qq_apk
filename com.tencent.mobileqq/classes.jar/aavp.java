@@ -1,48 +1,25 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class aavp
-  implements begw
+public final class aavp
+  implements Comparator<PhoneContact>
 {
-  public aavp(FriendProfileCardActivity paramFriendProfileCardActivity, String paramString1, String paramString2, int paramInt, boolean paramBoolean, begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    int i = 60;
-    if (paramInt == 0)
+    boolean bool1 = TextUtils.isEmpty(paramPhoneContact1.pinyinFirst);
+    boolean bool2 = TextUtils.isEmpty(paramPhoneContact2.pinyinFirst);
+    if ((bool1) || (bool2))
     {
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, EditInfoActivity.class);
-      paramView.putExtra("title", this.jdField_a_of_type_JavaLangString);
-      paramView.putExtra("default_text", this.b);
-      paramView.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataCard.uin);
-      paramView.putExtra("edit_action", this.jdField_a_of_type_Int);
-      paramView.putExtra("max_limit_mode", 1);
-      paramView.putExtra("edit_type", 2);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramView.putExtra("max_num", 60);
-        paramView.putExtra("isTroopNick", true);
-        paramView.putExtra("troopUin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivityForResult(paramView, 1034);
+      if ((bool1) && (bool2)) {
+        return 0;
       }
-    }
-    else
-    {
-      if (this.jdField_a_of_type_Begr != null) {
-        this.jdField_a_of_type_Begr.dismiss();
+      if (bool2) {
+        return -1;
       }
-      return;
+      return 1;
     }
-    if (this.jdField_a_of_type_Int == 2) {}
-    for (paramInt = i;; paramInt = 36)
-    {
-      paramView.putExtra("max_num", paramInt);
-      paramView.putExtra("support_emotion", true);
-      break;
-    }
+    return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
   }
 }
 

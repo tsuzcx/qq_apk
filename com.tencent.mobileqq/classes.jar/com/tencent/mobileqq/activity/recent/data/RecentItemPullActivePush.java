@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import baiu;
+import bbkb;
 import com.tencent.mobileqq.data.RecentUser;
 
 public class RecentItemPullActivePush
@@ -17,7 +17,7 @@ public class RecentItemPullActivePush
   {
     this.mTitleName = paramString;
     this.time = paramLong;
-    this.mShowTime = baiu.a(paramLong, true, "yyyy-MM-dd");
+    this.mShowTime = bbkb.a(paramLong, true, "yyyy-MM-dd");
   }
 }
 

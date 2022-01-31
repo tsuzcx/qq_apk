@@ -2,7 +2,7 @@ package com.tencent.mobileqq.dating;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bbmv;
+import bcpt;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.nearby.NearbyTitleBarActivity;
 
@@ -11,24 +11,24 @@ public class DatingBaseActivity
 {
   public static final boolean a;
   protected int a;
-  protected bbmv a;
+  protected bcpt a;
   public boolean b;
   public boolean c;
   
   static
   {
-    jdField_a_of_type_Boolean = AppSetting.c;
+    jdField_a_of_type_Boolean = AppSetting.d;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_Int = getTitleBarHeight();
-    this.jdField_a_of_type_Bbmv = new bbmv(this);
+    this.jdField_a_of_type_Bcpt = new bcpt(this);
     this.b = getIntent().getBooleanExtra("abp_flag", false);
     this.c = getIntent().getBooleanExtra("is_from_web", false);
     if ((this.c) && (!this.b)) {
-      setLeftViewName(2131624770);
+      setLeftViewName(2131690331);
     }
     return true;
   }
@@ -36,8 +36,8 @@ public class DatingBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bbmv != null) {
-      this.jdField_a_of_type_Bbmv.b();
+    if (this.jdField_a_of_type_Bcpt != null) {
+      this.jdField_a_of_type_Bcpt.b();
     }
   }
   

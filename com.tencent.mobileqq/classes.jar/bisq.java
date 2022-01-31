@@ -1,27 +1,14 @@
-import android.annotation.TargetApi;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bisq
+class bisq
+  implements View.OnClickListener
 {
-  @TargetApi(16)
-  public static int a(MediaExtractor paramMediaExtractor)
+  bisq(biso parambiso) {}
+  
+  public void onClick(View paramView)
   {
-    int j = paramMediaExtractor.getTrackCount();
-    int i = 0;
-    while (i < j)
-    {
-      MediaFormat localMediaFormat = paramMediaExtractor.getTrackFormat(i);
-      String str = localMediaFormat.getString("mime");
-      if (str.startsWith("video/"))
-      {
-        Log.d("VideoUtils", "Extractor selected track " + i + " (" + str + "): " + localMediaFormat);
-        return i;
-      }
-      i += 1;
-    }
-    return -1;
+    this.a.d();
   }
 }
 

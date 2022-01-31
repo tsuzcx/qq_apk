@@ -1,35 +1,41 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-
-class uzv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class uzv<T>
+  extends uzu
 {
-  private uzv(uzn paramuzn) {}
+  public T a;
+  public String a;
+  public uzx<T> a;
   
-  public void onGlobalLayout()
+  public uzv(uzx<T> paramuzx)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom();
-    if (this.a.c < 0)
-    {
-      this.a.c = i;
-      this.a.jdField_a_of_type_Uzu.a();
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.c - i <= this.a.b);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-      this.a.c = i;
-      this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
-    } while (this.a.jdField_a_of_type_Uzu == null);
-    this.a.jdField_a_of_type_Uzu.a(true, null);
-    this.a.jdField_a_of_type_Uzu.a(this.a.a());
+    this.jdField_a_of_type_JavaLangString = "GetResultSimpleStep";
+    this.jdField_a_of_type_Uzx = paramuzx;
   }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Uzx != null) {
+      this.jdField_a_of_type_Uzx.a(this.jdField_a_of_type_JavaLangObject);
+    }
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

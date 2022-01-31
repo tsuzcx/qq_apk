@@ -1,48 +1,71 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
-class pbt
+public class pbt
 {
-  private final Drawable a;
-  private final Drawable b;
+  private static pbt jdField_a_of_type_Pbt;
+  private SparseArray<ChannelInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private boolean jdField_a_of_type_Boolean = true;
   
-  pbt(Context paramContext)
+  public static pbt a()
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837548);
-    this.b = paramContext.getDrawable(2130837550);
+    if (jdField_a_of_type_Pbt == null) {}
+    try
+    {
+      if (jdField_a_of_type_Pbt == null) {
+        jdField_a_of_type_Pbt = new pbt();
+      }
+      return jdField_a_of_type_Pbt;
+    }
+    finally {}
   }
   
-  private Drawable a(Drawable paramDrawable)
+  public void a(List<Integer> paramList)
   {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        int i = ((Integer)paramList.next()).intValue();
+        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
+      }
+    }
   }
   
-  private Drawable b(Drawable paramDrawable)
+  public void b(List<Integer> paramList)
   {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
-  }
-  
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
-  }
-  
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      ArrayList localArrayList = new ArrayList();
+      int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+      int i = 0;
+      while (i < j)
+      {
+        int k = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
+        if ((!onk.a(k)) && (!paramList.contains(Integer.valueOf(k)))) {
+          localArrayList.add(Integer.valueOf(k));
+        }
+        i += 1;
+      }
+      paramList = localArrayList.iterator();
+      while (paramList.hasNext())
+      {
+        i = ((Integer)paramList.next()).intValue();
+        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
+      }
+    }
   }
 }
 

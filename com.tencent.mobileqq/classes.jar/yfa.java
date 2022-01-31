@@ -1,56 +1,34 @@
-import android.content.Context;
-import android.provider.Settings.Secure;
-import android.telephony.TelephonyManager;
-import java.io.File;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.util.Enumeration;
-import java.util.UUID;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.msg.data.MessageForDevShortVideo;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class yfa
-  extends bcax
+public final class yfa
+  implements Parcelable.Creator<MessageForShortVideo>
 {
-  private static final String b = ;
-  
-  public static String a()
+  public MessageForDevShortVideo a(Parcel paramParcel)
   {
-    return b + File.separator + ".GameCenterWebBuffer" + File.separator + "Images/games";
+    MessageForDevShortVideo localMessageForDevShortVideo = new MessageForDevShortVideo();
+    localMessageForDevShortVideo.uuid = paramParcel.readString();
+    localMessageForDevShortVideo.md5 = paramParcel.readString();
+    localMessageForDevShortVideo.videoFileName = paramParcel.readString();
+    localMessageForDevShortVideo.videoFileSize = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileFormat = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileTime = paramParcel.readInt();
+    localMessageForDevShortVideo.thumbWidth = paramParcel.readInt();
+    localMessageForDevShortVideo.thumbHeight = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileStatus = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileProgress = paramParcel.readInt();
+    localMessageForDevShortVideo.fileType = paramParcel.readInt();
+    localMessageForDevShortVideo.thumbMD5 = paramParcel.readString();
+    localMessageForDevShortVideo.fileSource = paramParcel.readString();
+    localMessageForDevShortVideo.lastModified = paramParcel.readLong();
+    return localMessageForDevShortVideo;
   }
   
-  public static String a(Context paramContext)
+  public MessageForDevShortVideo[] a(int paramInt)
   {
-    Object localObject = (TelephonyManager)paramContext.getSystemService("phone");
-    String str = "" + ((TelephonyManager)localObject).getDeviceId();
-    localObject = "" + ((TelephonyManager)localObject).getSimSerialNumber();
-    long l1 = ("" + Settings.Secure.getString(paramContext.getContentResolver(), "android_id")).hashCode();
-    long l2 = str.hashCode();
-    return new UUID(l1, ((String)localObject).hashCode() | l2 << 32).toString();
-  }
-  
-  public static String b()
-  {
-    try
-    {
-      InetAddress localInetAddress;
-      do
-      {
-        localObject = NetworkInterface.getNetworkInterfaces();
-        Enumeration localEnumeration;
-        while (!localEnumeration.hasMoreElements())
-        {
-          if (!((Enumeration)localObject).hasMoreElements()) {
-            break;
-          }
-          localEnumeration = ((NetworkInterface)((Enumeration)localObject).nextElement()).getInetAddresses();
-        }
-        localInetAddress = (InetAddress)localEnumeration.nextElement();
-      } while (localInetAddress.isLoopbackAddress());
-      Object localObject = localInetAddress.getHostAddress().toString();
-      return localObject;
-    }
-    catch (SocketException localSocketException) {}
-    return null;
+    return new MessageForDevShortVideo[paramInt];
   }
 }
 

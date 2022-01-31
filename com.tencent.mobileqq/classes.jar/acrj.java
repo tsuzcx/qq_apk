@@ -1,23 +1,41 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
+import java.util.ArrayList;
 
 public class acrj
-  implements TextView.OnEditorActionListener
+  extends akjz
 {
-  public acrj(VoiceTextEditPanel paramVoiceTextEditPanel) {}
+  public acrj(ActivateFriendGrid paramActivateFriendGrid) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void b()
   {
-    boolean bool = false;
-    if (paramInt == 4)
-    {
-      awqx.b(null, "dc00898", "", "", "0X800A89F", "0X800A89F", 0, 0, "", "", "", "");
-      VoiceTextEditPanel.a(this.a);
-      bool = true;
+    if ((ActivateFriendGrid.a(this.a) == null) || (ActivateFriendGrid.b(this.a) == null)) {
+      return;
     }
-    return bool;
+    int i = 0;
+    label23:
+    if (i < ActivateFriendGrid.a(this.a).size())
+    {
+      if (!this.a.a.c(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2)) {
+        break label122;
+      }
+      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
+      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689585));
+    }
+    for (;;)
+    {
+      i += 1;
+      break label23;
+      break;
+      label122:
+      if (this.a.a.b(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2))
+      {
+        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
+        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689588));
+      }
+    }
   }
 }
 

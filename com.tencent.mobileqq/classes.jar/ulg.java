@@ -1,30 +1,28 @@
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
+import android.os.Handler;
+import android.os.Message;
+import java.util.List;
 
 class ulg
-  extends LruCache<ulh, Drawable>
+  implements ule
 {
-  ulg(ule paramule, int paramInt)
+  ulg(ulf paramulf, List paramList, Bitmap[] paramArrayOfBitmap, Handler paramHandler) {}
+  
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    super(paramInt);
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
+    ukm.b(ulf.a(this.jdField_a_of_type_Ulf), "bitmap download success index=%d, url=%s", Integer.valueOf(i), paramString);
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = paramBitmap;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 0, this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap), 200L);
   }
   
-  protected int a(ulh paramulh, Drawable paramDrawable)
+  public void a(String paramString, Throwable paramThrowable)
   {
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
-      {
-        int i = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * i;
-        ulq.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramulh, " size=", Integer.valueOf(i) });
-        return i;
-      }
-    }
-    return 524288;
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
+    ukm.c(ulf.a(this.jdField_a_of_type_Ulf), "bitmap download failed index=%s, error=%s", Integer.valueOf(i), paramThrowable);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramThrowable), 500L);
   }
 }
 

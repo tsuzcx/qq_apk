@@ -1,62 +1,129 @@
-import android.graphics.Bitmap;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.NearbyIconDecoder.1;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 public class asdp
-  implements Handler.Callback, avcd, azxl
 {
-  NearbyAppInterface a;
-  public List<azxm> a;
-  List<String> b;
-  List<String> c;
+  private ascy jdField_a_of_type_Ascy;
+  private ascz jdField_a_of_type_Ascz;
+  private asdb jdField_a_of_type_Asdb;
+  private asde jdField_a_of_type_Asde;
+  private asdq jdField_a_of_type_Asdq;
   
-  protected void a(String paramString, Bitmap paramBitmap)
+  public void a()
   {
-    asfl.a("NearbyIconDecoder", "notifyGetIcon", new Object[] { paramString, paramBitmap });
-    this.a.runOnUiThread(new NearbyIconDecoder.1(this, paramString, paramBitmap));
-  }
-  
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap, int paramInt)
-  {
-    asfl.a("NearbyIconDecoder", "onDecodeBitmap", new Object[] { paramString1, paramString2, paramBitmap, Integer.valueOf(paramInt) });
-    if (paramString1 == null) {}
-    while (paramBitmap == null) {
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicfacePlayManager", 2, "func init begins, magicfaceDecoder:" + this.jdField_a_of_type_Ascz);
+    }
+    if (this.jdField_a_of_type_Ascz == null)
+    {
+      boolean bool = bbct.d();
+      long l = Math.min(bbct.g(), bbct.h());
+      if ((!bool) || (l < 720L)) {
+        break label118;
+      }
+      this.jdField_a_of_type_Ascz = new ascw();
+      if (QLog.isColorLevel()) {
+        QLog.d("MagicfacePlayManager", 2, "func init, use [SuperBigDecoder]");
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Ascz.a(this.jdField_a_of_type_Asdb);
+      if (QLog.isColorLevel()) {
+        QLog.d("MagicfacePlayManager", 2, "func init ends.");
+      }
       return;
+      label118:
+      if ("xbig".equalsIgnoreCase(asde.a()))
+      {
+        this.jdField_a_of_type_Ascz = new asdf();
+        if (QLog.isColorLevel()) {
+          QLog.d("MagicfacePlayManager", 2, "func init, use [XBigDecoder]");
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_Ascz = new asdc();
+        if (QLog.isColorLevel()) {
+          QLog.d("MagicfacePlayManager", 2, "func init, use [FFMepgDecoder]");
+        }
+      }
     }
-    a(paramString1, paramBitmap);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
+    if (this.jdField_a_of_type_Ascz != null) {
+      this.jdField_a_of_type_Ascz.a(paramInt);
     }
-    asfl.a("NearbyIconDecoder", "MSG_GET_ICON_URL", new Object[] { Integer.valueOf(this.b.size()), Integer.valueOf(this.c.size()) });
-    paramMessage = new ArrayList(this.b.size());
-    synchronized (this.b)
-    {
-      paramMessage.addAll(this.b);
-      this.b.clear();
+  }
+  
+  public void a(asda paramasda)
+  {
+    if (this.jdField_a_of_type_Ascz != null) {
+      this.jdField_a_of_type_Ascz.a(paramasda);
     }
-    synchronized (this.c)
+  }
+  
+  public void a(asdb paramasdb)
+  {
+    this.jdField_a_of_type_Asdb = paramasdb;
+  }
+  
+  public void a(asdd paramasdd)
+  {
+    if ((this.jdField_a_of_type_Ascy != null) && (paramasdd.a.equalsIgnoreCase(this.jdField_a_of_type_Ascy.a))) {}
+    for (;;)
     {
-      this.c.addAll(paramMessage);
-      this.a.a().a(paramMessage);
-      return false;
-      paramMessage = finally;
-      throw paramMessage;
+      this.jdField_a_of_type_Ascz.a(this.jdField_a_of_type_Ascy);
+      this.jdField_a_of_type_Ascz.d();
+      return;
+      this.jdField_a_of_type_Ascy = this.jdField_a_of_type_Asde.a(paramasdd.a, paramasdd.b);
+      this.jdField_a_of_type_Ascy.a = paramasdd.a;
+      this.jdField_a_of_type_Ascy.b = paramasdd.b;
+    }
+  }
+  
+  public void a(asde paramasde)
+  {
+    this.jdField_a_of_type_Asde = paramasde;
+  }
+  
+  public void a(asdq paramasdq)
+  {
+    this.jdField_a_of_type_Asdq = paramasdq;
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Asdq != null) {
+      this.jdField_a_of_type_Asdq.a(this.jdField_a_of_type_Asde.b(paramString));
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (this.jdField_a_of_type_Asdq != null) {
+      this.jdField_a_of_type_Asdq.a(this.jdField_a_of_type_Asde.b(paramString), paramInt, 3);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Ascz != null) {
+      this.jdField_a_of_type_Ascz.e();
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Ascz != null) {
+      this.jdField_a_of_type_Ascz.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asdp
  * JD-Core Version:    0.7.0.1
  */

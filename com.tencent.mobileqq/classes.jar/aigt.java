@@ -1,223 +1,130 @@
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.QZLog;
 import java.io.File;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class aigt
 {
-  public static String a;
-  private ApolloRender jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
-  private ApolloRenderDriver jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "ApolloRenderInterfaceImpl";
-  }
-  
-  public aigt(ApolloRenderDriver paramApolloRenderDriver, ApolloRender paramApolloRender)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver = paramApolloRenderDriver;
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender = paramApolloRender;
-  }
-  
-  public int a(int paramInt1, int paramInt2, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  public static int a(String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry)
   {
     int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "[onSetActions], actionId:" + paramInt1);
-    }
-    if ((paramArrayOfString1 == null) || (paramArrayOfString1.length != 2) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null)) {
-      i = 1;
+    if ((paramPublishVideoEntry == null) || (paramPublishVideoEntry.videoMaxrate <= 0)) {
+      i = -1;
     }
     do
     {
-      return i;
-      File localFile = new File(ApolloRender.getRscStaticPath(paramArrayOfString1[0], "json"));
-      if (!localFile.exists())
+      for (;;)
+      {
+        return i;
+        double d = paramPublishVideoEntry.recordTime / 1000.0D;
+        int j = paramPublishVideoEntry.videoMaxrate;
+        try
+        {
+          j = bhpo.a(new String[] { "-threads", "1", "-ss", "0.0", "-accurate_seek", "-i", paramString1, "-t", String.valueOf(d), "-vf", "null", "-metadata:s", "rotate=0", "-acodec", "aac", "-vcodec", "libx264", "-movflags", "faststart", "-preset", "veryfast", "-tune", "psnr", "-profile:v", "high", "-level", "3.0", "-b:v", String.valueOf(j), "-y", paramString2 });
+          return j;
+        }
+        catch (Exception paramString1)
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.i("EncodeVideoUtil", 2, "TrimNative.trim: ", paramString1);
+            return 0;
+          }
+        }
+        catch (Error paramString1) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("EncodeVideoUtil", 2, "TrimNative.trim: error", paramString1);
+    return 0;
+  }
+  
+  public static aigu a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        Object localObject = new File(paramString);
+        aigu localaigu = new aigu();
+        if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+        {
+          String str = a((File)localObject);
+          localObject = b((File)localObject);
+          if (TextUtils.isEmpty(str)) {
+            return null;
+          }
+          localaigu.a = str;
+          localaigu.b = ((String)localObject);
+          localaigu.c = paramString;
+          return localaigu;
+        }
+      }
+      catch (Exception paramString)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->rsc NOT exist. rscFile:" + localFile);
-        }
-        return 2;
-      }
-      if ((paramArrayOfString2 != null) && (paramArrayOfString2.length == 2))
-      {
-        localFile = new File(ApolloRender.getRscStaticPath(paramArrayOfString2[0], "json"));
-        if (!localFile.exists())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->rsc NOT exist. rscFile:" + localFile);
-          }
-          return 2;
+          QLog.i("EncodeVideoUtil", 2, "getVideoInfoByPath error", paramString);
         }
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null);
-    return this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramInt1, paramInt2, paramArrayOfString1, paramArrayOfString2);
+    }
+    return null;
   }
   
-  public int a(int paramInt1, String paramString, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3)
+  @NonNull
+  private static String a(File paramFile)
   {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[onLoadRole] roleType=", Integer.valueOf(paramInt1), ", apolloId=", paramString, ", roleId=", Integer.valueOf(paramInt2), ", roleScale=", Float.valueOf(paramFloat1), ", xPos=", Float.valueOf(paramFloat2), ", yPos=", Float.valueOf(paramFloat3) });
-    }
-    if (!ApolloUtil.c(paramInt2))
+    paramFile = paramFile.listFiles();
+    if ((paramFile != null) && (paramFile.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->role rsc NOT exist.");
-      }
-      i = 2;
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null) {
-      return i;
-    }
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramInt1, paramString, paramInt2, paramFloat1, paramFloat2, paramFloat3);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a();
-    return paramInt1;
-  }
-  
-  public int a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3)
-  {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[onExecAction] apolloId=", paramString1, ", actionId=", Integer.valueOf(paramInt2), ", roleType=", Integer.valueOf(paramInt1), ", actionId=", Integer.valueOf(paramInt2), ", taskId=", Integer.valueOf(paramInt3), ", actionRscName=", paramString2, ", animName=", paramString3 });
-    }
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->null param.");
-      }
-      i = 1;
-    }
-    do
-    {
-      do
+      int j = paramFile.length;
+      int i = 0;
+      while (i < j)
       {
-        do
-        {
-          return i;
-          File localFile = new File(ApolloRender.getRscStaticPath(paramString2, "json"));
-          if (!localFile.exists())
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->rsc NOT exist. rscFile:" + localFile);
-            }
-            return 2;
-          }
-        } while (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null);
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender != null) {
-          this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mIsFrameMode = false;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a();
-        paramInt1 = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramInt1, paramString1, paramInt2, paramInt3, paramString2, paramString3);
-        i = paramInt1;
-      } while (paramInt1 != 0);
-      i = paramInt1;
-    } while (paramInt3 >= 1000000);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a.set(8);
-    return paramInt1;
-  }
-  
-  public int a(int paramInt, String paramString, int[] paramArrayOfInt, aiwq paramaiwq)
-  {
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[onChangeDress] apolloId=", paramString, ", roleType=", Integer.valueOf(paramInt), ", dressId=", paramArrayOfInt, ", callback=", paramaiwq });
-    }
-    int i;
-    if (paramArrayOfInt == null) {
-      i = 1;
-    }
-    do
-    {
-      return i;
-      i = 0;
-      while (i < paramArrayOfInt.length)
-      {
-        if (!ApolloUtil.b(paramArrayOfInt[i]))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->dress rsc NOT exist, id:" + paramArrayOfInt[i]);
-          }
-          return 2;
+        Object localObject = paramFile[i];
+        if (localObject.getName().endsWith(".mp4")) {
+          return localObject.getAbsolutePath();
         }
         i += 1;
       }
-      i = j;
-    } while (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null);
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramInt, paramString, paramArrayOfInt, paramaiwq);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a();
-    return paramInt;
+    }
+    return null;
   }
   
-  public ApolloRender a()
+  public static String a(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      paramString = ShortVideoUtils.a(new File(paramString).getParentFile());
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      QZLog.i("EncodeVideoUtil", 1, "get target path error encode error", paramString);
+    }
+    return null;
   }
   
-  public void a()
+  @NonNull
+  private static String b(File paramFile)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.d();
+    paramFile = new File(paramFile.getAbsolutePath() + File.separator + "audio_data_cache");
+    if ((paramFile.exists()) && (paramFile.isDirectory()))
+    {
+      paramFile = paramFile.listFiles();
+      if ((paramFile != null) && (paramFile.length > 0)) {
+        return paramFile[0].getAbsolutePath();
+      }
     }
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramInt, paramString1, paramString2);
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramLong);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[onExecDispose] apolloId=", paramString });
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) && (!TextUtils.isEmpty(paramString))) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramString);
-    }
-  }
-  
-  public int b(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3)
-  {
-    int i = 1;
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
-      i = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.b(paramInt1, paramString1, paramInt2, paramInt3, paramString2, paramString3);
-    }
-    return i;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a();
-    }
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "[onDestroy]");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.c();
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aigt
  * JD-Core Version:    0.7.0.1
  */

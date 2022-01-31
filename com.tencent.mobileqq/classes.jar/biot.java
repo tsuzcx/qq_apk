@@ -1,26 +1,17 @@
-public class biot
-  extends bion
+import android.support.annotation.Nullable;
+import android.view.View;
+
+class biot
+  implements bjob<bioz>
 {
-  public static final String f = ajjy.a(2131640009);
+  biot(bior parambior) {}
   
-  public biot()
+  public void a(@Nullable bioz parambioz)
   {
-    super("-1000");
-  }
-  
-  public String a()
-  {
-    return "InteractFacePackage";
-  }
-  
-  public String a(int paramInt)
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 0;
+    if (parambioz == null) {
+      return;
+    }
+    bior.d(this.a).setSelected(parambioz.a());
   }
 }
 

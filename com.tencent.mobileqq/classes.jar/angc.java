@@ -1,119 +1,119 @@
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiBaseInfo;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiBaseInfo.QQEmoConfigItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class angc
-  extends QQSysAndEmojiBaseInfo
+public abstract class angc<DATA, CONFIG extends angp>
+  extends anfv<DATA, CONFIG>
 {
-  public int a(int paramInt)
+  private float[] a;
+  private float d;
+  private float e = -1.0F;
+  private float f;
+  
+  public angc(ange paramange)
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt)))) {}
-    for (int i = Integer.parseInt(((QQSysAndEmojiBaseInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).QCid);; i = -1)
+    super(paramange);
+  }
+  
+  public float a()
+  {
+    return -this.f;
+  }
+  
+  protected float a(long paramLong)
+  {
+    long l = this.jdField_a_of_type_Long;
+    return f() - (float)(paramLong - l) * this.f;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
+  {
+    if (!a(paramLong1))
     {
-      int j = i;
-      if (i == -1)
+      anhx.c("BaseDanmaku", "onLayout, Y = " + paramFloat2 + ", danmaku = " + toString());
+      this.d = a(paramLong2);
+      if (!c())
       {
-        j = i;
-        if (paramInt >= 0)
-        {
-          j = i;
-          if (paramInt < axjs.d.length) {
-            j = axjs.d[paramInt];
-          }
-        }
+        this.e = paramFloat2;
+        a(true);
       }
-      return j;
+      return;
     }
+    a(false);
   }
   
-  public ArrayList<Integer> a()
+  public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList;
-    }
-    ArrayList localArrayList = new ArrayList(anhr.b);
-    int i = 0;
-    while (i < anhr.b)
-    {
-      localArrayList.add(Integer.valueOf(i));
-      i += 1;
-    }
-    return localArrayList;
+    this.d = a(paramLong);
   }
   
-  public void a()
+  public float[] a(long paramLong)
   {
-    Object localObject = a();
-    if (localObject != null)
-    {
-      JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("emoji");
-      if (localJSONArray != null)
-      {
-        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-        }
-        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        }
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        long l = System.currentTimeMillis();
-        int i = 0;
-        for (;;)
-        {
-          if (i < localJSONArray.length())
-          {
-            localObject = null;
-            try
-            {
-              JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-              localObject = localJSONObject;
-              localObject = (QQSysAndEmojiBaseInfo.QQEmoConfigItem)aqrg.a((JSONObject)localObject, QQSysAndEmojiBaseInfo.QQEmoConfigItem.class);
-            }
-            catch (JSONException localJSONException)
-            {
-              try
-              {
-                int j = Integer.parseInt(((QQSysAndEmojiBaseInfo.QQEmoConfigItem)localObject).AQLid);
-                this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), localObject);
-                if (!a((QQSysAndEmojiBaseInfo.QQEmoConfigItem)localObject)) {
-                  this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
-                }
-                i += 1;
-                continue;
-                localJSONException = localJSONException;
-                localJSONException.printStackTrace();
-              }
-              catch (NumberFormatException localNumberFormatException)
-              {
-                for (;;)
-                {
-                  QLog.d("QQSysAndEmojiBaseInfo", 1, new Object[] { "error occur in emoji AQLid:", ((QQSysAndEmojiBaseInfo.QQEmoConfigItem)localObject).AQLid });
-                }
-              }
-            }
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "emoji configItem:", Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()), " ,orderlist:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), " ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
-        }
-      }
+    if (!b()) {
+      return null;
     }
+    float f1 = a(paramLong);
+    if (this.jdField_a_of_type_ArrayOfFloat == null) {
+      this.jdField_a_of_type_ArrayOfFloat = new float[4];
+    }
+    this.jdField_a_of_type_ArrayOfFloat[0] = (f1 - ange.a().b());
+    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
+    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float + this.c);
+    this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
+    return this.jdField_a_of_type_ArrayOfFloat;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public float b()
   {
-    awqx.b(null, "dc00898", "", "", "0X800A7A3", "0X800A7A3", a(paramInt1), 0, String.valueOf(paramInt2), "", "", "");
+    return this.d;
+  }
+  
+  public float[] b(long paramLong)
+  {
+    if (!b()) {
+      return null;
+    }
+    float f1 = a(paramLong);
+    if (this.jdField_a_of_type_ArrayOfFloat == null) {
+      this.jdField_a_of_type_ArrayOfFloat = new float[4];
+    }
+    this.jdField_a_of_type_ArrayOfFloat[0] = f1;
+    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
+    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float);
+    this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
+    return this.jdField_a_of_type_ArrayOfFloat;
+  }
+  
+  public float c()
+  {
+    return this.e;
+  }
+  
+  public float d()
+  {
+    return this.d + this.jdField_a_of_type_Float;
+  }
+  
+  public float e()
+  {
+    return this.e + this.b;
+  }
+  
+  public void g()
+  {
+    super.g();
+    this.f = ((int)(f() + this.jdField_a_of_type_Float) / (float)this.jdField_a_of_type_Anhn.a());
+  }
+  
+  public void g(float paramFloat)
+  {
+    this.d = paramFloat;
+  }
+  
+  public void h(float paramFloat)
+  {
+    this.e = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     angc
  * JD-Core Version:    0.7.0.1
  */

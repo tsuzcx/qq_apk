@@ -1,40 +1,37 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
+import com.tencent.qphone.base.util.QLog;
 
 public class afhe
-  implements Handler.Callback
+  implements afqu
 {
-  public afhe(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
+  public afhe(TroopView paramTroopView) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramMessage.what == SimpleCheckableSlidingIndicator.d)
+    if (QLog.isColorLevel()) {
+      QLog.i("addContacts.TroopView", 2, "onRefreshResult. position:" + paramInt + " success:" + paramBoolean);
+    }
+    paramObject = TroopView.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      if (this.a.getScrollX() == SimpleCheckableSlidingIndicator.a(this.a))
-      {
-        SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.a);
-        if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
-          SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
-        }
-        SimpleCheckableSlidingIndicator.a(this.a).removeMessages(SimpleCheckableSlidingIndicator.d);
-      }
+      paramObject = paramObject.obtainMessage(14, paramInt, i);
+      TroopView.a(this.a).sendMessage(paramObject);
+      return;
     }
-    else {
-      return false;
+  }
+  
+  public void am_()
+  {
+    if ((TroopView.a(this.a) != null) && (!TroopView.a(this.a).a())) {
+      TroopView.a(this.a).scrollTo(0, TroopView.a(this.a).a());
     }
-    SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.c);
-    if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
-      SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
-    }
-    SimpleCheckableSlidingIndicator.b(this.a, this.a.getScrollX());
-    SimpleCheckableSlidingIndicator.a(this.a).sendEmptyMessageDelayed(SimpleCheckableSlidingIndicator.d, 50L);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afhe
  * JD-Core Version:    0.7.0.1
  */

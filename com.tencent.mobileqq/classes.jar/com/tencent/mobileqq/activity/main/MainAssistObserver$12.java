@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.main;
 
-import afqi;
-import ajfi;
-import ajop;
-import akgo;
+import agch;
+import ajtk;
+import akcz;
+import akva;
 import android.os.Handler;
 import android.os.Message;
-import atax;
-import auqh;
-import azyk;
+import atxb;
+import avpq;
+import bazo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -18,7 +18,7 @@ import com.tencent.qphone.base.util.QLog;
 public class MainAssistObserver$12
   implements Runnable
 {
-  public MainAssistObserver$12(afqi paramafqi, QQAppInterface paramQQAppInterface) {}
+  public MainAssistObserver$12(agch paramagch, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -28,33 +28,33 @@ public class MainAssistObserver$12
       Object localObject2;
       try
       {
-        auqh localauqh = (auqh)this.a.getManager(36);
-        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = localauqh.a(1);
+        avpq localavpq = (avpq)this.a.getManager(36);
+        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = localavpq.a(1);
         if (localRedTypeInfo != null) {
           break label398;
         }
-        atax localatax = (atax)this.a.getManager(160);
-        localatax.a(100601, false);
-        boolean bool1 = localatax.a(10015, false);
-        boolean bool2 = localatax.a(10016, false);
-        azyk.c(this.a);
-        localObject2 = localatax.a(-3);
-        if (!localatax.a((RedTouchItem)localObject2, true)) {
+        atxb localatxb = (atxb)this.a.getManager(160);
+        localatxb.a(100601, false);
+        boolean bool1 = localatxb.a(10015, false);
+        boolean bool2 = localatxb.a(10016, false);
+        bazo.c(this.a);
+        localObject2 = localatxb.a(-3);
+        if (!localatxb.a((RedTouchItem)localObject2, true)) {
           break label398;
         }
         localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
         if ((bool1 | bool2)) {
-          afqi.a(this.this$0, this.a);
+          agch.a(this.this$0, this.a);
         }
         QLog.d("MainAssistObserver", 1, "updateTabSettingNotify me count=" + ((RedTouchItem)localObject2).count);
         i = 1;
-        if ((localRedTypeInfo != null) || (!akgo.a(this.a))) {
+        if ((localRedTypeInfo != null) || (!akva.a(this.a))) {
           break label395;
         }
         localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
         i = j;
-        localObject2 = (ajfi)this.a.a(2);
-        if ((localRedTypeInfo != null) || (((ajfi)localObject2).b()) || (!((ajfi)localObject2).a())) {
+        localObject2 = (ajtk)this.a.a(2);
+        if ((localRedTypeInfo != null) || (((ajtk)localObject2).b()) || (!((ajtk)localObject2).a())) {
           break label390;
         }
         localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
@@ -65,13 +65,13 @@ public class MainAssistObserver$12
         {
           i = j;
           localObject2 = localRedTypeInfo;
-          if (ajop.a(1))
+          if (akcz.a(1))
           {
             localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
             i = 4;
           }
         }
-        j = localauqh.b(1);
+        j = localavpq.b(1);
         if (localObject2 != null) {
           ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(0);
         }

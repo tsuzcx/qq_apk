@@ -1,46 +1,47 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public final class bcqm
-  implements Parcelable.Creator<QidianProfileCardActivity.QidianCompoundProfileItem>
+class bcqm
+  extends Animation
 {
-  public QidianProfileCardActivity.QidianCompoundProfileItem a(Parcel paramParcel)
+  private int jdField_a_of_type_Int;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private View jdField_a_of_type_AndroidViewView;
+  private int b;
+  
+  public bcqm(View paramView)
   {
-    boolean bool2 = true;
-    QidianProfileCardActivity.QidianCompoundProfileItem localQidianCompoundProfileItem = new QidianProfileCardActivity.QidianCompoundProfileItem();
-    localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localQidianCompoundProfileItem.c = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localQidianCompoundProfileItem.jdField_a_of_type_Boolean = bool1;
-      localQidianCompoundProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label103;
-      }
-    }
-    label103:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localQidianCompoundProfileItem.jdField_b_of_type_Boolean = bool1;
-      localQidianCompoundProfileItem.d = paramParcel.readString();
-      localQidianCompoundProfileItem.e = paramParcel.readString();
-      return localQidianCompoundProfileItem;
-      bool1 = false;
-      break;
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public QidianProfileCardActivity.QidianCompoundProfileItem[] a(int paramInt)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    return new QidianProfileCardActivity.QidianCompoundProfileItem[paramInt];
+    super.applyTransformation(paramFloat, paramTransformation);
+    this.jdField_a_of_type_AndroidGraphicsCamera.save();
+    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(90.0F - 90.0F * paramFloat);
+    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
+    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int / 2, -this.b / 2);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int / 2, this.b / 2);
+    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcqm
  * JD-Core Version:    0.7.0.1
  */

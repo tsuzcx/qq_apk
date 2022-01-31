@@ -1,36 +1,18 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-class bbbu
-  implements wiu
+final class bbbu
+  implements MediaPlayer.OnCompletionListener
 {
-  bbbu(bbbt parambbbt) {}
-  
-  public void a(Bundle paramBundle)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    boolean bool;
-    if (paramBundle.getInt("type") == 73)
-    {
-      bool = paramBundle.getBoolean("isSuccess");
-      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.i)) {}
-    }
-    else
-    {
-      return;
-    }
-    if (Boolean.valueOf(bool).booleanValue())
-    {
-      bbmy.a(BaseApplicationImpl.getApplication(), 2, 2131654503, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
-      return;
-    }
-    bbmy.a(BaseApplicationImpl.getApplication(), 1, 2131654500, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
+    paramMediaPlayer.release();
+    bbbr.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbbu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,17 @@
 class tic
-  implements tmy
+  extends ajsg
 {
-  tic(tia paramtia) {}
+  tic(thy paramthy) {}
   
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3) {}
+  protected void a(int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      veg.b(thy.b() + ".VASH", "Friend Cache Inited!");
+      thy.h = true;
+      this.a.a.notifyDataSetChanged();
+    }
+  }
 }
 
 

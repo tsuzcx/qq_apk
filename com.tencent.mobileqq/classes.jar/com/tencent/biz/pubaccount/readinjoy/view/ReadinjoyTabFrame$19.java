@@ -1,26 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import bacm;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 class ReadinjoyTabFrame$19
   implements Runnable
 {
+  ReadinjoyTabFrame$19(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  
   public void run()
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setRound(true);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.a(bacm.a()).a(new URL(ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo)));
-      return;
-    }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      localMalformedURLException.printStackTrace();
-    }
+    this.this$0.c();
   }
 }
 

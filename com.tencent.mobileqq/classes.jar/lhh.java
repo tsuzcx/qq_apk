@@ -1,19 +1,27 @@
 public class lhh
 {
-  private final int a;
-  private int b;
-  private int c;
+  public int a;
+  public CharSequence a;
+  public String a;
+  public boolean a;
+  public CharSequence b;
   
-  public lhh(int paramInt)
+  public lhh(String paramString, CharSequence paramCharSequence1, CharSequence paramCharSequence2, int paramInt)
   {
-    this.a = paramInt;
-    this.b = 1;
-    this.c = 1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence1;
+    this.b = paramCharSequence2;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(lgc paramlgc, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public boolean a()
   {
-    paramlgc.a(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+    return this.jdField_a_of_type_Int == 2;
+  }
+  
+  public String toString()
+  {
+    return "SentenceInfo{uin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", src_text='" + this.jdField_a_of_type_JavaLangCharSequence + '\'' + ", tra_text='" + this.b + '\'' + ", status=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

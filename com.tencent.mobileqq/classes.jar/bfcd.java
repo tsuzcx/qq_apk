@@ -1,42 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.TextView;
-import cooperation.groupvideo.GVideoPluginInstallerActivity;
+import io.flutter.plugin.common.BasicMessageChannel.MessageHandler;
+import io.flutter.plugin.common.BasicMessageChannel.Reply;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 
-public class bfcd
-  extends Handler
+class bfcd
+  implements BasicMessageChannel.MessageHandler<ByteBuffer>
 {
-  public bfcd(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bfcd(bfca parambfca) {}
   
-  public void dispatchMessage(Message paramMessage)
+  public void a(ByteBuffer paramByteBuffer, BasicMessageChannel.Reply<ByteBuffer> paramReply)
   {
-    if (paramMessage == null) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1: 
-        GVideoPluginInstallerActivity.a(this.a);
-        return;
-      }
-    } while ((!(paramMessage.obj instanceof String)) || (this.a.a == null));
-    this.a.a.setText((String)paramMessage.obj);
-    return;
-    GVideoPluginInstallerActivity.b(this.a);
-    return;
-    this.a.finish();
+    besl.c("miniapp-TISSUE", new String(paramByteBuffer.array(), Charset.forName("utf8")));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfcd
  * JD-Core Version:    0.7.0.1
  */

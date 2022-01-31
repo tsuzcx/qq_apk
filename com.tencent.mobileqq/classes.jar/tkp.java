@@ -1,14 +1,13 @@
-class tkp
-  extends sft<tjz>
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidPollInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidRateInfo;
+import java.util.ArrayList;
+import java.util.List;
+
+public final class tkp
+  extends ssk
 {
-  tkp(tko paramtko) {}
-  
-  public void a(tjz paramtjz)
-  {
-    paramtjz.a(new tkq(this));
-  }
-  
-  public void c() {}
+  public List<qqstory_struct.VidPollInfo> a = new ArrayList();
+  public List<qqstory_struct.VidRateInfo> b = new ArrayList();
 }
 
 

@@ -1,44 +1,93 @@
-import android.support.annotation.NonNull;
-import cooperation.qqreader.ui.ReaderHomePageActivity;
-import org.json.JSONObject;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bfmz
-  extends bfmj
 {
-  public bfmz(ReaderHomePageActivity paramReaderHomePageActivity) {}
+  private static int jdField_a_of_type_Int;
+  public static final Object a;
+  private static String jdField_a_of_type_JavaLangString = "";
   
-  public void a(@NonNull bfmi parambfmi)
+  static
   {
-    parambfmi = parambfmi.a();
-    if (parambfmi == null) {
-      return;
+    jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public static String a()
+  {
+    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    {
+      Object localObject = BaseApplicationImpl.getContext();
+      if (localObject == null) {
+        break label95;
+      }
+      localObject = ((Context)localObject).getFilesDir();
+      if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+      {
+        jdField_a_of_type_JavaLangString = ((File)localObject).getParent() + "/txlib/" + "cmshow/";
+        if (AppSetting.b) {
+          jdField_a_of_type_JavaLangString += "arm64-v8a/";
+        }
+      }
     }
     for (;;)
     {
+      return jdField_a_of_type_JavaLangString;
+      label95:
+      QLog.w("ApolloSoLoader_preLoader", 2, "getSoLibPath but context is null");
+    }
+  }
+  
+  public static String a(int paramInt)
+  {
+    a();
+    String str = jdField_a_of_type_JavaLangString;
+    if (paramInt == 0) {
+      str = jdField_a_of_type_JavaLangString + "jsc_temp_dir" + "/";
+    }
+    while (1 != paramInt) {
+      return str;
+    }
+    return jdField_a_of_type_JavaLangString + "sava_temp_dir" + "/";
+  }
+  
+  public static boolean a(String paramString, int paramInt)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      a();
+      String str;
+      if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+        str = a(paramInt);
+      }
       try
       {
-        int i = parambfmi.getJSONObject("data").getInt("identity");
-        parambfmi = this.a;
-        if (i == 2)
-        {
-          bool = true;
-          bfnc.d(parambfmi, bool);
-          bfne.c("ReaderHomePageActivity", "queryUserIdentityForTabSwitch: identity = " + i);
-          return;
+        jdField_a_of_type_Int = 1;
+        bbdj.a(paramString, str, false);
+        jdField_a_of_type_Int = 0;
+        QLog.i("ApolloSoLoader_preLoader", 1, "succeed to unzip so.");
+        if (jdField_a_of_type_Int == 0) {
+          return true;
         }
       }
-      catch (Exception parambfmi)
+      catch (Exception paramString)
       {
-        bfne.a("ReaderHomePageActivity", "queryUserIdentityForTabSwitch:", parambfmi);
-        return;
+        for (;;)
+        {
+          jdField_a_of_type_Int = 2;
+          QLog.e("ApolloSoLoader_preLoader", 1, paramString, new Object[0]);
+        }
       }
-      boolean bool = false;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfmz
  * JD-Core Version:    0.7.0.1
  */

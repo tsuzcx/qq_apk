@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.register;
 
-import ajjy;
+import ajyc;
 import android.content.Intent;
-import auqn;
-import awqx;
+import avpw;
+import axqw;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 
 public class QueryAccount$1
   implements Runnable
 {
-  public QueryAccount$1(auqn paramauqn, String paramString) {}
+  public QueryAccount$1(avpw paramavpw, String paramString) {}
   
   public void run()
   {
@@ -23,9 +23,9 @@ public class QueryAccount$1
       localObject1 = "http://" + (String)localObject2;
     }
     localObject2 = new Intent(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("selfSet_leftViewText", ajjy.a(2131645433));
+    ((Intent)localObject2).putExtra("selfSet_leftViewText", ajyc.a(2131711221));
     this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
-    awqx.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800665B", "0X800665B", 0, 0, "", "", "", "");
+    axqw.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800665B", "0X800665B", 0, 0, "", "", "", "");
   }
 }
 

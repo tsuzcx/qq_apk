@@ -1,16 +1,18 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
-import com.tribe.async.dispatch.Dispatcher.Event;
-
 public class thu
-  implements Dispatcher.Event
+  extends ssk
 {
-  public final AnimationParam a;
-  public final String a;
+  public String a;
+  public two a;
   
-  public thu(AnimationParam paramAnimationParam, String paramString)
+  public thu(two paramtwo, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam = paramAnimationParam;
+    this.jdField_a_of_type_Two = paramtwo;
     this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "UpdateMsgTabCoverEvent{, groupId=" + this.jdField_a_of_type_Two + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

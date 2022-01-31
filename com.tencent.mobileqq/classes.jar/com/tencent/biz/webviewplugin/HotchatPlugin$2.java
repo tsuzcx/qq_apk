@@ -1,6 +1,6 @@
 package com.tencent.biz.webviewplugin;
 
-import ajkc;
+import ajyi;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -16,17 +16,17 @@ import tencent.im.oidb.hotchat.LBS.Attribute;
 import tencent.im.oidb.hotchat.LBS.Cell;
 import tencent.im.oidb.hotchat.LBS.LBSInfo;
 import tencent.im.oidb.hotchat.LBS.Wifi;
-import xbe;
+import xke;
 
 public class HotchatPlugin$2
   implements Runnable
 {
-  public HotchatPlugin$2(xbe paramxbe, String[] paramArrayOfString) {}
+  public HotchatPlugin$2(xke paramxke, String[] paramArrayOfString) {}
   
   public void run()
   {
-    Object localObject2 = ajkc.a();
-    Object localObject1 = ajkc.a(false);
+    Object localObject2 = ajyi.a();
+    Object localObject1 = ajyi.a(false);
     JSONObject localJSONObject1 = new JSONObject();
     Object localObject3;
     Object localObject4;

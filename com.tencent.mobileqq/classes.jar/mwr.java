@@ -1,13 +1,23 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.PoiMapActivity;
 
 public class mwr
-  implements mts
+  implements View.OnClickListener
 {
-  public mwr(AccountDetailActivity paramAccountDetailActivity) {}
+  public mwr(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a(this.a.a);
+    this.jdField_a_of_type_AndroidAppDialog.cancel();
+    String str = this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getText().toString();
+    paramView = str;
+    if (str == null) {
+      paramView = "";
+    }
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_cancel", paramView, "", "", "");
   }
 }
 

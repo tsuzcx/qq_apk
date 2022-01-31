@@ -18,6 +18,8 @@ public abstract interface IUploadEnv
   
   public abstract String getProviderName();
   
+  public abstract String getSDKPrivatePath(String paramString);
+  
   public abstract int getSocketCount();
   
   public abstract boolean isAvailable();

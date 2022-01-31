@@ -1,52 +1,59 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import android.content.Context;
+import android.os.Looper;
+import android.view.LayoutInflater;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
 
 public class akyj
-  implements View.OnClickListener
 {
-  public akyj(QRScanEntryView paramQRScanEntryView) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public akyj(Context paramContext)
   {
-    boolean bool2 = false;
-    if (QRScanEntryView.a(this.a))
-    {
-      paramView = akwj.a();
-      if (!QRScanEntryView.b(this.a))
-      {
-        bool1 = true;
-        if (paramView.a(bool1))
-        {
-          paramView = this.a;
-          if (QRScanEntryView.b(this.a)) {
-            break label118;
-          }
-          bool1 = true;
-          QRScanEntryView.a(paramView, bool1);
-          paramView = (akwo)this.a.a;
-          bool1 = bool2;
-          if (!QRScanEntryView.b(this.a)) {
-            bool1 = true;
-          }
-          paramView.a(bool1, 0L);
-          QRScanEntryView.a(this.a, true);
-          QRScanEntryView.b(this.a, QRScanEntryView.b(this.a));
-        }
-      }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    a();
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560642, null));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131379506));
+  }
+  
+  public void a(RelativeLayout paramRelativeLayout)
+  {
+    QLog.d("ARTransferPromotionUIContainer", 2, "attachToRootViewGroup");
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
-    label118:
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        return;
-        boolean bool1 = false;
-        continue;
-        bool1 = false;
-      }
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+    localLayoutParams.addRule(12);
+    localLayoutParams.bottomMargin = actn.a(57.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    paramRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, localLayoutParams);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void b(RelativeLayout paramRelativeLayout)
+  {
+    QLog.d("ARTransferPromotionUIContainer", 2, "disattachFromRootViewGroup");
+    if (!this.jdField_a_of_type_Boolean) {}
+    while (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+      return;
     }
-    QLog.d("AREngine_QRScanEntryView", 2, "initView click mFlashLightTips when view invisble.");
+    paramRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

@@ -1,22 +1,23 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class adrw
-  implements View.OnClickListener
+class adrw
+  implements bfoq
 {
-  public adrw(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
+  adrw(adru paramadru, bfol parambfol) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    adsa localadsa = (adsa)aciy.a(paramView);
-    if (paramView == localadsa.jdField_a_of_type_AndroidWidgetFrameLayout) {
-      this.a.b(localadsa);
-    }
-    while (paramView != localadsa.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+    this.jdField_a_of_type_Bfol.dismiss();
+    switch (paramInt)
+    {
+    default: 
       return;
     }
-    this.a.a(localadsa);
+    ChatActivityUtils.a(this.jdField_a_of_type_Adru.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Adru.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adru.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Adru.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adru.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, null, true, this.jdField_a_of_type_Adru.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, "from_internal");
+    axqw.b(this.jdField_a_of_type_Adru.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
   }
 }
 

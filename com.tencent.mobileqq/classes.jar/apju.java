@@ -1,24 +1,32 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import com.tencent.kwstudio.office.base.Log;
+import com.tencent.kwstudio.office.preview.IHostInterface.IHttpListener;
 
-class apju
-  implements TextWatcher
+public final class apju
+  implements aysa
 {
-  apju(apjo paramapjo, int paramInt) {}
+  private final IHostInterface.IHttpListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener;
+  private final String jdField_a_of_type_JavaLangString;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  private apju(String paramString, IHostInterface.IHttpListener paramIHttpListener)
   {
-    if ((apjo.a(this.jdField_a_of_type_Apjo).getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener = paramIHttpListener;
+  }
+  
+  public void onResp(aysx paramaysx)
+  {
+    if ((paramaysx.c == 200) || (paramaysx.c == 206)) {}
+    for (String str = new String(paramaysx.a);; str = null)
     {
-      apjo.a(this.jdField_a_of_type_Apjo).setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
-      apjo.a(this.jdField_a_of_type_Apjo).setSelection(this.jdField_a_of_type_Int - 1);
+      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener != null) {
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener.onResponse(paramaysx.c, str);
+      }
+      Log.i("TdsReaderView_", "onResp url:" + this.jdField_a_of_type_JavaLangString + ", status=" + paramaysx.c + ", rsp=" + str);
+      return;
     }
   }
+  
+  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 

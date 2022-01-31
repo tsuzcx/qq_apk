@@ -2,21 +2,21 @@ package com.tencent.biz.qqstory.album.view;
 
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.view.View;
-import bhov;
+import bjjn;
 import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
-import sez;
-import vms;
+import srv;
+import vzo;
 
 public class AlbumGalleryCapturePart$3
   implements Runnable
 {
-  public AlbumGalleryCapturePart$3(sez paramsez) {}
+  public AlbumGalleryCapturePart$3(srv paramsrv) {}
   
   public void run()
   {
-    View localView = sez.a(this.this$0).a(sez.a(this.this$0).getLayoutManager());
-    if ((sez.b(this.this$0)) && (localView != null) && (sez.a(this.this$0).getPosition(localView) == 0)) {
-      sez.a(this.this$0).a(sez.a(this.this$0) - (int)vms.a(sez.a(this.this$0).getContext(), 30.0F), 0, 400);
+    View localView = srv.a(this.this$0).a(srv.a(this.this$0).getLayoutManager());
+    if ((srv.b(this.this$0)) && (localView != null) && (srv.a(this.this$0).getPosition(localView) == 0)) {
+      srv.a(this.this$0).a(srv.a(this.this$0) - (int)vzo.a(srv.a(this.this$0).getContext(), 30.0F), 0, 400);
     }
   }
 }

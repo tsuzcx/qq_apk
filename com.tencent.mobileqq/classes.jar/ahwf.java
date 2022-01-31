@@ -1,42 +1,33 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
 
-public class ahwf
-  implements ahwm
+class ahwf
+  implements bfrx
 {
-  public ahwf(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
+  ahwf(ahwb paramahwb) {}
   
-  public void a(boolean paramBoolean)
+  public void onScrollStateChanged(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
+      QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state: " + paramInt);
     }
-    if (paramBoolean) {}
-    for (;;)
+    if (paramInt == 4097)
     {
-      try
-      {
-        QQSpecialFriendSettingActivity.a(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        this.a.stopTitleProgress();
-      }
       if (QLog.isColorLevel()) {
-        QLog.i("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig fail.");
+        QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state is idle.");
       }
+      this.a.b = this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 400L);
     }
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahwf
  * JD-Core Version:    0.7.0.1
  */

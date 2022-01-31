@@ -1,54 +1,49 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 public class otm
-  implements owa
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  public static long a;
+  public static List<otn> a;
+  public static long b;
+  public static long c;
+  
+  static
   {
-    return null;
+    jdField_a_of_type_Long = -1L;
+    b = -1L;
+    jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public static void a()
   {
-    long l2 = 0L;
-    if (paramBaseArticleInfo == null) {
-      return null;
-    }
-    long l1 = l2;
-    if (paramBaseArticleInfo.mSocialFeedInfo != null)
+    jdField_a_of_type_JavaUtilList.clear();
+    c = 0L;
+  }
+  
+  public static void a(otn paramotn)
+  {
+    if (!jdField_a_of_type_JavaUtilList.isEmpty())
     {
-      l1 = l2;
-      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
-        l1 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
+      otn localotn = (otn)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1);
+      if (paramotn.b - localotn.b > jdField_a_of_type_Long) {
+        a();
       }
     }
-    return new osn().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l1).e(paramBaseArticleInfo).f(paramBaseArticleInfo).h(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).B(paramBaseArticleInfo).p(paramBaseArticleInfo).q(paramBaseArticleInfo).u(paramBaseArticleInfo).v(paramBaseArticleInfo).z(paramBaseArticleInfo).A(paramBaseArticleInfo).a("ReadInjoy_original_cell").E(paramBaseArticleInfo).D(paramBaseArticleInfo).G(paramBaseArticleInfo).H(paramBaseArticleInfo).a();
+    jdField_a_of_type_JavaUtilList.add(paramotn);
+    c += paramotn.jdField_a_of_type_Long;
+    if (a())
+    {
+      paramotn = new ArrayList();
+      paramotn.addAll(jdField_a_of_type_JavaUtilList);
+      jdField_a_of_type_JavaUtilList.clear();
+      ota.a(paramotn);
+    }
   }
   
-  public void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2)
+  public static boolean a()
   {
-    paramContainer = paramContainer.getVirtualView();
-    Object localObject = (oyf)paramContainer.findViewBaseByName("id_info_avator");
-    if (localObject != null) {
-      ((oyf)localObject).a(paramopw);
-    }
-    localObject = (oyd)paramContainer.findViewBaseByName("id_article_comment");
-    if (localObject != null) {
-      ((oyd)localObject).a(paramopw);
-    }
-    paz.a(paramContainer, paramopw.a());
-    otl.a(paramContainer, paramopw);
-    paz.b(paramContainer, paramopw);
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase)
-  {
-    return false;
+    return c > b;
   }
 }
 

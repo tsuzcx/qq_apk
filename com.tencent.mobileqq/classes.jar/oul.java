@@ -1,23 +1,13 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
 
-class oul
-  implements View.OnClickListener
+public class oul
+  implements osn
 {
-  oul(ouk paramouk, ArticleInfo paramArticleInfo, Context paramContext) {}
+  public oul(ReadInJoyDailyFragment paramReadInJoyDailyFragment, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a(osp paramosp)
   {
-    if (qoe.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {}
-    for (int i = 3;; i = 2)
-    {
-      obz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-      obz.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, i, false, 2, false);
-      qoe.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-      return;
-    }
+    paramosp.h(this.jdField_a_of_type_Int);
   }
 }
 

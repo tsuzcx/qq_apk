@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aapy
-  implements Comparator<aapw>
+public final class aapy
+  implements DialogInterface.OnClickListener
 {
-  private aapy(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public aapy(aaqf paramaaqf, aaqe paramaaqe) {}
   
-  public int a(aapw paramaapw1, aapw paramaapw2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return paramaapw1.c.compareToIgnoreCase(paramaapw2.c);
+    if (this.jdField_a_of_type_Aaqf.a) {
+      axqw.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
+    }
+    if (this.jdField_a_of_type_Aaqe != null) {
+      this.jdField_a_of_type_Aaqe.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

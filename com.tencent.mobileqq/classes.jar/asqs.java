@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
 
-class asqs
-  implements View.OnClickListener
+public class asqs
+  extends GestureDetector.SimpleOnGestureListener
 {
-  asqs(aspq paramaspq) {}
+  public asqs(MultiAIOViewPager paramMultiAIOViewPager) {}
   
-  public void onClick(View paramView)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    this.a.i(paramView);
+    if (MultiAIOViewPager.a(this.a) != null) {
+      this.a.performClick();
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asqs
  * JD-Core Version:    0.7.0.1
  */

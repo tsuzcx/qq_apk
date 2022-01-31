@@ -1,34 +1,49 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emotionintegrate.SearchEmoticonFragment;
+import com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
-final class aoeb
-  extends wmb
+public class aoeb
+  implements View.OnTouchListener
 {
-  aoeb(String paramString, aoex paramaoex, long paramLong) {}
+  public aoeb(SearchEmoticonFragment paramSearchEmoticonFragment) {}
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!paramBoolean)
+    if (paramMotionEvent.getAction() == 1)
     {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return failed fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_Long, false), true);
-      return;
+      this.a.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
+      if (SearchEmoticonFragment.a(this.a).d == 1)
+      {
+        EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getActivity(), this.a.a().getAccount(), 8, SearchEmoticonFragment.a(this.a).e, false, false);
+        axqw.b(null, "dc00898", "", "", "0X8009EAF", "0X8009EAF", 0, 0, "", "", "", "");
+      }
     }
-    paramBundle.putString("_m_ForwardBusType", String.valueOf(paramInt2));
-    paramBundle.putString("_m_ForwardDeadTime", String.valueOf(paramInt3));
-    if (paramInt1 == 0)
+    for (;;)
     {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult success fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aoex.a(this.jdField_a_of_type_JavaLangString, paramBundle);
-      return;
+      return false;
+      if (SearchEmoticonFragment.a(this.a).d == 2)
+      {
+        MiniAppLauncher.launchMiniAppById(SearchEmoticonFragment.a(this.a), SearchEmoticonFragment.a(this.a).g, null, null, null, null, 1005);
+        axqw.b(null, "dc00898", "", "", "0X8009EB1", "0X8009EB1", 0, 0, "", "", "", "");
+        continue;
+        if (paramMotionEvent.getAction() == 0)
+        {
+          this.a.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
+          axqw.b(null, "dc00898", "", "", "0X8009EAE", "0X8009EAE", 0, 0, "", "", "", "");
+        }
+      }
     }
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return[" + paramInt1 + "] fileid " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_Long, false), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoeb
  * JD-Core Version:    0.7.0.1
  */

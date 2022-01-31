@@ -1,61 +1,43 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
-public class aofl
-  extends MSFServlet
+class aofl
+  implements View.OnTouchListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileTransferServlet<FileAssistant>", 2, "onReceive called");
-    }
-    if (paramIntent == null)
-    {
-      QLog.e("FileTransferServlet<FileAssistant>", 1, "onReceive : req is null");
-      return;
-    }
-    paramIntent.getExtras().putParcelable("response", paramFromServiceMsg);
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-    paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    localQQAppInterface.a().a(paramIntent, paramFromServiceMsg);
-  }
+  aofl(aofj paramaofj, View paramView, FrameLayout paramFrameLayout, TextView paramTextView1, TextView paramTextView2, aofi paramaofi, int paramInt) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileTransferServlet<FileAssistant>", 2, "onSend called");
-    }
-    if (paramIntent == null) {
-      QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : req is null");
-    }
-    do
+    switch (paramMotionEvent.getActionMasked())
     {
-      return;
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent == null) {
-        break;
-      }
-      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-      paramPacket.putSendData(paramIntent.getWupBuffer());
-      paramPacket.setTimeout(paramIntent.getTimeout());
-      paramPacket.addAttribute("fastresend", Boolean.valueOf(true));
-    } while (paramIntent.isNeedCallback());
-    paramPacket.setNoResponse();
-    return;
-    QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : toMsg is null");
+    }
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(0.5F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      this.b.setAlpha(0.5F);
+      continue;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(1.0F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      this.b.setAlpha(1.0F);
+      aofj.a(this.jdField_a_of_type_Aofj, this.jdField_a_of_type_Aofi, this.jdField_a_of_type_Int);
+      continue;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(1.0F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      this.b.setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aofl
  * JD-Core Version:    0.7.0.1
  */

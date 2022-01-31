@@ -1,37 +1,52 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
 public class awcp
-  extends MSFServlet
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public awcp(SignTextEditFragment paramSignTextEditFragment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramIntent = (QQAppInterface)getAppRuntime();
-    if ("ConfigPushSvc.GetIpDirect".equals(paramFromServiceMsg.getServiceCmd()))
+    if ((bbev.d(this.a.getActivity())) && (SignTextEditFragment.a(this.a) != null))
     {
-      axwx.a().a(paramFromServiceMsg);
-      if (QLog.isColorLevel()) {
-        QLog.i("IPDomainGet", 2, "onReceive response resultCode:" + paramFromServiceMsg.getResultCode() + " log:" + paramFromServiceMsg.getStringForLog());
+      if (AppSetting.d) {
+        this.a.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription(ajyc.a(2131707917));
+      }
+      SignTextEditFragment.a(this.a).a(paramBoolean);
+      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A97B", "0X800A97B", 0, 0, "0", "0", "", "");
+      return;
+    }
+    paramCompoundButton = this.a.getActivity();
+    int i;
+    label108:
+    CheckBox localCheckBox;
+    if (SignTextEditFragment.a(this.a) != null)
+    {
+      i = 2131694670;
+      bcpw.a(paramCompoundButton, i, 1).a();
+      paramCompoundButton = this.a;
+      localCheckBox = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
+      if (paramBoolean) {
+        break label154;
       }
     }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("IPDomainGet", 2, "IPDomainGet onSend() ");
+    label154:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      SignTextEditFragment.a(paramCompoundButton, localCheckBox, paramBoolean);
+      break;
+      i = 2131719375;
+      break label108;
     }
-    paramPacket.setSSOCommand("ConfigPushSvc.GetIpDirect");
-    paramPacket.setTimeout(15000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awcp
  * JD-Core Version:    0.7.0.1
  */

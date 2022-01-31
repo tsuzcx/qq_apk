@@ -1,51 +1,102 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.opengl.Matrix;
+import android.support.annotation.NonNull;
+import android.view.Surface;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
+import com.tencent.ttpic.openapi.filter.TextureRender;
+import javax.microedition.khronos.egl.EGLContext;
 
 public class avxw
-  extends avxd
+  extends FlowDecodeScreenSurfaceBase
+  implements SurfaceTexture.OnFrameAvailableListener, avye
 {
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public SquareImageView a;
-  public Button b;
-  public LinearLayout b;
-  public TextView b;
-  public LinearLayout c;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private Surface jdField_a_of_type_AndroidViewSurface;
+  private avyf jdField_a_of_type_Avyf;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private boolean jdField_a_of_type_Boolean;
+  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private int c;
   
-  public avxw(ViewGroup paramViewGroup, int paramInt)
+  public avxw(EGLContext paramEGLContext, int paramInt1, int paramInt2)
   {
-    super(paramViewGroup, paramInt);
+    super(paramEGLContext, paramInt1, paramInt2);
+    c();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    this.c = avyg.a(36197);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.c);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_Avyf = new avyf(paramInt1, paramInt2);
+    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
   }
   
-  protected void a()
+  public Surface a()
+  {
+    return this.jdField_a_of_type_AndroidViewSurface;
+  }
+  
+  public void a()
   {
     super.a();
-    View localView = a(this.jdField_c_of_type_Int);
-    a(localView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131309665));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131298087));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131303043));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131303697));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131303698));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131312263));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131312262));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131302897));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131303696));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131297935));
+  }
+  
+  public void a(@NonNull avxq paramavxq, boolean paramBoolean)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      for (;;)
+      {
+        paramBoolean = this.jdField_a_of_type_Boolean;
+        if (!paramBoolean) {
+          try
+          {
+            this.jdField_a_of_type_JavaLangObject.wait();
+            if (!this.jdField_a_of_type_Boolean) {
+              throw new RuntimeException("frame wait timed out");
+            }
+          }
+          catch (InterruptedException paramavxq)
+          {
+            throw new RuntimeException(paramavxq);
+          }
+        }
+      }
+    }
+    avyg.a("before updateTexImage");
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
+    paramavxq.jdField_a_of_type_ArrayOfFloat = ((float[])this.jdField_a_of_type_ArrayOfFloat.clone());
+    this.jdField_a_of_type_Avyf.a(paramavxq.a());
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.c, null, null);
+    this.jdField_a_of_type_Avyf.a();
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void b()
+  {
+    veg.b("FlowEdit_FlowDecodeScreenSurface", "awaitNewImage");
+  }
+  
+  public void onFrameAvailable(SurfaceTexture arg1)
+  {
+    veg.b("FlowEdit_FlowDecodeScreenSurface", "onFrameAvailable");
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        veg.d("FlowEdit_FlowDecodeScreenSurface", "mFrameAvailable already set, frame could be dropped");
+      }
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_JavaLangObject.notifyAll();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avxw
  * JD-Core Version:    0.7.0.1
  */

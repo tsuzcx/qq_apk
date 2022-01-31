@@ -1,67 +1,33 @@
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 
 public class amez
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  public amez(ClearEllipsisEditText paramClearEllipsisEditText) {}
   
-  public amez()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public static amez a(alzs[] paramArrayOfalzs)
-  {
-    localamez = new amez();
-    int i = 0;
-    try
+    if (this.a.getCompoundDrawables()[2] == null) {}
+    for (;;)
     {
-      while (i < paramArrayOfalzs.length)
+      return false;
+      if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - ClearEllipsisEditText.a(this.a).getIntrinsicWidth()) {}
+      for (int i = 1; (paramMotionEvent.getAction() == 0) && (i != 0); i = 0)
       {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfalzs[i].jdField_a_of_type_JavaLangString);
-        if (localJSONObject.has("pubaccountSwitch"))
-        {
-          localamez.jdField_a_of_type_Int = localJSONObject.optInt("pubaccountSwitch");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed swtich=" + localamez.jdField_a_of_type_Int);
-          }
-        }
-        if (localJSONObject.has("fullPopIntervalDay"))
-        {
-          localamez.b = localJSONObject.optInt("fullPopIntervalDay");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed fullPopIntervalDay=" + localamez.b);
-          }
-        }
-        if (localJSONObject.has("isFeedByWeb"))
-        {
-          localamez.c = localJSONObject.optInt("isFeedByWeb");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed isFeedByWeb=" + localamez.c);
-          }
-        }
-        if (localJSONObject.has("feedUrl"))
-        {
-          localamez.jdField_a_of_type_JavaLangString = localJSONObject.optString("feedUrl");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed feedUrl=" + localamez.jdField_a_of_type_JavaLangString);
-          }
-        }
-        i += 1;
+        this.a.setText("");
+        this.a.setClearButtonVisible(false);
+        return true;
       }
-      return localamez;
-    }
-    catch (Throwable paramArrayOfalzs)
-    {
-      com.tencent.TMG.utils.QLog.e("QQGameConfBean", 1, "QQGameConfBean parse error e=" + paramArrayOfalzs.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amez
  * JD-Core Version:    0.7.0.1
  */

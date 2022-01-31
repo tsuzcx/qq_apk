@@ -1,13 +1,39 @@
-public final class bjmr
+import java.lang.reflect.Method;
+
+class bjmr
 {
-  public static boolean a(int paramInt)
+  final int jdField_a_of_type_Int;
+  final Method jdField_a_of_type_JavaLangReflectMethod;
+  
+  bjmr(int paramInt, Method paramMethod)
   {
-    return (paramInt == 3006) || (paramInt == 3009) || (paramInt == 3014) || (paramInt == 3068) || (paramInt == 3075) || (paramInt == 3078) || (paramInt == 3079);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangReflectMethod = paramMethod;
+    this.jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (bjmr)paramObject;
+    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaLangReflectMethod.getName().equals(paramObject.jdField_a_of_type_JavaLangReflectMethod.getName())));
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int * 31 + this.jdField_a_of_type_JavaLangReflectMethod.getName().hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     bjmr
  * JD-Core Version:    0.7.0.1
  */

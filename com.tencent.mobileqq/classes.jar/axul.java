@@ -1,60 +1,110 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
 
-class axul
-  implements axrs
+public class axul
+  extends axuu
 {
-  axul(axuk paramaxuk) {}
-  
-  public void a(axsp paramaxsp, axsq paramaxsq)
+  public axul(AbsShareMsg paramAbsShareMsg, QQAppInterface paramQQAppInterface, View paramView)
   {
-    if ((paramaxsp == null) || (paramaxsq == null)) {}
-    label8:
-    axro localaxro;
-    do
+    super(paramQQAppInterface, paramView);
+  }
+  
+  public boolean a(Activity paramActivity, long paramLong, String paramString1, String paramString2, String paramString3)
+  {
+    paramString1 = AbsShareMsg.parsePackageNameAndData(paramString2, paramString3)[0];
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsg", 2, "SourceClickHandler click2YYB  appid = " + paramLong + "; packageName=" + paramString1);
+    }
+    if (TextUtils.isEmpty(paramString1)) {
+      return false;
+    }
+    paramString2 = new Bundle();
+    paramString2.putString("packageName", paramString1);
+    paramString2.putString("appId", paramLong + "");
+    paramString2.putString("big_brother_source_key", "biz_src_jc_aio");
+    bdev.b(paramActivity, paramString2);
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsg", 2, "SourceClickHandler clickWebMsg  url = " + paramString);
+    }
+    if ((TextUtils.isEmpty(paramString)) || ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))) {
+      return false;
+    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    localIntent.putExtra("key_isReadModeEnabled", true);
+    localIntent.putExtra("title", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName);
+    localIntent.putExtra("url", paramString);
+    sgj.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.message, localIntent, paramString);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString, "", "", "");
+    return true;
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsg", 2, "SourceClickHandler clickAppMsg url = " + paramString1 + ", actionData = " + paramString2 + ", actionDataA = " + paramString3);
+    }
+    paramString1 = AbsShareMsg.parsePackageNameAndData(paramString2, paramString3);
+    paramString2 = this.jdField_a_of_type_AndroidContentContext.getPackageManager();
+    try
     {
-      do
+      if (paramString2.getPackageInfo(paramString1[0], 1) != null)
       {
-        do
+        paramString2 = paramString2.getLaunchIntentForPackage(paramString1[0]);
+        if (paramString2 == null) {
+          return false;
+        }
+        paramString2.putExtra("big_brother_source_key", "biz_src_jc_aio");
+        paramString2.addFlags(67108864);
+        if (!TextUtils.isEmpty(paramString1[1])) {
+          paramString2.setData(Uri.parse(paramString1[1]));
+        }
+        try
         {
-          break label8;
-          do
+          paramString3 = (akgs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(23);
+          paramString2.putExtra("report_open_type", "structmsg_source");
+          paramString2.putExtra("report_url", "");
+          paramString2.putExtra("report_from", "1");
+          paramString2.putExtra("report_click_origin", "AIOTail");
+          paramString2.putExtra("report_class_name", this.jdField_a_of_type_AndroidContentContext.getClass().getName());
+          paramString3.b(paramString1[0].trim(), this.jdField_a_of_type_AndroidContentContext, paramString2);
+          return true;
+        }
+        catch (Exception paramString1)
+        {
+          for (;;)
           {
-            return;
-          } while (!(paramaxsp instanceof axro));
-          localaxro = (axro)paramaxsp;
-          if (axuk.a(this.a))
-          {
-            File localFile = new File(paramaxsp.d);
-            if (paramaxsq.c == localFile.length())
-            {
-              paramaxsq.c = 0L;
-              if (QLog.isColorLevel()) {
-                QLog.e("ShortVideoDownloadProcessor", 2, "fixProgressiveRange, mStartDownOffset = " + paramaxsp.jdField_a_of_type_Long);
-              }
+            if (QLog.isColorLevel()) {
+              QLog.d("AppStartedHandler", 2, "<-- StartAppCheckHandler AbsShareMSG Failed!");
             }
+            this.jdField_a_of_type_AndroidContentContext.startActivity(paramString2);
           }
-          localaxro.jdField_a_of_type_Long += paramaxsq.c;
-          if (0L != localaxro.b) {
-            break;
-          }
-          paramaxsq.c = 0L;
-          paramaxsp = "bytes=" + localaxro.jdField_a_of_type_Long + "-";
-          localaxro.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsp);
-          paramaxsp = localaxro.jdField_a_of_type_JavaLangString;
-        } while (!paramaxsp.contains("range="));
-        paramaxsp = paramaxsp.substring(0, paramaxsp.lastIndexOf("range="));
-        localaxro.jdField_a_of_type_JavaLangString = (paramaxsp + "range=" + localaxro.jdField_a_of_type_Long);
-        return;
-      } while ((localaxro.jdField_a_of_type_Long <= 0L) || (localaxro.b <= 0L) || (localaxro.jdField_a_of_type_Long >= localaxro.b));
-      paramaxsq.c = 0L;
-      paramaxsp = "bytes=" + localaxro.jdField_a_of_type_Long + "-" + localaxro.b;
-      localaxro.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsp);
-      paramaxsp = localaxro.jdField_a_of_type_JavaLangString;
-    } while (!paramaxsp.contains("range="));
-    paramaxsp = paramaxsp.substring(0, paramaxsp.lastIndexOf("range="));
-    localaxro.jdField_a_of_type_JavaLangString = (paramaxsp + "range=" + localaxro.jdField_a_of_type_Long + "-" + localaxro.b);
+        }
+      }
+      return false;
+    }
+    catch (PackageManager.NameNotFoundException paramString1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsg", 2, paramString1.getMessage());
+      }
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import ajhm;
+import ajvp;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -12,7 +12,7 @@ class EmoticonMainPanel$13
   
   public void run()
   {
-    ((ajhm)this.this$0.a.a(12)).b();
+    ((ajvp)this.this$0.a.a(12)).b();
     this.a.edit().putLong("lastRequestTime", System.currentTimeMillis()).apply();
   }
 }

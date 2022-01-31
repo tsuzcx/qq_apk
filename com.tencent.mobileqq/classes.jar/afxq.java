@@ -1,26 +1,25 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
+import android.support.v4.app.FragmentActivity;
 
 public class afxq
-  implements Animation.AnimationListener
+  extends afxr
 {
-  public afxq(CountryActivity paramCountryActivity) {}
+  public static final int[] a = { 2131690730, 2131690735, 2131690732, 2131690733, 2131690737, 2131690734, 2131690731 };
+  public static final int[] b = { 2131364086, 2131364091, 2131364088, 2131364089, 2131364092, 2131364090, 2131364087 };
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public afxq(FragmentActivity paramFragmentActivity)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.jdField_a_of_type_Afxx.show();
-      this.a.b.setAnimation(null);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
+    super(paramFragmentActivity);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected int[] a()
+  {
+    return b;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected int[] b()
+  {
+    return a;
+  }
 }
 
 

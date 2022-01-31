@@ -1,20 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 class xaa
-  extends BroadcastReceiver
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  xaa(wzt paramwzt) {}
+  xaa(wzw paramwzw) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onGlobalLayout()
   {
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
-    {
-      wzt.a(this.a, paramIntent);
-      wzt.d(this.a);
-      wzt.c(this.a);
-    }
+    int i = this.a.d.getMeasuredWidth();
+    i = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - i - bbdh.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 5.0F));
+    this.a.c.setMaxWidth(i);
+    this.a.c.setText(new ayju(this.a.jdField_a_of_type_Azpe.h, 16).a());
   }
 }
 

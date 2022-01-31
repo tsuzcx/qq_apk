@@ -1,48 +1,18 @@
-import android.content.Context;
-import android.net.wifi.WifiManager;
-import android.net.wifi.WifiManager.WifiLock;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class mjl
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  Context jdField_a_of_type_AndroidContentContext = null;
-  WifiManager.WifiLock jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = null;
-  String jdField_a_of_type_JavaLangString = null;
+  public mjl(VideoControlUI paramVideoControlUI, long paramLong) {}
   
-  public mjl(Context paramContext, int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a()
-  {
-    if (b())
-    {
-      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.release();
-      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = null;
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a != null) {
+      QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "showPermissionDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
     }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock == null) {
-      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = ((WifiManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("wifi")).createWifiLock(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock != null)
-    {
-      if (!this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.isHeld()) {
-        this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.acquire();
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock != null) && (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.isHeld());
   }
 }
 

@@ -1,29 +1,22 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
 
-class adve
-  implements URLDrawable.URLDrawableListener
+public class adve
+  extends acun
 {
-  adve(advd paramadvd, String paramString) {}
+  private long jdField_a_of_type_Long;
+  public aibs a;
+  public TextView a;
+  public ETTextView a;
+  private MixedMsgLinearLayout jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout;
+  public boolean a;
+  public TextView b;
+  public ETTextView b;
+  private String b = "0";
+  public int e = -1;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("AioPanelMiniAppManager", 1, "onLoadFialed: failed. ", paramThrowable);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioPanelMiniAppManager", 2, "onLoadSuccessed: invoked.  url: " + this.jdField_a_of_type_JavaLangString);
-    }
-    advd.a(this.jdField_a_of_type_Advd).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
-  }
+  public adve(adva paramadva) {}
 }
 
 

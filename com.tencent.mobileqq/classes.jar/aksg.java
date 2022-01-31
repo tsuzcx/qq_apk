@@ -1,25 +1,33 @@
-public class aksg
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class aksg
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  aksg(aksf paramaksf) {}
   
-  public aksg()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public String toString()
-  {
-    return "ARCloudReqFileInfo{fileName='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileFormat=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", width=" + this.c + ", previewPath='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    if (aksf.a != null) {
+      aksf.a(this.a).startActivity(aksf.a);
+    }
+    axqw.b(null, "CliOper", "", "", "0X8006B15", "0X8006B15", 0, 0, "", "", "", "");
+    axqw.b(null, "dc00898", "", "", "0X8009AC8", "0X8009AC8", 0, 0, "", "", "", "");
+    paramView = PreferenceManager.getDefaultSharedPreferences(aksf.a(this.a));
+    int i = paramView.getInt("push_msg_notify_open", 0);
+    paramView = paramView.edit();
+    paramView.putInt("push_msg_notify_open", i + 1);
+    paramView.commit();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aksg
  * JD-Core Version:    0.7.0.1
  */

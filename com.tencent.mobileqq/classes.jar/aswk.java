@@ -1,24 +1,199 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.RemoteException;
+import android.provider.Settings.Secure;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-class aswk
-  implements DialogInterface.OnClickListener
+public class aswk
+  implements View.OnClickListener
 {
-  aswk(aswi paramaswi, bafb parambafb) {}
+  private bfol a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aswk(MusicPlayerActivity paramMusicPlayerActivity) {}
+  
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bafb.dismiss();
-    this.jdField_a_of_type_Aswi.a.a.c();
-    paramInt = ((Integer)asfc.a(this.jdField_a_of_type_Aswi.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
-    awqx.b(this.jdField_a_of_type_Aswi.a.a.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, asfl.a(this.jdField_a_of_type_Aswi.a.a.j), paramInt + "", "", "");
+    Object localObject2 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.finish();
+      return;
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X800682A", "0X800682A", 0, 0, "", "", "", "");
+      Object localObject1 = paramView.getTag();
+      paramView = paramView.getContext();
+      if ((!(localObject1 instanceof aswt)) || (paramView == null)) {
+        continue;
+      }
+      localObject1 = (aswt)localObject1;
+      localObject2 = new ArrayList();
+      int i = 0;
+      while (i <= 3)
+      {
+        ((List)localObject2).add(bfov.a(i));
+        i += 1;
+      }
+      Object localObject3 = new bfov(paramView);
+      ((bfov)localObject3).a((List)localObject2);
+      this.jdField_a_of_type_Bfol = bfov.a(paramView, (bfov)localObject3, new aswl(this, (aswt)localObject1), null, null, true);
+      this.jdField_a_of_type_Bfol.show();
+      return;
+      if (localObject2 == null) {
+        continue;
+      }
+      localObject1 = Settings.Secure.getString(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.getContentResolver(), "android_id");
+      try
+      {
+        localObject2 = ((asvl)localObject2).a();
+        if (localObject2 == null) {
+          continue;
+        }
+        localObject2 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, (SongInfo)localObject2);
+        if (!MusicPlayerActivity.a().containsKey(localObject2)) {
+          continue;
+        }
+        localObject3 = paramView.getTag();
+        if (paramView.isSelected())
+        {
+          axqw.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X8006829", "0X8006829", 0, 0, "", "", "", "");
+          MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).a((String)localObject1, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app.getLongAccountUin(), ((Long)MusicPlayerActivity.a().get(localObject2)).longValue(), false);
+          paramView.setSelected(false);
+          MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).setImageResource(2130840932);
+          if (!(localObject3 instanceof Integer)) {
+            continue;
+          }
+          i = ((Integer)localObject3).intValue();
+          MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, 2130840932, i);
+          return;
+        }
+      }
+      catch (RemoteException paramView)
+      {
+        QLog.e("MusicPlayerActivity", 1, "add favourite RemoteException ", paramView);
+        return;
+      }
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X8006828", "0X8006828", 0, 0, "", "", "", "");
+      MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).a((String)localObject1, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app.getLongAccountUin(), ((Long)MusicPlayerActivity.a().get(localObject2)).longValue(), true);
+      paramView.setSelected(true);
+      MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).setImageResource(2130840931);
+      if (!(localObject3 instanceof Integer)) {
+        continue;
+      }
+      i = ((Integer)localObject3).intValue();
+      MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, 2130840931, i);
+      return;
+      if (localObject2 == null) {
+        continue;
+      }
+      try
+      {
+        switch (((asvl)localObject2).a())
+        {
+        case 2: 
+          localObject1 = ((asvl)localObject2).a();
+          if ((localObject1 == null) || (localObject1.length <= 0)) {
+            continue;
+          }
+          i = ((asvl)localObject2).g();
+          if (i >= 0) {
+            if (i < localObject1.length) {}
+          }
+          break;
+        case 3: 
+        default: 
+          for (;;)
+          {
+            for (;;)
+            {
+              label544:
+              localObject3 = ((asvl)localObject2).a();
+              if (TextUtils.isEmpty((CharSequence)localObject3)) {
+                break;
+              }
+              ((asvl)localObject2).a((String)localObject3, (SongInfo[])localObject1, i);
+              if (paramView == null) {
+                break;
+              }
+              localObject1 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, paramView);
+              if (!MusicPlayerActivity.b().containsKey(localObject1)) {
+                break;
+              }
+              localObject1 = (aswu)MusicPlayerActivity.b().get(localObject1);
+              paramView = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, (asvl)localObject2, paramView, ((aswu)localObject1).a);
+              MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, (aswu)localObject1, paramView);
+              return;
+              ((asvl)localObject2).a();
+              return;
+              ((asvl)localObject2).b();
+              return;
+              axqw.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X800682B", "0X800682B", 0, 0, "", "", "", "");
+              if (asww.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, "com.tencent.qqmusic"))
+              {
+                localObject1 = null;
+                paramView = (View)localObject1;
+                if (localObject2 != null) {}
+                try
+                {
+                  paramView = ((asvl)localObject2).a();
+                  if (paramView == null) {
+                    break;
+                  }
+                  paramView = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, paramView);
+                  if (!MusicPlayerActivity.a().containsKey(paramView)) {
+                    break;
+                  }
+                  paramView = new Intent("android.intent.action.VIEW", Uri.parse(String.format("androidqqmusic://form=webpage&mid=23&k1=0&k2=%s&download=1&action=download", new Object[] { String.valueOf(MusicPlayerActivity.a().get(paramView)) })));
+                  paramView.putExtra("big_brother_source_key", "biz_src_qqmusic");
+                  this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.startActivity(paramView);
+                  axqw.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X800682C", "0X800682C", 0, 0, "", "", "", "");
+                  return;
+                }
+                catch (RemoteException paramView)
+                {
+                  for (;;)
+                  {
+                    QLog.e("MusicPlayerActivity", 1, "music player activity RemoteException ", paramView);
+                    paramView = (View)localObject1;
+                  }
+                }
+              }
+            }
+            localObject1 = (bfol)bfoy.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, null);
+            ((bfol)localObject1).a(2131694477);
+            ((bfol)localObject1).a(2131694479, 2);
+            ((bfol)localObject1).c(2131694476);
+            ((bfol)localObject1).a(new aswm(this, paramView, (bfol)localObject1));
+            ((bfol)localObject1).show();
+            return;
+            paramView = null;
+            continue;
+            break label544;
+            paramView = localObject1[0];
+            i = 0;
+          }
+          return;
+        }
+      }
+      catch (RemoteException paramView) {}
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aswk
  * JD-Core Version:    0.7.0.1
  */

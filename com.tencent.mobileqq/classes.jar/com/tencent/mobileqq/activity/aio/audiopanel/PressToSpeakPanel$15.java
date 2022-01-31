@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import ajjy;
+import ajyc;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
@@ -9,8 +9,7 @@ import android.os.SystemClock;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
-import bace;
-import bbmy;
+import bcpw;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -46,30 +45,20 @@ class PressToSpeakPanel$15
     }
     Object localObject = PressToSpeakPanel.a(this.this$0).a();
     int i = PressToSpeakPanel.a(this.this$0).a().getTitleBarHeight();
-    axte.a = SystemClock.uptimeMillis();
-    if (!bace.a())
-    {
-      bbmy.a(BaseApplication.getContext(), 2131629029, 0).b(i);
-      return;
-    }
-    if (!QQRecorder.d())
-    {
-      bbmy.a(BaseApplication.getContext(), 2131653221, 0).b(i);
-      return;
-    }
+    aytl.a = SystemClock.uptimeMillis();
     if (!QQRecorder.a(((QQRecorder.RecorderParam)localObject).c))
     {
-      bbmy.a(BaseApplication.getContext(), 2131627958, 0).b(i);
+      bcpw.a(BaseApplication.getContext(), 2131693599, 0).b(i);
       return;
     }
     if (PressToSpeakPanel.a(this.this$0).n())
     {
-      bbmy.a(BaseApplication.getContext(), ajjy.a(2131642622), 0).b(i);
+      bcpw.a(BaseApplication.getContext(), ajyc.a(2131708407), 0).b(i);
       return;
     }
     if (PressToSpeakPanel.a(this.this$0).c())
     {
-      bbmy.a(BaseApplication.getContext(), 2131629840, 0).b(i);
+      bcpw.a(BaseApplication.getContext(), 2131695521, 0).b(i);
       return;
     }
     if (AudioHelper.b(1))

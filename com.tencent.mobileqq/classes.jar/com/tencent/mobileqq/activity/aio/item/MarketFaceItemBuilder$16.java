@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.activity.aio.item;
 
+import adug;
 import android.content.Context;
-import android.content.res.Resources;
-import bbmy;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
 
 public final class MarketFaceItemBuilder$16
   implements Runnable
 {
-  public MarketFaceItemBuilder$16(Context paramContext, String paramString) {}
+  public MarketFaceItemBuilder$16(int paramInt, Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, String paramString) {}
   
   public void run()
   {
-    bbmy.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131167766));
+    adug.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_AndroidContentContext.getString(2131720266), this.jdField_a_of_type_JavaLangString);
   }
 }
 

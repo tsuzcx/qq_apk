@@ -2,13 +2,13 @@ package com.tencent.mobileqq.nearby.profilecard;
 
 import android.view.View;
 import android.view.ViewGroup;
-import asvw;
+import atsa;
 import com.tencent.mobileqq.widget.BounceScrollView;
 
 public class NearbyProfileEditPanel$26
   implements Runnable
 {
-  public NearbyProfileEditPanel$26(asvw paramasvw, View paramView1, View paramView2) {}
+  public NearbyProfileEditPanel$26(atsa paramatsa, View paramView1, View paramView2) {}
   
   public void run()
   {

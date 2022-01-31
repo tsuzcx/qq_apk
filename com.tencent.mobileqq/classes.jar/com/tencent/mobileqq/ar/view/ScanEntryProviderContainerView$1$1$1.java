@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.view;
 
-import akyo;
-import akyp;
+import alna;
+import alnb;
 import android.os.Bundle;
 
 public class ScanEntryProviderContainerView$1$1$1
   implements Runnable
 {
-  public ScanEntryProviderContainerView$1$1$1(akyp paramakyp) {}
+  public ScanEntryProviderContainerView$1$1$1(alnb paramalnb) {}
   
   public void run()
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("fromSource", 1);
-    this.a.jdField_a_of_type_Akyo.a.a(this.a.jdField_a_of_type_JavaLangInteger.intValue(), localBundle);
+    this.a.jdField_a_of_type_Alna.a.a(this.a.jdField_a_of_type_JavaLangInteger.intValue(), localBundle);
   }
 }
 

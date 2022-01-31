@@ -1,26 +1,16 @@
-import com.jakewharton.disklrucache.DiskLruCache.Snapshot;
-import java.io.InputStream;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
 
 public class wxs
+  implements DialogInterface.OnClickListener
 {
-  private DiskLruCache.Snapshot jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot;
-  private InputStream jdField_a_of_type_JavaIoInputStream;
+  public wxs(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public wxs(wxr paramwxr) {}
-  
-  public InputStream a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.jdField_a_of_type_JavaIoInputStream;
-  }
-  
-  public void a(DiskLruCache.Snapshot paramSnapshot)
-  {
-    this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot = paramSnapshot;
-  }
-  
-  public void a(InputStream paramInputStream)
-  {
-    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

@@ -1,15 +1,15 @@
-import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class uhk
-  implements bekd
+class uhk
+  implements DialogInterface.OnDismissListener
 {
-  public uhk(MemoriesInnerListView paramMemoriesInnerListView) {}
+  uhk(uhj paramuhj, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramInt == 4097) && (this.a.a != null)) {
-      this.a.a.a(MemoriesInnerListView.a(this.a).a);
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
   }
 }
 

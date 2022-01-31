@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import afuz;
+import aggy;
 import com.tencent.widget.XEditTextEx;
 
 public class MiniPie$11
   implements Runnable
 {
-  public MiniPie$11(afuz paramafuz) {}
+  public MiniPie$11(aggy paramaggy) {}
   
   public void run()
   {

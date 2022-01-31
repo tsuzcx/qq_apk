@@ -1,21 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
 
 public class afoo
-  implements View.OnTouchListener
+  implements afjg
 {
-  public afoo(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public afoo(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afoo
  * JD-Core Version:    0.7.0.1
  */

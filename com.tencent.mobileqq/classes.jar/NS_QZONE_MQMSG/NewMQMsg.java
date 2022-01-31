@@ -1,19 +1,23 @@
 package NS_QZONE_MQMSG;
 
+import NS_MOBILE_FEEDS.single_feed;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class NewMQMsg
   extends JceStruct
 {
+  static ArrayList<single_feed> cache_all_feeds_data;
   static BottomCell cache_bottomCell;
   static Map<String, String> cache_mpExtent;
   static MsgBody cache_msgBody = new MsgBody();
   static MsgInteractData cache_msgInteractData = new MsgInteractData();
-  static UserPersonalData cache_userPersonalData = new UserPersonalData();
+  static UserPersonalData cache_userPersonalData;
+  public ArrayList<single_feed> all_feeds_data;
   public BottomCell bottomCell;
   public String jumpUrlToDetail = "";
   public Map<String, String> mpExtent;
@@ -32,11 +36,15 @@ public final class NewMQMsg
     cache_bottomCell = new BottomCell();
     cache_mpExtent = new HashMap();
     cache_mpExtent.put("", "");
+    cache_userPersonalData = new UserPersonalData();
+    cache_all_feeds_data = new ArrayList();
+    single_feed localsingle_feed = new single_feed();
+    cache_all_feeds_data.add(localsingle_feed);
   }
   
   public NewMQMsg() {}
   
-  public NewMQMsg(int paramInt, String paramString1, long paramLong, String paramString2, String paramString3, String paramString4, MsgBody paramMsgBody, MsgInteractData paramMsgInteractData, String paramString5, BottomCell paramBottomCell, Map<String, String> paramMap, UserPersonalData paramUserPersonalData)
+  public NewMQMsg(int paramInt, String paramString1, long paramLong, String paramString2, String paramString3, String paramString4, MsgBody paramMsgBody, MsgInteractData paramMsgInteractData, String paramString5, BottomCell paramBottomCell, Map<String, String> paramMap, UserPersonalData paramUserPersonalData, ArrayList<single_feed> paramArrayList)
   {
     this.msgType = paramInt;
     this.title = paramString1;
@@ -50,6 +58,7 @@ public final class NewMQMsg
     this.bottomCell = paramBottomCell;
     this.mpExtent = paramMap;
     this.userPersonalData = paramUserPersonalData;
+    this.all_feeds_data = paramArrayList;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -66,6 +75,7 @@ public final class NewMQMsg
     this.bottomCell = ((BottomCell)paramJceInputStream.read(cache_bottomCell, 9, false));
     this.mpExtent = ((Map)paramJceInputStream.read(cache_mpExtent, 10, false));
     this.userPersonalData = ((UserPersonalData)paramJceInputStream.read(cache_userPersonalData, 11, false));
+    this.all_feeds_data = ((ArrayList)paramJceInputStream.read(cache_all_feeds_data, 12, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -101,6 +111,9 @@ public final class NewMQMsg
     }
     if (this.userPersonalData != null) {
       paramJceOutputStream.write(this.userPersonalData, 11);
+    }
+    if (this.all_feeds_data != null) {
+      paramJceOutputStream.write(this.all_feeds_data, 12);
     }
   }
 }

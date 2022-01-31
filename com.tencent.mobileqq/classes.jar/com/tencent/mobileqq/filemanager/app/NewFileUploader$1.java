@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aofp;
-import aoiz;
+import aowj;
+import aozt;
 
 public class NewFileUploader$1
   implements Runnable
 {
-  public NewFileUploader$1(aofp paramaofp) {}
+  public NewFileUploader$1(aowj paramaowj) {}
   
   public void run()
   {
-    if (aofp.a(this.this$0) != null) {
-      aofp.a(this.this$0).a(0L);
+    if (aowj.a(this.this$0) != null) {
+      aowj.a(this.this$0).a(0L);
     }
   }
 }

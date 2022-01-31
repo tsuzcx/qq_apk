@@ -1,36 +1,47 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.forward.ForwardMultServerShare.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import tencent.im.msg.im_msg_body.RichText;
+import android.os.Message;
+import com.tencent.kwstudio.office.base.Log;
+import com.tencent.kwstudio.office.debug.Debugger.IDebugCallback;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsDebugView;
+import java.lang.ref.WeakReference;
 
-public class apjl
-  implements atqq
+public final class apjl
+  implements Debugger.IDebugCallback
 {
-  public apjl(ForwardMultServerShare.2 param2) {}
+  private final WeakReference<TdsDebugView> a;
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  private apjl(TdsDebugView paramTdsDebugView)
   {
-    return null;
+    this.a = new WeakReference(paramTdsDebugView);
   }
   
-  public void a(atqr paramatqr)
+  public void onCleanCache(String paramString, int paramInt)
   {
-    if (paramatqr != null) {
-      QLog.d(apjj.a(), 1, "requestImageShare updateMsg info =" + paramatqr);
+    Log.d("TdsDebugView", "onCleanCache: m=" + paramString + ", r=" + paramInt);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return;
     }
+    Message.obtain(TdsDebugView.a(localTdsDebugView), 3, paramInt, 0, paramString).sendToTarget();
   }
   
-  public void b(atqr paramatqr)
+  public void onCleanPlugin(String paramString, int paramInt)
   {
-    this.a.jdField_a_of_type_JavaUtilMap.put(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord, paramatqr);
-    QLog.d(apjj.a(), 1, new Object[] { "requestImageShare onSend result =", paramatqr, ", isTimeOut=", Boolean.valueOf(apjj.a(this.a.this$0)) });
-    if (this.a.jdField_a_of_type_JavaUtilMap.size() == apjj.a(this.a.this$0).size())
-    {
-      apmt.b("KEY_STAGE_2_UPLOAD_IMAGE_MULT");
-      apjj.a(this.a.this$0, this.a.jdField_a_of_type_JavaUtilMap);
+    Log.d("TdsDebugView", "onCleanPlugin: m=" + paramString + ", r=" + paramInt);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return;
     }
+    Message.obtain(TdsDebugView.a(localTdsDebugView), 1, paramInt, 0, paramString).sendToTarget();
+  }
+  
+  public void onUpgradePlugin(String paramString, int paramInt)
+  {
+    Log.d("TdsDebugView", "onUpgradePlugin: m=" + paramString + ", r=" + paramInt);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return;
+    }
+    Message.obtain(TdsDebugView.a(localTdsDebugView), 2, paramInt, 0, paramString).sendToTarget();
   }
 }
 

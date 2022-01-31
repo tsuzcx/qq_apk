@@ -1,13 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import com.tencent.biz.pubaccount.readinjoy.kandianreport.ReadInJoyMMapKvStorage;
+import com.tencent.mobileqq.app.QQAppInterface;
+import onk;
+import sdf;
 
 class KandianMergeManager$2
   implements Runnable
 {
   KandianMergeManager$2(KandianMergeManager paramKandianMergeManager) {}
   
-  public void run() {}
+  public void run()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)onk.a();
+    sdf.a().j(localQQAppInterface);
+  }
 }
 
 

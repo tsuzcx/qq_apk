@@ -4,12 +4,12 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView.ScaleType;
-import bbgg;
+import bcjg;
 
 public class AnyScaleTypeImageView
   extends URLTextImageView
 {
-  private bbgg jdField_a_of_type_Bbgg;
+  private bcjg jdField_a_of_type_Bcjg;
   private boolean jdField_a_of_type_Boolean;
   
   public AnyScaleTypeImageView(Context paramContext)
@@ -27,10 +27,10 @@ public class AnyScaleTypeImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void setDisplayRuleDef(bbgg parambbgg)
+  public void setDisplayRuleDef(bcjg parambcjg)
   {
-    this.jdField_a_of_type_Bbgg = parambbgg;
-    if (parambbgg != null) {
+    this.jdField_a_of_type_Bcjg = parambcjg;
+    if (parambcjg != null) {
       setScaleType(ImageView.ScaleType.MATRIX);
     }
   }
@@ -42,20 +42,20 @@ public class AnyScaleTypeImageView
     if (localDrawable == null) {
       return super.setFrame(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    if (this.jdField_a_of_type_Bbgg != null)
+    if (this.jdField_a_of_type_Bcjg != null)
     {
       int i = getPaddingLeft();
       int j = getPaddingRight();
       int k = getPaddingTop();
       int m = getPaddingBottom();
-      setImageMatrix(this.jdField_a_of_type_Bbgg.a(localDrawable, paramInt3 - paramInt1 - i - j, paramInt4 - paramInt2 - k - m));
+      setImageMatrix(this.jdField_a_of_type_Bcjg.a(localDrawable, paramInt3 - paramInt1 - i - j, paramInt4 - paramInt2 - k - m));
     }
     return super.setFrame(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    if ((this.jdField_a_of_type_Boolean) && (paramDrawable != null) && (this.jdField_a_of_type_Bbgg != null))
+    if ((this.jdField_a_of_type_Boolean) && (paramDrawable != null) && (this.jdField_a_of_type_Bcjg != null))
     {
       int i = getWidth();
       int j = getPaddingLeft();
@@ -63,7 +63,7 @@ public class AnyScaleTypeImageView
       int m = getHeight();
       int n = getPaddingTop();
       int i1 = getPaddingBottom();
-      setImageMatrix(this.jdField_a_of_type_Bbgg.a(paramDrawable, i - j - k, m - n - i1));
+      setImageMatrix(this.jdField_a_of_type_Bcjg.a(paramDrawable, i - j - k, m - n - i1));
     }
     super.setImageDrawable(paramDrawable);
   }

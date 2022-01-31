@@ -1,35 +1,29 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
-class aoij
-  extends MqqHandler
+public class aoij
+  implements Animator.AnimatorListener
 {
-  aoij(aoii paramaoii, Looper paramLooper)
+  public aoij(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramLooper);
+    this.a.n();
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("FileManagerNotifyCenter<FileAssistant>", 1, "recv Netchang event!");
-    }
-    this.a.a.a().a(true);
-    this.a.a.a().b(-1);
-    aojd.a(-1);
+    this.a.n();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoij
  * JD-Core Version:    0.7.0.1
  */

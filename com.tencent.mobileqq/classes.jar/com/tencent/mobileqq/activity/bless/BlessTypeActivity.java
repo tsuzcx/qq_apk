@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.bless;
 
-import aeqd;
-import aeqf;
-import aeqx;
+import afaz;
+import afbb;
+import afbt;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +10,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import awlw;
-import awqx;
-import babr;
-import bbmy;
+import axlc;
+import axqw;
+import bbcv;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
@@ -30,7 +30,7 @@ public class BlessTypeActivity
 {
   private static boolean b;
   protected float a;
-  public aeqd a;
+  public afaz a;
   protected View a;
   private boolean a;
   protected int c;
@@ -71,12 +71,12 @@ public class BlessTypeActivity
     //   49: astore_3
     //   50: aload_0
     //   51: aload_0
-    //   52: getfield 52	com/tencent/mobileqq/activity/bless/BlessTypeActivity:jdField_a_of_type_Aeqd	Laeqd;
-    //   55: invokevirtual 58	aeqd:e	()Z
+    //   52: getfield 52	com/tencent/mobileqq/activity/bless/BlessTypeActivity:jdField_a_of_type_Afaz	Lafaz;
+    //   55: invokevirtual 58	afaz:e	()Z
     //   58: putfield 22	com/tencent/mobileqq/activity/bless/BlessTypeActivity:jdField_a_of_type_Boolean	Z
     //   61: aload_0
-    //   62: getfield 52	com/tencent/mobileqq/activity/bless/BlessTypeActivity:jdField_a_of_type_Aeqd	Laeqd;
-    //   65: invokevirtual 61	aeqd:f	()Z
+    //   62: getfield 52	com/tencent/mobileqq/activity/bless/BlessTypeActivity:jdField_a_of_type_Afaz	Lafaz;
+    //   65: invokevirtual 61	afaz:f	()Z
     //   68: ifne +165 -> 233
     //   71: aload_3
     //   72: aload_0
@@ -86,7 +86,7 @@ public class BlessTypeActivity
     //   79: invokevirtual 32	com/tencent/mobileqq/activity/bless/BlessTypeActivity:findViewById	(I)Landroid/view/View;
     //   82: checkcast 64	android/widget/ImageView
     //   85: astore_3
-    //   86: invokestatic 68	aeqd:g	()I
+    //   86: invokestatic 68	afaz:g	()I
     //   89: istore_1
     //   90: iload_1
     //   91: i2f
@@ -119,10 +119,10 @@ public class BlessTypeActivity
     //   145: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   148: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   151: aload_0
-    //   152: getfield 52	com/tencent/mobileqq/activity/bless/BlessTypeActivity:jdField_a_of_type_Aeqd	Laeqd;
+    //   152: getfield 52	com/tencent/mobileqq/activity/bless/BlessTypeActivity:jdField_a_of_type_Afaz	Lafaz;
     //   155: aload_0
     //   156: getfield 113	com/tencent/mobileqq/activity/bless/BlessTypeActivity:c	I
-    //   159: invokevirtual 116	aeqd:a	(I)Ljava/lang/String;
+    //   159: invokevirtual 116	afaz:a	(I)Ljava/lang/String;
     //   162: astore 5
     //   164: aload 5
     //   166: ifnull +66 -> 232
@@ -139,12 +139,12 @@ public class BlessTypeActivity
     //   191: aload 4
     //   193: iload_1
     //   194: iload_2
-    //   195: invokestatic 129	bacm:a	(Ljava/io/InputStream;II)D
+    //   195: invokestatic 129	bbdr:a	(Ljava/io/InputStream;II)D
     //   198: d2i
     //   199: putfield 132	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   202: aload 5
     //   204: aload 6
-    //   206: invokestatic 137	azvq:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   206: invokestatic 137	bawu:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   209: astore 5
     //   211: aload 5
     //   213: ifnull +9 -> 222
@@ -281,7 +281,7 @@ public class BlessTypeActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Aeqd = ((aeqd)this.app.getManager(138));
+    this.jdField_a_of_type_Afaz = ((afaz)this.app.getManager(138));
     return true;
   }
   
@@ -315,36 +315,36 @@ public class BlessTypeActivity
     {
     default: 
       return;
-    case 2131302804: 
+    case 2131368429: 
       onBackEvent();
       return;
-    case 2131298131: 
-      if (this.jdField_a_of_type_Aeqd.f() <= 0)
+    case 2131363683: 
+      if (this.jdField_a_of_type_Afaz.f() <= 0)
       {
-        bbmy.a(this, String.format(getString(2131624972), new Object[] { Integer.valueOf(this.jdField_a_of_type_Aeqd.e()) }), 0).a();
+        bcpw.a(this, String.format(getString(2131690533), new Object[] { Integer.valueOf(this.jdField_a_of_type_Afaz.e()) }), 0).a();
         return;
       }
       paramView = new Intent(this, BlessSendTextActivity.class);
       paramView.putExtra("param_ptv_enable", this.jdField_a_of_type_Boolean);
       startActivity(paramView);
       overridePendingTransition(2130771997, 2130772001);
-      aeqf.a("bless_event_text_click", null);
-      awqx.b(this.app, "CliOper", "", "", "0X800618D", "0X800618D", 0, 0, "", "", "", "");
+      afbb.a("bless_event_text_click", null);
+      axqw.b(this.app, "CliOper", "", "", "0X800618D", "0X800618D", 0, 0, "", "", "", "");
       return;
     }
-    if (this.jdField_a_of_type_Aeqd.f() <= 0)
+    if (this.jdField_a_of_type_Afaz.f() <= 0)
     {
-      bbmy.a(this, String.format(getString(2131624972), new Object[] { Integer.valueOf(this.jdField_a_of_type_Aeqd.e()) }), 0).a();
+      bcpw.a(this, String.format(getString(2131690533), new Object[] { Integer.valueOf(this.jdField_a_of_type_Afaz.e()) }), 0).a();
       return;
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      bbmy.a(BaseApplication.getContext(), getString(2131624950), 0).a();
+      bcpw.a(BaseApplication.getContext(), getString(2131690511), 0).a();
       return;
     }
     if (this.app.c())
     {
-      bbmy.a(BaseApplication.getContext(), 2131629840, 0).a();
+      bcpw.a(BaseApplication.getContext(), 2131695521, 0).a();
       return;
     }
     if (AudioHelper.b(0))
@@ -359,11 +359,11 @@ public class BlessTypeActivity
     }
     if (AudioHelper.a(0))
     {
-      babr.a(this, 230, getString(2131632717), getString(2131632719), new aeqx(this), null).show();
+      bbcv.a(this, 230, getString(2131698453), getString(2131698455), new afbt(this), null).show();
       return;
     }
-    boolean bool2 = awlw.a(this.app, BaseApplicationImpl.getContext());
-    if ((a()) && ((bool2) || (awlw.a(this) == 0))) {}
+    boolean bool2 = axlc.a(this.app, BaseApplicationImpl.getContext());
+    if ((a()) && ((bool2) || (axlc.a(this) == 0))) {}
     for (boolean bool1 = true;; bool1 = false)
     {
       QLog.i("BlessTyeActivity", 2, "bless_ptv press, filterOK=" + bool2 + ",videoAndSoReady:" + bool1);

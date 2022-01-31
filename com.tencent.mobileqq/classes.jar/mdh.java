@@ -1,47 +1,101 @@
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.Style;
-import com.tencent.av.ui.funchat.zimu.ZimuView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import java.util.Random;
 
 public class mdh
-  extends mde
+  implements View.OnClickListener
 {
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int i;
+  public mdh(EffectSettingUi paramEffectSettingUi) {}
   
-  public mdh(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat)
+  public void onClick(View paramView)
   {
-    super(paramContext, paramWeakReference, paramInt1, paramInt2, paramFloat);
-    this.jdField_a_of_type_ArrayOfInt = new int[] { paramInt1 / 4, (int)(paramInt1 / 3.8D), (int)(paramInt1 / 3.6D), (int)(paramInt1 / 3.4D), (int)(paramInt1 / 3.2D), paramInt1 / 3, (int)(paramInt1 / 2.8D), (int)(paramInt1 / 2.6D) };
-    paramInt1 = this.jdField_a_of_type_JavaUtilRandom.nextInt(8);
-    this.i = this.jdField_a_of_type_ArrayOfInt[paramInt1];
-  }
-  
-  protected int a(int paramInt)
-  {
-    krx.c(this.jdField_a_of_type_JavaLangString, "getSPEED: " + this.i);
-    return this.i;
-  }
-  
-  protected void a(Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Mda.b);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFakeBoldText(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Mda.jdField_a_of_type_Float);
-    float f1 = -this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent;
-    paramCanvas.drawText((String)this.jdField_a_of_type_Kws.a, 0.0F, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Mda.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFakeBoldText(false);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(0.0F);
-    float f2 = this.jdField_a_of_type_Mda.jdField_a_of_type_Float / 6.0F;
-    paramCanvas.drawText((String)this.jdField_a_of_type_Kws.a, 0.0F + f2, f1 - f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+    long l = AudioHelper.b();
+    int k = paramView.getId();
+    paramView = paramView.getTag(2131376845);
+    if ((paramView != null) && ((paramView instanceof Boolean))) {}
+    for (boolean bool = ((Boolean)paramView).booleanValue();; bool = false)
+    {
+      int m = this.a.jdField_a_of_type_Int;
+      bool = this.a.a(l, k, bool);
+      int i;
+      int j;
+      if (k == 4)
+      {
+        i = 1;
+        j = i;
+        if (i != 0)
+        {
+          paramView = ((AVActivity)this.a.getContext()).a;
+          if ((paramView != null) && ((paramView == null) || (paramView.getVisibility() != 8))) {
+            break label321;
+          }
+          j = 1;
+        }
+        label109:
+        if ((bool) && ((m != k) || (j != 0))) {
+          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(6105), Integer.valueOf(k), Long.valueOf(l) });
+        }
+        if (bool)
+        {
+          paramView = VideoController.a().a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get());
+          if (paramView != null)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.d("EffectSettingUi", 1, "onShow clear state");
+            }
+            paramView.b(k);
+          }
+        }
+        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(165), Integer.valueOf(1) });
+        if (m != k)
+        {
+          if (k != 1) {
+            break label326;
+          }
+          mbr.b((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().E, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool);
+        }
+      }
+      label321:
+      label326:
+      label372:
+      do
+      {
+        do
+        {
+          return;
+          i = 0;
+          break;
+          j = 0;
+          break label109;
+          if (k != 2) {
+            break label372;
+          }
+          mbr.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.a(), bool);
+        } while (this.a.jdField_a_of_type_Mde == null);
+        this.a.jdField_a_of_type_Mde.a();
+        return;
+        if (k == 4)
+        {
+          mbr.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().E, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool);
+          return;
+        }
+        if (k == 3)
+        {
+          mbr.a(this.a.a(), bool);
+          return;
+        }
+      } while (k != 5);
+      mqz.f();
+      return;
+    }
   }
 }
 

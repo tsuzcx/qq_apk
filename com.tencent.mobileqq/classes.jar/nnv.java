@@ -1,17 +1,36 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.os.AsyncTask;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
-class nnv
-  implements ViewFactory.FoundClickableViewListener
+public class nnv
+  extends AsyncTask<String, Integer, String>
 {
-  nnv(nnu paramnnu, BaseData paramBaseData, Context paramContext) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void onFound(ViewBase paramViewBase)
+  protected String a(String... paramVarArgs)
   {
-    paramViewBase.setOnClickListener(new nnw(this));
+    if (super.isCancelled()) {
+      return null;
+    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(paramVarArgs[0], paramVarArgs[1]);
   }
+  
+  protected void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "{\"r\" : \"-100\"}";
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs("clientCallback", new String[] { nax.a(str), nax.a(this.jdField_a_of_type_JavaLangString) });
+  }
+  
+  protected void a(Integer... paramVarArgs) {}
+  
+  protected void onCancelled()
+  {
+    super.onCancelled();
+  }
+  
+  protected void onPreExecute() {}
 }
 
 

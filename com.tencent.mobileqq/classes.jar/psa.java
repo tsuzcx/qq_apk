@@ -1,31 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class psa
+class psa
+  implements View.OnTouchListener
 {
-  private static ppl a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 0: 
-      return new poy(paramBaseArticleInfo);
-    }
-    return new pry(paramBaseArticleInfo);
-  }
+  psa(prw paramprw, LinearLayout paramLinearLayout) {}
   
-  public static ppl a(BaseArticleInfo paramBaseArticleInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (a(paramBaseArticleInfo)) {
-      return a(1, paramBaseArticleInfo);
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
     }
-    return a(0, paramBaseArticleInfo);
-  }
-  
-  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return ((paramBaseArticleInfo instanceof ArticleInfo)) && (!qoe.q((ArticleInfo)paramBaseArticleInfo));
+    return false;
   }
 }
 

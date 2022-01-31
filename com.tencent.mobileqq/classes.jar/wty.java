@@ -1,24 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 
-class wty
-  implements Animation.AnimationListener
+public class wty
+  implements bcto
 {
-  wty(wtw paramwtw) {}
+  public wty(VideoPlayerView paramVideoPlayerView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    wtw.b(this.a).setVisibility(8);
+    if ((VideoPlayerView.a(this.a) != null) && (VideoPlayerView.a(this.a) != null))
+    {
+      VideoPlayerView.d(this.a, false);
+      VideoPlayerView.a(this.a).onOrientationChange(VideoPlayerView.d(this.a));
+      VideoPlayerView.a(this.a).onVideoSize(this.a.a().getViewWidth(), this.a.a().getViewHeight());
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wty
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,6 @@ public class AELight
 {
   private static final String TAG = "NightRGBStretchFilter";
   private int[] histogram;
-  private boolean isInited = false;
   private boolean mIsVeryLowEndDevice;
   public float mLightSensorBrightness = 3.4028235E+38F;
   private NightRGBStretchImpFilter mNightRGBStretchFilter = new NightRGBStretchImpFilter();
@@ -19,8 +18,10 @@ public class AELight
   
   public void apply()
   {
-    if (!this.isInited) {
+    if (!this.mIsApplied)
+    {
       this.mNightRGBStretchFilter.applyFilterChain(true, this.previewWidth, this.previewHeight);
+      this.mIsApplied = true;
     }
   }
   
@@ -29,7 +30,7 @@ public class AELight
     if (this.mNightRGBStretchFilter != null) {
       this.mNightRGBStretchFilter.ClearGLSL();
     }
-    this.isInited = false;
+    this.mIsApplied = false;
   }
   
   public boolean isLowLightEnv()

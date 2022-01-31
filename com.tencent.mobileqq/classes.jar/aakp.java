@@ -1,15 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.qphone.base.remote.SimpleAccount;
 
 public class aakp
-  implements DialogInterface.OnClickListener
+  implements bfoq
 {
-  public aakp(ChatSettingForTroop paramChatSettingForTroop) {}
+  SimpleAccount jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aakp(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    ChatSettingForTroop.i(this.a);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b.dismiss();
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, false);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, true);
+  }
+  
+  public void a(SimpleAccount paramSimpleAccount)
+  {
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = paramSimpleAccount;
   }
 }
 

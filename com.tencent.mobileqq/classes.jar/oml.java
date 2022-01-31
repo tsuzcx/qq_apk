@@ -1,170 +1,42 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.AnimationSet;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.ListView;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import android.view.View.OnTouchListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyCardViewCostBall;
 
-public abstract class oml
+public class oml
+  implements View.OnTouchListener
 {
-  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
-  private qoe jdField_a_of_type_Qoe;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
   
-  public abstract int a();
+  private oml(ReadInJoyCardViewCostBall paramReadInJoyCardViewCostBall) {}
   
-  public final Activity a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return this.jdField_a_of_type_Qoe.a();
-  }
-  
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return null;
-  }
-  
-  public AnimationSet a()
-  {
-    return this.jdField_a_of_type_Qoe.a();
-  }
-  
-  public final azwg a()
-  {
-    return this.jdField_a_of_type_Qoe.a();
-  }
-  
-  public ReadInJoyBaseListViewGroup a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
-  }
-  
-  public AbsListView a()
-  {
-    if (this.jdField_a_of_type_Qoe != null) {
-      return this.jdField_a_of_type_Qoe.a();
+    switch (paramMotionEvent.getAction())
+    {
     }
-    return null;
-  }
-  
-  public Boolean a()
-  {
-    return null;
-  }
-  
-  public Integer a(int paramInt)
-  {
-    return Integer.valueOf(this.jdField_a_of_type_Qoe.getItemViewType(paramInt));
-  }
-  
-  public final Object a(int paramInt)
-  {
-    return this.jdField_a_of_type_Qoe.getItem(paramInt);
-  }
-  
-  public final qoe a()
-  {
-    return this.jdField_a_of_type_Qoe;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(View paramView, ArticleInfo paramArticleInfo, int paramInt) {}
-  
-  public void a(View paramView, ListView paramListView) {}
-  
-  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt) {}
-  
-  public final void a(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup = paramReadInJoyBaseListViewGroup;
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {}
-  
-  public void a(List<BaseArticleInfo> paramList) {}
-  
-  public void a(Map<Integer, pov> paramMap) {}
-  
-  public void a(Map<Long, pov> paramMap, boolean paramBoolean) {}
-  
-  public void a(Set<Long> paramSet, Map<Long, pov> paramMap) {}
-  
-  public final void a(qoe paramqoe)
-  {
-    this.jdField_a_of_type_Qoe = paramqoe;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_Int = ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).x;
+      this.jdField_b_of_type_Int = ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).y;
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
+      continue;
+      ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).x = (this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float - paramMotionEvent.getRawX()));
+      ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).y = (this.jdField_b_of_type_Int + (int)(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float));
+      ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).updateViewLayout(paramView, ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall));
     }
   }
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
-  
-  public final boolean a()
-  {
-    return this.jdField_a_of_type_Qoe.c;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Qoe.a();
-  }
-  
-  public void b() {}
-  
-  public void b(View paramView, ListView paramListView) {}
-  
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Qoe.b();
-  }
-  
-  public void c() {}
-  
-  public final int d()
-  {
-    return this.jdField_a_of_type_Qoe.getCount();
-  }
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void h() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oml
  * JD-Core Version:    0.7.0.1
  */

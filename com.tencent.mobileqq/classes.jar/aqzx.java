@@ -1,22 +1,56 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
 
-final class aqzx
-  implements DialogInterface.OnClickListener
+public class aqzx
+  extends RecyclerView.OnScrollListener
 {
-  aqzx(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2) {}
+  public aqzx(HotPicRecyclerView paramHotPicRecyclerView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    arcl.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
-    awqx.b(null, "CliOper", "", "", "0X800A970", "0X800A970", 0, 0, "0", "0", "0", "");
+    if (paramInt == 0)
+    {
+      AbstractGifImage.resumeAll();
+      araf.c();
+      this.a.b();
+      if (paramInt != 2) {
+        break label128;
+      }
+      this.a.jdField_a_of_type_Arbl.a(true);
+    }
+    for (;;)
+    {
+      if ((paramInt == 0) && (this.a.jdField_a_of_type_Int == 2))
+      {
+        ((StaggeredGridLayoutManager)this.a.getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.a.jdField_a_of_type_ArrayOfInt);
+        if ((this.a.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.a.jdField_a_of_type_Aqzy != null)) {
+          this.a.jdField_a_of_type_Aqzy.d();
+        }
+      }
+      this.a.jdField_a_of_type_Int = paramInt;
+      return;
+      this.a.c();
+      AbstractGifImage.pauseAll();
+      araf.b();
+      break;
+      label128:
+      this.a.jdField_a_of_type_Arbl.a(false);
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 > 0) {
+      this.a.jdField_a_of_type_Arbl.a(paramInt2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aqzx
  * JD-Core Version:    0.7.0.1
  */

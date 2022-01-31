@@ -1,20 +1,32 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class qzn
-  implements Animation.AnimationListener
+public class qzn
+  implements bfrx
 {
-  qzn(qzk paramqzk) {}
+  public qzn(ChannelClassificationListView paramChannelClassificationListView) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void onScrollStateChanged(int paramInt)
   {
-    paramAnimation.setInterpolator(new AnticipateInterpolator());
+    JSONObject localJSONObject;
+    if (paramInt == 4098) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("channelid", ChannelClassificationListView.a(this.a));
+      noo.a(null, onk.a() + "", "0X8009934", "0X8009934", 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

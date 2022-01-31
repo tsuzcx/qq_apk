@@ -1,29 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
-public class vxh
-  implements ValueAnimator.AnimatorUpdateListener
+class vxh
+  implements View.OnClickListener
 {
-  private View jdField_a_of_type_AndroidViewView;
+  vxh(vxg paramvxg, TroopStoryItemInfo paramTroopStoryItemInfo) {}
   
-  private vxh(TopPanelViewNew paramTopPanelViewNew, View paramView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    paramView = ((tcz)tdc.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryItemInfo.storyId);
+    if (paramView != null) {
+      ((svo)tdc.a().b(3)).a(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vxh
  * JD-Core Version:    0.7.0.1
  */

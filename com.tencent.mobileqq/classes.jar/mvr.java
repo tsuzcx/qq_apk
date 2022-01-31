@@ -1,22 +1,13 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.av.widget.stageview.StageEffectView;
 
-class mvr
-  implements View.OnClickListener
+public abstract interface mvr
 {
-  mvr(mut parammut, String paramString, nbu paramnbu) {}
-  
-  public void onClick(View paramView)
-  {
-    mut.c(this.jdField_a_of_type_Mut, this.jdField_a_of_type_JavaLangString);
-    PublicAccountHandler.a(this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Mut.jdField_a_of_type_JavaLangString, "Grp_tribe", "interest_data", "Clk_msg");
-    mut.a(this.jdField_a_of_type_Mut, this.jdField_a_of_type_Nbu.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(StageEffectView paramStageEffectView, View paramView, mvs parammvs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mvr
  * JD-Core Version:    0.7.0.1
  */

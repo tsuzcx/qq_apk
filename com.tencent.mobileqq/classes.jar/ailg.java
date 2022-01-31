@@ -1,59 +1,20 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.FixSizeImageView;
+import com.tencent.widget.SingleLineTextView;
 
-class ailg
-  implements EIPCResultCallback
+public class ailg
 {
-  ailg(ailf paramailf) {}
+  public ayam a;
+  public DragTextView a;
+  public FixSizeImageView a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
   
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    paramEIPCResult = paramEIPCResult.data;
-    int i = paramEIPCResult.getInt("type");
-    if (i == 1) {
-      paramEIPCResult = paramEIPCResult.getString("nickName");
-    }
-    JSONObject localJSONObject;
-    while (i != 2) {
-      try
-      {
-        localJSONObject = new JSONObject();
-        localJSONObject.put("nickname", 1);
-        localJSONObject.put("data", paramEIPCResult);
-        localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
-        ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
-        return;
-      }
-      catch (Throwable paramEIPCResult)
-      {
-        QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
-        return;
-      }
-    }
-    paramEIPCResult = ailn.a((Bitmap)paramEIPCResult.getParcelable("head"), 100);
-    try
-    {
-      localJSONObject = new JSONObject();
-      localJSONObject.put("avatar", 1);
-      localJSONObject.put("data", paramEIPCResult);
-      localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
-      ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
-      return;
-    }
-    catch (Throwable paramEIPCResult)
-    {
-      QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
-    }
-  }
+  public ailg(ailf paramailf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ailg
  * JD-Core Version:    0.7.0.1
  */

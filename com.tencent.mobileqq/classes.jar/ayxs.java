@@ -1,22 +1,30 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadConstants.1;
+import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadConstants.2;
+import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadConstants.3;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
-class ayxs
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class ayxs
 {
-  ayxs(ayxq paramayxq, boolean paramBoolean) {}
+  public static final HashMap<Integer, String> a;
+  public static Set<Integer> a;
+  public static final HashMap<Integer, String> b = new PreDownloadConstants.2();
+  public static final HashMap<Integer, Integer> c = new PreDownloadConstants.3();
   
-  public void onGlobalLayout()
+  static
   {
-    ayxq.a(this.jdField_a_of_type_Ayxq).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    ayxq.b(this.jdField_a_of_type_Ayxq).setVisibility(4);
-    ayxq.a(this.jdField_a_of_type_Ayxq, this.jdField_a_of_type_Boolean, ayxq.a(this.jdField_a_of_type_Ayxq), ayxq.c(this.jdField_a_of_type_Ayxq));
+    jdField_a_of_type_JavaUtilSet = new HashSet();
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(10088));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(10081));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(10082));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(10069));
+    jdField_a_of_type_JavaUtilHashMap = new PreDownloadConstants.1();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayxs
  * JD-Core Version:    0.7.0.1
  */

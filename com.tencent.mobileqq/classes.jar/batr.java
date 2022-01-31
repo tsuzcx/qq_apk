@@ -1,14 +1,24 @@
-import android.os.Bundle;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.os.Handler;
+import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
+import com.tencent.mobileqq.trooppiceffects.view.ShakePicView.1.1;
 
-public abstract interface batr
+public class batr
+  implements Animator.AnimatorListener
 {
-  public abstract int a(boolean paramBoolean, String paramString);
+  public batr(ShakePicView paramShakePicView) {}
   
-  public abstract batm a(String paramString);
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public abstract void a(batm parambatm, batl parambatl, Bundle paramBundle);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a.postDelayed(new ShakePicView.1.1(this), 160L);
+  }
   
-  public abstract void b();
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

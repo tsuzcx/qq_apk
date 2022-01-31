@@ -1,98 +1,84 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import com.tencent.mobileqq.search.util.VADHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class avuw
-  extends avuy
 {
-  public avuw(GroupSearchEngine paramGroupSearchEngine, avuz paramavuz, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramavuz, paramString, paramInt);
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public avom a(List<avon> paramList, String paramString)
+  public static avuw a(avva paramavva)
   {
-    if (SearchConfigManager.needSeparate) {
-      return null;
-    }
-    return new avnx(paramList, paramString, GroupSearchEngine.a(this.a));
-  }
-  
-  public List<avom> a(avvn paramavvn)
-  {
-    VADHelper.a("voice_search_accurate_cost");
-    List localList = super.a(paramavvn);
-    VADHelper.b("voice_search_accurate_cost");
-    if ((localList != null) && (!localList.isEmpty()))
+    Object localObject;
+    if ((paramavva instanceof QIMEffectCameraCaptureUnit))
     {
-      if (paramavvn.a == null) {
-        paramavvn.a = new Bundle();
+      localObject = (bkyy)bjae.a(3);
+      if (localObject == null) {
+        break label290;
       }
-      paramavvn.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1000);
-      if (localList.size() >= 2)
+      localObject = ((bkyy)localObject).a();
+      if ((localObject != null) || (!(paramavva instanceof bihg))) {
+        break label292;
+      }
+    }
+    label290:
+    label292:
+    for (paramavva = ((bjrd)bjae.a(17)).a();; paramavva = (avva)localObject)
+    {
+      if (paramavva != null)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("GroupSearchEngine", 4, "contact search result count:" + ((avom)localList.get(1)).a().size());
+        localObject = new avuw();
+        ((avuw)localObject).e = bkyy.jdField_a_of_type_JavaLangString;
+        ((avuw)localObject).jdField_a_of_type_Boolean = paramavva.usable;
+        ((avuw)localObject).jdField_a_of_type_Int = paramavva.kind;
+        ((avuw)localObject).jdField_a_of_type_JavaLangString = paramavva.id;
+        ((avuw)localObject).jdField_b_of_type_JavaLangString = paramavva.name;
+        ((avuw)localObject).jdField_c_of_type_JavaLangString = paramavva.dgStageName;
+        ((avuw)localObject).d = paramavva.dgModelName;
+        ((avuw)localObject).jdField_b_of_type_Boolean = paramavva.hasFace();
+        ((avuw)localObject).jdField_c_of_type_Boolean = paramavva.hasGesture();
+        ((avuw)localObject).jdField_b_of_type_Int = paramavva.category;
+        ((avuw)localObject).f = paramavva.gestureType;
+        ((avuw)localObject).g = paramavva.gestureWording;
+        ((avuw)localObject).h = paramavva.bigHeadName;
+        return localObject;
+        paramavva = avrt.a().a();
+        if (paramavva != null)
+        {
+          localObject = new avuw();
+          ((avuw)localObject).e = avrt.jdField_a_of_type_JavaLangString;
+          ((avuw)localObject).jdField_a_of_type_Boolean = paramavva.usable;
+          ((avuw)localObject).jdField_a_of_type_Int = paramavva.kind;
+          ((avuw)localObject).jdField_a_of_type_JavaLangString = paramavva.id;
+          ((avuw)localObject).jdField_b_of_type_JavaLangString = paramavva.name;
+          ((avuw)localObject).jdField_c_of_type_JavaLangString = paramavva.dgStageName;
+          ((avuw)localObject).d = paramavva.dgModelName;
+          ((avuw)localObject).jdField_b_of_type_Boolean = paramavva.hasFace();
+          ((avuw)localObject).jdField_c_of_type_Boolean = paramavva.hasGesture();
+          ((avuw)localObject).jdField_b_of_type_Int = paramavva.category;
+          ((avuw)localObject).f = paramavva.gestureType;
+          ((avuw)localObject).g = paramavva.gestureWording;
+          ((avuw)localObject).h = paramavva.bigHeadName;
+          return localObject;
         }
-        paramavvn.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", ((avom)localList.get(1)).a().size());
+        return null;
       }
-      return localList;
-    }
-    paramavvn.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", 0);
-    return localList;
-  }
-  
-  protected avom b(List<avon> paramList, String paramString)
-  {
-    if (!SearchConfigManager.needSeparate) {
       return null;
     }
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      avon localavon = (avon)paramList.next();
-      if (!avwf.a(localavon)) {
-        localArrayList.add(localavon);
-      }
-    }
-    if (localArrayList.size() == 0) {
-      return null;
-    }
-    return new avnx(localArrayList, paramString, GroupSearchEngine.a(this.a));
-  }
-  
-  protected avom c(List<avon> paramList, String paramString)
-  {
-    if (!SearchConfigManager.needSeparate) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      avon localavon = (avon)paramList.next();
-      if (avwf.a(localavon)) {
-        localArrayList.add(localavon);
-      }
-    }
-    if (localArrayList.size() == 0) {
-      return null;
-    }
-    return new avnz(localArrayList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avuw
  * JD-Core Version:    0.7.0.1
  */

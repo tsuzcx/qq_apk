@@ -1,11 +1,9 @@
-import com.tencent.common.app.AppInterface;
-
 public class nps
 {
-  public static boolean a(AppInterface paramAppInterface, String paramString)
-  {
-    return false;
-  }
+  public long a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
 }
 
 

@@ -4,8 +4,8 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
 import android.widget.Adapter;
-import atbg;
-import atbh;
+import atxk;
+import atxl;
 import java.lang.ref.SoftReference;
 import java.util.Collection;
 import java.util.Iterator;
@@ -16,9 +16,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 public abstract class ItemLoader<Params, Result>
 {
   Handler jdField_a_of_type_AndroidOsHandler;
-  Map<View, atbh<Params>> jdField_a_of_type_JavaUtilMap;
+  Map<View, atxl<Params>> jdField_a_of_type_JavaUtilMap;
   ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
-  Map<String, atbg<Params, Result>> b;
+  Map<String, atxk<Params, Result>> b;
   
   static String a(int paramInt1, int paramInt2)
   {
@@ -30,19 +30,19 @@ public abstract class ItemLoader<Params, Result>
     return 1;
   }
   
-  atbh<Params> a(View paramView)
+  atxl<Params> a(View paramView)
   {
-    atbh localatbh2 = (atbh)this.jdField_a_of_type_JavaUtilMap.get(paramView);
-    atbh localatbh1 = localatbh2;
-    if (localatbh2 == null)
+    atxl localatxl2 = (atxl)this.jdField_a_of_type_JavaUtilMap.get(paramView);
+    atxl localatxl1 = localatxl2;
+    if (localatxl2 == null)
     {
-      localatbh1 = new atbh();
-      localatbh1.jdField_a_of_type_JavaLangObject = null;
-      localatbh1.jdField_a_of_type_Boolean = false;
-      localatbh1.jdField_a_of_type_Int = -1;
-      this.jdField_a_of_type_JavaUtilMap.put(paramView, localatbh1);
+      localatxl1 = new atxl();
+      localatxl1.jdField_a_of_type_JavaLangObject = null;
+      localatxl1.jdField_a_of_type_Boolean = false;
+      localatxl1.jdField_a_of_type_Int = -1;
+      this.jdField_a_of_type_JavaUtilMap.put(paramView, localatxl1);
     }
-    return localatbh1;
+    return localatxl1;
   }
   
   public abstract Params a(Adapter paramAdapter, int paramInt);
@@ -52,14 +52,14 @@ public abstract class ItemLoader<Params, Result>
   void a(int paramInt1, int paramInt2)
   {
     String str = a(paramInt1, paramInt2);
-    atbg localatbg = (atbg)this.b.get(str);
-    if (localatbg == null) {}
+    atxk localatxk = (atxk)this.b.get(str);
+    if (localatxk == null) {}
     do
     {
       return;
       this.b.remove(str);
-    } while (localatbg.jdField_a_of_type_JavaUtilConcurrentFuture == null);
-    localatbg.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
+    } while (localatxk.jdField_a_of_type_JavaUtilConcurrentFuture == null);
+    localatxk.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
   }
   
   public void a(View paramView)
@@ -70,11 +70,11 @@ public abstract class ItemLoader<Params, Result>
     Iterator localIterator = this.b.values().iterator();
     while (localIterator.hasNext())
     {
-      atbg localatbg = (atbg)localIterator.next();
-      if ((View)localatbg.jdField_a_of_type_JavaLangRefSoftReference.get() == paramView)
+      atxk localatxk = (atxk)localIterator.next();
+      if ((View)localatxk.jdField_a_of_type_JavaLangRefSoftReference.get() == paramView)
       {
-        if (localatbg.jdField_a_of_type_JavaUtilConcurrentFuture != null) {
-          localatbg.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
+        if (localatxk.jdField_a_of_type_JavaUtilConcurrentFuture != null) {
+          localatxk.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
         }
         localIterator.remove();
       }
@@ -88,36 +88,36 @@ public abstract class ItemLoader<Params, Result>
     for (;;)
     {
       return;
-      atbh localatbh = a(paramView2);
-      localatbh.jdField_a_of_type_JavaLangObject = localObject;
-      localatbh.jdField_a_of_type_Int = paramInt;
-      localatbh.jdField_a_of_type_Boolean = true;
+      atxl localatxl = a(paramView2);
+      localatxl.jdField_a_of_type_JavaLangObject = localObject;
+      localatxl.jdField_a_of_type_Int = paramInt;
+      localatxl.jdField_a_of_type_Boolean = true;
       int i = a(paramAdapter, paramInt);
       paramInt = 0;
       while (paramInt < i)
       {
         if ((paramBoolean) || (a(localObject, paramInt))) {
-          a(paramView1, paramView2, localatbh, paramInt, SystemClock.uptimeMillis());
+          a(paramView1, paramView2, localatxl, paramInt, SystemClock.uptimeMillis());
         }
         paramInt += 1;
       }
     }
   }
   
-  void a(View paramView1, View paramView2, atbh<Params> paramatbh, int paramInt, long paramLong)
+  void a(View paramView1, View paramView2, atxl<Params> paramatxl, int paramInt, long paramLong)
   {
-    int i = paramatbh.jdField_a_of_type_Int;
-    Object localObject = paramatbh.jdField_a_of_type_JavaLangObject;
+    int i = paramatxl.jdField_a_of_type_Int;
+    Object localObject = paramatxl.jdField_a_of_type_JavaLangObject;
     String str = a(i, paramInt);
-    atbg localatbg = (atbg)this.b.get(str);
-    if (localatbg == null)
+    atxk localatxk = (atxk)this.b.get(str);
+    if (localatxk == null)
     {
-      paramView1 = new atbg(str, paramView1, paramView2, localObject, i, paramInt, paramLong);
+      paramView1 = new atxk(str, paramView1, paramView2, localObject, i, paramInt, paramLong);
       this.b.put(str, paramView1);
     }
     for (;;)
     {
-      paramatbh.jdField_a_of_type_Boolean = false;
+      paramatxl.jdField_a_of_type_Boolean = false;
       paramView2 = b(localObject, paramInt);
       if (paramView2 == null) {
         break;
@@ -126,26 +126,26 @@ public abstract class ItemLoader<Params, Result>
       paramView1.c = new SoftReference(paramView2);
       this.jdField_a_of_type_AndroidOsHandler.post(new ItemLoader.DisplayItemRunnable(this, paramView1, true));
       return;
-      localatbg.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
-      localatbg.b = new SoftReference(paramView2);
-      paramView1 = localatbg;
+      localatxk.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
+      localatxk.b = new SoftReference(paramView2);
+      paramView1 = localatxk;
     }
     paramView1.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(new ItemLoader.LoadItemRunnable(this, paramView1));
   }
   
   public abstract void a(View paramView, Result paramResult, int paramInt, boolean paramBoolean);
   
-  boolean a(atbg<Params, Result> paramatbg)
+  boolean a(atxk<Params, Result> paramatxk)
   {
-    if (paramatbg.b == null) {
+    if (paramatxk.b == null) {
       return false;
     }
-    View localView = (View)paramatbg.b.get();
+    View localView = (View)paramatxk.b.get();
     if (localView == null) {
       return true;
     }
     int i = a(localView).jdField_a_of_type_Int;
-    return (i == -1) || (paramatbg.jdField_a_of_type_Int != i);
+    return (i == -1) || (paramatxk.jdField_a_of_type_Int != i);
   }
   
   boolean a(Params paramParams, int paramInt)

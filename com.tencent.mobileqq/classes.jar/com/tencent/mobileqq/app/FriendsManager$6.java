@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import ajeb;
-import ajjj;
+import ajsd;
+import ajxn;
 
 public class FriendsManager$6
   implements Runnable
 {
-  public FriendsManager$6(ajjj paramajjj) {}
+  public FriendsManager$6(ajxn paramajxn) {}
   
   public void run()
   {
-    if (!ajjj.a(this.this$0).a) {
-      ajjj.a(this.this$0).a(ajjj.a(this.this$0));
+    if (!ajxn.a(this.this$0).a) {
+      ajxn.a(this.this$0).a(ajxn.a(this.this$0));
     }
   }
 }

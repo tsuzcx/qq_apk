@@ -1,42 +1,155 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
-class xef
-  implements mmp
+public class xef
+  extends xeh
 {
-  xef(xee paramxee) {}
+  private int jdField_a_of_type_Int;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private List<xee> jdField_a_of_type_JavaUtilList = new ArrayList();
+  protected xeb a;
+  private int b;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public xef(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.TAG, 2, "onSoftKeyboardToggled");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.TAG, 2, "isCheatDialogShow:" + this.a.e);
-    }
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null)) {}
-    do
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    a(2131559041);
+    this.b = 4;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i = this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredWidth();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    if (paramInt3 > paramInt1)
     {
-      do
+      if (paramInt3 > paramInt2 * 2)
       {
+        localLayoutParams.leftMargin = (paramInt2 - i / 2);
         return;
-      } while ((this.a.f < 1) || (this.a.f > 2) || (this.a.jdField_a_of_type_Boolean));
-      if (this.a.e != xee.c) {
-        break;
       }
-    } while (this.a.f != 2);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.a();
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.a(2131625901);
-    return;
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.a(2131625901);
+      if (paramInt3 > (paramInt4 - paramInt2) * 2)
+      {
+        localLayoutParams.leftMargin = (paramInt2 + paramInt3 - paramInt4 - i / 2);
+        return;
+      }
+      localLayoutParams.addRule(14);
+      return;
+    }
+    localLayoutParams.addRule(14);
+  }
+  
+  private void a(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    switch (this.b)
+    {
+    default: 
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131755038);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, null));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131369914));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362798));
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+    super.b(this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void a(View paramView)
+  {
+    a();
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    Rect localRect = new Rect(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight());
+    this.jdField_a_of_type_AndroidViewView.measure(-2, -2);
+    int i = this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
+    int j = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
+    int k = this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getWidth();
+    int m = arrayOfInt[0];
+    int n = (paramView.getWidth() - i) / 2;
+    int i1 = localRect.top;
+    a(paramView.getWidth(), localRect.centerX(), i, k);
+    a(k, localRect.centerX(), true);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, m + n, i1 - j - 10);
+  }
+  
+  public void a(xeb paramxeb)
+  {
+    this.jdField_a_of_type_Xeb = paramxeb;
+  }
+  
+  public void a(xee paramxee)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramxee);
+    String str = paramxee.a();
+    Drawable localDrawable = paramxee.a();
+    if (this.jdField_a_of_type_Int != 0)
+    {
+      localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      ((ImageView)localObject1).setBackgroundResource(2130839390);
+      localObject2 = new LinearLayout.LayoutParams(-1, -2, 1.0F);
+      ((LinearLayout.LayoutParams)localObject2).setMargins(actn.a(15.0F, ((ImageView)localObject1).getResources()), 0, actn.a(15.0F, ((ImageView)localObject1).getResources()), 0);
+      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+    }
+    Object localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559040, null);
+    Object localObject2 = (ImageView)((View)localObject1).findViewById(2131369920);
+    TextView localTextView = (TextView)((View)localObject1).findViewById(2131369933);
+    if (localDrawable != null)
+    {
+      ((ImageView)localObject2).setImageDrawable(localDrawable);
+      if (str == null) {
+        break label267;
+      }
+      if (naw.a(str) <= 18) {
+        break label258;
+      }
+      localTextView.setText(naw.a(str, 18, "..."));
+    }
+    for (;;)
+    {
+      ((View)localObject1).setOnClickListener(new xeg(this, paramxee.b(), paramxee.a()));
+      ((View)localObject1).setFocusable(true);
+      ((View)localObject1).setClickable(true);
+      paramxee = new LinearLayout.LayoutParams(-1, -2, 1.0F);
+      paramxee.gravity = 17;
+      ((View)localObject1).setLayoutParams(paramxee);
+      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1);
+      this.jdField_a_of_type_Int += 1;
+      return;
+      ((ImageView)localObject2).setVisibility(8);
+      break;
+      label258:
+      localTextView.setText(str);
+      continue;
+      label267:
+      localTextView.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xef
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,23 @@
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import java.util.List;
 
-public class aild
-  extends aiqr
+class aild
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aild(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
+  aild(ailc paramailc) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (paramObject == null);
-    try
-    {
-      paramObject = new JSONObject(paramObject.toString());
-      paramInt = paramObject.optInt("errCode");
-      paramObject.remove("errCode");
-      ApolloGameInterfaceProxy.a(this.a, paramInt, "cs.ssoMessage.local", paramObject.toString());
-      return;
-    }
-    catch (Throwable paramObject)
-    {
-      QLog.e("cmgame_process.CmGameObserver", 1, paramObject, new Object[0]);
-    }
+    int i = ((Integer)paramCompoundButton.getTag()).intValue();
+    AppletItem localAppletItem = (AppletItem)this.a.a.get(i);
+    ailc.a(this.a).a(paramCompoundButton, paramBoolean, localAppletItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aild
  * JD-Core Version:    0.7.0.1
  */

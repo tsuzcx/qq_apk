@@ -4,15 +4,15 @@ import android.content.Context;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.util.AttributeSet;
 import android.widget.VideoView;
-import bjaz;
-import bjba;
-import bjbb;
+import bkrl;
+import bkrm;
+import bkrn;
 
 public class FixedSizeVideoView
   extends VideoView
 {
   private int jdField_a_of_type_Int = -1;
-  public bjbb a;
+  public bkrn a;
   private Runnable jdField_a_of_type_JavaLangRunnable = new FixedSizeVideoView.1(this);
   private int b;
   private int c;
@@ -20,13 +20,13 @@ public class FixedSizeVideoView
   public FixedSizeVideoView(Context paramContext)
   {
     super(paramContext);
-    super.setOnCompletionListener(new bjaz(this));
+    super.setOnCompletionListener(new bkrl(this));
   }
   
   public FixedSizeVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    super.setOnCompletionListener(new bjba(this));
+    super.setOnCompletionListener(new bkrm(this));
   }
   
   public void pause()
@@ -40,10 +40,10 @@ public class FixedSizeVideoView
     throw new RuntimeException("Stub!");
   }
   
-  public void setOnFixVDPlayCompelteListener(bjbb parambjbb)
+  public void setOnFixVDPlayCompelteListener(bkrn parambkrn)
   {
-    if (parambjbb != null) {
-      this.jdField_a_of_type_Bjbb = parambjbb;
+    if (parambkrn != null) {
+      this.jdField_a_of_type_Bkrn = parambkrn;
     }
   }
   

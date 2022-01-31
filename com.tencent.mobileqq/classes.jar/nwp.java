@@ -1,41 +1,46 @@
-import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.5;
+import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
+import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class nwp
-  implements begw
+public class nwp
+  implements View.OnClickListener
 {
-  nwp(nwk paramnwk, begr parambegr, int[] paramArrayOfInt, Context paramContext, nwd paramnwd) {}
+  public nwp(ReadInJoyNewFeedsActivity.5 param5, FrameLayout paramFrameLayout) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Begr.dismiss();
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfInt.length)) {
-      return;
-    }
-    paramView = this.jdField_a_of_type_AndroidContentContext.getString(this.jdField_a_of_type_ArrayOfInt[paramInt]);
-    bafb localbafb = new bafb(this.jdField_a_of_type_AndroidContentContext, 2131690181);
-    localbafb.setContentView(2131493323);
-    localbafb.setMessage(String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131652533), new Object[] { paramView }));
-    localbafb.setTitle(2131652534);
-    ViewGroup.LayoutParams localLayoutParams = localbafb.getMessageTextView().getLayoutParams();
-    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
+    paramView = (pzc)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.app.getManager(270);
+    if (paramView.a() == 1)
     {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).leftMargin = bajq.a(12.0F);
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).rightMargin = bajq.a(12.0F);
-      localbafb.getMessageTextView().setLayoutParams(localLayoutParams);
+      paramView.a(false);
+      paramView = paramView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0, 0);
+      if (paramView != null)
+      {
+        paramView.isShown = false;
+        bbjn.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.app.getCurrentAccountUin(), paramView.toJson().toString(), 0);
+      }
     }
-    localbafb.setTag(paramView);
-    localbafb.setPositiveButton(2131652536, new nwq(this, paramView, paramInt + 1));
-    localbafb.setNegativeButton(2131652535, new nwr(this));
-    localbafb.show();
+    ((pzi)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.app.getManager(261)).a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.a.skinData.id, false);
+    bbjn.r(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.a.skinData.toJson().toString());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a.a();
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "set skin ：id = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.a.skinData.id);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nwp
  * JD-Core Version:    0.7.0.1
  */

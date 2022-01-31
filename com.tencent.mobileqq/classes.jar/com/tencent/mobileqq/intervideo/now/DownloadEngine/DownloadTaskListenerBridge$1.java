@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.intervideo.now.DownloadEngine;
 
-import aqnm;
-import aqno;
+import arhr;
+import arht;
 import com.tencent.hlyyb.downloader.DownloaderTask;
 
 public class DownloadTaskListenerBridge$1
   implements Runnable
 {
-  public DownloadTaskListenerBridge$1(aqnm paramaqnm, DownloaderTask paramDownloaderTask) {}
+  public DownloadTaskListenerBridge$1(arhr paramarhr, DownloaderTask paramDownloaderTask) {}
   
   public void run()
   {
-    if (aqnm.a(this.this$0) != null) {
-      aqnm.a(this.this$0).c(this.a);
+    if (arhr.a(this.this$0) != null) {
+      arhr.a(this.this$0).c(this.a);
     }
   }
 }

@@ -1,52 +1,27 @@
-import android.support.annotation.NonNull;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class pju
+public class pju
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private String jdField_b_of_type_JavaLangString = "";
-  private List<qvs> jdField_b_of_type_JavaUtilList = new ArrayList();
-  
-  public pjt a()
+  public static void a(Context paramContext, ArticleInfo paramArticleInfo)
   {
-    return new pjt(this, null);
+    a(paramContext, paramArticleInfo, false);
   }
   
-  public pju a(int paramInt)
+  public static void a(Context paramContext, ArticleInfo paramArticleInfo, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public pju a(@NonNull String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public pju a(@NonNull List<qvs> paramList)
-  {
-    if ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() == 1)) {
-      ((qvs)this.jdField_b_of_type_JavaUtilList.get(0)).a(true);
+    if (paramArticleInfo == null)
+    {
+      QLog.d("PGCShortContentUtils", 1, "articleInfo is null");
+      return;
     }
-    this.jdField_b_of_type_JavaUtilList = paramList;
-    return this;
-  }
-  
-  public pju b(@NonNull String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public pju b(@NonNull List<URL> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    return this;
+    if (paramArticleInfo.isCardJumpUrlAvailable == 1)
+    {
+      onk.e(paramContext, paramArticleInfo.getCardJumpUrl());
+      return;
+    }
+    onk.a(paramContext, paramArticleInfo, paramBoolean);
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.qqmini.sdk.core.utils.thread;
 
 import android.os.Process;
-import bdhr;
+import belu;
 
 public class PriorityThreadFactory$1
   extends Thread
 {
-  public PriorityThreadFactory$1(bdhr parambdhr, Runnable paramRunnable, String paramString)
+  public PriorityThreadFactory$1(belu parambelu, Runnable paramRunnable, String paramString)
   {
     super(paramRunnable, paramString);
   }
   
   public void run()
   {
-    Process.setThreadPriority(bdhr.a(this.this$0));
+    Process.setThreadPriority(belu.a(this.this$0));
     super.run();
   }
 }

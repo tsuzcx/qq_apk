@@ -1,73 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import mqq.observer.BusinessObserver;
 
-public class nfi
-  extends alzl<nfh>
+final class nfi
+  implements BusinessObserver
 {
-  public int a()
-  {
-    return 32;
-  }
+  nfi(QQAppInterface paramQQAppInterface, boolean paramBoolean, akdo paramakdo) {}
   
-  public Class<nfh> a()
-  {
-    return nfh.class;
-  }
-  
-  @NonNull
-  public nfh a(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        return nfh.a(baig.e(((QQAppInterface)localAppRuntime).getApplication()));
-      }
-    }
-    return new nfh();
-  }
-  
-  @Nullable
-  public nfh a(alzs[] paramArrayOfalzs)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfProcessor", 2, "[onParsed]");
+      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList isSuccess:" + String.valueOf(paramBoolean));
     }
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return nfh.a(paramArrayOfalzs);
+    paramBundle = paramBundle.getByteArray("data");
+    if ((paramBoolean) && (paramBundle != null)) {}
+    for (paramInt = nfh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
+    {
+      if (this.jdField_a_of_type_Akdo != null) {
+        this.jdField_a_of_type_Akdo.a(paramBoolean, paramInt);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);
+      }
+      return;
     }
-    return null;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(nfh paramnfh)
-  {
-    paramnfh.b();
-    paramnfh.a();
-  }
-  
-  public int b()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return baig.n(((QQAppInterface)localAppRuntime).getApp());
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
   }
 }
 

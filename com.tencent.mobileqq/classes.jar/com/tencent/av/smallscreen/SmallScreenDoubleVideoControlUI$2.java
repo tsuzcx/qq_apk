@@ -1,12 +1,12 @@
 package com.tencent.av.smallscreen;
 
 import com.tencent.qphone.base.util.QLog;
-import lol;
+import lzd;
 
 public class SmallScreenDoubleVideoControlUI$2
   implements Runnable
 {
-  public SmallScreenDoubleVideoControlUI$2(lol paramlol) {}
+  public SmallScreenDoubleVideoControlUI$2(lzd paramlzd) {}
   
   public void run()
   {

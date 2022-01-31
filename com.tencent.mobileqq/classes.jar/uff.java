@@ -1,25 +1,30 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-
-class uff
-  extends tco
+public class uff
 {
-  uff(ufc paramufc) {}
+  private int a = 0;
   
-  public void a()
+  uff(int paramInt)
   {
-    super.a();
-    ufc.a(this.a, null);
+    this.a = paramInt;
   }
   
-  public void a(int paramInt)
+  public static uff a(int paramInt)
   {
-    super.a(paramInt);
-    urp.a("home_page", "suc_share", 2, paramInt, new String[] { urp.b(ufc.a(this.a).a) + "", urp.a(ufc.a(this.a).a) + "", ufc.a(this.a).a.feedId });
+    return new uff(paramInt);
   }
   
-  public void b(int paramInt)
+  public int a()
   {
-    urp.a("home_page", "share_chanel", 2, paramInt, new String[] { urp.b(ufc.a(this.a).a) + "", urp.a(ufc.a(this.a).a) + "", ufc.a(this.a).a.feedId });
+    switch (this.a)
+    {
+    default: 
+      return this.a;
+    }
+    return 0;
+  }
+  
+  public int b()
+  {
+    return this.a;
   }
 }
 

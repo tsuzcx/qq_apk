@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.music.SongInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface arzq
+class arzq
+  implements View.OnClickListener
 {
-  public abstract String getToken();
+  arzq(arzl paramarzl, arza paramarza) {}
   
-  public abstract void onPlaySongChanged(SongInfo paramSongInfo);
-  
-  public abstract void onPlayStateChanged(int paramInt);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Arza.b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arzq
  * JD-Core Version:    0.7.0.1
  */

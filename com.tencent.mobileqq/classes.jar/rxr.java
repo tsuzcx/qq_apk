@@ -1,27 +1,16 @@
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.util.Log;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
-final class rxr
-  implements DialogInterface.OnClickListener
+public class rxr
+  implements DialogInterface.OnDismissListener
 {
-  rxr(Activity paramActivity, WSDownloadParams paramWSDownloadParams) {}
+  public rxr(BridgeModule paramBridgeModule) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramDialogInterface instanceof rxn)) {
-      rxn.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      rxn.a(125, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams);
-      rzw.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, false, true);
-      return;
-      Log.e("weishi-808", "dialog type is error");
-    }
+    if (!BridgeModule.access$300(this.a)) {}
+    BridgeModule.access$302(this.a, false);
   }
 }
 

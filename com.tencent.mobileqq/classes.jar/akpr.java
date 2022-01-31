@@ -1,217 +1,88 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.BaseConstants;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
-public abstract class akpr
-  extends Binder
-  implements akpq
+public class akpr
 {
-  public akpr()
-  {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArConfigManager");
-  }
+  private static List<akps> jdField_a_of_type_JavaUtilList = new ArrayList(32);
+  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
   
-  public static akpq a(IBinder paramIBinder)
+  public static void a()
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-    if ((localIInterface != null) && ((localIInterface instanceof akpq))) {
-      return (akpq)localIInterface;
-    }
-    return new akps(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    int j = 0;
-    int k = 0;
-    int m = 0;
-    int i = 0;
-    boolean bool;
-    switch (paramInt1)
+    synchronized (jdField_a_of_type_JavaUtilList)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a(akqd.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b(akqd.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
+      Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext())
       {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-        return true;
+        akps localakps = (akps)localIterator.next();
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("param_FailCode", String.valueOf(localakps.jdField_a_of_type_Int));
+        localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+        localHashMap.put("msgType", String.valueOf(localakps.b));
+        localHashMap.put("uinType", String.valueOf(localakps.c));
+        axrl.a(BaseApplication.getContext()).a(localakps.jdField_a_of_type_JavaLangString, "actBelatedMsg", false, localakps.jdField_a_of_type_Long, 0L, localHashMap, "");
       }
-      paramParcel2.writeInt(0);
-      return true;
-    case 4: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-        return true;
-      }
-      paramParcel2.writeInt(0);
-      return true;
-    case 5: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-        return true;
-      }
-      paramParcel2.writeInt(0);
-      return true;
-    case 6: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 7: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b();
-      paramParcel2.writeNoException();
-      return true;
-    case 8: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a(akpu.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 9: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b(akpu.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 10: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 11: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      bool = a();
-      paramParcel2.writeNoException();
-      paramInt1 = i;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 12: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a(akqa.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 13: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b(akqa.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 14: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 15: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      bool = b();
-      paramParcel2.writeNoException();
-      paramInt1 = j;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 16: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      if (paramParcel1.readInt() != 0) {}
-      for (paramParcel1 = (ArConfigInfo)ArConfigInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        a(paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-      }
-    case 17: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      bool = c();
-      paramParcel2.writeNoException();
-      paramInt1 = k;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 18: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      c();
-      paramParcel2.writeNoException();
-      return true;
-    case 19: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a(akqg.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 20: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b(akqg.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 21: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      bool = d();
-      paramParcel2.writeNoException();
-      paramInt1 = m;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 22: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      d();
-      paramParcel2.writeNoException();
-      return true;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-    c(paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    akps.a(jdField_a_of_type_JavaUtilList);
+    jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    if (!paramQQAppInterface.c().endsWith("7")) {
+      return;
+    }
+    paramQQAppInterface = new HashMap();
+    paramQQAppInterface.put(BaseConstants.RDM_NoChangeFailCode, "");
+    paramQQAppInterface.put("uinType", String.valueOf(paramInt));
+    paramQQAppInterface.put("convUin", String.valueOf(paramString));
+    axrl.a(BaseApplication.getContext()).a(null, "actNoCachedLastMsg", true, 0L, 0L, paramQQAppInterface, "");
+  }
+  
+  public static void a(MessageRecord arg0, QQAppInterface paramQQAppInterface)
+  {
+    if (!paramQQAppInterface.c().endsWith("77")) {}
+    long l;
+    do
+    {
+      return;
+      l = NetConnInfoCenter.getServerTime() - ???.time;
+    } while ((l < 30L) || ((paramQQAppInterface.b != 0L) && (???.time < paramQQAppInterface.b)));
+    if (???.time < paramQQAppInterface.jdField_a_of_type_Long) {}
+    for (int i = 1;; i = 2)
+    {
+      paramQQAppInterface = akps.a(i, paramQQAppInterface.c(), l, ???.msgtype, ???.istroop);
+      synchronized (jdField_a_of_type_JavaUtilList)
+      {
+        jdField_a_of_type_JavaUtilList.add(paramQQAppInterface);
+        if (jdField_a_of_type_JavaUtilList.size() >= 32) {
+          a();
+        }
+        return;
+      }
+    }
+  }
+  
+  public static void a(String paramString, long paramLong)
+  {
+    if (Math.abs(jdField_a_of_type_JavaUtilRandom.nextInt() % 10000) < 10)
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+      axrl.a(BaseApplication.getContext()).a(null, paramString, true, paramLong, 0L, localHashMap, "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akpr
  * JD-Core Version:    0.7.0.1
  */

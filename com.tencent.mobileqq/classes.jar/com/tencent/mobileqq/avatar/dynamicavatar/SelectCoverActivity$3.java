@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import ajjy;
-import alkl;
+import ajyc;
+import alyz;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
@@ -26,14 +26,14 @@ class SelectCoverActivity$3
         } while (this.this$0.jdField_b_of_type_Boolean);
         if (TextUtils.isEmpty(this.this$0.jdField_b_of_type_JavaLangString))
         {
-          SelectCoverActivity.a(this.this$0, 2, ajjy.a(2131647924), 0);
+          SelectCoverActivity.a(this.this$0, 2, ajyc.a(2131713711), 0);
           return;
         }
-        SelectCoverActivity.a(this.this$0, 0, ajjy.a(2131647917), 0);
+        SelectCoverActivity.a(this.this$0, 0, ajyc.a(2131713704), 0);
         if ((this.this$0.jdField_d_of_type_Int != 1) && (this.this$0.jdField_d_of_type_Int != 3)) {
           break;
         }
-      } while ((TextUtils.isEmpty(this.this$0.jdField_a_of_type_Alkl.a)) || (!new File(this.this$0.jdField_a_of_type_Alkl.a).exists()) || (TextUtils.isEmpty(this.this$0.jdField_a_of_type_Alkl.jdField_b_of_type_JavaLangString)) || (!new File(this.this$0.jdField_a_of_type_Alkl.jdField_b_of_type_JavaLangString).exists()));
+      } while ((TextUtils.isEmpty(this.this$0.jdField_a_of_type_Alyz.a)) || (!new File(this.this$0.jdField_a_of_type_Alyz.a).exists()) || (TextUtils.isEmpty(this.this$0.jdField_a_of_type_Alyz.jdField_b_of_type_JavaLangString)) || (!new File(this.this$0.jdField_a_of_type_Alyz.jdField_b_of_type_JavaLangString).exists()));
       SelectCoverActivity.b(this.this$0);
       return;
     } while (this.this$0.jdField_d_of_type_Int != 2);

@@ -1,24 +1,30 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class afev
-  extends View.AccessibilityDelegate
+  implements View.OnTouchListener
 {
-  public afev(ContactsBaseFragment paramContactsBaseFragment) {}
+  public afev(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramInt;
-    if (paramInt == 8) {
-      i = 32768;
+    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
+    if (paramMotionEvent.isActive()) {
+      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
-    super.sendAccessibilityEvent(paramView, i);
+    this.a.a.clearFocus();
+    paramView = this.a.a.getText().toString();
+    this.a.a.setSelection(paramView.length());
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afev
  * JD-Core Version:    0.7.0.1
  */

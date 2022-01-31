@@ -1,66 +1,29 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class bcox
-  extends QQUIEventReceiver<bcov, armq>
 {
-  public bcox(@NonNull bcov parambcov)
-  {
-    super(parambcov);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void a(@NonNull bcov parambcov, @NonNull armq paramarmq)
+  public String toString()
   {
-    if (!TextUtils.equals(paramarmq.jdField_a_of_type_JavaLangString, "QGameApp")) {}
-    String str;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QGameApp", 2, "receive event:" + paramarmq.toString());
-      }
-      str = (String)paramarmq.jdField_a_of_type_ArrayOfJavaLangObject[0];
-      switch (paramarmq.jdField_a_of_type_Int)
-      {
-      default: 
-        return;
-      }
-    } while (!TextUtils.equals(str, "ak:3214"));
-    if (paramarmq.jdField_a_of_type_Boolean)
-    {
-      str = (String)paramarmq.jdField_a_of_type_ArrayOfJavaLangObject[3];
-      if (TextUtils.isEmpty(str))
-      {
-        bcov.a(parambcov, 1002);
-        return;
-      }
-      switch (((Integer)paramarmq.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue())
-      {
-      default: 
-        return;
-      case 1: 
-        bcov.a(parambcov, true, str);
-        return;
-      case 2: 
-        bcov.jdField_a_of_type_Boolean = false;
-        return;
-      }
-      bcov.a(parambcov, false, str);
-      return;
-    }
-    bcov.a(parambcov, 1002);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return armq.class;
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append("DataItem:position=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", type=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", coverUrl=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", feedId=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", vid=").append(this.c);
+    localStringBuilder.append(", jumpUrl=").append(this.d);
+    localStringBuilder.append(", spiritImageUrl=").append(this.e);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcox
  * JD-Core Version:    0.7.0.1
  */

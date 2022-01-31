@@ -1,22 +1,56 @@
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class aarx
+  implements bcrn
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  public aarx(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
   
-  public aarx(FontSettingActivity paramFontSettingActivity, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_b_of_type_Int = paramInt2;
+    if (paramInt1 == paramInt2) {
+      return;
+    }
+    aata localaata = null;
+    switch (paramInt2)
+    {
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Aata != null)
+      {
+        this.a.jdField_a_of_type_Aata.b();
+        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_Aata.a());
+      }
+      if (localaata == null) {
+        break;
+      }
+      localaata.h_(ChatHistoryFileActivity.a(this.a));
+      localaata.a();
+      this.a.jdField_a_of_type_Aata = localaata;
+      this.a.jdField_a_of_type_Aata.a = this.a;
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_Aata.a(), 0, new ViewGroup.LayoutParams(-1, -1));
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label326;
+      }
+      this.a.jdField_a_of_type_Aata.d();
+      return;
+      localaata = ChatHistoryFileActivity.a(this.a, 0);
+      continue;
+      localaata = ChatHistoryFileActivity.a(this.a, 4);
+      continue;
+      localaata = ChatHistoryFileActivity.a(this.a, 1);
+      axqw.b(this.a.app, "dc00898", "", "", "0X8007126", "0X8007126", 0, 0, "", "", "", "");
+      continue;
+      localaata = ChatHistoryFileActivity.a(this.a, 2);
+      axqw.b(this.a.app, "dc00898", "", "", "0X8007127", "0X8007127", 0, 0, "", "", "", "");
+      continue;
+      localaata = ChatHistoryFileActivity.a(this.a, 3);
+      axqw.b(this.a.app, "dc00898", "", "", "0X8007128", "0X8007128", 0, 0, "", "", "", "");
+    }
+    label326:
+    this.a.jdField_a_of_type_Aata.e();
   }
 }
 

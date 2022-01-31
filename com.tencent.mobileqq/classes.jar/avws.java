@@ -1,57 +1,129 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.richmedia.dc.DCShortVideo.1;
+import com.tencent.mobileqq.richmedia.dc.DCShortVideo.2;
+import com.tencent.mobileqq.richmedia.dc.DCShortVideo.3;
+import com.tencent.mobileqq.richmedia.dc.DCShortVideo.4;
+import com.tencent.mobileqq.richmedia.dc.DCShortVideo.5;
+import com.tencent.mobileqq.richmedia.dc.DCShortVideo.6;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Calendar;
+import mqq.os.MqqHandler;
 
 public class avws
-  extends avym
+  extends avxb
 {
-  private TextView a;
-  private TextView b;
-  private TextView c;
-  private TextView d;
-  
-  public avws(View paramView)
+  public avws(Context paramContext)
   {
-    super(paramView);
+    super(paramContext);
   }
   
-  public avws(ViewGroup paramViewGroup, int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    super(paramViewGroup, paramInt);
+    ThreadManager.getSubThreadHandler().post(new DCShortVideo.5(this, paramInt, paramBoolean));
   }
   
-  protected void a()
+  public void a(AppInterface paramAppInterface, int paramInt1, int paramInt2, int paramInt3, String paramString, long paramLong)
   {
-    super.a();
-    this.a = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131310110));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131310109));
-    this.c = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131310108));
-    this.d = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131310001));
+    if ((paramAppInterface != null) && ((paramInt1 == 2001) || (paramInt1 == 2002) || (paramInt1 == 2003))) {
+      ThreadManager.getSubThreadHandler().post(new DCShortVideo.3(this, paramAppInterface, paramInt1, paramInt3, paramString, paramInt2, paramLong));
+    }
   }
   
-  public TextView e()
+  public void a(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString)
   {
-    return this.a;
+    if ((paramAppInterface != null) && ((paramInt1 == 2001) || (paramInt1 == 2002) || (paramInt1 == 2003))) {
+      ThreadManager.getSubThreadHandler().post(new DCShortVideo.4(this, paramAppInterface, paramInt1, paramInt2, paramString));
+    }
   }
   
-  public TextView f()
+  public void a(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, avwv paramavwv)
   {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
+    paramavwv.f = paramInt1;
+    if (paramInt2 == 0) {
+      paramavwv.b = 0;
+    }
+    for (;;)
+    {
+      paramAppInterface = (aszd)paramAppInterface.getManager(106);
+      if (paramAppInterface != null)
+      {
+        paramavwv.d = paramAppInterface.a();
+        paramavwv.e = paramAppInterface.b();
+      }
+      paramavwv.g = Calendar.getInstance().get(11);
+      paramavwv.h = bbev.a(BaseApplication.getContext());
+      return;
+      if (paramInt2 == 3000)
+      {
+        paramavwv.b = 3000;
+      }
+      else
+      {
+        if (paramInt2 == 1)
+        {
+          if ((paramAppInterface instanceof QQAppInterface)) {
+            switch (((QQAppInterface)paramAppInterface).b(paramString))
+            {
+            default: 
+              paramavwv.b = 1;
+            }
+          }
+          for (;;)
+          {
+            paramavwv.c = 0;
+            TroopManager localTroopManager = (TroopManager)paramAppInterface.getManager(52);
+            if (localTroopManager == null) {
+              break;
+            }
+            paramString = localTroopManager.c(paramString);
+            if (paramString == null) {
+              break;
+            }
+            paramavwv.c = paramString.wMemberNum;
+            break;
+            paramavwv.b = 1;
+            continue;
+            paramavwv.b = 3;
+            continue;
+            paramavwv.b = 4;
+            continue;
+            paramavwv.b = 2;
+            continue;
+            paramavwv.b = 1;
+          }
+        }
+        paramavwv.b = 9999;
+      }
+    }
   }
   
-  public TextView g()
+  public void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    return this.c;
+    if ((paramQQAppInterface != null) && ((paramInt1 == 2001) || (paramInt1 == 2002) || (paramInt1 == 2003))) {
+      ThreadManager.getSubThreadHandler().post(new DCShortVideo.2(this, paramQQAppInterface, paramInt1, paramInt2, paramString, paramInt3));
+    }
   }
   
-  public TextView h()
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean1, boolean paramBoolean2, int paramInt3, String paramString3, long paramLong, String paramString4)
   {
-    return this.d;
+    if ((paramQQAppInterface != null) && (paramString1 != null) && ((paramInt1 == 2001) || (paramInt1 == 2002) || (paramInt1 == 2003))) {
+      ThreadManager.getSubThreadHandler().post(new DCShortVideo.1(this, paramString1, paramQQAppInterface, paramInt1, paramInt2, paramString2, paramLong, paramString4, paramBoolean1, paramInt3, paramString3, paramBoolean2));
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, long paramLong)
+  {
+    ThreadManager.getSubThreadHandler().post(new DCShortVideo.6(this, paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt7, paramInt8, paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avws
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app.upgrade;
 
-import ajnl;
-import akgs;
-import akgt;
+import akbv;
+import akve;
+import akvf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.Xml;
-import atiu;
+import augt;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.NewUpgradeConfig;
@@ -19,10 +19,10 @@ import protocol.KQQConfig.UpgradeInfo;
 public class UpgradeDetailWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator<UpgradeDetailWrapper> CREATOR = new akgs();
+  public static final Parcelable.Creator<UpgradeDetailWrapper> CREATOR = new akve();
   static String a;
   public int a;
-  public akgt a;
+  public akvf a;
   public ApkUpdateDetail a;
   public NewUpgradeConfig a;
   public UpgradeInfo a;
@@ -100,12 +100,12 @@ public class UpgradeDetailWrapper
       label212:
       if (paramString.equalsIgnoreCase("taskTime"))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.jdField_a_of_type_Long = atiu.a(localXmlPullParser.nextText());
+        this.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.jdField_a_of_type_Long = augt.a(localXmlPullParser.nextText());
         break;
       }
       if (paramString.equalsIgnoreCase("showTime"))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.jdField_b_of_type_Long = atiu.a(localXmlPullParser.nextText());
+        this.jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.jdField_b_of_type_Long = augt.a(localXmlPullParser.nextText());
         break;
       }
       if (paramString.equalsIgnoreCase("title"))

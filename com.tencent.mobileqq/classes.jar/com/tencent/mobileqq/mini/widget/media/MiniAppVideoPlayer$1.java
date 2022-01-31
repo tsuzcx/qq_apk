@@ -7,7 +7,7 @@ class MiniAppVideoPlayer$1
   
   public void run()
   {
-    this.this$0.play(0L);
+    this.this$0.play(this.this$0.initialTime * 1000);
   }
 }
 

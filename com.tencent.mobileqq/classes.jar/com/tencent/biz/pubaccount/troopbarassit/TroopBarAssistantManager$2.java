@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.troopbarassit;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bgmq;
+import bhvh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -12,12 +12,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rqn;
+import sdf;
 
 public class TroopBarAssistantManager$2
   implements Runnable
 {
-  public TroopBarAssistantManager$2(rqn paramrqn, QQAppInterface paramQQAppInterface) {}
+  public TroopBarAssistantManager$2(sdf paramsdf, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -40,7 +40,7 @@ public class TroopBarAssistantManager$2
       }
     }
     localObject1 = ((JSONArray)localObject1).toString();
-    if (bgmq.b()) {
+    if (bhvh.b()) {
       QLog.i("TroopBarAssistantManager", 2, "saveNewMsgSet, save newMsgStr into sp:" + (String)localObject1);
     }
     localObject2 = this.a.getApp().getSharedPreferences(this.a.getAccount(), 0).edit();

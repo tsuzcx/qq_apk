@@ -1,21 +1,144 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.biz.widgets.QQMapRoutingHelper.1.1;
-import org.json.JSONObject;
+import WEISHI_USER_GROWTH.WEISHI.stMetaFeed;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xer
-  implements azgl
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  xer(xeq paramxeq) {}
+  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private List<xeu> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private xip jdField_a_of_type_Xip;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public xer(BaseActivity paramBaseActivity)
   {
-    this.a.a.post(new QQMapRoutingHelper.1.1(this, paramJSONObject, paramBundle));
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+  }
+  
+  private void a(RecyclerView.ViewHolder paramViewHolder, WEISHI.stMetaFeed paramstMetaFeed, int paramInt)
+  {
+    paramViewHolder = (xet)paramViewHolder;
+    paramstMetaFeed = paramstMetaFeed.material_thumburl.get();
+    a(paramViewHolder.a, paramstMetaFeed);
+  }
+  
+  private void a(ImageView paramImageView, String paramString)
+  {
+    paramString = vzl.a(paramString);
+    if (!paramString.equals(paramImageView.getTag())) {
+      vzo.a(paramImageView, paramString, 68, 90, 4, vzo.b, "QQStoryMemory");
+    }
+  }
+  
+  public void a(List<WEISHI.stMetaFeed> paramList, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    int i;
+    xeu localxeu;
+    int j;
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      i = 3;
+      if (paramBoolean)
+      {
+        i = 2;
+        localxeu = new xeu(null, 100);
+        this.jdField_a_of_type_JavaUtilList.add(localxeu);
+      }
+      j = paramList.size();
+      if (j >= i) {
+        break label133;
+      }
+      i = j;
+    }
+    label133:
+    for (;;)
+    {
+      j = 0;
+      while (j < i)
+      {
+        localxeu = new xeu((WEISHI.stMetaFeed)paramList.get(j), 101);
+        this.jdField_a_of_type_JavaUtilList.add(localxeu);
+        j += 1;
+      }
+      notifyDataSetChanged();
+      return;
+    }
+  }
+  
+  public void a(xip paramxip)
+  {
+    this.jdField_a_of_type_Xip = paramxip;
+  }
+  
+  public int getItemCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      if (this.jdField_a_of_type_JavaUtilList.size() > 3) {
+        return 3;
+      }
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return ((xeu)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    paramInt = paramViewHolder.getAdapterPosition();
+    xeu localxeu = (xeu)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    int i = localxeu.jdField_a_of_type_Int;
+    WEISHI.stMetaFeed localstMetaFeed = localxeu.jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed;
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      paramViewHolder.itemView.setOnClickListener(new xes(this, localxeu));
+      return;
+      if (i == 101)
+      {
+        a(paramViewHolder, localstMetaFeed, paramInt);
+        continue;
+        if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+          ((xet)paramViewHolder).a.setImageResource(2130849184);
+        } else {
+          ((xet)paramViewHolder).a.setImageResource(2130845042);
+        }
+      }
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    LayoutInflater localLayoutInflater = LayoutInflater.from(paramViewGroup.getContext());
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    }
+    return new xet(localLayoutInflater.inflate(2131561028, paramViewGroup, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import aste;
+import atpi;
 import com.tencent.image.URLDrawable;
 
 public class NearbyProfileDisplayPanel$12
   implements Runnable
 {
-  public NearbyProfileDisplayPanel$12(aste paramaste, URLDrawable paramURLDrawable) {}
+  public NearbyProfileDisplayPanel$12(atpi paramatpi, URLDrawable paramURLDrawable) {}
   
   public void run()
   {

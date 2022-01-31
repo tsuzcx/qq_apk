@@ -1,33 +1,20 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
 
 public class asoc
-  implements View.OnLayoutChangeListener
 {
-  public asoc(StuffContainerView paramStuffContainerView) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  @NonNull
+  public String toString()
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = StuffContainerView.a(this.a);
-    if ((StuffContainerView.a(this.a) > 0L) && (l1 - l2 < 500L)) {}
-    do
-    {
-      return;
-      StuffContainerView.a(this.a, l1);
-      if (QLog.isColorLevel()) {
-        QLog.d("StuffContainerView", 2, "VideoInfoListenerImpl onLayoutChange");
-      }
-    } while (this.a.a == null);
-    this.a.a.l();
+    return "[errorCode = " + this.a + ", fileType = " + this.b + ", fileTrivial = " + this.c + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asoc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,7 @@
 package com.tencent.common.app;
 
 import android.os.Bundle;
-import bfpr;
-import bglx;
+import bgxy;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -33,16 +32,12 @@ public class QzoneMainRuntime
       QLog.i(TAG, 2, "QzoneMainRuntime.onGetSubRuntime() moduleId " + paramString);
     }
     if (paramString.equals("qzone_plugin.apk")) {
-      localAppRuntime = bfpr.a(BaseApplicationImpl.getApplication(), MobileQQ.processName);
+      localAppRuntime = bgxy.a(BaseApplicationImpl.getApplication(), MobileQQ.processName);
     }
-    do
-    {
+    while (!paramString.equals("qzone_vertical_video_plugin.apk")) {
       return localAppRuntime;
-      if (paramString.equals("qzone_widgetai.apk")) {
-        return bglx.a(BaseApplicationImpl.getApplication(), MobileQQ.processName);
-      }
-    } while (!paramString.equals("qzone_vertical_video_plugin.apk"));
-    return bfpr.c(BaseApplicationImpl.getApplication());
+    }
+    return bgxy.c(BaseApplicationImpl.getApplication());
   }
 }
 

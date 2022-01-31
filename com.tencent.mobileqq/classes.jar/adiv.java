@@ -1,94 +1,117 @@
-import android.app.Activity;
-import android.view.View;
-import com.etrump.mixlayout.ETFont;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.AnimationTextView;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-class adiv
-  implements bbgc
+public class adiv
+  implements adih, Handler.Callback
 {
-  adiv(adiu paramadiu, boolean paramBoolean) {}
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   
-  public void a(View paramView)
+  public adiv(BaseChatPie paramBaseChatPie)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LongMsgItemBuilder", 2, "SingleTap invoked!");
-    }
-    Object localObject;
-    float f1;
-    float f2;
-    float f3;
-    int k;
-    boolean bool2;
-    int j;
-    boolean bool1;
-    if ((paramView instanceof AnimationTextView))
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+  }
+  
+  private ChatMessage a()
+  {
+    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Acut.a();
+    Iterator localIterator = localList.iterator();
+    int i = 0;
+    if (localIterator.hasNext())
     {
-      localObject = (AnimationTextView)paramView;
-      f1 = ((AnimationTextView)localObject).a - adiu.a();
-      f2 = ((AnimationTextView)localObject).b;
-      f3 = adiu.b();
-      if (this.jdField_a_of_type_Boolean) {
-        f1 = ((AnimationTextView)localObject).a - adiu.c();
+      ChatMessage localChatMessage = (ChatMessage)localIterator.next();
+      if (QLog.isColorLevel()) {
+        QLog.d("vip_ptt.helper", 1, "SHOW_FIRST:" + localChatMessage.msgtype);
       }
-      localObject = ((AnimationTextView)localObject).getText();
-      if ((localObject instanceof axkd))
-      {
-        localObject = (axkd)localObject;
-        localObject = (axkk[])((axkd)localObject).getSpans(0, ((axkd)localObject).length(), axkk.class);
-        if (!(paramView instanceof ETTextView)) {
-          break label332;
-        }
-        paramView = (ETTextView)paramView;
-        k = paramView.b;
-        int m = paramView.c;
-        if ((paramView.a == null) || (paramView.a.mFontId == 0) || (paramView.a.mFontType != 1)) {
-          break label314;
-        }
-        bool2 = true;
-        i = k;
-        j = m;
-        bool1 = bool2;
-        if (bool2)
-        {
-          i = k;
-          j = m;
-          bool1 = bool2;
-          if (paramView.a() != null)
-          {
-            paramView = paramView.a();
-            if (QLog.isColorLevel()) {
-              QLog.d("ChatItemBuilder", 2, "isHanYiFont, onlyEmoji: " + paramView.jdField_a_of_type_Boolean);
-            }
-            if (paramView.jdField_a_of_type_Boolean) {
-              break label320;
-            }
-            bool1 = true;
-            label248:
-            j = m;
-          }
-        }
+      if (localChatMessage.msgtype != -2002) {
+        break label123;
       }
+      QLog.e("vip_ptt.helper", 1, "SHOW_FIRST find the ptt msg");
+      i = 1;
     }
-    for (int i = k;; i = -1)
+    label123:
+    for (;;)
     {
-      if ((i != -1) && (j != -1)) {}
-      for (bool2 = true;; bool2 = false)
+      break;
+      if (i != 0) {
+        return (ChatMessage)localList.get(localList.size() - 1);
+      }
+      return null;
+    }
+  }
+  
+  private void a(ChatMessage paramChatMessage, String paramString)
+  {
+    paramString = new aquz(paramChatMessage.frienduin, paramChatMessage.selfuin, paramString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, -5020, 655392, paramChatMessage.time);
+    MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
+    if (paramChatMessage.istroop == 1) {
+      localMessageForUniteGrayTip.shmsgseq = paramChatMessage.shmsgseq;
+    }
+    localMessageForUniteGrayTip.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
+    aqva.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForUniteGrayTip);
+    QLog.e("vip_ptt.helper", 1, "It is need add gray msg and insert success");
+  }
+  
+  private boolean a()
+  {
+    if ((amyv.c().a <= 1) && (adwv.d)) {
+      return !bbwv.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "have_add_ptt_gray_msg", false);
+    }
+    return false;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 7: 
+    case 8: 
+    default: 
+    case 5: 
+    case 6: 
+      do
       {
-        anjd.a((axkk[])localObject, f1, f2 - f3, bool2, i, j, this.jdField_a_of_type_Adiu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adiu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (Activity)this.jdField_a_of_type_Adiu.jdField_a_of_type_AndroidContentContext, bool1);
         return;
-        label314:
-        bool2 = false;
-        break;
-        label320:
-        bool1 = false;
-        break label248;
+        QLog.e("vip_ptt.helper", 1, "SHOW_FIRST_BEGIN");
+        return;
+      } while (!a());
+      QLog.e("vip_ptt.helper", 1, "It is need add gray msg");
+      ChatMessage localChatMessage = a();
+      if (localChatMessage == null)
+      {
+        QLog.e("vip_ptt.helper", 1, "It is need add gray msg,but this aio not ptt msg");
+        return;
       }
-      label332:
-      bool1 = false;
-      j = -1;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(10102, localChatMessage));
+      return;
     }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(10102);
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 5, 6, 9 };
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    paramMessage = (ChatMessage)paramMessage.obj;
+    if (amyv.c().a <= 1)
+    {
+      a(paramMessage, ajyc.a(2131708708));
+      bbwv.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "have_add_ptt_gray_msg", true);
+    }
+    return true;
   }
 }
 

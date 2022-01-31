@@ -1,35 +1,19 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.util.SparseIntArray;
+import java.util.Comparator;
 
-public class aewk
-  implements afht
+final class aewk
+  implements Comparator<aewg>
 {
-  public aewk(TroopView paramTroopView) {}
-  
-  public void a()
+  public int a(aewg paramaewg1, aewg paramaewg2)
   {
-    if (badq.g(BaseApplication.getContext()))
-    {
-      if (this.a.a.size() > 0)
-      {
-        if ((TroopView.a(this.a) != null) && (TroopView.a(this.a) != null)) {
-          TroopView.a(this.a).b(TroopView.a(this.a).getCurrentItem());
-        }
-        return;
-      }
-      TroopView.b(this.a);
-      return;
+    if ((paramaewg1 == null) || (paramaewg2 == null)) {
+      return 0;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("addContacts.TroopView", 2, "refresh falied. network unavailable");
-    }
-    Message localMessage = TroopView.a(this.a).obtainMessage(13);
-    TroopView.a(this.a).sendMessageDelayed(localMessage, 1000L);
+    float f1 = aewj.a().get(paramaewg1.c());
+    float f2 = aewj.a().get(paramaewg2.c());
+    float f3 = paramaewg1.b() * 100;
+    float f4 = 1.0F / (paramaewg1.a() + 1) / 10.0F;
+    return Float.compare(f2 + (paramaewg2.b() * 100 + 1.0F / (paramaewg2.a() + 1) / 10.0F), f1 + (f3 + f4));
   }
 }
 

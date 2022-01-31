@@ -1,10 +1,15 @@
-public abstract interface wpy
+import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import java.util.ArrayList;
+
+public abstract interface wpy<T extends SimpleBaseEvent>
 {
-  public abstract void a();
+  public abstract ArrayList<Class<T>> a();
+  
+  public abstract void a(SimpleBaseEvent paramSimpleBaseEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wpy
  * JD-Core Version:    0.7.0.1
  */

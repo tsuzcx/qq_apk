@@ -1,53 +1,37 @@
-import android.os.Handler;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class afxd
-  extends atog
+class afxd
+  implements aptu
 {
-  public afxd(BindVerifyActivity paramBindVerifyActivity) {}
+  afxd(afxc paramafxc, FileManagerEntity paramFileManagerEntity) {}
   
-  protected void c(boolean paramBoolean, int paramInt)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BindVerifyActivity", 2, "onVerifyBindSms [" + paramBoolean + ", " + paramInt + "]");
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Afxc.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    BindVerifyActivity.a(this.a, false);
-    BindVerifyActivity.a(this.a).removeMessages(4);
-    this.a.b();
-    if (!paramBoolean)
+    ajuo localajuo;
+    ArrayList localArrayList;
+    do
     {
-      this.a.a("dc00898", "0X8009F19", 0);
-      this.a.a(1, this.a.getString(2131652912));
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(BindVerifyActivity.b(this.a));
-      BindVerifyActivity.b(this.a, null);
       return;
-      if ((paramInt == 0) || (paramInt == 106))
-      {
-        this.a.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
       }
-      else if (paramInt == 213)
-      {
-        this.a.a("dc00898", "0X8009F19", 0);
-        this.a.a(1, ajjy.a(2131635352));
-        BindVerifyActivity.a(this.a).setEnabled(true);
-      }
-      else
-      {
-        this.a.a("dc00898", "0X8009F19", 0);
-        String str = ajjy.a(2131635347);
-        if (paramInt == 107) {
-          str = ajjy.a(2131635349);
-        }
-        this.a.a(ajjy.a(2131635353), str);
-      }
-    }
+      localajuo = (ajuo)this.jdField_a_of_type_Afxc.a.a.a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localajuo.a(localArrayList));
+    aptv.a(2131692664);
+    return;
+    this.jdField_a_of_type_Afxc.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 

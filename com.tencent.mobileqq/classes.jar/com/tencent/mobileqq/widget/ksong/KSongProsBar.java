@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget.ksong;
 
-import aciy;
+import actn;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -13,7 +13,7 @@ import android.graphics.RectF;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import bbpn;
+import bcsp;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,7 +24,7 @@ public class KSongProsBar
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private bbpn jdField_a_of_type_Bbpn;
+  private bcsp jdField_a_of_type_Bcsp;
   private String jdField_a_of_type_JavaLangString;
   private int jdField_b_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
@@ -138,28 +138,28 @@ public class KSongProsBar
   
   protected final int a(float paramFloat)
   {
-    return aciy.a(paramFloat, getResources());
+    return actn.a(paramFloat, getResources());
   }
   
   public void a(long paramLong)
   {
-    if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_a_of_type_Bbpn == null))
+    if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_a_of_type_Bcsp == null))
     {
       QLog.i("KSongProsBar", 2, "error call, not initialized...");
       return;
     }
     this.jdField_a_of_type_JavaLangString = a(paramLong);
-    this.jdField_c_of_type_Int = ((int)((float)paramLong / (float)this.jdField_a_of_type_Bbpn.e * this.jdField_a_of_type_Int));
+    this.jdField_c_of_type_Int = ((int)((float)paramLong / (float)this.jdField_a_of_type_Bcsp.e * this.jdField_a_of_type_Int));
     postInvalidate();
   }
   
-  public void a(bbpn parambbpn)
+  public void a(bcsp parambcsp)
   {
-    if (parambbpn == null) {
+    if (parambcsp == null) {
       return;
     }
-    this.jdField_a_of_type_Bbpn = parambbpn;
-    this.jdField_b_of_type_JavaLangString = a(parambbpn.e);
+    this.jdField_a_of_type_Bcsp = parambcsp;
+    this.jdField_b_of_type_JavaLangString = a(parambcsp.e);
     this.jdField_a_of_type_JavaLangString = a(0L);
     postInvalidate();
   }

@@ -2,19 +2,19 @@ package com.tencent.mobileqq.musicgene;
 
 import android.graphics.Bitmap;
 import android.os.Message;
-import asaa;
-import asag;
-import asah;
-import asap;
+import aswe;
+import aswk;
+import aswl;
+import aswt;
 
 public class MusicPlayerActivity$1$1$1
   implements Runnable
 {
-  public MusicPlayerActivity$1$1$1(asah paramasah, int paramInt) {}
+  public MusicPlayerActivity$1$1$1(aswl paramaswl, int paramInt) {}
   
   public void run()
   {
-    Object localObject = asaa.a(this.jdField_a_of_type_Asah.jdField_a_of_type_Asap.c);
+    Object localObject = aswe.a(this.jdField_a_of_type_Aswl.jdField_a_of_type_Aswt.c);
     if (localObject != null)
     {
       int i = ((Bitmap)localObject).getWidth();
@@ -24,7 +24,7 @@ public class MusicPlayerActivity$1$1$1
         double d = Math.sqrt(8000.0D / (i * j));
         Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
         ((Bitmap)localObject).recycle();
-        localObject = Message.obtain(MusicPlayerActivity.a(this.jdField_a_of_type_Asah.jdField_a_of_type_Asag.a), 55);
+        localObject = Message.obtain(MusicPlayerActivity.a(this.jdField_a_of_type_Aswl.jdField_a_of_type_Aswk.a), 55);
         ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
         ((Message)localObject).obj = localBitmap;
         ((Message)localObject).sendToTarget();

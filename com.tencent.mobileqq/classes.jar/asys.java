@@ -1,24 +1,8 @@
-import com.tencent.common.app.BaseApplicationImpl;
-
-class asys
-  implements aszr
+public abstract class asys
 {
-  asys(asyr paramasyr) {}
+  public void a(long paramLong1, long paramLong2) {}
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      asmr localasmr = new asmr().h("data_card").i("feed_delete_suc").d("2").a(this.a.jdField_a_of_type_Asyn.a(this.a.jdField_a_of_type_Asyu)).b(paramString).c(String.valueOf(this.a.jdField_a_of_type_Asyn.a(this.a.jdField_a_of_type_Asyu)));
-      if (this.a.jdField_a_of_type_Asyn.jdField_a_of_type_Boolean) {}
-      for (paramString = "1";; paramString = "2")
-      {
-        localasmr.e(paramString).b(this.a.jdField_a_of_type_Asyn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
-      }
-    }
-    bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131635241), 0).a();
-  }
+  public void a(asyt paramasyt) {}
 }
 
 

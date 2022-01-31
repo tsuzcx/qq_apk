@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import java.util.Comparator;
 
-public class azni
-  implements azla
+class azni
+  implements Comparator<Long>
 {
-  public azni(TroopAIORobotLayout paramTroopAIORobotLayout, aznc paramaznc) {}
+  azni(azng paramazng) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public int a(Long paramLong1, Long paramLong2)
   {
-    if (paramInt == 0) {
-      return;
+    int i = 0;
+    if (paramLong1.longValue() - paramLong2.longValue() > 0L) {
+      i = 1;
     }
-    bbmy.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.getContext(), 1, ajjy.a(2131649379) + "", 0).a();
+    while (paramLong1.longValue() - paramLong2.longValue() >= 0L) {
+      return i;
+    }
+    return -1;
   }
 }
 

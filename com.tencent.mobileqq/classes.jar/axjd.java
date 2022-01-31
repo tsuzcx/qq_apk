@@ -1,47 +1,136 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.qphone.base.util.QLog;
 
-class axjd
-  implements begh
+public class axjd
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  public static axjd a;
+  private final int jdField_a_of_type_Int = 20;
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  private long jdField_c_of_type_Long;
+  private boolean jdField_c_of_type_Boolean;
+  private long jdField_d_of_type_Long;
+  private volatile boolean jdField_d_of_type_Boolean;
+  private long e;
+  private long f;
+  private long g;
   
-  axjd(axjb paramaxjb) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public static axjd a()
   {
-    this.b = paramInt3;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    if (jdField_a_of_type_Axjd == null) {}
+    try
+    {
+      if (jdField_a_of_type_Axjd == null) {
+        jdField_a_of_type_Axjd = new axjd();
+      }
+      return jdField_a_of_type_Axjd;
+    }
+    finally {}
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  private void f()
   {
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_d_of_type_Long = 0L;
+    this.e = 0L;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_d_of_type_Boolean) {
+      this.f = System.currentTimeMillis();
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 1;
+    if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int <= 20))
+    {
+      this.jdField_b_of_type_Int += 1;
+      if (QLog.isColorLevel()) {
+        QLog.i("GestureMonitorManager", 2, "start " + this.jdField_b_of_type_Int + "");
+      }
+    }
+    do
+    {
+      return;
+      if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int > 20))
+      {
+        e();
+        f();
+        return;
+      }
+    } while (this.jdField_d_of_type_Boolean);
+    if ((paramBoolean1) && (paramBoolean2))
+    {
+      paramBoolean1 = true;
+      this.jdField_d_of_type_Boolean = paramBoolean1;
+      if (!this.jdField_d_of_type_Boolean) {
+        break label133;
+      }
+    }
     for (;;)
     {
-      try
-      {
-        int i = this.jdField_a_of_type_Axjb.jdField_a_of_type_Int;
-        if (i > 0) {
-          return;
-        }
-        if ((paramInt != 0) || (this.jdField_a_of_type_Axjb.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_Int != this.b - 2)) {
-          continue;
-        }
-        if (this.jdField_a_of_type_Axjb.e)
-        {
-          this.jdField_a_of_type_Axjb.c(true);
-          continue;
-        }
-        this.jdField_a_of_type_Axjb.c(false);
+      this.jdField_b_of_type_Int = i;
+      return;
+      paramBoolean1 = false;
+      break;
+      label133:
+      i = 0;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_d_of_type_Boolean)
+    {
+      this.f = (System.currentTimeMillis() - this.f);
+      this.jdField_a_of_type_Long += this.f;
+      if (QLog.isColorLevel()) {
+        QLog.i("GestureMonitorManager", 2, "GestureMonitorManager TotalDetetcorConsumer[startPreview] " + this.f + "ms");
       }
-      finally {}
-      this.jdField_a_of_type_Axjb.a(this.jdField_a_of_type_Axjb.jdField_a_of_type_Long, this.jdField_a_of_type_Axjb.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Axjb.c, 50, 0);
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_d_of_type_Boolean) {
+      this.g = System.currentTimeMillis();
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_d_of_type_Boolean)
+    {
+      this.g = (System.currentTimeMillis() - this.g);
+      this.jdField_d_of_type_Long += this.g;
+      if (QLog.isColorLevel()) {
+        QLog.i("GestureMonitorManager", 2, "GestureMonitorManager GestureDrawConsumer[GestureDraw] " + this.g + "ms");
+      }
+    }
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("GestureMonitorManagerdoReport", 2, "GestureMonitorManager check Frame numbers[+20],[StartPreview:" + this.jdField_a_of_type_Long + "ms],[FaceDetector Aysn childThread:" + this.jdField_c_of_type_Long + "ms],ms],[FaceDraw:" + this.jdField_b_of_type_Long + "ms],[GestureDetector Aysn childThread:" + this.e + "ms],ms],[GestureDraw:" + this.jdField_d_of_type_Long + "ms]");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axjd
  * JD-Core Version:    0.7.0.1
  */

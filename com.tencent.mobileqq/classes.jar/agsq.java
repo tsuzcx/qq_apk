@@ -1,28 +1,36 @@
-import com.tencent.widget.soload.LoadExtResult;
+import android.util.SparseArray;
+import com.tencent.image.URLDrawable;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class agsq
-  implements besg
+public class agsq
 {
-  agsq(agsp paramagsp, agsr paramagsr) {}
+  public int a;
+  public long a;
+  public SparseArray<URLDrawable> a;
+  public String a;
+  public ArrayList<String> a;
+  public HashMap<String, String> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public boolean d;
   
-  public void a(int paramInt, LoadExtResult paramLoadExtResult)
+  public agsq()
   {
-    if (paramInt == 0)
-    {
-      agsp.a(this.jdField_a_of_type_Agsp, true);
-      if (this.jdField_a_of_type_Agsr != null) {
-        this.jdField_a_of_type_Agsr.a(true);
-      }
-    }
-    while (this.jdField_a_of_type_Agsr == null) {
-      return;
-    }
-    this.jdField_a_of_type_Agsr.a(false);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agsq
  * JD-Core Version:    0.7.0.1
  */

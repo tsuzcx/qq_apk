@@ -1,20 +1,6 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
-
-public class qvj
-  extends berm<RecyclerView.Adapter>
+public abstract interface qvj
 {
-  public qvj(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix, RecyclerView.Adapter paramAdapter)
-  {
-    super(paramAdapter);
-  }
-  
-  protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    super.a(paramViewHolder, paramInt);
-    this.a.a(paramViewHolder, paramInt);
-  }
+  public abstract void a(qty paramqty, int paramInt1, int paramInt2);
 }
 
 

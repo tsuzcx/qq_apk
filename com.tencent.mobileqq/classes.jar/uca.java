@@ -1,51 +1,37 @@
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoFragment;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class uca
-  extends sgl<StoryAtVideoFragment, udk>
+  extends JobSegment<String, String>
 {
-  public uca(StoryAtVideoFragment paramStoryAtVideoFragment)
-  {
-    super(paramStoryAtVideoFragment);
-  }
+  private uca(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void a(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull udk paramudk)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    if ((!paramudk.jdField_a_of_type_JavaLangString.equals(paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString)) || (paramudk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramStoryAtVideoFragment.jdField_a_of_type_Ucw == null))
+    this.a.jdField_a_of_type_Udc.a(null);
+    this.a.jdField_a_of_type_Udc.a(null);
+    this.a.jdField_a_of_type_Udc.a(null);
+    this.a.jdField_a_of_type_Udc.a(null);
+    this.a.jdField_a_of_type_Udc.a(null);
+    if (VideoViewVideoHolder.f(this.a) == 0)
     {
-      urk.b(this.TAG, "ignore this comment list event. %s.", paramudk.toString());
+      veg.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. already idle state");
+      notifyResult(paramString);
       return;
     }
-    if (!paramStoryAtVideoFragment.jdField_a_of_type_Ucw.c())
+    if (VideoViewVideoHolder.f(this.a) < 7)
     {
-      urk.e(this.TAG, "this feed does not support video list.ignore this comment list event. %s.", new Object[] { paramudk.toString() });
+      veg.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. change to idle directly");
+      VideoViewVideoHolder.a(this.a, 0);
+      notifyResult(paramString);
       return;
     }
-    urk.a(this.TAG, "receive comment list event. %s.", paramudk.toString());
-    paramStoryAtVideoFragment.jdField_a_of_type_Ucw.a(paramudk.jdField_a_of_type_JavaUtilList, paramudk.c);
-    paramStoryAtVideoFragment.jdField_a_of_type_Ucw.a().updateVideoInfo(paramudk.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
-    if (paramStoryAtVideoFragment.jdField_a_of_type_Ucw.a().size() < 1)
-    {
-      paramStoryAtVideoFragment.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
-      paramStoryAtVideoFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      return;
-    }
-    paramStoryAtVideoFragment.a(paramStoryAtVideoFragment.jdField_a_of_type_Ucw);
+    veg.b(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. stop video view");
+    this.a.jdField_a_of_type_Udc.a();
+    VideoViewVideoHolder.a(this.a, 0);
+    notifyResult(paramString);
   }
-  
-  public Class acceptEventClass()
-  {
-    return udk.class;
-  }
-  
-  public void b(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull udk paramudk) {}
 }
 
 

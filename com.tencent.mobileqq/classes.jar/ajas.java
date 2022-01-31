@@ -1,38 +1,20 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import org.json.JSONObject;
 
-public final class ajas
+class ajas
+  implements MediaPlayer.OnPreparedListener
 {
-  private static HashMap<String, Long> a = new HashMap();
-  private static HashMap<String, Long> b = new HashMap();
+  ajas(ajao paramajao, JSONObject paramJSONObject, ajbo paramajbo) {}
   
-  public static void a()
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    a.clear();
-    b.clear();
-  }
-  
-  public static void a(String paramString)
-  {
-    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString))) {
-      a.put(paramString, Long.valueOf(SystemClock.uptimeMillis()));
+    this.jdField_a_of_type_Ajao.a(3);
+    if (ajao.a(this.jdField_a_of_type_Ajao)) {
+      this.jdField_a_of_type_Ajao.b(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Ajbo);
     }
-  }
-  
-  public static void b(String paramString)
-  {
-    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString)) && (a.containsKey(paramString)))
-    {
-      Long localLong = (Long)a.get(paramString);
-      if (localLong != null)
-      {
-        long l1 = localLong.longValue();
-        long l2 = SystemClock.uptimeMillis();
-        b.put(paramString, Long.valueOf(l2));
-        QLog.d("TraceReport_CmShowStatUtil", 1, new Object[] { "eventName=", paramString, ", cost=", Long.valueOf(l2 - l1) });
-      }
+    if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
+      ajao.a(this.jdField_a_of_type_Ajao, this.jdField_a_of_type_Ajbo, this.jdField_a_of_type_OrgJsonJSONObject);
     }
   }
 }

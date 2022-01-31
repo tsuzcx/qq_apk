@@ -1,15 +1,19 @@
-import android.view.animation.Animation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class atsq
-  extends beem
+  implements DialogInterface.OnClickListener
 {
-  atsq(atsk paramatsk) {}
+  atsq(atsm paramatsm, bbgg parambbgg) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bbgg.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import axud;
+import ayuk;
 
 public class ScribblePicDownloadProcessor$1
   implements Runnable
 {
-  public ScribblePicDownloadProcessor$1(axud paramaxud) {}
+  public ScribblePicDownloadProcessor$1(ayuk paramayuk) {}
   
   public void run()
   {

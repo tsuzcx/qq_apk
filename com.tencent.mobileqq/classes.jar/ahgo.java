@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class ahgo
-  implements acjg
+  implements View.OnTouchListener
 {
   ahgo(ahgn paramahgn) {}
   
-  public void a(AudioPlayer paramAudioPlayer)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (ahgn.a(this.a))
-    {
-      ahgn.a(this.a, false);
-      ahgn.a(this.a);
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.a();
     }
+    return true;
   }
-  
-  public void a(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 

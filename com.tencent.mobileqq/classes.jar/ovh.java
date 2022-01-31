@@ -1,21 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.net.URL;
 
-class ovh
-  implements ViewBase.OnClickListener
+public class ovh
 {
-  ovh(ove paramove, ArticleInfo paramArticleInfo, Container paramContainer) {}
+  int jdField_a_of_type_Int;
+  URL jdField_a_of_type_JavaNetURL;
+  int b;
+  int c;
+  int d;
   
-  public void onClick(ViewBase paramViewBase)
+  public String toString()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.a != null)
-    {
-      paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.a;
-      qcn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
-      ove.a(this.jdField_a_of_type_Ove, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramViewBase.e);
+    StringBuilder localStringBuilder = new StringBuilder().append("[WaterFallPic]--> url=");
+    if (this.jdField_a_of_type_JavaNetURL != null) {}
+    for (String str = this.jdField_a_of_type_JavaNetURL.toString();; str = "") {
+      return str + ",originWidth =" + this.jdField_a_of_type_Int + ",originHeight =" + this.b + ",calcHeight =" + this.c + ",scaleHeight =" + this.d;
     }
   }
 }

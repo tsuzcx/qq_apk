@@ -1,39 +1,47 @@
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import com.tencent.widget.pull2refresh.XRecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.viola.adapter.IBridgeAdapter;
+import com.tencent.viola.adapter.IBridgeAdapter.OnInovkeCallback;
+import com.tencent.viola.core.ViolaInstance;
+import java.util.ArrayList;
 
 public class rws
-  implements berv
+  implements IBridgeAdapter
 {
-  public rws(WSRecommendFragment paramWSRecommendFragment) {}
-  
-  public void a()
+  public rws()
   {
-    sai.b("WSRecommendFragment", "endOfRefresh");
-    WSRecommendFragment.a(this.a).d();
+    registerModuleFunction();
   }
   
-  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  public ArrayList<String> getAdapterUnRegisterFunction()
   {
-    sai.b("WSRecommendFragment", "startLoadMore");
-    WSRecommendFragment.a(this.a).a(false, false, "");
+    return null;
   }
   
-  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  public void registerModuleFunction() {}
+  
+  public void titleUiInvoke(String paramString, Object paramObject, IBridgeAdapter.OnInovkeCallback paramOnInovkeCallback, ViolaInstance paramViolaInstance)
   {
-    sai.b("WSRecommendFragment", "startTopRefresh");
-    if (WSRecommendFragment.a(this.a)) {
-      WSRecommendFragment.a(this.a, false);
+    if (paramViolaInstance == null) {
+      break label5;
     }
-    do
+    for (;;)
     {
+      label5:
       return;
-      if (!WSRecommendFragment.b(this.a)) {
-        WSRecommendFragment.b(this.a, true);
+      if (("change_title_transparent".equals(paramString)) && ((paramObject instanceof Boolean)))
+      {
+        paramString = paramViolaInstance.getFragment();
+        if (paramString == null) {
+          break;
+        }
+        if ((paramString instanceof ViolaFragment)) {}
+        for (paramString = ((ViolaFragment)paramString).a(); paramString != null; paramString = null)
+        {
+          paramString.a(((Boolean)paramObject).booleanValue());
+          return;
+        }
       }
-      WSRecommendFragment.a(this.a, System.currentTimeMillis());
-      WSRecommendFragment.a(this.a).a(true, false, "");
-    } while (WSRecommendFragment.c(this.a));
-    WSRecommendFragment.a(this.a).a("");
+    }
   }
 }
 

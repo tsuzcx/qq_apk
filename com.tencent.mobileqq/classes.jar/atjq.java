@@ -1,39 +1,26 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.onlinestatus.AccountPanel.15.1;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
 
 public class atjq
-  implements Observer
+  implements DialogInterface.OnClickListener
 {
-  atjq(atjj paramatjj) {}
+  public atjq(ShortVideoCommentsView paramShortVideoCommentsView, Activity paramActivity) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((atjj.a(this.a) == null) || (atjj.a(this.a).isFinishing()) || (atjj.a(this.a) == null)) {
-      QLog.d("AccountPanel", 1, String.format("mObserver update return", new Object[0]));
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("AccountPanel", 2, "update");
-        }
-      } while (!(paramObject instanceof String[]));
-      paramObservable = (String[])paramObject;
-    } while ((paramObservable.length != 2) || (!ajed.x.equals(paramObservable[0])));
+    atbp.a(this.jdField_a_of_type_AndroidAppActivity, 302);
     if (QLog.isColorLevel()) {
-      QLog.d("AccountPanel", 2, "update() -> before update");
+      QLog.d("nearby.bindphone", 2, "openBindPhonePage");
     }
-    atjj.a(this.a).runOnUiThread(new AccountPanel.15.1(this));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a, "playpage_phone_clk");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjq
  * JD-Core Version:    0.7.0.1
  */

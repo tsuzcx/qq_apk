@@ -1,60 +1,29 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.FaceDownloader;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class ajhr
-  extends MqqHandler
+  implements Animator.AnimatorListener
 {
-  public ajhr(FaceDownloader paramFaceDownloader, Looper paramLooper)
+  public ajhr(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramLooper);
+    ThreadManager.getUIHandler().postDelayed(new ApolloGuestsStateActivity.3.1(this), 200L);
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage == null) {}
-    while (paramMessage.what != 100) {
-      return;
-    }
-    int i = 0;
-    label16:
-    if (i < this.a.b.size())
-    {
-      paramMessage = (ajhu)this.a.b.get(i);
-      if (paramMessage != null) {
-        break label56;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label16;
-      break;
-      label56:
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.FaceDownloader", 2, "handle download finish task.faceInfo=" + paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo + ",bitmap=" + paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-      if ((paramMessage != null) && (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo != null) && (paramMessage.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.a.a.size() > 0))
-      {
-        int j = 0;
-        while (j < this.a.a.size())
-        {
-          ((ajhs)this.a.a.get(j)).a(true, paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
-          j += 1;
-        }
-      }
-      this.a.b.remove(i);
-      i -= 1;
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajhr
  * JD-Core Version:    0.7.0.1
  */

@@ -41,13 +41,13 @@ public class SharpPDecoderWrapper
     }
   }
   
-  public void closeDecoderInNative(int paramInt)
+  public void closeDecoderInNative(long paramLong)
   {
-    this.mDecoder.CloseDecoder2(paramInt);
+    this.mDecoder.CloseDecoder2(paramLong);
     this.byteBuffer = null;
   }
   
-  public int createDecoderInNative(String paramString, SharpPDecoder.SharpPFeature paramSharpPFeature)
+  public long createDecoderInNative(String paramString, SharpPDecoder.SharpPFeature paramSharpPFeature)
   {
     return this.mDecoder.CreateDecoder2(paramString, paramSharpPFeature);
   }
@@ -59,16 +59,16 @@ public class SharpPDecoderWrapper
     return new SharpPDecoderWrapper.SharpPFeatureWrapper(new SharpPDecoder.SharpPFeature(localSharpPDecoder));
   }
   
-  public int decodeImageInNative(int paramInt1, int paramInt2, SharpPDecoder.SharpPOutFrame paramSharpPOutFrame)
+  public int decodeImageInNative(long paramLong, int paramInt, SharpPDecoder.SharpPOutFrame paramSharpPOutFrame)
   {
-    return this.mDecoder.DecodeImage2(paramInt1, paramInt2, paramSharpPOutFrame);
+    return this.mDecoder.DecodeImage2(paramLong, paramInt, paramSharpPOutFrame);
   }
   
   public Bitmap decodeImageInNative(String paramString, SharpPDecoder.SharpPFeature paramSharpPFeature, int paramInt1, int paramInt2, int paramInt3, Bitmap.Config paramConfig)
   {
     Object localObject = new int[3];
-    int k = createDecoderInNative(paramString, paramSharpPFeature);
-    if (k == 0)
+    long l = createDecoderInNative(paramString, paramSharpPFeature);
+    if (l == 0L)
     {
       ImageManagerEnv.getLogger().e("SharpPDecoderWrapper", new Object[] { "decodeImageInNative error:hDec=0" });
       return null;
@@ -85,51 +85,51 @@ public class SharpPDecoderWrapper
     paramInt1 = 0;
     while (paramInt1 < paramSharpPFeature.layerNum)
     {
-      int m = decodeImageInNative(k, paramInt1, (SharpPDecoder.SharpPOutFrame)localObject);
+      int k = decodeImageInNative(l, paramInt1, (SharpPDecoder.SharpPOutFrame)localObject);
       int j = i;
-      if (m != 0)
+      if (k != 0)
       {
-        ImageManagerEnv.getLogger().e("SharpPDecoderWrapper", new Object[] { "decodeSharpP error:layerNo=" + paramInt1 + ",status=" + m });
+        ImageManagerEnv.getLogger().e("SharpPDecoderWrapper", new Object[] { "decodeSharpP error:layerNo=" + paramInt1 + ",status=" + k });
         j = i + 1;
       }
       paramInt1 += 1;
       i = j;
     }
-    closeDecoderInNative(k);
+    closeDecoderInNative(l);
     if (i != paramSharpPFeature.layerNum) {
       return Bitmap.createBitmap(paramString, 0, paramInt2, paramInt2, paramInt3, paramConfig);
     }
     return null;
   }
   
-  public int decodeImageToBitmapInNative(int paramInt1, int paramInt2, Bitmap paramBitmap, Integer paramInteger)
+  public int decodeImageToBitmapInNative(long paramLong, int paramInt, Bitmap paramBitmap, Integer paramInteger)
   {
-    return this.mDecoder.DecodeImageToBitmap2(paramInt1, paramInt2, paramBitmap, paramInteger);
+    return this.mDecoder.DecodeImageToBitmap2(paramLong, paramInt, paramBitmap, paramInteger);
   }
   
-  public int decodeOneFrameInNative(int paramInt1, int paramInt2, Bitmap paramBitmap, SharpPDecoderWrapper.WriteableInteger paramWriteableInteger)
+  public int decodeOneFrameInNative(long paramLong, int paramInt, Bitmap paramBitmap, SharpPDecoderWrapper.WriteableInteger paramWriteableInteger)
   {
-    paramInt1 = decodeImageToBitmapInNative(paramInt1, paramInt2, paramBitmap, paramWriteableInteger.realInt);
-    if (paramInt1 != 0) {
-      ImageManagerEnv.getLogger().e("SharpPDecoderWrapper", new Object[] { "decodeSharpP error:frameIndex=" + paramInt2 + ",status=" + paramInt1 });
+    int i = decodeImageToBitmapInNative(paramLong, paramInt, paramBitmap, paramWriteableInteger.realInt);
+    if (i != 0) {
+      ImageManagerEnv.getLogger().e("SharpPDecoderWrapper", new Object[] { "decodeSharpP error:frameIndex=" + paramInt + ",status=" + i });
     }
-    return paramInt1;
+    return i;
   }
   
-  public Bitmap decodeOneFrameWithAlphaInNative(int paramInt1, int paramInt2, int paramInt3, int paramInt4, SharpPDecoderWrapper.WriteableInteger paramWriteableInteger, Bitmap paramBitmap)
+  public Bitmap decodeOneFrameWithAlphaInNative(long paramLong, int paramInt1, int paramInt2, int paramInt3, SharpPDecoderWrapper.WriteableInteger paramWriteableInteger, Bitmap paramBitmap)
   {
-    if ((this.byteBuffer == null) || ((this.byteBuffer != null) && (this.byteBuffer.length < paramInt3 * paramInt4))) {
-      this.byteBuffer = new int[paramInt3 * paramInt4];
+    if ((this.byteBuffer == null) || ((this.byteBuffer != null) && (this.byteBuffer.length < paramInt2 * paramInt3))) {
+      this.byteBuffer = new int[paramInt2 * paramInt3];
     }
     int[] arrayOfInt = this.byteBuffer;
     Object localObject = this.mDecoder;
     localObject.getClass();
     localObject = new SharpPDecoder.SharpPOutFrame((SharpPDecoder)localObject);
     ((SharpPDecoder.SharpPOutFrame)localObject).pOutBuf = arrayOfInt;
-    ((SharpPDecoder.SharpPOutFrame)localObject).dstWidth = paramInt3;
-    ((SharpPDecoder.SharpPOutFrame)localObject).dstHeight = paramInt4;
+    ((SharpPDecoder.SharpPOutFrame)localObject).dstWidth = paramInt2;
+    ((SharpPDecoder.SharpPOutFrame)localObject).dstHeight = paramInt3;
     ((SharpPDecoder.SharpPOutFrame)localObject).fmt = 4;
-    paramInt1 = decodeImageInNative(paramInt1, paramInt2, (SharpPDecoder.SharpPOutFrame)localObject);
+    paramInt1 = decodeImageInNative(paramLong, paramInt1, (SharpPDecoder.SharpPOutFrame)localObject);
     if (paramInt1 != 0)
     {
       ImageManagerEnv.getLogger().e("SharpPDecoderWrapper", new Object[] { "decodeSharpP gif alpha mode error:status=" + paramInt1 });
@@ -138,10 +138,10 @@ public class SharpPDecoderWrapper
     paramWriteableInteger.realInt = Integer.valueOf(((SharpPDecoder.SharpPOutFrame)localObject).delayTime);
     if ((paramBitmap != null) && (paramBitmap.isMutable()))
     {
-      paramBitmap.setPixels(arrayOfInt, 0, paramInt3, 0, 0, paramInt3, paramInt4);
+      paramBitmap.setPixels(arrayOfInt, 0, paramInt2, 0, 0, paramInt2, paramInt3);
       return paramBitmap;
     }
-    return Bitmap.createBitmap(arrayOfInt, paramInt3, paramInt4, Bitmap.Config.ARGB_8888);
+    return Bitmap.createBitmap(arrayOfInt, paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
   }
   
   public Bitmap decodeSharpP2PNGInNative(String paramString, SharpPDecoder.SharpPFeature paramSharpPFeature, int paramInt1, int paramInt2, Bitmap.Config paramConfig)
@@ -151,33 +151,34 @@ public class SharpPDecoderWrapper
   
   public Bitmap decodeSharpPInNative(String paramString, SharpPDecoder.SharpPFeature paramSharpPFeature, int paramInt1, int paramInt2, Bitmap.Config paramConfig)
   {
-    int j = createDecoderInNative(paramString, paramSharpPFeature);
-    if (j == 0)
+    long l = createDecoderInNative(paramString, paramSharpPFeature);
+    if (l == 0L)
     {
       ImageManagerEnv.getLogger().e("SharpPDecoderWrapper", new Object[] { "decodeSharpPInNative error:hDec=0" });
-      return null;
+      paramString = null;
     }
-    paramString = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
-    paramInt2 = 0;
-    paramConfig = new Integer(0);
-    paramInt1 = 0;
-    while (paramInt1 < paramSharpPFeature.layerNum)
+    do
     {
-      int k = decodeImageToBitmapInNative(j, paramInt1, paramString, paramConfig);
-      int i = paramInt2;
-      if (k != 0)
+      return paramString;
+      paramString = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
+      paramInt2 = 0;
+      paramConfig = new Integer(0);
+      paramInt1 = 0;
+      while (paramInt1 < paramSharpPFeature.layerNum)
       {
-        ImageManagerEnv.getLogger().e("SharpPDecoderWrapper", new Object[] { "decodeSharpP error:layerNo=" + paramInt1 + ",status=" + k });
-        i = paramInt2 + 1;
+        int j = decodeImageToBitmapInNative(l, paramInt1, paramString, paramConfig);
+        int i = paramInt2;
+        if (j != 0)
+        {
+          ImageManagerEnv.getLogger().e("SharpPDecoderWrapper", new Object[] { "decodeSharpP error:layerNo=" + paramInt1 + ",status=" + j });
+          i = paramInt2 + 1;
+        }
+        paramInt1 += 1;
+        paramInt2 = i;
       }
-      paramInt1 += 1;
-      paramInt2 = i;
-    }
-    closeDecoderInNative(j);
-    if (paramInt2 == paramSharpPFeature.layerNum) {
-      return null;
-    }
-    return paramString;
+      closeDecoderInNative(l);
+    } while (paramInt2 != paramSharpPFeature.layerNum);
+    return null;
   }
   
   public int getAllocationByteCount()

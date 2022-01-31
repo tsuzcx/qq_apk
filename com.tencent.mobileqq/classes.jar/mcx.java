@@ -1,85 +1,59 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.lang.ref.WeakReference;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectOperateManager;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
 
-class mcx
-  extends Handler
+public class mcx
+  implements mht
 {
-  private WeakReference<mcw> jdField_a_of_type_JavaLangRefWeakReference;
+  public mcx(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong, String paramString) {}
   
-  public mcx(mcw parammcw1, Looper paramLooper, mcw parammcw2)
+  public void a()
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammcw2);
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.j = true;
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.L();
+    EffectOperateManager localEffectOperateManager = (EffectOperateManager)this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(8);
+    if (localEffectOperateManager != null) {
+      localEffectOperateManager.b(false);
+    }
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.N();
   }
   
-  public void handleMessage(Message paramMessage)
+  public void b()
   {
-    int i = paramMessage.what;
-    mcw localmcw = (mcw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localmcw == null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("QavVideoAudioRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
-      }
-    }
-    do
+    lgf locallgf = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a();
+    mtt.a().b(this.jdField_a_of_type_Long);
+    locallgf.f = false;
+    if (locallgf.y != -1) {}
+    for (;;)
     {
-      for (;;)
-      {
-        return;
-        switch (i)
-        {
-        default: 
-          throw new RuntimeException("Unhandled msg what=" + i);
-        case 0: 
-          if (mcw.a(this.jdField_a_of_type_Mcw) == null) {
-            mcw.a(this.jdField_a_of_type_Mcw, new ByteArrayOutputStream(32768));
-          }
-          if (paramMessage.obj != null)
-          {
-            mcw.a(localmcw, (auzf)paramMessage.obj);
-            return;
-          }
-          throw new RuntimeException("MSG_START_RECORDING bundle == null");
-        case 1: 
-          mcw.a(localmcw);
-          try
-          {
-            if (mcw.a(this.jdField_a_of_type_Mcw) != null)
-            {
-              mcw.a(this.jdField_a_of_type_Mcw).flush();
-              mcw.a(this.jdField_a_of_type_Mcw).close();
-              mcw.a(this.jdField_a_of_type_Mcw, null);
-              return;
-            }
-          }
-          catch (IOException paramMessage) {}
-        }
+      locallgf.s = true;
+      mqz.d(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController);
+      if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.b) {
+        mqz.r(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController);
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("QavVideoAudioRecorder", 2, "AudioBuf.close() ", paramMessage);
-    return;
-    if (paramMessage.obj != null)
-    {
-      paramMessage = (Object[])paramMessage.obj;
-      if ((paramMessage == null) || (paramMessage.length != 5)) {
-        throw new IllegalArgumentException("args == null || args.length != 5");
+      if ((locallgf.j()) && (locallgf.d == 2) && (!locallgf.j)) {
+        mqz.e();
       }
-      mcw.a(localmcw, ((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
+      lcl.c(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.c, "DataReport onClose: ");
+      liw.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.c, this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      ljv.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      lhv.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      mcc.b(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+      mlr.a(locallgf);
+      String str = locallgf.b() + "";
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, 237);
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.b(237);
+      lhz.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface, str);
+      lhz.a(2, str);
+      lhz.a(2);
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.b(this.jdField_a_of_type_JavaLangString, locallgf.y);
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_Boolean = true;
+      locallgf.g = false;
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.j = false;
       return;
+      locallgf.y = 0;
     }
-    throw new RuntimeException("MSG_VIDEO_FRAME_AVAILABLE bundle == null");
-    if (paramMessage.obj != null)
-    {
-      paramMessage = (Object[])paramMessage.obj;
-      localmcw.b((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue());
-      return;
-    }
-    throw new RuntimeException("MSG_AUDIO_FRAME_AVAILABLE bundle == null");
   }
 }
 

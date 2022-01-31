@@ -1,11 +1,24 @@
-class rzg
-  implements ryo
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
+
+public class rzg
+  implements qoe
 {
-  rzg(rzd paramrzd, boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3) {}
+  public rzg(ViolaVideoView paramViolaVideoView) {}
   
-  public void a(ryz paramryz)
+  public long a()
   {
-    rzd.a(this.jdField_a_of_type_Rzd, paramryz, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.b, this.c);
+    return ViolaVideoView.a(this.a).a();
+  }
+  
+  public void a(int paramInt)
+  {
+    ViolaVideoView.a(this.a).d(paramInt);
+  }
+  
+  public long b()
+  {
+    return ViolaVideoView.a(this.a).b();
   }
 }
 

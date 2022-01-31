@@ -3,10 +3,10 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
-import ykm;
+import ytn;
 
 class AppBoxPlugin$MiniAppBox$2$1
-  implements ykm
+  implements ytn
 {
   AppBoxPlugin$MiniAppBox$2$1(AppBoxPlugin.MiniAppBox.2 param2) {}
   

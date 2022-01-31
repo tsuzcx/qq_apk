@@ -1,19 +1,6 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.av.ui.MultiMembersAudioIndicator;
-
-public class luf
-  extends RadioButton
+public abstract interface luf
 {
-  public luf(MultiMembersAudioIndicator paramMultiMembersAudioIndicator, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public boolean performClick()
-  {
-    return true;
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import ngf;
-import ngk;
+import nrg;
+import nrm;
 
 class EcshopCacheTool$1$1
   implements Runnable

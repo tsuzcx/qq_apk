@@ -25,13 +25,13 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import avjx;
-import avjy;
-import avjz;
-import avka;
-import bazb;
-import bbcj;
-import bbpa;
+import awjq;
+import awjr;
+import awjs;
+import awjt;
+import bcbv;
+import bcfj;
+import bcsc;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.search.view.QuickPinyinEditText;
@@ -42,7 +42,7 @@ import com.tencent.theme.SkinEngine;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-import vms;
+import vzo;
 
 public class MixSearchWebFragment
   extends WebViewFragment
@@ -60,19 +60,19 @@ public class MixSearchWebFragment
     View localView;
     if ("1".equals(a().getStringExtra("showloadingbar")))
     {
-      this.jdField_a_of_type_Bbcj.a.a(true);
-      if ((this.jdField_a_of_type_Bazb.a.getLayoutParams() instanceof RelativeLayout.LayoutParams))
+      this.jdField_a_of_type_Bcfj.a.a(true);
+      if ((this.jdField_a_of_type_Bcbv.a.getLayoutParams() instanceof RelativeLayout.LayoutParams))
       {
         Object localObject = BaseApplicationImpl.getApplication();
-        this.jdField_a_of_type_Bazb.a.setVisibility(8);
-        paramBundle = (ViewGroup)this.jdField_a_of_type_Bazb.a.getParent();
-        localView = LayoutInflater.from((Context)localObject).inflate(2131495475, null);
+        this.jdField_a_of_type_Bcbv.a.setVisibility(8);
+        paramBundle = (ViewGroup)this.jdField_a_of_type_Bcbv.a.getParent();
+        localView = LayoutInflater.from((Context)localObject).inflate(2131561062, null);
         int i = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());
-        localObject = new RelativeLayout.LayoutParams(-1, (int)((Context)localObject).getResources().getDimension(2131167766));
+        localObject = new RelativeLayout.LayoutParams(-1, (int)((Context)localObject).getResources().getDimension(2131298865));
         ((RelativeLayout.LayoutParams)localObject).addRule(10, -1);
         ((RelativeLayout.LayoutParams)localObject).topMargin = i;
         paramBundle.addView(localView, (ViewGroup.LayoutParams)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText = ((QuickPinyinEditText)localView.findViewById(2131300167));
+        this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText = ((QuickPinyinEditText)localView.findViewById(2131365764));
         this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setOnEditorActionListener(this);
         this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.addTextChangedListener(this);
         this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(50) });
@@ -80,17 +80,17 @@ public class MixSearchWebFragment
         this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setImeOptions(3);
         this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setHint(a().getStringExtra("placeholder"));
         this.jdField_a_of_type_JavaLangString = a().getStringExtra("searchword");
-        this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)localView.findViewById(2131302060));
-        this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new avjx(this));
-        this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131297934));
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131625035);
-        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new avjy(this));
+        this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)localView.findViewById(2131367678));
+        this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new awjq(this));
+        this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363480));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131690596);
+        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new awjr(this));
         if (!"1".equals(a().getStringExtra("hiderightbtn"))) {
           break label503;
         }
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
         label325:
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131302883));
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368507));
         if (!"1".equals(a().getStringExtra("hideleftarrow"))) {
           break label514;
         }
@@ -102,8 +102,8 @@ public class MixSearchWebFragment
       if ((this.jdField_a_of_type_AndroidWidgetButton.getVisibility() == 8) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 8)) {
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new avjz(this));
-      this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getViewTreeObserver().addOnGlobalLayoutListener(new avka(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new awjs(this));
+      this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getViewTreeObserver().addOnGlobalLayoutListener(new awjt(this));
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
         if (this.jdField_a_of_type_JavaLangString.length() > 50) {
@@ -114,7 +114,7 @@ public class MixSearchWebFragment
       this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView);
       i();
       return;
-      this.jdField_a_of_type_Bbcj.a.a(false);
+      this.jdField_a_of_type_Bcfj.a.a(false);
       break;
       label503:
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
@@ -129,12 +129,12 @@ public class MixSearchWebFragment
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130848985));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130849220));
     this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#777777"));
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130848988));
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130848996));
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setCompoundDrawablesWithIntrinsicBounds(SkinEngine.getInstances().getDefaultThemeDrawable(2130848992), null, null, null);
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setPadding(vms.a(getActivity(), 10.0F), this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getPaddingTop(), this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getPaddingRight(), this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getPaddingBottom());
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130849223));
+    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130849231));
+    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setCompoundDrawablesWithIntrinsicBounds(SkinEngine.getInstances().getDefaultThemeDrawable(2130849227), null, null, null);
+    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setPadding(vzo.a(getActivity(), 10.0F), this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getPaddingTop(), this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getPaddingRight(), this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getPaddingBottom());
     this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setTextColor(-16777216);
     this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setHintTextColor(Color.parseColor("#a6a6a6"));
   }

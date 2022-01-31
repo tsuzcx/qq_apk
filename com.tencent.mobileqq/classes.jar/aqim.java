@@ -1,23 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.ytagreflectlivecheck.requester.RGBConfigRequester;
-import com.tencent.youtu.ytagreflectlivecheck.requester.RGBConfigRequester.RGBConfigRequestCallBack;
-import com.tencent.youtu.ytagreflectlivecheck.requester.RGBConfigRequester.RGBConfigRequestCallBackType;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-class aqim
-  implements RGBConfigRequester
+public class aqim
+  implements View.OnTouchListener
 {
-  aqim(aqil paramaqil) {}
+  public aqim(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void request(RGBConfigRequester.RGBConfigRequestCallBack paramRGBConfigRequestCallBack)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("qq_Identification.Model", 2, "YTAGReflectLiveCheckInterface setRGBConfigRequest:" + aqil.a(this.a));
-      }
-      paramRGBConfigRequestCallBack.onSuccess("{\"business_name\":\"livecheck\",\"person_id\":\"2936662\",\"error_code\":0,\"error_msg\":\"OK\",\"color_data\":\"1 120 6 3 4 5 0 1 \"}", RGBConfigRequester.RGBConfigRequestCallBackType.RGB_FullResponse);
-      this.a.a.a(6);
+    if ((paramMotionEvent.getAction() == 1) && (QSecFramework.a().a(1001).booleanValue())) {
+      QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(83), Integer.valueOf(1), Integer.valueOf(6), "clickWeb", null }, null);
     }
+    return false;
   }
 }
 

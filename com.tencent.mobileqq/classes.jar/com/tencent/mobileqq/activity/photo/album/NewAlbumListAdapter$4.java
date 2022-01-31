@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import agfp;
+import agro;
 import com.tencent.mobileqq.data.QQAlbumInfo;
 
 public class NewAlbumListAdapter$4
   implements Runnable
 {
-  public NewAlbumListAdapter$4(agfp paramagfp, QQAlbumInfo paramQQAlbumInfo) {}
+  public NewAlbumListAdapter$4(agro paramagro, QQAlbumInfo paramQQAlbumInfo) {}
   
   public void run()
   {

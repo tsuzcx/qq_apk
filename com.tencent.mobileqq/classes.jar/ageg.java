@@ -1,63 +1,13 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.photo.SendWebPicActivity;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-public class ageg
-  extends axvs
+class ageg
+  implements bfps
 {
-  public ageg(SendWebPicActivity paramSendWebPicActivity) {}
+  ageg(agef paramagef, View paramView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    axqf localaxqf = (axqf)paramMessage.obj;
-    if ((localaxqf == null) || (localaxqf.b != 24) || (localaxqf.c != 51)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (localaxqf.f.equals(SendWebPicActivity.a(this.a)));
-      switch (paramMessage.what)
-      {
-      case 1004: 
-      default: 
-        return;
-      case 1003: 
-        if (QLog.isColorLevel()) {
-          QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler send finished!" + SendWebPicActivity.a(this.a));
-        }
-        break;
-      }
-    } while (SendWebPicActivity.a(this.a));
-    paramMessage = new Bdh_extinfo.UploadPicExtInfo();
-    try
-    {
-      paramMessage.mergeFrom(localaxqf.a, 0, localaxqf.a.length);
-      SendWebPicActivity.a(this.a, true);
-      SendWebPicActivity.a(this.a, localaxqf.f);
-      SendWebPicActivity.b(this.a, paramMessage.bytes_file_resid.get().toStringUtf8());
-      SendWebPicActivity.c(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
-      if (QLog.isColorLevel()) {
-        QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler mUuid=" + SendWebPicActivity.b(this.a) + ", mImageMd5=" + SendWebPicActivity.a(this.a) + ", mImageUrl=" + SendWebPicActivity.c(this.a));
-      }
-      SendWebPicActivity.a(this.a).sendEmptyMessage(1001);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        localInvalidProtocolBufferMicroException.printStackTrace();
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler send error:" + localaxqf.g);
-    }
-    SendWebPicActivity.a(this.a).sendEmptyMessage(1003);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

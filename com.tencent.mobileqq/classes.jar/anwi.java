@@ -1,22 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public abstract interface anwi
+public abstract class anwi
 {
-  public abstract QQAppInterface a();
-  
-  public abstract void a();
-  
-  public abstract void a(anwn paramanwn);
-  
-  public abstract boolean a(anwn paramanwn, int paramInt);
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void a(int paramInt) {}
 }
 
 

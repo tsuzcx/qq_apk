@@ -1,8 +1,11 @@
-import android.view.View;
+import android.graphics.Bitmap;
 
-public abstract interface ajzh
+public class ajzh
 {
-  public abstract void a(View paramView);
+  public Bitmap a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
 }
 
 

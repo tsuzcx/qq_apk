@@ -1,46 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
 
 class awkl
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  awkl(awkk paramawkk) {}
+  awkl(awkk paramawkk, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramIntent == null) {}
-    for (;;)
-    {
-      return;
-      paramContext = paramIntent.getStringExtra("event");
-      if (paramContext != null)
-      {
-        paramIntent = paramIntent.getStringExtra("data");
-        if ((paramIntent != null) && (paramContext.equals("ShortVideoHongbaoInfoUpdate"))) {
-          try
-          {
-            paramContext = new JSONObject(paramIntent);
-            paramIntent = paramContext.optString("shortVideoId");
-            boolean bool = paramContext.optBoolean("isPaid");
-            if ((awkk.a(this.a) != null) && (awkk.a(this.a).h != 1) && (bool) && (awkk.a(this.a).c.equals(paramIntent)))
-            {
-              new awkt(this.a).execute(new String[0]);
-              return;
-            }
-          }
-          catch (JSONException paramContext) {}
-        }
-      }
-    }
+    paramView = new Intent(this.jdField_a_of_type_Awkk.a.getActivity(), QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Awkk.a.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awkl
  * JD-Core Version:    0.7.0.1
  */

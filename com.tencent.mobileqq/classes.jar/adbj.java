@@ -1,55 +1,123 @@
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.audiopanel.ChangeVoiceView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class adbj
-  extends adba
+  extends BaseAdapter
 {
-  private long c;
-  private long d;
+  public int a;
+  Context a;
+  public View.OnClickListener a;
+  public ArrayList<bbzn> a;
+  public boolean a;
+  public int b;
   
-  public adbj(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public adbj(Context paramContext)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    this.jdField_a_of_type_Int = 4;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, acmv paramacmv)
+  public int getCount()
   {
-    if (paramChatMessage.istroop == 1038)
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return (this.jdField_a_of_type_JavaUtilArrayList.size() + this.jdField_a_of_type_Int - 1) / this.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt)) {
+      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int j = this.jdField_a_of_type_Int;
+    Object localObject1;
+    int i;
+    Object localObject2;
+    if (paramView == null)
     {
-      long l = System.currentTimeMillis();
-      if ((this.c != paramChatMessage.msgUid) || (l - this.d > 1000L))
+      localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
+      ((LinearLayout)localObject1).setOrientation(0);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+      i = 0;
+      while (i < this.jdField_a_of_type_Int)
       {
-        this.c = paramChatMessage.msgUid;
-        this.d = l;
-        if ((paramChatMessage instanceof MessageForArkApp))
-        {
-          MessageForArkApp localMessageForArkApp = (MessageForArkApp)paramChatMessage;
-          if (localMessageForArkApp.ark_app_message != null)
-          {
-            this.d = System.currentTimeMillis();
-            MiniProgramLpReportDC04239.reportByQQ("message", "message_aio", "expo", "com.tencent.miniapp", localMessageForArkApp.ark_app_message.appView, "", "");
-            if (QLog.isColorLevel()) {
-              QLog.d("xiaoyong", 2, "ArkAppPublicAccountItemBuilder report");
-            }
-          }
+        localObject2 = new LinearLayout.LayoutParams(-1, -2);
+        ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
+        paramViewGroup = paramView;
+        if (paramView == null) {
+          paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
         }
+        ((LinearLayout)localObject1).addView(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560611, null), (ViewGroup.LayoutParams)localObject2);
+        i += 1;
+        paramView = paramViewGroup;
+      }
+      paramView = (View)localObject1;
+    }
+    for (;;)
+    {
+      localObject1 = (ViewGroup)paramView;
+      if (paramInt == 0) {
+        ((ViewGroup)localObject1).setPadding(actn.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      }
+      int k;
+      for (;;)
+      {
+        i = 0;
+        for (;;)
+        {
+          if (i >= this.jdField_a_of_type_Int) {
+            break label397;
+          }
+          k = j * paramInt + i;
+          localObject2 = (ChangeVoiceView)((ViewGroup)localObject1).getChildAt(i);
+          if (localObject2 != null) {
+            break;
+          }
+          QLog.e("ChangeVoiceListAdapter", 1, "getView view == null,view=" + ((ViewGroup)localObject1).getChildAt(i));
+          i += 1;
+        }
+        ((ViewGroup)localObject1).setPadding(actn.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      }
+      ((ChangeVoiceView)localObject2).b = this.b;
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (k < this.jdField_a_of_type_JavaUtilArrayList.size())) {}
+      for (paramViewGroup = (bbzn)this.jdField_a_of_type_JavaUtilArrayList.get(k);; paramViewGroup = null)
+      {
+        ((ChangeVoiceView)localObject2).a(paramViewGroup);
+        if (this.jdField_a_of_type_Boolean) {
+          ((ChangeVoiceView)localObject2).a();
+        }
+        if (paramViewGroup != null)
+        {
+          ((ChangeVoiceView)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+          break;
+        }
+        ((ChangeVoiceView)localObject2).setOnClickListener(null);
+        break;
+        label397:
+        return paramView;
       }
     }
-    paramView = super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramacmv);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && ("3046055438".equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))) {
-      nfw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage, paramView);
-    }
-    return paramView;
   }
 }
 

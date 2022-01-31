@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import axoa;
+import ayog;
 import com.tencent.image.URLDrawable;
 
 public final class ReplyTextItemBuilder$12
@@ -8,7 +8,7 @@ public final class ReplyTextItemBuilder$12
 {
   public void run()
   {
-    if ((axoa.b(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1)) {}
+    if ((ayog.b(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1)) {}
     try
     {
       this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();

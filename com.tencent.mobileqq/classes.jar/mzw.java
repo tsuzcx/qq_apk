@@ -1,47 +1,75 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.EncryptUinInfo;
-import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import java.util.HashMap;
 
 class mzw
-  extends mzx
+  implements ITMAssistantDownloadClientListener
 {
   mzw(mzv parammzv) {}
   
-  protected void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle)
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
   {
-    if ((paramBoolean) && (paramList != null) && (!paramList.isEmpty()))
+    if (paramTMAssistantDownloadClient == null) {}
+    do
     {
-      paramList = (EncryptUinInfo)paramList.get(0);
-      if ((paramList.jdField_a_of_type_Int != 0) || (paramList.jdField_a_of_type_Long != this.a.mApp.getLongAccountUin()) || (TextUtils.isEmpty(paramList.jdField_a_of_type_JavaLangString))) {
-        break label113;
-      }
-      mzv.a(this.a, paramList.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: " + mzv.a(this.a));
-      }
-    }
-    label113:
-    while (!QLog.isColorLevel()) {
       return;
-    }
-    QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: failed，code=" + paramList.jdField_a_of_type_Int);
+      paramTMAssistantDownloadClient = (mzq)mzv.a().get(paramString);
+    } while ((paramTMAssistantDownloadClient == null) || (paramTMAssistantDownloadClient.a == null));
+    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+    paramTMAssistantDownloadClient.a.progress(i);
   }
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    if (paramInt == 1)
-    {
-      super.onUpdate(paramInt, paramBoolean, paramObject);
-      this.a.mApp.removeObserver(mzv.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("OfflineDownload", 2, "task onDownloadSDKTaskStateChanged + url = " + paramString1 + ", state = " + paramInt1 + ", errorCode = " + paramInt2);
     }
+    if (paramTMAssistantDownloadClient == null) {
+      this.a.a(null, paramString1, null, -1, "client is null, " + paramString2);
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramString2 = (mzq)mzv.a().get(paramString1);
+          if ((paramString2 == null) || (paramString2.a == null))
+          {
+            this.a.a(null, paramString1, null, -1, "download info is null or callback is null");
+            return;
+          }
+          switch (paramInt1)
+          {
+          default: 
+            return;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("OfflineDownload", 2, "task downloading + url = " + paramString1);
+        return;
+        this.a.a(paramTMAssistantDownloadClient, paramString2, paramString1);
+        return;
+        this.a.a(paramString2.a, paramString1, paramString2.c, paramInt2, "offline zip download fail");
+        try
+        {
+          this.a.a.cancelDownloadTask(paramString1);
+          return;
+        }
+        catch (Exception paramTMAssistantDownloadClient) {}
+      } while (!QLog.isDevelopLevel());
+      QLog.d("OfflineDownload", 4, paramTMAssistantDownloadClient.toString());
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("OfflineDownload", 2, "task paused + url = " + paramString1);
   }
+  
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mzw
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class BaseChatPie$25
   {
     if (this.this$0.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 1)
     {
-      this.this$0.aA();
+      this.this$0.aC();
       this.this$0.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this, 100L);
       return;
     }

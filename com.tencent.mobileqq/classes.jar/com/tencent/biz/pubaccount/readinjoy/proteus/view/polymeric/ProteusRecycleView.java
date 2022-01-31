@@ -3,17 +3,17 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import azvv;
-import bacc;
-import bajq;
+import bawz;
+import bbdh;
+import bbkx;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import pbw;
-import pbx;
-import pby;
+import pno;
+import pnp;
+import pnq;
 
 public class ProteusRecycleView
   extends RecyclerViewWithHeaderFooter
@@ -21,8 +21,8 @@ public class ProteusRecycleView
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private SideBarView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPolymericSideBarView;
-  private List<pbx> jdField_a_of_type_JavaUtilList;
-  private pby jdField_a_of_type_Pby;
+  private List<pnp> jdField_a_of_type_JavaUtilList;
+  private pnq jdField_a_of_type_Pnq;
   private float jdField_b_of_type_Float;
   private boolean jdField_b_of_type_Boolean;
   private boolean c;
@@ -39,7 +39,7 @@ public class ProteusRecycleView
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPolymericSideBarView != null)
     {
       setClipToPadding(false);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPolymericSideBarView.a(new pbw(this));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPolymericSideBarView.a(new pno(this));
     }
   }
   
@@ -62,7 +62,7 @@ public class ProteusRecycleView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Int = ((int)bacc.a(paramContext, 28.0F));
+    this.jdField_a_of_type_Int = ((int)bbdh.a(paramContext, 28.0F));
     setOverScrollMode(2);
   }
   
@@ -71,8 +71,8 @@ public class ProteusRecycleView
     if (this.d)
     {
       this.d = false;
-      if (this.jdField_a_of_type_Pby != null) {
-        this.jdField_a_of_type_Pby.a();
+      if (this.jdField_a_of_type_Pnq != null) {
+        this.jdField_a_of_type_Pnq.a();
       }
     }
   }
@@ -82,32 +82,32 @@ public class ProteusRecycleView
     return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPolymericSideBarView;
   }
   
-  public void a(pbx parampbx)
+  public void a(pnp parampnp)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(parampbx);
+    this.jdField_a_of_type_JavaUtilList.add(parampnp);
   }
   
-  public void b(pbx parampbx)
+  public void b(pnp parampnp)
   {
     if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.remove(parampbx);
+      this.jdField_a_of_type_JavaUtilList.remove(parampnp);
     }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    int j = 0;
+    boolean bool2 = false;
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((pbx)localIterator.next()).a(paramMotionEvent);
+        ((pnp)localIterator.next()).a(paramMotionEvent);
       }
     }
-    if (this.jdField_a_of_type_Pby == null) {
+    if (this.jdField_a_of_type_Pnq == null) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     int i = paramMotionEvent.getAction();
@@ -120,28 +120,32 @@ public class ProteusRecycleView
       this.jdField_b_of_type_Boolean = true;
       return super.dispatchTouchEvent(paramMotionEvent);
     }
+    boolean bool1;
     if (i == 2)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ProteusRecycleView", 2, "dispatchTouchEvent:ACTION_MOVE. mIsPress=" + this.jdField_b_of_type_Boolean);
       }
       if (this.c) {
-        break label416;
+        break label478;
       }
       if (!canScrollHorizontally(1)) {
-        i = 1;
+        bool1 = true;
       }
     }
     for (;;)
     {
       f2 -= this.jdField_a_of_type_Float;
       f1 -= this.jdField_b_of_type_Float;
-      if ((this.jdField_b_of_type_Boolean) && (Math.abs(f1) * 5.0F > Math.abs(f2) * 4.0F) && (Math.abs(f1) > azvv.a(getContext(), 10.0F)))
+      if ((this.jdField_b_of_type_Boolean) && (Math.abs(f1) * 5.0F > Math.abs(f2) * 4.0F) && (Math.abs(f1) > bawz.a(getContext(), 3.0F)))
       {
         getParent().requestDisallowInterceptTouchEvent(false);
-        i = j;
+        bool1 = bool2;
         label234:
-        if ((i != 0) || (this.c))
+        if (QLog.isColorLevel()) {
+          QLog.d("ProteusRecycleView", 2, "dispatchTouchEvent:bottom" + bool1 + " isCurShowSideBarView " + this.c + " dY:" + f1 + " dX:" + f2);
+        }
+        if ((bool1) || (this.c))
         {
           getParent().requestDisallowInterceptTouchEvent(true);
           this.c = true;
@@ -151,7 +155,7 @@ public class ProteusRecycleView
       for (;;)
       {
         return super.dispatchTouchEvent(paramMotionEvent);
-        i = 0;
+        bool1 = false;
         break;
         getParent().requestDisallowInterceptTouchEvent(true);
         break label234;
@@ -166,19 +170,19 @@ public class ProteusRecycleView
             a();
           }
           this.c = false;
-          if (f2 - this.jdField_a_of_type_Float < -bajq.b(15.0F)) {
+          if (f2 - this.jdField_a_of_type_Float < -bbkx.b(15.0F)) {
             b();
           }
         }
       }
-      label416:
-      i = 0;
+      label478:
+      bool1 = false;
     }
   }
   
-  public void setOnStateChangeListener(pby parampby)
+  public void setOnStateChangeListener(pnq parampnq)
   {
-    this.jdField_a_of_type_Pby = parampby;
+    this.jdField_a_of_type_Pnq = parampnq;
   }
   
   public void setSideBarView(SideBarView paramSideBarView)

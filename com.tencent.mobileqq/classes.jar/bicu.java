@@ -1,49 +1,33 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.os.MqqHandler;
 
-class bicu
-  implements Handler.Callback
+final class bicu
+  implements aptu
 {
-  bicu(bicr parambicr) {}
+  bicu(ArrayList paramArrayList1, QQAppInterface paramQQAppInterface, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4, MqqHandler paramMqqHandler, int paramInt) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
+      MessageForFile localMessageForFile = (MessageForFile)localIterator.next();
+      apue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForFile, BaseActivity.sTopActivity, true);
     }
-    for (;;)
-    {
-      return true;
-      if (bicr.a(this.a)) {
-        return false;
-      }
-      bicr.a(this.a, new bhji());
-      paramMessage = Message.obtain();
-      paramMessage.what = 111;
-      bicr.b(this.a).sendMessageDelayed(paramMessage, 1000L);
-      continue;
-      paramMessage = this.a.a();
-      if ((paramMessage != null) && (paramMessage.exists()))
-      {
-        bicr.a(this.a).a(paramMessage);
-        bicr.a(this.a).a(this.a.a());
-        bicr.a(this.a).a();
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("EditRecognitionPart", 2, "handleMessage: invoked. info: Failed to get audioFile. audioFile = " + paramMessage);
-        }
-        bcec.a().a(2131632571);
-      }
+    if (bict.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, this.c, this.d, this.jdField_a_of_type_MqqOsMqqHandler, this.jdField_a_of_type_Int)) {
+      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131692829, 0).b(this.jdField_a_of_type_Int);
     }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bicu
  * JD-Core Version:    0.7.0.1
  */

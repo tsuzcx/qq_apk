@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class ahja
-  implements awiw
+final class ahja
+  extends ClickableSpan
 {
-  public ahja(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  ahja(ahjd paramahjd, String paramString) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean1);
-    }
-    ahji.a(paramBoolean1);
-    NewFlowCameraActivity.b(this.a);
+    this.jdField_a_of_type_Ahjd.a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

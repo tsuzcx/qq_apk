@@ -1,134 +1,96 @@
-import android.content.Intent;
-import android.os.Bundle;
+import android.os.AsyncTask;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.AccountDetailActivity.8.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.PoiMapNameTask.1;
+import com.tencent.map.lib.basemap.data.GeoPoint;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.apache.http.client.HttpClient;
 
 public class mwz
-  implements BusinessObserver
+  extends AsyncTask<Void, Void, String>
 {
-  public mwz(AccountDetailActivity paramAccountDetailActivity) {}
+  public GeoPoint a;
+  protected HttpClient a;
+  protected GeoPoint b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public mwz(PoiMapActivity paramPoiMapActivity) {}
+  
+  protected String a(Void... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "follow isSuccess:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      this.a.d(2131629887);
-    }
-    for (;;)
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.m = "Unknown Address";
+    int i = 0;
+    if (i < 3)
     {
-      paramBundle = this.a;
-      paramBundle.jdField_c_of_type_Int -= 1;
-      if (this.a.jdField_c_of_type_Int == 0) {
-        this.a.L();
+      if ((isCancelled()) || (this.b.getLatitudeE6() != this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) || (this.b.getLongitudeE6() != this.jdField_a_of_type_ComTencentBizPoiMapActivity.i))
+      {
+        localObject = "Unknown Address";
+        label60:
+        return localObject;
       }
-      this.a.jdField_b_of_type_AndroidViewView.postDelayed(new AccountDetailActivity.8.1(this), 2000L);
+      paramVarArgs = bbiu.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getApplicationContext(), this.b.getLatitudeE6() / 1000000.0D, this.b.getLongitudeE6() / 1000000.0D, 3, this.jdField_a_of_type_OrgApacheHttpClientHttpClient);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("rec_locate", "call_googlestation", "", "", "", "");
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append(i).append(" time: ReverseGeocode.getFromLocation, address: ");
+        if (paramVarArgs != null) {
+          break label187;
+        }
+      }
+      label187:
+      for (Object localObject = "";; localObject = paramVarArgs)
+      {
+        QLog.i("fetch_address", 2, (String)localObject);
+        if (paramVarArgs != null)
+        {
+          localObject = paramVarArgs;
+          if (paramVarArgs.length() > 0) {
+            break label60;
+          }
+        }
+        i += 1;
+        break;
+      }
+    }
+    return "Unknown Address";
+  }
+  
+  public void a(GeoPoint paramGeoPoint)
+  {
+    this.b = paramGeoPoint;
+  }
+  
+  protected void a(String paramString)
+  {
+    if ((this.b.getLatitudeE6() != this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) || (this.b.getLongitudeE6() != this.jdField_a_of_type_ComTencentBizPoiMapActivity.i)) {
       return;
-      Object localObject = new JSONObject();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) {}
-      try
-      {
-        ((JSONObject)localObject).put("uin", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
-        ((JSONObject)localObject).put("name", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name);
-        ((JSONObject)localObject).put("summary", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary);
-        ((JSONObject)localObject).put("certified", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.certifiedGrade);
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add("find.mp.qq.com");
-        localArrayList.add("post.mp.qq.com");
-        localArrayList.add("article.mp.qq.com");
-        aqrr.a("follow", (JSONObject)localObject, localArrayList, null);
-        if (!paramBoolean) {
-          break label748;
-        }
-        try
-        {
-          paramBundle = paramBundle.getByteArray("data");
-          if (paramBundle == null) {
-            continue;
-          }
-          localObject = new mobileqq_mp.FollowResponse();
-          ((mobileqq_mp.FollowResponse)localObject).mergeFrom(paramBundle);
-          paramInt = ((mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get()).ret_code.get();
-          if (paramInt == 0) {
-            if (this.a.jdField_f_of_type_Boolean)
-            {
-              if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null)
-              {
-                paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin;
-                awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.d, "mp_msg_sys_12", "scan_via", 0, 0, paramBundle, "", "", this.a.jdField_f_of_type_JavaLangString);
-              }
-            }
-            else
-            {
-              this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType = 1;
-              this.a.jdField_b_of_type_AndroidViewView.setEnabled(false);
-              this.a.H();
-              this.a.i();
-              this.a.y();
-              AccountDetailActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.d, this.a.jdField_a_of_type_AndroidContentIntent);
-              if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.a.jdField_c_of_type_JavaLangString)))
-              {
-                awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", this.a.jdField_b_of_type_JavaLangString, this.a.jdField_c_of_type_JavaLangString, 0, 0, "", "", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.d);
-                if (QLog.isColorLevel()) {
-                  QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "----[follow report done]----");
-                }
-              }
-              if (this.a.g == 50) {
-                AccountDetailActivity.a(this.a, 1);
-              }
-              if ((this.a.h == 115) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-                ((ngh)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).a(134247140, this.a.d, null, null, null, 0L, false);
-              }
-              if (!this.a.jdField_a_of_type_AndroidContentIntent.hasExtra("report_business_tvalue")) {
-                continue;
-              }
-              paramInt = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("report_business_tvalue", -1);
-              paramBundle = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("strp1");
-              if (paramInt == -1) {
-                continue;
-              }
-              ((ngh)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).a(paramInt, this.a.d, paramBundle, null, null, 0L, false);
-            }
-          }
-        }
-        catch (Exception paramBundle) {}
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    for (String str = "Unknown Address";; str = paramString)
+    {
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.m = paramString;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.runOnUiThread(new PoiMapActivity.PoiMapNameTask.1(this, str));
+      if (this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint == null) {
+        break;
       }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-          continue;
-          paramBundle = "";
-        }
-        if (paramInt == 58)
-        {
-          this.a.d(2131629884);
-          continue;
-        }
-        if (paramInt == 65)
-        {
-          this.a.d(2131629857);
-          continue;
-        }
-        this.a.d(2131629887);
-      }
-      continue;
-      label748:
-      this.a.d(2131629887);
+      paramString = new mwz(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
+      paramString.a(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a = paramString;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.execute(new Void[0]);
+      this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = null;
+      return;
+    }
+  }
+  
+  protected void onCancelled()
+  {
+    if ((this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint != null) && (this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() == this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) && (this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() == this.jdField_a_of_type_ComTencentBizPoiMapActivity.i))
+    {
+      mwz localmwz = new mwz(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
+      localmwz.a(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a = localmwz;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.execute(new Void[0]);
+      this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = null;
     }
   }
 }

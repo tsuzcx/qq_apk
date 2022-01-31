@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.activity.AssistantSettingActivity.34.1;
-import com.tencent.widget.HeightAdaptableListView;
+import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
+import java.util.List;
 
-public class zzw
-  implements afgc
+public abstract interface zzw
 {
-  public zzw(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public abstract List<String> a(String paramString);
   
-  public void a()
-  {
-    this.a.a.post(new AssistantSettingActivity.34.1(this));
-    AssistantSettingActivity.c(this.a);
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
+  
+  public abstract boolean a(LeakInspector.InspectUUID paramInspectUUID);
+  
+  public abstract boolean a(Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zzw
  * JD-Core Version:    0.7.0.1
  */

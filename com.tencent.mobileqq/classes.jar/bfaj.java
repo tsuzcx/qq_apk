@@ -1,48 +1,73 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.comic.ui.QQComicTabBarView;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StKVData;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StSetUserCloudStorageReq;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StSetUserCloudStorageRsp;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONObject;
 
 public class bfaj
-  extends Handler
+  extends bfad
 {
-  public bfaj(QQComicTabBarView paramQQComicTabBarView, Looper paramLooper)
+  private CloudStorage.StSetUserCloudStorageReq a = new CloudStorage.StSetUserCloudStorageReq();
+  
+  public bfaj(HashMap<String, String> paramHashMap, String paramString)
   {
-    super(paramLooper);
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramHashMap.next();
+      CloudStorage.StKVData localStKVData = new CloudStorage.StKVData();
+      localStKVData.key.set((String)localEntry.getKey());
+      localStKVData.value.set((String)localEntry.getValue());
+      this.a.KVDataList.add(localStKVData);
+    }
+    this.a.appid.set(paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected String a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.b = 0.0F;
-      QQComicTabBarView.a(this.a);
-      super.sendMessageDelayed(this.a.a.obtainMessage(1), 16L);
-      return;
-    case 1: 
-      if (this.a.b < 1.0F)
-      {
-        paramMessage = this.a;
-        paramMessage.b += 0.05F;
-        QQComicTabBarView.b(this.a);
-        super.sendMessageDelayed(this.a.a.obtainMessage(1), 16L);
-        return;
-      }
-      super.sendMessageDelayed(this.a.a.obtainMessage(2), 16L);
-      return;
+    return "mini_app_cloudstorage";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    this.a.b = 1.0F;
-    this.a.a(this.a.i, this.a.h);
-    this.a.i = this.a.h;
-    QQComicTabBarView.c(this.a);
+    CloudStorage.StSetUserCloudStorageRsp localStSetUserCloudStorageRsp = new CloudStorage.StSetUserCloudStorageRsp();
+    try
+    {
+      localStSetUserCloudStorageRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStSetUserCloudStorageRsp != null) {
+        return new JSONObject();
+      }
+      besl.a("SetCloudStorageRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      besl.a("SetCloudStorageRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "SetUserCloudStorage";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfaj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,174 +1,344 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.os.Handler;
+import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar.7.1;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
 
 public class apgd
-  implements View.OnClickListener
+  extends apfw
 {
-  public apgd(SendBottomBar paramSendBottomBar) {}
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private List<FileManagerEntity> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private CharSequence jdField_b_of_type_JavaLangCharSequence;
+  private String jdField_b_of_type_JavaLangString;
   
-  private void a()
+  public apgd(String paramString, int paramInt)
   {
-    if (azjg.a(SendBottomBar.a(this.a)) == 0)
-    {
-      azic.a(SendBottomBar.a(this.a), SendBottomBar.a(this.a).getString(2131632133));
-      this.a.c();
-    }
-    do
-    {
-      return;
-      if (!apck.a()) {
-        break;
-      }
-    } while (!bbrm.a((Activity)SendBottomBar.a(this.a), 2, new apgg(this)));
-    Object localObject = new apgh(this);
-    String str = SendBottomBar.a(this.a).getString(2131631938);
-    localObject = babr.a(SendBottomBar.a(this.a), 230, SendBottomBar.a(this.a).getString(2131632130), str, 2131625035, 2131632315, (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
-    if ((amik.c().b.a) && (!baud.a().b())) {
-      ((bafb)localObject).setMessageWithoutAutoLink(amik.c().b.a(SendBottomBar.a(this.a), str));
-    }
-    ((bafb)localObject).show();
-    return;
-    this.a.c();
+    super(paramString, paramInt);
   }
   
-  public void onClick(View paramView)
+  public CharSequence a()
   {
-    int j = 0;
-    if (SendBottomBar.a(this.a)) {}
-    Object localObject;
-    do
+    return awvy.a(((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).fileName.toLowerCase(), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public List<awog> a(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    paramQQAppInterface = new ArrayList();
+    paramContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramContext.hasNext())
     {
-      return;
-      SendBottomBar.a(this.a, true);
-      new Handler().postDelayed(new SendBottomBar.7.1(this), 800L);
-      switch (SendBottomBar.a(this.a).b())
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramContext.next();
+      apgd localapgd = new apgd(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      localapgd.a(this.jdField_a_of_type_AndroidOsBundle);
+      ArrayList localArrayList = new ArrayList(1);
+      localArrayList.add(localFileManagerEntity);
+      localapgd.a(localArrayList);
+      paramQQAppInterface.add(localapgd);
+    }
+    return paramQQAppInterface;
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    if (this.jdField_a_of_type_AndroidOsBundle != null) {
+      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("qfile_search_param_ex_params_target_uin", "");
+    }
+  }
+  
+  public void a(List<FileManagerEntity> paramList)
+  {
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (this.jdField_b_of_type_JavaLangString.equals(ajsf.z)))
       {
-      case 2: 
-      case 3: 
-      case 4: 
-      case 6: 
-      default: 
-        if (AppNetConnInfo.isNetSupport()) {
-          break;
-        }
-        apcb.a(2131628882);
-        return;
-      case 7: 
-        if (SendBottomBar.a(this.a).c())
+        ArrayList localArrayList = new ArrayList();
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
         {
-          paramView = new ArrayList();
-          paramView.addAll(aonm.a());
-          localObject = new Intent();
-          ((Intent)localObject).putParcelableArrayListExtra("reslut_select_file_info_list", paramView);
-          ((Intent)localObject).putExtra("approval_attachment_customid", SendBottomBar.a(this.a).f());
-          SendBottomBar.a(this.a).setResult(-1, (Intent)localObject);
+          FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramList.next();
+          if (!apvk.b(localFileManagerEntity)) {
+            localArrayList.add(localFileManagerEntity);
+          }
         }
-        SendBottomBar.a(this.a).finish();
-        return;
-      case 1: 
-        SendBottomBar.b(this.a);
-        return;
-      case 5: 
-        if ((apck.a()) && (aonm.c() > aonj.a()))
-        {
-          apbx.a(SplashActivity.sTopActivity, 2131627035, 2131627040, new apge(this));
-          return;
-        }
-        paramView = new ArrayList();
-        paramView.addAll(aonm.a());
-        localObject = new Intent();
-        ((Intent)localObject).putParcelableArrayListExtra("sFilesSelected", paramView);
-        SendBottomBar.a(this.a).setResult(-1, (Intent)localObject);
-        SendBottomBar.a(this.a).finish();
-        return;
-      case 8: 
-        paramView = SendBottomBar.a(this.a).getIntent();
-      }
-    } while (paramView == null);
-    if (paramView.getStringExtra("posturl") != null)
-    {
-      localObject = new ArrayList();
-      ((ArrayList)localObject).addAll(aonm.a());
-      paramView.putParcelableArrayListExtra("fileinfo", (ArrayList)localObject);
-      SendBottomBar.a(this.a).setResult(-1, paramView);
-      SendBottomBar.a(this.a).finish();
-      return;
-    }
-    SendBottomBar.a(this.a).setResult(-1, paramView);
-    SendBottomBar.a(this.a).finish();
-    return;
-    this.a.b();
-    return;
-    int k = SendBottomBar.a(this.a).a();
-    if (k == 1) {}
-    for (int i = 1; k == 5; i = 0)
-    {
-      this.a.c();
-      return;
-    }
-    if (i != 0)
-    {
-      a();
-      return;
-    }
-    if (SendBottomBar.a(this.a).i())
-    {
-      localObject = aonm.a();
-      paramView = aonm.b();
-      localObject = ((Set)localObject).iterator();
-      FileInfo localFileInfo;
-      do
-      {
-        i = j;
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-        localFileInfo = (FileInfo)((Iterator)localObject).next();
-      } while ((localFileInfo.a() <= 20971520L) || (!aonm.b(localFileInfo)));
-      i = 1;
-      if (i != 0) {
-        break label654;
-      }
-      paramView = paramView.iterator();
-      while (paramView.hasNext())
-      {
-        localObject = (FileManagerEntity)paramView.next();
-        if ((((FileManagerEntity)localObject).fileSize > 20971520L) && (aonm.b((FileManagerEntity)localObject))) {
-          i = 1;
-        }
+        this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
       }
     }
-    label654:
+    else {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public CharSequence b()
+  {
+    return null;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  protected void b(View paramView)
+  {
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+    paramView = (BaseActivity)paramView.getContext();
+    if (localFileManagerEntity.nFileType == 13)
+    {
+      ayfv.a(localFileManagerEntity.Uuid, paramView, this.jdField_a_of_type_Int, localFileManagerEntity, paramView.app);
+      return;
+    }
+    apoe localapoe = new apoe(paramView.app, paramView, localFileManagerEntity, 10001);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("from_qlink_enter_recent", false);
+    localBundle.putString("c2c_discussion_recentfile", localFileManagerEntity.peerUin);
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localBundle.putString("file_browser_extra_params_uin", this.jdField_b_of_type_JavaLangString);
+    }
+    localapoe.a(localBundle);
+    paramView = new apog(paramView, localapoe);
+    paramView.a(7);
+    if (this.jdField_a_of_type_Int != 0) {
+      paramView.a(this.jdField_a_of_type_Int);
+    }
+    paramView.a(ajyc.a(2131704504));
+    paramView.a();
+  }
+  
+  public boolean b()
+  {
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+    if (localFileManagerEntity != null) {
+      return apeh.a(localFileManagerEntity);
+    }
+    return false;
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public CharSequence c()
+  {
+    Object localObject3;
+    if (this.jdField_a_of_type_JavaLangCharSequence == null)
+    {
+      if (this.jdField_a_of_type_JavaUtilList.size() != 1) {
+        break label157;
+      }
+      localObject3 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+      localObject1 = new SpannableStringBuilder();
+      ((SpannableStringBuilder)localObject1).append(d());
+      if (((FileManagerEntity)localObject3).nFileType == 13) {
+        break label87;
+      }
+      ((SpannableStringBuilder)localObject1).append(" ").append(apue.c((FileManagerEntity)localObject3));
+    }
+    label87:
+    Object localObject2;
     for (;;)
     {
-      if (i != 0)
-      {
-        apci.a("0X800942E");
-        paramView = babr.a(SendBottomBar.a(this.a), 2131632463);
-        paramView.setPositiveButton(2131654515, new apgf(this, k));
-        paramView.show();
-        return;
-      }
-      this.a.a(k);
-      return;
-      this.a.a(k);
-      return;
+      this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
+      return this.jdField_a_of_type_JavaLangCharSequence;
+      localObject2 = apvu.b(((FileManagerEntity)localObject3).srvTime);
+      localObject3 = apue.b((FileManagerEntity)localObject3);
+      ((SpannableStringBuilder)localObject1).clear();
+      ((SpannableStringBuilder)localObject1).append((String)localObject2 + " " + (String)localObject3 + " " + BaseApplicationImpl.getContext().getString(2131692432));
     }
+    label157:
+    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    long l = 0L;
+    label169:
+    if (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
+      if (l >= ((FileManagerEntity)localObject2).srvTime) {
+        break label219;
+      }
+      l = ((FileManagerEntity)localObject2).srvTime;
+    }
+    label219:
+    for (;;)
+    {
+      break label169;
+      this.jdField_a_of_type_JavaLangCharSequence = d();
+      break;
+    }
+  }
+  
+  public String c()
+  {
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+    Object localObject1 = "";
+    int i = apue.a(localFileManagerEntity.fileName);
+    if ((i == 0) || (i == 2))
+    {
+      Object localObject2 = localFileManagerEntity.strMiddleThumPath;
+      localObject1 = localObject2;
+      if (!apvb.b((String)localObject2)) {
+        localObject1 = localFileManagerEntity.strLargeThumPath;
+      }
+      localObject2 = localObject1;
+      if (!apvb.b((String)localObject1)) {
+        localObject2 = localFileManagerEntity.strThumbPath;
+      }
+      localObject1 = localObject2;
+      if (apvb.b((String)localObject2)) {}
+    }
+    for (;;)
+    {
+      if (localFileManagerEntity.nFileType == 13) {
+        localObject1 = ayfv.f(localFileManagerEntity.Uuid);
+      }
+      return localObject1;
+      if (i == 5) {
+        localObject1 = localFileManagerEntity.strFilePath;
+      }
+    }
+  }
+  
+  protected void c(View paramView)
+  {
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+    paramView = (BaseActivity)paramView.getContext();
+    if (apeh.a(localFileManagerEntity)) {
+      apeh.b(localFileManagerEntity);
+    }
+    for (;;)
+    {
+      if ((localFileManagerEntity.cloudType == 3) && (!apvb.b(localFileManagerEntity.strFilePath)))
+      {
+        aptv.a(apue.d(localFileManagerEntity.fileName) + ajyc.a(2131709613));
+        apeh.b(localFileManagerEntity);
+      }
+      return;
+      apeh.a(localFileManagerEntity);
+      axqw.b(null, "dc00898", "", "", "0X800AA91", "0X800AA91", 1, 0, "0", "0", "", "");
+    }
+  }
+  
+  public int d()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public CharSequence d()
+  {
+    int i = 7;
+    if (this.jdField_b_of_type_JavaLangCharSequence != null) {
+      return this.jdField_b_of_type_JavaLangCharSequence;
+    }
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    Object localObject1;
+    if (j > 1)
+    {
+      localObject1 = new SpannableStringBuilder(j + ajyc.a(2131704508) + "\"");
+      ((SpannableStringBuilder)localObject1).append(awvy.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString));
+      ((SpannableStringBuilder)localObject1).append("\"").append(ajyc.a(2131692462));
+      this.jdField_b_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
+      return this.jdField_b_of_type_JavaLangCharSequence;
+    }
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    String str = apue.b((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).trim();
+    if (str.indexOf(ajyc.a(2131692454)) == 0) {
+      localSpannableStringBuilder.append(ajyc.a(2131692454) + " ");
+    }
+    for (;;)
+    {
+      localObject1 = str;
+      if (i != 0) {}
+      try
+      {
+        localObject1 = str.toLowerCase().substring(i);
+        localSpannableStringBuilder.append(awvy.a((String)localObject1, this.jdField_a_of_type_JavaLangString));
+        if (this.jdField_b_of_type_JavaLangCharSequence == null) {
+          this.jdField_b_of_type_JavaLangCharSequence = localSpannableStringBuilder;
+        }
+        return this.jdField_b_of_type_JavaLangCharSequence;
+        if (str.indexOf(ajyc.a(2131692458)) == 0)
+        {
+          localSpannableStringBuilder.append(ajyc.a(2131692458) + " ");
+        }
+        else if (str.indexOf(ajyc.a(2131692455)) == 0)
+        {
+          localSpannableStringBuilder.append(ajyc.a(2131692455) + " ");
+          i = 4;
+        }
+        else if (str.indexOf(ajyc.a(2131692459)) == 0)
+        {
+          localSpannableStringBuilder.append(ajyc.a(2131692459) + " ");
+          i = 4;
+        }
+        else if (str.indexOf(ajyc.a(2131692453)) == 0)
+        {
+          localSpannableStringBuilder.append(ajyc.a(2131692453) + " ");
+          i = 2;
+        }
+        else if (str.indexOf(ajyc.a(2131692457)) == 0)
+        {
+          localSpannableStringBuilder.append(ajyc.a(2131692457) + "  ");
+          i = 2;
+        }
+        else if (str.indexOf(ajyc.a(2131692456)) == 0)
+        {
+          localSpannableStringBuilder.append(ajyc.a(2131692456));
+          i = 2;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Object localObject2 = str;
+        }
+        i = 0;
+      }
+    }
+  }
+  
+  public String d()
+  {
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+    if (localFileManagerEntity != null) {
+      return localFileManagerEntity.fileName;
+    }
+    return "";
+  }
+  
+  protected void d(View paramView)
+  {
+    paramView = (BaseActivity)paramView.getContext();
+    FileSelectorSearchGroupFragment.a(this);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("qfile_search_param_ex_params", this.jdField_a_of_type_AndroidOsBundle);
+    PublicFragmentActivity.a(paramView, localIntent, FileSelectorSearchGroupFragment.class, 9999);
+  }
+  
+  public int e()
+  {
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+    if (localFileManagerEntity != null)
+    {
+      if (localFileManagerEntity.nFileType == 13) {
+        return 13;
+      }
+      return apue.a(localFileManagerEntity.fileName);
+    }
+    return 11;
   }
 }
 

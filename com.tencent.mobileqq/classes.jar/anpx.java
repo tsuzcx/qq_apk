@@ -1,137 +1,143 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QavSoDataBase;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.startup.step.UpdateAvSo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class anpx
+public abstract class anpx
+  extends anpi
 {
-  public int a;
-  public List<anpy> a;
-  public boolean a;
-  public boolean b;
-  
-  private int a()
+  public anpx(String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    super(paramString, paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10048;
+  }
+  
+  public String a()
+  {
+    return "qavDownloadSoDuration";
+  }
+  
+  public void a(XmlData paramXmlData)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavSoDownloadHandlerBase", 2, "func doOnServerResp begins, respData" + paramXmlData);
+    }
+    if ((paramXmlData == null) || (!(paramXmlData instanceof QavSoDataBase)))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      for (int i = 0;; i = ((anpy)localIterator.next()).jdField_a_of_type_JavaUtilList.size() + i)
+      if (QLog.isColorLevel()) {
+        QLog.d("QavSoDownloadHandlerBase", 2, "func doOnServerResp ends. respData is not QavSoDataBase");
+      }
+      super.a(paramXmlData);
+      return;
+    }
+    QavSoDataBase localQavSoDataBase = (QavSoDataBase)paramXmlData;
+    if (QLog.isColorLevel()) {
+      QLog.d("QavSoDownloadHandlerBase", 2, "doOnServerResp url:" + paramXmlData.strResURL_big + ", md5:" + paramXmlData.MD5 + ", m_TcHevcDec =" + localQavSoDataBase.m_TcHevcDec + ", m_TcHevcDec2 = " + localQavSoDataBase.m_TcHevcDec2 + ", m_TcHevcEnc = " + localQavSoDataBase.m_TcHevcEnc);
+    }
+    super.a(paramXmlData);
+  }
+  
+  public void a(String paramString)
+  {
+    Object localObject1 = a();
+    String str2;
+    Object localObject3;
+    String str1;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      str2 = "QAVSOMD5__" + ((XmlData)localObject1).getSharedPreferencesName();
+      localObject3 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0);
+      str1 = ((SharedPreferences)localObject3).getString(str2, null);
+      localObject2 = bdhv.a(paramString);
+      if ((TextUtils.isEmpty(((XmlData)localObject1).MD5)) || (!((XmlData)localObject1).MD5.equalsIgnoreCase((String)localObject2)))
       {
-        j = i;
-        if (!localIterator.hasNext()) {
+        localObject3 = new StringBuilder().append("download success but check md5 failed. config zip file md5 = ");
+        if (!TextUtils.isEmpty(((XmlData)localObject1).MD5)) {}
+        for (localObject1 = ((XmlData)localObject1).MD5;; localObject1 = "null")
+        {
+          QLog.e("QavSoDownloadHandlerBase", 1, (String)localObject1 + ", realZipFileMd5 = " + (String)localObject2);
+          paramString = new File(paramString);
+          if (paramString.exists()) {
+            paramString.delete();
+          }
+          return;
+        }
+      }
+      QLog.d("QavSoDownloadHandlerBase", 1, "download success: " + paramString + "|" + str1 + "|" + ((XmlData)localObject1).MD5 + "|" + localObject1);
+      if (((TextUtils.isEmpty(((XmlData)localObject1).MD5)) || (((XmlData)localObject1).MD5.equalsIgnoreCase(str1))) && (UpdateAvSo.a(this.a.getApp().getApplicationContext(), Boolean.valueOf(true)))) {}
+    }
+    try
+    {
+      bbdj.a(paramString, UpdateAvSo.a(), false);
+      ((SharedPreferences)localObject3).edit().putString(str2, ((XmlData)localObject1).MD5).commit();
+      if (!UpdateAvSo.a(true)) {
+        QLog.e("QavSoDownloadHandlerBase", 1, "checkHevcSoMd5 failed. md5 error!");
+      }
+      for (;;)
+      {
+        super.a(paramString);
+        return;
+        localObject2 = new File(UpdateAvSo.a() + "/libTcHevcEnc.so");
+        if (((File)localObject2).exists()) {
           break;
         }
-      }
-    }
-    int j = 0;
-    return j;
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      long l = System.currentTimeMillis();
-      int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-      while (i >= 0)
-      {
-        if (Math.abs(l - ((anpy)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Long) > 60000L) {
-          this.jdField_a_of_type_JavaUtilList.remove(i);
+        QLog.e("QavSoDownloadHandlerBase", 1, "libTcHevcEnc.so is not exist.");
+        localObject2 = new File(UpdateAvSo.a() + "/libTcHevcDec.so");
+        if (((File)localObject2).exists()) {
+          break label569;
         }
-        i -= 1;
+        QLog.e("QavSoDownloadHandlerBase", 1, "libTcHevcDec.so is not exist.");
+        localObject2 = new File(UpdateAvSo.a() + "/libTcHevcDec2.so");
+        if (((File)localObject2).exists()) {
+          break label596;
+        }
+        QLog.e("QavSoDownloadHandlerBase", 1, "libTcHevcDec2.so is not exist.");
+        QLog.d("QavSoDownloadHandlerBase", 1, "uncompressZip success: " + paramString + "|" + str1 + "|" + ((XmlData)localObject1).MD5 + "|" + localObject1);
       }
     }
-  }
-  
-  public anpy a()
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    catch (Exception localException)
     {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-        localObject1 = (anpy)this.jdField_a_of_type_JavaUtilList.get(0);
-      }
-    }
-    return localObject1;
-  }
-  
-  public anpy a(String paramString)
-  {
-    int i;
-    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilList != null))
-    {
-      i = 0;
-      if (i < this.jdField_a_of_type_JavaUtilList.size()) {
-        if (paramString.equals(((anpy)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString))
+      for (;;)
+      {
+        localException.printStackTrace();
+        QLog.e("QavSoDownloadHandlerBase", 1, "uncompressZip qavso failed.");
+        File localFile = new File(paramString);
+        if (localFile.exists())
         {
-          paramString = (anpy)this.jdField_a_of_type_JavaUtilList.get(i);
-          this.jdField_a_of_type_JavaUtilList.remove(i);
+          localFile.delete();
+          continue;
+          ((SharedPreferences)localObject3).edit().putLong("SP_QAV_HEVC_ENC_SO_FILE_SIZE", ((File)localObject2).length()).commit();
+          continue;
+          label569:
+          ((SharedPreferences)localObject3).edit().putLong("SP_QAV_HEVC_DEC_SO_FILE_SIZE", ((File)localObject2).length()).commit();
+          continue;
+          label596:
+          ((SharedPreferences)localObject3).edit().putLong("SP_QAV_HEVC_DEC2_SO_FILE_SIZE", ((File)localObject2).length()).commit();
         }
       }
     }
-    for (;;)
-    {
-      if (paramString != null) {
-        this.jdField_a_of_type_JavaUtilList.add(0, paramString);
-      }
-      return paramString;
-      i += 1;
-      break;
-      paramString = null;
-    }
   }
   
-  public void a(anpy paramanpy, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public boolean a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-    this.jdField_a_of_type_Int = paramInt;
-    a();
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramanpy)) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramanpy);
-    }
-    if ((paramanpy == null) || (paramanpy.jdField_a_of_type_JavaUtilList.size() == 0)) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_JavaUtilList.add(0, paramanpy);
-      while ((a() > 500) && (this.jdField_a_of_type_JavaUtilList.size() > 1)) {
-        this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("mProfileComplete").append("=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" ").append("mProfileComplete").append("=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" ").append("mShowCard").append("=").append(this.b);
-    localStringBuilder.append(" ").append("mMaxLikeCount").append("=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" ").append("mTags").append("=").append(" [");
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        anpy localanpy = (anpy)this.jdField_a_of_type_JavaUtilList.get(i);
-        localStringBuilder.append("\n");
-        localStringBuilder.append("index_").append(i).append("=").append(localanpy.toString());
-        i += 1;
-      }
-    }
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anpx
  * JD-Core Version:    0.7.0.1
  */

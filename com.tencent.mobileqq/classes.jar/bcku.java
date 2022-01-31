@@ -1,8 +1,16 @@
-public abstract interface bcku
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
+
+public class bcku
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public bcku(CustomedTabWidget paramCustomedTabWidget) {}
   
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    this.a.setCurrentTab(this.a.indexOfChild(paramView));
+  }
 }
 
 

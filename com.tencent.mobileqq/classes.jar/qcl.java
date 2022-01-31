@@ -1,22 +1,34 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 
 public class qcl
-  extends AnimatorListenerAdapter
+  implements Cloneable
 {
-  private qcl(VideoFeedsGuideView paramVideoFeedsGuideView) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public qcl(SocializeFeedsInfo paramSocializeFeedsInfo) {}
+  
+  public qcl a()
   {
-    super.onAnimationCancel(paramAnimator);
-    VideoFeedsGuideView.a(this.a, false);
+    try
+    {
+      qcl localqcl = (qcl)super.clone();
+      return localqcl;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    return null;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean a()
   {
-    super.onAnimationEnd(paramAnimator);
-    VideoFeedsGuideView.a(this.a, true);
+    return this.b == 1;
+  }
+  
+  public String toString()
+  {
+    return "uin=" + this.jdField_a_of_type_Long + "type=" + this.jdField_a_of_type_Int;
   }
 }
 

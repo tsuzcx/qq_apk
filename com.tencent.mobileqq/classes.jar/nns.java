@@ -1,49 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
-class nns
-  implements ViewBase.OnClickListener
+public class nns
+  implements DialogInterface.OnClickListener
 {
-  nns(nnr paramnnr) {}
+  public nns(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i;
-    boolean bool;
-    if ((nnq.a(this.a.jdField_a_of_type_Nnq) instanceof ProteusItemData)) {
-      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-      {
-      default: 
-        i = -1;
-        bool = true;
-      }
-    }
-    while (((i == 4) || (i == 3) || (i == 1000) || (i == 8)) && (npa.f((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)))
-    {
-      npa.b(nnp.a(this.a.jdField_a_of_type_Nnq.a), (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
-      return;
-      rav.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
-      return;
-      bool = true;
-      i = 4;
-      continue;
-      bool = true;
-      i = 3;
-      continue;
-      i = 5;
-      bool = false;
-      continue;
-      bool = true;
-      i = 8;
-      continue;
-      bool = true;
-      i = 1000;
-    }
-    nnq.a(this.a.jdField_a_of_type_Nnq, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
-    rab.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)nnq.a(this.a.jdField_a_of_type_Nnq), bool, i);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emoticon;
 
-import anam;
 import android.os.Bundle;
-import anfj;
-import anjd;
-import arnz;
-import batm;
-import batr;
+import anqu;
+import anvs;
+import anzm;
+import askd;
+import bbwg;
+import bbwl;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -15,16 +15,16 @@ import java.io.Serializable;
 public class EmojiManager$4
   implements Runnable
 {
-  public EmojiManager$4(anfj paramanfj, boolean paramBoolean, String paramString, int paramInt1, int paramInt2, Bundle paramBundle) {}
+  public EmojiManager$4(anvs paramanvs, boolean paramBoolean, String paramString, int paramInt1, int paramInt2, Bundle paramBundle) {}
   
   public void run()
   {
     Object localObject1;
     if (this.jdField_a_of_type_Boolean)
     {
-      localObject1 = anjd.c.replace("[epId]", this.jdField_a_of_type_JavaLangString);
+      localObject1 = anzm.c.replace("[epId]", this.jdField_a_of_type_JavaLangString);
       localObject2 = this.this$0.a().a((String)localObject1);
-      if ((localObject2 == null) || (((batm)localObject2).b())) {
+      if ((localObject2 == null) || (((bbwg)localObject2).b())) {
         break label102;
       }
     }
@@ -38,7 +38,7 @@ public class EmojiManager$4
         QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "startDownloadEmosmJson|epId is in downloading:" + this.jdField_a_of_type_JavaLangString);
       }
       return;
-      localObject1 = anam.a(this.jdField_a_of_type_JavaLangString);
+      localObject1 = anqu.a(this.jdField_a_of_type_JavaLangString);
       break;
     }
     label107:
@@ -63,7 +63,7 @@ public class EmojiManager$4
       if (QLog.isColorLevel()) {
         QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "startDownloadEmosmJson epId:" + ((EmoticonPackage)localObject2).epId);
       }
-      localObject1 = new batm((String)localObject1, new File(anjd.r.replace("[epId]", this.jdField_a_of_type_JavaLangString)));
+      localObject1 = new bbwg((String)localObject1, new File(anzm.r.replace("[epId]", this.jdField_a_of_type_JavaLangString)));
       localObject3 = new Bundle();
       ((Bundle)localObject3).putInt("jsonType", this.b);
       ((Bundle)localObject3).putSerializable("emoticonPackage", (Serializable)localObject2);
@@ -71,9 +71,9 @@ public class EmojiManager$4
       if (this.jdField_a_of_type_AndroidOsBundle != null) {
         ((Bundle)localObject3).putBundle("jsonReqParams", this.jdField_a_of_type_AndroidOsBundle);
       }
-      ((batm)localObject1).e = this.this$0.e;
-      ((batm)localObject1).n = true;
-      this.this$0.a().a((batm)localObject1, this.this$0.jdField_a_of_type_Batl, (Bundle)localObject3);
+      ((bbwg)localObject1).e = this.this$0.e;
+      ((bbwg)localObject1).n = true;
+      this.this$0.a().a((bbwg)localObject1, this.this$0.jdField_a_of_type_Bbwf, (Bundle)localObject3);
       return;
       label382:
       if (this.jdField_a_of_type_Int == 1) {

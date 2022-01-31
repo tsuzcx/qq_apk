@@ -1,25 +1,53 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.21.1;
 
-class aehf
-  implements Animation.AnimationListener
+public class aehf
+  implements aego
 {
-  aehf(aegy paramaegy) {}
+  aehf(aegu paramaegu) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt)
   {
-    this.a.W = false;
-    this.a.s = 0;
-    this.a.X = false;
-    this.a.ag = false;
-    this.a.af = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a(this.a.o, aegy.b(this.a));
+    View localView;
+    if (paramInt == 0)
+    {
+      localView = this.a.a().findViewById(2131366905);
+      if (localView != null) {}
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localView.setVisibility(0);
+          AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+          localAlphaAnimation.setDuration(300L);
+          localView.startAnimation(localAlphaAnimation);
+          localView.postDelayed(new AIOGalleryScene.21.1(this, localView), 8000L);
+          return;
+          if (1 != paramInt) {
+            break;
+          }
+        } while ((this.a.jdField_a_of_type_Axjq == null) || (((aegu.ai(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)aegu.aj(this.a)).b)) || (this.a.c));
+        this.a.c(null);
+        return;
+        if (2 != paramInt) {
+          break;
+        }
+        this.a.a(null);
+      } while ((this.a.jdField_a_of_type_Axjq == null) || (((aegu.ak(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)aegu.al(this.a)).b)) || (this.a.c));
+      this.a.jdField_a_of_type_Axjq.b(this.a.jdField_a_of_type_Aeie.a().jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData);
+      return;
+    } while (3 != paramInt);
+    this.a.jdField_a_of_type_Aeie.a().jdField_a_of_type_Aejb.i = true;
+    this.a.e.setText("");
+    this.a.u();
   }
 }
 

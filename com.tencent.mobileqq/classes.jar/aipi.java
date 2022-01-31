@@ -1,16 +1,10 @@
-public class aipi
+public abstract interface aipi
 {
-  public static String a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return "apollo_router_game.ltgame_redpkg_plankinfo_linkcmd_check_game";
-    }
-    return "ltgame_redpkg_plankinfo.check_game";
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aipi
  * JD-Core Version:    0.7.0.1
  */

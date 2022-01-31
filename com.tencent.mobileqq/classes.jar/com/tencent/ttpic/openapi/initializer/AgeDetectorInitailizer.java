@@ -1,7 +1,7 @@
 package com.tencent.ttpic.openapi.initializer;
 
-import android.os.Environment;
-import android.util.Log;
+import android.content.Context;
+import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.ytFaceAttr.YTFaceAttr;
@@ -16,17 +16,25 @@ public class AgeDetectorInitailizer
   extends Feature
 {
   public static final ModelInfo[] AGE_DET_MODELS = { new ModelInfo(true, "agedetect/models", "190522_res18_age_lds_bin.rpdproto"), new ModelInfo(true, "agedetect/models", "190523_res18_age_lds_f16.rpdmodel") };
-  private static String ageDetectorDownloadPath = Environment.getExternalStorageDirectory().getPath() + File.separator + "weishi_yt_model";
   private static String model_path = null;
   private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("YTIllumination"), new SharedLibraryInfo("YTFaceAttr") };
-  private final String TAG = "AgeDetectorInitailizer";
+  private final String TAG = AgeDetectorInitailizer.class.getSimpleName();
   
   public static String getModelPath()
   {
-    if ((model_path == null) || (model_path.startsWith("assets://"))) {
-      model_path = ageDetectorDownloadPath;
+    if ((model_path == null) || (model_path.startsWith("assets://"))) {}
+    try
+    {
+      model_path = AEModule.getContext().getExternalFilesDir(null).getPath() + File.separator + "weishi_yt_model";
+      return model_path;
     }
-    return model_path;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
   
   protected boolean destroyImpl()
@@ -43,7 +51,7 @@ public class AgeDetectorInitailizer
   
   public String getName()
   {
-    return "AgeDetector";
+    return this.TAG;
   }
   
   public List<SharedLibraryInfo> getSharedLibraries()
@@ -58,13 +66,13 @@ public class AgeDetectorInitailizer
     }
     String str = FeatureManager.Features.AGE_DETECT.getFinalResourcesDir();
     YTFaceAttr.FaceAttrConfig localFaceAttrConfig = new YTFaceAttr.FaceAttrConfig(false, true, false, false, false, false);
-    Log.i("AgeDetectorInitailizer", "baseDir: " + str);
+    LogUtils.i(this.TAG, "baseDir: " + str);
     try
     {
       i = YTFaceAttr.NativeGlobalInit(str + File.separator, localFaceAttrConfig);
       if (i == 0)
       {
-        LogUtils.i("AgeDetectorInitailizer", "Load model successful.");
+        LogUtils.i(this.TAG, "Load model successful.");
         return true;
       }
     }
@@ -72,11 +80,11 @@ public class AgeDetectorInitailizer
     {
       for (;;)
       {
-        Log.e("AgeDetectorInitailizer", "YTFaceAttr.NativeGlobalInit is fail!");
+        LogUtils.e(this.TAG, "YTFaceAttr.NativeGlobalInit is fail!");
         localUnsatisfiedLinkError.printStackTrace();
         int i = -1;
       }
-      LogUtils.e("AgeDetectorInitailizer", "AgeDetector init is failed!");
+      LogUtils.e(this.TAG, "AgeDetector init is failed!");
     }
     return false;
   }

@@ -1,23 +1,86 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.data.RecentUser;
+import mqq.app.Constants.LogoutReason;
 
 public class aaxu
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public aaxu(GeneralSettingActivity paramGeneralSettingActivity) {}
+  private ajyt jdField_a_of_type_Ajyt;
+  public bbgg a;
+  public bcpq a;
+  private Conversation jdField_a_of_type_ComTencentMobileqqActivityConversation;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public aaxu(Conversation paramConversation)
   {
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation = paramConversation;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bbgg != null)
     {
-      awqx.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Enter_sendmsg", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131629595), "qqsetting_enter_sendmsg_key", paramBoolean);
+      this.jdField_a_of_type_Bbgg.dismiss();
+      this.jdField_a_of_type_Bbgg = null;
+    }
+    if (this.jdField_a_of_type_Bcpq != null)
+    {
+      this.jdField_a_of_type_Bcpq.dismiss();
+      this.jdField_a_of_type_Bcpq = null;
+    }
+    if (this.jdField_a_of_type_Ajyt != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.removeObserver(this.jdField_a_of_type_Ajyt);
+    }
+  }
+  
+  public void a(RecentUser paramRecentUser)
+  {
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a;
+    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a();
+    HotChatManager localHotChatManager = localQQAppInterface.a(false);
+    HotChatInfo localHotChatInfo;
+    if ((localHotChatManager != null) && (localHotChatManager.b(paramRecentUser.uin)))
+    {
+      localHotChatManager.a(paramRecentUser.uin);
+      localHotChatInfo = localHotChatManager.a(paramRecentUser.uin);
+      if (localHotChatInfo != null)
+      {
+        if (localHotChatInfo.state == 0) {
+          break label114;
+        }
+        if (!localHotChatInfo.isWifiHotChat) {
+          break label109;
+        }
+        i = 1;
+        axqw.b(localQQAppInterface, "CliOper", "", "", "0X8004D2A", "0X8004D2A", i, 0, "", "", "", "");
+      }
+    }
+    label109:
+    label114:
+    while ((localHotChatInfo.adminLevel != 0) || ((localHotChatInfo.ownerUin != null) && (localHotChatInfo.ownerUin.equals(localQQAppInterface.getCurrentAccountUin())))) {
+      for (;;)
+      {
+        return;
+        i = 2;
+      }
+    }
+    if (localHotChatInfo.isWifiHotChat) {}
+    for (int i = 1;; i = 2)
+    {
+      axqw.b(localQQAppInterface, "CliOper", "", "", "0X8004D29", "0X8004D29", i, 0, "", "", "", "");
+      if (this.jdField_a_of_type_Ajyt == null) {
+        this.jdField_a_of_type_Ajyt = new aaxv(this, localBaseActivity);
+      }
+      this.jdField_a_of_type_Bbgg = ajyk.a(localHotChatManager.a(paramRecentUser.uin), new aaxw(this, localHotChatInfo, localQQAppInterface, localBaseActivity));
       return;
     }
+  }
+  
+  public void a(Constants.LogoutReason paramLogoutReason)
+  {
+    a();
   }
 }
 

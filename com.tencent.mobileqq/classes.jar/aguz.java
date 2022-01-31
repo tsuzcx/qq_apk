@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbTranslucentBrowserActivity.9;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
+import mqq.util.WeakReference;
 
-public class aguz
-  implements ValueCallback<String>
+class aguz
+  implements DialogInterface.OnClickListener
 {
-  public aguz(SpringHbTranslucentBrowserActivity.9 param9) {}
+  aguz(aguv paramaguv) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("springHb_SpringHbTranslucentBrowserActivity", 2, "evaluateJavascript done");
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+    if (((NewPhotoPreviewActivity)this.a.a.get()).b != null) {
+      ((NewPhotoPreviewActivity)this.a.a.get()).b.setClickable(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aguz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,23 @@
-import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.core.AECameraManager.8;
 
-public abstract interface bijl
+public class bijl
+  implements axic
 {
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  public bijl(AECameraManager.8 param8) {}
   
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AECameraManager", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
+    }
+    if (paramBoolean1)
+    {
+      bijj.c(this.a.this$0, true);
+      return;
+    }
+    bijj.a().g();
+  }
 }
 
 

@@ -1,39 +1,43 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
-public class twa
-  extends QQUIEventReceiver<tvd, spl>
+class twa
+  implements twq
 {
-  public twa(@NonNull tvd paramtvd)
-  {
-    super(paramtvd);
-  }
+  twa(tvy paramtvy) {}
   
-  public void a(@NonNull tvd paramtvd, @NonNull spl paramspl)
+  public void a()
   {
-    paramtvd.l();
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramtvd.a()).a();
-    if (localVideoViewVideoHolder != null) {
-      localVideoViewVideoHolder.c(false);
+    tvy.a(this.a, this.a.a.a(tvy.a(this.a), 5));
+    List localList = tvy.a(this.a).a;
+    if ((tvy.a(this.a) == null) && (localList.size() > 0)) {
+      tvy.a(this.a, ((twp)localList.get(0)).a);
     }
-    urk.b(this.TAG, "delete onEvent");
-    if ((!paramspl.jdField_a_of_type_Boolean) && (paramspl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
+    label199:
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        urk.d(this.TAG, "删除失败：%s", new Object[] { paramspl.a() });
+      veg.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { tvy.a(this.a) });
+      tvy.a(this.a).a(tvy.a(this.a), "");
+      return;
+      int i = 0;
+      for (;;)
+      {
+        if (i >= localList.size()) {
+          break label199;
+        }
+        if (((twp)localList.get(i)).a.equals(tvy.a(this.a)))
+        {
+          if (localList.size() <= i + 1) {
+            break;
+          }
+          tvy.a(this.a, ((twp)localList.get(i + 1)).a);
+          break;
+        }
+        i += 1;
       }
-      bbmy.a(paramtvd.b(), 1, ajjy.a(2131641091), 0).a();
     }
   }
   
-  public Class acceptEventClass()
-  {
-    return spl.class;
-  }
+  public void a(two paramtwo, String paramString, boolean paramBoolean) {}
 }
 
 

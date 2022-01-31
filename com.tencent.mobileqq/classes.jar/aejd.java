@@ -1,46 +1,56 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-class aejd
-  extends ajjh
+public abstract interface aejd
+  extends IInterface
 {
-  aejd(aejb paramaejb) {}
+  public abstract int a(long paramLong, int paramInt);
   
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    int i;
-    if (QLog.isColorLevel())
-    {
-      String str = this.a.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder().append("onSetGenralSettingsTroopFilter: isSuc = ").append(paramBoolean).append(", size = ");
-      if (paramMap == null)
-      {
-        i = 0;
-        QLog.d(str, 2, i);
-      }
-    }
-    else
-    {
-      if ((paramMap != null) && (paramMap.size() != 0)) {
-        break label83;
-      }
-    }
-    label83:
-    while (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())
-    {
-      return;
-      i = paramMap.size();
-      break;
-    }
-    if (paramBoolean)
-    {
-      bbmy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131654643), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      return;
-    }
-    bbmy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131654642), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-  }
+  public abstract Intent a(long paramLong, int paramInt);
+  
+  public abstract Intent a(long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract MessageForShortVideo a(long paramLong);
+  
+  public abstract String a(String paramString1, String paramString2);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(long paramLong, int paramInt);
+  
+  public abstract void a(long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void a(long paramLong, int paramInt, Bundle paramBundle);
+  
+  public abstract void a(aejg paramaejg);
+  
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(long[] paramArrayOfLong);
+  
+  public abstract void b(long paramLong);
+  
+  public abstract void b(long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void b(String paramString, int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void c(long paramLong);
+  
+  public abstract void d(long paramLong);
+  
+  public abstract void e(long paramLong);
 }
 
 

@@ -1,27 +1,27 @@
 package cooperation.plugin;
 
-import ajjy;
+import ajyc;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 
 public class PluginInfo
   extends PluginBaseInfo
   implements Cloneable
 {
-  public static final String a = ajjy.a(2131642493);
-  public static final String b = ajjy.a(2131642492);
-  public static final String c = ajjy.a(2131642481);
-  public static final String d = ajjy.a(2131642484);
-  public static final String e = ajjy.a(2131642491);
-  public static final String f = ajjy.a(2131642486);
-  public static final String g = ajjy.a(2131642488);
-  public static final String h = ajjy.a(2131642490);
-  public static final String i = ajjy.a(2131642482);
-  public static final String j = ajjy.a(2131642485);
-  public static final String k = ajjy.a(2131642487);
-  public static final String l = ajjy.a(2131642494);
-  public static final String m = ajjy.a(2131642480);
-  public static final String n = ajjy.a(2131642483);
-  public static final String o = ajjy.a(2131642489);
+  public static final String a = ajyc.a(2131708278);
+  public static final String b = ajyc.a(2131708277);
+  public static final String c = ajyc.a(2131708266);
+  public static final String d = ajyc.a(2131708269);
+  public static final String e = ajyc.a(2131708276);
+  public static final String f = ajyc.a(2131708271);
+  public static final String g = ajyc.a(2131708273);
+  public static final String h = ajyc.a(2131708275);
+  public static final String i = ajyc.a(2131708267);
+  public static final String j = ajyc.a(2131708270);
+  public static final String k = ajyc.a(2131708272);
+  public static final String l = ajyc.a(2131708279);
+  public static final String m = ajyc.a(2131708265);
+  public static final String n = ajyc.a(2131708268);
+  public static final String o = ajyc.a(2131708274);
   public int a;
   
   public PluginInfo a()

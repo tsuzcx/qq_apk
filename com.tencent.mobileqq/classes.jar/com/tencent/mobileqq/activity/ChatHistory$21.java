@@ -10,7 +10,7 @@ class ChatHistory$21
     ChatHistory localChatHistory1 = this.this$0;
     ChatHistory localChatHistory2 = this.this$0;
     if (this.a == true) {}
-    for (int i = 2131626632;; i = 2131626631)
+    for (int i = 2131692218;; i = 2131692217)
     {
       localChatHistory1.b(localChatHistory2.getString(i));
       return;

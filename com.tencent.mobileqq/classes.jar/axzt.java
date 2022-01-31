@@ -1,10 +1,15 @@
-public abstract interface axzt
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class axzt
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  axzt(axzr paramaxzr) {}
   
-  public abstract String a();
-  
-  public abstract boolean a();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

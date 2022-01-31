@@ -1,14 +1,10 @@
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.5;
+import android.view.View;
 
-public class rtk
-  implements bbmu
+public abstract interface rtk
 {
-  public rtk(PublicAccountH5AbilityPlugin.5 param5, qdg paramqdg) {}
+  public abstract void a(View paramView, int paramInt, long paramLong);
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$5.this$0.a.b(this.jdField_a_of_type_Qdg);
-  }
+  public abstract void b(View paramView, int paramInt, long paramLong);
 }
 
 

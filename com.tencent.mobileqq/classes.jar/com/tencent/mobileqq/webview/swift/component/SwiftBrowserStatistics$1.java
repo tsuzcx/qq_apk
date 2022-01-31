@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bbca;
+import bcfa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import mqq.manager.TicketManager;
 public class SwiftBrowserStatistics$1
   implements Runnable
 {
-  public SwiftBrowserStatistics$1(bbca parambbca) {}
+  public SwiftBrowserStatistics$1(bcfa parambcfa) {}
   
   public void run()
   {

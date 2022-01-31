@@ -1,18 +1,26 @@
-import dov.com.qq.im.AECamera.qudong.EditTextViewer;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 
-public class bhbq
-  implements bhbp
+final class bhbq
+  implements bhby
 {
-  public bhbq(EditTextViewer paramEditTextViewer) {}
-  
-  public void a(String paramString)
+  public Collection<bhbr> a()
   {
-    this.a.a(paramString);
+    synchronized ()
+    {
+      if (bhbp.a().size() <= 0)
+      {
+        localObject1 = null;
+        return localObject1;
+      }
+      Object localObject1 = new ArrayList(bhbp.a().values());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhbq
  * JD-Core Version:    0.7.0.1
  */

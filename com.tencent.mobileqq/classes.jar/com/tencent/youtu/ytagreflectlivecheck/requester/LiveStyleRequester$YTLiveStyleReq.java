@@ -5,9 +5,10 @@ public class LiveStyleRequester$YTLiveStyleReq
   public String app_id;
   public LiveStyleRequester.SeleceData select_data;
   
-  public LiveStyleRequester$YTLiveStyleReq(float paramFloat)
+  public LiveStyleRequester$YTLiveStyleReq(float paramFloat, String paramString)
   {
     this.select_data = new LiveStyleRequester.SeleceData(paramFloat);
+    this.app_id = paramString;
   }
 }
 

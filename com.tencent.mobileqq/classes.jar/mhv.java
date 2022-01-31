@@ -1,17 +1,6 @@
-import android.app.PendingIntent;
-
-class mhv
+public abstract interface mhv
 {
-  public final int a;
-  public final PendingIntent a;
-  public final String a;
-  
-  public mhv(int paramInt, String paramString, PendingIntent paramPendingIntent)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
-  }
+  public abstract void a(long paramLong, String paramString, boolean paramBoolean);
 }
 
 

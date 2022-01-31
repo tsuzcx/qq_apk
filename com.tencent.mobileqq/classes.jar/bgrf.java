@@ -1,11 +1,33 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.widget.QfavJumpActivity;
+import java.io.InputStream;
+
 public class bgrf
+  implements DialogInterface.OnClickListener
 {
-  public static final int a = (int)(40.0F * bajq.a());
-  public static final int b = (int)(24.0F * bajq.a());
+  public bgrf(QfavJumpActivity paramQfavJumpActivity, String paramString, InputStream paramInputStream, long paramLong) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    try
+    {
+      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("qqfav|QfavJumpActivity", 2, "copy file error", paramDialogInterface);
+      }
+      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.a());
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgrf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.TianShuAccess.AdItem;
 
 final class MiniGameAdBannerPopup$2
@@ -10,7 +11,15 @@ final class MiniGameAdBannerPopup$2
   
   public void run()
   {
-    MiniGameAdBannerPopup.access$200(this.val$context, this.val$finalType, this.val$finalText, this.val$finalPic, this.val$finalUrl, this.val$finalTianShuAdItem);
+    try
+    {
+      MiniGameAdBannerPopup.access$200(this.val$context, this.val$finalType, this.val$finalText, this.val$finalPic, this.val$finalUrl, this.val$finalTianShuAdItem);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("MiniGameAdBannerPopup", 1, localThrowable, new Object[0]);
+    }
   }
 }
 

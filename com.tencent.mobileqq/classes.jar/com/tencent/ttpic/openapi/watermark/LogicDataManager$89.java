@@ -1,18 +1,21 @@
 package com.tencent.ttpic.openapi.watermark;
 
-import java.util.Map.Entry;
+import android.text.TextUtils;
 
 class LogicDataManager$89
   extends LogicDataManager.LogicValueProvider
 {
-  LogicDataManager$89(LogicDataManager paramLogicDataManager, Map.Entry paramEntry)
+  LogicDataManager$89(LogicDataManager paramLogicDataManager)
   {
     super(paramLogicDataManager, null);
   }
   
   public String getValue()
   {
-    return (String)this.val$entry.getValue();
+    if ((!TextUtils.isEmpty(LogicDataManager.access$5300(this.this$0))) && (LogicDataManager.access$5300(this.this$0).length() > 9)) {
+      return LogicDataManager.access$5300(this.this$0).substring(9, 10);
+    }
+    return LogicDataManager.access$1400(this.this$0, 1);
   }
 }
 

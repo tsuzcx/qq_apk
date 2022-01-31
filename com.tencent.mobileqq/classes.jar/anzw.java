@@ -1,51 +1,59 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public class anzw
-  implements View.OnClickListener
+class anzw
+  implements URLDrawable.URLDrawableListener
 {
-  public anzw(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  anzw(anzu paramanzu) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    Object localObject = paramView.getTag();
-    int i;
-    if ((localObject instanceof aoai))
+    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
+    if (QLog.isColorLevel())
     {
-      localObject = (aoai)paramView.getTag();
-      i = ((aoai)localObject).c;
-      localObject = (WeiYunFileInfo)((aoai)localObject).a;
+      paramURLDrawable = paramURLDrawable.getTag();
+      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
+      {
+        paramURLDrawable = (Emoticon)paramURLDrawable;
+        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener onLoadCanceled eId = " + paramURLDrawable.eId);
+      }
     }
-    for (;;)
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
+    if (QLog.isColorLevel())
     {
-      QfileBaseCloudFileTabView localQfileBaseCloudFileTabView;
-      if (localObject != null)
+      paramURLDrawable = paramURLDrawable.getTag();
+      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
       {
-        if ((paramView.getId() == 2131300609) && (QfileBaseCloudFileTabView.c(this.a))) {
-          awqx.b(QfileBaseCloudFileTabView.c(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
-        }
-        localQfileBaseCloudFileTabView = this.a;
-        if (paramView.getId() != 2131300609) {
-          break label148;
-        }
+        paramURLDrawable = (Emoticon)paramURLDrawable;
+        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener onLoadFialed eId = " + paramURLDrawable.eId);
       }
-      label148:
-      for (boolean bool = true;; bool = false)
-      {
-        localQfileBaseCloudFileTabView.a((WeiYunFileInfo)localObject, i, bool);
-        return;
-        if (!(localObject instanceof anzc)) {
-          break label153;
-        }
-        localObject = (WeiYunFileInfo)((anzc)paramView.getTag()).a;
-        i = -1;
-        break;
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
+    paramURLDrawable = paramURLDrawable.getTag();
+    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
+    {
+      paramURLDrawable = (Emoticon)paramURLDrawable;
+      if (!this.a.jdField_a_of_type_JavaUtilList.contains(paramURLDrawable)) {
+        this.a.jdField_a_of_type_JavaUtilList.add(paramURLDrawable);
       }
-      label153:
-      i = 0;
-      localObject = null;
+      this.a.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener downloadSucess eId = " + paramURLDrawable.eId);
+      }
     }
   }
 }

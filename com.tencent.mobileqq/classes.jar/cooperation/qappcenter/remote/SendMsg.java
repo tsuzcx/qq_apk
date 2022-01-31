@@ -4,18 +4,18 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfeo;
-import bfex;
+import bgmf;
+import bgmo;
 import com.tencent.qphone.base.util.QLog;
 
 public class SendMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator<SendMsg> CREATOR = new bfex();
+  public static final Parcelable.Creator<SendMsg> CREATOR = new bgmo();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long = -1L;
   public final Bundle a;
-  public bfeo a;
+  public bgmf a;
   public String a;
   long b = -1L;
   
@@ -67,8 +67,8 @@ public class SendMsg
     //   61: aload_0
     //   62: aload_1
     //   63: invokevirtual 104	android/os/Parcel:readStrongBinder	()Landroid/os/IBinder;
-    //   66: invokestatic 109	bfep:a	(Landroid/os/IBinder;)Lbfeo;
-    //   69: putfield 111	cooperation/qappcenter/remote/SendMsg:jdField_a_of_type_Bfeo	Lbfeo;
+    //   66: invokestatic 109	bgmg:a	(Landroid/os/IBinder;)Lbgmf;
+    //   69: putfield 111	cooperation/qappcenter/remote/SendMsg:jdField_a_of_type_Bgmf	Lbgmf;
     //   72: return
     //   73: astore_3
     //   74: aload_3
@@ -102,9 +102,9 @@ public class SendMsg
     return this.jdField_a_of_type_Int;
   }
   
-  public bfeo a()
+  public bgmf a()
   {
-    return this.jdField_a_of_type_Bfeo;
+    return this.jdField_a_of_type_Bgmf;
   }
   
   public String a()
@@ -130,7 +130,7 @@ public class SendMsg
       paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
       paramParcel.writeLong(this.jdField_a_of_type_Long);
       paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
-      paramParcel.writeStrongInterface(this.jdField_a_of_type_Bfeo);
+      paramParcel.writeStrongInterface(this.jdField_a_of_type_Bgmf);
       return;
     }
     catch (RuntimeException paramParcel)

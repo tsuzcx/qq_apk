@@ -1,80 +1,22 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetRecommendUserListRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.biz.videostory.network.request.SubscribeGetRecommendUserListRequest;
-import com.tencent.biz.videostory.network.request.VSBaseRequest;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
-public class vxe
-  implements vxc
+class vxe
+  implements View.OnClickListener
 {
-  private static String jdField_a_of_type_JavaLangString = "TopPanelPresenter";
-  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  private vxd jdField_a_of_type_Vxd;
+  vxe(vxd paramvxd) {}
   
-  public vxe(vxd paramvxd)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Vxd = paramvxd;
-    this.jdField_a_of_type_Vxd.setPresenter(this);
-  }
-  
-  private List<vxm> a(CertifiedAccountRead.StGetRecommendUserListRsp paramStGetRecommendUserListRsp)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramStGetRecommendUserListRsp.expType.get() == 0)
-    {
-      if (paramStGetRecommendUserListRsp.vecUser.has())
-      {
-        paramStGetRecommendUserListRsp = paramStGetRecommendUserListRsp.vecUser.get().iterator();
-        while (paramStGetRecommendUserListRsp.hasNext()) {
-          localArrayList.add(new vxm((CertifiedAccountMeta.StUser)paramStGetRecommendUserListRsp.next()));
-        }
-      }
-    }
-    else if ((paramStGetRecommendUserListRsp.expType.get() == 1) && (paramStGetRecommendUserListRsp.vecUserWithFeed.has()))
-    {
-      paramStGetRecommendUserListRsp = paramStGetRecommendUserListRsp.vecUserWithFeed.get().iterator();
-      while (paramStGetRecommendUserListRsp.hasNext()) {
-        localArrayList.add(new vxm((CertifiedAccountMeta.StFeed)paramStGetRecommendUserListRsp.next()));
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    long l = System.currentTimeMillis();
-    localObject = new SubscribeGetRecommendUserListRequest((String)localObject, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt, 100, 0);
-    ((SubscribeGetRecommendUserListRequest)localObject).setEnableCache(false);
-    VSNetworkHelper.a().a((VSBaseRequest)localObject, new vxf(this, l));
-  }
-  
-  public void b()
-  {
-    a();
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Vxd != null)
-    {
-      this.jdField_a_of_type_Vxd.setPresenter(null);
-      this.jdField_a_of_type_Vxd = null;
+    if (this.a.a.a != null) {
+      this.a.a.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vxe
  * JD-Core Version:    0.7.0.1
  */

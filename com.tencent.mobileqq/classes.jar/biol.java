@@ -1,136 +1,237 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Cap;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.view.MotionEvent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewStub;
+import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
+import com.tencent.ttpic.openapi.config.MediaConfig;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.util.VideoMaterialUtil.AR_MATERIAL_TYPE;
+import dov.com.qq.im.ae.camera.ui.tips.AETipsViewController.2;
+import java.io.File;
+import mqq.os.MqqHandler;
 
 public class biol
-  extends binm
 {
-  public static final int a;
-  public float a;
-  public Paint a;
-  bini a;
-  public biok a;
-  public float b;
-  public int b;
-  public Paint b;
-  public int c = aciy.a(6.0F, BaseApplicationImpl.getContext().getResources());
+  private static final String jdField_a_of_type_JavaLangString = biol.class.getSimpleName();
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private biim jdField_a_of_type_Biim;
+  private bion jdField_a_of_type_Bion;
+  private bioo jdField_a_of_type_Bioo;
+  private biop jdField_a_of_type_Biop;
+  private bivx jdField_a_of_type_Bivx = bivx.jdField_a_of_type_Bivx;
+  private bivy jdField_a_of_type_Bivy;
+  private bjob<bivx> jdField_a_of_type_Bjob = new biom(this);
+  private boolean jdField_a_of_type_Boolean;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  private boolean d;
+  private boolean e;
+  private boolean f;
+  private boolean g;
   
-  static
+  public biol(View paramView, biwb parambiwb)
   {
-    jdField_a_of_type_Int = biyb.a[1];
+    this.jdField_a_of_type_Biim = ((biim)parambiwb.a(65537, new Object[0]));
+    this.jdField_a_of_type_Bivy = ((bivy)biix.a(this.jdField_a_of_type_Biim).a(bivy.class));
+    this.jdField_a_of_type_Bioo = new bioo((ViewStub)paramView.findViewById(2131376593));
+    this.jdField_a_of_type_Bion = new bion((ViewStub)paramView.findViewById(2131376594));
+    this.jdField_a_of_type_Biop = new biop((ViewStub)paramView.findViewById(2131376602));
+    this.jdField_a_of_type_Bivy.a().a(this.jdField_a_of_type_Biim, this.jdField_a_of_type_Bjob);
   }
   
-  public biol(bini parambini)
+  private String a(int paramInt)
   {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bini = parambini;
+    if (paramInt == PTFaceAttr.PTExpression.MOUTH_OPEN.value) {
+      return "张开你的嘴";
+    }
+    if (paramInt == PTFaceAttr.PTExpression.EYEBROWS_RAISE.value) {
+      return "挑动你的眉毛";
+    }
+    if (paramInt == PTFaceAttr.PTExpression.BLINK.value) {
+      return "眨眨你的眼睛";
+    }
+    if (paramInt == PTFaceAttr.PTExpression.HEAD_SHAKE.value) {
+      return "摇一摇你的头";
+    }
+    if (paramInt == PTFaceAttr.PTExpression.KISS.value) {
+      return "嘟起你的嘴";
+    }
+    if (paramInt == PTFaceAttr.PTExpression.BLINK_LEFT_EYE.value) {
+      return "眨眨你的左眼";
+    }
+    if (paramInt == PTFaceAttr.PTExpression.BLINK_RIGHT_EYE.value) {
+      return "眨眨你的右眼";
+    }
+    if (paramInt == PTFaceAttr.PTExpression.HEAD_NOD.value) {
+      return "点一点你的头";
+    }
+    if (paramInt == PTFaceAttr.PTExpression.HEAD_SHAKE_NEW.value) {
+      return "摇一摇你的头";
+    }
+    if (paramInt == PTFaceAttr.PTExpression.TRY_CLICK_SCREEN.value) {
+      return "点击屏幕试试";
+    }
+    return null;
   }
   
-  private void a(Paint paramPaint, biok parambiok)
+  private void b(VideoMaterial paramVideoMaterial)
   {
-    paramPaint.setXfermode(null);
-    paramPaint.setColor(parambiok.jdField_b_of_type_Int);
-    paramPaint.setStrokeWidth(parambiok.c);
-    paramPaint.setShader(null);
+    g();
+    if (paramVideoMaterial == null) {}
+    String str;
+    do
+    {
+      return;
+      str = paramVideoMaterial.getTipsText();
+      if (TextUtils.isEmpty(str)) {
+        break;
+      }
+      this.jdField_b_of_type_JavaLangString = str;
+      str = paramVideoMaterial.getTipsIcon();
+    } while (TextUtils.isEmpty(str));
+    this.jdField_c_of_type_JavaLangString = (paramVideoMaterial.getDataPath() + File.separator + str);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.jdField_c_of_type_JavaLangString, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+    return;
+    int j = paramVideoMaterial.getTriggerType();
+    int i = j;
+    if (j <= 0)
+    {
+      i = j;
+      if (paramVideoMaterial.getArParticleType() == VideoMaterialUtil.AR_MATERIAL_TYPE.CLICKABLE.value) {
+        i = PTFaceAttr.PTExpression.TRY_CLICK_SCREEN.value;
+      }
+    }
+    this.jdField_b_of_type_JavaLangString = a(i);
   }
   
-  public Paint a()
+  private void d()
   {
-    return this.jdField_b_of_type_AndroidGraphicsPaint;
+    ThreadManager.getUIHandler().post(new AETipsViewController.2(this));
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Bivx == bivx.b) {
+      a();
+    }
+    do
+    {
+      return;
+      if (this.f)
+      {
+        a();
+        return;
+      }
+      if (this.jdField_a_of_type_Bivx == bivx.jdField_a_of_type_Bivx)
+      {
+        this.jdField_a_of_type_Bion.c();
+        if (this.jdField_b_of_type_Boolean)
+        {
+          if (this.d)
+          {
+            this.jdField_a_of_type_Bioo.c();
+            f();
+            return;
+          }
+          this.jdField_a_of_type_Bioo.b();
+          return;
+        }
+        this.jdField_a_of_type_Bioo.c();
+        f();
+        return;
+      }
+    } while (this.jdField_a_of_type_Bivx != bivx.c);
+    this.jdField_a_of_type_Bioo.c();
+    if (this.jdField_b_of_type_Boolean)
+    {
+      if (this.d)
+      {
+        this.jdField_a_of_type_Bion.c();
+        f();
+        return;
+      }
+      this.jdField_a_of_type_Bion.b();
+      return;
+    }
+    this.jdField_a_of_type_Bion.c();
+    f();
+  }
+  
+  private void f()
+  {
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Biop.b();
+    }
+    while (this.g) {
+      return;
+    }
+    biop localbiop = this.jdField_a_of_type_Biop;
+    String str = this.jdField_b_of_type_JavaLangString;
+    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {}
+    for (Bitmap localBitmap = null;; localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap)
+    {
+      localbiop.a(str, localBitmap, true);
+      this.g = true;
+      return;
+    }
+  }
+  
+  private void g()
+  {
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
+    this.jdField_a_of_type_Bioo.c();
+    this.jdField_a_of_type_Bion.c();
+    this.jdField_a_of_type_Biop.a(null, null, false);
   }
   
-  public void a(int paramInt)
+  public void a(VideoMaterial paramVideoMaterial)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    this.jdField_b_of_type_Int = paramInt;
+    this.g = false;
+    b(paramVideoMaterial);
+    d();
   }
   
-  public void a(Canvas paramCanvas, binj parambinj, Paint paramPaint)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((parambinj instanceof biok))
+    this.jdField_b_of_type_Boolean = paramBoolean1;
+    this.d = paramBoolean2;
+    if ((this.jdField_b_of_type_Boolean != this.jdField_c_of_type_Boolean) || (this.d != this.e))
     {
-      parambinj = (biok)parambinj;
-      if (parambinj.jdField_a_of_type_AndroidGraphicsPath != null)
-      {
-        a(paramPaint, parambinj);
-        paramCanvas.drawPath(parambinj.jdField_a_of_type_AndroidGraphicsPath, paramPaint);
-      }
+      QLog.d(jdField_a_of_type_JavaLangString, 4, "### onDetectStateChange, materialNeedFace=" + paramBoolean1 + ", hasFaceDetected=" + paramBoolean2);
+      this.jdField_c_of_type_Boolean = this.jdField_b_of_type_Boolean;
+      this.e = this.d;
+      d();
     }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-      this.jdField_a_of_type_Biok = new biok(new Path(), 101, this.jdField_a_of_type_AndroidGraphicsPaint.getColor(), this.c);
-      if (this.jdField_a_of_type_Bini != null) {
-        this.jdField_a_of_type_Bini.a(this.jdField_a_of_type_Biok);
-      }
-      DoodleLayout.a("use_graffiti");
-      this.jdField_a_of_type_Biok.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_Biok.jdField_a_of_type_AndroidGraphicsPath.moveTo(f1, f2);
-      this.jdField_a_of_type_Biok.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1 + 1.0F, f2 + 1.0F);
-      this.jdField_a_of_type_Biok.jdField_a_of_type_JavaUtilArrayList.add(new bioj(bioj.jdField_a_of_type_Int, f1, f2));
-      this.jdField_a_of_type_Biok.jdField_a_of_type_JavaUtilArrayList.add(new bioj(bioj.jdField_b_of_type_Int, f1 + 1.0F, f2 + 1.0F));
-      continue;
-      float f3 = (this.jdField_a_of_type_Float + f1) / 2.0F;
-      float f4 = (this.jdField_b_of_type_Float + f2) / 2.0F;
-      if (this.jdField_a_of_type_Biok != null)
-      {
-        this.jdField_a_of_type_Biok.jdField_a_of_type_AndroidGraphicsPath.quadTo(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f3, f4);
-        this.jdField_a_of_type_Biok.jdField_a_of_type_JavaUtilArrayList.add(new bioj(bioj.c, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f3, f4));
-      }
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-    }
-  }
-  
-  public Paint b()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPaint;
   }
   
   public void b()
   {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Biok = null;
+    this.jdField_a_of_type_Bioo.d();
+    this.jdField_a_of_type_Bion.d();
+  }
+  
+  public void c()
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 4, "### onChangeCamera");
+    if (this.jdField_a_of_type_Boolean) {
+      d();
+    }
   }
 }
 

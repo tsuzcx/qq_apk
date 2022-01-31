@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.SendMsg;
+import java.util.Queue;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadPoolExecutor;
 
-public final class bfex
-  implements Parcelable.Creator<SendMsg>
+class bfex
+  implements RejectedExecutionHandler
 {
-  public SendMsg a(Parcel paramParcel)
-  {
-    return new SendMsg(paramParcel);
-  }
+  bfex(bfew parambfew) {}
   
-  public SendMsg[] a(int paramInt)
+  public void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
   {
-    return new SendMsg[paramInt];
+    bfew.a(this.a).offer(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfex
  * JD-Core Version:    0.7.0.1
  */

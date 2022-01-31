@@ -1,67 +1,18 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
 public class bjlt
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private static float[] jdField_a_of_type_ArrayOfFloat = { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
-  public int a;
-  public bjlu a;
-  private bjlv jdField_a_of_type_Bjlv;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private AtomicInteger b;
+  public bjlt(CropVideoActivity paramCropVideoActivity) {}
   
-  public int a()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndAdd(0);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bjlv != null)
-    {
-      this.jdField_a_of_type_Bjlv.a();
-      return;
-    }
-    b();
-  }
-  
-  public void a(int paramInt, Object paramObject, boolean paramBoolean)
-  {
-    boolean bool = true;
-    bjlu localbjlu = this.jdField_a_of_type_Bjlu;
-    if (paramInt == 1) {}
-    for (;;)
-    {
-      localbjlu.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Bjlu.jdField_a_of_type_JavaLangObject = paramObject;
-      this.jdField_a_of_type_Bjlu.b = paramBoolean;
-      return;
-      bool = false;
-    }
-  }
-  
-  public int b()
-  {
-    return this.b.getAndSet(1);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(0);
-  }
-  
-  public int c()
-  {
-    return this.b.getAndAdd(0);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(1);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(2);
+    paramMotionEvent.getX();
+    paramMotionEvent.getY();
+    CropVideoActivity.a(this.a).b(2.0F, 2.0F, 1.0F);
+    return true;
   }
 }
 

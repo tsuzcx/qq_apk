@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import aotc;
-import aovz;
+import apkm;
+import apnm;
 import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.mobileqq.data.MessageRecord;
 

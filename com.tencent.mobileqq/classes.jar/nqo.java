@@ -1,21 +1,29 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
 
-class nqo
-  implements Animator.AnimatorListener
+public class nqo
+  extends akdo
 {
-  nqo(nqi paramnqi) {}
+  public nqo(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(boolean paramBoolean, String paramString)
   {
-    nqi.b(this.a);
+    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      if ((paramBoolean) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramString)))
+      {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131701259));
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131701238));
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846180);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,28 +1,20 @@
-import android.media.MediaFormat;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo.1.1;
 
 public class vgv
+  implements tcc<tdt>
 {
-  public int a;
-  public long a;
-  public MediaFormat a;
-  public String a;
-  public boolean a;
-  public int b = 1;
-  public String b;
-  public String c;
+  vgv(vgu paramvgu) {}
   
-  public vgv()
+  public void a(boolean paramBoolean, tdt paramtdt)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    localStringBuilder.append("Image2result.result ").append("src: ").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("result ").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    veg.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramtdt != null))
+    {
+      veg.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, temperature=%s", Integer.valueOf(paramtdt.a));
+      int i = paramtdt.a;
+      vgu.a(this.a).post(new EditVideoFilterNeo.1.1(this, i));
+    }
   }
 }
 

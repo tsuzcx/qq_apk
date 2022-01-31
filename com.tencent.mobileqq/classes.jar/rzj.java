@@ -1,18 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpDialogModel;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo;
+import com.tencent.viola.core.dispatch.ComponentAppearEvent;
+import com.tencent.viola.core.dispatch.IEvent;
+import com.tencent.viola.core.dispatch.IObserver;
 
-public final class rzj
-  implements Parcelable.Creator<WSPushOpDialogModel>
+public class rzj
+  implements IObserver
 {
-  public WSPushOpDialogModel a(Parcel paramParcel)
+  public rzj(VTopicVideo paramVTopicVideo) {}
+  
+  public String getRef()
   {
-    return new WSPushOpDialogModel(paramParcel);
+    return this.a.getRef();
   }
   
-  public WSPushOpDialogModel[] a(int paramInt)
+  public void onReceive(IEvent paramIEvent)
   {
-    return new WSPushOpDialogModel[paramInt];
+    if ((paramIEvent.getRef().equals(this.a.getRef())) && (this.a.getVideoLifeCycleChangeListener() != null))
+    {
+      paramIEvent = (ComponentAppearEvent)paramIEvent;
+      if (!paramIEvent.event.equals("didDisappear")) {
+        break label59;
+      }
+      this.a.getVideoLifeCycleChangeListener().c();
+    }
+    label59:
+    do
+    {
+      return;
+      if (paramIEvent.event.equals("willAppear"))
+      {
+        this.a.getVideoLifeCycleChangeListener().a();
+        return;
+      }
+    } while (!paramIEvent.event.equals("didAppear"));
+    this.a.getVideoLifeCycleChangeListener().b();
   }
 }
 

@@ -1,48 +1,45 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.text.Spanned;
 
 class bjgk
+  extends bkcj
 {
-  private final Drawable a;
-  private final Drawable b;
-  
-  bjgk(Context paramContext)
+  bjgk(bjgj parambjgj, int paramInt)
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837548);
-    this.b = paramContext.getDrawable(2130837550);
+    super(paramInt);
   }
   
-  private Drawable a(Drawable paramDrawable)
+  public int a(CharSequence paramCharSequence)
   {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
+    return 0;
   }
   
-  private Drawable b(Drawable paramDrawable)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
-  }
-  
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
-  }
-  
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    int j = 0;
+    String str = paramCharSequence.subSequence(paramInt1, paramInt2).toString().replaceAll("\n", "");
+    int i;
+    if (paramInt2 - paramInt1 != str.length())
+    {
+      i = 1;
+      if (i == 0) {
+        break label92;
+      }
+      paramInt2 = str.length();
+      paramInt1 = j;
+      paramCharSequence = str;
+    }
+    label92:
+    for (;;)
+    {
+      paramSpanned = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+      if ((paramSpanned == null) && (i != 0))
+      {
+        return paramCharSequence;
+        i = 0;
+        break;
+      }
+      return paramSpanned;
+    }
   }
 }
 

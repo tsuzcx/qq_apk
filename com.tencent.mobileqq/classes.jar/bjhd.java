@@ -1,123 +1,220 @@
+import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.opengl.GLES20;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.support.annotation.NonNull;
+import android.text.InputFilter;
+import android.text.TextPaint;
+import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import java.io.IOException;
+import com.tencent.qphone.base.util.BaseApplication;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bjhd
-  extends bjha
+  extends DynamicTextItem
 {
-  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230756);
-  private float jdField_a_of_type_Float = 30.0F;
-  private int jdField_a_of_type_Int;
+  private float jdField_a_of_type_Float = 0.73F;
+  private Resources jdField_a_of_type_AndroidContentResResources;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private InputFilter jdField_a_of_type_AndroidTextInputFilter;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  private String jdField_a_of_type_JavaLangString = "#ffffff";
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private float jdField_b_of_type_Float = 0.31F;
   private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private int d = -1;
+  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  private int c;
+  private int d;
   private int e;
+  private int f;
+  private int g;
+  private int h;
+  private int i;
+  private int j;
+  private int k;
+  private int l;
+  private int m;
   
-  public bjhd()
+  public bjhd(int paramInt, @NonNull List<String> paramList, Typeface paramTypeface, Bitmap paramBitmap)
   {
-    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
-    this.mTextureType = 3553;
-    this.mFilterType = 106;
+    super(paramInt, paramList);
+    a(paramTypeface, paramBitmap);
+    if (!paramList.isEmpty()) {
+      a(0, (String)paramList.get(0));
+    }
   }
   
-  public void a(float paramFloat)
+  private int a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    return (int)(this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density * paramFloat);
   }
   
-  public void a(Bitmap paramBitmap)
+  private void a(Typeface paramTypeface)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor(this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
+  }
+  
+  private void a(Typeface paramTypeface, Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_AndroidContentResResources = BaseApplicationImpl.getContext().getResources();
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    a(paramTypeface);
+    this.e = a(48.75F);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.e);
+    this.jdField_b_of_type_Int = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(ajyc.a(2131704705)));
+    this.f = a(27.0F);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.f);
+    this.c = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(ajyc.a(2131704704)));
+    this.g = a(18.0F);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.g);
+    this.d = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(ajyc.a(2131704706)));
+    this.k = a(0.0F);
+    this.l = a(0.0F);
+    this.h = ((int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * 0.98D));
+    this.i = ((int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * 0.98D));
   }
   
-  public void a(String paramString)
+  public float a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    try
+    return this.h;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public InputFilter a()
+  {
+    if (this.jdField_a_of_type_AndroidTextInputFilter == null) {
+      this.jdField_a_of_type_AndroidTextInputFilter = new bjhf(this, 20);
+    }
+    return this.jdField_a_of_type_AndroidTextInputFilter;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    super.a(paramInt, paramString);
+    paramString = super.a(paramInt, new bjhe(this));
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    int i1 = paramString.length();
+    int n;
+    if (i1 > 10)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = vlc.a(paramString, null);
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramString.substring(0, 10));
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramString.substring(10, Math.min(i1, 20)));
+      this.j = this.g;
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.j);
+      this.m = this.d;
+      paramInt = this.m;
+      n = this.k + paramInt * 2;
+      paramInt = this.m * 10 + this.l * 9;
+    }
+    while (paramInt > this.i * this.jdField_a_of_type_Float)
+    {
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, paramInt - this.jdField_a_of_type_Float * this.i, this.h, this.i * (1.0F - this.jdField_a_of_type_Float) + paramInt);
+      paramString = this.jdField_b_of_type_AndroidGraphicsRectF;
+      f1 = this.h - n;
+      f2 = this.jdField_b_of_type_Float;
+      f3 = this.h;
+      f4 = this.jdField_b_of_type_Float;
+      paramString.set(f1 * f2, 0.0F, n * (1.0F - this.jdField_b_of_type_Float) + f3 * f4, paramInt);
       return;
-    }
-    catch (IOException paramString)
-    {
-      urk.c("Q.qqstory.publish.edit GPUImagePixelationFilter", "setMosaicPath OutOfMemoryError", paramString);
-    }
-  }
-  
-  public void onDestroy()
-  {
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      urk.b("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap recycle");
-    }
-    if (this.d != -1) {
-      GlUtil.deleteTexture(this.d);
-    }
-  }
-  
-  public void onDrawTexture()
-  {
-    super.onDrawTexture();
-    GLES20.glUniform1f(this.jdField_a_of_type_Int, this.jdField_b_of_type_Float);
-    GLES20.glUniform1f(this.jdField_b_of_type_Int, this.jdField_c_of_type_Float);
-    GLES20.glUniform1f(this.jdField_c_of_type_Int, this.jdField_a_of_type_Float);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-    {
-      urk.e("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap can't be null");
-      return;
-    }
-    GLES20.glActiveTexture(33985);
-    if ((this.d == -1) || (this.jdField_a_of_type_Boolean))
-    {
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())
+      int i2;
+      if (i1 > 5)
       {
-        urk.e("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap is recycled");
-        return;
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        this.j = this.f;
+        this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.j);
+        this.m = this.c;
+        n = this.m * 1;
+        paramInt = this.m;
+        i2 = this.l;
+        paramInt = Math.max(i1 - 1, 0) * i2 + paramInt * i1;
       }
-      if (this.d != -1) {
-        GlUtil.deleteTexture(this.d);
-      }
-      this.d = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      else
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        this.j = this.e;
+        this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.j);
+        this.m = this.jdField_b_of_type_Int;
+        n = this.m * 1;
+        paramInt = i1;
+        if (i1 == 0) {
+          paramInt = 2;
+        }
+        i1 = this.m;
+        i2 = this.l;
+        paramInt = Math.max(paramInt - 1, 0) * i2 + i1 * paramInt;
       }
     }
-    GLES20.glBindTexture(3553, this.d);
-    GLES20.glUniform1i(this.e, 1);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.h, this.i);
+    paramString = this.jdField_b_of_type_AndroidGraphicsRectF;
+    float f1 = this.h - n;
+    float f2 = this.jdField_b_of_type_Float;
+    float f3 = (this.i * this.jdField_a_of_type_Float - paramInt) / 2.0F;
+    float f4 = this.h;
+    float f5 = this.jdField_b_of_type_Float;
+    float f6 = n;
+    float f7 = this.jdField_b_of_type_Float;
+    float f8 = this.i;
+    float f9 = this.jdField_a_of_type_Float;
+    paramString.set(f1 * f2, f3, f6 * (1.0F - f7) + f4 * f5, (paramInt + f8 * f9) / 2.0F);
   }
   
-  public void onInitialized()
+  public void a(Canvas paramCanvas)
   {
-    super.onInitialized();
-    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "imageWidthFactor");
-    checkLocation(this.jdField_a_of_type_Int, "imageWidthFactor");
-    this.jdField_b_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "imageHeightFactor");
-    checkLocation(this.jdField_b_of_type_Int, "imageHeightFactor");
-    this.jdField_c_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "pixel");
-    checkLocation(this.jdField_c_of_type_Int, "mPixelLocation");
-    this.e = GLES20.glGetUniformLocation(getProgram(), "sTexture2");
-    a(this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_Boolean = true;
+    Object localObject = new Rect();
+    ((Rect)localObject).set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, (Rect)localObject, this.jdField_a_of_type_AndroidGraphicsRectF, null);
+    if (super.b(0)) {
+      paramCanvas.drawRoundRect(new RectF(this.jdField_b_of_type_AndroidGraphicsRectF.left, this.jdField_b_of_type_AndroidGraphicsRectF.top, this.jdField_b_of_type_AndroidGraphicsRectF.right, this.jdField_b_of_type_AndroidGraphicsRectF.bottom + this.m * 0.1F), 6.0F, 6.0F, a());
+    }
+    int i1 = (int)(this.jdField_b_of_type_AndroidGraphicsRectF.left + 0.5D * this.m);
+    int n = (int)(this.jdField_b_of_type_AndroidGraphicsRectF.top + this.m);
+    int i2 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+    while (i2 >= 0)
+    {
+      localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i2);
+      int i5 = ((String)localObject).length();
+      int i4 = 0;
+      int i3 = n;
+      n = i4;
+      while (n < i5)
+      {
+        paramCanvas.drawText(((String)localObject).substring(n, n + 1), i1, i3, this.jdField_a_of_type_AndroidTextTextPaint);
+        i3 += this.m + this.l;
+        n += 1;
+      }
+      i3 = this.m;
+      i4 = this.k;
+      n = (int)(this.jdField_b_of_type_AndroidGraphicsRectF.top + this.m);
+      i2 -= 1;
+      i1 += i3 + i4;
+    }
   }
   
-  public void onOutputSizeChanged(int paramInt1, int paramInt2)
+  public boolean a()
   {
-    super.onOutputSizeChanged(paramInt1, paramInt2);
-    urk.a("Q.qqstory.publish.edit GPUImagePixelationFilter", "onOutputSizeChanged width=%s, height=%s", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    this.jdField_b_of_type_Float = 0.0009259259F;
-    this.jdField_c_of_type_Float = 0.0005208334F;
+    return true;
+  }
+  
+  public float b()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRectF.bottom - Math.min(this.jdField_b_of_type_AndroidGraphicsRectF.top, this.jdField_a_of_type_AndroidGraphicsRectF.top);
   }
 }
 

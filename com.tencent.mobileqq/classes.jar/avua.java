@@ -1,21 +1,14 @@
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.CircleProgress;
 
-final class avua
-  implements Comparator<avoj>
+public abstract interface avua
 {
-  public int a(avoj paramavoj1, avoj paramavoj2)
-  {
-    int j = Long.signum(paramavoj2.b() - paramavoj1.b());
-    int i = j;
-    if (j == 0) {
-      i = avtz.a(paramavoj1, paramavoj2);
-    }
-    return i;
-  }
+  public abstract boolean a(@NonNull TextView paramTextView, @NonNull CircleProgress paramCircleProgress, long paramLong, float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avua
  * JD-Core Version:    0.7.0.1
  */

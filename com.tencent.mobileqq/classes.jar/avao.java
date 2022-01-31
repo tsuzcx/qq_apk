@@ -1,56 +1,149 @@
-import android.graphics.Bitmap.CompressFormat;
-import android.opengl.GLES20;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.ThumbnailUtil.1;
-import java.nio.Buffer;
-import java.nio.IntBuffer;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.profile.view.VipPhotoViewForSimple;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.net.URL;
+import java.util.List;
 
 public class avao
+  extends BaseAdapter
 {
-  public static String a(String paramString)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  List<avah> jdField_a_of_type_JavaUtilList;
+  
+  public avao(VipPhotoViewForSimple paramVipPhotoViewForSimple, Context paramContext)
   {
-    return paramString + ".thumb.png";
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
   }
   
-  public static void a(int paramInt1, int paramInt2, int paramInt3, auzf paramauzf, avaq paramavaq)
+  public void a(List<avah> paramList)
   {
-    int[] arrayOfInt1 = new int[paramInt2 * paramInt3];
-    int[] arrayOfInt2 = new int[paramInt2 * paramInt3];
-    Object localObject1 = IntBuffer.wrap(arrayOfInt1);
-    ((IntBuffer)localObject1).position(0);
-    Object localObject2;
-    if (paramInt1 != 0)
-    {
-      localObject2 = new int[1];
-      GLES20.glGenFramebuffers(1, (int[])localObject2, 0);
-      GLES20.glBindFramebuffer(36160, localObject2[0]);
-      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
-      GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject1);
-      GLES20.glBindFramebuffer(36160, 0);
-      GLES20.glDeleteFramebuffers(1, (int[])localObject2, 0);
-      localObject2[0] = 0;
-      localObject2 = paramauzf.jdField_a_of_type_Avap;
-      if (localObject2 == null) {
-        break label169;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    int i = paramList.size();
+    if (i < 16) {
+      if (VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple)) {
+        this.jdField_a_of_type_JavaUtilList.add(new avah(paramList.size(), 101, null));
       }
-      paramauzf = ((avap)localObject2).jdField_a_of_type_JavaLangString;
-      localObject1 = ((avap)localObject2).jdField_a_of_type_AndroidGraphicsBitmap$CompressFormat;
     }
-    for (paramInt1 = ((avap)localObject2).jdField_a_of_type_Int;; paramInt1 = 100)
+    for (;;)
     {
-      ThreadManager.executeOnFileThread(new ThumbnailUtil.1(paramInt3, paramInt2, arrayOfInt1, arrayOfInt2, paramauzf, (Bitmap.CompressFormat)localObject1, paramInt1, paramavaq));
+      notifyDataSetChanged();
       return;
-      GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject1);
+      paramList = (avah)this.jdField_a_of_type_JavaUtilList.get(i - 1);
+      paramList.d = 102;
+      this.jdField_a_of_type_JavaUtilList.set(i - 1, paramList);
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @TargetApi(16)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = null;
+    avah localavah = (avah)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    View localView;
+    if (paramView == null)
+    {
+      paramViewGroup = new avap(this);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561627, null);
+      localView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple.c, this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple.d));
+      paramViewGroup.a = ((URLImageView)localView.findViewById(2131373662));
+      localView.setTag(paramViewGroup);
+      paramViewGroup.a.setTag(new ausu(25, Integer.valueOf(paramInt)));
+      paramViewGroup.a.setOnClickListener(VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple));
+      paramView = (RelativeLayout.LayoutParams)paramViewGroup.a.getLayoutParams();
+      if (localavah != null)
+      {
+        if ((localavah.d != 100) && (localavah.d != 102)) {
+          break label320;
+        }
+        if (Build.VERSION.SDK_INT < 16) {
+          break label283;
+        }
+        localView.setBackground(null);
+        label173:
+        paramViewGroup.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramView = localavah.a();
+        if (paramView == null) {
+          break label376;
+        }
+        paramView = new URL("qzone_cover", "original", paramView);
+      }
+      catch (Exception localException)
+      {
+        label283:
+        paramView = localObject;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("Q.qzonecover.", 2, localException.toString());
+        paramView = localObject;
+        continue;
+      }
+      if (paramView != null) {
+        paramViewGroup.a.setImageDrawable(URLDrawable.getDrawable(paramView, this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple.c, this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple.d));
+      }
+      paramViewGroup.a.setContentDescription(ajyc.a(2131716763) + (paramInt + 1));
+      return localView;
+      paramViewGroup = (avap)paramView.getTag();
+      localView = paramView;
       break;
-      label169:
-      paramauzf = a(paramauzf.jdField_a_of_type_JavaLangString);
-      localObject1 = Bitmap.CompressFormat.PNG;
+      localView.setBackgroundDrawable(null);
+      break label173;
+      label320:
+      if (localException.d == 101)
+      {
+        paramViewGroup.a.setScaleType(ImageView.ScaleType.CENTER);
+        auvd.a(paramViewGroup.a, "src", VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple).a, "simpleGridAddSrc");
+        paramViewGroup.a.setContentDescription(ajyc.a(2131716764));
+        return localView;
+        label376:
+        paramView = null;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avao
  * JD-Core Version:    0.7.0.1
  */

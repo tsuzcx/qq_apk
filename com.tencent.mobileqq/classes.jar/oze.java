@@ -1,287 +1,145 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import org.json.JSONObject;
+import java.util.List;
+import tencent.im.oidb.FavoriteCKVData.KandianFavoriteBizData;
+import tencent.im.oidb.cmd0xb40.oidb_0xb40.CheckFavoriteReqBody;
+import tencent.im.oidb.cmd0xb40.oidb_0xb40.ReqBody;
 
 public class oze
-  extends ViewBase
 {
-  public static String a;
-  private double jdField_a_of_type_Double = 0.18D;
-  private int jdField_a_of_type_Int = 22;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int b = 115;
-  private int c;
-  private int d;
-  private int e = 351;
-  private int f = 1;
-  private int g = 11;
-  private int h = 3;
-  private int i;
-  private int j = 6;
+  public static final String a;
+  static HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap;
+  public static oze a;
+  public static final String b;
+  public static final String c;
+  public static final String d;
+  private ozx jdField_a_of_type_Ozx = new ozx();
   
   static
   {
-    jdField_a_of_type_JavaLangString = "ReadInJoyFriendsBiu";
+    jdField_a_of_type_JavaLangString = "Q.readinjoy.atlas.." + oze.class.getSimpleName();
+    b = ajyc.a(2131712898);
+    c = ajyc.a(2131712809);
+    d = ajyc.a(2131712969);
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1), b);
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2), c);
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(3), d);
   }
   
-  public oze(VafContext paramVafContext)
+  public static oze a()
   {
-    super(paramVafContext);
-    this.jdField_a_of_type_AndroidContentContext = paramVafContext.getContext();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    this.c = Utils.rp2px(this.jdField_a_of_type_Int);
-    this.d = Utils.rp2px(this.b);
-    this.e = Utils.rp2px(this.e);
-    this.g = Utils.rp2px(this.g);
-    this.f = Utils.rp2px(this.f);
-    this.j = Utils.rp2px(this.j);
-  }
-  
-  private int a()
-  {
-    return (int)((this.e - this.c) / (this.c * (1.0D - this.jdField_a_of_type_Double)) + 1.0D);
-  }
-  
-  private void a()
-  {
-    int i1 = a();
-    int i2 = (int)Math.ceil(this.jdField_a_of_type_JavaUtilArrayList.size() / i1);
-    int m = 1;
-    if (m <= i2)
+    if (jdField_a_of_type_Oze == null) {}
+    try
     {
-      int i3 = (m - 1) * i1;
-      if (i3 + i1 <= this.jdField_a_of_type_JavaUtilArrayList.size()) {}
-      for (int k = i3 + i1;; k = i3 + this.jdField_a_of_type_JavaUtilArrayList.size() % i1)
+      if (jdField_a_of_type_Oze == null) {
+        jdField_a_of_type_Oze = new oze();
+      }
+      return jdField_a_of_type_Oze;
+    }
+    finally {}
+  }
+  
+  private void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, ArrayList<byte[]> paramArrayList)
+  {
+    new bgpd(6).a("nLinkType", 0).b("sTitle", paramString2).b("sUrl", paramString6).a("bAppShare", false).a("lAppId", 0L).b("sPublisher", paramString4).b("sBrief", paramString3).b("sPath", paramString5).b("sResUrl", paramString6).a("lCategory", 8L).b("sBizDataList", paramArrayList).b(paramActivity, paramString1, -1, null);
+  }
+  
+  public static boolean a(Context paramContext, boolean paramBoolean)
+  {
+    boolean bool = false;
+    if (onk.a(BaseApplicationImpl.getApplication().getRuntime(), "Key_First_ReadInJoy_Favorite", true) == null)
+    {
+      onk.a("Key_First_ReadInJoy_Favorite", Integer.valueOf(1), true);
+      if (!paramBoolean) {
+        bbcv.a(paramContext, 230, paramContext.getString(2131692366), "你可在看点内点击“我的”找到“我的收藏”。\n收藏的内容将会上传保存，在其他手机上登录QQ，也可以在看点内找到你收藏的内容。\n", 2131690596, 2131692364, new ozg(), null).setMessageCount(null).show();
+      }
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public void a(Activity paramActivity, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, Bundle paramBundle)
+  {
+    FavoriteCKVData.KandianFavoriteBizData localKandianFavoriteBizData = new FavoriteCKVData.KandianFavoriteBizData();
+    localKandianFavoriteBizData.bytes_rowkey.set(ByteStringMicro.copyFromUtf8(paramString2));
+    localKandianFavoriteBizData.uint32_type.set(paramInt);
+    ArrayList localArrayList = new ArrayList();
+    if (paramBundle != null)
+    {
+      paramInt = paramBundle.getInt("videoDuration");
+      localKandianFavoriteBizData.uint32_video_duration.set(paramInt);
+      paramInt = paramBundle.getInt("picNum");
+      localKandianFavoriteBizData.uint32_pic_num.set(paramInt);
+      long l = paramBundle.getLong("publishAccountUin");
+      localKandianFavoriteBizData.uint64_account_id.set(l);
+      paramString2 = paramBundle.getString("publishAccountName");
+      if (!TextUtils.isEmpty(paramString2))
       {
-        int n = k;
-        if (k > this.h) {
-          n = this.h;
-        }
-        a(i3 + 1, n, (m - 1) * this.c + this.g);
-        m += 1;
-        break;
+        localKandianFavoriteBizData.bytes_account_name.set(ByteStringMicro.copyFromUtf8(paramString2));
+        l = paramBundle.getLong("feedsId");
+        localKandianFavoriteBizData.uint64_feeds_id.set(l);
+        paramInt = paramBundle.getInt("feedsType");
+        localKandianFavoriteBizData.uint32_feeds_type.set(paramInt);
+        paramInt = paramBundle.getInt("videoType");
+        localKandianFavoriteBizData.uint32_video_type.set(paramInt);
       }
     }
-    a(i2);
-  }
-  
-  private void a(int paramInt)
-  {
-    int k;
-    Object localObject;
-    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-    {
-      k = this.jdField_a_of_type_JavaUtilArrayList.size();
-      localObject = k + "人也Biu了";
-      long l = obz.a();
-      if ((this.jdField_a_of_type_JavaUtilArrayList.size() != 1) || (l != ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(0)).longValue())) {
-        break label281;
-      }
-      localObject = "还Biu了" + this.i + ajjy.a(2131647187);
-    }
-    label132:
-    label183:
-    label332:
-    label347:
-    label359:
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      k = a();
-      int m;
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > k)
-      {
-        m = k;
-        if (k > this.h) {
-          m = this.h;
-        }
-        if (m <= 1) {
-          break label332;
-        }
-        k = (int)((m - 1) * (1.0D - this.jdField_a_of_type_Double) * this.c + this.c + this.d);
-        if (k <= this.e) {
-          break label347;
-        }
-      }
-      for (paramInt = this.c * paramInt;; paramInt = (paramInt - 1) * this.c)
-      {
-        m = this.d;
-        localObject = new FrameLayout.LayoutParams(this.d, -2);
-        ((FrameLayout.LayoutParams)localObject).setMargins(k - m, paramInt + this.g, 0, 0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131099818));
-        this.jdField_a_of_type_AndroidWidgetTextView.setPadding(this.j, 0, 0, 0);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-        return;
-        if (k <= this.h) {
-          break label359;
-        }
-        localObject = ajjy.a(2131647321) + k + "人也Biu了";
-        break;
-        k = this.jdField_a_of_type_JavaUtilArrayList.size();
-        break label132;
-        k = m * this.c + this.d;
-        break label183;
-      }
-    }
-  }
-  
-  private void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int k = paramInt2 - 1;
-    ReadInJoyHeadImageView localReadInJoyHeadImageView;
-    FrameLayout.LayoutParams localLayoutParams1;
-    int n;
-    if (k >= paramInt1 - 1)
-    {
-      localReadInJoyHeadImageView = new ReadInJoyHeadImageView(this.jdField_a_of_type_AndroidContentContext);
-      localLayoutParams1 = new FrameLayout.LayoutParams(this.c, this.c);
-      n = (int)((k - paramInt1 + 1) * (1.0D - this.jdField_a_of_type_Double) * this.c);
-      if (paramInt2 != this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label216;
-      }
-    }
-    label216:
-    for (int m = 20;; m = 0)
-    {
-      localLayoutParams1.setMargins(n, paramInt3, 0, m);
-      localReadInJoyHeadImageView.setHeadImgByUin(((Long)this.jdField_a_of_type_JavaUtilArrayList.get(k)).longValue());
-      FrameLayout.LayoutParams localLayoutParams2 = new FrameLayout.LayoutParams(this.c + this.f * 2, this.c + this.f * 2);
-      ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      localLayoutParams2.setMargins(n - this.f, paramInt3 - this.f, 0, m);
-      localImageView.setBackgroundResource(2130848199);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localImageView, localLayoutParams2);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localReadInJoyHeadImageView, localLayoutParams1);
-      k -= 1;
+      localArrayList.add(localKandianFavoriteBizData.toByteArray());
+      a(paramActivity, paramString1, paramString3, paramString4, paramString2, paramString5, paramString6, localArrayList);
+      return;
+      paramString2 = "";
       break;
+      paramString2 = "";
+    }
+  }
+  
+  public void a(Activity paramActivity, String paramString1, int paramInt, String paramString2, ArrayList<String> paramArrayList)
+  {
+    FavoriteCKVData.KandianFavoriteBizData localKandianFavoriteBizData = new FavoriteCKVData.KandianFavoriteBizData();
+    localKandianFavoriteBizData.bytes_rowkey.set(ByteStringMicro.copyFromUtf8(paramString2));
+    localKandianFavoriteBizData.uint32_type.set(paramInt);
+    paramString2 = new ArrayList();
+    paramString2.add(localKandianFavoriteBizData.toByteArray());
+    new bgpd(6).a("sCIDListToBeDelete", paramArrayList).b("sBizDataList", paramString2).a(paramActivity, paramString1, -1, null);
+  }
+  
+  public void a(List<String> paramList, ozh paramozh)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "getAtlasFavoriteStatus, rowKeyList = " + paramList + ", callback = " + paramozh);
+    }
+    oidb_0xb40.ReqBody localReqBody = new oidb_0xb40.ReqBody();
+    oidb_0xb40.CheckFavoriteReqBody localCheckFavoriteReqBody = new oidb_0xb40.CheckFavoriteReqBody();
+    if (paramList == null) {
       return;
     }
-  }
-  
-  private void a(Object paramObject)
-  {
-    do
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
-          this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
-        }
-        this.i = 0;
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        paramObject = (JSONObject)paramObject;
-        Iterator localIterator = paramObject.keys();
-        while (localIterator.hasNext())
-        {
-          long l = Long.parseLong(paramObject.get((String)localIterator.next()).toString());
-          this.i += 1;
-          if (!this.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(l))) {
-            this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(l));
-          }
-        }
-        a();
+      String str = (String)paramList.next();
+      if (!TextUtils.isEmpty(str)) {
+        localCheckFavoriteReqBody.rpt_bytes_rowkey.add(ByteStringMicro.copyFromUtf8(str));
       }
-      catch (Exception paramObject)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "parseUinList error:" + paramObject.toString());
-        }
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "parseUinList :" + this.jdField_a_of_type_JavaUtilArrayList.size());
-  }
-  
-  private void b(Object paramObject)
-  {
-    int k = Utils.parseColor(paramObject.toString());
-    if (k != 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(k);
     }
-  }
-  
-  private void c(Object paramObject)
-  {
-    Double localDouble = Utils.toDouble(paramObject);
-    if (localDouble != null)
-    {
-      int k = Utils.dp2px(localDouble.doubleValue());
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(k);
-      return;
-    }
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "setTextSize: fail to parse - " + paramObject);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_AndroidWidgetFrameLayout;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.layout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.measure(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    boolean bool = super.setAttribute(paramInt, paramObject);
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return bool;
-      a(paramObject);
-      return bool;
-      c(paramObject);
-      return bool;
-      b(paramObject);
-      return bool;
-      try
-      {
-        this.d = Utils.rp2px(Integer.valueOf(paramObject.toString()).intValue());
-        return bool;
-      }
-      catch (Exception paramObject) {}
-    } while (!QLog.isColorLevel());
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "parse STR_ID_BORDER_WIDTH error:" + paramObject.toString());
-    return bool;
+    localReqBody.msg_check_favorite_req.set(localCheckFavoriteReqBody);
+    paramList = new Bundle();
+    mxi.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new ozf(this, paramozh), localReqBody.toByteArray(), "OidbSvc.0xb40", 2880, 1, paramList, 0L);
   }
 }
 

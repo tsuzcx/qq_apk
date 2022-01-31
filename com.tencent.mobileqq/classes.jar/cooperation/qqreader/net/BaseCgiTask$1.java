@@ -1,16 +1,16 @@
 package cooperation.qqreader.net;
 
-import bfmg;
-import bfmi;
+import bguq;
+import bgus;
 
 class BaseCgiTask$1
   implements Runnable
 {
-  BaseCgiTask$1(BaseCgiTask paramBaseCgiTask, bfmg parambfmg, bfmi parambfmi) {}
+  BaseCgiTask$1(BaseCgiTask paramBaseCgiTask, bguq parambguq, bgus parambgus) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bfmg.a(this.jdField_a_of_type_Bfmi);
+    this.jdField_a_of_type_Bguq.a(this.jdField_a_of_type_Bgus);
   }
 }
 

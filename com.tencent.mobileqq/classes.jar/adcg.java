@@ -1,27 +1,38 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.1;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.2;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class adcg
-  extends acju
+  implements INetInfoHandler
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_b_of_type_ComTencentImageURLImageView;
-  public String b;
-  private View jdField_c_of_type_AndroidViewView;
-  private String jdField_c_of_type_JavaLangString;
-  public int e = 544;
-  public int f = 960;
+  public adcg(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public adcg()
+  public void onNetMobile2None()
   {
-    this.jdField_b_of_type_JavaLangString = "http://v.qqstory.qq.com/shg_1206944563_50009_a1390c0bd23148e29d598d780ad1vid.f30.mp4";
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextEditPanel", 2, "onNetMobile2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
+    }
+    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.1(this));
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextEditPanel", 2, "onNetWifi2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
+    }
+    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.2(this));
   }
 }
 

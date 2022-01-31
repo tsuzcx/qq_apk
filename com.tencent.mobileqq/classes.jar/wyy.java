@@ -1,64 +1,47 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.troop.VideoCombineHelper.3;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class wyy
-  extends Handler
+public class wyy
+  extends wzv
 {
-  private WeakReference<wyw> a;
-  
-  public wyy(wyw paramwyw, Looper paramLooper)
+  public wyy(VideoCombineHelper.3 param3)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramwyw);
+    super(param3.this$0);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(wzu paramwzu)
   {
-    Object localObject2 = null;
-    if (this.a.get() != null) {}
-    for (wyw localwyw = (wyw)this.a.get();; localwyw = null)
+    do
     {
-      Object localObject1 = localObject2;
-      if (paramMessage.obj != null)
+      synchronized (this.a.this$0.jdField_a_of_type_JavaLangObject)
       {
-        localObject1 = localObject2;
-        if ((paramMessage.obj instanceof wyx)) {
-          localObject1 = (wyx)paramMessage.obj;
-        }
-      }
-      switch (paramMessage.what)
-      {
-      }
-      for (;;)
-      {
-        super.handleMessage(paramMessage);
-        return;
-        if ((localwyw != null) && (localObject1 != null))
+        this.a.this$0.jdField_a_of_type_JavaUtilHashMap.remove(paramwzu.c);
+        if ((paramwzu instanceof wzp))
         {
-          ((wyw)this.a.get()).d();
-          continue;
-          if ((localwyw != null) && (localObject1 != null))
-          {
-            ((wyw)this.a.get()).e();
-            continue;
-            if ((localwyw != null) && (localObject1 != null))
-            {
-              ((wyw)this.a.get()).c(((wyx)localObject1).a);
-              continue;
-              if ((localwyw != null) && (localObject1 != null))
-              {
-                ((wyw)this.a.get()).f();
-                continue;
-                if ((localwyw != null) && (localObject1 != null)) {
-                  ((wyw)this.a.get()).b(((wyx)localObject1).a);
-                }
-              }
-            }
-          }
+          this.a.jdField_a_of_type_Wze.a("", false, "download failed! msg = " + paramwzu.d);
+          return;
         }
       }
+      if ((paramwzu instanceof wzh))
+      {
+        this.a.jdField_a_of_type_Wze.a("", false, "combine failed! msg = " + paramwzu.d);
+        return;
+      }
+    } while (!(paramwzu instanceof wzs));
+    this.a.jdField_a_of_type_Wze.a("", false, "sending failed! msg = " + paramwzu.d);
+  }
+  
+  public void b(wzu paramwzu)
+  {
+    wzg localwzg = paramwzu.a();
+    if (((paramwzu instanceof wzh)) || (localwzg.b)) {}
+    synchronized (this.a.this$0.jdField_a_of_type_JavaLangObject)
+    {
+      this.a.this$0.jdField_a_of_type_JavaUtilHashMap.remove(paramwzu.c);
+      this.a.jdField_a_of_type_Wze.a(localwzg.e, true, "seding success");
+      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+      return;
     }
   }
 }

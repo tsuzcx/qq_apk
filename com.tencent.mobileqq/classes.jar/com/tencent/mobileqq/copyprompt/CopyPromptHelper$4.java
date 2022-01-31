@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.copyprompt;
 
-import amon;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import aneu;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class CopyPromptHelper$4
   implements Runnable
 {
-  public CopyPromptHelper$4(amon paramamon) {}
+  public CopyPromptHelper$4(aneu paramaneu) {}
   
   public void run()
   {
-    if ((amon.a(this.this$0) != null) && (amon.a(this.this$0).getParent() != null))
+    if ((aneu.a(this.this$0) != null) && (aneu.a(this.this$0).getParent() != null))
     {
-      ((RelativeLayout)amon.a(this.this$0).c.findViewById(2131298518)).removeView(amon.a(this.this$0));
-      amon.a(this.this$0, null);
+      ((RelativeLayout)aneu.a(this.this$0).c.findViewById(2131364076)).removeView(aneu.a(this.this$0));
+      aneu.a(this.this$0, null);
     }
   }
 }

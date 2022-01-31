@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import akiu;
+import akxg;
 
 public class ARGlobalConfigManager$2
   implements Runnable
 {
-  public ARGlobalConfigManager$2(akiu paramakiu) {}
+  public ARGlobalConfigManager$2(akxg paramakxg) {}
   
   public void run()
   {

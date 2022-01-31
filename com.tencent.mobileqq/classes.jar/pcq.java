@@ -1,18 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.polymeric.EventCallback;
-import java.util.List;
+import android.widget.TextView;
 
 class pcq
-  extends EventCallback
 {
-  pcq(pcj parampcj) {}
+  int jdField_a_of_type_Int = 2;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onPagerChange(int paramInt)
-  {
-    pcj.b(paramInt);
-    if ((pcj.b() != null) && (!pcj.b().contains(Integer.valueOf(paramInt)))) {
-      pcj.b().add(Integer.valueOf(paramInt));
-    }
-  }
+  private pcq(pcn parampcn) {}
 }
 
 

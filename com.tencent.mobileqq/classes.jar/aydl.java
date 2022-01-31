@@ -1,33 +1,29 @@
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import android.widget.TextView;
+import com.tencent.mobileqq.tablequery.TableQueryViewer;
 
 public class aydl
-  implements begw
 {
-  public aydl(MediaPreviewActivity paramMediaPreviewActivity, begr parambegr, URLDrawable paramURLDrawable) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  TextView d;
   
-  public void OnClick(View paramView, int paramInt)
+  public aydl(TableQueryViewer paramTableQueryViewer, View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.jdField_a_of_type_Azmp.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.jdField_a_of_type_Int);
-    String str = this.jdField_a_of_type_Begr.a(paramInt);
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131627742).equals(str)) && (paramView != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable, paramView.a);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131627752).equals(str)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      }
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376829));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(10.0F);
+    this.b = ((TextView)paramView.findViewById(2131376827));
+    this.b.setTextSize(10.0F);
+    this.c = ((TextView)paramView.findViewById(2131376831));
+    this.c.setTextSize(10.0F);
+    this.d = ((TextView)paramView.findViewById(2131376824));
+    this.d.setTextSize(10.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aydl
  * JD-Core Version:    0.7.0.1
  */

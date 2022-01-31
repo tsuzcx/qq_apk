@@ -27,7 +27,7 @@ public class GdtMvButtonHighLight
   public GdtMvButtonHighLight(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130839636);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130839684);
     this.jdField_a_of_type_AndroidGraphicsPaint = getPaint();
   }
   

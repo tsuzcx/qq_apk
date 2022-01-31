@@ -1,50 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PrecoverResource;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment.2.1;
 
 public class attz
-  extends axxg
+  extends asys
 {
-  axro jdField_a_of_type_Axro;
-  PrecoverResource jdField_a_of_type_ComTencentMobileqqDataPrecoverResource;
+  public attz(NearbyProfileFragment paramNearbyProfileFragment) {}
   
-  public attz(QQAppInterface paramQQAppInterface, PrecoverResource paramPrecoverResource, axro paramaxro)
+  public void a(asyt paramasyt)
   {
-    super(paramQQAppInterface, paramPrecoverResource.md5);
-    this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource = paramPrecoverResource;
-    this.jdField_a_of_type_Axro = paramaxro;
-  }
-  
-  protected void realCancel()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PrecoverResDownloader", 2, "DownloadTask realCancel");
-    }
-    attv localattv = (attv)this.app.getManager(179);
-    if ((localattv != null) && (localattv.a() != null)) {
-      localattv.a().a(this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource.md5);
-    }
-  }
-  
-  protected void realStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PrecoverResDownloader", 2, "DownloadTask realStart");
-    }
-    attv localattv = (attv)this.app.getManager(179);
-    if ((localattv != null) && (localattv.a() != null)) {
-      localattv.a().a(this);
-    }
-  }
-  
-  public String toString()
-  {
-    return "[DownloadTask] req=" + this.jdField_a_of_type_Axro + ", res=" + this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource;
+    ThreadManager.post(new NearbyProfileFragment.2.1(this, paramasyt), 8, null, false);
+    this.a.a = paramasyt;
+    this.a.a(paramasyt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attz
  * JD-Core Version:    0.7.0.1
  */

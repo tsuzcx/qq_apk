@@ -1,91 +1,35 @@
-import android.os.IBinder;
-import android.os.Parcel;
-import android.os.RemoteException;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class adym
-  implements adyk
+  implements View.OnClickListener
 {
-  private IBinder a;
+  adym(adyh paramadyh) {}
   
-  adym(IBinder paramIBinder)
+  public void onClick(View paramView)
   {
-    this.a = paramIBinder;
-  }
-  
-  public void a(CompressInfo paramCompressInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
+    switch (paramView.getId())
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      localParcel.writeParcelable(paramCompressInfo, 1);
-      this.a.transact(1, localParcel, null, 1);
+    default: 
       return;
     }
-    catch (RemoteException paramCompressInfo)
+    paramView = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(paramView))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
-      }
-      return;
+      Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("hide_more_button", true);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("url", paramView);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2130771997, 0);
     }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(CompressInfo paramCompressInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      localParcel.writeParcelable(paramCompressInfo, 1);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    catch (RemoteException paramCompressInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
-      }
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void c(CompressInfo paramCompressInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      localParcel.writeParcelable(paramCompressInfo, 1);
-      this.a.transact(3, localParcel, null, 1);
-      return;
-    }
-    catch (RemoteException paramCompressInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
-      }
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
+    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_talk", "", "obj", "link_msg", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
   }
 }
 

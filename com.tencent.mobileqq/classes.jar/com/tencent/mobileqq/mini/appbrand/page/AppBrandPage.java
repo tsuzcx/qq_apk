@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import alsd;
+import amgw;
 import android.app.Activity;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -9,12 +9,13 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bajq;
-import bdit;
+import bbkx;
+import bemw;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
@@ -40,6 +41,7 @@ import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniProgramReporter;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.reuse.MiniAppBannerIPCModule;
+import com.tencent.mobileqq.mini.ui.MiniAIOEntryView;
 import com.tencent.mobileqq.mini.ui.NavigationBar;
 import com.tencent.mobileqq.mini.ui.NavigationBar.Listener;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
@@ -75,10 +77,11 @@ public class AppBrandPage
   private boolean mNeedShowMonitorView;
   private String mUrl;
   private WebviewContainer mWebViewContainer = new WebviewContainer(getContext());
+  private MiniAIOEntryView miniAIOEntryView;
   private NavigationBar navBar;
   private ViewGroup rootView;
   private TabBarView tabView;
-  private bdit toast;
+  private bemw toast;
   private ToastView toastView;
   private Map<String, WebviewContainer> webViewMap = new HashMap();
   
@@ -89,12 +92,12 @@ public class AppBrandPage
   
   private int getDefaultNaviBarHeight()
   {
-    return bajq.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext());
+    return bbkx.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext());
   }
   
   private int getDefaultTabBarHeight()
   {
-    return bajq.b(54.0F);
+    return bbkx.b(54.0F);
   }
   
   private String getLoadedUrl(String paramString1, String paramString2)
@@ -246,14 +249,14 @@ public class AppBrandPage
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
     localRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, DisplayUtil.getRealHeight(getContext())));
     this.centerLayout = new FrameLayout(getContext());
-    this.centerLayout.setId(2131299142);
+    this.centerLayout.setId(2131364702);
     this.centerLayout.setBackgroundColor(-1);
     this.tabView = new TabBarView(getContext());
-    this.tabView.setId(2131310980);
+    this.tabView.setId(2131376789);
     this.tabView.setOnTabItemClickListener(this.appBrandPageContainer);
     this.tabView.setVisibility(8);
     this.navBar = new NavigationBar(getContext());
-    this.navBar.setId(2131305003);
+    this.navBar.setId(2131370669);
     return localRelativeLayout;
   }
   
@@ -347,9 +350,24 @@ public class AppBrandPage
     return null;
   }
   
+  public WebviewContainer getWebviewContainerByUrl(String paramString)
+  {
+    return (WebviewContainer)this.webViewMap.get(paramString);
+  }
+  
   public boolean hasToastView()
   {
     return ((this.toastView != null) && (this.toastView.shown())) || (this.toast != null);
+  }
+  
+  public void hideMiniAIOEntrance()
+  {
+    if (this.miniAIOEntryView != null)
+    {
+      this.miniAIOEntryView.setVisibility(8);
+      this.miniAIOEntryView.destroy();
+      this.miniAIOEntryView = null;
+    }
   }
   
   public void hideToastView()
@@ -390,11 +408,24 @@ public class AppBrandPage
   public void loadUrl(int paramInt, String paramString1, String paramString2)
   {
     boolean bool2 = true;
+    boolean bool1;
     if (paramString1.equals(this.mUrl))
     {
       onAppRoute(paramString2, paramString1);
       switchTab(paramInt, paramString1);
-      return;
+      if (getCurrentPageWebview() != null)
+      {
+        paramString1 = getCurrentPageWebview();
+        if ("appLaunch".equals(paramString2)) {
+          break label58;
+        }
+      }
+      label58:
+      for (bool1 = true;; bool1 = false)
+      {
+        paramString1.onResume(bool1);
+        return;
+      }
     }
     Object localObject1 = getLoadedUrl(paramString1, paramString2);
     Object localObject2;
@@ -453,37 +484,37 @@ public class AppBrandPage
           QLog.d("AppBrandPage", 4, "loadUrl url=" + (String)localObject1 + ",pageCnt=" + i);
         }
         if (i != 1) {
-          break label818;
+          break label855;
         }
         i = 1;
-        label521:
+        label558:
         if (this.apkgInfo.appConfig == null) {
-          break label824;
+          break label861;
         }
-        this.isInternalApp = this.apkgInfo.appConfig.isInternalApp();
-        label545:
+        this.isInternalApp = this.apkgInfo.appConfig.isLimitedAccessApp();
+        label582:
         if ((i == 0) || (!this.isInternalApp)) {
-          break label832;
+          break label869;
         }
         bool1 = false;
-        label560:
+        label597:
         setEnable(bool1);
         if (i == 0) {
-          break label838;
+          break label875;
         }
         setViewDragHelper(this.appBrandPageContainer, this);
-        label580:
+        label617:
         if (i == 0) {
-          break label850;
+          break label887;
         }
         i = 2;
-        label588:
+        label625:
         setScrollDirection(i);
         if ((this.appBrandRuntime.activity instanceof AppBrandUI))
         {
           paramString1 = (AppBrandUI)this.appBrandRuntime.activity;
           localObject2 = paramString1.getAppUIProxy();
-          setServiceInfo((alsd)localObject2);
+          setServiceInfo((amgw)localObject2);
           if ((localObject2 instanceof AppUIProxy)) {
             setPostTab(((AppUIProxy)localObject2).mPostTable);
           }
@@ -495,16 +526,16 @@ public class AppBrandPage
         }
         paramString1 = getCurrentPageWebview();
         if ("appLaunch".equals(paramString2)) {
-          break label856;
+          break label893;
         }
       }
-      label818:
-      label824:
-      label832:
-      label838:
-      label850:
-      label856:
-      for (boolean bool1 = bool2;; bool1 = false)
+      label855:
+      label861:
+      label869:
+      label875:
+      label887:
+      label893:
+      for (bool1 = bool2;; bool1 = false)
       {
         paramString1.onResume(bool1);
         return;
@@ -529,15 +560,15 @@ public class AppBrandPage
         bool1 = false;
         break;
         i = 0;
-        break label521;
+        break label558;
         this.isInternalApp = false;
-        break label545;
+        break label582;
         bool1 = true;
-        break label560;
+        break label597;
         setViewDragHelper(this, this.mContentView);
-        break label580;
+        break label617;
         i = 1;
-        break label588;
+        break label625;
       }
     }
   }
@@ -669,6 +700,42 @@ public class AppBrandPage
     }
   }
   
+  public boolean showMiniAIOEntrance(JSONObject paramJSONObject)
+  {
+    int i = -10;
+    Object localObject = "";
+    int j;
+    if (paramJSONObject != null)
+    {
+      j = (int)(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("x", -10) + 0.5F);
+      i = (int)(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("y", -10) + 0.5F);
+    }
+    for (paramJSONObject = paramJSONObject.optString("style");; paramJSONObject = (JSONObject)localObject)
+    {
+      if ((j < 0) || (i < 0)) {
+        return false;
+      }
+      localObject = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = j;
+      ((RelativeLayout.LayoutParams)localObject).topMargin = i;
+      if (this.miniAIOEntryView == null) {
+        if ((this.appBrandRuntime != null) && (this.appBrandRuntime.activity != null))
+        {
+          this.miniAIOEntryView = new MiniAIOEntryView(this.appBrandRuntime.activity, paramJSONObject);
+          this.rootView.addView(this.miniAIOEntryView, (ViewGroup.LayoutParams)localObject);
+        }
+      }
+      for (;;)
+      {
+        return true;
+        this.miniAIOEntryView.setStyle(paramJSONObject);
+        this.miniAIOEntryView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        requestLayout();
+      }
+      j = -10;
+    }
+  }
+  
   public void showToastView(int paramInt1, String paramString1, String paramString2, CharSequence paramCharSequence, int paramInt2, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
@@ -684,17 +751,17 @@ public class AppBrandPage
     }
     for (;;)
     {
-      bdit localbdit;
+      bemw localbemw;
       try
       {
-        localbdit = new bdit(getContext());
+        localbemw = new bemw(getContext());
         if (!TextUtils.isEmpty(paramString2))
         {
-          localbdit.a(new BitmapDrawable(paramString2));
-          localbdit.a(paramCharSequence);
-          localbdit.c(paramInt2);
-          localbdit.a();
-          this.toast = localbdit;
+          localbemw.a(new BitmapDrawable(paramString2));
+          localbemw.a(paramCharSequence);
+          localbemw.c(paramInt2);
+          localbemw.a();
+          this.toast = localbemw;
           return;
         }
       }
@@ -704,9 +771,9 @@ public class AppBrandPage
         return;
       }
       if ("none".equals(paramString1)) {
-        localbdit.b(-1);
+        localbemw.b(-1);
       } else {
-        localbdit.a(ToastView.getIconRes(paramString1));
+        localbemw.a(ToastView.getIconRes(paramString1));
       }
     }
   }
@@ -741,7 +808,7 @@ public class AppBrandPage
     RelativeLayout.LayoutParams localLayoutParams3;
     if ((this.apkgInfo != null) && (this.apkgInfo.mAppConfigInfo.tabBarInfo != null) && (!this.apkgInfo.mAppConfigInfo.tabBarInfo.custom))
     {
-      if (this.tabView.getNeedShow()) {
+      if ((this.tabView.getNeedShow()) && (isTabPage())) {
         this.tabView.setVisibility(0);
       }
       this.tabView.setInfo(this.apkgInfo.mAppConfigInfo.tabBarInfo);
@@ -756,10 +823,10 @@ public class AppBrandPage
           localLayoutParams2 = new RelativeLayout.LayoutParams(-1, getDefaultNaviBarHeight());
           localLayoutParams3 = new RelativeLayout.LayoutParams(-1, getDefaultTabBarHeight());
           if ((this.apkgInfo == null) || (this.apkgInfo.mAppConfigInfo.tabBarInfo == null)) {
-            break label656;
+            break label663;
           }
           if (!"top".equals(this.apkgInfo.mAppConfigInfo.tabBarInfo.position)) {
-            break label577;
+            break label584;
           }
           if ("default".equals(paramString)) {
             localLayoutParams1.addRule(3, this.tabView.getId());
@@ -767,7 +834,7 @@ public class AppBrandPage
         }
       }
     }
-    label656:
+    label663:
     for (;;)
     {
       this.centerLayout.setLayoutParams(localLayoutParams1);
@@ -775,7 +842,7 @@ public class AppBrandPage
       this.navBar.setLayoutParams(localLayoutParams2);
       this.navBar.setBarStyle(this.curStyle);
       if ((!this.appBrandRuntime.apkgInfo.appConfig.isInternalApp()) || (!this.appBrandRuntime.apkgInfo.appConfig.config.appMode.closeTopRightCapsule)) {
-        break label689;
+        break label696;
       }
       this.navBar.getCapsuleButton().setVisibility(8);
       return;
@@ -812,7 +879,7 @@ public class AppBrandPage
       this.rootView.addView(this.centerLayout);
       this.rootView.addView(this.navBar);
       break;
-      label577:
+      label584:
       if ("default".equals(paramString))
       {
         localLayoutParams1.addRule(3, this.navBar.getId());
@@ -831,7 +898,7 @@ public class AppBrandPage
         }
       }
     }
-    label689:
+    label696:
     this.navBar.getCapsuleButton().setVisibility(0);
   }
 }

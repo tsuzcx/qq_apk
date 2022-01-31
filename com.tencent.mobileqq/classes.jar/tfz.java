@@ -1,34 +1,63 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeVideoList;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 
-final class tfz
-  implements URLDrawable.URLDrawableListener
+class tfz
+  implements syt<tgo, tgp>
 {
-  tfz(long paramLong, tgk paramtgk) {}
+  tfz(tfy paramtfy, tfi paramtfi) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(@NonNull tgo paramtgo, @Nullable tgp paramtgp, @NonNull ErrorMessage paramErrorMessage)
   {
+    if ((paramtgp == null) || (paramErrorMessage.isFail()))
+    {
+      veg.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, err=" + paramErrorMessage.getErrorMessage() + " node:" + this.jdField_a_of_type_Tfi);
+      tfy.a(this.jdField_a_of_type_Tfy, paramErrorMessage);
+      return;
+    }
+    if (paramtgp.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.video_list.size() == 0)
+    {
+      if (this.jdField_a_of_type_Tfi.jdField_a_of_type_Int != 5)
+      {
+        veg.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, info=" + this.jdField_a_of_type_Tfi + ", err=ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, " + paramErrorMessage.getErrorMessage());
+        tfy.b(this.jdField_a_of_type_Tfy, new ErrorMessage(103, paramErrorMessage.getErrorMessage()));
+        return;
+      }
+      tfy.a(this.jdField_a_of_type_Tfy, tfy.a(paramtgp.jdField_a_of_type_JavaUtilList));
+      return;
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
+      QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, "pull succeed, info=" + this.jdField_a_of_type_Tfi);
     }
-    if (this.jdField_a_of_type_Tgk != null) {
-      this.jdField_a_of_type_Tgk.b();
+    tgb.a(this.jdField_a_of_type_Tfi, paramtgp.jdField_a_of_type_ArrayOfByte);
+    paramtgo = tfy.a(paramtgp.jdField_a_of_type_JavaUtilList);
+    if (this.jdField_a_of_type_Tfi.jdField_a_of_type_Int == 12) {}
+    tfy.b(this.jdField_a_of_type_Tfy, paramtgo);
+    if (this.jdField_a_of_type_Tfi.jdField_a_of_type_Int == 12) {
+      if (this.jdField_a_of_type_Tfy.a != null)
+      {
+        this.jdField_a_of_type_Tfy.a.c = paramtgp.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
+        paramtgo = this.jdField_a_of_type_Tfy.a;
+        if (paramtgp.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.is_end.get() <= 0) {
+          break label345;
+        }
+      }
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadSuccessed");
-    }
-    urp.b("storypic", "load_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
-    if (this.jdField_a_of_type_Tgk != null) {
-      this.jdField_a_of_type_Tgk.a();
+    label345:
+    for (boolean bool = true;; bool = false)
+    {
+      paramtgo.a = bool;
+      this.jdField_a_of_type_Tfi.i = paramtgp.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      veg.a("Q.qqstory.msgTab.jobPullVidList", "MsgTabNodeVidListPullSegment::runSegment() use net resp %s, %s", this.jdField_a_of_type_Tfi.jdField_a_of_type_JavaLangString, paramtgp.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList);
+      return;
     }
   }
 }

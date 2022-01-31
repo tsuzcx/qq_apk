@@ -1,12 +1,47 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.1;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.2;
+import java.util.List;
+import mqq.util.WeakReference;
 
 public class pcr
-  extends RecyclerView.ViewHolder
+  implements pbp
 {
-  public pcr(pcj parampcj, View paramView)
+  private SelectPositionModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule = osj.a().a();
+  private WeakReference<pcs> jdField_a_of_type_MqqUtilWeakReference;
+  
+  public pcr(pcs parampcs)
   {
-    super(paramView);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule.a(this);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parampcs);
+  }
+  
+  private void b(List<pcp> paramList)
+  {
+    pcs localpcs = (pcs)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if ((localpcs != null) && (paramList != null)) {
+      localpcs.a(paramList);
+    }
+  }
+  
+  public void a()
+  {
+    SelectPositionModule localSelectPositionModule = osj.a().a();
+    if (localSelectPositionModule != null) {
+      b(localSelectPositionModule.a());
+    }
+  }
+  
+  public void a(SelectPositionModule.PositionData paramPositionData)
+  {
+    bdse.a().post(new SelectCityPresenter.2(this, paramPositionData));
+  }
+  
+  public void a(List<pcp> paramList)
+  {
+    bdse.a().post(new SelectCityPresenter.1(this, paramList));
   }
 }
 

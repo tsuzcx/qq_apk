@@ -2,6 +2,8 @@ package com.tencent.viola.ui.view.refresh;
 
 import android.os.Handler;
 import android.widget.Scroller;
+import com.tencent.viola.ui.view.refresh.listener.IFooterCallBack;
+import com.tencent.viola.ui.view.refresh.listener.IHeaderCallBack;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -26,7 +28,10 @@ class VRefreshViewGroup$1
           ((RefreshMoveOberver)localIterator.next()).onRefreshMove(VRefreshViewGroup.access$000(this.this$0).getCurrY());
         }
       }
-      VRefreshViewGroup.access$500(this.this$0).post(this);
+      if ((VRefreshViewGroup.access$200(this.this$0).isBottom()) && (VRefreshViewGroup.access$500(this.this$0)) && (VRefreshViewGroup.access$600(this.this$0) != null)) {
+        VRefreshViewGroup.access$600(this.this$0).onMove(VRefreshViewGroup.access$000(this.this$0).getCurrY());
+      }
+      VRefreshViewGroup.access$700(this.this$0).post(this);
     }
     do
     {
@@ -45,10 +50,13 @@ class VRefreshViewGroup$1
           }
         }
         this.this$0.mPullRefreshing = false;
-        VRefreshViewGroup.access$602(this.this$0, false);
+        VRefreshViewGroup.access$802(this.this$0, false);
         return;
       }
-    } while ((!VRefreshViewGroup.access$600(this.this$0)) || (this.this$0.mPullLoading) || (this.this$0.mPullRefreshing));
+      if (VRefreshViewGroup.access$900(this.this$0) != null) {
+        VRefreshViewGroup.access$900(this.this$0).onStickRefreshing();
+      }
+    } while ((!VRefreshViewGroup.access$800(this.this$0)) || (this.this$0.mPullLoading) || (this.this$0.mPullRefreshing));
     this.this$0.startScroll(-i, this.this$0.computeScrollVerticalDuration(i, this.this$0.getHeight()));
   }
 }

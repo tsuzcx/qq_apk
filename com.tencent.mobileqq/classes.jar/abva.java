@@ -1,33 +1,46 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class abva
-  implements PopupWindow.OnDismissListener
+  extends akav
 {
-  public abva(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public abva(QQLSActivity paramQQLSActivity) {}
   
-  public void onDismiss()
+  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
   {
-    this.a.a = null;
-    Object localObject;
-    if ((TextPreviewTranslateActivity.b(this.a) != null) && (TextPreviewTranslateActivity.b(this.a).size() > 1))
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgRevoke", 4, "onMsgRevokeNotice isSuccess=" + paramBoolean1);
+    }
+    this.a.a.removeMessages(267387140);
+    Object localObject1 = new ArrayList();
+    Object localObject2;
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      localObject = this.a.getResources();
-      if (!TextPreviewTranslateActivity.a(this.a)) {
-        break label76;
+      localObject2 = paramList.iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        ((List)localObject1).add((ChatMessage)((Iterator)localObject2).next());
       }
     }
-    label76:
-    for (int i = 2130844711;; i = 2130845209)
-    {
-      localObject = ((Resources)localObject).getDrawable(i);
-      TextPreviewTranslateActivity.b(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgRevoke", 4, "onMsgRevokeNotice chatlist=" + ((List)localObject1).size());
     }
+    if ((paramBoolean1) && (localObject1 != null) && (!((List)localObject1).isEmpty()) && (((ChatMessage)((List)localObject1).get(0) instanceof MessageForPtt)))
+    {
+      localObject1 = (MessageForPtt)((List)localObject1).get(0);
+      localObject2 = MediaPlayerManager.a(QQLSActivity.a(this.a)).a();
+      if ((localObject2 == localObject1) || (((localObject2 instanceof MessageForPtt)) && (((ChatMessage)localObject2).frienduin != null) && (((ChatMessage)localObject2).frienduin.equals(((MessageForPtt)localObject1).frienduin)) && (((ChatMessage)localObject2).uniseq == ((MessageForPtt)localObject1).uniseq))) {
+        MediaPlayerManager.a(QQLSActivity.a(this.a)).a(true);
+      }
+    }
+    super.a(paramBoolean1, paramList, paramBoolean2);
   }
 }
 

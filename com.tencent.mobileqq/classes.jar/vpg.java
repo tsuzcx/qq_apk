@@ -1,264 +1,141 @@
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 
-public class vpg
-  extends Dialog
-  implements View.OnClickListener
+class vpg
+  extends LinearLayout
 {
-  protected int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  protected Button a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected String a;
-  private vph jdField_a_of_type_Vph;
-  protected boolean a;
-  private String b;
-  private String c = "";
-  private String d = "";
-  private String e = "";
-  private String f;
-  private String g;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private int b;
+  private int c;
   
-  public vpg(@NonNull Context paramContext, int paramInt, String paramString)
+  public vpg(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
   {
-    super(paramContext, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.g = paramString;
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.c = (this.jdField_a_of_type_Int / this.b);
+    a();
   }
   
-  public vpg(@NonNull Context paramContext, String paramString)
+  private void a()
   {
-    this(paramContext, 2131690181, paramString);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public static Dialog a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
-  {
-    if (vnd.a(paramContext))
+    setOrientation(0);
+    setGravity(17);
+    int j = vpp.b(getContext(), 3.0F);
+    int k = (int)((this.c - j * 2) * this.jdField_a_of_type_Float);
+    int i = 0;
+    while (i < this.b)
     {
-      vnd.a(paramContext, "biz_src_jc_hyws", paramString4);
-      return null;
+      View localView = LayoutInflater.from(getContext()).inflate(2131561282, null);
+      localView.setLayoutParams(new ViewGroup.LayoutParams(this.c - j * 2, this.c - j * 2));
+      ((ImageView)localView.findViewById(2131369540)).setPadding(k, k, k, k);
+      addView(localView);
+      i += 1;
     }
-    paramContext = new vpg(paramContext, "biz_src_jc_hyws").a(paramString1, paramString2, paramString3).a(paramInt, paramString4);
-    paramContext.show();
-    return paramContext;
   }
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Vph != null) {
-      this.jdField_a_of_type_Vph.a(this, paramInt);
-    }
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297974));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131302908));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131303692);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131312419));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(ajjy.a(2131651140));
-    a();
-    if (TextUtils.isEmpty(this.b)) {
-      this.b = "https://pub.idqqimg.com/pc/misc/files/20180423/03d546703c3f49a3857c67be2e94f928.png";
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ColorDrawable localColorDrawable = new ColorDrawable(-16777216);
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-    localObject = URLDrawable.getDrawable(this.b, (URLDrawable.URLDrawableOptions)localObject);
-    ((URLDrawable)localObject).setURLDrawableListener(new vpi(this.jdField_a_of_type_AndroidWidgetTextView));
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
-    int i = ((URLDrawable)localObject).getStatus();
-    if (i != 1)
-    {
-      if (i == 2) {
-        ((URLDrawable)localObject).restartDownload();
-      }
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  public vpg a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public vpg a(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
-  
-  public vpg a(String paramString1, String paramString2, String paramString3)
-  {
-    this.c = paramString1;
-    this.d = paramString2;
-    this.e = paramString3;
-    return this;
-  }
-  
-  public void a()
-  {
-    boolean bool = vnd.a(getContext());
-    if (this.jdField_a_of_type_Boolean != bool)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidWidgetButton.setText(ajjy.a(2131651141));
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetButton.setText(ajjy.a(2131651144));
-  }
-  
-  public void onBackPressed()
-  {
-    super.onBackPressed();
-    a(-1);
-  }
-  
-  public void onClick(View paramView)
-  {
-    int m = 1;
-    int i;
-    label110:
-    int k;
-    label173:
+    int i = 0;
     int j;
-    switch (paramView.getId())
+    for (;;)
     {
-    default: 
-      return;
-    case 2131297974: 
-      a();
-      if (TextUtils.isEmpty(this.f))
-      {
-        if (this.jdField_a_of_type_Boolean) {
-          vnd.a(getContext(), this.g, this.jdField_a_of_type_JavaLangString);
-        }
-        for (i = 0;; i = 1)
-        {
-          urp.a("weishi_share", "cover_clk", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
-          dismiss();
-          a(i);
-          return;
-          bbmy.a(getContext(), ajjy.a(2131651142), 0).a();
-          vnd.a(getContext(), this.g);
-        }
+      j = paramInt;
+      if (i >= paramInt) {
+        break;
       }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        rwb.a(getContext(), this.f);
-        i = 0;
-        if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-          break label495;
-        }
-        k = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("REPORT_VIDEO_FEEDS_JUMP_FROM", 0);
-        j = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("VIDEO_FROM_TYPE", -1);
-        if ((j != 9) && (j != 12)) {
-          break label373;
-        }
-        j = 1;
+      j = paramInt;
+      if (i >= getChildCount()) {
+        break;
       }
-      break;
+      getChildAt(i).setVisibility(0);
+      i += 1;
+    }
+    while ((j < this.b) && (j < getChildCount()))
+    {
+      getChildAt(j).setVisibility(4);
+      j += 1;
+    }
+  }
+  
+  public void a(vow paramvow, int paramInt1, int paramInt2)
+  {
+    int i = paramInt1 * this.b;
+    label31:
+    Object localObject3;
+    URLImageView localURLImageView;
+    TextView localTextView;
+    Object localObject2;
+    String str;
+    Object localObject1;
+    if (paramInt1 == paramInt2 - 1)
+    {
+      paramInt1 = paramvow.b();
+      a(paramInt1 - i);
+      paramInt2 = i;
+      if (paramInt2 >= paramInt1) {
+        return;
+      }
+      localObject3 = getChildAt(paramInt2 - i);
+      localURLImageView = (URLImageView)((View)localObject3).findViewById(2131369540);
+      localTextView = (TextView)((View)localObject3).findViewById(2131369552);
+      localObject2 = (ProgressBar)((View)localObject3).findViewById(2131369550);
+      str = paramvow.b(paramInt2);
+      localObject1 = paramvow.a(paramInt2);
+      if (localObject1 != null) {
+        break label137;
+      }
+      veg.e("LocationFaceAdapter", "FacePackage's thumbUri is empty , pkg : %s", new Object[] { paramvow.toString() });
     }
     for (;;)
     {
-      label232:
-      JSONObject localJSONObject = new JSONObject();
-      for (;;)
+      paramInt2 += 1;
+      break label31;
+      paramInt1 = this.b + i;
+      break;
+      label137:
+      ((View)localObject3).setContentDescription(str);
+      localTextView.setText(str);
+      localURLImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localURLImageView.setTag(2131376871, Integer.valueOf(paramInt2));
+      localObject3 = (Boolean)localURLImageView.getTag(2131376849);
+      if ((localObject3 != null) && (((Boolean)localObject3).booleanValue()) && (((String)localObject1).equals(localURLImageView.getTag(2131376880))))
       {
-        try
-        {
-          if (!this.jdField_a_of_type_Boolean) {
-            continue;
-          }
-          paramView = "0";
-          localJSONObject.put("download", paramView);
-          if (j == 0) {
-            continue;
-          }
-          j = m;
-          new.a(localJSONObject, j);
-        }
-        catch (JSONException paramView)
-        {
-          label373:
-          paramView.printStackTrace();
-          continue;
-          ndn.a(null, null, "0X80092A9", "0X80092A9", 0, 0, String.valueOf(k), "", "", new.a(null, null, "", "", localJSONObject), false);
-        }
-        if (!"video_type_videopublic".equals(this.f)) {
-          continue;
-        }
-        ndn.a(null, null, "0X80092A7", "0X80092A7", 0, 0, String.valueOf(k), "", "", new.a(null, null, "", "", localJSONObject), false);
-        break;
-        bbmy.a(getContext(), -1, ajjy.a(2131651143), 0).b(getContext().getResources().getDimensionPixelSize(2131167766));
-        rwb.b(getContext(), this.f);
-        i = 1;
-        break label173;
-        j = 0;
-        break label232;
-        paramView = "1";
-        continue;
-        j = 0;
+        ((ProgressBar)localObject2).setVisibility(4);
       }
-      break label110;
-      dismiss();
-      a(-1);
-      if (!TextUtils.isEmpty(this.f)) {
-        break;
+      else
+      {
+        localURLImageView.setTag(2131376880, localObject1);
+        localURLImageView.setTag(2131376849, Boolean.valueOf(false));
+        ((ProgressBar)localObject2).setVisibility(0);
+        localObject2 = new vph((String)localObject1, localURLImageView, (ProgressBar)localObject2);
+        localURLImageView.setURLDrawableDownListener((URLDrawableDownListener)localObject2);
+        localObject3 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = aywk.a;
+        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = aywk.a;
+        ((URLDrawable.URLDrawableOptions)localObject3).mUseAutoScaleParams = false;
+        localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
+        if (((URLDrawable)localObject1).getStatus() == 1) {
+          ((vph)localObject2).onLoadSuccessed(localURLImageView, (URLDrawable)localObject1);
+        }
+        localURLImageView.setImageDrawable((Drawable)localObject1);
       }
-      urp.a("weishi_share", "cover_close", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
-      return;
-      label495:
-      j = 0;
-      k = 0;
-    }
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    setContentView(2131495854);
-    b();
-    setCanceledOnTouchOutside(false);
-  }
-  
-  public void show()
-  {
-    super.show();
-    if (TextUtils.isEmpty(this.f)) {
-      urp.a("weishi_share", "cover_exp", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
     }
   }
 }

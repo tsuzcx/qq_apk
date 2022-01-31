@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.entry;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import java.io.Serializable;
 
 public class RecommendMiniAppEntity
-  extends atmo
+  extends aukm
   implements Serializable
 {
-  @atoc
+  @auma
   public String appId;
   public String appName;
   public int recommendType;

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.loginwelcome;
 
-import areo;
+import asap;
 import com.tencent.mobileqq.activity.Conversation;
 
 public class LoginwelcomeHelper$2
   implements Runnable
 {
-  public LoginwelcomeHelper$2(areo paramareo) {}
+  public LoginwelcomeHelper$2(asap paramasap) {}
   
   public void run()
   {

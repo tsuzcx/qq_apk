@@ -1,15 +1,8 @@
-public class akba
+public abstract interface akba
 {
-  public int a;
-  public String a;
-  public int b;
+  public abstract void a(int paramInt1, int paramInt2, Object paramObject);
   
-  public akba(String paramString, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void a(boolean paramBoolean, Object paramObject);
 }
 
 

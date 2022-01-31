@@ -1,15 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
 public class rgf
-  implements ValueAnimator.AnimatorUpdateListener
+  extends Handler
 {
-  public rgf(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public rgf(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Looper paramLooper)
   {
-    this.a.invalidate();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == ReadInjoyXRecyclerView.b) {
+      this.a.b();
+    }
   }
 }
 

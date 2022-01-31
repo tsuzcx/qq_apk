@@ -1,36 +1,42 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class afnl
-  implements View.OnClickListener
+  extends afjh
 {
-  public afnl(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public int a;
+  public long a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public ShaderAnimLayout a;
+  public String a;
+  public structmsg.StructMsg a;
+  public int b;
+  public long b;
+  public ImageView b;
+  public LinearLayout b;
+  public TextView b;
+  public String b;
+  public long c;
+  public TextView c;
+  public TextView d;
   
-  public void onClick(View paramView)
+  public afnl(Context paramContext, View paramView)
   {
-    vkw.a(this.a.a);
-    vkw.a(this.a.a.a);
-    paramView = new ArrayList();
-    int i = 0;
-    while (i < this.a.a.a.size())
-    {
-      paramView.add(((afou)this.a.a.a.get(i)).a);
-      i += 1;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
-    this.a.getActivity().setResult(-1, localIntent);
-    this.a.getActivity().finish();
+    super(paramContext, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afnl
  * JD-Core Version:    0.7.0.1
  */

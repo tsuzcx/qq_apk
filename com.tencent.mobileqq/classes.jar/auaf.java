@@ -1,32 +1,37 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.1;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.2;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.3;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.4;
+import mqq.os.MqqHandler;
 
 public class auaf
-  extends beem
+  extends ayga
 {
-  public auaf(ProfileHeaderView paramProfileHeaderView, LinearLayout paramLinearLayout, View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public auaf(OCRResultActivity paramOCRResultActivity, Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView updateTips sideOutAnim onAnimationEnd");
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
-    paramAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130772245);
-    paramAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Int < 4)
-    {
-      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView;
-      paramAnimation.jdField_a_of_type_Int += 1;
-      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Beez.obtainMessage(ProfileHeaderView.b);
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Beez.sendMessageDelayed(paramAnimation, 4000L);
-    }
+    super(paramActivity);
+  }
+  
+  public void a()
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.1(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.4(this, paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.3(this));
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.2(this, paramString));
   }
 }
 

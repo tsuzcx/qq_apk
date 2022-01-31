@@ -1,41 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bcqh
-  implements View.OnClickListener
+class bcqh
+  implements DialogInterface.OnDismissListener
 {
-  public bcqh(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  private WeakReference<DialogInterface.OnDismissListener> a;
   
-  public void onClick(View paramView)
+  public bcqh(DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    boolean bool = true;
-    paramView = QidianProfileCardActivity.a(this.a);
-    int i;
-    if (QidianProfileCardActivity.a(this.a))
-    {
-      i = 1;
-      paramView.setMaxLines(i);
-      paramView = this.a;
-      if (QidianProfileCardActivity.a(this.a)) {
-        break label54;
+    this.a = new WeakReference(paramOnDismissListener);
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.a == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneProgressDialog", 2, "CustomDismissListener mDismissLis, lis is null");
       }
     }
-    for (;;)
+    do
     {
-      QidianProfileCardActivity.a(paramView, bool);
       return;
-      i = 3;
-      break;
-      label54:
-      bool = false;
-    }
+      DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
+      if (localOnDismissListener != null)
+      {
+        localOnDismissListener.onDismiss(paramDialogInterface);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("QzoneProgressDialog", 2, "CustomDismissListener, lis is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcqh
  * JD-Core Version:    0.7.0.1
  */

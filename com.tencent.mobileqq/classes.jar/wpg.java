@@ -1,20 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.ui.RefreshView;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class wpg
-  extends Handler
+class wpg
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public wpg(RefreshView paramRefreshView) {}
+  wpg(wpf paramwpf) {}
   
-  public void handleMessage(Message paramMessage)
+  public int getSpanSize(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    wpc localwpc = this.a.b(paramInt);
+    if (localwpc != null) {
+      return localwpc.a(localwpc.b(paramInt));
     }
-    this.a.a();
+    return 1;
   }
 }
 

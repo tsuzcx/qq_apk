@@ -1,89 +1,42 @@
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
-public class atyl
+final class atyl
+  implements QQPermissionCallback
 {
-  public static atyl a;
-  public SparseArray<atym> a;
+  atyl(Context paramContext, String paramString, AppActivity paramAppActivity, Intent paramIntent) {}
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (jdField_a_of_type_Atyl == null) {
-      return a(atyo.a(paramQQAppInterface.getApp()) + "xydata.json");
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyPublishMenuHelper", 2, "permissions deny");
     }
-    return true;
+    bbcv.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public static boolean a(String paramString)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("VipWZRYTemplateConfig", 2, "configPath = " + paramString);
-      }
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyPublishMenuHelper", 2, "permissions grant");
     }
-    Object localObject = new File(paramString);
     try
     {
-      localObject = bace.b((File)localObject);
-      if (TextUtils.isEmpty((CharSequence)localObject))
-      {
-        QLog.e("VipWZRYTemplateConfig", 1, paramString + " content is empty.");
-        return false;
+      atyk.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).commit();
+      this.jdField_a_of_type_MqqAppAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 1001);
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyPublishMenuHelper", 2, "takePhoto");
       }
+      return;
     }
-    catch (Exception paramString)
+    catch (Exception paramArrayOfString)
     {
-      QLog.e("VipWZRYTemplateConfig", 1, paramString.getMessage());
-      return false;
-    }
-    paramString = new atyl();
-    localObject = new JSONObject((String)localObject).optJSONArray("cardWZResourceGrade");
-    int i;
-    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-    {
-      paramString.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < ((JSONArray)localObject).length())
-      {
-        JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(i);
-        if (localJSONObject != null)
-        {
-          atym localatym = new atym();
-          localatym.jdField_a_of_type_Int = localJSONObject.optInt("wz_id");
-          localatym.jdField_a_of_type_JavaLangString = localJSONObject.optString("wz_name");
-          localatym.jdField_b_of_type_JavaLangString = localJSONObject.optString("wz_format");
-          localatym.jdField_b_of_type_Int = localJSONObject.optInt("position_type", 1);
-          if (localJSONObject.has("wz_icon"))
-          {
-            atyn localatyn = new atyn();
-            localJSONObject = localJSONObject.getJSONObject("wz_icon");
-            localatyn.jdField_a_of_type_JavaLangString = localJSONObject.optString("src");
-            localatyn.jdField_a_of_type_Int = localJSONObject.optInt("size");
-            localatyn.jdField_b_of_type_JavaLangString = localJSONObject.optString("md5");
-            localatyn.jdField_b_of_type_Int = localJSONObject.optInt("width");
-            localatyn.jdField_c_of_type_Int = localJSONObject.optInt("height");
-            localatyn.jdField_c_of_type_JavaLangString = localJSONObject.optString("mainColor");
-            localatym.jdField_a_of_type_Atyn = localatyn;
-          }
-          paramString.jdField_a_of_type_AndroidUtilSparseArray.put(localatym.jdField_a_of_type_Int, localatym);
-        }
-      }
-      else
-      {
-        jdField_a_of_type_Atyl = paramString;
-        return true;
-      }
-      i += 1;
+      QLog.e("NearbyPublishMenuHelper", 1, paramArrayOfString, new Object[0]);
+      bcpw.a(this.jdField_a_of_type_AndroidContentContext, 2131690593, 0).a();
     }
   }
 }

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import ajjy;
+import ajyc;
 import android.os.Handler;
 import android.os.Message;
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -25,11 +25,11 @@ class AppLoadingUI$13
           BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
           if (str != null)
           {
-            bbmy.a(localBaseApplication, 1, str, 1).a();
+            bcpw.a(localBaseApplication, 1, str, 1).a();
             this.this$0.uiHandler.postDelayed(new AppLoadingUI.13.1(this), 1000L);
             return;
           }
-          str = ajjy.a(2131634828);
+          str = ajyc.a(2131700612);
           continue;
         }
         Object localObject = null;

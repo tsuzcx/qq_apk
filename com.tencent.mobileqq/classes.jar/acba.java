@@ -1,18 +1,61 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity.14.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class acba
-  extends ajjh
+class acba
+  extends ayvz
 {
-  public acba(TroopRequestActivity paramTroopRequestActivity) {}
+  acba(acaz paramacaz) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if ((!paramBoolean) || (paramString == null)) {
-      return;
+    int i = paramMessage.what;
+    paramMessage = (ayqm)paramMessage.obj;
+    if (paramMessage == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SendMultiPictureHelper", 2, "file is null");
+      }
     }
-    ThreadManager.post(new TroopRequestActivity.14.1(this, paramString), 5, null, true);
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("SendMultiPictureHelper", 2, "transferListener status: " + i);
+        }
+        i = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessage.p, paramMessage.i, paramMessage.b);
+      } while (this.a.jdField_d_of_type_Boolean);
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        if (paramMessage.d == 1005)
+        {
+          this.a.jdField_c_of_type_Boolean = true;
+          return;
+        }
+        if (paramMessage.d == 1003)
+        {
+          this.a.a();
+          return;
+        }
+        acaz.a(this.a, this.a.jdField_c_of_type_Int, this.a.jdField_a_of_type_JavaLangString, paramMessage.b);
+        return;
+      }
+      if (paramMessage.d == 1003)
+      {
+        if (this.a.jdField_a_of_type_Bbgg != null) {
+          this.a.jdField_a_of_type_Bbgg.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(100) }));
+        }
+        this.a.a();
+        return;
+      }
+      if (paramMessage.d == 1005)
+      {
+        this.a.a();
+        return;
+      }
+    } while (this.a.jdField_a_of_type_Bbgg == null);
+    this.a.jdField_a_of_type_Bbgg.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(i) }));
   }
 }
 

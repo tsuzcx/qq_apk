@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
-import rtr;
+import sgj;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public class TaskDistribution
@@ -44,7 +44,7 @@ public class TaskDistribution
   {
     paramString = getAttrList(paramString);
     TaskManager.getInstance();
-    rtr.a(80, TaskManager.scriptVersion, paramString);
+    sgj.a(80, TaskManager.scriptVersion, paramString);
   }
   
   public static void test()

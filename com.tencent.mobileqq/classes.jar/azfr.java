@@ -1,11 +1,20 @@
-class azfr
-  implements azqh
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.3;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.3.1;
+import com.tencent.widget.AdapterView;
+
+public class azfr
+  implements bfpd
 {
-  azfr(azfo paramazfo) {}
+  public azfr(TroopAvatarWallPreviewActivity.3.1 param1) {}
   
-  public void a()
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.e();
+    if ((this.a.a.this$0.e) || (this.a.a.this$0.d)) {
+      TroopAvatarWallPreviewActivity.d(this.a.a.this$0);
+    }
+    return true;
   }
 }
 

@@ -1,47 +1,74 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ampz
+public class ampz
+  extends ampb<amqa>
 {
-  private int jdField_a_of_type_Int;
-  private amqb jdField_a_of_type_Amqb;
-  public amqc a;
-  private amqe jdField_a_of_type_Amqe;
-  private amqf jdField_a_of_type_Amqf;
-  public amqg a;
-  private amqh jdField_a_of_type_Amqh;
-  private amqj jdField_a_of_type_Amqj;
-  private amqk jdField_a_of_type_Amqk;
-  private List<amqo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public ampx a()
+  public static amqa a()
   {
-    return new ampx(this, null);
+    return (amqa)ampm.a().a(457);
   }
   
-  public ampz a(int paramInt)
+  public int a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    return 457;
   }
   
-  public ampz a(amqh paramamqh)
+  @NonNull
+  public amqa a(int paramInt)
   {
-    this.jdField_a_of_type_Amqh = paramamqh;
-    return this;
+    return new amqa();
   }
   
-  public ampz a(amqo paramamqo)
+  @Nullable
+  public amqa a(ampi[] paramArrayOfampi)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramamqo);
-    return this;
+    if ((paramArrayOfampi == null) || (paramArrayOfampi.length == 0)) {
+      return null;
+    }
+    paramArrayOfampi = paramArrayOfampi[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendTroopConfigProcessor", 2, "RecommendTroopConfigProcessor onParsed, content:" + paramArrayOfampi);
+    }
+    return amqa.a(paramArrayOfampi);
+  }
+  
+  public Class<amqa> a()
+  {
+    return amqa.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amqa paramamqa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendTroopConfigProcessor", 2, "RecommendTroopConfigProcessor update.");
+    }
+    ((akac)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(159)).a();
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampz
  * JD-Core Version:    0.7.0.1
  */

@@ -22,6 +22,11 @@ public class GetSubscribeFeedDetailRequest
     this(paramStFeed, null, null);
   }
   
+  public GetSubscribeFeedDetailRequest(CertifiedAccountMeta.StFeed paramStFeed, COMM.StCommonExt paramStCommonExt)
+  {
+    this(paramStFeed, paramStCommonExt, null);
+  }
+  
   public GetSubscribeFeedDetailRequest(CertifiedAccountMeta.StFeed paramStFeed, COMM.StCommonExt paramStCommonExt, String paramString)
   {
     if (paramStFeed == null) {

@@ -1,26 +1,22 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.NegativeChildrenLayout;
 
-final class bfth
-  implements bftp
+public class bfth
+  implements View.OnClickListener
 {
-  public Collection<bfti> a()
+  public bfth(NegativeChildrenLayout paramNegativeChildrenLayout) {}
+  
+  public void onClick(View paramView)
   {
-    synchronized ()
-    {
-      if (bftg.a().size() <= 0)
-      {
-        localObject1 = null;
-        return localObject1;
-      }
-      Object localObject1 = new ArrayList(bftg.a().values());
+    if (this.a.a != null) {
+      this.a.a.a(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfth
  * JD-Core Version:    0.7.0.1
  */

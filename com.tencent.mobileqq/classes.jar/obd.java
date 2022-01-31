@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
 
-class obd
-  implements View.OnClickListener
+public class obd
 {
-  obd(obc paramobc, String paramString1, String paramString2) {}
-  
-  public void onClick(View paramView)
+  public static boolean a(AppInterface paramAppInterface, String paramString)
   {
-    obc.a(this.jdField_a_of_type_Obc).a(this.jdField_a_of_type_JavaLangString, this.b);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     obd
  * JD-Core Version:    0.7.0.1
  */

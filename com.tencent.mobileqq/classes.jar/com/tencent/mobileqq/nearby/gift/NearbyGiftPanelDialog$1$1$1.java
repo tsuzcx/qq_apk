@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.nearby.gift;
 
-import asii;
-import asij;
-import asik;
+import atem;
+import aten;
+import ateo;
 import com.tencent.biz.troopgift.TroopGiftPanel;
-import wnc;
+import xcf;
 
 public class NearbyGiftPanelDialog$1$1$1
   implements Runnable
 {
-  public NearbyGiftPanelDialog$1$1$1(asik paramasik, wnc paramwnc) {}
+  public NearbyGiftPanelDialog$1$1$1(ateo paramateo, xcf paramxcf) {}
   
   public void run()
   {
-    asii.a(this.jdField_a_of_type_Asik.a.jdField_a_of_type_Asii).setGiftData(this.jdField_a_of_type_Wnc, true);
-    asii.a(this.jdField_a_of_type_Asik.a.jdField_a_of_type_Asii).b(this.jdField_a_of_type_Asik.a.jdField_a_of_type_Int);
+    atem.a(this.jdField_a_of_type_Ateo.a.jdField_a_of_type_Atem).setGiftData(this.jdField_a_of_type_Xcf, true);
+    atem.a(this.jdField_a_of_type_Ateo.a.jdField_a_of_type_Atem).b(this.jdField_a_of_type_Ateo.a.jdField_a_of_type_Int);
   }
 }
 

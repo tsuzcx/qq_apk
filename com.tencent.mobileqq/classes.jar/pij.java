@@ -1,13 +1,27 @@
-class pij
-  implements pjw
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+
+public class pij
+  implements ViewBase.OnClickListener
 {
-  pij(pii parampii) {}
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private rap jdField_a_of_type_Rap;
   
-  public void a()
+  public pij(ArticleInfo paramArticleInfo, rap paramrap)
   {
-    qpj localqpj = this.a.jdField_a_of_type_Qoe.a();
-    if (localqpj != null) {
-      localqpj.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_Rap = paramrap;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    paramViewBase = this.jdField_a_of_type_Rap.a();
+    if (paramViewBase != null) {
+      paramViewBase.a(null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
     }
   }
 }

@@ -1,20 +1,27 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 class uit
-  extends JobSegment<uiv, ucf>
+  implements svc
 {
-  private int jdField_a_of_type_Int;
-  private List<CommentEntry> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private ucc jdField_a_of_type_Ucc;
+  uit(uis paramuis) {}
   
-  protected void a(JobContext paramJobContext, uiv paramuiv)
+  public void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Ucc = new ucc(paramuiv, new uiu(this, paramJobContext, paramuiv));
-    this.jdField_a_of_type_Ucc.c();
+    veg.d(this.a.a.b, "save -info download suc , start watermark ,vid:%s", new Object[] { uis.a(this.a).mVid });
+    tsu.a(uis.a(this.a), uis.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
+  }
+  
+  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
+  {
+    veg.d(this.a.a.b, "save video -info download error , vid:%s , error :%s", new Object[] { uis.a(this.a).mVid, paramErrorMessage.toString() });
+    tsu.a(uis.a(this.a), uis.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    veg.d(this.a.a.b, "save video -info download cancel , vid:%s ", new Object[] { uis.a(this.a).mVid });
+    tsu.a(uis.a(this.a), uis.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
   }
 }
 

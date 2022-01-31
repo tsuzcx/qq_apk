@@ -1,30 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.upload.UploadManager;
-
-class aomz
-  implements bgwk
+public class aomz
 {
-  aomz(aomp paramaomp) {}
-  
-  public void a(long paramLong, float paramFloat) {}
-  
-  public void a(String paramString)
-  {
-    aomp.b(this.a, false);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    aomp.a(this.a, true);
-    aomp.b(this.a, false);
-    bgti.a(aomp.a(this.a).getApplication(), true);
-    WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(paramString1);
-  }
+  public static long a;
+  public static long b;
+  public static long c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aomz
  * JD-Core Version:    0.7.0.1
  */

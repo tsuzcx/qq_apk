@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report;
 
-import agwj;
+import ahiy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedList;
 
@@ -13,7 +13,7 @@ class SpringHbReportManager$3
   {
     synchronized ()
     {
-      agwj.a(this.a, SpringHbReportManager.a(this.this$0));
+      ahiy.a(this.a, SpringHbReportManager.a(this.this$0));
       if (QLog.isColorLevel()) {
         QLog.d("springHb_report_SpringHbReportManager", 2, "[saveReportFile] done");
       }

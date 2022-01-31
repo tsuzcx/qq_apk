@@ -1,75 +1,92 @@
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.av.ui.redbag.AVRedBag.3.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.util.HashMap;
 
-class mox
-  implements ITMAssistantDownloadClientListener
+public class mox
+  extends mck
 {
-  mox(mow parammow) {}
+  mox(mou parammou) {}
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  protected void a(String paramString, Boolean paramBoolean)
   {
-    if (paramTMAssistantDownloadClient == null) {}
-    do
+    paramString = this.a.a();
+    if (paramString != null)
     {
-      return;
-      paramTMAssistantDownloadClient = (mor)mow.a().get(paramString);
-    } while ((paramTMAssistantDownloadClient == null) || (paramTMAssistantDownloadClient.a == null));
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    paramTMAssistantDownloadClient.a.progress(i);
+      mpl localmpl = paramString.jdField_a_of_type_Mpl;
+      if (localmpl != null) {
+        localmpl.a(-4, 10000L);
+      }
+      paramString.c(paramBoolean.booleanValue());
+    }
   }
   
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void a(mco parammco)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OfflineDownload", 2, "task onDownloadSDKTaskStateChanged + url = " + paramString1 + ", state = " + paramInt1 + ", errorCode = " + paramInt2);
+    mpc localmpc = this.a.a();
+    if (localmpc == null) {}
+    while ((!localmpc.a()) || (localmpc.d())) {
+      return;
     }
-    if (paramTMAssistantDownloadClient == null) {
-      this.a.a(null, paramString1, null, -1, "client is null, " + paramString2);
+    mpx.c();
+    mat.a(this.a.a, 1045, 2131696112);
+    parammco.jdField_b_of_type_Boolean = true;
+    parammco.jdField_b_of_type_JavaLangString = "AVRedBag";
+  }
+  
+  protected void b(String paramString, Boolean paramBoolean)
+  {
+    mpc localmpc = this.a.a();
+    if (localmpc != null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.w(this.a.i, 4, "onAVActivityStop, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], isInGameMode[" + localmpc.a() + "], isGameStarter[" + localmpc.d() + "]");
+      }
+      if (localmpc.a()) {
+        ((AVRedPacketManager)this.a.a.a(6)).b(false);
+      }
+      localmpc.c();
+      if ((!paramBoolean.booleanValue()) && (localmpc.a()) && (!localmpc.d())) {
+        mpx.e();
+      }
     }
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    mpc localmpc = this.a.a();
+    if (localmpc == null) {}
     do
     {
       do
       {
-        do
-        {
-          return;
-          paramString2 = (mor)mow.a().get(paramString1);
-          if ((paramString2 == null) || (paramString2.a == null))
-          {
-            this.a.a(null, paramString1, null, -1, "download info is null or callback is null");
-            return;
-          }
-          switch (paramInt1)
-          {
-          default: 
-            return;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("OfflineDownload", 2, "task downloading + url = " + paramString1);
         return;
-        this.a.a(paramTMAssistantDownloadClient, paramString2, paramString1);
-        return;
-        this.a.a(paramString2.a, paramString1, paramString2.c, paramInt2, "offline zip download fail");
-        try
-        {
-          this.a.a.cancelDownloadTask(paramString1);
-          return;
-        }
-        catch (Exception paramTMAssistantDownloadClient) {}
-      } while (!QLog.isDevelopLevel());
-      QLog.d("OfflineDownload", 4, paramTMAssistantDownloadClient.toString());
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("OfflineDownload", 2, "task paused + url = " + paramString1);
+      } while ((!localmpc.a()) || (localmpc.jdField_a_of_type_Mpk == null) || (localmpc.jdField_a_of_type_Mpk.a == null));
+      QLog.w(this.a.i, 1, "onViewSwitch, uinBig[" + paramString1 + "], uinSmall[" + paramString2 + "]");
+    } while (!localmpc.jdField_a_of_type_Mpk.a.jdField_b_of_type_Boolean);
+    ((AVRedPacketManager)this.a.a.a(6)).a(paramString1, paramString2);
   }
   
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
+  protected void d(String paramString)
+  {
+    paramString = this.a.a();
+    if ((paramString != null) && (paramString.a())) {
+      ((AVRedPacketManager)this.a.a.a(6)).b(true);
+    }
+  }
+  
+  protected void e(String paramString)
+  {
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.a().post(new AVRedBag.3.1(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mox
  * JD-Core Version:    0.7.0.1
  */

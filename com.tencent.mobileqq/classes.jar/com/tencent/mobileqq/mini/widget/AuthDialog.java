@@ -11,8 +11,8 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azue;
-import bajq;
+import bavi;
+import bbkx;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
@@ -35,7 +35,7 @@ public class AuthDialog
   
   public AuthDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131689685);
+    super(paramContext, 2131755222);
     initView(paramContext);
   }
   
@@ -65,16 +65,16 @@ public class AuthDialog
   
   private void initView(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131493679, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559248, null);
     setContentView(paramContext);
-    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131304525));
-    this.mMiniAppName = ((TextView)paramContext.findViewById(2131304538));
-    this.mAuthTitle = ((TextView)paramContext.findViewById(2131297342));
-    this.mUserIcon = ((ImageView)paramContext.findViewById(2131312933));
-    this.mUserName = ((TextView)paramContext.findViewById(2131312961));
-    this.mAuthDesc = ((TextView)paramContext.findViewById(2131297332));
-    this.mLeftBtn = ((TextView)paramContext.findViewById(2131303438));
-    this.mRightBtn = ((TextView)paramContext.findViewById(2131309522));
+    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131370207));
+    this.mMiniAppName = ((TextView)paramContext.findViewById(2131370220));
+    this.mAuthTitle = ((TextView)paramContext.findViewById(2131362882));
+    this.mUserIcon = ((ImageView)paramContext.findViewById(2131378758));
+    this.mUserName = ((TextView)paramContext.findViewById(2131378786));
+    this.mAuthDesc = ((TextView)paramContext.findViewById(2131362872));
+    this.mLeftBtn = ((TextView)paramContext.findViewById(2131369106));
+    this.mRightBtn = ((TextView)paramContext.findViewById(2131375270));
     setCanceledOnTouchOutside(true);
     paramContext = getWindow();
     if (paramContext != null) {
@@ -116,12 +116,12 @@ public class AuthDialog
   {
     this.mIsConfirm = false;
     this.mIsRefuse = false;
-    int i = bajq.b(26.0F);
+    int i = bbkx.b(26.0F);
     paramString1 = getUrlDrawable(paramString1, i);
     if (paramString1 != null)
     {
-      paramString1.setTag(azue.b(i, i, bajq.b(5.0F)));
-      paramString1.setDecodeHandler(azue.i);
+      paramString1.setTag(bavi.b(i, i, bbkx.b(5.0F)));
+      paramString1.setDecodeHandler(bavi.i);
       this.mMiniAppIcon.setImageDrawable(paramString1);
     }
     this.mMiniAppName.setText(paramString2);
@@ -153,11 +153,11 @@ public class AuthDialog
     {
       show();
       return;
-      paramString1 = getUrlDrawable(paramString4, bajq.b(40.0F));
+      paramString1 = getUrlDrawable(paramString4, bbkx.b(40.0F));
       if (paramString1 != null)
       {
-        paramString1.setTag(azue.a(i, i));
-        paramString1.setDecodeHandler(azue.a);
+        paramString1.setTag(bavi.a(i, i));
+        paramString1.setDecodeHandler(bavi.a);
         this.mUserIcon.setImageDrawable(paramString1);
       }
       this.mUserIcon.setVisibility(0);

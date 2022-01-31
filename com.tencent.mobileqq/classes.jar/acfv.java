@@ -1,16 +1,15 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.widget.ExpandableListView;
 
 public class acfv
-  extends beem
+  implements bfrd
 {
-  public acfv(VisitorsActivity paramVisitorsActivity) {}
+  public acfv(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
   {
-    this.a.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_f_of_type_Boolean = true;
+    return true;
   }
 }
 

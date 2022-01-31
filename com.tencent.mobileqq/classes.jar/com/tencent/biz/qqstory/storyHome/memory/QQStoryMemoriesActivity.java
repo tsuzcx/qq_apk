@@ -17,24 +17,24 @@ import com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesReloadListView
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import uhf;
-import uhg;
-import uhh;
-import urk;
-import urp;
-import vqo;
-import zqa;
+import uub;
+import uuc;
+import uud;
+import veg;
+import vel;
+import wdk;
+import zzs;
 
 public class QQStoryMemoriesActivity
   extends QQStoryBaseActivity
-  implements uhh, vqo
+  implements uud, wdk
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private StoryMemoriesFragment jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment;
   private StoryMemoriesReloadListView jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView;
   private String jdField_a_of_type_JavaLangString;
-  private uhg jdField_a_of_type_Uhg;
+  private uuc jdField_a_of_type_Uuc;
   
   public static Intent a(Context paramContext, int paramInt, long paramLong)
   {
@@ -61,7 +61,7 @@ public class QQStoryMemoriesActivity
     }
     for (;;)
     {
-      urp.a("memory", "clk_entry", paramInt, 0, new String[] { i + "", "", "", "" });
+      vel.a("memory", "clk_entry", paramInt, 0, new String[] { i + "", "", "", "" });
       i = paramInt;
       if ((paramContext instanceof SplashActivity))
       {
@@ -103,10 +103,10 @@ public class QQStoryMemoriesActivity
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Uhg.a(paramString);
+      this.jdField_a_of_type_Uuc.a(paramString);
       return;
     }
-    this.jdField_a_of_type_Uhg.b(paramLong);
+    this.jdField_a_of_type_Uuc.b(paramLong);
   }
   
   public static void a(Context paramContext, int paramInt, long paramLong)
@@ -126,20 +126,20 @@ public class QQStoryMemoriesActivity
   
   private void a(String paramString)
   {
-    urk.a("Q.qqstory.memories.QQStoryMemoriesActivity", "get valid uid. start creating fragment. uid = %s.", paramString);
-    findViewById(2131303838).setVisibility(8);
+    veg.a("Q.qqstory.memories.QQStoryMemoriesActivity", "get valid uid. start creating fragment. uid = %s.", paramString);
+    findViewById(2131369513).setVisibility(8);
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView != null) {
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView.setVisibility(8);
     }
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment = StoryMemoriesFragment.a(this.jdField_a_of_type_Int, paramString);
-    localFragmentTransaction.replace(2131299097, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment);
+    localFragmentTransaction.replace(2131364657, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment);
     localFragmentTransaction.commitAllowingStateLoss();
   }
   
   private void e()
   {
-    setContentViewNoTitle(2131495694);
+    setContentViewNoTitle(2131561285);
   }
   
   private void f()
@@ -148,15 +148,15 @@ public class QQStoryMemoriesActivity
     this.jdField_a_of_type_Int = localIntent.getIntExtra("source", 1);
     this.jdField_a_of_type_Long = localIntent.getLongExtra("qq_number", -1L);
     this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("union_id");
-    urk.d("Q.qqstory.memories.QQStoryMemoriesActivity", "get arguments. uid = %s, mQQ = %d, mFrom = %d.", new Object[] { this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_a_of_type_Int) });
-    this.jdField_a_of_type_Uhg = new uhg();
-    this.jdField_a_of_type_Uhg.a(this);
+    veg.d("Q.qqstory.memories.QQStoryMemoriesActivity", "get arguments. uid = %s, mQQ = %d, mFrom = %d.", new Object[] { this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_Uuc = new uuc();
+    this.jdField_a_of_type_Uuc.a(this);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Uhg.a(this.jdField_a_of_type_Long);
+      this.jdField_a_of_type_Uuc.a(this.jdField_a_of_type_Long);
       return;
     }
-    if (!uhf.a(this.jdField_a_of_type_JavaLangString))
+    if (!uub.a(this.jdField_a_of_type_JavaLangString))
     {
       a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
       return;
@@ -166,14 +166,14 @@ public class QQStoryMemoriesActivity
   
   private void g()
   {
-    View localView1 = findViewById(2131303838);
-    View localView2 = findViewById(2131307602);
+    View localView1 = findViewById(2131369513);
+    View localView2 = findViewById(2131373315);
     localView1.setVisibility(8);
     if (localView2 != null)
     {
-      urk.b("Q.qqstory.memories.QQStoryMemoriesActivity", "get invalid uid. inflate reload list.");
+      veg.b("Q.qqstory.memories.QQStoryMemoriesActivity", "get invalid uid. inflate reload list.");
       ((ViewStub)localView2).inflate();
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView = ((StoryMemoriesReloadListView)findViewById(2131307601));
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView = ((StoryMemoriesReloadListView)findViewById(2131373314));
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView.a(this);
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView.j();
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView.setPullToRefreshListener(this);
@@ -182,7 +182,7 @@ public class QQStoryMemoriesActivity
   
   public void a()
   {
-    urk.a("Q.qqstory.memories.QQStoryMemoriesActivity", "pull to refresh. uid = %s, qq = %d.", this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long));
+    veg.a("Q.qqstory.memories.QQStoryMemoriesActivity", "pull to refresh. uid = %s, qq = %d.", this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long));
     a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
   }
   
@@ -190,16 +190,16 @@ public class QQStoryMemoriesActivity
   {
     if ((isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (isDestroyed())))
     {
-      urk.e("Q.qqstory.memories.QQStoryMemoriesActivity", "uid back when activity has destroyed.");
+      veg.e("Q.qqstory.memories.QQStoryMemoriesActivity", "uid back when activity has destroyed.");
       return;
     }
-    if (uhf.a(this.jdField_a_of_type_JavaLangString))
+    if (uub.a(this.jdField_a_of_type_JavaLangString))
     {
-      urk.e("Q.qqstory.memories.QQStoryMemoriesActivity", "uid is already valid on new uid back. current uid is %s, new uid is %s.", new Object[] { this.jdField_a_of_type_JavaLangString, paramString });
+      veg.e("Q.qqstory.memories.QQStoryMemoriesActivity", "uid is already valid on new uid back. current uid is %s, new uid is %s.", new Object[] { this.jdField_a_of_type_JavaLangString, paramString });
       return;
     }
-    urk.a("Q.qqstory.memories.QQStoryMemoriesActivity", "on uid back. uid = %s, fromNet = %s.", paramString, Boolean.valueOf(paramBoolean));
-    if (uhf.a(paramString))
+    veg.a("Q.qqstory.memories.QQStoryMemoriesActivity", "on uid back. uid = %s, fromNet = %s.", paramString, Boolean.valueOf(paramBoolean));
+    if (uub.a(paramString))
     {
       this.jdField_a_of_type_JavaLangString = paramString;
       a(this.jdField_a_of_type_JavaLangString);
@@ -274,7 +274,7 @@ public class QQStoryMemoriesActivity
   public void finish()
   {
     super.finish();
-    zqa.a(this);
+    zzs.a(this);
   }
 }
 

@@ -1,194 +1,210 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bdrn
+  extends MSFServlet
 {
-  private static bdrn jdField_a_of_type_Bdrn = new bdrn(102400);
-  protected static final Comparator<byte[]> a;
-  private int jdField_a_of_type_Int;
-  private List<byte[]> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private final int jdField_b_of_type_Int;
-  private List<byte[]> jdField_b_of_type_JavaUtilList = new ArrayList(64);
+  protected AppRuntime a;
   
-  static
+  private void a(Intent paramIntent, Bundle paramBundle)
   {
-    jdField_a_of_type_JavaUtilComparator = new bdro();
+    paramBundle = paramBundle.getByteArray("wup_buffer");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.a.getAccount(), "SharpSvr.c2s");
+    localToServiceMsg.setNeedCallback(false);
+    localToServiceMsg.putWupBuffer(paramBundle);
+    sendToMSF(paramIntent, localToServiceMsg);
   }
   
-  public bdrn(int paramInt)
+  private void a(String paramString, int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    bdrl.a().a(paramString, paramInt);
   }
   
-  public static bdrn a()
+  private void a(byte[] paramArrayOfByte)
   {
-    return jdField_a_of_type_Bdrn;
+    bdrl.a().b(paramArrayOfByte);
   }
   
-  private void a()
+  private void b(Intent paramIntent, Bundle paramBundle)
   {
-    try
+    paramBundle = paramBundle.getByteArray("wup_buffer");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.a.getAccount(), "SharpSvr.s2cack");
+    localToServiceMsg.setNeedCallback(false);
+    localToServiceMsg.putWupBuffer(paramBundle);
+    sendToMSF(paramIntent, localToServiceMsg);
+  }
+  
+  private void b(byte[] paramArrayOfByte)
+  {
+    bdrl.a().c(paramArrayOfByte);
+  }
+  
+  private void c(Intent paramIntent, Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getByteArray("wup_buffer");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.a.getAccount(), "MultiVideo.c2s");
+    localToServiceMsg.setNeedCallback(false);
+    localToServiceMsg.putWupBuffer(paramBundle);
+    sendToMSF(paramIntent, localToServiceMsg);
+  }
+  
+  private void c(byte[] paramArrayOfByte)
+  {
+    bdrl.a().d(paramArrayOfByte);
+  }
+  
+  private void d(Intent paramIntent, Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getByteArray("wup_buffer");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.a.getAccount(), "MultiVideo.s2cack");
+    localToServiceMsg.setNeedCallback(false);
+    localToServiceMsg.putWupBuffer(paramBundle);
+    sendToMSF(paramIntent, localToServiceMsg);
+  }
+  
+  private void d(byte[] paramArrayOfByte)
+  {
+    bdrl.a().e(paramArrayOfByte);
+  }
+  
+  private void e(Intent paramIntent, Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("app_id");
+    paramBundle = MsfMsgUtil.getGatewayIpMsg(null);
+    paramBundle.setTimeout(30000L);
+    paramBundle.setNeedCallback(true);
+    paramBundle.setNeedRemindSlowNetwork(false);
+    paramBundle.setAppId(i);
+    sendToMSF(paramIntent, paramBundle);
+  }
+  
+  private void e(byte[] paramArrayOfByte)
+  {
+    bdrl.a().f(paramArrayOfByte);
+  }
+  
+  private void f(Intent paramIntent, Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getByteArray("wup_buffer");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.a.getAccount(), "VideoCCSvc.Adaptation");
+    localToServiceMsg.putWupBuffer(paramBundle);
+    localToServiceMsg.setTimeout(10000L);
+    sendToMSF(paramIntent, localToServiceMsg);
+  }
+  
+  private void g(Intent paramIntent, Bundle paramBundle)
+  {
+    byte[] arrayOfByte = paramBundle.getByteArray("wup_buffer");
+    paramBundle = new ToServiceMsg(null, String.valueOf(paramBundle.getLong("uin")), "CliLogSvc.UploadReq");
+    paramBundle.putWupBuffer(arrayOfByte);
+    paramBundle.setNeedCallback(false);
+    sendToMSF(paramIntent, paramBundle);
+  }
+  
+  public String[] getPreferSSOCommands()
+  {
+    return new String[] { "SharpSvr.c2sack", "SharpSvr.s2c", "MultiVideo.c2sack", "MultiVideo.s2c" };
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.a = getAppRuntime();
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramFromServiceMsg == null) {}
+    do
     {
-      if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int)
+      return;
+      paramIntent = paramFromServiceMsg.getServiceCmd();
+      bdru.c("VideoChannelServlet", String.format("onReceive cmd=%s", new Object[] { paramIntent }));
+      if ("SharpSvr.s2c".equalsIgnoreCase(paramIntent))
       {
-        byte[] arrayOfByte = (byte[])this.jdField_a_of_type_JavaUtilList.remove(0);
-        this.jdField_b_of_type_JavaUtilList.remove(arrayOfByte);
-        this.jdField_a_of_type_Int -= arrayOfByte.length;
+        a(paramFromServiceMsg.getWupBuffer());
+        return;
       }
+      if ("SharpSvr.c2sack".equalsIgnoreCase(paramIntent))
+      {
+        b(paramFromServiceMsg.getWupBuffer());
+        return;
+      }
+      if ("MultiVideo.s2c".equalsIgnoreCase(paramIntent))
+      {
+        c(paramFromServiceMsg.getWupBuffer());
+        return;
+      }
+      if ("MultiVideo.c2sack".equalsIgnoreCase(paramIntent))
+      {
+        d(paramFromServiceMsg.getWupBuffer());
+        return;
+      }
+      if (!"cmd_getGatewayIp".equalsIgnoreCase(paramIntent)) {
+        break;
+      }
+      paramIntent = (String)paramFromServiceMsg.getAttribute("cmd_getGatewayIp");
+    } while (paramIntent == null);
+    bdru.c("VideoChannelServlet", String.format(">>> ip=%s", new Object[] { paramIntent }));
+    a(paramIntent, 0);
+    return;
+    if ("VideoCCSvc.Adaptation".equalsIgnoreCase(paramIntent))
+    {
+      if (paramFromServiceMsg.isSuccess())
+      {
+        e(paramFromServiceMsg.getWupBuffer());
+        return;
+      }
+      bdru.a("VideoChannelServlet", String.format("onReceive get config fail, resultCode=%s", new Object[] { Integer.valueOf(paramFromServiceMsg.getResultCode()) }));
       return;
     }
-    finally {}
+    bdru.b("VideoChannelServlet", "onReceive handle not process cmd.");
   }
   
-  /* Error */
-  public void a(byte[] paramArrayOfByte)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +16 -> 19
-    //   6: aload_1
-    //   7: arraylength
-    //   8: istore_2
-    //   9: aload_0
-    //   10: getfield 41	bdrn:jdField_b_of_type_Int	I
-    //   13: istore_3
-    //   14: iload_2
-    //   15: iload_3
-    //   16: if_icmple +6 -> 22
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: return
-    //   22: aload_0
-    //   23: getfield 34	bdrn:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   26: aload_1
-    //   27: invokeinterface 59 2 0
-    //   32: pop
-    //   33: aload_0
-    //   34: getfield 39	bdrn:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   37: aload_1
-    //   38: getstatic 27	bdrn:jdField_a_of_type_JavaUtilComparator	Ljava/util/Comparator;
-    //   41: invokestatic 65	java/util/Collections:binarySearch	(Ljava/util/List;Ljava/lang/Object;Ljava/util/Comparator;)I
-    //   44: istore_3
-    //   45: iload_3
-    //   46: istore_2
-    //   47: iload_3
-    //   48: ifge +8 -> 56
-    //   51: iload_3
-    //   52: ineg
-    //   53: iconst_1
-    //   54: isub
-    //   55: istore_2
-    //   56: aload_0
-    //   57: getfield 39	bdrn:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   60: iload_2
-    //   61: aload_1
-    //   62: invokeinterface 68 3 0
-    //   67: aload_0
-    //   68: aload_0
-    //   69: getfield 44	bdrn:jdField_a_of_type_Int	I
-    //   72: aload_1
-    //   73: arraylength
-    //   74: iadd
-    //   75: putfield 44	bdrn:jdField_a_of_type_Int	I
-    //   78: aload_0
-    //   79: invokespecial 70	bdrn:a	()V
-    //   82: goto -63 -> 19
-    //   85: astore_1
-    //   86: aload_0
-    //   87: monitorexit
-    //   88: aload_1
-    //   89: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	90	0	this	bdrn
-    //   0	90	1	paramArrayOfByte	byte[]
-    //   8	53	2	i	int
-    //   13	39	3	j	int
-    // Exception table:
-    //   from	to	target	type
-    //   6	14	85	finally
-    //   22	45	85	finally
-    //   56	82	85	finally
-  }
-  
-  /* Error */
-  public byte[] a(int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: iconst_0
-    //   3: istore_2
-    //   4: iload_2
-    //   5: aload_0
-    //   6: getfield 39	bdrn:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   9: invokeinterface 75 1 0
-    //   14: if_icmpge +67 -> 81
-    //   17: aload_0
-    //   18: getfield 39	bdrn:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   21: iload_2
-    //   22: invokeinterface 78 2 0
-    //   27: checkcast 52	[B
-    //   30: astore_3
-    //   31: aload_3
-    //   32: arraylength
-    //   33: iload_1
-    //   34: if_icmplt +40 -> 74
-    //   37: aload_0
-    //   38: aload_0
-    //   39: getfield 44	bdrn:jdField_a_of_type_Int	I
-    //   42: aload_3
-    //   43: arraylength
-    //   44: isub
-    //   45: putfield 44	bdrn:jdField_a_of_type_Int	I
-    //   48: aload_0
-    //   49: getfield 39	bdrn:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   52: iload_2
-    //   53: invokeinterface 50 2 0
-    //   58: pop
-    //   59: aload_0
-    //   60: getfield 34	bdrn:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   63: aload_3
-    //   64: invokeinterface 55 2 0
-    //   69: pop
-    //   70: aload_0
-    //   71: monitorexit
-    //   72: aload_3
-    //   73: areturn
-    //   74: iload_2
-    //   75: iconst_1
-    //   76: iadd
-    //   77: istore_2
-    //   78: goto -74 -> 4
-    //   81: iload_1
-    //   82: newarray byte
-    //   84: astore_3
-    //   85: goto -15 -> 70
-    //   88: astore_3
-    //   89: aload_0
-    //   90: monitorexit
-    //   91: aload_3
-    //   92: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	93	0	this	bdrn
-    //   0	93	1	paramInt	int
-    //   3	75	2	i	int
-    //   30	55	3	arrayOfByte	byte[]
-    //   88	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	70	88	finally
-    //   81	85	88	finally
+    paramPacket = paramIntent.getExtras();
+    if (paramPacket == null) {
+      return;
+    }
+    int i = paramPacket.getInt("req_type", -1);
+    bdru.c("VideoChannelServlet", String.format("onSend reqType=%s", new Object[] { Integer.valueOf(i) }));
+    switch (i)
+    {
+    default: 
+      bdru.b("VideoChannelServlet", "onSend handle not define reqType.");
+      return;
+    case 1: 
+      a(paramIntent, paramPacket);
+      return;
+    case 2: 
+      b(paramIntent, paramPacket);
+      return;
+    case 3: 
+      c(paramIntent, paramPacket);
+      return;
+    case 4: 
+      d(paramIntent, paramPacket);
+      return;
+    case 5: 
+      e(paramIntent, paramPacket);
+      return;
+    case 6: 
+      f(paramIntent, paramPacket);
+      return;
+    }
+    g(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdrn
  * JD-Core Version:    0.7.0.1
  */

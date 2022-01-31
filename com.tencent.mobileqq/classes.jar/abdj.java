@@ -1,45 +1,23 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class abdj
-  implements GestureDetector.OnDoubleTapListener
+  extends auud
 {
-  public abdj(MainFragment paramMainFragment) {}
+  public abdj(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainFragment", 2, "onDoubleTap() called with: e = [" + paramMotionEvent + "]");
+    if ((!TextUtils.equals(paramString, this.a.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) || (this.a.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqDataCard == null)) {}
+    while (paramInt != 0) {
+      return;
     }
-    paramMotionEvent = (Conversation)this.a.a(Conversation.class);
-    if (paramMotionEvent != null) {}
-    for (int i = paramMotionEvent.d;; i = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DynimiIcon", 2, "onDoubleTap() unReadCount = " + i);
-      }
-      paramMotionEvent = this.a.b();
-      if ((paramMotionEvent instanceof Conversation)) {
-        ((Conversation)paramMotionEvent).c();
-      }
-      if (i == 0) {
-        MainFragment.d(this.a);
-      }
-      return false;
-    }
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return false;
+    this.a.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel = paramPersonalityLabel;
+    this.a.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqDataCard.vPersonalityLabelV2 = paramArrayOfByte;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.a.jdField_a_of_type_Auuw, true, new String[] { "map_key_personality_label_board" });
   }
 }
 

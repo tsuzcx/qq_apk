@@ -1,17 +1,18 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.TroopAdmin;
 
-public class agbc
-  extends agas
+public final class agbc
+  implements Parcelable.Creator<ChatHistoryTroopMemberFragment.TroopAdmin>
 {
-  public agbc(PhotoCropActivity paramPhotoCropActivity)
+  public ChatHistoryTroopMemberFragment.TroopAdmin a(Parcel paramParcel)
   {
-    super(paramPhotoCropActivity);
+    return new ChatHistoryTroopMemberFragment.TroopAdmin(paramParcel, null);
   }
   
-  public void a(int paramInt)
+  public ChatHistoryTroopMemberFragment.TroopAdmin[] a(int paramInt)
   {
-    this.a.getIntent().putExtra("PhotoConst.QZONE_COVER_SYNC_FLAG", paramInt);
+    return new ChatHistoryTroopMemberFragment.TroopAdmin[paramInt];
   }
 }
 

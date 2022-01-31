@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aaur;
+import abel;
 import android.text.TextUtils;
-import atwx;
+import auuw;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.report.lp.LpReportManager;
 import cooperation.qzone.util.QZLog;
@@ -10,7 +10,7 @@ import cooperation.qzone.util.QZLog;
 public class FriendProfileCardActivity$32$1
   implements Runnable
 {
-  public FriendProfileCardActivity$32$1(aaur paramaaur) {}
+  public FriendProfileCardActivity$32$1(abel paramabel) {}
   
   public void run()
   {

@@ -1,25 +1,14 @@
-import android.util.Property;
+import android.support.annotation.Nullable;
 
 class biwv
-  extends Property<biwt, Integer>
+  implements bjob<Boolean>
 {
-  biwv(biwt parambiwt, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  biwv(biwr parambiwr) {}
   
-  public Integer a(biwt parambiwt)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (parambiwt != null) {
-      return Integer.valueOf(biwt.b(parambiwt));
-    }
-    return Integer.valueOf(255);
-  }
-  
-  public void a(biwt parambiwt, Integer paramInteger)
-  {
-    if (parambiwt != null) {
-      biwt.b(parambiwt, paramInteger.intValue());
+    if (paramBoolean.booleanValue()) {
+      biwr.a(this.a).d();
     }
   }
 }

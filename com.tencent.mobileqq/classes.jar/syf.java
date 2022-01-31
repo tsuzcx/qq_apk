@@ -1,50 +1,65 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqForbidVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.Context;
+import android.util.SparseArray;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 public class syf
-  extends slz<syg>
 {
-  public final String a;
-  public String b = "";
+  public static SparseArray<Class<? extends wcr>> a = new SparseArray();
+  public static SparseArray<Boolean> b = new SparseArray();
   
-  public syf(sye paramsye, String paramString)
+  static
   {
-    this.jdField_a_of_type_JavaLangString = skt.a("StorySvc.forbid_video");
-    this.b = paramString;
+    a.put(1, vci.class);
+    b.put(1, Boolean.valueOf(true));
+    a.put(5, vcp.class);
+    b.put(5, Boolean.valueOf(true));
   }
   
-  public String a()
+  public static wcr a(Context paramContext, int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public syg a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspForbidVideo localRspForbidVideo = new qqstory_service.RspForbidVideo();
+    Object localObject = (Class)a.get(paramInt, null);
+    Boolean localBoolean = (Boolean)b.get(paramInt, Boolean.valueOf(true));
+    if (localObject == null) {
+      throw new IllegalArgumentException(ajyc.a(2131713696));
+    }
+    if (localBoolean.booleanValue()) {
+      try
+      {
+        paramContext = (wcr)((Class)localObject).getConstructor(new Class[] { Context.class }).newInstance(new Object[] { paramContext });
+        return paramContext;
+      }
+      catch (NoSuchMethodException paramContext)
+      {
+        throw new IllegalStateException(ajyc.a(2131713692), paramContext);
+      }
+      catch (IllegalAccessException paramContext)
+      {
+        throw new IllegalStateException(ajyc.a(2131713695), paramContext);
+      }
+      catch (InstantiationException paramContext)
+      {
+        throw new IllegalStateException(ajyc.a(2131713698), paramContext);
+      }
+      catch (InvocationTargetException paramContext)
+      {
+        throw new IllegalArgumentException(ajyc.a(2131713694), paramContext);
+      }
+    }
     try
     {
-      localRspForbidVideo.mergeFrom(paramArrayOfByte);
-      return new syg(this.jdField_a_of_type_Sye, localRspForbidVideo);
+      localObject = (String)((Class)localObject).getDeclaredField("KEY").get(null);
+      return new vdk(paramContext, (String)localObject);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    catch (NoSuchFieldException paramContext)
     {
-      paramArrayOfByte.printStackTrace();
+      throw new IllegalStateException(ajyc.a(2131713699), paramContext);
     }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqForbidVideo localReqForbidVideo = new qqstory_service.ReqForbidVideo();
-    localReqForbidVideo.vid.set(this.b);
-    return localReqForbidVideo.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "ReportIgnoreVideoRequest{, vid='" + this.b + '\'' + '}';
+    catch (IllegalAccessException paramContext)
+    {
+      throw new IllegalStateException(ajyc.a(2131713693), paramContext);
+    }
   }
 }
 

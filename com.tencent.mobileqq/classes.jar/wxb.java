@@ -1,78 +1,180 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class wxb
-  extends alzl<wxa>
 {
-  public int a()
+  protected static wxb a;
+  protected SessionInfo a;
+  protected HashMap<String, wxc> a;
+  
+  public wxb()
   {
-    return 463;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public Class<wxa> a()
+  public static wxb a()
   {
-    return wxa.class;
-  }
-  
-  @NonNull
-  public wxa a(int paramInt)
-  {
-    return new wxa();
-  }
-  
-  @Nullable
-  public wxa a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
-    {
-      wxa localwxa = wxa.a(paramArrayOfalzs[0].a);
-      a(localwxa);
-      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
-      return localwxa;
+    if (jdField_a_of_type_Wxb == null) {
+      jdField_a_of_type_Wxb = new wxb();
     }
-    return null;
+    return jdField_a_of_type_Wxb;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(wxa paramwxa)
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate ");
-    if (paramwxa != null)
-    {
-      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate " + paramwxa.toString());
-      wwt.a().a("subscribe_entrance_enable", paramwxa.a());
-      wwt.a().a("is_open_sharing", paramwxa.b());
-      wwt.a().a("subscribe_account_title", paramwxa.c());
-      wwt.a().a("newfollowlist", paramwxa.d());
-      wwt.a().a("subscribe_publish_entrance_enable", paramwxa.e());
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
     }
+    axqw.a(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_app", paramString2, 0, 0, paramString1, paramString3, paramString4, paramString5);
   }
   
-  public boolean a()
+  public void a()
   {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+  }
+  
+  public void a(Context paramContext, String paramString1, String paramString2, SessionInfo paramSessionInfo)
+  {
+    wxc localwxc = (wxc)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+    if (localwxc == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    if (!wxa.b(paramContext, localwxc.b, paramString1, "android.intent.action.VIEW", "com.tencent.mobileqq", "com.tencent.mobileqq.activity.JumpActivity"))
+    {
+      if (!wxa.b(paramContext, localwxc.c, paramString1, "android.intent.action.VIEW", "com.tencent.mobileqq", "com.tencent.mobileqq.activity.JumpActivity"))
+      {
+        paramSessionInfo = new Intent(paramContext, QQBrowserActivity.class);
+        if ((localwxc != null) && (!TextUtils.isEmpty(localwxc.jdField_a_of_type_JavaLangString))) {
+          paramSessionInfo.putExtra("url", localwxc.jdField_a_of_type_JavaLangString);
+        }
+        for (;;)
+        {
+          paramContext.startActivity(paramSessionInfo);
+          a(paramString1, "app_click_ver", "2", "", "");
+          return;
+          paramSessionInfo.putExtra("url", paramString2);
+        }
+      }
+      a(paramString1, "app_click_ver", "0", "", "");
+      return;
+    }
+    a(paramString1, "app_click_ver", "1", "", "");
+  }
+  
+  public boolean a(Intent paramIntent, Activity paramActivity, QQAppInterface paramQQAppInterface)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if (!"thridapp".equals(paramIntent.getStringExtra("share_from"))) {
+      bool1 = false;
+    }
+    Object localObject;
+    Long localLong;
+    do
+    {
+      do
+      {
+        return bool1;
+        paramIntent.removeExtra("share_from");
+        localObject = a();
+        localLong = Long.valueOf(paramIntent.getLongExtra("req_share_id", 0L));
+        bool1 = bool2;
+      } while (!((wxb)localObject).a(String.valueOf(localLong)));
+      paramIntent.putExtra("share_from_aio", true);
+      paramIntent.putExtra("forward_type", 11);
+      paramIntent.putExtra("req_type", 1);
+      if (!paramIntent.hasExtra("pkg_name")) {
+        paramIntent.putExtra("pkg_name", "");
+      }
+      paramIntent.putExtra("refuse_show_share_result_dialog", true);
+      localObject = ((wxb)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      bool1 = bool2;
+    } while (localObject == null);
+    paramIntent = aqdk.a(paramIntent, paramQQAppInterface, paramActivity);
+    paramActivity = new Bundle();
+    paramActivity.putString("uin", ((SessionInfo)localObject).jdField_a_of_type_JavaLangString);
+    paramActivity.putInt("uintype", ((SessionInfo)localObject).jdField_a_of_type_Int);
+    paramActivity.putString("troop_uin", ((SessionInfo)localObject).b);
+    paramActivity.putString("uinname", ((SessionInfo)localObject).d);
+    paramIntent.a(aqas.a.intValue(), paramActivity);
+    a(String.valueOf(localLong), "app_share_view", "", "", "");
     return true;
   }
   
-  public int b()
+  public boolean a(String paramString)
   {
-    return 0;
+    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
   }
   
-  public boolean b()
+  public void b()
   {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    Object localObject2 = mvv.a().a("aio_pluginApp", "");
+    Object localObject1 = null;
+    try
+    {
+      localObject2 = new JSONArray((String)localObject2);
+      localObject1 = localObject2;
+    }
+    catch (JSONException localJSONException2)
+    {
+      for (;;)
+      {
+        try
+        {
+          localObject2 = localObject1.getJSONObject(i);
+          str = ((JSONObject)localObject2).optString("appid");
+          localwxc = new wxc(this);
+          localwxc.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("downloadLink");
+          localwxc.b = String.format("tencent%s.provider://", new Object[] { str });
+          localwxc.c = ((JSONObject)localObject2).optString("defaultScheme_a");
+          this.jdField_a_of_type_JavaUtilHashMap.put(str, localwxc);
+          i += 1;
+        }
+        catch (JSONException localJSONException1)
+        {
+          localJSONException1.printStackTrace();
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("show3rdApp", 2, "get JsonObject error!");
+        }
+        localJSONException2 = localJSONException2;
+        localJSONException2.printStackTrace();
+      }
+    }
+    if ((localObject1 != null) && (localObject1.length() > 0))
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      j = localObject1.length();
+      i = 0;
+      if (i >= j) {}
+    }
+    while (!QLog.isColorLevel())
+    {
+      int j;
+      int i;
+      String str;
+      wxc localwxc;
+      return;
+    }
+    QLog.d("show3rdApp", 2, "config is null!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wxb
  * JD-Core Version:    0.7.0.1
  */

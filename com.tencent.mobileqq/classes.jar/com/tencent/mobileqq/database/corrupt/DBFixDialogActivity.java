@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import amua;
 import android.content.Intent;
 import android.os.Bundle;
+import anki;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class DBFixDialogActivity
@@ -11,7 +11,7 @@ public class DBFixDialogActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    new amua(this, this.app).b();
+    new anki(this, this.app).b();
     return true;
   }
   

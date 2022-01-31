@@ -1,39 +1,34 @@
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoTipOffRsp;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.HashMap;
 
-class wdx
-  implements wxx<CertifiedAccountWrite.StDoTipOffRsp>
+public class wdx
+  extends QQUIEventReceiver<StoryUserBadgeView, tkk>
 {
-  wdx(wdw paramwdw) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoTipOffRsp paramStDoTipOffRsp)
+  public wdx(@NonNull StoryUserBadgeView paramStoryUserBadgeView)
   {
-    paramBoolean = true;
-    if (paramLong == 0L)
-    {
-      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest success");
-      if (this.a.a != null)
-      {
-        paramString = this.a.a;
-        if (paramLong != 0L) {
-          break label78;
-        }
-      }
-    }
-    for (;;)
-    {
-      paramString.a(paramBoolean);
+    super(paramStoryUserBadgeView);
+  }
+  
+  public void a(@NonNull StoryUserBadgeView paramStoryUserBadgeView, @NonNull tkk paramtkk)
+  {
+    if (paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
+    while (paramtkk.jdField_a_of_type_JavaUtilHashMap.get(paramStoryUserBadgeView.a()) == null) {
       return;
-      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest failed retCode:" + paramLong);
-      break;
-      label78:
-      paramBoolean = false;
     }
+    paramStoryUserBadgeView.a(paramStoryUserBadgeView.a());
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tkk.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wdx
  * JD-Core Version:    0.7.0.1
  */

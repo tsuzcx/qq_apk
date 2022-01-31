@@ -1,48 +1,34 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption.2;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class aqfg
-  extends Handler
+  implements auoo
 {
-  public aqfg(HotPicPageView paramHotPicPageView) {}
+  public aqfg(ForwardSdkShareOption.2 param2) {}
   
-  public void handleMessage(Message paramMessage)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    switch (paramMessage.what)
-    {
+    return null;
+  }
+  
+  public void a(auop paramauop)
+  {
+    if ((paramauop != null) && (QLog.isColorLevel())) {
+      QLog.d("ForwardOption.ForwardSdkShareOption", 2, new Object[] { "upCallBack updateMsg info =", paramauop.toString() });
     }
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-          } while (HotPicPageView.b);
-          this.a.i();
-          return;
-        } while ((HotPicPageView.b) || (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.getVisibility() != 0) || (this.a.jdField_a_of_type_Aqfm == null) || (this.a.jdField_a_of_type_Aqfm.getItemCount() == 0));
-        i = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.a();
-      } while (i < 0);
-      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.findViewHolderForPosition(i);
-    } while ((paramMessage == null) || (!(paramMessage instanceof aqfp)));
-    paramMessage = (aqfp)paramMessage;
-    if (paramMessage.jdField_a_of_type_Int == 0)
-    {
-      this.a.b(paramMessage, i);
-      return;
-    }
-    paramMessage.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void b(auop paramauop)
+  {
+    aqgh.b("KEY_STAGE_2_UPLOAD_IMAGE");
+    aqfb.a(this.a.this$0, this.a.this$0.a, paramauop, this.a.b, this.a.c, this.a.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqfg
  * JD-Core Version:    0.7.0.1
  */

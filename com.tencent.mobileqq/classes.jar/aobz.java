@@ -1,16 +1,15 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import java.io.File;
 
 public class aobz
-  implements View.OnClickListener
 {
-  public aobz(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
+  public int a;
+  View jdField_a_of_type_AndroidViewView;
+  public bbnt a;
+  public File a;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
-  {
-    QfileLocalFilePicTabView.a(this.a, paramView, false);
-  }
+  aobz(aobu paramaobu) {}
 }
 
 

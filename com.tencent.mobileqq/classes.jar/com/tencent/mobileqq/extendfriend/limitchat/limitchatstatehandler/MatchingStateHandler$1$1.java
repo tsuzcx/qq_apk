@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.extendfriend.limitchat.limitchatstatehandler;
 
-import anpe;
-import antg;
-import anth;
-import anti;
+import aofp;
+import aojs;
+import aojt;
+import aoju;
 
 class MatchingStateHandler$1$1
   implements Runnable
@@ -12,23 +12,23 @@ class MatchingStateHandler$1$1
   
   public void run()
   {
-    if (this.a.this$0.jdField_a_of_type_Antg != null)
+    if (this.a.this$0.jdField_a_of_type_Aojs != null)
     {
-      this.a.this$0.jdField_a_of_type_Antg.a(100, null);
-      if (this.a.this$0.jdField_a_of_type_Antg.a != null)
+      this.a.this$0.jdField_a_of_type_Aojs.a(100, null);
+      if (this.a.this$0.jdField_a_of_type_Aojs.a != null)
       {
         String str2 = "";
         String str1 = str2;
-        if (this.a.this$0.jdField_a_of_type_Anpe != null)
+        if (this.a.this$0.jdField_a_of_type_Aofp != null)
         {
           str1 = str2;
-          if (this.a.this$0.jdField_a_of_type_Anpe.d != null) {
-            str1 = this.a.this$0.jdField_a_of_type_Anpe.d;
+          if (this.a.this$0.jdField_a_of_type_Aofp.d != null) {
+            str1 = this.a.this$0.jdField_a_of_type_Aofp.d;
           }
         }
-        this.a.this$0.jdField_a_of_type_Antg.a.a(0, this.a.this$0.jdField_a_of_type_Anpe, str1, "");
+        this.a.this$0.jdField_a_of_type_Aojs.a.a(0, this.a.this$0.jdField_a_of_type_Aofp, str1, "");
       }
-      anti.a(this.a.this$0);
+      aoju.a(this.a.this$0);
     }
   }
 }

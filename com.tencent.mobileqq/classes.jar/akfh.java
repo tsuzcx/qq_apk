@@ -1,18 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
-
-class akfh
-  implements View.OnClickListener
+public class akfh
+  implements ajtg
 {
-  akfh(akfg paramakfg, String paramString) {}
+  public void a(boolean paramBoolean, Object paramObject) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramView = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString), 120);
-    paramView.a();
-    tij.a(this.jdField_a_of_type_Akfg.a, paramView.a(), null);
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    }
+    a(paramBoolean, ((Boolean)paramObject).booleanValue());
   }
 }
 

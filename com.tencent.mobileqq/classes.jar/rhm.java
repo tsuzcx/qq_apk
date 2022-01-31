@@ -1,20 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import java.util.List;
 
-class rhm
-  implements ValueAnimator.AnimatorUpdateListener
+public class rhm
+  implements ntr
 {
-  rhm(rhl paramrhl, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public rhm(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  int a(int paramInt1, int paramInt2, float paramFloat)
+  public void a(List<TabChannelCoverInfo> paramList)
   {
-    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = paramValueAnimator.getAnimatedFraction();
-    this.jdField_a_of_type_Rhl.a(a(this.jdField_a_of_type_Int, this.b, f), a(this.c, this.d, f));
+    ReadinjoyTabFrame.a(this.a).a(paramList);
   }
 }
 

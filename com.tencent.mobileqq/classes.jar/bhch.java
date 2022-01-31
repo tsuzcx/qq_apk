@@ -1,23 +1,39 @@
-import android.graphics.Bitmap;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.widget.ImageView;
+import cooperation.qzone.contentbox.MsgPhotoView.WeakVipResourcesListener.1;
+import cooperation.vip.vipcomponent.util.VipResourcesListener;
+import java.lang.ref.WeakReference;
 
 public class bhch
+  implements VipResourcesListener
 {
-  public static Bitmap a(Bitmap paramBitmap, String paramString)
+  private int jdField_a_of_type_Int;
+  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  private WeakReference<ImageView> b;
+  
+  public bhch(Handler paramHandler, ImageView paramImageView, int paramInt, boolean paramBoolean)
   {
-    if (!BitmapUtils.isLegal(paramBitmap)) {}
-    int i;
-    do
-    {
-      return paramBitmap;
-      i = BitmapUtils.getDegreeByExif(paramString) % 360;
-    } while (i == 0);
-    return BitmapUtils.rotateBitmap(paramBitmap, i);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHandler);
+    this.b = new WeakReference(paramImageView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onFailed() {}
+  
+  public void onLoaded(Drawable paramDrawable)
+  {
+    Handler localHandler = (Handler)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((paramDrawable != null) && (localHandler != null)) {
+      localHandler.post(new MsgPhotoView.WeakVipResourcesListener.1(this, paramDrawable));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhch
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acji;
-import acjj;
-import acjk;
-import aedo;
-import ajei;
+import acub;
+import acuc;
+import acud;
+import aeoo;
+import ajsk;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
@@ -16,7 +16,7 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.TextView;
-import awqx;
+import axqw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -29,12 +29,12 @@ public class BabyQAIOPanel
   extends FrameLayout
   implements View.OnClickListener
 {
-  private acjk jdField_a_of_type_Acjk;
-  private aedo jdField_a_of_type_Aedo;
+  private acud jdField_a_of_type_Acud;
+  private aeoo jdField_a_of_type_Aeoo;
   private Context jdField_a_of_type_AndroidContentContext;
   private GridView jdField_a_of_type_AndroidWidgetGridView;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ArrayList<acji> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<acub> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
   public BabyQAIOPanel(@NonNull Context paramContext)
   {
@@ -51,22 +51,22 @@ public class BabyQAIOPanel
   private void b()
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    ajei localajei = (ajei)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(53);
+    ajsk localajsk = (ajsk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(53);
     int i;
     String str2;
     Object localObject1;
     String str1;
     Object localObject2;
-    if ((localajei.jdField_a_of_type_JavaUtilHashMap != null) && (!localajei.jdField_a_of_type_JavaUtilHashMap.isEmpty()) && (localajei.jdField_a_of_type_JavaUtilArrayList != null) && (!localajei.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    if ((localajsk.jdField_a_of_type_JavaUtilHashMap != null) && (!localajsk.jdField_a_of_type_JavaUtilHashMap.isEmpty()) && (localajsk.jdField_a_of_type_JavaUtilArrayList != null) && (!localajsk.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
     {
-      Iterator localIterator = localajei.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = localajsk.jdField_a_of_type_JavaUtilArrayList.iterator();
       i = 1;
       while (localIterator.hasNext())
       {
         str2 = (String)localIterator.next();
         if (!TextUtils.isEmpty(str2))
         {
-          localObject1 = (String[])localajei.jdField_a_of_type_JavaUtilHashMap.get(str2);
+          localObject1 = (String[])localajsk.jdField_a_of_type_JavaUtilHashMap.get(str2);
           if ((localObject1 != null) && (localObject1.length == 2))
           {
             str1 = localObject1[0];
@@ -80,21 +80,21 @@ public class BabyQAIOPanel
       try
       {
         int j = Integer.parseInt(str1);
-        localObject1 = new acji();
-        ((acji)localObject1).jdField_a_of_type_JavaLangString = str2;
-        ((acji)localObject1).jdField_a_of_type_Int = j;
-        ((acji)localObject1).jdField_a_of_type_Boolean = "1".equalsIgnoreCase((String)localObject2);
-        ((acji)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable = localajei.a(j);
+        localObject1 = new acub();
+        ((acub)localObject1).jdField_a_of_type_JavaLangString = str2;
+        ((acub)localObject1).jdField_a_of_type_Int = j;
+        ((acub)localObject1).jdField_a_of_type_Boolean = "1".equalsIgnoreCase((String)localObject2);
+        ((acub)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable = localajsk.a(j);
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder().append("loadDatas | item.drawable is :");
-          if (((acji)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+          if (((acub)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
             break label303;
           }
           str1 = "null";
           QLog.d("Q.BabyQ", 2, str1 + ", itemCode : " + j);
         }
-        if (((acji)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+        if (((acub)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
           break label309;
         }
         this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
@@ -110,21 +110,21 @@ public class BabyQAIOPanel
       str1 = "not null";
       continue;
       label309:
-      if (localException.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131625194)))
+      if (localException.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131690755)))
       {
-        ((acji)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130838782);
+        ((acub)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130838862);
         this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
         i = 0;
       }
-      else if (localException.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131625191)))
+      else if (localException.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131690752)))
       {
-        ((acji)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130838780);
+        ((acub)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130838860);
         this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
         i = 0;
       }
-      else if (localException.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131625192)))
+      else if (localException.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131690753)))
       {
-        ((acji)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130838781);
+        ((acub)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130838861);
         this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
         i = 0;
         continue;
@@ -140,62 +140,62 @@ public class BabyQAIOPanel
   
   private void c()
   {
-    acji localacji = new acji();
-    localacji.jdField_a_of_type_Boolean = false;
-    localacji.jdField_a_of_type_Int = 1;
-    localacji.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131625191);
-    localacji.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130838780);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localacji);
-    localacji = new acji();
-    localacji.jdField_a_of_type_Boolean = false;
-    localacji.jdField_a_of_type_Int = 2;
-    localacji.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131625192);
-    localacji.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130838781);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localacji);
-    localacji = new acji();
-    localacji.jdField_a_of_type_Boolean = false;
-    localacji.jdField_a_of_type_Int = 3;
-    localacji.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131625194);
-    localacji.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130838782);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localacji);
+    acub localacub = new acub();
+    localacub.jdField_a_of_type_Boolean = false;
+    localacub.jdField_a_of_type_Int = 1;
+    localacub.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131690752);
+    localacub.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130838860);
+    this.jdField_a_of_type_JavaUtilArrayList.add(localacub);
+    localacub = new acub();
+    localacub.jdField_a_of_type_Boolean = false;
+    localacub.jdField_a_of_type_Int = 2;
+    localacub.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131690753);
+    localacub.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130838861);
+    this.jdField_a_of_type_JavaUtilArrayList.add(localacub);
+    localacub = new acub();
+    localacub.jdField_a_of_type_Boolean = false;
+    localacub.jdField_a_of_type_Int = 3;
+    localacub.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131690755);
+    localacub.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130838862);
+    this.jdField_a_of_type_JavaUtilArrayList.add(localacub);
   }
   
   public void a()
   {
     b();
-    if (this.jdField_a_of_type_Acjk != null) {
-      this.jdField_a_of_type_Acjk.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Acud != null) {
+      this.jdField_a_of_type_Acud.notifyDataSetChanged();
     }
   }
   
-  public void a(aedo paramaedo)
+  public void a(aeoo paramaeoo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramaedo.a();
-    this.jdField_a_of_type_Aedo = paramaedo;
-    setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131099966));
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131301559));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramaeoo.a();
+    this.jdField_a_of_type_Aeoo = paramaeoo;
+    setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165551));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131367171));
     this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(2);
     b();
-    this.jdField_a_of_type_Acjk = new acjk(this);
-    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Acjk);
+    this.jdField_a_of_type_Acud = new acud(this);
+    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Acud);
   }
   
   public void onClick(View paramView)
   {
     Object localObject = paramView.getTag();
-    if ((localObject != null) && ((localObject instanceof acjj)))
+    if ((localObject != null) && ((localObject instanceof acuc)))
     {
-      paramView = (acjj)paramView.getTag();
+      paramView = (acuc)paramView.getTag();
       localObject = paramView.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
-      this.jdField_a_of_type_Aedo.a.append((CharSequence)localObject);
-      this.jdField_a_of_type_Aedo.c();
-      ajei localajei = (ajei)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(53);
-      if (localajei.a((String)localObject))
+      this.jdField_a_of_type_Aeoo.a.append((CharSequence)localObject);
+      this.jdField_a_of_type_Aeoo.c();
+      ajsk localajsk = (ajsk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(53);
+      if (localajsk.a((String)localObject))
       {
-        localajei.a((String)localObject);
+        localajsk.a((String)localObject);
         a();
       }
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800806D", "0X800806D", paramView.jdField_a_of_type_Int, 0, "", "", "", "");
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800806D", "0X800806D", paramView.jdField_a_of_type_Int, 0, "", "", "", "");
     }
   }
 }

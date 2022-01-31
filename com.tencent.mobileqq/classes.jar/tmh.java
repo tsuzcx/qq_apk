@@ -1,28 +1,44 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBannerVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-final class tmh
-  extends AnimatorListenerAdapter
+public class tmh
+  extends syv<tof>
 {
-  tmh(Animator.AnimatorListener paramAnimatorListener) {}
+  public static final String a = sxp.a("StorySvc.square_720_banner_vid_list");
+  public String b;
+  public String c;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public String a()
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.onAnimationCancel(paramAnimator);
+    return a;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public syq a(byte[] paramArrayOfByte)
   {
-    urk.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation, onAnimationEnd");
-    this.a.onAnimationEnd(paramAnimator);
+    qqstory_service.RspBannerVideoList localRspBannerVideoList = new qqstory_service.RspBannerVideoList();
+    try
+    {
+      localRspBannerVideoList.mergeFrom(paramArrayOfByte);
+      return new tof(localRspBannerVideoList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  protected byte[] a()
   {
-    super.onAnimationStart(paramAnimator);
-    this.a.onAnimationStart(paramAnimator);
+    qqstory_service.ReqBannerVideoList localReqBannerVideoList = new qqstory_service.ReqBannerVideoList();
+    localReqBannerVideoList.banner_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqBannerVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.c));
+    return localReqBannerVideoList.toByteArray();
   }
 }
 

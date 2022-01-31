@@ -3,8 +3,8 @@ package cooperation.weiyun;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
-import bfcz;
-import bfdi;
+import bgkq;
+import bgkz;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 
 public class AlbumBackupProxyActivity
@@ -22,9 +22,9 @@ public class AlbumBackupProxyActivity
     localIntent.putExtra("userQqResources", 1);
     localIntent.putExtra("useSkinEngine", true);
     localIntent.putExtra("weiyun_backup_source", paramString2);
-    paramString2 = new bfdi(0);
+    paramString2 = new bgkz(0);
     paramString2.jdField_b_of_type_JavaLangString = "WeiyunPlugin.apk";
-    paramString2.d = paramActivity.getResources().getString(2131654973);
+    paramString2.d = paramActivity.getResources().getString(2131720871);
     paramString2.jdField_a_of_type_JavaLangString = paramString1;
     paramString2.e = "com.weiyun.plugin.cloudalbum.activity.CloudAlbumActivity";
     paramString2.jdField_a_of_type_JavaLangClass = AlbumBackupProxyActivity.class;
@@ -32,7 +32,7 @@ public class AlbumBackupProxyActivity
     if (paramInt != -1) {
       paramString2.jdField_b_of_type_Int = paramInt;
     }
-    bfcz.a(paramActivity, paramString2);
+    bgkq.a(paramActivity, paramString2);
   }
   
   public String getPluginID()

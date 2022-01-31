@@ -1,12 +1,4 @@
-import android.widget.TextView;
-
-public class afxv
-{
-  public afxu a;
-  public TextView a;
-  public TextView b;
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afxv

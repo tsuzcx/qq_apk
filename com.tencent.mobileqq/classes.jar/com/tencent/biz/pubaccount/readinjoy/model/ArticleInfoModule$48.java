@@ -10,18 +10,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import obz;
-import ooq;
-import pde;
-import ppu;
-import ppv;
-import ppx;
+import onk;
+import ozr;
+import pow;
+import qbq;
+import qbr;
+import qbt;
 import tencent.im.oidb.cmd0xa6e.oidb_cmd0xa6e.ReqBody;
 
 public class ArticleInfoModule$48
   implements Runnable
 {
-  public ArticleInfoModule$48(ooq paramooq, ConcurrentHashMap paramConcurrentHashMap1, ConcurrentHashMap paramConcurrentHashMap2, int paramInt) {}
+  public ArticleInfoModule$48(ozr paramozr, ConcurrentHashMap paramConcurrentHashMap1, ConcurrentHashMap paramConcurrentHashMap2, int paramInt) {}
   
   public void run()
   {
@@ -33,14 +33,14 @@ public class ArticleInfoModule$48
       if (!((Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(l))).booleanValue())
       {
         Object localObject3 = (ArticleInfo)this.b.get(Long.valueOf(l));
-        if ((localObject3 != null) && (obz.o((BaseArticleInfo)localObject3)) && (((ArticleInfo)localObject3).mNewPolymericInfo.a != null))
+        if ((localObject3 != null) && (onk.o((BaseArticleInfo)localObject3)) && (((ArticleInfo)localObject3).mNewPolymericInfo.a != null))
         {
           localObject3 = ((ArticleInfo)localObject3).mNewPolymericInfo.a.iterator();
           while (((Iterator)localObject3).hasNext())
           {
-            ppv localppv = (ppv)((Iterator)localObject3).next();
-            if (localppv.a != null) {
-              ((ArrayList)localObject1).add(Long.valueOf(localppv.a.b));
+            qbr localqbr = (qbr)((Iterator)localObject3).next();
+            if (localqbr.a != null) {
+              ((ArrayList)localObject1).add(Long.valueOf(localqbr.a.b));
             }
           }
           this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(l), Boolean.valueOf(true));
@@ -50,7 +50,7 @@ public class ArticleInfoModule$48
     localObject2 = new oidb_cmd0xa6e.ReqBody();
     ((oidb_cmd0xa6e.ReqBody)localObject2).rpt_topiclist.set((List)localObject1);
     ((oidb_cmd0xa6e.ReqBody)localObject2).uint32_req_pv.set(1);
-    localObject1 = pde.a("OidbSvc.0xa6e", 2670, 4, ((oidb_cmd0xa6e.ReqBody)localObject2).toByteArray());
+    localObject1 = pow.a("OidbSvc.0xa6e", 2670, 4, ((oidb_cmd0xa6e.ReqBody)localObject2).toByteArray());
     ((ToServiceMsg)localObject1).addAttribute("channelId", Integer.valueOf(this.jdField_a_of_type_Int));
     ((ToServiceMsg)localObject1).addAttribute("0xa6e_articleSeqSet", this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet());
     this.this$0.a((ToServiceMsg)localObject1);

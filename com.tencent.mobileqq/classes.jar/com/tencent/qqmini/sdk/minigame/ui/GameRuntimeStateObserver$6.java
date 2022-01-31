@@ -1,16 +1,15 @@
 package com.tencent.qqmini.sdk.minigame.ui;
 
-import android.widget.Toast;
-import bdqv;
+import bewi;
 
 public class GameRuntimeStateObserver$6
   implements Runnable
 {
-  public GameRuntimeStateObserver$6(bdqv parambdqv) {}
+  public GameRuntimeStateObserver$6(bewi parambewi) {}
   
   public void run()
   {
-    Toast.makeText(bdqv.a(this.this$0), "小游戏配置加载失败！", 0).show();
+    bewi.a(this.this$0).setProgressTxt("100%");
   }
 }
 

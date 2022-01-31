@@ -1,33 +1,15 @@
 package com.tencent.mobileqq.webprocess;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.smtt.sdk.TbsDownloader;
-import mqq.app.AppRuntime;
+import ajae;
 
 class WebProcessReceiver$1
   implements Runnable
 {
-  WebProcessReceiver$1(WebProcessReceiver paramWebProcessReceiver, boolean paramBoolean1, AppRuntime paramAppRuntime, boolean paramBoolean2) {}
+  WebProcessReceiver$1(WebProcessReceiver paramWebProcessReceiver) {}
   
   public void run()
   {
-    BrowserAppInterface localBrowserAppInterface;
-    boolean bool2;
-    if ((TbsDownloader.needDownload(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_Boolean)) && ((this.jdField_a_of_type_MqqAppAppRuntime instanceof BrowserAppInterface)))
-    {
-      localBrowserAppInterface = (BrowserAppInterface)this.jdField_a_of_type_MqqAppAppRuntime;
-      bool2 = this.jdField_a_of_type_Boolean;
-      if (this.b) {
-        break label53;
-      }
-    }
-    label53:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      localBrowserAppInterface.a(false, bool2, bool1);
-      return;
-    }
+    ajae.a();
   }
 }
 

@@ -1,23 +1,54 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-class pkh
-  implements View.OnClickListener
+public class pkh
+  extends ViewBase
 {
-  pkh(pkf parampkf, RecommendFollowInfo paramRecommendFollowInfo) {}
+  private NativeGridImageView a;
   
-  public void onClick(View paramView)
+  public pkh(VafContext paramVafContext)
   {
-    paramView = this.jdField_a_of_type_Pkf.a;
-    RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-    if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.a(localRecommendFollowInfo, bool);
-      return;
-    }
+    super(paramVafContext);
+    this.a = new NativeGridImageView(paramVafContext.getContext());
+  }
+  
+  public void a(ArticleInfo paramArticleInfo)
+  {
+    this.a.a(paramArticleInfo);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.a(this);
   }
 }
 

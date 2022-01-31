@@ -1,16 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class abvt
   implements View.OnClickListener
 {
-  public abvt(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public abvt(QQMapActivity paramQQMapActivity) {}
   
   public void onClick(View paramView)
   {
-    TroopAssistantActivity.a(this.a);
-    awqx.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_close", 0, 0, "", "", "", "");
+    this.a.onBackPressed();
   }
 }
 

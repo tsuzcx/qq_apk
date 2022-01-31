@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.monitor.service;
 
-import azwa;
+import baxe;
 
 class TaskMonitorManager$FpsListener
-  implements azwa
+  implements baxe
 {
   private TaskMonitorManager$FpsListener(TaskMonitorManager paramTaskMonitorManager) {}
   

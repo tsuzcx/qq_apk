@@ -1,75 +1,41 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.qphone.base.util.QLog;
 
 class abgj
-  implements ubl
+  extends ajxl
 {
   abgj(abgi paramabgi) {}
   
-  public View a()
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    return this.a.jdField_b_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  public ImageView a()
-  {
-    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramSetting == null) || (!this.a.b.equals(paramSetting.uin))) {}
+    do
     {
-      vkw.a(bool);
-      return this.a.jdField_a_of_type_AndroidWidgetImageView;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.Avatar", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
+      }
+    } while ((!this.a.jdField_a_of_type_Boolean) || (paramSetting.url == null) || (paramSetting.url.length() <= 0));
+    this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (!this.a.b.equals(paramString)) {
+      return;
     }
-  }
-  
-  public TextView a()
-  {
-    if (this.a.c != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      vkw.a(bool);
-      return this.a.c;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.Avatar", 2, "onUpdateCustomHead: uin=" + paramString);
     }
-  }
-  
-  public void a()
-  {
-    this.a.a();
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
+    this.a.b(this.a.jdField_a_of_type_Abgm);
     if (paramBoolean)
     {
-      abgi.a(this.a);
+      this.a.a(this.a.jdField_a_of_type_Abgm, false);
+      this.a.c(this.a.jdField_a_of_type_Abgm);
       return;
     }
-    abgi.b(this.a);
-  }
-  
-  public void b()
-  {
-    this.a.a(false);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
-      return;
-    }
-  }
-  
-  public void c()
-  {
-    this.a.a(true);
+    this.a.jdField_a_of_type_Abgm.a = 2;
+    this.a.c(this.a.jdField_a_of_type_Abgm);
   }
 }
 

@@ -1,38 +1,25 @@
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class aijv
-  implements Cloneable
+  implements Animation.AnimationListener
 {
-  public int a;
-  public long a;
-  public ArrayList<String> a;
-  public int b;
-  public int c;
+  public aijv(SpecailCareListActivity paramSpecailCareListActivity, aijz paramaijz) {}
   
-  protected Object clone()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject = null;
-    try
-    {
-      aijv localaijv = (aijv)super.clone();
-      localObject = localaijv;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      for (;;)
-      {
-        localCloneNotSupportedException.printStackTrace();
-      }
-    }
-    if (this.a != null) {
-      localObject.a = ((ArrayList)this.a.clone());
-    }
-    return localObject;
+    this.jdField_a_of_type_Aijz.c.setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aijv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,27 @@
-import android.util.SparseArray;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-final class tqv
-  extends SparseArray<String>
+class tqv
+  extends tpo
 {
-  tqv()
+  tqv(tqk paramtqk, StoryVideoItem paramStoryVideoItem, trs paramtrs)
   {
-    put(31, "PLAYER_INFO_PLAYER_TYPE");
-    put(24, "PLAYER_INFO_SUCC_SET_DECODER_MODE");
-    put(33, "PLAYER_INFO_START_GET_VINFO");
-    put(21, ajjy.a(2131648758));
-    put(34, "PLAYER_INFO_END_GET_VINFO");
-    put(22, ajjy.a(2131648762));
-    put(23, "PLAYER_INFO_START_RENDERING");
-    put(39, "PLAYER_INFO_HW_DECODE_FAILED");
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    String str = (String)a("result");
+    vxs.a(str);
+    vxs.a(this.jdField_a_of_type_Trs.d);
+    if (this.jdField_a_of_type_Trs.d == null)
+    {
+      this.jdField_a_of_type_Trs.d = "";
+      veg.c(this.b, "imageLocalPath is null", new Throwable());
+    }
+    a("DownloadPic2FileJob_iiu", str);
+    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Trs.d);
+    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Trs.a));
+    return true;
   }
 }
 

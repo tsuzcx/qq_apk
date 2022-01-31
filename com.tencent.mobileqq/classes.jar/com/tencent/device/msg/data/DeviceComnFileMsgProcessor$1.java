@@ -4,22 +4,22 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForDeviceFile;
 import java.util.concurrent.ConcurrentHashMap;
-import xvo;
+import yes;
 
 public class DeviceComnFileMsgProcessor$1
   implements Runnable
 {
-  public DeviceComnFileMsgProcessor$1(xvo paramxvo, MessageForDeviceFile paramMessageForDeviceFile) {}
+  public DeviceComnFileMsgProcessor$1(yes paramyes, MessageForDeviceFile paramMessageForDeviceFile) {}
   
   public void run()
   {
-    if (xvo.a(this.this$0).containsKey(Long.valueOf(this.a.uSessionID)))
+    if (yes.a(this.this$0).containsKey(Long.valueOf(this.a.uSessionID)))
     {
       this.a.nFileStatus = 23;
       this.a.serial();
-      xvo.a(this.this$0).a().a(this.a.frienduin, 9501, this.a.uniseq, this.a.msgData);
-      xvo.a(this.this$0, this.a);
-      xvo.a(this.this$0).remove(Long.valueOf(this.a.uSessionID));
+      yes.a(this.this$0).a().a(this.a.frienduin, 9501, this.a.uniseq, this.a.msgData);
+      yes.a(this.this$0, this.a);
+      yes.a(this.this$0).remove(Long.valueOf(this.a.uSessionID));
     }
   }
 }

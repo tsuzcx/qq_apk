@@ -1,9 +1,13 @@
-public class ner
+import android.widget.ImageView;
+import android.widget.TextView;
+
+class ner
 {
-  public long a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  
+  ner(ned paramned) {}
 }
 
 

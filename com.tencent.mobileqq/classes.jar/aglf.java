@@ -1,27 +1,29 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.net.URL;
 
 public class aglf
-  implements OnCompositionLoadedListener
+  implements ayww
 {
-  public aglf(RedPacketPopFragment paramRedPacketPopFragment, ImageView paramImageView) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  LocalMediaInfo jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public aglf(Context paramContext, LocalMediaInfo paramLocalMediaInfo)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localLottieDrawable);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
+  }
+  
+  public Bitmap a(URL paramURL)
+  {
+    return ThumbnailUtils.extractThumbnail(ThumbnailUtils.createVideoThumbnail(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path, 3), this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbWidth, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbHeight);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aglf
  * JD-Core Version:    0.7.0.1
  */

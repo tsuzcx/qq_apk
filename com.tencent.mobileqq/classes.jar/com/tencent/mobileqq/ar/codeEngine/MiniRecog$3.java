@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import akvc;
+import aljo;
 import com.tencent.qphone.base.util.QLog;
 
 public class MiniRecog$3
   implements Runnable
 {
-  public MiniRecog$3(akvc paramakvc) {}
+  public MiniRecog$3(aljo paramaljo) {}
   
   public void run()
   {

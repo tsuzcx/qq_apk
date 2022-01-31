@@ -1,20 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
-class aham
-  implements DialogInterface.OnClickListener
+public abstract class aham
+  implements TextWatcher
 {
-  aham(ahai paramahai) {}
+  protected EditText a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aham(EditText paramEditText)
   {
-    ((ajfi)this.a.a.a(2)).m(false);
+    this.a = paramEditText;
   }
+  
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aham
  * JD-Core Version:    0.7.0.1
  */

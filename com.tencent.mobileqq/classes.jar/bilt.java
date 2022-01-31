@@ -1,15 +1,14 @@
-import android.animation.ValueAnimator;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public class bilt
-  implements bils
+class bilt
+  implements xfc
 {
-  public void a(ValueAnimator paramValueAnimator) {}
+  bilt(bilj parambilj) {}
   
-  public void b(ValueAnimator paramValueAnimator) {}
-  
-  public void c(ValueAnimator paramValueAnimator) {}
-  
-  public void d(ValueAnimator paramValueAnimator) {}
+  public void a()
+  {
+    bilj.a(this.a).setVisibility(0);
+  }
 }
 
 

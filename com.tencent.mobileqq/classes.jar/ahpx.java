@@ -1,23 +1,8 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
-import mqq.os.MqqHandler;
-
-public class ahpx
-  extends MqqHandler
+public abstract interface ahpx
 {
-  public ahpx(ContactsInnerFrame paramContactsInnerFrame) {}
+  public abstract void a(byte[] paramArrayOfByte);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
-    }
-    ContactsInnerFrame.a(this.a);
-  }
+  public abstract byte[] a();
 }
 
 

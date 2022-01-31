@@ -1,61 +1,68 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class amkt
-  extends alzl<amks>
+  implements InvocationHandler
 {
-  public static amks a()
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private List<amku> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  public amkt(Activity paramActivity, boolean paramBoolean)
   {
-    return (amks)alzw.a().a(486);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public int a()
+  public void a()
   {
-    return 486;
+    if ((!this.b) && (this.jdField_a_of_type_AndroidAppActivity != null))
+    {
+      this.b = true;
+      amkn.a(this.jdField_a_of_type_AndroidAppActivity, this);
+    }
   }
   
-  @NonNull
-  public amks a(int paramInt)
+  public void a(amku paramamku)
   {
-    return new amks();
+    this.jdField_a_of_type_JavaUtilList.add(paramamku);
   }
   
-  @Nullable
-  public amks a(alzs[] paramArrayOfalzs)
+  public boolean a()
   {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return amks.a(paramArrayOfalzs);
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  {
+    if ((paramMethod.getName().equalsIgnoreCase("onTranslucentConversionComplete")) && (paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      paramMethod = paramArrayOfObject[0];
+      if (QLog.isColorLevel()) {
+        QLog.d("TranslucentConvertor", 2, "onTranslucentConversionComplete: " + paramMethod);
+      }
+      paramObject = Boolean.valueOf(false);
+      if ((paramMethod instanceof Boolean)) {
+        paramObject = (Boolean)paramMethod;
+      }
+      paramMethod = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramMethod.hasNext()) {
+        ((amku)paramMethod.next()).d_(paramObject.booleanValue());
+      }
     }
     return null;
-  }
-  
-  public Class<amks> a()
-  {
-    return amks.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amks paramamks) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkt
  * JD-Core Version:    0.7.0.1
  */

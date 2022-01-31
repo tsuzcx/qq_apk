@@ -1,9 +1,16 @@
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+
 public class ppf
-  extends ppg
+  implements View.OnClickListener
 {
-  public ppf(Long paramLong, Integer paramInteger, String paramString1, String paramString2)
+  public ppf(PTSFragment paramPTSFragment) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramLong, paramInteger, paramString1, paramString2);
+    ((Activity)paramView.getContext()).finish();
   }
 }
 

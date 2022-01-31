@@ -1,17 +1,30 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.troop.widget.BorderURLImageView;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class azlz
 {
-  afzi jdField_a_of_type_Afzi;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  BorderURLImageView jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView;
+  public int a;
+  public String a;
+  public ArrayList<azlz> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  protected azlz(azly paramazly) {}
+  public azlz() {}
+  
+  public azlz(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = ((Integer)azly.a().get(paramString)).intValue();
+  }
 }
 
 

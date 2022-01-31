@@ -1,12 +1,18 @@
-import android.graphics.Bitmap;
-
-public abstract interface agsm
+class agsm
+  implements bcvx
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
+  agsm(agsl paramagsl, Runnable paramRunnable) {}
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agsm
  * JD-Core Version:    0.7.0.1
  */

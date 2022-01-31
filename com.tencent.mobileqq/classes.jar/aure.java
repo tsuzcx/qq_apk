@@ -1,30 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.AdapterView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aure
-  implements behk
+public final class aure
+  implements ayrz
 {
-  public aure(IosTimepicker paramIosTimepicker) {}
-  
-  public void a(AdapterView<?> paramAdapterView) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(aysw paramaysw, aysx paramaysx)
   {
-    IosTimepicker.a(this.a, paramView, 1);
-    if (paramView.getTag() != null)
+    if ((paramaysw == null) || (paramaysx == null)) {}
+    do
     {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
+      do
       {
-        if (i != paramInt) {
-          IosTimepicker.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-        }
-        paramInt += 1;
+        return;
+      } while (!(paramaysw instanceof ayrv));
+      paramaysw = (ayrv)paramaysw;
+      paramaysw.jdField_a_of_type_Long += paramaysx.c;
+      paramaysx.c = 0L;
+      paramaysx = "bytes=" + paramaysw.jdField_a_of_type_Long + "-";
+      paramaysw.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysx);
+      paramaysx = paramaysw.jdField_a_of_type_JavaLangString;
+      if (paramaysx.contains("range="))
+      {
+        String str = paramaysx.substring(0, paramaysx.lastIndexOf("range="));
+        paramaysw.jdField_a_of_type_JavaLangString = (str + "range=" + paramaysw.jdField_a_of_type_Long);
       }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.i("PortalManager", 2, "IBreakDownFix, " + paramaysx);
   }
 }
 

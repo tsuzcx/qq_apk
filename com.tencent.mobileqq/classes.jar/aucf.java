@@ -1,33 +1,23 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.OcrConfig;
 
-public class aucf
-  extends auca
+public final class aucf
+  implements Parcelable.Creator<OcrConfig>
 {
-  public aucf(LSRecordPanel paramLSRecordPanel) {}
-  
-  public void a(Animation paramAnimation, float paramFloat)
+  public OcrConfig a(Parcel paramParcel)
   {
-    if ((this.a.c == null) && (this.a.a != null) && (paramFloat >= 0.5F)) {
-      this.a.f();
-    }
+    return new OcrConfig(paramParcel);
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public OcrConfig[] a(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startExpandAnimation onAnimationEnd");
-    }
-    if (paramAnimation == this.a.a) {
-      this.a.h();
-    }
-    this.a.a = null;
+    return new OcrConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aucf
  * JD-Core Version:    0.7.0.1
  */

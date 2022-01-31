@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.utils;
 
 import android.support.v4.util.LruCache;
-import babb;
-import babc;
-import babd;
+import bbcf;
+import bbcg;
+import bbch;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -12,14 +12,14 @@ import java.util.Map;
 
 public class ChnToSpell
 {
-  private static LruCache<String, babc> jdField_a_of_type_AndroidSupportV4UtilLruCache;
+  private static LruCache<String, bbcg> jdField_a_of_type_AndroidSupportV4UtilLruCache;
   private static Map<String, String[]> jdField_a_of_type_JavaUtilMap;
   private static final int[] jdField_a_of_type_ArrayOfInt;
   public static final String[] a;
   private static short[] jdField_a_of_type_ArrayOfShort;
-  private static LruCache<String, babc> b;
+  private static LruCache<String, bbcg> b;
   public static final String[] b;
-  private static LruCache<String, babd> jdField_c_of_type_AndroidSupportV4UtilLruCache = new LruCache(1024);
+  private static LruCache<String, bbch> jdField_c_of_type_AndroidSupportV4UtilLruCache = new LruCache(1024);
   private static final String[] jdField_c_of_type_ArrayOfJavaLangString;
   
   static
@@ -33,59 +33,59 @@ public class ChnToSpell
     jdField_b_of_type_AndroidSupportV4UtilLruCache = new LruCache(1024);
   }
   
-  public static babb a(char paramChar)
+  public static bbcf a(char paramChar)
   {
-    babb localbabb = new babb();
+    bbcf localbbcf = new bbcf();
     switch (Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, paramChar))
     {
     default: 
-      localbabb.jdField_a_of_type_Int = 6;
-      localbabb.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
-      return localbabb;
+      localbbcf.jdField_a_of_type_Int = 6;
+      localbbcf.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+      return localbbcf;
     case -12: 
-      localbabb.jdField_a_of_type_Int = 1;
-      localbabb.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
-      return localbabb;
+      localbbcf.jdField_a_of_type_Int = 1;
+      localbbcf.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+      return localbbcf;
     case -5: 
-      localbabb.jdField_a_of_type_Int = 2;
-      localbabb.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
-      return localbabb;
+      localbbcf.jdField_a_of_type_Int = 2;
+      localbbcf.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+      return localbbcf;
     case -7: 
-      localbabb.jdField_a_of_type_Int = 3;
-      localbabb.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
-      return localbabb;
+      localbbcf.jdField_a_of_type_Int = 3;
+      localbbcf.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+      return localbbcf;
     case -3: 
-      localbabb.jdField_a_of_type_Int = 4;
-      localbabb.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
-      return localbabb;
+      localbbcf.jdField_a_of_type_Int = 4;
+      localbbcf.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+      return localbbcf;
     }
-    localbabb.jdField_a_of_type_Int = 5;
-    localbabb.jdField_a_of_type_JavaLangString = String.valueOf(Character.toLowerCase((char)(paramChar - 65248)));
-    return localbabb;
+    localbbcf.jdField_a_of_type_Int = 5;
+    localbbcf.jdField_a_of_type_JavaLangString = String.valueOf(Character.toLowerCase((char)(paramChar - 65248)));
+    return localbbcf;
   }
   
-  public static babb a(char paramChar, int paramInt)
+  public static bbcf a(char paramChar, int paramInt)
   {
-    babb localbabb = new babb();
+    bbcf localbbcf = new bbcf();
     if (paramInt == 0)
     {
       if (paramChar == '单')
       {
-        localbabb.jdField_a_of_type_Int = 5;
-        localbabb.jdField_a_of_type_JavaLangString = "shan";
-        return localbabb;
+        localbbcf.jdField_a_of_type_Int = 5;
+        localbbcf.jdField_a_of_type_JavaLangString = "shan";
+        return localbbcf;
       }
       if (paramChar == '仇')
       {
-        localbabb.jdField_a_of_type_Int = 5;
-        localbabb.jdField_a_of_type_JavaLangString = "qiu";
-        return localbabb;
+        localbbcf.jdField_a_of_type_Int = 5;
+        localbbcf.jdField_a_of_type_JavaLangString = "qiu";
+        return localbbcf;
       }
       if (paramChar == '曾')
       {
-        localbabb.jdField_a_of_type_Int = 5;
-        localbabb.jdField_a_of_type_JavaLangString = "zeng";
-        return localbabb;
+        localbbcf.jdField_a_of_type_Int = 5;
+        localbbcf.jdField_a_of_type_JavaLangString = "zeng";
+        return localbbcf;
       }
     }
     switch (Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, paramChar))
@@ -93,50 +93,50 @@ public class ChnToSpell
     default: 
       if (Character.isHighSurrogate(paramChar))
       {
-        localbabb.jdField_a_of_type_Int = 0;
-        localbabb.jdField_a_of_type_JavaLangString = "??";
+        localbbcf.jdField_a_of_type_Int = 0;
+        localbbcf.jdField_a_of_type_JavaLangString = "??";
       }
       break;
     }
     for (;;)
     {
-      return localbabb;
+      return localbbcf;
       int i = paramChar - 'Ⅰ';
       paramInt = i;
       if (i >= jdField_c_of_type_ArrayOfJavaLangString.length) {
         paramInt = i - jdField_c_of_type_ArrayOfJavaLangString.length;
       }
-      localbabb.jdField_a_of_type_Int = 1;
-      localbabb.jdField_a_of_type_JavaLangString = jdField_c_of_type_ArrayOfJavaLangString[paramInt];
+      localbbcf.jdField_a_of_type_Int = 1;
+      localbbcf.jdField_a_of_type_JavaLangString = jdField_c_of_type_ArrayOfJavaLangString[paramInt];
       continue;
-      localbabb.jdField_a_of_type_Int = 2;
-      localbabb.jdField_a_of_type_JavaLangString = "ling";
+      localbbcf.jdField_a_of_type_Int = 2;
+      localbbcf.jdField_a_of_type_JavaLangString = "ling";
       continue;
-      localbabb.jdField_a_of_type_Int = 4;
-      localbabb.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+      localbbcf.jdField_a_of_type_Int = 4;
+      localbbcf.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
       continue;
-      localbabb.jdField_a_of_type_Int = 3;
-      localbabb.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+      localbbcf.jdField_a_of_type_Int = 3;
+      localbbcf.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
       continue;
-      localbabb.jdField_a_of_type_Int = 5;
-      localbabb.jdField_a_of_type_JavaLangString = jdField_a_of_type_ArrayOfJavaLangString[jdField_a_of_type_ArrayOfShort[(paramChar - '一')]];
+      localbbcf.jdField_a_of_type_Int = 5;
+      localbbcf.jdField_a_of_type_JavaLangString = jdField_a_of_type_ArrayOfJavaLangString[jdField_a_of_type_ArrayOfShort[(paramChar - '一')]];
       continue;
-      localbabb.jdField_a_of_type_Int = 6;
-      localbabb.jdField_a_of_type_JavaLangString = String.valueOf(Character.toLowerCase((char)(paramChar - 65248)));
+      localbbcf.jdField_a_of_type_Int = 6;
+      localbbcf.jdField_a_of_type_JavaLangString = String.valueOf(Character.toLowerCase((char)(paramChar - 65248)));
       continue;
-      localbabb.jdField_a_of_type_Int = 0;
-      localbabb.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+      localbbcf.jdField_a_of_type_Int = 0;
+      localbbcf.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
     }
   }
   
-  public static babc a(String paramString, int paramInt)
+  public static bbcg a(String paramString, int paramInt)
   {
     if ((paramString == null) || (paramString.length() == 0))
     {
-      localObject1 = new babc();
-      ((babc)localObject1).jdField_a_of_type_Int = paramInt;
-      ((babc)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
-      ((babc)localObject1).jdField_a_of_type_JavaLangString = "";
+      localObject1 = new bbcg();
+      ((bbcg)localObject1).jdField_a_of_type_Int = paramInt;
+      ((bbcg)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
+      ((bbcg)localObject1).jdField_a_of_type_JavaLangString = "";
     }
     do
     {
@@ -144,12 +144,12 @@ public class ChnToSpell
       if (paramInt != 1) {
         break;
       }
-      localObject2 = (babc)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+      localObject2 = (bbcg)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
       localObject1 = localObject2;
     } while (localObject2 != null);
-    Object localObject1 = new babc();
-    ((babc)localObject1).jdField_a_of_type_Int = paramInt;
-    ((babc)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
+    Object localObject1 = new bbcg();
+    ((bbcg)localObject1).jdField_a_of_type_Int = paramInt;
+    ((bbcg)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
     if (jdField_a_of_type_ArrayOfShort == null) {
       b();
     }
@@ -161,7 +161,7 @@ public class ChnToSpell
       {
         ((StringBuilder)localObject2).append("shan");
         label153:
-        ((babc)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+        ((bbcg)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
         j = 1;
       }
     }
@@ -171,14 +171,14 @@ public class ChnToSpell
       if (j < n)
       {
         int i = paramString.charAt(j);
-        ((babc)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(((StringBuilder)localObject2).length()));
+        ((bbcg)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(((StringBuilder)localObject2).length()));
         switch (Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, i))
         {
         default: 
           if (Character.isHighSurrogate(i))
           {
             ((StringBuilder)localObject2).append('?');
-            ((babc)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(((StringBuilder)localObject2).length()));
+            ((bbcg)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(((StringBuilder)localObject2).length()));
             ((StringBuilder)localObject2).append('?');
             j += 1;
           }
@@ -191,7 +191,7 @@ public class ChnToSpell
           if (paramInt != 2) {
             break;
           }
-          localObject1 = (babc)jdField_b_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+          localObject1 = (bbcg)jdField_b_of_type_AndroidSupportV4UtilLruCache.get(paramString);
           if (localObject1 == null) {
             break;
           }
@@ -208,7 +208,7 @@ public class ChnToSpell
             }
             for (;;)
             {
-              ((babc)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+              ((bbcg)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
               j = 1;
               break;
               if (paramInt == 2) {
@@ -223,7 +223,7 @@ public class ChnToSpell
             }
             for (;;)
             {
-              ((babc)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+              ((bbcg)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
               j = 1;
               break;
               if (paramInt == 2) {
@@ -239,8 +239,8 @@ public class ChnToSpell
             if (paramInt == 1)
             {
               ((StringBuilder)localObject2).append("moqi");
-              ((babc)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
-              ((babc)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(2));
+              ((bbcg)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+              ((bbcg)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(2));
             }
             for (;;)
             {
@@ -249,8 +249,8 @@ public class ChnToSpell
               if (paramInt == 2)
               {
                 ((StringBuilder)localObject2).append("mq");
-                ((babc)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
-                ((babc)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
+                ((bbcg)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+                ((bbcg)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
               }
             }
           }
@@ -261,8 +261,8 @@ public class ChnToSpell
             if (paramInt == 1)
             {
               ((StringBuilder)localObject2).append("chongqing");
-              ((babc)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
-              ((babc)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(5));
+              ((bbcg)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+              ((bbcg)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(5));
             }
           }
           for (;;)
@@ -272,8 +272,8 @@ public class ChnToSpell
             if (paramInt == 2)
             {
               ((StringBuilder)localObject2).append("cq");
-              ((babc)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
-              ((babc)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
+              ((bbcg)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+              ((bbcg)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
               continue;
               ((StringBuilder)localObject2).append("z");
             }
@@ -312,7 +312,7 @@ public class ChnToSpell
           }
         }
       }
-      ((babc)localObject1).jdField_a_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
+      ((bbcg)localObject1).jdField_a_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
       if (paramInt == 1) {
         jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, localObject1);
       }
@@ -328,7 +328,7 @@ public class ChnToSpell
     }
   }
   
-  public static babd a(String paramString)
+  public static bbch a(String paramString)
   {
     if ((paramString == null) || (paramString.length() == 0)) {
       localObject1 = null;
@@ -336,14 +336,14 @@ public class ChnToSpell
     do
     {
       return localObject1;
-      localObject2 = (babd)jdField_c_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+      localObject2 = (bbch)jdField_c_of_type_AndroidSupportV4UtilLruCache.get(paramString);
       localObject1 = localObject2;
     } while (localObject2 != null);
-    Object localObject1 = new babd();
-    ((babd)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
-    ((babd)localObject1).jdField_b_of_type_JavaUtilList = new ArrayList();
-    ((babd)localObject1).jdField_c_of_type_JavaUtilList = new ArrayList();
-    ((babd)localObject1).jdField_d_of_type_JavaUtilList = new ArrayList();
+    Object localObject1 = new bbch();
+    ((bbch)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
+    ((bbch)localObject1).jdField_b_of_type_JavaUtilList = new ArrayList();
+    ((bbch)localObject1).jdField_c_of_type_JavaUtilList = new ArrayList();
+    ((bbch)localObject1).jdField_d_of_type_JavaUtilList = new ArrayList();
     if (jdField_a_of_type_ArrayOfShort == null) {
       b();
     }
@@ -357,9 +357,9 @@ public class ChnToSpell
       ((StringBuilder)localObject2).append("shan");
       localStringBuilder1.append('s');
       localStringBuilder2.append("sh-an").append("#");
-      ((babd)localObject1).jdField_b_of_type_JavaUtilList.add(Integer.valueOf(0));
-      ((babd)localObject1).jdField_c_of_type_JavaUtilList.add(Integer.valueOf(0));
-      ((babd)localObject1).jdField_d_of_type_JavaUtilList.add(Integer.valueOf(0));
+      ((bbch)localObject1).jdField_b_of_type_JavaUtilList.add(Integer.valueOf(0));
+      ((bbch)localObject1).jdField_c_of_type_JavaUtilList.add(Integer.valueOf(0));
+      ((bbch)localObject1).jdField_d_of_type_JavaUtilList.add(Integer.valueOf(0));
       j = 1;
     }
     for (;;)
@@ -367,9 +367,9 @@ public class ChnToSpell
       if (j < n)
       {
         int i = paramString.charAt(j);
-        ((babd)localObject1).jdField_b_of_type_JavaUtilList.add(Integer.valueOf(((StringBuilder)localObject2).length()));
-        ((babd)localObject1).jdField_c_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder1.length()));
-        ((babd)localObject1).jdField_d_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder2.length()));
+        ((bbch)localObject1).jdField_b_of_type_JavaUtilList.add(Integer.valueOf(((StringBuilder)localObject2).length()));
+        ((bbch)localObject1).jdField_c_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder1.length()));
+        ((bbch)localObject1).jdField_d_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder2.length()));
         if ((i == 45) || (i == 35))
         {
           ((StringBuilder)localObject2).append(i);
@@ -385,9 +385,9 @@ public class ChnToSpell
             ((StringBuilder)localObject2).append("qiu");
             localStringBuilder1.append('q');
             localStringBuilder2.append("q-iu").append("#");
-            ((babd)localObject1).jdField_b_of_type_JavaUtilList.add(Integer.valueOf(0));
-            ((babd)localObject1).jdField_c_of_type_JavaUtilList.add(Integer.valueOf(0));
-            ((babd)localObject1).jdField_d_of_type_JavaUtilList.add(Integer.valueOf(0));
+            ((bbch)localObject1).jdField_b_of_type_JavaUtilList.add(Integer.valueOf(0));
+            ((bbch)localObject1).jdField_c_of_type_JavaUtilList.add(Integer.valueOf(0));
+            ((bbch)localObject1).jdField_d_of_type_JavaUtilList.add(Integer.valueOf(0));
             j = 1;
             break;
           }
@@ -397,9 +397,9 @@ public class ChnToSpell
           ((StringBuilder)localObject2).append("zeng");
           localStringBuilder1.append('z');
           localStringBuilder2.append("z-eng").append("#");
-          ((babd)localObject1).jdField_b_of_type_JavaUtilList.add(Integer.valueOf(0));
-          ((babd)localObject1).jdField_c_of_type_JavaUtilList.add(Integer.valueOf(0));
-          ((babd)localObject1).jdField_d_of_type_JavaUtilList.add(Integer.valueOf(0));
+          ((bbch)localObject1).jdField_b_of_type_JavaUtilList.add(Integer.valueOf(0));
+          ((bbch)localObject1).jdField_c_of_type_JavaUtilList.add(Integer.valueOf(0));
+          ((bbch)localObject1).jdField_d_of_type_JavaUtilList.add(Integer.valueOf(0));
           j = 1;
           break;
           switch (Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, i))
@@ -410,9 +410,9 @@ public class ChnToSpell
               ((StringBuilder)localObject2).append('?');
               localStringBuilder1.append('?');
               localStringBuilder2.append('?').append("#");
-              ((babd)localObject1).jdField_b_of_type_JavaUtilList.add(Integer.valueOf(((StringBuilder)localObject2).length()));
-              ((babd)localObject1).jdField_c_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder1.length()));
-              ((babd)localObject1).jdField_d_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder2.length()));
+              ((bbch)localObject1).jdField_b_of_type_JavaUtilList.add(Integer.valueOf(((StringBuilder)localObject2).length()));
+              ((bbch)localObject1).jdField_c_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder1.length()));
+              ((bbch)localObject1).jdField_d_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder2.length()));
               ((StringBuilder)localObject2).append('?');
               localStringBuilder1.append('?');
               localStringBuilder2.append('?').append("#");
@@ -463,11 +463,11 @@ public class ChnToSpell
       if (localStringBuilder2.length() > 0) {
         localStringBuilder2.deleteCharAt(localStringBuilder2.length() - 1);
       }
-      ((babd)localObject1).jdField_a_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-      ((babd)localObject1).jdField_a_of_type_JavaUtilList = ((babd)localObject1).jdField_b_of_type_JavaUtilList;
-      ((babd)localObject1).jdField_b_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-      ((babd)localObject1).jdField_c_of_type_JavaLangString = localStringBuilder1.toString();
-      ((babd)localObject1).jdField_d_of_type_JavaLangString = localStringBuilder2.toString();
+      ((bbch)localObject1).jdField_a_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
+      ((bbch)localObject1).jdField_a_of_type_JavaUtilList = ((bbch)localObject1).jdField_b_of_type_JavaUtilList;
+      ((bbch)localObject1).jdField_b_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
+      ((bbch)localObject1).jdField_c_of_type_JavaLangString = localStringBuilder1.toString();
+      ((bbch)localObject1).jdField_d_of_type_JavaLangString = localStringBuilder2.toString();
       jdField_c_of_type_AndroidSupportV4UtilLruCache.put(paramString, localObject1);
       return localObject1;
       label1133:

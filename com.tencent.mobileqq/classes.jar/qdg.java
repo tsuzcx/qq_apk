@@ -1,8 +1,19 @@
-import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
 
-public abstract interface qdg
+public final class qdg
+  implements Parcelable.Creator<SocializeFeedsInfo.UGCVoiceInfo>
 {
-  public abstract void a(String paramString, Bundle paramBundle);
+  public SocializeFeedsInfo.UGCVoiceInfo a(Parcel paramParcel)
+  {
+    return new SocializeFeedsInfo.UGCVoiceInfo(paramParcel);
+  }
+  
+  public SocializeFeedsInfo.UGCVoiceInfo[] a(int paramInt)
+  {
+    return new SocializeFeedsInfo.UGCVoiceInfo[paramInt];
+  }
 }
 
 

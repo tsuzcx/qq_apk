@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbVideoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
-public class agvb
-  implements TVK_IMediaPlayer.OnCompletionListener
+class agvb
+  implements View.OnClickListener
 {
-  public agvb(SpringHbVideoView paramSpringHbVideoView) {}
+  agvb(agva paramagva) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(View paramView)
   {
-    QLog.i("springHb_SpringHbVideoView", 1, "onCompletion");
-    if (SpringHbVideoView.a(this.a) != null) {
-      SpringHbVideoView.a(this.a).au_();
-    }
+    AIOLongShotHelper.a((Activity)this.a.a.get(), (String)agva.a(this.a).a.get(0), new agvc(this));
+    AIOLongShotHelper.a("0X8009DEE");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agvb
  * JD-Core Version:    0.7.0.1
  */

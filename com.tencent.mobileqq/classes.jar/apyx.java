@@ -1,17 +1,17 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
+import android.os.Bundle;
+import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
 
 public class apyx
-  implements View.OnClickListener
+  extends apyr
 {
-  public apyx(ImgHeaderView paramImgHeaderView, Activity paramActivity, MessageRecord paramMessageRecord) {}
+  public apyx(FlashChatTextEffectView paramFlashChatTextEffectView) {}
   
-  public void onClick(View paramView)
+  public void b(boolean paramBoolean, Bundle paramBundle)
   {
-    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    super.b(paramBoolean, paramBundle);
+    if (paramBoolean) {
+      this.a.b();
+    }
   }
 }
 

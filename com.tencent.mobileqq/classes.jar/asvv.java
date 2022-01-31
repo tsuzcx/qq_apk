@@ -1,38 +1,16 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.media.MediaPlayer;
+import android.os.Looper;
+import com.tencent.mobileqq.music.SongInfo;
 
-public abstract class asvv
-  extends astc
+public class asvv
 {
-  public boolean a;
-  
-  public asvv(Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(PicInfo paramPicInfo);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public MediaPlayer a;
+  public Looper a;
+  public SongInfo a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     asvv
  * JD-Core Version:    0.7.0.1
  */

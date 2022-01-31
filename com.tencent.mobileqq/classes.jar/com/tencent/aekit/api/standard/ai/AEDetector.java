@@ -63,6 +63,7 @@ public class AEDetector
   private List<IDetect> detectors = new ArrayList();
   private SimpleGLThread faceDetectGLThread;
   private int frameIdx = 0;
+  private boolean isFirstDet = true;
   private boolean isInited = false;
   private AIAttr lastAIAttr = null;
   private SizeI lastTextureSize = new SizeI(-1, -1);
@@ -307,6 +308,7 @@ public class AEDetector
       if (!this.copyFrames[1].unlock()) {
         this.copyFrames[1].clear();
       }
+      this.isFirstDet = true;
       this.lastTextureSize.width = -1;
       this.lastTextureSize.height = -1;
       this.curTextureSize.width = -1;
@@ -345,6 +347,7 @@ public class AEDetector
     if (this.lastAIAttr.getOutTexture() < 0)
     {
       this.lastAIAttr.setOutTexture(paramAIInput.getInputTexture());
+      this.lastAIAttr.setTexWidthAndHeight(paramAIParam.getWidth(), paramAIParam.getHeight());
       PTFaceAttr.EmptyFaceAttr.setTimeStamp(System.currentTimeMillis());
       this.lastAIAttr.setFaceAttr(PTFaceAttr.EmptyFaceAttr);
     }
@@ -352,6 +355,11 @@ public class AEDetector
     this.curAIAttr = detectFrame(paramAIInput, paramAIParam, paramAICtrl, this.aiDataStorage.genNewAIDataSet(getModulesOn(paramAICtrl)));
     this.curAIAttr.setSurfaceTime(paramAIParam.getSurfaceTime());
     updateAIAttr(paramAICtrl, this.lastAIAttr);
+    if (this.isFirstDet)
+    {
+      this.lastAIAttr = this.curAIAttr;
+      this.isFirstDet = false;
+    }
     return this.lastAIAttr;
   }
   
@@ -369,6 +377,7 @@ public class AEDetector
     GLES20.glFinish();
     AIAttr localAIAttr = new AIAttr(new AIAttrProvider(paramAIDataSet));
     localAIAttr.setOutTexture(this.copyFrames[this.frameIdx].getTextureId());
+    localAIAttr.setTexWidthAndHeight(i, j);
     paramAIInput.setInput("frame", this.copyFrames[this.frameIdx]);
     paramAIParam.setAIAttr(localAIAttr);
     this.frameIdx = ((this.frameIdx + 1) % 2);
@@ -454,6 +463,7 @@ public class AEDetector
         int i = -1;
       }
     }
+    this.isFirstDet = true;
     this.lastTextureSize.width = -1;
     this.lastTextureSize.height = -1;
     this.curTextureSize.width = -1;
@@ -465,11 +475,11 @@ public class AEDetector
       AEGlobalBoard.writeBoard((AEGlobalBoard.PTStatus)localObject, i);
       LogUtils.i("AEDetector", "AEDetector init ret = " + this.isInited);
       if (!this.isInited) {
-        break label379;
+        break label384;
       }
       return 0;
     }
-    label379:
+    label384:
     return -1;
   }
 }

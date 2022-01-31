@@ -1,10 +1,12 @@
-import java.util.List;
+import android.content.Intent;
 
 public abstract interface ugk
 {
-  public abstract void a(String paramString, List<uhj> paramList);
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public abstract void a(boolean paramBoolean);
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

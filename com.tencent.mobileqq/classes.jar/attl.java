@@ -1,45 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
-import com.tencent.mobileqq.portal.PortalManager.LogoConfig;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class attl
+class attl
+  implements DialogInterface.OnClickListener
 {
-  public void a() {}
+  attl(attk paramattk, bbgg parambbgg) {}
   
-  public void a(int paramInt, attm paramattm) {}
-  
-  public void a(long paramLong1, int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, Bitmap paramBitmap4, Bitmap paramBitmap5, Bitmap paramBitmap6, Bitmap paramBitmap7, List<PortalManager.LogoConfig> paramList, String paramString, long paramLong2, boolean paramBoolean, long paramLong3) {}
-  
-  public void a(long paramLong1, int paramInt1, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong2, boolean paramBoolean, int paramInt2, Bitmap paramBitmap4, Bitmap paramBitmap5, List<PortalManager.LogoConfig> paramList, List<PortalManager.ComboNumber> paramList1, Bitmap paramBitmap6, long paramLong3, Bitmap paramBitmap7, Bitmap paramBitmap8) {}
-  
-  public void a(boolean paramBoolean, String paramString, attm paramattm) {}
-  
-  public boolean a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean a(Bitmap paramBitmap)
-  {
-    return false;
-  }
-  
-  public boolean a(Bitmap paramBitmap, String paramString)
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public boolean b()
-  {
-    return false;
+    this.jdField_a_of_type_Bbgg.dismiss();
+    this.jdField_a_of_type_Attk.a.e();
+    paramDialogInterface = new Intent("tribe_profile_edit_finish");
+    BaseApplicationImpl.getApplication().sendBroadcast(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attl
  * JD-Core Version:    0.7.0.1
  */

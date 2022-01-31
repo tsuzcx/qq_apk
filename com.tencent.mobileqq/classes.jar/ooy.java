@@ -1,13 +1,36 @@
-class ooy
-  implements oou
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public class ooy
+  implements AladdinConfigHandler
 {
-  ooy(oox paramoox) {}
-  
-  public void a(int paramInt)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (this.a.a(paramInt) == null) {
-      this.a.c(paramInt);
+    QLog.d("DefaultFeedsProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = ooi.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("DefaultFeedsProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "default_feeds"))
+      {
+        bhvh.a("default_feeds_proteus_offline_bid", str2);
+        new rpx().a("default_feeds");
+      }
     }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("DefaultFeedsProteusBidConfigHandler", 1, "[onWipeConfig]");
+    bhvh.a("default_feeds_proteus_offline_bid", "0");
   }
 }
 

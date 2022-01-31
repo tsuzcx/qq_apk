@@ -1,75 +1,45 @@
-import android.os.HandlerThread;
-import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSSwitchManager.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.pts.core.PTSThreadUtil;
-import com.tencent.pts.nativemodule.PTSNativeModuleRegistry;
-import com.tencent.pts.ui.PTSNodeFactory;
-import com.tencent.pts.utils.PTSLog;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class pep
+  implements phs
 {
-  public static pep a;
-  private boolean a;
-  private boolean b;
-  
-  static
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    jdField_a_of_type_Pep = new pep();
+    return null;
   }
   
-  private void b()
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    d();
+    return pds.a(paramBaseArticleInfo);
   }
   
-  private void c()
+  public void a(int paramInt1, Container paramContainer, pax parampax, int paramInt2)
   {
-    d();
-    PTSLog.registerLogger(new pem());
-    PTSNodeFactory.registerNodeBuilder("img", new pek());
-    PTSNativeModuleRegistry.registerNativeModule("DailyRequestModule", new pdz());
-    PTSNativeModuleRegistry.registerNativeModule("NavigateToModule", new peg());
-    PTSNativeModuleRegistry.registerNativeModule("AllInOneJumpModule", new pdy());
-    PTSNativeModuleRegistry.registerNativeModule("LoadDailyDBArticlesModule", new ped());
-    PTSNativeModuleRegistry.registerNativeModule("HandleJSException", new pec());
-    PTSNativeModuleRegistry.registerNativeModule("ReportTo1160", new peh());
-    PTSNativeModuleRegistry.registerNativeModule("MarkArticleRead", new pef());
-    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("readinjoy-common-pts-sub", 0);
-    localHandlerThread.start();
-    PTSThreadUtil.registerSubHandlerThread(localHandlerThread);
-    pdu.a().a();
-    pds.a().a();
+    paramContainer = paramContainer.getVirtualView();
+    if ((parampax != null) && (parampax.a() != null) && (AdvertisementInfo.isAdvertisementInfo(parampax.a())))
+    {
+      Object localObject = paramContainer.findViewBaseByName("id_view_AdDownloadView");
+      if ((localObject != null) && ((localObject instanceof oce)))
+      {
+        localObject = (oce)localObject;
+        ((oce)localObject).a(paramInt1);
+        ((oce)localObject).a(parampax, true);
+      }
+      paramContainer = paramContainer.findViewBaseByName("id_article_double_image");
+      if ((paramContainer != null) && ((paramContainer instanceof ocz))) {
+        ((ocz)paramContainer).a(parampax);
+      }
+    }
   }
   
-  private void d()
+  public boolean a(int paramInt, Container paramContainer, pax parampax, ViewBase paramViewBase)
   {
-    PTSNativeModuleRegistry.clearNativeModule();
-    pdl.a().a();
-  }
-  
-  void a()
-  {
-    b();
-    PTSSwitchManager.1 local1 = new PTSSwitchManager.1(this);
-    ThreadManager.getSubThreadHandler().post(local1);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_Boolean) || (this.b);
+    return false;
   }
 }
 

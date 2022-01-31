@@ -1,31 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.10;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
 
 public class adfg
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public adfg(GivingHeartItemBuilder.10 param10) {}
+  public adfg(ColorView paramColorView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationEnd " + paramAnimation);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationRepeat " + paramAnimation);
-    }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationStart " + paramAnimation);
+    if (ColorView.a(this.a) != null) {
+      ColorView.a(this.a).a();
     }
   }
 }

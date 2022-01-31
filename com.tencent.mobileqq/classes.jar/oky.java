@@ -1,50 +1,21 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import android.view.View.OnKeyListener;
 
-public class oky
-  implements Animator.AnimatorListener
+class oky
+  implements View.OnKeyListener
 {
-  public oky(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
+  oky(okw paramokw) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    ohb.a().a(null, 110, true, null);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ohb.a().a(null, 110, true, null);
-    if (ReadInjoyIMAXAdFragment.a(this.a) != null)
-    {
-      ReadInjoyIMAXAdFragment.a(this.a).setVisibility(0);
-      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
-      ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
-      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
-      if (ReadInjoyIMAXAdFragment.e(this.a) != 1001) {
-        break label90;
-      }
-      ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
-    }
-    label90:
-    while (ReadInjoyIMAXAdFragment.e(this.a) != 1002) {
-      return;
-    }
-    ReadInjoyIMAXAdFragment.c(this.a).setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    ohb.a().a(null, 110, false, null);
+    okw.a(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oky
  * JD-Core Version:    0.7.0.1
  */

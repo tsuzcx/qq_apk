@@ -1,16 +1,22 @@
-public abstract interface bhqj
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+
+class bhqj
+  implements bgzo
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  bhqj(bhqi parambhqi, String paramString) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void c(int paramInt1, int paramInt2, int paramInt3);
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bhqi.a != null)
+    {
+      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playFinish:1})";
+      this.jdField_a_of_type_Bhqi.a.callJs(str);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhqj
  * JD-Core Version:    0.7.0.1
  */

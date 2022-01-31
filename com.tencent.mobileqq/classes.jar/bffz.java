@@ -1,138 +1,107 @@
-import android.content.ServiceConnection;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QlinkPluginProxyService;
-import cooperation.qlink.QlinkServiceProxy.2;
-import cooperation.qlink.SendMsg;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import mqq.app.AppRuntime;
+import java.lang.reflect.Field;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bffz
 {
-  private volatile long jdField_a_of_type_Long = -1L;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new bfga(this);
-  private volatile bfez jdField_a_of_type_Bfez;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ConcurrentLinkedQueue<SendMsg> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public bffz(AppRuntime paramAppRuntime)
+  public static <T> JSONArray a(List<T> paramList)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-  }
-  
-  private boolean a()
-  {
-    return this.jdField_a_of_type_Bfez != null;
-  }
-  
-  private void b()
-  {
-    QlinkServiceProxy.2 local2 = new QlinkServiceProxy.2(this);
-    local2.setName("handleWaitSendProxyMsgThread");
-    local2.start();
-  }
-  
-  private void b(SendMsg paramSendMsg)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramSendMsg);
-  }
-  
-  private void c(SendMsg paramSendMsg)
-  {
-    this.jdField_a_of_type_Bfez.a(paramSendMsg);
-  }
-  
-  public void a()
-  {
-    long l = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_Long == -1L) || (l - this.jdField_a_of_type_Long > 10000L))
-    {
-      this.jdField_a_of_type_Long = l;
-      QlinkPluginProxyService.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection);
-      return;
+    JSONArray localJSONArray = new JSONArray();
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return localJSONArray;
     }
-    QLog.d("QlinkServiceProxy", 1, "wait start qlink service result, skiped...");
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject = paramList.next();
+      if (localObject != null) {
+        if (a(localObject)) {
+          localJSONArray.put(localObject);
+        } else if ((localObject instanceof List)) {
+          localJSONArray.put(a((List)localObject));
+        } else {
+          localJSONArray.put(a(localObject));
+        }
+      }
+    }
+    return localJSONArray;
   }
   
-  /* Error */
-  public void a(SendMsg paramSendMsg)
+  public static <T> JSONObject a(T paramT)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 20	bffz:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   4: astore_2
-    //   5: aload_2
-    //   6: monitorenter
-    //   7: aload_0
-    //   8: invokespecial 108	bffz:a	()Z
-    //   11: ifeq +11 -> 22
-    //   14: aload_0
-    //   15: aload_1
-    //   16: invokespecial 53	bffz:c	(Lcooperation/qlink/SendMsg;)V
-    //   19: aload_2
-    //   20: monitorexit
-    //   21: return
-    //   22: aload_0
-    //   23: getfield 57	bffz:jdField_a_of_type_Boolean	Z
-    //   26: ifeq +23 -> 49
-    //   29: aload_0
-    //   30: aload_1
-    //   31: invokespecial 110	bffz:b	(Lcooperation/qlink/SendMsg;)V
-    //   34: goto -15 -> 19
-    //   37: astore_3
-    //   38: aload_2
-    //   39: monitorexit
-    //   40: aload_3
-    //   41: athrow
-    //   42: astore_2
-    //   43: aload_0
-    //   44: aload_1
-    //   45: invokespecial 110	bffz:b	(Lcooperation/qlink/SendMsg;)V
-    //   48: return
-    //   49: aload_0
-    //   50: iconst_1
-    //   51: putfield 57	bffz:jdField_a_of_type_Boolean	Z
-    //   54: aload_0
-    //   55: aload_1
-    //   56: invokespecial 110	bffz:b	(Lcooperation/qlink/SendMsg;)V
-    //   59: aload_0
-    //   60: invokevirtual 112	bffz:a	()V
-    //   63: goto -44 -> 19
-    //   66: astore_2
-    //   67: aload_0
-    //   68: getfield 43	bffz:jdField_a_of_type_Bfez	Lbfez;
-    //   71: ifnonnull +9 -> 80
-    //   74: aload_0
-    //   75: aload_1
-    //   76: invokespecial 110	bffz:b	(Lcooperation/qlink/SendMsg;)V
-    //   79: return
-    //   80: aload_2
-    //   81: invokevirtual 115	java/lang/Exception:printStackTrace	()V
-    //   84: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	85	0	this	bffz
-    //   0	85	1	paramSendMsg	SendMsg
-    //   42	1	2	localDeadObjectException	android.os.DeadObjectException
-    //   66	15	2	localException	java.lang.Exception
-    //   37	4	3	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   7	19	37	finally
-    //   19	21	37	finally
-    //   22	34	37	finally
-    //   38	40	37	finally
-    //   49	63	37	finally
-    //   0	7	42	android/os/DeadObjectException
-    //   40	42	42	android/os/DeadObjectException
-    //   0	7	66	java/lang/Exception
-    //   40	42	66	java/lang/Exception
+    JSONObject localJSONObject = new JSONObject();
+    if (paramT == null) {
+      return localJSONObject;
+    }
+    Field[] arrayOfField = paramT.getClass().getDeclaredFields();
+    if ((arrayOfField == null) || (arrayOfField.length == 0)) {
+      return localJSONObject;
+    }
+    int j = arrayOfField.length;
+    int i = 0;
+    if (i < j)
+    {
+      Object localObject1 = arrayOfField[i];
+      if (localObject1 == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        Object localObject2 = (bffn)((Field)localObject1).getAnnotation(bffn.class);
+        if (localObject2 != null)
+        {
+          localObject2 = ((bffn)localObject2).a();
+          if (!a((String)localObject2))
+          {
+            try
+            {
+              localObject1 = ((Field)localObject1).get(paramT);
+              if (localObject1 == null) {
+                continue;
+              }
+              if (a(localObject1)) {
+                localJSONObject.put((String)localObject2, localObject1);
+              }
+            }
+            catch (JSONException localJSONException)
+            {
+              localJSONException.printStackTrace();
+              continue;
+              if (!(localJSONException instanceof List)) {
+                break label178;
+              }
+              localJSONObject.put((String)localObject2, a((List)localJSONException));
+            }
+            catch (IllegalAccessException localIllegalAccessException)
+            {
+              localIllegalAccessException.printStackTrace();
+            }
+            continue;
+            label178:
+            localJSONObject.put((String)localObject2, a(localIllegalAccessException));
+          }
+        }
+      }
+    }
+    return localJSONObject;
+  }
+  
+  private static boolean a(Object paramObject)
+  {
+    return ((paramObject instanceof Integer)) || ((paramObject instanceof String)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof Double)) || ((paramObject instanceof Float)) || ((paramObject instanceof Long)) || ((paramObject instanceof Byte)) || ((paramObject instanceof Character)) || ((paramObject instanceof Short));
+  }
+  
+  private static boolean a(String paramString)
+  {
+    return (paramString == null) || (paramString.length() <= 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bffz
  * JD-Core Version:    0.7.0.1
  */

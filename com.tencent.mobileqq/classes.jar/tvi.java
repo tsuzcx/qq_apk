@@ -1,23 +1,33 @@
+import android.app.Activity;
 import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
 
-class tvi
-  implements begw
+final class tvi
+  implements ttf
 {
-  tvi(tvd paramtvd, StoryVideoItem paramStoryVideoItem, AtomicBoolean paramAtomicBoolean, begr parambegr) {}
+  tvi(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    switch (paramInt)
+    int i = 1;
+    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
+    OpenPlayerBuilder.UIStyle localUIStyle;
+    if (paramInt != -1)
     {
+      localUIStyle = localData.mUIStyle;
+      if (paramInt != 1) {
+        break label58;
+      }
     }
-    for (;;)
+    label58:
+    for (paramInt = i;; paramInt = 2)
     {
-      this.jdField_a_of_type_Begr.dismiss();
+      localUIStyle.bottomWidgetShowFlag = paramInt;
+      tvf.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
       return;
-      tvd.a(this.jdField_a_of_type_Tvd, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
   }
 }

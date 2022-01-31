@@ -7,8 +7,8 @@ public final class RichTextParser$1
 {
   public RichTextParser$1()
   {
-    put("a2", Integer.valueOf(2131101548));
-    put("a3", Integer.valueOf(2131101546));
+    put("a2", Integer.valueOf(2131167145));
+    put("a3", Integer.valueOf(2131167143));
   }
 }
 

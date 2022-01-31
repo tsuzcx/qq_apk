@@ -1,10 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-public final class aafz
-  implements DialogInterface.OnClickListener
+public class aafz
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public aafz(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.h();
+  }
 }
 
 

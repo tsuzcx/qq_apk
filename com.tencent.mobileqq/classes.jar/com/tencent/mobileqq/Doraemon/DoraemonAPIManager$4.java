@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.Doraemon;
 
+import aabm;
+import aabn;
+import aabp;
 import org.json.JSONObject;
-import zrt;
-import zru;
-import zrw;
 
 public class DoraemonAPIManager$4
   implements Runnable
 {
-  public DoraemonAPIManager$4(zrw paramzrw, zru paramzru, JSONObject paramJSONObject, zrt paramzrt) {}
+  public DoraemonAPIManager$4(aabp paramaabp, aabn paramaabn, JSONObject paramJSONObject, aabm paramaabm) {}
   
   public void run()
   {
-    zrw.a(this.this$0, this.jdField_a_of_type_Zru, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Zrt);
+    aabp.a(this.this$0, this.jdField_a_of_type_Aabn, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Aabm);
   }
 }
 

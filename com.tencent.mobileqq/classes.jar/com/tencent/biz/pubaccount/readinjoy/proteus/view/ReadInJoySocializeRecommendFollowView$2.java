@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 
 import android.widget.LinearLayout;
-import ozx;
+import plp;
 
 public class ReadInJoySocializeRecommendFollowView$2
   implements Runnable
 {
-  public ReadInJoySocializeRecommendFollowView$2(ozx paramozx) {}
+  public ReadInJoySocializeRecommendFollowView$2(plp paramplp) {}
   
   public void run()
   {
-    ozx.a(this.this$0, ozx.a(this.this$0).getMeasuredHeight());
-    ozx.a(this.this$0).requestLayout();
+    plp.a(this.this$0, plp.a(this.this$0).getMeasuredHeight());
+    plp.a(this.this$0).requestLayout();
   }
 }
 

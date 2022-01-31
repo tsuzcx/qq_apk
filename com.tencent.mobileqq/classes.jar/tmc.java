@@ -1,109 +1,76 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertUinAndUnionId;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tmc
-  implements tls
+  extends syv<toa>
 {
-  private tmc(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
+  public String a;
+  public List<tej> a;
+  public boolean a;
+  public boolean b;
+  public int c;
+  public boolean c;
   
-  public void a()
+  public tmc()
   {
-    this.a.p();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void a(@NonNull ucw paramucw, ErrorMessage paramErrorMessage, boolean paramBoolean)
+  public String a()
   {
-    Object localObject;
-    if (paramErrorMessage.isSuccess())
-    {
-      localObject = "suc";
-      urk.a("Q.qqstory.player.StoryPlayerCommentListView", "on cache item back %s:%s ", localObject, paramucw);
-      boolean bool = StoryPlayerCommentListView.a(this.a).a();
-      localObject = (tlv)this.a.a("PlayerCommentSegment");
-      if (localObject != null) {
-        ((tlv)localObject).a(paramucw);
-      }
-      localObject = (tlz)this.a.a("PlayerDoubleTabSegment");
-      if (localObject != null) {
-        ((tlz)localObject).a(paramucw);
-      }
-      localObject = (tlu)this.a.a("PlayerCommentEmptySegment");
-      if (localObject != null)
-      {
-        ((tlu)localObject).a(paramucw);
-        if (!paramBoolean) {
-          break label183;
-        }
-        ((tlu)localObject).a(true);
-      }
-      label118:
-      localObject = this.a;
-      if (paramucw.a(bool)) {
-        break label192;
-      }
-    }
-    label183:
-    label192:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      ((StoryPlayerCommentListView)localObject).setLoadMoreComplete("CommentFloatDialog", true, paramBoolean);
-      this.a.p();
-      if (StoryPlayerCommentListView.a(this.a) != null) {
-        StoryPlayerCommentListView.a(this.a).a(paramucw, paramErrorMessage);
-      }
-      return;
-      localObject = "fail";
-      break;
-      ((tlu)localObject).a(false);
-      break label118;
-    }
+    return sxp.a("StorySvc.convert_uid_and_union_id");
   }
   
-  public void a(@NonNull ucw paramucw, boolean paramBoolean)
+  public toa a(byte[] paramArrayOfByte)
   {
-    Object localObject;
-    if (paramBoolean)
+    qqstory_service.RspConvertUinAndUnionId localRspConvertUinAndUnionId = new qqstory_service.RspConvertUinAndUnionId();
+    try
     {
-      localObject = "suc";
-      urk.a("Q.qqstory.player.StoryPlayerCommentListView", "on comment item back %s: %s", localObject, paramucw);
-      boolean bool = StoryPlayerCommentListView.a(this.a).a();
-      localObject = (tlv)this.a.a("PlayerCommentSegment");
-      if (localObject != null) {
-        ((tlv)localObject).a(paramucw);
-      }
-      localObject = (tlz)this.a.a("PlayerDoubleTabSegment");
-      if (localObject != null) {
-        ((tlz)localObject).a(paramucw);
-      }
-      localObject = (tlu)this.a.a("PlayerCommentEmptySegment");
-      if (localObject != null)
-      {
-        ((tlu)localObject).a(paramucw);
-        ((tlu)localObject).a(false);
-      }
-      if (!paramBoolean) {
-        break label159;
-      }
-      localObject = this.a;
-      if (paramucw.a(bool)) {
-        break label154;
-      }
-      paramBoolean = true;
-      label130:
-      ((StoryPlayerCommentListView)localObject).setLoadMoreComplete("CommentFloatDialog", true, paramBoolean);
+      localRspConvertUinAndUnionId.mergeFrom(paramArrayOfByte);
+      return new toa(localRspConvertUinAndUnionId);
     }
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      this.a.p();
-      return;
-      localObject = "fail";
+      veg.d("Q.qqstory.user:ConvertUinAndUnionIdRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    int j = 1;
+    qqstory_service.ReqConvertUinAndUnionId localReqConvertUinAndUnionId = new qqstory_service.ReqConvertUinAndUnionId();
+    localReqConvertUinAndUnionId.convert_from.set(this.c);
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      tej localtej = (tej)((Iterator)localObject).next();
+      localReqConvertUinAndUnionId.user_id_list.add(localtej.a());
+    }
+    localObject = localReqConvertUinAndUnionId.need_medal;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = 1;
+      ((PBUInt32Field)localObject).set(i);
+      localObject = localReqConvertUinAndUnionId.need_grade_speed;
+      if (!this.b) {
+        break label121;
+      }
+    }
+    label121:
+    for (int i = j;; i = 0)
+    {
+      ((PBUInt32Field)localObject).set(i);
+      return localReqConvertUinAndUnionId.toByteArray();
+      i = 0;
       break;
-      label154:
-      paramBoolean = false;
-      break label130;
-      label159:
-      this.a.setLoadMoreComplete("CommentFloatDialog", false, false);
     }
   }
 }

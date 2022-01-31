@@ -1,44 +1,39 @@
 import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
 
-class xbh
-  implements wiu
+public abstract class xbh
+  extends mxm
 {
-  xbh(xbe paramxbe, String paramString) {}
-  
-  public void a(Bundle paramBundle)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Object localObject = null;
-    String str;
-    if (paramBundle != null)
+    if (paramInt != 0)
     {
-      str = paramBundle.getString("content");
-      paramBundle = paramBundle.getString("url");
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("content", str);
-      localJSONObject.put("url", paramBundle);
-      paramBundle = localJSONObject.toString();
-      this.jdField_a_of_type_Xbe.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+      a(false, paramInt, null, paramBundle);
       return;
     }
-    catch (JSONException localJSONException)
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    try
     {
-      for (;;)
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.UploadFileRspBody)localRspBody.upload_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
       {
-        paramBundle = localObject;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("HotchatPlugin", 2, localJSONException.getMessage());
-          paramBundle = localObject;
-        }
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
       }
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null, paramBundle);
+      return;
+    }
+    a(false, -1, null, paramBundle);
   }
+  
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle);
 }
 
 

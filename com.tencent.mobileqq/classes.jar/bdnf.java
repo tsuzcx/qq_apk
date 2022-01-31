@@ -1,23 +1,23 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
+import com.tencent.open.model.VirtualInfo;
 
 public final class bdnf
-  implements Parcelable.Creator<ShareChatModel>
+  implements Parcelable.Creator<VirtualInfo>
 {
-  public ShareChatModel a(Parcel paramParcel)
+  public VirtualInfo a(Parcel paramParcel)
   {
-    return new ShareChatModel(paramParcel, null);
+    return new VirtualInfo(paramParcel);
   }
   
-  public ShareChatModel[] a(int paramInt)
+  public VirtualInfo[] a(int paramInt)
   {
-    return new ShareChatModel[paramInt];
+    return new VirtualInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdnf
  * JD-Core Version:    0.7.0.1
  */

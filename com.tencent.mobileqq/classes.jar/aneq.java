@@ -1,38 +1,94 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.accounts.AbstractAccountAuthenticator;
+import android.accounts.Account;
+import android.accounts.AccountAuthenticatorResponse;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-class aneq
-  implements URLDrawable.URLDrawableListener
+public class aneq
+  extends AbstractAccountAuthenticator
 {
-  aneq(aned paramaned, String paramString) {}
+  private Context a;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public aneq(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
-    }
+    super(paramContext);
+    this.a = paramContext;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public Bundle addAccount(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, String paramString1, String paramString2, String[] paramArrayOfString, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url failed:" + this.jdField_a_of_type_JavaLangString);
+      QLog.d("ContactSync.Authenticator", 2, "addAccount");
     }
+    paramAccountAuthenticatorResponse = new Bundle();
+    paramAccountAuthenticatorResponse.putInt("errorCode", 6);
+    paramAccountAuthenticatorResponse.putString("errorMessage", "Manually add account is unsupported");
+    return paramAccountAuthenticatorResponse;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public Bundle confirmCredentials(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url down:" + this.jdField_a_of_type_JavaLangString);
+      QLog.d("ContactSync.Authenticator", 2, "onfirmCredentials");
     }
+    return null;
+  }
+  
+  public Bundle editProperties(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, String paramString)
+  {
+    return null;
+  }
+  
+  public Bundle getAccountRemovalAllowed(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "getAccountRemovalAllowed");
+    }
+    if ("Success".equals(BaseApplicationImpl.sInjectResult)) {
+      aneh.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), paramAccount);
+    }
+    return super.getAccountRemovalAllowed(paramAccountAuthenticatorResponse, paramAccount);
+  }
+  
+  public Bundle getAuthToken(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String paramString, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "getAuthToken");
+    }
+    return null;
+  }
+  
+  public String getAuthTokenLabel(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "getAuthTokenLabel");
+    }
+    return "QQ通讯录同步@Authenticator";
+  }
+  
+  public Bundle hasFeatures(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String[] paramArrayOfString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "hasFeatures");
+    }
+    return null;
+  }
+  
+  public Bundle updateCredentials(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String paramString, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "getAuthToken");
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aneq
  * JD-Core Version:    0.7.0.1
  */

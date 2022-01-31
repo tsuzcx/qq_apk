@@ -9,7 +9,7 @@ import android.text.TextUtils;
 import com.tencent.tmassistant.st.SDKReportManager2;
 import com.tencent.tmassistantbase.network.NetworkMonitorReceiver;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmassistantsdk.internal.logreport.OuterCallReportModel;
 import com.tencent.tmassistantsdk.internal.logreport.e;
 import com.tencent.tmassistantsdk.internal.openSDK.QQDownloader.QQDownloaderInstalled;
@@ -40,7 +40,7 @@ public class TMAssistantCallYYB_V2
     {
       try
       {
-        ac.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct);
+        ab.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct);
         TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct;
         if ((paramTMAssistantCallYYBParamStruct != null) && (this.mTaskList != null))
         {
@@ -92,7 +92,7 @@ public class TMAssistantCallYYB_V2
     {
       try
       {
-        ac.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct);
+        ab.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct);
         TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct;
         if ((paramTMAssistantCallYYBParamStruct != null) && (this.mTaskList != null))
         {
@@ -161,7 +161,7 @@ public class TMAssistantCallYYB_V2
         }
         catch (JSONException localJSONException)
         {
-          ac.e("TMAssistantCallYYB_V2", "" + localJSONException.getMessage() + "|" + localJSONException.getCause());
+          ab.e("TMAssistantCallYYB_V2", "" + localJSONException.getMessage() + "|" + localJSONException.getCause());
         }
       }
     }
@@ -177,7 +177,7 @@ public class TMAssistantCallYYB_V2
     {
       for (;;)
       {
-        ac.e("TMAssistantCallYYB_V2", "" + paramContext.getMessage() + "|" + paramContext.getCause());
+        ab.e("TMAssistantCallYYB_V2", "" + paramContext.getMessage() + "|" + paramContext.getCause());
       }
     }
   }
@@ -192,7 +192,7 @@ public class TMAssistantCallYYB_V2
     }
     for (;;)
     {
-      ac.c("TMAssistantCallYYB_V2", ">getBatchOperateType = " + paramInt);
+      ab.c("TMAssistantCallYYB_V2", ">getBatchOperateType = " + paramInt);
       return paramInt;
       paramInt = 8;
       continue;
@@ -203,7 +203,7 @@ public class TMAssistantCallYYB_V2
   private int getBatchRequestType(boolean paramBoolean, int paramInt)
   {
     int j = 2;
-    ac.c("TMAssistantCallYYB_V2", "isUpdateAll = " + paramBoolean + ",operation = " + paramInt);
+    ab.c("TMAssistantCallYYB_V2", "isUpdateAll = " + paramBoolean + ",operation = " + paramInt);
     int i;
     if (paramBoolean)
     {
@@ -216,7 +216,7 @@ public class TMAssistantCallYYB_V2
     }
     for (;;)
     {
-      ac.c("TMAssistantCallYYB_V2", "batchRequestType = " + i);
+      ab.c("TMAssistantCallYYB_V2", "batchRequestType = " + i);
       return i;
       i = 1;
       continue;
@@ -262,7 +262,7 @@ public class TMAssistantCallYYB_V2
     {
       ITMAssistantCallBackListener localITMAssistantCallBackListener = (ITMAssistantCallBackListener)((WeakReference)localIterator.next()).get();
       if (localITMAssistantCallBackListener == null) {
-        ac.c("TMAssistantCallYYB_V2", "onDownloadStateChanged listener = null");
+        ab.c("TMAssistantCallYYB_V2", "onDownloadStateChanged listener = null");
       } else {
         localITMAssistantCallBackListener.onDownloadTaskProgressChanged(paramTMAssistantCallYYBParamStruct, paramLong1, paramLong2);
       }
@@ -320,7 +320,7 @@ public class TMAssistantCallYYB_V2
     paramMap.addFlags(268435456);
     paramMap.putExtra(TMAssistantCallYYBParamStruct.SOURCE_KEY, paramTMAssistantCallYYBParamStruct.source);
     paramMap.putExtra("packageName", paramTMAssistantCallYYBParamStruct.taskPackageName);
-    ac.c("TMAssistantCallYYB_V2", "YYB版本符合要求，执行tmast ：" + paramOuterCallReportModel);
+    ab.c("TMAssistantCallYYB_V2", "YYB版本符合要求，执行tmast ：" + paramOuterCallReportModel);
     paramContext.startActivity(paramMap);
   }
   
@@ -387,7 +387,7 @@ public class TMAssistantCallYYB_V2
     label162:
     for (Object localObject1 = "null";; localObject1 = Integer.valueOf(paramArrayList.size()))
     {
-      ac.c("TMAssistantCallYYB_V2", localObject1 + ",isNeedSwitchView = " + paramBoolean + ",via = " + paramString1 + ",uin = " + paramString2 + ",uinType = " + paramString3);
+      ab.c("TMAssistantCallYYB_V2", localObject1 + ",isNeedSwitchView = " + paramBoolean + ",via = " + paramString1 + ",uin = " + paramString2 + ",uinType = " + paramString3);
       if ((paramInt == 3) || (bool)) {
         break label174;
       }
@@ -411,18 +411,18 @@ public class TMAssistantCallYYB_V2
     }
     for (long l = buildAddDBData(paramArrayList);; l = -1L)
     {
-      ac.c("TMAssistantCallYYB_V2", "result = " + l);
+      ab.c("TMAssistantCallYYB_V2", "result = " + l);
       return l;
     }
   }
   
   public long addDownloadTaskFromAppDetail(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, boolean paramBoolean1, boolean paramBoolean2)
   {
-    ac.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct + ",isAutoDownload = " + paramBoolean1 + ",isAutoInstall = " + paramBoolean2);
+    ab.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct + ",isAutoDownload = " + paramBoolean1 + ",isAutoInstall = " + paramBoolean2);
     addToTaskList(paramTMAssistantCallYYBParamStruct);
     String str = UUID.randomUUID().toString();
     long l = super.buildAddDBData(paramTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2, paramTMAssistantCallYYBParamStruct.actionFlag, null, 2, str);
-    ac.c("TMAssistantCallYYB_V2", "result = " + l);
+    ab.c("TMAssistantCallYYB_V2", "result = " + l);
     paramTMAssistantCallYYBParamStruct = com.tencent.tmassistantsdk.internal.logreport.b.g().a(com.tencent.tmassistantsdk.internal.logreport.b.a(paramTMAssistantCallYYBParamStruct), str, "V2_addDownloadTaskFromAppDetail");
     com.tencent.tmassistantsdk.internal.logreport.b.g().a(paramTMAssistantCallYYBParamStruct);
     return l;
@@ -430,11 +430,11 @@ public class TMAssistantCallYYB_V2
   
   public long addDownloadTaskFromAuthorize(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, String paramString)
   {
-    ac.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct + ",verifyType = " + paramString);
+    ab.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct + ",verifyType = " + paramString);
     String str = UUID.randomUUID().toString();
     addToTaskList(paramTMAssistantCallYYBParamStruct);
     long l = super.buildAddDBData(paramTMAssistantCallYYBParamStruct, true, true, paramTMAssistantCallYYBParamStruct.actionFlag, paramString, 3, str);
-    ac.c("TMAssistantCallYYB_V2", "result = " + l);
+    ab.c("TMAssistantCallYYB_V2", "result = " + l);
     paramTMAssistantCallYYBParamStruct = com.tencent.tmassistantsdk.internal.logreport.b.g().a(com.tencent.tmassistantsdk.internal.logreport.b.a(paramTMAssistantCallYYBParamStruct), str, "V2_addDownloadTaskFromAuthorize");
     com.tencent.tmassistantsdk.internal.logreport.b.g().a(paramTMAssistantCallYYBParamStruct);
     return l;
@@ -442,11 +442,11 @@ public class TMAssistantCallYYB_V2
   
   public long addDownloadTaskFromTaskList(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, boolean paramBoolean1, boolean paramBoolean2)
   {
-    ac.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct + ",isAutoDownload = " + paramBoolean1 + ",isAutoInstall = " + paramBoolean2);
+    ab.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct + ",isAutoDownload = " + paramBoolean1 + ",isAutoInstall = " + paramBoolean2);
     addToTaskList(paramTMAssistantCallYYBParamStruct);
     String str = UUID.randomUUID().toString();
     long l = super.buildAddDBData(paramTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2, paramTMAssistantCallYYBParamStruct.actionFlag, null, 1, str);
-    ac.c("TMAssistantCallYYB_V2", "result = " + l);
+    ab.c("TMAssistantCallYYB_V2", "result = " + l);
     paramTMAssistantCallYYBParamStruct = com.tencent.tmassistantsdk.internal.logreport.b.g().a(com.tencent.tmassistantsdk.internal.logreport.b.a(paramTMAssistantCallYYBParamStruct), str, "V2_addDownloadTaskFromTaskList");
     com.tencent.tmassistantsdk.internal.logreport.b.g().a(paramTMAssistantCallYYBParamStruct);
     return l;
@@ -454,7 +454,7 @@ public class TMAssistantCallYYB_V2
   
   public void destroyQQDownloaderOpenSDK()
   {
-    ac.c("TMAssistantCallYYB_V2", "mContext = " + this.mContext);
+    ab.c("TMAssistantCallYYB_V2", "mContext = " + this.mContext);
     e.a().b();
     if (this.mContext != null)
     {
@@ -470,19 +470,19 @@ public class TMAssistantCallYYB_V2
   {
     if (this.mContext == null)
     {
-      ac.e("TMAssistantCallYYB_V2", "context is null");
+      ab.e("TMAssistantCallYYB_V2", "context is null");
       throw new Exception("mContext shouldn't be null !");
     }
     if ((paramArrayList == null) || (paramArrayList.size() <= 0))
     {
-      ac.e("TMAssistantCallYYB_V2", "appList is null");
+      ab.e("TMAssistantCallYYB_V2", "appList is null");
       throw new Exception("ArrayList<TMQQDownloaderOpenSDKParam> appList cann't be null or empty!");
     }
-    ac.c("TMAssistantCallYYB_V2", "appList = " + paramArrayList.size() + ",via = " + paramString1 + ",uin = " + paramString2 + ",uinType = " + paramString3);
+    ab.c("TMAssistantCallYYB_V2", "appList = " + paramArrayList.size() + ",via = " + paramString1 + ",uin = " + paramString2 + ",uinType = " + paramString3);
     int i = getQQDownloadApiLevel(this.mContext);
     if (i <= 1)
     {
-      ac.c("TMAssistantCallYYB_V2", "result = null");
+      ab.c("TMAssistantCallYYB_V2", "result = null");
       return null;
     }
     if (i < 4)
@@ -492,10 +492,10 @@ public class TMAssistantCallYYB_V2
       {
         paramString1 = new ArrayList();
         paramString1.add(paramArrayList);
-        ac.c("TMAssistantCallYYB_V2", "result = " + paramString1.size());
+        ab.c("TMAssistantCallYYB_V2", "result = " + paramString1.size());
         return paramString1;
       }
-      ac.c("TMAssistantCallYYB_V2", "result = null");
+      ab.c("TMAssistantCallYYB_V2", "result = null");
       return null;
     }
     paramString1 = com.tencent.tmassistantsdk.internal.openSDK.d.a(this.mContext).a(paramArrayList, paramString1, paramString2, paramString3);
@@ -503,7 +503,7 @@ public class TMAssistantCallYYB_V2
     if (paramString1 == null) {}
     for (paramArrayList = "null";; paramArrayList = Integer.valueOf(paramString1.size()))
     {
-      ac.c("TMAssistantCallYYB_V2", paramArrayList);
+      ab.c("TMAssistantCallYYB_V2", paramArrayList);
       return paramString1;
     }
   }
@@ -512,17 +512,17 @@ public class TMAssistantCallYYB_V2
   {
     if (this.mContext == null)
     {
-      ac.e("TMAssistantCallYYB_V2", "context is null");
+      ab.e("TMAssistantCallYYB_V2", "context is null");
       throw new Exception("Context shouldn't be null !");
     }
     if (paramTMAssistantCallYYBParamStruct == null)
     {
-      ac.e("TMAssistantCallYYB_V2", "param is null");
+      ab.e("TMAssistantCallYYB_V2", "param is null");
       throw new Exception("TMQQDownloaderOpenSDKParam param cann't is null!");
     }
-    ac.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct);
+    ab.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct);
     paramTMAssistantCallYYBParamStruct = com.tencent.tmassistantsdk.internal.openSDK.d.a(this.mContext).a(paramTMAssistantCallYYBParamStruct);
-    ac.c("TMAssistantCallYYB_V2", "result = " + paramTMAssistantCallYYBParamStruct);
+    ab.c("TMAssistantCallYYB_V2", "result = " + paramTMAssistantCallYYBParamStruct);
     return paramTMAssistantCallYYBParamStruct;
   }
   
@@ -553,7 +553,7 @@ public class TMAssistantCallYYB_V2
   
   public void initTMAssistantCallYYBApi(Context paramContext)
   {
-    ac.c("TMAssistantCallYYB_V2", "context = " + paramContext);
+    ab.c("TMAssistantCallYYB_V2", "context = " + paramContext);
     this.mContext = paramContext;
     this.hostPackageName = paramContext.getPackageName();
     this.hostVersionCode = GlobalUtil.getAppVersionCode(this.mContext);
@@ -561,7 +561,7 @@ public class TMAssistantCallYYB_V2
     this.sdkAPILevel = 2;
     if (this.mContext != null)
     {
-      ac.c("TMAssistantCallYYB_V2", "init processor....... ");
+      ab.c("TMAssistantCallYYB_V2", "init processor....... ");
       com.tencent.tmassistantsdk.internal.openSDK.d.a(this.mContext).a(this);
       QQDownloaderInstalled.a().a(this.mContext);
       QQDownloaderInstalled.a().a(this);
@@ -579,7 +579,7 @@ public class TMAssistantCallYYB_V2
   
   public void onDownloadTaskStateChanged(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, int paramInt1, int paramInt2, String paramString)
   {
-    ac.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct + ",state = " + paramInt1 + ",errorCode = " + paramInt2 + ",errorMsg = " + paramString);
+    ab.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct + ",state = " + paramInt1 + ",errorCode = " + paramInt2 + ",errorMsg = " + paramString);
     if (paramTMAssistantCallYYBParamStruct != null) {
       onStateChanged(paramTMAssistantCallYYBParamStruct, paramInt1, paramInt2, paramString);
     }
@@ -593,7 +593,7 @@ public class TMAssistantCallYYB_V2
     //   1: monitorenter
     //   2: ldc 12
     //   4: ldc_w 594
-    //   7: invokestatic 54	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   7: invokestatic 54	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   10: aload_0
     //   11: getfield 27	com/tencent/tmassistantsdk/TMAssistantCallYYB_V2:mTaskList	Ljava/util/concurrent/CopyOnWriteArrayList;
     //   14: ifnull +65 -> 79
@@ -650,13 +650,13 @@ public class TMAssistantCallYYB_V2
   
   public void onQQDownloaderInvalid()
   {
-    ac.c("TMAssistantCallYYB_V2", "onQQDownloaderInvalid");
+    ab.c("TMAssistantCallYYB_V2", "onQQDownloaderInvalid");
     Iterator localIterator = this.mWeakListenerArrayList.iterator();
     while (localIterator.hasNext())
     {
       ITMAssistantCallBackListener localITMAssistantCallBackListener = (ITMAssistantCallBackListener)((WeakReference)localIterator.next()).get();
       if (localITMAssistantCallBackListener == null) {
-        ac.c("TMAssistantCallYYB_V2", "onQQDownloaderInvalid listener = null");
+        ab.c("TMAssistantCallYYB_V2", "onQQDownloaderInvalid listener = null");
       } else {
         localITMAssistantCallBackListener.onQQDownloaderInvalid();
       }
@@ -665,13 +665,13 @@ public class TMAssistantCallYYB_V2
   
   public void onServiceFree()
   {
-    ac.c("TMAssistantCallYYB_V2", "onServiceFree start");
+    ab.c("TMAssistantCallYYB_V2", "onServiceFree start");
     Iterator localIterator = this.mWeakListenerArrayList.iterator();
     while (localIterator.hasNext())
     {
       ITMAssistantCallBackListener localITMAssistantCallBackListener = (ITMAssistantCallBackListener)((WeakReference)localIterator.next()).get();
       if (localITMAssistantCallBackListener == null) {
-        ac.c("TMAssistantCallYYB_V2", "onQQDownloaderInvalid listener = null");
+        ab.c("TMAssistantCallYYB_V2", "onQQDownloaderInvalid listener = null");
       } else {
         localITMAssistantCallBackListener.onServiceFree();
       }
@@ -680,7 +680,7 @@ public class TMAssistantCallYYB_V2
   
   public void releaseIPCConnected()
   {
-    ac.c("TMAssistantCallYYB_V2", "mContext = " + this.mContext);
+    ab.c("TMAssistantCallYYB_V2", "mContext = " + this.mContext);
     if (this.mContext != null) {
       com.tencent.tmassistantsdk.internal.openSDK.d.a(this.mContext).c();
     }
@@ -690,20 +690,20 @@ public class TMAssistantCallYYB_V2
   {
     if (paramContext == null)
     {
-      ac.e("TMAssistantCallYYB_V2", "context is null");
+      ab.e("TMAssistantCallYYB_V2", "context is null");
       throw new Exception("you must input an application or activity context!");
     }
-    ac.c("TMAssistantCallYYB_V2", "context = " + paramContext + ",appList = " + paramArrayList + ",operation = " + paramInt + ",via = " + paramString);
+    ab.c("TMAssistantCallYYB_V2", "context = " + paramContext + ",appList = " + paramArrayList + ",operation = " + paramInt + ",via = " + paramString);
     int i = getQQDownloadApiLevel(paramContext);
     if (i <= 0)
     {
-      ac.c("TMAssistantCallYYB_V2", "TMAssistantDownloadTaskState.UN_INSTALLED,auto write tmast cmd");
+      ab.c("TMAssistantCallYYB_V2", "TMAssistantDownloadTaskState.UN_INSTALLED,auto write tmast cmd");
       addBatchOperationTmast(paramContext, paramArrayList);
       return 1;
     }
     if (i < 9)
     {
-      ac.c("TMAssistantCallYYB_V2", "TMAssistantDownloadTaskState.LOWWER_VERSION_INSTALLED");
+      ab.c("TMAssistantCallYYB_V2", "TMAssistantDownloadTaskState.LOWWER_VERSION_INSTALLED");
       return 2;
     }
     paramInt = getBatchOperateType(paramInt);
@@ -711,9 +711,9 @@ public class TMAssistantCallYYB_V2
       startToDownloadManager(paramContext, paramArrayList);
     }
     if (!com.tencent.tmassistantsdk.internal.openSDK.d.a(this.mContext).a(paramInt, paramArrayList, paramString, "", "")) {
-      ac.d("TMAssistantCallYYB_V2", "handleBatchRequestAction return false with batchRequestType=" + paramInt);
+      ab.d("TMAssistantCallYYB_V2", "handleBatchRequestAction return false with batchRequestType=" + paramInt);
     }
-    ac.c("TMAssistantCallYYB_V2", "TMAssistantDownloadTaskState.ALREADY_INSTALLED");
+    ab.c("TMAssistantCallYYB_V2", "TMAssistantDownloadTaskState.ALREADY_INSTALLED");
     return 0;
   }
   
@@ -724,10 +724,10 @@ public class TMAssistantCallYYB_V2
     }
     if (paramContext == null)
     {
-      ac.e("TMAssistantCallYYB_V2", "context is null");
+      ab.e("TMAssistantCallYYB_V2", "context is null");
       throw new Exception("you must input an application or activity context!");
     }
-    ac.c("TMAssistantCallYYB_V2", "context = " + paramContext + ",param = " + paramTMAssistantCallYYBParamStruct + ",isAutoDownload = " + paramBoolean1 + ",isAutoInstall = " + paramBoolean2 + ",operation = " + paramInt);
+    ab.c("TMAssistantCallYYB_V2", "context = " + paramContext + ",param = " + paramTMAssistantCallYYBParamStruct + ",isAutoDownload = " + paramBoolean1 + ",isAutoInstall = " + paramBoolean2 + ",operation = " + paramInt);
     String str;
     OuterCallReportModel localOuterCallReportModel;
     if (paramTMAssistantCallYYBParamStruct != null)
@@ -770,15 +770,15 @@ public class TMAssistantCallYYB_V2
   {
     if (paramContext == null)
     {
-      ac.e("TMAssistantCallYYB_V2", "context is null");
+      ab.e("TMAssistantCallYYB_V2", "context is null");
       throw new Exception("you must input an application or activity context!");
     }
     if (paramTMAssistantCallYYBParamStruct == null)
     {
-      ac.e("TMAssistantCallYYB_V2", "param is null");
+      ab.e("TMAssistantCallYYB_V2", "param is null");
       throw new Exception("QQDownloaderParam param cann't be null!");
     }
-    ac.c("TMAssistantCallYYB_V2", "context = " + paramContext + ",param = " + paramTMAssistantCallYYBParamStruct + ",verifyType = " + paramString);
+    ab.c("TMAssistantCallYYB_V2", "context = " + paramContext + ",param = " + paramTMAssistantCallYYBParamStruct + ",verifyType = " + paramString);
     if (paramTMAssistantCallYYBParamStruct != null)
     {
       addToTaskList(paramTMAssistantCallYYBParamStruct);
@@ -789,7 +789,7 @@ public class TMAssistantCallYYB_V2
   
   public void startToAuthorized(Context paramContext, String paramString)
   {
-    ac.c("TMAssistantCallYYB_V2", "context = " + paramContext + ",jumpUrl = " + paramString);
+    ab.c("TMAssistantCallYYB_V2", "context = " + paramContext + ",jumpUrl = " + paramString);
     paramContext = super.formatEncryptUrl(paramString);
     if ((!TextUtils.isEmpty(paramString)) && (this.mContext != null)) {
       com.tencent.tmassistantsdk.internal.openSDK.d.a(this.mContext).a(paramContext);
@@ -801,19 +801,19 @@ public class TMAssistantCallYYB_V2
     boolean bool = true;
     if (paramContext == null)
     {
-      ac.e("TMAssistantCallYYB_V2", "context is null");
+      ab.e("TMAssistantCallYYB_V2", "context is null");
       throw new Exception("you must input an application or activity context!");
     }
-    ac.c("TMAssistantCallYYB_V2", "context = " + paramContext + ",appList = " + paramArrayList + ",isNeedSwitchView = " + paramBoolean + ",operation = " + paramInt + ",via = " + paramString1 + ",uin = " + paramString2 + ",uinType = " + paramString3);
+    ab.c("TMAssistantCallYYB_V2", "context = " + paramContext + ",appList = " + paramArrayList + ",isNeedSwitchView = " + paramBoolean + ",operation = " + paramInt + ",via = " + paramString1 + ",uin = " + paramString2 + ",uinType = " + paramString3);
     int i = getQQDownloadApiLevel(paramContext);
     if (i <= 0)
     {
-      ac.c("TMAssistantCallYYB_V2", "TMAssistantDownloadTaskState.UN_INSTALLED");
+      ab.c("TMAssistantCallYYB_V2", "TMAssistantDownloadTaskState.UN_INSTALLED");
       return 1;
     }
     if (i < 4)
     {
-      ac.c("TMAssistantCallYYB_V2", "TMAssistantDownloadTaskState.LOWWER_VERSION_INSTALLED");
+      ab.c("TMAssistantCallYYB_V2", "TMAssistantDownloadTaskState.LOWWER_VERSION_INSTALLED");
       return 2;
     }
     paramBoolean = bool;
@@ -827,9 +827,9 @@ public class TMAssistantCallYYB_V2
     {
       paramInt = getBatchRequestType(paramBoolean, paramInt);
       if (!com.tencent.tmassistantsdk.internal.openSDK.d.a(this.mContext).a(paramInt, paramArrayList, paramString1, paramString2, paramString3)) {
-        ac.d("TMAssistantCallYYB_V2", "handleBatchRequestAction return false with batchRequestType=" + paramInt);
+        ab.d("TMAssistantCallYYB_V2", "handleBatchRequestAction return false with batchRequestType=" + paramInt);
       }
-      ac.c("TMAssistantCallYYB_V2", "TMAssistantDownloadTaskState.ALREADY_INSTALLED");
+      ab.c("TMAssistantCallYYB_V2", "TMAssistantDownloadTaskState.ALREADY_INSTALLED");
       return 0;
     }
   }
@@ -841,16 +841,16 @@ public class TMAssistantCallYYB_V2
     }
     if (paramContext == null)
     {
-      ac.e("TMAssistantCallYYB_V2", "context is null");
+      ab.e("TMAssistantCallYYB_V2", "context is null");
       throw new Exception("you must input an application or activity context!");
     }
     if (paramTMAssistantCallYYBParamStruct == null) {
-      ac.e("TMAssistantCallYYB_V2", "param is null");
+      ab.e("TMAssistantCallYYB_V2", "param is null");
     }
     do
     {
       return;
-      ac.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct + ",isAutoDownload = " + paramBoolean1 + ",isAutoInstall = " + paramBoolean2 + ",operation = " + paramInt);
+      ab.c("TMAssistantCallYYB_V2", "param = " + paramTMAssistantCallYYBParamStruct + ",isAutoDownload = " + paramBoolean1 + ",isAutoInstall = " + paramBoolean2 + ",operation = " + paramInt);
     } while (paramTMAssistantCallYYBParamStruct == null);
     String str = super.formatOplist(paramBoolean1, paramBoolean2);
     OuterCallReportModel localOuterCallReportModel;
@@ -888,15 +888,15 @@ public class TMAssistantCallYYB_V2
   {
     if (paramContext == null)
     {
-      ac.e("TMAssistantCallYYB_V2", "context is null");
+      ab.e("TMAssistantCallYYB_V2", "context is null");
       throw new Exception("you must input an application or activity context!");
     }
     if (TextUtils.isEmpty(paramString))
     {
-      ac.e("TMAssistantCallYYB_V2", "url is null");
+      ab.e("TMAssistantCallYYB_V2", "url is null");
       throw new Exception("param url shouldn't be null!");
     }
-    ac.c("TMAssistantCallYYB_V2", "context = " + paramContext + ",url = " + paramString);
+    ab.c("TMAssistantCallYYB_V2", "context = " + paramContext + ",url = " + paramString);
     HashMap localHashMap = new HashMap();
     localHashMap.put("url", paramString);
     if ((!TextUtils.isEmpty(paramString)) && (this.mContext != null))

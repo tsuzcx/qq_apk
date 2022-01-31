@@ -1,28 +1,47 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract class anad
+public class anad
+  extends amyi<anac>
 {
-  private static int seed;
-  public int key;
-  
-  public anad()
+  public int a()
   {
-    int i = seed;
-    seed = i + 1;
-    this.key = i;
+    return 359;
   }
   
-  public abstract void onBindedToClient();
+  @NonNull
+  public anac a()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    ho.a();
+    bbjn.a(localQQAppInterface.getApp(), localQQAppInterface.c(), "vas_font_switch_config", "reset");
+    return new anac();
+  }
   
-  public abstract void onDisconnectWithService();
+  @NonNull
+  public anac a(ampi[] paramArrayOfampi)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    ho.a(paramArrayOfampi[0].a);
+    bbjn.a(localQQAppInterface.getApp(), localQQAppInterface.c(), "vas_font_switch_config", paramArrayOfampi[0].a);
+    return new anac();
+  }
   
-  public abstract void onPushMsg(Bundle paramBundle);
+  public Class<anac> a()
+  {
+    return anac.class;
+  }
   
-  public abstract void onResponse(Bundle paramBundle);
+  @NonNull
+  public anac b()
+  {
+    return new anac();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anad
  * JD-Core Version:    0.7.0.1
  */

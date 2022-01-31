@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.data.ApolloActionData;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import org.json.JSONObject;
 
-public class ajat
+class ajat
+  implements MediaPlayer.OnCompletionListener
 {
-  public void a() {}
+  ajat(ajao paramajao, ajbo paramajbo, JSONObject paramJSONObject) {}
   
-  public void a(ApolloActionData paramApolloActionData) {}
-  
-  public void a(Boolean paramBoolean) {}
-  
-  public void b(ApolloActionData paramApolloActionData) {}
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    this.jdField_a_of_type_Ajbo.a(this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_Ajao.a(10);
+  }
 }
 
 

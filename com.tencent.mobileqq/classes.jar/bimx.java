@@ -1,36 +1,28 @@
 import android.support.annotation.NonNull;
-import java.util.ArrayList;
+import android.support.annotation.Nullable;
 
 public class bimx
 {
-  @NonNull
-  public final biiw a;
-  @NonNull
-  public final biix a;
-  @NonNull
-  public final biiy a;
-  @NonNull
-  public final bijh a;
-  @NonNull
-  public final bijk a;
-  @NonNull
-  public final bijo a;
-  public final ArrayList<bika> a;
+  public String a;
+  public String b = "null";
+  public String c = "null";
   
-  public bimx(@NonNull bijo parambijo, @NonNull bijk parambijk, @NonNull biiy parambiiy, @NonNull biiw parambiiw, @NonNull bijh parambijh, @NonNull biix parambiix)
+  public bimx(@NonNull String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Bijo = parambijo;
-    this.jdField_a_of_type_Bijk = parambijk;
-    this.jdField_a_of_type_Biiy = parambiiy;
-    this.jdField_a_of_type_Biiw = parambiiw;
-    this.jdField_a_of_type_Biix = parambiix;
-    this.jdField_a_of_type_Bijh = parambijh;
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambiiy);
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambiiw);
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambijk);
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambijo);
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambijh);
+    this.a = paramString;
+  }
+  
+  public bimx(@NonNull String paramString1, @Nullable String paramString2, @Nullable String paramString3)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "cmd=" + this.a + ", state=" + this.b + ", result=" + this.c;
   }
 }
 

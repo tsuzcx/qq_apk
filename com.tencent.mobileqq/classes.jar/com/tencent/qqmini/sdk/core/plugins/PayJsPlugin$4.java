@@ -2,8 +2,8 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_APP_PAY.MiniAppMidasPay.StGamePayRsp;
-import bdfz;
-import bdnw;
+import beka;
+import besl;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 class PayJsPlugin$4
   implements AsyncResult
 {
-  PayJsPlugin$4(PayJsPlugin paramPayJsPlugin, bdfz parambdfz) {}
+  PayJsPlugin$4(PayJsPlugin paramPayJsPlugin, beka parambeka) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -29,7 +29,7 @@ class PayJsPlugin$4
       }
       catch (JSONException paramJSONObject)
       {
-        bdnw.d("PayJsPlugin", "invokeMidasConsume JSONException ", paramJSONObject);
+        besl.d("PayJsPlugin", "invokeMidasConsume JSONException ", paramJSONObject);
         return;
       }
     }
@@ -46,13 +46,13 @@ class PayJsPlugin$4
       localJSONObject1.put("resultCode", i);
       localJSONObject1.put("resultMsg", str);
       localJSONObject1.put("extInfo", localJSONObject2);
-      bdnw.a("PayJsPlugin", "invokeMidasConsume receive isSuc= " + paramBoolean + " resObj=" + paramJSONObject.toString());
+      besl.b("PayJsPlugin", "invokeMidasConsume receive isSuc= " + paramBoolean + " resObj=" + paramJSONObject.toString());
       PayJsPlugin.access$300(this.this$0, this.val$req, paramJSONObject);
       return;
     }
     catch (Throwable paramJSONObject)
     {
-      bdnw.d("PayJsPlugin", "invokeMidasConsume JSONException ", paramJSONObject);
+      besl.d("PayJsPlugin", "invokeMidasConsume JSONException ", paramJSONObject);
     }
   }
 }

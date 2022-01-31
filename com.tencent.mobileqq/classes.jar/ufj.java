@@ -1,15 +1,39 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import android.content.Context;
+import android.net.Uri;
+import java.util.Map;
 
-class ufj
-  implements bbjy
+public class ufj
+  implements ufh
 {
-  ufj(ufi paramufi, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Uri jdField_a_of_type_AndroidNetUri;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap;
+  private Uri jdField_b_of_type_AndroidNetUri;
+  private Map<String, String> jdField_b_of_type_JavaUtilMap;
   
-  public void a(String paramString)
+  public ufj(Context paramContext, Uri paramUri, Map<String, String> paramMap)
   {
-    urk.a("Q.qqstory.detail.FeedItemThumbAdapter", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
-    sje.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidNetUri = paramUri;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+  }
+  
+  public ufc a()
+  {
+    ufc localufc = new ufc();
+    localufc.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaUtilMap);
+    return localufc;
+  }
+  
+  public ufc b()
+  {
+    if (this.jdField_b_of_type_AndroidNetUri != null)
+    {
+      ufc localufc = new ufc();
+      localufc.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidNetUri, this.jdField_b_of_type_JavaUtilMap);
+      return localufc;
+    }
+    return null;
   }
 }
 

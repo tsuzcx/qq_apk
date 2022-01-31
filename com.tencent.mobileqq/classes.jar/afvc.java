@@ -1,94 +1,24 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiBaseInfo;
-import com.tencent.widget.XEditTextEx;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class afvc
-  implements anhs
+  implements DialogInterface.OnClickListener
 {
-  afvc(afuz paramafuz) {}
+  afvc(afur paramafur, boolean paramBoolean, String paramString) {}
   
-  public void a(anht paramanht)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i;
-    int j;
-    if ((paramanht instanceof anmh))
-    {
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
+    axqw.b(null, "dc00898", "", "", "0X8009DCB", "0X8009DCB", 0, 0, afur.a(this.jdField_a_of_type_Afur), "", "", "");
+    if (this.jdField_a_of_type_Boolean) {
+      afur.a(this.jdField_a_of_type_Afur, afur.a(this.jdField_a_of_type_Afur), Long.valueOf(afur.a(this.jdField_a_of_type_Afur)).longValue(), false);
     }
-    anmf localanmf;
-    int k;
-    int m;
-    do
-    {
-      this.a.a.getEditableText().replace(i, j, axku.c(((anmh)paramanht).a));
-      do
-      {
-        return;
-      } while (!(paramanht instanceof anmf));
-      localanmf = (anmf)paramanht;
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      k = localanmf.a;
-      m = localanmf.b;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
-      }
-    } while ((k == 2) && (m == -1));
-    if (k == 1) {}
-    for (paramanht = axku.c(m);; paramanht = axku.a(m))
-    {
-      this.a.a.getEditableText().replace(i, j, paramanht);
-      this.a.a.requestFocus();
-      localanmf.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
-      angd.a().a(k).a(m, 2);
-      return;
-    }
-  }
-  
-  public void a(anht paramanht1, anht paramanht2, Drawable paramDrawable) {}
-  
-  public boolean a(anht paramanht)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.a.getSelectionStart() == 0) {}
     for (;;)
     {
+      this.jdField_a_of_type_Afur.f();
       return;
-      try
-      {
-        Editable localEditable = this.a.a.getText();
-        int i = this.a.a.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.a.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+      afur.a(this.jdField_a_of_type_Afur, afur.a(this.jdField_a_of_type_Afur), Long.valueOf(afur.a(this.jdField_a_of_type_Afur)).longValue(), false, this.jdField_a_of_type_JavaLangString);
     }
   }
-  
-  public void b(anht paramanht) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

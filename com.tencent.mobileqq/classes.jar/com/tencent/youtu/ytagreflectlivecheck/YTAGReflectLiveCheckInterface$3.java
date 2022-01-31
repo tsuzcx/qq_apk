@@ -9,8 +9,8 @@ final class YTAGReflectLiveCheckInterface$3
   
   public void run()
   {
-    YTAGReflectLiveCheckInterface.access$200().onSuccess(this.val$isAlive, this.val$lightDiffResponse, this.val$response);
-    YTAGReflectLiveCheckInterface.access$202(null);
+    YTAGReflectLiveCheckInterface.access$300().onSuccess(this.val$isAlive, this.val$lightDiffResponse, this.val$response);
+    YTAGReflectLiveCheckInterface.access$302(null);
   }
 }
 

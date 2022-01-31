@@ -1,6 +1,5 @@
 package com.tencent.widget;
 
-import amwx;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.text.Layout;
@@ -9,12 +8,13 @@ import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import annf;
 
 public class StaticLayoutView
   extends View
 {
-  amwx jdField_a_of_type_Amwx;
   private Layout jdField_a_of_type_AndroidTextLayout;
+  annf jdField_a_of_type_Annf;
   
   public StaticLayoutView(Context paramContext)
   {
@@ -75,10 +75,10 @@ public class StaticLayoutView
           if (i == 1) {
             localObject1[0].onClick(this);
           }
-          if ((localObject1[0] instanceof amwx)) {
-            ((amwx)localObject1[0]).a(false);
+          if ((localObject1[0] instanceof annf)) {
+            ((annf)localObject1[0]).a(false);
           }
-          this.jdField_a_of_type_Amwx = null;
+          this.jdField_a_of_type_Annf = null;
           postInvalidate();
         }
         for (;;)
@@ -86,19 +86,19 @@ public class StaticLayoutView
           return true;
           if (i == 0)
           {
-            if ((localObject1[0] instanceof amwx))
+            if ((localObject1[0] instanceof annf))
             {
-              ((amwx)localObject1[0]).a(true);
-              this.jdField_a_of_type_Amwx = ((amwx)localObject1[0]);
+              ((annf)localObject1[0]).a(true);
+              this.jdField_a_of_type_Annf = ((annf)localObject1[0]);
             }
             postInvalidate();
           }
         }
       }
-      if (((i == 1) || (i == 3)) && (this.jdField_a_of_type_Amwx != null))
+      if (((i == 1) || (i == 3)) && (this.jdField_a_of_type_Annf != null))
       {
-        this.jdField_a_of_type_Amwx.a(false);
-        this.jdField_a_of_type_Amwx = null;
+        this.jdField_a_of_type_Annf.a(false);
+        this.jdField_a_of_type_Annf = null;
         postInvalidate();
       }
     }

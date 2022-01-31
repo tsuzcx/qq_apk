@@ -1,21 +1,14 @@
-import android.view.View;
-import android.widget.SimpleAdapter.ViewBinder;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
-
-public class pue
-  implements SimpleAdapter.ViewBinder
+class pue
+  implements pvr
 {
-  public pue(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  pue(pud parampud) {}
   
-  public boolean setViewValue(View paramView, Object paramObject, String paramString)
+  public void a()
   {
-    if (((paramView instanceof TextView)) && ((paramObject instanceof CharSequence)))
-    {
-      ((TextView)paramView).setText((CharSequence)paramObject);
-      return true;
+    rbu localrbu = this.a.jdField_a_of_type_Rap.a();
+    if (localrbu != null) {
+      localrbu.a(null, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
     }
-    return false;
   }
 }
 

@@ -1,17 +1,33 @@
-class rui
-  implements bemt
+import android.content.Context;
+import com.tencent.mobileqq.widget.AnimationTextView;
+
+public class rui
+  extends bbgg
 {
-  rui(rug paramrug) {}
+  AnimationTextView a;
   
-  public void a(int paramInt1, int paramInt2)
+  public rui(Context paramContext, int paramInt)
   {
-    rug.a(this.a, paramInt2);
-    float f = rug.a(this.a).a(rug.a(this.a));
-    bgmq.a("readinjoy_font_size_sp", Float.valueOf(f));
-    bgmq.a("readinjoy_font_size_index_sp" + obz.a(), Integer.valueOf(rug.a(this.a)));
-    if (rug.a(this.a) != null) {
-      rug.a(this.a).a(rug.a(this.a), f);
+    super(paramContext, paramInt);
+    a();
+  }
+  
+  private void a()
+  {
+    this.a = ((AnimationTextView)findViewById(2131375757));
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.a != null) {
+      this.a.setText(paramString);
     }
+  }
+  
+  public void setContentView(int paramInt)
+  {
+    super.setContentView(paramInt);
+    a();
   }
 }
 

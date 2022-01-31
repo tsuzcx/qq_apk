@@ -1,45 +1,43 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-public class vul
-  implements vux
+class vul
+  implements avzk
 {
-  public vul(ScannerActivity paramScannerActivity) {}
+  vul(vuk paramvuk) {}
   
-  public JSONObject a()
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    try
+    synchronized (vuk.a(this.a))
     {
-      JSONObject localJSONObject = ScannerActivity.a(this.a);
-      return localJSONObject;
+      vuk.a(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(vuk.a, 2, "onEncodeFinish, filePath= " + paramString);
+      }
+      vuk.a(this.a).notifyAll();
+      return;
     }
-    catch (Throwable localThrowable)
+  }
+  
+  public void a_(int paramInt, Throwable arg2)
+  {
+    synchronized (vuk.a(this.a))
     {
-      QLog.i("ScannerActivity", 1, "getQRReportParams error: " + localThrowable.getMessage());
+      vuk.b(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(vuk.a, 2, "onEncodeError, errorCode= " + paramInt);
+      }
+      vuk.a(this.a).notifyAll();
+      return;
     }
-    return null;
   }
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScannerActivity", 2, "restartDecodeFrame");
-    }
-    this.a.finish();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScannerActivity", 2, "cameraOn");
-    }
-    this.a.finish();
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vul
  * JD-Core Version:    0.7.0.1
  */

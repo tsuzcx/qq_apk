@@ -1,27 +1,11 @@
-import java.util.Observable;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
 
-public class azgb
-  extends Observable
+class azgb
 {
-  private static azgb a;
-  
-  public static azgb a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new azgb();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public void setChanged()
-  {
-    super.setChanged();
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  ImageView b;
 }
 
 

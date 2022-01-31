@@ -1,24 +1,21 @@
-import java.io.File;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 
-public class ulw
+class ulw
+  extends tpk
 {
-  private static final String jdField_a_of_type_JavaLangString = ajed.aT + "/Tencent/com/tencent/mobileqq/";
-  private static final boolean jdField_a_of_type_Boolean = new File(jdField_a_of_type_JavaLangString + "testserver").exists();
+  ulw(ulv paramulv) {}
   
-  public static void a(ulz<Integer> paramulz)
+  public void a()
   {
-    paramulz = new WeakReference(paramulz);
-    umr localumr = new umr(null);
-    localumr.a(new ulx(paramulz));
-    localumr.a(new uly(paramulz));
-    localumr.a();
+    super.a();
+    ulv.a(this.a).jdField_a_of_type_Tpe = null;
   }
   
-  public static boolean a()
+  public void a(int paramInt)
   {
-    if (jdField_a_of_type_Boolean) {}
-    return false;
+    super.a(paramInt);
+    vel.a("share_story", "day_suc", 0, paramInt, new String[] { ulv.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
   }
 }
 

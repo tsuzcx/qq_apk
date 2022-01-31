@@ -1,12 +1,21 @@
-public class mrk
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class mrk
+  implements DialogInterface.OnClickListener
 {
-  public static int a;
-  public static long a;
-  public static String a = "";
+  mrk(Context paramContext) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    mri.a(this.a);
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mrk
  * JD-Core Version:    0.7.0.1
  */

@@ -5,14 +5,14 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import fb;
+import gu;
 
 public class WaitTextView
   extends TextView
 {
   private int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private fb jdField_a_of_type_Fb;
+  private gu jdField_a_of_type_Gu;
   private Runnable jdField_a_of_type_JavaLangRunnable = new WaitTextView.1(this);
   private String jdField_a_of_type_JavaLangString;
   
@@ -70,9 +70,9 @@ public class WaitTextView
     }
   }
   
-  public void setRefreshListener(fb paramfb)
+  public void setRefreshListener(gu paramgu)
   {
-    this.jdField_a_of_type_Fb = paramfb;
+    this.jdField_a_of_type_Gu = paramgu;
   }
   
   public void setWaitText(String paramString)

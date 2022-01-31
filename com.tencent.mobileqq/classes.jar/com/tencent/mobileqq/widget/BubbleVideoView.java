@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import alzw;
+import ampm;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -16,13 +16,13 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import bbgo;
-import befo;
+import bcjo;
+import bfni;
 
 public class BubbleVideoView
   extends BubbleImageView
 {
-  private static bbgo a;
+  private static bcjo a;
   private Bitmap b;
   private boolean c;
   
@@ -43,14 +43,14 @@ public class BubbleVideoView
   
   private void b(Canvas paramCanvas)
   {
-    if (jdField_a_of_type_Bbgo != null) {
-      jdField_a_of_type_Bbgo.a(this, paramCanvas);
+    if (jdField_a_of_type_Bcjo != null) {
+      jdField_a_of_type_Bcjo.a(this, paramCanvas);
     }
   }
   
-  public static void setDrawListener(bbgo parambbgo)
+  public static void setDrawListener(bcjo parambcjo)
   {
-    jdField_a_of_type_Bbgo = parambbgo;
+    jdField_a_of_type_Bcjo = parambcjo;
   }
   
   protected void a()
@@ -124,7 +124,7 @@ public class BubbleVideoView
   {
     this.e = f;
     int i;
-    if (befo.e())
+    if (bfni.e())
     {
       this.jdField_a_of_type_Int = 1;
       a();
@@ -132,7 +132,7 @@ public class BubbleVideoView
       if (Build.VERSION.SDK_INT >= 28)
       {
         this.g = true;
-        Object localObject = (String)alzw.a().a(462);
+        Object localObject = (String)ampm.a().a(462);
         if ((localObject != null) && (((String)localObject).length() > 0))
         {
           localObject = ((String)localObject).split("\\|");

@@ -1,68 +1,51 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.DeleteStoryVideoEventReceiver.1;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class typ
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, spl>
+  extends wcr
 {
-  public typ(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public static final String KEY = "EmptyPlaceHolderSegment";
+  private final int jdField_a_of_type_Int;
+  private vas jdField_a_of_type_Vas;
+  
+  public typ(Context paramContext, int paramInt)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramContext);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull spl paramspl)
+  public int a()
   {
-    if (!paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString.equals(paramspl.c)) {}
-    while ((!paramspl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) || (TextUtils.isEmpty(paramspl.d)) || (!((spt)sqg.a(19)).a(paramspl.d).contains(paramspl.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "get delete event. groupId=" + paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString + ", feedId=" + paramspl.d);
-    }
-    ShareGroupItem localShareGroupItem;
-    if (paramQQStoryShareGroupProfileActivity.a != null)
-    {
-      localShareGroupItem = paramQQStoryShareGroupProfileActivity.a;
-      int i = localShareGroupItem.videoCount - 1;
-      localShareGroupItem.videoCount = i;
-      if (i == 0)
-      {
-        ThreadManager.getUIHandler().postDelayed(new QQStoryShareGroupProfileActivity.DeleteStoryVideoEventReceiver.1(this, paramQQStoryShareGroupProfileActivity), 400L);
-        return;
-      }
-    }
-    if (paramQQStoryShareGroupProfileActivity.isResume())
-    {
-      if (paramspl.jdField_b_of_type_Boolean)
-      {
-        localShareGroupItem = ((uac)sqg.a(7)).a(paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString);
-        if ((localShareGroupItem != null) && (localShareGroupItem.headerUnionIdList.contains(paramspl.jdField_b_of_type_JavaLangString))) {
-          QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, true);
-        }
-      }
-      paramQQStoryShareGroupProfileActivity.b(false);
-      return;
-    }
-    if (paramspl.jdField_b_of_type_Boolean)
-    {
-      paramQQStoryShareGroupProfileActivity.jdField_b_of_type_Boolean = true;
-      paramQQStoryShareGroupProfileActivity.c = true;
-      return;
-    }
-    paramQQStoryShareGroupProfileActivity.jdField_b_of_type_Boolean = true;
+    return 1;
   }
   
-  public Class acceptEventClass()
+  public View a(int paramInt, vas paramvas, ViewGroup paramViewGroup)
   {
-    return spl.class;
+    return paramvas.a();
+  }
+  
+  public String a()
+  {
+    return "EmptyPlaceHolderSegment";
+  }
+  
+  public vas a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
+    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.jdField_a_of_type_Int));
+    if (QQStoryContext.a()) {
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166349));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Vas = new vas(paramViewGroup);
+      return this.jdField_a_of_type_Vas;
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165473));
+    }
   }
 }
 

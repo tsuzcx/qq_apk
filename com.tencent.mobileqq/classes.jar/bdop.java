@@ -1,107 +1,250 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.util.SparseArray;
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
-import com.tencent.qqmini.sdk.manager.EngineManager.EngineChannelReceiver.1;
-import com.tencent.qqmini.sdk.manager.InstalledEngine;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.wadl.ipc.WadlParams;
+import cooperation.wadl.ipc.WadlResult;
+import org.json.JSONObject;
 
 public class bdop
-  implements bdoh
 {
-  public bdop(bdom parambdom) {}
-  
-  public void a(int paramInt, Bundle paramBundle)
+  public static int a(int paramInt)
   {
-    paramBundle.setClassLoader(getClass().getClassLoader());
-    int i = paramBundle.getInt("baseLibType");
-    int j = paramBundle.getInt("enginePid");
-    paramBundle = (EngineChannel)paramBundle.getParcelable("engineChannel");
-    if (paramBundle != null)
-    {
-      if (bdom.a(this.a).indexOfKey(j) > 0) {
-        bdnw.c("EngineManager", "[MiniEng] channel already exists for pid " + j + " replacing");
-      }
-      bdom.a(this.a).put(j, paramBundle);
+    if (paramInt == 6) {
+      return 4;
     }
-    paramBundle = (EngineChannel)bdom.a(this.a).get(j);
-    if (paramBundle == null)
-    {
-      bdnw.d("EngineManager", "[MiniEng]no channel available for pid " + j);
-      return;
+    if (paramInt == 4) {
+      return 2;
     }
-    bdnw.b("EngineManager", "[MiniEng] onReceiveData what=" + paramInt + ",baseLibType=" + i + ",pid=" + j + ",remote=" + paramBundle + ",channelCount=" + bdom.a(this.a).size());
-    paramBundle.a(55, null);
-    Object localObject1;
-    Object localObject2;
-    if (paramInt == 1)
-    {
-      localObject1 = bdom.a().a(i);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putParcelableArrayList("installedEngineList", (ArrayList)localObject1);
-      paramBundle.a(51, (Bundle)localObject2);
-      bdom.a(this.a, paramBundle);
-      bdnw.b("EngineManager", "[MiniEng]LiveChannel count " + bdom.a(this.a).size());
-      return;
+    if (paramInt == 5) {
+      return 3;
+    }
+    if ((paramInt == 7) || (paramInt == 14)) {
+      return -2;
+    }
+    if (paramInt == 0) {
+      return 1;
+    }
+    if (paramInt == 9) {
+      return 6;
+    }
+    if (paramInt == 11) {
+      return 9;
+    }
+    if (paramInt == 12) {
+      return 10;
+    }
+    if (paramInt == 13) {
+      return 20;
+    }
+    if (paramInt == 2) {
+      return 20;
+    }
+    if (paramInt == 1) {
+      return 20;
     }
     if (paramInt == 3) {
-      if (i == 2)
-      {
-        localObject1 = this.a.a(i).iterator();
-        do
-        {
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          localObject2 = (InstalledEngine)((Iterator)localObject1).next();
-        } while ((!((InstalledEngine)localObject2).b) || (!((InstalledEngine)localObject2).a));
-      }
+      return 20;
     }
-    for (paramInt = 1;; paramInt = 0)
+    if (paramInt == 10) {
+      return 13;
+    }
+    return 0;
+  }
+  
+  public static int a(int paramInt, String paramString1, String paramString2)
+  {
+    int i = paramInt;
+    if (paramInt == 6)
     {
-      if ((!bdou.a().a()) && (paramInt == 0))
-      {
-        bdew.b().post(new EngineManager.EngineChannelReceiver.1(this, paramBundle));
-        return;
+      i = paramInt;
+      if (!bbdj.a(paramString2)) {
+        i = 0;
       }
-      if (bdou.a().b())
-      {
-        localObject1 = bdzi.a();
-        bdnw.b("EngineManager", "[MiniEng] QQSpeed INSTALL_LATEST_ENGINE gameEngineLib " + localObject1);
-        if ((localObject1 == null) || (((BaseLibInfo)localObject1).baseLibType != 2)) {
-          break;
-        }
-        bdom.b(this.a, (BaseLibInfo)localObject1, paramBundle);
-        return;
-      }
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib("0,0,1", false, true, new bdoq(this, i, paramBundle));
-      return;
-      if (paramInt != 5) {
-        break;
-      }
-      if ((i == 2) && (bdou.a().b()))
-      {
-        localObject1 = bdzi.a();
-        bdnw.b("EngineManager", "[MiniEng] QQSpeed UPGRADE_ENGINE gameEngineLib " + localObject1);
-        if ((localObject1 == null) || (((BaseLibInfo)localObject1).baseLibType != 2)) {
-          break;
-        }
-        bdom.c(this.a, (BaseLibInfo)localObject1, paramBundle);
-        return;
-      }
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib("0,0,1", false, true, new bdor(this, i, paramBundle));
-      return;
     }
+    return i;
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return bcxm.a().a().getString(2131694871);
+    case 0: 
+      return "";
+    case 1: 
+      return bcxm.a().a().getString(2131694876);
+    case 2: 
+      return bcxm.a().a().getString(2131694880);
+    case 3: 
+      return bcxm.a().a().getString(2131694878);
+    case 4: 
+      return bcxm.a().a().getString(2131694874);
+    case 5: 
+      return bcxm.a().a().getString(2131694871);
+    }
+    return bcxm.a().a().getString(2131694871);
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      bdoe.a("WadlJsBridgeUtil", "getAppid error packageName is empty");
+      return "";
+    }
+    String str3 = paramString.trim();
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    for (;;)
+    {
+      try
+      {
+        paramString = localBaseApplication.getSharedPreferences("wadl_AppInfo", 4).getString(str3, "");
+        String str1 = paramString;
+        bdoe.a("WadlJsBridgeUtil", "getAppid error", localOutOfMemoryError1);
+      }
+      catch (OutOfMemoryError localOutOfMemoryError1)
+      {
+        try
+        {
+          if (TextUtils.isEmpty(paramString)) {
+            str1 = localBaseApplication.getSharedPreferences("wadlAppInfo", 0).getString(str3, "");
+          }
+          bdoe.b("WadlJsBridgeUtil", "getAppid packageName=" + str3 + ",appId=" + str1);
+          return str1;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError2)
+        {
+          String str2;
+          break label106;
+        }
+        localOutOfMemoryError1 = localOutOfMemoryError1;
+        paramString = "";
+      }
+      label106:
+      str2 = paramString;
+    }
+  }
+  
+  public static JSONObject a(WadlResult paramWadlResult)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    if (paramWadlResult != null) {}
+    try
+    {
+      if (paramWadlResult.a != null)
+      {
+        WadlParams localWadlParams = paramWadlResult.a;
+        localJSONObject.put("appid", localWadlParams.a);
+        localJSONObject.put("state", a(paramWadlResult.b));
+        localJSONObject.put("pro", paramWadlResult.d);
+        localJSONObject.put("packagename", localWadlParams.j);
+        localJSONObject.put("ismyapp", 0);
+        localJSONObject.put("download_from", 0);
+        localJSONObject.put("realDownloadType", 0);
+        localJSONObject.put("via", localWadlParams.m);
+        localJSONObject.put("writecodestate", 0);
+        localJSONObject.put("extraInfo", localWadlParams.p);
+        localJSONObject.put("isAutoInstallBySDK", localWadlParams.a(1));
+        localJSONObject.put("isRes", localWadlParams.b);
+        int i = b(paramWadlResult.c);
+        localJSONObject.put("errorCode", i);
+        localJSONObject.put("errorMsg", a(i));
+      }
+      return localJSONObject;
+    }
+    catch (Exception paramWadlResult) {}
+    return localJSONObject;
+  }
+  
+  public static boolean a(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return false;
+    }
+    paramString1 = paramString1.trim();
+    paramString2 = paramString2.trim();
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getContext().getSharedPreferences("wadl_AppInfo", 4).edit();
+    localEditor.putString(paramString1, paramString2);
+    boolean bool = localEditor.commit();
+    bdoe.b("WadlJsBridgeUtil", "savePackageInfo:appid:" + paramString2 + ",packageName:" + paramString1 + ",flag:" + bool);
+    return bool;
+  }
+  
+  public static int b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case -72: 
+    case -70: 
+    case -69: 
+    case -68: 
+    case -67: 
+    case -66: 
+    case -65: 
+    case -64: 
+    case -63: 
+    case -62: 
+    case -61: 
+    case -59: 
+    case -58: 
+    case -57: 
+    case -56: 
+    case -55: 
+    case -54: 
+    case -53: 
+    case -52: 
+    case -50: 
+    case -49: 
+    case -48: 
+    case -47: 
+    case -46: 
+    case -45: 
+    case -44: 
+    case -43: 
+    case -42: 
+    case -41: 
+    case -29: 
+    case -28: 
+    case -27: 
+    case -22: 
+    case -19: 
+    case -18: 
+    case -17: 
+    case -14: 
+    case -13: 
+    default: 
+      return 6;
+    case 0: 
+      return 0;
+    case -71: 
+    case -30: 
+    case -26: 
+    case -25: 
+    case -24: 
+    case -23: 
+    case -16: 
+    case -15: 
+    case -1: 
+      return 1;
+    case -51: 
+    case -11: 
+      return 2;
+    case -40: 
+    case -12: 
+      return 3;
+    case 999: 
+      return 7;
+    }
+    return 5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdop
  * JD-Core Version:    0.7.0.1
  */

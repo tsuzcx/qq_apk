@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.weaknet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import rnr;
+import sai;
 
 public final class ReadInJoyPTSCostHelper$1
   implements Runnable
@@ -12,12 +12,12 @@ public final class ReadInJoyPTSCostHelper$1
   {
     synchronized ()
     {
-      Iterator localIterator = new ArrayList(rnr.a()).iterator();
+      Iterator localIterator = new ArrayList(sai.a()).iterator();
       if (localIterator.hasNext()) {
-        rnr.a((String)localIterator.next());
+        sai.a((String)localIterator.next());
       }
     }
-    rnr.a().clear();
+    sai.a().clear();
   }
 }
 

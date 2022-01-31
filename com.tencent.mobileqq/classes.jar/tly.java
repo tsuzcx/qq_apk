@@ -1,63 +1,36 @@
-import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.database.LikeEntry;
 import java.util.List;
 
 public class tly
-  extends ulp
 {
-  public tly(tlv paramtlv) {}
+  public int a;
+  public String a;
+  public List<LikeEntry> a;
+  public int b;
   
-  public void a(int paramInt, View paramView, Object paramObject, unw paramunw)
+  public boolean equals(Object paramObject)
   {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(tlv.a(this.a)).size())) {}
+    if (this == paramObject) {}
     do
     {
-      return;
-      paramObject = (CommentEntry)this.a.a.a(tlv.a(this.a)).get(paramInt);
-      switch (paramView.getId())
-      {
-      default: 
-        return;
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-    } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
-    skt.a(paramView.getContext(), 12, paramObject.authorUnionId);
-    return;
-    if (tlv.a(this.a) != null) {
-      tlv.a(this.a).a(paramObject, paramInt, tlv.a(this.a).a());
-    }
-    tlv.a(this.a).a(tlv.a(this.a).a());
+      paramObject = (tly)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
+      }
+    } while (paramObject.a == null);
+    return false;
   }
   
-  public void b(int paramInt, View paramView, Object paramObject, unw paramunw)
+  public int hashCode()
   {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(tlv.a(this.a)).size())) {
-      return;
+    if (this.a != null) {
+      return this.a.hashCode();
     }
-    paramObject = (CommentEntry)this.a.a.a(tlv.a(this.a)).get(paramInt);
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131298910: 
-      paramView = tlv.a(this.a).a();
-      if ((paramView != null) && (paramView.a != null)) {
-        if (!paramView.a.getOwner().isMe()) {
-          break label194;
-        }
-      }
-      label194:
-      for (paramView = "2";; paramView = "1")
-      {
-        urp.a("home_page", "press_reply", 0, 0, new String[] { paramView, urp.a(tlv.a(this.a)) });
-        if (tlv.a(this.a) == null) {
-          break;
-        }
-        tlv.a(this.a).b(paramObject, paramInt, tlv.a(this.a).a());
-        return;
-      }
-    }
-    tlv.a(this.a).a(tlv.a(this.a).a());
+    return 0;
   }
 }
 

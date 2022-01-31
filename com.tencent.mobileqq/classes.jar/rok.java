@@ -1,22 +1,49 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.SingleLineTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.DiandianTopConfig;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class rok
-  extends bent
+public class rok
+  implements View.OnClickListener
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-  String jdField_a_of_type_JavaLangString;
-  Button jdField_b_of_type_AndroidWidgetButton;
-  SingleLineTextView jdField_b_of_type_ComTencentWidgetSingleLineTextView;
+  public int a;
   
-  rok(rog paramrog) {}
+  private rok(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
+  
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDiandianHeaderController", 2, "onItemClick: " + this.jdField_a_of_type_Int);
+    }
+    DiandianTopConfig localDiandianTopConfig = (DiandianTopConfig)ReadInJoyDiandianHeaderController.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController).get(this.jdField_a_of_type_Int);
+    onk.a(paramView.getContext(), localDiandianTopConfig.jumpUrl);
+    try
+    {
+      paramView = new JSONObject();
+      paramView.put("folder_status", onk.d);
+      if (localDiandianTopConfig.type == 5) {
+        paramView.put("list_URL", localDiandianTopConfig.jumpUrl);
+      }
+      for (;;)
+      {
+        paramView.put("type", localDiandianTopConfig.type);
+        noo.a(null, "", "0X80092FD", "0X80092FD", 0, 0, ReadInJoyDiandianHeaderController.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController).size() + "", this.jdField_a_of_type_Int + 1 + "", localDiandianTopConfig.topicId + "", paramView.toString(), false);
+        return;
+        paramView.put("list_URL", "0");
+      }
+      return;
+    }
+    catch (JSONException paramView)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ReadInJoyDiandianHeaderController", 2, paramView.toString());
+      }
+    }
+  }
 }
 
 

@@ -1,27 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.dataline.activities.LiteActivity;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class dc
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public boolean b = true;
-  public boolean c = false;
+  public dc(LiteActivity paramLiteActivity, InputStream paramInputStream) {}
   
-  public dc()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "Printer";
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a(List<FileInfo> paramList, String paramString, QQAppInterface paramQQAppInterface)
-  {
-    return true;
+    try
+    {
+      this.jdField_a_of_type_JavaIoInputStream.close();
+      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.finish();
+      return;
+    }
+    catch (IOException paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
+    }
   }
 }
 

@@ -1,18 +1,12 @@
-import com.tencent.qqmini.sdk.monitor.ui.MiniAppMonitorInfoView;
-
-public class bdsa
-  implements bdrr
+public abstract interface bdsa
 {
-  private bdsa(MiniAppMonitorInfoView paramMiniAppMonitorInfoView) {}
+  public abstract void c(boolean paramBoolean);
   
-  public void a(long paramLong, double paramDouble)
-  {
-    this.a.a(paramDouble);
-  }
+  public abstract void d(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdsa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,42 @@
-public abstract class avoo
-  implements avon
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
+
+public class avoo
+  extends avpg<ReceiptMessageDetailFragment>
 {
-  private int a;
-  private int b;
-  public boolean f = true;
-  public int r;
-  public int s;
-  
-  public int a()
+  public avoo(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    return this.a;
+    super(paramReceiptMessageDetailFragment);
   }
   
-  public Object a(String paramString)
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.s = paramInt;
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReceiptMessageDetailFragment", 4, "mTroopSendReadReportCallback onRes: " + paramInt);
+    }
+    if (paramInt == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopSendReadReportCallback succ");
+      }
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
+      return;
+    }
+    if (paramInt != 1281)
+    {
+      QLog.d("ReceiptMessageDetailFragment", 1, "mTroopSendReadReportCallback fatal error: " + paramInt);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
+      return;
+    }
+    ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avoo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,52 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
-class asls
-  extends mmm
+public class asls
 {
-  asls(aslr paramaslr) {}
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public asls(String paramString1, String paramString2, String paramString3, MsgBackupUserData paramMsgBackupUserData, int paramInt)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      oidb_0xada.RspBody localRspBody = new oidb_0xada.RspBody();
-      try
-      {
-        localRspBody.mergeFrom(paramArrayOfByte);
-        QLog.i("QQ_NOW_TASK", 2, "err_msg:   " + localRspBody.err_msg.get());
-        if (!localRspBody.busi_buf.has()) {
-          break label202;
-        }
-        if ((this.a.jdField_a_of_type_Aslt != null) && (paramInt == 0))
-        {
-          this.a.jdField_a_of_type_Aslt.a(paramInt, localRspBody.busi_buf.get().toByteArray(), paramBundle);
-          return;
-        }
-        QLog.i("QQ_NOW_TASK", 1, "err_msg1:   " + localRspBody.err_msg.get());
-        if (this.a.jdField_a_of_type_Aslu == null) {
-          return;
-        }
-        this.a.jdField_a_of_type_Aslu.a(paramInt, paramArrayOfByte);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        QLog.i("QQ_NOW_TASK", 1, "err_msg3:   ");
-        if (this.a.jdField_a_of_type_Aslu == null) {
-          return;
-        }
-      }
-      this.a.jdField_a_of_type_Aslu.a(paramInt, null);
-      return;
-      label202:
-      QLog.i("QQ_NOW_TASK", 1, "err_msg2:   ");
-      if (this.a.jdField_a_of_type_Aslu != null) {
-        this.a.jdField_a_of_type_Aslu.a(paramInt, null);
-      }
-    }
-    else
-    {
-      QLog.i("QQ_NOW_TASK", 1, "err_msg4:   ");
-      if (this.a.jdField_a_of_type_Aslu != null) {
-        this.a.jdField_a_of_type_Aslu.a(paramInt, null);
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupGetQrRsp--");
+    localStringBuilder.append(",qr_sig:").append(this.jdField_a_of_type_JavaLangString).append(",token:").append(this.b).append(",encryptKey:").append(this.c).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asls
  * JD-Core Version:    0.7.0.1
  */

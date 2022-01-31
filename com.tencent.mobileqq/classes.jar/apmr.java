@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardShortVideoOption;
-
-public class apmr
-  implements View.OnClickListener
+class apmr
+  implements aple
 {
-  public apmr(ForwardShortVideoOption paramForwardShortVideoOption) {}
+  apmr(apmp paramapmp) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.a != null) {
-      ForwardShortVideoOption.a(this.a);
-    }
+    this.a.a(false, apsz.a(this.a.a.a()), this.a.c(), new apms(this));
+  }
+  
+  public void b()
+  {
+    apmp.b(this.a);
   }
 }
 

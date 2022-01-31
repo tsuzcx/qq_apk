@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akjn;
-import akjs;
-import aklt;
-import akma;
-import akmc;
+import akxz;
+import akye;
+import alaf;
+import alam;
+import alao;
 import android.text.TextUtils;
 import android.view.View;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -16,19 +16,19 @@ import mqq.os.MqqHandler;
 public class ARTransferPromotionRenderable$17
   implements Runnable
 {
-  public ARTransferPromotionRenderable$17(akma paramakma, View paramView) {}
+  public ARTransferPromotionRenderable$17(alam paramalam, View paramView) {}
   
   public void run()
   {
-    float f = akma.a(this.this$0).getRotateDegree();
-    boolean bool = akma.a(this.this$0).a.isEmpty();
-    akma.d(this.this$0);
+    float f = alam.a(this.this$0).getRotateDegree();
+    boolean bool = alam.a(this.this$0).a.isEmpty();
+    alam.d(this.this$0);
     if (this.this$0.b != 4)
     {
       QLog.d("ARTransferPromotionRenderable", 1, "not under nativeGameStatus:GameStatus_INSIDE_WORLD_360 mNativeGameStatus:" + this.this$0.b);
-      akma.d(this.this$0, false);
+      alam.d(this.this$0, false);
     }
-    akjs localakjs;
+    akye localakye;
     do
     {
       do
@@ -38,24 +38,24 @@ public class ARTransferPromotionRenderable$17
         if (!bool) {
           break;
         }
-      } while (akma.a(this.this$0) == null);
-      akma.a(this.this$0).b(2, 0);
+      } while (alam.a(this.this$0) == null);
+      alam.a(this.this$0).b(2, 0);
       return;
-      localakjs = akma.a(this.this$0).a((int)f);
-      if ((localakjs == null) || (TextUtils.isEmpty(localakjs.c))) {
+      localakye = alam.a(this.this$0).a((int)f);
+      if ((localakye == null) || (TextUtils.isEmpty(localakye.c))) {
         break;
       }
-    } while (akma.a(this.this$0) != 6);
-    if (akma.a(this.this$0).a()) {
-      akma.a(this.this$0).c();
+    } while (alam.a(this.this$0) != 6);
+    if (alam.a(this.this$0).a()) {
+      alam.a(this.this$0).c();
     }
-    akma.a(this.this$0, localakjs);
-    akma.a(this.this$0, new ARTransferPromotionRenderable.17.2(this));
-    akma.a(this.this$0);
+    alam.a(this.this$0, localakye);
+    alam.a(this.this$0, new ARTransferPromotionRenderable.17.2(this));
+    alam.a(this.this$0);
     ThreadManager.getUIHandler().post(new ARTransferPromotionRenderable.17.3(this));
     QLog.d("ARTransferPromotionRenderable", 1, "switchGameStatus ARPromotionConstant.GameStatus_WORLD_360_VIDEO_OVER fit current degree:" + f);
     return;
-    akma.d(this.this$0, false);
+    alam.d(this.this$0, false);
     QLog.d("ARTransferPromotionRenderable", 1, "switchGameStatus ARPromotionConstant.GameStatus_WORLD_360_VIDEO_OVER not fit degree " + f);
   }
 }

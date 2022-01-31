@@ -1,22 +1,22 @@
 package cooperation.qqfav.ipc;
 
-import bfit;
-import bfiu;
-import bfiv;
+import bgql;
+import bgqm;
+import bgqn;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class QfavRemoteProxyForQQ$2$1
   extends Thread
 {
-  public QfavRemoteProxyForQQ$2$1(bfiu parambfiu) {}
+  public QfavRemoteProxyForQQ$2$1(bgqm parambgqm) {}
   
   public void run()
   {
     while (!this.a.a.a.isEmpty())
     {
-      bfiv localbfiv = (bfiv)this.a.a.a.poll();
-      if (localbfiv != null) {
-        bfit.a(this.a.a, localbfiv);
+      bgqn localbgqn = (bgqn)this.a.a.a.poll();
+      if (localbgqn != null) {
+        bgql.a(this.a.a, localbgqn);
       }
     }
   }

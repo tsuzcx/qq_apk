@@ -1,12 +1,7 @@
-public class awbl
-{
-  public int c;
-  public int d;
-  public long e;
-}
+public class awbl {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awbl
  * JD-Core Version:    0.7.0.1
  */

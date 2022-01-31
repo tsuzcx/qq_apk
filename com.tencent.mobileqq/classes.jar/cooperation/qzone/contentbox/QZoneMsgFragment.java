@@ -1,6 +1,6 @@
 package cooperation.qzone.contentbox;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -14,61 +14,76 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
-import baip;
-import bcec;
-import begh;
-import bfua;
-import bfub;
-import bfuc;
-import bfud;
-import bfue;
-import bfuf;
-import bfug;
-import bful;
-import bfum;
+import bbds;
+import bbej;
+import bbjw;
+import bdid;
+import bfob;
+import bgxy;
+import bhbg;
+import bhbh;
+import bhck;
+import bhcl;
+import bhcm;
+import bhcn;
+import bhco;
+import bhcp;
+import bhcq;
+import bhcv;
+import bhcw;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import common.config.service.QzoneConfig;
+import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.qzone.contentbox.model.MQMsg;
 import cooperation.qzone.contentbox.model.MQMsgBody;
 import cooperation.qzone.contentbox.model.MQPhotoCell;
 import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
 import cooperation.qzone.provider.LocalPhotoGroupData;
 import cooperation.qzone.report.lp.LpReportInfo_dc02880;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.report.lp.LpReportManager;
 import cooperation.qzone.report.lp.QZoneLoginReportHelper;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class QZoneMsgFragment
   extends Fragment
-  implements Handler.Callback, bfub
+  implements Handler.Callback, bhcl
 {
   protected int a;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bfuc(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bhcm(this);
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private begh jdField_a_of_type_Begh = new bfud(this);
-  public bfua a;
-  bfuf jdField_a_of_type_Bfuf;
-  bfum jdField_a_of_type_Bfum = new bfue(this);
-  public QQAppInterface a;
+  private final bfob jdField_a_of_type_Bfob = new bhcn(this);
+  private bhbg jdField_a_of_type_Bhbg;
+  public bhck a;
+  bhcp jdField_a_of_type_Bhcp;
+  bhcw jdField_a_of_type_Bhcw = new bhco(this);
+  public volatile QQAppInterface a;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private FootNavigationLayout jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout;
   private LocalPhotoGroupData jdField_a_of_type_CooperationQzoneProviderLocalPhotoGroupData;
-  private volatile boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 0;
-  private volatile boolean jdField_b_of_type_Boolean = true;
-  private boolean c;
+  private boolean jdField_b_of_type_Boolean;
+  private volatile boolean c;
+  private volatile boolean d = true;
+  private boolean e;
   
   public QZoneMsgFragment()
   {
@@ -77,17 +92,17 @@ public class QZoneMsgFragment
   
   private MQMsg a()
   {
-    if (this.jdField_a_of_type_Bfua == null)
+    if (this.jdField_a_of_type_Bhck == null)
     {
       QLog.d("QZoneMsgManager.QZoneMsgFragment", 2, "getLastMQMsg failed: adapter == null");
       return null;
     }
-    return this.jdField_a_of_type_Bfua.a();
+    return this.jdField_a_of_type_Bhck.a();
   }
   
   private void a()
   {
-    ThreadManagerV2.excute(new QZoneMsgFragment.2(this), 32, null, true);
+    ThreadManagerV2.excute(new QZoneMsgFragment.3(this), 32, null, true);
   }
   
   private void a(View paramView) {}
@@ -97,13 +112,13 @@ public class QZoneMsgFragment
     if (paramQZoneMsgEntityNew == null)
     {
       paramQZoneMsgEntityNew = new ArrayList();
-      paramQZoneMsgEntityNew.add(new bful(ajjy.a(2131654130), "mqqzone://arouse/activefeed"));
-      paramQZoneMsgEntityNew.add(new bful(ajjy.a(2131646233), "mqqzone://arouse/albumlist"));
+      paramQZoneMsgEntityNew.add(new bhcv(ajyc.a(2131720020), "mqqzone://arouse/activefeed"));
+      paramQZoneMsgEntityNew.add(new bhcv(ajyc.a(2131712021), "mqqzone://arouse/albumlist"));
     }
     for (;;)
     {
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.post(new QZoneMsgFragment.5(this, paramQZoneMsgEntityNew));
+        this.jdField_a_of_type_AndroidOsHandler.post(new QZoneMsgFragment.6(this, paramQZoneMsgEntityNew));
       }
       return;
       paramQZoneMsgEntityNew = paramQZoneMsgEntityNew.bottomItems;
@@ -114,18 +129,18 @@ public class QZoneMsgFragment
   
   private boolean a()
   {
-    if (this.jdField_a_of_type_Bfua == null)
+    if (this.jdField_a_of_type_Bhck == null)
     {
       QLog.d("QZoneMsgManager.QZoneMsgFragment", 2, "removeLastEmptyMQMsg failed: adapter == null");
       return false;
     }
-    return this.jdField_a_of_type_Bfua.a();
+    return this.jdField_a_of_type_Bhck.a();
   }
   
   private void b()
   {
     this.jdField_b_of_type_Int = 2;
-    ((bfug)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(293)).b();
+    ((bhcq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(293)).b();
     if (QLog.isColorLevel()) {
       QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "refresh ，requestState=" + this.jdField_b_of_type_Int);
     }
@@ -133,13 +148,13 @@ public class QZoneMsgFragment
   
   private void b(String paramString)
   {
-    ThreadManager.postImmediately(new QZoneMsgFragment.3(this, paramString), null, false);
+    ThreadManager.postImmediately(new QZoneMsgFragment.4(this, paramString), null, false);
   }
   
   private void b(boolean paramBoolean)
   {
-    if ((!paramBoolean) && (this.c)) {
-      bcec.a().a(ajjy.a(2131646237));
+    if ((!paramBoolean) && (this.e)) {
+      bdid.a().a(ajyc.a(2131712025));
     }
     d(paramBoolean);
     this.jdField_b_of_type_Int = 0;
@@ -191,6 +206,14 @@ public class QZoneMsgFragment
   
   private void d()
   {
+    if (this.jdField_a_of_type_Bhbg != null)
+    {
+      this.jdField_a_of_type_Bhbg.c();
+      this.jdField_a_of_type_Bhbg = null;
+      if (this.jdField_a_of_type_Bhck != null) {
+        this.jdField_a_of_type_Bhck.a(null, this.jdField_b_of_type_Boolean);
+      }
+    }
     if (this.jdField_a_of_type_ComTencentWidgetListView == null) {}
     int j;
     do
@@ -199,21 +222,21 @@ public class QZoneMsgFragment
       j = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
     } while (j <= 0);
     int i = 0;
-    label22:
+    label62:
     View localView;
     if (i < j)
     {
       localView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i);
       if ((localView instanceof MsgCardView)) {
-        break label50;
+        break label90;
       }
     }
     for (;;)
     {
       i += 1;
-      break label22;
+      break label62;
       break;
-      label50:
+      label90:
       ((MsgCardView)localView).c();
     }
   }
@@ -242,15 +265,19 @@ public class QZoneMsgFragment
       return;
       if (QLog.isColorLevel())
       {
-        QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "setLocalPhotoGroupData: getLastMQMsg{\nmsgType='" + localMQMsg.msgType + '\'' + '\n' + ", msgBody.photolist.size()='" + localMQMsg.msgBody.photolist.size() + '\'' + '\n' + ", title=" + localMQMsg.title + '\'' + '\n' + ", eventTitle='" + localMQMsg.eventTitle + '\'' + '\n' + ", uniKey='" + localMQMsg.uniKey + '\'' + '\n' + '}');
-        localObject1 = localMQMsg.msgBody.photolist.iterator();
+        QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "setLocalPhotoGroupData: getLastMQMsg{\nmsgType='" + localMQMsg.msgType + '\'' + '\n' + ", title=" + localMQMsg.title + '\'' + '\n' + ", eventTitle='" + localMQMsg.eventTitle + '\'' + '\n' + ", uniKey='" + localMQMsg.uniKey + '\'' + '\n' + '}');
+        if ((localMQMsg.msgBody != null) && (localMQMsg.msgBody.photolist != null)) {
+          localObject1 = localMQMsg.msgBody.photolist.iterator();
+        }
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (MQPhotoCell)((Iterator)localObject1).next();
-          QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "setLocalPhotoGroupData: cell.coverUrl=" + ((MQPhotoCell)localObject2).coverUrl);
+          QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "updateMQMsg: cell.coverUrl=" + ((MQPhotoCell)localObject2).coverUrl);
+          continue;
+          QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "updateMQMsg: mqMsg.msgBody.photolist==null");
         }
       }
-    } while (((localMQMsg.msgBody.photolist != null) && (!localMQMsg.msgBody.photolist.isEmpty()) && (!baip.a(((MQPhotoCell)localMQMsg.msgBody.photolist.get(0)).coverUrl))) || (localMQMsg.msgType != 9));
+    } while (((localMQMsg.msgBody.photolist != null) && (!localMQMsg.msgBody.photolist.isEmpty()) && (!bbjw.a(((MQPhotoCell)localMQMsg.msgBody.photolist.get(0)).coverUrl))) || (localMQMsg.msgType != 9));
     localMQMsg.uniKey = this.jdField_a_of_type_CooperationQzoneProviderLocalPhotoGroupData.unikey;
     localMQMsg.eventTitle = this.jdField_a_of_type_CooperationQzoneProviderLocalPhotoGroupData.title;
     localMQMsg.capTime = this.jdField_a_of_type_CooperationQzoneProviderLocalPhotoGroupData.capTime;
@@ -264,7 +291,7 @@ public class QZoneMsgFragment
       ((ArrayList)localObject1).add(localMQPhotoCell);
     }
     localMQMsg.msgBody.photolist = ((ArrayList)localObject1);
-    this.jdField_a_of_type_AndroidOsHandler.post(new QZoneMsgFragment.7(this, localMQMsg));
+    this.jdField_a_of_type_AndroidOsHandler.post(new QZoneMsgFragment.8(this, localMQMsg));
     QLog.d("QZoneMsgManager.QZoneMsgFragment", 2, "setLocalPhotoGroupData: update last empty MQMsg.");
   }
   
@@ -272,9 +299,9 @@ public class QZoneMsgFragment
   {
     c(paramBoolean);
     this.jdField_b_of_type_Int = 0;
-    if (this.jdField_a_of_type_Bfua.getCount() > 0)
+    if (this.jdField_a_of_type_Bhck.getCount() > 0)
     {
-      MQMsg localMQMsg = (MQMsg)this.jdField_a_of_type_Bfua.getItem(0);
+      MQMsg localMQMsg = (MQMsg)this.jdField_a_of_type_Bhck.getItem(0);
       if (localMQMsg == null) {
         break label115;
       }
@@ -296,15 +323,50 @@ public class QZoneMsgFragment
     }
   }
   
+  public bhbg a()
+  {
+    return this.jdField_a_of_type_Bhbg;
+  }
+  
   public void a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if ((paramInt >= this.jdField_a_of_type_Bfua.getCount() - 1) && (this.jdField_a_of_type_Bfua.getCount() != 0))
+    if ((paramInt >= this.jdField_a_of_type_Bhck.getCount() - 1) && (this.jdField_a_of_type_Bhck.getCount() != 0))
     {
       if (QLog.isColorLevel()) {
         QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onGetView loadMore");
       }
       a(false);
     }
+  }
+  
+  public void a(MQMsg paramMQMsg)
+  {
+    Object localObject;
+    if ((paramMQMsg != null) && (!TextUtils.isEmpty(paramMQMsg.jumpUrlToDetail)))
+    {
+      localObject = bbej.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), paramMQMsg.jumpUrlToDetail);
+      if (localObject != null)
+      {
+        ((bbds)localObject).c();
+        return;
+      }
+      localObject = new Intent(getActivity(), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramMQMsg.jumpUrlToDetail);
+      bgxy.c((Intent)localObject);
+      startActivity((Intent)localObject);
+      return;
+    }
+    QLog.i("QZoneMsgManager.QZoneMsgFragment", 1, "msg.jumpUrlToDetail is null");
+    if ((paramMQMsg != null) && (paramMQMsg.msgType == 9) && (!bbjw.a(paramMQMsg.uniKey)))
+    {
+      localObject = "mqqzone://arouse/photogrouprecommenddetail?usecache=true&checkgroup=false&unikey=" + paramMQMsg.uniKey;
+      a((String)localObject);
+      LpReportInfo_dc02880.report(2, 2, (String)localObject, "29", false, true);
+      LpReportInfo_pf00064.allReport(133, 14, String.valueOf(paramMQMsg.msgType));
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 1, "jumpToPhotoGroupRecommendDetail: uniKey=" + paramMQMsg.uniKey);
+      return;
+    }
+    QLog.e("QZoneMsgManager.QZoneMsgFragment", 1, "msg == null | msg.msgType != ENUM_PUSH_MSG_TYPE._ENUM_TRAVEL_ALBUM | StringUtil.isEmpty(msg.uniKey)");
   }
   
   public void a(LocalPhotoGroupData paramLocalPhotoGroupData)
@@ -335,13 +397,15 @@ public class QZoneMsgFragment
         QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "EVENT_LOAD_MORE_MANUAL loadMore");
       }
       a(true);
+      continue;
+      this.jdField_a_of_type_Bhck.notifyDataSetChanged();
     }
   }
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    ThreadManagerV2.excute(new QZoneMsgFragment.4(this, (bfug)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(293)), 32, null, true);
+    ThreadManagerV2.excute(new QZoneMsgFragment.5(this, (bhcq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(293)), 32, null, true);
     b();
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
     QZoneLoginReportHelper.reportLoginFromQZoneMsgBox();
@@ -356,12 +420,33 @@ public class QZoneMsgFragment
       QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "fragment onAttach  ");
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((BaseActivity)paramActivity).app;
-    this.jdField_a_of_type_Bfuf = new bfuf(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Bfuf);
-    paramActivity = new IntentFilter();
-    paramActivity.addAction("com.qzone.sync_comment_like");
-    getActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramActivity);
+    this.jdField_a_of_type_Bhcp = new bhcp(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Bhcp);
+    Object localObject = new IntentFilter();
+    ((IntentFilter)localObject).addAction("com.qzone.sync_comment_like");
+    getActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    if (bhbh.b()) {
+      if (QzonePluginProxyActivity.a() == null)
+      {
+        QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new QZoneMsgFragment.1(this, paramActivity));
+        this.jdField_b_of_type_Boolean = false;
+      }
+    }
+    for (;;)
+    {
+      if (this.jdField_b_of_type_Boolean)
+      {
+        localObject = bhbh.a();
+        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != localObject) {
+          bhbh.a(paramActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        }
+      }
+      return;
+      this.jdField_b_of_type_Boolean = bhbh.c(paramActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      continue;
+      this.jdField_b_of_type_Boolean = false;
+    }
   }
   
   public void onCreate(Bundle paramBundle)
@@ -371,8 +456,15 @@ public class QZoneMsgFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup.setBackgroundResource(2131101537);
-    return paramLayoutInflater.inflate(2131496390, paramViewGroup, false);
+    this.jdField_a_of_type_Boolean = ThemeUtil.isNowThemeIsNightForQzone();
+    if (this.jdField_a_of_type_Boolean) {
+      paramViewGroup.setBackgroundColor(-16777216);
+    }
+    for (;;)
+    {
+      return paramLayoutInflater.inflate(2131561989, paramViewGroup, false);
+      paramViewGroup.setBackgroundColor(-1380874);
+    }
   }
   
   public void onDestroyView()
@@ -387,30 +479,75 @@ public class QZoneMsgFragment
       QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "fragment onDetach  ");
     }
     d();
-    if (this.jdField_a_of_type_Bfuf != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Bfuf);
+    if (this.jdField_a_of_type_Bhcp != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Bhcp);
     }
     getActivity().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+    if (this.jdField_a_of_type_Bhbg != null) {
+      this.jdField_a_of_type_Bhbg.a();
+    }
+  }
+  
+  public void onStop()
+  {
+    super.onStop();
+    if (this.jdField_a_of_type_Bhbg != null) {
+      this.jdField_a_of_type_Bhbg.b();
+    }
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramView.findViewById(2131304814));
-    paramBundle = paramView.findViewById(2131308377);
-    AnyScaleTypeImageView localAnyScaleTypeImageView = (AnyScaleTypeImageView)paramBundle.findViewById(2131300059);
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramView.findViewById(2131370479));
+    paramBundle = paramView.findViewById(2131374098);
+    AnyScaleTypeImageView localAnyScaleTypeImageView = (AnyScaleTypeImageView)paramBundle.findViewById(2131365656);
     localAnyScaleTypeImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     localAnyScaleTypeImageView.setImageURL(QzoneConfig.getInstance().getConfig("QZoneSetting", "content_box_empty_bg_url", "https://qzonestyle.gtimg.cn/aoi/sola/20190613205313_O1p1qwgOqi.png"));
-    ((TextView)paramBundle.findViewById(2131300070)).setText(QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ContentBoxEmptyText", "还没有收到过其它消息"));
+    ((TextView)paramBundle.findViewById(2131365667)).setText(QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ContentBoxEmptyText", "还没有收到过其它消息"));
     this.jdField_a_of_type_ComTencentWidgetListView.setEmptyView(paramBundle);
-    this.jdField_a_of_type_Bfua = new bfua(getActivity());
-    this.jdField_a_of_type_Bfua.a(this);
-    this.jdField_a_of_type_Bfua.a(this.jdField_a_of_type_Bfum);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnScrollListener(this.jdField_a_of_type_Begh);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bfua);
-    this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout = ((FootNavigationLayout)paramView.findViewById(2131304809));
-    a(null);
-    a(paramView);
+    paramBundle = getActivity();
+    if ((this.jdField_b_of_type_Boolean) && (paramBundle != null))
+    {
+      this.jdField_a_of_type_Bhbg = bhbh.a(paramBundle);
+      if (this.jdField_a_of_type_Bhbg != null) {
+        this.jdField_a_of_type_Bhbg.a(this.jdField_a_of_type_AndroidOsHandler);
+      }
+      this.jdField_a_of_type_Bhck = new bhck(getActivity());
+      this.jdField_a_of_type_Bhck.a(this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Bhck.a(this.jdField_a_of_type_Bhbg, this.jdField_b_of_type_Boolean);
+      this.jdField_a_of_type_Bhck.a(this);
+      this.jdField_a_of_type_Bhck.a(this.jdField_a_of_type_Bhcw);
+      this.jdField_a_of_type_ComTencentWidgetListView.setOnScrollListener(this.jdField_a_of_type_Bfob);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bhck);
+      this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout = ((FootNavigationLayout)paramView.findViewById(2131370473));
+      paramBundle = this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout;
+      if (!this.jdField_b_of_type_Boolean) {
+        break label313;
+      }
+    }
+    label313:
+    for (int i = 0;; i = 8)
+    {
+      paramBundle.setArrowVisible(i);
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.setNightMode(true);
+      }
+      a(null);
+      a(paramView);
+      return;
+      if (this.jdField_a_of_type_Bhbg == null) {
+        break;
+      }
+      this.jdField_a_of_type_Bhbg.c();
+      this.jdField_a_of_type_Bhbg = null;
+      break;
+    }
   }
 }
 

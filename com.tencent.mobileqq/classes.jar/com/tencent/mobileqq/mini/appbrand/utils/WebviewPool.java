@@ -20,7 +20,6 @@ import com.tencent.mobileqq.mini.appbrand.page.ServiceWebview.Callback;
 import com.tencent.mobileqq.mini.appbrand.worker.MiniAppWorker;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.webview.BaseAppBrandWebview;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
@@ -400,27 +399,23 @@ public class WebviewPool
   
   public void initServiceWebViewEx(Context paramContext, MiniAppConfig paramMiniAppConfig, ServiceWebview.Callback paramCallback)
   {
-    int j = 1;
     for (;;)
     {
       try
       {
         QLog.i("miniapp-start", 1, "initServiceWebViewEx");
         if (this.mFirstServiceWebview != null) {
-          break label411;
+          break label371;
         }
-        int k = QbSdk.getTbsVersion(paramContext);
-        int m = QbSdk.getTmpDirTbsVersion(paramContext);
+        int j = QbSdk.getTbsVersion(paramContext);
+        int k = QbSdk.getTmpDirTbsVersion(paramContext);
         int i;
         if ((this.mFirstPageWebview != null) && (this.mFirstPageWebview.getX5WebViewExtension() != null))
         {
           i = 1;
-          QLog.d("miniapp-start", 1, "create new ServiceWebview when initServiceWebViewEx, tbsVersion : " + k + ", tmpDirTbsVersion: " + m + "  isFallback:" + isTbsFallback(paramContext));
-          if (QzoneConfig.getInstance().getConfig("qqminiapp", "enableSchemeDebug", 1) == 1)
+          QLog.d("miniapp-start", 1, "create new ServiceWebview when initServiceWebViewEx, tbsVersion : " + j + ", tmpDirTbsVersion: " + k + "  isFallback:" + isTbsFallback(paramContext));
+          if ((QzoneConfig.getInstance().getConfig("qqminiapp", "enableSchemeDebug", 1) != 1) || ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (paramMiniAppConfig.config.debugInfo != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.debugInfo.wsUrl)) && (!TextUtils.isEmpty(paramMiniAppConfig.config.debugInfo.roomId))))
           {
-            if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null) || (paramMiniAppConfig.config.debugInfo == null) || (TextUtils.isEmpty(paramMiniAppConfig.config.debugInfo.wsUrl)) || (TextUtils.isEmpty(paramMiniAppConfig.config.debugInfo.roomId)) || ((paramMiniAppConfig.launchParam.scene != 1011) && ((j == 0) || (paramMiniAppConfig.launchParam.scene != 2016)))) {
-              continue;
-            }
             this.mFirstServiceWebview = new ServiceRemoteRuntime(paramContext, "service-thread", paramCallback, paramMiniAppConfig.config.appId, paramMiniAppConfig.config.debugInfo.roomId, paramMiniAppConfig.config.debugInfo.wsUrl);
             this.mFirstServiceWebview.setAppBrandEventInterface(this.mAppBrandRuntime);
           }
@@ -430,10 +425,8 @@ public class WebviewPool
           i = 0;
           continue;
         }
-        j = 0;
-        continue;
-        if (((k <= 0) && (m <= 0)) || (isTbsFallback(paramContext)) || (i == 0)) {
-          break label395;
+        if (((j <= 0) && (k <= 0)) || (isTbsFallback(paramContext)) || (i == 0)) {
+          break label355;
         }
         paramContext = new ServiceWebview(paramContext, "service-thread", paramCallback);
         paramContext.setJsErrorListener(this.mAppBrandRuntime.mJsErrorListener);
@@ -452,10 +445,10 @@ public class WebviewPool
       }
       finally {}
       continue;
-      label395:
+      label355:
       AppBrandTask.runTaskOnUiThread(new WebviewPool.1(this, paramContext, paramCallback));
       continue;
-      label411:
+      label371:
       if (paramCallback != null) {
         paramCallback.onJscoreInited();
       }

@@ -4,6 +4,8 @@ import android.os.AsyncTask;
 import android.os.Build;
 import com.tencent.ttpic.baseutils.device.DeviceInstance;
 import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.offlineset.beans.AEKitDownSetting;
+import com.tencent.ttpic.offlineset.beans.AEKitDownSetting.DownResInfo;
 import com.tencent.ttpic.offlineset.beans.FilterSettingJsonBean;
 import com.tencent.ttpic.offlineset.beans.FilterSettingJsonBean.GassResizeSet;
 import com.tencent.ttpic.offlineset.beans.FilterSettingJsonBean.GaussSetting;
@@ -19,6 +21,8 @@ import com.tencent.ttpic.offlineset.utils.OfflineSettingUtils;
 import com.tencent.ttpic.offlineset.utils.OfflineSettingUtils.IDownloadedListener;
 import com.tencent.ttpic.openapi.offlineset.utils.FileOfflineUtil;
 import com.tencent.ttpic.openapi.offlineset.utils.IHttpClient;
+import com.tencent.ttpic.openapi.offlineset.utils.PtuOfflineParser;
+import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
 import com.tencent.ttpic.util.GsonUtils;
 import java.io.File;
 import java.util.Iterator;
@@ -50,6 +54,32 @@ public class OfflineFileUpdater
     AsyncTask.THREAD_POOL_EXECUTOR.execute(new OfflineFileUpdater.2());
   }
   
+  public static String getAEKitSettingByResID(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {}
+    for (;;)
+    {
+      return null;
+      paramString1 = VideoPrefsUtil.getStringParam(paramString1);
+      paramString1 = PtuOfflineParser.getInstance().parseDownResInfo(paramString1);
+      if (paramString1 != null) {
+        try
+        {
+          if (Integer.parseInt(paramString2) < Integer.parseInt(paramString1.ver))
+          {
+            paramString1 = paramString1.getResInfo(paramString3, paramString4, paramString5, paramString6);
+            return paramString1;
+          }
+        }
+        catch (Throwable paramString1)
+        {
+          LogUtils.e("OfflineFileUpdater", paramString1);
+        }
+      }
+    }
+    return null;
+  }
+  
   private static String getStringFromFile(String paramString)
   {
     return FileOfflineUtil.readJsonStringFromFile(FileOfflineUtil.getOfflineDirPath() + File.separator + "3548" + File.separator + paramString);
@@ -66,6 +96,33 @@ public class OfflineFileUpdater
     OfflineSettingUtils.addDownloadLister(sDownloadListener);
   }
   
+  public static void updateAEKitDownSetting(AEKitDownSetting paramAEKitDownSetting, String paramString)
+  {
+    if (paramString == null) {
+      return;
+    }
+    Iterator localIterator = paramAEKitDownSetting.AEKitSDKSetting.iterator();
+    label15:
+    Object localObject;
+    if (localIterator.hasNext())
+    {
+      localObject = (AEKitDownSetting.DownResInfo)localIterator.next();
+      paramAEKitDownSetting = ((AEKitDownSetting.DownResInfo)localObject).getDownResInfoString(paramString);
+      localObject = ((AEKitDownSetting.DownResInfo)localObject).res_id;
+      if (paramAEKitDownSetting == null) {
+        break label57;
+      }
+    }
+    for (;;)
+    {
+      VideoPrefsUtil.setStringParam((String)localObject, paramAEKitDownSetting);
+      break label15;
+      break;
+      label57:
+      paramAEKitDownSetting = null;
+    }
+  }
+  
   protected static void updateAllFile()
   {
     LogUtils.i("OfflineConfig", "updateAllFile running.");
@@ -79,7 +136,7 @@ public class OfflineFileUpdater
   {
     Object localObject1 = FileOfflineUtil.readJsonStringFromFile(FileOfflineUtil.getOfflineDirPath() + File.separator + "3548" + File.separator + "filtersetting.json");
     if (localObject1 == null) {}
-    label240:
+    label241:
     for (;;)
     {
       return;
@@ -106,7 +163,7 @@ public class OfflineFileUpdater
           for (;;)
           {
             if (!((Iterator)localObject1).hasNext()) {
-              break label240;
+              break label241;
             }
             localObject2 = (FilterSettingJsonBean.GassResizeSet)((Iterator)localObject1).next();
             if (Build.BRAND.equals(((FilterSettingJsonBean.GassResizeSet)localObject2).brand))

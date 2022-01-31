@@ -1,19 +1,20 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.AECamera.View.AECameraGLSurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3;
 
-class wuw
-  implements bhwg<String>
+public class wuw
+  implements View.OnClickListener
 {
-  wuw(wut paramwut) {}
+  public wuw(SubscribeQRCodeShareHelper.3 param3) {}
   
-  public void a(@Nullable String paramString)
+  public void onClick(View paramView)
   {
-    wut.a(this.a).setMaterial(paramString);
+    this.a.this$0.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wuw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,21 @@
-import com.tencent.mobileqq.dinifly.LottieDrawable;
+import android.graphics.Bitmap;
+import com.tencent.av.gaudio.AVPhoneUserInfo;
 
-public abstract interface mdt
+final class mdt
 {
-  public abstract void a(LottieDrawable paramLottieDrawable);
+  public int a;
+  public long a;
+  public Bitmap a;
+  public AVPhoneUserInfo a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e = true;
+  
+  private mdt(mdq parammdq) {}
 }
 
 

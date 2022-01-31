@@ -1,8 +1,15 @@
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGameAdComManager.2;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGameAdComManager.2.1;
 
-public abstract interface qnz
+public class qnz
+  implements obl
 {
-  public abstract void a(View paramView);
+  public qnz(VideoFeedsGameAdComManager.2.1 param1) {}
+  
+  public void a()
+  {
+    this.a.a.this$0.b(true);
+  }
 }
 
 

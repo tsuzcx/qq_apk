@@ -1,18 +1,12 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.11;
 
 public class ajbd
-  implements bbpw
+  implements AVCallback
 {
-  public ajbd(ApolloGameInfoFragment paramApolloGameInfoFragment) {}
+  public ajbd(CmGameAvHandler.11 param11) {}
   
-  public void a(View paramView, int paramInt)
-  {
-    if (paramInt == 1) {
-      this.a.getActivity().finish();
-    }
-  }
+  public void onComplete(int paramInt, String paramString) {}
 }
 
 

@@ -1,216 +1,60 @@
-import android.opengl.GLES20;
-import com.tencent.av.opengl.program.TextureProgram;
-import com.tencent.av.opengl.utils.AVGLUtils;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class lhi
+public abstract class lhi
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static lhi jdField_a_of_type_Lhi;
-  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
-  boolean jdField_a_of_type_Boolean = true;
-  private int b;
-  private int c;
-  private int d = jdField_a_of_type_Int;
-  private int e = jdField_a_of_type_Int;
-  private int f = jdField_a_of_type_Int;
-  private int g = jdField_a_of_type_Int;
+  protected static final String[] a;
+  public VideoAppInterface a;
+  public final String a;
   
-  private int a(int paramInt1, int paramInt2, int paramInt3)
+  static
   {
-    int i = this.d;
-    if (this.d == jdField_a_of_type_Int)
-    {
-      int[] arrayOfInt = new int[1];
-      GLES20.glGenFramebuffers(1, arrayOfInt, 0);
-      i = arrayOfInt[0];
-    }
-    for (;;)
-    {
-      GLES20.glBindFramebuffer(36160, i);
-      GLES20.glBindTexture(3553, paramInt3);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
-      GLES20.glBindTexture(3553, 0);
-      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt3, 0);
-      GLES20.glBindFramebuffer(36160, 0);
-      return i;
-    }
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MANAGER_ZIMU", "MANAGER_FILTER", "MANAGER_PENDANT", "MANAGER_FACE", "MANAGER_NODE_REPORTER", "MANAGER_SUPPORT", "MANAGER_REDPACKET", "MANAGER_REDPACKET_Entry", "MANAGER_EFFECT_OPERATE", "MANAGER_ZIMU_LIVE", "MANAGER_Voice_Recog", "MANAGER_Tips", "MANAGER_mutex", "MANAGER_INTERACTIVEVideo" };
   }
   
-  public static lhi a()
+  protected lhi(VideoAppInterface paramVideoAppInterface)
   {
-    if (jdField_a_of_type_Lhi == null) {
-      jdField_a_of_type_Lhi = new lhi();
-    }
-    return jdField_a_of_type_Lhi;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + AudioHelper.b());
   }
   
-  private int b(int paramInt1, int paramInt2, int paramInt3)
+  public static void a(String paramString, Context paramContext, int paramInt, boolean paramBoolean)
   {
-    int i = this.f;
-    if (this.f == jdField_a_of_type_Int)
+    if ((paramInt >= 0) && (paramInt < 14) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
     {
-      int[] arrayOfInt = new int[1];
-      GLES20.glGenFramebuffers(1, arrayOfInt, 0);
-      i = arrayOfInt[0];
-    }
-    for (;;)
-    {
-      GLES20.glBindFramebuffer(36160, i);
-      GLES20.glBindTexture(3553, paramInt3);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
-      GLES20.glBindTexture(3553, 0);
-      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt3, 0);
-      GLES20.glBindFramebuffer(36160, 0);
-      return i;
-    }
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_JavaNioFloatBuffer != null) {
+      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      paramContext = bbjn.b(paramContext).edit();
+      paramContext.putBoolean(str, paramBoolean);
+      paramContext.commit();
+      lcl.e(paramString, "setPreload zzzzz  bid=" + paramInt);
       return;
     }
-    float[] arrayOfFloat = new float[8];
-    arrayOfFloat[0] = (-0.5F + 0.0F);
-    arrayOfFloat[1] = (-0.5F + 0.0F);
-    arrayOfFloat[2] = (0.5F + 0.0F);
-    arrayOfFloat[3] = (-0.5F + 0.0F);
-    arrayOfFloat[4] = (-0.5F + 0.0F);
-    arrayOfFloat[5] = (0.5F + 0.0F);
-    arrayOfFloat[6] = (0.5F + 0.0F);
-    arrayOfFloat[7] = (0.5F + 0.0F);
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(arrayOfFloat.length * 4);
-    localByteBuffer.order(ByteOrder.nativeOrder());
-    this.jdField_a_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(arrayOfFloat);
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+    lcl.e(paramString, "setPreload ERROR : bid=" + paramInt);
   }
   
-  private void c()
+  static boolean a(String paramString, VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    if (this.g == jdField_a_of_type_Int)
+    if ((paramInt >= 0) && (paramInt < 14) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
     {
-      int[] arrayOfInt = new int[1];
-      GLES20.glGenTextures(1, arrayOfInt, 0);
-      this.g = arrayOfInt[0];
+      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      boolean bool = bbjn.b(paramVideoAppInterface.getApplication()).getBoolean(str, false);
+      lcl.c(paramString, "isPreloaded:" + str + "|" + bool);
+      return bool;
     }
-    this.f = b(this.b, this.c, this.g);
+    lcl.e(paramString, "isPreloaded ERROR : bid=" + paramInt);
+    return false;
   }
   
-  private void d()
-  {
-    if (this.e == jdField_a_of_type_Int)
-    {
-      int[] arrayOfInt = new int[1];
-      GLES20.glGenTextures(1, arrayOfInt, 0);
-      this.e = arrayOfInt[0];
-    }
-    this.d = a(this.b, this.c, this.e);
-  }
+  protected abstract void a();
   
-  public void a()
-  {
-    if (this.d != jdField_a_of_type_Int)
-    {
-      GLES20.glDeleteFramebuffers(2, new int[] { this.d, this.f }, 0);
-      GLES20.glDeleteTextures(2, new int[] { this.e, this.g }, 0);
-    }
-    this.d = jdField_a_of_type_Int;
-    this.e = jdField_a_of_type_Int;
-    this.f = jdField_a_of_type_Int;
-    this.g = jdField_a_of_type_Int;
-  }
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2) {}
   
-  public void a(lgc paramlgc, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramlgc = lhb.a(0);
-      GLES20.glUseProgram(paramlgc.a());
-      GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, this.g);
-      GLES20.glUniform1i(paramlgc.a()[4].jdField_a_of_type_Int, 0);
-      GLES20.glUniform1f(paramlgc.a()[2].jdField_a_of_type_Int, 1.0F);
-    }
-  }
+  protected void a(String paramString, boolean paramBoolean) {}
   
-  public void a(lgc paramlgc, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat, int paramInt8, int paramInt9)
-  {
-    if ((this.b != paramInt1 * 2) || (this.d == jdField_a_of_type_Int))
-    {
-      this.b = (paramInt1 * 2);
-      this.c = (paramInt2 * 2);
-      d();
-      c();
-      b();
-    }
-    GLES20.glBindFramebuffer(36160, this.d);
-    GLES20.glViewport(0, 0, this.b, this.c);
-    GLES20.glClearColor(0.4F, 0.4F, 0.4F, 1.0F);
-    GLES20.glClear(16640);
-    TextureProgram localTextureProgram = lhb.a(2);
-    lhd[] arrayOflhd = localTextureProgram.a();
-    GLES20.glUseProgram(localTextureProgram.a());
-    GLES20.glUniform1f(localTextureProgram.a()[7].jdField_a_of_type_Int, paramInt1);
-    GLES20.glUniform1f(localTextureProgram.a()[8].jdField_a_of_type_Int, paramInt2);
-    GLES20.glUniformMatrix4fv(localTextureProgram.a()[9].jdField_a_of_type_Int, 1, false, paramArrayOfFloat, 0);
-    GLES20.glUniform1i(localTextureProgram.a()[10].jdField_a_of_type_Int, paramInt8);
-    GLES20.glUniform1i(localTextureProgram.a()[11].jdField_a_of_type_Int, paramInt9);
-    lgd.a(false);
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(3553, paramInt5);
-    GLES20.glUniform1i(arrayOflhd[4].jdField_a_of_type_Int, 0);
-    GLES20.glActiveTexture(33985);
-    GLES20.glBindTexture(3553, paramInt6);
-    GLES20.glUniform1i(arrayOflhd[5].jdField_a_of_type_Int, 1);
-    GLES20.glActiveTexture(33986);
-    GLES20.glBindTexture(3553, paramInt7);
-    GLES20.glUniform1i(arrayOflhd[6].jdField_a_of_type_Int, 2);
-    GLES20.glUniform1f(arrayOflhd[2].jdField_a_of_type_Int, 1.0F);
-    GLES20.glUniformMatrix4fv(arrayOflhd[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixV, 0);
-    GLES20.glUniformMatrix4fv(arrayOflhd[3].jdField_a_of_type_Int, 1, false, AVGLUtils.matrix, 0);
-    GLES20.glVertexAttribPointer(arrayOflhd[0].jdField_a_of_type_Int, 2, 5126, false, 8, this.jdField_a_of_type_JavaNioFloatBuffer);
-    GLES20.glEnableVertexAttribArray(arrayOflhd[0].jdField_a_of_type_Int);
-    GLES20.glDrawArrays(5, 0, 4);
-    GLES20.glDisableVertexAttribArray(arrayOflhd[0].jdField_a_of_type_Int);
-    GLES20.glBindFramebuffer(36160, this.f);
-    GLES20.glViewport(0, 0, this.b, this.c);
-    GLES20.glClearColor(0.4F, 0.4F, 0.4F, 1.0F);
-    GLES20.glClear(16640);
-    localTextureProgram = lhb.a(3);
-    arrayOflhd = localTextureProgram.a();
-    GLES20.glUseProgram(localTextureProgram.a());
-    GLES20.glUniform1f(localTextureProgram.a()[7].jdField_a_of_type_Int, paramInt1);
-    GLES20.glUniform1f(localTextureProgram.a()[8].jdField_a_of_type_Int, paramInt2);
-    GLES20.glUniformMatrix4fv(localTextureProgram.a()[9].jdField_a_of_type_Int, 1, false, paramArrayOfFloat, 0);
-    GLES20.glUniform1i(localTextureProgram.a()[10].jdField_a_of_type_Int, paramInt8);
-    GLES20.glUniform1i(localTextureProgram.a()[11].jdField_a_of_type_Int, paramInt9);
-    lgd.a(false);
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(3553, this.e);
-    GLES20.glUniform1i(arrayOflhd[4].jdField_a_of_type_Int, 0);
-    GLES20.glUniform1f(arrayOflhd[2].jdField_a_of_type_Int, 1.0F);
-    GLES20.glUniformMatrix4fv(arrayOflhd[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixV, 0);
-    GLES20.glUniformMatrix4fv(arrayOflhd[3].jdField_a_of_type_Int, 1, false, AVGLUtils.matrix, 0);
-    GLES20.glVertexAttribPointer(arrayOflhd[0].jdField_a_of_type_Int, 2, 5126, false, 8, this.jdField_a_of_type_JavaNioFloatBuffer);
-    GLES20.glEnableVertexAttribArray(arrayOflhd[0].jdField_a_of_type_Int);
-    GLES20.glDrawArrays(5, 0, 4);
-    GLES20.glDisableVertexAttribArray(arrayOflhd[0].jdField_a_of_type_Int);
-    GLES20.glBindFramebuffer(36160, 0);
-    GLES20.glViewport(0, 0, paramInt3, paramInt4);
-    a(paramlgc, paramInt1, paramInt2, paramInt5, paramInt6, paramInt7);
-  }
+  protected abstract boolean a(String paramString);
 }
 
 

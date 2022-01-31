@@ -1,25 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetLocation;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class tok
-  implements View.OnClickListener
+  extends syq
 {
-  public tok(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public final String a;
+  public final String c;
+  public final String d;
+  public final String e;
+  public final String f;
   
-  public void onClick(View paramView)
+  public tok(qqstory_service.RspGetLocation paramRspGetLocation)
   {
-    if (!badq.g(this.a.jdField_a_of_type_AndroidViewView.getContext()))
-    {
-      bbmy.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131628946, 0).a();
-      return;
-    }
-    VideoViewVideoHolder.a(this.a, 2);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.a.a();
+    this.a = paramRspGetLocation.country.get().toStringUtf8();
+    this.c = paramRspGetLocation.province.get().toStringUtf8();
+    this.d = paramRspGetLocation.city.get().toStringUtf8();
+    this.e = paramRspGetLocation.district.get().toStringUtf8();
+    this.f = paramRspGetLocation.street.get().toStringUtf8();
+  }
+  
+  public String toString()
+  {
+    return "GetLocationResponse{mCountry='" + this.a + '\'' + ", mProvince='" + this.c + '\'' + ", mCity='" + this.d + '\'' + ", mDistrict='" + this.e + '\'' + ", mStreet='" + this.f + '\'' + '}';
   }
 }
 

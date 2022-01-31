@@ -1,82 +1,26 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import com.tencent.mobileqq.location.ui.MapWidget;
 
 public class arya
+  implements View.OnClickListener
 {
-  public int a;
-  public SessionInfo a;
-  public MessageForStructing a;
-  public AbsStructMsg a;
-  private Object a = new Object();
-  public HashMap<String, ArrayList<MessageRecord>> a;
-  public List<ChatMessage> a;
-  public Map<String, String> a;
-  public boolean a;
-  public int b;
-  public List<MessageForStructing> b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  private int h;
-  private int i;
+  public arya(LocationShareFragment paramLocationShareFragment, int paramInt, String paramString) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    synchronized (this.a)
-    {
-      int j = this.h;
-      return j;
-    }
-  }
-  
-  public String a()
-  {
-    return String.valueOf(hashCode());
-  }
-  
-  public void a(int paramInt)
-  {
-    synchronized (this.a)
-    {
-      this.h ^= paramInt;
+    if (LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a()) {
       return;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    synchronized (this.a)
-    {
-      int j = this.i;
-      if (paramInt1 == 0) {
-        paramInt2 = 0;
-      }
-      this.i = (j + paramInt2);
-      return;
-    }
-  }
-  
-  public int b()
-  {
-    synchronized (this.a)
-    {
-      int j = this.i;
-      return j;
-    }
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment.getActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a());
+    axqw.b(null, "CliOper", "", "", "0X800A95C", "0X800A95C", 0, 0, "", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arya
  * JD-Core Version:    0.7.0.1
  */

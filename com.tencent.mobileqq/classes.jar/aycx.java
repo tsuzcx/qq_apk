@@ -1,58 +1,73 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
-import com.tencent.mobileqq.troop.data.AudioInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.graphics.Bitmap;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class aycx
-  extends Handler
+  extends aycw
+  implements aybd<SpriteNativeView>
 {
-  public aycx(AudioRecordFragment paramAudioRecordFragment) {}
+  private Bitmap a;
+  protected ImageView a;
   
-  public void handleMessage(Message paramMessage)
+  public aycx(SpriteNativeView paramSpriteNativeView)
   {
-    if ((this.a.getActivity() == null) || (this.a.isDetached())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAudioPanel", 2, "handleMessage,fragment is in a invalid state, return");
-      }
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = paramSpriteNativeView;
+    this.jdField_a_of_type_AndroidWidgetImageView = a();
+  }
+  
+  protected ImageView a()
+  {
+    return new ImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
+  }
+  
+  public void a(SpriteNativeView paramSpriteNativeView, Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    paramSpriteNativeView = new FrameLayout.LayoutParams(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramSpriteNativeView);
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2);
+    this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
+  }
+  
+  public boolean c()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
-    do
+    boolean bool = super.c();
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("AIOAudioPanel", 2, "RECORD_TO_START =============");
-      return;
-      paramMessage = paramMessage.obj.toString();
-      File localFile = new File(paramMessage);
-      if (localFile.exists()) {}
-      for (long l = localFile.length();; l = 0L)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
-        paramMessage = new Intent();
-        paramMessage.putExtra("audio_info", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo);
-        this.a.getActivity().setResult(-1, paramMessage);
-        this.a.getActivity().finish();
-        return;
-      }
-    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals("publish")) || (this.a.b == null));
-    azho.a("pub_page", "preview_record", this.a.b, this.a.c, "", "");
+      a(this.jdField_a_of_type_Aybf);
+      float f1 = this.jdField_a_of_type_Aybf.a;
+      float f2 = b();
+      float f3 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
+      float f4 = this.f;
+      float f5 = this.jdField_a_of_type_Aybf.b;
+      float f6 = b();
+      float f7 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
+      this.jdField_a_of_type_AndroidWidgetImageView.setX(f1 * f2 - f3);
+      this.jdField_a_of_type_AndroidWidgetImageView.setY(f4 - f5 * f6 - f7);
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(this.e * b());
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(this.e * b());
+    this.jdField_a_of_type_AndroidWidgetImageView.setRotation(this.g);
+    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(this.jdField_a_of_type_Int * (b() / 255.0F) / 255.0F);
+    return bool;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.addView(this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aycx
  * JD-Core Version:    0.7.0.1
  */

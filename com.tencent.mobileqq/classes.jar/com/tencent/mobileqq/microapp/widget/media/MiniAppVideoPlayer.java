@@ -14,8 +14,8 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import badq;
-import baip;
+import bbev;
+import bbjw;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.microapp.R.id;
 import com.tencent.mobileqq.microapp.R.layout;
@@ -149,7 +149,7 @@ public class MiniAppVideoPlayer
     this.s.setXYaxis(2);
     if (!this.i)
     {
-      if (baip.a(this.e)) {
+      if (bbjw.a(this.e)) {
         break label468;
       }
       paramContext = URLDrawable.getDrawable(this.e, null);
@@ -191,7 +191,7 @@ public class MiniAppVideoPlayer
       this.t.removeAllViews();
       this.t.addView(this.ab);
       this.t.setBackgroundColor(-16777216);
-      if ((this.ac <= 0L) || (!badq.h(this.z))) {
+      if ((this.ac <= 0L) || (!bbev.h(this.z))) {
         break;
       }
       if (QLog.isColorLevel()) {
@@ -199,7 +199,7 @@ public class MiniAppVideoPlayer
       }
       a(this.ac);
       return;
-      if (!baip.a(this.l)) {
+      if (!bbjw.a(this.l)) {
         com.tencent.mobileqq.microapp.b.a.a(this.l, new j(this));
       }
     }
@@ -236,7 +236,7 @@ public class MiniAppVideoPlayer
   
   public void a(long paramLong)
   {
-    if (baip.a(this.l)) {
+    if (bbjw.a(this.l)) {
       return;
     }
     this.f = true;
@@ -300,7 +300,7 @@ public class MiniAppVideoPlayer
     paramJSONObject.optBoolean("showCenterPlayBtn");
     paramJSONObject.optBoolean("showFullScreenBtn");
     paramJSONObject.optBoolean("enableProgressGesture");
-    if (baip.a(this.e)) {
+    if (bbjw.a(this.e)) {
       this.e = paramJSONObject.optString("poster");
     }
     paramJSONObject.optInt("initialTime");

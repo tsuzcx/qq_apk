@@ -1,30 +1,30 @@
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import mqq.util.WeakReference;
+import android.text.TextUtils;
 
 public class algv
-  extends agfo
 {
-  private algv(AlbumListFragment paramAlbumListFragment)
+  public String a;
+  public String b;
+  public String c;
+  
+  public String a()
   {
-    super(paramAlbumListFragment);
+    if (TextUtils.isEmpty(this.b)) {
+      return "";
+    }
+    return this.b;
   }
   
-  public static agfk b(AlbumListFragment paramAlbumListFragment)
+  public String b()
   {
-    if ((a == null) || (a.a.get() != null)) {}
-    try
-    {
-      if ((a == null) || (a.a.get() != null)) {
-        a = new algv(paramAlbumListFragment);
-      }
-      return a;
+    if (TextUtils.isEmpty(this.c)) {
+      return "";
     }
-    finally {}
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     algv
  * JD-Core Version:    0.7.0.1
  */

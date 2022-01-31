@@ -1,106 +1,45 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.os.Build.VERSION;
-import java.io.InputStream;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class audo
-  extends InputStream
-  implements audl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  protected int a;
-  protected Context a;
-  protected audm a;
-  protected PipedInputStream a;
-  protected PipedOutputStream a;
-  protected byte[] a;
-  protected byte[] b;
-  protected byte[] c;
-  protected byte[] d = new byte[1];
+  public audo(ScanOcrView paramScanOcrView) {}
   
-  public audo(Context paramContext)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public int a(byte[] paramArrayOfByte, int paramInt)
-  {
-    return read(paramArrayOfByte, paramInt, paramArrayOfByte.length);
-  }
-  
-  public audm a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Audm.jdField_a_of_type_Int = 0;
-    int j = paramInt2;
-    int i = paramInt1;
-    paramInt1 = j;
-    while (paramInt2 > 0)
-    {
-      if (paramInt2 > 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available()) {
-        paramInt1 = 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available();
-      }
-      a(paramArrayOfByte, i, paramInt1);
-      i += paramInt1;
-      paramInt1 = paramInt2 - paramInt1;
-      paramInt2 = paramInt1;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int j = (int)(this.a.a.a * f);
+    int i = (int)(f * this.a.a.jdField_b_of_type_Int);
+    int m = j - this.a.a.a;
+    int k = i - this.a.a.jdField_b_of_type_Int;
+    j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
+    i = j;
+    if (j > 255) {
+      i = 255;
     }
-    return this.jdField_a_of_type_Audm;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaIoPipedOutputStream != null)
-    {
-      this.jdField_a_of_type_JavaIoPipedOutputStream.close();
-      this.jdField_a_of_type_JavaIoPipedOutputStream = null;
+    j = i;
+    if (i < 0) {
+      j = 0;
     }
-    close();
-  }
-  
-  @TargetApi(9)
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_JavaIoPipedOutputStream = new PipedOutputStream();
-    if (Build.VERSION.SDK_INT <= 8)
-    {
-      this.jdField_a_of_type_JavaIoPipedInputStream = new baer(this.jdField_a_of_type_JavaIoPipedOutputStream, 1920);
-      return;
-    }
-    this.jdField_a_of_type_JavaIoPipedInputStream = new PipedInputStream(this.jdField_a_of_type_JavaIoPipedOutputStream, 1920);
-  }
-  
-  protected void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaIoPipedOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
-    while (this.jdField_a_of_type_JavaIoPipedInputStream.available() >= this.jdField_a_of_type_Int)
-    {
-      paramInt1 = a(this.c, this.jdField_a_of_type_Audm.jdField_a_of_type_Int);
-      paramArrayOfByte = this.jdField_a_of_type_Audm;
-      paramArrayOfByte.jdField_a_of_type_Int = (paramInt1 + paramArrayOfByte.jdField_a_of_type_Int);
-    }
-  }
-  
-  public void close()
-  {
-    if (this.jdField_a_of_type_JavaIoPipedInputStream != null)
-    {
-      this.jdField_a_of_type_JavaIoPipedInputStream.close();
-      this.jdField_a_of_type_JavaIoPipedInputStream = null;
-    }
-  }
-  
-  public int read()
-  {
-    if (read(this.d, 0, 1) == 1) {
-      return this.d[0] & 0xFF;
-    }
-    return -1;
+    i = this.a.a.jdField_b_of_type_AndroidGraphicsRect.left;
+    int n = m / 2;
+    int i1 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.top;
+    int i2 = k / 2;
+    int i3 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.right;
+    m /= 2;
+    int i4 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.bottom;
+    k /= 2;
+    this.a.a.e = j;
+    this.a.a.c.set(i - n, i1 - i2, m + i3, k + i4);
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     audo
  * JD-Core Version:    0.7.0.1
  */

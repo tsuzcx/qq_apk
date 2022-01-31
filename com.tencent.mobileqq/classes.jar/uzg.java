@@ -1,31 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPhotographyGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-class uzg
-  implements slx<szm, tbk>
+public class uzg
+  extends syv
 {
-  uzg(uyz paramuyz) {}
+  public static final String a = sxp.a("StorySvc.get_photography_guide");
   
-  public void a(@NonNull szm paramszm, @Nullable tbk paramtbk, @NonNull ErrorMessage paramErrorMessage)
+  public String a()
   {
-    urk.b("DoodleEmojiManager", "fireRequestEmojiPackList, result : " + paramtbk + ", errorMsg = " + paramErrorMessage);
-    synchronized (this.a.jdField_b_of_type_JavaLangObject)
+    return a;
+  }
+  
+  public syq a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetPhotographyGuide localRspGetPhotographyGuide = new qqstory_service.RspGetPhotographyGuide();
+    try
     {
-      if (!TextUtils.equals(paramszm.a, this.a.jdField_b_of_type_JavaLangString))
-      {
-        urk.d("DoodleEmojiManager", "cookie mismatch ! ignore this response : " + paramtbk);
-        return;
-      }
-      if ((paramtbk == null) || (paramErrorMessage.isFail()))
-      {
-        urk.d("DoodleEmojiManager", "get emoji error : " + paramtbk + ", " + paramErrorMessage);
-        return;
-      }
+      localRspGetPhotographyGuide.mergeFrom(paramArrayOfByte);
+      return new uzh(localRspGetPhotographyGuide);
     }
-    this.a.jdField_b_of_type_JavaLangString = paramtbk.a;
-    this.a.a(TextUtils.isEmpty(paramszm.a), paramtbk, false);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      veg.d("Q.qqstory:GetPhotographyGuideRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetPhotographyGuide().toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetPhotographyGuideRequest{}";
   }
 }
 

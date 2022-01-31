@@ -1,58 +1,78 @@
-import android.animation.AnimatorSet;
-import android.graphics.drawable.Drawable;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.mobileqq.earlydownload.xmldata.HotFriendResData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class anpl
-  implements Animation.AnimationListener
+public class anpl
+  extends anpi
 {
-  anpl(anpg paramanpg, AnimatorSet paramAnimatorSet) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public anpl(QQAppInterface paramQQAppInterface)
   {
-    int i = 0;
-    while (i < 6)
-    {
-      paramAnimation = (ImageView)this.jdField_a_of_type_Anpg.a.get(i);
-      paramAnimation.clearAnimation();
-      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject1 != null) && (i < this.jdField_a_of_type_Anpg.b.size()))
-      {
-        Object localObject2 = (String)this.jdField_a_of_type_Anpg.b.get(i);
-        Drawable localDrawable = bacm.a(true);
-        localObject1 = azwp.a((AppInterface)localObject1, 1, (String)localObject2, 4, localDrawable, localDrawable);
-        localObject2 = paramAnimation.getDrawable();
-        if ((localObject2 != null) && (localObject2 != localObject1) && ((localObject2 instanceof azwp))) {
-          ((azwp)localObject2).a();
-        }
-        paramAnimation.setImageDrawable((Drawable)localObject1);
-      }
-      i += 1;
-    }
-    this.jdField_a_of_type_Anpg.g.clearAnimation();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-    this.jdField_a_of_type_Anpg.f.setTranslationX(0.0F);
-    this.jdField_a_of_type_Anpg.f.setAlpha(1.0F);
-    paramAnimation = new AlphaAnimation(1.0F, 0.0F);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setDuration(200L);
-    paramAnimation.setAnimationListener(new anpm(this));
-    this.jdField_a_of_type_Anpg.g.startAnimation(paramAnimation);
+    super("qq.android.hotfriend.res", paramQQAppInterface);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public int a()
+  {
+    return 10042;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public Class<? extends XmlData> a()
+  {
+    return HotFriendResData.class;
+  }
+  
+  public String a()
+  {
+    return "HotFriendResHandler";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess:" + paramString);
+    }
+    if (!new File(paramString).exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess sorse not exists");
+      }
+      return;
+    }
+    try
+    {
+      String str = asyh.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess imagePath=" + str);
+      }
+      if (!TextUtils.isEmpty(str)) {
+        bbdj.a(paramString, str, false);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+    super.a(paramString);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anpl
  * JD-Core Version:    0.7.0.1
  */

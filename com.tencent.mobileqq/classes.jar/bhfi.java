@@ -1,17 +1,23 @@
-class bhfi
-  extends bhgy
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastAudio;
+
+public final class bhfi
+  implements Parcelable.Creator<BroadcastAudio>
 {
-  bhfi(bhff parambhff) {}
-  
-  public void a()
+  public BroadcastAudio a(Parcel paramParcel)
   {
-    super.a();
-    this.a.n();
+    return new BroadcastAudio(paramParcel);
+  }
+  
+  public BroadcastAudio[] a(int paramInt)
+  {
+    return new BroadcastAudio[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhfi
  * JD-Core Version:    0.7.0.1
  */

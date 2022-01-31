@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.os.Bundle;
+import com.dataline.activities.LiteActivity;
 import java.util.ArrayList;
-import java.util.List;
 
 public class db
-  extends dc
+  implements aptu
 {
-  public boolean a(List<FileInfo> paramList, String paramString, QQAppInterface paramQQAppInterface)
+  public db(LiteActivity paramLiteActivity, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  
+  public void a()
   {
-    if ((paramList != null) && (paramList.size() > 0) && (paramString != null))
+    Bundle localBundle;
+    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
     {
-      ((ajgm)paramQQAppInterface.a(8)).a((ArrayList)paramList, "printer", paramString.getBytes(), Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
-      return true;
+      localBundle = new Bundle();
+      localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", this.jdField_a_of_type_JavaUtilArrayList);
+      new du(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).execute(new Bundle[] { localBundle });
     }
-    return false;
+    if (!this.b.isEmpty())
+    {
+      localBundle = new Bundle();
+      localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", this.b);
+      new dv(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).execute(new Bundle[] { localBundle });
+    }
   }
+  
+  public void b() {}
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
 import android.view.View;
-import ayjw;
+import azkm;
 
 public class ContactListAdapter$2$1
   implements Runnable
 {
-  public ContactListAdapter$2$1(ayjw paramayjw, View paramView) {}
+  public ContactListAdapter$2$1(azkm paramazkm, View paramView) {}
   
   public void run()
   {

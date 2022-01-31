@@ -1,16 +1,14 @@
-import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
-import com.tencent.qphone.base.util.QLog;
-
-public class trg
-  implements tsr
+class trg
+  extends tps
 {
-  public trg(TrimTextureVideoView paramTrimTextureVideoView) {}
-  
-  public boolean a(tso paramtso, int paramInt1, int paramInt2)
+  trg(tqk paramtqk, String paramString1, String paramString2, boolean paramBoolean, trr paramtrr)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(this.a.a, 2, "TrimTextureVideoView MediaPlayer onError==>what:" + paramInt1 + "|extra:" + paramInt2);
-    }
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Trr.e = ((String)a("EncryptUrlJob_encryptedUrl"));
     return true;
   }
 }

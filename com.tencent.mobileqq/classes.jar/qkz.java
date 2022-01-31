@@ -1,10 +1,25 @@
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.app.Activity;
+import android.database.ContentObserver;
+import android.net.Uri;
+import android.os.Handler;
+import android.provider.Settings.System;
 
-public abstract interface qkz
+class qkz
+  extends ContentObserver
 {
-  public abstract void a(qla paramqla);
+  qkz(qky paramqky, Handler paramHandler)
+  {
+    super(paramHandler);
+  }
   
-  public abstract void a(qla paramqla, VideoInfo paramVideoInfo, int paramInt);
+  public void onChange(boolean paramBoolean, Uri paramUri)
+  {
+    super.onChange(paramBoolean, paramUri);
+    int i = Settings.System.getInt(qky.a(this.a).getContentResolver(), "screen_brightness", 125);
+    if ((qky.a(this.a)) && (i > 0)) {
+      this.a.a(i / 255.0F);
+    }
+  }
 }
 
 

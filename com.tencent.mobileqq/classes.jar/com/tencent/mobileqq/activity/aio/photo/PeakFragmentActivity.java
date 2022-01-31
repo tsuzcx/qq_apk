@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.aio.photo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import awnu;
+import axmt;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.NativeVideoImage;
@@ -24,7 +24,7 @@ public class PeakFragmentActivity
   
   protected void a()
   {
-    awnu.a(this.mSystemBarComp, getWindow());
+    axmt.a(this.mSystemBarComp, getWindow());
   }
   
   public boolean doOnCreate(Bundle paramBundle)

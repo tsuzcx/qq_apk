@@ -1,11 +1,14 @@
-import java.util.ArrayList;
+import android.view.View;
 
-public abstract class awfs
-  implements awfr
+public abstract interface awfs
 {
-  public void a(int paramInt, ArrayList<awfk> paramArrayList) {}
+  public abstract Object a();
   
-  public void b(int paramInt, awfk paramawfk) {}
+  public abstract void a(View paramView, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void onClick(View paramView);
 }
 
 

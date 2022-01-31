@@ -1,39 +1,18 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.runtime.core.page.PageWebview;
 
 class bfck
-  implements ServiceConnection
+  implements bfbo
 {
-  bfck(bfci parambfci) {}
+  bfck(bfcj parambfcj, PageWebview paramPageWebview) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoRemoteManager", 2, "Qav Service connected!");
-    }
-    this.a.jdField_a_of_type_Lec = led.a(paramIBinder);
-    if ((this.a.jdField_a_of_type_Lec != null) && (this.a.jdField_a_of_type_Bfcj != null)) {
-      this.a.jdField_a_of_type_Bfcj.a(this.a);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null or mOnReadyListener == null");
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoRemoteManager", 2, "Qav Service disconnected!");
-    }
-    this.a.jdField_a_of_type_Lec = null;
+    this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebview.c = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfck
  * JD-Core Version:    0.7.0.1
  */

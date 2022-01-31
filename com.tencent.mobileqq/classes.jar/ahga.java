@@ -1,53 +1,26 @@
-import android.media.MediaPlayer;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
-public class ahga
-  implements ahne
+class ahga
+  implements Handler.Callback
 {
-  public ahga(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  ahga(ahfz paramahfz) {}
   
-  public void a(MediaPlayer paramMediaPlayer)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (EditLocalVideoActivity.b(this.a))
+    if (paramMessage.what == 1001) {}
+    try
     {
-      QLog.e("EditLocalVideoActivity", 2, "onComplete() ---------------1   mStartTime=" + EditLocalVideoActivity.c(this.a) + " mEndTime=" + EditLocalVideoActivity.d(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
-      EditLocalVideoActivity.a(this.a).pause();
-      paramMediaPlayer.seekTo(EditLocalVideoActivity.e(this.a));
-      EditLocalVideoActivity.b(this.a, false);
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
-      return;
+      ahfz.a(this.a, paramMessage);
+      return false;
     }
-    QLog.e("EditLocalVideoActivity", 2, "onComplete() ---------------2   mStartTime=" + EditLocalVideoActivity.c(this.a) + " mEndTime=" + EditLocalVideoActivity.d(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
-    paramMediaPlayer.seekTo(EditLocalVideoActivity.c(this.a));
-    EditLocalVideoActivity.a(this.a).start();
-  }
-  
-  public void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2)
-  {
-    if (EditLocalVideoActivity.b(this.a))
+    catch (Throwable paramMessage)
     {
-      QLog.e("EditLocalVideoActivity", 2, "onArriveTrimEnd() ---------------3   mStartTime=" + EditLocalVideoActivity.c(this.a) + " mEndTime=" + EditLocalVideoActivity.d(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
-      paramFixedSizeVideoView.pause();
-      paramFixedSizeVideoView.seekTo(EditLocalVideoActivity.e(this.a));
-      EditLocalVideoActivity.b(this.a, false);
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
-    }
-    for (;;)
-    {
-      if (EditLocalVideoActivity.a(this.a) != null) {
-        EditLocalVideoActivity.a(this.a).b();
-      }
-      do
+      for (;;)
       {
-        return;
-      } while (EditLocalVideoActivity.d(this.a) == 0);
-      QLog.e("EditLocalVideoActivity", 2, "onArriveTrimEnd() ---------------4   mStartTime=" + EditLocalVideoActivity.c(this.a) + " mEndTime=" + EditLocalVideoActivity.d(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
-      paramFixedSizeVideoView.setPlayDuration(EditLocalVideoActivity.c(this.a), EditLocalVideoActivity.d(this.a) - EditLocalVideoActivity.c(this.a));
-      paramFixedSizeVideoView.seekTo(EditLocalVideoActivity.c(this.a));
-      paramFixedSizeVideoView.start();
+        QLog.i("springHb_SpringEntryManager", 1, QLog.getStackTraceString(paramMessage));
+      }
     }
   }
 }

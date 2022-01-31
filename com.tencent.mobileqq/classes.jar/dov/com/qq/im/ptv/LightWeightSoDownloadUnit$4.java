@@ -1,21 +1,21 @@
 package dov.com.qq.im.ptv;
 
-import bafb;
-import bhyn;
-import bhyo;
-import bhyp;
-import bhzc;
+import bbgg;
+import bjqf;
+import bjqg;
+import bjqh;
+import bjqu;
 
 public class LightWeightSoDownloadUnit$4
   implements Runnable
 {
-  public LightWeightSoDownloadUnit$4(bhyn parambhyn, String paramString) {}
+  public LightWeightSoDownloadUnit$4(bjqf parambjqf, String paramString) {}
   
   public void run()
   {
-    bhyo localbhyo = new bhyo(this);
-    bhyp localbhyp = new bhyp(this);
-    bafb.showPermissionSettingDialog(bhyn.a(this.this$0).a(), null, this.a, localbhyo, localbhyo, localbhyp);
+    bjqg localbjqg = new bjqg(this);
+    bjqh localbjqh = new bjqh(this);
+    bbgg.showPermissionSettingDialog(bjqf.a(this.this$0).a(), null, this.a, localbjqg, localbjqg, localbjqh);
   }
 }
 

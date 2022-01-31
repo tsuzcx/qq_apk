@@ -1,23 +1,12 @@
-import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
 
-final class bfzk
-  implements bgaz
+public abstract interface bfzk
 {
-  bfzk(Context paramContext, bfzm parambfzm, bfzl parambfzl) {}
-  
-  public void onQzonePluginClientReady(bfzg parambfzg)
-  {
-    if (parambfzg == null)
-    {
-      bgax.a(this.jdField_a_of_type_AndroidContentContext, this);
-      return;
-    }
-    parambfzg.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bfzm, this.jdField_a_of_type_Bfzl);
-  }
+  public abstract void a(RecyclerView.Adapter paramAdapter);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfzk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,137 +1,360 @@
+import android.graphics.drawable.Drawable;
+import android.view.View.OnClickListener;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.AVRedPacketManager.GameStateInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalEmojiInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalFocusInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalFrameSyncInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalHitInfo;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.Emoji;
-import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.FocusInfo;
-import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.FrameSyncInfo;
-import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.HitInfo;
+import com.tencent.av.business.manager.tips.TipsViewTimerRunnable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
-class ljk
-  implements kwe
+public class ljk
+  extends lhi
 {
-  ljk(lji paramlji) {}
+  private TipsViewTimerRunnable jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable;
+  private WeakReference<mcr> jdField_a_of_type_JavaLangRefWeakReference;
+  private volatile mav jdField_a_of_type_Mav;
+  private WeakReference<mas> jdField_b_of_type_JavaLangRefWeakReference;
+  private volatile mav jdField_b_of_type_Mav;
   
-  public lep a()
+  public ljk(VideoAppInterface paramVideoAppInterface)
   {
-    for (;;)
-    {
-      AVRedPacketManager.LocalFrameSyncInfo localLocalFrameSyncInfo;
-      AVRedPacketGameSyncInfo.FrameSyncInfo localFrameSyncInfo;
-      int i;
-      try
-      {
-        System.currentTimeMillis();
-        Object localObject1 = (AVRedPacketManager)this.a.a.a(6);
-        if (!((AVRedPacketManager)localObject1).a()) {
-          return null;
-        }
-        localObject1 = ((AVRedPacketManager)localObject1).a();
-        localLocalFrameSyncInfo = ((AVRedPacketManager.GameStateInfo)localObject1).currLocalFrameSyncInfo;
-        if (QLog.isColorLevel()) {}
-        localFrameSyncInfo = new AVRedPacketGameSyncInfo.FrameSyncInfo();
-        localFrameSyncInfo.currScores.set(localLocalFrameSyncInfo.curScore);
-        i = localLocalFrameSyncInfo.localEmojiInfos.size() - 1;
-        if (i >= 0)
-        {
-          localObject3 = (AVRedPacketManager.LocalEmojiInfo)localLocalFrameSyncInfo.localEmojiInfos.get(i);
-          if (localObject3 == null) {
-            break label412;
-          }
-          AVRedPacketGameSyncInfo.Emoji localEmoji = new AVRedPacketGameSyncInfo.Emoji();
-          localEmoji.emojiTypeId.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).emojiType);
-          localEmoji.startTime.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).startTime);
-          localEmoji.trackNum.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).trackNum);
-          localEmoji.id.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).emojiId);
-          localEmoji.isBigEmoji.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).isBigEmoji);
-          localEmoji.fallDownDuration.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).fallDownDuration);
-          localFrameSyncInfo.emojis.add(localEmoji);
-        }
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("AVRedPacketHandler", 2, "OnFrameDataGet ", localException);
-        }
-        return null;
-      }
-      Object localObject3 = new AVRedPacketGameSyncInfo.FocusInfo();
-      ((AVRedPacketGameSyncInfo.FocusInfo)localObject3).id.set(localLocalFrameSyncInfo.localFocusInfo.emojiId);
-      localFrameSyncInfo.focusInfo.set((MessageMicro)localObject3);
-      localObject3 = new AVRedPacketGameSyncInfo.HitInfo();
-      ((AVRedPacketGameSyncInfo.HitInfo)localObject3).id.set(localLocalFrameSyncInfo.localHitInfo.emojiId);
-      ((AVRedPacketGameSyncInfo.HitInfo)localObject3).startTime.set(localLocalFrameSyncInfo.localHitInfo.hitStartTime);
-      ((AVRedPacketGameSyncInfo.HitInfo)localObject3).comboCnt.set(localLocalFrameSyncInfo.localHitInfo.comboCnt);
-      ((AVRedPacketGameSyncInfo.HitInfo)localObject3).newAddScore.set(localLocalFrameSyncInfo.localHitInfo.newAddScore);
-      ((AVRedPacketGameSyncInfo.HitInfo)localObject3).topWordTipType.set(localLocalFrameSyncInfo.localHitInfo.topWordTipType);
-      localFrameSyncInfo.hitInfo.set((MessageMicro)localObject3);
-      localFrameSyncInfo.frameSyncGameState.set(localLocalFrameSyncInfo.frameSyncGameState);
-      localException.count_OnFrameDataSend += 1;
-      localFrameSyncInfo.seq.set(localException.count_OnFrameDataSend);
-      Object localObject2 = localFrameSyncInfo.toByteArray();
-      if (QLog.isColorLevel()) {}
-      localObject2 = new lep((short)5, (short)localObject2.length, (byte[])localObject2);
-      return localObject2;
-      label412:
-      i -= 1;
-    }
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable = new TipsViewTimerRunnable(paramVideoAppInterface);
   }
   
-  public void a(String paramString, lep paramlep)
+  public static void a(String paramString)
   {
-    boolean bool;
-    if ((!QLog.isColorLevel()) || (paramlep != null))
-    {
-      try
-      {
-        if (paramlep.a() == null) {
-          return;
-        }
-        localAVRedPacketManager = (AVRedPacketManager)this.a.a.a(6);
-        if (!localAVRedPacketManager.b()) {
-          return;
-        }
-        localFrameSyncInfo = new AVRedPacketGameSyncInfo.FrameSyncInfo();
-        paramString = null;
-      }
-      catch (Exception paramString)
-      {
-        AVRedPacketManager localAVRedPacketManager;
-        AVRedPacketGameSyncInfo.FrameSyncInfo localFrameSyncInfo;
-        label78:
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.e("AVRedPacketHandler", 2, "onFrameDataCome ", paramString);
-        return;
-      }
-      try
-      {
-        localFrameSyncInfo.mergeFrom(paramlep.a());
-        paramlep = lji.a(this.a, localFrameSyncInfo);
-        paramString = paramlep;
-        bool = true;
-      }
-      catch (Exception paramlep)
-      {
-        bool = false;
-        break label78;
-      }
-      if (QLog.isColorLevel()) {}
-      localAVRedPacketManager.a(bool, paramString);
+    if (paramString == null) {}
+    while (!QLog.isColorLevel()) {
       return;
     }
+    QLog.d("NewTipsManager", 2, paramString);
+  }
+  
+  private boolean b(mav parammav)
+  {
+    Object localObject2 = new StringBuilder().append("showSubTips begin avTipsItem = ");
+    Object localObject1;
+    boolean bool1;
+    if (parammav != null)
+    {
+      localObject1 = Integer.valueOf(parammav.b());
+      a(localObject1);
+      localObject1 = a();
+      if ((parammav != null) && (localObject1 != null) && (((mas)localObject1).b())) {
+        break label76;
+      }
+      bool1 = false;
+    }
+    label76:
+    do
+    {
+      boolean bool2;
+      do
+      {
+        return bool1;
+        localObject1 = "null";
+        break;
+        localObject2 = this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.b();
+        bool1 = mav.a((mav)localObject2, parammav);
+        a("showSubTips canShow = " + bool1);
+        if ((!bool1) || (!((mas)localObject1).b(parammav))) {
+          break label184;
+        }
+        a("showSubTips ShowSubTipsView success");
+        this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.b(parammav);
+        bool2 = true;
+        bool1 = bool2;
+      } while (localObject2 == null);
+      bool1 = bool2;
+    } while (!((mav)localObject2).a());
+    if (parammav.a())
+    {
+      this.jdField_b_of_type_Mav = null;
+      return true;
+    }
+    this.jdField_b_of_type_Mav = ((mav)localObject2);
+    return true;
+    label184:
+    return false;
+  }
+  
+  private void c(mav parammav)
+  {
+    if (parammav == null) {}
+    do
+    {
+      return;
+      if (parammav.equals(this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.a()))
+      {
+        a("hiddenMainTips (avTipsItem.equals(current)) avTipsItem id = " + parammav.b());
+        this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.a();
+        return;
+      }
+    } while (!parammav.equals(this.jdField_a_of_type_Mav));
+    a("hiddenMainTips (avTipsItem.equals(mLastShowResidentMainTipsItem)) avTipsItem id = " + parammav.b());
+    this.jdField_a_of_type_Mav = null;
+  }
+  
+  private boolean c(mav parammav)
+  {
+    Object localObject2 = new StringBuilder().append("showMainTips begin avTipsItem = ");
+    Object localObject1;
+    boolean bool1;
+    if (parammav != null)
+    {
+      localObject1 = Integer.valueOf(parammav.b());
+      a(localObject1);
+      localObject1 = a();
+      if ((parammav != null) && (localObject1 != null) && (((mas)localObject1).a())) {
+        break label76;
+      }
+      bool1 = false;
+    }
+    label76:
+    do
+    {
+      boolean bool2;
+      do
+      {
+        return bool1;
+        localObject1 = "null";
+        break;
+        localObject2 = this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.a();
+        bool1 = mav.a((mav)localObject2, parammav);
+        a("showMainTips canShow = " + bool1);
+        if (!bool1) {
+          break label184;
+        }
+        if (!((mas)localObject1).a(parammav)) {
+          break label210;
+        }
+        a("showMainTips ShowMainTipsView success");
+        this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.a(parammav);
+        bool2 = true;
+        bool1 = bool2;
+      } while (localObject2 == null);
+      bool1 = bool2;
+    } while (!((mav)localObject2).a());
+    if (parammav.a())
+    {
+      this.jdField_a_of_type_Mav = null;
+      return true;
+    }
+    this.jdField_a_of_type_Mav = ((mav)localObject2);
+    return true;
+    label184:
+    a("showMainTips canShow is false current = " + ((mav)localObject2).b());
+    label210:
+    return false;
+  }
+  
+  private void d(mav parammav)
+  {
+    if (parammav == null) {}
+    do
+    {
+      return;
+      if (parammav.equals(this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.b()))
+      {
+        a("hiddenSubTips (avTipsItem.equals(current)) avTipsItem id = " + parammav.b());
+        this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.b();
+        return;
+      }
+    } while (!parammav.equals(this.jdField_b_of_type_Mav));
+    a("hiddenSubTips (avTipsItem.equals(mLastShowResidentSubTipsItem)) avTipsItem id = " + parammav.b());
+    this.jdField_b_of_type_Mav = null;
+  }
+  
+  private void e()
+  {
+    mas localmas = a();
+    a("hiddenMainTipsReal");
+    if ((localmas == null) || (!localmas.a())) {
+      return;
+    }
+    localmas.a();
+  }
+  
+  private void f()
+  {
+    mas localmas = a();
+    a("hiddenSubTipsReal");
+    if ((localmas == null) || (!localmas.b())) {
+      return;
+    }
+    localmas.b();
+  }
+  
+  public mas a()
+  {
+    if ((this.jdField_b_of_type_JavaLangRefWeakReference == null) || (this.jdField_b_of_type_JavaLangRefWeakReference.isEnqueued())) {
+      return null;
+    }
+    return (mas)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  protected void a() {}
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null)
+    {
+      a("HiddenTips (mApp == null)");
+      return;
+    }
+    mav localmav = mau.a(paramInt, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    if (localmav == null)
+    {
+      a("HiddenTips (tipsItem == null)");
+      return;
+    }
+    switch (localmav.d())
+    {
+    default: 
+      a("HiddenTips tipsItem.getShowType() = " + localmav.d());
+      return;
+    case 1: 
+      d(localmav);
+      return;
+    }
+    c(localmav);
+  }
+  
+  public void a(mas parammas)
+  {
+    if (parammas == null) {
+      return;
+    }
+    a("setAvTipsView avTipsView is " + parammas.getClass());
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(parammas);
+  }
+  
+  public void a(mav parammav)
+  {
+    if (parammav == null) {
+      return;
+    }
+    a("NotifyHiddenMainTipsByRunner item" + parammav.b());
+    if ((parammav.a()) || (this.jdField_a_of_type_Mav == null))
+    {
+      e();
+      return;
+    }
+    c(this.jdField_a_of_type_Mav);
+  }
+  
+  public void a(mcr parammcr)
+  {
+    if (parammcr == null) {
+      return;
+    }
+    a("setDeviceTipsController is " + parammcr.getClass());
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammcr);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      return false;
+    }
+    return a(mau.a(paramInt, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface));
+  }
+  
+  public boolean a(int paramInt, long paramLong)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+      {
+        ((mcr)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt, paramLong);
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      return false;
+    }
+    return a(mau.a(paramInt, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramString));
+  }
+  
+  public boolean a(int paramInt1, String paramString, Drawable paramDrawable, int paramInt2, View.OnClickListener paramOnClickListener)
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      return false;
+    }
+    return a(mau.a(paramInt1, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramString, 2, paramDrawable, paramInt2, paramOnClickListener));
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return false;
+  }
+  
+  public boolean a(mav parammav)
+  {
+    if (parammav == null)
+    {
+      a("showTips (tipsItem == null)");
+      return false;
+    }
+    switch (parammav.d())
+    {
+    default: 
+      a("showTips tipsItem.getShowType() = " + parammav.d());
+      return false;
+    case 1: 
+      return b(parammav);
+    }
+    return c(parammav);
+  }
+  
+  public void b()
+  {
+    a("RemoveAllTips");
+    this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.a();
+    this.jdField_a_of_type_Mav = null;
+    this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.b();
+    this.jdField_b_of_type_Mav = null;
+  }
+  
+  public void b(mav parammav)
+  {
+    if (parammav == null) {
+      return;
+    }
+    a("NotifyHiddenSubTipsByRunner item" + parammav.b());
+    if ((parammav.a()) || (this.jdField_b_of_type_Mav == null))
+    {
+      f();
+      return;
+    }
+    b(this.jdField_b_of_type_Mav);
+  }
+  
+  public void c()
+  {
+    mas localmas = a();
+    a("HiddenViewContainer");
+    if ((localmas == null) || (!localmas.b())) {
+      return;
+    }
+    localmas.c();
+  }
+  
+  public void d()
+  {
+    mas localmas = a();
+    a("ShowViewContainer");
+    if ((localmas == null) || (!localmas.b())) {
+      return;
+    }
+    localmas.d();
   }
 }
 

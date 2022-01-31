@@ -1,49 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.DeleteFolderRspBody;
-import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
-
-public abstract class wlr
-  extends mmn
+class wlr
+  implements wsq
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (paramInt != 0)
-    {
-      a(false, paramInt);
-      return;
-    }
-    paramBundle = new oidb_0x6d7.RspBody();
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d7.DeleteFolderRspBody)paramBundle.delete_folder_rsp.get();
-      if (!paramArrayOfByte.int32_ret_code.has()) {
-        break label84;
-      }
-      if (paramArrayOfByte.int32_ret_code.get() == 0)
-      {
-        a(true, 0);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1);
-      return;
-    }
-    a(false, paramArrayOfByte.int32_ret_code.get());
-    return;
-    label84:
-    a(false, -1);
-  }
+  wlr(wlq paramwlq) {}
   
-  protected abstract void a(boolean paramBoolean, int paramInt);
+  public void a(boolean paramBoolean)
+  {
+    this.a.jdField_a_of_type_Wlo.a.a(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wlr
  * JD-Core Version:    0.7.0.1
  */

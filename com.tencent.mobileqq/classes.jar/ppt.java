@@ -1,89 +1,81 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.articlesummary.articlesummary.SubVideoInfo;
-import tencent.im.oidb.articlesummary.articlesummary.UrlJumpInfo;
-import tencent.im.oidb.articlesummary.articlesummary.VideoColumnInfo;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ppt
 {
-  public int a;
-  public UrlJumpInfo a;
-  public String a;
-  public List<prj> a;
-  public boolean a;
-  public int b;
-  public UrlJumpInfo b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  
-  public ppt()
+  public static String a(boolean paramBoolean, List<BaseArticleInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(6);
-  }
-  
-  public static ppt a(articlesummary.VideoColumnInfo paramVideoColumnInfo)
-  {
-    boolean bool = true;
-    ppt localppt = new ppt();
-    localppt.jdField_a_of_type_Int = paramVideoColumnInfo.uint32_column_id.get();
-    localppt.jdField_a_of_type_JavaLangString = paramVideoColumnInfo.bytes_column_name.get().toStringUtf8();
-    localppt.jdField_c_of_type_JavaLangString = paramVideoColumnInfo.bytes_sub_title.get().toStringUtf8();
-    localppt.jdField_b_of_type_JavaLangString = paramVideoColumnInfo.bytes_column_card_icon_url.get().toStringUtf8();
-    localppt.jdField_b_of_type_Int = paramVideoColumnInfo.uint32_update_count.get();
-    localppt.jdField_c_of_type_Int = paramVideoColumnInfo.uint32_subscribe_count.get();
-    if (paramVideoColumnInfo.uint32_is_subscribed.get() == 1) {}
+    JSONObject localJSONObject1 = new JSONObject();
+    Object localObject;
+    if (paramBoolean) {
+      localObject = "1";
+    }
     for (;;)
     {
-      localppt.jdField_a_of_type_Boolean = bool;
-      localppt.d = paramVideoColumnInfo.bytes_column_card_bg_url.get().toStringUtf8();
-      localppt.e = paramVideoColumnInfo.bytes_column_card_bg_color.get().toStringUtf8();
-      localppt.f = paramVideoColumnInfo.bytes_app_name.get().toStringUtf8();
-      localppt.g = paramVideoColumnInfo.bytes_app_icon_url.get().toStringUtf8();
-      Iterator localIterator = paramVideoColumnInfo.rpt_sub_video_info.get().iterator();
-      while (localIterator.hasNext())
+      try
       {
-        articlesummary.SubVideoInfo localSubVideoInfo = (articlesummary.SubVideoInfo)localIterator.next();
-        prj localprj = new prj();
-        localprj.jdField_a_of_type_Long = localSubVideoInfo.uint64_article_id.get();
-        localprj.jdField_a_of_type_JavaLangString = localSubVideoInfo.bytes_inner_uniq_id.get().toStringUtf8();
-        localprj.jdField_b_of_type_JavaLangString = localSubVideoInfo.bytes_article_title.get().toStringUtf8();
-        localprj.jdField_c_of_type_JavaLangString = localSubVideoInfo.bytes_first_page_pic_url.get().toStringUtf8();
-        localprj.jdField_a_of_type_Int = localSubVideoInfo.uint32_video_play_count.get();
-        localprj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a((articlesummary.UrlJumpInfo)localSubVideoInfo.bytes_jum_url.get());
-        localprj.jdField_b_of_type_Int = localSubVideoInfo.uint32_duration.get();
-        localppt.jdField_a_of_type_JavaUtilList.add(localprj);
+        localJSONObject1.put("success", localObject);
+        localObject = new JSONArray();
+        if ((paramList == null) || (paramList.size() <= 0)) {
+          break label355;
+        }
+        paramList = paramList.iterator();
+        if (!paramList.hasNext()) {
+          break label355;
+        }
+        localBaseArticleInfo = (BaseArticleInfo)paramList.next();
+        localJSONObject2 = new JSONObject();
+        localJSONObject2.put("articleID", localBaseArticleInfo.mArticleID);
+        localJSONObject2.put("rowKey", localBaseArticleInfo.innerUniqueID);
+        localJSONObject2.put("title", localBaseArticleInfo.mTitle);
+        localJSONObject2.put("coverImageUrl", localBaseArticleInfo.mFirstPagePicUrl);
+        localJSONObject2.put("jsonImageUrl", localBaseArticleInfo.mJsonPictureList);
+        localJSONObject2.put("articleContentUrl", localBaseArticleInfo.mArticleContentUrl);
+        localJSONObject2.put("subscribeName", localBaseArticleInfo.mSubscribeName);
+        localJSONObject2.put("channelID", localBaseArticleInfo.mChannelID);
+        localJSONObject2.put("recommendSeq", localBaseArticleInfo.mRecommendSeq);
+        localJSONObject2.put("algorithmID", localBaseArticleInfo.mAlgorithmID);
+        localJSONObject2.put("strategyID", localBaseArticleInfo.mStrategyId);
+        localJSONObject2.put("feedsType", localBaseArticleInfo.mFeedType);
+        localJSONObject2.put("proteusItemData", localBaseArticleInfo.proteusItemsData);
       }
-      bool = false;
+      catch (JSONException paramList)
+      {
+        BaseArticleInfo localBaseArticleInfo;
+        JSONObject localJSONObject2;
+        QLog.e("PTSDataUtil", 1, "[getResponseJSONString], e " + paramList);
+      }
+      try
+      {
+        if (!osj.a().a(localBaseArticleInfo.mArticleID)) {
+          break label367;
+        }
+        i = 1;
+        localJSONObject2.put("hasRead", i);
+      }
+      catch (Exception localException)
+      {
+        QLog.e("PTSDataUtil", 1, "[getResponseJSONString], e = " + localException);
+        continue;
+      }
+      ((JSONArray)localObject).put(localJSONObject2);
+      continue;
+      for (;;)
+      {
+        return localJSONObject1.toString();
+        localObject = "0";
+        break;
+        label355:
+        localJSONObject1.put("data", localObject);
+      }
+      label367:
+      int i = 0;
     }
-    localppt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.default_jump_info);
-    localppt.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.app_jump_info);
-    return localppt;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\n").append("columnId=").append(this.jdField_a_of_type_Int).append("\n").append("columnName=").append(this.jdField_a_of_type_JavaLangString).append("\n").append("cardIconUrl=").append(this.jdField_b_of_type_JavaLangString).append("\n").append("subTitle=").append(this.jdField_c_of_type_JavaLangString).append("\n").append("subscribeCount=").append(this.jdField_c_of_type_Int).append("\n").append("isSubscribed=").append(this.jdField_a_of_type_Boolean).append("\n").append("cardBgUrl=").append(this.d).append("\n").append("color=").append(this.e).append("\n").append("appName=").append(this.f).append("\n").append("appIconUrl").append(this.g).append("\n").append("subVideoInfoList={");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      prj localprj = (prj)localIterator.next();
-      localStringBuilder.append("\n[").append(localprj.toString()).append("]");
-    }
-    localStringBuilder.append("}").append("\n").append("defaultJumpUrl=").append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.toString()).append("\n").append("appJumpUrl=").append(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.toString()).append("\n");
-    return localStringBuilder.toString();
   }
 }
 

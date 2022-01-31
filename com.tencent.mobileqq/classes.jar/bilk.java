@@ -1,22 +1,11 @@
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-
 class bilk
-  implements View.OnSystemUiVisibilityChangeListener
+  implements bilh
 {
-  bilk(bila parambila) {}
+  bilk(bilj parambilj) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void a()
   {
-    if ((paramInt & 0x4) == 0)
-    {
-      urk.b("EditTextDialog", "onStatusBarShow");
-      this.a.getWindow().getDecorView().removeCallbacks(bila.a(this.a));
-      this.a.getWindow().getDecorView().postDelayed(bila.a(this.a), 1500L);
-      return;
-    }
-    urk.b("EditTextDialog", "onStatusBarHide");
+    bilj.a(this.a).a(131076, new Object[0]);
   }
 }
 

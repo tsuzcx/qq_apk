@@ -1,8 +1,8 @@
-public abstract interface biif
+import java.io.File;
+
+public class biif
 {
-  public abstract void j();
-  
-  public abstract void n();
+  public static final String a = biih.f + File.separator + "camera_emo_default_template.json";
 }
 
 

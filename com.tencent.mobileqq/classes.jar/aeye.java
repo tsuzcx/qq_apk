@@ -1,33 +1,88 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeye
-  extends Handler
+  implements aeyv, View.OnClickListener
 {
-  private WeakReference<NewFriendActivity> a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  View jdField_a_of_type_AndroidViewView;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private String jdField_a_of_type_JavaLangString;
   
-  public aeye(NewFriendActivity paramNewFriendActivity)
+  public aeye(Activity paramActivity, SessionInfo paramSessionInfo, String paramString)
   {
-    this.a = new WeakReference(paramNewFriendActivity);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void handleMessage(Message paramMessage)
+  public int a()
   {
-    NewFriendActivity localNewFriendActivity = (NewFriendActivity)this.a.get();
-    if (localNewFriendActivity == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    return 58;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      localNewFriendActivity.a(paramMessage.arg1);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560360, null);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    }
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public void a(@NonNull aeyx paramaeyx, boolean paramBoolean)
+  {
+    boolean bool = a(paramaeyx);
+    if (QLog.isColorLevel()) {
+      QLog.d("HomeworkTroopTipsBar", 2, new Object[] { "show() isShowing=", Boolean.valueOf(bool), ", show=", Boolean.valueOf(paramBoolean) });
+    }
+    if (paramBoolean) {
+      if (!bool)
+      {
+        paramaeyx.a(this, new Object[0]);
+        bbbb.a("Grp_edu", "Grp_AIO", "mberinfotopGuidebar_Show", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString });
+      }
+    }
+    while (!bool) {
       return;
     }
-    localNewFriendActivity.finish();
+    paramaeyx.a();
+  }
+  
+  public boolean a(@NonNull aeyx paramaeyx)
+  {
+    int i = paramaeyx.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("HomeworkTroopTipsBar", 2, new Object[] { "show cur type=", Integer.valueOf(i) });
+    }
+    return i == b();
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 19;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HomeworkTroopTipsBar", 2, "click tips, jump to web");
+    }
+    bahk.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "aioTip");
+    bbbb.a("Grp_edu", "Grp_AIO", "mberinfotopGuidebar_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString });
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.redtouch;
 
-import auqh;
+import avpq;
 
 public class RedTouchManager$1
   implements Runnable
 {
-  public RedTouchManager$1(auqh paramauqh) {}
+  public RedTouchManager$1(avpq paramavpq) {}
   
   public void run()
   {
-    auqh.a(this.this$0);
+    avpq.a(this.this$0);
   }
 }
 

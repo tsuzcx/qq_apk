@@ -1,30 +1,30 @@
 package com.dataline.activities;
 
-import ajjy;
+import ajyc;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.TextView;
-import co;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import eh;
 
 public class PrinterDefaultActivity
   extends IphoneTitleBarActivity
 {
   private void a()
   {
-    ((TextView)findViewById(2131302804)).setVisibility(8);
-    TextView localTextView = (TextView)findViewById(2131302832);
+    ((TextView)findViewById(2131368429)).setVisibility(8);
+    TextView localTextView = (TextView)findViewById(2131368457);
     localTextView.setVisibility(0);
-    localTextView.setText(ajjy.a(2131642637));
-    localTextView.setOnClickListener(new co(this));
+    localTextView.setText(ajyc.a(2131708422));
+    localTextView.setOnClickListener(new eh(this));
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.getWindow().setBackgroundDrawableResource(2131099823);
-    setContentView(2131493384);
-    setTitle(2131625782);
+    super.getWindow().setBackgroundDrawableResource(2131165360);
+    setContentView(2131558945);
+    setTitle(2131691358);
     super.getWindow().setBackgroundDrawable(null);
     a();
     return true;

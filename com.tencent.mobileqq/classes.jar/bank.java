@@ -1,31 +1,13 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
 
-public class bank
-  extends bann
+public abstract interface bank
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = 20;
-  
-  public bank()
-  {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 100;
-  }
-  
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.a)) {
-      return "";
-    }
-    return this.a;
-  }
+  public abstract void a(TextView paramTextView, View paramView, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bank
  * JD-Core Version:    0.7.0.1
  */

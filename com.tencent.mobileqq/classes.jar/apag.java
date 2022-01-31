@@ -1,26 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class apag
-  implements DialogInterface.OnClickListener
+  implements apab
 {
-  apag(apae paramapae, List paramList, apad paramapad) {}
+  apag(apad paramapad, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    if (paramInt == 1)
+    if (QLog.isDevelopLevel()) {
+      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_Apad.jdField_a_of_type_Aplh.a() + "]on Error[" + paramInt + "]msg[" + paramString + "]");
+    }
+    if ((paramInt == -25081) || (paramInt == -6101) || (paramInt == -7003))
     {
-      apae.a(this.jdField_a_of_type_Apae, this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_Apad != null) {
-        this.jdField_a_of_type_Apad.a(1, 0);
+      this.jdField_a_of_type_Apad.jdField_a_of_type_Aplh.a(true);
+      aptv.a(2131692888);
+    }
+    if (this.jdField_a_of_type_Apad.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      apab localapab = (apab)this.jdField_a_of_type_Apad.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localapab != null) {
+        localapab.a(paramInt, paramString);
       }
     }
-    while (this.jdField_a_of_type_Apad == null) {
-      return;
-    }
-    this.jdField_a_of_type_Apad.a(1, 1);
   }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_Apad.jdField_a_of_type_Aplh.a() + "]onGetUrlCookies");
+    }
+    this.jdField_a_of_type_Apad.a(this.jdField_a_of_type_Apad.jdField_a_of_type_Aplh, this.jdField_a_of_type_Boolean);
+  }
+  
+  public void aC_() {}
+  
+  public void aD_() {}
 }
 
 

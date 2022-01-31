@@ -1,28 +1,43 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import java.lang.ref.WeakReference;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.List;
 
-class awwk
-  implements View.OnTouchListener
+public class awwk
+  implements awwo
 {
-  awwk(awwi paramawwi) {}
+  protected View a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public awwk(ViewGroup paramViewGroup)
   {
-    if (this.a.a != null)
-    {
-      acmv localacmv = (acmv)this.a.a.get();
-      if (localacmv != null) {
-        return localacmv.onTouch(paramView, paramMotionEvent);
-      }
-    }
-    return false;
+    this.a = new LinearLayout(paramViewGroup.getContext());
+    this.a.setVisibility(8);
+  }
+  
+  public View a()
+  {
+    return this.a;
+  }
+  
+  public TextView a()
+  {
+    return null;
+  }
+  
+  public List<awwp> a()
+  {
+    return null;
+  }
+  
+  public TextView b()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awwk
  * JD-Core Version:    0.7.0.1
  */

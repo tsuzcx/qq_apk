@@ -1,6 +1,15 @@
-public abstract interface vqr
+public class vqr
 {
-  public abstract void a(vqp paramvqp, float paramFloat);
+  public int a;
+  public String a;
+  public vqn<Boolean, vqs> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public vqn<Boolean, vqt> b;
+  public boolean b;
+  public int c;
+  public int d;
 }
 
 

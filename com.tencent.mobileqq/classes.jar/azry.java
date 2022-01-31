@@ -1,31 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import java.util.UUID;
 
-public class azry
-  implements View.OnTouchListener
+class azry
+  implements akte
 {
-  public azry(TroopPicEffectGuidePicActivity paramTroopPicEffectGuidePicActivity) {}
+  azry(azrx paramazrx, TroopFileTansferItemEntity paramTroopFileTansferItemEntity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0) {
-      paramView.setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      if ((i == 1) || (i == 3)) {
-        paramView.setAlpha(1.0F);
-      }
-    }
+    azsr.d("TroopFileDataBaseProxy", azsr.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish. table:" + paramString);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    azsr.d("TroopFileDataBaseProxy", azsr.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[up]. table:" + paramString);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    azsr.d("TroopFileDataBaseProxy", azsr.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[del]. table:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azry
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-
 public class vtd
-  implements DialogInterface.OnClickListener
 {
-  public vtd(QRDisplayActivity paramQRDisplayActivity) {}
+  public final int a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vtd(int paramInt)
   {
-    this.a.finish();
+    this.a = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vtd
  * JD-Core Version:    0.7.0.1
  */

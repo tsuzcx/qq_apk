@@ -1,26 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
-
-public final class bdof
-  implements Parcelable.Creator<EngineChannel>
+public class bdof
 {
-  public EngineChannel a(Parcel paramParcel)
-  {
-    EngineChannel localEngineChannel = new EngineChannel((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel), null);
-    localEngineChannel.a(paramParcel.readString());
-    return localEngineChannel;
-  }
+  public String a;
+  public String b;
   
-  public EngineChannel[] a(int paramInt)
+  public void a(String paramString)
   {
-    return new EngineChannel[paramInt];
+    this.b = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdof
  * JD-Core Version:    0.7.0.1
  */

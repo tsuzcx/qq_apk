@@ -1,35 +1,33 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class pel
 {
-  public static void a()
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    pep.a.a();
-  }
-  
-  private static void a(Context paramContext)
-  {
-    Intent localIntent = new Intent();
-    String str = pds.a().a("3978");
-    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppName", "daily_feeds");
-    pdu.a().getClass();
-    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppPath", str);
-    QLog.i("PTSHelper", 1, "[jumpToPTSDailyPage], dailyAppPath = " + str);
-    PublicFragmentActivity.a(paramContext, localIntent, PTSFragment.class);
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    if (!pep.a.a()) {}
-    while ((!pdu.a().a()) || (!pds.a().a("daily_feeds"))) {
-      return false;
-    }
-    a(paramContext);
-    return true;
+    JSONObject localJSONObject1 = new JSONObject();
+    pen.w(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_content_wrapper", new JSONObject());
+    localJSONObject1.put("id_article_wrapper", new JSONObject());
+    localJSONObject1.put("id_summary_wrapper", new JSONObject());
+    localJSONObject1.put("id_info_wrapper", new JSONObject());
+    pen.b(paramBaseArticleInfo, localJSONObject1);
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("summary_text", ajyc.a(2131712886));
+    localJSONObject1.put("id_summary", localJSONObject2);
+    localJSONObject1.put("id_image_content", new JSONObject());
+    localJSONObject2 = new JSONObject();
+    localJSONObject2.put("article_small_imge_url", paramBaseArticleInfo.mSinglePicture.getFile());
+    localJSONObject1.put("id_article_small_imge", localJSONObject2);
+    pen.a(paramBaseArticleInfo, localJSONObject1, true);
+    pen.e(paramBaseArticleInfo, localJSONObject1);
+    pen.m(paramBaseArticleInfo, localJSONObject1);
+    pen.C(paramBaseArticleInfo, localJSONObject1);
+    pen.D(paramBaseArticleInfo, localJSONObject1);
+    pen.b(localJSONObject1);
+    localJSONObject1.put("style_ID", "ReadInjoy_topic_recommend_pgc_small_cell");
+    return localJSONObject1;
   }
 }
 

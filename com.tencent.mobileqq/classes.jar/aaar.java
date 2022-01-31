@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mfsdk.MagnifierSDK;
 
-public class aaar
-  implements View.OnClickListener
+public final class aaar
+  implements aaao
 {
-  public aaar(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.a.onBackEvent();
+    if (MagnifierSDK.a != null) {
+      MagnifierSDK.a.a("result_objects", paramInt, 2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaar
  * JD-Core Version:    0.7.0.1
  */

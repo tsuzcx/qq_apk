@@ -1,34 +1,37 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.util.videoconverter.JBMR2VideoConverterImpl;
-import java.io.File;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
 
 public class awmx
+  extends awmv
 {
-  awna a;
-  
-  public awmx()
+  public awmx(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (Build.VERSION.SDK_INT >= 18) {
-      this.a = new JBMR2VideoConverterImpl();
+    super(paramQQAppInterface, paramInt, paramString1, paramString2, paramString3, paramString4);
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    if (!awvy.a(this.b)) {
+      awvy.a(paramView, this);
+    }
+    if (SearchConfigManager.needSeparate) {
+      awvy.a("search", "contact", "contacts", 0, 0, new String[] { awvy.a(this.b) });
     }
   }
   
-  public boolean a()
+  public CharSequence c()
   {
-    return (this.a != null) && (this.a.a());
-  }
-  
-  public boolean a(File paramFile, awmy paramawmy, boolean paramBoolean)
-  {
-    if (this.a != null) {
-      return this.a.a(paramFile, paramawmy, paramBoolean);
+    if (awvy.a(this.b)) {
+      return ajyc.a(2131702557);
     }
-    return false;
+    return ajyc.a(2131702524);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awmx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class acef
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnDismissListener
 {
-  public acef(UpgradeActivity paramUpgradeActivity) {}
+  public acef(SubLoginActivity paramSubLoginActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramInt == 4) {
-      this.a.finish();
-    }
-    return false;
+    this.a.b = false;
   }
 }
 

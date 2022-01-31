@@ -1,16 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import com.tencent.ad.tangram.log.AdLogAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-public class ysg
-  implements View.OnClickListener
+public final class ysg
+  implements AdLogAdapter
 {
-  public ysg(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
-  
-  public void onClick(View paramView)
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    GdtVideoImaxFragment.a(this.a);
-    GdtVideoImaxFragment.b(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2, paramThrowable);
+    }
   }
 }
 

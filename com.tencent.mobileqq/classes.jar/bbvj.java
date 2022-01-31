@@ -1,34 +1,26 @@
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.open.agent.BindGroupFragment;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
 
 public class bbvj
-  implements behi
+  implements View.OnClickListener
 {
-  public bbvj(BindGroupFragment paramBindGroupFragment) {}
+  public bbvj(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    paramAdapterView = ((bbvb)paramView.getTag()).a;
-    if (paramAdapterView.isThirdAppBind())
+    if (this.a.getRequestedOrientation() == 0)
     {
-      BindGroupFragment.b(this.a, ajjy.a(2131635331));
+      this.a.setRequestedOrientation(1);
       return;
     }
-    if (paramAdapterView.isNewTroop())
-    {
-      BindGroupFragment.a(this.a, ajjy.a(2131635317), paramAdapterView.troopuin);
-      return;
-    }
-    BindGroupFragment.a(this.a, ajjy.a(2131635320));
-    ((ajtg)BindGroupFragment.a(this.a).a(20)).a(Integer.valueOf(BindGroupFragment.a(this.a)).intValue(), Integer.valueOf(BindGroupFragment.b(this.a)).intValue(), Long.valueOf(paramAdapterView.troopuin).longValue(), BindGroupFragment.c(this.a));
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbvj
  * JD-Core Version:    0.7.0.1
  */

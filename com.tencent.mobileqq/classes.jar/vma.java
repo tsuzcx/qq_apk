@@ -1,6 +1,18 @@
-public abstract interface vma
+class vma
+  implements tey
 {
-  public abstract void a(vly paramvly);
+  vma(vlv paramvlv, vmi paramvmi) {}
+  
+  public void a(boolean paramBoolean, teu paramteu)
+  {
+    veg.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
+    if ((paramBoolean) && (paramteu != null))
+    {
+      this.jdField_a_of_type_Vlv.a(paramteu.b, paramteu.a, this.jdField_a_of_type_Vmi);
+      return;
+    }
+    veg.e("DoodleEmojiManager", "onLbsUpdate failed.");
+  }
 }
 
 

@@ -1,124 +1,45 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
 
 public class aiet
+  extends BroadcastReceiver
 {
-  private static aiet jdField_a_of_type_Aiet;
-  private Map<Long, aieu> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<Long, Long> b = new HashMap();
+  public aiet(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public static aiet a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (jdField_a_of_type_Aiet == null) {
-      jdField_a_of_type_Aiet = new aiet();
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.app.getApp().getPackageName()))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectMemberActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
+      }
     }
-    return jdField_a_of_type_Aiet;
-  }
-  
-  public int a(long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
+    int i;
+    int j;
+    do
     {
-      aieu localaieu = (aieu)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-      if (l - localaieu.jdField_a_of_type_Long < 3600000L)
+      do
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is true");
-        }
-        return localaieu.jdField_a_of_type_Int;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
-      }
-      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-      return 0;
+        return;
+      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
+      i = paramIntent.getIntExtra("stopReason", 0);
+      j = paramIntent.getIntExtra("stopReason3rd", -1);
+    } while (((i != 0) && (j != 1)) || ((this.a.d != 11) && (this.a.d != 36)));
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectMemberActivity", 2, "ACTION_STOP_VIDEO_CHAT");
     }
-    if (this.b.containsKey(Long.valueOf(paramLong)))
-    {
-      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() < 43200000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is false");
-        }
-        return 0;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
-      }
-      this.b.remove(Long.valueOf(paramLong));
-      return 0;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AntiFraud", 4, "use default value, false");
-    }
-    return 0;
-  }
-  
-  public void a(long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    if (this.b.size() > 500) {
-      this.b.clear();
-    }
-    this.b.put(Long.valueOf(paramLong), Long.valueOf(l));
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
-      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-    }
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    long l = System.currentTimeMillis();
-    aieu localaieu = new aieu(this);
-    localaieu.jdField_a_of_type_Int = paramInt;
-    localaieu.jdField_a_of_type_Long = l;
-    if (this.jdField_a_of_type_JavaUtilMap.size() > 500) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localaieu);
-    if (this.b.containsKey(Long.valueOf(paramLong))) {
-      this.b.remove(Long.valueOf(paramLong));
-    }
-  }
-  
-  public boolean a(long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
-    {
-      if (l - ((aieu)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Long > 3600000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "FraudUin, Found from local cache, timestamp is out of data");
-        }
-        this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-        return true;
-      }
-      return false;
-    }
-    if (this.b.containsKey(Long.valueOf(paramLong)))
-    {
-      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() > 43200000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "NonFraudUin, Found from local cache, timestamp is out of data");
-        }
-        this.b.remove(Long.valueOf(paramLong));
-        return true;
-      }
-      return false;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AntiFraud", 4, "Out of date, use default value, true!");
-    }
-    return true;
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aiet
  * JD-Core Version:    0.7.0.1
  */

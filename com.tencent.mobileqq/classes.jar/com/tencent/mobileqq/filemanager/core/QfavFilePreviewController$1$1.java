@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Bundle;
-import anxs;
-import aolw;
-import aolx;
+import aool;
+import apcq;
+import apcr;
 import com.tencent.qphone.base.util.QLog;
 
 public class QfavFilePreviewController$1$1
   implements Runnable
 {
-  public QfavFilePreviewController$1$1(aolx paramaolx, Bundle paramBundle) {}
+  public QfavFilePreviewController$1$1(apcr paramapcr, Bundle paramBundle) {}
   
   public void run()
   {
     boolean bool = true;
-    aolw.a(this.jdField_a_of_type_Aolx.a, this.jdField_a_of_type_AndroidOsBundle.getInt("previewPort", 80));
-    aolw.a(this.jdField_a_of_type_Aolx.a, this.jdField_a_of_type_AndroidOsBundle.getLong("previewCode", 0L));
-    aolw.a(this.jdField_a_of_type_Aolx.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewUid"));
-    aolw.b(this.jdField_a_of_type_Aolx.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewHost"));
-    aolw.c(this.jdField_a_of_type_Aolx.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewKey"));
+    apcq.a(this.jdField_a_of_type_Apcr.a, this.jdField_a_of_type_AndroidOsBundle.getInt("previewPort", 80));
+    apcq.a(this.jdField_a_of_type_Apcr.a, this.jdField_a_of_type_AndroidOsBundle.getLong("previewCode", 0L));
+    apcq.a(this.jdField_a_of_type_Apcr.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewUid"));
+    apcq.b(this.jdField_a_of_type_Apcr.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewHost"));
+    apcq.c(this.jdField_a_of_type_Apcr.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewKey"));
     if (QLog.isColorLevel()) {
-      QLog.i("QfavFilePreviewController", 2, "handleRemoteCmd: mHost=" + aolw.a(this.jdField_a_of_type_Aolx.a) + ", port=" + String.valueOf(aolw.a(this.jdField_a_of_type_Aolx.a)) + ", key=" + aolw.b(this.jdField_a_of_type_Aolx.a) + ", retCode =" + String.valueOf(aolw.a(this.jdField_a_of_type_Aolx.a)));
+      QLog.i("QfavFilePreviewController", 2, "handleRemoteCmd: mHost=" + apcq.a(this.jdField_a_of_type_Apcr.a) + ", port=" + String.valueOf(apcq.a(this.jdField_a_of_type_Apcr.a)) + ", key=" + apcq.b(this.jdField_a_of_type_Apcr.a) + ", retCode =" + String.valueOf(apcq.a(this.jdField_a_of_type_Apcr.a)));
     }
-    anxs localanxs;
-    if (1 == aolw.b(this.jdField_a_of_type_Aolx.a))
+    aool localaool;
+    if (1 == apcq.b(this.jdField_a_of_type_Apcr.a))
     {
-      localanxs = this.jdField_a_of_type_Aolx.a.a;
-      if (0L != aolw.a(this.jdField_a_of_type_Aolx.a)) {
+      localaool = this.jdField_a_of_type_Apcr.a.a;
+      if (0L != apcq.a(this.jdField_a_of_type_Apcr.a)) {
         break label321;
       }
     }
     for (;;)
     {
-      localanxs.a(bool, aolw.a(this.jdField_a_of_type_Aolx.a), String.valueOf(aolw.a(this.jdField_a_of_type_Aolx.a)), aolw.a(this.jdField_a_of_type_Aolx.a), null, aolw.b(this.jdField_a_of_type_Aolx.a), null, aolw.c(this.jdField_a_of_type_Aolx.a), null);
-      aolw.b(this.jdField_a_of_type_Aolx.a, 3);
+      localaool.a(bool, apcq.a(this.jdField_a_of_type_Apcr.a), String.valueOf(apcq.a(this.jdField_a_of_type_Apcr.a)), apcq.a(this.jdField_a_of_type_Apcr.a), null, apcq.b(this.jdField_a_of_type_Apcr.a), null, apcq.c(this.jdField_a_of_type_Apcr.a), null);
+      apcq.b(this.jdField_a_of_type_Apcr.a, 3);
       return;
       label321:
       bool = false;

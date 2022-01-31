@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bdcz;
-import bdfz;
-import bdgh;
-import bdit;
-import bdnw;
-import bdzd;
+import begz;
+import beka;
+import bekh;
+import bemw;
+import besl;
+import bfgt;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import org.json.JSONObject;
@@ -18,57 +18,57 @@ public class MapJsPlugin
   public static final String LOCATION_TYPE_84 = "wgs84";
   private static final String TAG = "MapJsPlugin";
   
-  public void chooseLocation(bdfz parambdfz)
+  public void chooseLocation(beka parambeka)
   {
-    if (!((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).chooseLocation(this.mMiniAppContext.a(), new MapJsPlugin.2(this, parambdfz)))
+    if (!((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).chooseLocation(this.mMiniAppContext.a(), new MapJsPlugin.2(this, parambeka)))
     {
-      bdit.a(this.mMiniAppContext.a(), 0, "暂不支持在" + bdzd.a(this.mContext) + "中选择定位", 1);
-      parambdfz.a("app not implement");
+      bemw.a(this.mMiniAppContext.a(), 0, "暂不支持在" + bfgt.a(this.mContext) + "中选择定位", 1);
+      parambeka.a("app not implement");
       return;
     }
-    parambdfz.a();
+    parambeka.a();
   }
   
-  public void getLocation(bdfz parambdfz)
+  public void getLocation(beka parambeka)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambdfz.b);
-      getLocationJsonObject(parambdfz, localJSONObject.optString("type"), localJSONObject.optString("altitude"), new MapJsPlugin.1(this, parambdfz));
+      JSONObject localJSONObject = new JSONObject(parambeka.b);
+      getLocationJsonObject(parambeka, localJSONObject.optString("type"), localJSONObject.optString("altitude"), new MapJsPlugin.1(this, parambeka));
       return;
     }
     catch (Exception localException)
     {
-      bdnw.d("MapJsPlugin", parambdfz.a + " error, ", localException);
-      parambdfz.b();
+      besl.d("MapJsPlugin", parambeka.a + " error, ", localException);
+      parambeka.b();
     }
   }
   
-  public void getLocationJsonObject(bdfz parambdfz, String paramString1, String paramString2, bdgh parambdgh)
+  public void getLocationJsonObject(beka parambeka, String paramString1, String paramString2, bekh parambekh)
   {
     if ((!"gcj02".equals(paramString1)) && (!"wgs84".equals(paramString1)))
     {
-      bdnw.d("MapJsPlugin", "getLocationJsonObject type is not support.");
-      parambdfz.a("invalid data,type error");
+      besl.d("MapJsPlugin", "getLocationJsonObject type is not support.");
+      parambeka.a("invalid data,type error");
     }
     for (;;)
     {
       return;
       if (!TextUtils.isEmpty(paramString2)) {}
-      for (boolean bool = true; !((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getLocation(paramString1, bool, new MapJsPlugin.3(this, parambdgh, parambdfz)); bool = false)
+      for (boolean bool = true; !((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getLocation(this.mMiniAppContext.a(), paramString1, bool, new MapJsPlugin.3(this, parambekh, parambeka)); bool = false)
       {
-        bdit.a(this.mMiniAppContext.a(), 0, "暂不支持在" + bdzd.a(this.mContext) + "中定位", 1);
-        parambdfz.a("app not implement");
+        bemw.a(this.mMiniAppContext.a(), 0, "暂不支持在" + bfgt.a(this.mContext) + "中定位", 1);
+        parambeka.a("app not implement");
         return;
       }
     }
   }
   
-  public void openLocation(bdfz parambdfz)
+  public void openLocation(beka parambeka)
   {
     try
     {
-      Object localObject = new JSONObject(parambdfz.b);
+      Object localObject = new JSONObject(parambeka.b);
       double d1 = ((JSONObject)localObject).optDouble("latitude");
       double d2 = ((JSONObject)localObject).optDouble("longitude");
       int i = ((JSONObject)localObject).optInt("scale", 18);
@@ -76,17 +76,17 @@ public class MapJsPlugin
       localObject = ((JSONObject)localObject).optString("address");
       if (!((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).openLocation(this.mMiniAppContext.a(), d1, d2, i, str, (String)localObject))
       {
-        bdit.a(this.mMiniAppContext.a(), 0, "暂不支持在" + bdzd.a(this.mContext) + "中打开地图", 1);
-        parambdfz.a("app not implement");
+        bemw.a(this.mMiniAppContext.a(), 0, "暂不支持在" + bfgt.a(this.mContext) + "中打开地图", 1);
+        parambeka.a("app not implement");
         return;
       }
-      parambdfz.a();
+      parambeka.a();
       return;
     }
     catch (Exception localException)
     {
-      bdnw.d("MapJsPlugin", parambdfz.a + " error, ", localException);
-      parambdfz.b();
+      besl.d("MapJsPlugin", parambeka.a + " error, ", localException);
+      parambeka.b();
     }
   }
 }

@@ -1,85 +1,85 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-class aqhz
-  extends BroadcastReceiver
+public class aqhz
+  extends asku
 {
-  private final String jdField_a_of_type_JavaLangString = "reason";
-  private final String b = "homekey";
+  public aqhz(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
   
-  aqhz(aqhx paramaqhx) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItemEventManager", 2, "onReceive ===>" + paramContext);
-    }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
-    {
-      paramContext = aqhx.a(this.jdField_a_of_type_Aqhx).iterator();
-      while (paramContext.hasNext()) {
-        ((aqia)paramContext.next()).b(false);
-      }
-    }
-    if ("android.intent.action.SCREEN_ON".equals(paramContext))
-    {
-      paramContext = aqhx.a(this.jdField_a_of_type_Aqhx).iterator();
-      while (paramContext.hasNext()) {
-        ((aqia)paramContext.next()).b(true);
-      }
-    }
-    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
-    {
-      paramContext = aqhx.a(this.jdField_a_of_type_Aqhx).iterator();
-      while (paramContext.hasNext()) {
-        ((aqia)paramContext.next()).c(true);
-      }
-    }
-    if ("tencent.av.v2q.StopVideoChat".equals(paramContext))
-    {
-      paramContext = aqhx.a(this.jdField_a_of_type_Aqhx).iterator();
-      while (paramContext.hasNext()) {
-        ((aqia)paramContext.next()).c(false);
-      }
-    }
-    if ("VolumeBtnDown".equals(paramIntent.getAction()))
-    {
-      paramContext = aqhx.a(this.jdField_a_of_type_Aqhx).iterator();
-      while (paramContext.hasNext()) {
-        ((aqia)paramContext.next()).i();
-      }
-    }
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if (paramContext != null) {
-        break label294;
-      }
+    if (paramBoolean) {
+      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! is success");
     }
     for (;;)
     {
+      super.a(paramBoolean);
       return;
-      label294:
-      if (paramContext.equals("homekey"))
-      {
-        paramContext = aqhx.a(this.jdField_a_of_type_Aqhx).iterator();
-        while (paramContext.hasNext())
-        {
-          ((aqia)paramContext.next()).h();
-          QLog.d("VideoItemEventManager", 2, "onReceive ===>homekey press");
-        }
-      }
+      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! confirm token is failed!");
+    }
+  }
+  
+  public void a(boolean paramBoolean, asly paramasly)
+  {
+    if (paramBoolean)
+    {
+      MsgBackupSettingFragment.a(this.a, paramasly);
+      QLog.d("MsgBackup", 1, "onQueryStateResponse called! qrStateResponse = " + MsgBackupSettingFragment.a(this.a));
+    }
+    for (;;)
+    {
+      super.a(paramBoolean, paramasly);
+      return;
+      QLog.d("MsgBackup", 1, "onQueryStateResponse called! query qr state is failed!");
+    }
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && ((paramObject instanceof asls)))
+    {
+      MsgBackupSettingFragment.a = (asls)paramObject;
+      QLog.d("MsgBackup", 1, "onGetQrResponse called! qrResponse = " + MsgBackupSettingFragment.a);
+    }
+    for (;;)
+    {
+      super.a(paramBoolean, paramObject);
+      return;
+      QLog.d("MsgBackup", 1, "onGetQrResponse called! request qrCode is failed!");
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      QLog.d("MsgBackup", 1, "onRejectQRResponse called! is success");
+    }
+    for (;;)
+    {
+      super.b(paramBoolean);
+      return;
+      QLog.d("MsgBackup", 1, "onRejectQRResponse called! reject qr is failed!");
+    }
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      MsgBackupSettingFragment.a(this.a, (aslo)paramObject);
+      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! qrConfirmReponse = " + MsgBackupSettingFragment.a(this.a));
+    }
+    for (;;)
+    {
+      super.b(paramBoolean, paramObject);
+      return;
+      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! confirm qrCode is failed!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqhz
  * JD-Core Version:    0.7.0.1
  */

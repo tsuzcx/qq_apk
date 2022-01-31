@@ -1,59 +1,62 @@
-import com.tencent.kwstudio.office.preview.IHostInterface.IDownloadListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
-public final class aosj
-  implements axrt
+public class aosj
+  implements View.OnClickListener
 {
-  private final IHostInterface.IDownloadListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener;
-  private final String jdField_a_of_type_JavaLangString;
+  public aosj(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  private aosj(String paramString, IHostInterface.IDownloadListener paramIDownloadListener)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener = paramIDownloadListener;
-  }
-  
-  public void onResp(axsq paramaxsq)
-  {
-    int i = 0;
-    if (paramaxsq.jdField_a_of_type_Int == 3) {}
-    label74:
-    label80:
+    Object localObject1 = paramView.getTag();
+    FileInfo localFileInfo;
+    if ((localObject1 instanceof aosr))
+    {
+      localObject1 = (aosr)paramView.getTag();
+      localFileInfo = (FileInfo)((aosr)localObject1).jdField_a_of_type_JavaLangObject;
+      localObject1 = ((aosr)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+    }
     for (;;)
     {
-      return;
-      boolean bool;
-      if (paramaxsq.jdField_a_of_type_Int == 0)
+      if ((paramView.getId() == 2131366211) && (QfileBaseLocalFileTabView.b(this.a))) {
+        axqw.b(QfileBaseLocalFileTabView.b(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+      }
+      Object localObject2;
+      if (localFileInfo != null)
       {
-        bool = true;
-        if (!bool) {
-          break label74;
+        localObject2 = this.a;
+        if (paramView.getId() != 2131366211) {
+          break label238;
         }
       }
-      for (;;)
+      label238:
+      for (boolean bool = true;; bool = false)
       {
-        if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener == null) {
-          break label80;
-        }
-        if (bool) {
-          this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramaxsq.jdField_a_of_type_Long, 1.0F);
-        }
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadFinished(this.jdField_a_of_type_JavaLangString, bool, i);
+        ((QfileBaseLocalFileTabView)localObject2).a(localFileInfo, (View)localObject1, bool);
         return;
-        bool = false;
+        if (!(localObject1 instanceof aopv)) {
+          break label243;
+        }
+        localObject2 = (aopv)paramView.getTag();
+        localFileInfo = (FileInfo)((aopv)localObject2).jdField_a_of_type_JavaLangObject;
+        localObject1 = ((aopv)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+        if ((this.a.a.g()) || (this.a.a.h()))
+        {
+          SharedPreferences.Editor localEditor = this.a.a.getSharedPreferences("LAST_CHOOSE_", 0).edit();
+          localEditor.putInt("GROUP", ((aopv)localObject2).b);
+          localEditor.putInt("CHILD", (((aopv)localObject2).jdField_a_of_type_Int + 1) / 4);
+          localEditor.commit();
+        }
         break;
-        i = paramaxsq.b;
       }
-    }
-  }
-  
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2)
-  {
-    if (paramLong2 != 0L)
-    {
-      float f = (float)paramLong1 / (float)paramLong2;
-      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener != null) {
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramLong2, f);
-      }
+      label243:
+      localObject1 = null;
+      localFileInfo = null;
     }
   }
 }

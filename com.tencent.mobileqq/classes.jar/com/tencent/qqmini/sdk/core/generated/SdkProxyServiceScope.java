@@ -10,6 +10,8 @@ public final class SdkProxyServiceScope
   static
   {
     PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.ChannelProxy", "com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault");
+    PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.KingCardProxy", "com.tencent.qqmini.sdk.core.proxy.service.KingCardProxyDefault");
+    PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.WnsConfigProxy", "com.tencent.qqmini.sdk.core.proxy.service.WnsConfigProxyDefault");
     PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.ShareProxy", "com.tencent.qqmini.sdk.core.proxy.service.ShareProxyDefault");
     PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy", "com.tencent.qqmini.sdk.core.proxy.service.VideoPlayerProxyDefault");
     PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.RequestProxy", "com.tencent.qqmini.sdk.core.proxy.service.RequestProxyDefault");

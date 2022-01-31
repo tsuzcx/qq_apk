@@ -1,20 +1,11 @@
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.apollo.ApolloTicker.NativeDrawTask;
+import java.util.Timer;
 
 public class aiwt
-  extends aixm
 {
-  aiwt(aiws paramaiws) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0) {
-      ThreadManager.getUIHandler().post(new AVEngineWalper.1.1(this));
-    }
-  }
+  public int a;
+  public ApolloTicker.NativeDrawTask a;
+  public Timer a;
 }
 
 

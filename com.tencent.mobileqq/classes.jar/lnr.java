@@ -1,31 +1,32 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.ReqGroupVideo.ReqShareBackflowVerify;
-import com.tencent.av.ReqGroupVideo.RspShareBackflowVerify;
-import com.tencent.av.share.AVSchema;
-import com.tencent.av.share.AVSchema.MyMsgListener.1;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 public class lnr
-  extends kwr<ReqGroupVideo.ReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify>
 {
-  public lnq a;
+  public int a;
+  final long jdField_a_of_type_Long = AudioHelper.b();
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  public int d;
+  public int e;
   
-  public lnr(AVSchema paramAVSchema, lnq paramlnq)
+  public lnr(AVNotifyCenter paramAVNotifyCenter) {}
+  
+  public boolean a()
   {
-    this.jdField_a_of_type_Lnq = paramlnq;
+    return (this.jdField_b_of_type_Int == 2) && (this.jdField_c_of_type_Int == 2) && (this.d == 4);
   }
   
-  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqShareBackflowVerify paramReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify paramRspShareBackflowVerify, Object paramObject)
+  public String toString()
   {
-    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached()) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new AVSchema.MyMsgListener.1(this, paramRspShareBackflowVerify, paramLong));
+    return "seq[" + this.jdField_a_of_type_Long + "], relationId[" + this.jdField_b_of_type_Long + "], avtype[" + this.jdField_b_of_type_Int + "], roomMode[" + this.jdField_c_of_type_Int + "], gameId[" + this.d + "], memberNum[" + this.jdField_a_of_type_Int + "], event[" + this.e + "], time[" + this.jdField_c_of_type_Long + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lnr
  * JD-Core Version:    0.7.0.1
  */

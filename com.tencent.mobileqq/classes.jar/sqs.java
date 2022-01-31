@@ -1,296 +1,138 @@
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.UnionIdMapEntity;
-import com.tencent.biz.qqstory.database.UserEntry;
-import com.tencent.biz.qqstory.model.UserManager.1;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class sqs
-  implements spo
+  extends sqq<sra>
 {
-  protected sfq<String, QQUserUIItem> a;
-  private sxp a;
-  
   public sqs()
   {
-    this.jdField_a_of_type_Sfq = new sfq(300);
-    this.jdField_a_of_type_Sxp = new sxp();
+    a(new sra());
   }
   
-  private QQStoryContext a()
+  private List<sqb> a(srd paramsrd, int paramInt1, int paramInt2)
   {
-    return QQStoryContext.a();
-  }
-  
-  protected static String a(String paramString)
-  {
-    return "k_" + paramString;
-  }
-  
-  public static List<? extends atmo> a(atmp paramatmp, Class<? extends atmo> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    return paramatmp.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
-  }
-  
-  public QQUserUIItem a()
-  {
-    return b(QQStoryContext.a().b());
-  }
-  
-  public QQUserUIItem a(QQUserUIItem paramQQUserUIItem)
-  {
-    String str = paramQQUserUIItem.uid;
-    b(str);
-    paramQQUserUIItem = (QQUserUIItem)this.jdField_a_of_type_Sfq.a(a(str), paramQQUserUIItem);
-    a().a().createEntityManager().b(paramQQUserUIItem.convert2UserEntry());
-    return paramQQUserUIItem;
-  }
-  
-  public QQUserUIItem a(@NonNull String paramString)
-  {
-    vkw.a(paramString);
-    QQUserUIItem localQQUserUIItem = b(paramString);
-    paramString = localQQUserUIItem;
-    if (localQQUserUIItem == null)
+    if (((paramInt1 != -1) && (paramsrd.jdField_a_of_type_Sre.jdField_a_of_type_Int >= paramInt1)) || (paramsrd.jdField_a_of_type_JavaUtilList.size() <= 0))
     {
-      paramString = new QQUserUIItem();
-      paramString.uid = QQStoryContext.a().b();
-      paramString.qq = tfy.a().getCurrentAccountUin();
-      paramString.nickName = tfy.a().getCurrentNickname();
-      paramString.headUrl = "";
-      urk.d("Q.qqstory.user.UserManager", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { paramString.toString() });
-    }
-    return paramString;
-  }
-  
-  @Nullable
-  public QQUserUIItem a(@NonNull String paramString, boolean paramBoolean)
-  {
-    String str = paramString;
-    if ("0_1000".equals(paramString)) {
-      str = (String)((spz)sqg.a(10)).b("qqstory_my_union_id", paramString);
-    }
-    QQUserUIItem localQQUserUIItem = (QQUserUIItem)this.jdField_a_of_type_Sfq.a(a(str));
-    paramString = localQQUserUIItem;
-    if (localQQUserUIItem == null)
-    {
-      if (paramBoolean) {
-        break label62;
-      }
-      paramString = localQQUserUIItem;
-    }
-    label62:
-    do
-    {
-      return paramString;
-      localQQUserUIItem = d(str);
-      paramString = localQQUserUIItem;
-    } while (localQQUserUIItem != null);
-    urk.d("Q.qqstory.user.UserManager", "%s get userItem is null", new Object[] { str });
-    return localQQUserUIItem;
-  }
-  
-  public String a(String paramString, boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "-9";
-    }
-    if (QQStoryContext.a().a(paramString)) {
-      return QQStoryContext.a().a();
-    }
-    Object localObject = b(paramString);
-    if ((localObject != null) && (!TextUtils.isEmpty(((QQUserUIItem)localObject).qq))) {
-      return ((QQUserUIItem)localObject).qq;
-    }
-    localObject = a(a().a().createEntityManager(), UnionIdMapEntity.class, UnionIdMapEntity.class.getSimpleName(), UnionIdMapEntity.selectionUnionId(), new String[] { paramString });
-    if ((localObject != null) && (((List)localObject).size() > 0)) {
-      return ((UnionIdMapEntity)((List)localObject).get(0)).qq;
-    }
-    if (paramBoolean) {}
-    for (localObject = "wait and ask from net";; localObject = "ret")
-    {
-      urk.d("Q.qqstory.user.UserManager", "unionId %s cannot find uin ,%s", new Object[] { paramString, localObject });
-      localObject = new srn("-9", paramString);
-      a(1, (srn)localObject);
-      if (paramBoolean) {
-        break;
-      }
-      return "-9";
-    }
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      urk.e("Q.qqstory.user.UserManager", "Cannot req on UI thread");
-      return "-9";
-    }
-    try
-    {
-      localObject.wait(10000L);
-      urk.d("Q.qqstory.user.UserManager", "%s wait end", new Object[] { paramString });
-      return ((srn)localObject).a;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
+      if (paramsrd.a() >= ((sra)a()).b)
       {
-        urk.d("Q.qqstory.user.UserManager", "%s wait exception", new Object[] { paramString, localInterruptedException });
+        localObject1 = new sqb(((sra)a()).jdField_a_of_type_Int);
+        ((sqb)localObject1).a(this.a);
+        ((sqb)localObject1).d = paramsrd.jdField_a_of_type_Sre.jdField_a_of_type_JavaLangString;
+        ((sqb)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
+        localObject2 = paramsrd.a().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (srd)((Iterator)localObject2).next();
+          ((sqb)localObject1).jdField_a_of_type_JavaUtilList.add(((srd)localObject3).jdField_a_of_type_Sre.jdField_a_of_type_JavaLangString);
+        }
+        paramsrd.a();
+        veg.a("Q.qqstory.recommendAlbum.logic_GeoHashSplitStrategy", "find leaf album=%s", localObject1);
+        paramsrd = new ArrayList(1);
+        paramsrd.add(localObject1);
+        return paramsrd;
       }
-    }
-    finally {}
-  }
-  
-  public void a() {}
-  
-  protected void a(int paramInt, srn paramsrn)
-  {
-    if (paramInt == 1) {}
-    for (Object localObject = "unionId";; localObject = "uin")
-    {
-      urk.d("Q.qqstory.user.UserManager", "start get user id: %s , convert from %s", new Object[] { paramsrn, localObject });
-      long l = System.currentTimeMillis();
-      localObject = new szg();
-      ((szg)localObject).c = paramInt;
-      ((szg)localObject).a.add(paramsrn);
-      boolean bool = paramsrn.a();
-      slv.a().a((slz)localObject, new sqt(this, paramsrn, bool, l));
-      return;
-    }
-  }
-  
-  public void a(@NonNull String paramString1, @NonNull String paramString2)
-  {
-    vkw.a(paramString1);
-    vkw.a(paramString2);
-    atmp localatmp = a().a().createEntityManager();
-    UnionIdMapEntity localUnionIdMapEntity = new UnionIdMapEntity();
-    localUnionIdMapEntity.unionId = paramString1;
-    localUnionIdMapEntity.qq = paramString2;
-    localatmp.b(localUnionIdMapEntity);
-  }
-  
-  public void a(@NonNull String paramString, sxq paramsxq)
-  {
-    QQUserUIItem localQQUserUIItem = a(paramString, false);
-    sxr localsxr = new sxr();
-    if (localQQUserUIItem != null)
-    {
-      localsxr.a = localQQUserUIItem;
-      paramsxq.a(localsxr);
-      return;
-    }
-    ThreadManager.excute(new UserManager.1(this, paramString, localsxr, paramsxq), 32, null, true);
-  }
-  
-  public boolean a(String paramString)
-  {
-    return ahwj.a(QQStoryContext.a().getCurrentAccountUin() + paramString);
-  }
-  
-  @Nullable
-  public QQUserUIItem b(@NonNull String paramString)
-  {
-    return a(paramString, true);
-  }
-  
-  public String b(String paramString, boolean paramBoolean)
-  {
-    Object localObject = e(paramString);
-    if ((localObject != null) && (!TextUtils.isEmpty(((QQUserUIItem)localObject).uid))) {
-      return ((QQUserUIItem)localObject).uid;
-    }
-    localObject = a(a().a().createEntityManager(), UnionIdMapEntity.class, UnionIdMapEntity.class.getSimpleName(), UnionIdMapEntity.selectionQQ(), new String[] { paramString });
-    if ((localObject != null) && (((List)localObject).size() > 0)) {
-      return ((UnionIdMapEntity)((List)localObject).get(0)).unionId;
-    }
-    if (paramBoolean) {}
-    for (localObject = "wait and ask from net";; localObject = "ret")
-    {
-      urk.d("Q.qqstory.user.UserManager", "qq %s cannot find unionid ,%s", new Object[] { paramString, localObject });
-      localObject = new srn(paramString, "");
-      a(0, (srn)localObject);
-      if (paramBoolean) {
-        break;
-      }
-      return "";
-    }
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      urk.e("Q.qqstory.user.UserManager", "Cannot req on UI thread");
-      return "";
-    }
-    try
-    {
-      localObject.wait(10000L);
-      urk.d("Q.qqstory.user.UserManager", "%s wait end", new Object[] { paramString });
-      return ((srn)localObject).b;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        urk.d("Q.qqstory.user.UserManager", "%s wait exception", new Object[] { paramString, localInterruptedException });
-      }
-    }
-    finally {}
-  }
-  
-  public void b() {}
-  
-  public QQUserUIItem c(@NonNull String paramString)
-  {
-    QQUserUIItem localQQUserUIItem = b(paramString);
-    if ((localQQUserUIItem == null) || (!localQQUserUIItem.isAvailable())) {
-      this.jdField_a_of_type_Sxp.a(paramString);
-    }
-    return localQQUserUIItem;
-  }
-  
-  public void c()
-  {
-    String str = QQStoryContext.a().b();
-    if ((str.equals("0_1000")) || (a() == null))
-    {
-      urk.d("Q.qqstory.user.UserManager", "current union %s is default or userItem is null", new Object[] { str });
-      a(1, new srn(QQStoryContext.a().a(), str));
-    }
-  }
-  
-  @Nullable
-  protected QQUserUIItem d(String paramString)
-  {
-    Object localObject = a(a().a().createEntityManager(), UserEntry.class, UserEntry.class.getSimpleName(), UserEntry.getUserSelectionNoArg(), new String[] { paramString });
-    if ((localObject == null) || (((List)localObject).size() == 0))
-    {
-      urk.a("Q.qqstory.user.UserManager", "%s cannot get userItem from db", paramString);
       return null;
     }
-    paramString = (UserEntry)((List)localObject).get(0);
-    localObject = new QQUserUIItem(paramString);
-    return (QQUserUIItem)this.jdField_a_of_type_Sfq.a(a(paramString.unionId), (sfp)localObject);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Sfq.a(0);
-  }
-  
-  protected QQUserUIItem e(String paramString)
-  {
-    Object localObject = a(a().a().createEntityManager(), UserEntry.class, UserEntry.class.getSimpleName(), UserEntry.getUserSelectionByQQ(), new String[] { paramString });
-    if ((localObject == null) || (((List)localObject).size() == 0))
+    Object localObject1 = new ArrayList();
+    Object localObject2 = new ArrayList();
+    Object localObject3 = paramsrd.jdField_a_of_type_JavaUtilList.iterator();
+    int i = 0;
+    Object localObject4;
+    Object localObject5;
+    if (((Iterator)localObject3).hasNext())
     {
-      urk.a("Q.qqstory.user.UserManager", "qq %s cannot get userItem from db", paramString);
-      return null;
+      localObject4 = (srd)((Iterator)localObject3).next();
+      localObject5 = a((srd)localObject4, paramInt1, paramInt2);
+      if ((localObject5 != null) && (((List)localObject5).size() > 0)) {
+        ((List)localObject1).addAll((Collection)localObject5);
+      }
+      for (;;)
+      {
+        break;
+        ((ArrayList)localObject2).add(localObject4);
+        i = ((srd)localObject4).a() + i;
+      }
     }
-    paramString = (UserEntry)((List)localObject).get(0);
-    localObject = new QQUserUIItem(paramString);
-    return (QQUserUIItem)this.jdField_a_of_type_Sfq.a(a(paramString.qq), (sfp)localObject);
+    if ((((ArrayList)localObject2).size() > 0) && (i >= ((sra)a()).b) && (paramsrd.jdField_a_of_type_Sre.jdField_a_of_type_Int >= paramInt2))
+    {
+      localObject3 = new sqb(((sra)a()).jdField_a_of_type_Int);
+      ((sqb)localObject3).a(this.a);
+      ((sqb)localObject3).d = paramsrd.jdField_a_of_type_Sre.jdField_a_of_type_JavaLangString;
+      ((sqb)localObject3).jdField_a_of_type_JavaUtilList = new ArrayList();
+      localObject2 = ((ArrayList)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject4 = ((srd)((Iterator)localObject2).next()).a().iterator();
+        while (((Iterator)localObject4).hasNext())
+        {
+          localObject5 = (srd)((Iterator)localObject4).next();
+          ((sqb)localObject3).jdField_a_of_type_JavaUtilList.add(((srd)localObject5).jdField_a_of_type_Sre.jdField_a_of_type_JavaLangString);
+        }
+      }
+      paramsrd.a();
+      veg.a("Q.qqstory.recommendAlbum.logic_GeoHashSplitStrategy", "find children album=%s", localObject3);
+      ((List)localObject1).add(localObject3);
+    }
+    return localObject1;
+  }
+  
+  private src a(HashMap<String, List<sqc>> paramHashMap)
+  {
+    paramHashMap = new src(paramHashMap);
+    paramHashMap.a();
+    return paramHashMap;
+  }
+  
+  protected List<sqb> a(List<sqc> paramList)
+  {
+    HashMap localHashMap = new HashMap();
+    paramList = paramList.iterator();
+    Object localObject1;
+    Object localObject2;
+    while (paramList.hasNext())
+    {
+      localObject1 = (sqc)paramList.next();
+      if (localHashMap.containsKey(((sqc)localObject1).c))
+      {
+        ((List)localHashMap.get(((sqc)localObject1).c)).add(localObject1);
+      }
+      else
+      {
+        localObject2 = new ArrayList();
+        ((ArrayList)localObject2).add(localObject1);
+        localHashMap.put(((sqc)localObject1).c, localObject2);
+      }
+    }
+    paramList = a(localHashMap);
+    veg.b("Q.qqstory.recommendAlbum.logic_GeoHashSplitStrategy", "start findAlbums node=%s, minGatherLevel=%d, maxGatherLevel=%s", paramList.a(), Integer.valueOf(((sra)a()).d), Integer.valueOf(((sra)a()).e));
+    paramList = a(paramList.a(), ((sra)a()).d, ((sra)a()).e);
+    if (paramList != null)
+    {
+      localObject1 = paramList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (sqb)((Iterator)localObject1).next();
+        if ((((sqb)localObject2).jdField_a_of_type_JavaUtilList == null) || (((sqb)localObject2).jdField_a_of_type_JavaUtilList.size() == 0))
+        {
+          veg.e("Q.qqstory.recommendAlbum.logic_GeoHashSplitStrategy", "check why? album:" + localObject2);
+          vxs.a("check why? album:", new Object[0]);
+        }
+        else
+        {
+          ArrayList localArrayList = new ArrayList();
+          Iterator localIterator = ((sqb)localObject2).jdField_a_of_type_JavaUtilList.iterator();
+          while (localIterator.hasNext()) {
+            localArrayList.addAll((Collection)localHashMap.get((String)localIterator.next()));
+          }
+          ((sqb)localObject2).a(localArrayList);
+          ((sqb)localObject2).a(a());
+        }
+      }
+    }
+    return paramList;
   }
 }
 

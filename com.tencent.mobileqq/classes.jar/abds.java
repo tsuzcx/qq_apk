@@ -1,62 +1,38 @@
-import android.os.Handler;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import java.util.ArrayList;
 
 public class abds
-  extends ajne
+  extends bbkw
 {
-  public abds(NearbyActivity paramNearbyActivity) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString)
+  public abds(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
   {
-    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth isSuccess=" + paramBoolean + ", checkRet=" + paramInt + ", checkMsg=" + paramString + ", isFinishing=" + this.a.isFinishing() + ", isStopHeartBeat=" + this.a.c);
-    if ((paramBoolean) && (paramInt != 0)) {
-      if (!this.a.isFinishing()) {}
-    }
-    while ((this.a.isFinishing()) || (this.a.c))
-    {
-      do
-      {
-        return;
-        try
-        {
-          bafb localbafb = babr.a(this.a, 230);
-          localbafb.setCancelable(false);
-          String str = paramString;
-          if (TextUtils.isEmpty(paramString)) {
-            str = ajjy.a(2131641309);
-          }
-          localbafb.setMessage(str);
-          localbafb.setNegativeButton(ajjy.a(2131641310), new abdt(this));
-          localbafb.show();
-          new awrb(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_exp").e(this.a.a.getCurrentAccountUin()).a();
-          return;
-        }
-        catch (Exception paramString) {}
-      } while (!QLog.isColorLevel());
-      QLog.d("nearby.NearbyActivity", 2, "onCheckNearbyUserAuth exp:" + paramString.toString());
-      return;
-    }
-    this.a.e();
+    super(paramInt);
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.heart_beat", 2, "onNearbyHeartBeat:isSucc=" + paramBoolean + ", cmd=" + paramString + ", interval=" + paramLong);
+    Intent localIntent = new Intent(this.a, CardPicGalleryActivity.class);
+    ArrayList localArrayList = new ArrayList();
+    if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b)) {
+      localIntent.putExtra("extra_default", 2130844896);
     }
-    if ("OidbSvc.0xafc_1".equals(paramString))
+    localArrayList.add(this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b);
+    localIntent.putExtra("extra_mode", 2);
+    localIntent.putExtra("is_from_mine_profile", true);
+    localIntent.putStringArrayListExtra("business_card_pics", localArrayList);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.e == 0) {}
+    for (int i = this.a.jdField_a_of_type_Auuw.a.defaultCardId;; i = 0)
     {
-      if (paramBoolean) {
-        this.a.n = paramLong;
-      }
-      if (!this.a.c)
-      {
-        this.a.b.removeMessages(this.a.i);
-        this.a.b.sendEmptyMessageDelayed(this.a.i, this.a.n);
-      }
+      localIntent.putExtra("default_card_id", i);
+      this.a.startActivity(localIntent);
+      this.a.overridePendingTransition(2130772287, 0);
+      this.a.b(1);
+      return;
     }
   }
 }

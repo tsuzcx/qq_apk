@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aayb;
-import aayc;
+import abhy;
+import abhz;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import aqam;
+import aquo;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.gesturelock.LockPatternView;
 import java.util.Iterator;
@@ -47,13 +47,13 @@ public class GesturePWDCreateActivity
   
   private void b()
   {
-    setTitle(2131627353);
-    setLeftButton(2131625035, new aayb(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131301398));
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView = ((LockPatternView)findViewById(2131301397));
+    setTitle(2131692993);
+    setLeftButton(2131690596, new abhy(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367008));
+    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView = ((LockPatternView)findViewById(2131367007));
     this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setFillInGapCell(false);
     this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setTactileFeedbackEnabled(true);
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setOnPatternListener(new aayc(this));
+    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setOnPatternListener(new abhz(this));
     if (this.mDensity <= 1.0D)
     {
       ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.getLayoutParams();
@@ -61,15 +61,15 @@ public class GesturePWDCreateActivity
       localLayoutParams.width = ((int)(this.mDensity * 240.0F));
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setLayoutParams(localLayoutParams);
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131301411);
-    this.b = findViewById(2131301412);
-    this.c = findViewById(2131301413);
-    this.d = findViewById(2131301414);
-    this.e = findViewById(2131301415);
-    this.f = findViewById(2131301416);
-    this.g = findViewById(2131301417);
-    this.h = findViewById(2131301418);
-    this.i = findViewById(2131301419);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367021);
+    this.b = findViewById(2131367022);
+    this.c = findViewById(2131367023);
+    this.d = findViewById(2131367024);
+    this.e = findViewById(2131367025);
+    this.f = findViewById(2131367026);
+    this.g = findViewById(2131367027);
+    this.h = findViewById(2131367028);
+    this.i = findViewById(2131367029);
   }
   
   private void c()
@@ -92,78 +92,78 @@ public class GesturePWDCreateActivity
       if (this.jdField_a_of_type_ArrayOfInt[0] != 1) {
         break label192;
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844321);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844406);
       if (this.jdField_a_of_type_ArrayOfInt[1] != 1) {
         break label204;
       }
-      this.b.setBackgroundResource(2130844321);
+      this.b.setBackgroundResource(2130844406);
       label55:
       if (this.jdField_a_of_type_ArrayOfInt[2] != 1) {
         break label216;
       }
-      this.c.setBackgroundResource(2130844321);
+      this.c.setBackgroundResource(2130844406);
       label74:
       if (this.jdField_a_of_type_ArrayOfInt[3] != 1) {
         break label228;
       }
-      this.d.setBackgroundResource(2130844321);
+      this.d.setBackgroundResource(2130844406);
       label93:
       if (this.jdField_a_of_type_ArrayOfInt[4] != 1) {
         break label240;
       }
-      this.e.setBackgroundResource(2130844321);
+      this.e.setBackgroundResource(2130844406);
       label112:
       if (this.jdField_a_of_type_ArrayOfInt[5] != 1) {
         break label252;
       }
-      this.f.setBackgroundResource(2130844321);
+      this.f.setBackgroundResource(2130844406);
       label131:
       if (this.jdField_a_of_type_ArrayOfInt[6] != 1) {
         break label264;
       }
-      this.g.setBackgroundResource(2130844321);
+      this.g.setBackgroundResource(2130844406);
       label151:
       if (this.jdField_a_of_type_ArrayOfInt[7] != 1) {
         break label276;
       }
-      this.h.setBackgroundResource(2130844321);
+      this.h.setBackgroundResource(2130844406);
     }
     for (;;)
     {
       if (this.jdField_a_of_type_ArrayOfInt[8] != 1) {
         break label288;
       }
-      this.i.setBackgroundResource(2130844321);
+      this.i.setBackgroundResource(2130844406);
       return;
       label192:
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844320);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844405);
       break;
       label204:
-      this.b.setBackgroundResource(2130844320);
+      this.b.setBackgroundResource(2130844405);
       break label55;
       label216:
-      this.c.setBackgroundResource(2130844320);
+      this.c.setBackgroundResource(2130844405);
       break label74;
       label228:
-      this.d.setBackgroundResource(2130844320);
+      this.d.setBackgroundResource(2130844405);
       break label93;
       label240:
-      this.e.setBackgroundResource(2130844320);
+      this.e.setBackgroundResource(2130844405);
       break label112;
       label252:
-      this.f.setBackgroundResource(2130844320);
+      this.f.setBackgroundResource(2130844405);
       break label131;
       label264:
-      this.g.setBackgroundResource(2130844320);
+      this.g.setBackgroundResource(2130844405);
       break label151;
       label276:
-      this.h.setBackgroundResource(2130844320);
+      this.h.setBackgroundResource(2130844405);
     }
     label288:
-    this.i.setBackgroundResource(2130844320);
+    this.i.setBackgroundResource(2130844405);
   }
   
-  public void a(List<aqam> paramList)
+  public void a(List<aquo> paramList)
   {
     c();
     if (paramList != null)
@@ -171,11 +171,11 @@ public class GesturePWDCreateActivity
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        aqam localaqam = (aqam)paramList.next();
-        if (localaqam != null)
+        aquo localaquo = (aquo)paramList.next();
+        if (localaquo != null)
         {
-          int j = localaqam.a();
-          j = localaqam.b() + j * 3;
+          int j = localaquo.a();
+          j = localaquo.b() + j * 3;
           if ((j >= 0) && (j < this.jdField_a_of_type_ArrayOfInt.length)) {
             this.jdField_a_of_type_ArrayOfInt[j] = 1;
           }
@@ -188,7 +188,7 @@ public class GesturePWDCreateActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131493546);
+    super.setContentView(2131559115);
     a();
     b();
     return true;

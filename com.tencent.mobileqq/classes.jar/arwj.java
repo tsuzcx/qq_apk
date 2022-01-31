@@ -1,49 +1,43 @@
-import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
-public class arwj
-  implements View.OnClickListener
+class arwj
+  implements bfob
 {
-  public arwj(MultiCardPageIndicator paramMultiCardPageIndicator) {}
+  private int jdField_a_of_type_Int;
   
-  public void onClick(View paramView)
+  arwj(arwh paramarwh) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
-    }
-    MultiCardPageIndicator.a(this.a, SystemClock.uptimeMillis());
-    paramView = paramView.getTag();
-    if ((paramView instanceof arwm)) {}
-    for (paramView = (arwm)paramView;; paramView = null)
+    paramInt = paramAbsListView.getFirstVisiblePosition();
+    if (paramInt > this.jdField_a_of_type_Int)
     {
-      if (paramView == null) {}
-      int j;
-      do
+      if (!arwh.a(this.jdField_a_of_type_Arwh).b()) {
+        arwh.a(this.jdField_a_of_type_Arwh).a();
+      }
+      if (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1)
       {
-        return;
-        int i = MultiCardPageIndicator.a(this.a).a();
-        j = paramView.jdField_a_of_type_Int;
-        this.a.setCurrentItem(j);
-        awqx.b(null, "dc00898", "", "", "0X800A216", "0X800A216", 0, 0, "", "", "", "");
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        MultiCardPageIndicator.a(this.a).setCurrentItem(j);
-        if ((i == j) && (MultiCardPageIndicator.a(this.a) != null)) {
-          MultiCardPageIndicator.a(this.a).a(j);
+        if (QLog.isDevelopLevel()) {
+          QLog.i("LocationShareController", 4, "onScrollStateChanged");
         }
-      } while (MultiCardPageIndicator.a(this.a) == null);
-      MultiCardPageIndicator.a(this.a).a(j);
+        arwh.a(this.jdField_a_of_type_Arwh).a();
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = paramInt;
       return;
+      if (paramInt >= this.jdField_a_of_type_Int) {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arwj
  * JD-Core Version:    0.7.0.1
  */

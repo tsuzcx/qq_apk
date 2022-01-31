@@ -1,350 +1,153 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ark.ArkAiDictMgr.1;
+import com.tencent.mobileqq.ark.ArkAiDictMgr.3;
+import com.tencent.mobileqq.ark.ArkAiDictMgr.4;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.ark.ArkRecommendLogic.ArkWordSegmentThread;
+import com.tencent.mobileqq.startup.step.UpdateArkSo;
+import com.tencent.wordsegment.WordSegment;
+import java.io.File;
 
 public class alrj
-  extends WebViewPlugin
 {
-  public alrj()
+  private static String jdField_a_of_type_JavaLangString;
+  private static volatile boolean jdField_a_of_type_Boolean;
+  private java.lang.ref.WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public alrj(AppInterface paramAppInterface)
   {
-    this.mPluginNameSpace = "campus_circle";
+    this.jdField_a_of_type_JavaLangRefWeakReference = new mqq.util.WeakReference(paramAppInterface);
   }
   
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public static alrl a(AppInterface paramAppInterface, String paramString)
   {
-    paramString2 = (bbcj)super.getBrowserComponent(2);
-    int i1;
-    int k;
-    int i;
-    int j;
-    int m;
-    if (paramString2 != null)
-    {
-      paramString3 = paramString2.d.getContext().getResources();
-      i1 = (int)(30.0F * paramString3.getDisplayMetrics().density);
-      int i2 = 0;
-      k = 0;
-      paramString1 = "";
-      int n = 10;
-      i = n;
-      paramJsBridgeListener = paramString1;
-      j = k;
-      if (paramVarArgs != null)
-      {
-        i = n;
-        paramJsBridgeListener = paramString1;
-        j = k;
-        if (paramVarArgs.length > 0)
-        {
-          k = n;
-          m = i2;
-        }
-      }
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        k = n;
-        m = i2;
-        j = paramJsBridgeListener.optInt("iconIndex");
-        k = n;
-        m = j;
-        i = paramJsBridgeListener.optInt("iconPad");
-        k = i;
-        m = j;
-        paramJsBridgeListener = paramJsBridgeListener.optString("iconRes");
-      }
-      catch (Exception paramVarArgs)
-      {
-        for (;;)
-        {
-          i = k;
-          paramJsBridgeListener = paramString1;
-          j = m;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("CampusCirclePlugin", 2, "getRedPoint exception", paramVarArgs);
-            i = k;
-            paramJsBridgeListener = paramString1;
-            j = m;
-            continue;
-            if ("arrow_down".equals(paramJsBridgeListener))
-            {
-              paramJsBridgeListener = paramString3.getDrawable(2130844050);
-            }
-            else if ("none".equals(paramJsBridgeListener))
-            {
-              paramJsBridgeListener = null;
-            }
-            else
-            {
-              paramJsBridgeListener = null;
-              continue;
-              k = j;
-              if (j < 0)
-              {
-                k = 0;
-                continue;
-                j = i;
-                if (i > i1) {
-                  j = i1;
-                }
-              }
-            }
-          }
-        }
-      }
-      if ("arrow_up".equals(paramJsBridgeListener))
-      {
-        paramJsBridgeListener = paramString3.getDrawable(2130844051);
-        if (j <= 3) {
-          break label278;
-        }
-        k = 3;
-        if (i >= 0) {
-          break label293;
-        }
-        j = 0;
-        paramString2.a.a(k, paramJsBridgeListener, j);
-        return true;
-      }
-    }
-    label278:
-    label293:
-    return false;
+    alrl localalrl = new alrl();
+    localalrl.jdField_a_of_type_JavaLangString = paramString;
+    ArkRecommendLogic.a().a(new ArkAiDictMgr.3(paramAppInterface, localalrl, paramString));
+    return localalrl;
   }
   
-  public boolean b(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  static String a()
   {
-    paramString1 = "";
-    paramJsBridgeListener = paramString1;
-    if (paramVarArgs != null)
-    {
-      paramJsBridgeListener = paramString1;
-      if (paramVarArgs.length <= 0) {}
+    return ArkAppCenter.b() + "/WordData/";
+  }
+  
+  public static String a(String paramString)
+  {
+    return a() + paramString;
+  }
+  
+  public static void a()
+  {
+    Object localObject = new File(a());
+    if (((File)localObject).isFile()) {
+      ((File)localObject).delete();
     }
-    try
-    {
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-      if (QLog.isColorLevel()) {
-        QLog.d("CampusCirclePlugin", 2, "getRedPoint callback=" + paramJsBridgeListener);
-      }
-      if (TextUtils.isEmpty(paramJsBridgeListener)) {
-        return true;
-      }
-    }
-    catch (Exception paramString2)
-    {
-      for (;;)
-      {
-        paramJsBridgeListener = paramString1;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("CampusCirclePlugin", 2, "getRedPoint exception", paramString2);
-          paramJsBridgeListener = paramString1;
-        }
-      }
-      paramString1 = new JSONObject();
-      paramString2 = alrh.a().a();
-      bool = false;
-      j = 1;
-      i = 0;
-      l = 0L;
-      if (paramString2 == null) {
-        break label277;
-      }
-    }
-    boolean bool = paramString2.getBoolean("hasRedTouch", false);
-    int j = paramString2.getInt("type", 1);
-    int i = paramString2.getInt("count", 0);
-    long l = paramString2.getLong("seq", 0L);
-    int k = paramString2.getInt("code");
     for (;;)
     {
-      try
+      return;
+      localObject = ((File)localObject).listFiles();
+      if (localObject != null)
       {
-        paramString1.put("code", k);
-        if (!bool) {
-          continue;
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
+        {
+          localObject[i].delete();
+          i += 1;
         }
-        k = 1;
-        paramString1.put("hasRedTouch", k);
-        paramString1.put("type", j);
-        paramString1.put("count", i);
-        paramString1.put("seq", l);
       }
-      catch (JSONException paramString2)
-      {
-        label277:
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("CampusCirclePlugin", 2, paramString2, new Object[] { "getRedPoint, exception" });
-        continue;
-      }
-      paramString1 = paramString1.toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("CampusCirclePlugin", 2, "getRedPoint, json=" + paramString1);
-      }
-      callJs(paramJsBridgeListener, new String[] { paramString1 });
-      return true;
-      k = -1;
-      continue;
-      k = 0;
     }
   }
   
-  public boolean c(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public static void a(AppInterface paramAppInterface)
   {
-    long l2 = -1L;
-    long l1 = l2;
-    if (paramVarArgs != null)
+    if (a())
     {
-      l1 = l2;
-      if (paramVarArgs.length <= 0) {}
+      ArkAppCenter.c("ArkApp.Dict", "initWordData, already inited.");
+      return;
     }
-    try
+    new File(a()).mkdirs();
+    if (!jdField_a_of_type_Boolean) {
+      ArkRecommendLogic.a().a(new ArkAiDictMgr.1());
+    }
+    b(paramAppInterface);
+  }
+  
+  public static boolean a()
+  {
+    return (jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString));
+  }
+  
+  public static void b(AppInterface paramAppInterface)
+  {
+    if (!jdField_a_of_type_Boolean)
     {
-      l1 = new JSONObject(paramVarArgs[0]).optLong("seq", -1L);
-      if (QLog.isColorLevel()) {
-        QLog.d("CampusCirclePlugin", 2, "getRedPoint seq=" + l1);
-      }
-      if (l1 < 0L) {
+      ArkAppCenter.c("ArkApp.Dict", "reloadWordData, sIsSoLoaded is false");
+      return;
+    }
+    ArkRecommendLogic.a().post(new ArkAiDictMgr.4(paramAppInterface));
+  }
+  
+  private static boolean b(AppInterface paramAppInterface)
+  {
+    if (paramAppInterface == null) {}
+    do
+    {
+      return true;
+      paramAppInterface = amqr.b(170).a();
+      if ((paramAppInterface == null) || (paramAppInterface.a() == null))
+      {
+        ArkAppCenter.c("ArkApp.Dict", "getWordInitState, confBean is empty");
         return true;
       }
-    }
-    catch (Exception paramJsBridgeListener)
-    {
-      for (;;)
-      {
-        l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("CampusCirclePlugin", 2, "getRedPoint exception", paramJsBridgeListener);
-          l1 = l2;
-        }
+      paramAppInterface = paramAppInterface.a().d;
+      if (paramAppInterface == null) {
+        break;
       }
-      alrh.a().a(l1);
-    }
+      ArkAppCenter.c("ArkApp.Dict", String.format("getWordInitState, wordInitState=%s", new Object[] { paramAppInterface }));
+    } while (!paramAppInterface.equals("false"));
+    return false;
+    ArkAppCenter.c("ArkApp.Dict", "getWordInitState, ark_dict_init is empty");
     return true;
   }
   
-  public boolean d(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  private static void d()
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
     try
     {
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-      long l = paramJsBridgeListener.getLong("schoolId");
-      paramJsBridgeListener = paramJsBridgeListener.getString("schoolName");
-      paramString1 = this.mRuntime.a();
-      if (paramString1 != null)
+      if ((alqy.b) && (!jdField_a_of_type_Boolean))
       {
-        paramString2 = new Intent();
-        paramString2.putExtra("campus_school_id", l);
-        paramString2.putExtra("campus_school", paramJsBridgeListener);
-        paramString1.setResult(-1, paramString2);
-        paramString1.finish();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("CampusCirclePlugin", 2, String.format(Locale.getDefault(), "onSearchSchoolResult schoolId: %d schoolName: %s activity: %s", new Object[] { Long.valueOf(l), paramJsBridgeListener, paramString1 }));
-      }
-    }
-    catch (Exception paramJsBridgeListener)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("CampusCirclePlugin", 2, "onSearchSchoolResult exception", paramJsBridgeListener);
-    }
-    return false;
-    return false;
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    boolean bool2 = super.handleEvent(paramString, paramLong, paramMap);
-    boolean bool3;
-    if (paramLong == 8589934598L)
-    {
-      if (this.mRuntime.a().getIntent().getIntExtra("uintype", -1) == 1030) {
-        bool3 = false;
-      }
-      try
-      {
-        paramString = Uri.parse(this.mRuntime.a().getIntent().getStringExtra("url"));
-        bool1 = bool3;
-        if (paramString != null)
-        {
-          bool1 = bool3;
-          if (paramString.isHierarchical()) {
-            bool1 = "1".equals(paramString.getQueryParameter("__iscomic"));
-          }
+        jdField_a_of_type_Boolean = UpdateArkSo.b(BaseApplicationImpl.getContext(), "WordSegment");
+        ArkAppCenter.c("ArkApp.Dict", String.format("loadWordSegmentSo, result=%s", new Object[] { Boolean.toString(jdField_a_of_type_Boolean) }));
+        if (jdField_a_of_type_Boolean) {
+          WordSegment.setLogCallback(new alrk());
         }
       }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          bool1 = bool3;
-        }
-      }
-      if (bool1) {
-        return bool2;
-      }
-      paramString = new Intent(this.mRuntime.a(), SplashActivity.class);
-      paramString.putExtra("fragment_id", 1);
-      paramString.putExtra("main_tab_id", 4);
-      paramString.setFlags(603979776);
-      paramString.putExtra("from", "campus_notice");
-      this.mRuntime.a().startActivity(paramString);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("CampusNoticeManager", 4, "EVENT_BEFORE_ACTIVITY_FINISH");
-      }
+      return;
     }
-    for (boolean bool1 = true;; bool1 = bool2) {
-      return bool1;
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CampusCirclePlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
-    }
-    if ("campus_circle".equals(paramString2))
-    {
-      if ("getRedPoint".equals(paramString3)) {
-        return b(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-      }
-      if ("reportRedPoint".equals(paramString3)) {
-        return c(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-      }
-      if ("setTitleIcon".equals(paramString3)) {
-        return a(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-      }
-      if ("onSearchSchoolResult".equals(paramString3)) {
-        return d(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-      }
-      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-    }
-    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    ArkAppCenter.c("ArkApp.Dict", "clearDict");
+    AppInterface localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    bbjn.i(localAppInterface.getApp(), localAppInterface.getCurrentAccountUin());
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alrj
  * JD-Core Version:    0.7.0.1
  */

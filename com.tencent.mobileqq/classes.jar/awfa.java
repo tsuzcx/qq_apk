@@ -1,41 +1,17 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
 
-class awfa
-  implements awfi
+public class awfa
+  implements View.OnClickListener
 {
-  awfa(awez paramawez) {}
+  public awfa(CommentsView paramCommentsView, awex paramawex, int paramInt) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("startDownloadConfigNoLogin onConfigResult | result=").append(paramInt1).append("serverError=").append(paramInt2);
-    VideoEnvironment.a(awez.a(this.a), ((StringBuilder)localObject).toString(), null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
-    {
-      if (paramInt2 != 0)
-      {
-        VideoEnvironment.a(awez.a(this.a), "startDownloadConfigNoLogin onConfigResult| uncompress config error=" + paramInt2, null);
-        awez.a(this.a);
-        return;
-      }
-      localObject = new ArrayList(1);
-      paramInt1 = ShortVideoResourceManager.a(awez.a(this.a), (List)localObject);
-      if (paramInt1 == 0)
-      {
-        VideoEnvironment.a(awez.a(this.a), "startDownloadConfigNoLogin onConfigResult| check config success...", null);
-        awez.a(this.a).a();
-        aqif.a().a();
-        return;
-      }
-      VideoEnvironment.a(awez.a(this.a), "startDownloadConfigNoLogin onConfigResult| check config error=" + paramInt1, null);
-      awez.a(this.a);
-      return;
+    if ((this.jdField_a_of_type_Awex.a()) && (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null)) {
+      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_Int, paramView);
     }
-    VideoEnvironment.a(awez.a(this.a), "startDownloadConfigNoLogin onConfigResult| result= RESULT_FAILED error=" + paramInt2, null);
-    awez.a(this.a);
   }
 }
 

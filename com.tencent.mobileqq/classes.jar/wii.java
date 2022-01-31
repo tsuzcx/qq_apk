@@ -1,36 +1,21 @@
-import com.tencent.biz.tribe.TribeVideoPlugin.TVKSDKInstallRunnable;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import java.util.Comparator;
 
-public class wii
-  implements TVK_SDKMgr.InstallListener
+class wii
+  implements Comparator<wig>
 {
-  public wii(TribeVideoPlugin.TVKSDKInstallRunnable paramTVKSDKInstallRunnable) {}
+  wii(wih paramwih) {}
   
-  public void onInstallProgress(float paramFloat)
+  public int a(wig paramwig1, wig paramwig2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 1, String.format("plugin install %f", new Object[] { Float.valueOf(paramFloat) }));
+    if (paramwig1.d > paramwig2.d) {
+      return 1;
     }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 1, "plugin fail errorCode = " + paramInt);
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 1, "plugin success");
-    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wii
  * JD-Core Version:    0.7.0.1
  */

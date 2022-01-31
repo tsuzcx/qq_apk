@@ -1,43 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.config.beans.SneakyParams;
-import java.util.Iterator;
-import java.util.List;
-import ndn;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.util.PreloadManager;
+import sex;
 
 public final class ReadInJoyUtils$23
   implements Runnable
 {
-  public ReadInJoyUtils$23(int paramInt, long paramLong) {}
+  public ReadInJoyUtils$23(PreloadManager paramPreloadManager, sex paramsex) {}
   
   public void run()
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      Object localObject = Aladdin.get(139);
-      if (localObject == null) {}
-      for (;;)
-      {
-        ndn.a(null, "CliOper", "", "", "0X8009EB2", "0X8009EB2", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Long), "1", localJSONObject.toString(), false);
-        return;
-        localObject = ((AladdinConfig)localObject).getList("param_list");
-        if (localObject != null)
-        {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            SneakyParams localSneakyParams = (SneakyParams)((Iterator)localObject).next();
-            localJSONObject.put(localSneakyParams.getPackageName(), localSneakyParams.toString());
-          }
-        }
-      }
-      return;
-    }
-    catch (Exception localException) {}
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPreloadManager.b(this.jdField_a_of_type_Sex.a);
   }
 }
 

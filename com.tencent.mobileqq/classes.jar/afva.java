@@ -1,9 +1,35 @@
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
+
 class afva
-  implements advc
+  implements ansy
 {
-  afva(afuz paramafuz) {}
+  afva(afur paramafur, int paramInt) {}
   
-  public void a(Object paramObject) {}
+  public void a(float paramFloat, List<Integer> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "upLoadEmotions progress=" + paramFloat + ", addEmotionsResults=" + paramList + ", isTimeOut=" + afur.b(this.jdField_a_of_type_Afur));
+    }
+    if (!afur.b(this.jdField_a_of_type_Afur))
+    {
+      afur.b(this.jdField_a_of_type_Afur, paramList);
+      afur.a(this.jdField_a_of_type_Afur, this.jdField_a_of_type_Int, paramFloat);
+    }
+  }
+  
+  public void a(List<Integer> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "onUploadFinish , addEmotionsResults=" + paramList + ", isTimeOut=" + afur.b(this.jdField_a_of_type_Afur));
+    }
+    if (!afur.b(this.jdField_a_of_type_Afur))
+    {
+      afur.a(this.jdField_a_of_type_Afur).removeMessages(11);
+      afur.a(this.jdField_a_of_type_Afur, this.jdField_a_of_type_Int, paramList);
+    }
+  }
 }
 
 

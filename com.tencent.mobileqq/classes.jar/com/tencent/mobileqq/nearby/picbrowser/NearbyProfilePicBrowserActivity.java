@@ -2,8 +2,8 @@ package com.tencent.mobileqq.nearby.picbrowser;
 
 import android.content.Intent;
 import android.os.Bundle;
-import asro;
-import asrp;
+import atns;
+import atnt;
 
 public class NearbyProfilePicBrowserActivity
   extends PicBrowserActivity
@@ -19,7 +19,7 @@ public class NearbyProfilePicBrowserActivity
   {
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("intent_param_show_del_pic_and_set_head", false);
     if (this.jdField_a_of_type_Boolean) {}
-    for (this.jdField_a_of_type_Xgz = new asrp(this);; this.jdField_a_of_type_Xgz = new asro(this)) {
+    for (this.jdField_a_of_type_Xpz = new atnt(this);; this.jdField_a_of_type_Xpz = new atns(this)) {
       return super.doOnCreate(paramBundle);
     }
   }

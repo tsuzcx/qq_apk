@@ -1,35 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.QLog;
-
 class bbmz
-  implements View.OnTouchListener
 {
-  bbmz(bbmy parambbmy, Toast paramToast, View.OnTouchListener paramOnTouchListener) {}
+  static final int[] jdField_a_of_type_ArrayOfInt = new int[0];
+  static final long[] jdField_a_of_type_ArrayOfLong = new long[0];
+  static final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[0];
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    if (paramMotionEvent.getAction() == 0)
+    int i = 0;
+    int j = paramInt1 - 1;
+    paramInt1 = i;
+    i = j;
+    while (paramInt1 <= i)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQToast", 2, "start to cancel toast");
+      j = paramInt1 + i >>> 1;
+      int k = paramArrayOfInt[j];
+      if (k < paramInt2) {
+        paramInt1 = j + 1;
+      } else if (k > paramInt2) {
+        i = j - 1;
+      } else {
+        return j;
       }
-      this.jdField_a_of_type_AndroidWidgetToast.cancel();
-      bbmy.a(this.jdField_a_of_type_Bbmy, true);
-      if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
-        bool = this.jdField_a_of_type_AndroidViewView$OnTouchListener.onTouch(paramView, paramMotionEvent);
-      }
-      return bool;
     }
-    return false;
+    return paramInt1 ^ 0xFFFFFFFF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbmz
  * JD-Core Version:    0.7.0.1
  */

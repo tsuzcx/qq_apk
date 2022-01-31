@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util;
 
-import bbms;
+import bcpq;
 
 class PublicAccountH5AbilityPlugin$20$1
   implements Runnable

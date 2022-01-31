@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.data;
 
-import amrt;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
-import atmo;
-import atnz;
-import atoc;
-import axkd;
+import ania;
+import aukm;
+import aulx;
+import auma;
+import ayki;
 
 public class AutoReplyText
-  extends atmo
+  extends aukm
   implements Parcelable, Comparable<AutoReplyText>
 {
-  public static final Parcelable.Creator<AutoReplyText> CREATOR = new amrt();
+  public static final Parcelable.Creator<AutoReplyText> CREATOR = new ania();
   public static final int TEXT_NONE = 2147483647;
   public int mCheckFlag;
-  @atnz
+  @aulx
   private Bundle mExtra;
   public String mRawText;
-  @atoc
+  @auma
   public int mTextId;
   
   public AutoReplyText()
@@ -139,7 +139,7 @@ public class AutoReplyText
   
   public CharSequence getText(int paramInt)
   {
-    return new axkd(getRawText(), 3, paramInt);
+    return new ayki(getRawText(), 3, paramInt);
   }
   
   public int getTextId()

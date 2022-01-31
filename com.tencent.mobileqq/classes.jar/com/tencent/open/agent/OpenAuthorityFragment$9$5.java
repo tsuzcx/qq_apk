@@ -2,26 +2,26 @@ package com.tencent.open.agent;
 
 import android.graphics.Bitmap;
 import android.os.Message;
-import apmt;
-import bbxq;
+import aqgh;
+import bdbq;
 import cooperation.qqfav.util.HandlerPlus;
 
 public class OpenAuthorityFragment$9$5
   implements Runnable
 {
-  public OpenAuthorityFragment$9$5(bbxq parambbxq, String paramString) {}
+  public OpenAuthorityFragment$9$5(bdbq parambdbq, String paramString) {}
   
   public void run()
   {
-    apmt.a("KEY_GET_APP_ADS_PIC");
+    aqgh.a("KEY_GET_APP_ADS_PIC");
     Bitmap localBitmap = OpenAuthorityFragment.a(this.jdField_a_of_type_JavaLangString);
-    apmt.a("KEY_GET_APP_ADS_PIC", this.jdField_a_of_type_Bbxq.a.jdField_a_of_type_Bciz);
+    aqgh.a("KEY_GET_APP_ADS_PIC", this.jdField_a_of_type_Bdbq.a.jdField_a_of_type_Bdna);
     if (localBitmap != null)
     {
       Message localMessage = new Message();
       localMessage.obj = localBitmap;
       localMessage.what = 9;
-      this.jdField_a_of_type_Bbxq.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(localMessage);
+      this.jdField_a_of_type_Bdbq.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(localMessage);
     }
   }
 }

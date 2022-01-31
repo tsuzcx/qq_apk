@@ -9,7 +9,6 @@ import com.tencent.ttpic.openapi.initializer.AnimojiInitializer;
 import com.tencent.ttpic.openapi.initializer.FaceDetectInitializer;
 import com.tencent.ttpic.openapi.initializer.FaceKitInitializer;
 import com.tencent.ttpic.openapi.initializer.FilamentInitializer;
-import com.tencent.ttpic.openapi.initializer.GamePlayInitializer;
 import com.tencent.ttpic.openapi.initializer.GenderDetectorInitializer;
 import com.tencent.ttpic.openapi.initializer.MaskImagesInitializer;
 import com.tencent.ttpic.openapi.initializer.PagInitializer;
@@ -40,91 +39,81 @@ public class FeatureManager
   {
     boolean bool2 = true;
     boolean bool1 = true;
-    if (paramVideoMaterial == null) {
-      bool2 = bool1;
-    }
+    if (paramVideoMaterial == null) {}
     do
     {
       do
       {
-        return bool2;
+        return bool1;
         bool1 = bool2;
-        if (VideoMaterialUtil.is3DMaterial(paramVideoMaterial))
-        {
-          bool1 = bool2;
-          if (!FeatureManager.Features.GAMEPLAY.isFunctionReady()) {
-            bool1 = true & FeatureManager.Features.GAMEPLAY.init();
-          }
-        }
-        bool2 = bool1;
         if (VideoMaterialUtil.isFilamentMaterial(paramVideoMaterial))
         {
-          bool2 = bool1;
+          bool1 = bool2;
           if (!FeatureManager.Features.FILAMENT.isFunctionReady()) {
-            bool2 = bool1 & FeatureManager.Features.FILAMENT.init();
+            bool1 = true & FeatureManager.Features.FILAMENT.init();
           }
         }
-        bool1 = bool2;
+        bool2 = bool1;
         if (VideoMaterialUtil.isAnimojiMaterial(paramVideoMaterial))
         {
-          bool1 = bool2;
+          bool2 = bool1;
           if (!FeatureManager.Features.ANIMOJI.isFunctionReady()) {
-            bool1 = bool2 & FeatureManager.Features.ANIMOJI.init();
+            bool2 = bool1 & FeatureManager.Features.ANIMOJI.init();
           }
         }
-        bool2 = bool1;
+        bool1 = bool2;
         if (VideoMaterialUtil.needVoiceChange(paramVideoMaterial))
         {
-          bool2 = bool1;
+          bool1 = bool2;
           if (!FeatureManager.Features.VOICE_CHANGDER.isFunctionReady()) {
-            bool2 = bool1 & FeatureManager.Features.VOICE_CHANGDER.init();
+            bool1 = bool2 & FeatureManager.Features.VOICE_CHANGDER.init();
           }
         }
-        bool1 = bool2;
+        bool2 = bool1;
         if (VideoMaterialUtil.isAudio2textMaterial(paramVideoMaterial))
         {
-          bool1 = bool2;
+          bool2 = bool1;
           if (!FeatureManager.Features.VOICE_TO_TEXT.isFunctionReady()) {
-            bool1 = bool2 & FeatureManager.Features.VOICE_TO_TEXT.init();
+            bool2 = bool1 & FeatureManager.Features.VOICE_TO_TEXT.init();
           }
         }
-        bool2 = bool1;
+        bool1 = bool2;
         if (VideoMaterialUtil.isParticleMaterial(paramVideoMaterial))
         {
-          bool2 = bool1;
+          bool1 = bool2;
           if (!FeatureManager.Features.PARTICLE_SYSTEM.isFunctionReady()) {
-            bool2 = bool1 & FeatureManager.Features.PARTICLE_SYSTEM.init();
+            bool1 = bool2 & FeatureManager.Features.PARTICLE_SYSTEM.init();
           }
         }
-        bool1 = bool2;
+        bool2 = bool1;
         if (VideoMaterialUtil.isGenderDetect(paramVideoMaterial))
         {
-          bool1 = bool2;
-          if (!FeatureManager.Features.GENDER_DETECTOR.isFunctionReady()) {
-            bool1 = bool2 & FeatureManager.Features.GENDER_DETECTOR.init();
-          }
-        }
-        bool2 = bool1;
-        if (VideoMaterialUtil.is3DCosMaterial(paramVideoMaterial))
-        {
           bool2 = bool1;
-          if (!FeatureManager.Features.FACE_KIT.isFunctionReady()) {
-            bool2 = bool1 & FeatureManager.Features.FACE_KIT.init();
+          if (!FeatureManager.Features.GENDER_DETECTOR.isFunctionReady()) {
+            bool2 = bool1 & FeatureManager.Features.GENDER_DETECTOR.init();
           }
         }
         bool1 = bool2;
-        if (VideoMaterialUtil.isRapidNetMaterial(paramVideoMaterial))
+        if (VideoMaterialUtil.is3DCosMaterial(paramVideoMaterial))
         {
           bool1 = bool2;
-          if (!FeatureManager.Features.RAPID_NET.isFunctionReady()) {
-            bool1 = bool2 & FeatureManager.Features.RAPID_NET.init();
+          if (!FeatureManager.Features.FACE_KIT.isFunctionReady()) {
+            bool1 = bool2 & FeatureManager.Features.FACE_KIT.init();
           }
         }
         bool2 = bool1;
+        if (VideoMaterialUtil.isRapidNetMaterial(paramVideoMaterial))
+        {
+          bool2 = bool1;
+          if (!FeatureManager.Features.RAPID_NET.isFunctionReady()) {
+            bool2 = bool1 & FeatureManager.Features.RAPID_NET.init();
+          }
+        }
+        bool1 = bool2;
       } while (!VideoMaterialUtil.isPagMaterial(paramVideoMaterial));
-      bool2 = bool1;
+      bool1 = bool2;
     } while (FeatureManager.Features.PAG.isFunctionReady());
-    return bool1 & FeatureManager.Features.PAG.init();
+    return bool2 & FeatureManager.Features.PAG.init();
   }
   
   public static String getResourceDir()

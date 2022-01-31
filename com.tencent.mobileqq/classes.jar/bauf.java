@@ -1,69 +1,171 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.AppRuntime;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class bauf
+  extends InputStream
 {
-  public String a(Context paramContext)
+  private int jdField_a_of_type_Int;
+  private InputStream jdField_a_of_type_JavaIoInputStream;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
+  
+  public bauf(InputStream paramInputStream)
   {
-    paramContext = paramContext.getDir("lib", 0).getAbsolutePath();
-    if (paramContext.endsWith(File.separator)) {
-      return paramContext + "kcsdk_4.4.7.3.jar";
-    }
-    return paramContext + File.separator + "kcsdk_4.4.7.3.jar";
+    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
   }
   
-  public void a()
+  private static int a(InputStream paramInputStream)
   {
-    try
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(1004L, "kcsdk_4_4_7_3", "KC.TMSManager");
-      }
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramInputStream == null) {
+      return -1;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(Context paramContext, int paramInt)
-  {
-    if (paramInt == 0) {}
+    int i = 0;
     for (;;)
     {
-      try
+      if (i != -1)
       {
-        String str = paramContext.getDir("lib", 0).getAbsolutePath();
-        paramContext = baud.a().b(paramContext);
-        if (bajo.a(paramContext, str, "kcsdk_4.4.7.3.jar"))
+        int j = paramInputStream.read();
+        if (j == 123)
         {
-          QLog.d("KC.TMSManager", 1, "unzip succ");
-          baud.a(baud.a());
-          return;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("ChunkedInputStream", 1, "Server did not return any chunk");
+          return -1;
         }
-        QLog.e("KC.TMSManager", 1, new Object[] { "unzip error, libDir=" + str, " zipPath=" + paramContext });
-        continue;
-        QLog.e("KC.TMSManager", 1, "error: " + paramInt);
+        switch (i)
+        {
+        default: 
+          break;
+        case 0: 
+          if (j == 13) {
+            i = 1;
+          } else {
+            localStringBuilder.append((char)j);
+          }
+          break;
+        case 1: 
+          if (j == 10) {
+            i = -1;
+          } else {
+            throw new IOException("Read CRLF invalid!");
+          }
+          break;
+        }
       }
-      finally {}
+    }
+    return Integer.parseInt(localStringBuilder.toString(), 16);
+  }
+  
+  private boolean a()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = b();; bool = false)
+    {
+      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_JavaIoInputStream);
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Int = 0;
+      if (this.jdField_a_of_type_Int == 0) {
+        this.jdField_b_of_type_Boolean = true;
+      }
+      return (this.jdField_a_of_type_Int >= 0) && (bool);
     }
   }
   
-  public String b(Context paramContext)
+  private boolean b()
   {
-    paramContext = paramContext.getFilesDir().getAbsolutePath();
-    if (paramContext.endsWith(File.separator)) {
-      return paramContext + "libtmsdualcore.zip";
+    int i = this.jdField_a_of_type_JavaIoInputStream.read();
+    int j = this.jdField_a_of_type_JavaIoInputStream.read();
+    return (i == 13) && (j == 10);
+  }
+  
+  public byte[] a()
+  {
+    boolean bool = true;
+    if (!this.jdField_a_of_type_Boolean) {
+      bool = b();
     }
-    return paramContext + File.separator + "libtmsdualcore.zip";
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_JavaIoInputStream == null) {
+      return new byte[0];
+    }
+    this.jdField_a_of_type_Int = a(this.jdField_a_of_type_JavaIoInputStream);
+    if (4 == this.jdField_a_of_type_Int) {
+      read(new byte[4], 0, 4);
+    }
+    if ((this.jdField_a_of_type_Int <= 0) || (!bool)) {
+      return new byte[0];
+    }
+    byte[] arrayOfByte = new byte[this.jdField_a_of_type_Int];
+    int i = this.jdField_a_of_type_Int;
+    int j;
+    do
+    {
+      j = read(arrayOfByte, this.jdField_b_of_type_Int, i);
+      if (j < 0) {
+        return new byte[0];
+      }
+      j = i - j;
+      i = j;
+    } while (j > 0);
+    return arrayOfByte;
+  }
+  
+  public int read()
+  {
+    if (this.c) {
+      throw new IOException("Attempted read from closed stream.");
+    }
+    if (this.jdField_b_of_type_Boolean) {}
+    do
+    {
+      return -1;
+      if (this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) {
+        break;
+      }
+      a();
+    } while (this.jdField_b_of_type_Boolean);
+    this.jdField_b_of_type_Int += 1;
+    return this.jdField_a_of_type_JavaIoInputStream.read();
+  }
+  
+  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    int j = -1;
+    if (this.c) {
+      throw new IOException("Attempted read from closed stream.");
+    }
+    int i;
+    if (this.jdField_b_of_type_Boolean) {
+      i = j;
+    }
+    do
+    {
+      boolean bool;
+      do
+      {
+        do
+        {
+          return i;
+          if (this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) {
+            break;
+          }
+          bool = a();
+          i = j;
+        } while (this.jdField_b_of_type_Boolean);
+        i = j;
+      } while (!bool);
+      paramInt2 = Math.min(paramInt2, this.jdField_a_of_type_Int - this.jdField_b_of_type_Int);
+      paramInt1 = this.jdField_a_of_type_JavaIoInputStream.read(paramArrayOfByte, paramInt1, paramInt2);
+      this.jdField_b_of_type_Int += paramInt1;
+      i = paramInt1;
+    } while (this.jdField_b_of_type_Int != this.jdField_a_of_type_Int);
+    this.jdField_b_of_type_Int = 0;
+    return paramInt1;
   }
 }
 

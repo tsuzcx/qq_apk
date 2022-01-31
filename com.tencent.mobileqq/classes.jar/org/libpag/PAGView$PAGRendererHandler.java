@@ -23,17 +23,22 @@ class PAGView$PAGRendererHandler
       {
         do
         {
-          return;
-          localPAGView = (PAGView)paramMessage.obj;
-        } while (localPAGView == null);
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        }
+          do
+          {
+            return;
+            localPAGView = (PAGView)paramMessage.obj;
+          } while (localPAGView == null);
+          switch (paramMessage.what)
+          {
+          default: 
+            return;
+          }
+        } while (PAGView.access$000(localPAGView) == null);
+        float f = paramMessage.arg1 / 1.0E+008F;
+        PAGView.access$000(localPAGView).setProgress(f);
+        PAGView.access$000(localPAGView).flush();
+        return;
       } while (PAGView.access$000(localPAGView) == null);
-      float f = paramMessage.arg1 / 1.0E+008F;
-      PAGView.access$000(localPAGView).setProgress(f);
       PAGView.access$000(localPAGView).flush();
       return;
     } while (PAGView.access$100() == null);

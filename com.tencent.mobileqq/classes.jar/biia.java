@@ -1,19 +1,9 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
+import java.io.File;
 
 public class biia
-  implements tst
 {
-  public biia(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
-  
-  public void a_(tso paramtso)
-  {
-    urk.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).c();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
-  }
+  public static final String a = bihx.b() + File.separator + "ae";
+  public static final String b = bihx.c() + File.separator + "ae";
 }
 
 

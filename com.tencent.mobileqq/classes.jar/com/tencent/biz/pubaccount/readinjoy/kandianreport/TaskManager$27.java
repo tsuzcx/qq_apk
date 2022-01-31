@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import baaw;
+import bbca;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
 
@@ -11,7 +11,7 @@ class TaskManager$27
   
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
-    return new String(baaw.encode(((String)paramArrayOfObject[0]).getBytes(), 2));
+    return new String(bbca.encode(((String)paramArrayOfObject[0]).getBytes(), 2));
   }
 }
 

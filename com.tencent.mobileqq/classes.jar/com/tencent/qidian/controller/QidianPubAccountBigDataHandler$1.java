@@ -1,15 +1,15 @@
 package com.tencent.qidian.controller;
 
-import bcqx;
+import bduy;
 
 public class QidianPubAccountBigDataHandler$1
   implements Runnable
 {
-  public QidianPubAccountBigDataHandler$1(bcqx parambcqx) {}
+  public QidianPubAccountBigDataHandler$1(bduy parambduy) {}
   
   public void run()
   {
-    bcqx.a(this.this$0);
+    bduy.a(this.this$0);
   }
 }
 

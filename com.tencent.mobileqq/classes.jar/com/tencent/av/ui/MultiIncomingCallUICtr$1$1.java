@@ -1,13 +1,13 @@
 package com.tencent.av.ui;
 
-import ltr;
-import lts;
-import lzu;
+import mek;
+import mel;
+import mkl;
 
 public class MultiIncomingCallUICtr$1$1
   implements Runnable
 {
-  public MultiIncomingCallUICtr$1$1(lts paramlts) {}
+  public MultiIncomingCallUICtr$1$1(mel parammel) {}
   
   public void run()
   {

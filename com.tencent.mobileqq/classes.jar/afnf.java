@@ -1,30 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class afnf
-  implements View.OnClickListener
+class afnf
+  implements BusinessObserver
 {
-  public afnf(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  afnf(afne paramafne) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.g = true;
-    this.a.d.setVisibility(8);
-    this.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a, 2131302806));
-    this.a.d.setVisibility(0);
-    this.a.d.setText(ajjy.a(2131635866));
-    this.a.d.setOnClickListener(new afng(this));
-    ChatHistoryTroopMemberFragment.a(this.a);
-    if (this.a.a != null) {
-      this.a.a.a();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("RecommendTroopAdapter", 4, "delRecommendTroop");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afnf
  * JD-Core Version:    0.7.0.1
  */

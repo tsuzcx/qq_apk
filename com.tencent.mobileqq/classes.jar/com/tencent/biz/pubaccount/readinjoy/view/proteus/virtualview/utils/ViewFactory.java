@@ -39,6 +39,7 @@ public class ViewFactory
     registerViewBuilder("UILabel", new NativeText.Builder());
     registerViewBuilder("ReadInjoyAsynImageView", new NativeImage.Builder());
     registerViewBuilder("UIImageView", new NativeImage.Builder());
+    registerViewBuilder("ReadInjoyAsynImageIcon", new NativeImage.Builder());
     registerViewBuilder("UIView", new BoringView.Builder());
     registerViewBuilder("RelativeLayout", new RelativeLayout.Builder());
     registerViewBuilder("UIButton", new NativeButton.Builder());

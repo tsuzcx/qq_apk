@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
 
 class adop
-  implements bbrx
+  implements aptu
 {
-  adop(adoi paramadoi, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
+  adop(adoo paramadoo, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (paramInt == 2)
-    {
-      this.jdField_a_of_type_Adoi.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
-      aweg.jdField_a_of_type_Boolean = true;
-    }
-    while ((paramInt != 3) && (paramInt != 1)) {
-      return;
-    }
-    aweg.jdField_a_of_type_Long = 0L;
+    ((yeu)this.jdField_a_of_type_Adoo.a.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
+    adon.a(this.jdField_a_of_type_Adoo.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
   }
+  
+  public void b() {}
 }
 
 

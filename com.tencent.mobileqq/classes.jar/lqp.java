@@ -1,50 +1,79 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.Context;
+import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
 
-public class lqp
-  implements View.OnClickListener
+public abstract class lqp
 {
-  public lqp(AVActivity paramAVActivity) {}
+  protected float a;
+  protected long a;
+  protected final Context a;
+  protected MotionEvent a;
+  protected boolean a;
+  protected float b;
+  protected MotionEvent b;
   
-  public void onClick(View paramView)
+  public lqp(Context paramContext)
   {
-    if (this.a.isDestroyed()) {}
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_AndroidViewMotionEvent != null)
+    {
+      this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
+      this.jdField_a_of_type_AndroidViewMotionEvent = null;
+    }
+    if (this.jdField_b_of_type_AndroidViewMotionEvent != null)
+    {
+      this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
+      this.jdField_b_of_type_AndroidViewMotionEvent = null;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  protected abstract void a(int paramInt, MotionEvent paramMotionEvent);
+  
+  protected void a(MotionEvent paramMotionEvent)
+  {
+    MotionEvent localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
+    if ((paramMotionEvent == null) || (localMotionEvent == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseGestureDetector", 2, "updateStateByEvent-->Curr Or Prev is null");
+      }
+      return;
+    }
+    if (this.jdField_b_of_type_AndroidViewMotionEvent != null)
+    {
+      this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
+      this.jdField_b_of_type_AndroidViewMotionEvent = null;
+    }
+    this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+    this.jdField_a_of_type_Long = (paramMotionEvent.getEventTime() - localMotionEvent.getEventTime());
+    this.jdField_a_of_type_Float = paramMotionEvent.getPressure(paramMotionEvent.getActionIndex());
+    this.jdField_b_of_type_Float = localMotionEvent.getPressure(localMotionEvent.getActionIndex());
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction() & 0xFF;
+    if (!this.jdField_a_of_type_Boolean) {
+      a(i, paramMotionEvent);
+    }
     for (;;)
     {
-      return;
-      paramView = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
-      if (!paramView.w)
-      {
-        int i = paramView.d;
-        long l = AudioHelper.b();
-        QLog.w(this.a.b, 1, "onMsgClick, sessionType[" + i + "], state[" + paramView.jdField_g_of_type_Int + "], seq[" + l + "]");
-        if ((i == 1) || (i == 2))
-        {
-          if (!paramView.m()) {
-            this.a.a(l, this.a.c, this.a.d, this.a.k);
-          }
-        }
-        else {
-          while (AVActivity.a(this.a) != null)
-          {
-            AVActivity.a(this.a).a();
-            return;
-            if ((i == 3) || (i == 4))
-            {
-              paramView = String.valueOf(paramView.jdField_g_of_type_Long);
-              String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.a.d, paramView, null);
-              this.a.a(l, paramView, this.a.d, str);
-            }
-          }
-        }
-      }
+      return true;
+      b(i, paramMotionEvent);
     }
   }
+  
+  protected abstract void b(int paramInt, MotionEvent paramMotionEvent);
 }
 
 

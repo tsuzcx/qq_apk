@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
 import android.os.Process;
-import auvj;
-import auvk;
+import avva;
+import avvb;
 import com.tencent.qphone.base.util.QLog;
 
 class EffectsCameraCaptureView$1

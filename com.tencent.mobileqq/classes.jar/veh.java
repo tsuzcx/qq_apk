@@ -1,10 +1,12 @@
-public abstract interface veh
+public class veh
 {
-  public abstract void a();
-  
-  public abstract void a(ver paramver);
-  
-  public abstract void b();
+  public static void a(int paramInt, String paramString)
+  {
+    vej localvej = new vej();
+    localvej.a(paramInt, 1);
+    localvej.a = paramString;
+    syr.a().a(localvej, new vei());
+  }
 }
 
 

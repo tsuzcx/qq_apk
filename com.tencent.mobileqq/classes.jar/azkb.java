@@ -1,7 +1,17 @@
-public class azkb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class azkb
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public int b;
+  azkb(azjy paramazjy) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
+  }
 }
 
 

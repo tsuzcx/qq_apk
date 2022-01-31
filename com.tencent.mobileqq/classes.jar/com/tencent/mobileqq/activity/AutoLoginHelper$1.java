@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import aabz;
-import aroh;
+import aals;
+import askl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class AutoLoginHelper$1
   implements Runnable
 {
-  public AutoLoginHelper$1(aabz paramaabz) {}
+  public AutoLoginHelper$1(aals paramaals) {}
   
   public void run()
   {
-    ((aroh)aabz.a(this.this$0).getManager(11)).g();
+    ((askl)aals.a(this.this$0).getManager(11)).g();
   }
 }
 

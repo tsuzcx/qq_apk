@@ -1,10 +1,14 @@
-public final class bgwd
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+
+class bgwd
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public final byte[] a;
+  bgwd(bgwb parambgwb) {}
   
-  bgwd(byte[] paramArrayOfByte)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    this.a = paramArrayOfByte;
+    bgwb.a(this.a, paramInt);
   }
 }
 

@@ -1,21 +1,14 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agcy
-  implements acwd
+  implements DialogInterface.OnClickListener
 {
-  agcy(agcx paramagcx) {}
+  agcy(agch paramagch) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setResult(-1, new Intent());
-    this.a.a.finish();
-  }
-  
-  public void b()
-  {
-    this.a.a.setResult(-1, new Intent());
-    this.a.a.finish();
+    paramDialogInterface.dismiss();
   }
 }
 

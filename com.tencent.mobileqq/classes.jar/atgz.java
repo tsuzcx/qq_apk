@@ -1,122 +1,194 @@
-import com.tencent.mobileqq.olympic.TorchInfo;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.AddCommentNoFilterReq;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsg;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsgBody;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.DelCommentReq;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.GetCommentListNoFilterReq;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.UserInfo;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.olympic.OlympicTorchSvc.SceneWording;
-import tencent.im.oidb.olympic.torch_transfer.TorchbearerInfo;
+import java.util.HashSet;
+import mqq.manager.TicketManager;
+import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
 
 public class atgz
-  implements ajfe
+  implements atgv
 {
-  public void a(boolean paramBoolean, int paramInt1, TorchInfo paramTorchInfo, int paramInt2) {}
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  private VideoData jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData;
+  private HashSet<Long> jdField_a_of_type_JavaUtilHashSet = new HashSet();
   
-  public void a(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte, TorchInfo paramTorchInfo) {}
-  
-  public void a(boolean paramBoolean, TorchInfo paramTorchInfo) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, String paramString, int paramInt2, int paramInt3, byte[] paramArrayOfByte) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString, torch_transfer.TorchbearerInfo paramTorchbearerInfo, OlympicTorchSvc.SceneWording paramSceneWording) {}
-  
-  public void b(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public atgz(VideoData paramVideoData, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OlympicObserver", 2, new Object[] { "onUpdata, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
-    }
-    switch (paramInt)
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private boolean a(oidb_0xada.ReqBody paramReqBody)
+  {
+    paramReqBody.uid.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    paramReqBody.tinyid.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    Object localObject = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
+    String str = ((TicketManager)localObject).getA2(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
     {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 6: 
-      do
+      paramReqBody.a2.set(str);
+      paramReqBody.platform.set(1);
+      paramReqBody.version.set("8.2.8");
+      paramReqBody.original_id.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      paramReqBody.original_key.set((String)localObject);
+      paramReqBody.original_id_type.set(1);
+      return true;
+    }
+    return false;
+  }
+  
+  public int a()
+  {
+    try
+    {
+      int i = Integer.parseInt("8.2.8".replace(".", ""));
+      return i;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("CommentsDataSource", 2, "getVersionInt exp:" + localException.toString());
+      }
+    }
+    return 0;
+  }
+  
+  public void a(int paramInt, atgx paramatgx)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
+      return;
+    }
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    if (!a(localReqBody))
+    {
+      QLog.i("CommentsDataSource", 1, "oidb_0xada configCommonFileds failed");
+      paramatgx.a();
+    }
+    NowNearbyVideoCommentProto.GetCommentListNoFilterReq localGetCommentListNoFilterReq = new NowNearbyVideoCommentProto.GetCommentListNoFilterReq();
+    localGetCommentListNoFilterReq.count.set(20L);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString)) {
+      localGetCommentListNoFilterReq.feed_id.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString);
+    }
+    localGetCommentListNoFilterReq.feed_type.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.j);
+    localGetCommentListNoFilterReq.page.set(paramInt);
+    localGetCommentListNoFilterReq.filter.set(0L);
+    localReqBody.cmd.set(857);
+    localReqBody.subcmd.set(8);
+    localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localGetCommentListNoFilterReq.toByteArray()));
+    mxi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new atha(this, paramatgx), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+  }
+  
+  public void a(Comments.Comment paramComment, atgw paramatgw)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
+      return;
+    }
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    if (a(localReqBody))
+    {
+      localReqBody.cmd.set(857);
+      localReqBody.subcmd.set(3);
+      NowNearbyVideoCommentProto.DelCommentReq localDelCommentReq = new NowNearbyVideoCommentProto.DelCommentReq();
+      localDelCommentReq.feed_id.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString.getBytes()));
+      localDelCommentReq.comment_id.set(paramComment.jdField_a_of_type_Long);
+      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localDelCommentReq.toByteArray()));
+      mxi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new athc(this, paramatgw, paramComment), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      return;
+    }
+    paramatgw.a(paramComment, -1);
+  }
+  
+  public void a(Comments.Comment paramComment, atgy paramatgy)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
+      return;
+    }
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    if (!a(localReqBody))
+    {
+      QLog.i("CommentsDataSource", 1, "oidb_0xada configCommonFileds failed");
+      paramatgy.a(paramComment, -1, "");
+      return;
+    }
+    NowNearbyVideoCommentProto.AddCommentNoFilterReq localAddCommentNoFilterReq = new NowNearbyVideoCommentProto.AddCommentNoFilterReq();
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.j == 6) {
+      localAddCommentNoFilterReq.feed_type.set(6L);
+    }
+    for (;;)
+    {
+      localAddCommentNoFilterReq.feed_id.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString);
+      Object localObject = new NowNearbyVideoCommentProto.UserInfo();
+      ((NowNearbyVideoCommentProto.UserInfo)localObject).uid.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_c_of_type_Long);
+      ((NowNearbyVideoCommentProto.UserInfo)localObject).user_type.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_g_of_type_Int);
+      ((NowNearbyVideoCommentProto.UserInfo)localObject).now_id.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.d);
+      localAddCommentNoFilterReq.video_recorder.set((MessageMicro)localObject);
+      if ((paramComment.e > 0L) || (paramComment.f > 0L))
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      return;
-                      if ((paramObject != null) && ((paramObject instanceof Object[]))) {
-                        break;
-                      }
-                    } while (!QLog.isColorLevel());
-                    QLog.d("OlympicObserver", 2, "NOTIFY_GET_BUSINESS_TORCH, data is null or not Object[]");
-                    return;
-                    paramObject = (Object[])paramObject;
-                    if (paramObject.length >= 4) {
-                      break;
-                    }
-                  } while (!QLog.isColorLevel());
-                  QLog.d("OlympicObserver", 2, "NOTIFY_GET_BUSINESS_TORCH, objs.length < 4, is " + paramObject.length);
-                  return;
-                  a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (torch_transfer.TorchbearerInfo)paramObject[3], (OlympicTorchSvc.SceneWording)paramObject[4]);
-                  return;
-                  if ((paramObject != null) && ((paramObject instanceof Object[]))) {
-                    break;
-                  }
-                } while (!QLog.isColorLevel());
-                QLog.d("OlympicObserver", 2, "NOTIFY_DELIVER_TORCH, data is null or not Object[]");
-                return;
-                paramObject = (Object[])paramObject;
-                if (paramObject.length >= 6) {
-                  break;
-                }
-              } while (!QLog.isColorLevel());
-              QLog.d("OlympicObserver", 2, "NOTIFY_DELIVER_TORCH, objs.length < 6, is " + paramObject.length);
-              return;
-              a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), (byte[])paramObject[5]);
-              return;
-              if ((paramObject != null) && ((paramObject instanceof Object[]))) {
-                break;
-              }
-            } while (!QLog.isColorLevel());
-            QLog.d("OlympicObserver", 2, "NOTIFY_EXIT_DELIVER_TORCH, data is null or not Object[]");
-            return;
-            paramObject = (Object[])paramObject;
-            if (paramObject.length >= 2) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("OlympicObserver", 2, "NOTIFY_EXIT_DELIVER_TORCH, objs.length < 2, is " + paramObject.length);
-          return;
-          a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-          return;
-        } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-        paramObject = (Object[])paramObject;
-      } while (paramObject.length < 2);
-      b(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+        localObject = new NowNearbyVideoCommentProto.UserInfo();
+        ((NowNearbyVideoCommentProto.UserInfo)localObject).uid.set(paramComment.e);
+        ((NowNearbyVideoCommentProto.UserInfo)localObject).user_type.set(paramComment.jdField_c_of_type_Int);
+        ((NowNearbyVideoCommentProto.UserInfo)localObject).now_id.set(paramComment.f);
+        localAddCommentNoFilterReq.reply_user.set((MessageMicro)localObject);
+      }
+      localObject = new NowNearbyVideoCommentProto.UserInfo();
+      ((NowNearbyVideoCommentProto.UserInfo)localObject).uid.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_g_of_type_Long);
+      ((NowNearbyVideoCommentProto.UserInfo)localObject).now_id.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_h_of_type_Long);
+      ((NowNearbyVideoCommentProto.UserInfo)localObject).user_type.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_h_of_type_Int);
+      localAddCommentNoFilterReq.video_owner.set((MessageMicro)localObject);
+      localAddCommentNoFilterReq.is_aggregate_short_video.set(0);
+      localObject = new NowNearbyVideoCommentProto.UserInfo();
+      ((NowNearbyVideoCommentProto.UserInfo)localObject).uid.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Long);
+      ((NowNearbyVideoCommentProto.UserInfo)localObject).user_type.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_c_of_type_Int);
+      ((NowNearbyVideoCommentProto.UserInfo)localObject).now_id.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.b);
+      localAddCommentNoFilterReq.video_anchor.set((MessageMicro)localObject);
+      localObject = new NowNearbyVideoCommentProto.CommentMsgBody();
+      NowNearbyVideoCommentProto.CommentMsg localCommentMsg = new NowNearbyVideoCommentProto.CommentMsg();
+      localCommentMsg.msg.set(ByteStringMicro.copyFromUtf8(paramComment.jdField_a_of_type_JavaLangString));
+      localCommentMsg.type.set(0);
+      ((NowNearbyVideoCommentProto.CommentMsgBody)localObject).msgs.add(localCommentMsg);
+      localAddCommentNoFilterReq.content.set((MessageMicro)localObject);
+      localReqBody.cmd.set(857);
+      localReqBody.subcmd.set(9);
+      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localAddCommentNoFilterReq.toByteArray()));
+      if (QLog.isColorLevel()) {
+        QLog.i("CommentsDataSource", 2, "print bytes count =" + localAddCommentNoFilterReq.toByteArray().length);
+      }
+      int i = a();
+      QLog.i("CommentsDataSource", 1, "publishComment, qqver=" + i);
+      if (i > 0) {
+        localReqBody.version_code.set(i);
+      }
+      mxi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new athb(this, paramatgy, paramComment), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
       return;
-    case 3: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (byte[])paramObject[2], (TorchInfo)paramObject[3]);
-      return;
-    case 4: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (TorchInfo)paramObject[1], ((Integer)paramObject[2]).intValue());
-      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.j == 4) {
+        localAddCommentNoFilterReq.feed_type.set(4L);
+      } else {
+        localAddCommentNoFilterReq.feed_type.set(3L);
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("OlympicObserver", 2, "NOTIFY_PUSH_0Xb4");
-    }
-    a(true, (TorchInfo)((Object[])(Object[])paramObject)[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atgz
  * JD-Core Version:    0.7.0.1
  */

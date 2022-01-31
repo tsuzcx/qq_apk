@@ -1,30 +1,45 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 class ainz
-  implements SoundPool.OnLoadCompleteListener
+  extends Animation
 {
-  ainz(ainx paramainx, float paramFloat, int paramInt, String paramString, aijf paramaijf, long paramLong) {}
+  ainz(ainv paramainv, View paramView, int paramInt) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (-1.0F == this.jdField_a_of_type_Float) {}
-    for (float f = 1.0F;; f = this.jdField_a_of_type_Float)
-    {
-      paramInt1 = ainx.a(this.jdField_a_of_type_Ainx).play(paramInt1, f, f, 0, this.jdField_a_of_type_Int, 1.0F);
-      if (paramInt1 != 0) {
-        break;
-      }
-      QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "fail to play, musicPath:" + this.jdField_a_of_type_JavaLangString);
-      return;
+    paramFloat = (float)(paramFloat * (0.5D + Math.sqrt(paramFloat) / 2.0D));
+    this.jdField_a_of_type_AndroidViewView.getLayoutParams().width = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    if (paramFloat <= 0.4F) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
     }
-    ainx.a(this.jdField_a_of_type_Ainx, this.jdField_a_of_type_Aijf, paramInt1, this.jdField_a_of_type_Long);
+    do
+    {
+      do
+      {
+        return;
+        if (paramFloat > 0.99F) {
+          break;
+        }
+      } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      return;
+    } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ainz
  * JD-Core Version:    0.7.0.1
  */

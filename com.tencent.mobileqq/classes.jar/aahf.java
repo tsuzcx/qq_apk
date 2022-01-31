@@ -1,32 +1,41 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qidian.data.QidianExternalInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aahf
-  extends ajmm
+  extends bduv
 {
-  public aahf(ChatHistory paramChatHistory) {}
+  public aahf(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  protected void b(boolean paramBoolean)
+  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    this.a.r();
-    if (!paramBoolean)
+    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
     {
-      Message localMessage = this.a.a.obtainMessage(5);
-      this.a.a(localMessage);
+      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
+      if (AddFriendVerifyActivity.a(this.a).equals(paramHashMap.uin)) {
+        if (AddFriendVerifyActivity.a(this.a) != null)
+        {
+          str = AddFriendVerifyActivity.a(this.a).getText().toString();
+          if ((TextUtils.isEmpty(str)) || (str.equals(AddFriendVerifyActivity.a(this.a)))) {
+            AddFriendVerifyActivity.a(this.a).setText(paramHashMap.nickname);
+          }
+        }
+      }
     }
-  }
-  
-  protected void c(boolean paramBoolean)
-  {
-    if (!paramBoolean)
+    while (!QLog.isColorLevel())
     {
-      localMessage = this.a.a.obtainMessage(3);
-      this.a.a(localMessage);
+      String str;
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo not current uin");
       return;
     }
-    Message localMessage = this.a.a.obtainMessage(2);
-    this.a.a(localMessage);
+    QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo fail");
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akma;
+import alam;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARTransferPromotionRenderable$2
   implements Runnable
 {
-  public ARTransferPromotionRenderable$2(akma paramakma) {}
+  public ARTransferPromotionRenderable$2(alam paramalam) {}
   
   public void run()
   {
-    akma.a(this.this$0, new ARTransferPromotionRenderable.2.1(this));
+    alam.a(this.this$0, new ARTransferPromotionRenderable.2.1(this));
     QLog.d("ARTransferPromotionRenderable", 2, "post mRepeatCheckRunnable ");
   }
 }

@@ -1,11 +1,9 @@
-import android.view.View;
-import android.widget.ImageView;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class acur
-  extends acuw
+public abstract interface acur
 {
-  public View a;
-  public ImageView a;
+  public abstract void a(ChatMessage paramChatMessage, CompoundButton paramCompoundButton, boolean paramBoolean);
 }
 
 

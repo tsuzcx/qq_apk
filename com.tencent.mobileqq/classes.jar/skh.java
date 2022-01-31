@@ -1,40 +1,41 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
-import com.tribe.async.reactive.SimpleObserver;
+import org.json.JSONObject;
 
 public class skh
-  extends SimpleObserver<ErrorMessage>
+  extends ska
 {
-  private skh(BasePublishTask paramBasePublishTask) {}
+  public long a;
+  public boolean a;
   
-  public void a(ErrorMessage paramErrorMessage)
+  public skh(JSONObject paramJSONObject)
   {
-    if (paramErrorMessage.isSuccess())
-    {
-      this.a.a(new ErrorMessage());
-      return;
-    }
-    this.a.a(paramErrorMessage);
+    super(paramJSONObject);
   }
   
-  public void onCancel() {}
-  
-  public void onComplete() {}
-  
-  public void onError(@NonNull Error paramError)
+  public static skh a(JSONObject paramJSONObject)
   {
-    if ((paramError instanceof ErrorMessage))
+    return new skh(paramJSONObject);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
     {
-      this.a.a((ErrorMessage)paramError);
+      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isPreloadVideoPlugin");
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("queryPluginTimeInterval");
       return;
     }
-    this.a.a(new ErrorMessage(940005, "upload file fail:" + paramError));
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 3600L;
+  }
+  
+  public String toString()
+  {
+    return "WeSeeVideoPluginConfigInfo{mIsPreloadPluginInWsRecommend=" + this.jdField_a_of_type_Boolean + ", mQueryPluginTimeInterval=" + this.jdField_a_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     skh
  * JD-Core Version:    0.7.0.1
  */

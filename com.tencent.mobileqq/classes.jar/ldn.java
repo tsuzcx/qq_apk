@@ -1,26 +1,12 @@
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.QavPanel;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.av.VideoController;
 
 public class ldn
-  implements lxc
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public ldn(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public ldn(VideoController paramVideoController) {}
   
-  public void a()
-  {
-    if (this.a.a != null)
-    {
-      this.a.a.setViewEnable(2131306671, false);
-      this.a.a.setViewEnable(2131306670, false);
-      this.a.a.setViewEnable(2131297382, false);
-    }
-  }
-  
-  public void b()
-  {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 2130772163);
-  }
+  public void onAudioFocusChange(int paramInt) {}
 }
 
 

@@ -1,12 +1,16 @@
-import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 class aarz
+  implements asun
 {
-  aarx jdField_a_of_type_Aarx;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  String jdField_a_of_type_JavaLangString;
-  
   aarz(aary paramaary) {}
+  
+  public void a()
+  {
+    this.a.jdField_a_of_type_Asuu.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Asuu.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+  }
 }
 
 

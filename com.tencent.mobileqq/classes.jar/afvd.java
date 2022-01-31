@@ -1,25 +1,20 @@
-import android.app.Activity;
-import android.view.KeyEvent;
-import android.view.Window;
-import android.view.WindowManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class afvd
-  implements aniq
+  implements DialogInterface.OnClickListener
 {
-  afvd(afuz paramafuz) {}
+  afvd(afur paramafur, boolean paramBoolean, String paramString) {}
   
-  public boolean a(KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean))
+    axqw.b(null, "dc00898", "", "", "0X8009DCA", "0X8009DCA", 0, 0, afur.a(this.jdField_a_of_type_Afur), "", "", "");
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-      this.a.jdField_a_of_type_Boolean = false;
-      paramKeyEvent = ((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
-      paramKeyEvent.y = 0;
-      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes(paramKeyEvent);
-      return true;
+      afur.a(this.jdField_a_of_type_Afur, afur.a(this.jdField_a_of_type_Afur), Long.valueOf(afur.a(this.jdField_a_of_type_Afur)).longValue(), false);
+      return;
     }
-    return false;
+    afur.a(this.jdField_a_of_type_Afur, afur.a(this.jdField_a_of_type_Afur), Long.valueOf(afur.a(this.jdField_a_of_type_Afur)).longValue(), false, this.jdField_a_of_type_JavaLangString);
   }
 }
 

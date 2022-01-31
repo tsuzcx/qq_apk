@@ -1,28 +1,11 @@
-import com.tencent.widget.HongBaoListView;
-
-public abstract interface bejz
+public class bejz
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(HongBaoListView paramHongBaoListView);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void b(HongBaoListView paramHongBaoListView);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void c(HongBaoListView paramHongBaoListView);
+  public String a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bejz
  * JD-Core Version:    0.7.0.1
  */

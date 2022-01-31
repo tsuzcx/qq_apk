@@ -1,28 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
 
-public class afuv
-  implements Animation.AnimationListener
+class afuv
+  implements DialogInterface.OnClickListener
 {
-  public afuv(MiniMsgTabFragment paramMiniMsgTabFragment) {}
+  afuv(afur paramafur, ArrayList paramArrayList, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = ((RelativeLayout.LayoutParams)this.a.a.getLayoutParams()).topMargin;
-    int j = MiniMsgTabFragment.b(this.a);
-    int k = MiniMsgTabFragment.c(this.a);
-    int m = MiniMsgTabFragment.a(this.a).getHeight();
-    this.a.a.setMaxHeight(j - k - i - m);
-    this.a.a.requestLayout();
+    afur.a(this.jdField_a_of_type_Afur, true);
+    afur.a(this.jdField_a_of_type_Afur).a(1);
+    afur.a(this.jdField_a_of_type_Afur, this.jdField_a_of_type_JavaUtilArrayList.size(), 0.0F);
+    if (bbev.d(BaseApplicationImpl.getContext()))
+    {
+      paramInt = (int)(90.0F / this.jdField_a_of_type_Int);
+      afur.a(this.jdField_a_of_type_Afur).b(paramInt);
+    }
+    afur.a(this.jdField_a_of_type_Afur, this.jdField_a_of_type_JavaUtilArrayList);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

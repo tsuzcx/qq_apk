@@ -1,7 +1,7 @@
 package cooperation.qzone.share;
 
-import android.text.Editable;
-import android.widget.EditText;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 class QZoneShareActivity$14
   implements Runnable
@@ -10,23 +10,9 @@ class QZoneShareActivity$14
   
   public void run()
   {
-    Editable localEditable;
-    if (this.this$0.a != null)
-    {
-      localEditable = this.this$0.a.getText();
-      if (localEditable == null) {
-        break label71;
-      }
-    }
-    label71:
-    for (int i = localEditable.length();; i = 0)
-    {
-      this.this$0.a.setSelection(i);
-      if ((!this.this$0.isFinishing()) && (!this.this$0.d)) {
-        this.this$0.h();
-      }
-      return;
-    }
+    int i = this.this$0.b();
+    int j = this.this$0.a();
+    ThreadManager.getUIHandler().post(new QZoneShareActivity.14.1(this, i - j));
   }
 }
 

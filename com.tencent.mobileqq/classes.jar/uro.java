@@ -1,17 +1,24 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
+import android.support.annotation.NonNull;
 
 public class uro
-  extends slu
+  extends sth<uqy, tch>
 {
-  public uro(qqstory_service.RspMonitorValue paramRspMonitorValue)
+  public uro(uqy paramuqy)
   {
-    super(paramRspMonitorValue.result);
+    super(paramuqy);
   }
   
-  public String toString()
+  public void a(@NonNull uqy paramuqy, @NonNull tch paramtch)
   {
-    return "MonitorValueResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
+    uqy.a(paramuqy, paramtch.a, this.TAG);
   }
+  
+  public Class acceptEventClass()
+  {
+    return tch.class;
+  }
+  
+  public void b(@NonNull uqy paramuqy, @NonNull tch paramtch) {}
 }
 
 

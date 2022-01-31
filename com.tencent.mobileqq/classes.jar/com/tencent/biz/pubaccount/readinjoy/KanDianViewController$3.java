@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
 import java.io.File;
-import nhr;
-import nhv;
-import pnc;
+import ntb;
+import ntf;
+import pyx;
 
 public class KanDianViewController$3
   implements Runnable
 {
-  public KanDianViewController$3(nhr paramnhr) {}
+  public KanDianViewController$3(ntb paramntb) {}
   
   public void run()
   {
-    String str = pnc.e();
+    String str = pyx.f();
     if ((str != null) && (new File(str).exists()))
     {
-      nhr.a(this.this$0).removeMessages(2);
-      nhr.a(this.this$0).sendEmptyMessage(3);
+      ntb.a(this.this$0).removeMessages(2);
+      ntb.a(this.this$0).sendEmptyMessage(3);
     }
   }
 }

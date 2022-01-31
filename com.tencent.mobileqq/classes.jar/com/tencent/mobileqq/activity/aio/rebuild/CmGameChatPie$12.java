@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aecb;
-import aimk;
-import bajr;
+import aena;
+import aizd;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class CmGameChatPie$12
   implements Runnable
 {
-  public CmGameChatPie$12(aecb paramaecb, int paramInt1, int paramInt2, String paramString) {}
+  public CmGameChatPie$12(aena paramaena, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
     int i = 2;
-    if (aecb.a(this.this$0) == null) {
-      aecb.a(this.this$0, new aimk(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    if (aena.a(this.this$0) == null) {
+      aena.a(this.this$0, new aizd(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
     }
-    aecb.a(this.this$0).a(this.this$0.b);
-    aecb.a(this.this$0).a(aecb.a(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
-    aecb.a(this.this$0).show();
-    aecb.a(this.this$0);
+    aena.a(this.this$0).a(this.this$0.b);
+    aena.a(this.this$0).a(aena.a(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    aena.a(this.this$0).show();
+    aena.a(this.this$0);
     if (this.b == 2) {}
     for (;;)
     {
-      bajr.a(null, "cmshow", "Apollo", "endPage", 0, i, new String[] { this.jdField_a_of_type_Int + "" });
+      VipUtils.a(null, "cmshow", "Apollo", "endPage", 0, i, new String[] { this.jdField_a_of_type_Int + "" });
       return;
       i = 1 - this.b;
     }

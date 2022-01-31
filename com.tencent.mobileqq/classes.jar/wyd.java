@@ -1,28 +1,31 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
+import android.content.Intent;
+import com.tencent.biz.troop.TroopMemberApiService;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class wyd
+  extends WtloginListener
 {
-  public static Bitmap a(Bitmap paramBitmap)
+  public wyd(TroopMemberApiService paramTroopMemberApiService, WtloginHelper paramWtloginHelper) {}
+  
+  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    Object localObject = paramBitmap;
-    if (paramBitmap != null)
+    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
+  }
+  
+  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (paramInt2 == 0)
     {
-      localObject = paramBitmap;
-      if (!paramBitmap.isRecycled())
-      {
-        int i = paramBitmap.getWidth();
-        int j = paramBitmap.getHeight();
-        int k = ((Long)wwt.a().a("SmartCutPicWidth", Long.valueOf(224L))).intValue();
-        float f1 = k / i;
-        float f2 = k / j;
-        atpg.a("Q.videostory", "Q.videostory.capture", "resizeImage", k + " " + k);
-        localObject = new Matrix();
-        ((Matrix)localObject).postScale(f1, f2);
-        localObject = Bitmap.createBitmap(paramBitmap, 0, 0, i, j, (Matrix)localObject, true);
-      }
+      paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, paramString.getExtras());
+      return;
     }
-    return localObject;
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
   }
 }
 

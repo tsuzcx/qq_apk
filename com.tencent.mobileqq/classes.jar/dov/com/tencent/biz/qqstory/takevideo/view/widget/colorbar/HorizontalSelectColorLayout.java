@@ -6,14 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import bixr;
-import bixs;
-import bixt;
-import bixu;
-import bixv;
-import bixw;
-import biya;
-import biyb;
+import bkod;
+import bkoe;
+import bkof;
+import bkog;
+import bkoh;
+import bkoi;
+import bkom;
+import bkon;
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
 
@@ -23,11 +23,11 @@ public class HorizontalSelectColorLayout
   int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
-  bixu jdField_a_of_type_Bixu;
-  public bixv a;
-  bixw jdField_a_of_type_Bixw;
+  bkog jdField_a_of_type_Bkog;
+  public bkoh a;
+  bkoi jdField_a_of_type_Bkoi;
   HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  ArrayList<biyb> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ArrayList<bkon> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   boolean jdField_a_of_type_Boolean;
   public boolean b = false;
   
@@ -45,16 +45,16 @@ public class HorizontalSelectColorLayout
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131495680, this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)super.findViewById(2131298807));
+    LayoutInflater.from(getContext()).inflate(2131561271, this);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)super.findViewById(2131364364));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setStayDisplayOffsetZero(true);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(new bixr(this));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemSelectedListener(new bixs(this));
-    this.jdField_a_of_type_Bixw = new bixw(this, getContext());
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Bixw);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131312779));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bixt(this));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(new bkod(this));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemSelectedListener(new bkoe(this));
+    this.jdField_a_of_type_Bkoi = new bkoi(this, getContext());
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Bkoi);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131378603));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bkof(this));
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
   }
@@ -65,15 +65,15 @@ public class HorizontalSelectColorLayout
     do
     {
       return;
-      this.jdField_a_of_type_Bixw.a(paramInt);
+      this.jdField_a_of_type_Bkoi.a(paramInt);
       this.jdField_a_of_type_Int = paramInt;
-    } while (this.jdField_a_of_type_Bixu == null);
-    this.jdField_a_of_type_Bixu.a(a());
+    } while (this.jdField_a_of_type_Bkog == null);
+    this.jdField_a_of_type_Bkog.a(a());
   }
   
-  public biyb a()
+  public bkon a()
   {
-    return (biyb)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+    return (bkon)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
   }
   
   public void setAnimationEndTime(long paramLong)
@@ -86,14 +86,14 @@ public class HorizontalSelectColorLayout
     this.b = paramBoolean;
   }
   
-  public void setOnStrokeSelectedListener(bixu parambixu)
+  public void setOnStrokeSelectedListener(bkog parambkog)
   {
-    this.jdField_a_of_type_Bixu = parambixu;
+    this.jdField_a_of_type_Bkog = parambkog;
   }
   
-  public void setOnUndoViewClickListener(bixv parambixv)
+  public void setOnUndoViewClickListener(bkoh parambkoh)
   {
-    this.jdField_a_of_type_Bixv = parambixv;
+    this.jdField_a_of_type_Bkoh = parambkoh;
   }
   
   public void setSelectedStroke(int paramInt1, int paramInt2)
@@ -106,8 +106,8 @@ public class HorizontalSelectColorLayout
     {
       if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        biyb localbiyb = (biyb)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((localbiyb.jdField_a_of_type_Int != paramInt1) || (localbiyb.b != paramInt2)) {
+        bkon localbkon = (bkon)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        if ((localbkon.jdField_a_of_type_Int != paramInt1) || (localbkon.b != paramInt2)) {
           break label73;
         }
         a(i);
@@ -131,8 +131,8 @@ public class HorizontalSelectColorLayout
     {
       if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        biyb localbiyb = (biyb)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((localbiyb.jdField_a_of_type_Int == 0) && (localbiyb.b == paramInt)) {
+        bkon localbkon = (bkon)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        if ((localbkon.jdField_a_of_type_Int == 0) && (localbkon.b == paramInt)) {
           a(i);
         }
       }
@@ -144,7 +144,7 @@ public class HorizontalSelectColorLayout
     }
   }
   
-  public void setStrokeStrategy(biya parambiya, boolean paramBoolean, int paramInt)
+  public void setStrokeStrategy(bkom parambkom, boolean paramBoolean, int paramInt)
   {
     Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
     int i;
@@ -154,14 +154,14 @@ public class HorizontalSelectColorLayout
     {
       i = 0;
       ((ImageView)localObject).setVisibility(i);
-      localObject = super.findViewById(2131312780);
+      localObject = super.findViewById(2131378604);
       if (!paramBoolean) {
         break label120;
       }
       i = 0;
       ((View)localObject).setVisibility(i);
-      localObject = super.findViewById(2131311759);
-      localView = super.findViewById(2131297824);
+      localObject = super.findViewById(2131377572);
+      localView = super.findViewById(2131363370);
       if (paramInt != 1) {
         break label127;
       }
@@ -169,13 +169,13 @@ public class HorizontalSelectColorLayout
     }
     for (;;)
     {
-      if (parambiya == null) {
+      if (parambkom == null) {
         break label161;
       }
       this.jdField_a_of_type_JavaUtilArrayList.clear();
-      parambiya.a(this.jdField_a_of_type_JavaUtilArrayList, getContext());
-      if (this.jdField_a_of_type_Bixw != null) {
-        this.jdField_a_of_type_Bixw.a(this.jdField_a_of_type_JavaUtilArrayList);
+      parambkom.a(this.jdField_a_of_type_JavaUtilArrayList, getContext());
+      if (this.jdField_a_of_type_Bkoi != null) {
+        this.jdField_a_of_type_Bkoi.a(this.jdField_a_of_type_JavaUtilArrayList);
       }
       return;
       i = 8;

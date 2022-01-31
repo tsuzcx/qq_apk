@@ -1,21 +1,25 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-class DesktopDataManager$12
+final class DesktopDataManager$12
   implements Runnable
 {
-  DesktopDataManager$12(DesktopDataManager paramDesktopDataManager) {}
+  DesktopDataManager$12(MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {
-    Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject != null)
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null)
     {
-      localObject = DesktopDataManager.access$2600(this.this$0, (AppInterface)localObject);
-      this.this$0.runOnMainThread(new DesktopDataManager.12.1(this, (List)localObject));
+      DesktopDataManager localDesktopDataManager = (DesktopDataManager)localAppRuntime.getManager(336);
+      if (localDesktopDataManager != null) {
+        DesktopDataManager.access$2400(localDesktopDataManager, this.val$appInfo);
+      }
+      QLog.d("DesktopDataManager", 1, "recordMiniAppStart, appInfo = " + this.val$appInfo + ", appRuntime = " + localAppRuntime + "， manager = " + localDesktopDataManager);
     }
   }
 }

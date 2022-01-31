@@ -6,8 +6,8 @@ import android.os.Looper;
 import android.util.Log;
 import com.tencent.tmassistant.common.jce.BypassInterceptConfig;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.l;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.k;
 import com.tencent.tmdownloader.f;
 import com.tencent.tmdownloader.internal.storage.b;
 import java.util.ArrayList;
@@ -60,15 +60,15 @@ public class h
       localStringBuilder.append(",");
     }
     localStringBuilder.append("]");
-    ac.c("miles", localStringBuilder.toString());
+    ab.c("miles", localStringBuilder.toString());
     if (localBypassInterceptConfig.status == 1)
     {
-      ac.c("miles", "<checkPkg> status == 1, allow all pkg");
+      ab.c("miles", "<checkPkg> status == 1, allow all pkg");
       return true;
     }
     if ((localBypassInterceptConfig.pkgList != null) && (localBypassInterceptConfig.pkgList.contains(paramString)))
     {
-      ac.c("miles", "<checkPkg> pkgList contains " + paramString + ",allow install");
+      ab.c("miles", "<checkPkg> pkgList contains " + paramString + ",allow install");
       return true;
     }
     return false;
@@ -78,7 +78,7 @@ public class h
   {
     long l = System.currentTimeMillis();
     BypassInterceptConfig localBypassInterceptConfig = (BypassInterceptConfig)b.a().a("key_bypass_config", BypassInterceptConfig.class);
-    ac.c("miles", "读取配置耗时：" + (System.currentTimeMillis() - l) + "ms");
+    ab.c("miles", "读取配置耗时：" + (System.currentTimeMillis() - l) + "ms");
     return (localBypassInterceptConfig != null) && (localBypassInterceptConfig.status != 0);
   }
   
@@ -108,7 +108,7 @@ public class h
     if (Thread.currentThread() == Looper.getMainLooper().getThread()) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.c("miles", bool);
+      ab.c("miles", bool);
       if (!b()) {
         break;
       }
@@ -126,11 +126,11 @@ public class h
       if ((this.d != null) && (!this.d.c())) {
         this.d.a(true);
       }
-      ac.c("miles", "<hookAM4Install> time cost:" + (System.currentTimeMillis() - l));
-      l.a().post(new i(this));
+      ab.c("miles", "<hookAM4Install> time cost:" + (System.currentTimeMillis() - l));
+      k.a().post(new i(this));
       return;
     }
-    ac.c("miles", "<hookAM4Install> hook denied");
+    ab.c("miles", "<hookAM4Install> hook denied");
   }
 }
 

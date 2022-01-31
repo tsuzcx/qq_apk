@@ -1,4 +1,20 @@
-public class ajwp {}
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+
+public class ajwp
+  implements ViewTreeObserver.OnGlobalLayoutListener
+{
+  public ajwp(FrameHelperActivity paramFrameHelperActivity) {}
+  
+  public void onGlobalLayout()
+  {
+    if ((this.a.c.getVisibility() == 0) && ((this.a.c() instanceof ReadinjoyTabFrame))) {
+      this.a.c.setVisibility(8);
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

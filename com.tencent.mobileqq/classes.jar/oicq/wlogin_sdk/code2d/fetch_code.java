@@ -119,7 +119,7 @@ public class fetch_code
       break label184;
       i = 4;
       localObject1 = new byte[4];
-      util.int32_to_buf((byte[])localObject1, 0, t.ax);
+      util.int32_to_buf((byte[])localObject1, 0, t.az);
       break label184;
       paramQRCodeCustom = new byte[j];
       util.int64_to_buf32(paramQRCodeCustom, 2, paramLong2);

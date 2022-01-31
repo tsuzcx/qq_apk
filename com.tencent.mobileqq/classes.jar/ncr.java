@@ -1,21 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
 
 public class ncr
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public ncr(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
+  public ncr(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (Bundle)paramMessage.obj;
+    this.a.jdField_a_of_type_Wxu.a(17, paramMessage, this.a.jdField_a_of_type_Ajtg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ncr
  * JD-Core Version:    0.7.0.1
  */

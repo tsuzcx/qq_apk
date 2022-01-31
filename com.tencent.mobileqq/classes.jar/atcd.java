@@ -1,18 +1,65 @@
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class atcd
-  implements View.OnClickListener
+public class atcd
+  extends BaseAdapter
 {
-  atcd(atcc paramatcc) {}
+  protected int a;
   
-  public void onClick(View paramView)
+  public atcd(GameQuickWordsPanel paramGameQuickWordsPanel)
   {
-    if (((paramView.getTag() instanceof atce)) && (this.a.a != null))
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      atce localatce = (atce)paramView.getTag();
-      this.a.a.a(this.a, paramView, localatce);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getContext()).inflate(2131558547, null);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, actn.a(46.0F, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getResources())));
+      paramViewGroup = new atce(this);
+      paramViewGroup.a = ((TextView)paramView.findViewById(2131373492));
+      paramView.setTag(paramViewGroup);
     }
+    for (;;)
+    {
+      String str = (String)getItem(paramInt);
+      paramViewGroup.a.setText(str);
+      paramViewGroup.a.setTextColor(this.jdField_a_of_type_Int);
+      return paramView;
+      paramViewGroup = (atce)paramView.getTag();
+    }
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    HashMap localHashMap = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_Aepg.a();
+    if (localHashMap.containsKey("quickWordColor")) {
+      this.jdField_a_of_type_Int = ((Integer)localHashMap.get("quickWordColor")).intValue();
+    }
+    super.notifyDataSetChanged();
   }
 }
 

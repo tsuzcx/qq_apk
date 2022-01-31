@@ -1,372 +1,427 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import java.io.ByteArrayOutputStream;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.subscribe.videoplayer.CleanVideoPlayerView;
+import com.tencent.biz.subscribe.videoplayer.SubscribePlayerManager.2;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class wto
-  implements wtl
 {
-  private static final Double jdField_a_of_type_JavaLangDouble = Double.valueOf(0.005D);
-  private static final Double b = Double.valueOf(0.01D);
-  private static final Double c = Double.valueOf(0.35D);
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private static wto jdField_a_of_type_Wto;
+  private int jdField_a_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private ChatXListView jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private final String jdField_a_of_type_JavaLangString = "SubscribePlayerManager";
+  private Map<Integer, adni> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Set<adni> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = -1;
+  private Map<Integer, Long> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int = -1;
+  private Map<Integer, String> jdField_c_of_type_JavaUtilMap = new HashMap();
+  private int d = -1;
+  private int e = -1;
+  private int f;
   
-  private String a(Bitmap paramBitmap, int paramInt)
+  private int a()
   {
-    int i = Math.min(paramBitmap.getWidth(), paramBitmap.getHeight());
-    if (i > paramInt)
-    {
-      paramBitmap = atiu.a(paramBitmap, i / paramInt);
-      localByteArrayOutputStream = new ByteArrayOutputStream();
-      paramBitmap.compress(Bitmap.CompressFormat.JPEG, 100, localByteArrayOutputStream);
-      return wtj.a(localByteArrayOutputStream.toByteArray());
+    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null) || (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(0) == null)) {
+      return 0;
     }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    paramBitmap.compress(Bitmap.CompressFormat.JPEG, 100, localByteArrayOutputStream);
-    return wtj.a(localByteArrayOutputStream.toByteArray());
+    return this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(0).getTop();
   }
   
-  private JSONObject a()
+  public static wto a()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject(bace.d("video_story_aiSceneParams.json"));
-      return localJSONObject2;
+    if (jdField_a_of_type_Wto == null) {
+      jdField_a_of_type_Wto = new wto();
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return localJSONObject1;
+    return jdField_a_of_type_Wto;
   }
   
-  private JSONObject a(String paramString)
+  private void a(adni paramadni, boolean paramBoolean)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
+    if (paramBoolean)
     {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("raw_base64", paramString);
-      localJSONObject2.put("only_gender", 0);
-      localJSONObject2.put("token", b(paramString));
-      paramString = wtk.a("https://tu.qq.com/cgi-bin/qq/get_face_detail.fcg", localJSONObject2.toString());
-      return paramString;
+      paramadni.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+      paramadni.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramadni.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      return;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localJSONObject1;
+    paramadni.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+    paramadni.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    paramadni.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
-  private wtp a(Bitmap paramBitmap, ArrayList<wtm> paramArrayList)
+  private void a(boolean paramBoolean)
   {
-    wtp localwtp = new wtp(this);
-    if ((paramBitmap == null) || (paramArrayList == null)) {
-      return localwtp;
+    if (nar.a(BaseApplicationImpl.context) != 1) {
+      QLog.d("SubscribePlayerManager", 4, "not wifi autoPlay return");
     }
-    double d1 = paramBitmap.getWidth() * paramBitmap.getHeight();
+    for (;;)
+    {
+      return;
+      if ((this.f > this.jdField_c_of_type_Int) && (this.f < this.d))
+      {
+        QLog.d("SubscribePlayerManager", 4, "mCurrentPosition:" + this.f + "is play in screen");
+        return;
+      }
+      QLog.d("SubscribePlayerManager", 4, "mFirstPosition:" + this.jdField_c_of_type_Int + ",mLastPosition:" + this.d);
+      int i;
+      if (paramBoolean)
+      {
+        i = this.jdField_c_of_type_Int;
+        while ((i <= this.d) && (!b(i))) {
+          i += 1;
+        }
+      }
+      else
+      {
+        i = this.d;
+        while ((i >= this.jdField_c_of_type_Int) && (!b(i))) {
+          i -= 1;
+        }
+      }
+    }
+  }
+  
+  private boolean a(int paramInt)
+  {
+    return paramInt == this.jdField_b_of_type_Int;
+  }
+  
+  private void b(adni paramadni)
+  {
+    if (paramadni != null) {
+      while ((paramadni.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0) instanceof CleanVideoPlayerView))
+      {
+        View localView = paramadni.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+        paramadni.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(localView);
+        if (((VideoPlayerView)localView).c()) {
+          ((VideoPlayerView)localView).a();
+        }
+        ((VideoPlayerView)localView).g();
+        a(paramadni, false);
+        QLog.d("SubscribePlayerManager", 4, "release videoPlayer position:" + paramadni.jdField_b_of_type_Int);
+      }
+    }
+  }
+  
+  private boolean b(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null)
+    {
+      adni localadni = (adni)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      if (localadni != null)
+      {
+        Object localObject = localadni.jdField_a_of_type_AndroidWidgetRelativeLayout;
+        Rect localRect = new Rect();
+        localadni.jdField_a_of_type_AndroidWidgetRelativeLayout.getLocalVisibleRect(localRect);
+        int i = localadni.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+        if ((localRect.top == 0) && (localRect.bottom == i))
+        {
+          localObject = ((RelativeLayout)localObject).getChildAt(0);
+          if ((localObject instanceof CleanVideoPlayerView))
+          {
+            localObject = (CleanVideoPlayerView)localObject;
+            if (!((CleanVideoPlayerView)localObject).c())
+            {
+              ((CleanVideoPlayerView)localObject).d();
+              QLog.d("SubscribePlayerManager", 4, "play by old player position:" + localadni.jdField_b_of_type_Int);
+            }
+            QLog.d("SubscribePlayerManager", 4, "is playing now position:" + localadni.jdField_b_of_type_Int);
+            a(localadni, true);
+          }
+          for (;;)
+          {
+            return true;
+            c(localadni, paramInt);
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  private void c(adni paramadni, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null)
+    {
+      if (!nar.a(BaseApplicationImpl.context))
+      {
+        bdid.a().a(ajyc.a(2131714649));
+        QLog.d("SubscribePlayerManager", 4, "network not available");
+      }
+    }
+    else {
+      return;
+    }
+    if (!TextUtils.isEmpty(paramadni.jdField_b_of_type_JavaLangString))
+    {
+      b(paramadni);
+      Object localObject = a(paramadni.jdField_b_of_type_JavaLangString, "vid");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        CleanVideoPlayerView localCleanVideoPlayerView = new CleanVideoPlayerView(this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getContext());
+        localCleanVideoPlayerView.setLoopBack(true);
+        localCleanVideoPlayerView.setOutPutMute(true);
+        localCleanVideoPlayerView.setWifiAutoPlay(true);
+        localCleanVideoPlayerView.setVideoPath((String)localObject, "", "", 0, 0, 0);
+        localCleanVideoPlayerView.setOnProgressListener(new wtq(this, paramadni));
+        localCleanVideoPlayerView.setOnPrepareListener(new wtr(this, paramadni, localCleanVideoPlayerView));
+        localCleanVideoPlayerView.setDarkFrameCheckListener(new wts(this, paramadni));
+        localCleanVideoPlayerView.setRevertProgress(true);
+        int i = axli.a(180.0F);
+        localObject = new RelativeLayout.LayoutParams((int)(i * (paramadni.e / paramadni.f)), i);
+        ((RelativeLayout.LayoutParams)localObject).addRule(13);
+        paramadni.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localCleanVideoPlayerView, 0, (ViewGroup.LayoutParams)localObject);
+        this.f = paramInt;
+        e();
+        QLog.d("SubscribePlayerManager", 4, "playInner mCurrentPlayPosition: " + this.f);
+        return;
+      }
+      QLog.d("SubscribePlayerManager", 4, "vid is empty");
+      return;
+    }
+    QLog.d("SubscribePlayerManager", 4, "url is empty");
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_JavaLangRunnable == null) {
+      this.jdField_a_of_type_JavaLangRunnable = new SubscribePlayerManager.2(this);
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+    }
+  }
+  
+  private void e()
+  {
+    adni localadni1 = (adni)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(this.f));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    while (localIterator.hasNext())
+    {
+      adni localadni2 = (adni)localIterator.next();
+      if (localadni2 != localadni1) {
+        b(localadni2);
+      }
+    }
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    String str = "";
+    String[] arrayOfString = paramString1.substring(paramString1.indexOf("?") + 1).split("&");
+    int j = arrayOfString.length;
     int i = 0;
-    while (i < paramArrayList.size())
+    for (;;)
     {
-      paramBitmap = (wtm)paramArrayList.get(i);
-      int j = paramBitmap.jdField_b_of_type_Int;
-      double d2 = paramBitmap.jdField_a_of_type_Int * j;
-      double d3 = localwtp.jdField_a_of_type_Double;
-      localwtp.jdField_a_of_type_Double = (d2 / d1 + d3);
-      if (localwtp.jdField_a_of_type_Double > jdField_a_of_type_JavaLangDouble.doubleValue()) {
-        localwtp.jdField_a_of_type_Boolean = true;
+      paramString1 = str;
+      if (i < j)
+      {
+        paramString1 = arrayOfString[i];
+        if (paramString1.contains(paramString2)) {
+          paramString1 = paramString1.replace(paramString2 + "=", "");
+        }
+      }
+      else
+      {
+        return paramString1;
       }
       i += 1;
     }
-    if ((paramArrayList.size() > 1) && (localwtp.jdField_a_of_type_Double > b.doubleValue())) {
-      localwtp.b = true;
-    }
-    return localwtp;
   }
   
-  private wtr a(String paramString)
+  public void a()
   {
-    wtr localwtr = new wtr();
-    if (paramString == null) {}
-    do
+    adni localadni = (adni)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(this.f));
+    if (localadni != null)
     {
-      return null;
-      if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
+      View localView = localadni.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+      if (((localView instanceof CleanVideoPlayerView)) && (!((VideoPlayerView)localView).c()))
+      {
+        ((VideoPlayerView)localView).d();
+        QLog.d("SubscribePlayerManager", 4, "onResume play video position:" + localadni.jdField_b_of_type_Int);
+      }
+    }
+  }
+  
+  public void a(adni paramadni)
+  {
+    View localView = paramadni.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+    a(paramadni, false);
+    if ((localView instanceof CleanVideoPlayerView))
+    {
+      paramadni.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(localView);
+      if (((VideoPlayerView)localView).c())
+      {
+        ((VideoPlayerView)localView).a();
+        QLog.d("SubscribePlayerManager", 4, "handleScrollOutScreen:" + paramadni.jdField_b_of_type_Int);
+      }
+      ((CleanVideoPlayerView)localView).g();
+      this.f = -1;
+    }
+  }
+  
+  public void a(adni paramadni, int paramInt)
+  {
+    if ((adni)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) == paramadni) {
+      return;
+    }
+    d();
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramadni);
+    this.jdField_a_of_type_JavaUtilSet.add(paramadni);
+    View localView = paramadni.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+    if ((localView instanceof CleanVideoPlayerView))
+    {
+      paramadni.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(localView);
+      if (((VideoPlayerView)localView).c()) {
+        ((VideoPlayerView)localView).a();
+      }
+      ((VideoPlayerView)localView).g();
+    }
+    a(paramadni, false);
+    paramadni.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new wtp(this, paramadni));
+    QLog.d("SubscribePlayerManager", 4, "bindViewHolder:" + paramInt + "  HolderSize:" + this.jdField_a_of_type_JavaUtilSet.size());
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null) {
+      this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)paramAbsListView);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_Boolean = true;
+    QLog.d("SubscribePlayerManager", 4, "mPerFirstVisible:" + this.jdField_b_of_type_Int + "  mFiresVisible:" + this.jdField_c_of_type_Int);
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      a(true);
+      QLog.d("SubscribePlayerManager", 4, "begin start");
+      return;
+    }
+    a(false);
+    QLog.d("SubscribePlayerManager", 4, "begin end");
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt3 == 0) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null) {
+      this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)paramAbsListView);
+    }
+    if (a(paramInt1))
+    {
+      int i = a();
+      if (Math.abs(this.jdField_a_of_type_Int - i) > 0)
+      {
+        paramInt3 = 1;
+        if (paramInt3 != 0) {
+          if (this.jdField_a_of_type_Int <= i) {
+            break label130;
+          }
+        }
+      }
+      label130:
+      for (this.jdField_b_of_type_Boolean = true;; this.jdField_b_of_type_Boolean = false)
+      {
+        this.jdField_a_of_type_Int = i;
+        paramInt3 = this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFooterViewsCount();
+        i = this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
+        this.jdField_c_of_type_Int = (paramInt1 - i);
+        this.e = paramInt2;
+        this.d = (this.jdField_c_of_type_Int + paramInt2 - paramInt3 - i);
+        return;
+        paramInt3 = 0;
         break;
       }
-      this.jdField_a_of_type_OrgJsonJSONObject = a();
-    } while (this.jdField_a_of_type_OrgJsonJSONObject == null);
-    JSONArray localJSONArray1 = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("sceneList");
-    int i = 0;
-    while (i < localJSONArray1.length())
-    {
-      JSONObject localJSONObject1 = localJSONArray1.optJSONObject(i);
-      JSONArray localJSONArray2 = localJSONObject1.optJSONArray("sceneLvTwoList");
-      int j = 0;
-      JSONObject localJSONObject2;
-      if (j < localJSONArray2.length())
-      {
-        localJSONObject2 = localJSONArray2.optJSONObject(j);
-        if (localJSONObject2.optString("sceneName").equals(paramString))
-        {
-          localwtr.jdField_a_of_type_Int = localJSONObject1.optInt("sceneLvOne");
-          localwtr.jdField_b_of_type_Int = localJSONObject2.optInt("sceneLvTwo");
-          localwtr.jdField_a_of_type_JavaLangString = localJSONObject2.optString("sceneName");
-          localwtr.jdField_b_of_type_JavaLangString = localJSONObject2.optString("sceneFilterID");
-          localwtr.jdField_a_of_type_Double = localJSONObject2.optDouble("sceneFilterPercent");
-        }
-      }
-      else
-      {
-        i += 1;
-        continue;
-      }
-      JSONArray localJSONArray3 = localJSONObject2.optJSONArray("sceneLabels");
-      String[] arrayOfString = new String[localJSONArray3.length()];
-      int k = 0;
-      while (k < localJSONArray3.length())
-      {
-        arrayOfString[k] = localJSONArray3.optString(k);
-        k += 1;
-      }
-      int m = arrayOfString.length;
-      k = 0;
-      for (;;)
-      {
-        if (k < m)
-        {
-          if (arrayOfString[k].equals(paramString))
-          {
-            localwtr.jdField_a_of_type_Int = localJSONObject1.optInt("sceneLvOne");
-            localwtr.jdField_b_of_type_Int = localJSONObject2.optInt("sceneLvTwo");
-            localwtr.jdField_a_of_type_JavaLangString = localJSONObject2.optString("sceneName");
-            localwtr.jdField_b_of_type_JavaLangString = localJSONObject2.optString("sceneFilterID");
-            localwtr.jdField_a_of_type_Double = localJSONObject2.optDouble("sceneFilterPercent");
-          }
-        }
-        else
-        {
-          j += 1;
-          break;
-        }
-        k += 1;
-      }
     }
-    return localwtr;
+    if (paramInt1 > this.jdField_b_of_type_Int) {}
+    for (this.jdField_b_of_type_Boolean = true;; this.jdField_b_of_type_Boolean = false)
+    {
+      this.jdField_a_of_type_Int = a();
+      this.jdField_b_of_type_Int = paramInt1;
+      break;
+    }
   }
   
-  private wtr a(JSONArray paramJSONArray)
+  public void b()
   {
-    double d2 = -1.0D;
-    Object localObject1 = new wtr();
-    Object localObject2 = localObject1;
-    if (paramJSONArray.length() > 0)
+    adni localadni = (adni)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(this.f));
+    if (localadni != null)
     {
-      int i = 0;
-      double d3 = -1.0D;
-      localObject2 = localObject1;
-      if (i < paramJSONArray.length())
+      View localView = localadni.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+      if (((localView instanceof CleanVideoPlayerView)) && (((VideoPlayerView)localView).c()))
       {
-        localObject2 = paramJSONArray.optJSONObject(i);
-        Object localObject3 = ((JSONObject)localObject2).optString("label");
-        double d4 = ((JSONObject)localObject2).optDouble("confidence");
-        wtr localwtr = a((String)localObject3);
-        double d6;
-        double d5;
-        if (localwtr == null)
-        {
-          d6 = d3;
-          d5 = d2;
-          localObject2 = localObject1;
-        }
-        for (;;)
-        {
-          i += 1;
-          localObject1 = localObject2;
-          d2 = d5;
-          d3 = d6;
-          break;
-          localObject2 = localObject1;
-          d5 = d2;
-          d6 = d3;
-          if (localwtr.jdField_b_of_type_Int != -1)
-          {
-            localObject3 = localObject1;
-            double d1 = d2;
-            if (localwtr.jdField_a_of_type_Int == 3)
-            {
-              localObject3 = localObject1;
-              d1 = d2;
-              if (d4 > c.doubleValue())
-              {
-                localObject3 = localObject1;
-                d1 = d2;
-                if (d4 > d2)
-                {
-                  d1 = d4;
-                  localObject3 = localwtr;
-                }
-              }
-            }
-            localObject2 = localObject3;
-            d5 = d1;
-            d6 = d3;
-            if (d4 > d3)
-            {
-              localObject2 = localObject3;
-              d5 = d1;
-              d6 = d3;
-              if (d1 <= 0.0D)
-              {
-                localObject2 = localwtr;
-                d5 = d1;
-                d6 = d4;
-              }
-            }
-          }
-        }
+        ((VideoPlayerView)localView).a();
+        QLog.d("SubscribePlayerManager", 4, "onStop pause video position:" + localadni.jdField_b_of_type_Int);
       }
     }
-    return localObject2;
   }
   
-  private String b(String paramString)
+  public void b(adni paramadni, int paramInt)
   {
-    int i = paramString.length();
-    int j = i / 2;
-    paramString = paramString.substring(j, (int)(i * 0.1D) + j);
-    return a(paramString + "9996ef4aa4fb4378826bc1f1a8409dd7");
+    if (paramadni != null)
+    {
+      this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramadni.jdField_b_of_type_Int));
+      View localView = paramadni.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+      if ((localView instanceof CleanVideoPlayerView))
+      {
+        paramadni.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(localView);
+        if (((VideoPlayerView)localView).c()) {
+          ((VideoPlayerView)localView).a();
+        }
+        ((VideoPlayerView)localView).g();
+        a(paramadni, false);
+        QLog.d("SubscribePlayerManager", 4, "unbind view position:" + paramInt);
+      }
+    }
   }
   
-  private JSONObject b(String paramString)
+  public void c()
   {
-    long l = System.currentTimeMillis() / 1000L;
-    String str = String.valueOf(l).hashCode() + "";
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("request_id", str);
-      localJSONObject2.put("appid", "10301");
-      localJSONObject2.put("raw_base64", paramString);
-      localJSONObject2.put("user", "PTU");
-      localJSONObject2.put("token", b(paramString));
-      paramString = wtk.a("https://tu.qq.com/cgi-bin/qq/do_image_classify.fcg", localJSONObject2.toString());
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localJSONObject1;
-  }
-  
-  public String a(String paramString)
-  {
-    try
-    {
-      paramString = String.format("%032x", new Object[] { new BigInteger(1, MessageDigest.getInstance("MD5").digest(paramString.getBytes())) });
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public void a(Bitmap paramBitmap, ArrayList<wtm> paramArrayList, wtn paramwtn)
-  {
-    if (paramBitmap == null)
-    {
-      paramwtn.a("image is null");
-      return;
-    }
-    long l = System.currentTimeMillis();
-    wtr localwtr = new wtr();
-    paramArrayList = a(paramBitmap, paramArrayList);
-    paramBitmap = a(paramBitmap, 256);
-    if (paramArrayList.jdField_a_of_type_Boolean) {
-      if (paramArrayList.b) {
-        paramBitmap = a(ajjy.a(2131650036));
-      }
-    }
-    while (paramBitmap == null)
-    {
-      paramwtn.a("unknown error");
-      wtk.a(System.currentTimeMillis() - l, 1);
-      return;
-      paramBitmap = a(paramBitmap);
-      if ((paramBitmap == null) || (paramBitmap.isNull("retcode")))
-      {
-        paramwtn.a("network error");
-        wtk.a(System.currentTimeMillis() - l, 1);
-        return;
-      }
-      if ((paramBitmap != null) && (paramBitmap.has("retcode")) && (paramBitmap.optInt("retcode") == 0))
-      {
-        paramBitmap = paramBitmap.optJSONObject("retdata");
-        int i = paramBitmap.optInt("age");
-        int j = paramBitmap.optInt("gender");
-        if (i <= 5) {
-          paramBitmap = a(ajjy.a(2131650039));
-        } else if (j < 50) {
-          paramBitmap = a(ajjy.a(2131650037));
-        } else {
-          paramBitmap = a(ajjy.a(2131650034));
-        }
-      }
-      else
-      {
-        paramBitmap = a(ajjy.a(2131650038));
-        continue;
-        paramArrayList = b(paramBitmap);
-        if ((paramArrayList == null) || (paramArrayList.isNull("retcode")))
-        {
-          paramwtn.a("network error");
-          l = System.currentTimeMillis() - l;
-          wtk.a(l, 1);
-          wye.a("record_smart_filter", wye.a(1L, l));
-          return;
-        }
-        paramBitmap = localwtr;
-        if (paramArrayList != null)
-        {
-          paramBitmap = localwtr;
-          if (paramArrayList.has("retcode"))
-          {
-            paramBitmap = localwtr;
-            if (paramArrayList.optInt("retcode") == 0)
-            {
-              paramArrayList = paramArrayList.optJSONObject("retdata");
-              paramBitmap = localwtr;
-              if (paramArrayList.has("message"))
-              {
-                paramBitmap = localwtr;
-                if (paramArrayList.optString("message").equals("ok")) {
-                  paramBitmap = a(paramArrayList.optJSONObject("data").optJSONArray("tags"));
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    paramwtn.a(paramBitmap);
-    l = System.currentTimeMillis() - l;
-    wtk.a(l, 0);
-    wye.a("record_smart_filter", wye.a(0L, l));
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = -1;
+    this.f = -1;
+    e();
+    this.jdField_c_of_type_Int = -1;
+    this.d = -1;
+    this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = null;
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.jdField_a_of_type_JavaUtilSet.clear();
+    this.jdField_b_of_type_JavaUtilMap.clear();
+    this.jdField_c_of_type_JavaUtilMap.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wto
  * JD-Core Version:    0.7.0.1
  */

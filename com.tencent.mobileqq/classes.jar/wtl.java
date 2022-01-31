@@ -1,13 +1,28 @@
-import android.graphics.Bitmap;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface wtl
+public class wtl
 {
-  public abstract void a(Bitmap paramBitmap, ArrayList<wtm> paramArrayList, wtn paramwtn);
+  private static SharedPreferences a;
+  
+  public static SharedPreferences a(Context paramContext)
+  {
+    if (a == null)
+    {
+      if (paramContext == null)
+      {
+        QLog.e("SubscribeSpUtil", 2, "getPreference error, context is null");
+        return null;
+      }
+      a = paramContext.getSharedPreferences("biz_subscribe", 0);
+    }
+    return a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wtl
  * JD-Core Version:    0.7.0.1
  */

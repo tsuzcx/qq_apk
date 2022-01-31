@@ -1,55 +1,55 @@
 package com.tencent.mobileqq.richmedia.mediacodec.renderer;
 
-import avab;
-import avad;
-import avak;
+import avzu;
+import avzw;
+import awad;
 
 public class GpuImagePartsFilterGroup$2
   implements Runnable
 {
-  public GpuImagePartsFilterGroup$2(avak paramavak, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat) {}
+  public GpuImagePartsFilterGroup$2(awad paramawad, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat) {}
   
   public void run()
   {
-    avad localavad2 = null;
-    avad localavad1;
-    if ((avak.a(this.this$0) == null) || (avak.a(this.this$0).getFilterType() != this.jdField_a_of_type_Int))
+    avzw localavzw2 = null;
+    avzw localavzw1;
+    if ((awad.a(this.this$0) == null) || (awad.a(this.this$0).getFilterType() != this.jdField_a_of_type_Int))
     {
-      localavad1 = avak.a(this.this$0);
-      avak.a(this.this$0, (avad)avab.a(this.jdField_a_of_type_Int));
-      avak.a(this.this$0).init();
-      avak.a(this.this$0).onOutputSizeChanged(this.b, this.c);
+      localavzw1 = awad.a(this.this$0);
+      awad.a(this.this$0, (avzw)avzu.a(this.jdField_a_of_type_Int));
+      awad.a(this.this$0).init();
+      awad.a(this.this$0).onOutputSizeChanged(this.b, this.c);
     }
     for (;;)
     {
-      if ((avak.b(this.this$0) == null) || (avak.b(this.this$0).getFilterType() != this.d))
+      if ((awad.b(this.this$0) == null) || (awad.b(this.this$0).getFilterType() != this.d))
       {
-        localavad2 = avak.b(this.this$0);
-        avak.b(this.this$0, (avad)avab.a(this.d));
-        avak.b(this.this$0).init();
-        avak.b(this.this$0).onOutputSizeChanged(this.b, this.c);
+        localavzw2 = awad.b(this.this$0);
+        awad.b(this.this$0, (avzw)avzu.a(this.d));
+        awad.b(this.this$0).init();
+        awad.b(this.this$0).onOutputSizeChanged(this.b, this.c);
       }
       if ((this.e == 90) || (this.e == 270))
       {
-        avak.a(this.this$0).a(false);
-        avak.b(this.this$0).a(false);
+        awad.a(this.this$0).a(false);
+        awad.b(this.this$0).a(false);
       }
       for (;;)
       {
-        avak.a(this.this$0, this.jdField_a_of_type_Float);
-        avak.a(this.this$0).a(true, 0.1F * 2.0F + this.jdField_a_of_type_Float);
-        avak.b(this.this$0).a(false, this.jdField_a_of_type_Float);
-        if (localavad1 != null) {
-          localavad1.destroy();
+        awad.a(this.this$0, this.jdField_a_of_type_Float);
+        awad.a(this.this$0).a(true, 0.1F * 2.0F + this.jdField_a_of_type_Float);
+        awad.b(this.this$0).a(false, this.jdField_a_of_type_Float);
+        if (localavzw1 != null) {
+          localavzw1.destroy();
         }
-        if (localavad2 != null) {
-          localavad2.destroy();
+        if (localavzw2 != null) {
+          localavzw2.destroy();
         }
         return;
-        avak.a(this.this$0).a(true);
-        avak.b(this.this$0).a(true);
+        awad.a(this.this$0).a(true);
+        awad.b(this.this$0).a(true);
       }
-      localavad1 = null;
+      localavzw1 = null;
     }
   }
 }

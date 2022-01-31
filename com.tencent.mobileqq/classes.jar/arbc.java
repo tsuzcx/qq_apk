@@ -1,20 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface.OnClickListener;
 
 class arbc
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  arbc(arbb paramarbb) {}
+  arbc(araz paramaraz) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a.finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arbc
  * JD-Core Version:    0.7.0.1
  */

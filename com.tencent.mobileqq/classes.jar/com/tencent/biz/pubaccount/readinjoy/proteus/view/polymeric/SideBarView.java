@@ -63,6 +63,9 @@ public class SideBarView
   
   public void setBgColor(String paramString)
   {
+    if (paramString == null) {
+      return;
+    }
     try
     {
       int i = Color.parseColor(paramString);
@@ -83,7 +86,7 @@ public class SideBarView
       if ((!paramString.startsWith("http")) && (!paramString.startsWith("pubaccount"))) {
         break label64;
       }
-      Drawable localDrawable = getContext().getResources().getDrawable(2130842577);
+      Drawable localDrawable = getContext().getResources().getDrawable(2130842660);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = DrawableUtil.getDrawable(getContext(), paramString, localDrawable, localDrawable);
     }
     label64:

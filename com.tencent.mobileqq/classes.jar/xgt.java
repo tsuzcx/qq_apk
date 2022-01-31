@@ -1,39 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
-class xgt
-  implements xgv
+public class xgt
 {
-  xgt(xgn paramxgn) {}
+  private static final String jdField_a_of_type_JavaLangString = xgt.class.getName();
+  private static xgr jdField_a_of_type_Xgr;
+  private static String b;
+  private static String c;
   
-  public void b()
+  public static xgr a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "image list onEnterAnimationEnd");
+    if (b == null) {
+      b = BaseApplicationImpl.getApplication().getPackageName();
     }
-    this.a.b();
-  }
-  
-  public void c()
-  {
-    this.a.c();
-  }
-  
-  public void d()
-  {
-    this.a.d();
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "image list onExitAnimationEnd");
+    if (c == null) {
+      c = BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath();
     }
-    this.a.e();
+    if (jdField_a_of_type_Xgr == null)
+    {
+      jdField_a_of_type_Xgr = new xgu(b, c);
+      veg.b(jdField_a_of_type_JavaLangString, "init FileCache");
+    }
+    return jdField_a_of_type_Xgr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xgt
  * JD-Core Version:    0.7.0.1
  */

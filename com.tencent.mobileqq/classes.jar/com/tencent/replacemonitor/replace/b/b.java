@@ -7,9 +7,7 @@ import android.text.TextUtils;
 import com.tencent.replacemonitor.MonitorStep;
 import com.tencent.replacemonitor.MonitorTask;
 import com.tencent.tmassistant.common.a.c;
-import com.tencent.tmassistant.common.a.d;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.e;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmdownloader.internal.storage.a.a;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -42,7 +40,7 @@ public class b
     for (;;)
     {
       localMonitorTask.isTencentDownload = bool;
-      localMonitorTask.externalParams = e.a(paramCursor.getString(paramCursor.getColumnIndex("external_param")), "&");
+      localMonitorTask.externalParams = com.tencent.tmassistantbase.util.d.a(paramCursor.getString(paramCursor.getColumnIndex("external_param")), "&");
       return localMonitorTask;
       bool = false;
     }
@@ -74,7 +72,7 @@ public class b
     {
       localContentValues.put("is_tdownload", Integer.valueOf(i));
       if (paramMonitorTask.externalParams != null) {
-        localContentValues.put("external_param", e.a(paramMonitorTask.externalParams, "&"));
+        localContentValues.put("external_param", com.tencent.tmassistantbase.util.d.a(paramMonitorTask.externalParams, "&"));
       }
       return localContentValues;
     }
@@ -181,7 +179,7 @@ public class b
     return localObject1;
   }
   
-  public d b()
+  public com.tencent.tmassistant.common.a.d b()
   {
     return a.c();
   }
@@ -213,7 +211,7 @@ public class b
       }
       catch (Throwable paramMonitorTask)
       {
-        ac.e("MonitorTaskTable", ">update error:" + paramMonitorTask.getMessage() + "|" + paramMonitorTask.getCause());
+        ab.e("MonitorTaskTable", ">update error:" + paramMonitorTask.getMessage() + "|" + paramMonitorTask.getCause());
       }
     } else {
       bool = false;
@@ -240,7 +238,7 @@ public class b
     }
     catch (Exception localException)
     {
-      ac.e("MonitorTaskTable", ">delete error:" + localException.getMessage() + "|" + localException.getCause() + "|" + paramMonitorTask);
+      ab.e("MonitorTaskTable", ">delete error:" + localException.getMessage() + "|" + localException.getCause() + "|" + paramMonitorTask);
     }
     return -1;
   }
@@ -252,7 +250,7 @@ public class b
   
   public String[] getAlterSQL(int paramInt1, int paramInt2)
   {
-    ac.c("MonitorTaskTable", ">getAlterSQL " + paramInt1 + "|" + paramInt2);
+    ab.c("MonitorTaskTable", ">getAlterSQL " + paramInt1 + "|" + paramInt2);
     if ((paramInt1 == 7) && (paramInt2 == 8)) {
       return new String[] { "alter table monitor_task_table add column is_tdownload INTEGER;", "alter table monitor_task_table add column external_param TEXT;" };
     }

@@ -1,10 +1,10 @@
 package com.tencent.av.ui;
 
-import ajed;
+import ajsf;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import apdh;
-import bacm;
+import apvb;
+import bbdr;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -19,18 +19,18 @@ class VideoLayerUIBase$4
   
   public void run()
   {
-    new File(ajed.ba).mkdirs();
+    new File(ajsf.bc).mkdirs();
     Object localObject = new Matrix();
     ((Matrix)localObject).setScale(1.0F, -1.0F);
     Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), (Matrix)localObject, true);
     localObject = new SimpleDateFormat("yyyyMMdd.HHmmss.SSS");
     localObject = ((SimpleDateFormat)localObject).format(new Date(System.currentTimeMillis())) + ".jpg";
-    File localFile = new File(ajed.ba, (String)localObject);
+    File localFile = new File(ajsf.bc, (String)localObject);
     for (;;)
     {
       try
       {
-        bool1 = apdh.a(localBitmap, localFile.getAbsolutePath());
+        bool1 = apvb.a(localBitmap, localFile.getAbsolutePath());
         QLog.w(this.this$0.jdField_a_of_type_JavaLangString, 1, "tryScreenShot, screenShotFlag[" + this.jdField_a_of_type_Long + "], Exception", localException1);
       }
       catch (Exception localException1)
@@ -41,7 +41,7 @@ class VideoLayerUIBase$4
           bool2 = bool1;
           if (bool1)
           {
-            bacm.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
+            bbdr.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
             bool2 = bool1;
           }
           if (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {

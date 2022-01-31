@@ -1,55 +1,32 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
 public class awcx
-  extends MSFServlet
+  implements QQPermissionCallback
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public awcx(SignTextEditFragment paramSignTextEditFragment, AppActivity paramAppActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
-    {
-      paramIntent = bfpp.a(paramFromServiceMsg.getWupBuffer());
-      if (paramIntent != null)
-      {
-        paramFromServiceMsg = new Bundle();
-        paramFromServiceMsg.putSerializable("data", paramIntent);
-        notifyObserver(null, 1002, true, paramFromServiceMsg, atdk.class);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneAlbumListNumServlet", 2, "inform QZoneAlbumListNumServlet isSuccess false");
-      }
-      notifyObserver(null, 1002, false, new Bundle(), atdk.class);
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("QZoneAlbumListNumServlet", 2, "inform QZoneAlbumListNumServlet resultcode fail.");
+      QLog.d("SignTextEditFragment", 2, "requestPermission user denied");
     }
-    notifyObserver(null, 1002, false, new Bundle(), atdk.class);
+    bbcv.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramIntent == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("SignTextEditFragment", 2, "requestPermission user grant");
     }
-    byte[] arrayOfByte = new bfpp(paramIntent.getLongExtra("selfuin", 0L), paramIntent.getStringExtra("refer")).encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null) {
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + "getAlbumListNum");
-    paramPacket.putSendData(paramIntent);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignTextEditFragment.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awcx
  * JD-Core Version:    0.7.0.1
  */

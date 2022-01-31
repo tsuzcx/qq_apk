@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.app.Dialog;
-import aqgx;
-import aqgy;
-import babr;
-import bafb;
+import araz;
+import arba;
+import bbcv;
+import bbgg;
 import com.tencent.qphone.base.util.QLog;
 
 public class PresenceInterfaceImpl$10
   implements Runnable
 {
-  public PresenceInterfaceImpl$10(aqgx paramaqgx, String paramString) {}
+  public PresenceInterfaceImpl$10(araz paramaraz, String paramString) {}
   
   public void run()
   {
-    bafb localbafb = babr.a(this.this$0.a, 232, null, this.a, new aqgy(this), null);
+    bbgg localbbgg = bbcv.a(this.this$0.a, 232, null, this.a, new arba(this), null);
     try
     {
-      localbafb.show();
+      localbbgg.show();
       return;
     }
     catch (Exception localException)

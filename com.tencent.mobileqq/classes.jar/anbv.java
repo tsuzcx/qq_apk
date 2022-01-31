@@ -1,31 +1,65 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
 
-class anbv
-  implements Handler.Callback
+public class anbv
+  extends ampb<anbt>
 {
-  anbv(anbu paramanbu) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public static anbt a()
   {
-    switch (paramMessage.what)
-    {
+    return (anbt)ampm.a().a(569);
+  }
+  
+  public int a()
+  {
+    return 569;
+  }
+  
+  @NonNull
+  public anbt a(int paramInt)
+  {
+    return new anbt();
+  }
+  
+  @Nullable
+  public anbt a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
+      return anbt.a(paramArrayOfampi);
     }
-    do
-    {
-      return true;
-      this.a.b = true;
-      QLog.i("EmoticonFromGroup_DBManager", 1, "set db tag, mCanWriteDataToDB = true.");
-    } while (this.a.b() < 300);
-    anbu.a(this.a).clear();
+    return null;
+  }
+  
+  public Class<anbt> a()
+  {
+    return anbt.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("TencentDocFormKeyWordsProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
+  }
+  
+  public void a(anbt paramanbt) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anbv
  * JD-Core Version:    0.7.0.1
  */

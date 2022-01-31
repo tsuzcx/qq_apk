@@ -1,10 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDManualGuideActivity;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
-public final class abic
-  implements DialogInterface.OnClickListener
+public class abic
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abic(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131367016: 
+      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 20);
+      this.a.a();
+      return;
+    case 2131367013: 
+      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 21);
+      this.a.a();
+      return;
+    case 2131367017: 
+      paramView = new Intent(this.a, GesturePWDManualGuideActivity.class);
+      this.a.startActivity(paramView);
+      return;
+    }
+    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
+    this.a.startActivityForResult(paramView, 11);
+    this.a.overridePendingTransition(2130771997, 2130771990);
+  }
 }
 
 

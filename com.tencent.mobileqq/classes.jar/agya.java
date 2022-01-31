@@ -1,29 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
-class agya
-  implements View.OnClickListener
+public class agya
+  implements DialogInterface.OnClickListener
 {
-  agya(agxq paramagxq) {}
+  public agya(SendHbActivity paramSendHbActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (befo.e()) {
-      agxq.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
-    }
-    for (;;)
-    {
-      awqx.a(agxq.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 1, 0, "", "", "", "");
-      return;
-      agxq.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agya
  * JD-Core Version:    0.7.0.1
  */

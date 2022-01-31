@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.soso;
 
-import akft;
+import akuf;
 import android.os.SystemClock;
-import atmp;
-import atmq;
+import aukn;
+import auko;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.data.LbsReportInfo;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class LbsInfoReportManager$1
   implements Runnable
 {
-  public LbsInfoReportManager$1(akft paramakft, double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
+  public LbsInfoReportManager$1(akuf paramakuf, double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
   public void run()
   {
@@ -30,15 +30,15 @@ public class LbsInfoReportManager$1
     localLbsReportInfo.city = this.d;
     localLbsReportInfo.district = this.e;
     localLbsReportInfo.createContent();
-    akft.a(this.this$0).add(localLbsReportInfo);
-    akft.a(this.this$0, this.jdField_a_of_type_Double);
-    akft.b(this.this$0, this.jdField_b_of_type_Double);
-    akft.a(this.this$0, SystemClock.elapsedRealtime());
+    akuf.a(this.this$0).add(localLbsReportInfo);
+    akuf.a(this.this$0, this.jdField_a_of_type_Double);
+    akuf.b(this.this$0, this.jdField_b_of_type_Double);
+    akuf.a(this.this$0, SystemClock.elapsedRealtime());
     if (QLog.isColorLevel()) {
-      QLog.i("LBSReport", 2, "onReceiveLbsInfo cache size : " + akft.a(this.this$0).size() + " lastReportTime: " + akft.a(this.this$0) + " currentTime: " + NetConnInfoCenter.getServerTime());
+      QLog.i("LBSReport", 2, "onReceiveLbsInfo cache size : " + akuf.a(this.this$0).size() + " lastReportTime: " + akuf.a(this.this$0) + " currentTime: " + NetConnInfoCenter.getServerTime());
     }
     int i;
-    if ((akft.a(this.this$0).a != null) && (!akft.a(this.this$0).a.b()))
+    if ((akuf.a(this.this$0).a != null) && (!akuf.a(this.this$0).a.b()))
     {
       i = 1;
       if (i != 0) {
@@ -51,21 +51,21 @@ public class LbsInfoReportManager$1
       return;
       i = 0;
       break;
-      if (!akft.a(this.this$0)) {
-        akft.a(this.this$0);
+      if (!akuf.a(this.this$0)) {
+        akuf.a(this.this$0);
       }
-      if ((akft.a(this.this$0).size() >= 20) || (NetConnInfoCenter.getServerTime() - akft.a(this.this$0) >= 1200L))
+      if ((akuf.a(this.this$0).size() >= 20) || (NetConnInfoCenter.getServerTime() - akuf.a(this.this$0) >= 1200L))
       {
-        this.this$0.a(akft.a(this.this$0), 0);
-        if (!akft.b(this.this$0)) {
-          this.this$0.a(akft.a(this.this$0, akft.a(this.this$0)), LbsReportInfo.convert2StrList(akft.a(this.this$0)), akft.a(this.this$0), 0);
+        this.this$0.a(akuf.a(this.this$0), 0);
+        if (!akuf.b(this.this$0)) {
+          this.this$0.a(akuf.a(this.this$0, akuf.a(this.this$0)), LbsReportInfo.convert2StrList(akuf.a(this.this$0)), akuf.a(this.this$0), 0);
         }
-        akft.a(this.this$0).clear();
-        akft.a(this.this$0).getEntityManagerFactory().createEntityManager().a(LbsReportInfo.class.getSimpleName(), null, null);
-        akft.b(this.this$0, NetConnInfoCenter.getServerTime());
+        akuf.a(this.this$0).clear();
+        akuf.a(this.this$0).getEntityManagerFactory().createEntityManager().a(LbsReportInfo.class.getSimpleName(), null, null);
+        akuf.b(this.this$0, NetConnInfoCenter.getServerTime());
         return;
       }
-      akft.a(this.this$0).getEntityManagerFactory().createEntityManager().a(localLbsReportInfo);
+      akuf.a(this.this$0).getEntityManagerFactory().createEntityManager().a(localLbsReportInfo);
     } while (!QLog.isColorLevel());
     QLog.d("LBSReport", 2, "update db");
   }

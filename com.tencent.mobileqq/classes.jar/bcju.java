@@ -1,61 +1,60 @@
-import android.app.Activity;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qconn.protofile.preAuth.PreAuthRequest;
-import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.widget.ExploreByTouchHelper;
+import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.List;
 
-class bcju
-  implements BusinessObserver
+public class bcju
+  extends ExploreByTouchHelper
 {
-  bcju(bcjn parambcjn, bciz parambciz, bcjx parambcjx, int paramInt, preAuth.PreAuthRequest paramPreAuthRequest, Activity paramActivity) {}
-  
-  private void a(int paramInt, String paramString)
+  public bcju(ClearableEditText paramClearableEditText, View paramView)
   {
-    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "--> preAuth onFail mPreAuthRetryCount=", Integer.valueOf(bcjn.c(this.jdField_a_of_type_Bcjn)), ", errorCode=", Integer.valueOf(paramInt) });
-    if (bcjn.c(this.jdField_a_of_type_Bcjn) < this.jdField_a_of_type_Int)
-    {
-      bcjn.d(this.jdField_a_of_type_Bcjn);
-      this.jdField_a_of_type_Bcjn.a(this.jdField_a_of_type_ComTencentQconnProtofilePreAuth$PreAuthRequest, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bciz, this.jdField_a_of_type_Bcjx, this.jdField_a_of_type_Int);
-      return;
-    }
-    bcjn.b(this.jdField_a_of_type_Bcjn, 0);
-    this.jdField_a_of_type_Bcjx.a(paramInt, paramString);
+    super(paramView);
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
   {
-    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "preAuthWithRetry isSuccess=", Boolean.valueOf(paramBoolean), ", type=", Integer.valueOf(paramInt), ", mPreAuthRetryCount=", Integer.valueOf(bcjn.c(this.jdField_a_of_type_Bcjn)) });
-    apmt.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bciz);
-    if (!paramBoolean)
-    {
-      a(paramBundle.getInt("code", -1), "");
-      return;
+    if ((ClearableEditText.c(this.a)) && (paramFloat1 > this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth())) {
+      return 0;
     }
-    preAuth.PreAuthResponse localPreAuthResponse = new preAuth.PreAuthResponse();
-    byte[] arrayOfByte = bcjy.b(paramBundle.getByteArray("data"), this.jdField_a_of_type_Bciz);
-    try
-    {
-      localPreAuthResponse = (preAuth.PreAuthResponse)localPreAuthResponse.mergeFrom(arrayOfByte);
-      if ((localPreAuthResponse.ret.has()) && (localPreAuthResponse.ret.get() == 0))
-      {
-        QLog.d("OpenSdkVirtualManager", 1, "--> preAuth mergeFrom success");
-        this.jdField_a_of_type_Bcjn.a(localPreAuthResponse);
-        bcjn.b(this.jdField_a_of_type_Bcjn, 0);
-        this.jdField_a_of_type_Bcjx.a();
-        return;
-      }
+    return -1;
+  }
+  
+  public void getVisibleVirtualViews(List<Integer> paramList)
+  {
+    if (ClearableEditText.c(this.a)) {
+      paramList.add(Integer.valueOf(0));
     }
-    catch (Exception localException)
-    {
-      QLog.e("OpenSdkVirtualManager", 1, "Exception", localException);
-      a(paramBundle.getInt("code", -1), "");
-      return;
+  }
+  
+  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ClearableEditTextHelper", 2, "onPerformActionForVirtualView virtualViewId:" + paramInt1);
     }
-    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "--> preAuth mergeFrom fail ret=", Integer.valueOf(localException.ret.get()), ", msg=", localException.msg.get() });
-    a(localException.ret.get(), localException.msg.get());
+    return false;
+  }
+  
+  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  {
+    if (paramInt == 0) {
+      paramAccessibilityEvent.setContentDescription(ajyc.a(2131701934));
+    }
+  }
+  
+  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    if (paramInt == 0)
+    {
+      paramAccessibilityNodeInfoCompat.setContentDescription(ajyc.a(2131701933));
+      paramAccessibilityNodeInfoCompat.addAction(16);
+      paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth(), this.a.getPaddingTop(), this.a.getWidth() - this.a.getPaddingRight(), this.a.getHeight() - this.a.getPaddingBottom()));
+    }
   }
 }
 

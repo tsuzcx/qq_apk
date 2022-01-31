@@ -1,29 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.11;
+
 public class alze
+  implements DialogInterface.OnClickListener
 {
-  private String a;
+  public alze(DynamicAvatarRecordActivity.11 param11) {}
   
-  public alze(String paramString, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof alze))) {}
-    while (!toString().equals(paramObject.toString())) {
-      return false;
-    }
-    return true;
-  }
-  
-  public String toString()
-  {
-    return this.a;
+    this.a.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alze
  * JD-Core Version:    0.7.0.1
  */

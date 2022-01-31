@@ -1,73 +1,49 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.pic.PresendPicMgr;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.ProgressButton;
 
-public class atqh
-  extends Handler
+class atqh
+  implements DialogInterface.OnClickListener
 {
-  private final WeakReference<PresendPicMgr> a;
+  atqh(atpi paramatpi) {}
   
-  public atqh(Looper paramLooper, PresendPicMgr paramPresendPicMgr)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramPresendPicMgr);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    PresendPicMgr localPresendPicMgr = (PresendPicMgr)this.a.get();
-    if (localPresendPicMgr != null)
+    if (paramInt == 1)
     {
-      switch (paramMessage.what)
-      {
-      default: 
-        super.handleMessage(paramMessage);
-        return;
-      case 1: 
-        atpg.a("PresendPicMgr", "PresendHandler", "handleMessage MSG_REGISTER_CLIENT_HANDLER");
-        localPresendPicMgr.a = paramMessage.replyTo;
-        paramMessage = Message.obtain(null, 2);
-        ArrayList localArrayList = new ArrayList();
-        Object localObject = PresendPicMgr.a(localPresendPicMgr).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          localArrayList.add(((atqi)((Iterator)localObject).next()).a);
-        }
-        localObject = new Bundle();
-        ((Bundle)localObject).putParcelableArrayList("flag_compressinfolist", localArrayList);
-        paramMessage.setData((Bundle)localObject);
-        try
-        {
-          localPresendPicMgr.a.send(paramMessage);
-          localPresendPicMgr.a = null;
-          PresendPicMgr.a(localPresendPicMgr);
-          localPresendPicMgr.b();
-          return;
-        }
-        catch (RemoteException paramMessage)
-        {
-          for (;;)
-          {
-            localPresendPicMgr.a = null;
-            if (QLog.isColorLevel()) {
-              QLog.e("PresendPicMgr", 2, paramMessage.getMessage(), paramMessage);
-            }
-            paramMessage.printStackTrace();
-          }
-        }
+      if (this.a.jdField_a_of_type_Atuk != null) {
+        this.a.jdField_a_of_type_Atuk.a(2);
       }
-      atpg.a("PresendPicMgr", "PresendHandler", "handleMessage MSG_UNREGISTER_CLIENT_HANDLER");
-      localPresendPicMgr.a = null;
-      return;
+      if (atpi.a(this.a) != null)
+      {
+        if (!this.a.m) {
+          break label88;
+        }
+        axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_trigger", 0, 0, atpi.a(this.a).uin, "", "yes", "android");
+      }
     }
-    atpg.b("PresendPicMgr", "handleMessage", "PresendPicMgr == null!");
+    label88:
+    do
+    {
+      do
+      {
+        return;
+        axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_goon", 0, 0, atpi.a(this.a).uin, "", "yes", "android");
+        return;
+      } while (paramInt != 0);
+      if (this.a.jdField_a_of_type_Atuk != null) {
+        this.a.jdField_a_of_type_Atuk.a(10);
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131698931);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
+      }
+      this.a.jdField_a_of_type_Int = 2;
+    } while (atpi.a(this.a) == null);
+    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_cancel", 0, 0, atpi.a(this.a).uin, "", "yes", "android");
   }
 }
 

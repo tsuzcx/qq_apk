@@ -1,65 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import java.lang.ref.WeakReference;
+import java.util.HashSet;
+import java.util.Iterator;
 
-public class aadk
-  extends ajhn
+final class aadk
+  extends BroadcastReceiver
 {
-  public aadk(BaseChatPie paramBaseChatPie) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramInt)
+    Iterator localIterator = aadj.a().iterator();
+    while (localIterator.hasNext())
     {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((BaseChatPie.a(this.a) == null) || (paramObject == null) || (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx == null));
-      localObject = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
-      paramObject = (EmoticonResp)paramObject;
-      BaseChatPie.a(this.a).a(paramBoolean, paramInt, paramObject, (String)localObject);
-      return;
-      if ((this.a.jdField_a_of_type_Bbms != null) && (this.a.jdField_a_of_type_Bbms.isShowing())) {
-        this.a.jdField_a_of_type_Bbms.dismiss();
-      }
-    } while (paramObject == null);
-    Object localObject = (EmoticonResp)paramObject;
-    int i;
-    if (paramBoolean)
-    {
-      i = ((EmoticonResp)localObject).delEpId;
-      if ((((EmoticonResp)localObject).keySeq == null) || (((EmoticonResp)localObject).keySeq.equals(""))) {
-        paramObject = ajjy.a(2131635192);
+      aadj localaadj = (aadj)((WeakReference)localIterator.next()).get();
+      if (localaadj != null) {
+        localaadj.a(paramContext, paramIntent);
       }
     }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(((EmoticonResp)localObject).emoticonId)) {
-        break label240;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "auth type emoticon id is null");
-      return;
-      paramObject = ((EmoticonResp)localObject).keySeq;
-      continue;
-      paramObject = ajjy.a(2131635177);
-      i = -404;
-    }
-    label240:
-    ((arnz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(String.valueOf(((EmoticonResp)localObject).epId), ((EmoticonResp)localObject).emoticonId, new aadl(this, paramInt, i, paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aadk
  * JD-Core Version:    0.7.0.1
  */

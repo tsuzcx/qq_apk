@@ -1,21 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 class ayjk
-  implements DialogInterface.OnDismissListener
+  implements TextView.OnEditorActionListener
 {
-  ayjk(ayji paramayji) {}
+  ayjk(ayjf paramayjf) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    {
+      bfmr.b(this.a.a);
+      this.a.d();
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayjk
  * JD-Core Version:    0.7.0.1
  */

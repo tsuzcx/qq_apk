@@ -1,27 +1,29 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.1.1;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class axcm
-  implements MediaPlayer.OnCompletionListener
+  extends MSFServlet
 {
-  public axcm(VideoSprite paramVideoSprite) {}
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (this.a.j) {
-      this.a.b.b(new VideoSprite.1.1(this));
-    }
-    do
-    {
+    if (paramIntent == null) {
       return;
-      this.a.g = false;
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    } while (this.a.jdField_a_of_type_Axbz == null);
-    this.a.jdField_a_of_type_Axbz.a();
+    }
+    long l = paramIntent.getLongExtra("timestamp", 0L);
+    byte[] arrayOfByte = new bgyq(paramIntent.getLongExtra("hostuin", 0L), l, paramIntent.getStringExtra("refer"), paramIntent.getLongExtra("flag", 0L), paramIntent.getStringExtra("mark")).encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null) {
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + "wns.pushrsp");
+    paramPacket.putSendData(paramIntent);
+    QLog.d("MessageSvc.WNSQzone.Push", 2, "发送push ack 时间:" + l);
   }
 }
 

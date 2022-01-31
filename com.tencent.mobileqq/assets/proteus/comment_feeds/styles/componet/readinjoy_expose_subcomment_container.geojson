@@ -4,9 +4,9 @@
     "visible_depend_on_children":"YES",
     "layout_type":"layout_linear",
     "direction":"vertical",
-    "margin_right":"17",
+    "margin_right":"16",
     "margin_left":"65",
-    "margin_top":"9.5",
+    "margin_top":"10",
     "height": {
         "type": "wrap_content"
     },

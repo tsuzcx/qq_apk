@@ -1,98 +1,241 @@
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloaderFirstPkgRp;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import java.util.HashMap;
 
 public class aphg
-  extends aphp
+  extends apgu
 {
-  public aphg(Intent paramIntent)
+  private long jdField_a_of_type_Long;
+  public final apgv a;
+  private ExcitingTransferDownloadCompletedInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
+  private ExcitingTransferDownloaderFirstPkgRp jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp;
+  private boolean jdField_a_of_type_Boolean;
+  private long b;
+  
+  public aphg(QQAppInterface paramQQAppInterface)
   {
-    super(paramIntent);
-    this.b = true;
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Apgv = new apgv();
   }
   
-  public List<RecentUser> a(List<RecentUser> paramList)
+  private long a(long paramLong, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramLong == 9004L) {}
+    do
     {
-      RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!azzz.a(localRecentUser.uin)) && (localRecentUser.getType() != 1003) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1021) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(aphf.h))) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!mqb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
-        localArrayList.add(localRecentUser);
+      return paramLong;
+      if ((paramLong != 0L) && (paramInt != 0))
+      {
+        if ((paramInt == -29120) || (paramInt == -29150) || (paramInt == -21122) || (paramInt == -28123) || (paramInt == -25081) || (paramInt == -28126) || (paramInt == -6101) || (paramInt == -7003) || (paramInt == -403) || (paramInt == -9006) || (paramInt == -9004) || (paramInt == -9017) || (paramInt == -2813)) {
+          return 9042L;
+        }
+        return paramInt;
       }
+      switch ((int)paramLong)
+      {
+      default: 
+        return paramLong;
+      case 0: 
+        return 0L;
+      case 101: 
+        return 9037L;
+      case 201: 
+        return 9001L;
+      case 300: 
+      case 301: 
+      case 302: 
+      case 303: 
+      case 400: 
+        if ((AppNetConnInfo.isNetSupport()) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin())) {
+          return 9052L;
+        }
+        return 9004L;
+      }
+    } while ((AppNetConnInfo.isNetSupport()) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()));
+    return 9004L;
+    return 9343L;
+    return 9321L;
+    if ((AppNetConnInfo.isNetSupport()) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin())) {
+      return 9050L;
     }
-    return localArrayList;
+    return 9004L;
+    return 9056L;
+    return 9058L;
+    return 9009L;
+    return -9527L;
+    if (b()) {
+      return 9040L;
+    }
+    return 9003L;
+    return 9040L;
+    return 9082L;
+  }
+  
+  private boolean b()
+  {
+    if (bbay.a()) {}
+    for (long l = bbay.a() * 1024L; this.jdField_a_of_type_Apgv.d > l; l = bbay.b() * 1024L) {
+      return true;
+    }
+    return false;
+  }
+  
+  protected String a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return "actFileDown";
+    }
+    return "actPDFileDownload";
+  }
+  
+  protected HashMap<String, String> a()
+  {
+    HashMap localHashMap = new HashMap();
+    if (this.jdField_a_of_type_Apgv != null) {
+      localHashMap.putAll(this.jdField_a_of_type_Apgv.a());
+    }
+    localHashMap.put("param_SubReason", String.valueOf(this.jdField_a_of_type_Long));
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp != null) {
+      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.getReportData());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo != null) {
+      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.getReportData());
+    }
+    if (this.jdField_b_of_type_Long != 0L) {
+      localHashMap.put("param_SrvRetCode", String.valueOf(this.jdField_b_of_type_Long));
+    }
+    return localHashMap;
   }
   
   public void a()
   {
-    super.a();
-    if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("k_dataline", true))
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(f);
-      this.jdField_a_of_type_JavaUtilSet.add(k);
-    }
+    this.jdField_a_of_type_Apgv.jdField_a_of_type_Long = 5L;
+    this.jdField_a_of_type_Long = 3L;
+    this.jdField_a_of_type_Apgv.jdField_b_of_type_Long = 9004L;
+    a(false);
   }
   
-  protected void a(Intent paramIntent)
+  public void a(int paramInt)
   {
-    ArrayList localArrayList3 = null;
-    ArrayList localArrayList4 = this.jdField_a_of_type_AndroidOsBundle.getParcelableArrayList("fileinfo_array");
-    ArrayList localArrayList1 = localArrayList3;
-    if (localArrayList4 != null) {}
-    try
-    {
-      localArrayList1 = (ArrayList)localArrayList4;
-      localArrayList3 = (ArrayList)this.jdField_a_of_type_AndroidOsBundle.get("android.intent.extra.STREAM");
-      localArrayList3 = (ArrayList)this.jdField_a_of_type_AndroidOsBundle.get("PhotoConst.PHOTO_PATHS");
-      paramIntent.putExtra("dataline_forward_type", 101);
-      paramIntent.putExtra("sendMultiple", true);
-      if (localArrayList1 == null) {
-        paramIntent.putStringArrayListExtra("dataline_forward_pathlist", localArrayList3);
-      }
+    this.jdField_a_of_type_Long = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
+  {
+    apgv localapgv = new apgv();
+    localapgv.jdField_b_of_type_Int = this.jdField_a_of_type_Apgv.jdField_b_of_type_Int;
+    localapgv.jdField_a_of_type_Int = this.jdField_a_of_type_Apgv.jdField_a_of_type_Int;
+    localapgv.c = this.jdField_a_of_type_Apgv.c;
+    localapgv.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Apgv.jdField_a_of_type_JavaLangString;
+    localapgv.d = this.jdField_a_of_type_Apgv.d;
+    localapgv.jdField_a_of_type_Long = paramInt1;
+    localapgv.jdField_b_of_type_Long = paramInt2;
+    super.a(localapgv, paramExcitingTransferOneSlotComplete);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHtpFirstDataSize != -1L) {
       return;
     }
-    catch (ClassCastException localClassCastException)
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHtpFirstDataSize = paramLong;
+  }
+  
+  public void a(ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHttpFirstTime = (paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataTime - paramExcitingTransferDownloadCompletedInfo.m_uStartTime);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHtpFirstDataSize = paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataSize;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = paramExcitingTransferDownloadCompletedInfo;
+  }
+  
+  protected boolean a()
+  {
+    return true;
+  }
+  
+  protected HashMap<String, String> b()
+  {
+    HashMap localHashMap = new HashMap();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo != null)
     {
-      for (;;)
-      {
-        ArrayList localArrayList2 = localArrayList3;
+      localHashMap.put("serverip", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_strLastServerHost));
+      localHashMap.put("param_Server", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_strLastServerHost));
+      localHashMap.put("param_ftnIP", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_strLastServerHost));
+      localHashMap.put("param_retry", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_uRetryTimes));
+      localHashMap.put("param_FailCode", String.valueOf(a(this.jdField_a_of_type_Apgv.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_nSrvReturnCode)));
+      localHashMap.put("param_fsized", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_uDownloadedSize));
+      localHashMap.put("param_ipStackType", String.valueOf(apvk.a()));
+      localHashMap.put("param_realTransferType", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_uProxyType));
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_uTotalTimes != 0L) {
+        localHashMap.put("param_speed", String.valueOf((float)(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_uDownloadedSize / 1048576L) / (float)this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_uTotalTimes));
       }
+    }
+    for (;;)
+    {
+      localHashMap.put("param_uuid", "");
+      localHashMap.put("param_MD5", "");
+      localHashMap.put("param_fsizeo", String.valueOf(this.jdField_a_of_type_Apgv.d));
+      localHashMap.put("param_PeerUin", String.valueOf(this.jdField_a_of_type_Apgv.c));
+      localHashMap.put("param_url", String.valueOf(""));
+      localHashMap.put("param_rspHeader", String.valueOf(""));
+      localHashMap.put("param_nSessionId", String.valueOf(""));
+      localHashMap.put("param_fromType", String.valueOf("1"));
+      return localHashMap;
+      localHashMap.put("param_speed", "0");
+      continue;
+      localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Apgv.jdField_b_of_type_Long));
     }
   }
   
-  protected void a(Drawable paramDrawable, boolean paramBoolean)
+  public void b()
   {
-    URLDrawable localURLDrawable;
-    if (paramBoolean)
+    this.jdField_a_of_type_Apgv.jdField_a_of_type_Long = 1L;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (this.jdField_a_of_type_Long = 3L;; this.jdField_a_of_type_Long = 2L)
     {
-      localURLDrawable = (URLDrawable)paramDrawable;
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        break label33;
-      }
-      axwd.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-    }
-    while (paramDrawable == null)
-    {
+      this.jdField_a_of_type_Apgv.jdField_b_of_type_Long = 9037L;
+      a(false);
       return;
-      label33:
-      axwd.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
     }
-    paramDrawable.setBounds(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int);
   }
   
-  protected void b()
+  public void b(long paramLong)
   {
-    this.jdField_a_of_type_Bafb.setMessage(null);
-    this.jdField_a_of_type_Bafb.setMessageCount(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Apgv.jdField_a_of_type_Long = 2L;
+    this.jdField_a_of_type_Long = 2L;
+    this.jdField_a_of_type_Apgv.jdField_b_of_type_Long = paramLong;
+    a(false);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp != null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp = new ExcitingTransferDownloaderFirstPkgRp();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mCSStartTime = awzw.a();
+  }
+  
+  public void c(long paramLong)
+  {
+    this.jdField_a_of_type_Apgv.jdField_a_of_type_Long = 2L;
+    this.jdField_a_of_type_Long = 7L;
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_Apgv.jdField_b_of_type_Long = paramLong;
+    a(false);
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mCSEndTime = awzw.a();
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

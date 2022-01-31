@@ -1,27 +1,8 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class biuy
-  extends Handler
+public abstract interface biuy
 {
-  biuy(biux parambiux, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1000)
-    {
-      paramMessage = (String)paramMessage.obj;
-      this.a.a(paramMessage);
-    }
-    while ((paramMessage.what != 1002) || (this.a.a == null)) {
-      return;
-    }
-    this.a.a.a();
-  }
+  public abstract void a(String paramString);
 }
 
 

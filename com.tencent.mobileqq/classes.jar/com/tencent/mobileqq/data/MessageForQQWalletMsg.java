@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import agjk;
-import agsu;
+import agvz;
+import ahfj;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -458,7 +458,7 @@ public class MessageForQQWalletMsg
     {
       this.frienduin = String.valueOf(l);
       this.time = paramMsg.msg_head.msg_time.get();
-      agsu.a(paramQQAppInterface, this);
+      ahfj.a(paramQQAppInterface, this);
       return;
       if ((i == 83) || (i == 42)) {
         l = paramMsg.msg_head.discuss_info.discuss_uin.get();
@@ -513,7 +513,7 @@ public class MessageForQQWalletMsg
     parse();
     try
     {
-      ((agjk)BaseApplicationImpl.sApplication.getAppRuntime(this.selfuin).getManager(125)).a(true);
+      ((agvz)BaseApplicationImpl.sApplication.getAppRuntime(this.selfuin).getManager(125)).a(true);
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.qqwalletmsg", 2, "postRead init read status");
       }

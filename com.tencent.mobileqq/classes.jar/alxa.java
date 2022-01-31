@@ -1,24 +1,16 @@
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 
-public class alxa
-  extends ajlg
+class alxa
+  extends bfmg
 {
-  public alxa(LocationSelectActivity paramLocationSelectActivity) {}
+  alxa(alwx paramalwx) {}
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramLBSInfo != null) {}
-    for (paramLBSInfo = paramLBSInfo.a(); Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L; paramLBSInfo = null)
-    {
-      this.a.a(paramBoolean, paramLBSInfo);
-      return;
-    }
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
-    localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramLBSInfo };
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
   }
 }
 

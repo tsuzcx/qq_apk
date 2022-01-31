@@ -1,35 +1,23 @@
-import org.json.JSONObject;
+import mqq.app.QQPermissionCallback;
 
-public class agqm
+class agqm
+  implements QQPermissionCallback
 {
-  public int a;
-  public String a;
-  public JSONObject a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  agqm(agql paramagql) {}
   
-  public agqm() {}
-  
-  public agqm(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    bbcv.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public String toString()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return "id: " + this.jdField_a_of_type_JavaLangString + " type: " + this.jdField_a_of_type_Int + " name: " + this.b + " params: " + this.jdField_a_of_type_OrgJsonJSONObject;
+    agqk.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agqm
  * JD-Core Version:    0.7.0.1
  */

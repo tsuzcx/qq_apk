@@ -1,71 +1,57 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aowv
+class aowv
+  extends aoxr
 {
-  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
-  ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage = null;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  boolean c = true;
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  public abstract Intent a();
-  
-  public SessionInfo a()
+  aowv(aowt paramaowt, MessageRecord paramMessageRecord)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    super(paramaowt);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
   }
   
-  public ChatMessage a()
+  void a(String paramString, int paramInt) {}
+  
+  void a(String paramString, int paramInt, aoxp paramaoxp)
   {
-    return null;
-  }
-  
-  public void a(SessionInfo paramSessionInfo) {}
-  
-  public void a(ChatMessage paramChatMessage) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b(Bundle paramBundle) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-  }
-  
-  boolean c()
-  {
-    return false;
-  }
-  
-  boolean d()
-  {
-    return false;
-  }
-  
-  public boolean e()
-  {
-    return this.b;
-  }
-  
-  public boolean f()
-  {
-    return this.c;
+    if ("1".equals(this.g))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      }
+      paramaoxp.a(aowt.a(this.jdField_a_of_type_Long, false), false);
+      return;
+    }
+    if ((this.b == null) || (this.b.length() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file uuid is null");
+      }
+      paramaoxp.a(aowt.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    aouk localaouk = aowt.a(this.jdField_a_of_type_Aowt).a().a();
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_JavaLangString + "]");
+    }
+    localaouk.a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 3, new aoww(this, paramString, paramaoxp));
   }
 }
 

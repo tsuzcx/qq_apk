@@ -1,17 +1,18 @@
-import java.io.File;
-import java.util.Comparator;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.smtt.sdk.WebView;
 
-class bcdv
-  implements Comparator<File>
+public abstract interface bcdv
 {
-  public int a(File paramFile1, File paramFile2)
-  {
-    return paramFile1.getName().compareTo(paramFile2.getName());
-  }
+  public abstract Activity a();
+  
+  public abstract WebViewFragment a();
+  
+  public abstract WebView a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcdv
  * JD-Core Version:    0.7.0.1
  */

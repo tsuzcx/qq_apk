@@ -1,9 +1,45 @@
-public class wyt
-  implements wyu
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+
+class wyt
+  implements axeq
 {
-  public arey a(String paramString)
+  wyt(wym paramwym, AppRuntime paramAppRuntime, Bundle paramBundle) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    return new arfh(paramString).a();
+    VideoEnvironment.a("TroopMemberApiService", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
+    {
+      if (paramInt2 != 0)
+      {
+        VideoEnvironment.a("TroopMemberApiService", ajyc.a(2131715601) + paramInt2 + "]", null);
+        ShortVideoResourceManager.a(ajyc.a(2131715571));
+        axds.a(1, paramInt2);
+        this.jdField_a_of_type_Wym.a.b = false;
+        return;
+      }
+      ArrayList localArrayList = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList);
+      if (paramInt1 == 0)
+      {
+        VideoEnvironment.a("TroopMemberApiService", ajyc.a(2131715562), null);
+        ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList, new wyu(this));
+        return;
+      }
+      VideoEnvironment.a("TroopMemberApiService", ajyc.a(2131715563) + paramInt1 + "]", null);
+      ShortVideoResourceManager.a(ajyc.a(2131715600));
+      axds.a(1, paramInt1);
+      return;
+    }
+    VideoEnvironment.a("TroopMemberApiService", ajyc.a(2131715651) + paramInt2 + "]", null);
+    ShortVideoResourceManager.a(ajyc.a(2131715608));
+    axds.a(1, paramInt2);
+    this.jdField_a_of_type_Wym.a.b = false;
   }
 }
 

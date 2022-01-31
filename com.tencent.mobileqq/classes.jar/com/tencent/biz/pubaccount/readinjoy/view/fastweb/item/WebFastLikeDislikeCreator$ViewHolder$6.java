@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.item;
 
 import android.widget.ImageView;
-import qyg;
+import rky;
 
 public class WebFastLikeDislikeCreator$ViewHolder$6
   implements Runnable
 {
-  public WebFastLikeDislikeCreator$ViewHolder$6(qyg paramqyg) {}
+  public WebFastLikeDislikeCreator$ViewHolder$6(rky paramrky) {}
   
   public void run()
   {
-    qyg.a(this.a, false);
-    qyg.a(this.a).setVisibility(0);
-    qyg.b(this.a).setVisibility(8);
-    qyg.a(this.a).setImageResource(2130841140);
-    qyg.a(this.a, true);
+    rky.a(this.a, false);
+    rky.a(this.a).setVisibility(0);
+    rky.b(this.a).setVisibility(8);
+    rky.a(this.a).setImageResource(2130841217);
+    rky.a(this.a, true);
   }
 }
 

@@ -1,248 +1,139 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.ArrayList;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.transfile.FileDownloadFailedException;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
+import mqq.app.AccountNotMatchException;
 
 public class aysn
+  extends ayrn
 {
-  public String a;
-  public ArrayList<aysc> a;
-  public String b;
-  public ArrayList<aysc> b;
-  public String c;
-  public ArrayList<aysc> c;
-  public String d;
-  public ArrayList<aysc> d;
-  public String e;
-  public String f;
-  public String g;
+  private float jdField_a_of_type_Float = 2.0F;
+  BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
   
-  public aysn(Context paramContext, String paramString1, String paramString2, String paramString3)
+  public aysn(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.e = paramString3;
-    this.jdField_c_of_type_JavaLangString = ChnToSpell.a(paramString2, 1).toLowerCase();
-    this.jdField_d_of_type_JavaLangString = ChnToSpell.a(paramString2, 2).toLowerCase();
-    this.f = ChnToSpell.a(paramString3, 1).toLowerCase();
-    this.g = ChnToSpell.a(paramString3, 2).toLowerCase();
-    int j;
-    int i;
-    int k;
-    if (!TextUtils.isEmpty(paramString2))
+    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
+    try
     {
-      paramString1 = paramString2.trim();
-      j = paramString1.length();
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(j);
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(j);
-      i = 0;
-      while (i < j)
+      this.jdField_a_of_type_Float = paramBaseApplicationImpl.getResources().getDisplayMetrics().density;
+      return;
+    }
+    catch (Exception paramBaseApplicationImpl) {}
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    Object localObject1 = paramDownloadParams.url;
+    String str = "http://" + ((URL)localObject1).getAuthority() + "/" + ((URL)localObject1).getFile();
+    try
+    {
+      localObject1 = (MessageForText)paramDownloadParams.tag;
+    }
+    catch (Exception localException)
+    {
+      try
       {
-        k = paramString1.charAt(i);
-        if ((k >= 19968) && (k <= 40869))
+        for (;;)
         {
-          paramString2 = paramString1.substring(i, i + 1);
-          this.jdField_a_of_type_JavaUtilArrayList.add(new aysc(paramContext, paramString2, ChnToSpell.a(paramString2, 1).toLowerCase()));
-          this.jdField_b_of_type_JavaUtilArrayList.add(new aysc(paramContext, paramString2, ChnToSpell.a(paramString2, 2).toLowerCase()));
+          QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getAppRuntime(((MessageForText)localObject1).selfuin);
+          if ((localObject1 != null) && (localQQAppInterface != null)) {
+            break;
+          }
+          throw new FileDownloadFailedException(9366, 0L, "textMsg=" + localObject1 + " app=" + localQQAppInterface, false, false);
+          localException = localException;
+          localException.printStackTrace();
+          localObject2 = null;
         }
-        i += 1;
       }
-    }
-    if (!TextUtils.isEmpty(paramString3))
-    {
-      paramString1 = paramString3.trim();
-      j = paramString1.length();
-      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(j);
-      this.jdField_d_of_type_JavaUtilArrayList = new ArrayList(j);
-      i = 0;
-      while (i < j)
+      catch (AccountNotMatchException localAccountNotMatchException)
       {
-        k = paramString1.charAt(i);
-        if ((k >= 19968) && (k <= 40869))
+        Object localObject2;
+        for (;;)
         {
-          paramString2 = paramString1.substring(i, i + 1);
-          this.jdField_c_of_type_JavaUtilArrayList.add(new aysc(paramContext, paramString2, ChnToSpell.a(paramString2, 1).toLowerCase()));
-          this.jdField_d_of_type_JavaUtilArrayList.add(new aysc(paramContext, paramString2, ChnToSpell.a(paramString2, 2).toLowerCase()));
+          localayvv = null;
         }
-        i += 1;
+        ayvv localayvv = localayvv.a();
+        aywa localaywa = new aywa();
+        localaywa.jdField_b_of_type_Int = 131076;
+        localaywa.jdField_a_of_type_Long = localObject2.uniseq;
+        localaywa.jdField_b_of_type_JavaLangString = localObject2.selfuin;
+        localaywa.c = localObject2.frienduin;
+        localaywa.e = str;
+        localaywa.jdField_a_of_type_JavaIoOutputStream = paramOutputStream;
+        paramOutputStream = new aywd();
+        paramOutputStream.jdField_a_of_type_ComTencentImageURLDrawableHandler = paramURLDrawableHandler;
+        paramOutputStream.jdField_a_of_type_Int = ((int)paramDownloadParams.downloaded);
+        localaywa.jdField_a_of_type_JavaLangObject = paramOutputStream;
+        paramOutputStream = localayvv.a(localaywa);
+        if (paramOutputStream.jdField_a_of_type_Int == 0) {}
+        for (int i = 1;; i = 0)
+        {
+          if (i == 0)
+          {
+            if (paramOutputStream.jdField_a_of_type_Long != 9037L) {
+              break;
+            }
+            paramURLDrawableHandler.doCancel();
+          }
+          return null;
+        }
+        throw new FileDownloadFailedException((int)paramOutputStream.jdField_a_of_type_Long, 0L, paramOutputStream.jdField_a_of_type_JavaLangString, false, false);
       }
     }
   }
   
-  protected static final int a(int paramInt, String paramString, aysn paramaysn)
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    int i = -1;
-    if (paramInt == 5) {
-      i = paramaysn.f.indexOf(paramString);
-    }
-    do
-    {
-      return i;
-      if (paramInt == 6) {
-        return paramaysn.g.indexOf(paramString);
-      }
-      if (paramInt == 2) {
-        return paramaysn.jdField_c_of_type_JavaLangString.indexOf(paramString);
-      }
-    } while (paramInt != 3);
-    return paramaysn.jdField_d_of_type_JavaLangString.indexOf(paramString);
-  }
-  
-  protected static int a(int paramInt, ArrayList<aysc> paramArrayList)
-  {
-    int k = paramArrayList.size();
-    int i = 0;
-    int j = 0;
-    for (;;)
-    {
-      aysc localaysc;
-      if (i < k)
-      {
-        localaysc = (aysc)paramArrayList.get(i);
-        if (localaysc.jdField_a_of_type_Int + j <= paramInt) {}
-      }
-      else
-      {
-        return j;
-      }
-      j += localaysc.jdField_a_of_type_Int;
-      i += 1;
-    }
-  }
-  
-  protected static final int a(String paramString, aysn paramaysn)
-  {
-    int j = 0;
-    int i;
-    if ((paramaysn.f != null) && (paramaysn.f.indexOf(paramString) > -1)) {
-      i = 5;
+    paramDownloadParams = null;
+    paramURLDrawableHandler = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), null);
+    if (paramURLDrawableHandler == null) {
+      paramFile = paramDownloadParams;
     }
     do
     {
       do
       {
-        return i;
-        if ((paramaysn.g != null) && (paramaysn.g.indexOf(paramString) > -1)) {
-          return 6;
-        }
-        if ((paramaysn.jdField_c_of_type_JavaLangString != null) && (paramaysn.jdField_c_of_type_JavaLangString.indexOf(paramString) > -1)) {
-          return 2;
-        }
-        i = j;
-      } while (paramaysn.jdField_d_of_type_JavaLangString == null);
-      i = j;
-    } while (paramaysn.jdField_d_of_type_JavaLangString.indexOf(paramString) <= -1);
-    return 3;
-  }
-  
-  protected static final String a(int paramInt1, int paramInt2, String paramString, aysn paramaysn)
-  {
-    String str = null;
-    if (paramInt1 == 5) {
-      paramaysn = paramaysn.jdField_c_of_type_JavaUtilArrayList;
-    }
-    for (;;)
-    {
-      if (paramaysn != null)
-      {
-        paramInt1 = paramString.length();
-        str = a(a(paramInt2, paramaysn), b(paramInt1 + paramInt2, paramaysn), paramaysn);
-      }
-      return str;
-      if (paramInt1 == 6) {
-        paramaysn = paramaysn.jdField_d_of_type_JavaUtilArrayList;
-      } else if (paramInt1 == 2) {
-        paramaysn = paramaysn.jdField_a_of_type_JavaUtilArrayList;
-      } else if (paramInt1 == 3) {
-        paramaysn = paramaysn.jdField_b_of_type_JavaUtilArrayList;
-      } else {
-        paramaysn = null;
-      }
-    }
-  }
-  
-  public static String a(int paramInt1, int paramInt2, ArrayList<aysc> paramArrayList)
-  {
-    int m = paramArrayList.size();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    int j = 0;
-    int k = 0;
-    for (;;)
-    {
-      aysc localaysc;
-      if (i < m)
-      {
-        localaysc = (aysc)paramArrayList.get(i);
-        if (j == paramInt1) {
-          k = 1;
-        }
-        if (j != paramInt2) {}
-      }
-      else
-      {
-        return localStringBuilder.toString();
-      }
-      if (k != 0) {
-        localStringBuilder.append(localaysc.jdField_a_of_type_JavaLangString);
-      }
-      j += localaysc.jdField_a_of_type_Int;
-      i += 1;
-    }
-  }
-  
-  public static final String a(String paramString, aysn paramaysn)
-  {
-    int i = a(paramString, paramaysn);
-    int j = a(i, paramString, paramaysn);
-    String str = null;
-    if (((j == 0) && (i == 5) && (paramString.equalsIgnoreCase(paramaysn.f))) || ((i == 6) && (paramString.equalsIgnoreCase(paramaysn.g)))) {
-      str = paramaysn.e;
-    }
-    do
-    {
-      return str;
-      if (((j == 0) && (i == 2) && (paramString.equalsIgnoreCase(paramaysn.jdField_c_of_type_JavaLangString))) || ((i == 3) && (paramString.equalsIgnoreCase(paramaysn.jdField_d_of_type_JavaLangString)))) {
-        return paramaysn.jdField_b_of_type_JavaLangString;
-      }
-    } while (j <= -1);
-    return a(i, j, paramString, paramaysn);
-  }
-  
-  protected static int b(int paramInt, ArrayList<aysc> paramArrayList)
-  {
-    int k = paramArrayList.size();
-    int i = 0;
-    int j = 0;
-    while (i < k)
-    {
-      j = ((aysc)paramArrayList.get(i)).jdField_a_of_type_Int + j;
-      if (j >= paramInt) {
-        return j;
-      }
-      i += 1;
-    }
-    return j;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      localStringBuilder.append("uin = " + this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      localStringBuilder.append(", name = " + this.jdField_b_of_type_JavaLangString);
-    }
-    if (this.e != null) {
-      localStringBuilder.append(", remark = " + this.e);
-    }
-    return localStringBuilder.toString();
+        return paramFile;
+        int i = paramURLDrawableHandler.getWidth();
+        int j = paramURLDrawableHandler.getHeight();
+        paramDownloadParams = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+        paramDownloadParams.setDensity(160);
+        paramFile = new Canvas(paramDownloadParams);
+        Paint localPaint = new Paint(1);
+        localPaint.setColor(-16777216);
+        Rect localRect = new Rect(0, 0, i, j);
+        RectF localRectF = new RectF(localRect);
+        float f = 11.0F * this.jdField_a_of_type_Float;
+        paramFile.drawRoundRect(localRectF, f, f, localPaint);
+        localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        paramFile.drawBitmap(paramURLDrawableHandler, localRect, localRect, localPaint);
+        paramFile = paramDownloadParams;
+      } while (paramURLDrawableHandler == null);
+      paramFile = paramDownloadParams;
+    } while (paramURLDrawableHandler.isRecycled());
+    paramURLDrawableHandler.recycle();
+    return paramDownloadParams;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aysn
  * JD-Core Version:    0.7.0.1
  */

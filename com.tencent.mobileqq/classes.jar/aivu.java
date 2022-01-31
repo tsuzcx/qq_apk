@@ -1,113 +1,461 @@
-import android.net.Uri;
 import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloRenderRunner.1;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class aivu
 {
-  public String a;
-  public final HashMap<String, String> a;
-  public final List<aivw> a;
-  public String b;
+  private List<WeakReference<aivy>> a = new ArrayList();
   
-  public aivu()
+  public aivy a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public String a(boolean paramBoolean)
-  {
-    if (!a()) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
     for (;;)
     {
-      int j;
       int i;
+      ArrayList localArrayList;
+      aivy localaivy;
       try
       {
-        j = this.jdField_a_of_type_JavaUtilList.size();
-        i = 0;
-        if (i < j)
+        i = this.a.size();
+        localArrayList = new ArrayList();
+        i -= 1;
+        if (i < 0) {
+          break label226;
+        }
+        WeakReference localWeakReference = (WeakReference)this.a.get(i);
+        if (localWeakReference == null)
         {
-          aivw localaivw = (aivw)this.jdField_a_of_type_JavaUtilList.get(i);
-          if ((localaivw == null) || (TextUtils.isEmpty(localaivw.jdField_a_of_type_JavaLangString))) {
-            break label397;
+          if (QLog.isColorLevel()) {
+            QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner apolloViewWeakReference is null");
           }
-          if ((localaivw.jdField_a_of_type_Int != 6) && (localaivw.jdField_a_of_type_Int != 7)) {
-            break label236;
-          }
-          if (TextUtils.isEmpty(Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter(localaivw.b))) {
-            break label397;
-          }
-          if (paramBoolean)
+        }
+        else
+        {
+          localaivy = (aivy)localWeakReference.get();
+          if (localaivy == null)
           {
-            localStringBuilder.append(befm.a(localaivw.jdField_a_of_type_JavaLangString)).append("=").append(befm.a(localaivw.b));
-            if (i == j - 1) {
-              break label397;
+            if (QLog.isColorLevel()) {
+              QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner apolloSurfaceView is null");
             }
-            localStringBuilder.append("&");
-            break label397;
+            localArrayList.add(localWeakReference);
           }
-          localStringBuilder.append(localaivw.jdField_a_of_type_JavaLangString).append("=").append(localaivw.b);
-          continue;
-        }
-        if (localException.jdField_a_of_type_Int != 8) {
-          break label318;
         }
       }
-      catch (Exception localException)
+      finally {}
+      if (((localaivy instanceof View)) && (((View)localaivy).getVisibility() == 0))
       {
-        QLog.e("apollo_client_ApolloSSOConfig", 1, localException, new Object[0]);
         if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloSSOConfig", 2, new Object[] { "getParameterStr parameterBuilder:", localStringBuilder.toString() });
+          QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner find renderTask:" + localaivy);
         }
-        return localStringBuilder.toString();
-      }
-      label236:
-      if (paramBoolean) {
-        localStringBuilder.append(befm.a(localException.jdField_a_of_type_JavaLangString)).append("=").append(System.currentTimeMillis());
-      }
-      while (i != j - 1)
-      {
-        localStringBuilder.append("&");
-        break;
-        localStringBuilder.append(localException.jdField_a_of_type_JavaLangString).append("=").append(System.currentTimeMillis());
-        continue;
-        label318:
-        if (paramBoolean) {
-          localStringBuilder.append(befm.a(localException.jdField_a_of_type_JavaLangString)).append("=").append(befm.a(localException.b));
-        }
-        while (i != j - 1)
+        Object localObject2 = localaivy;
+        if (!localArrayList.isEmpty())
         {
-          localStringBuilder.append("&");
-          break;
-          localStringBuilder.append(localException.jdField_a_of_type_JavaLangString).append("=").append(localException.b);
+          this.a.removeAll(localArrayList);
+          localObject2 = localaivy;
+          if (QLog.isColorLevel()) {
+            QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
+          }
+        }
+        for (localObject2 = localaivy;; localObject2 = null)
+        {
+          return localObject2;
+          label226:
+          if (!localArrayList.isEmpty())
+          {
+            this.a.removeAll(localArrayList);
+            if (QLog.isColorLevel()) {
+              QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner not find");
+          }
         }
       }
-      label397:
-      i += 1;
+      i -= 1;
     }
   }
   
-  public boolean a()
+  public aivy a(int paramInt)
   {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b));
+    for (;;)
+    {
+      int i;
+      ArrayList localArrayList;
+      aivy localaivy;
+      try
+      {
+        i = this.a.size();
+        localArrayList = new ArrayList();
+        i -= 1;
+        if (i < 0) {
+          break label235;
+        }
+        WeakReference localWeakReference = (WeakReference)this.a.get(i);
+        if (localWeakReference == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner apolloViewWeakReference is null");
+          }
+        }
+        else
+        {
+          localaivy = (aivy)localWeakReference.get();
+          if (localaivy == null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner apolloSurfaceView is null");
+            }
+            localArrayList.add(localWeakReference);
+          }
+        }
+      }
+      finally {}
+      if (((localaivy instanceof ApolloSurfaceView)) && (((ApolloSurfaceView)localaivy).getGameId() == paramInt))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner find renderTask:" + localaivy);
+        }
+        Object localObject2 = localaivy;
+        if (!localArrayList.isEmpty())
+        {
+          this.a.removeAll(localArrayList);
+          localObject2 = localaivy;
+          if (QLog.isColorLevel()) {
+            QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
+          }
+        }
+        for (localObject2 = localaivy;; localObject2 = null)
+        {
+          return localObject2;
+          label235:
+          if (!localArrayList.isEmpty())
+          {
+            this.a.removeAll(localArrayList);
+            if (QLog.isColorLevel()) {
+              QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner not find");
+          }
+        }
+      }
+      i -= 1;
+    }
   }
   
-  public String toString()
+  public aivy a(long paramLong)
   {
-    StringBuffer localStringBuffer = new StringBuffer("CGIConfig{");
-    localStringBuffer.append("mUrl='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mMethod='").append(this.b).append('\'');
-    localStringBuffer.append(", mHeaders=").append(this.jdField_a_of_type_JavaUtilHashMap);
-    localStringBuffer.append(", mParameters=").append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    ArrayList localArrayList;
+    aivy localaivy;
+    for (;;)
+    {
+      WeakReference localWeakReference;
+      try
+      {
+        localArrayList = new ArrayList();
+        Iterator localIterator = this.a.iterator();
+        if (!localIterator.hasNext()) {
+          break label269;
+        }
+        localWeakReference = (WeakReference)localIterator.next();
+        if (localWeakReference == null)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerJsContext apolloViewWeakReference is null");
+          continue;
+        }
+        localaivy = (aivy)localWeakReference.get();
+      }
+      finally {}
+      if (localaivy == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerJsContext apolloSurfaceView is null");
+        }
+        localArrayList.add(localWeakReference);
+      }
+      else
+      {
+        long l = localaivy.getRuntimeState();
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerJsContext getRuntimeState:" + l);
+        }
+        if (paramLong == l)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerJsContext find getRuntimeState:" + l);
+          }
+          localObject2 = localaivy;
+          if (!localArrayList.isEmpty())
+          {
+            this.a.removeAll(localArrayList);
+            localObject2 = localaivy;
+            if (QLog.isColorLevel()) {
+              QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
+            }
+          }
+        }
+      }
+    }
+    for (Object localObject2 = localaivy;; localObject2 = null)
+    {
+      return localObject2;
+      label269:
+      if (!localArrayList.isEmpty())
+      {
+        this.a.removeAll(localArrayList);
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerJsContext not find");
+      }
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      this.a.clear();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(aivy paramaivy)
+  {
+    if (paramaivy == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        Iterator localIterator = this.a.iterator();
+        for (;;)
+        {
+          if (localIterator.hasNext())
+          {
+            WeakReference localWeakReference = (WeakReference)localIterator.next();
+            if ((localWeakReference != null) && (paramaivy == localWeakReference.get()))
+            {
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("apollochannel_JsRenderRunner", 2, "addRunner has add the same iRenderRunner:" + paramaivy);
+              break;
+            }
+          }
+        }
+      }
+      finally {}
+      this.a.add(new WeakReference(paramaivy));
+      if (QLog.isColorLevel()) {
+        QLog.d("apollochannel_JsRenderRunner", 2, "addRunner iRenderRunner:" + paramaivy + ", size: " + this.a);
+      }
+    }
+  }
+  
+  public void a(aivy paramaivy, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("apollochannel_JsRenderRunner", 2, "exeJsOnEngine, renderRunner:" + paramaivy + ",jsStr:" + paramString);
+    }
+    if ((paramaivy != null) && (!TextUtils.isEmpty(paramString))) {
+      paramaivy.exeJsOnEngine(paramString);
+    }
+  }
+  
+  public void a(ApolloCmdChannel paramApolloCmdChannel, long paramLong, int paramInt, String paramString1, String paramString2)
+  {
+    for (;;)
+    {
+      ArrayList localArrayList;
+      WeakReference localWeakReference;
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_JsRenderRunner", 2, "callbackEngine cmd:" + paramString1 + ",respData:" + paramString2);
+        }
+        if (paramApolloCmdChannel == null) {
+          return;
+        }
+        if (TextUtils.isEmpty(paramString2)) {
+          continue;
+        }
+        localArrayList = new ArrayList();
+        Iterator localIterator = this.a.iterator();
+        if (!localIterator.hasNext()) {
+          break label280;
+        }
+        localWeakReference = (WeakReference)localIterator.next();
+        if (localWeakReference == null)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("apollochannel_JsRenderRunner", 2, "callbackEngine apolloViewWeakReference is null");
+          continue;
+        }
+        localaivy = (aivy)localWeakReference.get();
+      }
+      finally {}
+      aivy localaivy;
+      if (localaivy == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_JsRenderRunner", 2, "callbackEngine apolloSurfaceView is null");
+        }
+        localArrayList.add(localWeakReference);
+      }
+      else
+      {
+        long l = localaivy.getRuntimeState();
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_JsRenderRunner", 2, "callbackEngine getRuntimeState runtimeState:" + l);
+        }
+        if (paramLong == localaivy.getRuntimeState())
+        {
+          localaivy.runRenderTask(new ApolloRenderRunner.1(this, localaivy, paramLong, paramApolloCmdChannel, paramInt, paramString1, paramString2));
+          if (QLog.isColorLevel()) {
+            QLog.d("apollochannel_JsRenderRunner", 2, "callbackEngine getRenderRunner find runtimeState:" + l);
+          }
+          label280:
+          if (!localArrayList.isEmpty())
+          {
+            this.a.removeAll(localArrayList);
+            if (QLog.isColorLevel()) {
+              QLog.d("apollochannel_JsRenderRunner", 2, "after mRenderRunners.removeAll(invalidRunners):" + this.a.size());
+            }
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("apollochannel_JsRenderRunner", 2, "lState != apolloSurfaceView.getRuntimeState(), renderThreadId:" + localaivy.getRuntimeState());
+        }
+      }
+    }
+  }
+  
+  public aivy b(long paramLong)
+  {
+    ArrayList localArrayList;
+    aivy localaivy;
+    for (;;)
+    {
+      WeakReference localWeakReference;
+      try
+      {
+        localArrayList = new ArrayList();
+        Iterator localIterator = this.a.iterator();
+        if (!localIterator.hasNext()) {
+          break label269;
+        }
+        localWeakReference = (WeakReference)localIterator.next();
+        if (localWeakReference == null)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerByThreadId apolloViewWeakReference is null");
+          continue;
+        }
+        localaivy = (aivy)localWeakReference.get();
+      }
+      finally {}
+      if (localaivy == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerByThreadId apolloSurfaceView is null");
+        }
+        localArrayList.add(localWeakReference);
+      }
+      else
+      {
+        long l = localaivy.getRenderThreadId();
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerByThreadId getRenderThreadId:" + l);
+        }
+        if (paramLong == l)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerByThreadId find getRenderThreadId:" + l);
+          }
+          localObject2 = localaivy;
+          if (!localArrayList.isEmpty())
+          {
+            this.a.removeAll(localArrayList);
+            localObject2 = localaivy;
+            if (QLog.isColorLevel()) {
+              QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
+            }
+          }
+        }
+      }
+    }
+    for (Object localObject2 = localaivy;; localObject2 = null)
+    {
+      return localObject2;
+      label269:
+      if (!localArrayList.isEmpty())
+      {
+        this.a.removeAll(localArrayList);
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerByThreadId not find");
+      }
+    }
+  }
+  
+  public void b(aivy paramaivy)
+  {
+    if (paramaivy == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        Iterator localIterator = this.a.iterator();
+        for (;;)
+        {
+          if (localIterator.hasNext())
+          {
+            WeakReference localWeakReference = (WeakReference)localIterator.next();
+            if ((localWeakReference != null) && (paramaivy == localWeakReference.get()))
+            {
+              localIterator.remove();
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("apollochannel_JsRenderRunner", 2, "removeRunner find it:" + paramaivy);
+              break;
+            }
+          }
+        }
+      }
+      finally {}
+      if (QLog.isColorLevel()) {
+        QLog.d("apollochannel_JsRenderRunner", 2, "removeRunner not find it:" + paramaivy);
+      }
+    }
   }
 }
 

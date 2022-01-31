@@ -1,16 +1,12 @@
-import android.text.TextUtils;
-
-public class anoi
+class anoi
 {
-  public String a;
-  public String b;
-  public String c;
+  long jdField_a_of_type_Long;
+  long b;
   
-  public anoi(anoe paramanoe) {}
-  
-  public boolean a()
+  public anoi(anod paramanod, long paramLong1, long paramLong2)
   {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 

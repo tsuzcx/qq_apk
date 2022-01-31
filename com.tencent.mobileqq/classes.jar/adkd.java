@@ -1,22 +1,83 @@
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class adkd
-  extends acju
+class adkd
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  public ahpa a;
-  public TextView a;
-  public ETTextView a;
-  private MixedMsgLinearLayout jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout;
-  public boolean a;
-  public TextView b;
-  public ETTextView b;
-  private String b = "0";
-  public int e = -1;
+  adkd(adkc paramadkc) {}
   
-  public adkd(adjz paramadjz) {}
+  public void onClick(View paramView)
+  {
+    Object localObject;
+    if (adkc.a(this.a) != null)
+    {
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      long l1;
+      switch (adkc.a(this.a).jumpType)
+      {
+      default: 
+        if (localObject != null)
+        {
+          localObject = (aqkf)((QQAppInterface)localObject).a(153);
+          l1 = 0L;
+        }
+        break;
+      }
+      try
+      {
+        long l2 = Long.valueOf(adka.a(this.a.a)).longValue();
+        l1 = l2;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        for (;;)
+        {
+          QLog.e("intimate_relationship", 2, "valueOf string err");
+        }
+      }
+      ((aqkf)localObject).a(l1, adkc.a(this.a).dateType);
+    }
+    for (;;)
+    {
+      if (adkc.a(this.a) != null) {
+        adkc.a(this.a).a(paramView, adkc.a(this.a));
+      }
+      return;
+      if ((adkc.a(this.a).linkUrl != null) && (this.a.a.a != null))
+      {
+        axqw.b(null, "dc00898", "", "", "0X800A208 ", "0X800A208 ", adkc.a(this.a).dateType, 0, "", "", "", "");
+        QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A208");
+        bbds localbbds = bbej.a((QQAppInterface)localObject, this.a.a.a, adkc.a(this.a).linkUrl);
+        if (localbbds != null) {
+          localbbds.c();
+        }
+        while (QLog.isColorLevel())
+        {
+          QLog.d("intimate_relationship", 2, "click  scheme: " + adkc.a(this.a).linkUrl);
+          break;
+          if (adkc.a(this.a).linkUrl.toLowerCase().startsWith("mqzone://")) {
+            bgxy.c(this.a.a.a, adkc.a(this.a).linkUrl);
+          } else {
+            adka.a(this.a.a.a, adkc.a(this.a).linkUrl);
+          }
+        }
+      }
+      QLog.e("intimate_relationship", 2, "click  scheme: linkUrl or context is null");
+      break;
+      axqw.b(null, "dc00898", "", "", "0X800A208 ", "0X800A208 ", adkc.a(this.a).dateType, 0, "", "", "", "");
+      QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A208");
+      if (adka.a(this.a.a) == null) {
+        break;
+      }
+      adka.a(this.a.a).a(adkc.a(this.a));
+      break;
+      QLog.e("intimate_relationship", 2, "click  mInfo is null");
+    }
+  }
 }
 
 

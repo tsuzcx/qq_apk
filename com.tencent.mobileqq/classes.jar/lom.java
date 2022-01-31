@@ -1,16 +1,13 @@
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
-
-public abstract interface lom
+public class lom
 {
-  public abstract int a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
+  public long a;
+  public long b;
   
-  public abstract void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
-  
-  public abstract void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract boolean a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
-  
-  public abstract int b(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
+  public lom(long paramLong1, long paramLong2)
+  {
+    this.a = paramLong1;
+    this.b = paramLong2;
+  }
 }
 
 

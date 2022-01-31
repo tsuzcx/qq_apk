@@ -1,26 +1,14 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopAdHandler.3.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
 
-public final class nfy
-  implements yoj
+class nfy
+  implements View.OnClickListener
 {
-  nfy(AppInterface paramAppInterface) {}
+  nfy(nfu paramnfu) {}
   
-  public void reportImpression(View paramView)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EcshopAdHandler", 1, "--> reportImpression");
-    }
-    if (paramView == null) {}
-    do
-    {
-      return;
-      paramView = paramView.getTag(2131298565);
-    } while (paramView == null);
-    ThreadManagerV2.executeOnSubThread(new EcshopAdHandler.3.1(this, paramView));
+    this.a.a(this.a.a, this.a.a.d);
   }
 }
 

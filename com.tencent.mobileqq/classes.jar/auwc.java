@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
 
-public abstract interface auwc
+public class auwc
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public auwc(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
   
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(FilterCategoryItem paramFilterCategoryItem);
-  
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo);
-  
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString);
-  
-  public abstract void b(FilterCategoryItem paramFilterCategoryItem);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.f();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auwc
  * JD-Core Version:    0.7.0.1
  */

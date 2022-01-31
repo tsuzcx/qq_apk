@@ -141,12 +141,12 @@ public class MatrixUtil
     return mMVPMatrix;
   }
   
-  public static float[] getMVPMatrix(int paramInt1, int paramInt2)
+  public static float[] getMVPMatrix(float[] paramArrayOfFloat, int paramInt1, int paramInt2)
   {
     genProjectionMatrix(paramInt1, paramInt2);
     genLookAtMatrix(paramInt1, paramInt2);
-    Matrix.multiplyMM(mMVPMatrix, 0, mProjectionMatrix, 0, mViewMatrix, 0);
-    return mMVPMatrix;
+    Matrix.multiplyMM(paramArrayOfFloat, 0, mProjectionMatrix, 0, mViewMatrix, 0);
+    return paramArrayOfFloat;
   }
   
   public static float[] getRotate(float[] paramArrayOfFloat)

@@ -1,12 +1,28 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
+import java.util.ArrayList;
 
-public abstract interface upl
+class upl
+  extends ParallelJobSegment<String, Integer>
 {
-  public abstract void a(String paramString1, String paramString2);
+  public upl(upd paramupd)
+  {
+    this(paramupd, "RequestViewCountSegment");
+  }
   
-  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage);
+  public upl(upd paramupd, String paramString)
+  {
+    super(paramString);
+  }
   
-  public abstract void b(String paramString1, String paramString2);
+  protected void a(JobContext paramJobContext, String paramString)
+  {
+    tml localtml = new tml();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramString);
+    localtml.a = localArrayList;
+    syr.a().a(localtml, new upm(this, paramJobContext, paramString));
+  }
 }
 
 

@@ -1,13 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
 
 public class afvy
-  implements DialogInterface.OnClickListener
+  implements agbv
 {
-  public afvy(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public afvy(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.k();
+      return;
+    case 3: 
+      this.a.l();
+      return;
+    case 2: 
+      this.a.m();
+      return;
+    }
+    this.a.n();
+  }
 }
 
 

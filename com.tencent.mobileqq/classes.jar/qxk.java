@@ -1,20 +1,36 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusAnimationItemData;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class qxk
-  implements ValueAnimator.AnimatorUpdateListener
+class qxk
+  extends npu
 {
-  public qxk(ProteusAnimationItemData paramProteusAnimationItemData) {}
+  private qxk(qxj paramqxj) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    ProteusAnimationItemData.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    if (ProteusAnimationItemData.a(this.a).getLayoutParams() != null) {
-      ProteusAnimationItemData.a(this.a).getLayoutParams().height = ProteusAnimationItemData.a(this.a);
+    if ((!paramBoolean) || (paramBundle == null)) {}
+    for (;;)
+    {
+      return;
+      String str = paramBundle.getString("VALUE_VIDEO_VID");
+      int i = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
+      if (!TextUtils.isEmpty(str))
+      {
+        paramBundle = qxj.a(this.a).a().iterator();
+        while (paramBundle.hasNext())
+        {
+          VideoInfo localVideoInfo = (VideoInfo)paramBundle.next();
+          if ((str.equals(localVideoInfo.a)) && (i > 0) && (localVideoInfo.s == 0))
+          {
+            localVideoInfo.s = i;
+            qxj.a(this.a).b(localVideoInfo);
+          }
+        }
+      }
     }
-    ProteusAnimationItemData.a(this.a).requestLayout();
   }
 }
 

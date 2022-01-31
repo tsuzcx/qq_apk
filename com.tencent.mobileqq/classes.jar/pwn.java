@@ -1,58 +1,15 @@
-public final class pwn
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+
+public class pwn
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
-  private String e;
+  public pwn(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
   
-  public pwl a()
+  public void onClick(View paramView)
   {
-    return new pwl(this, null);
-  }
-  
-  public pwn a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public pwn a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public pwn b(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public pwn b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public pwn c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public pwn d(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
-  
-  public pwn e(String paramString)
-  {
-    this.e = paramString;
-    return this;
+    this.a.a();
   }
 }
 

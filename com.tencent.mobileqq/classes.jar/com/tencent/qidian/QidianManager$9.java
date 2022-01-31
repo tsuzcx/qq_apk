@@ -1,17 +1,17 @@
 package com.tencent.qidian;
 
-import bcpn;
+import bdto;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
 
 public final class QidianManager$9
   implements Runnable
 {
-  public QidianManager$9(bcpn parambcpn, QQAppInterface paramQQAppInterface, Friends[] paramArrayOfFriends) {}
+  public QidianManager$9(bdto parambdto, QQAppInterface paramQQAppInterface, Friends[] paramArrayOfFriends) {}
   
   public void run()
   {
-    bcpn.a(this.jdField_a_of_type_Bcpn, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ArrayOfComTencentMobileqqDataFriends);
+    bdto.a(this.jdField_a_of_type_Bdto, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ArrayOfComTencentMobileqqDataFriends);
   }
 }
 

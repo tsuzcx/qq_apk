@@ -1,11 +1,11 @@
 package com.tencent.open.agent;
 
-import ajjy;
+import ajyc;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import apmt;
-import bbyo;
-import bcjn;
+import aqgh;
+import bdco;
+import bdno;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -21,17 +21,17 @@ import org.json.JSONObject;
 public class OpenSelectPermissionFragment$4$1
   implements Runnable
 {
-  public OpenSelectPermissionFragment$4$1(bbyo parambbyo, boolean paramBoolean, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse, int paramInt) {}
+  public OpenSelectPermissionFragment$4$1(bdco parambdco, boolean paramBoolean, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse, int paramInt) {}
   
   public void run()
   {
     long l;
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse != null))
     {
-      l = OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bbyo.a);
-      apmt.a("KEY_AUTHORIZE_REQUEST", OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bbyo.a).a().a(String.valueOf(l)), true);
-      this.jdField_a_of_type_Bbyo.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.openid.get());
-      this.jdField_a_of_type_Bbyo.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.openid.get(), this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.encrytoken.get());
+      l = OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bdco.a);
+      aqgh.a("KEY_AUTHORIZE_REQUEST", OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bdco.a).a().a(String.valueOf(l)), true);
+      this.jdField_a_of_type_Bdco.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.openid.get());
+      this.jdField_a_of_type_Bdco.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.openid.get(), this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.encrytoken.get());
       try
       {
         JSONObject localJSONObject = new JSONObject();
@@ -43,9 +43,9 @@ public class OpenSelectPermissionFragment$4$1
         localJSONObject.put("pf", this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.pf.get());
         localJSONObject.put("pfkey", this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.pfkey.get());
         localJSONObject.put("msg", this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.msg.get());
-        localJSONObject.put("login_cost", OpenSelectPermissionFragment.c(this.jdField_a_of_type_Bbyo.a));
-        localJSONObject.put("query_authority_cost", OpenSelectPermissionFragment.d(this.jdField_a_of_type_Bbyo.a));
-        localJSONObject.put("authority_cost", SystemClock.elapsedRealtime() - OpenSelectPermissionFragment.e(this.jdField_a_of_type_Bbyo.a));
+        localJSONObject.put("login_cost", OpenSelectPermissionFragment.c(this.jdField_a_of_type_Bdco.a));
+        localJSONObject.put("query_authority_cost", OpenSelectPermissionFragment.d(this.jdField_a_of_type_Bdco.a));
+        localJSONObject.put("authority_cost", SystemClock.elapsedRealtime() - OpenSelectPermissionFragment.e(this.jdField_a_of_type_Bdco.a));
         if (this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.sendinstall.has()) {
           localJSONObject.put("sendinstall", this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.sendinstall.get());
         }
@@ -60,7 +60,7 @@ public class OpenSelectPermissionFragment$4$1
             SdkAuthorize.PassData localPassData = (SdkAuthorize.PassData)localIterator.next();
             localJSONObject.put(localPassData.key.get(), localPassData.value.get());
             continue;
-            this.jdField_a_of_type_Bbyo.a.a();
+            this.jdField_a_of_type_Bdco.a.a();
           }
         }
       }
@@ -68,18 +68,18 @@ public class OpenSelectPermissionFragment$4$1
       for (;;)
       {
         return;
-        this.jdField_a_of_type_Bbyo.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.ret.get(), localJSONException.toString(), null, null);
+        this.jdField_a_of_type_Bdco.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.ret.get(), localJSONException.toString(), null, null);
       }
     }
     if ((this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.msg.get()))) {
-      OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bbyo.a, this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.msg.get() + ajjy.a(2131642062) + this.jdField_a_of_type_Int, false);
+      OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bdco.a, this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.msg.get() + ajyc.a(2131707847) + this.jdField_a_of_type_Int, false);
     }
     for (;;)
     {
-      l = OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bbyo.a);
-      apmt.a("KEY_AUTHORIZE_REQUEST", OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bbyo.a).a().a(String.valueOf(l)), false);
+      l = OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bdco.a);
+      aqgh.a("KEY_AUTHORIZE_REQUEST", OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bdco.a).a().a(String.valueOf(l)), false);
       break;
-      OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bbyo.a, ajjy.a(2131642072) + this.jdField_a_of_type_Int, false);
+      OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bdco.a, ajyc.a(2131707857) + this.jdField_a_of_type_Int, false);
     }
   }
 }

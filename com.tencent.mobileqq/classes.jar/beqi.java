@@ -1,17 +1,23 @@
-import android.view.animation.Interpolator;
+import android.content.Context;
+import android.text.TextUtils;
+import java.io.File;
 
-final class beqi
-  implements Interpolator
+public class beqi
 {
-  public float getInterpolation(float paramFloat)
+  public static final String a = bepk.a().a().getFilesDir().getPath() + "/mini/";
+  public static final String b = a + ".baseLib";
+  
+  public static String a(String paramString1, String paramString2)
   {
-    paramFloat -= 1.0F;
-    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return null;
+    }
+    return b + File.separator + bfgc.c(paramString1) + "_" + paramString2 + File.separator;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beqi
  * JD-Core Version:    0.7.0.1
  */

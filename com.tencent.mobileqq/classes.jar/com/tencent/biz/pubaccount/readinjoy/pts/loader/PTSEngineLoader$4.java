@@ -1,38 +1,42 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import bace;
+import bbdj;
 import com.tencent.qphone.base.util.QLog;
-import pdu;
-import pdw;
+import ppm;
+import ppq;
 
 public class PTSEngineLoader$4
   implements Runnable
 {
-  public PTSEngineLoader$4(pdu parampdu) {}
+  public PTSEngineLoader$4(ppm paramppm) {}
   
   public void run()
   {
-    if (!bace.a(pdu.a(this.this$0)))
+    if (!bbdj.a(ppm.a(this.this$0)))
     {
       QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], offline dir does not exist.");
       return;
     }
-    if (!pdw.a(pdu.a(this.this$0), "3980"))
+    if (!ppq.a(ppm.a(this.this$0), "3980"))
     {
       QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], offline dir is not valid.");
       return;
     }
-    if (bace.a(pdu.b(this.this$0)))
+    if (!ppq.a(ppm.a(this.this$0) + "/" + "pts_config.json"))
     {
-      QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], delete inner dir, dir = " + pdu.b(this.this$0));
-      bace.a(pdu.b(this.this$0));
+      QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], offline dir version is not valid.");
+      return;
+    }
+    if (bbdj.a(ppm.b(this.this$0)))
+    {
+      QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], delete inner dir, dir = " + ppm.b(this.this$0));
+      bbdj.a(ppm.b(this.this$0));
     }
     try
     {
-      boolean bool1 = bace.d(pdu.a(this.this$0) + "/" + "libpts.so", pdu.b(this.this$0) + "/" + "libpts.so");
-      boolean bool2 = bace.d(pdu.a(this.this$0) + "/" + "pts_config.json", pdu.b(this.this$0) + "/" + "pts_config.json");
-      boolean bool3 = bace.d(pdu.a(this.this$0) + "/" + "libjsc.so", pdu.b(this.this$0) + "/" + "libjsc.so");
-      QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], copySoSuccess = " + bool1 + ", copyConfigSuccess = " + bool2 + ", copyJscSoSuccess = " + bool3);
+      boolean bool1 = bbdj.d(ppm.a(this.this$0) + "/" + "libpts.so", ppm.b(this.this$0) + "/" + "libpts.so");
+      boolean bool2 = bbdj.d(ppm.a(this.this$0) + "/" + "pts_config.json", ppm.b(this.this$0) + "/" + "pts_config.json");
+      QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], copySoSuccess = " + bool1 + ", copyConfigSuccess = " + bool2);
       return;
     }
     catch (Exception localException)

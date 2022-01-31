@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.CustomMenuBar;
-
-public class wox
-  implements View.OnClickListener
+public abstract interface wox
 {
-  public wox(CustomMenuBar paramCustomMenuBar, String paramString, int paramInt) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a != null) {
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

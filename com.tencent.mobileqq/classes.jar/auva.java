@@ -1,31 +1,73 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.ArrayList;
 
-public final class auva
+class auva
   extends BroadcastReceiver
 {
-  private auva(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  auva(auuz paramauuz) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
+    int k = 0;
+    if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())))
     {
-      ausu.a().b();
-      ausu.a().a(new auvb(this));
-      this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
+      if (paramIntent.getIntExtra("faceType", -1) != 1) {
+        QLog.d("ProfileCardShareHelper", 1, "getHead onReceive FaceType not match!");
       }
+    }
+    else {
+      return;
+    }
+    if (TextUtils.isEmpty(auuz.a(this.a)))
+    {
+      QLog.d("ProfileCardShareHelper", 1, "getHead onReceive mUin is empty!");
+      return;
+    }
+    paramContext = paramIntent.getStringArrayListExtra("uinList");
+    paramIntent = paramIntent.getStringArrayListExtra("headPathList");
+    int j = k;
+    int i;
+    if (paramContext != null)
+    {
+      j = k;
+      if (paramIntent != null)
+      {
+        j = k;
+        if (paramContext.size() == paramIntent.size()) {
+          i = 0;
+        }
+      }
+    }
+    for (;;)
+    {
+      j = k;
+      if (i < paramContext.size())
+      {
+        if (((String)paramContext.get(i)).equals(auuz.a(this.a)))
+        {
+          auuz.a(this.a, (String)paramIntent.get(i));
+          j = 1;
+        }
+      }
+      else
+      {
+        if ((j == 0) || (!auuz.a(this.a))) {
+          break;
+        }
+        auuz.a(this.a, auuz.b(this.a));
+        return;
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auva
  * JD-Core Version:    0.7.0.1
  */

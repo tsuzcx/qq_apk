@@ -1,96 +1,101 @@
+import android.annotation.TargetApi;
+import android.content.Context;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.PhotoWallViewForAccountDetail;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.List;
+import org.json.JSONArray;
 
 public class nmx
+  extends BaseAdapter
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
-  public String o;
-  public String p;
-  public String q;
-  public String r;
-  public String s;
-  public String t;
-  public String u;
-  public String v;
-  public String w;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  List<nmv> jdField_a_of_type_JavaUtilList;
   
-  public nmx(String paramString)
+  public nmx(PhotoWallViewForAccountDetail paramPhotoWallViewForAccountDetail, Context paramContext)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AdvertisementSoftInfo", 2, "softData = " + paramString);
-      }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+  }
+  
+  public void a(List<nmv> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    while (!QLog.isColorLevel()) {
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @TargetApi(16)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    for (;;)
+    {
       try
       {
-        paramString = new JSONObject(new JSONObject(paramString).optString("SoftAd"));
-        this.jdField_a_of_type_JavaLangString = paramString.optString("sAdID");
-        this.jdField_b_of_type_JavaLangString = paramString.optString("adImg");
-        this.jdField_d_of_type_JavaLangString = paramString.optString("adTxt");
-        this.jdField_c_of_type_JavaLangString = paramString.optString("adAbb");
-        this.jdField_e_of_type_JavaLangString = paramString.optString("buttonTxt");
-        this.jdField_f_of_type_JavaLangString = paramString.optString("jmpUrl");
-        this.g = paramString.optString("appScheme");
-        this.h = paramString.optString("miniProgramUrl");
-        this.jdField_a_of_type_Int = paramString.optInt("contentType");
-        this.jdField_b_of_type_Int = paramString.optInt("video_percent");
-        this.jdField_c_of_type_Int = paramString.optInt("sourceId");
-        this.jdField_d_of_type_Int = paramString.optInt("bizPlatId");
-        this.jdField_e_of_type_Int = paramString.optInt("goodsType");
-        this.i = paramString.optString("goodsId");
-        this.j = paramString.optString("goodsName");
-        this.jdField_f_of_type_Int = paramString.optInt("accountId");
-        this.k = paramString.optString("goodsPrice");
-        this.l = paramString.optString("goodsPromotionPrice");
-        this.m = paramString.optString("goodsPromotionTxt");
-        paramString = new JSONObject(paramString.optString("extendInfo"));
-        this.n = paramString.optString("game_pkg_name");
-        this.o = paramString.optString("game_app_id");
-        this.p = paramString.optString("game_app_name");
-        this.q = paramString.optString("game_apk_url");
-        this.r = paramString.optString("app_download_schema");
-        this.s = paramString.optString("download_api_url");
-        this.t = paramString.optString("downloadNum");
-        this.u = paramString.optString("game_adtag");
-        this.v = paramString.optString("__ADSTR__");
-        this.w = paramString.optString("cmsid");
-        if (QLog.isColorLevel()) {
-          QLog.d("AdvertisementSoftInfo", 2, "AdvertisementSoftInfo = " + toString());
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
+        paramViewGroup = new JSONArray(((nmv)this.jdField_a_of_type_JavaUtilList.get(paramInt)).e);
+        if (paramViewGroup.length() > 0)
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("AdvertisementSoftInfo", 2, "AdvertisementSoftInfo Exception = " + paramString.getMessage());
+          paramViewGroup = paramViewGroup.optString(0);
+          if (paramView == null)
+          {
+            localnmy = new nmy(this);
+            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559389, null);
+            paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail.a, this.jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail.b));
+            localnmy.a = ((URLImageView)paramView.findViewById(2131371583));
+            paramView.setTag(localnmy);
+            localnmy.a.setTag(new ausu(25, Integer.valueOf(paramInt)));
+            if (!TextUtils.isEmpty(paramViewGroup)) {
+              continue;
+            }
+            localnmy.a.setImageResource(2130839282);
+            return paramView;
           }
         }
       }
+      catch (Exception paramViewGroup)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AccountDetail.PhotoWallViewForAccountDetail", 2, "RICH_PIC_TEXT:pic json error!");
+        }
+        paramViewGroup.printStackTrace();
+        paramViewGroup = null;
+        continue;
+        nmy localnmy = (nmy)paramView.getTag();
+        continue;
+        paramViewGroup = URLDrawable.getDrawable(paramViewGroup);
+        localnmy.a.setImageDrawable(paramViewGroup);
+        return paramView;
+      }
+      paramViewGroup = null;
     }
-    QLog.d("AdvertisementSoftInfo", 2, "softData = null");
   }
 }
 

@@ -1,14 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 class adxj
-  implements DialogInterface.OnDismissListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  adxj(adxg paramadxg) {}
+  adxj(adxi paramadxi) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    adxg.a(this.a, null);
+    if (this.a.jdField_a_of_type_Adxg.a()) {
+      return false;
+    }
+    actn.n = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_Adxg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_Adxg.jdField_a_of_type_AndroidContentContext);
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    if (this.a.jdField_a_of_type_Acxn != null) {
+      this.a.jdField_a_of_type_Acxn.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
+    }
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.gdtad.views.form.framework;
 
 import java.lang.ref.WeakReference;
-import yqq;
-import yqt;
+import zai;
+import zal;
 
 class GdtFormCommitUtil$1$1
   implements Runnable
 {
-  GdtFormCommitUtil$1$1(GdtFormCommitUtil.1 param1, yqq paramyqq) {}
+  GdtFormCommitUtil$1$1(GdtFormCommitUtil.1 param1, zai paramzai) {}
   
   public void run()
   {
     if ((this.this$0.a != null) && (this.this$0.a.get() != null)) {
-      ((yqt)this.this$0.a.get()).b(this.a);
+      ((zal)this.this$0.a.get()).b(this.a);
     }
   }
 }

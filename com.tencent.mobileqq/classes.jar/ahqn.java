@@ -1,12 +1,13 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import android.content.Context;
 
 public class ahqn
-  extends acav
+  extends ahqb
 {
-  public CheckBox a;
-  
-  private ahqn(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  public ahqn(Context paramContext)
+  {
+    this.a = paramContext.getString(2131698516);
+    this.b = this.a;
+  }
 }
 
 

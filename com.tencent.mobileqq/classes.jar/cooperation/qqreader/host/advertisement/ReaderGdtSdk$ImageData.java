@@ -2,7 +2,7 @@ package cooperation.qqreader.host.advertisement;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import yjt;
+import ysw;
 
 public class ReaderGdtSdk$ImageData
 {
@@ -10,11 +10,11 @@ public class ReaderGdtSdk$ImageData
   public String url;
   public int width;
   
-  public ReaderGdtSdk$ImageData(@NonNull yjt paramyjt)
+  public ReaderGdtSdk$ImageData(@NonNull ysw paramysw)
   {
-    this.url = paramyjt.jdField_a_of_type_JavaLangString;
-    this.width = paramyjt.jdField_a_of_type_Int;
-    this.height = paramyjt.b;
+    this.url = paramysw.jdField_a_of_type_JavaLangString;
+    this.width = paramysw.jdField_a_of_type_Int;
+    this.height = paramysw.b;
   }
   
   public boolean isValid()

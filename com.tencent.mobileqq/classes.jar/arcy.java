@@ -1,38 +1,44 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.support.annotation.RequiresApi;
+import com.tencent.biz.qqstory.takevideo.slideshow.Image2Video.EglHandlerThreadEx;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
+@RequiresApi(api=18)
 public class arcy
-  implements Animator.AnimatorListener
+  implements arcg
 {
-  public arcy(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
+  private Image2Video.EglHandlerThreadEx jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+  private vtn jdField_a_of_type_Vtn;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a()
   {
-    PoiSlideBottomPanel.c(this.a, false);
-    if (PoiSlideBottomPanel.e(this.a) != null) {
-      PoiSlideBottomPanel.f(this.a).displayPanelFinish();
+    if (QLog.isColorLevel()) {
+      QLog.d("identification_yuv", 2, "uninit..");
     }
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx != null)
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx.quitSafely();
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx = null;
+      }
+      return;
+    }
+    finally {}
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(vtr paramvtr)
   {
-    PoiSlideBottomPanel.b(this.a, false);
-    if (PoiSlideBottomPanel.c(this.a) != null) {
-      PoiSlideBottomPanel.d(this.a).displayPanelFinish();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    if (this.jdField_a_of_type_Vtn != null) {
+      this.jdField_a_of_type_Vtn.a(paramvtr);
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    PoiSlideBottomPanel.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     arcy
  * JD-Core Version:    0.7.0.1
  */

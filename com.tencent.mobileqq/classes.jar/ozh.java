@@ -1,14 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import java.util.ArrayList;
 
-public class ozh
-  implements ViewBase.IBuilder
+public abstract interface ozh
 {
-  public ViewBase build(VafContext paramVafContext)
-  {
-    return new ozg(paramVafContext);
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2);
+  
+  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList);
 }
 
 

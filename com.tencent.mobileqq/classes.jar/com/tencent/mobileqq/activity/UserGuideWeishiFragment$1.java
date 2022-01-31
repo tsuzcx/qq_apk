@@ -22,7 +22,7 @@ class UserGuideWeishiFragment$1
       if (localFragmentActivity.isFinishing()) {
         return;
       }
-      if (AppSetting.c)
+      if (AppSetting.d)
       {
         if (QLog.isColorLevel()) {
           QLog.d("UserGuideWeishiFragment", 2, "needAutoFinishForTalkBack|true ");
@@ -42,8 +42,8 @@ class UserGuideWeishiFragment$1
     if ((bool1) && (bool2)) {}
     for (bool1 = true;; bool1 = false)
     {
-      AppSetting.c = bool1;
-      if ((!AppSetting.c) || (localThrowable == null)) {
+      AppSetting.d = bool1;
+      if ((!AppSetting.d) || (localThrowable == null)) {
         break;
       }
       if (QLog.isColorLevel()) {

@@ -1,23 +1,19 @@
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
-
-public class oje
-  extends StaggeredGridLayoutManager
+class oje
+  extends ojq
 {
-  public oje(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, int paramInt1, int paramInt2)
+  oje(oio paramoio, oii paramoii, boolean paramBoolean, int paramInt)
   {
-    super(paramInt1, paramInt2);
+    super(paramoio, null);
   }
   
-  public boolean canScrollVertically()
+  void a(ojt paramojt)
   {
-    return (this.a.a.e) && (super.canScrollVertically());
+    paramojt.onCommentCreate(true, this.jdField_a_of_type_Oii, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Oio.a(this.jdField_a_of_type_Int), this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oje
  * JD-Core Version:    0.7.0.1
  */

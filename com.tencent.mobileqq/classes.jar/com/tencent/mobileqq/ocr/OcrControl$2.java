@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ocr;
 
-import aksh;
-import ateq;
-import ates;
+import algt;
+import aubm;
+import aubo;
 import java.util.HashMap;
 
 public class OcrControl$2
   implements Runnable
 {
-  public OcrControl$2(ateq paramateq, String paramString) {}
+  public OcrControl$2(aubm paramaubm, String paramString) {}
   
   public void run()
   {
-    if (((aksh)this.this$0.a.get(this.a) != null) && (ateq.a(this.this$0) != null)) {
-      ateq.a(this.this$0).a();
+    if (((algt)this.this$0.a.get(this.a) != null) && (aubm.a(this.this$0) != null)) {
+      aubm.a(this.this$0).a();
     }
   }
 }

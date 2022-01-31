@@ -1,17 +1,14 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class thf
-  implements View.OnTouchListener
+  implements bcmw
 {
-  public thf(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
+  public thf(StoryMsgNodeFrameLayout paramStoryMsgNodeFrameLayout) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString)
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    this.a.a.setVisibility(4);
   }
 }
 

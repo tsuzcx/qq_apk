@@ -1,127 +1,50 @@
-import android.os.Bundle;
-import android.os.Messenger;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.PresendPicMgr;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PrecoverResource;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BinderWarpper;
-import java.util.Arrays;
 
-class aurx
-  extends aurs
+public class aurx
+  extends ayxn
 {
-  aurx(aurv paramaurv) {}
+  ayrv jdField_a_of_type_Ayrv;
+  PrecoverResource jdField_a_of_type_ComTencentMobileqqDataPrecoverResource;
   
-  public Bundle a(int paramInt, Bundle paramBundle)
+  public aurx(QQAppInterface paramQQAppInterface, PrecoverResource paramPrecoverResource, ayrv paramayrv)
   {
-    Bundle localBundle = new Bundle();
-    PresendPicMgr localPresendPicMgr;
-    if (paramInt == 16)
-    {
-      auru.a("PTV.RichmediaClient", "ICallBack.Stub() getData start. ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER");
-      localPresendPicMgr = PresendPicMgr.a();
-      Object localObject = null;
-      if ((localPresendPicMgr != null) && (localPresendPicMgr.jdField_a_of_type_Boolean)) {
-        break label113;
-      }
-      paramBundle = localObject;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("PTV.RichmediaClient", 2, "ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER failed, presendMgr is null or disable preCompress,presendMgr = " + localPresendPicMgr);
-        paramBundle = localObject;
-      }
+    super(paramQQAppInterface, paramPrecoverResource.md5);
+    this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource = paramPrecoverResource;
+    this.jdField_a_of_type_Ayrv = paramayrv;
+  }
+  
+  protected void realCancel()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverResDownloader", 2, "DownloadTask realCancel");
     }
-    for (;;)
-    {
-      if (paramBundle != null)
-      {
-        localBundle.putParcelable("key_presend_mgr_handler", new BinderWarpper(paramBundle));
-        localBundle.putInt("PhotoConst.PHOTO_COUNT", localPresendPicMgr.a());
-      }
-      return localBundle;
-      label113:
-      paramBundle = new Messenger(localPresendPicMgr.jdField_a_of_type_Atqh).getBinder();
-      auru.a("PTV.RichmediaClient", "ICallBack.Stub() getData. ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER , b = " + paramBundle);
+    aurt localaurt = (aurt)this.app.getManager(179);
+    if ((localaurt != null) && (localaurt.a() != null)) {
+      localaurt.a().a(this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource.md5);
     }
   }
   
-  public void a(int paramInt, Bundle paramBundle)
+  protected void realStart()
   {
-    auru.a("PTV.RichmediaClient", "sendRequest. cmd = " + paramInt + ",data = " + paramBundle);
-    if (paramBundle != null)
-    {
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      switch (paramInt)
-      {
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverResDownloader", 2, "DownloadTask realStart");
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          Object localObject;
-          do
-          {
-            do
-            {
-              return;
-              paramBundle = (BinderWarpper)paramBundle.getParcelable("binder_presendService");
-              if (paramBundle != null)
-              {
-                localObject = PresendPicMgr.a();
-                if (localObject != null) {
-                  ((PresendPicMgr)localObject).b();
-                }
-                paramBundle = PresendPicMgr.b(atpd.a(paramBundle.a));
-                auru.a("PTV.RichmediaClient", "ICALLBACK_CMD_INIT_PRESEND_PIC_MGR  presendMgr = " + paramBundle);
-                return;
-              }
-              auru.a("PTV.RichmediaClient", "ICALLBACK_CMD_INIT_PRESEND_PIC_MGR  failed, bw is null ! ");
-              return;
-              localObject = paramBundle.getString("key_presend_path");
-              paramInt = paramBundle.getInt("entrance", 0);
-              paramBundle = PresendPicMgr.a();
-            } while ((localObject == null) || (paramBundle == null));
-            paramBundle.a((String)localObject, 1052, paramInt);
-            return;
-            localObject = paramBundle.getString("key_presend_path");
-            paramInt = paramBundle.getInt("key_presend_cancel_type");
-            paramBundle = PresendPicMgr.a();
-          } while ((localObject == null) || (paramBundle == null));
-          paramBundle.b((String)localObject, paramInt);
-          return;
-          paramInt = paramBundle.getInt("key_presend_cancel_type");
-          paramBundle = PresendPicMgr.a();
-        } while (paramBundle == null);
-        paramBundle.a(paramInt);
-        paramBundle.b();
-        return;
-        paramBundle = paramBundle.getIntArray("key_compress_config");
-      } while ((paramBundle == null) || (paramBundle.length < 9));
-      atqu.e = paramBundle[0];
-      atqu.f = paramBundle[1];
-      atqu.g = paramBundle[2];
-      atqu.h = paramBundle[3];
-      atqu.i = paramBundle[4];
-      atqu.j = paramBundle[5];
-      atqu.a = paramBundle[6];
-      atqu.b = paramBundle[7];
-      atqu.c = paramBundle[8];
-    } while (!QLog.isColorLevel());
-    QLog.d("PTV.RichmediaClient", 2, "ICALLBACK_CMD_INIT_COMPRESS_CONFIG, compressConfig = " + Arrays.toString(paramBundle));
+    aurt localaurt = (aurt)this.app.getManager(179);
+    if ((localaurt != null) && (localaurt.a() != null)) {
+      localaurt.a().a(this);
+    }
   }
   
-  public void a(CompressInfo paramCompressInfo)
+  public String toString()
   {
-    auru.a("PTV.RichmediaClient", "ICallBack.Stub() compress start. info.src = " + paramCompressInfo.c + ",uuid = " + paramCompressInfo.a);
-    atqs.a(paramCompressInfo);
-    auru.a("PTV.RichmediaClient", "ICallBack.Stub() compress finish. info = " + paramCompressInfo);
+    return "[DownloadTask] req=" + this.jdField_a_of_type_Ayrv + ", res=" + this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aurx
  * JD-Core Version:    0.7.0.1
  */

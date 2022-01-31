@@ -1,24 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class azsx
-  implements azta
+  implements View.OnClickListener
 {
-  azsx(azsq paramazsq) {}
+  azsx(azsu paramazsu) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      this.a.d = paramString;
-      azsq.e(this.a);
-      return;
-    }
-    bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131649989), 0).a();
+    this.a.b(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azsx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,118 +1,54 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.UpdateUserInfoEventReceiver.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class utc
-  extends BaseAdapter
+  extends QQUIEventReceiver<usw, tkn>
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  List<uxf> jdField_a_of_type_JavaUtilList;
-  int b;
-  public int c = -1;
-  
-  public utc(EditVideoArtFilter paramEditVideoArtFilter, Context paramContext)
+  public utc(@NonNull usw paramusw)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = vct.a(this.jdField_a_of_type_AndroidContentContext, 130.0F);
-    this.b = vct.a(this.jdField_a_of_type_AndroidContentContext, 96.0F);
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(20);
+    super(paramusw);
   }
   
-  public uxf a(int paramInt)
+  public void a(@NonNull usw paramusw, @NonNull tkn paramtkn)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return (uxf)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a(List<uxf> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    uxf localuxf = new uxf();
-    this.jdField_a_of_type_JavaUtilList.add(localuxf);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.c = 0;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView1;
-    if (paramView == null)
+    if (TextUtils.equals(paramtkn.jdField_a_of_type_JavaLangString, String.valueOf(paramusw.hashCode())))
     {
-      paramViewGroup = new utd(this);
-      localView1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131493624, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131311430));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = localView1.findViewById(2131310052);
-      localView1.setTag(paramViewGroup);
-    }
-    uxf localuxf;
-    for (;;)
-    {
-      localuxf = a(paramInt);
-      if (localuxf != null) {
-        break;
-      }
-      return localView1;
-      paramViewGroup = (utd)paramView.getTag();
-      localView1 = paramView;
-    }
-    paramView = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localuxf.jdField_a_of_type_Int + localuxf.b);
-    View localView2 = paramView;
-    if (paramView == null)
-    {
-      if (paramInt != 0) {
-        break label249;
-      }
-      paramView = azvq.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_AndroidContentContext.getResources(), 2130840980, this.b, this.jdField_a_of_type_Int);
-      localView2 = paramView;
-      if (paramView != null)
+      if ((paramtkn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtkn.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null))
       {
-        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(localuxf.jdField_a_of_type_Int + localuxf.b, paramView);
-        localView2 = paramView;
+        veg.b("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", paramtkn);
+        paramusw.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramtkn.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+        paramusw.jdField_a_of_type_JavaLangString = paramtkn.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;
+        if (usw.a(paramusw) != -1) {
+          paramusw.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = usw.a(paramusw);
+        }
+        if (usw.b(paramusw) != -1) {
+          paramusw.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.shareGroupCount = usw.b(paramusw);
+        }
+        ((FriendListHandler)tsu.a().a(1)).c(paramtkn.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, false);
+        ThreadManager.post(new MemoriesProfilePresenter.UpdateUserInfoEventReceiver.1(this, paramusw), 5, null, false);
+      }
+      for (;;)
+      {
+        usw.a(paramusw).a(paramtkn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+        return;
+        bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131706527) + paramtkn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.getErrorMessage(), 0);
+        veg.e("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", new Object[] { paramtkn });
       }
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localView2);
-    if (paramInt == 0) {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131637999));
-    }
-    for (;;)
-    {
-      if (paramInt != this.c) {
-        break label305;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      return localView1;
-      label249:
-      paramView = azvq.a(localuxf.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
-      break;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131638148) + localuxf.c);
-    }
-    label305:
-    paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    return localView1;
+    veg.b("Q.qqstory.memories.MemoriesProfilePresenter", "ignore this update user info event: %s.", paramtkn);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tkn.class;
   }
 }
 

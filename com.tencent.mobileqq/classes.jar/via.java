@@ -1,8 +1,35 @@
-public abstract interface via
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.widget.ImageView;
+import com.tribe.async.reactive.SimpleObserver;
+
+class via
+  extends SimpleObserver<Bitmap>
 {
-  public abstract void a(boolean paramBoolean);
+  via(vhz paramvhz) {}
   
-  public abstract void j();
+  public void a(Bitmap paramBitmap)
+  {
+    super.onNext(paramBitmap);
+    if (paramBitmap != null)
+    {
+      if (this.a.b)
+      {
+        this.a.a.setImageBitmap(paramBitmap);
+        veg.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
+      }
+    }
+    else {
+      return;
+    }
+    veg.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    veg.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
+  }
 }
 
 

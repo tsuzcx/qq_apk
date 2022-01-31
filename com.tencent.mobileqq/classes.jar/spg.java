@@ -1,10 +1,12 @@
-public abstract interface spg<DATA>
+public abstract interface spg
 {
-  public abstract void a(boolean paramBoolean, DATA paramDATA);
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     spg
  * JD-Core Version:    0.7.0.1
  */

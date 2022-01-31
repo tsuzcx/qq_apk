@@ -1,22 +1,24 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public abstract interface ucg
+class ucg
+  implements udd
 {
-  public abstract void N_();
+  ucg(ucc paramucc, StoryVideoItem paramStoryVideoItem) {}
   
-  public abstract void O_();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void b(CommentEntry paramCommentEntry, int paramInt);
-  
-  public abstract void f();
+  public void a(udc paramudc)
+  {
+    if (this.jdField_a_of_type_Ucc.isCanceled()) {}
+    do
+    {
+      return;
+      veg.a(this.jdField_a_of_type_Ucc.a.jdField_a_of_type_JavaLangString, "onCompletion, [videoView], current state = %s", VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Ucc.a.c]);
+    } while (!VideoViewVideoHolder.b(this.jdField_a_of_type_Ucc.a, 12));
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Ucc.a, 12);
+    this.jdField_a_of_type_Ucc.a.d = 1;
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Ucc.a).a(this.jdField_a_of_type_Ucc.a, paramudc, VideoViewVideoHolder.b(this.jdField_a_of_type_Ucc.a));
+    vel.c("video_ope", "play_finish", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid, "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+  }
 }
 
 

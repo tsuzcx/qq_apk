@@ -1,34 +1,23 @@
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 
-public class arpw
+class arpw
+  extends arqb
 {
-  public int a;
-  public long a;
-  public String a;
-  public ConcurrentHashMap<Long, arpx> a;
-  public AtomicBoolean a;
-  public boolean a;
-  public String b;
-  public ConcurrentHashMap<Long, arpx> b = new ConcurrentHashMap();
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  
-  public arpw()
+  public BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    return ((avpq)paramQQAppInterface.getManager(36)).a(paramString);
   }
   
-  public String toString()
+  public void a(RedTouch paramRedTouch, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    return this.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Int;
+    paramRedTouch.a(paramAppInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arpw
  * JD-Core Version:    0.7.0.1
  */

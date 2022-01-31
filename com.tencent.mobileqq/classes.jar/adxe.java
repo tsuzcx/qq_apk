@@ -1,6 +1,21 @@
-public abstract interface adxe
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.widget.MessageProgressView;
+
+public class adxe
+  extends adxa
 {
-  public abstract void a(boolean paramBoolean);
+  public RelativeLayout a;
+  public BubbleImageView a;
+  public MessageProgressView a;
+  public RelativeLayout b;
+  public int e;
+  public int f;
+  
+  public adxe(adxd paramadxd)
+  {
+    super(paramadxd);
+  }
 }
 
 

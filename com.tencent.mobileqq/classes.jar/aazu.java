@@ -1,47 +1,28 @@
-import QQService.DiscussMemberInfo;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity.FaceObserver.1;
+import com.tencent.mobileqq.activity.EditActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.data.CustomEmotionData;
 
 public class aazu
-  extends ajjh
+  extends ajwb
 {
-  private aazu(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  public aazu(EditActivity paramEditActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.app.getCurrentAccountUin().equals(paramString))) {}
-    label192:
-    for (;;)
+    EditActivity.a(this.a);
+    if (paramBoolean)
     {
-      return;
-      Object localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      do
+      paramObject = (CustomEmotionData)paramObject;
+      if (paramObject != null)
       {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-      } while (!String.valueOf(((DiscussMemberInfo)((Iterator)localObject).next()).Uin).equals(paramString));
-      for (int i = 1;; i = 0)
-      {
-        if ((i == 0) || (this.a.jdField_a_of_type_JavaUtilArrayList.contains(paramString))) {
-          break label192;
-        }
-        this.a.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        localObject = new StringBuilder();
-        JoinDiscussionActivity localJoinDiscussionActivity = this.a;
-        localJoinDiscussionActivity.f = (localJoinDiscussionActivity.f + paramString + ";");
-        if (this.a.jdField_a_of_type_JavaUtilArrayList.size() != this.a.b) {
-          break;
-        }
-        ThreadManager.post(new JoinDiscussionActivity.FaceObserver.1(this), 8, null, true);
-        return;
+        ((anss)this.a.app.getManager(103)).c(paramObject);
+        EditActivity.b(this.a);
       }
     }
+    while (!(paramObject instanceof String)) {
+      return;
+    }
+    bcpw.a(this.a, 1, (String)paramObject, 1).a();
   }
 }
 

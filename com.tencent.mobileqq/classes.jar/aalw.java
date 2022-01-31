@@ -1,20 +1,31 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class aalw
-  extends FlingGestureHandler
+class aalw
+  implements bbyn
 {
-  public aalw(ContactBindedActivity paramContactBindedActivity, Activity paramActivity)
+  private final WeakReference<aals> a;
+  
+  aalw(aals paramaals)
   {
-    super(paramActivity);
+    this.a = new WeakReference(paramaals);
   }
   
-  public void flingLToR()
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (!this.a.a) {
-      super.flingLToR();
+    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+      if (QLog.isColorLevel()) {
+        QLog.i("AutoLoginHelper", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
+      }
     }
+    aals localaals;
+    do
+    {
+      return;
+      localaals = (aals)this.a.get();
+    } while (localaals == null);
+    localaals.a(paramString, paramBoolean);
   }
 }
 

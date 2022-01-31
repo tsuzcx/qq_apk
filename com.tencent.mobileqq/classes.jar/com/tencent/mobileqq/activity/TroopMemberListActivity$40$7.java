@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import acab;
-import acao;
+import ackn;
+import acla;
 import java.util.List;
 
 public class TroopMemberListActivity$40$7
   implements Runnable
 {
-  public TroopMemberListActivity$40$7(acab paramacab, List paramList) {}
+  public TroopMemberListActivity$40$7(ackn paramackn, List paramList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Acab.a.isFinishing()) {}
-    while (this.jdField_a_of_type_Acab.a.a == null) {
+    if (this.jdField_a_of_type_Ackn.a.isFinishing()) {}
+    while (this.jdField_a_of_type_Ackn.a.a == null) {
       return;
     }
-    this.jdField_a_of_type_Acab.a.a.e = this.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_Acab.a.a.a();
+    this.jdField_a_of_type_Ackn.a.a.e = this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Ackn.a.a.a();
   }
 }
 

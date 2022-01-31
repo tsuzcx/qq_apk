@@ -1,164 +1,66 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.3.1;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.3.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedHashMap;
-import java.util.List;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
 
 public class ayom
-  implements azgl
+  extends ayog
 {
-  ayom(ayok paramayok) {}
-  
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    if (paramJSONObject != null) {}
+    return new File(paramDownloadParams.url.getFile());
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
+    if (!LocalMediaInfo.class.isInstance(paramDownloadParams.tag)) {
+      throw new RuntimeException("Decode info is invalide");
+    }
+    paramURLDrawableHandler = (LocalMediaInfo)paramDownloadParams.tag;
     for (;;)
     {
       try
       {
-        if (paramJSONObject.optInt("retcode") == 0) {
-          break label687;
-        }
-        i = paramJSONObject.optInt("ec");
-        if (i == 0) {
-          break label687;
-        }
-        i = 0;
-        if (i == 0)
+        paramFile = paramDownloadParams.url.getRef();
+        if ("VIDEO".equals(paramFile))
         {
-          if ((paramInt == 1000) || (paramInt == 1002))
-          {
-            ayok.e(this.a);
-            this.a.notifyObservers(Integer.valueOf(103));
-            if (paramInt == 1002) {
-              this.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopFeedsDataManager", 2, "cgi end(failed): " + System.currentTimeMillis());
-          }
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle = paramBundle;
-        paramBundle.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopFeedsDataManager", 2, "cgi end(suc): " + System.currentTimeMillis());
-        }
-        if (paramInt == 1000)
-        {
-          ThreadManager.getSubThreadHandler().post(new TroopFeedsDataManager.3.1(this, paramJSONObject));
-          return;
-        }
-      }
-      finally {}
-      if (paramInt == 1002)
-      {
-        ThreadManager.getSubThreadHandler().post(new TroopFeedsDataManager.3.2(this, paramJSONObject));
-        return;
-      }
-      if (paramInt == 1003)
-      {
-        ayok.f(this.a);
-        paramBundle = paramJSONObject.optJSONArray("inst");
-        if ((paramBundle != null) && (paramBundle.length() > 0))
-        {
-          this.a.jdField_a_of_type_OrgJsonJSONObject = paramBundle.optJSONObject(0);
-          this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
-        }
-        this.a.notifyObservers(Integer.valueOf(106));
-        return;
-      }
-      Object localObject;
-      JSONObject localJSONObject;
-      if (paramInt == 1004)
-      {
-        localObject = paramJSONObject.optJSONArray("feeds");
-        paramBundle = paramJSONObject.optJSONArray("inst");
-        if ((localObject != null) && (((JSONArray)localObject).length() == 1))
-        {
-          localJSONObject = ((JSONArray)localObject).optJSONObject(0);
-          this.a.b = localJSONObject;
-          this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
-          paramInt = 1;
-        }
-      }
-      for (;;)
-      {
-        i = paramInt;
-        if (paramBundle != null)
-        {
-          i = paramInt;
-          if (paramBundle.length() > 0)
-          {
-            paramBundle = paramBundle.optJSONObject(0);
-            long l2 = paramBundle.optLong("pubt");
-            long l1 = 0L;
-            if (this.a.b != null) {
-              l1 = this.a.b.optLong("pubt");
-            }
-            i = paramInt;
-            if (l2 > l1)
-            {
-              this.a.b = paramBundle;
-              this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
-              i = 1;
-            }
-          }
-        }
-        if (i == 0) {
-          break;
-        }
-        ayok.g(this.a);
-        this.a.notifyObservers(Integer.valueOf(1007));
-        return;
-        if ((localObject != null) && (((JSONArray)localObject).length() == 2))
-        {
-          localJSONObject = ((JSONArray)localObject).optJSONObject(0);
-          localObject = ((JSONArray)localObject).optJSONObject(1);
-          if (localJSONObject.optLong("pubt") >= ((JSONObject)localObject).optLong("pubt")) {
-            this.a.b = localJSONObject;
-          }
-          for (this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");; this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad"))
-          {
-            paramInt = 1;
-            break;
-            this.a.b = ((JSONObject)localObject);
-          }
-          if ((paramInt != 1005) && (paramInt != 1006)) {
+          paramFile = new agqt(localBaseApplicationImpl, paramURLDrawableHandler);
+          paramFile = agld.a(localBaseApplicationImpl).a(paramDownloadParams.url, paramFile, paramDownloadParams);
+          if ((paramFile == null) || (paramURLDrawableHandler == null)) {
             break;
           }
-          paramJSONObject = ayob.a(paramJSONObject, "" + this.a.jdField_a_of_type_JavaLangLong, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-          paramBundle = (List)paramJSONObject[0];
-          paramJSONObject = (List)paramJSONObject[1];
-          this.a.jdField_a_of_type_JavaUtilList = paramJSONObject;
-          ayok.h(this.a);
-          if (paramInt == 1005)
-          {
-            this.a.notifyObservers(Integer.valueOf(1008));
-            return;
-          }
-          this.a.notifyObservers(Integer.valueOf(1009));
-          return;
+          paramURLDrawableHandler.thumbSize = paramFile.getByteCount();
+          return paramFile;
         }
-        paramInt = 0;
+        if ("FLOW_THUMB".equals(paramFile))
+        {
+          paramFile = new agls(localBaseApplicationImpl, paramURLDrawableHandler);
+          continue;
+        }
+        if (!"APP_VIDEO".equals(paramFile)) {
+          break label153;
+        }
       }
-      label687:
-      int i = 1;
+      catch (NumberFormatException paramFile)
+      {
+        throw new RuntimeException("Decode type is invalid");
+      }
+      paramFile = new aglf(localBaseApplicationImpl, paramURLDrawableHandler);
+      continue;
+      label153:
+      paramFile = new agqg(localBaseApplicationImpl, paramURLDrawableHandler);
     }
+    return paramFile;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayom
  * JD-Core Version:    0.7.0.1
  */

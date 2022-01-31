@@ -1,20 +1,18 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.photo.AlbumListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
 
 public class afyz
-  implements MessageQueue.IdleHandler
+  implements baji
 {
-  public afyz(AlbumListActivity paramAlbumListActivity, int paramInt1, int paramInt2) {}
+  private long jdField_a_of_type_Long;
   
-  public boolean queueIdle()
+  public afyz(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AlbumListActivity", 2, "load Scroll Position,index:" + this.jdField_a_of_type_Int + " top:" + this.b);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListActivity.a.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
-    return false;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
   }
 }
 

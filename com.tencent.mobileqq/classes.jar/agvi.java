@@ -1,52 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.js.SpringFestivalRedpacketJsPlugin.3;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import mqq.util.WeakReference;
 
-public class agvi
-  implements EIPCResultCallback
+class agvi
+  implements View.OnClickListener
 {
-  public agvi(SpringFestivalRedpacketJsPlugin.3 param3, String paramString) {}
+  agvi(agvh paramagvh) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    QLog.i("springHb_SpringFestivalRedpacketJsPlugin", 1, "uploadHeadToH5: invoked.  QWalletIPCModule.ACTION_GET_User_Nick: " + paramEIPCResult);
-    Object localObject;
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
+    if (agvh.a(this.a) == null)
     {
-      paramEIPCResult = paramEIPCResult.data;
-      if (paramEIPCResult == null)
-      {
-        localObject = "";
-        paramEIPCResult = (EIPCResult)localObject;
-        if (!baip.a((String)localObject)) {}
-      }
+      agvh.a(this.a, bbcv.a((Context)this.a.a.get(), 0, ((NewPhotoPreviewActivity)this.a.a.get()).getString(2131718404), null, ((NewPhotoPreviewActivity)this.a.a.get()).getString(2131718402), ((NewPhotoPreviewActivity)this.a.a.get()).getString(2131718403), new agvj(this), new agvk(this)));
+      agvh.a(this.a).setCanceledOnTouchOutside(false);
     }
-    for (paramEIPCResult = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalJsSpringFestivalRedpacketJsPlugin$3.jdField_a_of_type_JavaLangString;; paramEIPCResult = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalJsSpringFestivalRedpacketJsPlugin$3.jdField_a_of_type_JavaLangString)
-    {
-      try
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("avatar", this.jdField_a_of_type_JavaLangString);
-        ((JSONObject)localObject).put("nickname", paramEIPCResult);
-        agvf.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalJsSpringFestivalRedpacketJsPlugin$3.this$0, "getAvatarAndNickname", ((JSONObject)localObject).toString());
-        QLog.i("springHb_SpringFestivalRedpacketJsPlugin", 1, "uploadHeadToH5 doCallback: " + ((JSONObject)localObject).toString());
-        return;
-      }
-      catch (Exception paramEIPCResult)
-      {
-        QLog.e("springHb_SpringFestivalRedpacketJsPlugin", 1, "uploadHeadToH5 parse result throw an exception: " + paramEIPCResult);
-      }
-      localObject = paramEIPCResult.getString("user_nick");
-      break;
-    }
+    agvh.a(this.a).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agvi
  * JD-Core Version:    0.7.0.1
  */

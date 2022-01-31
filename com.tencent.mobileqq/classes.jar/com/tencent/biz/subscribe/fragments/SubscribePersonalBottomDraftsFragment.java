@@ -5,16 +5,16 @@ import android.support.v4.app.FragmentActivity;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.component.base.ComponentPageView;
 import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
-import vyk;
-import wbv;
-import wcj;
-import wcm;
+import wlt;
+import wpi;
+import wpw;
+import wpz;
 
 public class SubscribePersonalBottomDraftsFragment
   extends SubscribeBaseBottomPersonalFragment
 {
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private vyk jdField_a_of_type_Vyk;
+  private wlt jdField_a_of_type_Wlt;
   
   ExtraTypeInfo a()
   {
@@ -37,24 +37,24 @@ public class SubscribePersonalBottomDraftsFragment
   
   protected void a()
   {
-    this.jdField_a_of_type_Vyk = new vyk(null);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(this.jdField_a_of_type_Vyk);
+    this.jdField_a_of_type_Wlt = new wlt(null);
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(this.jdField_a_of_type_Wlt);
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.d();
-    this.jdField_a_of_type_Vyk.b();
-    if (this.jdField_a_of_type_Wcm != null) {
-      this.jdField_a_of_type_Vyk.b("share_key_subscribe_opus", new wbv(this.jdField_a_of_type_Wcm));
+    this.jdField_a_of_type_Wlt.b();
+    if (this.jdField_a_of_type_Wpz != null) {
+      this.jdField_a_of_type_Wlt.b("share_key_subscribe_opus", new wpi(this.jdField_a_of_type_Wpz));
     }
   }
   
   public void a(int paramInt) {}
   
-  public void a(String paramString, wcm paramwcm)
+  public void a(String paramString, wpz paramwpz)
   {
     if ("share_key_subscribe_opus".equals(paramString))
     {
-      this.jdField_a_of_type_Wcm = paramwcm;
-      if (this.jdField_a_of_type_Vyk != null) {
-        this.jdField_a_of_type_Vyk.b("share_key_subscribe_opus", new wbv(this.jdField_a_of_type_Wcm));
+      this.jdField_a_of_type_Wpz = paramwpz;
+      if (this.jdField_a_of_type_Wlt != null) {
+        this.jdField_a_of_type_Wlt.b("share_key_subscribe_opus", new wpi(this.jdField_a_of_type_Wpz));
       }
     }
   }
@@ -62,7 +62,7 @@ public class SubscribePersonalBottomDraftsFragment
   public void onResume()
   {
     super.onResume();
-    wcj.a().a(new SubDraftChangeEvent());
+    wpw.a().a(new SubDraftChangeEvent());
   }
 }
 

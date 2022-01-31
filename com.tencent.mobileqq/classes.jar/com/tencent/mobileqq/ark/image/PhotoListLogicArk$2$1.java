@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark.image;
 
-import alhb;
+import alvp;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import mqq.util.WeakReference;
 

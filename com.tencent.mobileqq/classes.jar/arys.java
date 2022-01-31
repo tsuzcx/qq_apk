@@ -1,42 +1,42 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
-class arys
-  implements apaq
+public class arys
+  implements Animator.AnimatorListener
 {
-  arys(aryq paramaryq, apap paramapap) {}
+  public arys(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    Message localMessage = aryq.a(this.jdField_a_of_type_Aryq).obtainMessage(1);
-    arym localarym = this.jdField_a_of_type_Aryq.a(this.jdField_a_of_type_Apap.a());
-    if (localarym != null)
-    {
-      localarym.jdField_a_of_type_Int = 0;
-      localMessage.obj = localarym;
-      aryq.a(this.jdField_a_of_type_Aryq).sendMessage(localMessage);
+    PoiSlideBottomPanel.h(this.a, false);
+    PoiSlideBottomPanel.i(this.a, false);
+    PoiSlideBottomPanel.j(this.a, false);
+    if (PoiSlideBottomPanel.k(this.a) != null) {
+      PoiSlideBottomPanel.l(this.a).hidePanelFinish();
     }
   }
   
-  public void a(int paramInt, String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("MultiRichMediaSaveManager", 2, "saveVideoFile fail, errorCode = " + paramInt + " ,errorMsg = " + paramString);
+    PoiSlideBottomPanel.e(this.a, false);
+    PoiSlideBottomPanel.f(this.a, false);
+    PoiSlideBottomPanel.g(this.a, false);
+    if (PoiSlideBottomPanel.i(this.a) != null) {
+      PoiSlideBottomPanel.j(this.a).hidePanelFinish();
     }
-    arym localarym = this.jdField_a_of_type_Aryq.a(this.jdField_a_of_type_Apap.a());
-    if (localarym != null)
-    {
-      localarym.jdField_a_of_type_Int = -1;
-      localarym.b = paramInt;
-      localarym.jdField_a_of_type_JavaLangString = paramString;
-      aryq.a(this.jdField_a_of_type_Aryq, localarym);
-    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    PoiSlideBottomPanel.d(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arys
  * JD-Core Version:    0.7.0.1
  */

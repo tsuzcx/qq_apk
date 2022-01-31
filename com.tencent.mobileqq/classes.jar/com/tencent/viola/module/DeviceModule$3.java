@@ -23,7 +23,7 @@ class DeviceModule$3
     paramUri = new JSONObject();
     try
     {
-      paramUri.put("volume", DeviceModule.access$000(this.this$0).getStreamVolume(3) / DeviceModule.access$100(this.this$0));
+      paramUri.put("volume", DeviceModule.access$300(this.this$0).getStreamVolume(3) / DeviceModule.access$400(this.this$0));
       ViolaBridgeManager.getInstance().callbackJavascript(this.this$0.getViolaInstance().getInstanceId(), "device", "callback", this.val$callback, paramUri, true);
       return;
     }

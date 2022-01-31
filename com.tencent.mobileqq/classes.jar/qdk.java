@@ -1,17 +1,18 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 
-class qdk
-  implements nsy
+public final class qdk
+  implements Parcelable.Creator<TagInfo>
 {
-  qdk(qdi paramqdi) {}
-  
-  public void a(int paramInt)
+  public TagInfo a(Parcel paramParcel)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("VALUE_CAMERA_CAPTURE_SO_DOWNLOAD_STATUS", paramInt);
-    QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_CAMERA_CAPTURE_SO_DOWNLOAD", localBundle, null);
+    return new TagInfo(paramParcel);
+  }
+  
+  public TagInfo[] a(int paramInt)
+  {
+    return new TagInfo[paramInt];
   }
 }
 

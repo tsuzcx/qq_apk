@@ -1,55 +1,99 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Rect;
-import android.view.Display;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.view.WindowManager;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class ayxj
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private ayxj(InputMethodGuard paramInputMethodGuard) {}
-  
-  private int a()
+  public static int a(String paramString1, String paramString2)
   {
-    if (awmc.b > 0) {
-      return awmc.b;
+    Object localObject = null;
+    if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0)) {
+      return 1;
     }
-    return ((WindowManager)this.a.getContext().getSystemService("window")).getDefaultDisplay().getHeight();
-  }
-  
-  public void onGlobalLayout()
-  {
-    boolean bool = InputMethodGuard.a(this.a);
-    Rect localRect = new Rect();
-    ((Activity)this.a.getContext()).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    int i = a();
-    int j = i - localRect.bottom;
-    if (Math.abs(j) > i / 5)
-    {
-      InputMethodGuard.a(this.a, true);
-      InputMethodGuard.a(this.a, j);
+    if (!apvb.a(paramString1)) {
+      return 2;
     }
     for (;;)
     {
-      if ((InputMethodGuard.a(this.a) != null) && ((bool != InputMethodGuard.a(this.a)) || (InputMethodGuard.b(this.a)))) {
-        InputMethodGuard.a(this.a).a(InputMethodGuard.a(this.a), InputMethodGuard.a(this.a));
+      try
+      {
+        paramString1 = new FileInputStream(paramString1);
       }
-      if (InputMethodGuard.b(this.a)) {
-        InputMethodGuard.b(this.a, false);
+      catch (IOException paramString1)
+      {
+        paramString1 = null;
+        paramString2 = str;
+        continue;
       }
-      return;
-      InputMethodGuard.a(this.a, false);
-      InputMethodGuard.a(this.a, 0);
+      try
+      {
+        paramString2 = new FileOutputStream(paramString2);
+        try
+        {
+          byte[] arrayOfByte = new byte[1024];
+          int i = paramString1.read(arrayOfByte);
+          if (i > 0)
+          {
+            paramString2.write(arrayOfByte, 0, i);
+            continue;
+            if (paramString2 == null) {}
+          }
+        }
+        catch (IOException localIOException)
+        {
+          str = paramString2;
+          paramString2 = paramString1;
+          paramString1 = str;
+        }
+      }
+      catch (IOException paramString2)
+      {
+        str = null;
+        paramString2 = paramString1;
+        paramString1 = str;
+        continue;
+      }
+      try
+      {
+        paramString2.close();
+        if (paramString1 != null) {
+          paramString1.close();
+        }
+      }
+      catch (Exception paramString1)
+      {
+        continue;
+      }
+      return 3;
+      paramString1.close();
+      try
+      {
+        paramString2.close();
+        return 0;
+      }
+      catch (IOException paramString1)
+      {
+        paramString1 = paramString2;
+        paramString2 = str;
+      }
     }
+  }
+  
+  public static String a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    int i = paramString.lastIndexOf(".");
+    if (i >= 0) {
+      return paramString.substring(i);
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayxj
  * JD-Core Version:    0.7.0.1
  */

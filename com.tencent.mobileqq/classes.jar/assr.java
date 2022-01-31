@@ -1,16 +1,36 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
 
 public class assr
-  implements atcb
+  extends RecyclerView.OnScrollListener
 {
-  public assr(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public assr(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  public void onClick(View paramView) {}
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    if (MultiCardRecommendFragment.a(this.a) != null)
+    {
+      if ((paramInt == 0) || (paramInt == 1)) {
+        break label38;
+      }
+      MultiCardRecommendFragment.a(this.a);
+    }
+    for (;;)
+    {
+      if (paramInt == 0) {
+        MultiCardRecommendFragment.d(this.a);
+      }
+      return;
+      label38:
+      MultiCardRecommendFragment.b(this.a);
+      MultiCardRecommendFragment.c(this.a);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     assr
  * JD-Core Version:    0.7.0.1
  */

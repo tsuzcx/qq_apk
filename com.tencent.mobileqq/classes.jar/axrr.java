@@ -1,12 +1,16 @@
-public abstract interface axrr
+public class axrr
 {
-  public abstract void a(axsp paramaxsp);
-  
-  public abstract void b(axsp paramaxsp);
+  public int a;
+  public long a;
+  public String a = "";
+  public int b;
+  public long b;
+  public String b = "";
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axrr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,25 @@
-import android.content.Context;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 
 public class baiw
 {
-  public static CharSequence a(Context paramContext, aslp paramaslp, String paramString)
-  {
-    if ((paramaslp == null) || (TextUtils.isEmpty(paramaslp.a()))) {
-      return paramString;
-    }
-    String str = "#" + paramaslp.a() + "#";
-    paramString = new SpannableString(str + paramString);
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicHelper", 2, "topicName is " + str);
-    }
-    paramString.setSpan(new baix(paramContext, paramaslp), 0, str.length(), 33);
-    return paramString;
-  }
+  public int a;
+  public long a;
+  public String a;
+  public long b;
   
-  public static CharSequence b(Context paramContext, aslp paramaslp, String paramString)
+  public baiw(TroopBatchAddFriendMgr paramTroopBatchAddFriendMgr, String paramString, int paramInt, long paramLong1, long paramLong2)
   {
-    if ((paramaslp == null) || (TextUtils.isEmpty(paramaslp.a()))) {
-      return paramString;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString).append("\n").append("#").append(paramaslp.a()).append("#");
-    SpannableString localSpannableString = new SpannableString(localStringBuilder.toString());
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicHelper", 2, "topicAndDescWithLine is " + localStringBuilder);
-    }
-    localSpannableString.setSpan(new baiy(paramContext, paramaslp), paramString.length(), localStringBuilder.length(), 33);
-    return localSpannableString;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baiw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video.bandwidth;
 
-import qka;
-import qkd;
+import qwf;
+import qwi;
 
 public class BandwidthPredictor$NetworkChangeReceiver$1
   implements Runnable
 {
-  public BandwidthPredictor$NetworkChangeReceiver$1(qkd paramqkd) {}
+  public BandwidthPredictor$NetworkChangeReceiver$1(qwi paramqwi) {}
   
   public void run()
   {
-    qka.a(this.a.a);
+    qwf.a(this.a.a);
   }
 }
 

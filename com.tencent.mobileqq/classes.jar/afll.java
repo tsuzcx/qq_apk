@@ -1,417 +1,91 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.SwipListView;
 
 public class afll
-  extends BaseAdapter
+  implements bfob
 {
-  private afpf jdField_a_of_type_Afpf;
-  private ajjj jdField_a_of_type_Ajjj;
-  Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  ChatHistoryC2CLinkFragment jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment;
-  private SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat;
-  public ArrayList<Object> a;
-  View.OnClickListener b;
+  public afll(SystemMsgListView paramSystemMsgListView) {}
   
-  public afll(Context paramContext, ArrayList<Object> paramArrayList, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, ChatHistoryC2CLinkFragment paramChatHistoryC2CLinkFragment, afpf paramafpf)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
-    this.b = paramOnClickListener2;
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment = paramChatHistoryC2CLinkFragment;
-    this.jdField_a_of_type_Afpf = paramafpf;
-    this.jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("M月d日");
-    this.jdField_a_of_type_Ajjj = ((ajjj)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.getActivity().app.getManager(51));
-  }
-  
-  public static String a(AbsShareMsg paramAbsShareMsg, String paramString)
-  {
-    Object localObject1;
-    Object localObject2;
-    if (paramString.equals("cover"))
+    SystemMsgListView.a(this.a, paramInt1);
+    SystemMsgListView.a(this.a, paramInt1 + paramInt2 - 1);
+    if (SystemMsgListView.a(this.a).b() == 23)
     {
-      localObject1 = paramAbsShareMsg.mContentCover;
-      localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1))
+      if (paramInt1 >= 1)
       {
-        localObject2 = localObject1;
-        if ((paramAbsShareMsg instanceof StructMsgForGeneralShare))
-        {
-          paramAbsShareMsg = (StructMsgForGeneralShare)paramAbsShareMsg;
-          localObject2 = localObject1;
-          if (paramAbsShareMsg.mStructMsgItemLists != null)
-          {
-            localObject2 = localObject1;
-            if (!paramAbsShareMsg.mStructMsgItemLists.isEmpty())
-            {
-              Iterator localIterator = paramAbsShareMsg.mStructMsgItemLists.iterator();
-              paramAbsShareMsg = (AbsShareMsg)localObject1;
-              if (!localIterator.hasNext()) {
-                return paramAbsShareMsg;
-              }
-              localObject2 = (awul)localIterator.next();
-              if (!(localObject2 instanceof awum)) {
-                break label214;
-              }
-              localObject1 = paramAbsShareMsg;
-              if (((awum)localObject2).jdField_a_of_type_JavaUtilArrayList == null) {
-                break label248;
-              }
-              localObject1 = paramAbsShareMsg;
-              if (((awum)localObject2).jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-                break label248;
-              }
-              localObject2 = ((awum)localObject2).jdField_a_of_type_JavaUtilArrayList.iterator();
-              localObject1 = paramAbsShareMsg;
-              label176:
-              do
-              {
-                paramAbsShareMsg = (AbsShareMsg)localObject1;
-                if (!((Iterator)localObject2).hasNext()) {
-                  break;
-                }
-                paramAbsShareMsg = (awul)((Iterator)localObject2).next();
-                if (!paramString.equals("cover")) {
-                  break label206;
-                }
-                paramAbsShareMsg = StructMsgForGeneralShare.getCoverForChatHistory(paramAbsShareMsg);
-                localObject1 = paramAbsShareMsg;
-              } while (TextUtils.isEmpty(paramAbsShareMsg));
-              localObject1 = paramAbsShareMsg;
-              if (TextUtils.isEmpty(paramAbsShareMsg)) {
-                break label248;
-              }
-              localObject2 = paramAbsShareMsg;
-            }
-          }
+        paramAbsListView = (afjv)SystemMsgListView.a(this.a).getItem(paramInt1 - 1);
+        if ((paramAbsListView instanceof afjr)) {
+          ((afjr)paramAbsListView).c();
+        }
+      }
+      if (paramInt1 + paramInt2 < paramInt3)
+      {
+        paramAbsListView = (afjv)SystemMsgListView.a(this.a).getItem(paramInt1 + paramInt2);
+        if ((paramAbsListView instanceof afjr)) {
+          ((afjr)paramAbsListView).c();
         }
       }
     }
-    label206:
-    label214:
-    label228:
-    do
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    int i = 0;
+    int j;
+    int k;
+    if (SystemMsgListView.a(this.a) != null)
     {
-      return localObject2;
-      localObject1 = paramAbsShareMsg.mContentTitle;
-      break;
-      paramAbsShareMsg = StructMsgForGeneralShare.getTitleForChatHistory(paramAbsShareMsg);
-      break label176;
-      if (!paramString.equals("cover")) {
+      if ((paramInt == 0) || (paramInt == 1)) {
         break label240;
       }
-      paramAbsShareMsg = StructMsgForGeneralShare.getCoverForChatHistory((awul)localObject2);
-      localObject2 = paramAbsShareMsg;
-    } while (!TextUtils.isEmpty(paramAbsShareMsg));
-    for (;;)
-    {
-      break;
-      label240:
-      paramAbsShareMsg = StructMsgForGeneralShare.getTitleForChatHistory((awul)localObject2);
-      break label228;
-      label248:
-      paramAbsShareMsg = (AbsShareMsg)localObject1;
-    }
-    return paramAbsShareMsg;
-  }
-  
-  private String a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      Matcher localMatcher = ChatHistoryC2CLinkFragment.a.matcher(paramString);
-      if (localMatcher.find()) {
-        return paramString.substring(localMatcher.start(), localMatcher.end());
-      }
-    }
-    return "";
-  }
-  
-  private void a(aflo paramaflo, MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForArkApp)) {}
-    for (;;)
-    {
-      try
+      SystemMsgListView.a(this.a).f();
+      if (paramInt == 0)
       {
-        Object localObject = ((MessageForArkApp)paramMessageRecord).getPreview();
-        boolean bool = TextUtils.isEmpty((CharSequence)localObject);
-        if (bool) {
-          break label374;
-        }
-        String str2;
-        TextView localTextView;
-        QLog.e("Q.history.C2CLinkAdapter", 1, localException1, new Object[0]);
-      }
-      catch (Exception localException1)
-      {
-        try
+        SystemMsgListView.a(this.a).k();
+        j = SystemMsgListView.a(this.a).b();
+        if (SystemMsgListView.a(this.a) >= SystemMsgListView.a(this.a).getCount() - 2)
         {
-          a(aflo.a(paramaflo), (String)localObject);
-          i = 1;
-          if (i == 0) {
-            aflo.a(paramaflo).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849110));
-          }
-          str1 = a(afpg.a(paramMessageRecord));
-          if (!(paramMessageRecord instanceof MessageForArkApp)) {
-            break label300;
-          }
-          str2 = ((MessageForArkApp)paramMessageRecord).getTitle();
-          localTextView = aflo.a(paramaflo);
-          localObject = str2;
-          if (TextUtils.isEmpty(str2)) {
-            localObject = str1;
-          }
-          localTextView.setText((CharSequence)localObject);
-          localObject = new Date(paramMessageRecord.time * 1000L);
-          localObject = this.jdField_a_of_type_JavaTextSimpleDateFormat.format((Date)localObject);
-          aflo.b(paramaflo).setText((CharSequence)localObject);
-          aflo.c(paramaflo).setText(babh.m(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.getActivity().app, paramMessageRecord.senderuin));
-          aflo.a(paramaflo).setOnClickListener(new aflm(this, str1, paramaflo, paramMessageRecord));
-          if (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.c) {
-            break label312;
-          }
-          aflo.a(paramaflo).setVisibility(0);
-          bool = this.jdField_a_of_type_Afpf.a(paramMessageRecord);
-          aflo.a(paramaflo).setChecked(bool);
-          paramMessageRecord = (LinearLayout.LayoutParams)aflo.a(paramaflo).getLayoutParams();
-          paramMessageRecord.setMargins(paramMessageRecord.leftMargin, paramMessageRecord.topMargin, vms.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), paramMessageRecord.bottomMargin);
-          aflo.a(paramaflo).setLayoutParams(paramMessageRecord);
-          return;
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
+          paramAbsListView = SystemMsgListView.a(this.a).a();
+          if ((paramAbsListView != null) && (paramAbsListView.a()) && (paramAbsListView.a >= 0) && (SystemMsgListView.a(this.a).a(j)))
           {
-            String str1;
-            i = 1;
+            Bundle localBundle = new Bundle();
+            localBundle.putString("from", "4");
+            SystemMsgListView.a(this.a).b(4, paramAbsListView.a, localBundle);
           }
         }
-        localException1 = localException1;
-        i = 0;
+        k = SystemMsgListView.a(this.a).getFirstVisiblePosition();
+        paramAbsListView = SystemMsgListView.a(this.a).getChildAt(0);
+        if (paramAbsListView != null) {
+          break label263;
+        }
       }
-      continue;
-      label300:
-      aflo.a(paramaflo).setText(str1);
-      continue;
-      label312:
-      aflo.a(paramaflo).setVisibility(8);
-      paramMessageRecord = (LinearLayout.LayoutParams)aflo.a(paramaflo).getLayoutParams();
-      paramMessageRecord.setMargins(paramMessageRecord.leftMargin, paramMessageRecord.topMargin, vms.a(this.jdField_a_of_type_AndroidContentContext, 50.0F), paramMessageRecord.bottomMargin);
-      aflo.a(paramaflo).setLayoutParams(paramMessageRecord);
-      return;
-      label374:
-      int i = 0;
     }
-  }
-  
-  public static void a(ImageView paramImageView, String paramString)
-  {
-    BaseApplication localBaseApplication = BaseApplicationImpl.context;
-    Drawable localDrawable = localBaseApplication.getResources().getDrawable(2130849110);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mFailedDrawable = localDrawable;
-    localURLDrawableOptions.mLoadingDrawable = localDrawable;
-    ViewGroup.LayoutParams localLayoutParams = paramImageView.getLayoutParams();
-    localURLDrawableOptions.mRequestHeight = localLayoutParams.height;
-    localURLDrawableOptions.mRequestWidth = localLayoutParams.width;
-    try
+    label263:
+    for (paramInt = i;; paramInt = paramAbsListView.getTop())
     {
-      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-      paramString.setTag(azue.b(localLayoutParams.width, localLayoutParams.height, vms.a(localBaseApplication, 6.0F)));
-      paramString.setDecodeHandler(azue.i);
-      paramImageView.setImageDrawable(paramString);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      paramImageView.setImageDrawable(localDrawable);
-    }
-  }
-  
-  public void a(URLImageView paramURLImageView, AbsShareMsg paramAbsShareMsg)
-  {
-    Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources();
-    Object localObject1 = a(paramAbsShareMsg, "cover");
-    int i = 2130849110;
-    if ((paramAbsShareMsg instanceof StructMsgForAudioShare)) {
-      i = 2130849119;
-    }
-    localObject2 = ((Resources)localObject2).getDrawable(i);
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      paramURLImageView.setImageDrawable((Drawable)localObject2);
-      return;
-    }
-    if ((!((String)localObject1).startsWith("http://")) && (!((String)localObject1).startsWith("https://"))) {}
-    for (paramAbsShareMsg = Uri.fromFile(new File((String)localObject1)).toString();; paramAbsShareMsg = (AbsShareMsg)localObject1)
-    {
-      paramAbsShareMsg = URLDrawable.getDrawable(paramAbsShareMsg, (Drawable)localObject2, (Drawable)localObject2);
-      localObject1 = paramURLImageView.getLayoutParams();
-      paramAbsShareMsg.setTag(azue.b(((ViewGroup.LayoutParams)localObject1).width, ((ViewGroup.LayoutParams)localObject1).height, vms.a(this.jdField_a_of_type_AndroidContentContext, 6.0F)));
-      paramAbsShareMsg.setDecodeHandler(azue.i);
-      paramURLImageView.setImageDrawable(paramAbsShareMsg);
-      return;
-    }
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject2 = getItem(paramInt);
-    Object localObject1;
-    if ((localObject2 instanceof MessageForStructing))
-    {
-      localObject1 = (MessageForStructing)localObject2;
-      if ((paramView != null) && ((paramView.getTag() instanceof afln)))
+      SystemMsgListView.a(this.a).remove(j);
+      if (SystemMsgListView.a(this.a).isShown())
       {
-        paramViewGroup = (afln)paramView.getTag();
-        paramViewGroup.jdField_a_of_type_JavaLangObject = localObject1;
-        paramViewGroup.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.d;
-        if (!(localObject1 instanceof MessageForStructing)) {
-          break label370;
-        }
-        if (localObject1 == null) {
-          ((MessageForStructing)localObject1).parse();
-        }
-        if ((((MessageForStructing)localObject1).structingMsg != null) && ((((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg)))
-        {
-          localObject2 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
-          a(paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView, (AbsShareMsg)localObject2);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(a((AbsShareMsg)localObject2, "title"));
-          localObject2 = babh.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.getActivity().app, ((MessageForStructing)localObject1).senderuin);
-          paramViewGroup.b.setText((CharSequence)localObject2);
-          localObject2 = new Date(((MessageForStructing)localObject1).time * 1000L);
-          localObject2 = this.jdField_a_of_type_JavaTextSimpleDateFormat.format((Date)localObject2);
-          paramViewGroup.c.setText((CharSequence)localObject2);
-        }
-        label200:
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.c) {
-          break label391;
-        }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_Afpf.a(localObject1));
-        paramViewGroup = paramView;
+        paramAbsListView = new afmj(j, k, paramInt);
+        SystemMsgListView.a(this.a).put(j, paramAbsListView);
       }
-    }
-    label370:
-    do
-    {
-      return paramViewGroup;
-      paramViewGroup = new afln(this);
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131493220, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131309123));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131310757));
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131310755));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297865));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131304845));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131299354));
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      return;
+      label240:
+      SystemMsgListView.a(this.a).g();
+      SystemMsgListView.a(this.a).d();
       break;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      paramViewGroup.b.setText("");
-      break label200;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-      return paramView;
-      if (((localObject2 instanceof MessageForText)) || ((localObject2 instanceof MessageForReplyText)) || ((localObject2 instanceof MessageForMixedMsg)) || ((localObject2 instanceof MessageForArkApp)))
-      {
-        if ((paramView != null) && ((paramView.getTag() instanceof aflo)))
-        {
-          localObject1 = (aflo)paramView.getTag();
-          paramViewGroup = paramView;
-          paramView = (View)localObject1;
-        }
-        for (;;)
-        {
-          a(paramView, (MessageRecord)localObject2);
-          return paramViewGroup;
-          paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131493168, null);
-          paramView = new aflo(this, paramViewGroup);
-          paramViewGroup.setTag(paramView);
-        }
-      }
-      paramViewGroup = paramView;
-    } while (!(localObject2 instanceof String));
-    label391:
-    if ((paramView != null) && ((paramView.getTag() instanceof TextView)))
-    {
-      localObject1 = (TextView)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = (View)localObject1;
-    }
-    for (;;)
-    {
-      paramView.setText((String)localObject2);
-      return paramViewGroup;
-      paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131493167, null);
-      paramView = (TextView)paramViewGroup.findViewById(2131311233);
-      paramViewGroup.setTag(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afll
  * JD-Core Version:    0.7.0.1
  */

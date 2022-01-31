@@ -1,40 +1,16 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class ayoi
-  extends ayoe
+  extends bbmg
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  boolean a = false;
+  
+  public ayoi(String paramString, byte[] paramArrayOfByte, bbmi parambbmi, boolean paramBoolean)
   {
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
-    }
-    localTroopFeedItem.type = 10;
-    try
-    {
-      paramJSONObject = paramJSONObject.getJSONArray("content");
-      if (paramJSONObject.length() > 0)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(0);
-        localTroopFeedItem.linkUrl = paramJSONObject.getString("videourl");
-        localTroopFeedItem.title = paramJSONObject.getString("videointro");
-        localTroopFeedItem.picPath = paramJSONObject.getString("videoid");
-      }
-      return localTroopFeedItem;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-    return null;
+    super(paramString, paramArrayOfByte, parambbmi, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayoi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,58 @@
-import android.view.ViewGroup;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.1.1;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import com.tencent.shadow.dynamic.host.EnterCallback;
 
 public class arep
-  implements arem
+  implements areh
 {
-  arep(areo paramareo) {}
+  private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
+  private final DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
+  private final String jdField_a_of_type_JavaLangString = "shadow::PluginManagerWrapper";
+  private final String b;
   
-  public void a(arej paramarej)
+  public arep(String paramString, DynamicPluginManager paramDynamicPluginManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onShowCommonGuideWeb");
-    }
-    areo.a(this.a, paramarej);
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
+    this.b = paramString;
   }
   
-  public void a(URLDrawable paramURLDrawable)
+  public void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    boolean bool = TextUtils.isEmpty(areo.a().a());
+    if (bool) {}
+    for (String str = "idle";; str = "busy")
+    {
+      QLog.i("shadow::PluginManagerWrapper", 1, String.format("doPreLoad pps status is %s ", new Object[] { str }));
+      if (bool) {
+        enter(paramContext, paramLong, paramBundle, paramEnterCallback);
+      }
+      return;
+    }
+  }
+  
+  public void enter(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onShowContactsGuideLayer");
+      QLog.i("shadow::PluginManagerWrapper", 2, "enter formId:" + paramLong + " enterCallback:" + paramEnterCallback);
     }
-    if (areo.a(this.a) != null) {
-      areo.a(this.a).post(new LoginwelcomeHelper.1.1(this, paramURLDrawable));
+    areo.a().a(this.b, this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
+    if ("Now".equals(this.b)) {}
+    for (paramContext = "33669800";; paramContext = "33669805")
+    {
+      argi.b(paramContext);
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(this.b).opType("enter").d1(paramLong + "").report();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arep
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,39 @@
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.animation.Animation;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class rfx
-  implements rgc
+  implements AdapterView.OnItemClickListener
 {
-  rfx(rfw paramrfw) {}
+  rfx(rfw paramrfw, Context paramContext) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramBoolean)
+    paramAdapterView = (pbr)this.jdField_a_of_type_Rfw.getItem(paramInt);
+    if ((paramAdapterView != null) && (!TextUtils.isEmpty(paramAdapterView.b)))
     {
-      if (rfw.a(this.a) != null)
-      {
-        paramString = (Animation)rfw.a(this.a).getTag(2131303150);
-        paramString.setAnimationListener(new rfy(this));
-        rfw.a(this.a).startAnimation(paramString);
+      if (!paramAdapterView.b.startsWith("mqq://")) {
+        break label154;
+      }
+      paramView = bbej.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, paramAdapterView.b);
+      if (paramView != null) {
+        paramView.c();
+      }
+    }
+    for (;;)
+    {
+      paramView = new onr().b().a();
+      if (!TextUtils.isEmpty(paramView)) {
+        noo.a(null, "CliOper", "", "", "0X80092FE", "0X80092FE", 0, 0, "" + paramAdapterView.c, "" + paramAdapterView.a, "", paramView, false);
       }
       return;
+      label154:
+      onk.b(rfw.a(this.jdField_a_of_type_Rfw), paramAdapterView.b);
     }
-    bbmy.a(this.a.a, 1, 2131652623, 0).a();
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
-  {
-    if (paramBoolean)
-    {
-      rfw.a(this.a).a(rfw.a(this.a), rfw.a(this.a, paramInt), this.a.a, "", "", paramString2);
-      return;
-    }
-    bbmy.a(this.a.a, 1, 2131652627, 0).a();
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      if (rfw.a(this.a) != null)
-      {
-        paramString = (Animation)rfw.a(this.a).getTag(2131303150);
-        paramString.setAnimationListener(new rfz(this));
-        rfw.a(this.a).startAnimation(paramString);
-      }
-      return;
-    }
-    bbmy.a(this.a.a, 1, 2131652630, 0).a();
   }
 }
 

@@ -7,8 +7,8 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import axwd;
-import baut;
+import aywk;
+import bbxn;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -31,12 +31,12 @@ public class ProfileCardDiyPhotoWallView
   public ProfileCardDiyPhotoWallView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int -= getResources().getDimensionPixelSize(2131166288) * 2;
+    this.jdField_a_of_type_Int -= getResources().getDimensionPixelSize(2131297369) * 2;
   }
   
   public View a()
   {
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131496041, null);
+    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561633, null);
     localView.setPadding(this.e, this.e, this.e, this.e);
     return localView;
   }
@@ -46,7 +46,7 @@ public class ProfileCardDiyPhotoWallView
     ViewGroup localViewGroup = super.a(paramInt1, paramInt2, paramInt3);
     if ((!TextUtils.isEmpty(this.b)) && (this.b.startsWith("http")))
     {
-      localViewGroup.setBackgroundDrawable(a(this.b, new baut(paramInt1 * 2, paramInt2 * 2)));
+      localViewGroup.setBackgroundDrawable(a(this.b, new bbxn(paramInt1 * 2, paramInt2 * 2)));
       return localViewGroup;
     }
     localViewGroup.setBackgroundColor(this.d);
@@ -56,8 +56,8 @@ public class ProfileCardDiyPhotoWallView
   protected URLDrawable a(String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = axwd.a;
-    localURLDrawableOptions.mFailedDrawable = axwd.a;
+    localURLDrawableOptions.mLoadingDrawable = aywk.a;
+    localURLDrawableOptions.mFailedDrawable = aywk.a;
     localURLDrawableOptions.mPlayGifImage = false;
     if (paramDecodeHandler != null) {
       localURLDrawableOptions.mMemoryCacheKeySuffix = paramDecodeHandler.toString();

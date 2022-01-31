@@ -1,50 +1,53 @@
-import com.tencent.hlyyb.downloader.DownloaderTask;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.os.AsyncTask;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.io.File;
 
-public class aqnr
+final class aqnr
+  extends AsyncTask<Void, Void, Boolean>
 {
-  public long a;
-  private DownloaderTask a;
-  public String a;
-  public String b;
-  public String c;
-  public String d = "now_for_qq";
-  public String e = "now_appid_2";
-  public String f = "now";
-  public String g;
-  public String h;
+  aqnr(File paramFile1, File paramFile2, Activity paramActivity, aqns paramaqns) {}
   
-  public static aqnr a(String paramString1, String paramString2, String paramString3)
+  protected Boolean a(Void... paramVarArgs)
   {
-    aqnr localaqnr = new aqnr();
-    localaqnr.jdField_a_of_type_JavaLangString = "2";
-    localaqnr.g = paramString3.substring(0, paramString3.lastIndexOf("/") + 1);
-    localaqnr.h = paramString3.substring(paramString3.lastIndexOf("/") + 1);
-    localaqnr.b = paramString1;
-    localaqnr.c = paramString2;
-    localaqnr.jdField_a_of_type_Long = System.currentTimeMillis();
-    QLog.i("NowDownloadTaskInfo", 4, localaqnr.toString());
-    return localaqnr;
+    try
+    {
+      if (gp.a(this.jdField_a_of_type_JavaIoFile, this.b))
+      {
+        bbdr.a(BaseApplicationImpl.getApplication(), this.b);
+        bbdr.a(this.jdField_a_of_type_AndroidAppActivity, this.b.getAbsolutePath());
+        return Boolean.valueOf(true);
+      }
+      return Boolean.valueOf(false);
+    }
+    catch (OutOfMemoryError paramVarArgs)
+    {
+      aqmb.a().a().a("AIOGalleryUtils", 4, "savePhoto exception = " + paramVarArgs.getMessage());
+    }
+    return Boolean.valueOf(false);
   }
   
-  public DownloaderTask a()
+  protected void a(Boolean paramBoolean)
   {
-    return this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask;
-  }
-  
-  public void a(DownloaderTask paramDownloaderTask)
-  {
-    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask = paramDownloaderTask;
-  }
-  
-  public String toString()
-  {
-    return "appid = " + this.jdField_a_of_type_JavaLangString + ", url = " + this.b + ", downloadDir = " + this.g + ", fileName = " + this.h + ", taskSource = " + this.e + ", appName = " + this.f;
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {}
+    for (int i = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight();; i = 0)
+    {
+      if (paramBoolean.booleanValue()) {}
+      for (String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131695163);; str = this.jdField_a_of_type_AndroidAppActivity.getString(2131695189))
+      {
+        bcpw.a(this.jdField_a_of_type_AndroidAppActivity, 2, str, 0).b(i);
+        if (this.jdField_a_of_type_Aqns != null) {
+          this.jdField_a_of_type_Aqns.a(paramBoolean.booleanValue());
+        }
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqnr
  * JD-Core Version:    0.7.0.1
  */

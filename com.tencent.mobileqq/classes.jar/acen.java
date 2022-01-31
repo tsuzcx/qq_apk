@@ -1,60 +1,28 @@
-import android.graphics.Bitmap;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class acen
-  extends WebViewClient
+  implements TextWatcher
 {
-  private acen(UpgradeDetailActivity paramUpgradeDetailActivity) {}
+  public acen(SubLoginActivity paramSubLoginActivity) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onPageFinished: " + paramString);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    super.onPageFinished(paramWebView, paramString);
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onPageStarted: " + paramString);
-    }
-    if (this.a.a(paramString)) {
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    }
-    try
-    {
-      this.a.jdField_a_of_type_ComTencentSmttSdkWebView.stopLoading();
-      return;
-    }
-    catch (Exception paramWebView) {}
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    return;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.a(true);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "shouldOverrideUrlLoading: " + paramString);
-    }
-    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
-    for (;;)
-    {
-      return true;
-      if ((!UpgradeDetailActivity.a(this.a).a(paramWebView, paramString)) && (!this.a.a(paramString))) {
-        this.a.a(paramString);
+    if (paramCharSequence.length() > 0) {
+      if (SubLoginActivity.a(this.a) != null) {
+        SubLoginActivity.a(this.a).setVisibility(0);
       }
     }
+    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
+      return;
+    }
+    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

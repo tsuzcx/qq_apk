@@ -1,18 +1,18 @@
 package dov.com.qq.im;
 
-import ajjy;
-import bbmy;
-import bhec;
-import bhej;
+import ajyc;
+import bcpw;
+import bigs;
+import bigz;
 
 public class QIMEmojiRedPacketCameraCaptureUnit$6$1
   implements Runnable
 {
-  public QIMEmojiRedPacketCameraCaptureUnit$6$1(bhej parambhej) {}
+  public QIMEmojiRedPacketCameraCaptureUnit$6$1(bigz parambigz) {}
   
   public void run()
   {
-    bbmy.a(this.a.a.a(), ajjy.a(2131644004), 1).a();
+    bcpw.a(this.a.a.a(), ajyc.a(2131709789), 1).a();
   }
 }
 

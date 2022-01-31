@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.mini.entry;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
-
 class MiniAppDesktop$1
   implements Runnable
 {
@@ -11,10 +8,6 @@ class MiniAppDesktop$1
   public void run()
   {
     MiniAppDesktop.access$000(this.this$0);
-    DesktopDataManager localDesktopDataManager = (DesktopDataManager)MiniAppDesktop.access$100(this.this$0).getManager(336);
-    if (localDesktopDataManager != null) {
-      localDesktopDataManager.initLocalCacheData();
-    }
   }
 }
 

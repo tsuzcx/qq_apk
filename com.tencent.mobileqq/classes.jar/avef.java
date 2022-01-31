@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-
-public class avef
-  implements begy
+public abstract interface avef
 {
-  public avef(SignatureHistoryFragment paramSignatureHistoryFragment) {}
-  
-  public void onDismiss()
-  {
-    SignatureHistoryFragment.a(this.a, null);
-    VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "5", "", "", "", "", 0, 0, 0, 0);
-  }
+  public abstract void a(String paramString);
 }
 
 

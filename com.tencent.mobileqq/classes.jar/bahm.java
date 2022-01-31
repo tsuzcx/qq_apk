@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.utils.RandomAccessFileManager;
-import java.io.RandomAccessFile;
-
-public class bahm
+public abstract interface bahm
 {
-  public volatile int a;
-  public long a;
-  public bahm a;
-  public RandomAccessFile a;
-  public long b;
-  public bahm b;
-  
-  public bahm(RandomAccessFileManager paramRandomAccessFileManager) {}
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bahm
  * JD-Core Version:    0.7.0.1
  */

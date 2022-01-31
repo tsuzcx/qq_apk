@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.mobileqq.widget.QQBlurView android:id="@id/kmg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/io4" android:layout_alignParentBottom="true" />
     <LinearLayout android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@id/io4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <FrameLayout android:id="@id/bny" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:id="@id/bny" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <TextView android:textSize="14.0sp" android:id="@id/bnz" android:paddingLeft="20.0dip" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         </FrameLayout>
         <RelativeLayout android:orientation="horizontal" android:id="@id/imz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip">

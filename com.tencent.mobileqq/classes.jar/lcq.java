@@ -1,78 +1,306 @@
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.TimeZone;
 
-class lcq
-  implements axrt
+public class lcq
+  extends lcz<lcr>
 {
-  lcq(lcp paramlcp, String paramString, lcj paramlcj, int paramInt) {}
-  
-  public void onResp(axsq paramaxsq)
+  public lcq()
   {
-    axro localaxro = (axro)paramaxsq.jdField_a_of_type_Axsp;
-    if (this.jdField_a_of_type_Lcp.jdField_a_of_type_Axro == localaxro) {
-      this.jdField_a_of_type_Lcp.jdField_a_of_type_Axro = null;
+    super(431);
+  }
+  
+  public static lct a(int paramInt)
+  {
+    lcr locallcr = (lcr)ampm.a().a(431);
+    if (locallcr.jdField_a_of_type_JavaUtilHashMap == null) {
+      return null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("QavGPDownloadManager", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localaxro.jdField_a_of_type_JavaLangString, Integer.valueOf(paramaxsq.jdField_a_of_type_Int), Integer.valueOf(paramaxsq.c), this.jdField_a_of_type_JavaLangString }));
+    return (lct)locallcr.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+  }
+  
+  static lct a(lcv paramlcv)
+  {
+    int j = paramlcv.jdField_a_of_type_Int;
+    if ((j != 1) && (j != 2) && (j != 4) && (j != 8)) {
+      return null;
     }
-    int i;
-    if (paramaxsq.jdField_a_of_type_Int == 0)
+    int k = paramlcv.jdField_b_of_type_Int;
+    if (k <= 0)
     {
-      paramaxsq = new File(localaxro.c);
-      if (paramaxsq.exists())
+      if (QLog.isDevelopLevel()) {
+        QLog.w("QAVConfig_431", 1, "min_sdk不合法, codec[" + j + "], min_sdk[" + k + "]");
+      }
+      return null;
+    }
+    int m = paramlcv.c;
+    if (m < 0)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.w("QAVConfig_431", 1, "async_min_sdk不合法, codec[" + j + "], async_min_sdk[" + m + "]");
+      }
+      return null;
+    }
+    String str = paramlcv.jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty(str))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.w("QAVConfig_431", 1, "min_version不合法, codec[" + j + "], min_version[" + str + "]");
+      }
+      return null;
+    }
+    int n = paramlcv.d;
+    if (n <= 0)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.w("QAVConfig_431", 1, "test_ver不合法, codec[" + j + "], test_ver[" + n + "]");
+      }
+      return null;
+    }
+    if ((paramlcv.jdField_b_of_type_JavaUtilList == null) || (paramlcv.jdField_b_of_type_JavaUtilList.size() == 0))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.w("QAVConfig_431", 1, "没有样本, codec[" + j + "]");
+      }
+      return null;
+    }
+    long l;
+    HashMap localHashMap;
+    label591:
+    lcs locallcs;
+    label675:
+    Object localObject2;
+    try
+    {
+      Object localObject1 = paramlcv.jdField_b_of_type_JavaLangString;
+      localObject3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+      ((SimpleDateFormat)localObject3).setTimeZone(TimeZone.getTimeZone("GMT+8"));
+      l = ((SimpleDateFormat)localObject3).parse((String)localObject1).getTime();
+      localHashMap = new HashMap();
+      localObject1 = paramlcv.jdField_b_of_type_JavaUtilList.iterator();
+      for (;;)
       {
-        try
-        {
-          String str = paramaxsq.getParent();
-          bace.a(localaxro.c, str, false);
-          QLog.d("QavGPDownloadManager", 1, String.format("downloadRes, 下载成功了. path[%s]", new Object[] { str }));
-          lco.a(this.jdField_a_of_type_Lcj);
-          i = 1;
+        if (!((Iterator)localObject1).hasNext()) {
+          break label675;
         }
-        catch (Exception localException)
+        localObject3 = (lcw)((Iterator)localObject1).next();
+        if ((!TextUtils.isEmpty(((lcw)localObject3).c)) && (!TextUtils.isEmpty(((lcw)localObject3).jdField_b_of_type_JavaLangString)))
         {
-          for (;;)
-          {
-            localException.printStackTrace();
-            i = 0;
+          if ((j != 1) && (j != 4)) {
+            break;
           }
-          lco.a(-1);
-          return;
+          if (!TextUtils.isEmpty(((lcw)localObject3).jdField_a_of_type_JavaLangString)) {
+            break label591;
+          }
+          QLog.w("QAVConfig_431", 1, "exp 为空, codec[" + j + "]");
         }
-        paramaxsq.delete();
       }
     }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.w("QAVConfig_431", 1, "没有过期时间, codec[" + j + "], expdate[" + paramlcv.jdField_b_of_type_JavaLangString + "]");
+        l = 0L;
+        continue;
+        if (((j == 2) || (j == 8)) && ((((lcw)localObject3).jdField_a_of_type_Int == 0) || (((lcw)localObject3).jdField_b_of_type_Int == 0)))
+        {
+          QLog.w("QAVConfig_431", 1, "w/h 为空, codec[" + j + "]");
+        }
+        else
+        {
+          locallcs = new lcs();
+          locallcs.jdField_b_of_type_JavaLangString = ((lcw)localObject3).jdField_b_of_type_JavaLangString;
+          locallcs.c = ((lcw)localObject3).jdField_a_of_type_JavaLangString;
+          locallcs.jdField_a_of_type_JavaLangString = ((lcw)localObject3).c;
+          locallcs.jdField_a_of_type_Int = ((lcw)localObject3).jdField_a_of_type_Int;
+          locallcs.jdField_b_of_type_Int = ((lcw)localObject3).jdField_b_of_type_Int;
+          locallcs.jdField_a_of_type_Boolean = paramlcv.jdField_a_of_type_Boolean;
+          localHashMap.put(((lcw)localObject3).c, locallcs);
+        }
+      }
+      if (localHashMap.size() == 0)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.w("QAVConfig_431", 1, "样本不够, codec[" + j + "]");
+        }
+        return null;
+      }
+      locallcs = null;
+      localObject2 = null;
+      localObject3 = locallcs;
+      if (paramlcv.jdField_a_of_type_JavaUtilList == null) {
+        break label831;
+      }
+    }
+    Object localObject3 = locallcs;
+    int i1;
+    if (paramlcv.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      int i = 0;
+      for (;;)
+      {
+        localObject3 = localObject2;
+        if (i >= paramlcv.jdField_a_of_type_JavaUtilList.size()) {
+          break label831;
+        }
+        i1 = ((Integer)paramlcv.jdField_a_of_type_JavaUtilList.get(i)).intValue();
+        if (i1 > 0) {
+          break;
+        }
+        i += 1;
+      }
+      if (localObject2 != null) {
+        break label906;
+      }
+      localObject2 = new ArrayList();
+    }
+    label906:
     for (;;)
     {
-      if (i != 0)
-      {
-        lco.a(100 / this.jdField_a_of_type_Lcp.jdField_a_of_type_Int + this.jdField_a_of_type_Lcp.b);
-        paramaxsq = this.jdField_a_of_type_Lcp;
-        paramaxsq.b += 100 / this.jdField_a_of_type_Lcp.jdField_a_of_type_Int;
-        if (!this.jdField_a_of_type_Lcp.a(this.jdField_a_of_type_Lcj, this.jdField_a_of_type_Int - 1)) {
-          this.jdField_a_of_type_Lcp.jdField_a_of_type_Boolean = false;
-        }
-        return;
-      }
-      i = 0;
+      ((ArrayList)localObject2).add(Integer.valueOf(i1));
+      break;
+      label831:
+      localObject2 = new lct();
+      ((lct)localObject2).jdField_a_of_type_JavaUtilHashMap = localHashMap;
+      ((lct)localObject2).jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject3);
+      ((lct)localObject2).c = k;
+      ((lct)localObject2).d = m;
+      ((lct)localObject2).jdField_b_of_type_Int = j;
+      ((lct)localObject2).jdField_a_of_type_JavaLangString = str;
+      ((lct)localObject2).e = n;
+      ((lct)localObject2).jdField_a_of_type_Boolean = paramlcv.jdField_a_of_type_Boolean;
+      ((lct)localObject2).jdField_a_of_type_Long = l;
+      return localObject2;
     }
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2)
+  public Class<lcr> a()
   {
-    int i;
-    if (paramLong2 == 0L) {
-      i = 0;
+    return lcr.class;
+  }
+  
+  @NonNull
+  public lcr a(int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("QAVConfig_431", 1, "migrateOldOrDefaultContent, type[" + paramInt + "]");
     }
-    for (;;)
+    return new lcr();
+  }
+  
+  @Nullable
+  protected lcr a(ampi[] paramArrayOfampi)
+  {
+    lcr locallcr = new lcr();
+    int j = paramArrayOfampi.length;
+    int i = 0;
+    while (i < j)
     {
-      lco.a(i / this.jdField_a_of_type_Lcp.jdField_a_of_type_Int + this.jdField_a_of_type_Lcp.b);
-      return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      ampi localampi = paramArrayOfampi[i];
+      Object localObject = lcu.a(localampi.jdField_a_of_type_JavaLangString);
+      boolean bool;
+      if ((localObject != null) && (((lcu)localObject).jdField_a_of_type_JavaUtilList != null))
+      {
+        bool = true;
+        if (AudioHelper.e()) {
+          QLog.w("QAVConfig_431", 1, "parsed, taskId[" + localampi.jdField_a_of_type_Int + "], suc[" + bool + "], oldVersion[" + c() + "]");
+        }
+        if (bool) {
+          localObject = ((lcu)localObject).jdField_a_of_type_JavaUtilList.iterator();
+        }
       }
+      else
+      {
+        for (;;)
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break label365;
+          }
+          lcv locallcv = (lcv)((Iterator)localObject).next();
+          lct locallct1 = a(locallcv);
+          if (locallct1 == null)
+          {
+            if (!AudioHelper.e()) {
+              continue;
+            }
+            QLog.w("QAVConfig_431", 1, "parsed, 数据不合法");
+            continue;
+            bool = false;
+            break;
+          }
+          if (locallcr.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(locallcv.jdField_a_of_type_Int)))
+          {
+            lct locallct2 = (lct)locallcr.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(locallcv.jdField_a_of_type_Int));
+            QLog.w("QAVConfig_431", 1, "parsed, 数据已存在, codec[" + locallcv.jdField_a_of_type_Int + "], _taskId[" + locallct2.jdField_a_of_type_Int + "], _test_ver[" + locallct2.e + "], taskId[" + localampi.jdField_a_of_type_Int + "], test_ver[" + locallct1.e + "]");
+            if (locallct1.e <= locallct2.e) {}
+          }
+          else
+          {
+            locallct1.jdField_a_of_type_Int = localampi.jdField_a_of_type_Int;
+            locallcr.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(locallcv.jdField_a_of_type_Int), locallct1);
+          }
+        }
+      }
+      label365:
+      i += 1;
+    }
+    return locallcr;
+  }
+  
+  public void a(lcr paramlcr)
+  {
+    super.a(paramlcr);
+    int i = ampm.a().a(431, "");
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 instanceof QQAppInterface))
+    {
+      Object localObject2 = (QQAppInterface)localObject1;
+      localObject1 = new HashMap();
+      ((HashMap)localObject1).put("uin", ((QQAppInterface)localObject2).getCurrentAccountUin());
+      ((HashMap)localObject1).put("ver", i + "");
+      ((HashMap)localObject1).put("sdk", String.valueOf(Build.VERSION.SDK_INT));
+      localObject2 = new int[4];
+      Object tmp115_113 = localObject2;
+      tmp115_113[0] = 1;
+      Object tmp119_115 = tmp115_113;
+      tmp119_115[1] = 2;
+      Object tmp123_119 = tmp119_115;
+      tmp123_119[2] = 4;
+      Object tmp127_123 = tmp123_119;
+      tmp127_123[3] = 8;
+      tmp127_123;
+      int j = localObject2.length;
+      i = 0;
+      while (i < j)
+      {
+        int k = localObject2[i];
+        lct locallct = (lct)paramlcr.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(k));
+        if (locallct != null)
+        {
+          int m = lpc.a(locallct);
+          ((HashMap)localObject1).put("test" + k, "1");
+          ((HashMap)localObject1).put("test" + k + "_ver", locallct.e + "");
+          ((HashMap)localObject1).put("test" + k + "_flag", m + "");
+        }
+        i += 1;
+      }
+      UserAction.onUserAction("qav_codec_config", true, -1L, -1L, (Map)localObject1, true, true);
     }
   }
 }

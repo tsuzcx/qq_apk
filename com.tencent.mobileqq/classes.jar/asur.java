@@ -1,26 +1,25 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.Context;
 
-class asur
-  implements Handler.Callback
+public class asur
 {
-  asur(asuq paramasuq) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public static void a(Context paramContext)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      asuq.a(this.a);
-    }
+    bcpw.a(paramContext, paramContext.getString(2131718823), 0).a();
+  }
+  
+  public static void b(Context paramContext)
+  {
+    bcpw.a(paramContext, paramContext.getString(2131718818), 0).a();
+  }
+  
+  public static void c(Context paramContext)
+  {
+    bcpw.a(paramContext, paramContext.getString(2131718835), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     asur
  * JD-Core Version:    0.7.0.1
  */

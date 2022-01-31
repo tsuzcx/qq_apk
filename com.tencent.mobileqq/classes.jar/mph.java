@@ -1,19 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-
-class mph
-  implements DialogInterface.OnCancelListener
+public abstract interface mph
 {
-  mph(mpf parammpf) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    mpf.a(this.a);
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mph
  * JD-Core Version:    0.7.0.1
  */

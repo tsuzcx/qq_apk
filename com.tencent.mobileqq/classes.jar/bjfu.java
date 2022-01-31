@@ -1,22 +1,10 @@
 public abstract interface bjfu
 {
-  public abstract void F();
+  public abstract void aW_();
   
-  public abstract void G();
+  public abstract void b();
   
-  public abstract void H();
-  
-  public abstract void I();
-  
-  public abstract void J();
-  
-  public abstract boolean d();
-  
-  public abstract void j();
-  
-  public abstract void k();
-  
-  public abstract void u();
+  public abstract void c();
 }
 
 

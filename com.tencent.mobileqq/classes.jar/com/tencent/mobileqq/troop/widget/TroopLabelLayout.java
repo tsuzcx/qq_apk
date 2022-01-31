@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.widget;
 
 import NearbyGroup.GroupLabel;
-import aciy;
-import ajjy;
+import actn;
+import ajyc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -17,8 +17,8 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bacc;
-import bajq;
+import bbdh;
+import bbkx;
 import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.mobileqq.data.MayKnowRecommend.MayKnowRecommendLabel;
 import com.tencent.qphone.base.util.QLog;
@@ -118,7 +118,7 @@ public class TroopLabelLayout
             }
             n = android.graphics.Color.rgb(0, 202, 252);
           }
-          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130844933);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130844931))
+          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845020);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845018))
           {
             localTroopLabelTextView = new TroopLabelTextView(getContext(), n, -1, this.jdField_b_of_type_Int);
             if (j >= this.jdField_a_of_type_Int) {
@@ -165,7 +165,7 @@ public class TroopLabelLayout
               if (((m == 0) || (i != 1)) && ((m != 0) || (i != 0))) {
                 break;
               }
-              localTroopLabelTextView.setMaxWidth(bajq.a(150.0F));
+              localTroopLabelTextView.setMaxWidth(bbkx.a(150.0F));
               break;
             }
             localTroopLabelTextView.setText("");
@@ -244,11 +244,11 @@ public class TroopLabelLayout
           ((TroopLabelTextView)???).bringToFront();
           if (this.jdField_b_of_type_Int == 2)
           {
-            k = aciy.a(42.0F, getResources());
-            n = aciy.a(16.0F, getResources());
+            k = actn.a(42.0F, getResources());
+            n = actn.a(16.0F, getResources());
             ((TroopLabelTextView)???).setWidth(k);
             ((TroopLabelTextView)???).setHeight(n);
-            ((TroopLabelTextView)???).setMaskImage(2130843162);
+            ((TroopLabelTextView)???).setMaskImage(2130843245);
             if (localGroupLabel.strWording.length() < 2) {
               break label685;
             }
@@ -264,13 +264,13 @@ public class TroopLabelLayout
             if (this.jdField_b_of_type_Int != 0) {
               break label691;
             }
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130849352);
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130849587);
           }
           k = (int)(((TroopLabelTextView)???).getTextSize() * 0.8D + 0.5D);
           this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, k, k);
           ((SpannableString)localObject2).setSpan(new ImageSpan(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, 1), 0, "[icon]".length(), 17);
           ((TroopLabelTextView)???).setText((CharSequence)localObject2);
-          ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording + ajjy.a(2131649683));
+          ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording + ajyc.a(2131715473));
         }
         for (;;)
         {
@@ -288,7 +288,7 @@ public class TroopLabelLayout
           break label357;
           k = 1;
           break label431;
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130843160);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130843243);
           break label525;
           ((TroopLabelTextView)???).setText(localGroupLabel.strWording + "");
           ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording);
@@ -332,7 +332,7 @@ public class TroopLabelLayout
             }
             m = android.graphics.Color.rgb(0, 202, 252);
           }
-          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130844933);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130844931))
+          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845020);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845018))
           {
             localTroopLabelTextView = new TroopLabelTextView(getContext(), m, -1, this.jdField_b_of_type_Int);
             if (i >= this.jdField_a_of_type_Int) {
@@ -378,7 +378,7 @@ public class TroopLabelLayout
               if (((k == 0) || (paramInt3 != 1)) && ((k != 0) || (paramInt3 != 0))) {
                 break;
               }
-              localTroopLabelTextView.setMaxWidth(bajq.a(150.0F));
+              localTroopLabelTextView.setMaxWidth(bbkx.a(150.0F));
               break;
             }
             localTroopLabelTextView.setText("");
@@ -405,7 +405,7 @@ public class TroopLabelLayout
   {
     int j = getPaddingLeft();
     int k = getPaddingRight();
-    int m = (int)bacc.a(getContext(), 2.0F);
+    int m = (int)bbdh.a(getContext(), 2.0F);
     int n = getChildCount();
     paramInt2 = getPaddingLeft();
     int i1 = getPaddingTop();

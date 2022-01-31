@@ -1,23 +1,16 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.os.Bundle;
 
 public class anvn
-  implements View.OnClickListener
 {
-  public anvn(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString, View paramView) {}
+  int jdField_a_of_type_Int;
+  public Bundle a;
+  Runnable jdField_a_of_type_JavaLangRunnable;
   
-  public void onClick(View paramView)
+  public anvn(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.app.getPreferences().edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
-    paramView = new AlphaAnimation(1.0F, 0.0F);
-    paramView.setDuration(500L);
-    paramView.setAnimationListener(new anvo(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    paramBundle.putInt("seq", paramInt);
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
 }
 

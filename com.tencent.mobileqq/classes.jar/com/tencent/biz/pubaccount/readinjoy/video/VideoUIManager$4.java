@@ -1,20 +1,31 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import ndn;
-import new;
-import qht;
-import qiy;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import qty;
+import qvd;
+import qyy;
+import qyz;
 
 public class VideoUIManager$4
   implements Runnable
 {
-  public VideoUIManager$4(qiy paramqiy) {}
+  public VideoUIManager$4(qvd paramqvd, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if ((qiy.a(this.this$0) != null) && (qiy.a(this.this$0).a != null)) {
-      ndn.a(null, "", "0X8008ACD", "0X8008ACD", 0, 0, "", "", "", new.a(qiy.a(this.this$0).a.mVideoVid, qiy.a(this.this$0).a.innerUniqueID, (int)qiy.a(this.this$0).a.mChannelID, null), false);
+    qvd.a(this.this$0).setVisibility(8);
+    qvd.f(this.this$0);
+    qvd.a(this.this$0).setVisibility(8);
+    qvd.a(this.this$0).setVisibility(8);
+    qvd.b(this.this$0).setVisibility(8);
+    if (this.jdField_a_of_type_Int == 1) {
+      qvd.g(this.this$0);
+    }
+    qvd.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    if (this.jdField_a_of_type_Int == 1) {
+      qyz.a(qvd.a(this.this$0).a(), 3);
     }
   }
 }

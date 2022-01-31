@@ -1,16 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.ProteusRecycleView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.SideBarView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class pbw
-  implements ValueAnimator.AnimatorUpdateListener
+class pbw
+  extends Handler
 {
-  public pbw(ProteusRecycleView paramProteusRecycleView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  pbw(pbu parampbu, Looper paramLooper)
   {
-    this.a.setPadding(0, 0, (int)ProteusRecycleView.a(this.a).a(), 0);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.f();
   }
 }
 

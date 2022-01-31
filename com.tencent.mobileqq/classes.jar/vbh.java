@@ -1,14 +1,15 @@
-import android.graphics.Bitmap;
+import java.util.List;
 
-public abstract interface vbh
+class vbh
+  implements bfos
 {
-  public abstract void a();
+  vbh(vbd paramvbd, int paramInt) {}
   
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(Runnable paramRunnable);
-  
-  public abstract void a(vbi paramvbi);
+  public void onDismiss()
+  {
+    uxp localuxp = (uxp)this.jdField_a_of_type_Vbd.a.a().get(this.jdField_a_of_type_Int);
+    vbd.a(this.jdField_a_of_type_Vbd, localuxp, "clk_hide");
+  }
 }
 
 

@@ -1,48 +1,33 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class pwd
-  implements avuz<avon>
+  implements pca
 {
-  private List<pwe> a = new ArrayList();
+  public pwd(ComponentContentRecommend paramComponentContentRecommend, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public List<avon> a(avvn paramavvn)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d(ComponentContentRecommend.a, 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
+    }
+    if (paramBoolean)
     {
-      pwe localpwe = (pwe)localIterator.next();
-      if (localpwe.a(paramavvn.a)) {
-        localArrayList.add(localpwe);
+      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (paramInt == 2) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramString.isFollowed = paramBoolean;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+        ComponentContentRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend).notifyDataSetChanged();
+        return;
       }
     }
-    return localArrayList;
+    bcpw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.getContext(), 1, 2131718502, 0).a();
   }
-  
-  public void a()
-  {
-    Iterator localIterator = ogy.a().c().iterator();
-    while (localIterator.hasNext())
-    {
-      ppg localppg = (ppg)localIterator.next();
-      this.a.add(new pwe(localppg));
-    }
-  }
-  
-  public void a(avvn paramavvn, avva<avon> paramavva)
-  {
-    paramavva.a(a(paramavvn), 1);
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
 }
 
 

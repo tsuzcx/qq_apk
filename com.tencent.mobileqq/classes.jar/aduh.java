@@ -1,34 +1,23 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.MessageForVIPDonate;
-import com.tencent.mobileqq.data.VIPDonateMsg;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 class aduh
-  implements View.OnClickListener
+  implements asko<EmoticonPackage>
 {
-  aduh(adug paramadug) {}
+  aduh(adug paramadug, aduu paramaduu, bcpq parambcpq) {}
   
-  public void onClick(View paramView)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    if (this.a.a()) {
-      return;
-    }
-    paramView = (MessageForVIPDonate)((adui)aciy.a(paramView)).a;
-    Object localObject = paramView.donateMsg;
-    if ((localObject != null) && (!TextUtils.isEmpty(((VIPDonateMsg)localObject).jumpUrl)))
+    axqw.b(this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ep_mall", "Clk_button_follow", 0, 0, "", "", this.jdField_a_of_type_Aduu.a.a.eId, "");
+    if (paramEmoticonPackage == null)
     {
-      paramView = paramView.donateMsg.jumpUrl;
-      localObject = new Intent(adug.a(this.a), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", paramView);
-      adug.a(this.a).startActivity((Intent)localObject);
+      this.jdField_a_of_type_Adug.jdField_a_of_type_Adut.a(107, this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adug.b, this.jdField_a_of_type_Aduu.a, this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, adug.a(this.jdField_a_of_type_Adug));
+      anvr.a().a(this.jdField_a_of_type_Adug.jdField_a_of_type_Adut);
+      this.jdField_a_of_type_Adug.jdField_a_of_type_Anvs.a(this.jdField_a_of_type_Aduu.a.a.epId, anvs.c);
       return;
     }
-    QLog.e("VIPDonateMsgItemBuilder", 1, "donatemsg jumpurl empty");
+    adug.a(107, this.jdField_a_of_type_Adug.b, this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Aduu.a, this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bcpq);
   }
 }
 

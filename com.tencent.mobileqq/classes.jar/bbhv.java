@@ -1,45 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.CustomedTabWidget;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
-public class bbhv
-  implements View.OnTouchListener
+class bbhv
+  implements TextWatcher
 {
-  public bbhv(CustomedTabWidget paramCustomedTabWidget) {}
+  bbhv(bbhs parambbhs, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramMotionEvent.getAction() == 0)
+    if ((this.jdField_a_of_type_Bbhs.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
     {
-      i = 0;
-      if (i < this.a.getChildCount())
-      {
-        if (this.a.getChildAt(i) != paramView) {
-          break label57;
-        }
-        this.a.jdField_a_of_type_Int = i;
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.invalidate();
-      }
+      this.jdField_a_of_type_Bbhs.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
+      this.jdField_a_of_type_Bbhs.a.setSelection(this.jdField_a_of_type_Int - 1);
     }
-    label57:
-    while (paramMotionEvent.getAction() != 1) {
-      for (;;)
-      {
-        int i;
-        return false;
-        i += 1;
-      }
-    }
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.invalidate();
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbhv
  * JD-Core Version:    0.7.0.1
  */

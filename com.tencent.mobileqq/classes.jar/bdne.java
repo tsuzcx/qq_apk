@@ -1,27 +1,23 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.SecondApiRightInfo;
+import com.tencent.open.model.GetVirtualListResult;
 
 public final class bdne
-  implements Parcelable.Creator<SecondApiRightInfo>
+  implements Parcelable.Creator<GetVirtualListResult>
 {
-  public SecondApiRightInfo a(Parcel paramParcel)
+  public GetVirtualListResult a(Parcel paramParcel)
   {
-    SecondApiRightInfo localSecondApiRightInfo = new SecondApiRightInfo();
-    localSecondApiRightInfo.apiName = paramParcel.readString();
-    localSecondApiRightInfo.secondName = paramParcel.readString();
-    localSecondApiRightInfo.right = paramParcel.readInt();
-    return localSecondApiRightInfo;
+    return new GetVirtualListResult(paramParcel);
   }
   
-  public SecondApiRightInfo[] a(int paramInt)
+  public GetVirtualListResult[] a(int paramInt)
   {
-    return new SecondApiRightInfo[paramInt];
+    return new GetVirtualListResult[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdne
  * JD-Core Version:    0.7.0.1
  */

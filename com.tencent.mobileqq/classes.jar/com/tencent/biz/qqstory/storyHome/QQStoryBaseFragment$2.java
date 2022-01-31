@@ -3,7 +3,7 @@ package com.tencent.biz.qqstory.storyHome;
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
-import urk;
+import veg;
 
 class QQStoryBaseFragment$2
   implements Runnable
@@ -12,7 +12,7 @@ class QQStoryBaseFragment$2
   {
     if (this.this$0.a())
     {
-      urk.d("IphoneTitleBarFragment", "Activity has been destroy.");
+      veg.d("IphoneTitleBarFragment", "Activity has been destroy.");
       return;
     }
     if (this.this$0.jdField_a_of_type_AndroidAppDialog == null)

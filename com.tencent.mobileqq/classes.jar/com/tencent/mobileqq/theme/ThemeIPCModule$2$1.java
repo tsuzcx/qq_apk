@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.theme;
 
-import arok;
-import axma;
-import axmb;
+import asko;
+import aymg;
+import aymh;
 
 public class ThemeIPCModule$2$1
   implements Runnable
 {
-  public ThemeIPCModule$2$1(axma paramaxma, axmb paramaxmb) {}
+  public ThemeIPCModule$2$1(aymg paramaymg, aymh paramaymh) {}
   
   public void run()
   {

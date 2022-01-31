@@ -1,18 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebview;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.smtt.sdk.WebView;
 
-class nry
-  implements DialogInterface.OnClickListener
+public class nry
+  extends nsa
 {
-  nry(nrw paramnrw, boolean paramBoolean) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public nry(EcshopNewPageFragment paramEcshopNewPageFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {
-    if (nrw.a(this.jdField_a_of_type_Nrw)) {}
-    while ((!yox.a()) || (this.jdField_a_of_type_Boolean)) {
-      return;
-    }
-    this.jdField_a_of_type_Nrw.g();
+    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+    EcshopNewPageFragment.a(this.a).setVisibility(0);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 

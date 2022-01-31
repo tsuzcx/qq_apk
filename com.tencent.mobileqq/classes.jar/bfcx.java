@@ -1,16 +1,15 @@
-import java.io.File;
+import com.tencent.tissue.v8rt.engine.Callback;
 
-public abstract interface bfcx
+class bfcx
+  implements Callback
 {
-  public abstract void a(File paramFile1, File paramFile2);
+  bfcx(bfcw parambfcw) {}
   
-  public abstract void a(File paramFile1, File paramFile2, File paramFile3);
-  
-  public abstract void a(File paramFile1, File paramFile2, Throwable paramThrowable);
+  public void onFinish(Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfcx
  * JD-Core Version:    0.7.0.1
  */

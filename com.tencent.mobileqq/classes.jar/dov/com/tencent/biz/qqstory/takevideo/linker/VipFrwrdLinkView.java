@@ -6,9 +6,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import srv;
-import srw;
-import urk;
+import ter;
+import tes;
+import veg;
 
 public class VipFrwrdLinkView
   extends FrameLayout
@@ -17,20 +17,20 @@ public class VipFrwrdLinkView
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private srv jdField_a_of_type_Srv;
+  private ter jdField_a_of_type_Ter;
   
   public VipFrwrdLinkView(Context paramContext)
   {
     super(paramContext);
-    inflate(paramContext, 2131493449, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131299920));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131299917));
+    inflate(paramContext, 2131559012, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365500));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365497));
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
   void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131633733, new Object[] { paramString1 }));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131699515, new Object[] { paramString1 }));
     if ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) && (paramString2 != null)) {
       paramString1 = URLDrawable.URLDrawableOptions.obtain();
     }
@@ -38,7 +38,7 @@ public class VipFrwrdLinkView
     {
       this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramString2, paramString1);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      urk.b(getClass().getName(), "setIconURlDrawable:" + paramString2);
+      veg.b(getClass().getName(), "setIconURlDrawable:" + paramString2);
       return;
     }
     catch (IllegalArgumentException paramString1)
@@ -47,13 +47,13 @@ public class VipFrwrdLinkView
     }
   }
   
-  public void setLinkInfo(srv paramsrv)
+  public void setLinkInfo(ter paramter)
   {
-    this.jdField_a_of_type_Srv = paramsrv;
-    if (this.jdField_a_of_type_Srv.a == null) {
+    this.jdField_a_of_type_Ter = paramter;
+    if (this.jdField_a_of_type_Ter.a == null) {
       return;
     }
-    a(this.jdField_a_of_type_Srv.a.f, this.jdField_a_of_type_Srv.a.g);
+    a(this.jdField_a_of_type_Ter.a.f, this.jdField_a_of_type_Ter.a.g);
   }
 }
 

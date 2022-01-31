@@ -1,65 +1,65 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
-final class axrh
-  implements axrt
+public class axrh
+  extends RecyclablePool.Recyclable
 {
-  long jdField_a_of_type_Long = 0L;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public long c;
+  public String c;
+  public long d;
+  public long e;
+  public long f;
+  public long g;
+  public long h;
+  public long i;
+  public long j;
+  public long k;
+  public long l;
+  public long m;
+  public long n;
+  public long o;
+  public long p;
   
-  axrh(URLDrawableHandler paramURLDrawableHandler, String paramString, axrk paramaxrk) {}
-  
-  public void onResp(axsq paramaxsq)
+  public axrh()
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("HttpDownloader", 2, " structMsgCover download onResp result fileSize = " + this.jdField_a_of_type_Long + " file.path = " + paramaxsq.jdField_a_of_type_Axsp.c + " resp.result = " + paramaxsq.jdField_a_of_type_Int);
-    }
-    if (paramaxsq.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    boolean bool1;
-    if (paramaxsq.jdField_a_of_type_Int == 0)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
-      {
-        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(this.jdField_a_of_type_Long);
-        bool1 = bool2;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        axrg.a(bool1, new URL(this.jdField_a_of_type_JavaLangString), null, true, paramaxsq.c, paramaxsq.e, null, this.jdField_a_of_type_Axrk);
-        return;
-      }
-      catch (Exception paramaxsq)
-      {
-        return;
-      }
-      bool2 = false;
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
-      {
-        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(paramaxsq.jdField_a_of_type_Int);
-        bool1 = bool2;
-      }
-    }
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2)
+  public void recycle()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HttpDownloader", 2, " structMsgCover onUpdateProgeress totalLen = " + paramLong2 + " curOffset = " + paramLong1);
-    }
-    this.jdField_a_of_type_Long = paramLong2;
+    super.recycle();
+    this.jdField_a_of_type_JavaLangString = null;
+    this.e = 0L;
+    this.d = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.f = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    this.j = 0L;
+    this.i = 0L;
+    this.h = 0L;
+    this.g = 0L;
+    this.m = 0L;
+    this.l = 0L;
+    this.k = 0L;
+    this.jdField_a_of_type_Int = 0;
+    this.p = 0L;
+    this.o = 0L;
+    this.n = 0L;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axrh
  * JD-Core Version:    0.7.0.1
  */

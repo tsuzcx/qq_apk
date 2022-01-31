@@ -1,8 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
+import NS_MINI_SHARE.MiniProgramShare.StGetGroupShareInfoRsp;
 import android.os.Handler;
-import bdfz;
-import bdnw;
+import beka;
+import besl;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,34 +12,42 @@ import org.json.JSONObject;
 class DataJsPlugin$12
   implements AsyncResult
 {
-  DataJsPlugin$12(DataJsPlugin paramDataJsPlugin, bdfz parambdfz, Handler paramHandler) {}
+  DataJsPlugin$12(DataJsPlugin paramDataJsPlugin, beka parambeka, Handler paramHandler) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     if (paramBoolean)
     {
-      bdnw.a("DataJsPlugin", "call getGroupShareInfo  ret:" + paramJSONObject.toString());
+      besl.a("DataJsPlugin", "call getGroupShareInfo  ret:" + paramJSONObject.toString());
       for (;;)
       {
         try
         {
+          Object localObject = (MiniProgramShare.StGetGroupShareInfoRsp)paramJSONObject.get("response");
+          int i = paramJSONObject.getInt("resultCode");
+          String str1 = ((MiniProgramShare.StGetGroupShareInfoRsp)localObject).encryptedData.get();
+          String str2 = ((MiniProgramShare.StGetGroupShareInfoRsp)localObject).iv.get();
+          besl.a("DataJsPlugin", "getGroupShareInfo receive resultCode= " + i + " encryptedData=" + str1 + " iv=" + str2);
+          localObject = new JSONObject();
+          ((JSONObject)localObject).putOpt("encryptedData", str1);
+          ((JSONObject)localObject).putOpt("iv", str2);
           if (!this.this$0.mIsMiniGame)
           {
-            JSONObject localJSONObject = new JSONObject();
+            paramJSONObject = new JSONObject();
             try
             {
-              localJSONObject.put("data", paramJSONObject);
-              bdnw.a("DataJsPlugin", "call getGroupShareInfo： " + localJSONObject.toString());
-              this.val$req.a(localJSONObject);
+              paramJSONObject.put("data", localObject);
+              besl.a("DataJsPlugin", "call getGroupShareInfo： " + paramJSONObject.toString());
+              this.val$req.a(paramJSONObject);
               if (this.val$getShareInfoHandler == null) {
                 break;
               }
               this.val$getShareInfoHandler.removeMessages(1);
               return;
             }
-            catch (JSONException paramJSONObject)
+            catch (JSONException localJSONException)
             {
-              paramJSONObject.printStackTrace();
+              localJSONException.printStackTrace();
               continue;
             }
           }
@@ -45,13 +55,13 @@ class DataJsPlugin$12
         }
         catch (Exception paramJSONObject)
         {
-          bdnw.d("DataJsPlugin", "call getGroupShareInfo failed ");
+          besl.d("DataJsPlugin", "call getGroupShareInfo failed ");
           this.val$req.b();
           return;
         }
       }
     }
-    bdnw.d("DataJsPlugin", "call getGroupShareInfo failed ");
+    besl.d("DataJsPlugin", "call getGroupShareInfo failed ");
     this.val$req.b();
   }
 }

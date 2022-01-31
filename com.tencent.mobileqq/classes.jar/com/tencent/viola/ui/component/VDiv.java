@@ -146,12 +146,15 @@ public class VDiv
       localObject = this.mBackgroundDrawable;
       localStateListDrawable.addState(new int[0], (Drawable)localObject);
     }
-    if (Build.VERSION.SDK_INT >= 16)
-    {
+    if (Build.VERSION.SDK_INT >= 16) {
       ((VFrameLayout)getHostView()).setBackground(localStateListDrawable);
-      return;
     }
-    ((VFrameLayout)getHostView()).setBackgroundDrawable(localStateListDrawable);
+    for (;;)
+    {
+      ((VFrameLayout)getHostView()).setClickable(true);
+      return;
+      ((VFrameLayout)getHostView()).setBackgroundDrawable(localStateListDrawable);
+    }
   }
   
   public boolean setProperty(String paramString, Object paramObject)

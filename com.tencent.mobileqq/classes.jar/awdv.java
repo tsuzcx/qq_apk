@@ -1,47 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.15;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 public class awdv
-  implements axrt
+  implements DialogInterface.OnClickListener
 {
-  public awdv(PtvTemplateManager.15 param15) {}
+  public awdv(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public void onResp(axsq paramaxsq)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "onResp url: " + this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl + " resultcode: " + paramaxsq.c);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable = this.a.this$0.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo, false);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable) {}
-    try
-    {
-      mpx.a(new File(PtvTemplateManager.b, this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleName), PtvTemplateManager.c);
-      if (paramaxsq.jdField_a_of_type_Int == 0)
-      {
-        axxj localaxxj = (axxj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
-        if (localaxxj.a()) {
-          localaxxj.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl, paramaxsq.jdField_a_of_type_Long);
-        }
-      }
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          localIOException.printStackTrace();
-        }
-      }
-    }
+    axqw.b(null, "dc00898", "", "", "0X800A98D", "0X800A98D", 2, 0, "0", "0", "", "");
   }
-  
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
 }
 
 

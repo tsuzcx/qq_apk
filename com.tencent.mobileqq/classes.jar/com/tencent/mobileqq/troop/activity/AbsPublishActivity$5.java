@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import beex;
+import bfmr;
 
 class AbsPublishActivity$5
   implements Runnable
@@ -9,7 +9,7 @@ class AbsPublishActivity$5
   
   public void run()
   {
-    beex.a(this.this$0.b);
+    bfmr.a(this.this$0.b);
   }
 }
 

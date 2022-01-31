@@ -1,41 +1,23 @@
-import com.tencent.mobileqq.apollo.FriendCardApolloViewController;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class aihu
-  extends baox
+  implements View.OnClickListener
 {
-  private aihu(FriendCardApolloViewController paramFriendCardApolloViewController) {}
+  public aihu(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  protected void onGetExploreMsg(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendCardApolloViewController", 1, "[onGetExploreMsg] get info end");
-        }
-        paramObject = new JSONObject((String)paramObject);
-        if (paramObject.optInt("entry_id", -1) != 2) {
-          return;
-        }
-        FriendCardApolloViewController.a(this.a, paramObject.optString("icon_url"));
-        QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] iconUrl:" + FriendCardApolloViewController.a(this.a));
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] result:" + paramBoolean);
-    }
+    paramView = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.a(this.a));
+    this.a.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aihu
  * JD-Core Version:    0.7.0.1
  */

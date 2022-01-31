@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import aepl;
+import afah;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import azxz;
+import bazd;
 import java.util.List;
 
 public class ZhituResponse
   implements Parcelable
 {
-  public static final Parcelable.Creator<ZhituResponse> CREATOR = new aepl();
+  public static final Parcelable.Creator<ZhituResponse> CREATOR = new afah();
   public String cat;
   public String cookie;
   public int hasMore;
-  @azxz(a=ZhituImgResponse.class)
+  @bazd(a=ZhituImgResponse.class)
   public List<ZhituImgResponse> list;
-  @azxz(a=String.class)
+  @bazd(a=String.class)
   public List<String> tokens;
   
   public ZhituResponse() {}

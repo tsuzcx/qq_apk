@@ -1,10 +1,11 @@
-public abstract interface rhj
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+
+public class rhj
+  implements bfuh
 {
-  public abstract void a(rho paramrho);
+  public rhj(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public abstract void b(rho paramrho);
-  
-  public abstract void c(rho paramrho);
+  public void a() {}
 }
 
 

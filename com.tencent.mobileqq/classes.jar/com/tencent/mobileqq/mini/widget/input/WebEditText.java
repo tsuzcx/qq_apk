@@ -16,9 +16,7 @@ import android.widget.FrameLayout.LayoutParams;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
 import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
-import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
-import com.tencent.mobileqq.mini.ui.NavigationBar;
 import com.tencent.mobileqq.mini.util.ColorUtil;
 import com.tencent.mobileqq.mini.util.ColorUtils;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
@@ -106,60 +104,55 @@ public class WebEditText
       bool1 = false;
       return bool1;
     }
-    Object localObject1 = super.getContext();
+    Object localObject = super.getContext();
     paramBaseJsPluginEngine = new JSONObject(paramString);
-    paramString = paramBaseJsPluginEngine.optString("type");
+    paramAbsAppBrandPage = paramBaseJsPluginEngine.optString("type");
     boolean bool2 = paramBaseJsPluginEngine.optBoolean("password");
     int i;
-    if (("number".equals(paramString)) || ("digit".equals(paramString)) || ("idcard".equals(paramString))) {
+    if (("number".equals(paramAbsAppBrandPage)) || ("digit".equals(paramAbsAppBrandPage)) || ("idcard".equals(paramAbsAppBrandPage))) {
       i = 2;
     }
     for (;;)
     {
       super.setInputType(i);
-      Object localObject2 = paramBaseJsPluginEngine.optString("confirmType");
-      label110:
-      float f;
-      if ("send".equals(localObject2))
+      paramString = paramBaseJsPluginEngine.optString("confirmType");
+      if ("send".equals(paramString))
       {
         i = 4;
+        label108:
         setImeOptions(i);
         i = paramBaseJsPluginEngine.optInt("maxLength", -1);
         if (i != -1) {
           super.setFilters(new InputFilter[] { new InputFilter.LengthFilter(i) });
         }
-        localObject2 = paramBaseJsPluginEngine.optJSONObject("style");
-        if (localObject2 != null)
+        paramString = paramBaseJsPluginEngine.optJSONObject("style");
+        if (paramString != null)
         {
-          f = DisplayUtil.getDensity((Context)localObject1);
-          this.mWebInputWidth = ((int)(((JSONObject)localObject2).optInt("width") * f));
-          this.mWebInputHeight = ((int)(((JSONObject)localObject2).optInt("height") * f));
-          this.mWebInputLeft = ((int)(((JSONObject)localObject2).optInt("left") * f));
-          if ((paramAbsAppBrandPage.getCurrentWebviewContainer() == null) || (!paramAbsAppBrandPage.getCurrentWebviewContainer().isCustomNavibar())) {
-            break label627;
-          }
-          this.mWebInputTop = ((int)(f * ((JSONObject)localObject2).optInt("top")));
-          label252:
-          super.setTextSize(((JSONObject)localObject2).optInt("fontSize", 16));
-          this.fontWeight = ((JSONObject)localObject2).optString("fontWeight", "normal");
-          this.textColor = ((JSONObject)localObject2).optString("color", "#FFFFFFFF");
-          this.backgroundColor = ((JSONObject)localObject2).optString("backgroundColor", "#FFFFFFFF");
-          this.marginBottom = ((int)(DisplayUtil.getDensity(getContext()) * ((JSONObject)localObject2).optInt("marginBottom") + 0.5F));
-          this.textAlign = ((JSONObject)localObject2).optString("textAlign", "left");
+          float f = DisplayUtil.getDensity((Context)localObject);
+          this.mWebInputWidth = ((int)(paramString.optInt("width") * f));
+          this.mWebInputHeight = ((int)(paramString.optInt("height") * f));
+          this.mWebInputLeft = ((int)(paramString.optInt("left") * f));
+          this.mWebInputTop = ((int)(f * paramString.optInt("top")));
+          super.setTextSize(paramString.optInt("fontSize", 16));
+          this.fontWeight = paramString.optString("fontWeight", "normal");
+          this.textColor = paramString.optString("color", "#FFFFFFFF");
+          this.backgroundColor = paramString.optString("backgroundColor", "#FFFFFFFF");
+          this.marginBottom = ((int)(DisplayUtil.getDensity(getContext()) * paramString.optInt("marginBottom") + 0.5F));
+          this.textAlign = paramString.optString("textAlign", "left");
         }
-        paramAbsAppBrandPage = paramBaseJsPluginEngine.optString("placeholder");
-        localObject1 = paramBaseJsPluginEngine.optJSONObject("placeholderStyle");
-        if (localObject1 != null) {
-          super.setHintTextColor(ColorUtils.parseColor(((JSONObject)localObject1).optString("color", "#FFFFFFFF")));
+        paramString = paramBaseJsPluginEngine.optString("placeholder");
+        localObject = paramBaseJsPluginEngine.optJSONObject("placeholderStyle");
+        if (localObject != null) {
+          super.setHintTextColor(ColorUtils.parseColor(((JSONObject)localObject).optString("color", "#FFFFFFFF")));
         }
         this.adjustPosition = paramBaseJsPluginEngine.optBoolean("adjustPosition");
         this.confirmHold = paramBaseJsPluginEngine.optBoolean("confirmHold", false);
-        localObject1 = paramBaseJsPluginEngine.optString("defaultValue");
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label654;
+        localObject = paramBaseJsPluginEngine.optString("defaultValue");
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label591;
         }
-        super.setText((CharSequence)localObject1);
-        label424:
+        super.setText((CharSequence)localObject);
+        label391:
         i = paramBaseJsPluginEngine.optInt("selectionStart", -1);
         j = paramBaseJsPluginEngine.optInt("selectionEnd", -1);
         if ((i != -1) && (j != -1) && (j > i)) {
@@ -171,60 +164,57 @@ public class WebEditText
         }
         super.setTextColor(ColorUtil.parseColor(this.textColor));
         super.setBackgroundColor(ColorUtil.parseColor(this.backgroundColor));
-        super.setHint(paramAbsAppBrandPage);
+        super.setHint(paramString);
         if (!"left".equals(this.textAlign)) {
-          break label664;
+          break label601;
         }
         setGravity(19);
       }
       for (;;)
       {
-        if (!"idcard".equals(paramString)) {
-          break label708;
+        if (!"idcard".equals(paramAbsAppBrandPage)) {
+          break label645;
         }
         super.setKeyListener(DigitsKeyListener.getInstance("1234567890Xx"));
         return true;
         if (!bool2) {
-          break label729;
+          break label666;
         }
         i = 129;
         break;
-        if ("search".equals(localObject2))
+        if ("search".equals(paramString))
         {
           i = 3;
-          break label110;
+          break label108;
         }
-        if ("next".equals(localObject2))
+        if ("next".equals(paramString))
         {
           i = 5;
-          break label110;
+          break label108;
         }
         i = j;
-        if ("go".equals(localObject2)) {
-          break label110;
+        if ("go".equals(paramString)) {
+          break label108;
         }
         i = 6;
-        break label110;
-        label627:
-        this.mWebInputTop = ((int)(f * ((JSONObject)localObject2).optInt("top")) + paramAbsAppBrandPage.getNavBar().getHeight());
-        break label252;
-        label654:
+        break label108;
+        label591:
         super.setText("");
-        break label424;
-        label664:
+        break label391;
+        label601:
         if ("center".equals(this.textAlign)) {
           setGravity(17);
         } else if ("right".equals(this.textAlign)) {
           setGravity(21);
         }
       }
-      label708:
-      if (!"digit".equals(paramString)) {
+      label645:
+      if (!"digit".equals(paramAbsAppBrandPage)) {
         break;
       }
       super.setKeyListener(DigitsKeyListener.getInstance("1234567890."));
       return true;
-      label729:
+      label666:
       i = 1;
     }
   }

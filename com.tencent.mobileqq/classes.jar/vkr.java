@@ -1,45 +1,15 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class vkr
-  extends uiy<ujt>
+class vkr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public vkr(@Nullable ujc paramujc)
-  {
-    super(paramujc);
-  }
+  vkr(vkq paramvkq) {}
   
-  protected JobSegment<ujb, ujt> a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new ujo();
-  }
-  
-  protected JobSegment<Integer, ujb> a(uja paramuja)
-  {
-    return new vks(paramuja);
-  }
-  
-  protected ujt a()
-  {
-    uje localuje = (uje)sqg.a(11);
-    List localList = localuje.b();
-    ujt localujt = new ujt(new ErrorMessage());
-    localujt.jdField_b_of_type_JavaUtilList = localuje.b(localList);
-    localujt.jdField_b_of_type_Boolean = true;
-    localujt.a = localujt.jdField_b_of_type_JavaUtilList.isEmpty();
-    return localujt;
-  }
-  
-  protected ujt a(ErrorMessage paramErrorMessage)
-  {
-    return new ujt(paramErrorMessage);
-  }
-  
-  protected void a(List<String> paramList, boolean paramBoolean)
-  {
-    ((uje)sqg.a(11)).b(paramList, paramBoolean);
+    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.g();
   }
 }
 

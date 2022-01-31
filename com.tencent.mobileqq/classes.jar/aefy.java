@@ -1,54 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.panel.PEPanel;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.widget.ListView;
 
-class aefy
-  implements Observer
+public class aefy
+  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  aefy(aefv paramaefv) {}
+  public aefy(PEPanel paramPEPanel) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramObject instanceof atcp))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "new FriendSystemMessage,:");
-      }
-      paramObservable = ((atcp)paramObject).a.getSystemMsg();
-      if (paramObservable != null) {
-        break label42;
-      }
+    if ((PEPanel.a(this.a) != null) && (QLog.isColorLevel())) {
+      QLog.d("PokeEmo.PEPanel", 2, String.format(" playLottieAnim onAnimationEnd listView.visibility = %d ", new Object[] { Integer.valueOf(PEPanel.a(this.a).getVisibility()) }));
     }
-    label42:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramObservable.msg.sub_type.get() != 9);
-        paramObservable = String.valueOf(paramObservable.req_uin.get());
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "FRIEND_ADDSUCCESS, uin:" + paramObservable + " badd:" + aefv.a(this.a));
-        }
-      } while ((TextUtils.isEmpty(paramObservable)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (!paramObservable.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
-      if (!aefv.a(this.a))
-      {
-        aefv.a(this.a, true);
-        aqux.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObservable);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "FRIEND_ADDSUCCESS, processed:");
+    if ((PEPanel.a(this.a) != null) && (PEPanel.a(this.a).getVisibility() != 0)) {
+      PEPanel.a(this.a).setVisibility(0);
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.setListViewVisibile(8);
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
 }
 
 

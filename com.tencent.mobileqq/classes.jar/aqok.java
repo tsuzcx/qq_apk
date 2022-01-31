@@ -1,24 +1,24 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.animation.Animation;
 
-final class aqok
-  implements allt
+class aqok
+  extends bfmg
 {
-  public void a(int paramInt1, int paramInt2)
+  aqok(aqoi paramaqoi) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt1 == aqod.a)
-    {
-      Intent localIntent = new Intent();
-      localIntent.setAction("action.now.jump");
-      localIntent.putExtra("jump_action", paramInt2);
-      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
-    }
+    this.a.a().e();
+    this.a.a().a();
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqok
  * JD-Core Version:    0.7.0.1
  */

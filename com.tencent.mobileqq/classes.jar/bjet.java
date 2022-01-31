@@ -1,6 +1,19 @@
-public abstract interface bjet
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.paster.InteractPasterParcelData;
+
+public final class bjet
+  implements Parcelable.Creator<InteractPasterParcelData>
 {
-  public abstract void b(int paramInt);
+  public InteractPasterParcelData a(Parcel paramParcel)
+  {
+    return new InteractPasterParcelData(paramParcel);
+  }
+  
+  public InteractPasterParcelData[] a(int paramInt)
+  {
+    return new InteractPasterParcelData[paramInt];
+  }
 }
 
 

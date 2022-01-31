@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public final class prh
-  implements Parcelable.Creator<SocializeFeedsInfo.UGCVoiceInfo>
+class prh
+  implements View.OnTouchListener
 {
-  public SocializeFeedsInfo.UGCVoiceInfo a(Parcel paramParcel)
-  {
-    return new SocializeFeedsInfo.UGCVoiceInfo(paramParcel);
-  }
+  prh(prf paramprf, LinearLayout paramLinearLayout) {}
   
-  public SocializeFeedsInfo.UGCVoiceInfo[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new SocializeFeedsInfo.UGCVoiceInfo[paramInt];
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
   }
 }
 

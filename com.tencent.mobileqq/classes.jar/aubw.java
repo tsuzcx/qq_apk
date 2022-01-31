@@ -1,8 +1,20 @@
-public abstract interface aubw
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import mqq.app.QQPermissionCallback;
+
+public class aubw
+  implements QQPermissionCallback
 {
-  public abstract void a(Object paramObject);
+  public aubw(ScanOcrActivity paramScanOcrActivity) {}
   
-  public abstract void b(Object paramObject);
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bbcv.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.grant();
+  }
 }
 
 

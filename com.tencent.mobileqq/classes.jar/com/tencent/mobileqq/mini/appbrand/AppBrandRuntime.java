@@ -51,6 +51,7 @@ import com.tencent.mobileqq.mini.widget.media.MiniAppVideoPlayer;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import mqq.os.MqqHandler;
 import org.json.JSONException;
@@ -420,7 +421,7 @@ public final class AppBrandRuntime
         ((CoverMapView)localView2).captureImage(new AppBrandRuntime.17(this, localFrameLayout, paramShareScreenshotCallback, localView2));
         return;
       }
-      if ((getCurPage() != null) && (getCurPage().getCurrentPageWebview() != null) && (getCurPage().getCurrentPageWebview().getEmbeddedWidgetClientFactory() != null) && (getCurPage().getCurrentPageWebview().getEmbeddedWidgetClientFactory().getVideoEmbeddedWidgetClientMap() != null))
+      if ((getCurPage() != null) && (getCurPage().getCurrentPageWebview() != null) && (getCurPage().getCurrentPageWebview().getEmbeddedWidgetClientFactory() != null) && (getCurPage().getCurrentPageWebview().getEmbeddedWidgetClientFactory().getVideoEmbeddedWidgetClientMap() != null) && (getCurPage().getCurrentPageWebview().getEmbeddedWidgetClientFactory().getVideoEmbeddedWidgetClientMap().size() > 0))
       {
         getCurPage().getCurrentPageWebview().shotWebview(new AppBrandRuntime.18(this, paramShareScreenshotCallback, localFrameLayout));
         return;
@@ -586,7 +587,7 @@ public final class AppBrandRuntime
   
   public final void onResume(MiniAppConfig paramMiniAppConfig, boolean paramBoolean)
   {
-    MiniAppInfo localMiniAppInfo = null;
+    Object localObject3 = null;
     if (QLog.isColorLevel()) {
       QLog.d("AppBrandRuntime", 4, "onResume. | " + this);
     }
@@ -597,6 +598,7 @@ public final class AppBrandRuntime
       this.isOpenMonitorPanel = false;
     }
     Object localObject2;
+    Object localObject1;
     if (this.pageContainer.getCurrentPage() != null)
     {
       this.pageContainer.getCurrentPage().onPageForeground();
@@ -604,24 +606,25 @@ public final class AppBrandRuntime
         if (isMiniAppStore())
         {
           if (!needReloadMiniStore(paramMiniAppConfig)) {
-            break label770;
+            break label842;
           }
           reload(paramMiniAppConfig.launchParam.entryPath, false);
           localObject2 = paramMiniAppConfig.launchParam.entryPath;
           localObject1 = localObject2;
           if (paramMiniAppConfig.config == null) {
-            break label692;
+            break label759;
           }
           localObject1 = localObject2;
           if (TextUtils.isEmpty(paramMiniAppConfig.config.appId)) {
-            break label692;
+            break label759;
           }
           MiniAppStartState.setSwitchPage(paramMiniAppConfig.config.appId, true);
           paramBoolean = true;
+          localObject1 = localObject2;
         }
       }
     }
-    for (Object localObject1 = localObject2;; localObject1 = null)
+    for (;;)
     {
       if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null))
       {
@@ -632,7 +635,7 @@ public final class AppBrandRuntime
       }
       else
       {
-        label255:
+        label258:
         if (this.isNavigateBeforeResume) {
           this.isNavigateBeforeResume = false;
         }
@@ -648,97 +651,105 @@ public final class AppBrandRuntime
         reportMiniAppStart();
         MiniReportManager.reportEventType(this.apkgInfo.appConfig, 21, MiniProgramReportHelper.currentUrlFromAppBrandRuntime(this), null, null, 0);
         if ((!TextUtils.isEmpty((CharSequence)localObject1)) || (this.pageContainer == null) || (this.pageContainer.getCurrentPage() == null)) {
-          break label767;
+          break label839;
         }
         localObject1 = this.pageContainer.getCurrentPage().getUrl();
       }
-      label430:
-      label692:
-      label756:
-      label761:
-      label767:
+      label436:
+      label828:
+      label833:
+      label839:
       for (;;)
       {
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           if (this.reportBringToFront)
           {
             if ((this.apkgInfo == null) || (this.apkgInfo.appConfig == null)) {
-              break label761;
+              break label833;
             }
             if (this.apkgInfo.appConfig.launchParam == null) {
-              break label756;
+              break label828;
             }
             paramMiniAppConfig = this.apkgInfo.appConfig.launchParam;
             localObject2 = paramMiniAppConfig;
             if (this.apkgInfo.appConfig.config != null) {
-              localMiniAppInfo = this.apkgInfo.appConfig.config;
+              localObject3 = this.apkgInfo.appConfig.config;
             }
           }
         }
-        Object localObject3;
-        for (localObject2 = paramMiniAppConfig;; localObject3 = null)
+        for (localObject2 = paramMiniAppConfig;; localObject2 = null)
         {
+          localObject2 = AppBrandUtil.getAppLaunchInfo((String)localObject1, (LaunchParam)localObject2, (MiniAppInfo)localObject3);
           for (;;)
           {
-            paramMiniAppConfig = AppBrandUtil.getAppLaunchInfo((String)localObject1, (LaunchParam)localObject2, localMiniAppInfo);
             try
             {
-              paramMiniAppConfig.put("reLaunch", paramBoolean);
-              evaluateServiceSubcribeJS("onAppEnterForeground", paramMiniAppConfig.toString());
-              MiniProgramLpReportDC04239.reportPageView(this.apkgInfo.appConfig, "0", (String)localObject1, "show", "bring_to_front");
-              localObject1 = new StringBuilder().append("--- report show bring to front appid:");
-              if ((this.apkgInfo.appConfig != null) && (this.apkgInfo.appConfig.config != null))
-              {
-                paramMiniAppConfig = this.apkgInfo.appConfig.config.appId;
-                QLog.i("AppBrandRuntime", 1, paramMiniAppConfig);
-                if (!this.reportBringToFront) {
-                  this.reportBringToFront = true;
-                }
-                if ((this.pageContainer != null) && (this.pageContainer.getCurrentPageWebview() != null))
-                {
-                  this.pageContainer.getCurrentPageWebview().onResume();
-                  this.pageContainer.getCurrentPageWebview().requestFocus();
-                }
-                return;
-                if (!this.isFirstDomReady) {
-                  break label770;
-                }
-                reload(paramMiniAppConfig.launchParam.entryPath, false);
-                localObject2 = paramMiniAppConfig.launchParam.entryPath;
-                localObject1 = localObject2;
-                if (paramMiniAppConfig.config != null)
-                {
-                  localObject1 = localObject2;
-                  if (!TextUtils.isEmpty(paramMiniAppConfig.config.appId))
-                  {
-                    MiniAppStartState.setSwitchPage(paramMiniAppConfig.config.appId, true);
-                    localObject1 = localObject2;
-                  }
-                }
-                paramBoolean = true;
-                break;
-                if (keepLaunchAppScenes.contains(Integer.valueOf(paramMiniAppConfig.launchParam.scene))) {
-                  break label255;
-                }
-                this.lauchAppScene = paramMiniAppConfig.launchParam.scene;
-              }
-            }
-            catch (Throwable localThrowable)
-            {
-              for (;;)
-              {
-                QLog.e("AppBrandRuntime", 1, "appLaunchInfo error.", localThrowable);
+              ((JSONObject)localObject2).put("reLaunch", paramBoolean);
+              int i = QzoneConfig.getInstance().getConfig("qqminiapp", "xprof_api_report", 0);
+              localObject3 = new JSONObject();
+              if (i != 0) {
                 continue;
-                paramMiniAppConfig = Integer.valueOf(0);
+              }
+              paramMiniAppConfig = "false";
+              ((JSONObject)localObject3).put("isAlpha", paramMiniAppConfig);
+              ((JSONObject)localObject2).put("frameworkInfo", localObject3);
+            }
+            catch (Throwable paramMiniAppConfig)
+            {
+              label759:
+              QLog.e("AppBrandRuntime", 1, "appLaunchInfo error.", paramMiniAppConfig);
+              continue;
+              paramMiniAppConfig = Integer.valueOf(0);
+              continue;
+            }
+            evaluateServiceSubcribeJS("onAppEnterForeground", ((JSONObject)localObject2).toString());
+            MiniProgramLpReportDC04239.reportPageView(this.apkgInfo.appConfig, "0", (String)localObject1, "show", "bring_to_front");
+            localObject1 = new StringBuilder().append("--- report show bring to front appid:");
+            if ((this.apkgInfo.appConfig == null) || (this.apkgInfo.appConfig.config == null)) {
+              continue;
+            }
+            paramMiniAppConfig = this.apkgInfo.appConfig.config.appId;
+            QLog.i("AppBrandRuntime", 1, paramMiniAppConfig);
+            if (!this.reportBringToFront) {
+              this.reportBringToFront = true;
+            }
+            if ((this.pageContainer != null) && (this.pageContainer.getCurrentPageWebview() != null))
+            {
+              this.pageContainer.getCurrentPageWebview().onResume();
+              this.pageContainer.getCurrentPageWebview().requestFocus();
+            }
+            return;
+            if (!this.isFirstDomReady) {
+              break label842;
+            }
+            reload(paramMiniAppConfig.launchParam.entryPath, false);
+            localObject2 = paramMiniAppConfig.launchParam.entryPath;
+            localObject1 = localObject2;
+            if (paramMiniAppConfig.config != null)
+            {
+              localObject1 = localObject2;
+              if (!TextUtils.isEmpty(paramMiniAppConfig.config.appId))
+              {
+                MiniAppStartState.setSwitchPage(paramMiniAppConfig.config.appId, true);
+                localObject1 = localObject2;
               }
             }
+            paramBoolean = true;
+            break;
+            if (keepLaunchAppScenes.contains(Integer.valueOf(paramMiniAppConfig.launchParam.scene))) {
+              break label258;
+            }
+            this.lauchAppScene = paramMiniAppConfig.launchParam.scene;
+            break label258;
+            paramMiniAppConfig = "true";
           }
           paramMiniAppConfig = null;
-          break label430;
+          break label436;
         }
       }
-      label770:
+      label842:
       paramBoolean = false;
+      localObject1 = null;
     }
   }
   

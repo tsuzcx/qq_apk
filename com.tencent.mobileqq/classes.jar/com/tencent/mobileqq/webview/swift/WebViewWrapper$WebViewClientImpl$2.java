@@ -1,15 +1,20 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bbam;
+import bcdl;
+import bcgc;
+import com.tencent.qphone.base.util.QLog;
 
 public class WebViewWrapper$WebViewClientImpl$2
   implements Runnable
 {
-  public WebViewWrapper$WebViewClientImpl$2(bbam parambbam, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public WebViewWrapper$WebViewClientImpl$2(bcdl parambcdl, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_JavaLangString);
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "post intercept:", Boolean.valueOf(bool), " ", bcgc.a(this.jdField_a_of_type_JavaLangString) });
+    }
   }
 }
 

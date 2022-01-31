@@ -1,17 +1,18 @@
-import com.tencent.ark.ArkEnvironmentManager.IDataReport;
-import com.tencent.ark.open.ArkAppReport;
+import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
+import com.tencent.sveffects.Reporter;
+import com.tencent.sveffects.SdkContext;
 
-final class alhj
-  implements ArkEnvironmentManager.IDataReport
+public final class alhj
+  implements AVGestureWrapper.AVUploadReport
 {
-  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
+  public void avGestureUploadReport(String paramString1, String paramString2)
   {
-    ArkAppReport.platformEventReport(paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
+    SdkContext.getInstance().getReporter().reportToCompass("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alhj
  * JD-Core Version:    0.7.0.1
  */

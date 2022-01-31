@@ -1,7 +1,6 @@
 package com.tencent.qqmini.sdk.minigame.ui;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
@@ -13,27 +12,29 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdyn;
+import bffu;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.core.widget.SquareImageView;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import java.util.ArrayList;
 
 public class LoadingUI
   extends RelativeLayout
 {
+  int jdField_a_of_type_Int = bffu.a(getContext(), 100.0F);
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private SquareImageView jdField_a_of_type_ComTencentQqminiSdkCoreWidgetSquareImageView;
   private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
   private String jdField_a_of_type_JavaLangString = "0%";
   private boolean jdField_a_of_type_Boolean;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private TextView c;
   private TextView d;
   private TextView e;
   private TextView f;
@@ -57,20 +58,21 @@ public class LoadingUI
   
   private void b()
   {
-    inflate(getContext(), 2131493729, this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131310662);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131301307));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131301331));
-    this.d = ((TextView)findViewById(2131303128));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298036));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297953));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131301313));
-    this.g = ((TextView)findViewById(2131299518));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131299519));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131303907));
-    this.e = ((TextView)findViewById(2131312636));
-    this.f = ((TextView)findViewById(2131310607));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131310604));
+    inflate(getContext(), 2131559298, this);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131376455);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366919));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366940));
+    this.d = ((TextView)findViewById(2131368768));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363586));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363501));
+    this.c = ((TextView)findViewById(2131366923));
+    this.g = ((TextView)findViewById(2131365086));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365087));
+    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetSquareImageView = ((SquareImageView)findViewById(2131369583));
+    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetSquareImageView.setRoundRect(this.jdField_a_of_type_Int);
+    this.e = ((TextView)findViewById(2131378460));
+    this.f = ((TextView)findViewById(2131376400));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131376397));
   }
   
   private void c()
@@ -82,7 +84,7 @@ public class LoadingUI
     Object localObject2;
     if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name);
+      this.c.setText(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name);
       if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.developerDesc)) {
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       }
@@ -115,11 +117,10 @@ public class LoadingUI
           if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.iconUrl))
           {
             localObject2 = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-            i = bdyn.a(getContext(), 100.0F);
-            localObject1 = getContext().getResources().getDrawable(2130840724);
-            localObject2 = ((MiniAppProxy)localObject2).getDrawable(getContext(), this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.iconUrl, i, i, (Drawable)localObject1);
+            localObject1 = getContext().getResources().getDrawable(2130840764);
+            localObject2 = ((MiniAppProxy)localObject2).getDrawable(getContext(), this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.iconUrl, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, (Drawable)localObject1);
             if (localObject2 != null) {
-              break label360;
+              break label356;
             }
           }
         }
@@ -127,11 +128,11 @@ public class LoadingUI
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetSquareImageView.setImageDrawable((Drawable)localObject1);
       return;
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
       break;
-      label360:
+      label356:
       localObject1 = localObject2;
     }
   }
@@ -142,9 +143,9 @@ public class LoadingUI
     setVisibility(8);
   }
   
-  public LoadingUI a(Intent paramIntent)
+  public LoadingUI a(MiniAppInfo paramMiniAppInfo)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = ((MiniAppInfo)paramIntent.getParcelableExtra("KEY_APPINFO"));
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
     return this;
   }
   

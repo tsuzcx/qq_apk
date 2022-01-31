@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import atmo;
-import psc;
+import aukm;
+import qea;
 
 public class ArticleSummary
-  extends atmo
+  extends aukm
 {
   public int adsJumpType;
   public String adsJumpUrl;
@@ -31,7 +31,7 @@ public class ArticleSummary
   public String title;
   public int uint32_adsSource;
   public int videoCommentCount;
-  public psc videoData;
+  public qea videoData;
   public int videoPlayCount;
   public String videoReportInfo;
   public String videoSubscriptColor;

@@ -1,27 +1,24 @@
-import com.tencent.widget.Gallery;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.qphone.base.util.QLog;
 
 class advw
-  implements apca
+  extends auom
 {
-  advw(advv paramadvv) {}
+  advw(advu paramadvu, BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public void a()
+  public void a(int paramInt, aunu paramaunu)
   {
-    try
-    {
-      this.a.a(true);
-      this.a.jdField_a_of_type_Adye.a(this.a.jdField_a_of_type_Adwu.jdField_a_of_type_Long, this.a.jdField_a_of_type_Adwu.jdField_a_of_type_Int, 20);
-      advv.a(this.a).b(true);
-      advv.b(this.a).a(true);
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
     }
-    catch (Exception localException) {}
   }
   
-  public void b()
+  public void a_(int paramInt, boolean paramBoolean)
   {
-    this.a.a(false);
-    this.a.c(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "2g diy gif onUpdateProgress");
+    }
   }
 }
 

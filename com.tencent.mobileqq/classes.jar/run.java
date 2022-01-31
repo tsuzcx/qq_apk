@@ -1,6 +1,32 @@
-public abstract interface run
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.WordNavView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class run
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void a(boolean paramBoolean);
+  private run(WordNavView paramWordNavView) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    float f = paramMotionEvent.getY();
+    Iterator localIterator = WordNavView.a(this.a).entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if ((f >= ((Float)localEntry.getKey()).floatValue() - this.a.getHeight() / WordNavView.a(this.a).size() / 2) && (f <= ((Float)localEntry.getKey()).floatValue() + this.a.getHeight() / WordNavView.a(this.a).size() / 2)) {
+        if (WordNavView.a(this.a) != null) {
+          WordNavView.a(this.a).a((String)localEntry.getValue());
+        }
+      }
+    }
+    return super.onSingleTapUp(paramMotionEvent);
+  }
 }
 
 

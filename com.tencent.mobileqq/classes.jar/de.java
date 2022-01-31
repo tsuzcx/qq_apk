@@ -1,11 +1,16 @@
-class de
-  extends ajgs
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.dataline.activities.LiteActivity;
+
+public class de
+  implements DialogInterface.OnClickListener
 {
-  de(dd paramdd) {}
+  public de(LiteActivity paramLiteActivity) {}
   
-  protected void b()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    dd.a(this.a, 1);
+    LiteActivity.a(this.a, false);
+    this.a.finish();
   }
 }
 

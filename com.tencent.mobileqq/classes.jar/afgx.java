@@ -1,22 +1,24 @@
+import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import java.util.List;
+
 public class afgx
 {
-  public long a;
+  public int a;
+  public AccountSearchPb.hotwordrecord a;
+  public String a;
+  public List<String> a;
   public boolean a;
-  
-  public afgx()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 300000L;
-  }
-  
-  public String toString()
-  {
-    return "{isEnable=" + this.jdField_a_of_type_Boolean + ",interval=" + this.jdField_a_of_type_Long + "}";
-  }
+  public int b;
+  public List<AccountSearchPb.record> b;
+  public boolean b;
+  public int c;
+  public List<AccountSearchPb.ResultItem> c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afgx
  * JD-Core Version:    0.7.0.1
  */

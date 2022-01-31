@@ -11,11 +11,11 @@ import com.tencent.biz.qqstory.network.pb.qqstory_struct.OperationCardInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
-import ufo;
-import ufq;
-import ufr;
-import ufs;
-import vkw;
+import usk;
+import usm;
+import usn;
+import uso;
+import vxs;
 
 public class CardItem
   extends BaseUIItem
@@ -26,11 +26,11 @@ public class CardItem
   public static final int CARD_TYPE_OPERATION = 3;
   public String cardId;
   public int cardType;
-  public ufo gatherCardInfo;
+  public usk gatherCardInfo;
   public boolean hasReportExp;
-  public ufq nearByCardInfo;
-  public ufr normalCardInfo;
-  public ufs operationCardInfo;
+  public usm nearByCardInfo;
+  public usn normalCardInfo;
+  public uso operationCardInfo;
   
   public CardItem(CardEntry paramCardEntry)
   {
@@ -39,19 +39,19 @@ public class CardItem
     switch (this.cardType)
     {
     default: 
-      vkw.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
+      vxs.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
       return;
     case 1: 
-      this.normalCardInfo = new ufr(paramCardEntry.PBData);
+      this.normalCardInfo = new usn(paramCardEntry.PBData);
       return;
     case 2: 
-      this.nearByCardInfo = new ufq(paramCardEntry.PBData);
+      this.nearByCardInfo = new usm(paramCardEntry.PBData);
       return;
     case 3: 
-      this.operationCardInfo = new ufs(paramCardEntry.PBData);
+      this.operationCardInfo = new uso(paramCardEntry.PBData);
       return;
     }
-    this.gatherCardInfo = new ufo(paramCardEntry.PBData);
+    this.gatherCardInfo = new usk(paramCardEntry.PBData);
   }
   
   public CardItem(qqstory_struct.CardInfo paramCardInfo)
@@ -61,29 +61,29 @@ public class CardItem
     switch (this.cardType)
     {
     default: 
-      vkw.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
+      vxs.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
       return;
     case 1: 
-      this.normalCardInfo = new ufr(paramCardInfo.normal_card);
+      this.normalCardInfo = new usn(paramCardInfo.normal_card);
       return;
     case 2: 
-      this.nearByCardInfo = new ufq(paramCardInfo.nearby_card);
+      this.nearByCardInfo = new usm(paramCardInfo.nearby_card);
       return;
     case 3: 
-      this.operationCardInfo = new ufs(paramCardInfo.operation_card);
+      this.operationCardInfo = new uso(paramCardInfo.operation_card);
       return;
     }
-    this.gatherCardInfo = new ufo(paramCardInfo.gather_card);
+    this.gatherCardInfo = new usk(paramCardInfo.gather_card);
   }
   
-  public CardItem(String paramString, ufr paramufr)
+  public CardItem(String paramString, usn paramusn)
   {
-    if ((paramString == null) || (paramufr == null)) {
+    if ((paramString == null) || (paramusn == null)) {
       throw new IllegalArgumentException("parameter should not be null");
     }
     this.cardId = paramString;
     this.cardType = 1;
-    this.normalCardInfo = paramufr;
+    this.normalCardInfo = paramusn;
   }
   
   @Nullable
@@ -119,19 +119,19 @@ public class CardItem
     switch (this.cardType)
     {
     default: 
-      vkw.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
+      vxs.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
       return localCardEntry;
     case 1: 
-      localCardEntry.PBData = ufr.a(this.normalCardInfo).toByteArray();
+      localCardEntry.PBData = usn.a(this.normalCardInfo).toByteArray();
       return localCardEntry;
     case 2: 
-      localCardEntry.PBData = ufq.a(this.nearByCardInfo).toByteArray();
+      localCardEntry.PBData = usm.a(this.nearByCardInfo).toByteArray();
       return localCardEntry;
     case 3: 
-      localCardEntry.PBData = ufs.a(this.operationCardInfo).toByteArray();
+      localCardEntry.PBData = uso.a(this.operationCardInfo).toByteArray();
       return localCardEntry;
     }
-    localCardEntry.PBData = ufo.a(this.gatherCardInfo).toByteArray();
+    localCardEntry.PBData = usk.a(this.gatherCardInfo).toByteArray();
     return localCardEntry;
   }
   

@@ -1,94 +1,82 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.UUID;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
-
-class ayte
-  extends wma
+public class ayte
 {
-  ayte(aytd paramaytd) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
+  public void a(String paramString)
   {
-    if (!paramBundle.getBoolean("isPreview", false)) {}
-    do
+    if ((paramString != null) && (paramString.length() > 12))
     {
-      do
-      {
-        return;
-      } while (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long);
-      paramBundle = paramBundle.getString("itemKey");
-    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
-    azjc localazjc = new azjc();
-    localazjc.jdField_a_of_type_Int = -1;
+      paramString = paramString.split("\\|");
+      if ((paramString != null) && (paramString.length < 13)) {}
+    }
     try
     {
-      localazjc.e = this.a.a().toString();
-      localQQAppInterface = ayrz.a();
-      if (localQQAppInterface == null)
-      {
-        aysb.a("TroopFilePreviewWorker", aysb.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult app=null");
-        return;
+      this.jdField_a_of_type_Long = Long.parseLong(paramString[12]);
+      if (paramString.length >= 14) {
+        this.jdField_a_of_type_JavaLangString = paramString[13];
       }
+      if (paramString.length < 15) {}
     }
-    catch (NullPointerException paramBundle)
+    catch (Exception localException3)
     {
-      QQAppInterface localQQAppInterface;
-      for (;;)
+      try
       {
-        localazjc.e = null;
+        this.jdField_a_of_type_Int = Integer.parseInt(paramString[14]);
+        if (paramString.length < 16) {}
       }
-      ajex localajex = (ajex)localQQAppInterface.a(22);
-      if ((paramDownloadFileRspBody == null) || (!paramBoolean))
+      catch (Exception localException3)
       {
-        aysb.a("TroopFilePreviewWorker", aysb.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult isSuccess:false  errCode:" + paramInt);
-        azic.a(localQQAppInterface, this.a.jdField_a_of_type_Long, 700);
-        localazjc.jdField_a_of_type_Boolean = false;
-        localajex.c(localazjc);
-        return;
-      }
-      paramInt = paramDownloadFileRspBody.int32_ret_code.get();
-      localazjc.jdField_a_of_type_Int = paramInt;
-      localazjc.jdField_a_of_type_Boolean = false;
-      String str = paramDownloadFileRspBody.str_download_ip.get();
-      paramBundle = "";
-      if (paramDownloadFileRspBody.str_download_dns.get() != null) {
-        paramBundle = paramDownloadFileRspBody.str_download_dns.get().toString();
-      }
-      localazjc.jdField_a_of_type_JavaLangString = str;
-      if ((TextUtils.isEmpty(localazjc.jdField_a_of_type_JavaLangString)) || (localazjc.jdField_a_of_type_JavaLangString.equals("0.0.0.0"))) {
-        localazjc.jdField_a_of_type_JavaLangString = paramBundle;
-      }
-      localazjc.b = String.valueOf(paramDownloadFileRspBody.uint32_preview_port.get());
-      localazjc.c = paramDownloadFileRspBody.str_ret_msg.get();
-      localazjc.d = bach.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-      localazjc.f = paramBundle;
-      if (paramInt < 0)
-      {
-        aysb.a("TroopFilePreviewWorker", aysb.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult fail. retCode:" + paramInt + " retMsg:" + localazjc.c);
-        azic.a(localQQAppInterface, this.a.jdField_a_of_type_Long, 700);
-        if (TextUtils.isEmpty(localazjc.c)) {
-          localazjc.c = ajjy.a(2131649556);
+        try
+        {
+          this.jdField_b_of_type_JavaLangString = paramString[15];
+          if (paramString.length < 17) {}
         }
-        localazjc.jdField_a_of_type_Boolean = false;
-        localajex.c(localazjc);
-        return;
+        catch (Exception localException3)
+        {
+          try
+          {
+            for (;;)
+            {
+              this.c = paramString[16];
+              if (paramString.length >= 18) {}
+              try
+              {
+                this.jdField_b_of_type_Int = Integer.parseInt(paramString[17]);
+                return;
+              }
+              catch (Exception paramString)
+              {
+                this.jdField_b_of_type_Int = -1;
+              }
+              localException1 = localException1;
+              this.jdField_a_of_type_Long = -1L;
+              continue;
+              localException2 = localException2;
+              this.jdField_a_of_type_Int = -1;
+            }
+            localException3 = localException3;
+            this.jdField_b_of_type_JavaLangString = null;
+          }
+          catch (Exception localException4)
+          {
+            for (;;)
+            {
+              this.c = null;
+            }
+          }
+        }
       }
-      aysb.c("TroopFilePreviewWorker", aysb.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult isSuccess:true  downloadip:" + str + " downloadDns:" + paramBundle + " port:" + localazjc.b + " downloadKey:" + localazjc.d + " retMsg:" + localazjc.c + " httpsDomain:" + localazjc.f);
-      localazjc.jdField_a_of_type_Boolean = true;
-      localajex.c(localazjc);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayte
  * JD-Core Version:    0.7.0.1
  */

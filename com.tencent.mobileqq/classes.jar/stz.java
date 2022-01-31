@@ -1,37 +1,8 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
-class stz
-  implements sug
+public abstract interface stz
 {
-  stz(stw paramstw) {}
+  public abstract int a(String paramString1, String paramString2, long paramLong);
   
-  public void a(@Nullable ssm paramssm, Error paramError)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("MsgTabStoryVideoPreloader", 2, "MsgTabVideoPreloaderDataProvider load video info error", paramError);
-    }
-    this.a.b();
-  }
-  
-  public void a(@Nullable ssm paramssm, @NonNull List<StoryVideoItem> paramList)
-  {
-    if (!paramList.isEmpty())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgTabStoryVideoPreloader", 2, "start download video list, list = " + paramList.size() + "\n" + paramList);
-      }
-      stw.a(this.a, paramList);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.w("MsgTabStoryVideoPreloader", 2, "can not find first unread video");
-    }
-    this.a.b();
-  }
+  public abstract void a(stn paramstn);
 }
 
 

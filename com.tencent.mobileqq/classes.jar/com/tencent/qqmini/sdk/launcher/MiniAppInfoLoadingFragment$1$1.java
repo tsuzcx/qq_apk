@@ -1,22 +1,15 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import bdit;
-import bdlv;
-import bdyl;
+import beqf;
 
 public class MiniAppInfoLoadingFragment$1$1
   implements Runnable
 {
-  public MiniAppInfoLoadingFragment$1$1(bdlv parambdlv, String paramString, long paramLong) {}
+  public MiniAppInfoLoadingFragment$1$1(beqf parambeqf, String paramString, long paramLong) {}
   
   public void run()
   {
-    if (bdyl.a())
-    {
-      bdit.a(this.jdField_a_of_type_Bdlv.a.getActivity(), 1, "" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long, 1).a();
-      return;
-    }
-    bdit.a(this.jdField_a_of_type_Bdlv.a.getActivity(), 1, "" + this.jdField_a_of_type_JavaLangString, 1).a();
+    MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Beqf.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
   }
 }
 

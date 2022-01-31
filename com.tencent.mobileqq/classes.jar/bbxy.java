@@ -1,23 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.open.agent.OpenCardContainer;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class bbxy
-  implements ValueAnimator.AnimatorUpdateListener
+class bbxy
+  extends MqqHandler
 {
-  public bbxy(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
+  bbxy(bbxx parambbxx) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = i;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    switch (paramMessage.what)
+    {
+    default: 
+    case 104: 
+      do
+      {
+        return;
+        paramMessage = (String)paramMessage.obj;
+        if ((this.a.jdField_a_of_type_Avpw != null) && (!TextUtils.isEmpty(paramMessage)))
+        {
+          this.a.jdField_a_of_type_Avpw.a(paramMessage);
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(bbxx.jdField_a_of_type_JavaLangString, 2, "captcha sig is empty");
+      return;
+    }
+    bbxx.a(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbxy
  * JD-Core Version:    0.7.0.1
  */

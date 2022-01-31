@@ -2,16 +2,16 @@ package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import bdcz;
-import bdfs;
-import bdyk;
-import bdyr;
+import begz;
+import bejs;
+import bffq;
+import bffy;
 import com.tencent.qqmini.sdk.core.widget.NavigationBar;
 
 class AppBrandPage$13
   implements Runnable
 {
-  AppBrandPage$13(AppBrandPage paramAppBrandPage, String paramString1, String paramString2, String paramString3, long paramLong, bdfs parambdfs) {}
+  AppBrandPage$13(AppBrandPage paramAppBrandPage, String paramString1, String paramString2, String paramString3, long paramLong, bejs parambejs) {}
   
   public void run()
   {
@@ -24,22 +24,22 @@ class AppBrandPage$13
       localNavigationBar.b(str);
       boolean bool1 = false;
       if (AppBrandPage.a(this.this$0).a() != null) {
-        bool1 = bdyr.a(bool2, AppBrandPage.a(this.this$0).a().getWindow());
+        bool1 = bffy.a(bool2, AppBrandPage.a(this.this$0).a().getWindow());
       }
       AppBrandPage.a(this.this$0).setUseCustomStatusBarStyle(bool1);
       if (TextUtils.isEmpty(this.b)) {
         break label132;
       }
-      AppBrandPage.a(this.this$0).a(bdyk.a(this.c), this.jdField_a_of_type_Long, this.b);
+      AppBrandPage.a(this.this$0).a(bffq.a(this.c), this.jdField_a_of_type_Long, this.b);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bdfs.a();
+      this.jdField_a_of_type_Bejs.a();
       return;
       str = "white";
       break;
       label132:
-      AppBrandPage.a(this.this$0).a(bdyk.a(this.c));
+      AppBrandPage.a(this.this$0).a(bffq.a(this.c));
     }
   }
 }

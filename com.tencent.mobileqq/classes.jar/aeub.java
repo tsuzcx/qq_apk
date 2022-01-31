@@ -1,26 +1,45 @@
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class aeub
   extends Handler
 {
-  public aeub(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public aeub(TroopChatPie paramTroopChatPie, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
   public void handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
     {
+    case 3: 
     default: 
-      return;
     case 1: 
-      paramMessage = (List)paramMessage.obj;
-      this.a.a(paramMessage, true);
+    case 2: 
+    case 4: 
+      do
+      {
+        do
+        {
+          return;
+          this.a.a(null, false);
+          return;
+          paramMessage = paramMessage.obj;
+        } while (!(paramMessage instanceof bakq));
+        this.a.a((bakq)paramMessage);
+        return;
+      } while (TroopChatPie.j(this.a) == null);
+      TroopChatPie.k(this.a).a();
       return;
     }
-    paramMessage = (List)paramMessage.obj;
-    this.a.a(paramMessage, false);
+    String str = (String)paramMessage.obj;
+    int i = paramMessage.arg1;
+    bcpw.a(this.a.a, str, i).b(this.a.a.getTitleBarHeight());
   }
 }
 

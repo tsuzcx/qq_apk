@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.utils.quic;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Environment;
-import awfi;
-import badq;
+import axeq;
+import bbev;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
@@ -18,7 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class QuicResDownload
-  implements awfi
+  implements axeq
 {
   private static final String jdField_a_of_type_JavaLangString = Environment.getDataDirectory() + "/data/" + BaseApplicationImpl.sApplication.getBaseContext().getPackageName() + "/app_lib/quic/";
   public static boolean a;
@@ -41,14 +41,14 @@ public class QuicResDownload
   
   private boolean a()
   {
-    boolean bool = badq.h(null);
+    boolean bool = bbev.h(null);
     if (bool)
     {
       VideoEnvironment.a("QuicResDownload", "QUIC配置下载中...", null);
-      ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+      ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
       return bool;
     }
-    VideoEnvironment.a("QuicResDownload", ajjy.a(2131645449), null);
+    VideoEnvironment.a("QuicResDownload", ajyc.a(2131711237), null);
     return bool;
   }
   

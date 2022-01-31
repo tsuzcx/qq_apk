@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajdq;
+import ajrs;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.os.Message;
-import befq;
+import bfnk;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import mpo;
+import nap;
 
 class ShareImageHandler$SaveImageTask
   implements Runnable
@@ -16,23 +16,23 @@ class ShareImageHandler$SaveImageTask
   private final WeakReference<Bitmap> jdField_a_of_type_JavaLangRefWeakReference;
   private int[] jdField_a_of_type_ArrayOfInt;
   private final int jdField_b_of_type_Int;
-  private WeakReference<befq> jdField_b_of_type_JavaLangRefWeakReference;
+  private WeakReference<bfnk> jdField_b_of_type_JavaLangRefWeakReference;
   private final int jdField_c_of_type_Int;
-  private WeakReference<ajdq> jdField_c_of_type_JavaLangRefWeakReference;
+  private WeakReference<ajrs> jdField_c_of_type_JavaLangRefWeakReference;
   
   public void run()
   {
     if ((this.jdField_b_of_type_JavaLangRefWeakReference == null) || (this.jdField_c_of_type_JavaLangRefWeakReference == null)) {}
-    befq localbefq;
+    bfnk localbfnk;
     Object localObject3;
     do
     {
       do
       {
         return;
-        localbefq = (befq)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-      } while (localbefq == null);
-      localObject3 = (ajdq)this.jdField_c_of_type_JavaLangRefWeakReference.get();
+        localbfnk = (bfnk)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+      } while (localbfnk == null);
+      localObject3 = (ajrs)this.jdField_c_of_type_JavaLangRefWeakReference.get();
     } while (localObject3 == null);
     for (;;)
     {
@@ -65,13 +65,13 @@ class ShareImageHandler$SaveImageTask
         }
         else if (localObject1 != null)
         {
-          localObject3 = ((ajdq)localObject3).a(this.jdField_a_of_type_ArrayOfInt, (Bitmap)localObject1, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+          localObject3 = ((ajrs)localObject3).a(this.jdField_a_of_type_ArrayOfInt, (Bitmap)localObject1, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
           localObject2 = localObject3;
           if (localObject3 == null) {
             localObject2 = localObject1;
           }
-          localObject1 = mpo.a((Bitmap)localObject2);
-          localObject2 = localbefq.obtainMessage(this.jdField_a_of_type_Int);
+          localObject1 = nap.a((Bitmap)localObject2);
+          localObject2 = localbfnk.obtainMessage(this.jdField_a_of_type_Int);
           ((Message)localObject2).obj = localObject1;
           ((Message)localObject2).sendToTarget();
           return;

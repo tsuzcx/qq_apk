@@ -1,10 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bjdb
-  implements DialogInterface.OnClickListener
+class bjdb
+  extends bjde
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  bjdb(bjda parambjda) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String arg1, int paramInt)
+  {
+    synchronized (this.a)
+    {
+      this.a.a.mProgress = paramInt;
+      return;
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean) {}
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicDownloadListener", 2, "notifyDownloadFinish key: " + paramString + ", success " + paramBoolean);
+    }
+    paramString = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        this.a.a.mProgress = 100;
+        this.a.b();
+        return;
+      }
+      finally {}
+      this.a.a.mProgress = -1;
+      this.a.a(4);
+    }
+  }
 }
 
 

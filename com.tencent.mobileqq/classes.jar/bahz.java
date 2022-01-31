@@ -1,53 +1,37 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
 
-public class bahz
+class bahz
+  extends Handler
 {
-  protected Drawable a;
-  protected Drawable b;
-  
-  protected bahz(Context paramContext)
+  bahz(bahy parambahy, Looper paramLooper)
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837548);
-    this.b = paramContext.getDrawable(2130837550);
+    super(paramLooper);
   }
   
-  private Drawable a(Drawable paramDrawable)
+  public void handleMessage(Message paramMessage)
   {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
-  }
-  
-  private Drawable b(Drawable paramDrawable)
-  {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
-  }
-  
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
-  }
-  
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    super.handleMessage(paramMessage);
+    if (this.a.a) {}
+    Object localObject;
+    String str;
+    do
+    {
+      return;
+      localObject = (Object[])paramMessage.obj;
+      paramMessage = (RollangleImageView)localObject[0];
+      str = (String)localObject[1];
+      localObject = (Bitmap)localObject[2];
+    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
+    paramMessage.setImageBitmap((Bitmap)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bahz
  * JD-Core Version:    0.7.0.1
  */

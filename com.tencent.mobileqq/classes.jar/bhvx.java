@@ -1,24 +1,19 @@
-class bhvx<K, V>
-  extends bhwa<K, V>
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+
+class bhvx
+  implements DialogInterface.OnShowListener
 {
-  bhvx(bhvy<K, V> parambhvy1, bhvy<K, V> parambhvy2)
-  {
-    super(parambhvy1, parambhvy2);
-  }
+  bhvx(bhvv parambhvv, bcpq parambcpq) {}
   
-  bhvy<K, V> a(bhvy<K, V> parambhvy)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    return parambhvy.b;
-  }
-  
-  bhvy<K, V> b(bhvy<K, V> parambhvy)
-  {
-    return parambhvy.a;
+    this.jdField_a_of_type_Bcpq.hide();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhvx
  * JD-Core Version:    0.7.0.1
  */

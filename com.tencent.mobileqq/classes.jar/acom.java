@@ -1,47 +1,21 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
-class acom
-  extends View
+public class acom
+  implements DialogInterface.OnClickListener
 {
-  public acom(acoh paramacoh, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public acom(UpgradeActivity paramUpgradeActivity) {}
   
-  public void draw(Canvas paramCanvas)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Drawable[] arrayOfDrawable = this.a.a;
-    int j = arrayOfDrawable.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfDrawable[i].draw(paramCanvas);
-      i += 1;
-    }
-  }
-  
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    paramInt1 = 0;
-    paramInt3 = paramInt4 - paramInt2;
-    Drawable[] arrayOfDrawable = this.a.a;
-    paramInt4 = arrayOfDrawable.length;
-    paramInt2 = 0;
-    while (paramInt1 < paramInt4)
-    {
-      Drawable localDrawable = arrayOfDrawable[paramInt1];
-      localDrawable.setBounds(paramInt2, paramInt3 - localDrawable.getIntrinsicHeight(), localDrawable.getIntrinsicWidth() + paramInt2, paramInt3);
-      paramInt2 += localDrawable.getIntrinsicWidth();
-      paramInt1 += 1;
-    }
+    UpgradeActivity.b(this.a);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acom
  * JD-Core Version:    0.7.0.1
  */

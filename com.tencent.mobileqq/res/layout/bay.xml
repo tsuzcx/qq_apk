@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/i_4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.profile.view.SoftInputDetectView android:id="@id/dmq" android:layout_width="fill_parent" android:layout_height="0.0px" />
+    <FrameLayout android:orientation="horizontal" android:id="@id/ffi" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ghe">
+        <com.tencent.widget.XEditTextEx android:scrollbarThumbVertical="@drawable/b2n" android:textSize="28.0sp" android:textColor="@color/al3" android:textColorHint="@color/al6" android:id="@id/f_5" android:background="@null" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="19.0dip" android:layout_marginRight="19.0dip" android:hint="@string/w4u" />
+        <com.tencent.widget.ScrollView android:scrollbarThumbVertical="@drawable/b2n" android:layout_gravity="center|left" android:id="@id/iw_" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="19.0dip" android:layout_marginRight="19.0dip">
+            <com.etrump.mixlayout.ETTextView android:textSize="28.0sp" android:textColor="@color/al3" android:textColorHint="@color/al6" android:gravity="center_vertical" android:id="@id/f_b" android:background="@null" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/w4u" />
+        </com.tencent.widget.ScrollView>
+    </FrameLayout>
+    <RelativeLayout android:id="@id/i7_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="34.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="14.0sp" android:textColor="@color/al6" android:layout_gravity="center_vertical" android:id="@id/jfe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="16.0dip" android:text="@string/w5c" android:layout_alignParentRight="true" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ckr" android:scaleType="centerInside" android:layout_toLeftOf="@id/jfe" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/fcv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <include android:id="@id/bve" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/n0" />
+        <com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout android:id="@id/aom" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout android:id="@id/ffj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/ghe" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <android.support.v7.widget.RecyclerView android:id="@id/icr" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <RelativeLayout android:id="@id/i8y" android:background="@color/ae9" android:paddingLeft="18.0dip" android:paddingTop="8.0dip" android:paddingRight="16.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/g04" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/skin_aio_panel_emotion_nor" android:scaleType="centerInside" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/g0l" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="27.0dip" android:src="@drawable/dhd" android:scaleType="centerInside" android:layout_toRightOf="@id/g04" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/g0m" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="27.0dip" android:src="@drawable/dhf" android:scaleType="centerInside" android:layout_toRightOf="@id/g0l" android:layout_centerVertical="true" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                <CheckBox android:layout_gravity="center_vertical" android:id="@id/bzv" android:layout_width="24.0dip" android:layout_height="24.0dip" android:button="@drawable/nj" android:scaleX="0.67" android:scaleY="0.67" />
+                <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:layout_gravity="center_vertical" android:id="@id/jff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w5c" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

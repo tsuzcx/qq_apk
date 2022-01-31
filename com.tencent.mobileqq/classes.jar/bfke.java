@@ -1,78 +1,60 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import mqq.app.AppRuntime;
 
 public class bfke
-  extends RemoteCommand
 {
-  private SparseArray<List<bfkf>> a = new SparseArray();
+  public int a;
+  public long a;
+  public String a;
+  public List<bfkd> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public List<bfkd> b;
+  public boolean b;
+  public long c;
+  public String c;
+  public List<bfkd> c;
+  public boolean c;
+  public long d;
+  public String d = "";
+  public long e;
+  public String e = "";
+  public long f;
+  public String f;
+  public long g;
+  public String g;
   
-  public bfke(AppRuntime paramAppRuntime)
+  public bfke()
   {
-    super("com.tencent.individuality.individualityremotecommand");
-    a(0, new bfkg());
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_c_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_f_of_type_Long = 0L;
+    this.jdField_g_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_f_of_type_JavaLangString = "";
+    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public boolean a(int paramInt, bfkf parambfkf)
+  public void a()
   {
-    List localList = (List)this.a.get(paramInt);
-    Object localObject = localList;
-    if (localList == null)
-    {
-      localObject = new ArrayList();
-      this.a.put(paramInt, localObject);
-    }
-    if (!((List)localObject).contains(parambfkf)) {
-      return ((List)localObject).add(parambfkf);
-    }
-    return false;
+    this.jdField_a_of_type_Int = 6;
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public boolean a()
   {
-    int i = paramBundle.getInt("com.tencent.individuality.individualityremotecommand.id", -1);
-    if (-1 != i)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("IndividualityRemoteCommand", 4, "invoke: dataInvoke=" + paramBundle.toString());
-      }
-      paramOnInvokeFinishLinstener = (List)this.a.get(i);
-      if (paramOnInvokeFinishLinstener == null) {
-        break label100;
-      }
-      paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
-      do
-      {
-        if (!paramOnInvokeFinishLinstener.hasNext()) {
-          break;
-        }
-      } while (!((bfkf)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
-    }
-    label100:
-    do
-    {
-      while (!paramOnInvokeFinishLinstener.hasNext())
-      {
-        do
-        {
-          return paramBundle;
-          paramOnInvokeFinishLinstener = (List)this.a.get(0);
-        } while (paramOnInvokeFinishLinstener == null);
-        paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
-      }
-    } while (!((bfkf)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
-    return paramBundle;
+    return this.jdField_a_of_type_Int == 6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfke
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,14 @@
 import android.graphics.Bitmap;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
 
-public class arwo
-  implements azwh
+class arwo
 {
-  public arwo(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if (MultiCardRecommendFragment.a(this.a) != null) {
-      MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
-    }
-  }
+  long jdField_a_of_type_Long;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  long b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arwo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.preload;
 
 import com.tencent.qphone.base.util.QLog;
-import orr;
-import ors;
-import ort;
-import orx;
+import pct;
+import pcu;
+import pcv;
+import pcz;
 
 public class FeedsPreloadManager$4
   implements Runnable
 {
-  public FeedsPreloadManager$4(ort paramort, ors paramors, long paramLong) {}
+  public FeedsPreloadManager$4(pcv parampcv, pcu parampcu, long paramLong) {}
   
   public void run()
   {
-    orr localorr = orr.a();
-    if (localorr != null)
+    pct localpct = pct.a();
+    if (localpct != null)
     {
-      if (!orx.b(this.jdField_a_of_type_Ors.a)) {
+      if (!pcz.b(this.jdField_a_of_type_Pcu.a)) {
         QLog.d("FeedsPreloadManager", 1, "is not latest request, do not update preload cache.");
       }
     }
@@ -30,7 +30,7 @@ public class FeedsPreloadManager$4
       return;
     }
     QLog.d("FeedsPreloadManager", 1, "update preload cache.");
-    localorr.a(this.jdField_a_of_type_Ors);
+    localpct.a(this.jdField_a_of_type_Pcu);
   }
 }
 

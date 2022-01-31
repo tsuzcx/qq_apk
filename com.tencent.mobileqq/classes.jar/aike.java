@@ -1,33 +1,43 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView.2.1;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import java.util.HashMap;
+import java.util.List;
 
-public class aike
-  implements Animation.AnimationListener
+class aike
+  implements aije
 {
-  public aike(CmGameDebugView paramCmGameDebugView) {}
+  aike(aikd paramaikd, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean)
   {
-    if (CmGameDebugView.a(this.a))
+    if (paramBoolean) {}
+    try
     {
-      CmGameDebugView.a(this.a).postDelayed(new CmGameDebugView.2.1(this), 0L);
-      CmGameDebugView.a(this.a, false);
+      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Aikd.mRuntime.a().getCurrentAccountUin();
+      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
+      aikd.a(this.jdField_a_of_type_Aikd, this.jdField_a_of_type_JavaLangString, (List)localObject);
+      return;
     }
-    if (CmGameDebugView.b(this.a)) {
-      CmGameDebugView.b(this.a, 0);
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      try
+      {
+        aikd.a(this.jdField_a_of_type_Aikd, this.jdField_a_of_type_JavaLangString, null);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
     }
+    aikd.a(this.jdField_a_of_type_Aikd, this.jdField_a_of_type_JavaLangString, null);
+    return;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aike
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,152 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.AssistantSettingActivity.1.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.HeightAdaptableListView;
+import java.util.Locale;
+import java.util.Map;
 
-class aaiw
-  implements View.OnClickListener
+public class aaiw
+  extends ajtq
 {
-  aaiw(aait paramaait) {}
+  public aaiw(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(View paramView)
+  protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramView = (ahzk)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
-    if (5 != localFileManagerEntity.cloudType) {
-      apck.c(localFileManagerEntity);
+    if ((paramBoolean1) && (!this.a.isFinishing())) {
+      AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean2);
     }
-    switch (paramView.jdField_a_of_type_Int)
+  }
+  
+  protected void onGetCommonSwitchFromDetailInfo(boolean paramBoolean, short[] paramArrayOfShort, Map<Short, Short> paramMap)
+  {
+    if ((paramBoolean) && (AssistantSettingActivity.a(this.a) != null) && (this.a.jdField_a_of_type_Aajx != null) && (this.a.jdField_a_of_type_Aajx.a(paramArrayOfShort)))
     {
+      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+        com.tencent.TMG.utils.QLog.i("AssistantSettingActivity", 0, "onGetCommonSwitchFromDetailInfo");
+      }
+      AssistantSettingActivity.a(this.a).a();
     }
-    for (;;)
+  }
+  
+  protected void onGetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+      com.tencent.qphone.base.util.QLog.i("AssistantSettingActivity", 2, "onGetConnectionsSwitch:" + paramBoolean + " " + paramInt1 + " " + paramInt2);
+    }
+    AssistantSettingActivity localAssistantSettingActivity;
+    if (paramBoolean)
     {
-      this.a.jdField_a_of_type_Ahzj.notifyDataSetChanged();
+      localAssistantSettingActivity = this.a;
+      if (this.a.jdField_a_of_type_Afsa.c()) {
+        break label81;
+      }
+    }
+    label81:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      AssistantSettingActivity.b(localAssistantSettingActivity, paramBoolean);
       return;
-      if (!badq.d(BaseApplication.getContext()))
-      {
-        apcb.a(2131627028);
-        return;
+    }
+  }
+  
+  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!this.a.isFinishing()) {
+      AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean2);
+    }
+  }
+  
+  protected void onSetCommonSwitchFromDetailInfo(boolean paramBoolean, short paramShort1, short paramShort2)
+  {
+    boolean bool2 = true;
+    if (this.a.jdField_a_of_type_Aajx == null) {}
+    for (afrw localafrw = null; localafrw == null; localafrw = this.a.jdField_a_of_type_Aajx.a(paramShort1)) {
+      return;
+    }
+    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+      com.tencent.TMG.utils.QLog.i("AssistantSettingActivity", 0, String.format(Locale.getDefault(), "onSetCommonSwitchFromDetailInfo [%s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean), Short.valueOf(paramShort1), Short.valueOf(paramShort2) }));
+    }
+    boolean bool1;
+    if (paramShort2 == 1)
+    {
+      bool1 = true;
+      label91:
+      if ((paramBoolean) || (bool1 != localafrw.e)) {
+        break label148;
       }
-      apbf.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_AndroidContentContext, new aaix(this, localFileManagerEntity));
-      continue;
-      this.a.a(localFileManagerEntity);
-      continue;
-      if (localFileManagerEntity.getCloudType() == 0)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
+      if (localafrw.e) {
+        break label150;
       }
-      else if (localFileManagerEntity.getCloudType() == 6)
-      {
-        ((ajgm)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(0, localFileManagerEntity.uniseq, false);
+    }
+    label148:
+    label150:
+    for (paramBoolean = bool2;; paramBoolean = false)
+    {
+      localafrw.e = paramBoolean;
+      this.a.jdField_a_of_type_ComTencentWidgetHeightAdaptableListView.post(new AssistantSettingActivity.1.1(this, bool1));
+      return;
+      bool1 = false;
+      break label91;
+      break;
+    }
+  }
+  
+  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    boolean bool = true;
+    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+      com.tencent.qphone.base.util.QLog.i("AssistantSettingActivity", 2, "onSetConnectionsSwitch:" + paramBoolean + " " + paramInt1 + " " + paramInt2);
+    }
+    AssistantSettingActivity localAssistantSettingActivity;
+    if (!paramBoolean)
+    {
+      AssistantSettingActivity.a(this.a, 2131719375, 1);
+      localAssistantSettingActivity = this.a;
+      if (this.a.jdField_a_of_type_Afsa.c()) {
+        break label95;
       }
-      else
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
-        continue;
-        if (!badq.d(BaseApplication.getContext()))
-        {
-          apcb.a(2131627028);
-          return;
-        }
-        boolean bool = localFileManagerEntity.isSend();
-        apbf.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_AndroidContentContext, new aaiy(this, localFileManagerEntity));
-      }
+    }
+    label95:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      AssistantSettingActivity.b(localAssistantSettingActivity, paramBoolean);
+      return;
+    }
+  }
+  
+  protected void onSetEmotionRecSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((this.a.isFinishing()) || (this.a.app == null)) {
+      return;
+    }
+    if (!paramBoolean1)
+    {
+      AssistantSettingActivity.a(this.a, 2131719375, 1);
+      AssistantSettingActivity.a(this.a, aexd.a(this.a.app).b(), AssistantSettingActivity.a(this.a));
+      return;
+    }
+    AssistantSettingActivity.a(this.a, paramBoolean2, AssistantSettingActivity.a(this.a));
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean2) {}
+    for (String str = "1";; str = "2")
+    {
+      axqw.b(localQQAppInterface, "dc00898", "", "", "0X800A223", "0X800A223", 0, 0, str, "", "", "");
+      return;
+    }
+  }
+  
+  protected void onSetPttAutoToTxtSwitch(boolean paramBoolean, Object paramObject)
+  {
+    if (!paramBoolean)
+    {
+      bcpw.a(BaseApplication.getContext(), 1, ajyc.a(2131700770), 0).b(this.a.getTitleBarHeight());
+      paramBoolean = ((Boolean)paramObject).booleanValue();
+      AssistantSettingActivity.a(this.a, true);
+      this.a.e.setChecked(paramBoolean);
+      AssistantSettingActivity.a(this.a, paramBoolean);
+      AssistantSettingActivity.a(this.a, false);
     }
   }
 }

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import anrt;
+import aoif;
 
 public class ExtendFriendSearchHistoryManager$1
   implements Runnable
 {
-  public ExtendFriendSearchHistoryManager$1(anrt paramanrt) {}
+  public ExtendFriendSearchHistoryManager$1(aoif paramaoif) {}
   
   public void run()
   {
-    anrt.a(this.this$0);
+    aoif.a(this.this$0);
   }
 }
 

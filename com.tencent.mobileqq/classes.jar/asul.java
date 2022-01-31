@@ -1,56 +1,104 @@
-import android.content.Intent;
-import android.text.TextUtils;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnKeyListener;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.multimsg.save.FileSaveProgressView;
 import com.tencent.qphone.base.util.QLog;
 
-class asul
+public class asul
+  extends Dialog
   implements View.OnClickListener
 {
-  asul(aste paramaste, String paramString) {}
+  private DialogInterface.OnKeyListener jdField_a_of_type_AndroidContentDialogInterface$OnKeyListener = new asum(this);
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  public asun a;
+  private FileSaveProgressView jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView;
+  
+  public asul(@NonNull Context paramContext)
+  {
+    super(paramContext, 2131755181);
+    a(paramContext);
+  }
+  
+  private void a()
+  {
+    setCanceledOnTouchOutside(false);
+    setOnKeyListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnKeyListener);
+  }
+  
+  private void a(@NonNull Context paramContext)
+  {
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559063, null);
+    setContentView(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView = ((FileSaveProgressView)paramContext.findViewById(2131375570));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131363852));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    a();
+  }
+  
+  private void b()
+  {
+    if (isShowing()) {
+      if (this.jdField_a_of_type_Asun != null) {
+        this.jdField_a_of_type_Asun.a();
+      }
+    }
+    try
+    {
+      super.cancel();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("FileSaveDialog", 2, "cancel dialog exception: " + localThrowable.getMessage());
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView.setProgress(paramInt);
+    }
+  }
+  
+  public void a(asun paramasun)
+  {
+    this.jdField_a_of_type_Asun = paramasun;
+  }
   
   public void onClick(View paramView)
   {
-    awrb localawrb = new awrb(this.jdField_a_of_type_Aste.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).b("grp_lbs").c("data_card").d("live_clk").e(aste.a(this.jdField_a_of_type_Aste).uin);
-    if (aste.a(this.jdField_a_of_type_Aste).gender == 0) {
-      paramView = "1";
-    }
-    for (;;)
+    switch (paramView.getId())
     {
-      localawrb.a(new String[] { paramView }).a();
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-      QLog.i("NearbyProfileDisplayPanel", 1, "jumpUrl is empty");
-      return;
-      if (aste.a(this.jdField_a_of_type_Aste).gender == 1) {
-        paramView = "2";
-      } else {
-        paramView = "0";
-      }
-    }
-    if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi:"))
-    {
-      paramView = bade.a(this.jdField_a_of_type_Aste.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, this.jdField_a_of_type_Aste.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      if (paramView != null)
-      {
-        paramView.c();
-        return;
-      }
-      QLog.i("NearbyProfileDisplayPanel", 1, "ja==null, jumpUrl=" + this.jdField_a_of_type_JavaLangString);
+    default: 
       return;
     }
-    paramView = new Intent(this.jdField_a_of_type_Aste.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Aste.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.startActivity(paramView);
+    b();
+  }
+  
+  public void show()
+  {
+    if (!isShowing()) {}
+    try
+    {
+      super.show();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("FileSaveDialog", 2, "show dialog exception: " + localThrowable.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     asul
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,77 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.widget.VerticalGallery.LayoutParams;
 
 public class avqf
-  extends avqg
+  extends BaseAdapter
 {
-  String a = null;
+  private int jdField_a_of_type_Int = 25;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private int b;
+  private int c;
   
-  avom a(aewb paramaewb, List<avon> paramList, String paramString1, boolean paramBoolean, String paramString2)
+  public avqf(Context paramContext, String[] paramArrayOfString, int paramInt)
   {
-    avnn localavnn;
-    if (paramList != null)
-    {
-      localavnn = (avnn)paramList.get(0);
-      if ((localavnn != null) && (localavnn.a() != null))
-      {
-        String str = localavnn.a().hotword.get();
-        ndn.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F74", "0X8006F74", 0, 0, localavnn.a(), str, String.valueOf(localavnn.a().hotword_type.get()), "");
-      }
-      if ((localavnn == null) || (localavnn.a() == null)) {
-        break label166;
-      }
-    }
-    for (;;)
-    {
-      if ((localavnn != null) && (localavnn.a() != null)) {
-        ndn.a(null, "CliOper", "", "", "0X8006535", "0X8006535", 0, 0, "", "", paramString1, String.valueOf(localavnn.a().account_id.get()));
-      }
-      avwe.a(110);
-      this.a = paramString2;
-      return new avnm(paramaewb, paramList, paramString1, paramString2);
-      label166:
-      if (paramList.size() > 1) {
-        localavnn = (avnn)paramList.get(1);
-      } else {
-        localavnn = null;
-      }
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
+    this.b = paramContext.getColor(2131166937);
+    this.c = paramContext.getColor(2131166912);
   }
   
-  avon a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  public View a(int paramInt)
   {
-    return new avnn(paramhotwordrecord, paramString1, paramCharSequence1, paramString2, paramCharSequence2);
+    return getView(paramInt, null, null);
   }
   
-  avon a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  public int getCount()
   {
-    return new avnn(paramrecord, paramString, paramCharSequence);
+    if (this.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      return this.jdField_a_of_type_ArrayOfJavaLangString.length;
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = null;
+    if (paramView == null)
+    {
+      paramViewGroup = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+    }
+    for (paramView = (WheelTextView)paramViewGroup;; paramView = (View)localObject)
+    {
+      String str = this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      localObject = paramView;
+      if (paramView == null) {
+        localObject = (WheelTextView)paramViewGroup;
+      }
+      ((WheelTextView)localObject).setTextSize(20.0F);
+      ((WheelTextView)localObject).setTextColor(this.b);
+      ((WheelTextView)localObject).setGravity(17);
+      ((WheelTextView)localObject).setText(str);
+      ((WheelTextView)localObject).setBackgroundColor(this.c);
+      return paramViewGroup;
+      paramViewGroup = paramView;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avqf
  * JD-Core Version:    0.7.0.1
  */

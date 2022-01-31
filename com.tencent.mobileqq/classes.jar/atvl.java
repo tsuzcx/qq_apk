@@ -1,23 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
 
 public class atvl
-  extends ajjh
+  implements URLDrawable.URLDrawableListener
 {
-  public atvl(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  public atvl(NearbyMomentFragment paramNearbyMomentFragment) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "onUpdateFriendInfo refresh UI uin:" + paramString + " suc:" + paramBoolean);
+    if (NearbyMomentFragment.a(this.a) == 0) {
+      NearbyMomentFragment.a(this.a).setVisibility(8);
     }
-    if ((paramBoolean) && (TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), paramString)) && (!PersonalityLabelGalleryActivity.a(this.a)))
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (NearbyMomentFragment.a(this.a) == 0)
     {
-      PersonalityLabelGalleryActivity.a(this.a, babh.a(this.a.app, PersonalityLabelGalleryActivity.a(this.a)));
-      if (!TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), PersonalityLabelGalleryActivity.b(this.a))) {
-        PersonalityLabelGalleryActivity.d(this.a);
-      }
+      NearbyMomentFragment.a(this.a).setVisibility(0);
+      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
     }
   }
 }

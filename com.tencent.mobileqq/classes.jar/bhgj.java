@@ -1,86 +1,317 @@
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.text.TextUtils;
+import android.util.Log;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.control.CaptureAsyncAutomator;
-import dov.com.qq.im.capture.control.CaptureAsyncStepFactory;
+import dalvik.system.DexClassLoader;
+import dalvik.system.PathClassLoader;
+import java.io.File;
+import java.lang.reflect.Array;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-public class bhgj
-  implements awhd
+public final class bhgj
 {
-  public static String a;
-  public static boolean a;
-  public static String b;
-  public static boolean b;
-  public static boolean c;
-  public static boolean d;
-  public static boolean e;
-  private CaptureAsyncAutomator a;
-  
-  static
+  private static Object a(Object paramObject)
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_b_of_type_Boolean = true;
-    c = true;
-    jdField_a_of_type_JavaLangString = "{1001,1004,1003,1005,1006,1007}";
+    return a(paramObject, Class.forName("dalvik.system.BaseDexClassLoader"), "pathList");
   }
   
-  public bhgj()
+  private static Object a(Object paramObject, int paramInt)
   {
-    this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator = new CaptureAsyncAutomator(null);
+    Object localObject = paramObject.getClass().getComponentType();
+    int m = Array.getLength(paramObject);
+    if ((paramInt < 0) || (paramInt >= m)) {
+      return paramObject;
+    }
+    localObject = Array.newInstance((Class)localObject, m - 1);
+    int j = 0;
+    int i = 0;
+    if (j < m)
+    {
+      if (j == paramInt) {
+        break label82;
+      }
+      int k = i + 1;
+      Array.set(localObject, i, Array.get(paramObject, j));
+      i = k;
+    }
+    label82:
+    for (;;)
+    {
+      j += 1;
+      break;
+      return localObject;
+    }
   }
   
-  public static boolean a(boolean paramBoolean)
+  private static Object a(Object paramObject, Class<?> paramClass, String paramString)
   {
-    if (!c) {}
+    paramClass = paramClass.getDeclaredField(paramString);
+    paramClass.setAccessible(true);
+    return paramClass.get(paramObject);
+  }
+  
+  private static Object a(Object paramObject1, Object paramObject2, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (;;)
+    {
+      Object localObject = paramObject2.getClass().getComponentType();
+      int j = Array.getLength(paramObject2);
+      int k = Array.getLength(paramObject1) + j;
+      localObject = Array.newInstance((Class)localObject, k);
+      int i = 0;
+      if (i < k)
+      {
+        if (i < j) {
+          Array.set(localObject, i, Array.get(paramObject2, i));
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          Array.set(localObject, i, Array.get(paramObject1, i - j));
+        }
+      }
+      return localObject;
+      localObject = paramObject1;
+      paramObject1 = paramObject2;
+      paramObject2 = localObject;
+    }
+  }
+  
+  public static String a(ClassLoader paramClassLoader, int paramInt)
+  {
+    Object localObject;
+    if (a())
+    {
+      if ((paramClassLoader instanceof PathClassLoader)) {}
+      for (localObject = PathClassLoader.class;; localObject = DexClassLoader.class) {
+        return a(paramClassLoader, (Class)localObject, 0);
+      }
+    }
+    if (!b()) {
+      try
+      {
+        if ((paramClassLoader instanceof PathClassLoader)) {}
+        for (localObject = PathClassLoader.class;; localObject = DexClassLoader.class) {
+          return b(paramClassLoader, (Class)localObject, 0);
+        }
+        return b(paramClassLoader, 0);
+      }
+      catch (Throwable paramClassLoader)
+      {
+        Log.e("QzoneModuleInjector", "fail to inject", paramClassLoader);
+        return "";
+      }
+    }
+  }
+  
+  private static String a(ClassLoader paramClassLoader, Class paramClass, int paramInt)
+  {
+    try
+    {
+      if ((paramClassLoader instanceof PathClassLoader)) {
+        a(paramClassLoader, paramClass, "mPaths", a(a(paramClassLoader, paramClass, "mPaths"), paramInt));
+      }
+      a(paramClassLoader, PathClassLoader.class, "mFiles", a(a(paramClassLoader, paramClass, "mFiles"), paramInt));
+      a(paramClassLoader, PathClassLoader.class, "mZips", a(a(paramClassLoader, paramClass, "mZips"), paramInt));
+      a(paramClassLoader, PathClassLoader.class, "mLexs", a(a(paramClassLoader, paramClass, "mLexs"), paramInt));
+      return "Success";
+    }
+    catch (Throwable paramClassLoader)
+    {
+      paramClassLoader.printStackTrace();
+    }
+    return "unloadDexInAliyunOs error: " + Log.getStackTraceString(paramClassLoader);
+  }
+  
+  private static void a(Context paramContext, ClassLoader paramClassLoader, Class paramClass, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    new DexClassLoader(paramString1, paramContext.getDir("dex", 0).getAbsolutePath(), paramString1, paramClassLoader);
+    String str = new File(paramString1).getName().replaceAll("\\.[a-zA-Z0-9]+", ".lex");
+    Class localClass = Class.forName("dalvik.system.LexClassLoader");
+    paramContext = localClass.getConstructor(new Class[] { String.class, String.class, String.class, ClassLoader.class }).newInstance(new Object[] { paramContext.getDir("dex", 0).getAbsolutePath() + File.separator + str, paramContext.getDir("dex", 0).getAbsolutePath(), paramString1, paramClassLoader });
+    if (!TextUtils.isEmpty(paramString2)) {
+      localClass.getMethod("loadClass", new Class[] { String.class }).invoke(paramContext, new Object[] { paramString2 });
+    }
+    if ((paramClassLoader instanceof PathClassLoader)) {
+      a(paramClassLoader, paramClass, "mPaths", b(a(paramClassLoader, paramClass, "mPaths"), a(paramContext, localClass, "mRawDexPath"), paramBoolean));
+    }
+    a(paramClassLoader, paramClass, "mFiles", a(a(paramClassLoader, paramClass, "mFiles"), a(paramContext, localClass, "mFiles"), paramBoolean));
+    a(paramClassLoader, paramClass, "mZips", a(a(paramClassLoader, paramClass, "mZips"), a(paramContext, localClass, "mZips"), paramBoolean));
+    a(paramClassLoader, paramClass, "mLexs", a(a(paramClassLoader, paramClass, "mLexs"), a(paramContext, localClass, "mDexs"), paramBoolean));
+  }
+  
+  private static void a(Context paramContext, ClassLoader paramClassLoader, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneModuleInjector", 2, "injectAboveEqualApiLevel14, libPathL:" + paramString1);
+    }
+    paramContext = new DexClassLoader(paramString1, paramContext.getDir("dex", 0).getAbsolutePath(), paramString1, paramContext.getClassLoader());
+    paramContext = a(b(a(paramClassLoader)), b(a(paramContext)), paramBoolean);
+    paramString1 = a(paramClassLoader);
+    a(paramString1, paramString1.getClass(), "dexElements", paramContext);
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramClassLoader.loadClass(paramString2);
+    }
+  }
+  
+  private static void a(Object paramObject1, Class<?> paramClass, String paramString, Object paramObject2)
+  {
+    paramClass = paramClass.getDeclaredField(paramString);
+    paramClass.setAccessible(true);
+    paramClass.set(paramObject1, paramObject2);
+  }
+  
+  private static boolean a()
+  {
+    try
+    {
+      Class.forName("dalvik.system.LexClassLoader");
+      return true;
+    }
+    catch (ClassNotFoundException localClassNotFoundException) {}
     return false;
   }
   
-  public void a()
+  public static boolean a(Context paramContext, ClassLoader paramClassLoader, String paramString1, String paramString2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator.onDestroy();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator.a(CaptureAsyncStepFactory.a(this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator, String.valueOf(paramInt)));
-  }
-  
-  public void a(Object paramObject, int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (paramString1 == null) {}
+    while (!new File(paramString1).exists()) {
+      return false;
     }
-    d = true;
-    if (!(paramVarArgs[0] instanceof String)) {}
-    for (boolean bool = true;; bool = false)
+    Object localObject;
+    if (a())
     {
-      e = bool;
-      if (!e) {
-        jdField_b_of_type_JavaLangString = (String)paramVarArgs[0];
+      if ((paramClassLoader instanceof PathClassLoader)) {}
+      for (localObject = PathClassLoader.class;; localObject = DexClassLoader.class)
+      {
+        a(paramContext, paramClassLoader, (Class)localObject, paramString1, paramString2, paramBoolean);
+        return true;
       }
-      if (!QLog.isColorLevel()) {
+    }
+    if (!b()) {
+      if ((paramClassLoader instanceof PathClassLoader))
+      {
+        localObject = PathClassLoader.class;
+        b(paramContext, paramClassLoader, (Class)localObject, paramString1, paramString2, paramBoolean);
+      }
+    }
+    for (;;)
+    {
+      return true;
+      localObject = DexClassLoader.class;
+      break;
+      a(paramContext, paramClassLoader, paramString1, paramString2, paramBoolean);
+    }
+  }
+  
+  private static Object b(Object paramObject)
+  {
+    return a(paramObject, paramObject.getClass(), "dexElements");
+  }
+  
+  private static Object b(Object paramObject1, Object paramObject2, boolean paramBoolean)
+  {
+    int i = 0;
+    Object localObject = paramObject1.getClass().getComponentType();
+    int k = Array.getLength(paramObject1);
+    int j = k + 1;
+    localObject = Array.newInstance((Class)localObject, j);
+    if (paramBoolean)
+    {
+      Array.set(localObject, 0, paramObject2);
+      i = 1;
+      while (i < j)
+      {
+        Array.set(localObject, i, Array.get(paramObject1, i - 1));
+        i += 1;
+      }
+    }
+    if (i < j)
+    {
+      if (i < k) {
+        Array.set(localObject, i, Array.get(paramObject1, i));
+      }
+      for (;;)
+      {
+        i += 1;
         break;
+        Array.set(localObject, i, paramObject2);
       }
-      QLog.d("CaptureAsyncControl", 2, new Object[] { "pre open camera, result: ", Boolean.valueOf(e) });
-      return;
+    }
+    return localObject;
+  }
+  
+  @SuppressLint({"NewApi"})
+  private static String b(ClassLoader paramClassLoader, int paramInt)
+  {
+    try
+    {
+      Object localObject = a(b(a(paramClassLoader)), paramInt);
+      paramClassLoader = a(paramClassLoader);
+      a(paramClassLoader, paramClassLoader.getClass(), "dexElements", localObject);
+      return "Success";
+    }
+    catch (Throwable paramClassLoader) {}
+    return "unloadDexAboveEqualApiLevel14 error: " + Log.getStackTraceString(null);
+  }
+  
+  @TargetApi(14)
+  private static String b(ClassLoader paramClassLoader, Class paramClass, int paramInt)
+  {
+    try
+    {
+      if ((paramClassLoader instanceof PathClassLoader)) {
+        a(paramClassLoader, paramClass, "mPaths", a(a(paramClassLoader, paramClass, "mPaths"), paramInt));
+      }
+      a(paramClassLoader, PathClassLoader.class, "mFiles", a(a(paramClassLoader, paramClass, "mFiles"), paramInt));
+      a(paramClassLoader, PathClassLoader.class, "mZips", a(a(paramClassLoader, paramClass, "mZips"), paramInt));
+      a(paramClassLoader, PathClassLoader.class, "mDexs", a(a(paramClassLoader, paramClass, "mDexs"), paramInt));
+      return "Success";
+    }
+    catch (Throwable paramClassLoader)
+    {
+      paramClassLoader.printStackTrace();
+    }
+    return "unloadDexBelowApiLevel14 error: " + Log.getStackTraceString(paramClassLoader);
+  }
+  
+  private static void b(Context paramContext, ClassLoader paramClassLoader, Class paramClass, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    paramContext = new DexClassLoader(paramString1, paramContext.getDir("dex", 0).getAbsolutePath(), paramString1, paramContext.getClassLoader());
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramContext.loadClass(paramString2);
+    }
+    if ((paramClassLoader instanceof PathClassLoader)) {
+      a(paramClassLoader, paramClass, "mPaths", b(a(paramClassLoader, paramClass, "mPaths"), a(paramContext, DexClassLoader.class, "mRawDexPath"), paramBoolean));
+    }
+    a(paramClassLoader, paramClass, "mFiles", a(a(paramClassLoader, paramClass, "mFiles"), a(paramContext, DexClassLoader.class, "mFiles"), paramBoolean));
+    a(paramClassLoader, paramClass, "mZips", a(a(paramClassLoader, paramClass, "mZips"), a(paramContext, DexClassLoader.class, "mZips"), paramBoolean));
+    a(paramClassLoader, paramClass, "mDexs", a(a(paramClassLoader, paramClass, "mDexs"), a(paramContext, DexClassLoader.class, "mDexs"), paramBoolean));
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramClassLoader.loadClass(paramString2);
     }
   }
   
-  public void a(String paramString)
+  private static boolean b()
   {
-    this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator.a(CaptureAsyncStepFactory.a(this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator, paramString));
-  }
-  
-  public void a(String paramString, Object[] paramArrayOfObject)
-  {
-    paramString = CaptureAsyncStepFactory.a(this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator, paramString);
-    paramString.a = paramArrayOfObject;
-    this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator.a(paramString);
+    try
+    {
+      Class.forName("dalvik.system.BaseDexClassLoader");
+      return true;
+    }
+    catch (ClassNotFoundException localClassNotFoundException) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhgj
  * JD-Core Version:    0.7.0.1
  */

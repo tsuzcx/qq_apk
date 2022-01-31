@@ -1,52 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-class adau
-  implements DialogInterface.OnClickListener
+public class adau
+  implements aybh
 {
-  adau(adas paramadas, MessageForArkApp paramMessageForArkApp) {}
+  public adau(FriendShipWaveView paramFriendShipWaveView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface = (MessageForArkApp)awbi.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-    if (paramDialogInterface.msgData == null) {
-      if (paramDialogInterface.ark_app_message == null) {
-        ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
-      }
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
-          } while (this.jdField_a_of_type_Adas.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null);
-          paramInt = paramDialogInterface.getProcessState();
-          this.jdField_a_of_type_Adas.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Adas.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adas.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq);
-          if ((paramInt == 1002) || (paramInt == 0)) {
-            break;
-          }
-          localObject = BaseApplicationImpl.getApplication().getRuntime();
-        } while (!(localObject instanceof QQAppInterface));
-        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(121);
-      } while (localObject == null);
-      localObject = ((ArkAppCenter)localObject).a();
-    } while (localObject == null);
-    ((alib)localObject).a(paramDialogInterface);
-    return;
-    this.jdField_a_of_type_Adas.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
+    aybp localaybp = new aybp(new aybg[] { new aybo(300, 0.1F, 1.1F), new aybo(100, 1.2F, 0.9F), new aybo(100, 0.9F, 1.0F) });
+    this.a.c.a(new aybg[] { localaybp });
+    this.a.b.a(new aybg[] { new aybo(300, 0.0F, 1.0F) });
   }
 }
 

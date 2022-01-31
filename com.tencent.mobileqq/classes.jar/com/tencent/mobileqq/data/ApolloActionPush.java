@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloActionPush
-  extends atmo
+  extends aukm
 {
   public int mActionId;
   public int mActionType;
   public int mAioType;
   public String mContent;
-  @atoc
+  @auma
   public long mId;
   public long mRcvUin;
   public long mSendUin;

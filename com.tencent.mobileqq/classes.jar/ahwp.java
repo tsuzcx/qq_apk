@@ -1,31 +1,43 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import mqq.os.MqqHandler;
 
 public class ahwp
-  implements Animation.AnimationListener
+  implements vue
 {
-  public ahwp(SpecailCareListActivity paramSpecailCareListActivity, ahxh paramahxh, int paramInt) {}
+  public ahwp(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.jdField_a_of_type_Ahxh.a.clearAnimation();
-    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
-    paramAnimation.addRule(10);
-    paramAnimation.addRule(1, 2131302061);
-    paramAnimation.setMargins(0, (int)(22.0F * SpecailCareListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), (int)(23.0F * SpecailCareListActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity) + this.jdField_a_of_type_Int), 0);
-    this.jdField_a_of_type_Ahxh.a.setLayoutParams(paramAnimation);
+    QLog.d(QzoneSlideShowPreparingFragment.a(), 2, "createSlideShowNew AblumListener - endMerge.");
+    QzoneSlideShowPreparingFragment.a(this.a).removeCallbacks(QzoneSlideShowPreparingFragment.a(this.a));
+    ThreadManager.getUIHandler().post(new QzoneSlideShowPreparingFragment.4.1(this));
+    if (QzoneSlideShowPreparingFragment.a(this.a) == 18) {
+      LpReportInfo_pf00064.allReport(585, 15, 8);
+    }
+    if (QzoneSlideShowPreparingFragment.a(this.a) != null)
+    {
+      Object localObject = (BitmapDrawable)QzoneSlideShowPreparingFragment.a(this.a).getDrawable();
+      if (localObject != null)
+      {
+        localObject = ((BitmapDrawable)localObject).getBitmap();
+        if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
+          ((Bitmap)localObject).recycle();
+        }
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahwp
  * JD-Core Version:    0.7.0.1
  */

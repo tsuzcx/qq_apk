@@ -1,37 +1,15 @@
-import android.app.Activity;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.1;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.2;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.3;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.4;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
 
-public class atdt
-  extends axfx
+class atdt
+  implements DialogInterface.OnClickListener
 {
-  public atdt(OCRResultActivity paramOCRResultActivity, Activity paramActivity)
-  {
-    super(paramActivity);
-  }
+  atdt(atdr paramatdr) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.1(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.4(this, paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.3(this));
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.2(this, paramString));
+    this.a.a.a.dismiss();
   }
 }
 

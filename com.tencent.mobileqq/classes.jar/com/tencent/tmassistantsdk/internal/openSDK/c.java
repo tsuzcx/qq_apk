@@ -7,7 +7,7 @@ public class c
 {
   public static String a(String paramString)
   {
-    return a.b(ProtocolPackage.encrypt(paramString.getBytes(), "ji*9^&43U0X-~./(".getBytes()), 0);
+    return a.a(ProtocolPackage.encrypt(paramString.getBytes(), "ji*9^&43U0X-~./(".getBytes()), 0);
   }
 }
 

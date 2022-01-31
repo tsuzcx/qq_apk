@@ -1,15 +1,20 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import java.util.Map;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class owb
-  implements pfh
 {
-  public owb(ProteusItemView paramProteusItemView, qpi paramqpi) {}
+  public RelativeLayout a;
+  public URLImageView a;
+  public DragTextView a;
+  public DragTextView b;
   
-  public void a(View paramView, Map<String, Object> paramMap)
+  public owb(DragTextView paramDragTextView1, RelativeLayout paramRelativeLayout, URLImageView paramURLImageView, DragTextView paramDragTextView2)
   {
-    this.jdField_a_of_type_Qpi.c();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = paramDragTextView1;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    this.jdField_a_of_type_ComTencentImageURLImageView = paramURLImageView;
+    this.b = paramDragTextView2;
   }
 }
 

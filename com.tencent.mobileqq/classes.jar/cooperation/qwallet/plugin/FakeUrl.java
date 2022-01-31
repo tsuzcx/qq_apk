@@ -10,7 +10,7 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import bafb;
+import bbgg;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
@@ -32,7 +32,7 @@ public class FakeUrl
   protected FakeUrl.FakeInfo fakeInfo = new FakeUrl.FakeInfo();
   protected FakeUrl.FakeListener fl;
   private DialogInterface.OnClickListener lListener = new FakeUrl.1(this);
-  private bafb mDialog;
+  private bbgg mDialog;
   private boolean mIsCloseAfterClickUrl = true;
   private DialogInterface.OnClickListener rListener = new FakeUrl.2(this);
   
@@ -64,6 +64,19 @@ public class FakeUrl
     paramContext = new Intent((Context)localObject, JumpActivity.class);
     paramContext.setData(Uri.parse(paramString));
     ((Context)localObject).startActivity(paramContext);
+  }
+  
+  public static void gotoResultH5(Activity paramActivity, String paramString, boolean paramBoolean, int paramInt)
+  {
+    Activity localActivity = paramActivity;
+    if ((paramActivity instanceof BasePluginActivity)) {
+      localActivity = ((BasePluginActivity)paramActivity).getOutActivity();
+    }
+    paramActivity = new Intent(localActivity, QQBrowserActivity.class);
+    paramActivity.putExtra("url", paramString);
+    paramActivity.putExtra("startOpenPageTime", System.currentTimeMillis());
+    paramActivity.putExtra("hide_operation_bar", paramBoolean);
+    localActivity.startActivityForResult(paramActivity, paramInt);
   }
   
   private Uri parseUrl(String paramString)
@@ -107,7 +120,7 @@ public class FakeUrl
           }
           SpannableString localSpannableString = new SpannableString(str1);
           localSpannableString.setSpan(new FakeUrl.3(this, str2), 0, str1.length(), 33);
-          localSpannableString.setSpan(new ForegroundColorSpan(this.context.getResources().getColor(2131100112)), 0, str1.length(), 33);
+          localSpannableString.setSpan(new ForegroundColorSpan(this.context.getResources().getColor(2131165698)), 0, str1.length(), 33);
           localSpannableStringBuilder.append(localSpannableString);
           m = 1;
           i = j;
@@ -161,8 +174,8 @@ public class FakeUrl
     if (TextUtils.isEmpty(paramFakeListener)) {}
     for (paramString = null;; paramString = this.lListener)
     {
-      this.mDialog = new bafb(this.context, 2131690181);
-      this.mDialog.setContentView(2131493345);
+      this.mDialog = new bbgg(this.context, 2131755791);
+      this.mDialog.setContentView(2131558906);
       this.mDialog.setTitle(paramJSONObject.optString("title", null));
       this.mDialog.setMessageWithoutAutoLink(getSpanStr(this.fakeInfo.retmsg));
       this.mDialog.setNegativeButton(paramFakeListener, paramString);

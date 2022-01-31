@@ -1,60 +1,74 @@
-import android.graphics.Point;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.widget.DraggableGridView;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbig
-  extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
+  private float jdField_a_of_type_Float;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Sensor jdField_a_of_type_AndroidHardwareSensor;
+  public SensorEventListener a;
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  private Handler jdField_a_of_type_AndroidOsHandler = new bbii(this, Looper.getMainLooper());
+  private bbij jdField_a_of_type_Bbij;
+  public boolean a;
+  private boolean b;
   
-  public bbig(DraggableGridView paramDraggableGridView, int paramInt)
+  public bbig(Context paramContext, bbij parambbij)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new bbih(this);
+    this.jdField_a_of_type_Bbij = parambbij;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext()), this.jdField_a_of_type_Int, paramInt, paramViewGroup);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSSensor", 2, "LSSensor open=====");
     }
-    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(localView, this.jdField_a_of_type_Int, paramInt);
-    paramView = new bbie(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, this.jdField_a_of_type_Int, paramInt);
-    localView.setOnClickListener(paramView);
-    localView.setOnLongClickListener(paramView);
-    if ((!DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)) && ((DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y != this.jdField_a_of_type_Int) || (DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x != paramInt) || (!DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)))) {
-      localView.setVisibility(0);
+    this.b = false;
+    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("sensor"));
+    this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(8);
+    if (this.jdField_a_of_type_AndroidHardwareSensor != null)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidHardwareSensor.getMaximumRange();
+      if (this.jdField_a_of_type_Float > 10.0F) {
+        this.jdField_a_of_type_Float = 10.0F;
+      }
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener, this.jdField_a_of_type_AndroidHardwareSensor, 2);
+      return;
     }
-    return localView;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Bbij.a(this.b);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSSensor", 2, "LSSensor shutdown=====");
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager != null)
+    {
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener);
+      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
+    }
+    try
+    {
+      this.jdField_a_of_type_Bbij = null;
+      this.jdField_a_of_type_AndroidHardwareSensor = null;
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbig
  * JD-Core Version:    0.7.0.1
  */

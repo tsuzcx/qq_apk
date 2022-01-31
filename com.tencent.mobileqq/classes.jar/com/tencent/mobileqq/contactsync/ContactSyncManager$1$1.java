@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.contactsync;
 
-import amoa;
-import amob;
+import aneh;
+import anei;
 
 public class ContactSyncManager$1$1
   implements Runnable
 {
-  public ContactSyncManager$1$1(amob paramamob) {}
+  public ContactSyncManager$1$1(anei paramanei) {}
   
   public void run()
   {
-    amoa.a(this.a.a);
+    aneh.a(this.a.a);
   }
 }
 

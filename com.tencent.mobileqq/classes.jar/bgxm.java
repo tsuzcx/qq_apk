@@ -1,22 +1,22 @@
-import java.util.Comparator;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 final class bgxm
-  implements Comparator<bgxo>
+  implements View.OnClickListener
 {
-  public int a(bgxo parambgxo1, bgxo parambgxo2)
+  bgxm(Dialog paramDialog) {}
+  
+  public void onClick(View paramView)
   {
-    if (parambgxo1.a) {
-      return 1;
+    if (this.a != null) {
+      this.a.dismiss();
     }
-    if (parambgxo2.a) {
-      return -1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgxm
  * JD-Core Version:    0.7.0.1
  */

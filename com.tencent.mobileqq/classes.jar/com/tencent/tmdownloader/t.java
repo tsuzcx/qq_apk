@@ -5,9 +5,9 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.m;
-import com.tencent.tmassistantbase.util.s;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.l;
+import com.tencent.tmassistantbase.util.r;
 import com.tencent.tmassistantsdk.internal.b.a;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,8 +31,8 @@ public class t
     {
       if ((a == null) || (!c))
       {
-        ac.c("TMAssistantDownloadMessageThread", "recreate mMessagehandlerThread!");
-        b = new HandlerThread(m.b.name());
+        ab.c("TMAssistantDownloadMessageThread", "recreate mMessagehandlerThread!");
+        b = new HandlerThread(l.b.name());
         b.start();
         c = true;
         a = new t(b.getLooper());
@@ -52,7 +52,7 @@ public class t
     }
     Message localMessage = a().obtainMessage();
     localMessage.what = 3;
-    localMessage.obj = new s(paramTMAssistantDownloadClient, paramITMAssistantDownloadClientListener);
+    localMessage.obj = new r(paramTMAssistantDownloadClient, paramITMAssistantDownloadClientListener);
     localMessage.sendToTarget();
   }
   
@@ -63,7 +63,7 @@ public class t
     }
     Message localMessage = a().obtainMessage();
     localMessage.what = 1;
-    localMessage.obj = new s(paramTMAssistantDownloadClient, paramITMAssistantDownloadClientListener);
+    localMessage.obj = new r(paramTMAssistantDownloadClient, paramITMAssistantDownloadClientListener);
     paramTMAssistantDownloadClient = new Bundle();
     paramTMAssistantDownloadClient.putString("url", paramString1);
     paramTMAssistantDownloadClient.putInt("state", paramInt1);
@@ -77,12 +77,12 @@ public class t
   {
     if ((paramITMAssistantDownloadClientListener == null) || (paramTMAssistantDownloadClient == null))
     {
-      ac.c("TMAssistantDownloadSDKMessageThread", "listenr:" + paramITMAssistantDownloadClientListener + " === sdkClient" + paramTMAssistantDownloadClient);
+      ab.c("TMAssistantDownloadSDKMessageThread", "listenr:" + paramITMAssistantDownloadClientListener + " === sdkClient" + paramTMAssistantDownloadClient);
       return;
     }
     Message localMessage = a().obtainMessage();
     localMessage.what = 2;
-    localMessage.obj = new s(paramTMAssistantDownloadClient, paramITMAssistantDownloadClientListener);
+    localMessage.obj = new r(paramTMAssistantDownloadClient, paramITMAssistantDownloadClientListener);
     paramTMAssistantDownloadClient = new Bundle();
     paramTMAssistantDownloadClient.putString("url", paramString);
     paramTMAssistantDownloadClient.putLong("receiveDataLen", paramLong1);
@@ -97,7 +97,7 @@ public class t
     {
       Message localMessage = a().obtainMessage();
       localMessage.what = 4;
-      localMessage.obj = new s(paramArrayOfByte, paramArrayList);
+      localMessage.obj = new r(paramArrayOfByte, paramArrayList);
       localMessage.sendToTarget();
     }
   }
@@ -122,10 +122,10 @@ public class t
         {
           sendEmptyMessageDelayed(5, 30000L);
           return;
-          ac.c("TMAssistantDownloadMessageThread", "<handleMessage> received postTaskStateChangedMessage signal");
-          localObject2 = (s)paramMessage.obj;
-          localObject1 = (TMAssistantDownloadClient)((s)localObject2).a;
-          localObject2 = (ITMAssistantDownloadClientListener)((s)localObject2).b;
+          ab.c("TMAssistantDownloadMessageThread", "<handleMessage> received postTaskStateChangedMessage signal");
+          localObject2 = (r)paramMessage.obj;
+          localObject1 = (TMAssistantDownloadClient)((r)localObject2).a;
+          localObject2 = (ITMAssistantDownloadClientListener)((r)localObject2).b;
           Object localObject3 = paramMessage.getData();
           paramMessage = ((Bundle)localObject3).getString("url");
           int i = ((Bundle)localObject3).getInt("state");
@@ -135,10 +135,10 @@ public class t
           {
             ((ITMAssistantDownloadClientListener)localObject2).onDownloadSDKTaskStateChanged((TMAssistantDownloadClient)localObject1, paramMessage, i, j, (String)localObject3);
             continue;
-            ac.c("TMAssistantDownloadMessageThread", "<handleMessage> received postTaskProgressChangedMessage signal");
-            localObject2 = (s)paramMessage.obj;
-            localObject1 = (TMAssistantDownloadClient)((s)localObject2).a;
-            localObject2 = (ITMAssistantDownloadClientListener)((s)localObject2).b;
+            ab.c("TMAssistantDownloadMessageThread", "<handleMessage> received postTaskProgressChangedMessage signal");
+            localObject2 = (r)paramMessage.obj;
+            localObject1 = (TMAssistantDownloadClient)((r)localObject2).a;
+            localObject2 = (ITMAssistantDownloadClientListener)((r)localObject2).b;
             paramMessage = paramMessage.getData();
             localObject3 = paramMessage.getString("url");
             l1 = paramMessage.getLong("receiveDataLen");
@@ -147,20 +147,20 @@ public class t
             {
               ((ITMAssistantDownloadClientListener)localObject2).onDownloadSDKTaskProgressChanged((TMAssistantDownloadClient)localObject1, (String)localObject3, l1, l2);
               continue;
-              ac.c("TMAssistantDownloadMessageThread", "<handleMessage> received postSDKServiceInvalidMessage signal");
-              localObject1 = (s)paramMessage.obj;
-              paramMessage = (TMAssistantDownloadClient)((s)localObject1).a;
-              localObject1 = (ITMAssistantDownloadClientListener)((s)localObject1).b;
+              ab.c("TMAssistantDownloadMessageThread", "<handleMessage> received postSDKServiceInvalidMessage signal");
+              localObject1 = (r)paramMessage.obj;
+              paramMessage = (TMAssistantDownloadClient)((r)localObject1).a;
+              localObject1 = (ITMAssistantDownloadClientListener)((r)localObject1).b;
               if (localObject1 != null) {
                 ((ITMAssistantDownloadClientListener)localObject1).onDwonloadSDKServiceInvalid(paramMessage);
               }
             }
           }
         }
-        ac.c("TMAssistantDownloadMessageThread", "<handleMessage> received postActionResult signal");
-        localObject1 = (s)paramMessage.obj;
-        paramMessage = (byte[])((s)localObject1).a;
-        localObject1 = (ArrayList)((s)localObject1).b;
+        ab.c("TMAssistantDownloadMessageThread", "<handleMessage> received postActionResult signal");
+        localObject1 = (r)paramMessage.obj;
+        paramMessage = (byte[])((r)localObject1).a;
+        localObject1 = (ArrayList)((r)localObject1).b;
       } while (localObject1 == null);
       Object localObject1 = ((ArrayList)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
@@ -171,7 +171,7 @@ public class t
         }
       }
     }
-    ac.c("TMAssistantDownloadMessageThread", "<handleMessage> dealing exit signal");
+    ab.c("TMAssistantDownloadMessageThread", "<handleMessage> dealing exit signal");
     long l1 = System.currentTimeMillis();
     for (;;)
     {
@@ -179,7 +179,7 @@ public class t
       {
         if (l1 - d < 15000.0D)
         {
-          ac.c("TMAssistantDownloadMessageThread", "<handleMessage> exe THREAD_EXIT signal time is too close with sGetInstanceTimeStamp, continue wait 0.5 * DELAY_TIME");
+          ab.c("TMAssistantDownloadMessageThread", "<handleMessage> exe THREAD_EXIT signal time is too close with sGetInstanceTimeStamp, continue wait 0.5 * DELAY_TIME");
           sendEmptyMessageDelayed(5, 15000L);
           return;
         }
@@ -187,7 +187,7 @@ public class t
       finally {}
       c = false;
       b.quit();
-      ac.c("TMAssistantDownloadMessageThread", "<handleMessage> Message Thread exited!!");
+      ab.c("TMAssistantDownloadMessageThread", "<handleMessage> Message Thread exited!!");
     }
   }
 }

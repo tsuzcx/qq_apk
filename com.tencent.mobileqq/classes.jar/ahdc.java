@@ -1,32 +1,16 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.TouchDelegate;
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import org.json.JSONObject;
 
 public class ahdc
-  extends TouchDelegate
 {
-  public ahdc(DragTextView paramDragTextView, Rect paramRect, View paramView)
-  {
-    super(paramRect, paramView);
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
-  {
-    if (this.a.getVisibility() != 0) {
-      return false;
-    }
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    boolean bool = super.onTouchEvent(paramMotionEvent);
-    paramMotionEvent.setLocation(f1, f2);
-    return bool;
-  }
+  public int a;
+  public String a;
+  public JSONObject a;
+  public String b;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahdc
  * JD-Core Version:    0.7.0.1
  */

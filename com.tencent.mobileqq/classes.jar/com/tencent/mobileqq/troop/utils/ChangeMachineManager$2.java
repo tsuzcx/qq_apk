@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.utils;
 
-import azgf;
+import bahi;
 
 public class ChangeMachineManager$2
   implements Runnable
 {
-  public ChangeMachineManager$2(azgf paramazgf) {}
+  public ChangeMachineManager$2(bahi parambahi) {}
   
   public void run()
   {
-    azgf.b(this.this$0);
+    bahi.b(this.this$0);
   }
 }
 

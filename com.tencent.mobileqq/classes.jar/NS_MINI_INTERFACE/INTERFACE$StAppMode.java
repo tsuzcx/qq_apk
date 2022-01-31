@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 public final class INTERFACE$StAppMode
   extends MessageMicro<StAppMode>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 80 }, new String[] { "interMode", "authoritySilent", "keepOffPullList", "closeTopRightCapsule", "openNativeApi", "hideAppSearch", "isAppStore", "isWangKa", "interLoading", "closeWebviewBounce" }, new Object[] { Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false) }, StAppMode.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88 }, new String[] { "interMode", "authoritySilent", "keepOffPullList", "closeTopRightCapsule", "openNativeApi", "hideAppSearch", "isAppStore", "isWangKa", "interLoading", "closeWebviewBounce", "isLimitedAccess" }, new Object[] { Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false) }, StAppMode.class);
   public final PBBoolField authoritySilent = PBField.initBool(false);
   public final PBBoolField closeTopRightCapsule = PBField.initBool(false);
   public final PBBoolField closeWebviewBounce = PBField.initBool(false);
@@ -16,6 +16,7 @@ public final class INTERFACE$StAppMode
   public final PBBoolField interLoading = PBField.initBool(false);
   public final PBBoolField interMode = PBField.initBool(false);
   public final PBBoolField isAppStore = PBField.initBool(false);
+  public final PBBoolField isLimitedAccess = PBField.initBool(false);
   public final PBBoolField isWangKa = PBField.initBool(false);
   public final PBBoolField keepOffPullList = PBField.initBool(false);
   public final PBBoolField openNativeApi = PBField.initBool(false);

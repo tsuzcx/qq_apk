@@ -1,18 +1,6 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-
-public class adef
-  extends acju
+public abstract interface adef
 {
-  public ProgressBar a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
-  public int e;
-  
-  public adef(addx paramaddx) {}
+  public abstract void a(int paramInt, adeq paramadeq);
 }
 
 

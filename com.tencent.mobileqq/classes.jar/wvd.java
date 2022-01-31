@@ -1,21 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 class wvd
-  implements View.OnClickListener
+  implements bcwh
 {
-  wvd(wvc paramwvc) {}
+  wvd(wva paramwva) {}
   
-  public void onClick(View paramView)
+  public void a(BaseResp paramBaseResp)
   {
-    if (wvc.a(this.a) != null) {
-      wvc.a(this.a).a();
+    if ((wva.a(this.a) == null) || (!wva.a(this.a).equals(paramBaseResp.transaction))) {
+      return;
     }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      bcpw.a(this.a.a, 1, ajyc.a(2131714644), 0).a();
+      return;
+    }
+    bcpw.a(this.a.a, 2, ajyc.a(2131714646), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wvd
  * JD-Core Version:    0.7.0.1
  */

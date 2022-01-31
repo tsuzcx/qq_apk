@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.Doraemon.util;
 
-import zrt;
+import aabm;
 
 public final class DoraemonUtil$4
   implements Runnable
 {
-  public DoraemonUtil$4(zrt paramzrt, int paramInt) {}
+  public DoraemonUtil$4(aabm paramaabm, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Zrt.onPermission(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Aabm.onPermission(this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,33 +1,12 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.4.1;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.4.2;
+import com.tencent.mobileqq.activity.UpgradeTipsDialog;
 
-public class acpe
-  extends View
+public abstract interface acpe
 {
-  acpe(acpd paramacpd, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  protected boolean verifyDrawable(Drawable paramDrawable)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.1(this));
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.2(this));
-    }
-    return true;
-  }
+  public abstract void a(UpgradeTipsDialog paramUpgradeTipsDialog);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acpe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
 
-class ahbq
-  implements View.OnTouchListener
+public class ahbq
 {
-  ahbq(ahbp paramahbp) {}
+  public bbwf a;
+  public PreloadModule a;
+  public PreloadResource a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ahbq(PreloadResource paramPreloadResource, PreloadModule paramPreloadModule, bbwf parambbwf)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource = paramPreloadResource;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule = paramPreloadModule;
+    this.jdField_a_of_type_Bbwf = parambbwf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahbq
  * JD-Core Version:    0.7.0.1
  */

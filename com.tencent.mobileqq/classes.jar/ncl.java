@@ -1,18 +1,8 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-
 public class ncl
-  extends BroadcastReceiver
 {
-  public ncl(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    this.a.a.finish();
-  }
+  public static int a;
+  public static long a;
+  public static String a = "";
 }
 
 

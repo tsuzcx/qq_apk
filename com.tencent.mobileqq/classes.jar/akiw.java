@@ -1,78 +1,123 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.RemoteException;
-import com.tencent.mobileqq.ar.ARGlobalConfigService;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import PayMQQ.UniPayRequest;
+import PayMQQ.UniPayResponse;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-public final class akiw
+public class akiw
+  extends ajtd
 {
-  private static volatile akiw jdField_a_of_type_Akiw;
-  private volatile akpw jdField_a_of_type_Akpw;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new akix(this);
+  private ArrayList<akix> a = new ArrayList();
   
-  private akiw(Context paramContext)
+  public akiw(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramQQAppInterface);
   }
   
-  public static akiw a(Context paramContext)
+  private void a()
   {
-    if (jdField_a_of_type_Akiw == null) {}
-    try
-    {
-      if (jdField_a_of_type_Akiw == null) {
-        jdField_a_of_type_Akiw = new akiw(paramContext.getApplicationContext());
-      }
-      return jdField_a_of_type_Akiw;
-    }
-    finally {}
-  }
-  
-  public ARScanStarFaceConfigInfo a()
-  {
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
-    if (this.jdField_a_of_type_Akpw != null) {}
-    try
-    {
-      localObject1 = this.jdField_a_of_type_Akpw.a();
-      QLog.d("ARGlobalRemoteManager", 2, String.format("getScanStarFaceConfigInfo IService=%s configInfo=%s", new Object[] { this.jdField_a_of_type_Akpw, localObject1 }));
-      return localObject1;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        QLog.e("ARGlobalRemoteManager", 1, "getScanStarFaceConfigInfo fail!", localRemoteException);
-        Object localObject2 = localObject3;
-      }
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((akix)localIterator.next()).a();
     }
   }
   
-  public void a()
+  public void a(akix paramakix)
   {
-    try
-    {
-      if (this.jdField_a_of_type_Akpw == null)
-      {
-        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, ARGlobalConfigService.class);
-        this.jdField_a_of_type_AndroidContentContext.bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-      }
+    if (paramakix == null) {}
+    while (this.a.contains(paramakix)) {
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    this.a.add(paramakix);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.app == null) {
+      paramString = new UniPayRequest(this.mApp.getCurrentAccountUin(), "android" + paramString);
     }
+    for (ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.mApp.getCurrentAccountUin(), "VipSTCheckServer.UinPay");; localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "VipSTCheckServer.UinPay"))
+    {
+      localToServiceMsg.extraData.putSerializable("UniPayRequest", paramString);
+      super.send(localToServiceMsg);
+      return;
+      paramString = new UniPayRequest(this.app.getCurrentAccountUin(), "android" + paramString);
+    }
+  }
+  
+  public void b(akix paramakix)
+  {
+    if ((paramakix != null) && (this.a.contains(paramakix))) {
+      this.a.remove(paramakix);
+    }
+  }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null)) {}
+    do
+    {
+      do
+      {
+        return;
+        str1 = paramToServiceMsg.getServiceCmd();
+      } while (TextUtils.isEmpty(str1));
+      if ((str1.compareTo("VipSTCheckServer.UinPay") == 0) && (QLog.isColorLevel())) {
+        QLog.i("UniPayHandler", 2, "req---" + paramToServiceMsg + ",res----" + paramFromServiceMsg + ",data-----" + paramObject);
+      }
+    } while (str1.compareTo("VipSTCheckServer.UinPay") != 0);
+    paramFromServiceMsg = (UniPayResponse)paramObject;
+    paramToServiceMsg = paramFromServiceMsg.getSUin();
+    int i = paramFromServiceMsg.getIShowOpen();
+    int j = paramFromServiceMsg.getIUniPayType();
+    new HashMap();
+    Object localObject = paramFromServiceMsg.getMapResponse();
+    paramFromServiceMsg = (String)((Map)localObject).get("cur_st");
+    paramObject = (String)((Map)localObject).get("net_mobile_club");
+    String str1 = (String)((Map)localObject).get("open_month");
+    String str2 = (String)((Map)localObject).get("platform");
+    String str3 = (String)((Map)localObject).get("ret");
+    String str4 = (String)((Map)localObject).get("show_open");
+    String str5 = (String)((Map)localObject).get("uin");
+    localObject = (String)((Map)localObject).get("uin_pay_type");
+    if (QLog.isColorLevel()) {
+      QLog.d("UniPayHandler", 2, "sUin==" + paramToServiceMsg + ",isShowOpen==" + i + ",iUniPayType==" + j);
+    }
+    SharedPreferences.Editor localEditor = this.app.getApp().getSharedPreferences("uniPaySp_" + paramToServiceMsg, 4).edit();
+    localEditor.putString("sUin", paramToServiceMsg);
+    localEditor.putInt("isShowOpen", i);
+    localEditor.putInt("iUinpPayType", j);
+    localEditor.putString("cur_st", paramFromServiceMsg);
+    localEditor.putString("net_mobile_club", paramObject);
+    localEditor.putString("open_month", str1);
+    localEditor.putString("platform", str2);
+    localEditor.putString("ret", str3);
+    localEditor.putString("show_open", str4);
+    localEditor.putString("uin", str5);
+    localEditor.putString("uin_pay_type", (String)localObject);
+    localEditor.commit();
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akiw
  * JD-Core Version:    0.7.0.1
  */

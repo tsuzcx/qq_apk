@@ -1,38 +1,33 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.CameraPreviewObservable.1;
 
 public class axid
-  implements View.OnClickListener
+  extends axgh
 {
-  public axid(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  public Handler a;
   
-  public void onClick(View paramView)
+  public axid(Handler paramHandler)
   {
-    paramView = (axhr)paramView.getTag();
-    if (paramView.jdField_a_of_type_Int == axhp.b)
+    if (paramHandler != null)
     {
-      axfs.a(this.a.app, "0X8009938");
-      axfs.a(this.a.app, this.a, 2, "group_online_doc_more_temp", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      awqx.b(this.a.app, "dc00898", "", "", "0X8009C67", "0X8009C67", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "");
+      this.a = paramHandler;
       return;
     }
-    String str = apdq.a(this.a.app, this.a.a, this.a.app.getLongAccountUin());
-    if (!TextUtils.isEmpty(str))
-    {
-      bbmy.a(this.a, str, 0).a();
+    this.a = new Handler(Looper.getMainLooper());
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    if (this.a == null) {
       return;
     }
-    axfs.a(this.a.app, "0X8009937");
-    axfs.a(this.a.app, this.a, "group_online_doc_temp", GroupTeamWorkListActivity.a(this.a), paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo);
-    awqx.b(this.a.app, "dc00898", "", "", "0X8009C66", "0X8009C66", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "");
+    this.a.post(new CameraProxy.CameraPreviewObservable.1(this, paramInt, paramVarArgs));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axid
  * JD-Core Version:    0.7.0.1
  */

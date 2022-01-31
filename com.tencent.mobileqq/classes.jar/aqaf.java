@@ -1,31 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import com.idlefish.flutterboost.interfaces.INativeRouter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class aqaf
-  extends Handler
+public class aqaf
+  implements INativeRouter
 {
-  aqaf(aqae paramaqae, Looper paramLooper)
+  private static aqaf a;
+  
+  public static aqaf a()
   {
-    super(paramLooper);
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new aqaf();
+      }
+      return a;
+    }
+    finally {}
   }
   
-  public void handleMessage(Message paramMessage)
+  public void openContainer(Context paramContext, String paramString, Map<String, Object> paramMap1, int paramInt, Map<String, Object> paramMap2)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)aqae.a(this.a).get();
-    if (localQQAppInterface == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.router", 2, String.format("openContainer: %s", new Object[] { paramString }));
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = "https://openmobile.qq.com/gameteam/get_team_context?uin=" + localQQAppInterface.getCurrentAccountUin();
-    this.a.a(paramMessage, null);
-    this.a.b();
   }
 }
 

@@ -1,33 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.colornote.anim.EnterExitAnimHelper.1.1;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
 
-public class alsf
-  implements Animator.AnimatorListener
+class alsf
+  implements alsk
 {
-  alsf(alse paramalse, alut paramalut, boolean paramBoolean) {}
+  alsf(alsc paramalsc) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(alsn paramalsn, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_Alut != null) {
-      this.jdField_a_of_type_Alut.onColorNoteAnimFinish();
-    }
-    if ((this.jdField_a_of_type_Boolean) && ((paramAnimator instanceof vsd))) {
-      ThreadManager.getUIHandler().postDelayed(new EnterExitAnimHelper.1.1(this, paramAnimator), 200L);
+    int i = 0;
+    while (i < paramalsn.b.size())
+    {
+      alsj localalsj = (alsj)paramalsn.b.get(i);
+      if (localalsj != null) {
+        localalsj.b(paramBoolean, paramalsn.a, paramArrayOfByte);
+      }
+      i += 1;
     }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alsf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aciy;
-import ajjy;
+import actn;
+import ajyc;
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -13,10 +13,10 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import awqx;
-import awup;
-import awuw;
-import beez;
+import axqw;
+import axur;
+import axuy;
+import bfmt;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
@@ -41,7 +41,7 @@ public class MessageShareActivity
   
   public MessageShareActivity()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new beez(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new bfmt(Looper.getMainLooper(), this);
   }
   
   private void a(List<ResultRecord> paramList, Intent paramIntent, AbsStructMsg paramAbsStructMsg)
@@ -49,7 +49,7 @@ public class MessageShareActivity
     if (a(paramAbsStructMsg))
     {
       QLog.d("MessageShareActivity", 1, "onSDKShareEnd sdkLocalShare");
-      ForwardUtils.a(paramList, this, paramIntent.getStringExtra("share_msg_input_value"));
+      ForwardUtils.a(paramList, null, this, paramIntent.getStringExtra("share_msg_input_value"));
       paramIntent.putExtra("sdk_mult_share", true);
       paramIntent.putExtra("sdk_mult_share_for_local", true);
       paramIntent.putExtra("open_chatfragment", false);
@@ -106,9 +106,7 @@ public class MessageShareActivity
         this.jdField_a_of_type_AndroidOsBundle.putLong("res_share_id", l);
         this.jdField_a_of_type_AndroidOsBundle.putString("res_pkg_name", (String)localObject2);
         this.jdField_a_of_type_AndroidOsBundle.putString("res_detail_url", paramMessage);
-        if (QLog.isColorLevel()) {
-          QLog.d("MessageShareActivity", 2, "-->handleMessage--appid = " + l + ", pkgNmae = " + (String)localObject2);
-        }
+        QLog.d("MessageShareActivity", 1, new Object[] { "-->handleMessage--appid = ", Long.valueOf(l), ", pkgNmae = ", localObject2 });
         paramMessage = new Intent(this, SplashActivity.class);
         paramMessage.putExtra("k_from_login", true);
         Object localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
@@ -126,26 +124,26 @@ public class MessageShareActivity
           localObject3 = this.jdField_a_of_type_AndroidOsBundle.getString("detail_url");
           if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject3)))
           {
-            localObject2 = awup.a((String)localObject3);
+            localObject2 = axur.a((String)localObject3);
             if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-              awqx.b(null, "CliOper", "", "", "0X8005F53", "0X8005F53", 0, 0, awup.a(j) + "", "", (String)localObject2, "");
+              axqw.b(null, "CliOper", "", "", "0X8005F53", "0X8005F53", 0, 0, axur.a(j) + "", "", (String)localObject2, "");
             }
           }
         }
         boolean bool = this.jdField_a_of_type_AndroidOsBundle.getBoolean("share_msg_by_server_enable_entry", false);
-        localObject2 = awuw.a(this.jdField_a_of_type_AndroidOsBundle);
+        localObject2 = axuy.a(this.jdField_a_of_type_AndroidOsBundle);
         if ((localObject2 != null) && (this.app != null))
         {
           if (!(localObject2 instanceof StructMsgForImageShare)) {
-            break label578;
+            break label569;
           }
           ThreadManager.post(new MessageShareActivity.1(this, localArrayList, (AbsStructMsg)localObject2, (String)localObject1, j), 8, null, false);
-          label484:
+          label475:
           paramMessage.putExtra("stuctmsg_bytes", ((AbsStructMsg)localObject2).getBytes());
           if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("share_from_aio", false)) {
-            break label711;
+            break label702;
           }
-          paramMessage = aciy.a(paramMessage, new int[] { 2 });
+          paramMessage = actn.a(paramMessage, new int[] { 2 });
           this.jdField_a_of_type_AndroidOsBundle.remove("share_from_aio");
         }
         for (;;)
@@ -157,11 +155,11 @@ public class MessageShareActivity
           a(localArrayList, paramMessage, (AbsStructMsg)localObject2);
           finish();
           break;
-          label578:
+          label569:
           if ((bool) && (i == 11))
           {
             this.jdField_a_of_type_AndroidOsBundle.putBoolean("share_send_msg_by_server", true);
-            break label484;
+            break label475;
           }
           if ((localArrayList != null) && (!localArrayList.isEmpty()))
           {
@@ -171,17 +169,17 @@ public class MessageShareActivity
               localObject3 = (ResultRecord)((Iterator)localObject1).next();
               AbsShareMsg.sendSdkShareMessage(this.app, (AbsShareMsg)localObject2, ((ResultRecord)localObject3).a, ((ResultRecord)localObject3).a(), ((ResultRecord)localObject3).c);
             }
-            break label484;
+            break label475;
           }
           localObject3 = this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin");
           AbsShareMsg.sendSdkShareMessage(this.app, (AbsShareMsg)localObject2, (String)localObject1, j, (String)localObject3);
-          break label484;
-          label711:
-          paramMessage = aciy.a(paramMessage, null);
+          break label475;
+          label702:
+          paramMessage = actn.a(paramMessage, null);
           paramMessage.putExtra("share_from_aio", true);
         }
-        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131305861)).setText(ajjy.a(2131640875));
-        this.jdField_a_of_type_AndroidAppDialog.findViewById(2131305860).setVisibility(4);
+        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371557)).setText(ajyc.a(2131706660));
+        this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371556).setVisibility(4);
         this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(3, 800L);
         continue;
         finish();
@@ -193,10 +191,10 @@ public class MessageShareActivity
   {
     super.onCreate(paramBundle);
     super.setContentView(new View(this));
-    this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131690181);
+    this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131755791);
     this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(2131493818);
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131305861)).setText(2131629444);
+    this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559386);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371557)).setText(2131695125);
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
     if (this.jdField_a_of_type_AndroidOsBundle != null) {
       try
@@ -213,7 +211,7 @@ public class MessageShareActivity
         return;
       }
     }
-    QLog.d("MessageShareActivity", 2, "getExtras() is null !!!!!");
+    QLog.d("MessageShareActivity", 1, "getExtras() is null !!!!!");
     this.jdField_a_of_type_AndroidAppDialog.show();
     handleMessage(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(2));
   }
@@ -228,7 +226,7 @@ public class MessageShareActivity
     }
     catch (Exception localException)
     {
-      QLog.d("MessageShareActivity", 2, "doShare() cause exception !!!!!");
+      QLog.e("MessageShareActivity", 1, "doShare() cause exception !!!!!", localException);
       this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(2, 333L);
     }
   }

@@ -1,21 +1,68 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class ajyw
-  implements DialogInterface.OnClickListener
+  extends ajxl
 {
-  ajyw(ajyv paramajyv, Activity paramActivity) {}
+  ajyw(ajyv paramajyv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("back_for_hidden_chat", true);
-    paramDialogInterface.setFlags(603979776);
-    HiddenChatFragment.a(this.jdField_a_of_type_AndroidAppActivity, 3, 0, paramDialogInterface);
-    awqx.b(this.jdField_a_of_type_Ajyv.a, "dc00898", "", "", "0X800A34A", "0X800A34A", 0, 0, "0", "0", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatShare", 2, "onGetFriendDateNick.isSuccess=" + paramBoolean + ",uin=" + paramString1 + ",nick=" + paramString2);
+    }
+    if ((TextUtils.isEmpty(paramString1)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin)) || (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {}
+    for (;;)
+    {
+      return;
+      if (paramBoolean) {
+        this.a.jdField_a_of_type_JavaLangString = paramString2;
+      }
+      if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing()))
+      {
+        if (this.a.jdField_a_of_type_Int == 0) {
+          this.a.jdField_a_of_type_Int = 1;
+        }
+        while (this.a.jdField_a_of_type_Int == 3)
+        {
+          this.a.c();
+          ajyv.a(this.a);
+          return;
+          if (this.a.jdField_a_of_type_Int == 2) {
+            this.a.jdField_a_of_type_Int = 3;
+          }
+        }
+      }
+    }
+  }
+  
+  protected void onStrangerHeadReady(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatShare", 2, "onStrangerHeadReady.isSuccess=" + paramBoolean + ",id=" + paramString1 + ",idType=" + paramInt + ",downloadUrl=" + paramString2);
+    }
+    if ((paramInt != 200) || (TextUtils.isEmpty(paramString1)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin))) {}
+    for (;;)
+    {
+      return;
+      this.a.b = paramString2;
+      if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing()))
+      {
+        if (this.a.jdField_a_of_type_Int == 0) {
+          this.a.jdField_a_of_type_Int = 2;
+        }
+        while (this.a.jdField_a_of_type_Int == 3)
+        {
+          this.a.c();
+          ajyv.a(this.a);
+          return;
+          if (this.a.jdField_a_of_type_Int == 1) {
+            this.a.jdField_a_of_type_Int = 3;
+          }
+        }
+      }
+    }
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ark.API;
 
-import akyv;
-import akyy;
-import akzc;
+import alnh;
+import alnk;
+import alno;
 import com.tencent.ark.ark.VariantWrapper;
 
 public class ArkAppDeviceModule$ObserverMethod$3$2$1
   implements Runnable
 {
-  public ArkAppDeviceModule$ObserverMethod$3$2$1(akzc paramakzc) {}
+  public ArkAppDeviceModule$ObserverMethod$3$2$1(alno paramalno) {}
   
   public void run()
   {
-    akyv.a(this.a.a.jdField_a_of_type_Akyy.a, this.a.a.jdField_a_of_type_Long, false, 0.0D, 0.0D);
-    ark.VariantWrapper localVariantWrapper = this.a.a.jdField_a_of_type_Akyy.a.a(this.a.a.jdField_a_of_type_Long);
+    alnh.a(this.a.a.jdField_a_of_type_Alnk.a, this.a.a.jdField_a_of_type_Long, false, 0.0D, 0.0D);
+    ark.VariantWrapper localVariantWrapper = this.a.a.jdField_a_of_type_Alnk.a.a(this.a.a.jdField_a_of_type_Long);
     if (localVariantWrapper != null) {
       localVariantWrapper.Reset();
     }

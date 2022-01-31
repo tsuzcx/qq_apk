@@ -1,78 +1,56 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.LBSInfo;
 
-class lxa
-  implements Animation.AnimationListener
+public abstract class lxa
+  extends Binder
+  implements lwz
 {
-  lxa(lwx paramlwx) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public static lwz a(IBinder paramIBinder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "OutAnimation onAnimationEnd");
+    if (paramIBinder == null) {
+      return null;
     }
-    try
-    {
-      if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null))
-      {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().aq = false;
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().ar = false;
-      }
-      if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null) {
-        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setVisibility(4);
-      }
-      if (this.a.jdField_a_of_type_AndroidViewView != null) {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      }
-      if (this.a.b != null) {
-        this.a.b.setVisibility(4);
-      }
-      if (this.a.c != null) {
-        this.a.c.setVisibility(4);
-      }
-      if (this.a.d != null) {
-        this.a.d.setVisibility(4);
-      }
-      if (this.a.e != null) {
-        this.a.e.setVisibility(4);
-      }
-      if (this.a.g != null) {
-        this.a.g.setVisibility(4);
-      }
-      if (this.a.jdField_a_of_type_Lxc != null) {
-        this.a.jdField_a_of_type_Lxc.b();
-      }
-      return;
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IQQServiceLocationCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof lwz))) {
+      return (lwz)localIInterface;
     }
-    catch (Exception paramAnimation)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavOutAnimationListener onAnimationEnd Exception :" + paramAnimation);
-    }
+    return new lxb(paramIBinder);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "OutAnimation onAnimationStart");
-    }
-    try
+    switch (paramInt1)
     {
-      if (this.a.jdField_a_of_type_Lxc != null) {
-        this.a.jdField_a_of_type_Lxc.a();
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.av.service.IQQServiceLocationCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
+      a(paramParcel1.readInt(), paramParcel1.readString());
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
+    boolean bool;
+    if (paramParcel1.readInt() != 0)
+    {
+      bool = true;
+      if (paramParcel1.readInt() == 0) {
+        break label125;
       }
-      return;
     }
-    catch (Exception paramAnimation)
+    label125:
+    for (paramParcel1 = (LBSInfo)LBSInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavOutAnimationListener onAnimationStart Exception :" + paramAnimation);
+      a(bool, paramParcel1);
+      return true;
+      bool = false;
+      break;
     }
   }
 }

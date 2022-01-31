@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.bigbrother.RockDownloader;
 
-import ajjy;
-import ally;
-import allz;
+import ajyc;
+import amam;
+import aman;
 import android.text.TextUtils;
-import atmo;
-import atmp;
+import aukm;
+import aukn;
+import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,7 +20,7 @@ public final class RockDownloader$2
   
   public void run()
   {
-    Object localObject = allz.a().a(RockDownloadInfo.class, true, "businessName=? AND packageName=?", new String[] { this.a.getDownloadInfo().businessName, this.a.getDownloadInfo().packageName }, null, null, null, null);
+    Object localObject = aman.a().a(RockDownloadInfo.class, true, "businessName=? AND packageName=?", new String[] { this.a.getDownloadInfo().businessName, this.a.getDownloadInfo().packageName }, null, null, null, null);
     ArrayList localArrayList = new ArrayList();
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
@@ -30,20 +30,20 @@ public final class RockDownloader$2
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        atmo localatmo = (atmo)((Iterator)localObject).next();
-        if ((localatmo instanceof RockDownloadInfo))
+        aukm localaukm = (aukm)((Iterator)localObject).next();
+        if ((localaukm instanceof RockDownloadInfo))
         {
-          RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)localatmo;
-          if ((!TextUtils.isEmpty(localRockDownloadInfo.localPath)) && (new File(localRockDownloadInfo.localPath).exists()))
+          RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)localaukm;
+          if ((!TextUtils.isEmpty(localRockDownloadInfo.localPath)) && (new VFSFile(localRockDownloadInfo.localPath).exists()))
           {
             localArrayList.add(localRockDownloadInfo);
           }
           else
           {
             if (QLog.isColorLevel()) {
-              QLog.d("RockDownloader", 2, new Object[] { "File Removed: ", localatmo.toString() });
+              QLog.d("RockDownloader", 2, new Object[] { "File Removed: ", localaukm.toString() });
             }
-            allz.a().b(localRockDownloadInfo);
+            aman.a().b(localRockDownloadInfo);
           }
         }
       }
@@ -57,7 +57,7 @@ public final class RockDownloader$2
     else {
       return;
     }
-    this.a.getQueryAPKListener().a(this.a.getDownloadInfo(), ajjy.a(2131647699), 10002);
+    this.a.getQueryAPKListener().a(this.a.getDownloadInfo(), ajyc.a(2131713487), 10002);
   }
 }
 

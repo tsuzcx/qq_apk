@@ -1,32 +1,16 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
 class qse
-  extends omr
+  implements DialogInterface.OnShowListener
 {
-  qse(qsc paramqsc, String paramString, int paramInt1, BaseArticleInfo paramBaseArticleInfo, int paramInt2, ViewGroup paramViewGroup)
-  {
-    super(paramString);
-  }
+  qse(qrw paramqrw) {}
   
-  public void a(oml paramoml)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    beoj.a("ReadInJoyBaseAdapter.Viewtype " + this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Qsc.a(this.jdField_a_of_type_Int)) {
-      if ((oag.a(this.jdField_a_of_type_Qsc.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) && (this.jdField_a_of_type_Qsc.c != 56))
-      {
-        if ((paramoml instanceof omn)) {}
-      }
-      else {
-        while ((paramoml instanceof omn)) {
-          return;
-        }
-      }
-    }
-    if (paramoml.a(this.jdField_a_of_type_Int)) {
-      this.jdField_a_of_type_JavaLangObject = paramoml.a(this.b, null, this.jdField_a_of_type_AndroidViewViewGroup);
-    }
-    beoj.a();
+    qrw.a(this.a, "mShareActionSheet onShow()");
+    this.a.a.a.a().clearFlags(8);
   }
 }
 

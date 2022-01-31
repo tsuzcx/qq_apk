@@ -1,24 +1,36 @@
-import android.util.LruCache;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class aili
-  extends LruCache<String, ailj>
+  implements View.OnClickListener
 {
-  aili(ailh paramailh, int paramInt)
-  {
-    super(paramInt);
-  }
+  aili(ailh paramailh, agik paramagik, int paramInt) {}
   
-  protected int a(String paramString, ailj paramailj)
+  public void onClick(View paramView)
   {
-    if ((paramailj == null) || (paramailj.a == null)) {
-      return 0;
+    paramView = new Intent(this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Agik.b);
+    paramView.putExtra("isShowAd", false);
+    this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    if ((this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidContentContext instanceof AvatarPendantActivity)) {
+      ((AvatarPendantActivity)this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidContentContext).a = -1L;
     }
-    return paramailj.a.length;
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "faceaddon", "0X8008486", "", 1, 0, 0, "", "", "");
+      return;
+    }
+    axqw.b(this.jdField_a_of_type_Ailh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006334", "0X8006334", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aili
  * JD-Core Version:    0.7.0.1
  */

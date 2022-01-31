@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import alut;
+import amkj;
 
 class GameActivity1$2
-  implements alut
+  implements amkj
 {
   GameActivity1$2(GameActivity1 paramGameActivity1) {}
   

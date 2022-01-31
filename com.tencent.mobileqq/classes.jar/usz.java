@@ -1,18 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetShareGroupListReceiver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public final class usz
-  implements Parcelable.Creator<EditTakePhotoSource>
+public class usz
+  extends QQUIEventReceiver<usw, utz>
 {
-  public EditTakePhotoSource a(Parcel paramParcel)
+  public usz(@NonNull usw paramusw)
   {
-    return new EditTakePhotoSource(paramParcel);
+    super(paramusw);
   }
   
-  public EditTakePhotoSource[] a(int paramInt)
+  public void a(@NonNull usw paramusw, @NonNull utz paramutz)
   {
-    return new EditTakePhotoSource[paramInt];
+    if (paramutz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      veg.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramutz.jdField_a_of_type_Int));
+      usw.b(paramusw, paramutz.jdField_a_of_type_Int);
+      if (paramusw.a != null)
+      {
+        paramusw.a.shareGroupCount = usw.b(paramusw);
+        ThreadManager.post(new MemoriesProfilePresenter.GetShareGroupListReceiver.1(this, paramusw), 5, null, false);
+      }
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return utz.class;
   }
 }
 

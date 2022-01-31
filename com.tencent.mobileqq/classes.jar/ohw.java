@@ -1,19 +1,24 @@
-final class ohw
-  implements ohx
+import com.tencent.widget.AbsListView;
+
+class ohw
+  implements bfob
 {
-  public void l()
+  ohw(ohv paramohv) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    rvf.a(2, true, System.currentTimeMillis(), 0, 0, false);
+    if (this.a.a != null)
+    {
+      paramInt1 = ohv.a(this.a, paramInt1);
+      this.a.a.onScroll(paramInt1);
+    }
   }
   
-  public void m()
-  {
-    rvf.a(2, false, ohs.d, 0, 0, false);
-  }
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ohw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahjw
-  implements View.OnClickListener
 {
-  public ahjw(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
+  public long a;
+  public MessageRecord a;
+  public String a;
+  public byte[] a;
   
-  public void onClick(View paramView)
+  public ahjw(MessageRecord paramMessageRecord, long paramLong, byte[] paramArrayOfByte, String paramString)
   {
-    QzoneSlideShowPreparingFragment.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

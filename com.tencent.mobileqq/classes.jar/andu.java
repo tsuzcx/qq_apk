@@ -1,68 +1,83 @@
-import com.tencent.av.VideoController;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
 public class andu
-  extends bcqu
 {
-  public andu(MessengerService paramMessengerService) {}
+  private static amou a;
+  private static amou b;
+  public String a;
+  public String b;
+  private amou c;
+  public String c;
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
   
-  protected void h(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public andu()
   {
-    try
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+  }
+  
+  public void a()
+  {
+    if (this.e.equals("LOCAL")) {
+      if (!this.f.equals("1")) {}
+    }
+    label24:
+    do
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)MessengerService.j(this.a);
-      if (localQQAppInterface != null)
+      do
       {
-        localQQAppInterface.removeObserver(this);
-        if ((paramBoolean) && (paramHashMap != null) && (!paramHashMap.isEmpty()) && (paramHashMap.containsKey("sigmsg")) && (paramHashMap.containsKey("request_type")) && (paramHashMap.containsKey("uin")))
+        do
         {
-          Object localObject = (byte[])paramHashMap.get("sigmsg");
-          String str1 = String.valueOf(paramHashMap.get("request_type"));
-          String str2 = String.valueOf(paramHashMap.get("uin"));
-          if (localObject != null) {
-            localQQAppInterface.a().c(str2, (byte[])localObject);
-          }
-          int j = mqb.b(localQQAppInterface, str2);
-          localObject = "";
-          if (j == 0) {
-            localObject = babh.i(localQQAppInterface, str2);
-          }
-          for (;;)
+          do
           {
-            int i = j;
-            if (j != 1024)
+            do
             {
-              i = j;
-              if (j != 1025) {
-                i = VideoController.a(j, false, 1);
-              }
+              break label24;
+              break label24;
+              break label24;
+              do
+              {
+                return;
+              } while ((this.f.equals("2")) || (this.f.equals("4")) || (this.f.equals("5")) || (this.f.equals("6")) || (!this.f.equals("7")));
+              return;
+            } while ((this.e.equals("WAP")) || (this.e.equals("TMTWAP")) || (this.e.equals("WAPI")) || (this.e.equals("TMTWAPI")) || (this.e.equals("VOICECALL")));
+            if (!this.e.equals("QQMSG")) {
+              break;
             }
-            paramBoolean = str1.equals("audio");
-            ChatActivityUtils.a(localQQAppInterface, localQQAppInterface.getApp(), i, str2, (String)localObject, "", paramBoolean, null, true, true, null, "from_internal", null);
-            return;
-            if (paramHashMap.containsKey("nickname")) {
-              localObject = String.valueOf(paramHashMap.get("nickname"));
-            }
-          }
+          } while (!this.jdField_c_of_type_JavaLangString.equals("AUTO"));
+          return;
+        } while ((this.e.equals("AUTOQQMSG")) || (this.e.equals("HTTP")) || (this.e.equals("AUTOSMS")));
+        if (!this.e.equals("USERSMS")) {
+          break;
         }
+      } while (!this.jdField_c_of_type_JavaLangString.equals("AUTO"));
+      return;
+    } while (!this.e.equals("RESET"));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    amou[] arrayOfamou = new amou[2];
+    if ((this.d != null) && (!this.e.equals("")))
+    {
+      if (this.jdField_c_of_type_Amou == null) {
+        this.jdField_c_of_type_Amou = new amou(this.d, 1, 1);
       }
+      arrayOfamou[0] = this.jdField_c_of_type_Amou;
+    }
+    if (paramBoolean)
+    {
+      arrayOfamou[1] = jdField_b_of_type_Amou;
       return;
     }
-    catch (Exception paramHashMap)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MessengerService", 2, "onGetSigmsg ", paramHashMap);
-      }
-    }
+    arrayOfamou[1] = jdField_a_of_type_Amou;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     andu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,15 @@
+import java.util.HashMap;
+
 class tqq
-  implements tql
+  extends tpx
 {
-  public tql a;
+  tqq(tqk paramtqk, tro paramtro) {}
   
-  private tqq(tqm paramtqm) {}
-  
-  public void a_(tqg paramtqg)
+  public boolean b()
   {
-    if (tqm.a(this.jdField_a_of_type_Tqm) != null) {
-      tqm.a(this.jdField_a_of_type_Tqm).a(0L, paramtqg.b(), paramtqg);
-    }
-    if (this.jdField_a_of_type_Tql != null) {
-      this.jdField_a_of_type_Tql.a_(paramtqg);
-    }
+    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
+    this.jdField_a_of_type_Tro.a = ((String)localHashMap.get(this.jdField_a_of_type_Tro.a));
+    return true;
   }
 }
 

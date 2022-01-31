@@ -1,16 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
 public class rhh
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bfug
 {
-  public rhh(TabLayoutCompat paramTabLayoutCompat) {}
+  public rhh(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.scrollTo(((Integer)paramValueAnimator.getAnimatedValue()).intValue(), 0);
-  }
+  public void a(bfuf parambfuf) {}
 }
 
 

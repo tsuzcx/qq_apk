@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
 import android.view.View;
-import anum;
+import aokz;
 
 public class ExtendFriendVoiceView$1$1$1
   implements Runnable
 {
-  public ExtendFriendVoiceView$1$1$1(anum paramanum) {}
+  public ExtendFriendVoiceView$1$1$1(aokz paramaokz) {}
   
   public void run()
   {

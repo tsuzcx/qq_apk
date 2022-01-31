@@ -1,23 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.POIInfo;
-
-public final class alix
-  implements Parcelable.Creator<POIInfo>
+public class alix
 {
-  public POIInfo a(Parcel paramParcel)
+  public int a;
+  public long a;
+  public ayrv a;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "";
+  
+  public alix()
   {
-    return new POIInfo(paramParcel);
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public POIInfo[] a(int paramInt)
+  public String toString()
   {
-    return new POIInfo[paramInt];
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", md5='").append(this.b).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alix
  * JD-Core Version:    0.7.0.1
  */

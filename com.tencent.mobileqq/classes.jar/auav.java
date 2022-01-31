@@ -1,28 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.profile.view.VipTagView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.widget.OCRBottomTabView;
 
 public class auav
-  implements Animation.AnimationListener
+  implements TextWatcher
 {
-  public auav(ProfileTagView paramProfileTagView, boolean paramBoolean, VipTagView paramVipTagView) {}
+  public auav(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a.a != 0) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131307958) != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131307958).equals(Boolean.valueOf(true))))
+    if (paramEditable.toString().trim().length() == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTag(2131307958, Boolean.valueOf(false));
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, ((Long)this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131307960)).longValue());
+      this.a.b.setEnabled(false);
+      this.a.a.setEnabled(false);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setShakingState(true);
+    this.a.b.setEnabled(true);
+    this.a.a.setEnabled(true);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

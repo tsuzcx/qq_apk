@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import asif;
-import atmp;
-import atmq;
+import atej;
+import aukn;
+import auko;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Iterator;
 import java.util.List;
@@ -11,12 +11,12 @@ import java.util.Map;
 public class WerewolvesDataManager$1
   implements Runnable
 {
-  public WerewolvesDataManager$1(asif paramasif, QQAppInterface paramQQAppInterface) {}
+  public WerewolvesDataManager$1(atej paramatej, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Atmp = this.a.getEntityManagerFactory().createEntityManager();
-    Object localObject2 = this.this$0.jdField_a_of_type_Atmp.a(RecentInviteUser.class);
+    this.this$0.jdField_a_of_type_Aukn = this.a.getEntityManagerFactory().createEntityManager();
+    Object localObject2 = this.this$0.jdField_a_of_type_Aukn.a(RecentInviteUser.class);
     Object localObject1 = this.this$0.jdField_a_of_type_JavaLangObject;
     if (localObject2 != null) {
       try

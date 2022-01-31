@@ -1,26 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class nhl
-  implements Animator.AnimatorListener
+public class nhl
+  implements bfoq
 {
-  nhl(nhi paramnhi) {}
+  public nhl(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    nhi.a(false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    nhi.a(false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    nhi.a(true);
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.E();
+    }
   }
 }
 

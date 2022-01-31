@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-final class azyz
-  implements View.OnClickListener
+public class azyz
+  implements DialogInterface.OnClickListener
 {
-  azyz(AtomicBoolean paramAtomicBoolean, atgo paramatgo) {}
+  public azyz(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    this.jdField_a_of_type_Atgo.dismiss();
+    this.a.a(this.a.a);
+    if (ReciteRecordLayout.a(this.a) != null) {
+      ReciteRecordLayout.a(this.a).f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azyz
  * JD-Core Version:    0.7.0.1
  */

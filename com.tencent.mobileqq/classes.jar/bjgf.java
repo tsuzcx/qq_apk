@@ -1,14 +1,6 @@
-public abstract interface bjgf
+public abstract class bjgf
 {
-  public abstract void af();
-  
-  public abstract void b(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void c(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void d(int paramInt);
-  
-  public abstract int j();
+  abstract void a(int paramInt, bjgg parambjgg);
 }
 
 

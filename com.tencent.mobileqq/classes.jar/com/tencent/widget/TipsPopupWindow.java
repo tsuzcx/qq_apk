@@ -5,12 +5,12 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
-import beoi;
+import bfwc;
 import com.tencent.qphone.base.util.QLog;
 
 public class TipsPopupWindow
   extends PopupWindow
-  implements beoi
+  implements bfwc
 {
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;

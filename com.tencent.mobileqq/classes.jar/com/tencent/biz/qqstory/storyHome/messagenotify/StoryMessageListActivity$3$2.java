@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.storyHome.messagenotify;
 
-import uib;
+import uux;
 
 public class StoryMessageListActivity$3$2
   implements Runnable
 {
-  public StoryMessageListActivity$3$2(uib paramuib) {}
+  public StoryMessageListActivity$3$2(uux paramuux) {}
   
   public void run()
   {

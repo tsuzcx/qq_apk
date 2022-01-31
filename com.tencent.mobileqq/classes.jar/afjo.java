@@ -1,22 +1,36 @@
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class afjo
-  implements View.OnClickListener
+public class afjo
+  extends afjx
 {
-  afjo(afjl paramafjl, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Afjl, 2);
-    }
-  }
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public String b;
+  public View c;
+  public ImageView c;
+  public TextView c;
+  public String c;
+  public View d;
+  public ImageView d;
+  public TextView d;
+  public String d;
+  public View e;
+  public ImageView e;
+  public TextView e;
+  public String e;
+  public TextView f;
+  public TextView g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afjo
  * JD-Core Version:    0.7.0.1
  */

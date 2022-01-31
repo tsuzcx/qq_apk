@@ -1,34 +1,34 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bgmq;
+import bhvh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import obz;
-import qik;
+import onk;
+import qup;
 
 public class VideoRecommendManager$1
   implements Runnable
 {
-  public VideoRecommendManager$1(qik paramqik) {}
+  public VideoRecommendManager$1(qup paramqup) {}
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)obz.a();
-    qik.a(this.this$0, bgmq.D(localQQAppInterface));
-    qik.b(this.this$0, bgmq.E(localQQAppInterface));
-    qik.a(this.this$0, bgmq.a(localQQAppInterface));
-    qik.c(this.this$0, bgmq.F(localQQAppInterface));
-    if ((qik.a(this.this$0) < 0.0F) || (qik.a(this.this$0) > 1.0D)) {
-      qik.a(this.this$0, 0.8F);
+    QQAppInterface localQQAppInterface = (QQAppInterface)onk.a();
+    qup.a(this.this$0, bhvh.D(localQQAppInterface));
+    qup.b(this.this$0, bhvh.E(localQQAppInterface));
+    qup.a(this.this$0, bhvh.a(localQQAppInterface));
+    qup.c(this.this$0, bhvh.F(localQQAppInterface));
+    if ((qup.a(this.this$0) < 0.0F) || (qup.a(this.this$0) > 1.0D)) {
+      qup.a(this.this$0, 0.8F);
     }
-    if (qik.a(this.this$0) < 1000) {
-      qik.b(this.this$0, 40000);
+    if (qup.a(this.this$0) < 1000) {
+      qup.b(this.this$0, 40000);
     }
-    if (qik.b(this.this$0) == 1) {
-      qik.a(this.this$0, true);
+    if (qup.b(this.this$0) == 1) {
+      qup.a(this.this$0, true);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoReommendManager", 2, "init() 开关配置，mIsOpened = " + qik.a(this.this$0) + ", mStrategyID = " + qik.b(this.this$0) + ", mStrategyDurationLimit = " + qik.a(this.this$0) + ", mStrategyDurationPercent = " + qik.a(this.this$0) + ", mOperator = " + qik.c(this.this$0));
+      QLog.d("Q.pubaccount.video.feeds.VideoReommendManager", 2, "init() 开关配置，mIsOpened = " + qup.a(this.this$0) + ", mStrategyID = " + qup.b(this.this$0) + ", mStrategyDurationLimit = " + qup.a(this.this$0) + ", mStrategyDurationPercent = " + qup.a(this.this$0) + ", mOperator = " + qup.c(this.this$0));
     }
   }
 }

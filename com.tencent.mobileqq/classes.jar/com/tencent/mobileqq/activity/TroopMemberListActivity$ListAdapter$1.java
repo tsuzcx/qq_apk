@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acao;
+import acla;
 
 public class TroopMemberListActivity$ListAdapter$1
   implements Runnable
 {
-  public TroopMemberListActivity$ListAdapter$1(acao paramacao) {}
+  public TroopMemberListActivity$ListAdapter$1(acla paramacla) {}
   
   public void run()
   {

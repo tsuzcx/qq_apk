@@ -1,51 +1,181 @@
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.beacon.event.UserAction;
+import java.util.HashMap;
+import java.util.Map;
+
 public class lhz
 {
-  private static float jdField_a_of_type_Float = (float)(Math.log(0.75D) / Math.log(0.9D));
-  private static final float[] jdField_a_of_type_ArrayOfFloat;
-  private static float b = 800.0F;
-  private static float c = 0.4F;
-  private static float d = 1.0F - c;
-  private static float e;
-  private static float f = 1.0F / a(1.0F);
+  static int jdField_a_of_type_Int = 0;
+  static long jdField_a_of_type_Long;
+  static String jdField_a_of_type_JavaLangString = "";
+  static String b = "";
+  static String c = "";
   
-  static
+  public static void a(int paramInt)
   {
-    jdField_a_of_type_ArrayOfFloat = new float[101];
-    float f1 = 0.0F;
-    int i = 0;
-    if (i <= 100)
+    if ((paramInt != 1) && (paramInt != 3) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)))
     {
-      float f4 = i / 100.0F;
-      float f2 = 1.0F;
-      for (;;)
-      {
-        float f3 = (f2 - f1) / 2.0F + f1;
-        float f5 = 3.0F * f3 * (1.0F - f3);
-        float f6 = ((1.0F - f3) * c + d * f3) * f5 + f3 * f3 * f3;
-        if (Math.abs(f6 - f4) < 1.E-005D)
-        {
-          jdField_a_of_type_ArrayOfFloat[i] = (f3 * f3 * f3 + f5);
-          i += 1;
-          break;
-        }
-        if (f6 > f4) {
-          f2 = f3;
-        } else {
-          f1 = f3;
-        }
-      }
+      long l = System.currentTimeMillis();
+      a(jdField_a_of_type_JavaLangString, (l - jdField_a_of_type_Long) / 1000L, jdField_a_of_type_Int);
+      jdField_a_of_type_JavaLangString = "";
+      jdField_a_of_type_Int = 0;
     }
-    jdField_a_of_type_ArrayOfFloat[100] = 1.0F;
-    e = 8.0F;
-    f = 1.0F;
   }
   
-  static float a(float paramFloat)
+  public static void a(int paramInt, String paramString)
   {
-    paramFloat = e * paramFloat;
-    if (paramFloat < 1.0F) {}
-    for (paramFloat -= 1.0F - (float)Math.exp(-paramFloat);; paramFloat = (1.0F - (float)Math.exp(1.0F - paramFloat)) * (1.0F - 0.3678795F) + 0.3678795F) {
-      return paramFloat * f;
+    g(paramString);
+    if (!TextUtils.isEmpty(b)) {
+      a("0X8008025", b);
+    }
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, String paramString)
+  {
+    if ((paramVideoAppInterface != null) && (paramString != null))
+    {
+      g(paramString);
+      paramVideoAppInterface = (lje)paramVideoAppInterface.a(5);
+      boolean bool = paramVideoAppInterface.a(3, "normal");
+      if ((paramVideoAppInterface.a(3, "interact")) || (bool)) {
+        a("0X8008026", null);
+      }
+    }
+    else
+    {
+      return;
+    }
+    a("0X8008027", null);
+  }
+  
+  public static void a(String paramString)
+  {
+    g(paramString);
+    a("0X8008021", null);
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    if ((paramInt == 1) || (paramInt == 3))
+    {
+      a(paramString, 10L, paramInt);
+      return;
+    }
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (!paramString.equals(jdField_a_of_type_JavaLangString)))
+    {
+      long l = System.currentTimeMillis();
+      a(jdField_a_of_type_JavaLangString, (l - jdField_a_of_type_Long) / 1000L, jdField_a_of_type_Int);
+    }
+    jdField_a_of_type_JavaLangString = paramString;
+    jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public static void a(String paramString1, int paramInt, String paramString2)
+  {
+    g(paramString2);
+    b = paramString1;
+  }
+  
+  public static void a(String paramString, long paramLong, int paramInt)
+  {
+    lcl.c("MagicDataReport", "DOUBLE SCREEN DataReport onStateReport: |" + paramString + "|" + paramLong);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("activeName", paramString);
+    localHashMap.put("duration", String.valueOf(paramLong));
+    UserAction.onUserAction("actAVFunChatFace", true, -1L, -1L, localHashMap, true);
+    try
+    {
+      UserAction.flushObjectsToDB(true);
+      int i = 0;
+      switch (paramInt)
+      {
+      default: 
+        paramInt = i;
+        if (paramInt != 0) {
+          b(paramInt, paramString);
+        }
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        lcl.e("MagicDataReport", localException.getMessage());
+        continue;
+        paramInt = 3;
+        continue;
+        paramInt = 4;
+        continue;
+        paramInt = 5;
+      }
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    a("CliOper", paramString1, 0, paramString2);
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    lcl.c("MagicDataReport", "reportClickEvent key = " + paramString2 + ", fromType = " + paramInt + ", value = " + paramString3 + ", mRoomId = " + c);
+    axqw.b(null, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", c, paramString3);
+  }
+  
+  public static void b(int paramInt, String paramString)
+  {
+    lcl.c("MagicDataReport", "WL_DEBUG reportChangeFace fromType = " + paramInt + ", id = " + paramString);
+    if ((TextUtils.isEmpty(c)) || (c.equals("0")))
+    {
+      VideoController localVideoController = VideoController.a();
+      c = localVideoController.a(localVideoController.a().d) + "";
+    }
+    if (paramInt == 5)
+    {
+      a("dc00898", "0X800984E", paramInt, paramString);
+      return;
+    }
+    a("dc00898", "0X80088B3", paramInt, paramString);
+  }
+  
+  public static void b(String paramString)
+  {
+    g(paramString);
+    a("0X800812F", null);
+  }
+  
+  public static void c(String paramString)
+  {
+    g(paramString);
+    a("0X8008130", null);
+  }
+  
+  public static void d(String paramString)
+  {
+    g(paramString);
+    a("0X800984D", null);
+  }
+  
+  public static void e(String paramString)
+  {
+    g(paramString);
+    a("0X8008131", null);
+  }
+  
+  public static void f(String paramString)
+  {
+    g(paramString);
+    a("0X8008022", null);
+  }
+  
+  static void g(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("0"))) {
+      c = paramString;
     }
   }
 }

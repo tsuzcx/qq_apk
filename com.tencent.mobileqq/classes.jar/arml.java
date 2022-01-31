@@ -1,15 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class arml
-  implements DialogInterface.OnClickListener
+final class arml
+  extends BroadcastReceiver
 {
-  arml(armh paramarmh, BaseActivity paramBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    armh.a(this.jdField_a_of_type_Armh, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    if ((armk.a != null) && (armk.a.size() > 0))
+    {
+      Iterator localIterator = armk.a.iterator();
+      while (localIterator.hasNext())
+      {
+        armk localarmk = (armk)((WeakReference)localIterator.next()).get();
+        if (localarmk != null) {
+          localarmk.a(paramContext, paramIntent);
+        }
+      }
+    }
   }
 }
 

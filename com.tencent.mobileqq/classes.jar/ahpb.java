@@ -1,179 +1,120 @@
-import android.content.res.ColorStateList;
+import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.view.View;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFoldMsg;
-import com.tencent.mobileqq.data.MessageForLongMsg;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageForWantGiftMsg;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemRecommendTroopData;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.troop.widget.TroopActiveLayout;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.mobileqq.widget.FolderTextView;
+import com.tencent.widget.SingleLineTextView;
+import com.tencent.widget.ThemeImageView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ahpb
+  extends ahny
 {
-  private static final int b = Color.rgb(123, 113, 30);
-  private static final int c = Color.rgb(38, 87, 178);
-  private static final int d = Color.argb(64, 125, 113, 30);
-  private static final int e = Color.argb(64, 6, 59, 156);
-  private static final int f = Color.rgb(162, 116, 4);
-  private static final int g = Color.argb(64, 213, 185, 118);
-  private static final int h = Color.argb(102, 213, 185, 118);
-  public int a;
-  private final acka a;
-  public QQAppInterface a;
+  private int jdField_a_of_type_Int = 2131562329;
+  private List<String> jdField_a_of_type_JavaUtilList;
   
-  public ahpb(acka paramacka, QQAppInterface paramQQAppInterface)
+  public int a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Acka = paramacka;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    return 1;
   }
   
-  private ahpm a(View paramView)
+  public View a(int paramInt, Object paramObject, ahnt paramahnt, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahpq paramahpq)
   {
-    if (paramView == null) {}
-    do
+    if (paramView == null)
     {
-      return null;
-      if ((paramView.getParent() instanceof ahpm)) {
-        return (ahpm)paramView.getParent();
-      }
-    } while (!(paramView instanceof ahpm));
-    return (ahpm)paramView;
-  }
-  
-  public void a(View paramView, ahpe paramahpe)
-  {
-    ahpm localahpm = a(paramView);
-    if (localahpm == null) {}
-    ahpo localahpo;
-    ChatMessage localChatMessage;
-    do
-    {
-      return;
-      localahpo = localahpm.a();
-      localChatMessage = aciy.a(paramView);
-    } while ((localahpo == null) || (!localahpo.b()) || (localahpm.h()) || (localChatMessage == null));
-    if (this.jdField_a_of_type_Int == 2) {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localChatMessage.selfuin))
+      paramViewGroup = new ahpc();
+      paramView = a(paramContext, this.jdField_a_of_type_Int, paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131374967));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131374955));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374965));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131374954));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131368718));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131378400));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView = ((FolderTextView)paramView.findViewById(2131378122));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363570));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout = ((TroopActiveLayout)paramView.findViewById(2131363054));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)paramView.findViewById(2131363061));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetThemeImageView.setSupportMaskView(true);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(paramOnClickListener);
+      paramViewGroup.b.setOnClickListener(paramOnClickListener);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(paramViewGroup);
+      paramView.setTag(paramViewGroup);
+      paramOnLongClickListener = (RecentItemRecommendTroopData)paramObject;
+      paramViewGroup.a(paramOnLongClickListener, paramahnt);
+      a(paramContext, paramView, paramInt, paramObject, paramViewGroup, paramOnClickListener);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(-1, Integer.valueOf(paramInt));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(-1, Integer.valueOf(paramInt));
+      paramViewGroup.b.setTag(-1, Integer.valueOf(paramInt));
+      paramahnt = null;
+      paramObject = paramahnt;
+      if (paramOnLongClickListener.mUser != null)
       {
-        localahpo.c(f);
-        localahpo.b(g);
+        paramObject = paramahnt;
+        if ((paramOnLongClickListener.mUser.extraInfo instanceof RecentRecommendTroopItem)) {
+          paramObject = (RecentRecommendTroopItem)paramOnLongClickListener.mUser.extraInfo;
+        }
       }
+      if (paramObject != null) {
+        break label437;
+      }
+      paramahnt = "";
+      label358:
+      if (paramObject != null) {
+        break label445;
+      }
+    }
+    label437:
+    label445:
+    for (paramObject = "";; paramObject = paramObject.recomAlgol)
+    {
+      axqw.b(null, "dc00899", "Grp_recom", "", "msg_tab", "exp_grp", 0, 0, paramahnt, paramObject, "", "");
+      if (akac.e)
+      {
+        axqw.b(null, "dc00899", "Grp_recom", "", "msg_tab", "exp", 0, 0, "", "", "", "");
+        akac.e = false;
+      }
+      return paramView;
+      paramViewGroup = (ahpc)paramView.getTag();
+      break;
+      paramahnt = paramObject.uin;
+      break label358;
+    }
+  }
+  
+  public List<String> a(RecentBaseData paramRecentBaseData, Context paramContext)
+  {
+    if ((paramRecentBaseData == null) || (paramContext == null)) {
+      return null;
+    }
+    int i = paramRecentBaseData.mMenuFlag;
+    paramRecentBaseData = paramContext.getResources();
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
     for (;;)
     {
-      localahpo.a(paramahpe);
-      localahpm.a(localChatMessage);
-      return;
-      localahpo.c(f);
-      localahpo.b(h);
-      continue;
-      if (this.jdField_a_of_type_Int != 1) {
-        break;
+      if ((i & 0xF) == 1) {
+        this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[0]));
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localChatMessage.selfuin))
-      {
-        localahpo.c(b);
-        localahpo.b(d);
-      }
-      else
-      {
-        localahpo.c(c);
-        localahpo.b(e);
-      }
+      return this.jdField_a_of_type_JavaUtilList;
+      this.jdField_a_of_type_JavaUtilList.clear();
     }
-    paramView = paramView.getResources();
-    int j;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localChatMessage.selfuin)) {
-      j = paramView.getColorStateList(2131101237).getDefaultColor();
-    }
-    for (int i = paramView.getColorStateList(2131101239).getDefaultColor();; i = paramView.getColorStateList(2131101238).getDefaultColor())
-    {
-      localahpo.c(j);
-      localahpo.b(i);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ChatAdapterSelectableHelper", 0, "Load Select color, cursor=" + j + ", component=" + i);
-      break;
-      j = paramView.getColorStateList(2131101236).getDefaultColor();
-    }
-  }
-  
-  public boolean a(View paramView)
-  {
-    boolean bool2 = false;
-    ChatMessage localChatMessage = aciy.a(paramView);
-    boolean bool1;
-    if (AppSetting.c)
-    {
-      bool1 = false;
-      if (!bool1) {
-        break label173;
-      }
-      paramView = a(paramView);
-      if (paramView == null) {
-        break label154;
-      }
-      if (paramView.a() <= 0) {
-        break label135;
-      }
-      bool1 = true;
-    }
-    label135:
-    label154:
-    label173:
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          if ((localChatMessage instanceof MessageForText))
-          {
-            if ((!(localChatMessage instanceof MessageForWantGiftMsg)) && (!(localChatMessage instanceof MessageForFoldMsg)))
-            {
-              bool1 = true;
-              break;
-            }
-            bool1 = false;
-            break;
-          }
-          if ((localChatMessage instanceof MessageForMixedMsg))
-          {
-            bool1 = ((MessageForMixedMsg)localChatMessage).canSelectable();
-            break;
-          }
-          if ((localChatMessage instanceof MessageForReplyText))
-          {
-            bool1 = true;
-            break;
-          }
-          if ((localChatMessage instanceof MessageForLongMsg))
-          {
-            bool1 = ((MessageForLongMsg)localChatMessage).canSelectable();
-            break;
-          }
-          bool1 = false;
-          break;
-          bool1 = bool2;
-        } while (!ahox.a().c());
-        ahox.a().d();
-        return false;
-        bool1 = bool2;
-      } while (!ahox.a().c());
-      ahox.a().d();
-      return false;
-      bool1 = bool2;
-    } while (!ahox.a().c());
-    ahox.a().d();
-    return false;
   }
 }
 

@@ -1,49 +1,39 @@
-import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.mobileqq.apollo.GLTextureView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class aiur
-  implements Comparable<aiur>
+  implements aiuu
 {
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public short b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e = -1;
-  public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g = 0;
-  public String g;
-  public int h;
+  private int jdField_a_of_type_Int = 12440;
   
-  public int a(aiur paramaiur)
+  private aiur(GLTextureView paramGLTextureView) {}
+  
+  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    if (paramaiur == null) {}
-    do
+    int[] arrayOfInt = new int[3];
+    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    arrayOfInt[1] = GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView);
+    arrayOfInt[2] = 12344;
+    EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
+    if (GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 0) {}
+    for (;;)
     {
-      return -1;
-      if (this.jdField_a_of_type_Boolean == paramaiur.jdField_a_of_type_Boolean) {
-        return -(int)(this.c - paramaiur.c);
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    return 0;
+      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
+      arrayOfInt = null;
+    }
   }
   
-  public boolean a(String paramString)
+  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    return (this.jdField_a_of_type_Long == this.b) || ((!TextUtils.isEmpty(paramString)) && (paramString.equals(String.valueOf(this.jdField_a_of_type_Long))));
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
+    {
+      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
+      aiuw.a("eglDestroyContex", paramEGL10.eglGetError());
+    }
   }
 }
 

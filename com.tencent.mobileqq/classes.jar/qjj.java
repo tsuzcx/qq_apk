@@ -1,28 +1,30 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 
-public class qjj
-  extends PhoneStateListener
+class qjj
+  extends AnimatorListenerAdapter
 {
   qjj(qji paramqji) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
-    }
-    switch (paramInt)
+    if ((qji.a(this.a) != null) && (qji.a(this.a).h != null))
     {
-    default: 
-      return;
-    case 1: 
-      this.a.d(true);
-      return;
-    case 2: 
-      this.a.d(true);
-      return;
+      qji.a(this.a).h.setVisibility(0);
+      paramAnimator = new AnimatorSet();
+      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(qji.a(this.a).h, "alpha", new float[] { 0.0F, 1.0F });
+      localObjectAnimator1.setDuration(200L);
+      localObjectAnimator1.setInterpolator(new DecelerateInterpolator());
+      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(qji.a(this.a).h, "translationY", new float[] { actn.a(15.0F, qji.a(this.a).h.getResources()), 0.0F });
+      localObjectAnimator2.setDuration(200L);
+      localObjectAnimator2.setInterpolator(new DecelerateInterpolator());
+      paramAnimator.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
+      paramAnimator.start();
     }
-    this.a.c();
   }
 }
 

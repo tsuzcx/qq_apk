@@ -2,12 +2,12 @@ package com.tencent.gdtad.api.motivevideo;
 
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import ymd;
+import yvu;
 
 public class GdtMvViewAnimationAbs$2
   implements Runnable
 {
-  public GdtMvViewAnimationAbs$2(ymd paramymd, RelativeLayout.LayoutParams paramLayoutParams, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, View paramView) {}
+  public GdtMvViewAnimationAbs$2(yvu paramyvu, RelativeLayout.LayoutParams paramLayoutParams, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, View paramView) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class GdtMvViewAnimationAbs$2
       if (this.jdField_a_of_type_AndroidViewView != null) {
         this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
       }
-      ymd.b(this.jdField_a_of_type_AndroidViewView);
+      yvu.b(this.jdField_a_of_type_AndroidViewView);
       return;
     }
   }

@@ -1,123 +1,73 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeed;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tlz
-  extends vpv
-  implements View.OnClickListener
+  extends syv
 {
-  public static final String KEY = "PlayerDoubleTabSegment";
-  private int jdField_a_of_type_Int = 1;
-  private tlj jdField_a_of_type_Tlj;
-  private ucw jdField_a_of_type_Ucw;
-  private unw jdField_a_of_type_Unw;
+  public static final String a;
+  public List<uvs> a;
+  public List<String> b = new ArrayList();
   
-  public tlz(Context paramContext)
+  static
   {
-    super(paramContext);
+    jdField_a_of_type_JavaLangString = sxp.a("StorySvc.homepage_batch_feeds_detail_720");
   }
   
-  private void a(TextView paramTextView, boolean paramBoolean)
+  public tlz()
   {
-    if (paramBoolean)
-    {
-      if (QQStoryContext.a()) {
-        paramTextView.setBackgroundResource(2130845378);
-      }
-      for (;;)
-      {
-        paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100745));
-        return;
-        paramTextView.setBackgroundResource(2130845377);
-      }
-    }
-    paramTextView.setBackgroundResource(0);
-    if (QQStoryContext.a())
-    {
-      paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100758));
-      return;
-    }
-    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100746));
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ucw != null) && (this.jdField_a_of_type_Ucw.b())) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View a(int paramInt, unw paramunw, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (TextView)paramunw.a(2131310727);
-    TextView localTextView = (TextView)paramunw.a(2131310726);
-    if (QQStoryContext.a())
-    {
-      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100756));
-      localTextView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100756));
-      paramunw.a(2131307521).setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100758));
-    }
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      a(paramViewGroup, true);
-      a(localTextView, false);
-    }
-    for (;;)
-    {
-      return paramunw.a();
-      a(paramViewGroup, false);
-      a(localTextView, true);
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
   public String a()
   {
-    return "PlayerDoubleTabSegment";
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public unw a(int paramInt, ViewGroup paramViewGroup)
+  public syq a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Unw = new unw(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495623, paramViewGroup, false));
-    paramViewGroup = (TextView)this.jdField_a_of_type_Unw.a(2131310727);
-    TextView localTextView = (TextView)this.jdField_a_of_type_Unw.a(2131310726);
-    paramViewGroup.setOnClickListener(this);
-    localTextView.setOnClickListener(this);
-    return this.jdField_a_of_type_Unw;
-  }
-  
-  public void a(tlj paramtlj)
-  {
-    this.jdField_a_of_type_Tlj = paramtlj;
-  }
-  
-  public void a(ucw paramucw)
-  {
-    this.jdField_a_of_type_Ucw = paramucw;
-    if (this.jdField_a_of_type_Ucw.a()) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_Tlj.a();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    qqstory_service.RspStoryFeed localRspStoryFeed = new qqstory_service.RspStoryFeed();
+    try
     {
-    default: 
-      return;
-    case 2131310727: 
-      this.jdField_a_of_type_Tlj.a(1);
-      urp.a("content_flow", "clk_detail_reply", 0, 1, new String[] { "", urp.a(4444), this.jdField_a_of_type_Ucw.a.feedId });
-      return;
+      localRspStoryFeed.mergeFrom(paramArrayOfByte);
+      return new tma(localRspStoryFeed);
     }
-    this.jdField_a_of_type_Tlj.a(2);
-    urp.a("content_flow", "clk_detail_reply", 0, 2, new String[] { "", urp.a(4444), this.jdField_a_of_type_Ucw.a.feedId });
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqStoryFeed localReqStoryFeed = new qqstory_service.ReqStoryFeed();
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      uvs localuvs = (uvs)localIterator.next();
+      if (localuvs != null) {
+        if (TextUtils.isEmpty(localuvs.jdField_a_of_type_JavaLangString)) {
+          veg.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "check your param feedId is null");
+        } else {
+          localArrayList.add(localuvs.a());
+        }
+      }
+    }
+    if (localArrayList.size() == 0) {
+      throw new QQStoryCmdHandler.IllegalUinException("feed id seq is null");
+    }
+    localReqStoryFeed.feed_id_list.set(localArrayList);
+    return localReqStoryFeed.toByteArray();
   }
 }
 

@@ -1,24 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.10.1;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ChatActivity;
 
-public class asps
-  implements View.OnClickListener
+final class asps
+  implements aspz
 {
-  asps(aspq paramaspq) {}
+  asps(Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void a(Intent paramIntent)
   {
-    this.a.f(paramView);
-    new asmr().h("video").i("playpage_fw_click").a().a(this.a.a);
-    ThreadManagerV2.excute(new PlayOperationViewModel.10.1(this, (ascz)this.a.a.getManager(106)), 16, null, false);
+    if ((this.a instanceof ChatActivity)) {
+      ((ChatActivity)this.a).a(paramIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asps
  * JD-Core Version:    0.7.0.1
  */

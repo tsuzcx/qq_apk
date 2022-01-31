@@ -1,17 +1,23 @@
-class aici
+import android.support.annotation.Nullable;
+import android.view.View;
+
+public abstract interface aici
 {
-  azkr jdField_a_of_type_Azkr;
-  Boolean jdField_a_of_type_JavaLangBoolean;
+  public abstract int a();
   
-  public aici(aicc paramaicc, azkr paramazkr)
-  {
-    this.jdField_a_of_type_Azkr = paramazkr;
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  }
+  public abstract void a();
+  
+  public abstract void a(@Nullable aicg paramaicg);
+  
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aici
  * JD-Core Version:    0.7.0.1
  */

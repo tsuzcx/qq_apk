@@ -1,32 +1,20 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaxj
-  extends xgz
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public aaxj(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
+  public aaxj(Conversation paramConversation) {}
   
-  public xgg a(Activity paramActivity, xgm paramxgm)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    return super.a(paramActivity, paramxgm);
-  }
-  
-  public xgi a(Activity paramActivity, xgm paramxgm)
-  {
-    this.a.a = new atux((FriendProfilePicBrowserActivity)paramActivity, paramxgm);
-    return this.a.a;
-  }
-  
-  public xgm a(Activity paramActivity)
-  {
-    paramActivity = new assa(this.a, FriendProfilePicBrowserActivity.a(this.a));
-    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
-    return paramActivity;
-  }
-  
-  public xgn a(Activity paramActivity, xgm paramxgm)
-  {
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, " gestureDetector onDoubleTap");
+    }
+    Conversation.i(this.a);
+    return super.onDoubleTap(paramMotionEvent);
   }
 }
 

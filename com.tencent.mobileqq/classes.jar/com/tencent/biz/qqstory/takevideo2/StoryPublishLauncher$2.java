@@ -1,17 +1,19 @@
 package com.tencent.biz.qqstory.takevideo2;
 
-import awez;
-import urk;
-import vjq;
+import biqz;
+import bizq;
+import vwm;
 
 public class StoryPublishLauncher$2
   implements Runnable
 {
-  public StoryPublishLauncher$2(vjq paramvjq) {}
+  public StoryPublishLauncher$2(vwm paramvwm) {}
   
   public void run()
   {
-    urk.a("Q.qqstory.publish.StoryPublishLauncher", "launchForResult, ptuResDownload = %s", Boolean.valueOf(awez.b(vjq.a())));
+    bizq.b("Q.qqstory.publish.StoryPublishLauncher", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
+    biqz.a().a(0, null, false);
+    biqz.a().a(1, null, true);
   }
 }
 

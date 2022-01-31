@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import bezm;
-import bezr;
+import bghd;
+import bghi;
 import com.tencent.mobileqq.app.automator.Automator;
 
 class QQComicStep$2$1
@@ -11,8 +11,8 @@ class QQComicStep$2$1
   
   public void run()
   {
-    bezm.a(this.a.this$0.a.app);
-    bezr.a(this.a.this$0.a.app);
+    bghd.a(this.a.this$0.a.app);
+    bghi.a(this.a.this$0.a.app);
   }
 }
 

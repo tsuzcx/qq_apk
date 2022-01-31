@@ -1,13 +1,13 @@
 package com.tencent.mm.hardcoder;
 
-import zrr;
+import aabk;
 
 public final class HardCoderManager$1
   extends Thread
 {
   public void run()
   {
-    zrr.a(zrr.b());
+    aabk.a(aabk.b());
   }
 }
 

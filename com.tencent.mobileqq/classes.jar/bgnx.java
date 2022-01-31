@@ -1,14 +1,24 @@
-public abstract interface bgnx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkShareJumpActivity;
+
+public class bgnx
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(int paramInt);
+  public bgnx(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void b(int paramInt);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (QlinkShareJumpActivity.a(this.a))
+    {
+      QlinkShareJumpActivity.a(this.a, false);
+      this.a.finish();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgnx
  * JD-Core Version:    0.7.0.1
  */

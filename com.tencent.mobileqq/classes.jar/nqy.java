@@ -1,14 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.google.gson.reflect.TypeToken;
+import java.util.Set;
 
-public class nqy
-  implements ViewBase.IBuilder
+class nqy
+  extends TypeToken<Set<Long>>
 {
-  public ViewBase build(VafContext paramVafContext)
-  {
-    return new nqx(paramVafContext);
-  }
+  nqy(nqx paramnqx) {}
 }
 
 

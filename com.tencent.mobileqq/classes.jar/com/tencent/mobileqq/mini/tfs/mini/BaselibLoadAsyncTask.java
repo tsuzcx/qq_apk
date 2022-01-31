@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.tfs.mini;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
@@ -38,11 +38,11 @@ public class BaselibLoadAsyncTask
       try
       {
         MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 10, null, null, null, 0);
-        String str = StorageUtil.getPreference().getString("version", "1.10.0.00173");
-        if (!BaseLibInfo.needUpdateVersion("1.10.0.00173", str)) {
+        String str = StorageUtil.getPreference().getString("version", "1.12.1.00001");
+        if (!BaseLibInfo.needUpdateVersion("1.12.1.00001", str)) {
           break label363;
         }
-        QLog.e("miniapp-start", 1, "download baselib invalid! use assert baselib. download_version=" + str + " assert_version=" + "1.10.0.00173");
+        QLog.e("miniapp-start", 1, "download baselib invalid! use assert baselib. download_version=" + str + " assert_version=" + "1.12.1.00001");
         i = 0;
         if ((!isBaseLibInit()) && (i != 0))
         {
@@ -79,7 +79,7 @@ public class BaselibLoadAsyncTask
       }
       finally {}
       return;
-      onTaskFailed(-3, ajjy.a(2131635219));
+      onTaskFailed(-3, ajyc.a(2131701003));
       continue;
       label363:
       int i = 1;
@@ -95,9 +95,9 @@ public class BaselibLoadAsyncTask
       return;
     }
     String str1 = StorageUtil.getPreference().getString("downloadUrl", "");
-    String str2 = StorageUtil.getPreference().getString("version", "1.10.0.00173");
+    String str2 = StorageUtil.getPreference().getString("version", "1.12.1.00001");
     QLog.i("miniapp-start", 1, "execute baseLibLoad task. url=" + str1 + " version=" + str2);
-    if ("1.10.0.00173".equals(str2))
+    if ("1.12.1.00001".equals(str2))
     {
       QLog.e("miniapp-start", 1, "current is default version:" + str2);
       mBaseLibInfo = new BaseLibInfo();
@@ -133,8 +133,8 @@ public class BaselibLoadAsyncTask
     if (mBaseLibInfo == null)
     {
       str1 = StorageUtil.getPreference().getString("downloadUrl", "");
-      str2 = StorageUtil.getPreference().getString("version", "1.10.0.00173");
-      if (!"1.10.0.00173".equals(str2)) {
+      str2 = StorageUtil.getPreference().getString("version", "1.12.1.00001");
+      if (!"1.12.1.00001".equals(str2)) {
         break label69;
       }
       mBaseLibInfo = new BaseLibInfo();

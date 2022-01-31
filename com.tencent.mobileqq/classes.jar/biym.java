@@ -1,20 +1,18 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.graphics.Rect;
 
-class biym
-  extends bhwr
+public class biym
 {
-  private biym(biyk parambiyk) {}
+  public Rect a;
+  public float[] a;
   
-  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
+  public biym(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
-    }
-    if ((biyk.a(this.a) != null) && (biyk.a(this.a).hasMessages(paramInt))) {
-      biyk.a(this.a, paramBoolean, paramArrayList, paramInt);
-    }
+    this.a = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public int a()
+  {
+    return Math.abs(this.a.left - this.a.right) * Math.abs(this.a.top - this.a.bottom);
   }
 }
 

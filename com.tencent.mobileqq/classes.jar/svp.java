@@ -1,82 +1,20 @@
-import android.content.Context;
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import java.util.HashSet;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.Iterator;
+import java.util.List;
 
-public class svp
-  extends RecyclerView.ItemDecoration
+final class svp
+  implements DialogInterface.OnClickListener
 {
-  static final Set<Integer> a;
-  protected int a;
-  protected int b;
-  protected int c;
-  protected int d;
-  protected int e;
+  svp(List paramList) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_JavaUtilSet = new HashSet();
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1024));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(12));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
-  }
-  
-  public svp(Context paramContext)
-  {
-    this.jdField_a_of_type_Int = aciy.a(5.0F, paramContext.getResources());
-    this.b = aciy.a(16.0F, paramContext.getResources());
-    this.c = aciy.a(8.5F, paramContext.getResources());
-    this.d = aciy.a(3.0F, paramContext.getResources());
-    this.e = aciy.a(3.0F, paramContext.getResources());
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    int k = paramRecyclerView.getChildViewHolder(paramView).getAdapterPosition();
-    paramView = paramRecyclerView.getAdapter();
-    if ((k < 0) || (k >= paramView.getItemCount())) {
-      return;
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      svo.a((String)localIterator.next());
     }
-    int m = paramView.getItemViewType(k);
-    if (paramView.getItemCount() > k + 1)
-    {
-      int n = paramView.getItemViewType(k + 1);
-      int i = 0;
-      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(m))) {
-        i = 1;
-      }
-      int j = i;
-      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(n))) {
-        j = i + 1;
-      }
-      if (j == 1)
-      {
-        paramRect.right = this.d;
-        return;
-      }
-      if (j == 2)
-      {
-        paramRect.right = this.e;
-        return;
-      }
-    }
-    if (m == 2)
-    {
-      paramRect.right = this.b;
-      return;
-    }
-    if (k == paramState.getItemCount() - 1)
-    {
-      paramRect.right = this.c;
-      return;
-    }
-    paramRect.right = this.jdField_a_of_type_Int;
+    paramDialogInterface.dismiss();
   }
 }
 

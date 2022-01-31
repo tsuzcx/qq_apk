@@ -1,55 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.now.enter.pb.NowPushMsgList.NowPushMsg;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
 public class atdg
-  implements Manager
+  implements DialogInterface.OnClickListener
 {
-  private QQAppInterface a;
+  public atdg(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean, String paramString) {}
   
-  public atdg(QQAppInterface paramQQAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+    String str = this.jdField_a_of_type_JavaLangString;
+    paramDialogInterface.b = str;
+    GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Atcf.d();
   }
-  
-  private boolean a(NowPushMsgList.NowPushMsg paramNowPushMsg)
-  {
-    if ((paramNowPushMsg.uint32_version.get() == 0L) && (paramNowPushMsg.uint64_start_time.get() == 0L) && (paramNowPushMsg.uint64_end_time.get() == 0L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("NowHongbaoPushManager", 2, "发送wns日志请求");
-      }
-      ((aqod)this.a.getManager(306)).c();
-      return true;
-    }
-    return false;
-  }
-  
-  private void c(NowPushMsgList.NowPushMsg paramNowPushMsg)
-  {
-    if (a(paramNowPushMsg)) {}
-  }
-  
-  public void a(NowPushMsgList.NowPushMsg paramNowPushMsg)
-  {
-    QLog.i("NowHongbaoPushManager", 1, "receiveOnLinePush ： type=" + paramNowPushMsg.uint32_type.get() + ", show=" + paramNowPushMsg.uint32_switch.get() + ", startTime=" + paramNowPushMsg.uint64_start_time.get() + ", endTime=" + paramNowPushMsg.uint64_end_time.get() + ",taskId =" + paramNowPushMsg.uint32_task_id.get() + ",version =" + paramNowPushMsg.uint32_version.get());
-    c(paramNowPushMsg);
-  }
-  
-  public void b(NowPushMsgList.NowPushMsg paramNowPushMsg)
-  {
-    QLog.i("NowHongbaoPushManager", 1, "receiveOfflinePush ： type=" + paramNowPushMsg.uint32_type.get() + ", show=" + paramNowPushMsg.uint32_switch.get() + ", startTime=" + paramNowPushMsg.uint64_start_time.get() + ", endTime=" + paramNowPushMsg.uint64_end_time.get() + ",taskId =" + paramNowPushMsg.uint32_task_id.get() + ",version =" + paramNowPushMsg.uint32_version.get());
-    c(paramNowPushMsg);
-  }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atdg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
 import java.util.List;
-import qxa;
+import rjr;
 
 public class FastWebActivity$RecommendAndAdCallback$1
   implements Runnable
 {
-  public FastWebActivity$RecommendAndAdCallback$1(qxa paramqxa, FastWebActivity paramFastWebActivity, boolean paramBoolean, String paramString, List paramList1, List paramList2) {}
+  public FastWebActivity$RecommendAndAdCallback$1(rjr paramrjr, FastWebActivity paramFastWebActivity, boolean paramBoolean, String paramString, List paramList1, List paramList2) {}
   
   public void run()
   {

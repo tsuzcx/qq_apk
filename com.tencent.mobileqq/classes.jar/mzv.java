@@ -1,135 +1,197 @@
-import android.os.Bundle;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.EncryptUinHandler.3;
-import com.tencent.biz.pubaccount.EncryptUinInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0xc13.oidb_0xc13.EncryptUinReqBody;
-import tencent.im.oidb.cmd0xc13.oidb_0xc13.EncryptUinResult;
-import tencent.im.oidb.cmd0xc13.oidb_0xc13.EncryptUinRspBody;
-import tencent.im.oidb.cmd0xc13.oidb_0xc13.ReqBody;
-import tencent.im.oidb.cmd0xc13.oidb_0xc13.RspBody;
+import com.tencent.smtt.utils.Md5Utils;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import com.tencent.tmdownloader.TMAssistantDownloadManager;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class mzv
-  extends ajfb
+  implements mzs
 {
-  private String jdField_a_of_type_JavaLangString;
-  private mzx jdField_a_of_type_Mzx;
+  private static HashMap<String, mzq> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private ITMAssistantDownloadClientListener jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new mzw(this);
+  public TMAssistantDownloadClient a;
   
-  public mzv(QQAppInterface paramQQAppInterface)
+  public int a(Context paramContext, String paramString)
   {
-    super(paramQQAppInterface);
-  }
-  
-  private void a(List<Long> paramList, int paramInt)
-  {
-    oidb_0xc13.ReqBody localReqBody = new oidb_0xc13.ReqBody();
-    localReqBody.msg_encrypt_uin_req_body.rpt_uint64_uin.set(paramList);
-    localReqBody.msg_encrypt_uin_req_body.setHasFlag(true);
-    paramList = makeOIDBPkg("OidbSvc.0xc13", 3091, 1, localReqBody.toByteArray());
-    paramList.addAttribute("ARGS_TYPE", Integer.valueOf(paramInt));
-    sendPbReq(paramList);
-  }
-  
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      a();
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(paramContext).getDownloadSDKClient("OfflineDownload");
+    try
+    {
+      paramContext = this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.getDownloadTaskState(paramString);
+      if (paramContext == null) {
+        return 0;
+      }
+      int i = paramContext.mState;
+      return i;
     }
-    return this.jdField_a_of_type_JavaLangString;
+    catch (Exception paramContext) {}
+    return 0;
   }
   
-  public void a()
+  public void a(Context paramContext, String paramString1, String paramString2, String paramString3, mzb parammzb, Map<String, String> paramMap)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    while (this.jdField_a_of_type_Mzx != null) {
+    if (parammzb == null) {
       return;
     }
-    this.jdField_a_of_type_Mzx = new mzw(this);
-    this.mApp.addObserver(this.jdField_a_of_type_Mzx);
-    ThreadManager.excute(new EncryptUinHandler.3(this), 128, null, true);
-  }
-  
-  protected Class<? extends ajfe> observerClass()
-  {
-    return mzx.class;
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    this.mApp.removeObserver(this.jdField_a_of_type_Mzx);
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int i = 0;
-    Object localObject = new oidb_0xc13.RspBody();
-    Bundle localBundle = new Bundle();
-    int j = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
-    if (j == 0) {}
-    for (boolean bool = true;; bool = false)
+    if (paramContext == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EncryptUinHandler", 2, "onReceive: isSuccess=" + bool + ", code=" + j);
-      }
-      if (!bool) {
-        break label243;
-      }
-      paramFromServiceMsg = (oidb_0xc13.EncryptUinRspBody)((oidb_0xc13.RspBody)localObject).msg_encrypt_uin_rsp_body.get();
-      if (paramFromServiceMsg == null) {
-        break label274;
-      }
-      paramObject = paramFromServiceMsg.rpt_msg_encrypt_result.get();
-      if ((paramObject == null) || (paramObject.isEmpty())) {
-        break label274;
-      }
-      paramFromServiceMsg = new ArrayList();
-      paramObject = paramObject.iterator();
-      while (paramObject.hasNext())
-      {
-        localObject = (oidb_0xc13.EncryptUinResult)paramObject.next();
-        EncryptUinInfo localEncryptUinInfo = new EncryptUinInfo();
-        localEncryptUinInfo.jdField_a_of_type_Long = ((oidb_0xc13.EncryptUinResult)localObject).uint64_original_uin.get();
-        localEncryptUinInfo.jdField_a_of_type_Int = ((oidb_0xc13.EncryptUinResult)localObject).int32_result.get();
-        if (((oidb_0xc13.EncryptUinResult)localObject).bytes_encrypt_uin.get() != null) {
-          localEncryptUinInfo.jdField_a_of_type_JavaLangString = ((oidb_0xc13.EncryptUinResult)localObject).bytes_encrypt_uin.get().toStringUtf8();
-        }
-        paramFromServiceMsg.add(localEncryptUinInfo);
-      }
+      parammzb.loaded(paramString1, 11);
+      return;
     }
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3)))
+    {
+      parammzb.loaded(paramString1, 12);
+      return;
+    }
+    if (AppNetConnInfo.getRecentNetworkInfo() == null)
+    {
+      parammzb.loaded(paramString1, 10);
+      return;
+    }
+    Object localObject = new File(paramString3.substring(0, paramString3.lastIndexOf("/")));
+    if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs()))
+    {
+      parammzb.loaded(paramString1, 13);
+      return;
+    }
+    localObject = Md5Utils.getMD5(paramString1);
+    paramString2 = new mzq((String)localObject, paramString3, paramString2, parammzb);
+    jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(paramContext).getDownloadSDKClient("OfflineDownload");
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.registerDownloadTaskListener(this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener);
     for (;;)
     {
-      localBundle.putParcelableArrayList("KEY_ENCRYPT_RESULT_LIST", paramFromServiceMsg);
-      label243:
-      paramToServiceMsg = paramToServiceMsg.getAttribute("ARGS_TYPE");
-      if (paramToServiceMsg != null) {
-        i = ((Integer)paramToServiceMsg).intValue();
+      int i;
+      try
+      {
+        i = this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.startDownloadTask(paramString1, 0, "resource/tm.android.unknown", (String)localObject, paramMap);
+        if (i == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("OfflineDownload", 2, "offline downloader start, url: " + paramString1);
+          }
+          try
+          {
+            paramString3 = new DownloadInfo();
+            paramString3.d = paramString1;
+            paramString3.l = paramString2.b;
+            paramString3.e = paramString2.jdField_a_of_type_JavaLangString;
+            bdgu.a(paramContext, paramString3);
+            return;
+          }
+          catch (Throwable paramContext)
+          {
+            return;
+          }
+        }
+        if (i != 4) {
+          break label365;
+        }
       }
-      notifyUI(i, bool, localBundle);
-      return;
-      label274:
-      paramFromServiceMsg = null;
+      catch (Exception paramContext)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("OfflineDownload", 2, "offline downloader start fail, result " + -1 + ", url: " + paramString1);
+        }
+        parammzb.loaded(paramString1, 10);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("OfflineDownload", 2, "offline downloader start fail, file exists, url: " + paramString1);
+      }
+      a(this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient, paramString2, paramString1);
+      continue;
+      label365:
+      if (QLog.isColorLevel()) {
+        QLog.d("OfflineDownload", 2, "offline downloader start fail, result " + i + ", url: " + paramString1);
+      }
+      parammzb.loaded(paramString1, 10);
     }
+  }
+  
+  public void a(Context paramContext, String paramString1, String paramString2, mzb parammzb)
+  {
+    a(paramContext, paramString1, "0", paramString2, parammzb, null);
+  }
+  
+  public void a(TMAssistantDownloadClient paramTMAssistantDownloadClient, mzq parammzq, String paramString)
+  {
+    TMAssistantDownloadClient localTMAssistantDownloadClient = null;
+    Object localObject = null;
+    try
+    {
+      paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.getDownloadTaskState(paramString);
+      if (paramTMAssistantDownloadClient == null) {}
+      for (paramTMAssistantDownloadClient = localObject;; paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.mSavePath)
+      {
+        localTMAssistantDownloadClient = paramTMAssistantDownloadClient;
+        if (!TextUtils.isEmpty(paramTMAssistantDownloadClient)) {
+          break;
+        }
+        a(parammzq.jdField_a_of_type_Mzb, paramString, parammzq.c, 14, "get current download path fail after download");
+        return;
+      }
+      paramTMAssistantDownloadClient = new File(localTMAssistantDownloadClient);
+    }
+    catch (Exception paramTMAssistantDownloadClient)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("OfflineDownload", 4, paramTMAssistantDownloadClient.toString());
+      }
+    }
+    finally
+    {
+      if (TextUtils.isEmpty(null))
+      {
+        a(parammzq.jdField_a_of_type_Mzb, paramString, parammzq.c, 14, "get current download path fail after download");
+        return;
+      }
+    }
+    if (!paramTMAssistantDownloadClient.exists())
+    {
+      a(parammzq.jdField_a_of_type_Mzb, paramString, parammzq.c, 15, "cannot get current file after download");
+      return;
+    }
+    if (!bbdj.d(localTMAssistantDownloadClient, parammzq.b))
+    {
+      a(parammzq.jdField_a_of_type_Mzb, paramString, parammzq.c, 16, "rename file fail after download");
+      paramTMAssistantDownloadClient.delete();
+      return;
+    }
+    a(parammzq.jdField_a_of_type_Mzb, paramString, parammzq.c, 0, "offline zip download success");
+  }
+  
+  public void a(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient == null)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.pauseDownloadTask(paramString);
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.unRegisterDownloadTaskListener(this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener);
+    jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+  }
+  
+  public void a(mzb parammzb, String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OfflineDownload", 2, paramString3 + ", bid: " + paramString2 + ", errCode: " + paramInt);
+    }
+    if ((parammzb != null) && (paramInt >= 0)) {
+      parammzb.loaded(paramString1, paramInt);
+    }
+    jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mzv
  * JD-Core Version:    0.7.0.1
  */

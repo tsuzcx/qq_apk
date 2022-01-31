@@ -1,14 +1,17 @@
-import android.view.View;
+import com.tencent.widget.AbsListView;
 
-public class res
-  extends rer
+class res
+  extends oyg
 {
-  public res(String paramString)
+  res(rer paramrer, String paramString, AbsListView paramAbsListView, int paramInt)
   {
-    super(-16777216, 0, 0, paramString);
+    super(paramString);
   }
   
-  public void onClick(View paramView) {}
+  public void a(oya paramoya)
+  {
+    paramoya.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
+  }
 }
 
 

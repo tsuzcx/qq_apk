@@ -1,27 +1,43 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface.OnClickListener;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.qphone.base.util.QLog;
 
-final class aqdj
-  implements aqcy
+class aqdj
+  implements View.OnClickListener
 {
-  public String a()
-  {
-    return atyp.a;
-  }
+  aqdj(aqdb paramaqdb, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(5L, "font.diycard.android." + paramInt, "HiBoomDownloader");
+    this.jdField_a_of_type_Aqdb.hideSoftInputFromWindow();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Aqdb, 0);
+    }
+    if (aqdb.a(this.jdField_a_of_type_Aqdb))
+    {
+      aqdb.a(this.jdField_a_of_type_Aqdb).removeView(aqdb.a(this.jdField_a_of_type_Aqdb));
+      aqdb.a(this.jdField_a_of_type_Aqdb, false);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Aqdb.isShowing()) {
+        this.jdField_a_of_type_Aqdb.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Forward.NewVersion.Dialog", 2, Log.getStackTraceString(paramView));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqdj
  * JD-Core Version:    0.7.0.1
  */

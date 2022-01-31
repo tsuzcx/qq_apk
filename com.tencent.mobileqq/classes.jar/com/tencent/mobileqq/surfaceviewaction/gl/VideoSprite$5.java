@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
 import android.media.MediaPlayer;
-import axbz;
-import axcp;
+import aycb;
+import aycr;
 import com.tencent.qphone.base.util.QLog;
 
 public class VideoSprite$5
@@ -23,7 +23,7 @@ public class VideoSprite$5
       this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
       this.this$0.n = this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoWidth();
       this.this$0.o = this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoHeight();
-      this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new axcp(this));
+      this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new aycr(this));
       this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(this.jdField_a_of_type_Int);
       this.this$0.b = this.jdField_a_of_type_JavaLangString;
       return;
@@ -35,8 +35,8 @@ public class VideoSprite$5
         if (QLog.isColorLevel()) {
           QLog.e("VideoSprite", 2, "playVideo Exception: " + QLog.getStackTraceString(localException));
         }
-        if (this.this$0.jdField_a_of_type_Axbz != null) {
-          this.this$0.jdField_a_of_type_Axbz.a();
+        if (this.this$0.jdField_a_of_type_Aycb != null) {
+          this.this$0.jdField_a_of_type_Aycb.a();
         }
       }
     }

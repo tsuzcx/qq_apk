@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
 import android.os.Handler;
-import bjao;
-import bjjl;
+import bkra;
+import bkzw;
 import com.tencent.maxvideo.mediadevice.AVCodec;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -11,7 +11,7 @@ import java.io.IOException;
 public class RMVideoInitState$2
   implements Runnable
 {
-  public RMVideoInitState$2(bjao parambjao) {}
+  public RMVideoInitState$2(bkra parambkra) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class RMVideoInitState$2
         return;
       }
     }
-    File localFile = new File(bjjl.a + File.separator + ".nomedia");
+    File localFile = new File(bkzw.a + File.separator + ".nomedia");
     if (!localFile.exists()) {}
     try
     {

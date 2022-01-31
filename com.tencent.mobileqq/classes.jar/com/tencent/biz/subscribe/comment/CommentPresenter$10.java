@@ -1,19 +1,17 @@
 package com.tencent.biz.subscribe.comment;
 
-import android.widget.ListView;
-import vzz;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import wnl;
 
 public class CommentPresenter$10
   implements Runnable
 {
-  public CommentPresenter$10(vzz paramvzz) {}
+  public CommentPresenter$10(wnl paramwnl, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
   public void run()
   {
-    vzz.b(this.this$0);
-    if (this.this$0.a != null) {
-      this.this$0.a.setSelection(0);
-    }
+    this.this$0.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
   }
 }
 

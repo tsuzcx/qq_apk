@@ -1,121 +1,162 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.graphics.PointF;
-import android.view.MotionEvent;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class lfz
-  extends lfy
+class lfz
+  extends BroadcastReceiver
 {
-  private static final PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-  private final lga jdField_a_of_type_Lga;
-  private PointF b;
-  private PointF c;
-  private PointF d = new PointF();
-  private PointF e = new PointF();
+  private final WeakReference<VideoAppInterface> a;
   
-  public lfz(Context paramContext, lga paramlga)
+  private lfz(VideoAppInterface paramVideoAppInterface)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Lga = paramlga;
+    this.a = new WeakReference(paramVideoAppInterface);
   }
   
-  private PointF a(MotionEvent paramMotionEvent)
+  public void a(long paramLong1, VideoAppInterface paramVideoAppInterface, String paramString, int paramInt, long paramLong2)
   {
-    float f1 = 0.0F;
-    int j = paramMotionEvent.getPointerCount();
-    int i = 0;
-    float f2 = 0.0F;
-    while (i < j)
-    {
-      f2 += paramMotionEvent.getX(i);
-      f1 += paramMotionEvent.getY(i);
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.i("QAVNotifyActionMonitor", 2, "rejectMultiChat, session[" + paramString + "], relationType[" + paramInt + "], groupId[" + paramLong2 + "], seq[" + paramLong1 + "]");
     }
-    return new PointF(f2 / j, f1 / j);
-  }
-  
-  public float a()
-  {
-    return this.d.x;
-  }
-  
-  public PointF a()
-  {
-    return this.e;
-  }
-  
-  protected void a(int paramInt, MotionEvent paramMotionEvent)
-  {
-    switch (paramInt)
-    {
-    case 1: 
-    default: 
-      return;
-    case 0: 
-      a();
-      this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-      this.jdField_a_of_type_Long = 0L;
-      a(paramMotionEvent);
-      return;
+    mtt.a(paramVideoAppInterface);
+    VideoController.a().a(paramLong1, paramInt, paramLong2);
+    paramVideoAppInterface = mss.a(paramVideoAppInterface);
+    if (paramVideoAppInterface != null) {
+      paramVideoAppInterface.a(paramString);
     }
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Lga.b(this);
   }
   
-  protected void a(MotionEvent paramMotionEvent)
+  public void a(long paramLong, VideoAppInterface paramVideoAppInterface, String paramString1, String paramString2, boolean paramBoolean)
   {
-    super.a(paramMotionEvent);
-    MotionEvent localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
-    if ((paramMotionEvent == null) || (localMotionEvent == null))
+    if (QLog.isColorLevel()) {
+      QLog.i("QAVNotifyActionMonitor", 2, "rejectDoubleChat, session[" + paramString1 + "], peerUin[" + paramString2 + "], isDoubleVideoMeeting[" + paramBoolean + "], seq[" + paramLong + "]");
+    }
+    mtt.a(paramVideoAppInterface);
+    VideoController localVideoController = VideoController.a();
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseGestureDetector", 2, "updateStateByEvent-->Curr Or Prev is null");
+      localVideoController.a(paramLong, paramString2, 1, true);
+      long l = mqx.a(paramString2);
+      localVideoController.a(paramLong, 3, l);
+      localVideoController.a(paramLong, l, 1);
+    }
+    for (;;)
+    {
+      paramVideoAppInterface = mss.a(paramVideoAppInterface);
+      if (paramVideoAppInterface != null) {
+        paramVideoAppInterface.a(paramString1);
       }
       return;
-    }
-    this.jdField_b_of_type_AndroidGraphicsPointF = a(paramMotionEvent);
-    this.c = a(localMotionEvent);
-    int i;
-    if (localMotionEvent.getPointerCount() != paramMotionEvent.getPointerCount())
-    {
-      i = 1;
-      if (i == 0) {
-        break label125;
-      }
-    }
-    label125:
-    for (paramMotionEvent = jdField_a_of_type_AndroidGraphicsPointF;; paramMotionEvent = new PointF(this.jdField_b_of_type_AndroidGraphicsPointF.x - this.c.x, this.jdField_b_of_type_AndroidGraphicsPointF.y - this.c.y))
-    {
-      this.e = paramMotionEvent;
-      paramMotionEvent = this.d;
-      paramMotionEvent.x += this.e.x;
-      paramMotionEvent = this.d;
-      paramMotionEvent.y += this.e.y;
-      return;
-      i = 0;
-      break;
+      localVideoController.a(paramLong, paramString2, 1, false);
+      localVideoController.a(paramString2, 248);
+      localVideoController.b(248);
+      localVideoController.b(paramString2, 1);
     }
   }
   
-  public float b()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return this.d.y;
-  }
-  
-  protected void b(int paramInt, MotionEvent paramMotionEvent)
-  {
-    switch (paramInt)
-    {
-    }
+    if (paramIntent == null) {}
+    label209:
     do
     {
+      Object localObject;
+      do
+      {
+        do
+        {
+          boolean bool;
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                paramContext = paramIntent.getAction();
+                long l = mtm.a(paramIntent);
+                if (QLog.isColorLevel()) {
+                  QLog.i("QAVNotifyActionMonitor", 2, "onReceive action[" + paramContext + "], seq[" + l + "]");
+                }
+                if ("com.tencent.qav.notify.refuse".equals(paramContext))
+                {
+                  paramContext = paramIntent.getStringExtra("session_id");
+                  paramIntent = ldc.a().b(paramContext);
+                  if (QLog.isColorLevel()) {
+                    QLog.i("QAVNotifyActionMonitor", 2, "refuse call session[" + paramContext + "], info[" + paramIntent + "], seq[" + l + "]");
+                  }
+                  if (paramIntent != null)
+                  {
+                    localObject = (VideoAppInterface)this.a.get();
+                    if (!ldc.a(paramIntent)) {
+                      break label209;
+                    }
+                    a(l, (VideoAppInterface)localObject, paramIntent.c, paramIntent.d, paramIntent.I);
+                  }
+                  for (;;)
+                  {
+                    axqw.b(null, "dc00898", "", "", "0X800A2C7", "0X800A2C7", 0, 0, "", "", "", "");
+                    return;
+                    a(l, (VideoAppInterface)localObject, paramContext, paramIntent.E, paramIntent.g);
+                  }
+                }
+                if (!"tencent.video.q2v.ptusoDownloadRet".equals(paramContext)) {
+                  break;
+                }
+                i = paramIntent.getIntExtra("packageIdx", 0);
+                bool = paramIntent.getBooleanExtra("isDownloaded", false);
+                j = paramIntent.getIntExtra("errorType", 0);
+                if (QLog.isColorLevel()) {
+                  QLog.i("QAVNotifyActionMonitor", 2, "onAEResDownloadResult, package[" + i + ", isDownloaded[" + bool + ", errorType[" + j + "]");
+                }
+              } while ((!bool) || (i != 0));
+              paramContext = VideoController.a().a();
+            } while (paramContext == null);
+            lji.a(paramContext);
+            ((lje)paramContext.a(5)).a(3);
+            return;
+            if (!"tencent.video.q2v.ptuLibpagDownloadRet".equals(paramContext)) {
+              break;
+            }
+            i = paramIntent.getIntExtra("packageIdx", 0);
+            bool = paramIntent.getBooleanExtra("isDownloaded", false);
+            int j = paramIntent.getIntExtra("errorType", 0);
+            if (QLog.isColorLevel()) {
+              QLog.i("QAVNotifyActionMonitor", 2, "ACTION_PTU_LIBPAG_DOWNLOAD_RET onAEResDownloadResult, package[" + i + ", isDownloaded[" + bool + ", errorType[" + j + "]");
+            }
+          } while ((!bool) || (i != 1));
+          paramContext = VideoController.a().a();
+        } while (paramContext == null);
+        lpq.b(paramContext);
+        ((lje)paramContext.a(5)).a(3);
+        return;
+      } while (!"tencent.video.q2v.avReceivePushMsg".equals(paramContext));
+      paramContext = paramIntent.getStringExtra("key");
+      i = paramIntent.getIntExtra("msg_type", 0);
+      paramIntent = paramIntent.getByteArrayExtra("msg_content");
+      if (TextUtils.equals(paramContext, "avChatRoom"))
+      {
+        localObject = VideoController.a().a();
+        if (localObject != null)
+        {
+          localObject = ((VideoAppInterface)localObject).a();
+          if (localObject != null) {
+            ((lkt)localObject).a(i, paramIntent);
+          }
+        }
+      }
+    } while (!QLog.isDevelopLevel());
+    paramContext = new StringBuilder().append("ACTION_AV_RECEIVE_PUSH_MSG , key[").append(paramContext).append("], msgType[").append(i).append("], bytes[");
+    if (paramIntent == null) {}
+    for (int i = 0;; i = paramIntent.length)
+    {
+      QLog.i("ChatRoomMng", 4, i + "]");
       return;
-      this.jdField_a_of_type_Lga.a(this);
-      a();
-      return;
-      a(paramMotionEvent);
-    } while ((this.jdField_a_of_type_Float / this.jdField_b_of_type_Float <= 0.67F) || (!this.jdField_a_of_type_Lga.a(this)) || (this.jdField_a_of_type_AndroidViewMotionEvent == null));
-    this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
-    this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+    }
   }
 }
 

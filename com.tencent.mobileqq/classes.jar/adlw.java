@@ -1,23 +1,52 @@
-public class adlw
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+
+class adlw
+  implements DialogInterface.OnClickListener
 {
-  public static float a;
-  public static long a;
-  public static String a;
-  public static boolean a;
-  public static float[] a;
-  public static boolean b;
-  public static boolean c;
-  public static boolean d;
-  public static boolean e;
-  public static boolean f;
-  public static boolean g;
-  public static boolean h;
+  adlw(adlu paramadlu, MessageForArkApp paramMessageForArkApp) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_Float = 1.0F;
-    jdField_a_of_type_ArrayOfFloat = new float[] { 0.5F, 1.0F, 1.5F, 2.0F, 2.5F, 3.0F };
-    jdField_a_of_type_JavaLangString = "ptt_uin";
+    paramDialogInterface = (MessageForArkApp)axaq.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+    if (paramDialogInterface.msgData == null) {
+      if (paramDialogInterface.ark_app_message == null) {
+        ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
+      }
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
+          } while (this.jdField_a_of_type_Adlu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null);
+          paramInt = paramDialogInterface.getProcessState();
+          this.jdField_a_of_type_Adlu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Adlu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adlu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq);
+          if ((paramInt == 1002) || (paramInt == 0)) {
+            break;
+          }
+          localObject = BaseApplicationImpl.getApplication().getRuntime();
+        } while (!(localObject instanceof QQAppInterface));
+        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(121);
+      } while (localObject == null);
+      localObject = ((ArkAppCenter)localObject).a();
+    } while (localObject == null);
+    ((alwp)localObject).a(paramDialogInterface);
+    return;
+    this.jdField_a_of_type_Adlu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
   }
 }
 

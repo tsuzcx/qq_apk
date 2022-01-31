@@ -1,87 +1,59 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogReq;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.util.Locale;
-import mqq.observer.AccountObserver;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bava
-  extends AccountObserver
+public class bava
 {
-  final Intent jdField_a_of_type_AndroidContentIntent;
-  final bavc jdField_a_of_type_Bavc;
-  final String jdField_a_of_type_JavaLangString;
+  public QQAppInterface a;
+  public BusinessObserver a;
   
-  bava(Intent paramIntent, String paramString, bavc parambavc)
+  public bava(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bavc = parambavc;
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new bavb(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void onRegisterCommitPassRespWithLhSig(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
+  public String a(int paramInt, JSONObject paramJSONObject)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentIntent);
-    if (paramArrayOfByte2 != null) {}
-    for (;;)
+    JSONObject localJSONObject2 = new JSONObject();
+    try
     {
-      try
+      localJSONObject2.put("status", paramInt);
+      JSONObject localJSONObject1 = paramJSONObject;
+      if (paramJSONObject == null) {
+        localJSONObject1 = new JSONObject();
+      }
+      localJSONObject2.put("data", localJSONObject1);
+    }
+    catch (JSONException paramJSONObject)
+    {
+      for (;;)
       {
-        paramArrayOfByte2 = new String(paramArrayOfByte2, "utf-8");
-        if (QLog.isDevelopLevel()) {
-          QLog.i("LHLoginMng", 4, String.format(Locale.getDefault(), "onRegisterCommitPassRespWithLhSig isSuccess: %s, code: %s, uin: %s, error: %s, contactSig: %s, lhsig: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString, paramArrayOfByte2, MD5.toMD5(paramArrayOfByte1), MD5.toMD5(paramArrayOfByte3) }));
-        }
-        if (paramInt != 0) {
-          break label311;
-        }
-        paramBoolean = true;
-        if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
-          break label283;
-        }
-        paramBoolean = false;
-        if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length != 0)) {
-          break label298;
-        }
-        paramBoolean = false;
-        if (!TextUtils.isEmpty(paramArrayOfByte2)) {
-          break label316;
-        }
-        paramString = BaseApplicationImpl.getContext().getString(2131651340);
-        localIntent.putExtra("key_register_prompt_info", paramString);
-        if ((paramArrayOfByte3 != null) && (paramArrayOfByte3.length > 0)) {
-          localIntent.putExtra("key_register_lhsig", paramArrayOfByte3);
-        }
-        if (QLog.isDevelopLevel()) {
-          bavd.a("LHLoginMng -- onRegisterCommitPassRespWithLhSig", localIntent);
-        }
-        if (this.jdField_a_of_type_Bavc != null) {
-          this.jdField_a_of_type_Bavc.a(localIntent, paramBoolean, this.jdField_a_of_type_JavaLangString, paramArrayOfByte3, paramString);
-        }
         if (QLog.isColorLevel()) {
-          QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "onRegisterCommitPassRespWithLhSig, lhUin: %s, isSuc: %s, error: %s, code: %s", new Object[] { this.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
+          QLog.e("UnifiedDebugReporter", 2, "reportStatus: exception=" + paramJSONObject.getMessage());
         }
-        return;
       }
-      catch (UnsupportedEncodingException paramArrayOfByte2)
-      {
-        paramArrayOfByte2.printStackTrace();
-      }
-      paramArrayOfByte2 = null;
-      continue;
-      label283:
-      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
-      continue;
-      label298:
-      localIntent.putExtra("key_register_sign", paramArrayOfByte1);
-      continue;
-      label311:
-      paramBoolean = false;
-      continue;
-      label316:
-      paramString = paramArrayOfByte2;
+    }
+    return localJSONObject2.toString();
+  }
+  
+  public void a(long paramLong, int paramInt, JSONObject paramJSONObject)
+  {
+    RemoteDebugReportMsg.RemoteLogReq localRemoteLogReq = new RemoteDebugReportMsg.RemoteLogReq();
+    localRemoteLogReq.str_seq.set(String.valueOf(paramLong));
+    localRemoteLogReq.str_data.set(a(paramInt, paramJSONObject));
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), bauz.class);
+    localNewIntent.putExtra("extra_cmd", "ClubDebugging.report");
+    localNewIntent.putExtra("extra_data", localRemoteLogReq.toByteArray());
+    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("UnifiedDebugReporter", 2, "reportStatus: seq=" + paramLong + ", statusCode=" + paramInt + ", data=" + paramJSONObject);
     }
   }
 }

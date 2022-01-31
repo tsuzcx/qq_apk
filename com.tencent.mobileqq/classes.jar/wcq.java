@@ -1,27 +1,12 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
-import com.tencent.common.app.BaseApplicationImpl;
-
-public class wcq
-  extends alry
+public abstract interface wcq
 {
-  public wcq(SubscribeBaseFragment paramSubscribeBaseFragment) {}
+  public abstract void a(int paramInt);
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
-  {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    aluq.a(BaseApplicationImpl.getContext(), 2, true);
-    if (this.a.getActivity() != null)
-    {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wcq
  * JD-Core Version:    0.7.0.1
  */

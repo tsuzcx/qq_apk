@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app;
 
-import ajed;
-import ajhx;
-import ance;
-import ancg;
+import ajsf;
+import ajwa;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import arnz;
-import bace;
+import ansp;
+import ansr;
+import askd;
+import bbdj;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -21,7 +21,7 @@ import tencent.im.cs.faceroam_sso.faceroam_sso.RspUserInfo;
 public class FavEmoRoamingHandler$1
   implements Runnable
 {
-  public FavEmoRoamingHandler$1(ajhx paramajhx, faceroam_sso.RspUserInfo paramRspUserInfo, long paramLong) {}
+  public FavEmoRoamingHandler$1(ajwa paramajwa, faceroam_sso.RspUserInfo paramRspUserInfo, long paramLong) {}
   
   public void run()
   {
@@ -31,13 +31,13 @@ public class FavEmoRoamingHandler$1
       List localList2;
       try
       {
-        bace.c(ajed.bf + ".nomedia");
+        bbdj.c(ajsf.bh + ".nomedia");
         localList1 = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.filename.get();
         localList2 = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.delete_file.get();
         localList3 = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.uint32_emoji_type.get();
         localObject = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.bid.get();
         k = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.max_roam_size.get();
-        ance.a = k;
+        ansp.a = k;
         String str = this.this$0.app.getCurrentAccountUin();
         if (!TextUtils.isEmpty(str)) {
           BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putInt("fav_roaming_max" + str, k).apply();
@@ -46,10 +46,10 @@ public class FavEmoRoamingHandler$1
           continue;
         }
         i = localList1.size();
-        if (i <= ance.a) {
+        if (i <= ansp.a) {
           continue;
         }
-        ance.b = i;
+        ansp.b = i;
         if (!QLog.isColorLevel()) {
           continue;
         }
@@ -76,25 +76,25 @@ public class FavEmoRoamingHandler$1
         QLog.e("FavEmoRoamingHandler", 1, "handleUserInfoGet oom2");
         return;
       }
-      QLog.d("FavEmoRoamingHandler", 2, "local max size:" + ance.a + ",server max size:" + ance.b + ",delListSize=" + j + ",fileListSize=" + i);
+      QLog.d("FavEmoRoamingHandler", 2, "local max size:" + ansp.a + ",server max size:" + ansp.b + ",delListSize=" + j + ",fileListSize=" + i);
       if ((QLog.isColorLevel()) && (localList1 != null) && (localList2 != null)) {
         QLog.d("FavEmoRoamingHandler", 2, "ret = " + this.jdField_a_of_type_Long + " userlist= " + localList1.toString() + " delList=" + localList2.toString() + " bid=" + (String)localObject + " local_max =" + k);
       }
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = "qq_expression";
-        ajhx.a(this.this$0, localList2, localList1);
-        localList1 = ((ancg)this.this$0.app.getManager(149)).a(localList2, localList1, (String)localObject, localList3);
+        ajwa.a(this.this$0, localList2, localList1);
+        localList1 = ((ansr)this.this$0.app.getManager(149)).a(localList2, localList1, (String)localObject, localList3);
         localObject = localList1;
         if (localList1 == null) {
           localObject = new ArrayList();
         }
         this.this$0.notifyUI(1, true, localObject);
-        arnz.e("0", 1);
+        askd.e("0", 1);
         return;
-        i = ance.a;
+        i = ansp.a;
         continue;
-        ance.b = ance.a;
+        ansp.b = ansp.a;
       }
       else
       {

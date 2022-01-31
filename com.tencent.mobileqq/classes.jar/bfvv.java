@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.BusinessAlbumInfo;
+import java.util.Formatter;
 
 public final class bfvv
-  implements Parcelable.Creator<BusinessAlbumInfo>
+  implements bfvw
 {
-  public BusinessAlbumInfo a(Parcel paramParcel)
-  {
-    return new BusinessAlbumInfo(paramParcel, null);
-  }
+  final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+  final Formatter jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder);
+  final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[1];
   
-  public BusinessAlbumInfo[] a(int paramInt)
+  public String a(int paramInt)
   {
-    return new BusinessAlbumInfo[paramInt];
+    this.jdField_a_of_type_ArrayOfJavaLangObject[0] = Integer.valueOf(paramInt);
+    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
+    this.jdField_a_of_type_JavaUtilFormatter.format("%02d", this.jdField_a_of_type_ArrayOfJavaLangObject);
+    return this.jdField_a_of_type_JavaUtilFormatter.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfvv
  * JD-Core Version:    0.7.0.1
  */

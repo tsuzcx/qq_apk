@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import adyt;
-import adzf;
-import afzu;
-import agdo;
-import ajed;
+import aejs;
+import aeke;
+import agls;
+import agpm;
+import ajsf;
 import android.os.Handler;
 import android.os.SystemClock;
-import baaf;
+import bbbj;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -29,10 +29,10 @@ class PhotoListPanel$QueryMediaTask
     if (QLog.isColorLevel()) {
       QLog.d("PhotoListPanel", 2, "QueryMediaTask start" + l1 + "to qurey time=" + (this.this$0.jdField_b_of_type_Long - l1));
     }
-    Object localObject1 = adyt.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    int i = ((adyt)localObject1).jdField_a_of_type_Int;
-    int j = ((adyt)localObject1).b;
-    localObject1 = ((adyt)localObject1).jdField_a_of_type_JavaUtilSet;
+    Object localObject1 = aejs.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    int i = ((aejs)localObject1).jdField_a_of_type_Int;
+    int j = ((aejs)localObject1).b;
+    localObject1 = ((aejs)localObject1).jdField_a_of_type_JavaUtilSet;
     Object localObject3;
     if ((localObject1 != null) && (((Set)localObject1).size() > 0))
     {
@@ -45,11 +45,11 @@ class PhotoListPanel$QueryMediaTask
           break;
         }
         localObject1 = (String)((Iterator)localObject3).next();
-        ((ArrayList)localObject2).add(ajed.aT + (String)localObject1);
+        ((ArrayList)localObject2).add(ajsf.aV + (String)localObject1);
       }
     }
     localObject1 = null;
-    Object localObject2 = baaf.a(this.this$0.jdField_a_of_type_AndroidAppActivity, "$RecentAlbumId", null, 100, this.this$0.jdField_a_of_type_Afzz, i, j, true, (ArrayList)localObject1, false, -1L);
+    Object localObject2 = bbbj.a(this.this$0.jdField_a_of_type_AndroidAppActivity, "$RecentAlbumId", null, 100, this.this$0.jdField_a_of_type_Aglx, i, j, true, (ArrayList)localObject1, false, -1L);
     long l2 = SystemClock.uptimeMillis();
     if (QLog.isColorLevel())
     {
@@ -82,10 +82,10 @@ class PhotoListPanel$QueryMediaTask
         {
           localObject1 = (LocalMediaInfo)((List)localObject2).get(k);
           if (((LocalMediaInfo)localObject1).path == null) {
-            break label902;
+            break label905;
           }
           ((LocalMediaInfo)localObject1).mMediaType = -1;
-          int n = baaf.a((LocalMediaInfo)localObject1);
+          int n = bbbj.a((LocalMediaInfo)localObject1);
           if (n == 0)
           {
             ((LocalMediaInfo)localObject1).mMediaType = 0;
@@ -93,6 +93,7 @@ class PhotoListPanel$QueryMediaTask
           }
           for (;;)
           {
+            this.this$0.jdField_a_of_type_JavaUtilMap.put(((LocalMediaInfo)localObject1).path, localObject1);
             if (this.this$0.jdField_b_of_type_JavaUtilArrayList != null) {
               this.this$0.jdField_b_of_type_JavaUtilArrayList.add(((LocalMediaInfo)localObject1).path);
             }
@@ -103,23 +104,28 @@ class PhotoListPanel$QueryMediaTask
             ((LocalMediaInfo)localObject1).thumbWidth = (this.this$0.d / 2);
             ((LocalMediaInfo)localObject1).thumbHeight = (this.this$0.d / 2);
             if ((((LocalMediaInfo)localObject1).mediaWidth <= 0) || (((LocalMediaInfo)localObject1).mediaHeight <= 0)) {
-              break label900;
+              break label738;
             }
-            afzu.a((LocalMediaInfo)localObject1, ((LocalMediaInfo)localObject1).mediaWidth, ((LocalMediaInfo)localObject1).mediaHeight);
+            agls.a((LocalMediaInfo)localObject1, ((LocalMediaInfo)localObject1).mediaWidth, ((LocalMediaInfo)localObject1).mediaHeight);
             i = ((LocalMediaInfo)localObject1).thumbWidth;
             ((LocalMediaInfo)localObject1).thumbWidth = ((LocalMediaInfo)localObject1).thumbHeight;
             ((LocalMediaInfo)localObject1).thumbHeight = i;
             i = j;
-            break label902;
+            break label905;
             j = i;
             if (n == 1)
             {
               ((LocalMediaInfo)localObject1).mMediaType = 1;
               j = i + 1;
-              this.this$0.jdField_a_of_type_JavaUtilMap.put(((LocalMediaInfo)localObject1).path, localObject1);
             }
           }
-          agdo.a((List)localObject2, this.this$0.jdField_b_of_type_JavaUtilArrayList, this.this$0.jdField_a_of_type_JavaUtilHashMap);
+          ((LocalMediaInfo)localObject1).thumbWidth = (this.this$0.d / 2);
+          ((LocalMediaInfo)localObject1).thumbHeight = (this.this$0.d / 2);
+          if ((((LocalMediaInfo)localObject1).mediaWidth > 0) && (((LocalMediaInfo)localObject1).mediaHeight > 0)) {
+            agls.a((LocalMediaInfo)localObject1, ((LocalMediaInfo)localObject1).mediaWidth, ((LocalMediaInfo)localObject1).mediaHeight);
+          }
+          label738:
+          i = j;
         }
         catch (Exception localException)
         {
@@ -130,21 +136,15 @@ class PhotoListPanel$QueryMediaTask
       }
       else
       {
+        agpm.a((List)localObject2, this.this$0.jdField_b_of_type_JavaUtilArrayList, this.this$0.jdField_a_of_type_JavaUtilHashMap);
         this.this$0.jdField_a_of_type_AndroidOsHandler.post(new PhotoListPanel.QueryMediaTask.2(this, (List)localObject2));
         if (QLog.isColorLevel()) {
           QLog.d("PhotoListPanel", 2, "QueryMediaTask,mediaList.size :" + ((List)localObject2).size());
         }
-        this.this$0.jdField_a_of_type_Adzf.b((List)localObject2);
+        this.this$0.jdField_a_of_type_Aeke.b((List)localObject2);
         return;
       }
-      localException.thumbWidth = (this.this$0.d / 2);
-      localException.thumbHeight = (this.this$0.d / 2);
-      if ((localException.mediaWidth > 0) && (localException.mediaHeight > 0)) {
-        afzu.a(localException, localException.mediaWidth, localException.mediaHeight);
-      }
-      label900:
-      i = j;
-      label902:
+      label905:
       k += 1;
     }
   }

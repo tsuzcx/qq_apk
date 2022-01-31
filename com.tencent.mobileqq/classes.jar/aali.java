@@ -1,35 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.ChatSettingForTroop.51;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
 
 public class aali
-  implements DialogInterface.OnClickListener
+  extends akgf
 {
-  public aali(ChatSettingForTroop.51 param51) {}
+  public aali(AuthDevRenameActivity paramAuthDevRenameActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    if (paramInt == 1)
+    AuthDevRenameActivity.a(this.a);
+    if (!paramBoolean)
     {
-      this.a.this$0.a.cancel();
+      bcpw.a(this.a, this.a.getString(2131692165), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    try
-    {
-      apln.a(this.a.this$0, true, "action_game_join_group", Long.valueOf(this.a.this$0.d).longValue(), -1, this.a.a);
-      this.a.this$0.a.cancel();
-      this.a.this$0.finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("Q.chatopttroop", 1, "showAlertDlg error = " + paramDialogInterface);
-      }
-    }
+    this.a.finish();
   }
 }
 

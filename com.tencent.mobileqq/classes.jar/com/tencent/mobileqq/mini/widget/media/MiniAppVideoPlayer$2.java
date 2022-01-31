@@ -29,7 +29,7 @@ class MiniAppVideoPlayer$2
         MiniAppVideoPlayer.access$200(this.this$0).setAttributes(MiniAppVideoPlayer.access$300(this.this$0));
       }
       MiniAppVideoPlayer.access$400(this.this$0).setProgress((int)(paramFloat1 * 100.0F));
-      MiniAppVideoPlayer.access$400(this.this$0).setImageResource(2130840628);
+      MiniAppVideoPlayer.access$400(this.this$0).setImageResource(2130840666);
       MiniAppVideoPlayer.access$400(this.this$0).show();
       return;
       if (paramFloat2 > 1.0F) {
@@ -82,7 +82,7 @@ class MiniAppVideoPlayer$2
     paramFloat1 = paramMotionEvent2.getX() - paramMotionEvent1.getX();
     if (paramFloat1 > 0.0F)
     {
-      MiniAppVideoPlayer.access$400(this.this$0).setImageResource(2130840629);
+      MiniAppVideoPlayer.access$400(this.this$0).setImageResource(2130840667);
       paramMotionEvent1 = this.this$0;
       paramFloat2 = MiniAppVideoPlayer.access$1000(this.this$0);
       MiniAppVideoPlayer.access$902(paramMotionEvent1, (int)(paramFloat1 / MiniAppVideoPlayer.access$000(this.this$0).getWidth() * 100.0F + paramFloat2));
@@ -97,7 +97,7 @@ class MiniAppVideoPlayer$2
       int i = (int)MiniAppVideoPlayer.access$800(this.this$0).getDuration() * MiniAppVideoPlayer.access$900(this.this$0) / 100;
       MiniAppVideoPlayer.access$800(this.this$0).seekTo(i);
       return;
-      MiniAppVideoPlayer.access$400(this.this$0).setImageResource(2130840630);
+      MiniAppVideoPlayer.access$400(this.this$0).setImageResource(2130840668);
       paramMotionEvent1 = this.this$0;
       paramFloat2 = MiniAppVideoPlayer.access$1000(this.this$0);
       MiniAppVideoPlayer.access$902(paramMotionEvent1, (int)(paramFloat1 / MiniAppVideoPlayer.access$000(this.this$0).getWidth() * 100.0F + paramFloat2));
@@ -134,7 +134,7 @@ class MiniAppVideoPlayer$2
     }
     i = (int)(i / Float.valueOf(MiniAppVideoPlayer.access$500(this.this$0)).floatValue() * 100.0F);
     if (i >= 50) {
-      MiniAppVideoPlayer.access$400(this.this$0).setImageResource(2130840632);
+      MiniAppVideoPlayer.access$400(this.this$0).setImageResource(2130840670);
     }
     for (;;)
     {
@@ -142,9 +142,9 @@ class MiniAppVideoPlayer$2
       MiniAppVideoPlayer.access$400(this.this$0).show();
       return;
       if (i > 0) {
-        MiniAppVideoPlayer.access$400(this.this$0).setImageResource(2130840633);
+        MiniAppVideoPlayer.access$400(this.this$0).setImageResource(2130840671);
       } else {
-        MiniAppVideoPlayer.access$400(this.this$0).setImageResource(2130840634);
+        MiniAppVideoPlayer.access$400(this.this$0).setImageResource(2130840672);
       }
     }
   }

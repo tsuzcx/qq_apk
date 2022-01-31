@@ -1,32 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-class uqg
-  extends sgc
+public class uqg
+  extends tjd
 {
-  uqg(upw paramupw) {}
+  public FeedVideoInfo a;
+  public String a;
+  public List<StoryVideoItem> a;
+  public String b;
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public uqg(ErrorMessage paramErrorMessage, String paramString)
   {
-    if ((upw.a(this.a) == null) || (upw.a(this.a).a == null))
-    {
-      urk.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
-      return;
-    }
-    String str = upw.a(this.a).a.a;
-    if (!TextUtils.equals(str, paramStoryPushMsg.d))
-    {
-      urk.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
-      return;
-    }
-    switch (paramStoryPushMsg.a)
-    {
-    case 16: 
-    case 17: 
-    default: 
-      return;
-    }
-    this.a.a(new unf[] { new una(umi.a(str)), (unf)this.a.b.a(), new umz(new uqh(this, str)) });
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "GetVideoListEvent{mVideoItems=" + this.jdField_a_of_type_JavaUtilList.size() + ", feedId=" + this.jdField_a_of_type_JavaLangString + ", mUnionId=" + this.b + '}' + super.toString();
   }
 }
 

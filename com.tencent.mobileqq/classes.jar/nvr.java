@@ -1,64 +1,20 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
 
 public class nvr
-  implements begh
+  implements View.OnClickListener
 {
-  private List<begh> a = new ArrayList();
+  public nvr(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
   
-  public void a(begh parambegh)
+  public void onClick(View paramView)
   {
-    if ((this.a != null) && (!this.a.contains(parambegh))) {
-      this.a.add(parambegh);
-    }
-  }
-  
-  public void b(begh parambegh)
-  {
-    if ((this.a != null) && (this.a.contains(parambegh))) {
-      this.a.remove(parambegh);
-    }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.a == null) || (this.a.size() <= 0)) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        begh localbegh = (begh)localIterator.next();
-        if (localbegh != null) {
-          localbegh.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-        }
-      }
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((this.a == null) || (this.a.size() <= 0)) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        begh localbegh = (begh)localIterator.next();
-        if (localbegh != null) {
-          localbegh.onScrollStateChanged(paramAbsListView, paramInt);
-        }
-      }
-    }
+    ReadInJoyChannelActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nvr
  * JD-Core Version:    0.7.0.1
  */

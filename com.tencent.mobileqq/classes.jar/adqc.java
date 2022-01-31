@@ -1,21 +1,38 @@
+import android.content.Context;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
 
 class adqc
-  extends acju
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  View d;
+  adqc(adqb paramadqb) {}
   
-  adqc(adqa paramadqa) {}
+  public void onClick(View paramView)
+  {
+    Object localObject = actn.a(paramView);
+    if ((localObject instanceof MessageForFoldMsgGrayTips))
+    {
+      ((MessageForFoldMsgGrayTips)localObject).isOpen = true;
+      paramView = (adqd)actn.a(paramView);
+      paramView.jdField_b_of_type_AndroidWidgetTextView.setText(((MessageForFoldMsgGrayTips)localObject).getShowMsgContent(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext));
+      localObject = paramView.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
+      if ((localObject instanceof ViewGroup.MarginLayoutParams))
+      {
+        localObject = (ViewGroup.MarginLayoutParams)localObject;
+        if (((ViewGroup.MarginLayoutParams)localObject).rightMargin != actn.a(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources())) {
+          ((ViewGroup.MarginLayoutParams)localObject).rightMargin = actn.a(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources());
+        }
+      }
+      paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramView.a.requestLayout();
+      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80064BD", "0X80064BD", 0, 0, "", "", "", "");
+    }
+  }
 }
 
 

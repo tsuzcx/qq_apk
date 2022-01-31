@@ -1,21 +1,154 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class njf
-  implements pby
+public class njf
 {
-  njf(nje paramnje, ViewBase paramViewBase) {}
+  private static njf jdField_a_of_type_Njf = new njf();
+  private long jdField_a_of_type_Long;
+  private njh jdField_a_of_type_Njh = new njh(null);
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  public static njf a()
+  {
+    try
+    {
+      if (jdField_a_of_type_Njf == null) {
+        jdField_a_of_type_Njf = new njf();
+      }
+      njf localnjf = jdField_a_of_type_Njf;
+      return localnjf;
+    }
+    finally {}
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("videoId", paramString2);
+    localHashMap.put("uin", paramString1);
+    axrl.a(BaseApplicationImpl.getContext()).a("", "IMAX_Ad_VIDEO_PRELOADED_RATE", true, 0L, 0L, localHashMap, "", false);
+    if (QLog.isColorLevel()) {
+      QLog.i("AdvertisementStatistics", 2, "reportImaxVideoCoverRate:" + paramString2);
+    }
+  }
   
   public void a()
   {
-    String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData();
-    obz.a(njd.a(this.jdField_a_of_type_Nje.jdField_a_of_type_Njd).getContext(), str);
-    oag.a(this.jdField_a_of_type_Nje.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
+    if (this.jdField_a_of_type_Njh.jdField_c_of_type_Long == -1L) {
+      this.jdField_a_of_type_Njh.jdField_c_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
+    }
+  }
+  
+  public void a(String paramString, long paramLong, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.jdField_a_of_type_Njh.a();
+    this.jdField_a_of_type_Long = paramLong;
+    if (QLog.isColorLevel()) {
+      QLog.i("AdvertisementStatistics", 2, "mClickTime:" + this.jdField_a_of_type_Long + " sToolShowTime:" + BaseApplicationImpl.sToolShowTime);
+    }
+    if ((BaseApplicationImpl.sToolShowTime == 0L) || (BaseApplicationImpl.sToolShowTime > paramLong)) {
+      this.jdField_a_of_type_Njh.jdField_a_of_type_Int = 0;
+    }
+    for (this.jdField_a_of_type_Njh.jdField_b_of_type_Long = (BaseApplicationImpl.sToolShowTime - paramLong);; this.jdField_a_of_type_Njh.jdField_b_of_type_Long = 0L)
+    {
+      long l = SystemClock.uptimeMillis();
+      this.jdField_a_of_type_Njh.jdField_a_of_type_Long = (l - paramLong);
+      this.jdField_a_of_type_Njh.jdField_b_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Njh.jdField_a_of_type_Boolean = paramBoolean;
+      return;
+      this.jdField_a_of_type_Njh.jdField_a_of_type_Int = 1;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Njh.jdField_a_of_type_JavaLangString = "IMAX_Ad_videoLoadErr";
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("adId", paramString1);
+    localHashMap.put("vid", paramString2);
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.i("AdvertisementStatistics", 2, this.jdField_a_of_type_Njh.toString());
+    }
+    axrl.a(BaseApplicationImpl.getContext()).a("", "IMAX_Ad_videoLoadErr", true, l1 - l2, 0L, localHashMap, "", false);
+  }
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if (this.b) {
+      return;
+    }
+    this.b = true;
+    this.jdField_a_of_type_Njh.jdField_a_of_type_JavaLangString = "IMAX_Ad_Remind_Dialog_Click";
+    this.jdField_a_of_type_Njh.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Njh.jdField_c_of_type_JavaLangString = paramString2;
+    paramString1 = this.jdField_a_of_type_Njh.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("AdvertisementStatistics", 2, this.jdField_a_of_type_Njh.toString() + " ok " + paramBoolean);
+    }
+    axrl.a(BaseApplicationImpl.getContext()).a("", this.jdField_a_of_type_Njh.jdField_a_of_type_JavaLangString, paramBoolean, this.jdField_a_of_type_Njh.jdField_c_of_type_Long, 0L, paramString1, "", false);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Njh.jdField_b_of_type_Int == -1)
+    {
+      this.jdField_a_of_type_Njh.jdField_c_of_type_JavaLangString = paramString;
+      paramString = this.jdField_a_of_type_Njh;
+      if (!paramBoolean) {
+        break label36;
+      }
+    }
+    label36:
+    for (int i = 1;; i = 0)
+    {
+      paramString.jdField_b_of_type_Int = i;
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    HashMap localHashMap = this.jdField_a_of_type_Njh.a();
+    if (paramBoolean) {}
+    for (this.jdField_a_of_type_Njh.jdField_a_of_type_JavaLangString = "IMAX_Ad_StartCost_ByUsr";; this.jdField_a_of_type_Njh.jdField_a_of_type_JavaLangString = "IMAX_Ad_StartCost")
+    {
+      axrl.a(BaseApplicationImpl.getContext()).a("", this.jdField_a_of_type_Njh.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_Njh.d, 0L, localHashMap, "", false);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("AdvertisementStatistics", 2, "remindUsr:" + paramBoolean + this.jdField_a_of_type_Njh.toString());
+      return;
+    }
+  }
+  
+  public void b(String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Njh.d == -1L)
+    {
+      this.jdField_a_of_type_Njh.jdField_c_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Njh.d = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
+      a(paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     njf
  * JD-Core Version:    0.7.0.1
  */

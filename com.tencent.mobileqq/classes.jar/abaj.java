@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.config.ResourcePluginListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-class abaj
-  extends ResourcePluginListener
+public class abaj
+  extends bbny
 {
-  abaj(abai paramabai) {}
+  public abaj(EditInfoActivity paramEditInfoActivity) {}
   
-  public void a(byte paramByte)
+  public void a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
-    }
-    if (paramByte != -1) {
-      this.a.a.sendEmptyMessage(11340002);
-    }
+    EditInfoActivity.a(this.a, EditInfoActivity.b(this.a));
   }
 }
 

@@ -1,26 +1,34 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.kingkong.UpdateManager;
+import org.json.JSONObject;
 
 public class zzl
-  implements CompoundButton.OnCheckedChangeListener
+  extends Handler
 {
-  public zzl(AssistantSettingActivity paramAssistantSettingActivity, amxv paramamxv) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Amxv.a(paramBoolean);
-    if (!paramBoolean)
+    paramMessage = paramMessage.getData();
+    try
     {
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081DD", "0X80081DD", 0, 0, "", "", "", "");
+      String str = paramMessage.getString("PATCH_JSON_STRING");
+      boolean bool = paramMessage.getBoolean("PATCH_FORCE_UPDATE");
+      paramMessage = zzk.a(new JSONObject(str));
+      if (paramMessage != null) {
+        UpdateManager.a(paramMessage, bool);
+      }
       return;
     }
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081F1", "0X80081F1", 0, 0, "", "", "", "");
+    catch (Exception paramMessage)
+    {
+      zyz.a("KingKongUpdateManager", "Update patch exception : " + paramMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zzl
  * JD-Core Version:    0.7.0.1
  */

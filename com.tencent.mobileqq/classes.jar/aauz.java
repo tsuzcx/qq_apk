@@ -1,39 +1,63 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aauz
-  extends anoj
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aauz(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aauz(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(boolean paramBoolean)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super.a(paramBoolean);
-  }
-  
-  protected void a(boolean paramBoolean, Card paramCard)
-  {
-    super.a(paramBoolean, paramCard);
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "checkUpdateExtendInfo, got extend info");
+    if (((Boolean)paramCompoundButton.getTag()).booleanValue()) {
+      paramCompoundButton.setTag(Boolean.FALSE);
     }
-    if (FriendProfileCardActivity.a(this.a) != null) {
-      FriendProfileCardActivity.a(this.a).dismiss();
-    }
-    if (FriendProfileCardActivity.a(this.a) != null)
+    label20:
+    int i;
+    do
     {
-      FriendProfileCardActivity.a(this.a).removeCallbacksAndMessages(null);
-      FriendProfileCardActivity.a(this.a, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendProfileCardActivity", 2, "checkUpdateExtendInfo, start add friend :" + FriendProfileCardActivity.d(this.a));
-      }
-      if (!FriendProfileCardActivity.d(this.a))
+      do
       {
-        FriendProfileCardActivity.a(this.a, true);
-        FriendProfileCardActivity.b(this.a);
+        break label20;
+        do
+        {
+          return;
+        } while (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null);
+        i = this.a.app.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+      } while (i == -1);
+      if (!paramBoolean) {
+        break;
       }
+    } while (i != 1);
+    ChatSettingForTroop.a(this.a, 4);
+    label74:
+    if (ChatSettingForTroop.a(this.a) != null) {
+      ChatSettingForTroop.d(this.a);
+    }
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean)
+    {
+      paramCompoundButton = "msg_open";
+      label107:
+      axqw.b(localQQAppInterface, "dc00899", "Grp_msg", "", "Grp_data", paramCompoundButton, 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
+      if (!paramBoolean) {
+        break label209;
+      }
+    }
+    label209:
+    for (paramCompoundButton = "msg_open";; paramCompoundButton = "msg_close")
+    {
+      bbbb.a("Grp_msg", "grpData_admin", paramCompoundButton, 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bbbb.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
+      return;
+      if (i == 1) {
+        break;
+      }
+      ChatSettingForTroop.a(this.a, 1);
+      break label74;
+      paramCompoundButton = "msg_close";
+      break label107;
     }
   }
 }

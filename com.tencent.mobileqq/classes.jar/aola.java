@@ -1,19 +1,10 @@
-class aola
-  extends aokw
+public abstract interface aola
 {
-  public aola(aokk paramaokk)
-  {
-    super(paramaokk);
-  }
-  
-  protected String a()
-  {
-    return "StateGotoOffFileProcess";
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aola
  * JD-Core Version:    0.7.0.1
  */

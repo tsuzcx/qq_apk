@@ -1,10 +1,27 @@
-import com.tencent.image.URLImageView;
+import android.hardware.Camera;
+import android.hardware.Camera.PreviewCallback;
 
 class aubj
+  implements Camera.PreviewCallback
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  aubj(aubg paramaubg) {}
   
-  aubj(aubi paramaubi) {}
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  {
+    if (paramArrayOfByte == null) {
+      return;
+    }
+    if (((this.a.jdField_a_of_type_Boolean) || (this.a.e == 1)) && (!aubg.a(this.a)))
+    {
+      this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      if ((this.a.e != 1) && (System.currentTimeMillis() - aubg.a(this.a) > this.a.c))
+      {
+        aubg.a(this.a, System.currentTimeMillis());
+        aubg.a(this.a, paramArrayOfByte);
+      }
+    }
+    aubg.a(this.a).addCallbackBuffer(paramArrayOfByte);
+  }
 }
 
 

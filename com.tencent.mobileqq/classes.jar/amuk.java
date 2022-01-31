@@ -1,20 +1,108 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class amuk
-  implements DialogInterface.OnKeyListener
+public class amuk
+  extends ampb<amuj>
 {
-  amuk(amuj paramamuj) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public static int a(Context paramContext, String paramString)
   {
-    return (paramInt == 84) || (paramInt == 4);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "poke_msg_btn_is_show", 0);
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putInt(paramString + "_" + "poke_msg_btn_is_show", paramInt);
+    paramContext.apply();
+  }
+  
+  public int a()
+  {
+    return 439;
+  }
+  
+  @NonNull
+  public amuj a(int paramInt)
+  {
+    return new amuj(0);
+  }
+  
+  @Nullable
+  public amuj a(ampi[] paramArrayOfampi)
+  {
+    j = 0;
+    i = j;
+    if (paramArrayOfampi != null)
+    {
+      i = j;
+      if (paramArrayOfampi.length > 0) {
+        paramArrayOfampi = paramArrayOfampi[0].a;
+      }
+    }
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. strContent = " + paramArrayOfampi);
+      }
+      i = new JSONObject(paramArrayOfampi).getInt("isPushSwitchShow");
+    }
+    catch (Exception paramArrayOfampi)
+    {
+      for (;;)
+      {
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("handlePushMsgBtnConfig", 2, "PushMsgBtnConfig parse error", paramArrayOfampi);
+          i = j;
+        }
+      }
+    }
+    return new amuj(i);
+  }
+  
+  public Class a()
+  {
+    return amuj.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amuj paramamuj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. onUpdate = " + paramamuj.a);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    a(localQQAppInterface.getApp(), localQQAppInterface.getAccount(), paramamuj.a);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amuk
  * JD-Core Version:    0.7.0.1
  */

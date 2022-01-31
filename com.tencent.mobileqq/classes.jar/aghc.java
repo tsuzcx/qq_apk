@@ -1,15 +1,25 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
 
 class aghc
-  implements View.OnClickListener
+  implements anyz
 {
-  aghc(aggx paramaggx) {}
+  aghc(aggy paramaggy) {}
   
-  public void onClick(View paramView)
+  public boolean a(KeyEvent paramKeyEvent)
   {
-    this.a.a(paramView, -1, new Bundle(), 2, null);
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean))
+    {
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+      this.a.jdField_a_of_type_Boolean = false;
+      paramKeyEvent = ((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
+      paramKeyEvent.y = 0;
+      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes(paramKeyEvent);
+      return true;
+    }
+    return false;
   }
 }
 

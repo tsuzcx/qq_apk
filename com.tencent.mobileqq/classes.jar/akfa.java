@@ -1,183 +1,209 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Process;
-import android.os.SystemClock;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.remind.RemindPB.RemindItem;
+import com.tencent.pb.remind.RemindPB.RemindQuota;
+import com.tencent.pb.remind.RemindPB.ReqBody;
+import com.tencent.pb.remind.RemindPB.RspBody;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class akfa
-  extends Handler
+  extends ajtd
 {
-  public static int a;
-  public static long a;
-  private akep a;
-  private long b;
-  private long c;
-  private long d;
-  
-  static
+  public akfa(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Int = -1000;
+    super(paramQQAppInterface);
   }
   
-  public akfa(Looper paramLooper, QQAppInterface paramQQAppInterface, akep paramakep)
+  private boolean a(List<String> paramList)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_Akep = paramakep;
-    this.b = System.currentTimeMillis();
+    return (paramList != null) && (paramList.size() > 0);
   }
   
-  public void a()
+  public void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    removeCallbacksAndMessages(null);
-  }
-  
-  public void dispatchMessage(Message paramMessage)
-  {
-    ThreadRegulator.a().b();
-    super.dispatchMessage(paramMessage);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    jdField_a_of_type_Int = Process.myTid();
-    jdField_a_of_type_Long = SystemClock.currentThreadTimeMillis();
-    long l2 = System.currentTimeMillis();
-    long l3 = SystemClock.currentThreadTimeMillis();
-    Object localObject1 = (akew)paramMessage.obj;
-    label266:
-    boolean bool;
-    do
+    Object localObject1;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
     {
-      for (;;)
+      localObject1 = new RemindPB.RspBody();
+      try
       {
-        try
+        ((RemindPB.RspBody)localObject1).mergeFrom((byte[])paramObject);
+        paramObject = localObject1;
+      }
+      catch (Exception paramObject)
+      {
+        do
         {
-          int i = paramMessage.what;
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("SpecialRemind.Service", 2, "handle send special sound exception:" + paramObject.getMessage());
+            }
+            paramObject.printStackTrace();
+            paramObject = null;
+            continue;
+            if (paramObject.msg_quota.has())
+            {
+              paramObject = (RemindPB.RemindQuota)paramObject.msg_quota.get();
+              if (paramObject.uint32_comm_quota.has()) {
+                aijb.a(paramObject.uint32_comm_quota.get(), this.app);
+              }
+              if (paramObject.uint32_svip_quota.has()) {
+                aijb.b(paramObject.uint32_svip_quota.get(), this.app);
+              }
+              aijb.b(this.app);
+              continue;
+              if (paramObject.rep_set_info.has())
+              {
+                localObject1 = paramObject.rep_set_info.get();
+                if ((localObject1 != null) && (((List)localObject1).size() > 0))
+                {
+                  paramObject = new ArrayList();
+                  localObject1 = ((List)localObject1).iterator();
+                  while (((Iterator)localObject1).hasNext())
+                  {
+                    localObject2 = (RemindPB.RemindItem)((Iterator)localObject1).next();
+                    if ((((RemindPB.RemindItem)localObject2).uint64_uin.has()) && (((RemindPB.RemindItem)localObject2).uint32_id.has()))
+                    {
+                      str = String.valueOf(((RemindPB.RemindItem)localObject2).uint64_uin.get());
+                      paramObject.add(str);
+                      aijb.a(str, ((RemindPB.RemindItem)localObject2).uint32_id.get(), this.app);
+                    }
+                  }
+                  aijb.a(paramObject, this.app);
+                  continue;
+                  if (paramObject.rep_clear_uin.has())
+                  {
+                    localObject1 = paramObject.rep_clear_uin.get();
+                    paramObject = new ArrayList();
+                    if ((localObject1 != null) && (((List)localObject1).size() > 0))
+                    {
+                      localObject1 = ((List)localObject1).iterator();
+                      while (((Iterator)localObject1).hasNext())
+                      {
+                        localObject2 = String.valueOf((Long)((Iterator)localObject1).next());
+                        paramObject.add(localObject2);
+                        aijb.c((String)localObject2, this.app);
+                      }
+                      aijb.b(paramObject, this.app);
+                    }
+                  }
+                }
+              }
+            }
+          }
+          if (i != 1) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i("SpecialRemind.Service", 2, "get count fail.");
+        return;
+        int i = paramObject.int32_ret.get();
+        notifyUI(1001, paramFromServiceMsg.isSuccess(), Integer.valueOf(i));
+        return;
+      }
+      if ((paramObject != null) && (paramObject.uint32_method.has()))
+      {
+        i = paramObject.uint32_method.get();
+        if (paramObject.int32_ret.has())
+        {
+          if (paramObject.int32_ret.get() != 0) {
+            break label503;
+          }
           switch (i)
           {
           default: 
-            this.d += SystemClock.currentThreadTimeMillis() - l3;
-            this.c += System.currentTimeMillis() - l2;
-            if (System.currentTimeMillis() - this.b > 300000L)
-            {
-              paramMessage = new StringBuilder(100);
-              paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-              paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-              localObject1 = (akex)this.jdField_a_of_type_Akep.a(1);
-              if (localObject1 != null) {
-                paramMessage.append(((akex)localObject1).a());
-              }
-              localObject1 = (akfb)this.jdField_a_of_type_Akep.a(2);
-              if (localObject1 != null) {
-                paramMessage.append(((akfb)localObject1).a()).append("\n");
-              }
-              QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
-              this.d = 0L;
-              this.c = 0L;
-              this.b = System.currentTimeMillis();
-            }
-            return;
+            notifyUI(1000, paramFromServiceMsg.isSuccess(), Integer.valueOf(i));
           }
         }
-        finally
-        {
-          l1 = this.d;
-          this.d = (SystemClock.currentThreadTimeMillis() - l3 + l1);
-          l1 = this.c;
-          this.c = (System.currentTimeMillis() - l2 + l1);
-          if (System.currentTimeMillis() - this.b <= 300000L) {
-            continue;
-          }
-          localObject1 = new StringBuilder(100);
-          ((StringBuilder)localObject1).append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-          ((StringBuilder)localObject1).append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-          Object localObject2 = (akex)this.jdField_a_of_type_Akep.a(1);
-          if (localObject2 == null) {
-            continue;
-          }
-          ((StringBuilder)localObject1).append(((akex)localObject2).a());
-          localObject2 = (akfb)this.jdField_a_of_type_Akep.a(2);
-          if (localObject2 == null) {
-            continue;
-          }
-          ((StringBuilder)localObject1).append(((akfb)localObject2).a()).append("\n");
-          QLog.d("Q.fts.BgCpu.Total", 1, ((StringBuilder)localObject1).toString());
-          this.d = 0L;
-          this.c = 0L;
-          this.b = System.currentTimeMillis();
-        }
-        if (((akew)localObject1).c()) {
-          sendMessageDelayed(obtainMessage(2, localObject1), 30000L);
-        } else if (QLog.isColorLevel()) {
-          QLog.w("Q.fts.sync_worker", 2, "readSyncedCursor is false!!");
-        }
       }
-      removeMessages(2, localObject1);
-      if (((akew)localObject1).d()) {
-        ((akew)localObject1).e();
-      }
-      bool = this.jdField_a_of_type_Akep.b;
-      if (!bool) {
-        break;
-      }
-      this.d += SystemClock.currentThreadTimeMillis() - l3;
-      this.c += System.currentTimeMillis() - l2;
-    } while (System.currentTimeMillis() - this.b <= 300000L);
-    paramMessage = new StringBuilder(100);
-    paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-    paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-    localObject1 = (akex)this.jdField_a_of_type_Akep.a(1);
-    if (localObject1 != null) {
-      paramMessage.append(((akex)localObject1).a());
     }
-    localObject1 = (akfb)this.jdField_a_of_type_Akep.a(2);
-    if (localObject1 != null) {
-      paramMessage.append(((akfb)localObject1).a()).append("\n");
-    }
-    QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
-    this.d = 0L;
-    this.c = 0L;
-    this.b = System.currentTimeMillis();
-    return;
-    paramMessage = obtainMessage(2, localObject1);
-    if (((akew)localObject1).f()) {}
-    for (long l1 = 15000L;; l1 = 30000L)
+    label503:
+    do
     {
-      sendMessageDelayed(paramMessage, l1);
-      break;
-      removeMessages(3, localObject1);
-      ((akew)localObject1).e();
-      bool = this.jdField_a_of_type_Akep.b;
-      if (!bool) {
-        break;
+      return;
+      Object localObject2;
+      String str;
+      if (QLog.isColorLevel()) {
+        QLog.e("QVipSpeicalCareHandler", 2, "-->report MM:cmd=" + paramFromServiceMsg.getServiceCmd() + ",error code=" + paramFromServiceMsg.getBusinessFailCode() + ",uin=" + this.app.getCurrentAccountUin());
       }
-      this.d += SystemClock.currentThreadTimeMillis() - l3;
-      this.c += System.currentTimeMillis() - l2;
-      if (System.currentTimeMillis() - this.b <= 300000L) {
-        break label266;
+    } while (paramFromServiceMsg.isSuccess());
+    bded.a().a(paramFromServiceMsg.getServiceCmd(), 100, paramFromServiceMsg.getBusinessFailCode(), this.app.getCurrentAccountUin(), 1000277, ajyc.a(2131711389), true);
+  }
+  
+  public void a(List<String> paramList1, int paramInt, List<String> paramList2)
+  {
+    RemindPB.ReqBody localReqBody = new RemindPB.ReqBody();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      try
+      {
+        paramList1 = createToServiceMsg("SpecialRemind.Service");
+        paramList1.putWupBuffer(localReqBody.toByteArray());
+        sendPbReq(paramList1);
+        return;
       }
-      paramMessage = new StringBuilder(100);
-      paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-      paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-      localObject1 = (akex)this.jdField_a_of_type_Akep.a(1);
-      if (localObject1 != null) {
-        paramMessage.append(((akex)localObject1).a());
+      catch (Exception paramList1)
+      {
+        paramList1.printStackTrace();
+        return;
       }
-      localObject1 = (akfb)this.jdField_a_of_type_Akep.a(2);
-      if (localObject1 != null) {
-        paramMessage.append(((akfb)localObject1).a()).append("\n");
+      localReqBody.uint32_method.set(1);
+      continue;
+      if ((a(paramList1)) && (a(paramList2)) && (paramList1.size() == paramList2.size()))
+      {
+        int j = paramList2.size();
+        int i = 0;
+        while (i < j)
+        {
+          RemindPB.RemindItem localRemindItem = new RemindPB.RemindItem();
+          localRemindItem.uint64_uin.set(Long.parseLong((String)paramList1.get(i)));
+          localRemindItem.uint32_id.set(Integer.parseInt((String)paramList2.get(i)));
+          localReqBody.rep_set_info.add(localRemindItem);
+          localReqBody.setHasFlag(true);
+          i += 1;
+        }
+        localReqBody.uint32_method.set(paramInt);
+        continue;
+        if (a(paramList1))
+        {
+          paramList1 = paramList1.iterator();
+          while (paramList1.hasNext())
+          {
+            paramList2 = (String)paramList1.next();
+            localReqBody.rep_clear_uin.add(Long.valueOf(Long.parseLong(paramList2)));
+          }
+          localReqBody.uint32_method.set(4);
+        }
       }
-      QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
-      this.d = 0L;
-      this.c = 0L;
-      this.b = System.currentTimeMillis();
+    }
+  }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return akfb.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
+    if ((paramToServiceMsg == null) || (paramToServiceMsg.length() == 0)) {}
+    while (!"SpecialRemind.Service".equals(paramFromServiceMsg.getServiceCmd())) {
       return;
     }
+    a(paramFromServiceMsg, paramObject);
   }
 }
 

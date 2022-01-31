@@ -1,27 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.widget.ListView;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bbic
-  extends Handler
+class bbic
+  implements View.OnClickListener
 {
-  public bbic(DraggableGridView paramDraggableGridView, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bbic(bbhz parambbhz, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    DraggableGridView.c(this.a, paramMessage.arg1);
-    DraggableGridView.a(this.a).smoothScrollBy(DraggableGridView.d(this.a), 0);
-    DraggableGridView.a(this.a, (int)DraggableGridView.a(this.a), (int)DraggableGridView.b(this.a));
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbhz, 0);
+    }
+    this.jdField_a_of_type_Bbhz.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbic
  * JD-Core Version:    0.7.0.1
  */

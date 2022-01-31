@@ -1,46 +1,60 @@
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class afez
-  extends ajmm
+  implements TextView.OnEditorActionListener
 {
-  public afez(DeviceFragment paramDeviceFragment) {}
+  public afez(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    DeviceFragment localDeviceFragment = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
-      localDeviceFragment.c = bool;
-      this.a.a.d();
-      this.a.a.notifyDataSetChanged();
-      return;
+      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      if (!TextUtils.isEmpty(paramTextView)) {
+        if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) && (!TextUtils.isEmpty(paramTextView.trim())))
+        {
+          this.a.a(paramTextView);
+          noo.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
+          ClassificationSearchActivity.a(this.a, paramTextView);
+        }
+      }
+      for (;;)
+      {
+        return true;
+        if (this.a.f == ClassificationSearchActivity.d)
+        {
+          noo.a(null, "", "0X800742D", "0X800742D", 0, 0, paramTextView, "", "", "");
+          ClassificationSearchActivity.a(this.a, paramTextView);
+        }
+        else
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
+          continue;
+          if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
+          {
+            paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getHint().toString();
+            if ((!TextUtils.isEmpty(paramTextView.trim())) && (!TextUtils.equals(paramTextView, ajyc.a(2131701915))) && (!TextUtils.equals(paramTextView, ajyc.a(2131701930))))
+            {
+              this.a.a(paramTextView);
+              noo.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
+              ClassificationSearchActivity.a(this.a, paramTextView);
+            }
+          }
+        }
+      }
     }
-  }
-  
-  protected void b(int paramInt1, int paramInt2)
-  {
-    if (this.a.a == null) {
-      return;
-    }
-    DeviceFragment localDeviceFragment = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localDeviceFragment.d = bool;
-      this.a.a.e();
-      this.a.a.a(this.a.d, ajed.A);
-      this.a.a.notifyDataSetChanged();
-      return;
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afez
  * JD-Core Version:    0.7.0.1
  */

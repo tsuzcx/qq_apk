@@ -1,31 +1,28 @@
-import java.util.List;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
-public abstract class vqe<T>
+public class vqe
+  extends vpu
 {
-  private int jdField_a_of_type_Int;
-  private List<T> jdField_a_of_type_JavaUtilList;
+  public final int c;
   
-  public vqe(int paramInt, List<T> paramList)
+  public vqe(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    super(paramInt3, paramString, paramInt1);
+    this.c = paramInt2;
   }
   
-  public int a()
+  @NonNull
+  public Class<? extends vpv> a()
   {
-    return this.jdField_a_of_type_Int;
+    return vqf.class;
   }
   
-  public List<T> a()
+  @NonNull
+  public vpv a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public abstract void a(int paramInt, T paramT, unw paramunw);
-  
-  public void a(int paramInt, unw paramunw)
-  {
-    a(paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), paramunw);
+    return new vqf(this, paramContext, paramViewGroup);
   }
 }
 

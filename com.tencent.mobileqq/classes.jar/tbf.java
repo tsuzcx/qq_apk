@@ -1,12 +1,15 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.MessageMicro;
 
-public class tbf
-  extends slu
+public abstract interface tbf
 {
-  public tbf(qqstory_service.RspDeleteVideo paramRspDeleteVideo)
-  {
-    super(paramRspDeleteVideo.result);
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(MessageMicro paramMessageMicro);
+  
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 

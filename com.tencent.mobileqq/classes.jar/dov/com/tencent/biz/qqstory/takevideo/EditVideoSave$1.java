@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import ajjy;
+import ajyc;
 import android.content.Intent;
-import bbmy;
-import bigb;
-import bigr;
-import bihj;
+import bcpw;
+import bjww;
+import bjxm;
+import bjye;
 
 public class EditVideoSave$1
   implements Runnable
 {
-  public EditVideoSave$1(bigr parambigr, int paramInt, Intent paramIntent) {}
+  public EditVideoSave$1(bjxm parambjxm, int paramInt, Intent paramIntent) {}
   
   public void run()
   {
@@ -18,14 +18,14 @@ public class EditVideoSave$1
     if (this.jdField_a_of_type_Int == 222)
     {
       str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("key_video_save_path");
-      this.this$0.jdField_a_of_type_Bigb.a(str);
+      this.this$0.jdField_a_of_type_Bjww.a(str);
     }
-    while (this.this$0.jdField_a_of_type_Bigb.a.a() == 102)
+    while (this.this$0.jdField_a_of_type_Bjww.a.a() == 102)
     {
       String str;
       return;
     }
-    bbmy.a(this.this$0.jdField_a_of_type_Bihj.a(), 2, ajjy.a(2131637976), 0).a();
+    bcpw.a(this.this$0.jdField_a_of_type_Bjye.a(), 2, ajyc.a(2131703761), 0).a();
   }
 }
 

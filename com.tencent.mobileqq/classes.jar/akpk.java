@@ -1,23 +1,51 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo;
+import IMMsgBodyPack.SlaveMasterMsg;
+import OnlinePushPack.MsgInfo;
+import OnlinePushPack.SvcReqPushMsg;
+import com.qq.taf.jce.JceInputStream;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class akpk
-  implements Parcelable.Creator<ARScanStarFaceActInfo>
+public class akpk
+  extends akoo
 {
-  public ARScanStarFaceActInfo a(Parcel paramParcel)
+  public akpk(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
-    return new ARScanStarFaceActInfo(paramParcel);
+    super(paramQQAppInterface, paramMessageHandler);
   }
   
-  public ARScanStarFaceActInfo[] a(int paramInt)
+  private boolean a(MsgInfo paramMsgInfo)
   {
-    return new ARScanStarFaceActInfo[paramInt];
+    JceInputStream localJceInputStream = new JceInputStream(paramMsgInfo.vMsg);
+    SlaveMasterMsg localSlaveMasterMsg = new SlaveMasterMsg();
+    localSlaveMasterMsg.readFrom(localJceInputStream);
+    if (((int)localSlaveMasterMsg.uMsgType == 529) && (4L == localSlaveMasterMsg.uCmd))
+    {
+      axao.a(this.a.a(), paramMsgInfo, localSlaveMasterMsg);
+      return true;
+    }
+    return false;
+  }
+  
+  public akqj a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  {
+    boolean bool = false;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return new akqj(null, bool);
+      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
+        bool = a(paramMsgInfo);
+      } else {
+        a(getClass().getName(), paramInt);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akpk
  * JD-Core Version:    0.7.0.1
  */

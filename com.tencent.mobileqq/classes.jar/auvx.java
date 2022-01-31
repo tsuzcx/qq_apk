@@ -1,29 +1,41 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderView;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
 
 public class auvx
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public auvx(ProviderContainerView paramProviderContainerView) {}
+  public auvx(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    if (ProviderContainerView.a(this.a) != null)
+    if (!this.a.a(paramMessage)) {}
+    switch (paramMessage.what)
     {
-      ProviderContainerView.a(this.a).setAlpha(1.0F);
-      ProviderContainerView.a(this.a).setVisibility(0);
+    case 5: 
+    case 8: 
+    default: 
+      return;
+    case 6: 
+      if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)))
+      {
+        Toast.makeText(this.a.a.getApplicationContext(), (String)paramMessage.obj, 0).show();
+        return;
+      }
+      Toast.makeText(this.a.a.getApplicationContext(), 2131695479, 0).show();
+      return;
+    case 7: 
+      Toast.makeText(this.a.a.getApplicationContext(), 2131695433, 0).show();
+      return;
     }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvx
  * JD-Core Version:    0.7.0.1
  */

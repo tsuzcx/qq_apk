@@ -1,51 +1,53 @@
-import android.util.Log;
-import java.io.Writer;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aiig
-  extends Writer
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private StringBuilder a = new StringBuilder();
+  public aiig(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  private void a()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    if (this.a.length() > 0)
-    {
-      Log.v("GLTextureView", this.a.toString());
-      this.a.delete(0, this.a.length());
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    }
+    this.a.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "onStartTrackingTouch: progress = " + i);
     }
   }
   
-  public void close()
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    a();
-  }
-  
-  public void flush()
-  {
-    a();
-  }
-  
-  public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < paramInt2)
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "onStopTrackingTouch: 当前位置为 = " + i);
+    }
+    if (this.a.jdField_a_of_type_Bbva != null)
     {
-      char c = paramArrayOfChar[(paramInt1 + i)];
-      if (c == '\n') {
-        a();
+      if (this.a.a() == 2) {
+        this.a.b();
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.a.append(c);
-      }
+      this.a.c.setImageResource(2130845266);
+      this.a.jdField_a_of_type_Bbva.a();
+      this.a.jdField_a_of_type_Bbva.a(i);
+      this.a.jdField_a_of_type_MqqOsMqqHandler.post(this.a.jdField_a_of_type_JavaLangRunnable);
+      this.a.b.setEnabled(false);
+      this.a.b.setTextColor(-2130706433);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aiig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import rgc;
+import rss;
 
 class FastWebRequestUtil$7$1
   implements Runnable
@@ -9,11 +9,11 @@ class FastWebRequestUtil$7$1
   
   public void run()
   {
-    rgc localrgc = this.this$0.a;
+    rss localrss = this.this$0.a;
     if (this.jdField_a_of_type_Int == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localrgc.b(bool, this.jdField_a_of_type_JavaLangString);
+      localrss.b(bool, this.jdField_a_of_type_JavaLangString);
       return;
     }
   }

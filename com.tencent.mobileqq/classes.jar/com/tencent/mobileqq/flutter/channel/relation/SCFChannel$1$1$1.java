@@ -1,0 +1,28 @@
+package com.tencent.mobileqq.flutter.channel.relation;
+
+import bcpw;
+import com.tencent.common.app.BaseApplicationImpl;
+import io.flutter.plugin.common.MethodChannel.Result;
+
+class SCFChannel$1$1$1
+  implements Runnable
+{
+  SCFChannel$1$1$1(SCFChannel.1.1 param1) {}
+  
+  public void run()
+  {
+    this.a.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result.success(null);
+    if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
+    for (int i = 2131699488;; i = 2131699487)
+    {
+      bcpw.a(BaseApplicationImpl.getContext(), 2, i, 0).a();
+      return;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     com.tencent.mobileqq.flutter.channel.relation.SCFChannel.1.1.1
+ * JD-Core Version:    0.7.0.1
+ */

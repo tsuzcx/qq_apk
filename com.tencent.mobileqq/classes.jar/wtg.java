@@ -1,27 +1,20 @@
-import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class wtg
-  implements bhwg<Boolean>
+final class wtg
+  implements View.OnClickListener
 {
-  wtg(wta paramwta) {}
+  wtg(wtk paramwtk, String paramString, bfol parambfol) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean == null) {
-      return;
-    }
-    wta localwta = this.a;
-    if (!paramBoolean.booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      wta.a(localwta, bool);
-      return;
-    }
+    this.jdField_a_of_type_Wtk.a(false, this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_Bfol.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wtg
  * JD-Core Version:    0.7.0.1
  */

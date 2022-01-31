@@ -1,155 +1,87 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageForTroopFile;
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptorFactory;
+import com.tencent.tencentmap.mapsdk.maps.model.Marker;
+import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
+import com.tencent.tencentmap.mapsdk.maps.model.Polyline;
+import java.lang.ref.SoftReference;
+import java.util.Map;
 
 public class aryl
+  implements aruj
 {
-  public int a;
-  public apap a;
-  public atpv a;
-  public awey a;
-  public CopyOnWriteArrayList<aryp> a;
+  public aryl(MapWidget paramMapWidget) {}
   
-  public aryl()
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  }
-  
-  public static aryl a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    aryl localaryl = new aryl();
-    localaryl.jdField_a_of_type_Apap = new apap(paramQQAppInterface, paramChatMessage);
-    return localaryl;
-  }
-  
-  public static aryl a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
-  {
-    aryl localaryl = new aryl();
-    localaryl.jdField_a_of_type_Awey = aweg.a(paramQQAppInterface, paramMessageForShortVideo, 1);
-    localaryl.jdField_a_of_type_Int = 2;
-    return localaryl;
-  }
-  
-  public static aryl a(MessageForPic paramMessageForPic)
-  {
-    int i = 6;
-    if (paramMessageForPic.fileSizeFlag == 1) {
-      i = 7;
+    if (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null) {
+      this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline.remove();
     }
-    aryl localaryl = new aryl();
-    atpv localatpv = atpl.a(i, 1);
-    localatpv.a(paramMessageForPic, paramMessageForPic.getPicDownloadInfo());
-    localaryl.jdField_a_of_type_Atpv = localatpv;
-    localaryl.jdField_a_of_type_Int = 1;
-    return localaryl;
+    if (MapWidget.a(this.a) != null) {
+      MapWidget.a(this.a).a(null);
+    }
   }
   
-  public static List<aryl> a(QQAppInterface paramQQAppInterface, List<ChatMessage> paramList, adie paramadie, aryp paramaryp)
+  public void a(LocationRoom.Venue paramVenue)
   {
-    if ((paramList == null) || (paramList.isEmpty()) || (paramadie == null)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    if (localIterator.hasNext())
+    Object localObject = (amsv)ampm.a().a(575);
+    if (localObject != null) {}
+    for (localObject = ((amsv)localObject).a();; localObject = null)
     {
-      paramList = (ChatMessage)localIterator.next();
-      switch (paramadie.a(paramList))
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+      for (localObject = this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addMarker(new MarkerOptions(paramVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).anchor(0.5F, 0.8F).zIndex(2.147484E+009F).icon(BitmapDescriptorFactory.fromResource(2130840281)));; localObject = this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addMarker(new MarkerOptions(paramVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).anchor(0.5F, 0.8F).zIndex(2.147484E+009F).icon(BitmapDescriptorFactory.fromBitmap((Bitmap)localObject))))
       {
-      default: 
-        paramList = null;
-      }
-    }
-    while (paramList != null)
-    {
-      paramList.a(paramaryp);
-      localArrayList.add(paramList);
-      break;
-      if (((paramList instanceof MessageForPic)) && (!aeor.a((MessageForPic)paramList)))
-      {
-        paramList = a((MessageForPic)paramList);
-        continue;
-        if ((paramList instanceof MessageForShortVideo))
+        if (localObject != null)
         {
-          paramList = a(paramQQAppInterface, (MessageForShortVideo)paramList);
-          continue;
-          if ((paramList instanceof MessageForShortVideo))
-          {
-            paramList = b(paramQQAppInterface, (MessageForShortVideo)paramList);
-            continue;
-            if ((paramList instanceof MessageForFile))
-            {
-              paramList = a(paramQQAppInterface, paramList);
-              paramList.jdField_a_of_type_Int = 4;
-              continue;
-              if ((paramList instanceof MessageForFile))
-              {
-                paramList = a(paramQQAppInterface, paramList);
-                paramList.jdField_a_of_type_Int = 5;
-                continue;
-                if ((paramList instanceof MessageForTroopFile))
-                {
-                  paramList = a(paramQQAppInterface, paramList);
-                  paramList.jdField_a_of_type_Int = 6;
-                  continue;
-                  if ((paramList instanceof MessageForTroopFile))
-                  {
-                    paramList = a(paramQQAppInterface, paramList);
-                    paramList.jdField_a_of_type_Int = 7;
-                    continue;
-                    return localArrayList;
-                  }
-                }
-              }
-            }
-          }
+          paramVenue.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(localObject);
+          MapWidget.a(this.a, (Marker)localObject);
+          ((Marker)localObject).setClickable(false);
+          ((Marker)localObject).refreshInfoWindow();
         }
+        if (MapWidget.a(this.a) != null) {
+          MapWidget.a(this.a).a(paramVenue);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("MapWidget", 2, new Object[] { "[map][venue]onNewVenue invoked. Result venue: ", paramVenue });
+        }
+        return;
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
+        localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
+        localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
+        ((URLDrawable)localObject).downloadImediatly();
+        localObject = bbdr.b((Drawable)localObject);
       }
-      paramList = null;
     }
   }
   
-  public static aryl b(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
+  public void a(String paramString)
   {
-    aryl localaryl = new aryl();
-    localaryl.jdField_a_of_type_Awey = aweg.a(paramQQAppInterface, paramMessageForShortVideo, 1);
-    localaryl.jdField_a_of_type_Int = 3;
-    return localaryl;
-  }
-  
-  public void a(aryp paramaryp)
-  {
-    if ((paramaryp != null) && (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramaryp))) {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramaryp);
-    }
-  }
-  
-  public void b(aryp paramaryp)
-  {
-    if ((paramaryp != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramaryp))) {}
-    try
+    Marker localMarker = (Marker)MapWidget.a(this.a).get(paramString);
+    if (localMarker != null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramaryp);
-      return;
+      localMarker.remove();
+      MapWidget.a(this.a).remove(paramString);
     }
-    catch (Exception paramaryp)
+    localMarker = (Marker)this.a.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (localMarker != null)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("FileSaveReq", 2, "removeSaveCallBack exception = " + paramaryp.getMessage());
+      localMarker.remove();
+      this.a.jdField_a_of_type_JavaUtilMap.remove(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aryl
  * JD-Core Version:    0.7.0.1
  */

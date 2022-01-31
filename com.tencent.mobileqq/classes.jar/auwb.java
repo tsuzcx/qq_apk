@@ -1,12 +1,20 @@
-public abstract interface auwb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+
+public class auwb
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public auwb(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
   
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.f();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auwb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import ayrs;
+import azsi;
 
 public class TroopFileTransferMgr$5
   implements Runnable
 {
-  public TroopFileTransferMgr$5(ayrs paramayrs) {}
+  public TroopFileTransferMgr$5(azsi paramazsi) {}
   
   public void run()
   {
-    ayrs.a(this.this$0);
+    azsi.a(this.this$0);
   }
 }
 

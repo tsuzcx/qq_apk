@@ -1,27 +1,51 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import java.io.OutputStream;
+import msg.aio_doodle.DoodleMsgProto.DoodleData;
+import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
 
-class adds
-  extends ClickableSpan
+public class adds
+  implements addj
 {
-  adds(addp paramaddp) {}
+  public adds(DoodlePanel paramDoodlePanel, OutputStream paramOutputStream) {}
   
-  public void onClick(View paramView)
+  public boolean a(DoodleMsgProto.DoodleData paramDoodleData)
   {
-    if (!badq.d(this.a.a))
-    {
-      bbmy.a(this.a.a, ajjy.a(2131637440), 2000).a();
-      return;
+    if (paramDoodleData == null) {
+      return false;
     }
-    paramView = new Intent();
-    paramView.setFlags(268435456);
-    paramView.setAction("android.intent.action.VIEW");
-    paramView.putExtra("devlock_open_source", "SmartDeviceMsg");
-    paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
-    this.a.a.startActivity(paramView);
+    paramDoodleData = paramDoodleData.toByteArray();
+    byte[] arrayOfByte = addi.a(paramDoodleData.length);
+    try
+    {
+      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
+      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
+      label33:
+      return true;
+    }
+    catch (Exception paramDoodleData)
+    {
+      break label33;
+    }
+  }
+  
+  public boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader)
+  {
+    if (paramDoodleHeader == null) {
+      return false;
+    }
+    paramDoodleHeader = paramDoodleHeader.toByteArray();
+    byte[] arrayOfByte = addi.a(paramDoodleHeader.length);
+    try
+    {
+      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
+      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
+      label33:
+      return true;
+    }
+    catch (Exception paramDoodleHeader)
+    {
+      break label33;
+    }
   }
 }
 

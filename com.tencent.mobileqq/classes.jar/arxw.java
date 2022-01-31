@@ -1,107 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import tencent.im.msg.im_msg_body.RichText;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class arxw
-  extends awft
+  implements View.OnClickListener
 {
-  arxw(arxu paramarxu, ArrayList paramArrayList, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, HashMap paramHashMap, int paramInt2) {}
+  arxw(arxr paramarxr, arxh paramarxh) {}
   
-  public void a(int paramInt, ArrayList<awfk> paramArrayList)
+  public void onClick(View paramView)
   {
-    int i;
-    int k;
-    int j;
-    MessageRecord localMessageRecord;
-    if ((paramInt == 0) && (paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "onMultiForwardVideoUploadResult success[" + paramArrayList.size() + "]");
-      }
-      i = 0;
-      k = 0;
-      paramInt = 0;
-      j = paramInt;
-      if (k >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label278;
-      }
-      localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(k);
-      if (!(localMessageRecord instanceof MessageForShortVideo)) {
-        break label363;
-      }
-      if (i >= paramArrayList.size())
-      {
-        QLog.e("MultiMsg_TAG", 1, "MultiForwardVideo: error index!");
-        j = i;
-        i = paramInt;
-        paramInt = j;
-      }
-    }
-    for (;;)
-    {
-      k += 1;
-      j = i;
-      i = paramInt;
-      paramInt = j;
-      break;
-      awfk localawfk = (awfk)paramArrayList.get(i);
-      j = paramInt;
-      if (localawfk != null)
-      {
-        if ((localawfk.jdField_a_of_type_Int != 0) || (localawfk.jdField_a_of_type_JavaLangObject == null) || (!(localawfk.jdField_a_of_type_JavaLangObject instanceof im_msg_body.RichText))) {
-          break label213;
-        }
-        ((MessageForShortVideo)localMessageRecord).richText = ((im_msg_body.RichText)localawfk.jdField_a_of_type_JavaLangObject);
-        j = paramInt;
-      }
-      for (;;)
-      {
-        paramInt = i + 1;
-        i = j;
-        break;
-        label213:
-        j = paramInt;
-        if (localawfk.jdField_a_of_type_Int == -1)
-        {
-          j = paramInt;
-          if (localawfk.jdField_a_of_type_Atpr != null)
-          {
-            j = paramInt;
-            if ("cancel".equals(localawfk.jdField_a_of_type_Atpr.b)) {
-              j = 1;
-            }
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "onMultiForwardVideoUploadResult failed!");
-      }
-      j = 0;
-      label278:
-      if (j != 0) {
-        arxu.a(this.jdField_a_of_type_Arxu, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      }
-      do
-      {
-        return;
-        arxu.a(this.jdField_a_of_type_Arxu, 2);
-      } while (arxu.c(this.jdField_a_of_type_Arxu) != 0);
-      arxu.a(this.jdField_a_of_type_Arxu, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_JavaUtilArrayList, false, this.b);
+    if (this.jdField_a_of_type_Arxr.jdField_a_of_type_Arxh.a()) {}
+    while (paramView.isSelected()) {
       return;
-      label363:
-      j = paramInt;
-      paramInt = i;
-      i = j;
     }
+    this.jdField_a_of_type_Arxr.a(paramView);
+    this.jdField_a_of_type_Arxr.jdField_a_of_type_Int = 3;
+    arxh.a(this.jdField_a_of_type_Arxr.jdField_a_of_type_Arxh, Integer.valueOf(3));
+    axqw.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 1, 0, "0", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arxw
  * JD-Core Version:    0.7.0.1
  */

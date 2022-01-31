@@ -1,36 +1,24 @@
-import android.os.Bundle;
+import com.tencent.widget.AbsListView;
 
-public abstract class bfog
+public class bfog
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  private int a;
   
-  public void a(Bundle paramBundle)
+  private bfog(AbsListView paramAbsListView) {}
+  
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("_mqqpay_baseapi_appid");
-    this.c = paramBundle.getString("_mqqpay_baseapi_apptype");
-    this.b = paramBundle.getString("_mqqpay_baseapi_sdkversion");
-    this.d = paramBundle.getString("_mqqpay_baseapi_apiname");
-    this.jdField_a_of_type_Int = paramBundle.getInt("_mqqpay_baseapi_apimark");
+    this.a = AbsListView.access$200(this.this$0);
   }
   
-  public String toString()
+  public boolean a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(50);
-    localStringBuilder.append("ai=" + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("&sv=" + this.b);
-    localStringBuilder.append("&at=" + this.c);
-    localStringBuilder.append("&an=" + this.d);
-    localStringBuilder.append("&am=" + this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    return (this.this$0.hasWindowFocus()) && (AbsListView.access$300(this.this$0) == this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfog
  * JD-Core Version:    0.7.0.1
  */

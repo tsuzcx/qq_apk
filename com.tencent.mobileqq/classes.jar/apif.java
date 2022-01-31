@@ -1,22 +1,35 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.FileColorNoteCallback.1;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.FileColorNoteCallback.2;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.FileColorNoteCallback.3;
+import mqq.os.MqqHandler;
 
 public class apif
-  extends aphp
+  extends amgr
 {
-  public apif(Intent paramIntent)
+  private apif(FileBrowserActivity paramFileBrowserActivity) {}
+  
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    super(paramIntent);
+    if (paramBundle.getInt("color_note_curd_from_type") == 1) {
+      axqw.b(null, "dc00898", "", "", "0X800A744", "0X800A744", apvk.c(FileBrowserActivity.a(this.a)), 0, "", "", "", "");
+    }
+    super.onAddColorNote(paramBundle, paramBoolean);
+    ThreadManager.getUIHandler().post(new FileBrowserActivity.FileColorNoteCallback.1(this));
   }
   
-  protected boolean c()
+  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
   {
-    Intent localIntent = aciy.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
-    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    return false;
+    super.onDeleteColorNote(paramInt, paramString, paramBoolean);
+    ThreadManager.getUIHandler().post(new FileBrowserActivity.FileColorNoteCallback.2(this));
+  }
+  
+  public void onUpdateColorNoteState(int paramInt, String paramString, Bundle paramBundle)
+  {
+    super.onUpdateColorNoteState(paramInt, paramString, paramBundle);
+    ThreadManager.getUIHandler().post(new FileBrowserActivity.FileColorNoteCallback.3(this));
   }
 }
 

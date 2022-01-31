@@ -1,65 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
 
-public class azdz
-  extends alzl<azea>
+public final class azdz
+  implements Parcelable.Creator<MediaPreviewInfo>
 {
-  public static azea a()
+  public MediaPreviewInfo a(Parcel paramParcel)
   {
-    azea localazea = (azea)alzw.a().a(547);
-    if (QLog.isColorLevel()) {
-      QLog.d("TDCRecomTroopConfigProcessor", 2, "getConfigBean configBean = " + localazea);
-    }
-    return localazea;
+    MediaPreviewInfo localMediaPreviewInfo = new MediaPreviewInfo();
+    localMediaPreviewInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localMediaPreviewInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localMediaPreviewInfo.b = paramParcel.readString();
+    localMediaPreviewInfo.c = paramParcel.readString();
+    return localMediaPreviewInfo;
   }
   
-  public int a()
+  public MediaPreviewInfo[] a(int paramInt)
   {
-    return 547;
-  }
-  
-  @NonNull
-  public azea a(int paramInt)
-  {
-    return new azea();
-  }
-  
-  @Nullable
-  public azea a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length == 0)) {
-      return null;
-    }
-    paramArrayOfalzs = paramArrayOfalzs[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("TDCRecomTroopConfigProcessor", 2, " onParsed,configID:547, content:" + paramArrayOfalzs);
-    }
-    return azea.a(paramArrayOfalzs);
-  }
-  
-  public Class<azea> a()
-  {
-    return azea.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(azea paramazea) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return new MediaPreviewInfo[paramInt];
   }
 }
 

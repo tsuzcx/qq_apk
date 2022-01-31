@@ -1,17 +1,24 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.OverloadTipsActivity;
 
-public abstract interface abqm
+public class abqm
+  implements DialogInterface.OnKeyListener
 {
-  public abstract void a(Editable paramEditable);
+  public abqm(OverloadTipsActivity paramOverloadTipsActivity) {}
   
-  public abstract void a(ResultRecord paramResultRecord);
-  
-  public abstract void a(boolean paramBoolean);
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4) {
+      this.a.finish();
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abqm
  * JD-Core Version:    0.7.0.1
  */

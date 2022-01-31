@@ -1,69 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-class nim
-  implements oot
+public class nim
+  implements View.OnClickListener
 {
-  nim(nik paramnik, ooq paramooq) {}
+  public nim(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  private long a(List<ArticleInfo> paramList)
+  public void onClick(View paramView)
   {
-    paramList = paramList.iterator();
-    long l = 0L;
-    if (paramList.hasNext())
-    {
-      ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
-      if (l >= localArticleInfo.mRecommendSeq) {
-        break label50;
-      }
-      l = localArticleInfo.mRecommendSeq;
+    if (QLog.isColorLevel()) {
+      QLog.i("PublicAccountAdvertisementActivity", 2, "action cancel");
     }
-    label50:
-    for (;;)
-    {
-      break;
-      return l;
+    axqw.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FD", "0X80090FD", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
+    if ((PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).isShowing())) {
+      PublicAccountAdvertisementActivity.a(this.a).dismiss();
     }
-  }
-  
-  public List<ArticleInfo> a(int paramInt, List<ArticleInfo> paramList1, List<ArticleInfo> paramList2)
-  {
-    if ((!odm.c(paramInt)) || (paramList2 == null) || (paramList1 == null) || (paramList2.isEmpty())) {
-      return null;
-    }
-    long l = a(paramList2);
-    if (l < 1000L)
-    {
-      QLog.d("ReadInJoyDailyViewController", 1, "onPreDeal : " + l);
-      return null;
-    }
-    paramList2 = new ArrayList();
-    if (!nik.a())
-    {
-      paramList1 = paramList1.iterator();
-      while (paramList1.hasNext())
-      {
-        ArticleInfo localArticleInfo = (ArticleInfo)paramList1.next();
-        if ((localArticleInfo.mRecommendSeq > 0L) && (localArticleInfo.mRecommendSeq < 1000L))
-        {
-          localArticleInfo.mRecommendSeq += l;
-          paramList2.add(localArticleInfo);
-          QLog.d("ReadInJoyDailyViewController", 1, "onPreDeal : " + l + "  seq: " + localArticleInfo.mRecommendSeq);
-        }
-      }
-    }
-    bgmq.a(nik.a(), Boolean.valueOf(true));
-    nik.a(true);
-    this.jdField_a_of_type_Ooq.a(null);
-    return paramList2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nim
  * JD-Core Version:    0.7.0.1
  */

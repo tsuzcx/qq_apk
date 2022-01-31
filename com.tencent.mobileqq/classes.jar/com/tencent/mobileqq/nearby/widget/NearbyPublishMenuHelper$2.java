@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby.widget;
 
 import android.content.Context;
-import bbms;
+import bcpq;
 
 public final class NearbyPublishMenuHelper$2
   implements Runnable
 {
-  public NearbyPublishMenuHelper$2(bbms parambbms, String paramString1, Context paramContext, String paramString2) {}
+  public NearbyPublishMenuHelper$2(bcpq parambcpq, String paramString1, Context paramContext, String paramString2) {}
   
   /* Error */
   public void run()
@@ -44,7 +44,7 @@ public final class NearbyPublishMenuHelper$2
     //   61: aload 5
     //   63: invokevirtual 79	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
     //   66: aload_3
-    //   67: invokestatic 84	atcg:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   67: invokestatic 84	atyk:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   70: new 86	android/content/Intent
     //   73: dup
     //   74: aload_0
@@ -61,7 +61,7 @@ public final class NearbyPublishMenuHelper$2
     //   97: aload 6
     //   99: aload_0
     //   100: getfield 21	com/tencent/mobileqq/nearby/widget/NearbyPublishMenuHelper$2:b	Ljava/lang/String;
-    //   103: invokestatic 102	rtr:a	(Landroid/content/Intent;Ljava/lang/String;)V
+    //   103: invokestatic 102	sgj:a	(Landroid/content/Intent;Ljava/lang/String;)V
     //   106: aload_0
     //   107: getfield 19	com/tencent/mobileqq/nearby/widget/NearbyPublishMenuHelper$2:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   110: instanceof 104
@@ -111,7 +111,7 @@ public final class NearbyPublishMenuHelper$2
     //   208: aload 5
     //   210: invokevirtual 79	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
     //   213: ldc 73
-    //   215: invokestatic 84	atcg:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   215: invokestatic 84	atyk:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   218: ldc 110
     //   220: iconst_1
     //   221: new 112	java/lang/StringBuilder
@@ -136,7 +136,7 @@ public final class NearbyPublishMenuHelper$2
     //   262: aload 5
     //   264: invokevirtual 79	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
     //   267: ldc 73
-    //   269: invokestatic 84	atcg:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   269: invokestatic 84	atyk:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   272: ldc 110
     //   274: iconst_1
     //   275: new 112	java/lang/StringBuilder

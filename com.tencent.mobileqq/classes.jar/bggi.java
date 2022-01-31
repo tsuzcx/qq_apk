@@ -1,183 +1,426 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.lang.ref.WeakReference;
-import java.util.Collection;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.readinjoy.ReadInJoyManager;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
 import java.util.Iterator;
+import java.util.List;
 
-class bggi
-  implements Downloader.DownloadListener
+public abstract class bggi
 {
-  bggi(bggh parambggh) {}
+  public int a;
+  public String a;
+  protected boolean a;
+  public int b;
+  protected String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public bggi()
   {
-    paramString = bggh.a(this.a, paramString, true).iterator();
-    while (paramString.hasNext())
+    this.jdField_a_of_type_Int = 256;
+  }
+  
+  private void a(bggo parambggo, String paramString)
+  {
+    if (parambggo != null)
     {
-      paramDownloadResult = (bggk)paramString.next();
-      bggj localbggj = (bggj)paramDownloadResult.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbggj != null) {
-        localbggj.a(paramDownloadResult.jdField_a_of_type_Int, paramDownloadResult.d);
-      }
-      paramDownloadResult.a();
+      parambggo.jdField_a_of_type_Int = 2;
+      parambggo.jdField_a_of_type_JavaLangString = paramString;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginPreloadStrategy", 2, "pluginType:" + this.jdField_b_of_type_Int + "  " + paramString);
     }
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  /* Error */
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public int a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: invokestatic 75	bggh:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   4: invokestatic 77	bggh:a	(Ljava/lang/String;)V
-    //   7: aload_0
-    //   8: getfield 12	bggi:a	Lbggh;
-    //   11: aload_1
-    //   12: iconst_1
-    //   13: invokestatic 25	bggh:a	(Lbggh;Ljava/lang/String;Z)Ljava/util/Collection;
-    //   16: invokeinterface 31 1 0
-    //   21: astore_3
-    //   22: aload_3
-    //   23: invokeinterface 37 1 0
-    //   28: ifeq +229 -> 257
-    //   31: aload_3
-    //   32: invokeinterface 41 1 0
-    //   37: checkcast 43	bggk
-    //   40: astore 4
-    //   42: aload 4
-    //   44: getfield 46	bggk:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   47: invokevirtual 51	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   50: checkcast 53	bggj
-    //   53: astore 5
-    //   55: aload 5
-    //   57: ifnull +111 -> 168
-    //   60: aload 4
-    //   62: getfield 80	bggk:b	Ljava/lang/String;
-    //   65: aload 4
-    //   67: getfield 60	bggk:d	Ljava/lang/String;
-    //   70: invokestatic 83	bggh:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
-    //   73: astore 6
-    //   75: aload 6
-    //   77: invokestatic 86	bggh:a	(Ljava/io/File;)Z
-    //   80: ifeq +152 -> 232
-    //   83: aload_0
-    //   84: monitorenter
-    //   85: aload_0
-    //   86: getfield 12	bggi:a	Lbggh;
-    //   89: invokestatic 89	bggh:a	(Lbggh;)Landroid/support/v4/util/LruCache;
-    //   92: aload 4
-    //   94: getfield 91	bggk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   97: invokevirtual 96	android/support/v4/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   100: checkcast 98	android/graphics/Bitmap
-    //   103: astore_1
-    //   104: aload_1
-    //   105: astore_2
-    //   106: aload_1
-    //   107: ifnonnull +13 -> 120
-    //   110: aload 6
-    //   112: invokevirtual 104	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   115: aconst_null
-    //   116: invokestatic 107	bggh:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   119: astore_2
-    //   120: aload_2
-    //   121: astore_1
-    //   122: aload_0
-    //   123: monitorexit
-    //   124: aload_1
-    //   125: ifnull +82 -> 207
-    //   128: aload_0
-    //   129: getfield 12	bggi:a	Lbggh;
-    //   132: invokestatic 89	bggh:a	(Lbggh;)Landroid/support/v4/util/LruCache;
-    //   135: aload 4
-    //   137: getfield 91	bggk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   140: aload_1
-    //   141: invokevirtual 111	android/support/v4/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   144: pop
-    //   145: aload 5
-    //   147: ifnull +21 -> 168
-    //   150: aload 5
-    //   152: aload 4
-    //   154: getfield 56	bggk:jdField_a_of_type_Int	I
-    //   157: aload 4
-    //   159: getfield 60	bggk:d	Ljava/lang/String;
-    //   162: aload_1
-    //   163: invokeinterface 114 4 0
-    //   168: aload 4
-    //   170: invokevirtual 65	bggk:a	()V
-    //   173: goto -151 -> 22
-    //   176: astore_2
-    //   177: aconst_null
-    //   178: astore_1
-    //   179: ldc 116
-    //   181: iconst_1
-    //   182: aload_2
-    //   183: invokevirtual 119	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
-    //   186: invokestatic 125	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   189: goto -67 -> 122
-    //   192: astore_1
-    //   193: aload_0
-    //   194: monitorexit
-    //   195: aload_1
-    //   196: athrow
-    //   197: astore_2
-    //   198: aconst_null
-    //   199: astore_1
-    //   200: aload_2
-    //   201: invokevirtual 128	java/lang/Exception:printStackTrace	()V
-    //   204: goto -82 -> 122
-    //   207: aload 5
-    //   209: ifnull -41 -> 168
-    //   212: aload 5
-    //   214: aload 4
-    //   216: getfield 56	bggk:jdField_a_of_type_Int	I
-    //   219: aload 4
-    //   221: getfield 60	bggk:d	Ljava/lang/String;
-    //   224: invokeinterface 63 3 0
-    //   229: goto -61 -> 168
-    //   232: aload 5
-    //   234: ifnull -66 -> 168
-    //   237: aload 5
-    //   239: aload 4
-    //   241: getfield 56	bggk:jdField_a_of_type_Int	I
-    //   244: aload 4
-    //   246: getfield 60	bggk:d	Ljava/lang/String;
-    //   249: invokeinterface 63 3 0
-    //   254: goto -86 -> 168
-    //   257: return
-    //   258: astore_2
-    //   259: goto -59 -> 200
-    //   262: astore_2
-    //   263: goto -84 -> 179
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	266	0	this	bggi
-    //   0	266	1	paramString	String
-    //   0	266	2	paramDownloadResult	DownloadResult
-    //   21	11	3	localIterator	Iterator
-    //   40	205	4	localbggk	bggk
-    //   53	185	5	localbggj	bggj
-    //   73	38	6	localFile	java.io.File
-    // Exception table:
-    //   from	to	target	type
-    //   85	104	176	java/lang/OutOfMemoryError
-    //   85	104	192	finally
-    //   110	120	192	finally
-    //   122	124	192	finally
-    //   179	189	192	finally
-    //   193	195	192	finally
-    //   200	204	192	finally
-    //   85	104	197	java/lang/Exception
-    //   110	120	258	java/lang/Exception
-    //   110	120	262	java/lang/OutOfMemoryError
+    if ((paramQQAppInterface == null) || (paramString == null)) {
+      return 3;
+    }
+    Object localObject1 = (mxx)paramQQAppInterface.getManager(70);
+    int m;
+    if (localObject1 != null) {
+      m = ((mxx)localObject1).a(paramQQAppInterface);
+    }
+    for (int k = ((mxx)localObject1).a();; k = 0)
+    {
+      Object localObject2 = (avpq)paramQQAppInterface.getManager(36);
+      int i = 0;
+      int j = 0;
+      boolean bool1 = false;
+      boolean bool2 = bool1;
+      int n = j;
+      int i1;
+      if (localObject2 != null)
+      {
+        n = ((avpq)localObject2).b(0);
+        localObject1 = ((avpq)localObject2).b(0);
+        localObject2 = ((avpq)localObject2).a();
+        if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
+          break label663;
+        }
+        bool1 = false;
+        i = 0;
+        i1 = 0;
+        if (i1 < ((List)localObject1).size())
+        {
+          BusinessInfoCheckUpdate.AppInfo localAppInfo = (BusinessInfoCheckUpdate.AppInfo)((List)localObject1).get(i1);
+          j = i;
+          if (localAppInfo.mission_level.get() != 0) {
+            break label657;
+          }
+          j = i;
+          if (localAppInfo.path.get().contains(".")) {
+            break label657;
+          }
+          if (localAppInfo.iNewFlag.get() != 1) {}
+          for (;;)
+          {
+            i1 += 1;
+            break;
+            j = 0;
+            for (;;)
+            {
+              if ((j >= ((List)localObject2).size()) || (localAppInfo.uiAppId.get() == ((BusinessInfoCheckUpdate.AppSetting)((List)localObject2).get(j)).appid.get()))
+              {
+                if ((j >= ((List)localObject2).size()) || (((BusinessInfoCheckUpdate.AppSetting)((List)localObject2).get(j)).setting.get())) {
+                  break label288;
+                }
+                break;
+              }
+              j += 1;
+            }
+            label288:
+            i += 1;
+            j = i;
+            if (!paramString.equals(localAppInfo.path.get())) {
+              break label657;
+            }
+            bool1 = true;
+          }
+        }
+        j = i;
+        i = n;
+        n = j;
+        bool2 = bool1;
+      }
+      for (;;)
+      {
+        paramString = (axch)paramQQAppInterface.getManager(10);
+        int i2 = 0;
+        i1 = 0;
+        if (paramString != null)
+        {
+          i2 = paramString.a(1);
+          i1 = paramString.a(2);
+        }
+        j = 0;
+        bool1 = false;
+        paramQQAppInterface = (ReadInJoyManager)paramQQAppInterface.getManager(96);
+        label413:
+        int i6;
+        int i3;
+        label433:
+        int i4;
+        if (paramQQAppInterface != null)
+        {
+          paramQQAppInterface = paramQQAppInterface.a();
+          if (paramQQAppInterface != null)
+          {
+            j = paramQQAppInterface.a();
+            if ((paramQQAppInterface == null) || (!paramQQAppInterface.a())) {
+              break label617;
+            }
+            bool1 = true;
+          }
+        }
+        else
+        {
+          i6 = i2 + k + i + j;
+          if (m <= 0) {
+            break label623;
+          }
+          i3 = 1;
+          if (i1 <= 0) {
+            break label629;
+          }
+          i4 = 1;
+          label441:
+          if (!bool1) {
+            break label635;
+          }
+        }
+        label617:
+        label623:
+        label629:
+        label635:
+        for (int i5 = 1;; i5 = 0)
+        {
+          i3 = i5 + (n + i3 + i4);
+          if (QLog.isColorLevel()) {
+            QLog.d("PluginPreloadStrategy", 2, "Troop redTouch: " + m + "; Troop num: " + k + "; Message num: " + i + "; Leba redTouch: " + n + "; Business has redTouch: " + bool2 + "; QZone msg count: " + i2 + "; QZone new count: " + i1 + "; ReadInJoy notify count: " + j + "; ReadInJoy need show notify: " + bool1 + "; Total redTouch: " + i3 + "; Total num: " + i6);
+          }
+          if (!bool2) {
+            break label643;
+          }
+          if ((i6 != 0) || (i3 != 1)) {
+            break label641;
+          }
+          return 4;
+          j = 0;
+          break;
+          bool1 = false;
+          break label413;
+          i3 = 0;
+          break label433;
+          i4 = 0;
+          break label441;
+        }
+        label641:
+        return 1;
+        label643:
+        if ((i6 > 0) || (i3 > 0)) {
+          return 2;
+        }
+        return 3;
+        label657:
+        i = j;
+        break;
+        label663:
+        i = n;
+        bool2 = bool1;
+        n = j;
+      }
+      m = 0;
+    }
+  }
+  
+  protected abstract void a();
+  
+  public void a(bggo parambggo) {}
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    if ((1 << Calendar.getInstance().get(7) - 1 & paramInt1) == 0) {}
+    while ((1 << Calendar.getInstance().get(11) & paramInt2) == 0) {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean a(bggk parambggk, String paramString1, QQAppInterface paramQQAppInterface, String paramString2, int paramInt, long paramLong, int[] paramArrayOfInt, bggo parambggo)
+  {
+    if (parambggk == null) {
+      return false;
+    }
+    if ((parambggk.jdField_h_of_type_Boolean) && (!a(paramString2)))
+    {
+      a(parambggo, "preload:fail:notinleba");
+      return false;
+    }
+    if (parambggk.jdField_b_of_type_Boolean)
+    {
+      int i = a(paramQQAppInterface, paramString1);
+      if ((parambggk.jdField_c_of_type_Boolean) && (i == 4))
+      {
+        a(parambggo, "preload:ok:reddotonly");
+        return true;
+      }
+      if ((parambggk.jdField_d_of_type_Boolean) && ((i == 1) || (i == 4)))
+      {
+        a(parambggo, "preload:ok:reddot");
+        return true;
+      }
+      if ((parambggk.jdField_e_of_type_Boolean) && (i == 2))
+      {
+        a(parambggo, "preload:fail:lebareddot");
+        return false;
+      }
+    }
+    if ((parambggk.a) && (!a(parambggk.jdField_b_of_type_Int, parambggk.jdField_c_of_type_Int)))
+    {
+      a(parambggo, "preload:fail:timecontrol");
+      return false;
+    }
+    if ((parambggk.j) && (paramInt < parambggk.jdField_f_of_type_Int))
+    {
+      a(parambggo, "preload:fail:usedtimeslimit");
+      return false;
+    }
+    if (parambggk.jdField_i_of_type_Boolean)
+    {
+      long l = parambggk.jdField_e_of_type_Int * 60 * 60 * 1000;
+      if (System.currentTimeMillis() - paramLong > l)
+      {
+        a(parambggo, "preload:fail:notactive");
+        return false;
+      }
+    }
+    if (parambggk.jdField_f_of_type_Boolean)
+    {
+      if ((System.currentTimeMillis() - paramLong) / 1000L <= parambggk.jdField_d_of_type_Int) {
+        paramInt = 1;
+      }
+      while (paramInt != 0) {
+        if (parambggk.jdField_g_of_type_Boolean)
+        {
+          a(parambggo, "preload:ok:cdperiod");
+          return true;
+          paramInt = 0;
+        }
+        else
+        {
+          a(parambggo, "preload:fail:cdperiod");
+          return false;
+        }
+      }
+    }
+    if ((parambggk.k) && (parambggk.jdField_g_of_type_Int > 0) && (!a(paramString1, paramQQAppInterface.getCurrentAccountUin(), parambggk.jdField_g_of_type_Int, paramArrayOfInt, parambggk.jdField_h_of_type_Int, parambggk.jdField_i_of_type_Int)))
+    {
+      a(parambggo, "preload:fail:notinuserlearn");
+      return false;
+    }
+    a(parambggo, "preload:ok:normal");
+    return true;
+  }
+  
+  public abstract boolean a(bggo parambggo);
+  
+  public boolean a(String paramString)
+  {
+    Object localObject = agca.a().b();
+    if ((localObject == null) || (((List)localObject).size() == 0)) {
+      return false;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      andx localandx = (andx)((Iterator)localObject).next();
+      if ((localandx != null) && (localandx.a != null) && (localandx.a.strPkgName != null) && (localandx.a.strPkgName.contains(paramString))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString1, String paramString2, int paramInt1, int[] paramArrayOfInt, int paramInt2, int paramInt3)
+  {
+    if ((paramString1 == null) || (paramString2 == null) || (paramInt1 <= 0) || (paramArrayOfInt == null)) {
+      return false;
+    }
+    String str1 = paramString1 + "_userlearn_lasttime:" + paramString2;
+    String str2 = paramString1 + "_userlearn_timearea:" + paramString2;
+    String str3 = paramString1 + "_userlearn_timearea_inhour:" + paramString2 + ":";
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("ppp_profile", bbja.a());
+    long l = localSharedPreferences.getLong(str1, 0L);
+    int i = localSharedPreferences.getInt(str2, 3);
+    if ((System.currentTimeMillis() - l > 86400000L) || (paramInt1 != i))
+    {
+      paramString2 = a(paramArrayOfInt, paramInt1, paramInt2, paramInt3);
+      paramString1 = paramString2;
+      if (paramString2 == null) {
+        break label382;
+      }
+      paramInt2 = 0;
+      while (paramInt2 < paramInt1)
+      {
+        localSharedPreferences.edit().putInt(str3 + paramInt2, paramString2[paramInt2]).commit();
+        paramInt2 += 1;
+      }
+      localSharedPreferences.edit().putInt(str2, paramInt1).commit();
+      localSharedPreferences.edit().putLong(str1, System.currentTimeMillis()).commit();
+    }
+    for (;;)
+    {
+      if (paramString2 != null)
+      {
+        paramInt2 = Calendar.getInstance().get(11);
+        paramInt3 = paramString2.length;
+        paramInt1 = 0;
+        while (paramInt1 < paramInt3)
+        {
+          if (paramInt2 == paramString2[paramInt1])
+          {
+            return true;
+            paramString2 = new int[i];
+            paramInt1 = 0;
+            for (;;)
+            {
+              paramString1 = paramString2;
+              if (paramInt1 >= i) {
+                break;
+              }
+              paramString2[paramInt1] = localSharedPreferences.getInt(str3 + paramInt1, paramInt1 + 20);
+              paramInt1 += 1;
+            }
+          }
+          paramInt1 += 1;
+        }
+      }
+      return false;
+      label382:
+      paramString2 = paramString1;
+    }
+  }
+  
+  public int[] a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramArrayOfInt == null) || (paramInt1 <= 0) || (paramInt1 > paramArrayOfInt.length)) {}
+    do
+    {
+      return null;
+      localObject = new bggj(this, paramInt3);
+      switch (paramInt2)
+      {
+      default: 
+        return null;
+      case 1: 
+        paramInt2 = ((bggj)localObject).a(paramArrayOfInt, paramInt1);
+      }
+    } while (paramInt2 == -1);
+    paramInt3 = paramInt2 - paramInt1 / 2;
+    paramInt2 = paramInt3;
+    if (paramInt3 < 0) {
+      paramInt2 = paramInt3 + paramArrayOfInt.length;
+    }
+    Object localObject = new int[paramInt1];
+    paramInt3 = 0;
+    if (paramInt3 < paramInt1)
+    {
+      localObject[paramInt3] = paramInt2;
+      int i = paramInt2 + 1;
+      if (i >= paramArrayOfInt.length) {}
+      for (paramInt2 = -paramArrayOfInt.length;; paramInt2 = 0)
+      {
+        paramInt3 += 1;
+        paramInt2 = i + paramInt2;
+        break;
+      }
+    }
+    return localObject;
+    return ((bggj)localObject).a(paramArrayOfInt, paramInt1);
+  }
+  
+  public boolean b(bggo parambggo)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bggi
  * JD-Core Version:    0.7.0.1
  */

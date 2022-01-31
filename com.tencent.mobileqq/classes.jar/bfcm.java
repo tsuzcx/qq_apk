@@ -1,60 +1,51 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.hce.HcePluginInstallActivity;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.qqmini.sdk.runtime.core.page.widget.WebEditText;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bfcm
-  implements OnPluginInstallListener
+class bfcm
+  implements TextView.OnEditorActionListener
 {
-  public bfcm(HcePluginInstallActivity paramHcePluginInstallActivity) {}
+  bfcm(bfcj parambfcj, WebEditText paramWebEditText, bejs parambejs) {}
   
-  public IBinder asBinder()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    return null;
-  }
-  
-  public void onInstallBegin(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallBegin, pluginId:" + paramString);
-    }
-  }
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallDownloadProgress, pluginId:" + paramString + " offset:" + paramInt1 + " total: " + paramInt2);
-    }
-  }
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
-    }
-    bbmy.a(this.a.getApplicationContext(), 2131629528, 0).a();
-    HcePluginInstallActivity.a(this.a, false);
-    this.a.finish();
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
-    }
-    if (HcePluginInstallActivity.a(this.a).isPlugininstalled("vfc_plugin.apk"))
+    boolean bool = true;
+    switch (paramInt)
     {
-      HcePluginInstallActivity.a(this.a);
-      return;
+    default: 
+      bool = false;
     }
-    bbmy.a(this.a.getApplicationContext(), 2131629528, 0).a();
-    HcePluginInstallActivity.a(this.a, false);
-    this.a.finish();
+    for (;;)
+    {
+      return bool;
+      try
+      {
+        paramTextView = new JSONObject();
+        paramTextView.put("inputId", bfcj.a(this.jdField_a_of_type_Bfcj));
+        paramTextView.put("value", this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageWidgetWebEditText.getText().toString());
+        this.jdField_a_of_type_Bejs.a.a("onKeyboardConfirm", paramTextView.toString(), 0);
+        if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageWidgetWebEditText.c()) {
+          continue;
+        }
+        this.jdField_a_of_type_Bfcj.a(true);
+        return true;
+      }
+      catch (JSONException paramTextView)
+      {
+        for (;;)
+        {
+          paramTextView.printStackTrace();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfcm
  * JD-Core Version:    0.7.0.1
  */

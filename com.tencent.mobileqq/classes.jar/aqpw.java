@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.singtogether.SingTogetherSession;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class aqpw
-  implements Parcelable.Creator<SingTogetherSession>
+class aqpw
+  implements DialogInterface.OnClickListener
 {
-  public SingTogetherSession a(Parcel paramParcel)
-  {
-    return new SingTogetherSession(paramParcel, null);
-  }
+  aqpw(aqpr paramaqpr) {}
   
-  public SingTogetherSession[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new SingTogetherSession[paramInt];
+    if ((this.a.a != null) && (!this.a.a.c())) {
+      this.a.a.f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqpw
  * JD-Core Version:    0.7.0.1
  */

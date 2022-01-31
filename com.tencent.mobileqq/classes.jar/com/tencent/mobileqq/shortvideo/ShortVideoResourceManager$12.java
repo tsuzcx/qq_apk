@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.shortvideo;
 
-import axsq;
+import aysx;
 
 class ShortVideoResourceManager$12
   implements Runnable
 {
-  ShortVideoResourceManager$12(ShortVideoResourceManager paramShortVideoResourceManager, axsq paramaxsq) {}
+  ShortVideoResourceManager$12(ShortVideoResourceManager paramShortVideoResourceManager, aysx paramaysx) {}
   
   public void run()
   {

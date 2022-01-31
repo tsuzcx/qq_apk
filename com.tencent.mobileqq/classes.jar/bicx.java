@@ -1,23 +1,49 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.weiyun.WeiyunAIOUtils.WeiyunCallbackImpl.1;
+import cooperation.weiyun.WeiyunAIOUtils.WeiyunCallbackImpl.2;
+import mqq.os.MqqHandler;
 
-public final class bicx
-  implements Parcelable.Creator<EditRecordVideoSource>
+public class bicx
+  implements apdx
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public MqqHandler a;
+  
+  public bicx(MqqHandler paramMqqHandler, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    return new EditRecordVideoSource(paramParcel);
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public EditRecordVideoSource[] a(int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    return new EditRecordVideoSource[paramInt];
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
+    {
+      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(101, paramInt, 0, paramString), 1500L);
+      return;
+    }
+    ThreadManager.getUIHandler().post(new WeiyunAIOUtils.WeiyunCallbackImpl.2(this, paramString));
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
+    {
+      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(100, 1500L);
+      return;
+    }
+    ThreadManager.getUIHandler().post(new WeiyunAIOUtils.WeiyunCallbackImpl.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bicx
  * JD-Core Version:    0.7.0.1
  */

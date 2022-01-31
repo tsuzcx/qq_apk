@@ -1,49 +1,70 @@
-import com.qq.taf.jce.HexUtil;
+import android.content.Context;
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.MultiForwardActivity;
+import java.lang.ref.WeakReference;
 
-public class axys
-  extends axyr
+class axys
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
+  String jdField_a_of_type_JavaLangString = null;
+  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference = null;
+  String b = null;
   
-  public String toString()
+  public axys(axyq paramaxyq, Context paramContext, String paramString1, String paramString2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" chatType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" clientType:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" seq:");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(" fileId:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" troopUin:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" agentType:");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    localStringBuilder.append(" busiType:");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append(" fileType:");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(" downType:");
-    localStringBuilder.append(this.h);
-    localStringBuilder.append(" sceneType:");
-    localStringBuilder.append(this.i);
-    localStringBuilder.append(" subBusiType:");
-    localStringBuilder.append(this.j);
-    return localStringBuilder.toString();
+    if (paramContext != null) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    }
+    if (!TextUtils.isEmpty(paramString1)) {
+      this.jdField_a_of_type_JavaLangString = paramString1;
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      this.b = paramString2;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    BaseChatPie localBaseChatPie;
+    Object localObject;
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof FragmentActivity)) && (!MultiForwardActivity.class.isInstance(this.jdField_a_of_type_JavaLangRefWeakReference.get())))
+    {
+      paramView = ((FragmentActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getChatFragment();
+      if (paramView != null)
+      {
+        localBaseChatPie = paramView.a();
+        aaod.b(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString + " +1");
+        localObject = "";
+        paramView = (View)localObject;
+        if (!TextUtils.isEmpty(this.b)) {
+          paramView = Uri.parse(this.b);
+        }
+      }
+    }
+    try
+    {
+      paramView = paramView.getQueryParameter("article_id");
+      localObject = paramView;
+    }
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+      }
+    }
+    paramView = (View)localObject;
+    if (localObject == null) {
+      paramView = "";
+    }
+    noo.a(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8007239", "0X8007239", 0, 0, paramView, "", "", "");
+    noo.a("0X8007239", "", paramView, "", "", "");
   }
 }
 

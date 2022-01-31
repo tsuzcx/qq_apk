@@ -2,7 +2,7 @@ package cooperation.qwallet.plugin;
 
 import android.app.Activity;
 import com.tencent.common.app.AppInterface;
-import rtr;
+import sgj;
 
 final class QWalletPayBridge$1
   implements Runnable
@@ -13,8 +13,8 @@ final class QWalletPayBridge$1
   {
     try
     {
-      if ((this.val$appInterface.isLogin()) && (!rtr.a(this.val$appInterface, "2711679534"))) {
-        rtr.a(this.val$appInterface, this.val$activity, "2711679534", null, false, 6);
+      if ((this.val$appInterface.isLogin()) && (!sgj.a(this.val$appInterface, "2711679534"))) {
+        sgj.a(this.val$appInterface, this.val$activity, "2711679534", null, false, 6);
       }
       return;
     }

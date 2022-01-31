@@ -1,15 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qphone.base.util.QLog;
 
-public class anwu
-  implements View.OnClickListener
+class anwu
+  implements asko<Emoticon>
 {
-  public anwu(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
+  anwu(anws paramanws, int paramInt, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(Emoticon paramEmoticon)
   {
-    this.a.i();
+    if ((paramEmoticon == null) || (!paramEmoticon.hasEncryptKey()))
+    {
+      this.jdField_a_of_type_Anws.a(Integer.toString(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func trySend ends, emotion has invalid key. Call func pullSingleEmojiKey");
+      }
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Anws.a(paramEmoticon);
+    } while (!QLog.isColorLevel());
+    QLog.d("SogouEmoji", 2, "func trySend ends, everything is ok.");
   }
 }
 

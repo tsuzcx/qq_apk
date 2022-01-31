@@ -1,30 +1,29 @@
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
 public class uls
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, tzw>
 {
-  public static ThreadLocal<StringBuilder> a = new ult();
-  
-  public static String a(Object... paramVarArgs)
+  public uls(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    StringBuilder localStringBuilder = (StringBuilder)a.get();
-    if (paramVarArgs.length > 0)
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tzw paramtzw)
+  {
+    if ((paramQQStoryShareGroupProfileActivity.a().equals(paramtzw.jdField_a_of_type_JavaLangString)) && ((paramtzw.jdField_a_of_type_Two instanceof twz)))
     {
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = paramVarArgs[i];
-        if (localObject != null) {
-          localStringBuilder.append(localObject.toString());
-        }
-        i += 1;
+      paramtzw = ((twz)paramtzw.jdField_a_of_type_Two).a;
+      if (paramtzw != null) {
+        paramQQStoryShareGroupProfileActivity.a(paramtzw.jdField_a_of_type_JavaLangString);
       }
     }
-    return "";
-    paramVarArgs = localStringBuilder.toString();
-    if (localStringBuilder.length() > 512) {
-      a.set(new StringBuilder(512));
-    }
-    localStringBuilder.setLength(0);
-    return paramVarArgs;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tzw.class;
   }
 }
 

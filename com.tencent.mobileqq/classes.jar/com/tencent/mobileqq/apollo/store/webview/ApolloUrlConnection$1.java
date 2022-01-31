@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import aivy;
+import ajka;
 import com.tencent.qphone.base.util.QLog;
 import java.net.HttpURLConnection;
 
 public class ApolloUrlConnection$1
   implements Runnable
 {
-  public ApolloUrlConnection$1(aivy paramaivy) {}
+  public ApolloUrlConnection$1(ajka paramajka) {}
   
   public void run()
   {
     try
     {
-      aivy.a(this.this$0).disconnect();
+      ajka.a(this.this$0).disconnect();
       return;
     }
     catch (Throwable localThrowable)

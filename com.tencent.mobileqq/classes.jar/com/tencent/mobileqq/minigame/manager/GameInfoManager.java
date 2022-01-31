@@ -1,13 +1,15 @@
 package com.tencent.mobileqq.minigame.manager;
 
 import android.text.TextUtils;
-import bfvk;
+import bhdu;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.appbrand.utils.AppBrandUtil;
 import com.tencent.mobileqq.mini.sdk.EntryModel;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
+import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.mobileqq.minigame.utils.PathUtil;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
@@ -15,6 +17,9 @@ import org.json.JSONObject;
 
 public class GameInfoManager
 {
+  public static final String EVENT_APP_ENTER_BACKGROUND = "onAppEnterBackground";
+  public static final String EVENT_APP_ENTER_FOREGROUND = "onAppEnterForeground";
+  public static final String GAME_STOP = "onAppStop";
   private static final String TAG = "GameInfoManager";
   private static GameInfoManager instance;
   private GameInfoManager.LaunchOptions launchOptions;
@@ -134,6 +139,69 @@ public class GameInfoManager
     return this.miniGamePkg.appConfig.launchParam.navigateExtData;
   }
   
+  public JSONObject getOnShowParam()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject2 = g().getQueryPath();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new JSONObject();
+    }
+    int i = getScene();
+    String str2 = getShareTicket();
+    localObject2 = getFromMiniAppId();
+    String str1 = getNavigateExtData();
+    String str3 = getEntryDataHash();
+    try
+    {
+      new JSONObject();
+      localJSONObject.put("query", localObject1);
+      localJSONObject.put("entryDataHash", str3);
+    }
+    catch (Exception localException2)
+    {
+      try
+      {
+        localJSONObject.put("scene", AppBrandUtil.getWikiScene(i));
+      }
+      catch (Exception localException2)
+      {
+        try
+        {
+          for (;;)
+          {
+            localJSONObject.put("shareTicket", str2);
+            try
+            {
+              localObject1 = new JSONObject();
+              ((JSONObject)localObject1).put("appId", localObject2);
+              ((JSONObject)localObject1).put("extraData", str1);
+              localJSONObject.put("referrerInfo", localObject1);
+              return localJSONObject;
+            }
+            catch (Exception localException4)
+            {
+              GameLog.getInstance().e("GameInfoManager", "onForeground exception put referrerInfo string :" + localException4);
+            }
+            localException1 = localException1;
+            GameLog.getInstance().e("GameInfoManager", "onForeground exception put query string :" + localException1);
+            continue;
+            localException2 = localException2;
+            GameLog.getInstance().e("GameInfoManager", "onForeground exception put scene string :" + localException2);
+          }
+        }
+        catch (Exception localException3)
+        {
+          for (;;)
+          {
+            GameLog.getInstance().e("GameInfoManager", "onForeground exception put shareTicket string :" + localException3);
+          }
+        }
+      }
+    }
+    return localJSONObject;
+  }
+  
   public JSONObject getQueryPath()
   {
     if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.config != null) && (this.miniGamePkg.appConfig.config.firstPage != null))
@@ -203,7 +271,7 @@ public class GameInfoManager
     this.miniGamePkg = paramMiniGamePkg;
     try
     {
-      bfvk.a(getMiniAppSimpleInfo());
+      bhdu.a(getMiniAppSimpleInfo());
       return;
     }
     catch (Throwable paramMiniGamePkg)

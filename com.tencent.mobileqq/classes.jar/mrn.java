@@ -1,12 +1,20 @@
-public abstract interface mrn
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class mrn
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  mrn(mrl parammrl) {}
   
-  public abstract void a(int paramInt, String paramString);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    mrl.a(this.a, this.a.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mrn
  * JD-Core Version:    0.7.0.1
  */

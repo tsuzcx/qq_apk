@@ -1,55 +1,135 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSAppLoader.1;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSAppLoader.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class ppk
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  private static String jdField_a_of_type_JavaLangString;
+  private static volatile ppk jdField_a_of_type_Ppk;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public static ppk a(articlesummary.HotWordItem paramHotWordItem)
+  public static ppk a()
   {
-    ppk localppk = new ppk();
-    if (paramHotWordItem.hot_word.has()) {
-      localppk.a = paramHotWordItem.hot_word.get().toStringUtf8();
+    if (jdField_a_of_type_Ppk == null) {}
+    try
+    {
+      if (jdField_a_of_type_Ppk == null) {
+        jdField_a_of_type_Ppk = new ppk();
+      }
+      return jdField_a_of_type_Ppk;
     }
-    if (paramHotWordItem.jump_url.has()) {
-      localppk.b = paramHotWordItem.jump_url.get().toStringUtf8();
-    }
-    if (paramHotWordItem.index_word_color.has()) {
-      localppk.c = paramHotWordItem.index_word_color.get().toStringUtf8();
-    }
-    if (paramHotWordItem.index_bg_color.has()) {
-      localppk.d = paramHotWordItem.index_bg_color.get().toStringUtf8();
-    }
-    return localppk;
+    finally {}
   }
   
-  public articlesummary.HotWordItem a()
+  private void a(String paramString)
   {
-    articlesummary.HotWordItem localHotWordItem = new articlesummary.HotWordItem();
-    if (!TextUtils.isEmpty(this.a)) {
-      localHotWordItem.hot_word.set(ByteStringMicro.copyFromUtf8(this.a));
-    }
-    if (!TextUtils.isEmpty(this.d)) {
-      localHotWordItem.index_bg_color.set(ByteStringMicro.copyFromUtf8(this.d));
-    }
-    if (!TextUtils.isEmpty(this.c)) {
-      localHotWordItem.index_word_color.set(ByteStringMicro.copyFromUtf8(this.c));
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localHotWordItem.jump_url.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    return localHotWordItem;
+    ThreadManager.excute(new PTSAppLoader.2(this, paramString), 128, null, true);
   }
   
-  public boolean equals(Object paramObject)
+  private void b(String paramString)
   {
-    return ((paramObject instanceof ppk)) && (!TextUtils.isEmpty(this.a)) && (this.a.equals(((ppk)paramObject).a)) && (!TextUtils.isEmpty(this.b)) && (this.b.equals(((ppk)paramObject).b));
+    int j = 0;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    String str1 = a(paramString);
+    boolean bool2 = bbdj.a(str1);
+    boolean bool3 = ppq.a(str1, paramString);
+    String str2 = str1 + "/" + "pts_app_config.json";
+    boolean bool4 = ppq.a(str2);
+    boolean bool1;
+    if ((bool2) && (bool3) && (bool4)) {
+      bool1 = true;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = bool1;
+      jdField_a_of_type_JavaLangString = ppq.b(str2);
+      Object localObject1 = str1 + "/" + "pages/";
+      try
+      {
+        localObject1 = new File((String)localObject1);
+        if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+        {
+          localObject1 = ((File)localObject1).listFiles();
+          int k = localObject1.length;
+          i = 0;
+          while (i < k)
+          {
+            Object localObject2 = localObject1[i];
+            String str3 = localObject2.getName();
+            if ((localObject2.isDirectory()) && (!TextUtils.isEmpty(str3))) {
+              this.jdField_a_of_type_JavaUtilList.add(str3);
+            }
+            i += 1;
+            continue;
+            bool1 = false;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("PTSAppLoader", 1, "[checkPTSApp], e = " + localException);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[checkPTSApp], bid = ").append(paramString).append("\n").append(", appPath = ").append(str1).append("\n").append(", ptsAppVersion = ").append(jdField_a_of_type_JavaLangString).append("\n").append(", isAppExists = ").append(bool2).append("\n").append(", isAppValid = ").append(bool3).append("\n").append(", configPath = ").append(str2).append("\n").append(", isAppVersionValid = ").append(bool4).append("\n").append(", isAppOfflineDirValid = ").append(this.jdField_a_of_type_Boolean).append("\n").append(", appNameList = ");
+        int i = j;
+        while (i < this.jdField_a_of_type_JavaUtilList.size())
+        {
+          localStringBuilder.append("[").append(i).append("]: ").append((String)this.jdField_a_of_type_JavaUtilList.get(i)).append("\n");
+          i += 1;
+        }
+        QLog.i("PTSAppLoader", 1, localStringBuilder.toString());
+      }
+    }
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    String str = mzk.a(paramString) + paramString;
+    QLog.i("PTSAppLoader", 1, "[getPTSAppDownloadPath], bid = " + paramString + ", path = " + str);
+    return str;
+  }
+  
+  public void a()
+  {
+    b();
+    PTSAppLoader.1 local1 = new PTSAppLoader.1(this);
+    ThreadManager.getSubThreadHandler().postDelayed(local1, 10000L);
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = this.jdField_a_of_type_JavaUtilList.contains(paramString);
+    QLog.i("PTSAppLoader", 1, "[isPTSAppReady], appName = " + paramString + ", isAppExists = " + bool + ", isAppOfflineDirValid = " + this.jdField_a_of_type_Boolean);
+    return (this.jdField_a_of_type_Boolean) && (bool);
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_a_of_type_Boolean = false;
+      b("3978");
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

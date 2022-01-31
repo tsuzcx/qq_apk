@@ -1,247 +1,217 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.content.Context;
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.LottieAnimDirector.5;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForApproval;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.qphone.base.util.QLog;
+import java.io.FileInputStream;
+import java.io.IOException;
+import mqq.os.MqqHandler;
 
 public class adag
-  extends BaseBubbleBuilder
-  implements aclm
+  extends adal
+  implements Animator.AnimatorListener
 {
-  Handler b = new Handler();
+  private adbf jdField_a_of_type_Adbf;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private String c;
   
-  public adag(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public adag(Context paramContext)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    super(paramContext);
+    this.jdField_a_of_type_Adbf = new adbf(paramContext);
+    this.jdField_a_of_type_Adbf.a(new adah(this));
   }
   
-  private void a(adah paramadah, MessageForApproval paramMessageForApproval, View paramView, acmv paramacmv)
+  private QQAppInterface a()
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramadah.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)paramadah.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    if (paramMessageForApproval.isSend())
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (a() != null)
     {
-      localLayoutParams.leftMargin = 0;
-      localLayoutParams.rightMargin = ((int)(this.jdField_a_of_type_Float * 6.0F));
-    }
-    for (localLayoutParams1.leftMargin = ((int)(16.0F * this.jdField_a_of_type_Float));; localLayoutParams1.leftMargin = ((int)(24.0F * this.jdField_a_of_type_Float)))
-    {
-      paramadah.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
-      paramadah.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams1);
-      paramadah.jdField_a_of_type_AndroidWidgetLinearLayout.invalidate();
-      paramadah.jdField_a_of_type_AndroidWidgetTextView.invalidate();
-      paramView.setOnLongClickListener(paramacmv);
-      paramView.setOnTouchListener(paramacmv);
-      paramView.setOnClickListener(this);
-      return;
-      localLayoutParams.leftMargin = ((int)(this.jdField_a_of_type_Float * 6.0F));
-      localLayoutParams.rightMargin = 0;
-    }
-  }
-  
-  private void a(MessageForApproval paramMessageForApproval, adah paramadah)
-  {
-    for (;;)
-    {
-      int i;
-      Object localObject5;
-      Object localObject3;
-      Object localObject4;
-      try
-      {
-        paramadah.d.setText(paramMessageForApproval.summary);
-        String[] arrayOfString = paramMessageForApproval.title.split("\002");
-        if (arrayOfString.length == 1)
-        {
-          paramadah.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageForApproval.title.substring(3));
-          paramadah.c.setVisibility(8);
-          return;
-        }
-        localObject1 = ajjy.a(2131634834);
-        int j = arrayOfString.length;
-        String str1 = "";
-        paramMessageForApproval = "";
-        localObject2 = "";
-        i = 0;
-        if (i < j)
-        {
-          String str2 = arrayOfString[i];
-          if (str2.startsWith("000"))
-          {
-            localObject5 = (String)localObject1 + str2.substring(3);
-            localObject3 = paramMessageForApproval;
-            localObject4 = localObject2;
-          }
-          else if (str2.startsWith("001"))
-          {
-            localObject4 = str2.substring(3);
-            localObject3 = paramMessageForApproval;
-            localObject5 = localObject1;
-          }
-          else if (str2.startsWith("002"))
-          {
-            localObject3 = str2.substring(3);
-            localObject4 = localObject2;
-            localObject5 = localObject1;
-          }
-          else
-          {
-            localObject3 = paramMessageForApproval;
-            localObject4 = localObject2;
-            localObject5 = localObject1;
-            if (str2.startsWith("003"))
-            {
-              str1 = str2.substring(3);
-              localObject3 = paramMessageForApproval;
-              localObject4 = localObject2;
-              localObject5 = localObject1;
-            }
-          }
-        }
-        else
-        {
-          localObject3 = paramMessageForApproval;
-          if ("1".equalsIgnoreCase(str1) == true) {
-            localObject3 = paramMessageForApproval + ajjy.a(2131634831);
-          }
-          paramadah.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-          paramadah.c.setText((String)localObject2 + (String)localObject3);
-          return;
-        }
+      localObject1 = localObject2;
+      if ((a() instanceof BaseActivity)) {
+        localObject1 = ((BaseActivity)a()).app;
       }
-      catch (Exception paramMessageForApproval)
-      {
-        if (QLog.isDevelopLevel())
-        {
-          paramadah.jdField_b_of_type_AndroidWidgetTextView.setText(ajjy.a(2131634835));
-          paramadah.c.setText(ajjy.a(2131634832));
-        }
-        QLog.e("ApprovalMsgBuilder", 1, paramMessageForApproval.toString());
-        return;
-      }
-      i += 1;
-      paramMessageForApproval = (MessageForApproval)localObject3;
-      Object localObject2 = localObject4;
-      Object localObject1 = localObject5;
     }
+    return localObject1;
   }
   
-  private void d(View paramView)
+  private void a(QQAppInterface paramQQAppInterface)
   {
-    paramView = (MessageForApproval)aciy.a(paramView);
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
-  }
-  
-  public acju a()
-  {
-    return new adah(this);
-  }
-  
-  public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, acmv paramacmv)
-  {
-    paramChatMessage = (ViewGroup)super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramacmv);
-    paramView = (adah)paramChatMessage.getTag();
-    paramView.jdField_a_of_type_AndroidViewView.getLayoutParams().width = BaseChatItemLayout.d;
-    if (e) {}
+    this.jdField_a_of_type_JavaLangString = asxj.a(paramQQAppInterface).a(this.jdField_b_of_type_JavaLangString, this.c);
+    if (QLog.isColorLevel()) {
+      QLog.i("LottieAnimDirector", 1, "onResourceReady lottieUrl:" + this.jdField_b_of_type_JavaLangString + "  lottieMd5:" + this.c + " mResPath:" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = new LottieDrawable();
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setImageAssetDelegate(new adaj(this));
+    }
     try
     {
-      paramView.jdField_b_of_type_JavaLangStringBuilder.append(paramView.jdField_b_of_type_AndroidWidgetTextView.getText());
-      paramView.jdField_b_of_type_JavaLangStringBuilder.append(paramView.c.getText());
-      paramView.jdField_b_of_type_JavaLangStringBuilder.append("审批");
-      paramChatMessage.setContentDescription(paramView.jdField_b_of_type_JavaLangStringBuilder.toString());
-      return paramChatMessage;
-    }
-    catch (Exception paramView) {}
-    return paramChatMessage;
-  }
-  
-  public View a(ChatMessage paramChatMessage, acju paramacju, View paramView, BaseChatItemLayout paramBaseChatItemLayout, acmv paramacmv)
-  {
-    paramacju = (adah)paramacju;
-    paramBaseChatItemLayout = (MessageForApproval)paramChatMessage;
-    paramBaseChatItemLayout.parse();
-    paramChatMessage = paramView;
-    if (paramView == null)
-    {
-      paramChatMessage = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131493170, null);
-      paramacju.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131304085));
-      paramacju.c = ((TextView)paramChatMessage.findViewById(2131310894));
-      paramacju.d = ((TextView)paramChatMessage.findViewById(2131310903));
-      paramacju.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramChatMessage.findViewById(2131304847));
-      paramacju.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131302779));
-    }
-    a(paramacju, paramBaseChatItemLayout, paramChatMessage, paramacmv);
-    a(paramBaseChatItemLayout, paramacju);
-    return paramChatMessage;
-  }
-  
-  public String a(ChatMessage paramChatMessage)
-  {
-    if (bado.a(paramChatMessage.issend)) {
-      return ajjy.a(2131634833);
-    }
-    return ajjy.a(2131634836);
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
-  {
-    switch (paramInt)
-    {
-    default: 
+      paramQQAppInterface = new FileInputStream(this.jdField_a_of_type_JavaLangString + "data.json");
+      QLog.i("LottieAnimDirector", 1, "decode anim async");
+      LottieComposition.Factory.fromInputStream(a(), paramQQAppInterface, new adak(this));
       return;
     }
-    aael.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-  }
-  
-  public void a(View paramView) {}
-  
-  public void a(View paramView, axqf paramaxqf, int paramInt1, int paramInt2)
-  {
-    paramView = (adah)aciy.a(paramView);
-    a((MessageForApproval)paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage, paramView);
-  }
-  
-  public bakj[] a(View paramView)
-  {
-    paramView = new bakh();
-    aael.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    super.c(paramView, this.jdField_a_of_type_AndroidContentContext);
-    super.d(paramView, this.jdField_a_of_type_AndroidContentContext);
-    return paramView.a();
-  }
-  
-  public void onClick(View paramView)
-  {
-    aciy.n = true;
-    if (super.a()) {
-      return;
-    }
-    super.onClick(paramView);
-    switch (paramView.getId())
+    catch (IOException paramQQAppInterface)
     {
-    case 2131298560: 
-    default: 
+      QLog.e("LottieAnimDirector", 1, "Decode anim json error");
+    }
+  }
+  
+  private void a(LottieComposition paramLottieComposition)
+  {
+    QLog.i("LottieAnimDirector", 1, "decode json success");
+    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (paramLottieComposition != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setComposition(paramLottieComposition);
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.loop(false);
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.addAnimatorListener(this);
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LottieAnimDirector", 2, "refresh Lottie.d");
+        }
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+      }
+    }
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public void a()
+  {
+    super.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimDirector", 2, "play");
+    }
+    ThreadManager.getUIHandler().postDelayed(new LottieAnimDirector.5(this), 300L);
+  }
+  
+  public void a(adar paramadar)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimDirector", 2, "prepare");
+    }
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null)
+    {
+      paramadar.a(false);
       return;
     }
-    d(paramView);
+    if (asxj.a(localQQAppInterface).a(this.jdField_b_of_type_JavaLangString, this.c))
+    {
+      a(localQQAppInterface);
+      paramadar.a(true);
+      return;
+    }
+    asxj.a(localQQAppInterface).a(this.jdField_b_of_type_JavaLangString, this.c, new adai(this, paramadar));
   }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.c = paramString2;
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimDirector", 2, "setLottieResources url:" + paramString1 + " md5:" + paramString2);
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimDirector", 2, "cancel");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.recycleBitmaps();
+    }
+    if (this.jdField_a_of_type_Adbf != null)
+    {
+      this.jdField_a_of_type_Adbf.b();
+      this.jdField_a_of_type_Adbf.c();
+    }
+    a(8);
+    super.b();
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimDirector", 2, "doOnPause");
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.isAnimating())) {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
+    }
+    if ((this.jdField_a_of_type_Adbf != null) && (this.jdField_a_of_type_Adbf.a())) {
+      this.jdField_a_of_type_Adbf.d();
+    }
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimDirector", 2, "doOnResume");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.resumeAnimation();
+    }
+    if ((this.jdField_a_of_type_Adbf != null) && (this.jdField_a_of_type_Adbf.a())) {
+      this.jdField_a_of_type_Adbf.e();
+    }
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimDirector", 2, "doOnDestroy");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.recycleBitmaps();
+    }
+    if (this.jdField_a_of_type_Adbf != null)
+    {
+      this.jdField_a_of_type_Adbf.b();
+      this.jdField_a_of_type_Adbf.c();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    b();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

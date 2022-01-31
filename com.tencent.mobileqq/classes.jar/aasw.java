@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
 
 public class aasw
-  implements Comparator<RecentUser>
+  implements DialogInterface.OnClickListener
 {
-  public aasw(ForwardRecentActivity paramForwardRecentActivity) {}
+  public aasw(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (int)(paramRecentUser2.showUpTime - paramRecentUser1.showUpTime);
+    if (this.a.a != null)
+    {
+      this.a.a.b = false;
+      this.a.a.a(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aasw
  * JD-Core Version:    0.7.0.1
  */

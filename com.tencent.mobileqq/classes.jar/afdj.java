@@ -1,65 +1,35 @@
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
 
-class afdj
-  implements Comparator<afdl>
+public class afdj
+  extends afdf
 {
-  afdj(afdi paramafdi) {}
-  
-  public int a(afdl paramafdl1, afdl paramafdl2)
+  public afdj(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, afdi paramafdi)
   {
-    if ((paramafdl1 == null) && (paramafdl2 == null)) {}
-    int j;
-    int k;
-    do
-    {
-      do
-      {
-        return 0;
-        if ((paramafdl1 == null) && (paramafdl2 != null)) {
-          return -1;
-        }
-        if ((paramafdl1 != null) && (paramafdl2 == null)) {
-          return 1;
-        }
-        paramafdl1 = paramafdl1.b;
-        paramafdl2 = paramafdl2.b;
-      } while ((paramafdl1 == null) && (paramafdl2 == null));
-      if ((paramafdl1 == null) && (paramafdl2 != null)) {
-        return -1;
-      }
-      if ((paramafdl1 != null) && (paramafdl2 == null)) {
-        return 1;
-      }
-      j = paramafdl1.length();
-      k = paramafdl2.length();
-      int m = Math.min(j, k);
-      int i = 0;
-      while (i < m)
-      {
-        char c1 = paramafdl1.charAt(i);
-        char c2 = paramafdl2.charAt(i);
-        if (c1 != c2)
-        {
-          paramafdl1 = ChnToSpell.a(c1);
-          paramafdl2 = ChnToSpell.a(c2);
-          if (paramafdl1.jdField_a_of_type_Int == paramafdl2.jdField_a_of_type_Int) {
-            return paramafdl1.jdField_a_of_type_JavaLangString.compareTo(paramafdl2.jdField_a_of_type_JavaLangString);
-          }
-          return paramafdl1.jdField_a_of_type_Int - paramafdl2.jdField_a_of_type_Int;
-        }
-        i += 1;
-      }
-      if (j < k) {
-        return -1;
-      }
-    } while (j <= k);
-    return 1;
+    super(paramQQAppInterface, paramContext, paramXListView, paramafdi);
+  }
+  
+  protected afda a()
+  {
+    return new afde(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    axqw.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
+  }
+  
+  public void b()
+  {
+    super.b();
+    axqw.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afdj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,9 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-
 class adrs
-  extends acjc
+  implements bfos
 {
-  public ViewGroup a;
-  public AnyScaleTypeImageView a;
-  public TextView b;
+  adrs(adrr paramadrr) {}
   
-  adrs(adro paramadro) {}
+  public void onDismiss() {}
 }
 
 

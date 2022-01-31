@@ -1,20 +1,34 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import mqq.os.MqqHandler;
 
 public class afms
-  extends ajey
+  extends MqqHandler
 {
-  public afms(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
+  public afms(NotificationView paramNotificationView) {}
   
-  protected void a(Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_Afmp == null);
+      this.a.i();
+      this.a.jdField_a_of_type_Afmp.a = aydb.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_Afmp.notifyDataSetChanged();
+      return;
     }
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afms
  * JD-Core Version:    0.7.0.1
  */

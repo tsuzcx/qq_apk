@@ -1,59 +1,72 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.sdk.LaunchParam;
+import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.widget.ThemeImageView;
+import java.lang.ref.WeakReference;
 
 class aoge
-  implements aodv
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  aoge(aogd paramaogd, String paramString, aogv paramaogv) {}
+  int jdField_a_of_type_Int;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  MiniAppRecommInfo.MiniApp jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(int paramInt, String paramString)
+  public aoge(Activity paramActivity, View paramView)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2DiscTaskExcuter faild");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
+    super(paramView);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370309));
+    if ((this.jdField_a_of_type_AndroidWidgetImageView instanceof ThemeImageView)) {
+      ((ThemeImageView)this.jdField_a_of_type_AndroidWidgetImageView).setMaskShape(bfwa.c);
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aogd.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild:" + paramInt);
-      }
-      this.jdField_a_of_type_Aogv.a(aofz.a(this.jdField_a_of_type_Aogd.jdField_a_of_type_Long, bool2), bool1);
-      return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370310));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
   }
   
-  public void a(String paramString)
+  public void a(int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "2");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aogd.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aogd.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aogd.c);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aogd.d);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aogd.e);
-    localBundle.putString("_m_ForwardUuid", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aogd.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter success");
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(MiniAppRecommInfo.MiniApp paramMiniApp)
+  {
+    if (paramMiniApp == null) {
+      return;
     }
-    this.jdField_a_of_type_Aogv.a(paramString, localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp = paramMiniApp;
+    Drawable localDrawable = MiniAppUtils.getIcon(this.jdField_a_of_type_AndroidWidgetImageView.getContext(), paramMiniApp.c, true, 2130840788, 48);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMiniApp.b);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp != null) && (this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo != null))
+    {
+      paramView = new MiniAppConfig(this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo);
+      paramView.launchParam = new LaunchParam();
+      paramView.launchParam.scene = 2065;
+      MiniAppController.startApp((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramView, null);
+      aogd.a(102, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp.jdField_a_of_type_Int);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoge
  * JD-Core Version:    0.7.0.1
  */

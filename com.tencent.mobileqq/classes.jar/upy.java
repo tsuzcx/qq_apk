@@ -1,13 +1,48 @@
-import android.widget.TextView;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.List;
 
-class upy
-  implements sjg
+public class upy
+  extends syq
 {
-  upy(upw paramupw, TextView paramTextView) {}
+  public List<LikeEntry> a;
+  public int b;
+  public int c;
   
-  public void a(String paramString, int paramInt)
+  public upy(qqstory_service.RspFeedLikeList paramRspFeedLikeList)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131641734) + paramInt + "%");
+    super(paramRspFeedLikeList.result);
+    paramRspFeedLikeList = (qqstory_struct.FeedLikeInfo)paramRspFeedLikeList.feed_like_info.get();
+    this.a = a(paramRspFeedLikeList);
+    this.b = paramRspFeedLikeList.like_total_count.get();
+    this.c = paramRspFeedLikeList.has_like.get();
+  }
+  
+  public List<LikeEntry> a(qqstory_struct.FeedLikeInfo paramFeedLikeInfo)
+  {
+    paramFeedLikeInfo = paramFeedLikeInfo.like_list.get();
+    ArrayList localArrayList1 = new ArrayList();
+    tdo localtdo = (tdo)tdc.a(2);
+    ArrayList localArrayList2 = new ArrayList();
+    int i = 0;
+    while (i < paramFeedLikeInfo.size())
+    {
+      LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)paramFeedLikeInfo.get(i));
+      if (localtdo.b(localLikeEntry.unionId) == null) {
+        localArrayList2.add(new tej("", localLikeEntry.unionId));
+      }
+      localArrayList1.add(localLikeEntry);
+      i += 1;
+    }
+    if (!localArrayList2.isEmpty()) {
+      new tkl().a(1, localArrayList2);
+    }
+    return localArrayList1;
   }
 }
 

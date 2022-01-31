@@ -1,73 +1,460 @@
-import android.content.res.Resources;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.widget.pull2refresh.XRecyclerView;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ofv
-  extends ohe
 {
-  public ofv(ReadInJoyDynamicChannelFragment paramReadInJoyDynamicChannelFragment) {}
+  private int jdField_a_of_type_Int = 0;
+  private BaseCommentData jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
   
-  public void a(int paramInt, List<Long> paramList)
+  public ofv(ArticleInfo paramArticleInfo, BaseCommentData paramBaseCommentData)
   {
-    if (paramInt != ReadInJoyDynamicChannelFragment.a(this.a)) {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData = paramBaseCommentData;
+  }
+  
+  public ofv(oii paramoii)
+  {
+    if (paramoii == null) {
       return;
     }
-    if ((paramList != null) && (paramList.size() > 0))
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramoii.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData = paramoii.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
+    this.jdField_a_of_type_Int = paramoii.b;
+  }
+  
+  private int a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null) {
+      return 0;
+    }
+    switch (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.contentSrc)
     {
-      ReadInJoyDynamicChannelFragment.a(this.a).a(ogy.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.b(this.a)), paramList));
-      ReadInJoyDynamicChannelFragment.a(this.a).a(true, true);
+    default: 
+      return 0;
+    case 1: 
+      return 1;
+    case 3: 
+      return 3;
+    }
+    return 2;
+  }
+  
+  private ofv e(int paramInt)
+  {
+    int j = 1;
+    int i = 1;
+    if (paramInt == 1) {}
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("puin_type", 1);
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      JSONObject localJSONObject1;
+      localJSONException.printStackTrace();
+      return this;
+    }
+    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null))
+    {
+      localJSONObject1 = this.jdField_a_of_type_OrgJsonJSONObject;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAccountLess == 0) {}
+      for (paramInt = i;; paramInt = 2)
+      {
+        localJSONObject1.put("puin_type", paramInt);
+        return this;
+      }
+    }
+    if ((paramInt == 3) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null))
+    {
+      JSONObject localJSONObject2 = this.jdField_a_of_type_OrgJsonJSONObject;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAccountLess == 0) {}
+      for (paramInt = j;; paramInt = 2)
+      {
+        localJSONObject2.put("puin_type", paramInt);
+        return this;
+      }
+    }
+    return this;
+  }
+  
+  private ofv j()
+  {
+    oio localoio;
+    String str;
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      localoio = oio.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      if (localoio != null)
+      {
+        str = "";
+        if (!(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof CommentData)) {
+          break label65;
+        }
+        str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentId;
+      }
     }
     for (;;)
     {
-      paramList = ogy.a().a();
-      if (paramList == null) {
-        break;
+      this.jdField_a_of_type_Int = localoio.a(str);
+      try
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("area", this.jdField_a_of_type_Int);
+        return this;
       }
-      ReadInJoyDynamicChannelFragment.a(this.a, paramList.a(ReadInJoyDynamicChannelFragment.c(this.a)));
-      return;
-      ReadInJoyDynamicChannelFragment.b(this.a).b();
+      catch (JSONException localJSONException)
+      {
+        label65:
+        localJSONException.printStackTrace();
+      }
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof SubCommentData)) {
+        str = ((SubCommentData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData).parentCommentId;
+      }
     }
+    return this;
   }
   
-  public void a(TopBannerInfo paramTopBannerInfo)
+  public String a()
   {
-    ReadInJoyDynamicChannelFragment.a(this.a, paramTopBannerInfo);
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if (paramInt != ReadInJoyDynamicChannelFragment.d(this.a)) {
-      return;
-    }
-    paramInt = ogy.a().a(Integer.valueOf(paramInt));
-    if ((paramBoolean1) && (paramInt > 0)) {}
-    for (String str = String.format(this.a.getResources().getString(2131652508), new Object[] { Integer.valueOf(paramInt) });; str = this.a.getResources().getString(2131652507))
+    for (;;)
     {
-      ReadInJoyDynamicChannelFragment.c(this.a).a(paramBoolean1, str);
-      if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
-        ReadInJoyDynamicChannelFragment.a(this.a).a(ogy.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.e(this.a)), paramList));
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
+        {
+          this.jdField_a_of_type_OrgJsonJSONObject.put("algorithm_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAlgorithmID);
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID != -1L) {
+            this.jdField_a_of_type_OrgJsonJSONObject.put("mp_article_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID);
+          }
+        }
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData != null)
+        {
+          if (!(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof CommentData)) {
+            continue;
+          }
+          this.jdField_a_of_type_OrgJsonJSONObject.put("comment_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentId);
+        }
+        this.jdField_a_of_type_OrgJsonJSONObject.put("kandian_mode", onk.e());
+        this.jdField_a_of_type_OrgJsonJSONObject.put("comment_platform", 3);
       }
-      ReadInJoyDynamicChannelFragment.d(this.a).a(true, true);
-      return;
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        continue;
+      }
+      return this.jdField_a_of_type_OrgJsonJSONObject.toString();
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof SubCommentData)) {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("sub_comment_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentId);
+      }
     }
   }
   
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  public ofv a()
   {
-    if (paramInt != ReadInJoyDynamicChannelFragment.f(this.a)) {
-      return;
+    j();
+    c();
+    d();
+    e();
+    h();
+    return this;
+  }
+  
+  public ofv a(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("amount", paramInt);
+      return this;
     }
-    if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
-      ReadInJoyDynamicChannelFragment.a(this.a).a(ogy.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.g(this.a)), paramList));
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
     }
-    ReadInJoyDynamicChannelFragment.e(this.a).a(paramBoolean1, true);
+    return this;
+  }
+  
+  public ofv a(String paramString)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("comment_id", paramString);
+      return this;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return this;
+  }
+  
+  public ofv b()
+  {
+    try
+    {
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof SubCommentData)))
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("comment_id", ((SubCommentData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData).parentCommentId);
+        this.jdField_a_of_type_OrgJsonJSONObject.put("sub_comment_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentId);
+      }
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
+  }
+  
+  public ofv b(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("actionsheet_choose", paramInt);
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
+  }
+  
+  public ofv b(String paramString)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("to_uin", paramString);
+      return this;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return this;
+  }
+  
+  public ofv c()
+  {
+    int i = a();
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("entry", i);
+      return e(i);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public ofv c(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("comment_number", paramInt);
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
+  }
+  
+  public ofv d()
+  {
+    int i = 1;
+    int j;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData != null)
+    {
+      j = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.getCommentLevel();
+      if (j != 1) {
+        break label42;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("comment_level", i);
+        return this;
+      }
+      catch (JSONException localJSONException)
+      {
+        label42:
+        localJSONException.printStackTrace();
+      }
+      j = 2;
+      break;
+      if (j != 2) {
+        i = 2;
+      }
+    }
+    return this;
+  }
+  
+  public ofv d(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("change_into", paramInt);
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
+  }
+  
+  public ofv e()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData != null)
+      {
+        int i;
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAuthorSelection()) {
+          i = 1;
+        }
+        while (i > 0)
+        {
+          this.jdField_a_of_type_OrgJsonJSONObject.put("comment_type", i);
+          return this;
+          boolean bool = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAwesome();
+          if (bool) {
+            i = 2;
+          } else {
+            i = 3;
+          }
+        }
+      }
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+  }
+  
+  public ofv f()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null) {
+      return this;
+    }
+    int i = 0;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isBanner()) {
+      i = 1;
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("type", i);
+        return this;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        return this;
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isActivity()) {
+        i = 2;
+      } else if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isFamilyTopEntry()) {
+        i = 3;
+      }
+    }
+  }
+  
+  public ofv g()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null) {
+      return this;
+    }
+    String str1 = "";
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isActivity()) {
+      str1 = String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.activityCfgID);
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("h5_id", str1);
+        return this;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        return this;
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isBanner()) {
+        String str2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentId;
+      }
+    }
+  }
+  
+  public ofv h()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.styleData))) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.styleData).optJSONObject("reportJson");
+        if (localJSONObject != null)
+        {
+          Iterator localIterator = localJSONObject.keys();
+          while (localIterator.hasNext())
+          {
+            String str1 = (String)localIterator.next();
+            String str2 = localJSONObject.getString(str1);
+            this.jdField_a_of_type_OrgJsonJSONObject.put(str1, str2);
+          }
+        }
+        return this;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+    QLog.d("CommentReportR5Builder", 2, "addFamilyReportData r5 " + this.jdField_a_of_type_OrgJsonJSONObject.toString());
+    return this;
+  }
+  
+  public ofv i()
+  {
+    try
+    {
+      JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData != null) {}
+      for (int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.createSrc;; i = 0)
+      {
+        localJSONObject.put("into_app", i);
+        return this;
+      }
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ofv
  * JD-Core Version:    0.7.0.1
  */

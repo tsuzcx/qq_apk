@@ -1,57 +1,48 @@
-import android.os.Bundle;
-import mqq.manager.WtloginManager;
-import mqq.observer.SSOAccountObserver;
-import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
-import oicq.wlogin_sdk.tools.RSACrypt;
-import oicq.wlogin_sdk.tools.util;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class bcea
-  extends SSOAccountObserver
+public final class bcea
+  implements WtTicketPromise
 {
-  bcea(bcdz parambcdz) {}
+  public bcea(String paramString, long paramLong) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public void Done(Ticket paramTicket)
   {
-    if (this.a.jdField_a_of_type_Bceb != null) {
-      this.a.jdField_a_of_type_Bceb.a();
-    }
-  }
-  
-  public void onGetA1WithA1(String paramString, int paramInt1, byte[] paramArrayOfByte, int paramInt2, Bundle paramBundle)
-  {
-    if (paramInt1 == 0)
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      paramBundle = new WloginSimpleInfo();
-      if (this.a.jdField_a_of_type_MqqManagerWtloginManager != null) {
-        this.a.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(paramString, paramBundle);
-      }
-      paramString = "" + paramBundle._uin;
-      if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
-      {
-        util.LOGD("outA1 buff: " + util.buf_to_string(paramArrayOfByte));
-        paramArrayOfByte = new RSACrypt(bbtm.a().a()).EncryptData(this.a.a(bbtm.a().a(), this.a.jdField_a_of_type_Long, 1L), paramArrayOfByte);
-        util.LOGD("encrypt buff:" + util.buf_to_string(paramArrayOfByte));
-        if (this.a.jdField_a_of_type_Bceb != null) {
-          this.a.jdField_a_of_type_Bceb.a(paramString, paramArrayOfByte);
-        }
+      localStringBuilder = new StringBuilder().append("pt4_token response received for ").append(this.jdField_a_of_type_JavaLangString).append(", cost=").append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      if (paramTicket == null) {
+        break label64;
       }
     }
-    while (this.a.jdField_a_of_type_Bceb == null) {
+    label64:
+    for (paramTicket = "";; paramTicket = ". But result was null!")
+    {
+      QLog.d("SwiftBrowserCookieMonster", 2, paramTicket);
       return;
     }
-    this.a.jdField_a_of_type_Bceb.a();
   }
   
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    if (this.a.jdField_a_of_type_Bceb != null) {
-      this.a.jdField_a_of_type_Bceb.a();
+    if (QLog.isColorLevel()) {
+      QLog.w("SwiftBrowserCookieMonster", 2, "Get pt4_token failed for " + this.jdField_a_of_type_JavaLangString + " because " + paramErrMsg + ", cost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("SwiftBrowserCookieMonster", 2, "Get pt4_token timeout for " + this.jdField_a_of_type_JavaLangString + " because " + paramErrMsg + ", cost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcea
  * JD-Core Version:    0.7.0.1
  */

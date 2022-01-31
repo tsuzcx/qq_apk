@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app.message.messageclean;
 
-import akdh;
+import akrt;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import apbo;
-import awtx;
+import apti;
+import axty;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ public class ScanSpaceManager
 {
   public static final ArrayList<String> a;
   public long a;
-  private akdh jdField_a_of_type_Akdh;
+  private akrt jdField_a_of_type_Akrt;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private volatile boolean jdField_a_of_type_Boolean;
   public long b;
@@ -46,8 +46,8 @@ public class ScanSpaceManager
   
   private void c()
   {
-    String str1 = apbo.a().b();
-    String str2 = apbo.a().a();
+    String str1 = apti.a().b();
+    String str2 = apti.a().a();
     jdField_a_of_type_JavaUtilArrayList.clear();
     if (!TextUtils.isEmpty(str1))
     {
@@ -85,18 +85,18 @@ public class ScanSpaceManager
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Akdh != null)
+      if (this.jdField_a_of_type_Akrt != null)
       {
-        this.jdField_a_of_type_Akdh.b();
-        this.jdField_a_of_type_Akdh.a(0);
+        this.jdField_a_of_type_Akrt.b();
+        this.jdField_a_of_type_Akrt.a(0);
       }
-      awtx.a().post(new ScanSpaceManager.ScanSpaceTask(this));
+      axty.a().post(new ScanSpaceManager.ScanSpaceTask(this));
     }
   }
   
-  public void a(akdh paramakdh)
+  public void a(akrt paramakrt)
   {
-    this.jdField_a_of_type_Akdh = paramakdh;
+    this.jdField_a_of_type_Akrt = paramakrt;
   }
   
   public boolean a()
@@ -115,14 +115,14 @@ public class ScanSpaceManager
   public void b()
   {
     this.jdField_a_of_type_Boolean = false;
-    awtx.a();
+    axty.a();
     jdField_a_of_type_JavaUtilArrayList.clear();
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
-    this.jdField_a_of_type_Akdh = null;
+    this.jdField_a_of_type_Akrt = null;
   }
   
   public long c()
@@ -141,12 +141,12 @@ public class ScanSpaceManager
     for (;;)
     {
       return false;
-      if (this.jdField_a_of_type_Akdh != null)
+      if (this.jdField_a_of_type_Akrt != null)
       {
-        this.jdField_a_of_type_Akdh.a(paramMessage.arg1);
+        this.jdField_a_of_type_Akrt.a(paramMessage.arg1);
         continue;
-        if (this.jdField_a_of_type_Akdh != null) {
-          this.jdField_a_of_type_Akdh.a(this.b, this.jdField_a_of_type_Long - this.b - this.c, this.c, this.jdField_a_of_type_Long);
+        if (this.jdField_a_of_type_Akrt != null) {
+          this.jdField_a_of_type_Akrt.a(this.b, this.jdField_a_of_type_Long - this.b - this.c, this.c, this.jdField_a_of_type_Long);
         }
       }
     }

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter;
 
-import biod;
+import bkey;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import vbo;
+import vok;
 
 public class DoodleMagicAlgoHandler
 {
@@ -81,17 +81,17 @@ public class DoodleMagicAlgoHandler
         localRenderPoint.xList = paramArrayOfFloat1;
         localRenderPoint.yList = paramArrayOfFloat2;
         localRenderPoint.aList = paramArrayOfFloat3;
-        if (!(localVideoFilterBase instanceof vbo)) {
+        if (!(localVideoFilterBase instanceof vok)) {
           break label108;
         }
-        ((vbo)localVideoFilterBase).a(localRenderPoint);
+        ((vok)localVideoFilterBase).a(localRenderPoint);
       }
     }
     label108:
-    while (!(localVideoFilterBase instanceof biod)) {
+    while (!(localVideoFilterBase instanceof bkey)) {
       return;
     }
-    ((biod)localVideoFilterBase).a(localRenderPoint);
+    ((bkey)localVideoFilterBase).a(localRenderPoint);
   }
   
   public static void setFilter(VideoFilterBase paramVideoFilterBase)

@@ -1,67 +1,20 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.lang.reflect.Constructor;
-
-public class phq<T extends View>
-  extends pez
+class phq
 {
-  private Class<T> a;
+  private boolean jdField_a_of_type_Boolean;
   
-  phq(Context paramContext, azwg paramazwg, qoe paramqoe, Class<T> paramClass)
+  phq(pgz parampgz, boolean paramBoolean)
   {
-    super(paramContext, paramazwg, paramqoe);
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    a(paramBoolean);
   }
   
-  public pez a()
+  void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().l().n();
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public pez d()
+  boolean a()
   {
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if ((this.jdField_a_of_type_Pey != null) && (this.jdField_a_of_type_Pey.getClass().equals(this.jdField_a_of_type_JavaLangClass))) {
-      localLinearLayout.addView((View)this.jdField_a_of_type_Pey);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
-  }
-  
-  public pez e()
-  {
-    return this;
-  }
-  
-  public pez g()
-  {
-    try
-    {
-      this.jdField_a_of_type_Pey = ((pey)this.jdField_a_of_type_JavaLangClass.getConstructor(new Class[] { Context.class }).newInstance(new Object[] { this.jdField_a_of_type_AndroidContentContext }));
-      return this;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return this;
-  }
-  
-  public pez o()
-  {
-    super.o();
-    return this;
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

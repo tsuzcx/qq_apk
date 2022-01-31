@@ -1,38 +1,18 @@
-import org.json.JSONObject;
-
-public abstract class azaa
+public class azaa
 {
-  protected JSONObject a;
-  protected boolean b = true;
-  public int c;
-  
-  public abstract int a();
-  
-  public JSONObject a()
+  public static String a(String paramString)
   {
-    return this.a;
+    return bbuv.a(paramString);
   }
   
-  public void a(String paramString) {}
-  
-  public boolean a()
+  public static String a(String paramString, boolean paramBoolean)
   {
-    return this.b;
-  }
-  
-  public abstract int b();
-  
-  public String toString()
-  {
-    if (this.a != null) {
-      return this.a.toString();
-    }
-    return "";
+    return bbuv.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     azaa
  * JD-Core Version:    0.7.0.1
  */

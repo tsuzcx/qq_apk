@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.vas;
 
 import android.os.Handler;
-import bami;
+import bboe;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ColorNickManager$2
   implements Runnable
 {
-  public ColorNickManager$2(bami parambami, int paramInt) {}
+  public ColorNickManager$2(bboe parambboe, int paramInt) {}
   
   public void run()
   {
-    Object localObject = new File(bami.a(String.valueOf(this.a)));
+    Object localObject = new File(bboe.a(String.valueOf(this.a)));
     if (((File)localObject).exists())
     {
-      localObject = bami.a(this.this$0, (File)localObject, this.a);
+      localObject = bboe.a(this.this$0, (File)localObject, this.a);
       if (localObject != null)
       {
         this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.a), localObject);
@@ -25,7 +25,7 @@ public class ColorNickManager$2
       }
       return;
     }
-    bami.a(this.this$0, this.a);
+    bboe.a(this.this$0, this.a);
   }
 }
 

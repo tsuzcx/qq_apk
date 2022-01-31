@@ -1,91 +1,40 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.HotChatManager;
+import android.os.Handler;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin.3.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class ayly
-  extends Observable
+public class ayly
+  implements bbqb
 {
-  public static int a;
-  public static int b;
-  public static int c = 3;
-  public acka a;
-  public Context a;
-  protected View a;
-  public RelativeLayout a;
-  public SessionInfo a;
-  public QQAppInterface a;
-  public ChatXListView a;
-  public ScrollerRunnable a;
-  public Observer a;
-  public boolean a;
-  public Observer b;
+  ayly(aylv paramaylv) {}
   
-  static
+  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-  }
-  
-  public View a()
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      d();
-    }
-    this.jdField_a_of_type_Boolean = false;
-    deleteObservers();
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, Observer paramObserver, SessionInfo paramSessionInfo, RelativeLayout paramRelativeLayout, acka paramacka, ChatXListView paramChatXListView, ScrollerRunnable paramScrollerRunnable)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131307242);
-    }
-    this.jdField_a_of_type_Acka = paramacka;
-    this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = paramChatXListView;
-    this.jdField_a_of_type_JavaUtilObserver = paramObserver;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = paramScrollerRunnable;
-    deleteObservers();
-    addObserver(paramObserver);
-    paramQQAppInterface = (HotChatManager)paramQQAppInterface.getManager(60);
-    if ((paramSessionInfo.jdField_a_of_type_Int == 1) || (paramSessionInfo.jdField_a_of_type_Int == 3000))
+    if (paramQQAppInterface != null)
     {
-      this.jdField_a_of_type_Boolean = true;
-      c();
-      return;
+      paramQQAppInterface = bbsr.a.getDir(paramQQAppInterface.getApp().getApplicationContext(), paramString1);
+      if ((!TextUtils.isEmpty(paramQQAppInterface)) && (aylv.a(this.a) != null))
+      {
+        aylv.a(this.a, true);
+        this.a.a(paramQQAppInterface);
+        if (QLog.isColorLevel()) {
+          QLog.i("FloatViewSkin", 2, "onCompleted: mSkinRootPath" + this.a.jdField_a_of_type_JavaLangString);
+        }
+        if (this.a.jdField_a_of_type_Boolean) {
+          ThreadManagerV2.getUIHandlerV2().post(new FloatViewSkin.3.1(this));
+        }
+      }
     }
-    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void b()
-  {
-    if (this.jdField_b_of_type_JavaUtilObserver != null) {
-      this.jdField_b_of_type_JavaUtilObserver.update(null, null);
-    }
-  }
-  
-  protected abstract void c();
-  
-  protected abstract void d();
+  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayly
  * JD-Core Version:    0.7.0.1
  */

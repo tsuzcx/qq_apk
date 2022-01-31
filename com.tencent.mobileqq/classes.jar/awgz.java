@@ -1,80 +1,58 @@
-import android.annotation.TargetApi;
-import android.hardware.camera2.CameraCaptureSession;
-import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
-import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.CaptureResult;
-import android.hardware.camera2.TotalCaptureResult;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-@TargetApi(21)
 public class awgz
-  extends CameraCaptureSession.CaptureCallback
+  extends Handler
 {
-  private int jdField_a_of_type_Int = 0;
-  private Camera2Control jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
-  
-  public awgz(Camera2Control paramCamera2Control)
+  public awgz(ScribbleResMgr paramScribbleResMgr, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control = paramCamera2Control;
+    super(paramLooper);
   }
   
-  private void a(CaptureResult paramCaptureResult)
+  public void handleMessage(Message paramMessage)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScribbleResMgr", 2, "handleMessage  status: " + paramMessage.what + " type: " + paramMessage.arg1);
     }
-    do
+    if (paramMessage.what == 1001) {
+      ScribbleResMgr.a(this.a, paramMessage.arg1, paramMessage.arg2, true);
+    }
+    for (;;)
     {
-      do
-      {
-        Integer localInteger;
-        do
-        {
-          do
-          {
-            return;
-            localInteger = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
-            awgx.a(1, "[Camera2]process afState:" + localInteger);
-            if (localInteger != null) {
-              break;
-            }
-          } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-          this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
-          return;
-        } while ((4 != localInteger.intValue()) && (5 != localInteger.intValue()) && (localInteger.intValue() != 0) && (1 != localInteger.intValue()) && (2 != localInteger.intValue()));
-        paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AE_STATE);
-        if ((paramCaptureResult != null) && (paramCaptureResult.intValue() != 2)) {
-          break;
-        }
-        this.jdField_a_of_type_Int = 4;
-        awgx.a(1, "[Camera2]process aeState:" + paramCaptureResult);
-      } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
       return;
-      awgx.a(1, "[Camera2]process preCapture aeState:" + paramCaptureResult);
-    } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
-  {
-    a(paramTotalCaptureResult);
-  }
-  
-  public void onCaptureProgressed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureResult paramCaptureResult)
-  {
-    a(paramCaptureResult);
+      if (paramMessage.what == 1002)
+      {
+        ScribbleResMgr.a(this.a, paramMessage.arg1, paramMessage.arg2, false);
+        return;
+      }
+      Iterator localIterator = ScribbleResMgr.a(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (awhd)localIterator.next();
+        if (localObject != null)
+        {
+          View localView = ((awhd)localObject).a();
+          localObject = ((awhd)localObject).a();
+          if ((localView != null) && (localObject != null)) {
+            ((awhe)localObject).a(localView, paramMessage.arg1, (ScribbleResMgr.ResInfo)paramMessage.obj, paramMessage.what);
+          } else {
+            localIterator.remove();
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     awgz
  * JD-Core Version:    0.7.0.1
  */

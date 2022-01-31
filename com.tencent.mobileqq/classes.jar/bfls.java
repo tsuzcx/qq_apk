@@ -1,23 +1,27 @@
-import cooperation.qqreader.VipProxyRreLoadReaderProcess.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
 
 public class bfls
-  implements moc
+  implements PtuFilterResource
 {
-  public bfls(VipProxyRreLoadReaderProcess.1 param1) {}
-  
-  public void loaded(String paramString, int paramInt)
+  public boolean checkPendantVersionOK()
   {
-    bfne.c("VipProxyRreLoadReaderProcess", "Load offline package finish, code = " + paramInt);
-    if (paramInt != 0) {
-      bfne.a("VipProxyRreLoadReaderProcess", "offline update failed.");
-    }
+    return axlc.d();
   }
   
-  public void progress(int paramInt) {}
+  public String getPortraitPathDir()
+  {
+    return getSoPathDir();
+  }
+  
+  public String getSoPathDir()
+  {
+    return axlc.b(BaseApplicationImpl.getContext());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfls
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class ApolloGameBasicEventUtil$5
@@ -8,7 +8,7 @@ public final class ApolloGameBasicEventUtil$5
 {
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getContext(), this.a, 1).a();
+    bcpw.a(BaseApplicationImpl.getContext(), this.a, 1).a();
   }
 }
 

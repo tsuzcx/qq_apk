@@ -1,54 +1,182 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import android.app.Activity;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.widget.TextView;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.LikeActionDownloadBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import org.json.JSONObject;
 
 public class qpr
-  implements psn
+  implements View.OnClickListener
 {
-  public qpr(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
+  private static final String jdField_a_of_type_JavaLangString = qpr.class.getSimpleName();
+  private int jdField_a_of_type_Int = -1;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(Bundle paramBundle, float paramFloat)
+  qpr(QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    String str = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "");
-    if (this.a.jdField_a_of_type_JavaUtilMap.get(str) != null) {
-      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(str)).a((int)paramFloat);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public void a(Bundle paramBundle, int paramInt, float paramFloat)
+  private void a(VideoInfo paramVideoInfo)
   {
-    QLog.d("KandianVideoUpload", 1, paramBundle.getString("mTaskID") + "service中的状态:" + paramInt);
-    switch (paramInt)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-    default: 
-      return;
-    case 200: 
-      this.a.jdField_a_of_type_Psn.a(paramBundle, (int)paramFloat);
-      return;
-    case 202: 
-      ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
-      return;
+      if (paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar == null) {
+        break label89;
+      }
+      str1 = paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar.c;
+      localJSONObject.put("common_data", str1);
     }
-    psj.b(paramBundle);
+    catch (Exception localException)
+    {
+      String str1;
+      label31:
+      String str2;
+      break label31;
+    }
+    str2 = paramVideoInfo.j;
+    if (!TextUtils.isEmpty(paramVideoInfo.g)) {}
+    for (str1 = paramVideoInfo.g;; str1 = "0")
+    {
+      noo.a(null, str2, "0X800A018", "0X800A018", 0, 0, "0", "0", str1, npx.a("", paramVideoInfo.j, paramVideoInfo.jdField_a_of_type_JavaLangString, paramVideoInfo.g, localJSONObject), false);
+      return;
+      label89:
+      str1 = "";
+      break;
+    }
   }
   
-  public void a(Bundle paramBundle, String paramString)
+  private boolean a(VideoInfo paramVideoInfo)
   {
-    paramString = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
-    if (this.a.jdField_a_of_type_JavaUtilMap.get(paramString) != null) {
-      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(paramString)).a();
+    if ((paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar == null) || (TextUtils.isEmpty(paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar.b)) || (paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "innerCheckAdParamValid() 参数无效");
+      }
+      return false;
+    }
+    return true;
+  }
+  
+  private boolean b()
+  {
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(179);
+    if (localAladdinConfig == null) {
+      return true;
+    }
+    if (localAladdinConfig.getIntegerFromString("like_action_download_bar_is_display", 1) == 1) {}
+    int i;
+    for (boolean bool = true;; bool = false)
+    {
+      i = localAladdinConfig.getIntegerFromString("like_action_download_bar_display_count_every_day", 2147483647);
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "innerCheckIsNeedShow() 神灯配置 isNeedDisplay=" + bool + ", displayCountEveryDay=" + i);
+      }
+      if (bool) {
+        break;
+      }
+      return false;
+    }
+    if (this.jdField_a_of_type_Int < 0) {
+      this.jdField_a_of_type_Int = bhvh.H(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "innerCheckIsNeedShow() 本地显示次数(更新前) mLocalShowCountToday=" + this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_Int < i)
+    {
+      this.jdField_a_of_type_Int += 1;
+      return true;
+    }
+    return false;
+  }
+  
+  void a()
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      bhvh.y(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int);
     }
   }
   
-  public void a(String paramString)
+  void a(VideoInfo paramVideoInfo, qmr paramqmr)
   {
-    this.a.a();
-    ogy.a().b(true);
-    ReadInJoyBaseListViewGroup.a(this.a, paramString);
+    if ((paramqmr.j != null) && (paramqmr.j.getVisibility() == 0)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((paramqmr.a != null) && (paramqmr.a.a != null) && (!paramqmr.a.a.l));
+      if ((!a(paramVideoInfo)) || (!b())) {
+        break;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      if (paramqmr.j == null)
+      {
+        paramqmr.j = ((ViewGroup)((ViewStub)paramqmr.o.findViewById(2131378972)).inflate());
+        paramqmr.jdField_c_of_type_ComTencentImageURLImageView = ((URLImageView)paramqmr.j.findViewById(2131376123));
+        paramqmr.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramqmr.j.findViewById(2131376124));
+      }
+    } while (paramqmr.j.getVisibility() == 0);
+    if (!TextUtils.isEmpty(paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar.jdField_a_of_type_JavaLangString)) {}
+    try
+    {
+      Object localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = bbkx.a(32.0F);
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = bbkx.a(32.0F);
+      localObject = URLDrawable.getDrawable(paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setTag(new int[] { 0, 0, bawz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 3.0F), 3 });
+      ((URLDrawable)localObject).setDecodeHandler(bavi.j);
+      paramqmr.jdField_c_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+      label235:
+      paramqmr.jdField_c_of_type_AndroidWidgetTextView.setText(paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar.b);
+      paramqmr.j.setOnClickListener(this);
+      paramqmr.j.setTag(paramVideoInfo);
+      paramqmr.j.setVisibility(0);
+      qol.a(paramqmr.j, 200);
+      return;
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label235;
+    }
+  }
+  
+  void a(qmr paramqmr)
+  {
+    if ((paramqmr.j != null) && (paramqmr.j.getVisibility() == 0)) {
+      paramqmr.j.setVisibility(8);
+    }
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = (VideoInfo)paramView.getTag();
+    qol.a(this.jdField_a_of_type_AndroidAppActivity, paramView.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo);
+    a(paramView);
   }
 }
 

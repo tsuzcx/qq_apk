@@ -1,20 +1,32 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class sys
-  extends sfo
+class sys<Request extends syv, Respond extends syq>
+  implements syw<Respond>
 {
-  public String a;
-  public List<uhj> a;
+  protected final long a;
+  protected syt<Request, Respond> a;
+  public Request a;
   
-  public sys()
+  public sys(Request paramRequest)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Syv = paramRequest;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public String toString()
+  private void b(int paramInt, String paramString, Respond paramRespond)
   {
-    return super.toString() + " collectionId=" + this.jdField_a_of_type_JavaLangString + "mSimpleInfoList.size=" + this.jdField_a_of_type_JavaUtilList.size() + "mSimpleInfoList=" + this.jdField_a_of_type_JavaUtilList;
+    syt localsyt = this.jdField_a_of_type_Syt;
+    if (localsyt != null)
+    {
+      localsyt.a(this.jdField_a_of_type_Syv, paramRespond, new ErrorMessage(paramInt, paramString));
+      return;
+    }
+    veg.d("Q.qqstory.net:CmdTaskManager", "cmd callback is null");
+  }
+  
+  public void a(int paramInt, String paramString, Respond paramRespond)
+  {
+    b(paramInt, paramString, paramRespond);
   }
 }
 

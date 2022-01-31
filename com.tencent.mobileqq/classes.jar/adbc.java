@@ -1,153 +1,176 @@
-import android.annotation.TargetApi;
+import android.animation.ValueAnimator;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
 import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.base.FriendShipLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class adbc
 {
-  private akgd jdField_a_of_type_Akgd;
-  protected String a;
-  private final ArrayList<adbg> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final ArrayList<adbg> b = new ArrayList();
-  private final ArrayList<adbf> c = new ArrayList();
+  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public adbc(String paramString, long paramLong)
+  public adbc(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Akgd = new adbd(this, 3, true, true, paramLong, true, true, "ArkAppLocationManager");
-  }
-  
-  public static boolean a()
-  {
-    boolean bool2 = true;
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    boolean bool1 = bool2;
-    if (localBaseActivity != null)
-    {
-      bool1 = bool2;
-      if (Build.VERSION.SDK_INT >= 23) {
-        if ((localBaseActivity.checkSelfPermission("android.permission.ACCESS_COARSE_LOCATION") != 0) || (localBaseActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)) {
-          break label68;
-        }
-      }
-    }
-    label68:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      ArkAppCenter.c("GetArkLocPermission", "CheckPermission is = " + bool1);
-      return bool1;
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
   public void a()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "playAnimation");
     }
-    synchronized (this.b)
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
-      this.b.clear();
-      SosoInterface.b(this.jdField_a_of_type_Akgd);
-      return;
-      localObject1 = finally;
-      throw localObject1;
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      }
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     }
   }
   
-  public void a(adbf paramadbf, boolean paramBoolean)
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    if (paramadbf == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "setOnCloseClickListener");
     }
-    synchronized (this.c)
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    if ((this.jdField_a_of_type_AndroidViewView$OnClickListener != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null)) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "setBackgroundView");
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofObject(new adbe(null), new Object[] { Integer.valueOf(0), Integer.valueOf(0) });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(3350L);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new adbd(this));
+  }
+  
+  public void a(FriendShipLayout paramFriendShipLayout)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "setRootContainer");
+    }
+    if (paramFriendShipLayout != null)
     {
-      this.c.add(paramadbf);
-      if (paramBoolean)
-      {
-        c();
-        return;
+      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+      localLayoutParams.gravity = 53;
+      localLayoutParams.topMargin = axli.a(30.0F);
+      localLayoutParams.rightMargin = axli.a(30.0F);
+      paramFriendShipLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+      if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
     }
-    SosoInterface.a(this.jdField_a_of_type_Akgd);
   }
   
-  public void a(adbg paramadbg)
+  public void a(String paramString)
   {
-    if (paramadbg == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "setCloseBtnBitmapPath: " + paramString);
     }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inScaled = true;
+    localOptions.inDensity = 320;
+    try
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramadbg);
-      c();
+      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+      {
+        if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+        }
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap = bbdr.a(paramString, localOptions);
       return;
     }
+    catch (Exception paramString)
+    {
+      QLog.e("AdditionalAnimController", 1, "Decode bitmap error");
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      return;
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      QLog.e("AdditionalAnimController", 1, "Decode bitmap OOM");
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+  }
+  
+  public boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "isAnimating");
+    }
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning();
+    }
+    return false;
   }
   
   public void b()
   {
-    if ((this.b.size() == 0) && (this.c.size() == 0)) {
-      SosoInterface.b(this.jdField_a_of_type_Akgd);
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "cancelAnimation");
     }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
-      ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-      ??? = localArrayList.iterator();
-      if (((Iterator)???).hasNext()) {
-        ((adbg)((Iterator)???).next()).a();
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
       }
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "recycleBitmaps");
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
     }
   }
   
-  public void b(adbg paramadbg)
+  public void d()
   {
-    if (paramadbg == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "pauseAnimation");
     }
-    synchronized (this.b)
-    {
-      this.b.add(paramadbg);
-      c();
-      return;
+    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (Build.VERSION.SDK_INT >= 19)) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.pause();
     }
   }
   
-  protected void c()
+  public void e()
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (!a())
-    {
-      localBaseActivity.requestPermissions(new adbe(this, localBaseActivity), 1, new String[] { "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION" });
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "resumeAnimation");
     }
-    grant();
-  }
-  
-  @QQPermissionDenied(1)
-  @TargetApi(23)
-  public void denied()
-  {
-    SosoInterface.a(this.jdField_a_of_type_Akgd);
-    ArkAppCenter.c("GetArkLocPermission", "CheckPermission location is denied");
-  }
-  
-  @QQPermissionGrant(1)
-  @TargetApi(23)
-  public void grant()
-  {
-    SosoInterface.a(this.jdField_a_of_type_Akgd);
-    ArkAppCenter.c("GetArkLocPermission", "CheckPermission location is granted ");
+    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (Build.VERSION.SDK_INT >= 19)) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.resume();
+    }
   }
 }
 

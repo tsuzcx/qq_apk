@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.Calendar;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
-class azoq
-  implements View.OnClickListener
+final class azoq
+  extends ajxl
 {
-  azoq(azoo paramazoo, azos paramazos) {}
+  WeakReference<azon> a;
   
-  public void onClick(View paramView)
+  private azoq(azon paramazon)
   {
-    if ((azoo.a(this.jdField_a_of_type_Azoo) != null) && (azoo.a(this.jdField_a_of_type_Azoo).isShowing())) {
-      azoo.a(this.jdField_a_of_type_Azoo).dismiss();
-    }
-    if ((this.jdField_a_of_type_Azos != null) && (azoo.a(this.jdField_a_of_type_Azoo) != null)) {
-      this.jdField_a_of_type_Azos.a(azoo.a(this.jdField_a_of_type_Azoo).getTimeInMillis());
+    this.a = new WeakReference(paramazon);
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    azon localazon = (azon)this.a.get();
+    if ((localazon != null) && (paramBoolean) && (paramString != null) && (localazon.a != null) && (localazon.a.size() > 0) && (paramString.equals(((TroopInfo)localazon.a.get(0)).troopuin))) {
+      localazon.c();
     }
   }
 }

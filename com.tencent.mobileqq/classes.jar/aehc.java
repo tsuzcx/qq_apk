@@ -1,23 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 class aehc
-  implements Animator.AnimatorListener
+  implements DialogInterface.OnDismissListener
 {
-  aehc(aegy paramaegy) {}
+  aehc(aegu paramaegu) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.removeHeaderView(aegy.a(this.a));
-    aegy.a(this.a, true);
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (aegu.a(this.a) != null)) {
+      this.a.q();
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import rol;
+import sbc;
 
 public final class PublicAccountManager$15
   implements Runnable
@@ -10,7 +10,7 @@ public final class PublicAccountManager$15
   
   public void run()
   {
-    rol.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    sbc.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
-import badq;
-import bccu;
+import bbev;
+import bdgv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import nav;
-import nbe;
-import pxh;
+import nlw;
+import nmf;
+import qjf;
 
 public class ADBaseAppDownloadManager$1
   implements Runnable
 {
-  public ADBaseAppDownloadManager$1(nav paramnav, pxh parampxh) {}
+  public ADBaseAppDownloadManager$1(nlw paramnlw, qjf paramqjf) {}
   
   public void run()
   {
-    if ((this.this$0.b(this.a)) && (nbe.a(this.this$0.a, this.a.d)))
+    if ((this.this$0.b(this.a)) && (nmf.a(this.this$0.a, this.a.d)))
     {
       QLog.d("ADBaseAppDownloadManager", 1, "already installed." + this.a.d);
       this.this$0.a(this.a, 1, 100);
@@ -24,20 +24,20 @@ public class ADBaseAppDownloadManager$1
     do
     {
       return;
-      if ((this.this$0.c(this.a)) && (nav.a(this.this$0.a, this.a)))
+      if ((this.this$0.c(this.a)) && (nlw.a(this.this$0.a, this.a)))
       {
         QLog.d("ADBaseAppDownloadManager", 1, "already finishDownload." + this.a.d);
         this.this$0.a(this.a, 5, 100);
-        DownloadInfo localDownloadInfo = bccu.a().c(this.a.jdField_a_of_type_JavaLangString);
-        bccu.a().c(localDownloadInfo);
+        DownloadInfo localDownloadInfo = bdgv.a().c(this.a.jdField_a_of_type_JavaLangString);
+        bdgv.a().a(localDownloadInfo);
         return;
       }
       if (this.a.jdField_a_of_type_Boolean)
       {
-        nav.a(this.this$0, this.a);
+        nlw.a(this.this$0, this.a);
         return;
       }
-      if (badq.g(BaseApplicationImpl.getContext()))
+      if (bbev.g(BaseApplicationImpl.getContext()))
       {
         this.this$0.a(this.a, 0);
         return;

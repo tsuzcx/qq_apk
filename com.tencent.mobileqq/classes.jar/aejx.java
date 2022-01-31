@@ -1,13 +1,15 @@
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
-class aejx
-  implements azla
+public class aejx
+  implements DialogInterface.OnClickListener
 {
-  aejx(aejb paramaejb) {}
+  public aejx(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {}
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

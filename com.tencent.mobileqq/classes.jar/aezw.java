@@ -1,42 +1,39 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.SwipListView;
+import mqq.observer.BusinessObserver;
 
 public class aezw
-  implements rhj
+  implements BusinessObserver
 {
-  public aezw(SystemMsgListView paramSystemMsgListView) {}
+  private Handler a;
   
-  public void a(rho paramrho)
+  aezw(Handler paramHandler)
   {
-    int j;
-    if (paramrho != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.newfriendSystemMsgListView", 2, "setStickHead onTabSelected : position = " + paramrho.a() + " tabid = " + (Integer)paramrho.a());
-      }
-      SystemMsgListView.a(this.a).a(((Integer)paramrho.a()).intValue(), paramrho.a());
-      i = SystemMsgListView.a(this.a).b();
-      paramrho = (afat)SystemMsgListView.a(this.a).get(i);
-      if (paramrho == null) {
-        break label141;
-      }
-      j = paramrho.b;
-    }
-    for (int i = paramrho.c;; i = SystemMsgListView.a(this.a).c)
-    {
-      SystemMsgListView.a(this.a).setSelectionFromTop(j, i);
-      SystemMsgListView.a(this.a).a(0L);
-      return;
-      label141:
-      j = SystemMsgListView.a(this.a).b;
-    }
+    this.a = paramHandler;
   }
   
-  public void b(rho paramrho) {}
-  
-  public void c(rho paramrho) {}
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    paramInt = paramBundle.getInt("ErrorCode");
+    String str1 = paramBundle.getString("UniqueKey");
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituObserver", 2, aezn.a(str1, "onReceive", "observer onReceive with code: " + paramInt));
+    }
+    String str2 = aezn.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    if (!str2.equals(str1)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituObserver", 2, aezn.a(str1, "onReceive", "response with " + str1 + " but the last one is " + str2 + ", skip."));
+      }
+    }
+    while (this.a == null) {
+      return;
+    }
+    paramBundle = this.a.obtainMessage(2, paramBundle);
+    this.a.sendMessage(paramBundle);
+  }
 }
 
 

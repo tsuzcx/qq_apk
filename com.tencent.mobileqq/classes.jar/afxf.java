@@ -1,21 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class afxf
-  implements DialogInterface.OnClickListener
+  extends apwx
 {
-  public afxf(BindVerifyActivity paramBindVerifyActivity) {}
+  public afxf(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindVerifyActivity", 2, "new user guild confirm unbind");
+    if ((paramView.getTag() instanceof String)) {
+      return;
     }
-    this.a.a.b(BindVerifyActivity.a(this.a), BindVerifyActivity.b(this.a), 0, BindVerifyActivity.a(this.a), BindVerifyActivity.b(this.a));
-    this.a.a(2131653452, 1000L, true);
+    paramView = (FileManagerEntity)((aimd)paramView.getTag()).a;
+    this.a.a(paramView);
   }
 }
 

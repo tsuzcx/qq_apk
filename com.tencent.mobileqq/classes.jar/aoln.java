@@ -1,34 +1,31 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew;
+import com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew.1;
 import com.tencent.qphone.base.util.QLog;
 
-class aoln
-  extends aoko
+public class aoln
+  implements View.OnClickListener
 {
-  public aoln(aokk paramaokk)
-  {
-    super(paramaokk);
-  }
+  public aoln(HorseRaceLampVew.1 param1) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "StateSenderCancelSendWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    if (!this.a.this$0.b) {
+      QLog.e("HorseRaceLampVew + horserace", 2, "CLICK WITH TOUCH SCROLL THROW IT");
     }
-    aokk.b(this.jdField_a_of_type_Aokk, 11, 8);
-    aokk.c(this.jdField_a_of_type_Aokk, 11, 8);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateSenderCancelSend)");
-    this.jdField_a_of_type_Aoko = new aoll(this.jdField_a_of_type_Aokk);
+    do
+    {
+      return;
+      paramView = paramView.getTag();
+    } while ((paramView == null) || (!(paramView instanceof aolq)) || (HorseRaceLampVew.a(this.a.this$0) == null));
+    paramView = (aolq)paramView;
+    HorseRaceLampVew.a(this.a.this$0).a(paramView.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoln
  * JD-Core Version:    0.7.0.1
  */

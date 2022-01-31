@@ -1,258 +1,175 @@
-import android.media.MediaPlayer.OnCompletionListener;
-import android.text.TextUtils;
-import android.widget.Button;
-import com.tencent.av.VideoController;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.view.Display;
+import android.view.WindowManager;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioSession;
-import java.util.Arrays;
-import java.util.List;
-import mqq.util.WeakReference;
 
-class mjc
-  implements bedo
+public class mjc
+  extends miw
 {
-  mjc(miu parammiu) {}
+  protected Display a;
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  protected mjc(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
-    if (paramInt1 != 0) {}
-    while (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {
+    super(paramContext, paramVideoAppInterface);
+    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public void a(lgf paramlgf, mee[] paramArrayOfmee, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4)
+  {
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
       return;
     }
-    this.a.jdField_a_of_type_Int = paramInt2;
-    this.a.jdField_a_of_type_ComTencentAvVideoController.a().z = paramInt2;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TraeSessionHelper", 2, "onGetConnectedDeviceRes err is: " + paramInt + " device name is: " + paramString);
-    }
-    if (miu.a(this.a) != null) {
-      miu.a(this.a).a(paramString);
-    }
-  }
-  
-  public void a(int paramInt, String paramString, boolean paramBoolean)
-  {
-    long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.w("TraeSessionHelper", 1, "onConnectDeviceRes, err[" + paramInt + "], strDeviceName[" + paramString + "], bIsConnected[" + paramBoolean + "], seq[" + l + "]");
-    }
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentAvVideoController == null)) {}
-    do
+    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298950);
+    if (paramInt4 != 0) {}
+    for (paramInt3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298951);; paramInt3 = i)
     {
-      return;
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().c != 3) {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().a("onConnectDeviceRes", paramString);
-      }
-      this.a.a();
-    } while (this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession == null);
-    this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.b(l);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
-  {
-    int i = 0;
-    if (paramInt != 0) {}
-    for (;;)
-    {
-      return;
-      if (QLog.isColorLevel())
+      int k = (paramInt1 - i * 2) / 4;
+      int j = paramInt2 - k - paramInt3 - paramInt4;
+      paramInt3 = paramInt2 - paramInt3 - paramInt4;
+      if (paramBoolean)
       {
-        paramString2 = new StringBuilder();
-        paramInt = 0;
-        while (paramInt < paramArrayOfString.length)
-        {
-          paramString2.append(paramArrayOfString[paramInt]).append(" ");
-          paramInt += 1;
+        paramInt1 = paramArrayOfmee[1].b().left;
+        paramInt2 = paramArrayOfmee[1].b().right;
+        paramArrayOfmee[1].b(paramInt1, j, paramInt2, paramInt3);
+        if (!paramBoolean) {
+          break label320;
         }
-        QLog.d("TraeSessionHelper", 2, "onGetDeviceListRes strDeviceList: " + paramString2.toString());
+        paramInt2 = paramArrayOfmee[2].b().left;
+        paramInt1 = paramArrayOfmee[2].b().right;
+        label139:
+        paramArrayOfmee[2].b(paramInt2, j, paramInt1, paramInt3);
+        if (!paramBoolean) {
+          break label329;
+        }
+        paramInt1 = paramArrayOfmee[3].b().left;
+        paramInt2 = paramArrayOfmee[3].b().right;
+        label178:
+        paramArrayOfmee[3].b(paramInt1, j, paramInt2, paramInt3);
+        if (!paramBoolean) {
+          break label338;
+        }
+        paramInt2 = paramArrayOfmee[4].b().left;
+        paramInt1 = paramArrayOfmee[4].b().right;
       }
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
+      for (;;)
       {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().a = paramArrayOfString;
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().a("onGetDeviceListRes", paramString1);
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().q = paramString3;
-        miu.a(this.a, paramArrayOfString);
-        if (paramArrayOfString != null)
-        {
-          paramInt = i;
-          while (paramInt < paramArrayOfString.length)
-          {
-            if (paramArrayOfString[paramInt].equals("DEVICE_WIREDHEADSET")) {
-              mga.k(this.a.jdField_a_of_type_ComTencentAvVideoController);
-            }
-            paramInt += 1;
-          }
-        }
+        paramArrayOfmee[4].b(paramInt2, j, paramInt1, paramInt3);
+        paramArrayOfmee[1].d(-15197410);
+        paramArrayOfmee[2].d(-15197410);
+        paramArrayOfmee[3].d(-15197410);
+        paramArrayOfmee[4].d(-15197410);
+        paramArrayOfmee[1].a(2, 3, 3, 3);
+        paramArrayOfmee[2].a(2, 3, 2, 3);
+        paramArrayOfmee[3].a(2, 3, 2, 3);
+        paramArrayOfmee[4].a(3, 3, 2, 3);
+        return;
+        paramInt2 = paramInt1 - i;
+        paramInt1 = paramInt1 - k - i;
+        break;
+        label320:
+        paramInt2 = paramInt1 - k;
+        break label139;
+        label329:
+        paramInt1 = paramInt2 - k;
+        break label178;
+        label338:
+        paramInt2 = paramInt1 - k;
       }
     }
   }
   
-  public void a(long paramLong, int paramInt)
+  public void a(mee[] paramArrayOfmee, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Int = paramInt;
-    this.a.jdField_a_of_type_ComTencentAvVideoController.a().z = paramInt;
+    int n = 0;
     if (QLog.isColorLevel()) {
-      QLog.w("TraeSessionHelper", 1, "onStreamTypeUpdate, streamType[" + paramInt + "], seq[" + paramLong + "]");
+      QLog.d("ScreenLayoutSmallUIOrigin", 2, "setSmallVideoViewLayout position: " + paramInt1);
     }
-    this.a.a(paramLong, this.a.jdField_a_of_type_ComTencentAvVideoController.a());
-  }
-  
-  public void a(long paramLong, int paramInt, String paramString)
-  {
-    MediaPlayer.OnCompletionListener localOnCompletionListener = this.a.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener;
-    this.a.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener = null;
-    QLog.w("TraeSessionHelper", 1, "onRingCompletion, err[" + paramInt + "], userData[" + paramString + "], mRingComListener[" + localOnCompletionListener + "], seq[" + paramLong + "]");
-    if (localOnCompletionListener != null) {
-      localOnCompletionListener.onCompletion(null);
-    }
-  }
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)))
+    if (this.jdField_a_of_type_AndroidContentContext == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.w("TraeSessionHelper", 1, "ConnectDeviceWhenServiceOn, deviceName[" + this.a.jdField_b_of_type_JavaLangString + "], seq[" + paramLong + "]");
+        QLog.d("ScreenLayoutSmallUIOrigin", 2, "setSmallVideoViewLayout mContext == null");
       }
-      this.a.a(paramLong, this.a.jdField_b_of_type_JavaLangString);
+      return;
     }
-  }
-  
-  public void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
-  {
-    int j = 0;
-    Object localObject;
+    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298952);
+    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298949);
+    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298950);
+    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298951);
+    int m;
+    int k;
     int i;
-    if (QLog.isColorLevel())
+    int j;
+    if (this.jdField_a_of_type_AndroidViewDisplay.getRotation() % 2 == 0)
     {
-      localObject = new StringBuilder();
-      i = 0;
-      while (i < paramArrayOfString.length)
-      {
-        ((StringBuilder)localObject).append(paramArrayOfString[i]).append(" ");
-        i += 1;
+      m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297741);
+      k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297738);
+      i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297739);
+      j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297740);
+      if (paramInt5 != 0) {
+        break label450;
       }
-      QLog.w("TraeSessionHelper", 1, "onDeviceListUpdate, strConnectedDeviceName[" + paramString1 + "], strPrevConnectedDeviceName[" + paramString2 + "], bluetoothName[" + paramString3 + "], strDeviceList[" + ((StringBuilder)localObject).toString() + "], seq[" + paramLong + "]");
+      j = i;
     }
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {}
-    label371:
-    do
+    label450:
+    for (;;)
     {
-      do
+      switch (paramInt1)
       {
-        return;
-        paramString2 = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
-        localObject = paramString2.a;
-        if (paramString2.c != 3) {
-          paramString2.a("onDeviceListUpdate", paramString1);
-        }
-        paramString2.a = paramArrayOfString;
-        paramString2.q = paramString3;
-        miu.a(this.a, paramArrayOfString);
-        if (miu.a(this.a) != null) {
-          miu.a(this.a).notifyDataSetChanged();
-        }
-        this.a.a();
-        if ((this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession != null) && (localObject != null) && (paramArrayOfString != null))
-        {
-          paramString2 = Arrays.asList((Object[])localObject);
-          paramString3 = Arrays.asList(paramArrayOfString);
-          if ((paramString3.contains("DEVICE_BLUETOOTHHEADSET")) && (paramString3.contains("DEVICE_WIREDHEADSET")))
-          {
-            if ((!paramString2.contains("DEVICE_BLUETOOTHHEADSET")) || (paramString2.contains("DEVICE_WIREDHEADSET"))) {
-              break label371;
-            }
-            if ("DEVICE_BLUETOOTHHEADSET".equals(paramString1)) {
-              this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.a(paramLong, "DEVICE_WIREDHEADSET");
-            }
-          }
-        }
-        while (paramArrayOfString != null)
-        {
-          i = j;
-          while (i < paramArrayOfString.length)
-          {
-            if (paramArrayOfString[i].equals("DEVICE_WIREDHEADSET")) {
-              mga.k(this.a.jdField_a_of_type_ComTencentAvVideoController);
-            }
-            i += 1;
-          }
-          if ((!paramString2.contains("DEVICE_BLUETOOTHHEADSET")) && (paramString2.contains("DEVICE_WIREDHEADSET")) && ("DEVICE_WIREDHEADSET".equals(paramString1))) {
-            this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.a(paramLong, "DEVICE_BLUETOOTHHEADSET");
-          }
-        }
-        if (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().s.equals("DEVICE_NONE"))
-        {
-          if (!paramString1.equals(this.a.jdField_a_of_type_ComTencentAvVideoController.a().s)) {
-            this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.a(paramLong, this.a.jdField_a_of_type_ComTencentAvVideoController.a().s);
-          }
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a().s = "DEVICE_NONE";
-        }
-      } while (miu.a(this.a) == null);
-      miu.a(this.a).a(null, new mja(paramArrayOfString));
-    } while (this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession == null);
-    this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.b(paramLong);
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TraeSessionHelper", 2, "onBeginConnectDevice connectedDev: " + paramString);
-    }
-    if ("DEVICE_BLUETOOTHHEADSET".equals(paramString)) {
-      lqb.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 3012);
-    }
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TraeSessionHelper", 2, "onAudioRouteSwitchEnd connectedDev: " + paramString + " timsMs: " + paramLong);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TraeSessionHelper", 2, "onAudioRoteSwitchStart fromDev: " + paramString1 + " toDev: " + paramString2);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {}
-    Button localButton;
-    do
-    {
-      int i;
-      do
+      default: 
+        paramInt2 = 0;
+        paramInt3 = 0;
+        i = 0;
+        paramInt1 = n;
+      }
+      for (;;)
       {
+        paramArrayOfmee[1].b(i, paramInt3, paramInt2, paramInt1);
+        ljo.a("setSmallVideoViewLayout " + m + "|" + k);
         return;
-        i = this.a.jdField_a_of_type_ComTencentAvVideoController.a().d;
-      } while (((i == 1) || (i == 2)) && ((!this.a.jdField_a_of_type_ComTencentAvVideoController.d()) || (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().j()) || (this.a.jdField_b_of_type_MqqUtilWeakReference == null)));
-      localButton = (Button)this.a.jdField_b_of_type_MqqUtilWeakReference.get();
-    } while ((localButton == null) || (paramBoolean == localButton.isClickable()));
-    localButton.setClickable(paramBoolean);
+        m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297738);
+        k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297741);
+        i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297740);
+        j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297739);
+        break;
+        paramInt2 = i + m;
+        paramInt3 = j + paramInt4;
+        paramInt1 = paramInt3 + k;
+        continue;
+        i = paramInt2 - m - i;
+        paramInt2 = i + m;
+        paramInt3 = j + paramInt4;
+        paramInt1 = paramInt3 + k;
+        continue;
+        paramInt2 = i + m;
+        paramInt3 = paramInt3 - k - j - paramInt5;
+        paramInt1 = paramInt3 + k;
+        continue;
+        i = paramInt2 - m - i;
+        paramInt3 = paramInt3 - k - j - paramInt5;
+        paramInt2 = i + m;
+        paramInt1 = paramInt3 + k;
+      }
+    }
   }
   
-  public void b(int paramInt, String paramString)
+  public void a(mee[] paramArrayOfmee, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TraeSessionHelper", 2, "onGetConnectingDeviceRes strDeviceName: " + paramString);
-    }
+    paramArrayOfmee[1].a(3, 3, 3, 3);
+    paramArrayOfmee[1].d(-15197410);
+    a(paramArrayOfmee, paramInt3, paramInt1, paramInt2, paramInt4, paramInt5);
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

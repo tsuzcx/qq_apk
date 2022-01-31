@@ -2,16 +2,17 @@ package com.tencent.mobileqq.triton.utils;
 
 public class FpsStabilizer
 {
-  private volatile long mAccumulateStartTime = -1000L;
+  private static final long ONE_SECOND_IN_NANOS = 1000000000L;
+  private volatile long mAccumulateStartTimeNanos = -1000L;
   private int mAccumulatedFrames = 0;
-  private volatile double mFpsInterval = 0.0D;
+  private volatile double mFpsIntervalNanos = 0.0D;
   
   public void setTargetFps(float paramFloat)
   {
     if (paramFloat <= 0.0F) {}
-    for (this.mFpsInterval = 0.0D;; this.mFpsInterval = (1000.0F / (1.1F * paramFloat)))
+    for (this.mFpsIntervalNanos = 0.0D;; this.mFpsIntervalNanos = (1000000000.0D / (paramFloat * 1.0D)))
     {
-      this.mAccumulateStartTime = 0L;
+      this.mAccumulateStartTimeNanos = 0L;
       return;
     }
   }
@@ -20,20 +21,20 @@ public class FpsStabilizer
   {
     boolean bool1 = true;
     boolean bool2 = true;
-    if (this.mFpsInterval == 0.0D) {
+    if (this.mFpsIntervalNanos == 0.0D) {
       return bool2;
     }
-    long l = paramLong - this.mAccumulateStartTime;
-    if (l / this.mFpsInterval > this.mAccumulatedFrames) {
+    long l = paramLong - this.mAccumulateStartTimeNanos;
+    if (l / this.mFpsIntervalNanos > this.mAccumulatedFrames) {
       this.mAccumulatedFrames += 1;
     }
     for (;;)
     {
       bool2 = bool1;
-      if (l <= 1000L) {
+      if (l <= 1000000000L) {
         break;
       }
-      this.mAccumulateStartTime = paramLong;
+      this.mAccumulateStartTimeNanos = paramLong;
       this.mAccumulatedFrames = 0;
       return bool1;
       bool1 = false;

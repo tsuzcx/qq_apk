@@ -1,31 +1,25 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+
 class aofx
+  implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int;
-  private aofr jdField_a_of_type_Aofr;
+  aofx(aofw paramaofw) {}
   
-  public aofx(aofv paramaofv, aofr paramaofr)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Aofr = paramaofr;
+    this.a.a.g.setVisibility(8);
+    this.a.a.a = false;
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public aofr a()
-  {
-    return this.jdField_a_of_type_Aofr;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aofx
  * JD-Core Version:    0.7.0.1
  */

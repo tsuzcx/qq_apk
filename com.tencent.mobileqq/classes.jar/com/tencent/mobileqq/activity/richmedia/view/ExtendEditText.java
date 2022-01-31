@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import aciy;
-import ahob;
-import ahoc;
-import ahoe;
-import ahof;
-import ahog;
-import ahoh;
-import ahou;
+import actn;
+import aiat;
+import aiau;
+import aiaw;
+import aiax;
+import aiay;
+import aiaz;
+import aibm;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -37,11 +37,11 @@ import java.util.ArrayList;
 public class ExtendEditText
   extends EditText
 {
-  public static final ahoe a;
-  private static final ahoe c;
+  public static final aiaw a;
+  private static final aiaw c;
   protected int a;
-  private ahog jdField_a_of_type_Ahog;
-  protected ahou a;
+  private aiay jdField_a_of_type_Aiay;
+  protected aibm a;
   private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
   protected LinearGradient a;
   protected GradientDrawable.Orientation a;
@@ -51,15 +51,15 @@ public class ExtendEditText
   protected float[] a;
   protected int[] a;
   int jdField_b_of_type_Int = -1;
-  private ahoe jdField_b_of_type_Ahoe;
+  private aiaw jdField_b_of_type_Aiaw;
   protected int c;
   private int d = 4;
   private int e;
   
   static
   {
-    jdField_c_of_type_Ahoe = new ahob();
-    jdField_a_of_type_Ahoe = new ahoc();
+    jdField_c_of_type_Aiaw = new aiat();
+    jdField_a_of_type_Aiaw = new aiau();
   }
   
   public ExtendEditText(Context paramContext)
@@ -84,10 +84,10 @@ public class ExtendEditText
     d();
   }
   
-  private void a(ahoh paramahoh)
+  private void a(aiaz paramaiaz)
   {
     int j = 0;
-    if (paramahoh == null)
+    if (paramaiaz == null)
     {
       if (this.jdField_a_of_type_AndroidContentResColorStateList != null)
       {
@@ -103,31 +103,31 @@ public class ExtendEditText
       this.jdField_a_of_type_AndroidContentResColorStateList = getTextColors();
     }
     int i;
-    if ((paramahoh.jdField_a_of_type_Long & 1L) != 0L)
+    if ((paramaiaz.jdField_a_of_type_Long & 1L) != 0L)
     {
-      i = ahoh.a(paramahoh.jdField_e_of_type_JavaLangString);
+      i = aiaz.a(paramaiaz.jdField_e_of_type_JavaLangString);
       setTextColor(i);
       setHintTextColor(i);
-      if ((paramahoh.jdField_a_of_type_Long & 0x2) == 0L) {
+      if ((paramaiaz.jdField_a_of_type_Long & 0x2) == 0L) {
         break label271;
       }
-      setShadowLayer(aciy.a(paramahoh.d, getResources()), aciy.a(paramahoh.jdField_b_of_type_Int, getResources()), aciy.a(paramahoh.jdField_c_of_type_Int, getResources()), ahoh.a(paramahoh.jdField_f_of_type_JavaLangString));
+      setShadowLayer(actn.a(paramaiaz.d, getResources()), actn.a(paramaiaz.jdField_b_of_type_Int, getResources()), actn.a(paramaiaz.jdField_c_of_type_Int, getResources()), aiaz.a(paramaiaz.jdField_f_of_type_JavaLangString));
     }
     label158:
     Object localObject;
     int k;
     for (;;)
     {
-      if (((paramahoh.jdField_a_of_type_Long & 0x8) != 0L) && (paramahoh.jdField_c_of_type_JavaUtilArrayList != null) && (paramahoh.jdField_c_of_type_JavaUtilArrayList.size() >= 2))
+      if (((paramaiaz.jdField_a_of_type_Long & 0x8) != 0L) && (paramaiaz.jdField_c_of_type_JavaUtilArrayList != null) && (paramaiaz.jdField_c_of_type_JavaUtilArrayList.size() >= 2))
       {
-        localObject = new ArrayList(paramahoh.jdField_c_of_type_JavaUtilArrayList.size());
-        k = paramahoh.jdField_c_of_type_JavaUtilArrayList.size();
+        localObject = new ArrayList(paramaiaz.jdField_c_of_type_JavaUtilArrayList.size());
+        k = paramaiaz.jdField_c_of_type_JavaUtilArrayList.size();
         i = 0;
         for (;;)
         {
           if (i < k)
           {
-            ((ArrayList)localObject).add(Integer.valueOf(ahoh.a((String)paramahoh.jdField_c_of_type_JavaUtilArrayList.get(i))));
+            ((ArrayList)localObject).add(Integer.valueOf(aiaz.a((String)paramaiaz.jdField_c_of_type_JavaUtilArrayList.get(i))));
             i += 1;
             continue;
             setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
@@ -138,50 +138,50 @@ public class ExtendEditText
             break label158;
           }
         }
-        setTextColorAnimation((ArrayList)localObject, paramahoh.jdField_f_of_type_Int * (k - 1));
+        setTextColorAnimation((ArrayList)localObject, paramaiaz.jdField_f_of_type_Int * (k - 1));
       }
     }
-    while (((paramahoh.jdField_a_of_type_Long & 0x4) != 0L) && (paramahoh.jdField_a_of_type_JavaUtilArrayList != null) && (paramahoh.jdField_a_of_type_JavaUtilArrayList.size() >= 2) && (paramahoh.jdField_b_of_type_JavaUtilArrayList != null) && (paramahoh.jdField_b_of_type_JavaUtilArrayList.size() >= 2))
+    while (((paramaiaz.jdField_a_of_type_Long & 0x4) != 0L) && (paramaiaz.jdField_a_of_type_JavaUtilArrayList != null) && (paramaiaz.jdField_a_of_type_JavaUtilArrayList.size() >= 2) && (paramaiaz.jdField_b_of_type_JavaUtilArrayList != null) && (paramaiaz.jdField_b_of_type_JavaUtilArrayList.size() >= 2))
     {
-      k = paramahoh.jdField_a_of_type_JavaUtilArrayList.size();
+      k = paramaiaz.jdField_a_of_type_JavaUtilArrayList.size();
       localObject = new int[k];
       i = 0;
       for (;;)
       {
         if (i < k)
         {
-          localObject[i] = ahoh.a((String)paramahoh.jdField_a_of_type_JavaUtilArrayList.get(i));
+          localObject[i] = aiaz.a((String)paramaiaz.jdField_a_of_type_JavaUtilArrayList.get(i));
           i += 1;
           continue;
           setTextColorAnimation(null, 0);
           break;
         }
       }
-      k = paramahoh.jdField_b_of_type_JavaUtilArrayList.size();
+      k = paramaiaz.jdField_b_of_type_JavaUtilArrayList.size();
       float[] arrayOfFloat = new float[k];
       i = j;
       while (i < k)
       {
-        arrayOfFloat[i] = ((Double)paramahoh.jdField_b_of_type_JavaUtilArrayList.get(i)).floatValue();
+        arrayOfFloat[i] = ((Double)paramaiaz.jdField_b_of_type_JavaUtilArrayList.get(i)).floatValue();
         i += 1;
       }
       GradientDrawable.Orientation localOrientation = GradientDrawable.Orientation.LEFT_RIGHT;
-      switch (paramahoh.jdField_e_of_type_Int)
+      switch (paramaiaz.jdField_e_of_type_Int)
       {
       default: 
-        paramahoh = GradientDrawable.Orientation.LEFT_RIGHT;
+        paramaiaz = GradientDrawable.Orientation.LEFT_RIGHT;
       }
       for (;;)
       {
-        setGradientColor((int[])localObject, arrayOfFloat, paramahoh);
+        setGradientColor((int[])localObject, arrayOfFloat, paramaiaz);
         return;
-        paramahoh = GradientDrawable.Orientation.LEFT_RIGHT;
+        paramaiaz = GradientDrawable.Orientation.LEFT_RIGHT;
         continue;
-        paramahoh = GradientDrawable.Orientation.BL_TR;
+        paramaiaz = GradientDrawable.Orientation.BL_TR;
         continue;
-        paramahoh = GradientDrawable.Orientation.TOP_BOTTOM;
+        paramaiaz = GradientDrawable.Orientation.TOP_BOTTOM;
         continue;
-        paramahoh = GradientDrawable.Orientation.TL_BR;
+        paramaiaz = GradientDrawable.Orientation.TL_BR;
       }
     }
     setGradientColor(null, null, null);
@@ -231,7 +231,7 @@ public class ExtendEditText
   private void d()
   {
     if (this.jdField_b_of_type_Int >= 0) {
-      setFilters(new InputFilter[] { new ahof(this, this.jdField_b_of_type_Int) });
+      setFilters(new InputFilter[] { new aiax(this, this.jdField_b_of_type_Int) });
     }
   }
   
@@ -250,7 +250,7 @@ public class ExtendEditText
     float f2;
     float f3;
     float f4;
-    switch (ahod.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable$Orientation.ordinal()])
+    switch (aiav.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable$Orientation.ordinal()])
     {
     default: 
       f1 = localRect.left;
@@ -415,10 +415,10 @@ public class ExtendEditText
   protected void onDraw(Canvas paramCanvas)
   {
     TextPaint localTextPaint = getPaint();
-    if (this.jdField_a_of_type_Ahou != null)
+    if (this.jdField_a_of_type_Aibm != null)
     {
-      boolean bool = this.jdField_a_of_type_Ahou.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
-      int i = this.jdField_a_of_type_Ahou.a();
+      boolean bool = this.jdField_a_of_type_Aibm.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
+      int i = this.jdField_a_of_type_Aibm.a();
       setTextColor(i);
       setHintTextColor(i);
       if (bool) {
@@ -508,33 +508,33 @@ public class ExtendEditText
     }
   }
   
-  public void setLimitListener(ahog paramahog)
+  public void setLimitListener(aiay paramaiay)
   {
-    this.jdField_a_of_type_Ahog = paramahog;
+    this.jdField_a_of_type_Aiay = paramaiay;
   }
   
-  public void setMaxLengthConvertor(ahoe paramahoe)
+  public void setMaxLengthConvertor(aiaw paramaiaw)
   {
-    this.jdField_b_of_type_Ahoe = paramahoe;
+    this.jdField_b_of_type_Aiaw = paramaiaw;
   }
   
   public void setTextColorAnimation(ArrayList<Integer> paramArrayList, int paramInt)
   {
-    if (this.jdField_a_of_type_Ahou != null) {
-      this.jdField_a_of_type_Ahou.cancel();
+    if (this.jdField_a_of_type_Aibm != null) {
+      this.jdField_a_of_type_Aibm.cancel();
     }
     if ((paramArrayList == null) || (paramArrayList.size() < 2) || (paramInt == 0))
     {
-      this.jdField_a_of_type_Ahou = null;
+      this.jdField_a_of_type_Aibm = null;
       return;
     }
-    this.jdField_a_of_type_Ahou = new ahou(paramArrayList);
-    this.jdField_a_of_type_Ahou.setFillAfter(true);
-    this.jdField_a_of_type_Ahou.setRepeatCount(-1);
-    this.jdField_a_of_type_Ahou.setRepeatMode(2);
-    this.jdField_a_of_type_Ahou.setInterpolator(new LinearInterpolator());
-    this.jdField_a_of_type_Ahou.setDuration(paramInt);
-    this.jdField_a_of_type_Ahou.setStartTime(0L);
+    this.jdField_a_of_type_Aibm = new aibm(paramArrayList);
+    this.jdField_a_of_type_Aibm.setFillAfter(true);
+    this.jdField_a_of_type_Aibm.setRepeatCount(-1);
+    this.jdField_a_of_type_Aibm.setRepeatMode(2);
+    this.jdField_a_of_type_Aibm.setInterpolator(new LinearInterpolator());
+    this.jdField_a_of_type_Aibm.setDuration(paramInt);
+    this.jdField_a_of_type_Aibm.setStartTime(0L);
   }
   
   public void setTextEffect(String paramString)
@@ -544,7 +544,7 @@ public class ExtendEditText
       a(null);
       return;
     }
-    a(ahoh.a(paramString));
+    a(aiaz.a(paramString));
   }
 }
 

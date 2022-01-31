@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
-import ajtb;
+import akhl;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.mobileqq.intervideo.groupvideo.plugininterface.IVHostCallback;
@@ -35,7 +35,7 @@ public class IVCommonInterfaceImpl
   
   public Future<Bundle> getLocation(String paramString)
   {
-    return ajtb.a(16).submit(new IVCommonInterfaceImpl.1(this, paramString));
+    return akhl.a(16).submit(new IVCommonInterfaceImpl.1(this, paramString));
   }
   
   public void onHostActivityBackPress()

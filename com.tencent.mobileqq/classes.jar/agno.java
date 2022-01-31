@@ -1,28 +1,31 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
-public class agno
-  implements View.OnClickListener
+class agno
+  implements agmj
 {
-  public agno(SendHbMainFragment paramSendHbMainFragment, JSONObject paramJSONObject) {}
+  agno(agnn paramagnn, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    if (bfod.a()) {}
-    do
+    if (bkpe.a(this.jdField_a_of_type_Agnn.a, paramLocalMediaInfo))
     {
+      if (PhotoListActivity.l(this.jdField_a_of_type_Agnn.a))
+      {
+        PhotoListActivity.a(this.jdField_a_of_type_Agnn.a, paramLocalMediaInfo);
+        xhe.a("mystatus_localupload", "pic_select", 0, 0, new String[0]);
+        return;
+      }
+      this.jdField_a_of_type_Agnn.a.f();
+      this.jdField_a_of_type_Agnn.a.a(paramLocalMediaInfo, this.jdField_a_of_type_Int);
       return;
-      paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-    } while (TextUtils.isEmpty(paramView));
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentSendHbMainFragment.openUrl(paramView);
+    }
+    this.jdField_a_of_type_Agnn.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agno
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,59 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.pts.nativemodule.IPTSLoadDailyDBArticles;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class ped
-  implements IPTSLoadDailyDBArticles
 {
-  private final String jdField_a_of_type_JavaLangString = "PTSLoadDailyDBArticlesModule";
-  private pdm jdField_a_of_type_Pdm = new pee(this);
-  
-  public ped()
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    pdl.a().a(this.jdField_a_of_type_Pdm);
-  }
-  
-  public void loadDailyDBArticles(long paramLong1, long paramLong2)
-  {
-    ohd localohd = (ohd)((QQAppInterface)obz.a()).getManager(163);
-    if (localohd != null) {
-      localohd.a().a((int)paramLong1, 9223372036854775807L, true, paramLong2);
+    JSONObject localJSONObject1 = new JSONObject();
+    Object localObject = new JSONObject();
+    ((JSONObject)localObject).put("large_video_icon", "pa_video_play.png");
+    localJSONObject1.put("id_large_video_icon", localObject);
+    localObject = new JSONObject();
+    ((JSONObject)localObject).put("large_video_cover", "mengceng.png");
+    localJSONObject1.put("id_large_video_cover", localObject);
+    JSONObject localJSONObject2 = new JSONObject();
+    localObject = paramBaseArticleInfo.getVideoCoverUrlWithSmartCut(false);
+    if (localObject != null)
+    {
+      localObject = ((URL)localObject).getPath();
+      localJSONObject2.put("article_large_imge_url", localObject);
+      localJSONObject1.put("id_article_large_imge", localJSONObject2);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("large_video_duration", omu.a(paramBaseArticleInfo.mVideoDuration));
+      localJSONObject1.put("id_large_video_duration", localObject);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("video_play_icon", "small_video_play_icon");
+      localJSONObject1.put("id_video_play_icon", localObject);
+      localJSONObject1.put("id_video_paly_text", new JSONObject());
+      pen.a(paramBaseArticleInfo, localJSONObject1, true);
+      pen.Y(paramBaseArticleInfo, localJSONObject1);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label288;
+      }
+      pen.a(paramBaseArticleInfo, localJSONObject1);
+      pen.b(paramBaseArticleInfo, localJSONObject1);
+    }
+    for (;;)
+    {
+      pen.m(paramBaseArticleInfo, localJSONObject1);
+      pen.e(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("id_large_video_activity_wrapper", new JSONObject());
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("activity_img_path", "free_netflow_icon");
+      localJSONObject1.put("id_large_video_activity_img", localObject);
+      localJSONObject1.put("id_large_video_activity_label", new JSONObject());
+      localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
+      pen.f(paramBaseArticleInfo, localJSONObject1);
+      pen.a(localJSONObject1, paramBaseArticleInfo);
+      pen.ab(paramBaseArticleInfo, localJSONObject1);
+      return localJSONObject1;
+      localObject = null;
+      break;
+      label288:
+      pen.d(paramBaseArticleInfo, localJSONObject1);
     }
   }
 }

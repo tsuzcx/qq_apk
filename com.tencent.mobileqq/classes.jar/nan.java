@@ -1,20 +1,23 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import org.apache.http.conn.ssl.AbstractVerifier;
 
-class nan
-  implements View.OnClickListener
+final class nan
+  extends AbstractVerifier
 {
-  nan(nak paramnak) {}
+  nan(String paramString) {}
   
-  public void onClick(View paramView)
+  public final String toString()
   {
-    this.a.a.dismiss();
+    return "CUSTOM_COMPATIBLE";
+  }
+  
+  public final void verify(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  {
+    verify(this.a, paramArrayOfString1, paramArrayOfString2, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     nan
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,20 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class acak
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public acak(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public acak(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.jdField_d_of_type_Boolean = true;
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.findViewById(2131302806));
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setText(ajjy.a(2131649846));
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new acal(this));
-    TroopMemberListActivity.a(this.a);
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

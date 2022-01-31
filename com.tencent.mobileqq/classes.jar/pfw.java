@@ -1,18 +1,44 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-class pfw
-  implements View.OnTouchListener
+public class pfw
+  implements phs
 {
-  pfw(pfu parampfu, LinearLayout paramLinearLayout) {}
+  private BaseTemplateFactory a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public pfw(VafContext paramVafContext)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+    this.a = paramVafContext.getTemplateFactory();
+  }
+  
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  {
+    if (this.a != null) {
+      return this.a.getTemplateBean(paramJSONObject);
     }
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return new pdp().N(paramBaseArticleInfo).C(paramBaseArticleInfo).a();
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pax parampax, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView().findViewBaseByName("id_proteus_collection_view");
+    if ((paramContainer instanceof pnr)) {
+      ((pnr)paramContainer).a(parampax);
+    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pax parampax, ViewBase paramViewBase)
+  {
     return false;
   }
 }

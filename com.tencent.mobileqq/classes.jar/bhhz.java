@@ -1,25 +1,73 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-class bhhz
-  implements DialogInterface.OnClickListener
+public abstract class bhhz
+  extends Binder
+  implements bhhy
 {
-  bhhz(bhhx parambhhx) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bhhz()
   {
-    this.a.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.b(false);
-    this.a.jdField_a_of_type_Bhdi.d(false);
-    this.a.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().onBackPressed();
-    auue.e();
-    auts.f();
+    attachInterface(this, "cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+  }
+  
+  public static bhhy a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+    if ((localIInterface != null) && ((localIInterface instanceof bhhy))) {
+      return (bhhy)localIInterface;
+    }
+    return new bhia(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      a(paramParcel1.readFloat());
+      paramParcel2.writeNoException();
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      c();
+      paramParcel2.writeNoException();
+      return true;
+    case 4: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      b();
+      paramParcel2.writeNoException();
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+    a(paramParcel1.readInt());
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhhz
  * JD-Core Version:    0.7.0.1
  */

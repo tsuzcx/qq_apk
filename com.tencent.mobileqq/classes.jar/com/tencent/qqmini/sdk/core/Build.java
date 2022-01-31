@@ -1,15 +1,12 @@
 package com.tencent.qqmini.sdk.core;
 
-import bdnq;
-
 public class Build
-  implements bdnq
 {
-  public static final String VersionName = "0.9.1_8c7fbc7_LOCAL";
+  public static final String VersionName = "1.1.0-SNAPSHOT_a3fef563_LOCAL";
   
   public String getVersionName()
   {
-    return "0.9.1_8c7fbc7_LOCAL";
+    return "1.1.0-SNAPSHOT_a3fef563_LOCAL";
   }
 }
 

@@ -1,51 +1,31 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.ChatFileSearchFragment;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.6.1;
+import java.util.Random;
 
 public class aooh
-  extends avkk<avon, avww>
+  implements View.OnClickListener
 {
-  public aooh(ListView paramListView, azwg paramazwg, List<avon> paramList, String paramString, QQAppInterface paramQQAppInterface)
+  public aooh(FilePreviewActivity paramFilePreviewActivity) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramazwg, paramList);
-    if (paramString == null) {
-      return;
-    }
-    if (paramString.size() == 1)
+    this.a.startTitleProgress();
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131695128);
+    this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
+    if (this.a.jdField_a_of_type_Apep != null)
     {
-      paramListView = (aoof)paramString.get(0);
-      if (paramListView.jdField_a_of_type_JavaUtilList.size() > 1)
-      {
-        paramazwg = new ArrayList();
-        paramList = paramListView.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramList.hasNext())
-        {
-          paramString = (FileManagerEntity)paramList.next();
-          paramQQAppInterface = new aoof();
-          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramListView.jdField_a_of_type_JavaLangString;
-          paramQQAppInterface.jdField_a_of_type_JavaUtilList.add(paramString);
-          paramazwg.add(paramQQAppInterface);
-        }
-        a(paramazwg);
-        return;
-      }
+      paramView = this.a.jdField_a_of_type_Apep;
+      paramView.a += 1;
     }
-    a(paramString);
-  }
-  
-  protected avri<avon, avww> a(int paramInt)
-  {
-    return new aooo(ChatFileSearchFragment.a(this.a));
-  }
-  
-  protected avwx a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new aooi(paramViewGroup);
+    int i = new Random(System.currentTimeMillis()).nextInt(1500);
+    new Handler().postDelayed(new FilePreviewActivity.6.1(this), i % 1001 + 500);
   }
 }
 

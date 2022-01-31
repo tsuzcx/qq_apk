@@ -1,28 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout;
+import android.view.animation.Interpolator;
 
 public class qqj
-  extends behh
+  implements Interpolator
 {
-  public qqj(ReadInJoyFlowLayout paramReadInJoyFlowLayout)
+  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    super(paramReadInJoyFlowLayout);
+    return -paramFloat3 * (float)Math.cos(paramFloat1 / paramFloat4 * 1.570796326794897D) + paramFloat3 + paramFloat2;
   }
   
-  public void a()
+  public float getInterpolation(float paramFloat)
   {
-    super.a();
-  }
-  
-  public void onChanged()
-  {
-    super.onChanged();
-    ReadInJoyFlowLayout.a(this.a);
-  }
-  
-  public void onInvalidated()
-  {
-    super.onInvalidated();
-    ReadInJoyFlowLayout.a(this.a);
+    return a(paramFloat, 0.0F, 1.0F, 1.0F);
   }
 }
 

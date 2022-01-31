@@ -1,19 +1,19 @@
 package com.dataline.activities;
 
 import android.content.Context;
-import by;
-import ew;
+import dr;
+import gp;
 
 final class LiteActivity$20
   implements Runnable
 {
-  LiteActivity$20(Context paramContext, String paramString, by paramby) {}
+  LiteActivity$20(Context paramContext, String paramString, dr paramdr) {}
   
   public void run()
   {
-    String str = ew.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_By != null) {
-      this.jdField_a_of_type_By.a(str);
+    String str = gp.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Dr != null) {
+      this.jdField_a_of_type_Dr.a(str);
     }
   }
 }

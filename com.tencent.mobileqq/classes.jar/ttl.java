@@ -1,87 +1,75 @@
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import java.util.Iterator;
-import java.util.Set;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class ttl
-  extends tnm
+public final class ttl
 {
-  public ttl(ttj paramttj) {}
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public static void a(Context paramContext)
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((tmd)localIterator.next()).a(paramInt1, paramInt2, paramIntent);
-      }
-    }
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://story.now.qq.com/mobile/qim/transfer.html?_wv=16777219");
+    paramContext.startActivity(localIntent);
   }
   
-  public void a(Bundle paramBundle1, Bundle paramBundle2)
+  public static void a(Context paramContext, String paramString)
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    if (a(paramContext, paramString))
     {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((tmd)localIterator.next()).a(paramBundle1, paramBundle2);
-      }
+      b(paramContext, paramString);
+      return;
     }
+    a(paramContext);
   }
   
-  public void c()
+  public static boolean a(Context paramContext, String paramString)
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    boolean bool = false;
+    PackageManager localPackageManager = paramContext.getPackageManager();
+    paramContext = null;
+    try
     {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((tmd)localIterator.next()).c();
+      paramString = localPackageManager.getPackageInfo(paramString, 0);
+      paramContext = paramString;
+    }
+    catch (PackageManager.NameNotFoundException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
       }
     }
-  }
-  
-  public void d()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((tmd)localIterator.next()).d();
-      }
+    if (paramContext != null) {
+      bool = true;
     }
+    return bool;
   }
   
-  public void e()
+  public static boolean a(Context paramContext, String paramString1, String paramString2)
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((tmd)localIterator.next()).e();
-      }
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return false;
     }
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", String.format("%s?tag_id=%s&tag_type=%s&_wv=3&_nav_alpha=0&_bid=2910", new Object[] { "http://story.now.qq.com/mobile/tag/index.html", String.valueOf(paramString1), String.valueOf(paramString2) }));
+    paramContext.startActivity(localIntent);
+    return true;
   }
   
-  public void f()
+  public static boolean a(Context paramContext, vvh paramvvh)
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((tmd)localIterator.next()).f();
-      }
+    if (paramvvh == null) {
+      return false;
     }
+    return a(paramContext, String.valueOf(paramvvh.jdField_a_of_type_Long), String.valueOf(paramvvh.jdField_a_of_type_Int));
   }
   
-  public void g()
+  public static void b(Context paramContext, String paramString)
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((tmd)localIterator.next()).g();
-      }
+    paramString = paramContext.getPackageManager().getLaunchIntentForPackage(paramString);
+    if (paramString != null) {
+      paramContext.startActivity(paramString);
     }
   }
 }

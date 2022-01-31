@@ -1,25 +1,11 @@
-import android.util.LruCache;
-import com.tencent.mobileqq.data.MessageForPoke;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
 
-class adff
-  extends LruCache<Long, MessageForPoke>
+public class adff
+  extends adfp
 {
-  adff(adfe paramadfe, int paramInt)
-  {
-    super(paramInt);
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong, MessageForPoke paramMessageForPoke1, MessageForPoke paramMessageForPoke2)
-  {
-    if ((paramMessageForPoke1 != null) && (!paramMessageForPoke1.isPlayed))
-    {
-      paramMessageForPoke1.setPlayed(this.a.b);
-      paramMessageForPoke1.mFrameState.a = false;
-      paramMessageForPoke1.mFrameState.c = true;
-      paramMessageForPoke1.mUnlimitedState.a = false;
-      paramMessageForPoke1.mUnlimitedState.b = true;
-    }
-  }
+  public ImageView a;
+  public ColorView a;
 }
 
 

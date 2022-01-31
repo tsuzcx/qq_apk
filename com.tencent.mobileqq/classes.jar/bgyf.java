@@ -1,30 +1,25 @@
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public abstract interface bgyf
+public class bgyf
 {
-  public abstract void a(VideoMaterial paramVideoMaterial);
+  private static bgyf a;
+  public String a;
+  public String b;
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
+  public static bgyf a()
+  {
+    if (jdField_a_of_type_Bgyf == null) {
+      jdField_a_of_type_Bgyf = new bgyf();
+    }
+    jdField_a_of_type_Bgyf.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    jdField_a_of_type_Bgyf.b = null;
+    return jdField_a_of_type_Bgyf;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgyf
  * JD-Core Version:    0.7.0.1
  */

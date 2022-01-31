@@ -1,25 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
-
 class axnk
-  implements Animation.AnimationListener
+  implements axnp
 {
-  axnk(axnj paramaxnj) {}
+  axnk(axnj paramaxnj, axnm paramaxnm, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(500);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setAnimationListener(new axnl(this));
-    this.a.d.startAnimation(paramAnimation);
+    if (this.jdField_a_of_type_Axnm != null) {
+      this.jdField_a_of_type_Axnm.a(axnj.a(this.jdField_a_of_type_Axnj, this.jdField_a_of_type_JavaLangString));
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

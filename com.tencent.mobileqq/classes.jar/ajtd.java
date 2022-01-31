@@ -1,192 +1,125 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.List;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class ajtd
+public abstract class ajtd
+  extends ajsy
 {
-  private static ajtd jdField_a_of_type_Ajtd;
-  private int jdField_a_of_type_Int = -2;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  public static final int MM_APPID = 1000277;
+  public final QQAppInterface app;
+  public final AppInterface mApp;
   
-  public static ajtd a()
+  protected ajtd(AppInterface paramAppInterface)
   {
+    if ((paramAppInterface instanceof QQAppInterface)) {}
+    for (this.app = ((QQAppInterface)paramAppInterface);; this.app = null)
+    {
+      this.mApp = paramAppInterface;
+      return;
+    }
+  }
+  
+  protected ajtd(QQAppInterface paramQQAppInterface)
+  {
+    this.app = paramQQAppInterface;
+    this.mApp = paramQQAppInterface;
+  }
+  
+  public static <T extends MessageMicro<T>> T decodeOidb(String paramString, byte[] paramArrayOfByte, Class<T> paramClass)
+  {
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
     try
     {
-      if (jdField_a_of_type_Ajtd == null) {
-        jdField_a_of_type_Ajtd = new ajtd();
+      paramArrayOfByte = (oidb_sso.OIDBSSOPkg)localOIDBSSOPkg.mergeFrom(paramArrayOfByte);
+      if ((!paramArrayOfByte.uint32_result.has()) || (paramArrayOfByte.uint32_result.get() != 0) || (!paramArrayOfByte.bytes_bodybuffer.has()) || (paramArrayOfByte.bytes_bodybuffer.get() == null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(paramString, 2, "sso check fail " + paramArrayOfByte.uint32_result.get());
+        }
+        return null;
       }
-      ajtd localajtd = jdField_a_of_type_Ajtd;
-      return localajtd;
     }
-    finally {}
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    Object localObject2 = DeviceProfileManager.a();
-    Object localObject1 = ((DeviceProfileManager)localObject2).a(DeviceProfileManager.DpcNames.qq_thread_config.name());
-    if (QLog.isColorLevel()) {
-      QLog.d("ThreadManager.Optimizer", 2, "config = " + (String)localObject1);
-    }
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      return;
-      try
-      {
-        localObject1 = ((String)localObject1).split("\\|");
-        if (localObject1.length >= 5)
-        {
-          float f = Float.parseFloat(localObject1[1]);
-          if (((DeviceProfileManager)localObject2).jdField_a_of_type_Int * 1.0F / 10000.0F < f)
-          {
-            this.jdField_a_of_type_Int = Integer.valueOf(localObject1[0]).intValue();
-            this.jdField_a_of_type_Boolean = "1".equals(localObject1[2]);
-            this.b = "1".equals(localObject1[3]);
-            this.c = "1".equals(localObject1[4]);
-            if (localObject1.length > 5)
-            {
-              localObject2 = new File(BaseApplicationImpl.getContext().getFilesDir(), "disableSmallLock");
-              if (!"1".equals(localObject1[5])) {
-                break label507;
-              }
-              if (((File)localObject2).exists()) {
-                ((File)localObject2).delete();
-              }
-            }
-            label204:
-            if (localObject1.length > 6)
-            {
-              if (!"1".equals(localObject1[6])) {
-                break label516;
-              }
-              com.tencent.common.config.AppSetting.e = true;
-            }
-            label229:
-            boolean bool1;
-            boolean bool2;
-            if (localObject1.length > 7)
-            {
-              localObject2 = BaseApplication.getContext().getSharedPreferences("mobileQQ", 4);
-              bool1 = ((SharedPreferences)localObject2).getBoolean("enableUpdateIconStep", false);
-              bool2 = "1".equals(localObject1[7]);
-              if (bool1 != bool2) {
-                ((SharedPreferences)localObject2).edit().putBoolean("enableUpdateIconStep", bool2).commit();
-              }
-            }
-            if (localObject1.length > 8)
-            {
-              localObject2 = BaseApplication.getContext().getSharedPreferences("mobileQQ", 4);
-              bool1 = ((SharedPreferences)localObject2).getBoolean("serializePreDownload", true);
-              bool2 = "1".equals(localObject1[8]);
-              if (bool1 != bool2) {
-                ((SharedPreferences)localObject2).edit().putBoolean("serializePreDownload", bool2).commit();
-              }
-            }
-            label373:
-            if (!this.b) {
-              if (!this.c) {
-                continue;
-              }
-            }
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e(paramString, 2, "merge fail " + paramArrayOfByte.toString());
       }
-      catch (Exception localException1)
-      {
-        try
-        {
-          localObject1 = Thread.currentThread().getThreadGroup();
-          localObject2 = new Thread[((ThreadGroup)localObject1).activeCount()];
-          ((ThreadGroup)localObject1).enumerate((Thread[])localObject2);
-          int j = localObject2.length;
-          label417:
-          if (i < j)
-          {
-            Object localObject3 = localObject2[i];
-            if (localObject3 != null)
-            {
-              if (localObject3.getName() == null) {
-                break label523;
-              }
-              localObject1 = localObject3.getName();
-              label448:
-              if ((!this.b) || (!"MSF-Receiver".equals(localObject1))) {
-                break label530;
-              }
-              localObject3.setPriority(1);
-            }
-            for (;;)
-            {
-              i += 1;
-              break label417;
-              this.jdField_a_of_type_Int = 0;
-              break;
-              localException1 = localException1;
-              if (!QLog.isColorLevel()) {
-                break label373;
-              }
-              QLog.d("ThreadManager.Optimizer", 2, "", localException1);
-              break label373;
-              label507:
-              ((File)localObject2).createNewFile();
-              break label204;
-              com.tencent.common.config.AppSetting.e = false;
-              break label229;
-              String str = "";
-              break label448;
-              if ((this.c) && (("logWriteThread".equals(str)) || (str.startsWith("GlobalPool")) || (str.startsWith("Face")) || (str.startsWith("um-stack")) || (str.startsWith("QQ_FTS")) || (str.startsWith("httpcomm")))) {
-                localObject3.setPriority(1);
-              }
-            }
-          }
-          label516:
-          label523:
-          label530:
-          if (!this.c) {}
-        }
-        catch (Exception localException2)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ThreadManager.Optimizer", 2, "", localException2);
-          }
-        }
-      }
+      return null;
     }
-    ThreadManager.getSubThread().setPriority(1);
-    ThreadManager.getFileThread().setPriority(1);
-    ThreadManager.getRecentThreadLooper().getThread().setPriority(1);
+    try
+    {
+      paramClass = (MessageMicro)paramClass.newInstance();
+      paramClass.mergeFrom(paramArrayOfByte.bytes_bodybuffer.get().toByteArray());
+      return paramClass;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(paramString, 2, "rspBody merge fail " + paramArrayOfByte.toString());
+      }
+      return null;
+    }
+    catch (Exception paramString) {}
+    return null;
   }
   
-  public boolean a()
+  protected void checkReportErrorToMM(FromServiceMsg paramFromServiceMsg)
   {
-    return this.jdField_a_of_type_Boolean;
+    if (reportErrorToMM(paramFromServiceMsg))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("msgCmdFilter", 2, "-->report MM:cmd=" + paramFromServiceMsg.getServiceCmd() + ",error code=" + paramFromServiceMsg.getBusinessFailCode() + ",uin=" + getCurrentAccountUin());
+      }
+      bded.a().a(paramFromServiceMsg.getServiceCmd(), 100, paramFromServiceMsg.getBusinessFailCode(), getCurrentAccountUin(), 1000277, ajyc.a(2131701254) + paramFromServiceMsg.getServiceCmd(), true);
+    }
   }
   
-  public boolean b()
+  public String getCurrentAccountUin()
   {
-    return this.b;
+    return this.mApp.getCurrentAccountUin();
   }
   
-  public boolean c()
+  public List<ajtg> getObservers(int paramInt)
   {
-    return this.c;
+    return this.mApp.getBusinessObserver(paramInt);
+  }
+  
+  protected final boolean isPbReq(ToServiceMsg paramToServiceMsg)
+  {
+    boolean bool = false;
+    if (paramToServiceMsg != null) {
+      bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
+    }
+    return bool;
+  }
+  
+  protected boolean reportErrorToMM(FromServiceMsg paramFromServiceMsg)
+  {
+    return (!paramFromServiceMsg.isSuccess()) && ((paramFromServiceMsg.getServiceCmd().equals("EncounterSvc.ReqGetEncounter")) || (paramFromServiceMsg.getServiceCmd().equals("RoamClientSvr.GetQualify")) || (paramFromServiceMsg.getServiceCmd().equals("NeighborSvc.ReqGetPoint")));
+  }
+  
+  public void send(ToServiceMsg paramToServiceMsg)
+  {
+    this.mApp.sendToService(paramToServiceMsg);
+  }
+  
+  public void sendPbReq(ToServiceMsg paramToServiceMsg)
+  {
+    if (paramToServiceMsg != null)
+    {
+      paramToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
+      this.mApp.sendToService(paramToServiceMsg);
+    }
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import rno;
+import saf;
 
 class ViolaBaseView$12
   implements Runnable
 {
-  ViolaBaseView$12(ViolaBaseView paramViolaBaseView, int paramInt) {}
+  ViolaBaseView$12(ViolaBaseView paramViolaBaseView) {}
   
   public void run()
   {
-    ViolaBaseView.a(this.this$0).b(this.a);
+    ViolaBaseView.a(this.this$0).a();
   }
 }
 

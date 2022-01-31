@@ -1,28 +1,14 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-
-public abstract class auqa
+public final class auqa
+  extends aupf
 {
-  protected static SparseArray<Class<?>> a = new SparseArray();
-  protected static SparseArray<Class<?>> b = new SparseArray();
-  
-  static
+  protected int c()
   {
-    a.put(1, auqc.class);
+    return 503;
   }
-  
-  public abstract int a();
-  
-  public void a(Bundle paramBundle)
-  {
-    paramBundle.putInt("redpoint.fromReceiverIPCCode", a());
-  }
-  
-  public void b(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     auqa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import aggf;
-import aghn;
+import agsb;
+import agtw;
 import android.app.Activity;
 import android.content.Intent;
-import awqx;
+import axqw;
 import mqq.util.WeakReference;
 
 public class PhotoListLogicDataline$1
   implements Runnable
 {
-  public PhotoListLogicDataline$1(aghn paramaghn, Intent paramIntent, int paramInt, String paramString1, String paramString2) {}
+  public PhotoListLogicDataline$1(agtw paramagtw, Intent paramIntent, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.this$0.a((Activity)this.this$0.a.get(), this.jdField_a_of_type_AndroidContentIntent, aghn.a(this.this$0).a);
-    awqx.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
-    aweg.b = System.currentTimeMillis();
+    this.this$0.a((Activity)this.this$0.a.get(), this.jdField_a_of_type_AndroidContentIntent, agtw.a(this.this$0).a);
+    axqw.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
+    axdo.b = System.currentTimeMillis();
   }
 }
 

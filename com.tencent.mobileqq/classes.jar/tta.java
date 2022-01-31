@@ -1,14 +1,37 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
-class tta
-  implements MediaPlayer.OnCompletionListener
+final class tta
+  implements bfoq
 {
-  tta(tsy paramtsy, tsq paramtsq) {}
+  tta(CommentEntry paramCommentEntry, bfol parambfol) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Tsq.a(this.jdField_a_of_type_Tsy);
+    switch (paramInt)
+    {
+    default: 
+      paramView = "16384";
+      QQUserUIItem localQQUserUIItem = ((tdo)tdc.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId);
+      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
+        new tky().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.content);
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      veg.d("Q.qqstory.player.PlayModeUtils", "report comment error because evil uin is empty.");
+    }
   }
 }
 

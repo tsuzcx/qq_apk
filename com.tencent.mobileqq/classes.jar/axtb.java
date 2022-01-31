@@ -1,32 +1,11 @@
-public class axtb
+class axtb
 {
-  public int a;
-  public axta a;
-  public axtc a;
-  public Object a;
+  public long a;
   public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public boolean b;
-  public int c = 3;
-  public int d = 25;
-  public int e = 450000;
+  public String b;
+  public String c;
   
-  public axtb()
-  {
-    this.jdField_a_of_type_Int = 480000;
-    this.jdField_b_of_type_Int = 9;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 30000;
-    this.jdField_b_of_type_Int = 1;
-    this.c = 1;
-  }
+  private axtb(axsz paramaxsz) {}
 }
 
 

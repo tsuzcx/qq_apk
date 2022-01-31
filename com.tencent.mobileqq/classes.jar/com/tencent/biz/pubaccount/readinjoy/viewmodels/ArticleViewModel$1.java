@@ -3,17 +3,17 @@ package com.tencent.biz.pubaccount.readinjoy.viewmodels;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import paz;
-import rix;
+import pmr;
+import rvn;
 
 public class ArticleViewModel$1
   implements Runnable
 {
-  public ArticleViewModel$1(rix paramrix) {}
+  public ArticleViewModel$1(rvn paramrvn) {}
   
   public void run()
   {
-    CharSequence localCharSequence = paz.a((ArticleInfo)rix.a(this.this$0));
+    CharSequence localCharSequence = pmr.a((ArticleInfo)rvn.a(this.this$0));
     ThreadManager.getUIHandler().post(new ArticleViewModel.1.1(this, localCharSequence));
   }
 }

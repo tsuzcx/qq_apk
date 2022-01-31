@@ -1,50 +1,21 @@
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.ttpic.baseutils.log.LogUtils;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import com.tencent.biz.subscribe.component.base.ComponentPageView;
 
-public final class wpl
+public class wpl
+  implements SwipeRefreshLayout.OnRefreshListener
 {
-  private static Pair<String, Long> a;
+  public wpl(ComponentPageView paramComponentPageView) {}
   
-  public static boolean a(@NonNull String paramString)
+  public void onRefresh()
   {
-    if ((a != null) && (TextUtils.equals(paramString, (CharSequence)a.first))) {}
-    long l;
-    for (Long localLong = (Long)a.second;; localLong = null)
-    {
-      l = SystemClock.elapsedRealtime();
-      if ((localLong == null) || (l - localLong.longValue() >= 1000L)) {
-        break;
-      }
-      LogUtils.w("FastClickUtils", "fast click ,tag  = " + paramString + ", intervalTime = " + (l - localLong.longValue()));
-      return true;
+    if (this.a.a != null) {
+      this.a.a.b();
     }
-    a = new Pair(paramString, Long.valueOf(l));
-    return false;
-  }
-  
-  public static boolean a(@NonNull String paramString, long paramLong)
-  {
-    if ((a != null) && (TextUtils.equals(paramString, (CharSequence)a.first))) {}
-    long l;
-    for (Long localLong = (Long)a.second;; localLong = null)
-    {
-      l = SystemClock.elapsedRealtime();
-      if ((localLong == null) || (l - localLong.longValue() >= paramLong)) {
-        break;
-      }
-      LogUtils.w("FastClickUtils", "fast click ,tag  = " + paramString + ", intervalTime = " + (l - localLong.longValue()));
-      return true;
-    }
-    a = new Pair(paramString, Long.valueOf(l));
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wpl
  * JD-Core Version:    0.7.0.1
  */

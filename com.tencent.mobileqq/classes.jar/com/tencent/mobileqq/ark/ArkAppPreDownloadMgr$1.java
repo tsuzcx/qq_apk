@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.ark;
 
-import aleu;
-import amas;
-import amax;
-import amay;
+import alti;
+import amql;
+import amqq;
+import amqr;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ArkAppPreDownloadMgr$1
   implements Runnable
 {
-  public ArkAppPreDownloadMgr$1(aleu paramaleu) {}
+  public ArkAppPreDownloadMgr$1(alti paramalti) {}
   
   public void run()
   {
-    amax localamax = amay.b(380).a();
-    if ((localamax == null) && (QLog.isColorLevel())) {
+    amqq localamqq = amqr.b(380).a();
+    if ((localamqq == null) && (QLog.isColorLevel())) {
       QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, "profiling get preload config from default");
     }
-    aleu.a(this.this$0).clear();
-    this.this$0.a(localamax);
-    aleu.a(this.this$0);
+    alti.a(this.this$0).clear();
+    this.this$0.a(localamqq);
+    alti.a(this.this$0);
     this.this$0.a();
   }
 }

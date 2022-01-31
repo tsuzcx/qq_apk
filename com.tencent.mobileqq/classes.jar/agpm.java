@@ -1,131 +1,188 @@
-import Wallet.DownloadReportReq;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class agpm
-  extends batl
 {
-  private boolean jdField_a_of_type_Boolean;
-  
-  public agpm(PreloadResource paramPreloadResource, int paramInt, WeakReference paramWeakReference, batl parambatl, long paramLong) {}
-  
-  public void onDoneFile(batm parambatm)
+  public static LocalMediaInfo a(Context paramContext, String paramString, boolean paramBoolean)
   {
-    Object localObject = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (PreloadManager.a((PreloadManager)localObject)) {
-      ((PreloadManager)localObject).c();
-    }
-    if (this.jdField_a_of_type_Batl != null) {
-      this.jdField_a_of_type_Batl.onDoneFile(parambatm);
-    }
-    localObject = new DownloadReportReq();
-    int i;
-    File localFile;
-    long l;
-    if (parambatm.jdField_a_of_type_Int == 0)
+    long l = System.currentTimeMillis();
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo.mMediaType = 0;
+    localLocalMediaInfo.path = paramString;
+    paramString = new BitmapFactory.Options();
+    paramString.inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(localLocalMediaInfo.path, paramString);
+    localLocalMediaInfo.mediaWidth = paramString.outWidth;
+    localLocalMediaInfo.mediaHeight = paramString.outHeight;
+    if (paramBoolean)
     {
-      ((DownloadReportReq)localObject).iType = 1;
-      int j = -1;
-      i = j;
-      if (parambatm.jdField_a_of_type_JavaUtilMap != null)
-      {
-        i = j;
-        if (!TextUtils.isEmpty(parambatm.jdField_a_of_type_JavaLangString))
-        {
-          localFile = (File)parambatm.jdField_a_of_type_JavaUtilMap.get(parambatm.jdField_a_of_type_JavaLangString);
-          if (localFile != null) {
-            break label242;
-          }
-          l = -2L;
-          label113:
-          i = (int)l;
-        }
+      localLocalMediaInfo.thumbWidth = 0;
+      localLocalMediaInfo.thumbHeight = ((int)paramContext.getResources().getDimension(2131296962));
+      if ((localLocalMediaInfo.mediaWidth > 0) && (localLocalMediaInfo.mediaHeight > 0)) {
+        agls.a(localLocalMediaInfo, localLocalMediaInfo.mediaWidth, localLocalMediaInfo.mediaHeight);
       }
     }
     for (;;)
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReplacePhotoDataUtil", 1, new Object[] { "convert to mediaInfo, cost:", Long.valueOf(System.currentTimeMillis() - l) });
+      }
+      return localLocalMediaInfo;
+      int i = ayon.a;
+      localLocalMediaInfo.thumbHeight = i;
+      localLocalMediaInfo.thumbWidth = i;
+    }
+  }
+  
+  public static LocalMediaInfo a(Map<LocalMediaInfo, LocalMediaInfo> paramMap, String paramString)
+  {
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      if (paramString.equals(((LocalMediaInfo)localEntry.getValue()).path)) {
+        return (LocalMediaInfo)localEntry.getKey();
+      }
+    }
+    return null;
+  }
+  
+  public static String a(Map<String, String> paramMap, String paramString)
+  {
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      if (paramString.equals(localEntry.getValue())) {
+        return (String)localEntry.getKey();
+      }
+    }
+    return null;
+  }
+  
+  public static HashMap<String, String> a(HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
+  {
+    HashMap localHashMap = new HashMap();
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramHashMap.next();
+      localHashMap.put(((LocalMediaInfo)localEntry.getKey()).path, ((LocalMediaInfo)localEntry.getValue()).path);
+    }
+    return localHashMap;
+  }
+  
+  public static void a(Context paramContext, Intent paramIntent, boolean paramBoolean, HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
+  {
+    Object localObject = paramHashMap;
+    if (paramHashMap == null) {
+      localObject = new HashMap();
+    }
+    paramIntent = (HashMap)paramIntent.getSerializableExtra("PhotoConst.editPathMap");
+    LocalMediaInfo localLocalMediaInfo;
+    if (paramIntent != null)
+    {
+      Iterator localIterator = paramIntent.entrySet().iterator();
+      if (localIterator.hasNext())
+      {
+        paramHashMap = (Map.Entry)localIterator.next();
+        paramIntent = a(paramContext, (String)paramHashMap.getKey(), paramBoolean);
+        localLocalMediaInfo = a(paramContext, (String)paramHashMap.getValue(), paramBoolean);
+        paramHashMap = a((Map)localObject, (String)paramHashMap.getKey());
+        if (paramHashMap == null) {
+          break label127;
+        }
+        paramIntent = paramHashMap;
+      }
+    }
+    label127:
+    for (;;)
+    {
+      ((HashMap)localObject).put(paramIntent, localLocalMediaInfo);
+      break;
+      return;
+    }
+  }
+  
+  public static void a(List<LocalMediaInfo> paramList, ArrayList<String> paramArrayList, HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
+  {
+    Iterator localIterator1 = paramHashMap.entrySet().iterator();
+    label183:
+    for (;;)
+    {
+      Map.Entry localEntry;
+      if (localIterator1.hasNext())
+      {
+        localEntry = (Map.Entry)localIterator1.next();
+        Iterator localIterator2 = paramList.iterator();
+        do
+        {
+          if (!localIterator2.hasNext()) {
+            break;
+          }
+          paramHashMap = (LocalMediaInfo)localIterator2.next();
+        } while (!paramHashMap.path.equals(((LocalMediaInfo)localEntry.getKey()).path));
+      }
       for (;;)
       {
-        ((DownloadReportReq)localObject).vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos(i);
-        ((DownloadReportReq)localObject).iUin = this.jdField_a_of_type_Long;
-        ((DownloadReportReq)localObject).sPhoneType = babp.i();
-        ((DownloadReportReq)localObject).sOsVersion = babp.e();
-        ((DownloadReportReq)localObject).sQQVersion = babp.c();
-        ((DownloadReportReq)localObject).iScene = parambatm.a().getInt("scene");
-        agkg.a((JceStruct)localObject, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down result:" + parambatm.jdField_a_of_type_Int + localObject);
+        if (paramHashMap == null) {
+          break label183;
         }
-        return;
-        ((DownloadReportReq)localObject).iType = 2;
+        int i = paramList.indexOf(paramHashMap);
+        paramList.remove(paramHashMap);
+        paramList.add(i, localEntry.getValue());
+        ((LocalMediaInfo)localEntry.getValue()).position = Integer.valueOf(i);
+        if (paramArrayList == null) {
+          break;
+        }
+        i = paramArrayList.indexOf(paramHashMap.path);
+        paramArrayList.remove(paramHashMap.path);
+        paramArrayList.add(i, ((LocalMediaInfo)localEntry.getValue()).path);
         break;
-        try
-        {
-          label242:
-          if (localFile.exists())
-          {
-            l = localFile.length();
-            break label113;
-          }
-          l = -3L;
-        }
-        catch (Throwable localThrowable)
-        {
-          i = -4;
-          localThrowable.printStackTrace();
-        }
+        return;
+        paramHashMap = null;
       }
     }
   }
   
-  public void onProgress(batm parambatm)
+  public static boolean a(String paramString, HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
   {
-    double d;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      long l1 = System.currentTimeMillis();
-      long l2 = parambatm.g;
-      d = parambatm.f / (l1 - l2);
-      if (d >= 1.0D) {
-        break label43;
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext()) {
+      if (((LocalMediaInfo)((Map.Entry)paramHashMap.next()).getValue()).path.equals(paramString)) {
+        return true;
       }
     }
-    label43:
-    do
-    {
-      return;
-      parambatm = new DownloadReportReq();
-      parambatm.sSpeed = (d + "");
-      parambatm.vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos();
-      parambatm.iType = 0;
-      parambatm.iUin = this.jdField_a_of_type_Long;
-      agkg.a(parambatm, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down speed:" + d);
+    return false;
   }
   
-  public boolean onStart(batm parambatm)
+  public static HashMap<String, String> b(HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
   {
-    int i = 3;
-    parambatm.f = 1048576L;
-    if (this.jdField_a_of_type_Int > 3) {
-      i = this.jdField_a_of_type_Int;
+    HashMap localHashMap = new HashMap(paramHashMap.size());
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramHashMap.next();
+      localHashMap.put(((LocalMediaInfo)localEntry.getKey()).path, ((LocalMediaInfo)localEntry.getValue()).path);
     }
-    parambatm.b = i;
-    return super.onStart(parambatm);
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agpm
  * JD-Core Version:    0.7.0.1
  */

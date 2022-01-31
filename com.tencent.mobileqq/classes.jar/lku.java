@@ -1,28 +1,62 @@
-import com.tencent.av.redpacket.AVRedPacketManager;
+import java.util.Comparator;
 
-public class lku
-  extends lko
+class lku
+  implements Comparator<lkv>
 {
-  public lku()
-  {
-    this.c = new lla[6];
-    this.b = 1000L;
-    a(255);
-  }
+  lku(lkt paramlkt) {}
   
-  public void a(AVRedPacketManager paramAVRedPacketManager)
+  public int a(lkv paramlkv1, lkv paramlkv2)
   {
-    int i = 0;
-    while (i < this.c.length)
-    {
-      this.c[i] = new lla(paramAVRedPacketManager.a("qav_redpacket_lightning_" + (i + 1) + ".png"));
-      i += 1;
+    int j = -1;
+    int i;
+    if (paramlkv1 == paramlkv2) {
+      i = 0;
     }
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    a(0, paramInt2 - paramInt1 * 120 / 750, paramInt1, paramInt2);
+    label99:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return i;
+              i = j;
+            } while (paramlkv1 == null);
+            if (paramlkv2 == null) {
+              return 1;
+            }
+            if ((!paramlkv1.a()) || (!paramlkv2.a())) {
+              break label99;
+            }
+            if (paramlkv1.d == paramlkv2.d) {
+              break;
+            }
+            i = j;
+          } while (paramlkv2.d > paramlkv1.d);
+          return 1;
+          if (paramlkv1.b == paramlkv2.b) {
+            break;
+          }
+          i = j;
+        } while (paramlkv2.b > paramlkv1.b);
+        return 1;
+        return 0;
+        if (paramlkv1.a()) {
+          return 1;
+        }
+        i = j;
+      } while (paramlkv2.a());
+      if (paramlkv1.b == paramlkv2.b) {
+        break;
+      }
+      i = j;
+    } while (paramlkv2.b > paramlkv1.b);
+    return 1;
+    return 0;
   }
 }
 

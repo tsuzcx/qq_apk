@@ -1,40 +1,70 @@
-public class opl<T>
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public class opl
+  implements AladdinConfigHandler
 {
-  private long jdField_a_of_type_Long;
-  T jdField_a_of_type_JavaLangObject;
-  public boolean a;
-  private long b;
+  private final String a = "reset_kandian_configuration";
+  private final String b = "reset_version";
   
-  public opl(T paramT)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    this(paramT, localObject, 600000L);
-    if (localObject == null) {
-      this.jdField_a_of_type_Boolean = true;
+    QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    Map localMap = ooi.a(paramString);
+    Object localObject2 = localMap.keySet();
+    Object localObject1 = "";
+    paramString = "";
+    Iterator localIterator = ((Set)localObject2).iterator();
+    String str;
+    if (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      localObject2 = (String)localMap.get(str);
+      QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
+      if (TextUtils.equals(str, "reset_kandian_configuration"))
+      {
+        localObject1 = paramString;
+        paramString = (String)localObject2;
+      }
+    }
+    for (;;)
+    {
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
+      break;
+      if (TextUtils.equals(str, "reset_version"))
+      {
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
+        continue;
+        if ((TextUtils.equals("1", (CharSequence)localObject1)) && (!TextUtils.isEmpty(paramString))) {}
+        try
+        {
+          paramInt1 = Integer.valueOf(paramString).intValue();
+          bbjn.q(BaseApplicationImpl.getApplication(), paramInt1, onk.a());
+          return true;
+        }
+        catch (NumberFormatException paramString)
+        {
+          QLog.e("ResetAllConfigHandler", 1, "[onReceiveConfig] e = " + paramString);
+          return true;
+        }
+      }
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
     }
   }
   
-  public opl(T paramT, long paramLong)
+  public void onWipeConfig(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangObject = paramLong;
-    this.b = System.currentTimeMillis();
-    Object localObject;
-    this.jdField_a_of_type_Long = localObject;
-  }
-  
-  public T a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public void a(T paramT)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.b = System.currentTimeMillis();
-  }
-  
-  public boolean a()
-  {
-    return System.currentTimeMillis() - this.b >= this.jdField_a_of_type_Long;
+    QLog.d("ResetAllConfigHandler", 2, "[onWipeConfig] id=" + paramInt);
   }
 }
 

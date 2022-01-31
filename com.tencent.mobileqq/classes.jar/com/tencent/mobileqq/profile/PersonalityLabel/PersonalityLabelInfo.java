@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import atwe;
+import auuc;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -24,7 +24,7 @@ import tencent.im.label.comm.PersonalityTagComm.PraiseUserInfo;
 public class PersonalityLabelInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<PersonalityLabelInfo> CREATOR = new atwe();
+  public static final Parcelable.Creator<PersonalityLabelInfo> CREATOR = new auuc();
   public static final String TAG = "PersonalityLabelInfo";
   int addTime = 0;
   public int bgColor = -16777216;

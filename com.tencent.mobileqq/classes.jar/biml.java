@@ -1,13 +1,13 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.view.View;
 
-public class biml
-  implements bixv
+class biml
+  implements xfc
 {
-  public biml(DoodleLayout paramDoodleLayout) {}
+  biml(bimj parambimj) {}
   
   public void a()
   {
-    this.a.g();
+    bimj.a(this.a).setVisibility(0);
   }
 }
 

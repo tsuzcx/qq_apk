@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import java.io.Serializable;
 
 public class CmGamePushItem
-  extends atmo
+  extends aukm
   implements Serializable
 {
   public static final int CMGAME_PUSH_FRAMEWORK_PROMOTION = 1;
@@ -15,7 +15,7 @@ public class CmGamePushItem
   public int end_ts;
   public boolean isShow;
   public int is_show_red;
-  @atoc
+  @auma
   public String msg_id;
   public int msg_type;
   public int send_time;

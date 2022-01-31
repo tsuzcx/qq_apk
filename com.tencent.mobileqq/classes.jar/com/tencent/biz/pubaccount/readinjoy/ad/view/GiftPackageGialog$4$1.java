@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import ajjy;
+import ajyc;
 import android.text.TextUtils;
-import bbmy;
+import bcpw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.util.Pair;
-import nbe;
-import nmv;
-import nnx;
-import npv;
-import npz;
+import nmf;
+import nyg;
+import nzi;
+import obg;
+import obk;
 
 class GiftPackageGialog$4$1
   implements Runnable
@@ -20,7 +20,7 @@ class GiftPackageGialog$4$1
   
   public void run()
   {
-    Object localObject1 = ajjy.a(2131639484);
+    Object localObject1 = ajyc.a(2131705269);
     if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_ComTencentUtilPair.second)) {
       localObject1 = (String)this.jdField_a_of_type_ComTencentUtilPair.second;
     }
@@ -29,13 +29,13 @@ class GiftPackageGialog$4$1
     {
       localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_ComTencentUtilPair.second)) {
-        localObject2 = ajjy.a(2131639485);
+        localObject2 = ajyc.a(2131705270);
       }
     }
     if (((Boolean)this.jdField_a_of_type_ComTencentUtilPair.first).booleanValue()) {}
     for (int i = 2;; i = 1)
     {
-      bbmy.a(BaseApplicationImpl.getApplication(), i, (CharSequence)localObject2, 0).a();
+      bcpw.a(BaseApplicationImpl.getApplication(), i, (CharSequence)localObject2, 0).a();
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0.isShowing()) {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0.dismiss();
       }
@@ -44,19 +44,19 @@ class GiftPackageGialog$4$1
         localObject1 = BaseApplicationImpl.getApplication().peekAppRuntime();
         if ((localObject1 != null) && ((localObject1 instanceof QQAppInterface)))
         {
-          nnx.a(((QQAppInterface)localObject1).getAccount(), npv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0));
-          if (npv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0) != null) {
-            npv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0).a(npv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0));
+          nzi.a(((QQAppInterface)localObject1).getAccount(), obg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0));
+          if (obg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0) != null) {
+            obg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0).a(obg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0));
           }
         }
-        if ((!npv.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0)) || (npv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0) == null)) {
+        if ((!obg.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0)) || (obg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0) == null)) {
           break;
         }
-        nbe.a(new nmv().a(npv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0)).a(nbe.z).b(nbe.ad).c(nbe.ao).d(npv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0)).a(npv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0)).e(nnx.a(npv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0), nbe.H)).a());
+        nmf.a(new nyg().a(obg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0)).a(nmf.z).b(nmf.ad).c(nmf.ao).d(obg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0)).a(obg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0)).e(nzi.a(obg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0), nmf.H)).a());
       }
       return;
     }
-    nnx.a(11, npv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0), npv.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0), 30103, 3010305, 301);
+    nzi.a(11, obg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0), obg.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewGiftPackageGialog$4.this$0), 30103, 3010305, 301);
   }
 }
 

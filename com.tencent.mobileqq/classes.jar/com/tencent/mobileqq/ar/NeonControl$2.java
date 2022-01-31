@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ar;
 
-import akip;
-import akoq;
-import akor;
-import awrn;
+import akxb;
+import aldc;
+import aldd;
+import axrl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -11,18 +11,18 @@ import java.util.HashMap;
 public class NeonControl$2
   implements Runnable
 {
-  public NeonControl$2(akoq paramakoq, akor paramakor, int paramInt) {}
+  public NeonControl$2(aldc paramaldc, aldd paramaldd, int paramInt) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("neon_opened", String.valueOf(this.jdField_a_of_type_Akor.b));
+    localHashMap.put("neon_opened", String.valueOf(this.jdField_a_of_type_Aldd.b));
     localHashMap.put("selimg_frame_consume", String.valueOf(this.jdField_a_of_type_Int));
-    awrn.a(BaseApplication.getContext()).a("", "scanner_selimg_frame_consume", true, 0L, 0L, localHashMap, "");
+    axrl.a(BaseApplication.getContext()).a("", "scanner_selimg_frame_consume", true, 0L, 0L, localHashMap, "");
     if (QLog.isColorLevel())
     {
-      QLog.i("NeonControl", 2, String.format("doReport selimg count:%d avgConsume:%dms neonOpened:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Akor.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Akor.b) }));
-      akip.a().a(this.jdField_a_of_type_Int);
+      QLog.i("NeonControl", 2, String.format("doReport selimg count:%d avgConsume:%dms neonOpened:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Aldd.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Aldd.b) }));
+      akxb.a().a(this.jdField_a_of_type_Int);
     }
   }
 }

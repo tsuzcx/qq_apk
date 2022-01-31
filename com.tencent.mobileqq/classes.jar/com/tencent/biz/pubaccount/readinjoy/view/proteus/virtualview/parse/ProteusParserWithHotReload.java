@@ -192,17 +192,11 @@ public class ProteusParserWithHotReload
     for (;;)
     {
       return;
-      paramString = new JSONObject(paramString);
-      if (paramString.has("version"))
+      paramString = new JSONObject(paramString).getJSONObject("data_map");
+      Iterator localIterator = paramString.keys();
+      while (localIterator.hasNext())
       {
-        localObject = paramString.getString("version");
-        LogUtil.QLog.d("readinjoy.proteus", 2, "proteus version : " + (String)localObject);
-      }
-      paramString = paramString.getJSONObject("data_map");
-      Object localObject = paramString.keys();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
+        String str = (String)localIterator.next();
         paramMap.put(str, getKeyValue(paramString.getJSONObject(str)));
       }
     }

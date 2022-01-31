@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.Doraemon;
 
+import aabm;
+import aabp;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
-import zrt;
-import zrw;
 
 public class DoraemonAPIManager$2
   implements Runnable
 {
-  public DoraemonAPIManager$2(zrw paramzrw, List paramList) {}
+  public DoraemonAPIManager$2(aabp paramaabp, List paramList) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class DoraemonAPIManager$2
     while (localIterator.hasNext())
     {
       Object[] arrayOfObject = (Object[])localIterator.next();
-      zrw.a(this.this$0, (String)arrayOfObject[0], (JSONObject)arrayOfObject[1], (zrt)arrayOfObject[2]);
+      aabp.a(this.this$0, (String)arrayOfObject[0], (JSONObject)arrayOfObject[1], (aabm)arrayOfObject[2]);
     }
   }
 }

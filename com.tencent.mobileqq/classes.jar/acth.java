@@ -1,8 +1,78 @@
-public abstract interface acth
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.activity.aio.AIOTipsController.1;
+import com.tencent.mobileqq.activity.aio.AIOTipsController.2;
+import com.tencent.qphone.base.util.QLog;
+
+public class acth
 {
-  public abstract void a();
+  public acti a;
+  private ViewGroup a;
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public acth(ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+  }
+  
+  public void a(acti paramacti)
+  {
+    this.jdField_a_of_type_Acti = paramacti;
+  }
+  
+  public void a(aeyv paramaeyv)
+  {
+    if (QLog.isColorLevel()) {
+      if (paramaeyv != null) {
+        break label65;
+      }
+    }
+    label65:
+    for (String str = "null";; str = Integer.toHexString(System.identityHashCode(paramaeyv)))
+    {
+      QLog.d("AIOTipsController", 2, "showHearerTips called object=" + str);
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewViewGroup.post(new AIOTipsController.2(this, paramaeyv));
+      return;
+    }
+  }
+  
+  public void a(View paramView, aeyv paramaeyv)
+  {
+    int j;
+    if (paramView != null)
+    {
+      j = this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(paramView);
+      if (j == -1) {
+        this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, new ViewGroup.LayoutParams(-1, -2));
+      }
+      int i = 0;
+      while (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
+      {
+        this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).setVisibility(8);
+        i += 1;
+      }
+      if (QLog.isColorLevel()) {
+        if (paramaeyv != null) {
+          break label152;
+        }
+      }
+    }
+    label152:
+    for (String str = "null";; str = Integer.toHexString(System.identityHashCode(paramaeyv)))
+    {
+      QLog.d("AIOTipsController", 2, "showHearerTips called childIndex = " + j + " object=" + str);
+      paramView.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewViewGroup.post(new AIOTipsController.1(this, paramaeyv));
+      return;
+    }
+  }
 }
 
 

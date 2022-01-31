@@ -1,196 +1,98 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class pjg
+  implements ViewBase.OnClickListener
 {
-  public opw a;
-  public pfh a;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private String jdField_a_of_type_JavaLangString;
   
-  public static boolean a(ArticleInfo paramArticleInfo)
+  public pjg(ArticleInfo paramArticleInfo, Context paramContext, int paramInt, String paramString)
   {
-    return pmu.a(paramArticleInfo);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static boolean a(opw paramopw)
+  private void a()
   {
-    return (paramopw.a() == 49) || (paramopw.a() == 62) || (paramopw.a() == 63);
-  }
-  
-  public static boolean b(ArticleInfo paramArticleInfo)
-  {
-    return pmu.b(paramArticleInfo);
-  }
-  
-  public static boolean b(opw paramopw)
-  {
-    return (paramopw.a() == 39) || (paramopw.a() == 116) || (paramopw.a() == 66) || (paramopw.a() == 115) || (paramopw.a() == 122);
-  }
-  
-  public static boolean c(ArticleInfo paramArticleInfo)
-  {
-    int i = qoe.c(paramArticleInfo);
-    return (i == 23) || (i == 26) || (i == 56) || (i == 59);
-  }
-  
-  public static boolean c(opw paramopw)
-  {
-    switch (paramopw.a())
-    {
-    default: 
-      return false;
+    bbds localbbds = bbej.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    if (localbbds != null) {
+      localbbds.c();
     }
-    return true;
   }
   
-  public static boolean d(opw paramopw)
+  private void a(String paramString)
   {
-    return paramopw.c() == 3;
-  }
-  
-  public static boolean e(opw paramopw)
-  {
-    return paramopw.a() == 10;
-  }
-  
-  public static boolean f(opw paramopw)
-  {
-    return paramopw.a() == 11;
-  }
-  
-  public static boolean g(opw paramopw)
-  {
-    return paramopw.a() == 12;
-  }
-  
-  public static boolean h(opw paramopw)
-  {
-    return paramopw.a() == 27;
-  }
-  
-  public static boolean i(opw paramopw)
-  {
-    return paramopw.a() == 28;
-  }
-  
-  public static boolean j(opw paramopw)
-  {
-    return pmu.b(paramopw.a());
-  }
-  
-  public static boolean k(opw paramopw)
-  {
-    return pmu.a(paramopw.a());
-  }
-  
-  public int a()
-  {
-    if ((m()) && ((this.jdField_a_of_type_Opw.a() instanceof AdvertisementInfo))) {
-      return AdvertisementInfo.getBigAppAdStyle((AdvertisementInfo)this.jdField_a_of_type_Opw.a());
-    }
-    return 0;
-  }
-  
-  public long a()
-  {
-    if ((this.jdField_a_of_type_Opw != null) && (this.jdField_a_of_type_Opw.a() != null) && (this.jdField_a_of_type_Opw.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_Opw.a().mSocialFeedInfo.a != null)) {}
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      long l = this.jdField_a_of_type_Opw.a().mSocialFeedInfo.a.a;
-      return l;
+      localJSONObject.put("algorithm_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAlgorithmID + "");
+      localJSONObject.put("folder_status", onk.d);
+      localJSONObject.put("feeds_type", onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+      localJSONObject.put("channel_id", "" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+      localJSONObject.put("feeds_source", onk.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+      localJSONObject.put("imei", onk.f());
+      localJSONObject.put("imsi", onk.g());
+      localJSONObject.put("rowkey", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
+      localJSONObject.put("comment", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("topic_id", "" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessId);
+      localJSONObject.put("kandian_mode", "" + onk.e());
+      localJSONObject.put("mark_type", paramString);
+      noo.a(null, String.valueOf(onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int)), "0X80097CB", "0X80097CB", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId), localJSONObject.toString(), false);
+      return;
     }
-    catch (NumberFormatException localNumberFormatException)
+    catch (Exception paramString)
     {
-      localNumberFormatException.printStackTrace();
-      return 0L;
+      while (!QLog.isColorLevel()) {}
+      QLog.d("OnTopicDeliverClickListener", 2, "report error:" + paramString.toString());
     }
-    catch (Exception localException)
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {}
+    do
+    {
+      return;
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qdh != null) && ((this.jdField_a_of_type_Int == 72) || (this.jdField_a_of_type_Int == 73)))
+      {
+        a("4");
+        return;
+      }
+    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+    a();
+    try
+    {
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData)) {
+        break label130;
+      }
+      paramViewBase = new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData).optString("biz_type", "");
+      boolean bool = TextUtils.isEmpty(paramViewBase);
+      if (bool) {
+        break label130;
+      }
+    }
+    catch (Exception paramViewBase)
     {
       for (;;)
       {
-        localException.printStackTrace();
+        QLog.d("OnTopicDeliverClickListener", 2, "OnTopicDeliverClickListener", paramViewBase);
+        paramViewBase = "1";
       }
     }
-  }
-  
-  public opw a()
-  {
-    return this.jdField_a_of_type_Opw;
-  }
-  
-  public void a(opw paramopw)
-  {
-    this.jdField_a_of_type_Opw = paramopw;
-  }
-  
-  public void a(pfh parampfh)
-  {
-    this.jdField_a_of_type_Pfh = parampfh;
-  }
-  
-  public boolean a()
-  {
-    return d(this.jdField_a_of_type_Opw);
-  }
-  
-  public boolean b()
-  {
-    return e(this.jdField_a_of_type_Opw);
-  }
-  
-  public boolean c()
-  {
-    return f(this.jdField_a_of_type_Opw);
-  }
-  
-  public boolean d()
-  {
-    return g(this.jdField_a_of_type_Opw);
-  }
-  
-  public boolean e()
-  {
-    return h(this.jdField_a_of_type_Opw);
-  }
-  
-  public boolean f()
-  {
-    return (this.jdField_a_of_type_Opw.a() == 50) || (this.jdField_a_of_type_Opw.a() == 51) || (this.jdField_a_of_type_Opw.a() == 52);
-  }
-  
-  public boolean g()
-  {
-    return i(this.jdField_a_of_type_Opw);
-  }
-  
-  public boolean h()
-  {
-    return a(this.jdField_a_of_type_Opw);
-  }
-  
-  public boolean i()
-  {
-    return j(this.jdField_a_of_type_Opw);
-  }
-  
-  public boolean j()
-  {
-    return k(this.jdField_a_of_type_Opw);
-  }
-  
-  public boolean k()
-  {
-    return c(this.jdField_a_of_type_Opw);
-  }
-  
-  public boolean l()
-  {
-    return this.jdField_a_of_type_Opw.a() == 16;
-  }
-  
-  public boolean m()
-  {
-    return b(this.jdField_a_of_type_Opw);
+    a(paramViewBase);
   }
 }
 

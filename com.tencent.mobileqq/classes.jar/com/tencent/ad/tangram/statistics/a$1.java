@@ -20,7 +20,7 @@ final class a$1
     if (this.val$context != null) {}
     for (Context localContext = (Context)this.val$context.get();; localContext = null)
     {
-      AdReporterForAnalysis.reportForClickStatisticsEnd(localContext, this.val$ad, localParams);
+      AdReporterForAnalysis.reportForEffectStatisticsEnd(localContext, this.val$ad, localParams);
       return;
     }
   }

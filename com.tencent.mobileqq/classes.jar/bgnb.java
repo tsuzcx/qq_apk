@@ -1,24 +1,20 @@
-public class bgnb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bgnb
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public long e;
-  public long f;
-  public long g;
+  bgnb(bgmt parambgmt, whu paramwhu) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Whu.a();
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgnb
  * JD-Core Version:    0.7.0.1
  */

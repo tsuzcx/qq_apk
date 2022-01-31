@@ -1,15 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.TMG.sdk.AVCallback;
 
 class ajbj
-  implements View.OnClickListener
+  implements AVCallback
 {
-  ajbj(ajbi paramajbi) {}
+  ajbj(ajbc paramajbc) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-  }
+  public void onComplete(int paramInt, String paramString) {}
 }
 
 

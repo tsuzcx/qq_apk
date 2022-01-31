@@ -1,9 +1,8 @@
-public class bgrx
+import android.os.Bundle;
+
+public abstract interface bgrx
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  public abstract boolean a(int paramInt, Bundle paramBundle);
 }
 
 

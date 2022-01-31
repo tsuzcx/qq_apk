@@ -1,80 +1,77 @@
-import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import java.util.Iterator;
+import java.util.List;
 
 public class tiu
+  extends tim
 {
-  @NonNull
-  public final String a;
-  @NonNull
-  public final String b;
-  @NonNull
-  public final String c;
-  public final String d;
-  
-  public tiu(String paramString1, String paramString2, String paramString3, String paramString4)
+  public tiu(ViewGroup paramViewGroup)
   {
-    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null))
-    {
-      urk.e("Q.qqstory.playernew.TVKPreloader", "vid=%s, videoUrl=%s, localPath=%s", new Object[] { paramString1, paramString2, paramString3 });
-      throw new IllegalArgumentException("vid, videoUrl, localPath should not be null");
-    }
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
+    super(paramViewGroup);
   }
   
-  public boolean equals(Object paramObject)
+  protected String a(QQUserUIItem paramQQUserUIItem)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    boolean bool1;
-    if (this == paramObject) {
-      bool1 = true;
+    String str = super.a(paramQQUserUIItem);
+    paramQQUserUIItem = str;
+    if (str == null) {
+      paramQQUserUIItem = ajyc.a(2131713253);
     }
-    do
+    return paramQQUserUIItem;
+  }
+  
+  public void a()
+  {
+    this.a.setTag(2131373348, null);
+  }
+  
+  protected void a(String paramString)
+  {
+    c(paramString);
+  }
+  
+  protected void a(String paramString, boolean paramBoolean, tfi paramtfi)
+  {
+    if ((!TextUtils.isEmpty(paramtfi.j)) && (!paramBoolean))
     {
-      do
+      this.a.setNodeName(paramString, paramtfi.j);
+      return;
+    }
+    super.a(paramString, paramBoolean, paramtfi);
+  }
+  
+  public void a(tfi paramtfi)
+  {
+    super.a(paramtfi);
+    this.a.setDisplayState(2);
+    String str;
+    if (!TextUtils.equals((String)this.a.getTag(2131373348), paramtfi.jdField_a_of_type_JavaLangString))
+    {
+      if ((paramtfi.jdField_a_of_type_JavaUtilList == null) || (paramtfi.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+        break label168;
+      }
+      str = ((tga)paramtfi.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString;
+      Iterator localIterator = paramtfi.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool3;
-          } while (paramObject == null);
-          bool1 = bool3;
-        } while (getClass() != paramObject.getClass());
-        paramObject = (tiu)paramObject;
-        bool1 = bool3;
-      } while (!this.a.equals(paramObject.a));
-      bool1 = bool3;
-    } while (!this.b.equals(paramObject.b));
-    if (this.d != null) {
-      bool1 = this.d.equals(paramObject.d);
+        tga localtga = (tga)localIterator.next();
+        if (!localtga.jdField_a_of_type_Boolean) {
+          str = localtga.jdField_a_of_type_JavaLangString;
+        }
+      }
     }
     for (;;)
     {
-      return bool1;
-      bool1 = bool2;
-      if (paramObject.d != null) {
-        bool1 = false;
-      }
+      vel.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramtfi.jdField_a_of_type_JavaLangString, "1", "", str });
+      this.a.setTag(2131373348, paramtfi.jdField_a_of_type_JavaLangString);
+      return;
+      continue;
+      label168:
+      str = "";
     }
-  }
-  
-  public int hashCode()
-  {
-    int j = this.a.hashCode();
-    int k = this.b.hashCode();
-    if (this.d != null) {}
-    for (int i = this.d.hashCode();; i = 0) {
-      return i + (j * 31 + k) * 31;
-    }
-  }
-  
-  public String toString()
-  {
-    return "PreloadItem{vid='" + this.a + '\'' + ", debugMsg='" + this.d + '\'' + '}';
   }
 }
 

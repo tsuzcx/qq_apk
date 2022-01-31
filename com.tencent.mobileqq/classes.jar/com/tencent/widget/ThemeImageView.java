@@ -4,14 +4,14 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import beog;
-import beoh;
+import bfwa;
+import bfwb;
 
 public class ThemeImageView
   extends ImageView
-  implements beoh
+  implements bfwb
 {
-  public beog a;
+  public bfwa a;
   
   public ThemeImageView(Context paramContext)
   {
@@ -63,7 +63,7 @@ public class ThemeImageView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new beog();
+        this.a = new bfwa();
       }
       this.a.a(true);
     }

@@ -1,115 +1,77 @@
-import Wallet.AcsMsg;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import tencent.im.oidb.cmd0x79a.oidb_0x79a.RspBody;
+import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
 
 public class acht
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+  implements ncj
 {
-  private ArrayList<acii> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public acht(TroopInfoActivity paramTroopInfoActivity) {}
   
-  private acht(ReminderListFragment paramReminderListFragment) {}
-  
-  public void a(String paramString)
+  public void a()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-      return;
+    this.a.stopTitleProgress();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwAppPrivilegeFlag & 0x4000) != 0L) {
+      TroopInfoActivity.h(this.a);
     }
+  }
+  
+  public void a(oidb_0x79a.RspBody paramRspBody)
+  {
+    oidb_0x88d.GroupInfo localGroupInfo = paramRspBody.info;
+    this.a.stopTitleProgress();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus = paramRspBody.uint32_tribe_status.get();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.modifyCount = paramRspBody.uint32_modify_countdown.get();
     int j = 0;
-    acii localacii;
     int i;
-    if (j < this.jdField_a_of_type_JavaUtilArrayList.size())
+    if (4 != this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
     {
-      localacii = (acii)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      if (paramString.equals(localacii.jdField_a_of_type_WalletAcsMsg.msg_id))
-      {
-        i = j;
-        if (!baip.a(localacii.jdField_a_of_type_JavaLangString))
-        {
-          i = j;
-          if (j + 1 < this.jdField_a_of_type_JavaUtilArrayList.size())
-          {
-            if ((localacii.jdField_a_of_type_Int != 1) || (((acii)this.jdField_a_of_type_JavaUtilArrayList.get(j + 1)).jdField_a_of_type_Int != 1)) {
-              break label206;
-            }
-            ((acii)this.jdField_a_of_type_JavaUtilArrayList.get(j + 1)).jdField_a_of_type_JavaLangString = ajjy.a(2131647597);
-            i = j;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      j = i;
-      if (i == this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        j = i - 1;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.remove(j);
-      notifyItemRemoved(j);
-      notifyItemRangeChanged(j, this.jdField_a_of_type_JavaUtilArrayList.size());
-      if (getItemCount() == 0) {
-        ReminderListFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment);
-      }
-      ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, paramString);
-      return;
-      label206:
       i = j;
-      if (localacii.jdField_a_of_type_Int == 0)
-      {
-        i = j;
-        if (((acii)this.jdField_a_of_type_JavaUtilArrayList.get(j + 1)).jdField_a_of_type_Int == 0)
+      if (3 != this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt) {}
+    }
+    else
+    {
+      i = j;
+      if (localGroupInfo != null) {
+        if (4 != localGroupInfo.uint32_group_type_flag.get())
         {
-          ((acii)this.jdField_a_of_type_JavaUtilArrayList.get(j + 1)).jdField_a_of_type_JavaLangString = ajjy.a(2131647586);
           i = j;
-          continue;
-          j += 1;
-          break;
-          i = 0;
+          if (3 != localGroupInfo.uint32_group_type_flag.get()) {}
+        }
+        else
+        {
+          this.a.a(localGroupInfo);
+          i = 1;
         }
       }
     }
-  }
-  
-  public void a(ArrayList<acii> paramArrayList, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((paramViewHolder instanceof achv))
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 1) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 2) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 3))
     {
-      paramViewHolder = (achv)paramViewHolder;
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-        paramViewHolder.a((acii)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId = paramRspBody.uint64_tribe_id.get();
+      this.a.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId;
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeName = paramRspBody.str_tribe_name.get();
+      if (i == 0) {
+        this.a.a(localGroupInfo);
       }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(7);
+      return;
     }
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131495028, null, false);
-    return new achv(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, paramViewGroup);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwAppPrivilegeFlag & 0x4000) != 0L)
+    {
+      TroopInfoActivity.h(this.a);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acht
  * JD-Core Version:    0.7.0.1
  */

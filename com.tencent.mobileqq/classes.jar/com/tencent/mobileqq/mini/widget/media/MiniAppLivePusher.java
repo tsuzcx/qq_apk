@@ -3,6 +3,8 @@ package com.tencent.mobileqq.mini.widget.media;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -10,11 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bgfg;
+import bbjw;
+import bhnv;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
-import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil;
+import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.mini.utils.ScreenOffOnListener;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
@@ -43,6 +46,7 @@ public class MiniAppLivePusher
   public String data;
   private ConcurrentHashMap<String, String> downloadMap = new ConcurrentHashMap();
   private AtomicInteger downloadTaskId = new AtomicInteger(0);
+  private Handler handler = new Handler(Looper.getMainLooper());
   private boolean hasSetUp;
   public long livePusherId;
   private TXLivePusherJSAdapter livePusherJSAdapter;
@@ -51,8 +55,9 @@ public class MiniAppLivePusher
   private ArrayList<String> pusherKeyList;
   private View rootView;
   public JsRuntime serviceWebview;
+  private Runnable stopDumpRunnable = new MiniAppLivePusher.1(this);
   private Object tXCloudVideoView;
-  public WebviewContainer webviewContainer;
+  private String tempAudioFilePath;
   public int webviewId;
   
   public MiniAppLivePusher(@NonNull Context paramContext)
@@ -119,8 +124,8 @@ public class MiniAppLivePusher
     initPusherKeyList();
     this.livePusherJSAdapter = new TXLivePusherJSAdapter(getContext());
     this.livePusherJSAdapter.initLivePusher(this.tXCloudVideoView, adaptJsonToBundle(paramJSONObject));
-    this.livePusherJSAdapter.setBGMNotifyListener(new MiniAppLivePusher.1(this));
-    this.livePusherJSAdapter.setPushListener(new MiniAppLivePusher.2(this));
+    this.livePusherJSAdapter.setBGMNotifyListener(new MiniAppLivePusher.2(this));
+    this.livePusherJSAdapter.setPushListener(new MiniAppLivePusher.3(this));
   }
   
   private void initPusherKeyList()
@@ -169,7 +174,7 @@ public class MiniAppLivePusher
   
   private void initPusherView()
   {
-    this.tXCloudVideoView = bgfg.a("com.tencent.rtmp.ui.TXCloudVideoView", bgfg.a(new Class[] { Context.class }), new Object[] { getContext() });
+    this.tXCloudVideoView = bhnv.a("com.tencent.rtmp.ui.TXCloudVideoView", bhnv.a(new Class[] { Context.class }), new Object[] { getContext() });
     if (this.tXCloudVideoView == null)
     {
       QLog.e("MiniAppLivePusher", 1, "tXCloudVideoView is null?! ");
@@ -189,28 +194,28 @@ public class MiniAppLivePusher
   private static void saveJpeg(android.graphics.Bitmap paramBitmap, java.io.File paramFile)
   {
     // Byte code:
-    //   0: new 370	java/io/BufferedOutputStream
+    //   0: new 391	java/io/BufferedOutputStream
     //   3: dup
-    //   4: new 372	java/io/FileOutputStream
+    //   4: new 393	java/io/FileOutputStream
     //   7: dup
     //   8: aload_1
-    //   9: invokespecial 375	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   12: invokespecial 378	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   9: invokespecial 396	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 399	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   15: astore_1
     //   16: aload_0
-    //   17: getstatic 384	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   17: getstatic 405	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   20: bipush 100
     //   22: bipush 100
-    //   24: invokestatic 390	java/lang/Math:min	(II)I
+    //   24: invokestatic 411	java/lang/Math:min	(II)I
     //   27: aload_1
-    //   28: invokevirtual 396	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   28: invokevirtual 417	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   31: pop
     //   32: aload_1
-    //   33: invokevirtual 399	java/io/BufferedOutputStream:flush	()V
+    //   33: invokevirtual 420	java/io/BufferedOutputStream:flush	()V
     //   36: aload_1
     //   37: ifnull +7 -> 44
     //   40: aload_1
-    //   41: invokevirtual 402	java/io/BufferedOutputStream:close	()V
+    //   41: invokevirtual 423	java/io/BufferedOutputStream:close	()V
     //   44: return
     //   45: astore_0
     //   46: aconst_null
@@ -218,7 +223,7 @@ public class MiniAppLivePusher
     //   48: aload_1
     //   49: ifnull +7 -> 56
     //   52: aload_1
-    //   53: invokevirtual 402	java/io/BufferedOutputStream:close	()V
+    //   53: invokevirtual 423	java/io/BufferedOutputStream:close	()V
     //   56: aload_0
     //   57: athrow
     //   58: astore_0
@@ -247,8 +252,8 @@ public class MiniAppLivePusher
     this.hasSetUp = true;
     setTag("MiniAppLivePusher");
     this.context = paramContext;
-    this.rootView = LayoutInflater.from(paramContext).inflate(2131493695, null);
-    this.pusherContainer = ((FrameLayout)this.rootView.findViewById(2131306471));
+    this.rootView = LayoutInflater.from(paramContext).inflate(2131559264, null);
+    this.pusherContainer = ((FrameLayout)this.rootView.findViewById(2131372168));
     addView(this.rootView);
   }
   
@@ -298,9 +303,10 @@ public class MiniAppLivePusher
           String str2 = paramJSONObject.optString("url");
           this.downloadMap.put(str1, str2);
           String str3 = MiniAppFileManager.getInstance().getTmpPathByUrl(str2);
-          MiniappDownloadUtil.getInstance().download(str2, str3, true, new MiniAppLivePusher.4(this, str1, str2, str3, paramJSONObject, paramString), Downloader.DownloadMode.FastMode, null);
+          MiniappDownloadUtil.getInstance().download(str2, str3, true, new MiniAppLivePusher.5(this, str1, str2, str3, paramJSONObject, paramString), Downloader.DownloadMode.FastMode, null);
         }
-        this.webviewContainer.callbackJsEventOK("operateLivePusher", null, paramInt);
+        paramString = ApiUtil.wrapCallbackOk("operateLivePusher", null);
+        this.serviceWebview.evaluateCallbackJs(paramInt, paramString.toString());
       }
     }
     else {
@@ -310,7 +316,8 @@ public class MiniAppLivePusher
     {
       this.needToStopDownloadBGM = true;
       this.livePusherJSAdapter.operateLivePusher(paramString, paramJSONObject);
-      this.webviewContainer.callbackJsEventOK("operateLivePusher", null, paramInt);
+      paramString = ApiUtil.wrapCallbackOk("operateLivePusher", null);
+      this.serviceWebview.evaluateCallbackJs(paramInt, paramString.toString());
       return;
     }
     if ("setBGMPosition".equals(paramString)) {
@@ -318,7 +325,8 @@ public class MiniAppLivePusher
       {
         paramJSONObject.put("BGMPosition", paramJSONObject.getInt("position") * 1000);
         this.livePusherJSAdapter.operateLivePusher(paramString, paramJSONObject);
-        this.webviewContainer.callbackJsEventOK("operateLivePusher", null, paramInt);
+        paramString = ApiUtil.wrapCallbackOk("operateLivePusher", null);
+        this.serviceWebview.evaluateCallbackJs(paramInt, paramString.toString());
         return;
       }
       catch (JSONException paramString)
@@ -347,12 +355,93 @@ public class MiniAppLivePusher
       takePhoto("operateLivePusher", bool1, paramInt);
       return;
     }
+    if (paramString.equalsIgnoreCase("startAudioRecord"))
+    {
+      paramString = MiniAppFileManager.getInstance().getTmpPath("pcm");
+      long l = paramJSONObject.optLong("maxDuration");
+      QLog.d("MiniAppLivePusher", 2, "recordFile:" + paramString);
+      int i = this.livePusherJSAdapter.startDumpAudioData(paramString);
+      QLog.d("MiniAppLivePusher", 2, "recordResult:" + i);
+      if (i == 0) {
+        paramJSONObject = new JSONObject();
+      }
+      for (;;)
+      {
+        try
+        {
+          paramJSONObject.put("tempFilePath", paramString);
+          this.tempAudioFilePath = paramString;
+          paramString = ApiUtil.wrapCallbackOk("operateLivePusher", paramJSONObject);
+          this.serviceWebview.evaluateCallbackJs(paramInt, paramString.toString());
+          this.handler.postDelayed(this.stopDumpRunnable, l);
+          QLog.d("MiniAppLivePusher", 2, "recordResult:" + i);
+          return;
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+          continue;
+        }
+        if (i == -1)
+        {
+          paramString = ApiUtil.wrapCallbackFail("operateLivePusher", null, "LivePusher is recording");
+          this.serviceWebview.evaluateCallbackJs(paramInt, paramString.toString());
+          return;
+        }
+        if (i == -2)
+        {
+          paramString = ApiUtil.wrapCallbackFail("operateLivePusher", null, "LivePusher creates recordFile failed");
+          this.serviceWebview.evaluateCallbackJs(paramInt, paramString.toString());
+        }
+        else if (i == -3)
+        {
+          paramString = ApiUtil.wrapCallbackFail("operateLivePusher", null, "LivePusher not support current format");
+          this.serviceWebview.evaluateCallbackJs(paramInt, paramString.toString());
+        }
+        else
+        {
+          paramString = ApiUtil.wrapCallbackFail("operateLivePusher", null, "LivePusher starts recording fail");
+          this.serviceWebview.evaluateCallbackJs(paramInt, paramString.toString());
+        }
+      }
+    }
+    if (paramString.equalsIgnoreCase("stopAudioRecord"))
+    {
+      QLog.d("MiniAppLivePusher", 2, "stopDumpAudioData");
+      this.handler.removeCallbacks(this.stopDumpRunnable);
+      this.livePusherJSAdapter.stopDumpAudioData();
+      paramString = new JSONObject();
+      try
+      {
+        if (!bbjw.a(this.tempAudioFilePath))
+        {
+          paramString.put("tempFilePath", this.tempAudioFilePath);
+          this.tempAudioFilePath = null;
+        }
+        for (;;)
+        {
+          paramString = ApiUtil.wrapCallbackOk("operateLivePusher", paramString);
+          this.serviceWebview.evaluateCallbackJs(paramInt, paramString.toString());
+          return;
+          paramString.put("tempFilePath", "");
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        for (;;)
+        {
+          paramJSONObject.printStackTrace();
+        }
+      }
+    }
     this.livePusherJSAdapter.operateLivePusher(paramString, paramJSONObject);
-    this.webviewContainer.callbackJsEventOK("operateLivePusher", null, paramInt);
+    paramString = ApiUtil.wrapCallbackOk("operateLivePusher", null);
+    this.serviceWebview.evaluateCallbackJs(paramInt, paramString.toString());
   }
   
   public void release()
   {
+    this.handler.removeCallbacks(this.stopDumpRunnable);
     if (this.livePusherJSAdapter != null) {
       this.livePusherJSAdapter.unInitLivePusher();
     }
@@ -369,7 +458,7 @@ public class MiniAppLivePusher
     if (this.livePusherJSAdapter == null) {
       return;
     }
-    this.livePusherJSAdapter.takePhoto(paramBoolean, new MiniAppLivePusher.3(this, paramString, paramInt));
+    this.livePusherJSAdapter.takePhoto(paramBoolean, new MiniAppLivePusher.4(this, paramString, paramInt));
   }
   
   public void updateLivePusherSetting(JSONObject paramJSONObject)

@@ -1,17 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
-import com.tencent.biz.qqstory.view.UnHandleTouchEventViewPager;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class utt
-  implements View.OnTouchListener
+  extends QQUIEventReceiver<utn, tch>
 {
-  public utt(EditVideoFilter paramEditVideoFilter) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public utt(utn paramutn)
   {
-    return this.a.a.a(paramMotionEvent);
+    super(paramutn);
+  }
+  
+  public void a(@NonNull utn paramutn, @NonNull tch paramtch)
+  {
+    if (paramtch.a.isSuccess())
+    {
+      veg.a("Q.qqstory.memories.ProfileFeedPresenter", "receive video delete event. %s. start to refresh year node list", paramtch.toString());
+      utn.a(paramutn, true);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tch.class;
   }
 }
 

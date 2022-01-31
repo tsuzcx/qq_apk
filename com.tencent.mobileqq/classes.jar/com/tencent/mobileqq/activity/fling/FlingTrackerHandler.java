@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
-import azyi;
+import bazm;
 import java.lang.ref.WeakReference;
 
 public class FlingTrackerHandler
@@ -146,14 +146,9 @@ public class FlingTrackerHandler
   
   protected void a()
   {
-    if ((b()) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
+    if ((a()) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
     }
-  }
-  
-  protected boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout.getParent() != null);
   }
   
   protected void b()
@@ -164,7 +159,7 @@ public class FlingTrackerHandler
     {
       return;
       localObject = (ViewGroup)((Activity)localObject).getWindow().getDecorView();
-      if ((a()) && (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout.getParent().equals(localObject)))
+      if ((b()) && (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout.getParent().equals(localObject)))
       {
         ((ViewGroup)localObject).removeView(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout);
         if ((this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView != null) && (this.jdField_a_of_type_AndroidViewView.getParent().equals(this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView)))
@@ -189,9 +184,14 @@ public class FlingTrackerHandler
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
+  protected boolean b()
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout.getParent() != null);
+  }
+  
   public void cancelDrag()
   {
-    azyi.b((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    bazm.b((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
   }
   
   public Bitmap decodeSampledBitmapFromFile(String paramString, int paramInt1, int paramInt2)
@@ -215,7 +215,7 @@ public class FlingTrackerHandler
     Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localActivity != null)
     {
-      azyi.b(localActivity);
+      bazm.b(localActivity);
       localActivity.onBackPressed();
       localActivity.overridePendingTransition(2130772042, 2130772042);
     }
@@ -224,14 +224,14 @@ public class FlingTrackerHandler
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (a()) {
+    if (b()) {
       this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout.onConfigChanged(paramConfiguration);
     }
   }
   
   public void startDrag()
   {
-    azyi.a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    bazm.a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
   }
 }
 

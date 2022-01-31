@@ -1,72 +1,32 @@
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class ajwk
-  extends ajwi
+  extends ajyb
 {
-  public ajwk(QQAppInterface paramQQAppInterface, ajwh paramajwh)
+  private String a;
+  
+  protected void a(String paramString)
   {
-    super(paramQQAppInterface, paramajwh, AppletsAccountInfo.class);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public AppletsAccountInfo a(String paramString)
+  protected void b(String paramString)
   {
-    return (AppletsAccountInfo)a(paramString);
+    super.b(paramString);
+    QQAppInterface.a().d();
+    ajwf.a().a(paramString);
+    amkg.a(true);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    CoreService.startCoreService(ajxz.a().a);
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.c();
   }
   
-  protected String a(atmo paramatmo)
+  protected void d(String paramString)
   {
-    return ((AppletsAccountInfo)paramatmo).uin;
-  }
-  
-  public void a(AppletsAccountInfo paramAppletsAccountInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletAccountCache", 2, "saveAppletsAccount AppletsAccount = " + paramAppletsAccountInfo);
-    }
-    a(paramAppletsAccountInfo);
-    this.jdField_a_of_type_Ajwh.c();
-  }
-  
-  protected void b() {}
-  
-  public void c()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    List localList = ((atmp)localObject).a(AppletsAccountInfo.class);
-    ((atmp)localObject).a();
-    if (localList != null)
-    {
-      d();
-      localObject = localList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)((Iterator)localObject).next();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(String.valueOf(localAppletsAccountInfo.uin), localAppletsAccountInfo);
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("doInit size = ");
-      if (localList != null) {
-        break label118;
-      }
-    }
-    label118:
-    for (int i = 0;; i = localList.size())
-    {
-      QLog.d("AppletAccountCache", 2, i);
-      return;
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, this.jdField_a_of_type_JavaLangString);
+    amkg.a(false);
   }
 }
 

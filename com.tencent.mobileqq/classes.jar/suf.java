@@ -1,28 +1,43 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
 class suf
-  extends SimpleObserver<List<tfv>>
+  implements suk
 {
-  suf(suc paramsuc, sug paramsug, ssm paramssm) {}
+  private suf(suc paramsuc) {}
   
-  public void a(List<tfv> paramList)
+  public void a(sul paramsul)
   {
-    super.onNext(paramList);
-    if (this.jdField_a_of_type_Sug != null) {
-      this.jdField_a_of_type_Sug.a(this.jdField_a_of_type_Ssm, Collections.emptyList());
+    QQStoryContext.a();
+    QQAppInterface localQQAppInterface = QQStoryContext.a();
+    axeg localaxeg = axdo.a(2, 2);
+    MessageForShortVideo localMessageForShortVideo = paramsul.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+    axdr localaxdr = localMessageForShortVideo.getDownloadInfo(localaxeg.b);
+    if (paramsul.jdField_a_of_type_Int == 2)
+    {
+      localaxdr.i = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
+      localaxdr.a(localMessageForShortVideo.istroop, 1);
+    }
+    for (;;)
+    {
+      localaxeg.a(localaxdr);
+      localaxeg.a(new sug(this, paramsul.jdField_a_of_type_JavaLangString));
+      axdo.a(localaxeg, localQQAppInterface);
+      veg.b("AsyncFileDownloader", String.format("start download with shortvideo downloader, task = %s", new Object[] { paramsul }));
+      return;
+      localaxdr.h = ShortVideoUtils.a(localMessageForShortVideo, "mp4");
+      localaxdr.a(localMessageForShortVideo.istroop, 0);
     }
   }
   
-  public void onError(@NonNull Error paramError)
+  public boolean a()
   {
-    super.onError(paramError);
-    if (this.jdField_a_of_type_Sug != null) {
-      this.jdField_a_of_type_Sug.a(this.jdField_a_of_type_Ssm, paramError);
-    }
+    return true;
   }
+  
+  public void b(sul paramsul) {}
 }
 
 

@@ -1,33 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.widget.AdapterView;
 import java.util.List;
 
-class ovp
-  implements pct
+public class ovp
+  implements bfpc
 {
-  ovp(ovn paramovn, List paramList, ArticleInfo paramArticleInfo, opw paramopw) {}
+  public ovp(ReadInJoySelectPositionFragment paramReadInJoySelectPositionFragment) {}
   
-  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()))
+    if (paramInt <= 0) {}
+    do
     {
-      QLog.i("PackProteusItem", 1, "[onItemClick] position overflow, position = " + paramInt + ", size = " + this.jdField_a_of_type_JavaUtilList.size());
       return;
-    }
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
-      paramTemplateBean = (BaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      this.jdField_a_of_type_Opw.a().a().a(paramTemplateBean, paramViewBase.getNativeView(), paramInt, paramInt);
-      return;
-    }
-    catch (Exception paramViewBase)
-    {
-      QLog.e("PackProteusItem", 1, "[onItemClick], e = " + paramViewBase);
-    }
+      paramAdapterView = (pcp)ReadInJoySelectPositionFragment.a(this.a).get(paramInt - 1);
+    } while (paramAdapterView.a != 2);
+    this.a.a(new SelectPositionModule.PositionData(paramAdapterView.d, paramAdapterView.c, paramAdapterView.b, paramAdapterView.e));
   }
 }
 

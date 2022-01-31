@@ -2,10 +2,10 @@ package cooperation.troop;
 
 import android.os.Handler;
 import android.os.Looper;
-import bfcz;
-import bgnr;
-import bgns;
-import bgnt;
+import bgkq;
+import bhwj;
+import bhwk;
+import bhwl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
 
@@ -13,13 +13,13 @@ public class TroopPluginManager$InstallRunable
   implements Runnable
 {
   public Handler a;
-  public bgnt a;
+  public bhwl a;
   public String a;
   
-  public TroopPluginManager$InstallRunable(TroopPluginManager paramTroopPluginManager, bgnt parambgnt, String paramString)
+  public TroopPluginManager$InstallRunable(TroopPluginManager paramTroopPluginManager, bhwl parambhwl, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bgnr(this, Looper.getMainLooper());
-    this.jdField_a_of_type_Bgnt = parambgnt;
+    this.jdField_a_of_type_AndroidOsHandler = new bhwj(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Bhwl = parambhwl;
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
@@ -30,9 +30,9 @@ public class TroopPluginManager$InstallRunable
     do
     {
       return;
-      localObject = (bfcz)((QQAppInterface)localObject).getManager(27);
+      localObject = (bgkq)((QQAppInterface)localObject).getManager(27);
     } while (localObject == null);
-    ((bfcz)localObject).a(this.jdField_a_of_type_JavaLangString, false, new bgns(this));
+    ((bgkq)localObject).a(this.jdField_a_of_type_JavaLangString, false, new bhwk(this));
   }
 }
 

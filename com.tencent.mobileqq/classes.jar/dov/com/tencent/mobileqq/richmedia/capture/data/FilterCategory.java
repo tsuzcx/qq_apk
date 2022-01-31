@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bjdy;
+import bkuk;
 import com.tencent.mobileqq.qmcf.QmcfManager;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class FilterCategory
   implements Parcelable
 {
-  public static final Parcelable.Creator<FilterCategory> CREATOR = new bjdy();
+  public static final Parcelable.Creator<FilterCategory> CREATOR = new bkuk();
   public int a;
   public String a;
   public List<FilterCategoryItem> a;

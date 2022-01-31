@@ -1,56 +1,18 @@
-import android.content.Intent;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class agiy
-  extends aggx
+  implements DialogInterface.OnClickListener
 {
-  private agiy(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
-  {
-    super(paramNewPhotoPreviewActivity);
-  }
+  public agiy(BindNumberActivity paramBindNumberActivity) {}
   
-  public static aggt b(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((jdField_a_of_type_Aggt == null) || (jdField_a_of_type_Aggt.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {}
-    try
-    {
-      if ((jdField_a_of_type_Aggt == null) || (jdField_a_of_type_Aggt.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {
-        jdField_a_of_type_Aggt = new agiy(paramNewPhotoPreviewActivity);
-      }
-      return jdField_a_of_type_Aggt;
+    if (this.a.a != null) {
+      this.a.a.setText("");
     }
-    finally {}
-  }
-  
-  protected void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    super.a(paramAdapterView, paramView, paramInt, paramLong);
-    paramAdapterView = (NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((paramAdapterView != null) && (!paramAdapterView.isFinishing())) {
-      paramAdapterView.d.setText(ajjy.a(2131642355));
-    }
-  }
-  
-  protected void d()
-  {
-    Object localObject = ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).a();
-    Intent localIntent = ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent();
-    if (localObject != null)
-    {
-      ageh.a(((ArrayList)localObject).size(), this.jdField_a_of_type_Aggs.d);
-      ageh.a(localIntent, ((ArrayList)localObject).size(), this.jdField_a_of_type_Aggs.c);
-    }
-    localObject = (NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((localObject == null) || (((NewPhotoPreviewActivity)localObject).isFinishing())) {
-      return;
-    }
-    ((NewPhotoPreviewActivity)localObject).setResult(-1, new Intent());
-    ((NewPhotoPreviewActivity)localObject).finish();
   }
 }
 

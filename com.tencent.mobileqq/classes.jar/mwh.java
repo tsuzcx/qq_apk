@@ -1,28 +1,32 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.util.ProfileParams;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.TabView;
+import com.tencent.qphone.base.util.QLog;
 
 public class mwh
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public mwh(AccountDetailActivity paramAccountDetailActivity, Activity paramActivity) {}
+  public mwh(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if ((paramView instanceof PoiMapActivity.TabView))
     {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.i = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.doOnBackPressed();
-      apln.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQQ", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a.a()).longValue());
+      this.a.a(((PoiMapActivity.TabView)paramView).a);
+      this.a.i();
+      if (QLog.isDevelopLevel()) {
+        QLog.i("PoiMapActivity", 4, "mTabClickListener" + ((PoiMapActivity.TabView)paramView).a);
+      }
+      if (PoiMapActivity.a(this.a)) {
+        this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), "", "", "", "");
+      }
+    }
+    else
+    {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.f();
-    paramDialogInterface.dismiss();
+    this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), this.a.f, this.a.e, "", "");
   }
 }
 

@@ -1,21 +1,26 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import android.media.MediaCodec.BufferInfo;
+import java.nio.ByteBuffer;
 
-final class axkp
-  extends Editable.Factory
+class axkp
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public ByteBuffer a;
+  public int b;
+  
+  private axkp()
   {
-    if ((paramCharSequence instanceof axkn)) {
-      return (Editable)paramCharSequence;
-    }
-    return new axkn(paramCharSequence, 3, ChatTextSizeSettingActivity.b() + 1);
+    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axkp
  * JD-Core Version:    0.7.0.1
  */

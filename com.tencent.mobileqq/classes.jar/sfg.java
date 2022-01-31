@@ -1,27 +1,58 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import mqq.os.MqqHandler;
+import com.tencent.image.URLDrawableHandler;
 
 public class sfg
-  extends SimpleJob<Void>
+  implements URLDrawableHandler
 {
-  sfg(sez paramsez) {}
+  private URLDrawableHandler jdField_a_of_type_ComTencentImageURLDrawableHandler;
+  private sff jdField_a_of_type_Sff;
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public sfg(URLDrawableHandler paramURLDrawableHandler, sff paramsff)
   {
-    paramJobContext = (scu)sqg.a(30);
-    paramVarArgs = paramJobContext.b();
-    ThreadManager.getUIHandler().post(new AlbumGalleryCapturePart.7.1(this, paramVarArgs, paramJobContext));
-    return null;
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler = paramURLDrawableHandler;
+    this.jdField_a_of_type_Sff = paramsff;
+  }
+  
+  public sff a()
+  {
+    return this.jdField_a_of_type_Sff;
+  }
+  
+  public void doCancel()
+  {
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.doCancel();
+  }
+  
+  public boolean isCancelled()
+  {
+    return this.jdField_a_of_type_ComTencentImageURLDrawableHandler.isCancelled();
+  }
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    this.jdField_a_of_type_Sff.a(false, paramInt);
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(paramInt);
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    this.jdField_a_of_type_Sff.b();
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadStarted();
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    this.jdField_a_of_type_Sff.a(true, 0);
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(paramLong);
+  }
+  
+  public void publishProgress(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.publishProgress(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sfg
  * JD-Core Version:    0.7.0.1
  */

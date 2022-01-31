@@ -1,40 +1,6 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-
-public class vqn
-  extends Handler
+public abstract interface vqn<ERROR_TYPE, DATA_TYPE>
 {
-  public vqn(QQStoryLoadingView paramQQStoryLoadingView, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    Object localObject = paramMessage.obj;
-    String str;
-    if (paramMessage.what == 8) {
-      str = "GONE";
-    }
-    for (;;)
-    {
-      urk.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
-      this.a.setVisibility(paramMessage.what);
-      return;
-      if (paramMessage.what == 0) {
-        str = "VISIBLE";
-      } else {
-        str = "INVISIBLE";
-      }
-    }
-  }
+  public abstract Void a(ERROR_TYPE paramERROR_TYPE, DATA_TYPE paramDATA_TYPE);
 }
 
 

@@ -1,29 +1,28 @@
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.view.CircularProgressBar;
 
-class auza
-  implements Comparator<auxx>
+public class auza
+  extends Handler
 {
-  auza(auyy paramauyy) {}
+  public auza(CircularProgressBar paramCircularProgressBar) {}
   
-  public int a(auxx paramauxx1, auxx paramauxx2)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramauxx2.b() > paramauxx1.b()) {}
-    do
+    this.a.invalidate();
+    if (CircularProgressBar.a(this.a))
     {
-      return -1;
-      if (paramauxx2.b() < paramauxx1.b()) {
-        return 1;
+      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a) + CircularProgressBar.b(this.a));
+      if (CircularProgressBar.a(this.a) > 360) {
+        CircularProgressBar.a(this.a, 0);
       }
-    } while (paramauxx2.a() > paramauxx1.a());
-    if (paramauxx2.a() == paramauxx1.a()) {
-      return 0;
+      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
     }
-    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auza
  * JD-Core Version:    0.7.0.1
  */

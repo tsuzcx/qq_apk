@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/d4m" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:id="@id/d4m" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTopicViewGroup android:orientation="horizontal" android:id="@id/ksn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="26.0dip" android:layout_marginBottom="8.0dip" />
-    <ViewStub android:id="@id/mez" android:visibility="gone" android:layout="@layout/c_n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/d47" android:layout_width="wrap_content" android:layout_height="40.0dip">
-        <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:layout_gravity="center_vertical" android:id="@id/lkr" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" />
-        <FrameLayout android:layout_gravity="center_vertical" android:id="@id/lkh" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:foreground="@drawable/a1q">
-                <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:layout_gravity="center_vertical" android:id="@id/d46" android:focusable="true" android:layout_width="36.0dip" android:layout_height="36.0dip" />
-            </FrameLayout>
-            <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:layout_gravity="bottom|center|right" android:id="@id/d49" android:layout_width="12.0dip" android:layout_height="12.0dip" android:scaleType="centerInside" />
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:layout_gravity="center_vertical" android:id="@id/lkr" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" />
+    <FrameLayout android:layout_gravity="center_vertical" android:id="@id/lkh" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:foreground="@drawable/a1q">
+            <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:layout_gravity="center_vertical" android:id="@id/d46" android:focusable="true" android:layout_width="36.0dip" android:layout_height="36.0dip" />
         </FrameLayout>
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="6.0dip">
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="23.0dip">
-                <RelativeLayout android:id="@id/lks" android:background="@drawable/het" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="18.0dip" android:layout_marginRight="5.0dip">
-                    <ImageView android:background="@drawable/hsx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-                </RelativeLayout>
-                <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView android:textSize="16.0sp" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/d48" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:maxLines="1" android:includeFontPadding="false" android:layout_weight="1.0" />
-                <TextView android:textSize="11.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/d43" android:background="@drawable/a0p" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:focusable="true" android:layout_width="wrap_content" android:layout_height="23.0dip" android:layout_marginLeft="8.0dip" android:text="@string/q1g" android:drawablePadding="4.0dip" android:contentDescription="@string/pz7" />
-            </LinearLayout>
-            <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/ksj" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:layout_gravity="bottom|center|right" android:id="@id/d49" android:layout_width="12.0dip" android:layout_height="12.0dip" android:scaleType="centerInside" />
+    </FrameLayout>
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="38.0dip" android:layout_marginLeft="6.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="23.0dip">
+            <RelativeLayout android:id="@id/lks" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="18.0dip" android:layout_marginRight="5.0dip">
+                <ImageView android:background="@drawable/cjd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <include android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/as3" />
+            <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFollowTextView android:textSize="11.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/fjs" android:background="@drawable/a0p" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:focusable="true" android:layout_width="wrap_content" android:layout_height="23.0dip" android:layout_marginLeft="8.0dip" android:text="@string/q1g" android:drawablePadding="4.0dip" android:contentDescription="@string/pz7" />
         </LinearLayout>
+        <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/ksj" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>

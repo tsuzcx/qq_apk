@@ -1,18 +1,24 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import android.widget.RelativeLayout.LayoutParams;
 
 class vgz
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  vgz(vgy paramvgy, vhb paramvhb) {}
+  vgz(vgx paramvgx, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (vgy.a(this.jdField_a_of_type_Vgy) != null) {
-      vgy.a(this.jdField_a_of_type_Vgy).a((SlideItemInfo)this.jdField_a_of_type_Vhb.a.getTag());
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = (int)((this.jdField_a_of_type_Int - this.b) * f);
+    int j = this.b;
+    int k = (int)(f * (this.c - this.d));
+    int m = this.d;
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramValueAnimator.leftMargin = (i + j);
+    paramValueAnimator.bottomMargin = (m + k);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
   }
 }
 

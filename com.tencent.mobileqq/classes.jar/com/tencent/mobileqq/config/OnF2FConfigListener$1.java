@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.config;
 
-import alzc;
-import alzp;
+import amos;
+import ampf;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -12,13 +12,13 @@ import org.json.JSONObject;
 public class OnF2FConfigListener$1
   implements Runnable
 {
-  public OnF2FConfigListener$1(alzp paramalzp, alzc paramalzc, QQAppInterface paramQQAppInterface) {}
+  public OnF2FConfigListener$1(ampf paramampf, amos paramamos, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     try
     {
-      Object localObject = new JSONObject(this.jdField_a_of_type_Alzc.a);
+      Object localObject = new JSONObject(this.jdField_a_of_type_Amos.a);
       int i = ((JSONObject)localObject).optInt("face2faceSwitchOn");
       localObject = ((JSONObject)localObject).optString("face2faceTip");
       BaseApplication.getContext().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "qqsettingme_f2f_guide", 0).edit().putInt("qqsettingme_f2f_guide_switch", i).putString("qqsettingme_f2f_guide_tip", (String)localObject).apply();

@@ -10,9 +10,9 @@ class RegisterBaseActivity$4
   
   public void run()
   {
-    this.this$0.a = new Dialog(this.this$0, 2131690181);
-    this.this$0.a.setContentView(2131492892);
-    ((TextView)this.this$0.a.findViewById(2131299579)).setText(this.this$0.getString(this.a));
+    this.this$0.a = new Dialog(this.this$0, 2131755791);
+    this.this$0.a.setContentView(2131558428);
+    ((TextView)this.this$0.a.findViewById(2131365147)).setText(this.this$0.getString(this.a));
     this.this$0.a.show();
   }
 }

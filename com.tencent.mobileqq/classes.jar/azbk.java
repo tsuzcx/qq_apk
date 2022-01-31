@@ -1,26 +1,68 @@
-import android.view.KeyEvent;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.widget.presseffect.PressEffectTextView;
+import java.util.ArrayList;
 
-class azbk
-  implements View.OnKeyListener
+public class azbk
+  extends BaseAdapter
 {
-  azbk(azbi paramazbi, azbo paramazbo) {}
+  azbz jdField_a_of_type_Azbz;
+  ArrayList<azbx> jdField_a_of_type_JavaUtilArrayList;
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  protected azbk(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  
+  public void a(ArrayList<azbx> paramArrayList, azbz paramazbz)
   {
-    if ((paramKeyEvent.getAction() == 0) && (paramInt == 67) && (this.jdField_a_of_type_Azbo.a.getSelectionStart() == 0))
-    {
-      this.jdField_a_of_type_Azbi.a.b(this.jdField_a_of_type_Azbo);
-      return true;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Azbz = paramazbz;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.size();
     }
-    return false;
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity()).inflate(2131560284, paramViewGroup, false);
+    }
+    for (;;)
+    {
+      paramViewGroup = (PressEffectTextView)paramView;
+      if (TextUtils.isEmpty(((azbx)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a))
+      {
+        paramViewGroup.setVisibility(8);
+        return paramView;
+      }
+      paramViewGroup.setVisibility(0);
+      paramViewGroup.setText(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a(this.jdField_a_of_type_JavaUtilArrayList.size(), ((azbx)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a));
+      paramViewGroup.setOnClickListener(new azbl(this, paramInt));
+      return paramView;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azbk
  * JD-Core Version:    0.7.0.1
  */

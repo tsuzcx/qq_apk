@@ -1,21 +1,64 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class adcm
-  implements DialogInterface.OnClickListener
+  extends ayvz
 {
-  adcm(adck paramadck, ApolloGameData paramApolloGameData) {}
+  adcm(adcl paramadcl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    paramDialogInterface = String.format("https://m.gamecenter.qq.com/directout/detail/%s?_wv=2147484679&_wwv=4&ADTAG=limixiuteam&autodownload=1&pf=invite&appid=%s&notShowPub=1&asyncMode=3&appType=1&_nav_bgclr=ffffff&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_anim=true&_nav_alpha=0", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid });
-    Intent localIntent = new Intent(this.jdField_a_of_type_Adck.a, QQBrowserActivity.class);
-    localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
-    VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_Adck.a, paramDialogInterface, -1L, localIntent, false, -1);
+    ayqm localayqm = (ayqm)paramMessage.obj;
+    if ((localayqm == null) || (localayqm.b != 327696) || (localayqm.c != 68)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          switch (paramMessage.what)
+          {
+          default: 
+            return;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("VoiceTextEdtiController", 2, "mPicTransProcessorHandler STATUS_SEND_CANCEL unFinishSeg.get()=" + adcl.a(this.a).get() + " pos=" + localayqm.i);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("VoiceTextEdtiController", 2, "mPicTransProcessorHandler recieve finished! unFinishSeg=" + adcl.a(this.a).get() + "  isSttFinish=" + adcl.a(this.a).get() + " pos=" + localayqm.i);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("VoiceTextEdtiController", 2, "vadHelper startrecord sendrequest finish text =" + localayqm.A + " pos=" + localayqm.i);
+        }
+        if (localayqm.A != null)
+        {
+          this.a.a(new adby(localayqm.A, true), localayqm.i);
+          adcl.a(this.a).a();
+        }
+        adcl.a(this.a).set(adcl.a(this.a).get() - 1);
+      } while (adcl.a(this.a).get() != 0);
+      adcl.a(this.a).clear();
+      adcl.a(this.a).setSttNetFinish();
+      adcl.a(this.a).b(adcl.a(this.a));
+      adcl.a(this.a, 1, 0);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VoiceTextEdtiController", 2, "mPicTransProcessorHandler recieve error:" + localayqm.g);
+      }
+      adcl.a(this.a).a(localayqm.g);
+      adcl.a(this.a, 0, localayqm.g);
+      this.a.a();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VoiceTextEdtiController", 2, "vadHelper startrecord sendrequest process text =" + localayqm.A + " pos=" + localayqm.i);
+      }
+    } while ((bbjw.a(localayqm.A)) || (adcl.a(this.a).get() <= 0));
+    this.a.a(new adby(localayqm.A, false), localayqm.i);
+    adcl.a(this.a).a();
   }
 }
 

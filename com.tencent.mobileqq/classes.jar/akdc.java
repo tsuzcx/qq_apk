@@ -1,20 +1,43 @@
-public class akdc
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+
+class akdc
+  extends ClickableSpan
 {
-  public static String a(long paramLong)
+  Context jdField_a_of_type_AndroidContentContext;
+  String jdField_a_of_type_JavaLangString;
+  String b;
+  
+  public akdc(Context paramContext, String paramString1, String paramString2)
   {
-    if (paramLong <= 0L) {
-      return "";
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramString1;
+  }
+  
+  public void onClick(View paramView)
+  {
+    try
+    {
+      paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      return;
     }
-    if (paramLong < 1024L) {
-      return paramLong + "B";
+    catch (Exception paramView)
+    {
+      QLog.d("PrivacyPolicyHelper", 1, "no system browser exp=", paramView);
     }
-    if (paramLong < 1048576L) {
-      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F) }) + "K";
-    }
-    if (paramLong < 1073741824L) {
-      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F) }) + "M";
-    }
-    return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F / 1024.0F) }) + "G";
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

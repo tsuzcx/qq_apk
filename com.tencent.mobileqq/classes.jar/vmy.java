@@ -1,29 +1,34 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
 
-public class vmy
+class vmy
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean)
+  private vmy(vmt paramvmt) {}
+  
+  public void onGlobalLayout()
   {
-    boolean bool1 = false;
-    paramQQAppInterface = bade.a(paramQQAppInterface, paramContext, paramString);
-    if (paramQQAppInterface != null) {
-      bool1 = paramQQAppInterface.c();
-    }
-    for (boolean bool2 = true;; bool2 = false)
+    int i = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom();
+    if (this.a.c < 0)
     {
-      if ((!bool2) && (paramBoolean))
-      {
-        Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-        localIntent.putExtra("url", paramString);
-        localIntent.putExtra("selfSet_leftViewText", ajjy.a(2131650139));
-        paramContext.startActivity(localIntent);
-      }
-      urk.b("UrlJumpUtils", "jump %s, actionResult = %b, handled = %b", paramQQAppInterface, Boolean.valueOf(bool1), Boolean.valueOf(bool2));
-      return bool2;
+      this.a.c = i;
+      this.a.jdField_a_of_type_Vmx.a();
     }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.c - i <= this.a.b);
+      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+      this.a.c = i;
+      this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
+    } while (this.a.jdField_a_of_type_Vmx == null);
+    this.a.jdField_a_of_type_Vmx.a(true, null);
+    this.a.jdField_a_of_type_Vmx.a(this.a.a());
   }
 }
 

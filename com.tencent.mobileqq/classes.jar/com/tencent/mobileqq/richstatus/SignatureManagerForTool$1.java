@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.richstatus;
 
-import ajed;
+import ajsf;
 import android.os.Bundle;
 import android.text.TextUtils;
-import avep;
-import bace;
-import baog;
-import baoi;
+import awei;
+import bbdj;
+import bbqc;
+import bbqe;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import gf;
+import hy;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -17,14 +17,14 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class SignatureManagerForTool$1
   implements Runnable
 {
-  public SignatureManagerForTool$1(avep paramavep, int paramInt) {}
+  public SignatureManagerForTool$1(awei paramawei, int paramInt) {}
   
   public void run()
   {
-    Object localObject1 = (baoi)avep.a(this.this$0).get(Integer.valueOf(this.a));
+    Object localObject1 = (bbqe)awei.a(this.this$0).get(Integer.valueOf(this.a));
     Object localObject2;
     boolean bool;
-    if ((localObject1 == null) || (!((baoi)localObject1).a.get())) {
+    if ((localObject1 == null) || (!((bbqe)localObject1).a.get())) {
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder().append("getTemplateInfo info == null: ");
@@ -41,22 +41,22 @@ public class SignatureManagerForTool$1
       return;
       bool = false;
       break;
-      localObject2 = new File(ajed.bN + this.a + File.separator + "config.json");
+      localObject2 = new File(ajsf.bV + this.a + File.separator + "config.json");
       if (!((File)localObject2).exists()) {
         break label174;
       }
-      localObject2 = bace.a((File)localObject2, -1);
+      localObject2 = bbdj.a((File)localObject2, -1);
     } while (TextUtils.isEmpty((CharSequence)localObject2));
-    baog.a((String)localObject2, (baoi)localObject1);
-    ((baoi)localObject1).a.set(false);
-    avep.a(this.this$0);
+    bbqc.a((String)localObject2, (bbqe)localObject1);
+    ((bbqe)localObject1).a.set(false);
+    awei.a(this.this$0);
     this.this$0.notifyObservers(Integer.valueOf(3));
     return;
     label174:
     this.this$0.notifyObservers(Integer.valueOf(9));
     localObject1 = new Bundle();
     ((Bundle)localObject1).putInt("id", this.a);
-    QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gf.d, (Bundle)localObject1, avep.a(this.this$0));
+    QIPCClientHelper.getInstance().callServer("VasFontIPCModule", hy.d, (Bundle)localObject1, awei.a(this.this$0));
   }
 }
 

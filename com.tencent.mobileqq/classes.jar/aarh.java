@@ -1,30 +1,21 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aarh
-  implements andk
+  implements View.OnClickListener
 {
-  public aarh(EmosmActivity paramEmosmActivity) {}
+  public aarh(ChatHistory paramChatHistory) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    Object localObject = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (!badq.d(this.a))
+    long l = System.currentTimeMillis();
+    if (l - this.a.b > 1000L)
     {
-      localObject = new bbmy(this.a);
-      ((bbmy)localObject).a(2130839253);
-      ((bbmy)localObject).d(1500);
-      ((bbmy)localObject).a(ajjy.a(2131638247));
-      ((bbmy)localObject).b(0);
-      return;
+      this.a.b = l;
+      this.a.b();
+      axqw.b(this.a.app, "CliOper", "", "", "0X800568D", "0X800568D", this.a.k, 0, "", "", "", "");
     }
-    this.a.jdField_a_of_type_Bbms.a(this.a.getString(2131626463));
-    this.a.jdField_a_of_type_Bbms.show();
-    ((ajhm)this.a.app.a(12)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
-    URLDrawable.clearMemoryCache();
   }
 }
 

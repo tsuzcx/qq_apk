@@ -9,19 +9,19 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
-import bdcz;
-import bdfo;
-import bdfx;
-import bdfz;
-import bdgg;
-import bdhe;
-import bdml;
-import bdmy;
-import bdna;
-import bdni;
-import bdnl;
-import bdnw;
-import bdyn;
+import begz;
+import bejo;
+import bejy;
+import beka;
+import bekg;
+import belh;
+import bequ;
+import beri;
+import berl;
+import berw;
+import besa;
+import besl;
+import bffu;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -33,13 +33,13 @@ public class SystemInfoPlugin
   public static final String TAG = "SystemInfoPlugin";
   private MiniAppProxy mMiniAppProxy;
   
-  public String handleGetSystemInfo(bdfz parambdfz)
+  public String handleGetSystemInfo(beka parambeka)
   {
     Object localObject1;
     if (this.mContext == null)
     {
-      bdnw.d("SystemInfoPlugin", "getSystemInfo error,context is NULL");
-      localObject1 = parambdfz.b();
+      besl.d("SystemInfoPlugin", "getSystemInfo error,context is NULL");
+      localObject1 = parambeka.b();
       return localObject1;
     }
     label62:
@@ -54,7 +54,7 @@ public class SystemInfoPlugin
       localObject1 = new DisplayMetrics();
       ((WindowManager)this.mContext.getSystemService("window")).getDefaultDisplay().getRealMetrics((DisplayMetrics)localObject1);
       localObject3 = this.mMiniAppContext.a();
-      if (((!bdyn.a((Context)localObject3)) || (!bdyn.a((Activity)localObject3))) && (!bdyn.a())) {
+      if (((!bffu.a((Context)localObject3)) || (!bffu.a((Activity)localObject3))) && (!bffu.a())) {
         break label647;
       }
       i = 1;
@@ -64,18 +64,18 @@ public class SystemInfoPlugin
       if (i == 0) {
         break label742;
       }
-      j -= (int)(bdyn.c((Context)localObject3) / d);
+      j -= (int)(bffu.c((Context)localObject3) / d);
     }
     label326:
     label735:
     label742:
     for (;;)
     {
-      int n = (int)(Math.round(bdyn.d((Context)localObject3)) / d);
-      int i1 = (int)(bdyn.a((Context)localObject3, 44.0F) / d + 0.5D);
-      int k = (int)(bdyn.a((Context)localObject3, 54.0F) / d + 0.5D);
-      localObject1 = (String)this.mMiniAppContext.a(bdfo.a());
-      if (!bdhe.a((String)localObject1)) {
+      int n = (int)(Math.round(bffu.d((Context)localObject3)) / d);
+      int i1 = (int)(bffu.a((Context)localObject3, 44.0F) / d + 0.5D);
+      int k = (int)(bffu.a((Context)localObject3, 54.0F) / d + 0.5D);
+      localObject1 = (String)this.mMiniAppContext.a(bejo.a());
+      if (!belh.a((String)localObject1)) {
         label234:
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           break label735;
@@ -84,7 +84,7 @@ public class SystemInfoPlugin
       for (localObject3 = this.mApkgInfo.a().a((String)localObject1).a.a.c;; localObject3 = "default")
       {
         if ((this.mApkgInfo != null) && (this.mApkgInfo.a() != null)) {
-          if ((this.mApkgInfo.a().jdField_a_of_type_Bdni != null) && (this.mApkgInfo.a((String)localObject1)) && (this.mApkgInfo.a().jdField_a_of_type_Bdni.a())) {
+          if ((this.mApkgInfo.a().jdField_a_of_type_Berw != null) && (this.mApkgInfo.a((String)localObject1)) && (this.mApkgInfo.a().jdField_a_of_type_Berw.a())) {
             i = 1;
           }
         }
@@ -116,18 +116,18 @@ public class SystemInfoPlugin
                   ((JSONObject)localObject1).put("fontSizeSetting", 16);
                   ((JSONObject)localObject1).put("SDKVersion", this.mMiniAppContext.a());
                   ((JSONObject)localObject1).put("AppPlatform", this.mMiniAppProxy.getAppName());
-                  localObject3 = bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, (JSONObject)localObject1).toString();
+                  localObject3 = bekg.a(parambeka.jdField_a_of_type_JavaLangString, (JSONObject)localObject1).toString();
                   localObject1 = localObject3;
-                  if (!"getSystemInfo".equals(parambdfz.jdField_a_of_type_JavaLangString)) {
+                  if (!"getSystemInfo".equals(parambeka.jdField_a_of_type_JavaLangString)) {
                     break;
                   }
-                  parambdfz.a((String)localObject3);
+                  parambeka.a((String)localObject3);
                   return localObject3;
                 }
                 catch (Exception localException)
                 {
-                  bdnw.d("SystemInfoPlugin", "getSystemInfo exception: " + new Throwable(localException));
-                  return parambdfz.b();
+                  besl.d("SystemInfoPlugin", "getSystemInfo exception: " + new Throwable(localException));
+                  return parambeka.b();
                 }
               }
               Object localObject2 = this.mContext.getResources().getDisplayMetrics();

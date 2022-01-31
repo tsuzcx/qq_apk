@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
-import atmo;
-import atoc;
-import urk;
+import aukm;
+import auma;
+import veg;
 
 public class VideoCollectionEntry
-  extends atmo
+  extends aukm
 {
   public String address;
   public int collectionCount;
@@ -16,7 +16,7 @@ public class VideoCollectionEntry
   public String feedId;
   public String groupId;
   public int hasShareToDiscover;
-  @atoc
+  @auma
   public String key;
   public String label;
   public String nextCookie;
@@ -34,7 +34,7 @@ public class VideoCollectionEntry
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      urk.e("VideoCollectionEntry", "NumberFormatException while getCollectionId. collectionKey is %s,", new Object[] { paramString });
+      veg.e("VideoCollectionEntry", "NumberFormatException while getCollectionId. collectionKey is %s,", new Object[] { paramString });
     }
     return -1;
   }

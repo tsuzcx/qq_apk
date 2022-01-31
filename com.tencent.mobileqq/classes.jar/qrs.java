@@ -1,6 +1,14 @@
-public abstract interface qrs
+import android.view.View;
+
+class qrs
+  implements rak
 {
-  public abstract void a(int paramInt);
+  qrs(qrr paramqrr) {}
+  
+  public void a(View paramView)
+  {
+    paramView.setTag(new qml(paramView, 6));
+  }
 }
 
 

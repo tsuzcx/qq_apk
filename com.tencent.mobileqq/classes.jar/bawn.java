@@ -1,11 +1,8 @@
-class bawn
-  implements moc
+import android.view.View;
+
+public abstract interface bawn
 {
-  bawn(bawm parambawm) {}
-  
-  public void loaded(String paramString, int paramInt) {}
-  
-  public void progress(int paramInt) {}
+  public abstract void onClick(View paramView);
 }
 
 

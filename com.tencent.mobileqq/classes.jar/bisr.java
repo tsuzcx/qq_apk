@@ -1,89 +1,45 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
+import android.support.annotation.Nullable;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public class bisr
+class bisr
+  implements bjob<bisc>
 {
-  private long a;
-  public Handler a;
-  public HandlerThread a;
-  public biss a;
+  bisr(biso parambiso) {}
   
-  public bisr()
+  public void a(@Nullable bisc parambisc)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MediaCodecThumbnailGenerator");
-  }
-  
-  public static float a(Bitmap paramBitmap)
-  {
-    int i1 = paramBitmap.getHeight() / 16;
-    int i2 = paramBitmap.getWidth() / 9;
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    while (k < paramBitmap.getHeight())
+    biso.a(this.a).a().a(biso.a(this.a));
+    bisc localbisc;
+    if (parambisc != null)
     {
-      int m = 0;
-      if (m < paramBitmap.getWidth())
+      localbisc = parambisc;
+      if (parambisc.jdField_a_of_type_JavaLangString != null) {}
+    }
+    else
+    {
+      localbisc = new bisc();
+      localbisc.jdField_a_of_type_JavaLangString = "default";
+    }
+    parambisc = (String)biso.a(this.a).get(localbisc.jdField_a_of_type_JavaLangString);
+    if (!localbisc.jdField_a_of_type_JavaLangString.equals("default")) {
+      parambisc = ajyc.a(2131699988) + parambisc + ajyc.a(2131699981);
+    }
+    for (;;)
+    {
+      biso.a(this.a).setText(parambisc);
+      if ((biso.a(this.a).size() == 0) && (!biso.a(this.a)))
       {
-        int n = paramBitmap.getPixel(m, k);
-        if (((n >> 16 & 0xFF) < 10) && ((n >> 8 & 0xFF) < 10) && ((n & 0xFF) < 10))
-        {
-          n = j + 1;
-          j = i;
-        }
-        for (i = n;; i = n)
-        {
-          n = m + i2;
-          m = i;
-          i = j;
-          j = m;
-          m = n;
-          break;
-          n = j;
-          j = i + 1;
-        }
+        biso.a(this.a).addAll(localbisc.jdField_a_of_type_JavaUtilList);
+        this.a.b();
+        biso.a(this.a, true);
       }
-      k += i1;
+      return;
+      parambisc = ajyc.a(2131699977);
+      localbisc.jdField_a_of_type_JavaUtilList.addAll(biso.jdField_a_of_type_JavaUtilList);
     }
-    float f = j / (i + j);
-    urk.c("MediaCodecThumbnailGen", "whitePixelCount = " + i + " blackPixelCount = " + j);
-    return f;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-  }
-  
-  public void a(Looper paramLooper)
-  {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Biss = new biss(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    Looper localLooper = paramLooper;
-    if (paramLooper == null) {
-      localLooper = Looper.myLooper();
-    }
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localLooper);
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2, bisp<Boolean, bisv> parambisp, bisp<Boolean, bisu> parambisp1)
-  {
-    bist localbist = new bist();
-    localbist.jdField_a_of_type_JavaLangString = paramString1;
-    localbist.jdField_b_of_type_JavaLangString = paramString2;
-    localbist.jdField_a_of_type_Boolean = paramBoolean1;
-    localbist.jdField_a_of_type_Int = paramInt1;
-    localbist.jdField_b_of_type_Int = paramInt2;
-    localbist.c = paramInt3;
-    localbist.d = paramInt4;
-    localbist.jdField_b_of_type_Boolean = paramBoolean2;
-    localbist.jdField_b_of_type_Bisp = parambisp;
-    localbist.jdField_a_of_type_Bisp = parambisp1;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    Message.obtain(this.jdField_a_of_type_Biss, 1, localbist).sendToTarget();
   }
 }
 

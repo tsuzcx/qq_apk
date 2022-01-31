@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
-import ujx;
-import ukv;
+import uwt;
+import uxr;
 
 public final class HomeFeedPresenter$4
   implements Runnable
 {
-  public HomeFeedPresenter$4(ukv paramukv) {}
+  public HomeFeedPresenter$4(uxr paramuxr) {}
   
   public void run()
   {
-    ujx.a(this.a);
+    uwt.a(this.a);
   }
 }
 

@@ -1,26 +1,26 @@
-public abstract class ahdg
-  implements ahdi
+import Wallet.SetSelectedSkinRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+
+public class ahdg
+  implements BusinessObserver
 {
-  public int a;
-  public long a;
-  public aylu a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c;
+  public ahdg(RedPacketManager paramRedPacketManager, BusinessObserver paramBusinessObserver) {}
   
-  public ahdg()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_b_of_type_Int = -35072;
-    this.jdField_a_of_type_Aylu = new aylu();
+    SetSelectedSkinRsp localSetSelectedSkinRsp = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
+    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, paramBoolean, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("RedPacketManager", 2, "setSelectedSkin2ServerIfChanged onReceive isSuccess:" + paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahdg
  * JD-Core Version:    0.7.0.1
  */

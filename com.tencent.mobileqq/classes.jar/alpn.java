@@ -1,104 +1,39 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class alpn
-  implements TextWatcher
+class alpn
+  implements WtTicketPromise
 {
-  int jdField_a_of_type_Int;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean = true;
-  int b;
-  public boolean b;
+  alpn(alpf paramalpf, TicketManager paramTicketManager, QQAppInterface paramQQAppInterface, String paramString, long paramLong) {}
   
-  public alpn(BusinessCardEditActivity paramBusinessCardEditActivity, int paramInt, EditText paramEditText)
+  public void Done(Ticket paramTicket)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public alpn(BusinessCardEditActivity paramBusinessCardEditActivity, int paramInt1, EditText paramEditText, int paramInt2)
-  {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    int j = 1;
-    boolean bool;
-    label69:
-    int i;
-    if ((this.jdField_b_of_type_Int == 1) && (!this.jdField_a_of_type_JavaLangString.equals(paramEditable.toString())))
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        bool = this.jdField_b_of_type_Boolean;
-        this.jdField_b_of_type_Boolean = bool;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp", 2, "--- pskey async done---  ");
     }
-    else
-    {
-      this.jdField_a_of_type_Boolean = false;
-      if (!(this.jdField_a_of_type_AndroidWidgetEditText instanceof ClearEllipsisEditText)) {
-        break label155;
-      }
-      paramEditable = ((ClearEllipsisEditText)this.jdField_a_of_type_AndroidWidgetEditText).a();
-      i = paramEditable.length();
-      if ((this.jdField_a_of_type_AndroidWidgetEditText.getTag() == null) || (!((String)this.jdField_a_of_type_AndroidWidgetEditText.getTag()).equals("name"))) {
-        break label197;
-      }
-      i = paramEditable.getBytes().length;
-    }
-    for (;;)
-    {
-      if (i > this.jdField_a_of_type_Int)
-      {
-        for (;;)
-        {
-          if (i <= this.jdField_a_of_type_Int) {
-            break label177;
-          }
-          paramEditable = paramEditable.substring(0, paramEditable.length() - 1);
-          if (j != 0)
-          {
-            i = paramEditable.getBytes().length;
-            continue;
-            bool = true;
-            break;
-            label155:
-            paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-            break label69;
-          }
-          i = paramEditable.length();
-        }
-        label177:
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramEditable);
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramEditable.length());
-      }
-      return;
-      label197:
-      j = 0;
-    }
+    paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+    alpf.a(this.jdField_a_of_type_Alpf, this.jdField_a_of_type_Long, true, paramTicket);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
+    QLog.e("ArkApp", 1, "--- pskey async failed---  " + paramErrMsg.getMessage());
+    alpf.a(this.jdField_a_of_type_Alpf, this.jdField_a_of_type_Long, false, null);
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    QLog.e("ArkApp", 1, "--- pskey async timeout---  " + paramErrMsg.getMessage());
+    alpf.a(this.jdField_a_of_type_Alpf, this.jdField_a_of_type_Long, false, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alpn
  * JD-Core Version:    0.7.0.1
  */

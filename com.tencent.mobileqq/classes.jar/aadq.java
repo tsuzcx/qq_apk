@@ -1,21 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.BaseChatPie.82;
-
-public class aadq
-  implements View.OnTouchListener
+class aadq
+  implements aacl
 {
-  public aadq(BaseChatPie.82 param82) {}
+  aadq(aadp paramaadp) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(asiu paramasiu, int paramInt)
   {
-    return true;
+    aadp.a(this.a, paramasiu);
+    aadp.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aadq
  * JD-Core Version:    0.7.0.1
  */

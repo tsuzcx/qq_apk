@@ -1,8 +1,8 @@
 package cooperation.comic.jsp;
 
-import bfab;
+import bghs;
 import com.tencent.qphone.base.util.QLog;
-import ew;
+import gp;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONObject;
@@ -10,21 +10,21 @@ import org.json.JSONObject;
 public class QQComicJsPlugin$4
   implements Runnable
 {
-  public QQComicJsPlugin$4(bfab parambfab) {}
+  public QQComicJsPlugin$4(bghs parambghs) {}
   
   public void run()
   {
-    Object localObject = bfab.a();
+    Object localObject = bghs.a();
     if (localObject != null)
     {
       long l1 = System.currentTimeMillis();
-      ew.a(new File((String)localObject));
+      gp.a(new File((String)localObject));
       long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d("QQComicJsPlugin", 2, "clean cache cost " + (l2 - l1) + " ms");
       }
     }
-    bfab.a().set(false);
+    bghs.a().set(false);
     localObject = new JSONObject();
     try
     {
@@ -34,7 +34,7 @@ public class QQComicJsPlugin$4
       localJSONObject.put("size", this.this$0.a());
       ((JSONObject)localObject).put("data", localJSONObject);
       label137:
-      this.this$0.callJs(bfab.b(), new String[] { ((JSONObject)localObject).toString() });
+      this.this$0.callJs(bghs.b(), new String[] { ((JSONObject)localObject).toString() });
       return;
     }
     catch (Exception localException)

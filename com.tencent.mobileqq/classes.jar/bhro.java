@@ -1,23 +1,17 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-final class bhro
-  implements EIPCResultCallback
+public class bhro
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  public int a;
+  public int b;
+  
+  public bhro(int paramInt1, int paramInt2)
   {
-    if (paramEIPCResult != null)
-    {
-      boolean bool = paramEIPCResult.data.getBoolean("key_result");
-      QLog.d("PeakIpcController", 2, "sendPic result:" + bool);
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhro
  * JD-Core Version:    0.7.0.1
  */

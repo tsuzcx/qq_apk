@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.qphone.base.util.QLog;
 
 class pgi
-  implements View.OnClickListener
+  implements pol
 {
-  pgi(pgb parampgb) {}
+  pgi(pgg parampgg, ArticleInfo paramArticleInfo, pax parampax) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
   {
-    paramView = this.a.jdField_a_of_type_Qoe.a();
-    if (paramView != null) {
-      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
+    QLog.d("NewPolymericMultiVideoProteusItem", 1, "position : " + paramInt);
+    pgg.a(this.jdField_a_of_type_Pgg, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramInt);
+    this.jdField_a_of_type_Pax.a().a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramViewBase.getNativeView(), paramInt, 0L);
   }
 }
 

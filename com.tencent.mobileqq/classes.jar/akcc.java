@@ -1,12 +1,15 @@
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
+
 public class akcc
+  implements Comparator<PhoneContact>
 {
-  public long a;
-  public String a;
+  public akcc(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public akcc(String paramString, long paramLong)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
   }
 }
 

@@ -1,16 +1,10 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
+import java.util.HashMap;
+import java.util.Map;
 
 public class tdh
-  extends tem
+  extends ssk
 {
-  public tdh(@NonNull BannerFeedItem paramBannerFeedItem)
-  {
-    this.a = paramBannerFeedItem.shareInfo.a;
-    this.b = paramBannerFeedItem.shareInfo.b;
-    this.c = paramBannerFeedItem.shareInfo.d;
-    this.d = paramBannerFeedItem.shareInfo.c;
-  }
+  public Map<String, tmn> a = new HashMap();
 }
 
 

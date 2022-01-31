@@ -1,12 +1,13 @@
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-
-public abstract interface bjgw
+public class bjgw<F, S>
 {
-  public abstract int a(int paramInt, long paramLong);
+  public F a;
+  public S b;
   
-  public abstract QQFilterRenderManager a();
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public bjgw(F paramF, S paramS)
+  {
+    this.a = paramF;
+    this.b = paramS;
+  }
 }
 
 

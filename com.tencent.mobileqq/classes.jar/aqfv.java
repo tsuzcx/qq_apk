@@ -1,56 +1,24 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqfv
-  extends RecyclerView.OnScrollListener
+final class aqfv
+  implements DialogInterface.OnClickListener
 {
-  public aqfv(HotPicRecyclerView paramHotPicRecyclerView) {}
+  aqfv(long paramLong, int paramInt, Activity paramActivity) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0)
-    {
-      AbstractGifImage.resumeAll();
-      aqgd.c();
-      this.a.b();
-      if (paramInt != 2) {
-        break label128;
-      }
-      this.a.jdField_a_of_type_Aqhj.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardShareByServerHelper", 2, "-->qbShowShareResultDialog--stay");
     }
-    for (;;)
-    {
-      if ((paramInt == 0) && (this.a.jdField_a_of_type_Int == 2))
-      {
-        ((StaggeredGridLayoutManager)this.a.getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.a.jdField_a_of_type_ArrayOfInt);
-        if ((this.a.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.a.jdField_a_of_type_Aqfw != null)) {
-          this.a.jdField_a_of_type_Aqfw.d();
-        }
-      }
-      this.a.jdField_a_of_type_Int = paramInt;
-      return;
-      this.a.c();
-      AbstractGifImage.pauseAll();
-      aqgd.b();
-      break;
-      label128:
-      this.a.jdField_a_of_type_Aqhj.a(false);
-    }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if (paramInt2 > 0) {
-      this.a.jdField_a_of_type_Aqhj.a(paramInt2);
-    }
+    aqft.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqfv
  * JD-Core Version:    0.7.0.1
  */

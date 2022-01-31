@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.multicard;
 
-import arwc;
-import arwe;
+import assg;
+import assi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
@@ -14,7 +14,7 @@ import mqq.os.MqqHandler;
 public class MultiCardManager$1
   implements Runnable
 {
-  public MultiCardManager$1(arwc paramarwc, ArrayList paramArrayList, long paramLong, arwe paramarwe) {}
+  public MultiCardManager$1(assg paramassg, ArrayList paramArrayList, long paramLong, assi paramassi) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class MultiCardManager$1
     Object localObject2;
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      localObject1 = (TroopManager)arwc.a(this.this$0).getManager(52);
+      localObject1 = (TroopManager)assg.a(this.this$0).getManager(52);
       localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject2).hasNext())
       {

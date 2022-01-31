@@ -1,46 +1,150 @@
+import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.GridView;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class nss
-  extends BaseAdapter
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList<MultiBiuSameContent> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static boolean jdField_a_of_type_Boolean = true;
+  private static boolean b;
+  private int jdField_a_of_type_Int = -1;
+  private View jdField_a_of_type_AndroidViewView;
+  private GridView jdField_a_of_type_AndroidWidgetGridView;
+  private List<TabChannelCoverInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private nsx jdField_a_of_type_Nsx;
+  private ntk jdField_a_of_type_Ntk;
   
-  public nss(Context paramContext, ArrayList<MultiBiuSameContent> paramArrayList)
+  public nss(ntk paramntk, View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramArrayList;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilArrayList = localObject;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {}
-    for (paramView = new nst(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment, this.jdField_a_of_type_AndroidContentContext);; paramView = (nst)paramView.getTag())
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Ntk = paramntk;
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)paramView.findViewById(2131367287));
+    this.jdField_a_of_type_Nsx = new nsx(this, null);
+    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Nsx);
+    this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_Nsx);
+    if ((oot.a()) && (jdField_a_of_type_Boolean))
     {
-      paramView.a((MultiBiuSameContent)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt);
-      return paramView.a();
+      jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = paramView.getContext().getResources().getDimensionPixelOffset(2131298586);
+      return;
+      jdField_a_of_type_Boolean = false;
+      paramntk = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      paramntk.height = 0;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramntk);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  private void a(TabChannelCoverInfo paramTabChannelCoverInfo, View paramView)
+  {
+    if (!jdField_a_of_type_Boolean) {}
+    while ((paramTabChannelCoverInfo.redPoint == null) || (!paramTabChannelCoverInfo.redPoint.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    long l = System.currentTimeMillis() / 1000L;
+    if ((paramTabChannelCoverInfo.redPoint.c != 0L) && ((float)(l - paramTabChannelCoverInfo.redPoint.c) > 2.5F) && ((float)(l / 3600L - paramTabChannelCoverInfo.redPoint.c / 3600L) < 1.0F)) {}
+    for (int i = 1; (i == 0) && (paramTabChannelCoverInfo.redPoint.jdField_a_of_type_Long <= l) && ((paramTabChannelCoverInfo.redPoint.b == 0L) || (paramTabChannelCoverInfo.redPoint.b >= l)); i = 0)
+    {
+      Object localObject = this.jdField_a_of_type_Ntk;
+      if (ntk.b)
+      {
+        QLog.d("IconTabController", 1, "showTextAnimation : " + paramTabChannelCoverInfo);
+        paramView.setVisibility(0);
+        localObject = new TranslateAnimation(1, 1.0F, 1, -1.0F, 1, -1.0F, 1, 1.0F);
+        ((TranslateAnimation)localObject).setDuration(3000L);
+        ((TranslateAnimation)localObject).setRepeatCount(1);
+        ((TranslateAnimation)localObject).setStartOffset(1000L);
+        ((TranslateAnimation)localObject).setFillAfter(true);
+        ((TranslateAnimation)localObject).setAnimationListener(new nsw(this));
+        paramView.startAnimation((Animation)localObject);
+      }
+      paramTabChannelCoverInfo.redPoint.c = (System.currentTimeMillis() / 1000L);
+      this.jdField_a_of_type_Ntk.a(paramTabChannelCoverInfo);
+      return;
+    }
+    paramView.setVisibility(8);
+  }
+  
+  public static boolean a()
+  {
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    if (a()) {
+      return;
+    }
+    QLog.d("IconTabController", 1, "showWithAnimation");
+    jdField_a_of_type_Boolean = true;
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, this.jdField_a_of_type_Int });
+    localValueAnimator.setDuration(200L);
+    localValueAnimator.addUpdateListener(new nst(this));
+    localValueAnimator.start();
+  }
+  
+  public void a(List<TabChannelCoverInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    Object localObject = paramList;
+    if (paramList.size() > 11) {
+      localObject = paramList.subList(0, 11);
+    }
+    ((List)localObject).add(new nsz(null));
+    this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
+    this.jdField_a_of_type_Nsx.notifyDataSetChanged();
+  }
+  
+  public void b()
+  {
+    oot.a(false);
+    if ((this.jdField_a_of_type_AndroidViewView.getAlpha() <= 0.01D) || (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8)) {}
+    while (b) {
+      return;
+    }
+    QLog.d("IconTabController", 1, "hideWithAnimation");
+    jdField_a_of_type_Boolean = false;
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, this.jdField_a_of_type_Int });
+    localValueAnimator.setDuration(200L);
+    localValueAnimator.addUpdateListener(new nsu(this));
+    localValueAnimator.addListener(new nsv(this));
+    localValueAnimator.start();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Nsx.notifyDataSetChanged();
+  }
+  
+  public void d()
+  {
+    if (oot.a())
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (a()) {
+        a();
+      }
+      return;
+    }
+    jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    b();
   }
 }
 

@@ -1,8 +1,6 @@
-public class adnv
-  extends acjc
-{
-  public avfq a;
-}
+public final class adnv
+  extends actr
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar

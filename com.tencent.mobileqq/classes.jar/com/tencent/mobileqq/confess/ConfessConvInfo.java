@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.confess;
 
-import atmo;
+import aukm;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type,topicId,holmesCurCount,holmesTolCount")
 public class ConfessConvInfo
-  extends atmo
+  extends aukm
 {
   private static final String tableName = "confess_conv_info";
   public int holmesCurCount;

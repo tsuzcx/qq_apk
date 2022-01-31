@@ -9,7 +9,7 @@ class MiniAppDesktop$5
   
   public void run()
   {
-    MiniAppDesktop.access$400(this.this$0).startSwitchIconAnimation();
+    MiniAppDesktop.access$300(this.this$0).startSwitchIconAnimation();
   }
 }
 

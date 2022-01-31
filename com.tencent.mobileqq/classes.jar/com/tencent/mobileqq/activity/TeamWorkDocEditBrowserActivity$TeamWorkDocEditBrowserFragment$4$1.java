@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abuh;
+import acet;
 
 public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$4$1
   implements Runnable
 {
-  public TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$4$1(abuh paramabuh) {}
+  public TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$4$1(acet paramacet) {}
   
   public void run()
   {

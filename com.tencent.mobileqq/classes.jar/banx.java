@@ -1,63 +1,42 @@
-import android.os.AsyncTask;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.vas.PendantInfo;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.widget.PinnedHeaderIphoneTreeView;
 
 public class banx
-  extends AsyncTask<Long, Void, Void>
+  implements View.OnTouchListener
 {
-  long jdField_a_of_type_Long;
-  Object jdField_a_of_type_JavaLangObject;
+  public banx(PinnedHeaderIphoneTreeView paramPinnedHeaderIphoneTreeView) {}
   
-  public banx(PendantInfo paramPendantInfo, Object paramObject, long paramLong)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  protected Void a(Long... paramVarArgs)
-  {
-    try
+    boolean bool = true;
+    switch (paramMotionEvent.getAction())
     {
-      long l1 = paramVarArgs[0].longValue();
-      long l2 = paramVarArgs[1].longValue();
-      long l3 = paramVarArgs[2].longValue();
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.a((int)l3, this.jdField_a_of_type_JavaLangObject, (int)l2);
-      if ((paramVarArgs != null) && (!isCancelled()))
-      {
-        l2 = SystemClock.uptimeMillis();
-        Message localMessage = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(17);
-        if (PendantInfo.a(localMessage, this.jdField_a_of_type_Long))
-        {
-          localMessage.obj = paramVarArgs;
-          if (l2 < l1) {
-            this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, l1 - l2);
-          } else {
-            this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-          }
-        }
-      }
+    case 2: 
+    default: 
+      bool = false;
     }
-    catch (Throwable paramVarArgs)
+    do
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("PendantInfo", 4, "", paramVarArgs);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.b = true;
-    }
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_Banx = null;
+      return bool;
+      paramView.setPressed(true);
+      this.a.invalidate();
+      return true;
+      paramView.setPressed(false);
+      this.a.invalidate();
+      break;
+    } while (!paramView.isPressed());
+    paramView.setPressed(false);
+    this.a.b(this.a.jdField_a_of_type_Int);
+    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_AndroidViewView = null;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     banx
  * JD-Core Version:    0.7.0.1
  */

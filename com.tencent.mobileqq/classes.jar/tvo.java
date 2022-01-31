@@ -1,20 +1,22 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tribe.async.async.Job;
 import com.tribe.async.async.JobContext;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.async.SimpleJob;
 
-class tvo
-  extends Job<Object, Object, Object>
+final class tvo
+  extends SimpleJob<Object>
 {
-  tvo(tvn paramtvn, String paramString, spl paramspl)
+  tvo(String paramString)
   {
     super(paramString);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    sgi.a().dispatch(this.jdField_a_of_type_Spl);
+    paramJobContext = tvk.a();
+    if (paramJobContext != null) {
+      tvk.b(paramJobContext);
+    }
     return null;
   }
 }

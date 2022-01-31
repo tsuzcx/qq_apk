@@ -1,25 +1,12 @@
-public class ajyp
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class ajyp
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c;
-  public int d;
-  
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("M_size=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(",C_size=");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(",R_size=");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(",K_len=");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(",time=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    return localStringBuilder.toString();
+    paramDialogInterface.dismiss();
   }
 }
 

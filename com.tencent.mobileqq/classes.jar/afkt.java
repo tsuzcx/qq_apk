@@ -1,46 +1,72 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.ThemeImageView;
 
 public class afkt
-  extends AccountObserver
+  extends afjv
+  implements View.OnClickListener
 {
-  public afkt(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  private boolean a;
   
-  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
+  public afkt(Context paramContext, QQAppInterface paramQQAppInterface, aipp paramaipp, atyy paramatyy)
   {
-    if (QLog.isColorLevel())
-    {
-      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
-      if (paramString2 == null)
-      {
-        i = 0;
-        QLog.e("Q.history.C2CAllFragment", 2, i);
-      }
-    }
-    else
-    {
-      paramString1 = this.a.a.obtainMessage(39);
-      if (!paramBoolean) {
-        break label103;
-      }
-    }
-    label103:
-    for (int i = 1;; i = 0)
-    {
-      paramString1.arg1 = i;
-      paramString1.arg2 = 0;
-      this.a.a.sendMessage(paramString1);
-      return;
-      i = paramString2.length();
-      break;
-    }
+    super(paramContext, paramQQAppInterface, paramaipp, paramatyy);
   }
+  
+  public View a(int paramInt, View paramView)
+  {
+    afku localafku;
+    Object localObject;
+    if ((paramView == null) || (!(paramView.getTag() instanceof afku)))
+    {
+      localafku = new afku();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560919, null);
+      localafku.a = ((LinearLayout)paramView.findViewById(2131364677));
+      localafku.b = ((LinearLayout)paramView.findViewById(2131364672));
+      localObject = (ThemeImageView)paramView.findViewById(2131365663);
+      ((ThemeImageView)localObject).setSupportMaskView(true);
+      ((ThemeImageView)localObject).setMaskShape(bfwa.b);
+      paramView.setTag(localafku);
+    }
+    for (;;)
+    {
+      paramView.setOnClickListener(this);
+      localObject = new Rect();
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+      paramInt = ((Rect)localObject).height() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865) - bbkx.a(80.0F);
+      if (!this.jdField_a_of_type_Boolean) {
+        break;
+      }
+      a(paramView, paramInt);
+      localafku.a.setVisibility(8);
+      localafku.b.setVisibility(0);
+      return paramView;
+      localafku = (afku)paramView.getTag();
+    }
+    a(paramView, paramInt);
+    localafku.a.setVisibility(0);
+    localafku.b.setVisibility(8);
+    return paramView;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afkt
  * JD-Core Version:    0.7.0.1
  */

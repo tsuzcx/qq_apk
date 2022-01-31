@@ -1,69 +1,133 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-import com.tencent.mobileqq.listentogether.predownload.ListenTogetherResDownloader.2.1;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.os.MqqHandler;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class aqyd
-  implements axrt
 {
-  aqyd(aqyb paramaqyb) {}
+  public HashMap<String, String> a;
+  protected boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
   
-  public void onResp(axsq paramaxsq)
+  public aqyd(String paramString1, String paramString2)
   {
-    boolean bool;
-    Object localObject1;
-    File localFile;
-    int i;
-    String str;
-    label48:
-    Object localObject2;
-    if (paramaxsq.jdField_a_of_type_Int == 0)
-    {
-      bool = true;
-      localObject1 = (axro)paramaxsq.jdField_a_of_type_Axsp;
-      localFile = new File(((axro)localObject1).c);
-      i = paramaxsq.b;
-      if (paramaxsq.jdField_a_of_type_JavaLangString != null) {
-        break label164;
-      }
-      str = "0";
-      localObject2 = (Object[])((axro)localObject1).a();
-      localObject1 = (MusicInfo)localObject2[0];
-      localObject2 = (aqyf)localObject2[1];
-      if (!bool) {
-        break label173;
-      }
-      ((aqyf)localObject2).jdField_a_of_type_Int = 2;
-      this.a.a(((MusicInfo)localObject1).jdField_a_of_type_JavaLangString);
+    this("default", paramString1, paramString2);
+  }
+  
+  protected aqyd(String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.c = paramString2;
+    this.d = paramString3;
+    c();
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    for (;;)
-    {
-      ThreadManager.getSubThreadHandler().post(new ListenTogetherResDownloader.2.1(this, paramaxsq, bool, (MusicInfo)localObject1));
-      if (QLog.isColorLevel()) {
-        QLog.d("ListenTogether.downloader", 2, String.format("onResp, errCode: %s, errDesc: %s, musicReqInfo: %s", new Object[] { Integer.valueOf(i), str, localObject2 }));
+    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
+    if ((localObject == null) || (((List)localObject).size() <= 0)) {
+      return false;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (paramString.equals(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName)) {
+        return true;
       }
-      return;
-      bool = false;
-      break;
-      label164:
-      str = paramaxsq.jdField_a_of_type_JavaLangString;
-      break label48;
-      label173:
-      if ((localFile != null) && (localFile.exists())) {
-        localFile.delete();
-      }
-      ((aqyf)localObject2).jdField_a_of_type_Int = 3;
-      aqyb.a(this.a, (MusicInfo)localObject1);
+    }
+    return false;
+  }
+  
+  protected String a()
+  {
+    return this.d + this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      d();
+    }
+    aqya.a(this);
+    this.jdField_a_of_type_Boolean = true;
+    if (!(this instanceof aqyc)) {
+      aqya.e(this.d);
     }
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
+  public void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_b_of_type_Boolean = true;
+    } while ((this instanceof aqyc));
+    aqya.d(this.d);
+  }
+  
+  void c()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.put("loss", "0");
+      this.jdField_a_of_type_JavaUtilHashMap.put("benefit", "0");
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Boolean = false;
+      return;
+    }
+  }
+  
+  public void d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    Object localObject2 = BaseApplicationImpl.getApplication();
+    HashMap localHashMap1 = new HashMap();
+    for (;;)
+    {
+      String str;
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        localHashMap1.putAll(this.jdField_a_of_type_JavaUtilHashMap);
+        if (localObject2 != null)
+        {
+          ??? = ((BaseApplicationImpl)localObject2).getApplicationContext();
+          localObject2 = ((BaseApplicationImpl)localObject2).getRuntime();
+          if (localObject2 != null)
+          {
+            localObject2 = ((AppRuntime)localObject2).getAccount();
+            str = this.c;
+            if (!this.jdField_b_of_type_Boolean) {
+              break label98;
+            }
+            axrl.a((Context)???).a((String)localObject2, str, true, 0L, 0L, localHashMap1, null);
+          }
+        }
+        c();
+        return;
+      }
+      label98:
+      axrl.a((Context)???).a((String)localObject2, str, false, 0L, 0L, localHashMap2, null);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqyd
  * JD-Core Version:    0.7.0.1
  */

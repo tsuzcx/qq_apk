@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -12,45 +12,45 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
-import bahx;
-import bajq;
-import behi;
+import bbje;
+import bbkx;
+import bfpc;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.widget.GridView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import pbq;
-import pbr;
-import pbs;
-import rvu;
+import pni;
+import pnj;
+import pnk;
+import sim;
 
 public class NativeShareView
   extends LinearLayout
   implements IView
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  protected behi a;
+  protected bfpc a;
   private Runnable jdField_a_of_type_JavaLangRunnable;
   
   public NativeShareView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Behi = new pbr(this);
+    this.jdField_a_of_type_Bfpc = new pnj(this);
     a(paramContext);
   }
   
   public NativeShareView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Behi = new pbr(this);
+    this.jdField_a_of_type_Bfpc = new pnj(this);
     a(paramContext);
   }
   
   public NativeShareView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Behi = new pbr(this);
+    this.jdField_a_of_type_Bfpc = new pnj(this);
     a(paramContext);
   }
   
@@ -70,18 +70,18 @@ public class NativeShareView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    Object localObject1 = inflate(getContext(), 2131494328, this);
-    int j = bajq.b(44.0F);
-    localObject1 = (GridView)((View)localObject1).findViewById(2131301556);
+    Object localObject1 = inflate(getContext(), 2131559899, this);
+    int j = bbkx.b(44.0F);
+    localObject1 = (GridView)((View)localObject1).findViewById(2131367168);
     List localList = a(paramContext)[0];
     Object localObject2 = new TextPaint();
-    ((TextPaint)localObject2).setTextSize(paramContext.getResources().getDimensionPixelSize(2131167716));
+    ((TextPaint)localObject2).setTextSize(paramContext.getResources().getDimensionPixelSize(2131298815));
     new StaticLayout(a(a(localList), 6), (TextPaint)localObject2, j, Layout.Alignment.ALIGN_CENTER, 1.0F, 0, true);
     localObject2 = localList.iterator();
     int i = 0;
     if (((Iterator)localObject2).hasNext())
     {
-      if (((bahx)((Iterator)localObject2).next()).d != 0) {
+      if (((bbje)((Iterator)localObject2).next()).d != 0) {
         break label267;
       }
       i += 1;
@@ -90,7 +90,7 @@ public class NativeShareView
     for (;;)
     {
       break;
-      int k = bajq.b(14.0F);
+      int k = bbkx.b(14.0F);
       j = k + (k + j);
       ((GridView)localObject1).setColumnWidth(j);
       ((GridView)localObject1).setNumColumns(i);
@@ -98,22 +98,22 @@ public class NativeShareView
       ((GridView)localObject1).setPadding(16, ((GridView)localObject1).getPaddingTop(), 16, ((GridView)localObject1).getPaddingBottom());
       ((ViewGroup.LayoutParams)localObject2).width = (j * i + 0 + 0);
       ((GridView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      ((GridView)localObject1).setAdapter(new pbs(paramContext, localList));
+      ((GridView)localObject1).setAdapter(new pnk(paramContext, localList));
       ((GridView)localObject1).setSelector(new ColorDrawable(0));
-      ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_Behi);
-      ((GridView)localObject1).setOnTouchListener(new pbq(this));
-      rvu.a();
+      ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_Bfpc);
+      ((GridView)localObject1).setOnTouchListener(new pni(this));
+      sim.a();
       return;
     }
   }
   
-  protected String a(List<bahx> paramList)
+  protected String a(List<bbje> paramList)
   {
     Object localObject = "";
     int i = 0;
     if (i < paramList.size())
     {
-      String str = ((bahx)paramList.get(i)).a;
+      String str = ((bbje)paramList.get(i)).a;
       if (str.length() <= ((String)localObject).length()) {
         break label54;
       }
@@ -128,44 +128,44 @@ public class NativeShareView
     }
   }
   
-  public List<bahx>[] a(Context paramContext)
+  public List<bbje>[] a(Context paramContext)
   {
     ArrayList localArrayList = new ArrayList();
-    bahx localbahx = new bahx();
-    localbahx.a = ajjy.a(2131641286);
-    localbahx.jdField_b_of_type_Int = 2130842182;
-    localbahx.jdField_b_of_type_Boolean = false;
-    localbahx.c = 47;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
-    localbahx = new bahx();
-    localbahx.a = paramContext.getString(2131630983);
-    localbahx.jdField_b_of_type_Int = 2130842184;
-    localbahx.jdField_b_of_type_Boolean = false;
-    localbahx.c = 2;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
-    localbahx = new bahx();
-    localbahx.a = paramContext.getString(2131630996);
-    localbahx.jdField_b_of_type_Int = 2130842185;
-    localbahx.jdField_b_of_type_Boolean = false;
-    localbahx.c = 3;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
-    localbahx = new bahx();
-    localbahx.a = paramContext.getString(2131631003);
-    localbahx.jdField_b_of_type_Int = 2130842186;
-    localbahx.jdField_b_of_type_Boolean = false;
-    localbahx.c = 9;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
-    localbahx = new bahx();
-    localbahx.a = paramContext.getString(2131630986);
-    localbahx.jdField_b_of_type_Int = 2130842183;
-    localbahx.jdField_b_of_type_Boolean = false;
-    localbahx.c = 10;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
+    bbje localbbje = new bbje();
+    localbbje.a = ajyc.a(2131707071);
+    localbbje.jdField_b_of_type_Int = 2130842267;
+    localbbje.jdField_b_of_type_Boolean = false;
+    localbbje.c = 47;
+    localbbje.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbbje);
+    localbbje = new bbje();
+    localbbje.a = paramContext.getString(2131696695);
+    localbbje.jdField_b_of_type_Int = 2130842269;
+    localbbje.jdField_b_of_type_Boolean = false;
+    localbbje.c = 2;
+    localbbje.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbbje);
+    localbbje = new bbje();
+    localbbje.a = paramContext.getString(2131696708);
+    localbbje.jdField_b_of_type_Int = 2130842270;
+    localbbje.jdField_b_of_type_Boolean = false;
+    localbbje.c = 3;
+    localbbje.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbbje);
+    localbbje = new bbje();
+    localbbje.a = paramContext.getString(2131696715);
+    localbbje.jdField_b_of_type_Int = 2130842271;
+    localbbje.jdField_b_of_type_Boolean = false;
+    localbbje.c = 9;
+    localbbje.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbbje);
+    localbbje = new bbje();
+    localbbje.a = paramContext.getString(2131696698);
+    localbbje.jdField_b_of_type_Int = 2130842268;
+    localbbje.jdField_b_of_type_Boolean = false;
+    localbbje.c = 10;
+    localbbje.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbbje);
     return (List[])new ArrayList[] { localArrayList };
   }
   
@@ -202,12 +202,12 @@ public class NativeShareView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    rvu.b();
+    sim.b();
   }
   
   public void setCurrentPath(String paramString)
   {
-    rvu.a(paramString);
+    sim.a(paramString);
   }
   
   public void setInitRunnable(Runnable paramRunnable)
@@ -217,7 +217,7 @@ public class NativeShareView
   
   public void setScreenBitmap(Bitmap paramBitmap)
   {
-    rvu.a(paramBitmap);
+    sim.a(paramBitmap);
   }
 }
 

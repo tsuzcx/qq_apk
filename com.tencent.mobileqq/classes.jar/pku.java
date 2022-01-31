@@ -1,25 +1,95 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 
 public class pku
-  implements oqy
+  extends ViewBase
 {
-  public pku(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList, RecommendFollowInfo paramRecommendFollowInfo) {}
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public pku(VafContext paramVafContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentContentRecommendFollowList", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
+    super(paramVafContext);
+    a(paramVafContext);
+  }
+  
+  private void a(VafContext paramVafContext)
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(paramVafContext.getContext());
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramVafContext.getContext());
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, Utils.dp2px(20.0D));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
+    this.jdField_a_of_type_AndroidWidgetTextView.setPadding(Utils.dp2px(5.0D), 0, Utils.dp2px(5.0D), 0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 12.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(paramVafContext.getContext().getResources().getDrawable(2130842164), null, null, null);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(Utils.dp2px(2.0D));
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130842152));
+    paramVafContext = new RelativeLayout.LayoutParams(-2, Utils.dp2px(20.0D));
+    paramVafContext.addRule(11);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, Utils.dp2px(12.0D), 0);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, paramVafContext);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return (int)(float)bbct.i();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.measure(paramInt1, paramInt2);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    return false;
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    boolean bool = true;
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-      ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList).notifyDataSetChanged();
-      return;
+    default: 
+      bool = super.setAttribute(paramInt, paramString);
     }
-    bbmy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.getContext(), 1, 2131652679, 0).a();
+    do
+    {
+      do
+      {
+        return bool;
+      } while (TextUtils.isEmpty(paramString));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      return true;
+      paramInt = nmk.a(paramString, 0);
+    } while (paramInt <= 0);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, Utils.dp2px(paramInt), 0);
+    return true;
   }
 }
 

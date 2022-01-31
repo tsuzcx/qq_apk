@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import java.util.List;
 
-public class anqg
-  implements DialogInterface.OnClickListener
+class anqg
+  implements anqn
 {
-  public anqg(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  anqg(anqf paramanqf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(List<anyc> paramList)
   {
-    paramDialogInterface.dismiss();
-    ExtendFriendEditFragment.a(this.a).finish();
+    if (this.a.a != null) {
+      this.a.a.b(paramList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anqg
  * JD-Core Version:    0.7.0.1
  */

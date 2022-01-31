@@ -1,18 +1,21 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class aigx
+final class aigx
+  implements DialogInterface.OnClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  aigx(Context paramContext) {}
   
-  aigx(aigu paramaigu) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ((Activity)this.a).finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aigx
  * JD-Core Version:    0.7.0.1
  */

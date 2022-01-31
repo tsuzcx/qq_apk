@@ -1,41 +1,24 @@
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.view.View.OnTouchListener;
 
 class sns
-  extends soe
+  implements View.OnTouchListener
 {
-  sns(snr paramsnr) {}
+  sns(snq paramsnq, int paramInt) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i;
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_AndroidAppActivity != null))
-    {
-      paramView = (snf)this.a.a();
-      if (snr.a(this.a) != 11) {
-        break label138;
-      }
-      i = 211;
-    }
-    for (;;)
-    {
-      StoryDetailActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, i, 0);
-      i = urp.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      urp.a("home_page", "clk_like_more", urp.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(i), urp.a(paramView.a), "", this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-      return;
-      label138:
-      if (snr.a(this.a) == 12) {
-        i = 222;
-      } else {
-        i = 210;
-      }
-    }
+    snq.a(this.jdField_a_of_type_Snq, paramView);
+    this.jdField_a_of_type_Snq.d = this.jdField_a_of_type_Int;
+    snq.a(this.jdField_a_of_type_Snq).onTouchEvent(paramMotionEvent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     sns
  * JD-Core Version:    0.7.0.1
  */

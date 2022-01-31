@@ -1,37 +1,23 @@
-import android.app.Activity;
-import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
 
 public class asrp
-  extends xgz
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public asrp(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
+  public asrp(MultiCardCustomLayout paramMultiCardCustomLayout) {}
   
-  public xgg a(Activity paramActivity, xgm paramxgm)
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    return super.a(paramActivity, paramxgm);
-  }
-  
-  public xgi a(Activity paramActivity, xgm paramxgm)
-  {
-    return new asrr((PicBrowserActivity)paramActivity, paramxgm);
-  }
-  
-  public xgm a(Activity paramActivity)
-  {
-    paramActivity = new assa(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
-    paramActivity.a(this.a.jdField_b_of_type_Int);
-    return paramActivity;
-  }
-  
-  public xgn a(Activity paramActivity, xgm paramxgm)
-  {
-    return null;
+    if (MultiCardCustomLayout.a(this.a) != null) {
+      MultiCardCustomLayout.a(this.a).onLongClick(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asrp
  * JD-Core Version:    0.7.0.1
  */

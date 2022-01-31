@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.data.CustomEmotionData;
-import java.util.List;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
 
-class anfp
-  extends ajhy
+public class anfp
+  implements anft
 {
-  anfp(anfj paramanfj, Object paramObject) {}
+  public anfp(DanmakuManager paramDanmakuManager) {}
   
-  protected void a(List<CustomEmotionData> arg1)
+  public void a(anfv paramanfv)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notify();
-      return;
+    DanmakuManager.a(this.a).b(paramanfv);
+    if (DanmakuManager.a(this.a) != null) {
+      DanmakuManager.a(this.a).f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anfp
  * JD-Core Version:    0.7.0.1
  */

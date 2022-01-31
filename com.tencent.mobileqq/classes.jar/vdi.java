@@ -1,28 +1,32 @@
-import android.content.Context;
 import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vdi
-  extends vcy
+  extends QQUIEventReceiver<vcs, svy>
 {
-  public final int c;
-  
-  public vdi(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public vdi(@NonNull vcs paramvcs)
   {
-    super(paramInt3, paramString, paramInt1);
-    this.c = paramInt2;
+    super(paramvcs);
   }
   
-  @NonNull
-  public Class<? extends vcz> a()
+  public void a(@NonNull vcs paramvcs, @NonNull svy paramsvy)
   {
-    return vdj.class;
+    if (paramsvy.a())
+    {
+      veg.b(this.TAG, "group video upload");
+      return;
+    }
+    if (!paramsvy.b())
+    {
+      veg.b(this.TAG, "ignore personal video");
+      return;
+    }
+    paramvcs.a(paramsvy);
   }
   
-  @NonNull
-  public vcz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public Class acceptEventClass()
   {
-    return new vdj(this, paramContext, paramViewGroup);
+    return svy.class;
   }
 }
 

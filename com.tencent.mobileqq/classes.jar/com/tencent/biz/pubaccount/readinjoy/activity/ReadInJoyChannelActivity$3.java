@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import rcx;
+import rpl;
 
 class ReadInJoyChannelActivity$3
   implements Runnable
@@ -9,8 +9,8 @@ class ReadInJoyChannelActivity$3
   
   public void run()
   {
-    rcx.a().a();
-    rcx.a().b(this.this$0.app);
+    rpl.a().a();
+    rpl.a().b(this.this$0.app);
   }
 }
 

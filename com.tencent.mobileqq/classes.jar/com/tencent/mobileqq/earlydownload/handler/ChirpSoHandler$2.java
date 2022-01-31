@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import amyy;
-import amyz;
+import anpg;
+import anph;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class ChirpSoHandler$2
   implements Runnable
 {
-  public ChirpSoHandler$2(amyy paramamyy) {}
+  public ChirpSoHandler$2(anpg paramanpg) {}
   
   public void run()
   {
-    synchronized (amyy.a(this.this$0))
+    synchronized (anpg.a(this.this$0))
     {
-      Iterator localIterator = amyy.a(this.this$0).iterator();
+      Iterator localIterator = anpg.a(this.this$0).iterator();
       if (localIterator.hasNext()) {
-        ((amyz)localIterator.next()).k();
+        ((anph)localIterator.next()).k();
       }
     }
   }

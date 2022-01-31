@@ -1,43 +1,68 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoAdInfo;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
-public class nzz
-  implements oep
+class nzz
+  implements bfsq
 {
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  nzz(nzy paramnzy, int paramInt, VideoInfo paramVideoInfo) {}
+  
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    QLog.d("KBPreDownloadUtils", 2, "[onDownloadStateChanged] url=" + paramString1 + " savedPath=" + paramString2 + " errorCode=" + paramInt2 + " errorMsg=" + paramString3);
-    if (!TextUtils.equals(paramString1, nzy.a(obz.a(), "sp_key_kb_download_url"))) {
-      return;
-    }
-    switch (paramInt1)
+    int i = 0;
+    if (paramInt == this.jdField_a_of_type_Int)
     {
-    default: 
-      return;
-    case 4: 
-      long l = System.currentTimeMillis() - nzy.a();
-      QLog.d("KBPreDownloadUtils", 2, "[onDownloadFinish] cost=" + l + "ms, info=" + paramString1);
-      paramString3 = BaseApplicationImpl.getApplication();
-      if (paramString3 != null)
+      bcpw.a(nzy.a(this.jdField_a_of_type_Nzy), 0, 2131695526, 0).a();
+      nzy.a(this.jdField_a_of_type_Nzy).d(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+      if ((paramObject == null) || (!(paramObject instanceof DislikeInfo))) {
+        break label349;
+      }
+    }
+    label346:
+    label349:
+    for (long l = ((DislikeInfo)paramObject).a;; l = 0L)
+    {
+      paramView = "";
+      paramInt = i;
+      if (paramInt < paramArrayList.size())
       {
-        nzy.a(paramString3, paramString2);
-        nzy.a(true, l, 0);
-        nzy.a(paramString1, paramString2);
-        oer.a().b(nzy.a());
+        paramObject = (DislikeInfo)paramArrayList.get(paramInt);
+        if (paramObject == null) {
+          break label346;
+        }
+        paramObject = paramView + paramObject.a;
+        paramView = paramObject;
+        if (paramInt != paramArrayList.size() - 1) {
+          paramView = paramObject + ",";
+        }
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break;
+        if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a != null)
+        {
+          this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f = l;
+          paramArrayList = nmf.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+          if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a(nzy.a(this.jdField_a_of_type_Nzy))) {
+            nmf.a(new nyg().a(nzy.a(this.jdField_a_of_type_Nzy)).a(nmf.c).b(nmf.P).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
+          }
+        }
+        else
+        {
+          return;
+        }
+        nmf.a(new nyg().a(nzy.a(this.jdField_a_of_type_Nzy)).a(nmf.c).b(nmf.N).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
         return;
       }
-      QLog.e("KBPreDownloadUtils", 1, "[onDownloadStateChanged] return since context is null");
-      return;
     }
-    QLog.e("KBPreDownloadUtils", 1, "[onDownloadError] errorCode=" + paramInt2 + ", errorMsg=" + paramString3);
-    nzy.a(false, System.currentTimeMillis() - nzy.a(), paramInt2);
-    oer.a().b(nzy.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nzz
  * JD-Core Version:    0.7.0.1
  */

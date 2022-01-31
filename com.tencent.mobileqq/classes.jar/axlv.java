@@ -1,72 +1,34 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Random;
 
-class axlv
-  extends axmg
+public class axlv
 {
-  axlv(axlu paramaxlu) {}
+  private static final SimpleDateFormat a = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINESE);
   
-  public void a()
+  public static String a()
   {
-    if (axlu.a(this.a) == null) {}
-    for (Activity localActivity = null;; localActivity = (Activity)axlu.a(this.a).get())
+    synchronized (a)
     {
-      if (localActivity != null) {
-        this.a.jdField_a_of_type_Axmd.a(localActivity);
-      }
-      return;
+      int i = new Random().nextInt(10000);
+      String str = a.format(new Date()) + "_" + i;
+      return str;
     }
   }
   
-  public void a(long paramLong1, long paramLong2)
+  public static String a(File paramFile)
   {
-    int i = 100;
-    if (paramLong2 <= 0L)
-    {
-      QLog.e("NightModeLogic", 1, "mThemeDownloadListener onDownloadProgress dwProgressMax <= 0");
-      i = 4;
+    if (paramFile == null) {
+      return null;
     }
-    if (paramLong1 <= paramLong2) {
-      i = (int)(100.0D * paramLong1 / paramLong2);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("NightModeLogic", 2, "mThemeDownloadListener onDownloadProgress readSize:" + paramLong1 + ", allSize:" + paramLong2 + ", percent:" + i);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("percent", i);
-    localBundle.putInt("start_status", 3);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4099, 1, 0, localBundle));
-  }
-  
-  public boolean a(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("start_status", 2);
-    if (paramInt == 0) {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4099, 1, 0, localBundle));
-    }
-    for (;;)
-    {
-      return super.a(paramInt);
-      this.a.jdField_a_of_type_Axmd.b();
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4100);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4099, -2, 0, localBundle));
-    }
-  }
-  
-  public boolean a(axmb paramaxmb)
-  {
-    this.a.jdField_a_of_type_Axmd.a();
-    return false;
+    return paramFile.getName();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axlv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,37 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class bamd
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+class bamd
+  extends mxm
 {
-  public int a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  balz jdField_a_of_type_Balz;
-  bame jdField_a_of_type_Bame;
-  ImageView b;
+  bamd(balw parambalw, bame parambame) {}
   
-  public bamd(View paramView, balz parambalz, bame parambame)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramView);
-    this.jdField_a_of_type_Balz = parambalz;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131298815));
-    this.b = ((ImageView)paramView.findViewById(2131298816));
-    paramView.setOnClickListener(this);
-    this.jdField_a_of_type_Bame = parambame;
-  }
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Balz.a(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Bame != null) {
-      this.jdField_a_of_type_Bame.a(this.jdField_a_of_type_Balz.a(this.jdField_a_of_type_Int));
+    paramBundle = new cmd0x934.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Bame.a(paramInt, paramBundle);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bamd
  * JD-Core Version:    0.7.0.1
  */

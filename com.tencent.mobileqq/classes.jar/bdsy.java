@@ -1,67 +1,66 @@
-import NS_MINI_INTERFACE.INTERFACE.StBatchGetContactReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinRsp;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.List;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class bdsy
-  extends bdtz
+  extends QQUIEventReceiver<bdsw, asit>
 {
-  private INTERFACE.StBatchGetContactReq a = new INTERFACE.StBatchGetContactReq();
-  
-  public bdsy(List<String> paramList)
+  public bdsy(@NonNull bdsw parambdsw)
   {
-    this.a.appids.set(paramList);
+    super(parambdsw);
   }
   
-  protected String a()
+  public void a(@NonNull bdsw parambdsw, @NonNull asit paramasit)
   {
-    return "mini_app_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetRobotUinRsp localStGetRobotUinRsp = new INTERFACE.StGetRobotUinRsp();
-    try
+    if (!TextUtils.equals(paramasit.jdField_a_of_type_JavaLangString, "QGameApp")) {}
+    String str;
+    do
     {
-      localStGetRobotUinRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetRobotUinRsp != null)
-      {
-        paramArrayOfByte = bdyp.a(localStGetRobotUinRsp);
-        if ((paramArrayOfByte instanceof JSONObject)) {
-          return (JSONObject)JSONObject.class.cast(paramArrayOfByte);
-        }
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QGameApp", 2, "receive event:" + paramasit.toString());
       }
-      else
+      str = (String)paramasit.jdField_a_of_type_ArrayOfJavaLangObject[0];
+      switch (paramasit.jdField_a_of_type_Int)
       {
-        bdnw.a("VerifyPluginRequest", "onResponse fail.rsp = null");
-        return null;
+      default: 
+        return;
       }
-    }
-    catch (Exception paramArrayOfByte)
+    } while (!TextUtils.equals(str, "ak:3214"));
+    if (paramasit.jdField_a_of_type_Boolean)
     {
-      bdnw.a("VerifyPluginRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      str = (String)paramasit.jdField_a_of_type_ArrayOfJavaLangObject[3];
+      if (TextUtils.isEmpty(str))
+      {
+        bdsw.a(parambdsw, 1002);
+        return;
+      }
+      switch (((Integer)paramasit.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue())
+      {
+      default: 
+        return;
+      case 1: 
+        bdsw.a(parambdsw, true, str);
+        return;
+      case 2: 
+        bdsw.jdField_a_of_type_Boolean = false;
+        return;
+      }
+      bdsw.a(parambdsw, false, str);
+      return;
     }
-    return null;
+    bdsw.a(parambdsw, 1002);
   }
   
-  protected byte[] a()
+  public Class acceptEventClass()
   {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "BatchGetContact";
+    return asit.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdsy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,17 @@
 package com.tencent.biz.troop;
 
-import afqa;
-import ajey;
-import ajjh;
-import ajkn;
-import ajkr;
-import ajlg;
-import ajqg;
-import ajqw;
-import ajuc;
-import ajvh;
-import amnq;
+import aabs;
+import agca;
+import ajta;
+import ajty;
+import ajxl;
+import ajyt;
+import ajyx;
+import ajzm;
+import akeq;
+import akfg;
+import akim;
+import akjr;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -20,14 +21,15 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import apck;
-import apdh;
-import asfx;
-import awqx;
-import axvo;
-import axvs;
-import ayqd;
-import azih;
+import andx;
+import apue;
+import apvb;
+import atcb;
+import axqw;
+import ayvv;
+import ayvz;
+import azqt;
+import bajk;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.LebaPluginInfo;
@@ -45,63 +47,63 @@ import cooperation.troop_homework.model.HWTroopFileStatusInfo;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
-import mmi;
-import mmr;
-import mmy;
-import mnn;
-import mnr;
 import mqq.app.AppRuntime;
 import mqq.app.AppService;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
-import ohb;
-import ohe;
+import mxh;
+import mxq;
+import mxx;
+import mym;
+import myq;
 import oicq.wlogin_sdk.request.WFastLoginInfo;
 import oicq.wlogin_sdk.request.WUserSigInfo;
 import oicq.wlogin_sdk.request.WtloginHelper;
-import ore;
-import rrw;
+import osm;
+import osp;
+import pcg;
+import seo;
 import tencent.im.group.nearbybanner.nearbybanner.ClientInfo;
 import tencent.im.group.nearbybanner.nearbybanner.ReqBody;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
-import wja;
-import wjb;
-import wjc;
-import wjd;
-import wje;
-import wjf;
-import wjg;
-import wjh;
-import wji;
-import wjj;
-import wjk;
-import zrz;
+import wyc;
+import wyd;
+import wye;
+import wyf;
+import wyg;
+import wyh;
+import wyi;
+import wyj;
+import wyk;
+import wyl;
+import wym;
 
 public class TroopMemberApiService
   extends AppService
 {
   public int a;
-  ajey jdField_a_of_type_Ajey = new wje(this);
-  public ajjh a;
-  ajkn jdField_a_of_type_Ajkn = new wja(this);
-  public ajkr a;
-  public ajlg a;
-  public ajqg a;
-  ajuc jdField_a_of_type_Ajuc = new wjd(this);
-  ajvh jdField_a_of_type_Ajvh = new wjc(this);
-  final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new wjk(this));
-  public asfx a;
-  public axvs a;
+  public aabs a;
+  ajta jdField_a_of_type_Ajta = new wyg(this);
+  public ajty a;
+  public ajxl a;
+  ajyt jdField_a_of_type_Ajyt = new wyc(this);
+  public ajyx a;
+  public ajzm a;
+  public akeq a;
+  akim jdField_a_of_type_Akim = new wyf(this);
+  akjr jdField_a_of_type_Akjr = new wye(this);
+  final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new wym(this));
+  public atcb a;
+  public ayvz a;
   public String a;
   ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public ConcurrentHashMap<String, Messenger> a;
-  mnn jdField_a_of_type_Mnn;
-  mnr jdField_a_of_type_Mnr;
-  public ohe a;
-  public ore a;
-  public rrw a;
-  public zrz a;
+  mym jdField_a_of_type_Mym;
+  myq jdField_a_of_type_Myq;
+  public osp a;
+  public pcg a;
+  public seo a;
   public boolean a;
   public int b;
   public Messenger b;
@@ -122,14 +124,14 @@ public class TroopMemberApiService
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Zrz = null;
-    this.jdField_a_of_type_Ajkr = null;
-    this.jdField_a_of_type_Ore = null;
-    this.jdField_a_of_type_Ajlg = new wjf(this);
-    this.jdField_a_of_type_Ajjh = new wjg(this);
-    this.jdField_a_of_type_Asfx = new wjh(this);
-    this.jdField_a_of_type_Ohe = new wji(this);
-    this.jdField_a_of_type_Axvs = new wjj(this);
+    this.jdField_a_of_type_Aabs = null;
+    this.jdField_a_of_type_Ajyx = null;
+    this.jdField_a_of_type_Pcg = null;
+    this.jdField_a_of_type_Ajzm = new wyh(this);
+    this.jdField_a_of_type_Ajxl = new wyi(this);
+    this.jdField_a_of_type_Atcb = new wyj(this);
+    this.jdField_a_of_type_Osp = new wyk(this);
+    this.jdField_a_of_type_Ayvz = new wyl(this);
   }
   
   private void a(QQAppInterface paramQQAppInterface, long paramLong, HWTroopFileStatusInfo paramHWTroopFileStatusInfo, Bundle paramBundle)
@@ -138,18 +140,18 @@ public class TroopMemberApiService
       return;
     }
     FileInfo localFileInfo = new FileInfo();
-    if (!apdh.a(paramHWTroopFileStatusInfo.LocalFile)) {
+    if (!apvb.a(paramHWTroopFileStatusInfo.LocalFile)) {
       TroopFileTransferManager.a(paramQQAppInterface, paramLong).b();
     }
     String str = "";
     if (!TextUtils.isEmpty(paramHWTroopFileStatusInfo.FileName)) {
       str = paramHWTroopFileStatusInfo.FileName;
     }
-    azih.a(paramQQAppInterface, paramLong).a(paramHWTroopFileStatusInfo.Id);
+    bajk.a(paramQQAppInterface, paramLong).a(paramHWTroopFileStatusInfo.Id);
     localFileInfo.d(str);
     localFileInfo.e(paramHWTroopFileStatusInfo.LocalFile);
     localFileInfo.a(paramHWTroopFileStatusInfo.ProgressTotal);
-    paramQQAppInterface = new ayqd();
+    paramQQAppInterface = new azqt();
     paramQQAppInterface.g = str;
     paramQQAppInterface.jdField_a_of_type_JavaLangString = paramHWTroopFileStatusInfo.LocalFile;
     paramQQAppInterface.jdField_c_of_type_Long = paramHWTroopFileStatusInfo.ProgressTotal;
@@ -161,7 +163,7 @@ public class TroopMemberApiService
     paramQQAppInterface.jdField_b_of_type_JavaLangString = paramHWTroopFileStatusInfo.ThumbnailFile_Small;
     paramQQAppInterface.jdField_c_of_type_JavaLangString = paramHWTroopFileStatusInfo.ThumbnailFile_Large;
     paramQQAppInterface.jdField_b_of_type_Int = paramHWTroopFileStatusInfo.Status;
-    paramBundle.putLong("sessionId", apck.a(paramQQAppInterface).nSessionId);
+    paramBundle.putLong("sessionId", apue.a(paramQQAppInterface).nSessionId);
     paramBundle.putInt("cloudType", 4);
     paramBundle.putInt("type", 10006);
     paramBundle.putString("filePath", localFileInfo.c());
@@ -173,12 +175,12 @@ public class TroopMemberApiService
   
   private boolean a(long paramLong, boolean paramBoolean)
   {
-    amnq localamnq = afqa.a().a(paramLong);
-    if ((localamnq == null) || (localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null)) {
+    andx localandx = agca.a().a(paramLong);
+    if ((localandx == null) || (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null)) {
       return false;
     }
     boolean bool;
-    if (localamnq.jdField_a_of_type_Byte == 0)
+    if (localandx.jdField_a_of_type_Byte == 0)
     {
       bool = true;
       label35:
@@ -193,15 +195,15 @@ public class TroopMemberApiService
     label145:
     for (byte b1 = 0;; b1 = 1)
     {
-      localamnq.jdField_a_of_type_Byte = b1;
+      localandx.jdField_a_of_type_Byte = b1;
       if (!(this.app instanceof QQAppInterface)) {
         break;
       }
-      afqa.a().a((QQAppInterface)this.app, localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId, paramBoolean, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+      agca.a().a((QQAppInterface)this.app, localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId, paramBoolean, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
       paramLong = NetConnInfoCenter.getServerTimeMillis();
-      ajqw localajqw = (ajqw)((QQAppInterface)this.app).a(31);
-      if (localajqw != null) {
-        localajqw.a(String.valueOf(localamnq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId), paramBoolean, paramLong);
+      akfg localakfg = (akfg)((QQAppInterface)this.app).a(31);
+      if (localakfg != null) {
+        localakfg.a(String.valueOf(localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId), paramBoolean, paramLong);
       }
       return true;
       bool = false;
@@ -221,10 +223,10 @@ public class TroopMemberApiService
       localObject = new nearbybanner.ClientInfo();
       ((nearbybanner.ClientInfo)localObject).uint32_lcd_height.set(j);
       ((nearbybanner.ClientInfo)localObject).uint32_lcd_width.set(i);
-      ((nearbybanner.ClientInfo)localObject).bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.2.6.4370"));
+      ((nearbybanner.ClientInfo)localObject).bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.2.8.4440"));
       ((nearbybanner.ClientInfo)localObject).uint32_os.set(0);
       localReqBody.msg_client_info.set((MessageMicro)localObject);
-      localObject = new NewIntent(paramAppRuntime.getApplication(), mmi.class);
+      localObject = new NewIntent(paramAppRuntime.getApplication(), mxh.class);
       ((NewIntent)localObject).putExtra("cmd", "nearby_group_banner.get_banner_info");
       ((NewIntent)localObject).putExtra("data", localReqBody.toByteArray());
       ((NewIntent)localObject).setObserver(paramBusinessObserver);
@@ -235,20 +237,20 @@ public class TroopMemberApiService
     return false;
   }
   
-  public mnn a()
+  public mym a()
   {
-    if (this.jdField_a_of_type_Mnn == null) {
-      this.jdField_a_of_type_Mnn = new mnn(this);
+    if (this.jdField_a_of_type_Mym == null) {
+      this.jdField_a_of_type_Mym = new mym(this);
     }
-    return this.jdField_a_of_type_Mnn;
+    return this.jdField_a_of_type_Mym;
   }
   
-  public mnr a()
+  public myq a()
   {
-    if (this.jdField_a_of_type_Mnr == null) {
-      this.jdField_a_of_type_Mnr = new mnr(this);
+    if (this.jdField_a_of_type_Myq == null) {
+      this.jdField_a_of_type_Myq = new myq(this);
     }
-    return this.jdField_a_of_type_Mnr;
+    return this.jdField_a_of_type_Myq;
   }
   
   public void a(int paramInt, Bundle paramBundle)
@@ -289,19 +291,19 @@ public class TroopMemberApiService
     if ((this.app instanceof QQAppInterface))
     {
       localObject1 = (QQAppInterface)this.app;
-      Object localObject2 = (mmy)((QQAppInterface)localObject1).getManager(70);
+      Object localObject2 = (mxx)((QQAppInterface)localObject1).getManager(70);
       i = j;
       if (localObject2 != null)
       {
-        localObject2 = ((mmy)localObject2).a(7);
+        localObject2 = ((mxx)localObject2).a(7);
         i = j;
         if (localObject2 != null)
         {
-          mmr.a((QQAppInterface)localObject1, (oidb_0x791.RedDotInfo)localObject2);
-          localObject1 = (mmr)((QQAppInterface)this.app).a(43);
+          mxq.a((QQAppInterface)localObject1, (oidb_0x791.RedDotInfo)localObject2);
+          localObject1 = (mxq)((QQAppInterface)this.app).a(43);
           i = j;
           if (localObject1 != null) {
-            ((mmr)localObject1).notifyUI(105, true, null);
+            ((mxq)localObject1).notifyUI(105, true, null);
           }
         }
       }
@@ -320,14 +322,14 @@ public class TroopMemberApiService
       ((Bundle)localObject1).putString("method", "cleanDynamicRedPoint");
       a(15, (Bundle)localObject1);
       return;
-      awqx.b(null, "P_CliOper", "BizTechReport", "", "tribe", "clearreddot", 0, 1, "", "", "", "");
+      axqw.b(null, "P_CliOper", "BizTechReport", "", "tribe", "clearreddot", 0, 1, "", "", "", "");
     }
   }
   
   public void a(String paramString1, String paramString2)
   {
     WtloginHelper localWtloginHelper = new WtloginHelper(this.app.getApplication().getApplicationContext());
-    localWtloginHelper.SetListener(new wjb(this, localWtloginHelper));
+    localWtloginHelper.SetListener(new wyd(this, localWtloginHelper));
     String str = this.app.getAccount();
     paramString1 = paramString1.getBytes();
     long l = Long.valueOf(paramString2).longValue();
@@ -405,15 +407,15 @@ public class TroopMemberApiService
     super.onCreate();
     if ((this.app instanceof QQAppInterface))
     {
-      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Ajey, true);
-      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Ajlg);
-      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Ajjh);
-      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Ajuc);
-      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Ajkn);
-      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Asfx);
-      this.app.registObserver(this.jdField_a_of_type_Ajvh);
+      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Ajta, true);
+      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Ajzm);
+      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Ajxl);
+      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Akim);
+      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Ajyt);
+      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Atcb);
+      this.app.registObserver(this.jdField_a_of_type_Akjr);
     }
-    ohb.a().a(this.jdField_a_of_type_Ohe);
+    osm.a().a(this.jdField_a_of_type_Osp);
   }
   
   public void onDestroy()
@@ -424,18 +426,18 @@ public class TroopMemberApiService
     super.onDestroy();
     if ((this.app instanceof QQAppInterface))
     {
-      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Ajey);
-      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Ajlg);
-      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Ajjh);
-      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Ajuc);
-      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Ajkn);
-      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Asfx);
-      ((QQAppInterface)this.app).a().b(this.jdField_a_of_type_Axvs);
-      this.app.unRegistObserver(this.jdField_a_of_type_Ajvh);
+      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Ajta);
+      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Ajzm);
+      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Ajxl);
+      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Akim);
+      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Ajyt);
+      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Atcb);
+      ((QQAppInterface)this.app).a().b(this.jdField_a_of_type_Ayvz);
+      this.app.unRegistObserver(this.jdField_a_of_type_Akjr);
     }
-    ohb.a().b(this.jdField_a_of_type_Ohe);
-    if ((TextUtils.isEmpty(this.d)) || (this.jdField_a_of_type_Ore != null)) {
-      this.jdField_a_of_type_Ore.a();
+    osm.a().b(this.jdField_a_of_type_Osp);
+    if ((TextUtils.isEmpty(this.d)) || (this.jdField_a_of_type_Pcg != null)) {
+      this.jdField_a_of_type_Pcg.a();
     }
     this.app = null;
     this.jdField_b_of_type_AndroidOsMessenger = null;
@@ -443,6 +445,9 @@ public class TroopMemberApiService
     {
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+    }
+    if (this.jdField_a_of_type_Ajty != null) {
+      this.jdField_a_of_type_Ajty.b(this);
     }
   }
 }

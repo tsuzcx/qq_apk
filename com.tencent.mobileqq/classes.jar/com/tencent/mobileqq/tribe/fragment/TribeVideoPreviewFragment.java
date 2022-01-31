@@ -10,20 +10,26 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageButton;
-import aybl;
-import aybm;
+import azbt;
+import azbu;
 import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import mqq.os.MqqHandler;
 
 public class TribeVideoPreviewFragment
   extends PublicBaseFragment
 {
   private TextureVideoView a;
   
+  private void a(boolean paramBoolean)
+  {
+    ThreadManager.getUIHandler().post(new TribeVideoPreviewFragment.3(this, paramBoolean));
+  }
+  
   public void a(String paramString)
   {
-    ThreadManager.post(new TribeVideoPreviewFragment.3(this, paramString), 5, null, true);
+    ThreadManager.post(new TribeVideoPreviewFragment.4(this, paramString), 5, null, true);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -45,22 +51,22 @@ public class TribeVideoPreviewFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131496914, paramViewGroup, false);
-    this.a = ((TextureVideoView)paramLayoutInflater.findViewById(2131311874));
-    paramViewGroup = paramLayoutInflater.findViewById(2131311875);
-    paramBundle = (ImageButton)paramLayoutInflater.findViewById(2131309804);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131562514, paramViewGroup, false);
+    this.a = ((TextureVideoView)paramLayoutInflater.findViewById(2131377695));
+    paramViewGroup = paramLayoutInflater.findViewById(2131377696);
+    paramBundle = (ImageButton)paramLayoutInflater.findViewById(2131375563);
     String str = getActivity().getIntent().getStringExtra("path");
     this.a.setVideoPath(str);
     this.a.setLooping(true);
     this.a.setCenterInside(true);
-    paramLayoutInflater.setOnTouchListener(new aybl(this));
+    paramLayoutInflater.setOnTouchListener(new azbt(this));
     this.a.start();
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setFillAfter(true);
     localAlphaAnimation.setDuration(500L);
     localAlphaAnimation.setStartOffset(3000L);
     paramViewGroup.startAnimation(localAlphaAnimation);
-    paramBundle.setOnClickListener(new aybm(this, str));
+    paramBundle.setOnClickListener(new azbu(this, str));
     return paramLayoutInflater;
   }
   
@@ -73,7 +79,7 @@ public class TribeVideoPreviewFragment
   public void onFinish()
   {
     super.onFinish();
-    getActivity().overridePendingTransition(0, 2130772305);
+    getActivity().overridePendingTransition(0, 2130772306);
   }
 }
 

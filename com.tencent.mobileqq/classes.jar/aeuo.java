@@ -1,15 +1,19 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.widget.ScrollView;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-public abstract interface aeuo
+public class aeuo
+  extends ScrollView
 {
-  public abstract Activity a();
+  public aeuo(TroopChatPie paramTroopChatPie, Context paramContext)
+  {
+    super(paramContext);
+  }
   
-  public abstract QQAppInterface a();
-  
-  public abstract void a();
-  
-  public abstract void b();
+  public void setOverScrollMode(int paramInt)
+  {
+    super.setOverScrollMode(2);
+  }
 }
 
 

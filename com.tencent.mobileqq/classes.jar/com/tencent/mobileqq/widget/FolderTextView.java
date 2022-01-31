@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -20,9 +20,9 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import axkd;
-import bajq;
-import bbix;
+import ayki;
+import bbkx;
+import bclu;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 
@@ -30,7 +30,7 @@ public class FolderTextView
   extends RelativeLayout
 {
   private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bbix(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bclu(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private String jdField_a_of_type_JavaLangString;
@@ -59,11 +59,11 @@ public class FolderTextView
     {
       this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getString(2);
       this.jdField_b_of_type_Int = a(paramAttributeSet.getColorStateList(1));
-      this.jdField_a_of_type_Int = paramAttributeSet.getDimensionPixelSize(0, bajq.a(12.0F));
-      this.jdField_a_of_type_Int = bajq.e(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int = paramAttributeSet.getDimensionPixelSize(0, bbkx.a(12.0F));
+      this.jdField_a_of_type_Int = bbkx.e(this.jdField_a_of_type_Int);
       this.c = paramAttributeSet.getInt(5, 2);
       this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(4);
-      this.d = paramAttributeSet.getColor(3, paramContext.getResources().getColor(2131100589));
+      this.d = paramAttributeSet.getColor(3, paramContext.getResources().getColor(2131166179));
     }
     catch (Exception paramContext)
     {
@@ -78,7 +78,7 @@ public class FolderTextView
       paramAttributeSet.recycle();
     }
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = ajjy.a(2131638877);
+      this.jdField_a_of_type_JavaLangString = ajyc.a(2131704662);
     }
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
       this.jdField_a_of_type_JavaLangCharSequence = "";
@@ -167,7 +167,7 @@ public class FolderTextView
   private void a()
   {
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131312352);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131378178);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_b_of_type_Int);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(this.jdField_a_of_type_Int);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
@@ -178,11 +178,11 @@ public class FolderTextView
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.d);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    int i = bajq.a(10.0F);
+    int i = bbkx.a(10.0F);
     this.jdField_b_of_type_AndroidWidgetTextView.setPadding(i, 0, i, 0);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(8, 2131312352);
-    localLayoutParams.addRule(7, 2131312352);
+    localLayoutParams.addRule(8, 2131378178);
+    localLayoutParams.addRule(7, 2131378178);
     addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
       post(new FolderTextView.1(this));
@@ -232,7 +232,7 @@ public class FolderTextView
       }
       j = localLayout.getLineStart(this.c - 1);
       i = localLayout.getLineEnd(this.c - 1);
-      if ((this.jdField_a_of_type_JavaLangCharSequence instanceof axkd))
+      if ((this.jdField_a_of_type_JavaLangCharSequence instanceof ayki))
       {
         localObject1 = new SpannableStringBuilder();
         ((SpannableStringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangCharSequence, j, i);

@@ -1,6 +1,6 @@
 package cooperation.qzone.util;
 
-import bgfi;
+import bhoa;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -38,7 +38,7 @@ public class MultiHashMap<K, V>
     }
   }
   
-  public final Collection<K> get(K paramK, bgfi<K> parambgfi)
+  public final Collection<K> get(K paramK, bhoa<K> parambhoa)
   {
     if (paramK == null) {
       try
@@ -47,7 +47,7 @@ public class MultiHashMap<K, V>
       }
       finally {}
     }
-    if (parambgfi == null) {
+    if (parambhoa == null) {
       throw new NullPointerException("keyMatcher == null");
     }
     Object localObject = keySet();
@@ -62,7 +62,7 @@ public class MultiHashMap<K, V>
           break;
         }
         localObject = localIterator.next();
-        if (parambgfi.a(paramK, localObject)) {
+        if (parambhoa.a(paramK, localObject)) {
           localArrayList.add(localObject);
         }
       }

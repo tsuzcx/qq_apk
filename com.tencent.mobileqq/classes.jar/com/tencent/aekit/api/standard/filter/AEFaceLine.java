@@ -22,8 +22,12 @@ public class AEFaceLine
   
   public void apply()
   {
+    if (this.mIsApplied) {
+      return;
+    }
     this.mFaceLineFilter = new FaceLineFilter();
     this.mFaceLineFilter.ApplyGLSLFilter();
+    this.mIsApplied = true;
   }
   
   public void clear()
@@ -31,6 +35,7 @@ public class AEFaceLine
     if (this.mFaceLineFilter != null) {
       this.mFaceLineFilter.clearGLSLSelf();
     }
+    this.mIsApplied = false;
   }
   
   public Frame render(Frame paramFrame)

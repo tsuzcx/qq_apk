@@ -1,48 +1,28 @@
-import android.os.Handler;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.webbundle.sdk.WebBundleH5OptionListner;
+import cooperation.comic.VipComicHelper.2.1;
+import mqq.os.MqqHandler;
 
-public class bggw
-  implements bggv
+public final class bggw
+  implements WebBundleH5OptionListner
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static ConcurrentHashMap<String, bggw> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private int jdField_a_of_type_Int = -1;
-  private bggv jdField_a_of_type_Bggv;
-  private String jdField_a_of_type_JavaLangString;
+  bggw(SharedPreferences paramSharedPreferences) {}
   
-  private bggw(String paramString)
+  public void enableWebBundle(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bggv = bghb.a(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public static bggw a(String paramString)
-  {
-    Object localObject1 = (bggw)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localObject1 == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        bggw localbggw = (bggw)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        localObject1 = localbggw;
-        if (localbggw == null)
-        {
-          localObject1 = new bggw(paramString);
-          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
-        }
-        return localObject1;
-      }
+    QLog.d("WebBundle.Comic", 2, "handle enable webbundle. enable = " + paramBoolean);
+    this.a.edit().putBoolean("webbundle_enable", paramBoolean).apply();
+    if (!paramBoolean) {
+      ThreadManager.getUIHandler().post(new VipComicHelper.2.1(this));
     }
-    return localObject1;
-  }
-  
-  public void a(Handler paramHandler)
-  {
-    this.jdField_a_of_type_Bggv.a(paramHandler);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bggw
  * JD-Core Version:    0.7.0.1
  */

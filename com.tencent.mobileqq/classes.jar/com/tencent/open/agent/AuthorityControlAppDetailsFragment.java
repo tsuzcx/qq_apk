@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -8,14 +8,14 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import awqx;
-import babr;
-import bafb;
-import bbuk;
-import bbul;
-import bbum;
-import bcix;
-import bciy;
+import axqw;
+import bbcv;
+import bbgg;
+import bcyk;
+import bcyl;
+import bcym;
+import bdmy;
+import bdmz;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
@@ -26,15 +26,15 @@ public class AuthorityControlAppDetailsFragment
   implements View.OnClickListener
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
-  private bcix jdField_a_of_type_Bcix;
-  private bciy jdField_a_of_type_Bciy;
+  private bdmy jdField_a_of_type_Bdmy;
+  private bdmz jdField_a_of_type_Bdmz;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private AppInfo jdField_a_of_type_ComTencentOpenModelAppInfo;
   
   private void a()
   {
-    this.jdField_a_of_type_Bciy = new bbuk(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Bciy);
+    this.jdField_a_of_type_Bdmz = new bcyk(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Bdmz);
   }
   
   public static void a(Activity paramActivity, AppInfo paramAppInfo)
@@ -46,15 +46,15 @@ public class AuthorityControlAppDetailsFragment
   
   private void a(View paramView)
   {
-    paramView = new bbul(this);
-    bbum localbbum = new bbum(this);
-    String str = ajjy.a(2131635013) + this.jdField_a_of_type_ComTencentOpenModelAppInfo.b() + ajjy.a(2131635004);
-    paramView = babr.a(this.jdField_a_of_type_AndroidAppActivity, 230, str, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131652877), 2131625035, 2131629116, paramView, localbbum);
+    paramView = new bcyl(this);
+    bcym localbcym = new bcym(this);
+    String str = ajyc.a(2131700797) + this.jdField_a_of_type_ComTencentOpenModelAppInfo.b() + ajyc.a(2131700788);
+    paramView = bbcv.a(this.jdField_a_of_type_AndroidAppActivity, 230, str, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131718702), 2131690596, 2131694793, paramView, localbcym);
     try
     {
       paramView.show();
       label89:
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DC5", "0X8009DC5", 0, 0, "", "", String.valueOf(this.jdField_a_of_type_ComTencentOpenModelAppInfo.a()), "");
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DC5", "0X8009DC5", 0, 0, "", "", String.valueOf(this.jdField_a_of_type_ComTencentOpenModelAppInfo.a()), "");
       return;
     }
     catch (Throwable paramView)
@@ -65,15 +65,15 @@ public class AuthorityControlAppDetailsFragment
   
   private void b()
   {
-    this.mContentView.findViewById(2131309365).setOnClickListener(this);
+    this.mContentView.findViewById(2131375111).setOnClickListener(this);
     this.jdField_a_of_type_ComTencentOpenModelAppInfo = ((AppInfo)getActivity().getIntent().getParcelableExtra("KEY_APP_INFO"));
     setTitle(this.jdField_a_of_type_ComTencentOpenModelAppInfo.b());
-    this.jdField_a_of_type_Bcix = ((bcix)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(151));
+    this.jdField_a_of_type_Bdmy = ((bdmy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(151));
   }
   
   public int getContentLayoutId()
   {
-    return 2131492903;
+    return 2131558440;
   }
   
   public void onClick(View paramView)
@@ -89,7 +89,7 @@ public class AuthorityControlAppDetailsFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Bciy);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Bdmz);
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -99,7 +99,7 @@ public class AuthorityControlAppDetailsFragment
     this.jdField_a_of_type_AndroidAppActivity = getActivity();
     a();
     b();
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DC4", "0X8009DC4", 0, 0, "", "", "", "");
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DC4", "0X8009DC4", 0, 0, "", "", "", "");
   }
 }
 

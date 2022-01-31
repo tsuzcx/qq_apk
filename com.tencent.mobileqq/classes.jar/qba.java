@@ -1,22 +1,60 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.articlesummary.articlesummary.FamilyCommentInfo;
 
-class qba
-  implements Animation.AnimationListener
+public class qba
+  implements Cloneable
 {
-  qba(qaz paramqaz) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static qba a(articlesummary.FamilyCommentInfo paramFamilyCommentInfo)
   {
-    if (qaz.a(this.a) != null) {
-      qaz.a(this.a).setVisibility(8);
+    qba localqba = new qba();
+    localqba.jdField_a_of_type_JavaLangString = paramFamilyCommentInfo.icon_url.get().toStringUtf8();
+    localqba.jdField_b_of_type_JavaLangString = paramFamilyCommentInfo.jump_url.get().toStringUtf8();
+    localqba.jdField_a_of_type_Int = paramFamilyCommentInfo.medal_urls_width.get();
+    localqba.jdField_b_of_type_Int = paramFamilyCommentInfo.medal_urls_height.get();
+    return localqba;
+  }
+  
+  public qba a()
+  {
+    try
+    {
+      super.clone();
+      qba localqba = new qba();
+      localqba.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localqba.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localqba.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localqba.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      return localqba;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FamilyCommentInfo", 2, new Object[] { "Clone not support: ", localCloneNotSupportedException.toString() });
+        }
+      }
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String toString()
+  {
+    return "FamilyCommentInfo\n familyIconUrl " + this.jdField_a_of_type_JavaLangString + "\n familyJumpUrl " + this.jdField_b_of_type_JavaLangString + "\n width " + this.jdField_a_of_type_Int + "\n height " + this.jdField_b_of_type_Int;
+  }
 }
 
 

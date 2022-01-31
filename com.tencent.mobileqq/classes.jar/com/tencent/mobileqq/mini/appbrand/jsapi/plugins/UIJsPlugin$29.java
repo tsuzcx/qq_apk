@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
-import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import org.json.JSONObject;
@@ -10,20 +7,18 @@ import org.json.JSONObject;
 class UIJsPlugin$29
   implements Runnable
 {
-  UIJsPlugin$29(UIJsPlugin paramUIJsPlugin, JsRuntime paramJsRuntime, JSONObject paramJSONObject1, String paramString, JSONObject paramJSONObject2, int paramInt) {}
+  UIJsPlugin$29(UIJsPlugin paramUIJsPlugin, JsRuntime paramJsRuntime, JSONObject paramJSONObject, String paramString, int paramInt) {}
   
   public void run()
   {
-    AbsAppBrandPage localAbsAppBrandPage = ((AppBrandPageContainer)this.this$0.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(this.val$webview.getPageWebViewId());
-    WebviewContainer localWebviewContainer = null;
-    if (localAbsAppBrandPage != null) {
-      localWebviewContainer = localAbsAppBrandPage.getCurrentWebviewContainer();
-    }
+    WebviewContainer localWebviewContainer = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
     if (localWebviewContainer != null)
     {
-      localWebviewContainer.updateTextArea(this.val$jsonObject);
-      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, this.val$result, this.val$callbackId);
+      localWebviewContainer.removeImageView(this.val$jsonObject.optInt("viewId"));
+      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
+      return;
     }
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, "container is null", this.val$callbackId);
   }
 }
 

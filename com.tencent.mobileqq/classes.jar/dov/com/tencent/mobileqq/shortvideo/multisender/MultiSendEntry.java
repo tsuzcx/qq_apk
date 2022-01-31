@@ -2,29 +2,29 @@ package dov.com.tencent.mobileqq.shortvideo.multisender;
 
 import android.database.Cursor;
 import android.text.TextUtils;
-import atmo;
-import atnz;
-import atoc;
-import bjkm;
+import aukm;
+import aulx;
+import auma;
+import blax;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class MultiSendEntry
-  extends atmo
+  extends aukm
 {
-  @atoc
+  @auma
   public String fakeVid;
   public String md5;
-  @atnz
-  List<bjkm> messageDataList;
+  @aulx
+  List<blax> messageDataList;
   public String messageInfos;
   public int syncToStory;
   public long time;
   public String uploadInfo;
-  @atnz
-  bjkm uploadMessageData;
+  @aulx
+  blax uploadMessageData;
   public String uuid;
   public String videoPath;
   
@@ -41,7 +41,7 @@ public class MultiSendEntry
     if (!TextUtils.isEmpty(this.uploadInfo)) {}
     try
     {
-      this.uploadMessageData = new bjkm();
+      this.uploadMessageData = new blax();
       this.uploadMessageData.a(this.uploadInfo);
       if (TextUtils.isEmpty(this.messageInfos)) {}
     }
@@ -51,7 +51,7 @@ public class MultiSendEntry
       {
         try
         {
-          this.messageDataList = bjkm.a(this.messageInfos);
+          this.messageDataList = blax.a(this.messageInfos);
           return true;
           paramCursor = paramCursor;
           paramCursor.printStackTrace();
@@ -73,23 +73,23 @@ public class MultiSendEntry
     }
     Iterator localIterator = this.messageDataList.iterator();
     while (localIterator.hasNext()) {
-      if (((bjkm)localIterator.next()).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq)) {
+      if (((blax)localIterator.next()).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq)) {
         localIterator.remove();
       }
     }
-    this.messageInfos = bjkm.a(this.messageDataList);
+    this.messageInfos = blax.a(this.messageDataList);
   }
   
-  public void setMessageDataList(List<bjkm> paramList)
+  public void setMessageDataList(List<blax> paramList)
   {
     this.messageDataList = paramList;
-    this.messageInfos = bjkm.a(paramList);
+    this.messageInfos = blax.a(paramList);
   }
   
-  public void setUploadMessageData(bjkm parambjkm)
+  public void setUploadMessageData(blax paramblax)
   {
-    this.uploadMessageData = parambjkm;
-    this.uploadInfo = parambjkm.a();
+    this.uploadMessageData = paramblax;
+    this.uploadInfo = paramblax.a();
   }
 }
 

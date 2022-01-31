@@ -1,20 +1,12 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import com.tencent.qg.video.videodecoder.MediaDecoder;
-
-public class bcph
-  implements SurfaceTexture.OnFrameAvailableListener
+public abstract interface bcph
 {
-  public bcph(MediaDecoder paramMediaDecoder, bcpi parambcpi) {}
+  public abstract void a(bcpf parambcpf);
   
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
-  {
-    this.jdField_a_of_type_Bcpi.a(paramSurfaceTexture);
-  }
+  public abstract void a(bcpf parambcpf, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcph
  * JD-Core Version:    0.7.0.1
  */

@@ -1,72 +1,82 @@
-import android.content.Context;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
 
-public abstract class aelr
-  implements aelm
+public class aelr
 {
-  public URLDrawable.URLDrawableOptions a()
+  public static int a(int paramInt)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mExtraInfo = this;
-    return localURLDrawableOptions;
-  }
-  
-  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
-  {
-    if (paramURL == null) {
-      return null;
+    int i = 5;
+    QLog.i("ViewHolderFactory", 2, "CFT-debug messageType = " + paramInt);
+    if (paramInt == 6) {
+      i = 1;
     }
-    paramURL = URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
-    paramURL.setTag(new int[] { 0, 0, (int)paramURLDrawableOptions.mGifRoundCorner });
-    return paramURL;
+    while (paramInt == 14) {
+      return i;
+    }
+    if ((paramInt == 13) || (paramInt == 15)) {
+      return 2;
+    }
+    if ((paramInt == 4) || (paramInt == 5)) {
+      return 3;
+    }
+    if (paramInt == 2001) {
+      return 4;
+    }
+    if ((paramInt == 7) || (paramInt == 8) || (paramInt == 11) || (paramInt == 12)) {
+      return 6;
+    }
+    if (paramInt == 2002) {
+      return 7;
+    }
+    if (paramInt == 18) {
+      return 8;
+    }
+    if (paramInt == 19) {
+      return 9;
+    }
+    if (paramInt == 21) {
+      return 10;
+    }
+    if (paramInt == 22) {
+      return 11;
+    }
+    if (paramInt == 23) {
+      return 12;
+    }
+    return 0;
   }
   
-  public URL a()
+  public static aeky a(QQAppInterface paramQQAppInterface, aell paramaell, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, acvj paramacvj)
   {
-    try
+    switch (paramInt)
     {
-      URL localURL1 = new URL("sticker_recommended_pic", "fromAIO", ((aemc)this).f());
-      if (localURL1 == null)
-      {
-        QLog.e("SimpleRemoteEmoticon", 1, "getURL url = null");
-        return null;
-      }
+    default: 
+      return new aekt(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
+    case 1: 
+      return new aela(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
+    case 5: 
+      return new aelb(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
+    case 2: 
+      return new aelt(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
+    case 3: 
+      return new aelq(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
+    case 4: 
+      return new aels(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
+    case 6: 
+      return new aelo(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
+    case 7: 
+      return new aekw(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
+    case 8: 
+      return new aekz(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
+    case 9: 
+      return new aekv(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
+    case 10: 
+      return new aeln(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
+    case 11: 
+      return new aeku(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
     }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      URL localURL2;
-      for (;;)
-      {
-        QLog.e("SimpleRemoteEmoticon", 1, "getURL create url exception e = " + localMalformedURLException.getMessage());
-        localURL2 = null;
-      }
-      return localURL2;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface) {}
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public String c()
-  {
-    return "z-";
+    return new aekx(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
   }
 }
 

@@ -1,17 +1,20 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollectionID;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.SharedPreferences;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
 public class syn
 {
-  public int a;
-  public int b;
-  
-  public qqstory_struct.DateVideoCollectionID a()
+  public static String a(QQUserUIItem paramQQUserUIItem)
   {
-    qqstory_struct.DateVideoCollectionID localDateVideoCollectionID = new qqstory_struct.DateVideoCollectionID();
-    localDateVideoCollectionID.collection_id.set(this.a);
-    localDateVideoCollectionID.collection_type.set(this.b);
-    return localDateVideoCollectionID;
+    paramQQUserUIItem = tsu.a();
+    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("key_story_qim_online_icon_url", null);
+  }
+  
+  public static String b(QQUserUIItem paramQQUserUIItem)
+  {
+    paramQQUserUIItem = tsu.a();
+    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("profile_card_qim_online_url", null);
   }
 }
 

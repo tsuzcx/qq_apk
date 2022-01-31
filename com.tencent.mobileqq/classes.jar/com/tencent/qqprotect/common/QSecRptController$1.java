@@ -1,6 +1,6 @@
 package com.tencent.qqprotect.common;
 
-import bdzm;
+import bfhc;
 import com.tencent.ims.SafeReport.ReqBody;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -11,7 +11,7 @@ public final class QSecRptController$1
   
   public void run()
   {
-    bdzm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentImsSafeReport$ReqBody);
+    bfhc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentImsSafeReport$ReqBody);
   }
 }
 

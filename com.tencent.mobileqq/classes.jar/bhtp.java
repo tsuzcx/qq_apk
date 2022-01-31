@@ -1,65 +1,41 @@
-import android.support.annotation.Nullable;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
-import java.util.List;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.util.Map;
 
-class bhtp
-  implements bhwg<List<wqk>>
+public class bhtp
 {
-  bhtp(bhtn parambhtn, bhso parambhso) {}
-  
-  public void a(@Nullable List<wqk> paramList)
+  private static Map<Integer, Long> a(long paramLong)
   {
-    bhtg.a(this.jdField_a_of_type_Bhtn.a).a().a(bhtg.a(this.jdField_a_of_type_Bhtn.a));
-    QLog.d("AEGIFChunkPreviewFragment", 4, "On observe material list state");
-    int j;
-    int i;
-    if (paramList == null)
-    {
-      QLog.e("AEGIFChunkPreviewFragment", 4, "aeMaterialWrappers == null");
-      if ((paramList != null) && (bhtg.b(this.jdField_a_of_type_Bhtn.a) != null))
-      {
-        QLog.e("AEGIFChunkPreviewFragment", 4, "Find materials num = " + paramList.size());
-        j = Math.min(paramList.size(), this.jdField_a_of_type_Bhso.b);
-        Collections.shuffle(paramList);
-        i = 0;
-      }
+    Map localMap = bhqc.a(LocalMultiProcConfig.getString("CTIME_MAP" + paramLong, ""));
+    if (!localMap.containsKey(Integer.valueOf(0))) {
+      localMap.put(Integer.valueOf(0), Long.valueOf(0L));
     }
-    for (;;)
-    {
-      bhsf localbhsf;
-      if (i < j)
-      {
-        wqk localwqk = (wqk)paramList.get(i);
-        localbhsf = new bhsf();
-        localbhsf.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = localwqk.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial;
-        QLog.d("AEGIFChunkPreviewFragment", 4, "Assigning material to item index = " + i + "material id = " + localwqk.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id);
-        localbhsf.b = 0;
-        localbhsf.jdField_a_of_type_Int = 10;
-        localbhsf.jdField_a_of_type_JavaLangString = "";
-        bhci.a().g(localwqk.jdField_a_of_type_JavaLangString);
-        if (bhtg.b(this.jdField_a_of_type_Bhtn.a).size() < bhtg.b(this.jdField_a_of_type_Bhtn.a)) {}
-      }
-      else
-      {
-        return;
-        if (!paramList.isEmpty()) {
-          break;
-        }
-        QLog.e("AEGIFChunkPreviewFragment", 4, "aeMaterialWrappers is empty");
-        break;
-      }
-      bhtg.b(this.jdField_a_of_type_Bhtn.a).add(localbhsf);
-      bhtg.a(this.jdField_a_of_type_Bhtn.a).notifyItemInserted(bhtg.b(this.jdField_a_of_type_Bhtn.a).size() - 1);
-      bhtg.a(this.jdField_a_of_type_Bhtn.a).a(bhfc.a(), localbhsf);
-      i += 1;
+    return localMap;
+  }
+  
+  public static Map<Integer, Long> a(Long paramLong)
+  {
+    return a(paramLong.longValue());
+  }
+  
+  public static void a(Integer paramInteger, Long paramLong)
+  {
+    Map localMap = a(paramLong);
+    localMap.put(paramInteger, Long.valueOf(System.currentTimeMillis() / 1000L));
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePersonalizeH5Service", 2, "updateCTime: " + paramInteger + "timestamp: " + System.currentTimeMillis() / 1000L);
     }
+    a(localMap, paramLong);
+  }
+  
+  public static void a(Map<Integer, Long> paramMap, Long paramLong)
+  {
+    LocalMultiProcConfig.putString("CTIME_MAP" + paramLong, bhqc.a(paramMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhtp
  * JD-Core Version:    0.7.0.1
  */

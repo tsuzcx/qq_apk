@@ -1,23 +1,91 @@
-public abstract interface aphf
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.downloader.BaseDownloader.1;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.IExcitingTransferRecvListener;
+import java.util.concurrent.Executor;
+
+public abstract class aphf
+  implements apgs, IExcitingTransferRecvListener
 {
-  public static final Integer a = Integer.valueOf(0);
-  public static final Integer b = Integer.valueOf(1);
-  public static final Integer c = Integer.valueOf(2);
-  public static final Integer d = Integer.valueOf(3);
-  public static final Integer e = Integer.valueOf(4);
-  public static final Integer f = Integer.valueOf(5);
-  public static final Integer g = Integer.valueOf(6);
-  public static final Integer h = Integer.valueOf(8);
-  public static final Integer i = Integer.valueOf(9);
-  public static final Integer j = Integer.valueOf(10);
-  public static final Integer k = Integer.valueOf(11);
-  public static final Integer l = Integer.valueOf(12);
-  public static final Integer m = Integer.valueOf(13);
-  public static final Integer n = Integer.valueOf(14);
+  protected long a;
+  protected apgu a;
+  public apti a;
+  private ExcitingTransferDownloadReqInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo = new ExcitingTransferDownloadReqInfo();
+  private boolean jdField_a_of_type_Boolean = true;
+  
+  public aphf(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Apgu = a(paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  protected abstract apgu a(QQAppInterface paramQQAppInterface);
+  
+  public abstract void a(ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo);
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
+    finally {}
+  }
+  
+  public void aw_()
+  {
+    try
+    {
+      this.jdField_a_of_type_Boolean = false;
+      apuq.a().execute(new BaseDownloader.1(this));
+      return;
+    }
+    finally {}
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_a_of_type_Boolean = true;
+      ExcitingTransferEngine.getInstance().cancelRecvFile(this.jdField_a_of_type_Long);
+      return;
+    }
+    finally {}
+  }
+  
+  public void c()
+  {
+    b();
+    this.jdField_a_of_type_Apgu.a();
+  }
+  
+  public void d()
+  {
+    b();
+    this.jdField_a_of_type_Apgu.b();
+  }
+  
+  public void e()
+  {
+    b();
+  }
+  
+  protected void f()
+  {
+    this.jdField_a_of_type_Long = ExcitingTransferEngine.getInstance().recvFileEx(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo, apgw.a().b(), this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aphf
  * JD-Core Version:    0.7.0.1
  */

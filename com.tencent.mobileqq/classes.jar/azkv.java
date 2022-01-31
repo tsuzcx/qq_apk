@@ -1,38 +1,15 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
-class azkv
-  extends ajjh
+public class azkv
+  extends ajxl
 {
-  azkv(azks paramazks) {}
+  public azkv(NewTroopContactView paramNewTroopContactView) {}
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!this.a.b(paramString)) {}
-    while (!paramBoolean1) {
-      return;
+    if (paramBoolean1) {
+      this.a.a.notifyDataSetChanged();
     }
-    azks.a(this.a, paramString);
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    paramObject = "" + paramObject;
-    if (!this.a.b(paramObject)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramBoolean);
-      azks.a(this.a, paramObject);
-    } while (!(this.a.a instanceof QQAppInterface));
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a;
-    ((ajjj)this.a.a.getManager(51)).d(paramObject);
-    ajzm.a(localQQAppInterface, paramObject);
-    localQQAppInterface.a().a().a(paramObject, true);
   }
 }
 

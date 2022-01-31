@@ -1,151 +1,271 @@
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.view.PressDarkImageButton;
-import java.util.HashSet;
+import android.os.Environment;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginRuntime;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import com.tencent.weiyun.utils.NetworkUtils;
+import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.AppRuntime;
 
-public class bicy
-  extends bifz
-  implements Handler.Callback, View.OnClickListener
+public final class bicy
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private PressDarkImageButton jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton;
-  private boolean jdField_a_of_type_Boolean;
+  private static final SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray;
+  private static String jdField_a_of_type_JavaLangString;
+  private static final Map<Integer, String> jdField_a_of_type_JavaUtilMap;
+  private static boolean jdField_a_of_type_Boolean = false;
+  private static String b;
+  private static String c;
+  private static String d;
   
-  public bicy(bigb parambigb)
+  static
   {
-    super(parambigb);
+    jdField_a_of_type_JavaLangString = "";
+    b = "";
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(0), "16*16");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1), "32*32");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(2), "64*64");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(3), "128*128");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(4), "320*320");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(5), "384*384");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(6), "640*640");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(7), "750*750");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(8), "1024*1024");
+    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(9);
+    jdField_a_of_type_AndroidUtilSparseArray.put(0, "/16");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1, "/32");
+    jdField_a_of_type_AndroidUtilSparseArray.put(2, "/64");
+    jdField_a_of_type_AndroidUtilSparseArray.put(3, "/128");
+    jdField_a_of_type_AndroidUtilSparseArray.put(4, "/320");
+    jdField_a_of_type_AndroidUtilSparseArray.put(5, "/384");
+    jdField_a_of_type_AndroidUtilSparseArray.put(6, "/640");
+    jdField_a_of_type_AndroidUtilSparseArray.put(7, "/750");
+    jdField_a_of_type_AndroidUtilSparseArray.put(8, "/1024");
   }
   
-  private void b(boolean paramBoolean)
+  public static PluginRuntime a(BaseApplicationImpl paramBaseApplicationImpl)
   {
+    try
+    {
+      Class localClass = Class.forName("com.weiyun.plugin.app.WeiyunRuntime");
+      paramBaseApplicationImpl = localClass;
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      try
+      {
+        ClassLoader localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "WeiyunPlugin.apk");
+        paramBaseApplicationImpl = localClassLoader.loadClass("com.weiyun.plugin.app.WeiyunRuntime");
+        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
+      }
+      catch (ClassNotFoundException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+      do
+      {
+        return null;
+        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof PluginRuntime)));
+      paramBaseApplicationImpl = (PluginRuntime)paramBaseApplicationImpl;
+      return paramBaseApplicationImpl;
+    }
+    catch (IllegalArgumentException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (IllegalAccessException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InstantiationException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InvocationTargetException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (NoSuchMethodException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (Exception paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    if (paramBaseApplicationImpl == null) {
+      return null;
+    }
+  }
+  
+  public static Pair<Pair<String, String>, Long> a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return new Pair(new Pair(paramString, paramString), Long.valueOf(0L));
+    }
+    String str = (String)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    paramString = new StringBuilder(paramString);
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton.setChecked(true);
-      return;
+      str = (String)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+      if (!TextUtils.isEmpty(str)) {
+        paramString.append(str);
+      }
+      paramString = paramString.toString();
+      l = paramString.hashCode() * 31;
+      return new Pair(new Pair(paramString, paramString), Long.valueOf(l));
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton.setChecked(false);
+    paramInt = NetworkUtils.getNetworkType(BaseApplicationImpl.getApplication());
+    paramString.append("&nettype=").append(paramInt);
+    if (!TextUtils.isEmpty(str)) {
+      paramString.append("&size=").append(str);
+    }
+    paramString = paramString.toString();
+    str = paramString.replaceFirst("cn=\\d", "").replaceFirst("nettype=\\d", "");
+    long l = str.hashCode() * 31;
+    return new Pair(new Pair(paramString, str), Long.valueOf(l));
   }
   
-  private void d()
+  public static String a()
   {
-    String str;
-    if (spz.f())
-    {
-      this.jdField_a_of_type_Boolean = spz.g();
-      this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton.setVisibility(0);
-      if (this.jdField_a_of_type_Boolean)
+    return c;
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    paramString1 = String.format("https://jump.weiyun.com/?from=30001&aid=%s", new Object[] { paramString2 });
+    QLog.d("Weiyun.AlbumBackup", 2, "weiyun vip payurl : " + paramString1);
+    return paramString1;
+  }
+  
+  public static void a()
+  {
+    if (!jdField_a_of_type_Boolean) {
+      try
       {
-        str = "1";
-        urp.a("video_edit", "exp_qzone", 0, 0, new String[] { str });
-        if (spz.h())
+        if (!jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 5000L);
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          spz.d();
-          urp.a("video_edit", "exp_qztip", 0, 0, new String[0]);
+          BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+          bick.a(localBaseApplicationImpl, false);
+          bidq.a(localBaseApplicationImpl);
+          a(localBaseApplicationImpl);
+          jdField_a_of_type_Boolean = true;
         }
-      }
-    }
-    for (;;)
-    {
-      b(this.jdField_a_of_type_Boolean);
-      return;
-      str = "2";
-      break;
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton.setVisibility(8);
-    }
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton = ((PressDarkImageButton)a(2131310963));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131310959));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131310960));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    d();
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-  }
-  
-  public void a(int paramInt, @NonNull bitz parambitz)
-  {
-    super.a(paramInt, parambitz);
-    boolean bool = this.jdField_a_of_type_Boolean;
-    urk.d("Q.qqstory.publish.edit.EditSyncQzonePart", "story_sync_qzone : %s", new Object[] { Boolean.valueOf(bool) });
-    parambitz.a.putExtra("story_sync_qzone", Boolean.valueOf(bool));
-  }
-  
-  public void g()
-  {
-    super.g();
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    case 2131310961: 
-    case 2131310962: 
-    default: 
-      return;
-    case 2131310963: 
-      if (this.jdField_a_of_type_Bigb.a() != null) {
-        this.jdField_a_of_type_Bigb.a().a.add(Integer.valueOf(11));
-      }
-      bhpm.a(paramView, 200L, new bicz(this));
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        urp.a("video_edit", "clk_qzone", 0, 0, new String[] { paramView });
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
         return;
       }
+      finally {}
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    urp.a("video_edit", "clk_qztip", 0, 0, new String[0]);
+  }
+  
+  private static void a(Application paramApplication)
+  {
+    c = apti.a().b();
+    if ("mounted".equals(Environment.getExternalStorageState())) {}
+    for (paramApplication = new File(bbuv.a(ajsf.aW));; paramApplication = paramApplication.getCacheDir())
+    {
+      d = new File(paramApplication, "diskcache").getAbsolutePath();
+      return;
+    }
+  }
+  
+  public static void a(Context paramContext)
+  {
+    paramContext.sendBroadcast(new Intent("enter_file_assit"), "com.tencent.msg.permission.pushnotify");
+  }
+  
+  public static void a(Context paramContext, long paramLong)
+  {
+    bidq.a(paramContext, paramLong);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (!TextUtils.isEmpty(paramString1)) {
+      jdField_a_of_type_JavaLangString = paramString1;
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      b = paramString2;
+    }
+  }
+  
+  public static String[] a()
+  {
+    return new String[] { jdField_a_of_type_JavaLangString, b };
+  }
+  
+  public static String b()
+  {
+    return d;
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    paramString1 = String.format("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&aid=%s", new Object[] { paramString2 });
+    QLog.d("Weiyun.AlbumBackup", 2, "qq vip payurl : " + paramString1);
+    return paramString1;
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Boolean) {
+      try
+      {
+        if (jdField_a_of_type_Boolean)
+        {
+          bick.a(false, BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+          jdField_a_of_type_Boolean = false;
+        }
+        return;
+      }
+      finally {}
+    }
+  }
+  
+  public static String c()
+  {
+    QLog.d("Weiyun.AlbumBackup", 2, "weiyun shapce payurl : " + "https://jump.weiyun.com/?from=3047");
+    return "https://jump.weiyun.com/?from=3047";
+  }
+  
+  public static void c()
+  {
+    jdField_a_of_type_JavaLangString = "";
+    b = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bicy
  * JD-Core Version:    0.7.0.1
  */

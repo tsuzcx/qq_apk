@@ -1,10 +1,22 @@
 package com.tencent.gdtad.aditem;
 
+import android.content.ContentResolver;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import axqw;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.log.AdLog;
+import com.tencent.ad.tangram.util.AdClickUtil.Result;
 import com.tencent.ad.tangram.util.AdUriUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgram.Req;
+import com.tencent.mm.opensdk.modelbiz.WXPreloadMiniProgram.Req;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -30,13 +42,16 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ExpInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
-import yjt;
-import ynv;
-import yny;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.WeChatAppInfo;
+import ysp;
+import ysw;
+import yxr;
+import yxs;
 
 public class GdtAd
-  implements Ad, Externalizable
+  implements Parcelable, Ad, Externalizable
 {
+  public static final Parcelable.Creator<GdtAd> CREATOR = new ysp();
   public static final int REPORT_STATE_FINISHED = 2;
   public static final int REPORT_STATE_INIT = -1;
   public static final int REPORT_STATE_PENDING = 1;
@@ -46,9 +61,38 @@ public class GdtAd
   
   public GdtAd() {}
   
+  public GdtAd(Parcel paramParcel)
+  {
+    try
+    {
+      this.actionSetId = paramParcel.readLong();
+      int i = paramParcel.readInt();
+      if (i <= 0)
+      {
+        yxs.d("GdtAd", "GdtAd(Parcel in) error");
+        return;
+      }
+      byte[] arrayOfByte = new byte[i];
+      paramParcel.readByteArray(arrayOfByte);
+      paramParcel = new qq_ad_get.QQAdGetRsp.AdInfo();
+      paramParcel.mergeFrom(arrayOfByte);
+      this.info = paramParcel;
+      return;
+    }
+    catch (Throwable paramParcel)
+    {
+      yxs.d("GdtAd", "GdtAd(Parcel in)", paramParcel);
+    }
+  }
+  
   public GdtAd(qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
   {
     this.info = paramAdInfo;
+  }
+  
+  private void a(Handler paramHandler, int paramInt)
+  {
+    paramHandler.post(new GdtAd.2(this, paramInt));
   }
   
   public boolean canPreloadForQQMINIProgram()
@@ -71,7 +115,7 @@ public class GdtAd
       try
       {
         Object localObject = new JSONObject(this.info.ext_json.get());
-        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
         if (localObject == null) {
           continue;
         }
@@ -83,9 +127,14 @@ public class GdtAd
       }
       catch (Throwable localThrowable)
       {
-        yny.b("GdtAd", "canPreloadForQQMINIProgram", localThrowable);
+        yxs.b("GdtAd", "canPreloadForQQMINIProgram", localThrowable);
       }
     }
+  }
+  
+  public int describeContents()
+  {
+    return 0;
   }
   
   public boolean disableAutoDownload()
@@ -106,7 +155,7 @@ public class GdtAd
         try
         {
           Object localObject = new JSONObject(this.info.ext_json.get());
-          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
           if (localObject != null)
           {
             bool = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).disable_auto_download.get();
@@ -115,7 +164,7 @@ public class GdtAd
         }
         catch (Throwable localThrowable)
         {
-          yny.b("GdtAd", "disableAutoDownload", localThrowable);
+          yxs.b("GdtAd", "disableAutoDownload", localThrowable);
         }
       }
     }
@@ -200,7 +249,7 @@ public class GdtAd
           try
           {
             Object localObject = new JSONObject(this.info.ext_json.get());
-            localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+            localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
             if (localObject != null)
             {
               localObject = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).market_deep_link.get();
@@ -209,7 +258,7 @@ public class GdtAd
           }
           catch (Throwable localThrowable)
           {
-            yny.b("GdtAd", "getAppMarketDeeplink", localThrowable);
+            yxs.b("GdtAd", "getAppMarketDeeplink", localThrowable);
           }
         }
       }
@@ -231,7 +280,7 @@ public class GdtAd
           try
           {
             Object localObject = new JSONObject(this.info.ext_json.get());
-            localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+            localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
             if (localObject != null)
             {
               localObject = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).market_package_name.get();
@@ -240,7 +289,7 @@ public class GdtAd
           }
           catch (Throwable localThrowable)
           {
-            yny.b("GdtAd", "getAppMarketPackageName", localThrowable);
+            yxs.b("GdtAd", "getAppMarketPackageName", localThrowable);
           }
         }
       }
@@ -327,33 +376,33 @@ public class GdtAd
     return -2147483648;
   }
   
-  public yjt getImageData()
+  public ysw getImageData()
   {
     if (!isValid()) {
       return null;
     }
-    yjt localyjt = new yjt();
-    localyjt.jdField_a_of_type_JavaLangString = this.info.display_info.basic_info.img.get();
-    localyjt.jdField_a_of_type_Int = this.info.display_info.basic_info.pic_width.get();
-    localyjt.b = this.info.display_info.basic_info.pic_height.get();
-    if (localyjt.a()) {}
+    ysw localysw = new ysw();
+    localysw.jdField_a_of_type_JavaLangString = this.info.display_info.basic_info.img.get();
+    localysw.jdField_a_of_type_Int = this.info.display_info.basic_info.pic_width.get();
+    localysw.b = this.info.display_info.basic_info.pic_height.get();
+    if (localysw.a()) {}
     for (;;)
     {
-      return localyjt;
-      localyjt = null;
+      return localysw;
+      localysw = null;
     }
   }
   
-  public yjt getImageData(int paramInt)
+  public ysw getImageData(int paramInt)
   {
     if ((!isValid()) || (paramInt < 0) || (paramInt >= this.info.display_info.muti_pic_text_info.image.size())) {
       return null;
     }
-    yjt localyjt = new yjt();
-    localyjt.jdField_a_of_type_JavaLangString = ((String)this.info.display_info.muti_pic_text_info.image.get(paramInt));
-    localyjt.jdField_a_of_type_Int = this.info.display_info.basic_info.pic_width.get();
-    localyjt.b = this.info.display_info.basic_info.pic_height.get();
-    return localyjt;
+    ysw localysw = new ysw();
+    localysw.jdField_a_of_type_JavaLangString = ((String)this.info.display_info.muti_pic_text_info.image.get(paramInt));
+    localysw.jdField_a_of_type_Int = this.info.display_info.basic_info.pic_width.get();
+    localysw.b = this.info.display_info.basic_info.pic_height.get();
+    return localysw;
   }
   
   public String getNetLogId()
@@ -555,7 +604,7 @@ public class GdtAd
       try
       {
         Object localObject = new JSONObject(this.info.ext_json.get());
-        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
         if (localObject == null) {
           continue;
         }
@@ -567,7 +616,7 @@ public class GdtAd
       }
       catch (Throwable localThrowable)
       {
-        yny.b("GdtAd", "isHitCanvasVideoCeilingExp", localThrowable);
+        yxs.b("GdtAd", "isHitCanvasVideoCeilingExp", localThrowable);
       }
     }
   }
@@ -585,7 +634,7 @@ public class GdtAd
         try
         {
           Object localObject = new JSONObject(this.info.ext_json.get());
-          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
           if (localObject != null)
           {
             boolean bool = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).no_clkcgi_jump.get();
@@ -594,7 +643,7 @@ public class GdtAd
         }
         catch (Throwable localThrowable)
         {
-          yny.b("GdtAd", "isHitJumpExperiment", localThrowable);
+          yxs.b("GdtAd", "isHitJumpExperiment", localThrowable);
         }
       }
     }
@@ -624,12 +673,144 @@ public class GdtAd
     return ((getProductType() == 1000) || (getProductType() == 12) || (getProductType() == 25) || (getProductType() == 30)) && ((getDestType() == 0) || (getDestType() == 4) || (getDestType() == 1)) && ((getCreativeSize() == 585) || (getCreativeSize() == 930));
   }
   
+  public boolean isWeChatMiniApp()
+  {
+    boolean bool2 = isValid();
+    boolean bool1 = bool2;
+    if (bool2) {
+      if ((this.info.product_type.get() != 46) && ((this.info.display_info == null) || (this.info.display_info.mini_program_type.get() != 3))) {
+        break label61;
+      }
+    }
+    label61:
+    for (bool1 = true;; bool1 = false)
+    {
+      if (bool1) {}
+      return bool1;
+    }
+  }
+  
+  public AdClickUtil.Result jumpToWechatMiniApp(Handler paramHandler)
+  {
+    localObject2 = "wxf0a80d0ac2e82aa7";
+    localObject1 = localObject2;
+    for (;;)
+    {
+      try
+      {
+        if (this.info.wechat_app_info.app_id.has())
+        {
+          localObject1 = localObject2;
+          if (this.info.wechat_app_info.app_id.get().length() > 0) {
+            localObject1 = this.info.wechat_app_info.app_id.get();
+          }
+        }
+        localObject1 = WXAPIFactory.createWXAPI(BaseApplicationImpl.sApplication, (String)localObject1);
+        if (((IWXAPI)localObject1).isWXAppInstalled()) {
+          continue;
+        }
+        a(paramHandler, 2131692978);
+        paramHandler = null;
+      }
+      catch (Exception paramHandler)
+      {
+        try
+        {
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("pathType", 2);
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("ad_trace_data", this.info.wechat_app_info.ad_trace_data.get());
+          localJSONObject.put("token", this.info.wechat_app_info.app_token.get());
+          ((JSONObject)localObject2).put("invokeData", localJSONObject);
+          paramHandler.extData = ((JSONObject)localObject2).toString();
+          AdLog.d("navigateToMiniProgram", "openMiniGame, make extData json success: " + paramHandler.extData);
+          paramHandler.miniprogramType = 0;
+          ((IWXAPI)localObject1).sendReq(paramHandler);
+          paramHandler = new AdClickUtil.Result(0, 9);
+          continue;
+          paramHandler = paramHandler;
+          paramHandler = new AdClickUtil.Result(4, 9);
+        }
+        catch (Exception localException)
+        {
+          AdLog.e("navigateToMiniProgram", "openMiniGame, make extData json failed!");
+          continue;
+        }
+      }
+      axqw.b(null, "dc00898", "", "", "0X800AA79", "0X800AA79", 0, 0, "", "", String.valueOf(this.info.wechat_app_info.pos_id.get()), "");
+      return paramHandler;
+      if (((IWXAPI)localObject1).getWXAppSupportAPI() >= 621086464) {
+        continue;
+      }
+      a(paramHandler, 2131692979);
+      paramHandler = null;
+    }
+    paramHandler = new WXLaunchMiniProgram.Req();
+    paramHandler.userName = this.info.wechat_app_info.app_username.get();
+    paramHandler.path = this.info.wechat_app_info.app_path.get();
+  }
+  
+  public void preloadMiniApp()
+  {
+    WXPreloadMiniProgram.Req localReq;
+    if (isWeChatMiniApp())
+    {
+      localReq = new WXPreloadMiniProgram.Req();
+      localReq.userName = this.info.wechat_app_info.app_username.get();
+      localReq.path = this.info.wechat_app_info.app_path.get();
+    }
+    try
+    {
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("pathType", 2);
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("ad_trace_data", this.info.wechat_app_info.ad_trace_data.get());
+      ((JSONObject)localObject2).put("token", this.info.wechat_app_info.app_token.get());
+      ((JSONObject)localObject1).put("invokeData", localObject2);
+      localReq.extData = ((JSONObject)localObject1).toString();
+      AdLog.d("navigateToMiniProgram", "openMiniGame, make extData json success: " + localReq.extData);
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        try
+        {
+          ContentResolver localContentResolver = BaseApplicationImpl.sApplication.getContentResolver();
+          Object localObject2 = Uri.parse("content://com.tencent.mm.sdk.comm.provider/preloadWXMiniprogram");
+          if (!this.info.wechat_app_info.app_id.has()) {
+            continue;
+          }
+          Object localObject1 = this.info.wechat_app_info.app_id.get();
+          localContentResolver.query((Uri)localObject2, null, null, new String[] { localObject1, localReq.userName, localReq.path, localReq.miniprogramType + "", localReq.extData }, null);
+          return;
+        }
+        catch (Throwable localThrowable)
+        {
+          String str;
+          if (0 == 0) {
+            continue;
+          }
+          try
+          {
+            throw new NullPointerException();
+          }
+          catch (Exception localException2) {}
+        }
+        localException1 = localException1;
+        AdLog.e("navigateToMiniProgram", "openMiniGame, make extData json failed!");
+        continue;
+        str = "wxf0a80d0ac2e82aa7";
+      }
+    }
+  }
+  
   public void readExternal(ObjectInput paramObjectInput)
   {
     int i = 0;
     if (paramObjectInput == null)
     {
-      yny.d("GdtAd", "readExternal error");
+      yxs.d("GdtAd", "readExternal error");
       return;
     }
     int j;
@@ -639,13 +820,13 @@ public class GdtAd
       j = paramObjectInput.readInt();
       if (j <= 0)
       {
-        yny.d("GdtAd", "readExternal error");
+        yxs.d("GdtAd", "readExternal error");
         return;
       }
     }
     catch (Throwable paramObjectInput)
     {
-      yny.d("GdtAd", "readExternal", paramObjectInput);
+      yxs.d("GdtAd", "readExternal", paramObjectInput);
       return;
     }
     Object localObject = new ByteArrayOutputStream();
@@ -658,7 +839,7 @@ public class GdtAd
         arrayOfByte = new byte[j - i];
         k = paramObjectInput.read(arrayOfByte);
         if (k < 0) {
-          yny.d("GdtAd", "readExternal error");
+          yxs.d("GdtAd", "readExternal error");
         }
       }
       else
@@ -668,7 +849,7 @@ public class GdtAd
         if ((i == j) && (paramObjectInput.length == j)) {
           break;
         }
-        yny.d("GdtAd", "readExternal error");
+        yxs.d("GdtAd", "readExternal error");
         return;
       }
       i += k;
@@ -683,7 +864,7 @@ public class GdtAd
     }
     catch (InvalidProtocolBufferMicroException paramObjectInput)
     {
-      yny.d("GdtAd", "readExternal", paramObjectInput);
+      yxs.d("GdtAd", "readExternal", paramObjectInput);
     }
   }
   
@@ -691,7 +872,7 @@ public class GdtAd
   {
     if ((paramObjectOutput == null) || (this.info == null))
     {
-      yny.d("GdtAd", "writeExternal error");
+      yxs.d("GdtAd", "writeExternal error");
       return;
     }
     byte[] arrayOfByte;
@@ -701,17 +882,52 @@ public class GdtAd
       arrayOfByte = this.info.toByteArray();
       if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
       {
-        yny.d("GdtAd", "writeExternal error");
+        yxs.d("GdtAd", "writeExternal error");
         return;
       }
     }
     catch (Throwable paramObjectOutput)
     {
-      yny.d("GdtAd", "writeExternal", paramObjectOutput);
+      yxs.d("GdtAd", "writeExternal", paramObjectOutput);
       return;
     }
     paramObjectOutput.writeInt(arrayOfByte.length);
     paramObjectOutput.write(arrayOfByte);
+  }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    if ((paramParcel == null) || (this.info == null))
+    {
+      yxs.d("GdtAd", "writeToParcel error");
+      return;
+    }
+    byte[] arrayOfByte;
+    for (;;)
+    {
+      try
+      {
+        paramParcel.writeLong(this.actionSetId);
+        arrayOfByte = this.info.toByteArray();
+        if (arrayOfByte != null)
+        {
+          paramInt = arrayOfByte.length;
+          paramParcel.writeInt(paramInt);
+          if (paramInt > 0) {
+            break;
+          }
+          yxs.d("GdtAd", "writeToParcel error");
+          return;
+        }
+      }
+      catch (Throwable paramParcel)
+      {
+        yxs.d("GdtAd", "writeToParcel", paramParcel);
+        return;
+      }
+      paramInt = 0;
+    }
+    paramParcel.writeByteArray(arrayOfByte);
   }
 }
 

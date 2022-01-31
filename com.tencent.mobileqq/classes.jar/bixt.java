@@ -1,20 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
 
 public class bixt
-  implements View.OnClickListener
+  implements bcph
 {
-  public bixt(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public bixt(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
   
-  public void onClick(View paramView)
-  {
-    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
-    while (this.a.a == null) {
-      return;
-    }
-    this.a.a.a();
-  }
+  public void a(bcpf parambcpf) {}
+  
+  public void a(bcpf parambcpf, int paramInt1, int paramInt2) {}
 }
 
 

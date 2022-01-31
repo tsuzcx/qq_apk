@@ -1,16 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-class bijd
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bijd
 {
-  bijd(bijc parambijc) {}
+  public abstract void a(VideoMaterial paramVideoMaterial);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.k();
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

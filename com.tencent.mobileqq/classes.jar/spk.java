@@ -1,7 +1,19 @@
 public class spk
-  extends sfo
+  extends spl
 {
-  public boolean a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  
+  public spk(int paramInt)
+  {
+    super(paramInt);
+    this.g = 6;
+  }
 }
 
 

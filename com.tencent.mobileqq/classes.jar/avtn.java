@@ -1,93 +1,167 @@
+import android.app.Activity;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Properties;
 
 public class avtn
 {
-  private int jdField_a_of_type_Int = 1;
-  private String jdField_a_of_type_JavaLangString = "";
-  private String b = "";
+  public static int a;
+  public static long a;
+  public static String a;
+  public static boolean a;
+  public static int b;
   
-  public static String a(int paramInt, boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  private static String a()
   {
-    int i = 1;
+    if (jdField_a_of_type_Int % 180 == 0) {
+      return "0";
+    }
+    return "1";
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_Boolean = false;
+    jdField_a_of_type_JavaLangString = null;
+    jdField_a_of_type_Int = 90;
+    b = 2;
+    jdField_a_of_type_Long = 0L;
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("entry", paramInt);
-      if (paramBoolean1)
+      long l = awaf.a(paramString);
+      if (l == 0L) {}
+      for (float f = -1.0F;; f = paramInt * 1000.0F / (float)l)
       {
-        paramInt = 1;
-        localJSONObject.put("match", paramInt);
-        localJSONObject.put("keyword", paramString);
-        if (!paramBoolean2) {
-          break label74;
-        }
+        axrl.a(BaseApplication.getContext()).a(null, "capture_video_fps", false, f, 0L, null, "");
+        return;
       }
-      label74:
-      for (paramInt = i;; paramInt = 0)
-      {
-        localJSONObject.put("nightmode", paramInt);
-        paramString = localJSONObject.toString();
-        return paramString;
-        paramInt = 0;
-        break;
-      }
-      return null;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("RichMetaData", 2, "setLayout101ExtraData exception:" + paramString);
-    }
-  }
-  
-  public String a()
-  {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("serverdata", new JSONObject(this.jdField_a_of_type_JavaLangString));
-      localJSONObject2.put("state", this.jdField_a_of_type_Int);
-      if (!TextUtils.isEmpty(this.b)) {
-        localJSONObject2.put("extradata", new JSONObject(this.b));
-      }
-      localJSONObject1.put("data", localJSONObject2);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("RichMetaData", 2, "convertMetaData exception : " + localJSONException);
-      }
-    }
-    return localJSONObject1.toString();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Int = 1;
       return;
     }
-    this.jdField_a_of_type_Int = 0;
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  public void b(String paramString)
+  public static void a(Activity paramActivity, int paramInt1, int paramInt2)
   {
-    this.b = paramString;
+    switch (paramInt1)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt2 == -1)
+        {
+          if (jdField_a_of_type_Boolean)
+          {
+            ahub.a("", "0X80072C5", b(), jdField_a_of_type_JavaLangString, "", "");
+            return;
+          }
+          ahub.a("", "0X80072C4", b());
+          return;
+        }
+      } while (paramInt2 != 0);
+      if (jdField_a_of_type_Boolean)
+      {
+        ahub.b("", "0X80072C6");
+        return;
+      }
+      ahub.b("", "0X80072C7");
+      return;
+      if (paramInt2 == -1)
+      {
+        paramActivity = new Properties();
+        paramActivity.setProperty("shortvideo_duration", String.valueOf(jdField_a_of_type_Long));
+        paramActivity.setProperty("shortvideo_rotation", a());
+        paramActivity.setProperty("shortvideo_camera", b());
+        if (!jdField_a_of_type_Boolean)
+        {
+          ahub.a("", "0X8006A16", String.valueOf(jdField_a_of_type_Long), a(), b(), "");
+          ahww.a("shortvideo_send_noeffects", paramActivity);
+          return;
+        }
+        ahub.a("", "0X8006A19", String.valueOf(jdField_a_of_type_Long), a(), b(), jdField_a_of_type_JavaLangString);
+        ahww.a("shortvideo_send_effects", paramActivity);
+        return;
+      }
+    } while (paramInt2 != 0);
+    if (jdField_a_of_type_Boolean)
+    {
+      ahub.b("", "0X8006A1B");
+      return;
+    }
+    ahub.b("", "0X8006A17");
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (String str = "1";; str = "0")
+    {
+      ahub.a("", "0X8007BB7", str);
+      return;
+    }
+  }
+  
+  private static String b()
+  {
+    if (b == 1) {
+      return "1";
+    }
+    return "0";
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Boolean)
+    {
+      ahub.a("", "0X80072C3", b(), jdField_a_of_type_JavaLangString, "", "");
+      return;
+    }
+    ahub.a("", "0X80072C2", b());
+  }
+  
+  public static void c()
+  {
+    if (jdField_a_of_type_Boolean)
+    {
+      ahub.a("", "0X8006A18", String.valueOf(jdField_a_of_type_Long), a(), b(), jdField_a_of_type_JavaLangString);
+      return;
+    }
+    ahub.a("", "0X8006A13", String.valueOf(jdField_a_of_type_Long), a(), b(), "");
+  }
+  
+  public static void d()
+  {
+    ahub.b("", "0X80072C1");
+  }
+  
+  public static void e()
+  {
+    ahub.b("", "0X8006A12");
+  }
+  
+  public static void f()
+  {
+    ahub.b("", "0X8006A15");
+    ahww.a("shortvideo_rotate_camera", null);
+  }
+  
+  public static void g()
+  {
+    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avtn
  * JD-Core Version:    0.7.0.1
  */

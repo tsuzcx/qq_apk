@@ -1,208 +1,142 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.utils.BaseConstants.NetType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-public final class aude
-  implements BaseConstants.NetType
+public class aude
+  extends aucy
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private static audf[] jdField_a_of_type_ArrayOfAudf = new audf[4];
+  public static final Paint a;
+  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
   static
   {
-    jdField_a_of_type_ArrayOfAudf[1] = new audf();
-    jdField_a_of_type_ArrayOfAudf[2] = new audf();
-    jdField_a_of_type_ArrayOfAudf[3] = new audf();
+    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   }
   
-  public static audf a(QQAppInterface paramQQAppInterface, int paramInt)
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, aucu paramaucu, aucw paramaucw)
   {
-    a(paramQQAppInterface, false);
-    return jdField_a_of_type_ArrayOfAudf[paramInt];
-  }
-  
-  private static String a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
-    String str = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface, 0).getString("PreDownloadCfg", null);
-    if (QLog.isColorLevel()) {
-      QLog.d("PTTPreDownloader", 2, "Params getSavedCfg: " + str + " for:" + paramQQAppInterface);
-    }
-    return str;
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, int paramInt, audf paramaudf)
-  {
-    Object localObject = null;
-    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
-    String str = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface, 0).getString("PTTPreDownloadParams_" + paramInt, null);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PTTPreDownloader", 4, "Params getSavedParams: " + str + " for: PTTPreDownloadParams_" + paramInt + " for:" + paramQQAppInterface);
-    }
-    paramQQAppInterface = (QQAppInterface)localObject;
-    if (str != null)
+    Context localContext = paramViewGroup.getContext();
+    OCRTextSearchInfo.SougouSearchInfo localSougouSearchInfo = (OCRTextSearchInfo.SougouSearchInfo)paramaucw.jdField_a_of_type_JavaLangObject;
+    paramInt = 1;
+    if (paramView != null)
     {
-      paramQQAppInterface = (QQAppInterface)localObject;
-      if (str.length() > 0)
+      paramaucu = (aucw)paramView.getTag();
+      if ((paramaucu.jdField_a_of_type_Int == paramaucw.jdField_a_of_type_Int) && (paramaucu.b == paramaucw.b))
       {
-        localObject = str.split("##");
-        paramQQAppInterface = localObject[0];
-        localObject = localObject[1];
+        paramaucu = (audg)paramView.getTag(-1);
+        paramInt = 0;
       }
+    }
+    for (;;)
+    {
+      Object localObject;
+      if (paramInt == 0)
+      {
+        localObject = paramaucu;
+        if (paramaucu != null) {}
+      }
+      else
+      {
+        localObject = new audg(this);
+        paramView = (ViewGroup)LayoutInflater.from(localContext).inflate(2131560932, paramViewGroup, false);
+        ((audg)localObject).jdField_a_of_type_AndroidViewViewGroup = paramView;
+        ((audg)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377350));
+        ((audg)localObject).b = ((TextView)paramView.findViewById(2131361813));
+        ((audg)localObject).c = ((TextView)paramView.findViewById(2131376336));
+        ((audg)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367776));
+        paramView.setTag(-1, localObject);
+      }
+      a((audg)localObject, localSougouSearchInfo);
+      paramView.setTag(paramaucw);
+      return paramView;
+      paramaucu = null;
+    }
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
+  
+  void a(audg paramaudg, OCRTextSearchInfo.SougouSearchInfo paramSougouSearchInfo)
+  {
+    Object localObject = new aucn(paramSougouSearchInfo.titleKeyWords, null);
+    if (!TextUtils.isEmpty(paramSougouSearchInfo.title))
+    {
+      localObject = ((aucn)localObject).a(paramSougouSearchInfo.title, true);
+      if (localObject != null) {
+        paramaudg.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      }
+    }
+    localObject = new aucn(paramSougouSearchInfo.abstractStrKeyWords, null);
+    if (!TextUtils.isEmpty(paramSougouSearchInfo.abstractStr))
+    {
+      localObject = ((aucn)localObject).a(aucn.a(paramSougouSearchInfo.abstractStr));
+      paramaudg.b.setText((CharSequence)localObject);
     }
     try
     {
-      a(((String)localObject).substring(((String)localObject).indexOf(':') + 1), paramaudf);
-      return paramQQAppInterface;
-    }
-    catch (Exception paramaudf) {}
-    return paramQQAppInterface;
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_ArrayOfAudf = new audf[4];
-    jdField_a_of_type_ArrayOfAudf[1] = new audf();
-    jdField_a_of_type_ArrayOfAudf[2] = new audf();
-    jdField_a_of_type_ArrayOfAudf[3] = new audf();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, audf paramaudf, int paramInt)
-  {
-    Object localObject = new StringBuilder(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
-    ((StringBuilder)localObject).append("##");
-    ((StringBuilder)localObject).append(paramInt).append(':');
-    ((StringBuilder)localObject).append(paramaudf.jdField_a_of_type_Int);
-    int i = 0;
-    while (i <= 5)
-    {
-      ((StringBuilder)localObject).append('#').append(i).append('_').append(paramaudf.jdField_a_of_type_ArrayOfInt[i]);
-      i += 1;
-    }
-    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
-    paramaudf = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface, 0);
-    localObject = ((StringBuilder)localObject).toString();
-    paramaudf.edit().putString("PTTPreDownloadParams_" + paramInt, (String)localObject).commit();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PTTPreDownloader", 4, "Params saveParams: " + (String)localObject + " for: PTTPreDownloadParams_" + paramInt + " for:" + paramQQAppInterface);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    int i = 1;
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    paramQQAppInterface = a(paramQQAppInterface);
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + str, 0).edit().putString("PreDownloadCfg", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("PTTPreDownloader", 2, "Params saveCfg: " + paramString + " for:" + str);
-    }
-    if (TextUtils.isEmpty(paramQQAppInterface)) {
-      if (TextUtils.isEmpty(paramString)) {}
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        localEditor.putString("PTTPreDownloadParams_1", "");
-        localEditor.putString("PTTPreDownloadParams_3", "");
-        localEditor.putString("PTTPreDownloadParams_2", "");
-        if (QLog.isDevelopLevel()) {
-          QLog.d("PTTPreDownloader", 4, "Params ClearParams for:" + str);
-        }
+      if (TextUtils.isEmpty(paramSougouSearchInfo.summaryPic)) {
+        paramaudg.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       }
-      localEditor.commit();
-      return;
-      i = 0;
-      continue;
-      if (paramQQAppInterface.equals(paramString)) {
-        i = 0;
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (((jdField_a_of_type_Boolean) && (!paramBoolean)) || (paramQQAppInterface == null)) {
-      return;
-    }
-    jdField_a_of_type_Boolean = true;
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramQQAppInterface = a(paramQQAppInterface);
-        if (QLog.isColorLevel()) {
-          QLog.d("PTTPreDownloader", 2, "Params initCfg :" + paramQQAppInterface);
-        }
-        if ((paramQQAppInterface == null) || (paramQQAppInterface.length() == 0)) {
-          break;
-        }
-        paramQQAppInterface = paramQQAppInterface.split("\\|");
-        if ((paramQQAppInterface == null) || (paramQQAppInterface.length < 1)) {
-          break;
-        }
-        i = paramQQAppInterface.length - 1;
-        if (i < 0) {
-          break;
-        }
-        String[] arrayOfString = paramQQAppInterface[i].split(":");
-        if ((arrayOfString != null) && (arrayOfString.length >= 2))
-        {
-          int j = Integer.parseInt(arrayOfString[0]);
-          if ((j >= 1) && (j < jdField_a_of_type_ArrayOfAudf.length))
-          {
-            audf localaudf = jdField_a_of_type_ArrayOfAudf[j];
-            a(arrayOfString[1], localaudf);
-          }
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        return;
-      }
-      i -= 1;
-    }
-  }
-  
-  private static void a(String paramString, audf paramaudf)
-  {
-    paramString = paramString.split("#");
-    if ((paramString == null) || (paramString.length < 2)) {}
-    label88:
-    for (;;)
-    {
-      return;
-      paramaudf.jdField_a_of_type_Int = Integer.parseInt(paramString[0]);
-      int i = 1;
       for (;;)
       {
-        if (i >= paramString.length) {
-          break label88;
+        if (!TextUtils.isEmpty(paramSougouSearchInfo.sourceFrom)) {
+          break label306;
         }
-        String[] arrayOfString = paramString[i].split("_");
-        if ((arrayOfString == null) || (arrayOfString.length < 2)) {
+        paramaudg.c.setVisibility(8);
+        return;
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = actn.a(80.0F, BaseApplicationImpl.sApplication.getResources());
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = actn.a(60.0F, BaseApplicationImpl.sApplication.getResources());
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+        localObject = URLDrawable.getDrawable(paramSougouSearchInfo.summaryPic, (URLDrawable.URLDrawableOptions)localObject);
+        if ((localObject == null) || (((URLDrawable)localObject).getStatus() != 2)) {
           break;
         }
-        int j = Integer.parseInt(arrayOfString[0]);
-        int k = Integer.parseInt(arrayOfString[1]);
-        paramaudf.jdField_a_of_type_ArrayOfInt[j] = k;
-        i += 1;
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "updateNormalItem image fail," + paramSougouSearchInfo);
+        }
+        paramaudg.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        paramaudg.jdField_a_of_type_AndroidWidgetImageView.setTag(paramSougouSearchInfo.summaryPic);
       }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "updateNormalItem", localException);
+        }
+        localException.printStackTrace();
+        continue;
+        paramaudg.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        localException.setURLDrawableListener(new audf(this));
+        paramaudg.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localException);
+      }
+      label306:
+      paramaudg.c.setVisibility(0);
+      paramaudg.c.setText(paramSougouSearchInfo.sourceFrom);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aude
  * JD-Core Version:    0.7.0.1
  */

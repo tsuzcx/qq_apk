@@ -1,181 +1,49 @@
-import android.graphics.Canvas;
-import android.graphics.Typeface;
 import android.text.TextUtils;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class ahlr
-  extends ahma
+  implements View.OnClickListener
 {
-  private static int jdField_a_of_type_Int = 50;
-  private float jdField_a_of_type_Float;
-  private ahlx jdField_a_of_type_Ahlx;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private ahlx jdField_b_of_type_Ahlx;
+  ahlr(ahkf paramahkf) {}
   
-  public ahlr(long paramLong1, long paramLong2, float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean, String paramString, float paramFloat4, int paramInt, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, float paramFloat9, Typeface paramTypeface)
+  public void onClick(View paramView)
   {
-    super(paramLong1, paramLong2, paramBoolean);
-    a(8, paramFloat1);
-    a(9, paramFloat2);
-    a(6, paramFloat5);
-    this.jdField_a_of_type_Float = paramFloat5;
-    a(5, a(paramFloat3, paramFloat2 * paramFloat1));
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Ahlx = new ahlx(a(this.jdField_b_of_type_Int), paramFloat4, paramInt, paramFloat7, paramFloat9, paramTypeface);
-    this.jdField_b_of_type_Ahlx = new ahlx(a(this.jdField_b_of_type_Int + jdField_a_of_type_Int), paramFloat4, paramInt, paramFloat7, paramFloat9, paramTypeface);
-    a(3, this.jdField_a_of_type_Ahlx.b.jdField_a_of_type_Float);
-    a(4, this.jdField_a_of_type_Ahlx.b.b);
-    a(7, (paramFloat8 - this.jdField_a_of_type_Ahlx.b.b) / 2.0F + paramFloat6);
-  }
-  
-  private float a(float paramFloat1, float paramFloat2)
-  {
-    return paramFloat1 * paramFloat2;
-  }
-  
-  private String a(int paramInt)
-  {
-    Object localObject;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      localObject = "";
-      return localObject;
+    paramView = (axuh)paramView.getTag();
+    if (paramView != null) {
+      paramView.jdField_a_of_type_Bbds.b();
     }
-    if (this.jdField_a_of_type_JavaLangString.length() <= paramInt) {
-      return "";
-    }
-    if (this.jdField_a_of_type_JavaLangString.length() > jdField_a_of_type_Int + paramInt) {}
-    for (String str = this.jdField_a_of_type_JavaLangString.substring(paramInt, jdField_a_of_type_Int + paramInt);; str = this.jdField_a_of_type_JavaLangString.substring(paramInt, this.jdField_a_of_type_JavaLangString.length()))
+    try
     {
-      localObject = str;
-      if (str != null) {
-        break;
-      }
-      return "";
-    }
-  }
-  
-  private void a(Canvas paramCanvas, RenderBuffer paramRenderBuffer)
-  {
-    if ((paramCanvas == null) && (paramRenderBuffer == null)) {}
-    float f;
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_Ahlx != null)
+      if (!TextUtils.isEmpty(paramView.jdField_a_of_type_JavaLangString))
       {
-        f = a(6) + this.jdField_a_of_type_Ahlx.b.jdField_a_of_type_Float;
-        if (f >= 0.0F)
+        i = Integer.parseInt(paramView.jdField_a_of_type_JavaLangString);
+        axqw.b(ahkf.a(this.a).app, "dc00898", "", "", "0X80087C1", "0X80087C1", i, 0, "", "", "", "");
+        paramView = new amox(ahkf.a(this.a).getApplicationContext(), ando.jdField_a_of_type_JavaLangString);
+        if (paramView != null)
         {
-          if (paramCanvas == null) {
-            break label102;
-          }
-          this.jdField_a_of_type_Ahlx.a(paramCanvas, a(6), a(7));
+          paramView.b();
+          paramView.c();
         }
-        while ((f - this.jdField_a_of_type_Float <= 0.0F) && (this.jdField_b_of_type_Ahlx != null))
-        {
-          if (paramCanvas == null) {
-            break label125;
-          }
-          this.jdField_b_of_type_Ahlx.a(paramCanvas, f, a(7));
-          return;
-          label102:
-          this.jdField_a_of_type_Ahlx.a(paramRenderBuffer, a(6), a(7));
-        }
-      }
-    }
-    label125:
-    this.jdField_b_of_type_Ahlx.a(paramRenderBuffer, f, a(7));
-  }
-  
-  private void h()
-  {
-    if ((this.jdField_a_of_type_Ahlx != null) && (this.jdField_b_of_type_Ahlx != null) && (this.jdField_b_of_type_Ahlx.jdField_a_of_type_Boolean))
-    {
-      Object localObject = this.jdField_a_of_type_Ahlx;
-      this.jdField_a_of_type_Ahlx = this.jdField_b_of_type_Ahlx;
-      this.jdField_b_of_type_Ahlx = ((ahlx)localObject);
-      a(3, this.jdField_a_of_type_Ahlx.b.jdField_a_of_type_Float);
-      a(6, a(6) + ((ahlx)localObject).jdField_a_of_type_Ahms.jdField_a_of_type_Float);
-      if (((ahlx)localObject).jdField_a_of_type_Ahms.jdField_a_of_type_JavaLangString != null)
-      {
-        int i = this.jdField_b_of_type_Int;
-        this.jdField_b_of_type_Int = (((ahlx)localObject).jdField_a_of_type_Ahms.jdField_a_of_type_JavaLangString.length() + i);
-      }
-      localObject = a(this.jdField_b_of_type_Int + jdField_a_of_type_Int);
-      this.jdField_b_of_type_Ahlx.a((String)localObject);
-    }
-  }
-  
-  public void a()
-  {
-    super.a();
-    if ((this.jdField_a_of_type_Ahlx != null) && (a(6) + this.jdField_a_of_type_Ahlx.b.jdField_a_of_type_Float <= 0.0F)) {
-      h();
-    }
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    a(paramCanvas, null);
-  }
-  
-  public void a(RenderBuffer paramRenderBuffer)
-  {
-    a(null, paramRenderBuffer);
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      do
-      {
         return;
-      } while (paramString.equals(this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_JavaLangString = paramString;
-      paramString = a(this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Ahlx != null)
+      }
+    }
+    catch (Throwable paramView)
+    {
+      for (;;)
       {
-        this.jdField_a_of_type_Ahlx.a(paramString);
-        a(3, this.jdField_a_of_type_Ahlx.b.jdField_a_of_type_Float);
-        a(4, this.jdField_a_of_type_Ahlx.b.b);
+        paramView.printStackTrace();
+        int i = 0;
+        continue;
+        i = 0;
       }
-      paramString = a(this.jdField_b_of_type_Int + jdField_a_of_type_Int);
-      if (this.jdField_b_of_type_Ahlx != null) {
-        this.jdField_b_of_type_Ahlx.a(paramString);
-      }
-    } while ((this.jdField_a_of_type_Ahlx == null) || (a(6) + this.jdField_a_of_type_Ahlx.b.jdField_a_of_type_Float >= 0.0F));
-    h();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Ahlx != null)
-    {
-      this.jdField_a_of_type_Ahlx.a();
-      this.jdField_a_of_type_Ahlx = null;
     }
-    if (this.jdField_b_of_type_Ahlx != null)
-    {
-      this.jdField_b_of_type_Ahlx.a();
-      this.jdField_b_of_type_Ahlx = null;
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_b_of_type_Int = 0;
-    a(this.jdField_a_of_type_JavaLangString);
-    a(6, this.jdField_a_of_type_Float);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahlr
  * JD-Core Version:    0.7.0.1
  */

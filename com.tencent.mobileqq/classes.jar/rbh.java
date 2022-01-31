@@ -1,30 +1,35 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.ViewPagerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class rbh
-  extends Handler
+class rbh
+  extends sdt
 {
-  public rbh(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  rbh(rap paramrap) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(sdu paramsdu)
   {
-    if (ReadInJoyDiandianHeaderController.a(this.a)) {}
-    while (ReadInJoyDiandianHeaderController.a(this.a).getCount() <= 1) {
-      return;
+    if (paramsdu != null)
+    {
+      int j = this.a.a.getHeaderViewsCount();
+      new ArrayList();
+      int i = paramsdu.jdField_a_of_type_Int;
+      while (i <= paramsdu.b)
+      {
+        int k = i - j;
+        if (k >= 0)
+        {
+          BaseArticleInfo localBaseArticleInfo = this.a.b(k);
+          if (localBaseArticleInfo != null)
+          {
+            QLog.d("FeedExposureHelper", 2, "onExposure : " + localBaseArticleInfo + " proteusItemsData : " + localBaseArticleInfo.proteusItemsData);
+            shx.a(localBaseArticleInfo, paramsdu.jdField_a_of_type_Long);
+          }
+        }
+        i += 1;
+      }
     }
-    paramMessage = this.a;
-    paramMessage.jdField_a_of_type_Int += 1;
-    this.a.jdField_a_of_type_Int %= ReadInJoyDiandianHeaderController.a(this.a).getCount();
-    ReadInJoyDiandianHeaderController.a(this.a).setCurrentItem(this.a.jdField_a_of_type_Int, true);
-    ndn.a(null, "", "0X8009827", "0X8009827", 0, 0, "", "", "", "", false);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 3000L);
   }
 }
 

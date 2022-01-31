@@ -1,20 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.activity.GesturePWDGuideActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public class aayd
-  implements View.OnClickListener
+class aayd
+  implements DialogInterface.OnClickListener
 {
-  public aayd(GesturePWDGuideActivity paramGesturePWDGuideActivity) {}
+  aayd(aayc paramaayc) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
-    this.a.startActivityForResult(paramView, 999);
-    this.a.overridePendingTransition(2130771997, 2130771990);
-    awqx.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_Gesture_password", 0, 0, "", "", "", "");
+    this.a.a.a();
+    DevlockQuickLoginActivity.b(this.a.a);
+    DevlockQuickLoginActivity.b(this.a.a, 0, 2130772001);
   }
 }
 

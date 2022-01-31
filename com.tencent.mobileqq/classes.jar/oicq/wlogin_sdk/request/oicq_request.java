@@ -8,6 +8,7 @@ import java.lang.reflect.Array;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import oicq.wlogin_sdk.pow.b;
 import oicq.wlogin_sdk.report.Reporter;
 import oicq.wlogin_sdk.report.report_t3;
 import oicq.wlogin_sdk.sharemem.WloginSigInfo;
@@ -75,6 +76,7 @@ import oicq.wlogin_sdk.tlv_type.tlv_t402;
 import oicq.wlogin_sdk.tlv_type.tlv_t403;
 import oicq.wlogin_sdk.tlv_type.tlv_t508;
 import oicq.wlogin_sdk.tlv_type.tlv_t52b;
+import oicq.wlogin_sdk.tlv_type.tlv_t546;
 import oicq.wlogin_sdk.tools.EcdhCrypt;
 import oicq.wlogin_sdk.tools.ErrMsg;
 import oicq.wlogin_sdk.tools.InternationMsg;
@@ -201,7 +203,7 @@ public class oicq_request
     }
     for (;;)
     {
-      t.aq.add_t3(localreport_t3);
+      t.as.add_t3(localreport_t3);
       return;
       localreport_t3._ip = this.q.getAddress().getHostAddress();
       break;
@@ -577,7 +579,7 @@ public class oicq_request
   
   public void a(Socket paramSocket)
   {
-    this.x.am = paramSocket;
+    this.x.ao = paramSocket;
   }
   
   public void a(WloginSigInfo paramWloginSigInfo)
@@ -611,7 +613,7 @@ public class oicq_request
   public void a(ErrMsg paramErrMsg)
   {
     async_context localasync_context = t.b(this.x.h);
-    localasync_context._last_err_msg = new ErrMsg(0, "", "", "");
+    localasync_context._last_err_msg = new ErrMsg(0, 0, "", "", "");
     if (paramErrMsg != null) {}
     try
     {
@@ -620,7 +622,7 @@ public class oicq_request
     }
     catch (CloneNotSupportedException paramErrMsg)
     {
-      localasync_context._last_err_msg = new ErrMsg(0, "", "", "");
+      localasync_context._last_err_msg = new ErrMsg(0, 0, "", "", "");
     }
   }
   
@@ -803,7 +805,7 @@ public class oicq_request
           i1 = i2;
           if (i2 < 0)
           {
-            t.aq.attr_api(2494911);
+            t.as.attr_api(2494911);
             localObject = t.b(this.x.h);
             if (localObject != null) {
               this.x.c(this.x.f, ((async_context)localObject)._sappid);
@@ -835,7 +837,7 @@ public class oicq_request
           localObject = cryptor.decrypt((byte[])localObject, i1 + 2, localObject.length - 2 - i1, arrayOfByte);
           if (localObject == null)
           {
-            t.aq.attr_api(2461266);
+            t.as.attr_api(2461266);
             util.LOGI("use share key md5 decrypt failed", "" + this.x.f);
             return -1002;
           }
@@ -1035,7 +1037,7 @@ public class oicq_request
     //   370: aload_3
     //   371: iconst_3
     //   372: putfield 258	oicq/wlogin_sdk/report/report_t3:_wap	I
-    //   375: getstatic 262	oicq/wlogin_sdk/request/t:aq	Loicq/wlogin_sdk/report/Reporter;
+    //   375: getstatic 262	oicq/wlogin_sdk/request/t:as	Loicq/wlogin_sdk/report/Reporter;
     //   378: aload_3
     //   379: invokevirtual 268	oicq/wlogin_sdk/report/Reporter:add_t3	(Loicq/wlogin_sdk/report/report_t3;)V
     //   382: new 460	java/lang/StringBuilder
@@ -1218,6 +1220,7 @@ public class oicq_request
     paramArrayOfByte = t.b(this.x.h);
     if (paramInt1 >= 0)
     {
+      paramArrayOfByte._last_err_msg.setVersion(localtlv_t146.get_ver());
       paramArrayOfByte._last_err_msg.setTitle(new String(localtlv_t146.get_title()));
       paramArrayOfByte._last_err_msg.setMessage(new String(localtlv_t146.get_msg()));
       paramArrayOfByte._last_err_msg.setType(localtlv_t146.get_type());
@@ -1354,6 +1357,7 @@ public class oicq_request
     tlv_t186 localtlv_t186 = new tlv_t186();
     tlv_t402 localtlv_t402 = new tlv_t402();
     Object localObject9 = new tlv_t403();
+    tlv_t546 localtlv_t546 = new tlv_t546();
     byte[] arrayOfByte1 = null;
     byte[] arrayOfByte2 = null;
     byte[] arrayOfByte3 = null;
@@ -1383,17 +1387,17 @@ public class oicq_request
         paramInt2 = 0;
       }
     }
-    label924:
-    label1192:
-    label3040:
-    label4705:
+    label642:
+    label944:
+    label1212:
+    label3136:
+    label4674:
     for (;;)
     {
-      label630:
       i1 = c(paramArrayOfByte, paramInt1 + 2);
       int i4 = paramInt1 + 5;
       this.x.d = null;
-      label874:
+      label894:
       int i2;
       int i5;
       int i3;
@@ -1409,12 +1413,12 @@ public class oicq_request
           {
             localObject2 = new StringBuilder().append("get_response_body cmd= 0x").append(Integer.toHexString(this.t)).append(" subCmd= 0x").append(Integer.toHexString(this.u)).append(" type:").append(i1).append(" ret:");
             if (paramInt1 <= 0) {
-              break label7185;
+              break label7533;
             }
             localObject1 = "0x" + Integer.toHexString(paramInt1);
             util.LOGI(localObject1, "" + this.x.f);
             if (paramInt1 != 0) {
-              break label7194;
+              break label7542;
             }
             a(null);
             i1 = paramInt1;
@@ -1446,27 +1450,27 @@ public class oicq_request
             a(paramInt2);
             return paramInt1;
             paramInt2 = 1;
-            break label630;
+            break label642;
             paramInt2 = 2;
-            break label630;
+            break label642;
             paramInt2 = 3;
-            break label630;
+            break label642;
             paramInt2 = 4;
-            break label630;
+            break label642;
             paramInt2 = 5;
-            break label630;
+            break label642;
             paramInt2 = 6;
-            break label630;
+            break label642;
             paramInt2 = 7;
-            break label630;
+            break label642;
             paramInt2 = 0;
-            break label630;
+            break label642;
             paramInt2 = 0;
-            break label630;
+            break label642;
             paramInt2 = 0;
-            break label630;
+            break label642;
             if (paramInt2 != 1) {
-              break label2450;
+              break label2470;
             }
             if (this.x.b == null) {
               return -1006;
@@ -1493,8 +1497,8 @@ public class oicq_request
           {
             this.x.f = localtlv_t113.get_uin();
             localasync_context._uin = this.x.f;
-            if (!localasync_context.ifQQLoginInQim(t.ax)) {
-              break label2952;
+            if (!localasync_context.ifQQLoginInQim(t.az)) {
+              break label2972;
             }
           }
           localObject14 = new tlv_t(1320);
@@ -1547,19 +1551,15 @@ public class oicq_request
         }
         break;
       }
-      label3556:
-      label3685:
-      label3945:
-      label4714:
-      label4850:
-      label7283:
+      label3661:
+      label7631:
       for (;;)
       {
         if (localtlv_t186.get_tlv((byte[])localObject8, 2, i5) >= 0)
         {
           localObject3 = this.x.g;
           if (!util.check_uin_account((String)localObject3).booleanValue()) {
-            break label2979;
+            break label2999;
           }
           localObject5 = this.x.e(this.x.f);
           localObject3 = localObject5;
@@ -1603,19 +1603,19 @@ public class oicq_request
             paramInt1 = localtlv_t10c.get_tlv((byte[])localObject8, 2, i5);
             i3 = ((tlv_t106)localObject10).get_tlv((byte[])localObject8, 2, i5);
             if ((paramInt1 < 0) || (i3 < 0)) {
-              break label3116;
+              break label3136;
             }
             localObject4 = localtlv_t10c.get_data();
             localObject12[0] = ((byte[])b(((tlv_t106)localObject10).get_data(), (byte[])localObject4).clone());
             if (((tlv_t16a)localObject11).get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3138;
+              break label3158;
             }
             localObject12[1] = ((tlv_t16a)localObject11).get_data();
             localObject5 = new tlv_t(1329);
             paramInt1 = ((tlv_t)localObject5).get_tlv((byte[])localObject8, 2, i5);
             util.LOGI("retT531: " + paramInt1 + this.x.f);
             if (paramInt1 < 0) {
-              break label3556;
+              break label3576;
             }
             localObject11 = new tlv_t106();
             localtlv_t10c = new tlv_t10c();
@@ -1626,7 +1626,7 @@ public class oicq_request
             int i6 = ((tlv_t)localObject4).get_tlv(((tlv_t)localObject5).get_data(), 2, ((tlv_t)localObject5).get_data_len());
             int i7 = ((tlv_t)localObject10).get_tlv(((tlv_t)localObject5).get_data(), 2, ((tlv_t)localObject5).get_data_len());
             if ((paramInt1 < 0) || (i3 < 0) || (i6 < 0) || (i7 < 0)) {
-              break label3484;
+              break label3504;
             }
             localObject5 = b(((tlv_t)localObject11).get_data(), localtlv_t10c.get_data());
             localObject4 = ((tlv_t)localObject4).get_data();
@@ -1658,41 +1658,41 @@ public class oicq_request
               localObject5 = null;
             }
             if (localtlv_t136.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3590;
+              break label3610;
             }
             localObject9[0] = localtlv_t136.get_data();
             if (localtlv_t132.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3619;
+              break label3639;
             }
             localObject9[1] = localtlv_t132.get_access_token();
             localObject1 = localtlv_t132.get_openid();
             if (((tlv_t143)localObject6).get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3641;
+              break label3661;
             }
             localObject9[2] = ((tlv_t143)localObject6).get_data();
             if (localtlv_t305.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3663;
+              break label3683;
             }
             localObject9[3] = localtlv_t305.get_data();
             if (localtlv_t164.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3685;
+              break label3705;
             }
             localObject9[4] = localtlv_t164.get_data();
             if (localtlv_t171.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3707;
+              break label3727;
             }
             localObject9[5] = localtlv_t171.get_data();
             if (localtlv_t.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3730;
+              break label3750;
             }
             localObject9[6] = localtlv_t.get_data();
             if (localtlv_t16d.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3753;
+              break label3773;
             }
             localObject9[7] = localtlv_t16d.get_data();
             localObject6 = new tlv_t199();
             if (((tlv_t199)localObject6).get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label7294;
+              break label7642;
             }
           }
           util.LOGI("tgt len:" + util.buf_len(localtlv_t10a.get_data()) + " tgt_key len:" + util.buf_len(localtlv_t10d.get_data()) + " st len:" + util.buf_len(localtlv_t114.get_data()) + " st_key len:" + util.buf_len(localtlv_t10e.get_data()) + " stwx_web len:" + util.buf_len((byte[])localObject2) + " lskey len:" + util.buf_len(arrayOfByte3) + " skey len:" + util.buf_len(arrayOfByte4) + " sig64 len:" + util.buf_len(arrayOfByte5) + " openid len:" + util.buf_len((byte[])localObject1) + " openkey len:" + util.buf_len(arrayOfByte6) + " pwdflag: " + localtlv_t186.get_data_len() + " " + localtlv_t186.getPwdflag(), "" + this.x.f);
@@ -1700,7 +1700,7 @@ public class oicq_request
           {
             localObject3 = a((tlv_t169)localObject13);
             if ((localObject3 == null) || (localObject3.length <= 0)) {
-              break label3040;
+              break label3060;
             }
             this.x.j = new WFastLoginInfo((byte[])localObject3);
           }
@@ -1729,8 +1729,8 @@ public class oicq_request
               {
                 this.x.f = localtlv_t113.get_uin();
                 localasync_context._uin = this.x.f;
-                if (!localasync_context.ifQQLoginInQim(t.ax)) {
-                  break label2579;
+                if (!localasync_context.ifQQLoginInQim(t.az)) {
+                  break label2599;
                 }
               }
               for (;;)
@@ -1750,7 +1750,7 @@ public class oicq_request
               a(localtlv_t161);
             }
             i2 = localtlv_t119.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1, localasync_context._tgtgt_key);
-            break label1192;
+            break label1212;
           }
           if ((paramInt2 == 3) || (paramInt2 == 7))
           {
@@ -1790,19 +1790,23 @@ public class oicq_request
           }
           i2 = localtlv_t119.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1, localasync_context._tgtgt_key);
           r.K = 0;
-          break label1192;
+          break label1212;
           this.x.a(this.x.g, Long.valueOf(this.x.f));
-          break label1313;
+          break label1333;
           this.x.a((String)localObject3, Long.valueOf(this.x.f), localtlv_t186.getPwdflag());
         }
+        label3060:
         Object localObject4;
+        label3158:
         long l1;
         long l2;
-        label3707:
+        label3576:
+        label3705:
         localObject9[8] = ((tlv_t199)localObject6).getPayToken();
+        label3683:
         localObject1 = ((tlv_t199)localObject6).getOpenId();
-        label4600:
-        label7294:
+        label4820:
+        label7642:
         for (;;)
         {
           localObject6 = new tlv_t200();
@@ -1818,17 +1822,19 @@ public class oicq_request
             util.LOGI("get DA2 in rsp", "");
             localObject6 = new tlv_t(791);
             if (((tlv_t)localObject6).get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label4705;
+              break label4725;
             }
             WloginSigInfo._QRPUSHSig = ((tlv_t)localObject6).get_data();
+            label3930:
             localObject6 = new tlv_t(307);
             if (((tlv_t)localObject6).get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label4714;
+              break label4734;
             }
             localObject9[13] = ((tlv_t)localObject6).get_data();
+            label3965:
             localObject6 = new tlv_t(308);
             if (((tlv_t)localObject6).get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label4748;
+              break label4768;
             }
             localObject9[14] = ((tlv_t)localObject6).get_data();
             if ((t.ab) && ((this.u == 9) || (this.u == 15) || (this.u == 20)))
@@ -1837,15 +1843,16 @@ public class oicq_request
               ((tlv_t322)localObject6).get_tlv((byte[])localObject8, 2, i5);
               localObject6 = ((tlv_t322)localObject6).get_data();
               if ((localObject6 == null) || (localObject6.length <= 0)) {
-                break label4782;
+                break label4802;
               }
               localObject9[15] = localObject6;
               localObject6 = util.buf_to_string((byte[])localObject6);
+              label4085:
               util.LOGI("get t322, value=" + (String)localObject6, "" + this.x.f);
             }
             util.LOGI("encrypt_a1 len:" + util.buf_len(localObject12[0]) + " no_pic_sig len:" + util.buf_len(localObject12[1]) + " G len:" + util.buf_len(localObject12[2]) + " dpwd len:" + util.buf_len(localObject12[3]) + " randseed len:" + util.buf_len(localObject12[4]) + " vkey len:" + util.buf_len(localObject9[0]) + " openid len:" + util.buf_len((byte[])localObject1) + " access_token len:" + util.buf_len(localObject9[1]) + " d2 len:" + util.buf_len(localObject9[2]) + " d2_key len:" + util.buf_len(localObject9[3]) + " sid len:" + util.buf_len(localObject9[4]) + " aq_sig len:" + util.buf_len(localObject9[5]) + " pskey len:" + util.buf_len(localObject9[6]) + " super_key len:" + util.buf_len(localObject9[7]) + " paytoken len:" + util.buf_len(localObject9[8]) + " pf len:" + util.buf_len(localObject9[9]) + " pfkey len:" + util.buf_len(localObject9[10]) + " da2 len:" + util.buf_len(localObject9[11]) + " wt session ticket:" + util.buf_len(localObject9[13]) + " wt session ticket key:" + util.buf_len(localObject9[14]) + " device_token len:" + util.buf_len(localObject9[15]), "" + this.x.f);
             if (localtlv_t11f.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label7286;
+              break label7634;
             }
           }
           for (long l3 = localtlv_t11f.get_tk_pri() & 0xFFFFFFFF;; l3 = 4294967295L)
@@ -1857,7 +1864,7 @@ public class oicq_request
             if (paramInt1 >= 0)
             {
               if (((tlv_t138)localObject7).get_a2_chg_time() == 0) {
-                break label7283;
+                break label7631;
               }
               l1 = ((tlv_t138)localObject7).get_a2_chg_time();
             }
@@ -1866,58 +1873,65 @@ public class oicq_request
               if (((tlv_t138)localObject7).get_lskey_chg_time() != 0)
               {
                 localObject6[0] = ((tlv_t138)localObject7).get_lskey_chg_time();
+                label4602:
                 if (((tlv_t138)localObject7).get_skey_chg_time() == 0) {
-                  break label4800;
+                  break label4820;
                 }
                 localObject6[1] = ((tlv_t138)localObject7).get_skey_chg_time();
                 if (((tlv_t138)localObject7).get_vkey_chg_time() == 0) {
-                  break label4810;
+                  break label4830;
                 }
                 localObject6[2] = ((tlv_t138)localObject7).get_vkey_chg_time();
                 if (((tlv_t138)localObject7).get_a8_chg_time() == 0) {
-                  break label4820;
+                  break label4840;
                 }
                 localObject6[3] = ((tlv_t138)localObject7).get_a8_chg_time();
                 if (((tlv_t138)localObject7).get_stweb_chg_time() == 0) {
-                  break label4830;
+                  break label4850;
                 }
                 localObject6[4] = ((tlv_t138)localObject7).get_stweb_chg_time();
                 if (((tlv_t138)localObject7).get_d2_chg_time() == 0) {
-                  break label4840;
+                  break label4860;
                 }
                 localObject6[5] = ((tlv_t138)localObject7).get_d2_chg_time();
               }
               for (;;)
               {
                 if (((tlv_t138)localObject7).get_sid_chg_time() == 0) {
-                  break label4850;
+                  break label4870;
                 }
                 localObject6[6] = ((tlv_t138)localObject7).get_sid_chg_time();
-                break label4533;
+                break label4553;
                 util.LOGI("no DA2 in rsp", "");
                 break;
+                label4725:
                 WloginSigInfo._QRPUSHSig = new byte[0];
-                break label3910;
+                break label3930;
+                label4734:
                 util.LOGW("get t133 failed", "" + this.x.f);
-                break label3945;
+                break label3965;
                 util.LOGW("get t134 failed", "" + this.x.f);
-                break label3980;
+                break label4000;
                 localObject6 = "null";
-                break label4065;
+                break label4085;
                 localObject6[0] = 1641600L;
-                break label4582;
+                break label4602;
                 localObject6[1] = 86400L;
-                break label4600;
+                break label4620;
+                label4830:
                 localObject6[2] = 1728000L;
-                break label4618;
+                break label4638;
+                label4840:
                 localObject6[3] = 72000L;
-                break label4636;
+                break label4656;
+                label4850:
                 localObject6[4] = 6000L;
-                break label4654;
+                break label4674;
+                label4860:
                 localObject6[5] = 1728000L;
               }
               localObject6[6] = 1728000L;
-              break label4533;
+              break label4553;
               util.LOGI("sappid:" + l4 + " appid:" + l5 + " app_pri:" + l3 + " login_bitmap:" + localasync_context._login_bitmap + " tk_valid:" + 0L + " a2_valid:" + l1 + " lskey_valid:" + localObject6[0] + " skey_valid:" + localObject6[1] + " vkey_valid:" + localObject6[2] + " a8_valid:" + localObject6[3] + " stweb_valid:" + localObject6[4] + " d2_valid:" + localObject6[5] + " sid_valid:" + localObject6[6], "" + this.x.f);
               localObject7 = new WloginSimpleInfo();
               ((WloginSimpleInfo)localObject7).setUin(this.x.f);
@@ -1927,7 +1941,7 @@ public class oicq_request
               ((WloginSimpleInfo)localObject7).setNick(localtlv_t11a.get_nick());
               ((WloginSimpleInfo)localObject7).setReserveUinInfo((byte[][])localObject13);
               ((WloginSimpleInfo)localObject7).setMainDisplayName(localtlv_t118.get_data());
-              this.x.at = localasync_context._main_sigmap;
+              this.x.av = localasync_context._main_sigmap;
               paramInt1 = this.x.a(this.x.f, l4, (byte[][])localObject12, l5, l3, t.f(), t.f() + 0L, t.f() + l1, (WloginSimpleInfo)localObject7, localtlv_t10a.get_data(), localtlv_t10d.get_data(), localtlv_t114.get_data(), localtlv_t10e.get_data(), (byte[])localObject2, arrayOfByte2, arrayOfByte1, arrayOfByte3, arrayOfByte4, arrayOfByte5, (byte[])localObject1, arrayOfByte6, (byte[][])localObject9, (long[])localObject6, localasync_context._login_bitmap);
               if (paramInt1 != 0)
               {
@@ -1972,6 +1986,10 @@ public class oicq_request
               }
               paramInt1 = 0;
               break;
+              util.LOGI("cmd " + Integer.toHexString(this.t) + " subcmd " + Integer.toHexString(this.u) + " result " + i1 + " seq error uin " + this.x.f + " appid " + l4, "");
+              c(paramArrayOfByte, i4, this.c - i4 - 1);
+              paramInt1 = i1;
+              break;
               util.LOGI("cmd " + Integer.toHexString(this.t) + " subcmd " + Integer.toHexString(this.u) + " result " + i1 + " will clean sig for uin " + this.x.f + " appid " + l4, "");
               this.x.e(this.x.f, l4);
               c(paramArrayOfByte, i4, this.c - i4 - 1);
@@ -1986,9 +2004,19 @@ public class oicq_request
               localObject1 = new tlv_t192();
               if (((tlv_t192)localObject1).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0)
               {
-                a(new ErrMsg(i1, "", "", ((tlv_t192)localObject1).getUrl()));
-                paramInt1 = i1;
-                break;
+                util.LOGI("return 0x192", "");
+                paramInt1 = localtlv_t546.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
+                if (paramInt1 >= 0) {
+                  util.LOGI("get tlv546 success len:" + localtlv_t546.get_data_len(), "");
+                }
+                for (localasync_context._t546 = localtlv_t546;; localasync_context._t546 = new tlv_t546())
+                {
+                  b.a(localtlv_t546.get_data());
+                  a(new ErrMsg(0, i1, "", "", ((tlv_t192)localObject1).getUrl()));
+                  paramInt1 = i1;
+                  break;
+                  util.LOGI("get tlv546 fail ret:" + paramInt1, "");
+                }
               }
               i2 = localtlv_t105.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
               paramInt1 = i2;
@@ -1996,11 +2024,24 @@ public class oicq_request
                 break;
               }
               localasync_context._t105 = localtlv_t105;
-              if (localtlv_t165.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0) {}
-              for (localasync_context._t165 = localtlv_t165;; localasync_context._t165 = new tlv_t165())
+              if (localtlv_t165.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0)
               {
+                localasync_context._t165 = localtlv_t165;
+                label6116:
+                paramInt1 = localtlv_t546.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
+                if (paramInt1 < 0) {
+                  break label6205;
+                }
+                util.LOGI("get tlv546 success len:" + localtlv_t546.get_data_len(), "");
+              }
+              for (localasync_context._t546 = localtlv_t546;; localasync_context._t546 = new tlv_t546())
+              {
+                b.a(localtlv_t546.get_data());
                 a(null);
                 break;
+                localasync_context._t165 = new tlv_t165();
+                break label6116;
+                util.LOGI("get tlv546 fail ret:" + paramInt1, "");
               }
               this.x.e(this.x.f, l4);
               i2 = localtlv_t130.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
@@ -2075,7 +2116,7 @@ public class oicq_request
               {
                 localasync_context._t402 = localtlv_t402;
                 if (((tlv_t403)localObject9).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) < 0) {
-                  break label6645;
+                  break label6993;
                 }
               }
               for (localasync_context._t403 = ((tlv_t403)localObject9);; localasync_context._t403 = new tlv_t403())
@@ -2084,7 +2125,7 @@ public class oicq_request
                 paramInt1 = i1;
                 break;
                 localasync_context._t402 = new tlv_t402();
-                break label6581;
+                break label6929;
               }
               c(paramArrayOfByte, i4, this.c - i4 - 1);
               this.x.a(this.x.g);
@@ -2168,32 +2209,32 @@ public class oicq_request
               localasync_context._smslogin_hint_mobile = ((tlv_t52b)localObject1).get_mobile();
               paramInt1 = 0;
               break;
+              label7533:
               localObject1 = Integer.valueOf(paramInt1);
-              break label874;
+              break label894;
+              label7542:
               new tlv_t508().get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
               i1 = paramInt1;
               if (!tlv_t508.doFetch) {
-                break label924;
+                break label944;
               }
               paramArrayOfByte = new ErrMsg();
               i2 = new h(this.x, this.t, this.u, paramArrayOfByte).b(paramInt1);
               i1 = paramInt1;
               if (i2 == -1000) {
-                break label924;
+                break label944;
               }
               a(paramArrayOfByte);
               i1 = i2;
-              break label924;
+              break label944;
             }
           }
         }
-        label6645:
-        label7286:
+        label6993:
+        label7634:
         localObject1 = null;
       }
-      label4065:
-      label4582:
-      label4840:
+      label4553:
       paramInt2 = 0;
     }
   }
@@ -2209,7 +2250,7 @@ public class oicq_request
   
   public Socket d()
   {
-    return this.x.am;
+    return this.x.ao;
   }
   
   /* Error */
@@ -2223,7 +2264,7 @@ public class oicq_request
     //   8: invokevirtual 677	java/lang/Object:getClass	()Ljava/lang/Class;
     //   11: invokevirtual 682	java/lang/Class:getName	()Ljava/lang/String;
     //   14: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: ldc_w 1681
+    //   17: ldc_w 1709
     //   20: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   26: new 460	java/lang/StringBuilder
@@ -2247,7 +2288,7 @@ public class oicq_request
     //   64: iconst_0
     //   65: istore_2
     //   66: aload_0
-    //   67: invokevirtual 1683	oicq/wlogin_sdk/request/oicq_request:d	()Ljava/net/Socket;
+    //   67: invokevirtual 1711	oicq/wlogin_sdk/request/oicq_request:d	()Ljava/net/Socket;
     //   70: astore 15
     //   72: iconst_0
     //   73: istore 9
@@ -2267,9 +2308,9 @@ public class oicq_request
     //   98: iload_2
     //   99: ifeq +9 -> 108
     //   102: getstatic 396	oicq/wlogin_sdk/request/t:t	Landroid/content/Context;
-    //   105: invokestatic 1686	oicq/wlogin_sdk/tools/util:chg_retry_type	(Landroid/content/Context;)V
+    //   105: invokestatic 1714	oicq/wlogin_sdk/tools/util:chg_retry_type	(Landroid/content/Context;)V
     //   108: getstatic 396	oicq/wlogin_sdk/request/t:t	Landroid/content/Context;
-    //   111: invokestatic 1690	oicq/wlogin_sdk/tools/util:is_wap_retry	(Landroid/content/Context;)Z
+    //   111: invokestatic 1718	oicq/wlogin_sdk/tools/util:is_wap_retry	(Landroid/content/Context;)Z
     //   114: istore 11
     //   116: aload_0
     //   117: aconst_null
@@ -2287,7 +2328,7 @@ public class oicq_request
     //   141: iload_2
     //   142: iload 11
     //   144: iload 8
-    //   146: invokespecial 1692	oicq/wlogin_sdk/request/oicq_request:a	(IJIIZZ)V
+    //   146: invokespecial 1720	oicq/wlogin_sdk/request/oicq_request:a	(IJIIZZ)V
     //   149: invokestatic 218	java/lang/System:currentTimeMillis	()J
     //   152: lstore 12
     //   154: iload 11
@@ -2295,11 +2336,11 @@ public class oicq_request
     //   159: new 460	java/lang/StringBuilder
     //   162: dup
     //   163: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   166: ldc_w 1694
+    //   166: ldc_w 1722
     //   169: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   172: iload_2
     //   173: invokevirtual 470	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   176: ldc_w 1696
+    //   176: ldc_w 1724
     //   179: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   182: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   185: new 460	java/lang/StringBuilder
@@ -2316,14 +2357,14 @@ public class oicq_request
     //   213: aload_0
     //   214: iload_2
     //   215: iload 11
-    //   217: invokevirtual 1698	oicq/wlogin_sdk/request/oicq_request:a	(IZ)Ljava/lang/String;
+    //   217: invokevirtual 1726	oicq/wlogin_sdk/request/oicq_request:a	(IZ)Ljava/lang/String;
     //   220: astore 21
     //   222: iload 8
     //   224: istore 9
     //   226: iload 8
     //   228: istore 10
     //   230: getstatic 396	oicq/wlogin_sdk/request/t:t	Landroid/content/Context;
-    //   233: invokestatic 1701	oicq/wlogin_sdk/tools/util:is_wap_proxy_retry	(Landroid/content/Context;)Z
+    //   233: invokestatic 1729	oicq/wlogin_sdk/tools/util:is_wap_proxy_retry	(Landroid/content/Context;)Z
     //   236: istore 8
     //   238: iload 8
     //   240: ifeq +3243 -> 3483
@@ -2331,13 +2372,13 @@ public class oicq_request
     //   245: istore 9
     //   247: iload 8
     //   249: istore 10
-    //   251: invokestatic 1704	oicq/wlogin_sdk/tools/util:get_proxy_ip	()Ljava/lang/String;
+    //   251: invokestatic 1732	oicq/wlogin_sdk/tools/util:get_proxy_ip	()Ljava/lang/String;
     //   254: astore 17
     //   256: iload 8
     //   258: istore 9
     //   260: iload 8
     //   262: istore 10
-    //   264: invokestatic 1707	oicq/wlogin_sdk/tools/util:get_proxy_port	()I
+    //   264: invokestatic 1735	oicq/wlogin_sdk/tools/util:get_proxy_port	()I
     //   267: istore 5
     //   269: aload 17
     //   271: ifnull +25 -> 296
@@ -2360,15 +2401,15 @@ public class oicq_request
     //   305: new 460	java/lang/StringBuilder
     //   308: dup
     //   309: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   312: ldc_w 1709
+    //   312: ldc_w 1737
     //   315: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   318: aload 17
     //   320: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   323: ldc_w 1711
+    //   323: ldc_w 1739
     //   326: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   329: iload 5
     //   331: invokevirtual 470	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   334: ldc_w 1713
+    //   334: ldc_w 1741
     //   337: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   340: iconst_0
     //   341: invokevirtual 698	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
@@ -2391,23 +2432,23 @@ public class oicq_request
     //   385: istore 9
     //   387: iload 8
     //   389: istore 10
-    //   391: new 1715	java/net/URL
+    //   391: new 1743	java/net/URL
     //   394: dup
     //   395: new 460	java/lang/StringBuilder
     //   398: dup
     //   399: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   402: ldc_w 1717
+    //   402: ldc_w 1745
     //   405: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   408: aload 17
     //   410: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   413: ldc_w 1083
+    //   413: ldc_w 1092
     //   416: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   419: iload 5
     //   421: invokevirtual 470	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   424: ldc_w 1719
+    //   424: ldc_w 1747
     //   427: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   430: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   433: invokespecial 1721	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   433: invokespecial 1749	java/net/URL:<init>	(Ljava/lang/String;)V
     //   436: astore 19
     //   438: iload_1
     //   439: istore 5
@@ -2418,15 +2459,15 @@ public class oicq_request
     //   449: new 460	java/lang/StringBuilder
     //   452: dup
     //   453: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   456: ldc_w 1723
+    //   456: ldc_w 1751
     //   459: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   462: iload 8
     //   464: invokevirtual 698	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   467: ldc_w 1725
+    //   467: ldc_w 1753
     //   470: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   473: aload 19
     //   475: invokevirtual 511	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   478: ldc_w 1727
+    //   478: ldc_w 1755
     //   481: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   484: aload 21
     //   486: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -2449,8 +2490,8 @@ public class oicq_request
     //   527: aload 14
     //   529: astore 18
     //   531: aload 19
-    //   533: invokevirtual 1731	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   536: checkcast 1733	java/net/HttpURLConnection
+    //   533: invokevirtual 1759	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   536: checkcast 1761	java/net/HttpURLConnection
     //   539: astore 19
     //   541: iload_1
     //   542: istore 5
@@ -2459,8 +2500,8 @@ public class oicq_request
     //   548: aload 14
     //   550: astore 18
     //   552: aload 19
-    //   554: ldc_w 1735
-    //   557: invokevirtual 1738	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   554: ldc_w 1763
+    //   557: invokevirtual 1766	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   560: iload 8
     //   562: ifeq +24 -> 586
     //   565: iload_1
@@ -2470,9 +2511,9 @@ public class oicq_request
     //   572: aload 14
     //   574: astore 18
     //   576: aload 19
-    //   578: ldc_w 1740
+    //   578: ldc_w 1768
     //   581: aload 21
-    //   583: invokevirtual 1743	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   583: invokevirtual 1771	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   586: iload_1
     //   587: istore 5
     //   589: aload 14
@@ -2480,9 +2521,9 @@ public class oicq_request
     //   593: aload 14
     //   595: astore 18
     //   597: aload 19
-    //   599: ldc_w 1745
-    //   602: ldc_w 1747
-    //   605: invokevirtual 1743	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   599: ldc_w 1773
+    //   602: ldc_w 1775
+    //   605: invokevirtual 1771	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   608: iload_1
     //   609: istore 5
     //   611: aload 14
@@ -2490,9 +2531,9 @@ public class oicq_request
     //   615: aload 14
     //   617: astore 18
     //   619: aload 19
-    //   621: ldc_w 1749
-    //   624: ldc_w 1751
-    //   627: invokevirtual 1743	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   621: ldc_w 1777
+    //   624: ldc_w 1779
+    //   627: invokevirtual 1771	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   630: iload_1
     //   631: istore 5
     //   633: aload 14
@@ -2500,11 +2541,11 @@ public class oicq_request
     //   637: aload 14
     //   639: astore 18
     //   641: aload 19
-    //   643: ldc_w 1753
+    //   643: ldc_w 1781
     //   646: aload 22
     //   648: arraylength
-    //   649: invokestatic 1755	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   652: invokevirtual 1743	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   649: invokestatic 1783	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   652: invokevirtual 1771	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   655: iload_1
     //   656: istore 5
     //   658: aload 14
@@ -2515,7 +2556,7 @@ public class oicq_request
     //   668: aload_0
     //   669: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
     //   672: getfield 685	oicq/wlogin_sdk/request/t:l	I
-    //   675: invokevirtual 1758	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   675: invokevirtual 1786	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   678: iload_1
     //   679: istore 5
     //   681: aload 14
@@ -2526,7 +2567,7 @@ public class oicq_request
     //   691: aload_0
     //   692: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
     //   695: getfield 685	oicq/wlogin_sdk/request/t:l	I
-    //   698: invokevirtual 1761	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   698: invokevirtual 1789	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   701: iload_1
     //   702: istore 5
     //   704: aload 14
@@ -2535,7 +2576,7 @@ public class oicq_request
     //   710: astore 18
     //   712: aload 19
     //   714: iconst_1
-    //   715: invokevirtual 1765	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   715: invokevirtual 1793	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   718: iload_1
     //   719: istore 5
     //   721: aload 14
@@ -2544,14 +2585,14 @@ public class oicq_request
     //   727: astore 18
     //   729: aload 19
     //   731: iconst_1
-    //   732: invokevirtual 1768	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   732: invokevirtual 1796	java/net/HttpURLConnection:setDoInput	(Z)V
     //   735: iload_1
     //   736: istore 5
     //   738: aload 14
     //   740: astore 17
     //   742: aload 14
     //   744: astore 18
-    //   746: ldc_w 1770
+    //   746: ldc_w 1798
     //   749: new 460	java/lang/StringBuilder
     //   752: dup
     //   753: invokespecial 461	java/lang/StringBuilder:<init>	()V
@@ -2574,7 +2615,7 @@ public class oicq_request
     //   791: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
     //   794: getfield 685	oicq/wlogin_sdk/request/t:l	I
     //   797: i2l
-    //   798: invokestatic 1775	oicq/wlogin_sdk/request/i:a	(Ljava/net/HttpURLConnection;J)Z
+    //   798: invokestatic 1803	oicq/wlogin_sdk/request/i:a	(Ljava/net/HttpURLConnection;J)Z
     //   801: ifne +314 -> 1115
     //   804: iload_1
     //   805: istore 5
@@ -2582,7 +2623,7 @@ public class oicq_request
     //   809: astore 17
     //   811: aload 14
     //   813: astore 18
-    //   815: ldc_w 1777
+    //   815: ldc_w 1805
     //   818: new 460	java/lang/StringBuilder
     //   821: dup
     //   822: invokespecial 461	java/lang/StringBuilder:<init>	()V
@@ -2621,7 +2662,7 @@ public class oicq_request
     //   888: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
     //   891: getfield 685	oicq/wlogin_sdk/request/t:l	I
     //   894: i2l
-    //   895: invokestatic 1782	oicq/wlogin_sdk/request/a:a	(Ljava/lang/String;IJ)Ljava/net/InetSocketAddress;
+    //   895: invokestatic 1810	oicq/wlogin_sdk/request/a:a	(Ljava/lang/String;IJ)Ljava/net/InetSocketAddress;
     //   898: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   901: iload 8
     //   903: istore 9
@@ -2645,7 +2686,7 @@ public class oicq_request
     //   942: istore 10
     //   944: aload 14
     //   946: aload 19
-    //   948: invokevirtual 1786	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   948: invokevirtual 1814	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   951: ifeq +90 -> 1041
     //   954: iload 8
     //   956: istore 9
@@ -2656,12 +2697,12 @@ public class oicq_request
     //   966: new 460	java/lang/StringBuilder
     //   969: dup
     //   970: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   973: ldc_w 1788
+    //   973: ldc_w 1816
     //   976: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   979: aload 14
     //   981: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   984: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   987: invokespecial 1789	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   987: invokespecial 1817	java/lang/Exception:<init>	(Ljava/lang/String;)V
     //   990: athrow
     //   991: astore 17
     //   993: iload 9
@@ -2669,10 +2710,10 @@ public class oicq_request
     //   997: new 460	java/lang/StringBuilder
     //   1000: dup
     //   1001: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   1004: ldc_w 1791
+    //   1004: ldc_w 1819
     //   1007: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1010: aload 17
-    //   1012: invokevirtual 1792	java/net/ConnectException:toString	()Ljava/lang/String;
+    //   1012: invokevirtual 1820	java/net/ConnectException:toString	()Ljava/lang/String;
     //   1015: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1018: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1021: ldc 110
@@ -2705,19 +2746,19 @@ public class oicq_request
     //   1070: astore 17
     //   1072: aload 14
     //   1074: astore 18
-    //   1076: new 1715	java/net/URL
+    //   1076: new 1743	java/net/URL
     //   1079: dup
     //   1080: new 460	java/lang/StringBuilder
     //   1083: dup
     //   1084: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   1087: ldc_w 1717
+    //   1087: ldc_w 1745
     //   1090: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1093: aload 20
     //   1095: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1098: ldc_w 1719
+    //   1098: ldc_w 1747
     //   1101: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1104: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1107: invokespecial 1721	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   1107: invokespecial 1749	java/net/URL:<init>	(Ljava/lang/String;)V
     //   1110: astore 19
     //   1112: goto -674 -> 438
     //   1115: iload_1
@@ -2726,7 +2767,7 @@ public class oicq_request
     //   1120: astore 17
     //   1122: aload 14
     //   1124: astore 18
-    //   1126: ldc_w 1794
+    //   1126: ldc_w 1822
     //   1129: new 460	java/lang/StringBuilder
     //   1132: dup
     //   1133: invokespecial 461	java/lang/StringBuilder:<init>	()V
@@ -2745,7 +2786,7 @@ public class oicq_request
     //   1164: aload 14
     //   1166: astore 18
     //   1168: aload 19
-    //   1170: invokevirtual 1798	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   1170: invokevirtual 1826	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
     //   1173: astore 20
     //   1175: iload_1
     //   1176: istore 5
@@ -2758,7 +2799,7 @@ public class oicq_request
     //   1190: iconst_0
     //   1191: aload 22
     //   1193: arraylength
-    //   1194: invokevirtual 1803	java/io/OutputStream:write	([BII)V
+    //   1194: invokevirtual 1831	java/io/OutputStream:write	([BII)V
     //   1197: iload_1
     //   1198: istore 5
     //   1200: aload 14
@@ -2766,7 +2807,7 @@ public class oicq_request
     //   1204: aload 14
     //   1206: astore 18
     //   1208: aload 20
-    //   1210: invokevirtual 1806	java/io/OutputStream:flush	()V
+    //   1210: invokevirtual 1834	java/io/OutputStream:flush	()V
     //   1213: iload_1
     //   1214: istore 5
     //   1216: aload 14
@@ -2774,7 +2815,7 @@ public class oicq_request
     //   1220: aload 14
     //   1222: astore 18
     //   1224: aload 19
-    //   1226: invokevirtual 1809	java/net/HttpURLConnection:getResponseCode	()I
+    //   1226: invokevirtual 1837	java/net/HttpURLConnection:getResponseCode	()I
     //   1229: istore_1
     //   1230: iload_1
     //   1231: istore 5
@@ -2785,7 +2826,7 @@ public class oicq_request
     //   1241: new 460	java/lang/StringBuilder
     //   1244: dup
     //   1245: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   1248: ldc_w 1811
+    //   1248: ldc_w 1839
     //   1251: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1254: iload_1
     //   1255: invokevirtual 470	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -2813,7 +2854,7 @@ public class oicq_request
     //   1307: new 460	java/lang/StringBuilder
     //   1310: dup
     //   1311: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   1314: ldc_w 1813
+    //   1314: ldc_w 1841
     //   1317: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1320: iload_1
     //   1321: invokevirtual 470	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -2836,7 +2877,7 @@ public class oicq_request
     //   1354: aload 14
     //   1356: astore 18
     //   1358: aload 19
-    //   1360: invokevirtual 1817	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   1360: invokevirtual 1845	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   1363: astore 19
     //   1365: aload 19
     //   1367: astore 18
@@ -2852,7 +2893,7 @@ public class oicq_request
     //   1387: astore 16
     //   1389: iload_2
     //   1390: istore_1
-    //   1391: ldc_w 1819
+    //   1391: ldc_w 1847
     //   1394: new 460	java/lang/StringBuilder
     //   1397: dup
     //   1398: invokespecial 461	java/lang/StringBuilder:<init>	()V
@@ -2892,7 +2933,7 @@ public class oicq_request
     //   1464: iadd
     //   1465: iload 6
     //   1467: isub
-    //   1468: invokevirtual 1824	java/io/InputStream:read	([BII)I
+    //   1468: invokevirtual 1852	java/io/InputStream:read	([BII)I
     //   1471: istore 5
     //   1473: iload 5
     //   1475: ifge +1091 -> 2566
@@ -2905,7 +2946,7 @@ public class oicq_request
     //   1489: new 460	java/lang/StringBuilder
     //   1492: dup
     //   1493: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   1496: ldc_w 1826
+    //   1496: ldc_w 1854
     //   1499: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1502: iload 5
     //   1504: invokevirtual 470	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -2927,7 +2968,7 @@ public class oicq_request
     //   1537: iload_2
     //   1538: istore_1
     //   1539: aload 14
-    //   1541: invokevirtual 1831	java/net/Socket:close	()V
+    //   1541: invokevirtual 1859	java/net/Socket:close	()V
     //   1544: aload 14
     //   1546: astore 16
     //   1548: iload_2
@@ -2943,7 +2984,7 @@ public class oicq_request
     //   1562: istore_1
     //   1563: aload_0
     //   1564: aconst_null
-    //   1565: invokevirtual 1833	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   1565: invokevirtual 1861	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   1568: aload 14
     //   1570: astore 16
     //   1572: aload 15
@@ -2967,10 +3008,10 @@ public class oicq_request
     //   1607: new 460	java/lang/StringBuilder
     //   1610: dup
     //   1611: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   1614: ldc_w 1835
+    //   1614: ldc_w 1863
     //   1617: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1620: aload 18
-    //   1622: invokevirtual 1836	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1622: invokevirtual 1864	java/lang/Exception:toString	()Ljava/lang/String;
     //   1625: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1628: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1631: ldc 110
@@ -2994,11 +3035,11 @@ public class oicq_request
     //   1666: new 460	java/lang/StringBuilder
     //   1669: dup
     //   1670: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   1673: ldc_w 1838
+    //   1673: ldc_w 1866
     //   1676: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1679: iload_2
     //   1680: invokevirtual 470	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1683: ldc_w 1696
+    //   1683: ldc_w 1724
     //   1686: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1689: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1692: new 460	java/lang/StringBuilder
@@ -3026,16 +3067,16 @@ public class oicq_request
     //   1742: aload_0
     //   1743: iload_2
     //   1744: iload 11
-    //   1746: invokevirtual 1698	oicq/wlogin_sdk/request/oicq_request:a	(IZ)Ljava/lang/String;
+    //   1746: invokevirtual 1726	oicq/wlogin_sdk/request/oicq_request:a	(IZ)Ljava/lang/String;
     //   1749: astore 17
     //   1751: new 460	java/lang/StringBuilder
     //   1754: dup
     //   1755: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   1758: ldc_w 1840
+    //   1758: ldc_w 1868
     //   1761: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1764: aload 17
     //   1766: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1769: ldc_w 1842
+    //   1769: ldc_w 1870
     //   1772: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1775: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1778: new 460	java/lang/StringBuilder
@@ -3062,7 +3103,7 @@ public class oicq_request
     //   1824: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
     //   1827: getfield 685	oicq/wlogin_sdk/request/t:l	I
     //   1830: i2l
-    //   1831: invokestatic 1782	oicq/wlogin_sdk/request/a:a	(Ljava/lang/String;IJ)Ljava/net/InetSocketAddress;
+    //   1831: invokestatic 1810	oicq/wlogin_sdk/request/a:a	(Ljava/lang/String;IJ)Ljava/net/InetSocketAddress;
     //   1834: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   1837: aload_0
     //   1838: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
@@ -3075,7 +3116,7 @@ public class oicq_request
     //   1855: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   1858: invokevirtual 274	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
     //   1861: ifnonnull +34 -> 1895
-    //   1864: ldc_w 1844
+    //   1864: ldc_w 1872
     //   1867: new 460	java/lang/StringBuilder
     //   1870: dup
     //   1871: invokespecial 461	java/lang/StringBuilder:<init>	()V
@@ -3100,7 +3141,7 @@ public class oicq_request
     //   1909: astore 15
     //   1911: aload_0
     //   1912: aconst_null
-    //   1913: invokevirtual 1833	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   1913: invokevirtual 1861	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   1916: iload 5
     //   1918: istore 4
     //   1920: iload 11
@@ -3115,11 +3156,11 @@ public class oicq_request
     //   1941: new 460	java/lang/StringBuilder
     //   1944: dup
     //   1945: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   1948: ldc_w 1840
+    //   1948: ldc_w 1868
     //   1951: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1954: aload 17
     //   1956: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1959: ldc_w 1846
+    //   1959: ldc_w 1874
     //   1962: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1965: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1968: new 460	java/lang/StringBuilder
@@ -3146,7 +3187,7 @@ public class oicq_request
     //   2011: astore 15
     //   2013: aload_0
     //   2014: aconst_null
-    //   2015: invokevirtual 1833	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2015: invokevirtual 1861	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   2018: iload 4
     //   2020: istore_1
     //   2021: iload 5
@@ -3157,7 +3198,7 @@ public class oicq_request
     //   2032: new 460	java/lang/StringBuilder
     //   2035: dup
     //   2036: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   2039: ldc_w 1848
+    //   2039: ldc_w 1876
     //   2042: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2045: aload 16
     //   2047: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -3189,17 +3230,17 @@ public class oicq_request
     //   2111: new 460	java/lang/StringBuilder
     //   2114: dup
     //   2115: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   2118: ldc_w 1840
+    //   2118: ldc_w 1868
     //   2121: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2124: aload 17
     //   2126: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2129: ldc_w 1850
+    //   2129: ldc_w 1878
     //   2132: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2135: aload_0
     //   2136: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   2139: invokevirtual 1851	java/net/InetSocketAddress:toString	()Ljava/lang/String;
+    //   2139: invokevirtual 1879	java/net/InetSocketAddress:toString	()Ljava/lang/String;
     //   2142: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2145: ldc_w 1853
+    //   2145: ldc_w 1881
     //   2148: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2151: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2154: new 460	java/lang/StringBuilder
@@ -3218,12 +3259,12 @@ public class oicq_request
     //   2187: new 460	java/lang/StringBuilder
     //   2190: dup
     //   2191: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   2194: ldc_w 1855
+    //   2194: ldc_w 1883
     //   2197: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2200: aload_0
     //   2201: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   2204: invokevirtual 511	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   2207: ldc_w 1842
+    //   2207: ldc_w 1870
     //   2210: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2213: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2216: new 460	java/lang/StringBuilder
@@ -3237,39 +3278,39 @@ public class oicq_request
     //   2235: invokevirtual 484	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2238: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2241: invokestatic 369	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2244: new 1828	java/net/Socket
+    //   2244: new 1856	java/net/Socket
     //   2247: dup
-    //   2248: invokespecial 1856	java/net/Socket:<init>	()V
+    //   2248: invokespecial 1884	java/net/Socket:<init>	()V
     //   2251: astore 15
     //   2253: aload_0
     //   2254: aload 15
-    //   2256: invokevirtual 1833	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2256: invokevirtual 1861	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   2259: aload 15
     //   2261: aload_0
     //   2262: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   2265: aload_0
     //   2266: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
     //   2269: getfield 685	oicq/wlogin_sdk/request/t:l	I
-    //   2272: invokevirtual 1860	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
+    //   2272: invokevirtual 1888	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
     //   2275: aload 15
     //   2277: aload_0
     //   2278: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
     //   2281: getfield 685	oicq/wlogin_sdk/request/t:l	I
-    //   2284: invokevirtual 1863	java/net/Socket:setSoTimeout	(I)V
+    //   2284: invokevirtual 1891	java/net/Socket:setSoTimeout	(I)V
     //   2287: aload 15
     //   2289: aload_0
     //   2290: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
     //   2293: arraylength
-    //   2294: invokevirtual 1866	java/net/Socket:setReceiveBufferSize	(I)V
+    //   2294: invokevirtual 1894	java/net/Socket:setReceiveBufferSize	(I)V
     //   2297: new 460	java/lang/StringBuilder
     //   2300: dup
     //   2301: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   2304: ldc_w 1855
+    //   2304: ldc_w 1883
     //   2307: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2310: aload_0
     //   2311: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   2314: invokevirtual 511	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   2317: ldc_w 1868
+    //   2317: ldc_w 1896
     //   2320: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2323: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2326: new 460	java/lang/StringBuilder
@@ -3283,7 +3324,7 @@ public class oicq_request
     //   2345: invokevirtual 484	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2348: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2351: invokestatic 369	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2354: ldc_w 1870
+    //   2354: ldc_w 1898
     //   2357: new 460	java/lang/StringBuilder
     //   2360: dup
     //   2361: invokespecial 461	java/lang/StringBuilder:<init>	()V
@@ -3296,18 +3337,18 @@ public class oicq_request
     //   2379: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2382: invokestatic 369	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   2385: aload 15
-    //   2387: invokevirtual 1871	java/net/Socket:getOutputStream	()Ljava/io/OutputStream;
+    //   2387: invokevirtual 1899	java/net/Socket:getOutputStream	()Ljava/io/OutputStream;
     //   2390: astore 17
     //   2392: aload 17
     //   2394: aload 22
     //   2396: iconst_0
     //   2397: aload 22
     //   2399: arraylength
-    //   2400: invokevirtual 1803	java/io/OutputStream:write	([BII)V
+    //   2400: invokevirtual 1831	java/io/OutputStream:write	([BII)V
     //   2403: aload 17
-    //   2405: invokevirtual 1806	java/io/OutputStream:flush	()V
+    //   2405: invokevirtual 1834	java/io/OutputStream:flush	()V
     //   2408: aload 15
-    //   2410: invokevirtual 1872	java/net/Socket:getInputStream	()Ljava/io/InputStream;
+    //   2410: invokevirtual 1900	java/net/Socket:getInputStream	()Ljava/io/InputStream;
     //   2413: astore 18
     //   2415: aload 14
     //   2417: astore 17
@@ -3322,10 +3363,10 @@ public class oicq_request
     //   2436: new 460	java/lang/StringBuilder
     //   2439: dup
     //   2440: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   2443: ldc_w 1874
+    //   2443: ldc_w 1902
     //   2446: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2449: aload 15
-    //   2451: invokevirtual 1792	java/net/ConnectException:toString	()Ljava/lang/String;
+    //   2451: invokevirtual 1820	java/net/ConnectException:toString	()Ljava/lang/String;
     //   2454: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2457: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2460: ldc 110
@@ -3343,7 +3384,7 @@ public class oicq_request
     //   2479: astore 15
     //   2481: aload_0
     //   2482: aconst_null
-    //   2483: invokevirtual 1833	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2483: invokevirtual 1861	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   2486: iload 11
     //   2488: istore 9
     //   2490: goto -2398 -> 92
@@ -3351,10 +3392,10 @@ public class oicq_request
     //   2495: new 460	java/lang/StringBuilder
     //   2498: dup
     //   2499: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   2502: ldc_w 1876
+    //   2502: ldc_w 1904
     //   2505: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2508: aload 15
-    //   2510: invokestatic 1185	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   2510: invokestatic 1194	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   2513: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2516: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2519: ldc 110
@@ -3377,7 +3418,7 @@ public class oicq_request
     //   2549: astore 15
     //   2551: aload_0
     //   2552: aconst_null
-    //   2553: invokevirtual 1833	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2553: invokevirtual 1861	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   2556: iload 5
     //   2558: istore_1
     //   2559: iload 11
@@ -3395,7 +3436,7 @@ public class oicq_request
     //   2582: aload_0
     //   2583: aload_0
     //   2584: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
-    //   2587: invokevirtual 1878	oicq/wlogin_sdk/request/oicq_request:b	([B)I
+    //   2587: invokevirtual 1906	oicq/wlogin_sdk/request/oicq_request:b	([B)I
     //   2590: istore 6
     //   2592: iload 6
     //   2594: istore_1
@@ -3416,11 +3457,11 @@ public class oicq_request
     //   2617: new 460	java/lang/StringBuilder
     //   2620: dup
     //   2621: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   2624: ldc_w 1880
+    //   2624: ldc_w 1908
     //   2627: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2630: iload_1
     //   2631: invokevirtual 470	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2634: ldc_w 1882
+    //   2634: ldc_w 1910
     //   2637: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2640: aload_0
     //   2641: getfield 128	oicq/wlogin_sdk/request/oicq_request:f	I
@@ -3443,7 +3484,7 @@ public class oicq_request
     //   2677: iload_2
     //   2678: istore_3
     //   2679: aload 14
-    //   2681: invokevirtual 1831	java/net/Socket:close	()V
+    //   2681: invokevirtual 1859	java/net/Socket:close	()V
     //   2684: aload 14
     //   2686: astore 16
     //   2688: iload_2
@@ -3459,7 +3500,7 @@ public class oicq_request
     //   2702: istore_3
     //   2703: aload_0
     //   2704: aconst_null
-    //   2705: invokevirtual 1833	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2705: invokevirtual 1861	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   2708: aload 14
     //   2710: astore 16
     //   2712: goto +798 -> 3510
@@ -3479,11 +3520,11 @@ public class oicq_request
     //   2736: new 460	java/lang/StringBuilder
     //   2739: dup
     //   2740: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   2743: ldc_w 1880
+    //   2743: ldc_w 1908
     //   2746: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2749: iload_1
     //   2750: invokevirtual 470	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2753: ldc_w 1884
+    //   2753: ldc_w 1912
     //   2756: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2759: aload_0
     //   2760: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
@@ -3507,7 +3548,7 @@ public class oicq_request
     //   2797: iload_2
     //   2798: istore_3
     //   2799: aload 14
-    //   2801: invokevirtual 1831	java/net/Socket:close	()V
+    //   2801: invokevirtual 1859	java/net/Socket:close	()V
     //   2804: aload 14
     //   2806: astore 16
     //   2808: iload_2
@@ -3523,7 +3564,7 @@ public class oicq_request
     //   2822: istore_3
     //   2823: aload_0
     //   2824: aconst_null
-    //   2825: invokevirtual 1833	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2825: invokevirtual 1861	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   2828: aload 14
     //   2830: astore 16
     //   2832: goto +702 -> 3534
@@ -3551,7 +3592,7 @@ public class oicq_request
     //   2869: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
     //   2872: iload 7
     //   2874: iload 6
-    //   2876: invokevirtual 1824	java/io/InputStream:read	([BII)I
+    //   2876: invokevirtual 1852	java/io/InputStream:read	([BII)I
     //   2879: istore 5
     //   2881: iload 5
     //   2883: iconst_m1
@@ -3566,7 +3607,7 @@ public class oicq_request
     //   2899: new 460	java/lang/StringBuilder
     //   2902: dup
     //   2903: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   2906: ldc_w 1886
+    //   2906: ldc_w 1914
     //   2909: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2912: iload 5
     //   2914: invokevirtual 470	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -3588,7 +3629,7 @@ public class oicq_request
     //   2947: iload_2
     //   2948: istore_3
     //   2949: aload 14
-    //   2951: invokevirtual 1831	java/net/Socket:close	()V
+    //   2951: invokevirtual 1859	java/net/Socket:close	()V
     //   2954: aload 14
     //   2956: astore 16
     //   2958: iload_2
@@ -3604,7 +3645,7 @@ public class oicq_request
     //   2972: istore_3
     //   2973: aload_0
     //   2974: aconst_null
-    //   2975: invokevirtual 1833	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2975: invokevirtual 1861	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   2978: aload 14
     //   2980: astore 16
     //   2982: aload 15
@@ -3726,7 +3767,7 @@ public class oicq_request
     //   3226: aload 14
     //   3228: iconst_2
     //   3229: putfield 258	oicq/wlogin_sdk/report/report_t3:_wap	I
-    //   3232: getstatic 262	oicq/wlogin_sdk/request/t:aq	Loicq/wlogin_sdk/report/Reporter;
+    //   3232: getstatic 262	oicq/wlogin_sdk/request/t:as	Loicq/wlogin_sdk/report/Reporter;
     //   3235: aload 14
     //   3237: invokevirtual 268	oicq/wlogin_sdk/report/Reporter:add_t3	(Loicq/wlogin_sdk/report/report_t3;)V
     //   3240: new 460	java/lang/StringBuilder
@@ -3736,7 +3777,7 @@ public class oicq_request
     //   3248: invokevirtual 677	java/lang/Object:getClass	()Ljava/lang/Class;
     //   3251: invokevirtual 682	java/lang/Class:getName	()Ljava/lang/String;
     //   3254: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3257: ldc_w 1888
+    //   3257: ldc_w 1916
     //   3260: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3263: iload_3
     //   3264: invokevirtual 470	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -3764,10 +3805,10 @@ public class oicq_request
     //   3308: new 460	java/lang/StringBuilder
     //   3311: dup
     //   3312: invokespecial 461	java/lang/StringBuilder:<init>	()V
-    //   3315: ldc_w 1890
+    //   3315: ldc_w 1918
     //   3318: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3321: aload 14
-    //   3323: invokestatic 1185	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   3323: invokestatic 1194	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   3326: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3329: invokevirtual 479	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   3332: ldc 110
@@ -3783,10 +3824,10 @@ public class oicq_request
     //   3350: iload 11
     //   3352: ifne +29 -> 3381
     //   3355: aload 16
-    //   3357: invokevirtual 1893	java/net/Socket:isConnected	()Z
+    //   3357: invokevirtual 1921	java/net/Socket:isConnected	()Z
     //   3360: ifeq +8 -> 3368
     //   3363: aload 16
-    //   3365: invokevirtual 1831	java/net/Socket:close	()V
+    //   3365: invokevirtual 1859	java/net/Socket:close	()V
     //   3368: aload_0
     //   3369: aconst_null
     //   3370: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
@@ -3794,7 +3835,7 @@ public class oicq_request
     //   3374: astore 14
     //   3376: aload_0
     //   3377: aconst_null
-    //   3378: invokevirtual 1833	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   3378: invokevirtual 1861	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   3381: iload_1
     //   3382: istore_3
     //   3383: aload 14

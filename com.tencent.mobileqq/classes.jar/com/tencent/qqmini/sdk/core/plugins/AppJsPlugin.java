@@ -8,11 +8,11 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
-import bdcy;
-import bdcz;
-import bdfz;
-import bdgg;
-import bdnw;
+import begy;
+import begz;
+import beka;
+import bekg;
+import besl;
 import com.tencent.qqmini.sdk.core.proxy.ThirdAppProxy;
 import java.util.Iterator;
 import java.util.List;
@@ -32,44 +32,44 @@ public class AppJsPlugin
   private static final String VIA = "SmallGame";
   private ThirdAppProxy mThirdAppProxy;
   
-  public String cancelDownloadAppTask(bdfz parambdfz)
+  public String cancelDownloadAppTask(beka parambeka)
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      Object localObject = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString).optString("appid");
+      Object localObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString).optString("appid");
       localJSONObject.put("appid", localObject);
       if (this.mThirdAppProxy.stopDownloadTask((String)localObject))
       {
-        localObject = bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, localJSONObject);
-        parambdfz.jdField_a_of_type_Bdcy.a(parambdfz.jdField_b_of_type_Int, ((JSONObject)localObject).toString());
+        localObject = bekg.a(parambeka.jdField_a_of_type_JavaLangString, localJSONObject);
+        parambeka.jdField_a_of_type_Begy.a(parambeka.jdField_b_of_type_Int, ((JSONObject)localObject).toString());
       }
       for (;;)
       {
         return "";
-        localObject = bdgg.b(parambdfz.jdField_a_of_type_JavaLangString, localJSONObject);
-        parambdfz.jdField_a_of_type_Bdcy.a(parambdfz.jdField_b_of_type_Int, ((JSONObject)localObject).toString());
+        localObject = bekg.b(parambeka.jdField_a_of_type_JavaLangString, localJSONObject);
+        parambeka.jdField_a_of_type_Begy.a(parambeka.jdField_b_of_type_Int, ((JSONObject)localObject).toString());
       }
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        bdnw.d("AppJsPlugin", "cancelDownloadAppTask Throwable:", localThrowable);
-        localJSONObject = bdgg.b(parambdfz.jdField_a_of_type_JavaLangString, localJSONObject);
-        parambdfz.jdField_a_of_type_Bdcy.a(parambdfz.jdField_b_of_type_Int, localJSONObject.toString());
+        besl.d("AppJsPlugin", "cancelDownloadAppTask Throwable:", localThrowable);
+        localJSONObject = bekg.b(parambeka.jdField_a_of_type_JavaLangString, localJSONObject);
+        parambeka.jdField_a_of_type_Begy.a(parambeka.jdField_b_of_type_Int, localJSONObject.toString());
       }
     }
   }
   
-  public String installApp(bdfz parambdfz)
+  public String installApp(beka parambeka)
   {
     return "";
   }
   
-  public void onCreate(bdcz parambdcz)
+  public void onCreate(begz parambegz)
   {
-    super.onCreate(parambdcz);
+    super.onCreate(parambegz);
     if (this.mThirdAppProxy != null) {
       this.mThirdAppProxy.init();
     }
@@ -83,11 +83,11 @@ public class AppJsPlugin
     super.onDestroy();
   }
   
-  public String queryAppInfo(bdfz parambdfz)
+  public String queryAppInfo(beka parambeka)
   {
     try
     {
-      str = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString).optString("packagename");
+      str = new JSONObject(parambeka.jdField_b_of_type_JavaLangString).optString("packagename");
       localPackageManager = this.mMiniAppContext.a().getPackageManager();
       localObject2 = localPackageManager.getInstalledPackages(0).iterator();
       do
@@ -106,9 +106,9 @@ public class AppJsPlugin
         PackageManager localPackageManager;
         Object localObject2;
         Object localObject1;
-        bdnw.d("AppJsPlugin", "queryAppInfo throwable:", localThrowable);
-        JSONObject localJSONObject = bdgg.b(parambdfz.jdField_a_of_type_JavaLangString, null);
-        parambdfz.jdField_a_of_type_Bdcy.a(parambdfz.jdField_b_of_type_Int, localJSONObject.toString());
+        besl.d("AppJsPlugin", "queryAppInfo throwable:", localThrowable);
+        JSONObject localJSONObject = bekg.b(parambeka.jdField_a_of_type_JavaLangString, null);
+        parambeka.jdField_a_of_type_Begy.a(parambeka.jdField_b_of_type_Int, localJSONObject.toString());
         continue;
         localJSONObject = null;
       }
@@ -120,41 +120,41 @@ public class AppJsPlugin
       ((JSONObject)localObject2).put("appName", ((PackageInfo)localObject1).applicationInfo.loadLabel(localPackageManager).toString());
       ((JSONObject)localObject2).put("versionCode", ((PackageInfo)localObject1).versionCode);
       ((JSONObject)localObject2).put("versionName", ((PackageInfo)localObject1).versionName);
-      localObject1 = bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, (JSONObject)localObject2);
-      parambdfz.jdField_a_of_type_Bdcy.a(parambdfz.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
+      localObject1 = bekg.a(parambeka.jdField_a_of_type_JavaLangString, (JSONObject)localObject2);
+      parambeka.jdField_a_of_type_Begy.a(parambeka.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
     }
     for (;;)
     {
       return "";
-      localObject1 = bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, null, "not such package");
-      parambdfz.jdField_a_of_type_Bdcy.a(parambdfz.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
+      localObject1 = bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, "not such package");
+      parambeka.jdField_a_of_type_Begy.a(parambeka.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
     }
   }
   
-  public String queryDownloadAppTask(bdfz parambdfz)
+  public String queryDownloadAppTask(beka parambeka)
   {
     try
     {
-      String str = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString).optString("appid");
-      this.mThirdAppProxy.queryDownloadTask(str, new AppJsPlugin.2(this, parambdfz));
+      String str = new JSONObject(parambeka.jdField_b_of_type_JavaLangString).optString("appid");
+      this.mThirdAppProxy.queryDownloadTask(str, new AppJsPlugin.2(this, parambeka));
       return "";
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        bdnw.d("AppJsPlugin", "queryDownloadAppTask Throwable:", localThrowable);
-        JSONObject localJSONObject = bdgg.b(parambdfz.jdField_a_of_type_JavaLangString, null);
-        parambdfz.jdField_a_of_type_Bdcy.a(parambdfz.jdField_b_of_type_Int, localJSONObject.toString());
+        besl.d("AppJsPlugin", "queryDownloadAppTask Throwable:", localThrowable);
+        JSONObject localJSONObject = bekg.b(parambeka.jdField_a_of_type_JavaLangString, null);
+        parambeka.jdField_a_of_type_Begy.a(parambeka.jdField_b_of_type_Int, localJSONObject.toString());
       }
     }
   }
   
-  public String startApp(bdfz parambdfz)
+  public String startApp(beka parambeka)
   {
     try
     {
-      localObject1 = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      localObject1 = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       str1 = ((JSONObject)localObject1).optString("packagename");
       str2 = ((JSONObject)localObject1).optString("path");
       localPackageManager = this.mMiniAppContext.a().getPackageManager();
@@ -176,12 +176,12 @@ public class AppJsPlugin
         String str2;
         PackageManager localPackageManager;
         Object localObject2;
-        bdnw.d("AppJsPlugin", "startApp throwable:", localThrowable);
-        JSONObject localJSONObject = bdgg.b(parambdfz.jdField_a_of_type_JavaLangString, null);
-        parambdfz.jdField_a_of_type_Bdcy.a(parambdfz.jdField_b_of_type_Int, localJSONObject.toString());
+        besl.d("AppJsPlugin", "startApp throwable:", localThrowable);
+        JSONObject localJSONObject = bekg.b(parambeka.jdField_a_of_type_JavaLangString, null);
+        parambeka.jdField_a_of_type_Begy.a(parambeka.jdField_b_of_type_Int, localJSONObject.toString());
         continue;
-        localJSONObject = bdgg.b(parambdfz.jdField_a_of_type_JavaLangString, null);
-        parambdfz.jdField_a_of_type_Bdcy.a(parambdfz.jdField_b_of_type_Int, localJSONObject.toString());
+        localJSONObject = bekg.b(parambeka.jdField_a_of_type_JavaLangString, null);
+        parambeka.jdField_a_of_type_Begy.a(parambeka.jdField_b_of_type_Int, localJSONObject.toString());
         continue;
         localJSONObject = null;
       }
@@ -201,12 +201,12 @@ public class AppJsPlugin
       }
       for (;;)
       {
-        localObject1 = bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, (JSONObject)localObject2);
-        parambdfz.jdField_a_of_type_Bdcy.a(parambdfz.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
+        localObject1 = bekg.a(parambeka.jdField_a_of_type_JavaLangString, (JSONObject)localObject2);
+        parambeka.jdField_a_of_type_Begy.a(parambeka.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
         return "";
-        bdnw.d("AppJsPlugin", "找不到指定的 Activity");
-        localObject1 = bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, null, "can not find activity.");
-        parambdfz.jdField_a_of_type_Bdcy.a(parambdfz.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
+        besl.d("AppJsPlugin", "找不到指定的 Activity");
+        localObject1 = bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, "can not find activity.");
+        parambeka.jdField_a_of_type_Begy.a(parambeka.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
         return "";
         localObject1 = localPackageManager.getLaunchIntentForPackage(((PackageInfo)localObject1).packageName);
         ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_miniapp");
@@ -215,33 +215,33 @@ public class AppJsPlugin
     }
   }
   
-  public String startDownloadAppTask(bdfz parambdfz)
+  public String startDownloadAppTask(beka parambeka)
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject1 = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       String str1 = localJSONObject1.optString("packagename");
       String str2 = localJSONObject1.optString("appid");
       String str3 = localJSONObject1.optString("version");
       String str4 = localJSONObject1.optString("md5");
       boolean bool = localJSONObject1.optBoolean("autoInstall");
       if (!TextUtils.isEmpty(str2)) {
-        this.mThirdAppProxy.queryApkDownloadInfo(str2, new AppJsPlugin.1(this, parambdfz, str2, bool, str1, str3, str4));
+        this.mThirdAppProxy.queryApkDownloadInfo(str2, new AppJsPlugin.1(this, parambeka, str2, bool, str1, str3, str4));
       }
       for (;;)
       {
         return "";
-        localJSONObject1 = bdgg.b(parambdfz.jdField_a_of_type_JavaLangString, null);
-        parambdfz.jdField_a_of_type_Bdcy.a(parambdfz.jdField_b_of_type_Int, localJSONObject1.toString());
+        localJSONObject1 = bekg.b(parambeka.jdField_a_of_type_JavaLangString, null);
+        parambeka.jdField_a_of_type_Begy.a(parambeka.jdField_b_of_type_Int, localJSONObject1.toString());
       }
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        bdnw.d("AppJsPlugin", "startDownloadAppTask throwable:", localThrowable);
-        JSONObject localJSONObject2 = bdgg.b(parambdfz.jdField_a_of_type_JavaLangString, null);
-        parambdfz.jdField_a_of_type_Bdcy.a(parambdfz.jdField_b_of_type_Int, localJSONObject2.toString());
+        besl.d("AppJsPlugin", "startDownloadAppTask throwable:", localThrowable);
+        JSONObject localJSONObject2 = bekg.b(parambeka.jdField_a_of_type_JavaLangString, null);
+        parambeka.jdField_a_of_type_Begy.a(parambeka.jdField_b_of_type_Int, localJSONObject2.toString());
       }
     }
   }

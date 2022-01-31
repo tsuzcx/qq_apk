@@ -1,10 +1,10 @@
 package com.tencent.common.app;
 
-import ajia;
-import ajlo;
-import akef;
-import alzv;
-import ameh;
+import ajwe;
+import ajzv;
+import aksr;
+import ampl;
+import amun;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -25,14 +25,15 @@ import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.text.format.Time;
 import android.util.Log;
-import aqba;
-import arik;
-import awoa;
-import awqx;
-import awrd;
-import awrn;
-import befv;
+import aqvc;
+import asem;
+import axnv;
+import axqw;
+import axrc;
+import axrl;
+import bfnp;
 import com.tencent.common.config.AppSetting;
+import com.tencent.commonsdk.soload.SoLoadCore;
 import com.tencent.commonsdk.util.notification.NotificationReportUtil;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -54,9 +55,9 @@ import mqq.app.MobileQQ;
 import mqq.app.ThirdAppReportHelper;
 import mqq.os.MqqHandler;
 import mqq.util.WeakReference;
-import xfo;
-import xfs;
-import xft;
+import xoo;
+import xos;
+import xot;
 
 public class BaseApplicationImpl
   extends MobileQQ
@@ -85,7 +86,7 @@ public class BaseApplicationImpl
   public static boolean isFirstLaunchNew;
   public static boolean isFirstLogin;
   public static BaseApplicationImpl sApplication;
-  public static awoa sDirector;
+  public static axnv sDirector;
   public static String sFoo2Version;
   public static String sFooVersion;
   private static boolean sHasStoragePermission;
@@ -121,15 +122,15 @@ public class BaseApplicationImpl
   
   public BaseApplicationImpl()
   {
-    buildNum = "4370";
-    reportVersionName = "8.2.6.4370";
+    buildNum = "4440";
+    reportVersionName = "8.2.8.4440";
   }
   
   private void attachThreadContext()
   {
     com.tencent.mobileqq.app.ThreadSetting.isPublicVersion = true;
     com.tencent.mobileqq.app.ThreadSetting.isGrayVersion = false;
-    com.tencent.mobileqq.app.ThreadSetting.revision = "cc9d1343";
+    com.tencent.mobileqq.app.ThreadSetting.revision = "a15c4095";
     com.tencent.mobileqq.app.ThreadSetting.sProcessId = sProcessId;
     com.tencent.mobileqq.app.ThreadSetting.PROCESS_QQ = 1;
     com.tencent.mobileqq.app.ThreadSetting.CLR = 2;
@@ -236,7 +237,7 @@ public class BaseApplicationImpl
   public void addOtherTypeActivity(Activity paramActivity)
   {
     this.otherTypeActivitys.add(new WeakReference(paramActivity));
-    awrn.a(this).a(paramActivity);
+    axrl.a(this).a(paramActivity);
   }
   
   public void attachBaseContext(Context paramContext)
@@ -257,10 +258,10 @@ public class BaseApplicationImpl
         if (sProcessId != 1) {
           continue;
         }
-        localameh = alzv.a(this);
+        localamun = ampl.a(this);
         localFile = new File(getLogExternalPath(context) + "/tencent/msflogs/" + getPackageName().replace(".", "/") + "/" + "QLogConfig_C");
-        Log.d("init_log", "base=" + localameh.toString() + " logConfigPath=" + localFile.getAbsolutePath());
-        if ((localameh.a()) || (localFile.exists())) {
+        Log.d("init_log", "base=" + localamun.toString() + " logConfigPath=" + localFile.getAbsolutePath());
+        if ((localamun.a()) || (localFile.exists())) {
           continue;
         }
         localFile.createNewFile();
@@ -268,7 +269,7 @@ public class BaseApplicationImpl
       }
       catch (Throwable localThrowable)
       {
-        ameh localameh;
+        amun localamun;
         File localFile;
         int j;
         int i;
@@ -294,9 +295,9 @@ public class BaseApplicationImpl
         }
         MobileQQ.sIsToolProc = true;
       }
-      ajlo.a(this);
-      akef.a().a(paramContext);
-      ajia.a(this, false, true);
+      ajzv.a(this);
+      aksr.a().a(paramContext);
+      ajwe.a(this, false, true);
       return;
       if (str1.endsWith("MSF"))
       {
@@ -351,7 +352,7 @@ public class BaseApplicationImpl
       }
       sProcessId = -1;
       break;
-      if ((localameh.a()) && (localFile.exists())) {
+      if ((localamun.a()) && (localFile.exists())) {
         localFile.delete();
       }
     }
@@ -369,10 +370,10 @@ public class BaseApplicationImpl
     {
       AppRuntime localAppRuntime = peekAppRuntime();
       if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface)) && (localAppRuntime.getLongAccountUin() > 10000L)) {
-        ((QQAppInterface)localAppRuntime).A();
+        ((QQAppInterface)localAppRuntime).B();
       }
     }
-    return xfo.a(this, paramString);
+    return xoo.a(this, paramString);
   }
   
   public void doSendBroadcast(Intent paramIntent)
@@ -473,14 +474,14 @@ public class BaseApplicationImpl
   {
     if ((paramObject instanceof Activity))
     {
-      akef.a().a((Activity)paramObject);
-      ajlo.b((Activity)paramObject);
+      aksr.a().a((Activity)paramObject);
+      ajzv.b((Activity)paramObject);
     }
     if ((Build.VERSION.SDK_INT >= 24) && ((paramObject instanceof Activity))) {
-      ajia.a((Activity)paramObject, true, false);
+      ajwe.a((Activity)paramObject, true, false);
     }
     if (sProcessId == 1) {
-      xfs.a(context, paramObject);
+      xos.a(context, paramObject);
     }
     if (sDirector != null)
     {
@@ -523,10 +524,10 @@ public class BaseApplicationImpl
         localStringBuilder.append("\n").append("sMobileQQ#Locale pre:");
         localStringBuilder.append(sMobileQQ.getResources().getConfiguration().locale.toString());
       }
-      ajlo.a(localStringBuilder.toString());
+      ajzv.a(localStringBuilder.toString());
       super.onConfigurationChanged(paramConfiguration);
-      ajlo.a(this, ajlo.a());
-      ajia.b(this, true, true);
+      ajzv.a(this, ajzv.a());
+      ajwe.b(this, true, true);
       if (QLog.isColorLevel())
       {
         paramConfiguration = new StringBuilder();
@@ -542,7 +543,7 @@ public class BaseApplicationImpl
           paramConfiguration.append(sMobileQQ.getResources().getConfiguration().locale.toString());
         }
         if (!TextUtils.isEmpty(paramConfiguration.toString())) {
-          ajlo.a(paramConfiguration.toString());
+          ajzv.a(paramConfiguration.toString());
         }
       }
       return;
@@ -560,27 +561,28 @@ public class BaseApplicationImpl
     sApplication = this;
     sMobileQQ = this;
     context = this;
+    SoLoadCore.setIsCpu64Bit(AppSetting.b);
     SharedPreferencesProxyManager.getInstance().init(this);
-    if (awrd.a) {
-      SharedPreferencesProxyManager.setLogCallback(awrd.a());
+    if (axrc.a) {
+      SharedPreferencesProxyManager.setLogCallback(axrc.a());
     }
     if (sProcessId == 2)
     {
-      awoa.b = true;
+      axnv.b = true;
       PerfTracer.traceStart("App_onCreate");
     }
-    sDirector = awoa.a();
+    sDirector = axnv.a();
     if ((Build.VERSION.SDK_INT >= 15) && ("Success".equals(sInjectResult))) {
       registerActivityLifecycleCallbacks(UEC.a());
     }
-    if (awoa.b) {
+    if (axnv.b) {
       PerfTracer.traceEnd("App_onCreate");
     }
-    ThirdAppReportHelper.sThirdAppReporter = new xft();
-    befv localbefv = new befv();
-    NotificationReportUtil.setReport(localbefv);
-    arik.a(localbefv);
-    akef.a().b(this);
+    ThirdAppReportHelper.sThirdAppReporter = new xot();
+    bfnp localbfnp = new bfnp();
+    NotificationReportUtil.setReport(localbfnp);
+    asem.a(localbfnp);
+    aksr.a().b(this);
   }
   
   public Intent registerReceiver(BroadcastReceiver paramBroadcastReceiver, IntentFilter paramIntentFilter)
@@ -602,7 +604,7 @@ public class BaseApplicationImpl
   public void removeOtherTypeActivity(Activity paramActivity)
   {
     this.otherTypeActivitys.remove(new WeakReference(paramActivity));
-    awrn.a(this).d(paramActivity);
+    axrl.a(this).d(paramActivity);
   }
   
   public void reportPCActive(String paramString, int paramInt)
@@ -610,9 +612,9 @@ public class BaseApplicationImpl
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_retryIndex", Integer.toString(paramInt));
     localHashMap.put("param_uin", paramString);
-    awrn.a(getApplication()).a(paramString, "PcActiveSucc", true, 0L, 0L, localHashMap, "", true);
+    axrl.a(getApplication()).a(paramString, "PcActiveSucc", true, 0L, 0L, localHashMap, "", true);
     sUiHandler.postDelayed(new BaseApplicationImpl.3(this, paramInt, paramString), 10000L);
-    awqx.b(null, "CliOper", "", "", "0X8004974", "0X8004974", 0, 0, "", "", "", "");
+    axqw.b(null, "CliOper", "", "", "0X8004974", "0X8004974", 0, 0, "", "", "", "");
   }
   
   public void sendBroadcast(Intent paramIntent)
@@ -662,7 +664,7 @@ public class BaseApplicationImpl
       JumpActivity.a(paramIntent);
       try
       {
-        aqba.a(this, paramIntent, new BaseApplicationImpl.1(this, paramIntent));
+        aqvc.a(this, paramIntent, new BaseApplicationImpl.1(this, paramIntent));
         return;
       }
       catch (Throwable paramIntent)
@@ -684,7 +686,7 @@ public class BaseApplicationImpl
       JumpActivity.a(paramIntent);
       try
       {
-        aqba.a(this, paramIntent, new BaseApplicationImpl.2(this, paramIntent, paramBundle));
+        aqvc.a(this, paramIntent, new BaseApplicationImpl.2(this, paramIntent, paramBundle));
         return;
       }
       catch (Throwable paramIntent)

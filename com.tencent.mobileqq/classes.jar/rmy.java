@@ -1,20 +1,9 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.List;
 
-public class rmy
-  extends rmo
-  implements rmh
+public abstract interface rmy
 {
-  public rmy(Activity paramActivity, rmc paramrmc, VVideoView paramVVideoView)
-  {
-    super(paramActivity, paramrmc, paramVVideoView);
-  }
-  
-  public void a() {}
-  
-  public void b() {}
-  
-  public void c() {}
+  public abstract void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2);
 }
 
 

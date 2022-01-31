@@ -1,25 +1,12 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-
 class pae
-  implements Animator.AnimatorListener
+  implements osn
 {
-  pae(ozx paramozx, boolean paramBoolean) {}
+  pae(pad parampad, int paramInt, String paramString) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(osp paramosp)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      ozx.a(this.jdField_a_of_type_Ozx).isShowRecommendList = false;
-      ozx.a(this.jdField_a_of_type_Ozx);
-    }
+    paramosp.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

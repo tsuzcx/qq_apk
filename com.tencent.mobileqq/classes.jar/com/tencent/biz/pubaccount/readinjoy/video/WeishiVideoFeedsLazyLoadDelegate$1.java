@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import oie;
-import qjz;
+import otp;
+import qwe;
 
 public class WeishiVideoFeedsLazyLoadDelegate$1
   implements Runnable
 {
-  public WeishiVideoFeedsLazyLoadDelegate$1(qjz paramqjz) {}
+  public WeishiVideoFeedsLazyLoadDelegate$1(qwe paramqwe) {}
   
   public void run()
   {
-    qjz.a(this.this$0, qjz.a(this.this$0).a());
-    qjz.a(this.this$0, qjz.a(this.this$0));
+    qwe.a(this.this$0, qwe.a(this.this$0).a());
+    qwe.a(this.this$0, qwe.a(this.this$0));
   }
 }
 

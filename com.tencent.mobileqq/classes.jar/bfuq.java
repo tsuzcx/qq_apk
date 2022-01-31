@@ -1,32 +1,43 @@
-import java.util.LinkedList;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 
 public class bfuq
 {
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final List<Integer> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private Object b;
+  public int a;
+  public Bitmap a;
+  public int b;
   
-  public bfuq(bfuq parambfuq, Object paramObject)
+  public bfuq(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_JavaUtilList = parambfuq.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = parambfuq.jdField_a_of_type_Boolean;
-    this.b = this.jdField_a_of_type_JavaLangObject;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    a(paramInt1, paramInt2);
   }
   
-  private bfuq(Object paramObject)
+  public int a()
   {
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = true;
-    this.b = this.jdField_a_of_type_JavaLangObject;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    this.jdField_a_of_type_Int = (paramInt1 - i / 2);
+    this.b = (paramInt2 - j / 2);
+  }
+  
+  public void a(Canvas paramCanvas, Paint paramPaint)
+  {
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.b, paramPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfuq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view;
 
-import aifg;
+import airz;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloActionData;
@@ -15,7 +15,7 @@ class ApolloLinearLayout$1
     if ((this.this$0.a == null) || (this.this$0.a.a == null)) {
       return;
     }
-    ((aifg)this.this$0.a.a.getManager(153)).a(this.a, 4);
+    ((airz)this.this$0.a.a.getManager(153)).a(this.a, 4);
   }
 }
 

@@ -1,77 +1,45 @@
-import java.util.UUID;
+import java.io.File;
+import java.io.IOException;
 
 public class ayqd
 {
-  public int a;
-  public long a;
-  public String a;
-  public UUID a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e;
-  public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public int h;
-  public String h;
-  public String i;
-  public String j;
+  File jdField_a_of_type_JavaIoFile;
+  private String jdField_a_of_type_JavaLangString;
   
-  public ayqd()
+  ayqd(ayqc paramayqc, String paramString)
   {
-    this.jdField_b_of_type_Int = 7;
+    if (!paramayqc.jdField_a_of_type_JavaIoFile.exists()) {
+      paramayqc.jdField_a_of_type_JavaIoFile.mkdirs();
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaIoFile = new File(paramayqc.jdField_a_of_type_JavaIoFile, paramString + ".tmp");
   }
   
-  public ayqd(ayqd paramayqd)
+  File a()
   {
-    a(paramayqd);
-  }
-  
-  public void a(ayqd paramayqd)
-  {
-    this.jdField_b_of_type_Int = 7;
-    if (paramayqd != null)
+    File localFile = this.jdField_a_of_type_Ayqc.a(this.jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      return localFile;
+    }
+    if ((!this.jdField_a_of_type_JavaIoFile.exists()) || (this.jdField_a_of_type_JavaIoFile.length() <= 0L))
     {
-      this.jdField_a_of_type_JavaUtilUUID = paramayqd.jdField_a_of_type_JavaUtilUUID;
-      this.jdField_a_of_type_Int = paramayqd.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Long = paramayqd.jdField_a_of_type_Long;
-      this.jdField_b_of_type_Long = paramayqd.jdField_b_of_type_Long;
-      this.jdField_b_of_type_Int = paramayqd.jdField_b_of_type_Int;
-      this.jdField_c_of_type_Int = paramayqd.jdField_c_of_type_Int;
-      this.jdField_c_of_type_Long = paramayqd.jdField_c_of_type_Long;
-      this.jdField_d_of_type_Long = paramayqd.jdField_d_of_type_Long;
-      this.jdField_a_of_type_JavaLangString = paramayqd.jdField_a_of_type_JavaLangString;
-      this.jdField_b_of_type_JavaLangString = paramayqd.jdField_b_of_type_JavaLangString;
-      this.jdField_c_of_type_JavaLangString = paramayqd.jdField_c_of_type_JavaLangString;
-      this.jdField_d_of_type_JavaLangString = paramayqd.jdField_d_of_type_JavaLangString;
-      this.jdField_e_of_type_Int = paramayqd.jdField_e_of_type_Int;
-      this.f = paramayqd.f;
-      this.jdField_g_of_type_Int = paramayqd.jdField_g_of_type_Int;
-      this.jdField_e_of_type_JavaLangString = paramayqd.jdField_e_of_type_JavaLangString;
-      this.jdField_g_of_type_JavaLangString = paramayqd.jdField_g_of_type_JavaLangString;
-      this.jdField_h_of_type_Int = paramayqd.jdField_h_of_type_Int;
-      this.jdField_h_of_type_JavaLangString = paramayqd.jdField_h_of_type_JavaLangString;
-      this.i = paramayqd.i;
-      this.jdField_b_of_type_Boolean = paramayqd.jdField_b_of_type_Boolean;
-      this.j = paramayqd.j;
+      this.jdField_a_of_type_JavaIoFile.delete();
+      throw new IOException("write 0 length file or null File");
+    }
+    this.jdField_a_of_type_JavaIoFile.renameTo(localFile);
+    return localFile;
+  }
+  
+  void a(boolean paramBoolean)
+  {
+    if ((!paramBoolean) || (this.jdField_a_of_type_JavaIoFile.length() <= 0L)) {
+      this.jdField_a_of_type_JavaIoFile.delete();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayqd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package cooperation.qzone.zipanimate;
 
-import bgmb;
-import bgme;
-import bgmf;
-import bgmg;
+import bhus;
+import bhuv;
+import bhuw;
+import bhux;
 
 public class ZipAnimationDrawable$ZipAnimationState$1$1
   implements Runnable
 {
-  public ZipAnimationDrawable$ZipAnimationState$1$1(bgmg parambgmg) {}
+  public ZipAnimationDrawable$ZipAnimationState$1$1(bhux parambhux) {}
   
   public void run()
   {
     if (this.a.a.a.a != null) {
       this.a.a.a.a.onDrawableLoaded();
     }
-    if (bgmb.b(this.a.a.a)) {
+    if (bhus.b(this.a.a.a)) {
       this.a.a.a.d();
     }
   }

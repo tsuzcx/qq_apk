@@ -1,16 +1,17 @@
-final class agab
-  extends afzz
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable;
+
+public class agab
+  implements DialogInterface.OnDismissListener
 {
-  public boolean a(String paramString)
+  public agab(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!super.a(paramString)) {}
-    String[] arrayOfString;
-    do
-    {
-      return false;
-      arrayOfString = agaq.a(paramString);
-    } while ((arrayOfString != null) && ((("image".equals(arrayOfString[0])) && (agaq.a(arrayOfString[1]))) || (agaq.b(paramString))));
-    return true;
+    this.a.b.postDelayed(new ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable(this.a), 150L);
   }
 }
 

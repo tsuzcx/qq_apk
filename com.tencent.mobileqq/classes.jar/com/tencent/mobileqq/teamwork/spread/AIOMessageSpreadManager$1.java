@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.teamwork.spread;
 
 import android.text.TextUtils;
-import axgr;
-import axgs;
-import axgt;
-import axgx;
-import axgz;
-import axhe;
-import axhf;
+import aygv;
+import aygw;
+import aygx;
+import ayhb;
+import ayhd;
+import ayhi;
+import ayhj;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForFile;
 import com.tencent.mobileqq.data.MessageForText;
@@ -17,14 +17,14 @@ import com.tencent.qphone.base.util.QLog;
 public class AIOMessageSpreadManager$1
   implements Runnable
 {
-  public AIOMessageSpreadManager$1(axgr paramaxgr, ChatMessage paramChatMessage) {}
+  public AIOMessageSpreadManager$1(aygv paramaygv, ChatMessage paramChatMessage) {}
   
   public void run()
   {
     if (QLog.isDebugVersion()) {
       QLog.i("AIOMessageSpreadManager", 1, "SubThread Process Start");
     }
-    if (!axgr.a(this.this$0, this.a)) {
+    if (!aygv.a(this.this$0, this.a)) {
       if (QLog.isColorLevel()) {
         QLog.i("AIOMessageSpreadManager", 1, "config return false!");
       }
@@ -35,27 +35,27 @@ public class AIOMessageSpreadManager$1
       return;
       if ((this.a instanceof MessageForText))
       {
-        axgr.a(this.this$0, new axhe(axgr.a(this.this$0), this.a, axgr.a(this.this$0)));
+        aygv.a(this.this$0, new ayhi(aygv.a(this.this$0), this.a, aygv.a(this.this$0)));
         if (QLog.isDebugVersion()) {
           QLog.i("AIOMessageSpreadManager", 1, "message is MessageForText");
         }
       }
       for (;;)
       {
-        if (axgr.a(this.this$0).a()) {
+        if (aygv.a(this.this$0).a()) {
           break label294;
         }
         if (!QLog.isColorLevel()) {
           break;
         }
-        QLog.i("AIOMessageSpreadManager", 1, "file[" + axgr.a(this.this$0).a() + "] is not support!");
+        QLog.i("AIOMessageSpreadManager", 1, "file[" + aygv.a(this.this$0).a() + "] is not support!");
         return;
         if ((this.a instanceof MessageForFile))
         {
           if (QLog.isDebugVersion()) {
             QLog.i("AIOMessageSpreadManager", 1, "message is MessageForFile");
           }
-          axgr.a(this.this$0, new axgx(axgr.a(this.this$0), this.a, axgr.a(this.this$0)));
+          aygv.a(this.this$0, new ayhb(aygv.a(this.this$0), this.a, aygv.a(this.this$0)));
         }
         else
         {
@@ -65,18 +65,18 @@ public class AIOMessageSpreadManager$1
           if (QLog.isDebugVersion()) {
             QLog.i("AIOMessageSpreadManager", 1, "message is MessageForTroopFile");
           }
-          axgr.a(this.this$0, new axhf(axgr.a(this.this$0), this.a, axgr.a(this.this$0)));
+          aygv.a(this.this$0, new ayhj(aygv.a(this.this$0), this.a, aygv.a(this.this$0)));
         }
       }
     } while (!QLog.isDebugVersion());
     QLog.i("AIOMessageSpreadManager", 1, "message is unknown");
     return;
     label294:
-    String str = axgr.a(this.this$0).a();
+    String str = aygv.a(this.this$0).a();
     if (QLog.isColorLevel()) {
       QLog.i("AIOMessageSpreadManager", 1, "recv new File name is :" + str);
     }
-    Object localObject2 = axgr.a(this.this$0).a(axgr.a(this.this$0));
+    Object localObject2 = aygv.a(this.this$0).a(aygv.a(this.this$0));
     Object localObject1;
     if (QLog.isDebugVersion())
     {
@@ -108,32 +108,32 @@ public class AIOMessageSpreadManager$1
         if (QLog.isColorLevel()) {
           QLog.i("AIOMessageSpreadManager", 1, "keyWord[" + (String)localObject1 + "] find!");
         }
-        localObject2 = axgr.a(this.this$0).a(axgr.a(this.this$0));
-        str = axgr.a(this.this$0).b(axgr.a(this.this$0));
+        localObject2 = aygv.a(this.this$0).a(aygv.a(this.this$0));
+        str = aygv.a(this.this$0).b(aygv.a(this.this$0));
         if ((TextUtils.isEmpty((CharSequence)localObject2)) && (QLog.isColorLevel())) {
           QLog.i("AIOMessageSpreadManager", 1, "tips is null! return, tips[" + (String)localObject2 + "], link[" + str + "]");
         }
         localObject2 = (String)localObject2 + "。" + str;
-        if (((axgr.a(this.this$0) instanceof axgx)) || ((axgr.a(this.this$0) instanceof axhf)))
+        if (((aygv.a(this.this$0) instanceof ayhb)) || ((aygv.a(this.this$0) instanceof ayhj)))
         {
-          axgr.a(this.this$0, this.a, (String)localObject2, str, "keyword", null);
+          aygv.a(this.this$0, this.a, (String)localObject2, str, "keyword", null);
           return;
           i += 1;
           break label455;
         }
-        if (!(axgr.a(this.this$0) instanceof axhe)) {
+        if (!(aygv.a(this.this$0) instanceof ayhi)) {
           break;
         }
-        axgr.a(this.this$0, this.a, (String)localObject2, str, "text_keyword", axgr.a(this.this$0).a((String)localObject1));
+        aygv.a(this.this$0, this.a, (String)localObject2, str, "text_keyword", aygv.a(this.this$0).a((String)localObject1));
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.i("AIOMessageSpreadManager", 1, "keyWords not find!");
       }
-      if ((axgr.a(this.this$0) instanceof axhe)) {
+      if ((aygv.a(this.this$0) instanceof ayhi)) {
         break;
       }
-      axgr.a(this.this$0).a(new axgs(this, str));
+      aygv.a(this.this$0).a(new aygw(this, str));
       return;
       localObject1 = "";
     }

@@ -1,19 +1,28 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.qphone.base.util.QLog;
 
 class arfj
-  implements Comparator<arfa>
+  implements INetEventHandler
 {
-  public int a(arfa paramarfa1, arfa paramarfa2)
+  arfj(arfe paramarfe) {}
+  
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    if (paramarfa1.a >= paramarfa2.a) {
-      return 1;
-    }
-    return -1;
+    if (arfe.a(this.a) == null) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupVideoManager", 2, "onNetChangeEvent connect:" + paramBoolean + " isMSFConnect:" + arfe.a(this.a).e);
+      }
+    } while (!paramBoolean);
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arfj
  * JD-Core Version:    0.7.0.1
  */

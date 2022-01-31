@@ -1,6 +1,19 @@
-public abstract interface vfb
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
+
+public final class vfb
+  implements Parcelable.Creator<EditLocalGifSource>
 {
-  public abstract void a(vfa paramvfa);
+  public EditLocalGifSource a(Parcel paramParcel)
+  {
+    return new EditLocalGifSource(paramParcel);
+  }
+  
+  public EditLocalGifSource[] a(int paramInt)
+  {
+    return new EditLocalGifSource[paramInt];
+  }
 }
 
 

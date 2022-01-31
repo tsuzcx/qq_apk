@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.core.manager;
 
-import bdeu;
-import bdgo;
+import beiu;
+import bekq;
 
 public class MiniAppFileManager$1
   implements Runnable
 {
-  public MiniAppFileManager$1(bdeu parambdeu) {}
+  public MiniAppFileManager$1(beiu parambeiu) {}
   
   public void run()
   {
-    bdgo.a(bdeu.a(this.this$0, 0), false);
+    bekq.a(beiu.a(this.this$0, 0), false);
   }
 }
 

@@ -1,72 +1,36 @@
-import KQQ.BatchResponse;
-import KQQ.RespBatchProcess;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.HashMap;
 
-class alcf
-  extends ajuc
+final class alcf
+  implements ayrz
 {
-  alcf(alcd paramalcd) {}
-  
-  protected void a(boolean paramBoolean, long paramLong, RespBatchProcess paramRespBatchProcess)
+  public void a(aysw paramaysw, aysx paramaysx)
   {
-    this.a.a().removeObserver(this);
-    TroopInfoData localTroopInfoData = new TroopInfoData();
-    localTroopInfoData.isMember = true;
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("onBatchGetTroopInfoResp, isSucc=").append(paramBoolean).append(", resp IsNull=");
-      if (paramRespBatchProcess == null)
-      {
-        paramBoolean = true;
-        QLog.d("ark.Troop", 2, paramBoolean);
-      }
-    }
-    else
-    {
-      if ((paramRespBatchProcess != null) && (paramRespBatchProcess.batch_response_list != null) && (paramRespBatchProcess.batch_response_list.size() != 0)) {
-        break label121;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("ark.Troop", 2, "onBatchGetTroopInfoResp, return");
-      }
-    }
-    label121:
-    int j;
+    if ((paramaysw == null) || (paramaysx == null)) {}
     do
     {
-      return;
-      paramBoolean = false;
-      break;
-      j = paramRespBatchProcess.batch_response_list.size();
-      int i = 0;
-      if (i < j)
+      do
       {
-        localObject = (BatchResponse)paramRespBatchProcess.batch_response_list.get(i);
-        if ((localObject == null) || (((BatchResponse)localObject).result != 0)) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (((BatchResponse)localObject).type == 1)
-          {
-            TroopInfo localTroopInfo = ((TroopManager)this.a.a().getManager(52)).b(this.a.a);
-            this.a.a((BatchResponse)localObject, localTroopInfoData, localTroopInfo);
-          }
-        }
+        return;
+      } while (!(paramaysw instanceof ayrv));
+      paramaysw = (ayrv)paramaysw;
+      paramaysw.jdField_a_of_type_Long += paramaysx.c;
+      paramaysx.c = 0L;
+      paramaysx = "bytes=" + paramaysw.jdField_a_of_type_Long + "-";
+      paramaysw.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysx);
+      paramaysx = paramaysw.jdField_a_of_type_JavaLangString;
+      if (paramaysx.contains("range="))
+      {
+        String str = paramaysx.substring(0, paramaysx.lastIndexOf("range="));
+        paramaysw.jdField_a_of_type_JavaLangString = (str + "range=" + paramaysw.jdField_a_of_type_Long);
       }
-    } while (j <= 0);
-    alcd.a(this.a, this.a.a, localTroopInfoData);
+    } while (!QLog.isColorLevel());
+    QLog.i("ArConfig_ArResourceDownload", 2, "IBreakDownFix, " + paramaysx + ", offset=" + paramaysw.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alcf
  * JD-Core Version:    0.7.0.1
  */

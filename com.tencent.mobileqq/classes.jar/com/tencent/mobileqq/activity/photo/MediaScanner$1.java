@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.photo;
 
-import afzy;
-import agak;
-import agam;
+import aglw;
+import agmi;
+import agmk;
 import android.media.MediaMetadataRetriever;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -11,17 +11,17 @@ import java.lang.ref.WeakReference;
 public class MediaScanner$1
   implements Runnable
 {
-  public MediaScanner$1(agak paramagak, WeakReference paramWeakReference1, WeakReference paramWeakReference2, int paramInt) {}
+  public MediaScanner$1(agmi paramagmi, WeakReference paramWeakReference1, WeakReference paramWeakReference2, int paramInt) {}
   
   public void run()
   {
     try
     {
       LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      agam localagam = (agam)this.b.get();
+      agmk localagmk = (agmk)this.b.get();
       if (localLocalMediaInfo != null)
       {
-        if (localagam == null) {
+        if (localagmk == null) {
           return;
         }
         MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
@@ -29,8 +29,8 @@ public class MediaScanner$1
         String str = localMediaMetadataRetriever.extractMetadata(9);
         localMediaMetadataRetriever.release();
         localLocalMediaInfo.mDuration = Long.parseLong(str);
-        localagam.a(this.jdField_a_of_type_Int, localLocalMediaInfo);
-        agak.a(agak.a(BaseApplicationImpl.getContext())).a(localLocalMediaInfo.path, localLocalMediaInfo.mDuration);
+        localagmk.a(this.jdField_a_of_type_Int, localLocalMediaInfo);
+        agmi.a(agmi.a(BaseApplicationImpl.getContext())).a(localLocalMediaInfo.path, localLocalMediaInfo.mDuration);
         return;
       }
     }

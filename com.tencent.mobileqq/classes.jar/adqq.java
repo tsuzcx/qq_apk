@@ -1,14 +1,21 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.graphics.drawable.StateListDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class adqq
-  implements PopupWindow.OnDismissListener
+class adqq
+  implements URLDrawable.URLDrawableListener
 {
-  public adqq(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  adqq(adqg paramadqg, StateListDrawable paramStateListDrawable) {}
   
-  public void onDismiss()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    StructingMsgItemBuilder.b(this.a, false);
+    this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable.invalidateSelf();
   }
 }
 

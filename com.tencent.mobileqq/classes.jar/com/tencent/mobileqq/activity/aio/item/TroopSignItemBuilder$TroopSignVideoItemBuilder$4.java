@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adtj;
-import adtp;
-import aejb;
+import aeei;
+import aeeo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
 
 public class TroopSignItemBuilder$TroopSignVideoItemBuilder$4
   implements Runnable
 {
-  public TroopSignItemBuilder$TroopSignVideoItemBuilder$4(adtj paramadtj, adtp paramadtp) {}
+  public TroopSignItemBuilder$TroopSignVideoItemBuilder$4(aeei paramaeei, aeeo paramaeeo) {}
   
   public void run()
   {

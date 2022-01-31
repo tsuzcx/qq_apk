@@ -1,30 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import org.json.JSONObject;
 
 public class acta
-  implements DialogInterface.OnClickListener
 {
-  public acta(DoodlePanel paramDoodlePanel) {}
+  @arlx(a="structmsg_switch")
+  public int a;
+  @arlx(a="msf_http_monitor_ban")
+  public boolean a;
+  @arlx(a="structmsg_sampling")
+  public int b;
+  @arlx(a="structmsg_filternumber")
+  public int c;
+  @arlx(a="switch_background_start_activity")
+  public int d;
+  @arlx(a="switch_open_third_app")
+  public int e;
+  @arlx(a="switch_imei")
+  public int f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public JSONObject a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      awqx.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
-      return;
-    }
-    awqx.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
-    DoodlePanel.a(this.a).b(1);
+    return arly.a(this);
+  }
+  
+  public String toString()
+  {
+    return a().toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acta
  * JD-Core Version:    0.7.0.1
  */

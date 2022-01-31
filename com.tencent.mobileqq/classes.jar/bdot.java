@@ -1,46 +1,49 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.manager.EngineVersion;
-import com.tencent.qqmini.sdk.manager.InstalledEngine;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bdot
-  implements Parcelable.Creator<InstalledEngine>
+public class bdot
+  extends bdof
 {
-  public InstalledEngine a(Parcel paramParcel)
+  private List<String> a;
+  
+  public bdot()
   {
-    boolean bool2 = true;
-    InstalledEngine localInstalledEngine = new InstalledEngine();
-    localInstalledEngine.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localInstalledEngine.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localInstalledEngine.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion = ((EngineVersion)paramParcel.readParcelable(EngineVersion.class.getClassLoader()));
-    localInstalledEngine.jdField_a_of_type_Int = paramParcel.readInt();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localInstalledEngine.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label102;
-      }
-    }
-    label102:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localInstalledEngine.jdField_b_of_type_Boolean = bool1;
-      localInstalledEngine.jdField_b_of_type_Int = paramParcel.readInt();
-      return localInstalledEngine;
-      bool1 = false;
-      break;
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public InstalledEngine[] a(int paramInt)
+  public void a(String paramString)
   {
-    return new InstalledEngine[paramInt];
+    super.a(paramString);
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramString = new JSONObject(paramString).getJSONArray(this.jdField_a_of_type_JavaLangString);
+        int j = paramString.length();
+        int i = 0;
+        while (i < j)
+        {
+          this.jdField_a_of_type_JavaUtilList.add(paramString.getString(i));
+          i += 1;
+        }
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdot
  * JD-Core Version:    0.7.0.1
  */

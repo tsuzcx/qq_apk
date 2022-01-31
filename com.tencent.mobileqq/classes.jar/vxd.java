@@ -1,18 +1,26 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
-public abstract interface vxd
-  extends vwc<vxc>
+public class vxd
 {
-  public abstract void a();
+  public View a;
+  public View b;
   
-  public abstract void a(int paramInt);
+  public vxd(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView.findViewById(2131378943);
+  }
   
-  public abstract void a(CertifiedAccountMeta.StEntry paramStEntry, List<vxm> paramList, boolean paramBoolean);
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
+  {
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new vxe(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vxd
  * JD-Core Version:    0.7.0.1
  */

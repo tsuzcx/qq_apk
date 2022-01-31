@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.startup.step;
 
-import ajhh;
-import ajjj;
-import ajlz;
-import amom;
+import ajvk;
+import ajxn;
+import akai;
 import android.os.Handler;
-import awok;
-import bgfp;
+import anet;
+import axoh;
+import bhoh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
@@ -63,8 +63,8 @@ public class InitMagnifierSDK
     Object localObject2;
     if (2 == BaseApplicationImpl.sProcessId)
     {
-      str = bgfp.c();
-      localObject1 = str + bgfp.a();
+      str = bhoh.c();
+      localObject1 = str + bhoh.a();
       if (!a.contains(localObject1))
       {
         localObject2 = new StringBuffer(512);
@@ -72,35 +72,35 @@ public class InitMagnifierSDK
         if ((localObject3 instanceof QQAppInterface))
         {
           localObject3 = (QQAppInterface)localObject3;
-          localajjj = (ajjj)((QQAppInterface)localObject3).getManager(51);
-          if (localajjj != null)
+          localajxn = (ajxn)((QQAppInterface)localObject3).getManager(51);
+          if (localajxn != null)
           {
-            i = localajjj.a();
+            i = localajxn.a();
             ((StringBuffer)localObject2).append("fc=");
             ((StringBuffer)localObject2).append(i);
             ((StringBuffer)localObject2).append("&");
           }
-          localObject3 = (ajhh)((QQAppInterface)localObject3).getManager(53);
+          localObject3 = (ajvk)((QQAppInterface)localObject3).getManager(53);
           if (localObject3 != null)
           {
-            i = ((ajhh)localObject3).a().size();
+            i = ((ajvk)localObject3).a().size();
             ((StringBuffer)localObject2).append("dc=");
             ((StringBuffer)localObject2).append(i);
             ((StringBuffer)localObject2).append("&");
-            i = ((ajhh)localObject3).b();
+            i = ((ajvk)localObject3).b();
             ((StringBuffer)localObject2).append("dmc=");
             ((StringBuffer)localObject2).append(i);
             ((StringBuffer)localObject2).append("&");
           }
         }
-        a(paramHandler, paramLong, (100 - ajlz.a().a) * Runtime.getRuntime().maxMemory() / 100L, str, ((StringBuffer)localObject2).toString());
+        a(paramHandler, paramLong, (100 - akai.a().a) * Runtime.getRuntime().maxMemory() / 100L, str, ((StringBuffer)localObject2).toString());
         a.add(localObject1);
       }
     }
     while (1 != BaseApplicationImpl.sProcessId)
     {
       Object localObject3;
-      ajjj localajjj;
+      ajxn localajxn;
       int i;
       return;
     }
@@ -167,19 +167,19 @@ public class InitMagnifierSDK
   
   private static boolean b(LeakInspector.InspectUUID paramInspectUUID)
   {
-    if (!AppSetting.d) {}
+    if (!AppSetting.e) {}
     return false;
   }
   
   protected boolean doStep()
   {
-    Object localObject = "V 8.2.6." + amom.a(BaseApplicationImpl.sApplication) + ".r" + AppSetting.g();
+    Object localObject = "V 8.2.8." + anet.a(BaseApplicationImpl.sApplication) + ".r" + AppSetting.g();
     QLog.i("InitMagnifierSDK", 4, "init MagnifierSDK: process = " + BaseApplicationImpl.sProcessId + " verson = " + (String)localObject);
     if (10 == BaseApplicationImpl.sProcessId) {}
     for (int i = Integer.parseInt(MagnifierSDK.a());; i = 1)
     {
       localObject = MagnifierSDK.a(ThreadManager.getSubThreadHandler(), i, (String)localObject);
-      ((MagnifierSDK)localObject).a(new awok());
+      ((MagnifierSDK)localObject).a(new axoh());
       if (7 == BaseApplicationImpl.sProcessId)
       {
         ((MagnifierSDK)localObject).a(BaseApplicationImpl.getApplication(), 9);

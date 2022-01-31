@@ -1,22 +1,49 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aikg
-  implements AdapterView.OnItemClickListener
+class aikg
+  extends aylm
 {
-  public aikg(CmGameDebugView paramCmGameDebugView) {}
+  aikg(aikd paramaikd, String paramString) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onComplete(String paramString, int paramInt)
   {
-    CmGameDebugView.a(this.a, paramInt);
-    this.a.a(paramInt);
+    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: " + paramString + "," + paramInt);
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("code", 2);
+      paramString.put("errorCode", paramInt);
+      this.jdField_a_of_type_Aikd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
+    }
+  }
+  
+  public void onProgress(String paramString, long paramLong1, long paramLong2)
+  {
+    int i = (int)(100.0F * (float)paramLong1 / (float)paramLong2);
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("code", 1);
+      paramString.put("progress", i);
+      this.jdField_a_of_type_Aikd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aikg
  * JD-Core Version:    0.7.0.1
  */

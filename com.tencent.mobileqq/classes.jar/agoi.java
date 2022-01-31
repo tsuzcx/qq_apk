@@ -1,25 +1,41 @@
-import Wallet.PopDialog;
-import Wallet.SkinInfo;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class agoi
-  implements DialogInterface.OnClickListener
+public class agoi
+  implements SurfaceHolder.Callback
 {
-  agoi(agog paramagog, agoa paramagoa) {}
+  public agoi(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    paramDialogInterface = this.jdField_a_of_type_Agoa.a.pop_dialog.right_url;
-    if (!TextUtils.isEmpty(paramDialogInterface)) {
-      bfod.a(agod.a(this.jdField_a_of_type_Agog.a), paramDialogInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, "surfaceCreated ");
+    }
+    if ((!this.a.E) && (this.a.s == 1) && (this.a.r > 0))
+    {
+      this.a.a(this.a.r);
+      this.a.r = 0;
+      this.a.s = 0;
+    }
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, "surfaceDestroyed ");
+    }
+    if ((!this.a.E) && (this.a.a != null)) {
+      this.a.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agoi
  * JD-Core Version:    0.7.0.1
  */

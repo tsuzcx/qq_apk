@@ -1,151 +1,152 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.util.FaceDecoder.1;
+import com.tencent.mobileqq.util.FaceInfo;
 
 public class baxk
 {
-  public static long a;
-  public static WebViewPluginEngine a;
-  public static final Object a;
-  public static HashMap<Integer, baxm> a;
-  public static volatile boolean a;
-  public static WebViewPluginEngine b;
-  public static HashMap<Integer, baxm> b;
-  public static volatile boolean b;
-  public static volatile boolean c;
-  public static volatile boolean d;
+  baxm a;
   
-  static
+  public baxk(Context paramContext, AppInterface paramAppInterface)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    b = new HashMap();
-    jdField_a_of_type_JavaLangObject = new Object();
+    this(paramAppInterface);
   }
   
-  public static void a()
+  public baxk(AppInterface paramAppInterface)
   {
-    if (System.currentTimeMillis() - jdField_a_of_type_Long > 3600000L)
+    if ((paramAppInterface instanceof QQAppInterface)) {
+      this.a = new baxo((QQAppInterface)paramAppInterface);
+    }
+    while (this.a == null)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      baxm localbaxm;
-      HashMap localHashMap;
-      while (localIterator.hasNext())
-      {
-        localbaxm = (baxm)localIterator.next();
-        localHashMap = new HashMap(4);
-        localHashMap.put("type", String.valueOf(localbaxm.a));
-        localHashMap.put("totalNum", String.valueOf(localbaxm.b));
-        localHashMap.put("hasProc", String.valueOf(localbaxm.c));
-        localHashMap.put("noProc", String.valueOf(localbaxm.d));
-        awrn.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actPreloadWebview", true, 0L, 0L, localHashMap, null);
-      }
-      localIterator = b.values().iterator();
-      while (localIterator.hasNext())
-      {
-        localbaxm = (baxm)localIterator.next();
-        localHashMap = new HashMap(4);
-        localHashMap.put("type", String.valueOf(localbaxm.a));
-        localHashMap.put("totalNum", String.valueOf(localbaxm.b));
-        localHashMap.put("hasProc", String.valueOf(localbaxm.c));
-        localHashMap.put("noProc", String.valueOf(localbaxm.d));
-        awrn.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actJumpWebview", true, 0L, 0L, localHashMap, null);
-      }
-      jdField_a_of_type_JavaUtilHashMap.clear();
-      b.clear();
-      jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadService", 2, "reportInterval...");
+      throw new NullPointerException("can not Instantiation FaceDecoder");
+      if ((paramAppInterface instanceof NearbyAppInterface)) {
+        this.a = new bazi((NearbyAppInterface)paramAppInterface);
       }
     }
   }
   
-  public static void a(int paramInt)
+  private byte a(int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_accelerator_mode_", 3);
-    localBundle.putInt("from", paramInt);
-    bbcz.a().a(localBundle);
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {
-      return false;
+    byte b = 3;
+    if (paramInt == 115) {
+      b = 4;
     }
-    return paramAppRuntime.getClass().getSimpleName().equals("ReaderRuntime");
+    return b;
   }
   
-  public static void b(int paramInt)
+  protected static void a(QQAppInterface paramQQAppInterface, FaceInfo paramFaceInfo)
   {
-    int j = 0;
-    Object localObject = (amgr)alzw.a().a(158);
-    if ((localObject != null) && (((amgr)localObject).b == 1)) {
+    if ((paramQQAppInterface == null) || (paramFaceInfo == null)) {
       return;
     }
-    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
-    if (!bool)
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("from", 305);
-      ((Intent)localObject).setAction("com.tencent.mobileqq.webprocess.preload_web_process");
-      ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
-      ((Intent)localObject).putExtra("com.tencent.mobileqq.webprocess.start_time", System.currentTimeMillis());
-      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadService", 2, "preloadWebview...");
-      }
-    }
-    localObject = new baxm(paramInt);
-    if (jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      localObject = (baxm)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    }
-    ((baxm)localObject).b += 1;
-    int k = ((baxm)localObject).c;
-    if (bool)
-    {
-      i = 1;
-      label184:
-      ((baxm)localObject).c = (i + k);
-      k = ((baxm)localObject).d;
-      if (!bool) {
-        break label244;
-      }
-    }
-    label244:
-    for (int i = j;; i = 1)
-    {
-      ((baxm)localObject).d = (k + i);
-      jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject);
-      if (((baxm)localObject).b <= 3) {
-        break;
-      }
-      a();
-      return;
-      i = 0;
-      break label184;
-    }
+    ThreadManager.post(new FaceDecoder.1(paramFaceInfo, paramQQAppInterface), 10, null, true);
   }
   
-  public static boolean b(AppRuntime paramAppRuntime)
+  public Bitmap a(int paramInt, String paramString)
   {
-    if (paramAppRuntime == null) {
-      return false;
+    if (paramInt == 32) {
+      return null;
     }
-    return paramAppRuntime.getClass().getSimpleName().equals("VipComicPluginRuntime");
+    byte b = a(paramInt);
+    if ((paramInt == 101) || (paramInt == 1001)) {
+      b = 3;
+    }
+    return this.a.a(paramInt, paramString, 0, b);
+  }
+  
+  public Bitmap a(int paramInt1, String paramString, int paramInt2)
+  {
+    return a(paramInt1, paramString, paramInt2, (byte)3);
+  }
+  
+  public Bitmap a(int paramInt1, String paramString, int paramInt2, byte paramByte)
+  {
+    return this.a.a(paramInt1, paramString, paramInt2, paramByte);
+  }
+  
+  public void a()
+  {
+    this.a.c();
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2, long paramLong)
+  {
+    this.a.a(paramInt1, paramString, paramInt2, paramLong);
+  }
+  
+  public void a(baxl parambaxl)
+  {
+    this.a.a(parambaxl);
+  }
+  
+  public void a(AppInterface paramAppInterface)
+  {
+    this.a.a(paramAppInterface);
+  }
+  
+  public boolean a()
+  {
+    return this.a.a();
+  }
+  
+  public boolean a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    return this.a.a(paramString, 200, false, paramInt, paramBoolean, (byte)0, a(paramInt));
+  }
+  
+  public boolean a(String paramString, int paramInt, boolean paramBoolean, byte paramByte)
+  {
+    return this.a.a(paramString, 200, false, paramInt, paramBoolean, paramByte, a(paramInt));
+  }
+  
+  public boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3)
+  {
+    return this.a.a(paramString, paramInt1, paramBoolean1, paramInt2, paramBoolean2, paramByte, paramInt3);
+  }
+  
+  public boolean a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    return this.a.a(paramString, paramInt, paramBoolean1, 32, paramBoolean2, (byte)1, 3);
+  }
+  
+  public Bitmap b(int paramInt1, String paramString, int paramInt2)
+  {
+    return a(paramInt1, paramString);
+  }
+  
+  public void b()
+  {
+    this.a.b();
+  }
+  
+  public boolean b(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    return this.a.a(paramString, paramInt, paramBoolean1, 32, paramBoolean2, (byte)1, 1);
+  }
+  
+  public void c()
+  {
+    this.a.a();
+  }
+  
+  public boolean c(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    return this.a.a(paramString, paramInt, paramBoolean1, 16, paramBoolean2, (byte)1, 3);
+  }
+  
+  public void d()
+  {
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     baxk
  * JD-Core Version:    0.7.0.1
  */

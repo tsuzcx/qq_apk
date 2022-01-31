@@ -1,104 +1,78 @@
-import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Array;
 
 public class mnm
 {
-  wis a;
-  
-  public mnm(wis paramwis)
+  public static boolean a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt)
   {
-    this.a = paramwis;
-  }
-  
-  public void a()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mnn.a, 2);
-    this.a.a(8, localBundle);
-  }
-  
-  public void a(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mnn.a, 5);
-    localBundle.putInt("mode", paramInt);
-    this.a.a(8, localBundle);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {}
-    wiu localwiu;
-    do
+    int n = 0;
+    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null) || (paramArrayOfByte3 == null) || (paramInt == 0))
     {
-      int i;
-      do
+      QLog.e("PCMMixer", 1, "mix, dst == null || inputA == null || inputB == null || size == 0");
+      return false;
+    }
+    if ((paramArrayOfByte2.length < paramInt) || (paramArrayOfByte3.length < paramInt))
+    {
+      QLog.e("PCMMixer", 1, "mix, inputA.length < size || inputB.length < size");
+      return false;
+    }
+    System.currentTimeMillis();
+    int i = paramInt / 2;
+    short[][] arrayOfShort = (short[][])Array.newInstance(Short.TYPE, new int[] { 2, i });
+    i = 0;
+    while (i < paramInt / 2)
+    {
+      arrayOfShort[0][i] = ((short)(paramArrayOfByte2[(i * 2)] & 0xFF | (paramArrayOfByte2[(i * 2 + 1)] & 0xFF) << 8));
+      i += 1;
+    }
+    i = 0;
+    while (i < paramInt / 2)
+    {
+      arrayOfShort[1][i] = ((short)(paramArrayOfByte3[(i * 2)] & 0xFF | (paramArrayOfByte3[(i * 2 + 1)] & 0xFF) << 8));
+      i += 1;
+    }
+    paramArrayOfByte2 = new short[paramInt / 2];
+    int k = 0;
+    i = n;
+    if (k < paramInt / 2)
+    {
+      int j = 0;
+      int m;
+      for (i = 0; j < 2; i = m)
       {
-        return;
-        i = paramBundle.getInt("seq", -1);
-      } while (i == -1);
-      localwiu = this.a.a(i);
-    } while (localwiu == null);
-    localwiu.a(paramBundle);
-  }
-  
-  public void a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mnn.a, 1);
-    localBundle.putString("music", paramString);
-    this.a.a(8, localBundle);
-  }
-  
-  public void a(wiu paramwiu)
-  {
-    if (paramwiu == null) {
-      return;
+        m = i;
+        if (arrayOfShort[j].length > k) {
+          m = i + arrayOfShort[j][k];
+        }
+        j += 1;
+      }
+      if (i > 32767) {
+        j = 32767;
+      }
+      for (;;)
+      {
+        paramArrayOfByte2[k] = ((short)j);
+        k += 1;
+        break;
+        j = i;
+        if (i < -32767) {
+          j = -32767;
+        }
+      }
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mnn.a, 4);
-    localBundle.putInt("seq", this.a.a(paramwiu));
-    this.a.a(8, localBundle);
-  }
-  
-  public void b()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mnn.a, 3);
-    this.a.a(8, localBundle);
-  }
-  
-  public void b(wiu paramwiu)
-  {
-    if (paramwiu == null) {
-      return;
+    while (i < paramInt / 2)
+    {
+      paramArrayOfByte1[(i * 2)] = ((byte)(paramArrayOfByte2[i] & 0xFF));
+      paramArrayOfByte1[(i * 2 + 1)] = ((byte)((paramArrayOfByte2[i] & 0xFF00) >> 8));
+      i += 1;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mnn.a, 6);
-    localBundle.putInt("seq", this.a.a(paramwiu));
-    this.a.a(8, localBundle);
-  }
-  
-  public void c()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mnn.a, 8);
-    this.a.a(8, localBundle);
-  }
-  
-  public void c(wiu paramwiu)
-  {
-    if (paramwiu == null) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mnn.a, 7);
-    localBundle.putInt("seq", this.a.a(paramwiu));
-    this.a.a(8, localBundle);
+    System.currentTimeMillis();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mnm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,19 @@
-public class azln
+class azln
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b = 0;
-  public String b;
-  public String c;
+  final float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  float b = 0.0F;
+  
+  public azln(azlk paramazlk, float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Int * this.jdField_a_of_type_Float * 0.4F + this.b * 0.6F;
+  }
 }
 
 

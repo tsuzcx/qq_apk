@@ -1,33 +1,78 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadManager.5.1;
-import com.tencent.open.downloadnew.DownloadManager.5.2;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneExternalRequest;
+import wns_proxy.HttpReq;
+import wns_proxy.HttpRsp;
 
 public class bcgu
-  implements ITMAssistantDownloadClientListener
+  extends QzoneExternalRequest
 {
-  bcgu(bcgo parambcgo) {}
+  private JceStruct jdField_a_of_type_ComQqTafJceJceStruct;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public bcgu() {}
+  
+  public bcgu(String paramString1, long paramLong, HttpReq paramHttpReq, String paramString2)
   {
-    ThreadManager.getSubThreadHandler().post(new DownloadManager.5.2(this, paramLong1, paramLong2, paramString));
+    super.setRefer(paramString2);
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    this.jdField_a_of_type_ComQqTafJceJceStruct = paramHttpReq;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.needCompress = false;
+    this.b = a(paramString1);
   }
   
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public static String a(String paramString)
   {
-    ThreadManager.getSubThreadHandler().post(new DownloadManager.5.1(this, paramTMAssistantDownloadClient, paramInt1, paramString1, paramInt2, paramString2));
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.w("WebSoRequest", 1, "cmd is EMPTY OR NULL !!!");
+    }
+    do
+    {
+      return null;
+      paramString = paramString.split("\\.");
+    } while ((paramString == null) || (paramString.length <= 0));
+    return paramString[(paramString.length - 1)];
   }
   
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
+  public static HttpRsp a(byte[] paramArrayOfByte, String paramString)
   {
-    bcds.e("DownloadManager_", "OnDwonloadSDKServiceInvalid");
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    try
+    {
+      paramArrayOfByte = (HttpRsp)decode(paramArrayOfByte, paramString);
+      return paramArrayOfByte;
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      QLog.e("WebSoRequest", 1, "onResponse error:", paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  public String getCmdString()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.jdField_a_of_type_ComQqTafJceJceStruct;
+  }
+  
+  public String uniKey()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcgu
  * JD-Core Version:    0.7.0.1
  */

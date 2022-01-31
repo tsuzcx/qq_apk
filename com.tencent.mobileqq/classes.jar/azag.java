@@ -1,76 +1,35 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ListView;
 
-public class azag
-  extends JobSegment<azaf, azaf>
+class azag
+  implements Animator.AnimatorListener
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  azag(azae paramazae) {}
   
-  public azag(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    azae.a(this.a).setPadding(bawz.a(azae.a(this.a).getContext(), 8.0F), -azae.a(this.a), 0, 0);
+    azae.a(this.a, false);
   }
   
-  protected void a(JobContext paramJobContext, azaf paramazaf)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment start. info status=", Integer.valueOf(paramazaf.g) });
-    }
-    azaf.b();
-    try
-    {
-      String str = TroopHWJsPlugin.a(-1, paramazaf.a, this.jdField_a_of_type_Int, null);
-      if (apdh.b(str)) {}
-      for (paramazaf.c = str;; paramazaf.c = paramazaf.a)
-      {
-        QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment. in path=", paramazaf.a, ", out path=", paramazaf.c });
-        if (isCanceled()) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment notifyResult. info status=", Integer.valueOf(paramazaf.g) });
-        }
-        notifyResult(paramazaf);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.e("CompressImageSegment", 2, "CompressImageSegment failed.");
-        }
-      }
-      return;
-    }
-    catch (Exception paramJobContext)
-    {
-      QLog.e("CompressImageSegment", 1, "CompressImageSegment Exception: ", paramJobContext);
-      notifyError(new Error("101"));
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e("CompressImageSegment", 1, "CompressImageSegment error. OutOfMemoryError");
-      URLDrawable.clearMemoryCache();
-      System.gc();
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        a(paramJobContext, paramazaf);
-        return;
-      }
-      notifyError(new Error("-1"));
-    }
+    azae.a(this.a).setPadding(bawz.a(azae.a(this.a).getContext(), 8.0F), 0, 0, 0);
+    azae.a(this.a, false);
   }
   
-  public void onCancel()
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    notifyError(new Error("c_1000"));
+    azae.a(this.a).setPadding(bawz.a(azae.a(this.a).getContext(), 8.0F), -azae.a(this.a), 0, 0);
+    azae.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azag
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.os.MqqHandler;
 
 public class aatp
-  extends atwf
+  implements bfoq
 {
-  public aatp(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aatp(ChatSettingActivity paramChatSettingActivity, String paramString, bfol parambfol) {}
   
-  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((!TextUtils.equals(paramString, this.a.jdField_a_of_type_Atwx.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) || (this.a.jdField_a_of_type_Atwx.jdField_a_of_type_ComTencentMobileqqDataCard == null)) {}
-    while (paramInt != 0) {
-      return;
+    switch (paramInt)
+    {
     }
-    this.a.jdField_a_of_type_Atwx.jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel = paramPersonalityLabel;
-    this.a.jdField_a_of_type_Atwx.jdField_a_of_type_ComTencentMobileqqDataCard.vPersonalityLabelV2 = paramArrayOfByte;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.a.jdField_a_of_type_Atwx, true, new String[] { "map_key_personality_label_board" });
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.e();
+      return;
+      if (bbev.d(BaseApplication.getContext()))
+      {
+        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.getHandler(ChatActivity.class);
+        if (paramView != null)
+        {
+          paramView.removeMessages(16711681);
+          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+        }
+        axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "CliOper", "", "", "AIO", "AIO_delete_frd", 0, 0, "", "", "", "");
+        if (bbbd.b(this.jdField_a_of_type_JavaLangString)) {
+          axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.finish();
+      }
+      else
+      {
+        ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, 2131691488, 1);
+        continue;
+        if (bbbd.b(this.jdField_a_of_type_JavaLangString)) {
+          axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
+        }
+      }
+    }
   }
 }
 

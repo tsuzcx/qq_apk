@@ -1,18 +1,12 @@
-import android.view.View;
-
-final class apcu
-  implements begw
+public class apcu
 {
-  apcu(begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.a.cancel();
-  }
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apcu
  * JD-Core Version:    0.7.0.1
  */

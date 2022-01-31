@@ -1,23 +1,45 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import NS_MOBILE_CLIENT_REPORT.CLIENT_NBP_REPORT_REQ;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+import java.util.Map;
 
-class bhkx
-  implements TextWatcher
+public class bhkx
+  extends bgxt
 {
-  bhkx(bhku parambhku) {}
+  public JceStruct a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public bhkx(String paramString, ArrayList<String> paramArrayList, Map<String, String> paramMap)
   {
-    bhku.a(this.a);
+    CLIENT_NBP_REPORT_REQ localCLIENT_NBP_REPORT_REQ = new CLIENT_NBP_REPORT_REQ();
+    localCLIENT_NBP_REPORT_REQ.strABTestId = paramString;
+    localCLIENT_NBP_REPORT_REQ.report_info = paramArrayList;
+    localCLIENT_NBP_REPORT_REQ.extra_info = paramMap;
+    this.a = localCLIENT_NBP_REPORT_REQ;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public int a()
+  {
+    return 0;
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public String getCmdString()
+  {
+    return "QzoneNewService.nbpClientReport";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "nbpClientReport";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhkx
  * JD-Core Version:    0.7.0.1
  */

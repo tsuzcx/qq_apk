@@ -1,24 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-final class aoff
-  extends Handler
+class aoff
+  implements bibb
 {
-  aoff(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aoff(aofe paramaofe) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    Object[] arrayOfObject = (Object[])paramMessage.obj;
-    ((aofk)arrayOfObject[0]).a(paramMessage.what, ((Boolean)arrayOfObject[1]).booleanValue(), arrayOfObject[2]);
+    if (this.a.a != null) {
+      this.a.a.e(this.a.getPosition());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoff
  * JD-Core Version:    0.7.0.1
  */

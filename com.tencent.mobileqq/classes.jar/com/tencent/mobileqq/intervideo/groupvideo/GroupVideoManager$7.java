@@ -2,10 +2,10 @@ package com.tencent.mobileqq.intervideo.groupvideo;
 
 import android.os.Handler;
 import android.os.Looper;
-import aqkz;
-import aqlf;
-import aqli;
-import aqma;
+import arfe;
+import arfk;
+import arfn;
+import argf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hydevteam.pluginframework.pluginmanager.UpgradeablePluginManager;
 import java.util.List;
@@ -13,14 +13,14 @@ import java.util.List;
 public final class GroupVideoManager$7
   implements Runnable
 {
-  public GroupVideoManager$7(String paramString, aqlf paramaqlf) {}
+  public GroupVideoManager$7(String paramString, arfk paramarfk) {}
   
   public void run()
   {
     try
     {
       if ("huiyin2".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {}
-      for (List localList = new UpgradeablePluginManager(aqma.a(BaseApplicationImpl.getContext()), "huiyin2", aqli.a()).getCachedLatestPlugin(this.jdField_a_of_type_JavaLangString);; localList = aqkz.a().getCachedLatestPlugin(this.jdField_a_of_type_JavaLangString))
+      for (List localList = new UpgradeablePluginManager(argf.a(BaseApplicationImpl.getContext()), "huiyin2", arfn.a()).getCachedLatestPlugin(this.jdField_a_of_type_JavaLangString);; localList = arfe.a().getCachedLatestPlugin(this.jdField_a_of_type_JavaLangString))
       {
         new Handler(Looper.getMainLooper()).post(new GroupVideoManager.7.1(this, localList));
         return;

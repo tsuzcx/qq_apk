@@ -1,41 +1,96 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class mxm
-  implements ViewPager.OnPageChangeListener
+public abstract class mxm
+  implements BusinessObserver
 {
-  public mxm(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public boolean a;
+  public int b;
+  public WeakReference<QQAppInterface> b;
   
-  public void onPageScrollStateChanged(int paramInt)
+  public mxm()
   {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
-      return;
-    }
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(null);
+    this.a = true;
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public mxm(boolean paramBoolean)
   {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt2 != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
-      return;
-    }
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(null);
+    this.a = paramBoolean;
   }
   
-  public void onPageSelected(int paramInt)
+  private void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    PublicAccountAdvertisementActivity.a(this.a, paramInt);
+    if (!paramBoolean) {
+      a(-1, null, paramBundle);
+    }
+    label172:
+    do
+    {
+      for (;;)
+      {
+        return;
+        Object localObject = paramBundle.getByteArray("data");
+        if (this.jdField_b_of_type_Int != 1) {
+          break label172;
+        }
+        oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+        try
+        {
+          localObject = (oidb_sso.OIDBSSOPkg)localOIDBSSOPkg.mergeFrom((byte[])localObject);
+          if ((((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get() == 0) || (!((oidb_sso.OIDBSSOPkg)localObject).str_error_msg.has()) || (!a(-1, ((oidb_sso.OIDBSSOPkg)localObject).str_error_msg.get(), paramBundle))) {
+            if ((localObject == null) || (!((oidb_sso.OIDBSSOPkg)localObject).uint32_result.has()) || (!((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.has()) || (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get() == null))
+            {
+              a(-1, null, paramBundle);
+              return;
+            }
+          }
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          a(-1, null, paramBundle);
+          return;
+        }
+      }
+      a(localInvalidProtocolBufferMicroException.uint32_result.get(), localInvalidProtocolBufferMicroException.bytes_bodybuffer.get().toByteArray(), paramBundle);
+      return;
+    } while (this.jdField_b_of_type_Int != 2);
+    a(0, localInvalidProtocolBufferMicroException, paramBundle);
+  }
+  
+  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
+  
+  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    return false;
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (this.a)
+    {
+      a(paramInt, paramBoolean, paramBundle);
+      return;
+    }
+    ThreadManager.post(new ProtoUtils.TroopProtocolObserver.1(this, paramInt, paramBoolean, paramBundle), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     mxm
  * JD-Core Version:    0.7.0.1
  */

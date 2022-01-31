@@ -13,7 +13,7 @@ class VComponent$MyGestureListener
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
     if (!this.this$0.mAppendEvents.contains("doubleClick")) {
-      VComponent.access$500(this.this$0, "click", paramMotionEvent);
+      VComponent.access$600(this.this$0, "click", paramMotionEvent);
     }
     return false;
   }
@@ -28,21 +28,21 @@ class VComponent$MyGestureListener
       return false;
       if (this.this$0.mAppendEvents.contains("doubleClick"))
       {
-        VComponent.access$402(this.this$0, SystemClock.uptimeMillis());
-        VComponent.access$500(this.this$0, "doubleClick", paramMotionEvent);
+        VComponent.access$502(this.this$0, SystemClock.uptimeMillis());
+        VComponent.access$600(this.this$0, "doubleClick", paramMotionEvent);
       }
     }
   }
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    VComponent.access$500(this.this$0, "longPress", paramMotionEvent);
+    VComponent.access$600(this.this$0, "longPress", paramMotionEvent);
   }
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    if ((this.this$0.mAppendEvents.contains("doubleClick")) && (SystemClock.uptimeMillis() - VComponent.access$400(this.this$0) > 500L)) {
-      VComponent.access$500(this.this$0, "click", paramMotionEvent);
+    if ((this.this$0.mAppendEvents.contains("doubleClick")) && (SystemClock.uptimeMillis() - VComponent.access$500(this.this$0) > 500L)) {
+      VComponent.access$600(this.this$0, "click", paramMotionEvent);
     }
     return false;
   }
@@ -50,7 +50,7 @@ class VComponent$MyGestureListener
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
     if (!this.this$0.mAppendEvents.contains("doubleClick")) {
-      VComponent.access$500(this.this$0, "click", paramMotionEvent);
+      VComponent.access$600(this.this$0, "click", paramMotionEvent);
     }
     return false;
   }

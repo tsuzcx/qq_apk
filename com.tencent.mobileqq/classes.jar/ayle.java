@@ -1,23 +1,37 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class ayle
-  implements ValueAnimator.AnimatorUpdateListener
+public class ayle
+  implements ajtg
 {
-  ayle(ayld paramayld, View paramView) {}
+  protected void a(boolean paramBoolean, List<String> paramList) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    if (paramInt == 1) {
+      try
+      {
+        if ((paramObject instanceof List))
+        {
+          a(paramBoolean, (List)paramObject);
+          return;
+        }
+        if (!paramBoolean)
+        {
+          a(false, null);
+          return;
+        }
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("ParticipleObserver", 1, paramObject, new Object[0]);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayle
  * JD-Core Version:    0.7.0.1
  */

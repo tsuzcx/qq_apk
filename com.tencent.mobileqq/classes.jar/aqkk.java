@@ -1,58 +1,69 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.shadow.dynamic.host.DynamicPluginManager;
-import com.tencent.shadow.dynamic.host.EnterCallback;
+import java.io.File;
 
-public class aqkk
-  implements aqkc
+class aqkk
+  implements ayxp
 {
-  private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
-  private final DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
-  private final String jdField_a_of_type_JavaLangString = "shadow::PluginManagerWrapper";
-  private final String b;
+  aqkk(aqkh paramaqkh) {}
   
-  public aqkk(String paramString, DynamicPluginManager paramDynamicPluginManager)
-  {
-    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
-    this.b = paramString;
-  }
-  
-  public void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
-  {
-    boolean bool = TextUtils.isEmpty(aqkj.a().a());
-    if (bool) {}
-    for (String str = "idle";; str = "busy")
-    {
-      QLog.i("shadow::PluginManagerWrapper", 1, String.format("doPreLoad pps status is %s ", new Object[] { str }));
-      if (bool) {
-        enter(paramContext, paramLong, paramBundle, paramEnterCallback);
-      }
-      return;
-    }
-  }
-  
-  public void enter(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
+  public void a(ayxo paramayxo)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("shadow::PluginManagerWrapper", 2, "enter formId:" + paramLong + " enterCallback:" + paramEnterCallback);
+      QLog.d("IntimateInfoManager", 2, String.format("onPreDownloadStart url=%s", new Object[] { paramayxo.a.a }));
     }
-    aqkj.a().a(this.b, this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
-    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
-    if ("Now".equals(this.b)) {}
-    for (paramContext = "33669800";; paramContext = "33669805")
+  }
+  
+  public void onResp(aysx paramaysx)
+  {
+    Object localObject = ((ayrv)paramaysx.jdField_a_of_type_Aysw).a;
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimateInfoManager", 2, String.format("onResp url=%s result=%s", new Object[] { localObject, Integer.valueOf(paramaysx.jdField_a_of_type_Int) }));
+    }
+    switch (paramaysx.jdField_a_of_type_Int)
     {
-      aqmd.b(paramContext);
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(this.b).opType("enter").d1(paramLong + "").report();
+    }
+    do
+    {
+      boolean bool1;
+      boolean bool2;
+      do
+      {
+        return;
+        if (aqkh.a(this.a) != null) {
+          aqkh.a(this.a).a((String)localObject, paramaysx.jdField_a_of_type_Long);
+        }
+        paramaysx = (ayrv)paramaysx.jdField_a_of_type_Aysw;
+        if (!aqkh.a(this.a, paramaysx.c, aqkh.a(this.a))) {
+          break;
+        }
+        localObject = new File(aqkh.a());
+        if (!((File)localObject).exists()) {
+          ((File)localObject).mkdirs();
+        }
+        bool1 = aqkh.b(this.a, paramaysx.c, aqkh.a());
+        bool2 = aqkh.a(this.a);
+      } while (!QLog.isColorLevel());
+      QLog.d("IntimateInfoManager", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
       return;
+      if (QLog.isColorLevel()) {
+        QLog.e("IntimateInfoManager", 2, "onResp ResultOk file check invalid.");
+      }
+      aqkh.a(this.a, paramaysx.c);
+      return;
+    } while (aqkh.a(this.a) == null);
+    aqkh.a(this.a).a((String)localObject, -1L);
+  }
+  
+  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimateInfoManager", 2, String.format("onUpdateProgeress url=%s totalLen=%s curOffset=%s", new Object[] { ((ayrv)paramaysw).a, Long.valueOf(paramLong2), Long.valueOf(paramLong1) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqkk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.gdtad.adapter;
 
-import com.tencent.mobileqq.app.ThreadManager;
-import yji;
+import java.util.HashMap;
+import ysl;
 
 public class GdtThreadManagerAdapter$1
-  implements Runnable
+  extends HashMap<Integer, Integer>
 {
-  public GdtThreadManagerAdapter$1(yji paramyji, Runnable paramRunnable, int paramInt) {}
-  
-  public void run()
+  public GdtThreadManagerAdapter$1(ysl paramysl)
   {
-    ThreadManager.excute(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int, null, true);
+    put(Integer.valueOf(3), Integer.valueOf(16));
+    put(Integer.valueOf(4), Integer.valueOf(128));
+    put(Integer.valueOf(5), Integer.valueOf(64));
   }
 }
 

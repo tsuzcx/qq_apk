@@ -1,20 +1,29 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Rect;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer;
 
 public class rfe
-  implements TypeEvaluator<Rect>
+  extends Handler
 {
-  public rfe(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
-  
-  public int a(int paramInt1, int paramInt2, float paramFloat)
+  public rfe(ReadInJoySearchTipsContainer paramReadInJoySearchTipsContainer, Looper paramLooper)
   {
-    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+    super(paramLooper);
   }
   
-  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  public void handleMessage(Message paramMessage)
   {
-    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
+    super.handleMessage(paramMessage);
+    if (this.a.a != null)
+    {
+      if (paramMessage.obj != null) {
+        this.a.a.a((String)paramMessage.obj);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.a.a(null);
   }
 }
 

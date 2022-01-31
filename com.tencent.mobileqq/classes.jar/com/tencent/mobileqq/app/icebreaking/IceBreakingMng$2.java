@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.app.icebreaking;
 
-import ajzi;
-import ajzj;
+import aknu;
+import aknv;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class IceBreakingMng$2
   implements Runnable
 {
-  public IceBreakingMng$2(ajzj paramajzj, List paramList) {}
+  public IceBreakingMng$2(aknv paramaknv, List paramList) {}
   
   public void run()
   {
-    if ((ajzj.b(this.this$0) != null) && (ajzj.b(this.this$0).get() != null)) {
-      ((ajzi)ajzj.b(this.this$0).get()).a(true, this.a);
+    if ((aknv.b(this.this$0) != null) && (aknv.b(this.this$0).get() != null)) {
+      ((aknu)aknv.b(this.this$0).get()).a(true, this.a);
     }
   }
 }

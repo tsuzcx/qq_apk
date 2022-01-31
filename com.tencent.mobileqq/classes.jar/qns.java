@@ -1,12 +1,38 @@
-public abstract interface qns
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.qphone.base.util.QLog;
+
+class qns
+  extends BroadcastReceiver
 {
-  public abstract void a();
+  private qns(qno paramqno) {}
   
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void setIsResume(boolean paramBoolean);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsFloatWindowManager", 2, "onReceive: action=" + paramContext);
+    }
+    if (paramContext.equals("tencent.av.v2q.StartVideoChat")) {
+      this.a.f();
+    }
+    while ((!paramContext.equals("tencent.av.v2q.StopVideoChat")) || (qno.c(this.a) != 1)) {
+      return;
+    }
+    if (qno.a(this.a).e()) {
+      qno.a(this.a).a(qno.a(this.a), false);
+    }
+    for (;;)
+    {
+      qvr.a().a(true, "float window video");
+      return;
+      if (qno.a(this.a).f()) {
+        qno.a(this.a).c();
+      }
+    }
+  }
 }
 
 

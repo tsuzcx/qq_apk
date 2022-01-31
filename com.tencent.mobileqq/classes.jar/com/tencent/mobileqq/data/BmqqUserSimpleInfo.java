@@ -2,12 +2,12 @@ package com.tencent.mobileqq.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import com.tencent.qphone.base.util.QLog;
 
 public class BmqqUserSimpleInfo
-  extends atmo
+  extends aukm
   implements Parcelable, Cloneable
 {
   private static final String TAG = "BmqqUserSimpleInfo";
@@ -19,7 +19,7 @@ public class BmqqUserSimpleInfo
   public String mBmqqNickName;
   public String mBmqqRemarkName;
   public String mBmqqTelphone;
-  @atoc
+  @auma
   public String mBmqqUin;
   public int mFlag;
   

@@ -1,27 +1,14 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
 class WebviewContainer$3
-  implements View.OnClickListener
+  implements Runnable
 {
-  WebviewContainer$3(WebviewContainer paramWebviewContainer, String paramString) {}
+  WebviewContainer$3(WebviewContainer paramWebviewContainer) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    try
-    {
-      paramView = new JSONObject();
-      paramView.put("data", this.val$data);
-      WebviewContainer.access$300(this.this$0).evaluateSubcribeJS("onImageViewClick", paramView.toString(), WebviewContainer.access$300(this.this$0).pageWebviewId);
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      QLog.e("WebViewContainer", 1, "evaluateSubcribeJS error.", paramView);
+    if (WebviewContainer.access$400(this.this$0) != null) {
+      WebviewContainer.access$400(this.this$0).requestFocus();
     }
   }
 }

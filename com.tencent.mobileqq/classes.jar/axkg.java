@@ -1,62 +1,70 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.ClipboardManager;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Build;
+import com.tencent.qphone.base.util.QLog;
 
-class axkg
-  implements begw
+public class axkg
 {
-  axkg(axkd paramaxkd, Context paramContext, String paramString, QQAppInterface paramQQAppInterface, int paramInt1, MessageRecord paramMessageRecord, int paramInt2, begr parambegr) {}
+  public static String[] a = { "Le X620", "Nexus 5X", "ZTE A2017", "PRA-AL00X", "SM-W2015", "Redmi Note 3", "R7Plus", "vivo X6Plus A" };
   
-  public void OnClick(View paramView, int paramInt)
+  public static boolean a()
   {
-    switch (paramInt)
-    {
-    }
+    boolean bool2 = false;
+    String str = Build.MODEL;
+    String[] arrayOfString = a;
+    int j = arrayOfString.length;
+    int i = 0;
     for (;;)
     {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A926", "0X800A926", this.jdField_a_of_type_Int, 0, "", "", "", "");
-      axkd.a("2", "1");
-      continue;
-      adra.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, (ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_JavaLangString);
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A927", "0X800A927", this.jdField_a_of_type_Int, 0, "", "", "", "");
-      continue;
-      if (this.b == 2)
+      boolean bool1 = bool2;
+      if (i < j)
       {
-        paramView = Intent.createChooser(new Intent("android.intent.action.SENDTO", Uri.parse("mailto:" + this.jdField_a_of_type_JavaLangString)), this.jdField_a_of_type_AndroidContentContext.getString(2131628424));
-        paramView.putExtra("big_brother_source_key", axkd.a(this.jdField_a_of_type_Axkd));
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92D", "0X800A92D", 0, 0, "", "", "", "");
+        if (arrayOfString[i].contains(str)) {
+          bool1 = true;
+        }
       }
       else
       {
-        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-        paramView.putExtra("big_brother_source_key", axkd.a(this.jdField_a_of_type_Axkd));
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92A", "0X800A92A", this.jdField_a_of_type_Int, 0, "", "", "", "");
-        axkd.a("1", "2");
-        continue;
-        axkd.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92B", "0X800A92B", this.jdField_a_of_type_Int, 0, "", "", "", "");
-        axkd.b("0X800A00A", "0X800A00A");
-        continue;
-        azyk.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_JavaLangString);
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92C", "0X800A92C", this.jdField_a_of_type_Int, 0, "", "", "", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("FaceDanceEntryUtil", 2, "isPhoneInBlackList ： phone = " + str + ", result=" + bool1);
+        }
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public static boolean b()
+  {
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (axkr.g())
+    {
+      bool1 = bool3;
+      if (!a())
+      {
+        if (!lpz.a(8, 1400000L))
+        {
+          bool1 = bool2;
+          if (!lpz.a(4, 2150000L)) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+        QLog.d("FaceDanceEntryUtil", 2, "FaceDanceEntryUtil check condition 2 +cpuNumber is" + bool1);
       }
     }
+    return bool1;
+  }
+  
+  public static boolean c()
+  {
+    return (b()) && (axgp.a().e());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axkg
  * JD-Core Version:    0.7.0.1
  */

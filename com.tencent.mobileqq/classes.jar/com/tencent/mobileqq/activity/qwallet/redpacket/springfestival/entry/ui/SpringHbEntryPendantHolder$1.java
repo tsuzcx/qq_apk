@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import agtt;
-import agtw;
-import aguo;
+import ahgi;
+import ahgl;
+import ahhd;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -11,22 +11,22 @@ import com.tencent.qphone.base.util.QLog;
 public class SpringHbEntryPendantHolder$1
   implements Runnable
 {
-  public SpringHbEntryPendantHolder$1(aguo paramaguo, agtt paramagtt) {}
+  public SpringHbEntryPendantHolder$1(ahhd paramahhd, ahgi paramahgi) {}
   
   public void run()
   {
-    Bitmap localBitmap = agtw.a("spring_hb/qvip_pay_entry_drum_default.png", true);
+    Bitmap localBitmap = ahgl.a("spring_hb/qvip_pay_entry_drum_default.png", true);
     if (localBitmap != null) {
       ThreadManagerV2.getUIHandlerV2().post(new SpringHbEntryPendantHolder.1.1(this, localBitmap));
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("springHb_SpringHbEntryPendantHolder", 2, "doLoadDefaultImage...bitmap:" + localBitmap + "isShowingNativeDefaultImage:" + aguo.a(this.this$0));
+        QLog.d("springHb_SpringHbEntryPendantHolder", 2, "doLoadDefaultImage...bitmap:" + localBitmap + "isShowingNativeDefaultImage:" + ahhd.a(this.this$0));
       }
       return;
-      aguo.a(false);
-      aguo.a(this.this$0, false);
+      ahhd.a(false);
+      ahhd.a(this.this$0, false);
     }
   }
 }

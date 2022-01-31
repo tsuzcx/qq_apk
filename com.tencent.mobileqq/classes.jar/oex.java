@@ -1,24 +1,12 @@
-import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v4.util.LruCache;
-import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.4;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import java.io.File;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-public class oex
-  implements OnCompositionLoadedListener
+class oex
 {
-  public oex(ReadInJoyLottieDrawable.4 param4) {}
-  
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
-  {
-    if (paramLottieComposition != null)
-    {
-      oet.a().put(this.a.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramLottieComposition);
-      oet.a(this.a.this$0).post(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  BubbleImageView jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView;
 }
 
 

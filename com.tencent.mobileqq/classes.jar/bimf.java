@@ -1,8 +1,6 @@
-public abstract interface bimf
+public abstract class bimf
 {
-  public abstract void a();
-  
-  public abstract void a(birb parambirb);
+  abstract bimg a();
 }
 
 

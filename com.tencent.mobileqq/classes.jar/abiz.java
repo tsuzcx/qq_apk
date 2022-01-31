@@ -1,16 +1,19 @@
-import android.app.Dialog;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class abiz
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public abiz(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public abiz(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.dismiss();
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    return false;
   }
 }
 

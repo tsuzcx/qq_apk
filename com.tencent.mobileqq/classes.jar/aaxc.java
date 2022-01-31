@@ -1,113 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaxc
-  implements TextWatcher
+  extends akgk
 {
-  private int jdField_a_of_type_Int;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  public boolean a;
-  private int b;
-  public boolean b;
-  private int c;
+  public aaxc(Conversation paramConversation) {}
   
-  public aaxc(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, int paramInt, EditText paramEditText)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    localObject1 = paramEditable;
-    if (paramEditable.getBytes().length > this.jdField_a_of_type_Int) {
-      localEditable = paramEditable;
-    }
-    try
-    {
-      String str1 = paramEditable.substring(0, this.jdField_b_of_type_Int);
-      localEditable = paramEditable;
-      String str2 = paramEditable.substring(this.jdField_b_of_type_Int + this.c, paramEditable.length());
-      localEditable = paramEditable;
-      Object localObject2 = paramEditable.substring(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int + this.c);
-      localObject1 = paramEditable;
-      localEditable = paramEditable;
-      if (str1.getBytes().length + str2.getBytes().length <= this.jdField_a_of_type_Int)
-      {
-        localObject1 = localObject2;
-        for (;;)
-        {
-          localEditable = paramEditable;
-          if (paramEditable.getBytes().length <= this.jdField_a_of_type_Int) {
-            break;
-          }
-          localEditable = paramEditable;
-          if (((String)localObject1).length() <= 0) {
-            break;
-          }
-          localEditable = paramEditable;
-          localObject1 = ((String)localObject1).substring(0, ((String)localObject1).length() - 1);
-          localEditable = paramEditable;
-          paramEditable = str1 + (String)localObject1 + str2;
-        }
-        localEditable = paramEditable;
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramEditable);
-        localEditable = paramEditable;
-        localObject2 = this.jdField_a_of_type_AndroidWidgetEditText;
-        localEditable = paramEditable;
-        int i = str1.length();
-        localEditable = paramEditable;
-        ((EditText)localObject2).setSelection(((String)localObject1).length() + i);
-        localObject1 = paramEditable;
-      }
-    }
-    catch (Exception paramEditable)
-    {
-      for (;;)
-      {
-        label292:
-        localObject1 = localEditable;
-      }
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_AndroidWidgetEditText != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.jdField_a_of_type_AndroidWidgetEditText) {
-        break label292;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a(FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.jdField_a_of_type_AndroidWidgetEditText, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131629735), (String)localObject1);
-    }
+    if (!this.a.f) {}
     do
     {
       return;
-      this.jdField_b_of_type_Boolean = true;
-      break;
-      if (this.jdField_a_of_type_AndroidWidgetEditText == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.b)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a(FriendProfileMoreInfoActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131629685), (String)localObject1);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, "VideoRedbag, onCheckRealNameRsp in conv");
       }
-      if (this.jdField_a_of_type_AndroidWidgetEditText == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.c)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a(FriendProfileMoreInfoActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131629762), (String)localObject1);
-        return;
-      }
-    } while (this.jdField_a_of_type_AndroidWidgetEditText != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.d);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a(FriendProfileMoreInfoActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.d, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131629718), (String)localObject1);
+    } while ((!paramBoolean) || (paramInt != axjq.a));
+    bbcv.a(this.a.a(), 0, null, this.a.a(2131719580), 2131719582, 2131719581, new aaxd(this), new aaxe(this)).show();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt3;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -2,18 +2,18 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bgmq;
+import bhvh;
 
 public class KandianOx210MsgInfo$Biu0x210Msg$2
   implements Runnable
 {
   public void run()
   {
-    SharedPreferences.Editor localEditor = bgmq.a(this.a, true, false).edit();
+    SharedPreferences.Editor localEditor = bhvh.a(this.a, true, false).edit();
     localEditor.remove("kandian_biu_0x210_seq");
     localEditor.remove("kandian_biu_0x210_uin");
     localEditor.remove("kandian_biu_0x210_status");
-    bgmq.a(localEditor, true);
+    bhvh.a(localEditor, true);
   }
 }
 

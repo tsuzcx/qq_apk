@@ -1,11 +1,11 @@
 package cooperation.qzone;
 
-import bfqh;
+import bgyo;
 
 public class QZoneLiveVideoDownLoadActivtyV2$2$2
   implements Runnable
 {
-  public QZoneLiveVideoDownLoadActivtyV2$2$2(bfqh parambfqh) {}
+  public QZoneLiveVideoDownLoadActivtyV2$2$2(bgyo parambgyo) {}
   
   public void run()
   {

@@ -1,27 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
+import com.qq.jce.wup.UniAttribute;
+import com.qq.taf.jce.JceInputStream;
 
 public class slm
+  extends UniAttribute
 {
-  public static Intent a(Context paramContext, int paramInt, String paramString)
-  {
-    return QQStoryMemoriesActivity.a(paramContext, paramInt, paramString);
-  }
-  
-  public static void a(Context paramContext, int paramInt, long paramLong)
-  {
-    QQStoryMemoriesActivity.a(paramContext, paramInt, paramLong);
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString)
-  {
-    paramContext.startActivity(a(paramContext, paramInt, paramString));
-  }
+  JceInputStream a = new JceInputStream();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     slm
  * JD-Core Version:    0.7.0.1
  */

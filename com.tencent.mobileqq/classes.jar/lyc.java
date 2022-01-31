@@ -1,18 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
 
 public class lyc
-  extends Animation
+  implements DialogInterface.OnClickListener
 {
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public lyc(AVSchema paramAVSchema, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramFloat < 0.5F) {}
-    for (float f = (0.5F - paramFloat) / 0.5F;; f = (paramFloat - 0.5F) / 0.5F)
-    {
-      paramTransformation.setAlpha(f);
-      super.applyTransformation(paramFloat, paramTransformation);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentAvShareAVSchema.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

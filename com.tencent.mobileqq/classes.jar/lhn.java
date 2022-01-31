@@ -1,14 +1,34 @@
-public abstract interface lhn
+import java.util.ArrayList;
+
+public class lhn
 {
-  public abstract void a();
+  int jdField_a_of_type_Int = 0;
+  public String a;
+  final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
+  final lhq jdField_a_of_type_Lhq;
+  boolean jdField_a_of_type_Boolean = false;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  lhn(lhq paramlhq, ArrayList<String> paramArrayList, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Lhq = paramlhq;
+    this.jdField_a_of_type_Int = 0;
+    if (paramArrayList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
-  public abstract void a(byte[] paramArrayOfByte);
+  boolean a()
+  {
+    return this.jdField_a_of_type_Int >= 3;
+  }
   
-  public abstract void b();
-  
-  public abstract void c();
+  public String toString()
+  {
+    return "ItemRecord{" + this.jdField_a_of_type_Lhq + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + this.jdField_b_of_type_JavaLangString + "}";
+  }
 }
 
 

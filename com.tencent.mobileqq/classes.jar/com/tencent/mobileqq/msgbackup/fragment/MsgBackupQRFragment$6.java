@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import arop;
-import arpa;
+import askt;
+import asle;
 import mqq.os.MqqHandler;
 
 class MsgBackupQRFragment$6
@@ -11,11 +11,11 @@ class MsgBackupQRFragment$6
   
   public void run()
   {
-    arpa localarpa = arpa.a();
-    String str = localarpa.a().a();
+    asle localasle = asle.a();
+    String str = localasle.a().a();
     if (str != null)
     {
-      localarpa.a(str);
+      localasle.a(str);
       this.this$0.b.postDelayed(this, 500L);
     }
   }

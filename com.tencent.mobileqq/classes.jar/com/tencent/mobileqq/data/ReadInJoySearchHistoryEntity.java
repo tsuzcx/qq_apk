@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
+import aukm;
 
 public class ReadInJoySearchHistoryEntity
-  extends atmo
+  extends aukm
 {
   public int id;
   public String keyWord;

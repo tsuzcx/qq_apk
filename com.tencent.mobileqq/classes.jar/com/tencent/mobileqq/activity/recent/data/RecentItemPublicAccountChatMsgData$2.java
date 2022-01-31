@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import aens;
-import aent;
+import aeyo;
+import aeyp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 
 class RecentItemPublicAccountChatMsgData$2
   implements Runnable
 {
-  RecentItemPublicAccountChatMsgData$2(RecentItemPublicAccountChatMsgData paramRecentItemPublicAccountChatMsgData, QQAppInterface paramQQAppInterface, aent paramaent) {}
+  RecentItemPublicAccountChatMsgData$2(RecentItemPublicAccountChatMsgData paramRecentItemPublicAccountChatMsgData, QQAppInterface paramQQAppInterface, aeyp paramaeyp) {}
   
   public void run()
   {
-    aens.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.mUser.uin, this.jdField_a_of_type_Aent, null);
+    aeyo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.mUser.uin, this.jdField_a_of_type_Aeyp, null);
   }
 }
 

@@ -1,12 +1,17 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.TextView;
 
-public abstract interface arwf
+class arwf
 {
-  public abstract void a(long paramLong, ArrayList<Long> paramArrayList);
+  View a;
+  public TextView a;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  public View c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arwf
  * JD-Core Version:    0.7.0.1
  */

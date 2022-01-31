@@ -1,27 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class acqn
-  implements ValueAnimator.AnimatorUpdateListener
+public class acqn
+  extends akfz
 {
-  acqn(acqm paramacqm) {}
+  public acqn(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
-    if (acqm.a(this.a) != null) {
-      acqm.a(this.a).setAlpha((float)d);
+    if (QLog.isColorLevel()) {
+      QLog.d("VisitorsActivity", 2, "onVipStatusChanged: ");
     }
-    if (acqm.a(this.a) != null) {
-      acqm.a(this.a).setAlpha((float)d * 2.0F);
+    if ((this.a.app != null) && (VipUtils.b(this.a.app)))
+    {
+      this.a.a(true);
+      this.a.b(true);
+      if (VisitorsActivity.b(this.a).compareAndSet(true, false))
+      {
+        if (VisitorsActivity.a(this.a).get())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VisitorsActivity", 2, "onVipStatusChanged: showDialog");
+          }
+          bbcv.a(this.a, 232, null, ajyc.a(2131716816), null, ajyc.a(2131716813), new acqo(this), null).show();
+        }
+        this.a.removeObserver(VisitorsActivity.a(this.a));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acqn
  * JD-Core Version:    0.7.0.1
  */

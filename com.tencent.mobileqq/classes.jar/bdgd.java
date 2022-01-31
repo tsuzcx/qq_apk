@@ -1,71 +1,66 @@
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.qqmini.sdk.manager.EngineVersion;
-import java.io.File;
+import java.util.ArrayList;
 
 public class bdgd
 {
-  public static bdgc a;
-  public static String a = "1.2.0";
+  protected static bdgd a;
+  protected ArrayList<bdiy> a;
   
-  public static boolean a(String paramString)
+  public static bdgd a()
   {
-    if (TextUtils.isEmpty(paramString))
+    try
     {
-      Log.w("Tissue", "tissueEngineDir is empty");
-      return false;
-    }
-    Object localObject1 = new File(paramString);
-    if ((!((File)localObject1).exists()) || (!((File)localObject1).isDirectory()))
-    {
-      Log.w("Tissue", localObject1 + " not exists or not a dir");
-      return false;
-    }
-    localObject1 = EngineVersion.a(((File)localObject1).getName());
-    Object localObject2 = a;
-    bdnw.b("Tissue", "currentVersion:" + localObject1 + ",requiredVersion:" + (String)localObject2);
-    if ((localObject1 != null) && (EngineVersion.a(((EngineVersion)localObject1).b, (String)localObject2) >= 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (!bool)
+      if (jdField_a_of_type_Bdgd == null)
       {
-        bdnw.b("Tissue", "versionCheck:" + bool);
-        return false;
+        jdField_a_of_type_Bdgd = new bdgd();
+        jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
       }
-      localObject1 = new String[3];
-      localObject1[0] = "libtv8rt.so";
-      localObject1[1] = "libflutter.so";
-      localObject1[2] = "libapp.so";
-      int j = localObject1.length;
-      int i = 0;
-      while (i < j)
+      bdgd localbdgd = jdField_a_of_type_Bdgd;
+      return localbdgd;
+    }
+    finally {}
+  }
+  
+  public ArrayList<bdiy> a()
+  {
+    return jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(bdiy parambdiy)
+  {
+    int j = jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
+    {
+      if ((bdiy)jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList.get(i) == parambdiy) {
+        return;
+      }
+      i += 1;
+    }
+    jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList.add(parambdiy);
+  }
+  
+  public void b(bdiy parambdiy)
+  {
+    int j = jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
       {
-        localObject2 = new File(paramString, localObject1[i]);
-        if (!((File)localObject2).exists())
-        {
-          Log.w("Tissue", ((File)localObject2).getAbsolutePath() + " not exists");
-          return false;
+        if ((bdiy)jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList.get(i) == parambdiy) {
+          jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList.remove(i);
         }
-        if (!((File)localObject2).isFile())
-        {
-          Log.w("Tissue", ((File)localObject2).getAbsolutePath() + " not a file");
-          return false;
-        }
-        if (!((File)localObject2).canRead())
-        {
-          Log.w("Tissue", ((File)localObject2).getAbsolutePath() + " not readable");
-          return false;
-        }
-        i += 1;
       }
-      Log.i("Tissue", paramString + " is fine");
-      return true;
+      else {
+        return;
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdgd
  * JD-Core Version:    0.7.0.1
  */

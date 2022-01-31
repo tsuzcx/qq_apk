@@ -3,6 +3,7 @@ package com.tencent.pts.ui;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
@@ -14,6 +15,7 @@ public class PTSNodeInfo
   private PTSNodeAttribute attributes;
   private List<PTSNodeInfo> children;
   private String content;
+  private HashMap<String, String> eventInfo;
   private boolean isRootNode;
   private String nodeType;
   private String parentID;
@@ -84,6 +86,11 @@ public class PTSNodeInfo
   public String getContent()
   {
     return this.content;
+  }
+  
+  public HashMap<String, String> getEventInfo()
+  {
+    return this.eventInfo;
   }
   
   public String getNodeType()
@@ -159,6 +166,13 @@ public class PTSNodeInfo
     {
       localEntry = (Map.Entry)((Iterator)localObject).next();
       localStringBuilder.append("attribute [").append((String)localEntry.getKey()).append("] = ").append(localEntry.getValue()).append("\n");
+    }
+    localStringBuilder.append("\n").append("EventInfo: ").append("\n");
+    localObject = this.eventInfo.entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      localEntry = (Map.Entry)((Iterator)localObject).next();
+      localStringBuilder.append("eventInfo [").append((String)localEntry.getKey()).append("] = ").append((String)localEntry.getValue()).append("\n");
     }
     if (hasChildren())
     {

@@ -1,29 +1,10 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.ark.ArkHorizontalListView;
 
-class admk
-  extends GestureDetector.SimpleOnGestureListener
+public class admk
+  extends aecg
 {
-  admk(admj paramadmj) {}
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    if (this.a.jdField_a_of_type_Admh.a()) {
-      return false;
-    }
-    aciy.n = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_Admh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_Admh.jdField_a_of_type_AndroidContentContext);
-    return true;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    if (this.a.jdField_a_of_type_Acmv != null) {
-      this.a.jdField_a_of_type_Acmv.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
-    }
-  }
+  public ArkHorizontalListView a;
+  public String b;
 }
 
 

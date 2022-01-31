@@ -1,13 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 
 public class uah
-  implements DialogInterface.OnClickListener
+  extends ubc
+  implements View.OnClickListener
 {
-  public uah(StoryPickerFragment paramStoryPickerFragment) {}
+  public uah(@NonNull ViewGroup paramViewGroup)
+  {
+    super(paramViewGroup);
+    this.a.findViewById(2131367874).setOnClickListener(this);
+    this.a.findViewById(2131377192).setOnClickListener(this);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected View a(ViewGroup paramViewGroup)
+  {
+    return paramViewGroup;
+  }
+  
+  public void a(int paramInt1, int paramInt2, @NonNull uav paramuav, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  {
+    super.a(paramInt1, paramInt2, paramuav, paramStoryPlayerGroupHolder);
+    if (bkur.a)
+    {
+      paramStoryPlayerGroupHolder = (RelativeLayout.LayoutParams)this.a.findViewById(2131367874).getLayoutParams();
+      paramStoryPlayerGroupHolder.topMargin = (vzo.a(this.a.getContext(), 5.0F) + 114);
+      this.a.findViewById(2131367874).setLayoutParams(paramStoryPlayerGroupHolder);
+    }
+    a().a(this, paramInt1, paramInt2, paramuav);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    a().a(this, paramBoolean);
+  }
+  
+  protected void b()
+  {
+    super.b();
+    a().a(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    a().a(this, paramView);
+  }
 }
 
 

@@ -1,26 +1,16 @@
 package com.tencent.qqmini.sdk.minigame;
 
-import android.app.Activity;
-import bdnw;
-import bdoz;
+import android.os.Process;
+import beuh;
 
 public class GameRuntime$4
   implements Runnable
 {
-  public GameRuntime$4(bdoz parambdoz) {}
+  public GameRuntime$4(beuh parambeuh) {}
   
   public void run()
   {
-    try
-    {
-      bdnw.b("GameRuntime", "exit mini game. moveTaskToBack");
-      bdoz.a(this.this$0).moveTaskToBack(true);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      bdnw.d("GameRuntime", "exit mini game. failed:", localThrowable);
-    }
+    Process.killProcess(Process.myPid());
   }
 }
 

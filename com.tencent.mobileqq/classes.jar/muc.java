@@ -1,23 +1,10 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class muc
-  implements View.OnClickListener
+public abstract interface muc
 {
-  muc(mua parammua, String paramString) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    mua.a(this.jdField_a_of_type_Mua).startActivity(paramView);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     muc
  * JD-Core Version:    0.7.0.1
  */

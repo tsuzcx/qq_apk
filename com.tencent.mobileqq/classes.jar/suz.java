@@ -1,22 +1,20 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.base.preload.PreloadQueue;
 
-public class suz
-  extends QQUIEventReceiver<suo, suy>
+public final class suz
 {
-  public suz(@NonNull suo paramsuo)
+  protected int a = 0;
+  
+  public PreloadQueue a()
   {
-    super(paramsuo);
+    PreloadQueue localPreloadQueue = new PreloadQueue();
+    PreloadQueue.access$002(localPreloadQueue, this.a);
+    return localPreloadQueue;
   }
   
-  public void a(@NonNull suo paramsuo, @NonNull suy paramsuy)
+  public suz a(int paramInt)
   {
-    suo.a(paramsuo, paramsuy.jdField_a_of_type_Tjs, paramsuy.jdField_a_of_type_JavaLangString);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return suy.class;
+    this.a = paramInt;
+    return this;
   }
 }
 

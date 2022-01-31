@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import bbms;
+import bcpq;
 
 class BindGroupConfirmActivity$5
   implements Runnable

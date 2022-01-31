@@ -1,288 +1,70 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.PromoteWidgetController.1;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.PromoteWidgetController.3;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
-import com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebFragment;
-import com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebToolFragment;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.mobileqq.webview.sonic.SonicPreloadData;
-import com.tencent.mobileqq.webview.sonic.SonicPreloader;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetTagList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class tng
-  extends tnm
+  extends syv<tot>
 {
-  public int a;
-  public long a;
-  public StoryPlayerGroupHolder a;
-  public String a;
-  public tnp a;
-  public boolean a;
-  public String b;
-  public String c;
+  private static final String jdField_a_of_type_JavaLangString = sxp.a("StorySvc.get_label_list");
+  private final boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private final String jdField_b_of_type_JavaLangString;
+  private int c;
+  private final int d;
   
-  public tng()
+  public tng(int paramInt1, long paramLong, String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_Long = -1L;
+    this.c = paramInt1;
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramInt2;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public tng(String paramString, int paramInt)
   {
-    if (paramInt1 == StoryPlayerActivity.jdField_a_of_type_Int) {
-      b();
-    }
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramInt;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
-  
-  public void a(ArrayList<String> paramArrayList, String paramString, int paramInt)
+  public String a()
   {
-    ThreadManager.executeOnSubThread(new PromoteWidgetController.1(this, paramArrayList, paramString, paramInt));
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public void a(@NonNull tjq paramtjq, String paramString)
+  public syq a(byte[] paramArrayOfByte)
   {
-    int i = this.jdField_a_of_type_Tnp.a().a().mReportData.from;
-    urk.a("PromoteWidgetController", "onViewHolderBindData() from: %d, groupId: %s, isFinish: %b, isFastData: %b", Integer.valueOf(i), paramString, Boolean.valueOf(this.jdField_a_of_type_Tnp.a().isFinishing()), Boolean.valueOf(paramtjq.c));
-    if (paramtjq.c)
+    qqstory_service.RspGetTagList localRspGetTagList = new qqstory_service.RspGetTagList();
+    try
     {
-      urk.b("PromoteWidgetController", "onViewHolderBindData() fastData will ignore");
-      return;
+      localRspGetTagList.mergeFrom(paramArrayOfByte);
+      return new tot(localRspGetTagList);
     }
-    this.jdField_a_of_type_Int = 0;
-    switch (i)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-    default: 
-      urk.a("PromoteWidgetController", "onViewHolderBindData() from(%d) mismatch, will not promote!", Integer.valueOf(i));
-      return;
-    }
-    for (this.jdField_a_of_type_Int = 1; TextUtils.equals(this.b, paramString); this.jdField_a_of_type_Int = 2)
-    {
-      urk.b("PromoteWidgetController", "onViewHolderBindData() not first bind");
-      return;
-    }
-    int j = paramtjq.jdField_a_of_type_JavaUtilList.size();
-    i = 0;
-    label153:
-    tjt localtjt;
-    String str;
-    Object localObject;
-    label238:
-    ArrayList localArrayList;
-    if (i < j)
-    {
-      localtjt = (tjt)paramtjq.jdField_a_of_type_JavaUtilList.get(i);
-      urk.a("PromoteWidgetController", "onViewHolderBindData() [%d/%d]: %s", Integer.valueOf(i), Integer.valueOf(j), localtjt);
-      str = localtjt.jdField_a_of_type_Tjs.jdField_a_of_type_JavaLangString;
-      if (!(localtjt.jdField_a_of_type_Tjs instanceof tjh)) {
-        break label383;
-      }
-      localObject = ((tjh)localtjt.jdField_a_of_type_Tjs).a;
-      if (localObject == null) {
-        break label374;
-      }
-      localObject = ((uiw)localObject).b;
-      localArrayList = new ArrayList(new HashSet(localtjt.jdField_a_of_type_JavaUtilMap.values()));
-      urk.a("PromoteWidgetController", "onViewHolderBindData() [%d/%d]: groupId: %s, feedId: %s", Integer.valueOf(i), Integer.valueOf(j), str, localArrayList);
-      if (TextUtils.equals(str, paramString))
+      for (;;)
       {
-        urk.d("PromoteWidgetController", "onViewHolderBindData() Find groupId: %s, feeds: %s, unionId: %s", new Object[] { str, localArrayList, localObject });
-        if ((!localArrayList.isEmpty()) && (!TextUtils.equals(this.b, paramString)))
-        {
-          if ((localArrayList.size() <= 1) || (this.jdField_a_of_type_Int != 2)) {
-            break label390;
-          }
-          urk.d("PromoteWidgetController", "onViewHolderBindData(), feedIds size > 1, unexpected!");
-        }
+        paramArrayOfByte.printStackTrace();
       }
-    }
-    for (;;)
-    {
-      this.b = paramString;
-      i += 1;
-      break label153;
-      break;
-      label374:
-      vkw.a("groupInfo FeedIdListSeqInfo is null!", new Object[0]);
-      label383:
-      localObject = str;
-      break label238;
-      label390:
-      a(localArrayList, (String)localObject, localtjt.jdField_a_of_type_JavaUtilList.size());
     }
   }
   
-  public void a(tnp paramtnp)
+  protected byte[] a()
   {
-    urk.a("PromoteWidgetController", "attachHolder(%s)", paramtnp);
-    this.jdField_a_of_type_Tnp = paramtnp;
-    ((sqe)sqg.a(29)).a(false);
-    this.jdField_a_of_type_Tnp.a(this);
+    qqstory_service.ReqGetTagList localReqGetTagList = new qqstory_service.ReqGetTagList();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localReqGetTagList.music_type.set(this.c);
+      localReqGetTagList.music_id.set(this.jdField_b_of_type_Long);
+    }
+    localReqGetTagList.start_cookie.set(this.jdField_b_of_type_JavaLangString);
+    localReqGetTagList.size.set(this.d);
+    return localReqGetTagList.toByteArray();
   }
-  
-  public boolean a()
-  {
-    urk.b("PromoteWidgetController", "preloadWebProcessAndUrl()");
-    Object localObject1 = ((sqe)sqg.a(29)).b;
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      urk.a("PromoteWidgetController", "preloadWebProcessAndUrl() url is null! %s", localObject1);
-      this.c = "";
-    }
-    for (;;)
-    {
-      return false;
-      Object localObject2 = befm.a((String)localObject1);
-      if (!((Map)localObject2).containsKey("sonic")) {
-        this.c = befm.a((String)localObject1, "sonic", "1");
-      }
-      if (!((Map)localObject2).containsKey("vid")) {
-        this.c = befm.a((String)localObject1, "vid", this.jdField_a_of_type_JavaLangString);
-      }
-      localObject1 = (WebProcessManager)QQStoryContext.a().getManager(13);
-      if (localObject1 != null)
-      {
-        if (((WebProcessManager)localObject1).d()) {
-          ((WebProcessManager)localObject1).a(203, new tnh(this));
-        }
-        while (SonicPreloader.isWifiOrG3OrG4())
-        {
-          localObject2 = new SonicPreloadData(1003, this.c, true, 0L, 0);
-          ArrayList localArrayList = new ArrayList();
-          localArrayList.add(localObject2);
-          boolean bool = ((WebProcessManager)localObject1).a(localArrayList);
-          urk.a("PromoteWidgetController", "preloadSonicSession() load url %s: return %b.", this.c, Boolean.valueOf(bool));
-          return bool;
-          this.jdField_a_of_type_Boolean = true;
-        }
-      }
-    }
-  }
-  
-  protected boolean a(long paramLong)
-  {
-    if (TextUtils.isEmpty(this.c))
-    {
-      urk.b("PromoteWidgetController", "tryStartPromoteWebActivity() url is null, ignore!");
-      return false;
-    }
-    if (!SonicPreloader.isWifiOrG3OrG4())
-    {
-      urk.b("PromoteWidgetController", "tryStartPromoteWebActivity() network not ready, ignore!");
-      return false;
-    }
-    urp.a("weishi_share", "video_cover_exp", 0, 0, new String[] { "", this.jdField_a_of_type_JavaLangString });
-    Intent localIntent = StoryPlayerWebFragment.a(this.jdField_a_of_type_Tnp.a(), this.c);
-    abju.a(this.jdField_a_of_type_Tnp.a(), localIntent, PublicFragmentActivityForTool.class, StoryPlayerWebToolFragment.class, StoryPlayerActivity.jdField_a_of_type_Int);
-    ThreadManager.executeOnSubThread(new PromoteWidgetController.3(this, paramLong));
-    return true;
-  }
-  
-  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, tqg paramtqg, boolean paramBoolean)
-  {
-    boolean bool = false;
-    urk.a("PromoteWidgetController", "handleVideoCompletion(%s, %s, %b)", paramVideoViewVideoHolder, paramtqg, Boolean.valueOf(paramBoolean));
-    paramVideoViewVideoHolder = this.jdField_a_of_type_Tnp.a();
-    int i = 0;
-    int j = -1;
-    while (i < paramVideoViewVideoHolder.size())
-    {
-      if (TextUtils.equals(((tjt)paramVideoViewVideoHolder.get(i)).jdField_a_of_type_Tjs.jdField_a_of_type_JavaLangString, this.b)) {
-        j = i;
-      }
-      i += 1;
-    }
-    paramBoolean = bool;
-    if (j >= 0)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = this.jdField_a_of_type_Tnp.a(j);
-      paramBoolean = bool;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder != null)
-      {
-        paramBoolean = bool;
-        if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.a.a().getCount() - 1 == this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.a.c())
-        {
-          urk.a("PromoteWidgetController", "handleVideoCompletion() match last video!! promoteTaskId: %d, fragmentLoaded: %b", Long.valueOf(this.jdField_a_of_type_Long), Boolean.valueOf(this.jdField_a_of_type_Boolean));
-          paramBoolean = bool;
-          if (this.jdField_a_of_type_Boolean)
-          {
-            paramBoolean = bool;
-            if (this.jdField_a_of_type_Long != -1L)
-            {
-              paramBoolean = bool;
-              if (!TextUtils.isEmpty(this.c))
-              {
-                bool = a(this.jdField_a_of_type_Long);
-                paramBoolean = bool;
-                if (!bool)
-                {
-                  this.jdField_a_of_type_Long = -1L;
-                  paramBoolean = bool;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    return paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    urk.b("PromoteWidgetController", "closePromoteWidget()");
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      urp.a("weishi_share", "video_cover_close", 0, 0, new String[] { "", this.jdField_a_of_type_JavaLangString });
-    }
-    this.b = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder != null)
-    {
-      XViewPager localXViewPager = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.a();
-      if (localXViewPager.c() < localXViewPager.a().getCount() - 1)
-      {
-        localXViewPager.setCurrentItem(localXViewPager.c() + 1, true);
-        return true;
-      }
-      this.jdField_a_of_type_Tnp.a().finish();
-      urp.a("play_video", "auto_quit", 0, 0, new String[0]);
-      return true;
-    }
-    return false;
-  }
-  
-  public void c() {}
-  
-  public boolean c()
-  {
-    return false;
-  }
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
 }
 
 

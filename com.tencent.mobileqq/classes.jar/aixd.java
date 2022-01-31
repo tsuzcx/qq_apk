@@ -1,6 +1,13 @@
-public abstract interface aixd
+public class aixd
 {
-  public abstract void a(int paramInt, String paramString);
+  public int a;
+  public String a;
+  
+  public aixd(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

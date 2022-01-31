@@ -1,99 +1,171 @@
+import UserGrowth.downloadConfig;
+import UserGrowth.stGlobalConfig;
+import UserGrowth.stLinkConfig;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.IOException;
-import java.net.URLEncoder;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.qzone.LocalMultiProcConfig;
 
 public class skb
-  extends ske
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  private stGlobalConfig a;
   
-  public skb(String paramString)
+  public static skb a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return skd.a();
   }
   
-  private ErrorMessage a()
+  private boolean f()
   {
-    Object localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { QQStoryContext.a().a(), URLEncoder.encode(this.jdField_a_of_type_JavaLangString) });
-    long l = System.currentTimeMillis();
-    localObject = mpl.a(QQStoryContext.a().a(), (String)localObject, null, "GET", null, null, 5000, 5000);
-    if ((localObject != null) && (((HttpResponse)localObject).getStatusLine().getStatusCode() == 200))
-    {
-      localObject = mpl.a((HttpResponse)localObject);
-      urk.a("Q.qqstory.publish.upload.LinkRichObject", "http resp %s", localObject);
-      localObject = new JSONObject((String)localObject);
-      this.jdField_a_of_type_Int = Integer.parseInt(((JSONObject)localObject).getString("ret"));
-      if (this.jdField_a_of_type_Int != 0) {
-        return new ErrorMessage(96000002, "server error code:" + this.jdField_a_of_type_Int);
-      }
-    }
-    else
-    {
-      urk.d("Q.qqstory.publish.upload.LinkRichObject", "");
-      if (localObject != null) {}
-      for (localObject = "http code:" + ((HttpResponse)localObject).getStatusLine();; localObject = "response is null") {
-        return new ErrorMessage(96000003, (String)localObject);
-      }
-    }
-    String str = ((JSONObject)localObject).getString("title");
-    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.b))) {
-      this.b = str;
-    }
-    str = ((JSONObject)localObject).getString("abstract");
-    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.c))) {
-      this.c = str;
-    }
-    localObject = ((JSONObject)localObject).getString("thumbUrl");
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isEmpty(this.d))) {
-      this.d = ((String)localObject);
-    }
-    urk.d("Q.qqstory.publish.upload.LinkRichObject", "request take time %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    return new ErrorMessage();
+    return (this.a == null) || (this.a.linkConfig == null);
   }
   
-  protected void a()
+  private boolean g()
   {
-    try
+    return (this.a == null) || (this.a.download == null);
+  }
+  
+  public int a()
+  {
+    if (this.a != null) {
+      return this.a.link_strategy_type;
+    }
+    return 1;
+  }
+  
+  public stGlobalConfig a()
+  {
+    return this.a;
+  }
+  
+  public String a()
+  {
+    if (!g()) {
+      return this.a.download.packageName;
+    }
+    return "";
+  }
+  
+  public void a(stGlobalConfig paramstGlobalConfig)
+  {
+    this.a = paramstGlobalConfig;
+    sne.d("WSGlobalConfigLog", "initGlobalConfig globalConfig:" + paramstGlobalConfig);
+  }
+  
+  public boolean a()
+  {
+    return (this.a == null) || (this.a.open_4g_autodownload != 0);
+  }
+  
+  public int b()
+  {
+    if (!f()) {
+      return this.a.linkConfig.callCount;
+    }
+    return 10000;
+  }
+  
+  public String b()
+  {
+    if (!g()) {
+      return this.a.download.downloadUrl;
+    }
+    return "";
+  }
+  
+  public boolean b()
+  {
+    if (!f()) {
+      return this.a.linkConfig.isOpenVideoPage;
+    }
+    return true;
+  }
+  
+  public int c()
+  {
+    if (!f()) {
+      return this.a.linkConfig.downloadCount;
+    }
+    return 10000;
+  }
+  
+  public String c()
+  {
+    if (!g()) {
+      return this.a.download.preloadDownloadUrl;
+    }
+    return "";
+  }
+  
+  public boolean c()
+  {
+    return (!g()) && (this.a.download.preload);
+  }
+  
+  public int d()
+  {
+    if (!g()) {
+      return this.a.download.vendorId;
+    }
+    return 0;
+  }
+  
+  public String d()
+  {
+    if (!g())
     {
-      if (a().isSuccess())
+      if (TextUtils.isEmpty(this.a.download.qqDownloadUrl))
       {
-        b();
-        notifyResult(new ErrorMessage());
-        return;
+        this.a.download.qqDownloadUrl = (skq.a() + "&versioncode=" + e());
+        sne.c("WeishiDownloadUtil", "服务器下发QQDownloadUrl失败，使用默认的:" + this.a.download.qqDownloadUrl);
       }
+      sne.d("WeishiDownloadUtil", "服务器下发QQDownloadUrl: " + this.a.download.qqDownloadUrl);
+      return this.a.download.qqDownloadUrl;
     }
-    catch (JSONException localJSONException)
+    return skq.a();
+  }
+  
+  public boolean d()
+  {
+    return (!g()) && (this.a.download.appStoreSwitch);
+  }
+  
+  public int e()
+  {
+    if (!g()) {
+      return this.a.download.versionCode;
+    }
+    return 0;
+  }
+  
+  public String e()
+  {
+    if ((this.a != null) && (!TextUtils.isEmpty(this.a.encrypted_deviceid)))
     {
-      urk.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localJSONException);
-      new ErrorMessage(96000001, localJSONException.getMessage());
-      b();
-      notifyResult(new ErrorMessage());
-      return;
+      LocalMultiProcConfig.putString("weishi_usergrowth", "encryptedDeviceId", this.a.encrypted_deviceid);
+      str = this.a.encrypted_deviceid;
+      sne.a("WSGlobalConfigLog", "LocalMultiProcConfig save encrypted_deviceid:" + str);
+      return str;
     }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        urk.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localIOException);
-        new ErrorMessage(96000000, localIOException.getMessage());
-      }
+    String str = LocalMultiProcConfig.getString("weishi_usergrowth", "encryptedDeviceId", "");
+    sne.a("WSGlobalConfigLog", "LocalMultiProcConfig load encrypted_deviceid:" + str);
+    return str;
+  }
+  
+  public boolean e()
+  {
+    return (!g()) && (this.a.download.enableRock);
+  }
+  
+  public int f()
+  {
+    if (this.a != null) {
+      return this.a.cache_size;
     }
+    return 14;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     skb
  * JD-Core Version:    0.7.0.1
  */

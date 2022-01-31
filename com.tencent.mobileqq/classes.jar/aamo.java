@@ -1,63 +1,20 @@
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class aamo
-  implements ajjc
+  implements bcjx
 {
-  public aamo(Conversation paramConversation) {}
+  public aamo(BaseChatPie paramBaseChatPie) {}
   
-  public ViewGroup a()
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    return this.a.a.a;
-  }
-  
-  public beom a(String paramString)
-  {
-    return this.a.a.a(paramString);
-  }
-  
-  public void a()
-  {
-    this.a.a.a();
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    this.a.a.a(paramInt1, paramInt2, paramIntent);
-  }
-  
-  public void a(Configuration paramConfiguration)
-  {
-    this.a.a.a(paramConfiguration);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.a.a.a(paramQQAppInterface);
-  }
-  
-  public void a(String paramString, beom parambeom)
-  {
-    this.a.a.a(paramString, parambeom);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.a.a(paramBoolean);
-  }
-  
-  public void b()
-  {
-    this.a.a.c();
-  }
-  
-  public void c()
-  {
-    this.a.a.d();
+    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

@@ -1,30 +1,30 @@
 package com.etrump.mixlayout;
 
-import bajo;
+import bbkv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import fv;
 import g;
+import ho;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class FontManager$1
   implements Runnable
 {
-  public FontManager$1(fv paramfv) {}
+  public FontManager$1(ho paramho) {}
   
   public void run()
   {
-    switch (bajo.a(bajo.a(), "libFounderColorFont_818.so"))
+    switch (bbkv.a(bbkv.a(), "libFounderColorFont_818.so"))
     {
     default: 
       return;
     case 1: 
-      ((VasQuickUpdateManager)this.this$0.a.getManager(184)).downloadItem(1004L, "libColorFont_818", "FontManager_initFZEngine");
+      ((VasQuickUpdateManager)this.this$0.a.getManager(184)).downloadItem(1004L, VasQuickUpdateManager.SCID_COLORFONT_SO, "FontManager_initFZEngine");
       return;
     }
     g.a().b.set(true);
-    bajo.a(this.this$0.a);
-    fv.a(this.this$0);
+    bbkv.a(this.this$0.a);
+    ho.a(this.this$0);
   }
 }
 

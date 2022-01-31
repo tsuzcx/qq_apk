@@ -2,33 +2,33 @@ package dov.com.qq.im.story.mode;
 
 import android.text.TextUtils;
 import android.widget.TextView;
-import bhzq;
-import biae;
+import bjrh;
+import bjrv;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import uyh;
-import uyw;
+import vld;
+import vls;
 
 public class StoryEffectTextMode$EditDialogListener$1
   implements Runnable
 {
-  public StoryEffectTextMode$EditDialogListener$1(biae parambiae) {}
+  public StoryEffectTextMode$EditDialogListener$1(bjrv parambjrv) {}
   
   public void run()
   {
-    ((uyh)bhzq.a(this.a.jdField_a_of_type_Bhzq).a("TextLayer")).a(this.a.jdField_a_of_type_Uyw);
-    if (bhzq.a(this.a.jdField_a_of_type_Bhzq))
+    ((vld)bjrh.a(this.a.jdField_a_of_type_Bjrh).a("TextLayer")).a(this.a.jdField_a_of_type_Vls);
+    if (bjrh.a(this.a.jdField_a_of_type_Bjrh))
     {
-      bhzq.a(this.a.jdField_a_of_type_Bhzq).setVisibility(8);
-      bhzq.a(this.a.jdField_a_of_type_Bhzq).setVisibility(8);
+      bjrh.a(this.a.jdField_a_of_type_Bjrh).setVisibility(8);
+      bjrh.a(this.a.jdField_a_of_type_Bjrh).setVisibility(8);
     }
-    bhzq.a(this.a.jdField_a_of_type_Bhzq, bhzq.a(this.a.jdField_a_of_type_Bhzq), this.a.jdField_a_of_type_Uyw.a, bhzq.c(this.a.jdField_a_of_type_Bhzq), bhzq.d(this.a.jdField_a_of_type_Bhzq), 8, null);
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_Uyw.a)) || (bhzq.a(this.a.jdField_a_of_type_Bhzq)))
+    bjrh.a(this.a.jdField_a_of_type_Bjrh, bjrh.a(this.a.jdField_a_of_type_Bjrh), this.a.jdField_a_of_type_Vls.a, bjrh.c(this.a.jdField_a_of_type_Bjrh), bjrh.d(this.a.jdField_a_of_type_Bjrh), 8, null);
+    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_Vls.a)) || (bjrh.a(this.a.jdField_a_of_type_Bjrh)))
     {
-      bhzq.b(this.a.jdField_a_of_type_Bhzq).setVisibility(8);
+      bjrh.b(this.a.jdField_a_of_type_Bjrh).setVisibility(8);
       return;
     }
-    bhzq.b(this.a.jdField_a_of_type_Bhzq).setVisibility(0);
+    bjrh.b(this.a.jdField_a_of_type_Bjrh).setVisibility(0);
   }
 }
 

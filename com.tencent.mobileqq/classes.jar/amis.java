@@ -1,78 +1,42 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.QVipBigClubSVIP9Config;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import java.util.List;
 
-public class amis
-  extends amie<QVipBigClubSVIP9Config>
+class amis
+  implements View.OnClickListener
 {
-  public static QVipBigClubSVIP9Config c()
-  {
-    QVipBigClubSVIP9Config localQVipBigClubSVIP9Config2 = (QVipBigClubSVIP9Config)alzw.a().a(427);
-    QVipBigClubSVIP9Config localQVipBigClubSVIP9Config1 = localQVipBigClubSVIP9Config2;
-    if (localQVipBigClubSVIP9Config2 == null) {
-      localQVipBigClubSVIP9Config1 = new QVipBigClubSVIP9Config();
-    }
-    return localQVipBigClubSVIP9Config1;
-  }
+  amis(amir paramamir, HistoryFormItem paramHistoryFormItem) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return 427;
-  }
-  
-  @NonNull
-  public QVipBigClubSVIP9Config a()
-  {
-    return new QVipBigClubSVIP9Config();
-  }
-  
-  @NonNull
-  public QVipBigClubSVIP9Config a(alzs[] paramArrayOfalzs)
-  {
-    boolean bool = true;
-    localQVipBigClubSVIP9Config = new QVipBigClubSVIP9Config();
-    paramArrayOfalzs = paramArrayOfalzs[0].a;
-    try
-    {
-      if (!TextUtils.isEmpty(paramArrayOfalzs))
-      {
-        paramArrayOfalzs = new JSONObject(paramArrayOfalzs);
-        if (paramArrayOfalzs.optInt("enable", 1) != 1) {
-          break label65;
-        }
+    ColorNote localColorNote = (ColorNote)amir.a(this.jdField_a_of_type_Amir).get(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
+    Bundle localBundle = new Bundle();
+    if (amir.a(this.jdField_a_of_type_Amir) == 17104896) {
+      if ((localColorNote.getServiceType() == 16908288) || (localColorNote.getServiceType() == 16908290)) {
+        localBundle.putBoolean("isFromFavourite", true);
       }
-      for (;;)
-      {
-        localQVipBigClubSVIP9Config.mIsEnable = bool;
-        localQVipBigClubSVIP9Config.mAPngIconUrl = paramArrayOfalzs.optString("apng_icon_url_pattern", localQVipBigClubSVIP9Config.mAPngIconUrl);
-        return localQVipBigClubSVIP9Config;
-        label65:
-        bool = false;
-      }
-      return localQVipBigClubSVIP9Config;
     }
-    catch (JSONException paramArrayOfalzs)
+    for (;;)
     {
-      urk.e("QVipBigTroopExpiredProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfalzs.getMessage());
+      amgo.a(paramView.getContext(), localColorNote, localBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseSectionAdapter", 0, "getAllViews#onClick: index: " + this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
+      }
+      axqw.b(null, "dc00898", "", "", "0X800AA7F", "0X800AA7F", amhi.b(amir.a(this.jdField_a_of_type_Amir)), 0, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a() + 1), "", "", "");
+      return;
+      if (amir.a(this.jdField_a_of_type_Amir) == 16908289) {
+        localBundle.putBoolean("history_note", true);
+      }
     }
-  }
-  
-  public Class<QVipBigClubSVIP9Config> a()
-  {
-    return QVipBigClubSVIP9Config.class;
-  }
-  
-  @NonNull
-  public QVipBigClubSVIP9Config b()
-  {
-    return new QVipBigClubSVIP9Config();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amis
  * JD-Core Version:    0.7.0.1
  */

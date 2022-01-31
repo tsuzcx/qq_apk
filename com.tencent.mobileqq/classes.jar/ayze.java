@@ -1,53 +1,40 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import org.json.JSONException;
-
 public class ayze
-  implements View.OnClickListener
+  extends ayzp
 {
-  public ayze(SelectReciteParagraphFragment paramSelectReciteParagraphFragment) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b = false;
+  public String c;
+  public String d;
   
-  public void onClick(View paramView)
+  public ayze()
   {
-    try
-    {
-      if (!this.a.jdField_a_of_type_JavaUtilSet.isEmpty())
-      {
-        paramView = new ArrayList(this.a.jdField_a_of_type_JavaUtilSet);
-        SelectReciteParagraphFragment.a(this.a, azac.a(this.a.c, this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.title, this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.kid, paramView, this.a.jdField_a_of_type_Ayzf.getCount()));
-        this.a.getActivity().finish();
-        azzx.a("Grp_edu", "Grp_recite", "Clk_Success", 0, 0, new String[] { this.a.c, String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.type - 1) });
-        String str1 = this.a.c;
-        String str2 = this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.title;
-        if (paramView != null) {}
-        int i;
-        for (paramView = String.valueOf(paramView.size());; paramView = String.valueOf(i))
-        {
-          azzx.a("Grp_edu", "Grp_recite", "Section_Count", 0, 0, new String[] { str1, str2, paramView });
-          return;
-          i = this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.size();
-        }
-      }
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SelectReciteParagraphFragment", 2, paramView, new Object[0]);
-      }
-    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" mResid:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" isExist:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" blockSize:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" netChg:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" startOffset:").append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayze
  * JD-Core Version:    0.7.0.1
  */

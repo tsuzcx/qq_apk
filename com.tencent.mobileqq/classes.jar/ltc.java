@@ -1,26 +1,25 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController;
 
-final class ltc
+public class ltc
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  long jdField_a_of_type_Long;
-  View jdField_a_of_type_AndroidViewView = null;
-  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  boolean jdField_a_of_type_Boolean = false;
-  ImageView jdField_b_of_type_AndroidWidgetImageView = null;
-  TextView jdField_b_of_type_AndroidWidgetTextView = null;
-  boolean jdField_b_of_type_Boolean = true;
-  ImageView jdField_c_of_type_AndroidWidgetImageView = null;
-  TextView jdField_c_of_type_AndroidWidgetTextView = null;
-  public boolean c;
+  public ltc(RandomController paramRandomController) {}
   
-  private ltc(lsx paramlsx)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_c_of_type_Boolean = true;
+    if (RandomController.a(this.a) == 2) {
+      axqw.b(null, "CliOper", "", "", "0X8005729", "0X8005729", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      this.a.c();
+      return;
+      if (RandomController.a(this.a) == 1) {
+        axqw.b(null, "CliOper", "", "", "0X8005727", "0X8005727", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 

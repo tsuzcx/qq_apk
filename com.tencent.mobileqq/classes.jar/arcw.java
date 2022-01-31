@@ -1,23 +1,28 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class arcw
-  implements View.OnLayoutChangeListener
+class arcw
+  implements EIPCResultCallback
 {
-  public arcw(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
+  arcw(arcv paramarcv) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramView.setTop(paramInt6);
-    paramView.setBottom(paramInt8);
-    paramView.setLeft(paramInt5);
-    paramView.setRight(paramInt7);
+    arcv.a(paramEIPCResult, "action");
+    switch (paramEIPCResult.code)
+    {
+    default: 
+      return;
+    case -102: 
+      arcv.a(this.a).a(2, paramEIPCResult.data);
+      return;
+    }
+    arcv.a(this.a).a(1, paramEIPCResult.data);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     arcw
  * JD-Core Version:    0.7.0.1
  */

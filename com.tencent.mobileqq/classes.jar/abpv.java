@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 
 public class abpv
-  extends ajjh
+  implements View.OnClickListener
 {
-  public abpv(SearchFriendListActivity paramSearchFriendListActivity) {}
+  public abpv(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null)) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
+    paramView = new Intent(this.a, TroopAssisSettingActivity.class);
+    this.a.startActivity(paramView);
+    axqw.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
   }
 }
 

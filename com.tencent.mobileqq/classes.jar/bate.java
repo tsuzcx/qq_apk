@@ -1,20 +1,39 @@
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.mobileqq.video.VipVideoPlayActivity.VideoPlayerPreparedListener.1;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForTroopEffectPic;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import java.io.File;
 
-public class bate
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+class bate
+  extends auom
 {
-  public bate(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  bate(batd parambatd, aunl paramaunl, TroopChatPie paramTroopChatPie, MessageForTroopEffectPic paramMessageForTroopEffectPic, boolean paramBoolean) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a(int paramInt, aunu paramaunu)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player prepared");
+      QLog.d("TroopPicEffectsController", 2, "2g diy gif onDownload");
     }
-    this.a.runOnUiThread(new VipVideoPlayActivity.VideoPlayerPreparedListener.1(this));
+    paramaunu = new File(this.jdField_a_of_type_Aunl.c());
+    bagr localbagr = (bagr)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.a.getManager(223);
+    if ((paramaunu.exists()) && (localbagr != null))
+    {
+      localbagr.a = 1;
+      localbagr.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie);
+      localbagr.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopEffectPic, this.jdField_a_of_type_Boolean);
+      localbagr.f();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("TroopPicEffectsController", 2, "[EffectPic] file not exist or isplaying.");
+  }
+  
+  public void a_(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopPicEffectsController", 2, "2g diy gif onUpdateProgress");
+    }
   }
 }
 

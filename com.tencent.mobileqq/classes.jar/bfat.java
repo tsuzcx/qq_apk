@@ -1,75 +1,27 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.utils.QQComicPluginBridge.1;
+import io.flutter.view.FlutterNativeView;
 
 public class bfat
-  implements OnPluginInstallListener
+  extends bfar
 {
-  public bfat(QQComicPluginBridge.1 param1) {}
+  private FlutterNativeView a;
   
-  public IBinder asBinder()
+  public void a(bfdc parambfdc)
   {
-    return null;
+    super.a(parambfdc);
+    parambfdc = new bfca(this, this.jdField_a_of_type_Bfas);
+    parambfdc.a(null);
+    this.jdField_a_of_type_Bfbk = parambfdc;
+    parambfdc.a(this.jdField_a_of_type_IoFlutterViewFlutterNativeView);
   }
   
-  public void onInstallBegin(String paramString)
+  public void a(FlutterNativeView paramFlutterNativeView)
   {
-    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Bfau != null)) {
-      this.a.a.jdField_a_of_type_Bfau.a(98, "载入中,（我会越来越快的>_<）");
-    }
-  }
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
-  {
-    if ((this.a.a != null) && (paramInt1 > 0) && (paramInt2 > 0))
-    {
-      this.a.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (this.a.a.jdField_a_of_type_Bfau != null)
-      {
-        paramInt1 = (int)(paramInt1 / paramInt2 * 95.0F);
-        this.a.a.jdField_a_of_type_Bfau.a(paramInt1, "加载中,（别紧张啊我很小的>_<）");
-      }
-    }
-  }
-  
-  public void onInstallError(String arg1, int paramInt)
-  {
-    synchronized ()
-    {
-      bfas.a().notifyAll();
-      if (this.a.a != null) {
-        this.a.a.jdField_a_of_type_Int = paramInt;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicPluginBridge", 2, "QQComic install error");
-      }
-      return;
-    }
-  }
-  
-  public void onInstallFinish(String arg1)
-  {
-    synchronized ()
-    {
-      bfas.a().notifyAll();
-      if (this.a.a != null)
-      {
-        this.a.a.b = System.currentTimeMillis();
-        if (this.a.a.jdField_a_of_type_Bfau != null) {
-          this.a.a.jdField_a_of_type_Bfau.a(99, "载入中,（我会越来越快的>_<）");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicPluginBridge", 2, "QQComic is installed");
-      }
-      return;
-    }
+    this.jdField_a_of_type_IoFlutterViewFlutterNativeView = paramFlutterNativeView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfat
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import ndn;
-import new;
+import noo;
+import npx;
 
 class ReadInJoyVideoChannelFragment$1
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyVideoChannelFragment$1
   
   public void run()
   {
-    ndn.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", new.a(56, null), false);
+    noo.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", npx.a(56, null), false);
   }
 }
 

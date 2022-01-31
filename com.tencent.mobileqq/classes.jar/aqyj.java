@@ -1,22 +1,61 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
 
-class aqyj
-  implements aqvy
+public class aqyj
 {
-  aqyj(aqyg paramaqyg, int paramInt, String paramString) {}
+  public static float b;
+  public float a;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public float c;
+  public int c;
+  public int d = 10;
+  public int e = 8;
+  public int f = 150;
+  public int g = 300;
+  public int h = 32;
+  public int i = 27;
+  public int j = 3000;
+  public int k;
+  public int l;
   
-  public void a()
+  static
   {
-    ListenTogetherManager.a(this.jdField_a_of_type_Aqyg.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a).a(this.jdField_a_of_type_Aqyg.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1000);
-    awqx.b(null, "dc00899", this.jdField_a_of_type_Aqyg.jdField_a_of_type_Aqyn.jdField_a_of_type_JavaLangString, "", "music_tab", "clk_join", 0, 0, this.jdField_a_of_type_Aqyg.jdField_a_of_type_Aqyn.b, "", this.jdField_a_of_type_Aqyg.jdField_a_of_type_Aqyn.jdField_a_of_type_Int + "", "");
+    jdField_b_of_type_Float = 1.0F;
   }
   
-  public void b() {}
+  private aqyj()
+  {
+    this.jdField_a_of_type_Int = 250;
+    this.jdField_c_of_type_Int = 20;
+    this.jdField_c_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public aqyj(HeartLayout paramHeartLayout)
+  {
+    this.jdField_a_of_type_Int = 250;
+    this.jdField_c_of_type_Int = 20;
+    this.jdField_c_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Float = paramHeartLayout.getContext().getResources().getDisplayMetrics().density;
+    this.jdField_a_of_type_Int = ((int)((paramHeartLayout.getWidth() - this.jdField_a_of_type_Float * 32.0F) / 2.0F));
+    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 27.0F));
+    this.h = ((int)(this.jdField_a_of_type_Float * 32.0F));
+    this.i = ((int)(this.jdField_a_of_type_Float * 27.0F));
+    this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Float * 20.0F));
+    this.d = ((int)(this.jdField_a_of_type_Float * 10.0F));
+    this.f = ((int)(this.jdField_a_of_type_Float * 150.0F));
+    this.g = ((int)(this.jdField_a_of_type_Float * 300.0F));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqyj
  * JD-Core Version:    0.7.0.1
  */

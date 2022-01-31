@@ -1,29 +1,62 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.SoftReference;
+import java.util.ArrayList;
+import java.util.List;
 
-public class rpd
-  implements View.OnFocusChangeListener
+class rpd
+  implements rpo<Bitmap>
 {
-  public rpd(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  rpd(rpc paramrpc) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void a(Bitmap paramBitmap)
   {
-    if (paramBoolean)
+    if (paramBitmap == null) {
+      return;
+    }
+    rpq.a(rpc.a, "recycle:" + paramBitmap);
+    if (!rpq.a())
     {
-      paramView.clearFocus();
-      SubscriptFeedsActivity.a(this.a);
-      long l = System.currentTimeMillis();
-      if (l - SubscriptFeedsActivity.a(this.a) > 1500L)
+      paramBitmap.recycle();
+      return;
+    }
+    for (;;)
+    {
+      synchronized (this.a.b)
       {
-        SubscriptFeedsActivity.a(this.a, l);
-        UniteSearchActivity.a(this.a, null, 12);
-        if (QLog.isColorLevel()) {
-          QLog.d("SubscriptFeedsActivity", 2, "Search Subscript Account...");
+        ArrayList localArrayList = new ArrayList();
+        i = 0;
+        if (i >= this.a.b.size()) {
+          break label226;
+        }
+        Bitmap localBitmap = (Bitmap)((SoftReference)this.a.b.get(i)).get();
+        if (localBitmap != null)
+        {
+          if (localBitmap != paramBitmap) {
+            break label231;
+          }
+          i = 1;
+          if (!localArrayList.isEmpty()) {
+            this.a.b.removeAll(localArrayList);
+          }
+          if (i == 0)
+          {
+            paramBitmap = new SoftReference(paramBitmap);
+            this.a.b.add(paramBitmap);
+          }
+        }
+        else
+        {
+          localArrayList.add(this.a.b.get(i));
         }
       }
+      QLog.e(rpc.a, 1, "reuse same bitmap " + paramBitmap);
+      return;
+      label226:
+      int i = 0;
+      continue;
+      label231:
+      i += 1;
     }
   }
 }

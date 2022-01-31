@@ -1,23 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class abdt
-  implements DialogInterface.OnClickListener
+public class abdt
+  extends bbkw
 {
-  abdt(abds paramabds) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public abdt(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
   {
-    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth onClick exit");
-    this.a.a.finish();
-    if (badq.d(BaseApplication.getContext())) {
-      apog.a(this.a.a.a);
-    }
-    new awrb(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_clk").e(this.a.a.a.getCurrentAccountUin()).a();
+    super(paramInt);
+  }
+  
+  public void a()
+  {
+    bazo.a(this.a, this.a.app.getCurrentAccountUin(), "inside.myCardButton", 1, 3, 1, "", true);
+    axqw.b(this.a.app, "CliOper", "", "", "card_mall", "0X8004DBF", 0, 0, "", "", "", "");
+    VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "defaultcard", "click_card_mine", "", 1, 0, 0, "", "", "");
+    this.a.b(2);
   }
 }
 

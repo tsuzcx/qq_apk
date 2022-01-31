@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agda
-  implements bejs
+class agda
+  implements DialogInterface.OnClickListener
 {
-  public agda(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  agda(agch paramagch) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.m();
+    paramDialogInterface.dismiss();
   }
-  
-  public void b(int paramInt) {}
 }
 
 

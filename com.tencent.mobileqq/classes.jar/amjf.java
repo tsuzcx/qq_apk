@@ -1,53 +1,47 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
 
 public class amjf
-  extends amie<amje>
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 76;
-  }
+  public amjf(HistoryFormItem paramHistoryFormItem) {}
   
-  @NonNull
-  public amje a()
+  public void onClick(View paramView)
   {
-    return new amje();
-  }
-  
-  @NonNull
-  public amje a(alzs[] paramArrayOfalzs)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    paramArrayOfalzs = paramArrayOfalzs[0].a;
-    batg.a().a(localQQAppInterface.getApplication(), paramArrayOfalzs, localQQAppInterface.getCurrentAccountUin());
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipKeywordsProcessor", 2, "receiveAllConfigs|type: 76,content: " + paramArrayOfalzs);
+    boolean bool = true;
+    int i;
+    HistoryFormItem localHistoryFormItem;
+    if (amgs.a())
+    {
+      i = 1;
+      if ((i != 0) && (this.a.a()))
+      {
+        localHistoryFormItem = this.a;
+        if (HistoryFormItem.a(this.a)) {
+          break label112;
+        }
+      }
     }
-    return new amje();
-  }
-  
-  public Class<amje> a()
-  {
-    return amje.class;
-  }
-  
-  @NonNull
-  public amje b()
-  {
-    return new amje();
-  }
-  
-  public boolean c()
-  {
-    return false;
+    for (;;)
+    {
+      HistoryFormItem.a(localHistoryFormItem, bool);
+      this.a.a(paramView, HistoryFormItem.a(this.a));
+      if (HistoryFormItem.a(this.a) != null) {
+        HistoryFormItem.a(this.a).a(paramView, HistoryFormItem.a(this.a), HistoryFormItem.a(this.a));
+      }
+      return;
+      amhi.a(paramView.getContext());
+      i = 0;
+      break;
+      label112:
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amjf
  * JD-Core Version:    0.7.0.1
  */

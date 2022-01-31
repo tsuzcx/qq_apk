@@ -1,27 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDTextFace.1;
-
-public class bied
-  implements View.OnTouchListener
+class bied
+  implements aysa
 {
-  public bied(EditVideoDTextFace.1 param1) {}
+  bied(bidy parambidy, biek parambiek, String paramString1, String paramString2) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onResp(aysx paramaysx)
   {
-    if (1 == paramMotionEvent.getAction())
-    {
-      biec.a(this.a.this$0);
-      urp.a("video_edit_text", "clk_textWording", 0, 0, new String[] { this.a.this$0.a, "", "", "" });
+    if (paramaysx.jdField_a_of_type_Int == 3) {
+      return;
     }
-    this.a.this$0.d();
-    return false;
+    if (paramaysx.jdField_a_of_type_Int == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      int i = paramaysx.b;
+      this.jdField_a_of_type_Biek.a(this.jdField_a_of_type_JavaLangString, this.b, bool, paramaysx.jdField_a_of_type_JavaLangString, i);
+      return;
+    }
+  }
+  
+  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_Biek.a(this.jdField_a_of_type_JavaLangString, paramLong2, (float)paramLong1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bied
  * JD-Core Version:    0.7.0.1
  */

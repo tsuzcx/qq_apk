@@ -1,37 +1,31 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 import java.util.ArrayList;
+import java.util.List;
 
 public class afzl
   implements View.OnClickListener
 {
-  public afzl(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public afzl(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
   public void onClick(View paramView)
   {
-    if (!CameraPreviewActivity.a(this.a))
+    vxs.a(this.a.a);
+    vxs.a(this.a.a.a);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
     {
-      if (this.a.b) {
-        awqx.b(this.a.app, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
-      }
-      if (!this.a.b) {
-        break label133;
-      }
-      ageh.d();
+      paramView.add(((agau)this.a.a.a.get(i)).a);
+      i += 1;
     }
-    for (;;)
-    {
-      if ((CameraPreviewActivity.a(this.a) != null) && (CameraPreviewActivity.a(this.a).size() > 0)) {
-        beep.a((String)CameraPreviewActivity.a(this.a).get(0), true);
-      }
-      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
-      paramView.setClickable(false);
-      return;
-      label133:
-      ageh.b();
-    }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.getActivity().setResult(-1, localIntent);
+    this.a.getActivity().finish();
   }
 }
 

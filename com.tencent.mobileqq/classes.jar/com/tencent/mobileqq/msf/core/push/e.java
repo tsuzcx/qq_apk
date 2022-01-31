@@ -162,7 +162,8 @@ public class e
         localToServiceMsg.setMsfCommand(MsfCommand._msf_sendBatteryPush);
         localToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
         localReqBody = new StatSvcSimpleGet.ReqBody();
-        localReqBody.int32_battrey_status.set(MsfSdkUtils.getSendBatteryStatus());
+        i1 = MsfSdkUtils.getSendBatteryStatus(parama.k.batteryCapacity, parama.k.powerConnect);
+        localReqBody.int32_battrey_status.set(i1);
         arrayOfByte1 = localReqBody.toByteArray();
         l1 = arrayOfByte1.length;
         arrayOfByte2 = new byte[(int)l1 + 4];
@@ -182,6 +183,7 @@ public class e
         long l2;
         ToServiceMsg localToServiceMsg;
         StatSvcSimpleGet.ReqBody localReqBody;
+        int i1;
         byte[] arrayOfByte1;
         byte[] arrayOfByte2;
         this.f.c.sendSsoMsg(localToServiceMsg);
@@ -265,16 +267,16 @@ public class e
           label373:
           ((SvcReqRegister)localObject1).bRegType = ((byte)i1);
           if (paramRegPushReason != RegPushReason.setOnlineStatus) {
-            break label1105;
+            break label1119;
           }
           i1 = 1;
           label392:
           ((SvcReqRegister)localObject1).bIsSetStatus = ((byte)i1);
           ((SvcReqRegister)localObject1).uExtOnlineStatus = parama.k.extStatus;
           if (!MsfSdkUtils.isBatteryOnlineStatus(parama.k)) {
-            break label1111;
+            break label1125;
           }
-          ((SvcReqRegister)localObject1).iBatteryStatus = MsfSdkUtils.getSendBatteryStatus();
+          ((SvcReqRegister)localObject1).iBatteryStatus = MsfSdkUtils.getSendBatteryStatus(parama.k.batteryCapacity, parama.k.powerConnect);
         }
       }
       catch (Exception parama)
@@ -284,7 +286,7 @@ public class e
           Object localObject2;
           Object localObject1;
           int i1;
-          label430:
+          label444:
           ((SvcReqRegister)localObject1).iOSVersion = Integer.parseInt(Build.VERSION.SDK);
           if (NetConnInfoCenter.isMobileConn())
           {
@@ -305,7 +307,7 @@ public class e
             }
             ((SvcReqRegister)localObject1).bytes_0x769_reqbody = MsfPullConfigUtil.pullConfigRequest(false);
             if (!SettingCloneUtil.readValue(BaseApplication.getContext(), parama.k.uin, null, "qqsetting_qrlogin_set_mute", false)) {
-              break label1176;
+              break label1190;
             }
             ((SvcReqRegister)localObject1).bSetMute = 1;
             ((UniPacket)localObject2).put(p, localObject1);
@@ -324,7 +326,7 @@ public class e
             localToServiceMsg.setTimeout(30000L);
             localToServiceMsg.addAttribute("regPushReason", paramRegPushReason.toString());
             if (!paramBoolean) {
-              break label1185;
+              break label1199;
             }
             localToServiceMsg.setMsfCommand(MsfCommand._msf_UnRegPush);
             MsfSdkUtils.addToMsgProcessName(parama.b, localToServiceMsg);
@@ -333,7 +335,7 @@ public class e
             this.f.c.sendSsoMsg(localToServiceMsg);
             parama.e = System.currentTimeMillis();
             if (!paramBoolean) {
-              break label1196;
+              break label1210;
             }
             QLog.d("MSF.C.PushManager:PushCoder", 1, "handlerPush send " + MD5.toMD5(parama.k.uin) + " unregister push id " + parama.c + " pushStatus:" + parama.k.iStatus + " bRegType:" + ((SvcReqRegister)localObject1).bRegType + " extStatus:" + parama.k.extStatus + " batter:" + ((SvcReqRegister)localObject1).iBatteryStatus);
             for (;;)
@@ -367,12 +369,12 @@ public class e
               break;
               i1 = 1;
               break label373;
-              label1105:
+              label1119:
               i1 = 0;
               break label392;
-              label1111:
+              label1125:
               localException1.iBatteryStatus = 0;
-              break label430;
+              break label444;
               parama = parama;
               QLog.d("MSF.C.PushManager:PushCoder", 1, "send registerPush error " + parama, parama);
             }
@@ -388,13 +390,13 @@ public class e
             {
               localException1.cNetType = 1;
               continue;
-              label1176:
+              label1190:
               localException1.bSetMute = 0;
               continue;
-              label1185:
+              label1199:
               localException2.setMsfCommand(MsfCommand._msf_RegPush);
               continue;
-              label1196:
+              label1210:
               this.g = true;
               QLog.d("MSF.C.PushManager:PushCoder", 1, "handlerPush send " + MD5.toMD5(parama.k.uin) + " register push id " + parama.c + " pushStatus:" + parama.k.iStatus + " bRegType:" + localException1.bRegType + " timeStamp:" + localException1.timeStamp + " newIP:" + d + " oldIP:" + c + ",regPushReason:" + paramRegPushReason.toString() + " extStatus:" + parama.k.extStatus + " battery:" + localException1.iBatteryStatus);
             }
@@ -419,7 +421,7 @@ public class e
         this.f.a(l1 - System.currentTimeMillis());
       }
     }
-    label734:
+    label758:
     do
     {
       for (;;)
@@ -437,7 +439,7 @@ public class e
           {
             str = MsfService.getCore().getAccountCenter().i();
             if ((com.tencent.mobileqq.msf.core.a.a.w) && (Long.parseLong(str) % 2L != 0L)) {
-              break label734;
+              break label758;
             }
             QLog.d("MSF.C.PushManager:PushCoder", 1, "try closeConn closeByAlarmWakeUpTooLong by a exceeded time to wakeup alarm :" + g.l);
             this.f.c.sender.b.a(com.tencent.qphone.base.a.D);
@@ -465,7 +467,8 @@ public class e
               if (MsfSdkUtils.isBatteryOnlineStatus(parama.k))
               {
                 StatSvcSimpleGet.ReqBody localReqBody = new StatSvcSimpleGet.ReqBody();
-                localReqBody.int32_battrey_status.set(MsfSdkUtils.getSendBatteryStatus());
+                int i1 = MsfSdkUtils.getSendBatteryStatus(parama.k.batteryCapacity, parama.k.powerConnect);
+                localReqBody.int32_battrey_status.set(i1);
                 byte[] arrayOfByte1 = localReqBody.toByteArray();
                 l1 = arrayOfByte1.length;
                 byte[] arrayOfByte2 = new byte[(int)l1 + 4];

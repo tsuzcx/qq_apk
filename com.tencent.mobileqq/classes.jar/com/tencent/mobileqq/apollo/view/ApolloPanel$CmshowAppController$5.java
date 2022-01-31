@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajda;
+import ajrc;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 public class ApolloPanel$CmshowAppController$5
   implements Runnable
 {
-  public ApolloPanel$CmshowAppController$5(ajda paramajda) {}
+  public ApolloPanel$CmshowAppController$5(ajrc paramajrc) {}
   
   public void run()
   {

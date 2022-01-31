@@ -1,61 +1,62 @@
 package com.tencent.qqmini.sdk.core;
 
 import android.content.Context;
-import bdde;
-import bdeo;
-import bdfk;
-import bdle;
-import bdnm;
-import bdnt;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import behf;
+import beio;
+import bejk;
+import bepk;
+import besb;
+import besh;
+import beuc;
+import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MiniAppEnv
-  implements bdnt
+  implements besh
 {
   private static final String TAG = "MiniAppEnv";
   private static MiniAppEnv sInstance;
-  protected bdeo mApkgLoader = bdeo.a();
-  private Map<String, bdde> mAuthStateMap = new HashMap();
+  protected beio mApkgLoader = beio.a();
+  private Map<String, behf> mAuthStateMap = new HashMap();
   protected Context mContext;
+  private LoginInfo mLoginInfo = new LoginInfo();
   private String mMenuStyle = "light";
-  protected bdnm sBaselibLoader = new bdfk();
+  protected besb sBaselibLoader = new bejk();
   
   public static MiniAppEnv g()
   {
     return sInstance;
   }
   
-  public bdeo getApkgLoader()
+  public beio getApkgLoader()
   {
     return this.mApkgLoader;
   }
   
-  public bdde getAuthSate(String paramString)
+  public behf getAuthSate(String paramString)
   {
     if (this.mAuthStateMap.containsKey(paramString)) {
-      return (bdde)this.mAuthStateMap.get(paramString);
+      return (behf)this.mAuthStateMap.get(paramString);
     }
     synchronized (this.mAuthStateMap)
     {
-      bdde localbdde = (bdde)this.mAuthStateMap.get(paramString);
-      Object localObject = localbdde;
-      if (localbdde == null)
+      behf localbehf = (behf)this.mAuthStateMap.get(paramString);
+      Object localObject = localbehf;
+      if (localbehf == null)
       {
-        localObject = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAccount();
-        localObject = new bdde(getContext(), paramString, (String)localObject);
+        localObject = beuc.a().a();
+        localObject = new behf(getContext(), paramString, (String)localObject);
         this.mAuthStateMap.put(paramString, localObject);
       }
       return localObject;
     }
   }
   
-  public bdnm getBaselibLoader()
+  public besb getBaselibLoader()
   {
-    if (bdle.a().a() != null) {
-      return bdle.a().a();
+    if (bepk.a().a() != null) {
+      return bepk.a().a();
     }
     return this.sBaselibLoader;
   }
@@ -68,6 +69,11 @@ public class MiniAppEnv
     return this.mContext;
   }
   
+  public LoginInfo getLoginInfo()
+  {
+    return this.mLoginInfo;
+  }
+  
   public String getMenuStyle()
   {
     return this.mMenuStyle;
@@ -78,15 +84,20 @@ public class MiniAppEnv
     this.mContext = paramContext;
   }
   
-  public void setApkgLoader(bdeo parambdeo)
+  public void setApkgLoader(beio parambeio)
   {
-    this.mApkgLoader = parambdeo;
+    this.mApkgLoader = parambeio;
   }
   
   @Deprecated
-  public void setBaselibLoader(bdnm parambdnm)
+  public void setBaselibLoader(besb parambesb)
   {
-    this.sBaselibLoader = parambdnm;
+    this.sBaselibLoader = parambesb;
+  }
+  
+  public void setLoginInfo(LoginInfo paramLoginInfo)
+  {
+    this.mLoginInfo = paramLoginInfo;
   }
   
   public void setMenuStyle(String paramString)

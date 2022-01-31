@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.jsapi.widgets;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -41,18 +41,18 @@ public class KeyboardLayout
     localLayoutParams.leftMargin = DpUtil.dip2px(getContext(), 4.0F);
     localLayoutParams.rightMargin = DpUtil.dip2px(getContext(), 2.0F);
     localLayoutParams.topMargin = DpUtil.dip2px(getContext(), 2.0F);
-    this.mConfirmBT.setText(ajjy.a(2131640155));
+    this.mConfirmBT.setText(ajyc.a(2131705940));
     this.mConfirmBT.setTextColor(-1);
-    this.mConfirmBT.setBackgroundResource(2130840642);
+    this.mConfirmBT.setBackgroundResource(2130840678);
     this.mConfirmBT.setMinHeight(0);
     this.mConfirmBT.setMinimumHeight(0);
     this.mConfirmBT.setPadding(DpUtil.dip2px(getContext(), 10.0F), DpUtil.dip2px(getContext(), 5.0F), DpUtil.dip2px(getContext(), 10.0F), DpUtil.dip2px(getContext(), 5.0F));
     addView(this.mConfirmBT, localLayoutParams);
-    this.mConfirmBT.setId(2131304587);
+    this.mConfirmBT.setId(2131370268);
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(0, this.mConfirmBT.getId());
     localLayoutParams.leftMargin = DpUtil.dip2px(getContext(), 4.0F);
-    this.mInputET.setBackgroundResource(2130840645);
+    this.mInputET.setBackgroundResource(2130840681);
     addView(this.mInputET, localLayoutParams);
     setBackgroundColor(-1);
     setPadding(0, DpUtil.dip2px(getContext(), 5.0F), 0, DpUtil.dip2px(getContext(), 2.0F));
@@ -94,11 +94,11 @@ public class KeyboardLayout
           boolean bool2 = paramString.optBoolean("confirmHold", false);
           String str = paramString.optString("confirmType");
           int i = 6;
-          paramString = ajjy.a(2131640154);
+          paramString = ajyc.a(2131705939);
           if ("send".equals(str))
           {
             i = 4;
-            paramString = ajjy.a(2131640153);
+            paramString = ajyc.a(2131705938);
             this.mInputET.setText((CharSequence)localObject);
             if (j >= 0)
             {
@@ -119,20 +119,20 @@ public class KeyboardLayout
             if ("search".equals(str))
             {
               i = 3;
-              paramString = ajjy.a(2131640156);
+              paramString = ajyc.a(2131705941);
               continue;
             }
             if ("next".equals(str))
             {
               i = 5;
-              paramString = ajjy.a(2131640152);
+              paramString = ajyc.a(2131705937);
               continue;
             }
             if (!"go".equals(str)) {
               continue;
             }
             i = 2;
-            paramString = ajjy.a(2131640151);
+            paramString = ajyc.a(2131705936);
             continue;
           }
           this.mInputET.setFilters(new InputFilter[0]);

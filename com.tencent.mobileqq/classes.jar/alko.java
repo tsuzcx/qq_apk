@@ -1,26 +1,23 @@
-import mqq.util.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArAwardInfo;
 
-class alko
-  implements ajgy
+public final class alko
+  implements Parcelable.Creator<ArAwardInfo>
 {
-  WeakReference<alkl> a;
-  
-  public alko(alkl paramalkl)
+  public ArAwardInfo a(Parcel paramParcel)
   {
-    this.a = new WeakReference(paramalkl);
+    return new ArAwardInfo(paramParcel);
   }
   
-  public void a(boolean paramBoolean)
+  public ArAwardInfo[] a(int paramInt)
   {
-    alkl localalkl = (alkl)this.a.get();
-    if (localalkl != null) {
-      localalkl.a(paramBoolean);
-    }
+    return new ArAwardInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alko
  * JD-Core Version:    0.7.0.1
  */

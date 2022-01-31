@@ -4,7 +4,7 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanGood;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,12 +21,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
-import vvz;
-import wfz;
-import wgl;
-import wgm;
-import wgo;
-import wye;
+import wiw;
+import wva;
+import wvm;
+import wvn;
+import wvp;
+import xhe;
 
 public class CommodityListView
   extends BaseWidgetView<ArrayList>
@@ -36,8 +36,8 @@ public class CommodityListView
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private wgm jdField_a_of_type_Wgm;
-  private wgo jdField_a_of_type_Wgo;
+  private wvn jdField_a_of_type_Wvn;
+  private wvp jdField_a_of_type_Wvp;
   private boolean jdField_a_of_type_Boolean;
   private TextView b;
   
@@ -53,7 +53,7 @@ public class CommodityListView
   
   public int a()
   {
-    return 2131493114;
+    return 2131558665;
   }
   
   public String a()
@@ -95,23 +95,23 @@ public class CommodityListView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Wgm != null)
+    if (this.jdField_a_of_type_Wvn != null)
     {
-      this.jdField_a_of_type_Wgm.a();
-      this.jdField_a_of_type_Wgm.notifyDataSetChanged();
+      this.jdField_a_of_type_Wvn.a();
+      this.jdField_a_of_type_Wvn.notifyDataSetChanged();
     }
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131309794));
-    this.b = ((TextView)paramView.findViewById(2131312553));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312501));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131312975);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131375554));
+    this.b = ((TextView)paramView.findViewById(2131378378));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378327));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378801);
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext(), 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Wgm = new wgm(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Wgm);
+    this.jdField_a_of_type_Wvn = new wvn(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Wvn);
   }
   
   protected void a(ArrayList paramArrayList) {}
@@ -119,14 +119,14 @@ public class CommodityListView
   public void setData(ArrayList paramArrayList)
   {
     super.setData(paramArrayList);
-    if (this.jdField_a_of_type_Wgm != null) {
-      this.jdField_a_of_type_Wgm.a(paramArrayList);
+    if (this.jdField_a_of_type_Wvn != null) {
+      this.jdField_a_of_type_Wvn.a(paramArrayList);
     }
   }
   
-  public void setOnDataChangeListener(wgo paramwgo)
+  public void setOnDataChangeListener(wvp paramwvp)
   {
-    this.jdField_a_of_type_Wgo = paramwgo;
+    this.jdField_a_of_type_Wvp = paramwvp;
   }
   
   public void setOrientation(int paramInt)
@@ -197,19 +197,19 @@ public class CommodityListView
     String str;
     if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (localStUser.youZhan.size() > 0) && (((CertifiedAccountMeta.StYouZanShop)localStUser.youZhan.get(0)).goodNum.get() > 0))
     {
-      wye.a(localStUser.id.get(), "auth_" + wfz.a(a()), "exp_shop", 0, 0, new String[0]);
+      xhe.a(localStUser.id.get(), "auth_" + wva.a(a()), "exp_shop", 0, 0, new String[0]);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      str = ajjy.a(2131654035);
-      if (!vvz.a(localStUser.attr.get())) {
+      str = ajyc.a(2131719919);
+      if (!wiw.a(localStUser.attr.get())) {
         break label164;
       }
     }
     label164:
-    for (paramStFeed = ajjy.a(2131636426);; paramStFeed = localStUser.nick.get())
+    for (paramStFeed = ajyc.a(2131702210);; paramStFeed = localStUser.nick.get())
     {
       localTextView.setText(String.format(str, new Object[] { paramStFeed }));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new wgl(this, localStUser));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new wvm(this, localStUser));
       return;
     }
   }

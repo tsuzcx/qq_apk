@@ -1,19 +1,16 @@
-import android.graphics.Bitmap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import dov.com.qq.im.ae.AEPituCameraUnit.10;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
 public class biio
+  implements DialogInterface.OnCancelListener
 {
-  public final int c;
-  public final Bitmap c;
+  public biio(AEPituCameraUnit.10 param10) {}
   
-  public biio(int paramInt, Bitmap paramBitmap)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public String toString()
-  {
-    return "VideoFragmentInfo{blockIndex=" + this.jdField_c_of_type_Int + '}';
+    biim.a(this.a.this$0).setCameraPermissionResult(false);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.navigate;
 
-import aduo;
+import aefn;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -8,14 +8,14 @@ import android.widget.ImageView;
 public class IntimateInfoNavBar$1
   implements Runnable
 {
-  public IntimateInfoNavBar$1(aduo paramaduo) {}
+  public IntimateInfoNavBar$1(aefn paramaefn) {}
   
   public void run()
   {
-    aduo.a(this.this$0, AnimationUtils.loadAnimation(this.this$0.a, 2130772054));
-    aduo.a(this.this$0).clearAnimation();
-    aduo.a(this.this$0).startAnimation(aduo.a(this.this$0));
-    aduo.a(this.this$0).setAnimationListener(this.this$0);
+    aefn.a(this.this$0, AnimationUtils.loadAnimation(this.this$0.a, 2130772054));
+    aefn.a(this.this$0).clearAnimation();
+    aefn.a(this.this$0).startAnimation(aefn.a(this.this$0));
+    aefn.a(this.this$0).setAnimationListener(this.this$0);
   }
 }
 

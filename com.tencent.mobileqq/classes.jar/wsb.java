@@ -1,29 +1,12 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.qphone.base.util.QLog;
-
-class wsb
-  implements ViewPager.OnPageChangeListener
+public abstract interface wsb
 {
-  wsb(wsa paramwsa) {}
+  public abstract int a();
   
-  public void onPageScrollStateChanged(int paramInt)
-  {
-    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrollStateChanged");
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrolled");
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageSelected");
-  }
+  public abstract int[] a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wsb
  * JD-Core Version:    0.7.0.1
  */

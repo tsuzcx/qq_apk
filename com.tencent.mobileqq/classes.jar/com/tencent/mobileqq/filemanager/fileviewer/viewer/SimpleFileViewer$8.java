@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
-import aorw;
-import aory;
+import apjg;
+import apji;
 import com.tencent.kwstudio.office.preview.TdsReaderView;
 
 class SimpleFileViewer$8
   implements Runnable
 {
-  SimpleFileViewer$8(SimpleFileViewer paramSimpleFileViewer, String paramString, aory paramaory) {}
+  SimpleFileViewer$8(SimpleFileViewer paramSimpleFileViewer, String paramString, apji paramapji) {}
   
   public void run()
   {
-    TdsReaderView localTdsReaderView = aorw.a().a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aory);
+    TdsReaderView localTdsReaderView = apjg.a().a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apji);
     if ((SimpleFileViewer.a(this.this$0) != null) && (SimpleFileViewer.a(this.this$0, SimpleFileViewer.a(this.this$0), localTdsReaderView, false))) {
       SimpleFileViewer.a(this.this$0, localTdsReaderView);
     }

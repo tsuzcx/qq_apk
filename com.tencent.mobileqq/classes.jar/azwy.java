@@ -1,25 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.util.FaceInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 
-public final class azwy
-  implements Parcelable.Creator<FaceInfo>
+public class azwy
+  implements DialogInterface.OnClickListener
 {
-  public FaceInfo a(Parcel paramParcel)
-  {
-    FaceInfo localFaceInfo = new FaceInfo();
-    localFaceInfo.a(paramParcel);
-    return localFaceInfo;
-  }
+  public azwy(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public FaceInfo[] a(int paramInt)
-  {
-    return new FaceInfo[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azwy
  * JD-Core Version:    0.7.0.1
  */

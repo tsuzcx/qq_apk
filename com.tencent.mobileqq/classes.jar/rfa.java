@@ -1,13 +1,12 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.view.animation.Interpolator;
 
-class rfa
-  implements PopupWindow.OnDismissListener
+public final class rfa
+  implements Interpolator
 {
-  rfa(rez paramrez) {}
-  
-  public void onDismiss()
+  public float getInterpolation(float paramFloat)
   {
-    this.a.a(1.0F);
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

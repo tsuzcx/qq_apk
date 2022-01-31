@@ -1,14 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
 
-class otw
-  implements View.OnClickListener
+public class otw
+  implements ohm
 {
-  otw(otu paramotu, opw paramopw) {}
+  public otw(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      this.a.onBackEvent();
+      return;
+    }
+    this.a.a(this.a.a);
+  }
   
   public void onClick(View paramView)
   {
-    qoe.a(this.jdField_a_of_type_Opw.a(), 0, 1);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    this.a.onBackEvent();
   }
 }
 

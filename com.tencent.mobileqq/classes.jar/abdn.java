@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.11.2;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
 public class abdn
-  extends ajjh
+  implements DialogInterface.OnClickListener
 {
-  public abdn(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public abdn(FriendProfileCardActivity.11.2 param2) {}
   
-  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    MoveToGroupActivity.a(this.a);
-    if (paramString == null) {
-      bbmy.a(this.a, this.a.getString(2131628671), 0).b(this.a.getTitleBarHeight());
-    }
-    for (;;)
-    {
-      MoveToGroupActivity.b(this.a);
-      this.a.removeObserver(MoveToGroupActivity.a(this.a));
-      return;
-      bbmy.a(this.a, 2, this.a.getString(2131628673), 0).b(this.a.getTitleBarHeight());
-    }
+    this.a.jdField_a_of_type_Ajtk.h();
+    this.a.jdField_a_of_type_Ajtk.a(this.a.jdField_a_of_type_Abdl.a.a.a.a, "");
   }
 }
 

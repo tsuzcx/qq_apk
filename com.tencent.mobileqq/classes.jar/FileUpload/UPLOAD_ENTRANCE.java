@@ -19,6 +19,7 @@ public final class UPLOAD_ENTRANCE
   public static final int _myVideoPageRecordFile = 204;
   public static final int _photoAlbumList = 12;
   public static final int _photoBanner = 15;
+  public static final int _photoComposeVideoPlus = 125;
   public static final int _photoList = 13;
   public static final int _photoOther = 14;
   public static final int _photoPlus = 11;
@@ -39,11 +40,14 @@ public final class UPLOAD_ENTRANCE
   public static final int _shuoshuoOther = 23;
   public static final int _shuoshuoPlus = 21;
   public static final int _shuoshuoPluscamera = 25;
+  public static final int _shuoshuoThirdParty = 45;
+  public static final int _tencentXcxUpload = 131;
   public static final int _thirdPartySdk = 207;
   public static final int _videoRecommandLocalFile = 209;
   public static final int _videoRecommandRecordFile = 208;
-  public static final int _weishiMusic = 214;
-  public static final int _weishiZhuti = 213;
+  public static final int _wangzhe2album = 999;
+  public static final int _weishiMusic = 213;
+  public static final int _weishiZhuti = 214;
 }
 
 

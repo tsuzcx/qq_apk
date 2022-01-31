@@ -2,8 +2,8 @@ package cooperation.qzone.contentbox;
 
 import android.graphics.drawable.Drawable;
 import android.os.Message;
-import azwp;
-import bfts;
+import baxt;
+import bhcc;
 import com.tencent.mobileqq.app.BaseActivity;
 import cooperation.qzone.contentbox.model.MQMsg;
 
@@ -14,10 +14,10 @@ class MsgPhotoView$2
   
   public void run()
   {
-    Object localObject = azwp.a(1, 3);
-    localObject = azwp.a(((BaseActivity)this.this$0.jdField_a_of_type_AndroidContentContext).app, 1, this.a.user_avatar, 3, (Drawable)localObject, (Drawable)localObject, null);
-    if (this.this$0.jdField_a_of_type_Bfts != null) {
-      this.this$0.jdField_a_of_type_Bfts.obtainMessage(10001, localObject).sendToTarget();
+    Object localObject = baxt.a(1, 3);
+    localObject = baxt.a(((BaseActivity)this.this$0.jdField_a_of_type_AndroidContentContext).app, 1, this.a.user_avatar, 3, (Drawable)localObject, (Drawable)localObject, null);
+    if (this.this$0.jdField_a_of_type_Bhcc != null) {
+      this.this$0.jdField_a_of_type_Bhcc.obtainMessage(10001, localObject).sendToTarget();
     }
   }
 }

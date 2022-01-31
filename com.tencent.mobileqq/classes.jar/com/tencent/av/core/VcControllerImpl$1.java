@@ -1,22 +1,17 @@
 package com.tencent.av.core;
 
-import com.tencent.qphone.base.util.QLog;
-import lbe;
+import llx;
 
 class VcControllerImpl$1
   implements Runnable
 {
-  VcControllerImpl$1(VcControllerImpl paramVcControllerImpl, int paramInt1, int paramInt2) {}
+  VcControllerImpl$1(VcControllerImpl paramVcControllerImpl) {}
   
   public void run()
   {
-    if (VcControllerImpl.mDisableReOpen) {
-      QLog.w("VcControllerImpl", 1, "changePreviewSize, 禁止响应重开摄像头, w[" + this.a + "], h[" + this.b + "]");
+    if ((VcControllerImpl.access$000(this.this$0) != 0) && (VcControllerImpl.access$100(this.this$0) != null)) {
+      VcControllerImpl.access$100(this.this$0).j(VcControllerImpl.access$200(this.this$0));
     }
-    while (this.this$0.mEventListener == null) {
-      return;
-    }
-    this.this$0.mEventListener.a(this.a, this.b);
   }
 }
 

@@ -1,11 +1,16 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+
 class aore
-  implements bbrx
+  implements View.OnClickListener
 {
-  aore(aorc paramaorc, apca paramapca) {}
+  aore(aord paramaord) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Apca.a();
+    QfileCloudFileTabView.a(this.a.a, false);
+    this.a.a.h();
   }
 }
 

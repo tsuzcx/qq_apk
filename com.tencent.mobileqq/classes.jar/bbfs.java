@@ -1,157 +1,109 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.ViewGroup;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class bbfs
-  implements azwh
 {
-  public aeeh a;
-  Handler jdField_a_of_type_AndroidOsHandler = new bbft(this, Looper.getMainLooper());
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public azwg a;
-  bbfr jdField_a_of_type_Bbfr;
-  public String a;
-  xai jdField_a_of_type_Xai = (xai)xai.jdField_a_of_type_JavaUtilHashMap.get("Werewolves.apk");
-  
-  public bbfs(String paramString)
+  public static void a()
   {
-    if (this.jdField_a_of_type_Xai == null) {
-      this.jdField_a_of_type_Xai = new xai("2584", "Werewolves.apk");
+    a("0X8008CC3");
+  }
+  
+  public static void a(int paramInt)
+  {
+    if (paramInt == 4) {
+      a("0X8009187");
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public bbfr a()
-  {
-    return this.jdField_a_of_type_Bbfr;
-  }
-  
-  public String a(String paramString)
-  {
-    if (this.jdField_a_of_type_Bbfr != null) {
-      return this.jdField_a_of_type_Bbfr.a(paramString);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Xai.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Xai.a(false);
+    while (paramInt != 2) {
       return;
     }
-    if (this.jdField_a_of_type_Bbfr == null) {
-      this.jdField_a_of_type_Bbfr = new bbfr(this, this.jdField_a_of_type_Xai.jdField_a_of_type_JavaLangClassLoader);
+    a("0X8009188");
+  }
+  
+  public static void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("QAVGroupConfig", 1, "reportAVGroupNum, num[" + paramInt + "], isVideo[" + paramBoolean + "]");
     }
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    localMessage.arg1 = 0;
-    localMessage.sendToTarget();
-  }
-  
-  public void a(aeeh paramaeeh)
-  {
-    if (this.jdField_a_of_type_Aeeh != paramaeeh) {}
-    do
+    HashMap localHashMap;
+    if (paramBoolean)
     {
-      return;
-      if (this.jdField_a_of_type_Bbfr != null) {
-        this.jdField_a_of_type_Bbfr.b();
-      }
-      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
-      {
-        this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-        this.jdField_a_of_type_AndroidViewViewGroup = null;
-      }
-      if (this.jdField_a_of_type_Azwg != null) {
-        this.jdField_a_of_type_Azwg.d();
-      }
-    } while (this.jdField_a_of_type_Xai == null);
-    this.jdField_a_of_type_Xai.jdField_a_of_type_Xah = null;
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-    this.jdField_a_of_type_Bbfr.a(paramViewGroup, this.jdField_a_of_type_Xai.jdField_a_of_type_Xah);
-  }
-  
-  public void a(BaseActivity paramBaseActivity, aeeh paramaeeh)
-  {
-    this.jdField_a_of_type_Aeeh = paramaeeh;
-    this.jdField_a_of_type_Xai.a(paramBaseActivity);
-    if (this.jdField_a_of_type_Bbfr != null)
-    {
-      this.jdField_a_of_type_Bbfr.a();
-      this.jdField_a_of_type_Bbfr.a(this.jdField_a_of_type_Xai.jdField_a_of_type_Xah);
+      localHashMap = new HashMap();
+      localHashMap.put("num", String.valueOf(paramInt));
+      UserAction.onUserAction("reportAVGroupNum_video", true, -1L, -1L, localHashMap, true);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Azwg = new azwg((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-      this.jdField_a_of_type_Azwg.a(this);
+      localHashMap = new HashMap();
+      localHashMap.put("isVideo", String.valueOf(paramBoolean));
+      localHashMap.put("num", String.valueOf(paramInt));
+      UserAction.onUserAction("reportAVGroupNum", true, -1L, -1L, localHashMap, true);
       return;
-      this.jdField_a_of_type_Bbfr = new bbfr(this, this.jdField_a_of_type_Xai.jdField_a_of_type_JavaLangClassLoader);
+      localHashMap = new HashMap();
+      localHashMap.put("num", String.valueOf(paramInt));
+      UserAction.onUserAction("reportAVGroupNum_audio", true, -1L, -1L, localHashMap, true);
     }
   }
   
-  public void a(String paramString, byte[] paramArrayOfByte)
+  public static void a(String paramString)
   {
-    if (this.jdField_a_of_type_Bbfr == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bbfr.a(paramString, paramArrayOfByte);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Xai.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bbfr != null) {
-      this.jdField_a_of_type_Bbfr.a();
-    }
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    if (!QLog.isDevelopLevel()) {}
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-      this.jdField_a_of_type_AndroidViewViewGroup = null;
-    }
-    this.jdField_a_of_type_Aeeh = null;
-    if (this.jdField_a_of_type_Azwg != null) {
-      this.jdField_a_of_type_Azwg.d();
-    }
-    if (this.jdField_a_of_type_Xai != null) {
-      this.jdField_a_of_type_Xai.c();
+      axqw.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
+      return;
+      QLog.w("QAVGroupConfig", 1, "reportClickEvent, key[" + paramString + "]");
     }
   }
   
-  public boolean b()
+  public static void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bbfr == null) {}
-    while ((this.jdField_a_of_type_Bbfr != null) && (this.jdField_a_of_type_Bbfr.a())) {
-      return true;
+    if (paramBoolean)
+    {
+      a("0X8008CC7");
+      return;
     }
-    return false;
+    a("0X8008CC8");
   }
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public static void b()
   {
-    if ((this.jdField_a_of_type_Bbfr != null) && ((paramInt2 == 32) || (paramInt2 == 1))) {
-      this.jdField_a_of_type_Bbfr.a(paramString, paramBitmap);
+    a("0X8008CC4");
+  }
+  
+  public static void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      a("0X8008CBA");
+      return;
     }
+    a("0X8008CB5");
+  }
+  
+  public static void c()
+  {
+    a("0X8008CC5");
+  }
+  
+  public static void c(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      a("0X8008E7D");
+      return;
+    }
+    a("0X8008E7E");
+  }
+  
+  public static void d()
+  {
+    a("0X8008CC6");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbfs
  * JD-Core Version:    0.7.0.1
  */

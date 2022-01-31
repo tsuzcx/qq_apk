@@ -1,31 +1,23 @@
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.gdtad.util.GdtSmartBlur;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bavn
+final class bavn
+  implements DownloadParams.DecodeHandler
 {
-  public int a;
-  public boolean a;
-  
-  public bavn()
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Int = -30009;
-  }
-  
-  public bavn(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Int = -30009;
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
-    if ((this.jdField_a_of_type_Int == 0) && (paramJSONObject.optInt("flag", 0) == 1)) {}
-    for (;;)
+    if (paramBitmap != null)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-      bool = false;
+      paramDownloadParams = paramDownloadParams.tag;
+      if ((GdtSmartBlur.a().a) && ((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1))
+      {
+        int i = ((int[])(int[])paramDownloadParams)[0];
+        GdtSmartBlur.a().a(paramBitmap, i);
+      }
     }
-  }
-  
-  public String toString()
-  {
-    return "LiangHaoStatusRsp{ret=" + this.jdField_a_of_type_Int + ", flag=" + this.jdField_a_of_type_Boolean + '}';
+    return paramBitmap;
   }
 }
 

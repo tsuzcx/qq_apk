@@ -1,48 +1,52 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.RecvMsg;
-
-public abstract class bfep
-  extends Binder
-  implements bfeo
+public class bfep
 {
-  public static bfeo a(IBinder paramIBinder)
+  private int jdField_a_of_type_Int;
+  private final float[] jdField_a_of_type_ArrayOfFloat;
+  
+  public bfep(int paramInt)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IActionListener");
-    if ((localIInterface != null) && ((localIInterface instanceof bfeo))) {
-      return (bfeo)localIInterface;
-    }
-    return new bfeq(paramIBinder);
+    this.jdField_a_of_type_ArrayOfFloat = new float[paramInt];
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public float a()
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qappcenter.remote.IActionListener");
-      return true;
+    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_ArrayOfFloat.length) {}
+    for (int i = this.jdField_a_of_type_Int; i == 0; i = this.jdField_a_of_type_ArrayOfFloat.length) {
+      return 0.0F;
     }
-    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IActionListener");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (RecvMsg)RecvMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    int j = 0;
+    float f1 = 0.0F;
+    while (j < i)
     {
-      a(paramParcel1);
-      return true;
+      f1 += this.jdField_a_of_type_ArrayOfFloat[j];
+      j += 1;
     }
+    float f2 = f1 / i;
+    f1 = 0.0F;
+    j = 0;
+    while (j < i)
+    {
+      float f3 = this.jdField_a_of_type_ArrayOfFloat[j] - f2;
+      f1 += f3 * f3;
+      j += 1;
+    }
+    return f1 / i;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_ArrayOfFloat[(this.jdField_a_of_type_Int % this.jdField_a_of_type_ArrayOfFloat.length)] = paramFloat;
+    this.jdField_a_of_type_Int += 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfep
  * JD-Core Version:    0.7.0.1
  */

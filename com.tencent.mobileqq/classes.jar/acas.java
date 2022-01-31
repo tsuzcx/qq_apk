@@ -1,17 +1,17 @@
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class acas
   implements TextWatcher
 {
-  public acas(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public acas(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
   public void afterTextChanged(Editable paramEditable)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.c(paramEditable);
+    if (SelectedAndSearchBar.a(this.a) != null) {
+      SelectedAndSearchBar.a(this.a).a(paramEditable);
+    }
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -20,7 +20,7 @@ public class acas
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acas
  * JD-Core Version:    0.7.0.1
  */

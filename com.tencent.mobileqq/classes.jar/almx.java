@@ -1,47 +1,37 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 import com.tencent.qphone.base.util.QLog;
 
-class almx
-  implements Animator.AnimatorListener
+public class almx
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  almx(almv paramalmv, alnc paramalnc) {}
+  public almx(QRScanEntryView paramQRScanEntryView, String paramString1, String paramString2) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationCancel " + this.jdField_a_of_type_Alnc.jdField_a_of_type_Long);
+    if (paramBoolean)
+    {
+      paramBundle = new Intent();
+      paramBundle.putExtra("detectType", 2);
+      paramBundle.putExtra("scannerResult", this.jdField_a_of_type_JavaLangString.trim());
+      paramBundle.putExtra("filePath", this.b);
+      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).setResult(13, paramBundle);
+      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).finish();
+      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).overridePendingTransition(0, 0);
+      return;
     }
-    this.jdField_a_of_type_Almv.a(this.jdField_a_of_type_Alnc);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
     if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationEnd " + this.jdField_a_of_type_Alnc.jdField_a_of_type_Long);
+      QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 2 false");
     }
-    this.jdField_a_of_type_Almv.a(this.jdField_a_of_type_Alnc);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationRepeat " + this.jdField_a_of_type_Alnc.jdField_a_of_type_Long);
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationStart " + this.jdField_a_of_type_Alnc.jdField_a_of_type_Long);
-    }
-    this.jdField_a_of_type_Alnc.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    ((alla)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_Alkn).b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     almx
  * JD-Core Version:    0.7.0.1
  */

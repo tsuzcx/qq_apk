@@ -5,12 +5,12 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
-import azzz;
-import bace;
-import bacm;
-import batm;
-import bato;
-import bhos;
+import bbbd;
+import bbdj;
+import bbdr;
+import bbwg;
+import bbwi;
+import bjjk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -35,9 +35,9 @@ class ComboLockManager$GenerateSharePicTask
     {
       i = -2;
       if (QLog.isColorLevel()) {
-        QLog.i("FilterComboShare", 2, "GenerateSharePicTask result " + i + " exist" + bace.a((String)localObject1));
+        QLog.i("FilterComboShare", 2, "GenerateSharePicTask result " + i + " exist" + bbdj.a((String)localObject1));
       }
-      localObject2 = (AnimationDrawable)BaseApplicationImpl.getContext().getResources().getDrawable(2130843806);
+      localObject2 = (AnimationDrawable)BaseApplicationImpl.getContext().getResources().getDrawable(2130843884);
       localObject2 = this.this$0;
       if (i != 1) {
         break label431;
@@ -55,7 +55,7 @@ class ComboLockManager$GenerateSharePicTask
           i = -3;
           break;
         }
-        if ((azzz.b()) && (azzz.b() < 20971520L))
+        if ((bbbd.a()) && (bbbd.b() < 20971520L))
         {
           QLog.e("FilterComboShare", 1, "download err no space");
           i = -4;
@@ -66,11 +66,11 @@ class ComboLockManager$GenerateSharePicTask
           ((File)localObject2).mkdirs();
         }
         localObject2 = ComboLockManager.jdField_a_of_type_JavaLangString + str1;
-        localObject3 = new batm((String)localObject3, new File((String)localObject2));
-        ((batm)localObject3).n = true;
-        ((batm)localObject3).b = 2;
-        ((batm)localObject3).jdField_a_of_type_JavaLangString = str1;
-        if (bato.a((batm)localObject3, null, null) != 0)
+        localObject3 = new bbwg((String)localObject3, new File((String)localObject2));
+        ((bbwg)localObject3).n = true;
+        ((bbwg)localObject3).b = 2;
+        ((bbwg)localObject3).jdField_a_of_type_JavaLangString = str1;
+        if (bbwi.a((bbwg)localObject3, null, null) != 0)
         {
           i = -5;
           break;
@@ -85,7 +85,7 @@ class ComboLockManager$GenerateSharePicTask
         String str2 = ((QQAppInterface)localObject1).getCurrentNickname();
         Bitmap localBitmap = ((QQAppInterface)localObject1).a((String)localObject3, true);
         localObject1 = (String)localObject2 + "_merge_" + (String)localObject3;
-        localObject3 = bhos.a((String)localObject2, 0.5F, 0.64F, localBitmap, str2, (String)localObject3);
+        localObject3 = bjjk.a((String)localObject2, 0.5F, 0.64F, localBitmap, str2, (String)localObject3);
         if (localObject3 == null)
         {
           i = -7;
@@ -93,8 +93,8 @@ class ComboLockManager$GenerateSharePicTask
         }
         try
         {
-          bacm.b((Bitmap)localObject3, 90, new File((String)localObject1));
-          bace.d((String)localObject2);
+          bbdr.b((Bitmap)localObject3, 90, new File((String)localObject1));
+          bbdj.d((String)localObject2);
           i = 1;
         }
         catch (IOException localIOException)

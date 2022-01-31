@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import adwz;
-import ajjy;
+import aehy;
+import ajyc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,15 +18,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import annq;
-import aphp;
-import awbi;
-import awqx;
-import axoa;
-import axwd;
-import baac;
-import bace;
-import bbmy;
+import aoeb;
+import aqbc;
+import axaq;
+import axqw;
+import ayog;
+import aywk;
+import bbbg;
+import bbdj;
+import bbje;
+import bcpw;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -39,7 +40,7 @@ import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.URL;
-import xhd;
+import xqd;
 
 public class SearchEmoticonFragment
   extends AIOEmotionBaseFragment
@@ -53,7 +54,7 @@ public class SearchEmoticonFragment
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   private SearchEmoticonWebBean jdField_a_of_type_ComTencentMobileqqEmotionintegrateSearchEmoticonWebBean;
-  xhd jdField_a_of_type_Xhd;
+  xqd jdField_a_of_type_Xqd;
   private int jdField_b_of_type_Int;
   public View b;
   Button jdField_b_of_type_AndroidWidgetButton;
@@ -83,7 +84,7 @@ public class SearchEmoticonFragment
     localIntent.putExtra("forward_photo_group_fileid", paramMessageForPic.groupFileID);
     localIntent.putExtra("FORWARD_PHOTO_FILE_SIZE_FLAG", paramMessageForPic.fileSizeFlag);
     localIntent.putExtras(paramQQAppInterface);
-    if ((baac.a(paramMessageForPic.msgtype)) || (paramMessageForPic.msgtype == -3001) || (paramMessageForPic.msgtype == -30002) || (paramMessageForPic.msgtype == -30003))
+    if ((bbbg.a(paramMessageForPic.msgtype)) || (paramMessageForPic.msgtype == -3001) || (paramMessageForPic.msgtype == -30002) || (paramMessageForPic.msgtype == -30003))
     {
       paramInt = 1;
       if (paramInt != 0) {
@@ -93,7 +94,7 @@ public class SearchEmoticonFragment
     label352:
     for (paramInt = 65537;; paramInt = 1)
     {
-      paramQQAppInterface = axwd.a(paramMessageForPic, paramInt);
+      paramQQAppInterface = aywk.a(paramMessageForPic, paramInt);
       localIntent.putExtra("forward_urldrawable", true);
       localIntent.putExtra("forward_urldrawable_thumb_url", paramQQAppInterface.toString());
       localIntent.putExtra("FORWARD_URL_KEY", paramMessageForPic.localUUID);
@@ -111,9 +112,9 @@ public class SearchEmoticonFragment
     label357:
     paramQQAppInterface = null;
     paramContext = paramContext.getURL().toString();
-    if (axoa.b(paramContext))
+    if (ayog.b(paramContext))
     {
-      paramContext = axoa.a(paramContext);
+      paramContext = ayog.a(paramContext);
       paramMessageForPic = paramQQAppInterface;
       if (paramContext != null) {
         paramMessageForPic = paramContext.getAbsolutePath();
@@ -123,7 +124,7 @@ public class SearchEmoticonFragment
     {
       localIntent.putExtra("forward_extra", paramMessageForPic);
       break;
-      paramContext = axoa.a(axwd.a(paramMessageForPic, 65537).toString());
+      paramContext = ayog.a(aywk.a(paramMessageForPic, 65537).toString());
       paramMessageForPic = paramQQAppInterface;
       if (paramContext != null)
       {
@@ -144,10 +145,12 @@ public class SearchEmoticonFragment
   
   public View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    return paramLayoutInflater.inflate(2131497013, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2131562610, paramViewGroup, false);
   }
   
   protected void a() {}
+  
+  protected void a(int paramInt, bbje parambbje) {}
   
   public boolean a()
   {
@@ -156,24 +159,22 @@ public class SearchEmoticonFragment
   
   protected void b(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296711));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131299493));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131300030);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131299492));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296709));
-    ImageView localImageView = (ImageView)paramView.findViewById(2131296707);
-    this.jdField_a_of_type_Xhd = new xhd();
-    this.jdField_a_of_type_Xhd.a(super.getActivity(), localImageView);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838116);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362252));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365061));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365626);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365060));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362250));
+    ImageView localImageView = (ImageView)paramView.findViewById(2131362248);
+    this.jdField_a_of_type_Xqd = new xqd();
+    this.jdField_a_of_type_Xqd.a(super.getActivity(), localImageView);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838123);
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 6.0F));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131310095));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131296582));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131375859));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131362123));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
-  
-  protected void c(int paramInt) {}
   
   public void onActivityCreated(Bundle paramBundle)
   {
@@ -191,12 +192,12 @@ public class SearchEmoticonFragment
     localURLDrawableOptions.mPlayGifImage = true;
     paramBundle = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateSearchEmoticonWebBean.b, localURLDrawableOptions);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateSearchEmoticonWebBean.i = axoa.d(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateSearchEmoticonWebBean.b);
+    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateSearchEmoticonWebBean.i = ayog.d(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateSearchEmoticonWebBean.b);
     if (this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateSearchEmoticonWebBean.jdField_d_of_type_Int != 0)
     {
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
       this.jdField_b_of_type_AndroidViewView.setClickable(true);
-      this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new annq(this));
+      this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new aoeb(this));
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateSearchEmoticonWebBean.jdField_d_of_type_JavaLangString)) {
         paramBundle = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateSearchEmoticonWebBean.jdField_d_of_type_JavaLangString, localURLDrawableOptions);
       }
@@ -219,14 +220,14 @@ public class SearchEmoticonFragment
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt2 == -1) && (paramInt1 == 1))
     {
-      paramIntent.putExtra("selfSet_leftViewText", this.jdField_a_of_type_AndroidContentContext.getString(2131654133));
+      paramIntent.putExtra("selfSet_leftViewText", this.jdField_a_of_type_AndroidContentContext.getString(2131720023));
       paramIntent = new Bundle(paramIntent.getExtras());
       Intent localIntent = new Intent();
       localIntent.putExtras(paramIntent);
       if (super.a() != null) {
         ForwardUtils.a(super.a(), super.getActivity(), this.jdField_a_of_type_AndroidContentContext, localIntent, ThreadManager.getUIHandler());
       }
-      awqx.b(null, "dc00898", "", "", "0X8009EAC", "0X8009EAC", 0, 0, "", "", "", "");
+      axqw.b(null, "dc00898", "", "", "0X8009EAC", "0X8009EAC", 0, 0, "", "", "", "");
     }
   }
   
@@ -244,12 +245,12 @@ public class SearchEmoticonFragment
       QLog.d("SearchEmoticonFragment", 1, "error runtime");
       return;
     }
-    if (!bace.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateSearchEmoticonWebBean.i))
+    if (!bbdj.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateSearchEmoticonWebBean.i))
     {
-      bbmy.a(this.jdField_a_of_type_AndroidAppActivity, 1, ajjy.a(2131647834), 0).a();
+      bcpw.a(this.jdField_a_of_type_AndroidAppActivity, 1, ajyc.a(2131713621), 0).a();
       return;
     }
-    MessageForPic localMessageForPic = (MessageForPic)awbi.a(-2000);
+    MessageForPic localMessageForPic = (MessageForPic)axaq.a(-2000);
     localMessageForPic.path = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateSearchEmoticonWebBean.i;
     localMessageForPic.md5 = HexUtil.bytes2HexStr(MD5.getFileMd5(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateSearchEmoticonWebBean.i));
     localMessageForPic.thumbMsgUrl = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateSearchEmoticonWebBean.b;
@@ -259,11 +260,11 @@ public class SearchEmoticonFragment
     {
     default: 
       return;
-    case 2131296582: 
+    case 2131362123: 
       paramView = (URLDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
       paramView.setTag(localMessageForPic);
-      adwz.a(this.jdField_a_of_type_AndroidContentContext, localQQAppInterface, paramView, localMessageForPic.frienduin, getActivity().getResources().getDimensionPixelSize(2131167766), null, localMessageForPic.picExtraData);
-      awqx.b(null, "dc00898", "", "", "0X8009EAD", "0X8009EAD", 0, 0, "", "", "", "");
+      aehy.a(this.jdField_a_of_type_AndroidContentContext, localQQAppInterface, paramView, localMessageForPic.frienduin, getActivity().getResources().getDimensionPixelSize(2131298865), null, localMessageForPic.picExtraData);
+      axqw.b(null, "dc00898", "", "", "0X8009EAD", "0X8009EAD", 0, 0, "", "", "", "");
       return;
     }
     if (QLog.isColorLevel()) {
@@ -271,14 +272,14 @@ public class SearchEmoticonFragment
     }
     paramView = a(localMessageForPic, 0, localQQAppInterface, this.jdField_a_of_type_AndroidContentContext);
     paramView.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", super.getActivity().getClass().getName());
-    aphp.a(super.getActivity(), paramView, 1);
-    awqx.b(null, "dc00898", "", "", "0X8009EAA", "0X8009EAA", 0, 0, "", "", "", "");
+    aqbc.a(super.getActivity(), paramView, 1);
+    axqw.b(null, "dc00898", "", "", "0X8009EAA", "0X8009EAA", 0, 0, "", "", "", "");
   }
   
   public void onStart()
   {
     super.onStart();
-    awqx.b(null, "dc00898", "", "", "0X8009EA9", "0X8009EA9", 0, 0, "", "", "", "");
+    axqw.b(null, "dc00898", "", "", "0X8009EA9", "0X8009EA9", 0, 0, "", "", "", "");
   }
 }
 

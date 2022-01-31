@@ -1,67 +1,44 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StSetUserAvatarReq;
-import NS_MINI_INTERFACE.INTERFACE.StSetUserAvatarRsp;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.qidian.QidianProfileCardActivity;
 
 public class bdud
-  extends bdtz
+  implements bfoq
 {
-  private INTERFACE.StSetUserAvatarReq a = new INTERFACE.StSetUserAvatarReq();
+  public bdud(QidianProfileCardActivity paramQidianProfileCardActivity, bfol parambfol, URLDrawable paramURLDrawable, String paramString) {}
   
-  public bdud(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.appid.set(paramString1);
-    this.a.uin.set(paramString2);
-    this.a.set_type.set(paramInt);
-    this.a.item_id.set(paramString3);
-    this.a.busi_info.set(paramString4);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
+    if (paramView == null) {
+      this.jdField_a_of_type_Bfol.dismiss();
     }
-  }
-  
-  protected String a()
-  {
-    return "mini_app_userapp";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StSetUserAvatarRsp localStSetUserAvatarRsp = new INTERFACE.StSetUserAvatarRsp();
-    try
+    do
     {
-      localStSetUserAvatarRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStSetUserAvatarRsp != null) {
-        return new JSONObject();
+      return;
+      paramView = this.jdField_a_of_type_Bfol.a(paramInt);
+      if (TextUtils.isEmpty(paramView))
+      {
+        this.jdField_a_of_type_Bfol.dismiss();
+        return;
       }
-      bdnw.a("SetAvatarRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      bdnw.a("SetAvatarRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "SetUserAvatar";
+      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131693383)))
+      {
+        QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
+        return;
+      }
+      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131693393)))
+      {
+        QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
+        return;
+      }
+    } while (!paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131698241)));
+    QidianProfileCardActivity.c(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bdud
  * JD-Core Version:    0.7.0.1
  */

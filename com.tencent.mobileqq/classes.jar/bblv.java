@@ -1,38 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
+import com.tencent.widget.BubblePopupWindow;
 
 public class bblv
-  implements avck
+  extends TextView
 {
-  final WeakReference<ProfileCardMoreInfoView> a;
-  
-  public bblv(ProfileCardMoreInfoView paramProfileCardMoreInfoView)
+  public bblv(QQCustomMenuNoIconLayout paramQQCustomMenuNoIconLayout, Context paramContext)
   {
-    this.a = new WeakReference(paramProfileCardMoreInfoView);
+    super(paramContext);
   }
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public boolean performClick()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCardMoreInfoView", 2, String.format("onGetIcon actionId=%s size=%s icon=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramBitmap }));
-    }
-    if (paramBitmap == null) {
-      QLog.e("ProfileCardMoreInfoView", 1, "onGetIcon decode icon fail.");
-    }
-    do
-    {
-      return;
-      paramBitmap = (ProfileCardMoreInfoView)this.a.get();
-    } while ((paramBitmap == null) || (paramBitmap.a == null) || (paramBitmap.a.a == null) || (paramBitmap.a.a.actionId != paramInt1));
-    paramBitmap.a(paramBitmap.a, true, new String[] { "map_key_sig" });
+    boolean bool = super.performClick();
+    this.a.a.b();
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bblv
  * JD-Core Version:    0.7.0.1
  */

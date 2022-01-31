@@ -1,27 +1,13 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import java.util.List;
 
-class qcc
-  implements DialogInterface.OnClickListener
+public class qcc
+  implements Cloneable
 {
-  qcc(qca paramqca, boolean paramBoolean) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      if (!qca.a(this.jdField_a_of_type_Qca)) {}
-    }
-    while (!(qca.a(this.jdField_a_of_type_Qca) instanceof Activity))
-    {
-      return;
-      this.jdField_a_of_type_Qca.b();
-      return;
-    }
-    npj.b(qca.a(this.jdField_a_of_type_Qca));
-    npa.a(qca.a(this.jdField_a_of_type_Qca), qca.a(this.jdField_a_of_type_Qca).o, qca.a(this.jdField_a_of_type_Qca).p, "");
-  }
+  public int a;
+  public long a;
+  public List<Long> a;
+  public int b;
+  public long b;
 }
 
 

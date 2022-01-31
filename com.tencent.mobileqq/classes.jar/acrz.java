@@ -1,51 +1,31 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity;
-import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import mqq.observer.BusinessObserver;
 
 public class acrz
-  extends bbcj
+  implements BusinessObserver
 {
-  acrz(ConfessHalfScreenActivity.ConfessBrowserFragment paramConfessBrowserFragment) {}
+  public acrz(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    WebView localWebView;
-    if (this.jdField_a_of_type_Bbat.a() != null)
+    if (paramInt == 2002)
     {
-      localWebView = this.jdField_a_of_type_Bbat.a();
-      localWebView.setId(2131313562);
-      if (this.b != -1) {
-        localWebView.setBackgroundColor(this.b);
-      }
-      Object localObject = (Activity)localWebView.getContext();
-      if ((localObject instanceof ConfessHalfScreenActivity))
+      if (paramBoolean) {}
+      try
       {
-        localObject = (ConfessHalfScreenActivity)localObject;
-        ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment, ConfessHalfScreenActivity.a((ConfessHalfScreenActivity)localObject));
+        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.2.1(this, paramBundle));
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("SwiftBrowserUIStyleHandler", 2, "initWebViewInContentView height=" + ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment));
+      catch (Throwable paramBundle)
+      {
+        QLog.e(QQNotifySettingBaseFragment.a(), 1, QLog.getStackTraceString(paramBundle));
       }
-      if (!(this.c instanceof RelativeLayout)) {
-        break label171;
-      }
-      localObject = new RelativeLayout.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment));
-      ((RelativeLayout.LayoutParams)localObject).addRule(12);
-      this.c.addView(localWebView, 0, (ViewGroup.LayoutParams)localObject);
-    }
-    for (;;)
-    {
-      this.c.setOnClickListener(new acsa(this));
+      this.a.b(3, "system error");
       return;
-      label171:
-      this.c.addView(localWebView, 0, new ViewGroup.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment)));
     }
   }
 }

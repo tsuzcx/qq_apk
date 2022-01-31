@@ -1,35 +1,46 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.app.MobileQQ;
 
-public abstract class bird
+public class bird
+  extends QIPCModule
 {
-  public final int a;
-  public final String a;
-  public final int b;
-  public String b;
-  
-  public bird(int paramInt1, String paramString, int paramInt2)
+  private bird()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
+    super("AECameraLaunchServer");
   }
   
-  @NonNull
-  public abstract bire a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  @NonNull
-  public abstract Class<? extends bire> a();
-  
-  public boolean a()
+  public static bird a()
   {
-    return false;
+    return birf.a();
   }
   
-  public String toString()
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    return "Filter:{" + this.jdField_a_of_type_JavaLangString + "}";
+    QLog.d("AECameraLaunchServer", 1, "in launch ae camera onCall.");
+    if (MobileQQ.sMobileQQ != null)
+    {
+      if (Build.VERSION.SDK_INT < 21)
+      {
+        bcpw.a(MobileQQ.sMobileQQ, MobileQQ.sMobileQQ.getResources().getString(2131717760), 1).a();
+        return null;
+      }
+      paramInt = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", birc.a.a());
+      if (paramInt == birc.a.a()) {
+        paramBundle.putInt("VIDEO_STORY_JUMP_TO_TYPE", 1);
+      }
+      paramBundle.putInt("AECAMERA_MODE", 200);
+      paramBundle.putInt("VIDEO_STORY_FROM_TYPE", paramInt);
+      paramBundle.putString("KEY_CURRENT_SELECT_ID", paramBundle.getString("widgetid"));
+      birg.a(MobileQQ.sMobileQQ, paramBundle);
+      return null;
+    }
+    QLog.e("AECameraLaunchServer", 1, "no mobile qq.");
+    return null;
   }
 }
 

@@ -1,24 +1,24 @@
-import android.text.TextUtils;
-import java.util.Collections;
-import java.util.concurrent.ConcurrentHashMap;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class tjk
+class tjk
+  extends SimpleJob<Object>
 {
-  public static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
-  
-  public static void a(String paramString)
+  tjk(tji paramtji, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    long l;
-    Long localLong;
-    do
-    {
-      return;
-      l = System.currentTimeMillis();
-      localLong = (Long)a.get(paramString);
-    } while ((localLong != null) && (Math.abs(l - localLong.longValue()) <= 120000L));
-    a.put(paramString, Long.valueOf(l));
-    sxs.a(Collections.singletonList(paramString));
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    if (this.a.jdField_a_of_type_Tjl == null) {
+      this.a.jdField_a_of_type_Tjl = new tjl(this.a, this.a.d);
+    }
+    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Tjl.jdField_a_of_type_JavaLangString;
+    tji.a(this.a);
+    return null;
   }
 }
 

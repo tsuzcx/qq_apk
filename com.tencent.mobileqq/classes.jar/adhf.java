@@ -1,15 +1,27 @@
 import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
 
 class adhf
-  implements apcz
+  implements bfoq
 {
-  adhf(adfw paramadfw) {}
+  adhf(adha paramadha, ChatMessage paramChatMessage, bfol parambfol) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = aonj.a();
-    apck.b(this.a.a, paramView);
-    apci.a("0X8007FA2");
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      adha.a(this.jdField_a_of_type_Adha, (MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      axqw.b(adha.a(this.jdField_a_of_type_Adha), "dc00899", "Grp_chatRecord", "", "remove_file", "tips_det", 0, 0, adha.a(this.jdField_a_of_type_Adha).a, "", "", "");
+      continue;
+      axqw.b(adha.a(this.jdField_a_of_type_Adha), "dc00899", "Grp_chatRecord", "", "remove_file", "Clk_cel", 0, 0, adha.a(this.jdField_a_of_type_Adha).a, "", "", "");
+    }
   }
 }
 

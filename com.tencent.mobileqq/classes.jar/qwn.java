@@ -1,18 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-
-public class qwn
-  extends alry
+class qwn
+  extends qwp
 {
-  public qwn(FastWebActivity paramFastWebActivity) {}
+  private final float a;
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public qwn(float paramFloat)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    raz.a(FastWebActivity.a(this.a), FastWebActivity.a(this.a), this.a.getApplicationContext());
-    if (paramBundle.getInt("color_note_curd_from_type") != 1) {
-      this.a.finish();
+    this.a = paramFloat;
+  }
+  
+  public long a(long paramLong)
+  {
+    long l = paramLong;
+    if (this.b > 0L) {
+      l = (this.a * (float)paramLong + (1.0F - this.a) * (float)this.b);
     }
+    return l;
+  }
+  
+  public String toString()
+  {
+    return "ExponentialPredictor(" + this.a + ')';
   }
 }
 

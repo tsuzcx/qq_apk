@@ -1,39 +1,94 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import android.util.SparseArray;
 
-public class aglx
-  implements TextWatcher
+public abstract class aglx
+  implements Cloneable
 {
-  public aglx(TransactionActivity paramTransactionActivity) {}
+  public static final aglx a;
+  public static final SparseArray<aglx> a;
+  public static final aglx b;
+  public static final aglx c;
+  public static final aglx d;
+  public static final aglx e;
+  public static final aglx f;
+  public static final aglx g;
+  public static final aglx h;
+  private boolean a;
   
-  public void afterTextChanged(Editable paramEditable)
+  static
   {
-    if (TransactionActivity.b(this.a).getText().length() > 4) {
-      if (!TransactionActivity.b(this.a).isEnabled())
-      {
-        TransactionActivity.b(this.a).setEnabled(true);
-        TransactionActivity.b(this.a).setClickable(true);
-        this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.enable", "", "", TransactionActivity.b(this.a), "");
-      }
-    }
-    while (!TransactionActivity.b(this.a).isEnabled()) {
-      return;
-    }
-    TransactionActivity.b(this.a).setClickable(false);
-    TransactionActivity.b(this.a).setEnabled(false);
-    this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.disable", "", "", TransactionActivity.b(this.a), "");
+    jdField_a_of_type_Aglx = new agly();
+    b = new aglz();
+    c = new agma();
+    d = new agmb();
+    e = new agmc();
+    f = new agmd();
+    g = new agme();
+    h = new agmf();
+    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    jdField_a_of_type_AndroidUtilSparseArray.put(0, b);
+    jdField_a_of_type_AndroidUtilSparseArray.put(1, d);
+    jdField_a_of_type_AndroidUtilSparseArray.put(2, e);
+    jdField_a_of_type_AndroidUtilSparseArray.put(3, f);
+    jdField_a_of_type_AndroidUtilSparseArray.put(4, h);
+    jdField_a_of_type_AndroidUtilSparseArray.put(5, jdField_a_of_type_Aglx);
+    jdField_a_of_type_AndroidUtilSparseArray.put(6, c);
+    jdField_a_of_type_AndroidUtilSparseArray.put(7, g);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public static aglx a(int paramInt)
+  {
+    aglx localaglx2 = (aglx)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    aglx localaglx1 = localaglx2;
+    if (localaglx2 != null) {}
+    try
+    {
+      localaglx1 = (aglx)localaglx2.clone();
+      return localaglx1;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      localCloneNotSupportedException.printStackTrace();
+    }
+    return localaglx2;
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if ((c()) && ("image/webp".equals(paramString))) {}
+    while ((d()) && (("image/heif".equals(paramString)) || ("image/heic".equals(paramString)))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean d()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aglx
  * JD-Core Version:    0.7.0.1
  */

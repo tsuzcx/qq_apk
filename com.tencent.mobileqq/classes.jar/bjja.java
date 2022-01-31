@@ -1,25 +1,25 @@
-public class bjja
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.animation.Transformation;
+import com.tencent.qphone.base.util.QLog;
+
+final class bjja
+  implements bbkq<Float>
 {
-  public atpr a;
+  bjja(View paramView) {}
   
-  public String a()
+  @TargetApi(11)
+  public void a(bbkk<Float> parambbkk, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    return null;
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if (this.a == null) {
-      this.a = new atpr();
+    if (QLog.isColorLevel()) {
+      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
     }
-    this.a.a = paramString1;
-    this.a.b = paramString2;
-    atpg.b(this, paramString1, paramString2);
-  }
-  
-  protected boolean a()
-  {
-    return false;
+    paramFloat = paramFloat1.floatValue();
+    if (this.a != null)
+    {
+      this.a.setAlpha(paramFloat);
+      this.a.invalidate();
+    }
   }
 }
 

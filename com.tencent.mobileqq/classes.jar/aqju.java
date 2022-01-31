@@ -1,50 +1,70 @@
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.CountDownLatch;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.BaseFragment;
 
-class aqju
-  implements aqnn
+public class aqju
 {
-  aqju(aqjs paramaqjs, File paramFile, Exception[] paramArrayOfException, long paramLong, CountDownLatch paramCountDownLatch) {}
+  public int a;
+  public View.OnClickListener a;
+  public BaseFragment a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b = true;
+  public String c;
+  public boolean c = false;
+  public String d;
+  public String e;
+  
+  public aqju(BaseFragment paramBaseFragment)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment = paramBaseFragment;
+  }
+  
+  public aqju a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
+  }
+  
+  public aqju a(String paramString)
+  {
+    this.d = paramString;
+    return this;
+  }
+  
+  public aqju a(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+    return this;
+  }
   
   public void a()
   {
-    QLog.d("shadow::CdnPmUpdater", 1, " download cdn success");
-    if (!aqjs.a(this.jdField_a_of_type_Aqjs).renameTo(this.jdField_a_of_type_JavaIoFile)) {
-      this.jdField_a_of_type_ArrayOfJavaLangException[0] = new RuntimeException(ajjy.a(2131635673) + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-    }
-    if (aqjs.b(this.jdField_a_of_type_Aqjs)) {}
-    for (String str = "33669797";; str = "33669802")
-    {
-      aqmd.b(str);
-      aqjs.a(this.jdField_a_of_type_Aqjs).opType("onDownloadComplete").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment.c();
     }
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangException[0] = new Exception("下载失败 retcode:" + paramInt1 + " httpCode:" + paramInt2 + " err:" + paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("shadow::CdnPmUpdater", 2, " onDownloadFailed ");
-    }
-    if (aqjs.b(this.jdField_a_of_type_Aqjs)) {}
-    for (paramString = "33669798";; paramString = "33669803")
-    {
-      aqmd.b(paramString);
-      aqjs.a(this.jdField_a_of_type_Aqjs).opType("onDownloadFailed").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-      return;
-    }
+    this.b = paramBoolean;
   }
   
-  public void a(long paramLong1, long paramLong2, int paramInt) {}
+  public aqju b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public aqju b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqju
  * JD-Core Version:    0.7.0.1
  */

@@ -1,168 +1,292 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
-import com.tencent.mobileqq.listentogether.data.ISong;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
+import QC.BubbleRsp;
+import QC.CommonRsp;
+import QC.FontRsp;
+import QC.SetFontBubbleRsp;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import com.tencent.mobileqq.hiboom.FontBubbleManager.1;
+import com.tencent.mobileqq.hiboom.FontBubbleManager.2;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.widget.XEditTextEx;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class aqwn
-  extends aqvp
+  implements Handler.Callback
 {
-  public aqwn(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
+  private akav jdField_a_of_type_Akav = new aqwq(this);
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private aqxz jdField_a_of_type_Aqxz;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private long[] jdField_a_of_type_ArrayOfLong;
+  private aqxz b;
   
-  protected void a(int paramInt, String paramString1, String paramString2)
+  public aqwn(QQAppInterface paramQQAppInterface)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(paramString1)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onListenTogetherJoinedCountChange msg=%s", new Object[] { paramString2 }));
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.jdField_a_of_type_JavaLangString = paramString2;
-    if (paramInt == 1)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akav);
+  }
+  
+  public static aqwn a(QQAppInterface paramQQAppInterface)
+  {
+    return ((bbqs)paramQQAppInterface.getManager(235)).a;
+  }
+  
+  private void a(Context paramContext)
+  {
+    bcpw.a(paramContext, 0, ajyc.a(2131704671), 2000).a();
+    int j;
+    if (this.b != null)
     {
-      this.a.jdField_a_of_type_Aqvd.a(paramString1);
-      return;
+      paramContext = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      j = this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.panelType;
+      if (j != 3) {
+        break label107;
+      }
     }
-    ListenTogetherPlayFragment.a(this.a, ListenTogetherPlayFragment.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.jdField_a_of_type_JavaLangString);
-  }
-  
-  protected void a(ListenTogetherSession paramListenTogetherSession)
-  {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(paramListenTogetherSession.e)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onUIModuleNeedRefresh session=%s", new Object[] { paramListenTogetherSession }));
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession = paramListenTogetherSession;
-    MusicInfo localMusicInfo = paramListenTogetherSession.a();
-    if ((paramListenTogetherSession.h != 2) || (paramListenTogetherSession.g == 3) || (paramListenTogetherSession.g == 4) || (localMusicInfo == null))
+    label107:
+    for (int i = this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.fontId;; i = this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.bubbleId)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("ListenTogetherPlayFragment", 2, "onExit");
-      }
-      bbmy.a(localFragmentActivity, 2131628196, 1).a();
-      this.a.getActivity().finish();
+      VasWebviewUtil.reportCommercialDrainage(paramContext, "aio_iconA", "Send", "", 1, 0, 0, "", Integer.toString(i), FontBubblePanelView.a(j), "1", "", "", "", 0, 0, 0, 0);
+      this.b = null;
+      this.jdField_a_of_type_Aqxz = null;
       return;
     }
-    a(localMusicInfo);
-    ListenTogetherPlayFragment.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong.a(), paramListenTogetherSession.g, this.a.jdField_a_of_type_JavaLangString);
   }
   
-  protected void a(ISong paramISong)
+  private void a(BaseChatPie paramBaseChatPie)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong.equals(paramISong)) {
+    if (QLog.isColorLevel()) {
+      QLog.d("FontBubbleManager", 2, "sendMsg");
+    }
+    String str = paramBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
+    if (TextUtils.isEmpty(str)) {
+      QLog.e("FontBubbleManager", 1, "sendMsg fail input is empty");
+    }
+    do
+    {
+      return;
+      aaok localaaok = new aaok();
+      paramBaseChatPie.a(localaaok);
+      localaaok.i = paramBaseChatPie.J;
+      paramBaseChatPie.J = false;
+      this.jdField_a_of_type_ArrayOfLong = aaod.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.a(), paramBaseChatPie.a(), str, new ArrayList(), localaaok);
+      paramBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+      paramBaseChatPie.aC();
+    } while (this.b == null);
+    int j = this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.panelType;
+    if (j == 3) {}
+    for (int i = this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.fontId;; i = this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.bubbleId)
+    {
+      VasWebviewUtil.reportCommercialDrainage(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "aio_iconA", "Send", "", 1, 0, 0, "", Integer.toString(i), FontBubblePanelView.a(j), "0", "", "", "", 0, 0, 0, 0);
+      this.b = null;
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onPlayMusicChange %s", new Object[] { paramISong }));
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong = paramISong;
-    this.a.jdField_a_of_type_JavaLangString = null;
-    ListenTogetherPlayFragment.a(this.a, paramISong);
   }
   
-  protected void a(String paramString1, String paramString2, boolean paramBoolean)
+  private void a(BaseChatPie paramBaseChatPie, long paramLong, int paramInt)
   {
-    int i = 0;
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong.a().equals(paramString1)) {
-      return;
+    FontBubble localFontBubble = this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble;
+    Object localObject2 = localFontBubble.title;
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = ajyc.a(2131704672);
     }
+    Object localObject3 = localFontBubble.msg;
+    localObject2 = localObject3;
+    if (TextUtils.isEmpty((CharSequence)localObject3)) {
+      localObject2 = "开通QQ会员即可使用该气泡";
+    }
+    String str = localFontBubble.btn;
+    localObject3 = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject3 = "开通QQ会员";
+    }
+    str = URLEncoder.encode("jsbridge://font/fontBubblePaySuccess?p={\"sid\":" + paramLong + ",\"id\":" + paramInt + "}");
+    str = localFontBubble.payUrl + "&return_url=" + str;
     if (QLog.isColorLevel()) {
-      if (paramString2 != null) {
-        break label120;
+      QLog.d("FontBubbleManager", 2, "url: " + str);
+    }
+    bbcv.a(paramBaseChatPie.a(), 230, (String)localObject1, (CharSequence)localObject2, ajyc.a(2131704673), (String)localObject3, new aqwo(this, paramBaseChatPie, str), new aqwp(this)).show();
+  }
+  
+  private boolean a(int paramInt1, int paramInt2)
+  {
+    if (this.b != null)
+    {
+      if (paramInt1 == 5L) {
+        if (paramInt2 != this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.fontId) {}
       }
+      while (paramInt2 == this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.bubbleId)
+      {
+        return true;
+        return false;
+      }
+      return false;
+    }
+    StringBuilder localStringBuilder = new StringBuilder().append(paramInt1).append(", ").append(paramInt2).append(" is not currentSelect: ");
+    if (this.b == null) {}
+    for (Object localObject = "null";; localObject = this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble)
+    {
+      QLog.e("FontBubbleManager", 1, localObject);
+      return false;
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akav);
+  }
+  
+  public void a(long paramLong)
+  {
+    long[] arrayOfLong;
+    int j;
+    int i;
+    if (this.jdField_a_of_type_ArrayOfLong != null)
+    {
+      arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+      j = arrayOfLong.length;
+      i = 0;
     }
     for (;;)
     {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onGetLyric %s %d", new Object[] { paramString1, Integer.valueOf(i) }));
-      this.a.jdField_a_of_type_JavaLangString = paramString2;
-      ListenTogetherPlayFragment.a(this.a, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.g, paramString2);
+      if (i < j)
+      {
+        if (arrayOfLong[i] != paramLong) {
+          break label59;
+        }
+        this.jdField_a_of_type_ArrayOfLong = null;
+        if (this.jdField_a_of_type_Aqxz != null) {
+          this.jdField_a_of_type_Aqxz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        }
+      }
       return;
-      label120:
-      i = paramString2.length();
+      label59:
+      i += 1;
     }
   }
   
-  protected void a(boolean paramBoolean, String paramString, int paramInt, List<String> paramList)
+  public void a(BaseChatPie paramBaseChatPie, Bundle paramBundle)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(paramString)) {
-      return;
-    }
+    int i = paramBundle.getInt("sid");
+    int j = paramBundle.getInt("id");
+    boolean bool = a(i, j);
     if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onGetGroupJoinedUsers uin=%s num=%d", new Object[] { paramString, Integer.valueOf(paramInt) }));
+      QLog.d("FontBubbleManager", 2, "onFontBubblePaySuccess: " + i + "," + j + "," + bool);
     }
-    ListenTogetherPlayFragment.a(this.a, paramList, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.jdField_a_of_type_JavaLangString);
+    if (this.b != null)
+    {
+      i = this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.panelType;
+      VasWebviewUtil.reportCommercialDrainage(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "aio_iconA", "OpenSvip", "", 1, 0, 0, "", "", FontBubblePanelView.a(i));
+      this.b = new aqxz(this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble);
+      this.b.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
   }
   
-  protected void c(int paramInt, String paramString)
+  public void a(BaseChatPie paramBaseChatPie, boolean paramBoolean, SetFontBubbleRsp paramSetFontBubbleRsp, int paramInt)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
+    if ((paramBoolean) && (paramSetFontBubbleRsp.stRet != null) && (paramSetFontBubbleRsp.stRet.ret == 0))
+    {
+      if ((this.b != null) && (this.b.jdField_a_of_type_Int == paramInt))
+      {
+        if (((this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.panelType == 3) && (paramSetFontBubbleRsp.stFontRsp.authRet == 0)) || ((this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.panelType == 4) && (paramSetFontBubbleRsp.stBubbleRsp.authRet == 0)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("FontBubbleManager", 2, "onSetFontBubble mClick success: " + this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble);
+          }
+          ThreadManagerV2.excute(new FontBubbleManager.2(this, paramBaseChatPie), 32, null, true);
+          return;
+        }
+        QLog.e("FontBubbleManager", 1, "onSetFontBubble mClick fail: " + paramSetFontBubbleRsp.stFontRsp.authRet + "," + paramSetFontBubbleRsp.stBubbleRsp.authRet + this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble);
+        if ((paramSetFontBubbleRsp.stFontRsp.authRet < 0) || (paramSetFontBubbleRsp.stBubbleRsp.authRet < 0))
+        {
+          a(paramBaseChatPie.a());
+          return;
+        }
+        if (this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.panelType == 3)
+        {
+          a(paramBaseChatPie, 5L, paramSetFontBubbleRsp.stFontRsp.fontID);
+          return;
+        }
+        a(paramBaseChatPie, 2L, paramSetFontBubbleRsp.stBubbleRsp.bubbleID);
+        return;
+      }
+      if ((this.jdField_a_of_type_Aqxz != null) && (this.jdField_a_of_type_Aqxz.jdField_a_of_type_Int == paramInt))
+      {
+        if ((paramSetFontBubbleRsp.stFontRsp.authRet != 0) || (paramSetFontBubbleRsp.stBubbleRsp.authRet != 0)) {
+          QLog.e("FontBubbleManager", 1, "onSetFontBubble failed," + " fontAuth:" + paramSetFontBubbleRsp.stFontRsp.authRet + " bubbleAuth:" + paramSetFontBubbleRsp.stBubbleRsp.authRet + this.jdField_a_of_type_Aqxz.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble);
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_Aqxz = null;
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.d("FontBubbleManager", 2, "onSetFontBubble mRestore success: " + this.jdField_a_of_type_Aqxz.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble);
+          }
+        }
+      }
+      QLog.e("FontBubbleManager", 1, "onSetFontBubble seq out of date," + paramSetFontBubbleRsp.stFontRsp.fontID + "," + paramSetFontBubbleRsp.stBubbleRsp.bubbleID + " fontAuth:" + paramSetFontBubbleRsp.stFontRsp.authRet + " bubbleAuth:" + paramSetFontBubbleRsp.stBubbleRsp.authRet);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onPauseListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
+    StringBuilder localStringBuilder = actn.a().append("onSetFontBubble failed,");
+    if ((paramSetFontBubbleRsp != null) && (paramSetFontBubbleRsp.stRet != null))
+    {
+      localStringBuilder.append(paramSetFontBubbleRsp.stFontRsp.fontID).append(",").append(paramSetFontBubbleRsp.stBubbleRsp.bubbleID);
+      localStringBuilder.append(" ret:");
+      localStringBuilder.append(paramSetFontBubbleRsp.stRet.ret);
+      localStringBuilder.append("err:");
+      localStringBuilder.append(paramSetFontBubbleRsp.stRet.err);
     }
-    bbmy.a(localFragmentActivity, 2131628205, 1).a();
+    QLog.e("FontBubbleManager", 1, localStringBuilder.toString());
+    if ((this.b != null) && (this.b.jdField_a_of_type_Int == paramInt)) {
+      QLog.e("FontBubbleManager", 1, "click failed: " + this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble);
+    }
+    if ((this.jdField_a_of_type_Aqxz != null) && (this.jdField_a_of_type_Aqxz.jdField_a_of_type_Int == paramInt)) {
+      QLog.e("FontBubbleManager", 1, "restore failed: " + this.jdField_a_of_type_Aqxz.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble);
+    }
+    a(paramBaseChatPie.a());
   }
   
-  protected void d(int paramInt, String paramString)
+  public void a(FontBubble paramFontBubble)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onResumeListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
-    }
-    bbmy.a(localFragmentActivity, 2131628209, 1).a();
+    ThreadManagerV2.excute(new FontBubbleManager.1(this, paramFontBubble), 32, null, true);
   }
   
-  protected void e(int paramInt, String paramString)
+  public boolean handleMessage(Message paramMessage)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
-      return;
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 1000: 
+      paramMessage = (Object[])paramMessage.obj;
+      this.jdField_a_of_type_Aqxz = new aqxz((FontBubble)paramMessage[0]);
+      this.b = new aqxz((FontBubble)paramMessage[1]);
+      this.b.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onCutListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
-    }
-    bbmy.a(localFragmentActivity, 2131628182, 1).a();
-  }
-  
-  protected void f(int paramInt, String paramString)
-  {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onChangePlayModeListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
-    }
-    bbmy.a(localFragmentActivity, 2131628206, 1).a();
+    a((BaseChatPie)paramMessage.obj);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqwn
  * JD-Core Version:    0.7.0.1
  */

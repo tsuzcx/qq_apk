@@ -1,22 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aehe
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  aehe(aegy paramaegy) {}
+  aehe(aehd paramaehd) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.W = false;
-    this.a.af = false;
-    this.a.d(this.a.o);
-    this.a.s = 1;
+    paramDialogInterface.dismiss();
+    aegu.W(this.a.a).setResult(8001);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

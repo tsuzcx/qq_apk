@@ -1,73 +1,66 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
-class astp
-  implements DialogInterface.OnClickListener
+public class astp
+  extends asto
 {
-  astp(aste paramaste, boolean paramBoolean) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public astp(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramDialogInterface = new Intent();
-      paramDialogInterface.setAction("android.intent.action.VIEW");
-      paramDialogInterface.setData(Uri.parse(aste.a(this.jdField_a_of_type_Aste).guideAppNowJumpUri));
-      this.jdField_a_of_type_Aste.a.startActivity(paramDialogInterface);
+    super(paramQQAppInterface);
+  }
+  
+  private void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
+  {
+    if ((paramHashMap == null) || (paramHashMap.isEmpty())) {
       return;
     }
-    if ("com.tencent.now".equals(aste.a(this.jdField_a_of_type_Aste).guideAppNowPackage))
+    Iterator localIterator = paramHashMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      paramDialogInterface = BaseApplicationImpl.getContext().getSharedPreferences("now_down_apk", 4);
-      if (paramDialogInterface.getInt("state", 0) == 1) {
-        try
+      ArrayList localArrayList = (ArrayList)paramHashMap.get((String)localIterator.next());
+      int i = 0;
+      while (i < localArrayList.size())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)localArrayList.get(i);
+        if (((localMessageRecord instanceof MessageForFile)) || ((localMessageRecord instanceof MessageForTroopFile)))
         {
-          apei.a(paramDialogInterface.getString("filePath", ""));
-          paramDialogInterface.edit().putInt("state", 0).apply();
-          return;
+          String str = ajyc.a(2131692397) + localMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+          localArrayList.set(i, this.a.a().a().a(localMessageRecord, str, true));
         }
-        catch (Exception paramDialogInterface)
-        {
-          QLog.e("NearbyProfileDisplayPanel", 1, paramDialogInterface, new Object[0]);
-          this.jdField_a_of_type_Aste.a(aste.a(this.jdField_a_of_type_Aste).guideAppNowDownloadUrl, "now.apk", "now_down_apk");
-          return;
-        }
+        i += 1;
       }
-      this.jdField_a_of_type_Aste.a(aste.a(this.jdField_a_of_type_Aste).guideAppNowDownloadUrl, "now.apk", "now_down_apk");
+    }
+  }
+  
+  public void a(asue paramasue, HashMap<String, ArrayList<MessageRecord>> paramHashMap, astr paramastr)
+  {
+    if (paramasue == null) {
       return;
     }
-    paramDialogInterface = aste.a(this.jdField_a_of_type_Aste).guideAppNowPackage.replaceAll("\\.", "_") + "_apk";
-    String str = aste.a(this.jdField_a_of_type_Aste).guideAppNowPackage.replaceAll("\\.", "_") + ".apk";
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences(paramDialogInterface, 4);
-    if (localSharedPreferences.getInt("state", 0) == 1) {
-      try
+    if ((paramasue.b == 8) || (paramasue.b == 9)) {}
+    for (paramasue = new apez(this.a, paramasue, paramHashMap, paramastr);; paramasue = new apex(this.a, paramasue, paramHashMap, paramastr))
+    {
+      this.a.a().a().a(paramasue, paramHashMap);
+      return;
+      if (paramasue.b == 2)
       {
-        apei.a(localSharedPreferences.getString("filePath", ""));
-        localSharedPreferences.edit().putInt("state", 0).apply();
-        return;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("NearbyProfileDisplayPanel", 1, localException, new Object[0]);
-        this.jdField_a_of_type_Aste.a(aste.a(this.jdField_a_of_type_Aste).guideAppNowDownloadUrl, str, paramDialogInterface);
+        a(paramHashMap);
+        paramastr.a(0, 2, paramasue);
         return;
       }
     }
-    this.jdField_a_of_type_Aste.a(aste.a(this.jdField_a_of_type_Aste).guideAppNowDownloadUrl, str, paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     astp
  * JD-Core Version:    0.7.0.1
  */

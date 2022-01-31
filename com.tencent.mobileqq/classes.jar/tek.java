@@ -1,15 +1,51 @@
-class tek
-  extends tcw
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.QimVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+
+public class tek
 {
-  tek(tdo paramtdo, String paramString1, String paramString2, boolean paramBoolean, tev paramtev)
+  public String a;
+  public String b;
+  public String c;
+  
+  public tek(qqstory_struct.QimVideoInfo paramQimVideoInfo)
   {
-    super(paramString1, paramString2, paramBoolean);
+    this.a = paramQimVideoInfo.qim_unionid.get().toStringUtf8();
+    this.b = paramQimVideoInfo.qim_feedID.get().toStringUtf8();
+    this.c = paramQimVideoInfo.qim_vid.get().toStringUtf8();
   }
   
-  public boolean b()
+  public static tek a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Tev.e = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
+      return null;
+    }
+    qqstory_struct.QimVideoInfo localQimVideoInfo = new qqstory_struct.QimVideoInfo();
+    try
+    {
+      localQimVideoInfo.mergeFrom(paramArrayOfByte);
+      return new tek(localQimVideoInfo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      veg.c("QimVideoInfoItem", "Error: parse db bytes error.", paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  public byte[] a()
+  {
+    qqstory_struct.QimVideoInfo localQimVideoInfo = new qqstory_struct.QimVideoInfo();
+    localQimVideoInfo.qim_vid.set(ByteStringMicro.copyFromUtf8(this.c));
+    localQimVideoInfo.qim_unionid.set(ByteStringMicro.copyFromUtf8(this.a));
+    localQimVideoInfo.qim_feedID.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localQimVideoInfo.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "QimVideoInfoItem{mOwnerUnionId='" + this.a + '\'' + ", mFeedId='" + this.b + '\'' + ", mVid='" + this.c + '\'' + '}';
   }
 }
 

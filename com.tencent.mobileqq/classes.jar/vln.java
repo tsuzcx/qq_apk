@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.utils.FileUtils.1;
+import android.graphics.Canvas;
+import android.view.MotionEvent;
 
-public class vln
-  implements DialogInterface.OnClickListener
+public abstract interface vln
 {
-  public vln(FileUtils.1 param1) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract boolean a();
+  
+  public abstract void b(Canvas paramCanvas);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

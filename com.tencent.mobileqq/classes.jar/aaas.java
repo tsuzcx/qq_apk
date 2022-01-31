@@ -1,95 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.widget.RotateSwitchImageView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import java.util.HashMap;
+import java.util.Observable;
 
 public class aaas
-  implements View.OnClickListener
+  extends Observable
 {
-  public aaas(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  private static aaas a;
+  public int a;
+  public HashMap<String, String> a;
   
-  public void onClick(View paramView)
+  public static aaas a()
   {
-    if (!(paramView instanceof RotateSwitchImageView)) {}
-    View localView2;
-    do
+    if (jdField_a_of_type_Aaas == null) {}
+    try
     {
-      do
-      {
-        return;
-        localView1 = AssociatedAccountManageActivity.a(this.a, paramView);
-        localView2 = AssociatedAccountManageActivity.b(this.a, paramView);
-        if (AssociatedAccountManageActivity.a(this.a) != null) {
-          break;
-        }
-        AssociatedAccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
-        AssociatedAccountManageActivity.a(this.a).b();
-        if (localView2 != null)
-        {
-          localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
-          ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.a(this.a) * 12.0F + AssociatedAccountManageActivity.b(this.a) * 75.0F));
-          localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-        if ((localView1 instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)localView1).b();
-        }
-      } while (!AppSetting.c);
-      paramView.setContentDescription(this.a.getString(2131625238));
-      return;
-      if (AssociatedAccountManageActivity.a(this.a) != paramView) {
-        break;
+      if (jdField_a_of_type_Aaas == null) {
+        jdField_a_of_type_Aaas = new aaas();
       }
-      AssociatedAccountManageActivity.a(this.a).a();
-      if (localView2 != null)
-      {
-        localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.c(this.a) * 12.0F));
-        localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      }
-      if ((localView1 instanceof ShaderAnimLayout)) {
-        ((ShaderAnimLayout)localView1).f();
-      }
-      AssociatedAccountManageActivity.a(this.a, null);
-    } while (!AppSetting.c);
-    paramView.setContentDescription(this.a.getString(2131654739));
-    return;
-    AssociatedAccountManageActivity.a(this.a).a();
-    Object localObject = AssociatedAccountManageActivity.b(this.a, AssociatedAccountManageActivity.a(this.a));
-    if (localObject != null)
-    {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
-      localLayoutParams.rightMargin = ((int)(AssociatedAccountManageActivity.d(this.a) * 12.0F));
-      ((View)localObject).setLayoutParams(localLayoutParams);
+      return jdField_a_of_type_Aaas;
     }
-    ((RotateSwitchImageView)paramView).b();
-    if (localView2 != null)
-    {
-      localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.e(this.a) * 12.0F + AssociatedAccountManageActivity.f(this.a) * 75.0F));
-      localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    }
-    if (AppSetting.c)
-    {
-      paramView.setContentDescription(this.a.getString(2131625238));
-      AssociatedAccountManageActivity.a(this.a).setContentDescription(this.a.getString(2131654739));
-    }
-    if ((localView1 instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)localView1).b();
-    }
-    View localView1 = AssociatedAccountManageActivity.a(this.a, AssociatedAccountManageActivity.a(this.a));
-    if ((localView1 instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)localView1).f();
-    }
-    AssociatedAccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
+    finally {}
+  }
+  
+  public void a(HashMap<String, String> paramHashMap)
+  {
+    paramHashMap.put("key_type", "t_held_thread");
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    setChanged();
+    notifyObservers();
+  }
+  
+  public void a(HashMap<String, String> paramHashMap, int paramInt)
+  {
+    paramHashMap.put("key_type", "t_drop_frame");
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.jdField_a_of_type_Int = paramInt;
+    setChanged();
+    notifyObservers();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaas
  * JD-Core Version:    0.7.0.1
  */

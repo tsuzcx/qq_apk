@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
-import arox;
-import arph;
+import aslb;
+import asll;
 import java.util.List;
 
 public class MsgBackupController$5
   implements Runnable
 {
-  public MsgBackupController$5(arox paramarox, List paramList, arph paramarph) {}
+  public MsgBackupController$5(aslb paramaslb, List paramList, asll paramasll) {}
   
   public void run()
   {
-    arox.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Arph, arox.b());
+    aslb.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Asll, aslb.b());
   }
 }
 

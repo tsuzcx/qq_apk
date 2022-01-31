@@ -3,7 +3,6 @@ package com.tencent.mobileqq.triton.jni;
 import android.content.res.AssetManager;
 import com.tencent.mobileqq.triton.api.TTChannel;
 import com.tencent.mobileqq.triton.api.http.NativeHttp;
-import com.tencent.mobileqq.triton.api.subpackage.NativeSubpackage;
 import com.tencent.mobileqq.triton.engine.TTEngine;
 import com.tencent.mobileqq.triton.engine.TTEngine.InspectorBridge;
 import com.tencent.mobileqq.triton.font.FontBitmapManager;
@@ -14,6 +13,17 @@ import com.tencent.mobileqq.triton.views.GameUserInfoBtnManager;
 
 public final class JNICaller$TTEngine
 {
+  public static int getProcessedMessageCount(TTEngine paramTTEngine)
+  {
+    try
+    {
+      int i = paramTTEngine.getProcessedMessageCount();
+      return i;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
+    return paramTTEngine.getProcessedMessageCount();
+  }
+  
   public static void interruptLoop(TTEngine paramTTEngine)
   {
     try
@@ -38,16 +48,16 @@ public final class JNICaller$TTEngine
     return paramTTEngine.nativeCanvasPresent();
   }
   
-  public static void nativeCreateTTApp(TTEngine paramTTEngine, RenderContext paramRenderContext, CanvasRecorder paramCanvasRecorder, TTChannel paramTTChannel, GameUserInfoBtnManager paramGameUserInfoBtnManager, GameLauncher paramGameLauncher, NativeHttp paramNativeHttp, FontBitmapManager paramFontBitmapManager, NativeSubpackage paramNativeSubpackage, TTEngine.InspectorBridge paramInspectorBridge)
+  public static void nativeCreateTTApp(TTEngine paramTTEngine, RenderContext paramRenderContext, CanvasRecorder paramCanvasRecorder, TTChannel paramTTChannel, GameUserInfoBtnManager paramGameUserInfoBtnManager, GameLauncher paramGameLauncher, NativeHttp paramNativeHttp, FontBitmapManager paramFontBitmapManager, TTEngine.InspectorBridge paramInspectorBridge)
   {
     try
     {
-      paramTTEngine.nativeCreateTTApp(paramRenderContext, paramCanvasRecorder, paramTTChannel, paramGameUserInfoBtnManager, paramGameLauncher, paramNativeHttp, paramFontBitmapManager, paramNativeSubpackage, paramInspectorBridge);
+      paramTTEngine.nativeCreateTTApp(paramRenderContext, paramCanvasRecorder, paramTTChannel, paramGameUserInfoBtnManager, paramGameLauncher, paramNativeHttp, paramFontBitmapManager, paramInspectorBridge);
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      paramTTEngine.nativeCreateTTApp(paramRenderContext, paramCanvasRecorder, paramTTChannel, paramGameUserInfoBtnManager, paramGameLauncher, paramNativeHttp, paramFontBitmapManager, paramNativeSubpackage, paramInspectorBridge);
+      paramTTEngine.nativeCreateTTApp(paramRenderContext, paramCanvasRecorder, paramTTChannel, paramGameUserInfoBtnManager, paramGameLauncher, paramNativeHttp, paramFontBitmapManager, paramInspectorBridge);
     }
   }
   
@@ -61,6 +71,19 @@ public final class JNICaller$TTEngine
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
       paramTTEngine.nativeDiposeTTApp();
+    }
+  }
+  
+  public static void nativeEnableJankTrace(TTEngine paramTTEngine, boolean paramBoolean)
+  {
+    try
+    {
+      paramTTEngine.nativeEnableJankTrace(paramBoolean);
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      paramTTEngine.nativeEnableJankTrace(paramBoolean);
     }
   }
   

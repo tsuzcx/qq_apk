@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_COMM.COMM.StCommonExt;
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -10,7 +10,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bcdu;
+import bdhv;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.mini.MiniAppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -286,7 +286,7 @@ public class PayJsPlugin
             try
             {
               paramString2.put("resultCode", 1000);
-              handleNativeResponseFail(paramInt, paramString1, paramString2, ajjy.a(2131642122));
+              handleNativeResponseFail(paramInt, paramString1, paramString2, ajyc.a(2131707907));
             }
             catch (JSONException paramString1)
             {
@@ -312,7 +312,7 @@ public class PayJsPlugin
             try
             {
               paramString2.put("resultCode", 1000);
-              handleNativeResponseFail(paramInt, paramString1, null, ajjy.a(2131642120));
+              handleNativeResponseFail(paramInt, paramString1, null, ajyc.a(2131707905));
             }
             catch (JSONException paramString1)
             {
@@ -352,7 +352,7 @@ public class PayJsPlugin
               if ((paramString2 != null) && (paramString2.config != null))
               {
                 paramString2 = this.jsPluginEngine.appBrandRuntime.appId + "_" + paramString2.config.verType;
-                paramJsRuntime = bcdu.b(paramString2);
+                paramJsRuntime = bdhv.b(paramString2);
                 AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApp().getSharedPreferences("keyMiniGamePayEnv", 4).edit().putString("keyMiniGamePayEnvAppidVertype", paramJsRuntime).commit();
                 localJSONObject.put("miniAppVertypeStr", paramString2);
               }
@@ -431,7 +431,7 @@ public class PayJsPlugin
       try
       {
         paramString1.put("resultCode", -4);
-        paramString1.put("resultMsg", ajjy.a(2131642119));
+        paramString1.put("resultMsg", ajyc.a(2131707904));
         handleNativeResponseFail(paramInt5, paramString3, paramString1, "");
         return;
       }
@@ -453,7 +453,7 @@ public class PayJsPlugin
       try
       {
         paramString1.put("resultCode", 1000);
-        handleNativeResponseFail(paramInt2, paramString3, null, ajjy.a(2131642121));
+        handleNativeResponseFail(paramInt2, paramString3, null, ajyc.a(2131707906));
         return;
       }
       catch (JSONException paramString1)

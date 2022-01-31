@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import vbj;
-import vbs;
+import vof;
+import voo;
 
 class DoodleTextureView$1
   implements Runnable
@@ -10,12 +10,12 @@ class DoodleTextureView$1
   
   public void run()
   {
-    vbs localvbs = (vbs)this.this$0.jdField_a_of_type_Vbj.a(102);
-    if (localvbs != null)
+    voo localvoo = (voo)this.this$0.jdField_a_of_type_Vof.a(102);
+    if (localvoo != null)
     {
-      localvbs.a();
-      localvbs.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
-      this.this$0.jdField_a_of_type_Vbj.h();
+      localvoo.a();
+      localvoo.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
+      this.this$0.jdField_a_of_type_Vof.h();
       this.this$0.a();
     }
   }

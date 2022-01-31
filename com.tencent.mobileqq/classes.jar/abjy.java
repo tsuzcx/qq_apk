@@ -1,21 +1,25 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.activity.JumpActivity;
 
-class abjy
-  implements View.OnLongClickListener
+public class abjy
+  implements aaqe
 {
-  abjy(abjx paramabjx, long paramLong) {}
+  public abjy(JumpActivity paramJumpActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public void a()
   {
-    babr.a(this.jdField_a_of_type_Abjx.a, 230).setTitle(this.jdField_a_of_type_Abjx.a.getString(2131654084)).setItems(2130903075, new abjz(this)).show();
-    return true;
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abjy
  * JD-Core Version:    0.7.0.1
  */

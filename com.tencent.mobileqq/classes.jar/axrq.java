@@ -1,14 +1,17 @@
-public abstract interface axrq
+class axrq
 {
-  public abstract void a();
+  public String a;
+  public String b;
   
-  public abstract boolean a();
-  
-  public abstract byte[] a(byte[] paramArrayOfByte);
+  axrq(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axrq
  * JD-Core Version:    0.7.0.1
  */

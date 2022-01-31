@@ -1,43 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class alxd
-  implements belq
+class alxd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public alxd(SearchResultActivity paramSearchResultActivity) {}
+  alxd(alwx paramalwx, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    SearchResultActivity.a(this.a).c(SearchResultActivity.a(this.a));
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    SearchResultActivity.a(this.a).a(SearchResultActivity.a(this.a));
-    if (badq.d(this.a)) {
-      SearchResultActivity.c(this.a);
-    }
-    for (;;)
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
     {
-      SearchResultActivity.a(this.a, System.currentTimeMillis());
-      return true;
-      SearchResultActivity.a(this.a).a(1);
-      paramView = Message.obtain();
-      paramView.what = 3;
-      SearchResultActivity.a(this.a).sendMessageDelayed(paramView, 1000L);
-    }
+      return;
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-this.jdField_a_of_type_Alwx.d * f);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_Alwx.g);
+    this.b.setAlpha(1.0F - f);
   }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    SearchResultActivity.a(this.a).b(SearchResultActivity.a(this.a));
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

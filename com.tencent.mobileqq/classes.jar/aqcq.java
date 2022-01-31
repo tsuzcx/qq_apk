@@ -1,25 +1,43 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.hiboom.FontBubble;
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class aqcq
-  implements arol<T, List<FontBubble>>
 {
-  public aqcq(FontBubblePanelView paramFontBubblePanelView) {}
+  private static aqcq jdField_a_of_type_Aqcq;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public List<FontBubble> a(T paramT)
+  public static aqcq a()
   {
-    paramT = FontBubblePanelView.a(this.a).a(FontBubblePanelView.a(this.a).a, paramT);
-    FontBubble localFontBubble = new FontBubble();
-    localFontBubble.viewType = 0;
-    paramT.add(localFontBubble);
-    return paramT;
+    if (jdField_a_of_type_Aqcq == null) {
+      jdField_a_of_type_Aqcq = new aqcq();
+    }
+    return jdField_a_of_type_Aqcq;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (jdField_a_of_type_Aqcq == null) {
+      paramString = null;
+    }
+    String str;
+    do
+    {
+      return paramString;
+      str = (String)jdField_a_of_type_Aqcq.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      paramString = str;
+    } while (!jdField_a_of_type_Aqcq.jdField_a_of_type_JavaUtilMap.isEmpty());
+    jdField_a_of_type_Aqcq = null;
+    return str;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqcq
  * JD-Core Version:    0.7.0.1
  */

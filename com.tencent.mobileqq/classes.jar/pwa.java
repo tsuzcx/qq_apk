@@ -1,104 +1,120 @@
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffColorFilter;
-import android.support.annotation.NonNull;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class pwa
   extends BaseAdapter
-  implements pvb<ObservableArrayList<ResultRecord>>
 {
-  private PorterDuffColorFilter jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter = new PorterDuffColorFilter(-1711276033, PorterDuff.Mode.SRC_ATOP);
-  private ObservableArrayList<ResultRecord> jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList = new ObservableArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  public pwa(ComponentContentRecommend paramComponentContentRecommend) {}
   
-  public pwa(@NonNull ObservableArrayList<ResultRecord> paramObservableArrayList)
+  public boolean areAllItemsEnabled()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList = paramObservableArrayList;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.addOnListChangedCallback(this);
-  }
-  
-  public void a()
-  {
-    int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size();
-    if (i > 0)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.remove(i - 1);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    notifyDataSetChanged();
-  }
-  
-  public void a(ObservableArrayList<ResultRecord> paramObservableArrayList)
-  {
-    notifyDataSetChanged();
-  }
-  
-  public void a(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2) {}
-  
-  public void a(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void b(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    notifyDataSetChanged();
-  }
-  
-  public void c(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    notifyDataSetChanged();
+    return false;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size();
+    return ComponentContentRecommend.a(this.a).size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.get(paramInt);
+    return ComponentContentRecommend.a(this.a).get(paramInt);
   }
   
   public long getItemId(int paramInt)
   {
-    return paramInt;
+    return 0L;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (paramView != null) {
-      paramViewGroup = (ReadInJoyHeadImageView)paramView.getTag();
+    RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)ComponentContentRecommend.a(this.a).get(paramInt);
+    ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a.put(Long.valueOf(localRecommendFollowInfo.uin), localRecommendFollowInfo);
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131562307, null, false);
+      paramViewGroup = new pwh(this.a);
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131367407));
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView = ((RingAvatarView)paramView.findViewById(2131374704));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367463));
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131377442));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365041));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131363545));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365269);
+      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      Object localObject = getItem(paramInt);
-      if ((localObject != null) && ((localObject instanceof ResultRecord))) {
-        paramViewGroup.setHeadImgByUin(((ResultRecord)localObject).a());
+      if (paramViewGroup != null) {}
+      try
+      {
+        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.a(new URL(localRecommendFollowInfo.headUrl));
+        pwb localpwb = new pwb(this, localRecommendFollowInfo);
+        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setOnClickListener(localpwb);
+        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setOnClickListener(localpwb);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localpwb);
+        if (localRecommendFollowInfo.isStar)
+        {
+          paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView.a();
+          if (!localRecommendFollowInfo.isVip) {
+            break label431;
+          }
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText(localRecommendFollowInfo.nickName);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localRecommendFollowInfo.recommendReason);
+          if (!localRecommendFollowInfo.isFollowed) {
+            break label443;
+          }
+          paramViewGroup.b.setText(ajyc.a(2131702339));
+          paramViewGroup.b.setTextColor(Color.parseColor("#777777"));
+          paramViewGroup.b.setBackgroundResource(2130848437);
+          paramViewGroup.b.setOnClickListener(new pwc(this, localRecommendFollowInfo));
+          paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
+          return paramView;
+          paramViewGroup = (pwh)paramView.getTag();
+        }
       }
-      int i = getCount();
-      paramViewGroup = paramView.findViewById(2131302276);
-      if ((!this.jdField_a_of_type_Boolean) || (paramInt != i - 1)) {
-        break;
+      catch (MalformedURLException localMalformedURLException)
+      {
+        for (;;)
+        {
+          QLog.e(ComponentContentRecommend.a, 2, "getView, followItem.headUrl = " + localRecommendFollowInfo.headUrl + ", e = " + QLog.getStackTraceString(localMalformedURLException));
+          localMalformedURLException.printStackTrace();
+          continue;
+          paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView.b();
+          continue;
+          label431:
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          continue;
+          label443:
+          paramViewGroup.b.setText(ajyc.a(2131702290));
+          paramViewGroup.b.setTextColor(-1);
+          paramViewGroup.b.setBackgroundResource(2130848406);
+          paramViewGroup.b.setCompoundDrawablePadding(actn.a(3.0F, this.a.getResources()));
+        }
       }
-      paramViewGroup.setVisibility(0);
-      return paramView;
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131494448, paramViewGroup, false);
-      paramViewGroup = (ReadInJoyHeadImageView)paramView.findViewById(2131302275);
-      paramView.setTag(paramViewGroup);
     }
-    paramViewGroup.setVisibility(4);
-    return paramView;
+  }
+  
+  public boolean isEnabled(int paramInt)
+  {
+    return false;
   }
 }
 

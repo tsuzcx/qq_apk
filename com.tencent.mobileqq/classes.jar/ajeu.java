@@ -1,31 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajeu
-  extends BroadcastReceiver
+class ajeu
+  implements ajnj
 {
-  private ajeu(BaseActivity2 paramBaseActivity2) {}
+  ajeu(ajet paramajet, boolean paramBoolean) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-    {
-      BaseActivity2.ab = false;
-      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.ab);
-    }
-    while (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
-      return;
-    }
-    BaseActivity2.ab = GesturePWDUtils.isAppOnForegroundByTasks(paramContext);
-    GesturePWDUtils.setAppForground(paramContext, BaseActivity2.ab);
+    this.jdField_a_of_type_Ajet.a(this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, paramInt1, paramArrayOfInt, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajeu
  * JD-Core Version:    0.7.0.1
  */

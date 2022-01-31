@@ -1,28 +1,28 @@
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.7.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class adrg
-  extends fs
+class adrg
+  implements aput
 {
-  adrg(adra paramadra) {}
+  adrg(adqy paramadqy, String paramString1, String paramString2, MessageRecord paramMessageRecord, String paramString3, bbwa parambbwa) {}
   
-  public void a(ChatMessage paramChatMessage, int paramInt) {}
-  
-  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((!paramBoolean) && (paramChatMessage != null))
-    {
-      paramChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
-      ThreadManager.excute(new TextItemBuilder.7.1(this, paramChatMessage), 128, null, true);
+    paramView = new Bundle();
+    paramView.putString(bbqw.i, this.jdField_a_of_type_JavaLangString);
+    paramView.putString(bbqw.c, this.b);
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
+      paramView.putString(bbqw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin);
     }
-    String str = this.a.a.c();
-    if (paramBoolean) {}
-    for (paramChatMessage = "1";; paramChatMessage = "0")
+    bbqw.a(this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adqy.jdField_a_of_type_AndroidContentContext, paramView);
+    String str = this.c;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {}
+    for (paramView = "0";; paramView = "1")
     {
-      VasWebviewUtil.reportCommercialDrainage(str, "Font_Mall", "0X800813C", "0", 0, 1, 1, null, paramChatMessage, "" + paramInt);
+      VasWebviewUtil.reportVipKeywords(str, paramView, "1", this.jdField_a_of_type_Bbwa.a(this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "", "", "");
       return;
     }
   }

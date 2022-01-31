@@ -1,46 +1,56 @@
 import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.ManageInfo;
+import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
 
 public class aauw
-  implements baqd
+  implements View.OnClickListener
 {
-  public aauw(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aauw(ChatSettingForTroop paramChatSettingForTroop, oidb_0xaf4.RspBody paramRspBody) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "ZanDoubleDialog: onLeftClick: ");
-    }
-    if (this.a.getIntent().hasExtra("troopUin")) {}
-    for (Object localObject = "1";; localObject = "0")
+    paramView = this.jdField_a_of_type_TencentImOidbCmd0xaf4Oidb_0xaf4$RspBody.manage_info.url.get();
+    Intent localIntent;
+    String str;
+    if ((paramView.startsWith("http")) || (paramView.startsWith("https")))
     {
-      VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "thumbup", "click_getit", "", 1, 0, 0, "", (String)localObject, "");
-      localObject = new Intent(this.a, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("fragmentStyle", 3);
-      ((Intent)localObject).putExtra("url", "https://m.vip.qq.com/freedom/dbzan.html?_nav_alpha=0");
-      ((Intent)localObject).putExtra("isTransparentTitle", true);
-      ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-      this.a.startActivity((Intent)localObject);
-      return;
+      localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, QQBrowserActivity.class);
+      str = paramView.replace("$GCODE$", this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin);
+      paramView = null;
+      int i = 0;
+      while (i < ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop).size())
+      {
+        Object localObject = paramView;
+        if (paramView == null) {
+          localObject = new StringBuilder("&mini_appids=");
+        }
+        ((StringBuilder)localObject).append(ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop).get(i));
+        if (i != ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop).size() - 1) {
+          ((StringBuilder)localObject).append(",");
+        }
+        i += 1;
+        paramView = (View)localObject;
+      }
+      if (paramView == null) {
+        break label233;
+      }
     }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "ZanDoubleDialog: onRightClick: ");
-    }
-    if (this.a.getIntent().hasExtra("troopUin")) {}
-    for (String str = "1";; str = "0")
+    label233:
+    for (paramView = str + paramView.toString();; paramView = str)
     {
-      VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "thumbup", "click_pay", "", 1, 0, 0, "", str, "");
-      baoz.a(this.a, "mvip.n.a.dbzan_dbzan", "CJCLUBT", 3, false, true);
-      FriendProfileCardActivity.a(this.a).set(true);
+      localIntent.putExtra("url", paramView);
+      localIntent.putExtra("webStyle", "noBottomBar");
+      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.startActivity(localIntent);
+      MiniProgramLpReportDC04239.reportByQQqunInfo("qun", "qun_info", "click_set", this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin);
       return;
     }
   }

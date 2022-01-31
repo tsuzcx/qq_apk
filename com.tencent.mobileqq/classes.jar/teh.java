@@ -1,17 +1,18 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-
-class teh
-  extends tcq
+public class teh
 {
-  teh(tdo paramtdo, StoryVideoItem paramStoryVideoItem, tex paramtex)
-  {
-    super(paramStoryVideoItem);
-  }
+  public final String a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
   
-  public boolean b()
+  public teh(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_Tex.e = ((String)a("result"));
-    return true;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
   }
 }
 

@@ -1,27 +1,17 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.AnimationView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class aeam
-  extends acju
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public long a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public AnimationView a;
-  public RelativeLayout b;
-  public TextView b;
-  public AnimationView b;
-  public String b = "";
-  public RelativeLayout c;
-  public RelativeLayout d;
-  public RelativeLayout e;
-  public RelativeLayout f;
-  public RelativeLayout g;
+  public aeam(SixCombolEffectView paramSixCombolEffectView, aeay paramaeay) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.jdField_a_of_type_Aeay.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
+  }
 }
 
 

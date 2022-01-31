@@ -1,119 +1,375 @@
-import android.os.Message;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.lang.ref.WeakReference;
 import java.util.Iterator;
-import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class anvr
-  extends ajlg
 {
-  public anvr(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  private static anvr jdField_a_of_type_Anvr;
+  CopyOnWriteArrayList<WeakReference<anwe>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  CopyOnWriteArrayList<WeakReference<anwf>> b = new CopyOnWriteArrayList();
+  CopyOnWriteArrayList<WeakReference<anwg>> c = new CopyOnWriteArrayList();
   
-  protected void a(anws paramanws, boolean paramBoolean, int paramInt)
+  public static anvr a()
   {
-    super.a(paramanws, paramBoolean, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, pushTime=" + paramInt + "from_type=" + this.a.jdField_b_of_type_Int);
-    }
-    if (paramanws == null)
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, nearbyUser=null!!");
+      if (jdField_a_of_type_Anvr == null) {
+        jdField_a_of_type_Anvr = new anvr();
       }
-      if ((this.a.jdField_b_of_type_Int == 0) && (paramanws != null) && (!this.a.a(paramanws, this.a.jdField_a_of_type_JavaUtilList)))
-      {
-        this.a.jdField_a_of_type_JavaUtilList.add(paramanws);
-        if (QLog.isColorLevel()) {
-          QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, mhasShowList=" + this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() + "mNeedShowList.size()" + this.a.d.size());
-        }
-        if (this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() != this.a.d.size()) {
-          break label267;
-        }
-        Face2FaceAddFriendActivity.a(this.a, paramanws);
-      }
+      anvr localanvr = jdField_a_of_type_Anvr;
+      return localanvr;
     }
-    for (;;)
+    finally {}
+  }
+  
+  public void a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
     {
-      paramanws = this.a;
-      paramanws.j += 1;
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    }
+    synchronized (this.b)
+    {
+      this.b.clear();
       return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, nearbyUser=" + paramanws.e);
-      break;
-      label267:
-      Message localMessage = Face2FaceAddFriendActivity.a(this.a).obtainMessage();
-      localMessage.what = 10;
-      localMessage.obj = paramanws;
-      Face2FaceAddFriendActivity.a(this.a).sendEmptyMessageDelayed(10, this.a.a());
+      localObject1 = finally;
+      throw localObject1;
     }
   }
   
-  protected void a(boolean paramBoolean, List<anws> paramList, int paramInt1, int paramInt2)
+  public void a(anwe paramanwe)
   {
-    super.a(paramBoolean, paramList, paramInt1, paramInt2);
-    if (paramBoolean)
-    {
-      this.a.e = 1;
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList heartBeatTime=" + paramInt2 + "from_type=" + this.a.jdField_b_of_type_Int + "reqInterval=" + paramInt1 + "好友列表返回isSuccess=" + paramBoolean);
-      }
-      if (paramList == null) {
-        break label241;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList size=" + paramList.size());
-      }
-    }
-    for (;;)
-    {
-      int i = paramInt1;
-      if (paramInt1 < 0) {
-        i = 2;
-      }
-      long l = System.currentTimeMillis() - anwf.c;
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList interval=" + l + "leaveFaceTofaceTime=" + anwf.c);
-      }
-      if ((l > i * 1000) || (anwf.c == 0L)) {
-        break label259;
-      }
-      Face2FaceAddFriendActivity.a(this.a, i * 1000 - l);
+    if (paramanwe == null) {
       return;
-      this.a.e = 2;
-      break;
-      label241:
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList is null");
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext()) {
+        if (((WeakReference)localIterator.next()).get() == paramanwe) {
+          return;
+        }
       }
     }
-    label259:
-    if (paramInt2 > 0) {
-      Face2FaceAddFriendActivity.h = paramInt2 * 1000;
+    paramanwe = new WeakReference(paramanwe);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramanwe);
+  }
+  
+  public void a(anwf paramanwf)
+  {
+    if (paramanwf == null) {
+      return;
     }
-    if (!this.a.jdField_b_of_type_Boolean) {
-      Face2FaceAddFriendActivity.c(this.a);
+    synchronized (this.b)
+    {
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext()) {
+        if (((WeakReference)localIterator.next()).get() == paramanwf) {
+          return;
+        }
+      }
     }
-    this.a.jdField_b_of_type_Boolean = true;
-    if ((this.a.jdField_b_of_type_Int == 0) && (paramList != null) && (paramList.size() > 0)) {
-      paramList = paramList.iterator();
+    paramanwf = new WeakReference(paramanwf);
+    this.b.add(paramanwf);
+  }
+  
+  public void a(anwg paramanwg)
+  {
+    if (paramanwg == null) {
+      return;
+    }
+    synchronized (this.c)
+    {
+      Iterator localIterator = this.c.iterator();
+      while (localIterator.hasNext()) {
+        if (((WeakReference)localIterator.next()).get() == paramanwg) {
+          return;
+        }
+      }
+    }
+    paramanwg = new WeakReference(paramanwg);
+    this.c.add(paramanwg);
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage)
+  {
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      anwf localanwf = (anwf)((WeakReference)localIterator.next()).get();
+      if (localanwf != null) {
+        localanwf.a(paramEmoticonPackage);
+      }
+    }
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  {
+    if (paramEmoticonPackage == null) {}
+    for (;;)
+    {
+      return;
+      if (this.b != null)
+      {
+        Iterator localIterator = this.b.iterator();
+        while (localIterator.hasNext())
+        {
+          anwf localanwf = (anwf)((WeakReference)localIterator.next()).get();
+          if (localanwf != null) {
+            localanwf.b(paramEmoticonPackage, paramInt);
+          }
+        }
+      }
+    }
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    if (paramEmoticonPackage == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        anwe localanwe = (anwe)((WeakReference)localIterator.next()).get();
+        if (localanwe != null) {
+          localanwe.a(paramEmoticonPackage, paramInt1, paramInt2);
+        }
+      }
+    }
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.b != null)
+    {
+      if (paramInt2 != 0) {}
+      for (;;)
+      {
+        synchronized (this.b)
+        {
+          Iterator localIterator = this.b.iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          anwf localanwf = (anwf)((WeakReference)localIterator.next()).get();
+          if (localanwf == null) {
+            continue;
+          }
+          localanwf.a(paramEmoticonPackage, paramInt1, paramInt3);
+        }
+        paramInt3 = 0;
+      }
+    }
+  }
+  
+  protected void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramEmoticonPackage == null) || (paramQQAppInterface == null)) {
+      return;
+    }
+    if ((paramEmoticonPackage.status == 2) && (anzm.a(paramEmoticonPackage.updateFlag))) {
+      axqw.b(paramQQAppInterface, "CliOper", "", "", "ep_mall", "Clk_updatepkg_fail", 0, 0, paramEmoticonPackage.epId, "" + paramEmoticonPackage.localVersion, "" + paramEmoticonPackage.latestVersion, "");
     }
     for (;;)
     {
-      anwq localanwq;
-      if (paramList.hasNext())
+      if ((paramInt1 != 19) && (paramInt1 != 20))
       {
-        localanwq = (anwq)paramList.next();
-        if (!this.a.jdField_a_of_type_JavaUtilList.contains(localanwq)) {}
+        veg.e("EmojiListenerManager", "notifyPackageFail ep.id=" + paramEmoticonPackage.epId + " error: " + paramInt1);
+        ((askd)paramQQAppInterface.getManager(14)).a(paramEmoticonPackage);
       }
-      else
+      paramQQAppInterface = this.b.iterator();
+      while (paramQQAppInterface.hasNext())
       {
-        Face2FaceAddFriendActivity.d(this.a);
-        return;
+        anwf localanwf = (anwf)((WeakReference)paramQQAppInterface.next()).get();
+        if (localanwf != null) {
+          localanwf.a(paramEmoticonPackage, paramInt2);
+        }
       }
-      this.a.jdField_a_of_type_JavaUtilList.add(localanwq);
+      paramEmoticonPackage.status = 0;
+    }
+    if (paramEmoticonPackage.type == 1) {}
+    for (paramInt1 = 5;; paramInt1 = 4)
+    {
+      askd.e(String.valueOf(paramInt2), paramInt1);
+      return;
+    }
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  {
+    if (paramEmoticonPackage == null) {}
+    for (;;)
+    {
+      return;
+      if (this.c != null)
+      {
+        Iterator localIterator = this.c.iterator();
+        while (localIterator.hasNext())
+        {
+          anwg localanwg = (anwg)((WeakReference)localIterator.next()).get();
+          if (localanwg != null) {
+            localanwg.a(paramEmoticonPackage, paramInt, paramBundle);
+          }
+        }
+      }
+    }
+  }
+  
+  protected void a(EmoticonPackage paramEmoticonPackage, int paramInt, QQAppInterface paramQQAppInterface)
+  {
+    a(paramEmoticonPackage, -1, paramInt, paramQQAppInterface);
+  }
+  
+  protected void a(EmoticonPackage paramEmoticonPackage, QQAppInterface paramQQAppInterface)
+  {
+    if (paramEmoticonPackage == null) {}
+    do
+    {
+      return;
+      c(paramEmoticonPackage);
+      paramQQAppInterface = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 0);
+      String str = paramQQAppInterface.getString("LAST_ADD_EMO_PACKAGE", "");
+      str = str + "|" + paramEmoticonPackage.epId;
+      paramQQAppInterface.edit().putString("LAST_ADD_EMO_PACKAGE", str).commit();
+    } while (3 != paramEmoticonPackage.jobType);
+    paramQQAppInterface.edit().putBoolean("LAST_ADD_EMO_PACKAGE_MAGIC", true).commit();
+  }
+  
+  public void b(anwe paramanwe)
+  {
+    if (paramanwe == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if (localWeakReference.get() == paramanwe) {
+          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localWeakReference);
+        }
+      }
+    }
+  }
+  
+  public void b(anwf paramanwf)
+  {
+    if (paramanwf == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if (localWeakReference.get() == paramanwf) {
+          this.b.remove(localWeakReference);
+        }
+      }
+    }
+  }
+  
+  public void b(anwg paramanwg)
+  {
+    if (paramanwg == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.c.iterator();
+      while (localIterator.hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if (localWeakReference.get() == paramanwg) {
+          this.c.remove(localWeakReference);
+        }
+      }
+    }
+  }
+  
+  public void b(EmoticonPackage paramEmoticonPackage)
+  {
+    if (paramEmoticonPackage == null) {}
+    for (;;)
+    {
+      return;
+      anzj.a(paramEmoticonPackage.epId);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        anwe localanwe = (anwe)((WeakReference)localIterator.next()).get();
+        if (localanwe != null) {
+          localanwe.a(paramEmoticonPackage);
+        }
+      }
+    }
+  }
+  
+  protected void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    if (paramEmoticonPackage == null) {
+      return;
+    }
+    synchronized (this.b)
+    {
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext())
+      {
+        anwf localanwf = (anwf)((WeakReference)localIterator.next()).get();
+        if (localanwf != null) {
+          localanwf.b(paramEmoticonPackage, paramInt1, paramInt2);
+        }
+      }
+    }
+  }
+  
+  protected void c(EmoticonPackage paramEmoticonPackage)
+  {
+    if (paramEmoticonPackage == null) {
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      anwe localanwe = (anwe)((WeakReference)localIterator.next()).get();
+      if (localanwe != null) {
+        localanwe.b(paramEmoticonPackage);
+      }
+    }
+    if (paramEmoticonPackage.type == 1) {}
+    for (int i = 5;; i = 4)
+    {
+      askd.c("0", i);
+      return;
+    }
+  }
+  
+  protected void d(EmoticonPackage paramEmoticonPackage)
+  {
+    anzj.a(paramEmoticonPackage.epId);
+    synchronized (this.b)
+    {
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext())
+      {
+        anwf localanwf = (anwf)((WeakReference)localIterator.next()).get();
+        if (localanwf != null) {
+          localanwf.a(paramEmoticonPackage, 0);
+        }
+      }
+    }
+    if (paramEmoticonPackage.type == 1) {}
+    for (int i = 5;; i = 4)
+    {
+      askd.e("0", i);
+      return;
     }
   }
 }

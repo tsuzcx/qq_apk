@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.emosm.web;
 
-import ajjy;
+import ajyc;
 import android.content.res.Resources;
-import aneb;
-import bbmy;
+import anuj;
+import bcpw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class MessengerService$8$1
   implements Runnable
 {
-  public MessengerService$8$1(aneb paramaneb) {}
+  public MessengerService$8$1(anuj paramanuj) {}
   
   public void run()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)MessengerService.i(this.a.a);
-    bbmy.a(localQQAppInterface.getApplication(), ajjy.a(2131640888), 0).b(localQQAppInterface.getApp().getResources().getDimensionPixelSize(2131167766));
+    bcpw.a(localQQAppInterface.getApplication(), ajyc.a(2131706673), 0).b(localQQAppInterface.getApp().getResources().getDimensionPixelSize(2131298865));
   }
 }
 

@@ -1,36 +1,53 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class apxz
-  implements ArkViewImplement.LoadCallback
+  implements bfor
 {
-  public apxz(QQGamePadFaceFragment paramQQGamePadFaceFragment) {}
+  public apxz(SendBottomBar paramSendBottomBar) {}
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public void a(View paramView, int paramInt, String paramString)
   {
-    onLoadState(paramInt1);
-  }
-  
-  public void onLoadState(int paramInt)
-  {
-    if ((QLog.isColorLevel()) || (paramInt == -1)) {
-      QLog.d("QQGamePadFaceFragment", 2, new Object[] { "onLoadFinish, ret=", Integer.valueOf(paramInt), ", ", QQGamePadFaceFragment.a(this.a) });
+    if (paramString.equals(ajyc.a(2131713782)))
+    {
+      paramView = apue.a("排序方式:\n时间", ajyc.a(2131713791), null);
+      SendBottomBar.a(this.a).setText(paramView);
+      if (SendBottomBar.a(this.a).g() == 0) {
+        return;
+      }
+      SendBottomBar.a(this.a).b(0);
     }
-    if (paramInt == 1) {
-      QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
-    }
-    while (paramInt != -1) {
+    for (;;)
+    {
+      this.a.a.dismiss();
       return;
+      if (paramString.equals(ajyc.a(2131713811)))
+      {
+        paramView = apue.a("排序方式:\n大小", ajyc.a(2131713785), null);
+        SendBottomBar.a(this.a).setText(paramView);
+        if (SendBottomBar.a(this.a).g() == 1) {
+          break;
+        }
+        SendBottomBar.a(this.a).b(1);
+        continue;
+      }
+      if (paramString.equals(ajyc.a(2131713784)))
+      {
+        paramView = apue.a("排序方式:\n类型", ajyc.a(2131713807), null);
+        SendBottomBar.a(this.a).setText(paramView);
+        if (SendBottomBar.a(this.a).g() == 2) {
+          break;
+        }
+        SendBottomBar.a(this.a).b(2);
+      }
     }
-    QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
-    QQGamePadFaceFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apxz
  * JD-Core Version:    0.7.0.1
  */

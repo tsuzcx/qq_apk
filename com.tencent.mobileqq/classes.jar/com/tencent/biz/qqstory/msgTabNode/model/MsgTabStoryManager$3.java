@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
 import com.tencent.biz.qqstory.database.MsgTabNodeEntity;
-import stf;
+import tgb;
 
 public class MsgTabStoryManager$3
   implements Runnable
 {
-  public MsgTabStoryManager$3(stf paramstf, MsgTabNodeEntity paramMsgTabNodeEntity) {}
+  public MsgTabStoryManager$3(tgb paramtgb, MsgTabNodeEntity paramMsgTabNodeEntity) {}
   
   public void run()
   {

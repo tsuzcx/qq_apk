@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import afiu;
-import afjl;
+import afur;
+import afvi;
 
 public class SDKEmotionSettingManager$18
   implements Runnable
 {
-  public SDKEmotionSettingManager$18(afiu paramafiu, String paramString, int paramInt) {}
+  public SDKEmotionSettingManager$18(afur paramafur, String paramString, int paramInt) {}
   
   public void run()
   {
-    afiu.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    afur.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

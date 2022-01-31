@@ -1,27 +1,158 @@
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.HotchatSCHelper.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.hiddenchat.HiddenChatSettingFragment;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 
 public class ajyx
-  extends ajfo
+  implements ajzc, Handler.Callback
 {
-  public ajyx(HiddenChatSettingFragment paramHiddenChatSettingFragment) {}
+  ajyy a;
+  public ajyz a;
+  public Handler a;
+  public QQAppInterface a;
+  public String a;
+  public boolean a;
+  public boolean b;
   
-  protected void onSetHiddenSession(boolean paramBoolean, int paramInt)
+  public ajyx(QQAppInterface paramQQAppInterface, ajyy paramajyy, String paramString)
   {
-    super.onSetHiddenSession(paramBoolean, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("HiddenChatSetting", 2, "onSetHiddenSession " + paramBoolean + " type=" + paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Ajyz = ((ajyz)paramQQAppInterface.getManager(123));
+    this.jdField_a_of_type_Ajyy = paramajyy;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsHandler = new bfnk(Looper.getMainLooper(), this);
+    if (QLog.isDevelopLevel()) {
+      atbp.a("HotchatSCMng", "HotchatSCHelper", new Object[] { paramString, this.jdField_a_of_type_Ajyy });
     }
-    if (paramInt == 42318) {
-      if (!paramBoolean) {
-        HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.a(this.a), ajyy.a(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
-      }
+  }
+  
+  public static long a()
+  {
+    long l1 = NetConnInfoCenter.getServerTimeMillis();
+    if (QLog.isColorLevel())
+    {
+      long l2 = System.currentTimeMillis();
+      atbp.a("HotchatSCMng", new Object[] { "getCurTime", Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(Math.abs(l2 - l1)) });
     }
-    while ((paramInt != 42319) || (paramBoolean)) {
+    return l1;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Ajyz.b(this);
+    if (ajyz.jdField_a_of_type_Boolean) {
+      atbp.a("HotchatSCMng", "stopCheck", new Object[0]);
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (ajyz.jdField_a_of_type_Boolean) {
+      atbp.a("HotchatSCMng", "startCheckDelay", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Long.valueOf(paramLong), Boolean.valueOf(this.jdField_a_of_type_Ajyz.b) });
+    }
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, paramLong);
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_Ajyy = null;
+    if (ajyz.jdField_a_of_type_Boolean) {
+      atbp.a("HotchatSCMng", "destroy", new Object[0]);
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    if (ajyz.jdField_a_of_type_Boolean) {
+      atbp.a("HotchatSCMng", "startCheck", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Long.valueOf(paramLong), Boolean.valueOf(this.jdField_a_of_type_Ajyz.b) });
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+    if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.b(this.a), ajyy.b(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
+    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Ajyz.b)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, paramLong);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Ajyz.a(this);
+      return;
+      ThreadManager.post(new HotchatSCHelper.1(this, paramLong, System.currentTimeMillis()), 8, null, true);
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return true;
+    }
+    long l2;
+    if (paramMessage.what == 0)
+    {
+      l2 = a();
+      paramMessage = this.jdField_a_of_type_Ajyz.a(this.jdField_a_of_type_JavaLangString, 0, l2);
+      if (ajyz.jdField_a_of_type_Boolean) {
+        atbp.a("HotchatSCMng", "MSG_GET_NOTE_TOSHOW", new Object[] { "cur", paramMessage });
+      }
+      if (this.jdField_a_of_type_Ajyy != null) {
+        if (paramMessage != null)
+        {
+          paramMessage.jdField_a_of_type_Boolean = this.jdField_a_of_type_Ajyy.a(paramMessage);
+          label87:
+          if (paramMessage == null) {
+            break label277;
+          }
+        }
+      }
+    }
+    label277:
+    for (long l1 = paramMessage.b - l2;; l1 = 0L)
+    {
+      if (l1 > 0L)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, l1 + 100L);
+        return true;
+        this.jdField_a_of_type_Ajyy.a(null);
+        break label87;
+        if (!ajyz.jdField_a_of_type_Boolean) {
+          break label87;
+        }
+        atbp.a("HotchatSCMng", "MSG_GET_NOTE_TOSHOW", new Object[] { "listener is null" });
+        break label87;
+      }
+      paramMessage = this.jdField_a_of_type_Ajyz.a(this.jdField_a_of_type_JavaLangString, 2, l2);
+      if (ajyz.jdField_a_of_type_Boolean) {
+        atbp.a("HotchatSCMng", "MSG_GET_NOTE_TOSHOW", new Object[] { "next", paramMessage });
+      }
+      if (paramMessage != null)
+      {
+        l1 = Math.max(60000L, paramMessage.jdField_a_of_type_Long - l2);
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, l1);
+        return true;
+      }
+      this.jdField_a_of_type_Boolean = false;
+      if (!ajyz.jdField_a_of_type_Boolean) {
+        break;
+      }
+      atbp.a("HotchatSCMng", "MSG_GET_NOTE_TOSHOW", new Object[] { "stop check" });
+      return true;
+      if (paramMessage.what != 2) {
+        break;
+      }
+      b(100L);
+      return true;
+    }
   }
 }
 

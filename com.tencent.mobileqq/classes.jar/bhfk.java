@@ -1,28 +1,23 @@
-class bhfk
-  implements bhlc
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastOneShow;
+
+public final class bhfk
+  implements Parcelable.Creator<BroadcastOneShow>
 {
-  bhfk(bhff parambhff) {}
-  
-  public void b()
+  public BroadcastOneShow a(Parcel paramParcel)
   {
-    bhff.a(this.a).d();
-    bhff.a(this.a).a();
-    bhff.a(this.a).a(bhff.a(this.a));
+    return new BroadcastOneShow(paramParcel);
   }
   
-  public void bc_()
+  public BroadcastOneShow[] a(int paramInt)
   {
-    bhff.a(this.a).d();
-  }
-  
-  public void c()
-  {
-    bhff.a(this.a).d();
+    return new BroadcastOneShow[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhfk
  * JD-Core Version:    0.7.0.1
  */

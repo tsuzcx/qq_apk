@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFollowManager;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 class qmc
-  implements qlk<qln>
+  extends ClickableSpan
 {
-  qmc(qma paramqma) {}
+  qmc(qly paramqly) {}
   
-  public void a(qln paramqln)
+  public void onClick(View paramView)
   {
-    qma.a(this.a).b(paramqln.a());
+    qls.j(this.a.a, true);
   }
 }
 

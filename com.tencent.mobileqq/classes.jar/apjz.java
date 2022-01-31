@@ -1,20 +1,6 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.forward.ForwardPhotoOption;
-
-public class apjz
-  implements apib
+public abstract interface apjz
 {
-  public apjz(ForwardPhotoOption paramForwardPhotoOption) {}
-  
-  public void a()
-  {
-    ForwardPhotoOption.a(this.a).a.setVisibility(0);
-  }
-  
-  public void b()
-  {
-    ForwardPhotoOption.a(this.a).a.setVisibility(8);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -1,9 +1,8 @@
-class adgj
-  implements begy
+public abstract interface adgj
 {
-  adgj(adgi paramadgi) {}
+  public abstract void a();
   
-  public void onDismiss() {}
+  public abstract void b();
 }
 
 

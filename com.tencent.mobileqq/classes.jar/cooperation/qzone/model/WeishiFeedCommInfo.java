@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfwq;
+import bhfb;
 
 public class WeishiFeedCommInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiFeedCommInfo> CREATOR = new bfwq();
+  public static final Parcelable.Creator<WeishiFeedCommInfo> CREATOR = new bhfb();
   public int appid;
   public String cellId;
   public String curlikekey;

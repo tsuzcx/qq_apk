@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.content.SharedPreferences;
-import awqx;
+import axqw;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -21,11 +21,11 @@ class MainFragment$6
     label193:
     for (String str1 = "Msg_tab";; str1 = "Contacts_tab")
     {
-      awqx.b(MainFragment.a(this.this$0), "CliOper", "", "", str1, str1, 0, 0, "", "", "", "");
+      axqw.b(MainFragment.a(this.this$0), "CliOper", "", "", str1, str1, 0, 0, "", "", "", "");
       if ((MainFragment.a(this.this$0) != null) && (MainFragment.a(this.this$0).getBoolean("theme_voice_setting_" + MainFragment.a(this.this$0).getCurrentAccountUin(), true))) {
         MainFragment.a(this.this$0).b(this.a + 1);
       }
-      if ((str2 != null) && (AppSetting.c))
+      if ((str2 != null) && (AppSetting.d))
       {
         MainFragment.a(this.this$0, MainFragment.a, str2);
         MainFragment.a(this.this$0, MainFragment.b, str2);

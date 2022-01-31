@@ -1,37 +1,39 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener.1;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener.2;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class nte
-  implements sjq
+public class nte
+  implements rqs
 {
-  nte(ntd paramntd, long paramLong, PublishVideoEntry paramPublishVideoEntry) {}
+  public nte(ntb paramntb) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void a(boolean paramBoolean)
   {
-    long l1 = System.currentTimeMillis();
-    if (QLog.isColorLevel())
+    AppInterface localAppInterface;
+    if ((ntb.a(this.a) instanceof BaseActivity))
     {
-      long l2 = (l1 - this.jdField_a_of_type_Long) / 1000L;
-      l1 = this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.isLocalPublish) {
-        l1 = this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd - this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeStart;
+      localAppInterface = ((BaseActivity)ntb.a(this.a)).getAppInterface();
+      if ((localAppInterface != null) && (ntb.a(this.a) != null) && (!paramBoolean))
+      {
+        pzc localpzc = (pzc)localAppInterface.getManager(270);
+        if ((localpzc.a() != 1) || (!localpzc.b())) {
+          break label87;
+        }
+        ThreadManager.post(new KanDianViewController.PullRefreshCompleteListener.1(this), 8, null, true);
       }
-      QLog.d("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, "CameraCaptureMerge: duration: " + l1 + ", time cost: " + l2 + "s");
     }
-    if (paramInt == 0)
-    {
-      ntd.a(this.jdField_a_of_type_Ntd, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, paramString2);
+    label87:
+    while (((pzi)localAppInterface.getManager(261)).a() != 1) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, new Object[] { "doCompositeCameraCaptureVideo: errorcode=%s, errorMsg=%s", Integer.valueOf(paramInt), paramString1 });
-    }
-    ntd.a(this.jdField_a_of_type_Ntd, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, paramInt, paramString1);
+    ThreadManager.post(new KanDianViewController.PullRefreshCompleteListener.2(this), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nte
  * JD-Core Version:    0.7.0.1
  */

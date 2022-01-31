@@ -1,45 +1,12 @@
-import android.os.Bundle;
-import com.tencent.biz.subscribe.event.PublishBoxStatusEvent;
-import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.feed.CertifiedFakeFeed;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
 
-class bfrl
-  implements EIPCResultCallback
+public abstract interface bfrl
 {
-  bfrl(bfrj parambfrj) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    ArrayList localArrayList;
-    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
-    {
-      paramEIPCResult = paramEIPCResult.data;
-      paramEIPCResult.setClassLoader(CertifiedFakeFeed.class.getClassLoader());
-      localArrayList = paramEIPCResult.getParcelableArrayList("KEY_CERTIFIED_FAKE_FEED_LIST");
-      if (localArrayList != null) {
-        wcj.a().a(new SubscribeFeedsEvent(localArrayList));
-      }
-      wcj.a().a(new PublishBoxStatusEvent(paramEIPCResult));
-      if (localArrayList != null) {
-        break label93;
-      }
-    }
-    label93:
-    for (int i = 0;; i = localArrayList.size())
-    {
-      QLog.d("QzoneIPCModule", 4, String.format("Get certifed account task list %b", new Object[] { Integer.valueOf(i) }));
-      return;
-    }
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfrl
  * JD-Core Version:    0.7.0.1
  */

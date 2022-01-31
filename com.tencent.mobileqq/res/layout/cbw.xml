@@ -77,6 +77,7 @@
             <Button android:gravity="center_horizontal" android:id="@id/m5r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r2p" />
             <Button android:gravity="center_horizontal" android:id="@id/mep" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="url的value进行编码" />
             <Button android:gravity="center_horizontal" android:id="@id/meo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="url的value进行解码" />
+            <Button android:gravity="center_horizontal" android:id="@id/jfp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="测试加密url解析filepath" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

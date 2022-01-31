@@ -1,62 +1,103 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.data.ShowExternalTroop;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
-public abstract class astd
-  extends astc
+public class astd
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public boolean a;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public List<RecommendPerson> a;
+  public List<aste> b;
   
-  public astd(Context paramContext)
+  public astd(astc paramastc, View paramView, int paramInt)
   {
-    super(paramContext);
+    super(paramView);
+    this.jdField_a_of_type_JavaUtilList = ((List)paramastc.a.get(Integer.valueOf(paramInt)));
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (;;)
+    {
+      return;
+      this.b = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378394));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375460));
+      paramView = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramView.hasNext())
+      {
+        Object localObject = (RecommendPerson)paramView.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopMemberRecommend.Adapter", 2, "ActiveViewHolder, person.uin =" + ((RecommendPerson)localObject).uin + " size() = " + this.jdField_a_of_type_JavaUtilList.size());
+        }
+        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext()).inflate(2131562559, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+        RelativeLayout localRelativeLayout = (RelativeLayout)((View)localObject).findViewById(2131375461);
+        ImageView localImageView = (ImageView)((View)localObject).findViewById(2131368719);
+        TextView localTextView1 = (TextView)((View)localObject).findViewById(2131378395);
+        TextView localTextView2 = (TextView)((View)localObject).findViewById(2131378396);
+        Button localButton = (Button)((View)localObject).findViewById(2131363688);
+        a(actn.a(85.0F, astc.a(paramastc).getResources()), this.jdField_a_of_type_JavaUtilList.size(), localRelativeLayout);
+        aste localaste = new aste(this);
+        localaste.jdField_a_of_type_AndroidWidgetRelativeLayout = localRelativeLayout;
+        localaste.jdField_a_of_type_AndroidWidgetImageView = localImageView;
+        localaste.jdField_a_of_type_AndroidWidgetTextView = localTextView1;
+        localaste.b = localTextView2;
+        localaste.jdField_a_of_type_AndroidWidgetButton = localButton;
+        this.b.add(localaste);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
+      }
+    }
   }
   
-  public abstract void a();
+  private void a(int paramInt1, int paramInt2, RelativeLayout paramRelativeLayout)
+  {
+    if (paramInt2 > 1)
+    {
+      int i = bbkx.a();
+      paramInt2 = (i - paramInt2 * paramInt1) / (paramInt2 * paramInt2);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramRelativeLayout.getLayoutParams();
+      localLayoutParams.leftMargin = paramInt2;
+      localLayoutParams.rightMargin = paramInt2;
+      paramRelativeLayout.setLayoutParams(localLayoutParams);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberRecommend.Adapter", 2, "onCreateViewHolder, rlWidth =" + paramInt1 + " screenWidth =" + i + " margin = " + paramInt2);
+      }
+    }
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(String paramString, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, int paramInt, List<ShowExternalTroop> paramList);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(NearbyPeopleCard paramNearbyPeopleCard);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
-  
-  public abstract void k();
-  
-  public abstract void l();
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (astc.a(this.jdField_a_of_type_Astc) == null);
+      astc.a(this.jdField_a_of_type_Astc).a((RecyclerView.ViewHolder)paramView.getTag(2131375461), (RecommendPerson)paramView.getTag(2131363688));
+      return;
+    } while (astc.a(this.jdField_a_of_type_Astc) == null);
+    astc.a(this.jdField_a_of_type_Astc).b((RecyclerView.ViewHolder)paramView.getTag(2131375461), (RecommendPerson)paramView.getTag(2131363688));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     astd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,26 @@
-public abstract class aoiy
+class aoiy
+  extends aoeu
 {
-  public anxs a;
+  aoiy(aoix paramaoix) {}
   
-  public abstract int a();
-  
-  public void a(anxs paramanxs)
+  protected void a(boolean paramBoolean, int paramInt, aofp paramaofp, String paramString)
   {
-    this.a = paramanxs;
+    this.a.a().a(paramBoolean, paramInt, paramaofp, paramString);
   }
   
-  public abstract boolean a();
+  protected void a(boolean paramBoolean, aofp paramaofp)
+  {
+    this.a.a().a(paramBoolean, paramaofp);
+  }
   
-  public abstract void b();
+  protected void e(boolean paramBoolean)
+  {
+    this.a.a().a(paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoiy
  * JD-Core Version:    0.7.0.1
  */

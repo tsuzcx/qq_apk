@@ -1,30 +1,29 @@
-import android.view.KeyEvent;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.View;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 
-class bagb
-  implements aniq
+public class bagb
+  implements bfoq
 {
-  bagb(bafw parambafw) {}
+  public bagb(VisitorTroopCardFragment paramVisitorTroopCardFragment, bfol parambfol) {}
   
-  public boolean a(KeyEvent paramKeyEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
+    switch (this.jdField_a_of_type_Bfol.a(paramInt).c)
     {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-      this.a.c = false;
-      paramKeyEvent = this.a.getWindow().getAttributes();
-      paramKeyEvent.y = 0;
-      this.a.getWindow().setAttributes(paramKeyEvent);
-      bafw.a(this.a);
-      return true;
     }
-    return false;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment, true, false);
+      continue;
+      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment, true, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bagb
  * JD-Core Version:    0.7.0.1
  */

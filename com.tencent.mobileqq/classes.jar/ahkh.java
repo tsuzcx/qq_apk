@@ -1,53 +1,29 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import com.tencent.qphone.base.util.QLog;
 
 class ahkh
-  implements axrt
+  implements View.OnClickListener
 {
-  ahkh(ahkg paramahkg) {}
+  ahkh(ahkf paramahkf, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
   
-  public void onResp(axsq paramaxsq)
+  public void onClick(View paramView)
   {
-    Object localObject = (FilterDesc)paramaxsq.jdField_a_of_type_Axsp.a();
-    if (paramaxsq.jdField_a_of_type_Int != 0) {
-      krx.c("VideoFilterTools", "download file failed. errorCode: " + paramaxsq.b + ", errorMsg: " + paramaxsq.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper click banner, jump");
     }
-    for (;;)
-    {
-      return;
-      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(paramaxsq.jdField_a_of_type_Axsp.c)))
-      {
-        krx.c("VideoFilterTools", "download file failed: md5 is not match.");
-        bace.d(paramaxsq.jdField_a_of_type_Axsp.c);
-        return;
-      }
-      krx.c("VideoFilterTools", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
-      try
-      {
-        localObject = ahkg.b;
-        bace.a(paramaxsq.jdField_a_of_type_Axsp.c, (String)localObject, false);
-        bace.d(paramaxsq.jdField_a_of_type_Axsp.c);
-        if ((ahkg.a(this.a).decrementAndGet() == 0) && (ahkg.a(this.a) != null))
-        {
-          ahkg.a(this.a).a(true);
-          return;
-        }
-      }
-      catch (IOException paramaxsq)
-      {
-        paramaxsq.printStackTrace();
-        krx.c("VideoFilterTools", "unzip file failed.");
-      }
-    }
+    paramView = (QQAppInterface)ahkf.a(this.jdField_a_of_type_Ahkf).getAppRuntime();
+    ((UpgradeTIMManager)paramView.getManager(256)).a(ahkf.a(this.jdField_a_of_type_Ahkf), this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.g);
+    axqw.b(paramView, "CliOper", "", "", "0X8008659", "0X8008659", 0, 0, "", "", "", "");
   }
-  
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahkh
  * JD-Core Version:    0.7.0.1
  */

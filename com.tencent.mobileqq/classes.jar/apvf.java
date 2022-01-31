@@ -1,30 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.gallery.model.pic.AIOPicData;
-
-class apvf
-  implements DialogInterface.OnClickListener
+public abstract interface apvf
 {
-  apvf(apux paramapux, int paramInt, Object paramObject) {}
+  public abstract long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong, int paramInt3);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      apsm.a().a().a("AIOGalleryPicView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
-    }
-    do
-    {
-      return;
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOPicData));
-    this.jdField_a_of_type_Apux.a.a((AIOPicData)this.jdField_a_of_type_JavaLangObject);
-    this.jdField_a_of_type_Apux.j();
-  }
+  public abstract long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong1, int paramInt3, long paramLong2, int paramInt4);
+  
+  public abstract String a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, long paramLong1, long paramLong2, long paramLong3, int paramInt3);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, long paramLong, int paramInt, String paramString2, String paramString3, String paramString4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apvf
  * JD-Core Version:    0.7.0.1
  */

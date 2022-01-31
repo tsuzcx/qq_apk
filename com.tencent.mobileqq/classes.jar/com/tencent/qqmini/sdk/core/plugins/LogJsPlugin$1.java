@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdcz;
-import bdgk;
-import bdik;
+import begz;
+import bekm;
+import bemn;
 
 class LogJsPlugin$1
   implements Runnable
@@ -11,7 +11,7 @@ class LogJsPlugin$1
   
   public void run()
   {
-    bdgk.a(this.this$0.mMiniAppContext.a(), 230, "重启后生效", null, 2131628566, 2131628579, new LogJsPlugin.1.1(this), null).show();
+    bekm.a(this.this$0.mMiniAppContext.a(), 230, "重启后生效", null, 2131694208, 2131694225, new LogJsPlugin.1.1(this), null).show();
   }
 }
 

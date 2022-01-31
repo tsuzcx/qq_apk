@@ -1,44 +1,34 @@
-import android.content.Intent;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.av.ui.MultiMembersVideoUI;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class mfg
-  extends ClickableSpan
+public class mfg
+  implements AdapterView.OnItemClickListener
 {
-  mfg(mfb parammfb, boolean paramBoolean, String paramString1, String paramString2) {}
+  public mfg(MultiMembersVideoUI paramMultiMembersVideoUI) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QLog.w(this.jdField_a_of_type_Mfb.i, 1, "closeUI showNoNameDialog, realName[" + this.jdField_a_of_type_Boolean + "]");
-    this.jdField_a_of_type_Mfb.a(this.jdField_a_of_type_JavaLangString);
-    paramView = this.jdField_a_of_type_Mfb.a();
-    if (paramView == null) {
-      return;
-    }
-    paramView.finish();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a.jdField_a_of_type_Mrx == null) {}
+    do
     {
-      mek.a(this.jdField_a_of_type_Mfb.a, this.b);
+      return;
+      paramAdapterView = (mfe)paramView.getTag();
+      if (paramAdapterView != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("MultiMembersVideoUI", 2, "onItemClick-->holder is null");
+    return;
+    if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() > 8) && ((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2)))
+    {
+      this.a.jdField_a_of_type_Mrx.a(paramAdapterView.jdField_a_of_type_Long, paramAdapterView.jdField_a_of_type_Int, paramInt, true);
       return;
     }
-    paramView = aciy.a(new Intent(BaseApplicationImpl.getApplication(), SplashActivity.class), new int[] { 2 });
-    paramView.putExtra("uin", this.jdField_a_of_type_Mfb.a.a().a().d);
-    paramView.putExtra("uintype", 0);
-    paramView.putExtra("uinname", this.jdField_a_of_type_Mfb.a.a().a().e);
-    paramView.putExtra("entrance", 8);
-    BaseApplicationImpl.getApplication().startActivity(paramView);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
+    this.a.jdField_a_of_type_Mrx.a(paramAdapterView.jdField_a_of_type_Long, paramAdapterView.jdField_a_of_type_Int, paramInt, false);
   }
 }
 

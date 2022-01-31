@@ -1,26 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuImageLayout;
+import com.tencent.widget.BubblePopupWindow;
 
 public class bbls
-  implements bgnt
+  extends TextView
 {
-  public bbls(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
-  
-  public void a(int paramInt)
+  public bbls(QQCustomMenuImageLayout paramQQCustomMenuImageLayout, Context paramContext)
   {
-    if (paramInt == 0)
-    {
-      this.a.g = true;
-      View localView = this.a.a("map_key_troop_mem_recent_said");
-      if (localView != null) {
-        ProfileCardMoreInfoView.a(localView, this.a.a);
-      }
-    }
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    boolean bool = super.performClick();
+    QQCustomMenuImageLayout.a(this.a).b();
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbls
  * JD-Core Version:    0.7.0.1
  */

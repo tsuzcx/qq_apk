@@ -1,41 +1,14 @@
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-class xbk
-  implements bemm
+public class xbk
 {
-  xbk(xbe paramxbe, String paramString) {}
-  
-  public void a(beml parambeml)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    switch (parambeml.a)
-    {
-    default: 
-      return;
-    case 0: 
-      try
-      {
-        localJSONObject.put("index", 0);
-        this.jdField_a_of_type_Xbe.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception parambeml)
-      {
-        parambeml.printStackTrace();
-        return;
-      }
-    }
-    try
-    {
-      localJSONObject.put("index", 1);
-      this.jdField_a_of_type_Xbe.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception parambeml)
-    {
-      parambeml.printStackTrace();
-    }
-  }
+  public View a;
+  public TextView a;
+  public apqg a;
+  public AsyncImageView a;
+  public TextView b;
 }
 
 

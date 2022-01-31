@@ -1,8 +1,28 @@
-import android.view.View;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public abstract interface mkh
+class mkh
+  implements mht
 {
-  public abstract void a(View paramView);
+  mkh(mkf parammkf) {}
+  
+  public void a()
+  {
+    if (this.a.a.a != null)
+    {
+      this.a.a.a.setViewEnable(2131372372, false);
+      this.a.a.a.setViewEnable(2131362922, false);
+      this.a.a.a.setViewEnable(2131362934, false);
+      this.a.a.a.setViewEnable(2131362933, false);
+    }
+  }
+  
+  public void b()
+  {
+    this.a.a.e = true;
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 2130772163);
+  }
 }
 
 

@@ -2,7 +2,7 @@ package com.tencent.biz.qrcode.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import aphp;
+import aqbc;
 
 class QRDisplayActivity$20$1
   implements Runnable
@@ -22,7 +22,7 @@ class QRDisplayActivity$20$1
     localBundle.putString("forward_extra", this.jdField_a_of_type_JavaLangString);
     Intent localIntent = new Intent();
     localIntent.putExtras(localBundle);
-    aphp.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$20.this$0, localIntent, 21);
+    aqbc.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$20.this$0, localIntent, 21);
   }
 }
 

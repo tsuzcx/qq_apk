@@ -22,8 +22,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bdmv;
-import bdnw;
+import berf;
+import besl;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
@@ -49,7 +49,7 @@ public class MiniAppInfo
   implements Parcelable
 {
   public static final String APP_STORE_MINI_APP_ID = "1108291530";
-  public static final Parcelable.Creator<MiniAppInfo> CREATOR = new bdmv();
+  public static final Parcelable.Creator<MiniAppInfo> CREATOR = new berf();
   public static final String ENV_VERSION_DEVELOP = "develop";
   public static final String ENV_VERSION_RELEASE = "release";
   public static final String ENV_VERSION_TRIAL = "trial";
@@ -67,6 +67,7 @@ public class MiniAppInfo
   public String extendData;
   public String extraData;
   public int forceReroad;
+  public String friendMessageQuery = "";
   public boolean isSupportBlueBar;
   public boolean isSupportOffline;
   @NonNull
@@ -99,10 +100,10 @@ public class MiniAppInfo
       this.tinyId = paramParcel.readLong();
       this.position = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
-        break label252;
+        break label258;
       }
     }
-    label252:
+    label258:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.isSupportBlueBar = bool1;
@@ -161,7 +162,7 @@ public class MiniAppInfo
     if (paramStFirstPage != null)
     {
       this.firstPage = new FirstPageInfo();
-      this.firstPage.a = paramStFirstPage.pagePath.get();
+      this.firstPage.jdField_a_of_type_JavaLangString = paramStFirstPage.pagePath.get();
       this.firstPage.b = paramStFirstPage.subPkgName.get();
     }
     if (paramStApiRightController != null)
@@ -197,7 +198,7 @@ public class MiniAppInfo
     if ((paramStMDebugInfo != null) && (!TextUtils.isEmpty(paramStMDebugInfo.roomId.get())) && (!TextUtils.isEmpty(paramStMDebugInfo.wsUrl.get())))
     {
       this.debugInfo = new DebugInfo();
-      this.debugInfo.a = paramStMDebugInfo.roomId.get();
+      this.debugInfo.jdField_a_of_type_JavaLangString = paramStMDebugInfo.roomId.get();
       this.debugInfo.b = paramStMDebugInfo.wsUrl.get();
     }
     if (paramStDomainConfig != null)
@@ -264,7 +265,7 @@ public class MiniAppInfo
     }
     if (paramStAppBasicInfo != null)
     {
-      bdnw.b("MiniAppInfo", "appid:" + paramString1 + ", usrFileSizeLimit:" + paramStAppBasicInfo.usrFileSizeLimit.get());
+      besl.b("MiniAppInfo", "appid:" + paramString1 + ", usrFileSizeLimit:" + paramStAppBasicInfo.usrFileSizeLimit.get());
       this.usrFileSizeLimit = paramStAppBasicInfo.usrFileSizeLimit.get();
       if (paramStAppBasicInfo.preCacheList != null)
       {
@@ -282,10 +283,10 @@ public class MiniAppInfo
       }
       this.versionUpdateTime = paramStAppBasicInfo.versionUpdateTime.get();
       if (!paramStAppBasicInfo.pkgType.has()) {
-        break label1243;
+        break label1249;
       }
       if (paramStAppBasicInfo.pkgType.get() != 1) {
-        break label1235;
+        break label1241;
       }
       this.engineType = 1;
     }
@@ -300,10 +301,10 @@ public class MiniAppInfo
       this.shareId = paramStAppBasicInfo.shareId.get();
       this.via = paramStAppBasicInfo.via.get();
       return;
-      label1235:
+      label1241:
       this.engineType = 0;
       continue;
-      label1243:
+      label1249:
       this.engineType = this.reportType;
     }
   }
@@ -383,7 +384,7 @@ public class MiniAppInfo
           }
           catch (Exception paramStApiAppInfo)
           {
-            bdnw.d("MiniAppInfo", " parse reportData error.", paramStApiAppInfo);
+            besl.d("MiniAppInfo", " parse reportData error.", paramStApiAppInfo);
           }
         }
       }
@@ -408,6 +409,74 @@ public class MiniAppInfo
     }
   }
   
+  public static MiniAppInfo copy(MiniAppInfo paramMiniAppInfo)
+  {
+    MiniAppInfo localMiniAppInfo = new MiniAppInfo();
+    localMiniAppInfo.appId = paramMiniAppInfo.appId;
+    localMiniAppInfo.name = paramMiniAppInfo.name;
+    localMiniAppInfo.iconUrl = paramMiniAppInfo.iconUrl;
+    localMiniAppInfo.downloadUrl = paramMiniAppInfo.downloadUrl;
+    localMiniAppInfo.topType = paramMiniAppInfo.topType;
+    localMiniAppInfo.version = paramMiniAppInfo.version;
+    localMiniAppInfo.versionId = paramMiniAppInfo.versionId;
+    localMiniAppInfo.desc = paramMiniAppInfo.desc;
+    localMiniAppInfo.verType = paramMiniAppInfo.verType;
+    localMiniAppInfo.timestamp = paramMiniAppInfo.timestamp;
+    localMiniAppInfo.baselibMiniVersion = paramMiniAppInfo.baselibMiniVersion;
+    localMiniAppInfo.subpkgs = paramMiniAppInfo.subpkgs;
+    Object localObject = new FirstPageInfo();
+    ((FirstPageInfo)localObject).a("");
+    ((FirstPageInfo)localObject).b("");
+    localMiniAppInfo.firstPage = ((FirstPageInfo)localObject);
+    localMiniAppInfo.reportType = paramMiniAppInfo.reportType;
+    localMiniAppInfo.engineType = paramMiniAppInfo.engineType;
+    localMiniAppInfo.whiteList = paramMiniAppInfo.whiteList;
+    localMiniAppInfo.blackList = paramMiniAppInfo.blackList;
+    localMiniAppInfo.secondApiRightInfoList = paramMiniAppInfo.secondApiRightInfoList;
+    localMiniAppInfo.debugInfo = paramMiniAppInfo.debugInfo;
+    localMiniAppInfo.requestDomainList = paramMiniAppInfo.requestDomainList;
+    localMiniAppInfo.socketDomainList = paramMiniAppInfo.socketDomainList;
+    localMiniAppInfo.uploadFileDomainList = paramMiniAppInfo.uploadFileDomainList;
+    localMiniAppInfo.downloadFileDomainList = paramMiniAppInfo.downloadFileDomainList;
+    localMiniAppInfo.businessDomainList = paramMiniAppInfo.businessDomainList;
+    localMiniAppInfo.udpIpList.clear();
+    localMiniAppInfo.udpIpList.addAll(paramMiniAppInfo.udpIpList);
+    localMiniAppInfo.fileSize = paramMiniAppInfo.fileSize;
+    localMiniAppInfo.developerDesc = paramMiniAppInfo.developerDesc;
+    localMiniAppInfo.extraData = paramMiniAppInfo.extraData;
+    localMiniAppInfo.recommend = paramMiniAppInfo.recommend;
+    localMiniAppInfo.isSupportOffline = paramMiniAppInfo.isSupportOffline;
+    localMiniAppInfo.reportData = paramMiniAppInfo.reportData;
+    localMiniAppInfo.appMode = paramMiniAppInfo.appMode;
+    localMiniAppInfo.skipDomainCheck = paramMiniAppInfo.skipDomainCheck;
+    localMiniAppInfo.position = paramMiniAppInfo.position;
+    localMiniAppInfo.isSupportBlueBar = paramMiniAppInfo.isSupportBlueBar;
+    localMiniAppInfo.recommendAppIconUrl = paramMiniAppInfo.recommendAppIconUrl;
+    localMiniAppInfo.extendData = null;
+    localMiniAppInfo.commonExt = paramMiniAppInfo.commonExt;
+    localMiniAppInfo.extConfigInfoList = paramMiniAppInfo.extConfigInfoList;
+    localMiniAppInfo.appStoreAnimPicUrl = paramMiniAppInfo.appStoreAnimPicUrl;
+    localMiniAppInfo.motionPics = paramMiniAppInfo.motionPics;
+    localMiniAppInfo.usrFileSizeLimit = paramMiniAppInfo.usrFileSizeLimit;
+    if (paramMiniAppInfo.preCacheList != null)
+    {
+      localMiniAppInfo.preCacheList = new ArrayList();
+      localObject = paramMiniAppInfo.preCacheList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        PreCacheInfo localPreCacheInfo = (PreCacheInfo)((Iterator)localObject).next();
+        localMiniAppInfo.preCacheList.add(new PreCacheInfo(localPreCacheInfo.jdField_a_of_type_JavaLangString, localPreCacheInfo.b, localPreCacheInfo.jdField_a_of_type_Long));
+      }
+    }
+    localMiniAppInfo.versionUpdateTime = paramMiniAppInfo.versionUpdateTime;
+    localMiniAppInfo.noNeedRealRecommend = paramMiniAppInfo.noNeedRealRecommend;
+    localMiniAppInfo.miniGamePluginInfo = paramMiniAppInfo.miniGamePluginInfo;
+    localMiniAppInfo.qualifications = paramMiniAppInfo.qualifications;
+    localMiniAppInfo.shareId = paramMiniAppInfo.shareId;
+    localMiniAppInfo.via = paramMiniAppInfo.via;
+    return localMiniAppInfo;
+  }
+  
   public static MiniAppInfo createMiniAppInfo(JSONObject paramJSONObject)
   {
     int j = 0;
@@ -415,7 +484,7 @@ public class MiniAppInfo
       return null;
     }
     MiniAppInfo localMiniAppInfo;
-    label1426:
+    label1425:
     for (;;)
     {
       try
@@ -454,7 +523,7 @@ public class MiniAppInfo
         localObject1 = paramJSONObject.optJSONObject("first");
         if (localObject1 != null)
         {
-          localMiniAppInfo.firstPage.a = ((JSONObject)localObject1).optString("pagePath");
+          localMiniAppInfo.firstPage.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("pagePath");
           localMiniAppInfo.firstPage.b = ((JSONObject)localObject1).optString("subPkgName");
         }
         if (paramJSONObject.optJSONObject("domain") != null)
@@ -537,7 +606,7 @@ public class MiniAppInfo
         localObject1 = paramJSONObject.optJSONObject("mDebug");
         if (localObject1 != null)
         {
-          localMiniAppInfo.debugInfo.a = ((JSONObject)localObject1).optString("roomId");
+          localMiniAppInfo.debugInfo.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("roomId");
           localMiniAppInfo.debugInfo.b = ((JSONObject)localObject1).optString("wsUrl");
         }
         localMiniAppInfo.versionId = paramJSONObject.optString("versionId");
@@ -601,7 +670,7 @@ public class MiniAppInfo
           localMiniAppInfo.versionUpdateTime = ((JSONObject)localObject1).optInt("versionUpdateTime");
           localMiniAppInfo.noNeedRealRecommend = ((JSONObject)localObject1).optInt("noNeedRealRecommend");
           if (!((JSONObject)localObject1).has("pkgType")) {
-            break label1426;
+            break label1425;
           }
           if (((JSONObject)localObject1).optInt("pkgType") == 1) {
             localMiniAppInfo.engineType = 1;
@@ -631,7 +700,7 @@ public class MiniAppInfo
       }
       catch (Throwable paramJSONObject)
       {
-        bdnw.d("MiniAppInfo", "", paramJSONObject);
+        besl.d("MiniAppInfo", "", paramJSONObject);
         return null;
       }
     }
@@ -706,11 +775,11 @@ public class MiniAppInfo
           {
             localObject1 = paramMap + URLEncoder.encode((String)((Map.Entry)localObject1).getKey()) + "=" + URLEncoder.encode((String)((Map.Entry)localObject1).getValue(), "UTF-8");
             paramMap = (Map<String, String>)localObject1;
-            break label211;
+            break label209;
           }
           localObject1 = paramMap + "&" + URLEncoder.encode((String)((Map.Entry)localObject1).getKey()) + "=" + URLEncoder.encode((String)((Map.Entry)localObject1).getValue(), "UTF-8");
           paramMap = (Map<String, String>)localObject1;
-          break label211;
+          break label209;
         }
         localObject2 = paramMap;
         return localObject2;
@@ -724,7 +793,7 @@ public class MiniAppInfo
       }
       localException2 = localException2;
       paramMap = (Map<String, String>)localObject1;
-      bdnw.d("MiniAppInfo", " getReportDataString error.", localException2);
+      besl.d("MiniAppInfo", " getReportDataString error.", localException2);
       return paramMap;
     }
   }
@@ -766,7 +835,7 @@ public class MiniAppInfo
       do
       {
         return bool;
-        if (paramMiniAppInfo.isShortcutFakeApp()) {
+        if ((paramMiniAppInfo.isShortcutFakeApp()) || (paramMiniAppInfo.isFakeAppInfo())) {
           return equalObj(this.appId, paramMiniAppInfo.appId);
         }
         if (!isEngineTypeMiniGame()) {
@@ -822,6 +891,11 @@ public class MiniAppInfo
     return this.launchParam.jdField_a_of_type_Boolean;
   }
   
+  public boolean isLimitedAccessApp()
+  {
+    return (this.appMode != null) && (this.appMode.j);
+  }
+  
   public boolean isReportTypeMiniApp()
   {
     return this.reportType == 0;
@@ -835,6 +909,11 @@ public class MiniAppInfo
   public boolean isShortcutFakeApp()
   {
     return (this.launchParam != null) && (this.launchParam.jdField_a_of_type_Int == 1023) && (TextUtils.isEmpty(this.downloadUrl));
+  }
+  
+  public boolean isSpecialMiniApp()
+  {
+    return isAppStoreMiniApp();
   }
   
   public void setEngineType(int paramInt)

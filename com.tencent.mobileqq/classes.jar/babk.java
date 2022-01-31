@@ -1,42 +1,20 @@
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
-
-public class babk
-  extends MqqHandler
+class babk
+  implements bbll
 {
-  private final WeakReference<Handler.Callback> a;
+  babk(babj parambabj) {}
   
-  public babk(Handler.Callback paramCallback)
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    this.a = new WeakReference(paramCallback);
+    this.a.b(babj.a(this.a));
   }
   
-  public babk(Looper paramLooper, Handler.Callback paramCallback)
-  {
-    super(paramLooper);
-    this.a = new WeakReference(paramCallback);
-  }
+  public void a(String paramString, int paramInt1, int paramInt2) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
-      localCallback.handleMessage(paramMessage);
-    }
-  }
-  
-  public String toString()
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    return super.toString() + " " + localCallback;
-  }
+  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     babk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,19 @@
-import android.support.annotation.NonNull;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.paster.PasterParcelData;
 
-public abstract interface bjez
+public final class bjez
+  implements Parcelable.Creator<PasterParcelData>
 {
-  public abstract boolean a(@NonNull TextView paramTextView, @NonNull CircleProgress paramCircleProgress, long paramLong, float paramFloat);
+  public PasterParcelData a(Parcel paramParcel)
+  {
+    return new PasterParcelData(paramParcel);
+  }
+  
+  public PasterParcelData[] a(int paramInt)
+  {
+    return new PasterParcelData[paramInt];
+  }
 }
 
 

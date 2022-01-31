@@ -1,153 +1,143 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.data.MessageForScribble.FileExistInfo;
+import com.tencent.mobileqq.scribble.ScribbleMsgUtils.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.io.File;
 
 public class awgw
 {
-  public static void a(int paramInt1, int paramInt2, long paramLong)
+  public static int a;
+  public static int b = 1;
+  public static int c = 2;
+  public static int d = 1;
+  public static int e = 2;
+  public static int f = 3;
+  public static int g = 4;
+  public static int h = 5;
+  public static int i = 6;
+  public static int j = 7;
+  
+  public static int a(MessageForScribble paramMessageForScribble)
   {
-    String str = "actCapturePhotoCamera";
-    if (paramInt1 == 2) {
-      str = "actCapturePhotoCamera2";
+    boolean bool1 = paramMessageForScribble.mExistInfo.mDataFileExist;
+    if (!paramMessageForScribble.mExistInfo.mInit) {
+      bool1 = apvb.a(b(paramMessageForScribble));
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_type", paramInt1 + "");
-    localHashMap.put("param_cost", paramLong + "");
-    localHashMap.put("param_size", paramInt2 + "");
-    localHashMap.put("param_version", Build.VERSION.SDK_INT + "");
-    localHashMap.put("param_deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
-    awrn.a(BaseApplication.getContext()).a("", str, true, paramLong, 0L, localHashMap, "");
+    boolean bool2 = paramMessageForScribble.mExistInfo.mCombineFileExist;
+    if (!paramMessageForScribble.mExistInfo.mInit) {
+      bool2 = apvb.a(a(paramMessageForScribble));
+    }
+    if ((bool1) && (bool2)) {
+      return c;
+    }
+    if ((!bool1) && (bool2)) {
+      return b;
+    }
+    return a;
   }
   
-  public static void a(boolean paramBoolean1, String paramString, int paramInt1, int paramInt2, boolean paramBoolean2, long paramLong, int paramInt3)
+  public static String a()
   {
-    label393:
-    for (;;)
-    {
-      int j;
-      try
-      {
-        i = Build.VERSION.SDK_INT;
-        if (i < 23) {
-          return;
-        }
-      }
-      finally {}
-      try
-      {
-        localObject1 = BaseApplicationImpl.getContext().getSharedPreferences("camera2_support_sp", 0);
-        j = ((SharedPreferences)localObject1).getInt("camera2_key_crash_count", 0);
-        if (j < 3) {
-          break label393;
-        }
-        i = -3;
-        QLog.d("Camera2Support", 1, "reportCamera2DeviceSupport, crash count: " + j);
-      }
-      catch (Exception localException)
-      {
-        QLog.e("Camera2Support", 1, "reportCamera2DeviceSupport exception, ", localException);
-        i = -4;
-        continue;
-      }
-      catch (VerifyError localVerifyError)
-      {
-        QLog.e("Camera2Support", 1, "reportCamera2DeviceSupport error, ", localVerifyError);
-        i = -4;
-        continue;
-        paramString = "0";
-        continue;
-        do
-        {
-          paramInt1 = 1;
-          break;
-          paramInt1 = 0;
-          if ((paramBoolean2) || (paramInt2 != 2)) {
-            break label370;
-          }
-        } while (paramInt1 == 0);
-        paramInt1 = 2;
-        continue;
-        String str = "0";
-        continue;
-      }
-      Object localObject1 = new HashMap();
-      ((HashMap)localObject1).put("camera2SupportLevel", String.valueOf(i));
-      ((HashMap)localObject1).put("osVersion", Build.VERSION.SDK_INT + "");
-      ((HashMap)localObject1).put("deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
-      Object localObject2 = awrn.a(BaseApplication.getContext());
-      ((awrn)localObject2).a("", "Camera2Support", true, 0L, 0L, (HashMap)localObject1, "");
-      if (!CameraCaptureView.a.b) {
-        break label513;
-      }
-      HashMap localHashMap = new HashMap();
-      if (!paramBoolean1) {
-        break label534;
-      }
-      localObject1 = "1";
-      localHashMap.put("previewState", localObject1);
-      if (paramString != null) {
-        localHashMap.put("ErrorMsg", paramString);
-      }
-      localHashMap.put("frameCount", String.valueOf(paramInt1));
-      if (paramInt1 <= 0) {
-        break;
-      }
-      paramString = "1";
-      localHashMap.put("frameState", paramString);
-      localHashMap.put("selectCamera", String.valueOf(paramInt2));
-      localHashMap.put("osVersion", Build.VERSION.SDK_INT + "");
-      localHashMap.put("deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
-      ((awrn)localObject2).a("", "Camera2RunState", true, 0L, 0L, localHashMap, "");
-      paramInt1 = 1;
-      break label515;
-      b(paramInt1, paramInt3, paramLong);
-      label370:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Camera2Support", 2, "reportCamera2DeviceSupport completed");
-        continue;
-        localObject2 = ((SharedPreferences)localObject1).edit();
-        if (((SharedPreferences)localObject1).contains("camera2_key_pre_report")) {
-          ((SharedPreferences.Editor)localObject2).putInt("camera2_key_crash_count", j + 1);
-        }
-        i = Camera2Control.a();
-        ((SharedPreferences.Editor)localObject2).remove("camera2_key_pre_report");
-        ((SharedPreferences.Editor)localObject2).remove("camera2_key_crash_count");
-        ((SharedPreferences.Editor)localObject2).commit();
-      }
+    return ajsf.cl + "ScribbleCache/";
+  }
+  
+  public static String a(MessageForScribble paramMessageForScribble)
+  {
+    if ((paramMessageForScribble != null) && (!TextUtils.isEmpty(paramMessageForScribble.combineFileMd5))) {
+      return c(paramMessageForScribble.combineFileMd5);
+    }
+    return "";
+  }
+  
+  private static void a()
+  {
+    File localFile = new File(a());
+    if (((localFile.exists()) && (!localFile.isDirectory())) || (!localFile.exists())) {
+      localFile.mkdirs();
     }
   }
   
-  public static void b(int paramInt1, int paramInt2, long paramLong)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, Bitmap paramBitmap, int paramInt2, awgx paramawgx)
   {
-    if ((paramInt2 > 0) && (paramLong > 0L))
+    a();
+    new awgy(paramQQAppInterface, paramString, paramInt1, paramBitmap, paramInt2, paramawgx).execute(new Void[0]);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, MessageForScribble paramMessageForScribble)
+  {
+    if (paramMessageForScribble == null) {}
+    awgs localawgs;
+    MessageForScribble localMessageForScribble;
+    do
     {
-      String str = "actCapturePhotoCameraFps";
-      if (paramInt1 == 2) {
-        str = "actCapturePhotoCamera2Fps";
+      return false;
+      if (paramMessageForScribble.isSendFromLocal()) {
+        paramQQAppInterface.a().a(paramQQAppInterface.a().a(paramMessageForScribble.frienduin, paramMessageForScribble.uniseq));
       }
-      float f = paramInt2 * 1000.0F / (float)paramLong;
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_type", paramInt1 + "");
-      localHashMap.put("param_frame", paramInt2 + "");
-      localHashMap.put("param_time", paramLong + "");
-      localHashMap.put("param_fps", (int)f + "");
-      localHashMap.put("param_version", Build.VERSION.SDK_INT + "");
-      localHashMap.put("param_deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
-      awrn.a(BaseApplication.getContext()).a("", str, true, (int)f, 0L, localHashMap, "");
+      localawgs = new awgs(paramQQAppInterface);
+      localMessageForScribble = localawgs.a(paramMessageForScribble);
+    } while (localMessageForScribble == null);
+    ThreadManager.post(new ScribbleMsgUtils.1(paramQQAppInterface, paramMessageForScribble), 5, null, false);
+    localawgs.a(localMessageForScribble);
+    return true;
+  }
+  
+  public static int b(MessageForScribble paramMessageForScribble)
+  {
+    if ((paramMessageForScribble == null) || (paramMessageForScribble.combineFileMd5 == null)) {
+      return j;
     }
+    String str1 = a(paramMessageForScribble);
+    if (!apvb.a(str1)) {
+      return i;
+    }
+    long l = apvb.a(str1);
+    if ((paramMessageForScribble.offSet <= 0) || (paramMessageForScribble.offSet >= (int)l))
+    {
+      QLog.e("ScribbleMsgUtils", 2, " offSet = " + paramMessageForScribble.offSet + " FileSize : " + l);
+      return j;
+    }
+    String str2 = b(paramMessageForScribble);
+    if (apvb.a(str2)) {
+      apvb.c(str2);
+    }
+    if (awhf.a(str1, paramMessageForScribble.offSet, str2)) {
+      return d;
+    }
+    return e;
+  }
+  
+  public static String b(MessageForScribble paramMessageForScribble)
+  {
+    if ((paramMessageForScribble != null) && (!TextUtils.isEmpty(paramMessageForScribble.combineFileMd5))) {
+      return d(paramMessageForScribble.combineFileMd5);
+    }
+    return "";
+  }
+  
+  private static String c(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return a() + paramString;
+    }
+    return "";
+  }
+  
+  private static String d(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return a() + paramString + "_data";
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     awgw
  * JD-Core Version:    0.7.0.1
  */

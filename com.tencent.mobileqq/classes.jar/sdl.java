@@ -1,97 +1,197 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.PBInt32Field;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class sdl
-  implements slx<sdn, sdo>
 {
-  private HashMap<String, sde> jdField_a_of_type_JavaUtilHashMap;
-  private sdm jdField_a_of_type_Sdm;
+  private static final Comparator<sdr> a = new sdm();
   
-  public void a()
+  @NonNull
+  public static sdo a(@NonNull sdn paramsdn)
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() == 0)) {
-      if (this.jdField_a_of_type_Sdm != null) {
-        this.jdField_a_of_type_Sdm.a(new ErrorMessage(-1, "CheckBlackGeoHashHandler no photo"), null);
-      }
-    }
-    List localList;
-    do
+    return a(paramsdn, true);
+  }
+  
+  @NonNull
+  public static sdo a(@NonNull sdn paramsdn, boolean paramBoolean)
+  {
+    int i = paramsdn.a();
+    int j = paramsdn.b();
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    localArrayList2.add(new sdq(0, i, 0, j));
+    i = i + j + Math.abs(i - j);
+    int[] arrayOfInt1 = new int[i * 2];
+    int[] arrayOfInt2 = new int[i * 2];
+    ArrayList localArrayList3 = new ArrayList();
+    while (!localArrayList2.isEmpty())
     {
-      return;
-      localList = scu.a(this.jdField_a_of_type_JavaUtilHashMap);
-      if (localList.size() != 0) {
-        break;
-      }
-    } while (this.jdField_a_of_type_Sdm == null);
-    this.jdField_a_of_type_Sdm.a(new ErrorMessage(-1, "CheckBlackGeoHashHandler gps error " + this.jdField_a_of_type_JavaUtilHashMap.toString()), null);
-    return;
-    sdn localsdn = new sdn();
-    localsdn.a(localList);
-    slv.a().a(localsdn, this);
-  }
-  
-  public void a(@NonNull HashMap<String, sde> paramHashMap)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-  }
-  
-  public void a(sdm paramsdm)
-  {
-    this.jdField_a_of_type_Sdm = paramsdm;
-  }
-  
-  public void a(@NonNull sdn paramsdn, @Nullable sdo paramsdo, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if ((paramsdo == null) || (paramErrorMessage.isFail())) {
-      if (this.jdField_a_of_type_Sdm != null) {
-        this.jdField_a_of_type_Sdm.a(paramErrorMessage, null);
-      }
-    }
-    label202:
-    do
-    {
-      return;
-      paramsdn = new ArrayList();
-      if ((paramsdo.a != null) && (paramsdo.a.size() > 0))
+      sdq localsdq2 = (sdq)localArrayList2.remove(localArrayList2.size() - 1);
+      sdr localsdr = a(paramsdn, localsdq2.jdField_a_of_type_Int, localsdq2.jdField_b_of_type_Int, localsdq2.c, localsdq2.d, arrayOfInt1, arrayOfInt2, i);
+      if (localsdr != null)
       {
-        paramsdo = paramsdo.a.iterator();
+        if (localsdr.c > 0) {
+          localArrayList1.add(localsdr);
+        }
+        localsdr.jdField_a_of_type_Int += localsdq2.jdField_a_of_type_Int;
+        localsdr.jdField_b_of_type_Int += localsdq2.c;
+        sdq localsdq1;
+        if (localArrayList3.isEmpty())
+        {
+          localsdq1 = new sdq();
+          label217:
+          localsdq1.jdField_a_of_type_Int = localsdq2.jdField_a_of_type_Int;
+          localsdq1.c = localsdq2.c;
+          if (!localsdr.jdField_b_of_type_Boolean) {
+            break label362;
+          }
+          localsdq1.jdField_b_of_type_Int = localsdr.jdField_a_of_type_Int;
+          localsdq1.d = localsdr.jdField_b_of_type_Int;
+          label265:
+          localArrayList2.add(localsdq1);
+          if (!localsdr.jdField_b_of_type_Boolean) {
+            break label457;
+          }
+          if (!localsdr.jdField_a_of_type_Boolean) {
+            break label420;
+          }
+          localsdq2.jdField_a_of_type_Int = (localsdr.jdField_a_of_type_Int + localsdr.c + 1);
+          localsdq2.c = (localsdr.jdField_b_of_type_Int + localsdr.c);
+        }
         for (;;)
         {
-          if (!paramsdo.hasNext()) {
-            break label202;
-          }
-          qqstory_struct.GpsMsg localGpsMsg1 = (qqstory_struct.GpsMsg)paramsdo.next();
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-          if (localIterator.hasNext())
+          localArrayList2.add(localsdq2);
+          break;
+          localsdq1 = (sdq)localArrayList3.remove(localArrayList3.size() - 1);
+          break label217;
+          label362:
+          if (localsdr.jdField_a_of_type_Boolean)
           {
-            sde localsde = (sde)((Map.Entry)localIterator.next()).getValue();
-            if (localsde.jdField_a_of_type_Sek == null) {
-              break;
-            }
-            qqstory_struct.GpsMsg localGpsMsg2 = localsde.jdField_a_of_type_Sek.a();
-            if ((localGpsMsg2.lat.get() != localGpsMsg1.lat.get()) || (localGpsMsg2.lng.get() != localGpsMsg1.lng.get())) {
-              break;
-            }
-            paramsdn.add(localsde.jdField_a_of_type_JavaLangString);
+            localsdq1.jdField_b_of_type_Int = (localsdr.jdField_a_of_type_Int - 1);
+            localsdq1.d = localsdr.jdField_b_of_type_Int;
+            break label265;
           }
+          localsdq1.jdField_b_of_type_Int = localsdr.jdField_a_of_type_Int;
+          localsdq1.d = (localsdr.jdField_b_of_type_Int - 1);
+          break label265;
+          label420:
+          localsdq2.jdField_a_of_type_Int = (localsdr.jdField_a_of_type_Int + localsdr.c);
+          localsdq2.c = (localsdr.jdField_b_of_type_Int + localsdr.c + 1);
+          continue;
+          label457:
+          localsdq2.jdField_a_of_type_Int = (localsdr.jdField_a_of_type_Int + localsdr.c);
+          localsdq2.c = (localsdr.jdField_b_of_type_Int + localsdr.c);
         }
       }
-    } while (this.jdField_a_of_type_Sdm == null);
-    this.jdField_a_of_type_Sdm.a(paramErrorMessage, paramsdn);
+      localArrayList3.add(localsdq2);
+    }
+    Collections.sort(localArrayList1, a);
+    return new sdo(paramsdn, localArrayList1, arrayOfInt1, arrayOfInt2, paramBoolean);
+  }
+  
+  private static sdr a(sdn paramsdn, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt5)
+  {
+    int m = paramInt2 - paramInt1;
+    int n = paramInt4 - paramInt3;
+    if ((paramInt2 - paramInt1 < 1) || (paramInt4 - paramInt3 < 1)) {
+      return null;
+    }
+    int i1 = m - n;
+    int i2 = (m + n + 1) / 2;
+    Arrays.fill(paramArrayOfInt1, paramInt5 - i2 - 1, paramInt5 + i2 + 1, 0);
+    Arrays.fill(paramArrayOfInt2, paramInt5 - i2 - 1 + i1, paramInt5 + i2 + 1 + i1, m);
+    int i;
+    if (i1 % 2 != 0)
+    {
+      paramInt4 = 1;
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i > i2) {
+        break label664;
+      }
+      int j = -i;
+      boolean bool;
+      int k;
+      for (;;)
+      {
+        if (j > i) {
+          break label382;
+        }
+        if ((j == -i) || ((j != i) && (paramArrayOfInt1[(paramInt5 + j - 1)] < paramArrayOfInt1[(paramInt5 + j + 1)]))) {
+          paramInt2 = paramArrayOfInt1[(paramInt5 + j + 1)];
+        }
+        for (bool = false;; bool = true)
+        {
+          k = paramInt2;
+          paramInt2 -= j;
+          while ((k < m) && (paramInt2 < n) && (paramsdn.a(paramInt1 + k, paramInt3 + paramInt2)))
+          {
+            k += 1;
+            paramInt2 += 1;
+          }
+          paramInt4 = 0;
+          break;
+          paramInt2 = paramArrayOfInt1[(paramInt5 + j - 1)] + 1;
+        }
+        paramArrayOfInt1[(paramInt5 + j)] = k;
+        if ((paramInt4 != 0) && (j >= i1 - i + 1) && (j <= i1 + i - 1) && (paramArrayOfInt1[(paramInt5 + j)] >= paramArrayOfInt2[(paramInt5 + j)]))
+        {
+          paramsdn = new sdr();
+          paramsdn.jdField_a_of_type_Int = paramArrayOfInt2[(paramInt5 + j)];
+          paramsdn.jdField_b_of_type_Int = (paramsdn.jdField_a_of_type_Int - j);
+          paramsdn.c = (paramArrayOfInt1[(paramInt5 + j)] - paramArrayOfInt2[(paramInt5 + j)]);
+          paramsdn.jdField_a_of_type_Boolean = bool;
+          paramsdn.jdField_b_of_type_Boolean = false;
+          return paramsdn;
+        }
+        j += 2;
+      }
+      label382:
+      j = -i;
+      while (j <= i)
+      {
+        int i3 = j + i1;
+        if ((i3 == i + i1) || ((i3 != -i + i1) && (paramArrayOfInt2[(paramInt5 + i3 - 1)] < paramArrayOfInt2[(paramInt5 + i3 + 1)]))) {
+          paramInt2 = paramArrayOfInt2[(paramInt5 + i3 - 1)];
+        }
+        for (bool = false;; bool = true)
+        {
+          k = paramInt2;
+          paramInt2 -= i3;
+          while ((k > 0) && (paramInt2 > 0) && (paramsdn.a(paramInt1 + k - 1, paramInt3 + paramInt2 - 1)))
+          {
+            k -= 1;
+            paramInt2 -= 1;
+          }
+          paramInt2 = paramArrayOfInt2[(paramInt5 + i3 + 1)] - 1;
+        }
+        paramArrayOfInt2[(paramInt5 + i3)] = k;
+        if ((paramInt4 == 0) && (j + i1 >= -i) && (j + i1 <= i) && (paramArrayOfInt1[(paramInt5 + i3)] >= paramArrayOfInt2[(paramInt5 + i3)]))
+        {
+          paramsdn = new sdr();
+          paramsdn.jdField_a_of_type_Int = paramArrayOfInt2[(paramInt5 + i3)];
+          paramsdn.jdField_b_of_type_Int = (paramsdn.jdField_a_of_type_Int - i3);
+          paramsdn.c = (paramArrayOfInt1[(paramInt5 + i3)] - paramArrayOfInt2[(paramInt5 + i3)]);
+          paramsdn.jdField_a_of_type_Boolean = bool;
+          paramsdn.jdField_b_of_type_Boolean = true;
+          return paramsdn;
+        }
+        j += 2;
+      }
+      i += 1;
+    }
+    label664:
+    throw new IllegalStateException("DiffUtil hit an unexpected case while trying to calculate the optimal path. Please make sure your data is not changing during the diff calculation.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sdl
  * JD-Core Version:    0.7.0.1
  */

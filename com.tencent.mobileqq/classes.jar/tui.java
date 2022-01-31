@@ -1,51 +1,59 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.ProgressControler.2;
+import com.tencent.biz.qqstory.playvideo.ProgressControler.3;
+import java.lang.ref.WeakReference;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class tui
-  extends tnm
 {
-  public tui(tuh paramtuh) {}
+  protected long a;
+  public Handler a;
+  public WeakReference<udc> a;
+  public Timer a;
+  private TimerTask a;
+  public boolean a;
+  public long b;
+  public long c;
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  private void a()
   {
-    String str1;
-    String str2;
-    if ((paramInt1 == 20000) && (paramInt2 == -1))
-    {
-      paramIntent = BaseActivity.sActivityRoute;
-      str1 = SplashActivity.class.getSimpleName();
-      str2 = QQStoryMainActivity.class.getSimpleName();
-      paramInt1 = paramIntent.size() - 1;
+    ProgressControler.2 local2 = new ProgressControler.2(this);
+    this.jdField_a_of_type_AndroidOsHandler.post(local2);
+  }
+  
+  private void b()
+  {
+    Timer localTimer = new Timer();
+    ProgressControler.3 local3 = new ProgressControler.3(this);
+    localTimer.scheduleAtFixedRate(local3, 0L, 50L);
+    this.jdField_a_of_type_JavaUtilTimer = localTimer;
+    this.jdField_a_of_type_JavaUtilTimerTask = local3;
+  }
+  
+  public void a(long paramLong1, long paramLong2, udc paramudc)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.c = this.jdField_a_of_type_Long;
+    this.b = paramLong2;
+    if (this.jdField_a_of_type_JavaUtilTimer != null) {
+      this.jdField_a_of_type_JavaUtilTimer.cancel();
     }
-    for (;;)
-    {
-      String str3;
-      if (paramInt1 >= 0)
-      {
-        str3 = (String)paramIntent.get(paramInt1);
-        if (TextUtils.isEmpty(str3)) {
-          break label95;
-        }
-        if (str3.startsWith(str1)) {
-          this.a.b();
-        }
-      }
-      else
-      {
-        return;
-      }
-      if (TextUtils.equals(str3, str2))
-      {
-        this.a.c();
-        return;
-      }
-      label95:
-      paramInt1 -= 1;
+    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
+      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
     }
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+    if (paramLong2 <= 0L)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramudc);
+      a();
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      return;
+    }
+    b();
   }
 }
 

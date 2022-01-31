@@ -2,10 +2,10 @@ package com.tencent.open.downloadnew;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import bbtm;
-import bcds;
-import bcfc;
-import bcgo;
+import bcxm;
+import bdht;
+import bdjd;
+import bdkp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import java.io.File;
@@ -13,11 +13,11 @@ import java.io.File;
 public class DownloadManager$4
   implements Runnable
 {
-  public DownloadManager$4(bcgo parambcgo) {}
+  public DownloadManager$4(bdkp parambdkp) {}
   
   public void run()
   {
-    Context localContext = bbtm.a().a();
+    Context localContext = bcxm.a().a();
     boolean bool = localContext.getSharedPreferences("appcenter_app_report", 0).getBoolean("is_app_last_fullReport_success", false);
     SimpleAccount localSimpleAccount = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
     String str = "";
@@ -26,14 +26,14 @@ public class DownloadManager$4
     }
     if (!bool)
     {
-      bcds.c("DownloadManager_", "getUpdateApp will do full report");
-      bcfc.a(localContext, null, null, str, true);
+      bdht.c("DownloadManager_", "getUpdateApp will do full report");
+      bdjd.a(localContext, null, null, str, true);
     }
     while (!new File(localContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists()) {
       return;
     }
-    bcds.c("DownloadManager_", "getUpdateApp will do incremental report");
-    bcfc.a(localContext, null, 0, null, null, str);
+    bdht.c("DownloadManager_", "getUpdateApp will do incremental report");
+    bdjd.a(localContext, null, 0, null, null, str);
   }
 }
 

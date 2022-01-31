@@ -1,76 +1,117 @@
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.Nullable;
 
-public abstract class ukt<T extends FeedItem>
+class ukt
+  extends Drawable
 {
-  protected T a;
-  public boolean b;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private String jdField_a_of_type_JavaLangString = "story.icon.ShareGroupIconDrawable";
+  private uko jdField_a_of_type_Uko;
+  private ukq jdField_a_of_type_Ukq = new uku(this);
+  private Drawable b;
   
-  public ukt(@NonNull T paramT)
+  ukt(@NonNull uko paramuko, @NonNull Drawable paramDrawable)
   {
-    vkw.a(paramT);
-    this.a = paramT;
-  }
-  
-  public static ukt a(int paramInt)
-  {
-    FeedItem localFeedItem = FeedItem.createFeedItemByType(paramInt);
-    if (localFeedItem == null) {
-      return null;
+    this.jdField_a_of_type_Uko = paramuko;
+    this.jdField_a_of_type_Uko.a(this.jdField_a_of_type_Ukq);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.b = paramDrawable;
+    paramuko = this.jdField_a_of_type_Uko.a();
+    if (paramuko != null) {
+      a(paramuko);
     }
-    return localFeedItem.generateHomeFeed();
   }
   
-  public T a()
+  private void a(@NonNull Drawable paramDrawable)
   {
-    return this.a;
-  }
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt, sze paramsze, syy paramsyy, szb paramszb);
-  
-  public abstract boolean a(qqstory_struct.StoryFeed paramStoryFeed);
-  
-  public abstract void b();
-  
-  public List<StoryVideoItem> d()
-  {
-    return new ArrayList(0);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    ukm.a(this.jdField_a_of_type_JavaLangString, "updateCurrentDrawable view:%s drawable: %s", getCallback(), paramDrawable);
+    if (paramDrawable != this.b)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      paramDrawable.setBounds(getBounds());
+      paramDrawable.setVisible(isVisible(), true);
+      paramDrawable.setState(getState());
+      paramDrawable.setLevel(getLevel());
+      paramDrawable.setCallback(getCallback());
+      if (Build.VERSION.SDK_INT >= 19) {
+        paramDrawable.setAlpha(getAlpha());
       }
-      paramObject = (ukt)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
+      Drawable localDrawable = this.b;
+      this.b = paramDrawable;
+      if (localDrawable != null) {
+        localDrawable.setCallback(null);
       }
-    } while (paramObject.a == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    if (this.a != null) {
-      return this.a.hashCode();
+      invalidateSelf();
     }
-    return 0;
   }
   
-  public String toString()
+  public void draw(@NonNull Canvas paramCanvas)
   {
-    return this.a.toString();
+    this.b.draw(paramCanvas);
+    this.jdField_a_of_type_Uko.b();
+  }
+  
+  public int getOpacity()
+  {
+    return this.b.getOpacity();
+  }
+  
+  public boolean getPadding(@NonNull Rect paramRect)
+  {
+    return this.b.getPadding(paramRect);
+  }
+  
+  @NonNull
+  public Drawable mutate()
+  {
+    this.b.mutate();
+    return super.mutate();
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    super.onBoundsChange(paramRect);
+    this.b.setBounds(paramRect);
+  }
+  
+  protected boolean onLevelChange(int paramInt)
+  {
+    this.b.setLevel(paramInt);
+    return true;
+  }
+  
+  protected boolean onStateChange(int[] paramArrayOfInt)
+  {
+    this.b.setState(paramArrayOfInt);
+    return true;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    this.b.setAlpha(paramInt);
+  }
+  
+  public void setColorFilter(int paramInt, @NonNull PorterDuff.Mode paramMode)
+  {
+    super.setColorFilter(paramInt, paramMode);
+    this.b.setColorFilter(paramInt, paramMode);
+  }
+  
+  public void setColorFilter(@Nullable ColorFilter paramColorFilter)
+  {
+    this.b.setColorFilter(paramColorFilter);
+  }
+  
+  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
+    this.b.setVisible(paramBoolean1, paramBoolean2);
+    return bool;
   }
 }
 

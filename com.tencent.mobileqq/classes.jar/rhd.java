@@ -1,50 +1,18 @@
-import android.app.Activity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.qphone.base.util.QLog;
 
 public class rhd
-  extends rez
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  private rhg jdField_a_of_type_Rhg;
-  protected boolean b;
+  public rhd(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public rhd(Activity paramActivity, rhg paramrhg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_Rhg = paramrhg;
-  }
-  
-  public View a(LayoutInflater paramLayoutInflater)
-  {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131494413, null);
-    paramLayoutInflater.setLayoutParams(new FrameLayout.LayoutParams(-1, aciy.a(60.0F, this.jdField_a_of_type_AndroidAppActivity.getResources())));
-    ImageView localImageView = (ImageView)paramLayoutInflater.findViewById(2131302713);
-    localImageView.setImageResource(2130841145);
-    ((TextView)paramLayoutInflater.findViewById(2131302755)).setVisibility(8);
-    ((TextView)paramLayoutInflater.findViewById(2131302759)).setText(ajjy.a(2131648372));
-    paramLayoutInflater.findViewById(2131302744).setVisibility(8);
-    paramLayoutInflater.findViewById(2131310123).setVisibility(8);
-    paramLayoutInflater.setOnClickListener(new rhe(this));
-    localImageView.setOnClickListener(new rhf(this));
-    return paramLayoutInflater;
-  }
-  
-  public void a(View paramView, BaseArticleInfo paramBaseArticleInfo, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-    this.jdField_a_of_type_Int = paramInt;
-    if (!this.b)
-    {
-      a();
-      this.b = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog remain confirm");
     }
-    a(paramView);
   }
 }
 

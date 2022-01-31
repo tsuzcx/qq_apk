@@ -1,6 +1,6 @@
 package com.tencent.ttpic.openapi.watermark;
 
-import android.text.TextUtils;
+import java.util.Queue;
 
 class LogicDataManager$81
   extends LogicDataManager.LogicValueProvider
@@ -12,10 +12,20 @@ class LogicDataManager$81
   
   public String getValue()
   {
-    if ((!TextUtils.isEmpty(LogicDataManager.access$5300(this.this$0))) && (LogicDataManager.access$5300(this.this$0).length() > 0)) {
-      return LogicDataManager.access$5300(this.this$0).substring(0, 1);
+    synchronized (LogicDataManager.access$5200(this.this$0))
+    {
+      if (LogicDataManager.access$5200(this.this$0).isEmpty()) {
+        break label85;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (!LogicDataManager.access$5200(this.this$0).isEmpty()) {
+        localStringBuilder.append((String)LogicDataManager.access$5200(this.this$0).poll());
+      }
     }
-    return LogicDataManager.access$400(this.this$0, 0);
+    String str = localObject.toString();
+    return str;
+    label85:
+    return "";
   }
 }
 

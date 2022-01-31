@@ -1,170 +1,116 @@
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-class aolq
-  extends aoko
+public class aolq
 {
-  public aolq(aokk paramaokk)
+  private int jdField_a_of_type_Int = 0;
+  public aogi a;
+  private aolq jdField_a_of_type_Aolq;
+  private int jdField_b_of_type_Int = 0;
+  private aolq jdField_b_of_type_Aolq;
+  private int c;
+  private int d;
+  private int e;
+  
+  public aolq(aogi paramaogi)
   {
-    super(paramaokk);
+    this.jdField_a_of_type_Aogi = paramaogi;
+    this.e = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297146);
   }
   
-  protected String a()
+  public int a()
   {
-    return "StateUploadingWhenRecv";
+    return this.jdField_a_of_type_Int;
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  public aolq a()
   {
-    b(paramInt1, paramInt2);
+    return this.jdField_a_of_type_Aolq;
   }
   
-  protected void a(int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    paramString = this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (paramString == null)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(aolq paramaolq)
+  {
+    this.jdField_a_of_type_Aolq = paramaolq;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public aolq b()
+  {
+    return this.jdField_b_of_type_Aolq;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(aolq paramaolq)
+  {
+    this.jdField_b_of_type_Aolq = paramaolq;
+  }
+  
+  public int c()
+  {
+    if (this.d != 0)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+      if (this.e != 0) {
+        return this.d + this.e;
+      }
+      this.e = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297146);
+      return this.d + this.e;
     }
-    aokk.b(this.jdField_a_of_type_Aokk, 9, 12);
-    aokk.c(this.jdField_a_of_type_Aokk, 9, 12);
-    this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString.uniseq, paramString.nSessionId, paramString.peerUin, paramString.peerType, 12, null, 5, null);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateExcepInvalidWhenRecv)");
-    this.jdField_a_of_type_Aoko = new aokz(this.jdField_a_of_type_Aokk);
+    return 0;
   }
   
-  protected void a(long paramLong)
+  public void c(int paramInt)
   {
-    b(paramLong);
+    this.d = paramInt;
   }
   
-  protected void a(boolean paramBoolean)
+  public int d()
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
+    if (this.c != 0) {
+      return this.c;
+    }
+    if ((this.jdField_a_of_type_Aogi != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Aogi.a)))
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      Object localObject2 = aolr.a(this.jdField_a_of_type_Aogi.a, ((QQAppInterface)localObject1).getApp().getBaseContext());
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = this.jdField_a_of_type_Aogi.a;
+      }
+      int i = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297151);
+      localObject2 = new TextPaint();
+      ((TextPaint)localObject2).setAntiAlias(true);
+      ((TextPaint)localObject2).setDither(true);
+      ((TextPaint)localObject2).setTextSize(i);
+      this.c = ((int)((TextPaint)localObject2).measureText((String)localObject1) + (BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297150) + BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297149) * 2 + BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297146) + BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297147)));
     }
-    if (paramBoolean == true)
+    for (;;)
     {
-      aokk.a(this.jdField_a_of_type_Aokk);
-      aokk.b(this.jdField_a_of_type_Aokk, 9, 11);
-      aokk.c(this.jdField_a_of_type_Aokk, 9, 14);
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateUploadingWhenRecv)");
-      this.jdField_a_of_type_Aoko = new aolq(this.jdField_a_of_type_Aokk);
-      return;
+      return this.c;
+      QLog.e("TAG horserace", 2, " GET WIDTH WITH NULL INFO");
     }
-    aokk.b(this.jdField_a_of_type_Aokk, 9, 10);
-    aokk.c(this.jdField_a_of_type_Aokk, 9, 10);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateChangeToOffFailedWhenRecv)");
-    this.jdField_a_of_type_Aoko = new aokt(this.jdField_a_of_type_Aokk);
-    this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 6, null);
-    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]  recv failed!!");
-  }
-  
-  protected boolean a(int paramInt, String paramString, long paramLong)
-  {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
-    }
-    localFileManagerEntity.Uuid = new String(paramString);
-    if ((apck.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
-      this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
-    }
-    this.jdField_a_of_type_Aokk.a(paramLong, localFileManagerEntity.peerUin);
-    if (localFileManagerEntity.fProgress < 0.9F)
-    {
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. start make progress pass to 100% directly");
-      this.b = true;
-      this.jdField_a_of_type_Aokk.a(1.0F);
-      return true;
-    }
-    f();
-    return true;
-  }
-  
-  protected void b()
-  {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    aokk.b(this.jdField_a_of_type_Aokk, 11, 9);
-    aokk.c(this.jdField_a_of_type_Aokk, 11, 9);
-    this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 0, null);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateCancelUploadWhenRecv)");
-    this.jdField_a_of_type_Aoko = new aokr(this.jdField_a_of_type_Aokk);
-  }
-  
-  protected void b(int paramInt)
-  {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. onFailedOfLocalSomeThingHappen entity is null");
-      return;
-    }
-    aokk.b(this.jdField_a_of_type_Aokk, 9, 11);
-    aokk.c(this.jdField_a_of_type_Aokk, 9, 11);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateLocalFailedWhenRecv)");
-    this.jdField_a_of_type_Aoko = new aold(this.jdField_a_of_type_Aokk);
-    this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 6, null);
-  }
-  
-  protected void c()
-  {
-    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    aokk.b(this.jdField_a_of_type_Aokk, 10, -2);
-    aokk.c(this.jdField_a_of_type_Aokk, 10, 14);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateUploadingWhenPause)");
-    this.jdField_a_of_type_Aoko = new aolp(this.jdField_a_of_type_Aokk);
-  }
-  
-  protected void f()
-  {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. doSomeThingOnUploadDone entity is null");
-      return;
-    }
-    this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    localFileManagerEntity.fProgress = 0.0F;
-    localFileManagerEntity.setCloudType(1);
-    aokk.b(this.jdField_a_of_type_Aokk, 1, 0);
-    aokk.c(this.jdField_a_of_type_Aokk, 1, 2);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + ". doSomeThingOnUploadDone start recv offline file....)");
-    this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aokk.jdField_a_of_type_Long, localFileManagerEntity.uniseq, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 1);
-    this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 10, null, 6, null);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateGotoOffFileProcess)");
-    this.jdField_a_of_type_Aoko = new aola(this.jdField_a_of_type_Aokk);
-  }
-  
-  protected void j()
-  {
-    if (a("onStop")) {
-      return;
-    }
-    aokk.a(this.jdField_a_of_type_Aokk, 9, 11, true);
-    a("StateLocalFailedWhenRecv");
-    this.jdField_a_of_type_Aoko = new aold(this.jdField_a_of_type_Aokk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aolq
  * JD-Core Version:    0.7.0.1
  */

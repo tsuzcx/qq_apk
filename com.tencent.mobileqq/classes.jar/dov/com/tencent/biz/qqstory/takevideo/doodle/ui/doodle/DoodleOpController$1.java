@@ -1,10 +1,10 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bhfc;
-import binj;
-import bink;
-import biog;
-import bioh;
+import bizu;
+import bkee;
+import bkef;
+import bkfb;
+import bkfc;
 import com.tencent.common.app.AppInterface;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -17,15 +17,15 @@ public class DoodleOpController$1
     Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
     while (localIterator.hasNext())
     {
-      binj localbinj = (binj)localIterator.next();
-      if ((localbinj instanceof biog))
+      bkee localbkee = (bkee)localIterator.next();
+      if ((localbkee instanceof bkfb))
       {
-        AppInterface localAppInterface = bhfc.a();
-        this.this$0.a(localAppInterface, ((biog)localbinj).c);
+        AppInterface localAppInterface = bizu.a();
+        this.this$0.a(localAppInterface, ((bkfb)localbkee).c);
       }
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    this.this$0.jdField_a_of_type_Bioh.g();
+    this.this$0.jdField_a_of_type_Bkfc.g();
   }
 }
 

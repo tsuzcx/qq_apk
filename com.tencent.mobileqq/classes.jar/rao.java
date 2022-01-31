@@ -1,948 +1,297 @@
-import android.graphics.Color;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import android.util.Xml;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusBookData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.StringReader;
-import java.io.StringWriter;
+import com.tencent.widget.ListView;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import org.json.JSONObject;
-import org.xmlpull.v1.XmlSerializer;
 
 public class rao
+  extends rap
+  implements baxl
 {
-  private static String a;
-  public static final HashMap<String, String> a;
-  private static String b;
-  private static String c;
-  private static String d;
-  private static String e;
-  private static String f;
-  private static String g;
-  private static String h;
-  private static String i;
-  private static String j;
-  private static String k;
-  private static String l;
-  private static String m;
-  private static String n;
-  private static String o;
-  private static String p;
-  private static String q;
-  private static String r;
-  private static String s = "{\n    \"id_container\": {\n        \"url\": \"http://hhhh.html\"\n    },\n    \"id_pic\": {\n        \"src\": \"http://hhh.jpg\"\n    },\n    \"id_title\": {\n        \"text\": \"简爱\"\n    },\n    \"id_summary\": {\n        \"text\": \"[英] 夏洛蒂 . 勃朗特\"\n    },\n    \"id_wording\": {\n        \"text\": \"13.5万人阅读\"\n    },\n    \"id_pic_right\": {\n        \"url\": \"img_book_right\"\n    },\n    \"source_id\": \"123xx\",\n    \"style_ID\": \"ReadInjoy_native_web_normal\"\n}";
+  private baxk a;
   
-  static
+  public rao(Activity paramActivity, LayoutInflater paramLayoutInflater, int paramInt, ListView paramListView, baxk parambaxk, SparseArray<oya> paramSparseArray)
   {
-    jdField_a_of_type_JavaLangString = "HtmlChangeUtil";
-    b = "p";
-    c = "section";
-    d = "strong";
-    e = "i";
-    f = "u";
-    g = "img";
-    h = "video";
-    i = "a";
-    j = "proteus";
-    k = "span";
-    l = "ul";
-    m = "li";
-    n = "ol";
-    o = "blockquote";
-    p = "text-decoration";
-    q = "color";
-    r = "background-color";
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put("aqua", "#00FFFF");
-    jdField_a_of_type_JavaUtilHashMap.put("black", "#000000");
-    jdField_a_of_type_JavaUtilHashMap.put("blue", "#0000FF");
-    jdField_a_of_type_JavaUtilHashMap.put("fuchsia", "#FF00FF");
-    jdField_a_of_type_JavaUtilHashMap.put("gray", "#808080");
-    jdField_a_of_type_JavaUtilHashMap.put("green", "#008000");
-    jdField_a_of_type_JavaUtilHashMap.put("lime", "#00FF00");
-    jdField_a_of_type_JavaUtilHashMap.put("maroon", "#800000");
-    jdField_a_of_type_JavaUtilHashMap.put("navy", "#000080");
-    jdField_a_of_type_JavaUtilHashMap.put("olive", "#808000");
-    jdField_a_of_type_JavaUtilHashMap.put("purple", "#800080");
-    jdField_a_of_type_JavaUtilHashMap.put("red", "#FF0000");
-    jdField_a_of_type_JavaUtilHashMap.put("silver", "#C0C0C0");
-    jdField_a_of_type_JavaUtilHashMap.put("teal", "#008080");
-    jdField_a_of_type_JavaUtilHashMap.put("white", "#FFFFFF");
-    jdField_a_of_type_JavaUtilHashMap.put("yellow", "#FFFF00");
+    super(paramActivity, paramLayoutInflater, paramInt, paramListView, paramSparseArray);
+    this.jdField_a_of_type_Baxk = parambaxk;
+    this.jdField_a_of_type_Baxk.a(this);
   }
   
-  public static BaseData a(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, rat paramrat, SparseArray<Float> paramSparseArray)
+  public int a(int paramInt)
   {
-    Object localObject2 = "";
-    Object localObject3 = "";
-    Object localObject1 = "";
-    int i1 = paramrat.c();
-    if (i1 != 1)
-    {
-      Object localObject4 = localObject2;
-      Object localObject5 = localObject3;
-      Object localObject6 = localObject1;
-      switch (i1)
-      {
-      default: 
-        localObject6 = localObject1;
-        localObject5 = localObject3;
-        localObject4 = localObject2;
-      case 0: 
-      case 1: 
-      case 2: 
-        for (;;)
-        {
-          i1 = paramrat.d();
-          localObject2 = localObject4;
-          localObject3 = localObject5;
-          localObject1 = localObject6;
-          break;
-          if (!paramrat.b().equals(g)) {
-            break label331;
-          }
-          int i2 = paramrat.b();
-          i1 = 0;
-          localObject4 = localObject1;
-          localObject1 = localObject2;
-          localObject2 = localObject3;
-          localObject3 = localObject4;
-          if (i1 < i2)
-          {
-            String str = paramrat.a(i1);
-            if (str.equals("src"))
-            {
-              localObject1 = paramrat.b(i1);
-              localObject5 = localObject3;
-              localObject6 = localObject2;
-              localObject4 = localObject1;
-              if (((String)localObject1).indexOf("http") == -1)
-              {
-                localObject4 = "http::" + (String)localObject1;
-                localObject6 = localObject2;
-                localObject5 = localObject3;
-              }
-            }
-            for (;;)
-            {
-              i1 += 1;
-              localObject3 = localObject5;
-              localObject2 = localObject6;
-              localObject1 = localObject4;
-              break;
-              if (str.equals("width"))
-              {
-                localObject6 = paramrat.b(i1);
-                localObject5 = localObject3;
-                localObject4 = localObject1;
-              }
-              else
-              {
-                localObject5 = localObject3;
-                localObject6 = localObject2;
-                localObject4 = localObject1;
-                if (str.equals("height"))
-                {
-                  localObject5 = paramrat.b(i1);
-                  localObject6 = localObject2;
-                  localObject4 = localObject1;
-                }
-              }
-            }
-          }
-          localObject4 = localObject1;
-          localObject5 = localObject2;
-          localObject6 = localObject3;
-        }
-        label331:
-        throw new IllegalArgumentException("img tag error: has other start tag");
-      }
-      if (!g.equals(paramrat.b())) {}
-    }
-    else
-    {
-      return qzy.a(paramArticleInfo, paramFastWebArticleInfo, (String)localObject2, (String)localObject3, (String)localObject1, paramSparseArray);
-    }
-    throw new IllegalArgumentException("img tag error: has other end tag");
+    return a((ArticleInfo)this.b.get(paramInt), this.d);
   }
   
-  public static BaseData a(rat paramrat)
+  public Activity a()
   {
-    ProteusBookData localProteusBookData = new ProteusBookData();
-    int i1 = paramrat.c();
-    Object localObject;
-    String str2;
-    String str1;
-    if (i1 != 1) {
-      switch (i1)
-      {
-      case 0: 
-      case 1: 
-      default: 
-      case 2: 
-        int i2;
-        do
-        {
-          i1 = paramrat.d();
-          break;
-          if (!paramrat.b().equals(j)) {
-            break label300;
-          }
-          i2 = paramrat.b();
-          i1 = 0;
-        } while (i1 >= i2);
-        localObject = paramrat.a(i1);
-        if (((String)localObject).equals("id")) {
-          localProteusBookData.jdField_a_of_type_JavaLangString = paramrat.b(i1);
-        }
-        while (!((String)localObject).equals("data"))
-        {
-          i1 += 1;
-          break;
-        }
-        str2 = paramrat.b(i1);
-        if (!TextUtils.isEmpty(str2))
-        {
-          JSONObject localJSONObject = new JSONObject(str2);
-          str1 = localJSONObject.getString("source_id");
-          localObject = rdg.a("native_article", true);
-          if (localObject != null)
-          {
-            localObject = ((rdg)localObject).getTemplateBean(localJSONObject);
-            label181:
-            if (localJSONObject.has("id")) {
-              localProteusBookData.d = localJSONObject.getString("id");
-            }
-            if (localJSONObject.has("card_type")) {
-              localProteusBookData.c = localJSONObject.getString("card_type");
-            }
-            if (localJSONObject.has("sid")) {
-              localProteusBookData.e = localJSONObject.getString("sid");
-            }
-          }
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      QLog.d("Q.readinjoy.fast_web", 2, "data: " + str2);
-      localProteusBookData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = ((TemplateBean)localObject);
-      localProteusBookData.b = str1;
-      break;
-      localObject = null;
-      break label181;
-      label300:
-      throw new IllegalArgumentException("proteus tag error: has other start tag");
-      if (j.equals(paramrat.b())) {
-        return localProteusBookData;
-      }
-      throw new IllegalArgumentException("proteus tag error: has other end tag");
-      str1 = null;
-      localObject = null;
-    }
+    return this.jdField_a_of_type_AndroidAppActivity;
   }
   
-  private static BaseData a(rat paramrat, SparseArray<Float> paramSparseArray)
+  public baxk a()
   {
-    StringWriter localStringWriter = new StringWriter();
-    XmlSerializer localXmlSerializer = Xml.newSerializer();
-    localXmlSerializer.setOutput(localStringWriter);
-    int i1 = paramrat.c();
-    Object localObject1 = "";
-    if (i1 != 1)
-    {
-      Object localObject2 = localObject1;
-      switch (i1)
-      {
-      default: 
-        localObject2 = localObject1;
-      case 0: 
-      case 1: 
-      case 2: 
-      case 4: 
-        for (;;)
-        {
-          i1 = paramrat.d();
-          localObject1 = localObject2;
-          break;
-          localObject2 = paramrat.b();
-          if (!((String)localObject2).equals(i)) {
-            throw new IllegalArgumentException(ajjy.a(2131639840));
-          }
-          localXmlSerializer.startTag("", (String)localObject2);
-          int i2 = paramrat.b();
-          i1 = 0;
-          for (;;)
-          {
-            localObject2 = localObject1;
-            if (i1 >= i2) {
-              break;
-            }
-            String str = paramrat.a(i1);
-            localObject2 = paramrat.b(i1);
-            if (str.equals("href")) {
-              localObject1 = localObject2;
-            }
-            localXmlSerializer.attribute("", str, (String)localObject2);
-            i1 += 1;
-          }
-          localXmlSerializer.text(paramrat.a());
-          localObject2 = localObject1;
-        }
-      }
-      if (i.equals(paramrat.b())) {
-        localXmlSerializer.endTag("", i);
-      }
-    }
-    else
-    {
-      localXmlSerializer.flush();
-      return qzy.a(localStringWriter.toString(), (String)localObject1, paramSparseArray);
-    }
-    throw new IllegalArgumentException("a tag error: has other end tag");
+    return this.jdField_a_of_type_Baxk;
   }
   
-  public static List<BaseData> a(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, SparseArray<Float> paramSparseArray)
+  public BaseArticleInfo a(int paramInt)
   {
-    String str = paramFastWebArticleInfo.jdField_a_of_type_JavaLangString;
-    ArrayList localArrayList = new ArrayList();
-    ras localras = new ras(null);
-    rat localrat = new rat(Xml.newPullParser(), localras);
-    localrat.a(new StringReader(str));
-    int i1 = localrat.c();
-    while (i1 != 1)
-    {
-      switch (i1)
-      {
-      }
-      for (;;)
-      {
-        if (localrat.c() != 2)
-        {
-          i1 = localrat.d();
-          break;
-          str = localrat.b();
-          if ((str.equals(b)) || (str.equals(c)))
-          {
-            a(paramArticleInfo, paramFastWebArticleInfo, localrat, localArrayList, localras, paramSparseArray);
-          }
-          else if (str.equals(i))
-          {
-            localArrayList.add(a(localrat, paramSparseArray));
-          }
-          else
-          {
-            if (str.equals(d))
-            {
-              a(localrat, localras, localArrayList, paramSparseArray);
-              if (2 != localrat.c()) {
-                continue;
-              }
-              i1 = localrat.c();
-              break;
-            }
-            if (str.equals(o))
-            {
-              localrat.d();
-              c(paramArticleInfo, paramFastWebArticleInfo, localrat, localArrayList, localras, paramSparseArray);
-            }
-            else if (str.equals(g))
-            {
-              localArrayList.add(a(paramArticleInfo, paramFastWebArticleInfo, localrat, paramSparseArray));
-            }
-            else if (str.equals(h))
-            {
-              localArrayList.add(b(paramArticleInfo, paramFastWebArticleInfo, localrat, paramSparseArray));
-            }
-            else if (str.equals(j))
-            {
-              localArrayList.add(a(localrat));
-            }
-            else if (str.equals(k))
-            {
-              a(localrat, localras, localArrayList, paramSparseArray);
-            }
-            else if ((str.equals(l)) || (str.equals(n)))
-            {
-              b(paramArticleInfo, paramFastWebArticleInfo, localrat, localArrayList, localras, paramSparseArray);
-            }
-            else
-            {
-              throw new IllegalArgumentException(ajjy.a(2131639839) + str);
-              a(localrat, localras, localArrayList, paramSparseArray);
-              if (2 == localrat.c())
-              {
-                i1 = localrat.c();
-                break;
-              }
-            }
-          }
-        }
-      }
-      i1 = 2;
-    }
-    return localArrayList;
+    return osj.a().a(Integer.valueOf(this.c));
   }
   
-  private static void a(SpannableString paramSpannableString, SparseArray<Object> paramSparseArray)
+  public BaseArticleInfo a(int paramInt, long paramLong)
   {
-    if (paramSparseArray == null) {
-      return;
-    }
-    int i1 = 0;
-    label7:
-    Object localObject1;
-    if (i1 < paramSparseArray.size())
-    {
-      localObject1 = paramSparseArray.valueAt(i1);
-      if (localObject1 != null) {
-        break label34;
-      }
-    }
-    for (;;)
-    {
-      i1 += 1;
-      break label7;
-      break;
-      label34:
-      if ((localObject1 instanceof ArrayList))
-      {
-        localObject1 = (ArrayList)localObject1;
-        int i2 = 0;
-        while (i2 < ((ArrayList)localObject1).size())
-        {
-          Object localObject2 = ((rar)((ArrayList)localObject1).get(i2)).a();
-          if ((localObject2 instanceof raq)) {
-            ((raq)localObject2).a(paramSpannableString.toString());
-          }
-          paramSpannableString.setSpan(localObject2, 0, paramSpannableString.length(), 33);
-          i2 += 1;
-        }
-      }
-      else
-      {
-        localObject1 = ((rar)localObject1).a();
-        if ((localObject1 instanceof raq)) {
-          ((raq)localObject1).a(paramSpannableString.toString());
-        }
-        paramSpannableString.setSpan(localObject1, 0, paramSpannableString.length(), 33);
-      }
-    }
+    return osj.a().a(this.c, paramLong);
   }
   
-  public static void a(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, rat paramrat, List<BaseData> paramList, ras paramras, SparseArray<Float> paramSparseArray)
+  public void a()
   {
-    int i1 = paramrat.c();
-    int i2 = paramrat.a();
-    for (;;)
-    {
-      if (i1 != 1) {
-        i1 = paramrat.c();
-      }
-      switch (i1)
-      {
-      case 0: 
-      case 1: 
-      default: 
-      case 2: 
-      case 3: 
-        do
-        {
-          String str;
-          do
-          {
-            i1 = paramrat.d();
-            break;
-            str = paramrat.b();
-            if (a(str))
-            {
-              a(paramrat, paramras, paramList, paramSparseArray);
-              break;
-            }
-            if (str.equals(g))
-            {
-              paramList.add(a(paramArticleInfo, paramFastWebArticleInfo, paramrat, paramSparseArray));
-              break;
-            }
-            if (str.equals(h))
-            {
-              paramList.add(b(paramArticleInfo, paramFastWebArticleInfo, paramrat, paramSparseArray));
-              break;
-            }
-            if (str.equals(i))
-            {
-              paramList.add(a(paramrat, paramSparseArray));
-              break;
-            }
-            if ((str.equals(l)) || (str.equals(n)))
-            {
-              b(paramArticleInfo, paramFastWebArticleInfo, paramrat, paramList, paramras, paramSparseArray);
-              break;
-            }
-            if (str.equals(o))
-            {
-              paramrat.d();
-              c(paramArticleInfo, paramFastWebArticleInfo, paramrat, paramList, paramras, paramSparseArray);
-              break;
-            }
-          } while ((str.equals(b)) || (str.equals(c)));
-          return;
-        } while (((!paramrat.b().equals(b)) && (!paramrat.b().equals(c))) || (i2 != paramrat.a()));
-        return;
-      }
-      a(paramrat, paramras, paramList, paramSparseArray);
-    }
+    super.a();
   }
   
-  public static void a(rat paramrat, ras paramras, List<BaseData> paramList, SparseArray<Float> paramSparseArray)
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, ArrayList<DislikeInfo> paramArrayList)
   {
-    int i4 = paramras.a();
-    int i5 = paramras.b();
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    int i3 = paramrat.c();
-    int i2 = 0;
-    int i1;
-    if (i3 != 1)
-    {
-      i1 = i2;
-      switch (i3)
-      {
-      default: 
-        i1 = i2;
-      }
-    }
-    for (;;)
-    {
-      i3 = paramrat.d();
-      i2 = i1;
-      break;
-      i1 = i2 + 1;
-      if (!a(paramrat.b()))
-      {
-        do
-        {
-          paramrat = localSpannableStringBuilder.toString();
-          if (!TextUtils.isEmpty(paramrat.replaceAll(" ", "").trim())) {
-            paramList.add(qzy.a(paramrat, localSpannableStringBuilder, i4, i5, paramSparseArray));
-          }
-          return;
-          SpannableString localSpannableString = new SpannableString(paramrat.a().replaceAll(" +", " ").replaceAll("\t+", " "));
-          a(localSpannableString, paramras.b);
-          localSpannableStringBuilder.append(localSpannableString);
-          i1 = i2;
-          break;
-        } while (i2 == 0);
-        i1 = i2 - 1;
-      }
-    }
-  }
-  
-  private static boolean a(String paramString)
-  {
-    return (paramString.equals(d)) || (paramString.equals(e)) || (paramString.equals(f)) || (paramString.equals(k));
-  }
-  
-  public static BaseData b(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, rat paramrat, SparseArray<Float> paramSparseArray)
-  {
-    int i7 = paramrat.c();
-    Object localObject5 = "";
-    Object localObject3 = "";
-    Object localObject4 = "";
-    Object localObject1 = "";
-    Object localObject2 = "";
-    int i2 = 0;
-    int i3 = 0;
-    int i1 = 1;
-    if (i7 != 1)
-    {
-      Object localObject6 = localObject3;
-      Object localObject7 = localObject5;
-      int i4 = i2;
-      int i5 = i3;
-      Object localObject8 = localObject1;
-      Object localObject9 = localObject2;
-      Object localObject10 = localObject4;
-      int i6 = i1;
-      switch (i7)
-      {
-      default: 
-        i6 = i1;
-        localObject10 = localObject4;
-        localObject9 = localObject2;
-        localObject8 = localObject1;
-        i5 = i3;
-        i4 = i2;
-        localObject7 = localObject5;
-        localObject6 = localObject3;
-      case 0: 
-      case 1: 
-      case 2: 
-        for (;;)
-        {
-          i7 = paramrat.d();
-          localObject3 = localObject6;
-          localObject5 = localObject7;
-          i2 = i4;
-          i3 = i5;
-          localObject1 = localObject8;
-          localObject2 = localObject9;
-          localObject4 = localObject10;
-          i1 = i6;
-          break;
-          if (!paramrat.b().equals(h)) {
-            break label739;
-          }
-          i7 = paramrat.b();
-          i4 = 0;
-          i5 = i1;
-          localObject6 = localObject2;
-          localObject2 = localObject1;
-          localObject1 = localObject3;
-          i1 = i2;
-          localObject3 = localObject5;
-          localObject5 = localObject4;
-          localObject4 = localObject6;
-          i2 = i3;
-          i3 = i5;
-          if (i4 < i7)
-          {
-            String str = paramrat.a(i4);
-            if (str.equals("vid"))
-            {
-              localObject10 = paramrat.b(i4);
-              localObject9 = localObject1;
-              localObject8 = localObject5;
-              localObject7 = localObject2;
-              localObject6 = localObject4;
-              i6 = i1;
-              i5 = i2;
-            }
-            for (;;)
-            {
-              i4 += 1;
-              i2 = i5;
-              i1 = i6;
-              localObject4 = localObject6;
-              localObject2 = localObject7;
-              localObject5 = localObject8;
-              localObject1 = localObject9;
-              localObject3 = localObject10;
-              break;
-              if (str.equals("width"))
-              {
-                i6 = Integer.valueOf(paramrat.b(i4)).intValue();
-                i5 = i2;
-                localObject6 = localObject4;
-                localObject7 = localObject2;
-                localObject8 = localObject5;
-                localObject9 = localObject1;
-                localObject10 = localObject3;
-              }
-              else if (str.equals("height"))
-              {
-                i5 = Integer.valueOf(paramrat.b(i4)).intValue();
-                i6 = i1;
-                localObject6 = localObject4;
-                localObject7 = localObject2;
-                localObject8 = localObject5;
-                localObject9 = localObject1;
-                localObject10 = localObject3;
-              }
-              else if (str.equals("cover"))
-              {
-                localObject9 = paramrat.b(i4);
-                i5 = i2;
-                i6 = i1;
-                localObject6 = localObject4;
-                localObject7 = localObject2;
-                localObject8 = localObject5;
-                localObject10 = localObject3;
-              }
-              else if (str.equals("tid"))
-              {
-                localObject8 = paramrat.b(i4);
-                i5 = i2;
-                i6 = i1;
-                localObject6 = localObject4;
-                localObject7 = localObject2;
-                localObject9 = localObject1;
-                localObject10 = localObject3;
-              }
-              else if (str.equals("appid"))
-              {
-                localObject7 = paramrat.b(i4);
-                i5 = i2;
-                i6 = i1;
-                localObject6 = localObject4;
-                localObject8 = localObject5;
-                localObject9 = localObject1;
-                localObject10 = localObject3;
-              }
-              else if (str.equals("appkey"))
-              {
-                localObject6 = paramrat.b(i4);
-                i5 = i2;
-                i6 = i1;
-                localObject7 = localObject2;
-                localObject8 = localObject5;
-                localObject9 = localObject1;
-                localObject10 = localObject3;
-              }
-              else
-              {
-                i5 = i2;
-                i6 = i1;
-                localObject6 = localObject4;
-                localObject7 = localObject2;
-                localObject8 = localObject5;
-                localObject9 = localObject1;
-                localObject10 = localObject3;
-                if (str.equals("busitype"))
-                {
-                  i3 = Integer.valueOf(paramrat.b(i4)).intValue();
-                  i5 = i2;
-                  i6 = i1;
-                  localObject6 = localObject4;
-                  localObject7 = localObject2;
-                  localObject8 = localObject5;
-                  localObject9 = localObject1;
-                  localObject10 = localObject3;
-                }
-              }
-            }
-          }
-          localObject6 = localObject1;
-          localObject7 = localObject3;
-          i4 = i1;
-          i5 = i2;
-          localObject8 = localObject2;
-          localObject9 = localObject4;
-          localObject10 = localObject5;
-          i6 = i3;
-        }
-        label739:
-        throw new IllegalArgumentException("video tag error: has other start tag");
-      }
-      if (!h.equals(paramrat.b())) {}
-    }
-    else
-    {
-      return qzy.a(paramArticleInfo, paramFastWebArticleInfo, (String)localObject3, (String)localObject5, i2, i3, (String)localObject1, (String)localObject2, (String)localObject4, i1, paramSparseArray);
-    }
-    throw new IllegalArgumentException("video tag error: has other end tag");
-  }
-  
-  private static HashMap<String, String> b(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    paramString = paramString.split(";");
-    int i1 = 0;
-    if (i1 < paramString.length)
-    {
-      Object localObject = paramString[i1].split(":");
-      if (localObject.length != 2) {}
-      for (;;)
-      {
-        i1 += 1;
-        break;
-        String str = localObject[0].trim();
-        localObject = localObject[1].trim();
-        if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-          localHashMap.put(str.toLowerCase(), ((String)localObject).toLowerCase());
-        }
-      }
-    }
-    return localHashMap;
-  }
-  
-  private static List<Object> b(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(paramString)) {
-      return localArrayList;
-    }
-    for (;;)
-    {
-      int i2;
-      Object localObject;
-      try
-      {
-        String[] arrayOfString = paramString.split(";");
-        i2 = 0;
-        if (i2 < arrayOfString.length)
-        {
-          localObject = arrayOfString[i2].split(":");
-          if (localObject.length != 2) {
-            break label399;
-          }
-          paramString = localObject[0].trim();
-          localObject = localObject[1].trim();
-          if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty((CharSequence)localObject))) {
-            break label399;
-          }
-          if (!p.equals(paramString)) {
-            break label172;
-          }
-          if (!"underline".equals(localObject)) {
-            break label143;
-          }
-          localArrayList.add(rar.a(3, new Object[0]));
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, paramString, new Object[0]);
-      }
-      return localArrayList;
-      label143:
-      if ("line-through".equals(localObject))
-      {
-        localArrayList.add(rar.a(5, new Object[0]));
-        break label399;
-        label172:
-        if ((q.equals(paramString)) || (r.equals(paramString)))
-        {
-          int i1;
-          if (((String)localObject).startsWith("rgb("))
-          {
-            localObject = localObject.split("\\(")[1].split("\\)")[0].split(",");
-            if (localObject.length != 3) {
-              break label394;
-            }
-            i1 = Color.rgb(Integer.valueOf(localObject[0].trim()).intValue(), Integer.valueOf(localObject[1].trim()).intValue(), Integer.valueOf(localObject[2].trim()).intValue());
-          }
-          while (i1 != -1)
-          {
-            if ("color".equals(paramString)) {}
-            for (paramString = rar.a(2, new Object[] { Integer.valueOf(i1) });; paramString = rar.a(1, new Object[] { Integer.valueOf(i1) }))
-            {
-              localArrayList.add(paramString);
-              break label399;
-              if (((String)localObject).startsWith("#"))
-              {
-                i1 = Color.parseColor((String)localObject);
-                break;
-              }
-              if (!jdField_a_of_type_JavaUtilHashMap.containsKey(((String)localObject).toLowerCase())) {
-                break label394;
-              }
-              i1 = Color.parseColor((String)jdField_a_of_type_JavaUtilHashMap.get(((String)localObject).toLowerCase()));
-              break;
-            }
-            i1 = -1;
-          }
-        }
-      }
-      label394:
-      label399:
-      i2 += 1;
-    }
-  }
-  
-  public static void b(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, rat paramrat, List<BaseData> paramList, ras paramras, SparseArray<Float> paramSparseArray)
-  {
-    int i1 = paramrat.c();
-    int i2 = paramrat.a();
-    for (;;)
-    {
-      if (i1 != 1) {
-        i1 = paramrat.c();
-      }
-      switch (i1)
-      {
-      case 0: 
-      case 1: 
-      default: 
-      case 2: 
-      case 3: 
-        String str;
-        do
-        {
-          do
-          {
-            i1 = paramrat.d();
-            break;
-            str = paramrat.b();
-            if (a(str))
-            {
-              a(paramrat, paramras, paramList, paramSparseArray);
-              break;
-            }
-            if (str.equals(g))
-            {
-              paramList.add(a(paramArticleInfo, paramFastWebArticleInfo, paramrat, paramSparseArray));
-              break;
-            }
-            if (str.equals(h))
-            {
-              paramList.add(b(paramArticleInfo, paramFastWebArticleInfo, paramrat, paramSparseArray));
-              break;
-            }
-            if (str.equals(i))
-            {
-              paramList.add(a(paramrat, paramSparseArray));
-              break;
-            }
-          } while ((str.equals(n)) || (str.equals(l)));
-          if ((!str.equals(b)) && (!str.equals(c))) {
-            break label245;
-          }
-          a(paramArticleInfo, paramFastWebArticleInfo, paramrat, paramList, paramras, paramSparseArray);
-        } while (i2 != paramrat.a());
-        return;
-        if (str.equals(m))
-        {
-          paramrat.d();
-          a(paramrat, paramras, paramList, paramSparseArray);
-        }
-        else
-        {
-          throw new IOException("illegal tag include in list element(ul or ol)");
-        }
-        break;
-      case 4: 
-        label245:
-        a(paramrat, paramras, paramList, paramSparseArray);
-      }
-    }
-  }
-  
-  public static void c(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, rat paramrat, List<BaseData> paramList, ras paramras, SparseArray<Float> paramSparseArray)
-  {
-    int i1 = paramrat.c();
-    switch (i1)
-    {
-    }
-    label36:
+    Object localObject = (ArticleInfo)paramBaseArticleInfo;
+    if (localObject == null) {}
     do
     {
-      paramrat.d();
-      while (i1 == 1)
+      do
       {
-        return;
-        String str = paramrat.b();
-        if ((str.equals(b)) || (str.equals(c)))
+        do
         {
-          a(paramArticleInfo, paramFastWebArticleInfo, paramrat, paramList, paramras, paramSparseArray);
-          break label36;
-        }
-        if (!a(str)) {
-          throw new IOException("blockquote tag include no text tag !");
-        }
-        a(paramrat, paramras, paramList, paramSparseArray);
+          do
+          {
+            return;
+            if (ozj.a(paramBaseArticleInfo.mRecommendSeq))
+            {
+              ozj.a().a(this.c, paramBaseArticleInfo.mRecommendSeq);
+              return;
+            }
+            paramBaseArticleInfo = onk.a();
+            Iterator localIterator = paramArrayList.iterator();
+            while (localIterator.hasNext())
+            {
+              DislikeInfo localDislikeInfo = (DislikeInfo)localIterator.next();
+              if (localDislikeInfo.c == 5) {
+                a(localDislikeInfo.b);
+              }
+            }
+            osj.a().a(Long.valueOf(paramBaseArticleInfo).longValue(), ((ArticleInfo)localObject).makeDislikeParam(paramArrayList));
+            osj.a().a(this.c, (BaseArticleInfo)localObject);
+          } while (paramInt != 0);
+          paramBaseArticleInfo = (QQAppInterface)onk.a();
+          paramArrayList = (KandianMergeManager)paramBaseArticleInfo.getManager(162);
+          if (this.b.size() <= 0) {
+            break;
+          }
+        } while (this.c != 0);
+        paramArrayList = (BaseArticleInfo)this.b.get(0);
+      } while (paramArrayList == null);
+      localObject = sgj.b(a(), paramArrayList);
+      sgj.a(paramBaseArticleInfo, sgj.a(paramArrayList), String.valueOf(NetConnInfoCenter.getServerTime()), (String)localObject, true);
+      return;
+      osj.a().a(this.c, 20, 9223372036854775807L, true);
+    } while (this.c != 0);
+    sgj.a(paramBaseArticleInfo, paramBaseArticleInfo.getApp().getResources().getString(2131695578), String.valueOf(NetConnInfoCenter.getServerTime()), "", true);
+  }
+  
+  public void a(int paramInt, ArrayList<BaseArticleInfo> paramArrayList, ArrayList<DislikeInfo> paramArrayList1)
+  {
+    Object localObject = onk.a();
+    ArticleInfo localArticleInfo = (ArticleInfo)paramArrayList.get(0);
+    if (localArticleInfo != null) {
+      osj.a().a(Long.valueOf((String)localObject).longValue(), localArticleInfo.makeDislikeParam(paramArrayList1));
+    }
+    paramArrayList1 = paramArrayList1.iterator();
+    while (paramArrayList1.hasNext())
+    {
+      localObject = (DislikeInfo)paramArrayList1.next();
+      if (((DislikeInfo)localObject).c == 5) {
+        a(((DislikeInfo)localObject).b);
       }
-    } while (!paramrat.b().equals(o));
+    }
+    int i = 0;
+    if (i < paramArrayList.size())
+    {
+      paramArrayList1 = (ArticleInfo)paramArrayList.get(i);
+      if (paramArrayList1 == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        long l = paramArrayList1.mRecommendSeq;
+        if (ozj.a(l)) {
+          ozj.a().a(this.c, l);
+        } else {
+          osj.a().a(this.c, paramArrayList1);
+        }
+      }
+    }
+    if (paramInt == 0)
+    {
+      paramArrayList = (QQAppInterface)onk.a();
+      paramArrayList1 = (KandianMergeManager)paramArrayList.getManager(162);
+      if (this.b.size() <= 0) {
+        break label248;
+      }
+      if (this.c == 0)
+      {
+        paramArrayList1 = (BaseArticleInfo)this.b.get(0);
+        if (paramArrayList1 != null)
+        {
+          localObject = sgj.b(a(), paramArrayList1);
+          sgj.a(paramArrayList, sgj.a(paramArrayList1), String.valueOf(NetConnInfoCenter.getServerTime()), (String)localObject, true);
+        }
+      }
+    }
+    label248:
+    do
+    {
+      return;
+      osj.a().a(this.c, 20, 9223372036854775807L, true);
+    } while (this.c != 0);
+    sgj.a(paramArrayList, paramArrayList.getApp().getResources().getString(2131695578), String.valueOf(NetConnInfoCenter.getServerTime()), "", true);
+  }
+  
+  public void a(qty paramqty, BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBaseArticleInfo == null) || (paramqty == null)) {
+      return;
+    }
+    if (paramBoolean2) {
+      super.b(paramqty, paramBaseArticleInfo);
+    }
+    if (this.c != 40677)
+    {
+      ArrayList localArrayList = new ArrayList();
+      ReportInfo localReportInfo = new ReportInfo();
+      localReportInfo.mUin = onk.a();
+      localReportInfo.mSource = 0;
+      localReportInfo.mSourceArticleId = paramBaseArticleInfo.mArticleID;
+      localReportInfo.mChannelId = this.c;
+      localReportInfo.mAlgorithmId = ((int)paramBaseArticleInfo.mAlgorithmID);
+      localReportInfo.mStrategyId = paramBaseArticleInfo.mStrategyId;
+      localReportInfo.mOperation = 1;
+      localReportInfo.mServerContext = paramBaseArticleInfo.mServerContext;
+      localReportInfo.mReadTimeLength = -1;
+      localReportInfo.mInnerId = paramBaseArticleInfo.innerUniqueID;
+      localReportInfo.videoReportInfo = paramBaseArticleInfo.videoReportInfo;
+      if (paramBaseArticleInfo.mVideoColumnInfo != null) {
+        localReportInfo.mColumnID = paramBaseArticleInfo.mVideoColumnInfo.jdField_a_of_type_Int;
+      }
+      if (paramBaseArticleInfo.mSocialFeedInfo != null)
+      {
+        qcc localqcc = new qcc();
+        localqcc.jdField_a_of_type_Long = paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Long;
+        if (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcl != null) {
+          localqcc.jdField_b_of_type_Long = paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcl.jdField_a_of_type_Long;
+        }
+        localqcc.jdField_a_of_type_Int = paramBaseArticleInfo.mSocialFeedInfo.jdField_b_of_type_Int;
+        localqcc.jdField_b_of_type_Int = paramBaseArticleInfo.mSocialFeedInfo.d;
+        Object localObject = paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_JavaUtilList;
+        if ((localObject != null) && (!((List)localObject).isEmpty()))
+        {
+          localqcc.jdField_a_of_type_JavaUtilList = new ArrayList();
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            qcl localqcl = (qcl)((Iterator)localObject).next();
+            if (localqcl != null) {
+              localqcc.jdField_a_of_type_JavaUtilList.add(Long.valueOf(localqcl.jdField_a_of_type_Long));
+            }
+          }
+        }
+        localReportInfo.mFeedsReportData = localqcc;
+      }
+      localArrayList.add(localReportInfo);
+      osj.a().a(localArrayList);
+    }
+    osj.a().a(paramBaseArticleInfo.mArticleID, System.currentTimeMillis());
+    super.a(paramqty, paramBaseArticleInfo, paramBoolean1, paramBoolean2);
+  }
+  
+  public boolean a()
+  {
+    return onk.a(this.jdField_a_of_type_AndroidAppActivity);
+  }
+  
+  public boolean a(int paramInt, long paramLong)
+  {
+    return osj.a().a(paramLong);
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      new now((QQAppInterface)onk.a(), paramString, this.jdField_a_of_type_AndroidAppActivity).a();
+      return true;
+    }
+    QLog.d("Q.readinjoy.ui", 2, "unfollow fail , puin is null !");
+    return false;
+  }
+  
+  public boolean b(int paramInt, long paramLong)
+  {
+    return osj.a().a(Long.valueOf(paramLong));
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if (!this.jdField_a_of_type_Baxk.a())
+    {
+      paramInt2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildCount();
+      paramInt1 = 0;
+      for (;;)
+      {
+        if (paramInt1 < paramInt2)
+        {
+          Object localObject = (pax)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(paramInt1).getTag(2131379208);
+          rfn localrfn = (rfn)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(paramInt1).getTag(2131379213);
+          pda localpda = (pda)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(paramInt1).getTag(2131379210);
+          if ((localObject != null) && (localrfn != null) && (localpda != null)) {
+            localpda.a(localrfn, (pax)localObject, Long.valueOf(paramString).longValue(), paramBitmap);
+          }
+          if ((localObject != null) && (pqq.a(((pax)localObject).a())))
+          {
+            localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(paramInt1);
+            if (localObject != null)
+            {
+              localObject = (pqt)((View)localObject).getTag();
+              if (localObject == null) {}
+            }
+          }
+          try
+          {
+            ((pqt)localObject).a(Long.valueOf(paramString).longValue(), paramBitmap);
+            paramInt1 += 1;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              localException.printStackTrace();
+            }
+          }
+        }
+      }
+    }
   }
 }
 

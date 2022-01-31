@@ -1,56 +1,60 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppExposureData;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import java.util.ArrayList;
+import java.util.List;
 
-class aogf
-  extends aogx
+public class aogf
+  extends RecyclerView.Adapter<aoge>
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
+  private List<MiniAppRecommInfo.MiniApp> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  aogf(aofz paramaofz, MessageRecord paramMessageRecord)
+  public aogf(aogd paramaogd) {}
+  
+  public aoge a(ViewGroup paramViewGroup, int paramInt)
   {
-    super(paramaofz);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    paramViewGroup = LayoutInflater.from(aogd.a(this.jdField_a_of_type_Aogd)).inflate(2131559313, null, false);
+    return new aoge(aogd.a(this.jdField_a_of_type_Aogd), paramViewGroup);
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aogv paramaogv)
+  public void a(aoge paramaoge, int paramInt)
   {
-    if ("1".equals(this.f))
+    MiniAppRecommInfo.MiniApp localMiniApp = (MiniAppRecommInfo.MiniApp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramaoge.a(localMiniApp);
+    paramaoge.a(paramInt);
+    if ((localMiniApp != null) && (localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2TroopTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
-      }
-      paramaogv.a(aofz.a(this.jdField_a_of_type_Long, false), false);
-      return;
+      paramaoge = new MiniAppConfig(localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo);
+      paramaoge.launchParam.scene = 2065;
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(new MiniAppExposureManager.MiniAppExposureData(paramaoge, paramInt));
+      MiniProgramLpReportDC04239.reportPageView(localArrayList, "expo");
+      aogd.a(101, paramInt, localMiniApp.jdField_a_of_type_Int);
     }
-    if ((this.b == null) || (this.b.length() == 0))
+  }
+  
+  public void a(List<MiniAppRecommInfo.MiniApp> paramList)
+  {
+    if (paramList != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Buddy2TroopTaskExcuter faild uuid is null");
-      }
-      paramaogv.a(aofz.a(this.jdField_a_of_type_Long, true), false);
-      return;
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
     }
-    aofz.a(this.jdField_a_of_type_Aofz).a().a().a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 102, new aogg(this, paramString, paramaogv));
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aogf
  * JD-Core Version:    0.7.0.1
  */

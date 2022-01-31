@@ -1,18 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class aemx
   implements View.OnClickListener
 {
-  aemx(aemw paramaemw) {}
+  aemx(aemj paramaemj) {}
   
   public void onClick(View paramView)
   {
-    aemw.a(this.a).a();
-    ChatActivityUtils.a(aemw.a(this.a), aemw.a(this.a), aemw.a(this.a).jdField_a_of_type_Int, aemw.a(this.a).jdField_a_of_type_JavaLangString, true, true, null, null);
-    awqx.b(aemw.a(this.a), "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
+    actn.n = true;
+    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+    acxv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
+    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "2", "0", "", "");
   }
 }
 

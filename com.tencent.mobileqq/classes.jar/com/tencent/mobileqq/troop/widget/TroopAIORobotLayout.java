@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.troop.widget;
 
-import aebg;
+import aemf;
 import android.content.Context;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import azef;
-import azgu;
-import azks;
-import azna;
-import aznc;
-import aznd;
-import aznh;
-import azni;
-import aznj;
-import aznk;
-import baig;
+import bafh;
+import bahx;
+import balw;
+import baoe;
+import baog;
+import baoh;
+import baol;
+import baom;
+import baon;
+import baoo;
+import bbjn;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XEditTextEx;
@@ -41,70 +41,70 @@ public class TroopAIORobotLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private String a(String paramString1, String paramString2, String paramString3, aznc paramaznc, azks paramazks)
+  private String a(String paramString1, String paramString2, String paramString3, baog parambaog, balw parambalw)
   {
     int i;
-    if (paramaznc.jdField_b_of_type_Boolean)
+    if (parambaog.jdField_b_of_type_Boolean)
     {
-      paramaznc.jdField_b_of_type_Boolean = false;
-      paramazks.a();
-      i = paramaznc.jdField_b_of_type_Aznd.c.indexOf("content=");
+      parambaog.jdField_b_of_type_Boolean = false;
+      parambalw.a();
+      i = parambaog.jdField_b_of_type_Baoh.c.indexOf("content=");
       if (i <= 0) {
         break label193;
       }
     }
     label193:
-    for (paramString3 = paramaznc.jdField_b_of_type_Aznd.c.substring(i + 8);; paramString3 = "")
+    for (paramString3 = parambaog.jdField_b_of_type_Baoh.c.substring(i + 8);; paramString3 = "")
     {
-      String str = paramaznc.jdField_b_of_type_Aznd.jdField_a_of_type_JavaLangString;
-      azks.a("panel", "talk_out", paramString2, paramString2, "1", "");
+      String str = parambaog.jdField_b_of_type_Baoh.jdField_a_of_type_JavaLangString;
+      balw.a("panel", "talk_out", paramString2, paramString2, "1", "");
       try
       {
-        paramazks.b(Long.parseLong(paramString1), Long.parseLong(paramString2), paramString3, new aznj(this, paramaznc));
+        parambalw.b(Long.parseLong(paramString1), Long.parseLong(paramString2), paramString3, new baon(this, parambaog));
         return str;
       }
       catch (Exception paramString1)
       {
         return str;
       }
-      str = paramaznc.a.jdField_a_of_type_JavaLangString;
-      paramaznc.jdField_b_of_type_Boolean = true;
-      paramazks.b(paramString1, paramString2, paramString3);
-      i = paramaznc.a.c.indexOf("content=");
+      str = parambaog.a.jdField_a_of_type_JavaLangString;
+      parambaog.jdField_b_of_type_Boolean = true;
+      parambalw.b(paramString1, paramString2, paramString3);
+      i = parambaog.a.c.indexOf("content=");
       if (i > 0) {}
-      for (paramString3 = paramaznc.a.c.substring(i + 8);; paramString3 = "")
+      for (paramString3 = parambaog.a.c.substring(i + 8);; paramString3 = "")
       {
-        azks.a("panel", "talk_in", paramString2, paramString2, "", "");
+        balw.a("panel", "talk_in", paramString2, paramString2, "", "");
         break;
       }
     }
   }
   
-  private void a(aebg paramaebg, String paramString1, String paramString2, boolean paramBoolean)
+  private void a(aemf paramaemf, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if ((paramaebg == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+    if ((paramaemf == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
       return;
     }
-    SpannableString localSpannableString = azef.a(paramaebg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getContext(), paramString1, paramString1, paramString2, false, true);
+    SpannableString localSpannableString = bafh.a(paramaemf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getContext(), paramString1, paramString1, paramString2, false, true);
     if (localSpannableString != null)
     {
       if (paramBoolean) {
         break label93;
       }
-      paramaebg.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(localSpannableString);
+      paramaemf.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(localSpannableString);
     }
     for (;;)
     {
-      paramaebg.jdField_a_of_type_ComTencentWidgetXEditTextEx.append(" ");
-      paramaebg.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(paramaebg.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length());
-      paramaebg.a(paramString1, paramString2, true, 0);
+      paramaemf.jdField_a_of_type_ComTencentWidgetXEditTextEx.append(" ");
+      paramaemf.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(paramaemf.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length());
+      paramaemf.a(paramString1, paramString2, true, 0);
       return;
       label93:
-      paramaebg.jdField_a_of_type_ComTencentWidgetXEditTextEx.append(localSpannableString);
+      paramaemf.jdField_a_of_type_ComTencentWidgetXEditTextEx.append(localSpannableString);
     }
   }
   
-  private void a(String paramString1, String paramString2, String paramString3, azks paramazks, boolean paramBoolean)
+  private void a(String paramString1, String paramString2, String paramString3, balw parambalw, boolean paramBoolean)
   {
     if (!paramBoolean) {}
     for (String str = "off";; str = "on")
@@ -114,18 +114,18 @@ public class TroopAIORobotLayout
         return;
       }
       int i = 0;
-      aznc localaznc;
+      baog localbaog;
       if (i < j)
       {
-        localaznc = (aznc)a(i);
-        if ((localaznc != null) && (!TextUtils.isEmpty(localaznc.jdField_b_of_type_Aznd.jdField_a_of_type_JavaLangString)))
+        localbaog = (baog)a(i);
+        if ((localbaog != null) && (!TextUtils.isEmpty(localbaog.jdField_b_of_type_Baoh.jdField_a_of_type_JavaLangString)))
         {
-          localaznc.jdField_b_of_type_Boolean = paramBoolean;
+          localbaog.jdField_b_of_type_Boolean = paramBoolean;
           if (!paramBoolean)
           {
-            i = localaznc.jdField_b_of_type_Aznd.c.indexOf("content=");
+            i = localbaog.jdField_b_of_type_Baoh.c.indexOf("content=");
             if (i > 0) {
-              str = localaznc.jdField_b_of_type_Aznd.c.substring(i + 8);
+              str = localbaog.jdField_b_of_type_Baoh.c.substring(i + 8);
             }
           }
         }
@@ -134,27 +134,27 @@ public class TroopAIORobotLayout
       {
         label111:
         if (paramBoolean) {
-          paramazks.b(paramString1, paramString2, paramString3);
+          parambalw.b(paramString1, paramString2, paramString3);
         }
         for (;;)
         {
           try
           {
-            paramazks.b(Long.parseLong(paramString1), Long.parseLong(paramString2), str, new aznk(this));
+            parambalw.b(Long.parseLong(paramString1), Long.parseLong(paramString2), str, new baoo(this));
             return;
           }
           catch (Exception paramString1)
           {
             return;
           }
-          i = localaznc.a.c.indexOf("content=");
+          i = localbaog.a.c.indexOf("content=");
           if (i > 0) {
-            str = localaznc.a.c.substring(i + 8);
+            str = localbaog.a.c.substring(i + 8);
           }
           break label111;
           i += 1;
           break;
-          paramazks.a();
+          parambalw.a();
         }
       }
     }
@@ -172,7 +172,7 @@ public class TroopAIORobotLayout
     return false;
   }
   
-  public String a(aznc paramaznc)
+  public String a(baog parambaog)
   {
     Object localObject = a();
     if (localObject == null)
@@ -180,13 +180,13 @@ public class TroopAIORobotLayout
       if (QLog.isColorLevel()) {
         QLog.e("TroopAIORobotLayout", 2, "troopRobotManager = null");
       }
-      paramaznc = null;
+      parambaog = null;
     }
     do
     {
-      return paramaznc;
-      localObject = a(this.c, this.jdField_a_of_type_JavaLangString, this.b, paramaznc, (azks)localObject);
-      paramaznc = (aznc)localObject;
+      return parambaog;
+      localObject = a(this.c, this.jdField_a_of_type_JavaLangString, this.b, parambaog, (balw)localObject);
+      parambaog = (baog)localObject;
     } while (!QLog.isColorLevel());
     QLog.d("TroopAIORobotLayout", 2, "talking: " + (String)localObject);
     return localObject;
@@ -197,10 +197,10 @@ public class TroopAIORobotLayout
     super.a();
   }
   
-  public void a(aznc paramaznc)
+  public void a(baog parambaog)
   {
-    azks localazks = a();
-    if (localazks == null) {
+    balw localbalw = a();
+    if (localbalw == null) {
       if (QLog.isColorLevel()) {
         QLog.e("TroopAIORobotLayout", 2, "troopRobotManager = null");
       }
@@ -210,33 +210,33 @@ public class TroopAIORobotLayout
       return;
       if (b())
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.append(paramaznc.a.jdField_a_of_type_JavaLangString);
-        ((aebg)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).Z = true;
+        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.append(parambaog.a.jdField_a_of_type_JavaLangString);
+        ((aemf)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).Z = true;
         this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c();
-        ((aebg)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).Z = false;
-        if (!localazks.a()) {
-          a((aebg)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_JavaLangString, this.b, false);
+        ((aemf)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).Z = false;
+        if (!localbalw.a()) {
+          a((aemf)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_JavaLangString, this.b, false);
         }
       }
       while (QLog.isColorLevel())
       {
-        QLog.d("TroopAIORobotLayout", 2, "send to robot: " + paramaznc.a.jdField_a_of_type_JavaLangString);
+        QLog.d("TroopAIORobotLayout", 2, "send to robot: " + parambaog.a.jdField_a_of_type_JavaLangString);
         return;
-        a(getContext(), paramaznc.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, false, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+        a(getContext(), parambaog.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, false, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
       }
     }
   }
   
-  public void a(aznc paramaznc, String paramString)
+  public void a(baog parambaog, String paramString)
   {
-    azgu.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8009FA2", this.jdField_a_of_type_JavaLangString, paramString);
+    bahx.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8009FA2", this.jdField_a_of_type_JavaLangString, paramString);
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, aebg paramaebg, azna paramazna)
+  public void a(String paramString1, String paramString2, String paramString3, aemf paramaemf, baoe parambaoe)
   {
-    super.a(paramString2, paramString3, paramaebg, paramazna);
-    paramaebg = a();
-    if (paramaebg == null)
+    super.a(paramString2, paramString3, paramaemf, parambaoe);
+    paramaemf = a();
+    if (paramaemf == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("TroopAIORobotLayout", 2, "troopRobotManager = null");
@@ -264,14 +264,14 @@ public class TroopAIORobotLayout
     if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaLangString.equals(paramString2))) {
       a(false);
     }
-    i = baig.an(getContext(), paramString1 + "_" + paramString2);
-    paramaebg.a(l2, l1, i, new aznh(this, i, paramString2, paramString1, paramString3, paramazna));
+    i = bbjn.an(getContext(), paramString1 + "_" + paramString2);
+    paramaemf.a(l2, l1, i, new baol(this, i, paramString2, paramString1, paramString3, parambaoe));
   }
   
-  public void b(aznc paramaznc)
+  public void b(baog parambaog)
   {
-    azks localazks = a();
-    if (localazks == null)
+    balw localbalw = a();
+    if (localbalw == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("TroopAIORobotLayout", 2, "troopRobotManager = null");
@@ -285,22 +285,22 @@ public class TroopAIORobotLayout
         long l1 = Long.parseLong(this.c);
         long l2 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
         String str = null;
-        int i = paramaznc.a.c.indexOf("content=");
+        int i = parambaog.a.c.indexOf("content=");
         if (i > 0) {
-          str = paramaznc.a.c.substring(i + 8);
+          str = parambaog.a.c.substring(i + 8);
         }
         if (!b()) {
           continue;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.append(paramaznc.a.jdField_a_of_type_JavaLangString);
-        ((aebg)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).Z = true;
+        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.append(parambaog.a.jdField_a_of_type_JavaLangString);
+        ((aemf)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).Z = true;
         this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.J = true;
         this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c();
-        ((aebg)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).Z = false;
-        if (!localazks.a()) {
-          a((aebg)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_JavaLangString, this.b, false);
+        ((aemf)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).Z = false;
+        if (!localbalw.a()) {
+          a((aemf)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_JavaLangString, this.b, false);
         }
-        localazks.a(l1, l2, str, new azni(this, paramaznc));
+        localbalw.a(l1, l2, str, new baom(this, parambaog));
       }
       catch (Exception localException)
       {
@@ -309,20 +309,20 @@ public class TroopAIORobotLayout
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d("TroopAIORobotLayout", 2, "send to server: " + paramaznc.a.jdField_a_of_type_JavaLangString);
+      QLog.d("TroopAIORobotLayout", 2, "send to server: " + parambaog.a.jdField_a_of_type_JavaLangString);
       return;
-      a(getContext(), paramaznc.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, true, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+      a(getContext(), parambaog.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, true, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
     }
   }
   
-  public void b(aznc paramaznc, String paramString)
+  public void b(baog parambaog, String paramString)
   {
-    azks.a("panel", "clk", this.c, this.jdField_a_of_type_JavaLangString, paramString, "");
+    balw.a("panel", "clk", this.c, this.jdField_a_of_type_JavaLangString, paramString, "");
   }
   
-  public void d(aznc paramaznc, String paramString)
+  public void d(baog parambaog, String paramString)
   {
-    azks.a("panel", "clk", this.c, this.jdField_a_of_type_JavaLangString, paramString, "");
+    balw.a("panel", "clk", this.c, this.jdField_a_of_type_JavaLangString, paramString, "");
   }
   
   public void setVisibility(int paramInt)

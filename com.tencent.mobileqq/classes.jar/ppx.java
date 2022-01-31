@@ -1,26 +1,23 @@
+import com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSMarkArticleRead;
 import com.tencent.qphone.base.util.QLog;
 
 public class ppx
-  implements Cloneable
+  implements PTSNativeModuleRegistry.IPTSMarkArticleRead
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  public final String a = "PTSMarkArticleReadModule";
   
-  protected Object clone()
+  public void markArticleRead(long paramLong1, long paramLong2)
   {
+    QLog.i("PTSMarkArticleReadModule", 1, "[markArticleRead], articleID = " + paramLong1 + ", channelID = " + paramLong2);
     try
     {
-      ppx localppx = (ppx)super.clone();
-      return localppx;
+      osj.a().a(paramLong1, System.currentTimeMillis());
+      return;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
+    catch (Exception localException)
     {
-      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
+      QLog.e("PTSMarkArticleReadModule", 1, "[markArticleRead], e = " + localException);
     }
-    return null;
   }
 }
 

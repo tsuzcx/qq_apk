@@ -1,218 +1,231 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.provider.Settings.Secure;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.utils.preference.PreferenceManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.utils.SecurityUtile;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unify.search.UnifySearchCommon.ResultItemGroup;
 
 public class awqf
+  implements awqb<awof>
 {
-  public static boolean a = false;
-  public static boolean b;
-  public static boolean c;
-  private static boolean d;
+  private boolean a;
   
-  public static void a()
+  public List<awof> a(Object... paramVarArgs)
   {
-    if (Build.VERSION.SDK_INT > 28) {}
+    if ((paramVarArgs == null) || (paramVarArgs.length < 3)) {
+      return null;
+    }
+    String str1 = "";
+    if ((paramVarArgs[0] instanceof String)) {
+      str1 = (String)paramVarArgs[0];
+    }
+    if ((paramVarArgs[1] instanceof List)) {}
+    int i;
+    ArrayList localArrayList1;
+    UnifySearchCommon.ResultItemGroup localResultItemGroup;
+    long l3;
+    String str2;
+    ArrayList localArrayList2;
+    for (Object localObject = (List)paramVarArgs[1];; localObject = new ArrayList())
+    {
+      i = -1;
+      if ((paramVarArgs[2] instanceof Integer)) {
+        i = ((Integer)paramVarArgs[2]).intValue();
+      }
+      localArrayList1 = new ArrayList(((List)localObject).size());
+      Iterator localIterator = ((List)localObject).iterator();
+      if (!localIterator.hasNext()) {
+        break label1241;
+      }
+      localResultItemGroup = (UnifySearchCommon.ResultItemGroup)localIterator.next();
+      l3 = localResultItemGroup.group_mask.get();
+      str2 = localResultItemGroup.group_name.get().toStringUtf8();
+      paramVarArgs = localResultItemGroup.rpt_highlight_words.get();
+      localArrayList2 = new ArrayList(paramVarArgs.size());
+      paramVarArgs = paramVarArgs.iterator();
+      while (paramVarArgs.hasNext()) {
+        localArrayList2.add(((ByteStringMicro)paramVarArgs.next()).toStringUtf8());
+      }
+    }
+    List localList = localResultItemGroup.result_items.get();
+    ArrayList localArrayList3 = new ArrayList(localList.size());
+    boolean bool1;
+    if (localResultItemGroup.hide_title.get() == 1)
+    {
+      bool1 = true;
+      if (!this.a) {
+        break label1244;
+      }
+      bool1 = true;
+    }
+    label458:
+    label595:
+    label1114:
+    label1244:
     for (;;)
     {
-      return;
-      if (!c)
+      String str3 = localResultItemGroup.group_footer_name.get().toStringUtf8();
+      String str4 = localResultItemGroup.group_footer_jump_url.get().toStringUtf8();
+      long l1 = localList.size();
+      int j = 0;
+      label381:
+      boolean bool2;
+      for (;;)
       {
-        if (!PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext()).getBoolean("saveIDA", false)) {
-          d();
+        if (j >= localList.size()) {
+          break label1114;
         }
-        c = true;
-      }
-      if (b) {
-        continue;
-      }
-      Object localObject = acim.a;
-      if ((localObject == null) || (((acil)localObject).f != 1)) {
-        continue;
-      }
-      b = true;
-      localObject = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
-      if (((SharedPreferences)localObject).getBoolean("FightReporter_deviceid", false)) {
-        continue;
-      }
-      ((SharedPreferences)localObject).edit().putBoolean("FightReporter_deviceid", true).apply();
-      String str2 = befc.a("0");
-      try
-      {
-        localObject = Settings.Secure.getString(BaseApplicationImpl.getContext().getContentResolver(), "android_id");
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("imei", str2);
-        localHashMap.put("androidID", localObject);
-        String str3 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-        awrn.a(BaseApplicationImpl.getContext()).a(str3, "FightReporter_deviceid", true, 0L, 0L, localHashMap, null);
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.d("FightReporter_", 2, "rYU.i.A.report real...IMEI = " + str2 + ",androidID = " + (String)localObject);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+        paramVarArgs = (UnifySearchCommon.ResultItem)localList.get(j);
+        localObject = paramVarArgs.sub_result_items.get();
+        int m = ((List)localObject).size() + 1;
+        ArrayList localArrayList4 = new ArrayList(m);
+        localArrayList4.add(paramVarArgs);
+        localArrayList4.addAll((Collection)localObject);
+        int k = 0;
+        if (k < m)
         {
-          String str1 = "";
+          UnifySearchCommon.ResultItem localResultItem = (UnifySearchCommon.ResultItem)localArrayList4.get(k);
+          paramVarArgs = localResultItem.result_id.get().toStringUtf8();
+          bool2 = localResultItem.layout_id.has();
+          localObject = localResultItem.name.get().toStringUtf8();
+          long l2;
+          String str5;
+          String str6;
+          String str7;
+          if (localResultItem.group_mask.has())
+          {
+            l2 = localResultItem.group_mask.get();
+            str5 = localResultItem.pic_url.get().toStringUtf8();
+            str6 = localResultItem.jmp_url.get().toStringUtf8();
+            str7 = localResultItem.extension.get().toStringUtf8();
+            if (!bool2) {
+              break label932;
+            }
+            localObject = null;
+            paramVarArgs = (Object[])localObject;
+            switch (localResultItem.layout_id.get())
+            {
+            default: 
+              paramVarArgs = (Object[])localObject;
+            case 5: 
+            case 10: 
+              if ((paramVarArgs != null) && (paramVarArgs.b()))
+              {
+                paramVarArgs.r = localResultItem.seporator_type.get();
+                paramVarArgs.a = bool1;
+                localArrayList3.add(paramVarArgs);
+                l2 = l1;
+              }
+              break;
+            }
+          }
+          for (;;)
+          {
+            k += 1;
+            l1 = l2;
+            break label381;
+            bool1 = false;
+            break;
+            l2 = l3;
+            break label458;
+            paramVarArgs = new awon(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awpj(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awoo(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awow(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awpf(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awpc(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awpd(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awot(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awor(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awou(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awpe(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awpb(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awoz(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            l2 = l1 - 1L;
+            continue;
+            if (!awvy.b(l2))
+            {
+              QLog.e("Q.uniteSearch.NetBaseParser", 1, "itemGroupMask is not valid. mask=" + l2);
+              l2 = l1;
+            }
+            else if (l2 == 2073745984L)
+            {
+              paramVarArgs = new awpp(str1, str7, -4, str5);
+              paramVarArgs.r = localResultItem.seporator_type.get();
+              localArrayList3.add(paramVarArgs);
+              l2 = l1;
+            }
+            else
+            {
+              paramVarArgs = new awne(str1, paramVarArgs, (String)localObject, str5, str6, str7, l2, localArrayList2, i);
+              l2 = l1;
+              if (paramVarArgs != null)
+              {
+                paramVarArgs.r = localResultItem.seporator_type.get();
+                paramVarArgs.c = bool1;
+                paramVarArgs.g = j;
+                paramVarArgs.h = j;
+                paramVarArgs.a = i;
+                localArrayList3.add(paramVarArgs);
+                l2 = l1;
+              }
+            }
+          }
         }
+        j += 1;
       }
-    }
-  }
-  
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    try
-    {
-      if (paramMessageRecord.msgtype == -2011)
-      {
-        paramMessageRecord = (MessageForStructing)paramMessageRecord;
-        if (paramMessageRecord.structingMsg != null)
-        {
-          int i = paramMessageRecord.structingMsg.mMsgServiceID;
-          a(paramMessageRecord.structingMsg);
-        }
-      }
-      return;
-    }
-    catch (Throwable paramMessageRecord)
-    {
-      QLog.d("FightReporter_", 1, paramMessageRecord, new Object[0]);
-    }
-  }
-  
-  public static void a(AbsStructMsg paramAbsStructMsg)
-  {
-    acil localacil1;
-    do
-    {
-      try
-      {
-        int i = paramAbsStructMsg.mMsgServiceID;
-        if ((i < 0) || (i > 6)) {
-          break;
-        }
-        acil localacil2 = acim.a;
-        localacil1 = localacil2;
-        if (!a) {
-          continue;
-        }
-        localacil1 = localacil2;
-        if (localacil2 != null) {
-          continue;
-        }
-        localacil1 = new acil();
-        localacil1.a = 1;
-        localacil1.b = 1;
-        localacil1.c = 5;
-      }
-      catch (Throwable paramAbsStructMsg)
-      {
-        QLog.d("FightReporter_", 1, paramAbsStructMsg, new Object[0]);
-        return;
-      }
-      if (localacil1.a == 0) {
+      if (l1 <= 0L) {
         break;
       }
-      a("FightReporter_structMsgServiceID", paramAbsStructMsg.getXml());
-      return;
-    } while (localacil1 != null);
-  }
-  
-  public static void a(String paramString)
-  {
-    awpu.a(new Throwable(paramString));
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    awpu.a(new Throwable(paramString1), paramString2);
-  }
-  
-  public static void b()
-  {
-    if (d) {}
-    do
-    {
-      return;
-      d = true;
-      localObject = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
-    } while (((SharedPreferences)localObject).getBoolean("FightReporter_cpu_abi", false));
-    ((SharedPreferences)localObject).edit().putBoolean("FightReporter_cpu_abi", true).apply();
-    HashMap localHashMap = new HashMap();
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (Object localObject = Build.SUPPORTED_ABIS[0];; localObject = Build.CPU_ABI)
-    {
-      localHashMap.put("cpu_abi", localObject);
-      localHashMap.put("sdk", Build.VERSION.SDK_INT + "");
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      awrn.a(BaseApplicationImpl.getContext()).a(str, "FightReporter_cpu_abi", true, 0L, 0L, localHashMap, null);
-      if (!QLog.isDevelopLevel()) {
-        break;
+      l1 = localResultItemGroup.total_result_count.get();
+      paramVarArgs = localResultItemGroup.more_url.get().toStringUtf8();
+      localObject = localResultItemGroup.more_name.get().toStringUtf8();
+      if (localResultItemGroup.highlight_title_keyword.get() == 1)
+      {
+        bool2 = true;
+        if (localResultItemGroup.hide_title_blank_view.get() != 1) {
+          break label1235;
+        }
       }
-      QLog.d("FightReporter_", 2, "rYU.i.A.report real...cpu abi = " + (String)localObject + ",sdk = " + Build.VERSION.SDK_INT);
-      return;
+      for (boolean bool3 = true;; bool3 = false)
+      {
+        localArrayList1.add(new awnd(str1, l3, str2, localArrayList3, l1, paramVarArgs, (String)localObject, localArrayList2, bool1, bool2, bool3, str3, str4));
+        break;
+        bool2 = false;
+        break label1171;
+      }
+      return localArrayList1;
     }
   }
   
-  public static void c()
+  public void a(boolean paramBoolean)
   {
-    acil localacil = acim.a;
-    if ((localacil != null) && (localacil.e == 1)) {
-      a("FightReporter_openthirdappnullinfo");
-    }
+    this.a = paramBoolean;
   }
-  
-  public static void d()
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
-    String str3 = SecurityUtile.a("d_iemi");
-    String str2 = SecurityUtile.a("d_idandroid");
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    String str4 = befc.a("0");
-    Object localObject = "";
-    try
-    {
-      str1 = Settings.Secure.getString(BaseApplicationImpl.getContext().getContentResolver(), "android_id");
-      localObject = str1;
-    }
-    catch (Exception localException)
-    {
-      String str1;
-      label52:
-      break label52;
-    }
-    str1 = SecurityUtile.a(str4);
-    localObject = SecurityUtile.a((String)localObject);
-    localEditor.putString(str3, str1);
-    localEditor.putString(str2, (String)localObject);
-    localEditor.putBoolean("saveIDA", true);
-    localEditor.apply();
-    if (QLog.isDevelopLevel())
-    {
-      localObject = localSharedPreferences.getString(str3, "");
-      str1 = localSharedPreferences.getString(str2, "");
-      QLog.d("FightReporter_", 4, "has save suc,spIMStr = " + (String)localObject + ", imei = " + SecurityUtile.a((String)localObject) + ",androidid = " + SecurityUtile.a(str1));
-    }
-  }
-  
-  public static void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awqf
  * JD-Core Version:    0.7.0.1
  */

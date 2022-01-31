@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import abai;
 import android.text.TextUtils;
-import beyv;
-import beyy;
-import bfli;
+import bggm;
+import bggp;
+import bgth;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
@@ -12,7 +11,7 @@ import com.tencent.mobileqq.webprocess.WebProcessManager;
 public class Leba$5
   implements Runnable
 {
-  public Leba$5(abai paramabai) {}
+  Leba$5(Leba paramLeba) {}
   
   public void run()
   {
@@ -21,24 +20,24 @@ public class Leba$5
     {
       long l = WebProcessManager.a((String)localObject);
       if (System.currentTimeMillis() - l < 604800000L) {
-        WebProcessManager.a(abai.a(), "key_health_dns_parse");
+        WebProcessManager.a(Leba.a(), "key_health_dns_parse");
       }
       l = WebProcessManager.c((String)localObject);
       if (System.currentTimeMillis() - l < 259200000L) {
-        WebProcessManager.a(abai.b(), "key_gamecenter_dns_parse");
+        WebProcessManager.a(Leba.b(), "key_gamecenter_dns_parse");
       }
       l = WebProcessManager.a((String)localObject, "key_reader_click_time");
       if (System.currentTimeMillis() - l < 259200000L) {
-        WebProcessManager.a(abai.c(), "key_reader_dns_parse");
+        WebProcessManager.a(Leba.c(), "key_reader_dns_parse");
       }
     }
-    localObject = (bfli)this.this$0.a.getManager(129);
+    localObject = (bgth)this.this$0.a.getManager(129);
     if (localObject != null) {
-      ((bfli)localObject).a(6);
+      ((bgth)localObject).a(6);
     }
-    localObject = (beyy)this.this$0.a.getManager(142);
+    localObject = (bggp)this.this$0.a.getManager(142);
     if (localObject != null) {
-      beyv.a(((beyy)localObject).a(6), 500L);
+      bggm.a(((bggp)localObject).a(6), 500L);
     }
     ThreadManager.post(new Leba.5.1(this), 5, null, false);
   }

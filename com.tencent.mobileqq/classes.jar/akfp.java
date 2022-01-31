@@ -1,67 +1,45 @@
-import android.os.Handler;
-import android.os.Looper;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class akfp
-  extends ajfb
+  extends ajtd
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  bgmv jdField_a_of_type_Bgmv = null;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
+  public static String a = "Add_friend_to_desktop|";
+  public static String b = "Click_desktop_friend|";
+  private String c = "FuMeiTiCeSu|";
   
   public akfp(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
   }
   
-  public void a()
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (this.jdField_a_of_type_Bgmv != null)
+    return "PLUG|" + paramString1 + "|" + paramString2 + "|internal|" + paramString3 + "|PB|" + paramString4 + "||";
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if ((paramBundle != null) && (paramBundle.containsKey("data")))
     {
-      this.jdField_a_of_type_Bgmv.a();
-      this.jdField_a_of_type_Bgmv = null;
+      ToServiceMsg localToServiceMsg = createToServiceMsg("CliLogSvc.UploadReq");
+      localToServiceMsg.extraData.putAll(paramBundle);
+      super.send(localToServiceMsg);
     }
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(String[] paramArrayOfString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ReadInJoyHandler", 2, "readInJoyFeedsMsgNotify, isSuccess=" + paramBoolean1 + ",isNewMsgCome=" + paramBoolean2 + ",reason=" + paramInt);
-    }
-    notifyUI(1, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt) });
+    ToServiceMsg localToServiceMsg = createToServiceMsg("CliLogSvc.UploadReq");
+    localToServiceMsg.extraData.putStringArray("data", paramArrayOfString);
+    super.send(localToServiceMsg);
   }
   
-  public void a(byte[] paramArrayOfByte)
+  protected Class<? extends ajtg> observerClass()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyHandler", 2, "handleOnlinePushReadInJoyFeedsMsg");
-    }
-  }
-  
-  protected boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null) {
-      this.allowCmdSet = new HashSet();
-    }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  protected Class<? extends ajfe> observerClass()
-  {
-    return akfr.class;
-  }
-  
-  public void onDestroy()
-  {
-    a();
-    super.onDestroy();
+    return null;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}

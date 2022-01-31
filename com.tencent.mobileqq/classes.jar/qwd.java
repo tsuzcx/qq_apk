@@ -1,31 +1,27 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class qwd
-  implements DialogInterface.OnDismissListener
+class qwd
+  extends Handler
 {
-  public qwd(FastWebActivity paramFastWebActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  qwd(qwa paramqwa, Looper paramLooper)
   {
-    Context localContext;
-    if (!FastWebActivity.a(this.a))
-    {
-      localContext = this.a.getApplicationContext();
-      if (!FastWebActivity.b(this.a)) {
-        break label79;
-      }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.VideofeedsUserGuideController", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
     }
-    label79:
-    for (paramDialogInterface = "0X8008994";; paramDialogInterface = "0X800898D")
+    switch (paramMessage.what)
     {
-      raj.a(localContext, paramDialogInterface, 11, FastWebActivity.a(this.a));
-      raz.a(this.a, this.a.getAppInterface(), FastWebActivity.a(this.a), -1, -1, true);
-      FastWebActivity.c(this.a, false);
+    default: 
       return;
     }
+    this.a.a();
   }
 }
 

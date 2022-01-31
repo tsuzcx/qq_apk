@@ -1,11 +1,10 @@
-public class atce
+import android.widget.TextView;
+
+class atce
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  atce(atcd paramatcd) {}
 }
 
 

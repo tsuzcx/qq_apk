@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
 import com.tencent.qphone.base.util.QLog;
-import moc;
+import mzb;
 
 class IVOfflinePluginImpl$3
-  implements moc
+  implements mzb
 {
   IVOfflinePluginImpl$3(IVOfflinePluginImpl paramIVOfflinePluginImpl) {}
   

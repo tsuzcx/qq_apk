@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import ajnf;
+import akbo;
 
 public class NewFriendManager$6
   implements Runnable
 {
-  public NewFriendManager$6(ajnf paramajnf) {}
+  public NewFriendManager$6(akbo paramakbo) {}
   
   public void run()
   {

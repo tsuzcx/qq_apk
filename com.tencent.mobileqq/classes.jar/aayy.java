@@ -1,16 +1,29 @@
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
 
 public class aayy
-  extends WebViewClient
+  implements View.OnTouchListener
 {
-  public aayy(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  public aayy(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a(paramString)) {}
-    return true;
+    if ((paramMotionEvent != null) && (this.a.a != null))
+    {
+      paramView = this.a.a;
+      if (paramMotionEvent.getAction() != 0) {
+        break label39;
+      }
+    }
+    label39:
+    for (float f = 0.5F;; f = 1.0F)
+    {
+      paramView.setAlpha(f);
+      return false;
+    }
   }
 }
 

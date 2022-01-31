@@ -1,13 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
 
-public class oyi
-  implements ViewBase.IBuilder
+class oyi
+  implements View.OnAttachStateChangeListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  oyi(oyh paramoyh, oys paramoys) {}
+  
+  public void onViewAttachedToWindow(View paramView)
   {
-    return new oyh(paramVafContext);
+    if ((this.jdField_a_of_type_Oyh.a().a() != null) && (this.jdField_a_of_type_Oyh.a().a().a() != null)) {
+      this.jdField_a_of_type_Oyh.a().a().a().b(this.jdField_a_of_type_Oys);
+    }
+    osm.a().a(this.jdField_a_of_type_Oys.a);
+  }
+  
+  public void onViewDetachedFromWindow(View paramView)
+  {
+    if ((this.jdField_a_of_type_Oyh.a().a() != null) && (this.jdField_a_of_type_Oyh.a().a().a() != null)) {
+      this.jdField_a_of_type_Oyh.a().a().a().c(this.jdField_a_of_type_Oys);
+    }
+    osm.a().b(this.jdField_a_of_type_Oys.a);
+    if ((this.jdField_a_of_type_Oys instanceof oyo)) {
+      ((oyo)this.jdField_a_of_type_Oys).a.removeCallbacksAndMessages(null);
+    }
   }
 }
 

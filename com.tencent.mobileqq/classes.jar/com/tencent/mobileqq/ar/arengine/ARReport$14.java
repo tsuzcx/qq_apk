@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import akue;
-import awrn;
+import aliq;
+import axrl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARReport$14
   implements Runnable
 {
-  public ARReport$14(akue paramakue, long paramLong) {}
+  public ARReport$14(aliq paramaliq, long paramLong) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("alltime", String.valueOf(this.a));
-    awrn.a(BaseApplication.getContext()).a("", "SensorTrackManagerInit", true, 0L, 0L, localHashMap, "");
+    axrl.a(BaseApplication.getContext()).a("", "SensorTrackManagerInit", true, 0L, 0L, localHashMap, "");
   }
 }
 

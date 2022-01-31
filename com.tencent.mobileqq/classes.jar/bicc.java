@@ -1,23 +1,47 @@
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
+
 class bicc
-  implements acwd
+  implements EIPClientConnectListener
 {
-  bicc(bicb parambicb) {}
+  bicc(bica parambica, long paramLong) {}
   
-  public void a()
+  public void connectFailed()
   {
-    this.a.a.a.a(-1, bica.a(this.a.a), 2130772028, 0, false);
-    bica.a(this.a.a, null);
+    bica.a(this.jdField_a_of_type_Bica, false);
+    bica.b(this.jdField_a_of_type_Bica, false);
+    synchronized (bica.a(this.jdField_a_of_type_Bica))
+    {
+      bica.a(this.jdField_a_of_type_Bica).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("WadlQIPCConnector", 2, "connectFailed:" + bica.a(this.jdField_a_of_type_Bica));
+      }
+      return;
+    }
   }
   
-  public void b()
+  public void connectSuccess(EIPCConnection arg1)
   {
-    this.a.a.a.a(-1, bica.a(this.a.a), 2130772028, 0, false);
-    bica.a(this.a.a, null);
+    long l = System.currentTimeMillis();
+    if (??? != null) {
+      bica.a(this.jdField_a_of_type_Bica, ???.procName);
+    }
+    bica.a(this.jdField_a_of_type_Bica, true);
+    bica.b(this.jdField_a_of_type_Bica, false);
+    synchronized (bica.a(this.jdField_a_of_type_Bica))
+    {
+      bica.a(this.jdField_a_of_type_Bica).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("WadlQIPCConnector", 2, "connectSuccess:" + bica.a(this.jdField_a_of_type_Bica) + "|" + (l - this.jdField_a_of_type_Long));
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bicc
  * JD-Core Version:    0.7.0.1
  */

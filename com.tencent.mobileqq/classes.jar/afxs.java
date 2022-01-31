@@ -1,21 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import com.tencent.mobileqq.widget.IndexView;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.widget.QQViewPager;
 
-public class afxs
-  implements DialogInterface.OnDismissListener
+class afxs
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public afxs(CountryActivity paramCountryActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  afxs(afxr paramafxr) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    if (paramInt == 1) {
+      this.a.b = this.a.a.getCurrentItem();
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    afxr.a(this.a, paramInt);
   }
 }
 

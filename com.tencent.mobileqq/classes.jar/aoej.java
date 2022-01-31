@@ -1,112 +1,269 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileMultiMsgManager.BuddyUploadTaskExcuter.1;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadRspV3;
+import java.net.URLEncoder;
 
 public class aoej
-  extends aofu
 {
-  public aoej(FileMultiMsgManager.BuddyUploadTaskExcuter.1 param1, aofv paramaofv, byte[] paramArrayOfByte) {}
+  public static int a = 1;
+  public static int b = 2;
+  public static int c = 3;
+  public static int d = 4;
   
-  protected void a(boolean paramBoolean, int paramInt, cmd0x346.ApplyUploadRspV3 paramApplyUploadRspV3)
+  private static Intent a(Activity paramActivity, AppInterface paramAppInterface, int paramInt)
   {
-    if ((paramInt == -100001) || (paramInt == -100002))
-    {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "BuddyUploadTaskExcuter faild，retCode[" + paramInt + "]" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Long, false), true);
-    }
-    while (paramApplyUploadRspV3 == null)
-    {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "BuddyUploadTaskExcuter faild，retCode[" + paramInt + "], but rspV3 is null" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Long, false), false);
-      return;
-      if (paramInt == -100003)
-      {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, "BuddyUploadTaskExcuter faild，retCode[" + paramInt + "]" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Long, false), false);
-        return;
+    if (paramActivity == null) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "getEntranceIntent actCaller is null");
       }
     }
-    if (!paramApplyUploadRspV3.int32_ret_code.has())
+    do
     {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "BuddyUploadTaskExcuter faild not has int32_ret_code" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Long, false), false);
-      return;
+      return null;
+      if (paramAppInterface != null) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d("EquipLockWebEntrance", 4, "getEntranceIntent app is null");
+    return null;
+    String str = paramAppInterface.getCurrentAccountUin();
+    paramAppInterface = a(a(paramInt), paramAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("EquipLockWebEntrance", 2, "AuthDevUgAct url=" + paramAppInterface);
     }
-    if (paramApplyUploadRspV3.int32_ret_code.get() != 0)
-    {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild，retcode:" + paramApplyUploadRspV3.int32_ret_code.get());
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Long, false), false);
-      return;
+    paramActivity = new Intent(paramActivity, QQBrowserActivity.class);
+    paramActivity.putExtra("portraitOnly", true);
+    paramActivity.putExtra("url", paramAppInterface);
+    paramActivity.putExtra("uin", str);
+    paramActivity.putExtra("hide_operation_bar", true);
+    paramActivity.putExtra("hide_more_button", true);
+    return paramActivity;
+  }
+  
+  private static String a(int paramInt)
+  {
+    Object localObject = aoen.a().a();
+    if ((localObject != null) && (((String)localObject).length() > 0)) {
+      if (!((String)localObject).startsWith("http")) {}
     }
-    if ((paramApplyUploadRspV3.bool_file_exist.has()) && (paramApplyUploadRspV3.bytes_uuid.has()))
+    for (;;)
     {
-      paramApplyUploadRspV3 = paramApplyUploadRspV3.bytes_uuid.get().toByteArray();
-      if (paramApplyUploadRspV3 != null)
+      localObject = new StringBuilder((String)localObject);
+      ((StringBuilder)localObject).append("?");
+      ((StringBuilder)localObject).append("type=" + Integer.toString(paramInt));
+      ((StringBuilder)localObject).append("&plat=1");
+      ((StringBuilder)localObject).append("&app=1");
+      ((StringBuilder)localObject).append("&version=8.2.8.4440");
+      ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
+      ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
+      ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
+      return ((StringBuilder)localObject).toString();
+      localObject = "http://" + (String)localObject;
+      continue;
+      localObject = "https://aq.qq.com/cn2/manage/mobile_h5/mobile_index";
+    }
+  }
+  
+  private static String a(String paramString, AppInterface paramAppInterface)
+  {
+    Object localObject = null;
+    String str = null;
+    if (paramString == null) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "handlePhoneContact url is null");
+      }
+    }
+    for (;;)
+    {
+      return paramString;
+      if (paramAppInterface != null)
       {
-        str1 = new String(paramApplyUploadRspV3);
-        aoei.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei).putString("_m_ForwardUuid", str1);
-        this.jdField_a_of_type_Aofv.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_JavaLangString, paramApplyUploadRspV3, 5000, 3, null);
-        if (QLog.isColorLevel()) {
-          QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start sendLocalFileToBuddyBySHA cs hit:" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString);
+        paramAppInterface = (askl)paramAppInterface.getManager(11);
+        if (paramAppInterface != null)
+        {
+          paramAppInterface = paramAppInterface.a();
+          if (paramAppInterface == null)
+          {
+            if (!QLog.isColorLevel()) {
+              break label250;
+            }
+            QLog.d("EquipLockWebEntrance", 2, "mgr can't find stat");
+            paramAppInterface = null;
+          }
         }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoex.a(str1, aoei.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei));
+      }
+      while ((str != null) && (str.length() > 0) && (paramAppInterface != null) && (paramAppInterface.length() > 0))
+      {
+        paramString = new StringBuilder(paramString);
+        paramString.append("&area=" + str);
+        paramString.append("&mob=" + paramAppInterface);
+        return paramString.toString();
+        if (QLog.isColorLevel()) {
+          QLog.d("EquipLockWebEntrance", 2, "mgr find stat, nationCode=" + paramAppInterface.nationCode + " no.=" + paramAppInterface.mobileNo);
+        }
+        str = paramAppInterface.nationCode;
+        paramAppInterface = paramAppInterface.mobileNo;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("EquipLockWebEntrance", 2, "mgr is null");
+        }
+        for (;;)
+        {
+          str = null;
+          paramAppInterface = localObject;
+          break;
+          if (QLog.isColorLevel()) {
+            QLog.d("EquipLockWebEntrance", 2, "getEntranceIntent:app is null");
+          }
+        }
+        label250:
+        paramAppInterface = null;
+      }
+    }
+  }
+  
+  public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt)
+  {
+    if (paramActivity == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "enter actCaller is null");
+      }
+      return;
+    }
+    paramAppInterface = a(paramActivity, paramAppInterface, paramInt);
+    try
+    {
+      VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, paramAppInterface, false, -1);
+      return;
+    }
+    catch (SecurityException paramActivity) {}
+  }
+  
+  public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramActivity == null) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "enterForResult actCaller is null");
+      }
+    }
+    do
+    {
+      return;
+      if (paramAppInterface != null) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d("EquipLockWebEntrance", 4, "enterForResult app is null");
+    return;
+    paramAppInterface = a(paramActivity, paramAppInterface, paramInt1);
+    if (paramString != null) {
+      paramAppInterface.putExtra("tag", paramString);
+    }
+    paramAppInterface.putExtra("needResult", true);
+    try
+    {
+      VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, paramAppInterface, true, paramInt2);
+      return;
+    }
+    catch (SecurityException paramActivity) {}
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
+  {
+    boolean bool = true;
+    if (paramActivity == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "subaccountEnter actCaller is null");
+      }
+      return;
+    }
+    String str = a(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("EquipLockWebEntrance", 2, "AuthDevUgAct url=" + str);
+    }
+    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
+    localIntent.putExtra("portraitOnly", true);
+    localIntent.putExtra("url", str);
+    localIntent.putExtra("subAccountUin", paramString2);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("hide_more_button", true);
+    if ((paramString1 != null) && (!paramString1.equals(paramString2))) {}
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EquipLockWebEntrance", 2, "globalEnter currentUin=" + paramString1 + " reqUin=" + paramString2 + " isSubaccount=" + bool);
+      }
+      localIntent.putExtra("isSubaccount", bool);
+      localIntent.putExtra("avoidLoginWeb", bool);
+      try
+      {
+        VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, localIntent, false, -1);
         return;
       }
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild，file exist bug uuid is null");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Long, false), true);
-      return;
-    }
-    if (!paramApplyUploadRspV3.bytes_upload_key.has())
-    {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild，uploadkey is null");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Long, false), true);
-      return;
-    }
-    if (!paramApplyUploadRspV3.bytes_uuid.has())
-    {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild，uuid is null");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Long, false), true);
-      return;
-    }
-    if (!paramApplyUploadRspV3.str_upload_https_domain.has())
-    {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild，https domain is null");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Long, false), true);
-      return;
-    }
-    String str1 = paramApplyUploadRspV3.str_upload_https_domain.get();
-    paramBoolean = aonj.a(aoea.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Aoea));
-    ByteStringMicro localByteStringMicro = paramApplyUploadRspV3.bytes_uuid.get();
-    String str2 = new String(localByteStringMicro.toByteArray());
-    String str3 = com.tencent.commonsdk.util.HexUtil.bytes2HexStr(paramApplyUploadRspV3.bytes_upload_key.get().toByteArray());
-    paramApplyUploadRspV3 = paramApplyUploadRspV3.str_upload_ip.get();
-    if (paramBoolean) {}
-    for (paramApplyUploadRspV3 = "https://" + paramApplyUploadRspV3 + "/ftn_handler";; paramApplyUploadRspV3 = "http://" + paramApplyUploadRspV3 + "/ftn_handler")
-    {
-      String str4 = com.qq.taf.jce.HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString + " sendLocalFileToBuddyBySHA cs nohit, start uploadFile");
+      catch (SecurityException paramActivity)
+      {
+        return;
       }
-      paramApplyUploadRspV3 = new aofp(aoea.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Aoea), this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.b, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Long, str3, str4, paramApplyUploadRspV3, paramBoolean, str1, new aoek(this, localByteStringMicro, str2));
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString + " add to rsCenter");
+      bool = false;
+    }
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  {
+    if (paramActivity == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "subaccountEnter actCaller is null");
       }
-      aoei.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei, apck.a().longValue());
-      aoea.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Aoea).a().a(aoei.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei), paramApplyUploadRspV3);
       return;
     }
+    String str = a(paramInt1);
+    if (QLog.isColorLevel()) {
+      QLog.d("EquipLockWebEntrance", 2, "AuthDevUgAct url=" + str);
+    }
+    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
+    localIntent.putExtra("portraitOnly", true);
+    localIntent.putExtra("url", str);
+    localIntent.putExtra("subAccountUin", paramString2);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("hide_more_button", true);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramString1 != null)
+    {
+      bool1 = bool2;
+      if (!paramString1.equals(paramString2)) {
+        bool1 = true;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("EquipLockWebEntrance", 2, "globalEnter currentUin=" + paramString1 + " reqUin=" + paramString2 + " isSubaccount=" + bool1);
+    }
+    localIntent.putExtra("isSubaccount", bool1);
+    localIntent.putExtra("avoidLoginWeb", bool1);
+    if (paramString3 != null) {
+      localIntent.putExtra("tag", paramString3);
+    }
+    localIntent.putExtra("needResult", true);
+    try
+    {
+      VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, localIntent, true, paramInt2);
+      return;
+    }
+    catch (SecurityException paramActivity) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoej
  * JD-Core Version:    0.7.0.1
  */

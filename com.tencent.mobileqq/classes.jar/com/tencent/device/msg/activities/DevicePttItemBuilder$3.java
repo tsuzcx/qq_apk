@@ -4,23 +4,23 @@ import com.tencent.device.msg.data.MessageForDevPtt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.qphone.base.util.QLog;
-import xsp;
-import xve;
-import xvq;
+import ybs;
+import yeh;
+import yeu;
 
 public class DevicePttItemBuilder$3
   implements Runnable
 {
-  public DevicePttItemBuilder$3(xve paramxve, MessageForPtt paramMessageForPtt) {}
+  public DevicePttItemBuilder$3(yeh paramyeh, MessageForPtt paramMessageForPtt) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("FileTrans", 2, "downloadPtt istroop" + this.a.istroop + " itemType " + this.a.itemType + " uniseq:" + this.a.uniseq);
     }
-    xsp localxsp = ((xvq)this.this$0.a.a(49)).a();
+    ybs localybs = ((yeu)this.this$0.a.a(49)).a();
     if ((this.a instanceof MessageForDevPtt)) {
-      localxsp.a((MessageForDevPtt)this.a);
+      localybs.a((MessageForDevPtt)this.a);
     }
   }
 }

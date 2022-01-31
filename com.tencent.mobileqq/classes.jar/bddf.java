@@ -1,19 +1,20 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import org.json.JSONObject;
+import android.text.Editable;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.Comparator;
 
 class bddf
-  implements AsyncResult
+  implements Comparator<Friend>
 {
-  bddf(bdde parambdde) {}
+  bddf(bdde parambdde, Editable paramEditable) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public int a(Friend paramFriend1, Friend paramFriend2)
   {
-    bdnw.d("AuthState", "setAuthorize() onCmdListener isSuccess: " + paramBoolean + "   ; ret: " + paramJSONObject);
+    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bddf
  * JD-Core Version:    0.7.0.1
  */

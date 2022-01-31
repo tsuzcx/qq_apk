@@ -2,7 +2,7 @@ package com.tencent.biz.subscribe.widget;
 
 import android.os.Handler;
 import java.util.TimerTask;
-import wgf;
+import wvg;
 
 class VideoNextFeedsView$2
   extends TimerTask

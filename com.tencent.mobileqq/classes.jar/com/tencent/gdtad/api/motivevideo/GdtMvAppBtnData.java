@@ -2,7 +2,7 @@ package com.tencent.gdtad.api.motivevideo;
 
 import com.tencent.gdtad.views.canvas.components.appbutton.GdtAppBtnData;
 import org.json.JSONObject;
-import yny;
+import yxs;
 
 public class GdtMvAppBtnData
   extends GdtAppBtnData
@@ -30,7 +30,7 @@ public class GdtMvAppBtnData
         paramJSONObject = null;
       }
     }
-    yny.d("GdtMvDownloadBtnPresenter", "parseJsonForMv Error", localException1);
+    yxs.d("GdtMvDownloadBtnPresenter", "parseJsonForMv Error", localException1);
     localException1.printStackTrace();
     return paramJSONObject;
   }

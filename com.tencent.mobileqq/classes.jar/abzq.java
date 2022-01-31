@@ -1,65 +1,15 @@
-import android.content.res.Resources;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.PinnedDividerSwipListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class abzq
-  implements bemm
+  implements DialogInterface.OnClickListener
 {
-  public abzq(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public abzq(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void a(beml parambeml)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (parambeml.a == this.a.jdField_m_of_type_Int) {
-      return;
-    }
-    this.a.jdField_m_of_type_Int = parambeml.a;
-    TroopMemberListActivity.a(this.a, parambeml.a);
-    if ((this.a.jdField_m_of_type_Int >= 0) && (this.a.jdField_m_of_type_Int < TroopMemberListActivity.a(this.a).length)) {
-      this.a.c.setText(TroopMemberListActivity.a(this.a)[this.a.jdField_m_of_type_Int]);
-    }
-    if (this.a.jdField_m_of_type_Int == 0)
-    {
-      this.a.a("Clk_def", this.a.n, "");
-      this.a.h();
-      if (!this.a.jdField_m_of_type_Boolean) {
-        this.a.jdField_m_of_type_Boolean = true;
-      }
-      if (this.a.jdField_a_of_type_Acao != null) {
-        this.a.jdField_a_of_type_Acao.a();
-      }
-      if (this.a.jdField_m_of_type_Int != 0) {
-        break label472;
-      }
-      this.a.jdField_a_of_type_ComTencentWidgetPinnedDividerSwipListView.setSelectionFromTop(0, 0);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setContentDescription(this.a.jdField_b_of_type_AndroidWidgetTextView.getText().toString() + this.a.c.getText().toString());
-      return;
-      if (this.a.jdField_m_of_type_Int == 1)
-      {
-        ((ajtg)this.a.app.a(20)).v(this.a.jdField_b_of_type_JavaLangString);
-        new awrb(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("exp_onlineList").a(0).a(new String[] { this.a.jdField_b_of_type_JavaLangString }).a();
-        new awrb(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_onlinefirst").a(new String[] { this.a.jdField_b_of_type_JavaLangString }).a();
-        break;
-      }
-      if (this.a.jdField_m_of_type_Int == 5)
-      {
-        ((ajtg)this.a.app.a(20)).w(this.a.jdField_b_of_type_JavaLangString);
-        break;
-      }
-      if (this.a.jdField_m_of_type_Int == 2) {}
-      for (parambeml = "Clk_lastactivetime";; parambeml = "Clk_jointime")
-      {
-        this.a.a(parambeml, "1", this.a.n);
-        break;
-      }
-      label472:
-      this.a.jdField_a_of_type_ComTencentWidgetPinnedDividerSwipListView.setSelectionFromTop(0, -this.a.getResources().getDimensionPixelSize(2131167513));
-    }
+    this.a.a(this.a.b);
   }
 }
 

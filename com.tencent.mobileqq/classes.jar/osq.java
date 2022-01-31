@@ -1,76 +1,166 @@
-import android.graphics.drawable.ColorDrawable;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.net.URL;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class osq
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private static final akuj jdField_a_of_type_Akuj = new osr("readinjoy_anti_cheating", false);
+  private static boolean jdField_a_of_type_Boolean;
+  
+  private static int a()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    Object localObject;
-    int i;
-    if (paramBaseArticleInfo.mSinglePicture != null)
+    String str1 = a();
+    String str2 = (String)bhvh.a("readinjoy_sp_key_last_request_lbs_date", "");
+    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "getToadyRequestLbsTime, today = ", str1, ", lastRequestLbsDate = ", str2 });
+    if (str1.equals(str2)) {
+      return ((Integer)bhvh.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(0))).intValue();
+    }
+    return 0;
+  }
+  
+  private static SosoInterface.SosoLocation a()
+  {
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = akug.a("readinjoy_anti_cheating");
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null)) {
+      return localSosoLbsInfo.a;
+    }
+    return null;
+  }
+  
+  private static String a()
+  {
+    return new SimpleDateFormat("yyyy.MM.dd").format(new Date());
+  }
+  
+  public static void a()
+  {
+    long l = System.currentTimeMillis();
+    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "init, app launch time = ", Long.valueOf(l) });
+    bhvh.a("readinjoy_sp_key_app_launch_time", Long.valueOf(l));
+  }
+  
+  public static void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return;
+    }
+    SosoInterface.SosoLocation localSosoLocation = a();
+    if (localSosoLocation != null) {}
+    for (;;)
     {
-      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
-      localJSONObject2.put("article_large_imge_url", localObject);
-      localJSONObject2.put("article_model", paramBaseArticleInfo);
-      localJSONObject1.put("id_article_double_image", localJSONObject2);
-      localJSONObject2 = new JSONObject();
-      localJSONObject2.put("article_large_imge_url", localObject);
-      localJSONObject1.put("id_article_large_imge", localJSONObject2);
-      otl.a(paramBaseArticleInfo, localJSONObject1, true, "3");
-      if (!AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label277;
-      }
-      otl.d(paramBaseArticleInfo, localJSONObject1);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("article_model", paramBaseArticleInfo);
-      localJSONObject1.put("id_view_AdDownloadView", localObject);
-      if (!TextUtils.isEmpty(((AdvertisementInfo)paramBaseArticleInfo).mImaxImg))
+      try
       {
-        localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(-16777216);
-        localObject = URLDrawable.getDrawable(((AdvertisementInfo)paramBaseArticleInfo).mImaxImg, (URLDrawable.URLDrawableOptions)localObject);
-        if (localObject != null) {
-          ((URLDrawable)localObject).startDownload();
+        paramJSONObject.put("longitude", localSosoLocation.b);
+        paramJSONObject.put("latitude", localSosoLocation.a);
+        if (!QLog.isColorLevel()) {
+          break;
         }
+        QLog.d("ReadInJoySpEventReportUtil", 2, new Object[] { "json = ", paramJSONObject });
+        return;
       }
-      if (new JSONObject(((AdvertisementInfo)paramBaseArticleInfo).mAdExtInfo).optInt("is_video_new") != 1) {
-        break label260;
+      catch (JSONException localJSONException)
+      {
+        QLog.d("ReadInJoySpEventReportUtil", 1, "addLbsInfo e = ", localJSONException);
+        continue;
       }
-      i = 1;
+      b();
+    }
+  }
+  
+  private static boolean a()
+  {
+    Object localObject = (QQAppInterface)onk.a();
+    if ((localObject == null) || (!((QQAppInterface)localObject).isLogin()))
+    {
+      QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, app is null or not login, do not request.");
+      return false;
+    }
+    if (jdField_a_of_type_Boolean)
+    {
+      QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, isRequestingLbs.");
+      return false;
+    }
+    if (a() != null)
+    {
+      QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, cache is valid, no need to request.");
+      return false;
+    }
+    localObject = BaseApplicationImpl.getApplication().getApplicationContext();
+    if ((localObject != null) && (Build.VERSION.SDK_INT >= 23) && (((Context)localObject).checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0))
+    {
+      QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, no location permission.");
+      return false;
+    }
+    localObject = Aladdin.getConfig(165);
+    if (localObject != null)
+    {
+      int i = ((AladdinConfig)localObject).getIntegerFromString("lbs_switch", 1);
+      QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "lbsSwitch = ", Integer.valueOf(i) });
+      if (i != 1)
+      {
+        QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, switch is OFF, do not request.");
+        return false;
+      }
+      i = ((AladdinConfig)localObject).getIntegerFromString("lbs_request_interval", 2);
+      long l1 = ((Long)bhvh.a("readinjoy_sp_key_app_launch_time", Long.valueOf(System.currentTimeMillis()))).longValue();
+      long l2 = (System.currentTimeMillis() - l1) / 1000L / 60L;
+      QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "from app launch interval = ", Long.valueOf(l2), ", lbsRequestInterval = ", Integer.valueOf(i), ", appLaunchTime = ", Long.valueOf(l1) });
+      if (l2 <= i)
+      {
+        QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, less than lbs request interval.");
+        return false;
+      }
+      i = ((AladdinConfig)localObject).getIntegerFromString("lbs_day_limit", 1);
+      int j = a();
+      QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "lbsDayLimit = ", Integer.valueOf(i), ", todayRequestTime = ", Integer.valueOf(j) });
+      if (j >= i)
+      {
+        QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, over lbs day limit.");
+        return false;
+      }
+    }
+    QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: YES !!!");
+    return true;
+  }
+  
+  private static void b()
+  {
+    if (a())
+    {
+      akug.a(jdField_a_of_type_Akuj);
+      jdField_a_of_type_Boolean = true;
+      c();
+    }
+  }
+  
+  private static void c()
+  {
+    String str = a();
+    Object localObject = (String)bhvh.a("readinjoy_sp_key_last_request_lbs_date", "");
+    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "updateToadyRequestLbsTime, today = ", str, ", lastRequestLbsDate = ", localObject });
+    if (str.equals(localObject))
+    {
+      localObject = (Integer)bhvh.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(0));
+      QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "updateToadyRequestLbsTime, todayTime = ", localObject });
+      bhvh.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(((Integer)localObject).intValue() + 1));
     }
     for (;;)
     {
-      label210:
-      otl.m(paramBaseArticleInfo, localJSONObject1);
-      otl.e(paramBaseArticleInfo, localJSONObject1);
-      otl.c(paramBaseArticleInfo, localJSONObject1);
-      npj.b(paramBaseArticleInfo, localJSONObject1);
-      npj.a(paramBaseArticleInfo, localJSONObject1);
-      if (i != 0) {
-        localJSONObject1.put("style_ID", "ReadInjoy_ad_large_cell_new_division");
-      }
-      for (;;)
-      {
-        otl.a(localJSONObject1, paramBaseArticleInfo);
-        return localJSONObject1;
-        localObject = null;
-        break;
-        label260:
-        i = 0;
-        break label210;
-        localJSONObject1.put("style_ID", "ReadInjoy_ad_large_cell");
-      }
-      label277:
-      i = 0;
+      bhvh.a("readinjoy_sp_key_last_request_lbs_date", str);
+      return;
+      QLog.d("ReadInJoySpEventReportUtil", 1, "updateToadyRequestLbsTime, first time today.");
+      bhvh.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(1));
     }
   }
 }

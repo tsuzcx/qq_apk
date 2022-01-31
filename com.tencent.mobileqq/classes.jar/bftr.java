@@ -1,35 +1,22 @@
-import android.content.Context;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
 public class bftr
-  extends Scroller
+  implements View.OnClickListener
 {
-  public int a;
+  public bftr(PinnedFooterExpandableListView paramPinnedFooterExpandableListView1, PinnedFooterExpandableListView paramPinnedFooterExpandableListView2) {}
   
-  public bftr(Context paramContext, Interpolator paramInterpolator)
+  public void onClick(View paramView)
   {
-    super(paramContext, paramInterpolator);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+    if (PinnedFooterExpandableListView.a(this.b) != null) {
+      PinnedFooterExpandableListView.a(this.b).a(this.a, this.b.a, this.b.c);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bftr
  * JD-Core Version:    0.7.0.1
  */

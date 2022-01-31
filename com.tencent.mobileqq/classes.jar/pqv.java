@@ -1,17 +1,15 @@
-public class pqv
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
+
+class pqv
+  implements bfsg
 {
-  private pqw jdField_a_of_type_Pqw = new pqw(0L);
-  private pqx jdField_a_of_type_Pqx = new pqx("");
-  private pqy jdField_a_of_type_Pqy = new pqy("");
+  pqv(pqt parampqt) {}
   
-  public void a(pqw parampqw)
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    this.jdField_a_of_type_Pqw = parampqw;
-  }
-  
-  public void a(pqx parampqx)
-  {
-    this.jdField_a_of_type_Pqx = parampqx;
+    pqt.a(this.a, (pax)this.a.a, paramInt, paramArrayList, paramObject);
   }
 }
 

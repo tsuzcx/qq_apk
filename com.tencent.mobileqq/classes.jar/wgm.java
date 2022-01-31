@@ -1,40 +1,30 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
-import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
-import java.util.ArrayList;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 public class wgm
-  extends wbn
+  implements Comparator<String>
 {
-  public wgm(CommodityListView paramCommodityListView) {}
+  public wgm(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public wbo a(ViewGroup paramViewGroup, int paramInt)
+  public int a(String paramString1, String paramString2)
   {
-    paramViewGroup = new CommodityItemView(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView.getContext());
-    paramViewGroup.setIsPublishUI(CommodityListView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView));
-    paramViewGroup.setCurrentFeed(CommodityListView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView));
-    return new wbo(this, paramViewGroup);
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if (!been.a(paramInt, this.jdField_a_of_type_JavaUtilArrayList))
-    {
-      ((CommodityItemView)paramViewHolder.itemView).setData(this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-      ((CommodityItemView)paramViewHolder.itemView).b().setOnClickListener(new wgn(this, paramInt));
+    int i = 1;
+    if ((paramString1 != null) && (paramString2 != null)) {
+      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
     }
+    while (paramString1 != null) {
+      return i;
+    }
+    if (paramString2 != null) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wgm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating;
 
-import asey;
+import atbc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
@@ -11,7 +11,7 @@ class SayHelloMsgListActivity$2
   
   public void run()
   {
-    ((asey)this.this$0.app.a(66)).a(this.a);
+    ((atbc)this.this$0.app.a(66)).a(this.a);
   }
 }
 

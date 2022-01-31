@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdnw;
-import bdyj;
+import besl;
+import bffp;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IBannerAdListener;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,37 +13,37 @@ class BannerAdPlugin$1$1
   
   public void onADClicked()
   {
-    bdnw.b("BannerAdPlugin", "onADClicked");
+    besl.b("BannerAdPlugin", "duojianwu 1019 onADClicked");
   }
   
   public void onADCloseOverlay()
   {
-    bdnw.b("BannerAdPlugin", "onADCloseOverlay");
+    besl.b("BannerAdPlugin", "onADCloseOverlay");
   }
   
   public void onADClosed()
   {
-    bdnw.b("BannerAdPlugin", "onADClosed");
+    besl.b("BannerAdPlugin", "onADClosed");
   }
   
   public void onADExposure()
   {
-    bdnw.b("BannerAdPlugin", "onADExposure");
+    besl.b("BannerAdPlugin", "onADExposure");
   }
   
   public void onADLeftApplication()
   {
-    bdnw.b("BannerAdPlugin", "onADLeftApplication");
+    besl.b("BannerAdPlugin", "onADLeftApplication");
   }
   
   public void onADOpenOverlay()
   {
-    bdnw.b("BannerAdPlugin", "onADOpenOverlay");
+    besl.b("BannerAdPlugin", "onADOpenOverlay");
   }
   
   public void onADReceive()
   {
-    bdnw.b("BannerAdPlugin", "onADReceive");
+    besl.b("BannerAdPlugin", "onADReceive");
     if (this.this$1.val$adPosInfo == null) {
       return;
     }
@@ -69,13 +69,13 @@ class BannerAdPlugin$1$1
     }
     catch (JSONException localJSONException)
     {
-      bdnw.d("BannerAdPlugin", "informJs success", localJSONException);
+      besl.d("BannerAdPlugin", "informJs success", localJSONException);
     }
   }
   
   public void onNoAD(int paramInt, String paramString)
   {
-    bdnw.b("BannerAdPlugin", "onNoAD, errCode = " + paramInt + ", errMsg = " + paramString);
+    besl.b("BannerAdPlugin", "onNoAD, errCode = " + paramInt + ", errMsg = " + paramString);
     BannerAdPlugin.access$300(this.this$1.this$0, this.this$1.val$req, paramInt, paramString, 0);
   }
 }

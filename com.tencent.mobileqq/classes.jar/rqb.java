@@ -1,34 +1,61 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders.StyleLoaderHelper.DummyCallback.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.os.MqqHandler;
 
 public class rqb
-  extends ajpe
+  implements mzb
 {
-  rpw jdField_a_of_type_Rpw = null;
+  private final String jdField_a_of_type_JavaLangString;
+  private final String b;
   
-  public rqb(rpv paramrpv, rpw paramrpw)
+  public rqb(rqa paramrqa, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Rpw = paramrpw;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptRecommendAdapter", 2, "onFollowPublicAccount isSuccess: " + paramBoolean + " | uin: " + paramString + " | mRecommendItem: " + this.jdField_a_of_type_Rpw);
-    }
-    if (this.jdField_a_of_type_Rpw != null)
+    QLog.d("TemplateFactory", 2, "loaded: bid : " + this.jdField_a_of_type_JavaLangString + " param " + paramString + " code : " + paramInt);
+    if (paramInt == 0)
     {
-      paramString = this.jdField_a_of_type_Rpw;
-      if (!paramBoolean) {
-        break label76;
+      if (paramString == null) {}
+      try
+      {
+        QLog.d("TemplateFactory", 2, "下载离线样式包完成 : " + this.jdField_a_of_type_JavaLangString);
+        rqm.a(rqa.a(this.jdField_a_of_type_Rqa));
+        if ((paramString == null) && (rqm.a(this.jdField_a_of_type_JavaLangString).a))
+        {
+          QLog.d("TemplateFactory", 2, "加载离线包 : " + this.jdField_a_of_type_JavaLangString);
+          sfc.a(2, rqa.a(this.jdField_a_of_type_Rqa));
+          paramString = this.jdField_a_of_type_Rqa.a(BaseApplicationImpl.getApplication());
+          if (paramString == null)
+          {
+            QLog.d("TemplateFactory", 2, "templateFactory == null  bid : " + this.jdField_a_of_type_JavaLangString + " code : " + paramInt);
+            return;
+          }
+          paramString.a(rqa.a().incrementAndGet());
+          rqm.a(this.jdField_a_of_type_JavaLangString, paramString);
+          rpu.a();
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("TemplateFactory", 1, "loaded: bid : " + this.jdField_a_of_type_JavaLangString, paramString);
       }
     }
-    label76:
-    for (int i = 1;; i = 0)
-    {
-      paramString.a(i);
-      return;
-    }
   }
+  
+  public void loaded(String paramString, int paramInt)
+  {
+    ThreadManager.getFileThreadHandler().post(new StyleLoaderHelper.DummyCallback.1(this, paramInt, paramString));
+  }
+  
+  public void progress(int paramInt) {}
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.lightGame;
 
-import aciy;
-import aimy;
-import aimz;
+import actn;
+import aizr;
+import aizs;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -19,7 +19,7 @@ public class QuickInputTipsBar
   extends LinearLayout
   implements View.OnClickListener
 {
-  private aimy a;
+  private aizr a;
   
   public QuickInputTipsBar(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -42,7 +42,7 @@ public class QuickInputTipsBar
     super.startAnimation(localAlphaAnimation);
   }
   
-  public void a(List<aimz> paramList)
+  public void a(List<aizs> paramList)
   {
     super.clearAnimation();
     super.removeAllViews();
@@ -51,7 +51,7 @@ public class QuickInputTipsBar
       int i = 0;
       while (i < paramList.size())
       {
-        Object localObject1 = (aimz)paramList.get(i);
+        Object localObject1 = (aizs)paramList.get(i);
         if (localObject1 == null)
         {
           i += 1;
@@ -59,24 +59,24 @@ public class QuickInputTipsBar
         else
         {
           Object localObject2 = new LinearLayout(getContext());
-          ((LinearLayout)localObject2).setBackgroundResource(2130838259);
+          ((LinearLayout)localObject2).setBackgroundResource(2130838267);
           ((LinearLayout)localObject2).setGravity(17);
           localObject2 = new TextView(getContext());
           ((TextView)localObject2).setGravity(17);
           ((TextView)localObject2).setTextColor(-6908266);
           ((TextView)localObject2).setTextSize(14.0F);
-          ((TextView)localObject2).setText(((aimz)localObject1).a);
+          ((TextView)localObject2).setText(((aizs)localObject1).a);
           ((TextView)localObject2).setTag(localObject1);
           ((TextView)localObject2).setOnClickListener(this);
-          ((TextView)localObject2).setBackgroundResource(2130838259);
-          int j = aciy.a(10.0F, getContext().getResources());
+          ((TextView)localObject2).setBackgroundResource(2130838267);
+          int j = actn.a(10.0F, getContext().getResources());
           ((TextView)localObject2).setPadding(j, 0, j, 0);
           localObject1 = new LinearLayout.LayoutParams(-2, -2);
           if (i == 0) {}
-          for (((LinearLayout.LayoutParams)localObject1).leftMargin = aciy.a(8.0F, getContext().getResources());; ((LinearLayout.LayoutParams)localObject1).leftMargin = aciy.a(5.0F, getContext().getResources()))
+          for (((LinearLayout.LayoutParams)localObject1).leftMargin = actn.a(8.0F, getContext().getResources());; ((LinearLayout.LayoutParams)localObject1).leftMargin = actn.a(5.0F, getContext().getResources()))
           {
-            ((LinearLayout.LayoutParams)localObject1).rightMargin = aciy.a(5.0F, getContext().getResources());
-            ((LinearLayout.LayoutParams)localObject1).bottomMargin = aciy.a(2.0F, getContext().getResources());
+            ((LinearLayout.LayoutParams)localObject1).rightMargin = actn.a(5.0F, getContext().getResources());
+            ((LinearLayout.LayoutParams)localObject1).bottomMargin = actn.a(2.0F, getContext().getResources());
             super.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
             break;
           }
@@ -88,14 +88,14 @@ public class QuickInputTipsBar
   public void onClick(View paramView)
   {
     paramView = paramView.getTag();
-    if (((paramView instanceof aimz)) && (this.a != null)) {
-      this.a.a((aimz)paramView);
+    if (((paramView instanceof aizs)) && (this.a != null)) {
+      this.a.a((aizs)paramView);
     }
   }
   
-  public void setTipsClickListener(aimy paramaimy)
+  public void setTipsClickListener(aizr paramaizr)
   {
-    this.a = paramaimy;
+    this.a = paramaizr;
   }
 }
 

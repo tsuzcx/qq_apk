@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
+import aukm;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="mGameId,mFriendUin")
 public class ApolloGameRankData
-  extends atmo
+  extends aukm
 {
   private static final String TAG = "ApolloGameRankData";
   public String mFriendUin;

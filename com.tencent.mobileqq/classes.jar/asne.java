@@ -1,54 +1,37 @@
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class asne
-  implements AdapterView.OnItemClickListener
+  implements askx
 {
-  public asne(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public asne(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(List<RecentBaseData> paramList)
   {
-    ShortVideoCommentsView.a(this.a, (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt));
-    if (ShortVideoCommentsView.a(this.a) == null) {
-      return;
-    }
-    paramLong = this.a.a.getLongAccountUin();
-    if (ShortVideoCommentsView.a(this.a).c == paramLong)
+    MsgBackupSelectionFragment.a(this.a, true);
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      this.a.a(ajjy.a(2131648291));
-      ShortVideoCommentsView.a(this.a, null);
-      return;
-    }
-    paramAdapterView = new StringBuilder();
-    paramAdapterView.append("回复 ");
-    if (ShortVideoCommentsView.a(this.a).b.length() >= 6)
-    {
-      paramAdapterView.append(ShortVideoCommentsView.a(this.a).b.substring(0, 5));
-      paramAdapterView.append("...");
+      this.a.a.clear();
+      this.a.a.addAll(paramList);
     }
     for (;;)
     {
-      ShortVideoCommentsView.a(this.a).setText("");
-      ShortVideoCommentsView.a(this.a).setHint(paramAdapterView);
-      if (!ShortVideoCommentsView.f(this.a)) {
-        break;
-      }
-      this.a.l();
+      paramList = MsgBackupSelectionFragment.a(this.a).obtainMessage(10000);
+      MsgBackupSelectionFragment.a(this.a).sendMessage(paramList);
       return;
-      paramAdapterView.append(ShortVideoCommentsView.a(this.a).b);
+      if (MsgBackupSelectionFragment.a(this.a) == 0) {
+        asoe.a("0X800A232");
+      } else if (asle.c) {
+        asoe.a("0X800A257");
+      }
     }
-    ShortVideoCommentsView.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asne
  * JD-Core Version:    0.7.0.1
  */

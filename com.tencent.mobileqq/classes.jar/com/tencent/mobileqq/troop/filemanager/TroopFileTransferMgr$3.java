@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import ayrs;
+import azsi;
+import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.io.File;
 import java.util.UUID;
 
 public class TroopFileTransferMgr$3
   implements Runnable
 {
-  public TroopFileTransferMgr$3(ayrs paramayrs, TroopFileTransferManager.Item paramItem, UUID paramUUID) {}
+  public TroopFileTransferMgr$3(azsi paramazsi, TroopFileTransferManager.Item paramItem, UUID paramUUID) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class TroopFileTransferMgr$3
     case 9: 
     case 10: 
       if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile != null) {
-        new File(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile).delete();
+        new VFSFile(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile).delete();
       }
       break;
     }
@@ -32,7 +32,7 @@ public class TroopFileTransferMgr$3
       this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 7);
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile != null) {
-        new File(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile).delete();
+        new VFSFile(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile).delete();
       }
     }
   }

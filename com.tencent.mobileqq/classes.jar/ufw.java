@@ -1,17 +1,15 @@
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.widget.AbsListView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class ufw
-  implements begh
+class ufw
+  implements MediaPlayer.OnCompletionListener
 {
-  public ufw(StoryMemoriesFragment paramStoryMemoriesFragment, vmq paramvmq) {}
+  ufw(ufu paramufu, ufm paramufm) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_Vmq.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    this.jdField_a_of_type_Ufm.a(this.jdField_a_of_type_Ufu);
   }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

@@ -1,27 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
+import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
+import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.1.1;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-class airq
-  implements View.OnClickListener
+public class airq
+  extends AVVideoCtrl.LocalVideoPreviewCallback
 {
-  airq(airm paramairm) {}
+  airq(airp paramairp) {}
   
-  public void onClick(View paramView)
+  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
   {
-    if ((airm.a(this.a).d()) || (airm.b(this.a)))
+    Object localObject = ajae.a(airo.a(this.a.a));
+    if (localObject == null) {}
+    do
     {
-      airm.b(this.a, false);
-      airm.a(this.a).a();
-      airm.c(this.a).setVisibility(8);
-      airm.b(this.a).setVisibility(8);
-    }
-    while (!airm.a(this.a).c()) {
       return;
-    }
-    airm.b(this.a, true);
-    airm.a(this.a).b();
-    airm.b(this.a).setVisibility(0);
+      localObject = ((ajch)localObject).a();
+    } while (localObject == null);
+    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.1.1(this, (ApolloSurfaceView)localObject, paramVideoFrame));
   }
 }
 

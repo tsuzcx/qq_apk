@@ -1,10 +1,14 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-public abstract interface bign
+public class bign
+  implements bkvv
 {
-  public abstract void a();
+  public bign(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public abstract void a(TroopBarPOI paramTroopBarPOI);
+  public void a()
+  {
+    QIMEffectCameraCaptureUnit.d(this.a);
+  }
 }
 
 

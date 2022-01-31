@@ -1,25 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class acpw
-  implements acpy
+public class acpw
+  implements DialogInterface.OnClickListener
 {
-  acpw(acpv paramacpv, acpx paramacpx) {}
+  public acpw(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
+    this.a.n();
+    if (!TextUtils.isEmpty(this.a.a())) {}
+    for (paramDialogInterface = "1";; paramDialogInterface = "0")
     {
-      acpv.a(this.jdField_a_of_type_Acpv, this.jdField_a_of_type_Acpx.a());
-      this.jdField_a_of_type_Acpx.a();
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nam.a(), paramDialogInterface, "0");
+      this.a.finish();
       return;
     }
-    QLog.e("FriendShipViewManager", 1, "director.prepare not ready, cannot play anim, type = " + this.jdField_a_of_type_Acpx.a());
-    acpv.a(this.jdField_a_of_type_Acpv, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acpw
  * JD-Core Version:    0.7.0.1
  */

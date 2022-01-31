@@ -7,16 +7,16 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import srp;
-import urk;
-import vqf;
-import vqp;
+import tel;
+import veg;
+import wdb;
+import wdl;
 
 public class InteractContainerLayout
   extends FrameLayout
 {
-  public srp a;
-  private final vqf a;
+  public tel a;
+  private final wdb a;
   
   public InteractContainerLayout(@NonNull Context paramContext)
   {
@@ -26,9 +26,9 @@ public class InteractContainerLayout
   public InteractContainerLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Vqf = new vqp(getContext());
+    this.jdField_a_of_type_Wdb = new wdl(getContext());
     paramContext = new FrameLayout.LayoutParams(-2, -2);
-    addView(this.jdField_a_of_type_Vqf.a(), paramContext);
+    addView(this.jdField_a_of_type_Wdb.a(), paramContext);
     setVisibility(4);
     setClipChildren(false);
     setClickable(false);
@@ -36,36 +36,36 @@ public class InteractContainerLayout
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Srp == null) {
+    if (this.jdField_a_of_type_Tel == null) {
       return;
     }
-    this.jdField_a_of_type_Vqf.a(this.jdField_a_of_type_Srp.b, this.jdField_a_of_type_Srp.c, paramInt1, paramInt2, this.jdField_a_of_type_Srp.d, this.jdField_a_of_type_Srp.e, this.jdField_a_of_type_Srp.f, this.jdField_a_of_type_Srp.g, this.jdField_a_of_type_Srp.h);
-    this.jdField_a_of_type_Vqf.a();
+    this.jdField_a_of_type_Wdb.a(this.jdField_a_of_type_Tel.b, this.jdField_a_of_type_Tel.c, paramInt1, paramInt2, this.jdField_a_of_type_Tel.d, this.jdField_a_of_type_Tel.e, this.jdField_a_of_type_Tel.f, this.jdField_a_of_type_Tel.g, this.jdField_a_of_type_Tel.h);
+    this.jdField_a_of_type_Wdb.a();
   }
   
   public void a(StoryVideoItem paramStoryVideoItem)
   {
-    urk.a("InteractContainerLayout", "bindRateView, vid=%s", paramStoryVideoItem.mVid);
+    veg.a("InteractContainerLayout", "bindRateView, vid=%s", paramStoryVideoItem.mVid);
     a(paramStoryVideoItem.getInteractLayout(), paramStoryVideoItem.mRateResult);
   }
   
-  public void a(srp paramsrp, int paramInt)
+  public void a(tel paramtel, int paramInt)
   {
-    urk.a("InteractContainerLayout", "bindRateView, layout=%s, rateResult=%s.", paramsrp, Integer.valueOf(paramInt));
-    this.jdField_a_of_type_Srp = paramsrp;
-    if ((paramsrp == null) || (paramsrp.a.length < 1))
+    veg.a("InteractContainerLayout", "bindRateView, layout=%s, rateResult=%s.", paramtel, Integer.valueOf(paramInt));
+    this.jdField_a_of_type_Tel = paramtel;
+    if ((paramtel == null) || (paramtel.a.length < 1))
     {
       setVisibility(4);
       return;
     }
     setVisibility(0);
-    vqp localvqp = (vqp)this.jdField_a_of_type_Vqf;
-    localvqp.a(paramsrp.a);
-    localvqp.b(false);
+    wdl localwdl = (wdl)this.jdField_a_of_type_Wdb;
+    localwdl.a(paramtel.a);
+    localwdl.b(false);
     if (paramInt != -2147483648) {}
     for (float f = paramInt;; f = 0.0F)
     {
-      localvqp.a(f);
+      localwdl.a(f);
       a(getWidth(), getHeight());
       return;
     }

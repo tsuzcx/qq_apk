@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aawv
-  extends alow
+  extends ssy
 {
-  public aawv(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aawv(Conversation paramConversation) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void d(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      alov localalov = (alov)this.a.app.getManager(112);
-      this.a.a = localalov.a(paramString);
+      veg.b("Q.recent", "onMsgTabStoryShowChange() sendEmptyMessageDelayedToHandler MSG_INIT_MSGTAG_STORY process, send");
+      this.a.a(1055, 0L, false);
+      return;
     }
+    Conversation.a(this.a, false);
   }
 }
 

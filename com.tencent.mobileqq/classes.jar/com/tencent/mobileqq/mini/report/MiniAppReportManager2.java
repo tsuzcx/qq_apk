@@ -267,6 +267,10 @@ public class MiniAppReportManager2
       QLog.d("MiniAppReportManager2", 2, "new report (launchState is not exist): [subActionType = " + paramString1 + "], [reserves = " + paramString2 + "], [path = " + paramString3 + "]");
     }
     long l1;
+    long l4;
+    long l5;
+    long l6;
+    long l7;
     do
     {
       do
@@ -278,6 +282,10 @@ public class MiniAppReportManager2
         l1 = localAppLaunchState.launchTime - localAppLaunchState.clickTime;
         long l2 = localAppLaunchState.hideTime;
         long l3 = localAppLaunchState.showTime;
+        l4 = localAppLaunchState.loadTime;
+        l5 = localAppLaunchState.clickTime;
+        l6 = localAppLaunchState.loadEndTime;
+        l7 = localAppLaunchState.clickTime;
         if (("2back_key".equals(paramString1)) && (localAppLaunchState.needReportLaunchResult))
         {
           report("page_view", "2show_fail", localAppLaunchState.launchId, null, "back_cancel", String.valueOf(l1), localAppLaunchState.hasPkgAndX5(), paramMiniAppConfig);
@@ -316,6 +324,16 @@ public class MiniAppReportManager2
     } while (!"first_frame".equals(paramString2));
     report("page_view", "2show", localAppLaunchState.launchId, paramString3, "first_frame_extend", String.valueOf(l1), localAppLaunchState.hasPkgAndX5(), paramMiniAppConfig);
     return;
+    if ("2load".equals(paramString1))
+    {
+      report("page_view", paramString1, localAppLaunchState.launchId, paramString3, paramString2, String.valueOf(l4 - l5), localAppLaunchState.hasPkgAndX5(), paramMiniAppConfig);
+      return;
+    }
+    if ("2load_end".equals(paramString1))
+    {
+      report("page_view", paramString1, localAppLaunchState.launchId, paramString3, paramString2, String.valueOf(l6 - l7), localAppLaunchState.hasPkgAndX5(), paramMiniAppConfig);
+      return;
+    }
     report("page_view", paramString1, localAppLaunchState.launchId, paramString3, paramString2, null, localAppLaunchState.hasPkgAndX5(), paramMiniAppConfig);
   }
   
@@ -438,7 +456,7 @@ public class MiniAppReportManager2
     paramString3.activeTime = l;
     if ("2click".equals(paramString1)) {
       if (paramString3.launchResult != 0) {
-        break label598;
+        break label614;
       }
     }
     for (;;)
@@ -467,6 +485,9 @@ public class MiniAppReportManager2
       }
       if ("2load".equals(paramString1)) {
         paramString3.loadTime = l;
+      }
+      if ("2load_end".equals(paramString1)) {
+        paramString3.loadEndTime = l;
       }
       if ((paramString3.launchResult == 0) && ("2launch".equals(paramString1)))
       {
@@ -499,7 +520,7 @@ public class MiniAppReportManager2
       }
       QLog.d("MiniAppReportManager2", 2, "launchState: launchId = [" + paramString3.launchId + "], launchResult = [" + paramString3.launchResult + "], clickTime = [" + paramString3.clickTime + "], launchTime = [" + paramString3.launchTime + "], showTime = [" + paramString3.showTime + "], hideTime = [" + paramString3.hideTime + "]");
       return paramString3;
-      label598:
+      label614:
       paramString3.launchId = String.valueOf(l);
     }
   }

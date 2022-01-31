@@ -1,68 +1,42 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Map;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileYearNodeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class tmv
-  extends AbsVideoInfoWidget
+  extends syv
 {
-  private tmx a = new tmx(this);
-  private boolean e;
-  
-  public tmv(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup);
-  }
+  public String a;
   
   public String a()
   {
-    return "LoadingMoreWidget";
+    return sxp.a("StorySvc.get_profile_year_node_info");
   }
   
-  public tmx a()
+  public syq a(byte[] paramArrayOfByte)
   {
-    return this.a;
+    qqstory_service.RspProfileYearNodeList localRspProfileYearNodeList = new qqstory_service.RspProfileYearNodeList();
+    try
+    {
+      localRspProfileYearNodeList.mergeFrom(paramArrayOfByte);
+      return new tmw(localRspProfileYearNodeList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
   }
   
-  public void a(View paramView) {}
-  
-  public void a(@NonNull Map<Subscriber, String> paramMap)
+  protected byte[] a()
   {
-    paramMap.put(new tmw(this), "");
+    qqstory_service.ReqProfileYearNodeList localReqProfileYearNodeList = new qqstory_service.ReqProfileYearNodeList();
+    localReqProfileYearNodeList.union_id.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localReqProfileYearNodeList.toByteArray();
   }
-  
-  public void a(@NonNull tnz paramtnz, @NonNull StoryVideoItem paramStoryVideoItem) {}
-  
-  public boolean a(@NonNull tnz paramtnz, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return this.e;
-  }
-  
-  public int b()
-  {
-    return 2131495822;
-  }
-  
-  public void d()
-  {
-    this.e = true;
-    i();
-    urk.b("Q.qqstory.playernew.LoadingMoreWidget", "showLoadMore");
-  }
-  
-  public void e()
-  {
-    this.e = false;
-    k();
-    urk.b("Q.qqstory.playernew.LoadingMoreWidget", "hideLoadMore");
-  }
-  
-  public void f() {}
-  
-  public void g() {}
 }
 
 

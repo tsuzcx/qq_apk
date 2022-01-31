@@ -1,72 +1,39 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.ApngImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
 
-public class bbqm
-  extends WebViewPlugin
+final class bbqm
+  implements URLDrawable.URLDrawableListener
 {
-  public bbqm()
-  {
-    this.mPluginNameSpace = "floatingWindow";
-  }
+  bbqm(int[] paramArrayOfInt) {}
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
-    }
-    if ("floatingWindow".equals(paramString2))
-    {
-      if ("show".equals(paramString3))
-      {
-        bbqo.a(BaseApplication.getContext(), true, 16);
-        return true;
-      }
-      if ("hide".equals(paramString3))
-      {
-        bbqo.a(BaseApplication.getContext(), false, 16);
-        return true;
-      }
-      if ("close".equals(paramString3))
-      {
-        bbqo.a(BaseApplicationImpl.getContext(), 16);
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, "onActivityResult requestCode=" + paramByte + "  resultCode=" + paramInt);
+      QLog.d("VasApngUtil", 2, "applyNormalPaster onLoadFialed");
     }
   }
   
-  public void onCreate()
-  {
-    super.onCreate();
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, "onCreate");
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void onDestroy()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    super.onDestroy();
     if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, "onDestroy");
+      QLog.d("VasApngUtil", 2, "urlDrawableListener onLoadSuccessed");
+    }
+    paramURLDrawable = paramURLDrawable.getCurrDrawable();
+    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof ApngDrawable)) && (((ApngDrawable)paramURLDrawable).getImage() != null)) {
+      ApngImage.playByTag(this.a[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbqm
  * JD-Core Version:    0.7.0.1
  */

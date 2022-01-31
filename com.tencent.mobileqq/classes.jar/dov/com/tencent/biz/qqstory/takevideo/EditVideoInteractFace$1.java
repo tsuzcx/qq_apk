@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bhfc;
-import bifn;
-import bigb;
+import bizu;
+import bjwi;
+import bjww;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -17,7 +17,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class EditVideoInteractFace$1
   implements Runnable
 {
-  public EditVideoInteractFace$1(bifn parambifn) {}
+  public EditVideoInteractFace$1(bjwi parambjwi) {}
   
   public void run()
   {
@@ -27,16 +27,16 @@ public class EditVideoInteractFace$1
       try
       {
         Object localObject = BaseApplicationImpl.getContext().getSharedPreferences("EditVideoInteractFace", 0);
-        String str = bhfc.a().getCurrentAccountUin();
+        String str = bizu.a().getCurrentAccountUin();
         int i = ((SharedPreferences)localObject).getInt(str, 0);
         if (i >= 3) {
           return;
         }
         this.this$0.a.a(44);
-        bifn.a(this.this$0, LayoutInflater.from(this.this$0.a()).inflate(2131495642, null));
-        bifn.a(this.this$0).findViewById(2131313495).setOnClickListener(this.this$0);
-        bifn.a(this.this$0).findViewById(2131308961).setOnClickListener(this.this$0);
-        RelativeLayout localRelativeLayout = (RelativeLayout)this.this$0.a(2131298210);
+        bjwi.a(this.this$0, LayoutInflater.from(this.this$0.a()).inflate(2131561233, null));
+        bjwi.a(this.this$0).findViewById(2131379330).setOnClickListener(this.this$0);
+        bjwi.a(this.this$0).findViewById(2131374701).setOnClickListener(this.this$0);
+        RelativeLayout localRelativeLayout = (RelativeLayout)this.this$0.a(2131363765);
         localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
         if (this.this$0.a.a == null) {
           break label268;
@@ -45,9 +45,9 @@ public class EditVideoInteractFace$1
         {
           localLayoutParams.bottomMargin = this.this$0.a.a.getHeight();
           localLayoutParams.addRule(12, -1);
-          localRelativeLayout.addView(bifn.a(this.this$0), localLayoutParams);
-          bifn.a(this.this$0, true);
-          bifn.a(this.this$0).getViewTreeObserver().addOnGlobalLayoutListener(this.this$0);
+          localRelativeLayout.addView(bjwi.a(this.this$0), localLayoutParams);
+          bjwi.a(this.this$0, true);
+          bjwi.a(this.this$0).getViewTreeObserver().addOnGlobalLayoutListener(this.this$0);
           localObject = ((SharedPreferences)localObject).edit();
           ((SharedPreferences.Editor)localObject).putInt(str, i + 1);
           ((SharedPreferences.Editor)localObject).commit();
@@ -62,7 +62,7 @@ public class EditVideoInteractFace$1
       localLayoutParams.addRule(12, -1);
       continue;
       label268:
-      localLayoutParams.addRule(2, 2131298212);
+      localLayoutParams.addRule(2, 2131363767);
     }
   }
 }

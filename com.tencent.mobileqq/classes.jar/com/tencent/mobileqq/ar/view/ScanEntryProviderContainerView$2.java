@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.view;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
-import bbmy;
+import bcpw;
 
 class ScanEntryProviderContainerView$2
   implements Runnable
@@ -11,9 +11,9 @@ class ScanEntryProviderContainerView$2
   
   public void run()
   {
-    bbmy localbbmy = bbmy.a(this.this$0.a, ajjy.a(2131647720), 1);
-    localbbmy.a();
-    localbbmy.a();
+    bcpw localbcpw = bcpw.a(this.this$0.a, ajyc.a(2131713508), 1);
+    localbcpw.a();
+    localbcpw.a();
     ((Activity)this.this$0.a).finish();
   }
 }

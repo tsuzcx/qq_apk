@@ -57,19 +57,17 @@ public class ArkDelegateManager
     return this.mSetupDelegate;
   }
   
-  public boolean init(String paramString1, String paramString2, String paramString3, String paramString4, Context paramContext)
+  public boolean init(String paramString1, String paramString2, String paramString3, Context paramContext)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (paramContext != null))
     {
       ArkAppCacheMgr.setupArkEnvironment(true);
       this.mAppContext = paramContext.getApplicationContext();
-      this.mPorccessSufix = paramString3;
+      this.mPorccessSufix = paramString2;
       ArkUtil.createDir(paramString1);
-      ArkUtil.createDir(paramString2);
       ArkEnvironmentManager.getInstance().setRootDirecotry(paramString1);
-      ArkEnvironmentManager.getInstance().setInnerRootDirectory(paramString2);
-      ArkEnvironmentManager.getInstance().setQQVersion(paramString4);
-      ENV.logI("ArkApp.ArkDelegateManager", "ark init with dir:" + paramString1 + ", innerDir=" + paramString2 + ",proSufix=" + paramString3 + ", qqVersion=" + paramString4);
+      ArkEnvironmentManager.getInstance().setQQVersion(paramString3);
+      ENV.logI("ArkApp.ArkDelegateManager", "ark init with dir:" + paramString1 + ",proSufix=" + paramString2 + ", qqVersion=" + paramString3);
       return true;
     }
     return false;

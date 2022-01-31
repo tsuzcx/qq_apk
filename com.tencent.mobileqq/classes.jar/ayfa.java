@@ -1,27 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-class ayfa
-  implements begw
+public class ayfa
+  extends ayer
 {
-  ayfa(ayez paramayez, begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ayfa(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
   {
-    switch (paramInt)
+    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      this.jdField_a_of_type_Ayez.a.a(this.jdField_a_of_type_Ayez.a.a);
+      this.jdField_a_of_type_Ayeo.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      this.jdField_a_of_type_Ayeo.h(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayfa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,18 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
 
-class bflw
-  implements INetInfoHandler
+public class bflw
+  implements SpecialAVFilterResource
 {
-  bflw(bflv parambflv) {}
+  public static final String a = ajsf.aV + "/tencent/qq/music/";
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString)
+  public String getMusicResPath()
   {
-    bflv.a(this.a);
+    return a;
   }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    bflv.a(this.a);
-  }
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bflw
  * JD-Core Version:    0.7.0.1
  */

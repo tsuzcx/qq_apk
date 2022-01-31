@@ -1,68 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class atos
-  extends Handler
+public class atos
+  extends ajyt
 {
-  atos(ator paramator, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public atos(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    atpg.a(this.a.b, this.a.jdField_a_of_type_JavaLangString, "dispatchMessage", "what:" + paramMessage.what + ",result:" + paramMessage.arg1 + ",obj:" + paramMessage.obj);
-    if (this.a.jdField_a_of_type_Atqn == null) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "onDismissHotChat.isSuccess=" + paramBoolean + ",groupcode=" + paramString1 + ",result=" + paramInt + ",strError=" + paramString2);
+    }
+    if ((paramBoolean) && (paramInt == 0) && (NearbyPeopleProfileActivity.a(this.a) != null) && (NearbyPeopleProfileActivity.a(this.a).hotInfo != null) && (paramString1 != null) && (paramString1.equals(NearbyPeopleProfileActivity.a(this.a).hotInfo.troopUin)) && (NearbyPeopleProfileActivity.a(this.a) != null))
     {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 0: 
-        i = paramMessage.arg1;
-        paramMessage = (atpw)paramMessage.obj;
-        this.a.jdField_a_of_type_Atqn.a(i, paramMessage);
-        return;
-      case 1: 
-        paramMessage = (atpw)paramMessage.obj;
-      }
-    } while (!(paramMessage.a instanceof Integer));
-    this.a.jdField_a_of_type_Atqn.a_(((Integer)paramMessage.a).intValue(), paramMessage.c);
-    return;
-    int i = paramMessage.arg1;
-    paramMessage = (atpw)paramMessage.obj;
-    this.a.jdField_a_of_type_Atqn.b(i, paramMessage);
-    return;
-    i = paramMessage.arg1;
-    paramMessage = (atpw)paramMessage.obj;
-    this.a.jdField_a_of_type_Atqn.c(i, paramMessage);
-    return;
-    i = paramMessage.arg1;
-    paramMessage = (atpw)paramMessage.obj;
-    this.a.jdField_a_of_type_Atqn.d(i, paramMessage);
-    return;
-    if (paramMessage.obj != null) {}
-    for (;;)
-    {
-      try
-      {
-        ArrayList localArrayList = (ArrayList)paramMessage.obj;
-        this.a.jdField_a_of_type_Atqn.a(paramMessage.arg1, localArrayList);
-        return;
-      }
-      catch (ClassCastException localClassCastException)
-      {
-        localObject = null;
-        continue;
-      }
-      paramMessage = (atpw)paramMessage.obj;
-      this.a.jdField_a_of_type_Atqn.a(((Integer)paramMessage.a).intValue());
-      return;
-      Object localObject = null;
+      NearbyPeopleProfileActivity.a(this.a).strHotChatInfo = "";
+      NearbyPeopleProfileActivity.a(this.a).hotInfo = null;
     }
   }
 }

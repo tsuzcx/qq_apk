@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
 
-class aecy
-  implements DialogInterface.OnClickListener
+public class aecy
+  implements suu
 {
-  aecy(aecw paramaecw) {}
+  long jdField_a_of_type_Long;
+  aecz jdField_a_of_type_Aecz;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aecy(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
+  
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    bace.d(this.a.g);
-    this.a.g = "";
+    if (!paramString1.equals(this.a)) {}
   }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
+  
+  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

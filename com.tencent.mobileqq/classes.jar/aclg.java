@@ -1,30 +1,23 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.TroopAdmin;
 
-public class aclg
+public final class aclg
+  implements Parcelable.Creator<TroopMemberListActivity.TroopAdmin>
 {
-  public long a;
-  public String a;
-  
-  public boolean a()
+  public TroopMemberListActivity.TroopAdmin a(Parcel paramParcel)
   {
-    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+    return new TroopMemberListActivity.TroopAdmin(paramParcel, null);
   }
   
-  @NonNull
-  public String toString()
+  public TroopMemberListActivity.TroopAdmin[] a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("MutualMarkPushGrayTipInfo{");
-    localStringBuilder.append("notifyTime:").append(this.jdField_a_of_type_Long).append(", ");
-    localStringBuilder.append("grayTipTemplate:").append(this.jdField_a_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    return new TroopMemberListActivity.TroopAdmin[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aclg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,9 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import java.nio.ByteBuffer;
+import dov.com.qq.im.capture.data.TemplateData;
+import java.util.List;
 
-public class bjbv
+public abstract interface bjbv
 {
-  public static ByteBuffer a(int paramInt1, int paramInt2)
-  {
-    try
-    {
-      if (bjbu.c)
-      {
-        ByteBuffer localByteBuffer1 = CameraGLSurfaceView.allocate(paramInt1, paramInt2);
-        bjbu.b = true;
-        ByteBuffer localByteBuffer2 = localByteBuffer1;
-        if (localByteBuffer1 == null)
-        {
-          localByteBuffer2 = ByteBuffer.allocateDirect(paramInt2);
-          bjbu.b = false;
-        }
-        return localByteBuffer2;
-      }
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        Object localObject = null;
-        continue;
-        localObject = null;
-      }
-    }
-  }
+  public abstract void a(List<TemplateData> paramList);
 }
 
 

@@ -1,14 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
 
-final class rae
-  implements rah
+public class rae
+  implements View.OnClickListener
 {
-  rae(raf paramraf) {}
+  public rae(KandianProgressView paramKandianProgressView) {}
   
-  public void a(boolean paramBoolean, List<BaseData> paramList)
+  public void onClick(View paramView)
   {
-    this.a.a(paramList);
+    if (this.a.jdField_a_of_type_Raf == null) {
+      return;
+    }
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131364996: 
+    case 2131365011: 
+      this.a.jdField_a_of_type_Raf.a(this.a.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    this.a.jdField_a_of_type_Raf.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

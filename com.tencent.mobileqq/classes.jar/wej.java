@@ -1,20 +1,25 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 
-class wej
-  implements View.OnClickListener
+public abstract interface wej
 {
-  wej(wei paramwei, wes paramwes, String paramString, begr parambegr) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Wes.a(false, this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_Begr.dismiss();
-  }
+  public abstract void a(View paramView, float paramFloat);
+  
+  public abstract void a(View paramView, float paramFloat, MotionEvent paramMotionEvent);
+  
+  public abstract void a(View paramView, weg paramweg);
+  
+  public abstract boolean a(View paramView);
+  
+  public abstract boolean a(View paramView, wem paramwem, MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wej
  * JD-Core Version:    0.7.0.1
  */

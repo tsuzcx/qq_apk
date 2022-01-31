@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import ogy;
-import plm;
-import ppz;
+import osj;
+import pxh;
+import qbv;
 
 public class ComponentHeaderPolymeric$4$1
   implements Runnable
 {
-  public ComponentHeaderPolymeric$4$1(plm paramplm, int paramInt) {}
+  public ComponentHeaderPolymeric$4$1(pxh parampxh, int paramInt) {}
   
   public void run()
   {
-    ogy.a().d((int)this.jdField_a_of_type_Plm.a.mPolymericInfo.f, this.jdField_a_of_type_Int - 1);
+    osj.a().d((int)this.jdField_a_of_type_Pxh.a.mPolymericInfo.f, this.jdField_a_of_type_Int - 1);
   }
 }
 

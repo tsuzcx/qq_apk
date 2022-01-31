@@ -1,29 +1,37 @@
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.10.1;
+
 public class aonz
-  implements Cloneable
+  implements apxd
 {
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public byte[] a = new byte[16];
-  public long b;
-  public short b;
-  public boolean b;
-  public long c = -1L;
+  public aonz(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public aonz a()
+  public void a() {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b()
   {
-    try
-    {
-      aonz localaonz = (aonz)super.clone();
-      return localaonz;
+    if ((this.a.jdField_a_of_type_Boolean) || (this.a.f)) {
+      return;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
+    if (this.a.jdField_a_of_type_Apep != null)
     {
-      localCloneNotSupportedException.printStackTrace();
+      this.a.jdField_a_of_type_Apep.l = "3";
+      this.a.jdField_a_of_type_Apep.e = System.currentTimeMillis();
     }
-    return null;
+    this.a.runOnUiThread(new FilePreviewActivity.10.1(this));
   }
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

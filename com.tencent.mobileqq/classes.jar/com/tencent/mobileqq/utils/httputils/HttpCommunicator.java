@@ -7,22 +7,22 @@ import android.os.HandlerThread;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
-import awrn;
-import axou;
-import axsr;
-import axtt;
-import axtw;
-import axtz;
-import axub;
-import bakt;
-import baku;
-import bakv;
-import bakw;
-import bakx;
-import baky;
-import bakz;
-import bala;
-import besu;
+import axrl;
+import ayoz;
+import aysy;
+import ayua;
+import ayud;
+import ayug;
+import ayui;
+import bbmd;
+import bbme;
+import bbmf;
+import bbmg;
+import bbmh;
+import bbmi;
+import bbmj;
+import bbmk;
+import bgao;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -50,19 +50,19 @@ import mqq.os.MqqHandler;
 import mqq.util.WeakReference;
 
 public class HttpCommunicator
-  implements besu
+  implements bgao
 {
   private static long jdField_a_of_type_Long = 1L;
   private int jdField_a_of_type_Int;
-  private bakv jdField_a_of_type_Bakv = new bakv();
+  private bbmf jdField_a_of_type_Bbmf = new bbmf();
   private Object jdField_a_of_type_JavaLangObject = new ReentrantLock();
   private Runnable jdField_a_of_type_JavaLangRunnable;
   String jdField_a_of_type_JavaLangString = null;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private WeakReference<bakx> jdField_a_of_type_MqqUtilWeakReference;
+  private WeakReference<bbmh> jdField_a_of_type_MqqUtilWeakReference;
   boolean jdField_a_of_type_Boolean = true;
-  private baku[] jdField_a_of_type_ArrayOfBaku;
+  private bbme[] jdField_a_of_type_ArrayOfBbme;
   private final int jdField_b_of_type_Int = 4;
   private volatile boolean jdField_b_of_type_Boolean;
   private final int jdField_c_of_type_Int;
@@ -70,9 +70,9 @@ public class HttpCommunicator
   private int d;
   private int e;
   
-  public HttpCommunicator(bakx parambakx, int paramInt)
+  public HttpCommunicator(bbmh parambbmh, int paramInt)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parambakx);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parambbmh);
     if (QLog.isColorLevel()) {
       QLog.d("Q.richmedia.HttpCommunicator", 2, "construct HTTPcomm");
     }
@@ -85,10 +85,10 @@ public class HttpCommunicator
     System.setProperty("http.maxConnections", "2");
   }
   
-  private HttpURLConnection a(bakw parambakw)
+  private HttpURLConnection a(bbmg parambbmg)
   {
-    Object localObject1 = parambakw.a();
-    String str1 = (String)parambakw.jdField_a_of_type_JavaUtilHashMap.remove("mType");
+    Object localObject1 = parambbmg.a();
+    String str1 = (String)parambbmg.jdField_a_of_type_JavaUtilHashMap.remove("mType");
     String str2;
     int i1;
     int k;
@@ -117,11 +117,11 @@ public class HttpCommunicator
     }
     for (;;)
     {
-      String str3 = bakz.b((String)localObject1);
-      parambakw.jdField_f_of_type_Boolean = bakz.jdField_d_of_type_JavaLangString.equals(str3);
+      String str3 = bbmj.b((String)localObject1);
+      parambbmg.jdField_f_of_type_Boolean = bbmj.jdField_d_of_type_JavaLangString.equals(str3);
       if (!str3.equals(this.jdField_a_of_type_JavaLangString))
       {
-        if ((j == 1) || (str3.equals(bakz.jdField_d_of_type_JavaLangString))) {
+        if ((j == 1) || (str3.equals(bbmj.jdField_d_of_type_JavaLangString))) {
           this.jdField_a_of_type_Boolean = false;
         }
       }
@@ -144,21 +144,21 @@ public class HttpCommunicator
         Object localObject3;
         int n;
         if ((!this.jdField_a_of_type_Boolean) && (m != 0)) {
-          if ((str3.equals(bakz.jdField_d_of_type_JavaLangString)) || (str3.equals(bakz.jdField_f_of_type_JavaLangString)) || (str3.equals(bakz.h))) {
-            if (!parambakw.jdField_g_of_type_Boolean) {
-              switch (parambakw.jdField_h_of_type_Int)
+          if ((str3.equals(bbmj.jdField_d_of_type_JavaLangString)) || (str3.equals(bbmj.jdField_f_of_type_JavaLangString)) || (str3.equals(bbmj.h))) {
+            if (!parambbmg.jdField_g_of_type_Boolean) {
+              switch (parambbmg.jdField_h_of_type_Int)
               {
               default: 
-                localObject1 = bakz.b(str1, str2, i1);
+                localObject1 = bbmj.b(str1, str2, i1);
                 i = 1;
-                a((HttpURLConnection)localObject1, parambakw);
-                parambakw.jdField_d_of_type_Int = j;
-                i2 = axsr.a().a();
-                if (parambakw.jdField_a_of_type_Axtz == null)
+                a((HttpURLConnection)localObject1, parambbmg);
+                parambbmg.jdField_d_of_type_Int = j;
+                i2 = aysy.a().a();
+                if (parambbmg.jdField_a_of_type_Ayug == null)
                 {
-                  localObject3 = axtt.a(i2);
-                  n = ((axtw)localObject3).a();
-                  if ("POST".equals(parambakw.e())) {
+                  localObject3 = ayua.a(i2);
+                  n = ((ayud)localObject3).a();
+                  if ("POST".equals(parambbmg.e())) {
                     j = 89500;
                   }
                 }
@@ -171,9 +171,9 @@ public class HttpCommunicator
         {
           ((HttpURLConnection)localObject1).setConnectTimeout(n);
           ((HttpURLConnection)localObject1).setReadTimeout(j);
-          a(parambakw, "gettingConn", "getConnection type:" + i2 + " activeNetworkInfo: " + localObject2 + " defaultHost:" + str2 + " defaultPort: " + i1 + " last apnType:" + this.jdField_a_of_type_JavaLangString + " forceDirect:" + this.jdField_a_of_type_Boolean + ",connectTimeOut:" + n + ",readTimeout:" + j);
+          a(parambbmg, "gettingConn", "getConnection type:" + i2 + " activeNetworkInfo: " + localObject2 + " defaultHost:" + str2 + " defaultPort: " + i1 + " last apnType:" + this.jdField_a_of_type_JavaLangString + " forceDirect:" + this.jdField_a_of_type_Boolean + ",connectTimeOut:" + n + ",readTimeout:" + j);
           ((HttpURLConnection)localObject1).setInstanceFollowRedirects(false);
-          localObject2 = parambakw.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+          localObject2 = parambbmg.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
           while (((Iterator)localObject2).hasNext())
           {
             localObject3 = (Map.Entry)((Iterator)localObject2).next();
@@ -186,37 +186,37 @@ public class HttpCommunicator
           localObject1 = (HttpURLConnection)new URL(str1).openConnection(java.net.Proxy.NO_PROXY);
           i = 0;
           break label285;
-          localObject1 = bakz.a(str1, str2, i1);
+          localObject1 = bbmj.a(str1, str2, i1);
           i = 1;
           break label285;
-          localObject1 = bakz.b(str1, str2, i1);
+          localObject1 = bbmj.b(str1, str2, i1);
           i = 1;
           break label285;
-          if (str3.equals(bakz.b))
+          if (str3.equals(bbmj.b))
           {
-            localObject1 = bakz.a(str1, str2, i1);
+            localObject1 = bbmj.a(str1, str2, i1);
             i = 1;
             break label285;
           }
-          localObject1 = bakz.a(str1, str2, i1);
+          localObject1 = bbmj.a(str1, str2, i1);
           i = 1;
           break label285;
           localObject1 = (HttpURLConnection)new URL(str1).openConnection();
           i = 0;
           break label285;
-          j = ((axtw)localObject3).b();
+          j = ((ayud)localObject3).b();
           continue;
-          n = parambakw.jdField_a_of_type_Axtz.b(i2);
-          j = parambakw.jdField_a_of_type_Axtz.a(i2);
+          n = parambbmg.jdField_a_of_type_Ayug.b(i2);
+          j = parambbmg.jdField_a_of_type_Ayug.a(i2);
         }
-        if (parambakw.e().equals("POST"))
+        if (parambbmg.e().equals("POST"))
         {
           ((HttpURLConnection)localObject1).setDoOutput(true);
-          if (parambakw.b() != null) {
-            ((HttpURLConnection)localObject1).setFixedLengthStreamingMode(parambakw.b().length);
+          if (parambbmg.b() != null) {
+            ((HttpURLConnection)localObject1).setFixedLengthStreamingMode(parambbmg.b().length);
           }
         }
-        parambakw.jdField_c_of_type_JavaLangString = ((HttpURLConnection)localObject1).getRequestProperties().toString();
+        parambbmg.jdField_c_of_type_JavaLangString = ((HttpURLConnection)localObject1).getRequestProperties().toString();
         try
         {
           ((HttpURLConnection)localObject1).connect();
@@ -281,31 +281,31 @@ public class HttpCommunicator
     }
   }
   
-  private void a(bakw parambakw1, bakw parambakw2, int paramInt, boolean paramBoolean)
+  private void a(bbmg parambbmg1, bbmg parambbmg2, int paramInt, boolean paramBoolean)
   {
     if (!paramBoolean)
     {
       if (QLog.isColorLevel()) {
         QLog.d("SSCM", 2, "msg statuschanged: " + paramInt);
       }
-      parambakw1.a().a(parambakw1, parambakw2, paramInt);
+      parambbmg1.a().a(parambbmg1, parambbmg2, paramInt);
     }
   }
   
-  private void a(HttpURLConnection paramHttpURLConnection, bakw parambakw)
+  private void a(HttpURLConnection paramHttpURLConnection, bbmg parambbmg)
   {
     String str;
-    bakt localbakt;
-    if ((parambakw.j) && ((paramHttpURLConnection instanceof HttpsURLConnection)))
+    bbmd localbbmd;
+    if ((parambbmg.j) && ((paramHttpURLConnection instanceof HttpsURLConnection)))
     {
       paramHttpURLConnection = (HttpsURLConnection)paramHttpURLConnection;
-      str = parambakw.jdField_e_of_type_JavaLangString;
-      localbakt = new bakt(this, str, parambakw);
-      if (parambakw.k)
+      str = parambbmg.jdField_e_of_type_JavaLangString;
+      localbbmd = new bbmd(this, str, parambbmg);
+      if (parambbmg.k)
       {
         paramHttpURLConnection.setRequestProperty("host", str);
-        paramHttpURLConnection.setSSLSocketFactory(new bala(str, localbakt));
-        paramHttpURLConnection.setHostnameVerifier(localbakt);
+        paramHttpURLConnection.setSSLSocketFactory(new bbmk(str, localbbmd));
+        paramHttpURLConnection.setHostnameVerifier(localbbmd);
       }
     }
     else
@@ -313,7 +313,7 @@ public class HttpCommunicator
       return;
     }
     paramHttpURLConnection.setRequestProperty("host", str);
-    paramHttpURLConnection.setHostnameVerifier(localbakt);
+    paramHttpURLConnection.setHostnameVerifier(localbbmd);
   }
   
   private boolean a(boolean paramBoolean)
@@ -327,25 +327,25 @@ public class HttpCommunicator
       if (!this.jdField_b_of_type_Boolean) {
         return true;
       }
-      if (this.jdField_a_of_type_Bakv.a() > 0) {
+      if (this.jdField_a_of_type_Bbmf.a() > 0) {
         return false;
       }
     }
-    if ((this.jdField_a_of_type_ArrayOfBaku == null) || (this.jdField_a_of_type_ArrayOfBaku.length == 0)) {
+    if ((this.jdField_a_of_type_ArrayOfBbme == null) || (this.jdField_a_of_type_ArrayOfBbme.length == 0)) {
       return false;
     }
     if (this.e > 0) {
       return false;
     }
-    baku[] arrayOfbaku = this.jdField_a_of_type_ArrayOfBaku;
-    int k = arrayOfbaku.length;
+    bbme[] arrayOfbbme = this.jdField_a_of_type_ArrayOfBbme;
+    int k = arrayOfbbme.length;
     int i = 0;
     for (;;)
     {
       if (i < k)
       {
-        baku localbaku = arrayOfbaku[i];
-        if ((localbaku != null) && (localbaku.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) && (localbaku.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
+        bbme localbbme = arrayOfbbme[i];
+        if ((localbbme != null) && (localbbme.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) && (localbbme.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
           return false;
         }
       }
@@ -356,18 +356,18 @@ public class HttpCommunicator
           if (QLog.isColorLevel()) {
             QLog.d("Q.richmedia.HttpCommunicator", 2, "HttpCommunicator checkThreadPoolIdle ，ThreadPool Quit ");
           }
-          arrayOfbaku = this.jdField_a_of_type_ArrayOfBaku;
-          k = arrayOfbaku.length;
+          arrayOfbbme = this.jdField_a_of_type_ArrayOfBbme;
+          k = arrayOfbbme.length;
           i = j;
           while (i < k)
           {
-            arrayOfbaku[i].sendEmptyMessage(1);
+            arrayOfbbme[i].sendEmptyMessage(1);
             i += 1;
           }
           this.e = 0;
           this.jdField_d_of_type_Int = 0;
           this.jdField_b_of_type_Boolean = false;
-          this.jdField_a_of_type_ArrayOfBaku = null;
+          this.jdField_a_of_type_ArrayOfBbme = null;
         }
         return true;
       }
@@ -375,7 +375,7 @@ public class HttpCommunicator
     }
   }
   
-  public int a(bakw parambakw)
+  public int a(bbmg parambbmg)
   {
     int i = -1;
     int k = this.jdField_c_of_type_Int;
@@ -385,10 +385,10 @@ public class HttpCommunicator
       if (QLog.isColorLevel()) {
         QLog.e("Q.richmedia.HttpCommunicator", 2, "sendMsg closed");
       }
-      if ((parambakw != null) && (parambakw.a() != null))
+      if ((parambbmg != null) && (parambbmg.a() != null))
       {
-        parambakw.a(9366, -1, "close");
-        parambakw.a().b(parambakw, parambakw);
+        parambbmg.a(9366, -1, "close");
+        parambbmg.a().b(parambbmg, parambbmg);
         k = i;
         return k;
       }
@@ -397,19 +397,19 @@ public class HttpCommunicator
       a();
     }
     Object localObject = this.jdField_a_of_type_JavaLangObject;
-    if (parambakw != null) {}
+    if (parambbmg != null) {}
     for (;;)
     {
       try
       {
-        if (this.jdField_a_of_type_Bakv.a() < k)
+        if (this.jdField_a_of_type_Bbmf.a() < k)
         {
           i = this.jdField_a_of_type_Int + 1;
           this.jdField_a_of_type_Int = i;
-          parambakw.a(i);
-          parambakw.jdField_g_of_type_Long = SystemClock.uptimeMillis();
-          this.jdField_a_of_type_Bakv.a(parambakw);
-          parambakw.a().a(parambakw, null, 0);
+          parambbmg.a(i);
+          parambbmg.jdField_g_of_type_Long = SystemClock.uptimeMillis();
+          this.jdField_a_of_type_Bbmf.a(parambbmg);
+          parambbmg.a().a(parambbmg, null, 0);
           i = this.jdField_a_of_type_Int;
           k = i;
           if (j == 0) {
@@ -421,10 +421,10 @@ public class HttpCommunicator
         if (QLog.isColorLevel()) {
           QLog.e("Q.richmedia.HttpCommunicator", 2, "exceed queue limit");
         }
-        if ((parambakw != null) && (parambakw.a() != null))
+        if ((parambbmg != null) && (parambbmg.a() != null))
         {
-          parambakw.a(9367, -1, "queen full");
-          parambakw.a().b(parambakw, parambakw);
+          parambbmg.a(9367, -1, "queen full");
+          parambbmg.a().b(parambbmg, parambbmg);
         }
       }
       finally {}
@@ -434,8 +434,8 @@ public class HttpCommunicator
   
   public String a()
   {
-    if (this.jdField_a_of_type_Bakv != null) {
-      return this.jdField_a_of_type_Bakv.a();
+    if (this.jdField_a_of_type_Bbmf != null) {
+      return this.jdField_a_of_type_Bbmf.a();
     }
     return "";
   }
@@ -458,20 +458,20 @@ public class HttpCommunicator
         if (this.jdField_a_of_type_MqqOsMqqHandler == null) {
           this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
         }
-        if (this.jdField_a_of_type_ArrayOfBaku == null)
+        if (this.jdField_a_of_type_ArrayOfBbme == null)
         {
-          this.jdField_a_of_type_ArrayOfBaku = new baku[4];
+          this.jdField_a_of_type_ArrayOfBbme = new bbme[4];
           if (i < 4)
           {
             HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("httpcommunicator_norm_" + i, 5);
             localHandlerThread.start();
-            this.jdField_a_of_type_ArrayOfBaku[i] = new baku(this, localHandlerThread.getLooper());
-            this.jdField_a_of_type_ArrayOfBaku[i].jdField_a_of_type_Int = i;
+            this.jdField_a_of_type_ArrayOfBbme[i] = new bbme(this, localHandlerThread.getLooper());
+            this.jdField_a_of_type_ArrayOfBbme[i].jdField_a_of_type_Int = i;
             i += 1;
             continue;
           }
         }
-        i = axsr.a().a();
+        i = aysy.a().a();
         if ((i == 2) || (i == 3))
         {
           this.jdField_d_of_type_Int = 3;
@@ -504,45 +504,45 @@ public class HttpCommunicator
     }
   }
   
-  void a(int paramInt, HttpURLConnection paramHttpURLConnection, bakw parambakw)
+  void a(int paramInt, HttpURLConnection paramHttpURLConnection, bbmg parambbmg)
   {
-    if ((paramHttpURLConnection == null) || (parambakw == null)) {
+    if ((paramHttpURLConnection == null) || (parambbmg == null)) {
       return;
     }
-    parambakw.c(paramInt);
-    parambakw.b("Content-Type", paramHttpURLConnection.getContentType());
-    parambakw.jdField_d_of_type_JavaLangString = paramHttpURLConnection.getHeaderFields().toString();
+    parambbmg.c(paramInt);
+    parambbmg.b("Content-Type", paramHttpURLConnection.getContentType());
+    parambbmg.jdField_d_of_type_JavaLangString = paramHttpURLConnection.getHeaderFields().toString();
     if (paramHttpURLConnection.getHeaderField("User-ReturnCode") != null) {
-      parambakw.b("User-ReturnCode", paramHttpURLConnection.getHeaderField("User-ReturnCode"));
+      parambbmg.b("User-ReturnCode", paramHttpURLConnection.getHeaderField("User-ReturnCode"));
     }
     if (paramHttpURLConnection.getHeaderField("X-User-ReturnCode") != null) {
-      parambakw.b("X-User-ReturnCode", paramHttpURLConnection.getHeaderField("X-User-ReturnCode"));
+      parambbmg.b("X-User-ReturnCode", paramHttpURLConnection.getHeaderField("X-User-ReturnCode"));
     }
     if (paramHttpURLConnection.getHeaderField("content-range") != null) {
-      parambakw.b("content-range", paramHttpURLConnection.getHeaderField("content-range"));
+      parambbmg.b("content-range", paramHttpURLConnection.getHeaderField("content-range"));
     }
     if (paramHttpURLConnection.getHeaderField("Range") != null) {
-      parambakw.b("Range", paramHttpURLConnection.getHeaderField("Range"));
+      parambbmg.b("Range", paramHttpURLConnection.getHeaderField("Range"));
     }
     if (paramHttpURLConnection.getHeaderField("X-Range") != null) {
-      parambakw.b("X-Range", paramHttpURLConnection.getHeaderField("X-Range"));
+      parambbmg.b("X-Range", paramHttpURLConnection.getHeaderField("X-Range"));
     }
     if (paramHttpURLConnection.getHeaderField("Content-Encoding") != null) {
-      parambakw.b("Content-Encoding", paramHttpURLConnection.getHeaderField("Content-Encoding"));
+      parambbmg.b("Content-Encoding", paramHttpURLConnection.getHeaderField("Content-Encoding"));
     }
     if (paramHttpURLConnection.getHeaderField("Transfer-Encoding") != null) {
-      parambakw.b("Transfer-Encoding", paramHttpURLConnection.getHeaderField("Transfer-Encoding"));
+      parambbmg.b("Transfer-Encoding", paramHttpURLConnection.getHeaderField("Transfer-Encoding"));
     }
     if (paramHttpURLConnection.getHeaderField("X-RtFlag") != null) {
-      parambakw.b("X-RtFlag", paramHttpURLConnection.getHeaderField("X-RtFlag"));
+      parambbmg.b("X-RtFlag", paramHttpURLConnection.getHeaderField("X-RtFlag"));
     }
     if (paramHttpURLConnection.getHeaderField("X-httime") != null) {
-      parambakw.b("X-httime", paramHttpURLConnection.getHeaderField("X-httime"));
+      parambbmg.b("X-httime", paramHttpURLConnection.getHeaderField("X-httime"));
     }
     if (paramHttpURLConnection.getHeaderField("X-piccachetime") != null) {
-      parambakw.b("X-piccachetime", paramHttpURLConnection.getHeaderField("X-piccachetime"));
+      parambbmg.b("X-piccachetime", paramHttpURLConnection.getHeaderField("X-piccachetime"));
     }
-    parambakw.jdField_a_of_type_Long = -1L;
+    parambbmg.jdField_a_of_type_Long = -1L;
     String str = paramHttpURLConnection.getHeaderField("content-range");
     int i;
     if (str != null) {
@@ -552,9 +552,9 @@ public class HttpCommunicator
     {
       try
       {
-        parambakw.jdField_a_of_type_Long = Long.valueOf(str.substring(i + 1)).longValue();
-        parambakw.jdField_b_of_type_Long = paramHttpURLConnection.getContentLength();
-        a(parambakw, "copyRespHeader", "resultCode:" + paramInt + " totalLen:" + parambakw.jdField_a_of_type_Long + ",totalBlockLen:" + parambakw.jdField_b_of_type_Long);
+        parambbmg.jdField_a_of_type_Long = Long.valueOf(str.substring(i + 1)).longValue();
+        parambbmg.jdField_b_of_type_Long = paramHttpURLConnection.getContentLength();
+        a(parambbmg, "copyRespHeader", "resultCode:" + paramInt + " totalLen:" + parambbmg.jdField_a_of_type_Long + ",totalBlockLen:" + parambbmg.jdField_b_of_type_Long);
         return;
       }
       catch (Exception localException)
@@ -562,8 +562,8 @@ public class HttpCommunicator
         localException.printStackTrace();
         continue;
       }
-      parambakw.jdField_a_of_type_Long = paramHttpURLConnection.getContentLength();
-      parambakw.jdField_b_of_type_Long = parambakw.jdField_a_of_type_Long;
+      parambbmg.jdField_a_of_type_Long = paramHttpURLConnection.getContentLength();
+      parambbmg.jdField_b_of_type_Long = parambbmg.jdField_a_of_type_Long;
     }
   }
   
@@ -577,13 +577,13 @@ public class HttpCommunicator
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_FailCode", String.valueOf(i + 9400));
       localHashMap.put("param_PostSize", String.valueOf(paramInt));
-      awrn.a(BaseApplication.getContext()).a(null, "LongHttpRespTime", false, paramLong, 0L, localHashMap, "");
+      axrl.a(BaseApplication.getContext()).a(null, "LongHttpRespTime", false, paramLong, 0L, localHashMap, "");
       return;
       i = j;
     }
   }
   
-  public void a(baku parambaku)
+  public void a(bbme parambbme)
   {
     if (this.jdField_c_of_type_Boolean) {}
     int i;
@@ -592,19 +592,19 @@ public class HttpCommunicator
       do
       {
         return;
-      } while (parambaku == null);
-      parambaku.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      i = parambaku.jdField_a_of_type_Int;
+      } while (parambbme == null);
+      parambbme.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      i = parambbme.jdField_a_of_type_Int;
       if ((i >= 0) && (i < 4))
       {
         ??? = new HandlerThread("httpcommunicator_norm_new_" + i, 5);
         ((HandlerThread)???).start();
-        baku localbaku = new baku(this, ((HandlerThread)???).getLooper());
-        localbaku.jdField_a_of_type_Int = i;
+        bbme localbbme = new bbme(this, ((HandlerThread)???).getLooper());
+        localbbme.jdField_a_of_type_Int = i;
         synchronized (this.jdField_a_of_type_JavaLangObject)
         {
-          this.jdField_a_of_type_ArrayOfBaku[i] = localbaku;
-          if (parambaku.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+          this.jdField_a_of_type_ArrayOfBbme[i] = localbbme;
+          if (parambbme.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
             this.e -= 1;
           }
           a("replaceNewThread index:" + i);
@@ -615,71 +615,71 @@ public class HttpCommunicator
     QLog.e("Q.richmedia.HttpCommunicator", 2, "replaceNewThread,index error occurs. " + i);
   }
   
-  void a(baku parambaku, bakw parambakw)
+  void a(bbme parambbme, bbmg parambbmg)
   {
     if (!this.jdField_b_of_type_Boolean) {
       throw new IOException("httpcommunicator closed");
     }
-    if (parambakw.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+    if (parambbmg.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       throw new IOException("request cancelled");
     }
-    if ((parambaku != null) && (parambaku.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
+    if ((parambbme != null) && (parambbme.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
       throw new RuntimeException("thread should close");
     }
-    if (parambakw.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (parambbmg.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      a(parambakw, "interrupt", "preempted");
+      a(parambbmg, "interrupt", "preempted");
       throw new IOException("preempted by higher msg");
     }
   }
   
-  public void a(bakw parambakw)
+  public void a(bbmg parambbmg)
   {
-    if (parambakw == null) {
+    if (parambbmg == null) {
       return;
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      this.jdField_a_of_type_Bakv.a(parambakw);
-      parambakw.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.jdField_a_of_type_Bbmf.a(parambbmg);
+      parambbmg.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
       return;
     }
   }
   
-  public void a(bakw parambakw, baku parambaku)
+  public void a(bbmg parambbmg, bbme parambbme)
   {
     int i = 0;
-    if ((parambakw != null) && (parambaku != null)) {
+    if ((parambbmg != null) && (parambbme != null)) {
       try
       {
-        a(parambakw, "responseTimeout", "");
-        if (parambakw.b() == null) {}
+        a(parambbmg, "responseTimeout", "");
+        if (parambbmg.b() == null) {}
         for (;;)
         {
           a(90000L, i);
-          a(parambaku);
-          parambakw.a(9014, 0, "response timeout");
-          parambakw.a().b(parambakw, parambakw);
+          a(parambbme);
+          parambbmg.a(9014, 0, "response timeout");
+          parambbmg.a().b(parambbmg, parambbmg);
           return;
-          i = parambakw.b().length;
+          i = parambbmg.b().length;
         }
         return;
       }
-      catch (Exception parambakw)
+      catch (Exception parambbmg)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("Q.richmedia.HttpCommunicator", 2, "onResponseTimeout", parambakw);
+          QLog.e("Q.richmedia.HttpCommunicator", 2, "onResponseTimeout", parambbmg);
         }
       }
     }
   }
   
   /* Error */
-  public void a(bakw parambakw, baku parambaku, boolean paramBoolean)
+  public void a(bbmg parambbmg, bbme parambbme, boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 389	bakw:a	()Lbaky;
+    //   1: invokevirtual 389	bbmg:a	()Lbbmi;
     //   4: astore 31
     //   6: aconst_null
     //   7: astore 24
@@ -710,7 +710,7 @@ public class HttpCommunicator
     //   44: aconst_null
     //   45: iconst_1
     //   46: iload_3
-    //   47: invokespecial 688	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Lbakw;IZ)V
+    //   47: invokespecial 688	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Lbbmg;IZ)V
     //   50: iconst_0
     //   51: istore 6
     //   53: iconst_0
@@ -721,43 +721,43 @@ public class HttpCommunicator
     //   60: aload_1
     //   61: ldc_w 690
     //   64: ldc_w 490
-    //   67: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   67: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   70: aload_0
     //   71: aload_2
     //   72: aload_1
-    //   73: invokevirtual 692	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbaku;Lbakw;)V
+    //   73: invokevirtual 692	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbme;Lbbmg;)V
     //   76: aload_0
     //   77: aload_1
-    //   78: invokespecial 694	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;)Ljava/net/HttpURLConnection;
+    //   78: invokespecial 694	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;)Ljava/net/HttpURLConnection;
     //   81: astore 26
     //   83: aload 26
     //   85: astore 24
     //   87: aload_1
     //   88: aload 24
-    //   90: putfield 697	bakw:jdField_a_of_type_JavaNetHttpURLConnection	Ljava/net/HttpURLConnection;
+    //   90: putfield 697	bbmg:jdField_a_of_type_JavaNetHttpURLConnection	Ljava/net/HttpURLConnection;
     //   93: aload_1
     //   94: invokestatic 474	android/os/SystemClock:uptimeMillis	()J
-    //   97: putfield 699	bakw:jdField_d_of_type_Long	J
+    //   97: putfield 699	bbmg:jdField_d_of_type_Long	J
     //   100: aload_0
     //   101: aload_1
     //   102: ldc_w 701
     //   105: ldc_w 490
-    //   108: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   108: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   111: iconst_1
     //   112: istore 21
     //   114: invokestatic 704	java/lang/System:currentTimeMillis	()J
     //   117: pop2
     //   118: aload_1
-    //   119: invokevirtual 232	bakw:e	()Ljava/lang/String;
+    //   119: invokevirtual 232	bbmg:e	()Ljava/lang/String;
     //   122: ldc 230
     //   124: invokevirtual 186	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   127: ifeq +5214 -> 5341
+    //   127: ifeq +5210 -> 5337
     //   130: new 706	com/tencent/mobileqq/utils/httputils/HttpCommunicator$1
     //   133: dup
     //   134: aload_0
     //   135: aload_1
     //   136: aload_2
-    //   137: invokespecial 709	com/tencent/mobileqq/utils/httputils/HttpCommunicator$1:<init>	(Lcom/tencent/mobileqq/utils/httputils/HttpCommunicator;Lbakw;Lbaku;)V
+    //   137: invokespecial 709	com/tencent/mobileqq/utils/httputils/HttpCommunicator$1:<init>	(Lcom/tencent/mobileqq/utils/httputils/HttpCommunicator;Lbbmg;Lbbme;)V
     //   140: astore 26
     //   142: aload_0
     //   143: getfield 381	com/tencent/mobileqq/utils/httputils/HttpCommunicator:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
@@ -766,7 +766,7 @@ public class HttpCommunicator
     //   151: invokevirtual 713	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   154: pop
     //   155: aload_1
-    //   156: invokevirtual 355	bakw:b	()[B
+    //   156: invokevirtual 355	bbmg:b	()[B
     //   159: astore 32
     //   161: aload 24
     //   163: invokevirtual 717	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
@@ -783,7 +783,7 @@ public class HttpCommunicator
     //   188: arraylength
     //   189: invokevirtual 256	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   192: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   195: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   195: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   198: iconst_0
     //   199: istore 5
     //   201: iload 5
@@ -793,7 +793,7 @@ public class HttpCommunicator
     //   209: aload_0
     //   210: aload_2
     //   211: aload_1
-    //   212: invokevirtual 692	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbaku;Lbakw;)V
+    //   212: invokevirtual 692	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbme;Lbbmg;)V
     //   215: aload 25
     //   217: aload 32
     //   219: iload 5
@@ -814,14 +814,14 @@ public class HttpCommunicator
     //   252: aload_2
     //   253: ifnull +13 -> 266
     //   256: aload_2
-    //   257: getfield 636	baku:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   257: getfield 636	bbme:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   260: invokevirtual 441	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   263: ifne +14 -> 277
     //   266: aload_0
     //   267: aload_1
     //   268: ldc_w 738
     //   271: ldc_w 490
-    //   274: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   274: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   277: aload 24
     //   279: invokevirtual 742	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
     //   282: invokevirtual 743	java/net/URL:toString	()Ljava/lang/String;
@@ -843,7 +843,7 @@ public class HttpCommunicator
     //   311: aload_0
     //   312: aload_2
     //   313: aload_1
-    //   314: invokevirtual 692	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbaku;Lbakw;)V
+    //   314: invokevirtual 692	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbme;Lbbmg;)V
     //   317: aload 24
     //   319: invokevirtual 751	java/net/HttpURLConnection:getResponseCode	()I
     //   322: istore 5
@@ -851,11 +851,11 @@ public class HttpCommunicator
     //   325: iload 5
     //   327: aload 24
     //   329: aload_1
-    //   330: invokevirtual 753	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(ILjava/net/HttpURLConnection;Lbakw;)V
+    //   330: invokevirtual 753	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(ILjava/net/HttpURLConnection;Lbbmg;)V
     //   333: aload_2
     //   334: ifnull +231 -> 565
     //   337: aload_2
-    //   338: getfield 636	baku:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   338: getfield 636	bbme:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   341: invokevirtual 441	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   344: istore 22
     //   346: iload 22
@@ -877,11 +877,11 @@ public class HttpCommunicator
     //   385: iconst_0
     //   386: invokevirtual 256	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   389: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   392: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   392: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   395: aload_2
     //   396: ifnull +13 -> 409
     //   399: aload_2
-    //   400: getfield 636	baku:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   400: getfield 636	bbme:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   403: invokevirtual 441	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   406: ifne +47 -> 453
     //   409: aload_0
@@ -893,15 +893,15 @@ public class HttpCommunicator
     //   421: ldc_w 761
     //   424: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   427: aload_1
-    //   428: invokevirtual 763	bakw:d	()Ljava/lang/String;
+    //   428: invokevirtual 763	bbmg:d	()Ljava/lang/String;
     //   431: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   434: ldc_w 765
     //   437: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   440: aload_1
-    //   441: invokevirtual 767	bakw:c	()Ljava/lang/String;
+    //   441: invokevirtual 767	bbmg:c	()Ljava/lang/String;
     //   444: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   447: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   450: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   450: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   453: aload_0
     //   454: getfield 381	com/tencent/mobileqq/utils/httputils/HttpCommunicator:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
     //   457: ifnull +17 -> 474
@@ -920,7 +920,7 @@ public class HttpCommunicator
     //   483: lcmp
     //   484: ifeq +25 -> 509
     //   487: aload_1
-    //   488: invokevirtual 232	bakw:e	()Ljava/lang/String;
+    //   488: invokevirtual 232	bbmg:e	()Ljava/lang/String;
     //   491: ldc 230
     //   493: invokevirtual 186	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   496: ifeq +58 -> 554
@@ -930,7 +930,7 @@ public class HttpCommunicator
     //   502: aload_1
     //   503: iload_3
     //   504: lload 11
-    //   506: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;ZJ)V
+    //   506: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;ZJ)V
     //   509: iconst_0
     //   510: ifeq +11 -> 521
     //   513: new 772	java/lang/NullPointerException
@@ -979,7 +979,7 @@ public class HttpCommunicator
     //   604: iload 5
     //   606: invokevirtual 256	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   609: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   612: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   612: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   615: iload 5
     //   617: sipush 302
     //   620: if_icmpeq +11 -> 631
@@ -998,15 +998,15 @@ public class HttpCommunicator
     //   649: ldc_w 786
     //   652: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   655: aload_1
-    //   656: getfield 365	bakw:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   656: getfield 365	bbmg:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   659: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   662: ldc_w 788
     //   665: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   668: aload_1
-    //   669: getfield 544	bakw:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   669: getfield 544	bbmg:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   672: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   675: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   678: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   678: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   681: aload 24
     //   683: ldc_w 790
     //   686: invokevirtual 549	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
@@ -1022,15 +1022,15 @@ public class HttpCommunicator
     //   711: iload 6
     //   713: ifne +377 -> 1090
     //   716: aload_1
-    //   717: getfield 793	bakw:l	Z
+    //   717: getfield 793	bbmg:l	Z
     //   720: istore 22
     //   722: iload 22
     //   724: ifeq +366 -> 1090
     //   727: aload_1
-    //   728: getfield 795	bakw:jdField_h_of_type_Boolean	Z
+    //   728: getfield 795	bbmg:jdField_h_of_type_Boolean	Z
     //   731: ifeq +322 -> 1053
     //   734: aload_1
-    //   735: invokevirtual 798	bakw:a	()Ljava/util/HashMap;
+    //   735: invokevirtual 798	bbmg:a	()Ljava/util/HashMap;
     //   738: ldc_w 411
     //   741: invokevirtual 800	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   744: checkcast 135	java/lang/String
@@ -1047,7 +1047,7 @@ public class HttpCommunicator
     //   772: aload 32
     //   774: invokespecial 323	java/net/URL:<init>	(Ljava/lang/String;)V
     //   777: invokevirtual 811	java/net/URL:getHost	()Ljava/lang/String;
-    //   780: invokestatic 816	atqm:a	(Ljava/lang/String;)Z
+    //   780: invokestatic 816	auok:a	(Ljava/lang/String;)Z
     //   783: istore 22
     //   785: iload 22
     //   787: ifne +303 -> 1090
@@ -1068,11 +1068,11 @@ public class HttpCommunicator
     //   824: iconst_0
     //   825: invokevirtual 256	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   828: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   831: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   831: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   834: aload_2
     //   835: ifnull +13 -> 848
     //   838: aload_2
-    //   839: getfield 636	baku:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   839: getfield 636	bbme:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   842: invokevirtual 441	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   845: ifne +101 -> 946
     //   848: aload_0
@@ -1084,17 +1084,17 @@ public class HttpCommunicator
     //   860: ldc_w 761
     //   863: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   866: aload_1
-    //   867: invokevirtual 763	bakw:d	()Ljava/lang/String;
+    //   867: invokevirtual 763	bbmg:d	()Ljava/lang/String;
     //   870: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   873: ldc_w 765
     //   876: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   879: aload_1
-    //   880: invokevirtual 767	bakw:c	()Ljava/lang/String;
+    //   880: invokevirtual 767	bbmg:c	()Ljava/lang/String;
     //   883: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   886: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   889: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   889: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   892: aload_1
-    //   893: getfield 818	bakw:jdField_f_of_type_Int	I
+    //   893: getfield 818	bbmg:jdField_f_of_type_Int	I
     //   896: sipush -9527
     //   899: if_icmpne +47 -> 946
     //   902: aload_0
@@ -1106,15 +1106,15 @@ public class HttpCommunicator
     //   914: ldc_w 786
     //   917: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   920: aload_1
-    //   921: getfield 365	bakw:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   921: getfield 365	bbmg:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   924: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   927: ldc_w 788
     //   930: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   933: aload_1
-    //   934: getfield 544	bakw:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   934: getfield 544	bbmg:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   937: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   940: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   943: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   943: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   946: aload_0
     //   947: getfield 381	com/tencent/mobileqq/utils/httputils/HttpCommunicator:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
     //   950: ifnull +17 -> 967
@@ -1133,7 +1133,7 @@ public class HttpCommunicator
     //   976: lcmp
     //   977: ifeq +25 -> 1002
     //   980: aload_1
-    //   981: invokevirtual 232	bakw:e	()Ljava/lang/String;
+    //   981: invokevirtual 232	bbmg:e	()Ljava/lang/String;
     //   984: ldc 230
     //   986: invokevirtual 186	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   989: ifeq +83 -> 1072
@@ -1143,7 +1143,7 @@ public class HttpCommunicator
     //   995: aload_1
     //   996: iload_3
     //   997: lload 11
-    //   999: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;ZJ)V
+    //   999: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;ZJ)V
     //   1002: iconst_0
     //   1003: ifeq +11 -> 1014
     //   1006: new 772	java/lang/NullPointerException
@@ -1172,7 +1172,7 @@ public class HttpCommunicator
     //   1053: new 320	java/net/URL
     //   1056: dup
     //   1057: aload_1
-    //   1058: invokevirtual 122	bakw:a	()Ljava/lang/String;
+    //   1058: invokevirtual 122	bbmg:a	()Ljava/lang/String;
     //   1061: invokespecial 323	java/net/URL:<init>	(Ljava/lang/String;)V
     //   1064: invokevirtual 811	java/net/URL:getHost	()Ljava/lang/String;
     //   1067: astore 23
@@ -1185,9 +1185,9 @@ public class HttpCommunicator
     //   1080: aload_1
     //   1081: ldc_w 822
     //   1084: ldc_w 824
-    //   1087: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   1087: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   1090: aload_1
-    //   1091: invokevirtual 826	bakw:b	()Z
+    //   1091: invokevirtual 826	bbmg:b	()Z
     //   1094: ifne +226 -> 1320
     //   1097: aload 31
     //   1099: aload 32
@@ -1209,11 +1209,11 @@ public class HttpCommunicator
     //   1140: iconst_0
     //   1141: invokevirtual 256	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1144: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1147: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   1147: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   1150: aload_2
     //   1151: ifnull +13 -> 1164
     //   1154: aload_2
-    //   1155: getfield 636	baku:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   1155: getfield 636	bbme:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   1158: invokevirtual 441	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   1161: ifne +47 -> 1208
     //   1164: aload_0
@@ -1225,15 +1225,15 @@ public class HttpCommunicator
     //   1176: ldc_w 761
     //   1179: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1182: aload_1
-    //   1183: invokevirtual 763	bakw:d	()Ljava/lang/String;
+    //   1183: invokevirtual 763	bbmg:d	()Ljava/lang/String;
     //   1186: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1189: ldc_w 765
     //   1192: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1195: aload_1
-    //   1196: invokevirtual 767	bakw:c	()Ljava/lang/String;
+    //   1196: invokevirtual 767	bbmg:c	()Ljava/lang/String;
     //   1199: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1202: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1205: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   1205: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   1208: aload_0
     //   1209: getfield 381	com/tencent/mobileqq/utils/httputils/HttpCommunicator:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
     //   1212: ifnull +17 -> 1229
@@ -1252,7 +1252,7 @@ public class HttpCommunicator
     //   1238: lcmp
     //   1239: ifeq +25 -> 1264
     //   1242: aload_1
-    //   1243: invokevirtual 232	bakw:e	()Ljava/lang/String;
+    //   1243: invokevirtual 232	bbmg:e	()Ljava/lang/String;
     //   1246: ldc 230
     //   1248: invokevirtual 186	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1251: ifeq +64 -> 1315
@@ -1262,7 +1262,7 @@ public class HttpCommunicator
     //   1257: aload_1
     //   1258: iload_3
     //   1259: lload 11
-    //   1261: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;ZJ)V
+    //   1261: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;ZJ)V
     //   1264: iconst_0
     //   1265: ifeq +11 -> 1276
     //   1268: new 772	java/lang/NullPointerException
@@ -1292,27 +1292,27 @@ public class HttpCommunicator
     //   1316: istore_3
     //   1317: goto -61 -> 1256
     //   1320: aload_1
-    //   1321: getfield 828	bakw:jdField_c_of_type_Boolean	Z
+    //   1321: getfield 828	bbmg:jdField_c_of_type_Boolean	Z
     //   1324: ifeq +12 -> 1336
     //   1327: aload 31
     //   1329: aload 32
     //   1331: invokeinterface 827 2 0
     //   1336: aload_1
-    //   1337: getfield 831	bakw:i	Z
+    //   1337: getfield 831	bbmg:i	Z
     //   1340: ifne +14 -> 1354
     //   1343: aload_1
     //   1344: ldc_w 833
     //   1347: aload_1
-    //   1348: invokevirtual 122	bakw:a	()Ljava/lang/String;
-    //   1351: invokevirtual 835	bakw:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1348: invokevirtual 122	bbmg:a	()Ljava/lang/String;
+    //   1351: invokevirtual 835	bbmg:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   1354: aload_1
     //   1355: aload 32
-    //   1357: invokevirtual 836	bakw:a	(Ljava/lang/String;)V
+    //   1357: invokevirtual 836	bbmg:a	(Ljava/lang/String;)V
     //   1360: aload_1
-    //   1361: getfield 795	bakw:jdField_h_of_type_Boolean	Z
+    //   1361: getfield 795	bbmg:jdField_h_of_type_Boolean	Z
     //   1364: ifeq +56 -> 1420
     //   1367: aload 32
-    //   1369: invokestatic 840	axwx:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1369: invokestatic 840	ayxe:a	(Ljava/lang/String;)Ljava/lang/String;
     //   1372: astore 23
     //   1374: aload 23
     //   1376: invokestatic 806	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -1320,7 +1320,7 @@ public class HttpCommunicator
     //   1382: aload_1
     //   1383: ldc_w 411
     //   1386: aload 23
-    //   1388: invokevirtual 835	bakw:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1388: invokevirtual 835	bbmg:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   1391: aload_0
     //   1392: aload_1
     //   1393: ldc_w 784
@@ -1332,10 +1332,10 @@ public class HttpCommunicator
     //   1409: aload 23
     //   1411: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1414: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1417: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   1417: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   1420: aload_1
     //   1421: ldc_w 844
-    //   1424: invokevirtual 846	bakw:b	(Ljava/lang/String;)V
+    //   1424: invokevirtual 846	bbmg:b	(Ljava/lang/String;)V
     //   1427: iload 6
     //   1429: iconst_1
     //   1430: iadd
@@ -1424,7 +1424,7 @@ public class HttpCommunicator
     //   1596: aload 23
     //   1598: aload_1
     //   1599: aload 28
-    //   1601: invokevirtual 862	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(ZILjava/net/HttpURLConnection;Lbakw;Ljava/lang/Throwable;)V
+    //   1601: invokevirtual 862	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(ZILjava/net/HttpURLConnection;Lbbmg;Ljava/lang/Throwable;)V
     //   1604: iload_3
     //   1605: ifeq +48 -> 1653
     //   1608: iload 4
@@ -1444,11 +1444,11 @@ public class HttpCommunicator
     //   1642: iload 5
     //   1644: invokevirtual 256	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1647: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1650: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   1650: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   1653: aload_2
     //   1654: ifnull +13 -> 1667
     //   1657: aload_2
-    //   1658: getfield 636	baku:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   1658: getfield 636	bbme:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   1661: invokevirtual 441	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   1664: ifne +101 -> 1765
     //   1667: aload_0
@@ -1460,17 +1460,17 @@ public class HttpCommunicator
     //   1679: ldc_w 761
     //   1682: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1685: aload_1
-    //   1686: invokevirtual 763	bakw:d	()Ljava/lang/String;
+    //   1686: invokevirtual 763	bbmg:d	()Ljava/lang/String;
     //   1689: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1692: ldc_w 765
     //   1695: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1698: aload_1
-    //   1699: invokevirtual 767	bakw:c	()Ljava/lang/String;
+    //   1699: invokevirtual 767	bbmg:c	()Ljava/lang/String;
     //   1702: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1705: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1708: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   1708: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   1711: aload_1
-    //   1712: getfield 818	bakw:jdField_f_of_type_Int	I
+    //   1712: getfield 818	bbmg:jdField_f_of_type_Int	I
     //   1715: sipush -9527
     //   1718: if_icmpne +47 -> 1765
     //   1721: aload_0
@@ -1482,15 +1482,15 @@ public class HttpCommunicator
     //   1733: ldc_w 786
     //   1736: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1739: aload_1
-    //   1740: getfield 365	bakw:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   1740: getfield 365	bbmg:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   1743: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1746: ldc_w 788
     //   1749: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1752: aload_1
-    //   1753: getfield 544	bakw:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   1753: getfield 544	bbmg:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   1756: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1759: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1762: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   1762: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   1765: aload_0
     //   1766: getfield 381	com/tencent/mobileqq/utils/httputils/HttpCommunicator:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
     //   1769: ifnull +17 -> 1786
@@ -1509,17 +1509,17 @@ public class HttpCommunicator
     //   1796: lcmp
     //   1797: ifeq +25 -> 1822
     //   1800: aload_1
-    //   1801: invokevirtual 232	bakw:e	()Ljava/lang/String;
+    //   1801: invokevirtual 232	bbmg:e	()Ljava/lang/String;
     //   1804: ldc 230
     //   1806: invokevirtual 186	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1809: ifeq +2553 -> 4362
+    //   1809: ifeq +2549 -> 4358
     //   1812: iconst_1
     //   1813: istore_3
     //   1814: aload_0
     //   1815: aload_1
     //   1816: iload_3
     //   1817: lload 11
-    //   1819: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;ZJ)V
+    //   1819: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;ZJ)V
     //   1822: aload 25
     //   1824: ifnull +8 -> 1832
     //   1827: aload 25
@@ -1543,15 +1543,15 @@ public class HttpCommunicator
     //   1870: aload_2
     //   1871: ifnull +13 -> 1884
     //   1874: aload_2
-    //   1875: getfield 636	baku:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   1875: getfield 636	bbme:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   1878: invokevirtual 441	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   1881: ifne -1328 -> 553
     //   1884: aload_1
-    //   1885: getfield 652	bakw:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   1885: getfield 652	bbmg:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   1888: invokevirtual 441	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   1891: ifne -1338 -> 553
     //   1894: iload 5
-    //   1896: ifeq +2498 -> 4394
+    //   1896: ifeq +2494 -> 4390
     //   1899: aload 31
     //   1901: aload_1
     //   1902: aload_1
@@ -1563,7 +1563,7 @@ public class HttpCommunicator
     //   1912: ldc_w 867
     //   1915: aload_2
     //   1916: invokestatic 873	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   1919: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   1919: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   1922: return
     //   1923: new 115	java/lang/Exception
     //   1926: dup
@@ -1596,11 +1596,11 @@ public class HttpCommunicator
     //   1984: iload 6
     //   1986: invokevirtual 256	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1989: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1992: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   1992: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   1995: aload_2
     //   1996: ifnull +13 -> 2009
     //   1999: aload_2
-    //   2000: getfield 636	baku:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   2000: getfield 636	bbme:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   2003: invokevirtual 441	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   2006: ifne +106 -> 2112
     //   2009: aload_0
@@ -1612,19 +1612,19 @@ public class HttpCommunicator
     //   2021: ldc_w 761
     //   2024: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2027: aload_1
-    //   2028: invokevirtual 763	bakw:d	()Ljava/lang/String;
+    //   2028: invokevirtual 763	bbmg:d	()Ljava/lang/String;
     //   2031: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2034: ldc_w 765
     //   2037: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2040: aload_1
-    //   2041: invokevirtual 767	bakw:c	()Ljava/lang/String;
+    //   2041: invokevirtual 767	bbmg:c	()Ljava/lang/String;
     //   2044: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2047: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2050: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   2050: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   2053: iload 4
     //   2055: ifeq +57 -> 2112
     //   2058: aload_1
-    //   2059: getfield 818	bakw:jdField_f_of_type_Int	I
+    //   2059: getfield 818	bbmg:jdField_f_of_type_Int	I
     //   2062: sipush -9527
     //   2065: if_icmpne +47 -> 2112
     //   2068: aload_0
@@ -1636,15 +1636,15 @@ public class HttpCommunicator
     //   2080: ldc_w 786
     //   2083: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2086: aload_1
-    //   2087: getfield 365	bakw:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   2087: getfield 365	bbmg:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   2090: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2093: ldc_w 788
     //   2096: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2099: aload_1
-    //   2100: getfield 544	bakw:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   2100: getfield 544	bbmg:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   2103: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2106: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2109: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   2109: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   2112: aload_0
     //   2113: getfield 381	com/tencent/mobileqq/utils/httputils/HttpCommunicator:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
     //   2116: ifnull +17 -> 2133
@@ -1663,17 +1663,17 @@ public class HttpCommunicator
     //   2143: lcmp
     //   2144: ifeq +25 -> 2169
     //   2147: aload_1
-    //   2148: invokevirtual 232	bakw:e	()Ljava/lang/String;
+    //   2148: invokevirtual 232	bbmg:e	()Ljava/lang/String;
     //   2151: ldc 230
     //   2153: invokevirtual 186	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2156: ifeq +2225 -> 4381
+    //   2156: ifeq +2221 -> 4377
     //   2159: iconst_1
     //   2160: istore_3
     //   2161: aload_0
     //   2162: aload_1
     //   2163: iload_3
     //   2164: lload 11
-    //   2166: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;ZJ)V
+    //   2166: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;ZJ)V
     //   2169: aload 28
     //   2171: ifnull +8 -> 2179
     //   2174: aload 28
@@ -1697,13 +1697,13 @@ public class HttpCommunicator
     //   2214: aconst_null
     //   2215: iconst_2
     //   2216: iload_3
-    //   2217: invokespecial 688	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Lbakw;IZ)V
+    //   2217: invokespecial 688	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Lbbmg;IZ)V
     //   2220: iload 5
     //   2222: sipush 200
     //   2225: if_icmpeq +11 -> 2236
     //   2228: iload 5
     //   2230: sipush 206
-    //   2233: if_icmpne +1693 -> 3926
+    //   2233: if_icmpne +1685 -> 3918
     //   2236: aload 24
     //   2238: invokevirtual 538	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
     //   2241: astore 23
@@ -1714,7 +1714,7 @@ public class HttpCommunicator
     //   2253: iload_3
     //   2254: ifne +281 -> 2535
     //   2257: aload_1
-    //   2258: getfield 877	bakw:jdField_b_of_type_Boolean	Z
+    //   2258: getfield 877	bbmg:jdField_b_of_type_Boolean	Z
     //   2261: ifeq +274 -> 2535
     //   2264: aload 23
     //   2266: ldc_w 879
@@ -1738,7 +1738,7 @@ public class HttpCommunicator
     //   2310: aload_1
     //   2311: aload_2
     //   2312: iconst_1
-    //   2313: invokevirtual 888	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Lbaku;Z)V
+    //   2313: invokevirtual 888	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Lbbme;Z)V
     //   2316: iload 5
     //   2318: sipush 200
     //   2321: if_icmpeq +11 -> 2332
@@ -1756,11 +1756,11 @@ public class HttpCommunicator
     //   2350: iconst_0
     //   2351: invokevirtual 256	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   2354: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2357: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   2357: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   2360: aload_2
     //   2361: ifnull +13 -> 2374
     //   2364: aload_2
-    //   2365: getfield 636	baku:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   2365: getfield 636	bbme:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   2368: invokevirtual 441	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   2371: ifne +47 -> 2418
     //   2374: aload_0
@@ -1772,15 +1772,15 @@ public class HttpCommunicator
     //   2386: ldc_w 761
     //   2389: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2392: aload_1
-    //   2393: invokevirtual 763	bakw:d	()Ljava/lang/String;
+    //   2393: invokevirtual 763	bbmg:d	()Ljava/lang/String;
     //   2396: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2399: ldc_w 765
     //   2402: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2405: aload_1
-    //   2406: invokevirtual 767	bakw:c	()Ljava/lang/String;
+    //   2406: invokevirtual 767	bbmg:c	()Ljava/lang/String;
     //   2409: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2412: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2415: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   2415: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   2418: aload_0
     //   2419: getfield 381	com/tencent/mobileqq/utils/httputils/HttpCommunicator:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
     //   2422: ifnull +17 -> 2439
@@ -1799,17 +1799,17 @@ public class HttpCommunicator
     //   2448: lcmp
     //   2449: ifeq +25 -> 2474
     //   2452: aload_1
-    //   2453: invokevirtual 232	bakw:e	()Ljava/lang/String;
+    //   2453: invokevirtual 232	bbmg:e	()Ljava/lang/String;
     //   2456: ldc 230
     //   2458: invokevirtual 186	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2461: ifeq +2891 -> 5352
+    //   2461: ifeq +2887 -> 5348
     //   2464: iconst_1
     //   2465: istore_3
     //   2466: aload_0
     //   2467: aload_1
     //   2468: iload_3
     //   2469: lload 11
-    //   2471: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;ZJ)V
+    //   2471: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;ZJ)V
     //   2474: iconst_0
     //   2475: ifeq +11 -> 2486
     //   2478: new 772	java/lang/NullPointerException
@@ -1840,10 +1840,10 @@ public class HttpCommunicator
     //   2530: astore 23
     //   2532: goto -279 -> 2253
     //   2535: aload_1
-    //   2536: getfield 894	bakw:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   2536: getfield 894	bbmg:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   2539: ifnull +224 -> 2763
     //   2542: aload_1
-    //   2543: getfield 894	bakw:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   2543: getfield 894	bbmg:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   2546: arraylength
     //   2547: ifle +216 -> 2763
     //   2550: aload 23
@@ -1852,17 +1852,17 @@ public class HttpCommunicator
     //   2558: iconst_0
     //   2559: istore 8
     //   2561: aload_1
-    //   2562: getfield 894	bakw:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   2562: getfield 894	bbmg:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   2565: arraylength
     //   2566: iconst_1
     //   2567: if_icmpne +100 -> 2667
     //   2570: aload_1
-    //   2571: getfield 894	bakw:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   2571: getfield 894	bbmg:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   2574: iconst_0
     //   2575: aaload
     //   2576: ifnull +91 -> 2667
     //   2579: aload_1
-    //   2580: getfield 894	bakw:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   2580: getfield 894	bbmg:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   2583: iconst_0
     //   2584: aaload
     //   2585: invokevirtual 891	java/lang/String:toLowerCase	()Ljava/lang/String;
@@ -1876,11 +1876,11 @@ public class HttpCommunicator
     //   2605: new 246	java/lang/StringBuilder
     //   2608: dup
     //   2609: invokespecial 247	java/lang/StringBuilder:<init>	()V
-    //   2612: astore 32
+    //   2612: astore 30
     //   2614: aload_1
-    //   2615: getfield 894	bakw:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   2618: astore 30
-    //   2620: aload 30
+    //   2615: getfield 894	bbmg:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   2618: astore 32
+    //   2620: aload 32
     //   2622: arraylength
     //   2623: istore 6
     //   2625: iconst_0
@@ -1888,23 +1888,23 @@ public class HttpCommunicator
     //   2628: iload 4
     //   2630: iload 6
     //   2632: if_icmpge +88 -> 2720
-    //   2635: aload 30
+    //   2635: aload 32
     //   2637: iload 4
     //   2639: aaload
     //   2640: astore 29
     //   2642: aload 29
-    //   2644: ifnull +2713 -> 5357
-    //   2647: aload 32
+    //   2644: ifnull +2709 -> 5353
+    //   2647: aload 30
     //   2649: aload 29
     //   2651: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2654: pop
-    //   2655: aload 32
+    //   2655: aload 30
     //   2657: ldc_w 898
     //   2660: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2663: pop
-    //   2664: goto +2693 -> 5357
+    //   2664: goto +2689 -> 5353
     //   2667: aload_1
-    //   2668: getfield 894	bakw:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   2668: getfield 894	bbmg:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   2671: astore 30
     //   2673: aload 30
     //   2675: arraylength
@@ -1921,11 +1921,11 @@ public class HttpCommunicator
     //   2696: aaload
     //   2697: astore 29
     //   2699: aload 29
-    //   2701: ifnull +2665 -> 5366
+    //   2701: ifnull +2661 -> 5362
     //   2704: aload 23
     //   2706: aload 29
     //   2708: invokevirtual 901	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   2711: ifeq +2655 -> 5366
+    //   2711: ifeq +2651 -> 5362
     //   2714: iconst_1
     //   2715: istore 4
     //   2717: goto -117 -> 2600
@@ -1940,19 +1940,19 @@ public class HttpCommunicator
     //   2739: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2742: ldc_w 905
     //   2745: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2748: aload 32
+    //   2748: aload 30
     //   2750: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2753: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2756: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2759: invokespecial 651	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   2762: athrow
     //   2763: aload_1
-    //   2764: getfield 570	bakw:jdField_a_of_type_Long	J
+    //   2764: getfield 570	bbmg:jdField_a_of_type_Long	J
     //   2767: lconst_0
     //   2768: lcmp
     //   2769: ifne +26 -> 2795
     //   2772: aload_1
-    //   2773: invokevirtual 232	bakw:e	()Ljava/lang/String;
+    //   2773: invokevirtual 232	bbmg:e	()Ljava/lang/String;
     //   2776: ldc 230
     //   2778: invokevirtual 186	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2781: ifne +14 -> 2795
@@ -1970,21 +1970,21 @@ public class HttpCommunicator
     //   2807: ldc_w 911
     //   2810: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2813: aload_1
-    //   2814: getfield 570	bakw:jdField_a_of_type_Long	J
+    //   2814: getfield 570	bbmg:jdField_a_of_type_Long	J
     //   2817: invokevirtual 602	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2820: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2823: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
+    //   2823: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
     //   2826: aload_1
-    //   2827: getfield 699	bakw:jdField_d_of_type_Long	J
+    //   2827: getfield 699	bbmg:jdField_d_of_type_Long	J
     //   2830: lconst_0
     //   2831: lcmp
     //   2832: ifeq +15 -> 2847
     //   2835: aload_1
     //   2836: invokestatic 474	android/os/SystemClock:uptimeMillis	()J
     //   2839: aload_1
-    //   2840: getfield 699	bakw:jdField_d_of_type_Long	J
+    //   2840: getfield 699	bbmg:jdField_d_of_type_Long	J
     //   2843: lsub
-    //   2844: putfield 913	bakw:jdField_e_of_type_Long	J
+    //   2844: putfield 913	bbmg:jdField_e_of_type_Long	J
     //   2847: aload 31
     //   2849: aload_1
     //   2850: aload_1
@@ -1992,7 +1992,7 @@ public class HttpCommunicator
     //   2852: invokeinterface 394 4 0
     //   2857: istore_3
     //   2858: iload_3
-    //   2859: ifeq +2467 -> 5326
+    //   2859: ifeq +2463 -> 5322
     //   2862: lconst_0
     //   2863: ldc2_w 747
     //   2866: ladd
@@ -2005,21 +2005,21 @@ public class HttpCommunicator
     //   2881: invokestatic 925	com/tencent/commonsdk/pool/ByteArrayPool:getMaxBufInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   2884: astore 27
     //   2886: aload_1
-    //   2887: getfield 927	bakw:jdField_e_of_type_Boolean	Z
+    //   2887: getfield 927	bbmg:jdField_e_of_type_Boolean	Z
     //   2890: ifeq +251 -> 3141
     //   2893: aload_1
-    //   2894: invokevirtual 929	bakw:a	()Z
+    //   2894: invokevirtual 929	bbmg:a	()Z
     //   2897: ifne +244 -> 3141
-    //   2900: new 931	baeg
+    //   2900: new 931	bbfl
     //   2903: dup
     //   2904: aload 27
     //   2906: aload_1
-    //   2907: getfield 570	bakw:jdField_a_of_type_Long	J
+    //   2907: getfield 570	bbmg:jdField_a_of_type_Long	J
     //   2910: l2i
-    //   2911: invokespecial 934	baeg:<init>	(Lcom/tencent/commonsdk/pool/ByteArrayPool;I)V
+    //   2911: invokespecial 934	bbfl:<init>	(Lcom/tencent/commonsdk/pool/ByteArrayPool;I)V
     //   2914: astore 27
     //   2916: aload_1
-    //   2917: getfield 927	bakw:jdField_e_of_type_Boolean	Z
+    //   2917: getfield 927	bbmg:jdField_e_of_type_Boolean	Z
     //   2920: ifeq +290 -> 3210
     //   2923: aload 29
     //   2925: sipush 10240
@@ -2030,13 +2030,13 @@ public class HttpCommunicator
     //   2936: iconst_0
     //   2937: istore 4
     //   2939: iload 4
-    //   2941: istore 9
+    //   2941: istore 8
     //   2943: lload 13
-    //   2945: lstore 19
+    //   2945: lstore 15
     //   2947: iload 4
-    //   2949: istore 8
+    //   2949: istore 9
     //   2951: lload 13
-    //   2953: lstore 15
+    //   2953: lstore 17
     //   2955: aload 23
     //   2957: aload 28
     //   2959: iload 6
@@ -2049,22 +2049,22 @@ public class HttpCommunicator
     //   2972: iload 7
     //   2974: ifle +283 -> 3257
     //   2977: iload 4
-    //   2979: istore 9
+    //   2979: istore 8
     //   2981: lload 13
-    //   2983: lstore 19
+    //   2983: lstore 15
     //   2985: iload 4
-    //   2987: istore 8
+    //   2987: istore 9
     //   2989: lload 13
-    //   2991: lstore 15
+    //   2991: lstore 17
     //   2993: aload_0
     //   2994: aload_2
     //   2995: aload_1
-    //   2996: invokevirtual 692	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbaku;Lbakw;)V
+    //   2996: invokevirtual 692	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbme;Lbbmg;)V
     //   2999: lload 13
     //   3001: iload 7
     //   3003: i2l
     //   3004: ladd
-    //   3005: lstore 17
+    //   3005: lstore 19
     //   3007: iload 6
     //   3009: iload 7
     //   3011: iadd
@@ -2075,52 +2075,52 @@ public class HttpCommunicator
     //   3019: istore 7
     //   3021: iload 7
     //   3023: istore 4
-    //   3025: lload 17
+    //   3025: lload 19
     //   3027: lstore 13
     //   3029: iload 10
     //   3031: istore 6
     //   3033: iload 7
-    //   3035: istore 9
-    //   3037: lload 17
-    //   3039: lstore 19
+    //   3035: istore 8
+    //   3037: lload 19
+    //   3039: lstore 15
     //   3041: iload 7
-    //   3043: istore 8
-    //   3045: lload 17
-    //   3047: lstore 15
+    //   3043: istore 9
+    //   3045: lload 19
+    //   3047: lstore 17
     //   3049: iload 10
     //   3051: aload 28
     //   3053: arraylength
     //   3054: if_icmplt -115 -> 2939
     //   3057: iload 7
-    //   3059: istore 9
-    //   3061: lload 17
-    //   3063: lstore 19
+    //   3059: istore 8
+    //   3061: lload 19
+    //   3063: lstore 15
     //   3065: iload 7
-    //   3067: istore 8
-    //   3069: lload 17
-    //   3071: lstore 15
+    //   3067: istore 9
+    //   3069: lload 19
+    //   3071: lstore 17
     //   3073: aload_1
-    //   3074: invokevirtual 929	bakw:a	()Z
+    //   3074: invokevirtual 929	bbmg:a	()Z
     //   3077: ifeq +143 -> 3220
     //   3080: iload 7
-    //   3082: istore 9
-    //   3084: lload 17
-    //   3086: lstore 19
+    //   3082: istore 8
+    //   3084: lload 19
+    //   3086: lstore 15
     //   3088: iload 7
-    //   3090: istore 8
-    //   3092: lload 17
-    //   3094: lstore 15
+    //   3090: istore 9
+    //   3092: lload 19
+    //   3094: lstore 17
     //   3096: aload_1
     //   3097: aload 28
-    //   3099: invokevirtual 944	bakw:a	([B)V
+    //   3099: invokevirtual 944	bbmg:a	([B)V
     //   3102: iload 7
-    //   3104: istore 9
-    //   3106: lload 17
-    //   3108: lstore 19
+    //   3104: istore 8
+    //   3106: lload 19
+    //   3108: lstore 15
     //   3110: iload 7
-    //   3112: istore 8
-    //   3114: lload 17
-    //   3116: lstore 15
+    //   3112: istore 9
+    //   3114: lload 19
+    //   3116: lstore 17
     //   3118: aload 31
     //   3120: aload_1
     //   3121: aload_1
@@ -2129,7 +2129,7 @@ public class HttpCommunicator
     //   3128: istore 6
     //   3130: iload 7
     //   3132: istore 4
-    //   3134: lload 17
+    //   3134: lload 19
     //   3136: lstore 13
     //   3138: goto -199 -> 2939
     //   3141: new 864	java/io/ByteArrayOutputStream
@@ -2142,43 +2142,43 @@ public class HttpCommunicator
     //   3156: istore 6
     //   3158: iconst_1
     //   3159: istore_3
-    //   3160: lload 13
-    //   3162: lstore 15
-    //   3164: aload 23
-    //   3166: astore 27
-    //   3168: iload 5
-    //   3170: istore 4
-    //   3172: aconst_null
-    //   3173: astore 30
+    //   3160: aload 23
+    //   3162: astore 27
+    //   3164: iload 5
+    //   3166: istore 4
+    //   3168: aconst_null
+    //   3169: astore 30
+    //   3171: aload 26
+    //   3173: astore 29
     //   3175: aload 24
     //   3177: astore 23
     //   3179: lload 11
-    //   3181: lstore 13
+    //   3181: lstore 15
     //   3183: aload 25
-    //   3185: astore 29
-    //   3187: aload 26
+    //   3185: astore 26
+    //   3187: aload 29
     //   3189: astore 24
     //   3191: iload 6
     //   3193: istore 5
-    //   3195: lload 15
+    //   3195: lload 13
     //   3197: lstore 11
-    //   3199: aload 30
-    //   3201: astore 25
-    //   3203: aload 29
-    //   3205: astore 26
+    //   3199: lload 15
+    //   3201: lstore 13
+    //   3203: aload 30
+    //   3205: astore 25
     //   3207: goto -1689 -> 1518
     //   3210: sipush 10240
     //   3213: newarray byte
     //   3215: astore 28
     //   3217: goto -284 -> 2933
     //   3220: iload 7
-    //   3222: istore 9
-    //   3224: lload 17
-    //   3226: lstore 19
+    //   3222: istore 8
+    //   3224: lload 19
+    //   3226: lstore 15
     //   3228: iload 7
-    //   3230: istore 8
-    //   3232: lload 17
-    //   3234: lstore 15
+    //   3230: istore 9
+    //   3232: lload 19
+    //   3234: lstore 17
     //   3236: aload 27
     //   3238: aload 28
     //   3240: invokevirtual 949	java/io/ByteArrayOutputStream:write	([B)V
@@ -2186,41 +2186,41 @@ public class HttpCommunicator
     //   3244: istore 6
     //   3246: iload 7
     //   3248: istore 4
-    //   3250: lload 17
+    //   3250: lload 19
     //   3252: lstore 13
     //   3254: goto -315 -> 2939
     //   3257: iload 4
-    //   3259: istore 9
+    //   3259: istore 8
     //   3261: lload 13
-    //   3263: lstore 19
+    //   3263: lstore 15
     //   3265: iload 4
-    //   3267: istore 8
+    //   3267: istore 9
     //   3269: lload 13
-    //   3271: lstore 15
+    //   3271: lstore 17
     //   3273: aload_1
-    //   3274: invokevirtual 929	bakw:a	()Z
-    //   3277: ifeq +493 -> 3770
+    //   3274: invokevirtual 929	bbmg:a	()Z
+    //   3277: ifeq +485 -> 3762
     //   3280: iload 6
     //   3282: ifle +99 -> 3381
     //   3285: iload 4
-    //   3287: istore 9
+    //   3287: istore 8
     //   3289: lload 13
-    //   3291: lstore 19
+    //   3291: lstore 15
     //   3293: iload 4
-    //   3295: istore 8
+    //   3295: istore 9
     //   3297: lload 13
-    //   3299: lstore 15
+    //   3299: lstore 17
     //   3301: iload 6
     //   3303: newarray byte
     //   3305: astore 30
     //   3307: iload 4
-    //   3309: istore 9
+    //   3309: istore 8
     //   3311: lload 13
-    //   3313: lstore 19
+    //   3313: lstore 15
     //   3315: iload 4
-    //   3317: istore 8
+    //   3317: istore 9
     //   3319: lload 13
-    //   3321: lstore 15
+    //   3321: lstore 17
     //   3323: aload 28
     //   3325: iconst_0
     //   3326: aload 30
@@ -2228,58 +2228,58 @@ public class HttpCommunicator
     //   3329: iload 6
     //   3331: invokestatic 953	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
     //   3334: iload 4
-    //   3336: istore 9
+    //   3336: istore 8
     //   3338: lload 13
-    //   3340: lstore 19
+    //   3340: lstore 15
     //   3342: iload 4
-    //   3344: istore 8
+    //   3344: istore 9
     //   3346: lload 13
-    //   3348: lstore 15
+    //   3348: lstore 17
     //   3350: aload_1
     //   3351: aload 30
-    //   3353: invokevirtual 944	bakw:a	([B)V
+    //   3353: invokevirtual 944	bbmg:a	([B)V
     //   3356: iload 4
-    //   3358: istore 9
+    //   3358: istore 8
     //   3360: lload 13
-    //   3362: lstore 19
+    //   3362: lstore 15
     //   3364: iload 4
-    //   3366: istore 8
+    //   3366: istore 9
     //   3368: lload 13
-    //   3370: lstore 15
+    //   3370: lstore 17
     //   3372: aload 31
     //   3374: aload_1
     //   3375: aload_1
     //   3376: invokeinterface 946 3 0
     //   3381: iload 4
-    //   3383: istore 9
+    //   3383: istore 8
     //   3385: lload 13
-    //   3387: lstore 19
+    //   3387: lstore 15
     //   3389: iload 4
-    //   3391: istore 8
+    //   3391: istore 9
     //   3393: lload 13
-    //   3395: lstore 15
+    //   3395: lstore 17
     //   3397: aload_1
-    //   3398: getfield 927	bakw:jdField_e_of_type_Boolean	Z
+    //   3398: getfield 927	bbmg:jdField_e_of_type_Boolean	Z
     //   3401: ifeq +26 -> 3427
     //   3404: iload 4
-    //   3406: istore 9
+    //   3406: istore 8
     //   3408: lload 13
-    //   3410: lstore 19
+    //   3410: lstore 15
     //   3412: iload 4
-    //   3414: istore 8
+    //   3414: istore 9
     //   3416: lload 13
-    //   3418: lstore 15
+    //   3418: lstore 17
     //   3420: aload 29
     //   3422: aload 28
     //   3424: invokevirtual 956	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   3427: iload 4
-    //   3429: istore 9
+    //   3429: istore 8
     //   3431: lload 13
-    //   3433: lstore 19
+    //   3433: lstore 15
     //   3435: iload 4
-    //   3437: istore 8
+    //   3437: istore 9
     //   3439: lload 13
-    //   3441: lstore 15
+    //   3441: lstore 17
     //   3443: aload 27
     //   3445: invokevirtual 865	java/io/ByteArrayOutputStream:close	()V
     //   3448: aload 27
@@ -2298,758 +2298,758 @@ public class HttpCommunicator
     //   3473: istore 6
     //   3475: iconst_0
     //   3476: istore 4
-    //   3478: aload 23
-    //   3480: astore 28
-    //   3482: aload 27
-    //   3484: astore 23
+    //   3478: iload 5
+    //   3480: sipush 200
+    //   3483: if_icmpeq +11 -> 3494
     //   3486: iload 5
-    //   3488: sipush 200
-    //   3491: if_icmpeq +11 -> 3502
-    //   3494: iload 5
-    //   3496: sipush 206
-    //   3499: if_icmpne +32 -> 3531
-    //   3502: aload_0
-    //   3503: aload_1
-    //   3504: ldc_w 755
-    //   3507: new 246	java/lang/StringBuilder
-    //   3510: dup
-    //   3511: invokespecial 247	java/lang/StringBuilder:<init>	()V
-    //   3514: ldc_w 757
-    //   3517: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3520: iload 6
-    //   3522: invokevirtual 256	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3525: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3528: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
-    //   3531: aload_2
-    //   3532: ifnull +13 -> 3545
-    //   3535: aload_2
-    //   3536: getfield 636	baku:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   3539: invokevirtual 441	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   3542: ifne +106 -> 3648
-    //   3545: aload_0
-    //   3546: aload_1
-    //   3547: ldc_w 759
-    //   3550: new 246	java/lang/StringBuilder
-    //   3553: dup
-    //   3554: invokespecial 247	java/lang/StringBuilder:<init>	()V
-    //   3557: ldc_w 761
-    //   3560: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3563: aload_1
-    //   3564: invokevirtual 763	bakw:d	()Ljava/lang/String;
-    //   3567: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3570: ldc_w 765
-    //   3573: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3576: aload_1
-    //   3577: invokevirtual 767	bakw:c	()Ljava/lang/String;
-    //   3580: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3583: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3586: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
-    //   3589: iload 4
-    //   3591: ifeq +57 -> 3648
-    //   3594: aload_1
-    //   3595: getfield 818	bakw:jdField_f_of_type_Int	I
-    //   3598: sipush -9527
-    //   3601: if_icmpne +47 -> 3648
-    //   3604: aload_0
-    //   3605: aload_1
-    //   3606: ldc_w 820
-    //   3609: new 246	java/lang/StringBuilder
-    //   3612: dup
-    //   3613: invokespecial 247	java/lang/StringBuilder:<init>	()V
-    //   3616: ldc_w 786
-    //   3619: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3622: aload_1
-    //   3623: getfield 365	bakw:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   3626: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3629: ldc_w 788
-    //   3632: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3635: aload_1
-    //   3636: getfield 544	bakw:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   3639: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3642: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3645: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
-    //   3648: aload_0
-    //   3649: getfield 381	com/tencent/mobileqq/utils/httputils/HttpCommunicator:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   3652: ifnull +17 -> 3669
-    //   3655: aload 26
-    //   3657: ifnull +12 -> 3669
-    //   3660: aload_0
-    //   3661: getfield 381	com/tencent/mobileqq/utils/httputils/HttpCommunicator:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   3664: aload 26
-    //   3666: invokevirtual 496	mqq/os/MqqHandler:removeCallbacks	(Ljava/lang/Runnable;)V
-    //   3669: lload 13
-    //   3671: lload 11
-    //   3673: ladd
-    //   3674: lstore 11
-    //   3676: lload 11
-    //   3678: lconst_0
-    //   3679: lcmp
-    //   3680: ifeq +25 -> 3705
-    //   3683: aload_1
-    //   3684: invokevirtual 232	bakw:e	()Ljava/lang/String;
-    //   3687: ldc 230
-    //   3689: invokevirtual 186	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   3692: ifeq +571 -> 4263
-    //   3695: iconst_1
-    //   3696: istore_3
-    //   3697: aload_0
-    //   3698: aload_1
-    //   3699: iload_3
-    //   3700: lload 11
-    //   3702: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;ZJ)V
-    //   3705: aload 28
-    //   3707: ifnull +8 -> 3715
-    //   3710: aload 28
-    //   3712: invokevirtual 865	java/io/ByteArrayOutputStream:close	()V
-    //   3715: aload 23
-    //   3717: ifnull +8 -> 3725
-    //   3720: aload 23
-    //   3722: invokevirtual 859	java/io/InputStream:close	()V
-    //   3725: aload 25
-    //   3727: ifnull +8 -> 3735
-    //   3730: aload 25
-    //   3732: invokevirtual 775	java/io/OutputStream:close	()V
-    //   3735: iload 4
-    //   3737: istore 5
-    //   3739: aload 24
-    //   3741: ifnull -1871 -> 1870
-    //   3744: aload 24
-    //   3746: invokevirtual 778	java/net/HttpURLConnection:disconnect	()V
-    //   3749: iload 4
-    //   3751: istore 5
-    //   3753: goto -1883 -> 1870
-    //   3756: astore 23
-    //   3758: aload 23
-    //   3760: invokevirtual 607	java/lang/Exception:printStackTrace	()V
-    //   3763: iload 4
-    //   3765: istore 5
-    //   3767: goto -1897 -> 1870
-    //   3770: iload 6
-    //   3772: ifle +29 -> 3801
+    //   3488: sipush 206
+    //   3491: if_icmpne +32 -> 3523
+    //   3494: aload_0
+    //   3495: aload_1
+    //   3496: ldc_w 755
+    //   3499: new 246	java/lang/StringBuilder
+    //   3502: dup
+    //   3503: invokespecial 247	java/lang/StringBuilder:<init>	()V
+    //   3506: ldc_w 757
+    //   3509: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3512: iload 6
+    //   3514: invokevirtual 256	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3517: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3520: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
+    //   3523: aload_2
+    //   3524: ifnull +13 -> 3537
+    //   3527: aload_2
+    //   3528: getfield 636	bbme:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   3531: invokevirtual 441	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   3534: ifne +106 -> 3640
+    //   3537: aload_0
+    //   3538: aload_1
+    //   3539: ldc_w 759
+    //   3542: new 246	java/lang/StringBuilder
+    //   3545: dup
+    //   3546: invokespecial 247	java/lang/StringBuilder:<init>	()V
+    //   3549: ldc_w 761
+    //   3552: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3555: aload_1
+    //   3556: invokevirtual 763	bbmg:d	()Ljava/lang/String;
+    //   3559: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3562: ldc_w 765
+    //   3565: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3568: aload_1
+    //   3569: invokevirtual 767	bbmg:c	()Ljava/lang/String;
+    //   3572: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3575: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3578: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
+    //   3581: iload 4
+    //   3583: ifeq +57 -> 3640
+    //   3586: aload_1
+    //   3587: getfield 818	bbmg:jdField_f_of_type_Int	I
+    //   3590: sipush -9527
+    //   3593: if_icmpne +47 -> 3640
+    //   3596: aload_0
+    //   3597: aload_1
+    //   3598: ldc_w 820
+    //   3601: new 246	java/lang/StringBuilder
+    //   3604: dup
+    //   3605: invokespecial 247	java/lang/StringBuilder:<init>	()V
+    //   3608: ldc_w 786
+    //   3611: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3614: aload_1
+    //   3615: getfield 365	bbmg:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   3618: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3621: ldc_w 788
+    //   3624: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3627: aload_1
+    //   3628: getfield 544	bbmg:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   3631: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3634: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3637: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
+    //   3640: aload_0
+    //   3641: getfield 381	com/tencent/mobileqq/utils/httputils/HttpCommunicator:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   3644: ifnull +17 -> 3661
+    //   3647: aload 26
+    //   3649: ifnull +12 -> 3661
+    //   3652: aload_0
+    //   3653: getfield 381	com/tencent/mobileqq/utils/httputils/HttpCommunicator:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   3656: aload 26
+    //   3658: invokevirtual 496	mqq/os/MqqHandler:removeCallbacks	(Ljava/lang/Runnable;)V
+    //   3661: lload 13
+    //   3663: lload 11
+    //   3665: ladd
+    //   3666: lstore 11
+    //   3668: lload 11
+    //   3670: lconst_0
+    //   3671: lcmp
+    //   3672: ifeq +25 -> 3697
+    //   3675: aload_1
+    //   3676: invokevirtual 232	bbmg:e	()Ljava/lang/String;
+    //   3679: ldc 230
+    //   3681: invokevirtual 186	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3684: ifeq +571 -> 4255
+    //   3687: iconst_1
+    //   3688: istore_3
+    //   3689: aload_0
+    //   3690: aload_1
+    //   3691: iload_3
+    //   3692: lload 11
+    //   3694: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;ZJ)V
+    //   3697: aload 23
+    //   3699: ifnull +8 -> 3707
+    //   3702: aload 23
+    //   3704: invokevirtual 865	java/io/ByteArrayOutputStream:close	()V
+    //   3707: aload 27
+    //   3709: ifnull +8 -> 3717
+    //   3712: aload 27
+    //   3714: invokevirtual 859	java/io/InputStream:close	()V
+    //   3717: aload 25
+    //   3719: ifnull +8 -> 3727
+    //   3722: aload 25
+    //   3724: invokevirtual 775	java/io/OutputStream:close	()V
+    //   3727: iload 4
+    //   3729: istore 5
+    //   3731: aload 24
+    //   3733: ifnull -1863 -> 1870
+    //   3736: aload 24
+    //   3738: invokevirtual 778	java/net/HttpURLConnection:disconnect	()V
+    //   3741: iload 4
+    //   3743: istore 5
+    //   3745: goto -1875 -> 1870
+    //   3748: astore 23
+    //   3750: aload 23
+    //   3752: invokevirtual 607	java/lang/Exception:printStackTrace	()V
+    //   3755: iload 4
+    //   3757: istore 5
+    //   3759: goto -1889 -> 1870
+    //   3762: iload 6
+    //   3764: ifle +29 -> 3793
+    //   3767: iload 4
+    //   3769: istore 8
+    //   3771: lload 13
+    //   3773: lstore 15
     //   3775: iload 4
     //   3777: istore 9
     //   3779: lload 13
-    //   3781: lstore 19
-    //   3783: iload 4
-    //   3785: istore 8
-    //   3787: lload 13
-    //   3789: lstore 15
-    //   3791: aload 27
-    //   3793: aload 28
-    //   3795: iconst_0
-    //   3796: iload 6
-    //   3798: invokevirtual 957	java/io/ByteArrayOutputStream:write	([BII)V
+    //   3781: lstore 17
+    //   3783: aload 27
+    //   3785: aload 28
+    //   3787: iconst_0
+    //   3788: iload 6
+    //   3790: invokevirtual 957	java/io/ByteArrayOutputStream:write	([BII)V
+    //   3793: iload 4
+    //   3795: istore 8
+    //   3797: lload 13
+    //   3799: lstore 15
     //   3801: iload 4
     //   3803: istore 9
     //   3805: lload 13
-    //   3807: lstore 19
-    //   3809: iload 4
-    //   3811: istore 8
-    //   3813: lload 13
-    //   3815: lstore 15
-    //   3817: aload 27
-    //   3819: invokevirtual 958	java/io/ByteArrayOutputStream:flush	()V
+    //   3807: lstore 17
+    //   3809: aload 27
+    //   3811: invokevirtual 958	java/io/ByteArrayOutputStream:flush	()V
+    //   3814: iload 4
+    //   3816: istore 8
+    //   3818: lload 13
+    //   3820: lstore 15
     //   3822: iload 4
     //   3824: istore 9
     //   3826: lload 13
-    //   3828: lstore 19
-    //   3830: iload 4
-    //   3832: istore 8
-    //   3834: lload 13
-    //   3836: lstore 15
-    //   3838: aload_1
-    //   3839: aload 27
-    //   3841: invokevirtual 961	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   3844: invokevirtual 944	bakw:a	([B)V
+    //   3828: lstore 17
+    //   3830: aload_1
+    //   3831: aload 27
+    //   3833: invokevirtual 961	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   3836: invokevirtual 944	bbmg:a	([B)V
+    //   3839: iload 4
+    //   3841: istore 8
+    //   3843: lload 13
+    //   3845: lstore 15
     //   3847: iload 4
     //   3849: istore 9
     //   3851: lload 13
-    //   3853: lstore 19
-    //   3855: iload 4
-    //   3857: istore 8
-    //   3859: lload 13
-    //   3861: lstore 15
-    //   3863: aload 31
-    //   3865: aload_1
-    //   3866: aload_1
-    //   3867: invokeinterface 946 3 0
-    //   3872: goto -491 -> 3381
-    //   3875: astore 28
-    //   3877: aload 23
-    //   3879: astore 29
-    //   3881: aload 26
-    //   3883: astore 30
-    //   3885: iload 5
-    //   3887: istore 4
-    //   3889: iconst_1
-    //   3890: istore_3
-    //   3891: aload 24
-    //   3893: astore 23
-    //   3895: aload 25
-    //   3897: astore 26
-    //   3899: lload 11
-    //   3901: lstore 13
-    //   3903: aload 27
-    //   3905: astore 25
+    //   3853: lstore 17
+    //   3855: aload 31
+    //   3857: aload_1
+    //   3858: aload_1
+    //   3859: invokeinterface 946 3 0
+    //   3864: goto -483 -> 3381
+    //   3867: astore 28
+    //   3869: aload 23
+    //   3871: astore 29
+    //   3873: iload 5
+    //   3875: istore 4
+    //   3877: iconst_1
+    //   3878: istore_3
+    //   3879: aload 24
+    //   3881: astore 23
+    //   3883: aload 25
+    //   3885: astore 30
+    //   3887: lload 11
+    //   3889: lstore 13
+    //   3891: aload 27
+    //   3893: astore 25
+    //   3895: aload 26
+    //   3897: astore 24
+    //   3899: iload 8
+    //   3901: istore 5
+    //   3903: lload 15
+    //   3905: lstore 11
     //   3907: aload 30
-    //   3909: astore 24
-    //   3911: iload 9
-    //   3913: istore 5
-    //   3915: lload 19
-    //   3917: lstore 11
-    //   3919: aload 29
-    //   3921: astore 27
-    //   3923: goto -2405 -> 1518
-    //   3926: aload_1
-    //   3927: getfield 189	bakw:jdField_f_of_type_Boolean	Z
-    //   3930: ifeq +300 -> 4230
-    //   3933: aload_1
-    //   3934: getfield 203	bakw:jdField_h_of_type_Int	I
-    //   3937: ifeq +293 -> 4230
+    //   3909: astore 26
+    //   3911: aload 29
+    //   3913: astore 27
+    //   3915: goto -2397 -> 1518
+    //   3918: aload_1
+    //   3919: getfield 189	bbmg:jdField_f_of_type_Boolean	Z
+    //   3922: ifeq +300 -> 4222
+    //   3925: aload_1
+    //   3926: getfield 203	bbmg:jdField_h_of_type_Int	I
+    //   3929: ifeq +293 -> 4222
+    //   3932: aload_1
+    //   3933: getfield 201	bbmg:jdField_g_of_type_Boolean	Z
+    //   3936: ifne +286 -> 4222
+    //   3939: aload_0
     //   3940: aload_1
-    //   3941: getfield 201	bakw:jdField_g_of_type_Boolean	Z
-    //   3944: ifne +286 -> 4230
-    //   3947: aload_0
-    //   3948: aload_1
-    //   3949: ldc_w 963
-    //   3952: ldc_w 965
-    //   3955: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
-    //   3958: aload_1
-    //   3959: iconst_1
-    //   3960: putfield 201	bakw:jdField_g_of_type_Boolean	Z
-    //   3963: aload_0
-    //   3964: aload_1
-    //   3965: aload_2
-    //   3966: iconst_0
-    //   3967: invokevirtual 888	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Lbaku;Z)V
-    //   3970: new 129	java/util/HashMap
-    //   3973: dup
-    //   3974: invokespecial 613	java/util/HashMap:<init>	()V
-    //   3977: astore 23
-    //   3979: aload 23
-    //   3981: ldc_w 615
-    //   3984: aload_1
-    //   3985: getfield 203	bakw:jdField_h_of_type_Int	I
-    //   3988: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   3991: invokevirtual 621	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   3994: pop
-    //   3995: invokestatic 155	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3998: invokestatic 628	awrn:a	(Landroid/content/Context;)Lawrn;
-    //   4001: aconst_null
-    //   4002: ldc_w 967
-    //   4005: iconst_0
-    //   4006: lconst_0
-    //   4007: lconst_0
-    //   4008: aload 23
-    //   4010: ldc_w 490
-    //   4013: invokevirtual 633	awrn:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   3941: ldc_w 963
+    //   3944: ldc_w 965
+    //   3947: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
+    //   3950: aload_1
+    //   3951: iconst_1
+    //   3952: putfield 201	bbmg:jdField_g_of_type_Boolean	Z
+    //   3955: aload_0
+    //   3956: aload_1
+    //   3957: aload_2
+    //   3958: iconst_0
+    //   3959: invokevirtual 888	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Lbbme;Z)V
+    //   3962: new 129	java/util/HashMap
+    //   3965: dup
+    //   3966: invokespecial 613	java/util/HashMap:<init>	()V
+    //   3969: astore 23
+    //   3971: aload 23
+    //   3973: ldc_w 615
+    //   3976: aload_1
+    //   3977: getfield 203	bbmg:jdField_h_of_type_Int	I
+    //   3980: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   3983: invokevirtual 621	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   3986: pop
+    //   3987: invokestatic 155	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3990: invokestatic 628	axrl:a	(Landroid/content/Context;)Laxrl;
+    //   3993: aconst_null
+    //   3994: ldc_w 967
+    //   3997: iconst_0
+    //   3998: lconst_0
+    //   3999: lconst_0
+    //   4000: aload 23
+    //   4002: ldc_w 490
+    //   4005: invokevirtual 633	axrl:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   4008: iload 5
+    //   4010: sipush 200
+    //   4013: if_icmpeq +11 -> 4024
     //   4016: iload 5
-    //   4018: sipush 200
-    //   4021: if_icmpeq +11 -> 4032
-    //   4024: iload 5
-    //   4026: sipush 206
-    //   4029: if_icmpne +31 -> 4060
-    //   4032: aload_0
-    //   4033: aload_1
-    //   4034: ldc_w 755
-    //   4037: new 246	java/lang/StringBuilder
-    //   4040: dup
-    //   4041: invokespecial 247	java/lang/StringBuilder:<init>	()V
-    //   4044: ldc_w 757
-    //   4047: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4050: iconst_0
-    //   4051: invokevirtual 256	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   4054: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4057: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
-    //   4060: aload_2
-    //   4061: ifnull +13 -> 4074
-    //   4064: aload_2
-    //   4065: getfield 636	baku:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   4068: invokevirtual 441	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   4071: ifne +47 -> 4118
-    //   4074: aload_0
-    //   4075: aload_1
-    //   4076: ldc_w 759
-    //   4079: new 246	java/lang/StringBuilder
-    //   4082: dup
-    //   4083: invokespecial 247	java/lang/StringBuilder:<init>	()V
-    //   4086: ldc_w 761
-    //   4089: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4092: aload_1
-    //   4093: invokevirtual 763	bakw:d	()Ljava/lang/String;
-    //   4096: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4099: ldc_w 765
-    //   4102: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4105: aload_1
-    //   4106: invokevirtual 767	bakw:c	()Ljava/lang/String;
-    //   4109: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4112: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4115: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;Ljava/lang/String;Ljava/lang/String;)V
-    //   4118: aload_0
-    //   4119: getfield 381	com/tencent/mobileqq/utils/httputils/HttpCommunicator:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   4122: ifnull +17 -> 4139
-    //   4125: aload 26
-    //   4127: ifnull +12 -> 4139
-    //   4130: aload_0
-    //   4131: getfield 381	com/tencent/mobileqq/utils/httputils/HttpCommunicator:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   4134: aload 26
-    //   4136: invokevirtual 496	mqq/os/MqqHandler:removeCallbacks	(Ljava/lang/Runnable;)V
-    //   4139: lload 11
-    //   4141: lconst_0
-    //   4142: ladd
-    //   4143: lstore 11
-    //   4145: lload 11
-    //   4147: lconst_0
-    //   4148: lcmp
-    //   4149: ifeq +25 -> 4174
-    //   4152: aload_1
-    //   4153: invokevirtual 232	bakw:e	()Ljava/lang/String;
-    //   4156: ldc 230
-    //   4158: invokevirtual 186	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   4161: ifeq +64 -> 4225
-    //   4164: iconst_1
-    //   4165: istore_3
-    //   4166: aload_0
-    //   4167: aload_1
-    //   4168: iload_3
-    //   4169: lload 11
-    //   4171: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbakw;ZJ)V
-    //   4174: iconst_0
-    //   4175: ifeq +11 -> 4186
-    //   4178: new 772	java/lang/NullPointerException
-    //   4181: dup
-    //   4182: invokespecial 773	java/lang/NullPointerException:<init>	()V
-    //   4185: athrow
-    //   4186: iconst_0
-    //   4187: ifeq +11 -> 4198
-    //   4190: new 772	java/lang/NullPointerException
-    //   4193: dup
-    //   4194: invokespecial 773	java/lang/NullPointerException:<init>	()V
-    //   4197: athrow
-    //   4198: aload 25
-    //   4200: ifnull +8 -> 4208
-    //   4203: aload 25
-    //   4205: invokevirtual 775	java/io/OutputStream:close	()V
-    //   4208: aload 24
-    //   4210: ifnull -3657 -> 553
-    //   4213: aload 24
-    //   4215: invokevirtual 778	java/net/HttpURLConnection:disconnect	()V
-    //   4218: return
-    //   4219: astore_1
-    //   4220: aload_1
-    //   4221: invokevirtual 607	java/lang/Exception:printStackTrace	()V
-    //   4224: return
-    //   4225: iconst_0
-    //   4226: istore_3
-    //   4227: goto -61 -> 4166
-    //   4230: iconst_1
-    //   4231: istore 4
-    //   4233: aload_0
-    //   4234: iload 5
-    //   4236: aload 24
-    //   4238: aload_1
-    //   4239: invokevirtual 969	com/tencent/mobileqq/utils/httputils/HttpCommunicator:b	(ILjava/net/HttpURLConnection;Lbakw;)V
-    //   4242: lconst_0
-    //   4243: lstore 13
-    //   4245: iconst_1
-    //   4246: istore 4
-    //   4248: iload 8
-    //   4250: istore 6
-    //   4252: aload 30
-    //   4254: astore 28
-    //   4256: aload 29
-    //   4258: astore 23
-    //   4260: goto -774 -> 3486
-    //   4263: iconst_0
-    //   4264: istore_3
-    //   4265: goto -568 -> 3697
-    //   4268: astore 29
-    //   4270: aload 30
-    //   4272: ifnull -2680 -> 1592
-    //   4275: aload 30
-    //   4277: invokevirtual 859	java/io/InputStream:close	()V
-    //   4280: goto -2688 -> 1592
+    //   4018: sipush 206
+    //   4021: if_icmpne +31 -> 4052
+    //   4024: aload_0
+    //   4025: aload_1
+    //   4026: ldc_w 755
+    //   4029: new 246	java/lang/StringBuilder
+    //   4032: dup
+    //   4033: invokespecial 247	java/lang/StringBuilder:<init>	()V
+    //   4036: ldc_w 757
+    //   4039: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4042: iconst_0
+    //   4043: invokevirtual 256	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   4046: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4049: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
+    //   4052: aload_2
+    //   4053: ifnull +13 -> 4066
+    //   4056: aload_2
+    //   4057: getfield 636	bbme:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   4060: invokevirtual 441	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   4063: ifne +47 -> 4110
+    //   4066: aload_0
+    //   4067: aload_1
+    //   4068: ldc_w 759
+    //   4071: new 246	java/lang/StringBuilder
+    //   4074: dup
+    //   4075: invokespecial 247	java/lang/StringBuilder:<init>	()V
+    //   4078: ldc_w 761
+    //   4081: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4084: aload_1
+    //   4085: invokevirtual 763	bbmg:d	()Ljava/lang/String;
+    //   4088: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4091: ldc_w 765
+    //   4094: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4097: aload_1
+    //   4098: invokevirtual 767	bbmg:c	()Ljava/lang/String;
+    //   4101: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4104: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4107: invokevirtual 282	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;Ljava/lang/String;Ljava/lang/String;)V
+    //   4110: aload_0
+    //   4111: getfield 381	com/tencent/mobileqq/utils/httputils/HttpCommunicator:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   4114: ifnull +17 -> 4131
+    //   4117: aload 26
+    //   4119: ifnull +12 -> 4131
+    //   4122: aload_0
+    //   4123: getfield 381	com/tencent/mobileqq/utils/httputils/HttpCommunicator:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   4126: aload 26
+    //   4128: invokevirtual 496	mqq/os/MqqHandler:removeCallbacks	(Ljava/lang/Runnable;)V
+    //   4131: lload 11
+    //   4133: lconst_0
+    //   4134: ladd
+    //   4135: lstore 11
+    //   4137: lload 11
+    //   4139: lconst_0
+    //   4140: lcmp
+    //   4141: ifeq +25 -> 4166
+    //   4144: aload_1
+    //   4145: invokevirtual 232	bbmg:e	()Ljava/lang/String;
+    //   4148: ldc 230
+    //   4150: invokevirtual 186	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   4153: ifeq +64 -> 4217
+    //   4156: iconst_1
+    //   4157: istore_3
+    //   4158: aload_0
+    //   4159: aload_1
+    //   4160: iload_3
+    //   4161: lload 11
+    //   4163: invokevirtual 770	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lbbmg;ZJ)V
+    //   4166: iconst_0
+    //   4167: ifeq +11 -> 4178
+    //   4170: new 772	java/lang/NullPointerException
+    //   4173: dup
+    //   4174: invokespecial 773	java/lang/NullPointerException:<init>	()V
+    //   4177: athrow
+    //   4178: iconst_0
+    //   4179: ifeq +11 -> 4190
+    //   4182: new 772	java/lang/NullPointerException
+    //   4185: dup
+    //   4186: invokespecial 773	java/lang/NullPointerException:<init>	()V
+    //   4189: athrow
+    //   4190: aload 25
+    //   4192: ifnull +8 -> 4200
+    //   4195: aload 25
+    //   4197: invokevirtual 775	java/io/OutputStream:close	()V
+    //   4200: aload 24
+    //   4202: ifnull -3649 -> 553
+    //   4205: aload 24
+    //   4207: invokevirtual 778	java/net/HttpURLConnection:disconnect	()V
+    //   4210: return
+    //   4211: astore_1
+    //   4212: aload_1
+    //   4213: invokevirtual 607	java/lang/Exception:printStackTrace	()V
+    //   4216: return
+    //   4217: iconst_0
+    //   4218: istore_3
+    //   4219: goto -61 -> 4158
+    //   4222: iconst_1
+    //   4223: istore 4
+    //   4225: aload_0
+    //   4226: iload 5
+    //   4228: aload 24
+    //   4230: aload_1
+    //   4231: invokevirtual 969	com/tencent/mobileqq/utils/httputils/HttpCommunicator:b	(ILjava/net/HttpURLConnection;Lbbmg;)V
+    //   4234: lconst_0
+    //   4235: lstore 13
+    //   4237: iconst_1
+    //   4238: istore 4
+    //   4240: iload 8
+    //   4242: istore 6
+    //   4244: aload 30
+    //   4246: astore 23
+    //   4248: aload 29
+    //   4250: astore 27
+    //   4252: goto -774 -> 3478
+    //   4255: iconst_0
+    //   4256: istore_3
+    //   4257: goto -568 -> 3689
+    //   4260: astore 29
+    //   4262: aload 30
+    //   4264: ifnull -2672 -> 1592
+    //   4267: aload 30
+    //   4269: invokevirtual 859	java/io/InputStream:close	()V
+    //   4272: goto -2680 -> 1592
+    //   4275: astore 29
+    //   4277: goto -2685 -> 1592
+    //   4280: astore 28
+    //   4282: aconst_null
     //   4283: astore 29
-    //   4285: goto -2693 -> 1592
-    //   4288: astore 28
-    //   4290: aconst_null
-    //   4291: astore 29
-    //   4293: aload 29
-    //   4295: ifnull +8 -> 4303
-    //   4298: aload 29
-    //   4300: invokevirtual 859	java/io/InputStream:close	()V
-    //   4303: aload 28
-    //   4305: athrow
-    //   4306: astore 30
-    //   4308: lload 13
-    //   4310: lstore 15
-    //   4312: aload 25
-    //   4314: astore 28
-    //   4316: aload 26
-    //   4318: astore 25
-    //   4320: aload 23
-    //   4322: astore 29
-    //   4324: iload 4
-    //   4326: istore 7
-    //   4328: iconst_1
-    //   4329: istore 4
-    //   4331: aload 30
-    //   4333: astore 23
-    //   4335: aload 24
-    //   4337: astore 26
-    //   4339: iload 5
-    //   4341: istore 6
-    //   4343: iload 7
-    //   4345: istore 5
-    //   4347: lload 11
-    //   4349: lstore 13
-    //   4351: lload 15
-    //   4353: lstore 11
-    //   4355: aload 29
-    //   4357: astore 24
-    //   4359: goto -2413 -> 1946
-    //   4362: iconst_0
-    //   4363: istore_3
-    //   4364: goto -2550 -> 1814
-    //   4367: astore 23
-    //   4369: aload 23
-    //   4371: invokevirtual 607	java/lang/Exception:printStackTrace	()V
-    //   4374: iload 6
-    //   4376: istore 5
-    //   4378: goto -2508 -> 1870
-    //   4381: iconst_0
-    //   4382: istore_3
-    //   4383: goto -2222 -> 2161
-    //   4386: astore_1
-    //   4387: aload_1
-    //   4388: invokevirtual 607	java/lang/Exception:printStackTrace	()V
-    //   4391: goto -2182 -> 2209
-    //   4394: aload 31
-    //   4396: aload_1
-    //   4397: aload_1
-    //   4398: iconst_5
-    //   4399: invokeinterface 394 4 0
-    //   4404: pop
-    //   4405: return
+    //   4285: aload 29
+    //   4287: ifnull +8 -> 4295
+    //   4290: aload 29
+    //   4292: invokevirtual 859	java/io/InputStream:close	()V
+    //   4295: aload 28
+    //   4297: athrow
+    //   4298: astore 28
+    //   4300: lload 13
+    //   4302: lstore 15
+    //   4304: aload 26
+    //   4306: astore 29
+    //   4308: aload 23
+    //   4310: astore 30
+    //   4312: iload 4
+    //   4314: istore 7
+    //   4316: iconst_1
+    //   4317: istore 4
+    //   4319: aload 28
+    //   4321: astore 23
+    //   4323: aload 24
+    //   4325: astore 26
+    //   4327: iload 5
+    //   4329: istore 6
+    //   4331: iload 7
+    //   4333: istore 5
+    //   4335: lload 11
+    //   4337: lstore 13
+    //   4339: lload 15
+    //   4341: lstore 11
+    //   4343: aload 25
+    //   4345: astore 28
+    //   4347: aload 29
+    //   4349: astore 25
+    //   4351: aload 30
+    //   4353: astore 24
+    //   4355: goto -2409 -> 1946
+    //   4358: iconst_0
+    //   4359: istore_3
+    //   4360: goto -2546 -> 1814
+    //   4363: astore 23
+    //   4365: aload 23
+    //   4367: invokevirtual 607	java/lang/Exception:printStackTrace	()V
+    //   4370: iload 6
+    //   4372: istore 5
+    //   4374: goto -2504 -> 1870
+    //   4377: iconst_0
+    //   4378: istore_3
+    //   4379: goto -2218 -> 2161
+    //   4382: astore_1
+    //   4383: aload_1
+    //   4384: invokevirtual 607	java/lang/Exception:printStackTrace	()V
+    //   4387: goto -2178 -> 2209
+    //   4390: aload 31
+    //   4392: aload_1
+    //   4393: aload_1
+    //   4394: iconst_5
+    //   4395: invokeinterface 394 4 0
+    //   4400: pop
+    //   4401: return
+    //   4402: astore_1
+    //   4403: goto -3882 -> 521
     //   4406: astore_1
-    //   4407: goto -3886 -> 521
+    //   4407: goto -3874 -> 533
     //   4410: astore_1
-    //   4411: goto -3878 -> 533
+    //   4411: goto -3868 -> 543
     //   4414: astore_1
-    //   4415: goto -3872 -> 543
+    //   4415: goto -3401 -> 1014
     //   4418: astore_1
-    //   4419: goto -3405 -> 1014
+    //   4419: goto -3393 -> 1026
     //   4422: astore_1
-    //   4423: goto -3397 -> 1026
+    //   4423: goto -3387 -> 1036
     //   4426: astore_1
-    //   4427: goto -3391 -> 1036
+    //   4427: goto -3151 -> 1276
     //   4430: astore_1
-    //   4431: goto -3155 -> 1276
+    //   4431: goto -3143 -> 1288
     //   4434: astore_1
-    //   4435: goto -3147 -> 1288
+    //   4435: goto -3137 -> 1298
     //   4438: astore_1
-    //   4439: goto -3141 -> 1298
+    //   4439: goto -1953 -> 2486
     //   4442: astore_1
-    //   4443: goto -1957 -> 2486
+    //   4443: goto -1945 -> 2498
     //   4446: astore_1
-    //   4447: goto -1949 -> 2498
+    //   4447: goto -1939 -> 2508
     //   4450: astore_1
-    //   4451: goto -1943 -> 2508
+    //   4451: goto -273 -> 4178
     //   4454: astore_1
-    //   4455: goto -269 -> 4186
+    //   4455: goto -265 -> 4190
     //   4458: astore_1
-    //   4459: goto -261 -> 4198
-    //   4462: astore_1
-    //   4463: goto -255 -> 4208
-    //   4466: astore 26
-    //   4468: goto -753 -> 3715
-    //   4471: astore 23
-    //   4473: goto -748 -> 3725
-    //   4476: astore 23
-    //   4478: goto -743 -> 3735
-    //   4481: astore 29
-    //   4483: goto -2891 -> 1592
-    //   4486: astore 29
-    //   4488: goto -185 -> 4303
-    //   4491: astore 24
-    //   4493: goto -2661 -> 1832
-    //   4496: astore 24
-    //   4498: goto -2656 -> 1842
-    //   4501: astore 24
-    //   4503: goto -2651 -> 1852
+    //   4459: goto -259 -> 4200
+    //   4462: astore 23
+    //   4464: goto -757 -> 3707
+    //   4467: astore 23
+    //   4469: goto -752 -> 3717
+    //   4472: astore 23
+    //   4474: goto -747 -> 3727
+    //   4477: astore 29
+    //   4479: goto -2887 -> 1592
+    //   4482: astore 29
+    //   4484: goto -189 -> 4295
+    //   4487: astore 24
+    //   4489: goto -2657 -> 1832
+    //   4492: astore 24
+    //   4494: goto -2652 -> 1842
+    //   4497: astore 24
+    //   4499: goto -2647 -> 1852
+    //   4502: astore_1
+    //   4503: goto -2324 -> 2179
     //   4506: astore_1
-    //   4507: goto -2328 -> 2179
+    //   4507: goto -2318 -> 2189
     //   4510: astore_1
-    //   4511: goto -2322 -> 2189
-    //   4514: astore_1
-    //   4515: goto -2316 -> 2199
-    //   4518: astore 23
-    //   4520: aconst_null
-    //   4521: astore 26
-    //   4523: iconst_0
-    //   4524: istore_3
-    //   4525: lconst_0
-    //   4526: lstore 11
-    //   4528: iconst_m1
-    //   4529: istore 5
-    //   4531: aconst_null
-    //   4532: astore 25
-    //   4534: aconst_null
-    //   4535: astore 24
-    //   4537: iconst_0
-    //   4538: istore 4
-    //   4540: iload 7
-    //   4542: istore 6
-    //   4544: goto -2598 -> 1946
-    //   4547: astore 23
-    //   4549: iload 4
-    //   4551: istore 5
-    //   4553: iconst_0
-    //   4554: istore 4
-    //   4556: iload 7
-    //   4558: istore 6
-    //   4560: iload 21
-    //   4562: istore_3
-    //   4563: goto -2617 -> 1946
-    //   4566: astore 23
-    //   4568: iload 4
-    //   4570: istore 5
-    //   4572: iconst_0
-    //   4573: istore 4
-    //   4575: iload 7
-    //   4577: istore 6
-    //   4579: iload 21
-    //   4581: istore_3
-    //   4582: goto -2636 -> 1946
-    //   4585: astore 29
-    //   4587: aload 25
-    //   4589: astore 26
-    //   4591: iload 21
-    //   4593: istore_3
-    //   4594: iload 4
-    //   4596: istore 5
-    //   4598: aload 23
-    //   4600: astore 25
-    //   4602: aload 29
-    //   4604: astore 23
-    //   4606: iconst_0
-    //   4607: istore 4
-    //   4609: iload 7
-    //   4611: istore 6
-    //   4613: goto -2667 -> 1946
-    //   4616: astore 29
-    //   4618: aload 25
-    //   4620: astore 26
-    //   4622: iload 21
-    //   4624: istore_3
-    //   4625: iload 4
-    //   4627: istore 5
-    //   4629: aload 23
-    //   4631: astore 25
-    //   4633: iconst_0
-    //   4634: istore 4
-    //   4636: aload 29
-    //   4638: astore 23
-    //   4640: iload 7
-    //   4642: istore 6
-    //   4644: goto -2698 -> 1946
-    //   4647: astore 29
-    //   4649: aload 25
-    //   4651: astore 26
-    //   4653: iload 4
-    //   4655: istore 5
-    //   4657: aload 23
-    //   4659: astore 25
-    //   4661: iconst_0
-    //   4662: istore 4
-    //   4664: aload 29
-    //   4666: astore 23
-    //   4668: iload 7
-    //   4670: istore 6
-    //   4672: iload 21
-    //   4674: istore_3
-    //   4675: goto -2729 -> 1946
-    //   4678: astore 29
-    //   4680: iload 4
-    //   4682: istore 5
-    //   4684: aload 23
-    //   4686: astore 25
-    //   4688: aload 29
-    //   4690: astore 23
-    //   4692: iconst_0
-    //   4693: istore 4
-    //   4695: iload 7
-    //   4697: istore 6
-    //   4699: iload 21
-    //   4701: istore_3
-    //   4702: goto -2756 -> 1946
-    //   4705: astore 23
-    //   4707: iconst_0
-    //   4708: istore 4
-    //   4710: iload 7
-    //   4712: istore 6
-    //   4714: iload 21
-    //   4716: istore_3
-    //   4717: goto -2771 -> 1946
-    //   4720: astore 29
-    //   4722: iconst_0
-    //   4723: istore 4
-    //   4725: aload 23
-    //   4727: astore 27
-    //   4729: aload 29
-    //   4731: astore 23
-    //   4733: iload 7
-    //   4735: istore 6
-    //   4737: iload 21
-    //   4739: istore_3
-    //   4740: goto -2794 -> 1946
-    //   4743: astore 29
-    //   4745: iconst_0
-    //   4746: istore 4
-    //   4748: aload 27
-    //   4750: astore 28
-    //   4752: aload 23
-    //   4754: astore 27
-    //   4756: aload 29
-    //   4758: astore 23
-    //   4760: iload 7
-    //   4762: istore 6
-    //   4764: iload 21
-    //   4766: istore_3
-    //   4767: goto -2821 -> 1946
-    //   4770: astore 29
-    //   4772: iload 8
-    //   4774: istore 6
-    //   4776: lload 15
-    //   4778: lstore 13
-    //   4780: aload 27
-    //   4782: astore 28
-    //   4784: aload 23
-    //   4786: astore 27
-    //   4788: iconst_0
-    //   4789: istore 4
-    //   4791: aload 29
-    //   4793: astore 23
-    //   4795: iload 21
-    //   4797: istore_3
-    //   4798: goto -2852 -> 1946
-    //   4801: astore 29
-    //   4803: iload 4
-    //   4805: istore 6
-    //   4807: aload 23
-    //   4809: astore 28
-    //   4811: aload 29
-    //   4813: astore 23
-    //   4815: iconst_0
-    //   4816: istore 4
-    //   4818: iload 21
-    //   4820: istore_3
-    //   4821: goto -2875 -> 1946
-    //   4824: astore 23
-    //   4826: iload 7
-    //   4828: istore 6
-    //   4830: iload 21
-    //   4832: istore_3
-    //   4833: goto -2887 -> 1946
-    //   4836: astore 28
-    //   4838: goto -545 -> 4293
-    //   4841: astore 28
-    //   4843: lconst_0
-    //   4844: lstore 11
-    //   4846: aconst_null
-    //   4847: astore 25
-    //   4849: aconst_null
-    //   4850: astore 26
-    //   4852: aconst_null
-    //   4853: astore 24
-    //   4855: aconst_null
-    //   4856: astore 27
-    //   4858: lconst_0
-    //   4859: lstore 13
-    //   4861: iconst_m1
-    //   4862: istore 4
-    //   4864: aconst_null
-    //   4865: astore 23
-    //   4867: iconst_0
-    //   4868: istore 5
-    //   4870: iload 21
-    //   4872: istore_3
-    //   4873: goto -3355 -> 1518
-    //   4876: astore 28
-    //   4878: aload 26
-    //   4880: astore 27
-    //   4882: iconst_0
-    //   4883: istore 5
-    //   4885: lconst_0
-    //   4886: lstore 15
-    //   4888: aload 25
-    //   4890: astore 26
-    //   4892: lload 11
-    //   4894: lstore 13
-    //   4896: iconst_1
-    //   4897: istore_3
-    //   4898: aconst_null
-    //   4899: astore 29
-    //   4901: aconst_null
-    //   4902: astore 25
-    //   4904: aload 24
-    //   4906: astore 23
-    //   4908: aload 27
-    //   4910: astore 24
-    //   4912: lload 15
-    //   4914: lstore 11
-    //   4916: aload 29
-    //   4918: astore 27
-    //   4920: goto -3402 -> 1518
-    //   4923: astore 28
-    //   4925: aload 26
-    //   4927: astore 27
-    //   4929: iconst_0
-    //   4930: istore 5
-    //   4932: iconst_1
-    //   4933: istore_3
-    //   4934: lconst_0
-    //   4935: lstore 15
-    //   4937: aload 25
-    //   4939: astore 26
-    //   4941: aload 24
-    //   4943: astore 23
-    //   4945: lload 11
-    //   4947: lstore 13
-    //   4949: aconst_null
-    //   4950: astore 29
-    //   4952: aconst_null
-    //   4953: astore 25
-    //   4955: aload 27
-    //   4957: astore 24
-    //   4959: lload 15
-    //   4961: lstore 11
-    //   4963: aload 29
-    //   4965: astore 27
-    //   4967: goto -3449 -> 1518
-    //   4970: astore 28
-    //   4972: lconst_0
-    //   4973: lstore 15
-    //   4975: aconst_null
-    //   4976: astore 29
-    //   4978: aload 23
-    //   4980: astore 26
-    //   4982: aconst_null
-    //   4983: astore 27
-    //   4985: iload 21
-    //   4987: istore_3
-    //   4988: lload 11
-    //   4990: lstore 13
-    //   4992: aload 24
-    //   4994: astore 23
-    //   4996: iconst_0
-    //   4997: istore 5
-    //   4999: aload 25
-    //   5001: astore 24
-    //   5003: lload 15
-    //   5005: lstore 11
+    //   4511: goto -2312 -> 2199
+    //   4514: astore 23
+    //   4516: aconst_null
+    //   4517: astore 26
+    //   4519: iconst_0
+    //   4520: istore_3
+    //   4521: lconst_0
+    //   4522: lstore 11
+    //   4524: iconst_m1
+    //   4525: istore 5
+    //   4527: aconst_null
+    //   4528: astore 25
+    //   4530: aconst_null
+    //   4531: astore 24
+    //   4533: iconst_0
+    //   4534: istore 4
+    //   4536: iload 7
+    //   4538: istore 6
+    //   4540: goto -2594 -> 1946
+    //   4543: astore 23
+    //   4545: iload 4
+    //   4547: istore 5
+    //   4549: iconst_0
+    //   4550: istore 4
+    //   4552: iload 7
+    //   4554: istore 6
+    //   4556: iload 21
+    //   4558: istore_3
+    //   4559: goto -2613 -> 1946
+    //   4562: astore 23
+    //   4564: iload 4
+    //   4566: istore 5
+    //   4568: iconst_0
+    //   4569: istore 4
+    //   4571: iload 7
+    //   4573: istore 6
+    //   4575: iload 21
+    //   4577: istore_3
+    //   4578: goto -2632 -> 1946
+    //   4581: astore 29
+    //   4583: aload 25
+    //   4585: astore 26
+    //   4587: iload 21
+    //   4589: istore_3
+    //   4590: iload 4
+    //   4592: istore 5
+    //   4594: aload 23
+    //   4596: astore 25
+    //   4598: aload 29
+    //   4600: astore 23
+    //   4602: iconst_0
+    //   4603: istore 4
+    //   4605: iload 7
+    //   4607: istore 6
+    //   4609: goto -2663 -> 1946
+    //   4612: astore 29
+    //   4614: aload 25
+    //   4616: astore 26
+    //   4618: iload 21
+    //   4620: istore_3
+    //   4621: iload 4
+    //   4623: istore 5
+    //   4625: aload 23
+    //   4627: astore 25
+    //   4629: iconst_0
+    //   4630: istore 4
+    //   4632: aload 29
+    //   4634: astore 23
+    //   4636: iload 7
+    //   4638: istore 6
+    //   4640: goto -2694 -> 1946
+    //   4643: astore 29
+    //   4645: aload 25
+    //   4647: astore 26
+    //   4649: iload 4
+    //   4651: istore 5
+    //   4653: aload 23
+    //   4655: astore 25
+    //   4657: iconst_0
+    //   4658: istore 4
+    //   4660: aload 29
+    //   4662: astore 23
+    //   4664: iload 7
+    //   4666: istore 6
+    //   4668: iload 21
+    //   4670: istore_3
+    //   4671: goto -2725 -> 1946
+    //   4674: astore 29
+    //   4676: iload 4
+    //   4678: istore 5
+    //   4680: aload 23
+    //   4682: astore 25
+    //   4684: aload 29
+    //   4686: astore 23
+    //   4688: iconst_0
+    //   4689: istore 4
+    //   4691: iload 7
+    //   4693: istore 6
+    //   4695: iload 21
+    //   4697: istore_3
+    //   4698: goto -2752 -> 1946
+    //   4701: astore 23
+    //   4703: iconst_0
+    //   4704: istore 4
+    //   4706: iload 7
+    //   4708: istore 6
+    //   4710: iload 21
+    //   4712: istore_3
+    //   4713: goto -2767 -> 1946
+    //   4716: astore 29
+    //   4718: iconst_0
+    //   4719: istore 4
+    //   4721: aload 23
+    //   4723: astore 27
+    //   4725: aload 29
+    //   4727: astore 23
+    //   4729: iload 7
+    //   4731: istore 6
+    //   4733: iload 21
+    //   4735: istore_3
+    //   4736: goto -2790 -> 1946
+    //   4739: astore 29
+    //   4741: iconst_0
+    //   4742: istore 4
+    //   4744: aload 27
+    //   4746: astore 28
+    //   4748: aload 23
+    //   4750: astore 27
+    //   4752: aload 29
+    //   4754: astore 23
+    //   4756: iload 7
+    //   4758: istore 6
+    //   4760: iload 21
+    //   4762: istore_3
+    //   4763: goto -2817 -> 1946
+    //   4766: astore 29
+    //   4768: iload 9
+    //   4770: istore 6
+    //   4772: lload 17
+    //   4774: lstore 13
+    //   4776: aload 27
+    //   4778: astore 28
+    //   4780: aload 23
+    //   4782: astore 27
+    //   4784: iconst_0
+    //   4785: istore 4
+    //   4787: aload 29
+    //   4789: astore 23
+    //   4791: iload 21
+    //   4793: istore_3
+    //   4794: goto -2848 -> 1946
+    //   4797: astore 29
+    //   4799: iload 4
+    //   4801: istore 6
+    //   4803: aload 23
+    //   4805: astore 28
+    //   4807: aload 29
+    //   4809: astore 23
+    //   4811: iconst_0
+    //   4812: istore 4
+    //   4814: iload 21
+    //   4816: istore_3
+    //   4817: goto -2871 -> 1946
+    //   4820: astore 23
+    //   4822: iload 7
+    //   4824: istore 6
+    //   4826: iload 21
+    //   4828: istore_3
+    //   4829: goto -2883 -> 1946
+    //   4832: astore 28
+    //   4834: goto -549 -> 4285
+    //   4837: astore 28
+    //   4839: lconst_0
+    //   4840: lstore 11
+    //   4842: aconst_null
+    //   4843: astore 25
+    //   4845: aconst_null
+    //   4846: astore 26
+    //   4848: aconst_null
+    //   4849: astore 24
+    //   4851: aconst_null
+    //   4852: astore 27
+    //   4854: lconst_0
+    //   4855: lstore 13
+    //   4857: iconst_m1
+    //   4858: istore 4
+    //   4860: aconst_null
+    //   4861: astore 23
+    //   4863: iconst_0
+    //   4864: istore 5
+    //   4866: iload 21
+    //   4868: istore_3
+    //   4869: goto -3351 -> 1518
+    //   4872: astore 28
+    //   4874: aload 26
+    //   4876: astore 27
+    //   4878: iconst_0
+    //   4879: istore 5
+    //   4881: lconst_0
+    //   4882: lstore 15
+    //   4884: aload 25
+    //   4886: astore 26
+    //   4888: lload 11
+    //   4890: lstore 13
+    //   4892: iconst_1
+    //   4893: istore_3
+    //   4894: aconst_null
+    //   4895: astore 29
+    //   4897: aconst_null
+    //   4898: astore 25
+    //   4900: aload 24
+    //   4902: astore 23
+    //   4904: aload 27
+    //   4906: astore 24
+    //   4908: lload 15
+    //   4910: lstore 11
+    //   4912: aload 29
+    //   4914: astore 27
+    //   4916: goto -3398 -> 1518
+    //   4919: astore 28
+    //   4921: aload 26
+    //   4923: astore 27
+    //   4925: iconst_0
+    //   4926: istore 5
+    //   4928: iconst_1
+    //   4929: istore_3
+    //   4930: lconst_0
+    //   4931: lstore 15
+    //   4933: aload 25
+    //   4935: astore 26
+    //   4937: aload 24
+    //   4939: astore 23
+    //   4941: lload 11
+    //   4943: lstore 13
+    //   4945: aconst_null
+    //   4946: astore 29
+    //   4948: aconst_null
+    //   4949: astore 25
+    //   4951: aload 27
+    //   4953: astore 24
+    //   4955: lload 15
+    //   4957: lstore 11
+    //   4959: aload 29
+    //   4961: astore 27
+    //   4963: goto -3445 -> 1518
+    //   4966: astore 28
+    //   4968: lconst_0
+    //   4969: lstore 15
+    //   4971: aconst_null
+    //   4972: astore 27
+    //   4974: aload 23
+    //   4976: astore 26
+    //   4978: aconst_null
+    //   4979: astore 29
+    //   4981: iload 21
+    //   4983: istore_3
+    //   4984: lload 11
+    //   4986: lstore 13
+    //   4988: aload 24
+    //   4990: astore 23
+    //   4992: iconst_0
+    //   4993: istore 5
+    //   4995: aload 25
+    //   4997: astore 24
+    //   4999: lload 15
+    //   5001: lstore 11
+    //   5003: aload 27
+    //   5005: astore 25
     //   5007: aload 29
-    //   5009: astore 25
+    //   5009: astore 27
     //   5011: goto -3493 -> 1518
     //   5014: astore 28
     //   5016: iconst_0
@@ -3057,13 +3057,13 @@ public class HttpCommunicator
     //   5019: lconst_0
     //   5020: lstore 15
     //   5022: aconst_null
-    //   5023: astore 27
+    //   5023: astore 29
     //   5025: aload 23
     //   5027: astore 26
     //   5029: lload 11
     //   5031: lstore 13
     //   5033: aconst_null
-    //   5034: astore 29
+    //   5034: astore 27
     //   5036: iload 21
     //   5038: istore_3
     //   5039: aload 24
@@ -3072,268 +3072,263 @@ public class HttpCommunicator
     //   5045: astore 24
     //   5047: lload 15
     //   5049: lstore 11
-    //   5051: aload 27
+    //   5051: aload 29
     //   5053: astore 25
-    //   5055: aload 29
-    //   5057: astore 27
-    //   5059: goto -3541 -> 1518
-    //   5062: astore 28
-    //   5064: iconst_0
-    //   5065: istore 5
-    //   5067: lconst_0
-    //   5068: lstore 15
-    //   5070: aload 23
-    //   5072: astore 26
-    //   5074: lload 11
-    //   5076: lstore 13
-    //   5078: aconst_null
-    //   5079: astore 27
-    //   5081: iconst_1
-    //   5082: istore_3
-    //   5083: aload 24
-    //   5085: astore 23
-    //   5087: aconst_null
-    //   5088: astore 29
-    //   5090: aload 25
-    //   5092: astore 24
-    //   5094: lload 15
-    //   5096: lstore 11
-    //   5098: aload 29
-    //   5100: astore 25
-    //   5102: goto -3584 -> 1518
-    //   5105: astore 28
-    //   5107: iconst_0
-    //   5108: istore 5
-    //   5110: iconst_1
-    //   5111: istore_3
-    //   5112: lconst_0
-    //   5113: lstore 15
-    //   5115: aload 23
-    //   5117: astore 27
-    //   5119: lload 11
-    //   5121: lstore 13
-    //   5123: aconst_null
-    //   5124: astore 25
-    //   5126: aconst_null
-    //   5127: astore 29
-    //   5129: aload 24
-    //   5131: astore 23
-    //   5133: aload 26
-    //   5135: astore 24
-    //   5137: lload 15
-    //   5139: lstore 11
-    //   5141: aload 27
-    //   5143: astore 26
-    //   5145: aload 29
-    //   5147: astore 27
-    //   5149: goto -3631 -> 1518
-    //   5152: astore 28
-    //   5154: iconst_0
-    //   5155: istore 6
-    //   5157: iconst_1
-    //   5158: istore_3
-    //   5159: lload 13
-    //   5161: lstore 15
-    //   5163: aconst_null
-    //   5164: astore 29
-    //   5166: iload 5
-    //   5168: istore 4
-    //   5170: aconst_null
-    //   5171: astore 30
-    //   5173: lload 11
-    //   5175: lstore 13
-    //   5177: aload 24
-    //   5179: astore 23
-    //   5181: aload 25
-    //   5183: astore 27
-    //   5185: aload 26
-    //   5187: astore 24
-    //   5189: iload 6
-    //   5191: istore 5
-    //   5193: lload 15
-    //   5195: lstore 11
-    //   5197: aload 30
-    //   5199: astore 25
-    //   5201: aload 27
-    //   5203: astore 26
-    //   5205: aload 29
-    //   5207: astore 27
-    //   5209: goto -3691 -> 1518
-    //   5212: astore 28
-    //   5214: iconst_0
-    //   5215: istore 6
-    //   5217: iconst_1
-    //   5218: istore_3
-    //   5219: aload 23
-    //   5221: astore 29
-    //   5223: iload 5
-    //   5225: istore 4
-    //   5227: aload 26
-    //   5229: astore 30
-    //   5231: aload 24
-    //   5233: astore 23
-    //   5235: lload 11
-    //   5237: lstore 15
-    //   5239: aload 25
-    //   5241: astore 26
-    //   5243: aload 30
-    //   5245: astore 24
-    //   5247: iload 6
-    //   5249: istore 5
-    //   5251: lload 13
-    //   5253: lstore 11
-    //   5255: lload 15
-    //   5257: lstore 13
-    //   5259: aload 27
-    //   5261: astore 25
-    //   5263: aload 29
-    //   5265: astore 27
-    //   5267: goto -3749 -> 1518
-    //   5270: astore 28
-    //   5272: iload 4
-    //   5274: istore 6
-    //   5276: lload 11
-    //   5278: lstore 15
-    //   5280: iload 5
-    //   5282: istore 4
-    //   5284: aload 25
-    //   5286: astore 29
-    //   5288: aload 23
-    //   5290: astore 25
-    //   5292: iconst_1
-    //   5293: istore_3
-    //   5294: aload 24
-    //   5296: astore 23
-    //   5298: aload 26
-    //   5300: astore 24
-    //   5302: iload 6
-    //   5304: istore 5
-    //   5306: lload 13
-    //   5308: lstore 11
-    //   5310: lload 15
-    //   5312: lstore 13
-    //   5314: aload 29
-    //   5316: astore 26
-    //   5318: goto -3800 -> 1518
-    //   5321: astore 23
-    //   5323: goto -4612 -> 711
-    //   5326: iconst_0
-    //   5327: istore 4
-    //   5329: lconst_0
-    //   5330: lstore 13
-    //   5332: aconst_null
-    //   5333: astore 23
-    //   5335: aconst_null
-    //   5336: astore 27
-    //   5338: goto -1878 -> 3460
-    //   5341: aload 25
-    //   5343: astore 26
-    //   5345: aload 23
-    //   5347: astore 25
-    //   5349: goto -5038 -> 311
-    //   5352: iconst_0
-    //   5353: istore_3
-    //   5354: goto -2888 -> 2466
-    //   5357: iload 4
-    //   5359: iconst_1
-    //   5360: iadd
-    //   5361: istore 4
-    //   5363: goto -2735 -> 2628
-    //   5366: iload 6
-    //   5368: iconst_1
-    //   5369: iadd
-    //   5370: istore 6
-    //   5372: goto -2691 -> 2681
+    //   5055: goto -3537 -> 1518
+    //   5058: astore 28
+    //   5060: iconst_0
+    //   5061: istore 5
+    //   5063: lconst_0
+    //   5064: lstore 15
+    //   5066: aload 23
+    //   5068: astore 26
+    //   5070: lload 11
+    //   5072: lstore 13
+    //   5074: aconst_null
+    //   5075: astore 27
+    //   5077: iconst_1
+    //   5078: istore_3
+    //   5079: aload 24
+    //   5081: astore 23
+    //   5083: aconst_null
+    //   5084: astore 29
+    //   5086: aload 25
+    //   5088: astore 24
+    //   5090: lload 15
+    //   5092: lstore 11
+    //   5094: aload 29
+    //   5096: astore 25
+    //   5098: goto -3580 -> 1518
+    //   5101: astore 28
+    //   5103: iconst_0
+    //   5104: istore 5
+    //   5106: iconst_1
+    //   5107: istore_3
+    //   5108: lconst_0
+    //   5109: lstore 15
+    //   5111: aload 23
+    //   5113: astore 27
+    //   5115: lload 11
+    //   5117: lstore 13
+    //   5119: aconst_null
+    //   5120: astore 25
+    //   5122: aconst_null
+    //   5123: astore 29
+    //   5125: aload 24
+    //   5127: astore 23
+    //   5129: aload 26
+    //   5131: astore 24
+    //   5133: lload 15
+    //   5135: lstore 11
+    //   5137: aload 27
+    //   5139: astore 26
+    //   5141: aload 29
+    //   5143: astore 27
+    //   5145: goto -3627 -> 1518
+    //   5148: astore 28
+    //   5150: iconst_0
+    //   5151: istore 6
+    //   5153: iconst_1
+    //   5154: istore_3
+    //   5155: lload 13
+    //   5157: lstore 15
+    //   5159: aconst_null
+    //   5160: astore 29
+    //   5162: iload 5
+    //   5164: istore 4
+    //   5166: aconst_null
+    //   5167: astore 30
+    //   5169: lload 11
+    //   5171: lstore 13
+    //   5173: aload 24
+    //   5175: astore 23
+    //   5177: aload 25
+    //   5179: astore 27
+    //   5181: aload 26
+    //   5183: astore 24
+    //   5185: iload 6
+    //   5187: istore 5
+    //   5189: lload 15
+    //   5191: lstore 11
+    //   5193: aload 30
+    //   5195: astore 25
+    //   5197: aload 27
+    //   5199: astore 26
+    //   5201: aload 29
+    //   5203: astore 27
+    //   5205: goto -3687 -> 1518
+    //   5208: astore 28
+    //   5210: iconst_0
+    //   5211: istore 6
+    //   5213: iconst_1
+    //   5214: istore_3
+    //   5215: aload 23
+    //   5217: astore 29
+    //   5219: iload 5
+    //   5221: istore 4
+    //   5223: aload 26
+    //   5225: astore 30
+    //   5227: aload 24
+    //   5229: astore 23
+    //   5231: lload 11
+    //   5233: lstore 15
+    //   5235: aload 25
+    //   5237: astore 26
+    //   5239: aload 30
+    //   5241: astore 24
+    //   5243: iload 6
+    //   5245: istore 5
+    //   5247: lload 13
+    //   5249: lstore 11
+    //   5251: lload 15
+    //   5253: lstore 13
+    //   5255: aload 27
+    //   5257: astore 25
+    //   5259: aload 29
+    //   5261: astore 27
+    //   5263: goto -3745 -> 1518
+    //   5266: astore 28
+    //   5268: iload 4
+    //   5270: istore 6
+    //   5272: lload 11
+    //   5274: lstore 15
+    //   5276: iload 5
+    //   5278: istore 4
+    //   5280: aload 25
+    //   5282: astore 29
+    //   5284: aload 23
+    //   5286: astore 25
+    //   5288: iconst_1
+    //   5289: istore_3
+    //   5290: aload 24
+    //   5292: astore 23
+    //   5294: aload 26
+    //   5296: astore 24
+    //   5298: iload 6
+    //   5300: istore 5
+    //   5302: lload 13
+    //   5304: lstore 11
+    //   5306: lload 15
+    //   5308: lstore 13
+    //   5310: aload 29
+    //   5312: astore 26
+    //   5314: goto -3796 -> 1518
+    //   5317: astore 23
+    //   5319: goto -4608 -> 711
+    //   5322: iconst_0
+    //   5323: istore 4
+    //   5325: lconst_0
+    //   5326: lstore 13
+    //   5328: aconst_null
+    //   5329: astore 23
+    //   5331: aconst_null
+    //   5332: astore 27
+    //   5334: goto -1874 -> 3460
+    //   5337: aload 25
+    //   5339: astore 26
+    //   5341: aload 23
+    //   5343: astore 25
+    //   5345: goto -5034 -> 311
+    //   5348: iconst_0
+    //   5349: istore_3
+    //   5350: goto -2884 -> 2466
+    //   5353: iload 4
+    //   5355: iconst_1
+    //   5356: iadd
+    //   5357: istore 4
+    //   5359: goto -2731 -> 2628
+    //   5362: iload 6
+    //   5364: iconst_1
+    //   5365: iadd
+    //   5366: istore 6
+    //   5368: goto -2687 -> 2681
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	5375	0	this	HttpCommunicator
-    //   0	5375	1	parambakw	bakw
-    //   0	5375	2	parambaku	baku
-    //   0	5375	3	paramBoolean	boolean
-    //   25	5337	4	i	int
-    //   199	5106	5	j	int
-    //   51	5320	6	k	int
-    //   40	4787	7	m	int
-    //   37	4736	8	n	int
-    //   2676	1236	9	i1	int
+    //   0	5371	0	this	HttpCommunicator
+    //   0	5371	1	parambbmg	bbmg
+    //   0	5371	2	parambbme	bbme
+    //   0	5371	3	paramBoolean	boolean
+    //   25	5333	4	i	int
+    //   199	5102	5	j	int
+    //   51	5316	6	k	int
+    //   40	4783	7	m	int
+    //   37	4204	8	n	int
+    //   2676	2093	9	i1	int
     //   3012	43	10	i2	int
-    //   28	5281	11	l1	long
-    //   31	5300	13	l2	long
-    //   289	5022	15	l3	long
-    //   3005	246	17	l4	long
-    //   2945	971	19	l5	long
+    //   28	5277	11	l1	long
+    //   31	5296	13	l2	long
+    //   289	5018	15	l3	long
+    //   2953	1820	17	l4	long
+    //   3005	246	19	l5	long
     //   34	5003	21	bool1	boolean
     //   344	442	22	bool2	boolean
     //   16	1052	23	str	String
     //   1077	1	23	localException1	Exception
     //   1372	490	23	localObject1	Object
     //   1934	276	23	localObject2	Object
-    //   2241	1480	23	localObject3	Object
-    //   3756	122	23	localException2	Exception
-    //   3893	441	23	localObject4	Object
-    //   4367	3	23	localException3	Exception
-    //   4471	1	23	localIOException1	IOException
-    //   4476	1	23	localIOException2	IOException
-    //   4518	1	23	localObject5	Object
-    //   4547	1	23	localObject6	Object
-    //   4566	33	23	localObject7	Object
-    //   4604	87	23	localObject8	Object
-    //   4705	21	23	localObject9	Object
-    //   4731	83	23	localObject10	Object
-    //   4824	1	23	localObject11	Object
-    //   4865	432	23	localObject12	Object
-    //   5321	1	23	localThrowable1	Throwable
-    //   5333	13	23	localObject13	Object
-    //   7	4351	24	localObject14	Object
-    //   4491	1	24	localIOException3	IOException
-    //   4496	1	24	localIOException4	IOException
-    //   4501	1	24	localIOException5	IOException
-    //   4535	766	24	localObject15	Object
-    //   57	5291	25	localObject16	Object
-    //   81	4257	26	localObject17	Object
-    //   4466	1	26	localIOException6	IOException
-    //   4521	823	26	localObject18	Object
-    //   13	5324	27	localObject19	Object
-    //   22	3076	28	localObject20	Object
+    //   2241	1462	23	localObject3	Object
+    //   3748	122	23	localException2	Exception
+    //   3881	441	23	localObject4	Object
+    //   4363	3	23	localException3	Exception
+    //   4462	1	23	localIOException1	IOException
+    //   4467	1	23	localIOException2	IOException
+    //   4472	1	23	localIOException3	IOException
+    //   4514	1	23	localObject5	Object
+    //   4543	1	23	localObject6	Object
+    //   4562	33	23	localObject7	Object
+    //   4600	87	23	localObject8	Object
+    //   4701	21	23	localObject9	Object
+    //   4727	83	23	localObject10	Object
+    //   4820	1	23	localObject11	Object
+    //   4861	432	23	localObject12	Object
+    //   5317	1	23	localThrowable1	Throwable
+    //   5329	13	23	localObject13	Object
+    //   7	4347	24	localObject14	Object
+    //   4487	1	24	localIOException4	IOException
+    //   4492	1	24	localIOException5	IOException
+    //   4497	1	24	localIOException6	IOException
+    //   4531	766	24	localObject15	Object
+    //   57	5287	25	localObject16	Object
+    //   81	5259	26	localObject17	Object
+    //   13	5320	27	localObject18	Object
+    //   22	3076	28	localObject19	Object
     //   3153	1	28	localThrowable2	Throwable
-    //   3215	579	28	localObject21	Object
-    //   3875	1	28	localThrowable3	Throwable
-    //   4254	1	28	localObject22	Object
-    //   4288	16	28	localObject23	Object
-    //   4314	496	28	localObject24	Object
-    //   4836	1	28	localObject25	Object
-    //   4841	1	28	localThrowable4	Throwable
-    //   4876	1	28	localThrowable5	Throwable
-    //   4923	1	28	localThrowable6	Throwable
-    //   4970	1	28	localThrowable7	Throwable
+    //   3215	571	28	localObject20	Object
+    //   3867	1	28	localThrowable3	Throwable
+    //   4280	16	28	localObject21	Object
+    //   4298	22	28	localObject22	Object
+    //   4345	461	28	localObject23	Object
+    //   4832	1	28	localObject24	Object
+    //   4837	1	28	localThrowable4	Throwable
+    //   4872	1	28	localThrowable5	Throwable
+    //   4919	1	28	localThrowable6	Throwable
+    //   4966	1	28	localThrowable7	Throwable
     //   5014	1	28	localThrowable8	Throwable
-    //   5062	1	28	localThrowable9	Throwable
-    //   5105	1	28	localThrowable10	Throwable
-    //   5152	1	28	localThrowable11	Throwable
-    //   5212	1	28	localThrowable12	Throwable
-    //   5270	1	28	localThrowable13	Throwable
-    //   10	1	29	localObject26	Object
+    //   5058	1	28	localThrowable9	Throwable
+    //   5101	1	28	localThrowable10	Throwable
+    //   5148	1	28	localThrowable11	Throwable
+    //   5208	1	28	localThrowable12	Throwable
+    //   5266	1	28	localThrowable13	Throwable
+    //   10	1	29	localObject25	Object
     //   1462	53	29	localThrowable14	Throwable
-    //   1546	2711	29	localObject27	Object
-    //   4268	1	29	localException4	Exception
-    //   4283	1	29	localIOException7	IOException
-    //   4291	65	29	localObject28	Object
-    //   4481	1	29	localIOException8	IOException
-    //   4486	1	29	localIOException9	IOException
-    //   4585	18	29	localObject29	Object
-    //   4616	21	29	localObject30	Object
-    //   4647	18	29	localObject31	Object
-    //   4678	11	29	localObject32	Object
-    //   4720	10	29	localObject33	Object
-    //   4743	14	29	localObject34	Object
-    //   4770	22	29	localObject35	Object
-    //   4801	11	29	localObject36	Object
-    //   4899	416	29	localObject37	Object
-    //   19	4257	30	localObject38	Object
-    //   4306	26	30	localObject39	Object
-    //   5171	73	30	localObject40	Object
-    //   4	4391	31	localbaky	baky
-    //   159	2590	32	localObject41	Object
+    //   1546	2703	29	localObject26	Object
+    //   4260	1	29	localException4	Exception
+    //   4275	1	29	localIOException7	IOException
+    //   4283	65	29	localObject27	Object
+    //   4477	1	29	localIOException8	IOException
+    //   4482	1	29	localIOException9	IOException
+    //   4581	18	29	localObject28	Object
+    //   4612	21	29	localObject29	Object
+    //   4643	18	29	localObject30	Object
+    //   4674	11	29	localObject31	Object
+    //   4716	10	29	localObject32	Object
+    //   4739	14	29	localObject33	Object
+    //   4766	22	29	localObject34	Object
+    //   4797	11	29	localObject35	Object
+    //   4895	416	29	localObject36	Object
+    //   19	5221	30	localObject37	Object
+    //   4	4387	31	localbbmi	bbmi
+    //   159	2477	32	localObject38	Object
     // Exception table:
     //   from	to	target	type
     //   453	460	559	java/lang/Exception
@@ -3398,10 +3393,10 @@ public class HttpCommunicator
     //   2763	2795	1462	java/lang/Throwable
     //   2795	2847	1462	java/lang/Throwable
     //   2847	2858	1462	java/lang/Throwable
-    //   3926	4016	1462	java/lang/Throwable
-    //   4233	4242	1462	java/lang/Throwable
+    //   3918	4008	1462	java/lang/Throwable
+    //   4225	4234	1462	java/lang/Throwable
     //   1899	1908	1909	java/lang/Exception
-    //   4394	4405	1909	java/lang/Exception
+    //   4390	4401	1909	java/lang/Exception
     //   324	333	1934	finally
     //   337	346	1934	finally
     //   565	572	1934	finally
@@ -3439,7 +3434,7 @@ public class HttpCommunicator
     //   2763	2795	1934	finally
     //   2795	2847	1934	finally
     //   2847	2858	1934	finally
-    //   3926	4016	1934	finally
+    //   3918	4008	1934	finally
     //   2418	2425	2519	java/lang/Exception
     //   2430	2439	2519	java/lang/Exception
     //   2452	2464	2519	java/lang/Exception
@@ -3450,173 +3445,173 @@ public class HttpCommunicator
     //   2513	2518	2519	java/lang/Exception
     //   2876	2916	3153	java/lang/Throwable
     //   3141	3150	3153	java/lang/Throwable
-    //   3648	3655	3756	java/lang/Exception
-    //   3660	3669	3756	java/lang/Exception
-    //   3683	3695	3756	java/lang/Exception
-    //   3697	3705	3756	java/lang/Exception
-    //   3710	3715	3756	java/lang/Exception
-    //   3720	3725	3756	java/lang/Exception
-    //   3730	3735	3756	java/lang/Exception
-    //   3744	3749	3756	java/lang/Exception
-    //   2955	2972	3875	java/lang/Throwable
-    //   2993	2999	3875	java/lang/Throwable
-    //   3049	3057	3875	java/lang/Throwable
-    //   3073	3080	3875	java/lang/Throwable
-    //   3096	3102	3875	java/lang/Throwable
-    //   3118	3127	3875	java/lang/Throwable
-    //   3236	3243	3875	java/lang/Throwable
-    //   3273	3280	3875	java/lang/Throwable
-    //   3301	3307	3875	java/lang/Throwable
-    //   3323	3334	3875	java/lang/Throwable
-    //   3350	3356	3875	java/lang/Throwable
-    //   3372	3381	3875	java/lang/Throwable
-    //   3397	3404	3875	java/lang/Throwable
-    //   3420	3427	3875	java/lang/Throwable
-    //   3443	3448	3875	java/lang/Throwable
-    //   3791	3801	3875	java/lang/Throwable
-    //   3817	3822	3875	java/lang/Throwable
-    //   3838	3847	3875	java/lang/Throwable
-    //   3863	3872	3875	java/lang/Throwable
-    //   4118	4125	4219	java/lang/Exception
-    //   4130	4139	4219	java/lang/Exception
-    //   4152	4164	4219	java/lang/Exception
-    //   4166	4174	4219	java/lang/Exception
-    //   4178	4186	4219	java/lang/Exception
-    //   4190	4198	4219	java/lang/Exception
-    //   4203	4208	4219	java/lang/Exception
-    //   4213	4218	4219	java/lang/Exception
-    //   1541	1548	4268	java/lang/Exception
-    //   1552	1559	4268	java/lang/Exception
-    //   1568	1577	4268	java/lang/Exception
-    //   4275	4280	4283	java/io/IOException
-    //   1541	1548	4288	finally
-    //   1521	1528	4306	finally
-    //   1587	1592	4306	finally
-    //   1592	1604	4306	finally
-    //   4275	4280	4306	finally
-    //   4298	4303	4306	finally
-    //   4303	4306	4306	finally
-    //   1765	1772	4367	java/lang/Exception
-    //   1777	1786	4367	java/lang/Exception
-    //   1800	1812	4367	java/lang/Exception
-    //   1814	1822	4367	java/lang/Exception
-    //   1827	1832	4367	java/lang/Exception
-    //   1837	1842	4367	java/lang/Exception
-    //   1847	1852	4367	java/lang/Exception
-    //   1861	1866	4367	java/lang/Exception
-    //   2112	2119	4386	java/lang/Exception
-    //   2124	2133	4386	java/lang/Exception
-    //   2147	2159	4386	java/lang/Exception
-    //   2161	2169	4386	java/lang/Exception
-    //   2174	2179	4386	java/lang/Exception
-    //   2184	2189	4386	java/lang/Exception
-    //   2194	2199	4386	java/lang/Exception
-    //   2204	2209	4386	java/lang/Exception
-    //   513	521	4406	java/io/IOException
-    //   525	533	4410	java/io/IOException
-    //   538	543	4414	java/io/IOException
-    //   1006	1014	4418	java/io/IOException
-    //   1018	1026	4422	java/io/IOException
-    //   1031	1036	4426	java/io/IOException
-    //   1268	1276	4430	java/io/IOException
-    //   1280	1288	4434	java/io/IOException
-    //   1293	1298	4438	java/io/IOException
-    //   2478	2486	4442	java/io/IOException
-    //   2490	2498	4446	java/io/IOException
-    //   2503	2508	4450	java/io/IOException
-    //   4178	4186	4454	java/io/IOException
-    //   4190	4198	4458	java/io/IOException
-    //   4203	4208	4462	java/io/IOException
-    //   3710	3715	4466	java/io/IOException
-    //   3720	3725	4471	java/io/IOException
-    //   3730	3735	4476	java/io/IOException
-    //   1587	1592	4481	java/io/IOException
-    //   4298	4303	4486	java/io/IOException
-    //   1827	1832	4491	java/io/IOException
-    //   1837	1842	4496	java/io/IOException
-    //   1847	1852	4501	java/io/IOException
-    //   2174	2179	4506	java/io/IOException
-    //   2184	2189	4510	java/io/IOException
-    //   2194	2199	4514	java/io/IOException
-    //   42	50	4518	finally
-    //   168	198	4547	finally
-    //   201	241	4547	finally
-    //   256	266	4547	finally
-    //   266	277	4547	finally
-    //   277	296	4547	finally
-    //   311	324	4566	finally
-    //   59	83	4585	finally
-    //   87	111	4616	finally
-    //   114	142	4647	finally
-    //   142	168	4678	finally
-    //   2869	2876	4705	finally
-    //   2876	2916	4720	finally
-    //   3141	3150	4720	finally
-    //   2916	2933	4743	finally
-    //   3210	3217	4743	finally
-    //   2955	2972	4770	finally
-    //   2993	2999	4770	finally
-    //   3049	3057	4770	finally
-    //   3073	3080	4770	finally
-    //   3096	3102	4770	finally
-    //   3118	3127	4770	finally
-    //   3236	3243	4770	finally
-    //   3273	3280	4770	finally
-    //   3301	3307	4770	finally
-    //   3323	3334	4770	finally
-    //   3350	3356	4770	finally
-    //   3372	3381	4770	finally
-    //   3397	3404	4770	finally
-    //   3420	3427	4770	finally
-    //   3443	3448	4770	finally
-    //   3791	3801	4770	finally
-    //   3817	3822	4770	finally
-    //   3838	3847	4770	finally
-    //   3863	3872	4770	finally
-    //   3460	3471	4801	finally
-    //   4233	4242	4824	finally
-    //   1552	1559	4836	finally
-    //   1568	1577	4836	finally
-    //   42	50	4841	java/lang/Throwable
-    //   168	198	4876	java/lang/Throwable
-    //   201	241	4876	java/lang/Throwable
-    //   256	266	4876	java/lang/Throwable
-    //   266	277	4876	java/lang/Throwable
-    //   277	296	4876	java/lang/Throwable
-    //   311	324	4923	java/lang/Throwable
-    //   59	83	4970	java/lang/Throwable
+    //   3640	3647	3748	java/lang/Exception
+    //   3652	3661	3748	java/lang/Exception
+    //   3675	3687	3748	java/lang/Exception
+    //   3689	3697	3748	java/lang/Exception
+    //   3702	3707	3748	java/lang/Exception
+    //   3712	3717	3748	java/lang/Exception
+    //   3722	3727	3748	java/lang/Exception
+    //   3736	3741	3748	java/lang/Exception
+    //   2955	2972	3867	java/lang/Throwable
+    //   2993	2999	3867	java/lang/Throwable
+    //   3049	3057	3867	java/lang/Throwable
+    //   3073	3080	3867	java/lang/Throwable
+    //   3096	3102	3867	java/lang/Throwable
+    //   3118	3127	3867	java/lang/Throwable
+    //   3236	3243	3867	java/lang/Throwable
+    //   3273	3280	3867	java/lang/Throwable
+    //   3301	3307	3867	java/lang/Throwable
+    //   3323	3334	3867	java/lang/Throwable
+    //   3350	3356	3867	java/lang/Throwable
+    //   3372	3381	3867	java/lang/Throwable
+    //   3397	3404	3867	java/lang/Throwable
+    //   3420	3427	3867	java/lang/Throwable
+    //   3443	3448	3867	java/lang/Throwable
+    //   3783	3793	3867	java/lang/Throwable
+    //   3809	3814	3867	java/lang/Throwable
+    //   3830	3839	3867	java/lang/Throwable
+    //   3855	3864	3867	java/lang/Throwable
+    //   4110	4117	4211	java/lang/Exception
+    //   4122	4131	4211	java/lang/Exception
+    //   4144	4156	4211	java/lang/Exception
+    //   4158	4166	4211	java/lang/Exception
+    //   4170	4178	4211	java/lang/Exception
+    //   4182	4190	4211	java/lang/Exception
+    //   4195	4200	4211	java/lang/Exception
+    //   4205	4210	4211	java/lang/Exception
+    //   1541	1548	4260	java/lang/Exception
+    //   1552	1559	4260	java/lang/Exception
+    //   1568	1577	4260	java/lang/Exception
+    //   4267	4272	4275	java/io/IOException
+    //   1541	1548	4280	finally
+    //   1521	1528	4298	finally
+    //   1587	1592	4298	finally
+    //   1592	1604	4298	finally
+    //   4267	4272	4298	finally
+    //   4290	4295	4298	finally
+    //   4295	4298	4298	finally
+    //   1765	1772	4363	java/lang/Exception
+    //   1777	1786	4363	java/lang/Exception
+    //   1800	1812	4363	java/lang/Exception
+    //   1814	1822	4363	java/lang/Exception
+    //   1827	1832	4363	java/lang/Exception
+    //   1837	1842	4363	java/lang/Exception
+    //   1847	1852	4363	java/lang/Exception
+    //   1861	1866	4363	java/lang/Exception
+    //   2112	2119	4382	java/lang/Exception
+    //   2124	2133	4382	java/lang/Exception
+    //   2147	2159	4382	java/lang/Exception
+    //   2161	2169	4382	java/lang/Exception
+    //   2174	2179	4382	java/lang/Exception
+    //   2184	2189	4382	java/lang/Exception
+    //   2194	2199	4382	java/lang/Exception
+    //   2204	2209	4382	java/lang/Exception
+    //   513	521	4402	java/io/IOException
+    //   525	533	4406	java/io/IOException
+    //   538	543	4410	java/io/IOException
+    //   1006	1014	4414	java/io/IOException
+    //   1018	1026	4418	java/io/IOException
+    //   1031	1036	4422	java/io/IOException
+    //   1268	1276	4426	java/io/IOException
+    //   1280	1288	4430	java/io/IOException
+    //   1293	1298	4434	java/io/IOException
+    //   2478	2486	4438	java/io/IOException
+    //   2490	2498	4442	java/io/IOException
+    //   2503	2508	4446	java/io/IOException
+    //   4170	4178	4450	java/io/IOException
+    //   4182	4190	4454	java/io/IOException
+    //   4195	4200	4458	java/io/IOException
+    //   3702	3707	4462	java/io/IOException
+    //   3712	3717	4467	java/io/IOException
+    //   3722	3727	4472	java/io/IOException
+    //   1587	1592	4477	java/io/IOException
+    //   4290	4295	4482	java/io/IOException
+    //   1827	1832	4487	java/io/IOException
+    //   1837	1842	4492	java/io/IOException
+    //   1847	1852	4497	java/io/IOException
+    //   2174	2179	4502	java/io/IOException
+    //   2184	2189	4506	java/io/IOException
+    //   2194	2199	4510	java/io/IOException
+    //   42	50	4514	finally
+    //   168	198	4543	finally
+    //   201	241	4543	finally
+    //   256	266	4543	finally
+    //   266	277	4543	finally
+    //   277	296	4543	finally
+    //   311	324	4562	finally
+    //   59	83	4581	finally
+    //   87	111	4612	finally
+    //   114	142	4643	finally
+    //   142	168	4674	finally
+    //   2869	2876	4701	finally
+    //   2876	2916	4716	finally
+    //   3141	3150	4716	finally
+    //   2916	2933	4739	finally
+    //   3210	3217	4739	finally
+    //   2955	2972	4766	finally
+    //   2993	2999	4766	finally
+    //   3049	3057	4766	finally
+    //   3073	3080	4766	finally
+    //   3096	3102	4766	finally
+    //   3118	3127	4766	finally
+    //   3236	3243	4766	finally
+    //   3273	3280	4766	finally
+    //   3301	3307	4766	finally
+    //   3323	3334	4766	finally
+    //   3350	3356	4766	finally
+    //   3372	3381	4766	finally
+    //   3397	3404	4766	finally
+    //   3420	3427	4766	finally
+    //   3443	3448	4766	finally
+    //   3783	3793	4766	finally
+    //   3809	3814	4766	finally
+    //   3830	3839	4766	finally
+    //   3855	3864	4766	finally
+    //   3460	3471	4797	finally
+    //   4225	4234	4820	finally
+    //   1552	1559	4832	finally
+    //   1568	1577	4832	finally
+    //   42	50	4837	java/lang/Throwable
+    //   168	198	4872	java/lang/Throwable
+    //   201	241	4872	java/lang/Throwable
+    //   256	266	4872	java/lang/Throwable
+    //   266	277	4872	java/lang/Throwable
+    //   277	296	4872	java/lang/Throwable
+    //   311	324	4919	java/lang/Throwable
+    //   59	83	4966	java/lang/Throwable
     //   87	111	5014	java/lang/Throwable
-    //   114	142	5062	java/lang/Throwable
-    //   142	168	5105	java/lang/Throwable
-    //   2869	2876	5152	java/lang/Throwable
-    //   2916	2933	5212	java/lang/Throwable
-    //   3210	3217	5212	java/lang/Throwable
-    //   3460	3471	5270	java/lang/Throwable
-    //   701	706	5321	java/lang/Throwable
-    //   706	711	5321	java/lang/Throwable
+    //   114	142	5058	java/lang/Throwable
+    //   142	168	5101	java/lang/Throwable
+    //   2869	2876	5148	java/lang/Throwable
+    //   2916	2933	5208	java/lang/Throwable
+    //   3210	3217	5208	java/lang/Throwable
+    //   3460	3471	5266	java/lang/Throwable
+    //   701	706	5317	java/lang/Throwable
+    //   706	711	5317	java/lang/Throwable
   }
   
-  public void a(bakw parambakw, String paramString1, String paramString2)
+  public void a(bbmg parambbmg, String paramString1, String paramString2)
   {
     try
     {
-      axub.a(axub.b(parambakw.jdField_c_of_type_Int), parambakw.e().equals("POST"), axub.c(parambakw.jdField_b_of_type_Int), parambakw.jdField_a_of_type_JavaLangString, paramString1, paramString2);
+      ayui.a(ayui.b(parambbmg.jdField_c_of_type_Int), parambbmg.e().equals("POST"), ayui.c(parambbmg.jdField_b_of_type_Int), parambbmg.jdField_a_of_type_JavaLangString, paramString1, paramString2);
       return;
     }
-    catch (OutOfMemoryError parambakw) {}
+    catch (OutOfMemoryError parambbmg) {}
   }
   
-  protected void a(bakw parambakw, boolean paramBoolean, long paramLong)
+  protected void a(bbmg parambbmg, boolean paramBoolean, long paramLong)
   {
-    parambakw.jdField_g_of_type_Int = ((int)paramLong);
-    int i = parambakw.jdField_b_of_type_Int;
-    int j = parambakw.jdField_c_of_type_Int;
-    int k = parambakw.jdField_d_of_type_Int;
+    parambbmg.jdField_g_of_type_Int = ((int)paramLong);
+    int i = parambbmg.jdField_b_of_type_Int;
+    int j = parambbmg.jdField_c_of_type_Int;
+    int k = parambbmg.jdField_d_of_type_Int;
     if (((i == -1) || (j == -1)) && (QLog.isColorLevel())) {
       QLog.e("flowstat", 2, "fileType:" + i + ",busiType:" + j);
     }
     if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)) {
-      ((bakx)this.jdField_a_of_type_MqqUtilWeakReference.get()).countFlow(paramBoolean, k, i, j, paramLong);
+      ((bbmh)this.jdField_a_of_type_MqqUtilWeakReference.get()).countFlow(paramBoolean, k, i, j, paramLong);
     }
   }
   
@@ -3629,39 +3624,39 @@ public class HttpCommunicator
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Q.richmedia.HttpCommunicator", 2, "queueSize:" + this.jdField_a_of_type_Bakv.a() + " mConcurrentRunningMsgs:" + this.e + " mConcurrentLimit:" + this.jdField_d_of_type_Int + " reason:" + paramString + " tid:" + Thread.currentThread().getId());
+        QLog.d("Q.richmedia.HttpCommunicator", 2, "queueSize:" + this.jdField_a_of_type_Bbmf.a() + " mConcurrentRunningMsgs:" + this.e + " mConcurrentLimit:" + this.jdField_d_of_type_Int + " reason:" + paramString + " tid:" + Thread.currentThread().getId());
       }
-      if (this.jdField_a_of_type_Bakv.a() == 0) {
+      if (this.jdField_a_of_type_Bbmf.a() == 0) {
         return;
       }
     }
-    baku[] arrayOfbaku;
+    bbme[] arrayOfbbme;
     int j;
     if (this.e < this.jdField_d_of_type_Int)
     {
-      paramString = this.jdField_a_of_type_Bakv.a(false);
+      paramString = this.jdField_a_of_type_Bbmf.a(false);
       if (paramString != null)
       {
-        arrayOfbaku = this.jdField_a_of_type_ArrayOfBaku;
-        j = arrayOfbaku.length;
+        arrayOfbbme = this.jdField_a_of_type_ArrayOfBbme;
+        j = arrayOfbbme.length;
       }
     }
     for (;;)
     {
-      baku localbaku;
-      bakw localbakw;
+      bbme localbbme;
+      bbmg localbbmg;
       if (i < j)
       {
-        localbaku = arrayOfbaku[i];
-        localbakw = localbaku.jdField_a_of_type_Bakw;
-        if (localbaku.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+        localbbme = arrayOfbbme[i];
+        localbbmg = localbbme.jdField_a_of_type_Bbmg;
+        if (localbbme.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
           break label268;
         }
-        this.jdField_a_of_type_Bakv.a(paramString);
+        this.jdField_a_of_type_Bbmf.a(paramString);
         paramString.b();
-        localbaku.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        localbaku.jdField_a_of_type_Bakw = paramString;
-        localbaku.a(paramString);
+        localbbme.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        localbbme.jdField_a_of_type_Bbmg = paramString;
+        localbbme.a(paramString);
         this.e += 1;
         paramString.jdField_h_of_type_Long = (SystemClock.uptimeMillis() - paramString.jdField_g_of_type_Long);
         if (QLog.isColorLevel()) {
@@ -3672,54 +3667,54 @@ public class HttpCommunicator
       {
         return;
         label268:
-        if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (!localbaku.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (localbakw == null) || (localbakw.b() <= paramString.b())) {
+        if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (!localbbme.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (localbbmg == null) || (localbbmg.b() <= paramString.b())) {
           break;
         }
-        localbaku.a();
+        localbbme.a();
       }
       i += 1;
     }
   }
   
-  void a(boolean paramBoolean, int paramInt, HttpURLConnection paramHttpURLConnection, bakw parambakw, Throwable paramThrowable)
+  void a(boolean paramBoolean, int paramInt, HttpURLConnection paramHttpURLConnection, bbmg parambbmg, Throwable paramThrowable)
   {
     if ((paramThrowable instanceof IllegalArgumentException))
     {
-      parambakw.a(9020, paramInt, paramThrowable.toString());
+      parambbmg.a(9020, paramInt, paramThrowable.toString());
       return;
     }
     if ((paramThrowable instanceof IllegalStateException))
     {
-      parambakw.a(9057, paramInt, paramThrowable.toString());
+      parambbmg.a(9057, paramInt, paramThrowable.toString());
       return;
     }
     if ((paramThrowable instanceof IOException))
     {
       if ("request cancelled".equals(paramThrowable.getMessage()))
       {
-        parambakw.a(9037, paramInt, paramThrowable.toString());
+        parambbmg.a(9037, paramInt, paramThrowable.toString());
         return;
       }
       if ("httpcommunicator closed".equals(paramThrowable.getMessage()))
       {
-        parambakw.a(9366, paramInt, paramThrowable.getMessage());
+        parambbmg.a(9366, paramInt, paramThrowable.getMessage());
         return;
       }
       if ("preempted by higher msg".equals(paramThrowable.getMessage()))
       {
-        parambakw.a(9361, paramInt, paramThrowable.toString());
+        parambbmg.a(9361, paramInt, paramThrowable.toString());
         return;
       }
       if ("content-length zero".equals(paramThrowable.getMessage()))
       {
-        paramHttpURLConnection = axou.a("Q", -9531L);
-        parambakw.b(bakw.jdField_f_of_type_JavaLangString, paramHttpURLConnection);
-        parambakw.a(-9527, paramInt, "content zero");
+        paramHttpURLConnection = ayoz.a("Q", -9531L);
+        parambbmg.b(bbmg.jdField_f_of_type_JavaLangString, paramHttpURLConnection);
+        parambbmg.a(-9527, paramInt, "content zero");
         return;
       }
       if ((paramThrowable instanceof MalformedURLException))
       {
-        parambakw.a(9048, paramInt, paramThrowable.toString());
+        parambbmg.a(9048, paramInt, paramThrowable.toString());
         return;
       }
       if ((paramThrowable instanceof InterruptedIOException))
@@ -3728,13 +3723,13 @@ public class HttpCommunicator
         {
           if (paramBoolean)
           {
-            parambakw.a(9014, paramInt, paramThrowable.toString());
+            parambbmg.a(9014, paramInt, paramThrowable.toString());
             return;
           }
-          parambakw.a(9050, paramInt, paramThrowable.toString());
+          parambbmg.a(9050, paramInt, paramThrowable.toString());
           return;
         }
-        parambakw.a(9049, paramInt, paramThrowable.toString());
+        parambbmg.a(9049, paramInt, paramThrowable.toString());
         return;
       }
       if ((paramThrowable instanceof SocketException))
@@ -3756,30 +3751,30 @@ public class HttpCommunicator
         }
         if ((paramThrowable instanceof ConnectException))
         {
-          parambakw.a(9052, paramInt, paramHttpURLConnection);
+          parambbmg.a(9052, paramInt, paramHttpURLConnection);
           return;
         }
         if ((paramThrowable instanceof NoRouteToHostException))
         {
-          parambakw.a(9053, paramInt, paramHttpURLConnection);
+          parambbmg.a(9053, paramInt, paramHttpURLConnection);
           return;
         }
         if ((paramThrowable instanceof PortUnreachableException))
         {
-          parambakw.a(9054, paramInt, paramHttpURLConnection);
+          parambbmg.a(9054, paramInt, paramHttpURLConnection);
           return;
         }
-        parambakw.a(9051, paramInt, paramHttpURLConnection);
+        parambbmg.a(9051, paramInt, paramHttpURLConnection);
         return;
       }
       if ((paramThrowable instanceof UnknownHostException))
       {
-        parambakw.a(9055, paramInt, paramThrowable.toString());
+        parambbmg.a(9055, paramInt, paramThrowable.toString());
         return;
       }
       if ((paramThrowable instanceof EOFException))
       {
-        parambakw.a(9056, paramInt, paramThrowable.getMessage());
+        parambbmg.a(9056, paramInt, paramThrowable.getMessage());
         return;
       }
       paramThrowable = paramThrowable.toString();
@@ -3788,8 +3783,8 @@ public class HttpCommunicator
       }
       for (;;)
       {
-        parambakw.a(9047, paramInt, paramThrowable);
-        parambakw.b(bakw.jdField_f_of_type_JavaLangString, paramHttpURLConnection);
+        parambbmg.a(9047, paramInt, paramThrowable);
+        parambbmg.b(bbmg.jdField_f_of_type_JavaLangString, paramHttpURLConnection);
         return;
         if (paramThrowable.contains("Connection refused"))
         {
@@ -3815,7 +3810,7 @@ public class HttpCommunicator
         {
           if (paramThrowable.contains("unaccpet content type"))
           {
-            parambakw.a(9064, paramInt, paramThrowable);
+            parambbmg.a(9064, paramInt, paramThrowable);
             return;
           }
           paramHttpURLConnection = "N_" + -20007;
@@ -3824,29 +3819,29 @@ public class HttpCommunicator
     }
     if ((paramThrowable instanceof SecurityException))
     {
-      parambakw.a(9022, paramInt, paramThrowable.toString());
+      parambbmg.a(9022, paramInt, paramThrowable.toString());
       return;
     }
     paramHttpURLConnection = paramThrowable.getMessage();
     if ((!TextUtils.isEmpty(paramHttpURLConnection)) && (paramHttpURLConnection.contains("FlowDecoderExp")))
     {
-      parambakw.a(9058, paramInt, paramHttpURLConnection);
+      parambbmg.a(9058, paramInt, paramHttpURLConnection);
       return;
     }
     if ((!TextUtils.isEmpty(paramHttpURLConnection)) && (paramHttpURLConnection.contains("DecryptError")))
     {
-      parambakw.a(9059, paramInt, paramHttpURLConnection);
+      parambbmg.a(9059, paramInt, paramHttpURLConnection);
       return;
     }
     try
     {
-      parambakw.a(9322, paramInt, Log.getStackTraceString(paramThrowable));
+      parambbmg.a(9322, paramInt, Log.getStackTraceString(paramThrowable));
       return;
     }
     catch (OutOfMemoryError paramHttpURLConnection) {}
   }
   
-  public int b(bakw parambakw)
+  public int b(bbmg parambbmg)
   {
     int i = this.jdField_c_of_type_Int;
     int j = -1;
@@ -3854,13 +3849,13 @@ public class HttpCommunicator
     {
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        if ((!this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Bakv.a() < i))
+        if ((!this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Bbmf.a() < i))
         {
           i = this.jdField_a_of_type_Int + 1;
           this.jdField_a_of_type_Int = i;
-          parambakw.a(i);
-          this.jdField_a_of_type_Bakv.a(parambakw);
-          parambakw.a().a(parambakw, null, 0);
+          parambbmg.a(i);
+          this.jdField_a_of_type_Bbmf.a(parambbmg);
+          parambbmg.a().a(parambbmg, null, 0);
           j = this.jdField_a_of_type_Int;
           i = j;
           if (!this.jdField_b_of_type_Boolean)
@@ -3869,10 +3864,10 @@ public class HttpCommunicator
             i = j;
           }
           ??? = new Object();
-          parambakw.jdField_a_of_type_JavaLangObject = ???;
-          parambakw.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+          parambbmg.jdField_a_of_type_JavaLangObject = ???;
+          parambbmg.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
           a("sendMsgSync");
-          if (parambakw.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
+          if (parambbmg.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
         }
       }
       try
@@ -3886,14 +3881,14 @@ public class HttpCommunicator
         QLog.e("Q.richmedia.HttpCommunicator", 2, "exceed queue limit");
         i = j;
         continue;
-        parambakw = finally;
-        throw parambakw;
+        parambbmg = finally;
+        throw parambbmg;
       }
-      catch (InterruptedException parambakw)
+      catch (InterruptedException parambbmg)
       {
         for (;;)
         {
-          parambakw.printStackTrace();
+          parambbmg.printStackTrace();
         }
       }
       finally {}
@@ -3905,7 +3900,7 @@ public class HttpCommunicator
     this.jdField_a_of_type_MqqOsMqqHandler.post(new HttpCommunicator.3(this));
   }
   
-  void b(int paramInt, HttpURLConnection paramHttpURLConnection, bakw parambakw)
+  void b(int paramInt, HttpURLConnection paramHttpURLConnection, bbmg parambbmg)
   {
     new StringBuilder().append("Response code: ").append(paramInt).toString();
     long l2 = 0L;
@@ -3916,9 +3911,9 @@ public class HttpCommunicator
       try
       {
         l1 = Long.parseLong(str);
-        paramHttpURLConnection = axou.a(paramInt, l1);
-        parambakw.b(bakw.jdField_f_of_type_JavaLangString, paramHttpURLConnection);
-        parambakw.a(-9527, paramInt, paramHttpURLConnection);
+        paramHttpURLConnection = ayoz.a(paramInt, l1);
+        parambbmg.b(bbmg.jdField_f_of_type_JavaLangString, paramHttpURLConnection);
+        parambbmg.a(-9527, paramInt, paramHttpURLConnection);
         return;
       }
       catch (Exception paramHttpURLConnection)
@@ -3947,15 +3942,15 @@ public class HttpCommunicator
     }
   }
   
-  public void b(bakw parambakw)
+  public void b(bbmg parambbmg)
   {
-    if (parambakw != null)
+    if (parambbmg != null)
     {
-      baky localbaky = parambakw.a();
-      if ((localbaky instanceof axou)) {
-        ((axou)localbaky).a(2, 9014, "sscm http timeout");
+      bbmi localbbmi = parambbmg.a();
+      if ((localbbmi instanceof ayoz)) {
+        ((ayoz)localbbmi).a(2, 9014, "sscm http timeout");
       }
-      parambakw.a().b(parambakw, null);
+      parambbmg.a().b(parambbmg, null);
     }
   }
   
@@ -3966,29 +3961,29 @@ public class HttpCommunicator
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       l = System.currentTimeMillis();
-      bakw localbakw;
+      bbmg localbbmg;
       do
       {
-        localbakw = this.jdField_a_of_type_Bakv.a(true);
-        if (localbakw == null) {
+        localbbmg = this.jdField_a_of_type_Bbmf.a(true);
+        if (localbbmg == null) {
           break;
         }
-      } while ((localbakw == null) || (localbakw.a() == null));
-      localbakw.a(9366, -1, "httpcommunicator_close");
-      localbakw.a().b(localbakw, localbakw);
+      } while ((localbbmg == null) || (localbbmg.a() == null));
+      localbbmg.a(9366, -1, "httpcommunicator_close");
+      localbbmg.a().b(localbbmg, localbbmg);
     }
-    this.jdField_a_of_type_Bakv.a();
-    if (this.jdField_a_of_type_ArrayOfBaku != null)
+    this.jdField_a_of_type_Bbmf.a();
+    if (this.jdField_a_of_type_ArrayOfBbme != null)
     {
-      baku[] arrayOfbaku = this.jdField_a_of_type_ArrayOfBaku;
-      int j = arrayOfbaku.length;
+      bbme[] arrayOfbbme = this.jdField_a_of_type_ArrayOfBbme;
+      int j = arrayOfbbme.length;
       while (i < j)
       {
-        arrayOfbaku[i].sendEmptyMessage(1);
+        arrayOfbbme[i].sendEmptyMessage(1);
         i += 1;
       }
     }
-    this.jdField_a_of_type_ArrayOfBaku = null;
+    this.jdField_a_of_type_ArrayOfBbme = null;
     this.e = 0;
     this.jdField_d_of_type_Int = 0;
     if (QLog.isColorLevel()) {

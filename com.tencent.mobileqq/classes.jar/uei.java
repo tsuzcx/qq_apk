@@ -1,6 +1,23 @@
-public abstract interface uei
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import mqq.os.MqqHandler;
+
+public class uei
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public abstract void a(int paramInt);
+  uei(ueg paramueg) {}
+  
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    ueg.a(this.a).d = paramTVK_IMediaPlayer.getDuration();
+    ueg.a(this.a).e = paramTVK_IMediaPlayer.getCurrentPostion();
+    paramTVK_IMediaPlayer = this.a.a;
+    if (paramTVK_IMediaPlayer != null) {
+      ThreadManager.getUIHandler().post(new VideoViewTVKImpl.2.1(this, paramTVK_IMediaPlayer));
+    }
+  }
 }
 
 

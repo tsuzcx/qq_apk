@@ -1,102 +1,45 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
 
 public class abnh
-  extends ajrv
+  implements GestureDetector.OnDoubleTapListener
 {
-  public abnh(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public abnh(MainFragment paramMainFragment) {}
   
-  protected void a(Object paramObject)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QQSetting2Activity", 2, String.format(Locale.getDefault(), "onGetPhoneUnityLocalData data: %s, create: %s, count: %s", new Object[] { paramObject, Boolean.valueOf(this.a.jdField_a_of_type_Boolean), Integer.valueOf(this.a.jdField_a_of_type_Int) }));
+      QLog.d("MainFragment", 2, "onDoubleTap() called with: e = [" + paramMotionEvent + "]");
     }
-    boolean bool1;
-    if (paramObject == null)
+    paramMotionEvent = (Conversation)this.a.a(Conversation.class);
+    if (paramMotionEvent != null) {}
+    for (int i = paramMotionEvent.d;; i = 0)
     {
-      bool1 = true;
-      boolean bool2 = bool1;
-      if (!bool1)
-      {
-        bool2 = bool1;
-        if ((paramObject instanceof ajoe)) {
-          bool2 = ((ajoe)paramObject).b;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("DynimiIcon", 2, "onDoubleTap() unReadCount = " + i);
       }
-      paramObject = this.a.findViewById(2131307483);
-      if (paramObject != null)
-      {
-        if (!bool2) {
-          break label190;
-        }
-        paramObject.setVisibility(0);
-        if (!this.a.jdField_a_of_type_Boolean) {
-          break label138;
-        }
-        this.a.a(true);
+      paramMotionEvent = this.a.b();
+      if ((paramMotionEvent instanceof Conversation)) {
+        ((Conversation)paramMotionEvent).c();
       }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
-      bool1 = false;
-      break;
-      label138:
-      if (this.a.jdField_a_of_type_Int == 0)
-      {
-        this.a.a(false);
+      if (i == 0) {
+        MainFragment.d(this.a);
       }
-      else
-      {
-        paramObject = (ajof)this.a.app.getManager(102);
-        QQSettingSettingActivity.a(this.a, true, paramObject.a);
-        continue;
-        label190:
-        paramObject.setVisibility(8);
-      }
+      return false;
     }
   }
   
-  public void a(boolean paramBoolean, int paramInt, String paramString)
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    if (this.a.isFinishing()) {}
-    do
-    {
-      return;
-      if (paramBoolean)
-      {
-        paramString = this.a;
-        if (paramInt == 1) {}
-        for (paramBoolean = bool;; paramBoolean = false)
-        {
-          QQSettingSettingActivity.a(paramString, paramBoolean);
-          return;
-        }
-      }
-    } while (!this.a.isResume());
-    paramString = this.a.getString(2131626567);
-    bbmy.a(this.a.getApplicationContext(), paramString, 0).b(this.a.getTitleBarHeight());
+    return false;
   }
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQSetting2Activity", 2, "onGetPhoneUnityInfo isSuc: " + paramBoolean);
-    }
-    if (this.a.isFinishing()) {}
-    do
-    {
-      return;
-      QQSettingSettingActivity.a(this.a, paramBoolean, paramBundle);
-    } while (!this.a.isResume());
-    paramBundle = this.a;
-    paramBundle.jdField_a_of_type_Int -= 1;
+    return false;
   }
 }
 

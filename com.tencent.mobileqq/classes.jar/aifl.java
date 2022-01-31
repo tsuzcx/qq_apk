@@ -1,53 +1,92 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloManager.20.1;
-import com.tencent.mobileqq.apollo.data.ApolloPreDownloadData;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.Comparator;
 
 public class aifl
-  extends batl
+  implements Comparator<TroopMemberInfo>
 {
-  aifl(aifg paramaifg) {}
+  private aifl(TroopAddFrdsInnerFrame paramTroopAddFrdsInnerFrame) {}
   
-  public void onDoneFile(batm parambatm)
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    if ((parambatm == null) || (this.a.a == null)) {}
-    String str1;
-    do
+    int j = 0;
+    int k = 0;
+    int i;
+    if (this.a.f == TroopAddFrdsInnerFrame.e)
     {
-      return;
-      if (parambatm.a != 0)
-      {
-        QLog.e("ApolloManager", 1, new Object[] { "preDownloadListener task error:", Integer.valueOf(parambatm.a()) });
-        return;
+      i = paramTroopMemberInfo1.addState - paramTroopMemberInfo2.addState;
+      if (i == 0) {
+        if (paramTroopMemberInfo1.commonFrdCnt == -2147483648)
+        {
+          i = 0;
+          if (paramTroopMemberInfo2.commonFrdCnt != -2147483648) {
+            break label189;
+          }
+          j = 0;
+          label56:
+          if ((i != 0) || (j != 0) || (TroopAddFrdsInnerFrame.a(this.a) == null)) {
+            break label257;
+          }
+          if ((!TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo1.memberuin)) && (!TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo1.memberuin))) {
+            break label252;
+          }
+          i = 1;
+          label111:
+          if (!TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo2.memberuin))
+          {
+            j = k;
+            if (!TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo2.memberuin)) {}
+          }
+          else
+          {
+            j = 1;
+          }
+          j -= i;
+          i = j;
+          if (j == 0) {
+            i = Long.signum(paramTroopMemberInfo2.last_active_time - paramTroopMemberInfo1.last_active_time);
+          }
+        }
       }
-      str1 = parambatm.c;
-      parambatm = parambatm.a();
-    } while (parambatm == null);
-    ApolloPreDownloadData localApolloPreDownloadData = (ApolloPreDownloadData)parambatm.getSerializable(str1);
-    if (localApolloPreDownloadData == null)
-    {
-      QLog.e("ApolloManager", 1, "preDownloadListener res onDoneFile but preDownload data is null");
-      return;
     }
-    if (!TextUtils.isEmpty(localApolloPreDownloadData.zipDir)) {}
-    for (parambatm = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.zipDir;; parambatm = aiys.t + localApolloPreDownloadData.resId + ".zip")
+    for (;;)
     {
-      String str2 = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.dir;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloManager", 2, new Object[] { "preDownloadListener res zip done reportId:", localApolloPreDownloadData.reportId, ", url:", str1 });
+      return i;
+      i = paramTroopMemberInfo1.commonFrdCnt;
+      break;
+      label189:
+      j = paramTroopMemberInfo2.commonFrdCnt;
+      break label56;
+      return i;
+      i = j;
+      if (this.a.f == TroopAddFrdsInnerFrame.d)
+      {
+        i = j;
+        if (paramTroopMemberInfo1 != null)
+        {
+          i = j;
+          if (paramTroopMemberInfo1.displayedNamePinyinFirst != null)
+          {
+            i = j;
+            if (paramTroopMemberInfo2 != null)
+            {
+              return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
+              label252:
+              i = 0;
+              break label111;
+              label257:
+              i = j - i;
+            }
+          }
+        }
       }
-      ThreadManager.getSubThreadHandler().post(new ApolloManager.20.1(this, localApolloPreDownloadData, parambatm, str2));
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aifl
  * JD-Core Version:    0.7.0.1
  */

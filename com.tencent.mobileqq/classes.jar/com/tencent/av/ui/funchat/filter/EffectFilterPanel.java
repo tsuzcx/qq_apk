@@ -22,25 +22,25 @@ import com.tencent.av.ui.AVActivity.AnimationTrigger;
 import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import krx;
-import kvq;
-import kxa;
-import kxf;
-import mbx;
-import mby;
-import mcc;
+import lcl;
+import lgf;
+import lhp;
+import lhu;
+import mmw;
+import mmx;
+import mnb;
 
 public class EffectFilterPanel
   extends RelativeLayout
-  implements kxa<FilterItem>
+  implements lhp<FilterItem>
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private EffectFilterPanel.MyScroolTextDispearRunnable jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel$MyScroolTextDispearRunnable;
   private EffectFilterTextPager jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager;
-  private kxf jdField_a_of_type_Kxf;
-  mbx jdField_a_of_type_Mbx;
+  private lhu jdField_a_of_type_Lhu;
+  mmw jdField_a_of_type_Mmw;
   private boolean jdField_a_of_type_Boolean;
   
   public EffectFilterPanel(Context paramContext, VideoAppInterface paramVideoAppInterface)
@@ -49,8 +49,8 @@ public class EffectFilterPanel
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel$MyScroolTextDispearRunnable = new EffectFilterPanel.MyScroolTextDispearRunnable(this);
-    this.jdField_a_of_type_Kxf = ((kxf)paramVideoAppInterface.a(1));
-    this.jdField_a_of_type_Kxf.a(-1043L, this);
+    this.jdField_a_of_type_Lhu = ((lhu)paramVideoAppInterface.a(1));
+    this.jdField_a_of_type_Lhu.a(-1043L, this);
     a(paramContext, paramVideoAppInterface);
   }
   
@@ -58,7 +58,7 @@ public class EffectFilterPanel
   {
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(450L);
-    localAlphaAnimation.setAnimationListener(new mby(this, this.jdField_a_of_type_AndroidWidgetImageView));
+    localAlphaAnimation.setAnimationListener(new mmx(this, this.jdField_a_of_type_AndroidWidgetImageView));
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAlphaAnimation);
   }
   
@@ -85,16 +85,16 @@ public class EffectFilterPanel
   void a(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
     long l = AudioHelper.b();
-    paramContext = (ViewGroup)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131494025, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131306551));
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager = ((EffectFilterTextPager)paramContext.findViewById(2131313134));
+    paramContext = (ViewGroup)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131559596, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131372249));
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager = ((EffectFilterTextPager)paramContext.findViewById(2131378958));
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setApp(paramVideoAppInterface);
     setOnFilterListenner(null);
-    paramContext = (FilterItem)this.jdField_a_of_type_Kxf.a();
-    paramVideoAppInterface = this.jdField_a_of_type_Kxf.a(null);
+    paramContext = (FilterItem)this.jdField_a_of_type_Lhu.a();
+    paramVideoAppInterface = this.jdField_a_of_type_Lhu.a(null);
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.a(paramVideoAppInterface);
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setCurrentFilter(paramContext);
-    this.jdField_a_of_type_Kxf.a(l, paramContext);
+    this.jdField_a_of_type_Lhu.a(l, paramContext);
   }
   
   public void a(FilterItem paramFilterItem, int paramInt) {}
@@ -102,7 +102,7 @@ public class EffectFilterPanel
   @TargetApi(11)
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    krx.c("EffectFilterPanel", "changeLayoutStyle: " + this.jdField_a_of_type_Boolean + "|" + paramBoolean1 + "|" + paramBoolean2);
+    lcl.c("EffectFilterPanel", "changeLayoutStyle: " + this.jdField_a_of_type_Boolean + "|" + paramBoolean1 + "|" + paramBoolean2);
     Object localObject;
     int i;
     if (this.jdField_a_of_type_Boolean != paramBoolean1)
@@ -112,7 +112,7 @@ public class EffectFilterPanel
         break label243;
       }
       localObject = getContext().getResources().getDisplayMetrics();
-      krx.c("EffectFilterPanel", "changeLayoutStyle 22: " + ((DisplayMetrics)localObject).widthPixels);
+      lcl.c("EffectFilterPanel", "changeLayoutStyle 22: " + ((DisplayMetrics)localObject).widthPixels);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(((DisplayMetrics)localObject).widthPixels / 2, -1);
       if (!paramBoolean2) {
         break label231;
@@ -127,7 +127,7 @@ public class EffectFilterPanel
       i = 11;
       label165:
       ((RelativeLayout.LayoutParams)localObject).addRule(i);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, -(int)getContext().getResources().getDimension(2131166452), 0, 0);
+      ((RelativeLayout.LayoutParams)localObject).setMargins(0, -(int)getContext().getResources().getDimension(2131297541), 0, 0);
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(0.9F);
       this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(0.9F);
@@ -148,7 +148,7 @@ public class EffectFilterPanel
       ((RelativeLayout.LayoutParams)localObject).height = -1;
       this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setLayoutParams((ViewGroup.LayoutParams)localObject);
       localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, (int)getContext().getResources().getDimension(2131166451), 0, 0);
+      ((RelativeLayout.LayoutParams)localObject).setMargins(0, (int)getContext().getResources().getDimension(2131297540), 0, 0);
       ((RelativeLayout.LayoutParams)localObject).addRule(14);
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
@@ -161,7 +161,7 @@ public class EffectFilterPanel
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.dispatchTouchEvent(paramMotionEvent);
-      krx.c("EffectFilterPanel", "onTouchEvent: " + paramMotionEvent.toString());
+      lcl.c("EffectFilterPanel", "onTouchEvent: " + paramMotionEvent.toString());
       return true;
     }
     return false;
@@ -172,30 +172,30 @@ public class EffectFilterPanel
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setAnimationTrigger(paramAnimationTrigger);
   }
   
-  public void setOnFilterListenner(mcc parammcc)
+  public void setOnFilterListenner(mnb parammnb)
   {
-    if (this.jdField_a_of_type_Mbx == null) {
-      this.jdField_a_of_type_Mbx = new mbx(this, parammcc);
+    if (this.jdField_a_of_type_Mmw == null) {
+      this.jdField_a_of_type_Mmw = new mmw(this, parammnb);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setOnFilterListenner(this.jdField_a_of_type_Mbx);
+      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setOnFilterListenner(this.jdField_a_of_type_Mmw);
       return;
-      this.jdField_a_of_type_Mbx.a(parammcc);
+      this.jdField_a_of_type_Mmw.a(parammnb);
     }
   }
   
   public void setVisibility(int paramInt)
   {
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setVisibility(paramInt);
-    kvq localkvq = VideoController.a().a();
-    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = localkvq.a;
+    lgf locallgf = VideoController.a().a();
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = locallgf.a;
     if ((localPtvTemplateInfo != null) && (!TextUtils.isEmpty(localPtvTemplateInfo.filtername))) {}
     for (int i = 1;; i = 0)
     {
-      if ((localkvq.au) && (i == 0))
+      if ((locallgf.au) && (i == 0))
       {
-        localkvq.au = false;
+        locallgf.au = false;
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel$MyScroolTextDispearRunnable, 4000L);
       }

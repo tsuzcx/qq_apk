@@ -1,24 +1,22 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
 
-final class azvi
-  extends View.AccessibilityDelegate
+public class azvi
+  implements DialogInterface.OnClickListener
 {
-  azvi(CharSequence paramCharSequence, String paramString) {}
+  public azvi(TroopMoreDetailFragment paramTroopMoreDetailFragment, boolean paramBoolean) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    if (this.jdField_a_of_type_JavaLangCharSequence != null) {
-      paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
+    if (this.jdField_a_of_type_Boolean) {
+      axqw.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
-    paramAccessibilityNodeInfo.setClassName(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azvi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,27 @@
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 
-public abstract interface asov
+public class asov
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString1, String paramString2, int paramInt);
+  public asov(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public abstract void a(String paramString1, String paramString2, long paramLong);
-  
-  public abstract void a(String paramString1, String paramString2, long paramLong1, long paramLong2);
-  
-  public abstract void a(String paramString1, String paramString2, File paramFile);
+  public void onClick(View paramView)
+  {
+    paramView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131378407);
+    aspy.a -= 1;
+    if (aspy.a < 1) {
+      aspy.a = 1;
+    }
+    paramView.setText(ajyc.a(2131706990) + aspy.a);
+    MultiAIOFragment.c(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asov
  * JD-Core Version:    0.7.0.1
  */

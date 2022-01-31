@@ -1,81 +1,118 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectOperateManager;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class lhj
-  extends lhl
 {
-  protected final Context a;
-  protected final int k;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private lhi[] jdField_a_of_type_ArrayOfLhi = new lhi[14];
   
-  public lhj(Context paramContext, int paramInt)
+  public lhj(VideoAppInterface paramVideoAppInterface)
   {
-    beeo.a(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.k = paramInt;
-    a(false);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    a(4);
+    a(5);
+    a(12);
+    a(10);
   }
   
-  protected Bitmap a()
+  public lhi a(int paramInt)
+  {
+    Object localObject1 = this.jdField_a_of_type_ArrayOfLhi[paramInt];
+    if (localObject1 != null) {
+      return localObject1;
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      lhi locallhi = this.jdField_a_of_type_ArrayOfLhi[paramInt];
+      localObject1 = locallhi;
+      if (locallhi == null)
+      {
+        locallhi = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt);
+        localObject1 = locallhi;
+        if (locallhi != null)
+        {
+          this.jdField_a_of_type_ArrayOfLhi[paramInt] = locallhi;
+          localObject1 = locallhi;
+        }
+      }
+      return localObject1;
+    }
+  }
+  
+  protected lhi a(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
     Object localObject = null;
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
-    localOptions.inScaled = false;
-    int i = mjg.a(this.jdField_a_of_type_AndroidContentContext);
-    localOptions.inSampleSize = 1;
-    if (i <= 480) {
-      localOptions.inSampleSize = 2;
-    }
-    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    try
+    long l1 = System.currentTimeMillis();
+    switch (paramInt)
     {
-      Bitmap localBitmap2 = BitmapFactory.decodeResource(localResources, this.k, localOptions);
-      localObject = localBitmap2;
+    case 9: 
+    default: 
+      lcl.c("BusinessManagerFactory", "error-->create Manager unknown name :" + paramInt);
+      paramVideoAppInterface = localObject;
     }
-    catch (OutOfMemoryError localOutOfMemoryError3)
+    for (;;)
     {
-      do
-      {
-        localOptions.inSampleSize *= 2;
-      } while (localResources == null);
-      try
-      {
-        localObject = BitmapFactory.decodeResource(localResources, this.k, localOptions);
-        return localObject;
+      if (paramVideoAppInterface != null) {
+        paramVideoAppInterface.a();
       }
-      catch (OutOfMemoryError localOutOfMemoryError1)
+      long l2 = System.currentTimeMillis();
+      lcl.c("BusinessManagerFactory", "create Manager,cost time:" + (l2 - l1));
+      return paramVideoAppInterface;
+      paramVideoAppInterface = new lju(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lhu(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new liv(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new ljb(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lje(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lhw(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new AVRedPacketManager(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new mpc(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new EffectOperateManager(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new ljl(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new ljk(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lhs(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lil(paramVideoAppInterface);
+    }
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    if ((paramInt >= 0) && (paramInt < 14) && (!lhi.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt)) && (a(paramInt).a(paramString))) {
+      lhi.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), paramInt, true);
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramInt >= 0)
+    {
+      bool1 = bool2;
+      if (paramInt < 14)
       {
-        localOptions.inSampleSize *= 2;
-        i = this.k;
-        try
-        {
-          Bitmap localBitmap1 = BitmapFactory.decodeResource(localResources, i, localOptions);
-          return localBitmap1;
+        bool1 = bool2;
+        if (this.jdField_a_of_type_ArrayOfLhi[paramInt] != null) {
+          bool1 = true;
         }
-        catch (OutOfMemoryError localOutOfMemoryError2) {}
       }
     }
-    return localObject;
-    return null;
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    if (!d()) {
-      paramBitmap.recycle();
-    }
-  }
-  
-  public int[] a(lgc paramlgc)
-  {
-    if (!c()) {
-      b(paramlgc);
-    }
-    return this.jdField_a_of_type_ArrayOfInt;
+    return bool1;
   }
 }
 

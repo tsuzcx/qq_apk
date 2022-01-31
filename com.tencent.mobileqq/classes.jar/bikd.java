@@ -1,9 +1,32 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
 
-public abstract interface bikd
+class bikd
+  implements Animator.AnimatorListener
 {
-  public abstract void a(List<bika> paramList, DoodleView paramDoodleView);
+  bikd(bikc parambikc) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoStoryPiecesPart", 2, "ptv panel down");
+    }
+    if (bikc.a(this.a) != null)
+    {
+      bikc.a(this.a).setAlpha(1.0F);
+      bikc.a(this.a).setVisibility(4);
+      bikc.a(this.a).b().a(Boolean.valueOf(false));
+    }
+    bikc.b(this.a);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

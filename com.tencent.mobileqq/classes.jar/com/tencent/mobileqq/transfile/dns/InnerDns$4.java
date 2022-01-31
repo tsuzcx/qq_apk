@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile.dns;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import axwx;
+import ayxe;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
@@ -13,14 +13,14 @@ import java.util.Map;
 public class InnerDns$4
   implements Runnable
 {
-  public InnerDns$4(axwx paramaxwx) {}
+  public InnerDns$4(ayxe paramayxe) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("InnerDns", 1, "syncAddressData called, mServerProcName=" + axwx.a(this.this$0) + ", mConnected=" + axwx.a(this.this$0));
+      QLog.i("InnerDns", 1, "syncAddressData called, mServerProcName=" + ayxe.a(this.this$0) + ", mConnected=" + ayxe.a(this.this$0));
     }
-    if (axwx.a(this.this$0)) {
+    if (ayxe.a(this.this$0)) {
       try
       {
         Object localObject1 = new Bundle();
@@ -31,18 +31,18 @@ public class InnerDns$4
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
             return;
           }
-          localObject1 = axwx.a((String)localObject1);
+          localObject1 = ayxe.a((String)localObject1);
           if (localObject1 == null) {
             return;
           }
           try
           {
-            axwx.a(this.this$0, new HashMap((Map)localObject1));
+            ayxe.a(this.this$0, new HashMap((Map)localObject1));
             return;
           }
           finally {}
         }
-        QLog.e("InnerDns", 1, "syncAddressData fail, mServerProcName=" + axwx.a(this.this$0));
+        QLog.e("InnerDns", 1, "syncAddressData fail, mServerProcName=" + ayxe.a(this.this$0));
       }
       catch (Throwable localThrowable)
       {

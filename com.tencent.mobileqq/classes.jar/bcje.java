@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.VirtualInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.FrameLayout;
 
-public final class bcje
-  implements Parcelable.Creator<VirtualInfo>
+class bcje
+  extends Handler
 {
-  public VirtualInfo a(Parcel paramParcel)
+  bcje(bcjd parambcjd, Looper paramLooper)
   {
-    return new VirtualInfo(paramParcel);
+    super(paramLooper);
   }
   
-  public VirtualInfo[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new VirtualInfo[paramInt];
+    if (paramMessage.what == 1) {
+      this.a.a(0.0F, 0 - bcjd.a(this.a).getHeight(), true);
+    }
+    super.handleMessage(paramMessage);
   }
 }
 

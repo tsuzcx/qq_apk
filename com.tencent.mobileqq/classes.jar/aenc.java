@@ -1,30 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class aenc
   implements View.OnClickListener
 {
-  aenc(aenb paramaenb) {}
+  aenc(aena paramaena) {}
   
   public void onClick(View paramView)
   {
-    awqx.b(aenb.a(this.a), "CliOper", "", "", "Free_call", "Clk_free_call_tips", 0, 0, "", "", "", "");
-    aenb.c(aenb.a(this.a), aenb.a(this.a).jdField_a_of_type_JavaLangString);
-    aenb.a(this.a).a();
-    paramView = null;
-    String str = null;
-    if (aenb.a(this.a).jdField_a_of_type_Int == 1006) {
-      str = aenb.a(this.a).jdField_a_of_type_JavaLangString;
+    if (!ajae.e()) {
+      ((airz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.a.a(), 319);
     }
-    for (;;)
-    {
-      ChatActivityUtils.a(aenb.a(this.a), aenb.a(this.a), aenb.a(this.a).jdField_a_of_type_Int, paramView, aenb.a(this.a).d, str, true, aenb.a(this.a).b, true, true, null, "from_internal");
-      awqx.b(aenb.a(this.a), "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "8", "", "", "");
+    while (!QLog.isColorLevel()) {
       return;
-      paramView = aenb.a(this.a).jdField_a_of_type_JavaLangString;
     }
+    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "[onClick] click audio button too fast.");
   }
 }
 

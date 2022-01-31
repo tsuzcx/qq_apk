@@ -1,72 +1,117 @@
-import android.app.Notification;
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import com.tencent.av.VideoRecoveryReporter.1;
+import com.tencent.av.VideoRecoveryReporter.2;
+import com.tencent.av.VideoRecoveryReporter.3;
+import com.tencent.av.VideoRecoveryReporter.4;
+import com.tencent.av.VideoRecoveryReporter.5;
+import com.tencent.av.VideoRecoveryReporter.6;
+import com.tencent.av.VideoRecoveryReporter.7;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class led
-  extends Binder
-  implements lec
+public class led
 {
-  public static lec a(IBinder paramIBinder)
+  private static boolean a;
+  
+  public static void a()
   {
-    if (paramIBinder == null) {
-      return null;
+    try
+    {
+      QLog.d("VideoRecoveryReporter", 1, "reportVideoFullscreenNotificationRequest");
+      a = true;
+      ThreadManager.post(new VideoRecoveryReporter.4(), 5, null, false);
+      return;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-    if ((localIInterface != null) && ((localIInterface instanceof lec))) {
-      return (lec)localIInterface;
+    catch (Throwable localThrowable)
+    {
+      QLog.e("VideoRecoveryReporter", 1, "reportVideoRecoveryRequest fail.", localThrowable);
     }
-    return new lee(paramIBinder);
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public static void a(int paramInt, long paramLong)
   {
-    switch (paramInt1)
+    try
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.gvideo.IGVServiceForQQ");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-      a(llw.a(paramParcel1.readStrongBinder()));
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-      a(paramParcel1.createByteArray());
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-      boolean bool;
-      if (paramParcel1.readInt() != 0)
-      {
-        bool = true;
-        if (paramParcel1.readInt() == 0) {
-          break label168;
-        }
-      }
-      for (paramParcel1 = (Notification)Notification.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        a(bool, paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-        bool = false;
-        break;
-      }
-    case 4: 
-      label168:
-      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-      paramInt1 = a(paramParcel1.readLong(), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
+      QLog.d("VideoRecoveryReporter", 1, String.format("reportVideoRecoveryClose reason=%s duration=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
+      ThreadManager.post(new VideoRecoveryReporter.3(paramInt, paramLong), 5, null, false);
+      return;
     }
-    paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-    a();
-    return true;
+    catch (Throwable localThrowable)
+    {
+      QLog.e("VideoRecoveryReporter", 1, "reportVideoRecoveryClose fail.", localThrowable);
+    }
+  }
+  
+  public static void a(int paramInt, long paramLong, boolean paramBoolean)
+  {
+    try
+    {
+      QLog.d("VideoRecoveryReporter", 1, String.format("reportVideoRecoveryRequest source=%s interval=%s result=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
+      ThreadManager.post(new VideoRecoveryReporter.1(paramInt, paramBoolean, paramLong), 5, null, false);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("VideoRecoveryReporter", 1, "reportVideoRecoveryRequest fail.", localThrowable);
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    try
+    {
+      QLog.d("VideoRecoveryReporter", 1, String.format("reportNodeReportRetry success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+      ThreadManager.post(new VideoRecoveryReporter.7(paramBoolean), 5, null, false);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("VideoRecoveryReporter", 1, "reportNodeReportFail fail.", localThrowable);
+    }
+  }
+  
+  public static void a(boolean paramBoolean, long paramLong)
+  {
+    try
+    {
+      QLog.d("VideoRecoveryReporter", 1, String.format("reportVideoRecoveryResult result=%s timeCost=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) }));
+      ThreadManager.post(new VideoRecoveryReporter.2(paramBoolean, paramLong), 5, null, false);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("VideoRecoveryReporter", 1, "reportVideoRecoveryResult fail.", localException);
+    }
+  }
+  
+  public static void b()
+  {
+    try
+    {
+      if (a) {
+        a = false;
+      }
+      QLog.d("VideoRecoveryReporter", 1, "reportVideoFullscreenNotificationResult");
+      ThreadManager.post(new VideoRecoveryReporter.5(), 5, null, false);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("VideoRecoveryReporter", 1, "reportVideoRecoveryResult fail.", localException);
+    }
+  }
+  
+  public static void c()
+  {
+    try
+    {
+      QLog.d("VideoRecoveryReporter", 1, "reportNodeReportFail");
+      ThreadManager.post(new VideoRecoveryReporter.6(), 5, null, false);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("VideoRecoveryReporter", 1, "reportNodeReportFail fail.", localThrowable);
+    }
   }
 }
 

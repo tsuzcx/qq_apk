@@ -1,23 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.JoinGroupInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class aylr
-  implements Parcelable.Creator<JoinGroupInfo>
+public class aylr
 {
-  public JoinGroupInfo a(Parcel paramParcel)
+  public int a;
+  public String a;
+  private JSONObject a;
+  
+  public aylr(int paramInt, String paramString)
   {
-    return new JoinGroupInfo(paramParcel);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public JoinGroupInfo[] a(int paramInt)
+  public String a()
   {
-    return new JoinGroupInfo[paramInt];
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("result", this.jdField_a_of_type_Int);
+      localJSONObject.put("message", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("data", this.jdField_a_of_type_OrgJsonJSONObject);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aylr
  * JD-Core Version:    0.7.0.1
  */

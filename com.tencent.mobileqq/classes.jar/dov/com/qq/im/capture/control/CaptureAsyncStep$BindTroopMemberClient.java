@@ -1,19 +1,19 @@
 package dov.com.qq.im.capture.control;
 
-import bhgk;
+import bjbc;
 import com.tencent.mobileqq.app.automator.AsyncStep;
-import wis;
+import wxu;
 
 public class CaptureAsyncStep$BindTroopMemberClient
   extends AsyncStep
 {
-  public wis a;
+  public wxu a;
   
   public int a()
   {
-    this.a = wis.a();
+    this.a = wxu.a();
     this.a.a();
-    this.a.e(new bhgk(this));
+    this.a.e(new bjbc(this));
     return 7;
   }
 }

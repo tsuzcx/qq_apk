@@ -1,50 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-
-class bbmi
-  extends Handler
+public abstract interface bbmi
 {
-  public int a;
+  public abstract void a(bbmg parambbmg1, bbmg parambbmg2);
   
-  bbmi(bbmh parambbmh) {}
+  public abstract void a(String paramString);
   
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract boolean a(bbmg parambbmg1, bbmg parambbmg2, int paramInt);
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (!this.jdField_a_of_type_Bbmh.isVisible())
-    {
-      this.jdField_a_of_type_Bbmh.b = this.jdField_a_of_type_Int;
-      return;
-    }
-    if (this.jdField_a_of_type_Bbmh.b > this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_Bbmh.c(this.jdField_a_of_type_Bbmh.b - 1);
-      sendEmptyMessageDelayed(0, this.jdField_a_of_type_Bbmh.e);
-      return;
-    }
-    if (this.jdField_a_of_type_Bbmh.b < this.jdField_a_of_type_Int)
-    {
-      int i = this.jdField_a_of_type_Bbmh.b + this.jdField_a_of_type_Bbmh.f;
-      if (i <= this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_Bbmh.c(i);
-      }
-      for (;;)
-      {
-        sendEmptyMessageDelayed(0, this.jdField_a_of_type_Bbmh.e);
-        return;
-        this.jdField_a_of_type_Bbmh.c(this.jdField_a_of_type_Int);
-      }
-    }
-    removeMessages(0);
-  }
+  public abstract void b(bbmg parambbmg1, bbmg parambbmg2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbmi
  * JD-Core Version:    0.7.0.1
  */

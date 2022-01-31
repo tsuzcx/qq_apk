@@ -1,12 +1,26 @@
-public class pqw
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
+
+class pqw
+  implements bfsl
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private long b;
+  pqw(pqt parampqt) {}
   
-  public pqw(long paramLong)
+  public void a()
   {
-    this.jdField_a_of_type_Long = paramLong;
+    if (QLog.isColorLevel()) {
+      QLog.d("FeedItemCell", 2, "onAdComplain");
+    }
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_from_type", 1);
+      localIntent.putExtra("key_ad_info", ((pax)this.a.jdField_a_of_type_JavaLangObject).a());
+      PublicFragmentActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    }
   }
 }
 

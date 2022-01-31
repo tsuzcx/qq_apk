@@ -1,23 +1,23 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Intent;
-import bdel;
-import bdem;
-import bdfz;
-import bdnw;
+import beil;
+import beim;
+import beka;
+import besl;
 
 class SettingsJsPlugin$1
-  implements bdem
+  implements beim
 {
-  SettingsJsPlugin$1(SettingsJsPlugin paramSettingsJsPlugin, bdfz parambdfz) {}
+  SettingsJsPlugin$1(SettingsJsPlugin paramSettingsJsPlugin, beka parambeka) {}
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    bdnw.a("SettingsJsPlugin", "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
+    besl.a("SettingsJsPlugin", "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
     if (paramInt1 == 5)
     {
       SettingsJsPlugin.access$000(this.this$0, this.val$req);
-      bdel.a().b(this);
+      beil.a().b(this);
       return true;
     }
     return false;

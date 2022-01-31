@@ -1,32 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import java.io.File;
+import java.io.OutputStream;
 
 public class aywp
-  implements View.OnClickListener
+  extends ayog
 {
-  public aywp(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
-  
-  public void onClick(View paramView)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    beex.b(paramView);
-    try
-    {
-      this.a.h();
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("PublishHomeWorkFragment", 2, "on publish homework error, parse json error", paramView);
-    }
+    return new File(ajsf.aV);
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    return agld.a(BaseApplicationImpl.getContext()).a(paramDownloadParams.url, new aywq(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aywp
  * JD-Core Version:    0.7.0.1
  */

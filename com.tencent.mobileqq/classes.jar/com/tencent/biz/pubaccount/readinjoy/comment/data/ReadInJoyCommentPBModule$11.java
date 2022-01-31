@@ -2,24 +2,24 @@ package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import nvt;
-import nyj;
-import nyk;
-import nyl;
+import ohe;
+import oju;
+import ojv;
+import ojw;
 
 public class ReadInJoyCommentPBModule$11
   implements Runnable
 {
-  public ReadInJoyCommentPBModule$11(nyj paramnyj, int paramInt, nyk paramnyk, String paramString, nyl paramnyl) {}
+  public ReadInJoyCommentPBModule$11(oju paramoju, int paramInt, ojv paramojv, String paramString, ojw paramojw) {}
   
   public void run()
   {
-    if ("handleSubCommentList | retCode " + this.jdField_a_of_type_Int + " | hasNextPage " + this.jdField_a_of_type_Nyk.jdField_a_of_type_Boolean + " | pageCookie " + this.jdField_a_of_type_Nyk.jdField_a_of_type_JavaLangString + "| subCommentListSize " + this.jdField_a_of_type_Nyk.b != null) {}
-    for (int i = this.jdField_a_of_type_Nyk.b.size();; i = 0)
+    if ("handleSubCommentList | retCode " + this.jdField_a_of_type_Int + " | hasNextPage " + this.jdField_a_of_type_Ojv.jdField_a_of_type_Boolean + " | pageCookie " + this.jdField_a_of_type_Ojv.jdField_a_of_type_JavaLangString + "| subCommentListSize " + this.jdField_a_of_type_Ojv.b != null) {}
+    for (int i = this.jdField_a_of_type_Ojv.b.size();; i = 0)
     {
       QLog.d("ReadInJoyCommentPBModule", 2, new Object[] { Integer.valueOf(i) });
-      if (nyj.a(this.this$0) != null) {
-        nyj.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nyk, this.jdField_a_of_type_Nyl);
+      if (oju.a(this.this$0) != null) {
+        oju.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ojv, this.jdField_a_of_type_Ojw);
       }
       return;
     }

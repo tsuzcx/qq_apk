@@ -1,28 +1,14 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aanx
-  implements ahdb
+class aanx
+  implements DialogInterface.OnClickListener
 {
-  private final int jdField_a_of_type_Int = -2147483648;
+  aanx(aanw paramaanw) {}
   
-  private aanx(Conversation paramConversation) {}
-  
-  public void a(int paramInt, List<RecentBaseData> paramList) {}
-  
-  public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDragFrameLayout.a() == -1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b.sendEmptyMessage(10);
-      FrameHelperActivity.c(true);
-      return;
-    }
-    FrameHelperActivity.c(false);
+    paramDialogInterface.dismiss();
   }
 }
 

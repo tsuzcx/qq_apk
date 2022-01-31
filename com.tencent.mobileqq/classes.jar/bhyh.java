@@ -1,42 +1,40 @@
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.ar.util.VipARUtils.3;
 
-class bhyh
-  implements View.OnTouchListener
+public class bhyh
+  implements ModuleDownloadListener
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public bhyh(VipARUtils.3 param3) {}
   
-  bhyh(bhyg parambhyg) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDownloadCanceled(String paramString)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("vip_tar_engine.jar")) {
+      return;
     }
-    do
-    {
-      return true;
-      this.jdField_a_of_type_Bhyg.a.a.setBackgroundColor(this.jdField_a_of_type_Bhyg.a.getResources().getColor(2131099784));
-      this.jdField_a_of_type_Boolean = true;
-      return true;
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Bhyg.a.a.setBackgroundColor(this.jdField_a_of_type_Bhyg.a.getResources().getColor(2131099786));
-    if (!this.jdField_a_of_type_Bhyg.a.f)
-    {
-      this.jdField_a_of_type_Bhyg.a.f = true;
-      this.jdField_a_of_type_Bhyg.a.h();
-    }
-    this.jdField_a_of_type_Boolean = false;
-    return true;
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bhye.a(), " onDownloadSucceed = ", bhye.b() });
+    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bhye.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhyh
  * JD-Core Version:    0.7.0.1
  */

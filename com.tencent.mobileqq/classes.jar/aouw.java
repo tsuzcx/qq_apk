@@ -1,57 +1,62 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 class aouw
-  implements aott
+  extends aovs
 {
-  aouw(aous paramaous) {}
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  public void a(aovl paramaovl)
+  public aouw(aouu paramaouu, MessageRecord paramMessageRecord)
   {
-    aotf localaotf = ((aotw)paramaovl).a();
-    if (localaotf != null)
+    super(paramaouu);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+  }
+  
+  void a(String paramString, int paramInt) {}
+  
+  void a(String paramString, int paramInt, aovr paramaovr)
+  {
+    if ("1".equals(this.g))
     {
-      if (1 != localaotf.c()) {
-        break label147;
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
       }
-      if (!localaotf.a().isZipInnerFile) {
-        break label91;
-      }
-      paramaovl = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localaotf.a());
-      if ((paramaovl != null) && (this.a.jdField_a_of_type_Aovn != null)) {
-        this.a.jdField_a_of_type_Aovn.a(String.valueOf(localaotf.a()), paramaovl);
-      }
-    }
-    label91:
-    while (2 != localaotf.c())
-    {
-      do
-      {
-        return;
-        paramaovl = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localaotf.a(), 7);
-      } while ((paramaovl == null) || (this.a.jdField_a_of_type_Aovn == null));
-      this.a.jdField_a_of_type_Aovn.a(localaotf.c(), paramaovl);
+      paramaovr.a(aouu.a(this.jdField_a_of_type_Long, false), false);
       return;
     }
-    label147:
-    aodw localaodw = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    String str = localaotf.e();
-    if (localaotf.a() == null) {}
-    for (paramaovl = null;; paramaovl = localaotf.a().e)
+    if ((this.b == null) || (this.b.length() == 0))
     {
-      paramaovl = localaodw.a(str, paramaovl, 7, localaotf);
-      if ((paramaovl == null) || (this.a.jdField_a_of_type_Aovn == null)) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file uuid is null");
       }
-      this.a.jdField_a_of_type_Aovn.a(localaotf.e(), paramaovl);
+      paramaovr.a(aouu.a(this.jdField_a_of_type_Long, true), false);
       return;
     }
+    aouk localaouk = aouu.a(this.jdField_a_of_type_Aouu).a().a();
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_JavaLangString + "]");
+    }
+    localaouk.a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 3, new aoux(this, paramString, paramaovr));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aouw
  * JD-Core Version:    0.7.0.1
  */

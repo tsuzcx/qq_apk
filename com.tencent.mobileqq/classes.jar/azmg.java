@@ -1,9 +1,19 @@
-import android.view.View;
-import android.widget.TextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.InviteToGroupInfo.UinInfo;
 
-public abstract interface azmg
+public final class azmg
+  implements Parcelable.Creator<InviteToGroupInfo.UinInfo>
 {
-  public abstract void a(TextView paramTextView, View paramView, boolean paramBoolean);
+  public InviteToGroupInfo.UinInfo a(Parcel paramParcel)
+  {
+    return new InviteToGroupInfo.UinInfo(paramParcel);
+  }
+  
+  public InviteToGroupInfo.UinInfo[] a(int paramInt)
+  {
+    return new InviteToGroupInfo.UinInfo[paramInt];
+  }
 }
 
 

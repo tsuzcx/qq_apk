@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
@@ -14,8 +14,8 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.support.annotation.RequiresApi;
-import bacm;
-import bdgi;
+import bbdr;
+import beki;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -64,11 +64,11 @@ public class ShortcutUtils
       if (hasRightsToShortCutInVIVO(paramActivity)) {
         break;
       }
-      paramActivity = ShortcutUtils.PermissionDialog.createPermissionDialog(paramActivity, ajjy.a(2131648218), ajjy.a(2131648231), ajjy.a(2131648233), new ShortcutUtils.1(paramActivity), new ShortcutUtils.2());
+      paramActivity = ShortcutUtils.PermissionDialog.createPermissionDialog(paramActivity, ajyc.a(2131714006), ajyc.a(2131714019), ajyc.a(2131714021), new ShortcutUtils.1(paramActivity), new ShortcutUtils.2());
       paramActivity.showCheckbox(false);
       paramActivity.show();
     } while (paramAddShortcutCallback == null);
-    paramAddShortcutCallback.onAddResult(2, ajjy.a(2131648212));
+    paramAddShortcutCallback.onAddResult(2, ajyc.a(2131714000));
     return;
     doAddShortcut(paramActivity, paramMiniAppInfo, paramAddShortcutCallback);
   }
@@ -80,7 +80,7 @@ public class ShortcutUtils
   
   private static Bitmap getLaunchBitmap(Activity paramActivity, MiniAppInfo paramMiniAppInfo)
   {
-    paramMiniAppInfo = bacm.b(URLDrawable.getDrawable(URLDecoder.decode(paramMiniAppInfo.iconUrl), null));
+    paramMiniAppInfo = bbdr.b(URLDrawable.getDrawable(URLDecoder.decode(paramMiniAppInfo.iconUrl), null));
     int i = (int)paramActivity.getResources().getDimension(17104896);
     int j = ((ActivityManager)paramActivity.getSystemService("activity")).getLauncherLargeIconSize();
     if (j > i) {
@@ -88,7 +88,7 @@ public class ShortcutUtils
     }
     for (;;)
     {
-      return bacm.a(getResizedBitmap(paramMiniAppInfo, i, i), (int)(i * 0.15D));
+      return bbdr.a(getResizedBitmap(paramMiniAppInfo, i, i), (int)(i * 0.15D));
     }
   }
   
@@ -334,7 +334,7 @@ public class ShortcutUtils
   
   private static void onCreateShortcutFailed(Activity paramActivity)
   {
-    bdgi.a(new ShortcutUtils.4(paramActivity));
+    beki.a(new ShortcutUtils.4(paramActivity));
   }
   
   public static void openPermissionActivity(Activity paramActivity)

@@ -1,341 +1,475 @@
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Typeface;
-import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.net.Uri;
 import android.text.TextUtils;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.apollo.store.webview.ApolloWebDataHandler.1;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vaswebviewplugin.ApolloJsPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.util.LRULinkedHashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import org.json.JSONObject;
 
 public class ajke
 {
-  public static Dialog a(Activity paramActivity, View.OnClickListener paramOnClickListener)
+  private static ajke jdField_a_of_type_Ajke;
+  private static boolean jdField_a_of_type_Boolean;
+  private ajjt jdField_a_of_type_Ajjt = new ajjt(this);
+  private final LRULinkedHashMap<String, ajkg> jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(128);
+  
+  private ajke()
   {
-    paramActivity = new Dialog(paramActivity, 2131690181);
-    paramActivity.setContentView(2131495219);
-    Button localButton1 = (Button)paramActivity.findViewById(2131297893);
-    Button localButton2 = (Button)paramActivity.findViewById(2131297904);
-    localButton1.setOnClickListener(new ajkf(paramActivity));
-    paramActivity.setCanceledOnTouchOutside(true);
-    localButton2.setOnClickListener(paramOnClickListener);
-    paramActivity.show();
-    return paramActivity;
+    jdField_a_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences("sp_apollo_webView", 4).getBoolean("sp_key_disable_thunder_cache", false);
   }
   
-  public static Bitmap a(String paramString)
+  private ajkc a(CustomWebView paramCustomWebView)
   {
-    if (paramString == null) {}
-    do
+    if (paramCustomWebView == null) {
+      return null;
+    }
+    paramCustomWebView = paramCustomWebView.getPluginEngine();
+    if (paramCustomWebView != null)
     {
-      for (;;)
-      {
-        return null;
-        try
-        {
-          paramString = new File(paramString);
-          if (paramString.exists())
-          {
-            BitmapFactory.Options localOptions = new BitmapFactory.Options();
-            localOptions.inJustDecodeBounds = true;
-            azvq.a(paramString.getAbsolutePath(), localOptions);
-            int i = localOptions.outWidth;
-            if (i > 150) {
-              localOptions.inSampleSize = (i / 150);
-            }
-            localOptions.inJustDecodeBounds = false;
-            paramString = azvq.a(paramString.getAbsolutePath(), localOptions);
-            return paramString;
-          }
-        }
-        catch (OutOfMemoryError paramString)
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.d("HotChatHelper", 2, "makeShareBitmap", paramString);
-            return null;
-          }
-        }
-        catch (Throwable paramString) {}
+      paramCustomWebView = paramCustomWebView.a("apollo");
+      if ((paramCustomWebView != null) && ((paramCustomWebView instanceof ApolloJsPlugin))) {
+        return ((ApolloJsPlugin)paramCustomWebView).getIntercepter();
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("HotChatHelper", 2, "makeShareBitmap", paramString);
+    }
     return null;
   }
   
-  public static bafb a(QQAppInterface paramQQAppInterface, Activity paramActivity)
+  public static ajke a()
   {
-    int i = paramActivity.getRequestedOrientation();
-    paramActivity.setRequestedOrientation(1);
-    paramQQAppInterface = babr.a(paramActivity, 0, 2131494159, paramActivity.getString(2131627679), null, paramActivity.getString(2131628082), paramActivity.getString(2131627425), new ajkg(paramActivity, paramQQAppInterface), new ajkh(paramQQAppInterface));
-    paramQQAppInterface.setOnDismissListener(new ajki(paramActivity, i));
-    paramQQAppInterface.getBtnight().setTypeface(Typeface.DEFAULT_BOLD);
-    paramQQAppInterface.setMessageCount(paramActivity.getString(2131627678));
-    paramQQAppInterface.setPreviewImage(paramActivity.getResources().getDrawable(2130841948), true, 1);
-    paramQQAppInterface.show();
-    return paramQQAppInterface;
-  }
-  
-  public static bafb a(HotChatInfo paramHotChatInfo, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((paramHotChatInfo == null) || (localBaseActivity == null) || (localBaseActivity.isFinishing())) {
-      return null;
-    }
-    int i = localBaseActivity.getRequestedOrientation();
-    localBaseActivity.setRequestedOrientation(1);
-    paramHotChatInfo = babr.a(localBaseActivity, 230, localBaseActivity.getString(2131627674), localBaseActivity.getString(2131627673), 2131625035, 2131626615, paramOnClickListener, new ajkj());
-    paramOnClickListener = (TextView)paramHotChatInfo.findViewById(2131299579);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.gravity = 17;
-    paramOnClickListener.setLayoutParams(localLayoutParams);
-    paramHotChatInfo.setOnDismissListener(new ajkk(localBaseActivity, i));
-    paramHotChatInfo.show();
-    return paramHotChatInfo;
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    return "http://play.mobile.qq.com/play/mqqplay/hotchat/hotchat_share.html?_wv=1027&adtag=android&hotnamecode=" + paramString + "&newly_created=" + paramInt;
-  }
-  
-  public static void a(int paramInt, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
-  {
-    paramString5 = new bahv(paramBaseActivity);
-    paramString5.a(paramBaseActivity.getString(2131653614));
-    paramString5.a(a(paramBaseActivity));
-    paramString5.a(new ajkl(paramString5, paramInt, paramQQAppInterface, paramBaseActivity, paramString1, paramString6, paramString3, paramString4, paramString7, paramString2, paramString8));
     try
     {
-      paramString5.a();
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ShareActionSheet", 2, "actionSheet.show exception=" + paramQQAppInterface);
-    }
-  }
-  
-  static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    long l = System.currentTimeMillis();
-    paramBaseActivity = null;
-    if (!TextUtils.isEmpty(paramString6)) {
-      paramBaseActivity = a(paramString6);
-    }
-    paramString1 = paramBaseActivity;
-    if (paramBaseActivity == null) {
-      paramString1 = azvq.b(BaseApplicationImpl.getApplication().getResources(), 2130844397);
-    }
-    WXShareHelper.a().b(String.valueOf(l), paramString2, paramString1, paramString3, paramString5);
-  }
-  
-  static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 69;; i = 65)
-    {
-      paramString4 = new awui(StructMsgForGeneralShare.class).c(i).a(paramString2).a("web", paramString4, paramString5, null, null).a(ajjy.a(2131639766), null).a();
-      paramString5 = awuv.a(2);
-      paramString1 = paramString6;
-      if (TextUtils.isEmpty(paramString6)) {
-        paramString1 = "http://sqimg.qq.com/qq_product_operations/playqq/anonymous/image/reliao0714.png";
+      if (jdField_a_of_type_Ajke == null) {
+        jdField_a_of_type_Ajke = new ajke();
       }
-      paramString5.a(paramString1, paramString2, paramString3, 0);
-      paramString4.addItem(paramString5);
-      paramString1 = new Intent();
-      paramString1.putExtra("forward_type", -3);
-      paramString1.putExtra("stuctmsg_bytes", paramString4.getBytes());
-      aphp.a(paramBaseActivity, paramString1, 3);
-      return;
+      ajke localajke = jdField_a_of_type_Ajke;
+      return localajke;
+    }
+    finally {}
+  }
+  
+  public static void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_client_ApolloWebDataHandler", 2, "apollo_client initInAsyncThread isInstanceCreated():" + a());
+    }
+    if (!a()) {
+      ThreadManager.postImmediately(new ApolloWebDataHandler.1(), null, true);
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, HotChatInfo paramHotChatInfo)
+  public static boolean a()
   {
-    if (paramHotChatInfo == null) {}
+    return jdField_a_of_type_Ajke != null;
+  }
+  
+  private String b(String paramString)
+  {
+    Object localObject;
+    if (TextUtils.isEmpty(paramString)) {
+      localObject = "";
+    }
+    String str;
     do
     {
-      return;
-      if (paramHotChatInfo.state == 1)
-      {
-        a(paramQQAppInterface, paramHotChatInfo, paramQQAppInterface.getApp().getString(2131627668), true);
-        return;
+      return localObject;
+      if (this.jdField_a_of_type_Ajjt == null) {
+        return "";
       }
-      a(paramQQAppInterface, paramHotChatInfo, paramQQAppInterface.getApp().getString(2131627676), true);
-      akeu localakeu = paramQQAppInterface.a().a();
-      RecentUser localRecentUser = localakeu.a(paramHotChatInfo.troopUin, 1);
-      if (localRecentUser != null) {
-        localakeu.b(localRecentUser);
+      str = this.jdField_a_of_type_Ajjt.a(paramString);
+      localObject = str;
+    } while (!QLog.isColorLevel());
+    QLog.d("apollo_client_ApolloWebDataHandler", 2, "getMD5FromDb pageId:" + paramString + " md5:" + str);
+    return str;
+  }
+  
+  public WebResourceResponse a(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return null;
+    }
+    if (this.jdField_a_of_type_Ajjt == null) {
+      return null;
+    }
+    if ((paramString1.contains("http://cmshow.qq.com/get_thunder_data?cmd=")) || (paramString1.contains("https://cmshow.qq.com/get_thunder_data?cmd=")))
+    {
+      Object localObject = "http://cmshow.qq.com/get_thunder_data?cmd=";
+      if (paramString1.contains("https://cmshow.qq.com/get_thunder_data?cmd=")) {
+        localObject = "https://cmshow.qq.com/get_thunder_data?cmd=";
       }
-    } while (paramHotChatInfo.state != 0);
-    paramHotChatInfo.state = 4;
-    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramQQAppInterface.a(paramHotChatInfo);
-    paramQQAppInterface.a();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, HotChatInfo paramHotChatInfo, String paramString, boolean paramBoolean)
-  {
-    if ((paramHotChatInfo == null) || (paramHotChatInfo.isGameRoom)) {
-      return;
-    }
-    ajzx.a(paramQQAppInterface, paramHotChatInfo.troopUin, paramString, 1, paramBoolean, false);
-  }
-  
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null) {
-      paramMessageRecord.saveExtInfoToExtStr("hotchat_flash_pic", "true");
-    }
-  }
-  
-  public static void a(MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    if (paramMessageRecord.msgtype == -2000) {
-      paramMessageRecord.saveExtInfoToExtStr("hotchat_flash_pic", paramBoolean + "");
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.hotchat", 4, "setFlashPicFlag,troopUin:" + paramMessageRecord.frienduin + ",isReaded:" + paramBoolean + ",msgType:" + paramMessageRecord.msgtype);
-    }
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramMessageRecord != null) {
-      if (paramMessageRecord.msgtype != -2000)
+      paramString1 = paramString1.substring(((String)localObject).length());
+      if (!this.jdField_a_of_type_Ajjt.a(paramString2, paramString1))
       {
-        bool1 = bool2;
-        if (paramMessageRecord.msgtype != -2006) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("apollo_client_ApolloWebDataHandler", 2, "getApolloCmdResource false, apolloClientId:" + paramString2 + " cmd:" + paramString1 + ",mSSOConfig.isValidCmd:false");
+        }
+        return null;
       }
-      else
+      paramString2 = ajjt.a(paramString2, paramString1);
+      localObject = (ajkg)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramString2);
+      if (localObject != null) {
+        if (ajkg.a((ajkg)localObject))
+        {
+          if (((ajkg)localObject).a(paramString1))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("apollo_client_ApolloWebDataHandler", 2, "getApolloCmdResource, webSSOTask.isValid true, webSSOTask=" + localObject);
+            }
+            if (ajkg.a((ajkg)localObject) != null)
+            {
+              ajkg.a((ajkg)localObject).c = System.currentTimeMillis();
+              ajkg.a((ajkg)localObject).d = System.currentTimeMillis();
+            }
+            paramString1 = new WebResourceResponse("text/plain", "utf-8", ajje.a(ajkg.a((ajkg)localObject).toString()));
+            this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.remove(paramString2);
+            return paramString1;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("apollo_client_ApolloWebDataHandler", 2, "getApolloCmdResource, webSSOTask.isValid false,webSSOTask:" + localObject);
+          }
+          this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.remove(paramString2);
+        }
+      }
+      for (;;)
       {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("hotchat_flash_pic"))) {
-          bool1 = true;
+        return new WebResourceResponse("text/plain", "utf-8", new ajki(null, null, null));
+        if (QLog.isColorLevel()) {
+          QLog.d("apollo_client_ApolloWebDataHandler", 2, "getApolloCmdResource, has webSSOTask = false");
         }
       }
     }
-    return bool1;
+    return null;
   }
   
-  public static List<bahx>[] a(Context paramContext)
-  {
-    ArrayList localArrayList = new ArrayList();
-    bahx localbahx = new bahx();
-    localbahx.a = paramContext.getString(2131630983);
-    localbahx.jdField_b_of_type_Int = 2130838732;
-    localbahx.jdField_b_of_type_Boolean = true;
-    localbahx.c = 2;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
-    localbahx = new bahx();
-    localbahx.a = paramContext.getString(2131630996);
-    localbahx.jdField_b_of_type_Int = 2130838733;
-    localbahx.jdField_b_of_type_Boolean = true;
-    localbahx.c = 3;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
-    localbahx = new bahx();
-    localbahx.a = paramContext.getString(2131631003);
-    localbahx.jdField_b_of_type_Int = 2130838736;
-    localbahx.c = 9;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
-    localbahx = new bahx();
-    localbahx.a = paramContext.getString(2131630986);
-    localbahx.jdField_b_of_type_Int = 2130838730;
-    localbahx.c = 10;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
-    return (List[])new ArrayList[] { localArrayList };
-  }
-  
-  private static void b(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)paramBaseActivity.getAppRuntime();
-    ArrayList localArrayList = new ArrayList();
-    String str = paramString5;
-    if (TextUtils.isEmpty(paramString5)) {
-      str = "http://sqimg.qq.com/qq_product_operations/playqq/anonymous/image/reliao0714.png";
-    }
-    localArrayList.add(str);
-    paramString5 = new Bundle();
-    paramString5.putString("title", paramString1);
-    paramString5.putString("desc", paramString3);
-    paramString5.putLong("req_share_id", 0L);
-    paramString5.putString("detail_url", paramString4);
-    paramString5.putString("url", paramString4);
-    paramString5.putStringArrayList("image_url", localArrayList);
-    paramString1 = paramString2;
-    if (paramString2.startsWith("邀请加入QQ热聊：")) {
-      paramString1 = paramString2 + ajjy.a(2131639767);
-    }
-    paramString5.putString("troop_wording", paramString1);
-    paramString5.putString("bizname", "JoinTroopLink");
-    bfqn.a(localQQAppInterface, paramBaseActivity, paramString5, null);
-  }
-  
-  static void b(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    long l = System.currentTimeMillis();
-    paramBaseActivity = null;
-    if (!TextUtils.isEmpty(paramString6)) {
-      paramBaseActivity = a(paramString6);
-    }
-    paramString1 = paramBaseActivity;
-    if (paramBaseActivity == null) {
-      paramString1 = azvq.b(BaseApplicationImpl.getApplication().getResources(), 2130844397);
-    }
-    if (paramString2.startsWith("邀请加入QQ热聊：")) {}
-    for (paramBaseActivity = paramString2 + ajjy.a(2131639769);; paramBaseActivity = paramString2)
-    {
-      WXShareHelper.a().a(String.valueOf(l), paramBaseActivity, paramString1, paramString3, paramString5);
-      return;
-    }
-  }
-  
-  public static boolean b(MessageRecord paramMessageRecord)
+  public String a(String paramString)
   {
     try
     {
-      boolean bool = Boolean.valueOf(paramMessageRecord.getExtInfoFromExtStr("hotchat_flash_pic")).booleanValue();
-      return bool;
+      paramString = Uri.parse(paramString);
+      if (paramString.isHierarchical())
+      {
+        paramString = paramString.getQueryParameter("thunder_id");
+        return paramString;
+      }
     }
-    catch (Exception paramMessageRecord)
+    catch (Exception paramString)
     {
-      paramMessageRecord.printStackTrace();
+      QLog.e("apollo_client_ApolloWebDataHandler", 2, paramString.getMessage());
     }
+    return null;
+  }
+  
+  public List<ajjw> a(String paramString)
+  {
+    if (this.jdField_a_of_type_Ajjt != null) {
+      return this.jdField_a_of_type_Ajjt.a(paramString);
+    }
+    return null;
+  }
+  
+  public void a(Context paramContext, String paramString1, String paramString2, AppInterface paramAppInterface, ajkh paramajkh)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (this.jdField_a_of_type_Ajjt == null)) {}
+    for (;;)
+    {
+      return;
+      if (!bbev.g(paramContext))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("apollo_client_ApolloWebDataHandler", 2, "preLoadSSOCmd false, NetworkUtil.isNetworkAvailable:false");
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_Ajjt.a(paramAppInterface);
+        Object localObject1 = this.jdField_a_of_type_Ajjt.a(paramString1);
+        if ((localObject1 == null) || (((Set)localObject1).isEmpty()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("apollo_client_ApolloWebDataHandler", 2, "preloadSSOCmd, apolloClientId:" + paramString1 + " cmds is null or empty");
+          }
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("apollo_client_ApolloWebDataHandler", 2, "preloadSSOCmd, apolloClientId:" + paramString1 + " print all task:" + this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap);
+          }
+          localObject1 = ((Set)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            Object localObject2 = (String)((Iterator)localObject1).next();
+            String str = ajjt.a(paramString1, (String)localObject2);
+            ajkg localajkg = (ajkg)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(str);
+            if ((localajkg != null) && (localajkg.a((String)localObject2)))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("apollo_client_ApolloWebDataHandler", 2, "preloadSSOCmd, apolloClientId:" + paramString1 + " mPreloadSSOCmds.has WebSSOTask:" + localajkg);
+              }
+            }
+            else
+            {
+              this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.remove(str);
+              localajkg = new ajkg(paramajkh, str, (String)localObject2);
+              this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(str, localajkg);
+              localObject2 = this.jdField_a_of_type_Ajjt.a(paramString2, paramString1, (String)localObject2, paramAppInterface);
+              if (QLog.isColorLevel()) {
+                QLog.d("apollo_client_ApolloWebDataHandler", 2, "preloadSSOCmd, apolloClientId:" + paramString1 + " create new WebSSOTask, requestJson" + localObject2);
+              }
+              if (localObject2 != null) {
+                localajkg.a(paramContext, paramString2, (JSONObject)localObject2, paramAppInterface);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (ApolloUtil.a()) {
+      QLog.d("apollo_client_ApolloWebDataHandler", 2, "isApolloClientId, ApolloUtil.isApolloProxyEnable() return");
+    }
+    do
+    {
+      do
+      {
+        return false;
+      } while (TextUtils.isEmpty(paramString));
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloWebDataHandler", 2, "isApolloClientId, apolloClientId:" + paramString);
+      }
+    } while (this.jdField_a_of_type_Ajjt == null);
+    return this.jdField_a_of_type_Ajjt.a(paramString);
+  }
+  
+  public boolean a(String paramString1, String paramString2)
+  {
+    if (jdField_a_of_type_Boolean) {
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloWebDataHandler", 2, "verifyCache, sDisableCache:" + jdField_a_of_type_Boolean);
+      }
+    }
+    String str;
+    do
+    {
+      do
+      {
+        return false;
+      } while ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)));
+      str = ajje.b(paramString2);
+      paramString1 = b(paramString1);
+      if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(str)) && (str.toUpperCase().equals(paramString1.toUpperCase()))) {
+        return true;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("apollo_client_ApolloWebDataHandler", 2, "verifyMd5 false:" + paramString1 + " contentMd5:" + str + ",configMd5:" + paramString1 + " html.length:" + paramString2.length());
     return false;
+  }
+  
+  public boolean a(String paramString1, String paramString2, AppInterface paramAppInterface, WebViewPlugin paramWebViewPlugin)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramWebViewPlugin == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, url=" + paramString1 + " plugin:" + paramWebViewPlugin + " app:" + paramAppInterface + " requestStr:" + paramString2);
+      }
+      return false;
+    }
+    if (!bbev.g(BaseApplicationImpl.getContext()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, NetworkUtil.isNetworkAvailable:false");
+      }
+      return false;
+    }
+    if ((paramWebViewPlugin.mRuntime == null) || (paramWebViewPlugin.mRuntime.a() == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, plugin.mRuntime.getWebView() is null");
+      }
+      return false;
+    }
+    if (this.jdField_a_of_type_Ajjt == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, mSSOConfig is null");
+      }
+      return false;
+    }
+    for (;;)
+    {
+      try
+      {
+        String str3 = a().a(paramString1);
+        if (TextUtils.isEmpty(str3))
+        {
+          if (!QLog.isColorLevel()) {
+            break label735;
+          }
+          QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, url is:" + paramString1 + " no need preload");
+          break label735;
+        }
+        ajkc localajkc = a(paramWebViewPlugin.mRuntime.a());
+        if (localajkc == null)
+        {
+          if (!QLog.isColorLevel()) {
+            break label737;
+          }
+          QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, apolloSession is null");
+          break label737;
+        }
+        JSONObject localJSONObject = new JSONObject(paramString2);
+        String str1 = localJSONObject.getString("callback");
+        if (TextUtils.isEmpty(str1)) {
+          return false;
+        }
+        String str2 = localJSONObject.getString("cmd");
+        if (!this.jdField_a_of_type_Ajjt.a(str3, str2))
+        {
+          if (!QLog.isColorLevel()) {
+            break label739;
+          }
+          QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, apolloClientId:" + str3 + " cmd:" + str2 + ",mSSOConfig.isValidCmd:false");
+          break label739;
+        }
+        str3 = ajjt.a(str3, str2);
+        paramString2 = (ajkg)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(str3);
+        if (paramString2 != null)
+        {
+          if (ajkg.a(paramString2))
+          {
+            if (paramString2.a(str2))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApolloCmd, webSSOTask.isValid true, mResultJson=" + paramString2);
+              }
+              if (ajkg.a(paramString2) != null)
+              {
+                ajkg.a(paramString2).c = System.currentTimeMillis();
+                ajkg.a(paramString2).d = System.currentTimeMillis();
+              }
+              paramWebViewPlugin.callJs(str1, new String[] { ajkg.a(paramString2).toString() });
+              this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.remove(str3);
+              return true;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApolloCmd, webSSOTask.isValid false,webSSOTask:" + paramString2);
+            }
+            i = 1;
+            this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.remove(str3);
+            if (i == 0) {
+              break label741;
+            }
+            if (localajkc != null)
+            {
+              paramString2 = localajkc.a();
+              paramString2.c = System.currentTimeMillis();
+              paramString2 = new ajkg(paramString2, str3, str2);
+              paramString2.a(new ajkf(this, str1, paramWebViewPlugin));
+              if (paramWebViewPlugin.mRuntime != null) {
+                paramString2.a(paramWebViewPlugin.mRuntime.a(), paramString1, localJSONObject, paramAppInterface);
+              }
+              this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(str3, paramString2);
+              break label741;
+            }
+          }
+          else
+          {
+            if (ajkg.a(paramString2) != null) {
+              ajkg.a(paramString2).c = System.currentTimeMillis();
+            }
+            paramString2.a(new ajkf(this, str1, paramWebViewPlugin));
+            if (!QLog.isColorLevel()) {
+              break label729;
+            }
+            QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApolloCmd, has webSSOTask = true, but webSSOTask.mReceivedSSO:false, wait notify!");
+            i = 0;
+            continue;
+          }
+        }
+        else
+        {
+          if (!QLog.isColorLevel()) {
+            break label743;
+          }
+          QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApolloCmd, has webSSOTask = false,create webSSOTask!");
+          break label743;
+        }
+        paramString2 = new ajkh();
+        continue;
+        i = 0;
+      }
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+        return false;
+      }
+      label729:
+      continue;
+      label735:
+      return false;
+      label737:
+      return false;
+      label739:
+      return false;
+      label741:
+      return true;
+      label743:
+      int i = 1;
+    }
+  }
+  
+  public void b()
+  {
+    jdField_a_of_type_Boolean = true;
+    BaseApplicationImpl.getApplication().getSharedPreferences("sp_apollo_webView", 4).edit().putBoolean("sp_key_disable_thunder_cache", true).commit();
+  }
+  
+  public boolean b(String paramString)
+  {
+    return (paramString.contains("http://cmshow.qq.com/get_thunder_data?cmd=")) || (paramString.contains("https://cmshow.qq.com/get_thunder_data?cmd="));
+  }
+  
+  public boolean b(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return false;
+    }
+    int i = paramString1.indexOf("?");
+    String str = paramString1;
+    if (i != -1) {
+      str = paramString1.substring(0, i);
+    }
+    ajje.a(ajje.d(ajje.e(str)), paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_client_ApolloWebDataHandler", 2, "saveHtml url:" + str + " html.length:" + paramString2.length());
+    }
+    return true;
+  }
+  
+  public void c()
+  {
+    jdField_a_of_type_Boolean = false;
+    BaseApplicationImpl.getApplication().getSharedPreferences("sp_apollo_webView", 4).edit().putBoolean("sp_key_disable_thunder_cache", false).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajke
  * JD-Core Version:    0.7.0.1
  */

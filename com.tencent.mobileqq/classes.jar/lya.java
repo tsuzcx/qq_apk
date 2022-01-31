@@ -1,32 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvMsg;
 
-class lya
-  implements ValueAnimator.AnimatorUpdateListener
+public final class lya
+  implements Parcelable.Creator<RecvMsg>
 {
-  lya(lxz paramlxz) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public RecvMsg a(Parcel paramParcel)
   {
-    paramValueAnimator.getAnimatedFraction();
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    float f;
-    if (i <= 220)
-    {
-      f = i / 220.0F;
-      lxz.a(this.a).setAlpha(f);
-    }
-    if (i <= 160)
-    {
-      f = i / 100.0F;
-      lxz.a(this.a).setAlpha(f);
-    }
-    if (lxz.a(this.a) != null) {
-      lxz.a(this.a).requestLayout();
-    }
+    return new RecvMsg(paramParcel);
+  }
+  
+  public RecvMsg[] a(int paramInt)
+  {
+    return new RecvMsg[paramInt];
   }
 }
 

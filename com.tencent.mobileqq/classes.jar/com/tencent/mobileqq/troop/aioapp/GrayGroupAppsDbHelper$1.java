@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.aioapp;
 
-import ayjc;
+import azjs;
 import com.tencent.mobileqq.troop.aioapp.data.GrayGroupAppEntity;
 
 public class GrayGroupAppsDbHelper$1
   implements Runnable
 {
-  public GrayGroupAppsDbHelper$1(ayjc paramayjc, GrayGroupAppEntity paramGrayGroupAppEntity) {}
+  public GrayGroupAppsDbHelper$1(azjs paramazjs, GrayGroupAppEntity paramGrayGroupAppEntity) {}
   
   public void run()
   {
-    ayjc.a(this.this$0, this.a);
+    azjs.a(this.this$0, this.a);
   }
 }
 

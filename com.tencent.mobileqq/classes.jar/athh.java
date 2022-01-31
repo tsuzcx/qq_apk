@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
-
-public final class athh
-  implements Parcelable.Creator<ShuayishuaConfig>
+public class athh
 {
-  public ShuayishuaConfig a(Parcel paramParcel)
-  {
-    return new ShuayishuaConfig(paramParcel);
-  }
+  public int a;
+  public String a;
+  public int b;
   
-  public ShuayishuaConfig[] a(int paramInt)
+  public athh() {}
+  
+  public athh(String paramString, int paramInt1, int paramInt2)
   {
-    return new ShuayishuaConfig[paramInt];
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     athh
  * JD-Core Version:    0.7.0.1
  */

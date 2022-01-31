@@ -1,28 +1,44 @@
-import android.content.Context;
-import android.util.Size;
-import java.nio.FloatBuffer;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
-public abstract interface akqs
+public class akqs
 {
-  public abstract Size a();
+  public int a;
+  long a;
+  public Object a;
+  public String a;
+  public List<MessageRecord> a;
+  public boolean a;
+  public int b;
+  long b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d = true;
+  public int e;
+  public boolean e;
+  public int f;
+  public boolean f = true;
+  public boolean g = true;
+  public boolean h;
+  public volatile boolean i;
   
-  public abstract FloatBuffer a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
+  public akqs()
+  {
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 9223372036854775807L;
+    this.jdField_b_of_type_Long = 0L;
+  }
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Context paramContext);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public String toString()
+  {
+    return "[isComplete = " + this.jdField_a_of_type_Boolean + ", isJoined = " + this.jdField_b_of_type_Boolean + ", isLocalOnly = " + this.c + "]";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akqs
  * JD-Core Version:    0.7.0.1
  */

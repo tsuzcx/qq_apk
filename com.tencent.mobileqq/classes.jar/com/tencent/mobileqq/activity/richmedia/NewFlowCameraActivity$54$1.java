@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahiy;
+import ahvp;
 
 public class NewFlowCameraActivity$54$1
   implements Runnable
 {
-  public NewFlowCameraActivity$54$1(ahiy paramahiy) {}
+  public NewFlowCameraActivity$54$1(ahvp paramahvp) {}
   
   public void run()
   {

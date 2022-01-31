@@ -1,38 +1,601 @@
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.pic.PicPreDownloader;
+import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader.2;
+import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader.3;
+import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader.4;
+import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader.5;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.manager.Manager;
+import mqq.manager.ServerConfigManager.ConfigType;
+
 public class axdz
+  implements Manager
 {
-  public static String a;
-  public static final Integer[] a;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static String e;
-  public static String f;
-  public static String g;
-  public static String h = "teamwork_sonic_switch";
-  public static String i = "docs_gray_tips_info_tag";
-  public static String j = "0";
-  public static String k = "1";
-  public static String l = ".docs.qq.com/preview/imp/import_office";
-  public static String m = ".docs.qq.com/preview/imp/import_office_url";
-  public static String n = ".docs.qq.com/ep/pad/impexp/import_office";
-  public static String o = ".docs.qq.com/ep/pad/impexp/import_office_url";
-  public static String p = "https://docs.qq.com/scenario/importFile.html?folderId=%s&md5=%s&fileName=%s&filePath=%s&from=%s";
+  public static long a;
+  Handler jdField_a_of_type_AndroidOsHandler = null;
+  axez jdField_a_of_type_Axez;
+  public QQAppInterface a;
+  Runnable jdField_a_of_type_JavaLangRunnable = new ShortVideoPreDownloader.2(this);
+  List<axeg> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
+  public Map<String, Integer> a;
+  public PriorityBlockingQueue<axeg> a;
+  public AtomicBoolean a;
+  public AtomicInteger a;
+  List<axeg> b;
+  public PriorityBlockingQueue<axeg> b;
+  public AtomicInteger b;
+  List<axeg> c = Collections.synchronizedList(new LinkedList());
+  List<axeg> d = Collections.synchronizedList(new LinkedList());
   
   static
   {
-    jdField_a_of_type_JavaLangString = "team_work_title";
-    b = "team_work_summary";
-    c = "team_work_key_param_thrumb_url";
-    d = "team_work_param_mini_program_url";
-    e = "key_qun_id";
-    f = "key_from_web_open_native_files_to_import_docs";
-    g = "key_from_web_import_docs_folderid";
-    jdField_a_of_type_ArrayOfJavaLangInteger = new Integer[] { Integer.valueOf(100), Integer.valueOf(101), Integer.valueOf(102), Integer.valueOf(103), Integer.valueOf(104), Integer.valueOf(105), Integer.valueOf(106), Integer.valueOf(107), Integer.valueOf(108), Integer.valueOf(109), Integer.valueOf(110), Integer.valueOf(111), Integer.valueOf(112), Integer.valueOf(113), Integer.valueOf(114), Integer.valueOf(115), Integer.valueOf(116), Integer.valueOf(-100), Integer.valueOf(-101), Integer.valueOf(-102), Integer.valueOf(-103), Integer.valueOf(-104), Integer.valueOf(-105), Integer.valueOf(-106), Integer.valueOf(-107), Integer.valueOf(-108), Integer.valueOf(-109), Integer.valueOf(-110), Integer.valueOf(-111), Integer.valueOf(-112), Integer.valueOf(-113), Integer.valueOf(-114), Integer.valueOf(-115), Integer.valueOf(-116) };
+    jdField_a_of_type_Long = 86400000L;
+  }
+  
+  public axdz(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
+    this.jdField_b_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue = new PriorityBlockingQueue();
+    this.jdField_b_of_type_JavaUtilConcurrentPriorityBlockingQueue = new PriorityBlockingQueue();
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Axez = new axea(this);
+  }
+  
+  private String a(long paramLong, List<axeg> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      axeg localaxeg = (axeg)paramList.next();
+      if ((localaxeg.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (localaxeg.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq == paramLong))
+      {
+        this.jdField_a_of_type_JavaUtilList.remove(localaxeg);
+        return localaxeg.jdField_a_of_type_JavaLangString;
+      }
+    }
+    return null;
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel())
+    {
+      String str = paramString2;
+      if (paramString2 == null) {
+        str = "";
+      }
+      QLog.d("ShortVideoPreDownloader", 2, paramString1 + "(): " + str);
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
+  {
+    int i = aunq.a(paramQQAppInterface, paramMessageForShortVideo.istroop, paramMessageForShortVideo.frienduin);
+    if ((i == 0) || (i == 1))
+    {
+      int j = paramQQAppInterface.b(paramMessageForShortVideo.frienduin);
+      if ((j == 2) || (j == 3) || (j == 4)) {
+        return false;
+      }
+    }
+    if (i == 2)
+    {
+      ajvk localajvk = (ajvk)paramQQAppInterface.getManager(53);
+      if (localajvk != null)
+      {
+        paramQQAppInterface = localajvk.a(paramMessageForShortVideo.frienduin, paramQQAppInterface.getCurrentAccountUin());
+        if ((paramQQAppInterface != null) && ((paramQQAppInterface.flag & 0x1) != 0)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  
+  axeg a()
+  {
+    int i;
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      i = this.jdField_a_of_type_JavaUtilList.size();
+      axeg localaxeg1;
+      if (i > 0)
+      {
+        a("getShortVideoRequest", "get a short video request from AIORequests");
+        localaxeg1 = (axeg)this.jdField_a_of_type_JavaUtilList.get(i - 1);
+        this.jdField_a_of_type_JavaUtilList.remove(i - 1);
+        return localaxeg1;
+      }
+      synchronized (this.jdField_b_of_type_JavaUtilList)
+      {
+        i = this.jdField_b_of_type_JavaUtilList.size();
+        if (i > 0)
+        {
+          a("getShortVideoRequest", "get a short video request from C2CRequests");
+          localaxeg1 = (axeg)this.jdField_b_of_type_JavaUtilList.get(i - 1);
+          this.jdField_b_of_type_JavaUtilList.remove(i - 1);
+          return localaxeg1;
+        }
+      }
+    }
+    synchronized (this.c)
+    {
+      i = this.c.size();
+      if (i > 0)
+      {
+        a("getShortVideoRequest", "get a short video request from DiscussionRequests");
+        axeg localaxeg2 = (axeg)this.c.get(i - 1);
+        this.c.remove(i - 1);
+        return localaxeg2;
+      }
+    }
+    synchronized (this.d)
+    {
+      i = this.d.size();
+      if (i > 0)
+      {
+        a("getShortVideoRequest", "get a short video request from GroupRequests");
+        axeg localaxeg3 = (axeg)this.d.get(i - 1);
+        this.d.remove(i - 1);
+        return localaxeg3;
+      }
+    }
+    a("getShortVideoRequest", "cannot get any request");
+    return null;
+  }
+  
+  protected String a(long paramLong)
+  {
+    Object localObject = a(paramLong, this.jdField_a_of_type_JavaUtilList);
+    if (localObject != null) {}
+    String str;
+    do
+    {
+      do
+      {
+        do
+        {
+          return localObject;
+          str = a(paramLong, this.c);
+          localObject = str;
+        } while (str != null);
+        str = a(paramLong, this.d);
+        localObject = str;
+      } while (str != null);
+      str = a(paramLong, this.jdField_b_of_type_JavaUtilList);
+      localObject = str;
+    } while (str != null);
+    return null;
+  }
+  
+  Collection<axeg> a(int paramInt)
+  {
+    a("getRequestsByPriority", "priority=" + paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 6: 
+      return this.jdField_b_of_type_JavaUtilConcurrentPriorityBlockingQueue;
+    case 5: 
+      return this.jdField_a_of_type_JavaUtilList;
+    case 4: 
+      return this.jdField_b_of_type_JavaUtilList;
+    case 3: 
+      return this.c;
+    }
+    return this.d;
+  }
+  
+  public void a()
+  {
+    a("off", "mIsPreDownloaderOpen=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    }
+    new Handler(ThreadManager.getSubThreadLooper()).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 60000L);
+  }
+  
+  public void a(axeg paramaxeg)
+  {
+    axdo.a(paramaxeg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreDownloader", 2, "launchRequest:" + paramaxeg.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.busiType);
+    }
+  }
+  
+  public void a(MessageForShortVideo paramMessageForShortVideo)
+  {
+    a("productFromMsg", "uniseq=" + paramMessageForShortVideo.uniseq + " md5=" + paramMessageForShortVideo.md5);
+    boolean bool = a(paramMessageForShortVideo, false);
+    if (bool) {
+      a(paramMessageForShortVideo, 1);
+    }
+    if ((!bool) && (a(paramMessageForShortVideo))) {
+      b(paramMessageForShortVideo);
+    }
+  }
+  
+  void a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
+  {
+    a("add", "uniseq=" + paramMessageForShortVideo.uniseq + " md5=" + paramMessageForShortVideo.md5 + " priority=" + paramInt);
+    if ((paramMessageForShortVideo.uuid == null) && (paramMessageForShortVideo.md5 == null))
+    {
+      a("add", "msg.uuid and md5 are null");
+      return;
+    }
+    if (paramMessageForShortVideo.isSendFromLocal())
+    {
+      a("add", "MessageRecord isSendFromLocal");
+      return;
+    }
+    if (a(paramMessageForShortVideo, paramInt))
+    {
+      a("add", "skip uniseq:" + paramMessageForShortVideo.uniseq + "priority:" + paramInt);
+      return;
+    }
+    Object localObject;
+    int i;
+    if ((paramMessageForShortVideo.isMultiMsg) && (!paramMessageForShortVideo.isSend()))
+    {
+      localObject = asty.a().a();
+      if (localObject != null)
+      {
+        i = ((SessionInfo)localObject).jdField_a_of_type_Int;
+        localObject = ((SessionInfo)localObject).jdField_a_of_type_JavaLangString;
+      }
+    }
+    for (;;)
+    {
+      i = aunq.a();
+      int j = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject);
+      if ((i == 0) || (j != 2)) {
+        break;
+      }
+      a("add", "MSG_FILTER_NUM, no need to pre download short video");
+      return;
+      i = paramMessageForShortVideo.istroop;
+      localObject = paramMessageForShortVideo.frienduin;
+      continue;
+      i = paramMessageForShortVideo.istroop;
+      localObject = paramMessageForShortVideo.frienduin;
+    }
+    b(paramMessageForShortVideo, paramInt);
+  }
+  
+  public boolean a(MessageForShortVideo paramMessageForShortVideo)
+  {
+    if (paramMessageForShortVideo.videoFileStatus == 5002) {
+      a("isNeedPredownloadThumb", "short video has expired");
+    }
+    for (;;)
+    {
+      return false;
+      if (System.currentTimeMillis() - paramMessageForShortVideo.time * 1000L > jdField_a_of_type_Long)
+      {
+        a("isNeedPredownloadThumb", "out of validity, no need to pre download");
+        return false;
+      }
+      boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131695321), "qqsetting_auto_receive_pic_key", true);
+      if ((bbev.b(BaseApplication.getContext()) == 1) || (bool)) {}
+      for (int i = 1; ("1".equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(ServerConfigManager.ConfigType.common, "UseLocalFlowSet"))) || (i != 0); i = 0) {
+        return true;
+      }
+    }
+  }
+  
+  boolean a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
+  {
+    boolean bool1 = false;
+    boolean bool2 = false;
+    a("filter", "uuid=" + paramMessageForShortVideo.uuid + " uniseq=" + paramMessageForShortVideo.uniseq + " priority=" + paramInt);
+    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramMessageForShortVideo.uuid);
+    if (localInteger == null)
+    {
+      a("filter", "msg cannot be found in the PriorityMap");
+      return bool2;
+    }
+    Collection localCollection = a(localInteger.intValue());
+    if (localCollection == null)
+    {
+      a("filter", "originalRequests == null");
+      return false;
+    }
+    Object localObject1 = null;
+    label294:
+    for (;;)
+    {
+      try
+      {
+        Iterator localIterator = localCollection.iterator();
+        if (localIterator.hasNext())
+        {
+          localObject2 = (axeg)localIterator.next();
+          if (((axeg)localObject2).jdField_a_of_type_Axdr.jdField_a_of_type_Long != paramMessageForShortVideo.uniseq) {
+            break label294;
+          }
+          bool1 = true;
+          localObject1 = localObject2;
+          break label294;
+        }
+        if ((!bool1) || (paramInt <= localInteger.intValue()))
+        {
+          a("filter", "No need to update the short video request");
+          return bool1;
+        }
+      }
+      finally {}
+      Object localObject2 = a(paramInt);
+      bool2 = bool1;
+      if (localObject2 == null) {
+        break;
+      }
+      localObject1.d = localObject1.c;
+      localObject1.c = paramInt;
+      localCollection.remove(localObject1);
+      ((Collection)localObject2).add(localObject1);
+      this.jdField_a_of_type_JavaUtilMap.put(paramMessageForShortVideo.uuid, Integer.valueOf(paramInt));
+      a("filter", "Updated the short video request");
+      return bool1;
+    }
+  }
+  
+  public boolean a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean)
+  {
+    if (paramMessageForShortVideo.videoFileStatus == 5002)
+    {
+      a("isNeedPredownload", "short video has expired");
+      return false;
+    }
+    if (paramMessageForShortVideo.busiType == 0) {}
+    for (AtomicInteger localAtomicInteger = ShortVideoUtils.a(); (!paramBoolean) && (localAtomicInteger.get() == 1); localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger)
+    {
+      a("isNeedPredownload", "isFromAIO=false and mIsNotPreDownloadEvenWhenEnterAIO=true");
+      return false;
+    }
+    if (localAtomicInteger.get() == 2)
+    {
+      a("isNeedPredownload", "mIsNotPreDownloadEvenWhenEnterAIO=true");
+      return false;
+    }
+    if ((paramMessageForShortVideo.istroop == 0) && (paramMessageForShortVideo.msgtype == -2071)) {}
+    for (int i = 1; (i == 0) && (System.currentTimeMillis() - paramMessageForShortVideo.time * 1000L > jdField_a_of_type_Long); i = 0)
+    {
+      a("isNeedPredownload", "out of validity, no need to pre download");
+      return false;
+    }
+    int j = aunq.a();
+    if (i != 0)
+    {
+      if ((j != 0) && (j != 1))
+      {
+        a("isNeedPredownload", "Not Wifi or 4G, networkType=" + j + ", no need to predownload for lightvideo");
+        return false;
+      }
+    }
+    else if (j != 0)
+    {
+      a("isNeedPredownload", "Not Wifi, networkType=" + j + ", no need to predownload");
+      return false;
+    }
+    return a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForShortVideo);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    a("on", "ShortVideoPreDownloader is on, mIsPreDownloaderOpen=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+    c();
+  }
+  
+  void b(MessageForShortVideo paramMessageForShortVideo)
+  {
+    a("consumeShortVideoThumb", null);
+    Object localObject = ShortVideoUtils.a(paramMessageForShortVideo.thumbMD5, "jpg");
+    if (bbdj.b((String)localObject))
+    {
+      a("consumeShortVideoThumb", (String)localObject + " exists");
+      return;
+    }
+    axeg localaxeg = axdo.a(2, paramMessageForShortVideo.busiType);
+    axdr localaxdr = paramMessageForShortVideo.getDownloadInfo(localaxeg.b);
+    localaxdr.i = ((String)localObject);
+    if (paramMessageForShortVideo.istroop == 0)
+    {
+      localaxdr.e = 1002;
+      localaxdr.f = 2;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+      if ((!((QQMessageFacade)localObject).a()) || (!((QQMessageFacade)localObject).a().equals(paramMessageForShortVideo.frienduin))) {
+        break label241;
+      }
+    }
+    label241:
+    for (localaxdr.g = 2;; localaxdr.g = 1)
+    {
+      localaxeg.a(localaxdr);
+      localaxeg.a(paramMessageForShortVideo);
+      int i = aunq.a();
+      if ((PicPreDownloader.a) || (i == 0)) {
+        break label250;
+      }
+      a("consumeShortVideoThumb", "screenOFF, no preDownload, networkType: " + i);
+      this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.add(localaxeg);
+      return;
+      if (paramMessageForShortVideo.istroop == 3000)
+      {
+        localaxdr.e = 1006;
+        break;
+      }
+      if (paramMessageForShortVideo.istroop != 1) {
+        break;
+      }
+      localaxdr.e = 1004;
+      break;
+    }
+    label250:
+    ThreadManager.post(new ShortVideoPreDownloader.3(this, localaxdr, paramMessageForShortVideo, localaxeg), 5, null, false);
+  }
+  
+  void b(MessageForShortVideo paramMessageForShortVideo, int paramInt)
+  {
+    a("handleShortVideo", " START uniseq=" + paramMessageForShortVideo.uniseq + ", uuid=" + paramMessageForShortVideo.uuid + ", priority=" + paramInt);
+    Object localObject = ShortVideoUtils.a(paramMessageForShortVideo, "mp4");
+    if (bbdj.b((String)localObject)) {
+      a("handleShortVideo", "Video has already existed, path=" + (String)localObject);
+    }
+    axeg localaxeg;
+    do
+    {
+      return;
+      localaxeg = axdo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForShortVideo, 2);
+    } while (localaxeg == null);
+    localObject = null;
+    String str = "";
+    int i = aunq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForShortVideo.istroop, paramMessageForShortVideo.frienduin);
+    if (paramInt == 5)
+    {
+      localObject = this.jdField_a_of_type_JavaUtilList;
+      localaxeg.c = 5;
+      paramMessageForShortVideo = "AIORequests";
+      switch (i)
+      {
+      default: 
+        localaxeg.d = 2;
+      }
+    }
+    for (;;)
+    {
+      if (localObject != null)
+      {
+        a("handleShortVideo", "successfully to add the short video request to " + paramMessageForShortVideo);
+        ((List)localObject).add(localaxeg);
+        this.jdField_a_of_type_JavaUtilMap.put(localaxeg.jdField_a_of_type_Axdr.jdField_a_of_type_JavaLangString, Integer.valueOf(localaxeg.c));
+      }
+      paramInt = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+      if (paramInt >= 1) {
+        break;
+      }
+      c();
+      return;
+      localaxeg.d = 4;
+      continue;
+      localaxeg.d = 3;
+      continue;
+      paramMessageForShortVideo = str;
+      if (paramInt == 1) {
+        switch (i)
+        {
+        default: 
+          localObject = this.d;
+          localaxeg.c = 2;
+          localaxeg.d = localaxeg.c;
+          paramMessageForShortVideo = "GroupRequests";
+          break;
+        case 3: 
+          localObject = this.jdField_b_of_type_JavaUtilList;
+          localaxeg.c = 4;
+          localaxeg.d = localaxeg.c;
+          paramMessageForShortVideo = "C2CRequests";
+          break;
+        case 2: 
+          localObject = this.c;
+          localaxeg.c = 3;
+          localaxeg.d = localaxeg.c;
+          paramMessageForShortVideo = "DiscussionRequests";
+        }
+      }
+    }
+    a("handleShortVideo", "mHandlingNum(" + paramInt + ") >= MAX_HANDLING_THREADS(" + 1 + ")");
+  }
+  
+  public void c()
+  {
+    a("consumeShortVideo", null);
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      aune.a("PIC_TAG_PRELOAD", "consume", "!mIsPreDownloaderOpen.get() failed");
+    }
+    axeg localaxeg;
+    do
+    {
+      return;
+      int i = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+      if (i >= 1)
+      {
+        a("consumeShortVideo", "handlingNum(" + i + ") >= MAX_HANDLING_THREADS(" + 1 + ")");
+        return;
+      }
+      localaxeg = a();
+    } while (localaxeg == null);
+    if (localaxeg.jdField_a_of_type_Axdr == null)
+    {
+      a("consumeShortVideo", "req.downinfo == null");
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilMap.remove(localaxeg.jdField_a_of_type_Axdr.jdField_a_of_type_JavaLangString);
+    this.jdField_b_of_type_JavaUtilConcurrentPriorityBlockingQueue.add(localaxeg);
+    localaxeg.d = localaxeg.c;
+    localaxeg.c = 6;
+    this.jdField_a_of_type_JavaUtilMap.put(localaxeg.jdField_a_of_type_Axdr.jdField_a_of_type_JavaLangString, Integer.valueOf(6));
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+    localaxeg.jdField_a_of_type_Axez = this.jdField_a_of_type_Axez;
+    ThreadManager.post(new ShortVideoPreDownloader.4(this, localaxeg), 5, null, false);
+  }
+  
+  public void c(MessageForShortVideo paramMessageForShortVideo)
+  {
+    paramMessageForShortVideo = a(paramMessageForShortVideo.uniseq);
+    if (paramMessageForShortVideo != null) {
+      this.jdField_a_of_type_JavaUtilMap.remove(paramMessageForShortVideo);
+    }
+  }
+  
+  public void d()
+  {
+    a("consumeAllThumbsInPendingQueue", null);
+    int i = aunq.a();
+    if ((!PicPreDownloader.a) && (i != 0))
+    {
+      a("consumeAllThumbsInPendingQueue", "screenOFF, no preDownload, networkType: " + i);
+      return;
+    }
+    ThreadManager.post(new ShortVideoPreDownloader.5(this), 5, null, false);
+  }
+  
+  public void onDestroy()
+  {
+    a("onDestroy", null);
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axdz
  * JD-Core Version:    0.7.0.1
  */

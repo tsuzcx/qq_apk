@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bckd;
-import bcki;
-import bcko;
-import bgso;
+import bdoe;
+import bdoj;
+import bdop;
+import bibq;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.wadl.ipc.WadlParams;
 import cooperation.wadl.ipc.WadlResult;
@@ -14,7 +14,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 class AppJsPlugin$AppDownloadManager$1
-  implements bgso
+  implements bibq
 {
   AppJsPlugin$AppDownloadManager$1(AppJsPlugin.AppDownloadManager paramAppDownloadManager) {}
   
@@ -70,7 +70,7 @@ class AppJsPlugin$AppDownloadManager$1
   public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
   {
     if ((paramWadlResult == null) || (paramWadlResult.jdField_a_of_type_CooperationWadlIpcWadlParams == null)) {
-      bckd.a("AppJsPlugin_AppDownloadManager", "onWadlTaskStatusChanged error wadlResult is null");
+      bdoe.a("AppJsPlugin_AppDownloadManager", "onWadlTaskStatusChanged error wadlResult is null");
     }
     String str;
     int i;
@@ -87,8 +87,8 @@ class AppJsPlugin$AppDownloadManager$1
             return;
             localObject = paramWadlResult.jdField_a_of_type_CooperationWadlIpcWadlParams;
             str = ((WadlParams)localObject).a;
-            i = bcko.a(paramWadlResult.jdField_b_of_type_Int);
-            bcki.b(((WadlParams)localObject).a);
+            i = bdop.a(paramWadlResult.jdField_b_of_type_Int);
+            bdoj.b(((WadlParams)localObject).a);
             QLog.i("AppJsPlugin_AppDownloadManager", 1, "onWadlTaskStatusChanged:" + paramWadlResult + ",localStatus:" + i);
             switch (i)
             {
@@ -112,8 +112,8 @@ class AppJsPlugin$AppDownloadManager$1
         } while (localObject == null);
         ((AppJsPlugin.IWaldlCallback)localObject).onResult(true, paramWadlResult);
         return;
-        i = bcko.b(paramWadlResult.c);
-        bcko.a(i);
+        i = bdop.b(paramWadlResult.c);
+        bdop.a(i);
         AppJsPlugin.AppDownloadManager.access$200(this.this$1).remove(str);
         if ((AppJsPlugin.AppDownloadManager.access$300(this.this$1) != null) && (AppJsPlugin.AppDownloadManager.access$300(this.this$1).containsKey(str)) && (AppJsPlugin.AppDownloadManager.access$300(this.this$1).get(str) != null)) {
           ((AppJsPlugin.IDownloadListener)AppJsPlugin.AppDownloadManager.access$300(this.this$1).get(str)).onDownloadFailed(i, i, "failed");

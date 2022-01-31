@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
-
-public final class pql
-  implements Parcelable.Creator<SocializeFeedsInfo.BiuCommentInfo>
+class pql
 {
-  public SocializeFeedsInfo.BiuCommentInfo a(Parcel paramParcel)
-  {
-    return new SocializeFeedsInfo.BiuCommentInfo(paramParcel);
-  }
-  
-  public SocializeFeedsInfo.BiuCommentInfo[] a(int paramInt)
-  {
-    return new SocializeFeedsInfo.BiuCommentInfo[paramInt];
-  }
+  private static final pqk a = new pqk();
 }
 
 

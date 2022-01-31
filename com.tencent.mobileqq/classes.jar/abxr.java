@@ -1,48 +1,15 @@
-import com.tencent.mobileqq.activity.TroopInviteStatusFragment;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class abxr
-  implements afcf
+  implements BusinessObserver
 {
-  public abxr(TroopInviteStatusFragment paramTroopInviteStatusFragment) {}
+  protected void a() {}
   
-  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512))) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
-      }
-      afce.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString);
-      afce.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if ((this.a.jdField_a_of_type_Bbms != null) && (this.a.jdField_a_of_type_Bbms.isShowing())) {
-        this.a.jdField_a_of_type_Bbms.dismiss();
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege normalTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt + ", sendSystemMsgAction-----");
-    }
-    TroopInviteStatusFragment.a(this.a, 2);
-  }
-  
-  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
-  {
-    if ((this.a.jdField_a_of_type_Bbms != null) && (this.a.jdField_a_of_type_Bbms.isShowing())) {
-      this.a.jdField_a_of_type_Bbms.dismiss();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopInviteStatusFragment", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
-    }
-    paramString1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-    if (paramInt1 == 72) {}
-    for (paramInt1 = 2131624472;; paramInt1 = 2131624471)
-    {
-      bbmy.a(paramString1, paramInt1, 1).a();
-      return;
+    if (paramInt == 10000) {
+      a();
     }
   }
 }

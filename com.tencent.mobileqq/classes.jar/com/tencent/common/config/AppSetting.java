@@ -13,7 +13,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.text.format.Time;
-import babp;
+import bbct;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -38,7 +38,7 @@ public class AppSetting
   public static int e;
   private static String e;
   public static boolean e;
-  private static int jdField_f_of_type_Int = 537063012;
+  private static int jdField_f_of_type_Int = 537063339;
   private static String jdField_f_of_type_JavaLangString;
   public static boolean f;
   private static final String g;
@@ -49,26 +49,27 @@ public class AppSetting
   public static boolean i;
   private static String j;
   public static boolean j;
-  private static String jdField_k_of_type_JavaLangString;
-  private static boolean jdField_k_of_type_Boolean;
-  private static volatile boolean l;
+  private static String k;
+  public static boolean k;
+  private static boolean l;
+  private static volatile boolean m;
   
   static
   {
     jdField_a_of_type_Boolean = true;
-    jdField_d_of_type_JavaLangString = "01252F7DACE8A80C";
-    jdField_e_of_type_JavaLangString = "V 8.2.6.4370";
+    jdField_d_of_type_JavaLangString = "CFF538A644DABF88";
+    jdField_e_of_type_JavaLangString = "V 8.2.8.4440";
     jdField_a_of_type_JavaLangString = jdField_e_of_type_JavaLangString;
-    jdField_f_of_type_JavaLangString = "8.2.6.4370.2020-01-02.cc9d1343.360ShiChang";
-    jdField_b_of_type_Boolean = true;
+    jdField_f_of_type_JavaLangString = "8.2.8.4440.2020-02-27.a15c4095.YingYongBao";
+    jdField_c_of_type_Boolean = true;
     g = Build.VERSION.RELEASE;
-    jdField_h_of_type_JavaLangString = "0";
+    h = "0";
     jdField_i_of_type_JavaLangString = "";
     jdField_c_of_type_Int = 1048576;
-    jdField_h_of_type_Boolean = true;
-    jdField_b_of_type_JavaLangString = "use_msg_reflesh_delay";
     jdField_i_of_type_Boolean = true;
+    b = "use_msg_reflesh_delay";
     jdField_j_of_type_Boolean = true;
+    jdField_k_of_type_Boolean = true;
     jdField_d_of_type_Int = 1000;
     jdField_e_of_type_Int = jdField_d_of_type_Int + 1;
     jdField_c_of_type_JavaLangString = Build.MANUFACTURER + "-" + Build.MODEL;
@@ -82,32 +83,32 @@ public class AppSetting
   
   public static int a(String paramString)
   {
-    String[] arrayOfString = "8.2.6".split("\\.");
+    String[] arrayOfString = "8.2.8".split("\\.");
     paramString = paramString.split("\\.");
-    int m;
     int n;
+    int i1;
     if (arrayOfString.length < paramString.length)
     {
-      m = arrayOfString.length;
-      n = 0;
+      n = arrayOfString.length;
+      i1 = 0;
     }
     for (;;)
     {
-      if (n >= m) {
+      if (i1 >= n) {
         break label80;
       }
-      int i1 = Integer.parseInt(arrayOfString[n]);
-      int i2 = Integer.parseInt(paramString[n]);
-      if (i1 > i2)
+      int i2 = Integer.parseInt(arrayOfString[i1]);
+      int i3 = Integer.parseInt(paramString[i1]);
+      if (i2 > i3)
       {
         return 1;
-        m = paramString.length;
+        n = paramString.length;
         break;
       }
-      if (i1 < i2) {
+      if (i2 < i3) {
         return -1;
       }
-      n += 1;
+      i1 += 1;
     }
     label80:
     return 0;
@@ -121,18 +122,18 @@ public class AppSetting
   
   public static String a(Context paramContext)
   {
-    int m = 0;
+    int n = 0;
     try
     {
-      int n = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
-      m = n;
+      int i1 = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
+      n = i1;
     }
     catch (Exception paramContext)
     {
       label20:
       break label20;
     }
-    return "8.2.6." + m;
+    return "8.2.8." + n;
   }
   
   public static String a(Context paramContext, String paramString)
@@ -143,7 +144,7 @@ public class AppSetting
     localStringBuffer.append(((Time)localObject1).format("%Y-%m-%d %H:%M:%S") + "/");
     localStringBuffer.append("mobileQQ/");
     localObject2 = "";
-    long l1 = babp.d() / 1048576L;
+    long l1 = bbct.d() / 1048576L;
     localObject1 = localObject2;
     try
     {
@@ -359,11 +360,11 @@ public class AppSetting
       paramString = paramString.split("#");
       jdField_f_of_type_Int = Integer.valueOf(paramString[0]).intValue();
       jdField_d_of_type_JavaLangString = paramString[1];
-      jdField_h_of_type_JavaLangString = paramString[2];
+      h = paramString[2];
       jdField_i_of_type_JavaLangString = paramString[3];
     }
     if (!"".equals(jdField_i_of_type_JavaLangString)) {
-      jdField_f_of_type_JavaLangString = "8.2.6.4370.2020-01-02.cc9d1343.360ShiChang";
+      jdField_f_of_type_JavaLangString = "8.2.8.4440.2020-02-27.a15c4095.YingYongBao";
     }
   }
   
@@ -383,13 +384,13 @@ public class AppSetting
   
   private static void b()
   {
-    if ((jdField_a_of_type_Boolean) && (!l)) {
+    if ((jdField_a_of_type_Boolean) && (!m)) {
       try
       {
-        if (!l)
+        if (!m)
         {
           a();
-          l = true;
+          m = true;
         }
         return;
       }
@@ -399,13 +400,13 @@ public class AppSetting
   
   public static boolean b()
   {
-    return jdField_k_of_type_Boolean;
+    return l;
   }
   
   public static final String c()
   {
     b();
-    return jdField_h_of_type_JavaLangString;
+    return h;
   }
   
   public static final String d()
@@ -433,13 +434,13 @@ public class AppSetting
       }
       localObject2 = ((String)localObject1).toCharArray();
       localStringBuffer = new StringBuffer(32);
-      int m = 0;
-      while (m < localObject2.length)
+      int n = 0;
+      while (n < localObject2.length)
       {
-        if ((localObject2[m] > ' ') && (localObject2[m] != '/') && (localObject2[m] != '_') && (localObject2[m] != '&') && (localObject2[m] != '|') && (localObject2[m] != '-')) {
-          localStringBuffer.append(localObject2[m]);
+        if ((localObject2[n] > ' ') && (localObject2[n] != '/') && (localObject2[n] != '_') && (localObject2[n] != '&') && (localObject2[n] != '|') && (localObject2[n] != '-')) {
+          localStringBuffer.append(localObject2[n]);
         }
-        m += 1;
+        n += 1;
       }
     }
     catch (SecurityException localSecurityException)
@@ -465,7 +466,7 @@ public class AppSetting
       if (str2.length() > 20) {
         localObject2 = str2.substring(0, 20);
       }
-      jdField_j_of_type_JavaLangString = "AQQ_2013 4.6/2013 8.2.64370&NA_0/000000&ADR&" + jdField_k_of_type_JavaLangString + "18" + "&" + (String)localObject2 + "&" + c() + "&" + d() + "&" + g + "&" + "V3";
+      jdField_j_of_type_JavaLangString = "AQQ_2013 4.6/2013 8.2.84440&NA_0/000000&ADR&" + jdField_k_of_type_JavaLangString + "18" + "&" + (String)localObject2 + "&" + c() + "&" + d() + "&" + g + "&" + "V3";
       return jdField_j_of_type_JavaLangString;
       label301:
       str2 = "ALL";
@@ -474,12 +475,12 @@ public class AppSetting
   
   public static final String f()
   {
-    return "android 8.2.6";
+    return "android 8.2.8";
   }
   
   public static String g()
   {
-    return "cc9d1343";
+    return "a15c4095";
   }
 }
 

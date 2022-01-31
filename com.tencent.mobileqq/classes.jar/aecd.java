@@ -1,22 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForText;
 
 class aecd
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  aecd(aecb paramaecb) {}
+  aecd(aebz paramaebz, MessageForText paramMessageForText) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!aing.e()) {
-      ((aifg)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.a.a(), 319);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "[onClick] click audio button too fast.");
+    aaod.a(this.jdField_a_of_type_Aebz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aebz.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aebz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.uniseq);
   }
 }
 

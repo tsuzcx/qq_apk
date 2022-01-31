@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.shortvideo.redbag;
 
-import awkk;
+import axjq;
 
 public class RedBagVideoManager$9
   implements Runnable
 {
-  public RedBagVideoManager$9(awkk paramawkk) {}
+  public RedBagVideoManager$9(axjq paramaxjq) {}
   
   public void run()
   {
-    awkk.f(this.this$0);
+    axjq.f(this.this$0);
   }
 }
 

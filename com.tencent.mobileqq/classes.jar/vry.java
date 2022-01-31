@@ -1,16 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
 
 public class vry
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public vry(RotateCircleImageView paramRotateCircleImageView) {}
+  public vry(PermissionSettingActivity paramPermissionSettingActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    RotateCircleImageView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    paramView = PermissionSettingActivity.a(this.a).a();
+    if (paramView != null)
+    {
+      PermissionSettingActivity.a(this.a, paramView);
+      this.a.finish();
+    }
   }
 }
 

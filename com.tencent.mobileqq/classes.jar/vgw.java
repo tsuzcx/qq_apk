@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public final class vgw
-  implements Parcelable.Creator<SlideItemInfo>
+class vgw
+  implements syt<tmq, tok>
 {
-  public SlideItemInfo a(Parcel paramParcel)
-  {
-    return new SlideItemInfo(paramParcel);
-  }
+  vgw(vgu paramvgu) {}
   
-  public SlideItemInfo[] a(int paramInt)
+  public void a(@NonNull tmq paramtmq, @Nullable tok paramtok, @NonNull ErrorMessage paramErrorMessage)
   {
-    return new SlideItemInfo[paramInt];
+    veg.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramtok != null))
+    {
+      veg.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramtok.toString());
+      paramtmq = new tbx(paramtok.a, paramtok.c, paramtok.d, paramtok.e, paramtok.f, paramtmq.d, paramtmq.e);
+      this.a.a(0, paramtmq);
+      return;
+    }
+    veg.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
-import bdnw;
-import bdyj;
+import beka;
+import besl;
+import bffp;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class BannerAdPlugin$6
   implements Runnable
 {
-  BannerAdPlugin$6(BannerAdPlugin paramBannerAdPlugin, int paramInt1, int paramInt2, bdfz parambdfz) {}
+  BannerAdPlugin$6(BannerAdPlugin paramBannerAdPlugin, int paramInt1, int paramInt2, beka parambeka) {}
   
   public void run()
   {
@@ -20,10 +20,10 @@ class BannerAdPlugin$6
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("state", "resize");
       localJSONObject.put("width", this.val$resizeValue);
-      localJSONObject.put("height", bdyj.a(this.val$resizeValue));
+      localJSONObject.put("height", bffp.a(this.val$resizeValue));
       BannerAdPlugin.access$400(this.this$0, this.val$req, localJSONObject, "onBannerAdStateChange");
-      if (bdnw.a()) {
-        bdnw.b("BannerAdPlugin", "updateBannerAd " + bool + ", resizeValue = " + this.val$resizeValue);
+      if (besl.a()) {
+        besl.b("BannerAdPlugin", "updateBannerAd " + bool + ", resizeValue = " + this.val$resizeValue);
       }
       return;
     }
@@ -31,7 +31,7 @@ class BannerAdPlugin$6
     {
       for (;;)
       {
-        bdnw.d("BannerAdPlugin", "updateBannerAd informJs error", localJSONException);
+        besl.d("BannerAdPlugin", "updateBannerAd informJs error", localJSONException);
       }
     }
   }

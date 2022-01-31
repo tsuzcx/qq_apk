@@ -1,11 +1,11 @@
 package cooperation.qzone.webviewplugin;
 
-import bghv;
+import bhqo;
 
 public class QZonePassivePraiseJsPlugin$1
   implements Runnable
 {
-  public QZonePassivePraiseJsPlugin$1(bghv parambghv, String[] paramArrayOfString) {}
+  public QZonePassivePraiseJsPlugin$1(bhqo parambhqo, String[] paramArrayOfString) {}
   
   /* Error */
   public void run()
@@ -36,18 +36,18 @@ public class QZonePassivePraiseJsPlugin$1
     //   41: invokevirtual 34	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   44: astore_1
     //   45: aload_0
-    //   46: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbghv;
+    //   46: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbhqo;
     //   49: aload_2
     //   50: ldc 36
     //   52: invokevirtual 34	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   55: invokestatic 41	bghv:a	(Lbghv;Ljava/lang/String;)Ljava/lang/String;
+    //   55: invokestatic 41	bhqo:a	(Lbhqo;Ljava/lang/String;)Ljava/lang/String;
     //   58: pop
     //   59: aload_1
     //   60: invokestatic 47	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   63: ifne +16 -> 79
     //   66: aload_0
-    //   67: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbghv;
-    //   70: invokestatic 50	bghv:a	(Lbghv;)Ljava/lang/String;
+    //   67: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbhqo;
+    //   70: invokestatic 50	bhqo:a	(Lbhqo;)Ljava/lang/String;
     //   73: invokestatic 47	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   76: ifeq +15 -> 91
     //   79: return
@@ -57,11 +57,11 @@ public class QZonePassivePraiseJsPlugin$1
     //   84: aload_2
     //   85: invokevirtual 55	org/json/JSONException:printStackTrace	()V
     //   88: goto -29 -> 59
-    //   91: invokestatic 60	bgbz:a	()Lbgbz;
-    //   94: invokevirtual 63	bgbz:a	()Lbgcb;
+    //   91: invokestatic 60	bhkl:a	()Lbhkl;
+    //   94: invokevirtual 63	bhkl:a	()Lbhkn;
     //   97: ldc 52
     //   99: aload_1
-    //   100: invokevirtual 68	bgcb:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   100: invokevirtual 68	bhkn:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   103: return
     //   104: astore_2
     //   105: goto -21 -> 84

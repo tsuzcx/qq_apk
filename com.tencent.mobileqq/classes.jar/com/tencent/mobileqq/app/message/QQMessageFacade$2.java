@@ -1,18 +1,26 @@
 package com.tencent.mobileqq.app.message;
 
-import ajzy;
+import akav;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 class QQMessageFacade$2
   implements Runnable
 {
+  QQMessageFacade$2(QQMessageFacade paramQQMessageFacade, MessageRecord paramMessageRecord, akav paramakav, boolean paramBoolean) {}
+  
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Akcg.e = true;
-    this.jdField_a_of_type_Akcg.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_Akcg.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Akcg.jdField_d_of_type_Int = this.jdField_a_of_type_Int;
-    this.this$0.a(this.jdField_a_of_type_Akcg);
+    try
+    {
+      this.this$0.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Akav, this.jdField_a_of_type_Boolean);
+      return;
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      QLog.e("Q.msg.QQMessageFacade", 1, "smr error :", localRuntimeException);
+      throw localRuntimeException;
+    }
   }
 }
 

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import ajed;
+import ajsf;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
-import azyk;
-import bbac;
-import begr;
-import begw;
+import bazo;
+import bcdb;
+import bfol;
+import bfoq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import java.io.File;
-import kzy;
+import lko;
 
 class AvatarPendantJsPlugin$5
-  implements begw
+  implements bfoq
 {
-  AvatarPendantJsPlugin$5(AvatarPendantJsPlugin paramAvatarPendantJsPlugin, String paramString, begr parambegr) {}
+  AvatarPendantJsPlugin$5(AvatarPendantJsPlugin paramAvatarPendantJsPlugin, String paramString, bfol parambfol) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -34,14 +34,14 @@ class AvatarPendantJsPlugin$5
         return;
       }
       catch (Exception paramView) {}
-      if (!kzy.b(BaseApplicationImpl.getContext()))
+      if (!lko.b(BaseApplicationImpl.getContext()))
       {
-        paramView = new File(ajed.aU + "photo/");
+        paramView = new File(ajsf.aW + "photo/");
         if (!paramView.exists()) {
           paramView.mkdirs();
         }
         paramView = new Intent();
-        Uri localUri = FileProvider7Helper.setSystemCapture(this.this$0.mRuntime.a(), new File(ajed.aU + "photo/" + System.currentTimeMillis() + ".jpg"), paramView);
+        Uri localUri = FileProvider7Helper.setSystemCapture(this.this$0.mRuntime.a(), new File(ajsf.aW + "photo/" + System.currentTimeMillis() + ".jpg"), paramView);
         this.this$0.mRuntime.a().startActivityForResult(paramView, 1);
         AvatarPendantUiPlugin.sJsHandler = this.this$0;
         AvatarPendantUiPlugin.sCallbackId = this.val$callbackId;
@@ -50,8 +50,8 @@ class AvatarPendantJsPlugin$5
         paramView = new Intent();
         paramView.putExtra("keyFromPendantPhoto", true);
         paramView.putExtra("Business_Origin", 100);
-        paramInt = Math.min(482, azyk.a(this.this$0.mRuntime.a()));
-        PhotoUtils.a(paramView, this.this$0.mRuntime.a(), QQBrowserActivity.class.getName(), paramInt, paramInt, 1080, 1080, azyk.a());
+        paramInt = Math.min(482, bazo.a(this.this$0.mRuntime.a()));
+        PhotoUtils.a(paramView, this.this$0.mRuntime.a(), QQBrowserActivity.class.getName(), paramInt, paramInt, 1080, 1080, bazo.a());
         AvatarPendantUiPlugin.sJsHandler = this.this$0;
         AvatarPendantUiPlugin.sCallbackId = this.val$callbackId;
       }

@@ -1,15 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
 
-class qpe
-  implements View.OnClickListener
+public abstract interface qpe
 {
-  qpe(qoe paramqoe, String paramString) {}
-  
-  public void onClick(View paramView)
-  {
-    ndn.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
-  }
+  public abstract void a(String paramString, Bundle paramBundle);
 }
 
 

@@ -1,25 +1,14 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class xci
-  implements bbbn
+public class xci
 {
-  xci(xce paramxce, long paramLong, String paramString) {}
+  public String a;
+  public String b;
   
-  public void onCheckOfflineFinish(int paramInt)
+  public xci(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Xce.c = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflinePluginQQ", 2, "onCheckOfflineFinish, cost: " + this.jdField_a_of_type_Xce.c + ", url: " + mpw.b(this.jdField_a_of_type_JavaLangString, new String[0]));
-    }
-    this.jdField_a_of_type_Xce.a(this.jdField_a_of_type_JavaLangString, paramInt);
-    CustomWebView localCustomWebView = this.jdField_a_of_type_Xce.mRuntime.a();
-    if (localCustomWebView != null)
-    {
-      localCustomWebView.loadUrlOriginal(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    QLog.e("OfflinePluginQQ", 1, "error!!!! webview is null, now can not loadUrl " + this.jdField_a_of_type_JavaLangString);
+    this.a = paramJSONObject.optString("icon");
+    this.b = paramJSONObject.optString("jumpUrl");
   }
 }
 

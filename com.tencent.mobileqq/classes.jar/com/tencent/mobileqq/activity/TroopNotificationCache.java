@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import atmo;
+import aukm;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="feedsId")
 public class TroopNotificationCache
-  extends atmo
+  extends aukm
 {
   public static final int FEED_TYPE_NEW_GUIDE = 34;
   public static final int FEED_TYPE_NOTICE = 23;
@@ -18,6 +18,7 @@ public class TroopNotificationCache
   public int feedType = 34;
   public String feedsId;
   public long filterID;
+  public boolean needConfirm;
   public boolean read;
   public int serviceID;
   public int src;

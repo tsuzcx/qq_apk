@@ -1,14 +1,10 @@
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
-
-public class bbcn
+public abstract interface bbcn
 {
-  public final CopyOnWriteArrayList<bbco> a;
-  public final AtomicInteger a;
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbcn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import asby;
-import atmo;
-import atnv;
-import atnz;
-import atoc;
+import asyc;
+import aukm;
+import ault;
+import aulx;
+import auma;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ExtensionInfo
-  extends atmo
+  extends aukm
 {
   public static final int AUDIO_PANEL_TYPE__LS = 3;
   public static final int AUDIO_PANEL_TYPE__NONE = -1;
@@ -30,12 +30,12 @@ public class ExtensionInfo
   public static final String TAG = "ExtensionInfo";
   public static final int TYPE_FROM_CHAT = 1;
   public static final int TYPE_FROM_CONTACT = 0;
-  @atnv(a=-1)
+  @ault(a=-1)
   public int audioPanelType = -1;
   @Deprecated
   public int bestIntimacyDays;
   public int bestIntimacyType = 0;
-  @atnz
+  @aulx
   public long chatAnimStartTime;
   public int chatDays;
   public int chatHotLevel = 0;
@@ -55,7 +55,7 @@ public class ExtensionInfo
   public int feedType;
   public int fontEffect;
   public long fontEffectLastUpdateTime;
-  @atnz
+  @aulx
   public long frdshipAnimStartTime;
   public int friendRingId;
   public int friendshipChatDays;
@@ -66,27 +66,27 @@ public class ExtensionInfo
   public boolean hasRemindLoverChat;
   public boolean hasRemindPraise;
   public boolean hasRemindQzoneVisit;
-  @atnv(a=0)
+  @ault(a=0)
   public int hiddenChatSwitch;
-  @atnz
+  @aulx
   public long intimateAnimStartTime;
   public int intimate_chatDays;
   public int intimate_level = 0;
   public int intimate_type = 0;
   public boolean isAdded2C2C;
-  @atnz
+  @aulx
   public boolean isDataChanged;
   public boolean isExtinguish;
   public int isGrayTipMultiRemind = 0;
   public int isGrayTipRemind = 0;
   public boolean isListenTogetherOpen;
-  @atnv(a=0)
+  @ault(a=0)
   public int isSharingLocation;
   public long lastChatTime;
-  @atnz
+  @aulx
   public long lastFriendshipGrayPushTime = -1L;
   public long lastFriendshipTime;
-  @atnz
+  @aulx
   public long lastGrayPushTime = -1L;
   public long lastHotReactiveReCheckInTs;
   public long lastIceBreakChatTs;
@@ -95,7 +95,7 @@ public class ExtensionInfo
   public long lastPLNewsTimestamp;
   public long lastPullPLNewsTimestamp;
   public long lastQzoneVisitTime;
-  @atnv(a=0)
+  @ault(a=0)
   public long lastShareLbsMsgUniseq;
   public long lastUpdateTime;
   public long last_intimate_chatTime;
@@ -103,7 +103,7 @@ public class ExtensionInfo
   public long latestPLUpdateTimestamp;
   public long localChatRecTs;
   public long localChatSendTs;
-  @atnz
+  @aulx
   public long loverChatAnimStartTime;
   public int loverChatDays;
   public int loverChatLevel = 0;
@@ -115,42 +115,42 @@ public class ExtensionInfo
   public long makeFrdsTs;
   public long medalUpdateTimestamp;
   public boolean messageEnablePreview = true;
-  @atnv(a=0)
+  @ault(a=0)
   public int messageEnablePreviewNew;
   public boolean messageEnableSound = true;
-  @atnv(a=0)
+  @ault(a=0)
   public int messageEnableSoundNew;
   public boolean messageEnableVibrate = true;
-  @atnv(a=0)
+  @ault(a=0)
   public int messageEnableVibrateNew;
-  @atnz
-  public ConcurrentHashMap<Long, asby> mutualMarks;
+  @aulx
+  public ConcurrentHashMap<Long, asyc> mutualMarks;
   public int mutual_mark_version;
   public String mutual_marks_store_json;
   public int newBestIntimacyType = 0;
   public long openDoNotDisturbTime;
   public int pendantDiyId;
   public long pendantId;
-  @atnz
+  @aulx
   public long praiseAnimStartTime;
   @Deprecated
   public int praiseDays;
   public int praiseHotLevel = 0;
   public int pttChangeVoiceType = 0;
   public int qzoneHotDays;
-  @atnz
+  @aulx
   public long qzoneVisitAnimStartTime;
   public int qzoneVisitType = 0;
   public byte[] richBuffer;
-  @atnz
+  @aulx
   public RichStatus richStatus;
   public long richTime;
   public int showC2CPanel = 1;
   public long timestamp;
-  @atnv(a=-1)
+  @ault(a=-1)
   public long topPositionTime;
   public long uVipFont;
-  @atoc
+  @auma
   public String uin;
   public int vipFontType;
   
@@ -163,13 +163,13 @@ public class ExtensionInfo
         if (this.mutualMarks == null) {
           this.mutualMarks = new ConcurrentHashMap();
         }
-        asby localasby = new asby();
-        localasby.a = 8L;
-        localasby.jdField_b_of_type_Long = this.qzoneVisitType;
-        localasby.d = this.lastQzoneVisitTime;
-        localasby.c = this.qzoneHotDays;
-        localasby.jdField_b_of_type_Boolean = this.hasRemindQzoneVisit;
-        this.mutualMarks.put(Long.valueOf(localasby.a), localasby);
+        asyc localasyc = new asyc();
+        localasyc.a = 8L;
+        localasyc.jdField_b_of_type_Long = this.qzoneVisitType;
+        localasyc.d = this.lastQzoneVisitTime;
+        localasyc.c = this.qzoneHotDays;
+        localasyc.jdField_b_of_type_Boolean = this.hasRemindQzoneVisit;
+        this.mutualMarks.put(Long.valueOf(localasyc.a), localasyc);
       }
       this.mutual_mark_version = 818;
     }
@@ -277,7 +277,7 @@ public class ExtensionInfo
     //   108: aload_0
     //   109: aload_0
     //   110: getfield 316	com/tencent/mobileqq/data/ExtensionInfo:mutual_marks_store_json	Ljava/lang/String;
-    //   113: invokestatic 325	asby:a	(Ljava/lang/String;)Ljava/util/concurrent/ConcurrentHashMap;
+    //   113: invokestatic 325	asyc:a	(Ljava/lang/String;)Ljava/util/concurrent/ConcurrentHashMap;
     //   116: putfield 202	com/tencent/mobileqq/data/ExtensionInfo:mutualMarks	Ljava/util/concurrent/ConcurrentHashMap;
     //   119: aload_0
     //   120: invokespecial 327	com/tencent/mobileqq/data/ExtensionInfo:migrateOldExtensionInfoToNewMutualMark	()V
@@ -554,7 +554,7 @@ public class ExtensionInfo
     //   129: aload_0
     //   130: aload_0
     //   131: getfield 202	com/tencent/mobileqq/data/ExtensionInfo:mutualMarks	Ljava/util/concurrent/ConcurrentHashMap;
-    //   134: invokestatic 379	asby:a	(Ljava/util/concurrent/ConcurrentHashMap;)Ljava/lang/String;
+    //   134: invokestatic 379	asyc:a	(Ljava/util/concurrent/ConcurrentHashMap;)Ljava/lang/String;
     //   137: putfield 316	com/tencent/mobileqq/data/ExtensionInfo:mutual_marks_store_json	Ljava/lang/String;
     //   140: return
     //   141: astore_2

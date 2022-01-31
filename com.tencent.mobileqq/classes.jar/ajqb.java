@@ -1,17 +1,31 @@
-class ajqb
-  implements lne
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.redtouch.RedTouch;
+
+public class ajqb
 {
-  ajqb(ajpz paramajpz) {}
-  
-  public void a(lnd paramlnd)
-  {
-    paramlnd.a(this.a.a.a);
-    paramlnd.a();
-  }
+  public ajpz a;
+  public View a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public RedTouch a;
+  public ImageView b;
+  public RelativeLayout b;
+  public TextView b;
+  public ImageView c;
+  public RelativeLayout c;
+  public TextView c;
+  public ImageView d;
+  public ImageView e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajqb
  * JD-Core Version:    0.7.0.1
  */

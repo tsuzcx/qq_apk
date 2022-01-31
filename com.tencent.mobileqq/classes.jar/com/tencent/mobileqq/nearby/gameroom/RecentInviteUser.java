@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class RecentInviteUser
-  extends atmo
+  extends aukm
   implements Comparable<RecentInviteUser>
 {
   public String lastInviteId;
   public long lastInviteTime;
   public String uin;
   public int uinType;
-  @atoc
+  @auma
   public String uniKey;
   
   public static String getKey(int paramInt, String paramString)
@@ -21,7 +21,15 @@ public class RecentInviteUser
   
   public int compareTo(RecentInviteUser paramRecentInviteUser)
   {
-    return (int)(paramRecentInviteUser.lastInviteTime - this.lastInviteTime);
+    if (paramRecentInviteUser == null) {}
+    do
+    {
+      return -1;
+      if (paramRecentInviteUser.lastInviteTime > this.lastInviteTime) {
+        return 1;
+      }
+    } while (paramRecentInviteUser.lastInviteTime < this.lastInviteTime);
+    return 0;
   }
 }
 

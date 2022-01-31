@@ -1,50 +1,49 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.open.agent.AuthorityControlFragment;
-import com.tencent.widget.ListView;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.vashealth.VideoCallBack;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbuo
-  implements belq
+  extends Handler
 {
-  public bbuo(AuthorityControlFragment paramAuthorityControlFragment) {}
+  public bbuo(VideoCallBack paramVideoCallBack, bcpq parambcpq, String paramString, Activity paramActivity) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 0) {
-      AuthorityControlFragment.a(this.a).c(0L);
-    }
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    if (paramInt == 0)
+    switch (paramMessage.what)
     {
-      AuthorityControlFragment.a(this.a).a(0L);
-      AuthorityControlFragment.a(this.a, (bcix)AuthorityControlFragment.a(this.a).a(151));
-      AuthorityControlFragment.a(this.a).a();
-      AuthorityControlFragment.a(this.a).notifyDataSetChanged();
     }
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (paramInt == 0) {
-      AuthorityControlFragment.a(this.a).b(0L);
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    if (paramInt == 0) {
-      AuthorityControlFragment.a(this.a).c(0L);
-    }
+    int i;
+    do
+    {
+      return;
+      if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing())) {
+        this.jdField_a_of_type_Bcpq.dismiss();
+      }
+      i = paramMessage.arg1;
+      if (i != 0) {
+        break;
+      }
+      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+      Intent localIntent = new Intent();
+      localIntent.putExtra("video_dir", paramMessage);
+      localIntent.putExtra("thumb_dir", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(1, localIntent);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+    } while (!QLog.isColorLevel());
+    QLog.i("VideoCallBack", 2, "encode success: " + paramMessage);
+    return;
+    this.jdField_a_of_type_AndroidAppActivity.setResult(2);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    QLog.e("VideoCallBack", 1, "error! ret = " + i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbuo
  * JD-Core Version:    0.7.0.1
  */

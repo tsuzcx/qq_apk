@@ -1,32 +1,32 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdcy;
-import bdey;
-import bdff;
-import bdfz;
-import bdgg;
-import bdnw;
+import begy;
+import beiy;
+import bejf;
+import beka;
+import bekg;
+import besl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class VoIPJsPlugin$1
-  implements bdff
+  implements bejf
 {
-  VoIPJsPlugin$1(VoIPJsPlugin paramVoIPJsPlugin, JSONObject paramJSONObject, bdfz parambdfz) {}
+  VoIPJsPlugin$1(VoIPJsPlugin paramVoIPJsPlugin, JSONObject paramJSONObject, beka parambeka) {}
   
   public void onFail(int paramInt)
   {
     try
     {
       this.val$res.put("errCode", paramInt);
-      this.val$req.jdField_a_of_type_Bdcy.a(this.val$req.jdField_b_of_type_Int, bdgg.a(this.val$req.jdField_a_of_type_JavaLangString, this.val$res, "状态错误").toString());
+      this.val$req.jdField_a_of_type_Begy.a(this.val$req.jdField_b_of_type_Int, bekg.a(this.val$req.jdField_a_of_type_JavaLangString, this.val$res, "状态错误").toString());
       return;
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        bdnw.d("[mini] VoIPJsPlugin", "参数错误 " + this.val$req.jdField_b_of_type_JavaLangString, localJSONException);
+        besl.d("[mini] VoIPJsPlugin", "参数错误 " + this.val$req.jdField_b_of_type_JavaLangString, localJSONException);
       }
     }
   }
@@ -35,16 +35,16 @@ class VoIPJsPlugin$1
   {
     try
     {
-      this.val$res.put("muteMicrophone", bdey.a().a());
-      this.val$res.put("muteEarphone", bdey.a().b());
-      this.val$req.jdField_a_of_type_Bdcy.a(this.val$req.jdField_b_of_type_Int, bdgg.a(this.val$req.jdField_a_of_type_JavaLangString, this.val$res).toString());
+      this.val$res.put("muteMicrophone", beiy.a().a());
+      this.val$res.put("muteEarphone", beiy.a().b());
+      this.val$req.jdField_a_of_type_Begy.a(this.val$req.jdField_b_of_type_Int, bekg.a(this.val$req.jdField_a_of_type_JavaLangString, this.val$res).toString());
       return;
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        bdnw.d("[mini] VoIPJsPlugin", "参数错误 " + this.val$req.jdField_b_of_type_JavaLangString, localJSONException);
+        besl.d("[mini] VoIPJsPlugin", "参数错误 " + this.val$req.jdField_b_of_type_JavaLangString, localJSONException);
       }
     }
   }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
-import aqqm;
+import arle;
 
 class GroupMiniAioInterfaceImpl$1
   implements Runnable

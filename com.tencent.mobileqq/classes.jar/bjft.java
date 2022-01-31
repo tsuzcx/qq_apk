@@ -1,21 +1,65 @@
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.view.View;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+import dov.com.qq.im.capture.poi.FacePoiUI.3.1;
+import dov.com.qq.im.capture.poi.FacePoiUI.3.2;
 
 public class bjft
-  extends Handler
+  implements bftk
 {
-  public bjft(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout, Looper paramLooper)
+  bjft(bjfr parambjfr) {}
+  
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    super(paramLooper);
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.a == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.a)
+    {
+      paramView.c(l);
+      return;
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    paramListView = (PullRefreshHeader)paramView;
+    long l;
+    if (this.a.a == 0L)
+    {
+      l = System.currentTimeMillis();
+      paramListView.a(l);
+      if (!bbev.g(this.a.e.getContext())) {
+        break label114;
+      }
+      bjfr.a(this.a).d();
+      bjfr.a(this.a).a();
+      new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.3.1(this), 300L);
+    }
+    for (;;)
+    {
+      ((aavx)paramView.getTag()).a = true;
+      return true;
+      l = this.a.a;
+      break;
+      label114:
+      new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.3.2(this), 300L);
+    }
   }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.a == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.a)
+    {
+      paramView.b(l);
+      return;
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

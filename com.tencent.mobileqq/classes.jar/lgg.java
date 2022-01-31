@@ -1,32 +1,34 @@
+import android.graphics.Bitmap;
+
 public class lgg
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int;
+  public int a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public boolean b;
+  public int c = -1;
+  public Bitmap c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public String e;
+  public boolean e;
+  public String f;
+  public boolean f;
+  public String g;
+  public boolean g;
   
-  public float a()
+  public lgg(lgf paramlgf)
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (paramFloat >= 0.0F) {}
-    for (boolean bool = true;; bool = false)
-    {
-      beeo.a(bool);
-      this.jdField_a_of_type_Float = paramFloat;
-      return;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_d_of_type_Int = -1;
   }
 }
 

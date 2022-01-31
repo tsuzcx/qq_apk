@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.nearby;
 
-import asdz;
-import asea;
+import atad;
+import atae;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.mfsdk.reporter.ReporterMachine;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zqb;
+import zzt;
 
 public class NearbyLeakHelper$2$1
   implements Runnable
 {
-  public NearbyLeakHelper$2$1(asea paramasea) {}
+  public NearbyLeakHelper$2$1(atae paramatae) {}
   
   public void run()
   {
-    Object localObject1 = zqb.a("mobile_nearby_leak");
+    Object localObject1 = zzt.a("mobile_nearby_leak");
     Object localObject2;
     if (((Boolean)localObject1[0]).booleanValue())
     {
       localObject2 = (String)localObject1[1];
-      asdz.a((String)localObject2);
+      atad.a((String)localObject2);
     }
     try
     {
-      if (!"0".equals("cc9d1343"))
+      if (!"0".equals("a15c4095"))
       {
         localObject1 = new JSONObject();
         JSONObject localJSONObject = new JSONObject();

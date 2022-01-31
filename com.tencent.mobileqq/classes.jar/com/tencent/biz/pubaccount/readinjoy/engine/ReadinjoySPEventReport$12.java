@@ -5,8 +5,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
-import ohp;
-import rtr;
+import ota;
+import sgj;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class ReadinjoySPEventReport$12
@@ -16,7 +16,7 @@ public final class ReadinjoySPEventReport$12
   
   public void run()
   {
-    if (ohp.b(23))
+    if (ota.b(23))
     {
       oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(1);
@@ -24,7 +24,7 @@ public final class ReadinjoySPEventReport$12
       localAttributeList.att_value.set(String.valueOf(this.a / 1000L));
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(localAttributeList);
-      rtr.a(23, localArrayList);
+      sgj.a(23, localArrayList);
     }
     ThreadManager.executeOnSubThread(new ReadinjoySPEventReport.12.1(this));
   }

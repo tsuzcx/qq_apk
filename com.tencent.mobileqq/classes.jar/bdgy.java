@@ -1,24 +1,39 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.appstore.dl.DownloadManagerV2.19;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-class bdgy
-  extends BroadcastReceiver
+public class bdgy
+  implements DialogInterface.OnClickListener
 {
-  bdgy(bdgx parambdgx) {}
+  public bdgy(DownloadManagerV2.19 param19) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (bdhe.a(paramIntent.getAction())) {}
-    while (bdgx.a(this.a) == null) {
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdkm.b);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdkm.j);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdkm.f);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdkm.i);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdkm.l);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bdkm.y, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
+      this.a.this$0.a(10, paramDialogInterface);
       return;
     }
-    bdgx.a(this.a).a(paramContext, paramIntent);
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdgy
  * JD-Core Version:    0.7.0.1
  */

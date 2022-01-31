@@ -1,33 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ShortVideoUpInfo;
-import mqq.manager.Manager;
+import android.os.Bundle;
 
-public class ajsb
-  implements Manager
+class ajsb
+  extends ajxl
 {
-  private atmp a;
+  ajsb(ajsa paramajsa) {}
   
-  public ajsb(QQAppInterface paramQQAppInterface)
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    this.a = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-  }
-  
-  public ShortVideoUpInfo a(String paramString)
-  {
-    return (ShortVideoUpInfo)this.a.a(ShortVideoUpInfo.class, paramString);
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool = false;
-    paramString = a(paramString);
-    if (paramString != null) {
-      bool = this.a.b(paramString);
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(1, paramString);
     }
-    return bool;
   }
   
-  public void onDestroy() {}
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (paramBoolean) {
+      this.a.a(1, paramString);
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(2, null);
+    }
+  }
 }
 
 

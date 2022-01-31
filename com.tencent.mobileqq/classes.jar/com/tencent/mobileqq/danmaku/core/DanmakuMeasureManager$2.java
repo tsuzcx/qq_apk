@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import ampl;
-import ampm;
-import ampo;
+import anfs;
+import anft;
+import anfv;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -10,17 +10,17 @@ import java.util.List;
 public class DanmakuMeasureManager$2
   implements Runnable
 {
-  public DanmakuMeasureManager$2(ampl paramampl, List paramList, ampm paramampm) {}
+  public DanmakuMeasureManager$2(anfs paramanfs, List paramList, anft paramanft) {}
   
   public void run()
   {
     Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
     while (localIterator.hasNext())
     {
-      ampo localampo = (ampo)localIterator.next();
-      ampl.a(ampl.a(this.this$0), localampo);
-      if (this.jdField_a_of_type_Ampm != null) {
-        this.jdField_a_of_type_Ampm.a(localampo);
+      anfv localanfv = (anfv)localIterator.next();
+      anfs.a(anfs.a(this.this$0), localanfv);
+      if (this.jdField_a_of_type_Anft != null) {
+        this.jdField_a_of_type_Anft.a(localanfv);
       }
     }
   }

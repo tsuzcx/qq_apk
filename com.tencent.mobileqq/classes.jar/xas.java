@@ -1,38 +1,46 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DeleteFileRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-public class xas
-  implements View.OnTouchListener
+public abstract class xas
+  extends mxm
 {
-  public xas(AbsBaseWebViewActivity paramAbsBaseWebViewActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    switch (paramMotionEvent.getAction())
+    if (paramInt != 0)
     {
-    default: 
-      bool1 = false;
+      a(false, paramInt, paramBundle, "", ajyc.a(2131715370));
+      return;
     }
-    do
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    try
     {
-      return bool1;
-      bool1 = bool2;
-    } while (paramView != AbsBaseWebViewActivity.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewBase", 2, "vg onTouch");
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.DeleteFileRspBody)localRspBody.delete_file_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has()) {
+        break label133;
+      }
+      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      {
+        a(true, 0, paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
+        return;
+      }
     }
-    paramView = new HashMap(2);
-    paramView.put("X", Integer.valueOf((int)paramMotionEvent.getX()));
-    paramView.put("Y", Integer.valueOf((int)paramMotionEvent.getY()));
-    this.a.a(8589934606L, paramView);
-    return true;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, paramBundle, "", ajyc.a(2131715366));
+      return;
+    }
+    a(false, paramArrayOfByte.int32_ret_code.get(), paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
+    return;
+    label133:
+    a(false, -1, paramBundle, "", ajyc.a(2131715374));
   }
+  
+  protected abstract void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2);
 }
 
 

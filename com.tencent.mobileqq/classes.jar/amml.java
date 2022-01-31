@@ -1,61 +1,20 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
 public class amml
-  extends alzl<ammk>
+  implements View.OnClickListener
 {
-  public static ammk a()
+  public amml(LocationSelectActivity paramLocationSelectActivity) {}
+  
+  public void onClick(View paramView)
   {
-    return (ammk)alzw.a().a(348);
-  }
-  
-  public int a()
-  {
-    return 348;
-  }
-  
-  @NonNull
-  public ammk a(int paramInt)
-  {
-    return new ammk();
-  }
-  
-  @Nullable
-  public ammk a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return ammk.a(paramArrayOfalzs);
-    }
-    return null;
-  }
-  
-  public Class<ammk> a()
-  {
-    return ammk.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(ammk paramammk) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    this.a.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amml
  * JD-Core Version:    0.7.0.1
  */

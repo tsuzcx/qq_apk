@@ -1,29 +1,32 @@
-import com.tencent.mobileqq.fts.entity.FTSEntity;
-import java.util.Arrays;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class aprf
+public abstract interface aprf
 {
-  public int a;
-  public Class<? extends FTSEntity> a;
-  public String a;
-  public boolean a;
-  public aprh[] a;
-  public String b;
+  public abstract int a();
   
-  public aprf(Class<? extends FTSEntity> paramClass, aprh[] paramArrayOfaprh, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-    this.jdField_a_of_type_ArrayOfAprh = paramArrayOfaprh;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
+  public abstract long a();
   
-  public String toString()
-  {
-    return "FTSQueryArgs{entityClazz=" + this.jdField_a_of_type_JavaLangClass + ", matchKeys=" + Arrays.toString(this.jdField_a_of_type_ArrayOfAprh) + ", matchKeysOr=" + this.jdField_a_of_type_Boolean + ", limit=" + this.jdField_a_of_type_Int + ", selectionSql='" + this.jdField_a_of_type_JavaLangString + '\'' + ", orderBySql='" + this.b + '\'' + '}';
-  }
+  public abstract aprg a();
+  
+  public abstract BaseActivity a();
+  
+  public abstract FileManagerEntity a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract boolean a(Bitmap paramBitmap, int paramInt, String paramString);
+  
+  public abstract String b();
+  
+  public abstract void b();
+  
+  public abstract String c();
 }
 
 

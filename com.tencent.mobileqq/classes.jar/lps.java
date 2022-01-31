@@ -1,201 +1,218 @@
-import android.opengl.GLES20;
-import com.tencent.av.opengl.program.TextureProgram;
-import com.tencent.av.opengl.texture.YUVTexture;
-import com.tencent.av.opengl.utils.AVGLUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
+import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class lps
 {
-  private int jdField_a_of_type_Int;
-  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
-  private int jdField_b_of_type_Int;
-  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
-  private int c = -1;
+  private final LinkedHashMap<String, lpt> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(12);
+  private boolean jdField_a_of_type_Boolean;
   
   public lps()
   {
-    c();
+    d();
   }
   
-  private void a(int paramInt1, int paramInt2)
+  private void d()
   {
-    if ((paramInt1 == 0) || (paramInt2 == 0) || ((this.jdField_a_of_type_Int == paramInt1) && (this.jdField_b_of_type_Int == paramInt2))) {
-      return;
-    }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    if (this.jdField_a_of_type_JavaNioByteBuffer != null) {
-      this.jdField_a_of_type_JavaNioByteBuffer.clear();
-    }
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
-    if (this.c != -1)
-    {
-      GLES20.glDeleteFramebuffers(0, new int[] { this.c }, 0);
-      this.c = -1;
-    }
-    this.c = AVGLUtils.initFrameBuffer(paramInt2, paramInt1, this.jdField_b_of_type_ArrayOfInt[0]);
-    c();
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("BEAUTY_SKIN", new lpt(null, 1, 50, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("COLOR_TONE", new lpt(BeautyRealConfig.TYPE.COLOR_TONE, 2, 50, 50));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("EYE_LIGHTEN", new lpt(BeautyRealConfig.TYPE.EYE_LIGHTEN, 2, 0, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("TOOTH_WHITEN", new lpt(BeautyRealConfig.TYPE.TOOTH_WHITEN, 2, 0, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("ENLARGE_EYE", new lpt(BeautyRealConfig.TYPE.EYE, 3, 0, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("MOUTH_SHAPE", new lpt(BeautyRealConfig.TYPE.MOUTH_SHAPE, 3, 50, 50));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("CHIN", new lpt(BeautyRealConfig.TYPE.CHIN, 3, 50, 50));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_THIN", new lpt(BeautyRealConfig.TYPE.FACE_THIN, 3, 0, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_V", new lpt(BeautyRealConfig.TYPE.FACE_V, 3, 0, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_SHAPE_4", new lpt(BeautyRealConfig.TYPE.BASIC4, 3, 40, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_SHORTEN", new lpt(BeautyRealConfig.TYPE.FACE_SHORTEN, 3, 0, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("NOSE_THIN", new lpt(BeautyRealConfig.TYPE.NOSE, 3, 0, 0));
   }
   
-  private void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  public int a(String paramString)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < this.jdField_a_of_type_Int * this.jdField_b_of_type_Int * 3 / 2) || (this.jdField_a_of_type_JavaNioByteBuffer == null) || (this.jdField_a_of_type_JavaNioByteBuffer.capacity() < this.jdField_a_of_type_Int * this.jdField_b_of_type_Int * 3 / 2)) {
-      return;
+    paramString = (lpt)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
+    if (paramString != null) {
+      return paramString.d;
     }
-    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    this.jdField_a_of_type_JavaNioByteBuffer.put(paramArrayOfByte, 0, this.jdField_a_of_type_Int * this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    GLES20.glBindFramebuffer(36160, 0);
-    lgd.a(false);
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[0]);
-    GLES20.glTexParameterf(3553, 10241, 9729.0F);
-    GLES20.glTexParameterf(3553, 10240, 9729.0F);
-    GLES20.glTexParameterf(3553, 10242, 33071.0F);
-    GLES20.glTexParameterf(3553, 10243, 33071.0F);
-    GLES20.glTexImage2D(3553, 0, 6409, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0, 6409, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
-    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    this.jdField_a_of_type_JavaNioByteBuffer.put(paramArrayOfByte, this.jdField_a_of_type_Int * this.jdField_b_of_type_Int, this.jdField_a_of_type_Int * this.jdField_b_of_type_Int / 2);
-    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    lhd[] arrayOflhd;
-    if (paramInt1 == 0)
+    return 0;
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet());
+    Collections.sort(localArrayList);
+    int i = 0;
+    if (i < localArrayList.size())
     {
-      GLES20.glActiveTexture(33985);
-      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[1]);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glTexImage2D(3553, 0, 6409, this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2, 0, 6409, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
-      this.jdField_a_of_type_JavaNioByteBuffer.position(0);
-      this.jdField_a_of_type_JavaNioByteBuffer.put(paramArrayOfByte, this.jdField_a_of_type_Int * this.jdField_b_of_type_Int + this.jdField_a_of_type_Int * this.jdField_b_of_type_Int / 4, this.jdField_a_of_type_Int * this.jdField_b_of_type_Int / 4);
-      this.jdField_a_of_type_JavaNioByteBuffer.position(0);
-      GLES20.glActiveTexture(33986);
-      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[2]);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glTexImage2D(3553, 0, 6409, this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2, 0, 6409, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
-      GLES20.glBindFramebuffer(36160, this.c);
-      GLES20.glViewport(0, 0, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
-      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-      GLES20.glClear(16640);
-      paramArrayOfByte = lhb.a(1);
-      arrayOflhd = paramArrayOfByte.a();
-      GLES20.glUseProgram(paramArrayOfByte.a());
-      GLES20.glUniform1f(arrayOflhd[2].jdField_a_of_type_Int, 1.0F);
-      GLES20.glUniform1f(arrayOflhd[7].jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-      GLES20.glUniform1f(arrayOflhd[8].jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      GLES20.glUniformMatrix4fv(arrayOflhd[9].jdField_a_of_type_Int, 1, false, YUVTexture.a, 0);
-      GLES20.glUniform1i(arrayOflhd[10].jdField_a_of_type_Int, paramInt1);
-      GLES20.glUniform1i(arrayOflhd[11].jdField_a_of_type_Int, 0);
-      GLES20.glDisable(3042);
-      GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[0]);
-      GLES20.glUniform1i(arrayOflhd[4].jdField_a_of_type_Int, 0);
-      GLES20.glActiveTexture(33985);
-      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[1]);
-      GLES20.glUniform1i(arrayOflhd[5].jdField_a_of_type_Int, 1);
-      if (paramInt1 == 0)
+      String str = (String)localArrayList.get(i);
+      lpt locallpt = (lpt)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str);
+      if (locallpt == null) {}
+      for (;;)
       {
-        GLES20.glActiveTexture(33986);
-        GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[2]);
-        GLES20.glUniform1i(arrayOflhd[6].jdField_a_of_type_Int, 2);
-      }
-      if (paramInt2 % 4 != 1) {
-        break label925;
-      }
-      GLES20.glUniformMatrix4fv(arrayOflhd[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixVRotate90, 0);
-    }
-    for (;;)
-    {
-      GLES20.glUniformMatrix4fv(arrayOflhd[3].jdField_a_of_type_Int, 1, false, AVGLUtils.matrix, 0);
-      GLES20.glVertexAttribPointer(arrayOflhd[0].jdField_a_of_type_Int, 2, 5126, false, 8, this.jdField_a_of_type_JavaNioFloatBuffer);
-      GLES20.glEnableVertexAttribArray(arrayOflhd[0].jdField_a_of_type_Int);
-      GLES20.glDrawArrays(5, 0, 4);
-      GLES20.glDisableVertexAttribArray(arrayOflhd[0].jdField_a_of_type_Int);
-      GLES20.glBindFramebuffer(36160, 0);
-      return;
-      if ((paramInt1 != 1) && (paramInt1 != 2) && (paramInt1 != 3)) {
+        i += 1;
         break;
+        if (i != 0) {
+          localStringBuilder.append(",");
+        }
+        localStringBuilder.append(str).append(":").append(locallpt.d);
       }
-      GLES20.glActiveTexture(33985);
-      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[1]);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glTexImage2D(3553, 0, 6410, this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2, 0, 6410, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
-      break;
-      label925:
-      GLES20.glUniformMatrix4fv(arrayOflhd[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixVRotate270, 0);
     }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_JavaNioFloatBuffer != null) {
-      return;
-    }
-    float[] arrayOfFloat = new float[8];
-    arrayOfFloat[0] = (-0.5F + 0.0F);
-    arrayOfFloat[1] = (-0.5F + 0.0F);
-    arrayOfFloat[2] = (0.5F + 0.0F);
-    arrayOfFloat[3] = (-0.5F + 0.0F);
-    arrayOfFloat[4] = (-0.5F + 0.0F);
-    arrayOfFloat[5] = (0.5F + 0.0F);
-    arrayOfFloat[6] = (0.5F + 0.0F);
-    arrayOfFloat[7] = (0.5F + 0.0F);
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(arrayOfFloat.length * 4);
-    localByteBuffer.order(ByteOrder.nativeOrder());
-    this.jdField_a_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(arrayOfFloat);
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-  }
-  
-  int a()
-  {
-    return this.jdField_b_of_type_ArrayOfInt[0];
+    return localStringBuilder.toString();
   }
   
   public void a()
   {
-    GLES20.glGenTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
-    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, int paramInt4)
+  void a(int paramInt, List<lpt> paramList)
   {
-    if (paramArrayOfByte != null)
+    if (paramList == null) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SwitchFaceYUVRender", 2, "WL_DEBUG onDrawFrame width = " + paramInt1 + ", height = " + paramInt2 + ", frameFormat = " + paramInt3 + ", data.length = " + paramArrayOfByte.length + ", inFrameAngle = " + paramInt4);
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        lpt locallpt = (lpt)((Map.Entry)localIterator.next()).getValue();
+        if ((locallpt != null) && ((paramInt == 0) || (locallpt.a == paramInt))) {
+          paramList.add(locallpt);
+        }
       }
-      a(paramInt1, paramInt2);
-      a(paramInt3, paramArrayOfByte, paramInt4);
     }
+  }
+  
+  public void a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return;
+    }
+    paramString = paramString.split(",");
+    int j = paramString.length;
+    int i = 0;
+    label24:
+    Object localObject1;
+    if (i < j)
+    {
+      localObject1 = paramString[i];
+      if (localObject1 != null) {
+        break label46;
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label24;
+      break;
+      label46:
+      localObject1 = ((String)localObject1).split(":");
+      if (localObject1.length == 2)
+      {
+        Object localObject2 = localObject1[0];
+        try
+        {
+          int k = Integer.parseInt(localObject1[1]);
+          localObject1 = (lpt)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject2);
+          if (localObject1 != null) {
+            ((lpt)localObject1).d = k;
+          }
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          localNumberFormatException.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    paramString = (lpt)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
+    if ((paramString != null) && (paramString.d != paramInt))
+    {
+      paramString.d = paramInt;
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public void a(lps paramlps)
+  {
+    if (paramlps == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = paramlps.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        lpt locallpt = (lpt)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str);
+        if (locallpt != null) {
+          locallpt.d = paramlps.a(str);
+        }
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b(String paramString)
+  {
+    paramString = (lpt)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
+    if (paramString != null) {
+      return paramString.c;
+    }
+    return 0;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_JavaNioByteBuffer != null)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      this.jdField_a_of_type_JavaNioByteBuffer.clear();
-      this.jdField_a_of_type_JavaNioByteBuffer = null;
+      lpt locallpt = (lpt)((Map.Entry)localIterator.next()).getValue();
+      if ((locallpt != null) && (locallpt.d != locallpt.b))
+      {
+        locallpt.d = locallpt.b;
+        this.jdField_a_of_type_Boolean = true;
+      }
     }
-    if (this.c != -1)
+  }
+  
+  public boolean b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      GLES20.glDeleteFramebuffers(0, new int[] { this.c }, 0);
-      this.c = -1;
+      lpt locallpt = (lpt)((Map.Entry)localIterator.next()).getValue();
+      if ((locallpt != null) && (locallpt.d != locallpt.c)) {
+        return true;
+      }
     }
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
+    return false;
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      lpt locallpt = (lpt)((Map.Entry)localIterator.next()).getValue();
+      if ((locallpt != null) && (locallpt.d != locallpt.c))
+      {
+        locallpt.d = locallpt.c;
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
   }
 }
 

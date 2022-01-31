@@ -20,7 +20,8 @@
                 "jump_type": "$jump_type",
                 "partner_id": "$partner_id",
                 "feeds_content": "$feeds_content",
-                "feeds_type": "$feeds_type"
+                "feeds_type": "$feeds_type",
+                "novel_corner_mark": "$novel_corner_mark"
             }
         },
         "subviews":[

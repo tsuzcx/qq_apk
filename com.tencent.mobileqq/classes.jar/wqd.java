@@ -1,23 +1,27 @@
-import android.animation.AnimatorSet;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class wqd
-  implements ViewTreeObserver.OnPreDrawListener
+public class wqd
+  extends amgr
 {
-  wqd(wqa paramwqa) {}
+  public wqd(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  public boolean onPreDraw()
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    wqa.a(this.a).start();
-    wqa.a(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-    return false;
+    super.onAddColorNote(paramBundle, paramBoolean);
+    amkg.a(BaseApplicationImpl.getContext(), 2, true);
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wqd
  * JD-Core Version:    0.7.0.1
  */

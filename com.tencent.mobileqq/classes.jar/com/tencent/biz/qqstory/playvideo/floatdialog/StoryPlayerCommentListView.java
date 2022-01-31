@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.playvideo.floatdialog;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import bbmy;
-import behi;
-import behj;
+import bcpw;
+import bfpc;
+import bfpd;
 import com.tencent.biz.qqstory.database.CommentEntry;
 import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import com.tencent.biz.qqstory.view.segment.SegmentList;
@@ -20,32 +20,32 @@ import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import sgi;
-import snl;
-import snv;
-import srk;
-import tlj;
-import tlt;
-import tlu;
-import tlv;
-import tlz;
-import tma;
-import tmb;
-import tmc;
-import ucw;
-import urk;
-import urp;
-import vpv;
+import ste;
+import tah;
+import tar;
+import teg;
+import tyf;
+import typ;
+import tyq;
+import tyr;
+import tyv;
+import tyw;
+import tyx;
+import tyy;
+import ups;
+import veg;
+import vel;
+import wcr;
 
 public class StoryPlayerCommentListView
   extends SegmentList
-  implements View.OnTouchListener, behi, behj
+  implements View.OnTouchListener, bfpc, bfpd
 {
   public int a;
-  private List<vpv> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private tlj jdField_a_of_type_Tlj;
-  private tmb jdField_a_of_type_Tmb;
-  private tmc jdField_a_of_type_Tmc;
+  private List<wcr> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private tyf jdField_a_of_type_Tyf;
+  private tyx jdField_a_of_type_Tyx;
+  private tyy jdField_a_of_type_Tyy;
   
   public StoryPlayerCommentListView(Context paramContext)
   {
@@ -67,29 +67,29 @@ public class StoryPlayerCommentListView
   
   private void a(int paramInt, CommentEntry paramCommentEntry)
   {
-    ucw localucw = this.jdField_a_of_type_Tlj.a();
-    if ((localucw == null) || (localucw.a == null))
+    ups localups = this.jdField_a_of_type_Tyf.a();
+    if ((localups == null) || (localups.a == null))
     {
-      urk.d("Q.qqstory.player.StoryPlayerCommentListView", "feed item null , notify feed info change error!");
+      veg.d("Q.qqstory.player.StoryPlayerCommentListView", "feed item null , notify feed info change error!");
       return;
     }
-    snl localsnl;
+    tah localtah;
     if ((paramInt == 2) || (paramInt == 1))
     {
-      localsnl = new snl(2, paramCommentEntry.feedId, paramInt);
-      localsnl.c = paramCommentEntry.commentId;
+      localtah = new tah(2, paramCommentEntry.feedId, paramInt);
+      localtah.c = paramCommentEntry.commentId;
     }
-    for (paramCommentEntry = localsnl;; paramCommentEntry = new snl(2, localucw.a.feedId, paramInt, localucw.a))
+    for (paramCommentEntry = localtah;; paramCommentEntry = new tah(2, localups.a.feedId, paramInt, localups.a))
     {
-      paramCommentEntry.a = localucw.a;
-      sgi.a().dispatch(paramCommentEntry);
+      paramCommentEntry.a = localups.a;
+      ste.a().dispatch(paramCommentEntry);
       return;
     }
   }
   
   private void b()
   {
-    setOnLoadMoreListener("CommentFloatDialog", new tma(this));
+    setOnLoadMoreListener("CommentFloatDialog", new tyw(this));
     setLoadMoreComplete("CommentFloatDialog", true, false);
     setOnTouchListener(this);
     super.setOverScrollHeader(null);
@@ -98,12 +98,12 @@ public class StoryPlayerCommentListView
   public int a()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    vpv localvpv;
-    for (int i = 0;; i = localvpv.a() + i) {
+    wcr localwcr;
+    for (int i = 0;; i = localwcr.a() + i) {
       if (localIterator.hasNext())
       {
-        localvpv = (vpv)localIterator.next();
-        if (!(localvpv instanceof tlv)) {}
+        localwcr = (wcr)localIterator.next();
+        if (!(localwcr instanceof tyr)) {}
       }
       else
       {
@@ -115,17 +115,17 @@ public class StoryPlayerCommentListView
   public void a()
   {
     super.setActTAG("list_qqstory_detail");
-    Object localObject = new tlz(getContext());
-    tlv localtlv = new tlv(getContext());
-    tlu localtlu = new tlu(getContext());
-    tlt localtlt = new tlt(getContext(), 30);
+    Object localObject = new tyv(getContext());
+    tyr localtyr = new tyr(getContext());
+    tyq localtyq = new tyq(getContext());
+    typ localtyp = new typ(getContext(), 30);
     this.jdField_a_of_type_JavaUtilList.add(localObject);
-    this.jdField_a_of_type_JavaUtilList.add(localtlt);
-    this.jdField_a_of_type_JavaUtilList.add(localtlv);
-    this.jdField_a_of_type_JavaUtilList.add(localtlu);
+    this.jdField_a_of_type_JavaUtilList.add(localtyp);
+    this.jdField_a_of_type_JavaUtilList.add(localtyr);
+    this.jdField_a_of_type_JavaUtilList.add(localtyq);
     localObject = this.jdField_a_of_type_JavaUtilList.iterator();
     while (((Iterator)localObject).hasNext()) {
-      a((vpv)((Iterator)localObject).next());
+      a((wcr)((Iterator)localObject).next());
     }
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
@@ -135,32 +135,32 @@ public class StoryPlayerCommentListView
   
   public void a(CommentEntry paramCommentEntry, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Tlj.a(paramCommentEntry, paramBoolean);
-    snv.a().a();
+    this.jdField_a_of_type_Tyf.a(paramCommentEntry, paramBoolean);
+    tar.a().a();
     p();
-    bbmy.a(BaseApplication.getContext(), 2, ajjy.a(2131648759), 0).a();
+    bcpw.a(BaseApplication.getContext(), 2, ajyc.a(2131714548), 0).a();
     a(2, paramCommentEntry);
   }
   
-  public void a(@NonNull tlj paramtlj, tmb paramtmb, int paramInt)
+  public void a(@NonNull tyf paramtyf, tyx paramtyx, int paramInt)
   {
     super.j();
-    this.jdField_a_of_type_Tmb = paramtmb;
-    this.jdField_a_of_type_Tlj = paramtlj;
+    this.jdField_a_of_type_Tyx = paramtyx;
+    this.jdField_a_of_type_Tyf = paramtyf;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Tmc = new tmc(this, null);
-    this.jdField_a_of_type_Tlj.a(this.jdField_a_of_type_Tmc);
-    tlv localtlv = (tlv)a("PlayerCommentSegment");
-    if (localtlv != null) {
-      localtlv.a(paramtlj, paramtmb, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Tyy = new tyy(this, null);
+    this.jdField_a_of_type_Tyf.a(this.jdField_a_of_type_Tyy);
+    tyr localtyr = (tyr)a("PlayerCommentSegment");
+    if (localtyr != null) {
+      localtyr.a(paramtyf, paramtyx, this.jdField_a_of_type_Int);
     }
-    paramtmb = (tlu)a("PlayerCommentEmptySegment");
-    if (paramtmb != null) {
-      paramtmb.a(paramtlj);
+    paramtyx = (tyq)a("PlayerCommentEmptySegment");
+    if (paramtyx != null) {
+      paramtyx.a(paramtyf);
     }
-    paramtmb = (tlz)a("PlayerDoubleTabSegment");
-    if (paramtmb != null) {
-      paramtmb.a(paramtlj);
+    paramtyx = (tyv)a("PlayerDoubleTabSegment");
+    if (paramtyx != null) {
+      paramtyx.a(paramtyf);
     }
   }
   
@@ -177,8 +177,8 @@ public class StoryPlayerCommentListView
   public boolean a(int paramInt, View paramView, ListView paramListView)
   {
     super.a(paramInt, paramView, paramListView);
-    if (this.jdField_a_of_type_Tmb != null) {
-      this.jdField_a_of_type_Tmb.a();
+    if (this.jdField_a_of_type_Tyx != null) {
+      this.jdField_a_of_type_Tyx.a();
     }
     return true;
   }
@@ -189,13 +189,13 @@ public class StoryPlayerCommentListView
       return false;
     }
     paramInt -= a();
-    paramView = ((tlv)a("PlayerCommentSegment")).a(paramInt);
+    paramView = ((tyr)a("PlayerCommentSegment")).a(paramInt);
     if (paramView == null)
     {
-      urk.e("Q.qqstory.player.StoryPlayerCommentListView", "the long clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
+      veg.e("Q.qqstory.player.StoryPlayerCommentListView", "the long clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
       return false;
     }
-    paramAdapterView = this.jdField_a_of_type_Tlj.a();
+    paramAdapterView = this.jdField_a_of_type_Tyf.a();
     if ((paramAdapterView != null) && (paramAdapterView.a != null)) {
       if (!paramAdapterView.a.getOwner().isMe()) {
         break label147;
@@ -204,15 +204,15 @@ public class StoryPlayerCommentListView
     label147:
     for (paramAdapterView = "2";; paramAdapterView = "1")
     {
-      urp.a("home_page", "press_reply", 0, 0, new String[] { paramAdapterView, urp.a(this.jdField_a_of_type_Int) });
+      vel.a("home_page", "press_reply", 0, 0, new String[] { paramAdapterView, vel.a(this.jdField_a_of_type_Int) });
       if (paramView.type != 1) {
         break;
       }
-      this.jdField_a_of_type_Tlj.a(this.jdField_a_of_type_Tlj.a());
+      this.jdField_a_of_type_Tyf.a(this.jdField_a_of_type_Tyf.a());
       return true;
     }
-    if (this.jdField_a_of_type_Tmb != null) {
-      this.jdField_a_of_type_Tmb.b(paramView, paramInt, this.jdField_a_of_type_Tlj.a());
+    if (this.jdField_a_of_type_Tyx != null) {
+      this.jdField_a_of_type_Tyx.b(paramView, paramInt, this.jdField_a_of_type_Tyf.a());
     }
     return true;
   }
@@ -221,12 +221,12 @@ public class StoryPlayerCommentListView
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int i = 0;
-    vpv localvpv;
+    wcr localwcr;
     if (localIterator.hasNext())
     {
-      localvpv = (vpv)localIterator.next();
-      if ((localvpv instanceof tlv)) {
-        i = localvpv.a() + i;
+      localwcr = (wcr)localIterator.next();
+      if ((localwcr instanceof tyr)) {
+        i = localwcr.a() + i;
       }
     }
     for (;;)
@@ -234,7 +234,7 @@ public class StoryPlayerCommentListView
       if (i == 0)
       {
         return 0;
-        i = localvpv.a() + i;
+        i = localwcr.a() + i;
         break;
       }
       return i;
@@ -248,25 +248,25 @@ public class StoryPlayerCommentListView
     {
       return;
       paramInt -= a();
-      paramAdapterView = ((tlv)a("PlayerCommentSegment")).a(paramInt);
+      paramAdapterView = ((tyr)a("PlayerCommentSegment")).a(paramInt);
       if (paramAdapterView == null)
       {
-        urk.e("Q.qqstory.player.StoryPlayerCommentListView", "the clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
+        veg.e("Q.qqstory.player.StoryPlayerCommentListView", "the clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
         return;
       }
       if (paramAdapterView.type == 1)
       {
-        this.jdField_a_of_type_Tlj.a(this.jdField_a_of_type_Tlj.a());
+        this.jdField_a_of_type_Tyf.a(this.jdField_a_of_type_Tyf.a());
         return;
       }
-    } while (this.jdField_a_of_type_Tmb == null);
-    this.jdField_a_of_type_Tmb.a(paramAdapterView, paramInt, this.jdField_a_of_type_Tlj.a());
+    } while (this.jdField_a_of_type_Tyx == null);
+    this.jdField_a_of_type_Tyx.a(paramAdapterView, paramInt, this.jdField_a_of_type_Tyf.a());
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Tmb != null) {
-      return this.jdField_a_of_type_Tmb.a(paramMotionEvent);
+    if (this.jdField_a_of_type_Tyx != null) {
+      return this.jdField_a_of_type_Tyx.a(paramMotionEvent);
     }
     return false;
   }

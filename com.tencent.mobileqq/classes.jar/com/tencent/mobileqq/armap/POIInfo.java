@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap;
 
-import alix;
+import alxl;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class POIInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<POIInfo> CREATOR = new alix();
+  public static final Parcelable.Creator<POIInfo> CREATOR = new alxl();
   public double a;
   public int a;
   public long a;

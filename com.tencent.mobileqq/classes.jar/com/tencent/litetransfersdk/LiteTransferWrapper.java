@@ -2,14 +2,14 @@ package com.tencent.litetransfersdk;
 
 import android.os.Handler;
 import android.os.Looper;
-import apbo;
-import axsr;
+import apti;
+import aysy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
-import ea;
-import ec;
+import ft;
+import fv;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -91,7 +91,7 @@ public class LiteTransferWrapper
   
   public static int getNetType()
   {
-    return axsr.a().a();
+    return aysy.a().a();
   }
   
   public void CancelAll(int paramInt, boolean paramBoolean)
@@ -242,11 +242,11 @@ public class LiteTransferWrapper
   
   public void SetProxyToJni()
   {
-    ec localec = ea.a();
-    if (localec != null) {
+    fv localfv = ft.a();
+    if (localfv != null) {
       try
       {
-        setGlobalProxyInfo(1, localec.jdField_a_of_type_JavaLangString, (short)localec.jdField_a_of_type_Int, "", "");
+        setGlobalProxyInfo(1, localfv.jdField_a_of_type_JavaLangString, (short)localfv.jdField_a_of_type_Int, "", "");
         return;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
@@ -390,26 +390,26 @@ public class LiteTransferWrapper
   {
     try
     {
-      File localFile = new File(apbo.a().b());
+      File localFile = new File(apti.a().b());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetDefaultPath(apbo.a().b());
-      localFile = new File(apbo.a().d());
+      SetDefaultPath(apti.a().b());
+      localFile = new File(apti.a().d());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbPath(apbo.a().d());
-      localFile = new File(apbo.a().c());
+      SetThumbPath(apti.a().d());
+      localFile = new File(apti.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetTempPath(apbo.a().c());
-      localFile = new File(apbo.a().c());
+      SetTempPath(apti.a().c());
+      localFile = new File(apti.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbTempPath(apbo.a().c());
+      SetThumbTempPath(apti.a().c());
       return;
     }
     catch (Exception localException) {}

@@ -1,40 +1,134 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.selectable.ChatSelCurPageForLSSHelper.1;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahpd
+public final class ahpd
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ChatSelCurPageForLSSHelper.1(this);
-  private boolean jdField_a_of_type_Boolean;
-  
-  public ahpd(BaseChatPie paramBaseChatPie)
+  private static int a(RecentBaseData paramRecentBaseData, RecentUser paramRecentUser)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    int j = 0;
+    int i = 0;
+    if (paramRecentUser == null)
+    {
+      j = i;
+      if (QLog.isDevelopLevel())
+      {
+        QLog.d("RecentReportHelper", 4, "getReportID: null RecentUser for " + paramRecentBaseData);
+        j = i;
+      }
+      return j;
+    }
+    switch (paramRecentUser.getType())
+    {
+    default: 
+      i = j;
+    }
+    for (;;)
+    {
+      j = i;
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.d("RecentReportHelper", 4, "getReportID:" + i + ", for uin:" + paramRecentUser.uin + " and type:" + paramRecentUser.getType());
+      return i;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
+      continue;
+      i = 8;
+      continue;
+      i = 10;
+      continue;
+      i = 11;
+      continue;
+      i = 12;
+      continue;
+      i = 13;
+      continue;
+      i = 14;
+      continue;
+      i = 17;
+      continue;
+      i = 18;
+      continue;
+      i = 19;
+      continue;
+      i = 20;
+      continue;
+      i = 21;
+      continue;
+      i = 22;
+      continue;
+      i = 23;
+      continue;
+      i = 24;
+      continue;
+      i = 25;
+      continue;
+      i = 26;
+      continue;
+      if ("2909288299".equals(paramRecentUser.uin))
+      {
+        i = 27;
+      }
+      else
+      {
+        i = j;
+        if ("2010741172".equals(paramRecentUser.uin))
+        {
+          i = 28;
+          continue;
+          i = 29;
+          continue;
+          i = 30;
+        }
+      }
+    }
   }
   
-  public void a()
+  public static void a(QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData, RecentUser paramRecentUser)
   {
-    this.jdField_a_of_type_Boolean = true;
+    int i = a(paramRecentBaseData, paramRecentUser);
+    if (i > 0) {
+      axqw.b(paramQQAppInterface, "dc00898", "", "", "0X8006824", "0X8006824", 0, 0, "" + i, "", "", "");
+    }
   }
   
-  public void b()
+  public static void a(QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData, RecentUser paramRecentUser, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
+    int j = a(paramRecentBaseData, paramRecentUser);
+    if (j > 0) {
+      if (!paramBoolean) {
+        break label63;
+      }
+    }
+    label63:
+    for (int i = 1;; i = 0)
+    {
+      axqw.b(paramQQAppInterface, "dc00898", "", "", "0X8006821", "0X8006821", i, 0, "" + j, "", "", "");
+      return;
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData, RecentUser paramRecentUser)
+  {
+    if (paramRecentBaseData.b() <= 0) {}
+    int i;
     do
     {
       return;
-      this.jdField_a_of_type_Boolean = false;
-    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Acka == null));
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.post(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void c()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    }
+      i = a(paramRecentBaseData, paramRecentUser);
+    } while (i <= 0);
+    axqw.b(paramQQAppInterface, "dc00898", "", "", "0X8006823", "0X8006823", 0, 0, "" + i, "", "", "");
   }
 }
 

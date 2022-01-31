@@ -1,21 +1,10 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
-
 public class qck
-  extends Handler
 {
-  private qck(VideoFeedsGuideView paramVideoFeedsGuideView) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    VideoFeedsGuideView.a(this.a);
-  }
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

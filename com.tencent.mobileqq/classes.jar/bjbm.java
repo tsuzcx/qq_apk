@@ -1,24 +1,23 @@
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class bjbm
-  implements Comparable<bjbm>
+class bjbm
+  implements Handler.Callback
 {
-  public int a;
-  public long a;
-  public int b;
+  bjbm(bjbk parambjbk) {}
   
-  public bjbm(VideoFramesFetcher paramVideoFramesFetcher, long paramLong, int paramInt1, int paramInt2)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesFetcher.a(paramVideoFramesFetcher));
-    VideoFramesFetcher.a(paramVideoFramesFetcher).put(Integer.valueOf(paramInt1), this);
-  }
-  
-  public int a(bjbm parambjbm)
-  {
-    return -(int)(this.jdField_a_of_type_Long - parambjbm.jdField_a_of_type_Long);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMessage.obj instanceof bjbs)) {
+        paramMessage = (bjbs)paramMessage.obj;
+      }
+    }
   }
 }
 

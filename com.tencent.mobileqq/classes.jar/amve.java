@@ -1,30 +1,72 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amve
-  implements Animation.AnimationListener
+  extends ampb<amvc>
 {
-  public amve(DataReportViewer paramDataReportViewer) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a()
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    return 534;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  @NonNull
+  public amvc a(int paramInt)
   {
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.a.e();
+    return new amvc();
+  }
+  
+  @Nullable
+  public amvc a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null))
+    {
+      amvc localamvc = amvc.a(paramArrayOfampi[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQComicConfProcessor", 2, "onParsed  " + paramArrayOfampi[0].a);
+      }
+      return localamvc;
+    }
+    return null;
+  }
+  
+  public Class<amvc> a()
+  {
+    return amvc.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amvc paramamvc)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQComicConfProcessor", 2, "onUpdate " + paramamvc.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amve
  * JD-Core Version:    0.7.0.1
  */

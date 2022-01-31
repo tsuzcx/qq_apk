@@ -1,23 +1,18 @@
-import android.os.AsyncTask;
+import com.dataline.activities.LiteActivity;
 
-final class cx
-  implements apca
+public class cx
+  implements axod
 {
-  cx(AsyncTask paramAsyncTask, int paramInt, apca paramapca) {}
+  public cx(LiteActivity paramLiteActivity) {}
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    if (this.jdField_a_of_type_Apca != null) {
-      this.jdField_a_of_type_Apca.a();
-    }
+    LiteActivity.b(this.a);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Apca != null) {
-      this.jdField_a_of_type_Apca.b();
-    }
+    LiteActivity.b(this.a);
   }
 }
 

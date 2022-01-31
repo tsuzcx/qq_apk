@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.widget.Workspace.SavedState;
+import android.graphics.Rect;
 
-public final class bbph
-  implements Parcelable.Creator<Workspace.SavedState>
+public class bbph
+  extends bbpj
 {
-  public Workspace.SavedState a(Parcel paramParcel)
-  {
-    return new Workspace.SavedState(paramParcel, null);
-  }
-  
-  public Workspace.SavedState[] a(int paramInt)
-  {
-    return new Workspace.SavedState[paramInt];
-  }
+  public int a;
+  public acvh a;
+  public Rect a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbph
  * JD-Core Version:    0.7.0.1
  */

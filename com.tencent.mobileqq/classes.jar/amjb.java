@@ -1,72 +1,86 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class amjb
-  extends amie<amja>
 {
-  public static amja c()
+  private int a(ColorNote paramColorNote)
   {
-    amja localamja2 = (amja)alzw.a().a(469);
-    amja localamja1 = localamja2;
-    if (localamja2 == null) {
-      localamja1 = new amja();
+    switch (amhi.a(paramColorNote.getServiceType()) & 0xFFFF0000)
+    {
+    default: 
+      return 2130843549;
+    case 16973824: 
+      return 2130843494;
+    case 17039360: 
+      return 2130838964;
+    case 16842752: 
+      return 2130838965;
+    case 16908288: 
+      return 2130838966;
     }
-    return localamja1;
+    return 2130843337;
   }
   
-  public int a()
+  private Drawable a(Context paramContext, ColorNote paramColorNote)
   {
-    return 469;
-  }
-  
-  @NonNull
-  public amja a()
-  {
-    return new amja();
-  }
-  
-  @NonNull
-  public amja a(alzs[] paramArrayOfalzs)
-  {
-    boolean bool = true;
-    localamja = new amja();
-    paramArrayOfalzs = paramArrayOfalzs[0].jdField_a_of_type_JavaLangString;
+    paramContext = paramContext.getResources();
+    int i = a(paramColorNote);
     try
     {
-      paramArrayOfalzs = new JSONObject(paramArrayOfalzs);
-      if (paramArrayOfalzs.optInt("is_show_recover_entry", 1) == 1) {}
-      for (;;)
-      {
-        localamja.jdField_a_of_type_Boolean = bool;
-        localamja.jdField_a_of_type_JavaLangString = paramArrayOfalzs.optString("recover_text", localamja.jdField_a_of_type_JavaLangString);
-        localamja.b = paramArrayOfalzs.optString("recover_url", localamja.b);
-        localamja.c = paramArrayOfalzs.optString("recoveryHomePageUrl", localamja.c);
-        return localamja;
-        bool = false;
+      paramColorNote = new URL(paramColorNote.getPicUrl());
+      boolean bool = "resdrawable".equals(paramColorNote.getProtocol());
+      if (bool) {
+        try
+        {
+          paramColorNote = paramContext.getDrawable(Integer.parseInt(paramColorNote.getHost()));
+          return paramColorNote;
+        }
+        catch (NumberFormatException paramColorNote)
+        {
+          return paramContext.getDrawable(i);
+        }
       }
-      return localamja;
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestWidth = actn.a(40.0F, paramContext);
+      localURLDrawableOptions.mRequestHeight = actn.a(40.0F, paramContext);
+      localURLDrawableOptions.mLoadingDrawable = paramContext.getDrawable(i);
+      localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
+      paramColorNote = URLDrawable.getDrawable(paramColorNote, localURLDrawableOptions);
+      return paramColorNote;
     }
-    catch (JSONException paramArrayOfalzs)
+    catch (MalformedURLException paramColorNote)
     {
-      urk.e("QVipFriendTag2Processor", "QVipFriendTag2Config onParsed exception :" + paramArrayOfalzs.getMessage());
+      paramContext = paramContext.getDrawable(i);
+      QLog.e("DefaultFormItemBuilder", 1, paramColorNote, new Object[0]);
+      return paramContext;
     }
+    catch (NullPointerException paramColorNote)
+    {
+      paramContext = paramContext.getDrawable(i);
+      QLog.e("DefaultFormItemBuilder", 1, paramColorNote, new Object[0]);
+    }
+    return paramContext;
   }
   
-  public Class<amja> a()
+  public HistoryFormItem a(Context paramContext, ColorNote paramColorNote)
   {
-    return amja.class;
-  }
-  
-  @NonNull
-  public amja b()
-  {
-    return new amja();
+    HistoryFormItem localHistoryFormItem = new HistoryFormItem(paramContext);
+    localHistoryFormItem.setLeftText(paramColorNote.getMainTitle());
+    localHistoryFormItem.setLeftIcon(a(paramContext, paramColorNote), paramContext.getResources().getDimensionPixelSize(2131298672), paramContext.getResources().getDimensionPixelSize(2131298671));
+    return localHistoryFormItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amjb
  * JD-Core Version:    0.7.0.1
  */

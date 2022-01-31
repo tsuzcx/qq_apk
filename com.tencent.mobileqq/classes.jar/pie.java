@@ -1,12 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class pie
-  implements View.OnClickListener
+  implements pvr
 {
-  pie(pid parampid) {}
+  pie(pid parampid, pax parampax, rap paramrap) {}
   
-  public void onClick(View paramView) {}
+  public void a()
+  {
+    onk.a = this.jdField_a_of_type_Pax.a();
+    onk.a(this.jdField_a_of_type_Rap.a(), this.jdField_a_of_type_Pax.a(), 2);
+  }
 }
 
 

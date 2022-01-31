@@ -1,103 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.ToolRuntimePeak;
-import com.tencent.qg.sdk.invoke.BaseJsModule;
-import com.tencent.qg.sdk.invoke.InvokeCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class bcos
-  extends BaseJsModule
+  implements View.OnClickListener
 {
-  private bcot jdField_a_of_type_Bcot;
-  private WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  public bcos(ProfileCardMoreInfoView paramProfileCardMoreInfoView, Card paramCard) {}
   
-  public bcos()
+  public void onClick(View paramView)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof ToolRuntimePeak)) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((AppInterface)((ToolRuntimePeak)localAppRuntime).getAppRuntime("peak"));
-    }
-  }
-  
-  public void a(bcot parambcot)
-  {
-    this.jdField_a_of_type_Bcot = parambcot;
-  }
-  
-  public String getModuleName()
-  {
-    return "textEffect";
-  }
-  
-  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
-  {
-    urk.b("TextEffectModule", "handleJsRequest method = " + paramString);
-    try
+    if (aoep.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
     {
-      if ("wordSplit".equals(paramString))
+      paramView = aokr.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+      int j = 1;
+      int i = j;
+      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof FriendProfileCardActivity))
       {
-        if (paramJSONObject == null)
-        {
-          paramInvokeCallback.exec(4);
-          return false;
-        }
-        JSONArray localJSONArray = new JSONArray();
-        paramJSONObject = paramJSONObject.optString("text");
-        if (TextUtils.isEmpty(paramJSONObject))
-        {
-          paramInvokeCallback.exec(0, "success", localJSONArray);
-          return true;
-        }
-        paramJSONObject = alcv.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramJSONObject);
-        if (!paramJSONObject.jdField_a_of_type_Boolean)
-        {
-          paramInvokeCallback.exec(-1, "sdk init failed! soLoaded.");
-          return false;
-        }
-        if (paramJSONObject.jdField_a_of_type_ArrayOfJavaLangString != null)
-        {
-          paramJSONObject = paramJSONObject.jdField_a_of_type_ArrayOfJavaLangString;
-          int j = paramJSONObject.length;
-          int i = 0;
-          while (i < j)
-          {
-            localJSONArray.put(paramJSONObject[i]);
-            i += 1;
-          }
-        }
-        paramInvokeCallback.exec(0, "success", localJSONArray);
-        return true;
-      }
-      if ("getTextConfig".equals(paramString))
-      {
-        paramJSONObject = ((bhgs)bhfm.a(5)).a.b;
-        if (!TextUtils.isEmpty(paramJSONObject)) {
-          paramInvokeCallback.exec(0, "success", new JSONObject(paramJSONObject));
-        }
-        while (this.jdField_a_of_type_Bcot != null)
-        {
-          this.jdField_a_of_type_Bcot.a();
-          break;
-          paramInvokeCallback.exec(-1, "text config is empty!");
+        i = j;
+        if (((FriendProfileCardActivity)this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).k) {
+          i = 2;
         }
       }
-      return false;
+      axqw.b(null, "dc00898", "", "", "kuolie", "0X80097DB", i, 0, "", "", "", "");
+      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
+        paramView.show();
+      }
+      return;
     }
-    catch (Exception paramJSONObject)
-    {
-      QLog.e("TextEffectModule", 1, "handle method " + paramString + "failed", paramJSONObject);
+    paramView = new Intent();
+    if (this.jdField_a_of_type_ComTencentMobileqqDataCard != null) {
+      paramView.putExtra("key_extend_friend_info", new ExtendFriendProfileEditFragment.ExtendFriendInfo(this.jdField_a_of_type_ComTencentMobileqqDataCard));
     }
-    return true;
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "kuolie", "0X80092DB", 0, 0, "", "", "", "");
+    PublicFragmentActivity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView, ExtendFriendEditFragment.class, 4097);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcos
  * JD-Core Version:    0.7.0.1
  */

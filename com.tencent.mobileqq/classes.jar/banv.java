@@ -1,28 +1,18 @@
-import com.tencent.image.NativeGifImage;
-import java.io.File;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
 public class banv
-  extends NativeGifImage
 {
-  private int a = 1;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public URLImageView a;
+  public ImageProgressCircle a;
   
-  public banv(File paramFile, boolean paramBoolean, float paramFloat, int paramInt)
-  {
-    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
-    this.a = paramInt;
-  }
-  
-  public void executeNewTask()
-  {
-    if (this.mCurrentLoop == this.a) {
-      return;
-    }
-    super.executeNewTask();
-  }
+  protected banv(bant parambant) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     banv
  * JD-Core Version:    0.7.0.1
  */

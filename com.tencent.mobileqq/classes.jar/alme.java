@@ -1,73 +1,40 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import java.util.ArrayList;
-import javax.annotation.Nonnull;
+import android.content.Context;
+import android.graphics.Point;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
+import com.tencent.tencentmap.mapsdk.maps.MapView;
+import com.tencent.tencentmap.mapsdk.maps.Projection;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 
 public class alme
+  implements TencentMap.OnMapLoadedCallback
 {
-  @android.support.annotation.Nullable
-  public static ArrayList<RockDownloadInfo> a(@NonNull RockDownloadInfo paramRockDownloadInfo)
-  {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return allz.a(localRockDownloaderTask);
-  }
+  public alme(ARScanEntryView paramARScanEntryView) {}
   
-  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable ally paramally)
+  public void onMapLoaded()
   {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    localRockDownloaderTask.setQueryAPKListener(paramally);
-    allz.b(localRockDownloaderTask);
-  }
-  
-  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable RockDownloadListener paramRockDownloadListener)
-  {
-    if (!badq.a(BaseApplicationImpl.context))
+    this.a.j = true;
+    if (ARScanEntryView.a(this.a) != null)
     {
-      if (paramRockDownloadListener != null)
+      Projection localProjection = ARScanEntryView.a(this.a).getMap().getProjection();
+      TencentMap localTencentMap = ARScanEntryView.a(this.a).getMap();
+      if ((localProjection != null) && (localTencentMap != null))
       {
-        paramRockDownloadListener.onDownloadFail(paramRockDownloadInfo, ajjy.a(2131647702), 10009);
-        paramRockDownloadListener.onDownloadFinish(paramRockDownloadInfo);
+        Point localPoint = localProjection.toScreenLocation(localTencentMap.getCameraPosition().target);
+        if (localPoint != null)
+        {
+          localPoint.offset(0, actn.a(60.0F, this.a.a.getResources()) * -1);
+          localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(localProjection.fromScreenLocation(localPoint)));
+        }
       }
-      return;
     }
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    localRockDownloaderTask.setRockDownloadListener(paramRockDownloadListener);
-    allz.a(localRockDownloaderTask);
-  }
-  
-  public static boolean a(@Nonnull RockDownloadInfo paramRockDownloadInfo)
-  {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return allz.b(localRockDownloaderTask);
-  }
-  
-  public static boolean b(@Nonnull RockDownloadInfo paramRockDownloadInfo)
-  {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return allz.a(localRockDownloaderTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alme
  * JD-Core Version:    0.7.0.1
  */

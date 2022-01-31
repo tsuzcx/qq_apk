@@ -1,11 +1,18 @@
-class pnz
-  extends pnb
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
+public class pnz
+  implements ViewBase.IBuilder
 {
-  pnz(pnn parampnn) {}
+  public ViewBase build(VafContext paramVafContext)
+  {
+    return new pnr(paramVafContext);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pnz
  * JD-Core Version:    0.7.0.1
  */

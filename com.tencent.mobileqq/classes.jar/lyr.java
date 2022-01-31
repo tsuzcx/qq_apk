@@ -1,21 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.VideoControlUI;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class lyr
-  implements DialogInterface.OnClickListener
+class lyr
+  extends akim
 {
-  public lyr(VideoControlUI paramVideoControlUI, long paramLong) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private lyr(lyn paramlyn) {}
+  
+  protected void a(boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g()) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.w("ShareChat", 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
     }
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "showPermissionNormalDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
-    mjg.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
+  }
+  
+  protected void a(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
+  {
+    if (paramTroopInfo == null) {}
+    do
+    {
+      return;
+      paramTroopInfo = paramTroopInfo.troopuin;
+    } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramTroopInfo)));
+    this.jdField_a_of_type_Lyn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    if (this == this.jdField_a_of_type_Lyn.jdField_a_of_type_Lyr) {
+      this.jdField_a_of_type_Lyn.jdField_a_of_type_Lyr = null;
+    }
+    QLog.w("ShareChat", 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "]");
+    this.jdField_a_of_type_Lyn.a();
   }
 }
 

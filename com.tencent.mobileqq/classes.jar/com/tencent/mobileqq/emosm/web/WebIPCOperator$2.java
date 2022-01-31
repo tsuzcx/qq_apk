@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
-import anfc;
+import anvl;
 
 public class WebIPCOperator$2
   implements Runnable
 {
-  public WebIPCOperator$2(anfc paramanfc, Bundle paramBundle) {}
+  public WebIPCOperator$2(anvl paramanvl, Bundle paramBundle) {}
   
   public void run()
   {

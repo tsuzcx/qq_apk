@@ -2,9 +2,15 @@
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_selected="true">
-        <color android:color="@color/qvip_emoji_tabitem_selected" />
+        <shape android:shape="rectangle">
+            <corners android:radius="18.0dip" />
+            <solid android:color="@color/qvip_emoji_tabitem_selected" />
+        </shape>
     </item>
     <item>
-        <color android:color="#00000000" />
+        <shape android:shape="rectangle">
+            <corners android:radius="18.0dip" />
+            <solid android:color="#00000000" />
+        </shape>
     </item>
 </selector>

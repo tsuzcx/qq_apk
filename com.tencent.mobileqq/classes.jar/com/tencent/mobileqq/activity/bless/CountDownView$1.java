@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.bless;
 
-import aeqz;
+import afbv;
 
 class CountDownView$1
   implements Runnable

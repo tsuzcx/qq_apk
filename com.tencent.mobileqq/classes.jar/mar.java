@@ -1,25 +1,18 @@
-import com.tencent.av.ui.VideoLayerUIBase;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class mar
-  implements Observer
+final class mar
+  extends ClickableSpan
 {
-  private WeakReference<VideoLayerUIBase> a;
+  mar(maw parammaw) {}
   
-  public mar(VideoLayerUIBase paramVideoLayerUIBase)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramVideoLayerUIBase);
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    VideoLayerUIBase localVideoLayerUIBase = (VideoLayerUIBase)this.a.get();
-    if (localVideoLayerUIBase == null) {
-      return;
+    View.OnClickListener localOnClickListener = this.a.a();
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(paramView);
     }
-    VideoLayerUIBase.a(localVideoLayerUIBase, paramObservable, paramObject);
   }
 }
 

@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 public abstract interface ShareProxy
 {
+  public abstract int getDefaultShareTarget();
+  
   public abstract void onJsShareAppMessage(Object paramObject, AsyncResult paramAsyncResult);
   
   public abstract void onJsShareAppPictureMessage(Object paramObject, AsyncResult paramAsyncResult);

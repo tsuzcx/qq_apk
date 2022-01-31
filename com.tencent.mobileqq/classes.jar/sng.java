@@ -1,316 +1,167 @@
 import android.content.Context;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity;
-import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import java.util.HashMap;
 
-class sng
-  extends soe
+public class sng
 {
-  sng(snf paramsnf) {}
+  public static final HashMap<String, String> a;
+  public static boolean a;
   
-  public void onClick(View paramView)
+  static
   {
-    Object localObject1;
-    label781:
-    label1117:
-    List localList;
-    Object localObject3;
-    Object localObject2;
-    switch (paramView.getId())
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put("1_1_1", "2020020023");
+    jdField_a_of_type_JavaUtilHashMap.put("1_1_2", "2020020023");
+    jdField_a_of_type_JavaUtilHashMap.put("1_1_3", "2020020024");
+    jdField_a_of_type_JavaUtilHashMap.put("1_1_4", "2020020024");
+    jdField_a_of_type_JavaUtilHashMap.put("1_1_5", "2020020057");
+    jdField_a_of_type_JavaUtilHashMap.put("1_1_6", "2020020028");
+    jdField_a_of_type_JavaUtilHashMap.put("1_1_7", "2020020116");
+    jdField_a_of_type_JavaUtilHashMap.put("1_1_8", "2020020115");
+    jdField_a_of_type_JavaUtilHashMap.put("1_1_13", "2020020427");
+    jdField_a_of_type_JavaUtilHashMap.put("1_1_14", "2020020428");
+    jdField_a_of_type_JavaUtilHashMap.put("1_1_101", "2020020026");
+    jdField_a_of_type_JavaUtilHashMap.put("1_1_102", "2020020027");
+    jdField_a_of_type_JavaUtilHashMap.put("1_1_103", "2020020160");
+    jdField_a_of_type_JavaUtilHashMap.put("1_1_401", "2020020167");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_1", "2020020082");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_2", "2020020082");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_3", "2020020083");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_4", "2020020084");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_5", "2020020085");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_6", "2020020086");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_7", "2020020118");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_8", "2020020117");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_100", "2020020032");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_104", "2020020163");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_13", "2020020427");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_14", "2020020428");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_101", "2020020026");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_102", "2020020027");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_103", "2020020160");
+    jdField_a_of_type_JavaUtilHashMap.put("1_2_401", "2020020167");
+    jdField_a_of_type_JavaUtilHashMap.put("1_3_1", "2020020072");
+    jdField_a_of_type_JavaUtilHashMap.put("1_3_2", "2020020072");
+    jdField_a_of_type_JavaUtilHashMap.put("1_3_3", "2020020073");
+    jdField_a_of_type_JavaUtilHashMap.put("1_3_4", "2020020074");
+    jdField_a_of_type_JavaUtilHashMap.put("1_3_5", "2020020075");
+    jdField_a_of_type_JavaUtilHashMap.put("1_3_6", "2020020076");
+    jdField_a_of_type_JavaUtilHashMap.put("1_3_7", "2020020120");
+    jdField_a_of_type_JavaUtilHashMap.put("1_3_8", "2020020119");
+    jdField_a_of_type_JavaUtilHashMap.put("1_3_13", "2020020427");
+    jdField_a_of_type_JavaUtilHashMap.put("1_3_14", "2020020428");
+    jdField_a_of_type_JavaUtilHashMap.put("1_4_1", "2020020077");
+    jdField_a_of_type_JavaUtilHashMap.put("1_4_2", "2020020077");
+    jdField_a_of_type_JavaUtilHashMap.put("1_4_3", "2020020078");
+    jdField_a_of_type_JavaUtilHashMap.put("1_4_4", "2020020079");
+    jdField_a_of_type_JavaUtilHashMap.put("1_4_5", "2020020080");
+    jdField_a_of_type_JavaUtilHashMap.put("1_4_6", "2020020081");
+    jdField_a_of_type_JavaUtilHashMap.put("1_4_7", "2020020122");
+    jdField_a_of_type_JavaUtilHashMap.put("1_4_8", "2020020121");
+    jdField_a_of_type_JavaUtilHashMap.put("1_4_13", "2020020427");
+    jdField_a_of_type_JavaUtilHashMap.put("1_4_14", "2020020428");
+    jdField_a_of_type_JavaUtilHashMap.put("1_4_300", "2020020071");
+    jdField_a_of_type_JavaUtilHashMap.put("1_4_401", "2020020167");
+    jdField_a_of_type_JavaUtilHashMap.put("1_5_1", "2020020031");
+    jdField_a_of_type_JavaUtilHashMap.put("1_5_2", "2020020031");
+    jdField_a_of_type_JavaUtilHashMap.put("1_5_3", "2020020032");
+    jdField_a_of_type_JavaUtilHashMap.put("1_5_4", "2020020033");
+    jdField_a_of_type_JavaUtilHashMap.put("1_5_5", "2020020034");
+    jdField_a_of_type_JavaUtilHashMap.put("1_5_6", "2020020035");
+    jdField_a_of_type_JavaUtilHashMap.put("1_5_7", "2020020053");
+    jdField_a_of_type_JavaUtilHashMap.put("1_5_8", "2020020052");
+    jdField_a_of_type_JavaUtilHashMap.put("1_5_301", "2020020030");
+    jdField_a_of_type_JavaUtilHashMap.put("1_5_101", "2020020026");
+    jdField_a_of_type_JavaUtilHashMap.put("1_5_102", "2020020027");
+    jdField_a_of_type_JavaUtilHashMap.put("1_5_103", "2020020160");
+    jdField_a_of_type_JavaUtilHashMap.put("1_6_1", "2020020037");
+    jdField_a_of_type_JavaUtilHashMap.put("1_6_2", "2020020037");
+    jdField_a_of_type_JavaUtilHashMap.put("1_6_3", "2020020038");
+    jdField_a_of_type_JavaUtilHashMap.put("1_6_4", "2020020039");
+    jdField_a_of_type_JavaUtilHashMap.put("1_6_5", "2020020040");
+    jdField_a_of_type_JavaUtilHashMap.put("1_6_6", "2020020041");
+    jdField_a_of_type_JavaUtilHashMap.put("1_6_7", "2020020055");
+    jdField_a_of_type_JavaUtilHashMap.put("1_6_8", "2020020054");
+    jdField_a_of_type_JavaUtilHashMap.put("1_6_302", "2020020036");
+    jdField_a_of_type_JavaUtilHashMap.put("1_6_101", "2020020026");
+    jdField_a_of_type_JavaUtilHashMap.put("1_6_102", "2020020027");
+    jdField_a_of_type_JavaUtilHashMap.put("1_6_103", "2020020160");
+    jdField_a_of_type_JavaUtilHashMap.put("2_0_1", "2020020059");
+    jdField_a_of_type_JavaUtilHashMap.put("2_0_2", "2020020059");
+    jdField_a_of_type_JavaUtilHashMap.put("2_0_3", "2020020060");
+    jdField_a_of_type_JavaUtilHashMap.put("2_0_4", "2020020061");
+    jdField_a_of_type_JavaUtilHashMap.put("2_0_5", "2020020062");
+    jdField_a_of_type_JavaUtilHashMap.put("2_0_6", "2020020064");
+    jdField_a_of_type_JavaUtilHashMap.put("2_0_7", "2020020114");
+    jdField_a_of_type_JavaUtilHashMap.put("2_0_8", "2020020113");
+    jdField_a_of_type_JavaUtilHashMap.put("3_0_200", "2020020029");
+    jdField_a_of_type_JavaUtilHashMap.put("3_0_201", "20200200230");
+  }
+  
+  private static String a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt1 > 0)
     {
-    default: 
-    case 2131304703: 
-    case 2131304701: 
-    case 2131307553: 
-    case 2131298912: 
-    case 2131304704: 
-      int i;
-      do
-      {
-        return;
-        if (!badq.d(this.a.jdField_a_of_type_AndroidContentContext))
-        {
-          bbmy.a(BaseApplication.getContext(), 1, ajjy.a(2131638614), 0).a();
-          return;
-        }
-        if ((this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.type == 2))
-        {
-          if (txl.a(this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem)) {
-            bbmy.a(this.a.jdField_a_of_type_AndroidContentContext, 1, ajjy.a(2131638634), 1).a();
-          }
-        }
-        else if ((this.a.jdField_a_of_type_Uio != null) && (txl.a()))
-        {
-          i = this.a.jdField_a_of_type_Uio.a().type;
-          if ((i == 3) || (i == 5))
-          {
-            bbmy.a(this.a.jdField_a_of_type_AndroidContentContext, 1, ajjy.a(2131638605), 1).a();
-            return;
-          }
-        }
-        this.a.e();
-        return;
-        if (!badq.d(this.a.jdField_a_of_type_AndroidContentContext))
-        {
-          bbmy.a(BaseApplication.getContext(), 1, ajjy.a(2131638628), 0).a();
-          return;
-        }
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.isFakeFeedItem())
-        {
-          bbmy.a(BaseApplication.getContext(), 1, ajjy.a(2131638612), 0).a();
-          return;
-        }
-        if ((this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.type == 2))
-        {
-          if (txl.a(this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem)) {
-            bbmy.a(this.a.jdField_a_of_type_AndroidContentContext, 1, ajjy.a(2131638619), 1).a();
-          }
-        }
-        else if ((this.a.jdField_a_of_type_Uio != null) && (txl.a()))
-        {
-          i = this.a.jdField_a_of_type_Uio.a().type;
-          if ((i == 3) || (i == 5))
-          {
-            bbmy.a(this.a.jdField_a_of_type_AndroidContentContext, 1, ajjy.a(2131638629), 1).a();
-            return;
-          }
-        }
-        i = urp.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-        if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner() instanceof ShareGroupItem)) {}
-        for (localObject1 = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().getUnionId();; localObject1 = "")
-        {
-          urp.a("home_page", "clk_reply", urp.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(i), urp.a(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, localObject1 });
-          if (this.a.jdField_a_of_type_Smv == null) {
-            break;
-          }
-          localObject1 = (smz)this.a.a("commentLego");
-          this.a.jdField_a_of_type_Smv.a((smz)localObject1, paramView, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId);
-          return;
-        }
-        if (snf.a(this.a) != null)
-        {
-          if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner() instanceof QQUserUIItem))
-          {
-            paramView = (QQUserUIItem)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
-            snf.a(this.a).a(Long.parseLong(paramView.qq), this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.ownerId, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-          }
-        }
-        else
-        {
-          i = urp.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-          if (!(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner() instanceof ShareGroupItem)) {
-            break label781;
-          }
-        }
-        for (paramView = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().getUnionId();; paramView = "")
-        {
-          urp.a("home_page", "clk_play", urp.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(i), urp.a(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, paramView });
-          return;
-          snf.a(this.a).a(0L, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.ownerId, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-          break;
-        }
-        if (this.a.jdField_a_of_type_Int == 11) {
-          i = 211;
-        }
-        for (;;)
-        {
-          StoryDetailActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, i, 0);
-          urp.a("home_page", "clk_reply_mini", urp.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(urp.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem)), urp.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-          return;
-          if (this.a.jdField_a_of_type_Int == 12) {
-            i = 222;
-          } else {
-            i = 210;
-          }
-        }
-        if (!badq.d(this.a.jdField_a_of_type_AndroidContentContext))
-        {
-          bbmy.a(BaseApplication.getContext(), 1, ajjy.a(2131638613), 0).a();
-          return;
-        }
-      } while (vms.b());
-      if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner() instanceof ShareGroupItem)) {}
-      for (paramView = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().getUnionId();; paramView = "")
-      {
-        urp.a("home_page", "clk_share", urp.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { urp.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem) + "", urp.a(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, paramView });
-        if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner() != null)) {
-          break label1117;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("FeedCommentLikeLego", 2, "can't share, commentLikeFeedItem not ready");
-        return;
+      if (paramInt2 <= 0) {
+        break label72;
       }
-      if (this.a.jdField_a_of_type_Uin != null)
-      {
-        if (snf.a(this.a) == null) {
-          snf.a(this.a, tci.a(this.a.jdField_a_of_type_AndroidAppActivity));
-        }
-        snf.a(this.a).a(this.a.jdField_a_of_type_AndroidContentContext.getString(2131653614)).a(new snh(this)).a(new tdh((BannerFeedItem)this.a.jdField_a_of_type_Uin.a())).b();
-        return;
+      label8:
+      if (paramInt3 <= 0) {
+        break label77;
       }
-      localObject1 = null;
-      paramView = null;
-      localList = this.a.jdField_a_of_type_Uio.a();
-      if (!localList.isEmpty())
-      {
-        Iterator localIterator = localList.iterator();
-        if (localIterator.hasNext())
-        {
-          localObject3 = (StoryVideoItem)localIterator.next();
-          if (StoryVideoItem.isFakeVid(((StoryVideoItem)localObject3).mVid)) {
-            break label1909;
-          }
-          localObject2 = paramView;
-          if (paramView == null)
-          {
-            if (!vlf.c(((StoryVideoItem)localObject3).mCreateTime)) {
-              break label1396;
-            }
-            i = localList.size() - 1;
-            label1313:
-            if (i < 0) {
-              break label1906;
-            }
-            localObject2 = (StoryVideoItem)localList.get(i);
-            if (StoryVideoItem.isFakeVid(((StoryVideoItem)localObject2).mVid)) {
-              break label1389;
-            }
-            paramView = (View)localObject2;
-          }
-          label1344:
-          label1360:
-          label1376:
-          label1389:
-          label1396:
-          for (localObject2 = paramView;; localObject2 = localObject3)
-          {
-            if (localObject1 != null) {
-              break label1900;
-            }
-            paramView = new ArrayList();
-            paramView.add(((StoryVideoItem)localObject3).mVid);
-            localObject1 = localObject2;
-            localObject2 = localObject1;
-            localObject1 = paramView;
-            paramView = (View)localObject2;
-            break;
-            i -= 1;
-            break label1313;
-          }
-        }
-      }
-      break;
     }
     for (;;)
     {
-      if (localObject1 == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("FeedCommentLikeLego", 2, "can't share, video list empty");
-        }
-        bbmy.a(BaseApplication.getContext(), 1, ajjy.a(2131638642), 0).a();
-        return;
+      String str = paramInt1 + "_" + paramInt2 + "_" + paramInt3;
+      str = (String)jdField_a_of_type_JavaUtilHashMap.get(str);
+      if (TextUtils.isEmpty(str)) {
+        break label82;
       }
-      if (paramView == null) {
-        break;
-      }
-      boolean bool1 = StoryVideoItem.hasPollVideo(localList);
-      boolean bool2 = StoryVideoItem.hasInteractVideo(localList);
-      boolean bool3 = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe();
-      if ((this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.allowStrangerVisitAndPost == 1))
-      {
-        if (snf.a(this.a) == null) {
-          snf.a(this.a, tci.a(this.a.jdField_a_of_type_AndroidAppActivity));
-        }
-        localObject3 = snf.a(this.a);
-        if (bool3)
-        {
-          localObject2 = ajjy.a(2131638639);
-          localObject1 = ((tci)localObject3).a((String)localObject2).a(new sni(this)).a(tdl.a(this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem, paramView, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, paramView.mCreateTime, ((List)localObject1).size()));
-          if (!bool1) {
-            break label1692;
-          }
-          paramView = "1";
-          label1613:
-          localObject1 = ((tci)localObject1).a("vote", paramView);
-          if (!bool2) {
-            break label1699;
-          }
-        }
-        label1692:
-        label1699:
-        for (paramView = "1";; paramView = "0")
-        {
-          ((tci)localObject1).a("grade", paramView).b();
-          urp.a("share_story", "share_day", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
-          return;
-          localObject2 = this.a.jdField_a_of_type_AndroidContentContext.getString(2131653614);
-          break;
-          paramView = "0";
-          break label1613;
-        }
-      }
-      if (snf.a(this.a) == null) {
-        snf.a(this.a, tci.a(this.a.jdField_a_of_type_AndroidAppActivity));
-      }
-      localObject3 = snf.a(this.a);
-      if (bool3)
-      {
-        localObject2 = ajjy.a(2131638623);
-        localObject1 = ((tci)localObject3).a((String)localObject2).a(new snj(this)).a(new tdi(paramView, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, ((List)localObject1).size()));
-        if (!bool1) {
-          break label1863;
-        }
-        paramView = "1";
-        label1812:
-        localObject1 = ((tci)localObject1).a("vote", paramView);
-        if (!bool2) {
-          break label1870;
-        }
-      }
-      label1863:
-      label1870:
-      for (paramView = "1";; paramView = "0")
-      {
-        ((tci)localObject1).a("grade", paramView).b();
-        return;
-        localObject2 = this.a.jdField_a_of_type_AndroidContentContext.getString(2131653614);
-        break;
-        paramView = "0";
-        break label1812;
-      }
-      QQStoryWatcherListActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, 10);
-      return;
-      label1900:
-      paramView = (View)localObject1;
-      break label1360;
-      label1906:
-      break label1344;
-      label1909:
-      localObject2 = localObject1;
-      localObject1 = paramView;
-      paramView = (View)localObject2;
-      break label1376;
-      localObject1 = null;
-      paramView = null;
+      return str;
+      paramInt1 = 0;
+      break;
+      label72:
+      paramInt2 = 0;
+      break label8;
+      label77:
+      paramInt3 = 0;
     }
+    label82:
+    return "2020020063";
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    paramString2 = sni.b(paramString2);
+    sne.d("WeishiScehmeUtil", "openWeishi: scheme = " + paramString2);
+    jdField_a_of_type_Boolean = true;
+    vzz.a(paramContext, paramString1, paramString2);
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString2)))
+    {
+      sne.d("WeishiScehmeUtil", "openWeishi context = " + paramContext + "scheme = " + paramString2);
+      return;
+    }
+    String str = paramString2;
+    if (!paramString2.contains("?")) {
+      str = paramString2 + "?";
+    }
+    paramString2 = str;
+    if (!str.contains("&logsour="))
+    {
+      paramString2 = a(paramInt1, paramInt2, paramInt3);
+      paramString2 = str + "&logsour=" + paramString2;
+    }
+    sne.c("WeishiScehmeUtil", "openWeishi final scheme = " + paramString2);
+    a(paramContext, paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sng
  * JD-Core Version:    0.7.0.1
  */

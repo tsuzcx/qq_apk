@@ -47,7 +47,7 @@ public class RecentItemImaxADData
       if (this.mUnreadNum > 0) {
         this.mUnreadNum = 1;
       }
-      if (AppSetting.c)
+      if (AppSetting.d)
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(this.mTitleName).append(",");

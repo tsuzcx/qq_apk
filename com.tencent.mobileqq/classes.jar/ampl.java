@@ -1,87 +1,61 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.danmaku.core.DanmakuMeasureManager.1;
-import com.tencent.mobileqq.danmaku.core.DanmakuMeasureManager.2;
-import java.util.List;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.Iterator;
+import java.util.Set;
 
 public class ampl
 {
-  private ampx jdField_a_of_type_Ampx;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  
-  public ampl(ampx paramampx)
+  public static amun a(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    this.jdField_a_of_type_Ampx = paramampx;
-  }
-  
-  private Handler a()
-  {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("DanmakuMeasureThread");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandlerThread.setUncaughtExceptionHandler(new amrn());
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      return this.jdField_a_of_type_AndroidOsHandler;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+    ampj.a().a(419, 0L, false);
+    amuo localamuo = new amuo();
+    paramBaseApplicationImpl = a(419, paramBaseApplicationImpl);
+    if (paramBaseApplicationImpl != null) {
+      try
       {
-        amrq.d("DanmakuMeasureManager", new Object[] { localThrowable });
+        paramBaseApplicationImpl = localamuo.a(paramBaseApplicationImpl);
+        if (paramBaseApplicationImpl != null) {
+          return paramBaseApplicationImpl;
+        }
       }
+      catch (Exception paramBaseApplicationImpl) {}
     }
+    return new amun();
   }
   
-  public static void a(ampx paramampx, ampo paramampo)
+  private static SharedPreferences a(long paramLong, BaseApplicationImpl paramBaseApplicationImpl)
   {
-    if (paramampo.b()) {
-      return;
-    }
-    paramampx = paramampx.a(paramampo).a(paramampo);
-    paramampo.d(paramampx.a() + ampx.a().g() * 2);
-    paramampo.e(paramampx.b() + ampx.a().c() * 2);
-    paramampo.g();
+    return paramBaseApplicationImpl.getSystemSharedPreferences("conf_" + paramLong + "_sharepref", 4);
   }
   
-  public void a()
+  private static ampi[] a(int paramInt, BaseApplicationImpl paramBaseApplicationImpl)
   {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
-      return;
+    Object localObject1 = a(0L, paramBaseApplicationImpl);
+    paramBaseApplicationImpl = b(0L, paramBaseApplicationImpl);
+    Object localObject2 = ((SharedPreferences)localObject1).getStringSet(paramInt + "_ids", null);
+    if ((localObject2 == null) || (((Set)localObject2).isEmpty())) {
+      return null;
     }
-    if (amro.a())
+    localObject1 = new ampi[((Set)localObject2).size()];
+    localObject2 = ((Set)localObject2).iterator();
+    int i = 0;
+    while (((Iterator)localObject2).hasNext())
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
-      return;
+      String str = (String)((Iterator)localObject2).next();
+      localObject1[i] = new ampi(Integer.valueOf(str).intValue(), paramBaseApplicationImpl.getString(paramInt + "_" + str, null));
+      i += 1;
     }
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+    return localObject1;
   }
   
-  public void a(ampo paramampo, ampm paramampm)
+  private static SharedPreferences b(long paramLong, BaseApplicationImpl paramBaseApplicationImpl)
   {
-    Handler localHandler = a();
-    if (localHandler != null) {
-      localHandler.post(new DanmakuMeasureManager.1(this, paramampo, paramampm));
-    }
-  }
-  
-  public void a(List<ampo> paramList, ampm paramampm)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    Handler localHandler;
-    do
-    {
-      return;
-      localHandler = a();
-    } while (localHandler == null);
-    localHandler.post(new DanmakuMeasureManager.2(this, paramList, paramampm));
+    return paramBaseApplicationImpl.getSystemSharedPreferences("conf_" + paramLong + "_content_sharepref", 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampl
  * JD-Core Version:    0.7.0.1
  */

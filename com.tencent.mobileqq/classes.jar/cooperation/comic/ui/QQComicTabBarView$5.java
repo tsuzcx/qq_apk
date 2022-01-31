@@ -1,8 +1,8 @@
 package cooperation.comic.ui;
 
-import bezz;
-import bfas;
-import bfaw;
+import bghq;
+import bgij;
+import bgin;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -16,12 +16,12 @@ class QQComicTabBarView$5
   public void run()
   {
     this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
-    this.this$0.jdField_a_of_type_Bfaw = ((bfaw)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(213));
-    if (this.this$0.jdField_a_of_type_Bfaw != null) {
-      this.this$0.jdField_a_of_type_Bfaw.addObserver(this.this$0.jdField_a_of_type_Bfay);
+    this.this$0.jdField_a_of_type_Bgin = ((bgin)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(213));
+    if (this.this$0.jdField_a_of_type_Bgin != null) {
+      this.this$0.jdField_a_of_type_Bgin.addObserver(this.this$0.jdField_a_of_type_Bgip);
     }
-    if (bfas.a != null) {
-      bfas.a.a(this.this$0.jdField_a_of_type_Bezy);
+    if (bgij.a != null) {
+      bgij.a.a(this.this$0.jdField_a_of_type_Bghp);
     }
     if (QLog.isColorLevel()) {
       QLog.d("WebViewTabBarView", 2, "register observers");

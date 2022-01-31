@@ -1,20 +1,19 @@
-import android.view.MotionEvent;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
 public class abpy
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public abpy(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public abpy(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    paramView = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
+    this.a.startActivity(paramView);
+    axqw.b(this.a.app, "CliOper", "", "", "0X800403C", "0X800403C", 0, 0, "", "", "", "");
   }
 }
 

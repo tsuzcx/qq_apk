@@ -1,17 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video.player;
 
-import qhw;
-import qmk;
+import qyp;
 
 public class LitePlayer$1
   implements Runnable
 {
-  public LitePlayer$1(qmk paramqmk, qhw paramqhw) {}
+  public LitePlayer$1(qyp paramqyp, String paramString, int paramInt, long paramLong) {}
   
   public void run()
   {
-    this.a.i();
-    this.a.a(null);
+    this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
   }
 }
 

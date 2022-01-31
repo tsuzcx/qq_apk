@@ -1,59 +1,101 @@
-import android.util.Pair;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.app.PPCLoginAuthHandler.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.ppcloginauth.PPCLoginAuth.comering_req;
+import com.tencent.pb.ppcloginauth.PPCLoginAuth.comering_rsp;
+import com.tencent.pb.ppcloginauth.PPCLoginAuth.plat_info;
+import com.tencent.pb.ppcloginauth.PPCLoginAuth.req;
+import com.tencent.pb.ppcloginauth.PPCLoginAuth.rsp;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class akby
+  extends ajtd
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static Map<String, Pair<String, Integer>> jdField_a_of_type_JavaUtilMap;
+  private long a;
+  public QQAppInterface a;
   
-  public static int a(String paramString)
+  public akby(QQAppInterface paramQQAppInterface)
   {
-    return ((Integer)((Pair)jdField_a_of_type_JavaUtilMap.get(paramString)).second).intValue();
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public static String a(String paramString)
+  public void a()
   {
-    return (String)((Pair)jdField_a_of_type_JavaUtilMap.get(paramString)).first;
-  }
-  
-  public static Map<String, Pair<String, Integer>> a()
-  {
-    if (jdField_a_of_type_JavaUtilMap == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_JavaUtilMap == null) {
-        a();
-      }
-      return jdField_a_of_type_JavaUtilMap;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    PPCLoginAuth.plat_info localplat_info = new PPCLoginAuth.plat_info();
+    localplat_info.implat.set(109L);
+    localplat_info.mqqver.set("8.2.8.4440");
+    localplat_info.osver.set(Build.VERSION.RELEASE);
+    PPCLoginAuth.comering_req localcomering_req = new PPCLoginAuth.comering_req();
+    localcomering_req.id.set(String.valueOf(this.jdField_a_of_type_Long));
+    PPCLoginAuth.req localreq = new PPCLoginAuth.req();
+    localreq.comm.set(localplat_info);
+    localreq.reqcmd_0x01.set(localcomering_req);
+    localObject = new ToServiceMsg("mobileqq.service", (String)localObject, "Loginauth.1");
+    ((ToServiceMsg)localObject).putWupBuffer(localreq.toByteArray());
+    sendPbReq((ToServiceMsg)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.i("PPCLoginAuthHandler", 2, "sendPbReq called. req=" + localreq.toString());
     }
   }
   
-  private static void a()
+  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.GetMsgV4", Pair.create("accost_processor", Integer.valueOf(5002)));
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.GetMsgV2", Pair.create("accost_processor", Integer.valueOf(5002)));
-    jdField_a_of_type_JavaUtilMap.put("AccostSvc.SvrMsg", Pair.create("accost_processor", Integer.valueOf(5001)));
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew", Pair.create("system_processor", Integer.valueOf(6002)));
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Friend", Pair.create("system_processor", Integer.valueOf(6001)));
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Group", Pair.create("system_processor", Integer.valueOf(6003)));
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgRead", Pair.create("system_processor", Integer.valueOf(6006)));
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgAction", Pair.create("system_processor", Integer.valueOf(6007)));
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_0", Pair.create("system_processor", Integer.valueOf(6008)));
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_1", Pair.create("system_processor", Integer.valueOf(6009)));
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetOneDayRoamMsg", Pair.create("c2c_processor", Integer.valueOf(1003)));
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetRoamMsg", Pair.create("c2c_processor", Integer.valueOf(2001)));
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbSearchRoamMsgInCloud", Pair.create("c2c_processor", Integer.valueOf(2005)));
-    jdField_a_of_type_JavaUtilMap.put("TransService.ReqOffFilePack", Pair.create("offlinefile_processor", Integer.valueOf(7001)));
-    jdField_a_of_type_JavaUtilMap.put("OnlinePush.ReqPush", Pair.create("businessbase_processor", Integer.valueOf(3001)));
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbBindUinGetMsg", Pair.create("sub_account_processor", Integer.valueOf(4001)));
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbBindUinMsgReadedConfirm", Pair.create("sub_account_processor", Integer.valueOf(4002)));
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d0_1", Pair.create("sub_account_processor", Integer.valueOf(4003)));
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbMultiMsgSend", Pair.create("uncommon_msg_processor", Integer.valueOf(8001)));
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbMsgWithDraw", Pair.create("uncommon_msg_processor", Integer.valueOf(8002)));
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbDelOneRoamMsg", Pair.create("uncommon_msg_processor", Integer.valueOf(8003)));
-    jdField_a_of_type_JavaUtilMap.put("SecSvcBlessingHelper.blessing_helper", Pair.create("uncommon_msg_processor", Integer.valueOf(8004)));
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        paramToServiceMsg = new PPCLoginAuth.rsp();
+      }
+      try
+      {
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if ((paramToServiceMsg.ret.get() == 0L) && (((PPCLoginAuth.comering_rsp)paramToServiceMsg.rspcmd_0x01.get()).ret.get() != 0)) {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new PPCLoginAuthHandler.1(this));
+        }
+        return;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
+      }
+    }
+  }
+  
+  public void b()
+  {
+    aukn localaukn = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).createEntityManager();
+    ExtensionInfo localExtensionInfo = (ExtensionInfo)localaukn.a(ExtensionInfo.class, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    localaukn.a();
+    if ((localExtensionInfo != null) && (localExtensionInfo.commingRingId != 0L))
+    {
+      this.jdField_a_of_type_Long = localExtensionInfo.commingRingId;
+      a();
+    }
+  }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("Loginauth.1".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PPCLoginAuthHandler", 2, "onReceive called.");
+      }
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 

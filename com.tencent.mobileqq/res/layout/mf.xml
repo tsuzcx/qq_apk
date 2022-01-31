@@ -11,6 +11,6 @@
     <FrameLayout android:id="@id/bo6" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
     <dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView android:id="@id/bo5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView android:id="@id/boa" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout android:id="@id/f8l" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginBottom="@dimen/ac2" android:layout_alignParentBottom="true" />
+    <dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout android:id="@id/f8l" android:background="@color/c1" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginBottom="@dimen/ac2" android:layout_alignParentBottom="true" />
     <dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.StoryGuideLineView android:id="@id/fj1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

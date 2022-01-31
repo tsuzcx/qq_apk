@@ -1,38 +1,106 @@
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.richstatus.HistorySignItem;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.qcall.QCallDetailActivity.1.1;
+import com.tencent.mobileqq.qcall.QCallDetailActivity.1.2;
+import com.tencent.qphone.base.util.QLog;
+import friendlist.GetOnlineInfoResp;
+import java.util.Map;
 
-class avej
-  implements avfl
+public class avej
+  extends ajxl
 {
-  avej(aveg paramaveg, HistorySignItem paramHistorySignItem) {}
+  public avej(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void a(int paramInt, View paramView)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    if (SignatureHistoryFragment.b(this.jdField_a_of_type_Aveg.a)) {}
+    if ((paramBoolean) && (TextUtils.equals(paramString, QCallDetailActivity.a(this.a))))
+    {
+      QCallDetailActivity.a(this.a);
+      this.a.runOnUiThread(new QCallDetailActivity.1.1(this));
+    }
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead isSuccess | " + paramBoolean + ", uin | " + paramString);
+    }
     Object localObject;
-    avfd localavfd;
+    if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000) && (!bbbd.a(paramString, this.a.app.getCurrentAccountUin())))
+    {
+      localObject = (ajvk)this.a.app.getManager(53);
+      if (localObject != null) {
+        break label109;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead dm is null  ====");
+      }
+    }
+    label109:
     do
     {
       do
       {
         return;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusHistorySignItem.commentItemList;
-      } while ((localObject == null) || (((List)localObject).size() <= paramInt));
-      localObject = (CommentItem)((List)localObject).get(paramInt);
-      localavfd = ((CommentItem)localObject).user;
-    } while ((localavfd == null) || (TextUtils.isEmpty(localavfd.a)));
-    paramView.setSelected(true);
-    bakh localbakh = new bakh();
-    SignatureHistoryFragment.a(this.jdField_a_of_type_Aveg.a, (CommentItem)localObject);
-    localbakh.a(2131299262, this.jdField_a_of_type_Aveg.a.getString(2131625731), 0);
-    if ((localavfd.a.equals(SignatureHistoryFragment.b(this.jdField_a_of_type_Aveg.a))) || (azzz.a(SignatureHistoryFragment.b(this.jdField_a_of_type_Aveg.a), SignatureHistoryFragment.a(this.jdField_a_of_type_Aveg.a)))) {
-      localbakh.a(2131299417, this.jdField_a_of_type_Aveg.a.getString(2131627099), 0);
+        if (((ajvk)localObject).a(QCallDetailActivity.a(this.a)) != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead info is null ====");
+      return;
+      if (TextUtils.isEmpty(paramString))
+      {
+        QLog.i("QCallDetailActivity", 1, " === onUpdateCustomHead uin is null ====");
+        return;
+      }
+      localObject = ((ajvk)localObject).a(QCallDetailActivity.a(this.a));
+    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
+    this.a.a(QCallDetailActivity.a(this.a));
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    Object localObject;
+    if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000))
+    {
+      localObject = (ajvk)this.a.app.getManager(53);
+      if (localObject != null) {
+        break label52;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QCallDetailActivity", 2, " === onUpdateFriendInfo dm is null  ====");
+      }
     }
-    baay.a(paramView, localbakh, this.jdField_a_of_type_Aveg.a, new avek(this, paramView));
+    label52:
+    do
+    {
+      DiscussionInfo localDiscussionInfo;
+      do
+      {
+        return;
+        localDiscussionInfo = ((ajvk)localObject).a(QCallDetailActivity.a(this.a));
+        if (localDiscussionInfo == null)
+        {
+          QLog.i("QCallDetailActivity", 1, " ===onUpdateFriendInfo info is null ====");
+          return;
+        }
+        if (TextUtils.isEmpty(paramString))
+        {
+          QLog.i("QCallDetailActivity", 1, " === onUpdateFriendInfo uin is null ====");
+          return;
+        }
+      } while (localDiscussionInfo.hasRenamed());
+      localObject = ((ajvk)localObject).a(QCallDetailActivity.a(this.a));
+    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
+    this.a.a(QCallDetailActivity.a(this.a));
+  }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    QCallDetailActivity.a(this.a);
+    this.a.runOnUiThread(new QCallDetailActivity.1.2(this));
   }
 }
 

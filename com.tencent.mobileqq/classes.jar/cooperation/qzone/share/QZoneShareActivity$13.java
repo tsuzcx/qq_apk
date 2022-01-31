@@ -1,7 +1,8 @@
 package cooperation.qzone.share;
 
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
 
 class QZoneShareActivity$13
   implements Runnable
@@ -10,9 +11,12 @@ class QZoneShareActivity$13
   
   public void run()
   {
-    int i = this.this$0.b();
-    int j = this.this$0.a();
-    ThreadManager.getUIHandler().post(new QZoneShareActivity.13.1(this, i - j));
+    this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
+    this.this$0.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848110);
+    this.this$0.d = true;
+    this.this$0.e = false;
+    QZoneShareActivity.a(this.this$0, this.this$0.d);
   }
 }
 

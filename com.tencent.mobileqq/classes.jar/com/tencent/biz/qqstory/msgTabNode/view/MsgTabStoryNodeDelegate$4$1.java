@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.msgTabNode.view;
 
-import ssm;
-import sun;
-import suo;
-import sur;
-import urk;
+import tfi;
+import thj;
+import thk;
+import thn;
+import veg;
 
 public class MsgTabStoryNodeDelegate$4$1
   implements Runnable
 {
-  public MsgTabStoryNodeDelegate$4$1(sur paramsur) {}
+  public MsgTabStoryNodeDelegate$4$1(thn paramthn) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Suo.a.a(this.a.jdField_a_of_type_Ssm);
-    urk.a("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "onMsgTabStoryDataUpdate. vid=%s, feedId=%s, nodeInfo=%s", this.a.jdField_a_of_type_Ssm.e, this.a.jdField_a_of_type_Ssm.f, this.a.jdField_a_of_type_Ssm);
+    this.a.jdField_a_of_type_Thk.a.a(this.a.jdField_a_of_type_Tfi);
+    veg.a("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "onMsgTabStoryDataUpdate. vid=%s, feedId=%s, nodeInfo=%s", this.a.jdField_a_of_type_Tfi.e, this.a.jdField_a_of_type_Tfi.f, this.a.jdField_a_of_type_Tfi);
   }
 }
 

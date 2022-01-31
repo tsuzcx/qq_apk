@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.utils;
 
-import azgj;
+import bahm;
 
 public final class HWTroopUtils$2
   implements Runnable
 {
-  public HWTroopUtils$2(azgj paramazgj, int paramInt) {}
+  public HWTroopUtils$2(bahm parambahm, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Azgj.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bahm.a(this.jdField_a_of_type_Int);
   }
 }
 

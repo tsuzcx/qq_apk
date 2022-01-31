@@ -1,25 +1,41 @@
-import android.view.animation.Transformation;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 class atsz
-  implements bajj<Float>
+  implements bfoq
 {
-  atsz(atsy paramatsy) {}
+  atsz(atsy paramatsy, View paramView, PicInfo paramPicInfo, bfol parambfol) {}
   
-  public void a(bajd<Float> parambajd, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.c = paramFloat1.floatValue();
-    this.a.b = (1.1F - (paramFloat1.floatValue() - 1.0F));
-    if (this.a.jdField_a_of_type_Atte != null)
-    {
-      this.a.jdField_a_of_type_Atte.b = paramFloat1.floatValue();
-      this.a.jdField_a_of_type_Atte.a = this.a.b;
+    int i = paramInt;
+    if (this.jdField_a_of_type_Atsy.jdField_a_of_type_Int == 0) {
+      i = paramInt + 1;
     }
-    this.a.a((int)(this.a.jdField_a_of_type_Int * paramFloat1.floatValue()));
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.e();
+      return;
+      this.jdField_a_of_type_Atsy.jdField_a_of_type_Atsa.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Atsy.jdField_a_of_type_Atsa.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView, 0);
+      atsa.a(this.jdField_a_of_type_Atsy.jdField_a_of_type_Atsa);
+      atsa.b(this.jdField_a_of_type_Atsy.jdField_a_of_type_Atsa);
+      continue;
+      paramView = xpx.a(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Atsy.jdField_a_of_type_Atsa.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(this.jdField_a_of_type_Atsy.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Atsy.jdField_a_of_type_Atsa.jdField_a_of_type_JavaUtilArrayList);
+      continue;
+      atsa.a(this.jdField_a_of_type_Atsy.jdField_a_of_type_Atsa, this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo, this.jdField_a_of_type_AndroidViewView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsz
  * JD-Core Version:    0.7.0.1
  */

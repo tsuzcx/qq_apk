@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import abju;
-import abjv;
+import abtu;
+import abtv;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,22 +13,22 @@ import java.util.Iterator;
 public class PublicFragmentActivityForPeak
   extends PublicFragmentActivity
 {
-  private ArrayList<WeakReference<abjv>> a;
+  private ArrayList<WeakReference<abtv>> a;
   
   public static void b(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    abju.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, paramClass);
+    abtu.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, paramClass);
   }
   
   public void doOnBackPressed()
   {
     Object localObject1 = super.a();
-    if ((localObject1 instanceof abjv))
+    if ((localObject1 instanceof abtv))
     {
       if (this.a == null) {
         this.a = new ArrayList(2);
       }
-      this.a.add(new WeakReference((abjv)localObject1));
+      this.a.add(new WeakReference((abtv)localObject1));
     }
     if (this.a != null)
     {
@@ -38,9 +38,9 @@ public class PublicFragmentActivityForPeak
         Object localObject2 = (WeakReference)((Iterator)localObject1).next();
         if (localObject2 != null)
         {
-          localObject2 = (abjv)((WeakReference)localObject2).get();
+          localObject2 = (abtv)((WeakReference)localObject2).get();
           if (localObject2 != null) {
-            ((abjv)localObject2).onBackPressed();
+            ((abtv)localObject2).onBackPressed();
           }
         }
       }

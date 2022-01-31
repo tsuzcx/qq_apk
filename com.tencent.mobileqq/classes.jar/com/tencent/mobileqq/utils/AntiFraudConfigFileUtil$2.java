@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.utils;
 
 import android.os.Bundle;
-import baah;
+import bbbl;
 
 public class AntiFraudConfigFileUtil$2
   implements Runnable
 {
-  public AntiFraudConfigFileUtil$2(baah parambaah, String paramString) {}
+  public AntiFraudConfigFileUtil$2(bbbl parambbbl, String paramString) {}
   
   public void run()
   {
-    if (!baah.a(this.this$0).containsKey(this.a)) {
-      baah.a(this.this$0, this.a);
+    if (!bbbl.a(this.this$0).containsKey(this.a)) {
+      bbbl.a(this.this$0, this.a);
     }
   }
 }

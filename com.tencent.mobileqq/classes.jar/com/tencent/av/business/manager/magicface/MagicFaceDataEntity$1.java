@@ -2,7 +2,7 @@ package com.tencent.av.business.manager.magicface;
 
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
-import krx;
+import lcl;
 
 class MagicFaceDataEntity$1
   implements Runnable
@@ -11,7 +11,7 @@ class MagicFaceDataEntity$1
   
   public void run()
   {
-    krx.c("MagicFaceDataEntity", "reloadDecrateList 2:" + this.a);
+    lcl.c("MagicFaceDataEntity", "reloadDecrateList 2:" + this.a);
     MagicFaceDataEntity.1.1 local1 = new MagicFaceDataEntity.1.1(this);
     this.this$0.a.a().post(local1);
   }

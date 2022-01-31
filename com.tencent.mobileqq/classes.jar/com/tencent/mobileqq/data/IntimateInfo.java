@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import ajjj;
+import ajxn;
 import android.text.TextUtils;
-import asbg;
-import atmo;
-import atnz;
-import atoc;
+import asxk;
+import aukm;
+import aulx;
+import auma;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -35,48 +35,48 @@ import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.RspBody;
 import tencent.im.oidb.recheck_flag_info.recheck_flag_info.RecheckFlagInfo;
 
 public class IntimateInfo
-  extends atmo
+  extends aukm
 {
   public int addFriendSource = -1;
   public int addFriendSubSource = -1;
   public String addFriendWording;
   public int beFriendDays = -2;
-  @atnz
+  @aulx
   public List<oidb_0xcf4.CommonBody> commonBodies;
-  @atnz
+  @aulx
   public List<IntimateInfo.CommonBody> commonBodyList;
   public String commonBodyListStr;
-  @atnz
+  @aulx
   public List<IntimateInfo.CommonTroopInfo> commonTroopInfoList;
   public String commonTroopInfoListJsonStr;
   public String commonTroopTips;
   public int currentScore;
-  @atnz
+  @aulx
   public List<IntimateInfo.DNAInfo> dnaInfoList;
   public String dnaInfoListJonStr;
   public IntimateInfo.FriendGiftInfo friendGiftInfo;
-  @atoc
+  @auma
   public String friendUin;
   public boolean isFriend = true;
-  @atnz
+  @aulx
   public boolean isShowRedPoint;
   public int lastAnimAfterFriendDays;
   public int lastAnimAfterScore;
-  @atnz
+  @aulx
   public int mCanRecheckCount;
-  @atnz
+  @aulx
   public List<IntimateInfo.MutualMarkInfo> markInfoList;
   public String markInfoListJsonStr;
   public int maskDays;
   public int maskLevel;
   public int maskType;
-  @atnz
+  @aulx
   public List<IntimateInfo.MemoryDayInfo> memoryDayInfoList;
   public String memoryDayListJsonStr;
-  @atnz
+  @aulx
   public List<IntimateInfo.PrefetchMutualMarkInfo> prefetchMutualMarkInfoList;
   public String prefetchMutualMarkInfoListJsonStr;
-  @atnz
+  @aulx
   public IntimateInfo.CommonTroopInfo recentChatTroopInfo;
   public String recentChatTroopInfoJsonStr;
   public long updateTimeMills;
@@ -255,7 +255,7 @@ public class IntimateInfo
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = IntimateInfo.MutualMarkInfo.copyFrom((oidb_0xcf4.MutualMarkInfo)((Iterator)localObject1).next());
-          if ((localObject2 != null) && (asbg.b(((IntimateInfo.MutualMarkInfo)localObject2).type))) {
+          if ((localObject2 != null) && (asxk.b(((IntimateInfo.MutualMarkInfo)localObject2).type))) {
             localIntimateInfo.markInfoList.add(localObject2);
           }
         }
@@ -271,7 +271,7 @@ public class IntimateInfo
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = IntimateInfo.PrefetchMutualMarkInfo.copyFrom((oidb_0xcf4.PrefetchMutualMarkInfo)((Iterator)localObject1).next());
-          if ((localObject2 != null) && (asbg.b(((IntimateInfo.PrefetchMutualMarkInfo)localObject2).type))) {
+          if ((localObject2 != null) && (asxk.b(((IntimateInfo.PrefetchMutualMarkInfo)localObject2).type))) {
             localIntimateInfo.prefetchMutualMarkInfoList.add(localObject2);
           }
         }
@@ -350,7 +350,7 @@ public class IntimateInfo
       localIntimateInfo.currentScore = paramRspBody.rpt_msg_mutual_score.uint32_current_score.get();
     }
     localIntimateInfo.updateTimeMills = NetConnInfoCenter.getServerTimeMillis();
-    localIntimateInfo.isFriend = ((ajjj)paramQQAppInterface.getManager(51)).b(localIntimateInfo.friendUin);
+    localIntimateInfo.isFriend = ((ajxn)paramQQAppInterface.getManager(51)).b(localIntimateInfo.friendUin);
     localIntimateInfo.commonBodies = paramRspBody.rpt_msg_common_rspbody.get();
     return localIntimateInfo;
   }

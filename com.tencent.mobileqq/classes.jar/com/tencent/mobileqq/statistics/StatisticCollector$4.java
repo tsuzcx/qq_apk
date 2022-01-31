@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.statistics;
 
-import awrn;
-import xfs;
+import axrl;
+import xos;
 
 public class StatisticCollector$4
   implements Runnable
 {
-  public StatisticCollector$4(awrn paramawrn) {}
+  public StatisticCollector$4(axrl paramaxrl) {}
   
   public void run()
   {
-    xfs.a(awrn.a(), 1);
+    xos.a(axrl.a(), 1);
   }
 }
 

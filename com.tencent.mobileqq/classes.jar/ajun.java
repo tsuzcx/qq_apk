@@ -1,6 +1,17 @@
-public abstract class ajun
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionBase;
+
+public abstract class ajun<T extends CustomEmotionBase>
+  extends ajtd
 {
+  protected ajun(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+  }
+  
   public abstract void a();
+  
+  protected abstract void a(Object paramObject, boolean paramBoolean);
 }
 
 

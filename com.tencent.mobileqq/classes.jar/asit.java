@@ -1,26 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-
 public class asit
-  implements View.OnClickListener
+  extends ssk
 {
-  public asit(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public int a;
+  public asiu a;
+  public String a;
+  public boolean a;
+  public Object[] a;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
-      this.a.e("0X800590A");
-    }
+    return "MiniAppEvent {, isSuccess=" + this.jdField_a_of_type_Boolean + ", type=" + this.jdField_a_of_type_Int + ", src=" + this.jdField_a_of_type_JavaLangString + " }";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     asit
  * JD-Core Version:    0.7.0.1
  */

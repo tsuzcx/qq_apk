@@ -1,22 +1,53 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class vpe
-  implements View.OnTouchListener
+public abstract class vpe
+  implements vpd
 {
-  vpe(vpd paramvpd) {}
+  private List<vpb> a = new ArrayList();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    switch (paramMotionEvent.getAction())
-    {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((vpb)localIterator.next()).a();
     }
-    for (;;)
-    {
-      return true;
-      this.a.dismiss();
+  }
+  
+  public void a(int paramInt)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((vpb)localIterator.next()).a(paramInt);
     }
+  }
+  
+  public void a(vpb paramvpb)
+  {
+    if (paramvpb == null) {
+      throw new IllegalArgumentException("the observer is null.");
+    }
+    if (this.a.contains(paramvpb)) {
+      throw new IllegalStateException("Observer " + paramvpb + " is already registered.");
+    }
+    this.a.add(paramvpb);
+  }
+  
+  public void b(vpb paramvpb)
+  {
+    if (paramvpb == null) {
+      throw new IllegalArgumentException("The observer is null.");
+    }
+    int i;
+    synchronized (this.a)
+    {
+      i = this.a.indexOf(paramvpb);
+      if (i == -1) {
+        throw new IllegalStateException("Observer " + paramvpb + " was not registered.");
+      }
+    }
+    this.a.remove(i);
   }
 }
 

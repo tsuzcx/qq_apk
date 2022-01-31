@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agca;
+import agny;
 
 public class PhotoListActivity$QueryPhotoTask$2
   implements Runnable
 {
-  public PhotoListActivity$QueryPhotoTask$2(agca paramagca) {}
+  public PhotoListActivity$QueryPhotoTask$2(agny paramagny) {}
   
   public void run()
   {

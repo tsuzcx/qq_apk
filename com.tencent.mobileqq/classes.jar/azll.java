@@ -1,13 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopUtils.4;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class azll
-  implements DialogInterface.OnClickListener
+class azll
+  implements Comparator<Map.Entry<String, azln>>
 {
-  public azll(TroopUtils.4 param4) {}
+  azll(azlk paramazlk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a(Map.Entry<String, azln> paramEntry1, Map.Entry<String, azln> paramEntry2)
+  {
+    float f = ((azln)paramEntry2.getValue()).a() - ((azln)paramEntry1.getValue()).a();
+    if (f > 0.0F) {
+      return 1;
+    }
+    if (f < 0.0F) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

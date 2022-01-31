@@ -1,80 +1,39 @@
 package com.tencent.mobileqq.teamwork;
 
-import ajjy;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import awqx;
-import axem;
-import axfe;
+import ayeo;
+import ayfh;
+import ayhk;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class TeamWorkFileImportHandler$7
   implements Runnable
 {
-  public TeamWorkFileImportHandler$7(axem paramaxem, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public TeamWorkFileImportHandler$7(ayeo paramayeo, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
-    if ((this.this$0.app == null) || (this.a == null) || (TextUtils.isEmpty(this.a.c))) {
-      return;
+    if ((this.this$0.app == null) || (TextUtils.isEmpty(this.a.jdField_f_of_type_JavaLangString))) {
+      ayhk.a("TeamWorkFileImportHandler", "import fail", "srcUrl is null or app is null", this.a.k);
     }
-    long l1 = System.currentTimeMillis();
-    Object localObject1 = axfe.c(this.a, this.this$0.app.getCurrentAccountUin());
-    long l2 = System.currentTimeMillis();
-    Object localObject2 = "";
-    if (localObject1 != null) {}
-    for (boolean bool = this.this$0.a((String)localObject1, this.a);; bool = false)
+    for (;;)
     {
-      try
-      {
-        localObject1 = new JSONObject((String)localObject1).getString("url");
-        localObject2 = localObject1;
+      return;
+      Object localObject = ayfh.b(this.a, this.this$0.app.getCurrentAccountUin());
+      boolean bool = false;
+      if (localObject != null) {
+        bool = ayeo.b(this.this$0, (String)localObject, this.a);
       }
-      catch (Exception localException)
+      while ((!bool) && (ayeo.a(this.this$0) != null))
       {
-        for (;;)
-        {
-          QQAppInterface localQQAppInterface;
-          int i;
-          QLog.e("TeamWorkFileImportHandler", 1, localException.toString());
-          continue;
-          String str;
-          if (this.a.e == 6)
-          {
-            str = "excel";
-          }
-          else if (this.a.e == 7)
-          {
-            str = "ppt";
-          }
-          else if (this.a.e == 9)
-          {
-            str = "pdf";
-            continue;
-            i = 2;
-          }
-        }
-      }
-      localObject1 = ajjy.a(2131649017);
-      if (this.a.e == 3)
-      {
-        localObject1 = "word";
-        localQQAppInterface = this.this$0.app;
-        if (!bool) {
-          continue;
-        }
-        i = 1;
-        awqx.b(localQQAppInterface, "dc00898", "", "", "0X8009958", "0X8009958", 0, i, l2 - l1 + "", "", (String)localObject1, (String)localObject2);
-        if ((bool) || (axem.a(this.this$0) == null)) {
-          break;
-        }
-        localObject1 = axem.a(this.this$0).obtainMessage(8002);
-        ((Message)localObject1).obj = this.a;
-        axem.a(this.this$0).sendMessage((Message)localObject1);
+        localObject = ayeo.a(this.this$0).obtainMessage(8002);
+        ((Message)localObject).obj = this.a;
+        ayeo.a(this.this$0).sendMessage((Message)localObject);
         return;
+        this.a.jdField_f_of_type_Int = -1000;
+        ayhk.a("TeamWorkFileImportHandler", "import fail", "url2doc network fail", this.a.k);
       }
     }
   }

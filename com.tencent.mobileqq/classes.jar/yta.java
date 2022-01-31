@@ -1,66 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class yta
-  extends ysw
+public final class yta
 {
-  private boolean a;
-  private String c;
-  private String d;
+  private int a = -2147483648;
   
-  public yta(JSONObject paramJSONObject)
+  public yta(int paramInt)
   {
-    a(paramJSONObject);
+    this.a = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.a;
   }
   
   public String a()
   {
-    String str = super.a();
-    try
+    switch (a())
     {
-      Object localObject = new JSONObject(str);
-      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patchUrl", this.b);
-      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("driverVersion", this.c);
-      ((JSONObject)localObject).put("previousPatch", this.d);
-      ((JSONObject)localObject).put("isDelayLoad", this.jdField_a_of_type_Boolean);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+    default: 
+      return null;
+    case 0: 
+      return "Success";
+    case 1: 
+      return "Internal Error";
+    case 2: 
+      return "Ad was re-loaded too frequently";
+    case 3: 
+      return "Network Error";
+    case 4: 
+      return "Invalid Request";
+    case 5: 
+      return "No Fill";
+    case 6: 
+      return "Server Error";
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("PatchLogTag", 1, "NativePatchItemConfig writeToJsonString", localJSONException);
-    }
-    return str;
-  }
-  
-  protected void a(JSONObject paramJSONObject)
-  {
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
-    this.c = paramJSONObject.optString("driverVersion", null);
-    this.d = paramJSONObject.optString("previousPatch", null);
-    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isDelayLoad", false);
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(this.c))
-    {
-      QLog.d("PatchLogTag", 1, "NativePatchItemConfig isValidConfig driverVersion is null");
-      return false;
-    }
-    return super.a(paramBoolean);
+    return "Display Format Mismatch";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yta
  * JD-Core Version:    0.7.0.1
  */

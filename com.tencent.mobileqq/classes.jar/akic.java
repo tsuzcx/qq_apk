@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
 
-class akic
-  implements QQPermissionCallback
+public final class akic
+  implements DialogInterface.OnClickListener
 {
-  akic(akib paramakib, BaseActivity paramBaseActivity, akhz paramakhz) {}
+  public akic(TroopManager paramTroopManager, String paramString, QQAppInterface paramQQAppInterface) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("sms.content", 2, "checkPermission, deny");
-    }
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    akib.a(this.jdField_a_of_type_Akib, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Akhz);
-    if (QLog.isColorLevel()) {
-      QLog.d("sms.content", 2, "checkPermission, grant");
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A57E", 2, 0, "", "", "", "");
   }
 }
 

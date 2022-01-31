@@ -1,23 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.MedalInfo;
 
-class athn
-  implements View.OnClickListener
+public final class athn
+  implements Parcelable.Creator<MedalInfo>
 {
-  athn(athi paramathi, athx paramathx) {}
-  
-  public void onClick(View paramView)
+  public MedalInfo a(Parcel paramParcel)
   {
-    athi.a(this.jdField_a_of_type_Athi).removeMessages(101);
-    athi.a(this.jdField_a_of_type_Athi).obtainMessage(101).sendToTarget();
-    this.jdField_a_of_type_Athx.a.b();
+    return new MedalInfo(paramParcel);
+  }
+  
+  public MedalInfo[] a(int paramInt)
+  {
+    return new MedalInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     athn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,28 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import android.util.Pair;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class aruv
-  extends GestureDetector.SimpleOnGestureListener
+class aruv
+  implements arvb
 {
-  public aruv(TabPageIndicator paramTabPageIndicator) {}
+  aruv(aruq paramaruq, int paramInt, String paramString) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public Pair<Integer, String> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
+    return new Pair(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public arui a()
+  {
+    if (aruq.a(this.jdField_a_of_type_Aruq) == null) {
+      QLog.d("LocationHandler", 1, "[LocationManager] getLocation: invoked. location null detected");
     }
-    if (TabPageIndicator.a(this.a) != null) {
-      this.a.performClick();
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    return new arui(this.jdField_a_of_type_Aruq.app.c(), aruq.a(this.jdField_a_of_type_Aruq), aruq.a(this.jdField_a_of_type_Aruq));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aruv
  * JD-Core Version:    0.7.0.1
  */

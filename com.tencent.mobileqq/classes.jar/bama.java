@@ -1,28 +1,18 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 class bama
-  extends GridLayoutManager.SpanSizeLookup
+  implements bame
 {
-  bama(balz parambalz) {}
+  bama(balw parambalw, String paramString) {}
   
-  public int getSpanSize(int paramInt)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    int i = 3;
-    switch (this.a.getItemViewType(paramInt))
-    {
-    default: 
-      i = 1;
-    case 1: 
-    case 2: 
-    case 4: 
-      return i;
-    }
-    return 1;
+    if (paramInt == 0) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bama
  * JD-Core Version:    0.7.0.1
  */

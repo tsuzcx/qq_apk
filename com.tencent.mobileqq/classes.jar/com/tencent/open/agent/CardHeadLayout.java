@@ -14,10 +14,10 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bbvt;
-import bbvu;
-import bbvv;
-import bbvw;
+import bczt;
+import bczu;
+import bczv;
+import bczw;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawableDownListener.Adapter;
 import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
@@ -54,8 +54,8 @@ public class CardHeadLayout
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new bbvt(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bbvu(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bczt(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bczu(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     new DisplayMetrics();
     paramAttributeSet = getResources().getDisplayMetrics();
@@ -84,8 +84,8 @@ public class CardHeadLayout
       QLog.e("CardHeadLayout", 2, "performAnim height =" + paramInt);
     }
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, paramInt });
-    localValueAnimator.addUpdateListener(new bbvv(this, paramImageView));
-    localValueAnimator.addListener(new bbvw(this, paramImageView));
+    localValueAnimator.addUpdateListener(new bczv(this, paramImageView));
+    localValueAnimator.addListener(new bczw(this, paramImageView));
     localValueAnimator.setDuration(300L);
     localValueAnimator.start();
   }
@@ -131,18 +131,18 @@ public class CardHeadLayout
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131296664));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131296665));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131296656));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296660));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296662));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131296657));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296661));
-    this.d = ((TextView)super.findViewById(2131296663));
-    this.e = ((TextView)super.findViewById(2131296659));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362205));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362206));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362197));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362201));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362203));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362198));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362202));
+    this.d = ((TextView)super.findViewById(2131362204));
+    this.e = ((TextView)super.findViewById(2131362200));
     this.e.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131296667));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131301306));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362208));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131366917));
   }
   
   public void setAdImageByURL(AnyScaleTypeImageView paramAnyScaleTypeImageView, String paramString)

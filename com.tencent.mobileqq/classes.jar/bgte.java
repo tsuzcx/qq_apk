@@ -1,16 +1,16 @@
-import android.content.Intent;
-import java.util.HashSet;
-import org.json.JSONObject;
-
-public abstract interface bgte
+class bgte
+  implements bgkw
 {
-  public abstract HashSet<String> getFilterCmds();
+  bgte(bgtc parambgtc) {}
   
-  public abstract void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject);
+  public void a(boolean paramBoolean)
+  {
+    bgvo.c("QRPluginManager", "startPluginByActivity: openPlugin result = " + paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgte
  * JD-Core Version:    0.7.0.1
  */

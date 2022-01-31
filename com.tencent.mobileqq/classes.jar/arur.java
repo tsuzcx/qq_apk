@@ -1,44 +1,43 @@
-import android.content.Context;
-import android.widget.OverScroller;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class arur
-  extends OverScroller
+class arur
+  extends akim
 {
-  private arus a;
+  arur(aruq paramaruq) {}
   
-  public arur(Context paramContext)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    super(paramContext);
+    super.a(paramInt1, paramInt2, paramString);
+    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, new Object[] { "onTroopManagerSuccess: invoked. 主动退群 or 解散群", " reqtype: ", Integer.valueOf(paramInt1), " troopUin: ", paramString });
+      }
+      arxh.a(this.a.app, 1, paramString);
+    }
   }
   
-  public void a(arus paramarus)
+  protected void b(String paramString, int paramInt)
   {
-    this.a = paramarus;
-  }
-  
-  public void fling(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioOverScroller", 2, "fling() called with: startX = [" + paramInt1 + "], startY = [" + paramInt2 + "], velocityX = [" + paramInt3 + "], velocityY = [" + paramInt4 + "], minX = [" + paramInt5 + "], maxX = [" + paramInt6 + "], minY = [" + paramInt7 + "], maxY = [" + paramInt8 + "], overX = [" + paramInt9 + "], overY = [" + paramInt10 + "]");
+    super.b(paramString, paramInt);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
+      }
+      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+      if ((localBaseActivity != null) && (this.a.a.a())) {
+        bcpw.a(localBaseActivity, 2131693251, 1).a();
+      }
+      arxh.a(this.a.app, 1, paramString);
     }
-    super.fling(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
-  }
-  
-  public boolean springBack(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioOverScroller", 2, "springBack() called with: startX = [" + paramInt1 + "], startY = [" + paramInt2 + "], minX = [" + paramInt3 + "], maxX = [" + paramInt4 + "], minY = [" + paramInt5 + "], maxY = [" + paramInt6 + "]");
-    }
-    if (this.a != null) {
-      this.a.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
-    }
-    return super.springBack(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arur
  * JD-Core Version:    0.7.0.1
  */

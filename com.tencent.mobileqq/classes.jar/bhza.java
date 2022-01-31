@@ -1,132 +1,45 @@
-public class bhza
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_PAIR.sweet_pair_check_req;
+import android.content.Intent;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+
+class bhza
+  extends QzoneExternalRequest
 {
-  public int a;
-  public boolean a;
-  private int b;
-  public boolean b;
-  private int c;
-  public boolean c;
-  private int d;
-  public boolean d;
-  private int e;
-  public boolean e;
-  private boolean f = true;
-  private boolean g = true;
-  private boolean h = true;
-  private boolean i;
-  private boolean j;
-  private boolean k;
-  private boolean l;
-  private boolean m;
-  private boolean n;
+  bhza(bhyz parambhyz, Intent paramIntent) {}
   
-  public bhza()
+  public String getCmdString()
   {
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_e_of_type_Int = 1;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
+    return "SweetQzoneService.getPairState";
   }
   
-  public bhyy a()
+  public JceStruct getReq()
   {
-    return new bhyy(this, null);
+    sweet_pair_check_req localsweet_pair_check_req = new sweet_pair_check_req();
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    {
+      long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
+      localsweet_req_comm.opuin = l;
+      localsweet_req_comm.uin = l;
+      localsweet_req_comm.loveuin = 0L;
+      localsweet_req_comm.qua = bgxr.a();
+      localsweet_req_comm.pf = 1;
+      localsweet_req_comm.src = 3;
+      localsweet_pair_check_req.req_comm = localsweet_req_comm;
+    }
+    return localsweet_pair_check_req;
   }
   
-  public bhza a(int paramInt)
+  public String uniKey()
   {
-    this.jdField_d_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bhza a(boolean paramBoolean)
-  {
-    this.f = paramBoolean;
-    return this;
-  }
-  
-  public bhza b(int paramInt)
-  {
-    this.jdField_e_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bhza b(boolean paramBoolean)
-  {
-    this.h = paramBoolean;
-    return this;
-  }
-  
-  public bhza c(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bhza c(boolean paramBoolean)
-  {
-    this.i = paramBoolean;
-    return this;
-  }
-  
-  public bhza d(boolean paramBoolean)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public bhza e(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public bhza f(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public bhza g(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public bhza h(boolean paramBoolean)
-  {
-    this.k = paramBoolean;
-    return this;
-  }
-  
-  public bhza i(boolean paramBoolean)
-  {
-    this.jdField_e_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public bhza j(boolean paramBoolean)
-  {
-    this.l = paramBoolean;
-    return this;
-  }
-  
-  public bhza k(boolean paramBoolean)
-  {
-    this.m = paramBoolean;
-    return this;
-  }
-  
-  public bhza l(boolean paramBoolean)
-  {
-    this.n = paramBoolean;
-    return this;
+    return "getPairState";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhza
  * JD-Core Version:    0.7.0.1
  */

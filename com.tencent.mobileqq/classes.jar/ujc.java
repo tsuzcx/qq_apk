@@ -1,6 +1,8 @@
-public abstract interface ujc<T>
+public abstract interface ujc
 {
-  public abstract void a(T paramT);
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

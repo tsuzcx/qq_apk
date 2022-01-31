@@ -1,12 +1,6 @@
-public class pok
+public abstract interface pok
 {
-  public static poj a(int paramInt)
-  {
-    if (paramInt == poi.a) {
-      return new pol();
-    }
-    return null;
-  }
+  public abstract void a();
 }
 
 

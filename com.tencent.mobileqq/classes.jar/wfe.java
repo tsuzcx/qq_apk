@@ -1,26 +1,25 @@
-import android.widget.ImageView;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import android.animation.Animator;
+import android.view.View;
 
-public class wfe
-  implements wez
+public final class wfe
 {
-  public wfe(VideoPlayerView paramVideoPlayerView) {}
-  
-  public void a(boolean paramBoolean)
+  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    if ((VideoPlayerView.a(this.a) != null) && (!paramBoolean) && (this.a.e != null) && (this.a.e.getVisibility() == 0))
-    {
-      this.a.e.setVisibility(8);
-      VideoPlayerView.a(this.a, "");
+    return a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2, 2);
+  }
+  
+  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3)
+  {
+    wez localwez = wez.a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2);
+    if (paramInt3 != paramView.getLayerType()) {
+      localwez.addListener(new wfb(paramView, paramInt3));
     }
-    if (VideoPlayerView.a(this.a) != null) {
-      VideoPlayerView.a(this.a).a(paramBoolean);
-    }
+    return localwez;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wfe
  * JD-Core Version:    0.7.0.1
  */

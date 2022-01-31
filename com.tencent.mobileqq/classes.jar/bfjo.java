@@ -1,21 +1,63 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qqfav.widget.QfavJumpActivity;
+import com.tencent.qqprotect.qsec.IQSecRuntime;
+import com.tencent.qqprotect.qsec.IRuntimeInterface;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 public class bfjo
-  implements DialogInterface.OnClickListener
+  implements IQSecRuntime
 {
-  public bfjo(QfavJumpActivity paramQfavJumpActivity) {}
+  public static IQSecRuntime a;
+  private HashMap<String, IRuntimeInterface> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bfjo()
   {
-    QfavJumpActivity.a(this.a, false);
-    this.a.finish();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_ComTencentQqprotectQsecIQSecRuntime = this;
+  }
+  
+  public void a(IRuntimeInterface paramIRuntimeInterface)
+  {
+    String str = paramIRuntimeInterface.getInterfaceName();
+    if ((str != null) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
+      this.jdField_a_of_type_JavaUtilHashMap.put(str, paramIRuntimeInterface);
+    }
+  }
+  
+  public Object getApplicationContext()
+  {
+    return MobileQQ.sMobileQQ;
+  }
+  
+  public Object getQQAppInterface()
+  {
+    return MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
+  
+  public int getRuntimeVersion()
+  {
+    return 1;
+  }
+  
+  public IRuntimeInterface queryRuntimeInterface(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    IRuntimeInterface localIRuntimeInterface2 = (IRuntimeInterface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    IRuntimeInterface localIRuntimeInterface1 = localIRuntimeInterface2;
+    if (localIRuntimeInterface2 != null)
+    {
+      localIRuntimeInterface1 = localIRuntimeInterface2;
+      if (!paramString.equals(localIRuntimeInterface2.getInterfaceName())) {
+        localIRuntimeInterface1 = null;
+      }
+    }
+    return localIRuntimeInterface1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfjo
  * JD-Core Version:    0.7.0.1
  */

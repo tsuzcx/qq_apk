@@ -1,18 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
 
-public final class atfi
-  implements Parcelable.Creator<TranslateResult>
+public class atfi
+  implements View.OnKeyListener
 {
-  public TranslateResult a(Parcel paramParcel)
-  {
-    return new TranslateResult(paramParcel);
-  }
+  public atfi(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public TranslateResult[] a(int paramInt)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    return new TranslateResult[paramInt];
+    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0)) {
+      if (ChooseInterestTagActivity.a(this.a).getText() == null)
+      {
+        paramView = "";
+        if (TextUtils.isEmpty(paramView))
+        {
+          ChooseInterestTagActivity.a(this.a).fullScroll(66);
+          ChooseInterestTagActivity.a(this.a, ChooseInterestTagActivity.d(this.a) + 1);
+        }
+      }
+    }
+    for (;;)
+    {
+      return false;
+      paramView = ChooseInterestTagActivity.a(this.a).getText().toString();
+      break;
+      if ((paramInt == 66) && (paramKeyEvent.getAction() == 0)) {
+        bfmr.b(ChooseInterestTagActivity.a(this.a));
+      }
+    }
   }
 }
 

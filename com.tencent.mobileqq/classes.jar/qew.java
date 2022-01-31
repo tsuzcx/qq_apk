@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.DeliverData;
 
-public class qew
-  extends nca
+public final class qew
+  implements Parcelable.Creator<ReadInJoyDeliverUGCActivity.DeliverData>
 {
-  private qew(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public ReadInJoyDeliverUGCActivity.DeliverData a(Parcel paramParcel)
   {
-    VideoFeedsPlayActivity.a("onSendArticleLikeReq isSuccess=" + paramBoolean + ", articleID=" + paramString);
+    return new ReadInJoyDeliverUGCActivity.DeliverData(paramParcel);
   }
   
-  public void a(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
+  public ReadInJoyDeliverUGCActivity.DeliverData[] a(int paramInt)
+  {
+    return new ReadInJoyDeliverUGCActivity.DeliverData[paramInt];
+  }
 }
 
 

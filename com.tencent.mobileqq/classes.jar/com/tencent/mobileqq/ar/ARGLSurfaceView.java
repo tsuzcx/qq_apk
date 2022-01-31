@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar;
 
-import akir;
-import akis;
-import akit;
+import akxd;
+import akxe;
+import akxf;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
@@ -16,20 +16,20 @@ import com.tencent.qphone.base.util.QLog;
 public class ARGLSurfaceView
   extends GLSurfaceView
 {
-  private akis jdField_a_of_type_Akis;
-  private akit jdField_a_of_type_Akit;
+  private akxe jdField_a_of_type_Akxe;
+  private akxf jdField_a_of_type_Akxf;
   
-  public ARGLSurfaceView(Context paramContext, SurfaceHolder.Callback paramCallback, akis paramakis)
+  public ARGLSurfaceView(Context paramContext, SurfaceHolder.Callback paramCallback, akxe paramakxe)
   {
     super(paramContext);
-    QLog.i("AREngine_ARGLSurfaceView", 1, "create ARGLSurfaceView. context = " + paramContext + ", holderCallback = " + paramCallback + ", surfaceViewCallback = " + paramakis);
-    setEGLContextFactory(new akir(this));
+    QLog.i("AREngine_ARGLSurfaceView", 1, "create ARGLSurfaceView. context = " + paramContext + ", holderCallback = " + paramCallback + ", surfaceViewCallback = " + paramakxe);
+    setEGLContextFactory(new akxd(this));
     setEGLContextClientVersion(2);
     setEGLConfigChooser(8, 8, 8, 8, 16, 0);
     if (paramCallback != null) {
       getHolder().addCallback(paramCallback);
     }
-    this.jdField_a_of_type_Akis = paramakis;
+    this.jdField_a_of_type_Akxe = paramakxe;
   }
   
   public void onPause()
@@ -44,16 +44,16 @@ public class ARGLSurfaceView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Akis != null) {
-      this.jdField_a_of_type_Akis.a(paramMotionEvent, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), getWidth(), getHeight());
+    if (this.jdField_a_of_type_Akxe != null) {
+      this.jdField_a_of_type_Akxe.a(paramMotionEvent, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), getWidth(), getHeight());
     }
     super.onTouchEvent(paramMotionEvent);
     return false;
   }
   
-  public void setOnEglContextDestoryListener(akit paramakit)
+  public void setOnEglContextDestoryListener(akxf paramakxf)
   {
-    this.jdField_a_of_type_Akit = paramakit;
+    this.jdField_a_of_type_Akxf = paramakxf;
   }
   
   @Deprecated

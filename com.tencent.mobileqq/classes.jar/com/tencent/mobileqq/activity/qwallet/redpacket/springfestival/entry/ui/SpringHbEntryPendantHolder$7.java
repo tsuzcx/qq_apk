@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import aguo;
+import ahhd;
 import com.tencent.image.ApngImage;
 
 public class SpringHbEntryPendantHolder$7
   implements Runnable
 {
-  public SpringHbEntryPendantHolder$7(aguo paramaguo) {}
+  public SpringHbEntryPendantHolder$7(ahhd paramahhd) {}
   
   public void run()
   {

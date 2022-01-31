@@ -1,15 +1,15 @@
 package com.tencent.av.recog;
 
-import lja;
+import ltr;
 
 public class AVVoiceRecog$2
   implements Runnable
 {
-  public AVVoiceRecog$2(lja paramlja) {}
+  public AVVoiceRecog$2(ltr paramltr) {}
   
   public void run()
   {
-    lja.b(this.this$0, this.this$0.c, this.this$0.d);
+    ltr.b(this.this$0, this.this$0.c, this.this$0.d);
   }
 }
 

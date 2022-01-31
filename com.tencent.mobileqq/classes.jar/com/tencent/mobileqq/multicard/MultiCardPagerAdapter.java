@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.ViewGroup;
-import arvk;
+import asro;
 import com.tencent.mobileqq.multiaio.widget.MultiAIOPagerAdapter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -14,7 +14,7 @@ public class MultiCardPagerAdapter
   extends MultiAIOPagerAdapter
 {
   private FragmentManager jdField_a_of_type_AndroidSupportV4AppFragmentManager;
-  private arvk jdField_a_of_type_Arvk;
+  private asro jdField_a_of_type_Asro;
   
   public MultiCardPagerAdapter(FragmentManager paramFragmentManager)
   {
@@ -24,7 +24,7 @@ public class MultiCardPagerAdapter
   
   public void a()
   {
-    if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentManager == null) || (this.jdField_a_of_type_Arvk == null)) {}
+    if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentManager == null) || (this.jdField_a_of_type_Asro == null)) {}
     for (;;)
     {
       return;
@@ -40,7 +40,7 @@ public class MultiCardPagerAdapter
             localObject2 = (MultiCardItemFragment)localObject2;
             int i = ((MultiCardItemFragment)localObject2).a();
             if (i < getCount()) {
-              ((MultiCardItemFragment)localObject2).a(this.jdField_a_of_type_Arvk.a(i));
+              ((MultiCardItemFragment)localObject2).a(this.jdField_a_of_type_Asro.a(i));
             }
           }
         }
@@ -48,9 +48,9 @@ public class MultiCardPagerAdapter
     }
   }
   
-  public void a(arvk paramarvk)
+  public void a(asro paramasro)
   {
-    this.jdField_a_of_type_Arvk = paramarvk;
+    this.jdField_a_of_type_Asro = paramasro;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -63,17 +63,17 @@ public class MultiCardPagerAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_Arvk == null) {
+    if (this.jdField_a_of_type_Asro == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Arvk.a();
+    return this.jdField_a_of_type_Asro.a();
   }
   
   public Fragment getItem(int paramInt)
   {
     MultiCardItemFragment localMultiCardItemFragment = new MultiCardItemFragment();
-    if (this.jdField_a_of_type_Arvk != null) {
-      localMultiCardItemFragment.a(this.jdField_a_of_type_Arvk.a, paramInt, this.jdField_a_of_type_Arvk.a(paramInt), this.jdField_a_of_type_Arvk.a());
+    if (this.jdField_a_of_type_Asro != null) {
+      localMultiCardItemFragment.a(this.jdField_a_of_type_Asro.a, paramInt, this.jdField_a_of_type_Asro.a(paramInt), this.jdField_a_of_type_Asro.a());
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt("KEY_POSITION", paramInt);

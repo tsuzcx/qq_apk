@@ -1,71 +1,95 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import com.tencent.mobileqq.ocr.view.gesture.control.GestureController;
 
 public class aued
-  extends auea
+  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener, auei
 {
-  protected String a(QQAppInterface paramQQAppInterface)
+  private GestureController a;
+  
+  public aued(GestureController paramGestureController)
   {
-    if (baip.a(this.f)) {
-      paramQQAppInterface = "";
-    }
-    alxu localalxu;
-    do
-    {
-      String str;
-      do
-      {
-        return paramQQAppInterface;
-        if (this.f.equalsIgnoreCase("qqgame")) {
-          return bant.a("vipGameCenter");
-        }
-        if (!this.f.equalsIgnoreCase("confessmsg")) {
-          break;
-        }
-        localalxu = ((alxy)paramQQAppInterface.getManager(269)).b();
-        str = "https://ti.qq.com/honest-say/main.html?_bid=3104&_qStyle=1&_wv=9191&_nav_alpha=0&_nav_txtclr=FFFFFF&_nav_titleclr=FFFFFF&_nav_anim=true&_wwv=128&adtag=message_box";
-        paramQQAppInterface = str;
-      } while (localalxu == null);
-      paramQQAppInterface = str;
-    } while (TextUtils.isEmpty(localalxu.l));
-    return localalxu.l;
-    if (this.f.equalsIgnoreCase("qinterest"))
-    {
-      paramQQAppInterface = baig.c(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
-      if (!TextUtils.isEmpty(paramQQAppInterface)) {
-        return paramQQAppInterface.trim();
-      }
-      return ajlh.a;
-    }
-    if (this.f.equalsIgnoreCase("bodong")) {}
-    return "";
+    this.a = paramGestureController;
   }
   
-  protected void a(bacn parambacn, QQAppInterface paramQQAppInterface, Context paramContext)
+  public void a(aueh paramaueh)
   {
-    if (this.f.equalsIgnoreCase("qqgame")) {
-      parambacn.d("platformId=qq_m");
-    }
+    this.a.a(paramaueh);
   }
   
-  protected void a(QQAppInterface paramQQAppInterface, Context paramContext)
+  public boolean a(aueh paramaueh)
   {
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (baip.a(paramQQAppInterface)) {
-      return;
-    }
-    this.b = paramQQAppInterface;
+    return this.a.b(paramaueh);
   }
   
-  protected boolean b(QQAppInterface paramQQAppInterface, Context paramContext)
+  public boolean b(aueh paramaueh)
   {
-    return !baip.a(this.b);
+    return this.a.a(paramaueh);
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return this.a.e(paramMotionEvent);
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return this.a.b(paramMotionEvent);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return this.a.b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    this.a.b(paramMotionEvent);
+  }
+  
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return this.a.b(paramScaleGestureDetector);
+  }
+  
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return this.a.a(paramScaleGestureDetector);
+  }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    this.a.a(paramScaleGestureDetector);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return this.a.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return this.a.d(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return this.a.c(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aued
  * JD-Core Version:    0.7.0.1
  */

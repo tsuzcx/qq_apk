@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.IInterface;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-class aejj
-  implements DialogInterface.OnClickListener
+public abstract interface aejj
+  extends IInterface
 {
-  aejj(aejb paramaejb) {}
+  public abstract void a(CompressInfo paramCompressInfo);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.H();
-  }
+  public abstract void b(CompressInfo paramCompressInfo);
+  
+  public abstract void c(CompressInfo paramCompressInfo);
 }
 
 

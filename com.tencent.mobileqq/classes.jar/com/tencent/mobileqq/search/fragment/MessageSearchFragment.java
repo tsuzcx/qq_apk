@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.search.fragment;
 
-import avkj;
-import avlt;
-import avuz;
-import avvb;
+import awkc;
+import awlm;
+import awus;
+import awuu;
 
 public class MessageSearchFragment
   extends BaseSearchFragment
@@ -13,19 +13,19 @@ public class MessageSearchFragment
     return 40;
   }
   
-  protected avkj a()
+  protected awkc a()
   {
-    return new avlt(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Azwg);
+    return new awlm(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxk);
   }
   
-  protected avuz a()
+  protected awus a()
   {
-    return new avvb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new awuu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
   protected String a()
   {
-    return getString(2131653250);
+    return getString(2131719079);
   }
   
   public void a(String paramString)
@@ -36,13 +36,13 @@ public class MessageSearchFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Avuz.c();
+    this.jdField_a_of_type_Awus.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Avuz.d();
+    this.jdField_a_of_type_Awus.d();
   }
 }
 

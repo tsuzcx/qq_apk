@@ -1,21 +1,23 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-abstract class akhk
+public final class akhk
+  extends MqqHandler
 {
-  protected final SharedPreferences a = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 0);
-  
-  protected abstract String a();
-  
-  protected void a()
+  public akhk(Looper paramLooper)
   {
-    this.a.edit().putBoolean(a(), true).commit();
+    super(paramLooper);
   }
   
-  protected boolean a()
+  public void removeCallbacksAndMessages(Object paramObject)
   {
-    return !this.a.contains(a());
+    if (paramObject == null)
+    {
+      QLog.e("ThreadManager", 1, "global fileHandler cannot excute removeCallbacksAndMessages");
+      return;
+    }
+    super.removeCallbacksAndMessages(paramObject);
   }
 }
 

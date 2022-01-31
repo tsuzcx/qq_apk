@@ -1,57 +1,55 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-class wfx
-  extends ruj
+public class wfx
+  extends wgn
 {
-  wfx(wfw paramwfw) {}
-  
-  protected boolean a(Integer paramInteger)
+  public wfx(QRDisplayActivity paramQRDisplayActivity)
   {
-    if ((wfw.a(this.a) == null) || (wfw.a(this.a) == null)) {
-      return false;
+    super(paramQRDisplayActivity);
+  }
+  
+  protected void a(boolean paramBoolean, List<String> paramList1, List<String> paramList2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QRDisplayActivity", 4, "onGetNicknameList: " + paramBoolean);
     }
-    switch (paramInteger.intValue())
+    if ((paramBoolean) && (paramList1 != null) && (paramList2 != null))
     {
-    }
-    for (;;)
-    {
-      return super.a(paramInteger);
-      wfw.a(this.a);
-      if ((wfw.a(this.a) != null) && (wfw.a(this.a).a() != null))
+      int j = paramList2.size();
+      if ((j > 0) && (paramList1.size() == j))
       {
-        wye.a(wfw.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_friends", 0, 0, new String[] { null, null, wfw.a(this.a).f(), wfw.a(this.a).c() });
-        continue;
-        wfw.b(this.a);
-        if ((wfw.a(this.a) != null) && (wfw.a(this.a).a() != null))
-        {
-          wye.a(wfw.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_qzone", 0, 0, new String[] { null, null, wfw.a(this.a).f(), wfw.a(this.a).c() });
-          continue;
-          wfw.a(this.a, 0);
-          if ((wfw.a(this.a) != null) && (wfw.a(this.a).a() != null))
-          {
-            wye.a(wfw.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_wechat", 0, 0, new String[] { null, null, wfw.a(this.a).f(), wfw.a(this.a).c() });
-            continue;
-            wfw.a(this.a, 1);
-            if ((wfw.a(this.a) != null) && (wfw.a(this.a).a() != null))
-            {
-              wye.a(wfw.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_moments", 0, 0, new String[] { null, null, wfw.a(this.a).f(), wfw.a(this.a).c() });
-              continue;
-              wfw.c(this.a);
-              if ((wfw.a(this.a) != null) && (wfw.a(this.a).a() != null)) {
-                wye.a(wfw.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_save_local", 0, 0, new String[] { null, null, wfw.a(this.a).f(), wfw.a(this.a).c() });
-              }
-            }
-          }
+        if (this.a.jdField_b_of_type_JavaUtilList == null) {
+          this.a.jdField_b_of_type_JavaUtilList = new ArrayList();
         }
+        this.a.jdField_b_of_type_JavaUtilList.addAll(paramList1);
+        int i = 0;
+        while (i < j)
+        {
+          if (this.a.a((String)paramList2.get(i)) == null) {
+            this.a.a((String)paramList2.get(i), (String)paramList1.get(i));
+          }
+          i += 1;
+        }
+        Collections.sort(this.a.jdField_b_of_type_JavaUtilList, new wgm(this.a));
       }
+    }
+    this.a.jdField_a_of_type_JavaLangString = this.a.a(this.a.jdField_b_of_type_JavaUtilList);
+    if (this.a.jdField_a_of_type_JavaLangString != null)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.a.jdField_a_of_type_JavaLangString + "," + this.a.jdField_b_of_type_JavaLangString);
+      this.a.c.post(this.a.jdField_a_of_type_JavaLangRunnable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wfx
  * JD-Core Version:    0.7.0.1
  */

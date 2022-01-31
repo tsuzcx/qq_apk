@@ -1,17 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import java.util.Vector;
 
 public class lnn
-  implements DialogInterface.OnClickListener
 {
-  public lnn(AVSchema paramAVSchema) {}
+  public long a;
+  public Vector<lnq> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public lnn(AVNotifyCenter paramAVNotifyCenter)
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilVector = null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("roomNum[").append(this.jdField_a_of_type_Long).append("], list[");
+    if (this.jdField_a_of_type_JavaUtilVector == null) {}
+    for (Object localObject = "null";; localObject = Integer.valueOf(this.jdField_a_of_type_JavaUtilVector.size())) {
+      return localObject + "]";
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lnn
  * JD-Core Version:    0.7.0.1
  */

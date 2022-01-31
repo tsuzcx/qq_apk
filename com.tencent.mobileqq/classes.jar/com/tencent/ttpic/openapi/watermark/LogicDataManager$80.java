@@ -1,7 +1,5 @@
 package com.tencent.ttpic.openapi.watermark;
 
-import java.util.Queue;
-
 class LogicDataManager$80
   extends LogicDataManager.LogicValueProvider
 {
@@ -12,20 +10,7 @@ class LogicDataManager$80
   
   public String getValue()
   {
-    synchronized (LogicDataManager.access$5200(this.this$0))
-    {
-      if (LogicDataManager.access$5200(this.this$0).isEmpty()) {
-        break label85;
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (!LogicDataManager.access$5200(this.this$0).isEmpty()) {
-        localStringBuilder.append((String)LogicDataManager.access$5200(this.this$0).poll());
-      }
-    }
-    String str = localObject.toString();
-    return str;
-    label85:
-    return "";
+    return LogicDataManager.access$5100(this.this$0);
   }
 }
 

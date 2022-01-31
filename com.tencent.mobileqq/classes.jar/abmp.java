@@ -1,16 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class abmp
-  extends atdh
+class abmp
+  implements DialogInterface.OnClickListener
 {
-  public abmp(QQSettingMe paramQQSettingMe) {}
+  abmp(abmn paramabmn) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.c) {
-      this.a.i();
+    if (paramInt == 1) {
+      this.a.b();
     }
+    while (abmn.a(this.a) == null) {
+      return;
+    }
+    abmn.a(this.a).b();
   }
 }
 

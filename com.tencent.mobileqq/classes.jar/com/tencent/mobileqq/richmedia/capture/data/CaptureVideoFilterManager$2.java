@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import ausu;
+import avsd;
 
 public class CaptureVideoFilterManager$2
   implements Runnable
 {
   public void run()
   {
-    ausu.a(this.this$0);
+    avsd.a(this.this$0);
   }
 }
 

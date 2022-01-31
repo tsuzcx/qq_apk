@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
 
-public class nkz
-  implements moc
+public final class nkz
+  implements Parcelable.Creator<EncryptUinInfo>
 {
-  public nkz(ReadInJoyNewFeedsActivity.2 param2) {}
-  
-  public void loaded(String paramString, int paramInt)
+  public EncryptUinInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
-    }
+    return new EncryptUinInfo(paramParcel);
   }
   
-  public void progress(int paramInt) {}
+  public EncryptUinInfo[] a(int paramInt)
+  {
+    return new EncryptUinInfo[paramInt];
+  }
 }
 
 

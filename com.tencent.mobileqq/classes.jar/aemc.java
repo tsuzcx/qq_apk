@@ -1,253 +1,153 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.AppletsChatPie.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.AppletsSettingFragment;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
+import common.config.service.QzoneConfig;
+import mqq.os.MqqHandler;
 
 public class aemc
-  extends aelr
+  extends BaseChatPie
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private int jdField_e_of_type_Int;
-  private String jdField_e_of_type_JavaLangString;
-  private int jdField_f_of_type_Int;
-  private String jdField_f_of_type_JavaLangString;
-  private int jdField_g_of_type_Int;
-  private String jdField_g_of_type_JavaLangString;
-  private String h;
-  private String i;
-  private String j;
+  private View o;
   
-  public int a()
+  public aemc(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, FragmentActivity paramFragmentActivity, Context paramContext)
   {
-    return 0;
+    super(paramQQAppInterface, paramViewGroup, paramFragmentActivity, paramContext);
   }
   
-  public long a()
+  private void bo()
   {
-    return this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(8);
+    this.e.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setVisibility(8);
   }
   
-  public String a()
+  private void bp()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_f_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public String b()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int d()
-  {
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public String d()
-  {
-    return this.jdField_f_of_type_JavaLangString;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public int e()
-  {
-    return this.jdField_f_of_type_Int;
-  }
-  
-  public String e()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void e(int paramInt)
-  {
-    this.jdField_e_of_type_Int = paramInt;
-  }
-  
-  public void e(String paramString)
-  {
-    this.jdField_d_of_type_JavaLangString = paramString;
-  }
-  
-  public int f()
-  {
-    return this.jdField_g_of_type_Int;
-  }
-  
-  public String f()
-  {
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public void f(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
-  }
-  
-  public void f(String paramString)
-  {
-    this.jdField_g_of_type_JavaLangString = paramString;
-  }
-  
-  public int g()
-  {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return this.jdField_a_of_type_Int;
+    int i;
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "miniappaioshowemptyview", 1) == 1) {
+      i = 1;
     }
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String g()
-  {
-    return this.jdField_g_of_type_JavaLangString;
-  }
-  
-  public void g(int paramInt)
-  {
-    this.jdField_g_of_type_Int = paramInt;
-  }
-  
-  public void g(String paramString)
-  {
-    this.h = paramString;
-  }
-  
-  public int h()
-  {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return this.jdField_b_of_type_Int;
+    for (;;)
+    {
+      AnyScaleTypeImageView localAnyScaleTypeImageView;
+      Object localObject;
+      if (i != 0) {
+        if (this.o == null)
+        {
+          this.o = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558527, null);
+          if (this.o != null)
+          {
+            localAnyScaleTypeImageView = (AnyScaleTypeImageView)this.o.findViewById(2131365655);
+            if (localAnyScaleTypeImageView != null) {
+              localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappaioemptybackgroundurl", "https://qzonestyle.gtimg.cn/aoi/sola/20190329164016_N0Y2CuctLc.png");
+            }
+          }
+        }
+      }
+      try
+      {
+        localAnyScaleTypeImageView.setImageURL((String)localObject);
+        localObject = (TextView)this.o.findViewById(2131365672);
+        if (localObject != null) {
+          ((TextView)localObject).setText(QzoneConfig.getInstance().getConfig("qqminiapp", "miniappaioemptytips", "还没收到过小程序通知哦"));
+        }
+        if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+          this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.o, new ViewGroup.LayoutParams(-1, -1));
+        }
+        if (this.o != null) {
+          this.o.setVisibility(0);
+        }
+        return;
+        i = 0;
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          QLog.e("AppletsChatPie", 1, "initEmptyLayout set image error! url: " + (String)localObject, localThrowable);
+        }
+      }
     }
-    return this.jdField_d_of_type_Int;
   }
   
-  public String h()
+  private void bq()
   {
-    return this.h;
-  }
-  
-  public void h(String paramString)
-  {
-    this.i = paramString;
-  }
-  
-  public String i()
-  {
-    return this.j;
-  }
-  
-  public void i(String paramString)
-  {
-    this.j = paramString;
-  }
-  
-  public String j()
-  {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return this.jdField_c_of_type_JavaLangString;
+    if (this.o != null) {
+      this.o.setVisibility(8);
     }
-    return this.jdField_d_of_type_JavaLangString;
   }
   
-  public String k()
+  public void G()
   {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return this.jdField_a_of_type_JavaLangString;
+    super.G();
+  }
+  
+  public void V()
+  {
+    super.V();
+    if ((this.jdField_a_of_type_Acut == null) || (this.jdField_a_of_type_Acut.getCount() < 1))
+    {
+      bp();
+      return;
     }
-    return this.jdField_b_of_type_JavaLangString;
+    bq();
   }
   
-  public String l()
+  public boolean a(boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-      this.jdField_e_of_type_JavaLangString = aemi.d(k());
+    return super.a(paramBoolean);
+  }
+  
+  public void f()
+  {
+    super.f();
+    bo();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      super.onClick(paramView);
+      return;
     }
-    return this.jdField_e_of_type_JavaLangString;
+    PublicFragmentActivity.a(a(), AppletsSettingFragment.class);
   }
   
-  public String toString()
+  public void y()
   {
-    return "imgUrl=" + this.jdField_a_of_type_JavaLangString + " thumbUrl=" + this.jdField_b_of_type_JavaLangString + " imgMd5=" + this.jdField_c_of_type_JavaLangString + " thumbMd5=" + this.jdField_d_of_type_JavaLangString + " imgWidth=" + this.jdField_a_of_type_Int + " imgHeight=" + this.jdField_b_of_type_Int + " thumbWidth=" + this.jdField_c_of_type_Int + " thumbHeight=" + this.jdField_d_of_type_Int + " imgFileSize=" + this.jdField_a_of_type_Long + " thumbFileSize=" + this.jdField_b_of_type_Long;
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.c == 22))
+    {
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new AppletsChatPie.1(this));
+      return;
+    }
+    super.y();
+  }
+  
+  public void z()
+  {
+    super.z();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight1Icon(2130840180, 2130840180);
   }
 }
 

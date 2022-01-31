@@ -1,82 +1,60 @@
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
-public final class balj
+public class balj
 {
-  public static Object a(Object paramObject, String paramString, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject)
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  
+  public static balj a()
   {
-    paramString = paramObject.getClass().getMethod(paramString, paramArrayOfClass);
-    paramString.setAccessible(true);
-    return paramString.invoke(paramObject, paramArrayOfObject);
+    return new balj();
   }
   
-  public static Object a(Object paramObject, String paramString, Object[] paramArrayOfObject)
+  public balj a(String paramString)
   {
-    return a(paramObject, paramString, a(paramArrayOfObject), paramArrayOfObject);
+    this.a = paramString;
+    return this;
   }
   
-  public static Object a(String paramString1, Object paramObject, String paramString2)
+  public balj b(String paramString)
   {
-    paramString1 = Class.forName(paramString1).getDeclaredField(paramString2);
-    paramString1.setAccessible(true);
-    return paramString1.get(paramObject);
+    this.b = paramString;
+    return this;
   }
   
-  public static Object a(String paramString1, String paramString2)
+  public balj c(String paramString)
   {
-    return a(paramString1, paramString2, (Object[])null);
+    this.c = paramString;
+    return this;
   }
   
-  public static Object a(String paramString1, String paramString2, Object[] paramArrayOfObject)
+  public balj d(String paramString)
   {
-    return a(paramString1, paramString2, paramArrayOfObject, a(paramArrayOfObject));
+    this.d = paramString;
+    return this;
   }
   
-  public static Object a(String paramString1, String paramString2, Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass)
+  public balj e(String paramString)
   {
-    paramString1 = Class.forName(paramString1);
-    return paramString1.getDeclaredMethod(paramString2, paramArrayOfClass).invoke(paramString1, paramArrayOfObject);
+    this.e = paramString;
+    return this;
   }
   
-  private static Class<?>[] a(Object[] paramArrayOfObject)
+  public balj f(String paramString)
   {
-    Object localObject = (Class[])null;
-    if (paramArrayOfObject != null)
-    {
-      Class[] arrayOfClass = new Class[paramArrayOfObject.length];
-      int i = 0;
-      int j = paramArrayOfObject.length;
-      localObject = arrayOfClass;
-      if (i < j)
-      {
-        if (paramArrayOfObject[i] != null)
-        {
-          arrayOfClass[i] = paramArrayOfObject[i].getClass();
-          label45:
-          if (arrayOfClass[i] != Integer.class) {
-            break label77;
-          }
-          arrayOfClass[i] = Integer.TYPE;
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          arrayOfClass[i] = String.class;
-          break label45;
-          label77:
-          if (arrayOfClass[i] == Boolean.class) {
-            arrayOfClass[i] = Boolean.TYPE;
-          }
-        }
-      }
-    }
-    return localObject;
+    this.j = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     balj
  * JD-Core Version:    0.7.0.1
  */

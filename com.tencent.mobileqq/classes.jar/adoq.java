@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class adoq
-  implements DialogInterface.OnClickListener
+  extends actr
 {
-  adoq(adoi paramadoi, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
+  TextView e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Adoi.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
-    aweg.jdField_a_of_type_Boolean = true;
-  }
+  adoq(adon paramadon) {}
 }
 
 

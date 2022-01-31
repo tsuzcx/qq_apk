@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import ohb;
-import oqz;
+import osm;
+import pcb;
 
 public class VideoArticleModule$8
   implements Runnable
 {
-  public VideoArticleModule$8(oqz paramoqz, int paramInt, List paramList) {}
+  public VideoArticleModule$8(pcb parampcb, int paramInt, List paramList) {}
   
   public void run()
   {
-    ohb.a().b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+    osm.a().b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

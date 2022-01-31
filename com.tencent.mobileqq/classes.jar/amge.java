@@ -1,58 +1,25 @@
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-public class amge
+class amge
+  implements bbqb
 {
-  public amgx a;
-  public boolean a;
+  amge(amgc paramamgc, int paramInt) {}
   
-  public amge()
+  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Amgx = new amgx();
-  }
-  
-  public static amge a(String paramString)
-  {
-    if (paramString == null) {}
-    do
-    {
-      return null;
-      try
-      {
-        amge localamge = new amge();
-        paramString = new JSONObject(paramString);
-        localamge.jdField_a_of_type_Boolean = paramString.optBoolean("showTogetherWatchInTroopSettingCard", false);
-        paramString = paramString.optJSONObject("watchTogether");
-        if (paramString != null)
-        {
-          amgx localamgx = new amgx();
-          localamgx.a(paramString.optInt("version"));
-          localamgx.b(paramString.optInt("jumpType"));
-          localamgx.a(paramString.optString("jumpUrl"));
-          localamgx.b(paramString.optString("jumpExtensionInfo"));
-          localamge.jdField_a_of_type_Amgx = localamgx;
-        }
-        QLog.d("TogetherBusinessConfProcessor", 2, "confBean = " + localamge.toString());
-        return localamge;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("TogetherBusinessConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("TogetherConfigureBean{showTogetherWatchInTroopSettingCard=").append(this.jdField_a_of_type_Boolean).append(", watchTogether=");
-    if (this.jdField_a_of_type_Amgx == null) {}
-    for (String str = "null";; str = this.jdField_a_of_type_Amgx.toString()) {
-      return str + '}';
+    paramQQAppInterface = bbsv.a(this.jdField_a_of_type_Amgc.a.getApp(), this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "playRingId.onCompleted: invoked. ", " wavPath: ", paramQQAppInterface });
     }
+    amgc.a(this.jdField_a_of_type_Amgc, paramQQAppInterface);
   }
+  
+  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amge
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,8 @@
+import android.graphics.Bitmap;
+
 public abstract interface azif
 {
-  public abstract long a();
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

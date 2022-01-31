@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParserWithHotReload.IHotReloadChangedObserver;
 
 class rbl
-  implements View.OnClickListener
+  implements ProteusParserWithHotReload.IHotReloadChangedObserver
 {
-  rbl(rbk paramrbk) {}
+  rbl(rap paramrap) {}
   
-  public void onClick(View paramView)
+  public void onHotReloadChanged(Context paramContext, String paramString1, String paramString2)
   {
-    obz.a(paramView.getContext(), this.a.a.a);
-    ndn.a(null, "", "0X8009BA1", "0X8009BA1", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), "", "", "", false);
+    this.a.notifyDataSetChanged();
   }
 }
 

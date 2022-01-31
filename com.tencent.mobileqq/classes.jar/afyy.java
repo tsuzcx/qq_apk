@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.activity.phone.SettingActivity2.3;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.9.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class afyy
-  extends atog
+  extends xax
 {
-  public afyy(SettingActivity2.3 param3) {}
+  public afyy(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt)
   {
-    if (this.a.this$0.c != null)
-    {
-      this.a.this$0.app.unRegistObserver(this.a.this$0.c);
-      this.a.this$0.c = null;
+    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
+    while (!paramBoolean) {
+      return;
     }
-    this.a.this$0.b();
-    if (paramBoolean)
-    {
-      if (this.a.this$0.c != null)
-      {
-        this.a.this$0.app.unRegistObserver(this.a.this$0.c);
-        this.a.this$0.c = null;
-      }
-      this.a.this$0.a();
-      this.a.this$0.setResult(-1);
-    }
+    ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryTroopFileFragment.9.1(this, paramLong1, paramLong2));
   }
 }
 

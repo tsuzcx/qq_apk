@@ -1,36 +1,6 @@
-class tcl
-  implements tfc
+public abstract interface tcl
 {
-  tcl(tci paramtci) {}
-  
-  public void a()
-  {
-    if (tci.a(this.a) != null) {
-      tci.a(this.a).c();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    tci.a(this.a).a(paramInt);
-    if (tci.a(this.a) != null) {
-      tci.a(this.a).b(paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (tci.a(this.a) != null) {
-      tci.a(this.a).d();
-    }
-  }
-  
-  public void c()
-  {
-    if (tci.a(this.a) != null) {
-      tci.a(this.a).d(-1);
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

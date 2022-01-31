@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import ausk;
+import avrt;
 import com.tencent.qphone.base.util.QLog;
 
 public class CapturePtvTemplateManager$7
   implements Runnable
 {
-  public CapturePtvTemplateManager$7(ausk paramausk) {}
+  public CapturePtvTemplateManager$7(avrt paramavrt) {}
   
   public void run()
   {

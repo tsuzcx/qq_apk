@@ -1,106 +1,231 @@
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ProviderInfo;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.troop.utils.ChangeMachineManager.2;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bahi
+  implements Manager
 {
-  private static int jdField_a_of_type_Int;
-  private static String jdField_a_of_type_JavaLangString;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "com.android.launcher.permission.READ_SETTINGS", "com.android.launcher2.permission.READ_SETTINGS", "com.android.launcher3.permission.READ_SETTINGS", "com.google.android.launcher.permission.READ_SETTINGS", "com.huawei.android.launcher.permission.READ_SETTINGS", "com.huawei.launcher2.permission.READ_SETTINGS", "com.huawei.launcher3.permission.READ_SETTINGS", "com.bbk.launcher2.permission.READ_SETTINGS", "com.huaqin.launcherEx.permission.READ_SETTINGS", "com.htc.launcher.permission.READ_SETTINGS", "com.htc.launcher.settings", "com.oppo.launcher.permission.READ_SETTINGS", "com.meizu.android.launcher.permission.READ_SETTINGS", "com.meizu.launcher2.permission.READ_SETTINGS", "com.meizu.android.launcher3.permission.READ_SETTINGS", "com.lenovo.launcher.permission.READ_SETTINGS", "com.ebproductions.android.launcher.permission.READ_SETTINGS", "com.android.mylauncher.permission.READ_SETTINGS", "com.sec.android.app.twlauncher.settings.READ_SETTINGS", "com.fede.launcher.permission.READ_SETTINGS", "net.qihoo.launcher.permission.READ_SETTINGS", "com.qihoo360.launcher.permission.READ_SETTINGS", "com.lge.launcher.permission.READ_SETTINGS", "org.adw.launcher.permission.READ_SETTINGS", "telecom.mdesk.permission.READ_SETTINGS" };
-  private static int jdField_b_of_type_Int;
-  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { ajjy.a(2131644981), ajjy.a(2131644982) };
-  private static int jdField_c_of_type_Int;
-  private static final String[] jdField_c_of_type_ArrayOfJavaLangString = { ajjy.a(2131644985), ajjy.a(2131644980), ajjy.a(2131644979), ajjy.a(2131644984) };
-  private static int jdField_d_of_type_Int;
-  private static final String[] jdField_d_of_type_ArrayOfJavaLangString = { ajjy.a(2131644986) };
-  private static int jdField_e_of_type_Int;
-  private static final String[] jdField_e_of_type_ArrayOfJavaLangString = { ajjy.a(2131644983) };
-  private static int jdField_f_of_type_Int;
-  private static final String[] jdField_f_of_type_ArrayOfJavaLangString = { "vivo" };
-  private static int g;
+  public int a;
+  protected Handler a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  Runnable jdField_a_of_type_JavaLangRunnable = new ChangeMachineManager.2(this);
+  public String a;
+  public String b;
+  public String c;
   
-  static
+  public bahi(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Int = -1;
-    jdField_b_of_type_Int = -1;
-    jdField_c_of_type_Int = 100;
-    jdField_d_of_type_Int = -1;
-    jdField_e_of_type_Int = 100;
-    jdField_f_of_type_Int = -1;
-    g = 6;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    paramQQAppInterface = BaseApplicationImpl.getContext().getSharedPreferences("ChangeMachine", 0);
+    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getString("title", null);
+    this.b = paramQQAppInterface.getString("desc", null);
+    this.jdField_a_of_type_Int = paramQQAppInterface.getInt("resIconId", 0);
+    this.c = paramQQAppInterface.getString("url", null);
   }
   
-  public static String a(Context paramContext)
+  private void c()
   {
-    if (jdField_a_of_type_JavaLangString == null)
+    aktg localaktg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+    Object localObject1 = localaktg.b(ajsf.aD, 7440);
+    if (localObject1 == null)
     {
-      jdField_a_of_type_JavaLangString = a(paramContext, jdField_a_of_type_ArrayOfJavaLangString);
-      if (jdField_a_of_type_JavaLangString == null) {
-        break label88;
-      }
+      localObject1 = new RecentUser(ajsf.aD, 7440);
+      ((RecentUser)localObject1).lastmsgtime = (System.currentTimeMillis() / 1000L);
     }
-    label88:
-    for (jdField_a_of_type_JavaLangString = "content://" + jdField_a_of_type_JavaLangString + "/favorites?notify=true";; jdField_a_of_type_JavaLangString = "empty")
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.shortcut", 2, "getShortcutUri.shortcutUri=" + jdField_a_of_type_JavaLangString);
+      try
+      {
+        Object localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("isRead", false);
+        ((RecentUser)localObject1).msg = ((JSONObject)localObject2).toString();
+        ((RecentUser)localObject1).msgData = ((JSONObject)localObject2).toString().getBytes();
+        ((RecentUser)localObject1).msgType = 1;
+        localObject2 = BaseApplicationImpl.getContext().getResources().getString(2131697545);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          localObject2 = this.jdField_a_of_type_JavaLangString;
+        }
+        ((RecentUser)localObject1).displayName = ((String)localObject2);
       }
-      return jdField_a_of_type_JavaLangString;
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        continue;
+      }
+      localaktg.a((RecentUser)localObject1);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+      if (localObject1 != null) {
+        ((MqqHandler)localObject1).sendEmptyMessage(1009);
+      }
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "huanjibao", "", "feeds", "view", 0, 0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "", "");
+      return;
     }
   }
   
-  private static String a(Context paramContext, String[] paramArrayOfString)
+  private void d()
   {
+    aktg localaktg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+    RecentUser localRecentUser = localaktg.b(ajsf.aD, 7440);
+    if (localRecentUser == null) {
+      return;
+    }
     try
     {
-      paramContext = paramContext.getPackageManager().getInstalledPackages(10);
-      if (paramContext != null)
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("isRead", true);
+      localRecentUser.msg = localJSONObject.toString();
+      localaktg.a(localRecentUser);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        paramContext = paramContext.iterator();
-        while (paramContext.hasNext())
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  private void e()
+  {
+    BaseApplicationImpl.getContext().getSharedPreferences("ChangeMachine", 0).edit().putString("title", this.jdField_a_of_type_JavaLangString).putString("desc", this.b).putInt("resIconId", this.jdField_a_of_type_Int).putString("url", this.c).commit();
+  }
+  
+  public int a()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      return 2130843216;
+    case 2: 
+      return 2130843217;
+    case 3: 
+      return 2130843218;
+    }
+    return 2130843219;
+  }
+  
+  protected String a()
+  {
+    Object localObject = "";
+    try
+    {
+      String str = UserAction.getQIMEI();
+      localObject = str;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isDevelopLevel()) {}
+      QLog.e(".troop.change_machine", 2, "get QIMI error");
+    }
+    return localObject;
+    return "";
+  }
+  
+  public void a()
+  {
+    String str = a();
+    if (str == null) {
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("qimei", str);
+    localBundle.putString("id", "13");
+    localHashMap.put("BUNDLE", localBundle);
+    localHashMap.put("CONTEXT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext());
+    new bahp("https://innovate.qq.com/GetNewMachine", "GET", new bahj(this), 10001, null).a(localHashMap);
+  }
+  
+  public void a(Context paramContext)
+  {
+    Object localObject2 = this.c;
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = "http://qzs.qq.com/open/yyb/switch_phone/html/qq_cooperation.html";
+    }
+    localObject1 = bfng.a(bfng.a((String)localObject1, "qqnum", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), "qimei", a());
+    localObject2 = new Intent(paramContext, QQBrowserActivity.class);
+    ((Intent)localObject2).putExtra("url", (String)localObject1);
+    paramContext.startActivity((Intent)localObject2);
+    d();
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "huanjibao", "", "feeds", "click", 0, 0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "", "");
+  }
+  
+  public void a(String paramString)
+  {
+    int i = 1;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      int j = paramString.optInt("showMode");
+      this.jdField_a_of_type_JavaLangString = paramString.optString("title");
+      this.b = paramString.optString("desc");
+      this.jdField_a_of_type_Int = paramString.optInt("icon");
+      this.c = paramString.optString("url");
+      if (j == -2) {}
+      while (i != 0)
+      {
+        a();
+        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "huanjibao", "", "new_mobile", "request", 0, 0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "", "");
+        return;
+        if (j >= 0)
         {
-          ProviderInfo[] arrayOfProviderInfo = ((PackageInfo)paramContext.next()).providers;
-          if (arrayOfProviderInfo != null)
-          {
-            int k = arrayOfProviderInfo.length;
-            int i = 0;
-            while (i < k)
-            {
-              ProviderInfo localProviderInfo = arrayOfProviderInfo[i];
-              if (localProviderInfo != null)
-              {
-                int m = paramArrayOfString.length;
-                int j = 0;
-                while (j < m)
-                {
-                  if (paramArrayOfString[j].equals(localProviderInfo.readPermission))
-                  {
-                    paramContext = localProviderInfo.authority;
-                    return paramContext;
-                  }
-                  j += 1;
-                }
-              }
-              i += 1;
-            }
-          }
+          boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().endsWith(String.valueOf(j));
+          if (bool) {}
+        }
+        else
+        {
+          i = 0;
         }
       }
-      return null;
+      return;
     }
-    catch (RuntimeException paramContext)
+    catch (JSONException paramString)
     {
-      paramContext.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.e(".troop.change_machine", 2, "parseSevletConfigContent JSONException", paramString);
+      }
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bahi
  * JD-Core Version:    0.7.0.1
  */

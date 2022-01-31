@@ -1,23 +1,49 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import java.util.Comparator;
 
 class bagx
-  implements View.OnClickListener
+  implements Comparator<bahf>
 {
-  bagx(bagu parambagu, DialogInterface.OnClickListener paramOnClickListener) {}
+  bagx(bagr parambagr) {}
   
-  public void onClick(View paramView)
+  public int a(bahf parambahf1, bahf parambahf2)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bagu, 0);
+    int j = -1;
+    if (((parambahf1 instanceof MessageForDeliverGiftTips)) && ((parambahf2 instanceof MessageForDeliverGiftTips)))
+    {
+      parambahf1 = (MessageForDeliverGiftTips)parambahf1;
+      parambahf2 = (MessageForDeliverGiftTips)parambahf2;
+      int i;
+      if ((parambahf1.isToAll()) && (parambahf2.isToAll())) {
+        i = (int)(parambahf1.time - parambahf2.time);
+      }
+      do
+      {
+        do
+        {
+          return i;
+          i = j;
+        } while (parambahf1.isToAll());
+        if (parambahf2.isToAll()) {
+          return 1;
+        }
+        if ((parambahf1.receiverUin == this.a.a.getLongAccountUin()) && (parambahf2.receiverUin == this.a.a.getLongAccountUin())) {
+          return (int)(parambahf1.time - parambahf2.time);
+        }
+        i = j;
+      } while (parambahf1.receiverUin == this.a.a.getLongAccountUin());
+      if (parambahf2.receiverUin == this.a.a.getLongAccountUin()) {
+        return 1;
+      }
+      return (int)(parambahf1.time - parambahf2.time);
     }
-    this.jdField_a_of_type_Bagu.dismiss();
+    return (int)(parambahf1.getShmsgseq() - parambahf2.getShmsgseq());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bagx
  * JD-Core Version:    0.7.0.1
  */

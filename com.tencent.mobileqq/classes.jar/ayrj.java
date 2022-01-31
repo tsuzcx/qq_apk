@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
-import java.util.UUID;
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
 
 class ayrj
-  implements akes
+  implements ITransCallbackForReport
 {
-  ayrj(ayrh paramayrh, TroopFileTansferItemEntity paramTroopFileTansferItemEntity) {}
+  ayrj(ayrh paramayrh) {}
   
-  public void a(String paramString)
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    aysb.d("TroopFileDataBaseProxy", aysb.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] updateItem finish[add]. table:" + paramString);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    aysb.d("TroopFileDataBaseProxy", aysb.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] updateItem finish. table:" + paramString);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    aysb.d("TroopFileDataBaseProxy", aysb.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] updateItem finish[del]. table:" + paramString);
+    this.a.a(false, this.a.j, paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayrj
  * JD-Core Version:    0.7.0.1
  */

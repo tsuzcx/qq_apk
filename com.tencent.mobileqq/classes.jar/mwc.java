@@ -1,12 +1,24 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.JoinGroupTransitActivity;
 
-class mwc
+public class mwc
+  implements mwb
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public mwc(JoinGroupTransitActivity paramJoinGroupTransitActivity) {}
   
-  mwc(mwb parammwb) {}
+  public void a()
+  {
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void b()
+  {
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(2);
+  }
+  
+  public void c()
+  {
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(3);
+  }
 }
 
 

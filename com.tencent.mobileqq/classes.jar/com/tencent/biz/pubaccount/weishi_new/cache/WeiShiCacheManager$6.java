@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
-import bace;
+import bbdj;
 import cooperation.qzone.LocalMultiProcConfig;
-import rxc;
+import sjy;
 
 public class WeiShiCacheManager$6
   implements Runnable
 {
-  public WeiShiCacheManager$6(rxc paramrxc) {}
+  public WeiShiCacheManager$6(sjy paramsjy) {}
   
   public void run()
   {
     LocalMultiProcConfig.putLong("weishi_usergrowth", "key_red_msg_valid_timestamp", System.currentTimeMillis());
     LocalMultiProcConfig.putInt("weishi_usergrowth", "key_red_msg_valid_count", 0);
-    bace.a(rxc.b(this.this$0), false);
+    bbdj.a(sjy.b(this.this$0), false);
   }
 }
 

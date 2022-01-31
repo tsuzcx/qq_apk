@@ -1,16 +1,17 @@
+import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FriendListFragment;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentComment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class pvh
-  implements bejk
+  implements View.OnClickListener
 {
-  public pvh(FriendListFragment paramFriendListFragment) {}
+  public pvh(ComponentComment paramComponentComment, String paramString, ArticleInfo paramArticleInfo) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (FriendListFragment.a(this.a) != null) {
-      FriendListFragment.a(this.a).onClick(null);
-    }
+    onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment.getContext(), this.jdField_a_of_type_JavaLangString);
+    pdb.a(1, onk.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
   }
 }
 

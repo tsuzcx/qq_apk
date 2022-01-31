@@ -1,25 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import cooperation.qzone.util.QZLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class bhxz
-  extends Handler
+class bhxz
+  extends bdsm
 {
-  public bhxz(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout, Looper paramLooper)
+  bhxz(bhxy parambhxy) {}
+  
+  public void a()
   {
-    super(paramLooper);
+    QZLog.i("VipARQGThreeController", 1, "qg so load success status = " + bdsn.b.get());
   }
   
-  public void handleMessage(Message paramMessage)
+  public void b()
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    QZLog.i("VipARQGThreeController", 1, "qg so load fail status = " + bdsn.b.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhxz
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.view.View;
 import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
 import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
 import com.tencent.qphone.base.util.QLog;
-import mxu;
-import mxw;
+import niv;
+import nix;
 
 class PublicAccountAdvertisementActivity$6
   implements Runnable
@@ -21,7 +21,7 @@ class PublicAccountAdvertisementActivity$6
         QLog.d("PublicAccountAdvertisementActivity", 2, "doAutoJump = canScrollUp " + this.this$0.a());
       }
       localObject = PublicAccountAdvertisementActivity.a(this.this$0).a;
-      if ((localObject != null) && (((mxw)localObject).k == 1))
+      if ((localObject != null) && (((nix)localObject).k == 1))
       {
         if (!this.this$0.a()) {
           break label130;

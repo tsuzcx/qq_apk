@@ -1,17 +1,46 @@
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.PlaybackThread;
+import android.graphics.Bitmap;
+import android.support.v4.app.NotificationCompat.Builder;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class tsh
-  implements tse
+class tsh
+  implements URLDrawable.URLDrawableListener
 {
-  public tsh(MediaPlayer paramMediaPlayer) {}
+  tsh(tsg paramtsg, NotificationCompat.Builder paramBuilder, QQAppInterface paramQQAppInterface, StoryPushMsg paramStoryPushMsg, int paramInt) {}
   
-  public void a(tsc paramtsc)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread != null) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.a()) && (!this.a.e) && (this.a.jdField_a_of_type_Tsa.b() < 2000000L) && (!this.a.jdField_a_of_type_Tsa.b()))
-    {
-      this.a.e = true;
-      this.a.jdField_a_of_type_Tsi.sendMessage(this.a.jdField_a_of_type_Tsi.obtainMessage(200, 701, 0));
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
+    }
+    this.jdField_a_of_type_Tsg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryPushMsg, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder);
+    tsg.a(this.jdField_a_of_type_Tsg).remove(paramURLDrawable);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed start, mURLDrawableList.size():" + tsg.a(this.jdField_a_of_type_Tsg).size());
+    }
+    Bitmap localBitmap1 = bbdr.a(paramURLDrawable.getCurrDrawable(), 200, 200);
+    Bitmap localBitmap2 = nap.b(localBitmap1, 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed start, cutBitmap.size():" + localBitmap2.getHeight() + ", " + localBitmap2.getWidth());
+    }
+    this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setLargeIcon(localBitmap2);
+    this.jdField_a_of_type_Tsg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryPushMsg, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder);
+    localBitmap1.recycle();
+    tsg.a(this.jdField_a_of_type_Tsg).remove(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed, mURLDrawableList.size():" + tsg.a(this.jdField_a_of_type_Tsg).size());
     }
   }
 }

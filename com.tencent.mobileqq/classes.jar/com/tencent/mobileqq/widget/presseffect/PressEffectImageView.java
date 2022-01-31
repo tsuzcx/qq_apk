@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
-import bbpx;
+import bcsw;
 
 public class PressEffectImageView
   extends ImageView
@@ -33,10 +33,10 @@ public class PressEffectImageView
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bbpx.a(this);
+      bcsw.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bbpx.b(this);
+      bcsw.b(this);
     }
   }
   

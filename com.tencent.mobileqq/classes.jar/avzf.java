@@ -1,64 +1,289 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.annotation.TargetApi;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaFormat;
+import android.media.MediaMuxer;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.nio.ByteBuffer;
 
+@TargetApi(18)
 public class avzf
 {
-  private String a;
-  private String b;
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
+  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
+  private MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = ThreadManagerV2.newFreeHandlerThread("HWAudioEncoder", 0);
+  avzh jdField_a_of_type_Avzh;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
   
-  public avzf(@Nullable String paramString1, @Nullable String paramString2)
+  public avzf()
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new avzg(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
   }
   
-  @NonNull
-  public String a()
+  private void b(String paramString)
   {
-    return this.a;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidMediaMediaFormat = new MediaFormat();
+    this.jdField_a_of_type_AndroidMediaMediaFormat.setString("mime", "audio/mp4a-latm");
+    int i;
+    if (axik.o == 16)
+    {
+      i = 1;
+      this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("channel-count", i);
+      this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("sample-rate", this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("aac-profile", 2);
+      this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("bitrate", axik.n);
+      this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("max-input-size", AudioCapture.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createEncoderByType("audio/mp4a-latm");
+      this.jdField_a_of_type_AndroidMediaMediaCodec.configure(this.jdField_a_of_type_AndroidMediaMediaFormat, null, null, 1);
+      this.jdField_a_of_type_AndroidMediaMediaCodec.start();
+      paramString = new File(this.jdField_a_of_type_JavaLangString);
+      if (!paramString.exists()) {
+        bbdj.c(paramString.getAbsolutePath());
+      }
+      this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(this.jdField_a_of_type_JavaLangString, 0);
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Long = 0L;
+      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+      this.jdField_b_of_type_Long = 0L;
+      if (axik.p != 2) {
+        break label239;
+      }
+    }
+    label239:
+    for (int j = 16;; j = 8)
+    {
+      this.jdField_a_of_type_Double = (i * (j * this.jdField_b_of_type_Int) / 8 / Math.pow(10.0D, 6.0D));
+      return;
+      i = 2;
+      break;
+    }
   }
   
-  @NonNull
-  public String b()
+  private void d() {}
+  
+  void a()
   {
-    return this.b;
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+    long l = SystemClock.elapsedRealtimeNanos();
+    a(new byte[0], l, true);
+    if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
+      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
+      this.jdField_a_of_type_AndroidMediaMediaCodec = null;
+    }
+    if ((this.jdField_a_of_type_AndroidMediaMediaMuxer != null) && (this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_Boolean = false;
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
+      if (QLog.isColorLevel()) {
+        QLog.d("HWAudioEncoder", 2, "MediaMuxer stop.");
+      }
+      if (this.jdField_a_of_type_Avzh != null) {
+        this.jdField_a_of_type_Avzh.h();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      if (this.jdField_a_of_type_Avzh != null) {
+        this.jdField_a_of_type_Avzh.i();
+      }
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
+    }
   }
   
-  public boolean equals(@Nullable Object paramObject)
+  public void a(int paramInt)
   {
-    if (!(paramObject instanceof avzf)) {}
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void a(avzh paramavzh)
+  {
+    this.jdField_a_of_type_Avzh = paramavzh;
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3, paramString).sendToTarget();
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, long paramLong)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      paramLong = SystemClock.elapsedRealtimeNanos();
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, new Object[] { paramArrayOfByte, Long.valueOf(paramLong) }).sendToTarget();
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
+  {
+    long l = System.currentTimeMillis();
+    int i = (int)(paramArrayOfByte.length / this.jdField_a_of_type_Double);
+    this.jdField_b_of_type_Long += i;
+    if (QLog.isColorLevel()) {
+      QLog.d("HWAudioEncoder", 2, String.format("handleAudioFrame audioData=%s mAudioDataSize=%s frameTime=%s mLastAudioFrameTime=%s timestampNanos=%s endOfStream=&s", new Object[] { Integer.valueOf(paramArrayOfByte.length), Double.valueOf(this.jdField_a_of_type_Double), Integer.valueOf(i), Long.valueOf(this.jdField_b_of_type_Long), Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
+    }
+    i = 0;
+    Object localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
+    int j = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("HWAudioEncoder", 2, String.format("handleAudioFrame inputIndex=%s endTryTimes=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }));
+    }
+    if (j >= 0)
+    {
+      localObject = localObject[j];
+      ((ByteBuffer)localObject).clear();
+      ((ByteBuffer)localObject).put(paramArrayOfByte);
+      this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(j, 0, paramArrayOfByte.length, this.jdField_b_of_type_Long, 0);
+      label205:
+      i = 0;
+      paramArrayOfByte = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+    }
+    label216:
     do
     {
-      return false;
-      paramObject = (avzf)paramObject;
-    } while ((baip.a(this.a)) || (baip.a(this.b)) || (!this.a.equals(paramObject.a())) || (!this.b.equals(paramObject.b())));
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    int j = 0;
-    int i;
-    if (this.b == null)
-    {
-      i = 0;
-      if (this.a != null) {
-        break label40;
+      for (;;)
+      {
+        j = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
+        if (QLog.isColorLevel()) {
+          QLog.d("HWAudioEncoder", 2, String.format("handleAudioFrame outputIndex=%s endTryTimes=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }));
+        }
+        if (j == -1)
+        {
+          if (!paramBoolean) {}
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("HWAudioEncoder", 2, String.format("handleAudioFrame time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
+            }
+            return;
+            if (j != -1) {
+              break;
+            }
+            if (!paramBoolean) {
+              break label205;
+            }
+            j = i + 1;
+            i = j;
+            if (j <= 10) {
+              break;
+            }
+            break label205;
+            j = i + 1;
+            i = j;
+            if (j <= 10) {
+              break label216;
+            }
+          }
+        }
+        if (j == -2)
+        {
+          localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
+          this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack((MediaFormat)localObject);
+          if (!this.jdField_a_of_type_Boolean)
+          {
+            this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
+            this.jdField_a_of_type_Boolean = true;
+          }
+        }
+        else
+        {
+          if (j != -3) {
+            break label436;
+          }
+          paramArrayOfByte = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+        }
       }
+    } while (j < 0);
+    label281:
+    label436:
+    i = 0;
+    localObject = paramArrayOfByte[j];
+    if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x2) != 0) {
+      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = 0;
+    }
+    if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size != 0) && (this.jdField_a_of_type_Boolean))
+    {
+      ((ByteBuffer)localObject).position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
+      ((ByteBuffer)localObject).limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
+      if (QLog.isColorLevel()) {
+        QLog.d("HWAudioEncoder", 2, String.format("handleAudioFrame presentationTimeUs=%s", new Object[] { Long.valueOf(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs) }));
+      }
+      if (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs < this.jdField_a_of_type_Long) {
+        break label624;
+      }
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Int, (ByteBuffer)localObject, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+      this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
     }
     for (;;)
     {
-      return (i + 527) * 31 + j;
-      i = this.b.hashCode();
-      break;
-      label40:
-      j = this.a.hashCode();
+      this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(j, false);
+      if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) == 0) {
+        break;
+      }
+      break label281;
+      label624:
+      QLog.e("HWAudioEncoder", 1, "handleAudioFrame audio timestamp revert? throw this frame.");
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2).sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avzf
  * JD-Core Version:    0.7.0.1
  */

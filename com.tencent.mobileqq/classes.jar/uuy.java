@@ -1,20 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 
-class uuy
-  extends SimpleJob<Object>
+public class uuy
+  implements DialogInterface.OnClickListener
 {
-  uuy(uut paramuut, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
-  {
-    super(paramString1);
-  }
+  public uuy(StoryMessageListActivity paramStoryMessageListActivity) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    urp.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
+    this.a.f();
+    paramDialogInterface.dismiss();
+    vel.a(this.a.a(), "clk_sure", 0, 0, new String[] { "2", "", "", "" });
   }
 }
 

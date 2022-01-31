@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import aciy;
+import actn;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
@@ -36,7 +36,7 @@ public class OnlineStatusPanel
   
   private int a(int paramInt)
   {
-    return aciy.a(32.0F, getResources()) * paramInt + aciy.a(20.0F, getResources()) * (paramInt - 1) + aciy.a(16.0F, getResources());
+    return actn.a(32.0F, getResources()) * paramInt + actn.a(20.0F, getResources()) * (paramInt - 1) + actn.a(16.0F, getResources());
   }
   
   private void b()
@@ -67,9 +67,9 @@ public class OnlineStatusPanel
   public void a(int paramInt)
   {
     this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter = new OnlineStatusPagerAdapter(BaseApplicationImpl.getContext(), paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131305357));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131371050));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131302079));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131367697));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getLayoutParams();
     localLayoutParams.height = a(paramInt);

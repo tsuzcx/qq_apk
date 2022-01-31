@@ -1,25 +1,15 @@
-import android.view.View;
-import android.view.animation.OvershootInterpolator;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
-import com.tencent.mobileqq.portal.SanHuaView;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class aazh
-  extends OvershootInterpolator
+  extends ajxl
 {
-  private boolean jdField_a_of_type_Boolean;
+  public aazh(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public aazh(HongbaoShowerActivity paramHongbaoShowerActivity) {}
-  
-  public float getInterpolation(float paramFloat)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-      HongbaoShowerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity).a();
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
     }
-    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
   }
 }
 

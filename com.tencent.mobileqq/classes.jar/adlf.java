@@ -1,29 +1,44 @@
-import android.os.SystemClock;
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForPokeEmo;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
-class adlf
-  implements begw
+public class adlf
+  extends ImageSpan
 {
-  adlf(adle paramadle, MessageForPokeEmo paramMessageForPokeEmo, begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public adlf(Drawable paramDrawable)
   {
-    switch (paramInt)
+    super(paramDrawable);
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  {
+    paramCharSequence = getDrawable();
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    paramCharSequence = getDrawable().getBounds();
+    if (paramFontMetricsInt != null)
     {
+      paramPaint = paramPaint.getFontMetricsInt();
+      paramInt2 = paramPaint.bottom - paramPaint.top;
+      int i = paramCharSequence.bottom - paramCharSequence.top;
+      paramInt1 = i / 2 - paramInt2 / 4;
+      i /= 2;
+      paramInt2 = paramInt2 / 4 + i;
+      paramFontMetricsInt.ascent = (-paramInt2);
+      paramFontMetricsInt.top = (-paramInt2);
+      paramFontMetricsInt.bottom = paramInt1;
+      paramFontMetricsInt.descent = paramInt1;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      long l;
-      do
-      {
-        return;
-        l = SystemClock.uptimeMillis();
-      } while (l - this.jdField_a_of_type_Adle.c < 500L);
-      this.jdField_a_of_type_Adle.c = l;
-      aael.b(this.jdField_a_of_type_Adle.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adle.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adle.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
-    }
+    return paramCharSequence.right;
   }
 }
 

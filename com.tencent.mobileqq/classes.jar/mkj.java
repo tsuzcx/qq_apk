@@ -1,25 +1,17 @@
+import android.content.Context;
+import android.view.Window;
+import com.tencent.av.ui.VideoInviteActivity;
+
 public class mkj
+  extends bfol
 {
-  public static int a(int paramInt1, int paramInt2)
+  public mkj(VideoInviteActivity paramVideoInviteActivity, Context paramContext)
   {
-    return (paramInt1 % paramInt2 + paramInt2) % paramInt2;
-  }
-  
-  public static int a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    paramInt1 = a(paramInt1, paramInt3);
-    paramInt2 = a(paramInt2, paramInt3);
-    if (paramBoolean)
-    {
-      if (paramInt1 > paramInt2) {
-        return paramInt1 - paramInt2;
-      }
-      return paramInt1 + (paramInt3 - paramInt2);
-    }
-    if (paramInt1 > paramInt2) {
-      return paramInt3 - paramInt1 + paramInt2;
-    }
-    return paramInt2 - paramInt1;
+    super(paramContext);
+    super.getWindow().addFlags(524288);
+    super.getWindow().addFlags(128);
+    super.getWindow().addFlags(1024);
+    super.getWindow().addFlags(2097152);
   }
 }
 

@@ -1,25 +1,48 @@
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
+import java.net.Socket;
+import java.security.KeyStore;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
 
-final class laj
-  implements Comparator<lai>
+public class laj
+  extends org.apache.http.conn.ssl.SSLSocketFactory
 {
-  public int a(lai paramlai1, lai paramlai2)
+  private SSLContext a = SSLContext.getInstance("TLS");
+  
+  public laj(KeyStore paramKeyStore)
   {
-    if (paramlai1 == paramlai2) {
-      return 0;
+    super(paramKeyStore);
+    try
+    {
+      paramKeyStore = new lal();
+      this.a.init(null, new TrustManager[] { paramKeyStore }, null);
+      return;
     }
-    if (paramlai1 == null) {
-      return -1;
+    catch (Exception paramKeyStore)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Translator", 2, "[cancel] cancel task" + paramKeyStore);
+        }
+        paramKeyStore = null;
+      }
     }
-    if (paramlai2 == null) {
-      return 1;
-    }
-    return paramlai1.a - paramlai2.a;
+  }
+  
+  public Socket createSocket()
+  {
+    return this.a.getSocketFactory().createSocket();
+  }
+  
+  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
+  {
+    return this.a.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     laj
  * JD-Core Version:    0.7.0.1
  */

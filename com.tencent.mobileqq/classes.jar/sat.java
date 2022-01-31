@@ -1,78 +1,21 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Stack;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class sat
+class sat
+  implements View.OnClickListener
 {
-  private static int jdField_a_of_type_Int = 3;
-  private static String jdField_a_of_type_JavaLangString = "PublicAccountImageCollectionActivityManager";
-  private static Stack<Activity> jdField_a_of_type_JavaUtilStack;
-  private static sat jdField_a_of_type_Sat;
+  sat(sas paramsas, CertifiedAccountMeta.StUser paramStUser) {}
   
-  public static sat a()
+  public void onClick(View paramView)
   {
-    if (jdField_a_of_type_Sat == null) {
-      jdField_a_of_type_Sat = new sat();
-    }
-    return jdField_a_of_type_Sat;
-  }
-  
-  private void b()
-  {
-    Activity localActivity = (Activity)jdField_a_of_type_JavaUtilStack.firstElement();
-    if (localActivity != null)
-    {
-      localActivity.finish();
-      jdField_a_of_type_JavaUtilStack.remove(localActivity);
-    }
-  }
-  
-  public int a()
-  {
-    if (jdField_a_of_type_JavaUtilStack != null)
-    {
-      int i = jdField_a_of_type_JavaUtilStack.size();
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "getActivityStackNum = " + i);
-      }
-      return i;
-    }
-    return 0;
-  }
-  
-  public void a()
-  {
-    if ((jdField_a_of_type_JavaUtilStack != null) && (jdField_a_of_type_JavaUtilStack.size() > jdField_a_of_type_Int))
-    {
-      int j = jdField_a_of_type_JavaUtilStack.size();
-      int k = jdField_a_of_type_Int;
-      int i = 0;
-      while (i < j - k)
-      {
-        b();
-        i += 1;
-      }
-    }
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    if (jdField_a_of_type_JavaUtilStack == null) {
-      jdField_a_of_type_JavaUtilStack = new Stack();
-    }
-    jdField_a_of_type_JavaUtilStack.add(paramActivity);
-  }
-  
-  public void b(Activity paramActivity)
-  {
-    if ((jdField_a_of_type_JavaUtilStack != null) && (paramActivity != null)) {
-      jdField_a_of_type_JavaUtilStack.remove(paramActivity);
-    }
+    wiv.a(this.jdField_a_of_type_Sas.a, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
+    xhe.b("auth_follow", "clk_head", 0, 0, new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sat
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.webviewbase;
 
-import bbdc;
+import bcgc;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,7 +15,7 @@ class AbsBaseWebViewActivity$6
       QLog.d("WebLog_WebViewBase", 2, "start request: " + this.a);
     }
     WebProcessManager.a(true);
-    bbdc.a();
+    bcgc.a();
   }
 }
 

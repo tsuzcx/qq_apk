@@ -1,29 +1,46 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.CheckBox;
+import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.widget.ExpandableListView;
+import java.util.List;
 
-class qhg
-  extends Handler
+public class qhg
+  extends qhn
 {
-  qhg(qhf paramqhf, Looper paramLooper)
+  private qhx a;
+  
+  public qhg(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView, boolean paramBoolean, qhx paramqhx)
   {
-    super(paramLooper);
+    super(paramContext, paramQQAppInterface, paramExpandableListView, paramBoolean);
+    this.jdField_a_of_type_Qhx = paramqhx;
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a()
   {
-    switch (paramMessage.what)
+    if ((this.jdField_a_of_type_Qhx != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() >= this.jdField_a_of_type_Qhx.b()))
     {
-    }
-    do
-    {
+      String str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718554, new Object[] { String.valueOf(this.jdField_a_of_type_Qhx.c()) });
+      bcpw.a(this.jdField_a_of_type_AndroidContentContext, str, 0).a();
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsVideoUIDelegate", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + qhf.a(this.a));
-      }
-    } while (!qhf.a(this.a));
-    this.a.a(1);
+    }
+    bcpw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718548), 0).a();
+  }
+  
+  protected void a(qhv paramqhv, Friends paramFriends)
+  {
+    if ((paramFriends == null) || (this.jdField_a_of_type_Qhx == null) || (this.jdField_a_of_type_Qhx.a() == null) || (this.jdField_a_of_type_Qhx.a().isEmpty())) {
+      return;
+    }
+    paramqhv.a.setBackgroundResource(2130848410);
+    if (this.jdField_a_of_type_Qhx.a().contains(paramFriends.uin))
+    {
+      paramqhv.a.setEnabled(false);
+      return;
+    }
+    paramqhv.a.setEnabled(true);
   }
 }
 

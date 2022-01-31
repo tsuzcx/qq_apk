@@ -1,17 +1,25 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 
-final class oez
-  implements FileFilter
+public final class oez
+  implements pbj
 {
-  public boolean accept(File paramFile)
+  public oez(CommentInfo paramCommentInfo) {}
+  
+  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    return paramFile.getName().endsWith(".json");
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.authorUin)) || (paramReadInJoyUserInfo == null)) {
+      return;
+    }
+    this.a.authorNickName = paramReadInJoyUserInfo.nick;
   }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oez
  * JD-Core Version:    0.7.0.1
  */

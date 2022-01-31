@@ -1,43 +1,27 @@
-import Wallet.IdiomRedPackMatchReq;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
 
-class agjp
-  implements agxe
+public class agjp
+  implements Animation.AnimationListener
 {
-  agjp(agjk paramagjk, agjj paramagjj, String paramString, SessionInfo paramSessionInfo, long paramLong, int paramInt) {}
+  public agjp(CountryActivity paramCountryActivity, int paramInt) {}
   
-  public void a(String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = 1;
-    IdiomRedPackMatchReq localIdiomRedPackMatchReq = new IdiomRedPackMatchReq();
-    localIdiomRedPackMatchReq.grabUin = agjk.a(this.jdField_a_of_type_Agjk).getLongAccountUin();
-    localIdiomRedPackMatchReq.billno = this.jdField_a_of_type_Agjj.jdField_a_of_type_JavaLangString;
-    localIdiomRedPackMatchReq.inputIdiom = this.jdField_a_of_type_JavaLangString;
-    localIdiomRedPackMatchReq.hbIdiom = agjk.a(this.jdField_a_of_type_Agjk, this.jdField_a_of_type_Agjj);
-    localIdiomRedPackMatchReq.makeUin = Long.parseLong(this.jdField_a_of_type_Agjj.c);
-    localIdiomRedPackMatchReq.sKey = paramString;
-    localIdiomRedPackMatchReq.appid = AppSetting.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) {}
-    for (;;)
-    {
-      localIdiomRedPackMatchReq.fromType = i;
-      localIdiomRedPackMatchReq.platform = 0;
-      localIdiomRedPackMatchReq.qqVersion = "8.2.6";
-      agkg.a(localIdiomRedPackMatchReq, new agjq(this));
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000) {
-        i = 2;
-      } else {
-        i = 0;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agjp
  * JD-Core Version:    0.7.0.1
  */

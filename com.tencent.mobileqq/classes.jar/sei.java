@@ -1,21 +1,16 @@
-public class sei
+public abstract interface sei
 {
-  public int a;
-  public String a;
-  private int b;
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mStr: ").append(this.jdField_a_of_type_JavaLangString).append(" ");
-    localStringBuilder.append("mLevel: ").append(this.jdField_a_of_type_Int).append(" ");
-    localStringBuilder.append("mPicCount: ").append(this.b).append(" ");
-    return localStringBuilder.toString();
-  }
+  public abstract void a(int paramInt1, int paramInt2, Object paramObject);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void c(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sei
  * JD-Core Version:    0.7.0.1
  */

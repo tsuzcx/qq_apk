@@ -1,111 +1,37 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiBaseInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
-class apjv
-  implements anhs
+public final class apjv
+  extends WebChromeClient
 {
-  apjv(apjo paramapjo) {}
+  private final IHostInterface.IWebClient a;
   
-  public void a(anht paramanht)
+  private apjv(IHostInterface.IWebClient paramIWebClient)
   {
-    int i;
-    int j;
-    if ((paramanht instanceof anmh))
-    {
-      i = apjo.a(this.a).getSelectionStart();
-      j = apjo.a(this.a).getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
-    }
-    anmf localanmf;
-    int k;
-    int m;
-    do
-    {
-      apjo.a(this.a).getEditableText().replace(i, j, axku.c(((anmh)paramanht).a));
-      do
-      {
-        return;
-      } while (!(paramanht instanceof anmf));
-      localanmf = (anmf)paramanht;
-      i = apjo.a(this.a).getSelectionStart();
-      j = apjo.a(this.a).getSelectionEnd();
-      k = localanmf.a;
-      m = localanmf.b;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
-      }
-    } while ((k == 2) && (m == -1));
-    String str = "";
-    if (k == 1) {}
-    try
-    {
-      for (paramanht = axku.c(m);; paramanht = axku.a(m))
-      {
-        apjo.a(this.a).getEditableText().replace(i, j, paramanht);
-        apjo.a(this.a).requestFocus();
-        localanmf.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
-        angd.a().a(k).a(m, 4);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        paramanht = str;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Forward.NewVersion.Dialog", 2, QLog.getStackTraceString(localException));
-          paramanht = str;
-        }
-      }
-    }
+    this.a = paramIWebClient;
   }
   
-  public void a(anht paramanht1, anht paramanht2, Drawable paramDrawable) {}
-  
-  public boolean a(anht paramanht)
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
+    if ((this.a == null) || (!this.a.onConsoleMessage(paramConsoleMessage.message(), paramConsoleMessage.lineNumber(), paramConsoleMessage.sourceId()))) {
+      return super.onConsoleMessage(paramConsoleMessage);
+    }
     return true;
   }
   
-  public void b()
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
-    if (apjo.a(this.a).getSelectionStart() == 0) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Editable localEditable = apjo.a(this.a).getText();
-        int i = apjo.a(this.a).getSelectionStart();
-        int j = TextUtils.getOffsetBefore(apjo.a(this.a).getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+    if ((this.a == null) || (!this.a.onJsPrompt(paramWebView, paramString1, paramString2, paramString3))) {
+      return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
     }
+    if (paramJsPromptResult != null) {
+      paramJsPromptResult.cancel();
+    }
+    return true;
   }
-  
-  public void b(anht paramanht) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

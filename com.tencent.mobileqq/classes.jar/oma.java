@@ -1,10 +1,34 @@
-public abstract interface oma
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+
+class oma
+  implements ViewBase.OnClickListener
 {
-  public abstract void a(String paramString, omb paramomb);
+  oma(olw paramolw) {}
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if ((!(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo instanceof ArticleInfo)) || (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mProteusTemplateBean == null))
+    {
+      QLog.d("ProteusSupportUtil", 1, "STR_ID_CMD_PARTNER_HEADER_CLICK,click exception, return");
+      return;
+    }
+    TemplateBean localTemplateBean = olr.a(null, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+    if (localTemplateBean != null) {
+      olr.a(localTemplateBean.findViewById(paramViewBase.getName()));
+    }
+    olr.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, localTemplateBean, paramViewBase);
+    onk.e(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), paramViewBase.getEventAttachedData());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oma
  * JD-Core Version:    0.7.0.1
  */

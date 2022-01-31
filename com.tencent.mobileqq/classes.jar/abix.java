@@ -1,28 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import java.util.List;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
 
-class abix
-  implements View.OnClickListener
+public class abix
+  extends akgg
 {
-  abix(abiw paramabiw) {}
+  public abix(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = paramView.getTag();
-    if ((paramView instanceof abiv))
-    {
-      paramView = (abiv)paramView;
-      if ((paramView.a >= 0) && (paramView.a < this.a.a.a.size()))
-      {
-        paramView = (ProfileLabelInfo)this.a.a.a.remove(paramView.a);
-        this.a.a.a(this.a.a.a.size());
-        this.a.notifyDataSetChanged();
-        abiw.a(this.a, paramView);
-        awqx.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
-      }
+    if (this.a.jdField_a_of_type_Boolean) {
+      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
     }
   }
 }

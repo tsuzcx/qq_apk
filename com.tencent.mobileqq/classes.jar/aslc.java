@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public final class aslc
-  implements Parcelable.Creator<Comments.Comment>
+class aslc
+  implements Handler.Callback
 {
-  public Comments.Comment a(Parcel paramParcel)
-  {
-    return new Comments.Comment(paramParcel);
-  }
+  aslc(aslb paramaslb) {}
   
-  public Comments.Comment[] a(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    return new Comments.Comment[paramInt];
+    aslb.a(this.a, paramMessage);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aslc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,9 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
-
-class adcw
-  extends acjc
+public class adcw
 {
-  public long a;
-  ConfessNewsBgView a;
-  public String a;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
+  long a;
+  long b;
+  long c;
+  long d;
 }
 
 

@@ -1,57 +1,105 @@
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.widget.VerticalGallery.LayoutParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class azpe
-  extends BaseAdapter
 {
-  private final int jdField_a_of_type_Int;
-  private final int b;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public azpe(WheelPickerLayout paramWheelPickerLayout, int paramInt1, int paramInt2)
+  public azpe()
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramWheelPickerLayout.getResources().getDisplayMetrics()));
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  public int getCount()
+  public static azpe a(QQAppInterface paramQQAppInterface, String paramString, JSONObject paramJSONObject)
   {
-    return WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    boolean bool2 = true;
+    if ((paramJSONObject == null) || (!paramJSONObject.has("msg"))) {}
+    azpe localazpe;
+    JSONObject localJSONObject;
+    do
     {
-      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.getContext());
-      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
+      do
+      {
+        return null;
+        localazpe = new azpe();
+        localazpe.jdField_a_of_type_JavaLangString = paramJSONObject.optString("fid");
+        localJSONObject = paramJSONObject.optJSONObject("msg");
+      } while (localJSONObject == null);
+      localazpe.jdField_c_of_type_JavaLangString = localJSONObject.optString("text_face");
+      if (localazpe.jdField_c_of_type_JavaLangString != null) {
+        localazpe.jdField_c_of_type_JavaLangString = localazpe.jdField_c_of_type_JavaLangString.replace("&#10;", "<br/>");
+      }
+      localazpe.jdField_b_of_type_JavaLangString = localJSONObject.optString("title");
+      if (localazpe.jdField_b_of_type_JavaLangString != null) {
+        localazpe.jdField_b_of_type_JavaLangString = localazpe.jdField_b_of_type_JavaLangString.replace("&#10;", "<br/>");
+      }
+    } while ((localazpe.jdField_b_of_type_JavaLangString == null) || (localazpe.jdField_c_of_type_JavaLangString == null));
+    localazpe.i = paramJSONObject.optString("fid");
+    Object localObject = localJSONObject.optJSONArray("pics");
+    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+    {
+      localObject = ((JSONArray)localObject).optJSONObject(0);
+      if (localObject != null)
+      {
+        localazpe.d = ("http://gdynamic.qpic.cn/gdynamic/" + ((JSONObject)localObject).optString("id") + "/628");
+        localazpe.e = ("http://gdynamic.qpic.cn/gdynamic/" + ((JSONObject)localObject).optString("id") + "/");
+      }
     }
-    for (;;)
+    localObject = paramJSONObject.optJSONObject("settings");
+    if (localObject != null)
     {
-      paramViewGroup = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b, paramInt);
-      WheelTextView localWheelTextView = (WheelTextView)paramView;
-      localWheelTextView.setTextSize(1, WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).b);
-      localWheelTextView.setTextColor(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).c);
-      localWheelTextView.setGravity(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).d);
-      localWheelTextView.setText(paramViewGroup);
-      return paramView;
+      if (((JSONObject)localObject).optInt("is_show_edit_card", 0) != 1) {
+        break label424;
+      }
+      bool1 = true;
+      localazpe.jdField_a_of_type_Boolean = bool1;
+      if (((JSONObject)localObject).optInt("tip_window_type", 0) != 0) {
+        break label429;
+      }
+      bool1 = true;
+      label303:
+      localazpe.jdField_b_of_type_Boolean = bool1;
+      if (((JSONObject)localObject).optInt("confirm_required", 0) != 1) {
+        break label434;
+      }
+    }
+    label424:
+    label429:
+    label434:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localazpe.jdField_c_of_type_Boolean = bool1;
+      if (localJSONObject.has("v"))
+      {
+        localJSONObject = localJSONObject.optJSONObject("v");
+        localazpe.f = localJSONObject.optString("l");
+        localazpe.d = localJSONObject.optString("bi");
+      }
+      localazpe.g = paramJSONObject.optString("u");
+      localazpe.h = bbcl.h(paramQQAppInterface, paramString, localazpe.g);
+      localazpe.jdField_a_of_type_Long = paramJSONObject.optLong("pubt");
+      localazpe.jdField_b_of_type_Int = paramJSONObject.optInt("read_num");
+      return localazpe;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label303;
     }
   }
 }

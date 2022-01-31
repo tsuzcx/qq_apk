@@ -1,105 +1,114 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.CardEntry;
-import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry;
-import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem;
+import com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.3;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class spm
-  implements spo
 {
-  private String a;
+  public static int a;
+  private static spm jdField_a_of_type_Spm;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public spm()
+  private String a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "Q.qqstory:DiscoverManager";
+    if (paramInt == jdField_a_of_type_Int) {
+      return mzk.a("3408") + "3408" + File.separator + "loading" + File.separator;
+    }
+    return "";
   }
   
-  private QQStoryContext a()
+  public static spm a()
   {
-    return QQStoryContext.a();
+    if (jdField_a_of_type_Spm == null) {
+      jdField_a_of_type_Spm = new spm();
+    }
+    return jdField_a_of_type_Spm;
   }
   
-  public static List<? extends atmo> a(atmp paramatmp, Class<? extends atmo> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
+  private void a(boolean paramBoolean)
   {
-    return paramatmp.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
+    veg.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource , upzip : %s", Boolean.valueOf(paramBoolean));
+    mze.b("3408", bjae.a(), new spo(this, paramBoolean), paramBoolean, 0, true);
   }
   
-  private void a(CardItem paramCardItem)
+  private void b()
   {
-    atmp localatmp = a().a().createEntityManager();
-    localatmp.a().a();
-    try
+    veg.b("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "unzip now");
+    this.jdField_a_of_type_Boolean = true;
+    ThreadManager.getFileThreadHandler().post(new StoryAlbumResourceDownloader.3(this));
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    HashMap localHashMap = new HashMap();
+    Object localObject1 = new File(a(jdField_a_of_type_Int));
+    Object localObject2;
+    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
-      CardEntry localCardEntry1 = paramCardItem.toCardEntry();
-      paramCardItem = a(localatmp, CardEntry.class, CardEntry.class.getSimpleName(), CardEntry.getCardIdSelection(), new String[] { paramCardItem.cardId });
-      if (paramCardItem == null) {
-        return;
-      }
-      paramCardItem = paramCardItem.iterator();
-      while (paramCardItem.hasNext())
+      localObject1 = ((File)localObject1).listFiles();
+      if (localObject1 != null)
       {
-        CardEntry localCardEntry2 = (CardEntry)paramCardItem.next();
-        localCardEntry2.PBData = localCardEntry1.PBData;
-        localatmp.a(localCardEntry2);
-        urk.a(this.jdField_a_of_type_JavaLangString, "update db cardId=%s id=%d", localCardEntry2.cardId, Long.valueOf(localCardEntry2.getId()));
-      }
-    }
-    finally
-    {
-      localatmp.a().b();
-    }
-    localatmp.a().b();
-  }
-  
-  public DiscoverBannerVideoEntry a(String paramString)
-  {
-    paramString = a(QQStoryContext.a().a().createEntityManager(), DiscoverBannerVideoEntry.class, DiscoverBannerVideoEntry.class.getSimpleName(), "bannerId=?", new String[] { paramString });
-    if ((paramString != null) && (paramString.size() > 0)) {
-      return (DiscoverBannerVideoEntry)paramString.get(0);
-    }
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(String paramString, tbj paramtbj)
-  {
-    atmp localatmp = a().a().createEntityManager();
-    localatmp.a().a();
-    try
-    {
-      if (paramtbj.jdField_b_of_type_JavaUtilList.size() == paramtbj.jdField_a_of_type_JavaUtilList.size())
-      {
-        DiscoverBannerVideoEntry localDiscoverBannerVideoEntry = new DiscoverBannerVideoEntry();
-        localDiscoverBannerVideoEntry.bannerId = paramString;
-        localDiscoverBannerVideoEntry.totalCount = paramtbj.jdField_b_of_type_Int;
-        paramString = new ArrayList(paramtbj.jdField_b_of_type_JavaUtilList.size());
-        int i = 0;
-        while (i < paramtbj.jdField_b_of_type_JavaUtilList.size())
+        int j = localObject1.length;
+        i = 0;
+        while (i < j)
         {
-          DiscoverBannerVideoEntry.BannerInfo localBannerInfo = new DiscoverBannerVideoEntry.BannerInfo();
-          localBannerInfo.b = ((String)paramtbj.jdField_b_of_type_JavaUtilList.get(i));
-          localBannerInfo.jdField_a_of_type_JavaLangString = ((String)paramtbj.jdField_a_of_type_JavaUtilList.get(i));
-          paramString.add(localBannerInfo);
+          localObject2 = localObject1[i];
+          localHashMap.put(((File)localObject2).getName(), localObject2);
           i += 1;
         }
-        localDiscoverBannerVideoEntry.bannerInfoList = paramString;
-        localDiscoverBannerVideoEntry.nextCookie = paramtbj.jdField_a_of_type_JavaLangString;
-        localatmp.b(localDiscoverBannerVideoEntry);
       }
-      localatmp.a().c();
-      return;
     }
-    finally
+    localObject1 = new ArrayList();
+    int i = 0;
+    while (i < 50)
     {
-      localatmp.a().b();
+      localObject2 = (File)localHashMap.get(i + ".png");
+      if (localObject2 != null) {
+        ((List)localObject1).add(((File)localObject2).getAbsolutePath());
+      }
+      i += 1;
     }
+    this.jdField_a_of_type_JavaUtilList = ((List)localObject1);
   }
   
-  public void b() {}
+  public List<String> a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return new ArrayList();
+    }
+    if (paramInt == jdField_a_of_type_Int) {
+      return this.jdField_a_of_type_JavaUtilList;
+    }
+    return new ArrayList();
+  }
+  
+  public void a()
+  {
+    String str = a(jdField_a_of_type_Int);
+    boolean bool1 = mze.d("3408");
+    boolean bool2 = new File(str).exists();
+    if (bool1)
+    {
+      veg.d("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkAndUpdateResource , new version exist , unzip now !");
+      b();
+      return;
+    }
+    if (bool2)
+    {
+      veg.d("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkAndUpdateResource , old file exist , check but not unzip now!");
+      Bosses.get().postJob(new spn(this));
+      return;
+    }
+    veg.d("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkAndUpdateResource , old file not exist , check and unzip now!");
+    a(true);
+  }
 }
 
 

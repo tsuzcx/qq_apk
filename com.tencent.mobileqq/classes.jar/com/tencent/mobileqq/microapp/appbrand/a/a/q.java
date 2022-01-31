@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.appbrand.a.a;
 
 import android.text.TextUtils;
-import bace;
+import bbdj;
 import com.tencent.mobileqq.microapp.appbrand.utils.b;
 import com.tencent.mobileqq.microapp.webview.BaseAppBrandWebview;
 import org.json.JSONObject;
@@ -41,7 +41,7 @@ final class q
     if (b.a().g(this.e) != 2) {
       return f.a(this.f, this.b, this.c, null, "permission denied, open " + this.e, this.d);
     }
-    bace.d((String)localObject, b.a().d(this.e));
+    bbdj.d((String)localObject, b.a().d(this.e));
     localObject = new JSONObject();
     try
     {

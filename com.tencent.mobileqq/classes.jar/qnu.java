@@ -1,27 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
+import com.tencent.qphone.base.util.QLog;
 
-public class qnu
-  implements View.OnClickListener
+class qnu
+  extends osp
 {
-  public qnu(KandianProgressView paramKandianProgressView) {}
+  private qnu(qno paramqno) {}
   
-  public void onClick(View paramView)
+  public void f(boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_Qnv == null) {
-      return;
+    qno.b(this.a, paramBoolean);
+    if (paramBoolean) {
+      this.a.d();
     }
-    switch (paramView.getId())
+    for (;;)
     {
-    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsFloatWindowManager", 2, "onVideoFeedsFloatingWindowVisibilityChange: " + paramBoolean);
+      }
       return;
-    case 2131299428: 
-    case 2131299443: 
-      this.a.jdField_a_of_type_Qnv.a(this.a.jdField_a_of_type_AndroidOsBundle);
-      return;
+      this.a.e();
     }
-    this.a.jdField_a_of_type_Qnv.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle);
+  }
+  
+  public void i()
+  {
+    this.a.f();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsFloatWindowManager", 2, "onVideoFeedsFloatingWindowDismiss");
+    }
   }
 }
 

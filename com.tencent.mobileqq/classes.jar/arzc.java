@@ -1,38 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class arzc
-  implements apas
+  implements View.OnClickListener
 {
-  arzc(aryq paramaryq, String paramString, aryl paramaryl) {}
+  arzc(arza paramarza) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Aryl != null) && (this.jdField_a_of_type_Aryl.a != null))
-    {
-      String str = this.jdField_a_of_type_Aryl.a.a();
-      arym localarym = this.jdField_a_of_type_Aryq.a(str);
-      if ((localarym != null) && (!localarym.a))
-      {
-        localarym.c = paramInt;
-        this.jdField_a_of_type_Aryq.a(str, localarym);
-        aryq.a(this.jdField_a_of_type_Aryq, localarym, paramInt);
-      }
-    }
+    this.a.b();
   }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadFile key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramBoolean);
-    }
-    aryq.a(this.jdField_a_of_type_Aryq, this.jdField_a_of_type_Aryl, paramBoolean);
-  }
-  
-  public void b(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arzc
  * JD-Core Version:    0.7.0.1
  */

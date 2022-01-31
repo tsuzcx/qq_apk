@@ -1,83 +1,49 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager.8;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class ansx
+  implements anse
 {
-  private ansy jdField_a_of_type_Ansy;
-  private ansz jdField_a_of_type_Ansz;
-  private anta jdField_a_of_type_Anta;
-  private antb jdField_a_of_type_Antb;
+  private int jdField_a_of_type_Int;
   
-  public ansx(ansl paramansl)
-  {
-    this.jdField_a_of_type_Antb = new antb(this, paramansl);
-    this.jdField_a_of_type_Anta = new anta(this, paramansl);
-    this.jdField_a_of_type_Ansz = new ansz(this, paramansl);
-    this.jdField_a_of_type_Ansy = this.jdField_a_of_type_Antb;
-  }
+  public ansx(FavroamingManager.8 param8, List paramList) {}
   
-  public int a()
+  public void a(int paramInt, String paramString)
   {
-    return this.jdField_a_of_type_Ansy.a;
-  }
-  
-  public ansy a(int paramInt)
-  {
-    switch (paramInt)
+    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_Int += 1;
+    if (this.jdField_a_of_type_Int <= this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int)
     {
-    case 1: 
-    default: 
-      return this.jdField_a_of_type_Ansz;
-    case 0: 
-      return this.jdField_a_of_type_Antb;
-    }
-    return this.jdField_a_of_type_Anta;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_Ansy.a)
-    {
-      ansy localansy = a(paramInt);
-      if (localansy != null)
-      {
-        this.jdField_a_of_type_Ansy.b();
-        this.jdField_a_of_type_Ansy = localansy;
-        this.jdField_a_of_type_Ansy.a();
+      this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0.f();
+      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ansy != null) {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ansy.a(this.jdField_a_of_type_Int / this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
       }
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    b(paramInt1, paramInt2);
-    int i = this.jdField_a_of_type_Ansy.a;
-    if ((!this.jdField_a_of_type_Ansy.a(paramInt1, paramInt2)) && (QLog.isColorLevel())) {
-      QLog.e("LimitChatUiStateMachine", 2, "state " + i + " not handle event " + paramInt1 + ", subEvent " + paramInt2);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    a(paramInt, -1);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
+    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int) {
+      if (!anss.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0))
+      {
+        paramString = (String)this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
+        anss.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0, paramString, anss.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0));
+      }
     }
     do
     {
       return;
-    } while (this.jdField_a_of_type_Ansy.a == 0);
-    this.jdField_a_of_type_Ansy.c();
-    this.jdField_a_of_type_Ansy = this.jdField_a_of_type_Antb;
-    this.jdField_a_of_type_Ansy.a();
+      paramString = anss.s(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0).getHandler(ChatActivity.class);
+      if (paramString != null) {
+        paramString.obtainMessage(10).sendToTarget();
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ansy == null);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ansy.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ansx
  * JD-Core Version:    0.7.0.1
  */

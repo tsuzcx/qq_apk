@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import aipj;
+import ajch;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
 public class CmGameLauncher$3
   implements Runnable
 {
-  public CmGameLauncher$3(aipj paramaipj) {}
+  public CmGameLauncher$3(ajch paramajch) {}
   
   public void run()
   {
-    if (aipj.a(this.this$0) != null)
+    if (ajch.a(this.this$0) != null)
     {
-      aipj.a(this.this$0).setPreserveEGLContextOnPause(true);
-      aipj.a(this.this$0).onPause();
+      ajch.a(this.this$0).setPreserveEGLContextOnPause(true);
+      ajch.a(this.this$0).onPause();
     }
   }
 }

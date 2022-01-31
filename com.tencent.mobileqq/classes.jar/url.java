@@ -1,12 +1,42 @@
-public class url
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
+class url
+  extends sth<uqy, upw>
 {
-  public static void a(int paramInt, String paramString)
+  url(uqy paramuqy)
   {
-    urn localurn = new urn();
-    localurn.a(paramInt, 1);
-    localurn.a = paramString;
-    slv.a().a(localurn, new urm());
+    super(paramuqy);
   }
+  
+  public void a(@NonNull uqy paramuqy, @NonNull upw paramupw)
+  {
+    if ((!paramupw.jdField_a_of_type_Boolean) || (!paramupw.jdField_a_of_type_JavaLangString.equals(uqy.a(paramuqy))) || (paramupw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (uqy.a(paramuqy) == null))
+    {
+      veg.b(this.TAG, "ignore this like list event. %s.", paramupw.toString());
+      return;
+    }
+    veg.a(this.TAG, "receive like list event. %s.", paramupw.toString());
+    boolean bool2 = uqy.a(paramuqy);
+    if (paramupw.jdField_a_of_type_Int == 0) {}
+    for (boolean bool1 = false;; bool1 = true)
+    {
+      uqy.a(paramuqy).b(bool1, paramupw.b);
+      uqy.a(paramuqy).b(paramupw.jdField_a_of_type_JavaUtilList, true, bool1);
+      if (bool2 != bool1) {
+        break;
+      }
+      paramuqy.a();
+      return;
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return upw.class;
+  }
+  
+  public void b(@NonNull uqy paramuqy, @NonNull upw paramupw) {}
 }
 
 

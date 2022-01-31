@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import ogy;
-import oox;
+import osj;
+import ozy;
 
 class ReadInJoyProteusFamilyListViewGroup$6
   implements Runnable
@@ -10,9 +10,9 @@ class ReadInJoyProteusFamilyListViewGroup$6
   
   public void run()
   {
-    oox localoox = ogy.a().a();
-    if (localoox != null) {
-      localoox.b(this.this$0.a);
+    ozy localozy = osj.a().a();
+    if (localozy != null) {
+      localozy.b(this.this$0.a);
     }
   }
 }

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import ohb;
-import oph;
+import osm;
+import pai;
 
 public class FastWebModule$5
   implements Runnable
 {
-  public FastWebModule$5(oph paramoph) {}
+  public FastWebModule$5(pai parampai) {}
   
   public void run()
   {
-    ohb.a().d();
+    osm.a().d();
   }
 }
 

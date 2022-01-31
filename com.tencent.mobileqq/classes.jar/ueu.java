@@ -1,181 +1,185 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
-import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class ueu
-  extends vpv<ucw>
-  implements View.OnClickListener
 {
-  public static final String KEY = "BannerProfileSegment";
-  private ucg jdField_a_of_type_Ucg;
-  private ucw jdField_a_of_type_Ucw;
-  private unw jdField_a_of_type_Unw;
+  private int jdField_a_of_type_Int;
+  private List<uev> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Queue<uev> jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private int b;
   
-  public ueu(Activity paramActivity)
+  public uev a()
   {
-    super(paramActivity);
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ucw != null) && (this.jdField_a_of_type_Ucw.g())) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View a(int paramInt, unw paramunw, ViewGroup paramViewGroup)
-  {
-    if (!this.jdField_a_of_type_Ucw.g()) {
-      throw new IllegalStateException("bind view failed because it's not a banner feed.");
-    }
-    if (this.jdField_a_of_type_Ucw.a() == null)
+    try
     {
-      urk.e("Q.qqstory.detail.BannerProfileSegment", "bind banner view failed because it's invalidate date.");
-      return paramunw.a();
-    }
-    paramViewGroup = this.jdField_a_of_type_Ucw.a();
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramunw.a(2131307520);
-    ImageView localImageView1 = (ImageView)paramunw.a(2131307507);
-    TextView localTextView1 = (TextView)paramunw.a(2131307508);
-    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramunw.a(2131307510);
-    TextView localTextView2 = (TextView)paramunw.a(2131307546);
-    TextView localTextView3 = (TextView)paramunw.a(2131307504);
-    ImageView localImageView2 = (ImageView)paramunw.a(2131307503);
-    TextView localTextView4 = (TextView)paramunw.a(2131307511);
-    StoryQIMBadgeView localStoryQIMBadgeView = (StoryQIMBadgeView)paramunw.a(2131307123);
-    localRelativeLayout.setOnClickListener(this);
-    vms.b(localImageView1, paramViewGroup.getOwner().headUrl, 68, 68, bacm.a(1), "QQStory_main");
-    localStoryQIMBadgeView.a(paramViewGroup.getOwner());
-    localTextView1.setText(paramViewGroup.getOwner().getName());
-    localStoryUserBadgeView.setUnionID(paramViewGroup.getOwner().getUnionId(), 2);
-    if (TextUtils.isEmpty(paramViewGroup.blurb))
-    {
-      localTextView2.setVisibility(8);
-      if (!TextUtils.isEmpty(paramViewGroup.content)) {
-        break label417;
+      uev localuev = (uev)this.jdField_a_of_type_JavaUtilQueue.poll();
+      if (localuev != null) {
+        this.b -= localuev.jdField_a_of_type_JavaNioByteBuffer.remaining();
       }
-      localTextView4.setVisibility(8);
-      label245:
-      if (QQStoryContext.a())
+      return localuev;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    try
+    {
+      for (;;)
       {
-        localTextView3.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100758));
-        localTextView3.setBackgroundResource(2130845448);
+        uev localuev = (uev)this.jdField_a_of_type_JavaUtilQueue.poll();
+        if (localuev == null) {
+          break;
+        }
+        a(localuev);
       }
-      if (!uhf.a(paramViewGroup.getOwner())) {
-        break label435;
-      }
-      localTextView3.setVisibility(0);
-      localTextView3.setOnClickListener(this);
+      this.b = 0;
     }
-    for (;;)
-    {
-      float f = paramViewGroup.coverHeight * 1.0F / paramViewGroup.coverWidth;
-      paramInt = vms.a(this.jdField_a_of_type_AndroidContentContext) - vms.a(this.jdField_a_of_type_AndroidContentContext, 15.0F) * 2;
-      int i = (int)(f * paramInt);
-      localImageView2.getLayoutParams().width = paramInt;
-      localImageView2.getLayoutParams().height = i;
-      vms.a(localImageView2, paramViewGroup.coverUrl, paramInt / 2, i / 2, 10, vms.b, "QQStory_main");
-      localImageView2.setOnClickListener(this);
-      localTextView4.setOnClickListener(this);
-      return paramunw.a();
-      localTextView2.setText(paramViewGroup.blurb);
-      localTextView2.setVisibility(0);
-      break;
-      label417:
-      localTextView4.setVisibility(0);
-      localTextView4.setText(paramViewGroup.content);
-      break label245;
-      label435:
-      localTextView3.setVisibility(8);
-      localTextView3.setOnClickListener(null);
-    }
+    finally {}
   }
   
-  public String a()
+  /* Error */
+  public void a(ByteBuffer paramByteBuffer, long paramLong)
   {
-    return "BannerProfileSegment";
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: invokevirtual 47	java/nio/ByteBuffer:remaining	()I
+    //   6: aload_0
+    //   7: getfield 53	ueu:jdField_a_of_type_Int	I
+    //   10: if_icmple +20 -> 30
+    //   13: aload_0
+    //   14: getfield 25	ueu:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   17: invokeinterface 58 1 0
+    //   22: aload_0
+    //   23: aload_1
+    //   24: invokevirtual 47	java/nio/ByteBuffer:remaining	()I
+    //   27: putfield 53	ueu:jdField_a_of_type_Int	I
+    //   30: aload_0
+    //   31: getfield 25	ueu:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   34: invokeinterface 62 1 0
+    //   39: ifne +101 -> 140
+    //   42: aload_0
+    //   43: getfield 25	ueu:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   46: iconst_0
+    //   47: invokeinterface 66 2 0
+    //   52: checkcast 38	uev
+    //   55: astore 5
+    //   57: aload 5
+    //   59: getfield 41	uev:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   62: aload_1
+    //   63: invokevirtual 47	java/nio/ByteBuffer:remaining	()I
+    //   66: invokevirtual 70	java/nio/ByteBuffer:limit	(I)Ljava/nio/Buffer;
+    //   69: pop
+    //   70: aload 5
+    //   72: getfield 41	uev:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   75: invokevirtual 74	java/nio/ByteBuffer:mark	()Ljava/nio/Buffer;
+    //   78: pop
+    //   79: aload 5
+    //   81: getfield 41	uev:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   84: aload_1
+    //   85: invokevirtual 78	java/nio/ByteBuffer:put	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
+    //   88: pop
+    //   89: aload 5
+    //   91: getfield 41	uev:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   94: invokevirtual 81	java/nio/ByteBuffer:reset	()Ljava/nio/Buffer;
+    //   97: pop
+    //   98: aload 5
+    //   100: lload_2
+    //   101: putfield 84	uev:jdField_a_of_type_Long	J
+    //   104: aload_0
+    //   105: getfield 20	ueu:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
+    //   108: aload 5
+    //   110: invokeinterface 88 2 0
+    //   115: pop
+    //   116: aload_0
+    //   117: getfield 29	ueu:b	I
+    //   120: istore 4
+    //   122: aload_0
+    //   123: aload 5
+    //   125: getfield 41	uev:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   128: invokevirtual 47	java/nio/ByteBuffer:remaining	()I
+    //   131: iload 4
+    //   133: iadd
+    //   134: putfield 29	ueu:b	I
+    //   137: aload_0
+    //   138: monitorexit
+    //   139: return
+    //   140: new 38	uev
+    //   143: dup
+    //   144: aload_1
+    //   145: invokevirtual 47	java/nio/ByteBuffer:remaining	()I
+    //   148: invokespecial 91	uev:<init>	(I)V
+    //   151: astore 5
+    //   153: goto -96 -> 57
+    //   156: astore_1
+    //   157: aload_0
+    //   158: monitorexit
+    //   159: aload_1
+    //   160: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	161	0	this	ueu
+    //   0	161	1	paramByteBuffer	ByteBuffer
+    //   0	161	2	paramLong	long
+    //   120	14	4	i	int
+    //   55	97	5	localuev	uev
+    // Exception table:
+    //   from	to	target	type
+    //   2	30	156	finally
+    //   30	57	156	finally
+    //   57	137	156	finally
+    //   140	153	156	finally
   }
   
-  public unw a(int paramInt, ViewGroup paramViewGroup)
+  /* Error */
+  public void a(uev paramuev)
   {
-    this.jdField_a_of_type_Unw = new unw(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495620, paramViewGroup, false));
-    return this.jdField_a_of_type_Unw;
-  }
-  
-  public void a(ucg paramucg)
-  {
-    this.jdField_a_of_type_Ucg = paramucg;
-  }
-  
-  public void a(ucw paramucw)
-  {
-    urk.a("Q.qqstory.detail.BannerProfileSegment", "set data: detail feed item = %s.", paramucw);
-    this.jdField_a_of_type_Ucw = paramucw;
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_Unw == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_Unw.a().getMeasuredHeight();
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      return;
-      skt.a(this.jdField_a_of_type_AndroidContentContext, 4, this.jdField_a_of_type_Ucw.a.ownerId);
-      urp.a("home_page", "clk_head_nick", urp.a(this.jdField_a_of_type_Ucw.a), 0, new String[] { String.valueOf(urp.b(this.jdField_a_of_type_Ucw.a)), "2", this.jdField_a_of_type_Ucw.a.feedId, "" });
-      return;
-      ((sfz)tfy.a().a(98)).a(1, this.jdField_a_of_type_Ucw.a.ownerId, 0, 13);
-      this.jdField_a_of_type_Ucw.a().getOwner().isSubscribe = 1;
-      paramView.setVisibility(4);
-      urp.a("home_page", "follow_recom", 0, 0, new String[] { "3", "2", this.jdField_a_of_type_Ucw.a().getOwner().getUnionId(), this.jdField_a_of_type_Ucw.a().feedId });
-      return;
-      urk.a("Q.qqstory.detail.BannerProfileSegment", "click banner feed and jump to %s", this.jdField_a_of_type_Ucw.a().schema);
-      if (this.jdField_a_of_type_Ucw.a().schema.startsWith("mqqapi:"))
-      {
-        QQStoryContext.a();
-        bade.a((QQAppInterface)QQStoryContext.a(), this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ucw.a().schema).c();
-        return;
-      }
-      if (!vlt.a(this.jdField_a_of_type_AndroidContentContext))
-      {
-        bbmy.a(this.jdField_a_of_type_AndroidContentContext, 1, ajjy.a(2131635137), 0).a();
-        return;
-      }
-      paramView = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_Ucw.a().schema);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      return;
-      paramView = (String)paramView.getTag();
-    } while (TextUtils.isEmpty(paramView));
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramView);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: getfield 41	uev:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   6: invokevirtual 94	java/nio/ByteBuffer:capacity	()I
+    //   9: istore_2
+    //   10: aload_0
+    //   11: getfield 53	ueu:jdField_a_of_type_Int	I
+    //   14: istore_3
+    //   15: iload_2
+    //   16: iload_3
+    //   17: if_icmpeq +6 -> 23
+    //   20: aload_0
+    //   21: monitorexit
+    //   22: return
+    //   23: aload_1
+    //   24: getfield 41	uev:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   27: invokevirtual 97	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
+    //   30: pop
+    //   31: aload_0
+    //   32: getfield 25	ueu:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   35: aload_1
+    //   36: invokeinterface 98 2 0
+    //   41: pop
+    //   42: goto -22 -> 20
+    //   45: astore_1
+    //   46: aload_0
+    //   47: monitorexit
+    //   48: aload_1
+    //   49: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	50	0	this	ueu
+    //   0	50	1	paramuev	uev
+    //   9	9	2	i	int
+    //   14	4	3	j	int
+    // Exception table:
+    //   from	to	target	type
+    //   2	15	45	finally
+    //   23	42	45	finally
   }
 }
 

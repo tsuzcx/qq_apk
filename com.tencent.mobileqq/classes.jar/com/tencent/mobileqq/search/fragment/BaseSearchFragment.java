@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -15,15 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import avkj;
-import avli;
-import avol;
-import avuz;
-import avva;
-import avvn;
-import avvo;
-import awqx;
-import azwg;
+import awkc;
+import awlb;
+import awoe;
+import awus;
+import awut;
+import awvg;
+import awvh;
+import axqw;
+import baxk;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -41,18 +41,18 @@ import com.tencent.widget.ListView;
 import cooperation.qqfav.globalsearch.FavoriteSearchActivity;
 import java.util.List;
 
-public abstract class BaseSearchFragment<M extends avol>
+public abstract class BaseSearchFragment<M extends awoe>
   extends Fragment
-  implements Handler.Callback, avva<M>
+  implements Handler.Callback, awut<M>
 {
   private long a;
   public Handler a;
-  protected View a;
+  public View a;
   protected LinearLayout a;
   protected TextView a;
-  public avkj a;
-  public avuz a;
-  public azwg a;
+  public awkc a;
+  public awus a;
+  public baxk a;
   protected QQAppInterface a;
   protected ListView a;
   protected View b;
@@ -79,9 +79,9 @@ public abstract class BaseSearchFragment<M extends avol>
     return 0;
   }
   
-  protected abstract avkj a();
+  protected abstract awkc a();
   
-  protected abstract avuz a();
+  protected abstract awus a();
   
   protected String a()
   {
@@ -115,22 +115,22 @@ public abstract class BaseSearchFragment<M extends avol>
     if ((localFragmentActivity instanceof BaseSearchActivity))
     {
       bool = ((BaseSearchActivity)localFragmentActivity).jdField_b_of_type_Boolean;
-      h_(false);
-      if ((!TextUtils.isEmpty(paramString)) || (bool) || (this.jdField_a_of_type_Avkj == null)) {
+      g_(false);
+      if ((!TextUtils.isEmpty(paramString)) || (bool) || (this.jdField_a_of_type_Awkc == null)) {
         break label188;
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_d_of_type_AndroidViewView.setVisibility(8);
       this.jdField_c_of_type_AndroidViewView.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      g_(false);
       h_(false);
-      i_(false);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_Avuz.b();
+      this.jdField_a_of_type_Awus.b();
       a();
-      if (this.jdField_a_of_type_Avkj != null)
+      if (this.jdField_a_of_type_Awkc != null)
       {
-        paramArrayOfByte = this.jdField_a_of_type_Avkj;
+        paramArrayOfByte = this.jdField_a_of_type_Awkc;
         this.jdField_c_of_type_JavaUtilList = null;
         paramArrayOfByte.a(null);
       }
@@ -165,14 +165,14 @@ public abstract class BaseSearchFragment<M extends avol>
         localBundle.putString("search_restrict_uin", ((BaseSearchActivity)localFragmentActivity).jdField_c_of_type_JavaLangString);
         localBundle.putBoolean("search_restrict_empty", bool);
         localBundle.putInt("search_restrict_uintype", ((BaseSearchActivity)localFragmentActivity).jdField_c_of_type_Int);
-        this.jdField_a_of_type_Avuz.a(new avvn(paramString, paramArrayOfByte, localBundle), this);
+        this.jdField_a_of_type_Awus.a(new awvg(paramString, paramArrayOfByte, localBundle), this);
         return;
-        this.jdField_a_of_type_Avuz.b();
+        this.jdField_a_of_type_Awus.b();
         break;
-        this.jdField_a_of_type_Avuz.c();
+        this.jdField_a_of_type_Awus.c();
         break;
       }
-      this.jdField_a_of_type_Avuz.a(new avvn(paramString, paramArrayOfByte), this);
+      this.jdField_a_of_type_Awus.a(new awvg(paramString, paramArrayOfByte), this);
       return;
     }
   }
@@ -205,18 +205,18 @@ public abstract class BaseSearchFragment<M extends avol>
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
   }
   
-  public void a(List<M> paramList, avvo paramavvo)
+  public void a(List<M> paramList, awvh paramawvh)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GroupSearchFragment", 2, new Object[] { "onFinish with respData:", paramavvo.toString() });
+      QLog.d("GroupSearchFragment", 2, new Object[] { "onFinish with respData:", paramawvh.toString() });
     }
-    if (paramavvo.a(this.jdField_c_of_type_JavaLangString)) {
-      a(paramList, paramavvo.jdField_a_of_type_Int);
+    if (paramawvh.a(this.jdField_c_of_type_JavaLangString)) {
+      a(paramList, paramawvh.jdField_a_of_type_Int);
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("GroupSearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramavvo.jdField_a_of_type_JavaLangString, " keyword2:", this.jdField_c_of_type_JavaLangString });
+    QLog.d("GroupSearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramawvh.jdField_a_of_type_JavaLangString, " keyword2:", this.jdField_c_of_type_JavaLangString });
   }
   
   protected boolean a()
@@ -226,7 +226,7 @@ public abstract class BaseSearchFragment<M extends avol>
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Avkj == null) || (this.jdField_a_of_type_Avkj.getCount() == 0))
+    if ((this.jdField_a_of_type_Awkc == null) || (this.jdField_a_of_type_Awkc.getCount() == 0))
     {
       this.jdField_d_of_type_AndroidViewView.setVisibility(0);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
@@ -236,7 +236,7 @@ public abstract class BaseSearchFragment<M extends avol>
   protected void b(List<M> paramList)
   {
     c();
-    this.jdField_a_of_type_Avkj.a(paramList);
+    this.jdField_a_of_type_Awkc.a(paramList);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
   }
   
@@ -248,7 +248,7 @@ public abstract class BaseSearchFragment<M extends avol>
     {
       localView.setVisibility(i);
       this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-      i_(false);
+      h_(false);
       return;
     }
   }
@@ -256,20 +256,20 @@ public abstract class BaseSearchFragment<M extends avol>
   protected void c(List<M> paramList)
   {
     c();
-    this.jdField_a_of_type_Avkj.a(paramList);
+    this.jdField_a_of_type_Awkc.a(paramList);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    if (this.jdField_a_of_type_Avkj.getCount() <= 0) {
+    if (this.jdField_a_of_type_Awkc.getCount() <= 0) {
       if ((getActivity() instanceof PublicAcntSearchActivity)) {
-        i_(false);
+        h_(false);
       }
     }
     for (;;)
     {
       VADHelper.a(getActivity());
       return;
-      i_(true);
-      continue;
       h_(true);
+      continue;
+      g_(true);
     }
   }
   
@@ -278,8 +278,8 @@ public abstract class BaseSearchFragment<M extends avol>
     if (this.e != paramBoolean)
     {
       this.e = paramBoolean;
-      if ((this.jdField_a_of_type_Avuz != null) && ((this.jdField_a_of_type_Avuz instanceof GroupSearchEngine))) {
-        ((GroupSearchEngine)this.jdField_a_of_type_Avuz).a(paramBoolean);
+      if ((this.jdField_a_of_type_Awus != null) && ((this.jdField_a_of_type_Awus instanceof GroupSearchEngine))) {
+        ((GroupSearchEngine)this.jdField_a_of_type_Awus).a(paramBoolean);
       }
     }
   }
@@ -289,14 +289,14 @@ public abstract class BaseSearchFragment<M extends avol>
     if (QLog.isColorLevel()) {
       QLog.d("GroupSearchFragment", 2, "onSearchTimeout");
     }
-    if (this.jdField_a_of_type_Avkj.getCount() <= 0)
+    if (this.jdField_a_of_type_Awkc.getCount() <= 0)
     {
       c();
-      i_(true);
+      h_(true);
     }
   }
   
-  public void h_(boolean paramBoolean)
+  public void g_(boolean paramBoolean)
   {
     TextView localTextView;
     if (this.jdField_c_of_type_AndroidWidgetTextView != null)
@@ -312,6 +312,20 @@ public abstract class BaseSearchFragment<M extends avol>
       localTextView.setVisibility(i);
       return;
     }
+  }
+  
+  protected void h_(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131370877)).setText(this.jdField_c_of_type_JavaLangString);
+      this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      g_(false);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -331,20 +345,6 @@ public abstract class BaseSearchFragment<M extends avol>
     }
   }
   
-  protected void i_(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131305204)).setText(this.jdField_c_of_type_JavaLangString);
-      this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      h_(false);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-  }
-  
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
@@ -359,50 +359,50 @@ public abstract class BaseSearchFragment<M extends avol>
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Avuz = a();
-    if ((this.e) && (this.jdField_a_of_type_Avuz != null) && ((this.jdField_a_of_type_Avuz instanceof GroupSearchEngine))) {
-      ((GroupSearchEngine)this.jdField_a_of_type_Avuz).a(true);
+    this.jdField_a_of_type_Awus = a();
+    if ((this.e) && (this.jdField_a_of_type_Awus != null) && ((this.jdField_a_of_type_Awus instanceof GroupSearchEngine))) {
+      ((GroupSearchEngine)this.jdField_a_of_type_Awus).a(true);
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2131495469, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramViewGroup.findViewById(2131303596));
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new avli(this));
-    this.jdField_b_of_type_AndroidViewView = paramViewGroup.findViewById(2131301853);
+    paramViewGroup = paramLayoutInflater.inflate(2131561056, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramViewGroup.findViewById(2131369266));
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new awlb(this));
+    this.jdField_b_of_type_AndroidViewView = paramViewGroup.findViewById(2131367465);
     paramBundle = this.jdField_b_of_type_AndroidViewView;
     int i;
     if (a())
     {
       i = 0;
       paramBundle.setVisibility(i);
-      ((TextView)paramViewGroup.findViewById(2131301817)).setText(a());
-      this.jdField_d_of_type_AndroidViewView = paramViewGroup.findViewById(2131298447);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131305205));
-      paramBundle = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131305207);
+      ((TextView)paramViewGroup.findViewById(2131367427)).setText(a());
+      this.jdField_d_of_type_AndroidViewView = paramViewGroup.findViewById(2131364004);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131370878));
+      paramBundle = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131370880);
       if (!(paramLayoutInflater.getContext() instanceof ContactSearchActivity)) {
         break label351;
       }
-      paramBundle.setText(ajjy.a(2131635261));
+      paramBundle.setText(ajyc.a(2131701045));
     }
     for (;;)
     {
-      paramBundle = paramLayoutInflater.inflate(2131495260, null, false);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131300966));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131635262));
+      paramBundle = paramLayoutInflater.inflate(2131560839, null, false);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131366576));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131701046));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131305197));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131370870));
       this.jdField_a_of_type_ComTencentWidgetListView.addFooterView(paramBundle);
-      paramBundle = paramLayoutInflater.inflate(2131494566, null, false);
-      this.jdField_c_of_type_AndroidViewView = paramBundle.findViewById(2131300966);
+      paramBundle = paramLayoutInflater.inflate(2131560138, null, false);
+      this.jdField_c_of_type_AndroidViewView = paramBundle.findViewById(2131366576);
       this.jdField_c_of_type_AndroidViewView.setVisibility(8);
       this.jdField_a_of_type_ComTencentWidgetListView.addFooterView(paramBundle);
-      paramLayoutInflater = paramLayoutInflater.inflate(2131495260, null, false);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131300966));
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(ajjy.a(2131635267));
+      paramLayoutInflater = paramLayoutInflater.inflate(2131560839, null, false);
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131366576));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(ajyc.a(2131701051));
       this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getActivity().getResources().getColor(2131101338));
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getActivity().getResources().getColor(2131166933));
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_ComTencentWidgetListView.addFooterView(paramLayoutInflater);
       this.jdField_a_of_type_AndroidViewView = paramViewGroup;
@@ -411,15 +411,15 @@ public abstract class BaseSearchFragment<M extends avol>
       break;
       label351:
       if (((paramLayoutInflater.getContext() instanceof MessageSearchActivity)) || ((paramLayoutInflater.getContext() instanceof FTSEntitySearchActivity))) {
-        paramBundle.setText(ajjy.a(2131635263));
+        paramBundle.setText(ajyc.a(2131701047));
       } else if ((paramLayoutInflater.getContext() instanceof FunctionSearchActivity)) {
         paramBundle.setText(a());
       } else if ((paramLayoutInflater.getContext() instanceof FileSearchActivity)) {
-        paramBundle.setText(ajjy.a(2131635260));
+        paramBundle.setText(ajyc.a(2131701044));
       } else if ((paramLayoutInflater.getContext() instanceof FavoriteSearchActivity)) {
-        paramBundle.setText(ajjy.a(2131635264));
+        paramBundle.setText(ajyc.a(2131701048));
       } else if ((paramLayoutInflater.getContext() instanceof PublicAcntSearchActivity)) {
-        paramBundle.setText(ajjy.a(2131635265));
+        paramBundle.setText(ajyc.a(2131701049));
       }
     }
   }
@@ -431,21 +431,21 @@ public abstract class BaseSearchFragment<M extends avol>
     do
     {
       return;
-      if (this.jdField_a_of_type_Azwg != null) {
-        this.jdField_a_of_type_Azwg.d();
+      if (this.jdField_a_of_type_Baxk != null) {
+        this.jdField_a_of_type_Baxk.d();
       }
-      awqx.b(null, "CliOper", "", "", "0X8005ECE", "0X8005ECE", a(), 0, String.valueOf(this.jdField_d_of_type_Int), "", this.jdField_c_of_type_JavaLangString, "");
+      axqw.b(null, "CliOper", "", "", "0X8005ECE", "0X8005ECE", a(), 0, String.valueOf(this.jdField_d_of_type_Int), "", this.jdField_c_of_type_JavaLangString, "");
     } while (!this.jdField_d_of_type_Boolean);
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Avuz.e();
+    this.jdField_a_of_type_Awus.e();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_Azwg = new azwg(super.getActivity(), super.getActivity().app);
-    this.jdField_a_of_type_Avkj = a();
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Avkj);
+    this.jdField_a_of_type_Baxk = new baxk(super.getActivity(), super.getActivity().app);
+    this.jdField_a_of_type_Awkc = a();
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Awkc);
     c();
     if ((super.getActivity() instanceof BaseSearchActivity)) {}
     for (boolean bool = ((BaseSearchActivity)super.getActivity()).jdField_b_of_type_Boolean;; bool = false)

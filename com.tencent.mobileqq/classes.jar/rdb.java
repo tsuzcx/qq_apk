@@ -1,25 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
-import com.tencent.image.URLDrawableHandler;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
 public class rdb
-  implements URLDrawableHandler
+  extends AnimatorListenerAdapter
 {
-  public rdb(RunningJob paramRunningJob) {}
+  public rdb(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void doCancel() {}
-  
-  public boolean isCancelled()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return false;
+    super.onAnimationEnd(paramAnimator);
+    ReadInJoyListViewGroup.a(this.a).setLayerType(0, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
+    }
   }
   
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
-  
-  public void publishProgress(int paramInt) {}
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+  }
 }
 
 

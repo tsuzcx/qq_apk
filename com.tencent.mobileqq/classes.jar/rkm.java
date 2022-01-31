@@ -1,24 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.widget.AbsListView;
 
-class rkm
-  implements Animation.AnimationListener
+public abstract interface rkm
 {
-  rkm(rkg paramrkg, ViewGroup paramViewGroup) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-    rkg.a(this.jdField_a_of_type_Rkg).getActivity().doOnBackPressed();
-    rkg.a(this.jdField_a_of_type_Rkg).getActivity().overridePendingTransition(0, 0);
-  }
+  public abstract void a(AbsListView paramAbsListView, int paramInt);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void b();
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

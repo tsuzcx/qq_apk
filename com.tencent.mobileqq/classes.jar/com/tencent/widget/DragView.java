@@ -15,9 +15,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
-import befj;
-import beii;
-import beij;
+import bfnd;
+import bfqc;
+import bfqd;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -30,8 +30,8 @@ public class DragView
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, this);
   private View jdField_a_of_type_AndroidViewView;
-  private beii jdField_a_of_type_Beii;
-  private beij jdField_a_of_type_Beij;
+  private bfqc jdField_a_of_type_Bfqc;
+  private bfqd jdField_a_of_type_Bfqd;
   public boolean a;
   private float jdField_b_of_type_Float;
   private AnimatorSet jdField_b_of_type_AndroidAnimationAnimatorSet;
@@ -57,8 +57,8 @@ public class DragView
   
   private void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_Beij != null) {
-      this.jdField_a_of_type_Beij.a(paramFloat);
+    if (this.jdField_a_of_type_Bfqd != null) {
+      this.jdField_a_of_type_Bfqd.a(paramFloat);
     }
   }
   
@@ -110,14 +110,14 @@ public class DragView
     if (paramAnimator == this.jdField_b_of_type_AndroidAnimationAnimatorSet)
     {
       this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Beij != null) {
-        this.jdField_a_of_type_Beij.F();
+      if (this.jdField_a_of_type_Bfqd != null) {
+        this.jdField_a_of_type_Bfqd.F();
       }
     }
-    while ((paramAnimator != this.jdField_a_of_type_AndroidAnimationAnimatorSet) || (this.jdField_a_of_type_Beij == null)) {
+    while ((paramAnimator != this.jdField_a_of_type_AndroidAnimationAnimatorSet) || (this.jdField_a_of_type_Bfqd == null)) {
       return;
     }
-    this.jdField_a_of_type_Beij.G();
+    this.jdField_a_of_type_Bfqd.G();
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -180,9 +180,9 @@ public class DragView
       int m = this.jdField_a_of_type_AndroidViewView.getHeight();
       int j = m;
       int i = k;
-      if (this.jdField_a_of_type_Beii != null)
+      if (this.jdField_a_of_type_Bfqc != null)
       {
-        paramMotionEvent2 = this.jdField_a_of_type_Beii.a();
+        paramMotionEvent2 = this.jdField_a_of_type_Bfqc.a();
         j = m;
         i = k;
         if (paramMotionEvent2 != null)
@@ -215,7 +215,7 @@ public class DragView
           float f1;
           float f2;
           if (QLog.isColorLevel()) {
-            QLog.d("DragView", 2, befj.a(localException));
+            QLog.d("DragView", 2, bfnd.a(localException));
           }
         }
       }
@@ -301,8 +301,8 @@ public class DragView
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Beij != null) {
-      this.jdField_a_of_type_Beij.H();
+    if (this.jdField_a_of_type_Bfqd != null) {
+      this.jdField_a_of_type_Bfqd.H();
     }
     return true;
   }
@@ -340,9 +340,9 @@ public class DragView
     }
   }
   
-  public void setDragChangeListener(beii parambeii)
+  public void setDragChangeListener(bfqc parambfqc)
   {
-    this.jdField_a_of_type_Beii = parambeii;
+    this.jdField_a_of_type_Bfqc = parambfqc;
   }
   
   public void setEnableDrag(boolean paramBoolean)
@@ -350,9 +350,9 @@ public class DragView
     this.jdField_d_of_type_Boolean = paramBoolean;
   }
   
-  public void setGestureChangeListener(beij parambeij)
+  public void setGestureChangeListener(bfqd parambfqd)
   {
-    this.jdField_a_of_type_Beij = parambeij;
+    this.jdField_a_of_type_Bfqd = parambfqd;
   }
   
   public void setOriginRect(Rect paramRect)

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.ar.view;
 
-import akkc;
-import akke;
-import akkj;
-import akkm;
-import akko;
-import akwq;
-import akwt;
-import akwu;
-import akxa;
-import akxb;
-import akxc;
-import akxd;
-import akxy;
-import akyb;
-import akyn;
 import akyo;
 import akyq;
-import akyr;
-import akys;
-import akyt;
+import akyv;
+import akyy;
+import akza;
+import allc;
+import allf;
+import allg;
+import allm;
+import alln;
+import allo;
+import allp;
+import almk;
+import almn;
+import almz;
+import alna;
+import alnc;
+import alnd;
+import alne;
+import alnf;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Rect;
@@ -35,10 +35,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import atid;
-import atik;
-import atip;
-import awqx;
+import augc;
+import augj;
+import augo;
+import axqw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
@@ -54,25 +54,25 @@ import mqq.os.MqqHandler;
 @TargetApi(11)
 public class ScanEntryProviderContainerView
   extends FrameLayout
-  implements akwt, akyn, atid, atip
+  implements allf, almz, augc, augo
 {
   private int jdField_a_of_type_Int = -1;
   private long jdField_a_of_type_Long;
-  private akkc jdField_a_of_type_Akkc;
-  private akwq jdField_a_of_type_Akwq;
-  private akwu jdField_a_of_type_Akwu;
-  private akxc jdField_a_of_type_Akxc;
-  private akyb jdField_a_of_type_Akyb = new akyb();
-  private akyr jdField_a_of_type_Akyr = new akyq(this);
-  private akys jdField_a_of_type_Akys;
+  private akyo jdField_a_of_type_Akyo;
+  private allc jdField_a_of_type_Allc;
+  private allg jdField_a_of_type_Allg;
+  private allo jdField_a_of_type_Allo;
+  private almn jdField_a_of_type_Almn = new almn();
+  private alnd jdField_a_of_type_Alnd = new alnc(this);
+  private alne jdField_a_of_type_Alne;
   protected Context a;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new akyo(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new alna(this);
   View jdField_a_of_type_AndroidViewView;
   FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private atik jdField_a_of_type_Atik;
+  private augj jdField_a_of_type_Augj;
   protected AppInterface a;
   private ARCommonConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
   private ScanEntryProviderView jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView;
@@ -107,45 +107,45 @@ public class ScanEntryProviderContainerView
     g();
   }
   
-  private void a(akxc paramakxc)
+  private void a(allo paramallo)
   {
     QLog.d("ScanEntryProviderContainerView", 2, "preparePromotionResource");
-    this.jdField_a_of_type_Akxc = paramakxc;
-    if ((!akke.a()) || (!this.b))
+    this.jdField_a_of_type_Allo = paramallo;
+    if ((!akyq.a()) || (!this.b))
     {
-      if ((this.jdField_a_of_type_Akxc instanceof akxb)) {
+      if ((this.jdField_a_of_type_Allo instanceof alln)) {
         ThreadManager.getUIHandler().postDelayed(new ScanEntryProviderContainerView.2(this), 1000L);
       }
       QLog.d("ScanEntryProviderContainerView", 2, "doTransferDoor device not support");
       return;
     }
-    if (this.jdField_a_of_type_Atik == null)
+    if (this.jdField_a_of_type_Augj == null)
     {
-      this.jdField_a_of_type_Atik = new atik((ScanTorchActivity)this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_Atik.a(this);
-      this.jdField_a_of_type_Atik.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      this.jdField_a_of_type_Augj = new augj((ScanTorchActivity)this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_Augj.a(this);
+      this.jdField_a_of_type_Augj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
     }
-    if ((this.jdField_a_of_type_Akxc instanceof akxb))
+    if ((this.jdField_a_of_type_Allo instanceof alln))
     {
-      paramakxc = ((akxb)this.jdField_a_of_type_Akxc).a;
+      paramallo = ((alln)this.jdField_a_of_type_Allo).a;
       a("doTransferDoor", null, false);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Atik.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramakxc);
+      this.jdField_a_of_type_Augj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramallo);
       return;
-      paramakxc = null;
+      paramallo = null;
     }
   }
   
   private void g()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131495069, null);
+    View localView = LayoutInflater.from(getContext()).inflate(2131560644, null);
     addView(localView);
     this.jdField_a_of_type_AndroidViewView = localView;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131309847));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131297809));
-    this.jdField_a_of_type_Akys = new akys(1);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131375606));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131363355));
+    this.jdField_a_of_type_Alne = new alne(1);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
   }
   
@@ -156,14 +156,14 @@ public class ScanEntryProviderContainerView
     }
   }
   
-  public akwq a()
+  public allc a()
   {
-    return this.jdField_a_of_type_Akwq;
+    return this.jdField_a_of_type_Allc;
   }
   
-  public akwu a()
+  public allg a()
   {
-    return this.jdField_a_of_type_Akwu;
+    return this.jdField_a_of_type_Allg;
   }
   
   public RelativeLayout a()
@@ -171,9 +171,9 @@ public class ScanEntryProviderContainerView
     return (RelativeLayout)this.jdField_a_of_type_AndroidViewView;
   }
   
-  public atik a()
+  public augj a()
   {
-    return this.jdField_a_of_type_Atik;
+    return this.jdField_a_of_type_Augj;
   }
   
   public ARCommonConfigInfo a()
@@ -183,30 +183,30 @@ public class ScanEntryProviderContainerView
   
   public void a()
   {
-    this.jdField_a_of_type_Akys.a();
-    int[] arrayOfInt = this.jdField_a_of_type_Akys.a();
-    String[] arrayOfString = this.jdField_a_of_type_Akys.a();
-    int n = this.jdField_a_of_type_Akys.a();
+    this.jdField_a_of_type_Alne.a();
+    int[] arrayOfInt = this.jdField_a_of_type_Alne.a();
+    String[] arrayOfString = this.jdField_a_of_type_Alne.a();
+    int n = this.jdField_a_of_type_Alne.a();
     int k = 0;
     while (k < arrayOfInt.length)
     {
-      akyt localakyt = this.jdField_a_of_type_Akys.a(k);
+      alnf localalnf = this.jdField_a_of_type_Alne.a(k);
       ImageView localImageView = (ImageView)findViewById(arrayOfInt[k]);
-      Object localObject = this.jdField_a_of_type_Akys.a(k);
+      Object localObject = this.jdField_a_of_type_Alne.a(k);
       if (localObject == null)
       {
         k += 1;
       }
       else
       {
-        if (localakyt.jdField_a_of_type_Int == 1) {}
+        if (localalnf.jdField_a_of_type_Int == 1) {}
         for (int m = n - 1;; m = 0)
         {
-          localObject = new akxy((int[])localObject, localImageView, m);
-          localImageView.setTag(Integer.valueOf(localakyt.jdField_a_of_type_Int));
+          localObject = new almk((int[])localObject, localImageView, m);
+          localImageView.setTag(Integer.valueOf(localalnf.jdField_a_of_type_Int));
           localImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
           localImageView.setContentDescription(arrayOfString[k]);
-          this.jdField_a_of_type_Akyb.a(localakyt.jdField_a_of_type_Int, (akxy)localObject);
+          this.jdField_a_of_type_Almn.a(localalnf.jdField_a_of_type_Int, (almk)localObject);
           break;
         }
       }
@@ -217,7 +217,7 @@ public class ScanEntryProviderContainerView
   {
     paramBundle.getBoolean("COLD_START", false);
     int k = paramBundle.getInt("fromSource", 1);
-    int m = this.jdField_a_of_type_Akys.a(paramInt);
+    int m = this.jdField_a_of_type_Alne.a(paramInt);
     QLog.i("ScanEntryProviderContainerView", 1, "showProviderEntry index=" + m);
     if (this.jdField_a_of_type_Int == m) {
       QLog.i("ScanEntryProviderContainerView", 1, "showProviderEntry value equal return");
@@ -243,7 +243,7 @@ public class ScanEntryProviderContainerView
           ((ScanEntryProviderView)localObject).a(paramBundle);
           ((ScanEntryProviderView)localObject).setRectAreas(this.jdField_a_of_type_AndroidGraphicsRect);
           if (paramInt == 1) {
-            ((QRScanEntryView)localObject).setVoiceScanStatusListener(this.jdField_a_of_type_Akyr);
+            ((QRScanEntryView)localObject).setVoiceScanStatusListener(this.jdField_a_of_type_Alnd);
           }
         }
         this.jdField_a_of_type_Int = m;
@@ -255,10 +255,10 @@ public class ScanEntryProviderContainerView
           if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) {
             this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo);
           }
-          if ((this.jdField_a_of_type_Akkc != null) && ((this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView instanceof ARScanEntryView))) {
-            ((ARScanEntryView)this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView).a(this.jdField_a_of_type_Akkc);
+          if ((this.jdField_a_of_type_Akyo != null) && ((this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView instanceof ARScanEntryView))) {
+            ((ARScanEntryView)this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView).a(this.jdField_a_of_type_Akyo);
           }
-          if ((paramInt == 3) || (!this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView.c())) {
+          if ((paramInt == 2) || (!this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView.c())) {
             break label392;
           }
           a(true);
@@ -269,9 +269,9 @@ public class ScanEntryProviderContainerView
         if (this.jdField_a_of_type_Int != 1) {
           break label405;
         }
-        awqx.b(null, "CliOper", "", "", "0X8008F23", "0X8008F23", 0, 0, Integer.toString(k), "0", "0", "");
+        axqw.b(null, "CliOper", "", "", "0X8008F23", "0X8008F23", 0, 0, Integer.toString(k), "0", "0", "");
         return;
-        ScanEntryProviderView localScanEntryProviderView = this.jdField_a_of_type_Akys.a(paramInt, this.jdField_a_of_type_AndroidContentContext, this);
+        ScanEntryProviderView localScanEntryProviderView = this.jdField_a_of_type_Alne.a(paramInt, this.jdField_a_of_type_AndroidContentContext, this);
         localObject = localScanEntryProviderView;
         if (localScanEntryProviderView == null) {
           break;
@@ -280,15 +280,15 @@ public class ScanEntryProviderContainerView
         this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localScanEntryProviderView);
         localObject = localScanEntryProviderView;
         break;
-        if (paramInt == 3) {
+        if (paramInt == 2) {
           a(false);
         }
       }
     } while (this.jdField_a_of_type_Int != 2);
-    awqx.b(null, "dc00898", "", "", "0X8009C7B", "0X8009C7B", 0, 0, "", "0", "0", "");
+    axqw.b(null, "dc00898", "", "", "0X8009C7B", "0X8009C7B", 0, 0, "", "0", "0", "");
   }
   
-  public void a(akkc paramakkc)
+  public void a(akyo paramakyo)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ScanEntryProviderContainerView", 2, "notifyPromotionEntryReady");
@@ -302,7 +302,7 @@ public class ScanEntryProviderContainerView
       if (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry = new PromotionEntry(this);
-        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramakkc);
+        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramakyo);
         return;
       }
       this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry.a(true);
@@ -310,12 +310,12 @@ public class ScanEntryProviderContainerView
     QLog.d("ScanEntryProviderContainerView", 2, "PromotionEntry has already exist");
   }
   
-  public void a(akkc paramakkc, boolean paramBoolean)
+  public void a(akyo paramakyo, boolean paramBoolean)
   {
-    QLog.d("ScanEntryProviderContainerView", 1, "onPromotionResComplete, promotionItem[" + paramakkc + "], ready[" + paramBoolean + "]isAlreadyEnterPromotion=" + c());
+    QLog.d("ScanEntryProviderContainerView", 1, "onPromotionResComplete, promotionItem[" + paramakyo + "], ready[" + paramBoolean + "]isAlreadyEnterPromotion=" + c());
     if ((this.h) || (!c())) {
       if (paramBoolean) {
-        this.jdField_a_of_type_Akkc = paramakkc;
+        this.jdField_a_of_type_Akyo = paramakyo;
       }
     }
     do
@@ -323,16 +323,16 @@ public class ScanEntryProviderContainerView
       return;
       if (paramBoolean)
       {
-        paramakkc = new ScanEntryProviderContainerView.4(this, paramakkc);
+        paramakyo = new ScanEntryProviderContainerView.4(this, paramakyo);
         if (Thread.currentThread() == Looper.getMainLooper().getThread())
         {
-          paramakkc.run();
+          paramakyo.run();
           return;
         }
-        ThreadManager.getUIHandler().post(paramakkc);
+        ThreadManager.getUIHandler().post(paramakyo);
         return;
       }
-      if ((paramakkc == null) && (c()))
+      if ((paramakyo == null) && (c()))
       {
         ThreadManager.getUIHandler().postDelayed(new ScanEntryProviderContainerView.5(this), 1000L);
         return;
@@ -341,7 +341,7 @@ public class ScanEntryProviderContainerView
     ((ARScanEntryView)this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView).e(true);
   }
   
-  public void a(akxc paramakxc, boolean paramBoolean)
+  public void a(allo paramallo, boolean paramBoolean)
   {
     QLog.i("ScanEntryProviderContainerView", 1, "showProviderEntry with bundle");
     Bundle localBundle = new Bundle();
@@ -351,10 +351,10 @@ public class ScanEntryProviderContainerView
     {
       bool = true;
       localBundle.putBoolean("hide_album", bool);
-      if (((paramakxc instanceof akxb)) || ((paramakxc instanceof akxd))) {
-        a(paramakxc);
+      if (((paramallo instanceof alln)) || ((paramallo instanceof allp))) {
+        a(paramallo);
       }
-      if ((!paramBoolean) && (paramakxc != null) && ((paramakxc == null) || (paramakxc.c))) {
+      if ((!paramBoolean) && (paramallo != null) && ((paramallo == null) || (paramallo.c))) {
         break label119;
       }
       if (paramBoolean)
@@ -370,21 +370,21 @@ public class ScanEntryProviderContainerView
       return;
       bool = false;
       break;
-      paramBoolean = paramakxc.c;
-      if ((paramakxc instanceof akxb))
+      paramBoolean = paramallo.c;
+      if ((paramallo instanceof alln))
       {
         localBundle.putInt("fromSource", 2);
-        a(2, akxa.a(localBundle));
+        a(3, allm.a(localBundle));
         return;
       }
     } while (!paramBoolean);
-    localBundle.putLong("recognitionMask", paramakxc.jdField_a_of_type_Long);
+    localBundle.putLong("recognitionMask", paramallo.jdField_a_of_type_Long);
     localBundle.putBoolean("NoLimitParams", false);
-    localBundle.putBoolean("enableARCloud", paramakxc.jdField_a_of_type_Boolean);
+    localBundle.putBoolean("enableARCloud", paramallo.jdField_a_of_type_Boolean);
     ((ViewGroup)this.jdField_a_of_type_AndroidViewView).removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     this.j = true;
     localBundle.putInt("fromSource", 2);
-    a(2, localBundle);
+    a(3, localBundle);
   }
   
   public void a(Rect paramRect)
@@ -434,7 +434,7 @@ public class ScanEntryProviderContainerView
     ((ARScanEntryView)this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView).a(paramString, true);
   }
   
-  public void a(String paramString, akkc paramakkc, boolean paramBoolean)
+  public void a(String paramString, akyo paramakyo, boolean paramBoolean)
   {
     QLog.d("ScanEntryProviderContainerView", 1, "enterTransferDoorMode[" + paramString + "], mIsTransferDoorMode[" + this.c + "], ready[" + paramBoolean + "]");
     this.c = true;
@@ -470,8 +470,8 @@ public class ScanEntryProviderContainerView
         if ((!this.d) || (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry != null) || (this.c)) {
           break;
         }
-      } while (this.jdField_a_of_type_Atik == null);
-      this.jdField_a_of_type_Atik.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      } while (this.jdField_a_of_type_Augj == null);
+      this.jdField_a_of_type_Augj.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
       return;
     } while (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry == null);
     PromotionEntry localPromotionEntry = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry;
@@ -513,23 +513,23 @@ public class ScanEntryProviderContainerView
     }
   }
   
-  public void b(akkc paramakkc)
+  public void b(akyo paramakyo)
   {
     Object localObject = new StringBuilder().append("onPromotionEntryClick ");
-    if (paramakkc != null) {}
+    if (paramakyo != null) {}
     for (boolean bool = true;; bool = false)
     {
       QLog.d("ScanEntryProviderContainerView", 1, bool);
-      if ((this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView != null) && (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry != null) && (paramakkc != null)) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView != null) && (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry != null) && (paramakyo != null)) {
         break;
       }
       return;
     }
-    if (akkj.a(false, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramakkc) != null) {
-      if (this.jdField_a_of_type_Atik == null)
+    if (akyv.a(false, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramakyo) != null) {
+      if (this.jdField_a_of_type_Augj == null)
       {
         QLog.d("ScanEntryProviderContainerView", 1, "operateBtnOnClick, 资源还没准备好");
-        akkm.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramakkc.a);
+        akyy.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramakyo.a);
         bool = false;
       }
     }
@@ -542,22 +542,22 @@ public class ScanEntryProviderContainerView
         {
           QLog.d("ScanEntryProviderContainerView", 1, "onPromotionEntryClick refuse,AREngine not ready");
           return;
-          QLog.w("ScanEntryProviderContainerView", 1, "operateBtnOnClick, 资源还没准备好, TotalProgress[" + this.jdField_a_of_type_Atik.a() + "], isDownloading[" + this.jdField_a_of_type_Atik.a() + "], isDownloadError[" + this.jdField_a_of_type_Atik.b() + "]");
-          this.jdField_a_of_type_Atik.c(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+          QLog.w("ScanEntryProviderContainerView", 1, "operateBtnOnClick, 资源还没准备好, TotalProgress[" + this.jdField_a_of_type_Augj.a() + "], isDownloading[" + this.jdField_a_of_type_Augj.a() + "], isDownloadError[" + this.jdField_a_of_type_Augj.b() + "]");
+          this.jdField_a_of_type_Augj.c(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
           bool = false;
           continue;
           bool = true;
         }
         else
         {
-          if (this.jdField_a_of_type_Akkc != null) {
-            ((ARScanEntryView)localObject).a(this.jdField_a_of_type_Akkc);
+          if (this.jdField_a_of_type_Akyo != null) {
+            ((ARScanEntryView)localObject).a(this.jdField_a_of_type_Akyo);
           }
-          ((ARScanEntryView)localObject).a("onPromotionEntryClick", paramakkc, bool);
+          ((ARScanEntryView)localObject).a("onPromotionEntryClick", paramakyo, bool);
           if (!bool)
           {
-            if (this.jdField_a_of_type_Atik != null) {
-              this.jdField_a_of_type_Atik.a(true);
+            if (this.jdField_a_of_type_Augj != null) {
+              this.jdField_a_of_type_Augj.a(true);
             }
             ((ARScanEntryView)localObject).a("operateBtnOnClick1", true);
           }
@@ -566,13 +566,13 @@ public class ScanEntryProviderContainerView
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry.a(false, paramakkc);
-      if (this.jdField_a_of_type_Atik != null) {
-        this.jdField_a_of_type_Atik.a(true);
+      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry.a(false, paramakyo);
+      if (this.jdField_a_of_type_Augj != null) {
+        this.jdField_a_of_type_Augj.a(true);
       }
-      a("onClickOperateEntry", paramakkc, bool);
+      a("onClickOperateEntry", paramakyo, bool);
       return;
-      int k = this.jdField_a_of_type_Akys.a(2);
+      int k = this.jdField_a_of_type_Alne.a(3);
       if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(k)))
       {
         localObject = (ARScanEntryView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(k));
@@ -580,9 +580,9 @@ public class ScanEntryProviderContainerView
         ((ScanEntryProviderView)localObject).c(true);
         this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(k));
       }
-      localObject = akxa.a(null);
-      ((Bundle)localObject).putString("Title", paramakkc.b);
-      a(2, (Bundle)localObject);
+      localObject = allm.a(null);
+      ((Bundle)localObject).putString("Title", paramakyo.b);
+      a(3, (Bundle)localObject);
     }
   }
   
@@ -618,9 +618,9 @@ public class ScanEntryProviderContainerView
   
   public boolean c()
   {
-    if (akke.a())
+    if (akyq.a())
     {
-      if ((this.jdField_a_of_type_Akxc instanceof akxb)) {
+      if ((this.jdField_a_of_type_Allo instanceof alln)) {
         return true;
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry != null) && (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry.jdField_a_of_type_Boolean))
@@ -653,18 +653,18 @@ public class ScanEntryProviderContainerView
     while (localIterator.hasNext()) {
       ((ScanEntryProviderView)((Map.Entry)localIterator.next()).getValue()).e();
     }
-    if (this.jdField_a_of_type_Atik != null)
+    if (this.jdField_a_of_type_Augj != null)
     {
-      this.jdField_a_of_type_Atik.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      this.jdField_a_of_type_Atik = null;
+      this.jdField_a_of_type_Augj.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      this.jdField_a_of_type_Augj = null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
       this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry = null;
     }
-    if (this.jdField_a_of_type_Akyb != null) {
-      this.jdField_a_of_type_Akyb.b();
+    if (this.jdField_a_of_type_Almn != null) {
+      this.jdField_a_of_type_Almn.b();
     }
     this.h = true;
   }
@@ -675,9 +675,9 @@ public class ScanEntryProviderContainerView
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void setRenderEngine(akwu paramakwu)
+  public void setRenderEngine(allg paramallg)
   {
-    this.jdField_a_of_type_Akwu = paramakwu;
+    this.jdField_a_of_type_Allg = paramallg;
   }
   
   public void setScanRect(Rect paramRect, boolean paramBoolean)
@@ -686,10 +686,10 @@ public class ScanEntryProviderContainerView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setUniformResManager(akwq paramakwq)
+  public void setUniformResManager(allc paramallc)
   {
-    this.jdField_a_of_type_Akwq = paramakwq;
-    this.jdField_a_of_type_Akwq.a(this);
+    this.jdField_a_of_type_Allc = paramallc;
+    this.jdField_a_of_type_Allc.a(this);
   }
 }
 

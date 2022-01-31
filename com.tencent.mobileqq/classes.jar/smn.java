@@ -1,99 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqAddFeedComment;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.Context;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 
 public class smn
-  extends soh
+  extends smk<smd, WSPushStrategyInfo>
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  CommentEntry jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
-  String jdField_a_of_type_JavaLangString;
-  soj jdField_a_of_type_Soj;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  String d;
-  
-  public smn(CommentEntry paramCommentEntry, soj paramsoj)
+  public smn(smd paramsmd)
   {
-    this(paramCommentEntry.feedId, paramCommentEntry.replierUnionId, paramCommentEntry.content, paramCommentEntry.fakeId, paramCommentEntry.pbType, paramCommentEntry.extras, paramCommentEntry.commentType, paramsoj);
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
+    super(paramsmd);
   }
   
-  public smn(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, String paramString4, int paramInt2, soj paramsoj)
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.d = paramString4;
-    this.jdField_a_of_type_Soj = paramsoj;
-    paramString1 = urp.a("home_page-comment_suc-d1");
-    if (TextUtils.isEmpty(paramString1)) {}
-    for (paramInt1 = 0;; paramInt1 = Integer.parseInt(paramString1))
-    {
-      this.jdField_a_of_type_Int = paramInt1;
-      return;
-    }
-  }
-  
-  public String a()
-  {
-    return sml.jdField_a_of_type_JavaLangString;
-  }
-  
-  public soi a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspAddFeedComment localRspAddFeedComment = new qqstory_service.RspAddFeedComment();
-    try
-    {
-      localRspAddFeedComment.mergeFrom(paramArrayOfByte);
-      return new smo(localRspAddFeedComment, this.jdField_a_of_type_Soj);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      urk.d("Q.qqstory:FeedCommentDataProvider", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqAddFeedComment localReqAddFeedComment = new qqstory_service.ReqAddFeedComment();
-    localReqAddFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    localReqAddFeedComment.content.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    localReqAddFeedComment.fake_id.set(this.jdField_a_of_type_Long);
-    localReqAddFeedComment.source.set(this.jdField_a_of_type_Int);
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localReqAddFeedComment.reply_union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    }
-    if (this.jdField_b_of_type_Int == 1) {
-      localReqAddFeedComment.type.set(1);
-    }
-    for (;;)
-    {
-      localReqAddFeedComment.comment_type.set(this.jdField_c_of_type_Int);
-      if (!TextUtils.isEmpty(this.d)) {
-        localReqAddFeedComment.extras.set(ByteStringMicro.copyFromUtf8(this.d));
-      }
-      return localReqAddFeedComment.toByteArray();
-      localReqAddFeedComment.type.set(0);
-    }
+    WSRecommendFragment.a(paramContext);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     smn
  * JD-Core Version:    0.7.0.1
  */

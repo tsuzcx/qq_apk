@@ -1,41 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class ameb
 {
-  private int a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public static ameb a(String paramString)
-  {
-    if (paramString == null) {}
-    do
-    {
-      return null;
-      try
-      {
-        ameb localameb = new ameb();
-        localameb.a = new JSONObject(paramString).optInt("pttWithTextSwitch", -1);
-        return localameb;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("PttWithTextSwitchBean", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return this.a == 1;
-  }
-  
-  public String toString()
-  {
-    return "open:" + this.a;
-  }
+  public ameb(BusinessCardEditActivity paramBusinessCardEditActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ameb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,74 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class aema
-  extends alzl<aelz>
+  extends aelu
 {
-  public int a()
+  public acvh a;
+  public Bitmap a;
+  public boolean a;
+  public Drawable[] a;
+  
+  public aema(String paramString)
   {
-    return 410;
+    super(paramString);
   }
   
-  @NonNull
-  public aelz a(int paramInt)
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    return new aelz();
-  }
-  
-  @Nullable
-  public aelz a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    if (paramRedPacketInfo != null)
     {
-      aelz localaelz = aelz.a(paramArrayOfalzs[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecConfigProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
-      }
-      return localaelz;
-    }
-    return null;
-  }
-  
-  public Class<aelz> a()
-  {
-    return aelz.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aelz paramaelz)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (QQAppInterface)localObject;
-      String str = ((QQAppInterface)localObject).c();
-      aemi.a(BaseApplicationImpl.getApplication(), str, paramaelz.a());
-      aemi.a((QQAppInterface)localObject, paramaelz.a());
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap;
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+      this.jdField_a_of_type_Acvh = paramRedPacketInfo.jdField_a_of_type_Acvh;
+      this.jdField_a_of_type_Boolean = paramRedPacketInfo.b;
     }
   }
   
   public boolean a()
   {
-    return super.a();
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) || (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null);
   }
 }
 

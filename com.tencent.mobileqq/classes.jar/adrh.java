@@ -1,15 +1,23 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class adrh
-  extends acju
+class adrh
+  implements aput
 {
-  long jdField_a_of_type_Long;
-  acmv jdField_a_of_type_Acmv;
-  public ahpa a;
-  public ImageView b;
-  public ImageView c;
-  public TextView d;
+  adrh(adqy paramadqy) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = new Bundle();
+    paramView.putString(bbqw.e, "QQ会员");
+    paramView.putString(bbqw.f, "LTMCLUB");
+    paramView.putString(bbqw.d, "1450000515");
+    paramView.putInt(bbqw.b, 3);
+    paramView.putString(bbqw.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    paramView.putString(bbqw.i, bbvz.a().c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    bbqw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView);
+  }
 }
 
 

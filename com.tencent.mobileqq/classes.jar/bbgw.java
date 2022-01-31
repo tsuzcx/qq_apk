@@ -1,56 +1,23 @@
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.text.method.MovementMethod;
-import android.view.MotionEvent;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.widget.TextView;
-import java.lang.reflect.Field;
+import android.view.View.OnClickListener;
 
-public class bbgw
-  extends LinkMovementMethod
+class bbgw
+  implements View.OnClickListener
 {
-  private static MovementMethod jdField_a_of_type_AndroidTextMethodMovementMethod;
-  private static Field jdField_a_of_type_JavaLangReflectField;
+  bbgw(bbgu parambbgu, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public static MovementMethod a()
+  public void onClick(View paramView)
   {
-    if (jdField_a_of_type_AndroidTextMethodMovementMethod == null) {
-      jdField_a_of_type_AndroidTextMethodMovementMethod = new bbgw();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbgu, 0);
     }
-    return jdField_a_of_type_AndroidTextMethodMovementMethod;
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getActionMasked() == 1) {}
-    try
-    {
-      if (jdField_a_of_type_JavaLangReflectField == null) {
-        jdField_a_of_type_JavaLangReflectField = View.class.getDeclaredField("mHasPerformedLongPress");
-      }
-      jdField_a_of_type_JavaLangReflectField.setAccessible(true);
-      boolean bool = jdField_a_of_type_JavaLangReflectField.getBoolean(paramTextView);
-      if (bool) {
-        return true;
-      }
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      localNoSuchFieldException.printStackTrace();
-      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        localIllegalAccessException.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_Bbgu.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbgw
  * JD-Core Version:    0.7.0.1
  */

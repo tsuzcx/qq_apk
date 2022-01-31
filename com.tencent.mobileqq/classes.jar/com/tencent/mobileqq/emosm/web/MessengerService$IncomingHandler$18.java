@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.emosm.web;
 
-import ancg;
-import anch;
-import andn;
 import android.os.Bundle;
 import android.os.Message;
-import aned;
-import atmo;
-import atmp;
+import ansr;
+import anss;
+import antv;
+import anul;
+import aukm;
+import aukn;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionBase;
@@ -26,7 +26,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$18
   extends IPicDownloadListener
 {
-  public MessengerService$IncomingHandler$18(aned paramaned, JSONObject paramJSONObject1, JSONObject paramJSONObject2, int paramInt, Bundle paramBundle, MessengerService paramMessengerService, Map paramMap, ancg paramancg, atmp paramatmp, andn paramandn, QQAppInterface paramQQAppInterface) {}
+  public MessengerService$IncomingHandler$18(anul paramanul, JSONObject paramJSONObject1, JSONObject paramJSONObject2, int paramInt, Bundle paramBundle, MessengerService paramMessengerService, Map paramMap, ansr paramansr, aukn paramaukn, antv paramantv, QQAppInterface paramQQAppInterface) {}
   
   public void onDone(List<CustomEmotionData> paramList1, List<CustomEmotionData> paramList2)
   {
@@ -61,7 +61,7 @@ public class MessengerService$IncomingHandler$18
               localObject2 = (VipComicFavorEmoStructMsgInfo)this.val$emoStructMsgInfoMap.get(((CustomEmotionData)localObject1).md5);
               this.val$fdb.a((CustomEmotionBase)localObject1);
               if (localObject2 != null) {
-                this.val$entityManager.b((atmo)localObject2);
+                this.val$entityManager.b((aukm)localObject2);
               }
             }
           }
@@ -101,7 +101,7 @@ public class MessengerService$IncomingHandler$18
       if (paramList2 != null) {
         paramList2.obtainMessage(10).sendToTarget();
       }
-      paramList2 = (anch)this.val$qqApp.getManager(103);
+      paramList2 = (anss)this.val$qqApp.getManager(103);
     } while (paramList2 == null);
     paramList2.b(paramList1);
   }

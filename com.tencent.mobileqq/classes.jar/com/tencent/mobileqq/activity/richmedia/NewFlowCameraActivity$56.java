@@ -92,7 +92,7 @@ class NewFlowCameraActivity$56
     //   187: aload_0
     //   188: getfield 16	com/tencent/mobileqq/activity/richmedia/NewFlowCameraActivity$56:a	Z
     //   191: aload 6
-    //   193: invokestatic 141	awjm:b	(ZLjava/util/HashMap;)Ljava/lang/String;
+    //   193: invokestatic 141	axis:b	(ZLjava/util/HashMap;)Ljava/lang/String;
     //   196: astore 5
     //   198: aload 5
     //   200: ifnull +259 -> 459
@@ -153,7 +153,7 @@ class NewFlowCameraActivity$56
     //   316: aload_0
     //   317: getfield 16	com/tencent/mobileqq/activity/richmedia/NewFlowCameraActivity$56:a	Z
     //   320: aload 6
-    //   322: invokestatic 161	awjm:a	(ZLjava/util/HashMap;)V
+    //   322: invokestatic 161	axis:a	(ZLjava/util/HashMap;)V
     //   325: new 112	java/lang/StringBuilder
     //   328: dup
     //   329: invokespecial 113	java/lang/StringBuilder:<init>	()V
@@ -240,7 +240,7 @@ class NewFlowCameraActivity$56
     //   515: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   518: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   521: invokestatic 183	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   524: invokestatic 188	awrn:a	(Landroid/content/Context;)Lawrn;
+    //   524: invokestatic 188	axrl:a	(Landroid/content/Context;)Laxrl;
     //   527: aconst_null
     //   528: ldc 190
     //   530: aload_0
@@ -249,7 +249,7 @@ class NewFlowCameraActivity$56
     //   535: lconst_0
     //   536: aload 6
     //   538: ldc 192
-    //   540: invokevirtual 195	awrn:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   540: invokevirtual 195	axrl:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   543: return
     //   544: astore 5
     //   546: goto -122 -> 424

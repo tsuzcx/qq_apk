@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry;
+import android.os.Bundle;
 
-public class atic
-  implements View.OnClickListener
+class atic
+  extends mxl
 {
-  public atic(PromotionEntry paramPromotionEntry, akkc paramakkc) {}
+  atic(athz paramathz, atig paramatig) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    awqx.b(null, "CliOper", "", "", "0X8009C6B", "0X8009C6B", 0, 0, this.jdField_a_of_type_Akkc.a, "0", "0", "");
-    PromotionEntry.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry).b(this.jdField_a_of_type_Akkc);
+    if (this.jdField_a_of_type_Atig != null) {
+      this.jdField_a_of_type_Atig.a(paramInt, paramArrayOfByte, paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atic
  * JD-Core Version:    0.7.0.1
  */

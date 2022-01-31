@@ -1,45 +1,45 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.FileDownloadMgrObserver.1;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Set;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aysy
-  implements Observer
 {
-  private final void a(Object paramObject)
+  public static aysy a;
+  
+  public static aysy a()
   {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    paramObject = (Object[])paramObject[1];
-    switch (i)
+    if (a == null) {}
+    try
     {
-    default: 
-      return;
+      if (a == null) {
+        a = new aysy();
+      }
+      return a;
     }
-    a((Set)paramObject[0]);
+    finally {}
   }
   
-  protected void a(Set<Long> paramSet) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public int a()
   {
-    if (paramObject == null) {
-      return;
-    }
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
+    return bbev.a(BaseApplication.getContext());
+  }
+  
+  public String a()
+  {
+    try
     {
-      new Handler(paramObservable).post(new TroopFileDownloadMgr.FileDownloadMgrObserver.1(this, paramObject));
-      return;
+      String str = AppNetConnInfo.getCurrentAPN();
+      return str;
     }
-    a(paramObject);
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aysy
  * JD-Core Version:    0.7.0.1
  */

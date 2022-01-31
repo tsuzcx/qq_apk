@@ -2,7 +2,7 @@ package cooperation.qzone.contentbox;
 
 import android.content.SharedPreferences;
 import android.os.Handler;
-import bexy;
+import bgfp;
 
 class TimeHeaderLayout$1
   implements Runnable
@@ -13,7 +13,7 @@ class TimeHeaderLayout$1
   {
     boolean[] arrayOfBoolean = new boolean[1];
     if (!this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.contains(TimeHeaderLayout.jdField_a_of_type_JavaLangString)) {
-      arrayOfBoolean[0] = bexy.g();
+      arrayOfBoolean[0] = bgfp.g();
     }
     for (;;)
     {

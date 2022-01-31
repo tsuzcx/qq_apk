@@ -1,15 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import java.util.List;
 
-class tfa
-  implements DialogInterface.OnDismissListener
+public abstract interface tfa
 {
-  tfa(tey paramtey) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.e();
-  }
+  public abstract void a(int paramInt, tfb paramtfb, List<TroopBarPOI> paramList);
 }
 
 

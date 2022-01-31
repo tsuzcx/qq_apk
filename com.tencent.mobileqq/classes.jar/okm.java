@@ -1,24 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class okm
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ViewBase.IBuilder
 {
-  public okm(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ViewBase build(VafContext paramVafContext)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = ReadInJoySelfFragment.a(this.a).getLayoutParams();
-    paramValueAnimator.height = i;
-    ReadInJoySelfFragment.a(this.a).setLayoutParams(paramValueAnimator);
+    return new okl(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     okm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.device.devicemgr;
 
-import xrh;
+import yak;
 
 public class SmartDeviceProxyMgr$3
   implements Runnable
 {
-  public SmartDeviceProxyMgr$3(xrh paramxrh, String paramString1, String paramString2, Boolean paramBoolean, int paramInt1, int paramInt2) {}
+  public SmartDeviceProxyMgr$3(yak paramyak, String paramString1, String paramString2, Boolean paramBoolean, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    xrh.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangBoolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    yak.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangBoolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
   }
 }
 

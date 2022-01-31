@@ -1,17 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.app.ProgressDialog;
+import android.content.Context;
 
-class bglu
-  implements View.OnTouchListener
+public class bglu
 {
-  bglu(bglt parambglt) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    this.a.a();
-    return false;
-  }
+  public ProgressDialog a;
+  public Context a;
+  public bgkx a;
+  public bgkz a;
+  public boolean a = true;
 }
 
 

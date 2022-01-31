@@ -1,19 +1,32 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-class bizu
-  implements sjq
+public class bizu
 {
-  bizu(bizt parambizt, PeakActivity paramPeakActivity, String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry) {}
-  
-  public void a(int paramInt, String paramString1, String paramString2)
+  public static AppInterface a()
   {
-    if (paramInt == 0)
+    try
     {
-      bizt.a(this.jdField_a_of_type_Bizt, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-      return;
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface)) {
+        return (QQAppInterface)localObject;
+      }
+      localObject = BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("peak");
+      if ((localObject instanceof PeakAppInterface))
+      {
+        localObject = (PeakAppInterface)localObject;
+        return localObject;
+      }
     }
-    bizt.a(this.jdField_a_of_type_Bizt, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    catch (Exception localException)
+    {
+      QLog.e("CaptureContext", 1, "getAppRuntime fail, ", localException);
+    }
+    return null;
   }
 }
 

@@ -1,33 +1,33 @@
 package dov.com.tencent.biz.qqstory.takevideo.vote;
 
 import android.view.View;
-import bijy;
-import biyc;
+import bkat;
+import bkoo;
 
 public class VoteDashItem$2
   implements Runnable
 {
-  public VoteDashItem$2(biyc parambiyc, bijy parambijy, boolean paramBoolean, View paramView, Runnable paramRunnable) {}
+  public VoteDashItem$2(bkoo parambkoo, bkat parambkat, boolean paramBoolean, View paramView, Runnable paramRunnable) {}
   
   public void run()
   {
-    bijy localbijy;
-    if (this.jdField_a_of_type_Bijy.jdField_a_of_type_Boolean != this.jdField_a_of_type_Boolean)
+    bkat localbkat;
+    if (this.jdField_a_of_type_Bkat.jdField_a_of_type_Boolean != this.jdField_a_of_type_Boolean)
     {
-      localbijy = this.jdField_a_of_type_Bijy;
-      if (this.jdField_a_of_type_Bijy.jdField_a_of_type_Boolean) {
+      localbkat = this.jdField_a_of_type_Bkat;
+      if (this.jdField_a_of_type_Bkat.jdField_a_of_type_Boolean) {
         break label69;
       }
     }
     label69:
     for (boolean bool = true;; bool = false)
     {
-      localbijy.jdField_a_of_type_Boolean = bool;
+      localbkat.jdField_a_of_type_Boolean = bool;
       this.jdField_a_of_type_AndroidViewView.invalidate();
       if (this.jdField_a_of_type_JavaLangRunnable != null) {
         this.jdField_a_of_type_JavaLangRunnable.run();
       }
-      biyc.a(this.this$0, false);
+      bkoo.a(this.this$0, false);
       return;
     }
   }

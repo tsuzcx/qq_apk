@@ -1,114 +1,31 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.widget.Switch;
 
-public class ainp
-  implements aioa
+class ainp
+  extends View.AccessibilityDelegate
 {
-  private aioq a;
+  ainp(ainm paramainm) {}
   
-  public ainp(aioq paramaioq)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    this.a = paramaioq;
-  }
-  
-  public int a()
-  {
-    if (this.a == null) {
-      return 0;
-    }
-    return this.a.b;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 0;
-  }
-  
-  public int a(aijf paramaijf, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat)
-  {
-    return 0;
-  }
-  
-  public int a(AppInterface paramAppInterface)
-  {
-    return 0;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmAudioManager", 2, "pause all music");
-    }
-    if (ainq.a != null) {
-      synchronized (ainq.a)
-      {
-        Iterator localIterator = ainq.a.iterator();
-        while (localIterator.hasNext())
-        {
-          ainq localainq = (ainq)localIterator.next();
-          if ((localainq != null) && (localainq.b() == a())) {
-            localainq.b(new JSONObject());
-          }
-        }
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, AppInterface paramAppInterface) {}
-  
-  public void a(int paramInt, String paramString) {}
-  
-  public int b(int paramInt)
-  {
-    return 0;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmAudioManager", 2, "resume all music");
-    }
-  }
-  
-  public void b(int paramInt, String paramString) {}
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmAudioManager", 2, "destroy all music");
-    }
-    if (ainq.a != null) {
-      synchronized (ainq.a)
-      {
-        Iterator localIterator = ainq.a.iterator();
-        while (localIterator.hasNext())
-        {
-          ainq localainq = (ainq)localIterator.next();
-          if ((localainq != null) && (localainq.b() == a()))
-          {
-            localainq.a();
-            localIterator.remove();
-          }
-        }
-      }
-    }
-    if (this.a != null)
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    if (paramView != null)
     {
-      this.a.a();
-      this.a = null;
+      paramView = (Switch)paramView.findViewById(2131363673);
+      if ((paramView != null) && (paramView.getVisibility() != 8))
+      {
+        paramAccessibilityNodeInfo.setCheckable(true);
+        paramAccessibilityNodeInfo.setChecked(paramView.isChecked());
+        paramAccessibilityNodeInfo.setClassName(Switch.class.getName());
+      }
     }
   }
-  
-  public void c(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ainp
  * JD-Core Version:    0.7.0.1
  */

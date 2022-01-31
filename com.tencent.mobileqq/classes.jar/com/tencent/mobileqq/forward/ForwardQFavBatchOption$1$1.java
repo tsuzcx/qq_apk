@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.forward;
 
-import apku;
-import bacg;
+import aqeh;
+import bbdl;
 
 class ForwardQFavBatchOption$1$1
   implements Runnable
@@ -10,7 +10,7 @@ class ForwardQFavBatchOption$1$1
   
   public void run()
   {
-    bacg.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.b, this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.a, this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.c, false, this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.this$0.jdField_a_of_type_AndroidAppActivity);
+    bbdl.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.jdField_b_of_type_JavaLangString, false, this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.this$0.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.jdField_b_of_type_Int);
   }
 }
 

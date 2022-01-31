@@ -1,14 +1,18 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.widget.AdapterView;
+
 public class rdu
+  extends oyg
 {
-  public final String a;
-  public final rdv a;
-  public final String b;
-  
-  public rdu(String paramString1, String paramString2)
+  public rdu(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Rdv = new rdv(paramString1, paramString2);
+    super(paramString);
+  }
+  
+  public void a(oya paramoya)
+  {
+    paramoya.a(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
   }
 }
 

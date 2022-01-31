@@ -1,30 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
-class abhs
-  implements DialogInterface.OnClickListener
+public class abhs
+  implements CompoundButton.OnCheckedChangeListener
 {
-  abhs(abhq paramabhq) {}
+  public abhs(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    if (!badq.d(this.a.a))
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      PhoneUnityChangeActivity.a(this.a.a, 2131629008);
+      axqw.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "System_icon", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131719381), "qqsetting_notify_icon_key", paramBoolean);
       return;
     }
-    if (this.a.a.b == null)
-    {
-      this.a.a.b = new abht(this);
-      this.a.a.app.registObserver(this.a.a.b);
-    }
-    PhoneUnityChangeActivity.a(this.a.a).a(true, false);
-    PhoneUnityChangeActivity.a(this.a.a, 2131653452, 0L, true);
-    awqx.b(this.a.a.app, "CliOper", "", "", "0X8005B81", "0X8005B81", 0, 0, "", "", "", "");
   }
 }
 

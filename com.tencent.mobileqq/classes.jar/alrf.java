@@ -1,81 +1,84 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import java.util.ArrayList;
+import java.util.List;
 
-public class alrf
+class alrf
+  extends BaseAdapter
 {
-  private static final alrf jdField_a_of_type_Alrf = new alrf();
-  private static String jdField_a_of_type_JavaLangString = alrf.class.getSimpleName();
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "motorola", "mot", "FIH", "Sony Ericsson", "samsung", "HTC", "HUN", "LGE", "alps", "OPPO", "TCL", "LENOVO", "ZTE", "Meizu", "Xiaomi", "HUAWEI", "TIANYU", "sprd", "K-Touch", "YuLong", "CoolPad", "Amazon", "Hisense", "Acer", "GIONEE", "Philips", "asus", "snda.com", "koobee", "AMOI", "Fason", "ainol", "Dell", "dlkjl12389", "haier", "sharp", "BBK", "nubia", "KONKA" };
-  private static final String[] b = { "MOTOROLA", "MOTOROLA", "MOTOROLA", "SONYERICSSON", "SAMSUNG", "HTC", "HTC", "LG", "OPPO", "OPPO", "TCL", "LENOVO", "ZTE", "MEIZU", "XIAOMI", "HUAWEI", "TIANYU", "TIANYU", "TIANYU", "COOLPAD", "COOLPAD", "AMAZON", "HISENSE", "ACER", "JINLI", "PHILIPS", "GOOGLE", "SHENGDA", "KUBI", "XIAXIN", "FANSHANG", "AINUO", "DELL", "DPD", "HAIER", "SHARP", "BBK", "NUBIA", "KONKA" };
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<alsb> jdField_a_of_type_JavaUtilList;
   
-  private alrf()
+  public alrf(alra paramalra, Context paramContext)
   {
-    int i = 0;
-    while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(jdField_a_of_type_ArrayOfJavaLangString[i].toUpperCase(), b[i]);
-      i += 1;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public alsb a(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return null;
     }
-    a();
+    return (alsb)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public static alrf a()
+  public void a(List<alsb> paramList)
   {
-    return jdField_a_of_type_Alrf;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
   }
   
-  private void a()
+  public int getCount()
   {
-    if (QLog.isColorLevel())
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "****** DeviceInfo  (+) *****");
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND_KEYS.len = " + jdField_a_of_type_ArrayOfJavaLangString.length);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND_NAMES.len = " + b.length);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "DeviceTypeName = " + a());
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "SubTagName = " + a() + "_" + Build.DISPLAY.replace(" ", "_").toUpperCase());
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "MODEL = " + Build.MODEL);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "SDK_INT = " + Build.VERSION.SDK_INT);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND = " + Build.BRAND);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "DEVICE = " + Build.DEVICE);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "DISPLAY = " + Build.DISPLAY);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "HARDWARE = " + Build.HARDWARE);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "MANUFACTURER = " + Build.MANUFACTURER);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "PRODUCT = " + Build.PRODUCT);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "TAGS = " + Build.TAGS);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "USER = " + Build.USER);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "TYPE = " + Build.TYPE);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "****** DeviceInfo (-) *****");
-    }
-  }
-  
-  public String a()
-  {
-    String str;
-    if (Build.MODEL.equalsIgnoreCase("K-Touch W619")) {
-      str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("TIANYU") + " " + Build.MODEL;
+      paramViewGroup = new alrh(this);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844080);
+      paramView = new ViewGroup.LayoutParams(MessageForArkApp.dp2px(50.0F), -1);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      paramView = new RelativeLayout.LayoutParams(MessageForArkApp.dp2px(28.0F), MessageForArkApp.dp2px(25.0F));
+      paramView.addRule(13);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup.jdField_a_of_type_AndroidWidgetImageView, paramView);
+      paramView = paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      return str.replace(" ", "_").replace("+", "").replace("(t)", "");
-      if ((Build.MODEL.equalsIgnoreCase("8150")) && (Build.BRAND.equalsIgnoreCase("COOLPAD"))) {
-        str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("COOLPAD") + " " + Build.MODEL;
-      } else {
-        str = (String)this.jdField_a_of_type_JavaUtilHashMap.get(Build.MANUFACTURER.toUpperCase()) + " " + Build.MODEL;
+      alsb localalsb = a(paramInt);
+      if ((localalsb != null) && (!TextUtils.isEmpty(localalsb.d))) {
+        ArkAppCacheMgr.getAppIcon(localalsb.a, new alrg(this, paramViewGroup));
       }
+      return paramView;
+      paramViewGroup = (alrh)paramView.getTag();
     }
-  }
-  
-  public String b()
-  {
-    return a() + "_" + Build.DISPLAY.replace(" ", "_").toUpperCase();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alrf
  * JD-Core Version:    0.7.0.1
  */

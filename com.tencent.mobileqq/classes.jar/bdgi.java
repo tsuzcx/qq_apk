@@ -1,23 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-
-public class bdgi
+public abstract interface bdgi
 {
-  private static Handler a = new Handler(Looper.getMainLooper());
+  public abstract void a(bdgj parambdgj);
   
-  public static void a(Runnable paramRunnable)
-  {
-    a.post(paramRunnable);
-  }
+  public abstract void b(bdgj parambdgj);
   
-  public static void a(Runnable paramRunnable, long paramLong)
-  {
-    a.postDelayed(paramRunnable, paramLong);
-  }
+  public abstract void c(bdgj parambdgj);
+  
+  public abstract void d(bdgj parambdgj);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdgi
  * JD-Core Version:    0.7.0.1
  */

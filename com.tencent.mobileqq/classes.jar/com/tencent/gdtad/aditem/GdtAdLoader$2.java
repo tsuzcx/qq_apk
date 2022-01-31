@@ -1,18 +1,18 @@
 package com.tencent.gdtad.aditem;
 
 import java.lang.ref.WeakReference;
-import yjm;
-import yjn;
+import ysq;
+import ysr;
 
 public class GdtAdLoader$2
   implements Runnable
 {
-  public GdtAdLoader$2(yjm paramyjm) {}
+  public GdtAdLoader$2(ysq paramysq) {}
   
   public void run()
   {
-    if ((yjm.a(this.this$0) != null) && (yjm.a(this.this$0).get() != null)) {
-      ((yjn)yjm.a(this.this$0).get()).onResponse(this.this$0);
+    if ((ysq.a(this.this$0) != null) && (ysq.a(this.this$0).get() != null)) {
+      ((ysr)ysq.a(this.this$0).get()).onResponse(this.this$0);
     }
   }
 }

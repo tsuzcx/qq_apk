@@ -1,14 +1,16 @@
-public final class atrk
-  extends atrh
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class atrk
+  implements DialogInterface.OnClickListener
 {
-  protected int c()
-  {
-    return 514;
-  }
+  atrk(atqu paramatqu) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atrk
  * JD-Core Version:    0.7.0.1
  */

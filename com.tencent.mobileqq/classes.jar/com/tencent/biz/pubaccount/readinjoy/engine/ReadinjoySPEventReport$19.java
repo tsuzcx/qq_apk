@@ -5,7 +5,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import rtr;
+import sgj;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class ReadinjoySPEventReport$19
@@ -57,7 +57,7 @@ public final class ReadinjoySPEventReport$19
         localAttributeList.att_value.set(this.b + "");
         localArrayList.add(localAttributeList);
       }
-      rtr.a(70, localArrayList);
+      sgj.a(70, localArrayList);
       return;
       label385:
       localAttributeList.att_value.set("1");

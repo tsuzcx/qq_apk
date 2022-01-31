@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import agqn;
-import agwi;
+import ahdc;
+import ahix;
 import android.view.View;
 import android.view.View.OnClickListener;
-import baip;
+import bbjw;
 import org.json.JSONObject;
 
 class HongBaoPanel$3
@@ -18,7 +18,7 @@ class HongBaoPanel$3
     {
       try
       {
-        paramView = (agqn)paramView.getTag();
+        paramView = (ahdc)paramView.getTag();
         if (paramView == null) {
           return;
         }
@@ -41,15 +41,15 @@ class HongBaoPanel$3
             }
           } while (paramView.jdField_a_of_type_OrgJsonJSONObject == null);
           paramView = paramView.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-        } while (baip.a(paramView));
-        agwi.b(this.this$0.mContext, paramView);
+        } while (bbjw.a(paramView));
+        ahix.b(this.this$0.mContext, paramView);
         return;
       }
       HongBaoPanel.access$200(this.this$0);
       return;
       paramView = paramView.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-    } while (baip.a(paramView));
-    agwi.b(this.this$0.mContext, paramView);
+    } while (bbjw.a(paramView));
+    ahix.b(this.this$0.mContext, paramView);
   }
 }
 

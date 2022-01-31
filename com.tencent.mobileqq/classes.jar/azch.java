@@ -1,38 +1,44 @@
-public class azch
-  implements Comparable<azch>
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
+
+class azch
+  implements auoo
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  azch(azcg paramazcg) {}
   
-  public azch(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt2;
+    return null;
   }
   
-  public int a(azch paramazch)
-  {
-    if (this.jdField_b_of_type_Int < paramazch.jdField_b_of_type_Int) {
-      return -1;
-    }
-    if (this.jdField_b_of_type_Int > paramazch.jdField_b_of_type_Int) {
-      return 1;
-    }
-    return 0;
-  }
+  public void a(auop paramauop) {}
   
-  public String toString()
+  public void b(auop paramauop)
   {
-    return "TroopHonor{id=" + this.jdField_a_of_type_Int + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", iconUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", priority='" + this.jdField_b_of_type_Int + '\'' + '}';
+    if (paramauop.jdField_b_of_type_Int == 0)
+    {
+      this.a.a.c = paramauop.jdField_b_of_type_JavaLangString;
+      this.a.a.a = paramauop.c;
+      azcg.a(this.a);
+      azcg.a(this.a, new ErrorMessage());
+      return;
+    }
+    if ((paramauop.jdField_b_of_type_Int == ayvn.a(940010)) && (azcg.a(this.a).getAndIncrement() < 2))
+    {
+      azcg.b(this.a);
+      veg.d("tribe_publish_TribeVideoFileObject", "retry load file");
+      return;
+    }
+    azcg.c(this.a);
+    paramauop = new ErrorMessage(paramauop.jdField_b_of_type_Int, paramauop.a);
+    azcg.a(this.a, paramauop);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azch
  * JD-Core Version:    0.7.0.1
  */

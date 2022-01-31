@@ -1,16 +1,20 @@
-import android.annotation.SuppressLint;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqconnect.wtlogin.Login;
 
-@SuppressLint({"NewApi"})
-public abstract interface bege
-  extends ActionMode.Callback
+public class bege
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(ActionMode paramActionMode, int paramInt, long paramLong, boolean paramBoolean);
+  public bege(Login paramLogin) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bege
  * JD-Core Version:    0.7.0.1
  */

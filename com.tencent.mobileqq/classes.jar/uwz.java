@@ -1,68 +1,51 @@
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
-import java.io.File;
-import java.util.Locale;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import java.util.List;
 
 public class uwz
+  extends sth<uwt, uwh>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  
-  public uwz(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5)
+  public uwz(uwt paramuwt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    super(paramuwt);
   }
   
-  public String a()
+  public void a(@NonNull uwt paramuwt, @NonNull uwh paramuwh)
   {
-    return this.c + File.separator + this.jdField_a_of_type_Int + ".zip";
-  }
-  
-  public JSONObject a()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("id", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("thumbPath", ArtFilterManager.jdField_b_of_type_JavaLangString + b() + c());
-      localJSONObject.put("priority", this.jdField_b_of_type_Int);
-      localJSONObject.put("name", this.c);
-      localJSONObject.put("pron", this.e);
-      return localJSONObject;
+    if (paramuwh.jdField_a_of_type_Int == 0) {
+      return;
     }
-    catch (JSONException localJSONException)
+    Object localObject = paramuwt.a(paramuwh.jdField_a_of_type_JavaLangString);
+    if (localObject == null)
     {
-      localJSONException.printStackTrace();
+      veg.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramuwh.jdField_a_of_type_JavaLangString });
+      return;
     }
-    return null;
+    if (!(localObject instanceof uwi))
+    {
+      veg.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramuwh.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    localObject = (uwi)localObject;
+    FeedVideoInfo localFeedVideoInfo = ((uwg)tdc.a(12)).a(paramuwh.jdField_a_of_type_JavaLangString, ((GeneralFeedItem)((uwi)localObject).a).mVideoPullType);
+    if (localFeedVideoInfo == null)
+    {
+      veg.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find video info for feedId:%s, pullType:%d", new Object[] { paramuwh.jdField_a_of_type_JavaLangString, Integer.valueOf(((GeneralFeedItem)((uwi)localObject).a).mVideoPullType) });
+      return;
+    }
+    ((uwi)localObject).c(localFeedVideoInfo.mVideoItemList, true);
+    ((GeneralFeedItem)((uwi)localObject).a).updateVideoInfo(localFeedVideoInfo);
+    veg.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video and cookie update after count:%d", paramuwh.jdField_a_of_type_JavaLangString, Integer.valueOf(((uwi)localObject).a().size()));
+    uwt.a(paramuwt).a((uxr)localObject);
   }
   
-  public String b()
+  public Class acceptEventClass()
   {
-    return this.c + File.separator + this.jdField_a_of_type_Int + File.separator;
+    return uwh.class;
   }
   
-  public String c()
-  {
-    return this.c + "_thumb" + ".png";
-  }
-  
-  public String toString()
-  {
-    return String.format(Locale.CHINA, "ArtFilter: id=%s, version=%d, priority=%d, url=%s, name=%s, md5=%s, pron=%s", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), this.jdField_b_of_type_JavaLangString, this.c, this.d, this.e });
-  }
+  public void b(@NonNull uwt paramuwt, @NonNull uwh paramuwh) {}
 }
 
 

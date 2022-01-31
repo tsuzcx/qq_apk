@@ -1,17 +1,19 @@
-import android.graphics.PointF;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.profile.view.VipTagView;
-import com.tencent.mobileqq.widget.RatioLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.10.1;
 
 public class auau
-  implements bajj<PointF>
+  extends aqmy
 {
-  public auau(ProfileTagView paramProfileTagView, VipTagView paramVipTagView) {}
+  public auau(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  public void a(bajd<PointF> parambajd, float paramFloat, PointF paramPointF, Transformation paramTransformation)
+  protected void a(boolean paramBoolean, aqnb paramaqnb)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, paramPointF.x, paramPointF.y);
+    if (!OCRResultFragmentNew.a(this.a)) {
+      return;
+    }
+    OCRResultFragmentNew.b(this.a, false);
+    OCRResultFragmentNew.a(this.a).runOnUiThread(new OCRResultFragmentNew.10.1(this, paramBoolean, paramaqnb));
   }
 }
 

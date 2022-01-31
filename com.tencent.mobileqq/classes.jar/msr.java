@@ -1,29 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.activity.ChatHistory;
-
 public class msr
-  implements View.OnClickListener
 {
-  public msr(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  public int a;
+  public String a;
+  public int b = 0;
+  public int c = 0;
   
-  public void onClick(View paramView)
+  msr()
   {
-    if (this.a.a != null)
-    {
-      paramView = new Intent(this.a, ChatHistory.class);
-      paramView.putExtra("uin", EqqAccountDetailActivity.i(this.a));
-      paramView.putExtra("uintype", 1024);
-      this.a.startActivity(paramView);
-      ndn.a(EqqAccountDetailActivity.i(this.a), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.j(this.a), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
-    }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     msr
  * JD-Core Version:    0.7.0.1
  */

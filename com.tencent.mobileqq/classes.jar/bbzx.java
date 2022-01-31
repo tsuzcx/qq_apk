@@ -1,42 +1,16 @@
-import android.database.Cursor;
-import android.os.Parcel;
-
-final class bbzx
-  implements bcfu<bbzw>
+public abstract interface bbzx
 {
-  public int a()
-  {
-    return 0;
-  }
+  public abstract int getRenderHeight();
   
-  public bbzw a(Cursor paramCursor)
-  {
-    Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
-    if (localObject == null) {
-      return null;
-    }
-    paramCursor = Parcel.obtain();
-    paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-    paramCursor.setDataPosition(0);
-    localObject = new bbzw();
-    ((bbzw)localObject).a(paramCursor);
-    paramCursor.recycle();
-    return localObject;
-  }
+  public abstract int getRenderWidth();
   
-  public String a()
-  {
-    return null;
-  }
+  public abstract void onDrawBegin();
   
-  public bcfv[] a()
-  {
-    return new bcfv[] { new bcfv("groupId", "INTEGER UNIQUE"), new bcfv("data", "BLOB") };
-  }
+  public abstract void onSetRenderer(bbzy parambbzy);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbzx
  * JD-Core Version:    0.7.0.1
  */

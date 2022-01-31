@@ -1,35 +1,46 @@
-import android.util.SparseArray;
-import android.view.View;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
 public class xfj
+  implements Manager
 {
-  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray;
-  private View jdField_a_of_type_AndroidViewView;
+  protected static BaseApplicationImpl a;
+  public static boolean a;
+  private AppInterface a;
   
-  private xfj(View paramView)
+  static
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    jdField_a_of_type_Boolean = true;
   }
   
-  public View a()
+  public xfj(AppInterface paramAppInterface)
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    a();
   }
   
-  public <T extends View> T a(int paramInt)
+  public void a()
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    try
+    {
+      jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      if (jdField_a_of_type_Boolean) {
+        jdField_a_of_type_Boolean = false;
+      }
+      xfr.a();
+      QLog.i("Q.videostory.VSManager", 1, "init");
+      return;
     }
-    if ((this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null) && (this.jdField_a_of_type_AndroidViewView != null)) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_AndroidViewView.findViewById(paramInt));
-    }
-    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    finally {}
   }
+  
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xfj
  * JD-Core Version:    0.7.0.1
  */

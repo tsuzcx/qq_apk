@@ -1,7 +1,4 @@
-public abstract interface bjaf
-{
-  public abstract void b(boolean paramBoolean);
-}
+class bjaf {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

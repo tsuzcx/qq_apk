@@ -1,39 +1,22 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class msz
-  implements View.OnClickListener
+public abstract interface msz
 {
-  public msz(EqqAccountDetailActivity paramEqqAccountDetailActivity, nbu paramnbu, String paramString) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_Nbu.g)) || (TextUtils.isEmpty(this.jdField_a_of_type_Nbu.f)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.jdField_a_of_type_JavaLangString, 2, "buildMapItemForEqq no lat or lng");
-      }
-      return;
-    }
-    paramView = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, QQMapActivity.class);
-    paramView.putExtra("lat", this.jdField_a_of_type_Nbu.g);
-    paramView.putExtra("lon", this.jdField_a_of_type_Nbu.f);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      paramView.putExtra("loc", this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.startActivity(paramView);
-    awqx.b(EqqAccountDetailActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "CliOper", "", "", "Biz_card", "Biz_card_map", 0, 0, EqqAccountDetailActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "", "", "");
-    EqqAccountDetailActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Nbu.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     msz
  * JD-Core Version:    0.7.0.1
  */

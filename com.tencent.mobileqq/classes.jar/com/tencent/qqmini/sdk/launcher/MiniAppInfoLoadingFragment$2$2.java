@@ -1,41 +1,25 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import bdlw;
-import bdnw;
-import bdyl;
+import beqg;
+import besl;
 import org.json.JSONObject;
 
 public class MiniAppInfoLoadingFragment$2$2
   implements Runnable
 {
-  public MiniAppInfoLoadingFragment$2$2(bdlw parambdlw, JSONObject paramJSONObject) {}
+  public MiniAppInfoLoadingFragment$2$2(beqg parambeqg, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    Object localObject = "";
+    String str = "";
     long l = 0L;
     if (this.jdField_a_of_type_OrgJsonJSONObject != null)
     {
       l = this.jdField_a_of_type_OrgJsonJSONObject.optLong("retCode");
-      localObject = this.jdField_a_of_type_OrgJsonJSONObject.optString("errMsg");
+      str = this.jdField_a_of_type_OrgJsonJSONObject.optString("errMsg");
     }
-    bdnw.d("MiniAppInfoLoadingFragment", "GetAppInfoByLink failed. retCode=" + l + " errMsg=" + (String)localObject);
-    try
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("").append((String)localObject);
-      if (bdyl.a()) {}
-      for (localObject = Long.valueOf(l);; localObject = "")
-      {
-        localObject = localObject;
-        MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Bdlw.a, (String)localObject);
-        return;
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      bdnw.d("MiniAppInfoLoadingFragment", "", localThrowable);
-    }
+    besl.d("MiniAppInfoLoadingFragment", "GetAppInfoByLink failed. retCode=" + l + " errMsg=" + str);
+    MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Beqg.a, str, l);
   }
 }
 

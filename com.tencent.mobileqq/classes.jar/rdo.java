@@ -1,23 +1,17 @@
-import android.content.Context;
-import android.os.Environment;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class rdo
+  extends oyg
 {
-  private static String jdField_a_of_type_JavaLangString = Environment.getDataDirectory() + "/data/" + BaseApplicationImpl.sApplication.getBaseContext().getPackageName();
-  private static boolean jdField_a_of_type_Boolean = a();
-  
-  private static boolean a()
+  public rdo(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    boolean bool = false;
-    if (AppSetting.jdField_a_of_type_JavaLangString.equals(bgmq.a("COPY_ASSET_VERSION", "", false))) {
-      bool = true;
-    }
-    return bool;
+    super(paramString);
   }
   
-  public void a(int paramInt) {}
+  public void a(oya paramoya)
+  {
+    paramoya.c();
+  }
 }
 
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
-import awkb;
+import axjh;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
 class Game3DNativeEvent
-  implements awkb
+  implements axjh
 {
   public void a(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {

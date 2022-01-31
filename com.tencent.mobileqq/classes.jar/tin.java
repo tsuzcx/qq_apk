@@ -1,66 +1,47 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.view.TextureView;
-import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.FriendNodeViewHolder.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class tin
+  extends tiq
 {
-  public static TextureView a(View paramView)
+  public tin(ViewGroup paramViewGroup)
   {
-    if ((paramView instanceof ViewGroup))
-    {
-      paramView = (ViewGroup)paramView;
-      int i = 0;
-      while (i < paramView.getChildCount())
-      {
-        TextureView localTextureView = a(paramView.getChildAt(i));
-        if (localTextureView != null) {
-          return localTextureView;
-        }
-        i += 1;
-      }
-    }
-    if ((paramView instanceof TextureView)) {
-      return (TextureView)paramView;
-    }
-    return null;
+    super(paramViewGroup, 2131561302);
   }
   
-  public static boolean a(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  public void a(tfi paramtfi)
   {
-    if (paramBitmap.getConfig() != Bitmap.Config.ARGB_8888)
+    veg.a("FriendNodeViewHolder", "bindData %s", paramtfi);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    QQAppInterface localQQAppInterface;
+    String str;
+    if ((localObject instanceof QQAppInterface))
     {
-      vkw.a(false, "bitmap is not ARGB_8888");
-      return false;
-    }
-    int j = paramBitmap.getWidth();
-    int k = paramBitmap.getHeight();
-    int m = j / paramInt1;
-    int n = k / paramInt1;
-    paramInt1 = 0;
-    for (;;)
-    {
-      if (paramInt1 >= j) {
-        break label118;
+      localQQAppInterface = (QQAppInterface)localObject;
+      str = String.valueOf(paramtfi.b);
+      b(vzl.b(paramtfi.g));
+      if (!thy.h) {
+        break label180;
       }
-      int i = 0;
-      for (;;)
+    }
+    label180:
+    for (localObject = bbcl.m(localQQAppInterface, str);; localObject = str)
+    {
+      this.a.setNodeName((String)localObject, false);
+      ThreadManager.post(new FriendNodeViewHolder.1(this, localQQAppInterface, str), 8, null, true);
+      if (QLog.isColorLevel())
       {
-        if (i >= k) {
-          break label110;
-        }
-        int i1 = paramBitmap.getPixel(paramInt1, i);
-        if (((i1 & 0xFF) > paramInt2) || ((i1 >> 8 & 0xFF) > paramInt2) || ((i1 >> 16 & 0xFF) > paramInt2)) {
-          break;
-        }
-        i += n;
+        QLog.e("FriendNodeViewHolder", 2, new Object[] { "userItem = " + paramtfi.b + ", name = " + (String)localObject, " list: ", String.valueOf(paramtfi.a) });
+        QLog.e("FriendNodeViewHolder", 2, new Object[] { "data: ", String.valueOf(paramtfi) });
       }
-      label110:
-      paramInt1 += m;
+      super.a(paramtfi);
+      return;
     }
-    label118:
-    return true;
   }
 }
 

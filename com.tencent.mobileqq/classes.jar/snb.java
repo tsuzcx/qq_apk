@@ -1,135 +1,164 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.RemoteException;
+import com.tencent.biz.pubaccount.weishi_new.util.QzoneVerticalVideoPluginApk.2;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.plugin.PluginRecord;
+import mqq.os.MqqHandler;
 
-final class snb
-  implements soj
+public class snb
+  implements bhjk
 {
-  snb(smy paramsmy, CommentEntry paramCommentEntry, spd paramspd, boolean paramBoolean1, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt, boolean paramBoolean2) {}
+  public static int a;
+  public static volatile snb a;
+  public static boolean a;
+  public static boolean b;
+  private long jdField_a_of_type_Long = 120000L;
+  private bhhr jdField_a_of_type_Bhhr;
+  private volatile boolean c;
+  private boolean d = true;
   
-  public void a(int paramInt, Bundle paramBundle)
+  private long a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    return LocalMultiProcConfig.getLong("sp_weishi_update_plugin", "query_plugin_last_time", -1L);
+  }
+  
+  public static snb a()
+  {
+    if (jdField_a_of_type_Snb == null) {}
+    try
     {
-      smz.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int, this.jdField_a_of_type_Smy, false, this.b);
-      int i;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.isReply())
+      if (jdField_a_of_type_Snb == null) {
+        jdField_a_of_type_Snb = new snb();
+      }
+      return jdField_a_of_type_Snb;
+    }
+    finally {}
+  }
+  
+  private void c()
+  {
+    ThreadManager.getSubThreadHandler().post(new QzoneVerticalVideoPluginApk.2(this));
+  }
+  
+  public void a()
+  {
+    b();
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk preInstall 01 mIsPreInstalling = " + this.c + " sPreloadPluginState = " + jdField_a_of_type_Int);
+    if (jdField_a_of_type_Int == 1)
+    {
+      QQAppInterface localQQAppInterface2 = (QQAppInterface)QQStoryContext.a();
+      QQAppInterface localQQAppInterface1 = localQQAppInterface2;
+      if (localQQAppInterface2 == null) {
+        localQQAppInterface1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      }
+      if (localQQAppInterface1 != null)
       {
-        paramInt = 2;
-        i = urp.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-        if (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe()) {
-          break label117;
+        bhjs.a().a(localQQAppInterface1);
+        if (System.currentTimeMillis() - a() > 60000L) {
+          jdField_a_of_type_Int = 0;
         }
       }
-      label117:
-      for (paramBundle = "1";; paramBundle = "2")
+    }
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk preInstall 02 mIsPreInstalling = " + this.c + " sPreloadPluginState = " + jdField_a_of_type_Int);
+    if ((!this.c) && (jdField_a_of_type_Int != 1))
+    {
+      this.c = true;
+      QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk preInstall OK mIsPreInstalling = " + this.c + " sPreloadPluginState = " + jdField_a_of_type_Int);
+      bhji.a(BaseApplicationImpl.getContext(), this);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.d;
+  }
+  
+  public void b()
+  {
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "$$$$$$$$$$ QzoneVerticalVideoPluginApk initPluginThreshold sInitPluginThreshold = " + b);
+    if (b) {
+      return;
+    }
+    Object localObject = ske.a();
+    sne.b("QzoneVerticalVideoPluginApk", "initPluginThreshold configBean = " + localObject);
+    if ((localObject == null) || (((ske)localObject).a == null))
+    {
+      sne.d("QzoneVerticalVideoPluginApk", "doDownloadWeishi : configBean is null");
+      return;
+    }
+    localObject = ((ske)localObject).a;
+    this.jdField_a_of_type_Long = (((skh)localObject).jdField_a_of_type_Long * 1000L);
+    this.d = ((skh)localObject).jdField_a_of_type_Boolean;
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "$$$$$$$$$$ QzoneVerticalVideoPluginApk mQueryPluginThreshold  = " + this.jdField_a_of_type_Long + " mIsPreloadInWsRecommend = " + this.d);
+    b = true;
+  }
+  
+  public void onQzonePluginClientReady(bhhr parambhhr)
+  {
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk onQzonePluginClientReady start");
+    if (parambhhr == null) {
+      bhji.a(BaseApplicationImpl.getContext(), this);
+    }
+    for (;;)
+    {
+      this.c = false;
+      return;
+      QQAppInterface localQQAppInterface2 = (QQAppInterface)QQStoryContext.a();
+      QQAppInterface localQQAppInterface1 = localQQAppInterface2;
+      if (localQQAppInterface2 == null)
       {
-        urp.a("home_page", "comment_auto", i, paramInt, new String[] { paramBundle, urp.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+        QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk onQzonePluginClientReady: getAppRuntime return null.");
+        localQQAppInterface1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      }
+      if (localQQAppInterface1 != null) {
+        bhjs.a().a(localQQAppInterface1);
+      }
+      this.jdField_a_of_type_Bhhr = parambhhr;
+      long l1 = a();
+      long l2 = System.currentTimeMillis();
+      long l3 = l2 - l1;
+      if ((l1 > 0L) && (l3 < this.jdField_a_of_type_Long))
+      {
+        this.c = false;
+        QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk ERR deltaTime < " + this.jdField_a_of_type_Long + " deltaTime = " + l3 + " curTime = " + l2 + " lastTime = " + l1 + " mIsPreInstalling = " + this.c);
         return;
-        paramInt = 1;
-        break;
       }
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 2;
-    this.jdField_a_of_type_Spd.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-    if (QLog.isColorLevel()) {
-      QLog.e("FeedCommentLego", 2, "ReqAddComment errorCode " + paramInt);
-    }
-    bbmy.a(BaseApplication.getContext(), 1, ajjy.a(2131638602), 0).a();
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 2;
-    this.jdField_a_of_type_Spd.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-    if (paramInt == 10407) {
-      urp.a("play_video", "exp_limit", 0, 0, new String[] { "", "", "", "" });
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("FeedCommentLego", 2, "ReqAddComment fails: " + paramInt + "|" + paramString);
-    }
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = ajjy.a(2131638637);
-    }
-    bbmy.a(BaseApplication.getContext(), 1, str, 0).a();
-  }
-  
-  public void a(MessageMicro paramMessageMicro)
-  {
-    paramMessageMicro = (qqstory_service.RspAddFeedComment)paramMessageMicro;
-    if (this.jdField_a_of_type_Smy.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, paramMessageMicro)) {
-      return;
-    }
-    this.jdField_a_of_type_Spd.d(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId = paramMessageMicro.comment_id.get();
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    this.jdField_a_of_type_Spd.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    snv.a().a();
-    if ((this.jdField_a_of_type_Boolean) && (!paramBoolean))
-    {
-      sob.a().a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      return;
-    }
-    smz.a(this.jdField_a_of_type_Int, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.feedId, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId);
-    boolean bool;
-    int i;
-    label93:
-    label100:
-    String str2;
-    String str3;
-    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status == 0))
-    {
-      bool = true;
-      this.jdField_a_of_type_Smy.a(bool, paramBundle, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      if (!this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.isReply()) {
-        break label202;
+      QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk OK deltaTime > " + this.jdField_a_of_type_Long + " deltaTime = " + l3 + " curTime = " + l2 + " lastTime = " + l1);
+      parambhhr = this.jdField_a_of_type_Bhhr.a("qzone_vertical_video_plugin.apk");
+      if (parambhhr != null)
+      {
+        jdField_a_of_type_Boolean = true;
+        QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk onQzonePluginClientReady start  state = " + parambhhr.state + " ver = " + parambhhr.ver + " old_ver = " + parambhhr.old_ver + " mainVersion = " + parambhhr.mainVersion + " installPath = " + parambhhr.mInstalledPath + " url = " + parambhhr.url + " id = " + parambhhr.id + " isvalid = " + parambhhr.isValid() + " name = " + parambhhr.name);
+        if (parambhhr.state == 4)
+        {
+          this.c = false;
+          c();
+          QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk onQzonePluginClientReady installed");
+          return;
+        }
+        try
+        {
+          this.jdField_a_of_type_Bhhr.a("qzone_vertical_video_plugin.apk", new snc(this), 0);
+        }
+        catch (RemoteException parambhhr)
+        {
+          QLog.e("QzoneVerticalVideoPluginApk", 1, parambhhr, new Object[0]);
+        }
       }
-      i = 2;
-      if (!paramBoolean) {
-        break label207;
+      else
+      {
+        QLog.d("QzoneVerticalVideoPluginApk", 1, "record is null");
       }
-      paramBundle = "comment_suc";
-      str2 = urp.a("home_page-comment_suc-d1");
-      str3 = sob.a().a;
-      if (!this.b) {
-        break label213;
-      }
-    }
-    label202:
-    label207:
-    label213:
-    for (int j = 12;; j = urp.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem))
-    {
-      String str1 = str2;
-      if (TextUtils.isEmpty(str2)) {
-        str1 = "0";
-      }
-      urp.a("home_page", paramBundle, j, i, new String[] { str1, urp.a(this.jdField_a_of_type_Int), str3, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-      sob.a().a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      return;
-      bool = false;
-      break;
-      i = 1;
-      break label93;
-      paramBundle = "comment_fail";
-      break label100;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     snb
  * JD-Core Version:    0.7.0.1
  */

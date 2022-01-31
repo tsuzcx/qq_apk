@@ -1,11 +1,11 @@
 package com.tencent.qqmini.proxyimpl;
 
-import alrv;
+import amgo;
 
 class ColorNotePlugin$3
   implements Runnable
 {
-  ColorNotePlugin$3(ColorNotePlugin paramColorNotePlugin, alrv paramalrv) {}
+  ColorNotePlugin$3(ColorNotePlugin paramColorNotePlugin, amgo paramamgo) {}
   
   public void run()
   {

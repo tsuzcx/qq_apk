@@ -1,12 +1,16 @@
-public abstract interface bcnn
+import android.graphics.Bitmap;
+
+public class bcnn
 {
-  public abstract boolean isMultiVideoMsgSupport(int paramInt);
-  
-  public abstract boolean isSharpVideoMsgSupport(int paramInt);
+  public float a;
+  public Bitmap a;
+  public float b;
+  public float c;
+  public float d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcnn
  * JD-Core Version:    0.7.0.1
  */

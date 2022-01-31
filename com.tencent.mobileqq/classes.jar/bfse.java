@@ -1,51 +1,66 @@
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import cooperation.qzone.QzoneVideoSoDownloadModule;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.NegativeChildrenLayout;
 
-public class bfse
-  implements awfi
+class bfse
+  implements View.OnClickListener
 {
-  private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  bfse(bfsc parambfsc) {}
   
-  public bfse(QzoneVideoSoDownloadModule paramQzoneVideoSoDownloadModule, QQAppInterface paramQQAppInterface, ResultReceiver paramResultReceiver)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsResultReceiver = paramResultReceiver;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    VideoEnvironment.a("QzoneVideoSoDownloadModule", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
+    switch (paramView.getId())
     {
-      if (paramInt2 != 0)
-      {
-        QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -2, ajjy.a(2131646717) + paramInt2 + "]");
-        awek.b(1, paramInt2);
-        return;
-      }
-      ArrayList localArrayList = new ArrayList(1);
-      paramInt1 = ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
-      if (paramInt1 == 0)
-      {
-        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, new bfsf(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver));
-        return;
-      }
-      QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -2, ajjy.a(2131646801) + paramInt1 + "]");
-      awek.b(1, paramInt1);
+    default: 
+      this.a.dismiss();
+      return;
+    case 2131370711: 
+      this.a.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.a.jdField_a_of_type_JavaUtilArrayList, ajyc.a(2131705924), this.a.jdField_a_of_type_Bfsh);
+      this.a.a(true);
+      this.a.r = 1;
+      this.a.c = ajyc.a(2131705929);
+      bfsc.a(this.a, paramView.getTag(), false);
+      return;
+    case 2131370707: 
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
+      this.a.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.a.jdField_b_of_type_JavaUtilArrayList, ajyc.a(2131705923), this.a.jdField_a_of_type_Bfsh);
+      this.a.a(true);
+      this.a.r = 2;
+      this.a.c = ajyc.a(2131705932);
+      bfsc.a(this.a, paramView.getTag(), false);
+      return;
+    case 2131370713: 
+      this.a.c(paramView);
+      this.a.c();
+      this.a.r = 3;
+      this.a.c = ajyc.a(2131705928);
+      bfsc.a(this.a, paramView.getTag(), true);
+      return;
+    case 2131370710: 
+      this.a.c(paramView);
+      this.a.c();
+      this.a.r = 4;
+      this.a.c = this.a.jdField_b_of_type_JavaLangString;
+      bfsc.a(this.a, paramView.getTag(), false);
+      return;
+    case 2131370709: 
+      this.a.c(paramView);
+      this.a.c();
+      this.a.r = 5;
+      this.a.c = BaseApplicationImpl.getContext().getString(2131718468);
+      bfsc.a(this.a, paramView.getTag(), false);
       return;
     }
-    QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -2, ajjy.a(2131646692) + paramInt2 + "]");
-    awek.b(1, paramInt2);
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfse
  * JD-Core Version:    0.7.0.1
  */

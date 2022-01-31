@@ -1,7 +1,25 @@
-public abstract interface bigi
-  extends biga
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+
+public class bigi
+  implements Animation.AnimationListener
 {
-  public abstract int a();
+  public bigi(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (QIMEffectCameraCaptureUnit.f(this.a) != null)
+    {
+      QIMEffectCameraCaptureUnit.f(this.a).clearAnimation();
+      QIMEffectCameraCaptureUnit.f(this.a).setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

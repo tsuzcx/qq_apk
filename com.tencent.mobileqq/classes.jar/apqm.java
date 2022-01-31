@@ -1,10 +1,14 @@
-import android.graphics.Bitmap;
-
-public abstract interface apqm
+class apqm
+  implements aptu
 {
-  public abstract void a(String paramString);
+  apqm(apql paramapql) {}
   
-  public abstract void a(String paramString, Bitmap paramBitmap);
+  public void a()
+  {
+    apqk.a(this.a.a);
+  }
+  
+  public void b() {}
 }
 
 

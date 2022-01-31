@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.fileviewer.FileView;
 
-import aorq;
-import aorv;
+import apja;
+import apjf;
 
 public class LocalTbsViewManager$1$4
   implements Runnable
 {
-  public LocalTbsViewManager$1$4(aorq paramaorq, Integer paramInteger) {}
+  public LocalTbsViewManager$1$4(apja paramapja, Integer paramInteger) {}
   
   public void run()
   {
@@ -17,10 +17,10 @@ public class LocalTbsViewManager$1$4
     default: 
       return;
     case 5001: 
-      this.jdField_a_of_type_Aorq.a.a(true);
+      this.jdField_a_of_type_Apja.a.a(true);
       return;
     }
-    this.jdField_a_of_type_Aorq.a.a(false);
+    this.jdField_a_of_type_Apja.a.a(false);
   }
 }
 

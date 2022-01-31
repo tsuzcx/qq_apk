@@ -9,8 +9,6 @@ import com.google.android.exoplayer2.audio.AudioRendererEventListener;
 import com.google.android.exoplayer2.audio.MediaCodecAudioRenderer;
 import com.google.android.exoplayer2.drm.DrmSessionManager;
 import com.google.android.exoplayer2.drm.FrameworkMediaCrypto;
-import com.google.android.exoplayer2.ext.hevc.LibHevcVideoRenderer;
-import com.google.android.exoplayer2.ext.vp9.LibvpxVideoRenderer;
 import com.google.android.exoplayer2.mediacodec.MediaCodecSelector;
 import com.google.android.exoplayer2.metadata.MetadataDecoderFactory;
 import com.google.android.exoplayer2.metadata.MetadataRenderer;
@@ -69,11 +67,6 @@ public class DefaultRendererProvider
   protected List<Renderer> buildVideoRenderers()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.context.getPackageName().equals("com.tencent.oskplayerdemo.debug"))
-    {
-      localArrayList.add(new LibHevcVideoRenderer(true, this.allowedJoiningTimeMs, this.handler, this.videoRendererEventListener, this.droppedFrameNotificationAmount, null, false));
-      localArrayList.add(new LibvpxVideoRenderer(true, this.allowedJoiningTimeMs, this.handler, this.videoRendererEventListener, this.droppedFrameNotificationAmount, null, false, true));
-    }
     localArrayList.add(new MediaCodecVideoRenderer(this.context, MediaCodecSelector.DEFAULT, this.allowedJoiningTimeMs, this.drmSessionManager, false, this.handler, this.videoRendererEventListener, this.droppedFrameNotificationAmount));
     return localArrayList;
   }

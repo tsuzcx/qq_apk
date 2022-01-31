@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.automator;
 
-import ajwr;
-import ajws;
+import aklb;
+import aklc;
 import android.os.Process;
 import android.os.SystemClock;
-import awoa;
-import beoj;
+import axnv;
+import bfwd;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 
@@ -14,7 +14,7 @@ public class AsyncStep
 {
   protected volatile int a;
   private long jdField_a_of_type_Long;
-  public ajwr a;
+  public aklb a;
   public Automator a;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   public String a;
@@ -76,7 +76,7 @@ public class AsyncStep
             return true;
           }
         }
-        if ((awoa.f) && (!ajws.a.contains(Integer.valueOf(this.jdField_b_of_type_Int))))
+        if ((axnv.f) && (!aklc.a.contains(Integer.valueOf(this.jdField_b_of_type_Int))))
         {
           long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
           if (QLog.isColorLevel()) {
@@ -155,7 +155,7 @@ public class AsyncStep
   {
     if (this.jdField_a_of_type_Int == 1)
     {
-      beoj.a(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+      bfwd.a(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 1, this.jdField_a_of_type_JavaLangString + " begin with " + this.jdField_a_of_type_Int);
       }
@@ -182,9 +182,9 @@ public class AsyncStep
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 1, this.jdField_a_of_type_JavaLangString + " cost: " + (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long));
       }
-      beoj.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
-      if (this.jdField_a_of_type_Ajwr != null) {
-        this.jdField_a_of_type_Ajwr.a(this, this.jdField_a_of_type_Int);
+      bfwd.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+      if (this.jdField_a_of_type_Aklb != null) {
+        this.jdField_a_of_type_Aklb.a(this, this.jdField_a_of_type_Int);
       }
     }
   }

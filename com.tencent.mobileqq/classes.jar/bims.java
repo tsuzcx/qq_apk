@@ -1,13 +1,6 @@
-import android.graphics.Bitmap;
-import android.view.animation.Animation;
-
 public abstract interface bims
 {
-  public abstract void a(Animation paramAnimation);
-  
-  public abstract Bitmap b();
-  
-  public abstract void b(Animation paramAnimation);
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -1,41 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 
 public class abfp
-  implements CompoundButton.OnCheckedChangeListener
+  implements ImageAssetDelegate
 {
-  public abfp(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public abfp(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    if (AppSetting.c) {
-      NotifyPushSettingActivity.f(this.a).setContentDescription(ajjy.a(2131641865));
-    }
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131652800), "qqsetting_receivemsg_whenexit_key", paramBoolean);
-    SyncService.a(this.a, paramBoolean);
-    QQAppInterface localQQAppInterface = this.a.app;
-    int i;
-    if (paramBoolean)
-    {
-      i = 1;
-      if (!paramBoolean) {
-        break label107;
-      }
-    }
-    label107:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      awqx.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Logout_msg", 0, i, paramCompoundButton, "", "", "");
-      return;
-      i = 0;
-      break;
-    }
+    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
   }
 }
 

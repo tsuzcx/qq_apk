@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.filemanager.settings;
 
 import android.content.SharedPreferences;
-import apbv;
+import aptp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FileAssistantBannerSetting$1
   implements Runnable
 {
-  public FileAssistantBannerSetting$1(apbv paramapbv) {}
+  public FileAssistantBannerSetting$1(aptp paramaptp) {}
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("FAB_sp_file" + apbv.a(this.this$0).getCurrentAccountUin(), 4);
-    apbv.a(this.this$0, localSharedPreferences.getLong("_keyFAB_local_first_show_time", 0L));
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("FAB_sp_file" + aptp.a(this.this$0).getCurrentAccountUin(), 4);
+    aptp.a(this.this$0, localSharedPreferences.getLong("_keyFAB_local_first_show_time", 0L));
   }
 }
 

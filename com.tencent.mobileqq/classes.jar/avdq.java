@@ -1,21 +1,41 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class avdq
-  implements View.OnTouchListener
+final class avdq
+  extends ayxn
 {
-  public avdq(SignatureHistoryFragment paramSignatureHistoryFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  avdq(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
   {
-    return SignatureHistoryFragment.a(this.a, paramView, false);
+    super(paramQQAppInterface, paramString1);
+  }
+  
+  protected void realCancel()
+  {
+    QLog.i("QSplash@QbossSplashUtil", 1, "ctrl realCancel");
+  }
+  
+  protected void realStart()
+  {
+    QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes adid" + this.jdField_a_of_type_JavaLangString);
+    avds.a(this.b + ".splashtemp");
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("qbossSplashresAppid", this.jdField_a_of_type_JavaLangString);
+    avdp.a("qbossSplashrequest", (HashMap)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.i("QSplash@QbossSplashDownloadManager", 2, "qboss_ad_res_png realStart, key  " + this.jdField_a_of_type_JavaLangString + "_" + this.b);
+    }
+    localObject = new ayrv();
+    ((ayrv)localObject).jdField_a_of_type_Aysa = new avdr(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b + ".splashtemp", this.c, this.d);
+    ((ayrv)localObject).jdField_a_of_type_JavaLangString = this.d;
+    ((ayrv)localObject).jdField_a_of_type_Int = 0;
+    ((ayrv)localObject).c = (this.b + ".splashtemp");
+    ((aysz)this.app.getNetEngine(0)).a((aysw)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avdq
  * JD-Core Version:    0.7.0.1
  */

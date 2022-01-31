@@ -1,18 +1,19 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.mobileqq.data.MessageRecord;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class qvm
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class qvm
+  implements auoo
 {
-  public qvm(SlideActiveAnimController paramSlideActiveAnimController, Runnable paramRunnable) {}
+  qvm(qvk paramqvk) {}
   
-  public void onGlobalLayout()
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a();
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    return null;
   }
+  
+  public void a(auop paramauop) {}
+  
+  public void b(auop paramauop) {}
 }
 
 

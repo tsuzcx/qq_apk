@@ -1,46 +1,82 @@
 import com.tencent.av.VideoController;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
 
 public class lfw
+  implements INetInfoHandler
 {
-  public static void a(boolean paramBoolean)
+  VideoAppInterface a;
+  
+  public lfw(VideoAppInterface paramVideoAppInterface)
   {
-    VideoController.a().k(paramBoolean);
-    if (VideoController.a().j() == VideoController.r)
-    {
-      QLog.i("RenderUtils", 1, "setAEDetectInited, init FaceSDK falied.");
-      ljg.a();
+    this.a = paramVideoAppInterface;
+  }
+  
+  public void onNetMobile2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2None");
+    }
+    VideoController localVideoController = this.a.a();
+    if (localVideoController != null) {
+      localVideoController.a(0);
     }
   }
   
-  public static boolean a(PendantItem paramPendantItem1, PendantItem paramPendantItem2)
+  public void onNetMobile2Wifi(String paramString)
   {
-    if ((paramPendantItem1 == null) && (paramPendantItem2 == null)) {}
-    do
-    {
-      return true;
-      if ((paramPendantItem1 == null) || (paramPendantItem2 == null)) {
-        break;
-      }
-    } while ((paramPendantItem1.getId() == null) || (paramPendantItem2.getId() == null) || (paramPendantItem1.getId().equalsIgnoreCase(paramPendantItem2.getId())));
-    return false;
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2Wifi");
+    }
+    paramString = this.a.a();
+    if (paramString != null) {
+      paramString.a(1);
+    }
   }
   
-  public static boolean a(FilterDesc paramFilterDesc1, FilterDesc paramFilterDesc2)
+  public void onNetNone2Mobile(String paramString)
   {
-    if ((paramFilterDesc1 == null) && (paramFilterDesc2 == null)) {}
-    do
-    {
-      return true;
-      if ((paramFilterDesc1 == null) || (paramFilterDesc2 == null)) {
-        break;
-      }
-    } while ((paramFilterDesc1.name == null) || (paramFilterDesc2.name == null) || (paramFilterDesc1.name.equalsIgnoreCase(paramFilterDesc2.name)));
-    return false;
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Mobile");
+    }
+    paramString = this.a.a();
+    if (paramString != null) {
+      paramString.a(2);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Wifi");
+    }
+    paramString = this.a.a();
+    if (paramString != null) {
+      paramString.a(1);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2Mobile");
+    }
+    paramString = this.a.a();
+    if (paramString != null) {
+      paramString.a(2);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2None");
+    }
+    VideoController localVideoController = this.a.a();
+    if (localVideoController != null) {
+      localVideoController.a(0);
+    }
   }
 }
 

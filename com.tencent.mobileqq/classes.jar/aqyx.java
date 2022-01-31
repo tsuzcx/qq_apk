@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import com.tencent.widget.XPanelContainer;
 
-public final class aqyx
-  implements Parcelable.Creator<LocationRoom.Venue>
+public class aqyx
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public LocationRoom.Venue a(Parcel paramParcel)
-  {
-    return new LocationRoom.Venue(paramParcel);
-  }
+  public aqyx(HotPicMainPanel paramHotPicMainPanel) {}
   
-  public LocationRoom.Venue[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new LocationRoom.Venue[paramInt];
+    XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aqyx
  * JD-Core Version:    0.7.0.1
  */

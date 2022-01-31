@@ -3,17 +3,17 @@ package com.tencent.biz.qqstory.storyHome.messagenotify;
 import com.tencent.biz.qqstory.network.pb.qqstory_710_message.RspStoryMessageList;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import uib;
+import uux;
 
 public class StoryMessageListActivity$3$1
   implements Runnable
 {
-  public StoryMessageListActivity$3$1(uib paramuib, ArrayList paramArrayList, qqstory_710_message.RspStoryMessageList paramRspStoryMessageList) {}
+  public StoryMessageListActivity$3$1(uux paramuux, ArrayList paramArrayList, qqstory_710_message.RspStoryMessageList paramRspStoryMessageList) {}
   
   public void run()
   {
     boolean bool2 = false;
-    StoryMessageListActivity localStoryMessageListActivity = this.jdField_a_of_type_Uib.a;
+    StoryMessageListActivity localStoryMessageListActivity = this.jdField_a_of_type_Uux.a;
     ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
     if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.is_end.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.is_end.get() != 0)) {}
     for (boolean bool1 = true;; bool1 = false)

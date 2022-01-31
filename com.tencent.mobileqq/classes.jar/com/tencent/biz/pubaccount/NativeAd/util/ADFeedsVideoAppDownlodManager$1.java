@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import naw;
-import nqv;
+import nlx;
+import oce;
 
 public class ADFeedsVideoAppDownlodManager$1
   implements Runnable
 {
-  public ADFeedsVideoAppDownlodManager$1(naw paramnaw, ViewBase paramViewBase, int paramInt1, int paramInt2) {}
+  public ADFeedsVideoAppDownlodManager$1(nlx paramnlx, ViewBase paramViewBase, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase instanceof nqv))) {
-      ((nqv)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase).a(this.jdField_a_of_type_Int, this.b);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase instanceof oce))) {
+      ((oce)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase).a(this.jdField_a_of_type_Int, this.b);
     }
   }
 }

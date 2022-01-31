@@ -1,23 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiPictureUrl;
+import android.widget.ListAdapter;
 
-public final class bfwu
-  implements Parcelable.Creator<WeishiPictureUrl>
-{
-  public WeishiPictureUrl a(Parcel paramParcel)
-  {
-    return new WeishiPictureUrl(paramParcel);
-  }
-  
-  public WeishiPictureUrl[] a(int paramInt)
-  {
-    return new WeishiPictureUrl[paramInt];
-  }
-}
+public abstract interface bfwu
+  extends ListAdapter
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfwu
  * JD-Core Version:    0.7.0.1
  */

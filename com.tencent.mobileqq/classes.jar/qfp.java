@@ -1,23 +1,43 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import android.app.Activity;
+import android.view.View;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
 
 public class qfp
-  extends RecyclerView.OnScrollListener
+  extends QIMEffectCameraCaptureUnit
 {
-  public qfp(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public qfp(bjqu parambjqu, bjqt parambjqt)
   {
-    if (paramInt == 0)
-    {
-      VideoFeedsRecyclerView.a(this.a, false);
-      return;
-    }
-    VideoFeedsRecyclerView.a(this.a, true);
+    super(parambjqu, parambjqt);
+    this.jdField_a_of_type_Bjqm = new bjqm(10017, 106, 4);
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
+  public View a()
+  {
+    this.s = false;
+    this.r = false;
+    View localView = super.a();
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setFunctionFlag(2);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    return localView;
+  }
+  
+  protected avuj a()
+  {
+    avuj localavuj = super.a();
+    localavuj.a(false);
+    localavuj.l(2);
+    localavuj.i(2);
+    return localavuj;
+  }
+  
+  public void a(avum paramavum)
+  {
+    Activity localActivity = this.jdField_a_of_type_Bjqu.a();
+    localActivity.startActivity(EditPicActivity.a(localActivity, paramavum.a, true, true, true, true, true, 8));
+  }
 }
 
 

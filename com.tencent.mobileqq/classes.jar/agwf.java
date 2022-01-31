@@ -1,120 +1,57 @@
-import android.text.TextUtils;
-import java.lang.reflect.Method;
+import Wallet.IdiomRedPackMatchRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class agwf
+class agwf
+  implements BusinessObserver
 {
-  public static String a()
-  {
-    if (a()) {
-      return a("ro.miui.ui.version.name", "");
-    }
-    return "";
-  }
+  agwf(agwe paramagwe) {}
   
-  private static String a(String paramString1, String paramString2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    try
+    if (paramInt == 26)
     {
-      Class localClass = Class.forName("android.os.SystemProperties");
-      paramString1 = (String)localClass.getMethod("get", new Class[] { String.class, String.class }).invoke(localClass, new Object[] { paramString1, paramString2 });
-      return paramString1;
-    }
-    catch (Throwable paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-    return paramString2;
-  }
-  
-  public static boolean a()
-  {
-    return !TextUtils.isEmpty(a("ro.miui.ui.version.name", ""));
-  }
-  
-  public static String b()
-  {
-    if (c()) {
-      return a("ro.build.version.emui", "");
-    }
-    return "";
-  }
-  
-  public static boolean b()
-  {
-    String str = a();
-    try
-    {
-      if (!str.isEmpty())
+      paramBundle = (IdiomRedPackMatchRsp)paramBundle.getSerializable("rsp");
+      if (QLog.isColorLevel()) {
+        QLog.d("PasswdRedBagManager", 2, "openSolitaireRedBagByIdiom reportObserver:" + paramBoolean + "|" + paramBundle);
+      }
+      if ((paramBoolean) && (paramBundle != null))
       {
-        int i = Integer.valueOf(str.substring(1)).intValue();
-        if (i >= 6) {
-          return true;
+        if (paramBundle.status != 0) {
+          break label104;
         }
+        this.a.jdField_a_of_type_Agvz.a(this.a.jdField_a_of_type_Agvy.jdField_a_of_type_JavaLangString, paramBundle.hbIdiom, paramBundle.hbIdiomLastPY, paramBundle.idiomSeq);
       }
     }
-    catch (Throwable localThrowable)
+    label104:
+    do
     {
-      localThrowable.printStackTrace();
-    }
-    return false;
-  }
-  
-  public static String c()
-  {
-    if (e()) {
-      return a("ro.build.display.id", "");
-    }
-    return "";
-  }
-  
-  public static boolean c()
-  {
-    return !TextUtils.isEmpty(a("ro.build.version.emui", ""));
-  }
-  
-  private static String d()
-  {
-    return a("ro.build.display.id", "");
-  }
-  
-  public static boolean d()
-  {
-    String str = b();
-    return ("EmotionUI 3".equals(str)) || (str.contains("EmotionUI_3.1"));
-  }
-  
-  public static boolean e()
-  {
-    return d().toLowerCase().contains("flyme");
-  }
-  
-  public static boolean f()
-  {
-    String str = c();
-    int i;
-    try
-    {
-      if (!str.isEmpty()) {
-        if (str.toLowerCase().contains("os")) {
-          i = Integer.valueOf(str.substring(9, 10)).intValue();
-        } else {
-          i = Integer.valueOf(str.substring(6, 7)).intValue();
+      return;
+      if (paramBundle.status == 1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("PasswdRedBagManager", 2, "sessionInfo.curType: " + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
         }
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) {
+          this.a.jdField_a_of_type_Agvz.a(this.a.jdField_a_of_type_Agvy.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        }
+        paramBundle = new Bundle();
+        paramBundle.putString("answer", this.a.jdField_a_of_type_JavaLangString);
+        this.a.jdField_a_of_type_Agvz.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_Agvy, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int, paramBundle);
+        return;
       }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    while (i < 4) {
-      return false;
-    }
-    return true;
+    } while (paramBundle.status != 2);
+    long l = NetConnInfoCenter.getServerTime();
+    agxc.a(agvz.a(this.a.jdField_a_of_type_Agvz).getCurrentAccountUin(), "idiom_match_in_phone", l + paramBundle.timeInterval);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agwf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,30 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureSegmentView;
-import dov.com.qq.im.ptv.LightWeightSoDownloadUnit.4;
+import android.content.Context;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.Downloader;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bhyo
-  implements DialogInterface.OnClickListener
+  extends ApolloLottieAnim
 {
-  public bhyo(LightWeightSoDownloadUnit.4 param4) {}
+  private Downloader a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bhyo(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    paramDialogInterface = bhyn.a(this.a.this$0).a();
-    if (paramInt == 1)
-    {
-      this.a.this$0.a.setCameraPermissionResult(false);
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", paramDialogInterface.getPackageName(), null));
-      paramDialogInterface.startActivity(localIntent);
-      return;
-    }
-    paramDialogInterface.finish();
+    super(paramQQAppInterface, paramContext);
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(paramContext).getCommonDownloader();
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_Int = 1;
+    paramString3 = new bhyp(this, paramString2, paramString3);
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(paramString1, paramString2, false, paramString3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhyo
  * JD-Core Version:    0.7.0.1
  */

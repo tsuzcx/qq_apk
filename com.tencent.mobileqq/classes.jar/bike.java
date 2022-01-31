@@ -1,15 +1,20 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
-public abstract interface bike
+class bike
+  implements bjjm
 {
-  public abstract void a();
+  bike(bikc parambikc) {}
   
-  public abstract boolean a();
+  public void a()
+  {
+    bikc.a(this.a).setTouchEnable(true);
+  }
   
-  public abstract void b(Canvas paramCanvas);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public void b()
+  {
+    bikc.a(this.a).o();
+    bikc.a(this.a).setTouchEnable(true);
+  }
 }
 
 

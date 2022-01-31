@@ -2,8 +2,8 @@ package com.tencent.mobileqq.data;
 
 import android.graphics.Color;
 import android.text.TextUtils;
-import atmo;
-import atnz;
+import aukm;
+import aulx;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.CodedInputStreamMicro;
 import com.tencent.mobileqq.pb.CodedOutputStreamMicro;
@@ -26,10 +26,12 @@ import tencent.im.oidb.oidb_0xc26.Color;
 import tencent.im.oidb.oidb_0xc26.Label;
 import tencent.im.oidb.oidb_0xc26.MayKnowPerson;
 import tencent.im.s2c.msgtype0x210.submsgtype0x111.SubMsgType0x111.AddFriendSource;
+import tencent.im.s2c.msgtype0x210.submsgtype0x111.SubMsgType0x111.Color;
+import tencent.im.s2c.msgtype0x210.submsgtype0x111.SubMsgType0x111.Label;
 import tencent.im.s2c.msgtype0x210.submsgtype0x111.SubMsgType0x111.MayKnowPerson;
 
 public class MayKnowRecommend
-  extends atmo
+  extends aukm
   implements Serializable
 {
   public static final int INVALID_ADDFRIEND_SOURCE = -1;
@@ -42,7 +44,7 @@ public class MayKnowRecommend
   public byte[] additive;
   public short age;
   public byte[] algBuffer;
-  @atnz
+  @aulx
   public boolean bHighLight;
   public long cardDisplayTimestamp;
   public String category;
@@ -52,7 +54,7 @@ public class MayKnowRecommend
   public short gender = 255;
   public boolean hasQZoneUpdate;
   public String mobile_name;
-  @atnz
+  @aulx
   public List<MayKnowRecommend.MayKnowRecommendLabel> msgLabel;
   public byte[] msgLabelByte;
   public String nick;
@@ -62,7 +64,7 @@ public class MayKnowRecommend
   @Deprecated
   public String richBuffer;
   public byte[] richSingature;
-  @atnz
+  @aulx
   public RichStatus richStatus;
   public int sourceId;
   public int tabID = 23;
@@ -123,6 +125,50 @@ public class MayKnowRecommend
     }
   }
   
+  private static List<oidb_0xc26.Label> convertPushLabelTo0xc26Label(List<SubMsgType0x111.Label> paramList)
+  {
+    ArrayList localArrayList = null;
+    if (paramList != null)
+    {
+      localArrayList = new ArrayList(paramList.size());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        SubMsgType0x111.Label localLabel = (SubMsgType0x111.Label)paramList.next();
+        oidb_0xc26.Label localLabel1 = new oidb_0xc26.Label();
+        localLabel1.setHasFlag(true);
+        if (localLabel.bytes_name.has()) {
+          localLabel1.bytes_name.set(localLabel.bytes_name.get());
+        }
+        SubMsgType0x111.Color localColor;
+        oidb_0xc26.Color localColor1;
+        if (localLabel.edging_color.has())
+        {
+          localColor = (SubMsgType0x111.Color)localLabel.edging_color.get();
+          localColor1 = new oidb_0xc26.Color();
+          localColor1.uint32_b.set(localColor.uint32_b.get());
+          localColor1.uint32_g.set(localColor.uint32_g.get());
+          localColor1.uint32_r.set(localColor.uint32_r.get());
+          localLabel1.edging_color.set(localColor1);
+        }
+        if (localLabel.text_color.has())
+        {
+          localColor = (SubMsgType0x111.Color)localLabel.text_color.get();
+          localColor1 = new oidb_0xc26.Color();
+          localColor1.uint32_b.set(localColor.uint32_b.get());
+          localColor1.uint32_g.set(localColor.uint32_g.get());
+          localColor1.uint32_r.set(localColor.uint32_r.get());
+          localLabel1.text_color.set(localColor1);
+        }
+        if (localLabel.uint32_label_type.has()) {
+          localLabel1.uint32_label_type.set(localLabel.uint32_label_type.get());
+        }
+        localArrayList.add(localLabel1);
+      }
+    }
+    return localArrayList;
+  }
+  
   public static ArrayList<MayKnowRecommend> covServerDataToLocal(List<oidb_0xc26.MayKnowPerson> paramList, int paramInt)
   {
     return covServerDataToLocal(paramList, paramInt, 23);
@@ -144,7 +190,7 @@ public class MayKnowRecommend
         for (paramList = String.valueOf(localMayKnowPerson.uint64_uin.get());; paramList = "")
         {
           if (!TextUtils.isEmpty(paramList)) {
-            break label104;
+            break label105;
           }
           if (!QLog.isColorLevel()) {
             break;
@@ -152,112 +198,112 @@ public class MayKnowRecommend
           QLog.i("MayknowRecommendManager", 1, "covServerDataToLocal, uint64_uin is null");
           break;
         }
-        label104:
+        label105:
         MayKnowRecommend localMayKnowRecommend = new MayKnowRecommend();
         localMayKnowRecommend.tabID = paramInt2;
         localMayKnowRecommend.uin = paramList;
         Object localObject1;
-        label149:
-        label180:
+        label150:
+        label181:
         int i;
-        label207:
-        label238:
+        label208:
+        label239:
         boolean bool;
-        label269:
-        label300:
-        label327:
-        label358:
+        label270:
+        label301:
+        label328:
+        label359:
         Object localObject2;
         if (localMayKnowPerson.bytes_nick.has())
         {
           localObject1 = localMayKnowPerson.bytes_nick.get().toStringUtf8();
           localMayKnowRecommend.nick = ((String)localObject1);
           if (!localMayKnowPerson.bytes_remark.has()) {
-            break label797;
+            break label799;
           }
           localObject1 = localMayKnowPerson.bytes_remark.get().toStringUtf8();
           localMayKnowRecommend.remark = ((String)localObject1);
           if (!localMayKnowPerson.uint32_age.has()) {
-            break label804;
+            break label807;
           }
           i = localMayKnowPerson.uint32_age.get();
           localMayKnowRecommend.age = ((short)i);
           if (!localMayKnowPerson.bytes_country.has()) {
-            break label809;
+            break label812;
           }
           localObject1 = localMayKnowPerson.bytes_country.get().toStringUtf8();
           localMayKnowRecommend.country = ((String)localObject1);
           if (!localMayKnowPerson.bytes_province.has()) {
-            break label816;
+            break label820;
           }
           localObject1 = localMayKnowPerson.bytes_province.get().toStringUtf8();
           localMayKnowRecommend.province = ((String)localObject1);
           if (!localMayKnowPerson.bytes_city.has()) {
-            break label823;
+            break label828;
           }
           localObject1 = localMayKnowPerson.bytes_city.get().toStringUtf8();
           localMayKnowRecommend.city = ((String)localObject1);
           if (!localMayKnowPerson.uint32_gender.has()) {
-            break label830;
+            break label836;
           }
           i = localMayKnowPerson.uint32_gender.get();
           localMayKnowRecommend.gender = ((short)i);
           if (!localMayKnowPerson.bytes_catelogue.has()) {
-            break label835;
+            break label841;
           }
           localObject1 = localMayKnowPerson.bytes_catelogue.get().toStringUtf8();
           localMayKnowRecommend.category = ((String)localObject1);
           if (!localMayKnowPerson.bytes_alghrithm.has()) {
-            break label842;
+            break label849;
           }
           localObject1 = localMayKnowPerson.bytes_alghrithm.get().toByteArray();
-          label389:
+          label390:
           localMayKnowRecommend.algBuffer = ((byte[])localObject1);
           if (!localMayKnowPerson.uint32_qzone.has()) {
-            break label848;
+            break label855;
           }
           i = localMayKnowPerson.uint32_qzone.get();
-          label416:
+          label417:
           if (i != 0) {
-            break label853;
+            break label860;
           }
           bool = false;
-          label423:
+          label424:
           localMayKnowRecommend.hasQZoneUpdate = bool;
           if (!localMayKnowPerson.bytes_reason.has()) {
-            break label859;
-          }
-          localObject1 = localMayKnowPerson.bytes_reason.get().toStringUtf8();
-          label454:
-          localMayKnowRecommend.recommendReason = ((String)localObject1);
-          if (!localMayKnowPerson.bytes_richbuffer.has()) {
             break label866;
           }
+          localObject1 = localMayKnowPerson.bytes_reason.get().toStringUtf8();
+          label455:
+          localMayKnowRecommend.recommendReason = ((String)localObject1);
+          if (!localMayKnowPerson.bytes_richbuffer.has()) {
+            break label874;
+          }
           localObject1 = localMayKnowPerson.bytes_richbuffer.get().toByteArray();
-          label485:
+          label486:
           localMayKnowRecommend.richSingature = ((byte[])localObject1);
           localObject2 = (oidb_0xc26.AddFriendSource)localMayKnowPerson.msg_android_source.get();
           if (!localMayKnowPerson.bytes_additive.has()) {
-            break label872;
+            break label880;
           }
           localObject1 = localMayKnowPerson.bytes_additive.get().toByteArray();
-          label529:
+          label530:
           localMayKnowRecommend.additive = ((byte[])localObject1);
           if (!((oidb_0xc26.AddFriendSource)localObject2).uint32_source.has()) {
-            break label878;
+            break label886;
           }
           i = ((oidb_0xc26.AddFriendSource)localObject2).uint32_source.get();
-          label556:
+          label557:
           localMayKnowRecommend.addFriendsource = i;
           if (!((oidb_0xc26.AddFriendSource)localObject2).uint32_sub_source.has()) {
-            break label883;
+            break label891;
           }
           i = ((oidb_0xc26.AddFriendSource)localObject2).uint32_sub_source.get();
-          label582:
+          label583:
           localMayKnowRecommend.addFriendSubSource = i;
           localMayKnowRecommend.timestamp = paramInt1;
           if (!localMayKnowPerson.bytes_mobile_name.has()) {
-            break label888;
+            break label896;
           }
           localObject1 = localMayKnowPerson.bytes_mobile_name.get().toStringUtf8();
           localMayKnowRecommend.mobile_name = ((String)localObject1);
@@ -283,53 +329,53 @@ public class MayKnowRecommend
           localArrayList.add(localMayKnowRecommend);
           continue;
           localObject1 = "";
-          break label149;
-          label797:
+          break label150;
+          label799:
           localObject1 = "";
-          break label180;
-          label804:
+          break label181;
+          label807:
           i = 0;
-          break label207;
-          label809:
+          break label208;
+          label812:
           localObject1 = "";
-          break label238;
-          label816:
+          break label239;
+          label820:
           localObject1 = "";
-          break label269;
-          label823:
+          break label270;
+          label828:
           localObject1 = "";
-          break label300;
-          label830:
+          break label301;
+          label836:
           i = -1;
-          break label327;
-          label835:
+          break label328;
+          label841:
           localObject1 = "";
-          break label358;
-          label842:
+          break label359;
+          label849:
           localObject1 = null;
-          break label389;
-          label848:
+          break label390;
+          label855:
           i = 0;
-          break label416;
-          label853:
+          break label417;
+          label860:
           bool = true;
-          break label423;
-          label859:
-          localObject1 = "";
-          break label454;
+          break label424;
           label866:
+          localObject1 = "";
+          break label455;
+          label874:
           localObject1 = null;
-          break label485;
-          label872:
+          break label486;
+          label880:
           localObject1 = null;
-          break label529;
-          label878:
+          break label530;
+          label886:
           i = -1;
-          break label556;
-          label883:
+          break label557;
+          label891:
           i = -1;
-          break label582;
-          label888:
+          break label583;
+          label896:
           localObject1 = "";
         }
         catch (IOException localIOException)
@@ -353,184 +399,215 @@ public class MayKnowRecommend
     }
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = paramList.iterator();
-    if (localIterator.hasNext())
+    for (;;)
     {
-      SubMsgType0x111.MayKnowPerson localMayKnowPerson = (SubMsgType0x111.MayKnowPerson)localIterator.next();
-      if (localMayKnowPerson.uint64_uin.has()) {}
-      for (paramList = String.valueOf(localMayKnowPerson.uint64_uin.get());; paramList = "")
+      if (localIterator.hasNext())
       {
-        if (!TextUtils.isEmpty(paramList)) {
-          break label104;
-        }
-        if (!QLog.isColorLevel()) {
+        SubMsgType0x111.MayKnowPerson localMayKnowPerson = (SubMsgType0x111.MayKnowPerson)localIterator.next();
+        if (localMayKnowPerson.uint64_uin.has()) {}
+        for (paramList = String.valueOf(localMayKnowPerson.uint64_uin.get());; paramList = "")
+        {
+          if (!TextUtils.isEmpty(paramList)) {
+            break label105;
+          }
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("MayknowRecommendManager", 1, "covServerDataToLocal, uint64_uin is null");
           break;
         }
-        QLog.i("MayknowRecommendManager", 1, "covServerDataToLocal, uint64_uin is null");
-        break;
-      }
-      label104:
-      MayKnowRecommend localMayKnowRecommend = new MayKnowRecommend();
-      localMayKnowRecommend.tabID = 23;
-      localMayKnowRecommend.uin = paramList;
-      label150:
-      label181:
-      int i;
-      label208:
-      label239:
-      boolean bool;
-      if (localMayKnowPerson.bytes_nick.has())
-      {
-        localObject = localMayKnowPerson.bytes_nick.get().toStringUtf8();
-        localMayKnowRecommend.nick = ((String)localObject);
-        if (!localMayKnowPerson.bytes_remark.has()) {
-          break label712;
+        label105:
+        MayKnowRecommend localMayKnowRecommend = new MayKnowRecommend();
+        localMayKnowRecommend.tabID = 23;
+        localMayKnowRecommend.uin = paramList;
+        Object localObject1;
+        label151:
+        label182:
+        int i;
+        label209:
+        label240:
+        boolean bool;
+        label271:
+        label302:
+        label329:
+        label360:
+        Object localObject2;
+        if (localMayKnowPerson.bytes_nick.has())
+        {
+          localObject1 = localMayKnowPerson.bytes_nick.get().toStringUtf8();
+          localMayKnowRecommend.nick = ((String)localObject1);
+          if (!localMayKnowPerson.bytes_remark.has()) {
+            break label815;
+          }
+          localObject1 = localMayKnowPerson.bytes_remark.get().toStringUtf8();
+          localMayKnowRecommend.remark = ((String)localObject1);
+          if (!localMayKnowPerson.uint32_age.has()) {
+            break label823;
+          }
+          i = localMayKnowPerson.uint32_age.get();
+          localMayKnowRecommend.age = ((short)i);
+          if (!localMayKnowPerson.bytes_country.has()) {
+            break label828;
+          }
+          localObject1 = localMayKnowPerson.bytes_country.get().toStringUtf8();
+          localMayKnowRecommend.country = ((String)localObject1);
+          if (!localMayKnowPerson.bytes_province.has()) {
+            break label836;
+          }
+          localObject1 = localMayKnowPerson.bytes_province.get().toStringUtf8();
+          localMayKnowRecommend.province = ((String)localObject1);
+          if (!localMayKnowPerson.bytes_city.has()) {
+            break label844;
+          }
+          localObject1 = localMayKnowPerson.bytes_city.get().toStringUtf8();
+          localMayKnowRecommend.city = ((String)localObject1);
+          if (!localMayKnowPerson.uint32_gender.has()) {
+            break label852;
+          }
+          i = localMayKnowPerson.uint32_gender.get();
+          localMayKnowRecommend.gender = ((short)i);
+          if (!localMayKnowPerson.bytes_catelogue.has()) {
+            break label857;
+          }
+          localObject1 = localMayKnowPerson.bytes_catelogue.get().toStringUtf8();
+          localMayKnowRecommend.category = ((String)localObject1);
+          if (!localMayKnowPerson.bytes_alghrithm.has()) {
+            break label865;
+          }
+          localObject1 = localMayKnowPerson.bytes_alghrithm.get().toByteArray();
+          label391:
+          localMayKnowRecommend.algBuffer = ((byte[])localObject1);
+          if (!localMayKnowPerson.uint32_qzone.has()) {
+            break label871;
+          }
+          i = localMayKnowPerson.uint32_qzone.get();
+          label418:
+          if (i != 0) {
+            break label876;
+          }
+          bool = false;
+          label425:
+          localMayKnowRecommend.hasQZoneUpdate = bool;
+          if (!localMayKnowPerson.bytes_reason.has()) {
+            break label882;
+          }
+          localObject1 = localMayKnowPerson.bytes_reason.get().toStringUtf8();
+          label456:
+          localMayKnowRecommend.recommendReason = ((String)localObject1);
+          if (!localMayKnowPerson.bytes_richbuffer.has()) {
+            break label890;
+          }
+          localObject1 = localMayKnowPerson.bytes_richbuffer.get().toByteArray();
+          label487:
+          localMayKnowRecommend.richSingature = ((byte[])localObject1);
+          localObject2 = (SubMsgType0x111.AddFriendSource)localMayKnowPerson.msg_android_source.get();
+          if (!localMayKnowPerson.bytes_additive.has()) {
+            break label896;
+          }
+          localObject1 = localMayKnowPerson.bytes_additive.get().toByteArray();
+          label531:
+          localMayKnowRecommend.additive = ((byte[])localObject1);
+          if (!((SubMsgType0x111.AddFriendSource)localObject2).uint32_source.has()) {
+            break label902;
+          }
+          i = ((SubMsgType0x111.AddFriendSource)localObject2).uint32_source.get();
+          label558:
+          localMayKnowRecommend.addFriendsource = i;
+          if (!((SubMsgType0x111.AddFriendSource)localObject2).uint32_sub_source.has()) {
+            break label907;
+          }
+          i = ((SubMsgType0x111.AddFriendSource)localObject2).uint32_sub_source.get();
+          label584:
+          localMayKnowRecommend.addFriendSubSource = i;
+          localMayKnowRecommend.timestamp = ((int)(paramLong / 1000L));
+          localMayKnowRecommend.cardDisplayTimestamp = 0L;
+          if (!localMayKnowPerson.bytes_mobile_name.has()) {
+            break label912;
+          }
+          localObject1 = localMayKnowPerson.bytes_mobile_name.get().toStringUtf8();
+          localMayKnowRecommend.mobile_name = ((String)localObject1);
+          if ((localMayKnowPerson.bytes_mobile_name.has()) && (QLog.isColorLevel())) {
+            QLog.i("MayKnowRecommend", 1, "covServerDataToLocal, mobile_name: " + localMayKnowRecommend.mobile_name + "  uin: " + paramList);
+          }
+          if (localMayKnowPerson.rpt_msg_labels.has())
+          {
+            paramList = convertPushLabelTo0xc26Label(localMayKnowPerson.rpt_msg_labels.get());
+            if (paramList != null)
+            {
+              localObject1 = new PBRepeatMessageField(oidb_0xc26.Label.class);
+              ((PBRepeatMessageField)localObject1).addAll(paramList);
+              localObject1 = new ByteArrayOutputStream(((PBRepeatMessageField)localObject1).computeSize(1));
+            }
+          }
         }
-        localObject = localMayKnowPerson.bytes_remark.get().toStringUtf8();
-        localMayKnowRecommend.remark = ((String)localObject);
-        if (!localMayKnowPerson.uint32_age.has()) {
-          break label719;
+        try
+        {
+          localObject2 = CodedOutputStreamMicro.newInstance((OutputStream)localObject1);
+          localMayKnowPerson.rpt_msg_labels.writeTo((CodedOutputStreamMicro)localObject2, 1);
+          ((CodedOutputStreamMicro)localObject2).flush();
+          localMayKnowRecommend.msgLabelByte = ((ByteArrayOutputStream)localObject1).toByteArray();
+          localMayKnowRecommend.msgLabel = convert0xc26ToMayKnowRecommendLabel(paramList);
+          localArrayList.add(localMayKnowRecommend);
+          continue;
+          localObject1 = "";
+          break label151;
+          label815:
+          localObject1 = "";
+          break label182;
+          label823:
+          i = 0;
+          break label209;
+          label828:
+          localObject1 = "";
+          break label240;
+          label836:
+          localObject1 = "";
+          break label271;
+          label844:
+          localObject1 = "";
+          break label302;
+          label852:
+          i = -1;
+          break label329;
+          label857:
+          localObject1 = "";
+          break label360;
+          label865:
+          localObject1 = null;
+          break label391;
+          label871:
+          i = 0;
+          break label418;
+          label876:
+          bool = true;
+          break label425;
+          label882:
+          localObject1 = "";
+          break label456;
+          label890:
+          localObject1 = null;
+          break label487;
+          label896:
+          localObject1 = null;
+          break label531;
+          label902:
+          i = -1;
+          break label558;
+          label907:
+          i = -1;
+          break label584;
+          label912:
+          localObject1 = "";
         }
-        i = localMayKnowPerson.uint32_age.get();
-        localMayKnowRecommend.age = ((short)i);
-        if (!localMayKnowPerson.bytes_country.has()) {
-          break label724;
+        catch (IOException localIOException)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("MayknowRecommendManager", 1, "covServerPushDataToLocal, rpt_msg_labels error: " + localIOException.toString());
+            }
+          }
         }
-        localObject = localMayKnowPerson.bytes_country.get().toStringUtf8();
-        localMayKnowRecommend.country = ((String)localObject);
-        if (!localMayKnowPerson.bytes_province.has()) {
-          break label731;
-        }
-        localObject = localMayKnowPerson.bytes_province.get().toStringUtf8();
-        label270:
-        localMayKnowRecommend.province = ((String)localObject);
-        if (!localMayKnowPerson.bytes_city.has()) {
-          break label738;
-        }
-        localObject = localMayKnowPerson.bytes_city.get().toStringUtf8();
-        label301:
-        localMayKnowRecommend.city = ((String)localObject);
-        if (!localMayKnowPerson.uint32_gender.has()) {
-          break label745;
-        }
-        i = localMayKnowPerson.uint32_gender.get();
-        label328:
-        localMayKnowRecommend.gender = ((short)i);
-        if (!localMayKnowPerson.bytes_catelogue.has()) {
-          break label750;
-        }
-        localObject = localMayKnowPerson.bytes_catelogue.get().toStringUtf8();
-        label359:
-        localMayKnowRecommend.category = ((String)localObject);
-        if (!localMayKnowPerson.bytes_alghrithm.has()) {
-          break label757;
-        }
-        localObject = localMayKnowPerson.bytes_alghrithm.get().toByteArray();
-        label390:
-        localMayKnowRecommend.algBuffer = ((byte[])localObject);
-        if (!localMayKnowPerson.uint32_qzone.has()) {
-          break label763;
-        }
-        i = localMayKnowPerson.uint32_qzone.get();
-        label417:
-        if (i != 0) {
-          break label768;
-        }
-        bool = false;
-        label424:
-        localMayKnowRecommend.hasQZoneUpdate = bool;
-        if (!localMayKnowPerson.bytes_reason.has()) {
-          break label774;
-        }
-        localObject = localMayKnowPerson.bytes_reason.get().toStringUtf8();
-        label455:
-        localMayKnowRecommend.recommendReason = ((String)localObject);
-        if (!localMayKnowPerson.bytes_richbuffer.has()) {
-          break label781;
-        }
-        localObject = localMayKnowPerson.bytes_richbuffer.get().toByteArray();
-        label486:
-        localMayKnowRecommend.richSingature = ((byte[])localObject);
-        SubMsgType0x111.AddFriendSource localAddFriendSource = (SubMsgType0x111.AddFriendSource)localMayKnowPerson.msg_android_source.get();
-        if (!localMayKnowPerson.bytes_additive.has()) {
-          break label787;
-        }
-        localObject = localMayKnowPerson.bytes_additive.get().toByteArray();
-        label530:
-        localMayKnowRecommend.additive = ((byte[])localObject);
-        if (!localAddFriendSource.uint32_source.has()) {
-          break label793;
-        }
-        i = localAddFriendSource.uint32_source.get();
-        label557:
-        localMayKnowRecommend.addFriendsource = i;
-        if (!localAddFriendSource.uint32_sub_source.has()) {
-          break label798;
-        }
-        i = localAddFriendSource.uint32_sub_source.get();
-        label583:
-        localMayKnowRecommend.addFriendSubSource = i;
-        localMayKnowRecommend.timestamp = ((int)(paramLong / 1000L));
-        localMayKnowRecommend.cardDisplayTimestamp = 0L;
-        if (!localMayKnowPerson.bytes_mobile_name.has()) {
-          break label803;
-        }
-      }
-      label768:
-      label774:
-      label781:
-      label787:
-      label793:
-      label798:
-      label803:
-      for (Object localObject = localMayKnowPerson.bytes_mobile_name.get().toStringUtf8();; localObject = "")
-      {
-        localMayKnowRecommend.mobile_name = ((String)localObject);
-        if ((localMayKnowPerson.bytes_mobile_name.has()) && (QLog.isColorLevel())) {
-          QLog.i("MayKnowRecommend", 1, "covServerDataToLocal, mobile_name: " + localMayKnowRecommend.mobile_name + "  uin: " + paramList);
-        }
-        localArrayList.add(localMayKnowRecommend);
-        break;
-        localObject = "";
-        break label150;
-        label712:
-        localObject = "";
-        break label181;
-        label719:
-        i = 0;
-        break label208;
-        label724:
-        localObject = "";
-        break label239;
-        label731:
-        localObject = "";
-        break label270;
-        label738:
-        localObject = "";
-        break label301;
-        label745:
-        i = -1;
-        break label328;
-        label750:
-        localObject = "";
-        break label359;
-        label757:
-        localObject = null;
-        break label390;
-        label763:
-        i = 0;
-        break label417;
-        bool = true;
-        break label424;
-        localObject = "";
-        break label455;
-        localObject = null;
-        break label486;
-        localObject = null;
-        break label530;
-        i = -1;
-        break label557;
-        i = -1;
-        break label583;
       }
     }
     return localArrayList;

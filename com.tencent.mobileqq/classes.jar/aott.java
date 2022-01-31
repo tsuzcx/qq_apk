@@ -1,6 +1,17 @@
-public abstract interface aott
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+
+public class aott
+  implements View.OnClickListener
 {
-  public abstract void a(aovl paramaovl);
+  public aott(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  
+  public void onClick(View paramView)
+  {
+    QfileRecentPicFileTabView.a(this.a, paramView, true);
+    paramView.sendAccessibilityEvent(8);
+  }
 }
 
 

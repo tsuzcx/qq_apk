@@ -1,15 +1,48 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AddRequestActivity.8.1;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aaik
-  implements begw
+  extends ajxl
 {
-  public aaik(ChatHistoryFileActivity paramChatHistoryFileActivity, begr parambegr) {}
+  public aaik(AddRequestActivity paramAddRequestActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a(3, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.d)) || (this.jdField_a_of_type_Begr.isShowing())) {
-      this.jdField_a_of_type_Begr.dismiss();
+    if (AddRequestActivity.a(this.a))
+    {
+      if (!paramBoolean) {
+        this.a.a(2130839302, this.a.getString(2131719251));
+      }
+    }
+    else {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("base_uin", paramString);
+    String str = this.a.b;
+    if (TextUtils.isEmpty(this.a.b)) {
+      str = this.a.a;
+    }
+    localBundle.putString("base_nick", str);
+    localBundle.putInt("verfy_type", AddRequestActivity.b(this.a));
+    localBundle.putString("verfy_msg", AddRequestActivity.a(this.a));
+    if (AddRequestActivity.a(this.a) != null) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localBundle.putBoolean("isFromWzry", paramBoolean);
+      AutoRemarkActivity.a(this.a, 0, paramString, 0L, localBundle);
+      return;
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.equals(paramString))) {
+      ThreadManager.post(new AddRequestActivity.8.1(this), 5, null, true);
     }
   }
 }

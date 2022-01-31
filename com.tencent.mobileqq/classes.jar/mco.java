@@ -1,27 +1,27 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.funchat.record.QavRecordButtonView;
 
 public class mco
-  implements View.OnTouchListener
+  extends mcl
 {
-  public mco(QavRecordButtonView paramQavRecordButtonView) {}
+  private View a;
+  public String b;
+  public boolean b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public mco(int paramInt, View paramView)
   {
-    if (QavRecordButtonView.a(this.a) != 1) {
-      switch (paramMotionEvent.getAction())
-      {
-      }
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    super(paramInt);
+    this.a = paramView;
+  }
+  
+  public mco(View paramView)
+  {
+    super(0);
+    this.a = paramView;
+  }
+  
+  public View a()
+  {
+    return this.a;
   }
 }
 

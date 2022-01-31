@@ -1,103 +1,60 @@
+import BOSSStrategyCenter.tAdvDesc;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import org.json.JSONObject;
 
 public class bhzn
+  extends ahmr
 {
-  public static bhzn a;
-  public int a;
-  protected Object a;
-  boolean a;
-  public int b = 0;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  public String h;
   
-  public bhzn()
+  public bhzn(tAdvDesc paramtAdvDesc)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangObject = new Object();
+    super(paramtAdvDesc);
   }
   
-  public static bhzn a()
+  protected void a()
   {
-    if (jdField_a_of_type_Bhzn == null) {}
+    super.a();
+    if ((this.a == null) || (TextUtils.isEmpty(this.a.res_data)))
+    {
+      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
+      return;
+    }
+    String str = this.a.res_data;
     try
     {
-      if (jdField_a_of_type_Bhzn == null) {
-        jdField_a_of_type_Bhzn = new bhzn();
-      }
-      return jdField_a_of_type_Bhzn;
-    }
-    finally {}
-  }
-  
-  public static String a(String paramString)
-  {
-    if ((paramString != null) && (paramString.length() > 0))
-    {
-      int i = paramString.lastIndexOf('.');
-      if ((i > -1) && (i < paramString.length() - 1)) {
-        return paramString.substring(0, i) + ".pcm";
-      }
-    }
-    return null;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    byte[] arrayOfByte = bace.a(new File(paramString1));
-    Object localObject = null;
-    if (arrayOfByte == null)
-    {
-      QLog.e("StoryGameAudioMixManager", 1, "录音文件为空");
+      JSONObject localJSONObject = new JSONObject(str);
+      this.jdField_d_of_type_Int = localJSONObject.optInt("enableCountdown");
+      this.jdField_e_of_type_Int = localJSONObject.optInt("countdownMinute");
+      this.jdField_f_of_type_Int = localJSONObject.optInt("countdownSecond");
+      this.c = localJSONObject.optString("topText");
+      this.jdField_d_of_type_JavaLangString = localJSONObject.optString("bottomText");
+      this.jdField_e_of_type_JavaLangString = localJSONObject.optString("textColor");
+      this.jdField_f_of_type_JavaLangString = localJSONObject.optString("coutdownBgColor");
+      this.g = localJSONObject.optString("coutdownTextColor");
+      this.h = localJSONObject.optString("buttonTitle");
       return;
     }
-    String str = a(paramString2);
-    if (str != null)
+    catch (Exception localException)
     {
-      localObject = new File(str);
-      if (!((File)localObject).exists())
-      {
-        if (!bhzj.a(new File(paramString2), new File(str))) {
-          break label135;
-        }
-        this.jdField_a_of_type_Int = 2;
-        if (QLog.isColorLevel()) {
-          QLog.d("StoryGameAudioMixManager", 2, "convert mp3 in publish now");
-        }
-      }
-      localObject = bace.a((File)localObject);
-    }
-    else
-    {
-      if (localObject != null) {
-        break label144;
-      }
-      QLog.e("StoryGameAudioMixManager", 1, "bgm为空" + str);
-      return;
-    }
-    label135:
-    QLog.e("StoryGameAudioMixManager", 1, "bgm conver fail");
-    return;
-    label144:
-    paramString2 = new byte[arrayOfByte.length];
-    if (bhzj.a(paramString2, (byte[])localObject, arrayOfByte, arrayOfByte.length, 0.0D))
-    {
-      if (!QLog.isColorLevel()) {
-        break label185;
-      }
-      QLog.d("StoryGameAudioMixManager", 2, "mixAudioFileToPcmBytes succedd");
-    }
-    for (;;)
-    {
-      bace.a(paramString2, paramString1);
-      return;
-      label185:
-      QLog.d("StoryGameAudioMixManager", 2, "mixAudioFileToPcmBytes fail");
+      localException.printStackTrace();
+      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
+      bhkd.a().a(2741, this.a.task_id, 102, "CountDownBanner json parseError exception = " + localException.getMessage() + " json string = " + str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhzn
  * JD-Core Version:    0.7.0.1
  */

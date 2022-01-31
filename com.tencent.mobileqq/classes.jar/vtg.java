@@ -1,20 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
 public class vtg
-  implements DialogInterface.OnDismissListener
+  implements Comparator<RecentUser>
 {
-  public vtg(QRDisplayActivity paramQRDisplayActivity) {}
+  public vtg(ShareToActivity paramShareToActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    this.a.f = false;
+    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
+      return -1;
+    }
+    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vtg
  * JD-Core Version:    0.7.0.1
  */

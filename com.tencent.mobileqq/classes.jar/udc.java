@@ -1,49 +1,46 @@
-import com.tencent.biz.qqstory.database.LikeEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
 
-public class udc
-  extends slu
+public abstract interface udc
 {
-  public List<LikeEntry> a;
-  public int b;
-  public int c;
+  public abstract int a();
   
-  public udc(qqstory_service.RspFeedLikeList paramRspFeedLikeList)
-  {
-    super(paramRspFeedLikeList.result);
-    paramRspFeedLikeList = (qqstory_struct.FeedLikeInfo)paramRspFeedLikeList.feed_like_info.get();
-    this.a = a(paramRspFeedLikeList);
-    this.b = paramRspFeedLikeList.like_total_count.get();
-    this.c = paramRspFeedLikeList.has_like.get();
-  }
+  public abstract long a();
   
-  public List<LikeEntry> a(qqstory_struct.FeedLikeInfo paramFeedLikeInfo)
-  {
-    paramFeedLikeInfo = paramFeedLikeInfo.like_list.get();
-    ArrayList localArrayList1 = new ArrayList();
-    sqs localsqs = (sqs)sqg.a(2);
-    ArrayList localArrayList2 = new ArrayList();
-    int i = 0;
-    while (i < paramFeedLikeInfo.size())
-    {
-      LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)paramFeedLikeInfo.get(i));
-      if (localsqs.b(localLikeEntry.unionId) == null) {
-        localArrayList2.add(new srn("", localLikeEntry.unionId));
-      }
-      localArrayList1.add(localLikeEntry);
-      i += 1;
-    }
-    if (!localArrayList2.isEmpty()) {
-      new sxp().a(1, localArrayList2);
-    }
-    return localArrayList1;
-  }
+  public abstract View a();
+  
+  public abstract udp a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void a(udd paramudd);
+  
+  public abstract void a(ude paramude);
+  
+  public abstract void a(udf paramudf);
+  
+  public abstract void a(udg paramudg);
+  
+  public abstract void a(udh paramudh);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

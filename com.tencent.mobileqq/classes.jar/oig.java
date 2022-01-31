@@ -1,29 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
-import com.tencent.common.app.AppInterface;
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
 
-public class oig
-  implements View.OnClickListener
+public final class oig
+  implements Parcelable.Creator<AnchorData>
 {
-  public oig(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
-  
-  public void onClick(View paramView)
+  public AnchorData a(Parcel paramParcel)
   {
-    paramView = (bbbt)this.a.a.a(4);
-    if ((paramView != null) && (paramView.a != null) && (paramView.a.a())) {
-      return;
+    boolean bool2 = true;
+    AnchorData localAnchorData = new AnchorData();
+    localAnchorData.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localAnchorData.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localAnchorData.jdField_a_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label67;
+      }
     }
-    ReadInJoyAdIMAXBrowserFragment.a(this.a);
-    paramView = new HashMap();
-    paramView.put("stat_src", "5");
-    nbe.a(new nmv().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(nbe.u).b(nbe.ae).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(nbe.a(paramView)).a());
+    label67:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localAnchorData.jdField_b_of_type_Boolean = bool1;
+      return localAnchorData;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public AnchorData[] a(int paramInt)
+  {
+    return new AnchorData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oig
  * JD-Core Version:    0.7.0.1
  */

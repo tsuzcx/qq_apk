@@ -1,31 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.text.TextUtils;
 
 public class bhyd
-  extends AnimatorListenerAdapter
+  extends bdsj
 {
-  public bhyd(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void i(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation  140ms translate end");
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains("onRenderFrame"))) {
+      return;
     }
-    this.a.a.d = 4;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a.a = SystemClock.uptimeMillis();
-    this.a.a.b = 140L;
+    super.i(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhyd
  * JD-Core Version:    0.7.0.1
  */

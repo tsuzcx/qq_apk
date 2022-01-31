@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.pluginsdk.PluginInterface;
-import com.tencent.mobileqq.pluginsdk.PluginInterfaceHelper.OnPluginInterfaceLoadedListener;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-
-public class barw
-  implements PluginInterfaceHelper.OnPluginInterfaceLoadedListener
+class barw
+  implements aybh
 {
-  public barw(PathTraceManager paramPathTraceManager) {}
+  barw(barv parambarv) {}
   
-  public void onPluginInterfaceLoaded(PluginInterface paramPluginInterface)
+  public void a()
   {
-    PathTraceManager.a(this.a, paramPluginInterface);
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
   }
 }
 

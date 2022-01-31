@@ -1,19 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
 
-public final class qxg
-  implements Parcelable.Creator<AdData>
+class qxg
+  implements Animation.AnimationListener
 {
-  public AdData a(Parcel paramParcel)
+  qxg(qxf paramqxf, boolean paramBoolean) {}
+  
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    return new AdData(paramParcel);
+    if (qxf.a(this.jdField_a_of_type_Qxf) != null) {
+      qxf.a(this.jdField_a_of_type_Qxf).setImageDrawable(this.jdField_a_of_type_Qxf.a(qxf.a(this.jdField_a_of_type_Qxf, this.jdField_a_of_type_Boolean)));
+    }
+    paramAnimation.setInterpolator(new AnticipateInterpolator());
   }
   
-  public AdData[] a(int paramInt)
-  {
-    return new AdData[paramInt];
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

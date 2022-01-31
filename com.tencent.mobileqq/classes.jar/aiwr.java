@@ -1,10 +1,22 @@
-import com.tencent.TMG.sdk.AVContext.StartParam;
-
 public class aiwr
-  extends AVContext.StartParam
 {
-  public int a;
-  public long a;
+  public float a;
+  public float b;
+  public float c;
+  
+  public aiwr(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ApolloRoleInfo:").append("scale:").append(this.a).append(",xPos:").append(this.b).append(",yPos:").append(this.c);
+    return localStringBuilder.toString();
+  }
 }
 
 

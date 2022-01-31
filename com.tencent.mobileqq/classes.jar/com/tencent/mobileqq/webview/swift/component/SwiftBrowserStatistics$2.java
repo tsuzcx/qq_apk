@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import awqr;
-import bahj;
-import bbca;
+import axqq;
+import bbio;
+import bcfa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -10,13 +10,13 @@ import mqq.app.AppRuntime;
 public class SwiftBrowserStatistics$2
   implements Runnable
 {
-  public SwiftBrowserStatistics$2(bbca parambbca, AppRuntime paramAppRuntime) {}
+  public SwiftBrowserStatistics$2(bcfa parambcfa, AppRuntime paramAppRuntime) {}
   
   public void run()
   {
-    if (!awqr.a)
+    if (!axqq.a)
     {
-      boolean bool = bahj.a(BaseApplicationImpl.getApplication());
+      boolean bool = bbio.a(BaseApplicationImpl.getApplication());
       if (QLog.isColorLevel()) {
         QLog.d("SwiftBrowserStatistics", 1, new Object[] { "reportPushEvent isScreenLock=", Boolean.valueOf(bool), ",isBackground=", Boolean.valueOf(this.a.isBackground_Stop) });
       }
@@ -25,14 +25,14 @@ public class SwiftBrowserStatistics$2
         if (!this.this$0.g) {
           break label91;
         }
-        bbca.a(this.this$0);
+        bcfa.a(this.this$0);
       }
     }
     label91:
-    while (!bbca.a(this.this$0)) {
+    while (!bcfa.a(this.this$0)) {
       return;
     }
-    bbca.b(this.this$0);
+    bcfa.b(this.this$0);
   }
 }
 

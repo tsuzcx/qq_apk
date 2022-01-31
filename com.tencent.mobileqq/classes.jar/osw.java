@@ -1,79 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.SystemClock;
 
 public class osw
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  final long a;
+  public final String a;
+  long b;
+  public final String b;
+  
+  osw(String paramString1, String paramString2)
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBaseArticleInfo.mGalleryPicNumber > 2)
-    {
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + ajjy.a(2131647179));
-      localJSONObject.put("id_gallery_cnt", localObject1);
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("gallery_icon", "qq_readinjoy_gallery_count");
-      localJSONObject.put("id_gallery_img", localObject1);
-      localJSONObject.put("id_gallery_bg", new JSONObject());
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  }
+  
+  osw(String paramString1, String paramString2, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  boolean a()
+  {
+    if (this.jdField_b_of_type_Long > 0L) {
+      if (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long <= this.jdField_b_of_type_Long) {}
     }
-    Object localObject2;
-    Object localObject3;
-    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
+    while (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L)
     {
-      localObject2 = qoe.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
-      if ((localObject2 == null) || (((JSONArray)localObject2).length() < 2)) {
-        return localJSONObject;
-      }
-      localObject1 = ((JSONArray)localObject2).optJSONObject(0);
-      if (localObject1 == null)
-      {
-        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject2 = ((JSONArray)localObject2).optJSONObject(1);
-        if (localObject2 != null) {
-          break label280;
-        }
-      }
-      label280:
-      for (localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;; localObject2 = ((JSONObject)localObject2).optString("picture"))
-      {
-        localObject3 = new JSONObject();
-        ((JSONObject)localObject3).put("multi_img_url1", localObject1);
-        localJSONObject.put("id_multi_img_1", localObject3);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url2", localObject2);
-        localJSONObject.put("id_multi_img_2", localObject1);
-        otl.a(paramBaseArticleInfo, localJSONObject, true);
-        otl.m(paramBaseArticleInfo, localJSONObject);
-        otl.i(paramBaseArticleInfo, localJSONObject);
-        otl.a(localJSONObject);
-        localJSONObject.put("style_ID", "ReadInjoy_gallery_channel_double_img_cell");
-        otl.a(localJSONObject, paramBaseArticleInfo);
-        return localJSONObject;
-        localObject1 = ((JSONObject)localObject1).optString("picture");
-        break;
-      }
+      return true;
+      return false;
     }
-    if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
-    {
-      localObject1 = paramBaseArticleInfo.mSinglePicture;
-      label313:
-      localObject2 = ((URL)localObject1).getFile();
-      if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
-        break label363;
-      }
-    }
-    label363:
-    for (Object localObject1 = paramBaseArticleInfo.mSinglePicture;; localObject1 = paramBaseArticleInfo.mPictures[1])
-    {
-      localObject3 = ((URL)localObject1).getFile();
-      localObject1 = localObject2;
-      localObject2 = localObject3;
-      break;
-      localObject1 = paramBaseArticleInfo.mPictures[0];
-      break label313;
-    }
+    return false;
   }
 }
 

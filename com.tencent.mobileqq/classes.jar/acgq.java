@@ -1,58 +1,98 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivatePageAdapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
+import java.util.ArrayList;
 
 public class acgq
-  extends ajfo
+  extends BaseAdapter
 {
-  public acgq(ActivateFriendActivity paramActivateFriendActivity) {}
+  public acgq(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
   
-  protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
+  public int getCount()
   {
-    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
-    {
-      ajvl.a(this.a.app, false, true, false, true);
-      this.a.a();
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
     }
-    ActivateFriendActivity.a(this.a, paramBoolean2);
+    return 0;
   }
   
-  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
+  public Object getItem(int paramInt)
   {
-    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
-    {
-      ajvl.a(this.a.app, false, true, false, true);
-      this.a.a();
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = this.a.getLayoutInflater().inflate(2131562532, null);
     }
-    if (!this.a.isFinishing())
+    TextView localTextView1 = (TextView)paramViewGroup.findViewById(2131377750);
+    TextView localTextView2 = (TextView)paramViewGroup.findViewById(2131377749);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131371062);
+    basm localbasm2 = (basm)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    Object localObject;
+    if ((this.a.jdField_a_of_type_Basm != null) && (localbasm2.jdField_a_of_type_Int < this.a.jdField_a_of_type_Basm.jdField_a_of_type_Int))
     {
-      if (!paramBoolean1) {
-        break label161;
+      localObject = this.a.jdField_a_of_type_Basm;
+      paramView = ((basm)localObject).jdField_a_of_type_Basm;
+      if ((paramView == null) || (paramView.jdField_a_of_type_Int < localbasm2.jdField_a_of_type_Int)) {
+        break label310;
       }
-      ActivateFriendActivity.a(this.a, paramBoolean2);
-      if (!ActivateFriendActivity.a(this.a)) {
-        break label148;
-      }
+      if (!localbasm2.b.equals(paramView.b)) {}
     }
-    label148:
-    for (String str = this.a.getString(2131624063);; str = this.a.getString(2131624064))
+    label302:
+    label310:
+    for (paramInt = 1;; paramInt = 0)
     {
-      str = this.a.getString(2131624066, new Object[] { str });
-      bbmy.a(this.a, 2, str, 0).b(this.a.getTitleBarHeight());
-      if (ActivateFriendActivity.a(this.a) != null)
+      if (paramInt != 0)
       {
-        ActivateFriendActivity.a(this.a).c();
-        ActivateFriendActivity.b(this.a);
+        localTextView2.setVisibility(0);
+        localTextView2.setText(((basm)localObject).jdField_a_of_type_JavaLangString);
+        localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130849563, 0);
       }
-      return;
+      for (;;)
+      {
+        localTextView1.setText(localbasm2.jdField_a_of_type_JavaLangString);
+        if ((localbasm2.jdField_a_of_type_JavaUtilArrayList == null) || (localbasm2.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
+          break label302;
+        }
+        localImageView.setVisibility(0);
+        return paramViewGroup;
+        basm localbasm1 = paramView.jdField_a_of_type_Basm;
+        localObject = paramView;
+        paramView = localbasm1;
+        break;
+        localTextView2.setVisibility(4);
+        continue;
+        if ((this.a.jdField_a_of_type_Basm != null) && (localbasm2.b.equals(this.a.jdField_a_of_type_Basm.b)))
+        {
+          localTextView2.setVisibility(0);
+          localTextView2.setText("");
+          localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130849563, 0);
+        }
+        else
+        {
+          localTextView2.setVisibility(4);
+        }
+      }
+      localImageView.setVisibility(4);
+      return paramViewGroup;
     }
-    label161:
-    bbmy.a(this.a, 1, this.a.getResources().getString(2131653546), 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acgq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,23 @@
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.List;
 
-public class aemn
-  extends MSFServlet
+class aemn
+  extends ajvs
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  aemn(aemj paramaemj) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface))) {
-      aemi.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
+    if (paramBoolean)
+    {
+      this.a.b = aoee.a(this.a.a).a(this.a.a, this.a.a());
+      this.a.b(this.a.b);
+      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
+        this.a.t(false);
+      }
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent == null)
-    {
-      QLog.e("StickerRecServlet", 1, "onSend : req is null");
-      return;
-    }
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
-    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
-    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
-  }
+  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

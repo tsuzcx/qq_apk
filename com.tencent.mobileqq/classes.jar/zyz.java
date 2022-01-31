@@ -1,23 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class zyz
-  implements View.OnClickListener
 {
-  public zyz(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
-  
-  public void onClick(View paramView)
+  public static void a(String paramString1, String paramString2)
   {
-    if (ArkFullScreenAppActivity.a(this.a) != null) {
-      alep.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, alep.c, 0, 0);
-    }
-    this.a.a();
+    QLog.d(paramString1, 1, paramString2);
   }
+  
+  public static void b(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zyz
  * JD-Core Version:    0.7.0.1
  */

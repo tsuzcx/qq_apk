@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
 import com.tencent.biz.ui.TouchWebView;
-import nqz;
+import oci;
 
 class ReadInJoyAdPopSheetDialog$3$1
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyAdPopSheetDialog$3$1
   
   public void run()
   {
-    nqz.a(this.a.this$0).loadUrl(this.a.a);
+    oci.a(this.a.this$0).loadUrl(this.a.a);
   }
 }
 

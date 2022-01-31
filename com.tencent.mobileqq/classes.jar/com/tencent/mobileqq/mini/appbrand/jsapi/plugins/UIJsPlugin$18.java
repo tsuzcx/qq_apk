@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
-import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.sdk.MiniAppException;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
@@ -16,32 +13,23 @@ class UIJsPlugin$18
   
   public void run()
   {
-    for (;;)
+    try
     {
-      try
+      int i = new JSONObject(this.val$jsonParams).optInt("htmlId");
+      WebviewContainer localWebviewContainer = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
+      if (localWebviewContainer != null)
       {
-        int i = new JSONObject(this.val$jsonParams).optInt("htmlId");
-        Object localObject1 = ((AppBrandPageContainer)this.this$0.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(this.val$webview.getPageWebViewId());
-        if (localObject1 != null)
-        {
-          localObject1 = ((AbsAppBrandPage)localObject1).getCurrentWebviewContainer();
-          if (localObject1 != null)
-          {
-            ((WebviewContainer)localObject1).removeHTMLWebView(i);
-            this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
-            return;
-          }
-          this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
-          throw new MiniAppException("removeHTMLWebView fail, can not find WebviewContainer, pageWebviewId=" + this.val$webview.getPageWebViewId());
-        }
-      }
-      catch (Exception localException)
-      {
-        this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
-        QLog.e("[mini] UIJsPlugin", 1, this.val$event + " error.", localException);
+        localWebviewContainer.removeHTMLWebView(i);
+        this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
         return;
       }
-      Object localObject2 = null;
+      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
+      throw new MiniAppException("removeHTMLWebView fail, can not find WebviewContainer, pageWebviewId=" + this.val$webview.getPageWebViewId());
+    }
+    catch (Exception localException)
+    {
+      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
+      QLog.e("[mini] UIJsPlugin", 1, this.val$event + " error.", localException);
     }
   }
 }

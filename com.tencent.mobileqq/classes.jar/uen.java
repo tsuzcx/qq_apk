@@ -1,38 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Map;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoOutputFrameListener;
 
-public final class uen
-  extends QQUIEventReceiver<uec, sql>
+class uen
+  implements TVK_IMediaPlayer.OnVideoOutputFrameListener
 {
-  public uen(@NonNull uec paramuec)
-  {
-    super(paramuec);
-  }
+  uen(ueg paramueg) {}
   
-  public void a(@NonNull uec paramuec, @NonNull sql paramsql)
+  public void OnVideoOutputFrame(TVK_IMediaPlayer paramTVK_IMediaPlayer, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (uec.a(paramuec) == null) {
-      urk.b("Q.qqstory.detail.StoryDetailPresenter", "ignore this tag info event. %s.", paramsql.toString());
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramsql.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
-      urk.a("Q.qqstory.detail.StoryDetailPresenter", "receive tag info event. %s.", paramsql.toString());
-      paramsql = (szr)paramsql.jdField_a_of_type_JavaUtilMap.get(uec.a(paramuec));
-    } while (paramsql == null);
-    paramsql = ((sqj)sqg.a(27)).a(uec.a(paramuec).a(), paramsql.a);
-    uec.a(paramuec).b(paramsql, true);
-    paramuec.a();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return sql.class;
+    veg.a(this.a.a, "OnVideoOutputFrame width=%d height=%d rotation=%d %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
   }
 }
 

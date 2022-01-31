@@ -1,199 +1,281 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Typeface;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.av.ui.funchat.zimu.ZimuView;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
 
 public abstract class moa
+  implements mny
 {
-  public int a;
-  public Context a;
-  public String a;
+  protected float a;
+  protected int a;
+  protected Context a;
+  protected Bitmap a;
+  protected Canvas a;
+  protected Paint a;
+  final String jdField_a_of_type_JavaLangString = getClass().getSimpleName() + "_" + AudioHelper.b();
+  WeakReference<ZimuView> jdField_a_of_type_JavaLangRefWeakReference;
+  public lhh a;
+  protected mnz a;
+  protected boolean a;
+  protected int b = 255;
+  protected int c;
+  protected int d;
+  protected int e;
+  protected int f;
+  protected int g;
+  protected int h;
   
-  public moa(Context paramContext, String paramString)
+  public moa(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat)
   {
+    this.jdField_a_of_type_Int = 24;
+    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = a(paramContext, paramString);
-    a(c());
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+    this.jdField_a_of_type_Float = paramFloat;
+    this.g = paramInt1;
+    this.h = paramInt2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
   }
   
-  public int a(Context paramContext, String paramString)
+  public int a()
   {
-    return a(paramContext).getInt(paramString + "_" + b(), 0);
+    return this.e;
   }
   
-  protected SharedPreferences a(Context paramContext)
+  protected int a(Paint paramPaint)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext);
+    paramPaint = paramPaint.getFontMetrics();
+    float f1 = paramPaint.descent;
+    float f2 = paramPaint.ascent;
+    return (int)(paramPaint.leading + (f1 - f2));
   }
   
-  public abstract String a();
-  
-  public String a(AppInterface paramAppInterface, ConfigurationService.Config paramConfig)
+  protected int a(Paint paramPaint, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonConfigBase", 2, "handleConfig type = " + paramConfig.type.get());
-    }
-    if ((paramConfig.msg_content_list == null) || (paramConfig.msg_content_list.size() < 1) || (paramConfig.msg_content_list.get(0) == null))
+    float f3 = 0.0F;
+    if (!TextUtils.isEmpty(paramString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CommonConfigBase", 2, "handleQuickShotShareToStoryConfig data is null!!!");
+      int j = paramString.length();
+      float[] arrayOfFloat = new float[j + 1];
+      paramPaint.getTextWidths(paramString, arrayOfFloat);
+      int i = 0;
+      for (f1 = 0.0F;; f1 = f2 + f1)
+      {
+        f2 = f1;
+        if (i >= j) {
+          break;
+        }
+        f2 = arrayOfFloat[i];
+        i += 1;
       }
-      a(this.jdField_a_of_type_AndroidContentContext, paramAppInterface.getCurrentAccountUin());
-      return null;
     }
-    return a(paramConfig);
+    float f2 = 0.0F;
+    float f1 = f3;
+    if (this.jdField_a_of_type_Mnz != null) {
+      f1 = this.jdField_a_of_type_Mnz.jdField_a_of_type_Float;
+    }
+    return (int)Math.ceil(f2 + f1 / 2.0F);
   }
   
-  protected String a(ConfigurationService.Config paramConfig)
+  public Bitmap a()
   {
-    paramConfig = (ConfigurationService.Content)paramConfig.msg_content_list.get(0);
-    if (paramConfig.compress.get() == 1)
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = b();
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  void a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+      ((ZimuView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).e();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.e = paramInt1;
+    this.f = paramInt2;
+  }
+  
+  public void a(long paramLong)
+  {
+    lcl.c(this.jdField_a_of_type_JavaLangString, "start:" + paramLong);
+  }
+  
+  protected abstract void a(Canvas paramCanvas, int paramInt1, int paramInt2);
+  
+  public void a(Typeface paramTypeface, int paramInt, mnz parammnz)
+  {
+    Typeface localTypeface = this.jdField_a_of_type_AndroidGraphicsPaint.getTypeface();
+    if ((localTypeface != paramTypeface) || (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getTextSize())) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setFontAttr, Typeface[" + localTypeface + "->" + paramTypeface + "], TextSize[" + this.jdField_a_of_type_AndroidGraphicsPaint.getTextSize() + "->" + paramInt + "]");
+    }
+    if (paramTypeface != null) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
+    }
+    this.jdField_a_of_type_Mnz = parammnz;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramInt);
+    d();
+    if (this.jdField_a_of_type_Lhh != null) {}
+    for (paramTypeface = this.jdField_a_of_type_Lhh.a;; paramTypeface = null)
     {
-      paramConfig = atiu.a(paramConfig.content.get().toByteArray());
-      if (paramConfig != null) {
-        try
-        {
-          String str = new String(paramConfig, "UTF-8");
-          return str;
-        }
-        catch (Exception paramConfig)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("CommonConfigBase", 2, QLog.getStackTraceString(paramConfig));
-          }
-          return null;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("CommonConfigBase", 2, QLog.getStackTraceString(localOutOfMemoryError));
-          }
-          System.gc();
-          try
-          {
-            paramConfig = new String(paramConfig, "UTF-8");
-            return paramConfig;
-          }
-          catch (Throwable paramConfig)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("CommonConfigBase", 2, QLog.getStackTraceString(paramConfig));
-            }
-          }
-        }
-      }
-      return null;
+      paramTypeface = (String)paramTypeface;
+      this.c = a(this.jdField_a_of_type_AndroidGraphicsPaint, paramTypeface);
+      this.d = a(this.jdField_a_of_type_AndroidGraphicsPaint);
+      return;
     }
-    return paramConfig.content.get().toStringUtf8();
   }
   
-  public void a(Context paramContext, String paramString)
+  public void a(lhh paramlhh)
   {
-    a(paramContext).edit().remove(paramString + "_" + b()).commit();
-  }
-  
-  public void a(Context paramContext, String paramString, int paramInt)
-  {
-    a(paramContext).edit().putInt(paramString + "_" + b(), paramInt).commit();
-  }
-  
-  public void a(AppInterface paramAppInterface, ConfigurationService.Config paramConfig)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonConfigBase", 2, "handleConfig type = " + paramConfig.type.get());
-    }
-    this.jdField_a_of_type_Int = a(this.jdField_a_of_type_AndroidContentContext, paramAppInterface.getCurrentAccountUin());
-    int i = paramConfig.version.get();
-    if (this.jdField_a_of_type_Int == i) {
-      if (QLog.isColorLevel()) {
-        QLog.d("CommonConfigBase", 2, "handleConfig version code not changed .");
+    d();
+    Object localObject;
+    if (this.jdField_a_of_type_Lhh != null)
+    {
+      localObject = this.jdField_a_of_type_Lhh.b;
+      localObject = (String)localObject;
+      this.jdField_a_of_type_Lhh = paramlhh;
+      if ((this.jdField_a_of_type_Lhh != null) && (!this.jdField_a_of_type_Lhh.a()) && (paramlhh != null) && (TextUtils.isEmpty(paramlhh.b)) && (localObject != null) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+        this.jdField_a_of_type_Lhh.b = ((CharSequence)localObject);
       }
+      if (this.jdField_a_of_type_Lhh == null) {
+        break label124;
+      }
+    }
+    label124:
+    for (paramlhh = this.jdField_a_of_type_Lhh.a;; paramlhh = null)
+    {
+      paramlhh = (String)paramlhh;
+      this.c = a(this.jdField_a_of_type_AndroidGraphicsPaint, paramlhh);
+      return;
+      localObject = null;
+      break;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int b()
+  {
+    return this.f;
+  }
+  
+  Bitmap b()
+  {
+    Object localObject3 = null;
+    Object localObject4 = null;
+    Object localObject1 = null;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Lhh.a)) {
+      localObject3 = localObject1;
     }
     do
     {
-      return;
-      a(this.jdField_a_of_type_AndroidContentContext, paramAppInterface.getCurrentAccountUin(), i);
-      this.jdField_a_of_type_Int = i;
-      paramConfig = a(paramAppInterface, paramConfig);
-      if (TextUtils.isEmpty(paramConfig)) {
-        break;
+      for (;;)
+      {
+        return localObject3;
+        lcl.c(this.jdField_a_of_type_JavaLangString, "build:" + toString());
+        localObject1 = localObject3;
+        Object localObject2 = localObject4;
+        try
+        {
+          int i = c();
+          localObject1 = localObject3;
+          localObject2 = localObject4;
+          int j = d();
+          localObject1 = localObject3;
+          localObject2 = localObject4;
+          localObject3 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap((Bitmap)localObject3);
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          a(this.jdField_a_of_type_AndroidGraphicsCanvas, i, j);
+          return localObject3;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          localObject3 = localObject1;
+          if (QLog.isColorLevel())
+          {
+            QLog.e(this.jdField_a_of_type_JavaLangString, 2, localOutOfMemoryError.getMessage());
+            return localObject1;
+          }
+        }
+        catch (Exception localException)
+        {
+          localObject3 = localOutOfMemoryError;
+        }
       }
-    } while (a(paramAppInterface, paramConfig));
-    b(paramConfig);
-    a(paramConfig);
-    return;
-    b(paramConfig);
-    a(paramConfig);
+    } while (!QLog.isColorLevel());
+    QLog.e(this.jdField_a_of_type_JavaLangString, 2, localException.getMessage());
+    return localOutOfMemoryError;
   }
   
-  public abstract void a(String paramString);
-  
-  public boolean a(AppInterface paramAppInterface, String paramString)
+  public void b()
   {
-    try
-    {
-      Object localObject = new JSONObject(paramString).optString(d(), "");
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return false;
-      }
-      if (!(paramAppInterface instanceof QQAppInterface)) {
-        return false;
-      }
-      paramAppInterface = ((bato)((QQAppInterface)paramAppInterface).getManager(47)).a(1);
-      paramString = ajed.aU + a() + ".tmp";
-      localObject = new batm((String)localObject, new File(paramString));
-      ((batm)localObject).b = 3;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("file_path", paramString);
-      paramAppInterface.a((batm)localObject, new mob(this), localBundle);
-      return true;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(null);
+    this.jdField_a_of_type_AndroidGraphicsPaint = null;
+    d();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public void c() {}
+  
+  public boolean c()
+  {
+    return true;
+  }
+  
+  public int d()
+  {
+    if (this.d == 0) {
+      this.d = a(this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    catch (JSONException paramAppInterface) {}
-    return false;
+    return this.d;
   }
   
-  public abstract String b();
-  
-  public void b(String paramString)
+  public void d()
   {
-    SharedPreferences localSharedPreferences = a(this.jdField_a_of_type_AndroidContentContext);
-    if (TextUtils.isEmpty(paramString))
+    lcl.c(this.jdField_a_of_type_JavaLangString, "releaseBitmap:" + this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      localSharedPreferences.edit().remove(this.jdField_a_of_type_JavaLangString + "_" + a());
-      return;
+      if (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
-    localSharedPreferences.edit().putString(this.jdField_a_of_type_JavaLangString + "_" + a(), paramString).commit();
   }
   
-  public String c()
+  public String toString()
   {
-    return a(this.jdField_a_of_type_AndroidContentContext).getString(this.jdField_a_of_type_JavaLangString + "_" + a(), null);
-  }
-  
-  public String d()
-  {
-    return "more_config_url";
+    return "ZimuItemView{mFontPara=" + this.jdField_a_of_type_Mnz.toString() + ", getTypeface=" + this.jdField_a_of_type_AndroidGraphicsPaint.getTypeface() + ", mTextSize=" + this.jdField_a_of_type_Int + ", mAlpha=" + this.b + ", mWidth=" + this.c + ", mHeight=" + this.d + ", mCurrentX=" + this.e + ", mCurrentY=" + this.f + ", mSentenceInfo=" + this.jdField_a_of_type_Lhh.toString() + ", mBitmapCache=" + this.jdField_a_of_type_AndroidGraphicsBitmap + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     moa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,31 @@
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.WebAccelerator;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 
-public class bbdb
+final class bbdb
+  implements DialogInterface.OnClickListener
 {
-  public static long a;
-  static final AtomicBoolean a;
+  bbdb(Activity paramActivity, axod paramaxod) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public static boolean b()
-  {
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    if (paramInt == 1)
     {
-      long l = System.currentTimeMillis();
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("use_speedy_classloader", Boolean.valueOf(true));
-      localHashMap.put("use_dexloader_service", Boolean.valueOf(false));
-      QbSdk.initTbsSettings(localHashMap);
-      WebAccelerator.initTbsEnvironment(BaseApplicationImpl.sApplication.getApplicationContext(), 2);
-      bbca.D = SystemClock.elapsedRealtime();
-      jdField_a_of_type_Long = System.currentTimeMillis() - l;
-      QLog.d("WebLog_SwiftWebAccelerator", 1, "WebAccelerator.initTbsEnvironment, cost=" + (System.currentTimeMillis() - l));
-      return true;
+      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidAppActivity.getPackageName(), null));
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
     }
-    return false;
+    while (this.jdField_a_of_type_Axod == null) {
+      return;
+    }
+    this.jdField_a_of_type_Axod.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbdb
  * JD-Core Version:    0.7.0.1
  */

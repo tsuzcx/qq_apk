@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import agpg;
+import ahbv;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -27,8 +27,8 @@ public class HandRecognizer
   public boolean isTracking;
   private AEHandDetector mDetector = new AEHandDetector();
   private Bitmap rgbaBitmap;
-  public final String[] soFileNames = { "libnnpack.so", "libYTCommonHand.so", "libYTHandDetector.so", "libnative-lib.so" };
-  public final String[] soNames = { "nnpack", "YTCommon", "YTHandDetector", "native-lib" };
+  public final String[] soFileNames = { "libYTHandDetector.so", "libnative-lib.so" };
+  public final String[] soNames = { "YTHandDetector", "native-lib" };
   public YtHandBox stable_box = new YtHandBox();
   
   public static HandRecognizer getInstance()
@@ -92,7 +92,7 @@ public class HandRecognizer
   
   public void onPreviewFrameHandler(byte[] paramArrayOfByte, int paramInt1, int paramInt2, Camera paramCamera, int paramInt3, HandRecognizer.OnPreviewFrameHandlerListener paramOnPreviewFrameHandlerListener)
   {
-    ThreadManagerV2.excute(new HandRecognizer.3(this, paramCamera, paramArrayOfByte, paramInt1, paramInt2, paramOnPreviewFrameHandlerListener), 16, null, true);
+    ThreadManagerV2.excute(new HandRecognizer.3(this, paramCamera, paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramOnPreviewFrameHandlerListener), 16, null, true);
   }
   
   public native int releaseHandAlignment();

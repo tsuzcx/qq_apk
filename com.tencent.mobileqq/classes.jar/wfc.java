@@ -1,25 +1,19 @@
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
-
-public class wfc
-  implements bbqp
+final class wfc
 {
-  public wfc(VideoPlayerView paramVideoPlayerView) {}
+  public float a;
+  public float b;
+  public float c;
   
-  public void a()
+  public wfc(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if ((VideoPlayerView.a(this.a) != null) && (VideoPlayerView.a(this.a) != null))
-    {
-      VideoPlayerView.d(this.a, false);
-      VideoPlayerView.a(this.a).onOrientationChange(VideoPlayerView.c(this.a));
-      VideoPlayerView.a(this.a).onVideoSize(this.a.a().getViewWidth(), this.a.a().getViewHeight());
-    }
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wfc
  * JD-Core Version:    0.7.0.1
  */

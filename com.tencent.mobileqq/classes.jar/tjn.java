@@ -1,80 +1,122 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 public class tjn
-  implements tjb
+  implements syt<tmd, tob>
 {
-  private int jdField_a_of_type_Int = -1;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final boolean jdField_a_of_type_Boolean;
-  private int b = -1;
-  
-  public tjn(boolean paramBoolean)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    paramString = new tmd(paramString);
+    syr.a().a(paramString, this);
   }
   
-  public List<String> a()
+  public void a(@NonNull tmd paramtmd, @Nullable tob paramtob, @NonNull ErrorMessage paramErrorMessage)
   {
-    urk.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "getData , verticalPosition = %d , size = %d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(int paramInt, ArrayList<tnz> paramArrayList, tjs paramtjs)
-  {
-    if (!this.jdField_a_of_type_Boolean)
+    veg.c("Q.qqstory.player:DeleteStoryVideoHandler", "delete story video return:" + paramErrorMessage);
+    paramtob = (tcz)tdc.a(5);
+    tch localtch = new tch(paramErrorMessage, paramtmd.a, false);
+    StoryVideoItem localStoryVideoItem = paramtob.a(paramtmd.a);
+    if (localStoryVideoItem != null)
     {
-      urk.b("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "close , set data invalidate");
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      tnz localtnz = (tnz)paramArrayList.next();
-      if ((!localtnz.a()) && (!TextUtils.isEmpty(localtnz.a))) {
-        localArrayList.add(localtnz.a);
+      localtch.b = localStoryVideoItem.mOwnerUid;
+      localtch.a = localStoryVideoItem.mVideoIndex;
+      if (localtch.a == 0L) {
+        localtch.a = localStoryVideoItem.mCreateTime;
       }
     }
-    this.jdField_a_of_type_JavaUtilList = localArrayList;
-    this.jdField_a_of_type_Int = paramInt;
-    int i;
-    if ((paramtjs instanceof tkg))
+    if (paramErrorMessage.isFail())
     {
-      paramArrayList = (tkg)paramtjs;
-      if (paramArrayList.a != null)
+      ste.a().dispatch(localtch);
+      return;
+    }
+    b(paramtmd.a);
+    paramtob.a(paramtmd.a);
+    ste.a().dispatch(localtch);
+  }
+  
+  protected void b(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    tjp localtjp = new tjp(0);
+    tcp localtcp = (tcp)tdc.a(19);
+    Object localObject = ((tcz)tdc.a(5)).a(paramString);
+    if (localObject == null) {
+      return;
+    }
+    localObject = localtcp.a(((StoryVideoItem)localObject).mOwnerUid, null, 2147483647L);
+    if ((localObject == null) || (((List)localObject).size() == 0))
+    {
+      ste.a().dispatch(localtjp);
+      return;
+    }
+    Collections.sort((List)localObject, new uue());
+    Iterator localIterator = ((List)localObject).iterator();
+    localObject = null;
+    VideoCollectionItem localVideoCollectionItem;
+    for (;;)
+    {
+      if (localIterator.hasNext())
       {
-        i = paramArrayList.a.jdField_a_of_type_Int;
-        this.b = i;
-        label129:
-        i = this.jdField_a_of_type_JavaUtilList.size();
-        if (paramtjs != null) {
-          break label186;
+        localVideoCollectionItem = (VideoCollectionItem)localIterator.next();
+        if (localVideoCollectionItem.collectionType == 0) {
+          localObject = localVideoCollectionItem;
+        } else {
+          if (!localVideoCollectionItem.videoVidList.contains(paramString)) {
+            break;
+          }
         }
       }
     }
-    label186:
-    for (paramArrayList = "";; paramArrayList = paramtjs.toString())
+    for (int i = 1;; i = 0)
     {
-      urk.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "setDataList , verticalPosition = %d , size = %d, groupId= %s, msgTabNodeType=%d", Integer.valueOf(paramInt), Integer.valueOf(i), paramArrayList, Integer.valueOf(this.b));
-      return;
-      i = -1;
+      if (i == 0)
+      {
+        ste.a().dispatch(localtjp);
+        return;
+      }
+      if (localObject != null)
+      {
+        ((VideoCollectionItem)localObject).collectionCount -= 1;
+        if (((VideoCollectionItem)localObject).collectionCount <= 0)
+        {
+          localtcp.a((VideoCollectionItem)localObject);
+          localtjp.a.add(new tjo(1, (VideoCollectionItem)localObject));
+        }
+      }
+      else
+      {
+        localVideoCollectionItem.collectionCount -= 1;
+        localVideoCollectionItem.videoVidList.remove(paramString);
+        localVideoCollectionItem.collectionVideoUIItemList.remove(new uuf(paramString, null));
+        if (localVideoCollectionItem.collectionCount > 0) {
+          break label373;
+        }
+        localtcp.a(localVideoCollectionItem);
+        localtjp.a.add(new tjo(1, localVideoCollectionItem));
+      }
+      for (;;)
+      {
+        veg.d("Q.qqstory.player:DeleteStoryVideoHandler", String.format("Spend time = %d , %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), localtjp }));
+        ste.a().dispatch(localtjp);
+        return;
+        localtcp.a((VideoCollectionItem)localObject);
+        localtjp.a.add(new tjo(2, (VideoCollectionItem)localObject));
+        break;
+        label373:
+        localtcp.a(localVideoCollectionItem);
+        localtjp.a.add(new tjo(2, localVideoCollectionItem));
+      }
       break;
-      this.b = -1;
-      break label129;
+      localVideoCollectionItem = null;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.b == 12;
-  }
-  
-  public boolean b()
-  {
-    return this.b == 13;
   }
 }
 

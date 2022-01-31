@@ -1,38 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
-class aivl
-  implements aihr
+public class aivl
+  implements DialogInterface.OnClickListener
 {
-  aivl(aivd paramaivd, int paramInt, String paramString, AppInterface paramAppInterface, File paramFile) {}
+  public aivl(HotChatCenterFragment paramHotChatCenterFragment, HotChatInfo paramHotChatInfo, String paramString1, RecentBaseData paramRecentBaseData, String paramString2) {}
   
-  public void a(boolean paramBoolean, aihq paramaihq)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramaihq = aihi.a().a(8, this.jdField_a_of_type_Int);
-    Object localObject = new StringBuilder().append("downloadApolloRes onCheckFinish success:").append(paramBoolean).append(" downloadItem:");
-    if (paramaihq == null) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isWifiHotChat)
     {
-      QLog.i("ApolloPluginRscLoader", 1, paramBoolean);
-      localObject = aivd.a(this.jdField_a_of_type_JavaLangString);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break;
+      paramInt = 1;
+      axqw.b(HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment), "CliOper", "", "", "0X8004D2C", "0X8004D2C", paramInt, 0, "", "", "", "");
+      if ((!this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.isAdded()) || (bbev.d(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.getActivity().getApplicationContext()))) {
+        break label98;
       }
-      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
-      return;
+      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.getActivity().getApplicationContext(), ajyc.a(2131705541), 0).b(0);
     }
-    if (paramaihq == null)
+    label98:
+    do
     {
-      this.jdField_a_of_type_Aivd.a((String)localObject, 2, this.jdField_a_of_type_Int + " json里无此id");
       return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramaihq);
-    aihk.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new aivm(this, (String)localObject), localArrayList, false, null);
+      paramInt = 2;
+      break;
+      ((ajyi)HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment).a(35)).a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_LEFT_NORMAL);
+      if (HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment).get() != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("HotchatActivity", 2, "remove");
+        }
+        ((ajyf)HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment).get()).b(this.jdField_a_of_type_JavaLangString);
+      }
+    } while (HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment) == null);
+    ((aivm)HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment)).b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.b);
   }
 }
 

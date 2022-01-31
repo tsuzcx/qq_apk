@@ -1,30 +1,25 @@
-import android.graphics.Bitmap;
-import java.util.List;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public abstract interface uvf
-  extends uus
+public class uvf
+  extends wdw
 {
-  public abstract long a(int paramInt);
+  private static final int[] a = { 2131691507 };
+  private static final int[] f = { 2131165530 };
+  private static final int[] g = { 2131369915 };
+  private static int[] h = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298773) };
   
-  public abstract Bitmap a(int paramInt);
+  public uvf()
+  {
+    super(1, 1, h, -1, g, a, f);
+  }
   
-  public abstract List<? extends uwy> a();
-  
-  public abstract void a(int paramInt1, int paramInt2, float paramFloat);
-  
-  public abstract void a(int paramInt, byte[] paramArrayOfByte);
-  
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void j();
-  
-  public abstract void k();
+  public void a(int paramInt, Object paramObject, bfvo[] paramArrayOfbfvo)
+  {
+    paramArrayOfbfvo[0].a = 0;
+    paramArrayOfbfvo[0].b = 0;
+  }
 }
 
 

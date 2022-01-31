@@ -1,55 +1,56 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.mode.CaptureModeController;
 
 public class bjcl
-  implements SeekBar.OnSeekBarChangeListener
+  implements View.OnClickListener
 {
-  public bjcl(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  protected int a;
+  protected View a;
+  protected bify a;
+  protected CaptureModeController a;
+  protected boolean a;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public bjcl(CaptureModeController paramCaptureModeController)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      paramSeekBar = this.a;
-      paramSeekBar.g += 1;
-      ShortVideoPlayActivity.b(this.a, true);
-    }
-    this.a.b(paramInt * this.a.b / 10000L);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController = paramCaptureModeController;
+    this.jdField_a_of_type_Bify = this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Bify;
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public int a()
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    ShortVideoPlayActivity.b(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
-    }
+    return this.jdField_a_of_type_Int;
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public void a(View paramView)
   {
-    this.a.l();
-    paramSeekBar = this.a;
-    paramSeekBar.h += 1;
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    int j = (int)(i * this.a.b / 10000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
-    }
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
-      }
-      this.a.a(j);
-    }
-    ShortVideoPlayActivity.b(this.a, false);
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void onClick(View paramView) {}
 }
 
 

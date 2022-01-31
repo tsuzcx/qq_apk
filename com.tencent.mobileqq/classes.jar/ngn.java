@@ -1,23 +1,19 @@
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.lang.ref.WeakReference;
 
-public class ngn
+class ngn
   implements View.OnClickListener
 {
-  public ngn(ShopWebViewFragment paramShopWebViewFragment) {}
+  ngn(nfu paramnfu, String paramString) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Ngf != null) {
-      this.a.jdField_a_of_type_Ngf.b(this.a.getActivity(), this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
-    }
-    try
-    {
-      this.a.jdField_a_of_type_Ngf.a.a(134248548, null, null, null, null, 0L, false);
-      return;
-    }
-    catch (Exception paramView) {}
+    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    ((BaseActivity)this.jdField_a_of_type_Nfu.a.get()).startActivity(paramView);
   }
 }
 

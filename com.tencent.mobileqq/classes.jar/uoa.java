@@ -1,28 +1,27 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class uoa
-  implements vpr
+public final class uoa
+  implements URLDrawable.URLDrawableListener
 {
-  public void a(SegmentList paramSegmentList)
+  public uoa(ImageView paramImageView, Drawable paramDrawable) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (!(paramSegmentList instanceof MystoryListView)) {
-      throw new IllegalArgumentException("arg should match type!");
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "iconDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
     }
-    paramSegmentList = (MystoryListView)paramSegmentList;
-    Activity localActivity = paramSegmentList.jdField_a_of_type_AndroidAppActivity;
-    Object localObject = paramSegmentList.jdField_a_of_type_Unx;
-    boolean bool = paramSegmentList.a();
-    paramSegmentList.a(skt.a(localActivity, 5));
-    paramSegmentList.a(new upw(localActivity, (unx)localObject));
-    paramSegmentList.a(new upv(localActivity));
-    paramSegmentList.a(new upm(localActivity));
-    localObject = new uoh(localActivity, localActivity, 10, (unx)localObject, bool);
-    paramSegmentList.a((vpv)localObject);
-    paramSegmentList.a(new uqp(localActivity, "FeedSegment", ajjy.a(2131641268) + sfm.a + "\n拍摄一段视频，分享眼前的世界", 2130845515, 2130845516));
-    ((uoh)localObject).f_(true);
   }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

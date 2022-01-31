@@ -1,8 +1,31 @@
-public abstract interface vpu
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+
+public abstract class vpu
 {
-  public abstract void a(int paramInt);
+  public final int a;
+  public final String a;
+  public final int b;
+  public String b;
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public vpu(int paramInt1, String paramString, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+  }
+  
+  @NonNull
+  public abstract Class<? extends vpv> a();
+  
+  @NonNull
+  public abstract vpv a(@NonNull Context paramContext, ViewGroup paramViewGroup);
+  
+  public boolean a()
+  {
+    return false;
+  }
 }
 
 

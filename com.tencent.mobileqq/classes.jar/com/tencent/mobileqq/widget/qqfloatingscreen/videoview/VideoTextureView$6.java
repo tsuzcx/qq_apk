@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.videoview;
 
 import android.media.MediaPlayer;
-import bbri;
+import bcuj;
 import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 
 class VideoTextureView$6

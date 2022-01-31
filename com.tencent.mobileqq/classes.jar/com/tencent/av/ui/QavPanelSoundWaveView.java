@@ -14,7 +14,7 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lxw;
+import min;
 
 public class QavPanelSoundWaveView
   extends View
@@ -22,7 +22,7 @@ public class QavPanelSoundWaveView
   float jdField_a_of_type_Float;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   Runnable jdField_a_of_type_JavaLangRunnable = new QavPanelSoundWaveView.1(this);
-  List<lxw> jdField_a_of_type_JavaUtilList;
+  List<min> jdField_a_of_type_JavaUtilList;
   boolean jdField_a_of_type_Boolean = false;
   float jdField_b_of_type_Float;
   boolean jdField_b_of_type_Boolean = false;
@@ -72,23 +72,23 @@ public class QavPanelSoundWaveView
         if (!this.jdField_b_of_type_Boolean) {
           break;
         }
-        if ((this.jdField_a_of_type_JavaUtilList.get(0) != null) && (((lxw)this.jdField_a_of_type_JavaUtilList.get(0)).a() != null)) {
-          ((lxw)this.jdField_a_of_type_JavaUtilList.get(0)).a().setColor(Color.parseColor("#b3ffffff"));
+        if ((this.jdField_a_of_type_JavaUtilList.get(0) != null) && (((min)this.jdField_a_of_type_JavaUtilList.get(0)).a() != null)) {
+          ((min)this.jdField_a_of_type_JavaUtilList.get(0)).a().setColor(Color.parseColor("#b3ffffff"));
         }
-        if ((this.jdField_a_of_type_JavaUtilList.get(1) != null) && (((lxw)this.jdField_a_of_type_JavaUtilList.get(1)).a() != null)) {
-          ((lxw)this.jdField_a_of_type_JavaUtilList.get(1)).a().setColor(Color.parseColor("#66ffffff"));
+        if ((this.jdField_a_of_type_JavaUtilList.get(1) != null) && (((min)this.jdField_a_of_type_JavaUtilList.get(1)).a() != null)) {
+          ((min)this.jdField_a_of_type_JavaUtilList.get(1)).a().setColor(Color.parseColor("#66ffffff"));
         }
-      } while ((this.jdField_a_of_type_JavaUtilList.get(2) == null) || (((lxw)this.jdField_a_of_type_JavaUtilList.get(2)).a() == null));
-      ((lxw)this.jdField_a_of_type_JavaUtilList.get(2)).a().setColor(Color.parseColor("#26ffffff"));
+      } while ((this.jdField_a_of_type_JavaUtilList.get(2) == null) || (((min)this.jdField_a_of_type_JavaUtilList.get(2)).a() == null));
+      ((min)this.jdField_a_of_type_JavaUtilList.get(2)).a().setColor(Color.parseColor("#26ffffff"));
       return;
-      if ((this.jdField_a_of_type_JavaUtilList.get(0) != null) && (((lxw)this.jdField_a_of_type_JavaUtilList.get(0)).a() != null)) {
-        ((lxw)this.jdField_a_of_type_JavaUtilList.get(0)).a().setColor(Color.parseColor("#b312b7f5"));
+      if ((this.jdField_a_of_type_JavaUtilList.get(0) != null) && (((min)this.jdField_a_of_type_JavaUtilList.get(0)).a() != null)) {
+        ((min)this.jdField_a_of_type_JavaUtilList.get(0)).a().setColor(Color.parseColor("#b312b7f5"));
       }
-      if ((this.jdField_a_of_type_JavaUtilList.get(1) != null) && (((lxw)this.jdField_a_of_type_JavaUtilList.get(1)).a() != null)) {
-        ((lxw)this.jdField_a_of_type_JavaUtilList.get(1)).a().setColor(Color.parseColor("#6612b7f5"));
+      if ((this.jdField_a_of_type_JavaUtilList.get(1) != null) && (((min)this.jdField_a_of_type_JavaUtilList.get(1)).a() != null)) {
+        ((min)this.jdField_a_of_type_JavaUtilList.get(1)).a().setColor(Color.parseColor("#6612b7f5"));
       }
-    } while ((this.jdField_a_of_type_JavaUtilList.get(2) == null) || (((lxw)this.jdField_a_of_type_JavaUtilList.get(2)).a() == null));
-    ((lxw)this.jdField_a_of_type_JavaUtilList.get(2)).a().setColor(Color.parseColor("#2612b7f5"));
+    } while ((this.jdField_a_of_type_JavaUtilList.get(2) == null) || (((min)this.jdField_a_of_type_JavaUtilList.get(2)).a() == null));
+    ((min)this.jdField_a_of_type_JavaUtilList.get(2)).a().setColor(Color.parseColor("#2612b7f5"));
   }
   
   void b()
@@ -112,7 +112,7 @@ public class QavPanelSoundWaveView
       localPaint.setStrokeWidth(2.0F);
       localPaint.setAntiAlias(true);
       localPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_JavaUtilList.add(new lxw(0, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f, localPaint, localPointF, this.jdField_a_of_type_Boolean));
+      this.jdField_a_of_type_JavaUtilList.add(new min(0, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f, localPaint, localPointF, this.jdField_a_of_type_Boolean));
       localPaint = new Paint();
       if (!this.jdField_b_of_type_Boolean) {
         break label293;
@@ -122,7 +122,7 @@ public class QavPanelSoundWaveView
       localPaint.setStrokeWidth(2.0F);
       localPaint.setAntiAlias(true);
       localPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_JavaUtilList.add(new lxw(1, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f, localPaint, localPointF, this.jdField_a_of_type_Boolean));
+      this.jdField_a_of_type_JavaUtilList.add(new min(1, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f, localPaint, localPointF, this.jdField_a_of_type_Boolean));
       localPaint = new Paint();
       if (!this.jdField_b_of_type_Boolean) {
         break label305;
@@ -134,7 +134,7 @@ public class QavPanelSoundWaveView
       localPaint.setStrokeWidth(2.0F);
       localPaint.setAntiAlias(true);
       localPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_JavaUtilList.add(new lxw(2, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f, localPaint, localPointF, this.jdField_a_of_type_Boolean));
+      this.jdField_a_of_type_JavaUtilList.add(new min(2, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f, localPaint, localPointF, this.jdField_a_of_type_Boolean));
       return;
       f = 8.0F;
       break;
@@ -173,7 +173,7 @@ public class QavPanelSoundWaveView
     this.jdField_c_of_type_Float = 0.0F;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((lxw)localIterator.next()).a();
+      ((min)localIterator.next()).a();
     }
     invalidate();
   }
@@ -202,7 +202,7 @@ public class QavPanelSoundWaveView
     }
     Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((lxw)((Iterator)localObject).next()).a(paramCanvas);
+      ((min)((Iterator)localObject).next()).a(paramCanvas);
     }
   }
   

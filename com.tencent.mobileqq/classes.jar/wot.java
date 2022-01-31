@@ -1,24 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout.LayoutParams;
+import android.content.DialogInterface;
 
-class wot
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface wot
 {
-  wot(woq paramwoq, View paramView) {}
+  public abstract void a(DialogInterface paramDialogInterface);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    if ((localLayoutParams instanceof LinearLayout.LayoutParams))
-    {
-      ((LinearLayout.LayoutParams)localLayoutParams).topMargin = paramValueAnimator.intValue();
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    }
-  }
+  public abstract void j();
 }
 
 

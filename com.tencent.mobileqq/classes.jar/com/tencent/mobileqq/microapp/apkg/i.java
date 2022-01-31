@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import agju;
-import agpe;
+import agwj;
+import ahbt;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 final class i
-  implements agpe
+  implements ahbt
 {
   i(h paramh, g.d paramd, long paramLong) {}
   
@@ -29,7 +29,7 @@ final class i
         g.c(this.c.b, a.a(BaseApplicationImpl.getApplication().getApplicationContext(), "WAVConsole.js"));
         if (!this.c.b.f())
         {
-          String str = agju.a(this.c.a.baseLibInfo.baseLibKey, "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsE3WI7sDFUi6QWV/oK8qozDvS\nTlxmu1a3NSFxeOrjlVEVtOx8yIMVFYIixq/Fv1XgUlyvL7bGJbaLLKaqlYruGd2z\nNbaIz90Zm4H0pMFHx4vCYhsRP1HXbVMo2ZDiHEDbnSm/99uzFPPiXqLi8jE9t4if\n0GuYdSZfe5o+SIKT5QIDAQAB");
+          String str = agwj.a(this.c.a.baseLibInfo.baseLibKey, "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsE3WI7sDFUi6QWV/oK8qozDvS\nTlxmu1a3NSFxeOrjlVEVtOx8yIMVFYIixq/Fv1XgUlyvL7bGJbaLLKaqlYruGd2z\nNbaIz90Zm4H0pMFHx4vCYhsRP1HXbVMo2ZDiHEDbnSm/99uzFPPiXqLi8jE9t4if\n0GuYdSZfe5o+SIKT5QIDAQAB");
           g.a(this.c.b, g.a(new File(paramPathResult.folderPath, "WAWebview"), str));
           g.b(this.c.b, g.a(new File(paramPathResult.folderPath, "WAService"), str));
           g.c(this.c.b, g.a(new File(paramPathResult.folderPath, "WAVConsole"), str));

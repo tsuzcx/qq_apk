@@ -1,95 +1,130 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import android.util.Base64;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
 public class ozc
-  extends ViewBase
 {
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  public ozc(VafContext paramVafContext)
+  private long a(String paramString)
   {
-    super(paramVafContext);
-    a(paramVafContext);
-  }
-  
-  private void a(VafContext paramVafContext)
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(paramVafContext.getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramVafContext.getContext());
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, Utils.dp2px(20.0D));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setPadding(Utils.dp2px(5.0D), 0, Utils.dp2px(5.0D), 0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 12.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(paramVafContext.getContext().getResources().getDrawable(2130842072), null, null, null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(Utils.dp2px(2.0D));
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130842060));
-    paramVafContext = new RelativeLayout.LayoutParams(-2, Utils.dp2px(20.0D));
-    paramVafContext.addRule(11);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, Utils.dp2px(12.0D), 0);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, paramVafContext);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return (int)(float)babp.i();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.layout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.measure(paramInt1, paramInt2);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    return false;
-  }
-  
-  public boolean setAttribute(int paramInt, String paramString)
-  {
-    boolean bool = true;
-    switch (paramInt)
-    {
-    default: 
-      bool = super.setAttribute(paramInt, paramString);
-    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject == null) {}
     do
     {
-      do
+      return -1L;
+      localObject = bhvh.a((AppRuntime)localObject, true, true);
+    } while (localObject == null);
+    return ((SharedPreferences)localObject).getLong("event_simple_g_info_" + ozd.a(paramString), -1L);
+  }
+  
+  private String a(String paramString)
+  {
+    if (paramString == null) {
+      return "";
+    }
+    return bfkp.a(paramString);
+  }
+  
+  private void a(String paramString, long paramLong)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = bhvh.a((AppRuntime)localObject, true, true);
+    } while (localObject == null);
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putLong("event_simple_g_info_" + ozd.a(paramString), paramLong);
+    bhvh.a((SharedPreferences.Editor)localObject, true);
+  }
+  
+  private void a(String paramString, TroopInfo paramTroopInfo)
+  {
+    if (paramTroopInfo == null) {}
+    while ((paramTroopInfo.timeSec == a(paramTroopInfo.troopuin)) && (!ozb.a().a)) {
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(b("g_ui"), b(a(paramTroopInfo.troopuin)));
+    localHashMap.put(b("g_code"), b(a(paramTroopInfo.troopcode)));
+    localHashMap.put(b("g_oui"), b(a(paramTroopInfo.troopowneruin)));
+    localHashMap.put(b("g_name"), b(paramTroopInfo.troopname));
+    localHashMap.put(b("g_mem"), b(paramTroopInfo.troopmemo));
+    localHashMap.put(b("g_ind"), b(paramTroopInfo.fingertroopmemo));
+    localHashMap.put(b("g_create_time"), b(paramTroopInfo.troopCreateTime + ""));
+    localHashMap.put(b("g_mem_num"), b(paramTroopInfo.wMemberNum + ""));
+    localHashMap.put(b("g_adm"), b(c(paramTroopInfo.Administrator)));
+    localHashMap.put(b("g_class"), b(paramTroopInfo.mGroupClassExtText));
+    localHashMap.put(b("g_grade"), b(paramTroopInfo.nTroopGrade + ""));
+    localHashMap.put(b("g_type"), b(paramTroopInfo.troopTypeExt + ""));
+    axrl.a(null).a(paramString, "event_simple_g_info", false, 1000L, 1000L, localHashMap, null);
+    a(paramTroopInfo.troopuin, paramTroopInfo.timeSec);
+  }
+  
+  private String b(String paramString)
+  {
+    if (paramString == null) {
+      return "";
+    }
+    return Base64.encodeToString(paramString.getBytes(), 3);
+  }
+  
+  private String c(String paramString)
+  {
+    if (paramString == null) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramString = paramString.split("\\|");
+    int i = 0;
+    while (i < paramString.length)
+    {
+      if (!TextUtils.isEmpty(paramString[i])) {
+        localStringBuilder.append(a(paramString[i])).append('^');
+      }
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    for (;;)
+    {
+      return;
+      Object localObject = (TroopManager)paramQQAppInterface.getManager(52);
+      if (localObject != null)
       {
-        return bool;
-      } while (TextUtils.isEmpty(paramString));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      return true;
-      paramInt = nbj.a(paramString, 0);
-    } while (paramInt <= 0);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, Utils.dp2px(paramInt), 0);
-    return true;
+        localObject = ((TroopManager)localObject).a();
+        if (localObject != null)
+        {
+          paramQQAppInterface = paramQQAppInterface.c();
+          localObject = ((ArrayList)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            a(paramQQAppInterface, (TroopInfo)((Iterator)localObject).next());
+            try
+            {
+              Thread.sleep(1000L);
+            }
+            catch (Exception localException)
+            {
+              localException.printStackTrace();
+            }
+          }
+        }
+      }
+    }
   }
 }
 

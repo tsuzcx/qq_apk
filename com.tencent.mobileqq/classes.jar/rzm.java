@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
 
-public final class rzm
-  implements Parcelable.Creator<WSPushStrategyInfo>
+class rzm
+  extends AnimatorListenerAdapter
 {
-  public WSPushStrategyInfo a(Parcel paramParcel)
-  {
-    return new WSPushStrategyInfo(paramParcel);
-  }
+  rzm(rzk paramrzk, VVideoView paramVVideoView, View paramView) {}
   
-  public WSPushStrategyInfo[] a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new WSPushStrategyInfo[paramInt];
+    rzk.a(this.jdField_a_of_type_Rzk, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView, this.jdField_a_of_type_AndroidViewView);
   }
 }
 

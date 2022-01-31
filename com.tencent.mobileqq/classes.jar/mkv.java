@@ -1,35 +1,22 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint.FontMetrics;
-import android.text.TextPaint;
-import android.view.View;
-import com.tencent.av.widget.stageview.StageMemberView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class mkv
-  extends View
+class mkv
+  implements DialogInterface.OnClickListener
 {
-  public mkv(StageMemberView paramStageMemberView, Context paramContext)
-  {
-    super(paramContext);
-  }
+  mkv(mkt parammkt) {}
   
-  public void draw(Canvas paramCanvas)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    float f;
-    if (StageMemberView.a(this.a) != null)
+    mqz.e(false, false);
+    if (paramDialogInterface != null)
     {
-      f = -StageMemberView.a(this.a).getFontMetrics().ascent;
-      if (this.a.a == null) {
-        break label76;
+      paramDialogInterface.dismiss();
+      if ((this.a.a.a != null) && (this.a.a.a.a != null)) {
+        this.a.a.a.a.b();
       }
-      StageMemberView.a(this.a).setColor(this.a.a.a);
-    }
-    for (;;)
-    {
-      paramCanvas.drawText(StageMemberView.a(this.a), 0.0F, f, StageMemberView.a(this.a));
-      return;
-      label76:
-      StageMemberView.a(this.a).setColor(-1);
     }
   }
 }

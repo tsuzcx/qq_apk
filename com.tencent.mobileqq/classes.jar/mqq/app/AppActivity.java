@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import mqq.util.AndroidOUIWrapperUtil;
 import mqq.util.WeakReference;
 
 @TargetApi(16)
@@ -263,6 +264,9 @@ public class AppActivity
     Intent localIntent = getIntent();
     requestWindowFeature(localIntent);
     this.mIsSplashing = MobileQQ.sMobileQQ.onActivityCreate(this, localIntent);
+    if (AndroidOUIWrapperUtil.isTranslucentOrFloating(this)) {
+      AndroidOUIWrapperUtil.fixOrientation(this);
+    }
     super.onCreate(paramBundle);
     Foreground.onCreate(this);
     if (this.mIsSplashing)
@@ -681,6 +685,13 @@ public class AppActivity
       }
     }
     this.mRuntime = localAppRuntime;
+  }
+  
+  public void setRequestedOrientation(int paramInt)
+  {
+    if (!AndroidOUIWrapperUtil.isTranslucentOrFloating(this)) {
+      super.setRequestedOrientation(paramInt);
+    }
   }
   
   public boolean showPreview()

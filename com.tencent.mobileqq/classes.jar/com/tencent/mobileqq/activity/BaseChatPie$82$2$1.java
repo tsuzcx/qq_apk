@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aadr;
+import aank;
 import android.view.View;
 import android.view.ViewGroup;
 
 public class BaseChatPie$82$2$1
   implements Runnable
 {
-  public BaseChatPie$82$2$1(aadr paramaadr) {}
+  public BaseChatPie$82$2$1(aank paramaank) {}
   
   public void run()
   {

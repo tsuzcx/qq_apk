@@ -1,67 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.1;
+import com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.2;
+import com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.3;
 
 public class amfo
-  extends alzl<amfn>
+  implements amff
 {
-  public int a()
+  private final amff jdField_a_of_type_Amff;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  
+  public void a(int paramInt)
   {
-    return 490;
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.CameraOpenErrorCallbackForward.1(this, paramInt));
   }
   
-  @NonNull
-  public amfn a(int paramInt)
+  public void a(amfb paramamfb)
   {
-    return new amfn();
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.CameraOpenErrorCallbackForward.3(this, paramamfb));
   }
   
-  @Nullable
-  public amfn a(alzs[] paramArrayOfalzs)
+  public void b(int paramInt)
   {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
-    {
-      amfn localamfn = amfn.a(paramArrayOfalzs[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("RelationVipGrayProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
-      }
-      return localamfn;
-    }
-    return new amfn();
-  }
-  
-  public Class<amfn> a()
-  {
-    return amfn.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amfn paramamfn) {}
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.CameraOpenErrorCallbackForward.2(this, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amfo
  * JD-Core Version:    0.7.0.1
  */

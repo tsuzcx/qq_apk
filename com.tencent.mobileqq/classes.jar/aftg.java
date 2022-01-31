@@ -1,8 +1,17 @@
-import android.widget.TextView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
 
-class aftg
+public class aftg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public TextView a;
+  public aftg(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.invalidate();
+  }
 }
 
 

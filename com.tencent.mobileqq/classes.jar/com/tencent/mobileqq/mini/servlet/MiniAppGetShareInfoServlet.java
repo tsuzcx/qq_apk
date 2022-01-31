@@ -5,7 +5,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bakc;
+import bblm;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import mqq.app.Packet;
@@ -54,7 +54,7 @@ public class MiniAppGetShareInfoServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_share.AdaptShareInfo");
-    paramPacket.putSendData(bakc.a((byte[])localObject));
+    paramPacket.putSendData(bblm.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

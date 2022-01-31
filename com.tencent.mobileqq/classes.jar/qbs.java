@@ -1,27 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class qbs
-  extends AnimatorListenerAdapter
+public class qbs
+  implements Cloneable
 {
-  qbs(qbq paramqbq) {}
+  public String a;
+  public String b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected Object clone()
   {
-    paramAnimator = new Bundle();
-    paramAnimator.putBoolean("key_is_from_floating_window", true);
-    paramAnimator.putParcelable("VIDEO_OBJ", qbq.a(this.a).a);
-    if (qbq.a(this.a) != null) {}
-    for (long l = qbq.a(this.a).a() + 300L;; l = 0L)
+    try
     {
-      paramAnimator.putLong("VIDEO_PLAY_POSITION", l);
-      qcn.a(BaseActivity.sTopActivity, paramAnimator, false, qbq.a(this.a));
-      qbq.a(this.a, 1);
-      return;
+      qbs localqbs = (qbs)super.clone();
+      return localqbs;
     }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
+    }
+    return null;
   }
 }
 

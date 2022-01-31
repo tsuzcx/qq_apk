@@ -1,8 +1,13 @@
-public abstract interface bglj
+import java.io.File;
+import java.io.FileFilter;
+
+final class bglj
+  implements FileFilter
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  public boolean accept(File paramFile)
+  {
+    return paramFile.getName().endsWith(".cfg");
+  }
 }
 
 

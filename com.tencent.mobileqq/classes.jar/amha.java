@@ -1,61 +1,27 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.colornote.anim.MusicDanceDrawable;
 
 public class amha
-  extends alzl<amgz>
 {
-  public static amgz a()
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
+  private int d;
+  
+  private amha(MusicDanceDrawable paramMusicDanceDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return (amgz)alzw.a().a(484);
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
   }
   
-  public int a()
+  public void a(int paramInt)
   {
-    return 484;
-  }
-  
-  @NonNull
-  public amgz a(int paramInt)
-  {
-    return new amgz();
-  }
-  
-  @Nullable
-  public amgz a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return amgz.a(paramArrayOfalzs);
-    }
-    return null;
-  }
-  
-  public Class<amgz> a()
-  {
-    return amgz.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amgz paramamgz) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amha
  * JD-Core Version:    0.7.0.1
  */

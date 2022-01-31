@@ -1,21 +1,20 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
 
-class avvv
-  implements Comparator<String>
+public class avvv
+  implements View.OnClickListener
 {
-  avvv(avvu paramavvu) {}
+  public avvv(QQSlidingTabView paramQQSlidingTabView, int paramInt) {}
   
-  public int a(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 0;
-    }
-    return paramString2.length() - paramString1.length();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avvv
  * JD-Core Version:    0.7.0.1
  */

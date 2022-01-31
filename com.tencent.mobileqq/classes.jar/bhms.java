@@ -1,23 +1,17 @@
-import android.support.annotation.NonNull;
-
-class bhms
-  implements bhmf
+final class bhms
+  extends bhmr
 {
-  bhms(bhmr parambhmr) {}
-  
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public int a(String paramString, int paramInt)
   {
-    String str = paramString;
-    if (paramInt == 0) {
-      str = azjg.b(paramString);
+    if ((paramString == null) || (paramString.length() == 0) || (paramInt < 1)) {
+      return -1;
     }
-    return str;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhms
  * JD-Core Version:    0.7.0.1
  */

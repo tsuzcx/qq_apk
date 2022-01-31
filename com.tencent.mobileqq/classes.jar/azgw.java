@@ -1,32 +1,16 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
-class azgw
-  extends Handler
+public class azgw
+  implements azco
 {
-  azgw(azgv paramazgv, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  private azgw(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(azcq paramazcq)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.a) {}
-    Object localObject;
-    String str;
-    do
-    {
-      return;
-      localObject = (Object[])paramMessage.obj;
-      paramMessage = (RollangleImageView)localObject[0];
-      str = (String)localObject[1];
-      localObject = (Bitmap)localObject[2];
-    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
-    paramMessage.setImageBitmap((Bitmap)localObject);
+    this.a.jdField_a_of_type_Azcq = paramazcq;
+    this.a.jdField_a_of_type_Azae.b();
+    this.a.e(true);
+    axqw.b(null, "dc00899", "Grp_tribe", "", "pub_page", "choose_prefix", 0, 0, this.a.q, "", "", "");
   }
 }
 

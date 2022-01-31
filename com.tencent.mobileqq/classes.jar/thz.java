@@ -1,23 +1,11 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
-
-public class thz
-  implements View.OnKeyListener
+class thz
+  implements bfos
 {
-  public thz(StoryPlayerFragment paramStoryPlayerFragment) {}
+  thz(thy paramthy, tfi paramtfi) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onDismiss()
   {
-    if (paramInt == 4)
-    {
-      if (paramKeyEvent.getAction() == 1) {
-        this.a.finish();
-      }
-      return true;
-    }
-    return false;
+    vel.a("msg_tab", "clk_press", 0, 0, new String[] { this.jdField_a_of_type_Tfi.jdField_a_of_type_Int + "", "8", "", this.jdField_a_of_type_Tfi.jdField_a_of_type_JavaLangString });
   }
 }
 

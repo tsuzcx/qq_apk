@@ -1,47 +1,16 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-public abstract class agfk
+class agfk
+  implements View.OnClickListener
 {
-  public static volatile agfk a;
-  public agff a;
-  agfl a;
-  public agfm a;
-  protected aggf a;
-  public WeakReference<AlbumListFragment> a;
+  agfk(agfg paramagfg) {}
   
-  protected agfk(AlbumListFragment paramAlbumListFragment)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Agfl = null;
-    this.jdField_a_of_type_Agfm = null;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAlbumListFragment);
-    this.jdField_a_of_type_Aggf = aggf.a(paramAlbumListFragment.getActivity().getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
-    paramAlbumListFragment.getActivity().getIntent().putExtra("NEED_NEW_PHOTO_COMMON_DATA", false);
-    this.jdField_a_of_type_Aggf.a();
-    this.jdField_a_of_type_Agff = new agff();
-    if (QLog.isColorLevel()) {
-      QLog.d("AlbumListActivity", 2, "AlbumListLogic new，activity = " + this.jdField_a_of_type_MqqUtilWeakReference + ",PhotoCommonData = " + this.jdField_a_of_type_Aggf);
-    }
+    agfg.a(this.a).setText("");
   }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AlbumListActivity", 2, "AlbumListLogic new，activity = " + this.jdField_a_of_type_MqqUtilWeakReference.get() + ",PhotoCommonData = " + this.jdField_a_of_type_Aggf);
-    }
-    this.jdField_a_of_type_Aggf.b();
-    jdField_a_of_type_Agfk = null;
-  }
-  
-  public abstract void a(Intent paramIntent);
-  
-  abstract void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent);
-  
-  public abstract void b();
 }
 
 

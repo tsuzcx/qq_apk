@@ -2,8 +2,8 @@ package com.tencent.mobileqq.gamecenter.data;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import atmo;
-import atmp;
+import aukm;
+import aukn;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -14,11 +14,11 @@ import java.util.Iterator;
 public class GameNoticeCenter$GameNoticeInfoList
   extends ArrayList<GameNoticeInfo>
 {
-  private atmp mEntityManager;
+  private aukn mEntityManager;
   
-  public GameNoticeCenter$GameNoticeInfoList(GameNoticeCenter paramGameNoticeCenter, atmp paramatmp)
+  public GameNoticeCenter$GameNoticeInfoList(GameNoticeCenter paramGameNoticeCenter, aukn paramaukn)
   {
-    this.mEntityManager = paramatmp;
+    this.mEntityManager = paramaukn;
   }
   
   private void a()
@@ -97,8 +97,8 @@ public class GameNoticeCenter$GameNoticeInfoList
   public boolean remove(Object paramObject)
   {
     boolean bool = super.remove(paramObject);
-    if ((bool) && ((paramObject instanceof atmo))) {
-      this.mEntityManager.b((atmo)paramObject);
+    if ((bool) && ((paramObject instanceof aukm))) {
+      this.mEntityManager.b((aukm)paramObject);
     }
     return bool;
   }

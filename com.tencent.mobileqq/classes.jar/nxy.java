@@ -1,19 +1,31 @@
-class nxy
-  extends nyf
+import org.json.JSONObject;
+
+public class nxy
 {
-  nxy(nxd paramnxd)
-  {
-    super(paramnxd, null);
-  }
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  void a(nyi paramnyi)
+  public void a(JSONObject paramJSONObject)
   {
-    paramnyi.onCommentListLoad(1, true, this.a.c(), nxd.c(this.a), 6, 6);
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("adDownloadApiUrl");
+      this.b = paramJSONObject.optString("pkg_name");
+      this.c = paramJSONObject.optString("appid");
+      this.d = paramJSONObject.optString("appname");
+      this.e = paramJSONObject.optString("pkgurl");
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("business_type", 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nxy
  * JD-Core Version:    0.7.0.1
  */

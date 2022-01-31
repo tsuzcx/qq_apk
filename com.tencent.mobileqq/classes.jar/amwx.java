@@ -1,82 +1,107 @@
-import android.content.res.ColorStateList;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amwx
-  extends ClickableSpan
-  implements apqj
 {
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private boolean jdField_a_of_type_Boolean;
-  private ColorStateList b;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d = "";
   
-  public amwx(View.OnClickListener paramOnClickListener, int paramInt)
+  public amwx()
   {
-    this(paramOnClickListener, ColorStateList.valueOf(paramInt), null);
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "0";
+    this.jdField_b_of_type_JavaLangString = "0";
+    this.jdField_c_of_type_JavaLangString = "0";
   }
   
-  public amwx(View.OnClickListener paramOnClickListener, ColorStateList paramColorStateList)
+  public static amwx a(String paramString)
   {
-    this(paramOnClickListener, paramColorStateList, null);
-  }
-  
-  public amwx(View.OnClickListener paramOnClickListener, ColorStateList paramColorStateList1, ColorStateList paramColorStateList2)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList1;
-    this.b = paramColorStateList2;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[] { 16842919 }, 0);
-        paramTextPaint.setColor(i);
-        label46:
-        if (this.b == null) {
-          break label122;
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break label107;
-        }
-      }
-    }
-    label107:
-    for (int i = this.b.getColorForState(new int[] { 16842919 }, 0);; i = this.b.getColorForState(new int[0], 0))
+    if (paramString == null) {}
+    for (;;)
     {
-      paramTextPaint.bgColor = i;
-      return;
-      i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[0], 0);
-      break;
-      paramTextPaint.setColor(-16777216);
-      break label46;
+      return null;
+      try
+      {
+        amwx localamwx = new amwx();
+        paramString = new JSONObject(paramString);
+        if (paramString.has("wvShouldReportPerf"))
+        {
+          if (paramString.optInt("wvShouldReportPerf") == 1)
+          {
+            bool = true;
+            localamwx.jdField_a_of_type_Boolean = bool;
+          }
+        }
+        else
+        {
+          if (paramString.has("wvShouldReportJsapiCall"))
+          {
+            if (paramString.optInt("wvShouldReportJsapiCall") != 1) {
+              break label212;
+            }
+            bool = true;
+            label70:
+            localamwx.jdField_b_of_type_Boolean = bool;
+          }
+          if (paramString.has("wvShouldReportOpenapiCall")) {
+            if (paramString.optInt("wvShouldReportOpenapiCall") != 1) {
+              break label217;
+            }
+          }
+        }
+        label212:
+        label217:
+        for (boolean bool = true;; bool = false)
+        {
+          localamwx.jdField_c_of_type_Boolean = bool;
+          if (paramString.has("wvPerformanceRate")) {
+            localamwx.jdField_a_of_type_JavaLangString = paramString.optString("wvPerformanceRate");
+          }
+          if (paramString.has("wvJsapiCallRate")) {
+            localamwx.jdField_b_of_type_JavaLangString = paramString.optString("wvJsapiCallRate");
+          }
+          if (paramString.has("wvSchemeRate")) {
+            localamwx.jdField_c_of_type_JavaLangString = paramString.optString("wvSchemeRate");
+          }
+          if (paramString.has("recogniseText")) {
+            localamwx.d = paramString.optString("recogniseText");
+          }
+          QLog.d("ConfBean", 2, "confBean = " + localamwx.toString());
+          return localamwx;
+          bool = false;
+          break;
+          bool = false;
+          break label70;
+        }
+        if (!QLog.isColorLevel()) {}
+      }
+      catch (Exception paramString) {}
     }
-    label122:
-    paramTextPaint.bgColor = 0;
+    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("reportPerformance:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" reportJsapi:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(" reportOpenapi:").append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(" performanceRate:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" jsapiRate:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" schemeRate:").append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" recogniseText:").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amwx
  * JD-Core Version:    0.7.0.1
  */

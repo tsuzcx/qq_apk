@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app.utils;
 
-import akhs;
-import akht;
+import akwe;
+import akwf;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import behk;
-import beop;
-import beoq;
-import beor;
+import bfpe;
+import bfwj;
+import bfwk;
+import bfwl;
 import com.tencent.mobileqq.remind.widget.WheelTextView;
 import com.tencent.mobileqq.remind.widget.WheelView;
 import com.tencent.widget.AdapterView;
@@ -18,11 +18,11 @@ import java.util.List;
 
 public class NumberWheelView
   extends WheelView
-  implements behk, beop, beoq, beor
+  implements bfpe, bfwj, bfwk, bfwl
 {
   public int a;
-  private akhs jdField_a_of_type_Akhs;
-  private akht jdField_a_of_type_Akht;
+  private akwe jdField_a_of_type_Akwe;
+  private akwf jdField_a_of_type_Akwf;
   private Context jdField_a_of_type_AndroidContentContext;
   private final int h = 0;
   private final int i = 36;
@@ -88,10 +88,10 @@ public class NumberWheelView
   public int a()
   {
     int i1 = getSelectedItemPosition();
-    if ((i1 < 0) || (i1 >= this.jdField_a_of_type_Akhs.a.size())) {
+    if ((i1 < 0) || (i1 >= this.jdField_a_of_type_Akwe.a.size())) {
       return 0;
     }
-    return ((Integer)this.jdField_a_of_type_Akhs.a.get(i1)).intValue();
+    return ((Integer)this.jdField_a_of_type_Akwe.a.get(i1)).intValue();
   }
   
   public void a(View paramView, int paramInt)
@@ -103,7 +103,7 @@ public class NumberWheelView
   
   public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i1 = this.jdField_a_of_type_Akhs.getCount();
+    int i1 = this.jdField_a_of_type_Akwe.getCount();
     paramInt = 0;
     while (paramInt < i1)
     {
@@ -116,16 +116,16 @@ public class NumberWheelView
   public void a(VerticalGallery paramVerticalGallery)
   {
     this.jdField_a_of_type_Int = 1;
-    if (this.jdField_a_of_type_Akht != null) {
-      this.jdField_a_of_type_Akht.a(this, paramVerticalGallery);
+    if (this.jdField_a_of_type_Akwf != null) {
+      this.jdField_a_of_type_Akwf.a(this, paramVerticalGallery);
     }
   }
   
   public void b(VerticalGallery paramVerticalGallery)
   {
     this.jdField_a_of_type_Int = 1;
-    if (this.jdField_a_of_type_Akht != null) {
-      this.jdField_a_of_type_Akht.a(this, paramVerticalGallery);
+    if (this.jdField_a_of_type_Akwf != null) {
+      this.jdField_a_of_type_Akwf.a(this, paramVerticalGallery);
     }
   }
   
@@ -154,20 +154,20 @@ public class NumberWheelView
       this.p = paramInt2;
       this.q = paramInt1;
     }
-    while (this.jdField_a_of_type_Akhs == null)
+    while (this.jdField_a_of_type_Akwe == null)
     {
-      this.jdField_a_of_type_Akhs = new akhs(this, this.jdField_a_of_type_AndroidContentContext, 36, this.p, this.q);
-      setAdapter(this.jdField_a_of_type_Akhs);
+      this.jdField_a_of_type_Akwe = new akwe(this, this.jdField_a_of_type_AndroidContentContext, 36, this.p, this.q);
+      setAdapter(this.jdField_a_of_type_Akwe);
       return;
       this.q = paramInt2;
       this.p = paramInt1;
     }
-    this.jdField_a_of_type_Akhs.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Akwe.a(paramInt1, paramInt2);
   }
   
-  public void setScrollStateListener(akht paramakht)
+  public void setScrollStateListener(akwf paramakwf)
   {
-    this.jdField_a_of_type_Akht = paramakht;
+    this.jdField_a_of_type_Akwf = paramakwf;
   }
   
   public void setValue(int paramInt)

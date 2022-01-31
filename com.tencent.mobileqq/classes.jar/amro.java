@@ -1,147 +1,155 @@
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Formatter;
-import java.util.Locale;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amro
+  implements ampd<String>
 {
-  private static float jdField_a_of_type_Float = -1.0F;
-  private static final StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private static final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy年M月d日 hh:mm:ss");
-  private static final Date jdField_a_of_type_JavaUtilDate = new Date();
-  private static final Formatter jdField_a_of_type_JavaUtilFormatter;
+  public String a;
+  public HashMap<String, ArrayList<String>> a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
   
-  static
+  public amro()
   {
-    jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-    jdField_a_of_type_JavaUtilFormatter = new Formatter(jdField_a_of_type_JavaLangStringBuilder, Locale.getDefault());
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public static int a(float paramFloat)
+  public String a(JSONObject paramJSONObject, String paramString)
   {
-    if (jdField_a_of_type_Float < 0.0F) {
-      jdField_a_of_type_Float = amox.a().a().a().getDisplayMetrics().density;
-    }
-    return (int)(jdField_a_of_type_Float * paramFloat + 0.5F);
-  }
-  
-  public static int a(ampo paramampo1, ampo paramampo2)
-  {
-    int i = 0;
-    if (paramampo1 == paramampo2) {}
-    int j;
-    do
+    if (paramJSONObject == null)
     {
-      do
+      QLog.e("DialogConfig", 1, "getArkStringConfig, json is empty");
+      return "";
+    }
+    paramJSONObject = paramJSONObject.optString(paramString);
+    if (!TextUtils.isEmpty(paramJSONObject))
+    {
+      QLog.i("DialogConfig", 1, String.format("getArkStringConfig, " + paramString + "=%s", new Object[] { paramJSONObject }));
+      return paramJSONObject;
+    }
+    QLog.i("DialogConfig", 1, "getArkStringConfig, " + paramString + " is empty");
+    return "";
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      ArkAppCenter.c("DialogConfig", "onParse,fileOrRes is null");
+      return;
+    }
+    for (;;)
+    {
+      String str1;
+      ArrayList localArrayList;
+      int i;
+      try
       {
-        return i;
-        if (paramampo1 == null) {
-          return -1;
+        for (;;)
+        {
+          JSONObject localJSONObject = new JSONObject(paramString);
+          this.jdField_a_of_type_Boolean = a(localJSONObject, "ark_map_transfer_struct");
+          this.jdField_b_of_type_JavaLangString = a(localJSONObject, "business_percent");
+          if (localJSONObject.optInt("ark_use_android_http", 0) == 0) {
+            break label470;
+          }
+          bool = true;
+          this.jdField_b_of_type_Boolean = bool;
+          this.c = a(localJSONObject, "ark_support_android9_emoji");
+          this.d = a(localJSONObject, "ark_engine_multi_thread");
+          this.jdField_a_of_type_JavaLangString = a(localJSONObject, "ark_engine_hardware_rendering_device_matcher");
+          this.e = a(localJSONObject, "ark_engine_disable_hardware_rendering");
+          QLog.i("DialogConfig", 1, "mArkMapTransferStruct=" + this.jdField_a_of_type_Boolean + ", mBusinessPercent=" + this.jdField_b_of_type_JavaLangString + ", mArkUseAndroidHttp=" + this.jdField_b_of_type_Boolean + ", mArkAndroid9EmojiFeatureSupport=" + this.c + ", mArkEngineMultiThread" + this.d + ", mArkEngineHardwareRenderingDeviceMatcher=" + this.jdField_a_of_type_JavaLangString + ", mArkEngineDisableHardwareRendering=" + this.e);
+          try
+          {
+            amrs.a().a(localJSONObject);
+            localJSONObject = localJSONObject.optJSONObject("msgai_intent_app_map");
+            if (localJSONObject == null) {
+              break;
+            }
+            Iterator localIterator = localJSONObject.keys();
+            JSONArray localJSONArray;
+            do
+            {
+              if (!localIterator.hasNext()) {
+                break;
+              }
+              str1 = (String)localIterator.next();
+              QLog.i("DialogConfig", 1, "msgai_intent_app_map, intent = " + str1);
+              localJSONArray = localJSONObject.optJSONArray(str1);
+            } while (localJSONArray == null);
+            localArrayList = new ArrayList();
+            i = 0;
+            if (i < localJSONArray.length())
+            {
+              String str2 = localJSONArray.optString(i);
+              QLog.i("DialogConfig", 1, "msgai_intent_app_map, appID = " + str2);
+              if (TextUtils.isEmpty(str2)) {
+                break label463;
+              }
+              localArrayList.add(str2);
+            }
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              QLog.e("DialogConfig", 1, "ArkMsgReplyConfigMgr updateConfig exception:" + localException.getMessage());
+            }
+          }
         }
-        if (paramampo2 == null) {
-          return 1;
+        if (localArrayList.isEmpty()) {
+          continue;
         }
-      } while (paramampo1.equals(paramampo2));
-      long l = paramampo1.d() - paramampo2.d();
-      if (l > 0L) {
-        return 1;
       }
-      if (l < 0L) {
-        return -1;
+      catch (JSONException localJSONException)
+      {
+        QLog.e("DialogConfig", 1, String.format("updateDialogConfig, parse json fail, json=%s, err=%s", new Object[] { paramString, localJSONException.getMessage() }));
+        return;
       }
-      i = paramampo1.b() - paramampo2.b();
-      if (i > 0) {
-        return -1;
-      }
-      if (i < 0) {
-        return 1;
-      }
-      i = paramampo1.e() - paramampo2.e();
-      if (i > 0) {
-        return 1;
-      }
-      if (i < 0) {
-        return -1;
-      }
-      i = paramampo1.c() - paramampo2.c();
-      if (i > 0) {
-        return -1;
-      }
-      if (i < 0) {
-        return 1;
-      }
-      l = paramampo1.c() - paramampo2.c();
-      if (l > 0L) {
-        return -1;
-      }
-      if (l < 0L) {
-        return 1;
-      }
-      j = paramampo1.a() - paramampo2.a();
-      if (j > 0) {
-        return 1;
-      }
-      i = j;
-    } while (j >= 0);
-    return -1;
-  }
-  
-  public static int a(ampo paramampo1, ampo paramampo2, long paramLong)
-  {
-    if ((paramampo1.b(paramLong)) || (paramampo2.b(paramLong))) {}
-    float[] arrayOfFloat2;
-    do
-    {
-      return -1;
-      arrayOfFloat1 = paramampo1.a(paramampo1.e());
-      arrayOfFloat2 = paramampo2.a(paramampo1.e());
-    } while ((arrayOfFloat1 == null) || (arrayOfFloat2 == null));
-    int i = (int)((arrayOfFloat2[0] - arrayOfFloat1[2]) / paramampo2.a());
-    float[] arrayOfFloat1 = paramampo1.a(paramampo1.b());
-    return Math.max(i, (int)((paramampo2.a(paramampo1.b())[0] - arrayOfFloat1[2]) / paramampo2.a()));
-  }
-  
-  public static String a(long paramLong)
-  {
-    if (paramLong < 86400000L)
-    {
-      paramLong /= 1000L;
-      long l1 = paramLong % 60L;
-      long l2 = paramLong / 60L % 60L;
-      long l3 = paramLong / 3600L;
-      paramLong = l1;
-      if (l1 < 0L) {
-        paramLong = 0L;
-      }
-      l1 = l2;
-      if (l2 < 0L) {
-        l1 = 0L;
-      }
-      l2 = l3;
-      if (l3 < 0L) {
-        l2 = 0L;
-      }
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      if (l2 > 0L) {
-        return jdField_a_of_type_JavaUtilFormatter.format("%d:%02d:%02d", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(paramLong) }).toString();
-      }
-      return jdField_a_of_type_JavaUtilFormatter.format("%02d:%02d", new Object[] { Long.valueOf(l1), Long.valueOf(paramLong) }).toString();
+      this.jdField_a_of_type_JavaUtilHashMap.put(str1, localArrayList);
+      continue;
+      label463:
+      i += 1;
+      continue;
+      label470:
+      boolean bool = false;
     }
-    jdField_a_of_type_JavaUtilDate.setTime(paramLong);
-    return jdField_a_of_type_JavaTextSimpleDateFormat.format(jdField_a_of_type_JavaUtilDate);
   }
   
-  public static boolean a()
+  public boolean a(JSONObject paramJSONObject, String paramString)
   {
-    return Build.VERSION.SDK_INT >= 18;
+    if (paramJSONObject == null)
+    {
+      QLog.e("DialogConfig", 1, "getArkBoolConfig, dictConfigJsonString is empty");
+      return false;
+    }
+    paramJSONObject = paramJSONObject.optString(paramString);
+    if (!TextUtils.isEmpty(paramJSONObject))
+    {
+      QLog.i("DialogConfig", 1, String.format("getArkBoolConfig, " + paramString + "=%s", new Object[] { paramJSONObject }));
+      return paramJSONObject.equals("true");
+    }
+    QLog.i("DialogConfig", 1, "getArkBoolConfig, " + paramString + " is empty");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amro
  * JD-Core Version:    0.7.0.1
  */

@@ -1,97 +1,52 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoSpreadGroupList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-public class srx
+class srx
+  extends RecyclerView.OnScrollListener
 {
-  public int a;
-  public List<String> a;
-  public int b;
-  public List<String> b;
+  private long jdField_a_of_type_Long;
+  private final long b = 20L;
   
-  public srx(qqstory_struct.VideoSpreadGroupList paramVideoSpreadGroupList)
+  srx(srv paramsrv) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (paramVideoSpreadGroupList == null) {}
-    for (;;)
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if ((paramInt == 1) && (srv.b(this.jdField_a_of_type_Srv)))
     {
-      return;
-      this.jdField_a_of_type_Int = paramVideoSpreadGroupList.visibility_type.get();
-      int k;
-      int i;
-      if ((paramVideoSpreadGroupList.group_list != null) && (paramVideoSpreadGroupList.group_list.has()))
-      {
-        k = paramVideoSpreadGroupList.group_list.size();
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(k);
-        i = 0;
-        while (i < k)
-        {
-          this.jdField_a_of_type_JavaUtilList.add(String.valueOf(((Long)paramVideoSpreadGroupList.group_list.get(i)).longValue()));
-          i += 1;
-        }
-      }
-      this.jdField_b_of_type_Int = paramVideoSpreadGroupList.visibility_sharegroup_type.get();
-      if ((paramVideoSpreadGroupList.share_group_list != null) && (paramVideoSpreadGroupList.share_group_list.has()))
-      {
-        k = paramVideoSpreadGroupList.share_group_list.size();
-        this.jdField_b_of_type_JavaUtilList = new ArrayList(k);
-        i = j;
-        while (i < k)
-        {
-          this.jdField_b_of_type_JavaUtilList.add(((ByteStringMicro)paramVideoSpreadGroupList.share_group_list.get(i)).toStringUtf8());
-          i += 1;
-        }
-      }
+      veg.b("FredguoFix", "set needAnimated to false, break animation");
+      srv.a(this.jdField_a_of_type_Srv).a(srv.a(this.jdField_a_of_type_Srv));
+      srv.b(this.jdField_a_of_type_Srv, false);
+      srv.a(this.jdField_a_of_type_Srv, false);
     }
-  }
-  
-  public srx(List<String> paramList)
-  {
-    if (paramList == null) {
+    if (paramInt == 0)
+    {
+      srv.d(this.jdField_a_of_type_Srv, false);
+      this.jdField_a_of_type_Long = 0L;
+      if (srv.a(this.jdField_a_of_type_Srv).a(paramRecyclerView.getLayoutManager()) == null) {
+        return;
+      }
+      if (srv.c(this.jdField_a_of_type_Srv))
+      {
+        veg.b("FredguoFix", "animated to false, play animation done");
+        srv.a(this.jdField_a_of_type_Srv, false);
+        srv.a(this.jdField_a_of_type_Srv).a(srv.a(this.jdField_a_of_type_Srv));
+      }
+      this.jdField_a_of_type_Srv.d();
       return;
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_b_of_type_Int = 2;
+    srv.d(this.jdField_a_of_type_Srv, true);
   }
   
-  public static boolean a(srx paramsrx)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    return (paramsrx == null) || (paramsrx.jdField_a_of_type_JavaUtilList == null) || (paramsrx.jdField_a_of_type_JavaUtilList.isEmpty());
-  }
-  
-  public qqstory_struct.VideoSpreadGroupList a()
-  {
-    qqstory_struct.VideoSpreadGroupList localVideoSpreadGroupList = new qqstory_struct.VideoSpreadGroupList();
-    localVideoSpreadGroupList.setHasFlag(false);
-    Iterator localIterator;
-    String str;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    long l = System.currentTimeMillis();
+    if (Math.abs(l - this.jdField_a_of_type_Long) >= 20L)
     {
-      localVideoSpreadGroupList.visibility_type.set(this.jdField_a_of_type_Int);
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        str = (String)localIterator.next();
-        localVideoSpreadGroupList.group_list.add(Long.valueOf(str));
-      }
-      localVideoSpreadGroupList.setHasFlag(true);
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Srv.d();
     }
-    if ((this.jdField_b_of_type_JavaUtilList != null) && (!this.jdField_b_of_type_JavaUtilList.isEmpty()))
-    {
-      localVideoSpreadGroupList.visibility_sharegroup_type.set(this.jdField_b_of_type_Int);
-      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        str = (String)localIterator.next();
-        localVideoSpreadGroupList.share_group_list.add(ByteStringMicro.copyFromUtf8(str));
-      }
-      localVideoSpreadGroupList.setHasFlag(true);
-    }
-    return localVideoSpreadGroupList;
   }
 }
 

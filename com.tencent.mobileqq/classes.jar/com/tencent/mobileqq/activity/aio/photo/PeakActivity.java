@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
 import android.os.Bundle;
-import awnu;
-import bhfc;
+import axmt;
+import bizu;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.NativeVideoImage;
@@ -17,7 +17,7 @@ public class PeakActivity
   
   protected void c()
   {
-    awnu.a(this.a, getWindow());
+    axmt.a(this.a, getWindow());
   }
   
   public String getModuleId()
@@ -30,7 +30,7 @@ public class PeakActivity
     super.onCreate(paramBundle);
     setVolumeControlStream(3);
     if (!isLatecyWaitRuntime()) {
-      bhfc.a();
+      bizu.a();
     }
   }
   

@@ -1,18 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class adpg
-  implements bbjy
+class adpg
+  implements bfoq
 {
-  public adpg(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, adpi paramadpi) {}
+  adpg(adoz paramadoz, MessageForFile paramMessageForFile, bfol parambfol, BaseChatItemLayout paramBaseChatItemLayout, adph paramadph) {}
   
-  public void a(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Adpi.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Adpi.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Adpi.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
+    paramView = this.jdField_a_of_type_Adoz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop);
+    if (paramView != null)
+    {
+      if (paramView.status == 16)
+      {
+        aptv.a(2131692856);
+        this.jdField_a_of_type_Bfol.cancel();
+        return;
+      }
+      apue.a(this.jdField_a_of_type_Adoz.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Adoz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
     }
+    this.jdField_a_of_type_Adoz.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Adph, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status);
+    this.jdField_a_of_type_Bfol.cancel();
   }
 }
 

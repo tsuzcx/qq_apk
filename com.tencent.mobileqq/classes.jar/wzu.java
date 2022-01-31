@@ -1,31 +1,56 @@
-import com.tencent.biz.videostory.widget.view.smartmusicview.EditVideoSmartMusicPart.1;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
+import java.io.File;
+import java.util.HashMap;
 
-public class wzu
-  implements axrt
+public abstract class wzu
 {
-  public wzu(EditVideoSmartMusicPart.1 param1) {}
+  wzu jdField_a_of_type_Wzu;
+  wzv jdField_a_of_type_Wzv;
+  String c;
+  String d;
   
-  public void onResp(axsq paramaxsq)
+  public wzu(wyw paramwyw, wzv paramwzv, String paramString)
   {
-    QLog.i("EditVideoSmartMusicPart", 1, "download smart anim onResp url:  resultcode: " + paramaxsq.c);
-    if (wzt.a(this.a.this$0) == null) {
-      return;
+    this.jdField_a_of_type_Wzv = paramwzv;
+    this.c = paramString;
+  }
+  
+  public File a()
+  {
+    int i = this.c.indexOf("_");
+    Object localObject = this.c.substring(i + 1, this.c.length());
+    localObject = new File(wyw.jdField_a_of_type_JavaLangString + File.separator + (String)localObject);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
     }
-    try
+    return localObject;
+  }
+  
+  public wzg a()
+  {
+    synchronized (this.b.jdField_a_of_type_JavaLangObject)
     {
-      QLog.i("EditVideoSmartMusicPart", 1, "start unzip smart anim");
-      mpx.a(wzt.a(this.a.this$0), "/storage/emulated/0/Tencent/MobileQQ/video_story/");
-      return;
-    }
-    catch (IOException paramaxsq)
-    {
-      QLog.i("EditVideoSmartMusicPart", 1, "unzip smart anim failed" + paramaxsq);
+      wzg localwzg = (wzg)this.b.jdField_a_of_type_JavaUtilHashMap.get(this.c);
+      return localwzg;
     }
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
+  public abstract void a();
+  
+  public File b()
+  {
+    File localFile = new File(wyw.jdField_a_of_type_JavaLangString + File.separator + "cache");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return localFile;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Wzu != null) {
+      this.jdField_a_of_type_Wzu.a();
+    }
+  }
 }
 
 

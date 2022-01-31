@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adfw;
+import adqy;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -10,7 +10,7 @@ import mqq.app.MobileQQ;
 public class GrayTipsItemBuilder$23
   implements Runnable
 {
-  public GrayTipsItemBuilder$23(adfw paramadfw, String paramString1, int paramInt, long paramLong, String paramString2) {}
+  public GrayTipsItemBuilder$23(adqy paramadqy, String paramString1, int paramInt, long paramLong, String paramString2) {}
   
   public void run()
   {

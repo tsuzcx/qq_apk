@@ -1,52 +1,20 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
 
 public class awjj
+  implements View.OnClickListener
 {
-  public static awjj a;
-  public static String a;
-  private awhe a;
+  public awjj(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_Awjj = new awjj();
-  }
-  
-  private awjj()
-  {
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-  }
-  
-  public static awjj a()
-  {
-    return jdField_a_of_type_Awjj;
-  }
-  
-  public awhe a()
-  {
-    if (this.jdField_a_of_type_Awhe == null) {
-      this.jdField_a_of_type_Awhe = new awhe(40, awje.c);
-    }
-    return this.jdField_a_of_type_Awhe;
-  }
-  
-  public awhh a()
-  {
-    return awhh.a();
-  }
-  
-  public AVCodec a()
-  {
-    return AVCodec.get();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Awhe = null;
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awjj
  * JD-Core Version:    0.7.0.1
  */

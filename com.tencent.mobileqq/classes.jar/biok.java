@@ -1,70 +1,173 @@
-import android.graphics.Matrix;
-import android.graphics.Path;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import dov.com.qq.im.ae.view.AEDownLoadingView;
 
 public class biok
-  extends binj
+  extends RecyclerView.ViewHolder
 {
-  public Path a;
-  ArrayList<bioj> a;
-  public int b;
-  public int c;
+  private int jdField_a_of_type_Int = 0;
+  private Context jdField_a_of_type_AndroidContentContext;
+  public ImageView a;
+  public RelativeLayout a;
+  public URLImageView a;
+  public AEDownLoadingView a;
+  public ImageView b;
+  public ImageView c;
   
-  public biok(Path paramPath, int paramInt1, int paramInt2, int paramInt3)
+  public biok(View paramView)
   {
-    super(paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-    this.b = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    super(paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377240));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375795));
+    this.b = ((ImageView)paramView.findViewById(2131365362));
+    this.c = ((ImageView)paramView.findViewById(2131377618));
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView = ((AEDownLoadingView)paramView.findViewById(2131372030));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131379358));
   }
   
-  public biok(binj parambinj, float paramFloat)
+  private static int a(boolean paramBoolean)
   {
-    super(parambinj.jdField_a_of_type_Int);
-    if ((parambinj instanceof biok))
-    {
-      parambinj = (biok)parambinj;
-      Matrix localMatrix = new Matrix();
-      localMatrix.postScale(paramFloat, paramFloat);
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPath.addPath(parambinj.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
-      this.jdField_a_of_type_Int = parambinj.jdField_a_of_type_Int;
-      this.b = parambinj.b;
-      this.jdField_c_of_type_Int = ((int)(parambinj.jdField_c_of_type_Int * paramFloat));
+    if (paramBoolean) {
+      return 0;
     }
+    return 8;
   }
   
-  public JSONObject a()
+  private void a(biqn parambiqn)
   {
-    try
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.b.setVisibility(8);
+    this.c.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+  }
+  
+  private void b(biqn parambiqn)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    c(parambiqn);
+    e(parambiqn);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(a(parambiqn.a));
+  }
+  
+  private void c(biqn parambiqn)
+  {
+    if (parambiqn.a())
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("mode", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.b);
-      localJSONObject.put("lineWidth", this.jdField_c_of_type_Int);
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        bioj localbioj = (bioj)localIterator.next();
-        localJSONArray.put(localbioj.jdField_d_of_type_Int);
-        localJSONArray.put(localbioj.a);
-        localJSONArray.put(localbioj.b);
-        if (localbioj.jdField_d_of_type_Int == bioj.jdField_c_of_type_Int)
-        {
-          localJSONArray.put(localbioj.jdField_c_of_type_Float);
-          localJSONArray.put(localbioj.jdField_d_of_type_Float);
-        }
-      }
-      localJSONObject.put("points", localJSONArray);
-      return localJSONObject;
+      this.b.setVisibility(8);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
+      return;
     }
-    catch (Exception localException) {}
-    return null;
+    if (parambiqn.d)
+    {
+      this.b.setVisibility(8);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
+      return;
+    }
+    if (parambiqn.jdField_e_of_type_Boolean)
+    {
+      this.b.setVisibility(8);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(0);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgress(parambiqn.jdField_e_of_type_Int);
+      return;
+    }
+    this.b.setVisibility(0);
+    this.b.setImageResource(2130843772);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
+  }
+  
+  private void d(biqn parambiqn)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843838);
+    c(parambiqn);
+    e(parambiqn);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(a(parambiqn.a));
+  }
+  
+  private void e(biqn parambiqn)
+  {
+    if (parambiqn.a())
+    {
+      this.c.setVisibility(0);
+      this.c.setImageResource(2130845103);
+      return;
+    }
+    if (parambiqn.b())
+    {
+      this.c.setVisibility(0);
+      this.c.setImageResource(parambiqn.a());
+      return;
+    }
+    this.c.setVisibility(8);
+  }
+  
+  private void f(biqn parambiqn)
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      a(parambiqn);
+      return;
+    case 0: 
+      a(parambiqn);
+      return;
+    case 1: 
+      b(parambiqn);
+      g(parambiqn);
+      return;
+    }
+    d(parambiqn);
+    g(parambiqn);
+  }
+  
+  private void g(biqn parambiqn)
+  {
+    if (TextUtils.isEmpty(parambiqn.c)) {
+      return;
+    }
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    int i = actn.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843771);
+    localURLDrawableOptions.mRequestWidth = i;
+    localURLDrawableOptions.mRequestHeight = i;
+    localURLDrawableOptions.mFailedDrawable = localDrawable;
+    localURLDrawableOptions.mLoadingDrawable = localDrawable;
+    localURLDrawableOptions.mRetryCount = 3;
+    parambiqn = URLDrawable.getDrawable(parambiqn.c, localURLDrawableOptions);
+    if (parambiqn.getStatus() == 2) {
+      parambiqn.restartDownload();
+    }
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(parambiqn);
+  }
+  
+  public void a(int paramInt, biqn parambiqn)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    f(parambiqn);
+  }
+  
+  public void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    int i = actn.a(6.0F, paramContext.getResources());
+    int j = actn.a(2.0F, paramContext.getResources());
+    int k = actn.a(16.0F, paramContext.getResources());
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setBgCorner(k / 2);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setMinimumHeight(k);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setMinimumWidth(k);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgressSizeAndMode(i, j, false);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setBgColor(-1);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgressColor(-16725252);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.a(false);
   }
 }
 

@@ -1,11 +1,17 @@
-import com.tencent.weiyun.utils.Singleton;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
 
-final class bguj
-  extends Singleton<bgui, Void>
+class bguj
+  implements View.OnClickListener
 {
-  protected bgui a(Void paramVoid)
+  bguj(bguh parambguh) {}
+  
+  public void onClick(View paramView)
   {
-    return new bgui(null);
+    if (this.a.mRuntime.a() != null) {
+      this.a.mRuntime.a().loadUrl("javascript:" + bguh.a(this.a) + "()");
+    }
   }
 }
 

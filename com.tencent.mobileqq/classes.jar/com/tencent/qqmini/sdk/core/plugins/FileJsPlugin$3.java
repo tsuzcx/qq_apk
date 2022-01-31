@@ -1,9 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdcy;
-import bdfz;
-import bdnw;
-import bdsu;
+import android.text.TextUtils;
+import begy;
+import beka;
+import bekt;
+import besl;
+import beyr;
 import com.tencent.qqmini.sdk.core.proxy.UploaderProxy.UploadListener;
 import java.io.File;
 import java.util.List;
@@ -14,35 +16,42 @@ import org.json.JSONObject;
 class FileJsPlugin$3
   implements UploaderProxy.UploadListener
 {
-  FileJsPlugin$3(FileJsPlugin paramFileJsPlugin, int paramInt, bdfz parambdfz, long paramLong, File paramFile) {}
+  FileJsPlugin$3(FileJsPlugin paramFileJsPlugin, int paramInt, beka parambeka, long paramLong, File paramFile) {}
   
   private void reportUploadResult(long paramLong, int paramInt)
   {
     if (this.this$0.mIsMiniGame) {}
     for (String str = "1";; str = "0")
     {
-      bdsu.a(this.this$0.mMiniAppInfo, 641, null, null, null, paramInt, str, paramLong, null);
+      beyr.a(this.this$0.mMiniAppInfo, 641, null, null, null, paramInt, str, paramLong, null);
       return;
     }
   }
   
   public void onUploadFailed(int paramInt, String paramString)
   {
-    paramString = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      paramString.put("uploadTaskId", this.val$uploadTaskId);
-      paramString.put("statusCode", paramInt);
-      paramString.put("state", "fail:" + paramInt);
-      reportUploadResult(System.currentTimeMillis() - this.val$startMS, paramInt);
-      this.val$req.a.a("onUploadTaskStateChange", paramString.toString(), 0);
-      return;
+      localJSONObject.put("uploadTaskId", this.val$uploadTaskId);
+      localJSONObject.put("statusCode", paramInt);
+      localJSONObject.put("state", "fail:" + paramInt);
+      if (!TextUtils.isEmpty(paramString)) {
+        localJSONObject.put("errMsg", paramString);
+      }
+      for (;;)
+      {
+        reportUploadResult(System.currentTimeMillis() - this.val$startMS, paramInt);
+        this.val$req.a.a("onUploadTaskStateChange", localJSONObject.toString(), 0);
+        return;
+        bekt.a("uploadFile", localJSONObject, paramInt);
+      }
     }
-    catch (JSONException localJSONException)
+    catch (JSONException paramString)
     {
       for (;;)
       {
-        localJSONException.printStackTrace();
+        paramString.printStackTrace();
       }
     }
   }
@@ -62,7 +71,7 @@ class FileJsPlugin$3
     }
     catch (Exception paramMap)
     {
-      bdnw.d("FileJsPlugin", "httpUpload--headersReceived fail---");
+      besl.d("FileJsPlugin", "httpUpload--headersReceived fail---");
     }
   }
   
@@ -122,7 +131,7 @@ class FileJsPlugin$3
       }
       catch (Exception paramArrayOfByte)
       {
-        bdnw.d("FileJsPlugin", "httpUpload--onUploadSucceed fail---");
+        besl.d("FileJsPlugin", "httpUpload--onUploadSucceed fail---");
         continue;
       }
       reportUploadResult(System.currentTimeMillis() - this.val$startMS, paramInt);

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount;
 
-import agju;
-import ajjy;
-import ajsi;
+import agwj;
+import ajyc;
+import akgs;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,32 +16,32 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import awqx;
-import babr;
-import bacc;
-import badq;
-import bafb;
-import bazb;
-import bbaq;
-import bbbt;
-import bbcj;
-import bbcm;
-import bbmy;
+import axqw;
+import bbcv;
+import bbdh;
+import bbev;
+import bbgg;
+import bcbv;
+import bcdq;
+import bcet;
+import bcfj;
+import bcfm;
+import bcpw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import mkw;
-import mpw;
-import nce;
-import ncf;
-import ncg;
-import nch;
-import ndn;
-import rtr;
-import vvp;
+import mvv;
+import nax;
+import nnf;
+import nng;
+import nnh;
+import nni;
+import noo;
+import sgj;
+import wim;
 
 public class PublicAccountBrowser$PublicAccountBrowserFragment
   extends WebViewFragment
@@ -123,44 +123,44 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       } while (paramString.startsWith("https://"));
       localObject1 = localObject2;
     } while (paramString.indexOf("://") == -1);
-    return "即将离开\"QQ\"\r\n打开" + ajjy.a(2131642997);
+    return "即将离开\"QQ\"\r\n打开" + ajyc.a(2131708782);
   }
   
   private void a(Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (!badq.d(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication()))) {
-      bbmy.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), 2131628946, 0).b(super.b());
+    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (!bbev.d(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication()))) {
+      bcpw.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), 2131694607, 0).b(super.b());
     }
-    if (!this.jdField_a_of_type_Bbcj.jdField_a_of_type_Bbcm.jdField_a_of_type_Boolean)
+    if (!this.jdField_a_of_type_Bcfj.jdField_a_of_type_Bcfm.jdField_a_of_type_Boolean)
     {
       paramBundle = this.jdField_a_of_type_AndroidOsBundle.getString("assignBackText");
       if (!TextUtils.isEmpty(paramBundle)) {
-        this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetTextView.setText(paramBundle);
+        this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetTextView.setText(paramBundle);
       }
       if (this.c) {
         break label201;
       }
-      this.jdField_a_of_type_Bazb.c.setText("");
-      this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839708);
-      this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(super.getText(2131627103));
+      this.jdField_a_of_type_Bcbv.c.setText("");
+      this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839757);
+      this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(super.getText(2131692741));
     }
     for (;;)
     {
       if (this.jdField_a_of_type_Int == 1001)
       {
-        this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_Bazb.c.setText(ajjy.a(2131642953));
-        this.jdField_a_of_type_Bazb.c.setOnClickListener(this);
-        this.jdField_a_of_type_Bazb.c.setVisibility(0);
+        this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.jdField_a_of_type_Bcbv.c.setText(ajyc.a(2131708738));
+        this.jdField_a_of_type_Bcbv.c.setOnClickListener(this);
+        this.jdField_a_of_type_Bcbv.c.setVisibility(0);
       }
       return;
       label201:
-      this.jdField_a_of_type_Bazb.c.setVisibility(8);
-      this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      int i = (int)bacc.a(BaseApplicationImpl.getApplication(), 8.0F);
-      if (this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        ((RelativeLayout.LayoutParams)this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).setMargins(i, 0, i, 0);
+      this.jdField_a_of_type_Bcbv.c.setVisibility(8);
+      this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      int i = (int)bbdh.a(BaseApplicationImpl.getApplication(), 8.0F);
+      if (this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+        ((RelativeLayout.LayoutParams)this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).setMargins(i, 0, i, 0);
       }
     }
   }
@@ -184,7 +184,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       localObject1 = "";
     }
     if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "get a url:" + mpw.b((String)localObject1, new String[0]));
+      QLog.d("WebLog_WebViewFragment", 2, "get a url:" + nax.b((String)localObject1, new String[0]));
     }
     localObject2 = localObject1;
     if (((String)localObject1).startsWith("http://browserApp.p.qq.com/"))
@@ -204,8 +204,8 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     }
     try
     {
-      this.jdField_a_of_type_Bbcm.jdField_a_of_type_Long = Long.parseLong(((String)localObject1).trim());
-      this.jdField_a_of_type_Bbcj.jdField_a_of_type_Bbcm.jdField_a_of_type_Long = this.jdField_a_of_type_Bbcm.jdField_a_of_type_Long;
+      this.jdField_a_of_type_Bcfm.jdField_a_of_type_Long = Long.parseLong(((String)localObject1).trim());
+      this.jdField_a_of_type_Bcfj.jdField_a_of_type_Bcfm.jdField_a_of_type_Long = this.jdField_a_of_type_Bcfm.jdField_a_of_type_Long;
       this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("call_from");
       this.jdField_a_of_type_AndroidContentIntent.removeExtra("call_from");
       this.j = this.jdField_a_of_type_AndroidOsBundle.getString("puin");
@@ -255,13 +255,13 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
           bool1 = true;
         }
         this.c = bool1;
-        localObject1 = (bbbt)this.jdField_a_of_type_Bbaq.a(4);
-        if ((!this.c) && ((this.jdField_a_of_type_Bbcm.jdField_a_of_type_Long & 0x2378) == 9080L) && (!((bbbt)localObject1).a())) {
+        localObject1 = (bcet)this.jdField_a_of_type_Bcdq.a(4);
+        if ((!this.c) && ((this.jdField_a_of_type_Bcfm.jdField_a_of_type_Long & 0x2378) == 9080L) && (!((bcet)localObject1).a())) {
           this.c = true;
         }
         localObject1 = localObject2;
-        if (rtr.e((String)localObject2)) {
-          localObject1 = rtr.a((String)localObject2);
+        if (sgj.e((String)localObject2)) {
+          localObject1 = sgj.a((String)localObject2);
         }
         if (QLog.isColorLevel()) {
           QLog.d("WebLog_WebViewFragment", 1, "initParams url = " + (String)localObject1);
@@ -296,20 +296,20 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   public int a(Bundle paramBundle)
   {
     int i = super.a(paramBundle);
-    if ((this.jdField_a_of_type_AndroidContentIntent.getIntExtra("reqType", -1) == 5) && (!this.jdField_a_of_type_Bbcj.jdField_a_of_type_Bbcm.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_AndroidContentIntent.getIntExtra("reqType", -1) == 5) && (!this.jdField_a_of_type_Bcfj.jdField_a_of_type_Bcfm.jdField_a_of_type_Boolean))
     {
-      nce localnce = new nce(this);
-      this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localnce);
-      this.jdField_a_of_type_Bazb.c.setText(2131626400);
-      this.jdField_a_of_type_Bazb.c.setOnClickListener(localnce);
+      nnf localnnf = new nnf(this);
+      this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localnnf);
+      this.jdField_a_of_type_Bcbv.c.setText(2131691984);
+      this.jdField_a_of_type_Bcbv.c.setOnClickListener(localnnf);
     }
     a(paramBundle);
     return i;
   }
   
-  public bbaq a()
+  public bcdq a()
   {
-    return new bbaq(this, 127, new ncf(this));
+    return new bcdq(this, 127, new nng(this));
   }
   
   public String a()
@@ -319,7 +319,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   
   public void a()
   {
-    if ((this.jdField_h_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (this.jdField_a_of_type_Mkw != null) && (!TextUtils.isEmpty(this.j)) && (!TextUtils.isEmpty(this.jdField_a_of_type_Mkw.a(this.jdField_h_of_type_JavaLangString)))) {
+    if ((this.jdField_h_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (this.jdField_a_of_type_Mvv != null) && (!TextUtils.isEmpty(this.j)) && (!TextUtils.isEmpty(this.jdField_a_of_type_Mvv.a(this.jdField_h_of_type_JavaLangString)))) {
       this.jdField_h_of_type_JavaLangString = Uri.parse(this.jdField_h_of_type_JavaLangString).buildUpon().appendQueryParameter("puin", this.j).appendQueryParameter("uin", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()).toString();
     }
   }
@@ -347,7 +347,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       {
         localException.printStackTrace();
       }
-      awqx.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8007C04", "0X8007C04", 0, 1, 0, localException, (String)localObject2, "1009", "");
+      axqw.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8007C04", "0X8007C04", 0, 1, 0, localException, (String)localObject2, "1009", "");
     }
     localObject3 = localObject1;
     if (localObject1 == null) {
@@ -357,7 +357,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     {
     default: 
     case 7: 
-      ndn.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X800572A", "0X800572A", 1010, 0, this.j, (String)localObject2, this.k, (String)localObject3, false);
+      noo.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X800572A", "0X800572A", 1010, 0, this.j, (String)localObject2, this.k, (String)localObject3, false);
       return;
     }
   }
@@ -373,7 +373,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       if (localActivityInfo != null) {
         paramUri = localActivityInfo.packageName;
       }
-      ajsi.a("scheme", paramString, paramUri, "1", "web", getActivity().getClass().getName());
+      akgs.a("scheme", paramString, paramUri, "1", "web", getActivity().getClass().getName());
       paramContext.startActivity(localIntent);
       return;
     }
@@ -387,7 +387,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   {
     try
     {
-      paramContext = babr.a(paramContext, 230, null, paramString3, ajjy.a(2131642995), ajjy.a(2131642974), new ncg(this, paramContext, paramUri, paramString1, paramString4), new nch(this, paramString4));
+      paramContext = bbcv.a(paramContext, 230, null, paramString3, ajyc.a(2131708780), ajyc.a(2131708759), new nnh(this, paramContext, paramUri, paramString1, paramString4), new nni(this, paramString4));
       paramContext.show();
       paramContext.setCancelable(false);
       return;
@@ -403,19 +403,19 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     paramDialogInterface.dismiss();
     if (!paramBoolean) {
       if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-        awqx.b(null, "dc01160", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X80090F3", "0X80090F3", 0, 0, "", "", "", paramString);
+        axqw.b(null, "dc01160", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X80090F3", "0X80090F3", 0, 0, "", "", "", paramString);
       }
     }
     while (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
       return;
     }
-    awqx.b(null, "dc01160", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X80090F4", "0X80090F4", 0, 0, "", "", "", paramString);
+    axqw.b(null, "dc01160", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X80090F4", "0X80090F4", 0, 0, "", "", "", paramString);
   }
   
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     if (paramInt == -8) {
-      vvp.a(1, 2131629882);
+      wim.a(1, 2131695563);
     }
     super.a(paramWebView, paramInt, paramString1, paramString2);
   }
@@ -445,10 +445,10 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   {
     Uri localUri = Uri.parse(paramString);
     String str = localUri.getScheme();
-    if ((super.getActivity().isResume()) && ((System.currentTimeMillis() - this.jdField_e_of_type_Long < 1000L) || (this.jdField_a_of_type_Mkw.a(paramWebView.getUrl(), str).booleanValue())))
+    if ((super.getActivity().isResume()) && ((System.currentTimeMillis() - this.jdField_e_of_type_Long < 1000L) || (this.jdField_a_of_type_Mvv.a(paramWebView.getUrl(), str).booleanValue())))
     {
       long l = System.currentTimeMillis();
-      boolean bool = agju.a().a(paramString, this);
+      boolean bool = agwj.a().a(paramString, this);
       QLog.i("WebLog_WebViewFragment", 1, "TryPayIntercept result:" + bool + " cost:" + (System.currentTimeMillis() - l) + " ms.");
       if (!bool) {}
     }
@@ -476,7 +476,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       return super.b(paramWebView, paramString);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "shouldOverride: " + mpw.b(paramString, new String[0]));
+      QLog.d("WebLog_WebViewFragment", 2, "shouldOverride: " + nax.b(paramString, new String[0]));
     }
     String str = paramWebView.getUrl();
     if ((TextUtils.isEmpty(str)) || (str.startsWith("http://s.p.qq.com/pub/jump"))) {}

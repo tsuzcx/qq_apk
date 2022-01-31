@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.webviewplugin;
 
-import bbef;
+import bchf;
 
 public class SocialWeeklyWebViewPlugin$1
   implements Runnable
 {
-  public SocialWeeklyWebViewPlugin$1(bbef parambbef, String paramString) {}
+  public SocialWeeklyWebViewPlugin$1(bchf parambchf, String paramString) {}
   
   public void run()
   {
-    bbef.a(this.this$0, bbef.b(this.this$0, this.a));
+    bchf.a(this.this$0, bchf.b(this.this$0, this.a));
   }
 }
 

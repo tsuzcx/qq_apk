@@ -1,26 +1,26 @@
-import android.support.annotation.NonNull;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 
-class wsv
+final class wsv
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  static CharSequence a(@NonNull bgxo parambgxo)
+  wsv(Window paramWindow) {}
+  
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (parambgxo.a) {
-      return parambgxo.toString();
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 5894;; paramInt = 1799)
+    {
+      this.a.getDecorView().setSystemUiVisibility(paramInt);
+      return;
     }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    parambgxo = parambgxo.toString();
-    SpannableString localSpannableString = new SpannableString(parambgxo);
-    localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, parambgxo.length(), 17);
-    localSpannableStringBuilder.append(localSpannableString);
-    return localSpannableStringBuilder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wsv
  * JD-Core Version:    0.7.0.1
  */

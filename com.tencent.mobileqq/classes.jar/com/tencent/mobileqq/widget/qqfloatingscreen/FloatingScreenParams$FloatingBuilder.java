@@ -6,11 +6,13 @@ public class FloatingScreenParams$FloatingBuilder
   private boolean canMove = true;
   private int floatingCenterX = -2147483648;
   private int floatingCenterY = -2147483648;
+  private float ratio = 0.5625F;
   private int shapeType;
   
   public FloatingScreenParams build()
   {
     FloatingScreenParams localFloatingScreenParams = new FloatingScreenParams(null);
+    localFloatingScreenParams.setScreenRatio(this.ratio);
     localFloatingScreenParams.setShapeType(this.shapeType);
     FloatingScreenParams.access$100(localFloatingScreenParams, this.canMove);
     if (this.floatingCenterX != -2147483648) {
@@ -46,6 +48,17 @@ public class FloatingScreenParams$FloatingBuilder
     for (int i = 1;; i = 2) {
       return setShapeType(i);
     }
+  }
+  
+  public FloatingBuilder setRatio(float paramFloat)
+  {
+    if (paramFloat > 0.0F)
+    {
+      this.ratio = paramFloat;
+      return this;
+    }
+    this.ratio = 0.5625F;
+    return this;
   }
   
   public FloatingBuilder setShapeType(int paramInt)

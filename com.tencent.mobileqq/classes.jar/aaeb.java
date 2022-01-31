@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.Doraemon.monitor.APIQuotaItem;
+import java.util.HashMap;
 
-public class aaeb
-  implements adze
+public abstract interface aaeb
 {
-  public aaeb(BaseChatPie paramBaseChatPie) {}
+  public abstract void a(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong1, long paramLong2);
   
-  public void a()
-  {
-    if (this.a.K) {
-      this.a.ba();
-    }
-    ((acxt)this.a.a.a(7)).b(this.a.hashCode());
-  }
+  public abstract void a(String paramString, HashMap<String, APIQuotaItem> paramHashMap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaeb
  * JD-Core Version:    0.7.0.1
  */

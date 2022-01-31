@@ -1,37 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.support.v4.util.LruCache;
 
 class anhl
-  implements anka
+  extends LruCache<String, T>
 {
-  anhl(anhi paramanhi) {}
-  
-  public void a(List<anjy> paramList)
+  anhl(anhk paramanhk, int paramInt)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("refreshPanelData call back dataList = ");
-      if (paramList != null) {
-        break label60;
-      }
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, T paramT)
+  {
+    int i;
+    if (paramT == null) {
+      i = 0;
     }
-    label60:
-    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
+    int j;
+    do
     {
-      QLog.d("CameraEmotionAdapter", 2, localObject);
-      if (paramList != null)
-      {
-        this.a.a(paramList);
-        this.a.notifyDataSetChanged();
-      }
-      return;
-    }
+      return i;
+      j = anhk.a(this.a, paramT);
+      i = j;
+    } while (j != 0);
+    return this.a.a(paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anhl
  * JD-Core Version:    0.7.0.1
  */

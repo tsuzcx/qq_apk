@@ -1,36 +1,31 @@
+import Wallet.GetPasswordReq;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qwallet.plugin.PatternLockUtils;
+
 public class agwu
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
-  public float j;
-  public float k;
-  
-  public agwu(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.f = paramFloat3;
-    this.d = paramFloat5;
-    this.h = paramFloat5;
-    this.e = paramFloat7;
-    this.j = paramFloat7;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.g = paramFloat4;
-    this.i = paramFloat6;
-    this.k = paramFloat8;
-    this.jdField_c_of_type_Int = paramInt2;
+    if (PatternLockUtils.getSyncPatternLockState(paramQQAppInterface.getApp(), paramQQAppInterface.c()))
+    {
+      GetPasswordReq localGetPasswordReq = new GetPasswordReq();
+      localGetPasswordReq.MQOS = "Android";
+      ((akeu)paramQQAppInterface.a(42)).a(localGetPasswordReq);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramLong < 1L)) {
+      return;
+    }
+    Intent localIntent = new Intent("com.tencent.qwallet.payer.notify");
+    localIntent.putExtra("sendUin", paramLong);
+    localIntent.putExtra("tokenId", paramString);
+    paramQQAppInterface.getApp().sendBroadcast(localIntent);
   }
 }
 

@@ -1,72 +1,27 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 
 public class amey
-  extends alzl<amew>
+  implements TextWatcher
 {
-  public int a()
-  {
-    return 534;
-  }
+  public amey(ClearEllipsisEditText paramClearEllipsisEditText) {}
   
-  @NonNull
-  public amew a(int paramInt)
-  {
-    return new amew();
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  @Nullable
-  public amew a(alzs[] paramArrayOfalzs)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0) && (paramArrayOfalzs[0] != null))
-    {
-      amew localamew = amew.a(paramArrayOfalzs[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicConfProcessor", 2, "onParsed  " + paramArrayOfalzs[0].a);
-      }
-      return localamew;
+    if ((ClearEllipsisEditText.a(this.a)) && (!ClearEllipsisEditText.b(this.a))) {
+      ClearEllipsisEditText.a(this.a, paramCharSequence.toString());
     }
-    return null;
-  }
-  
-  public Class<amew> a()
-  {
-    return amew.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amew paramamew)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQComicConfProcessor", 2, "onUpdate " + paramamew.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    ClearEllipsisEditText.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amey
  * JD-Core Version:    0.7.0.1
  */

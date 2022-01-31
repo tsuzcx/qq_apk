@@ -1,16 +1,47 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bixd
-  implements ValueAnimator.AnimatorUpdateListener
+  implements biyh
 {
-  public bixd(PickerContainer paramPickerContainer) {}
+  public bixd(AETemplateInfoFragment paramAETemplateInfoFragment, String paramString, Bitmap paramBitmap, long paramLong) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(List<biyi> paramList)
   {
-    this.a.setAlpha(PickerContainer.b(this.a).floatValue());
-    this.a.invalidate();
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, new ArrayList());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        biyi localbiyi = (biyi)paramList.next();
+        if (localbiyi.jdField_a_of_type_Boolean)
+        {
+          String str = AETemplateInfoFragment.jdField_a_of_type_JavaLangString + System.currentTimeMillis();
+          BitmapUtils.saveBitmap(localbiyi.jdField_a_of_type_AndroidGraphicsBitmap, str);
+          AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment).add(str);
+          BitmapUtils.recycle(localbiyi.jdField_a_of_type_AndroidGraphicsBitmap);
+        }
+        else
+        {
+          AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment).add(this.jdField_a_of_type_JavaLangString);
+        }
+      }
+      BitmapUtils.recycle(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, true);
+    }
+    for (;;)
+    {
+      AETemplateInfoFragment.b(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, false);
+      return;
+      BitmapUtils.recycle(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      QLog.e("AETemplateInfoFragment", 1, "changeFace---failed to get face changed bitmaps");
+    }
   }
 }
 

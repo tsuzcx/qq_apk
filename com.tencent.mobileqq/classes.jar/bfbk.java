@@ -1,32 +1,39 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.gmersdk_warper.GMEAVEngineWalper.2.1;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bfbk
-  implements bfbs
+public abstract interface bfbk
+  extends behb
 {
-  bfbk(bfbi parambfbi) {}
+  public abstract View a();
   
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0) {
-      QLog.e("AVEngineWalper", 1, "enter room successfully!!!");
-    }
-    for (;;)
-    {
-      if (this.a.a != null) {
-        this.a.a.b(paramInt, paramString);
-      }
-      new Handler(Looper.getMainLooper()).postDelayed(new GMEAVEngineWalper.2.1(this), 500L);
-      return;
-      QLog.e("AVEngineWalper", 1, "enter room failed. result=" + paramInt + ", errorInfo=" + paramString);
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(Activity paramActivity);
+  
+  public abstract void a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a(int paramInt1, int paramInt2);
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString, int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void setApkgInfo(bejy parambejy);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfbk
  * JD-Core Version:    0.7.0.1
  */

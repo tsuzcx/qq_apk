@@ -1,15 +1,15 @@
-final class batp
-  extends batl
+import android.graphics.Bitmap;
+import android.view.View;
+
+public abstract interface batp
 {
-  public void onDone(batm parambatm)
-  {
-    super.onDone(parambatm);
-  }
+  public abstract View a();
   
-  public boolean onStart(batm parambatm)
-  {
-    return true;
-  }
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void setBitmap(Bitmap paramBitmap);
 }
 
 

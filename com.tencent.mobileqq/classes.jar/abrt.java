@@ -1,19 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.ShowReactiveActivity;
+import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class abrt
-  implements View.OnClickListener
+class abrt
+  extends aume
 {
-  public abrt(ShowReactiveActivity paramShowReactiveActivity, amja paramamja) {}
+  abrt(abrs paramabrs) {}
   
-  public void onClick(View paramView)
+  protected void b(boolean paramBoolean)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityShowReactiveActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_Amja.c);
-    this.jdField_a_of_type_ComTencentMobileqqActivityShowReactiveActivity.startActivity(paramView);
+    super.b(paramBoolean);
+    PhoneUnityChangeActivity.a(this.a.a.a);
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
+    {
+      ((akcp)this.a.a.a.app.getManager(102)).a(null);
+      this.a.a.a.setResult(4001);
+      this.a.a.a.finish();
+    }
   }
 }
 

@@ -1,39 +1,32 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class acpl
-  implements ImageAssetDelegate
+public class acpl
+  extends WtloginObserver
 {
-  acpl(acpj paramacpj) {}
+  public acpl(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inScaled = true;
-    localOptions.inDensity = 320;
-    try
+    if (QLog.isColorLevel())
     {
-      paramLottieImageAsset = bacm.a(acpj.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
-      return paramLottieImageAsset;
+      QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      }
     }
-    catch (Exception paramLottieImageAsset)
-    {
-      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap error");
-      return null;
+    if (paramInt2 == 0) {
+      return;
     }
-    catch (OutOfMemoryError paramLottieImageAsset)
-    {
-      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap OOM");
-    }
-    return null;
+    VerifyPhoneNumActivity.a(this.a);
+    VerifyPhoneNumActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acpl
  * JD-Core Version:    0.7.0.1
  */

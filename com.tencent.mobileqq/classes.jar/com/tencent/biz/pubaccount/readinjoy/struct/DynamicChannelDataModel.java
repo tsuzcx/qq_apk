@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.text.TextUtils;
-import atmo;
-import atnz;
+import aukm;
+import aulx;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DynamicChannelDataModel
-  extends atmo
+  extends aukm
 {
-  @atnz
+  @aulx
   public static final String TAG = "DynamicChannelDataModel";
   public int channelID;
-  @atnz
+  @aulx
   public TemplateBean mTemplateBean;
   public String proteusData;
   public long recommendSeq;

@@ -1,27 +1,31 @@
-public class andp
-  implements ajfe
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
+
+class andp
+  implements andr
 {
-  public void a(Object paramObject) {}
+  andp(ando paramando, QQAppInterface paramQQAppInterface) {}
   
-  public void b(Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public int a()
   {
-    switch (paramInt)
-    {
-    case 3: 
-    default: 
-      return;
-    case 2: 
-      a(paramObject);
-      return;
+    return axdw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+  }
+  
+  public void a(int paramInt)
+  {
+    axdw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt);
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0)) {
+      axdw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramList);
     }
-    b(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     andp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,10 @@
-public class atgg
+public abstract interface atgg
 {
-  atfx[] a = new atfx[3];
+  public abstract void a();
   
-  public atfx a(int paramInt)
-  {
-    Object localObject = this.a[paramInt];
-    if (localObject != null) {
-      return localObject;
-    }
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a[paramInt] = localObject;
-      return localObject;
-      localObject = new atgd();
-      continue;
-      localObject = new atga();
-    }
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

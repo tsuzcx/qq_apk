@@ -1,13 +1,10 @@
-import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
-import java.util.List;
-
-public class msa
+public abstract interface msa
 {
-  public void a(int paramInt, List<SearchProtocol.WordItem> paramList) {}
+  public abstract void a(String paramString, msb parammsb);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     msa
  * JD-Core Version:    0.7.0.1
  */

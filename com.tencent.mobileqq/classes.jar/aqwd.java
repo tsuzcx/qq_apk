@@ -1,28 +1,80 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
-
 public class aqwd
-  implements DialogInterface.OnDismissListener
 {
-  public aqwd(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, aqxa paramaqxa) {}
+  public final aqwf a = new aqwf();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static aqwd a()
   {
-    this.jdField_a_of_type_Aqxa.b(false);
-    this.jdField_a_of_type_Aqxa.d = false;
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
-    }
-    if (this.jdField_a_of_type_Aqxa.e) {
-      this.jdField_a_of_type_Aqxa.f();
-    }
+    return aqwg.a();
+  }
+  
+  public String a()
+  {
+    return this.a.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.a.d.a();
+  }
+  
+  public String b()
+  {
+    return this.a.jdField_b_of_type_JavaLangString;
+  }
+  
+  public boolean b()
+  {
+    return this.a.c.a();
+  }
+  
+  public boolean c()
+  {
+    return this.a.jdField_a_of_type_Aqwh.a();
+  }
+  
+  public boolean d()
+  {
+    return this.a.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean e()
+  {
+    return this.a.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean f()
+  {
+    return this.a.e.a();
+  }
+  
+  public boolean g()
+  {
+    return this.a.g.a();
+  }
+  
+  public boolean h()
+  {
+    return this.a.f.a();
+  }
+  
+  public boolean i()
+  {
+    return this.a.h.a();
+  }
+  
+  public boolean j()
+  {
+    return this.a.i.a();
+  }
+  
+  public boolean k()
+  {
+    return this.a.j.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqwd
  * JD-Core Version:    0.7.0.1
  */

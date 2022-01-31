@@ -1,70 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Point;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
-public class amka
+public abstract interface amka
 {
-  private int jdField_a_of_type_Int = 1;
-  private String jdField_a_of_type_JavaLangString = "";
+  public abstract int a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
   
-  public static amka a()
-  {
-    return (amka)alzw.a().a(460);
-  }
+  public abstract void a(Point paramPoint, int paramInt);
   
-  public static amka a(alzs paramalzs)
-  {
-    amka localamka = new amka();
-    if (paramalzs != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopRobotConfBean", 2, "parse taskid->" + paramalzs.jdField_a_of_type_Int + " content->" + paramalzs.jdField_a_of_type_JavaLangString);
-      }
-    }
-    try
-    {
-      paramalzs = new JSONObject(paramalzs.jdField_a_of_type_JavaLangString);
-      int i = paramalzs.optInt("robotswitch", 0);
-      paramalzs = paramalzs.optString("c2cwarning", "");
-      localamka.a(i);
-      localamka.a(paramalzs);
-      return localamka;
-    }
-    catch (JSONException paramalzs)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("TroopRobotConfBean", 2, "parse error->" + paramalzs.toString());
-    }
-    return localamka;
-  }
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
   
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract boolean a();
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
+  public abstract boolean a(Point paramPoint, boolean paramBoolean);
   
-  public String toString()
-  {
-    return String.format("mTroopRobotSwitch:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-  }
+  public abstract int b(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amka
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,16 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import avwk;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.mobileqq.minigame.jsapi.widgets.KeyboardLayout;
+import android.widget.FrameLayout;
 
 class GameActivity$34
-  implements avwk
+  implements Runnable
 {
   GameActivity$34(GameActivity paramGameActivity) {}
   
-  public void onSoftKeyboardClosed()
+  public void run()
   {
-    if ((GameActivity.access$4600(this.this$0) != null) && (GameActivity.access$4600(this.this$0).getVisibility() == 0)) {
-      GameActivity.access$4600(this.this$0).setVisibility(8);
-    }
-    DisplayUtil.setActivityFullScreen(this.this$0);
-  }
-  
-  public void onSoftKeyboardOpened(int paramInt)
-  {
-    if ((GameActivity.access$4600(this.this$0) != null) && (GameActivity.access$4600(this.this$0).getVisibility() == 0)) {
-      GameActivity.access$4600(this.this$0).setPaddingBottom(paramInt);
+    if (this.this$0.mBannerAdContainer != null) {
+      this.this$0.mBannerAdContainer.removeAllViews();
     }
   }
 }

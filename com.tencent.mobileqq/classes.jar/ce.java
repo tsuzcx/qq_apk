@@ -1,27 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.dataline.activities.LiteAdvanceActivity;
-import com.tencent.widget.Switch;
+import android.view.View;
+import com.dataline.activities.LiteActivity;
+import com.tencent.widget.XListView;
 
 public class ce
-  implements CompoundButton.OnCheckedChangeListener
+  implements bcpk
 {
-  public ce(LiteAdvanceActivity paramLiteAdvanceActivity) {}
+  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.findViewById(2131371906);
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public ce(LiteActivity paramLiteActivity) {}
+  
+  public boolean a()
   {
-    if (!LiteAdvanceActivity.a(this.a, paramBoolean))
-    {
-      paramCompoundButton = LiteAdvanceActivity.a(this.a);
-      if (!paramBoolean) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        paramCompoundButton.setChecked(paramBoolean);
-        bbmy.a(this.a, 1, ajjy.a(2131640398), 0).b(this.a.getTitleBarHeight());
-        return;
-      }
-    }
-    LiteAdvanceActivity.b(this.a, paramBoolean);
+    return (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.isDirty()) || (this.jdField_a_of_type_AndroidViewView.isDirty());
   }
 }
 

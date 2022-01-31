@@ -1,13 +1,26 @@
-import java.util.HashSet;
-import java.util.Set;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class agvv
+class agvv
+  extends AsyncTask<String, Void, AnimationView.AnimationInfo>
 {
-  public static final Set<String> a = new HashSet();
+  private agvv(agvt paramagvt) {}
   
-  static
+  protected AnimationView.AnimationInfo a(String... paramVarArgs)
   {
-    a.add("SoLoadModule");
+    if ("1".equals(paramVarArgs[1])) {
+      return AnimationView.AnimationInfo.loadFromZip(paramVarArgs[0]);
+    }
+    return AnimationView.AnimationInfo.loadFromFolder(paramVarArgs[0]);
+  }
+  
+  protected void a(AnimationView.AnimationInfo paramAnimationInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FrameAnimHelper", 2, "task over info = " + paramAnimationInfo);
+    }
+    this.a.a(paramAnimationInfo);
   }
 }
 

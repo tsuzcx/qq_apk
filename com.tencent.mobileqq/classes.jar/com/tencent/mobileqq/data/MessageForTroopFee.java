@@ -36,14 +36,14 @@ public class MessageForTroopFee
     //   29: areturn
     //   30: aload 4
     //   32: iload 5
-    //   34: invokestatic 52	awwf:a	([BI)[B
+    //   34: invokestatic 52	axwh:a	([BI)[B
     //   37: astore_0
     //   38: new 54	java/lang/String
     //   41: dup
     //   42: aload_0
     //   43: ldc 56
     //   45: invokespecial 59	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   48: invokestatic 64	awuw:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   48: invokestatic 64	axuy:a	(Ljava/lang/String;)Ljava/lang/String;
     //   51: astore_0
     //   52: new 66	java/io/ByteArrayInputStream
     //   55: dup
@@ -51,9 +51,9 @@ public class MessageForTroopFee
     //   57: invokevirtual 70	java/lang/String:getBytes	()[B
     //   60: invokespecial 73	java/io/ByteArrayInputStream:<init>	([B)V
     //   63: astore_0
-    //   64: new 75	amte
+    //   64: new 75	anjl
     //   67: dup
-    //   68: invokespecial 76	amte:<init>	()V
+    //   68: invokespecial 76	anjl:<init>	()V
     //   71: astore 4
     //   73: invokestatic 82	javax/xml/parsers/SAXParserFactory:newInstance	()Ljavax/xml/parsers/SAXParserFactory;
     //   76: astore 6
@@ -65,7 +65,7 @@ public class MessageForTroopFee
     //   89: aload_0
     //   90: invokevirtual 97	java/io/InputStream:close	()V
     //   93: aload 4
-    //   95: invokevirtual 100	amte:a	()Lcom/tencent/mobileqq/data/MessageForTroopFee;
+    //   95: invokevirtual 100	anjl:a	()Lcom/tencent/mobileqq/data/MessageForTroopFee;
     //   98: astore 4
     //   100: aload 4
     //   102: astore_0

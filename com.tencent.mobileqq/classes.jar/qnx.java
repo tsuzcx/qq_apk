@@ -1,66 +1,57 @@
-import android.text.TextUtils;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class qnx
 {
-  public int a;
-  public long a;
-  public View.OnClickListener a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  private static int jdField_a_of_type_Int;
+  private static final String jdField_a_of_type_JavaLangString = qnx.class.getSimpleName();
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String b;
   
-  public qnx()
+  public qnx(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = onk.a();
+    jdField_a_of_type_Int = 0;
   }
   
-  public boolean equals(Object paramObject)
+  private int c()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof qnx))
-    {
-      paramObject = (qnx)paramObject;
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int)
-      {
-        bool1 = bool2;
-        if (this.d == paramObject.d)
-        {
-          bool1 = bool2;
-          if (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int)
-          {
-            bool1 = bool2;
-            if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long)
-            {
-              bool1 = bool2;
-              if (this.jdField_c_of_type_Int == paramObject.jdField_c_of_type_Int)
-              {
-                bool1 = bool2;
-                if (TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString))
-                {
-                  bool1 = bool2;
-                  if (TextUtils.equals(this.jdField_c_of_type_JavaLangString, paramObject.jdField_c_of_type_JavaLangString))
-                  {
-                    bool1 = bool2;
-                    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) {
-                      bool1 = true;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+    int i = 0;
+    boolean bool = bhvh.E(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (!bool) {
+      bhvh.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0));
     }
-    return bool1;
+    if (bool) {
+      i = ((Integer)bhvh.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0))).intValue();
+    }
+    return i;
+  }
+  
+  public int a()
+  {
+    return jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      int i = c();
+      jdField_a_of_type_Int += 1;
+      bhvh.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(i + 1));
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "解析引流条出现的条件出错: " + localException.getMessage());
+    }
+  }
+  
+  public int b()
+  {
+    return c();
   }
 }
 

@@ -1,6 +1,10 @@
-public abstract interface axcr
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
+public class axcr
+  implements BusinessObserver
 {
-  public abstract void a(int paramInt);
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

@@ -1,25 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.util.HeadRequest;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
 
-public final class azxk
-  implements Parcelable.Creator<HeadRequest>
+public class azxk
+  implements baam
 {
-  public HeadRequest a(Parcel paramParcel)
-  {
-    HeadRequest localHeadRequest = new HeadRequest();
-    localHeadRequest.a(paramParcel);
-    return localHeadRequest;
-  }
+  public azxk(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public HeadRequest[] a(int paramInt)
+  public void a(View paramView, boolean paramBoolean)
   {
-    return new HeadRequest[paramInt];
+    if (paramBoolean) {
+      this.a.a(this.a.a.a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azxk
  * JD-Core Version:    0.7.0.1
  */

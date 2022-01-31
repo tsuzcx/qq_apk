@@ -1,117 +1,86 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.graphics.BitmapFactory.Options;
+import android.os.Bundle;
+import android.os.Parcelable;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import java.io.File;
 
-class acvn
-  extends acvg
+public class acvn
+  implements ahbt
 {
-  private void c(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOrderManager", 2, "ForwardOrder realMapUniSeq newSeq -> " + paramLong1 + ", originSeq -> " + paramLong2 + ", forwardID -> " + this.jdField_a_of_type_Int);
-    }
-    if ((this.b != null) && (!this.b.isEmpty()) && (a(paramLong2, this.b)) && (this.jdField_a_of_type_JavaUtilHashMap != null))
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong1), Long.valueOf(paramLong2));
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOrderManager", 2, "ForwardOrder realMapUniSeq map do put, forwardID -> " + this.jdField_a_of_type_Int);
-      }
-    }
-  }
+  public acvn(CustomizeStrategyFactory.SkinRedPacketStrategy.1 param1) {}
   
-  void a(long paramLong1, long paramLong2)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (a(paramLong2, this.b))
-    {
-      c(paramLong1, paramLong2);
-      return;
-    }
-    a(paramLong1);
-    c(paramLong1, paramLong1);
-  }
-  
-  void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramMessageRecord.uniseq)) != null))
-    {
-      paramMessageRecord = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramMessageRecord.uniseq));
-      if ((paramMessageRecord != null) && (a(paramMessageRecord.longValue(), this.b)))
-      {
-        this.b.remove(paramMessageRecord);
-        if ((this.b.size() <= 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
-        {
-          paramQQAppInterface = aael.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_JavaLangString = "";
-          if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 0)) {
-            this.jdField_a_of_type_Long = paramQQAppInterface[0];
-          }
-        }
-      }
-    }
-  }
-  
-  boolean a(long paramLong, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (Object localObject = this.b; (localObject != null) && (((Set)localObject).size() > 0); localObject = this.jdField_a_of_type_JavaUtilSet)
-    {
-      localObject = ((Set)localObject).iterator();
-      long l;
-      Long localLong;
-      do
-      {
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          l = ((Long)((Iterator)localObject).next()).longValue();
-        } while ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)) == null));
-        localLong = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      } while ((localLong == null) || (localLong.longValue() <= 0L) || (localLong.longValue() != l));
-      return true;
-    }
-    return false;
-  }
-  
-  boolean a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
+    Object localObject1 = paramPathResult.folderPath;
+    if (paramInt == 0) {}
     try
     {
-      if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)) != null))
+      if (this.a.a.skinType != 1) {
+        break label372;
+      }
+      paramPathResult = (String)localObject1 + File.separator;
+      str1 = paramPathResult + "corner.png";
+      localObject2 = paramPathResult + "base_bg.png";
+      String str2 = paramPathResult + "anim_fg";
+      paramInt = (int)(CustomizeStrategyFactory.a * 50.0F + 0.5D);
+      i = (int)(CustomizeStrategyFactory.a * 300.0F + 0.5D);
+      i = (int)(CustomizeStrategyFactory.a * 50.0F + 0.5D);
+      BitmapFactory.Options localOptions = bbdr.a(str1, paramInt);
+      this.a.a.corner = SafeBitmapFactory.decodeFile(str1, localOptions);
+      this.a.a.resPath = ((String)localObject1);
+      this.a.a.background = ((String)localObject2);
+      this.a.a.animInfo = AnimationView.AnimationInfo.loadFromFolder(str2);
+      localObject1 = aely.a;
+      j = localObject1.length;
+      paramInt = 0;
+    }
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
       {
-        Object localObject = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-        if ((localObject != null) && (a(((Long)localObject).longValue(), this.jdField_a_of_type_JavaUtilSet)))
+        String str1;
+        Object localObject2;
+        int i;
+        int j;
+        label372:
+        paramPathResult.printStackTrace();
+        continue;
+        paramInt += 1;
+      }
+    }
+    if (paramInt < j)
+    {
+      str1 = localObject1[paramInt];
+      localObject2 = paramPathResult + str1 + ".png";
+      localObject2 = SafeBitmapFactory.decodeFile((String)localObject2, bbdr.a((String)localObject2, i));
+      if (localObject2 != null) {
+        this.a.a.attribute.putParcelable(str1, (Parcelable)localObject2);
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "TYPE_AIO_REDPACKET background=" + this.a.a.background + ",animInfo=" + this.a.a.animInfo);
+      }
+      for (;;)
+      {
+        CustomizeStrategyFactory.a().a(this.a.a);
+        return;
+        if (this.a.a.skinType == 2)
         {
-          this.jdField_a_of_type_JavaUtilSet.remove(localObject);
+          this.a.a.resPath = ((String)localObject1);
           if (QLog.isColorLevel()) {
-            QLog.d("ForwardOrderManager", 2, "SeparateForwardOrder onSendResult mChatMsgListAfter remove originUniSeq " + localObject + "， mChatMsgListAfter.size() -> " + this.jdField_a_of_type_JavaUtilSet.size() + ", forwardID -> " + this.jdField_a_of_type_Int);
-          }
-          if ((this.jdField_a_of_type_JavaUtilSet.size() <= 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_Long > 0L))
-          {
-            localObject = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-            if (localObject != null)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ForwardOrderManager", 2, "SeparateForwardOrder onSendResult query msg and send, newSeq -> " + paramLong + ", forwardID -> " + this.jdField_a_of_type_Int);
-              }
-              paramQQAppInterface.a().b((MessageRecord)localObject, null, false);
-              this.jdField_a_of_type_Long = 0L;
-              a();
-              return true;
-            }
+            QLog.d("CustomizeStrategyFactory", 2, "TYPE_POP_REDPACKET path=" + (String)localObject1);
           }
         }
       }
-      return false;
     }
-    finally {}
   }
 }
 

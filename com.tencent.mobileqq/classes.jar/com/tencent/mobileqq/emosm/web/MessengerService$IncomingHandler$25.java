@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emosm.web;
 
-import aiyu;
+import ajmw;
 import android.os.Bundle;
-import aned;
+import anul;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloFavActionData;
 import com.tencent.qphone.base.util.QLog;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$25
   implements Runnable
 {
-  public MessengerService$IncomingHandler$25(aned paramaned, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$25(anul paramanul, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class MessengerService$IncomingHandler$25
     int i;
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      localObject = ((aiyu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).d();
+      localObject = ((ajmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).d();
       localJSONObject1 = new JSONObject();
       localJSONArray = new JSONArray();
       if (localObject != null) {

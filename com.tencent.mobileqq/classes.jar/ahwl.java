@@ -1,57 +1,109 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 public class ahwl
+  extends Dialog
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  ahwm jdField_a_of_type_Ahwm;
+  String jdField_a_of_type_JavaLangString;
+  String b;
+  String c;
+  String d;
   
-  static ahwl a(JSONObject paramJSONObject)
+  public ahwl(@NonNull Context paramContext)
   {
-    if (paramJSONObject == null) {
-      return new ahwl();
+    super(paramContext, 2131755916);
+    paramContext = getLayoutInflater().inflate(2131562429, null);
+    paramContext.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    super.setContentView(paramContext);
+  }
+  
+  public void a()
+  {
+    if (!bbjw.a(this.jdField_a_of_type_JavaLangString))
+    {
+      localObject = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString);
+      CornerImageView localCornerImageView = (CornerImageView)findViewById(2131372836);
+      float f = (int)getContext().getResources().getDimension(2131297936);
+      localCornerImageView.setRadius(new float[] { f, f, f, f, 0.0F, 0.0F, 0.0F, 0.0F });
+      localCornerImageView.setImageDrawable((Drawable)localObject);
     }
-    ahwl localahwl = new ahwl();
+    if (!bbjw.a(this.b)) {
+      ((TextView)findViewById(2131372838)).setText(this.b);
+    }
+    int i;
+    if (!bbjw.a(this.c))
+    {
+      ((TextView)findViewById(2131372840)).setText(this.c);
+      localObject = (RelativeLayout)findViewById(2131372839);
+      ((RelativeLayout)localObject).setOnClickListener(this);
+      if (!bbjw.a(this.d)) {
+        i = Color.parseColor("#57d4d9");
+      }
+    }
     try
     {
-      localahwl.jdField_a_of_type_Int = paramJSONObject.getInt("id");
-      localahwl.jdField_a_of_type_JavaLangString = paramJSONObject.getString("name");
-      localahwl.jdField_b_of_type_Int = paramJSONObject.getInt("type");
-      localahwl.jdField_b_of_type_JavaLangString = paramJSONObject.optString("soundVersion", "0");
-      localahwl.jdField_c_of_type_JavaLangString = paramJSONObject.getString("soundUrl");
-      localahwl.jdField_d_of_type_JavaLangString = paramJSONObject.getString("whiteList");
-      localahwl.jdField_c_of_type_Int = paramJSONObject.getInt("isShow");
-      localahwl.jdField_e_of_type_Int = paramJSONObject.getInt("classify");
-      localahwl.g = paramJSONObject.getString("classifyName");
-      localahwl.jdField_e_of_type_JavaLangString = paramJSONObject.getString("backgroundUrl");
-      localahwl.f = String.valueOf(paramJSONObject.getInt("vip_type"));
-      localahwl.jdField_d_of_type_Int = paramJSONObject.getInt("useNum");
-      localahwl.h = paramJSONObject.getString("trialstartday");
-      localahwl.i = paramJSONObject.getString("trialendday");
-      return localahwl;
+      int j = Color.parseColor(this.d);
+      i = j;
     }
-    catch (JSONException paramJSONObject)
+    catch (Exception localException)
     {
-      paramJSONObject.printStackTrace();
+      label190:
+      break label190;
     }
-    return localahwl;
+    ((GradientDrawable)((RelativeLayout)localObject).getBackground()).setColor(i);
+    Object localObject = (ImageView)findViewById(2131364269);
+    if (localObject != null) {
+      ((ImageView)localObject).setOnClickListener(this);
+    }
+  }
+  
+  public void a(ahwm paramahwm)
+  {
+    this.jdField_a_of_type_Ahwm = paramahwm;
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    this.c = paramString3;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.d = paramString4;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_Ahwm == null) || (paramView == null)) {}
+    do
+    {
+      return;
+      if (paramView.getId() == 2131372839)
+      {
+        this.jdField_a_of_type_Ahwm.a();
+        return;
+      }
+    } while (paramView.getId() != 2131364269);
+    this.jdField_a_of_type_Ahwm.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahwl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,21 @@
-import com.tencent.qg.sdk.invoke.BaseJsModule;
-import com.tencent.qg.sdk.invoke.InvokeCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class bcor
-  extends BaseJsModule
+  implements View.OnClickListener
 {
-  public String getModuleName()
-  {
-    return "mqq";
-  }
+  public bcor(ProfileCardMoreInfoView paramProfileCardMoreInfoView, View paramView) {}
   
-  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    if ("getQQVersion".equals(paramString)) {
-      paramString = new JSONObject();
-    }
-    while (!"getQQVersionSync".equals(paramString)) {
-      try
-      {
-        paramString.putOpt("version", "8.2.6");
-        bool = paramInvokeCallback.exec(0, paramString);
-        return bool;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
-      }
-    }
-    return false;
+    auvq.a().b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcor
  * JD-Core Version:    0.7.0.1
  */

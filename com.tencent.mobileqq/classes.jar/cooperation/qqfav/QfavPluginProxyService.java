@@ -1,6 +1,6 @@
 package cooperation.qqfav;
 
-import bfin;
+import bgqf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
@@ -8,15 +8,15 @@ import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
 public class QfavPluginProxyService
   extends PluginProxyService
 {
-  private static bfin a;
+  private static bgqf a;
   
-  public static bfin a()
+  public static bgqf a()
   {
     if (a == null) {}
     try
     {
       if (a == null) {
-        a = new bfin(BaseApplicationImpl.getApplication().getRuntime());
+        a = new bgqf(BaseApplicationImpl.getApplication().getRuntime());
       }
       return a;
     }
@@ -25,10 +25,10 @@ public class QfavPluginProxyService
   
   public static boolean a()
   {
-    bfin localbfin = a();
-    if (!PluginCommunicationHandler.getInstance().containsCmd(localbfin.getCmd()))
+    bgqf localbgqf = a();
+    if (!PluginCommunicationHandler.getInstance().containsCmd(localbgqf.getCmd()))
     {
-      PluginCommunicationHandler.getInstance().register(localbfin);
+      PluginCommunicationHandler.getInstance().register(localbgqf);
       return true;
     }
     return false;

@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
 
-class abqq
-  implements DialogInterface.OnClickListener
+public class abqq
+  implements View.OnClickListener
 {
-  abqq(abqn paramabqn) {}
+  public abqq(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_Bafb.cancel();
-      this.a.b = true;
-      abqn.a(this.a);
-      this.a.b();
-    }
+    bblf.a(this.a.app, this.a, "setting");
   }
 }
 

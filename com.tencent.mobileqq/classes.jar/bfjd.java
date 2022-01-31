@@ -1,30 +1,23 @@
-public abstract interface bfjd
+import android.os.Handler;
+import android.os.Message;
+import android.util.Pair;
+import java.util.List;
+
+class bfjd
+  implements bfit
 {
-  public abstract void a();
+  bfjd(bfjc parambfjc) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
+  public void a(List<Pair<Integer, Byte>> paramList)
+  {
+    Message localMessage = bfjc.a(this.a).obtainMessage(2);
+    localMessage.obj = paramList;
+    bfjc.a(this.a).sendMessage(localMessage);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfjd
  * JD-Core Version:    0.7.0.1
  */

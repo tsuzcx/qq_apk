@@ -1,87 +1,43 @@
-import android.os.Build;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.LruCache;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class sts
-  extends slz<stt>
+class sts
+  extends SimpleJob<Void>
 {
-  static final String jdField_a_of_type_JavaLangString = skt.a("StorySvc.get_tab_node_vid_list");
-  ssm jdField_a_of_type_Ssm;
-  String b = "";
-  String c = "";
-  
-  public sts(ssm paramssm, String paramString1, String paramString2)
+  sts(sto paramsto, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_Ssm = paramssm;
-    this.b = paramString1;
-    this.c = paramString2;
+    super(paramString1);
   }
   
-  public static stt a(ssm paramssm, byte[] paramArrayOfByte)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    qqstory_service.RspMsgTabNodeVideoList localRspMsgTabNodeVideoList = new qqstory_service.RspMsgTabNodeVideoList();
-    if (paramArrayOfByte != null) {}
     try
     {
-      localRspMsgTabNodeVideoList.mergeFrom(paramArrayOfByte);
-      return new stt(paramssm, localRspMsgTabNodeVideoList, paramArrayOfByte);
-    }
-    catch (InvalidProtocolBufferMicroException paramssm)
-    {
-      urk.d("Q.qqstory:ReqMsgTabNodeVideoList", "" + paramssm);
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public stt a(byte[] paramArrayOfByte)
-  {
-    return a(this.jdField_a_of_type_Ssm, paramArrayOfByte);
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqMsgTabNodeVideoList localReqMsgTabNodeVideoList = new qqstory_service.ReqMsgTabNodeVideoList();
-    localReqMsgTabNodeVideoList.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Ssm.jdField_a_of_type_JavaLangString));
-    localReqMsgTabNodeVideoList.req_time_stamp.set(this.jdField_a_of_type_Ssm.c);
-    localReqMsgTabNodeVideoList.node_type.set(this.jdField_a_of_type_Ssm.jdField_a_of_type_Int);
-    localReqMsgTabNodeVideoList.recommend_id.set(this.jdField_a_of_type_Ssm.e);
-    localReqMsgTabNodeVideoList.source.set(this.jdField_a_of_type_Ssm.f);
-    if (this.jdField_a_of_type_Ssm.jdField_a_of_type_Int == 12)
-    {
-      if ((TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c))) {
-        localReqMsgTabNodeVideoList.start_vid.set(this.c);
+      sto.a(this.jdField_a_of_type_Sto).lock();
+      paramJobContext = DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      sto.a(this.jdField_a_of_type_Sto).remove(paramJobContext);
+      paramJobContext = QQStoryContext.a().a().createEntityManager();
+      paramVarArgs = tcz.a(paramJobContext, DownloadingUrlEntry.class, DownloadingUrlEntry.class.getSimpleName(), "key=?", new String[] { DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
+      if ((paramVarArgs != null) && (paramVarArgs.size() > 0))
+      {
+        paramVarArgs = (DownloadingUrlEntry)paramVarArgs.get(0);
+        paramVarArgs.setStatus(1000);
+        paramVarArgs.bIsDownloadCompleted = 1;
+        paramJobContext.b(paramVarArgs);
       }
-      if (!TextUtils.isEmpty(this.b)) {
-        localReqMsgTabNodeVideoList.cookie.set(this.b);
-      }
-      localReqMsgTabNodeVideoList.page_size.set(20);
+      return null;
     }
-    Long localLong = vls.a();
-    if (localLong != null) {
-      localReqMsgTabNodeVideoList.adcode.set(localLong.longValue());
+    finally
+    {
+      sto.a(this.jdField_a_of_type_Sto).unlock();
     }
-    localReqMsgTabNodeVideoList.device.set(ByteStringMicro.copyFromUtf8(Build.DEVICE));
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Ssm.k)) {
-      localReqMsgTabNodeVideoList.passthrough.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Ssm.k));
-    }
-    return localReqMsgTabNodeVideoList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "MsgTabNodeVidListRequest{nodeInfo.unionId=" + this.jdField_a_of_type_Ssm.jdField_a_of_type_JavaLangString + ", mCookie='" + this.b + '\'' + ", mStartVid='" + this.c + '\'' + "} " + super.toString();
   }
 }
 

@@ -1,79 +1,60 @@
+import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.activity.registerGuideLogin.RegisterGuideView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.ArrayList;
 
 public class aheo
+  extends Handler
 {
-  public static final String[] a = { "H60-L02", "H60-L01" };
-  
-  private static int a(Intent paramIntent)
+  public aheo(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment, Looper paramLooper)
   {
-    boolean bool1 = paramIntent.getBooleanExtra("from_register_guide", false);
-    boolean bool2 = paramIntent.getBooleanExtra("isActionSend", false);
-    boolean bool3 = paramIntent.getBooleanExtra("from_register_choose", false);
-    if ((!bool1) && (!bool2) && (!bool3))
-    {
-      paramIntent = BaseApplicationImpl.sApplication.getAllAccounts();
-      if ((paramIntent == null) || (paramIntent.isEmpty())) {
-        return 101;
-      }
-    }
-    return 102;
+    super(paramLooper);
   }
   
-  public static GuideBaseFragment a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface)
+  public void handleMessage(Message paramMessage)
   {
-    switch (a(paramBaseActivity.getIntent()))
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-    default: 
-      return new LoginView(paramQQAppInterface);
-    case 102: 
-      return new LoginView(paramQQAppInterface);
     }
-    return new RegisterGuideView(paramQQAppInterface);
-  }
-  
-  public static boolean a(String[] paramArrayOfString)
-  {
-    boolean bool2 = false;
-    String str = Build.MODEL;
-    if (QLog.isColorLevel()) {
-      QLog.d("GuideHandler", 2, "isKeyBoardBlackList model=" + str);
-    }
-    boolean bool1 = bool2;
-    int j;
-    int i;
-    if (str != null)
+    FragmentActivity localFragmentActivity;
+    do
     {
-      j = paramArrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
-      {
-        if (str.equals(paramArrayOfString[i])) {
-          bool1 = true;
-        }
+      return;
+      paramMessage = (ahey)paramMessage.obj;
+      if (QLog.isColorLevel()) {
+        QLog.d(DrawRedpacketPannelPreviewFragment.jdField_a_of_type_JavaLangString, 2, "save path: " + paramMessage.c + " thread name: " + Thread.currentThread().getName());
       }
-      else {
-        return bool1;
-      }
-      i += 1;
+      localFragmentActivity = this.a.getActivity();
+    } while (localFragmentActivity == null);
+    Intent localIntent = new Intent(localFragmentActivity, SendPhotoActivity.class);
+    localIntent.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1007);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramMessage.c);
+    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+    localIntent.putExtra("PhotoConst.PHOTO_COUNT", localArrayList.size());
+    localIntent.putExtra("uin", paramMessage.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("uintype", paramMessage.jdField_a_of_type_Int);
+    localIntent.putExtra("troop_uin", paramMessage.jdField_b_of_type_JavaLangString);
+    localIntent.putExtra("key_confess_topicid", paramMessage.jdField_b_of_type_Int);
+    localIntent.putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+    localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
+    if (localArrayList.size() == 1) {
+      localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
     }
+    localFragmentActivity.startActivity(localIntent);
+    localFragmentActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aheo
  * JD-Core Version:    0.7.0.1
  */

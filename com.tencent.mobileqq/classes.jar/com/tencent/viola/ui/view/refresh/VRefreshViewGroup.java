@@ -285,6 +285,11 @@ public class VRefreshViewGroup
     this.mRefreshMoveObervers.add(paramRefreshMoveOberver);
   }
   
+  public void addInFirst(RefreshMoveOberver paramRefreshMoveOberver)
+  {
+    this.mRefreshMoveObervers.add(0, paramRefreshMoveOberver);
+  }
+  
   public void addTouchLifeCycle(VRefreshViewGroup.TouchLifeCycle paramTouchLifeCycle)
   {
     this.mTouchLifeCycles.add(paramTouchLifeCycle);
@@ -388,7 +393,11 @@ public class VRefreshViewGroup
             if ((!this.mPullRefreshing) && (this.mContentView.isBottom()) && ((j < 0) || ((j > 0) && (this.mHolder.hasFooterPullUp()))))
             {
               sendCancelEvent();
-              if (this.mAllowFooterSliding) {
+              if (this.mAllowFooterSliding)
+              {
+                if (this.mFooterCallBack != null) {
+                  this.mFooterCallBack.onMove(this.mHolder.mOffsetY);
+                }
                 updateFooterHeight(j);
               }
             }
@@ -410,7 +419,7 @@ public class VRefreshViewGroup
         ((RefreshMoveOberver)localIterator.next()).onRefreshMove(this.mHolder.mOffsetY);
       }
     }
-    if (this.mHolder.hasHeaderPullDown())
+    if ((this.mHolder.hasHeaderPullDown()) && (this.mContentView.isTop()))
     {
       if ((!this.mStopingRefresh) && (!this.mPullRefreshing) && (this.mHolder.mOffsetY > this.mHeaderViewHeight))
       {
@@ -429,7 +438,7 @@ public class VRefreshViewGroup
       this.mInitialMotionY = 0;
       this.isIntercepted = false;
       break;
-      if ((this.mHolder.hasFooterPullUp()) && (!this.mStopingRefresh))
+      if ((this.mHolder.hasFooterPullUp()) && (this.mContentView.isBottom()) && (!this.mStopingRefresh))
       {
         resetFooterHeight();
         if ((this.mHolder.mOffsetY < 0) && (Math.abs(this.mHolder.mOffsetY) > this.mFootViewHeight))
@@ -735,12 +744,27 @@ public class VRefreshViewGroup
   public void startScroll(int paramInt1, int paramInt2)
   {
     this.mScroller.startScroll(0, this.mHolder.mOffsetY, 0, paramInt1, paramInt2);
-    this.mHandler.post(this.mRunnable);
+    if (this.mHolder.mOffsetY >= 0) {
+      if (this.mHeaderCallBack != null) {
+        this.mHeaderCallBack.onFingerRelease();
+      }
+    }
+    for (;;)
+    {
+      this.mHandler.post(this.mRunnable);
+      return;
+      if (this.mFooterCallBack != null) {
+        this.mFooterCallBack.onFingerRelease();
+      }
+    }
   }
   
   public void stopLoadMore()
   {
     this.mState = VRefreshViewGroup.RefreshAndFooterViewState.STATE_FINISHED;
+    if (this.mFooterCallBack != null) {
+      this.mFooterCallBack.onStateFinish(false);
+    }
   }
   
   public void stopRefresh()

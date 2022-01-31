@@ -1,16 +1,10 @@
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
 
-class biyf
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+public abstract interface biyf
 {
-  biyf(biye parambiye) {}
+  public abstract void b(NodeItem paramNodeItem);
   
-  public void onThreadMonitorEnd(int paramInt)
-  {
-    if (paramInt == 10) {
-      this.a.a();
-    }
-  }
+  public abstract void c(NodeItem paramNodeItem);
 }
 
 

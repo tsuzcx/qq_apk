@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.Doraemon.monitor;
 
-import atmp;
-import atmq;
+import aaec;
+import aukn;
+import auko;
 import com.tencent.mobileqq.app.QQAppInterface;
-import zuj;
 
 public class DoraemonAPIReporterMain$3
   implements Runnable
 {
-  public DoraemonAPIReporterMain$3(zuj paramzuj, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2) {}
+  public DoraemonAPIReporterMain$3(aaec paramaaec, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    atmp localatmp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    aukn localaukn = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
     APIQuotaEntity localAPIQuotaEntity = new APIQuotaEntity();
     localAPIQuotaEntity.type = this.jdField_a_of_type_Int;
     localAPIQuotaEntity.appid = this.jdField_a_of_type_JavaLangString;
     localAPIQuotaEntity.apiName = this.jdField_b_of_type_JavaLangString;
     localAPIQuotaEntity.remainTimes = this.jdField_a_of_type_Long;
     localAPIQuotaEntity.expireTimeMillis = this.jdField_b_of_type_Long;
-    localatmp.b(localAPIQuotaEntity);
+    localaukn.b(localAPIQuotaEntity);
   }
 }
 

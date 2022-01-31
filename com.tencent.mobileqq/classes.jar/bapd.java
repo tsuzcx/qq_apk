@@ -1,25 +1,24 @@
-import java.lang.ref.WeakReference;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-class bapd<E>
-  extends WeakReference<bapb<E>>
-  implements bapb<E>
+class bapd
+  extends bapa
 {
-  public bapd(bapb<E> parambapb)
-  {
-    super(parambapb);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
   
-  public void a(E paramE, Object paramObject)
+  bapd(bapc parambapc)
   {
-    bapb localbapb = (bapb)get();
-    if (localbapb != null) {
-      localbapb.a(paramE, paramObject);
-    }
+    super(parambapc.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bapd
  * JD-Core Version:    0.7.0.1
  */

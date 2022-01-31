@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class SimpleFilePresenter$1$1$2
@@ -10,7 +10,7 @@ class SimpleFilePresenter$1$1$2
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getApplication(), 1, 2131654348, 0).a();
+    bcpw.a(BaseApplicationImpl.getApplication(), 1, 2131720242, 0).a();
   }
 }
 

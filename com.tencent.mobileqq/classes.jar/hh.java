@@ -1,89 +1,49 @@
-import android.opengl.GLES20;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.util.DisplayMetrics;
+import com.etrump.mixlayout.ETFont;
+import com.etrump.mixlayout.ETTextView;
 
 public class hh
 {
-  public static int a(int paramInt, String paramString)
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  
+  private hh(ETTextView paramETTextView) {}
+  
+  private void a(int paramInt1, int paramInt2)
   {
-    int i = GLES20.glCreateShader(paramInt);
-    a("glCreateShader type=" + paramInt);
-    GLES20.glShaderSource(i, paramString);
-    GLES20.glCompileShader(i);
-    paramString = new int[1];
-    GLES20.glGetShaderiv(i, 35713, paramString, 0);
-    if (paramString[0] == 0)
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("GlUtil", 2, "Could not compile shader " + paramInt + ":" + GLES20.glGetShaderInfoLog(i));
+      int j = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mFont.getSize() * 4;
+      int i = paramInt2;
+      if (paramInt2 < j) {
+        i = j;
       }
-      GLES20.glDeleteShader(i);
-      return 0;
+      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && ((this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() < i) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() < paramInt1) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() > j + i)))
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      }
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt1, i, Bitmap.Config.ARGB_8888);
+      }
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.setDensity(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getResources().getDisplayMetrics().densityDpi);
+      }
+      return;
     }
-    return i;
+    finally {}
   }
   
-  public static int a(String paramString1, String paramString2)
+  public Bitmap a()
   {
-    int i = a(35633, paramString1);
-    if (i == 0) {}
-    int j;
-    do
-    {
-      return 0;
-      j = a(35632, paramString2);
-    } while (j == 0);
-    int k = GLES20.glCreateProgram();
-    a("glCreateProgram");
-    if ((k == 0) && (QLog.isColorLevel())) {
-      QLog.e("GlUtil", 2, "Could not create program");
-    }
-    GLES20.glAttachShader(k, i);
-    a("glAttachShader");
-    GLES20.glAttachShader(k, j);
-    a("glAttachShader");
-    GLES20.glLinkProgram(k);
-    paramString1 = new int[1];
-    GLES20.glGetProgramiv(k, 35714, paramString1, 0);
-    if (paramString1[0] != 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("GlUtil", 2, "Could not link program:" + GLES20.glGetProgramInfoLog(k));
-      }
-      GLES20.glDeleteProgram(k);
-      return 0;
-    }
-    return k;
-  }
-  
-  public static FloatBuffer a(float[] paramArrayOfFloat)
-  {
-    Object localObject = ByteBuffer.allocateDirect(paramArrayOfFloat.length * 4);
-    ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
-    localObject = ((ByteBuffer)localObject).asFloatBuffer();
-    ((FloatBuffer)localObject).put(paramArrayOfFloat);
-    ((FloatBuffer)localObject).position(0);
-    return localObject;
-  }
-  
-  public static void a(String paramString)
-  {
-    int i = GLES20.glGetError();
-    if (i != 0)
-    {
-      paramString = paramString + ": glError 0x" + Integer.toHexString(i);
-      if (QLog.isColorLevel()) {
-        QLog.e("GlUtil", 2, paramString);
-      }
-      throw new RuntimeException(paramString);
-    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     hh
  * JD-Core Version:    0.7.0.1
  */

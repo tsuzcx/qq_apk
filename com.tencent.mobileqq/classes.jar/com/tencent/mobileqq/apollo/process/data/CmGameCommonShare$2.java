@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import aipf;
+import ajcd;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import babp;
-import bacm;
+import bbct;
+import bbdr;
 import com.tencent.qphone.base.util.QLog;
-import gq;
+import ij;
 import java.io.File;
-import vvp;
+import wim;
 
 public class CmGameCommonShare$2
   implements Runnable
 {
-  public CmGameCommonShare$2(aipf paramaipf, int paramInt, Bitmap paramBitmap, File paramFile) {}
+  public CmGameCommonShare$2(ajcd paramajcd, int paramInt, Bitmap paramBitmap, File paramFile) {}
   
   public void run()
   {
@@ -26,12 +26,12 @@ public class CmGameCommonShare$2
     int k;
     try
     {
-      m = (int)babp.i() / 4;
+      m = (int)bbct.i() / 4;
       localBitmap = Bitmap.createBitmap(m, m, Bitmap.Config.ARGB_8888);
       localCanvas = new Canvas(localBitmap);
       localCanvas.drawColor(-1);
-      localObject2 = vvp.a("https://cmshow.qq.com/apollo/html/game-platform/scan-game.html?gameId=" + this.jdField_a_of_type_Int, -1);
-      n = ((gq)localObject2).a();
+      localObject2 = wim.a("https://cmshow.qq.com/apollo/html/game-platform/scan-game.html?gameId=" + this.jdField_a_of_type_Int, -1);
+      n = ((ij)localObject2).a();
       localObject1 = new int[n * n];
       i = 0;
     }
@@ -49,7 +49,7 @@ public class CmGameCommonShare$2
       return;
     }
     if (j < n) {
-      if (((gq)localObject2).a(j, i)) {
+      if (((ij)localObject2).a(j, i)) {
         k = -16777216;
       }
     }
@@ -71,7 +71,7 @@ public class CmGameCommonShare$2
         localCanvas.restore();
       }
       ((Bitmap)localObject2).recycle();
-      bacm.a(localBitmap, this.jdField_a_of_type_JavaIoFile);
+      bbdr.a(localBitmap, this.jdField_a_of_type_JavaIoFile);
       QLog.d("apollo_cmGame_CmGameCommonShare", 2, "checkDefaultQRSharePic end");
       return;
       for (;;)

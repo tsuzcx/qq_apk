@@ -1,16 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
+import mqq.util.WeakReference;
 
 class rou
-  implements View.OnClickListener
 {
-  rou(rot paramrot) {}
+  private static Map<AbstractGifImage, List<WeakReference<row>>> a = new WeakHashMap();
+  private static Map<AbstractGifImage, rov> b = new WeakHashMap();
   
-  public void onClick(View paramView)
+  public void a()
   {
-    wye.a("", "auth_discover", "fold_clk", 0, 0, new String[0]);
-    wdu.a(rot.a(this.a), FolderRecommendTabFragment.a(this.a.a), new rov(this));
+    a.clear();
+    b.clear();
+  }
+  
+  void a(row paramrow, URLDrawable paramURLDrawable)
+  {
+    if ((paramURLDrawable.getCurrDrawable() instanceof GifDrawable))
+    {
+      AbstractGifImage localAbstractGifImage = ((GifDrawable)paramURLDrawable.getCurrDrawable()).getImage();
+      paramURLDrawable = new rov(localAbstractGifImage);
+      localAbstractGifImage.setGIFPlayOnceListener(paramURLDrawable);
+      b.put(localAbstractGifImage, paramURLDrawable);
+      List localList = (List)a.get(localAbstractGifImage);
+      paramURLDrawable = localList;
+      if (localList == null) {
+        paramURLDrawable = new ArrayList();
+      }
+      paramURLDrawable.add(new WeakReference(paramrow));
+      a.put(localAbstractGifImage, paramURLDrawable);
+    }
   }
 }
 

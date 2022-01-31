@@ -1,18 +1,36 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import bhak;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.MobileQQ;
 
 class VideoJsPlugin$1$1
-  implements DialogInterface.OnClickListener
+  implements bhak
 {
   VideoJsPlugin$1$1(VideoJsPlugin.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(int paramInt, Bundle paramBundle)
   {
-    VideoJsPlugin.access$000(this.this$1.this$0, this.this$1.this$0.jsPluginEngine.getActivityContext(), this.this$1.val$duration, this.this$1.val$compressed, this.this$1.val$isFront);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    boolean bool;
+    if (paramInt == 0)
+    {
+      QLog.i("VideoJsPlugin", 1, "callback: load ok " + paramInt);
+      if (VideoEnvironment.a("AVCodec", MobileQQ.sMobileQQ.getApplicationContext()) == 0)
+      {
+        bool = true;
+        VideoJsPlugin.access$002(bool);
+      }
+    }
+    for (;;)
+    {
+      VideoJsPlugin.access$100().compareAndSet(true, false);
+      return;
+      bool = false;
+      break;
+      QLog.w("VideoJsPlugin", 1, "callback: load failed " + paramInt);
     }
   }
 }

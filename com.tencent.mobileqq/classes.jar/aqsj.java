@@ -1,46 +1,26 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.mobileqq.jsp.QQApiPlugin.3;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
 
 public class aqsj
-  implements wiu
+  implements bcsv
 {
-  public aqsj(QQApiPlugin.3 param3, Bitmap paramBitmap) {}
+  public aqsj(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  public void a(Bundle paramBundle)
+  public void a(View paramView, int paramInt)
   {
-    int j = 0;
-    int i = 0;
-    if (paramBundle.getInt("readinjoy_to_wx_config") == 0)
+    if ((paramInt == 5) || (paramInt == 4))
     {
-      paramBundle = WxShareHelperFromReadInjoy.a();
-      str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.this$0.c;
-      str2 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.d;
-      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      str3 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.e;
-      str4 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.b;
-      if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.a)) {}
-      for (;;)
-      {
-        paramBundle.a(str1, str2, localBitmap, str3, str4, i);
-        return;
-        i = 1;
-      }
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", "2747277822");
+      this.a.startActivity(paramView);
     }
-    paramBundle = WXShareHelper.a();
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.this$0.c;
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.d;
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    String str3 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.e;
-    String str4 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.b;
-    if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.a)) {}
-    for (i = j;; i = 1)
-    {
-      paramBundle.b(str1, str2, localBitmap, str3, str4, i);
+    while (paramInt != 1) {
       return;
     }
+    this.a.getActivity().finish();
   }
 }
 

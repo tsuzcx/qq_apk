@@ -1,48 +1,23 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
 
 public class aakl
-  implements begw
+  implements View.OnClickListener
 {
-  public aakl(ChatSettingForTroop paramChatSettingForTroop, int paramInt, begr parambegr) {}
+  public aakl(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    int i = 3;
-    switch (paramInt)
+    paramView = (View)paramView.getParent();
+    if ((paramView == null) || (paramView.getTag() == null)) {}
+    do
     {
-    default: 
-      i = 0;
-      paramInt = -1;
-    }
-    for (;;)
-    {
-      if (paramInt != this.jdField_a_of_type_Int) {
-        ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, paramInt);
-      }
-      try
-      {
-        this.jdField_a_of_type_Begr.dismiss();
-        azzx.a("Grp_msg", "grpData_admin", "Close_setmsg", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, azzx.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a), String.valueOf(i) });
-        return;
-        i = 3;
-        paramInt = 4;
-        continue;
-        i = 1;
-        paramInt = 2;
-        continue;
-        int j = 2;
-        paramInt = i;
-        i = j;
-      }
-      catch (Exception paramView)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.i("Q.chatopttroop", 2, paramView.toString());
-      }
-    }
+      return;
+      axqw.b(this.a.app, "CliOper", "", "", "0X8007146", "0X8007146", 0, 0, "", "", "", "");
+    } while (!(paramView.getTag() instanceof SubAccountInfo));
+    this.a.a((SubAccountInfo)paramView.getTag());
   }
 }
 

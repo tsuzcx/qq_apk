@@ -1,824 +1,851 @@
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.graphics.Bitmap;
-import android.os.Looper;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.chat.MessageNotificationSettingManager.1;
-import com.tencent.mobileqq.chat.MessageNotificationSettingManager.4;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.SpecialCareInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
 
 public class alrm
-  implements Manager
 {
-  private final ajjj jdField_a_of_type_Ajjj;
-  private alrp jdField_a_of_type_Alrp;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
-  private Map<Integer, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static final char[] jdField_a_of_type_ArrayOfChar = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
+  private java.lang.ref.WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
   
-  public alrm(QQAppInterface paramQQAppInterface)
+  alrm(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Ajjj = ((ajjj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51));
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)paramQQAppInterface.getManager(52));
-    this.jdField_a_of_type_JavaUtilMap = new MessageNotificationSettingManager.1(this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new mqq.util.WeakReference(paramQQAppInterface);
   }
   
-  private int a(String paramString, int paramInt)
+  private static int a()
   {
-    if (b(paramString))
-    {
-      if ((b()) && (a(paramString))) {
-        return 2131230758;
-      }
-      return a();
+    Date localDate = new Date();
+    return Integer.parseInt(String.format(Locale.CHINA, "%04d%02d%02d%02d", new Object[] { Integer.valueOf(localDate.getYear() + 1900), Integer.valueOf(localDate.getMonth() + 1), Integer.valueOf(localDate.getDate()), Integer.valueOf(localDate.getHours()) }));
+  }
+  
+  public static String a()
+  {
+    Object localObject1 = c();
+    if (localObject1 == null) {
+      return null;
     }
-    return paramInt;
-  }
-  
-  public static alrm a(QQAppInterface paramQQAppInterface)
-  {
-    return (alrm)paramQQAppInterface.getManager(198);
-  }
-  
-  public static ExtensionInfo a(ExtensionInfo paramExtensionInfo)
-  {
-    ExtensionInfo localExtensionInfo = new ExtensionInfo();
-    localExtensionInfo.uin = paramExtensionInfo.uin;
-    localExtensionInfo.messageEnableSoundNew = paramExtensionInfo.messageEnableSoundNew;
-    localExtensionInfo.messageEnableVibrateNew = paramExtensionInfo.messageEnableVibrateNew;
-    localExtensionInfo.messageEnablePreviewNew = paramExtensionInfo.messageEnablePreviewNew;
-    return localExtensionInfo;
-  }
-  
-  private void a(String paramString)
-  {
-    paramString = new MessageNotificationSettingManager.4(this, paramString);
-    if (Looper.getMainLooper() == Looper.myLooper())
+    Iterator localIterator = ((amrd)localObject1).a.iterator();
+    while (localIterator.hasNext())
     {
-      ThreadManager.post(paramString, 10, null, false);
+      Object localObject2 = (amrn)localIterator.next();
+      if (localObject2 != null)
+      {
+        amrm localamrm = ((amrn)localObject2).jdField_a_of_type_Amrm;
+        if (localamrm != null)
+        {
+          localObject2 = ((amrn)localObject2).jdField_a_of_type_Amrp;
+          if ((localObject2 != null) && (a(localamrm)))
+          {
+            localObject2 = b((amrp)localObject2);
+            if (localObject2 != null)
+            {
+              ArkAppCenter.c("ArkApp.Dict.Update", String.format("getEffectDictIdentifier, use condition dict, dict-id=%s, condition=%s", new Object[] { localObject2, localamrm.toString() }));
+              return localObject2;
+            }
+          }
+        }
+      }
+    }
+    localObject1 = b((amrp)localObject1);
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("getEffectDictIdentifier, use base dict, dict-id=%s", new Object[] { localObject1 }));
+    return localObject1;
+  }
+  
+  private static String a(String paramString)
+  {
+    return alrj.a(paramString) + "/WordData";
+  }
+  
+  private static String a(byte[] paramArrayOfByte)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+    {
+      int j = paramArrayOfByte.length;
+      int i = 0;
+      while (i < j)
+      {
+        int k = paramArrayOfByte[i];
+        localStringBuilder.append(jdField_a_of_type_ArrayOfChar[(k >> 4 & 0xF)]);
+        localStringBuilder.append(jdField_a_of_type_ArrayOfChar[(k & 0xF)]);
+        i += 1;
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  private static Map<String, alrw> a(amrp paramamrp)
+  {
+    if (paramamrp == null) {
+      return new HashMap();
+    }
+    Object localObject = paramamrp.jdField_b_of_type_JavaUtilArrayList;
+    if (localObject == null)
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", "getDictInfoFromConfig, 'word_dict_list' field not found");
+      return new HashMap();
+    }
+    paramamrp = new HashMap();
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      alrw localalrw = (alrw)((Iterator)localObject).next();
+      if (localalrw != null) {
+        paramamrp.put(localalrw.a, localalrw);
+      }
+    }
+    return paramamrp;
+  }
+  
+  private void a(amrp paramamrp1, amrp paramamrp2, alry paramalry)
+  {
+    if (paramamrp2 == null)
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, remote dict config is empty");
+      paramalry.a(false);
+    }
+    for (;;)
+    {
+      return;
+      if (!b(paramamrp2))
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, canUpdateDictAtCurrentNetType is false");
+        paramalry.a(false);
+        return;
+      }
+      String str1 = b(paramamrp2);
+      if (TextUtils.isEmpty(str1))
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, empty new dict id");
+        paramalry.a(false);
+        return;
+      }
+      String str2 = b(str1);
+      if (TextUtils.isEmpty(str2))
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, fail to create new dict dir, id=%s", new Object[] { str1 }));
+        paramalry.a(false);
+        return;
+      }
+      Object localObject = a(paramamrp2);
+      if ((localObject == null) || (((Map)localObject).size() == 0))
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, new dict list is empty");
+        paramalry.a(true);
+        return;
+      }
+      paramamrp2 = b(paramamrp1);
+      paramamrp1 = a(paramamrp1);
+      alsa localalsa = new alsa(null);
+      localalsa.jdField_a_of_type_Int = ((Map)localObject).size();
+      localalsa.jdField_a_of_type_Boolean = true;
+      localObject = ((Map)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        alrw localalrw = (alrw)((Iterator)localObject).next();
+        a(str2, paramamrp2, (alrw)paramamrp1.get(localalrw.a), localalrw, new alro(this, localalsa, localalrw, str2, paramalry, str1));
+      }
+    }
+  }
+  
+  private void a(String paramString, alrw paramalrw, alry paramalry)
+  {
+    a(paramalrw.a, paramalrw.jdField_b_of_type_JavaLangString, new alrt(this, paramalrw, paramString, paramalry));
+  }
+  
+  private void a(String paramString1, String paramString2, alrw paramalrw1, alrw paramalrw2, alry paramalry)
+  {
+    boolean bool = false;
+    if (!a(paramString2, paramalrw1)) {
+      paramalrw1 = null;
+    }
+    for (;;)
+    {
+      if (paramalrw1 == null)
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, local not exists, full update, name=%s", new Object[] { paramalrw2.a }));
+        a(paramString1, paramalrw2, new alrp(this, paramalrw2, paramalry));
+        return;
+      }
+      if (paramalrw1.d.equals(paramalrw2.d))
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, file not change, copy from origin, name=%s", new Object[] { paramalrw2.a }));
+        paramString2 = b(paramString2, paramalrw1.a);
+        paramString1 = String.format("%s/%s", new Object[] { paramString1, paramalrw2.a });
+        if (bbdj.d(paramString2, paramString1)) {
+          break label281;
+        }
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, copy file fail, %s->%s", new Object[] { paramString2, paramString1 }));
+      }
+      for (;;)
+      {
+        paramalry.a(bool);
+        return;
+        if ((paramalrw2.b()) && (paramalrw1.d.equals(paramalrw2.g)))
+        {
+          ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update, name=%s", new Object[] { paramalrw2.a }));
+          b(paramString1, paramString2, paramalrw1, paramalrw2, new alrq(this, paramalrw2, paramalry, paramString1));
+          return;
+        }
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, full update, name=%s", new Object[] { paramalrw2.a }));
+        a(paramString1, paramalrw2, new alrs(this, paramalry));
+        return;
+        label281:
+        bool = true;
+      }
+    }
+  }
+  
+  private void a(String paramString1, String paramString2, alrx paramalrx)
+  {
+    alrz localalrz = new alrz(null);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", "downloadDictFile, qq app interface is null, return from download");
       return;
     }
-    paramString.run();
-  }
-  
-  private boolean a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "isLocalRingId: invoked. ", " id: ", Integer.valueOf(paramInt), " R.raw.system: ", Integer.valueOf(2131230759), " R.raw.classic: ", Integer.valueOf(2131230720) });
-    }
-    boolean bool = this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt));
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "isLocalRingId: invoked. ", " isLocal: ", Boolean.valueOf(bool) });
-    }
-    return bool;
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    boolean bool = true;
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    int i;
-    if ((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 0))
+    ayxq localayxq = (ayxq)localQQAppInterface.getManager(193);
+    localalrz.jdField_a_of_type_JavaLangRefWeakReference = new java.lang.ref.WeakReference(localayxq);
+    paramalrx = new ArkAiDictUpdateMgr.8(this, paramString2, localalrz, paramalrx);
+    if (localQQAppInterface == null)
     {
-      i = 1;
-      if ((i == 0) || (!Friends.isValidUin(paramMessageRecord.frienduin))) {
-        break label46;
-      }
+      ArkAppCenter.c("ArkApp.Dict.Update", "downloadDictFile, qq app interface is null, return");
+      return;
     }
+    localalrz.jdField_a_of_type_Boolean = localayxq.a();
+    if (localalrz.jdField_a_of_type_Boolean)
+    {
+      localayxq.a(10022, "prd", paramString1, 0, paramString2, "", 1, 0, false, new ayxr(localQQAppInterface, paramString1, paramalrx, 10000L));
+      return;
+    }
+    paramalrx.run();
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("downloadDictFile, not use pre-download, name=%s, URL=%s.", new Object[] { paramString1, paramString2 }));
+  }
+  
+  private static boolean a(amrm paramamrm)
+  {
+    if (paramamrm == null) {}
     for (;;)
     {
-      return bool;
-      i = 0;
-      break;
-      label46:
-      bool = false;
-    }
-  }
-  
-  public static byte[] a(ExtensionInfo paramExtensionInfo)
-  {
-    int i;
-    int j;
-    if (paramExtensionInfo.messageEnablePreviewNew == 1)
-    {
-      i = 1;
-      if (paramExtensionInfo.messageEnableVibrateNew != 1) {
-        break label60;
-      }
-      j = 2;
-      label20:
-      if (paramExtensionInfo.messageEnableSoundNew != 1) {
-        break label65;
+      return false;
+      paramamrm = paramamrm.a;
+      String[] arrayOfString = paramamrm.split("-");
+      if (arrayOfString.length == 2) {
+        try
+        {
+          int i = Integer.parseInt(arrayOfString[0]);
+          int j = Integer.parseInt(arrayOfString[1]);
+          int k = a();
+          if ((i <= k) && (k <= j)) {
+            return true;
+          }
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          ArkAppCenter.c("ArkApp.Dict.Update", String.format(Locale.CHINA, "isDictConditionEffect, invalid date, date=%s", new Object[] { paramamrm }));
+        }
       }
     }
-    label60:
-    label65:
-    for (int k = 4;; k = 0)
-    {
-      paramExtensionInfo = bakz.a(i | j | k);
-      return new byte[] { paramExtensionInfo[1], paramExtensionInfo[0] };
-      i = 0;
-      break;
-      j = 0;
-      break label20;
-    }
+    return false;
   }
   
-  private boolean b()
+  private boolean a(amrp paramamrp)
   {
-    if (bahr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 1) {}
-    for (boolean bool = true;; bool = false)
+    if (paramamrp == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("MessageNotificationSettingManager", 2, new Object[] { "globalSpCaredRingEnable: invoked. ", "enable: ", Boolean.valueOf(bool), new RuntimeException() });
-      }
-      return bool;
-    }
-  }
-  
-  private boolean b(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
+      ArkAppCenter.c("ArkApp.Dict.Update", "checkLocalDictIntegrity, config is empty, return");
       return false;
     }
-    return c(paramMessageRecord.senderuin, paramMessageRecord.istroop);
-  }
-  
-  private void c(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "playRingId: invoked. ", " id: ", Integer.valueOf(paramInt) });
-    }
-    int j = a();
-    int i;
-    if (j == AppSetting.d) {
-      i = j;
-    }
-    for (;;)
+    String str = b(paramamrp);
+    paramamrp = a(paramamrp);
+    if (paramamrp == null)
     {
-      j = paramInt;
-      if (paramInt == 0) {
-        j = i;
-      }
-      if (!a(j)) {
+      ArkAppCenter.c("ArkApp.Dict.Update", "checkLocalDictIntegrity, local dict list is empty");
+      return true;
+    }
+    Iterator localIterator = paramamrp.values().iterator();
+    do
+    {
+      if (!localIterator.hasNext()) {
         break;
       }
-      paramInt = j;
-      if (j == AppSetting.e) {
-        paramInt = 2131230721;
-      }
-      baan.b(paramInt, false);
-      return;
-      i = j;
-      if (j == AppSetting.e) {
-        i = 2131230721;
-      }
-    }
-    Object localObject = new alro(this, j);
-    boolean bool = baqw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), j);
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "playRingId: invoked. ", " ringExists: ", Boolean.valueOf(bool), " targetId: ", Integer.valueOf(j) });
-    }
-    if (!bool)
+    } while (a(str, (alrw)localIterator.next()));
+    for (int i = 1;; i = 0)
     {
-      baqw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, j, (baof)localObject, false);
-      return;
+      if (i == 0)
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("checkLocalDictIntegrity, all files check ok, no update, dict-id=%s", new Object[] { str }));
+        return true;
+      }
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format(Locale.CHINA, "checkLocalDictIntegrity, %d of %d files need update", new Object[] { Integer.valueOf(i), Integer.valueOf(paramamrp.size()) }));
+      return false;
     }
-    localObject = baqw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), j);
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "playRingId: invoked. ", " wavPath: ", localObject });
-    }
-    a((String)localObject);
   }
   
-  private void c(MessageRecord paramMessageRecord)
+  private static boolean a(String paramString, alrw paramalrw)
   {
-    a(paramMessageRecord);
-    int i = a();
-    paramMessageRecord = paramMessageRecord.senderuin;
-    ExtensionInfo localExtensionInfo = this.jdField_a_of_type_Ajjj.a(paramMessageRecord);
-    if (localExtensionInfo == null)
+    if (paramalrw == null) {}
+    while (!b(b(paramString, paramalrw.a), paramalrw.d)) {
+      return false;
+    }
+    return true;
+  }
+  
+  /* Error */
+  public static boolean a(byte[] paramArrayOfByte, String paramString)
+  {
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_2
+    //   2: aload_0
+    //   3: ifnull +10 -> 13
+    //   6: aload_1
+    //   7: invokestatic 220	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   10: ifeq +7 -> 17
+    //   13: iconst_0
+    //   14: istore_2
+    //   15: iload_2
+    //   16: ireturn
+    //   17: new 410	java/io/FileOutputStream
+    //   20: dup
+    //   21: aload_1
+    //   22: invokespecial 413	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   25: astore 4
+    //   27: aload 4
+    //   29: astore_3
+    //   30: aload 4
+    //   32: aload_0
+    //   33: invokevirtual 417	java/io/FileOutputStream:write	([B)V
+    //   36: aload 4
+    //   38: ifnull -23 -> 15
+    //   41: aload 4
+    //   43: invokevirtual 420	java/io/FileOutputStream:close	()V
+    //   46: iconst_1
+    //   47: ireturn
+    //   48: astore_0
+    //   49: ldc 127
+    //   51: getstatic 52	java/util/Locale:CHINA	Ljava/util/Locale;
+    //   54: ldc_w 422
+    //   57: iconst_2
+    //   58: anewarray 4	java/lang/Object
+    //   61: dup
+    //   62: iconst_0
+    //   63: aload_0
+    //   64: invokevirtual 425	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   67: aastore
+    //   68: dup
+    //   69: iconst_1
+    //   70: aload_1
+    //   71: aastore
+    //   72: invokestatic 78	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   75: invokestatic 140	com/tencent/mobileqq/ark/ArkAppCenter:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   78: iconst_1
+    //   79: ireturn
+    //   80: astore 5
+    //   82: aconst_null
+    //   83: astore 4
+    //   85: aload 4
+    //   87: astore_3
+    //   88: ldc 127
+    //   90: getstatic 52	java/util/Locale:CHINA	Ljava/util/Locale;
+    //   93: ldc_w 427
+    //   96: iconst_3
+    //   97: anewarray 4	java/lang/Object
+    //   100: dup
+    //   101: iconst_0
+    //   102: aload 5
+    //   104: invokevirtual 425	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   107: aastore
+    //   108: dup
+    //   109: iconst_1
+    //   110: aload_0
+    //   111: arraylength
+    //   112: invokestatic 63	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   115: aastore
+    //   116: dup
+    //   117: iconst_2
+    //   118: aload_1
+    //   119: aastore
+    //   120: invokestatic 78	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   123: invokestatic 140	com/tencent/mobileqq/ark/ArkAppCenter:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   126: aload 4
+    //   128: ifnull +8 -> 136
+    //   131: aload 4
+    //   133: invokevirtual 420	java/io/FileOutputStream:close	()V
+    //   136: iconst_0
+    //   137: ireturn
+    //   138: astore_0
+    //   139: ldc 127
+    //   141: getstatic 52	java/util/Locale:CHINA	Ljava/util/Locale;
+    //   144: ldc_w 422
+    //   147: iconst_2
+    //   148: anewarray 4	java/lang/Object
+    //   151: dup
+    //   152: iconst_0
+    //   153: aload_0
+    //   154: invokevirtual 425	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   157: aastore
+    //   158: dup
+    //   159: iconst_1
+    //   160: aload_1
+    //   161: aastore
+    //   162: invokestatic 78	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   165: invokestatic 140	com/tencent/mobileqq/ark/ArkAppCenter:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   168: goto -32 -> 136
+    //   171: astore_0
+    //   172: aconst_null
+    //   173: astore_3
+    //   174: aload_3
+    //   175: ifnull +7 -> 182
+    //   178: aload_3
+    //   179: invokevirtual 420	java/io/FileOutputStream:close	()V
+    //   182: aload_0
+    //   183: athrow
+    //   184: astore_3
+    //   185: ldc 127
+    //   187: getstatic 52	java/util/Locale:CHINA	Ljava/util/Locale;
+    //   190: ldc_w 422
+    //   193: iconst_2
+    //   194: anewarray 4	java/lang/Object
+    //   197: dup
+    //   198: iconst_0
+    //   199: aload_3
+    //   200: invokevirtual 425	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   203: aastore
+    //   204: dup
+    //   205: iconst_1
+    //   206: aload_1
+    //   207: aastore
+    //   208: invokestatic 78	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   211: invokestatic 140	com/tencent/mobileqq/ark/ArkAppCenter:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   214: goto -32 -> 182
+    //   217: astore_0
+    //   218: goto -44 -> 174
+    //   221: astore 5
+    //   223: goto -138 -> 85
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	226	0	paramArrayOfByte	byte[]
+    //   0	226	1	paramString	String
+    //   1	15	2	bool	boolean
+    //   29	150	3	localFileOutputStream1	java.io.FileOutputStream
+    //   184	16	3	localIOException1	java.io.IOException
+    //   25	107	4	localFileOutputStream2	java.io.FileOutputStream
+    //   80	23	5	localIOException2	java.io.IOException
+    //   221	1	5	localIOException3	java.io.IOException
+    // Exception table:
+    //   from	to	target	type
+    //   41	46	48	java/io/IOException
+    //   17	27	80	java/io/IOException
+    //   131	136	138	java/io/IOException
+    //   17	27	171	finally
+    //   178	182	184	java/io/IOException
+    //   30	36	217	finally
+    //   88	126	217	finally
+    //   30	36	221	java/io/IOException
+  }
+  
+  private static String b(amrp paramamrp)
+  {
+    if (paramamrp == null) {}
+    String str;
+    do
     {
-      QLog.d("MessageNotificationSettingManager", 1, new Object[] { "playFriendRing: invoked. using global id ", " extensionInfo: ", localExtensionInfo });
-      c(i);
-      return;
-    }
-    int j = localExtensionInfo.friendRingId;
-    i = j;
-    if (j == 0) {
-      i = a(paramMessageRecord, j);
-    }
-    c(i);
+      return null;
+      str = paramamrp.c;
+      paramamrp = paramamrp.jdField_b_of_type_JavaLangString;
+    } while ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramamrp)));
+    return String.format("%s-%s", new Object[] { str, paramamrp });
   }
   
-  private boolean c(String paramString, int paramInt)
+  private static String b(String paramString)
   {
-    boolean bool = b(paramString);
-    return (paramInt == 1) && (bool);
-  }
-  
-  public int a()
-  {
-    int i = SettingCloneUtil.readValueForInt(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "getGlobalRingId: invoked. ", " soundRid: ", Integer.valueOf(i) });
+    String str = a(String.format(Locale.CHINA, "%s%s-%d", new Object[] { "tmp-", paramString, Long.valueOf(System.currentTimeMillis()) }));
+    File localFile = new File(str);
+    localFile.mkdirs();
+    paramString = str;
+    if (!localFile.isDirectory())
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("getTmpWordDataDirectory, fail to create tmp word data directory, dir=%s", new Object[] { str }));
+      paramString = null;
     }
-    return i;
+    return paramString;
   }
   
-  public Bitmap a(Bitmap paramBitmap, QQMessageFacade.Message paramMessage)
+  private static String b(String paramString1, String paramString2)
   {
-    if (a(paramMessage.frienduin, paramMessage.istroop)) {
-      return paramBitmap;
+    return String.format("%s/%s", new Object[] { a(paramString1), paramString2 });
+  }
+  
+  private static Map<String, amrp> b(amrd paramamrd)
+  {
+    HashMap localHashMap = new HashMap();
+    if (paramamrd == null)
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", "getDictGroupList,aIDictConfig is null");
+      return localHashMap;
+    }
+    Object localObject1 = b(paramamrd);
+    if (localObject1 != null) {
+      localHashMap.put(localObject1, paramamrd);
+    }
+    paramamrd = paramamrd.a.iterator();
+    while (paramamrd.hasNext())
+    {
+      Object localObject2 = (amrn)paramamrd.next();
+      if (localObject2 != null)
+      {
+        localObject1 = ((amrn)localObject2).jdField_a_of_type_Amrm;
+        localObject2 = ((amrn)localObject2).jdField_a_of_type_Amrp;
+        if ((localObject1 != null) && (localObject2 != null))
+        {
+          localObject1 = b((amrp)localObject2);
+          if (localObject1 != null) {
+            localHashMap.put(localObject1, localObject2);
+          }
+        }
+      }
+    }
+    return localHashMap;
+  }
+  
+  private void b(String paramString1, String paramString2, alrw paramalrw1, alrw paramalrw2, alry paramalry)
+  {
+    a(paramalrw2.a, paramalrw2.e, new alru(this, paramalrw2, paramString2, paramalrw1, paramString1, paramalry));
+  }
+  
+  private static boolean b(amrp paramamrp)
+  {
+    if (paramamrp == null) {
+      return false;
+    }
+    paramamrp = paramamrp.e;
+    if ((TextUtils.isEmpty(paramamrp)) || (paramamrp.equalsIgnoreCase("wifi")))
+    {
+      if ((AppNetConnInfo.isNetSupport()) && (AppNetConnInfo.isWifiConn()))
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("getNetType, invalid dict info, netType=%s", new Object[] { paramamrp }));
+        return true;
+      }
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("getNetType, not judge net Type.", new Object[0]));
+      return false;
+    }
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("getNetType, netType in not WIFI.", new Object[0]));
+    return true;
+  }
+  
+  /* Error */
+  private static boolean b(String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokestatic 220	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: ifne +10 -> 14
+    //   7: aload_1
+    //   8: invokestatic 220	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   11: ifeq +5 -> 16
+    //   14: iconst_0
+    //   15: ireturn
+    //   16: new 450	java/io/File
+    //   19: dup
+    //   20: aload_0
+    //   21: invokespecial 451	java/io/File:<init>	(Ljava/lang/String;)V
+    //   24: astore_0
+    //   25: aload_0
+    //   26: invokevirtual 498	java/io/File:isFile	()Z
+    //   29: ifeq -15 -> 14
+    //   32: sipush 4096
+    //   35: newarray byte
+    //   37: astore 5
+    //   39: ldc_w 500
+    //   42: invokestatic 506	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   45: astore 6
+    //   47: new 508	java/io/FileInputStream
+    //   50: dup
+    //   51: aload_0
+    //   52: invokespecial 511	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   55: astore 4
+    //   57: aload 4
+    //   59: astore_0
+    //   60: aload 4
+    //   62: aload 5
+    //   64: invokevirtual 515	java/io/FileInputStream:read	([B)I
+    //   67: istore_2
+    //   68: iload_2
+    //   69: ifgt +50 -> 119
+    //   72: aload 4
+    //   74: astore_0
+    //   75: aload 6
+    //   77: invokevirtual 519	java/security/MessageDigest:digest	()[B
+    //   80: invokestatic 521	alrm:a	([B)Ljava/lang/String;
+    //   83: aload_1
+    //   84: invokevirtual 479	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   87: istore_3
+    //   88: iload_3
+    //   89: ifeq +15 -> 104
+    //   92: aload 4
+    //   94: ifnull +8 -> 102
+    //   97: aload 4
+    //   99: invokevirtual 522	java/io/FileInputStream:close	()V
+    //   102: iconst_1
+    //   103: ireturn
+    //   104: aload 4
+    //   106: ifnull -92 -> 14
+    //   109: aload 4
+    //   111: invokevirtual 522	java/io/FileInputStream:close	()V
+    //   114: iconst_0
+    //   115: ireturn
+    //   116: astore_0
+    //   117: iconst_0
+    //   118: ireturn
+    //   119: aload 4
+    //   121: astore_0
+    //   122: aload 6
+    //   124: aload 5
+    //   126: iconst_0
+    //   127: iload_2
+    //   128: invokevirtual 526	java/security/MessageDigest:update	([BII)V
+    //   131: goto -74 -> 57
+    //   134: astore_0
+    //   135: aload 4
+    //   137: astore_1
+    //   138: aload_0
+    //   139: astore 4
+    //   141: aload_1
+    //   142: astore_0
+    //   143: ldc 127
+    //   145: ldc_w 528
+    //   148: iconst_1
+    //   149: anewarray 4	java/lang/Object
+    //   152: dup
+    //   153: iconst_0
+    //   154: aload 4
+    //   156: invokevirtual 529	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   159: aastore
+    //   160: invokestatic 135	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   163: invokestatic 140	com/tencent/mobileqq/ark/ArkAppCenter:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   166: aload_1
+    //   167: ifnull -153 -> 14
+    //   170: aload_1
+    //   171: invokevirtual 522	java/io/FileInputStream:close	()V
+    //   174: iconst_0
+    //   175: ireturn
+    //   176: astore_0
+    //   177: iconst_0
+    //   178: ireturn
+    //   179: astore_1
+    //   180: aconst_null
+    //   181: astore_0
+    //   182: aload_0
+    //   183: ifnull +7 -> 190
+    //   186: aload_0
+    //   187: invokevirtual 522	java/io/FileInputStream:close	()V
+    //   190: aload_1
+    //   191: athrow
+    //   192: astore_0
+    //   193: goto -91 -> 102
+    //   196: astore_0
+    //   197: goto -7 -> 190
+    //   200: astore_1
+    //   201: goto -19 -> 182
+    //   204: astore 4
+    //   206: aconst_null
+    //   207: astore_1
+    //   208: goto -67 -> 141
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	211	0	paramString1	String
+    //   0	211	1	paramString2	String
+    //   67	61	2	i	int
+    //   87	2	3	bool	boolean
+    //   55	100	4	localObject	Object
+    //   204	1	4	localException	Exception
+    //   37	88	5	arrayOfByte	byte[]
+    //   45	78	6	localMessageDigest	MessageDigest
+    // Exception table:
+    //   from	to	target	type
+    //   109	114	116	java/io/IOException
+    //   60	68	134	java/lang/Exception
+    //   75	88	134	java/lang/Exception
+    //   122	131	134	java/lang/Exception
+    //   170	174	176	java/io/IOException
+    //   39	57	179	finally
+    //   97	102	192	java/io/IOException
+    //   186	190	196	java/io/IOException
+    //   60	68	200	finally
+    //   75	88	200	finally
+    //   122	131	200	finally
+    //   143	166	200	finally
+    //   39	57	204	java/lang/Exception
+  }
+  
+  private static amrd c()
+  {
+    Object localObject = BaseApplication.getContext().getSharedPreferences("SP_DICT_INFO_KEY", 0).getString("ArkAILocalDictConfig", "");
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", "getLocalDictConfig, configString is empty");
+      return null;
+    }
+    try
+    {
+      localObject = (amrd)ampw.a(localObject, amrd.class);
+      return localObject;
+    }
+    catch (QStorageInstantiateException localQStorageInstantiateException)
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("getLocalDictConfig, fail to decode json, err=%s", new Object[] { localQStorageInstantiateException.getMessage() }));
     }
     return null;
   }
   
-  public String a(String paramString, QQMessageFacade.Message paramMessage)
+  private static void c(amrd paramamrd)
   {
-    if (a(paramMessage.frienduin, paramMessage.istroop)) {
-      return paramString;
+    if (paramamrd == null)
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", "setLocalDictConfig,aIDictConfig is null");
+      return;
     }
-    return ajjy.a(2131640858) + paramMessage.counter + ajjy.a(2131640859);
+    paramamrd = paramamrd.a();
+    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("SP_DICT_INFO_KEY", 0).edit();
+    localEditor.putString("ArkAILocalDictConfig", paramamrd);
+    localEditor.apply();
+  }
+  
+  private static boolean c(String paramString1, String paramString2)
+  {
+    String str = String.format(Locale.CHINA, "%s-%d", new Object[] { paramString1, Long.valueOf(System.currentTimeMillis()) });
+    if (bbdj.c(paramString1, str)) {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("did rename dict dir to tmp dir, %s->%s", new Object[] { paramString1, str }));
+    }
+    if (!bbdj.c(paramString2, paramString1))
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("fail to rename new dir to dict dir, %s->%s", new Object[] { paramString2, paramString1 }));
+      return false;
+    }
+    bbdj.a(str);
+    return true;
+  }
+  
+  private static boolean c(byte[] paramArrayOfByte, String paramString)
+  {
+    boolean bool1 = true;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0) || (TextUtils.isEmpty(paramString))) {
+      bool1 = false;
+    }
+    for (;;)
+    {
+      return bool1;
+      try
+      {
+        boolean bool2 = a(MessageDigest.getInstance("MD5").digest(paramArrayOfByte)).equalsIgnoreCase(paramString);
+        if (!bool2) {
+          return false;
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("checkDictMd5, fail compute buffer md5, msg=%s", new Object[] { paramArrayOfByte.getMessage() }));
+      }
+    }
+    return false;
+  }
+  
+  private static amrd d()
+  {
+    amqm localamqm = amqr.b(170).a();
+    if (localamqm == null)
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", "getRemoteDictConfig, config string is empty");
+      return null;
+    }
+    return localamqm.a();
+  }
+  
+  private static void d(amrd paramamrd)
+  {
+    if (paramamrd == null) {
+      ArkAppCenter.c("ArkApp.Dict.Update", "deleteUnusedDict, localDictConfig is null");
+    }
+    for (;;)
+    {
+      return;
+      paramamrd = b(paramamrd);
+      String str1 = alrj.a();
+      String[] arrayOfString = new File(str1).list();
+      if (arrayOfString != null)
+      {
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          String str2 = arrayOfString[i];
+          if (!paramamrd.containsKey(str2))
+          {
+            ArkAppCenter.c("ArkApp.Dict.Update", String.format("deleteUnusedDict, name=%s", new Object[] { str2 }));
+            bbdj.a(str1 + "/" + str2);
+          }
+          i += 1;
+        }
+      }
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit().putBoolean("SP_KEY_RESET_GRAY_USER_RING_ID", true).apply();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("MessageNotificationSettingManager", 2, new Object[] { "preDownloadRing: invoked. ", "ring-id: ", Integer.valueOf(paramInt) });
-    }
-    if ((paramInt > 0) && (!baqw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt)) && (!a(paramInt)))
+    if (ArkAppCenter.a())
     {
-      alrn localalrn = new alrn(this, paramInt);
-      baqw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, localalrn, false);
-    }
-  }
-  
-  public void a(alrp paramalrp)
-  {
-    this.jdField_a_of_type_Alrp = paramalrp;
-  }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    String str = paramMessageRecord.senderuin;
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "compactUpdateRingData: invoked. ", " message.senderuin: ", str });
-    }
-    b(str, paramMessageRecord.istroop);
-  }
-  
-  public void a(FormSimpleItem paramFormSimpleItem, int paramInt)
-  {
-    a(paramFormSimpleItem, paramInt, null, -1);
-  }
-  
-  public void a(FormSimpleItem paramFormSimpleItem, int paramInt1, String paramString, int paramInt2)
-  {
-    if (paramFormSimpleItem == null) {
+      ArkAppCenter.c("ArkApp.Dict.Update", "updateLocalDict, use test dict, no update, return");
       return;
     }
-    BaseApplication localBaseApplication = BaseApplicationImpl.context;
-    String str = baqw.b(localBaseApplication, paramInt1);
-    if (a(paramInt1)) {
-      paramString = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt1));
-    }
-    for (;;)
-    {
-      str = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        str = "";
-      }
-      paramFormSimpleItem.setRightText(str);
-      paramFormSimpleItem.setContentDescription(localBaseApplication.getString(2131625232) + str);
-      return;
-      if (paramInt1 == 0)
-      {
-        int i = a();
-        if (QLog.isColorLevel()) {
-          QLog.d("MessageNotificationSettingManager", 2, new Object[] { "setRingFormSimpleItem: invoked. from sp key:QQSETTING_NOTIFY_SOUNDTYPE_KEY ", " globalRingId: ", Integer.valueOf(i) });
-        }
-        paramInt1 = i;
-        if (paramInt2 == 0) {
-          paramInt1 = a(paramString, i);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MessageNotificationSettingManager", 2, new Object[] { "setRingFormSimpleItem: invoked. getRingIdCheckSpCaredFriendAndGlobalSwitch:: ", " targetRingId: ", Integer.valueOf(paramInt1) });
-        }
-        if (a(paramInt1))
-        {
-          paramString = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt1));
-        }
-        else
-        {
-          paramString = baqw.b(localBaseApplication, paramInt1);
-          if (TextUtils.isEmpty(paramString)) {
-            a(paramInt1);
-          }
-        }
-      }
-      else
-      {
-        paramString = str;
-        if (TextUtils.isEmpty(str))
-        {
-          a(paramInt1);
-          paramString = str;
-        }
-      }
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (paramInt < 0) {}
-    ExtensionInfo localExtensionInfo2 = this.jdField_a_of_type_Ajjj.a(paramString);
-    ExtensionInfo localExtensionInfo1 = localExtensionInfo2;
-    if (localExtensionInfo2 == null)
-    {
-      localExtensionInfo1 = new ExtensionInfo();
-      localExtensionInfo1.uin = paramString;
-    }
-    if (localExtensionInfo1.friendRingId != paramInt)
-    {
-      localExtensionInfo1.friendRingId = paramInt;
-      this.jdField_a_of_type_Ajjj.a(localExtensionInfo1);
-    }
-    a(paramInt);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    TroopInfo localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString);
-    if (localTroopInfo == null)
-    {
-      localTroopInfo = new TroopInfo();
-      localTroopInfo.troopuin = paramString;
-      localTroopInfo.troopcode = paramString;
-    }
-    for (paramString = localTroopInfo;; paramString = localTroopInfo)
-    {
-      boolean bool;
-      if (paramInt1 != 1)
-      {
-        bool = true;
-        if (paramInt2 != 1024) {
-          break label116;
-        }
-        paramString.setCmdUinFlagEx2(bool, 1024);
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MessageNotificationSettingManager", 2, new Object[] { "saveTroopInfo: invoked. ", " troopInfo.cmdUinFlagEx2: ", Long.valueOf(paramString.cmdUinFlagEx2) });
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString);
-        return;
-        bool = false;
-        break;
-        label116:
-        if (paramInt2 == 2048) {
-          paramString.setCmdUinFlagEx2(bool, 2048);
-        } else if (paramInt2 == 4096) {
-          paramString.setCmdUinFlagEx2(bool, 4096);
-        } else if (paramInt2 != 9) {}
-      }
-    }
-  }
-  
-  public void a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    ExtensionInfo localExtensionInfo = this.jdField_a_of_type_Ajjj.a(paramString);
-    if (localExtensionInfo == null)
-    {
-      localExtensionInfo = new ExtensionInfo();
-      localExtensionInfo.uin = paramString;
-    }
-    for (;;)
-    {
-      if (paramInt == 1) {
-        if (paramBoolean)
-        {
-          i = 0;
-          localExtensionInfo.messageEnablePreviewNew = i;
-        }
-      }
-      do
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MessageNotificationSettingManager", 2, new Object[] { "saveExtensionInfo: invoked. ", " uin: ", paramString, " type: ", Integer.valueOf(paramInt), " enable: ", Boolean.valueOf(paramBoolean) });
-        }
-        this.jdField_a_of_type_Ajjj.a(localExtensionInfo);
-        return;
-        i = 1;
-        break;
-        if (paramInt == 3)
-        {
-          if (paramBoolean) {}
-          for (i = 0;; i = 1)
-          {
-            localExtensionInfo.messageEnableVibrateNew = i;
-            break;
-          }
-        }
-      } while (paramInt != 2);
-      if (paramBoolean) {}
-      for (int i = 0;; i = 1)
-      {
-        localExtensionInfo.messageEnableSoundNew = i;
-        break;
-      }
-    }
-  }
-  
-  public void a(ConcurrentHashMap<String, atmo> paramConcurrentHashMap)
-  {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 0);
-    paramConcurrentHashMap = paramConcurrentHashMap.entrySet().iterator();
-    while (paramConcurrentHashMap.hasNext())
-    {
-      Object localObject = (Map.Entry)paramConcurrentHashMap.next();
-      String str = (String)((Map.Entry)localObject).getKey();
-      localObject = (atmo)((Map.Entry)localObject).getValue();
-      if ((localObject instanceof ExtensionInfo))
-      {
-        localObject = (ExtensionInfo)localObject;
-        if (((ExtensionInfo)localObject).friendRingId != 0)
-        {
-          int i = localSharedPreferences.getInt("special_sound_type" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + str, -1);
-          if (QLog.isColorLevel()) {
-            QLog.d("MessageNotificationSettingManager", 2, new Object[] { "resetGrayUserRingId: invoked. ", " specialSoundId: ", Integer.valueOf(i), " uin: ", str });
-          }
-          if (((ExtensionInfo)localObject).friendRingId == i)
-          {
-            ((ExtensionInfo)localObject).friendRingId = 0;
-            this.jdField_a_of_type_Ajjj.a((ExtensionInfo)localObject);
-          }
-        }
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).getBoolean("SP_KEY_RESET_GRAY_USER_RING_ID", false);
+    ArkAppCenter.c("ArkApp.Dict.Update", "updateLocalDict, start");
+    ArkRecommendLogic.a().post(new ArkAiDictUpdateMgr.1(this));
   }
   
   public boolean a(String paramString)
   {
-    SpecialCareInfo localSpecialCareInfo = this.jdField_a_of_type_Ajjj.a(paramString);
-    if (localSpecialCareInfo != null)
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return false;
+    }
+    if (!TextUtils.isEmpty(paramString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageNotificationSettingManager", 2, new Object[] { "isSpCareFriendRingEnable: invoked. ", " info: ", localSpecialCareInfo, " info.globalSwitch: ", Integer.valueOf(localSpecialCareInfo.globalSwitch), " info.specialRingSwitch: ", Integer.valueOf(localSpecialCareInfo.specialRingSwitch) });
+      long l1 = Long.parseLong(paramString);
+      long l2 = Long.parseLong(localQQAppInterface.getCurrentAccountUin());
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("getBusinessState, business_percent=%s", new Object[] { paramString }));
+      if (l2 % 100L <= l1) {}
+      for (boolean bool = true;; bool = false) {
+        return bool;
       }
-      return (localSpecialCareInfo.globalSwitch == 1) && (localSpecialCareInfo.specialRingSwitch == 1);
     }
-    boolean bool = this.jdField_a_of_type_Ajjj.e();
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "isSpCareFriendRingEnable: invoked. ", " spCareInfoCacheInited: ", Boolean.valueOf(bool), " uin: ", paramString });
-    }
+    ArkAppCenter.c("ArkApp.Dict.Update", "getBusinessState, business_percent is empty");
     return false;
   }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.f()) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return true;
-            if (Friends.isValidUin(paramString)) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("MessageNotificationSettingManager", 2, new Object[] { "enablePreview: invoked. ", " uin: ", paramString });
-          return true;
-          if (paramInt != 0) {
-            break;
-          }
-          paramString = this.jdField_a_of_type_Ajjj.a(paramString, false);
-        } while ((paramString == null) || (paramString.messageEnablePreviewNew == 0));
-        return false;
-        if (paramInt != 1) {
-          break;
-        }
-        paramString = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(paramString);
-      } while (paramString == null);
-      return paramString.messageEnablePreview();
-    } while (!QLog.isColorLevel());
-    QLog.d("MessageNotificationSettingManager", 2, new Object[] { "enablePreview: invoked. ", " uinType: ", Integer.valueOf(paramInt) });
-    return true;
-  }
-  
-  public boolean a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    boolean bool = true;
-    if (!paramBoolean) {
-      paramBoolean = false;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return paramBoolean;
-              if (Friends.isValidUin(paramString)) {
-                break;
-              }
-              paramBoolean = bool;
-            } while (!QLog.isColorLevel());
-            QLog.d("MessageNotificationSettingManager", 2, new Object[] { "enableSeparateVibrate: invoked. ", " uin: ", paramString });
-            return true;
-            if (paramInt != 0) {
-              break;
-            }
-            paramString = this.jdField_a_of_type_Ajjj.a(paramString, false);
-            paramBoolean = bool;
-          } while (paramString == null);
-          paramBoolean = bool;
-        } while (paramString.messageEnableVibrateNew == 0);
-        return false;
-        if (paramInt != 1) {
-          break;
-        }
-        paramString = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(paramString);
-        paramBoolean = bool;
-      } while (paramString == null);
-      return paramString.messageEnableVibrate();
-      paramBoolean = bool;
-    } while (!QLog.isColorLevel());
-    QLog.d("MessageNotificationSettingManager", 2, new Object[] { "enableSeparateVibrate: invoked. ", " uinType: ", Integer.valueOf(paramInt) });
-    return true;
-  }
-  
-  public String b(String paramString, QQMessageFacade.Message paramMessage)
-  {
-    if (a(paramMessage.frienduin, paramMessage.istroop)) {
-      return paramString;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131629067);
-  }
-  
-  public void b()
-  {
-    int i = a();
-    c(i);
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "playGlobalRing: invoked. ", " globalRingId: ", Integer.valueOf(i) });
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "saveGlobalRingId: invoked. ", " id: ", Integer.valueOf(paramInt) });
-    }
-    if ((a() != paramInt) && (paramInt != 0))
-    {
-      SettingCloneUtil.writeValueForInt(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", paramInt);
-      a(paramInt);
-    }
-  }
-  
-  public void b(alrp paramalrp)
-  {
-    this.jdField_a_of_type_Alrp = null;
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    int i = a();
-    if (paramMessageRecord.istroop == 0) {
-      c(paramMessageRecord);
-    }
-    while (paramMessageRecord.istroop != 1) {
-      return;
-    }
-    if (b(paramMessageRecord))
-    {
-      c(paramMessageRecord);
-      return;
-    }
-    if (bara.a(paramMessageRecord))
-    {
-      c(2131230758);
-      return;
-    }
-    paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramMessageRecord.frienduin);
-    if (paramMessageRecord == null)
-    {
-      c(i);
-      return;
-    }
-    c((int)paramMessageRecord.udwCmdUinRingtoneID);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "compactUpdateRingData: invoked. ", " targetUin: ", paramString, " uinType: ", Integer.valueOf(paramInt) });
-    }
-    if ((paramInt == 0) || (c(paramString, paramInt)))
-    {
-      boolean bool1 = a(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageNotificationSettingManager", 2, new Object[] { "compactUpdateRingData: invoked. ", " spCareFriendRingEnable: ", Boolean.valueOf(bool1), " targetUin: ", paramString });
-      }
-      boolean bool2 = b();
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageNotificationSettingManager", 2, new Object[] { "compactUpdateRingData: invoked. ", " globalSpCaredRingEnable: ", Boolean.valueOf(bool2) });
-      }
-      if ((bool1) && (bool2))
-      {
-        ExtensionInfo localExtensionInfo = this.jdField_a_of_type_Ajjj.a(paramString);
-        if ((localExtensionInfo == null) || (localExtensionInfo.friendRingId == 0))
-        {
-          paramInt = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 0).getInt("special_sound_type" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + paramString, -1);
-          if (QLog.isColorLevel()) {
-            QLog.d("MessageNotificationSettingManager", 2, new Object[] { "compactUpdateRingData: invoked. ", " specialSoundId: ", Integer.valueOf(paramInt) });
-          }
-          if (paramInt != -1) {
-            a(paramString, paramInt);
-          }
-        }
-      }
-    }
-  }
-  
-  public boolean b(String paramString)
-  {
-    boolean bool = true;
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return false;
-      paramString = this.jdField_a_of_type_Ajjj.a(paramString);
-    } while (paramString == null);
-    if (paramString.globalSwitch == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public boolean b(String paramString, int paramInt)
-  {
-    boolean bool = true;
-    if (!Friends.isValidUin(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageNotificationSettingManager", 2, new Object[] { "enableSeparateSoundWhenGlobalSwitchOff: invoked. ", " uin: ", paramString });
-      }
-    }
-    label146:
-    label241:
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          if (paramInt != 0) {
-            break label146;
-          }
-          paramString = this.jdField_a_of_type_Ajjj.a(paramString, true);
-          if (paramString != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("MessageNotificationSettingManager", 2, new Object[] { "enableSeparateSoundWhenGlobalSwitchOff: invoked. ", " extensionInfo: ", paramString });
-        return false;
-        if (QLog.isColorLevel()) {
-          QLog.d("MessageNotificationSettingManager", 2, new Object[] { "enableSeparateSoundWhenGlobalSwitchOff: invoked. ", " messageEnableSoundNew: ", Integer.valueOf(paramString.messageEnableSoundNew) });
-        }
-        if (paramString.messageEnableSoundNew == 0) {}
-        for (;;)
-        {
-          return bool;
-          bool = false;
-        }
-        if (paramInt != 1) {
-          break label241;
-        }
-        paramString = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString);
-        if (paramString != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "enableSeparateSoundWhenGlobalSwitchOff: invoked. ", " troopInfo: ", paramString });
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageNotificationSettingManager", 2, new Object[] { "enableSeparateSoundWhenGlobalSwitchOff: invoked. ", " messageEnableSound: ", Boolean.valueOf(paramString.messageEnableSound()) });
-      }
-      return paramString.messageEnableSound();
-    } while (!QLog.isColorLevel());
-    QLog.d("MessageNotificationSettingManager", 2, new Object[] { "enableSeparateSoundWhenGlobalSwitchOff: invoked. ", " uinType: ", Integer.valueOf(paramInt) });
-    return false;
-  }
-  
-  public boolean b(boolean paramBoolean, String paramString, int paramInt)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "enableSeparateSound: invoked. ", " globalSwitch: ", Boolean.valueOf(paramBoolean), " uin: ", paramString, " uinType: ", Integer.valueOf(paramInt) });
-    }
-    if (!paramBoolean) {
-      paramBoolean = false;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return paramBoolean;
-              if (Friends.isValidUin(paramString)) {
-                break;
-              }
-              paramBoolean = bool;
-            } while (!QLog.isColorLevel());
-            QLog.d("MessageNotificationSettingManager", 2, new Object[] { "enableSeparateSound: invoked. ", " uin: ", paramString });
-            return true;
-            if (paramInt != 0) {
-              break;
-            }
-            paramString = this.jdField_a_of_type_Ajjj.a(paramString, false);
-            if (QLog.isColorLevel()) {
-              QLog.d("MessageNotificationSettingManager", 2, new Object[] { "enableSeparateSound: invoked. ", " extensionInfo: ", paramString });
-            }
-            paramBoolean = bool;
-          } while (paramString == null);
-          if (QLog.isColorLevel()) {
-            QLog.d("MessageNotificationSettingManager", 2, new Object[] { "enableSeparateSound: invoked. ", " extensionInfo.messageEnableSoundNew: ", Integer.valueOf(paramString.messageEnableSoundNew) });
-          }
-          paramBoolean = bool;
-        } while (paramString.messageEnableSoundNew == 0);
-        return false;
-        if (paramInt != 1) {
-          break;
-        }
-        paramString = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(paramString);
-        paramBoolean = bool;
-      } while (paramString == null);
-      return paramString.messageEnableSound();
-      paramBoolean = bool;
-    } while (!QLog.isColorLevel());
-    QLog.d("MessageNotificationSettingManager", 2, new Object[] { "enableSeparateSound: invoked. ", " uinType: ", Integer.valueOf(paramInt) });
-    return true;
-  }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alrm
  * JD-Core Version:    0.7.0.1
  */

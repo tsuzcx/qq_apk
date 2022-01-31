@@ -1,32 +1,22 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-public abstract interface aopj
+class aopj
+  implements aptu
 {
-  public abstract int a();
+  aopj(aopi paramaopi) {}
   
-  public abstract long a();
+  public void a()
+  {
+    UniformDownloadActivity.a(this.a.a);
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 0);
+  }
   
-  public abstract FileManagerEntity a();
-  
-  public abstract String a();
-  
-  public abstract void a(Object paramObject, int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract void az_();
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public void b()
+  {
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 0);
+  }
 }
 
 

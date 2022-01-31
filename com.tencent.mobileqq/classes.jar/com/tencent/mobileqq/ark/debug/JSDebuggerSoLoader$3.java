@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark.debug;
 
-import algs;
+import alvg;
 import android.text.TextUtils;
 
 public final class JSDebuggerSoLoader$3
@@ -8,11 +8,11 @@ public final class JSDebuggerSoLoader$3
 {
   public void run()
   {
-    if (algs.a() == 0)
+    if (alvg.a() == 0)
     {
-      algs.a(algs.a());
-      algs.a();
-      algs.a();
+      alvg.a(alvg.a());
+      alvg.a();
+      alvg.a();
     }
     String str;
     do
@@ -20,16 +20,16 @@ public final class JSDebuggerSoLoader$3
       do
       {
         return;
-        if (algs.a() == 1)
+        if (alvg.a() == 1)
         {
-          algs.a();
+          alvg.a();
           return;
         }
-      } while (algs.a() != 2);
-      algs.a();
-      str = algs.a();
+      } while (alvg.a() != 2);
+      alvg.a();
+      str = alvg.a();
     } while (TextUtils.isEmpty(str));
-    algs.a(str, "libarkDebuggerJSImpl.so");
+    alvg.a(str, "libarkDebuggerJSImpl.so");
   }
 }
 

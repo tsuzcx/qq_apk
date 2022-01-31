@@ -1,8 +1,8 @@
-public class awfp
+import android.view.View;
+
+public abstract interface awfp
 {
-  public long a;
-  public long b;
-  public long c;
+  public abstract void a(View paramView, int paramInt, awfo paramawfo);
 }
 
 

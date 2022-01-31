@@ -1,293 +1,191 @@
-import android.os.Build.VERSION;
 import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr.1;
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr.2;
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr.3;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.io.File;
-import java.util.UUID;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.transaction.TransReport;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import java.util.HashMap;
+import tencent.im.qim.trans.QIMVideoUpload.QIMVideoUpload.ErrorInfo;
+import tencent.im.qim.trans.QIMVideoUpload.QIMVideoUpload.RspBody;
 
-public class aytv
+class aytv
+  implements ITransactionCallback
 {
-  private static aytv jdField_a_of_type_Aytv;
-  private aytp jdField_a_of_type_Aytp = new aytp();
-  private aytt jdField_a_of_type_Aytt = new aytt();
+  aytv(aytu paramaytu) {}
   
-  public static aytv a()
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    try
-    {
-      if (jdField_a_of_type_Aytv == null) {
-        jdField_a_of_type_Aytv = new aytv();
-      }
-      aytv localaytv = jdField_a_of_type_Aytv;
-      return localaytv;
+    long l = SystemClock.uptimeMillis();
+    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
+    String str1 = (String)paramHashMap.get("rep_bdhTrans");
+    String str2 = (String)paramHashMap.get("segspercnt");
+    String str3 = (String)paramHashMap.get("param_conf_segSize");
+    String str4 = (String)paramHashMap.get("param_conf_segNum");
+    String str5 = (String)paramHashMap.get("param_conf_connNum");
+    String str6 = (String)paramHashMap.get("param_fin_lost");
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMWebVideoUploaderFirstFrame", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - aytu.a(this.a)) + "ms");
     }
-    finally {}
+    aytu.a(this.a).put("serverip", paramHashMap.get("ip"));
+    aytu.a(this.a).put("param_bdhSrv", paramHashMap.get("ip"));
+    aytu.a(this.a).put("param_bdhPort", paramHashMap.get("port"));
+    aytu.a(this.a).put("X-piccachetime", paramArrayOfByte);
+    aytu.a(this.a).put("param_BdhTrans", str1);
+    aytu.a(this.a).put("param_segspercnt", str2);
+    aytu.a(this.a).put("param_conf_segSize", str3);
+    aytu.a(this.a).put("param_conf_segNum", str4);
+    aytu.a(this.a).put("param_conf_connNum", str5);
+    aytu.a(this.a).put("param_fin_lost", str6);
+    aytu.a(this.a).put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
+    aytu.a(this.a).put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
+    aytu.a(this.a).put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
+    aytu.a(this.a).put("param_retry_code", paramHashMap.get("param_retry_code"));
+    aytu.a(this.a).put("param_heart_resp", paramHashMap.get("param_heart_resp"));
+    aytu.a(this.a).put("param_ip_index", paramHashMap.get("param_ip_index"));
+    aytu.a(this.a).put("param_Ip_ConnCost", paramHashMap.get("param_Ip_ConnCost"));
+    if (((String)paramHashMap.get("param_BDH_Cache_Diff")).equals(String.valueOf(true))) {
+      aytu.a(this.a, true);
+    }
+    aytu.a(this.a, paramInt);
+    aytu.b(this.a, "sessionKey or sigSession is null");
+    aytu.a(this.a).b(paramInt, aytu.b(this.a));
   }
   
-  public static final String a()
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    String str = ajed.bm;
-    File localFile = new File(str);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    long l3 = SystemClock.uptimeMillis();
+    paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
+    int i = paramArrayOfByte.get();
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMWebVideoUploaderFirstFrame", 2, "Callback.onSuccess,ret=" + i);
     }
-    return str;
-  }
-  
-  public static final void a(TroopFileTransferManager.Item paramItem, int paramInt)
-  {
-    if (paramItem == null) {
-      return;
-    }
-    StringBuilder localStringBuilder;
-    if (paramInt == 128)
+    int j;
+    Object localObject;
+    if (i == 0)
     {
-      paramItem.ThumbnailDownloading_Small = true;
-      paramItem.ThumbnailFileTimeMS_Small = SystemClock.uptimeMillis();
-      localStringBuilder = new StringBuilder();
-      if (paramItem.Id == null) {
-        break label142;
+      j = 0x0 | paramArrayOfByte.get() | (paramArrayOfByte.get() & 0xFF) << 8 | (paramArrayOfByte.get() & 0xFF) << 16 | (paramArrayOfByte.get() & 0xFF) << 24;
+      localObject = new byte[j];
+      paramArrayOfByte.get((byte[])localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMWebVideoUploaderFirstFrame", 2, "TransactionCallback|data= " + HexUtil.bytes2HexStr((byte[])localObject) + ",len=" + j);
       }
-    }
-    label142:
-    for (paramItem = paramItem.Id.toString();; paramItem = "")
-    {
-      paramItem = paramItem + "_" + paramInt;
-      aysb.c("TroopFileThumbnailMgr", aysb.a, "[" + paramItem + "] setGettingStatus. ");
-      return;
-      if (paramInt == 640)
-      {
-        paramItem.ThumbnailDownloading_Large = true;
-        paramItem.ThumbnailFileTimeMS_Large = SystemClock.uptimeMillis();
-        break;
-      }
-      if (paramInt != 383) {
-        break;
-      }
-      paramItem.ThumbnailDownloading_Middle = true;
-      paramItem.ThumbnailFileTimeMS_Middle = SystemClock.uptimeMillis();
-      break;
-    }
-  }
-  
-  public static final boolean a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
-  {
-    if ((paramLong == 0L) || (paramItem == null)) {}
-    while (!a(paramLong, paramItem, paramInt, paramItem.getThumbnailFile(paramLong, paramInt))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static final boolean a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, String paramString)
-  {
-    int i = 0;
-    int j = 0;
-    boolean bool3 = false;
-    int k = 0;
-    int m = 0;
-    boolean bool2 = false;
-    boolean bool4 = true;
-    boolean bool1 = true;
-    if (TextUtils.isEmpty(paramString)) {
-      return bool2;
-    }
-    if (paramInt == 128)
-    {
-      if (!bace.b(paramString)) {
-        break label260;
-      }
-      paramInt = i;
-      if (!paramItem.HasThumbnailFile_Small) {
-        paramInt = 1;
-      }
-      paramItem.HasThumbnailFile_Small = true;
-      if (!paramString.equalsIgnoreCase(paramItem.smallThumbFile)) {
-        paramInt = 1;
-      }
-      paramItem.smallThumbFile = paramString;
-      paramItem.ThumbnailFileTimeMS_Small = 0L;
     }
     for (;;)
     {
-      bool2 = bool1;
-      if (paramInt == 0) {
-        break;
-      }
-      ayrl.a(paramLong, paramItem);
-      return bool1;
-      if (paramInt == 640)
+      try
       {
-        if (!bace.b(paramString)) {
-          break label251;
+        localObject = (QIMVideoUpload.RspBody)new QIMVideoUpload.RspBody().mergeFrom((byte[])localObject);
+        if (!((QIMVideoUpload.RspBody)localObject).uint64_uin.has()) {
+          continue;
         }
-        paramInt = k;
-        if (!paramItem.HasThumbnailFile_Large) {
-          paramInt = 1;
+        l1 = ((QIMVideoUpload.RspBody)localObject).uint64_uin.get();
+        if (!((QIMVideoUpload.RspBody)localObject).uint64_service_type.has()) {
+          continue;
         }
-        paramItem.HasThumbnailFile_Large = true;
-        if (!paramString.equalsIgnoreCase(paramItem.largeThumbnailFile)) {
-          paramInt = 1;
+        l2 = ((QIMVideoUpload.RspBody)localObject).uint64_service_type.get();
+        if (!((QIMVideoUpload.RspBody)localObject).str_uuid.has()) {
+          continue;
         }
-        paramItem.largeThumbnailFile = paramString;
-        paramItem.ThumbnailFileTimeMS_Large = 0L;
-        bool1 = bool4;
-      }
-      for (;;)
-      {
-        break;
-        if ((paramInt == 383) && (bace.b(paramString)))
+        paramArrayOfByte = ((QIMVideoUpload.RspBody)localObject).str_uuid.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("QIMWebVideoUploaderFirstFrame", 2, "TransactionCallback|uin=" + l1 + ",type=" + l2 + ",uuid= " + paramArrayOfByte);
+        }
+        paramArrayOfByte = (QIMVideoUpload.ErrorInfo)((QIMVideoUpload.RspBody)localObject).msg_err.get();
+        if (paramArrayOfByte != null)
         {
-          if (!paramItem.HasThumbnailFile_Middle) {}
-          for (paramInt = 1;; paramInt = 0)
-          {
-            paramItem.HasThumbnailFile_Middle = true;
-            if (!paramString.equalsIgnoreCase(paramItem.middleThumbnailFile)) {
-              paramInt = 1;
-            }
-            paramItem.middleThumbnailFile = paramString;
-            paramItem.ThumbnailFileTimeMS_Middle = 0L;
-            paramItem.ThumbnailDownloading_Middle_Fail = false;
-            bool1 = true;
-            break;
+          l1 = paramArrayOfByte.uint64_err_code.get();
+          paramArrayOfByte = paramArrayOfByte.bytes_err_info.get().toStringUtf8();
+          if (QLog.isColorLevel()) {
+            QLog.d("QIMWebVideoUploaderFirstFrame", 2, "TransactionCallback|errorCode= " + l1 + ",errorInfo=" + paramArrayOfByte);
           }
         }
-        paramInt = 0;
-        bool1 = bool3;
-        break;
-        label251:
-        bool1 = false;
-        paramInt = m;
-      }
-      label260:
-      bool1 = false;
-      paramInt = j;
-    }
-  }
-  
-  private void b(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
-  {
-    String str = paramItem.getThumbnailFile(paramLong, 640);
-    if (paramItem.LocalFile != null)
-    {
-      File localFile = new File(paramItem.LocalFile);
-      if (localFile.exists())
-      {
-        int j = 0;
-        int i = j;
-        if (paramItem.origLastModifyTime != 0L)
-        {
-          long l = localFile.lastModified();
-          i = j;
-          if (paramItem.origLastModifyTime != l)
-          {
-            i = j;
-            if (TextUtils.isEmpty(paramItem.FilePath))
-            {
-              i = j;
-              if (this.jdField_a_of_type_Aytp.a(paramLong, paramItem, paramInt) == 0) {
-                i = 1;
-              }
-            }
-          }
+        aytu.a(this.a).a();
+        if (QLog.isColorLevel()) {
+          QLog.d("QIMWebVideoUploaderFirstFrame", 2, "set uuid from BDH ");
         }
-        if (i == 0) {
-          this.jdField_a_of_type_Aytt.a(paramLong, paramItem, paramInt, null);
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        long l1;
+        long l2;
+        String str1;
+        String str2;
+        String str3;
+        aytu.a(this.a).b(i, "mergeFrom respData Exception");
+        paramArrayOfByte.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
         }
-        return;
+        QLog.e("QIMWebVideoUploaderFirstFrame", 2, "get uuid from BDH Exception", paramArrayOfByte);
+        continue;
       }
-    }
-    if ((paramInt == 383) && (apdh.b(str)))
-    {
-      this.jdField_a_of_type_Aytt.a(paramLong, paramItem, paramInt, str);
+      aytu.a(this.a, (String)paramHashMap.get("rep_bdhTrans"));
+      paramArrayOfByte = (String)paramHashMap.get("segspercnt");
+      localObject = (String)paramHashMap.get("param_conf_segSize");
+      str1 = (String)paramHashMap.get("param_conf_segNum");
+      str2 = (String)paramHashMap.get("param_conf_connNum");
+      str3 = (String)paramHashMap.get("param_fin_lost");
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMWebVideoUploaderFirstFrame", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l3 - aytu.a(this.a)) + "ms transInfo:" + aytu.a(this.a));
+      }
+      aytu.a(this.a).put("serverip", paramHashMap.get("ip"));
+      aytu.a(this.a).put("param_bdhSrv", paramHashMap.get("ip"));
+      aytu.a(this.a).put("param_bdhPort", paramHashMap.get("port"));
+      aytu.a(this.a).put("X-piccachetime", String.valueOf(aytu.a(this.a).mTransReport.timeCost_Cache));
+      aytu.a(this.a).put("param_BdhTrans", aytu.a(this.a));
+      aytu.a(this.a).put("param_segspercnt", paramArrayOfByte);
+      aytu.a(this.a).put("param_conf_segSize", localObject);
+      aytu.a(this.a).put("param_conf_segNum", str1);
+      aytu.a(this.a).put("param_conf_connNum", str2);
+      aytu.a(this.a).put("param_fin_lost", str3);
+      aytu.a(this.a).put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
+      aytu.a(this.a).put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
+      aytu.a(this.a).put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
+      aytu.a(this.a).put("param_retry_code", paramHashMap.get("param_retry_code"));
+      aytu.a(this.a).put("param_heart_resp", paramHashMap.get("param_heart_resp"));
+      aytu.a(this.a).put("param_ip_index", paramHashMap.get("param_ip_index"));
+      aytu.a(this.a).put("param_Ip_ConnCost", paramHashMap.get("param_Ip_ConnCost"));
+      if (((String)paramHashMap.get("param_BDH_Cache_Diff")).equals(String.valueOf(true))) {
+        aytu.a(this.a, true);
+      }
       return;
+      l1 = 0L;
+      continue;
+      l2 = 0L;
+      continue;
+      paramArrayOfByte = null;
+      continue;
+      i = 0x0 | paramArrayOfByte.get() | (paramArrayOfByte.get() & 0xFF) << 8 | (paramArrayOfByte.get() & 0xFF) << 16 | (paramArrayOfByte.get() & 0xFF) << 24;
+      j = paramArrayOfByte.getShort();
+      localObject = new byte[j];
+      paramArrayOfByte.get((byte[])localObject);
+      paramArrayOfByte = new String((byte[])localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMWebVideoUploaderFirstFrame", 2, "dwErrNo= " + i + ",len=" + j + ",errMsg=" + paramArrayOfByte);
+      }
+      aytu.a(this.a).b(i, paramArrayOfByte);
     }
-    this.jdField_a_of_type_Aytp.a(paramLong, paramItem, paramInt);
   }
   
-  public static final void b(TroopFileTransferManager.Item paramItem, int paramInt)
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
   {
-    if (paramItem == null) {
-      return;
-    }
-    StringBuilder localStringBuilder;
-    if (paramInt == 128)
-    {
-      paramItem.ThumbnailDownloading_Small = false;
-      localStringBuilder = new StringBuilder();
-      if (paramItem.Id == null) {
-        break label121;
-      }
-    }
-    label121:
-    for (paramItem = paramItem.Id.toString();; paramItem = "")
-    {
-      paramItem = paramItem + "_" + paramInt;
-      aysb.c("TroopFileThumbnailMgr", aysb.a, "[" + paramItem + "] setStopGetStatus. ");
-      return;
-      if (paramInt == 640)
-      {
-        paramItem.ThumbnailDownloading_Large = false;
-        break;
-      }
-      if (paramInt != 383) {
-        break;
-      }
-      paramItem.ThumbnailDownloading_Middle = false;
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMWebVideoUploaderFirstFrame", 2, "<BDH_LOG> onTransStart()");
     }
   }
   
-  public void a()
-  {
-    aysb.c("TroopFileThumbnailMgr", aysb.a, "init");
-    this.jdField_a_of_type_Aytt.a();
-    this.jdField_a_of_type_Aytp.a();
-  }
-  
-  public void a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
-  {
-    if ((paramLong == 0L) || (paramItem == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramItem.Id == null) || (paramInt == 0));
-      if (paramItem.canFetchThumbnailFile(paramInt)) {
-        break;
-      }
-    } while ((paramInt != 383) || (!paramItem.genThumb_Middle_OnGettedLargeOrOrigPic));
-    paramItem.genThumb_Middle_OnGettedLargeOrOrigPic = false;
-    ayrs.a(new TroopFileThumbnailMgr.2(this, paramItem, paramLong, paramInt), false);
-    return;
-    if (a(paramLong, paramItem, paramInt))
-    {
-      paramItem.StatusUpdateTimeMs = 0L;
-      ayrl.b(paramLong, paramItem);
-      return;
-    }
-    ayrs.a(new TroopFileThumbnailMgr.3(this, paramLong, paramItem, paramInt), false);
-  }
-  
-  public void b()
-  {
-    aysb.c("TroopFileThumbnailMgr", aysb.a, "release");
-    if (Build.VERSION.SDK_INT == 19)
-    {
-      this.jdField_a_of_type_Aytt.b();
-      this.jdField_a_of_type_Aytp.b();
-      return;
-    }
-    ayrs.a(new TroopFileThumbnailMgr.1(this), true);
-  }
+  public void onUpdateProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aytv
  * JD-Core Version:    0.7.0.1
  */

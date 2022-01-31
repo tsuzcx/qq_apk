@@ -45,10 +45,10 @@ public class MiniAppProfileCardItemView
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(paramContext);
-    this.mLayoutInflater.inflate(2131495414, this, true);
-    this.mIconView = ((ImageView)findViewById(2131304530));
-    this.mNameView = ((TextView)findViewById(2131304531));
-    this.mGapView = findViewById(2131304527);
+    this.mLayoutInflater.inflate(2131560992, this, true);
+    this.mIconView = ((ImageView)findViewById(2131370212));
+    this.mNameView = ((TextView)findViewById(2131370213));
+    this.mGapView = findViewById(2131370209);
   }
   
   public void setData(MiniAppInfo paramMiniAppInfo, int paramInt)

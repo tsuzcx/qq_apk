@@ -1,11 +1,11 @@
 package dov.com.qq.im.ptv;
 
-import bhyn;
+import bjqf;
 
 public class LightWeightSoDownloadUnit$1
   implements Runnable
 {
-  public LightWeightSoDownloadUnit$1(bhyn parambhyn) {}
+  public LightWeightSoDownloadUnit$1(bjqf parambjqf) {}
   
   public void run()
   {

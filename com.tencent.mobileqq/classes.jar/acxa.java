@@ -1,21 +1,94 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.content.res.Resources;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.data.IntimateInfo.MutualMarkInfo;
+import com.tencent.mobileqq.data.IntimateInfo.PrefetchMutualMarkInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class acxa
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class acxa
+  extends BaseAdapter
 {
-  acxa(acwx paramacwx) {}
+  private int jdField_a_of_type_Int;
+  private List<IntimateInfo.MutualMarkInfo> jdField_a_of_type_JavaUtilList;
   
-  public void onGlobalLayout()
+  private acxa(acwp paramacwp) {}
+  
+  public IntimateInfo.MutualMarkInfo a(int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getLineCount() > 3) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.h()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.C()) && (!awnu.b()))
+    return (IntimateInfo.MutualMarkInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(List<IntimateInfo.MutualMarkInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (this.jdField_a_of_type_Int == 0)
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      return;
+      this.jdField_a_of_type_Int = ((bbkx.a() - bbkx.a(40.0F) - 80) / bbkx.a(50.0F));
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "friend mark max count: " + this.jdField_a_of_type_Int);
+      }
+      if (this.jdField_a_of_type_Int <= 0) {
+        this.jdField_a_of_type_Int = 6;
+      }
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    if (this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_Int) {
+      return this.jdField_a_of_type_Int;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @RequiresApi(api=16)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {}
+    for (paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_Acwp.jdField_a_of_type_AndroidContentContext).inflate(2131559152, null);; paramViewGroup = paramView)
+    {
+      ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131366798);
+      RelativeLayout localRelativeLayout = (RelativeLayout)paramViewGroup;
+      paramView = a(paramInt);
+      if ((paramView instanceof IntimateInfo.PrefetchMutualMarkInfo))
+      {
+        paramView = (IntimateInfo.PrefetchMutualMarkInfo)paramView;
+        acwp.a(this.jdField_a_of_type_Acwp, paramView);
+        return paramViewGroup;
+      }
+      if (!TextUtils.isEmpty(paramView.icon_static_url)) {
+        paramView = new asxh(this.jdField_a_of_type_Acwp.jdField_a_of_type_AndroidContentContext, paramView.icon_static_url);
+      }
+      for (;;)
+      {
+        localImageView.setImageDrawable(paramView);
+        localRelativeLayout.setBackgroundDrawable(this.jdField_a_of_type_Acwp.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getDrawable(2130840139));
+        return paramViewGroup;
+        paramInt = aswz.a(this.jdField_a_of_type_Acwp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Acwp.jdField_a_of_type_JavaLangString, paramView.type, paramView.level);
+        if (paramInt != 0) {
+          paramView = new asxh(this.jdField_a_of_type_Acwp.jdField_a_of_type_AndroidContentContext, paramInt);
+        } else {
+          paramView = null;
+        }
+      }
+    }
   }
 }
 

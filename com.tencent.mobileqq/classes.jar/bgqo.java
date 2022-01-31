@@ -1,54 +1,129 @@
-import BOSSStrategyCenter.tAdvDesc;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bgqo
-  extends ahac
 {
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g;
-  public String h;
+  private final HashSet<WeakReference<bgqp>> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private final ConcurrentHashMap<Integer, HashSet<WeakReference<bgqp>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public bgqo(tAdvDesc paramtAdvDesc)
+  public void a(int paramInt, Object paramObject, Object... paramVarArgs)
   {
-    super(paramtAdvDesc);
+    Object localObject1 = new ArrayList();
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    {
+      HashSet localHashSet = (HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+      if (localHashSet != null) {
+        ((ArrayList)localObject1).addAll(localHashSet);
+      }
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+    {
+      ((ArrayList)localObject1).addAll(this.jdField_a_of_type_JavaUtilHashSet);
+      localObject1 = ((ArrayList)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        ??? = (bgqp)((WeakReference)((Iterator)localObject1).next()).get();
+        if (??? != null)
+        {
+          ((bgqp)???).a(paramInt, paramObject, paramVarArgs);
+          continue;
+          paramObject = finally;
+          throw paramObject;
+        }
+      }
+    }
   }
   
-  protected void a()
+  public void a(bgqp parambgqp)
   {
-    super.a();
-    if ((this.a == null) || (TextUtils.isEmpty(this.a.res_data)))
-    {
-      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
+    if (parambgqp == null) {
       return;
     }
-    String str = this.a.res_data;
-    try
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator;
+    Object localObject2;
+    Object localObject3;
+    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
     {
-      JSONObject localJSONObject = new JSONObject(str);
-      this.jdField_d_of_type_Int = localJSONObject.optInt("enableCountdown");
-      this.jdField_e_of_type_Int = localJSONObject.optInt("countdownMinute");
-      this.jdField_f_of_type_Int = localJSONObject.optInt("countdownSecond");
-      this.c = localJSONObject.optString("topText");
-      this.jdField_d_of_type_JavaLangString = localJSONObject.optString("bottomText");
-      this.jdField_e_of_type_JavaLangString = localJSONObject.optString("textColor");
-      this.jdField_f_of_type_JavaLangString = localJSONObject.optString("coutdownBgColor");
-      this.g = localJSONObject.optString("coutdownTextColor");
-      this.h = localJSONObject.optString("buttonTitle");
+      localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = (WeakReference)localIterator.next();
+        localObject3 = (bgqp)((WeakReference)localObject2).get();
+        if ((localObject3 == null) || (parambgqp == localObject3)) {
+          localArrayList.add(localObject2);
+        }
+      }
+    }
+    this.jdField_a_of_type_JavaUtilHashSet.removeAll(localArrayList);
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      {
+        localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        int i = ((Integer)localIterator.next()).intValue();
+        localObject2 = (HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
+        localArrayList.clear();
+        localObject3 = ((HashSet)localObject2).iterator();
+        if (((Iterator)localObject3).hasNext())
+        {
+          WeakReference localWeakReference = (WeakReference)((Iterator)localObject3).next();
+          bgqp localbgqp = (bgqp)localWeakReference.get();
+          if ((localbgqp != null) && (parambgqp != localbgqp)) {
+            continue;
+          }
+          localArrayList.add(localWeakReference);
+        }
+      }
+      ((HashSet)localObject2).removeAll(localArrayList);
+    }
+  }
+  
+  public void a(bgqp parambgqp, int... arg2)
+  {
+    if (parambgqp == null) {
       return;
     }
-    catch (Exception localException)
+    a(parambgqp);
+    parambgqp = new WeakReference(parambgqp);
+    if ((??? == null) || (???.length == 0)) {
+      synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+      {
+        this.jdField_a_of_type_JavaUtilHashSet.add(parambgqp);
+        return;
+      }
+    }
+    for (;;)
     {
-      localException.printStackTrace();
-      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
-      bgbr.a().a(2741, this.a.task_id, 102, "CountDownBanner json parseError exception = " + localException.getMessage() + " json string = " + str);
+      int i;
+      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      {
+        int j = ???.length;
+        i = 0;
+        if (i < j)
+        {
+          int k = ???[i];
+          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(k)))
+          {
+            ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(k))).add(parambgqp);
+          }
+          else
+          {
+            HashSet localHashSet = new HashSet();
+            localHashSet.add(parambgqp);
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(k), localHashSet);
+          }
+        }
+      }
+      return;
+      i += 1;
     }
   }
 }

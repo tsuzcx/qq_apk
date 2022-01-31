@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import ajed;
+import ajsf;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -11,19 +11,19 @@ import android.os.Message;
 import android.os.ResultReceiver;
 import android.text.ClipboardManager;
 import android.text.TextUtils;
-import axdv;
-import axdy;
-import axdz;
-import axfb;
-import axff;
-import axfs;
-import axip;
-import axit;
-import axix;
-import baic;
-import bbmy;
-import bbsh;
-import beez;
+import aydx;
+import ayea;
+import ayeb;
+import ayfe;
+import ayfi;
+import ayfv;
+import ayit;
+import ayix;
+import ayjb;
+import bbjj;
+import bcpw;
+import bcwh;
+import bfmt;
 import com.tencent.mobileqq.activity.DirectForwardActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -37,22 +37,22 @@ import java.util.HashMap;
 import java.util.Map;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import vvp;
+import wim;
 
 public class TeamWorkTransparentShareActivity
   extends BaseActivity
-  implements Handler.Callback, axit
+  implements Handler.Callback, ayix
 {
   public int a;
   public long a;
   private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
-  private axdv jdField_a_of_type_Axdv;
-  private axfb jdField_a_of_type_Axfb;
-  private axip jdField_a_of_type_Axip;
-  public bbsh a;
+  private aydx jdField_a_of_type_Aydx;
+  private ayfe jdField_a_of_type_Ayfe;
+  private ayit jdField_a_of_type_Ayit;
+  public bcwh a;
   public String a;
-  private ArrayList<axdy> jdField_a_of_type_JavaUtilArrayList;
-  Map<String, axdy> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private ArrayList<ayea> jdField_a_of_type_JavaUtilArrayList;
+  Map<String, ayea> jdField_a_of_type_JavaUtilMap = new HashMap();
   MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private boolean jdField_a_of_type_Boolean;
   public int b;
@@ -72,37 +72,37 @@ public class TeamWorkTransparentShareActivity
   public TeamWorkTransparentShareActivity()
   {
     this.jdField_e_of_type_Int = -1;
-    this.jdField_b_of_type_MqqOsMqqHandler = new beez(Looper.getMainLooper(), this, true);
+    this.jdField_b_of_type_MqqOsMqqHandler = new bfmt(Looper.getMainLooper(), this, true);
   }
   
   private void b()
   {
     this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler();
     this.app.setHandler(getClass(), this.jdField_b_of_type_MqqOsMqqHandler);
-    if (this.jdField_a_of_type_Axip == null) {
-      this.jdField_a_of_type_Axip = new axip(this, this.app);
+    if (this.jdField_a_of_type_Ayit == null) {
+      this.jdField_a_of_type_Ayit = new ayit(this, this.app);
     }
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
       {
-        this.jdField_e_of_type_JavaLangString = getString(2131654265);
+        this.jdField_e_of_type_JavaLangString = getString(2131720159);
         if (this.jdField_b_of_type_Int == 2) {
-          this.jdField_e_of_type_JavaLangString = getString(2131654266);
+          this.jdField_e_of_type_JavaLangString = getString(2131720160);
         }
       }
       String str;
       if (TextUtils.isEmpty(this.f))
       {
         this.f = "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png";
-        str = axff.a();
+        str = ayfi.a();
         if (!TextUtils.isEmpty(str)) {
           this.f = str;
         }
         if (this.jdField_b_of_type_Int == 2)
         {
           this.f = "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png";
-          str = axff.b();
+          str = ayfi.b();
           if (!TextUtils.isEmpty(str)) {
             this.f = str;
           }
@@ -111,29 +111,29 @@ public class TeamWorkTransparentShareActivity
       if (TextUtils.isEmpty(this.g))
       {
         this.g = "https://pub.idqqimg.com/pc/misc/files/20180410/1fce078ca2434b18bfec613961d526ff.png";
-        str = axff.c();
+        str = ayfi.c();
         if (!TextUtils.isEmpty(str)) {
           this.g = str;
         }
         if (this.jdField_b_of_type_Int == 2)
         {
           this.g = "https://pub.idqqimg.com/pc/misc/files/20180410/5349bc325950481ebde04c38208d9028.png";
-          str = axff.d();
+          str = ayfi.d();
           if (!TextUtils.isEmpty(str)) {
             this.g = str;
           }
         }
       }
-      this.jdField_a_of_type_Axip.a(this.jdField_a_of_type_JavaLangString, this.h, this.jdField_e_of_type_JavaLangString, "", this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Ayit.a(this.jdField_a_of_type_JavaLangString, this.h, this.jdField_e_of_type_JavaLangString, "", this.jdField_b_of_type_Int);
       if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Axip.a(false);
+        this.jdField_a_of_type_Ayit.a(false);
       }
       for (;;)
       {
-        this.jdField_a_of_type_Axip.a(this);
-        this.jdField_a_of_type_Axip.a();
+        this.jdField_a_of_type_Ayit.a(this);
+        this.jdField_a_of_type_Ayit.a();
         return;
-        this.jdField_a_of_type_Axip.a(true);
+        this.jdField_a_of_type_Ayit.a(true);
       }
     }
     finish();
@@ -142,10 +142,10 @@ public class TeamWorkTransparentShareActivity
   private void c()
   {
     Intent localIntent = getIntent();
-    this.h = localIntent.getStringExtra(axdz.jdField_a_of_type_JavaLangString);
-    this.jdField_e_of_type_JavaLangString = localIntent.getStringExtra(axdz.jdField_b_of_type_JavaLangString);
-    this.f = localIntent.getStringExtra(axdz.jdField_c_of_type_JavaLangString);
-    this.g = localIntent.getStringExtra(axdz.jdField_d_of_type_JavaLangString);
+    this.h = localIntent.getStringExtra(ayeb.jdField_a_of_type_JavaLangString);
+    this.jdField_e_of_type_JavaLangString = localIntent.getStringExtra(ayeb.jdField_b_of_type_JavaLangString);
+    this.f = localIntent.getStringExtra(ayeb.jdField_c_of_type_JavaLangString);
+    this.g = localIntent.getStringExtra(ayeb.jdField_d_of_type_JavaLangString);
     this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("team_work_pad_url");
     this.jdField_a_of_type_Int = localIntent.getIntExtra("team_work_pad_list_type", -1);
     this.jdField_b_of_type_Int = localIntent.getIntExtra("team_work_pad_type", -1);
@@ -159,7 +159,7 @@ public class TeamWorkTransparentShareActivity
     this.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("team_is_my_document", false);
     this.i = localIntent.getStringExtra("from_activity");
     this.jdField_e_of_type_Int = localIntent.getIntExtra("select_type", -1);
-    this.jdField_a_of_type_Axdv = ((axdv)getIntent().getParcelableExtra("team_work_auth_info"));
+    this.jdField_a_of_type_Aydx = ((aydx)getIntent().getParcelableExtra("team_work_auth_info"));
     if ((this.jdField_d_of_type_Int == -1) && (QLog.isColorLevel())) {
       QLog.i("TeamWorkTransparentShareActivity", 2, "padInfo policy cannot be -1");
     }
@@ -176,15 +176,15 @@ public class TeamWorkTransparentShareActivity
   
   public void a(int paramInt)
   {
-    String str1 = axfs.c(this.jdField_a_of_type_JavaLangString);
+    String str1 = ayfv.c(this.jdField_a_of_type_JavaLangString);
     Object localObject4;
     String str3;
     Object localObject5;
     Object localObject3;
     if (paramInt == 2)
     {
-      localObject4 = axfs.jdField_d_of_type_JavaLangString;
-      str3 = getString(2131654267);
+      localObject4 = ayfv.jdField_d_of_type_JavaLangString;
+      str3 = getString(2131720161);
       if (TextUtils.isEmpty(this.f))
       {
         localObject2 = null;
@@ -194,7 +194,7 @@ public class TeamWorkTransparentShareActivity
         }
         localObject3 = str1;
         label59:
-        baic.a(this, 1001, 95, "web_share", "", (String)localObject2, (String)localObject5, (String)localObject3, getString(2131630985, new Object[] { this.h }), str1, "web", null, null, null, "web", null, null, null, (String)localObject4, str3, "", null, -1, "https://docs.qq.com/desktop/m/index.html?_wv=2097154", -1L);
+        bbjj.a(this, 1001, 95, "web_share", "", (String)localObject2, (String)localObject5, (String)localObject3, getString(2131696697, new Object[] { this.h }), str1, "web", null, null, null, "web", null, null, null, (String)localObject4, str3, "", null, -1, "https://docs.qq.com/desktop/m/index.html?_wv=2097154", -1L);
         finish();
       }
     }
@@ -216,11 +216,11 @@ public class TeamWorkTransparentShareActivity
         int j = -1;
         if (!WXShareHelper.a().a())
         {
-          j = 2131655008;
+          j = 2131720906;
           if (j == -1) {
             break label206;
           }
-          vvp.a(0, j);
+          wim.a(0, j);
         }
         do
         {
@@ -231,36 +231,36 @@ public class TeamWorkTransparentShareActivity
             if (WXShareHelper.a().b()) {
               break;
             }
-            j = 2131655009;
+            j = 2131720907;
             break;
             localObject3 = String.valueOf(System.currentTimeMillis());
-            if (this.jdField_a_of_type_Bbsh == null) {
-              this.jdField_a_of_type_Bbsh = new axix(this, (String)localObject3);
+            if (this.jdField_a_of_type_Bcwh == null) {
+              this.jdField_a_of_type_Bcwh = new ayjb(this, (String)localObject3);
             }
             if (paramInt != 9) {
               break label382;
             }
-            WXShareHelper.a().a(this.jdField_a_of_type_Bbsh);
+            WXShareHelper.a().a(this.jdField_a_of_type_Bcwh);
             localObject2 = "pages/detail/detail?url=" + str1;
-            if (axfs.d(this.g))
+            if (ayfv.d(this.g))
             {
-              localObject3 = axfs.a(this.g);
+              localObject3 = ayfv.a(this.g);
               if (localObject3 != null) {
                 WXShareHelper.a().a((String)localObject2, "gh_252c5f06840b", (Bitmap)localObject3, this.h, this.jdField_e_of_type_JavaLangString, str1);
               } else {
-                WXShareHelper.a().a((String)localObject2, "gh_252c5f06840b", axfs.a(this.jdField_b_of_type_Int), this.h, this.jdField_e_of_type_JavaLangString, str1);
+                WXShareHelper.a().a((String)localObject2, "gh_252c5f06840b", ayfv.a(this.jdField_b_of_type_Int), this.h, this.jdField_e_of_type_JavaLangString, str1);
               }
             }
             else
             {
-              WXShareHelper.a().a((String)localObject2, "gh_252c5f06840b", axfs.a(this.jdField_b_of_type_Int), this.h, this.jdField_e_of_type_JavaLangString, str1);
+              WXShareHelper.a().a((String)localObject2, "gh_252c5f06840b", ayfv.a(this.jdField_b_of_type_Int), this.h, this.jdField_e_of_type_JavaLangString, str1);
             }
           }
         } while (paramInt != 10);
-        WXShareHelper.a().a(this.jdField_a_of_type_Bbsh);
+        WXShareHelper.a().a(this.jdField_a_of_type_Bcwh);
         localObject4 = WXShareHelper.a();
         str3 = this.h;
-        localObject5 = axfs.a(this.jdField_b_of_type_Int);
+        localObject5 = ayfv.a(this.jdField_b_of_type_Int);
         if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
         {
           localObject2 = str1;
@@ -304,11 +304,11 @@ public class TeamWorkTransparentShareActivity
           }
           catch (Exception localException)
           {
-            bbmy.a(getApplicationContext(), 1, 2131653584, 0).b(getResources().getDimensionPixelSize(2131167766));
+            bcpw.a(getApplicationContext(), 1, 2131719415, 0).b(getResources().getDimensionPixelSize(2131298865));
             QLog.e("TeamWorkTransparentShareActivity", 1, " ==== share to weibo exp: " + localException.toString());
             continue;
           }
-          bbmy.a(getApplicationContext(), 1, 2131653584, 0).b(getResources().getDimensionPixelSize(2131167766));
+          bcpw.a(getApplicationContext(), 1, 2131719415, 0).b(getResources().getDimensionPixelSize(2131298865));
         }
       }
       if (paramInt == 11)
@@ -345,7 +345,7 @@ public class TeamWorkTransparentShareActivity
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("我分享了腾讯文档 “").append(this.h).append("”，点击查看：\n").append(localObject1).append(" ");
         ((ClipboardManager)localObject2).setText((CharSequence)localObject3);
-        vvp.a(2, 2131625733);
+        wim.a(2, 2131691309);
         finish();
         return;
       }
@@ -353,7 +353,7 @@ public class TeamWorkTransparentShareActivity
     Object localObject2 = new Intent(this, DirectForwardActivity.class);
     ((Intent)localObject2).putExtra("isFromShare", true);
     ((Intent)localObject2).putExtra("isFromTeamWork", true);
-    ((Intent)localObject2).putExtra("toUin", ajed.z);
+    ((Intent)localObject2).putExtra("toUin", ajsf.z);
     ((Intent)localObject2).putExtra("uinType", 6000);
     ((Intent)localObject2).putExtra("forward_type", -1);
     ((Intent)localObject2).putExtra("forward_text", localObject1);
@@ -365,7 +365,7 @@ public class TeamWorkTransparentShareActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131496904);
+    setContentView(2131562504);
     c();
     b();
     return true;
@@ -374,11 +374,11 @@ public class TeamWorkTransparentShareActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Axip.c();
-    if (this.jdField_a_of_type_Bbsh != null)
+    this.jdField_a_of_type_Ayit.c();
+    if (this.jdField_a_of_type_Bcwh != null)
     {
-      WXShareHelper.a().b(this.jdField_a_of_type_Bbsh);
-      this.jdField_a_of_type_Bbsh = null;
+      WXShareHelper.a().b(this.jdField_a_of_type_Bcwh);
+      this.jdField_a_of_type_Bcwh = null;
     }
     if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
       this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
@@ -387,13 +387,13 @@ public class TeamWorkTransparentShareActivity
   
   public void doOnStart()
   {
-    if ((this.jdField_a_of_type_Axdv != null) && (this.jdField_a_of_type_Axdv.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Axfb = ((axfb)this.app.a(122));
+    if ((this.jdField_a_of_type_Aydx != null) && (this.jdField_a_of_type_Aydx.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_Ayfe = ((ayfe)this.app.a(122));
     }
-    while (this.jdField_a_of_type_Axip == null) {
+    while (this.jdField_a_of_type_Ayit == null) {
       return;
     }
-    this.jdField_a_of_type_Axip.b();
+    this.jdField_a_of_type_Ayit.b();
   }
   
   public void finish()

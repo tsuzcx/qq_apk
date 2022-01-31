@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.5dip" android:layout_marginRight="15.5dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="20.0dip" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/mdg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="9.0dip" android:lines="1" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/gi4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.5dip">
+        <TextView android:textSize="12.0dip" android:textColor="#ff404040" android:id="@id/k9e" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <View android:layout_gravity="center_vertical" android:background="#ffd6d6d6" android:layout_width="0.5dip" android:layout_height="8.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="7.5dip" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff404040" android:id="@id/jfd" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <TextView android:textSize="12.0dip" android:textColor="#ff404040" android:id="@id/k73" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lineSpacingMultiplier="1.2" />
+</LinearLayout>

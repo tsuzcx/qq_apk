@@ -1,70 +1,68 @@
 package com.tencent.mobileqq.mini.widget.media;
 
-import android.os.Bundle;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.mini.widget.media.live.TXLivePushListenerReflect.ITXLivePushListener;
+import com.tencent.mobileqq.mini.widget.media.live.TXLivePushListenerReflect.OnBGMNotify;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class MiniAppLivePusher$2
-  implements TXLivePushListenerReflect.ITXLivePushListener
+  implements TXLivePushListenerReflect.OnBGMNotify
 {
   MiniAppLivePusher$2(MiniAppLivePusher paramMiniAppLivePusher) {}
   
-  public void onNetStatus(Bundle paramBundle)
+  public void onBGMComplete(int paramInt)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    try
-    {
-      localJSONObject1.put("info", localJSONObject2);
-      localJSONObject2.put("CPU_USAGE", paramBundle.getString("CPU_USAGE"));
-      localJSONObject2.put("VIDEO_WIDTH", paramBundle.getInt("VIDEO_WIDTH"));
-      localJSONObject2.put("VIDEO_HEIGHT", paramBundle.getInt("VIDEO_HEIGHT"));
-      localJSONObject2.put("NET_SPEED", paramBundle.getInt("NET_SPEED"));
-      localJSONObject2.put("NET_JITTER", paramBundle.getInt("NET_JITTER"));
-      localJSONObject2.put("VIDEO_FPS", paramBundle.getInt("VIDEO_FPS"));
-      localJSONObject2.put("VIDEO_GOP", paramBundle.getInt("VIDEO_GOP"));
-      localJSONObject2.put("AUDIO_BITRATE", paramBundle.getInt("AUDIO_BITRATE"));
-      localJSONObject2.put("AUDIO_CACHE", paramBundle.getInt("AUDIO_CACHE"));
-      localJSONObject2.put("VIDEO_CACHE", paramBundle.getInt("VIDEO_CACHE"));
-      localJSONObject2.put("V_SUM_CACHE_SIZE", paramBundle.getInt("V_SUM_CACHE_SIZE"));
-      localJSONObject2.put("V_DEC_CACHE_SIZE", paramBundle.getInt("V_DEC_CACHE_SIZE"));
-      localJSONObject2.put("AV_RECV_INTERVAL", paramBundle.getInt("AV_RECV_INTERVAL"));
-      localJSONObject2.put("AV_PLAY_INTERVAL", paramBundle.getInt("AV_PLAY_INTERVAL"));
-      localJSONObject2.put("AUDIO_CACHE_THRESHOLD", String.format("%.1f", new Object[] { Float.valueOf(paramBundle.getFloat("AUDIO_CACHE_THRESHOLD")) }));
-      localJSONObject2.put("VIDEO_BITRATE", paramBundle.getInt("VIDEO_BITRATE"));
-      localJSONObject2.put("AUDIO_DROP", paramBundle.getInt("AUDIO_DROP"));
-      localJSONObject2.put("VIDEO_DROP", paramBundle.getInt("VIDEO_DROP"));
-      localJSONObject2.put("SERVER_IP", paramBundle.getString("SERVER_IP"));
-      localJSONObject2.put("AUDIO_PLAY_INFO", paramBundle.getString("AUDIO_PLAY_INFO"));
-      this.this$0.serviceWebview.evaluateSubcribeJS("onLivePusherNetStatus", localJSONObject1.toString(), this.this$0.webviewId);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLivePusher", 2, "onBGMComplete, errCode:" + paramInt);
     }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
-  }
-  
-  public void onPushEvent(int paramInt, Bundle paramBundle)
-  {
-    QLog.e("MiniAppLivePusher", 1, "onPushEvent i:" + paramInt);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("livePusherId", this.this$0.livePusherId);
       localJSONObject.put("errCode", paramInt);
-      if (paramBundle != null) {
-        localJSONObject.put("errMsg", paramBundle.getString("EVT_MSG"));
-      }
-      this.this$0.serviceWebview.evaluateSubcribeJS("onLivePusherEvent", localJSONObject.toString(), this.this$0.webviewId);
+      this.this$0.serviceWebview.evaluateSubcribeJS("onLivePusherBGMComplete", localJSONObject.toString(), this.this$0.webviewId);
       return;
     }
-    catch (JSONException paramBundle)
+    catch (JSONException localJSONException)
     {
-      paramBundle.printStackTrace();
+      localJSONException.printStackTrace();
+    }
+  }
+  
+  public void onBGMProgress(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("MiniAppLivePusher", 1, "onBGMProgress progress:" + paramLong1 + ",duration:" + paramLong2);
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("livePusherId", this.this$0.livePusherId);
+      localJSONObject.put("progress", paramLong1);
+      localJSONObject.put("duration", paramLong2);
+      this.this$0.serviceWebview.evaluateSubcribeJS("onLivePusherBGMProgress", localJSONObject.toString(), this.this$0.webviewId);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+  }
+  
+  public void onBGMStart()
+  {
+    QLog.e("MiniAppLivePusher", 1, "onBGMStart");
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("livePusherId", this.this$0.livePusherId);
+      this.this$0.serviceWebview.evaluateSubcribeJS("onLivePusherBGMStart", localJSONObject.toString(), this.this$0.webviewId);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
     }
   }
 }

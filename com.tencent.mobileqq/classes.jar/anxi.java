@@ -1,38 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.IPSiteModel.Comic;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class anxi
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  anxi(anxh paramanxh, String paramString, aome paramaome, Bundle paramBundle) {}
+  anxi(anxf paramanxf, IPSiteModel.Comic paramComic, String paramString1, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    String str2 = "http://" + this.jdField_a_of_type_Anxh.a.h + ":" + this.jdField_a_of_type_Anxh.a.i + "/ftn_compress_getfile/rkey=" + this.jdField_a_of_type_Anxh.a.f + "&filetype=" + this.jdField_a_of_type_Anxh.a.b + "&path=";
-    if (QLog.isColorLevel()) {
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, str2);
-    }
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString;
-    try
-    {
-      String str1 = URLEncoder.encode(this.jdField_a_of_type_JavaLangString, "utf8");
-      paramDialogInterface = str1;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      for (;;)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-      }
-    }
-    paramDialogInterface = str2 + paramDialogInterface + "&";
-    this.jdField_a_of_type_Aome.b(paramDialogInterface, this.jdField_a_of_type_AndroidOsBundle);
-    apci.a("0X80052CE");
+    paramView = new Intent(this.jdField_a_of_type_Anxf.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("hide_operation_bar", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Anxf.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Comic.jumpUrl, -1L, paramView, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Anxf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_comicclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

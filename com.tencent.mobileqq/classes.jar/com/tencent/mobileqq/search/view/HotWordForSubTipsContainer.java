@@ -6,9 +6,9 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
-import avmr;
-import bacc;
-import bajq;
+import awmk;
+import bbdh;
+import bbkx;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer;
 import java.util.Iterator;
 import java.util.List;
@@ -36,14 +36,14 @@ public class HotWordForSubTipsContainer
     Button localButton = new Button(getContext());
     if (paramInt1 == 0)
     {
-      localButton.setBackgroundResource(2130848240);
+      localButton.setBackgroundResource(2130848470);
       GradientDrawable localGradientDrawable = (GradientDrawable)((android.graphics.drawable.DrawableContainer.DrawableContainerState)((android.graphics.drawable.StateListDrawable)localButton.getBackground()).getConstantState()).getChildren()[1];
       if (paramInt3 == 0) {
         break label172;
       }
       label68:
       localGradientDrawable.setStroke(1, paramInt3);
-      localButton.setPadding(bajq.a(12.0F), bajq.a(3.0F), bajq.a(12.0F), bajq.a(4.0F));
+      localButton.setPadding(bbkx.a(12.0F), bbkx.a(3.0F), bbkx.a(12.0F), bbkx.a(4.0F));
       localButton.setText(paramString1);
       localButton.setTextSize(14.0F);
       localButton.setSingleLine();
@@ -73,12 +73,12 @@ public class HotWordForSubTipsContainer
   
   public int a(int paramInt)
   {
-    int i6 = (int)bacc.a(getContext(), 12.0F);
-    int i1 = (int)bacc.a(getContext(), 10.0F);
-    int i7 = (int)bacc.a(getContext(), 10.0F);
-    int i8 = (int)bacc.a(getContext(), 10.0F);
-    int m = (int)bacc.a(getContext(), 15.0F);
-    int i9 = (int)bacc.a(getContext(), 15.0F);
+    int i6 = (int)bbdh.a(getContext(), 12.0F);
+    int i1 = (int)bbdh.a(getContext(), 10.0F);
+    int i7 = (int)bbdh.a(getContext(), 10.0F);
+    int i8 = (int)bbdh.a(getContext(), 10.0F);
+    int m = (int)bbdh.a(getContext(), 15.0F);
+    int i9 = (int)bbdh.a(getContext(), 15.0F);
     int i10 = getChildCount();
     int n = 0;
     int k = m;
@@ -124,22 +124,22 @@ public class HotWordForSubTipsContainer
     }
   }
   
-  public void a(List<avmr> paramList, int paramInt1, int paramInt2, int paramInt3)
+  public void a(List<awmk> paramList, int paramInt1, int paramInt2, int paramInt3)
   {
     removeAllViews();
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      a(((avmr)paramList.next()).b, paramInt1, paramInt2, paramInt3, null);
+      a(((awmk)paramList.next()).b, paramInt1, paramInt2, paramInt3, null);
     }
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i2 = (int)bacc.a(getContext(), 12.0F);
-    int k = (int)bacc.a(getContext(), 10.0F);
-    int i3 = (int)bacc.a(getContext(), 10.0F);
-    paramInt4 = (int)bacc.a(getContext(), 15.0F);
-    int i4 = (int)bacc.a(getContext(), 15.0F);
+    int i2 = (int)bbdh.a(getContext(), 12.0F);
+    int k = (int)bbdh.a(getContext(), 10.0F);
+    int i3 = (int)bbdh.a(getContext(), 10.0F);
+    paramInt4 = (int)bbdh.a(getContext(), 15.0F);
+    int i4 = (int)bbdh.a(getContext(), 15.0F);
     int i5 = getChildCount();
     int i = 0;
     int j = 1;

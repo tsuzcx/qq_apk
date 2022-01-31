@@ -1,39 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class afjd
-  implements ancn
+  implements View.OnClickListener
 {
-  afjd(afiu paramafiu, int paramInt) {}
+  afjd(afjb paramafjb, afjh paramafjh) {}
   
-  public void a(float paramFloat, List<Integer> paramList)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "upLoadEmotions progress=" + paramFloat + ", addEmotionsResults=" + paramList + ", isTimeOut=" + afiu.b(this.jdField_a_of_type_Afiu));
-    }
-    if (!afiu.b(this.jdField_a_of_type_Afiu))
+    if (this.jdField_a_of_type_Afjb.a != null)
     {
-      afiu.b(this.jdField_a_of_type_Afiu, paramList);
-      afiu.a(this.jdField_a_of_type_Afiu, this.jdField_a_of_type_Int, paramFloat);
-    }
-  }
-  
-  public void a(List<Integer> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "onUploadFinish , addEmotionsResults=" + paramList + ", isTimeOut=" + afiu.b(this.jdField_a_of_type_Afiu));
-    }
-    if (!afiu.b(this.jdField_a_of_type_Afiu))
-    {
-      afiu.a(this.jdField_a_of_type_Afiu).removeMessages(11);
-      afiu.a(this.jdField_a_of_type_Afiu, this.jdField_a_of_type_Int, paramList);
+      int i = this.jdField_a_of_type_Afjh.getAdapterPosition();
+      this.jdField_a_of_type_Afjb.a.a(paramView, this.jdField_a_of_type_Afjh, i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afjd
  * JD-Core Version:    0.7.0.1
  */

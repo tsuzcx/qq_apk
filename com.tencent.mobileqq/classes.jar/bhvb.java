@@ -1,14 +1,13 @@
-import android.support.annotation.RestrictTo;
+import android.graphics.drawable.BitmapDrawable;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
-public abstract interface bhvb
-  extends bhvf
+public class bhvb
 {
-  public abstract void a(bhvg parambhvg, bhvd parambhvd);
+  public BitmapDrawable a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhvb
  * JD-Core Version:    0.7.0.1
  */

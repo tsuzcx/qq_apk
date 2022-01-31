@@ -28,7 +28,7 @@ class QRDisplayActivity$10
     //   31: ifne +631 -> 662
     //   34: new 39	java/io/File
     //   37: dup
-    //   38: getstatic 45	ajed:ba	Ljava/lang/String;
+    //   38: getstatic 45	ajsf:bc	Ljava/lang/String;
     //   41: invokespecial 48	java/io/File:<init>	(Ljava/lang/String;)V
     //   44: astore 5
     //   46: aload 5
@@ -43,7 +43,7 @@ class QRDisplayActivity$10
     //   68: new 68	java/lang/StringBuilder
     //   71: dup
     //   72: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   75: getstatic 45	ajed:ba	Ljava/lang/String;
+    //   75: getstatic 45	ajsf:bc	Ljava/lang/String;
     //   78: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   81: ldc 75
     //   83: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -69,7 +69,7 @@ class QRDisplayActivity$10
     //   128: new 68	java/lang/StringBuilder
     //   131: dup
     //   132: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   135: getstatic 45	ajed:ba	Ljava/lang/String;
+    //   135: getstatic 45	ajsf:bc	Ljava/lang/String;
     //   138: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: ldc 75
     //   143: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -163,7 +163,7 @@ class QRDisplayActivity$10
     //   319: iconst_2
     //   320: aload 5
     //   322: aastore
-    //   323: invokestatic 145	azzx:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
+    //   323: invokestatic 145	bbbb:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
     //   326: aload_0
     //   327: getfield 12	com/tencent/biz/qrcode/activity/QRDisplayActivity$10:this$0	Lcom/tencent/biz/qrcode/activity/QRDisplayActivity;
     //   330: new 147	com/tencent/biz/qrcode/activity/QRDisplayActivity$10$1

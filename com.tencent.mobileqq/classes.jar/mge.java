@@ -1,21 +1,33 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.av.utils.VideoMsgTools;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class mge
+  implements mrx
 {
-  public static String a()
+  public mge(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  
+  private void b()
   {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().aa) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().ab)) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("DingdongSoundUtil", 2, "[sound_early] getFilesDir is null");
-      }
-      return "";
+      VideoMsgTools.a(this.a, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().g), bool, false);
+      return;
     }
-    return localFile.getParent() + "/dingdong/sound_early/";
+  }
+  
+  public void a() {}
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "MultiVideoMembersClickListener , Uin = " + paramLong + " , videoScr = " + paramInt1 + " , isNeedRequest " + paramBoolean + " , positon = " + paramInt2);
+    }
+    if ((paramInt2 == 7) && (paramBoolean)) {
+      b();
+    }
   }
 }
 

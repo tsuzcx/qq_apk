@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.data;
 
-import atmo;
+import aukm;
 
 public class ApolloWhiteFaceID
-  extends atmo
+  extends aukm
 {
   public int action2d;
   public int action3d;

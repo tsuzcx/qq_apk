@@ -1,31 +1,67 @@
-import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import java.io.File;
+import java.net.HttpURLConnection;
 
-class anvo
-  implements Animation.AnimationListener
+public class anvo
 {
-  anvo(anvn paramanvn) {}
+  public final int a;
+  public final File a;
+  public final String a;
+  public HttpURLConnection a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f = "";
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public anvo(String paramString, File paramFile, int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.removeView(this.a.jdField_a_of_type_AndroidViewView);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getWindow().setBackgroundDrawable(null);
-    Face2FaceAddFriendActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.n = true;
-    if (anwf.a >= anwf.b)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(anwf.a, anwf.b);
-      return;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(HttpDownloadUtil.jdField_a_of_type_JavaLangString))) {
+      this.jdField_b_of_type_Boolean = true;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(anwf.a, 0L);
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + ".tmp";
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a()
+  {
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_e_of_type_Int = 0;
+    this.h = null;
+    this.i = null;
+    this.g = null;
+    this.k = null;
+    this.j = null;
+    this.d = null;
+    this.jdField_a_of_type_Boolean = false;
+  }
 }
 
 

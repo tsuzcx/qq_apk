@@ -1,31 +1,59 @@
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class anbe
 {
-  public static int a = 300;
+  private int jdField_a_of_type_Int = 1;
+  private boolean jdField_a_of_type_Boolean;
   
-  public static String a(String paramString)
+  public static anbe a(ampi[] paramArrayOfampi)
   {
-    if (baip.a(paramString)) {
-      return "";
+    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0)) {
+      return null;
     }
-    paramString = paramString.split("_");
-    if (paramString.length > 2) {
-      return paramString[1];
+    anbe localanbe = new anbe();
+    try
+    {
+      a(localanbe, new JSONObject(paramArrayOfampi[0].a));
+      return localanbe;
     }
-    return "";
+    catch (JSONException paramArrayOfampi)
+    {
+      paramArrayOfampi.printStackTrace();
+    }
+    return localanbe;
   }
   
-  public static String a(String paramString1, String paramString2)
+  public static void a(anbe paramanbe, JSONObject paramJSONObject)
   {
-    if ((baip.a(paramString1)) || (baip.a(paramString2))) {
-      return "";
-    }
-    paramString2 = bcdt.a(paramString2);
-    return ajed.bg + paramString2 + paramString1;
+    if ((paramJSONObject == null) || (paramanbe == null)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TencentDocAIOShowGuideDialogBean", 2, "handleTencentDocUniversalEntry call after " + paramJSONObject.toString());
+      }
+      if (paramJSONObject.has("aioGuiderDialogEnable")) {
+        paramanbe.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("aioGuiderDialogEnable");
+      }
+    } while (!paramJSONObject.has("dialogShowMaxTimes"));
+    paramanbe.jdField_a_of_type_Int = paramJSONObject.optInt("dialogShowMaxTimes");
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anbe
  * JD-Core Version:    0.7.0.1
  */

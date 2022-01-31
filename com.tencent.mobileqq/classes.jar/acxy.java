@@ -1,37 +1,32 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import java.util.HashMap;
+import java.util.Map;
 
-class acxy
-  implements View.OnClickListener
+final class acxy
+  implements bgwm
 {
-  acxy(acxx paramacxx, String paramString1, String paramString2) {}
+  acxy(int paramInt1, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, int paramInt2, String paramString, Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String... paramVarArgs)
   {
-    try
+    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null))
     {
-      if (!this.jdField_a_of_type_JavaLangString.equals("0"))
-      {
-        acxx.a(this.jdField_a_of_type_Acxx).a.getText().clear();
-        acxx.a(this.jdField_a_of_type_Acxx).c(acxx.a(this.jdField_a_of_type_Acxx));
-      }
-      int i = acxx.a(this.jdField_a_of_type_Acxx).a.getSelectionStart();
-      paramView = acxx.a(this.jdField_a_of_type_Acxx).a.getText();
-      this.jdField_a_of_type_Acxx.a = true;
-      paramView.insert(i, this.b);
-      this.jdField_a_of_type_Acxx.a = false;
-      acxx.a(this.jdField_a_of_type_Acxx).a.setSelection(paramView.length());
-      this.jdField_a_of_type_Acxx.a();
+      QLog.i("PlusPanelUtils", 2, "error get pskey...");
       return;
     }
-    catch (Throwable paramView)
-    {
-      QLog.e("QWalletAIOLifeCycleHelper", 1, "onclick  PasswdRedBagTips throw an exception: " + paramView);
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("pskey_type", "27");
+    localHashMap.put("pskey", paramVarArgs[0]);
+    localHashMap.put("recv_group_type", this.jdField_a_of_type_Int + "");
+    localHashMap.put("recv_group_id", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    localHashMap.put("send_nickname", bbcl.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
+    localHashMap.put("send_uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+    localHashMap.put("group_count", this.b + "");
+    paramVarArgs = bgwk.a(this.jdField_a_of_type_JavaLangString, localHashMap, true);
+    ahix.a(this.jdField_a_of_type_AndroidAppActivity, paramVarArgs);
   }
 }
 

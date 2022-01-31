@@ -1,28 +1,16 @@
-import android.os.Message;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
 
 public class tgr
-  implements sig
+  extends syq
 {
-  public tgr(FollowCaptureLauncher paramFollowCaptureLauncher) {}
-  
-  public void a(String paramString, int paramInt)
+  public tgr(qqstory_service.RspMsgTabNodeWatched paramRspMsgTabNodeWatched)
   {
-    Message localMessage = Message.obtain();
-    localMessage.obj = paramString;
-    localMessage.what = 65543;
-    FollowCaptureLauncher.a(this.a).sendMessage(localMessage);
+    super(paramRspMsgTabNodeWatched.result);
   }
   
-  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
+  public String toString()
   {
-    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
+    return "MsgTabNodeWatchedResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 

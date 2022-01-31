@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.out.activity;
 
 import android.view.View;
-import behi;
+import bfpc;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 
 class MapActivity$1
-  implements behi
+  implements bfpc
 {
   MapActivity$1(MapActivity paramMapActivity) {}
   

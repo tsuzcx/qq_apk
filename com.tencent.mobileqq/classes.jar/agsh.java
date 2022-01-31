@@ -1,27 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.widget.AdapterView;
 
-public class agsh
-  implements DialogInterface.OnClickListener
+abstract interface agsh
 {
-  public agsh(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  public abstract Intent a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    DrawRedpacketPannelPreviewFragment.a(this.a, false);
-    DrawRedpacketPannelPreviewFragment.a(this.a).a(false, false);
-    DrawRedpacketPannelPreviewFragment.a(this.a);
-    DrawRedpacketPannelPreviewFragment.c(this.a).setTextColor(Color.parseColor("#878B99"));
-    DrawRedpacketPannelPreviewFragment.c(this.a).setText("......");
-  }
+  public abstract void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  
+  public abstract void b(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  
+  public abstract void c(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agsh
  * JD-Core Version:    0.7.0.1
  */

@@ -2,19 +2,19 @@ package com.tencent.biz.qqstory.playmode.util;
 
 import android.widget.FrameLayout;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import tfx;
-import vly;
-import vma;
-import vmc;
+import tst;
+import vyu;
+import vyw;
+import vyy;
 
 public final class PlayModePollViewUtils$1
   implements Runnable
 {
-  public PlayModePollViewUtils$1(vmc paramvmc, vma paramvma, FrameLayout paramFrameLayout, vly paramvly, int paramInt, StoryVideoItem paramStoryVideoItem) {}
+  public PlayModePollViewUtils$1(vyy paramvyy, vyw paramvyw, FrameLayout paramFrameLayout, vyu paramvyu, int paramInt, StoryVideoItem paramStoryVideoItem) {}
   
   public void run()
   {
-    tfx.a(this.jdField_a_of_type_Vmc, this.jdField_a_of_type_Vma, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Vly, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, true);
+    tst.a(this.jdField_a_of_type_Vyy, this.jdField_a_of_type_Vyw, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Vyu, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, true);
   }
 }
 

@@ -1,15 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoAdExposureManager.PosListener.1;
+import java.lang.ref.WeakReference;
 
-public class qkt
-  extends AnimatorListenerAdapter
+public final class qkt
+  implements pao
 {
-  public qkt(HorizontalRefreshLayout paramHorizontalRefreshLayout) {}
+  private WeakReference<qks> a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public qkt(qks paramqks)
   {
-    HorizontalRefreshLayout.a(this.a, 0.0F);
+    this.a = new WeakReference(paramqks);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.a != null)
+    {
+      qks localqks = (qks)this.a.get();
+      if ((localqks != null) && (qks.a(localqks) != null)) {
+        qks.a(localqks).post(new VideoAdExposureManager.PosListener.1(this, localqks, paramInt));
+      }
+    }
   }
 }
 

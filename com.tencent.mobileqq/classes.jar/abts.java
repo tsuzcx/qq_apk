@@ -1,32 +1,10 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.TextView;
 
 public class abts
-  implements begw
+  extends aimv
 {
-  public abts(SubAccountUgActivity paramSubAccountUgActivity, begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.cancel();
-      do
-      {
-        return;
-      } while (!this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b());
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a(2131654031);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b = true;
-      paramView = (axar)this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app.getManager(28);
-      if (paramView != null) {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a);
-      }
-    }
-  }
+  public abtm a;
+  public TextView a;
 }
 
 

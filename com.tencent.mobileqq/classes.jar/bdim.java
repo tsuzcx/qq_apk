@@ -1,30 +1,51 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.database.Cursor;
+import android.os.Parcel;
 
-class bdim
-  implements View.OnClickListener
+final class bdim
+  implements bdjv<bdil>
 {
-  bdim(bdik parambdik, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdik, 0);
-    }
+    return 1;
+  }
+  
+  public bdil a(Cursor paramCursor)
+  {
     try
     {
-      if (this.jdField_a_of_type_Bdik.isShowing()) {
-        this.jdField_a_of_type_Bdik.dismiss();
-      }
-      return;
+      String str1 = paramCursor.getString(paramCursor.getColumnIndex("urlKey"));
+      String str2 = paramCursor.getString(paramCursor.getColumnIndex("ETag"));
+      long l1 = paramCursor.getLong(paramCursor.getColumnIndex("lastModify"));
+      long l2 = paramCursor.getLong(paramCursor.getColumnIndex("cacheTime"));
+      Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("response"));
+      paramCursor = Parcel.obtain();
+      paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
+      paramCursor.setDataPosition(0);
+      localObject = paramCursor.readString();
+      paramCursor.recycle();
+      paramCursor = new bdil(str1, str2, l1, l2, (String)localObject);
+      return paramCursor;
     }
-    catch (Exception paramView) {}
+    catch (Exception paramCursor)
+    {
+      paramCursor.printStackTrace();
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public bdjw[] a()
+  {
+    return new bdjw[] { new bdjw("urlKey", "TEXT"), new bdjw("ETag", "TEXT"), new bdjw("lastModify", "INTEGER"), new bdjw("cacheTime", "INTEGER"), new bdjw("response", "BLOB") };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdim
  * JD-Core Version:    0.7.0.1
  */

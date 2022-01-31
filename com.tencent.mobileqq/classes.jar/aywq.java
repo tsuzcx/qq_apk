@@ -1,30 +1,20 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import java.net.URL;
 
-public class aywq
-  implements View.OnFocusChangeListener
+class aywq
+  implements ayww
 {
-  public aywq(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  aywq(aywp paramaywp) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public Bitmap a(URL paramURL)
   {
-    paramView = this.a;
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.jdField_a_of_type_Boolean = bool;
-      if (paramBoolean) {
-        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewInputMethodGuard.a());
-      }
-      return;
-    }
+    return ShortVideoUtils.a(null, paramURL.getPath());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aywq
  * JD-Core Version:    0.7.0.1
  */

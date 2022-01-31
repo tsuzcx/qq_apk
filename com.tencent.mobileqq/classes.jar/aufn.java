@@ -1,11 +1,20 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+
 class aufn
-  extends ajhi
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aufn(aufl paramaufl) {}
+  aufn(aufh paramaufh) {}
   
-  protected void b(boolean paramBoolean, String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.b(paramString, 3000);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (aufh.a(this.a) != null)
+    {
+      aufh.a(this.a).setAlpha(f);
+      aufh.a(this.a).setTranslationY((1.0F - f) * actn.a(25.0F, aufh.a(this.a)));
+    }
   }
 }
 

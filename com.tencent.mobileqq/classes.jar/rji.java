@@ -1,10 +1,14 @@
-public abstract interface rji
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+
+public class rji
+  implements rju
 {
-  public abstract void a();
+  public rji(FastWebActivity paramFastWebActivity) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public void a()
+  {
+    FastWebActivity.q(this.a);
+  }
 }
 
 

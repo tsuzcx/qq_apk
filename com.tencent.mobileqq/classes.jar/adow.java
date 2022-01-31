@@ -1,72 +1,19 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.CircleBubbleImageView;
-import java.net.URL;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 class adow
-  extends CircleBubbleImageView
+  implements bcjb
 {
-  URLDrawable a;
-  URLDrawable b;
+  adow(ador paramador) {}
   
-  public adow(Context paramContext)
+  public void a(View paramView)
   {
-    super(paramContext);
-    a(true);
-  }
-  
-  public void a(URLDrawable paramURLDrawable)
-  {
-    if (this.a != null) {
-      this.a.setURLDrawableListener(null);
-    }
-    paramURLDrawable.setURLDrawableListener(this);
-    this.a = paramURLDrawable;
-    paramURLDrawable.startDownload();
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (this.b == null) || (!this.b.getURL().getPath().equals(paramString));
-  }
-  
-  public void b(URLDrawable paramURLDrawable)
-  {
-    setImageDrawable(paramURLDrawable);
-    if (this.b != paramURLDrawable) {
-      this.b = paramURLDrawable;
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable == this.a)
-    {
-      b(paramURLDrawable);
+    actn.n = true;
+    if (this.a.a()) {
       return;
     }
-    super.onLoadFialed(paramURLDrawable, paramThrowable);
-  }
-  
-  @TargetApi(11)
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable == this.a) {
-      b(paramURLDrawable);
-    }
-    super.onLoadSuccessed(paramURLDrawable);
-  }
-  
-  public void setImageDrawable(Drawable paramDrawable)
-  {
-    super.setImageDrawable(paramDrawable);
-    if (this.a != null)
-    {
-      this.a.setURLDrawableListener(null);
-      this.a = null;
-    }
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

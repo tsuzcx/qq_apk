@@ -7,14 +7,11 @@ import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 class VideoJsPlugin$7
   implements Runnable
 {
-  VideoJsPlugin$7(VideoJsPlugin paramVideoJsPlugin, AppBrandRuntime paramAppBrandRuntime) {}
+  VideoJsPlugin$7(VideoJsPlugin paramVideoJsPlugin, AppBrandRuntime paramAppBrandRuntime, String paramString) {}
   
   public void run()
   {
-    AbsAppBrandPage localAbsAppBrandPage = this.val$runtime.pageContainer.getCurrentPage();
-    if (localAbsAppBrandPage.hasToastView()) {
-      localAbsAppBrandPage.hideToastView();
-    }
+    this.val$runtime.pageContainer.getCurrentPage().showToastView(1, "loading", null, this.val$title, -1, false);
   }
 }
 

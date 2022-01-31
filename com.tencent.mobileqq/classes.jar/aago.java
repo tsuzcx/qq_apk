@@ -1,27 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AddFriendActivity;
 
 public class aago
-  implements Animation.AnimationListener
+  implements affn
 {
-  public aago(ChatFragment paramChatFragment) {}
+  public aago(AddFriendActivity paramAddFriendActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
   {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationEnd");
-    this.a.b(1);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationRepeat");
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationStart");
+    if (AddFriendActivity.a(this.a))
+    {
+      AddFriendActivity.a(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
+      return;
+    }
+    AddFriendActivity.b(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
   }
 }
 

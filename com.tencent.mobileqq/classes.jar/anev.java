@@ -1,31 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.4;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 
-public class anev
-  implements aimd
+class anev
+  implements TextWatcher
 {
-  public anev(MessengerService.IncomingHandler.4 param4) {}
+  anev(aneu paramaneu) {}
   
-  public void a()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result", 0);
-    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public void a(int paramInt)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result", paramInt);
-    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+    if (!TextUtils.isEmpty(paramCharSequence)) {
+      this.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anev
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,34 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
-
 public class artb
-  implements arud
 {
-  public artb(MultiAIOFragment paramMultiAIOFragment) {}
-  
-  public void a()
+  public static String a(int paramInt)
   {
-    MultiAIOFragment.a(this.a).a();
-  }
-  
-  public void a(int paramInt)
-  {
-    MultiAIOFragment.a(this.a).setViewPagerBusy(false);
-    MultiAIOFragment.a(this.a).setScrollState(2);
-    MultiAIOFragment.a(this.a).fling(-paramInt);
-  }
-  
-  public boolean a()
-  {
-    return MultiAIOFragment.a(this.a).a();
+    switch (paramInt)
+    {
+    default: 
+      return " Unknow playState ";
+    case 0: 
+      return " IDLE ";
+    case 1: 
+      return " BUFFERING ";
+    case 2: 
+      return " PLAYING ";
+    case 3: 
+      return " PAUSE ";
+    case 4: 
+      return " STOP ";
+    case 5: 
+      return " ERROR_INTERNAL ";
+    case 7: 
+      return " ERROR_FOCUS ";
+    case 6: 
+      return " NETWORK_INTERRUPT ";
+    }
+    return " COMPLETION ";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     artb
  * JD-Core Version:    0.7.0.1
  */

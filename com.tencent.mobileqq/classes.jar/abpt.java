@@ -1,43 +1,32 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import mqq.app.MobileQQ;
 
 public class abpt
-  extends RecyclerView.Adapter<abpu>
+  implements CompoundButton.OnCheckedChangeListener
 {
-  abpr jdField_a_of_type_Abpr;
+  public abpt(NotifyPushSettingActivity paramNotifyPushSettingActivity, ajtk paramajtk) {}
   
-  public abpt(ScoreQAVFragment paramScoreQAVFragment) {}
-  
-  public abpu a(ViewGroup paramViewGroup, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return new abpu(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2131494006, paramViewGroup, false), this.jdField_a_of_type_Abpr);
-  }
-  
-  public void a(abpr paramabpr)
-  {
-    this.jdField_a_of_type_Abpr = paramabpr;
-  }
-  
-  public void a(abpu paramabpu, int paramInt)
-  {
-    paramabpu.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt))
+    if ((bbev.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getApplicationContext())) && (NotifyPushSettingActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity)))
     {
-      paramabpu.a.setSelected(true);
+      this.jdField_a_of_type_Ajtk.e(paramBoolean);
       return;
     }
-    paramabpu.a.setSelected(false);
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
+    NotifyPushSettingActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, false);
+    paramCompoundButton = NotifyPushSettingActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
+    if (!NotifyPushSettingActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).a()) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramCompoundButton.setChecked(paramBoolean);
+      NotifyPushSettingActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, true);
+      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getApplication().getString(2131694971), 0).b(5);
+      return;
+    }
   }
 }
 

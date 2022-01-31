@@ -1,34 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class aiut
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface aiut
 {
-  public aiut(ApolloCardWindow paramApolloCardWindow, TextView paramTextView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow)) {
-        break label42;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(aiuq.c(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-    }
-    label42:
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetTextView == ApolloCardWindow.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow))
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(aiuq.b(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-        return;
-      }
-    } while (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.c(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(aiuq.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-  }
+  public abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay);
 }
 
 

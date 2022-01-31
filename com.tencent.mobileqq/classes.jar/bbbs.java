@@ -1,27 +1,28 @@
-import java.util.Hashtable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime;
 
-public class bbbs
-  extends bbas
+final class bbbs
+  implements asgp
 {
-  Hashtable<String, Boolean> a = new Hashtable();
-  
-  public void a(String paramString, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    this.a.put(paramString, Boolean.valueOf(paramBoolean));
-  }
-  
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    paramString = (Boolean)this.a.get(paramString);
-    if (paramString == null) {
-      return paramBoolean;
+    switch (paramInt)
+    {
     }
-    return paramString.booleanValue();
+    AppRuntime localAppRuntime;
+    do
+    {
+      return;
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(localAppRuntime instanceof QQAppInterface));
+    MediaPlayerManager.a((QQAppInterface)localAppRuntime).a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbbs
  * JD-Core Version:    0.7.0.1
  */

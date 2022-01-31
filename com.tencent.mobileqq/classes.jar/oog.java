@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.magic.models.Status;
+import com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet.ConfigResult;
 
 public final class oog
-  implements Parcelable.Creator<Status>
+  implements Parcelable.Creator<AladdinConfigServlet.ConfigResult>
 {
-  public Status a(Parcel paramParcel)
+  public AladdinConfigServlet.ConfigResult a(Parcel paramParcel)
   {
-    return new Status(paramParcel, null);
+    return new AladdinConfigServlet.ConfigResult(paramParcel);
   }
   
-  public Status[] a(int paramInt)
+  public AladdinConfigServlet.ConfigResult[] a(int paramInt)
   {
-    return new Status[paramInt];
+    return new AladdinConfigServlet.ConfigResult[paramInt];
   }
 }
 

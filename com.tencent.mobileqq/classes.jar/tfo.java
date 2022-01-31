@@ -1,8 +1,15 @@
+import android.os.Handler;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.1.1;
+
 public class tfo
+  implements tkm
 {
-  public static boolean a(int paramInt)
+  tfo(tfn paramtfn) {}
+  
+  public void a(tkn paramtkn)
   {
-    return paramInt > 1000;
+    veg.a("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "Update UserItems %s", paramtkn);
+    this.a.a.post(new MsgTabNodeListLoader.1.1(this, paramtkn));
   }
 }
 

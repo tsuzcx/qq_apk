@@ -1,23 +1,17 @@
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
-import java.lang.ref.WeakReference;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
 
-class adbz
-  implements adbt
+public class adbz
+  implements View.OnTouchListener
 {
-  adbz(adbx paramadbx, MessageForArkFlashChat paramMessageForArkFlashChat) {}
+  public adbz(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AutoStartProgressBar localAutoStartProgressBar = (AutoStartProgressBar)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.mSendingProgress.get();
-    if ((localAutoStartProgressBar.getTag() == this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat) && (localAutoStartProgressBar != null))
-    {
-      localAutoStartProgressBar.b();
-      localAutoStartProgressBar.setVisibility(8);
-    }
+    return true;
   }
-  
-  public void b() {}
 }
 
 

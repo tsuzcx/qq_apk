@@ -1,12 +1,10 @@
-import com.tencent.biz.troopplugin.PluginJumpManager;
+import android.widget.ImageView;
 
-public class won
+class won
 {
-  public String a;
-  public String b;
-  public String c;
+  public ImageView a;
   
-  public won(PluginJumpManager paramPluginJumpManager) {}
+  private won(wol paramwol) {}
 }
 
 

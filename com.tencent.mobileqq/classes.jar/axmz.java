@@ -1,9 +1,23 @@
-import android.os.Bundle;
-
-public final class axmz
+public class axmz
 {
-  public final Bundle a = new Bundle();
-  public Object a;
+  private axmy a = new axmy();
+  
+  public axmy a()
+  {
+    return this.a;
+  }
+  
+  public axmz a(String paramString)
+  {
+    this.a.a = paramString;
+    return this;
+  }
+  
+  public axmz a(boolean paramBoolean)
+  {
+    this.a.b = paramBoolean;
+    return this;
+  }
 }
 
 

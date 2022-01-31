@@ -6,11 +6,13 @@ import com.google.android.filament.Entity;
 
 public class FilamentAsset
 {
+  private Animator mAnimator;
   private long mNativeObject;
   
   FilamentAsset(long paramLong)
   {
     this.mNativeObject = paramLong;
+    this.mAnimator = null;
   }
   
   private static native long nGetAnimator(long paramLong);
@@ -25,6 +27,10 @@ public class FilamentAsset
   
   private static native String nGetName(long paramLong, int paramInt);
   
+  private static native int nGetResourceUriCount(long paramLong);
+  
+  private static native void nGetResourceUris(long paramLong, String[] paramArrayOfString);
+  
   private static native int nGetRoot(long paramLong);
   
   private static native void nSetMorphBuffer(long paramLong, String paramString);
@@ -38,9 +44,14 @@ public class FilamentAsset
     this.mNativeObject = 0L;
   }
   
+  @NonNull
   public Animator getAnimator()
   {
-    return new Animator(nGetAnimator(this.mNativeObject));
+    if (this.mAnimator != null) {
+      return this.mAnimator;
+    }
+    this.mAnimator = new Animator(nGetAnimator(getNativeObject()));
+    return this.mAnimator;
   }
   
   @NonNull
@@ -51,6 +62,7 @@ public class FilamentAsset
     return new Box(arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2], arrayOfFloat[3], arrayOfFloat[4], arrayOfFloat[5]);
   }
   
+  @NonNull
   @Entity
   public int[] getEntities()
   {
@@ -73,6 +85,14 @@ public class FilamentAsset
   long getNativeObject()
   {
     return this.mNativeObject;
+  }
+  
+  @NonNull
+  public String[] getResourceUris()
+  {
+    String[] arrayOfString = new String[nGetResourceUriCount(this.mNativeObject)];
+    nGetResourceUris(this.mNativeObject, arrayOfString);
+    return arrayOfString;
   }
   
   @Entity

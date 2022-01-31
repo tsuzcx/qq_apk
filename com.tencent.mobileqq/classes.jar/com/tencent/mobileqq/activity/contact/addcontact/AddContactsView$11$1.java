@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ajjy;
+import ajyc;
 import com.tencent.mobileqq.widget.FormMutiWithAvatarItem;
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ class AddContactsView$11$1
         localFormMutiWithAvatarItem.setOverloading();
       }
       if (this.jdField_a_of_type_Int != 0) {
-        localFormMutiWithAvatarItem.setPeopleText(this.jdField_a_of_type_Int + ajjy.a(2131634029));
+        localFormMutiWithAvatarItem.setPeopleText(this.jdField_a_of_type_Int + ajyc.a(2131699817));
       }
     } while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0));
     String[] arrayOfString = new String[this.jdField_a_of_type_JavaUtilArrayList.size()];

@@ -1,224 +1,186 @@
-import android.database.sqlite.SQLiteException;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.fts.FTSTroop;
-import com.tencent.mobileqq.data.fts.TroopIndex;
-import com.tencent.mobileqq.fts.FTSDatabase;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.text.method.MovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.widgets.TriangleView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.widget.XListView;
 import java.util.List;
-import java.util.Map;
 
 public class apre
+  extends apqn
 {
-  public static int a(FTSDatabase paramFTSDatabase, String paramString)
+  private TriangleView jdField_a_of_type_ComTencentBizWidgetsTriangleView;
+  private XListView jdField_a_of_type_ComTencentWidgetXListView;
+  private xbi jdField_a_of_type_Xbi;
+  private View c;
+  private View jdField_d_of_type_AndroidViewView;
+  private TextView jdField_d_of_type_AndroidWidgetTextView;
+  private View jdField_e_of_type_AndroidViewView;
+  private TextView jdField_e_of_type_AndroidWidgetTextView;
+  private View jdField_f_of_type_AndroidViewView;
+  private TextView jdField_f_of_type_AndroidWidgetTextView;
+  private View jdField_g_of_type_AndroidViewView;
+  private TextView jdField_g_of_type_AndroidWidgetTextView;
+  private TextView h;
+  private TextView i;
+  
+  public apre(Activity paramActivity)
   {
-    paramString = "SELECT cursor FROM " + paramString + " WHERE id=1;";
-    try
-    {
-      int i = c(paramFTSDatabase, paramString);
-      return i;
-    }
-    catch (SQLiteException paramFTSDatabase) {}
-    return -1;
+    super(paramActivity);
   }
   
-  public static int a(FTSDatabase paramFTSDatabase, ArrayList<FTSEntity> paramArrayList, String paramString, int paramInt)
+  public View a()
   {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty()))
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a()
+  {
+    QLog.i("FileBrowserViewBase", 4, "FileBrowserViewBase: ZipFileViewer initFileView");
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: entities == null");
-      }
-      return -1;
-    }
-    long l1 = System.currentTimeMillis();
-    int k = a(paramFTSDatabase, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.fts.FTSDatabaseHelper", 2, "FTSDatabaseHelper.queryCursorTable = " + k + " cost:" + (System.currentTimeMillis() - l1));
-    }
-    if (k == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: syncCursor == -1");
-      }
-      return -1;
-    }
-    if (!paramFTSDatabase.b())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: beginTransaction failed");
-      }
-      return -1;
-    }
-    int i = 0;
-    long l3 = 0L;
-    long l2 = 0L;
-    l1 = 0L;
-    boolean bool1 = true;
-    int j = 0;
-    long l4;
-    TroopIndex localTroopIndex;
-    if (j < paramArrayList.size())
-    {
-      l4 = System.currentTimeMillis();
-      FTSTroop localFTSTroop = (FTSTroop)paramArrayList.get(j);
-      localTroopIndex = new TroopIndex(localFTSTroop.mType, localFTSTroop.mTroopUin, localFTSTroop.mMemberUin, localFTSTroop.mMemberName, localFTSTroop.mMemberCard, localFTSTroop.mMemberNick);
-      localTroopIndex.preWrite();
-      switch (localFTSTroop.mOpt)
-      {
-      default: 
-        l4 = l3;
-        l3 = l1;
-        l1 = l4;
-        label268:
-        if (bool1) {
-          break;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.fts.FTSDatabaseHelper", 2, String.format("batchTransToDatabase: insert count = %d, insertCost=%d, delCost=%d, updateCost=%d", new Object[] { Integer.valueOf(i), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l1) }));
-      }
-      i = paramInt;
-      if (paramInt == -1) {
-        i = paramArrayList.size();
-      }
-      label400:
-      long l5;
-      if ((bool1) && (paramArrayList.size() != 0) && (i != 0))
-      {
-        bool1 = paramFTSDatabase.a("UPDATE " + paramString + " SET cursor=" + (k + i) + " WHERE id=1;");
-        boolean bool2 = bool1;
-        if (bool1)
-        {
-          l1 = System.currentTimeMillis();
-          bool1 = paramFTSDatabase.c();
-          l1 = System.currentTimeMillis() - l1;
-          if (!QLog.isColorLevel())
-          {
-            bool2 = bool1;
-            if (l1 <= 30000L) {}
-          }
-          else
-          {
-            QLog.d("Q.fts.FTSDatabaseHelper", 1, "commitTransaction cost=" + l1 + " success=" + bool1);
-            bool2 = bool1;
-          }
-        }
-        if (bool2)
-        {
-          return k + i;
-          bool1 = paramFTSDatabase.a(localTroopIndex);
-          l5 = System.currentTimeMillis();
-          i += 1;
-          l4 = l1 + (l5 - l4);
-          l1 = l3;
-          l3 = l4;
-          break label268;
-          bool1 = a(paramFTSDatabase, localTroopIndex);
-          l5 = System.currentTimeMillis();
-          l2 += l5 - l4;
-          l4 = l1;
-          l1 = l3;
-          l3 = l4;
-          break label268;
-          bool1 = a(paramFTSDatabase, localTroopIndex);
-          if (!bool1) {
-            break label650;
-          }
-          bool1 = paramFTSDatabase.a(localTroopIndex);
-        }
-      }
-      label650:
-      for (;;)
-      {
-        l5 = System.currentTimeMillis();
-        l4 = l3 + (l5 - l4);
-        l3 = l1;
-        l1 = l4;
-        break label268;
-        j += 1;
-        l4 = l3;
-        l3 = l1;
-        l1 = l4;
-        break;
-        return k;
-        break label400;
-      }
-      l4 = l1;
-      l1 = l3;
-      l3 = l4;
+      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560508, this.jdField_a_of_type_AndroidViewViewGroup, false);
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366251));
+      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370988));
+      this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378687));
+      this.i = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378701));
+      this.jdField_g_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379596);
+      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379600);
+      this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131371915);
+      this.jdField_e_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_f_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366330);
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378421));
+      this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131371912);
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131379598));
+      this.jdField_a_of_type_ComTencentBizWidgetsTriangleView = ((TriangleView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377690));
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378141));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371063));
+      this.jdField_a_of_type_Xbi = new xbi(null, this.jdField_a_of_type_AndroidAppActivity);
     }
   }
   
-  public static boolean a(FTSDatabase paramFTSDatabase, TroopIndex paramTroopIndex)
+  public void a(CharSequence paramCharSequence, MovementMethod paramMovementMethod)
   {
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    localStringBuilder.append("DELETE FROM " + paramTroopIndex.getTableName() + " WHERE " + paramTroopIndex.getTableName() + " MATCH 'type:");
-    localStringBuilder.append(paramTroopIndex.type);
-    localStringBuilder.append(" ext1:");
-    localStringBuilder.append(paramTroopIndex.ext1);
-    if (!TextUtils.isEmpty(paramTroopIndex.ext6))
-    {
-      localStringBuilder.append(" ext6:");
-      localStringBuilder.append(paramTroopIndex.ext6);
-    }
-    localStringBuilder.append("';");
-    return paramFTSDatabase.a(localStringBuilder.toString());
+    this.jdField_e_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_f_of_type_AndroidViewView.setVisibility(8);
+    b(false);
+    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_d_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_d_of_type_AndroidWidgetTextView.setMovementMethod(paramMovementMethod);
+    this.jdField_d_of_type_AndroidWidgetTextView.setText(paramCharSequence);
   }
   
-  public static boolean a(FTSDatabase paramFTSDatabase, String paramString)
+  public void a(String paramString1, String paramString2)
   {
-    paramFTSDatabase = paramFTSDatabase.a("SELECT name FROM sqlite_master WHERE type='table' AND name='" + paramString + "'", new int[] { 3 });
-    return (paramFTSDatabase != null) && (paramFTSDatabase.size() > 0);
+    this.h.setText(paramString1);
+    this.i.setText(paramString2);
   }
   
-  public static int b(FTSDatabase paramFTSDatabase, String paramString)
+  public void a(List<apqg> paramList, String paramString1, long paramLong1, long paramLong2, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, String paramString6, short paramShort)
   {
-    paramString = "SELECT COUNT(*) FROM " + paramString;
-    try
-    {
-      int i = c(paramFTSDatabase, paramString);
-      return i;
-    }
-    catch (SQLiteException paramFTSDatabase) {}
-    return -1;
+    this.jdField_a_of_type_Xbi.a(paramList);
+    this.jdField_a_of_type_Xbi.e = "/";
+    this.jdField_a_of_type_Xbi.jdField_b_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Xbi.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Xbi.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Xbi.c = paramString3;
+    this.jdField_a_of_type_Xbi.d = paramString4;
+    this.jdField_a_of_type_Xbi.jdField_a_of_type_JavaLangString = paramString5;
+    this.jdField_a_of_type_Xbi.a(paramBoolean, paramString6, paramShort);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Xbi);
+    this.jdField_e_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_c_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
   }
   
-  public static boolean b(FTSDatabase paramFTSDatabase, String paramString)
+  public void a(boolean paramBoolean, View.OnClickListener paramOnClickListener)
   {
-    if (!paramFTSDatabase.b()) {}
-    do
+    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131371063);
+    if (paramBoolean) {}
+    for (int j = 0;; j = 8)
     {
-      return false;
-      paramFTSDatabase.a("CREATE TABLE IF NOT EXISTS " + paramString + "(id INTEGER PRIMARY KEY AUTOINCREMENT, cursor INTEGER);");
-      paramFTSDatabase.a("INSERT INTO " + paramString + "(cursor) VALUES(0);");
-    } while (!paramFTSDatabase.c());
-    return true;
+      localView.setVisibility(j);
+      localView.setOnClickListener(paramOnClickListener);
+      return;
+    }
   }
   
-  public static int c(FTSDatabase paramFTSDatabase, String paramString)
+  public void a(boolean paramBoolean, String paramString, View.OnClickListener paramOnClickListener)
   {
-    paramFTSDatabase = paramFTSDatabase.a(paramString, new int[] { 1 });
-    if ((paramFTSDatabase == null) || (paramFTSDatabase.size() != 1)) {
-      throw new SQLiteException("No result or result size != 1");
-    }
-    paramFTSDatabase = (Map)paramFTSDatabase.get(0);
-    if ((paramFTSDatabase == null) || (paramFTSDatabase.size() != 1)) {
-      throw new SQLiteException("No column or column count != 1");
-    }
-    try
+    TextView localTextView = this.jdField_f_of_type_AndroidWidgetTextView;
+    if (paramBoolean) {}
+    for (int j = 0;; j = 8)
     {
-      int i = ((Long)paramFTSDatabase.values().toArray()[0]).intValue();
-      return i;
+      localTextView.setVisibility(j);
+      this.jdField_f_of_type_AndroidWidgetTextView.setText(paramString);
+      this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+      return;
     }
-    catch (Exception paramFTSDatabase)
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_Xbi != null) {
+      this.jdField_a_of_type_Xbi.notifyDataSetChanged();
+    }
+  }
+  
+  public void c()
+  {
+    this.jdField_c_of_type_AndroidViewView.setPadding(0, this.jdField_c_of_type_AndroidViewView.getPaddingTop(), 0, 0);
+    this.jdField_f_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_e_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    TextView localTextView;
+    if (this.jdField_f_of_type_AndroidWidgetTextView != null)
     {
-      throw new SQLiteException("No column or column count != 1");
+      localTextView = this.jdField_f_of_type_AndroidWidgetTextView;
+      if (!paramBoolean) {
+        break label24;
+      }
     }
+    label24:
+    for (int j = 0;; j = 8)
+    {
+      localTextView.setVisibility(j);
+      return;
+    }
+  }
+  
+  public void d(String paramString)
+  {
+    this.jdField_g_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838514);
+      this.jdField_a_of_type_ComTencentBizWidgetsTriangleView.setColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167087));
+      this.jdField_f_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166224));
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#ffffffff"));
+    this.jdField_a_of_type_ComTencentBizWidgetsTriangleView.setColor(Color.parseColor("#ffffffff"));
+    this.jdField_g_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#fff7f7f8"));
+    this.jdField_f_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166223));
   }
 }
 

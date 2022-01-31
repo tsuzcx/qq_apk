@@ -1,22 +1,20 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
 
-class ankx
-  implements anka
+public class ankx
+  implements View.OnClickListener
 {
-  ankx(ankw paramankw) {}
+  public ankx(DataReportSettingFragment paramDataReportSettingFragment) {}
   
-  public void a(List<anjy> paramList)
+  public void onClick(View paramView)
   {
-    if (paramList != null)
-    {
-      this.a.a(paramList);
-      this.a.notifyDataSetChanged();
-    }
+    bbcv.a(this.a.getActivity(), 0, 2131559420, ajyc.a(2131702769), "", ajyc.a(2131702764), ajyc.a(2131702770), new anky(this), new ankz(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ankx
  * JD-Core Version:    0.7.0.1
  */

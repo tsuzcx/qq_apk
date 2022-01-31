@@ -1,55 +1,57 @@
-import VACDReport.ReportReq;
-import VACDReport.ReportRsp;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0x438.oidb_0x438.RedBagInfo;
 
 public class agwa
-  extends MSFServlet
+  extends Handler
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  agwa(agvz paramagvz, Looper paramLooper)
   {
-    if ((paramFromServiceMsg == null) || (paramIntent == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("VACDReport", 2, "onReceive request or response is null");
-      }
-    }
-    while (!"QQWalletPayReportSvc.vacdReportProxy".equals(paramFromServiceMsg.getServiceCmd())) {
-      return;
-    }
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (ReportRsp localReportRsp = (ReportRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new ReportRsp());; localReportRsp = null)
-    {
-      Bundle localBundle = new Bundle();
-      if (localReportRsp != null) {
-        localBundle.putSerializable("rsp", localReportRsp);
-      }
-      localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
-      notifyObserver(paramIntent, 1, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-    }
+    super(paramLooper);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramIntent.getExtras().getInt("cmd_type"))
+    int i = paramMessage.what;
+    boolean bool;
+    if (paramMessage.arg1 == 1)
     {
-    default: 
-      return;
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("PasswdRedBagManager", 2, "receive passwdredbags from group or disgroup, isSuccess = " + bool);
+      }
+      if (bool) {
+        break label56;
+      }
     }
-    try
+    for (;;)
     {
-      paramPacket.addRequestPacket("req", (ReportReq)paramIntent.getSerializableExtra("req"));
-      paramPacket.setSSOCommand("QQWalletPayReportSvc.vacdReportProxy");
-      paramPacket.setFuncName("vacdReportProxy");
-      paramPacket.setServantName("MQQ.VACDReportServer.VACDReportObj");
-      paramPacket.setTimeout(15000L);
       return;
+      bool = false;
+      break;
+      label56:
+      if ((i == 1) || (i == 0))
+      {
+        ThreadManager.getFileThreadHandler().post(new PasswdRedBagManager.1.1(this, i));
+        paramMessage = (List)paramMessage.obj;
+        if (paramMessage != null)
+        {
+          paramMessage = paramMessage.iterator();
+          while (paramMessage.hasNext())
+          {
+            oidb_0x438.RedBagInfo localRedBagInfo = (oidb_0x438.RedBagInfo)paramMessage.next();
+            this.a.a(localRedBagInfo);
+          }
+        }
+      }
     }
-    catch (OutOfMemoryError paramIntent) {}
   }
 }
 

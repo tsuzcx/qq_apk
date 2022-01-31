@@ -1,44 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment.ViewHolder.1.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class oee
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+  implements pbj
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  oee(oed paramoed) {}
+  
+  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d("VideoEntranceTypeConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = ocx.a(paramString);
-    Object localObject = paramString.keySet();
-    try
-    {
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str1 = (String)((Iterator)localObject).next();
-        String str2 = (String)paramString.get(str1);
-        if (TextUtils.equals(str1, "readinjoy_video_recommend_entrance_direct")) {
-          bgmq.j(Integer.parseInt(str2));
-        }
-      }
-      return true;
+    if ((paramReadInJoyUserInfo != null) && (this.a.a != null)) {
+      ThreadManager.getUIHandler().post(new ReadInjoyFriendsBiuComponentFragment.ViewHolder.1.1(this));
     }
-    catch (Throwable paramString)
+    if (paramReadInJoyUserInfo != null) {}
+    for (paramReadInJoyUserInfo = paramReadInJoyUserInfo.nick;; paramReadInJoyUserInfo = "null")
     {
-      paramString.printStackTrace();
+      QLog.d("ReadInjoyFriendsBiuComponentFragment", 1, new Object[] { "setComments infoSuccess nick = ", paramReadInJoyUserInfo, "  uin:" + paramString, " mContents:" + this.a.a });
+      return;
     }
   }
   
-  public void onWipeConfig(int paramInt)
+  public void a(String paramString1, String paramString2)
   {
-    super.onWipeConfig(paramInt);
-    bgmq.j(2);
+    QLog.d("ReadInjoyFriendsBiuComponentFragment", 1, "setComments infoFailed. uin:" + paramString1 + " errMsg:" + paramString2);
   }
 }
 

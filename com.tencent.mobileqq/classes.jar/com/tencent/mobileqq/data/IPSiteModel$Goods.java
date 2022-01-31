@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import amsd;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anik;
 
 public class IPSiteModel$Goods
   implements Parcelable
 {
-  public static final Parcelable.Creator<Goods> CREATOR = new amsd();
+  public static final Parcelable.Creator<Goods> CREATOR = new anik();
   public String cover;
   public String goodsTags;
   public String id;

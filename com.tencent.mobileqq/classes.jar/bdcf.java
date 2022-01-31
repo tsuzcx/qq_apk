@@ -1,26 +1,28 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.OpenCardContainer;
+import java.util.List;
 
-public class bdcf
-  implements TextView.OnEditorActionListener
+class bdcf
+  implements View.OnClickListener
 {
-  public bdcf(Login paramLogin) {}
+  bdcf(bdce parambdce, int paramInt) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 6)
-    {
-      this.a.b();
-      return true;
+    if ((bdce.a(this.jdField_a_of_type_Bdce) == null) || (this.jdField_a_of_type_Int >= bdce.a(this.jdField_a_of_type_Bdce).size()) || (this.jdField_a_of_type_Int < 0)) {
+      return;
     }
-    return false;
+    if ((this.jdField_a_of_type_Bdce.a.a != null) && (bdce.a(this.jdField_a_of_type_Bdce).get(this.jdField_a_of_type_Int) != null) && (OpenCardContainer.a(this.jdField_a_of_type_Bdce.a) != null)) {
+      OpenCardContainer.a(this.jdField_a_of_type_Bdce.a).a(((bdch)bdce.a(this.jdField_a_of_type_Bdce).get(this.jdField_a_of_type_Int)).a);
+    }
+    bdce.a(this.jdField_a_of_type_Bdce).remove(bdce.a(this.jdField_a_of_type_Bdce).get(this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_Bdce.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdcf
  * JD-Core Version:    0.7.0.1
  */

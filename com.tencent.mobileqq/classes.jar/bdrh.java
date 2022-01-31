@@ -1,19 +1,17 @@
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-
-class bdrh
-  extends WebViewClient
+public final class bdrh
 {
-  bdrh(bdrg parambdrg) {}
+  public long a;
+  public String a;
+  public boolean a;
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public String toString()
   {
-    bdrg.a(this.a, true);
+    return "MultiUserInfo{mUin=" + this.jdField_a_of_type_Long + ", mOpenId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mMicOn=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdrh
  * JD-Core Version:    0.7.0.1
  */

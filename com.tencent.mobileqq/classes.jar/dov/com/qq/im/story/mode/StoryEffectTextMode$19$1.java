@@ -1,7 +1,7 @@
 package dov.com.qq.im.story.mode;
 
 import android.view.View;
-import bhzq;
+import bjrh;
 
 class StoryEffectTextMode$19$1
   implements Runnable
@@ -10,7 +10,7 @@ class StoryEffectTextMode$19$1
   
   public void run()
   {
-    bhzq.a(this.a.this$0).setBackgroundColor(0);
+    bjrh.a(this.a.this$0).setBackgroundColor(0);
   }
 }
 

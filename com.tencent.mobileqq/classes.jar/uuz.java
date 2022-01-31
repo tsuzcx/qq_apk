@@ -1,20 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 
-class uuz
-  extends SimpleJob<Object>
+public class uuz
+  implements DialogInterface.OnClickListener
 {
-  uuz(uut paramuut, String paramString)
-  {
-    super(paramString);
-  }
+  public uuz(StoryMessageListActivity paramStoryMessageListActivity) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    urq.a("0X80076BC");
-    return null;
+    paramDialogInterface.dismiss();
+    vel.a(this.a.a(), "clk_sure", 0, 0, new String[] { "1", "", "", "" });
   }
 }
 

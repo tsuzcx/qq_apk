@@ -1,18 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
 
 public class qpz
-  extends ohe
+  implements ajtg
 {
-  public qpz(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
+  public qpz(qpy paramqpy) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    ReadInJoyFastWebBottomSocialView.a(this.a, paramBoolean, paramInt, paramString);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
-  {
-    ReadInJoyFastWebBottomSocialView.a(this.a, paramBoolean, paramLong, paramInt, paramString);
+    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {}
+    while (!paramBoolean) {
+      return;
+    }
+    paramObject = (Bundle)paramObject;
+    qpy.a(this.a, (LikeAnimationInfo)paramObject.getParcelable("key_like_animation_info"));
+    bhvh.a();
+    bhvh.a(qpy.a(this.a));
+    qpy.a(this.a, qpy.a(this.a));
   }
 }
 

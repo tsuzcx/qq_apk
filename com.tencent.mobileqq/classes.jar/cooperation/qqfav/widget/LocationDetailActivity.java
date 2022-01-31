@@ -1,7 +1,7 @@
 package cooperation.qqfav.widget;
 
-import alrv;
-import alsd;
+import amgo;
+import amgw;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -15,18 +15,18 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import axkd;
-import befo;
-import bfhn;
-import bfid;
-import bfja;
-import bfjf;
-import bfjg;
-import bfjh;
-import bfji;
-import bfjj;
-import bfjk;
-import bfjl;
+import ayki;
+import bfni;
+import bgpf;
+import bgpv;
+import bgqs;
+import bgqx;
+import bgqy;
+import bgqz;
+import bgra;
+import bgrb;
+import bgrc;
+import bgrd;
 import com.tencent.biz.PoiMapActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.FadeIconImageView;
@@ -35,8 +35,8 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class LocationDetailActivity
   extends PoiMapActivity
 {
-  private alrv jdField_a_of_type_Alrv;
-  public bfja a;
+  private amgo jdField_a_of_type_Amgo;
+  public bgqs a;
   private FadeIconImageView jdField_a_of_type_ComTencentWidgetFadeIconImageView;
   public long b = -1L;
   public ImageView d;
@@ -60,22 +60,22 @@ public class LocationDetailActivity
       return;
     }
     this.f.setVisibility(0);
-    if (befo.e()) {
+    if (bfni.e()) {
       this.f.setAlpha(0.9F);
     }
-    this.f.setText(new axkd(this.u, 3, 22));
+    this.f.setText(new ayki(this.u, 3, 22));
   }
   
   private void C()
   {
-    this.jdField_a_of_type_Alrv = new alrv(this, true, false, true, true, 0);
-    this.jdField_a_of_type_Alrv.a(a());
-    this.jdField_a_of_type_Alrv.a(this);
-    this.jdField_a_of_type_Alrv.a(new bfjj(this));
-    this.jdField_a_of_type_Alrv.a(new bfjk(this));
+    this.jdField_a_of_type_Amgo = new amgo(this, true, false, true, true, 0);
+    this.jdField_a_of_type_Amgo.a(a());
+    this.jdField_a_of_type_Amgo.a(this);
+    this.jdField_a_of_type_Amgo.a(new bgrb(this));
+    this.jdField_a_of_type_Amgo.a(new bgrc(this));
     boolean bool = c();
     if (!bool) {
-      this.jdField_a_of_type_Alrv.g();
+      this.jdField_a_of_type_Amgo.g();
     }
     for (;;)
     {
@@ -83,20 +83,20 @@ public class LocationDetailActivity
         QLog.i("PoiMapActivity", 2, "initColorNoteController: checkShowFileColorNote[" + bool + "]");
       }
       return;
-      this.jdField_a_of_type_Alrv.h();
+      this.jdField_a_of_type_Amgo.h();
     }
   }
   
   public void A()
   {
-    if ((this.jdField_a_of_type_Alrv != null) && (this.jdField_a_of_type_Alrv.c())) {
-      this.jdField_a_of_type_Alrv.f();
+    if ((this.jdField_a_of_type_Amgo != null) && (this.jdField_a_of_type_Amgo.c())) {
+      this.jdField_a_of_type_Amgo.f();
     }
   }
   
-  public alsd a()
+  public amgw a()
   {
-    return new bfjf(this, Long.valueOf(this.b));
+    return new bgqx(this, Long.valueOf(this.b));
   }
   
   public void b(boolean paramBoolean)
@@ -112,7 +112,7 @@ public class LocationDetailActivity
     if (paramBoolean) {}
     for (int i = 13322;; i = 13321)
     {
-      bfhn.a(this, (String)localObject, localIntent, i);
+      bgpf.a(this, (String)localObject, localIntent, i);
       return;
     }
   }
@@ -125,14 +125,14 @@ public class LocationDetailActivity
   public boolean d()
   {
     this.v = true;
-    if ((this.jdField_a_of_type_Alrv != null) && (!this.jdField_a_of_type_Alrv.c()))
+    if ((this.jdField_a_of_type_Amgo != null) && (!this.jdField_a_of_type_Amgo.c()))
     {
-      if (this.jdField_a_of_type_Alrv.b())
+      if (this.jdField_a_of_type_Amgo.b())
       {
-        this.jdField_a_of_type_Alrv.e();
+        this.jdField_a_of_type_Amgo.e();
         return true;
       }
-      this.jdField_a_of_type_Alrv.i();
+      this.jdField_a_of_type_Amgo.i();
       return false;
     }
     this.v = false;
@@ -141,18 +141,16 @@ public class LocationDetailActivity
   
   public boolean e()
   {
-    if (this.jdField_a_of_type_Alrv != null) {
-      return this.jdField_a_of_type_Alrv.c();
+    if (this.jdField_a_of_type_Amgo != null) {
+      return this.jdField_a_of_type_Amgo.c();
     }
     return false;
   }
   
   public void finish()
   {
-    if (this.jdField_a_of_type_Alrv != null)
-    {
-      this.jdField_a_of_type_Alrv.d();
-      return;
+    if ((this.jdField_a_of_type_Amgo != null) && (this.b != -1L) && (this.b != 0L)) {
+      this.jdField_a_of_type_Amgo.p();
     }
     super.finish();
   }
@@ -190,13 +188,13 @@ public class LocationDetailActivity
     if (this.d != null) {
       this.d.setOnClickListener(null);
     }
-    super.finish();
+    finish();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = super.findViewById(2131309912);
+    paramBundle = super.findViewById(2131375673);
     paramBundle.setFocusable(false);
     paramBundle.setContentDescription(null);
     if (!super.getIntent().getBooleanExtra("forNewFavorite", false))
@@ -204,12 +202,12 @@ public class LocationDetailActivity
       paramBundle = (FrameLayout)super.findViewById(16908290);
       float f1 = super.getResources().getDisplayMetrics().density;
       this.f = new TextView(paramBundle.getContext());
-      this.f.setId(2131305242);
-      this.f.setBackgroundResource(2130839101);
+      this.f.setId(2131370916);
+      this.f.setBackgroundResource(2130839129);
       this.f.setMaxLines(3);
       int i = (int)(15.0F * f1);
       this.f.setPadding(i, i, i, i);
-      this.f.setTextColor(super.getResources().getColor(2131101260));
+      this.f.setTextColor(super.getResources().getColor(2131166854));
       this.f.setTextSize(14.0F);
       this.f.setIncludeFontPadding(false);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
@@ -233,24 +231,24 @@ public class LocationDetailActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Alrv != null) {
-      this.jdField_a_of_type_Alrv.c();
+    if (this.jdField_a_of_type_Amgo != null) {
+      this.jdField_a_of_type_Amgo.c();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Alrv != null) {
-      this.jdField_a_of_type_Alrv.b();
+    if (this.jdField_a_of_type_Amgo != null) {
+      this.jdField_a_of_type_Amgo.b();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Alrv != null) {
-      this.jdField_a_of_type_Alrv.a();
+    if (this.jdField_a_of_type_Amgo != null) {
+      this.jdField_a_of_type_Amgo.a();
     }
   }
   
@@ -267,11 +265,11 @@ public class LocationDetailActivity
     this.r = localBundle.getString("lat");
     this.s = localBundle.getString("lon");
     this.b = localBundle.getLong("favId");
-    TextView localTextView1 = (TextView)findViewById(2131302804);
-    localTextView1.setText(2131626768);
-    localTextView1.setOnClickListener(new bfjg(this));
-    ((TextView)super.findViewById(2131302847)).setText(2131628348);
-    TextView localTextView2 = (TextView)super.findViewById(2131302832);
+    TextView localTextView1 = (TextView)findViewById(2131368429);
+    localTextView1.setText(2131692370);
+    localTextView1.setOnClickListener(new bgqy(this));
+    ((TextView)super.findViewById(2131368472)).setText(2131693989);
+    TextView localTextView2 = (TextView)super.findViewById(2131368457);
     int i;
     if (!localBundle.getBoolean("forNewFavorite", false))
     {
@@ -286,16 +284,16 @@ public class LocationDetailActivity
       }
       else
       {
-        this.jdField_a_of_type_Bfja = new bfjh(this, this, new bfjl(this), i, 7, null);
+        this.jdField_a_of_type_Bgqs = new bgqz(this, this, new bgrd(this), i, 7, null);
         localTextView1.setText(localBundle.getString("leftViewText"));
         localTextView2.setVisibility(8);
-        this.d = ((ImageView)super.findViewById(2131302816));
+        this.d = ((ImageView)super.findViewById(2131368441));
         this.d.setVisibility(0);
-        this.d.setImageResource(2130839704);
-        this.d.setContentDescription(super.getString(2131628666));
-        this.d.setOnClickListener(this.jdField_a_of_type_Bfja);
-        this.jdField_a_of_type_ComTencentWidgetFadeIconImageView = ((FadeIconImageView)findViewById(2131302820));
-        if (bfid.a()) {
+        this.d.setImageResource(2130839753);
+        this.d.setContentDescription(super.getString(2131694318));
+        this.d.setOnClickListener(this.jdField_a_of_type_Bgqs);
+        this.jdField_a_of_type_ComTencentWidgetFadeIconImageView = ((FadeIconImageView)findViewById(2131368445));
+        if (bgpv.a()) {
           break label304;
         }
         if (this.jdField_a_of_type_ComTencentWidgetFadeIconImageView != null)
@@ -316,9 +314,9 @@ public class LocationDetailActivity
       {
         this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(8);
         continue;
-        localTextView1.setText(2131624770);
-        localTextView2.setText(2131628979);
-        localTextView2.setOnClickListener(new bfji(this));
+        localTextView1.setText(2131690331);
+        localTextView2.setText(2131694643);
+        localTextView2.setOnClickListener(new bgra(this));
       }
     }
   }

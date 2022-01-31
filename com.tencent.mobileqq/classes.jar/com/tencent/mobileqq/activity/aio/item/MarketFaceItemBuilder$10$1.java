@@ -1,19 +1,25 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adjg;
-import adjt;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
+import adug;
+import bcpw;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Set;
 
-public class MarketFaceItemBuilder$10$1
+class MarketFaceItemBuilder$10$1
   implements Runnable
 {
-  public MarketFaceItemBuilder$10$1(adjg paramadjg, adjt paramadjt) {}
+  MarketFaceItemBuilder$10$1(MarketFaceItemBuilder.10 param10, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Adjt.a.setVisibility(8);
-    this.jdField_a_of_type_Adjt.f.setVisibility(8);
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.this$0.a.isEmpty())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.this$0.a.remove(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq));
+      adug.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.jdField_a_of_type_Aduu, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+      if (!this.jdField_a_of_type_Boolean) {
+        bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.this$0.b, 1, 2131689911, 0).a();
+      }
+    }
   }
 }
 

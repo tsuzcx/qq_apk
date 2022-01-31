@@ -1,18 +1,6 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.5;
-
-class rtj
-  implements DialogInterface.OnClickListener
+public abstract interface rtj
 {
-  rtj(rti paramrti) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ajia.a();
-    this.a.a.this$0.a.finish();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

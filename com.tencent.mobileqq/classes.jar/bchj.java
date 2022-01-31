@@ -1,27 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-public class bchj
-  implements DialogInterface.OnCancelListener
+public abstract interface bchj
+  extends bcci
 {
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public abstract int a(WebViewPlugin paramWebViewPlugin, byte paramByte, boolean paramBoolean);
   
-  public bchj(bchb parambchb, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = bcfb.a(paramString1, "NEWYYB");
-    this.b = paramString2;
-  }
+  public abstract Activity b();
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    bchb.a(this.b);
-    bcfb.a("720", this.jdField_a_of_type_JavaLangString, this.b);
-  }
+  public abstract boolean e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bchj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,75 +1,334 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.subscribe.component.extendsadapter.ComponentRvInnerView;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.util.LruCache;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.ListIterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.WeakHashMap;
 
-public abstract class wcf
-  extends wbp
+public abstract class wcf<T>
+  implements Handler.Callback, wch
 {
-  private ComponentRvInnerView a;
+  private int jdField_a_of_type_Int = 1;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private WeakHashMap<ImageView, Drawable> jdField_a_of_type_JavaUtilWeakHashMap;
+  private uyq jdField_a_of_type_Uyq;
+  private boolean jdField_a_of_type_Boolean;
+  private Handler b;
   
-  public wcf(Bundle paramBundle)
+  public wcf()
   {
-    super(paramBundle);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+    this.b = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Uyq = new uyq();
+    this.jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
   }
   
-  public int a()
+  public wcf(String paramString)
   {
-    return 3;
+    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("ImageLoader_" + paramString);
+    this.b = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Uyq = new uyq();
+    this.jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
   }
   
-  public abstract wcg a(ViewGroup paramViewGroup, int paramInt);
-  
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
-  
-  public abstract void a(ComponentRvInnerView paramComponentRvInnerView);
-  
-  public void a(ArrayList paramArrayList)
+  private void a(int paramInt, wcg paramwcg)
   {
-    b().clear();
-    b().addAll(paramArrayList);
-    if (this.a != null) {
-      this.a.setData(paramArrayList);
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageAtFrontOfQueue(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(paramInt, paramwcg));
+    }
+    while (this.jdField_a_of_type_Int != 1) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(paramInt, paramwcg));
+  }
+  
+  public abstract LruCache<T, Drawable> a();
+  
+  public abstract wcg a(ImageView paramImageView, T paramT);
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    if (this.jdField_a_of_type_AndroidOsHandlerThread != null) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void a(ImageView paramImageView)
+  {
+    wcg localwcg = this.jdField_a_of_type_Uyq.a(paramImageView);
+    this.jdField_a_of_type_JavaUtilWeakHashMap.remove(paramImageView);
+    if (localwcg != null)
+    {
+      uym.b("Q.qqstory.newImageLoader", new Object[] { "ImageView have been set,cancal task for this:", Integer.valueOf(paramImageView.hashCode()), " source:", localwcg.jdField_a_of_type_JavaLangObject });
+      localwcg.b();
     }
   }
   
-  public abstract int b();
-  
-  protected boolean c()
+  public void a(ImageView paramImageView, T paramT)
   {
-    return false;
+    a(paramImageView, paramT, new ColorDrawable(-3289651), 0);
   }
   
-  public int getItemCount()
+  public void a(ImageView paramImageView, T paramT, Drawable paramDrawable, int paramInt)
   {
-    if ((!c()) || (b().size() > 0)) {
-      return 1;
+    uym.b("Q.qqstory.newImageLoader", new Object[] { "attachView:", paramT, " ----hash:", Integer.valueOf(paramImageView.hashCode()) });
+    this.jdField_a_of_type_JavaUtilWeakHashMap.remove(paramImageView);
+    if (paramT.toString().equals(paramImageView.getTag(2131368841))) {
+      uym.b("Q.qqstory.newImageLoader", new Object[] { "target have been set view,so dont need attach view" });
     }
-    return 0;
+    Object localObject;
+    do
+    {
+      return;
+      localObject = this.jdField_a_of_type_Uyq.b(paramImageView);
+      if (localObject != null)
+      {
+        if (paramT.equals(((wcg)localObject).jdField_a_of_type_JavaLangObject))
+        {
+          uym.b("Q.qqstory.newImageLoader", new Object[] { "task running no need to do again:", ((wcg)localObject).jdField_a_of_type_JavaLangObject });
+          return;
+        }
+        this.jdField_a_of_type_Uyq.a(paramImageView);
+        uym.b("Q.qqstory.newImageLoader", new Object[] { "cancel: ", ((wcg)localObject).jdField_a_of_type_JavaLangObject });
+        ((wcg)localObject).b();
+      }
+      localObject = (Drawable)a().get(paramT);
+      if (localObject != null)
+      {
+        uym.b("Q.qqstory.newImageLoader", new Object[] { "hit the cache:", paramT });
+        if ((localObject instanceof BitmapDrawable))
+        {
+          Bitmap localBitmap = ((BitmapDrawable)localObject).getBitmap();
+          if (localBitmap != null) {
+            uym.b("Q.qqstory.newImageLoader", new Object[] { "cache size=", Integer.valueOf(localBitmap.getRowBytes() * localBitmap.getHeight()), ",h=", Integer.valueOf(localBitmap.getHeight()), ",w=", Integer.valueOf(localBitmap.getWidth()), ",key=", paramT });
+          }
+        }
+        while ((this.jdField_a_of_type_Boolean) && (paramInt == 0))
+        {
+          uym.b("Q.qqstory.newImageLoader", new Object[] { "save to waiting queue:", paramT });
+          paramImageView.setImageDrawable(paramDrawable);
+          uym.b("Q.qqstory.newImageLoader", new Object[] { "postToUI def o= ", paramImageView.getTag(2131368841), " and change to: ", paramT.toString(), " view hash:" + paramImageView.hashCode() });
+          paramImageView.setTag(2131368841, null);
+          this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramImageView, localObject);
+          return;
+          uym.b("Q.qqstory.newImageLoader", new Object[] { "cache size=", Integer.valueOf(1024), ",key= ", paramT });
+        }
+        paramImageView.setImageDrawable((Drawable)localObject);
+        uym.b("Q.qqstory.newImageLoader", new Object[] { "postToUI cache o= ", paramImageView.getTag(2131368841), " and change to: ", paramT.toString(), " view hash:" + paramImageView.hashCode() });
+        paramImageView.setTag(2131368841, paramT.toString());
+        return;
+      }
+      paramImageView.setImageDrawable(paramDrawable);
+      uym.b("Q.qqstory.newImageLoader", new Object[] { "postToUI def 2 o= ", paramImageView.getTag(2131368841), " and change to: ", paramT.toString(), " view hash:" + paramImageView.hashCode() });
+      paramImageView.setTag(2131368841, null);
+      localObject = a(paramImageView, paramT);
+      if (localObject == null)
+      {
+        uym.a("Q.qqstory.newImageLoader", new Object[] { "generateTask failed!!" });
+        return;
+      }
+      ((wcg)localObject).jdField_a_of_type_Wcf = this;
+      ((wcg)localObject).b = paramDrawable;
+      ((wcg)localObject).jdField_a_of_type_Int = paramInt;
+      ((wcg)localObject).a(this);
+      ((wcg)localObject).jdField_a_of_type_JavaLangObject = paramT;
+      uym.c("Q.qqstory.newImageLoader", new Object[] { "this need request hash:", Integer.valueOf(paramImageView.hashCode()) });
+      this.jdField_a_of_type_Uyq.a(paramImageView, (wcg)localObject);
+    } while (this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Uyq.a((wcg)localObject);
+    a(1, (wcg)localObject);
   }
   
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public void a(wcg paramwcg)
   {
-    if ((paramViewHolder.itemView instanceof ComponentRvInnerView)) {
-      this.a.setData(b());
+    this.b.sendMessage(this.b.obtainMessage(3, paramwcg));
+  }
+  
+  public void a(wcg paramwcg, String paramString)
+  {
+    uym.a("Q.qqstory.newImageLoader", new Object[] { "EXECUTE_TASK_ERROR:,case:", paramwcg.a(), paramString });
+    this.b.sendMessage(this.b.obtainMessage(2, paramwcg));
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilWeakHashMap.clear();
+    this.jdField_a_of_type_Uyq.a();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    uym.b("Q.qqstory.newImageLoader", new Object[] { "pause ui task" });
+    this.b.removeMessages(4);
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    uym.b("Q.qqstory.newImageLoader", new Object[] { "resume ui task" });
+    this.b.removeMessages(4);
+    if (this.jdField_a_of_type_JavaUtilWeakHashMap.size() > 0) {
+      this.b.sendMessage(this.b.obtainMessage(4));
+    }
+    if (this.jdField_a_of_type_Uyq.a() > 0)
+    {
+      ListIterator localListIterator = this.jdField_a_of_type_Uyq.a();
+      int i = 2;
+      if ((localListIterator.hasPrevious()) && (i > 0))
+      {
+        Map.Entry localEntry = (Map.Entry)localListIterator.previous();
+        localListIterator.remove();
+        if (((WeakReference)localEntry.getValue()).get() != null) {
+          this.b.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, localEntry.getKey()));
+        }
+        for (;;)
+        {
+          i -= 1;
+          break;
+          ((wcg)localEntry.getKey()).b();
+        }
+      }
     }
   }
   
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a = new ComponentRvInnerView(paramViewGroup.getContext(), this);
-    this.a.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    paramViewGroup = new wbo(this, this.a);
-    paramViewGroup.setIsRecyclable(false);
-    a(this.a);
-    return paramViewGroup;
+    switch (paramMessage.what)
+    {
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return true;
+        paramMessage = (wcg)paramMessage.obj;
+        if (!paramMessage.a())
+        {
+          paramMessage.a();
+          return true;
+        }
+        uym.c("Q.qqstory.newImageLoader", new Object[] { ajyc.a(2131705730), paramMessage.a() });
+        paramMessage.c();
+        return true;
+        paramMessage = (wcg)paramMessage.obj;
+        uym.a("Q.qqstory.newImageLoader", new Object[] { "EXECUTE_TASK_COMPLETED:", paramMessage.a() });
+        if (!paramMessage.a())
+        {
+          uym.a("Q.qqstory.newImageLoader", new Object[] { "EXECUTE_TASK_COMPLETED post ui:", paramMessage.a() });
+          paramMessage.a(this.jdField_a_of_type_JavaUtilWeakHashMap, this.jdField_a_of_type_Boolean);
+          localObject = (ImageView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (localObject != null)
+          {
+            uym.a("Q.qqstory.newImageLoader", new Object[] { "completed the request,hash: ", Integer.valueOf(localObject.hashCode()) });
+            this.jdField_a_of_type_Uyq.a((ImageView)localObject);
+          }
+          if (paramMessage.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+            a().put(paramMessage.jdField_a_of_type_JavaLangObject, paramMessage.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          }
+        }
+        for (;;)
+        {
+          paramMessage.c();
+          if (this.jdField_a_of_type_Boolean) {
+            break;
+          }
+          this.b.sendMessage(this.b.obtainMessage(5));
+          return true;
+          uym.c("Q.qqstory.newImageLoader", new Object[] { "EXECUTE_TASK_COMPLETED have been cancel:", paramMessage.a() });
+        }
+        paramMessage = (wcg)paramMessage.obj;
+        uym.a("Q.qqstory.newImageLoader", new Object[] { "EXECUTE_TASK_ERROR:", paramMessage.a() });
+        localObject = (ImageView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localObject != null)
+        {
+          this.jdField_a_of_type_Uyq.a((ImageView)localObject);
+          ((ImageView)localObject).setImageDrawable(paramMessage.b);
+          uym.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", ((ImageView)localObject).getTag(2131368841), " and change to: default", " view hash:" + localObject.hashCode() });
+          ((ImageView)localObject).setTag(2131368841, null);
+        }
+        paramMessage.c();
+        return true;
+        uym.b("Q.qqstory.newImageLoader", new Object[] { "HANDLE_WAITING_UI_TASK" });
+      } while (this.jdField_a_of_type_Boolean);
+      paramMessage = this.jdField_a_of_type_JavaUtilWeakHashMap.entrySet().iterator();
+      i = 3;
+      for (;;)
+      {
+        if (paramMessage.hasNext())
+        {
+          localObject = (Map.Entry)paramMessage.next();
+          ImageView localImageView = (ImageView)((Map.Entry)localObject).getKey();
+          if (localImageView != null)
+          {
+            localImageView.setImageDrawable((Drawable)((Map.Entry)localObject).getValue());
+            uym.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", localImageView.getTag(2131368841), " and change to: wait", " view hash:" + localImageView.hashCode() });
+            localImageView.setTag(2131368841, null);
+            paramMessage.remove();
+          }
+          i -= 1;
+          if (i > 0) {}
+        }
+        else
+        {
+          if (this.jdField_a_of_type_JavaUtilWeakHashMap.size() <= 0) {
+            break;
+          }
+          this.b.sendMessageDelayed(this.b.obtainMessage(4), 16L);
+          return true;
+        }
+      }
+    } while (this.jdField_a_of_type_Uyq.a() <= 0);
+    paramMessage = this.jdField_a_of_type_Uyq.a();
+    int i = 2;
+    label640:
+    if ((paramMessage.hasPrevious()) && (i > 0))
+    {
+      localObject = (Map.Entry)paramMessage.previous();
+      paramMessage.remove();
+      if (((WeakReference)((Map.Entry)localObject).getValue()).get() == null) {
+        break label713;
+      }
+      this.b.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, ((Map.Entry)localObject).getKey()));
+    }
+    for (;;)
+    {
+      i -= 1;
+      break label640;
+      break;
+      label713:
+      ((wcg)((Map.Entry)localObject).getKey()).b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wcf
  * JD-Core Version:    0.7.0.1
  */

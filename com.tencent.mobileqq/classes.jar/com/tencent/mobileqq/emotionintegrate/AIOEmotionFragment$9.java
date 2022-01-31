@@ -1,19 +1,32 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
+import aodo;
+import aodp;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class AIOEmotionFragment$9
   implements Runnable
 {
-  AIOEmotionFragment$9(AIOEmotionFragment paramAIOEmotionFragment, float paramFloat) {}
+  AIOEmotionFragment$9(AIOEmotionFragment paramAIOEmotionFragment, List paramList, aodo paramaodo) {}
   
   public void run()
   {
-    if (this.a > 0.0F)
+    boolean bool = false;
+    this.this$0.jdField_a_of_type_Aodp.a(this.jdField_a_of_type_JavaUtilList);
+    this.this$0.jdField_a_of_type_Aodp.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Aodo != null) {}
+    for (int i = this.this$0.jdField_a_of_type_Aodp.a(this.jdField_a_of_type_Aodo);; i = 0)
     {
-      QLog.i("AIOEmotionFragment", 2, "AudioPlayer on onProgressChanged, playPosition = " + this.a);
-      this.this$0.a.setProgress(this.a);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.setSelection(i);
+      if (QLog.isColorLevel())
+      {
+        if (this.jdField_a_of_type_Aodo == null) {
+          bool = true;
+        }
+        QLog.d("AIOEmotionFragment", 2, new Object[] { "mGallery setSelection pos:", Integer.valueOf(i), " dataIsNull:", Boolean.valueOf(bool) });
+      }
+      return;
     }
   }
 }

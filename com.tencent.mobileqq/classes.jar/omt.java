@@ -1,34 +1,25 @@
-import android.os.Handler;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
+import android.widget.TextView;
 
-class omt
-  implements View.OnAttachStateChangeListener
+public class omt
+  extends RecyclerView.ViewHolder
 {
-  omt(oms paramoms, ond paramond) {}
+  public View a;
+  public TextView a;
+  public TextView b;
   
-  public void onViewAttachedToWindow(View paramView)
+  public omt(omq paramomq, View paramView)
   {
-    if ((this.jdField_a_of_type_Oms.a().a() != null) && (this.jdField_a_of_type_Oms.a().a().a() != null)) {
-      this.jdField_a_of_type_Oms.a().a().a().b(this.jdField_a_of_type_Ond);
-    }
-    ohb.a().a(this.jdField_a_of_type_Ond.a);
-  }
-  
-  public void onViewDetachedFromWindow(View paramView)
-  {
-    if ((this.jdField_a_of_type_Oms.a().a() != null) && (this.jdField_a_of_type_Oms.a().a().a() != null)) {
-      this.jdField_a_of_type_Oms.a().a().a().c(this.jdField_a_of_type_Ond);
-    }
-    ohb.a().b(this.jdField_a_of_type_Ond.a);
-    if ((this.jdField_a_of_type_Ond instanceof omz)) {
-      ((omz)this.jdField_a_of_type_Ond).a.removeCallbacksAndMessages(null);
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378116));
+    this.b = ((TextView)paramView.findViewById(2131378117));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369200);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     omt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.core.utils.thread;
 
-import bdhp;
+import bels;
 
 public class NioSelectorThread$1
   implements Runnable
 {
-  public NioSelectorThread$1(bdhp parambdhp) {}
+  public NioSelectorThread$1(bels parambels) {}
   
   public void run()
   {
-    bdhp.a(this.this$0);
+    bels.a(this.this$0);
   }
 }
 

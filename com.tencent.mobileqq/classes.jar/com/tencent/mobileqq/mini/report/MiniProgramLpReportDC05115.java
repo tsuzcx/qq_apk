@@ -36,14 +36,14 @@ public class MiniProgramLpReportDC05115
     }
   }
   
-  public static void reDispatchReportEvent(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, long paramLong)
+  public static void reDispatchReportEvent(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, long paramLong, String paramString3)
   {
     MiniProgramLpReportDC05115.ReportModel localReportModel;
     if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)) && (paramString1 != null))
     {
       localReportModel = (MiniProgramLpReportDC05115.ReportModel)MINI_APP_ID_REPORT_MODEL_HASH_MAP.get(paramMiniAppConfig.config.appId);
       if (localReportModel == null) {
-        break label144;
+        break label185;
       }
       if (!"app_download_result".equals(paramString1)) {
         break label68;
@@ -54,7 +54,7 @@ public class MiniProgramLpReportDC05115
     do
     {
       return;
-      if ("launch_result".equals(paramString1))
+      if (("launch_result".equals(paramString1)) && ("cold_start".equals(paramString3)))
       {
         localReportModel.reportLaunchResult(paramLong, paramString2);
         return;
@@ -69,10 +69,20 @@ public class MiniProgramLpReportDC05115
         localReportModel.reportReLaunchResult(paramLong, paramString2);
         return;
       }
-    } while ((!"minigamestaytime".equals(paramString1)) && (!"miniappstaytime".equals(paramString1)));
-    localReportModel.setGameUseTime(paramLong);
+      if (("minigamestaytime".equals(paramString1)) || ("miniappstaytime".equals(paramString1)))
+      {
+        localReportModel.setGameUseTime(paramLong);
+        return;
+      }
+      if ("steplaunchgame".equals(paramString1))
+      {
+        localReportModel.setGamePrepareCost(paramLong);
+        return;
+      }
+    } while (!"jsonerror".equals(paramString1));
+    localReportModel.setJsErrorNum();
     return;
-    label144:
+    label185:
     MINI_APP_ID_REPORT_MODEL_HASH_MAP.put(paramMiniAppConfig.config.appId, new MiniProgramLpReportDC05115.ReportModel(paramMiniAppConfig));
   }
   

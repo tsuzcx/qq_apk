@@ -1,94 +1,268 @@
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
-import android.os.Bundle;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.SquareImageView;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
 public class awxk
-  extends awum
+  extends awww
 {
-  private LinearLayout a(Context paramContext)
+  public LinearLayout a;
+  public TextView a;
+  public URLImageView a;
+  public ArrayList<awxl> a;
+  public TextView b;
+  
+  public awxk(ViewGroup paramViewGroup, int paramInt)
   {
-    paramContext = new LinearLayout(paramContext);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    localLayoutParams.gravity = 17;
-    paramContext.setLayoutParams(localLayoutParams);
-    return paramContext;
+    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  protected int b()
+  protected void a()
   {
-    return 23;
+    View localView = a(this.c);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131362830));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367410));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131362560));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362562));
   }
   
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  public void a(awpb paramawpb)
   {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    if ((paramawpb.jdField_a_of_type_JavaUtilList == null) || (paramawpb.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return;
+    }
+    Context localContext = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
+    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
+    int j = 0;
+    label60:
     Object localObject2;
-    if ((paramView != null) && ((paramView instanceof LinearLayout)) && ((paramView.getTag() instanceof awxl)))
+    Object localObject1;
+    Object localObject3;
+    label224:
+    label353:
+    Object localObject4;
+    label257:
+    label290:
+    label340:
+    int i;
+    label416:
+    int k;
+    int m;
+    Object localObject5;
+    if (j < paramawpb.jdField_a_of_type_JavaUtilList.size())
     {
-      localawxl = (awxl)paramView.getTag();
-      localIterator = this.a.iterator();
-      for (;;)
+      localObject2 = (awmh)paramawpb.jdField_a_of_type_JavaUtilList.get(j);
+      localObject1 = new awxl(this, localContext);
+      if (TextUtils.isEmpty(((awmh)localObject2).jdField_a_of_type_JavaLangString)) {
+        break label780;
+      }
+      localObject3 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = localColorDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = localColorDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = bawz.a(localContext, 18.0F);
+      ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = bawz.a(localContext, 18.0F);
+      ((URLDrawable.URLDrawableOptions)localObject3).mMemoryCacheKeySuffix = "leftIcon";
+      localObject3 = URLDrawable.getDrawable(((awmh)localObject2).jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject3);
+      ((URLDrawable)localObject3).setDecodeHandler(bavi.a);
+      ((awxl)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageDrawable((Drawable)localObject3);
+      if ((((URLDrawable)localObject3).getStatus() != 1) && (((URLDrawable)localObject3).getStatus() != 0)) {
+        ((URLDrawable)localObject3).restartDownload();
+      }
+      ((awxl)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setVisibility(0);
+      if (TextUtils.isEmpty(((awmh)localObject2).b)) {
+        break label793;
+      }
+      ((awxl)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(((awmh)localObject2).b);
+      ((awxl)localObject1).jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (TextUtils.isEmpty(((awmh)localObject2).c)) {
+        break label806;
+      }
+      ((awxl)localObject1).jdField_b_of_type_AndroidWidgetTextView.setText(((awmh)localObject2).c);
+      ((awxl)localObject1).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (TextUtils.isEmpty(((awmh)localObject2).d)) {
+        break label831;
+      }
+      ((awxl)localObject1).c.setVisibility(0);
+      if ((((awmh)localObject2).jdField_a_of_type_JavaUtilList == null) || (((awmh)localObject2).jdField_a_of_type_JavaUtilList.size() == 0)) {
+        break label819;
+      }
+      ((awxl)localObject1).c.setMaxLines(2);
+      ((awxl)localObject1).c.setText(((awmh)localObject2).d);
+      if (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+        break label844;
+      }
+      ((awxl)localObject1).c.setTextColor(Color.parseColor("#737373"));
+      ((awxl)localObject1).jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#4A4A4A"));
+      ((awxl)localObject1).jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#4A4A4A"));
+      ((awxl)localObject1).jdField_a_of_type_AndroidViewView.setBackgroundResource(2130841841);
+      if ((((awmh)localObject2).jdField_a_of_type_JavaUtilList == null) || (((awmh)localObject2).jdField_a_of_type_JavaUtilList.size() == 0)) {
+        break label1311;
+      }
+      if (((awmh)localObject2).jdField_a_of_type_JavaUtilList.size() != 1) {
+        break label911;
+      }
+      ((awxl)localObject1).jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+      ((awxl)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      localObject3 = ((awxl)localObject1).jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView;
+      localObject4 = localContext.getResources();
+      i = ((Resources)localObject4).getDisplayMetrics().widthPixels;
+      float f1 = ((Resources)localObject4).getDimension(2131298197);
+      float f2 = ((Resources)localObject4).getDimension(2131298197);
+      k = bawz.a(localContext, 2.0F);
+      m = ((awxl)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      i = (int)(i - f1 - f2 - (m - 1) * k) / m;
+      ((SquareImageView)localObject3).setLayoutParams(new FrameLayout.LayoutParams(i, i));
+      localObject2 = (awoi)((awmh)localObject2).jdField_a_of_type_JavaUtilList.get(0);
+      localObject4 = ((awoi)localObject2).jdField_a_of_type_JavaLangString;
+      localObject5 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject5).mFailedDrawable = localColorDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject5).mLoadingDrawable = localColorDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject5).mRequestWidth = i;
+      ((URLDrawable.URLDrawableOptions)localObject5).mRequestHeight = i;
+      ((URLDrawable.URLDrawableOptions)localObject5).mPlayGifImage = true;
+      localObject4 = URLDrawable.getDrawable((String)localObject4, (URLDrawable.URLDrawableOptions)localObject5);
+      ((SquareImageView)localObject3).setImageDrawable((Drawable)localObject4);
+      if ((((URLDrawable)localObject4).getStatus() != 1) && (((URLDrawable)localObject4).getStatus() != 0)) {
+        ((URLDrawable)localObject4).restartDownload();
+      }
+      if (((awoi)localObject2).jdField_a_of_type_Int != 2) {
+        break label898;
+      }
+      ((awxl)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((awxl)localObject1).jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+      if (j != paramawpb.jdField_a_of_type_JavaUtilList.size() - 1)
       {
-        localObject1 = paramView;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject1 = (awul)localIterator.next();
-        if ("button".equals(((awul)localObject1).a))
+        localObject1 = new View(localContext);
+        ((View)localObject1).setBackgroundResource(2130839132);
+        ((View)localObject1).setLayoutParams(new ViewGroup.LayoutParams(-1, bawz.a(localContext, 6.0F)));
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
+      }
+      j += 1;
+      break label60;
+      break;
+      label780:
+      ((awxl)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setVisibility(8);
+      break label224;
+      label793:
+      ((awxl)localObject1).jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      break label257;
+      label806:
+      ((awxl)localObject1).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      break label290;
+      label819:
+      ((awxl)localObject1).c.setMaxLines(3);
+      break label340;
+      label831:
+      ((awxl)localObject1).c.setVisibility(8);
+      break label353;
+      label844:
+      ((awxl)localObject1).c.setTextColor(Color.parseColor("#262626"));
+      ((awxl)localObject1).jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
+      ((awxl)localObject1).jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
+      ((awxl)localObject1).jdField_a_of_type_AndroidViewView.setBackgroundResource(2130841838);
+      break label416;
+      label898:
+      ((awxl)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      continue;
+      label911:
+      ((awxl)localObject1).jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      ((awxl)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      int n = ((awxl)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      i = 0;
+      k = i;
+      if (i < ((awmh)localObject2).jdField_a_of_type_JavaUtilList.size())
+      {
+        k = i;
+        if (i < n)
         {
-          localObject2 = (TextView)((awul)localObject1).a(paramContext, localawxl.a, paramBundle);
-          if (TextUtils.isEmpty(((awwi)localObject1).c())) {
-            ((TextView)localObject2).setTextSize(16.0F);
+          localObject4 = ((awxl)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+          ((View)localObject4).setVisibility(0);
+          localObject3 = (SquareImageView)((View)localObject4).findViewById(2131367872);
+          localObject4 = (ImageView)((View)localObject4).findViewById(2131368889);
+          localObject5 = (awoi)((awmh)localObject2).jdField_a_of_type_JavaUtilList.get(i);
+          Object localObject6 = ((awoi)localObject5).jdField_a_of_type_JavaLangString;
+          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+          localURLDrawableOptions.mRequestHeight = 200;
+          localURLDrawableOptions.mRequestWidth = 200;
+          localURLDrawableOptions.mFailedDrawable = localColorDrawable;
+          localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
+          localURLDrawableOptions.mPlayGifImage = true;
+          localObject6 = URLDrawable.getDrawable((String)localObject6, localURLDrawableOptions);
+          ((SquareImageView)localObject3).setImageDrawable((Drawable)localObject6);
+          if ((((URLDrawable)localObject6).getStatus() != 1) && (((URLDrawable)localObject6).getStatus() != 0)) {
+            ((URLDrawable)localObject6).restartDownload();
           }
-          if (TextUtils.isEmpty(((awwi)localObject1).d())) {
-            ((TextView)localObject2).setTextColor(Color.parseColor("#12b7f5"));
+          ((SquareImageView)localObject3).setVisibility(0);
+          if (((awoi)localObject5).jdField_a_of_type_Int == 2)
+          {
+            ((ImageView)localObject4).setVisibility(0);
+            label1141:
+            if ((i != n - 1) || (((awmh)localObject2).jdField_a_of_type_Int <= n)) {
+              break label1264;
+            }
+            ((ImageView)localObject4).setVisibility(8);
+            ((SquareImageView)localObject3).setFilterColor(Color.parseColor("#66000000"));
+            m = ((awmh)localObject2).jdField_a_of_type_Int - n;
+            k = m;
+            if (m > 99) {
+              k = 99;
+            }
+            ((SquareImageView)localObject3).setFilterText("+" + k);
+            ((SquareImageView)localObject3).setFilterTextSize(bawz.a(((SquareImageView)localObject3).getContext(), 20.0F));
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            ((ImageView)localObject4).setVisibility(8);
+            break label1141;
+            label1264:
+            ((SquareImageView)localObject3).setFilterColor(-1);
+            ((SquareImageView)localObject3).setFilterText("");
           }
         }
       }
-    }
-    Object localObject1 = a(paramContext);
-    awxl localawxl = new awxl();
-    Iterator localIterator = this.a.iterator();
-    paramView = null;
-    while (localIterator.hasNext())
-    {
-      localObject2 = (awul)localIterator.next();
-      if ("button".equals(((awul)localObject2).a))
+      while (k < n)
       {
-        paramView = (TextView)((awul)localObject2).a(paramContext, null, paramBundle);
-        if (TextUtils.isEmpty(((awwi)localObject2).c())) {
-          paramView.setTextSize(16.0F);
-        }
-        if (TextUtils.isEmpty(((awwi)localObject2).d())) {
-          paramView.setTextColor(Color.parseColor("#12b7f5"));
-        }
-        localObject2 = new LinearLayout.LayoutParams(-1, aciy.a(41.0F, paramContext.getResources()));
-        ((LinearLayout.LayoutParams)localObject2).gravity = 17;
-        ((LinearLayout)localObject1).addView(paramView, (ViewGroup.LayoutParams)localObject2);
+        ((awxl)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(k).setVisibility(4);
+        k += 1;
       }
+      continue;
+      label1311:
+      ((awxl)localObject1).jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      ((awxl)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
-    if (paramView != null) {
-      localawxl.a = paramView;
-    }
-    ((LinearLayout)localObject1).setTag(localawxl);
-    return localObject1;
-  }
-  
-  public String b()
-  {
-    return "layout23";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awxk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadLogInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadLogListener;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import com.tencent.mobileqq.webview.webso.WebSoService;
 
-class bcgt
-  implements ITMAssistantDownloadLogListener
+public class bcgt
 {
-  SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
-  
-  bcgt(bcgo parambcgo) {}
-  
-  public void onLog(ArrayList<TMAssistantDownloadLogInfo> paramArrayList)
+  public static void a(String paramString)
   {
-    if ((paramArrayList == null) && (QLog.isColorLevel())) {
-      QLog.i("DownloadManager_", 2, "logList is null");
+    long l = System.currentTimeMillis();
+    if ((bche.b(paramString)) && (!bche.d(paramString)) && (amzw.c().b > 0))
+    {
+      WebSoService.a().a(paramString, null, true);
+      bche.a("preload spned time = " + (System.currentTimeMillis() - l));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcgt
  * JD-Core Version:    0.7.0.1
  */

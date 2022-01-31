@@ -1,14 +1,38 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class anyv
-  implements begy
+  implements asko<Integer>
 {
-  public anyv(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public anyv(EmoticonMainPanel paramEmoticonMainPanel, long paramLong) {}
   
-  public void onDismiss()
+  public void a(Integer paramInteger)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.c(paramInteger.intValue());
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.d(paramInteger.intValue());
+    if ((!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.c) && (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.d)) {
+      EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.d = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "selectIndex = " + paramInteger + "[Performance] initEmoticonView duration:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_e_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.f();
+    }
+    paramInteger = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList;
+    if (paramInteger.size() > EmoticonMainPanel.jdField_e_of_type_Int) {
+      if (((aoak)paramInteger.get(EmoticonMainPanel.jdField_e_of_type_Int)).a != 8) {
+        EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.h);
+      }
+    }
+    for (;;)
+    {
+      EmoticonMainPanel.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+      return;
+      EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.h);
+    }
   }
 }
 

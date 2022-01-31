@@ -1,26 +1,20 @@
-final class awjo
-  extends awjr
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.BaseSearchActivity;
+
+public class awjo
+  implements View.OnClickListener
 {
-  public double a(int paramInt1, int paramInt2)
+  public awjo(BaseSearchActivity paramBaseSearchActivity) {}
+  
+  public void onClick(View paramView)
   {
-    double d2 = paramInt1 / (paramInt1 + paramInt2);
-    double d3 = paramInt2 / (paramInt1 + paramInt2);
-    double d1 = 0.0D;
-    if (paramInt1 > 0)
-    {
-      d1 = -d2;
-      d1 = 0.0D + Math.log(d2) * d1;
-    }
-    d2 = d1;
-    if (paramInt2 > 0) {
-      d2 = d1 + -d3 * Math.log(d3);
-    }
-    return d2 / Math.log(2.0D);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awjo
  * JD-Core Version:    0.7.0.1
  */

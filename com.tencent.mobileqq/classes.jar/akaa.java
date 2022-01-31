@@ -1,16 +1,51 @@
-import com.tencent.mobileqq.data.MessageForFoldMsg;
-import java.util.LinkedHashSet;
+import SWEET_NEW_PAIR.sweet_pair_check_rsp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class akaa
+public class akaa
+  extends ajtd
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 9223372036854775807L;
-  MessageForFoldMsg jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
-  LinkedHashSet<String> jdField_a_of_type_JavaUtilLinkedHashSet = new LinkedHashSet();
-  boolean jdField_a_of_type_Boolean = false;
-  long jdField_b_of_type_Long = 0L;
-  MessageForFoldMsg jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
-  boolean jdField_b_of_type_Boolean = true;
+  public akaa(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.app != null)
+    {
+      SharedPreferences localSharedPreferences = this.app.getPreferences();
+      if (localSharedPreferences != null) {
+        localSharedPreferences.edit().putInt("love_state_for_current_uin" + this.app.c(), paramInt).apply();
+      }
+    }
+    notifyUI(1, true, Integer.valueOf(paramInt));
+  }
+  
+  public void a(boolean paramBoolean, sweet_pair_check_rsp paramsweet_pair_check_rsp)
+  {
+    if ((paramBoolean) && (paramsweet_pair_check_rsp != null)) {
+      if (paramsweet_pair_check_rsp.host_state != 3) {
+        break label24;
+      }
+    }
+    label24:
+    for (int i = 1;; i = 0)
+    {
+      a(i);
+      return;
+    }
+  }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return akab.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

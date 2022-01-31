@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class apvt
-  implements DialogInterface.OnClickListener
+  implements aptu
 {
-  apvt(apvq paramapvq) {}
+  apvt(apvs paramapvs) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if ((this.a.a != null) && (!this.a.a.c())) {
-      this.a.a.f();
-    }
+    eo.b(this.a.a, 0);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apvt
  * JD-Core Version:    0.7.0.1
  */

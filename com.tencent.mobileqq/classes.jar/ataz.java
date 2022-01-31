@@ -1,8 +1,17 @@
-public class ataz
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.AppointmentNotify;
+
+class ataz
+  extends atgf
 {
-  public static final boolean a(int paramInt)
+  ataz(atat paramatat, SubMsgType0x27.AppointmentNotify paramAppointmentNotify) {}
+  
+  protected void a()
   {
-    return (paramInt == 10019) || (paramInt == 10020) || (paramInt == 10021) || (paramInt == 10022);
+    if (QLog.isColorLevel()) {
+      atbp.a("hasOnLinePush", new Object[] { "onNearbyProcStart" });
+    }
+    atat.a(this.jdField_a_of_type_Atat, 4101, new Object[] { this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x27SubMsgType0x27$AppointmentNotify.toByteArray() });
   }
 }
 

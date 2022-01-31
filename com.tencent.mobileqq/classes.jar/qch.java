@@ -1,107 +1,68 @@
-import android.os.SystemClock;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tencent.im.oidb.articlesummary.articlesummary.ArticleBasicInfo;
+import tencent.im.oidb.articlesummary.articlesummary.PGCPicInfo;
 
 public class qch
-  extends GestureDetector.SimpleOnGestureListener
 {
-  public qch(VideoFeedsGestureLayout paramVideoFeedsGestureLayout) {}
+  public String a;
+  public ArrayList<articlesummary.PGCPicInfo> a;
+  public String b;
+  public String c;
   
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  public qch(articlesummary.ArticleBasicInfo paramArticleBasicInfo)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (paramArticleBasicInfo.rowkey.has()) {
+      this.jdField_a_of_type_JavaLangString = paramArticleBasicInfo.rowkey.get();
     }
-    for (;;)
-    {
-      return false;
-      if (VideoFeedsGestureLayout.a(this.a) != null)
-      {
-        VideoFeedsGestureLayout.a(this.a, SystemClock.uptimeMillis());
-        VideoFeedsGestureLayout.a(this.a).a(this.a, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-      }
+    if (paramArticleBasicInfo.title.has()) {
+      this.b = paramArticleBasicInfo.title.get();
+    }
+    if (paramArticleBasicInfo.jump_url.has()) {
+      this.c = paramArticleBasicInfo.jump_url.get();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (paramArticleBasicInfo.msg_pgc_pic_info_list.has()) {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArticleBasicInfo.msg_pgc_pic_info_list.get());
     }
   }
   
-  public void onLongPress(MotionEvent paramMotionEvent)
+  public articlesummary.ArticleBasicInfo a()
   {
-    if (VideoFeedsGestureLayout.a(this.a) != null) {
-      VideoFeedsGestureLayout.a(this.a).b(this.a);
+    articlesummary.ArticleBasicInfo localArticleBasicInfo = new articlesummary.ArticleBasicInfo();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localArticleBasicInfo.rowkey.set(this.jdField_a_of_type_JavaLangString);
     }
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    paramFloat1 = 1.0F;
-    int i = qcn.b(VideoFeedsGestureLayout.a(this.a))[0];
-    i = qcn.b(VideoFeedsGestureLayout.a(this.a))[1];
-    paramFloat2 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
-    float f = paramMotionEvent2.getX() - paramMotionEvent1.getX();
-    if (VideoFeedsGestureLayout.a(this.a) == 0)
-    {
-      if (Math.abs(f) - Math.abs(paramFloat2) >= 0.0F) {
-        break label154;
-      }
-      if (paramMotionEvent1.getX() >= this.a.getWidth() / 2) {
-        break label142;
-      }
-      VideoFeedsGestureLayout.a(this.a, 2);
+    if (!TextUtils.isEmpty(this.b)) {
+      localArticleBasicInfo.title.set(this.b);
     }
-    switch (VideoFeedsGestureLayout.a(this.a))
+    if (!TextUtils.isEmpty(this.c)) {
+      localArticleBasicInfo.jump_url.set(this.c);
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-    default: 
-    case 1: 
-    case 2: 
-      label142:
-      label154:
-      do
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        return false;
-        VideoFeedsGestureLayout.a(this.a, 1);
-        break;
-        VideoFeedsGestureLayout.a(this.a, 3);
-        break;
-      } while (VideoFeedsGestureLayout.a(this.a) == null);
-      paramFloat2 /= this.a.getHeight() / 2;
-      if (Math.abs(paramFloat2) > 1.0F) {
-        if (paramFloat2 <= 1.0F) {
-          break;
-        }
+        articlesummary.PGCPicInfo localPGCPicInfo1 = (articlesummary.PGCPicInfo)localIterator.next();
+        articlesummary.PGCPicInfo localPGCPicInfo2 = new articlesummary.PGCPicInfo();
+        localPGCPicInfo2.setHasFlag(true);
+        localPGCPicInfo2.bytes_pic_md5.set(localPGCPicInfo1.bytes_pic_md5.get());
+        localPGCPicInfo2.bytes_pic_desc.set(localPGCPicInfo1.bytes_pic_desc.get());
+        localPGCPicInfo2.bytes_pic_url.set(localPGCPicInfo1.bytes_pic_url.get());
+        localPGCPicInfo2.bytes_thumbnail_url.set(localPGCPicInfo1.bytes_thumbnail_url.get());
+        localPGCPicInfo2.is_animation.set(localPGCPicInfo1.is_animation.get());
+        localPGCPicInfo2.uint32_pic_height.set(localPGCPicInfo1.uint32_pic_height.get());
+        localPGCPicInfo2.uint32_pic_width.set(localPGCPicInfo1.uint32_pic_width.get());
+        localArticleBasicInfo.msg_pgc_pic_info_list.add(localPGCPicInfo1);
       }
-      break;
     }
-    for (;;)
-    {
-      this.a.a(VideoFeedsGestureLayout.a(this.a), paramFloat1);
-      return false;
-      paramFloat1 = -1.0F;
-      continue;
-      if (VideoFeedsGestureLayout.a(this.a) == null) {
-        break;
-      }
-      paramFloat2 = f / (this.a.getWidth() / 4 * 3);
-      if (Math.abs(paramFloat2) > 1.0F) {
-        if (paramFloat2 <= 1.0F) {}
-      }
-      for (;;)
-      {
-        this.a.a(VideoFeedsGestureLayout.a(this.a), paramFloat1);
-        return false;
-        paramFloat1 = -1.0F;
-        continue;
-        paramFloat1 = paramFloat2;
-      }
-      paramFloat1 = paramFloat2;
-    }
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if ((VideoFeedsGestureLayout.a(this.a) != null) && (SystemClock.uptimeMillis() - VideoFeedsGestureLayout.a(this.a) > 500L)) {
-      VideoFeedsGestureLayout.a(this.a).a(this.a);
-    }
-    return false;
+    return localArticleBasicInfo;
   }
 }
 

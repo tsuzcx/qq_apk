@@ -1,51 +1,254 @@
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.TextUtils.TruncateAt;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.qwallet.QQWalletTransferBubbleView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFee;
 
-class aedd
-  extends adyl
+public class aedd
+  extends BaseBubbleBuilder
 {
-  final String jdField_a_of_type_JavaLangString = aecw.class.getSimpleName();
-  WeakReference<aecw> jdField_a_of_type_JavaLangRefWeakReference;
+  private View.OnClickListener a;
+  protected final int c = 2131377777;
+  protected final int d = 2131377773;
+  protected final int e = 2131377776;
+  protected final int f = 2131377775;
+  protected final int g = 2131377772;
+  protected final int h = 2131377774;
+  protected int i;
+  protected int j;
+  protected int k;
+  protected int l;
+  protected int m;
+  protected int n;
+  protected int o;
+  protected int p;
+  protected int q;
+  protected int r;
+  protected int s;
+  protected int t;
+  protected int u;
+  protected int v;
+  protected int w;
+  protected int x;
   
-  public aedd(aecw paramaecw)
+  public aedd(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaecw);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aede(this);
+    float f1 = paramContext.getResources().getDisplayMetrics().density;
+    this.j = ((int)(42.0F * f1 + 0.5F));
+    this.k = ((int)(21.0F * f1 + 0.5F));
+    this.l = ((int)(15.0F * f1 + 0.5F));
+    this.m = ((int)(10.0F * f1 + 0.5F));
+    this.n = ((int)(9.0F * f1 + 0.5F));
+    this.o = ((int)(6.0F * f1 + 0.5F));
+    this.p = ((int)(4.0F * f1 + 0.5F));
+    this.q = ((int)(1.0F * f1 + 0.5F));
+    this.i = (this.m * 23);
+    this.r = ((int)(157.0F * f1 + 0.5F));
+    this.s = ((int)(65.0F * f1 + 0.5F));
+    this.t = ((int)(7.0F * f1 + 0.5F));
+    this.u = ((int)(152.0F * f1 + 0.5F));
+    this.v = ((int)(5.0F * f1 + 0.5F));
+    this.w = ((int)(61.0F * f1 + 0.5F));
+    this.x = ((int)(f1 * 19.0F + 0.5F));
   }
   
-  public void a(CompressInfo paramCompressInfo)
+  public int a(ChatMessage paramChatMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress success, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
-    }
+    return 0;
   }
   
-  public void b(CompressInfo paramCompressInfo)
+  public acun a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress fail, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
-    }
+    return new aedf(this, null);
   }
   
-  public void c(CompressInfo paramCompressInfo)
+  public View a(ChatMessage paramChatMessage, acun paramacun, View paramView, BaseChatItemLayout paramBaseChatItemLayout, acxn paramacxn)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress complete, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
+    paramacun = (aedf)paramacun;
+    paramBaseChatItemLayout = (MessageForTroopFee)paramChatMessage;
+    if ((paramacun.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramacun.jdField_a_of_type_Long == paramChatMessage.uniseq)) {
+      return paramacun.jdField_a_of_type_AndroidWidgetRelativeLayout;
     }
-    aecw localaecw = (aecw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localaecw == null)
+    QQWalletTransferBubbleView localQQWalletTransferBubbleView;
+    float f1;
+    label210:
+    int i1;
+    if ((paramView != null) && ((paramView instanceof RelativeLayout)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, error: activity is null");
+      paramacun.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
+      paramacun.b = paramChatMessage.frienduin;
+      paramacun.jdField_a_of_type_Long = paramChatMessage.uniseq;
+      paramView = (TextView)paramacun.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377776);
+      TextView localTextView1 = (TextView)paramacun.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377775);
+      ImageView localImageView = (ImageView)paramacun.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377773);
+      TextView localTextView2 = (TextView)paramacun.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377774);
+      localQQWalletTransferBubbleView = (QQWalletTransferBubbleView)paramacun.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377777);
+      if (paramBaseChatItemLayout.title != null)
+      {
+        paramView.setTextSize(24.0F);
+        TextPaint localTextPaint = paramView.getPaint();
+        if (localTextPaint != null)
+        {
+          f1 = localTextPaint.measureText(paramBaseChatItemLayout.title);
+          if (this.i <= BaseChatItemLayout.d) {
+            break label378;
+          }
+          if (f1 > BaseChatItemLayout.d - this.m * 9) {
+            paramView.setTextSize(14.0F);
+          }
+        }
       }
+      paramView.setText(paramBaseChatItemLayout.title);
+      paramView.setTextColor(-1);
+      localTextView1.setText(paramBaseChatItemLayout.summary);
+      localTextView1.setTextColor(-1);
+      localTextView2.setText(paramBaseChatItemLayout.source);
+      localImageView.setImageResource(2130846325);
+      i1 = Color.parseColor(paramBaseChatItemLayout.backgroundColor);
+      if (paramChatMessage.isSend()) {
+        break label401;
+      }
+    }
+    label401:
+    for (boolean bool = true;; bool = false)
+    {
+      localQQWalletTransferBubbleView.setBubbleBackground(2130846323, i1, bool);
+      paramacun.jdField_a_of_type_AndroidWidgetRelativeLayout.setContentDescription(paramBaseChatItemLayout.title + paramBaseChatItemLayout.summary + paramBaseChatItemLayout.source);
+      paramacun.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramacun.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(paramacxn);
+      paramacun.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(paramacxn);
+      return paramacun.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      paramacun.jdField_a_of_type_AndroidWidgetRelativeLayout = a(this.jdField_a_of_type_AndroidContentContext);
+      break;
+      label378:
+      if (f1 <= this.m * 14) {
+        break label210;
+      }
+      paramView.setTextSize(14.0F);
+      break label210;
+    }
+  }
+  
+  protected RelativeLayout a(Context paramContext)
+  {
+    RelativeLayout localRelativeLayout = new RelativeLayout(paramContext);
+    localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+    Object localObject1 = new QQWalletTransferBubbleView(paramContext);
+    ((QQWalletTransferBubbleView)localObject1).setLayoutParams(new RelativeLayout.LayoutParams(this.i, this.l * 5));
+    ((QQWalletTransferBubbleView)localObject1).setId(2131377777);
+    Object localObject2 = new ImageView(paramContext);
+    Object localObject3 = new RelativeLayout.LayoutParams(this.j, this.j);
+    ((RelativeLayout.LayoutParams)localObject3).rightMargin = this.k;
+    ((RelativeLayout.LayoutParams)localObject3).addRule(15);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(11);
+    ((ImageView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+    ((ImageView)localObject2).setScaleType(ImageView.ScaleType.FIT_CENTER);
+    ((ImageView)localObject2).setId(2131377773);
+    ((QQWalletTransferBubbleView)localObject1).addView((View)localObject2);
+    localObject2 = new LinearLayout(paramContext);
+    localObject3 = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(0, 2131377773);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(9);
+    ((RelativeLayout.LayoutParams)localObject3).leftMargin = this.k;
+    ((RelativeLayout.LayoutParams)localObject3).rightMargin = this.o;
+    ((RelativeLayout.LayoutParams)localObject3).addRule(15);
+    ((LinearLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+    ((LinearLayout)localObject2).setOrientation(1);
+    localObject3 = new TextView(paramContext);
+    ((TextView)localObject3).setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
+    ((TextView)localObject3).setSingleLine();
+    ((TextView)localObject3).setEllipsize(TextUtils.TruncateAt.END);
+    ((TextView)localObject3).setTextSize(24.0F);
+    ((TextView)localObject3).setId(2131377776);
+    ((LinearLayout)localObject2).addView((View)localObject3);
+    localObject3 = new TextView(paramContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+    localLayoutParams.topMargin = this.q;
+    ((TextView)localObject3).setLayoutParams(localLayoutParams);
+    ((TextView)localObject3).setSingleLine();
+    ((TextView)localObject3).setEllipsize(TextUtils.TruncateAt.END);
+    ((TextView)localObject3).setTextSize(13.0F);
+    ((TextView)localObject3).setId(2131377775);
+    ((LinearLayout)localObject2).addView((View)localObject3);
+    ((QQWalletTransferBubbleView)localObject1).addView((View)localObject2);
+    localRelativeLayout.addView((View)localObject1);
+    localObject1 = new RelativeLayout(paramContext);
+    localObject2 = new RelativeLayout.LayoutParams(this.i, -2);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131377777);
+    ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    ((RelativeLayout)localObject1).setBackgroundResource(2130846324);
+    ((RelativeLayout)localObject1).setId(2131377772);
+    paramContext = new TextView(paramContext);
+    localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject2).leftMargin = this.k;
+    ((RelativeLayout.LayoutParams)localObject2).rightMargin = this.k;
+    ((RelativeLayout.LayoutParams)localObject2).topMargin = this.l;
+    ((RelativeLayout.LayoutParams)localObject2).bottomMargin = this.l;
+    ((RelativeLayout.LayoutParams)localObject2).addRule(15);
+    paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    paramContext.setSingleLine();
+    paramContext.setEllipsize(TextUtils.TruncateAt.END);
+    paramContext.setTextColor(-7500403);
+    paramContext.setTextSize(12.0F);
+    paramContext.setIncludeFontPadding(false);
+    paramContext.setId(2131377774);
+    ((RelativeLayout)localObject1).addView(paramContext);
+    localRelativeLayout.addView((View)localObject1);
+    return localRelativeLayout;
+  }
+  
+  public String a(ChatMessage paramChatMessage)
+  {
+    paramChatMessage = (MessageForTroopFee)paramChatMessage;
+    return paramChatMessage.title + paramChatMessage.summary + paramChatMessage.source;
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
+  {
+    switch (paramInt)
+    {
+    default: 
+      super.a(paramInt, paramContext, paramChatMessage);
+      return;
+    case 2131364985: 
+      aaod.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, new path:" + paramCompressInfo.e);
-    }
-    localaecw.f(paramCompressInfo.e);
-    aecw.a(localaecw).a();
+    super.d(paramChatMessage);
+  }
+  
+  public bblt[] a(View paramView)
+  {
+    bblr localbblr = new bblr();
+    paramView = actn.a(paramView);
+    a(paramView, localbblr);
+    aaod.a(localbblr, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    b(paramView, localbblr);
+    super.c(localbblr, this.jdField_a_of_type_AndroidContentContext);
+    super.e(localbblr, this.jdField_a_of_type_AndroidContentContext);
+    return localbblr.a();
   }
 }
 

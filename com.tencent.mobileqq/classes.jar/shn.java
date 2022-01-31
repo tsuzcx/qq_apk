@@ -1,37 +1,38 @@
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.util.ReadInjoyWebShareHelper.4;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-class shn
-  implements axrs
+public class shn
+  implements oof
 {
-  shn(shl paramshl) {}
+  public shn(ReadInjoyWebShareHelper.4 param4) {}
   
-  public void a(axsp paramaxsp, axsq paramaxsq)
+  public void a(BaseResp paramBaseResp)
   {
-    if ((paramaxsp == null) || (paramaxsq == null)) {}
-    while (!(paramaxsp instanceof axro)) {
+    boolean bool = true;
+    if ((this.a.this$0.a == null) || (!this.a.this$0.a.equals(paramBaseResp.transaction))) {
       return;
     }
-    axro localaxro = (axro)paramaxsp;
-    localaxro.jdField_a_of_type_Long += paramaxsq.c;
-    paramaxsq.c = 0L;
-    paramaxsq = "bytes=" + localaxro.jdField_a_of_type_Long + "-";
-    localaxro.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsq);
-    String str1 = localaxro.jdField_a_of_type_JavaLangString;
-    if (str1.contains("range="))
+    switch (paramBaseResp.errCode)
     {
-      String str2 = str1.substring(0, str1.lastIndexOf("range="));
-      localaxro.jdField_a_of_type_JavaLangString = (str2 + "range=" + localaxro.jdField_a_of_type_Long);
+    case -1: 
+    default: 
+      wim.a(1, 2131719476);
+      bool = false;
     }
-    paramaxsp = paramaxsp.a();
-    if ((paramaxsp != null) && ((paramaxsp instanceof shp))) {
-      ((shp)paramaxsp).b = true;
+    while (this.a.a)
+    {
+      shk.a(this.a.this$0, "we_chat", bool);
+      return;
+      wim.a(2, 2131719495);
+      continue;
+      bool = false;
     }
-    urk.b("AsyncFileDownloader", String.format("breakDown , range = %s , url = %s", new Object[] { paramaxsq, str1 }));
+    shk.a(this.a.this$0, "we_chat_circle", bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     shn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-
 class pfo
-  implements View.OnTouchListener
+  implements pvr
 {
-  pfo(pfl parampfl, LinearLayout paramLinearLayout) {}
+  pfo(pfm parampfm, pax parampax, rap paramrap) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-    }
-    return false;
+    onk.a = this.jdField_a_of_type_Pax.a();
+    onk.a(this.jdField_a_of_type_Rap.a(), this.jdField_a_of_type_Pax.a(), 2);
   }
 }
 

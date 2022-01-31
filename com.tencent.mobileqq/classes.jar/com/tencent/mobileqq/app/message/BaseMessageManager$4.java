@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.message;
 
-import ajzy;
-import akcw;
-import awao;
+import akok;
+import akri;
+import awzw;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class BaseMessageManager$4
   implements Runnable
 {
-  public BaseMessageManager$4(ajzy paramajzy, MessageRecord paramMessageRecord, long paramLong) {}
+  public BaseMessageManager$4(akok paramakok, MessageRecord paramMessageRecord, long paramLong) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class BaseMessageManager$4
     {
       this.this$0.a.a().f(null);
       return;
-      this.this$0.a.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, akcw.e, akcw.m);
+      this.this$0.a.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, akri.e, akri.m);
     }
   }
 }

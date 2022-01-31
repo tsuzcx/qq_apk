@@ -1,17 +1,16 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.AssistantSettingActivity.34.1;
+import com.tencent.widget.HeightAdaptableListView;
 
 public class aajo
-  implements avck
+  implements afrz
 {
-  public aajo(ChatSettingActivity paramChatSettingActivity) {}
+  public aajo(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void a()
   {
-    if ((this.a.f != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
-      ChatSettingActivity.a(this.a, this.a.a, this.a.f);
-    }
+    this.a.a.post(new AssistantSettingActivity.34.1(this));
+    AssistantSettingActivity.c(this.a);
   }
 }
 

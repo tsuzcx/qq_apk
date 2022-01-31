@@ -1,28 +1,29 @@
-import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
 
 class ahjn
-  implements bekd
+  implements mne
 {
-  ahjn(ahjj paramahjj) {}
+  ahjn(ahjm paramahjm) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state: " + paramInt);
+      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onError " + paramInt);
     }
-    if (paramInt == 4097)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state is idle.");
-      }
-      this.a.b = this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 400L);
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onStart " + paramString);
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onFinish " + paramString);
+    }
   }
 }
 

@@ -1,15 +1,17 @@
-class bdfh
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.appcommon.js.BaseJsCallBack;
+
+public class bdfh
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
+  public bdfh(BaseJsCallBack paramBaseJsCallBack) {}
   
-  private bdfh(bdey parambdey) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdfh
  * JD-Core Version:    0.7.0.1
  */

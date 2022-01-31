@@ -1,23 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListView.SavedState;
-
-public final class bejm
-  implements Parcelable.Creator<ExpandableListView.SavedState>
+public class bejm
+  implements beju<Boolean>
 {
-  public ExpandableListView.SavedState a(Parcel paramParcel)
+  private int a;
+  
+  public static bejm a(int paramInt)
   {
-    return new ExpandableListView.SavedState(paramParcel, null);
+    bejm localbejm = new bejm();
+    localbejm.a = paramInt;
+    return localbejm;
   }
   
-  public ExpandableListView.SavedState[] a(int paramInt)
+  public Boolean a(begw parambegw)
   {
-    return new ExpandableListView.SavedState[paramInt];
+    switch (this.a)
+    {
+    }
+    for (;;)
+    {
+      return Boolean.valueOf(true);
+      parambegw.a();
+      continue;
+      parambegw.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bejm
  * JD-Core Version:    0.7.0.1
  */

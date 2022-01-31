@@ -1,73 +1,17 @@
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StKVData;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StSetUserCloudStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StSetUserCloudStorageRsp;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qidian.QidianProfileCardActivity;
 
 public class bdue
-  extends bdtz
+  implements DialogInterface.OnClickListener
 {
-  private CloudStorage.StSetUserCloudStorageReq a = new CloudStorage.StSetUserCloudStorageReq();
+  public bdue(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public bdue(HashMap<String, String> paramHashMap, String paramString)
-  {
-    paramHashMap = paramHashMap.entrySet().iterator();
-    while (paramHashMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramHashMap.next();
-      CloudStorage.StKVData localStKVData = new CloudStorage.StKVData();
-      localStKVData.key.set((String)localEntry.getKey());
-      localStKVData.value.set((String)localEntry.getValue());
-      this.a.KVDataList.add(localStKVData);
-    }
-    this.a.appid.set(paramString);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_cloudstorage";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    CloudStorage.StSetUserCloudStorageRsp localStSetUserCloudStorageRsp = new CloudStorage.StSetUserCloudStorageRsp();
-    try
-    {
-      localStSetUserCloudStorageRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStSetUserCloudStorageRsp != null) {
-        return new JSONObject();
-      }
-      bdnw.a("SetCloudStorageRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      bdnw.a("SetCloudStorageRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "SetUserCloudStorage";
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bdue
  * JD-Core Version:    0.7.0.1
  */

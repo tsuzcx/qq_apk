@@ -1,22 +1,7 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.PinnedFooterExpandableListView;
-
-public class belx
-  implements View.OnClickListener
-{
-  public belx(PinnedFooterExpandableListView paramPinnedFooterExpandableListView1, PinnedFooterExpandableListView paramPinnedFooterExpandableListView2) {}
-  
-  public void onClick(View paramView)
-  {
-    if (PinnedFooterExpandableListView.a(this.b) != null) {
-      PinnedFooterExpandableListView.a(this.b).a(this.a, this.b.a, this.b.c);
-    }
-  }
-}
+public abstract interface belx {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     belx
  * JD-Core Version:    0.7.0.1
  */

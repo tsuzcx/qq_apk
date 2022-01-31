@@ -1,10 +1,39 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import java.util.List;
 
-public abstract interface uvl
+public class uvl
 {
-  public abstract void a();
+  private sss<uvr> a;
   
-  public abstract void a(TroopBarPOI paramTroopBarPOI);
+  public void a()
+  {
+    try
+    {
+      if (this.a != null)
+      {
+        this.a.a();
+        this.a = null;
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(List<uvr> paramList)
+  {
+    try
+    {
+      if (this.a == null) {
+        this.a = new sss(new uvn());
+      }
+      this.a.a(paramList);
+      return;
+    }
+    finally {}
+  }
 }
 
 

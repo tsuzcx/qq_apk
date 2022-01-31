@@ -1,34 +1,38 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
 public class bghe
-  extends JSONObject
+  implements Comparable<bghe>
 {
-  public bghe(QzoneVerticalVideoTopicInfo paramQzoneVerticalVideoTopicInfo) {}
+  int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public bghe a(String paramString1, String paramString2)
+  public int a(@NonNull bghe parambghe)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return this;
-    }
-    try
+    if (this.jdField_a_of_type_Int < parambghe.jdField_a_of_type_Int) {}
+    int i;
+    int j;
+    do
     {
-      put(paramString1, paramString2);
-      return this;
+      return -1;
+      if (this.jdField_a_of_type_Int > parambghe.jdField_a_of_type_Int) {
+        return 1;
+      }
+      i = bghd.a().indexOf(this.jdField_a_of_type_JavaLangString);
+      j = bghd.a().indexOf(parambghe.jdField_a_of_type_JavaLangString);
+    } while (i < j);
+    if (i > j) {
+      return 1;
     }
-    catch (JSONException paramString1)
-    {
-      QZLog.d(QzoneVerticalVideoTopicInfo.a(this.a), 2, "put JSON error", paramString1);
-    }
-    return this;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bghe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,47 @@
-import android.os.SystemClock;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShakeWindow;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
 
-class adoe
-  implements View.OnClickListener
+abstract class adoe
 {
-  adoe(adod paramadod) {}
+  protected int a;
+  protected adtf a;
+  protected String a;
+  protected int b;
+  protected String b;
   
-  public void onClick(View paramView)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.shakemsg", 2, "shake msg onClick() is called");
-    }
-    aciy.n = true;
-    if (this.a.a()) {
-      return;
-    }
-    if (SystemClock.uptimeMillis() - adod.a(this.a) < 3000L)
-    {
-      QLog.d("Q.msg.shakemsg", 2, "shake return cause:too much click in a very short time!");
-      return;
-    }
-    paramView = (MessageForShakeWindow)aciy.a(paramView);
-    if (((this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity)) || ((this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)))
-    {
-      FragmentActivity localFragmentActivity = (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext;
-      adod.a(this.a, SystemClock.uptimeMillis());
-      localFragmentActivity.getChatFragment().a().ar();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramView.frienduin, false);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramView.frienduin, false);
+    return this.jdField_b_of_type_Int;
   }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public abstract void a();
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(adtf paramadtf)
+  {
+    this.jdField_a_of_type_Adtf = paramadtf;
+  }
+  
+  public boolean a(String paramString)
+  {
+    a();
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = -1;
+    return true;
+  }
+  
+  public abstract boolean b(String paramString);
 }
 
 

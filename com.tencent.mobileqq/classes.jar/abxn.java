@@ -1,21 +1,15 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 
 public class abxn
-  implements URLDrawable.URLDrawableListener
+  implements DialogInterface.OnDismissListener
 {
-  public abxn(TroopInfoActivity paramTroopInfoActivity) {}
+  public abxn(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    TroopInfoActivity.b(this.a);
+    this.a.finish();
   }
 }
 

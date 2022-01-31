@@ -1,55 +1,76 @@
-import Wallet.PfaFriendRsp;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 
-final class aglo
-  extends Handler
+public class aglo
+  extends BaseAdapter
 {
-  aglo(Looper paramLooper)
+  public aglo(CameraPreviewActivity paramCameraPreviewActivity) {}
+  
+  public String a(int paramInt)
   {
-    super(paramLooper);
+    if ((CameraPreviewActivity.a(this.a) != null) && (paramInt < CameraPreviewActivity.a(this.a).size()) && (paramInt >= 0)) {
+      return (String)CameraPreviewActivity.a(this.a).get(paramInt);
+    }
+    return null;
   }
   
-  public void handleMessage(Message paramMessage)
+  public int getCount()
   {
-    boolean bool2 = true;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (CameraPreviewActivity.a(this.a) != null) {
+      return CameraPreviewActivity.a(this.a).size();
     }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramMessage.obj != null)
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      localObject1 = localObject2;
-      if ((paramMessage.obj instanceof PfaFriendRsp)) {
-        localObject1 = (PfaFriendRsp)paramMessage.obj;
-      }
-    }
-    boolean bool1;
-    if (paramMessage.arg1 == 1)
-    {
-      bool1 = true;
-      if (paramMessage.arg2 != 1) {
-        break label93;
-      }
+      paramView = this.a.getLayoutInflater().inflate(2131559383, null);
+      paramViewGroup = new aglp();
+      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131371916));
+      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      agln.a(bool1, (PfaFriendRsp)localObject1, bool2);
-      return;
-      bool1 = false;
-      break;
-      label93:
-      bool2 = false;
+      Object localObject = a(paramInt);
+      if (localObject == null) {
+        break;
+      }
+      localObject = new File((String)localObject);
+      if (((File)localObject).exists()) {}
+      try
+      {
+        paramViewGroup.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.a(this.a), CameraPreviewActivity.b(this.a), CameraPreviewActivity.a(this.a), null, true));
+        return paramView;
+      }
+      catch (MalformedURLException paramViewGroup)
+      {
+        paramViewGroup.printStackTrace();
+        return paramView;
+      }
+      paramViewGroup = (aglp)paramView.getTag();
     }
+    paramViewGroup.a.setImageDrawable(null);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aglo
  * JD-Core Version:    0.7.0.1
  */

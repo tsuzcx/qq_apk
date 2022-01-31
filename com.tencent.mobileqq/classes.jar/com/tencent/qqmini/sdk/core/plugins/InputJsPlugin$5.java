@@ -2,16 +2,16 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import bdcy;
-import bdfz;
-import bdnw;
+import begy;
+import beka;
+import besl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class InputJsPlugin$5
   implements TextWatcher
 {
-  InputJsPlugin$5(InputJsPlugin paramInputJsPlugin, bdfz parambdfz) {}
+  InputJsPlugin$5(InputJsPlugin paramInputJsPlugin, beka parambeka) {}
   
   public void afterTextChanged(Editable paramEditable)
   {
@@ -24,7 +24,7 @@ class InputJsPlugin$5
     }
     catch (JSONException paramEditable)
     {
-      bdnw.d("NetworkJsPlugin", "afterTextChanged callback exception", paramEditable);
+      besl.d("NetworkJsPlugin", "afterTextChanged callback exception", paramEditable);
     }
   }
   

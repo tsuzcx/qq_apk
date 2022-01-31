@@ -1,57 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class atsd
-  extends alzl<atse>
+class atsd
+  implements DialogInterface.OnClickListener
 {
-  public int a()
+  atsd(atsa paramatsa, bbgg parambbgg) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return 495;
-  }
-  
-  @NonNull
-  public atse a(int paramInt)
-  {
-    return new atse();
-  }
-  
-  @Nullable
-  public atse a(alzs[] paramArrayOfalzs)
-  {
-    atse localatse = new atse();
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0) && (paramArrayOfalzs[0] != null)) {
-      atse.a(localatse, paramArrayOfalzs[0].a);
-    }
-    return localatse;
-  }
-  
-  public Class<atse> a()
-  {
-    return atse.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(atse paramatse) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.jdField_a_of_type_Bbgg.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsd
  * JD-Core Version:    0.7.0.1
  */

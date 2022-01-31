@@ -23,6 +23,7 @@ class ArkAppMgr$8
         this.val$task.appPathInfo.desc = paramAppPathInfo.desc;
         this.val$task.appPathInfo.appTempInfo = new ArkAppInfo.AppTemplateView();
         this.val$task.appPathInfo.path = paramAppPathInfo.path;
+        this.val$task.appPathInfo.from = paramAppPathInfo.from;
         this.val$task.appPathInfo.appTempInfo.view = this.val$item.appView;
         this.val$task.appPathInfo.appTempInfo.template = this.val$templateAndView[0];
         this.val$task.appPathInfo.appTempInfo.templateView = this.val$templateAndView[1];

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.emosm.web;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import aned;
-import bahj;
+import anul;
+import bbio;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,11 +12,11 @@ import java.util.Map;
 public class MessengerService$IncomingHandler$10
   implements Runnable
 {
-  public MessengerService$IncomingHandler$10(aned paramaned, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$10(anul paramanul, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
-    Bitmap localBitmap = bahj.a(this.jdField_a_of_type_JavaLangString, this.b, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    Bitmap localBitmap = bbio.a(this.jdField_a_of_type_JavaLangString, this.b, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
     Bundle localBundle = new Bundle();
     if (localBitmap != null)
     {
@@ -24,8 +24,8 @@ public class MessengerService$IncomingHandler$10
       ((Map)localObject).put("starHomeUrl", this.c);
       ((Map)localObject).put("nickname", this.d);
       ((Map)localObject).put("starId", this.b);
-      localObject = bahj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sid", (Map)localObject);
-      bahj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject, this.d, localBitmap);
+      localObject = bbio.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sid", (Map)localObject);
+      bbio.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject, this.d, localBitmap);
       localBundle.putInt("ret", 0);
     }
     for (;;)

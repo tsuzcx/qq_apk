@@ -1,71 +1,65 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.image.URLDrawableHandler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.CheckConErroObserver;
+import java.net.URL;
 
-public class ayro
-  extends CheckConErroObserver
+final class ayro
+  implements aysa
 {
-  ayrp jdField_a_of_type_Ayrp;
-  ayrq jdField_a_of_type_Ayrq;
+  long jdField_a_of_type_Long = 0L;
   
-  public ayro(TroopFileProtoReqMgr paramTroopFileProtoReqMgr, ayrq paramayrq, ayrp paramayrp)
-  {
-    this.jdField_a_of_type_Ayrq = paramayrq;
-    this.jdField_a_of_type_Ayrp = paramayrp;
-  }
+  ayro(URLDrawableHandler paramURLDrawableHandler, String paramString, ayrr paramayrr) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onResp(aysx paramaysx)
   {
-    Object localObject = "";
-    if (paramBundle != null)
-    {
-      localObject = paramBundle.getString("msf_con_erro");
-      paramBundle = (Bundle)localObject;
-      if (localObject == null) {
-        paramBundle = "";
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopFileProtoReqMgr", 2, "CheckConErroObserverImp.onReceive -> msfConErro: " + paramBundle);
-      }
-      localObject = paramBundle;
-      if (this.jdField_a_of_type_Ayrq != null)
-      {
-        FromServiceMsg localFromServiceMsg = this.jdField_a_of_type_Ayrq.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-        localObject = paramBundle;
-        if (localFromServiceMsg != null)
-        {
-          localFromServiceMsg.addAttribute("_tag_socket_connerror", paramBundle);
-          localObject = paramBundle;
-        }
-      }
+    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("HttpDownloader", 2, " structMsgCover download onResp result fileSize = " + this.jdField_a_of_type_Long + " file.path = " + paramaysx.jdField_a_of_type_Aysw.c + " resp.result = " + paramaysx.jdField_a_of_type_Int);
     }
-    if ((this.jdField_a_of_type_Ayrp != null) && (this.jdField_a_of_type_Ayrp.jdField_a_of_type_Mmn != null))
+    if (paramaysx.jdField_a_of_type_Int == 3) {
+      return;
+    }
+    boolean bool1;
+    if (paramaysx.jdField_a_of_type_Int == 0)
     {
-      paramBundle = new Bundle();
-      if (this.jdField_a_of_type_Ayrp.jdField_a_of_type_AndroidOsBundle != null) {
-        paramBundle.putAll(this.jdField_a_of_type_Ayrp.jdField_a_of_type_AndroidOsBundle);
+      bool1 = bool2;
+      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
+      {
+        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(this.jdField_a_of_type_Long);
+        bool1 = bool2;
       }
-      if (this.jdField_a_of_type_Ayrq.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg == null) {
-        break label287;
-      }
-      paramBundle.putString("data_error_msg", this.jdField_a_of_type_Ayrq.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getBusinessFailMsg());
-      paramBundle.putInt("data_error_code", this.jdField_a_of_type_Ayrq.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getBusinessFailCode());
-      aysb.a("TroopFileProtoReqMgr", aysb.a, "cookie<" + this.jdField_a_of_type_Ayrq.jdField_a_of_type_Ayrp.b + "> onProtoResponse fail end. failCode:" + this.jdField_a_of_type_Ayrq.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getBusinessFailCode() + " retryCount:" + this.jdField_a_of_type_Ayrq.jdField_a_of_type_Ajmn.c + " msfConErro:" + (String)localObject);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ayrp.jdField_a_of_type_Mmn.a(-1, null, this.jdField_a_of_type_Ayrp.jdField_a_of_type_AndroidOsBundle);
-      return;
-      label287:
-      aysb.a("TroopFileProtoReqMgr", aysb.a, "cookie<" + this.jdField_a_of_type_Ayrq.jdField_a_of_type_Ayrp.b + "> onProtoResponse fail end. msfConErro:" + (String)localObject);
+      try
+      {
+        ayrn.a(bool1, new URL(this.jdField_a_of_type_JavaLangString), null, true, paramaysx.c, paramaysx.e, null, this.jdField_a_of_type_Ayrr);
+        return;
+      }
+      catch (Exception paramaysx)
+      {
+        return;
+      }
+      bool2 = false;
+      bool1 = bool2;
+      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
+      {
+        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(paramaysx.jdField_a_of_type_Int);
+        bool1 = bool2;
+      }
     }
+  }
+  
+  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HttpDownloader", 2, " structMsgCover onUpdateProgeress totalLen = " + paramLong2 + " curOffset = " + paramLong1);
+    }
+    this.jdField_a_of_type_Long = paramLong2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayro
  * JD-Core Version:    0.7.0.1
  */

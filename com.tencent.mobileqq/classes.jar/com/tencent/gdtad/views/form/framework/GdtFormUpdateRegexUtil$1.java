@@ -1,7 +1,7 @@
 package com.tencent.gdtad.views.form.framework;
 
 import java.lang.ref.WeakReference;
-import yra;
+import zas;
 
 public final class GdtFormUpdateRegexUtil$1
   implements Runnable
@@ -10,7 +10,7 @@ public final class GdtFormUpdateRegexUtil$1
   
   public void run()
   {
-    yra.b(this.a);
+    zas.b(this.a);
   }
 }
 

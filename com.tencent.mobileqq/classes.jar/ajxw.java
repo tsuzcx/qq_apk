@@ -1,31 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.Comparator;
 
 public final class ajxw
-  implements axrs
+  implements Comparator<String>
 {
-  public void a(axsp paramaxsp, axsq paramaxsq)
+  public int a(String paramString1, String paramString2)
   {
-    if ((paramaxsp == null) || (paramaxsq == null)) {}
-    do
+    try
     {
-      do
-      {
-        return;
-      } while (!(paramaxsp instanceof axro));
-      paramaxsp = (axro)paramaxsp;
-      paramaxsp.jdField_a_of_type_Long += paramaxsq.c;
-      paramaxsq.c = 0L;
-      paramaxsq = "bytes=" + paramaxsp.jdField_a_of_type_Long + "-";
-      paramaxsp.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsq);
-      paramaxsq = paramaxsp.jdField_a_of_type_JavaLangString;
-      if (paramaxsq.contains("range="))
-      {
-        String str = paramaxsq.substring(0, paramaxsq.lastIndexOf("range="));
-        paramaxsp.jdField_a_of_type_JavaLangString = (str + "range=" + paramaxsp.jdField_a_of_type_Long);
+      long l1 = Long.parseLong(paramString1);
+      long l2 = Long.parseLong(paramString2);
+      if (l1 == l2) {
+        return 0;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("MonitorSocketDownload", 2, "IBreakDownFix, " + paramaxsq);
+      if (l1 > l2) {
+        return 2;
+      }
+      return -1;
+    }
+    catch (Exception paramString1) {}
+    return 0;
   }
 }
 

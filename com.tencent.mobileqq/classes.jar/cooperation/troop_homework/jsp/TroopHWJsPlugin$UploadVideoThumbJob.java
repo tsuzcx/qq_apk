@@ -1,324 +1,330 @@
 package cooperation.troop_homework.jsp;
 
-import bgof;
-import bgoi;
+import bhxc;
+import bhxf;
 
 public class TroopHWJsPlugin$UploadVideoThumbJob
   implements Runnable
 {
-  bgof jdField_a_of_type_Bgof;
-  bgoi jdField_a_of_type_Bgoi;
+  bhxc jdField_a_of_type_Bhxc;
+  bhxf jdField_a_of_type_Bhxf;
+  protected boolean a;
   
-  public TroopHWJsPlugin$UploadVideoThumbJob(TroopHWJsPlugin paramTroopHWJsPlugin, bgof parambgof, bgoi parambgoi)
+  public TroopHWJsPlugin$UploadVideoThumbJob(TroopHWJsPlugin paramTroopHWJsPlugin, bhxc parambhxc, bhxf parambhxf, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bgof = parambgof;
-    this.jdField_a_of_type_Bgoi = parambgoi;
+    this.jdField_a_of_type_Bhxc = parambhxc;
+    this.jdField_a_of_type_Bhxf = parambhxf;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   /* Error */
   public void run()
   {
     // Byte code:
-    //   0: ldc 28
+    //   0: ldc 31
     //   2: iconst_2
-    //   3: new 30	java/lang/StringBuilder
+    //   3: new 33	java/lang/StringBuilder
     //   6: dup
-    //   7: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   10: ldc 33
-    //   12: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   10: ldc 36
+    //   12: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   15: aload_0
-    //   16: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   19: getfield 42	bgof:jdField_a_of_type_Int	I
-    //   22: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   25: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   28: invokestatic 55	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   16: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   19: getfield 45	bhxc:jdField_a_of_type_Int	I
+    //   22: invokevirtual 48	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   25: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   28: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   31: aload_0
-    //   32: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   35: getfield 58	bgof:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   38: ifnull +230 -> 268
+    //   32: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   35: getfield 61	bhxc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   38: ifnull +200 -> 238
     //   41: aload_0
-    //   42: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   45: getfield 58	bgof:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   48: invokevirtual 64	android/graphics/Bitmap:isRecycled	()Z
-    //   51: ifne +217 -> 268
+    //   42: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   45: getfield 61	bhxc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   48: invokevirtual 67	android/graphics/Bitmap:isRecycled	()Z
+    //   51: ifne +187 -> 238
     //   54: aload_0
-    //   55: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   58: getfield 67	bgof:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   61: invokevirtual 72	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   64: ifne +204 -> 268
-    //   67: ldc 74
-    //   69: astore 4
-    //   71: aload_0
-    //   72: getfield 15	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:this$0	Lcooperation/troop_homework/jsp/TroopHWJsPlugin;
-    //   75: getfield 80	cooperation/troop_homework/jsp/TroopHWJsPlugin:mRuntime	Lbbac;
-    //   78: invokevirtual 85	bbac:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
-    //   81: astore 5
-    //   83: aload 4
-    //   85: astore_3
-    //   86: aload 5
-    //   88: ifnull +22 -> 110
-    //   91: aload 4
-    //   93: astore_3
-    //   94: aload 5
-    //   96: invokevirtual 90	com/tencent/biz/pubaccount/CustomWebView:getUrl	()Ljava/lang/String;
-    //   99: ldc 92
-    //   101: invokevirtual 98	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   104: ifeq +6 -> 110
-    //   107: ldc 100
-    //   109: astore_3
-    //   110: aload_0
-    //   111: getfield 15	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:this$0	Lcooperation/troop_homework/jsp/TroopHWJsPlugin;
-    //   114: getfield 80	cooperation/troop_homework/jsp/TroopHWJsPlugin:mRuntime	Lbbac;
-    //   117: invokevirtual 103	bbac:a	()Lcom/tencent/common/app/AppInterface;
-    //   120: astore 5
-    //   122: aload 5
-    //   124: iconst_2
-    //   125: invokevirtual 109	mqq/app/AppRuntime:getManager	(I)Lmqq/manager/Manager;
-    //   128: checkcast 111	mqq/manager/TicketManager
-    //   131: astore 4
-    //   133: aload 5
-    //   135: invokevirtual 114	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   138: astore 5
-    //   140: aload 4
-    //   142: aload 5
-    //   144: invokeinterface 118 2 0
-    //   149: astore 6
-    //   151: new 120	java/io/File
-    //   154: dup
-    //   155: new 30	java/lang/StringBuilder
-    //   158: dup
-    //   159: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   162: getstatic 126	ajed:bm	Ljava/lang/String;
-    //   165: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   168: ldc 128
-    //   170: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   173: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   176: invokespecial 131	java/io/File:<init>	(Ljava/lang/String;)V
-    //   179: astore 4
-    //   181: aload_0
-    //   182: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   185: getfield 58	bgof:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   188: aload 4
-    //   190: invokestatic 136	bacm:a	(Landroid/graphics/Bitmap;Ljava/io/File;)V
-    //   193: aload_0
-    //   194: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   197: getfield 67	bgof:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   200: invokevirtual 72	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   203: ifeq +66 -> 269
-    //   206: ldc 28
-    //   208: iconst_2
-    //   209: new 30	java/lang/StringBuilder
-    //   212: dup
-    //   213: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   216: ldc 138
-    //   218: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   221: aload_0
-    //   222: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   225: getfield 42	bgof:jdField_a_of_type_Int	I
-    //   228: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   231: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   234: invokestatic 55	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   237: aload_0
-    //   238: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   241: getfield 58	bgof:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   244: ifnull +13 -> 257
-    //   247: aload_0
-    //   248: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   251: getfield 58	bgof:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   254: invokevirtual 141	android/graphics/Bitmap:recycle	()V
-    //   257: aload 4
-    //   259: ifnull +9 -> 268
-    //   262: aload 4
-    //   264: invokevirtual 144	java/io/File:delete	()Z
-    //   267: pop
-    //   268: return
-    //   269: aload 4
-    //   271: ifnull +166 -> 437
-    //   274: aload 4
-    //   276: invokevirtual 147	java/io/File:exists	()Z
-    //   279: ifeq +158 -> 437
-    //   282: aload_3
-    //   283: aload 4
-    //   285: invokevirtual 150	java/io/File:getCanonicalPath	()Ljava/lang/String;
-    //   288: aload 5
-    //   290: aload 6
-    //   292: ldc2_w 151
-    //   295: invokestatic 157	bgnv:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)Ljava/lang/String;
-    //   298: astore_3
-    //   299: aload_0
-    //   300: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   303: getfield 67	bgof:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   306: invokevirtual 72	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   309: istore_2
-    //   310: iload_2
-    //   311: ifeq +35 -> 346
-    //   314: aload_0
-    //   315: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   318: getfield 58	bgof:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   321: ifnull +13 -> 334
-    //   324: aload_0
-    //   325: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   328: getfield 58	bgof:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   331: invokevirtual 141	android/graphics/Bitmap:recycle	()V
-    //   334: aload 4
-    //   336: ifnull -68 -> 268
-    //   339: aload 4
-    //   341: invokevirtual 144	java/io/File:delete	()Z
-    //   344: pop
-    //   345: return
-    //   346: aload_3
-    //   347: invokestatic 162	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   350: ifne +233 -> 583
-    //   353: new 164	org/json/JSONObject
-    //   356: dup
-    //   357: aload_3
-    //   358: invokespecial 165	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   361: astore_3
-    //   362: aload_3
-    //   363: ifnull +220 -> 583
-    //   366: aload_3
-    //   367: ldc 167
-    //   369: iconst_m1
-    //   370: invokevirtual 171	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   373: ifne +210 -> 583
-    //   376: aload_3
-    //   377: ldc 173
-    //   379: invokevirtual 177	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   382: astore_3
-    //   383: aload_3
-    //   384: ifnull +199 -> 583
-    //   387: aload_3
-    //   388: ldc 179
-    //   390: invokevirtual 182	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   393: astore_3
-    //   394: aload_0
-    //   395: getfield 22	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgoi	Lbgoi;
-    //   398: ifnull +190 -> 588
-    //   401: aload_0
-    //   402: getfield 22	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgoi	Lbgoi;
-    //   405: iconst_1
-    //   406: aload_3
-    //   407: invokeinterface 187 3 0
-    //   412: goto +176 -> 588
-    //   415: iload_1
-    //   416: ifne +21 -> 437
-    //   419: aload_0
-    //   420: getfield 22	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgoi	Lbgoi;
-    //   423: ifnull +14 -> 437
-    //   426: aload_0
-    //   427: getfield 22	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgoi	Lbgoi;
-    //   430: iconst_0
-    //   431: aconst_null
-    //   432: invokeinterface 187 3 0
-    //   437: aload_0
-    //   438: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   441: getfield 58	bgof:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   444: ifnull +13 -> 457
-    //   447: aload_0
-    //   448: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   451: getfield 58	bgof:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   454: invokevirtual 141	android/graphics/Bitmap:recycle	()V
-    //   457: aload 4
-    //   459: ifnull -191 -> 268
-    //   462: aload 4
-    //   464: invokevirtual 144	java/io/File:delete	()Z
-    //   467: pop
-    //   468: return
-    //   469: astore 4
-    //   471: aconst_null
-    //   472: astore_3
-    //   473: invokestatic 190	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   476: ifeq +13 -> 489
-    //   479: ldc 28
-    //   481: iconst_2
-    //   482: ldc 192
-    //   484: aload 4
-    //   486: invokestatic 196	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   489: aload_0
-    //   490: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   493: getfield 58	bgof:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   496: ifnull +13 -> 509
-    //   499: aload_0
-    //   500: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   503: getfield 58	bgof:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   506: invokevirtual 141	android/graphics/Bitmap:recycle	()V
-    //   509: aload_3
-    //   510: ifnull -242 -> 268
-    //   513: aload_3
-    //   514: invokevirtual 144	java/io/File:delete	()Z
-    //   517: pop
-    //   518: return
-    //   519: astore_3
-    //   520: aconst_null
-    //   521: astore 4
-    //   523: aload_0
-    //   524: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   527: getfield 58	bgof:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   530: ifnull +13 -> 543
-    //   533: aload_0
-    //   534: getfield 20	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bgof	Lbgof;
-    //   537: getfield 58	bgof:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   540: invokevirtual 141	android/graphics/Bitmap:recycle	()V
-    //   543: aload 4
-    //   545: ifnull +9 -> 554
-    //   548: aload 4
-    //   550: invokevirtual 144	java/io/File:delete	()Z
-    //   553: pop
-    //   554: aload_3
-    //   555: athrow
-    //   556: astore_3
-    //   557: goto -34 -> 523
-    //   560: astore 5
-    //   562: aload_3
-    //   563: astore 4
-    //   565: aload 5
-    //   567: astore_3
-    //   568: goto -45 -> 523
-    //   571: astore 5
-    //   573: aload 4
-    //   575: astore_3
-    //   576: aload 5
-    //   578: astore 4
-    //   580: goto -107 -> 473
-    //   583: iconst_0
-    //   584: istore_1
-    //   585: goto -170 -> 415
-    //   588: iconst_1
-    //   589: istore_1
-    //   590: goto -175 -> 415
+    //   55: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   58: getfield 70	bhxc:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   61: invokevirtual 75	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   64: ifne +174 -> 238
+    //   67: ldc 77
+    //   69: astore_3
+    //   70: aload_0
+    //   71: getfield 25	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Boolean	Z
+    //   74: ifeq +6 -> 80
+    //   77: ldc 79
+    //   79: astore_3
+    //   80: aload_0
+    //   81: getfield 16	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:this$0	Lcooperation/troop_homework/jsp/TroopHWJsPlugin;
+    //   84: getfield 85	cooperation/troop_homework/jsp/TroopHWJsPlugin:mRuntime	Lbcdb;
+    //   87: invokevirtual 90	bcdb:a	()Lcom/tencent/common/app/AppInterface;
+    //   90: astore 5
+    //   92: aload 5
+    //   94: iconst_2
+    //   95: invokevirtual 96	mqq/app/AppRuntime:getManager	(I)Lmqq/manager/Manager;
+    //   98: checkcast 98	mqq/manager/TicketManager
+    //   101: astore 4
+    //   103: aload 5
+    //   105: invokevirtual 101	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
+    //   108: astore 5
+    //   110: aload 4
+    //   112: aload 5
+    //   114: invokeinterface 105 2 0
+    //   119: astore 6
+    //   121: new 107	java/io/File
+    //   124: dup
+    //   125: new 33	java/lang/StringBuilder
+    //   128: dup
+    //   129: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   132: getstatic 113	ajsf:bo	Ljava/lang/String;
+    //   135: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: ldc 115
+    //   140: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   143: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   146: invokespecial 118	java/io/File:<init>	(Ljava/lang/String;)V
+    //   149: astore 4
+    //   151: aload_0
+    //   152: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   155: getfield 61	bhxc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   158: aload 4
+    //   160: invokestatic 123	bbdr:a	(Landroid/graphics/Bitmap;Ljava/io/File;)V
+    //   163: aload_0
+    //   164: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   167: getfield 70	bhxc:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   170: invokevirtual 75	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   173: ifeq +66 -> 239
+    //   176: ldc 31
+    //   178: iconst_2
+    //   179: new 33	java/lang/StringBuilder
+    //   182: dup
+    //   183: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   186: ldc 125
+    //   188: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   191: aload_0
+    //   192: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   195: getfield 45	bhxc:jdField_a_of_type_Int	I
+    //   198: invokevirtual 48	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   201: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   204: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   207: aload_0
+    //   208: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   211: getfield 61	bhxc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   214: ifnull +13 -> 227
+    //   217: aload_0
+    //   218: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   221: getfield 61	bhxc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   224: invokevirtual 128	android/graphics/Bitmap:recycle	()V
+    //   227: aload 4
+    //   229: ifnull +9 -> 238
+    //   232: aload 4
+    //   234: invokevirtual 131	java/io/File:delete	()Z
+    //   237: pop
+    //   238: return
+    //   239: aload 4
+    //   241: ifnull +208 -> 449
+    //   244: aload 4
+    //   246: invokevirtual 134	java/io/File:exists	()Z
+    //   249: ifeq +200 -> 449
+    //   252: ldc 31
+    //   254: iconst_2
+    //   255: new 33	java/lang/StringBuilder
+    //   258: dup
+    //   259: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   262: ldc 136
+    //   264: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   267: aload 4
+    //   269: invokevirtual 139	java/io/File:getCanonicalPath	()Ljava/lang/String;
+    //   272: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   275: ldc 141
+    //   277: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   280: aload 4
+    //   282: invokevirtual 145	java/io/File:length	()J
+    //   285: invokevirtual 148	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   288: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   291: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   294: aload_3
+    //   295: aload 4
+    //   297: invokevirtual 139	java/io/File:getCanonicalPath	()Ljava/lang/String;
+    //   300: aload 5
+    //   302: aload 6
+    //   304: ldc2_w 149
+    //   307: invokestatic 155	bhwp:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)Ljava/lang/String;
+    //   310: astore_3
+    //   311: aload_0
+    //   312: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   315: getfield 70	bhxc:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   318: invokevirtual 75	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   321: istore_2
+    //   322: iload_2
+    //   323: ifeq +35 -> 358
+    //   326: aload_0
+    //   327: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   330: getfield 61	bhxc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   333: ifnull +13 -> 346
+    //   336: aload_0
+    //   337: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   340: getfield 61	bhxc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   343: invokevirtual 128	android/graphics/Bitmap:recycle	()V
+    //   346: aload 4
+    //   348: ifnull -110 -> 238
+    //   351: aload 4
+    //   353: invokevirtual 131	java/io/File:delete	()Z
+    //   356: pop
+    //   357: return
+    //   358: aload_3
+    //   359: invokestatic 161	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   362: ifne +233 -> 595
+    //   365: new 163	org/json/JSONObject
+    //   368: dup
+    //   369: aload_3
+    //   370: invokespecial 164	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   373: astore_3
+    //   374: aload_3
+    //   375: ifnull +220 -> 595
+    //   378: aload_3
+    //   379: ldc 166
+    //   381: iconst_m1
+    //   382: invokevirtual 170	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   385: ifne +210 -> 595
+    //   388: aload_3
+    //   389: ldc 172
+    //   391: invokevirtual 176	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   394: astore_3
+    //   395: aload_3
+    //   396: ifnull +199 -> 595
+    //   399: aload_3
+    //   400: ldc 178
+    //   402: invokevirtual 181	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   405: astore_3
+    //   406: aload_0
+    //   407: getfield 23	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxf	Lbhxf;
+    //   410: ifnull +190 -> 600
+    //   413: aload_0
+    //   414: getfield 23	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxf	Lbhxf;
+    //   417: iconst_1
+    //   418: aload_3
+    //   419: invokeinterface 186 3 0
+    //   424: goto +176 -> 600
+    //   427: iload_1
+    //   428: ifne +21 -> 449
+    //   431: aload_0
+    //   432: getfield 23	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxf	Lbhxf;
+    //   435: ifnull +14 -> 449
+    //   438: aload_0
+    //   439: getfield 23	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxf	Lbhxf;
+    //   442: iconst_0
+    //   443: aconst_null
+    //   444: invokeinterface 186 3 0
+    //   449: aload_0
+    //   450: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   453: getfield 61	bhxc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   456: ifnull +13 -> 469
+    //   459: aload_0
+    //   460: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   463: getfield 61	bhxc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   466: invokevirtual 128	android/graphics/Bitmap:recycle	()V
+    //   469: aload 4
+    //   471: ifnull -233 -> 238
+    //   474: aload 4
+    //   476: invokevirtual 131	java/io/File:delete	()Z
+    //   479: pop
+    //   480: return
+    //   481: astore 4
+    //   483: aconst_null
+    //   484: astore_3
+    //   485: invokestatic 189	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   488: ifeq +13 -> 501
+    //   491: ldc 31
+    //   493: iconst_2
+    //   494: ldc 191
+    //   496: aload 4
+    //   498: invokestatic 195	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   501: aload_0
+    //   502: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   505: getfield 61	bhxc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   508: ifnull +13 -> 521
+    //   511: aload_0
+    //   512: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   515: getfield 61	bhxc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   518: invokevirtual 128	android/graphics/Bitmap:recycle	()V
+    //   521: aload_3
+    //   522: ifnull -284 -> 238
+    //   525: aload_3
+    //   526: invokevirtual 131	java/io/File:delete	()Z
+    //   529: pop
+    //   530: return
+    //   531: astore_3
+    //   532: aconst_null
+    //   533: astore 4
+    //   535: aload_0
+    //   536: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   539: getfield 61	bhxc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   542: ifnull +13 -> 555
+    //   545: aload_0
+    //   546: getfield 21	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadVideoThumbJob:jdField_a_of_type_Bhxc	Lbhxc;
+    //   549: getfield 61	bhxc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   552: invokevirtual 128	android/graphics/Bitmap:recycle	()V
+    //   555: aload 4
+    //   557: ifnull +9 -> 566
+    //   560: aload 4
+    //   562: invokevirtual 131	java/io/File:delete	()Z
+    //   565: pop
+    //   566: aload_3
+    //   567: athrow
+    //   568: astore_3
+    //   569: goto -34 -> 535
+    //   572: astore 5
+    //   574: aload_3
+    //   575: astore 4
+    //   577: aload 5
+    //   579: astore_3
+    //   580: goto -45 -> 535
+    //   583: astore 5
+    //   585: aload 4
+    //   587: astore_3
+    //   588: aload 5
+    //   590: astore 4
+    //   592: goto -107 -> 485
+    //   595: iconst_0
+    //   596: istore_1
+    //   597: goto -170 -> 427
+    //   600: iconst_1
+    //   601: istore_1
+    //   602: goto -175 -> 427
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	593	0	this	UploadVideoThumbJob
-    //   415	175	1	i	int
-    //   309	2	2	bool	boolean
-    //   85	429	3	localObject1	Object
-    //   519	36	3	localObject2	Object
-    //   556	7	3	localObject3	Object
-    //   567	9	3	localObject4	Object
-    //   69	394	4	localObject5	Object
-    //   469	16	4	localException1	java.lang.Exception
-    //   521	58	4	localObject6	Object
-    //   81	208	5	localObject7	Object
-    //   560	6	5	localObject8	Object
-    //   571	6	5	localException2	java.lang.Exception
-    //   149	142	6	str	java.lang.String
+    //   0	605	0	this	UploadVideoThumbJob
+    //   427	175	1	i	int
+    //   321	2	2	bool	boolean
+    //   69	457	3	localObject1	Object
+    //   531	36	3	localObject2	Object
+    //   568	7	3	localObject3	Object
+    //   579	9	3	localObject4	Object
+    //   101	374	4	localObject5	Object
+    //   481	16	4	localException1	java.lang.Exception
+    //   533	58	4	localObject6	Object
+    //   90	211	5	localObject7	Object
+    //   572	6	5	localObject8	Object
+    //   583	6	5	localException2	java.lang.Exception
+    //   119	184	6	str	java.lang.String
     // Exception table:
     //   from	to	target	type
-    //   151	181	469	java/lang/Exception
-    //   151	181	519	finally
-    //   181	237	556	finally
-    //   274	310	556	finally
-    //   346	362	556	finally
-    //   366	383	556	finally
-    //   387	412	556	finally
-    //   419	437	556	finally
-    //   473	489	560	finally
-    //   181	237	571	java/lang/Exception
-    //   274	310	571	java/lang/Exception
-    //   346	362	571	java/lang/Exception
-    //   366	383	571	java/lang/Exception
-    //   387	412	571	java/lang/Exception
-    //   419	437	571	java/lang/Exception
+    //   121	151	481	java/lang/Exception
+    //   121	151	531	finally
+    //   151	207	568	finally
+    //   244	322	568	finally
+    //   358	374	568	finally
+    //   378	395	568	finally
+    //   399	424	568	finally
+    //   431	449	568	finally
+    //   485	501	572	finally
+    //   151	207	583	java/lang/Exception
+    //   244	322	583	java/lang/Exception
+    //   358	374	583	java/lang/Exception
+    //   378	395	583	java/lang/Exception
+    //   399	424	583	java/lang/Exception
+    //   431	449	583	java/lang/Exception
   }
 }
 

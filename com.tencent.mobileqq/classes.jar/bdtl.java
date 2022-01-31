@@ -1,114 +1,146 @@
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetFriendCloudStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetFriendCloudStorageRsp;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StKVData;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StUserGameData;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.Iterator;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.qidian.PhotoWallViewForQiDianProfile;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class bdtl
-  extends bdtz
+  extends BaseAdapter
 {
-  private CloudStorage.StGetFriendCloudStorageReq a = new CloudStorage.StGetFriendCloudStorageReq();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  List<bduz> jdField_a_of_type_JavaUtilList;
   
-  public bdtl(String[] paramArrayOfString, String paramString)
+  public bdtl(PhotoWallViewForQiDianProfile paramPhotoWallViewForQiDianProfile, Context paramContext)
   {
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = paramArrayOfString[i];
-      this.a.keyList.add(str);
-      i += 1;
-    }
-    this.a.appid.set(paramString);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
   }
   
-  protected String a()
+  public void a(List<bduz> paramList)
   {
-    return "mini_app_cloudstorage";
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
   }
   
-  public JSONObject a(byte[] paramArrayOfByte)
+  public int getCount()
   {
-    if (paramArrayOfByte == null) {
-      return null;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    Object localObject1 = new CloudStorage.StGetFriendCloudStorageRsp();
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @TargetApi(16)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
     for (;;)
     {
-      JSONObject localJSONObject1;
       try
       {
-        ((CloudStorage.StGetFriendCloudStorageRsp)localObject1).mergeFrom(a(paramArrayOfByte));
-        if (localObject1 == null) {
-          break label330;
-        }
-        Object localObject2 = ((CloudStorage.StGetFriendCloudStorageRsp)localObject1).data.get();
-        if ((localObject2 == null) || (((List)localObject2).isEmpty())) {
-          break label339;
-        }
-        paramArrayOfByte = new JSONObject();
-        localObject1 = new JSONArray();
-        localObject2 = ((List)localObject2).iterator();
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
-        Object localObject3 = (CloudStorage.StUserGameData)((Iterator)localObject2).next();
-        localJSONObject1 = new JSONObject();
-        localJSONObject1.put("avatarUrl", ((CloudStorage.StUserGameData)localObject3).avatarUrl.get());
-        localJSONObject1.put("nickname", ((CloudStorage.StUserGameData)localObject3).nickname.get());
-        localJSONObject1.put("openid", ((CloudStorage.StUserGameData)localObject3).openid.get());
-        if ((((CloudStorage.StUserGameData)localObject3).KVDataList != null) && (((CloudStorage.StUserGameData)localObject3).KVDataList.size() > 0))
-        {
-          Object localObject4 = ((CloudStorage.StUserGameData)localObject3).KVDataList.get();
-          localObject3 = new JSONArray();
-          localObject4 = ((List)localObject4).iterator();
-          if (((Iterator)localObject4).hasNext())
-          {
-            CloudStorage.StKVData localStKVData = (CloudStorage.StKVData)((Iterator)localObject4).next();
-            JSONObject localJSONObject2 = new JSONObject();
-            localJSONObject2.put("key", localStKVData.key.get());
-            localJSONObject2.put("value", localStKVData.value.get());
-            ((JSONArray)localObject3).put(localJSONObject2);
-            continue;
-          }
-          localJSONObject1.put("KVDataList", localObject3);
+        paramViewGroup = ((bduz)this.jdField_a_of_type_JavaUtilList.get(paramInt)).c;
+        ViewGroup localViewGroup;
+        Resources localResources;
+        int i;
+        int j;
+        if (!QLog.isColorLevel()) {
+          break label337;
         }
       }
-      catch (Exception paramArrayOfByte)
+      catch (Exception localException1)
       {
-        bdnw.a("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
-        return null;
+        try
+        {
+          localObject2 = ((bduz)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a;
+          localViewGroup = paramViewGroup;
+          paramViewGroup = (ViewGroup)localObject2;
+          if (paramView != null) {
+            break label354;
+          }
+          localObject2 = new bdtm(this);
+          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559388, null);
+          paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentQidianPhotoWallViewForQiDianProfile.a, this.jdField_a_of_type_ComTencentQidianPhotoWallViewForQiDianProfile.b));
+          ((bdtm)localObject2).jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131371583));
+          ((bdtm)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369816));
+          ((bdtm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
+          ((bdtm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+          ((bdtm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
+          ((bdtm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
+          localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+          ((bdtm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(actn.a(2.5F, localResources), 1.0F);
+          ((bdtm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setGravity(80);
+          ((bdtm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+          ((bdtm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130841197);
+          i = actn.a(11.0F, localResources);
+          j = actn.a(14.0F, localResources);
+          ((bdtm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setPadding(j, 0, j, i);
+          paramView.setTag(localObject2);
+          ((bdtm)localObject2).jdField_a_of_type_ComTencentImageURLImageView.setTag(new ausu(25, Integer.valueOf(paramInt)));
+          if (!TextUtils.isEmpty(localViewGroup)) {
+            break label366;
+          }
+          ((bdtm)localObject2).jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130849344);
+          if (!TextUtils.isEmpty(paramViewGroup))
+          {
+            ((bdtm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+            ((bdtm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup);
+          }
+          return paramView;
+        }
+        catch (Exception localException2)
+        {
+          Object localObject2;
+          Object localObject1;
+          break label323;
+        }
+        localException1 = localException1;
+        paramViewGroup = null;
       }
-      ((JSONArray)localObject1).put(localJSONObject1);
+      label323:
+      QLog.d("PhotoWallViewForQiDianProfile", 2, "getView url error!");
+      label337:
+      localException1.printStackTrace();
+      localObject2 = null;
+      localObject1 = paramViewGroup;
+      paramViewGroup = (ViewGroup)localObject2;
+      continue;
+      label354:
+      localObject2 = (bdtm)paramView.getTag();
+      continue;
+      label366:
+      localObject1 = URLDrawable.getDrawable((String)localObject1);
+      ((bdtm)localObject2).jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
     }
-    paramArrayOfByte.put("data", localObject1);
-    return paramArrayOfByte;
-    label330:
-    bdnw.a("ProtoBufRequest", "onResponse fail.rsp = null");
-    return null;
-    label339:
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetFriendCloudStorage";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bdtl
  * JD-Core Version:    0.7.0.1
  */

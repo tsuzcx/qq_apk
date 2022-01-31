@@ -1,8 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import java.util.List;
+
 public class bjjh
+  implements View.OnClickListener
 {
-  public long a;
-  public long b;
-  public long c;
+  public bjjh(AdvancedProviderView paramAdvancedProviderView) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = bkyx.a().a();
+    if (paramView.size() > 1) {
+      vzz.a(this.a.a, paramView.get(1));
+    }
+  }
 }
 
 

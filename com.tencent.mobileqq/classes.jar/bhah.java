@@ -1,31 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
 public class bhah
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public ImageView a;
+  public bhah(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
   
-  public bhah(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.a = ((ImageView)paramView.findViewById(2131311427));
-  }
-  
-  public void a()
-  {
-    this.a.setImageResource(2130845014);
-  }
-  
-  public void b()
-  {
-    this.a.setImageResource(2130845015);
+    QzoneVerticalVideoDownloadActivity.access$502(this.a, true);
+    QzoneVerticalVideoDownloadActivity.access$600(this.a);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhah
  * JD-Core Version:    0.7.0.1
  */

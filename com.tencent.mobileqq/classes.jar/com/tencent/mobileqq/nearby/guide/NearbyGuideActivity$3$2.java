@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.nearby.guide;
 
-import asiq;
+import ateu;
 import java.util.ArrayList;
 
 public class NearbyGuideActivity$3$2
   implements Runnable
 {
-  public NearbyGuideActivity$3$2(asiq paramasiq, boolean paramBoolean, int paramInt, ArrayList paramArrayList) {}
+  public NearbyGuideActivity$3$2(ateu paramateu, boolean paramBoolean, int paramInt, ArrayList paramArrayList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Asiq.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Ateu.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

@@ -1,55 +1,33 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aixw
+  extends ajdp
 {
-  public static void a(String paramString, Bundle paramBundle)
+  public aixw(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramBundle == null) {}
-    int i;
+    switch (paramInt)
+    {
+    }
     do
     {
-      String str;
-      for (;;)
-      {
-        return;
-        try
-        {
-          if (aixs.a())
-          {
-            i = paramBundle.getInt("featureId");
-            str = paramBundle.getString("featureKey");
-            if ("action_begin_trace".equals(paramString))
-            {
-              aixs.a().a(i, str, paramBundle);
-              return;
-            }
-          }
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("TraceReport", 1, paramString, new Object[0]);
-          return;
-        }
-      }
-      if ("action_end_trace".equals(paramString))
-      {
-        aixs.a().b(i, str, paramBundle);
-        return;
-      }
-      if ("action_report_span".equals(paramString))
-      {
-        aixs.a().c(i, str, paramBundle);
-        return;
-      }
-      if ("action_update_trace".equals(paramString))
-      {
-        aixs.a().a(i, paramBundle);
-        return;
-      }
-    } while (!"action_enable_trace".equals(paramString));
-    boolean bool = paramBundle.getBoolean("enable");
-    aixs.a().a(i, bool);
+      return;
+    } while (paramObject == null);
+    try
+    {
+      paramObject = new JSONObject(paramObject.toString());
+      paramInt = paramObject.optInt("errCode");
+      paramObject.remove("errCode");
+      ApolloGameInterfaceProxy.a(this.a, paramInt, "cs.ssoMessage.local", paramObject.toString());
+      return;
+    }
+    catch (Throwable paramObject)
+    {
+      QLog.e("cmgame_process.CmGameObserver", 1, paramObject, new Object[0]);
+    }
   }
 }
 

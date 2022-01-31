@@ -1,49 +1,206 @@
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import android.hardware.Camera.Parameters;
+import android.os.SystemClock;
+import com.tencent.av.core.VcControllerImpl;
+import com.tencent.av.gaudio.QQGAudioCtrl;
+import com.tencent.av.opengl.GraphicRenderMgr;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
 public class lkp
-  extends lka
+  extends lkb
+  implements lpe
 {
-  public void a(long paramLong)
+  private Camera.AutoFocusCallback a;
+  
+  public lkp(Context paramContext)
   {
-    paramLong -= this.a;
-    int j = 0;
-    float f2 = 1.0F;
-    int i;
-    float f1;
-    if ((paramLong > 4631L) && (paramLong < 4964L))
+    super(paramContext);
+    this.jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback = new lkq(this);
+  }
+  
+  @TargetApi(9)
+  private void a(Camera.Parameters paramParameters, boolean paramBoolean)
+  {
+    if (paramParameters == null)
     {
-      i = (int)(255L * (paramLong - 4631L) / 333L);
-      f1 = (0.5F * (float)(paramLong + 4964L) - 4631.0F) / 333.0F;
-    }
-    for (;;)
-    {
-      a(i);
-      b(f1);
+      lcl.c("AndroidCamera", "parameters null, do nothing about focus config");
       return;
-      if ((paramLong >= 4964L) && (paramLong <= 5397L))
-      {
-        i = 255;
-        f1 = f2;
+    }
+    List localList = paramParameters.getSupportedFocusModes();
+    if (localList == null)
+    {
+      lcl.c("AndroidCamera", "getSupportedFocusModes empty");
+      return;
+    }
+    lpi locallpi = lpi.a();
+    if ((locallpi != null) && (locallpi.g())) {}
+    for (boolean bool = true;; bool = false)
+    {
+      lcl.c("AndroidCamera", String.format("enableAutoFocus, isUserSelfFocusDev[%s], enable[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) }));
+      if (!bool) {
+        break;
       }
-      else
+      a(paramBoolean, localList);
+      return;
+    }
+    a(paramBoolean, localList, paramParameters);
+  }
+  
+  private void a(boolean paramBoolean, List<String> paramList)
+  {
+    if (!paramList.contains("auto")) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      GraphicRenderMgr.getInstance().setFocusDetectCallback(this);
+      GraphicRenderMgr.getInstance().setFocusConfig(true, SystemClock.elapsedRealtime(), 111, 3000);
+      return;
+    }
+    GraphicRenderMgr.getInstance().setFocusDetectCallback(null);
+    GraphicRenderMgr.getInstance().setFocusConfig(false, SystemClock.elapsedRealtime(), 111, 3000);
+  }
+  
+  private void a(boolean paramBoolean, List<String> paramList, Camera.Parameters paramParameters)
+  {
+    if ((paramBoolean) && (this.e >= 9) && (paramList.contains("continuous-video"))) {
+      paramParameters.setFocusMode("continuous-video");
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidHardwareCamera.setParameters(paramParameters);
+      return;
+    }
+    catch (Exception paramList) {}
+  }
+  
+  protected void a(long paramLong, int paramInt1, int paramInt2)
+  {
+    super.a(paramLong, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_AndroidHardwareCamera != null)
+    {
+      Object localObject1 = null;
+      try
       {
-        f1 = f2;
-        i = j;
-        if (paramLong > 5397L)
+        localObject2 = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
+        localObject1 = localObject2;
+      }
+      catch (Exception localException)
+      {
+        do
         {
-          f1 = f2;
-          i = j;
-          if (paramLong < 5564L)
+          for (;;)
           {
-            i = (int)(255L * (5564L - paramLong) / 167L);
-            f1 = (167.0F - (float)(5397L - paramLong) * 0.5F) / 167.0F;
+            Object localObject2;
+            QLog.d("AndroidCamera", 2, "setCameraPara exception", localException);
+            continue;
+            boolean bool = false;
           }
+        } while (!QLog.isDevelopLevel());
+        QLog.w("AndroidCamera", 1, "setCameraPara, parameters[null]");
+        return;
+      }
+      if (localObject1 != null)
+      {
+        bool = VcControllerImpl.setCameraParameters(localObject1.flatten());
+        localObject2 = localObject1.flatten();
+        if (!bool)
+        {
+          bool = true;
+          QQGAudioCtrl.setCameraParameters((String)localObject2, bool);
+          a(localObject1, true);
         }
       }
     }
+    while (!QLog.isDevelopLevel()) {
+      return;
+    }
+    QLog.w("AndroidCamera", 1, "setCameraPara, camera[false]");
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(boolean paramBoolean)
   {
-    a(paramInt1 * 361 / 1500, paramInt2 - paramInt1 * 968 / 1500, paramInt1 * 1139 / 1500, paramInt2 - paramInt1 * 536 / 1500);
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_AndroidHardwareCamera == null) {
+        lcl.c("AndroidCamera", "camera null, return");
+      }
+    }
+    else {
+      return;
+    }
+    GraphicRenderMgr.getInstance().setIsFocusing(true);
+    this.jdField_a_of_type_AndroidHardwareCamera.autoFocus(this.jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback);
+  }
+  
+  /* Error */
+  public boolean c(long paramLong)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: getstatic 183	lkp:jdField_a_of_type_Boolean	Z
+    //   5: istore_3
+    //   6: iload_3
+    //   7: ifeq +19 -> 26
+    //   10: aload_0
+    //   11: getfield 119	lkp:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
+    //   14: invokevirtual 133	android/hardware/Camera:getParameters	()Landroid/hardware/Camera$Parameters;
+    //   17: astore 4
+    //   19: aload_0
+    //   20: aload 4
+    //   22: iconst_0
+    //   23: invokespecial 150	lkp:a	(Landroid/hardware/Camera$Parameters;Z)V
+    //   26: aload_0
+    //   27: lload_1
+    //   28: invokespecial 185	lkb:c	(J)Z
+    //   31: istore_3
+    //   32: aload_0
+    //   33: monitorexit
+    //   34: iload_3
+    //   35: ireturn
+    //   36: astore 4
+    //   38: invokestatic 188	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   41: ifeq +13 -> 54
+    //   44: ldc 26
+    //   46: iconst_2
+    //   47: ldc 190
+    //   49: aload 4
+    //   51: invokestatic 192	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   54: aconst_null
+    //   55: astore 4
+    //   57: goto -38 -> 19
+    //   60: astore 4
+    //   62: aload_0
+    //   63: monitorexit
+    //   64: aload 4
+    //   66: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	67	0	this	lkp
+    //   0	67	1	paramLong	long
+    //   5	30	3	bool	boolean
+    //   17	4	4	localParameters	Camera.Parameters
+    //   36	14	4	localException	Exception
+    //   55	1	4	localObject1	Object
+    //   60	5	4	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   10	19	36	java/lang/Exception
+    //   2	6	60	finally
+    //   10	19	60	finally
+    //   19	26	60	finally
+    //   26	32	60	finally
+    //   38	54	60	finally
+  }
+  
+  public int g()
+  {
+    return a(this.f, this.jdField_a_of_type_AndroidHardwareCamera).c;
   }
 }
 

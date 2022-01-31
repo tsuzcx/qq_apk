@@ -1,66 +1,80 @@
-import android.opengl.GLES20;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
-import java.nio.ShortBuffer;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.ISecurityFileHelper;
 
 public class akvy
+  extends akvw
+  implements ISecurityFileHelper
 {
-  public static final float[] a;
-  public static final short[] a;
-  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
-  private ShortBuffer jdField_a_of_type_JavaNioShortBuffer;
-  public float[] b;
-  public short[] b;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, 1.0F, 0.0F, 0.0F, 1.0F, -1.0F, -1.0F, 0.0F, 0.0F, 0.0F, 1.0F, -1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
-    jdField_a_of_type_ArrayOfShort = new short[] { 0, 1, 2, 2, 3, 0 };
-  }
-  
   public akvy()
   {
-    this.jdField_b_of_type_ArrayOfFloat = jdField_a_of_type_ArrayOfFloat;
-    this.jdField_b_of_type_ArrayOfShort = jdField_a_of_type_ArrayOfShort;
-    b();
+    super(null);
   }
   
-  public akvy(float[] paramArrayOfFloat, short[] paramArrayOfShort)
+  protected String a()
   {
-    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat;
-    this.jdField_b_of_type_ArrayOfShort = paramArrayOfShort;
-    b();
+    return "QQFavoriteMigration";
   }
   
-  private void b()
+  public String declareBusinessFileName()
   {
-    this.jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(this.jdField_b_of_type_ArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_b_of_type_ArrayOfFloat).position(0);
-    this.jdField_a_of_type_JavaNioShortBuffer = ByteBuffer.allocateDirect(this.jdField_b_of_type_ArrayOfShort.length * 2).order(ByteOrder.nativeOrder()).asShortBuffer();
-    this.jdField_a_of_type_JavaNioShortBuffer.put(this.jdField_b_of_type_ArrayOfShort).position(0);
+    return "QQ_Favorite";
   }
   
-  public void a()
+  public boolean doMigrate(File paramFile)
   {
-    GLES20.glDrawElements(4, 6, 5123, this.jdField_a_of_type_JavaNioShortBuffer);
+    QLog.d("ISecurityFileHelper", 1, "Move QQFavorite file start");
+    File localFile = new File(ajsf.bh);
+    if ((localFile.exists()) && (paramFile.isDirectory()))
+    {
+      paramFile = akvu.a(localFile);
+      int j = paramFile.length;
+      int i = 0;
+      while (i < j)
+      {
+        localFile = paramFile[i];
+        String str = localFile.getName();
+        if ((str.length() > 4) && (str.matches("[0-9]{5}.*"))) {
+          bbdj.a(localFile.getAbsolutePath(), ajsf.bh + akvu.a(str));
+        }
+        i += 1;
+      }
+    }
+    a();
+    return true;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean needMigration()
   {
-    GLES20.glEnableVertexAttribArray(paramInt1);
-    akvw.a("glEnableVertexAttribArray aPositionHandle");
-    GLES20.glEnableVertexAttribArray(paramInt2);
-    akvw.a("glEnableVertexAttribArray aTextureCoordHandle");
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-    GLES20.glVertexAttribPointer(paramInt1, 3, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(3);
-    GLES20.glVertexAttribPointer(paramInt2, 2, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
+    if (a())
+    {
+      File localFile = new File(ajsf.bh);
+      if ((localFile.exists()) && (localFile.isDirectory())) {
+        return true;
+      }
+      a();
+    }
+    return false;
+  }
+  
+  public File oldBusinessDir(String paramString)
+  {
+    return null;
+  }
+  
+  public boolean oldBusinessDirExist(String paramString)
+  {
+    return false;
+  }
+  
+  public String[] reportHistoryFileInfo()
+  {
+    return new String[] { "0", "0" };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akvy
  * JD-Core Version:    0.7.0.1
  */

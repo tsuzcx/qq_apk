@@ -1,99 +1,10 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-
-public class vkw
+public abstract interface vkw
 {
-  public static <T> T a(T paramT)
-  {
-    if (paramT == null) {
-      urk.e("Q.qqstory.AssertUtils", "checkNotNull failed:" + a(2));
-    }
-    return paramT;
-  }
+  public abstract void a(int paramInt);
   
-  public static String a(int paramInt)
-  {
-    for (;;)
-    {
-      try
-      {
-        localObject = new RuntimeException("getStackTrace").getStackTrace();
-        localStringBuilder = new StringBuilder();
-        i = paramInt;
-        if (localObject.length > paramInt) {
-          break label87;
-        }
-        i = localObject.length;
-      }
-      catch (Exception localException)
-      {
-        Object localObject;
-        StringBuilder localStringBuilder;
-        int i;
-        return "";
-      }
-      if (paramInt < i)
-      {
-        localStringBuilder.append("\n" + localObject[paramInt].toString());
-        paramInt += 1;
-      }
-      else
-      {
-        localObject = localStringBuilder.toString();
-        return localObject;
-        label87:
-        paramInt = 2;
-      }
-    }
-  }
+  public abstract void a(vkq paramvkq);
   
-  public static void a() {}
-  
-  public static <T> void a(T paramT)
-  {
-    if (paramT == null)
-    {
-      paramT = vmn.a("StoryAssertUtils Exception!");
-      awpu.a(paramT, "StoryAssertUtils assertNotNull_DEBUG()");
-      urk.c("Q.qqstory.AssertUtils", "assertNotNull_DEBUG failed: ", paramT);
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    urk.e("Q.qqstory.AssertUtils", "checkNotEmpty failed :" + a(2));
-  }
-  
-  public static void a(String paramString, Object... paramVarArgs)
-  {
-    if (paramVarArgs.length == 0) {}
-    for (;;)
-    {
-      urk.e("Q.qqstory.AssertUtils", paramString);
-      return;
-      paramString = String.format(paramString, paramVarArgs);
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      urk.e("Q.qqstory.AssertUtils", "assertTrue failed:" + a(4));
-    }
-  }
-  
-  public static void a(boolean paramBoolean, @NonNull String paramString)
-  {
-    if (paramBoolean) {
-      return;
-    }
-    urk.e("Q.qqstory.AssertUtils", paramString);
-  }
-  
-  public static void b() {}
+  public abstract boolean a(vkt paramvkt);
 }
 
 

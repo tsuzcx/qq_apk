@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import ajhx;
-import ancg;
-import anch;
+import ajwa;
+import ansr;
+import anss;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
 public class FavroamingManager$3
   implements Runnable
 {
-  public FavroamingManager$3(anch paramanch, ajhx paramajhx) {}
+  public FavroamingManager$3(anss paramanss, ajwa paramajwa) {}
   
   public void run()
   {
-    List localList = ((ancg)anch.h(this.this$0).getManager(149)).a("needDel");
+    List localList = ((ansr)anss.h(this.this$0).getManager(149)).a("needDel");
     if (localList.size() > 0) {
       this.a.a(localList, true);
     }

@@ -1,20 +1,16 @@
-import android.view.View;
-
 class oxs
-  implements begw
+  implements ooa
 {
-  oxs(oxq paramoxq) {}
+  oxs(oxr paramoxr, oxp paramoxp) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(ood paramood)
   {
-    switch (paramInt)
+    if ((this.jdField_a_of_type_Oxp != null) && (paramood != null))
     {
-    }
-    for (;;)
-    {
-      oxq.a(this.a).dismiss();
-      return;
-      oxq.a(this.a, false);
+      oxp localoxp = this.jdField_a_of_type_Oxp;
+      String str = paramood.b;
+      paramood = paramood.a;
+      localoxp.a(new String[] { str }, new String[] { paramood });
     }
   }
 }

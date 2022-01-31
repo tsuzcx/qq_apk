@@ -1,45 +1,42 @@
-import android.view.View;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class avoe
-  implements avom
+  extends akav
 {
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<avon> jdField_a_of_type_JavaUtilList;
+  public avoe(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  public avoe(List<avon> paramList, String paramString, int paramInt)
+  public void a(long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public String a()
-  {
-    return ajjy.a(2131639599);
-  }
-  
-  public List<avon> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView) {}
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    if (ReceiptMessageDetailFragment.b(this.a) == paramLong)
+    {
+      if (paramInt != 0) {
+        break label78;
+      }
+      QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c succ");
+      ReceiptMessageDetailFragment.a(this.a, 0, 0, false);
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+      if (this.a.isAdded())
+      {
+        ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(4);
+        ReceiptMessageDetailFragment.a(this.a, 1, true);
+      }
+    }
+    label78:
+    do
+    {
+      return;
+      QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c fail with reply codes: " + paramInt);
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+    } while (!this.a.isAdded());
+    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avoe
  * JD-Core Version:    0.7.0.1
  */

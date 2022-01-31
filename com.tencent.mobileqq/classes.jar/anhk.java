@@ -1,49 +1,48 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.util.LruCache;
 
-class anhk
-  implements URLDrawableDownListener
+public class anhk<T>
 {
-  anhk(anhi paramanhi, anhh paramanhh, URLImageView paramURLImageView, ImageView paramImageView) {}
+  private LruCache<String, T> a = new anhl(this, (int)Runtime.getRuntime().maxMemory() / 32);
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  private static int a(Bitmap paramBitmap)
   {
-    QLog.e("CameraEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Anhh.toString());
-    anhi.a(this.jdField_a_of_type_Anhi, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("CameraEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Anhh.toString());
-    anhi.a(this.jdField_a_of_type_Anhi, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    QLog.e("CameraEmotionAdapter", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Anhh.toString());
-    anhi.a(this.jdField_a_of_type_Anhi, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    anhi.a(this.jdField_a_of_type_Anhi, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraEmotionAdapter", 2, "onLoadSuccessed: " + this.jdField_a_of_type_Anhh.toString());
+    if (paramBitmap == null) {
+      return 0;
     }
-    anhi.a(this.jdField_a_of_type_Anhi, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
+    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
+  }
+  
+  private int b(T paramT)
+  {
+    if ((paramT instanceof Bitmap)) {
+      return a((Bitmap)paramT);
+    }
+    if ((paramT instanceof BitmapDrawable)) {
+      return a(((BitmapDrawable)paramT).getBitmap());
+    }
+    return 0;
+  }
+  
+  protected int a(T paramT)
+  {
+    return 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    try
+    {
+      this.a.trimToSize(paramInt);
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anhk
  * JD-Core Version:    0.7.0.1
  */

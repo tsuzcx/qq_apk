@@ -5,7 +5,7 @@ import com.tencent.tmassistant.common.ProtocolPackage;
 import com.tencent.tmassistant.common.jce.ReqHead;
 import com.tencent.tmassistant.common.jce.Request;
 import com.tencent.tmassistant.common.jce.Response;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 
 class b
   extends PostHttpRequest
@@ -16,7 +16,7 @@ class b
   {
     Object localObject3 = null;
     Object localObject2 = null;
-    ac.c("BaseNetEngine", ">>onFinished enter byteRequest=" + paramArrayOfByte1 + " byteResponse=" + paramArrayOfByte2 + " errorCode =" + paramInt);
+    ab.c("BaseNetEngine", ">>onFinished enter byteRequest=" + paramArrayOfByte1 + " byteResponse=" + paramArrayOfByte2 + " errorCode =" + paramInt);
     int i;
     if (paramArrayOfByte1 != null)
     {
@@ -28,7 +28,7 @@ class b
         {
           paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(((Request)localObject1).body, a.a(this.a));
           label107:
-          ac.c("BaseNetEngine", ">>onFinished request=" + localObject1 + " reqId=" + i + " requestJce=" + paramArrayOfByte1);
+          ab.c("BaseNetEngine", ">>onFinished request=" + localObject1 + " reqId=" + i + " requestJce=" + paramArrayOfByte1);
         }
       }
     }
@@ -42,7 +42,7 @@ class b
         if (paramArrayOfByte2 != null) {
           paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(paramArrayOfByte2.body, a.b(this.a));
         }
-        ac.c("BaseNetEngine", ">>onFinished response=" + paramArrayOfByte2 + " responseJce=" + paramArrayOfByte1);
+        ab.c("BaseNetEngine", ">>onFinished response=" + paramArrayOfByte2 + " responseJce=" + paramArrayOfByte1);
       }
       this.a.a(i, paramInt, (JceStruct)localObject1, paramArrayOfByte1);
       return;

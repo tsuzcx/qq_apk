@@ -1,16 +1,14 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.support.annotation.NonNull;
 
-class bimv
-  implements bine
+public class bimv
 {
-  bimv(bimu parambimu, boolean paramBoolean) {}
+  public String a;
+  public String b = "null";
   
-  public void a()
+  @NonNull
+  public String toString()
   {
-    if (DoodleLayout.a(this.jdField_a_of_type_Bimu.a) != null) {
-      DoodleLayout.a(this.jdField_a_of_type_Bimu.a).c(true);
-    }
-    this.jdField_a_of_type_Bimu.a.a().b(this.jdField_a_of_type_Boolean);
+    return this.a + ", value=" + this.b;
   }
 }
 

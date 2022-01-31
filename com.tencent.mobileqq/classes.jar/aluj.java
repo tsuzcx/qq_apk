@@ -1,37 +1,87 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewPropertyAnimator;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class aluj
-  implements Animator.AnimatorListener
 {
-  public aluj(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, LinearLayout paramLinearLayout) {}
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup.MarginLayoutParams jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams;
+  private ArkAppView jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
+  private int b;
+  private int c;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  private aluj(Activity paramActivity, ArkAppView paramArkAppView)
   {
-    ColorNoteSmallScreenRelativeLayout.c(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout, false);
-    paramAnimator = ColorNoteSmallScreenRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout).iterator();
-    while (paramAnimator.hasNext()) {
-      ((ColorNote)paramAnimator.next()).animate = false;
+    FrameLayout localFrameLayout = (FrameLayout)paramActivity.findViewById(16908290);
+    if (localFrameLayout == null) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.e();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.animate().setListener(null).translationX(0.0F).setDuration(200L).start();
+    this.jdField_a_of_type_AndroidViewView = localFrameLayout.getChildAt(0);
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new aluk(this));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = paramArkAppView;
+    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams = ((ViewGroup.MarginLayoutParams)paramArkAppView.getLayoutParams());
+    paramArkAppView = new DisplayMetrics();
+    paramActivity.getWindowManager().getDefaultDisplay().getMetrics(paramArkAppView);
+    this.c = paramArkAppView.heightPixels;
+    this.b = this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  private int a()
+  {
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  private void a()
+  {
+    int i = a();
+    if (i != this.jdField_a_of_type_Int)
+    {
+      int k = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+      int j = k - i;
+      if (j <= k / 4) {
+        break label104;
+      }
+      Rect localRect = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getInputRect();
+      int[] arrayOfInt = new int[2];
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLocationOnScreen(arrayOfInt);
+      k = localRect.bottom + arrayOfInt[1];
+      j = this.c - j;
+      if (j < k)
+      {
+        this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = (j - k);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+      label104:
+      this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = this.b;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
+    }
+  }
+  
+  public static void a(Activity paramActivity, ArkAppView paramArkAppView)
+  {
+    new aluj(paramActivity, paramArkAppView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aluj
  * JD-Core Version:    0.7.0.1
  */

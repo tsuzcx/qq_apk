@@ -1,16 +1,18 @@
-class asph
-  implements tsq
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+
+public class asph
+  implements asre
 {
-  asph(aspg paramaspg, asou paramasou) {}
+  public asph(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void a(tso paramtso)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Asou.a(this.jdField_a_of_type_Aspg);
+    MultiAIOFragment.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asph
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.data;
 
-import atmo;
-import atnz;
-import atoc;
+import aukm;
+import aulx;
+import auma;
 import java.util.List;
 import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.Label;
 
 public class RecommendTroopItem
-  extends atmo
+  extends aukm
 {
   private static final String JUMP_SCHEME = "mqqapi://app/joinImmediately?source_id=3&version=1.0&src_type=app&pkg=com.tencent.mobileqq&cmp=com.tencent.biz.JoinGroupTransitActivity&group_code=%s&subsource_id=%s";
   public int activity;
   public String authSig;
-  @atnz
+  @aulx
   public boolean hasRequestJoin;
   public String intro;
   public List<oidb_0x9fb.Label> labelList;
@@ -23,7 +23,7 @@ public class RecommendTroopItem
   public String recomAlgol;
   public String recommendReason;
   public int troopType;
-  @atoc
+  @auma
   public String uin;
   public byte[] x935RgroupInfo;
   public byte[] x9fbRgroupInfo;

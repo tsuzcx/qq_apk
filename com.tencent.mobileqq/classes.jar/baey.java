@@ -1,28 +1,49 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.QQCustomArkDialogForAio.2.1;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class baey
-  implements ArkViewImplement.LoadCallback
 {
-  baey(baew parambaew) {}
+  private static baey jdField_a_of_type_Baey = new baey();
+  String jdField_a_of_type_JavaLangString;
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public static baey a()
   {
-    onLoadState(paramInt1);
+    return jdField_a_of_type_Baey;
   }
   
-  public void onLoadState(int paramInt)
+  public void a() {}
+  
+  public void a(BaseChatPie paramBaseChatPie) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, baez parambaez) {}
+  
+  public void a(String paramString1, String paramString2, String paramString3) {}
+  
+  public boolean a()
   {
-    WeakReference localWeakReference = new WeakReference(this.a);
-    ThreadManager.getUIHandler().post(new QQCustomArkDialogForAio.2.1(this, localWeakReference, paramInt));
+    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean a(String paramString)
+  {
+    return true;
+  }
+  
+  public void b() {}
+  
+  public boolean b(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      return false;
+    }
+    return paramString.equals(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baey
  * JD-Core Version:    0.7.0.1
  */

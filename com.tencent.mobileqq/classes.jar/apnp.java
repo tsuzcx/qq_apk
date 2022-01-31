@@ -1,46 +1,21 @@
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import com.tencent.mobileqq.fragment.AppletsSettingFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class apnp
-  implements apnr
+class apnp
+  implements View.OnClickListener
 {
-  public apnp(AppletsSettingFragment paramAppletsSettingFragment) {}
+  apnp(apnm paramapnm, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(CompoundButton paramCompoundButton, boolean paramBoolean, AppletItem paramAppletItem)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    ArrayList localArrayList;
-    if (paramAppletItem != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppletsSettingFragment", 2, "OnChangeSwitchListener onChangeSwitchListener " + paramAppletItem.toString() + ",  isChecked:" + paramBoolean);
-      }
-      this.a.a(true);
-      paramCompoundButton.setChecked(paramBoolean);
-      paramCompoundButton = (akie)AppletsSettingFragment.a(this.a).a(148);
-      localArrayList = new ArrayList();
-      if (!paramBoolean) {
-        break label113;
-      }
-    }
-    for (;;)
-    {
-      paramAppletItem.a(i);
-      localArrayList.add(paramAppletItem);
-      paramCompoundButton.a(localArrayList);
-      return;
-      label113:
-      i = 0;
-    }
+    axqw.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
+    apvk.a(this.jdField_a_of_type_Apnm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Apnm.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFileID, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apnp
  * JD-Core Version:    0.7.0.1
  */

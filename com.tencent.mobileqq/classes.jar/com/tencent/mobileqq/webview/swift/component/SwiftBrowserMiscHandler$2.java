@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import android.os.Environment;
-import apdh;
-import bbbg;
+import apvb;
+import bbuv;
+import bceg;
 import java.io.File;
 
 public class SwiftBrowserMiscHandler$2
   implements Runnable
 {
-  public SwiftBrowserMiscHandler$2(bbbg parambbbg) {}
+  public SwiftBrowserMiscHandler$2(bceg parambceg) {}
   
   public void run()
   {
-    apdh.a(new File(Environment.getExternalStorageDirectory(), "/tencent/MobileQQ/ShareScreenShots"));
+    apvb.a(new File(bbuv.a(Environment.getExternalStorageDirectory() + "/tencent/MobileQQ/ShareScreenShots")));
   }
 }
 

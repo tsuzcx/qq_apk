@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class aecg
-  implements View.OnClickListener
+public class aecg
+  extends acun
 {
-  aecg(aecb paramaecb) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.v(true);
-  }
+  long jdField_a_of_type_Long;
+  acxn jdField_a_of_type_Acxn;
+  public aibs a;
+  public ImageView b;
+  public ImageView c;
+  public TextView d;
 }
 
 

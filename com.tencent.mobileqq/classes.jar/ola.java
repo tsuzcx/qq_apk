@@ -1,34 +1,33 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
 public class ola
-  implements TVK_SDKMgr.InstallListener
 {
-  public ola(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
-  
-  public void onInstallProgress(float paramFloat)
+  public static Bundle a(Bundle paramBundle, AdvertisementInfo paramAdvertisementInfo)
   {
-    yny.a("ReadInjoyIMAXAdFragment", "installSDK onInstallProgress arg0=");
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    yny.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledFailed arg0=");
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    yny.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledSuccessed");
-    if ((ReadInjoyIMAXAdFragment.a()) && (ReadInjoyIMAXAdFragment.b(this.a) != null)) {
-      ReadInjoyIMAXAdFragment.b(this.a).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(this.a, 4));
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
     }
+    localBundle.putString("param_ad_app_info_trace_id", paramAdvertisementInfo.mAdTraceId);
+    localBundle.putLong("param_ad_app_info_pull_time", paramAdvertisementInfo.mAdFetchTime);
+    localBundle.putString("param_ad_app_info_view_id", paramAdvertisementInfo.mAdViewId);
+    localBundle.putLong("param_ad_app_info_pos_id", paramAdvertisementInfo.mAdPosID);
+    localBundle.putInt("param_ad_app_info_kd_pos", paramAdvertisementInfo.mAdKdPos);
+    localBundle.putString("param_ad_app_info_product_id", paramAdvertisementInfo.mAdProductId);
+    localBundle.putInt("param_ad_app_info_product_type", paramAdvertisementInfo.mAdProductType);
+    localBundle.putString("param_ad_app_info_ap_url", paramAdvertisementInfo.mAdApurl);
+    localBundle.putString("param_ad_info_corporatelogo", paramAdvertisementInfo.mAdCorporateLogo);
+    localBundle.putString("param_ad_info_corporatename", paramAdvertisementInfo.mAdCorporationName);
+    localBundle.putString("param_ad_info_adtext", paramAdvertisementInfo.mAdTxt);
+    localBundle.putParcelable("param_ad_info", paramAdvertisementInfo);
+    localBundle.putParcelableArrayList("param_ad_info_dislike", paramAdvertisementInfo.mAdDislikeInfos);
+    return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ola
  * JD-Core Version:    0.7.0.1
  */

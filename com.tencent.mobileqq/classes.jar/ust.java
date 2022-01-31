@@ -1,28 +1,46 @@
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditPicSave.1.1;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 public class ust
-  implements ThreadExcutor.IThreadListener
+  extends uvu<uwp>
 {
-  ust(uss paramuss) {}
-  
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public ust(@Nullable uvy paramuvy)
   {
-    int i = 1;
-    this.a.a.a().postDelayed(new EditPicSave.1.1(this), 500L);
-    if (awij.a().a == 1) {}
-    for (;;)
-    {
-      auts.h(i);
-      return;
-      i = 2;
-    }
+    super(paramuvy);
   }
   
-  public void onPreRun() {}
+  protected JobSegment<uvx, uwp> a()
+  {
+    return new uwk();
+  }
+  
+  protected JobSegment<Integer, uvx> a(uvw paramuvw)
+  {
+    return new usu(paramuvw);
+  }
+  
+  protected uwp a()
+  {
+    uwa localuwa = (uwa)tdc.a(11);
+    List localList = localuwa.c();
+    uwp localuwp = new uwp(new ErrorMessage());
+    localuwp.jdField_b_of_type_JavaUtilList = localuwa.b(localList);
+    localuwp.jdField_b_of_type_Boolean = true;
+    localuwp.a = localuwp.jdField_b_of_type_JavaUtilList.isEmpty();
+    return localuwp;
+  }
+  
+  protected uwp a(ErrorMessage paramErrorMessage)
+  {
+    return new uwp(paramErrorMessage);
+  }
+  
+  protected void a(List<String> paramList, boolean paramBoolean)
+  {
+    ((uwa)tdc.a(11)).c(paramList, paramBoolean);
+  }
 }
 
 

@@ -1,21 +1,23 @@
-public class bhev
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.PublishEventTag;
+
+public final class bhev
+  implements Parcelable.Creator<PublishEventTag>
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  public PublishEventTag a(Parcel paramParcel)
+  {
+    return new PublishEventTag(paramParcel);
+  }
+  
+  public PublishEventTag[] a(int paramInt)
+  {
+    return new PublishEventTag[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhev
  * JD-Core Version:    0.7.0.1
  */

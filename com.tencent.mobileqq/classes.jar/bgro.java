@@ -1,26 +1,43 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qzone.util.QZLog;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
-class bgro
-  extends BroadcastReceiver
+public class bgro
+  extends OnPluginInstallListener.Stub
 {
-  bgro(bgrn parambgrn) {}
+  public bgro(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    try
+    String str = String.valueOf(paramInt);
+    paramString = ajyc.a(2131710387);
+    if (this.a.b == QQIndividualityBridgeActivity.c) {
+      paramString = ajyc.a(2131710380);
+    }
+    for (;;)
     {
-      paramContext = paramIntent.getAction();
-      QZLog.i("BaseTranslucentControll", 4, "reveiver action = " + paramContext);
-      this.a.a(paramIntent);
+      bgkq.a(str, paramString);
+      int i = bbev.a(this.a);
+      QLog.e("QQIndividuality", 2, "install plugin fail: " + paramInt + " and netType = " + i);
+      this.a.setResult(1001);
+      QQIndividualityBridgeActivity.c(this.a);
+      axqw.b(null, "CliOper", "", "", "ep_mall", "0X8006A98", 0, 0, str, String.valueOf(i), "", "");
       return;
+      if (this.a.b == QQIndividualityBridgeActivity.d) {
+        paramString = ajyc.a(2131710381);
+      } else if (this.a.b == QQIndividualityBridgeActivity.e) {
+        paramString = ajyc.a(2131710384);
+      }
     }
-    catch (Exception paramContext)
-    {
-      QZLog.e("BaseTranslucentControll", "onReceive error", paramContext);
-    }
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    this.a.b();
   }
 }
 

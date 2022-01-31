@@ -1,11 +1,11 @@
 package common.config.service;
 
-import bexz;
+import bgfq;
 
 public final class QZoneConfigHelper$1
   implements Runnable
 {
-  public QZoneConfigHelper$1(bexz parambexz) {}
+  public QZoneConfigHelper$1(bgfq parambgfq) {}
   
   public void run()
   {

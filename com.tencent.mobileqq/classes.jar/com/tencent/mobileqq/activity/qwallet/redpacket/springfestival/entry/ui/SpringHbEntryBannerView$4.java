@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import agtw;
+import ahgl;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo;
@@ -14,7 +14,7 @@ class SpringHbEntryBannerView$4
   
   public void run()
   {
-    Bitmap localBitmap = agtw.a(this.jdField_a_of_type_JavaLangString, true);
+    Bitmap localBitmap = ahgl.a(this.jdField_a_of_type_JavaLangString, true);
     if (QLog.isColorLevel()) {
       QLog.d("springHb_SpringHbEntryView", 2, "doLoadDefaultImage -- >,status:" + this.jdField_a_of_type_Int + ",filePath:" + this.jdField_a_of_type_JavaLangString + ",bitmap:" + localBitmap);
     }

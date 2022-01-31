@@ -1,18 +1,29 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView.2.1;
+import com.tencent.widget.HorizontalListView;
 
-class aiwx
-  extends AVAudioCtrl.EnableSpeakerCompleteCallback
+public class aiwx
+  implements Animation.AnimationListener
 {
-  aiwx(aiws paramaiws) {}
+  public aiwx(CmGameDebugView paramCmGameDebugView) {}
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.b(paramBoolean, paramInt);
+    if (CmGameDebugView.a(this.a))
+    {
+      CmGameDebugView.a(this.a).postDelayed(new CmGameDebugView.2.1(this), 0L);
+      CmGameDebugView.a(this.a, false);
+    }
+    if (CmGameDebugView.b(this.a)) {
+      CmGameDebugView.b(this.a, 0);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

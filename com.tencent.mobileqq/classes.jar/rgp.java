@@ -1,22 +1,6 @@
-import android.view.ViewTreeObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
-
-public class rgp
-  implements rgw
+public abstract interface rgp
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
-  public rgp(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView, int paramInt1, int paramInt2)
-  {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new rgq(this, paramInt1, paramInt2));
-  }
+  public abstract int a(int paramInt1, int paramInt2, boolean paramBoolean);
 }
 
 

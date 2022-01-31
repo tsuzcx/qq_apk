@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark.API;
 
-import albk;
+import alpy;
 
 public final class ArkAppNotifyCenter$1
   implements Runnable
 {
-  ArkAppNotifyCenter$1(albk paramalbk, String paramString1, String paramString2, String paramString3) {}
+  ArkAppNotifyCenter$1(alpy paramalpy, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Albk.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    this.jdField_a_of_type_Alpy.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
   }
 }
 

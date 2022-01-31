@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AuthDevUgActivity;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 
 public class aalk
-  extends baox
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public aalk(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  protected void onGetMyTroopEffect(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.chatopttroop", 2, "onGetMyTroopEffect  result = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      this.a.a(true);
-    }
-  }
+  public aalk(AuthDevUgActivity paramAuthDevUgActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aalk
  * JD-Core Version:    0.7.0.1
  */

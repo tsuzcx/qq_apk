@@ -7,8 +7,8 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import bajq;
-import bjeh;
+import bbkx;
+import bkur;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
@@ -51,9 +51,9 @@ public class VConsoleDragView
   
   private void initScreenConfig()
   {
-    this.mScreenWidth = bajq.a();
-    int j = bajq.b();
-    if (bjeh.b()) {}
+    this.mScreenWidth = bbkx.a();
+    int j = bbkx.b();
+    if (bkur.b()) {}
     for (int i = ImmersiveUtils.getStatusBarHeight(getContext());; i = 0)
     {
       this.mScreenHeight = (i + j);
@@ -144,8 +144,8 @@ public class VConsoleDragView
   
   public void requestLandscapeLayout()
   {
-    int i = bajq.a();
-    int k = bajq.b();
+    int i = bbkx.a();
+    int k = bbkx.b();
     if (i > k)
     {
       j = i;
@@ -158,7 +158,7 @@ public class VConsoleDragView
       this.mDm = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
       return;
     }
-    if (bjeh.b()) {}
+    if (bkur.b()) {}
     for (int j = ImmersiveUtils.getStatusBarHeight(getContext());; j = 0)
     {
       j += k;

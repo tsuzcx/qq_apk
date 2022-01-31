@@ -1,28 +1,32 @@
-import android.os.Bundle;
+import com.tencent.biz.subscribe.SubscribeUtils.1;
 import com.tencent.qphone.base.util.QLog;
 
-class wix
-  implements wiu
+public class wix
+  implements aysa
 {
-  wix(wiw paramwiw, String paramString) {}
+  public wix(SubscribeUtils.1 param1) {}
   
-  public void a(Bundle paramBundle)
+  public void onResp(aysx paramaysx)
   {
-    boolean bool = paramBundle.getBoolean("isSuccess", false);
-    if (bool)
+    QLog.i("DownLoadZipFile", 1, "download  onResp url:  resultcode: " + paramaysx.c);
+    try
     {
-      paramBundle = paramBundle.getString("data");
-      this.jdField_a_of_type_Wiw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-    }
-    while (!QLog.isColorLevel()) {
+      QLog.d("DownLoadZipFile", 4, "start unzip file to folderPath:" + this.a.jdField_a_of_type_JavaLangString);
+      nay.a(this.a.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_JavaLangString);
+      gp.a(this.a.jdField_a_of_type_JavaIoFile);
       return;
     }
-    QLog.d(this.jdField_a_of_type_Wiw.TAG, 2, "getTroopBarPublishInfo() in callback isSuccess=" + bool);
+    catch (Exception paramaysx)
+    {
+      QLog.i("DownLoadZipFile", 1, "unzip file failed" + paramaysx);
+    }
   }
+  
+  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wix
  * JD-Core Version:    0.7.0.1
  */

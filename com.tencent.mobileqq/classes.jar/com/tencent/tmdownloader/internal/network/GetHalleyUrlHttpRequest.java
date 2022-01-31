@@ -6,7 +6,7 @@ import com.tencent.tmassistant.common.jce.GetHalleyUrlRsp;
 import com.tencent.tmassistant.common.jce.Request;
 import com.tencent.tmassistant.common.jce.Response;
 import com.tencent.tmassistantbase.network.PostHttpRequest;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import java.util.ArrayList;
 
 public class GetHalleyUrlHttpRequest
@@ -17,12 +17,12 @@ public class GetHalleyUrlHttpRequest
   
   public void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
-    ac.c(TAG, "onFinished errorCode: " + paramInt);
+    ab.c(TAG, "onFinished errorCode: " + paramInt);
     paramArrayOfByte1 = ProtocolPackage.bytes2JceObj(ProtocolPackage.unpackRequestPackage(paramArrayOfByte1).body, GetHalleyUrlReq.class);
     if (paramArrayOfByte2 == null)
     {
-      ac.c(TAG, "onFinished response is null!");
-      ac.c(TAG, "exit");
+      ab.c(TAG, "onFinished response is null!");
+      ab.c(TAG, "exit");
       this.mListener.onHalleyUrlHttpRequestFinish((GetHalleyUrlReq)paramArrayOfByte1, null, false);
       return;
     }
@@ -30,7 +30,7 @@ public class GetHalleyUrlHttpRequest
     if ((paramArrayOfByte2 != null) && (paramArrayOfByte2.body != null))
     {
       paramArrayOfByte2 = ProtocolPackage.unpageageJceResponse(paramArrayOfByte2.body, GetHalleyUrlRsp.class);
-      ac.c(TAG, "halleyTest GetHalleyUrlHttpRequest finish jceResponse = " + paramArrayOfByte2);
+      ab.c(TAG, "halleyTest GetHalleyUrlHttpRequest finish jceResponse = " + paramArrayOfByte2);
       if (paramArrayOfByte2 != null) {
         if ((this.mListener != null) && (paramInt == 0)) {
           if ((paramArrayOfByte2 instanceof GetHalleyUrlRsp))
@@ -46,7 +46,7 @@ public class GetHalleyUrlHttpRequest
     }
     for (;;)
     {
-      ac.c(TAG, "exit");
+      ab.c(TAG, "exit");
       return;
       label183:
       this.mListener.onHalleyUrlHttpRequestFinish((GetHalleyUrlReq)paramArrayOfByte1, paramArrayOfByte2, false);

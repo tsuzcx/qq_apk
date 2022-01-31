@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 final class AudioHelper$3
@@ -10,9 +10,9 @@ final class AudioHelper$3
   
   public void run()
   {
-    bbmy localbbmy = bbmy.a(BaseApplicationImpl.getContext(), "de:" + this.a, 1);
-    localbbmy.a();
-    localbbmy.a();
+    bcpw localbcpw = bcpw.a(BaseApplicationImpl.getContext(), "de:" + this.a, 1);
+    localbcpw.a();
+    localbcpw.a();
   }
 }
 

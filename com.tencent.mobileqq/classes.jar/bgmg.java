@@ -1,17 +1,42 @@
-import android.os.Handler;
-import cooperation.qzone.zipanimate.ZipAnimationDrawable.ZipAnimationState.1.1;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.RecvMsg;
 
-public class bgmg
-  implements bgmo
+public abstract class bgmg
+  extends Binder
+  implements bgmf
 {
-  bgmg(bgmf parambgmf) {}
-  
-  public void onZipLoaded(boolean paramBoolean)
+  public static bgmf a(IBinder paramIBinder)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IActionListener");
+    if ((localIInterface != null) && ((localIInterface instanceof bgmf))) {
+      return (bgmf)localIInterface;
+    }
+    return new bgmh(paramIBinder);
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      this.a.jdField_a_of_type_Boolean = paramBoolean;
-      this.a.jdField_a_of_type_Bgmb.a.post(new ZipAnimationDrawable.ZipAnimationState.1.1(this));
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qappcenter.remote.IActionListener");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IActionListener");
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (RecvMsg)RecvMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramParcel1);
+      return true;
     }
   }
 }

@@ -4,9 +4,12 @@ import android.content.DialogInterface.OnClickListener;
 class adnp
   implements DialogInterface.OnClickListener
 {
-  adnp(adni paramadni) {}
+  adnp(adnm paramadnm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

@@ -1,15 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import rcx;
+import onk;
 
 class ReadInJoyNewFeedsActivity$11
   implements Runnable
 {
-  ReadInJoyNewFeedsActivity$11(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  ReadInJoyNewFeedsActivity$11(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, String paramString) {}
   
   public void run()
   {
-    rcx.a().b(this.this$0.app);
+    if (!this.this$0.isFinishing()) {
+      onk.a(this.this$0, 5, true, this.a);
+    }
   }
 }
 

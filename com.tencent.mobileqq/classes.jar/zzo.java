@@ -1,30 +1,30 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import java.util.HashMap;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class zzo
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public zzo(AssistantSettingActivity paramAssistantSettingActivity, agtk paramagtk) {}
+  private static ConcurrentHashMap<String, String> a = new ConcurrentHashMap();
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_Agtk.a(paramBoolean);
-    paramCompoundButton = new HashMap();
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    String str2 = (String)a.get(paramString);
+    String str1 = str2;
+    if (str2 == null)
     {
-      paramCompoundButton.put("ext1", i + "");
-      agvs.a("sq.sz.dzkg", 1, 0, paramCompoundButton);
-      return;
+      str2 = SecUtil.getFileMd5(paramString);
+      str1 = str2;
+      if (str2 != null)
+      {
+        a.put(paramString, str2);
+        str1 = str2;
+      }
     }
+    return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zzo
  * JD-Core Version:    0.7.0.1
  */

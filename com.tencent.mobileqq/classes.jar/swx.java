@@ -1,55 +1,94 @@
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGetGroupHotRankVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.IOException;
+import java.net.URLEncoder;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class swx
-  extends soh
+  extends sxa
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public swx(sww paramsww, boolean paramBoolean)
+  public swx(String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public String a()
+  private ErrorMessage a()
   {
-    return skt.a("StoryGroupSvc.get_hot_rank_video_list");
-  }
-  
-  public soi a(byte[] paramArrayOfByte)
-  {
-    qqstory_group.RspGetGroupHotRankVideo localRspGetGroupHotRankVideo = new qqstory_group.RspGetGroupHotRankVideo();
-    try
+    Object localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { QQStoryContext.a().a(), URLEncoder.encode(this.jdField_a_of_type_JavaLangString) });
+    long l = System.currentTimeMillis();
+    localObject = nam.a(QQStoryContext.a().a(), (String)localObject, null, "GET", null, null, 5000, 5000);
+    if ((localObject != null) && (((HttpResponse)localObject).getStatusLine().getStatusCode() == 200))
     {
-      localRspGetGroupHotRankVideo.mergeFrom(paramArrayOfByte);
-      return new swy(this.jdField_a_of_type_Sww, localRspGetGroupHotRankVideo, this.jdField_a_of_type_Boolean);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      urk.d("GetHotSortVideoHandler", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_group.ReqGetGroupHotRankVideo localReqGetGroupHotRankVideo = new qqstory_group.ReqGetGroupHotRankVideo();
-    localReqGetGroupHotRankVideo.union_id.set(ByteStringMicro.copyFromUtf8(sww.a(this.jdField_a_of_type_Sww)));
-    localReqGetGroupHotRankVideo.size.set(10);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localReqGetGroupHotRankVideo.seq.set(sww.a(this.jdField_a_of_type_Sww));
-      if (!TextUtils.isEmpty(sww.b(this.jdField_a_of_type_Sww))) {
-        localReqGetGroupHotRankVideo.start_cookie.set(ByteStringMicro.copyFromUtf8(sww.b(this.jdField_a_of_type_Sww)));
+      localObject = nam.a((HttpResponse)localObject);
+      veg.a("Q.qqstory.publish.upload.LinkRichObject", "http resp %s", localObject);
+      localObject = new JSONObject((String)localObject);
+      this.jdField_a_of_type_Int = Integer.parseInt(((JSONObject)localObject).getString("ret"));
+      if (this.jdField_a_of_type_Int != 0) {
+        return new ErrorMessage(96000002, "server error code:" + this.jdField_a_of_type_Int);
       }
     }
-    return localReqGetGroupHotRankVideo.toByteArray();
+    else
+    {
+      veg.d("Q.qqstory.publish.upload.LinkRichObject", "");
+      if (localObject != null) {}
+      for (localObject = "http code:" + ((HttpResponse)localObject).getStatusLine();; localObject = "response is null") {
+        return new ErrorMessage(96000003, (String)localObject);
+      }
+    }
+    String str = ((JSONObject)localObject).getString("title");
+    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.b))) {
+      this.b = str;
+    }
+    str = ((JSONObject)localObject).getString("abstract");
+    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.c))) {
+      this.c = str;
+    }
+    localObject = ((JSONObject)localObject).getString("thumbUrl");
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isEmpty(this.d))) {
+      this.d = ((String)localObject);
+    }
+    veg.d("Q.qqstory.publish.upload.LinkRichObject", "request take time %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    return new ErrorMessage();
+  }
+  
+  protected void a()
+  {
+    try
+    {
+      if (a().isSuccess())
+      {
+        b();
+        notifyResult(new ErrorMessage());
+        return;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      veg.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localJSONException);
+      new ErrorMessage(96000001, localJSONException.getMessage());
+      b();
+      notifyResult(new ErrorMessage());
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        veg.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localIOException);
+        new ErrorMessage(96000000, localIOException.getMessage());
+      }
+    }
   }
 }
 

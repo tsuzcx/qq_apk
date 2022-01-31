@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.apollo.script.drawerInfo;
 
-import aisk;
-import aisq;
-import aist;
+import ajfo;
+import ajfr;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 
 public class SpriteDrawerInfoBridge$1
   implements Runnable
 {
-  public SpriteDrawerInfoBridge$1(aist paramaist, aisk paramaisk) {}
+  public SpriteDrawerInfoBridge$1(ajfr paramajfr, SpriteTaskParam paramSpriteTaskParam) {}
   
   public void run()
   {
-    if (aist.a(this.this$0) != null)
+    if (ajfr.a(this.this$0) != null)
     {
-      if (aist.a(this.this$0).a()) {
+      if (ajfr.a(this.this$0).a()) {
         this.a.j = 1;
       }
       this.a.a = this.this$0;
-      aist.a(this.this$0).a(this.a);
+      ajfr.a(this.this$0).a(this.a);
     }
   }
 }

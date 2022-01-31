@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.playvideo;
 
 import java.util.List;
-import urk;
+import veg;
 
 class VideoCoverListBar$3
   implements Runnable
@@ -11,7 +11,7 @@ class VideoCoverListBar$3
   public void run()
   {
     this.this$0.smoothScrollToPositionFromTop(this.a, VideoCoverListBar.a(this.this$0) + VideoCoverListBar.b(this.this$0));
-    urk.a("Q.qqstory.player:VideoCoverListBar", "notify cover list changed , new index = %d , total size = %d", Integer.valueOf(this.a), Integer.valueOf(VideoCoverListBar.a(this.this$0).size()));
+    veg.a("Q.qqstory.player:VideoCoverListBar", "notify cover list changed , new index = %d , total size = %d", Integer.valueOf(this.a), Integer.valueOf(VideoCoverListBar.a(this.this$0).size()));
   }
 }
 

@@ -1,15 +1,16 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.os.SystemClock;
-import bdcy;
-import bdcz;
-import bdfz;
-import bdgq;
-import bdgr;
-import bdnw;
-import bdsn;
-import bdsp;
-import bdsu;
+import android.text.TextUtils;
+import begy;
+import beka;
+import beks;
+import bekt;
+import beku;
+import besl;
+import beyk;
+import beym;
+import beyr;
 import com.tencent.qqmini.sdk.core.proxy.RequestProxy.RequestListener;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import java.util.List;
@@ -22,21 +23,51 @@ class RequestJsPlugin$1
 {
   String contentType;
   
-  RequestJsPlugin$1(RequestJsPlugin paramRequestJsPlugin, String paramString, RequestJsPlugin.RequestTask paramRequestTask, bdfz parambdfz) {}
+  RequestJsPlugin$1(RequestJsPlugin paramRequestJsPlugin, String paramString, RequestJsPlugin.RequestTask paramRequestTask, beka parambeka) {}
   
   public void onRequestFailed(int paramInt, String paramString)
   {
-    bdnw.d("[mini] http.RequestJsPlugin", "--fail--- url: " + this.val$request.mUrl + " taskId=" + this.val$request.mTaskId + " resCode=" + paramInt);
-    JSONObject localJSONObject = new JSONObject();
-    try
+    Object localObject = (RequestJsPlugin.RequestTask)RequestJsPlugin.access$000(this.this$0).remove(Integer.valueOf(this.val$request.mTaskId));
+    long l;
+    String str;
+    if (localObject != null)
     {
-      localJSONObject.put("state", "fail");
-      localJSONObject.put("requestTaskId", this.val$request.mTaskId);
-      localJSONObject.put("errMsg", paramString);
-      this.val$req.a.a("onRequestTaskStateChange", localJSONObject.toString(), 0);
-      return;
+      l = SystemClock.elapsedRealtime() - ((RequestJsPlugin.RequestTask)localObject).mRequestCreatedMillis;
+      besl.b("[mini] http.RequestJsPlugin", "[request httpCallBack][minigame timecost=" + l + "ms],[code=" + paramInt + "][url=" + this.val$request.mUrl + "][callbackId=" + this.val$req.jdField_b_of_type_Int + "][params=" + this.val$req.jdField_b_of_type_JavaLangString + "]");
+      str = RequestJsPlugin.access$100(((RequestJsPlugin.RequestTask)localObject).mUrl);
+      besl.a("[mini] http.RequestJsPlugin", "httpCallBack second level domain " + str);
+      if (!this.this$0.mIsMiniGame) {
+        break label349;
+      }
+      localObject = "1";
     }
-    catch (Throwable paramString) {}
+    for (;;)
+    {
+      beyr.a(this.this$0.mMiniAppInfo, 628, null, null, null, paramInt, (String)localObject, l, str);
+      beyk.a(this.this$0.mMiniAppInfo, paramInt, 0L, l);
+      beym.a(this.this$0.mMiniAppInfo, this.val$url, 0L, l, paramInt);
+      besl.d("[mini] http.RequestJsPlugin", "--fail--- url: " + this.val$request.mUrl + " taskId=" + this.val$request.mTaskId + " resCode=" + paramInt);
+      localObject = new JSONObject();
+      try
+      {
+        ((JSONObject)localObject).put("state", "fail");
+        ((JSONObject)localObject).put("requestTaskId", this.val$request.mTaskId);
+        if (!TextUtils.isEmpty(paramString)) {
+          ((JSONObject)localObject).put("errMsg", paramString);
+        }
+        for (;;)
+        {
+          this.val$req.a.a("onRequestTaskStateChange", ((JSONObject)localObject).toString(), 0);
+          return;
+          label349:
+          localObject = "0";
+          break;
+          bekt.a("request", (JSONObject)localObject, paramInt);
+        }
+        return;
+      }
+      catch (Throwable paramString) {}
+    }
   }
   
   public void onRequestHeadersReceived(int paramInt, Map<String, List<String>> paramMap)
@@ -46,7 +77,7 @@ class RequestJsPlugin$1
     {
       localJSONObject.put("url", this.val$url);
       localJSONObject.put("requestTaskId", this.val$request.mTaskId);
-      localJSONObject.put("header", bdgq.a(paramMap));
+      localJSONObject.put("header", beks.a(paramMap));
       localJSONObject.put("errMsg", "ok");
       localJSONObject.put("statusCode", paramInt);
       localJSONObject.put("state", "headersReceived");
@@ -62,7 +93,7 @@ class RequestJsPlugin$1
     }
     catch (Exception paramMap)
     {
-      bdnw.d("[mini] http.RequestJsPlugin", "headersReceived exception, url: " + this.val$request.mUrl, paramMap);
+      besl.d("[mini] http.RequestJsPlugin", "headersReceived exception, url: " + this.val$request.mUrl, paramMap);
     }
   }
   
@@ -70,45 +101,35 @@ class RequestJsPlugin$1
   {
     Object localObject1 = (RequestJsPlugin.RequestTask)RequestJsPlugin.access$000(this.this$0).remove(Integer.valueOf(this.val$request.mTaskId));
     long l2;
-    String str;
     if (localObject1 != null)
     {
       l2 = SystemClock.elapsedRealtime() - ((RequestJsPlugin.RequestTask)localObject1).mRequestCreatedMillis;
-      bdnw.b("[mini] http.RequestJsPlugin", "[request httpCallBack][minigame timecost=" + l2 + "ms],[code=" + paramInt + "][url=" + this.val$request.mUrl + "][callbackId=" + this.val$req.jdField_b_of_type_Int + "][params=" + this.val$req.jdField_b_of_type_JavaLangString + "]");
-      str = RequestJsPlugin.access$100(((RequestJsPlugin.RequestTask)localObject1).mUrl);
-      bdnw.a("[mini] http.RequestJsPlugin", "httpCallBack second level domain " + str);
-      if (this.this$0.mMiniAppContext == null) {
-        break label441;
+      besl.b("[mini] http.RequestJsPlugin", "[request httpCallBack][minigame timecost=" + l2 + "ms],[code=" + paramInt + "][url=" + this.val$request.mUrl + "][callbackId=" + this.val$req.jdField_b_of_type_Int + "][params=" + this.val$req.jdField_b_of_type_JavaLangString + "]");
+      localObject2 = RequestJsPlugin.access$100(((RequestJsPlugin.RequestTask)localObject1).mUrl);
+      besl.a("[mini] http.RequestJsPlugin", "httpCallBack second level domain " + (String)localObject2);
+      if (!this.this$0.mIsMiniGame) {
+        break label436;
       }
-      localObject1 = this.this$0.mMiniAppContext.a();
+      localObject1 = "1";
     }
     for (;;)
     {
-      label203:
+      beyr.a(this.this$0.mMiniAppInfo, 628, null, null, null, paramInt, (String)localObject1, l2, (String)localObject2);
+      localObject1 = this.this$0.mMiniAppInfo;
       long l1;
-      if (localObject1 != null)
+      if (paramArrayOfByte != null)
       {
-        if (this.this$0.mIsMiniGame)
-        {
-          localObject2 = "1";
-          bdsu.a((MiniAppInfo)localObject1, 628, null, null, null, paramInt, (String)localObject2, l2, str);
-          if (paramArrayOfByte == null) {
-            break label455;
-          }
-          l1 = paramArrayOfByte.length;
-          label230:
-          bdsn.a((MiniAppInfo)localObject1, paramInt, l1, l2);
-          localObject2 = this.val$url;
-          if (paramArrayOfByte == null) {
-            break label461;
-          }
-          l1 = paramArrayOfByte.length;
-          label255:
-          bdsp.a((MiniAppInfo)localObject1, (String)localObject2, l1, l2, paramInt);
+        l1 = paramArrayOfByte.length;
+        label215:
+        beyk.a((MiniAppInfo)localObject1, paramInt, l1, l2);
+        localObject1 = this.this$0.mMiniAppInfo;
+        localObject2 = this.val$url;
+        if (paramArrayOfByte == null) {
+          break label449;
         }
-      }
-      else
-      {
+        l1 = paramArrayOfByte.length;
+        label249:
+        beym.a((MiniAppInfo)localObject1, (String)localObject2, l1, l2, paramInt);
         localObject1 = new JSONObject();
         localObject2 = new JSONObject();
       }
@@ -119,7 +140,7 @@ class RequestJsPlugin$1
         {
           ((JSONObject)localObject2).put("requestTaskId", this.val$request.mTaskId);
           if (paramMap != null) {
-            ((JSONObject)localObject2).put("header", bdgq.a(paramMap));
+            ((JSONObject)localObject2).put("header", beks.a(paramMap));
           }
           ((JSONObject)localObject2).put("statusCode", paramInt);
           ((JSONObject)localObject2).put("state", "success");
@@ -127,12 +148,12 @@ class RequestJsPlugin$1
           if (paramArrayOfByte != null)
           {
             if (!"arraybuffer".equals(this.val$request.mResponseType)) {
-              break label590;
+              break label578;
             }
-            if (!this.this$0.isGameRuntime) {
-              break label467;
+            if (!this.this$0.mIsMiniGame) {
+              break label455;
             }
-            bdgr.a(this.this$0.mMiniAppContext, paramArrayOfByte, bdgr.a, "data", (JSONObject)localObject2);
+            beku.a(this.this$0.mMiniAppContext, paramArrayOfByte, beku.a, "data", (JSONObject)localObject2);
           }
         }
         for (;;)
@@ -140,19 +161,16 @@ class RequestJsPlugin$1
           ((JSONObject)localObject1).put("res", localObject2);
           this.val$req.a.a("onRequestTaskStateChange", ((JSONObject)localObject2).toString(), 0);
           return;
-          label441:
-          localObject1 = null;
+          label436:
+          localObject1 = "0";
           break;
-          localObject2 = "0";
-          break label203;
+          l1 = 0L;
+          break label215;
+          label449:
+          l1 = 0L;
+          break label249;
           label455:
-          l1 = 0L;
-          break label230;
-          label461:
-          l1 = 0L;
-          break label255;
-          label467:
-          bdgr.a(this.this$0.mMiniAppContext, paramArrayOfByte, bdgr.jdField_b_of_type_Int, "data", (JSONObject)localObject2);
+          beku.a(this.this$0.mMiniAppContext, paramArrayOfByte, beku.jdField_b_of_type_Int, "data", (JSONObject)localObject2);
           continue;
           try
           {
@@ -162,7 +180,7 @@ class RequestJsPlugin$1
             paramMap.put("requestTaskId", this.val$request.mTaskId);
             paramMap.put("errMsg", "exception：" + paramArrayOfByte.getMessage());
             this.val$req.a.a("onRequestTaskStateChange", paramMap.toString(), 0);
-            bdnw.d("[mini] http.RequestJsPlugin", "httpCallBack exception:", paramArrayOfByte);
+            besl.d("[mini] http.RequestJsPlugin", "httpCallBack exception:", paramArrayOfByte);
             return;
             if ("text".equals(this.val$request.mResponseType))
             {
@@ -173,7 +191,7 @@ class RequestJsPlugin$1
                 break;
               }
             }
-            bdnw.d("[mini] http.RequestJsPlugin", "url: " + this.val$request.mUrl + "--mResponseType error ---" + this.val$request.mResponseType);
+            besl.d("[mini] http.RequestJsPlugin", "url: " + this.val$request.mUrl + "--mResponseType error ---" + this.val$request.mResponseType);
             paramArrayOfByte = new JSONObject();
             paramArrayOfByte.put("state", "fail");
             paramArrayOfByte.put("statusCode", -1);
@@ -183,7 +201,7 @@ class RequestJsPlugin$1
           }
           catch (Throwable paramMap)
           {
-            break label580;
+            break label568;
           }
         }
       }

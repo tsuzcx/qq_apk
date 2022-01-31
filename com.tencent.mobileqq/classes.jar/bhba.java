@@ -1,49 +1,72 @@
-import android.graphics.RectF;
-import android.os.Build.VERSION;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
-import dov.com.qq.im.AECamera.qudong.AEVideoShelfEditFragment;
-import dov.com.qq.im.AECamera.qudong.ScaleMoveImageViewer;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import java.io.File;
 
-public class bhba
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class bhba
+  implements ModuleDownloadListener
 {
-  public bhba(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, ScaleMoveImageViewer paramScaleMoveImageViewer, NodeItem paramNodeItem) {}
+  bhba(bhaz parambhaz) {}
   
-  public void onGlobalLayout()
+  public void onDownloadCanceled(String paramString)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_DovComQqImAECameraQudongScaleMoveImageViewer.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    bhaz.b(false);
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    bhaz.b(false);
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("upload.so")) {
+      return;
+    }
+    bhaz.b(false);
+    String str = bhaz.a().getAbsolutePath();
+    QLog.d("UploadEnv", 1, "upload so download success : " + str);
+    paramString = QzoneModuleManager.getInstance().getModuleFilePath(paramString);
+    File localFile = new File(str);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    if (!bhnq.b(new File(paramString), localFile))
+    {
+      QLog.d("UploadEnv", 1, "upload so unzip fail");
+      bhaz.b(false);
+      return;
+    }
+    if (bhaz.a(this.a, str))
+    {
+      QLog.d("UploadEnv", 1, "upload so save success");
+      bhaz.a(this.a, true);
+      bhaz.a(true);
     }
     for (;;)
     {
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_DovComQqImAECameraQudongScaleMoveImageViewer.getLayoutParams();
-      int i = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.left * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAECameraQudongAEVideoShelfEditFragment));
-      int j = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.top * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAECameraQudongAEVideoShelfEditFragment));
-      int k = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.right) * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAECameraQudongAEVideoShelfEditFragment));
-      int m = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.bottom) * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAECameraQudongAEVideoShelfEditFragment));
-      localMarginLayoutParams.leftMargin = i;
-      localMarginLayoutParams.topMargin = j;
-      localMarginLayoutParams.rightMargin = k;
-      localMarginLayoutParams.bottomMargin = m;
-      localMarginLayoutParams.width = (AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAECameraQudongAEVideoShelfEditFragment) - k - i);
-      localMarginLayoutParams.height = (AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAECameraQudongAEVideoShelfEditFragment) - m - j);
-      this.jdField_a_of_type_DovComQqImAECameraQudongScaleMoveImageViewer.setLayoutParams(localMarginLayoutParams);
-      AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAECameraQudongAEVideoShelfEditFragment, this.jdField_a_of_type_DovComQqImAECameraQudongScaleMoveImageViewer, AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAECameraQudongAEVideoShelfEditFragment), AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAECameraQudongAEVideoShelfEditFragment));
-      if (QLog.isDebugVersion()) {
-        QLog.d("AEVideoShelfEditFrag", 2, new Object[] { "initAllNodeViewer onGlobalLayout: wxh=", Integer.valueOf(localMarginLayoutParams.width), "x", Integer.valueOf(localMarginLayoutParams.height) });
-      }
+      bhaz.b(false);
       return;
-      this.jdField_a_of_type_DovComQqImAECameraQudongScaleMoveImageViewer.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      try
+      {
+        localFile.delete();
+        bhaz.a(this.a, false);
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhba
  * JD-Core Version:    0.7.0.1
  */

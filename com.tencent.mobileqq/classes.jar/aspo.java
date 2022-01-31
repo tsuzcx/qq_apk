@@ -1,36 +1,37 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.widget.AbsListView;
 
-class aspo
-  implements asku
+public class aspo
+  implements bfob
 {
-  aspo(aspm paramaspm) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(Comments.Comment paramComment)
+  public aspo(MultiAIOItemFragment paramMultiAIOItemFragment, bfob parambfob) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (aspm.a(this.a) != null)
-    {
-      aspm.a(this.a).a(paramComment);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.bindphone", 2, "onPublishSuccess");
-      }
-    }
+    this.jdField_a_of_type_Bfob.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
   }
   
-  public void a(Comments.Comment paramComment, int paramInt, String paramString)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (aspm.a(this.a) != null)
+    this.jdField_a_of_type_Bfob.onScrollStateChanged(paramAbsListView, paramInt);
+    if (paramInt == 0)
     {
-      aspm.a(this.a).a(paramComment, paramInt, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.bindphone", 2, "onDataNotAvailable, code=" + paramInt + ", tip=" + paramString + ", comment=" + paramComment);
+      paramAbsListView = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
+      if ((paramAbsListView != null) && (paramAbsListView.a() == MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment)) && (!this.jdField_a_of_type_Boolean))
+      {
+        MultiAIOFragment.a("0X8009F80", 0);
+        this.jdField_a_of_type_Boolean = true;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aspo
  * JD-Core Version:    0.7.0.1
  */

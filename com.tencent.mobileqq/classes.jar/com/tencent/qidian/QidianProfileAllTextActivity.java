@@ -14,9 +14,9 @@ public class QidianProfileAllTextActivity
     super.doOnCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("title");
     String str = getIntent().getStringExtra("content");
-    super.setContentView(2131494943);
-    ((TextView)this.mContentView.findViewById(2131311534)).setText(paramBundle);
-    ((TextView)this.mContentView.findViewById(2131299132)).setText(str);
+    super.setContentView(2131560517);
+    ((TextView)this.mContentView.findViewById(2131377350)).setText(paramBundle);
+    ((TextView)this.mContentView.findViewById(2131364692)).setText(str);
     return true;
   }
 }

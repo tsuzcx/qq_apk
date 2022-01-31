@@ -1,9 +1,20 @@
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 public class atva
+  extends atuy
 {
-  public static String a = "%s更新了个性标签";
-  public static String b = ajjy.a(2131636662);
-  public static String c = "https://ti.qq.com/specialtag/index.html?_wv=536884193&_wwv=5";
-  public static String d = "?personality_label_blur=1";
+  public View e;
+  public ImageView e;
+  public View f;
+  public ImageView f;
+  public TextView g;
+  
+  public atva(atuz paramatuz)
+  {
+    super(paramatuz);
+  }
 }
 
 

@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.SplashActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class acdo
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public acdo(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public acdo(SplashActivity.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SplashActivity", 2, "onReceive:before_account_change");
+    }
+    this.a.this$0.b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acdo
  * JD-Core Version:    0.7.0.1
  */

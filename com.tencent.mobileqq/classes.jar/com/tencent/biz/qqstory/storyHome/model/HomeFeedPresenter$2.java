@@ -3,31 +3,31 @@ package com.tencent.biz.qqstory.storyHome.model;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import java.util.ArrayList;
 import java.util.Collections;
-import ujm;
-import ujt;
-import ujx;
-import ukg;
-import urk;
+import uwi;
+import uwp;
+import uwt;
+import uxc;
+import veg;
 
 public class HomeFeedPresenter$2
   implements Runnable
 {
-  public HomeFeedPresenter$2(ujx paramujx, ujt paramujt) {}
+  public HomeFeedPresenter$2(uwt paramuwt, uwp paramuwp) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
     if ((this.a.c) && (this.a.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())) {
-      ujx.a(this.this$0).clear();
+      uwt.a(this.this$0).clear();
     }
-    ujx.a(this.this$0).addAll(this.a.b);
-    this.this$0.a(ujx.a(this.this$0));
-    Collections.sort(ujx.a(this.this$0), ujm.a);
-    ujx.a(this.this$0, this.a.jdField_a_of_type_Boolean);
-    this.a.b = ujx.a(this.this$0);
-    urk.a("Q.qqstory.home.data.HomeFeedPresenter", "had load feed size:%d, take time:%d", Integer.valueOf(ujx.a(this.this$0).size()), Long.valueOf(System.currentTimeMillis() - l));
-    if (ujx.a(this.this$0) != null) {
-      ujx.a(this.this$0).a(this.a);
+    uwt.a(this.this$0).addAll(this.a.b);
+    this.this$0.a(uwt.a(this.this$0));
+    Collections.sort(uwt.a(this.this$0), uwi.a);
+    uwt.a(this.this$0, this.a.jdField_a_of_type_Boolean);
+    this.a.b = uwt.a(this.this$0);
+    veg.a("Q.qqstory.home.data.HomeFeedPresenter", "had load feed size:%d, take time:%d", Integer.valueOf(uwt.a(this.this$0).size()), Long.valueOf(System.currentTimeMillis() - l));
+    if (uwt.a(this.this$0) != null) {
+      uwt.a(this.this$0).a(this.a);
     }
   }
 }

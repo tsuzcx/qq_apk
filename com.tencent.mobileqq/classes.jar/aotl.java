@@ -1,24 +1,44 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
 
-class aotl
-  implements aoqz
+public class aotl
+  extends apvd
 {
-  aotl(aotk paramaotk, BaseActivity paramBaseActivity) {}
+  public aotl(QfileRecentDocFileTabView paramQfileRecentDocFileTabView) {}
   
-  public aovk a()
+  public void a()
   {
-    Object localObject2 = null;
-    List localList = this.jdField_a_of_type_Aotk.a();
-    Object localObject1 = localObject2;
-    if (localList != null)
-    {
-      localObject1 = localObject2;
-      if (localList.size() > 0) {
-        localObject1 = new aovz(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localList, aotk.a(this.jdField_a_of_type_Aotk));
-      }
-    }
-    return localObject1;
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

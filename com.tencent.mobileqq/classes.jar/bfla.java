@@ -1,35 +1,58 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import com.tencent.sharp.jni.TraeAudioManager;
 
 public class bfla
 {
-  public static long a(Context paramContext, String paramString)
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "DEVICE_NONE";
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
+  
+  public bfla(bfkz parambfkz) {}
+  
+  public int a()
   {
-    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getLong(paramString, 0L);
+    return this.jdField_a_of_type_Int;
   }
   
-  public static String a(Context paramContext, String paramString)
+  public String a()
   {
-    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getString(paramString, "");
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public static void a(Context paramContext, String paramString, long paramLong)
+  public void a(boolean paramBoolean)
   {
-    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putLong(paramString, paramLong).commit();
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static void a(Context paramContext, String paramString1, String paramString2)
+  public boolean a()
   {
-    if (paramString2 == null) {
-      return;
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    if ((paramString == null) || (paramString.length() <= 0)) {}
+    while (TraeAudioManager.a(paramString) != true) {
+      return false;
     }
-    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putString(paramString1, paramString2).commit();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    return true;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfla
  * JD-Core Version:    0.7.0.1
  */

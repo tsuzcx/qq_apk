@@ -8,14 +8,14 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
-import bazb;
-import bbaq;
-import bezd;
-import bfab;
-import bfaf;
-import bfag;
-import bfaq;
-import bfas;
+import bcbv;
+import bcdq;
+import bggu;
+import bghs;
+import bghw;
+import bghx;
+import bgih;
+import bgij;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -49,20 +49,20 @@ public class QQComicFragment
       try
       {
         localObject2 = new URL((String)localObject2);
-        bezd.c = ((URL)localObject2).getPath().substring(((URL)localObject2).getPath().lastIndexOf("/") + 1);
-        bezd.a = i + "";
-        if ((TextUtils.isEmpty(bezd.a)) || ("NULL".equalsIgnoreCase(bezd.a))) {
+        bggu.c = ((URL)localObject2).getPath().substring(((URL)localObject2).getPath().lastIndexOf("/") + 1);
+        bggu.a = i + "";
+        if ((TextUtils.isEmpty(bggu.a)) || ("NULL".equalsIgnoreCase(bggu.a))) {
           QLog.e("WebLog_WebViewFragment", 1, "[webFragment] from is null");
         }
         for (;;)
         {
-          bezd.b = paramIntent.getStringExtra("reportActionFrom");
-          bezd.a();
+          bggu.b = paramIntent.getStringExtra("reportActionFrom");
+          bggu.a();
           return localObject1;
           localObject1 = new QQComicFragment();
           break;
           if (QLog.isColorLevel()) {
-            QLog.d("WebLog_WebViewFragment", 2, "[webFragment] from is " + bezd.a);
+            QLog.d("WebLog_WebViewFragment", 2, "[webFragment] from is " + bggu.a);
           }
         }
         return localObject1;
@@ -71,18 +71,18 @@ public class QQComicFragment
     }
   }
   
-  public bbaq a()
+  public bcdq a()
   {
-    return new bbaq(this, 127, new bfag(this));
+    return new bcdq(this, 127, new bghx(this));
   }
   
-  public bfab a()
+  public bghs a()
   {
     if ((getWebView() != null) && (getWebView().getPluginEngine() != null))
     {
       WebViewPlugin localWebViewPlugin = getWebView().getPluginEngine().a("comic");
-      if ((localWebViewPlugin instanceof bfab)) {
-        return (bfab)localWebViewPlugin;
+      if ((localWebViewPlugin instanceof bghs)) {
+        return (bghs)localWebViewPlugin;
       }
     }
     return null;
@@ -97,12 +97,12 @@ public class QQComicFragment
   {
     super.a(paramWebView, paramString);
     QLog.d("WebLog_WebViewFragment", 4, "QQComicFragment onPageFinished ");
-    if (bfas.a != null)
+    if (bgij.a != null)
     {
       QLog.d("WebLog_WebViewFragment", 4, "QQComicPluginBridge sFirstInObservable is not null ");
-      bfas.a.a(paramWebView.getContext());
+      bgij.a.a(paramWebView.getContext());
     }
-    bfas.b(new bfaf(this, paramWebView));
+    bgij.b(new bghw(this, paramWebView));
   }
   
   public String[] a(String paramString)
@@ -132,24 +132,24 @@ public class QQComicFragment
   
   public boolean g()
   {
-    bfab localbfab = a();
+    bghs localbghs = a();
     JSONObject localJSONObject1;
-    if (localbfab != null)
+    if (localbghs != null)
     {
-      localbfab = (bfab)localbfab;
+      localbghs = (bghs)localbghs;
       localJSONObject1 = new JSONObject();
     }
     try
     {
       JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("status", localbfab.a.get());
+      localJSONObject2.put("status", localbghs.a.get());
       localJSONObject1.put("data", localJSONObject2);
       label52:
       if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "notifySecretModeChange. status=" + localbfab.a.get());
+        QLog.d("WebLog_WebViewFragment", 2, "notifySecretModeChange. status=" + localbghs.a.get());
       }
-      if (!TextUtils.isEmpty(localbfab.b)) {
-        getWebView().callJs(localbfab.b, new String[] { localJSONObject1.toString() });
+      if (!TextUtils.isEmpty(localbghs.b)) {
+        getWebView().callJs(localbghs.b, new String[] { localJSONObject1.toString() });
       }
       return true;
     }
@@ -161,9 +161,9 @@ public class QQComicFragment
   
   public void onClick(View paramView)
   {
-    if (((paramView == this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.jdField_a_of_type_Bazb.d)) && (this.jdField_a_of_type_Bazb.jdField_a_of_type_Boolean))
+    if (((paramView == this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.jdField_a_of_type_Bcbv.d)) && (this.jdField_a_of_type_Bcbv.jdField_a_of_type_Boolean))
     {
-      this.jdField_a_of_type_Bazb.d(false);
+      this.jdField_a_of_type_Bcbv.d(false);
       if ((this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp() != null)) {
         this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp().getSharedPreferences("boodo_" + this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getCurrentAccountUin(), 0).edit().putBoolean("private_read_red_dot", true).apply();
       }
@@ -178,8 +178,8 @@ public class QQComicFragment
     if ((paramBundle instanceof Intent)) {
       getActivity().setResult(0, (Intent)paramBundle);
     }
-    bezd.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    bezd.a(a());
+    bggu.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    bggu.a(a());
   }
 }
 

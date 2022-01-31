@@ -1,21 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class rlf
-  implements moc
+class rlf
+  implements ViewFactory.FoundClickableViewListener
 {
-  public rlf(BridgeModule paramBridgeModule, String paramString) {}
+  rlf(rle paramrle, Context paramContext) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onFound(ViewBase paramViewBase)
   {
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, null);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, paramString);
+    paramViewBase.setOnClickListener(new rlg(this));
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

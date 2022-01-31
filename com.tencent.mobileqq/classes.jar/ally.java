@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
-public abstract class ally
+public class ally
+  implements aufr
 {
-  public abstract void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt);
+  public ally(ARScanEntryView paramARScanEntryView) {}
   
-  public abstract void a(ArrayList<RockDownloadInfo> paramArrayList);
+  public void a(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ally
  * JD-Core Version:    0.7.0.1
  */

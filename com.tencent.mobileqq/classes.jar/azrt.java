@@ -1,32 +1,44 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import android.os.Handler;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.4.1;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class azrt
-  implements ajtw
+public class azrt
+  extends VasQuickUpdateManager.CallBacker
 {
-  public azru a;
+  azrt(azrl paramazrl) {}
   
-  private azrt(azrr paramazrr) {}
-  
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if ((this.jdField_a_of_type_Azru != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(this.jdField_a_of_type_Azru.jdField_a_of_type_JavaLangString, paramTroopMemberInfo.memberuin)))
+    if ((paramLong == 25L) && (paramString1.startsWith("groupeffect_item_")) && (paramInt1 == 0))
     {
-      paramTroopMemberInfo = new axjq(((TroopManager)this.jdField_a_of_type_Azrr.a.getManager(52)).a(paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin), 13).a();
-      this.jdField_a_of_type_Azru.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopMemberInfo);
-      if (AppSetting.c) {
-        azrr.a(this.jdField_a_of_type_Azrr, this.jdField_a_of_type_Azru);
+      paramInt1 = azrl.a(paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopEnterEffect.Controller", 2, "download Res callback success id = " + paramInt1);
+      }
+      if (paramInt1 > 0)
+      {
+        paramString1 = (azru)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+        this.a.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt1);
+        if (paramString1 == null) {
+          break label154;
+        }
+        if (balg.a(new File(azrl.jdField_a_of_type_JavaLangString + paramInt1))) {
+          this.a.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.4.1(this, paramInt1, paramString1));
+        }
       }
     }
+    return;
+    label154:
+    QLog.e("TroopEnterEffect.Controller", 1, "mResDownloadCallback effectData = null id = " + paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azrt
  * JD-Core Version:    0.7.0.1
  */

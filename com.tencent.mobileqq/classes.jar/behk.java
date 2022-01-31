@@ -1,15 +1,14 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
-
-public abstract interface behk
+public class behk
 {
-  public abstract void a(AdapterView<?> paramAdapterView);
-  
-  public abstract void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     behk
  * JD-Core Version:    0.7.0.1
  */

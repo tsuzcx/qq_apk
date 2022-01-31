@@ -1,12 +1,24 @@
-import android.graphics.drawable.Drawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
-public abstract class bgrm
+public class bgrm
+  implements DialogInterface.OnDismissListener
 {
-  public volatile int mCount;
+  public bgrm(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
   
-  public abstract void onDownloaded(String paramString1, int paramInt, String paramString2, Drawable paramDrawable);
-  
-  public abstract void onFailed(String paramString1, int paramInt, String paramString2);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.a.a)
+    {
+      this.a.setResult(1001);
+      QQIndividualityBridgeActivity.a(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
+    }
+  }
 }
 
 

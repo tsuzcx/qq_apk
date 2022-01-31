@@ -1,52 +1,75 @@
-import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.io.File;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ajhy
-  implements ajfe
+final class ajhy
+  extends bbwf
 {
-  protected void a(List<CustomEmotionData> paramList) {}
+  ajhy(File paramFile, airz paramairz, int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2, AtomicInteger paramAtomicInteger3, ajif paramajif, String paramString, List paramList) {}
   
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onDone(bbwg parambbwg)
   {
-    switch (paramInt)
+    boolean bool = true;
+    super.onDone(parambbwg);
+    if (3 == parambbwg.a()) {
+      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
+    }
+    for (;;)
     {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-      } while (paramObject == null);
-      a(((Boolean)paramObject).booleanValue());
-      return;
-    case 1: 
       try
       {
-        a((ArrayList)paramObject);
+        nay.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+        ajhw.a(this.jdField_a_of_type_Airz, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != this.c.get()) {
+          break label413;
+        }
+        if (this.jdField_a_of_type_Ajif != null)
+        {
+          parambbwg = this.jdField_a_of_type_Ajif;
+          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) {
+            bool = false;
+          }
+          parambbwg.a(bool, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloResDownloader", 2, "downloadApolloRes download all done uin: " + this.jdField_a_of_type_JavaLangString + "all cnt: " + this.c.get() + ", err cnt: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+          }
+        }
+        this.jdField_a_of_type_JavaIoFile.delete();
         return;
       }
-      catch (Exception paramObject)
+      catch (Exception parambbwg)
       {
-        QLog.e("FavEmoRoamingObserver", 1, "onUploadReq error, ", paramObject);
-        return;
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambbwg.getMessage());
+        continue;
       }
-    case 2: 
-      b(paramBoolean, paramObject);
-      return;
+      catch (OutOfMemoryError parambbwg)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambbwg.getMessage());
+        continue;
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+      QLog.d("ApolloResDownloader", 1, "download file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " task.getStatus()->" + parambbwg.a());
+      continue;
+      label413:
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "downloadApolloRes download uin:" + this.jdField_a_of_type_JavaLangString + ", cb cnt: " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", all cnt: " + this.c.get());
+      }
     }
-    a(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajhy
  * JD-Core Version:    0.7.0.1
  */

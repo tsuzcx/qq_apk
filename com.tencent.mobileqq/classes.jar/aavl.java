@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
 
 public class aavl
-  implements apnm
+  extends ScaleAnimation
 {
-  public aavl(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void a()
+  public aavl(ContactBindedActivity paramContactBindedActivity, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6)
   {
-    befb localbefb = befb.a;
-    if ((localbefb != null) && (localbefb.a()))
-    {
-      if (!localbefb.a(1)) {
-        localbefb.b(1);
-      }
-      if ((!localbefb.a(8)) && (localbefb.a(5)) && (localbefb.a(7))) {
-        localbefb.b(8);
-      }
-      if ((!localbefb.a(9)) && (localbefb.a(6)) && (localbefb.a(7))) {
-        localbefb.b(9);
-      }
+    super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    if (paramTransformation == null) {
+      return;
     }
+    super.applyTransformation(paramFloat, paramTransformation);
+    paramTransformation.setAlpha(0.0F + 1.0F * paramFloat);
   }
 }
 

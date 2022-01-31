@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
 
 class anld
-  implements arib
+  implements DialogInterface.OnClickListener
 {
-  anld(anlc paramanlc, String paramString) {}
+  anld(anlc paramanlc) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicEmoticonInfo", 2, "forward, [play back] ready to send msg,magicvalue:" + this.jdField_a_of_type_Anlc.jdField_a_of_type_Anla.a.magicValue);
-    }
-    this.jdField_a_of_type_Anlc.jdField_a_of_type_Anla.a.magicValue = this.jdField_a_of_type_JavaLangString;
-    aael.a(this.jdField_a_of_type_Anlc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Anlc.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Anlc.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Anlc.jdField_a_of_type_Anla.a);
+    anls.a().b(this.a.jdField_a_of_type_Anku);
+    this.a.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anld
  * JD-Core Version:    0.7.0.1
  */

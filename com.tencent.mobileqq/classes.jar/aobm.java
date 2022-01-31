@@ -1,47 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
 
 class aobm
-  implements View.OnClickListener
+  implements asko<EmoticonPackage>
 {
-  aobm(aobl paramaobl, View paramView) {}
+  aobm(aobk paramaobk, QQAppInterface paramQQAppInterface, int paramInt, Context paramContext, SessionInfo paramSessionInfo) {}
   
-  public void onClick(View paramView)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((localObject instanceof anzc))
+    int i = ascj.a(this.jdField_a_of_type_Aobk.a.magicValue);
+    if ((-1 != i) && (paramEmoticonPackage != null))
     {
-      localObject = (FileInfo)((anzc)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-      if (paramView.getId() != 2131299411) {
-        break label149;
-      }
-      paramView = (begr)behe.a(this.jdField_a_of_type_Aobl.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, null);
-      paramView.a(ajjy.a(2131643834));
-      paramView.a(ajjy.a(2131643830), 3);
-      paramView.d(ajjy.a(2131643831));
-      paramView.a(new aobn(this, (FileInfo)localObject, paramView));
-      paramView.show();
+      paramEmoticonPackage.rscType = i;
+      ((askd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(paramEmoticonPackage);
     }
-    label149:
-    while (paramView.getId() != 2131301023)
+    paramEmoticonPackage = "rscType?" + i + ";value=" + this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Aobk.a.magicValue = paramEmoticonPackage;
+    if (QLog.isColorLevel()) {
+      QLog.d("PicEmoticonInfo", 2, "before play,magicvalue:" + paramEmoticonPackage);
+    }
+    ascp localascp = asdh.a(this.jdField_a_of_type_Aobk.a, 0);
+    if ((localascp != null) && (!localascp.c))
     {
-      do
-      {
-        return;
-        if ((localObject instanceof aobx))
-        {
-          localObject = (FileInfo)((aobx)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "unknow Object");
+      aaod.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Aobk.a);
       return;
     }
-    paramView = apck.a((FileInfo)localObject);
-    apdq.a(QfileBaseLocalFileTabView.a(this.jdField_a_of_type_Aobl.a), this.jdField_a_of_type_Aobl.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramView);
+    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a().a(this.jdField_a_of_type_Aobk.a, new aobn(this, paramEmoticonPackage));
   }
 }
 

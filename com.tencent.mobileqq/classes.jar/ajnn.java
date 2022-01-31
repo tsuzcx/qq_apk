@@ -1,787 +1,540 @@
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBDoubleField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBFixed32Field;
-import com.tencent.mobileqq.pb.PBFixed64Field;
-import com.tencent.mobileqq.pb.PBFloatField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBSFixed32Field;
-import com.tencent.mobileqq.pb.PBSFixed64Field;
-import com.tencent.mobileqq.pb.PBSInt32Field;
-import com.tencent.mobileqq.pb.PBSInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.utils.ApolloGameRscVerify.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
+import java.io.File;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
-public abstract class ajnn
+public class ajnn
 {
-  private static final String TAG = "OidbWrapper";
+  public int a;
+  public long a;
+  private ajno jdField_a_of_type_Ajno;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private String jdField_a_of_type_JavaLangString;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private int c;
+  private int d = 0;
   
-  public static int parseOIDBPkg(FromServiceMsg paramFromServiceMsg, Object paramObject, MessageMicro paramMessageMicro)
+  public ajnn(int paramInt)
   {
-    return parseOIDBPkg(paramFromServiceMsg, paramObject, new oidb_sso.OIDBSSOPkg(), paramMessageMicro);
+    this(paramInt, 0, "", "");
   }
   
-  /* Error */
-  public static int parseOIDBPkg(FromServiceMsg paramFromServiceMsg, Object paramObject, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg, MessageMicro paramMessageMicro)
+  public ajnn(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 29	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   4: istore 4
-    //   6: invokestatic 35	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   9: ifeq +298 -> 307
-    //   12: new 37	java/lang/StringBuilder
-    //   15: dup
-    //   16: invokespecial 38	java/lang/StringBuilder:<init>	()V
-    //   19: astore 6
-    //   21: iload 4
-    //   23: sipush 1000
-    //   26: if_icmpne +248 -> 274
-    //   29: aload_1
-    //   30: ifnull +205 -> 235
-    //   33: aload_2
-    //   34: aload_1
-    //   35: checkcast 40	[B
-    //   38: checkcast 40	[B
-    //   41: invokevirtual 44	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   44: checkcast 17	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   47: astore_1
-    //   48: aload_1
-    //   49: ifnull +64 -> 113
-    //   52: aload_1
-    //   53: getfield 48	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   56: invokevirtual 53	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   59: istore 5
-    //   61: iload 5
-    //   63: istore 4
-    //   65: iload 5
-    //   67: ifeq +46 -> 113
-    //   70: aload_1
-    //   71: getfield 57	tencent/im/oidb/oidb_sso$OIDBSSOPkg:str_error_msg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   74: invokevirtual 62	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   77: astore_2
-    //   78: aload_0
-    //   79: getfield 66	com/tencent/qphone/base/remote/FromServiceMsg:extraData	Landroid/os/Bundle;
-    //   82: ldc 67
-    //   84: aload_2
-    //   85: invokevirtual 73	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   88: iload 5
-    //   90: istore 4
-    //   92: aload 6
-    //   94: ifnull +19 -> 113
-    //   97: aload 6
-    //   99: ldc 75
-    //   101: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: aload_2
-    //   105: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: pop
-    //   109: iload 5
-    //   111: istore 4
-    //   113: iload 4
-    //   115: istore 5
-    //   117: aload_1
-    //   118: ifnull +182 -> 300
-    //   121: iload 4
-    //   123: istore 5
-    //   125: aload_1
-    //   126: getfield 83	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   129: invokevirtual 88	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   132: ifeq +168 -> 300
-    //   135: iload 4
-    //   137: istore 5
-    //   139: aload_1
-    //   140: getfield 83	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   143: invokevirtual 91	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   146: ifnull +154 -> 300
-    //   149: iload 4
-    //   151: istore 5
-    //   153: aload_3
-    //   154: ifnull +146 -> 300
-    //   157: aload_3
-    //   158: aload_1
-    //   159: getfield 83	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   162: invokevirtual 91	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   165: invokevirtual 97	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   168: invokevirtual 100	com/tencent/mobileqq/pb/MessageMicro:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   171: pop
-    //   172: aload 6
-    //   174: ifnull +28 -> 202
-    //   177: aload 6
-    //   179: invokevirtual 103	java/lang/StringBuilder:length	()I
-    //   182: ifle +20 -> 202
-    //   185: invokestatic 35	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   188: ifeq +14 -> 202
-    //   191: ldc 105
-    //   193: iconst_4
-    //   194: aload 6
-    //   196: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   199: invokestatic 112	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   202: iload 4
-    //   204: ireturn
-    //   205: astore_1
-    //   206: aload 6
-    //   208: ifnull +18 -> 226
-    //   211: aload 6
-    //   213: ldc 114
-    //   215: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   218: aload_1
-    //   219: invokevirtual 115	java/lang/Exception:toString	()Ljava/lang/String;
-    //   222: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   225: pop
-    //   226: aload_1
-    //   227: invokevirtual 118	java/lang/Exception:printStackTrace	()V
-    //   230: aload_2
-    //   231: astore_1
-    //   232: goto -184 -> 48
-    //   235: aload_2
-    //   236: astore_1
-    //   237: aload 6
-    //   239: ifnull -191 -> 48
-    //   242: aload 6
-    //   244: ldc 120
-    //   246: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   249: pop
-    //   250: aload_2
-    //   251: astore_1
-    //   252: goto -204 -> 48
-    //   255: astore_0
-    //   256: aload 6
-    //   258: ifnull +13 -> 271
-    //   261: aload 6
-    //   263: aload_0
-    //   264: invokevirtual 115	java/lang/Exception:toString	()Ljava/lang/String;
-    //   267: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   270: pop
-    //   271: goto -99 -> 172
-    //   274: iload 4
-    //   276: istore 5
-    //   278: aload 6
-    //   280: ifnull +20 -> 300
-    //   283: aload 6
-    //   285: ldc 122
-    //   287: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   290: iload 4
-    //   292: invokevirtual 125	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   295: pop
-    //   296: iload 4
-    //   298: istore 5
-    //   300: iload 5
-    //   302: istore 4
-    //   304: goto -132 -> 172
-    //   307: aconst_null
-    //   308: astore 6
-    //   310: goto -289 -> 21
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	313	0	paramFromServiceMsg	FromServiceMsg
-    //   0	313	1	paramObject	Object
-    //   0	313	2	paramOIDBSSOPkg	oidb_sso.OIDBSSOPkg
-    //   0	313	3	paramMessageMicro	MessageMicro
-    //   4	299	4	i	int
-    //   59	242	5	j	int
-    //   19	290	6	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   33	48	205	java/lang/Exception
-    //   157	172	255	java/lang/Exception
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 4);
   }
   
-  public static String proto2String(MessageMicro paramMessageMicro)
+  private void a(String paramString, int paramInt)
   {
-    return proto2String(paramMessageMicro, true);
-  }
-  
-  public static String proto2String(MessageMicro paramMessageMicro, int paramInt, boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    String str = "";
-    int i = paramInt;
-    while (i > 0)
-    {
-      str = str + "    ";
-      i -= 1;
+    QLog.w("cmgame_process.ApolloGameRscVerify", 1, "gameId:" + this.jdField_b_of_type_Int + ",failType:" + paramInt + ",fileName:" + paramString);
+    if ((this.jdField_a_of_type_AndroidContentSharedPreferences == null) || (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean == null)) {
+      QLog.e("cmgame_process.ApolloGameRscVerify", 1, "[onVerifyFailure] fails, param is wrong");
     }
-    Field[] arrayOfField;
-    int j;
-    Field localField;
-    boolean bool1;
-    Object localObject2;
-    if (paramMessageMicro != null)
+    do
+    {
+      return;
+      this.d = paramInt;
+      if (this.jdField_a_of_type_Ajno != null) {
+        this.jdField_a_of_type_Ajno.a(paramInt);
+      }
+    } while ((this.c == 3) || (this.c == 4));
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("apollo_sp_game_rsc_verify_" + a(), true).commit();
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("gameId", Integer.toString(this.jdField_b_of_type_Int));
+    localHashMap.put("rscPath", paramString);
+    localHashMap.put("errType", Integer.toString(paramInt));
+    paramString = b();
+    axrl.a(BaseApplicationImpl.getContext()).a(paramString, "cmshow_game_rsc_error", true, -1L, -1L, localHashMap, "", true);
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    try
+    {
+      Object localObject = ajae.a(paramInt);
+      if (localObject == null)
+      {
+        QLog.w("cmgame_process.ApolloGameRscVerify", 1, "[isNeedVerify], launcher is null.");
+        return false;
+      }
+      CmGameInitParams localCmGameInitParams = ((ajch)localObject).a();
+      if (localCmGameInitParams != null) {
+        return a(localCmGameInitParams.isWhiteUsr, paramInt);
+      }
+      localObject = ((ajch)localObject).a();
+      if (localObject != null)
+      {
+        QLog.w("cmgame_process.ApolloGameRscVerify", 1, "[isNeedVerify], initParams is null use startCheckParam check");
+        return a(((CmGameStartChecker.StartCheckParam)localObject).isWhiteUsr, paramInt);
+      }
+      QLog.w("cmgame_process.ApolloGameRscVerify", 1, "[isNeedVerify], initParams and startCheckParam is null.");
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.ApolloGameRscVerify", 1, localThrowable, new Object[0]);
+    }
+    return true;
+  }
+  
+  public static boolean a(boolean paramBoolean, int paramInt)
+  {
+    if (paramBoolean) {}
+    try
+    {
+      if (aiwu.a(paramInt))
+      {
+        paramBoolean = BaseApplicationImpl.getApplication().getSharedPreferences("cmgame_sp", 4).getBoolean("game_whitelist_verify_switch", true);
+        QLog.i("cmgame_process.ApolloGameRscVerify", 1, "game_rsc_verify_switch:" + paramBoolean);
+        return paramBoolean;
+      }
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.ApolloGameRscVerify", 1, localThrowable, new Object[0]);
+    }
+    return true;
+  }
+  
+  private String c()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(500);
+    if (this.c == 0) {
+      localStringBuilder.append(ajmu.s).append(this.jdField_b_of_type_Int);
+    }
+    do
+    {
+      for (;;)
+      {
+        return localStringBuilder.toString();
+        if (this.c != 1) {
+          break;
+        }
+        localStringBuilder.append(ajmu.s).append(this.jdField_b_of_type_Int).append("/").append(this.jdField_b_of_type_JavaLangString);
+      }
+    } while ((this.c != 3) && (this.c != 4));
+    return bfmz.a();
+  }
+  
+  private boolean c()
+  {
+    for (;;)
     {
       try
       {
-        arrayOfField = paramMessageMicro.getClass().getFields();
-        j = arrayOfField.length;
-        i = 0;
+        if (!a(this.jdField_b_of_type_Int, this.c))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("cmgame_process.ApolloGameRscVerify", 2, "Verifying switch is off in debug mode.");
+          }
+          this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+          if (this.jdField_a_of_type_Ajno == null) {
+            break;
+          }
+          this.jdField_a_of_type_Ajno.a(0);
+          return false;
+        }
+        new ApolloGameData().gameId = this.jdField_b_of_type_Int;
+        File localFile = new File(c(), d());
+        if (!localFile.exists())
+        {
+          QLog.w("cmgame_process.ApolloGameRscVerify", 1, "game checklist NOT exist, gameId:" + this.jdField_b_of_type_Int);
+          a("checkList", 2);
+          return false;
+        }
       }
-      catch (Throwable paramMessageMicro)
+      catch (Throwable localThrowable)
       {
-        boolean bool2;
-        localStringBuilder.append("***ERROR***").append("\n").append(paramMessageMicro);
+        QLog.e("cmgame_process.ApolloGameRscVerify", 1, "[ApolloGameRscVerify], errInfo->", localThrowable);
+        return true;
       }
-      localField.setAccessible(true);
-      localObject1 = localField.getType();
-      if (!PBBoolField.class.isAssignableFrom((Class)localObject1)) {
-        break label257;
+      if (((this.c == 0) || (this.c == 1)) && (!new ajox(c() + "/checkList.sig", localThrowable.getAbsolutePath()).a(0)))
+      {
+        a("checkList.sig", 3);
+        return false;
       }
-      localObject1 = (PBBoolField)localField.get(paramMessageMicro);
-      if (localObject1 == null) {
-        break label2592;
-      }
-      bool1 = ((PBBoolField)localObject1).has();
-      bool2 = ((PBBoolField)localObject1).get();
-      localObject2 = localField.getName();
-      if (!bool1) {
-        break label250;
-      }
-      localObject1 = Boolean.valueOf(bool2);
-      localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-      if ((paramBoolean) && (!bool1)) {
-        break label2592;
-      }
-      localStringBuilder.append(str);
-      localStringBuilder.append((String)localObject1);
+      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(bbdj.b(localThrowable));
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
-    label194:
-    label244:
-    label250:
-    long l;
-    for (;;)
+    return false;
+  }
+  
+  private String d()
+  {
+    if (this.c == 4) {
+      return "checkList_jsc";
+    }
+    return "checkList";
+  }
+  
+  public String a()
+  {
+    if (this.c == 0) {
+      return String.valueOf(this.jdField_b_of_type_Int);
+    }
+    return this.jdField_b_of_type_Int + "_" + this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    ThreadManager.post(new ApolloGameRscVerify.1(this), 5, null, true);
+  }
+  
+  public void a(ajno paramajno)
+  {
+    this.jdField_a_of_type_Ajno = paramajno;
+  }
+  
+  public boolean a()
+  {
+    try
     {
-      if (localField != arrayOfField[(arrayOfField.length - 1)]) {
-        localStringBuilder.append(",");
-      }
-      localStringBuilder.append("\n");
-      break label2592;
-      return localStringBuilder.toString();
-      localObject1 = "NA";
-      break;
-      label257:
-      if (PBBytesField.class.isAssignableFrom((Class)localObject1))
+      long l = System.currentTimeMillis();
+      if (!a(this.jdField_b_of_type_Int, this.c))
       {
-        localObject1 = (PBBytesField)localField.get(paramMessageMicro);
-        if (localObject1 == null) {
-          break label2592;
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.ApolloGameRscVerify", 2, "Verifying switch is off in debug mode.");
         }
-        bool1 = ((PBBytesField)localObject1).has();
-        localObject2 = localField.getName();
-        if (!bool1) {
-          break label2601;
+        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        if (this.jdField_a_of_type_Ajno != null) {
+          this.jdField_a_of_type_Ajno.a(0);
         }
-        localObject1 = "<…bytes…>";
-        label306:
-        localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-        if ((paramBoolean) && (!bool1)) {
-          break label2592;
-        }
-        localStringBuilder.append(str);
-        localStringBuilder.append((String)localObject1);
-      }
-      else if (PBDoubleField.class.isAssignableFrom((Class)localObject1))
-      {
-        localObject1 = (PBDoubleField)localField.get(paramMessageMicro);
-        if (localObject1 == null) {
-          break label2592;
-        }
-        bool1 = ((PBDoubleField)localObject1).has();
-        double d = ((PBDoubleField)localObject1).get();
-        localObject2 = localField.getName();
-        if (!bool1) {
-          break label2608;
-        }
-        localObject1 = Double.valueOf(d);
-        label412:
-        localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-        if ((paramBoolean) && (!bool1)) {
-          break label2592;
-        }
-        localStringBuilder.append(str);
-        localStringBuilder.append((String)localObject1);
       }
       else
       {
-        int k;
-        if (PBEnumField.class.isAssignableFrom((Class)localObject1))
-        {
-          localObject1 = (PBEnumField)localField.get(paramMessageMicro);
-          if (localObject1 == null) {
-            break label2592;
-          }
-          bool1 = ((PBEnumField)localObject1).has();
-          k = ((PBEnumField)localObject1).get();
-          localObject2 = localField.getName();
-          if (!bool1) {
-            break label2615;
-          }
-          localObject1 = Integer.valueOf(k);
-          label520:
-          localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-          if ((paramBoolean) && (!bool1)) {
-            break label2592;
-          }
-          localStringBuilder.append(str);
-          localStringBuilder.append((String)localObject1);
+        if (!c()) {
+          return false;
         }
-        else if (PBFixed32Field.class.isAssignableFrom((Class)localObject1))
-        {
-          localObject1 = (PBFixed32Field)localField.get(paramMessageMicro);
-          bool1 = ((PBFixed32Field)localObject1).has();
-          k = ((PBFixed32Field)localObject1).get();
-          localObject2 = localField.getName();
-          if (!bool1) {
-            break label2622;
-          }
-          localObject1 = Integer.valueOf(k);
-          label623:
-          localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-          if ((paramBoolean) && (!bool1)) {
-            break label2592;
-          }
-          localStringBuilder.append(str);
-          localStringBuilder.append((String)localObject1);
+        if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
+          return false;
         }
-        else if (PBFixed64Field.class.isAssignableFrom((Class)localObject1))
+        Iterator localIterator = this.jdField_a_of_type_OrgJsonJSONObject.keys();
+        StringBuilder localStringBuilder = new StringBuilder(200);
+        while (localIterator.hasNext())
         {
-          localObject1 = (PBFixed64Field)localField.get(paramMessageMicro);
-          if (localObject1 == null) {
-            break label2592;
+          this.jdField_a_of_type_Int += 1;
+          String str = (String)localIterator.next();
+          localStringBuilder.delete(0, localStringBuilder.length());
+          localStringBuilder.append(c());
+          localStringBuilder.append("/").append(str);
+          if (!a(localStringBuilder.toString(), str)) {
+            return false;
           }
-          bool1 = ((PBFixed64Field)localObject1).has();
-          l = ((PBFixed64Field)localObject1).get();
-          localObject2 = localField.getName();
-          if (!bool1) {
-            break label2629;
-          }
-          localObject1 = Long.valueOf(l);
-          label731:
-          localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-          if ((paramBoolean) && (!bool1)) {
-            break label2592;
-          }
-          localStringBuilder.append(str);
-          localStringBuilder.append((String)localObject1);
         }
-        else if (PBFloatField.class.isAssignableFrom((Class)localObject1))
-        {
-          localObject1 = (PBFloatField)localField.get(paramMessageMicro);
-          if (localObject1 == null) {
-            break label2592;
-          }
-          bool1 = ((PBFloatField)localObject1).has();
-          float f = ((PBFloatField)localObject1).get();
-          localObject2 = localField.getName();
-          if (!bool1) {
-            break label2636;
-          }
-          localObject1 = Float.valueOf(f);
-          label839:
-          localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-          if ((paramBoolean) && (!bool1)) {
-            break label2592;
-          }
-          localStringBuilder.append(str);
-          localStringBuilder.append((String)localObject1);
+        this.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
+        if (this.jdField_a_of_type_Ajno != null) {
+          this.jdField_a_of_type_Ajno.a(0);
         }
-        else if (PBInt32Field.class.isAssignableFrom((Class)localObject1))
-        {
-          localObject1 = (PBInt32Field)localField.get(paramMessageMicro);
-          if (localObject1 == null) {
-            break label2592;
-          }
-          bool1 = ((PBInt32Field)localObject1).has();
-          k = ((PBInt32Field)localObject1).get();
-          localObject2 = localField.getName();
-          if (!bool1) {
-            break label2643;
-          }
-          localObject1 = Integer.valueOf(k);
-          label947:
-          localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-          if ((paramBoolean) && (!bool1)) {
-            break label2592;
-          }
-          localStringBuilder.append(str);
-          localStringBuilder.append((String)localObject1);
-        }
-        else if (PBInt64Field.class.isAssignableFrom((Class)localObject1))
-        {
-          localObject1 = (PBInt64Field)localField.get(paramMessageMicro);
-          if (localObject1 == null) {
-            break label2592;
-          }
-          bool1 = ((PBInt64Field)localObject1).has();
-          l = ((PBInt64Field)localObject1).get();
-          localObject2 = localField.getName();
-          if (!bool1) {
-            break label2650;
-          }
-          localObject1 = Long.valueOf(l);
-          label1055:
-          localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-          if ((paramBoolean) && (!bool1)) {
-            break label2592;
-          }
-          localStringBuilder.append(str);
-          localStringBuilder.append((String)localObject1);
-        }
-        else if (PBSFixed32Field.class.isAssignableFrom((Class)localObject1))
-        {
-          localObject1 = (PBSFixed32Field)localField.get(paramMessageMicro);
-          if (localObject1 == null) {
-            break label2592;
-          }
-          bool1 = ((PBSFixed32Field)localObject1).has();
-          k = ((PBSFixed32Field)localObject1).get();
-          localObject2 = localField.getName();
-          if (!bool1) {
-            break label2657;
-          }
-          localObject1 = Integer.valueOf(k);
-          label1163:
-          localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-          if ((paramBoolean) && (!bool1)) {
-            break label2592;
-          }
-          localStringBuilder.append(str);
-          localStringBuilder.append((String)localObject1);
-        }
-        else if (PBSFixed64Field.class.isAssignableFrom((Class)localObject1))
-        {
-          localObject1 = (PBSFixed64Field)localField.get(paramMessageMicro);
-          if (localObject1 == null) {
-            break label2592;
-          }
-          bool1 = ((PBSFixed64Field)localObject1).has();
-          l = ((PBSFixed64Field)localObject1).get();
-          localObject2 = localField.getName();
-          if (!bool1) {
-            break label2664;
-          }
-          localObject1 = Long.valueOf(l);
-          label1272:
-          localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-          if ((paramBoolean) && (!bool1)) {
-            break label2592;
-          }
-          localStringBuilder.append(str);
-          localStringBuilder.append((String)localObject1);
-        }
-        else if (PBSInt32Field.class.isAssignableFrom((Class)localObject1))
-        {
-          localObject1 = (PBSInt32Field)localField.get(paramMessageMicro);
-          if (localObject1 == null) {
-            break label2592;
-          }
-          bool1 = ((PBSInt32Field)localObject1).has();
-          k = ((PBSInt32Field)localObject1).get();
-          localObject2 = localField.getName();
-          if (!bool1) {
-            break label2671;
-          }
-          localObject1 = Integer.valueOf(k);
-          label1381:
-          localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-          if ((paramBoolean) && (!bool1)) {
-            break label2592;
-          }
-          localStringBuilder.append(str);
-          localStringBuilder.append((String)localObject1);
-        }
-        else if (PBSInt64Field.class.isAssignableFrom((Class)localObject1))
-        {
-          localObject1 = (PBSInt64Field)localField.get(paramMessageMicro);
-          if (localObject1 == null) {
-            break label2592;
-          }
-          bool1 = ((PBSInt64Field)localObject1).has();
-          l = ((PBSInt64Field)localObject1).get();
-          localObject2 = localField.getName();
-          if (!bool1) {
-            break label2678;
-          }
-          localObject1 = Long.valueOf(l);
-          label1490:
-          localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-          if ((paramBoolean) && (!bool1)) {
-            break label2592;
-          }
-          localStringBuilder.append(str);
-          localStringBuilder.append((String)localObject1);
-        }
-        else if (PBStringField.class.isAssignableFrom((Class)localObject1))
-        {
-          localObject1 = (PBStringField)localField.get(paramMessageMicro);
-          if (localObject1 == null) {
-            break label2592;
-          }
-          bool1 = ((PBStringField)localObject1).has();
-          localObject1 = ((PBStringField)localObject1).get();
-          localObject2 = localField.getName();
-          if (!bool1) {
-            break label2685;
-          }
-          label1591:
-          localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-          if ((paramBoolean) && (!bool1)) {
-            break label2592;
-          }
-          localStringBuilder.append(str);
-          localStringBuilder.append((String)localObject1);
-        }
-        else
-        {
-          if (!PBUInt32Field.class.isAssignableFrom((Class)localObject1)) {
-            break label1748;
-          }
-          localObject1 = (PBUInt32Field)localField.get(paramMessageMicro);
-          if (localObject1 == null) {
-            break label2592;
-          }
-          bool1 = ((PBUInt32Field)localObject1).has();
-          k = ((PBUInt32Field)localObject1).get();
-          localObject2 = localField.getName();
-          if (!bool1) {
-            break label2692;
-          }
-          localObject1 = Integer.valueOf(k);
-          label1699:
-          localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-          if ((paramBoolean) && (!bool1)) {
-            break label2592;
-          }
-          localStringBuilder.append(str);
-          localStringBuilder.append((String)localObject1);
-        }
+        return true;
       }
     }
-    label1748:
-    if (PBUInt64Field.class.isAssignableFrom((Class)localObject1))
+    catch (Throwable localThrowable)
     {
-      localObject1 = (PBUInt64Field)localField.get(paramMessageMicro);
-      if (localObject1 == null) {
-        break label2592;
-      }
-      bool1 = ((PBUInt64Field)localObject1).has();
-      l = ((PBUInt64Field)localObject1).get();
-      localObject2 = localField.getName();
-      if (!bool1) {
-        break label2699;
-      }
+      QLog.e("cmgame_process.ApolloGameRscVerify", 1, localThrowable, new Object[0]);
+      return false;
     }
-    label2692:
-    label2699:
-    for (Object localObject1 = Long.valueOf(l);; localObject1 = "NA")
+    return true;
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt2 == 4) || (paramInt2 == 3)) {
+      return true;
+    }
+    return a(paramInt1);
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (this.jdField_a_of_type_OrgJsonJSONObject != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString)));
+  }
+  
+  /* Error */
+  public boolean a(String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 33	ajnn:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   4: invokevirtual 362	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   7: ifeq +41 -> 48
+    //   10: aload_0
+    //   11: getfield 292	ajnn:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   14: ifnull +34 -> 48
+    //   17: aload_2
+    //   18: invokestatic 357	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   21: ifne +27 -> 48
+    //   24: aload_1
+    //   25: invokestatic 357	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   28: ifne +20 -> 48
+    //   31: aload_0
+    //   32: getfield 35	ajnn:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   35: ifnull +13 -> 48
+    //   38: aload_0
+    //   39: getfield 35	ajnn:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   42: invokevirtual 362	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   45: ifeq +5 -> 50
+    //   48: iconst_0
+    //   49: ireturn
+    //   50: invokestatic 319	java/lang/System:currentTimeMillis	()J
+    //   53: pop2
+    //   54: aconst_null
+    //   55: astore 4
+    //   57: aconst_null
+    //   58: astore 5
+    //   60: new 248	java/io/File
+    //   63: dup
+    //   64: aload_1
+    //   65: invokespecial 363	java/io/File:<init>	(Ljava/lang/String;)V
+    //   68: astore 7
+    //   70: aload 4
+    //   72: astore_3
+    //   73: aload 7
+    //   75: invokevirtual 258	java/io/File:exists	()Z
+    //   78: ifne +37 -> 115
+    //   81: aload 4
+    //   83: astore_3
+    //   84: aload_0
+    //   85: aload_2
+    //   86: iconst_1
+    //   87: invokespecial 264	ajnn:a	(Ljava/lang/String;I)V
+    //   90: iconst_0
+    //   91: ifeq -43 -> 48
+    //   94: new 365	java/lang/NullPointerException
+    //   97: dup
+    //   98: invokespecial 366	java/lang/NullPointerException:<init>	()V
+    //   101: athrow
+    //   102: astore_1
+    //   103: ldc 66
+    //   105: iconst_1
+    //   106: ldc_w 368
+    //   109: aload_1
+    //   110: invokestatic 269	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   113: iconst_0
+    //   114: ireturn
+    //   115: aload 4
+    //   117: astore_3
+    //   118: aload_0
+    //   119: getfield 292	ajnn:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   122: aload_2
+    //   123: invokevirtual 351	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   126: astore 6
+    //   128: aload 4
+    //   130: astore_3
+    //   131: new 370	java/io/FileInputStream
+    //   134: dup
+    //   135: aload_1
+    //   136: invokespecial 371	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   139: astore 4
+    //   141: aload 4
+    //   143: aload 7
+    //   145: invokevirtual 373	java/io/File:length	()J
+    //   148: invokestatic 379	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   151: invokestatic 385	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   154: astore_3
+    //   155: aload_3
+    //   156: invokestatic 357	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   159: ifne +57 -> 216
+    //   162: aload 6
+    //   164: invokestatic 357	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   167: ifne +49 -> 216
+    //   170: aload_3
+    //   171: invokevirtual 388	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   174: aload 6
+    //   176: invokevirtual 388	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   179: invokevirtual 392	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   182: ifne +34 -> 216
+    //   185: aload_0
+    //   186: aload_2
+    //   187: iconst_4
+    //   188: invokespecial 264	ajnn:a	(Ljava/lang/String;I)V
+    //   191: aload 4
+    //   193: ifnull -145 -> 48
+    //   196: aload 4
+    //   198: invokevirtual 395	java/io/FileInputStream:close	()V
+    //   201: iconst_0
+    //   202: ireturn
+    //   203: astore_1
+    //   204: ldc 66
+    //   206: iconst_1
+    //   207: ldc_w 368
+    //   210: aload_1
+    //   211: invokestatic 269	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   214: iconst_0
+    //   215: ireturn
+    //   216: aload 4
+    //   218: ifnull +8 -> 226
+    //   221: aload 4
+    //   223: invokevirtual 395	java/io/FileInputStream:close	()V
+    //   226: iconst_1
+    //   227: ireturn
+    //   228: astore_1
+    //   229: ldc 66
+    //   231: iconst_1
+    //   232: ldc_w 368
+    //   235: aload_1
+    //   236: invokestatic 269	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   239: goto -13 -> 226
+    //   242: astore_3
+    //   243: aload 5
+    //   245: astore 4
+    //   247: aload_3
+    //   248: astore 5
+    //   250: aload 4
+    //   252: astore_3
+    //   253: ldc 66
+    //   255: iconst_1
+    //   256: bipush 6
+    //   258: anewarray 4	java/lang/Object
+    //   261: dup
+    //   262: iconst_0
+    //   263: ldc_w 397
+    //   266: aastore
+    //   267: dup
+    //   268: iconst_1
+    //   269: aload 5
+    //   271: aastore
+    //   272: dup
+    //   273: iconst_2
+    //   274: ldc_w 399
+    //   277: aastore
+    //   278: dup
+    //   279: iconst_3
+    //   280: aload_1
+    //   281: aastore
+    //   282: dup
+    //   283: iconst_4
+    //   284: ldc_w 401
+    //   287: aastore
+    //   288: dup
+    //   289: iconst_5
+    //   290: aload_2
+    //   291: aastore
+    //   292: invokestatic 404	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   295: aload 4
+    //   297: ifnull -71 -> 226
+    //   300: aload 4
+    //   302: invokevirtual 395	java/io/FileInputStream:close	()V
+    //   305: goto -79 -> 226
+    //   308: astore_1
+    //   309: ldc 66
+    //   311: iconst_1
+    //   312: ldc_w 368
+    //   315: aload_1
+    //   316: invokestatic 269	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   319: goto -93 -> 226
+    //   322: astore_1
+    //   323: aload_3
+    //   324: ifnull +7 -> 331
+    //   327: aload_3
+    //   328: invokevirtual 395	java/io/FileInputStream:close	()V
+    //   331: aload_1
+    //   332: athrow
+    //   333: astore_2
+    //   334: ldc 66
+    //   336: iconst_1
+    //   337: ldc_w 368
+    //   340: aload_2
+    //   341: invokestatic 269	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   344: goto -13 -> 331
+    //   347: astore_1
+    //   348: aload 4
+    //   350: astore_3
+    //   351: goto -28 -> 323
+    //   354: astore 5
+    //   356: goto -106 -> 250
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	359	0	this	ajnn
+    //   0	359	1	paramString1	String
+    //   0	359	2	paramString2	String
+    //   72	99	3	localObject1	Object
+    //   242	6	3	localThrowable1	Throwable
+    //   252	99	3	localObject2	Object
+    //   55	294	4	localObject3	Object
+    //   58	212	5	localObject4	Object
+    //   354	1	5	localThrowable2	Throwable
+    //   126	49	6	str	String
+    //   68	76	7	localFile	File
+    // Exception table:
+    //   from	to	target	type
+    //   94	102	102	java/io/IOException
+    //   196	201	203	java/io/IOException
+    //   221	226	228	java/io/IOException
+    //   73	81	242	java/lang/Throwable
+    //   84	90	242	java/lang/Throwable
+    //   118	128	242	java/lang/Throwable
+    //   131	141	242	java/lang/Throwable
+    //   300	305	308	java/io/IOException
+    //   73	81	322	finally
+    //   84	90	322	finally
+    //   118	128	322	finally
+    //   131	141	322	finally
+    //   253	295	322	finally
+    //   327	331	333	java/io/IOException
+    //   141	191	347	finally
+    //   141	191	354	java/lang/Throwable
+  }
+  
+  public String b()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return ((QQAppInterface)localAppRuntime).getCurrentAccountUin();
+    }
+    return "";
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Int == 0)
     {
-      localObject1 = String.format("%s: %s", new Object[] { localObject2, localObject1 });
-      if ((!paramBoolean) || (bool1))
-      {
-        localStringBuilder.append(str);
-        localStringBuilder.append((String)localObject1);
-        break label194;
-        Object localObject3;
-        if (PBRepeatField.class.isAssignableFrom((Class)localObject1))
-        {
-          localObject1 = (PBRepeatField)localField.get(paramMessageMicro);
-          if (localObject1 == null) {
-            break label2592;
-          }
-          bool1 = ((PBRepeatField)localObject1).has();
-          localObject1 = ((PBRepeatField)localObject1).get();
-          if ((paramBoolean) && ((!bool1) || (((List)localObject1).isEmpty()))) {
-            break label2592;
-          }
-          if (!bool1)
-          {
-            localObject1 = String.format("%s: [NA]", new Object[] { localField.getName() });
-            localStringBuilder.append(str);
-            localStringBuilder.append((String)localObject1);
-            break label194;
-          }
-          localStringBuilder.append(str).append(String.format("%s: [\n", new Object[] { localField.getName() }));
-          localObject2 = ((List)localObject1).iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            localObject3 = ((Iterator)localObject2).next();
-            localStringBuilder.append(str).append("    ").append(localObject3);
-            if (localObject3 != ((List)localObject1).get(((List)localObject1).size() - 1)) {
-              localStringBuilder.append(",");
-            }
-            localStringBuilder.append("\n");
-          }
-          localStringBuilder.append(str).append("]");
-          break label194;
-        }
-        if (PBRepeatMessageField.class.isAssignableFrom((Class)localObject1))
-        {
-          localObject1 = (PBRepeatMessageField)localField.get(paramMessageMicro);
-          if (localObject1 == null) {
-            break label2592;
-          }
-          bool1 = ((PBRepeatMessageField)localObject1).has();
-          localObject1 = ((PBRepeatMessageField)localObject1).get();
-          if ((paramBoolean) && ((!bool1) || (((List)localObject1).isEmpty()))) {
-            break label2592;
-          }
-          if (!bool1)
-          {
-            localObject1 = String.format("%s: [NA]", new Object[] { localField.getName() });
-            localStringBuilder.append(str);
-            localStringBuilder.append((String)localObject1);
-            break label194;
-          }
-          localStringBuilder.append(str).append(String.format("%s: [\n", new Object[] { localField.getName() }));
-          localObject2 = ((List)localObject1).iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            localObject3 = (MessageMicro)((Iterator)localObject2).next();
-            localStringBuilder.append(str).append("    ").append("{\n");
-            localStringBuilder.append(proto2String((MessageMicro)localObject3, paramInt + 2, paramBoolean));
-            localStringBuilder.append(str).append("    ").append("}");
-            if (localObject3 != ((List)localObject1).get(((List)localObject1).size() - 1)) {
-              localStringBuilder.append(",");
-            }
-            localStringBuilder.append("\n");
-          }
-          localStringBuilder.append(str).append("]");
-          break label194;
-        }
-        if (MessageMicro.class.isAssignableFrom((Class)localObject1))
-        {
-          localObject1 = (MessageMicro)localField.get(paramMessageMicro);
-          if (localObject1 == null) {
-            break label2592;
-          }
-          bool1 = ((MessageMicro)localObject1).has();
-          localObject1 = ((MessageMicro)localObject1).get();
-          if ((paramBoolean) && (!bool1)) {
-            break label2592;
-          }
-          if (!bool1)
-          {
-            localObject1 = String.format("%s: NA", new Object[] { localField.getName() });
-            localStringBuilder.append(str);
-            localStringBuilder.append((String)localObject1);
-            break label194;
-          }
-          localStringBuilder.append(str).append(localField.getName()).append(": {\n");
-          localStringBuilder.append(proto2String((MessageMicro)localObject1, paramInt + 1, paramBoolean));
-          localStringBuilder.append(str).append("}");
-          break label194;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("OidbWrapper", 2, "unknown type {" + localField.getName() + "|" + localField.getType() + "}");
-        }
-      }
-      for (;;)
-      {
-        if (i >= j) {
-          break label2599;
-        }
-        localField = arrayOfField[i];
-        if (localField != null) {
-          break;
-        }
-        label2592:
-        i += 1;
-      }
-      label2599:
-      break label244;
-      label2601:
-      localObject1 = "NA";
-      break label306;
-      label2608:
-      localObject1 = "NA";
-      break label412;
-      label2615:
-      localObject1 = "NA";
-      break label520;
-      label2622:
-      localObject1 = "NA";
-      break label623;
-      label2629:
-      localObject1 = "NA";
-      break label731;
-      label2636:
-      localObject1 = "NA";
-      break label839;
-      label2643:
-      localObject1 = "NA";
-      break label947;
-      label2650:
-      localObject1 = "NA";
-      break label1055;
-      label2657:
-      localObject1 = "NA";
-      break label1163;
-      label2664:
-      localObject1 = "NA";
-      break label1272;
-      label2671:
-      localObject1 = "NA";
-      break label1381;
-      label2678:
-      localObject1 = "NA";
-      break label1490;
-      label2685:
-      localObject1 = "NA";
-      break label1591;
-      localObject1 = "NA";
-      break label1699;
+      QLog.w("cmgame_process.ApolloGameRscVerify", 1, "mTotalFiles is 0.");
+      return;
     }
+    Object localObject = new StringBuilder(200);
+    float f = 1.0F * (float)this.jdField_a_of_type_Long / this.jdField_a_of_type_Int;
+    ((StringBuilder)localObject).append("gameId:").append(this.jdField_b_of_type_Int).append(",totalCost:").append(this.jdField_a_of_type_Long).append(",totalFiles:").append(this.jdField_a_of_type_Int).append(",avgCost:").append(f);
+    QLog.i("cmgame_process.ApolloGameRscVerify", 1, ((StringBuilder)localObject).toString());
+    localObject = new HashMap();
+    ((HashMap)localObject).put("gameId", Integer.toString(this.jdField_b_of_type_Int));
+    ((HashMap)localObject).put("avgCost", Float.toString(f));
+    String str = b();
+    axrl.a(BaseApplicationImpl.getContext()).a(str, "cmshow_game_rsc_avg_cost", true, -1L, -1L, (HashMap)localObject, "", true);
   }
   
-  public static String proto2String(MessageMicro paramMessageMicro, boolean paramBoolean)
+  public boolean b()
   {
-    return proto2String(paramMessageMicro, 0, paramBoolean);
-  }
-  
-  protected abstract void addBusinessObserver(ToServiceMsg paramToServiceMsg, ajfe paramajfe, boolean paramBoolean);
-  
-  public abstract ToServiceMsg createToServiceMsg(String paramString);
-  
-  public ToServiceMsg makeOIDBPkg(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
-  {
-    return makeOIDBPkg(paramString, paramInt1, paramInt2, paramArrayOfByte, 30000L);
-  }
-  
-  public ToServiceMsg makeOIDBPkg(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte, long paramLong)
-  {
-    return makeOIDBPkg(paramString, paramInt1, paramInt2, paramArrayOfByte, paramLong, null, false);
-  }
-  
-  public ToServiceMsg makeOIDBPkg(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte, long paramLong, ajfe paramajfe, boolean paramBoolean)
-  {
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    localOIDBSSOPkg.uint32_command.set(paramInt1);
-    localOIDBSSOPkg.uint32_service_type.set(paramInt2);
-    localOIDBSSOPkg.uint32_result.set(0);
-    localOIDBSSOPkg.str_client_version.set(AppSetting.f());
-    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    paramString = createToServiceMsg(paramString);
-    paramString.putWupBuffer(localOIDBSSOPkg.toByteArray());
-    paramString.setTimeout(paramLong);
-    addBusinessObserver(paramString, paramajfe, paramBoolean);
-    return paramString;
+    return c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajnn
  * JD-Core Version:    0.7.0.1
  */

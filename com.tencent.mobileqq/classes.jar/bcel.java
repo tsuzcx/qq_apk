@@ -1,51 +1,29 @@
-import android.database.Cursor;
-import android.os.Parcel;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
-final class bcel
-  implements bcfu<bcek>
+public class bcel
+  implements mzc
 {
-  public int a()
-  {
-    return 1;
-  }
+  public bcel(SwiftBrowserOfflineHandler.1 param1, long paramLong) {}
   
-  public bcek a(Cursor paramCursor)
+  public void loaded(int paramInt, String paramString)
   {
-    try
-    {
-      String str1 = paramCursor.getString(paramCursor.getColumnIndex("urlKey"));
-      String str2 = paramCursor.getString(paramCursor.getColumnIndex("ETag"));
-      long l1 = paramCursor.getLong(paramCursor.getColumnIndex("lastModify"));
-      long l2 = paramCursor.getLong(paramCursor.getColumnIndex("cacheTime"));
-      Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("response"));
-      paramCursor = Parcel.obtain();
-      paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-      paramCursor.setDataPosition(0);
-      localObject = paramCursor.readString();
-      paramCursor.recycle();
-      paramCursor = new bcek(str1, str2, l1, l2, (String)localObject);
-      return paramCursor;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserOfflineHandler", 2, "now offline bid has checked, bid " + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaLangString + ", loadMode: " + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", cost: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    catch (Exception paramCursor)
+    if (paramInt != 0)
     {
-      paramCursor.printStackTrace();
+      xle.c(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaLangString);
+      xll.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.jdField_a_of_type_JavaLangString);
     }
-    return null;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public bcfv[] a()
-  {
-    return new bcfv[] { new bcfv("urlKey", "TEXT"), new bcfv("ETag", "TEXT"), new bcfv("lastModify", "INTEGER"), new bcfv("cacheTime", "INTEGER"), new bcfv("response", "BLOB") };
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcel
  * JD-Core Version:    0.7.0.1
  */

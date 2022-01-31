@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.data;
 
-import bhha;
+import bjbs;
 
 public class CaptureSet$1
   implements Runnable
 {
-  public CaptureSet$1(bhha parambhha) {}
+  public CaptureSet$1(bjbs parambjbs) {}
   
   public void run()
   {

@@ -1,49 +1,63 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.Random;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopRemindSettingData;
+import com.tencent.mobileqq.managers.TroopRemindSettingManager.1;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class asfd
-  extends avyu
 {
-  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  private static asfd a;
   
-  public asfd(NearbyAppInterface paramNearbyAppInterface)
+  public static asfd a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
-    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
-  }
-  
-  public AppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
-  }
-  
-  protected void a()
-  {
-    try
-    {
-      super.a();
-      super.a(new awal(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface));
-      super.d();
-      return;
+    if (a == null) {
+      a = new asfd();
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    return a;
+  }
+  
+  public static void a()
+  {
+    if (a != null) {
+      a = null;
     }
   }
   
-  public void a(ToServiceMsg paramToServiceMsg)
+  public void a(aukn paramaukn, QQAppInterface paramQQAppInterface)
   {
-    super.b(paramToServiceMsg, null, asfe.class);
+    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("init_troop_remind", false).commit();
+  }
+  
+  public void a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    TroopRemindSettingData localTroopRemindSettingData = new TroopRemindSettingData();
+    localTroopRemindSettingData.troopUin = paramString;
+    localTroopRemindSettingData.isOpenState = 1;
+    paramQQAppInterface.b(localTroopRemindSettingData);
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("init_troop_remind", true);
+  }
+  
+  public boolean a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    paramString = (TroopRemindSettingData)paramQQAppInterface.getEntityManagerFactory().createEntityManager().a(TroopRemindSettingData.class, paramString);
+    return (paramString != null) && (paramString.isOpenState == 0);
+  }
+  
+  public void b(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.post(new TroopRemindSettingManager.1(this, paramQQAppInterface, paramString), 8, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asfd
  * JD-Core Version:    0.7.0.1
  */

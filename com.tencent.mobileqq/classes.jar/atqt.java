@@ -1,8 +1,36 @@
-public abstract class atqt
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import java.util.List;
+
+class atqt
+  extends FragmentPagerAdapter
 {
-  public static boolean a(int paramInt)
+  private List<Fragment> jdField_a_of_type_JavaUtilList;
+  
+  atqt(FragmentManager paramFragmentManager, List<Fragment> paramList)
   {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2);
+    super(paramList);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  Fragment a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
+      return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public int getCount()
+  {
+    return 2;
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
 }
 

@@ -1,20 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 
 public class bfxg
-  implements DialogInterface.OnCancelListener
+  extends BaseAdapter
+  implements bfwu
 {
-  public bfxg(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public bfxg(View paramView)
   {
-    this.a.getPlayMode();
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Int = 0;
+      return;
+    }
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return this.jdField_a_of_type_AndroidViewView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfxg
  * JD-Core Version:    0.7.0.1
  */

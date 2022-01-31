@@ -1,60 +1,69 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import android.graphics.Bitmap;
+import android.opengl.GLES20;
+import android.opengl.GLUtils;
+import cooperation.qzone.util.QZLog;
 
 public class bhhh
-  extends bhha
 {
-  public bhhh(Object paramObject)
+  public static int a(Bitmap paramBitmap, boolean paramBoolean)
   {
-    super(paramObject);
-  }
-  
-  public int a(Activity paramActivity, int paramInt)
-  {
-    return super.a(paramActivity, paramInt);
-  }
-  
-  public void a(Activity paramActivity, int paramInt)
-  {
-    super.a(paramActivity, paramInt);
-    bjac localbjac = bjac.a();
-    bhhh localbhhh = localbjac.a[paramInt];
-    if ((localbhhh != null) && (localbhhh.b().equals(b()))) {
-      localbjac.a(null, paramActivity, paramInt);
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
+    if (arrayOfInt[0] == 0)
+    {
+      QZLog.e("TextureUtil", "glGenTextures: fail 0 ");
+      return 0;
+    }
+    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
+    {
+      QZLog.e("TextureUtil", "loadTexture: bitmap  == null || isRecycled");
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+      return 0;
+    }
+    GLES20.glBindTexture(3553, arrayOfInt[0]);
+    if (paramBoolean)
+    {
+      GLES20.glTexParameteri(3553, 10241, 9728);
+      GLES20.glTexParameteri(3553, 10240, 9728);
+    }
+    for (;;)
+    {
+      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
+      GLES20.glGenerateMipmap(3553);
+      GLES20.glBindTexture(3553, 0);
+      return arrayOfInt[0];
+      GLES20.glTexParameteri(3553, 10241, 9728);
+      GLES20.glTexParameteri(3553, 10240, 9729);
     }
   }
   
-  public void b(Activity paramActivity, int paramInt)
+  public static void a(int paramInt)
   {
-    super.b(paramActivity, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("QCombo", 2, "select " + toString());
+    GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
+    GLES20.glFinish();
+  }
+  
+  public static void a(bhhc parambhhc)
+  {
+    if (parambhhc == null) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < parambhhc.size())
+      {
+        bhhd localbhhd = (bhhd)parambhhc.valueAt(i);
+        if (localbhhd != null) {
+          localbhhd.b();
+        }
+        i += 1;
+      }
     }
-    QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.a;
-    bjac.a().a(localQIMFilterCategoryItem, paramActivity, paramInt);
-    ((bhgs)bhfm.a(5)).a[paramInt].a(this);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return paramObject.hashCode() == hashCode();
-  }
-  
-  public int hashCode()
-  {
-    return ((QIMFilterCategoryItem)this.a).a.hashCode();
-  }
-  
-  public String toString()
-  {
-    QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.a;
-    return localQIMFilterCategoryItem.a + localQIMFilterCategoryItem.hashCode() + localQIMFilterCategoryItem.g + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhhh
  * JD-Core Version:    0.7.0.1
  */

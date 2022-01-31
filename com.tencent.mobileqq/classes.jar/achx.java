@@ -1,32 +1,20 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
-import com.tencent.widget.XPanelContainer;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class achx
-  extends ajvp
+  implements View.OnClickListener
 {
-  public achx(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
+  public achx(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.e();
-    SendBirthdayWishesActivity.a(this.a, paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.a);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 0) {
-      this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
-    }
-    if (paramInt != 2)
-    {
-      SendBirthdayWishesActivity.a(this.a).removeCallbacks(SendBirthdayWishesActivity.a(this.a));
-      SendBirthdayWishesActivity.a(this.a).postDelayed(SendBirthdayWishesActivity.a(this.a), 600L);
-    }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     achx
  * JD-Core Version:    0.7.0.1
  */

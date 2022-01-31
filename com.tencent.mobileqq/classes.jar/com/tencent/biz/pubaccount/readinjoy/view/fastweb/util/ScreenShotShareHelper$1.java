@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import rbc;
+import rnu;
 
 public class ScreenShotShareHelper$1
   implements Runnable
 {
-  public ScreenShotShareHelper$1(rbc paramrbc) {}
+  public ScreenShotShareHelper$1(rnu paramrnu) {}
   
   public void run()
   {
-    rbc.a(this.this$0, this.this$0.a(rbc.a(this.this$0)));
+    rnu.a(this.this$0, this.this$0.a(rnu.a(this.this$0)));
   }
 }
 

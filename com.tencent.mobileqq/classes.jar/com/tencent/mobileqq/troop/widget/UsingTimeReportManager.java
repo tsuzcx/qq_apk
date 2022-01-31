@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import azpa;
+import baqe;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +19,7 @@ public class UsingTimeReportManager
 {
   private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private List<azpa> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<baqe> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   public UsingTimeReportManager(AppInterface paramAppInterface)
   {
@@ -51,7 +51,7 @@ public class UsingTimeReportManager
       ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((azpa)((Iterator)localObject1).next()).c();
+        ((baqe)((Iterator)localObject1).next()).c();
       }
     }
     finally {}
@@ -65,7 +65,7 @@ public class UsingTimeReportManager
       ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((azpa)((Iterator)localObject1).next()).d();
+        ((baqe)((Iterator)localObject1).next()).d();
       }
     }
     finally {}
@@ -79,41 +79,41 @@ public class UsingTimeReportManager
       ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((azpa)((Iterator)localObject1).next()).e();
+        ((baqe)((Iterator)localObject1).next()).e();
       }
     }
     finally {}
   }
   
-  public void a(azpa paramazpa)
+  public void a(baqe parambaqe)
   {
     try
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramazpa)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramazpa);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(parambaqe)) {
+        this.jdField_a_of_type_JavaUtilList.add(parambaqe);
       }
       return;
     }
     finally
     {
-      paramazpa = finally;
-      throw paramazpa;
+      parambaqe = finally;
+      throw parambaqe;
     }
   }
   
-  public void b(azpa paramazpa)
+  public void b(baqe parambaqe)
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilList.contains(paramazpa)) {
-        this.jdField_a_of_type_JavaUtilList.remove(paramazpa);
+      if (this.jdField_a_of_type_JavaUtilList.contains(parambaqe)) {
+        this.jdField_a_of_type_JavaUtilList.remove(parambaqe);
       }
       return;
     }
     finally
     {
-      paramazpa = finally;
-      throw paramazpa;
+      parambaqe = finally;
+      throw parambaqe;
     }
   }
   

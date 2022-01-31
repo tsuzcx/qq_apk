@@ -14,11 +14,11 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import artx;
-import aruo;
-import arup;
-import aruq;
-import arvc;
+import asqb;
+import asqs;
+import asqt;
+import asqu;
+import asrg;
 import com.tencent.qphone.base.util.QLog;
 
 public class MultiAIOViewPager
@@ -27,9 +27,9 @@ public class MultiAIOViewPager
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private artx jdField_a_of_type_Artx;
-  private aruq jdField_a_of_type_Aruq;
-  private arvc jdField_a_of_type_Arvc;
+  private asqb jdField_a_of_type_Asqb;
+  private asqu jdField_a_of_type_Asqu;
+  private asrg jdField_a_of_type_Asrg;
   private int d;
   private int e = -1;
   
@@ -67,8 +67,8 @@ public class MultiAIOViewPager
   
   private void h()
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new aruo(this), new Handler(Looper.getMainLooper()));
-    a(new arup(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new asqs(this), new Handler(Looper.getMainLooper()));
+    a(new asqt(this));
   }
   
   public void b(float paramFloat)
@@ -85,8 +85,8 @@ public class MultiAIOViewPager
     if (QLog.isColorLevel()) {
       QLog.d("MultiAIOViewPager", 2, "dispatchTouchEvent() called with: ev = [" + paramMotionEvent + "], handled " + bool);
     }
-    if ((bool) && (this.jdField_a_of_type_Arvc != null)) {
-      this.jdField_a_of_type_Arvc.b(this, paramMotionEvent);
+    if ((bool) && (this.jdField_a_of_type_Asrg != null)) {
+      this.jdField_a_of_type_Asrg.b(this, paramMotionEvent);
     }
     return bool;
   }
@@ -94,8 +94,8 @@ public class MultiAIOViewPager
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.jdField_a_of_type_Artx != null) {
-      this.jdField_a_of_type_Artx.b();
+    if (this.jdField_a_of_type_Asqb != null) {
+      this.jdField_a_of_type_Asqb.b();
     }
   }
   
@@ -106,8 +106,8 @@ public class MultiAIOViewPager
   
   public void g()
   {
-    if (this.jdField_a_of_type_Artx != null) {
-      this.jdField_a_of_type_Artx.a();
+    if (this.jdField_a_of_type_Asqb != null) {
+      this.jdField_a_of_type_Asqb.a();
     }
   }
   
@@ -138,8 +138,8 @@ public class MultiAIOViewPager
       if (QLog.isColorLevel()) {
         QLog.d("MultiAIOViewPager", 2, "onInterceptTouchEvent() called with: ev = [" + paramMotionEvent + "], handled = " + bool);
       }
-      if (this.jdField_a_of_type_Aruq != null) {
-        this.jdField_a_of_type_Aruq.a(bool);
+      if (this.jdField_a_of_type_Asqu != null) {
+        this.jdField_a_of_type_Asqu.a(bool);
       }
       return bool;
     }
@@ -213,8 +213,8 @@ public class MultiAIOViewPager
   
   public void setActTAG(String paramString)
   {
-    this.jdField_a_of_type_Artx = new artx();
-    this.jdField_a_of_type_Artx.a(paramString);
+    this.jdField_a_of_type_Asqb = new asqb();
+    this.jdField_a_of_type_Asqb.a(paramString);
   }
   
   public void setAnchorX(int paramInt)
@@ -223,9 +223,9 @@ public class MultiAIOViewPager
     invalidate();
   }
   
-  public void setIdleListener(aruq paramaruq)
+  public void setIdleListener(asqu paramasqu)
   {
-    this.jdField_a_of_type_Aruq = paramaruq;
+    this.jdField_a_of_type_Asqu = paramasqu;
   }
   
   public void setOnClickListener(@Nullable View.OnClickListener paramOnClickListener)
@@ -234,9 +234,9 @@ public class MultiAIOViewPager
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  public void setTouchEventConsumer(arvc paramarvc)
+  public void setTouchEventConsumer(asrg paramasrg)
   {
-    this.jdField_a_of_type_Arvc = paramarvc;
+    this.jdField_a_of_type_Asrg = paramasrg;
   }
 }
 

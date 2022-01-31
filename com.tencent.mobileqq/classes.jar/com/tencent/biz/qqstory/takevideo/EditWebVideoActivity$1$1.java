@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import ajjy;
-import bbmy;
-import uwf;
+import ajyc;
+import bcpw;
+import vjb;
 
 public class EditWebVideoActivity$1$1
   implements Runnable
 {
-  public EditWebVideoActivity$1$1(uwf paramuwf) {}
+  public EditWebVideoActivity$1$1(vjb paramvjb) {}
   
   public void run()
   {
     this.a.a.f();
-    bbmy.a(this.a.a, ajjy.a(2131638187), 0).a();
+    bcpw.a(this.a.a, ajyc.a(2131703972), 0).a();
     this.a.a.finish();
   }
 }

@@ -1,25 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.graphics.Bitmap;
 
 public class bbok
-  implements View.OnClickListener
 {
-  public bbok(TabBarView paramTabBarView, int paramInt) {}
-  
-  public void onClick(View paramView)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a < 500L) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a = l;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
-  }
+  public int a;
+  public Bitmap a;
+  public float[] a;
+  public int[] a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbok
  * JD-Core Version:    0.7.0.1
  */

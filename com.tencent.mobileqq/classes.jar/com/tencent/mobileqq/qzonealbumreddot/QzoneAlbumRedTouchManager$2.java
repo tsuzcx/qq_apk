@@ -3,16 +3,16 @@ package com.tencent.mobileqq.qzonealbumreddot;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import aufu;
+import avfa;
 
 public class QzoneAlbumRedTouchManager$2
   implements Runnable
 {
-  public QzoneAlbumRedTouchManager$2(aufu paramaufu) {}
+  public QzoneAlbumRedTouchManager$2(avfa paramavfa) {}
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = aufu.a(this.this$0).edit().putLong("key_photo_guide_has_red_date", System.currentTimeMillis());
+    SharedPreferences.Editor localEditor = avfa.a(this.this$0).edit().putLong("key_photo_guide_has_red_date", System.currentTimeMillis());
     if (Build.VERSION.SDK_INT < 9)
     {
       localEditor.commit();

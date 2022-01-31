@@ -1,21 +1,24 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
 
 public class sbf
-  implements TextView.OnEditorActionListener
+  implements wpe<wlj>
 {
-  public sbf(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  public sbf(FolderFollowTabFragment paramFolderFollowTabFragment) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(wpn paramwpn, wlj paramwlj)
   {
-    return paramKeyEvent.getKeyCode() == 66;
+    if (paramwpn.e()) {
+      FolderFollowTabFragment.a(this.a, paramwlj);
+    }
+    while ((!paramwpn.d()) && (!paramwpn.c())) {
+      return;
+    }
+    FolderFollowTabFragment.b(this.a, paramwlj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sbf
  * JD-Core Version:    0.7.0.1
  */

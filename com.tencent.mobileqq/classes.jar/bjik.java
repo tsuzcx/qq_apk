@@ -1,10 +1,19 @@
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.text.TextParcelData;
 
-public abstract interface bjik
+public final class bjik
+  implements Parcelable.Creator<TextParcelData>
 {
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt);
+  public TextParcelData a(Parcel paramParcel)
+  {
+    return new TextParcelData(paramParcel);
+  }
   
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean);
+  public TextParcelData[] a(int paramInt)
+  {
+    return new TextParcelData[paramInt];
+  }
 }
 
 

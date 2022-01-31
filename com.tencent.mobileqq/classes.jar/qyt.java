@@ -1,18 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-
-class qyt
-  implements ViewBase.OnClickListener
+public abstract interface qyt
 {
-  qyt(qys paramqys) {}
+  public abstract void a();
   
-  public void onClick(ViewBase paramViewBase)
-  {
-    qyp.a(true);
-    raz.a(this.a.a.a, "0X800974B");
-    obz.a(qyr.a(this.a.a).getContext(), paramViewBase.getEventAttachedData());
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
 }
 
 

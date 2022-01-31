@@ -1,51 +1,33 @@
-import android.util.SparseArray;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import java.util.List;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.os.Handler;
+import android.os.Looper;
 
-public class asgm
-  implements bbfj<oidb_0x8e4.RspBody>
+class asgm
 {
-  public asgm(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  asgm(asgl paramasgl)
   {
-    if ((paramInt == 0) || (paramInt == 1004))
-    {
-      this.a.jdField_a_of_type_Asgb.d();
-      baig.a(this.a, this.a.app.getCurrentAccountUin(), false, System.currentTimeMillis());
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_b_of_type_Long = this.a.app.getLongAccountUin();
-      this.a.jdField_b_of_type_JavaLangString = null;
-      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = null;
-      this.a.jdField_a_of_type_JavaUtilList = null;
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      if (this.a.jdField_b_of_type_JavaUtilList != null) {
-        this.a.jdField_b_of_type_JavaUtilList.clear();
-      }
-      this.a.f = false;
-      this.a.a();
-      paramRspBody = this.a.a();
-      if ((paramRspBody != null) && (paramRspBody.jdField_a_of_type_Boolean)) {
-        bbmy.a(this.a, ajjy.a(2131639272), 0).a();
-      }
-      this.a.jdField_a_of_type_Ashi.notifyDataSetChanged();
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    Looper localLooper2 = Looper.myLooper();
+    Looper localLooper1 = localLooper2;
+    if (localLooper2 == null) {
+      localLooper1 = Looper.getMainLooper();
     }
-    for (;;)
+    if (localLooper1 != null)
     {
-      this.a.jdField_b_of_type_AndroidViewView.setEnabled(true);
+      this.jdField_a_of_type_AndroidOsHandler = new asgn(this, localLooper1, paramasgl);
       return;
-      this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
     }
+    this.jdField_a_of_type_AndroidOsHandler = null;
+  }
+  
+  Handler a()
+  {
+    return this.jdField_a_of_type_AndroidOsHandler;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asgm
  * JD-Core Version:    0.7.0.1
  */

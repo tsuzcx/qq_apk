@@ -1,53 +1,94 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.util.Map;
 
-class ausx
-  implements axrt
+public class ausx
+  extends WebViewPlugin
 {
-  ausx(ausu paramausu) {}
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onResp(axsq paramaxsq)
+  public ausx()
   {
-    Object localObject = (FilterDesc)paramaxsq.jdField_a_of_type_Axsp.a();
-    if (paramaxsq.jdField_a_of_type_Int != 0) {
-      krx.c("CaptureVideoFilterManager", "download file failed. errorCode: " + paramaxsq.b + ", errorMsg: " + paramaxsq.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
-    }
-    for (;;)
-    {
-      return;
-      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(paramaxsq.jdField_a_of_type_Axsp.c)))
-      {
-        krx.c("CaptureVideoFilterManager", "download file failed: md5 is not match.");
-        bace.d(paramaxsq.jdField_a_of_type_Axsp.c);
-        return;
-      }
-      krx.c("CaptureVideoFilterManager", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
-      try
-      {
-        localObject = ausu.b;
-        bace.a(paramaxsq.jdField_a_of_type_Axsp.c, (String)localObject, false);
-        bace.d(paramaxsq.jdField_a_of_type_Axsp.c);
-        if ((ausu.a(this.a).decrementAndGet() == 0) && (ausu.a(this.a) != null))
-        {
-          ausu.a(this.a).a(true);
-          return;
-        }
-      }
-      catch (IOException paramaxsq)
-      {
-        paramaxsq.printStackTrace();
-        krx.c("CaptureVideoFilterManager", "unzip file failed.");
-      }
-    }
+    this.mPluginNameSpace = "profileJS";
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
+  private boolean a(String[] paramArrayOfString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(this.TAG, 2, "onAddTag");
+    }
+    if (this.jdField_a_of_type_AndroidOsBundle == null) {
+      this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    }
+    this.jdField_a_of_type_AndroidOsBundle.putBoolean("onTagChanged", true);
+    return true;
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    if (paramLong == 8589934598L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(this.TAG, 2, "handleEvent finish or destroy. fromProfile:" + this.jdField_a_of_type_Boolean);
+      }
+      if ((this.jdField_a_of_type_JavaLangString != null) && (!"".equals(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidOsBundle != null))
+      {
+        paramString = new Intent();
+        paramString.setAction(this.jdField_a_of_type_JavaLangString);
+        if (this.jdField_a_of_type_AndroidOsBundle != null) {
+          paramString.putExtra("key_bundle_data", this.jdField_a_of_type_AndroidOsBundle);
+        }
+        this.mRuntime.a().sendBroadcast(paramString);
+        this.jdField_a_of_type_AndroidOsBundle = null;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          paramString = new Intent(this.mRuntime.a(), PersonalityLabelGalleryActivity.class);
+          paramString.putExtra("fromType", 3);
+          paramString.putExtra("uin", this.mRuntime.a().getCurrentAccountUin());
+          this.mRuntime.a().startActivity(paramString);
+        }
+      }
+    }
+    return false;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("profileJS")) || (paramString3 == null)) {}
+    while ((this.mRuntime == null) || (this.mRuntime.a() == null)) {
+      return false;
+    }
+    if (paramString3.equals("onAddTag")) {
+      return a(paramVarArgs);
+    }
+    return true;
+  }
+  
+  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  {
+    super.onWebViewCreated(paramCustomWebView);
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = this.mRuntime.a();
+    if (this.mRuntime.a().getIntent() != null)
+    {
+      this.jdField_a_of_type_JavaLangString = this.mRuntime.a().getIntent().getStringExtra("broadcastAction");
+      this.jdField_a_of_type_Boolean = this.mRuntime.a().getIntent().getBooleanExtra("fromProfile", this.jdField_a_of_type_Boolean);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ausx
  * JD-Core Version:    0.7.0.1
  */

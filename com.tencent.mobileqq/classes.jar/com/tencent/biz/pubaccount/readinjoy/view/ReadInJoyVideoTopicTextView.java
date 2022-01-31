@@ -10,7 +10,7 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import azvv;
+import bawz;
 
 public class ReadInJoyVideoTopicTextView
   extends TextView
@@ -42,16 +42,16 @@ public class ReadInJoyVideoTopicTextView
   {
     SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_JavaLangString);
     Object localObject = new ForegroundColorSpan(Color.parseColor("#737373"));
-    int j = azvv.a(this.jdField_a_of_type_AndroidContentContext, 5.5F);
+    int j = bawz.a(this.jdField_a_of_type_AndroidContentContext, 5.5F);
     int i;
     if (paramInt == 1)
     {
-      localObject = getResources().getDrawable(2130842508);
-      paramInt = azvv.a(this.jdField_a_of_type_AndroidContentContext, 12.0F);
+      localObject = getResources().getDrawable(2130842591);
+      paramInt = bawz.a(this.jdField_a_of_type_AndroidContentContext, 12.0F);
       ((Drawable)localObject).setBounds(0, 0, paramInt, paramInt);
-      setCompoundDrawablePadding(azvv.a(this.jdField_a_of_type_AndroidContentContext, 3.0F));
+      setCompoundDrawablePadding(bawz.a(this.jdField_a_of_type_AndroidContentContext, 3.0F));
       setCompoundDrawables((Drawable)localObject, null, null, null);
-      i = azvv.a(this.jdField_a_of_type_AndroidContentContext, 4.5F);
+      i = bawz.a(this.jdField_a_of_type_AndroidContentContext, 4.5F);
       setTextSize(2, 12.0F);
     }
     for (;;)
@@ -59,10 +59,10 @@ public class ReadInJoyVideoTopicTextView
       setTextColor(Color.parseColor("#737373"));
       setText(localSpannableString);
       setIncludeFontPadding(false);
-      setPadding(azvv.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), i, azvv.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), i);
+      setPadding(bawz.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), i, bawz.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), i);
       setClickable(true);
       setFocusable(true);
-      setBackgroundResource(2130842505);
+      setBackgroundResource(2130842588);
       setSingleLine(true);
       setGravity(17);
       return;
@@ -70,7 +70,7 @@ public class ReadInJoyVideoTopicTextView
       if (paramInt == 2)
       {
         localSpannableString.setSpan(localObject, 0, this.jdField_a_of_type_JavaLangString.length(), 34);
-        setHeight(azvv.a(this.jdField_a_of_type_AndroidContentContext, 27.0F));
+        setHeight(bawz.a(this.jdField_a_of_type_AndroidContentContext, 27.0F));
         setTextSize(2, 14.0F);
         i = j;
       }
@@ -81,7 +81,7 @@ public class ReadInJoyVideoTopicTextView
   {
     Rect localRect = new Rect();
     getPaint().getTextBounds(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), localRect);
-    return localRect.width() + azvv.a(this.jdField_a_of_type_AndroidContentContext, 8.0F) * 2;
+    return localRect.width() + bawz.a(this.jdField_a_of_type_AndroidContentContext, 8.0F) * 2;
   }
   
   public void setSubChannelText(String paramString)

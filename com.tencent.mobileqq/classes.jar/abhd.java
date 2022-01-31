@@ -1,45 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
 public class abhd
-  extends BroadcastReceiver
+  implements bfoq
 {
-  public abhd(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public abhd(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bfol parambfol) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramIntent == null) {}
-    do
+    this.jdField_a_of_type_Bfol.dismiss();
+    switch (paramInt)
     {
-      do
-      {
-        return;
-        localObject = paramIntent.getAction();
-      } while ((TextUtils.isEmpty((CharSequence)localObject)) || (!TextUtils.equals((CharSequence)localObject, "mqq.intent.action.DEVLOCK_ROAM")));
-      if (paramContext != null) {
-        paramContext.unregisterReceiver(this);
-      }
-      Object localObject = annw.a();
-      if (paramIntent.getIntExtra("guardphone_state", annw.d) == annw.c)
-      {
-        paramIntent = paramIntent.getStringExtra("guardphone_mask");
-        paramContext = paramIntent;
-        if (paramIntent == null) {
-          paramContext = "";
-        }
-        ((annw)localObject).a(this.a, paramContext);
-        return;
-      }
-      this.a.jdField_a_of_type_Ajof.a = true;
-      paramContext = (ajru)this.a.app.a(34);
-    } while (paramContext == null);
-    this.a.app.addObserver(this.a.jdField_a_of_type_Ajrv);
-    PhoneUnityBindInfoActivity.a(this.a, this.a.c, 2, 1);
-    paramContext.a(4, 31, null, null);
+    default: 
+      return;
+    case 0: 
+      FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CA", "0X800A8CA", 0, 0, "1", "", "", "");
+      return;
+    case 1: 
+      FriendProfilePicBrowserActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CB", "0X800A8CB", 0, 0, "1", "", "", "");
+      return;
+    case 2: 
+      FriendProfilePicBrowserActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X8007C14", "0X8007C14", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.a, 0, "", "", "", "");
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CC", "0X800A8CC", 0, 0, "1", "", "", "");
+      return;
+    case 3: 
+      FriendProfilePicBrowserActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CD", "0X800A8CD", 0, 0, "1", "", "", "");
+      return;
+    }
+    FriendProfilePicBrowserActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X8007C15", "0X8007C15", 0, 0, "", "", "", "");
   }
 }
 

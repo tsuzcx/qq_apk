@@ -33,7 +33,7 @@ class DoubleVideoCtrlUI$StartTimerRunnable
     if (QLog.isColorLevel()) {
       QLog.w(this.this$0.jdField_c_of_type_JavaLangString, 1, "StartTimerRunnable.Run, seq[" + this.a + "]");
     }
-    this.this$0.w(this.a);
+    this.this$0.x(this.a);
   }
 }
 

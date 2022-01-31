@@ -3,17 +3,17 @@ package com.tencent.biz.qqstory.playvideo;
 import android.os.Handler;
 import java.util.Timer;
 import java.util.TimerTask;
-import thm;
+import tui;
 
 public class ProgressControler$3
   extends TimerTask
 {
-  public ProgressControler$3(thm paramthm) {}
+  public ProgressControler$3(tui paramtui) {}
   
   public void run()
   {
-    thm localthm = this.this$0;
-    localthm.c += 50L;
+    tui localtui = this.this$0;
+    localtui.c += 50L;
     if (this.this$0.c >= this.this$0.b)
     {
       this.this$0.c = this.this$0.b;

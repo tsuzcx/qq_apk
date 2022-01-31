@@ -1,25 +1,25 @@
-import android.util.SparseArray;
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 
-public class bdkj
-  extends bdkl
+final class bdkj
+  implements DialogInterface.OnClickListener
 {
-  public bdkj(BarrageView paramBarrageView, View paramView, int paramInt)
-  {
-    super(paramBarrageView, paramView, null);
-  }
+  bdkj(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onAnimationEnd(paramAnimation);
-    BarrageView.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaDanmuBarrageView).remove(this.jdField_a_of_type_Int);
+    bdki.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    axqw.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
+    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bdkm.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bdkm.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bdkm.d);
+    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101 + "|" + paramDialogInterface;
+    bdes.a().a(25, paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdkj
  * JD-Core Version:    0.7.0.1
  */

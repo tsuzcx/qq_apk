@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.minigame.ui;
 
-import bdqv;
+import bewi;
 
 public class GameRuntimeStateObserver$2
   implements Runnable
 {
-  public GameRuntimeStateObserver$2(bdqv parambdqv, String paramString) {}
+  public GameRuntimeStateObserver$2(bewi parambewi, String paramString) {}
   
   public void run()
   {
-    bdqv.a(this.this$0).setProgressTxt(this.a);
+    bewi.a(this.this$0).setProgressTxt(this.a);
   }
 }
 

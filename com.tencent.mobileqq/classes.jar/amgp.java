@@ -1,37 +1,171 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.1;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.2;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.3;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.4;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.5;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.util.Pair;
 
 public class amgp
 {
-  public int a;
+  private amgr jdField_a_of_type_Amgr;
+  private Handler jdField_a_of_type_AndroidOsHandler = new amgq(this);
   
-  public static amgp a(String paramString)
+  private void b(int paramInt1, String paramString, int paramInt2)
   {
-    amgp localamgp = new amgp();
-    try
+    boolean bool = amgs.b(paramInt1, paramString, paramInt2);
+    Message localMessage = Message.obtain();
+    localMessage.obj = new Pair(Integer.valueOf(paramInt1), paramString);
+    if (bool) {}
+    for (localMessage.what = 5;; localMessage.what = 6)
     {
-      localamgp.a = new JSONObject(paramString).optInt("preloadPskey", 0);
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "confBean = " + localamgp.toString());
-      return localamgp;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      return;
     }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("WVPreloadPskeyConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    }
-    return localamgp;
   }
   
-  public String toString()
+  private void b(int paramInt, String paramString, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("preloadPskey:").append(this.a);
-    return localStringBuilder.toString();
+    Bundle localBundle = amgs.a(paramInt, paramString, paramBoolean);
+    localBundle.putInt("key_service_type", paramInt);
+    localBundle.putString("key_sub_type", paramString);
+    paramString = Message.obtain();
+    paramString.what = 9;
+    paramString.obj = localBundle;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+  }
+  
+  private void b(Bundle paramBundle)
+  {
+    boolean bool = amgs.a(paramBundle);
+    Message localMessage = Message.obtain();
+    localMessage.obj = paramBundle;
+    if (bool) {}
+    for (localMessage.what = 3;; localMessage.what = 4)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      return;
+    }
+  }
+  
+  private void c(ColorNote paramColorNote)
+  {
+    Object localObject = paramColorNote.getUniKey();
+    boolean bool2 = true;
+    if (paramColorNote.mMainTitle != null) {
+      bool2 = amgs.a((String)localObject, "mMainTitle", paramColorNote.mMainTitle);
+    }
+    boolean bool1 = bool2;
+    if (paramColorNote.mSubTitle != null) {
+      bool1 = bool2 & amgs.a((String)localObject, "mSubTitle", paramColorNote.mSubTitle);
+    }
+    bool2 = bool1;
+    if (paramColorNote.mPicUrl != null) {
+      bool2 = bool1 & amgs.a((String)localObject, "mPicUrl", paramColorNote.mPicUrl);
+    }
+    localObject = Message.obtain();
+    if (bool2) {}
+    for (((Message)localObject).what = 10;; ((Message)localObject).what = 11)
+    {
+      ((Message)localObject).obj = paramColorNote;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+      return;
+    }
+  }
+  
+  private boolean c()
+  {
+    return Looper.getMainLooper() == Looper.myLooper();
+  }
+  
+  private void d(ColorNote paramColorNote)
+  {
+    amgs.a(paramColorNote);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    a(paramInt, paramString, 0);
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.2(this, paramInt1, paramString, paramInt2), 32, null, true);
+      return;
+    }
+    b(paramInt1, paramString, paramInt2);
+  }
+  
+  public void a(int paramInt, String paramString, boolean paramBoolean)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.3(this, paramInt, paramString, paramBoolean), 32, null, true);
+      return;
+    }
+    b(paramInt, paramString, paramBoolean);
+  }
+  
+  public void a(amgr paramamgr)
+  {
+    this.jdField_a_of_type_Amgr = paramamgr;
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.1(this, paramBundle), 32, null, true);
+      return;
+    }
+    b(paramBundle);
+  }
+  
+  public void a(ColorNote paramColorNote)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.4(this, paramColorNote), 32, null, true);
+      return;
+    }
+    c(paramColorNote);
+  }
+  
+  public boolean a()
+  {
+    return amhk.a().c();
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    return amhk.a().a(paramInt, paramString);
+  }
+  
+  public void b(ColorNote paramColorNote)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.5(this, paramColorNote), 32, null, true);
+      return;
+    }
+    d(paramColorNote);
+  }
+  
+  public boolean b()
+  {
+    return amhk.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amgp
  * JD-Core Version:    0.7.0.1
  */

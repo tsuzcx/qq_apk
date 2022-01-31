@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import bace;
+import bbdj;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class FileUtils$1
@@ -8,7 +8,7 @@ public final class FileUtils$1
 {
   public void run()
   {
-    bace.a(BaseApplicationImpl.sApplication, true);
+    bbdj.a(BaseApplicationImpl.sApplication, true);
   }
 }
 

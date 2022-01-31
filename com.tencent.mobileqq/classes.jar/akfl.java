@@ -1,18 +1,22 @@
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-class akfl
+public class akfl
+  implements ajtg
 {
-  long jdField_a_of_type_Long;
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public void a(boolean paramBoolean) {}
   
-  akfl(akfg paramakfg) {}
+  public void b(boolean paramBoolean) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 3: 
+      a(paramBoolean);
+      return;
+    }
+    b(paramBoolean);
+  }
 }
 
 

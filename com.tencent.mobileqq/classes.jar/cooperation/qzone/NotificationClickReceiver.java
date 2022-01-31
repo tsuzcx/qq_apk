@@ -8,8 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import awcj;
-import bfpl;
+import axbr;
+import bgxs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -89,12 +89,12 @@ public class NotificationClickReceiver
       {
         if (str1.startsWith("mqzone://arouse/livevideo"))
         {
-          paramContext = new bfpl();
+          paramContext = new bgxs();
           paramContext.c = String.valueOf(322);
           paramContext.d = String.valueOf(3);
           paramContext.e = String.valueOf(7);
           QZoneClickReport.report((String)localObject, paramContext, true);
-          awcj.a.clear();
+          axbr.a.clear();
         }
         localUri = Uri.parse(str1);
         if (!TextUtils.isEmpty(localUri.getQueryParameter("from"))) {

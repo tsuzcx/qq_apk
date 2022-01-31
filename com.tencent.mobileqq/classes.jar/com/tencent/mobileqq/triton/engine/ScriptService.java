@@ -6,17 +6,25 @@ import com.tencent.mobileqq.triton.render.RenderContext;
 import com.tencent.mobileqq.triton.sdk.IQQEnv;
 import com.tencent.mobileqq.triton.touch.TouchEventManager;
 import com.tencent.mobileqq.triton.utils.FpsStabilizer;
+import java.util.concurrent.TimeUnit;
 
 public class ScriptService
   implements JSThread.IListener
 {
+  private static final long FRAME_MAX_DURATION_NANOS = TimeUnit.MILLISECONDS.toNanos(1500L);
+  private static final long LIVE_LOG_DURATION = TimeUnit.SECONDS.toNanos(5L);
   private static final boolean LOG_LOOPER_TIME_COST = false;
   private static final String TAG = "ScriptService";
   private static long mCurrentDrawCallCount = 0L;
+  private int mDrawCallsSinceLastLiveLog = 0;
   private final TTEngine mEngine;
-  private long mEngineStartTime;
   private final FpsStabilizer mFpsStabilizer = new FpsStabilizer();
   private JSThread mJSThread;
+  private long mLastDrawTimeNanos;
+  private int mLastLiveLogProcessedMessages = 0;
+  private long mLastLiveLogTimeNanos;
+  private long mTotalDrawTimeNanos;
+  private int mVSyncsSinceLastLiveLog = 0;
   
   public ScriptService(TTEngine paramTTEngine)
   {
@@ -46,6 +54,24 @@ public class ScriptService
     }
   }
   
+  private void printLiveLog(long paramLong)
+  {
+    if (paramLong - this.mLastLiveLogTimeNanos > LIVE_LOG_DURATION)
+    {
+      int i = this.mEngine.getProcessedMessageCount();
+      TTLog.i("ScriptService", "JSThread liveLog in 5s Frame=[" + this.mVSyncsSinceLastLiveLog + "] DrawCall=[" + this.mDrawCallsSinceLastLiveLog + "] Message=[" + (i - this.mLastLiveLogProcessedMessages) + "]");
+      this.mVSyncsSinceLastLiveLog = 0;
+      this.mDrawCallsSinceLastLiveLog = 0;
+      this.mLastLiveLogTimeNanos = paramLong;
+      this.mLastLiveLogProcessedMessages = i;
+    }
+  }
+  
+  public boolean isJSThread()
+  {
+    return (this.mJSThread != null) && (this.mJSThread.isJSThread());
+  }
+  
   public void onDestroy()
   {
     if (this.mJSThread != null)
@@ -73,7 +99,6 @@ public class ScriptService
   public boolean onPrepare()
   {
     onPrepareJsRuntime();
-    this.mEngineStartTime = SystemClock.uptimeMillis();
     return false;
   }
   
@@ -97,24 +122,35 @@ public class ScriptService
   
   public boolean onVSync()
   {
-    long l1 = SystemClock.uptimeMillis();
-    this.mEngine.getQQEnv().reportDC04902("game_start", 0L);
-    if (this.mEngine.getRenderContext() != null) {}
+    long l3 = System.nanoTime();
+    long l2 = l3 - this.mLastDrawTimeNanos;
+    long l1 = l2;
+    if (l2 > FRAME_MAX_DURATION_NANOS) {
+      l1 = TimeUnit.SECONDS.toNanos(1L) / this.mEngine.getTargetFPS();
+    }
+    this.mLastDrawTimeNanos = l3;
+    this.mTotalDrawTimeNanos = (l1 + this.mTotalDrawTimeNanos);
+    if (this.mFpsStabilizer.shouldDoFrame(this.mTotalDrawTimeNanos))
+    {
+      this.mEngine.getQQEnv().reportDC04902("game_start", 0L);
+      if (this.mEngine.getRenderContext() == null) {
+        break label205;
+      }
+    }
+    label205:
     for (TouchEventManager localTouchEventManager = this.mEngine.getRenderContext().getTouchEventManager();; localTouchEventManager = null)
     {
       if (localTouchEventManager != null) {
         localTouchEventManager.flushTouchEvents();
       }
-      long l2 = l1 - this.mEngineStartTime;
-      if (this.mFpsStabilizer.shouldDoFrame(l2))
-      {
-        JNICaller.TTEngine.nativeOnVSync(this.mEngine, l2);
-        JNICaller.TTEngine.nativeCanvasPresent(this.mEngine);
-        mCurrentDrawCallCount = JNICaller.TTEngine.nativeGetCurrentFrameDrawCallCount(this.mEngine);
-        l2 = SystemClock.uptimeMillis();
-        this.mEngine.getQQEnv().reportDC04902("draw_frame", l2 - l1);
-      }
-      SystemClock.uptimeMillis();
+      JNICaller.TTEngine.nativeOnVSync(this.mEngine, this.mTotalDrawTimeNanos);
+      JNICaller.TTEngine.nativeCanvasPresent(this.mEngine);
+      mCurrentDrawCallCount = JNICaller.TTEngine.nativeGetCurrentFrameDrawCallCount(this.mEngine);
+      l1 = (System.nanoTime() - l3) / 1000000L;
+      this.mEngine.getQQEnv().reportDC04902("draw_frame", l1);
+      this.mVSyncsSinceLastLiveLog += 1;
+      this.mDrawCallsSinceLastLiveLog = ((int)(this.mDrawCallsSinceLastLiveLog + mCurrentDrawCallCount));
+      printLiveLog(l3);
       return false;
     }
   }

@@ -1,39 +1,84 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import KQQ.UserBitFlagReq;
+import KQQ.UserBitFlagRes;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.qq.taf.jce.JceInputStream;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class bazz
-  implements View.OnLongClickListener
+  implements axaw
 {
-  public bazz(WebViewFragment paramWebViewFragment) {}
+  private QQAppInterface a;
   
-  public boolean onLongClick(View paramView)
+  public bazz(QQAppInterface paramQQAppInterface)
   {
-    if (!this.a.jdField_a_of_type_Bbbs.a("web_view_long_click", true))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
-      }
-      return true;
+    this.a = paramQQAppInterface;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSetting", 2, "getCheckUpdateItemData");
     }
-    if (!this.a.jdField_a_of_type_Bbbs.a("image_long_click", false))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
-      }
-      return false;
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.cOperType = 1;
+    localReqItem.eServiceID = 106;
+    UserBitFlagReq localUserBitFlagReq = new UserBitFlagReq();
+    localUserBitFlagReq.cEmotionMall = 0;
+    localUserBitFlagReq.cMyWallet = ((byte)bazw.a(this.a));
+    localUserBitFlagReq.cPtt2Text = 0;
+    localUserBitFlagReq.cAccout2Dis = 0;
+    localReqItem.vecParam = localUserBitFlagReq.toByteArray();
+    return localReqItem;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSetting", 2, "handleCheckUpdateItemData");
     }
-    bbbd localbbbd = (bbbd)this.a.jdField_a_of_type_Bbaq.a(8);
-    if ((localbbbd != null) && (localbbbd.a(paramView))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if (paramRespItem.eServiceID == 106)
+    {
+      UserBitFlagRes localUserBitFlagRes = new UserBitFlagRes();
+      localUserBitFlagRes.readFrom(new JceInputStream(paramRespItem.vecUpdate));
+      int i = localUserBitFlagRes.cEmotionMall;
+      int j = localUserBitFlagRes.cMyWallet;
+      int k = localUserBitFlagRes.cAccout2Dis;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSetting", 2, "vEmotion=" + i + ",cMyWallet=" + j + ",cPtt2Text=" + localUserBitFlagRes.cPtt2Text + " ,cAccout2Dis=" + k);
+      }
+      if (this.a != null)
+      {
+        this.a.getApp().getApplicationContext().getSharedPreferences(this.a.getCurrentAccountUin(), 0).edit().putInt("mywallet_flag", j).putInt("select_member_contacts_flag", k).commit();
+        paramRespItem = this.a;
+        if (localUserBitFlagRes.cPtt2Text != 1) {
+          break label211;
+        }
+      }
+    }
+    for (;;)
+    {
+      ayah.a(paramRespItem, bool);
+      return;
+      label211:
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bazz
  * JD-Core Version:    0.7.0.1
  */

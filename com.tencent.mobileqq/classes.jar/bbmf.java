@@ -1,35 +1,114 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class bbmf
-  implements URLDrawable.URLDrawableListener
 {
-  final WeakReference<View> a;
+  public int a;
+  private ArrayList<LinkedList<bbmg>> a;
   
-  public bbmf(View paramView)
+  public bbmf()
   {
-    this.a = new WeakReference(paramView);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    int i = 0;
+    while (i < 3)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(new LinkedList());
+      i += 1;
+    }
   }
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public int a()
   {
-    paramURLDrawable = (View)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.postInvalidate();
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public bbmg a(boolean paramBoolean)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).size() != 0)
+      {
+        if (paramBoolean)
+        {
+          bbmg localbbmg = (bbmg)((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).remove(0);
+          this.jdField_a_of_type_Int -= 1;
+          return localbbmg;
+        }
+        return (bbmg)((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get(0);
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      int j = 0;
+      while (j < ((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).size())
+      {
+        localStringBuilder.append(bbca.encodeToString(((bbmg)((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get(j)).b().getBytes(), 0));
+        localStringBuilder.append("\r\n");
+        j += 1;
+      }
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      ((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).clear();
+      i += 1;
+    }
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(bbmg parambbmg)
+  {
+    if (parambbmg == null) {}
+    int i;
+    do
+    {
+      return;
+      i = parambbmg.b() - 200;
+    } while ((i < 0) || (i >= this.jdField_a_of_type_JavaUtilArrayList.size()));
+    ((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).add(parambbmg);
+    this.jdField_a_of_type_Int += 1;
+  }
+  
+  public boolean a(bbmg parambbmg)
+  {
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        if (((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).remove(parambbmg))
+        {
+          this.jdField_a_of_type_Int -= 1;
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbmf
  * JD-Core Version:    0.7.0.1
  */

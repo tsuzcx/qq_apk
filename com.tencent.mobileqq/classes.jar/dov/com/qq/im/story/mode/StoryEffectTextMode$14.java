@@ -1,18 +1,18 @@
 package dov.com.qq.im.story.mode;
 
-import ajjy;
+import ajyc;
 import android.view.View;
-import bbmy;
-import bhzq;
+import bcpw;
+import bjrh;
 
 public class StoryEffectTextMode$14
   implements Runnable
 {
-  public StoryEffectTextMode$14(bhzq parambhzq) {}
+  public StoryEffectTextMode$14(bjrh parambjrh) {}
   
   public void run()
   {
-    bbmy.a(bhzq.a(this.this$0).getContext(), ajjy.a(2131648634), 0).a();
+    bcpw.a(bjrh.a(this.this$0).getContext(), ajyc.a(2131714423), 0).a();
   }
 }
 

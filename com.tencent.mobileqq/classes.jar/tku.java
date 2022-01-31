@@ -1,30 +1,39 @@
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tku
-  extends tjg<SingleFeedPlayInfo>
+  extends QQUIEventReceiver<tks, tkr>
 {
-  public tku(SingleFeedPlayInfo paramSingleFeedPlayInfo)
+  public tku(tks paramtks)
   {
-    super(paramSingleFeedPlayInfo);
+    super(paramtks);
   }
   
-  public uiw a(String paramString)
+  public void a(@NonNull tks paramtks, @NonNull tkr paramtkr)
   {
-    paramString = new uiw(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
-    paramString.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
-    return paramString;
+    if (paramtks.a()) {}
+    do
+    {
+      return;
+      if (paramtkr.jdField_a_of_type_Boolean)
+      {
+        tks.a(paramtks);
+        return;
+      }
+      if ((paramtkr.a() != null) && (!paramtkr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("HaloResponseReceiver", 2, "onEvent: failed. Message: exception: " + paramtkr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    return;
+    tks.a(paramtks);
   }
   
-  public void a(boolean paramBoolean, int paramInt, tjy paramtjy)
+  public Class acceptEventClass()
   {
-    ArrayList localArrayList = new ArrayList();
-    tjh localtjh = new tjh(((SingleFeedPlayInfo)this.a).mFeedFeedId, new uiw(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
-    localtjh.a.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
-    localArrayList.add(localtjh);
-    paramtjy.a(new ErrorMessage(), localArrayList, true);
+    return tkr.class;
   }
 }
 

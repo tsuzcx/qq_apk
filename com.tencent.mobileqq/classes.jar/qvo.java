@@ -1,19 +1,28 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController.4.1;
+import android.telephony.PhoneStateListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class qvo
-  implements View.OnClickListener
+  extends PhoneStateListener
 {
-  public qvo(SlideActiveAnimController paramSlideActiveAnimController) {}
+  qvo(qvn paramqvn) {}
   
-  public void onClick(View paramView)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    this.a.d = true;
-    SlideActiveAnimController.a(this.a, new SlideActiveAnimController.4.1(this));
-    SlideActiveAnimController.a(this.a).postDelayed(SlideActiveAnimController.a(this.a), 5000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.d(true);
+      return;
+    case 2: 
+      this.a.d(true);
+      return;
+    }
+    this.a.c();
   }
 }
 

@@ -1,10 +1,8 @@
-public class atxl
+public final class atxl<Params>
 {
-  public long a;
-  public atxj a;
-  public String a = "";
-  public long b;
-  public atxj b;
+  public int a;
+  public Params a;
+  public boolean a;
 }
 
 

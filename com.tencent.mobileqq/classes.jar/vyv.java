@@ -1,55 +1,44 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import android.view.View;
 
-class vyv
-  extends GestureDetector.SimpleOnGestureListener
+public class vyv
+  extends vyz
 {
-  private vyv(vyo paramvyo) {}
+  public int a;
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public vyv(vze paramvze, View paramView, int paramInt)
   {
-    float f1 = paramMotionEvent2.getY() - vyo.a(this.a);
-    if (vyo.b(this.a) < vyo.c(this.a)) {
-      return false;
-    }
-    if ((f1 > 0.0F) && (vyo.d(this.a) < vyo.e(this.a)))
-    {
-      f2 = vyo.d(this.a);
-      f1 = Math.abs(f1) + f2;
-      localvyo = this.a;
-      if (f1 > vyo.e(this.a))
-      {
-        i = vyo.e(this.a);
-        vyo.b(localvyo, i);
-      }
-    }
-    while ((f1 >= 0.0F) || (vyo.d(this.a) <= vyo.f(this.a))) {
-      for (;;)
-      {
-        float f2;
-        if (vyo.a(this.a) != null)
-        {
-          vyo.a(this.a).getLayoutParams().height = vyo.d(this.a);
-          vyo.a(this.a).requestLayout();
-        }
-        return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-        i = (int)f1;
-      }
-    }
-    f1 = vyo.d(this.a) - Math.abs(f1);
-    vyo localvyo = this.a;
-    if (f1 < vyo.f(this.a)) {}
-    for (int i = vyo.f(this.a);; i = (int)f1)
-    {
-      vyo.b(localvyo, i);
-      break;
-    }
+    super(paramvze, paramView);
+    this.a = paramInt;
+  }
+  
+  public int a()
+  {
+    veg.e("NullOptionElement", "getOptionIndex() on %d", new Object[] { Integer.valueOf(this.a) });
+    return this.a;
+  }
+  
+  public CharSequence a()
+  {
+    veg.e("NullOptionElement", "getText() on %d", new Object[] { Integer.valueOf(this.a) });
+    return "";
+  }
+  
+  public void a(CharSequence paramCharSequence)
+  {
+    veg.e("NullOptionElement", "setText() on %d", new Object[] { Integer.valueOf(this.a) });
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public CharSequence b()
+  {
+    veg.e("NullOptionElement", "getHint() on %d", new Object[] { Integer.valueOf(this.a) });
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vyv
  * JD-Core Version:    0.7.0.1
  */

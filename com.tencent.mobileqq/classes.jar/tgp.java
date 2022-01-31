@@ -1,75 +1,120 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeVidInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeVideoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
-public final class tgp
+public class tgp
+  extends syq
 {
-  public static void a(Context paramContext)
-  {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://story.now.qq.com/mobile/qim/transfer.html?_wv=16777219");
-    paramContext.startActivity(localIntent);
-  }
+  public qqstory_service.RspMsgTabNodeVideoList a;
+  public List<tga> a;
+  public tfi a;
+  public byte[] a;
   
-  public static void a(Context paramContext, String paramString)
+  public tgp(tfi paramtfi, qqstory_service.RspMsgTabNodeVideoList paramRspMsgTabNodeVideoList, byte[] paramArrayOfByte)
   {
-    if (a(paramContext, paramString))
+    super(paramRspMsgTabNodeVideoList.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Tfi = paramtfi;
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList = paramRspMsgTabNodeVideoList;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    if (paramRspMsgTabNodeVideoList.video_list != null)
     {
-      b(paramContext, paramString);
-      return;
-    }
-    a(paramContext);
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    boolean bool = false;
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    paramContext = null;
-    try
-    {
-      paramString = localPackageManager.getPackageInfo(paramString, 0);
-      paramContext = paramString;
-    }
-    catch (PackageManager.NameNotFoundException paramString)
-    {
-      for (;;)
+      Object localObject1;
+      Object localObject2;
+      Object localObject3;
+      int i;
+      label158:
+      Object localObject4;
+      if (paramtfi.jdField_a_of_type_Int == 12)
       {
-        paramString.printStackTrace();
+        veg.a("Q.qqstory:ReqMsgTabNodeVideoList", "new video list receive cookie:%s nodeInfo old size=%d, rsp.video_list size=%d", paramRspMsgTabNodeVideoList.cookie.get(), Integer.valueOf(paramtfi.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(paramRspMsgTabNodeVideoList.video_list.size()));
+        paramArrayOfByte = new HashSet();
+        paramRspMsgTabNodeVideoList = paramRspMsgTabNodeVideoList.video_list.get().iterator();
+        if (paramRspMsgTabNodeVideoList.hasNext())
+        {
+          localObject1 = (qqstory_service.MsgTabNodeVidInfo)paramRspMsgTabNodeVideoList.next();
+          localObject2 = ((qqstory_service.MsgTabNodeVidInfo)localObject1).feed_id.get().toStringUtf8();
+          localObject3 = ((qqstory_service.MsgTabNodeVidInfo)localObject1).video_index_list.get().iterator();
+          i = 0;
+          tga localtga;
+          if (((Iterator)localObject3).hasNext())
+          {
+            localObject4 = (Long)((Iterator)localObject3).next();
+            localtga = tga.a(paramtfi.jdField_a_of_type_JavaUtilList, ((Long)localObject4).longValue());
+            if ((localtga != null) && (!paramArrayOfByte.contains(localObject4))) {
+              break label339;
+            }
+            localtga = new tga();
+            localtga.jdField_b_of_type_JavaLangString = ((String)localObject2);
+            localtga.jdField_a_of_type_JavaLangString = ((ByteStringMicro)((qqstory_service.MsgTabNodeVidInfo)localObject1).vid_list.get(i)).toStringUtf8();
+            localtga.jdField_a_of_type_Long = paramtfi.jdField_a_of_type_JavaUtilList.size();
+            localtga.jdField_a_of_type_Boolean = false;
+            if (((qqstory_service.MsgTabNodeVidInfo)localObject1).recommand_id_list.has()) {
+              localtga.jdField_b_of_type_Long = ((Integer)((qqstory_service.MsgTabNodeVidInfo)localObject1).recommand_id_list.get(i)).intValue();
+            }
+            paramtfi.jdField_a_of_type_JavaUtilList.add(localtga);
+            this.jdField_a_of_type_JavaUtilList.add(localtga);
+            paramArrayOfByte.add(localObject4);
+          }
+          for (;;)
+          {
+            i += 1;
+            break label158;
+            break;
+            label339:
+            localtga.jdField_b_of_type_JavaLangString = ((String)localObject2);
+            localtga.jdField_a_of_type_JavaLangString = ((ByteStringMicro)((qqstory_service.MsgTabNodeVidInfo)localObject1).vid_list.get(i)).toStringUtf8();
+            if (((qqstory_service.MsgTabNodeVidInfo)localObject1).recommand_id_list.has()) {
+              localtga.jdField_b_of_type_Long = ((Integer)((qqstory_service.MsgTabNodeVidInfo)localObject1).recommand_id_list.get(i)).intValue();
+            }
+          }
+        }
       }
-    }
-    if (paramContext != null) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public static boolean a(Context paramContext, String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return false;
-    }
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", String.format("%s?tag_id=%s&tag_type=%s&_wv=3&_nav_alpha=0&_bid=2910", new Object[] { "http://story.now.qq.com/mobile/tag/index.html", String.valueOf(paramString1), String.valueOf(paramString2) }));
-    paramContext.startActivity(localIntent);
-    return true;
-  }
-  
-  public static boolean a(Context paramContext, vil paramvil)
-  {
-    if (paramvil == null) {
-      return false;
-    }
-    return a(paramContext, String.valueOf(paramvil.jdField_a_of_type_Long), String.valueOf(paramvil.jdField_a_of_type_Int));
-  }
-  
-  public static void b(Context paramContext, String paramString)
-  {
-    paramString = paramContext.getPackageManager().getLaunchIntentForPackage(paramString);
-    if (paramString != null) {
-      paramContext.startActivity(paramString);
+      else
+      {
+        paramRspMsgTabNodeVideoList = paramRspMsgTabNodeVideoList.video_list.get().iterator();
+        if (paramRspMsgTabNodeVideoList.hasNext())
+        {
+          paramArrayOfByte = (qqstory_service.MsgTabNodeVidInfo)paramRspMsgTabNodeVideoList.next();
+          localObject1 = paramArrayOfByte.feed_id.get().toStringUtf8();
+          localObject2 = paramArrayOfByte.video_index_list.get().iterator();
+          i = 0;
+          label464:
+          if (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (Long)((Iterator)localObject2).next();
+            localObject4 = tga.a(paramtfi.jdField_a_of_type_JavaUtilList, ((Long)localObject3).longValue());
+            if (localObject4 != null) {
+              break label537;
+            }
+            veg.e("Q.qqstory:ReqMsgTabNodeVideoList", "find index %d return null!, videoList is = %s", new Object[] { localObject3, paramtfi.jdField_a_of_type_JavaUtilList });
+          }
+          for (;;)
+          {
+            i += 1;
+            break label464;
+            break;
+            label537:
+            ((tga)localObject4).jdField_b_of_type_JavaLangString = ((String)localObject1);
+            ((tga)localObject4).jdField_a_of_type_JavaLangString = ((ByteStringMicro)paramArrayOfByte.vid_list.get(i)).toStringUtf8();
+            if (paramArrayOfByte.recommand_id_list.has()) {
+              ((tga)localObject4).jdField_b_of_type_Long = ((Integer)paramArrayOfByte.recommand_id_list.get(i)).intValue();
+            }
+          }
+        }
+        this.jdField_a_of_type_JavaUtilList = paramtfi.jdField_a_of_type_JavaUtilList;
+      }
+      if (!paramtfi.a()) {
+        veg.d("Q.qqstory:ReqMsgTabNodeVideoList", "node info is not ok, %s", new Object[] { paramtfi.jdField_a_of_type_JavaUtilList });
+      }
     }
   }
 }

@@ -25,7 +25,7 @@ class ImageJsPlugin$3
         {
           ArrayList localArrayList = new ArrayList();
           localArrayList.add(paramIntent);
-          ImageJsPlugin.access$200(this.this$0, localArrayList, this.val$webview, this.val$callbackId);
+          ImageJsPlugin.access$300(this.this$0, localArrayList, this.val$webview, this.val$callbackId);
         }
       }
       for (;;)

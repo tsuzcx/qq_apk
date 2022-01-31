@@ -1,44 +1,27 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class wir
-  implements BusinessObserver
+final class wir
+  implements xgx<CertifiedAccountRead.StGetMainPageRsp>
 {
-  public wir(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditUniqueTitleActivity", 2, "setUniqueTitle, onReceive. type=" + paramInt + ", isSuccess=" + paramBoolean);
-    }
-    if (!paramBoolean)
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      EditUniqueTitleActivity.a(this.a, -1);
+      if (paramStGetMainPageRsp != null) {
+        wiq.a((CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get());
+      }
+    }
+    else {
       return;
     }
-    paramBundle = paramBundle.getByteArray("data");
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    try
-    {
-      localOIDBSSOPkg.mergeFrom(paramBundle);
-      paramInt = localOIDBSSOPkg.uint32_result.get();
-      EditUniqueTitleActivity.a(this.a, paramInt);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      EditUniqueTitleActivity.a(this.a, -1);
-    }
+    QLog.w(wiq.class.getSimpleName(), 1, "getPuinUser empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wir
  * JD-Core Version:    0.7.0.1
  */

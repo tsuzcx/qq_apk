@@ -1,20 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class astw
-  implements DialogInterface.OnClickListener
+public class astw
 {
-  astw(aste paramaste) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.d(true);
-    awqx.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
-  }
+  public static final String a = ajyc.a(2131707010);
+  public static final String b = ajyc.a(2131707007);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     astw
  * JD-Core Version:    0.7.0.1
  */

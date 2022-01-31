@@ -1,25 +1,65 @@
-import android.content.SharedPreferences;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import android.util.Log;
+import com.tencent.biz.pubaccount.weishi_new.net.WeishiIntent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.AppRuntime;
 
 public class slr
 {
-  public static String a(QQUserUIItem paramQQUserUIItem)
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static slr jdField_a_of_type_Slr;
+  private String jdField_a_of_type_JavaLangString = "WeishiNewService";
+  
+  public static slr a()
   {
-    paramQQUserUIItem = tfy.a();
-    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("key_story_qim_online_icon_url", null);
+    if (jdField_a_of_type_Slr == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Slr == null) {
+        jdField_a_of_type_Slr = new slr();
+      }
+      return jdField_a_of_type_Slr;
+    }
   }
   
-  public static String b(QQUserUIItem paramQQUserUIItem)
+  public int a(sls paramsls, slj paramslj)
   {
-    paramQQUserUIItem = tfy.a();
-    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("profile_card_qim_online_url", null);
+    if (paramsls == null) {}
+    for (;;)
+    {
+      return 1000004;
+      paramsls.a(paramslj);
+      paramsls.a = System.currentTimeMillis();
+      try
+      {
+        WeishiIntent localWeishiIntent = new WeishiIntent(BaseApplication.getContext(), slu.class);
+        localWeishiIntent.setWithouLogin(true);
+        localWeishiIntent.a = ((slv)paramslj);
+        if ((localWeishiIntent.a != null) && (localWeishiIntent.a.a != null))
+        {
+          paramslj = BaseApplicationImpl.getApplication().getRuntime();
+          if (paramslj != null)
+          {
+            paramslj.startServlet(localWeishiIntent);
+            Log.i("weishi", "cmd=" + paramsls.uniKey() + ", pkgId=" + paramsls.a() + " submit to MSF, isLogin: " + paramslj.isLogin());
+          }
+          else
+          {
+            Log.e("weishi", "app is null");
+          }
+        }
+      }
+      catch (Exception paramsls)
+      {
+        Log.e("weishi", "WeishiProtocolService occur exception. stack=" + paramsls.getLocalizedMessage());
+      }
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     slr
  * JD-Core Version:    0.7.0.1
  */

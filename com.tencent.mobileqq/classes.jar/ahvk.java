@@ -1,21 +1,33 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.widget.CircleProgress;
 
 public class ahvk
-  implements apca
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ahvk(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public ahvk(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt1, int paramInt2) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramValueAnimator.width = ((int)(this.jdField_a_of_type_Int * f));
+    paramValueAnimator.height = ((int)(this.jdField_a_of_type_Int * f));
+    paramValueAnimator.addRule(13);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.getLayoutParams();
+    paramValueAnimator.width = ((int)(this.b * f));
+    paramValueAnimator.height = ((int)(f * this.b));
+    paramValueAnimator.addRule(13);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setLayoutParams(paramValueAnimator);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahvk
  * JD-Core Version:    0.7.0.1
  */

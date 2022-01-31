@@ -1,8 +1,30 @@
-public abstract interface apca
+import com.tencent.qphone.base.util.QLog;
+
+class apca
+  extends apbi
 {
-  public abstract void a();
+  public apca(apbe paramapbe)
+  {
+    super(paramapbe);
+  }
   
-  public abstract void b();
+  protected String a()
+  {
+    return "StateRefuseByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    apbe.b(this.jdField_a_of_type_Apbe, 11, 6);
+    apbe.c(this.jdField_a_of_type_Apbe, 11, 6);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateRefuseByPC)");
+    this.jdField_a_of_type_Apbi = new apby(this.jdField_a_of_type_Apbe);
+  }
 }
 
 

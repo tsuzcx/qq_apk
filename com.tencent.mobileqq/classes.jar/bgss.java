@@ -1,22 +1,30 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-class bgss
-  implements BusinessObserver
+public class bgss
 {
-  bgss(bgsp parambgsp, String paramString) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static long a(Context paramContext, String paramString)
   {
-    paramInt = paramBundle.getInt("extra_result_code");
-    String str = paramBundle.getString("extra_result_err_msg");
-    paramBundle = paramBundle.getString("extra_cmd");
-    if (!paramBoolean)
-    {
-      bckd.a("WadlProxyServiceManager", "onReportDownloadEvent fail operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle + ",errCode=" + paramInt + ",errMsg=" + str);
+    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getLong(paramString, 0L);
+  }
+  
+  public static String a(Context paramContext, String paramString)
+  {
+    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getString(paramString, "");
+  }
+  
+  public static void a(Context paramContext, String paramString, long paramLong)
+  {
+    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putLong(paramString, paramLong).commit();
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    if (paramString2 == null) {
       return;
     }
-    bckd.b("WadlProxyServiceManager", "onReportDownloadEvent success operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle);
+    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putString(paramString1, paramString2).commit();
   }
 }
 

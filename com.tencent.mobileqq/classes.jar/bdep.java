@@ -1,167 +1,87 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy;
-import com.tencent.qqmini.sdk.core.proxy.service.DownloaderProxyDefault;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.model.SubPkgInfo;
-import java.io.File;
-import java.util.Iterator;
-import java.util.List;
+import android.util.Log;
+import com.tencent.tmassistant.common.ProtocolPackage;
+import com.tencent.tmassistant.common.jce.ReqHead;
+import com.tencent.tmassistant.common.jce.Request;
+import com.tencent.tmassistant.common.jce.Response;
+import com.tencent.tmassistant.common.jce.StatItem;
+import com.tencent.tmassistant.common.jce.StatReportRequest;
+import com.tencent.tmassistant.common.jce.StatReportResponse;
+import java.util.ArrayList;
 
 public class bdep
+  extends bder
 {
-  private static volatile bdep jdField_a_of_type_Bdep;
-  public static final String a;
-  private static volatile byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  public static final String b = MiniAppEnv.g().getContext().getFilesDir().getPath() + "/mini/";
-  public static final String c = MiniAppEnv.g().getContext().getFilesDir().getPath() + "/mini_tissue/";
+  protected bdeq a;
   
-  static
+  public int a(ArrayList<StatItem> paramArrayList)
   {
-    jdField_a_of_type_JavaLangString = MiniAppEnv.g().getContext().getFilesDir().getPath() + "/minigame/";
+    StatReportRequest localStatReportRequest = new StatReportRequest();
+    localStatReportRequest.data = paramArrayList;
+    return a(localStatReportRequest);
   }
   
-  public static bdep a()
+  public void a(bdeq parambdeq)
   {
-    if (jdField_a_of_type_Bdep == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    this.a = parambdeq;
+  }
+  
+  public void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
+  {
+    Log.i("StatReportHttpRequest", "errorCode: " + paramInt);
+    Response localResponse = ProtocolPackage.unpackPackage(paramArrayOfByte2);
+    paramArrayOfByte1 = ProtocolPackage.unpackRequestPackage(paramArrayOfByte1);
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.head != null)) {}
+    for (int i = paramArrayOfByte1.head.requestId;; i = 0)
     {
-      if (jdField_a_of_type_Bdep == null) {
-        jdField_a_of_type_Bdep = new bdep();
-      }
-      return jdField_a_of_type_Bdep;
-    }
-  }
-  
-  public static String a(MiniAppBaseInfo paramMiniAppBaseInfo)
-  {
-    return b(paramMiniAppBaseInfo, false);
-  }
-  
-  private String a(MiniAppBaseInfo paramMiniAppBaseInfo, String paramString)
-  {
-    paramMiniAppBaseInfo = paramMiniAppBaseInfo.subpkgs;
-    if ((paramMiniAppBaseInfo != null) && (paramMiniAppBaseInfo.size() > 0) && (!TextUtils.isEmpty(paramString)))
-    {
-      paramMiniAppBaseInfo = paramMiniAppBaseInfo.iterator();
-      while (paramMiniAppBaseInfo.hasNext())
+      if ((paramArrayOfByte2 == null) && (this.a != null))
       {
-        SubPkgInfo localSubPkgInfo = (SubPkgInfo)paramMiniAppBaseInfo.next();
-        if (paramString.equals(localSubPkgInfo.subPkgName)) {
-          return localSubPkgInfo.downloadUrl;
+        Log.i("StatReportHttpRequest", "response is null");
+        this.a.a(i, null, null, paramInt);
+        return;
+      }
+      if (this.a != null)
+      {
+        if ((localResponse == null) || (localResponse.body == null)) {
+          break label225;
         }
-      }
-    }
-    return null;
-  }
-  
-  public static String a(MiniAppBaseInfo paramMiniAppBaseInfo, boolean paramBoolean)
-  {
-    if ((paramMiniAppBaseInfo == null) || (TextUtils.isEmpty(paramMiniAppBaseInfo.appId))) {
-      return "";
-    }
-    if (paramMiniAppBaseInfo.verType == 3) {
-      return b(paramMiniAppBaseInfo, paramBoolean) + bdyv.c(paramMiniAppBaseInfo.appId) + "_" + paramMiniAppBaseInfo.version;
-    }
-    return b(paramMiniAppBaseInfo, paramBoolean) + paramMiniAppBaseInfo.appId + "_debug";
-  }
-  
-  private String b(MiniAppBaseInfo paramMiniAppBaseInfo)
-  {
-    return a(paramMiniAppBaseInfo) + "apkg/" + paramMiniAppBaseInfo.appId + "_" + paramMiniAppBaseInfo.version + ".qapkg";
-  }
-  
-  private String b(MiniAppBaseInfo paramMiniAppBaseInfo, String paramString)
-  {
-    return a(paramMiniAppBaseInfo) + "apkg/" + paramString + "_" + paramMiniAppBaseInfo.appId + "_" + paramMiniAppBaseInfo.version + ".qapkg";
-  }
-  
-  public static String b(MiniAppBaseInfo paramMiniAppBaseInfo, boolean paramBoolean)
-  {
-    if (paramMiniAppBaseInfo.isEngineTypeMiniGame()) {
-      return jdField_a_of_type_JavaLangString;
-    }
-    if ((paramBoolean) && (paramMiniAppBaseInfo.supportNativeRenderMode())) {
-      return c;
-    }
-    return b;
-  }
-  
-  public void a(Context paramContext, boolean paramBoolean, MiniAppBaseInfo paramMiniAppBaseInfo, bdes parambdes)
-  {
-    if (paramBoolean) {
-      try
-      {
-        paramContext = a(paramMiniAppBaseInfo, paramBoolean) + "_maintmp";
-        if (new File(paramContext).exists())
+        paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(localResponse.body, StatReportResponse.class);
+        if (paramArrayOfByte1 == null) {
+          break label208;
+        }
+        if (paramInt != 0) {
+          break label191;
+        }
+        if ((paramArrayOfByte1 instanceof StatReportResponse))
         {
-          localObject = bdfx.a(paramContext, null, paramMiniAppBaseInfo);
-          if (localObject != null)
-          {
-            bdnw.b("ApkgManager", "apkg has download in main process. folder:" + paramContext);
-            if (parambdes != null) {
-              parambdes.a((bdfx)localObject, 0, "加载成功");
-            }
+          paramArrayOfByte1 = (StatReportResponse)paramArrayOfByte1;
+          if (paramArrayOfByte1.ret != 0) {
+            break label171;
           }
-          return;
+          this.a.a(i, null, paramArrayOfByte1, 0);
         }
-      }
-      catch (Throwable paramContext)
-      {
-        bdnw.d("ApkgManager", "", paramContext);
-      }
-    }
-    paramContext = new DownloaderProxyDefault();
-    Object localObject = b(paramMiniAppBaseInfo);
-    paramContext.download(paramMiniAppBaseInfo.downloadUrl, null, (String)localObject, 20, new bdeq(this, parambdes, paramMiniAppBaseInfo, paramBoolean));
-  }
-  
-  public void a(MiniAppInfo paramMiniAppInfo, String paramString, bdes parambdes)
-  {
-    if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramString))) {
-      if (parambdes != null) {
-        parambdes.a(null, -1, "参数错误");
-      }
-    }
-    String str1;
-    String str2;
-    label97:
-    do
-    {
-      return;
-      String str3 = a(paramMiniAppInfo, false);
-      if ("/__APP__/".equals(paramString))
-      {
-        str1 = paramMiniAppInfo.downloadUrl;
-        str2 = "";
       }
       for (;;)
       {
-        if (!TextUtils.isEmpty(str1)) {
-          break label97;
-        }
-        if (parambdes == null) {
-          break;
-        }
-        parambdes.a(null, -1, "下载链接错误");
+        Log.i("StatReportHttpRequest", "exit");
         return;
-        str2 = paramMiniAppInfo.apkgInfo.c(paramString);
-        str1 = a(paramMiniAppInfo, str2);
+        label171:
+        this.a.a(i, null, paramArrayOfByte1, paramArrayOfByte1.ret);
+        continue;
+        label191:
+        this.a.a(i, null, null, paramInt);
+        continue;
+        label208:
+        this.a.a(i, null, null, paramInt);
+        continue;
+        label225:
+        this.a.a(i, null, null, paramInt);
       }
-      if (("/__APP__/".equals(paramString)) || (!new File(str3, str2).exists())) {
-        break;
-      }
-    } while (parambdes == null);
-    parambdes.a((bdfx)paramMiniAppInfo.apkgInfo, 0, null);
-    return;
-    new DownloaderProxyDefault().download(str1, null, b(paramMiniAppInfo, str2), 20, new bder(this, paramMiniAppInfo, str2, parambdes));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdep
  * JD-Core Version:    0.7.0.1
  */

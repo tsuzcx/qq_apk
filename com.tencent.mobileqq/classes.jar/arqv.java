@@ -1,39 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCTransportFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import java.util.Map;
 
 public class arqv
-  implements bbpw
+  implements DialogInterface.OnClickListener
 {
-  public arqv(MsgBackupPCTransportFragment paramMsgBackupPCTransportFragment) {}
+  public arqv(ListenTogetherManager paramListenTogetherManager, int paramInt, String paramString) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = arop.a().a();
-    switch (paramInt)
+    if (paramInt == 1)
     {
+      this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a();
+      paramDialogInterface.dismiss();
     }
-    do
-    {
+    while (paramInt != 0) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "page is in pc Link page! click cancel! bizType = " + i + ", pcHandler = " + this.a.e);
-      }
-      this.a.aN_();
-      return;
-      arpa.a = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "backup is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + arpa.a + ", curSpeed = " + this.a.a + ", hasFinishedCount = " + this.a.d);
-      }
-      arpa.a().a().a(null);
-      arpa.a().a(this.a.a, this.a.d, i, this.a.getActivity());
-      if (this.a.b != 1) {
-        break;
-      }
-    } while (!this.a.e);
-    arsa.a("0X800A260");
-    return;
-    arsa.a("0X800A284");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.b();
+    paramDialogInterface.dismiss();
+    ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager, (ListenTogetherSession)ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager).get(arrl.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString)));
   }
 }
 

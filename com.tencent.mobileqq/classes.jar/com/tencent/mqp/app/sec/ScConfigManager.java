@@ -1,11 +1,11 @@
 package com.tencent.mqp.app.sec;
 
-import apdh;
-import baah;
-import bbsl;
-import bbsr;
-import bbss;
-import bbsu;
+import apvb;
+import bbbl;
+import bcwl;
+import bcwr;
+import bcws;
+import bcwu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -15,8 +15,8 @@ import java.util.HashMap;
 public class ScConfigManager
 {
   private static final ScConfigManager jdField_a_of_type_ComTencentMqpAppSecScConfigManager = new ScConfigManager();
-  private static final bbsr[] jdField_a_of_type_ArrayOfBbsr = { new bbsr("SecCenterConfig", new bbsu()) };
-  private HashMap<String, bbss> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static final bcwr[] jdField_a_of_type_ArrayOfBcwr = { new bcwr("SecCenterConfig", new bcwu()) };
+  private HashMap<String, bcws> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private HashMap<String, String> b = new HashMap();
   
   private ScConfigManager()
@@ -24,29 +24,29 @@ public class ScConfigManager
     this.b.put("SecCenterConfig", "qq_security_sccfg");
   }
   
-  public static bbsl a(String paramString)
+  public static bcwl a(String paramString)
   {
-    bbsr[] arrayOfbbsr = jdField_a_of_type_ArrayOfBbsr;
-    int j = arrayOfbbsr.length;
+    bcwr[] arrayOfbcwr = jdField_a_of_type_ArrayOfBcwr;
+    int j = arrayOfbcwr.length;
     int i = 0;
     while (i < j)
     {
-      bbsr localbbsr = arrayOfbbsr[i];
-      if (localbbsr.jdField_a_of_type_JavaLangString.equals(paramString)) {
-        return localbbsr.jdField_a_of_type_Bbsl;
+      bcwr localbcwr = arrayOfbcwr[i];
+      if (localbcwr.jdField_a_of_type_JavaLangString.equals(paramString)) {
+        return localbcwr.jdField_a_of_type_Bcwl;
       }
       i += 1;
     }
     return null;
   }
   
-  private bbss a(String paramString)
+  private bcws a(String paramString)
   {
     synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
       if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
       {
-        paramString = (bbss)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        paramString = (bcws)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
         return paramString;
       }
       return null;
@@ -241,7 +241,7 @@ public class ScConfigManager
   
   private boolean b(String paramString)
   {
-    return !apdh.a(paramString);
+    return !apvb.a(paramString);
   }
   
   private String c(String paramString)
@@ -256,7 +256,7 @@ public class ScConfigManager
     Object localObject2 = a(str);
     if (localObject2 != null)
     {
-      localObject2 = ((bbsl)localObject2).a(???);
+      localObject2 = ((bcwl)localObject2).a(???);
       if (localObject2 != null) {
         synchronized (this.jdField_a_of_type_JavaUtilHashMap)
         {
@@ -271,25 +271,25 @@ public class ScConfigManager
     return true;
   }
   
-  public bbss a(String paramString, boolean paramBoolean)
+  public bcws a(String paramString, boolean paramBoolean)
   {
-    bbss localbbss2 = a(paramString);
-    bbss localbbss1 = localbbss2;
-    if (localbbss2 == null)
+    bcws localbcws2 = a(paramString);
+    bcws localbcws1 = localbcws2;
+    if (localbcws2 == null)
     {
-      localbbss1 = localbbss2;
+      localbcws1 = localbcws2;
       if (paramBoolean)
       {
         a(paramString);
-        localbbss1 = a(paramString);
+        localbcws1 = a(paramString);
       }
     }
-    return localbbss1;
+    return localbcws1;
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    baah.a().a(paramQQAppInterface, paramString);
+    bbbl.a().a(paramQQAppInterface, paramString);
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)

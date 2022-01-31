@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
-
-class ajob
-  implements Comparator<PhoneContact>
+public abstract interface ajob
 {
-  ajob(ajoa paramajoa) {}
-  
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
-  {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
-  }
+  public abstract void b(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajob
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,46 @@
-import NS_MOBILE_EXTRA.mobile_get_urlinfo_req;
-import QMF_PROTOCAL.RetryInfo;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
 
 public class aqsn
-  extends QzoneExternalRequest
 {
-  private JceStruct a;
+  private static aqsn jdField_a_of_type_Aqsn;
+  private GameCenterVideoViewController jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
   
-  public aqsn(String paramString)
+  public static aqsn a()
   {
-    mobile_get_urlinfo_req localmobile_get_urlinfo_req = new mobile_get_urlinfo_req();
-    localmobile_get_urlinfo_req.url = paramString;
-    this.a = localmobile_get_urlinfo_req;
+    try
+    {
+      if (jdField_a_of_type_Aqsn == null) {
+        jdField_a_of_type_Aqsn = new aqsn();
+      }
+      aqsn localaqsn = jdField_a_of_type_Aqsn;
+      return localaqsn;
+    }
+    finally {}
   }
   
-  public String getCmdString()
+  public GameCenterVideoViewController a()
   {
-    return "QzoneNewService.getUrlInfo";
+    return this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
   }
   
-  public JceStruct getReq()
+  public void a()
   {
-    return this.a;
+    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.i();
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.l();
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = null;
+    }
   }
   
-  public Object getRetryInfo()
+  public void a(GameCenterVideoViewController paramGameCenterVideoViewController)
   {
-    return new RetryInfo((short)0, 0, System.currentTimeMillis());
-  }
-  
-  public String uniKey()
-  {
-    return "getUrlInfo";
+    if ((this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != paramGameCenterVideoViewController) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.i();
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.l();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = paramGameCenterVideoViewController;
   }
 }
 

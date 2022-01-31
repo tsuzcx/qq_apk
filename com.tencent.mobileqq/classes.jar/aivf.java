@@ -1,29 +1,53 @@
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.SettingMeApolloViewController;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONArray;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-class aivf
-  implements aiuf
+public class aivf
+  extends bbqu
 {
-  aivf(aive paramaive) {}
+  public aivf(SettingMeApolloViewController paramSettingMeApolloViewController) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  protected void onGetExploreMsg(boolean paramBoolean, Object paramObject)
   {
-    QLog.d("ApolloPluginRscLoader", 1, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
-    Object localObject = this.a.jdField_a_of_type_Aivd;
-    String str = this.a.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_JavaIoFile.exists()) {}
-    for (paramInt = 0;; paramInt = 2)
-    {
-      localObject = aivd.a((aivd)localObject, 6, str, paramInt);
-      this.a.jdField_a_of_type_OrgJsonJSONArray.put(localObject);
-      if ((this.a.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0)) {
-        break;
+    super.onGetExploreMsg(paramBoolean, paramObject);
+    if (paramBoolean) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SettingMeApolloViewController", 1, "[onGetExploreMsg] get info end");
+        }
+        QQSettingMe localQQSettingMe = (QQSettingMe)SettingMeApolloViewController.a(this.a).get();
+        if (localQQSettingMe == null) {
+          return;
+        }
+        QQAppInterface localQQAppInterface = localQQSettingMe.a();
+        if (localQQAppInterface == null) {
+          return;
+        }
+        ViewGroup localViewGroup = (ViewGroup)SettingMeApolloViewController.b(this.a).get();
+        if (localViewGroup == null) {
+          return;
+        }
+        Object localObject = new JSONObject((String)paramObject);
+        if (((JSONObject)localObject).optInt("entry_id", -1) != 1) {
+          return;
+        }
+        localObject = new aixn(localQQAppInterface, (JSONObject)localObject, localQQSettingMe);
+        this.a.jdField_a_of_type_Aixj.a((aixl)localObject);
+        if ((localQQSettingMe.a()) && (SettingMeApolloViewController.a(this.a) > 0)) {
+          this.a.jdField_a_of_type_Aixj.a(SettingMeApolloViewController.a(this.a), localViewGroup.getContext(), localQQAppInterface, this.a.jdField_a_of_type_Int);
+        }
+        QLog.d("SettingMeApolloViewController", 2, "[onGetExploreMsg] onGetExploreMsg data:" + paramObject.toString());
+        return;
       }
-      this.a.jdField_a_of_type_Aivd.a(this.a.b, ajjy.a(2131634694), this.a.jdField_a_of_type_OrgJsonJSONArray);
-      return;
+      catch (Exception paramObject) {}
+    } else {
+      QLog.d("SettingMeApolloViewController", 1, "[onGetExploreMsg] result:" + paramBoolean);
     }
-    aivd.a(this.a.jdField_a_of_type_Aivd, this.a.jdField_a_of_type_ArrayOfInt, this.a.b, this.a.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 

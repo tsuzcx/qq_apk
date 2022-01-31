@@ -1,59 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 import com.tencent.qphone.base.util.QLog;
 
-class adbn
-  implements DialogInterface.OnClickListener
+public class adbn
+  extends VasQuickUpdateManager.CallBacker
 {
-  adbn(adbm paramadbm, MessageForArkApp paramMessageForArkApp) {}
+  public adbn(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    paramDialogInterface = (MessageForArkApp)awbi.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-    if (paramDialogInterface.msgData == null) {
-      if (paramDialogInterface.ark_app_message == null) {
-        ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
-      }
-    }
-    Object localObject;
+    if ((1000L != paramLong) || (!"changeVoice_json".equals(paramString1))) {}
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
-          } while (this.jdField_a_of_type_Adbm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null);
-          if ((paramDialogInterface.ark_app_message.containStructMsg == null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.containStructMsg != null)) {
-            paramDialogInterface.ark_app_message.containStructMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.containStructMsg;
-          }
-          paramInt = paramDialogInterface.getProcessState();
-          if (QLog.isColorLevel()) {
-            QLog.d("ArkAppShareMultiItemBuilder", 2, new Object[] { "AAShare.get multiItem resend msg stat=", Integer.valueOf(paramInt), ", old.uniseq=", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq), ", new uniseq=", Long.valueOf(paramDialogInterface.uniseq) });
-          }
-          this.jdField_a_of_type_Adbm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Adbm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adbm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq);
-          if ((paramInt == 1002) || (paramInt == 0)) {
-            break;
-          }
-          localObject = BaseApplicationImpl.getApplication().getRuntime();
-        } while (!(localObject instanceof QQAppInterface));
-        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(121);
-      } while (localObject == null);
-      localObject = ((ArkAppCenter)localObject).a();
-    } while (localObject == null);
-    ((alib)localObject).a(paramDialogInterface);
-    return;
-    this.jdField_a_of_type_Adbm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
+      return;
+      if ((QLog.isColorLevel()) || (paramInt1 != 0)) {
+        QLog.d("ListenChangeVoicePanel", 2, "changeVoice jsonLoaded callBacker, errorCode=" + paramInt1);
+      }
+      if (paramInt1 == 0) {
+        this.a.a(true);
+      }
+    } while (paramVasQuickUpdateManager == null);
+    paramVasQuickUpdateManager.removeCallBacker(this.a.a);
   }
 }
 

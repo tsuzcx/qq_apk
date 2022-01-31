@@ -20,42 +20,42 @@ class MiniAppDesktop$3
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    MiniAppDesktop.access$1302(this.this$0, true);
-    if (MiniAppDesktop.access$700(this.this$0) != MainFragment.b) {
+    MiniAppDesktop.access$1202(this.this$0, true);
+    if (MiniAppDesktop.access$600(this.this$0) != MainFragment.b) {
       this.this$0.hideMiniAppEntry();
     }
-    MiniAppDesktop.access$400(this.this$0).desktopOpened();
+    MiniAppDesktop.access$300(this.this$0).desktopOpened();
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (MiniAppDesktop.access$700(this.this$0) != MainFragment.b)
+    if (MiniAppDesktop.access$600(this.this$0) != MainFragment.b)
     {
       paramAnimator.cancel();
       this.this$0.hideMiniAppEntry();
       return;
     }
-    MiniAppDesktop.access$800(this.this$0, false);
+    MiniAppDesktop.access$700(this.this$0, false);
     if ((ThemeUtil.isDefaultTheme()) || (ThemeUtil.isGoldenTheme()) || (DisplayUtil.isWhiteModeTheme()) || (DisplayUtil.isSimpleThemeAndStatusBarOfWhite(ThemeUtil.getCurrentThemeId())))
     {
-      paramAnimator = (Activity)MiniAppDesktop.access$900(this.this$0).get();
+      paramAnimator = (Activity)MiniAppDesktop.access$800(this.this$0).get();
       if (paramAnimator != null)
       {
         ImmersiveUtils.a(true, paramAnimator.getWindow());
-        MiniAppDesktop.access$1002(this.this$0, true);
+        MiniAppDesktop.access$902(this.this$0, true);
         if (QLog.isColorLevel()) {
           QLog.d("MiniAppDesktop", 2, "animateOpen, set status bar text color.");
         }
       }
     }
-    MiniAppDesktop.access$1100(this.this$0);
+    MiniAppDesktop.access$1000(this.this$0);
     if (QzoneConfig.getInstance().getConfig("qqminiapp", "miniappbringtitlebartofront", 1) == 1) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        MiniAppDesktop.access$1200(this.this$0).bringToFront();
+        MiniAppDesktop.access$1100(this.this$0).bringToFront();
       }
-      MiniAppDesktop.access$400(this.this$0).updateMicroAppItemData();
+      MiniAppDesktop.access$300(this.this$0).notifyMiniAppDataChanged();
       QLog.d("MiniAppDesktop", 1, "[animation].animateOpen, onAnimationStart");
       return;
     }

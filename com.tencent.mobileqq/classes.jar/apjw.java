@@ -1,38 +1,39 @@
-import android.content.DialogInterface.OnClickListener;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
-class apjw
-  implements View.OnClickListener
+public final class apjw
+  extends WebViewClient
 {
-  apjw(apjo paramapjo, DialogInterface.OnClickListener paramOnClickListener) {}
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final IHostInterface.IWebClient jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient;
   
-  public void onClick(View paramView)
+  private apjw(Context paramContext, IHostInterface.IWebClient paramIWebClient)
   {
-    this.jdField_a_of_type_Apjo.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Apjo, 0);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient = paramIWebClient;
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.onPageFinished(paramWebView, paramString))) {
+      super.onPageFinished(paramWebView, paramString);
     }
-    if (apjo.a(this.jdField_a_of_type_Apjo))
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.shouldOverrideUrlLoading(paramWebView, paramString)))
     {
-      apjo.a(this.jdField_a_of_type_Apjo).removeView(apjo.a(this.jdField_a_of_type_Apjo));
-      apjo.a(this.jdField_a_of_type_Apjo, false);
+      paramWebView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserDelegationActivity.class);
+      paramWebView.putExtra("param_force_internal_browser", true);
+      paramWebView.putExtra("url", paramString);
+      acqz.a(this.jdField_a_of_type_AndroidContentContext, paramWebView, paramString);
     }
-    try
-    {
-      if (this.jdField_a_of_type_Apjo.isShowing()) {
-        this.jdField_a_of_type_Apjo.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Forward.NewVersion.Dialog", 2, Log.getStackTraceString(paramView));
-    }
+    return true;
   }
 }
 

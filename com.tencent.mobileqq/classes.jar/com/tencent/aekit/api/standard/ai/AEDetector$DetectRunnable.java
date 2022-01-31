@@ -1,5 +1,6 @@
 package com.tencent.aekit.api.standard.ai;
 
+import com.tencent.aekit.openrender.util.AEProfiler;
 import com.tencent.aekit.plugin.core.AIData;
 import com.tencent.aekit.plugin.core.AIDataStorage;
 import com.tencent.aekit.plugin.core.AIInput;
@@ -36,7 +37,10 @@ class AEDetector$DetectRunnable
     do
     {
       return;
+      AEProfiler.getInstance().start(this.detector.getModuleType());
       localObject2 = this.detector.detect(this.aiInput, this.aiParam);
+      long l = AEProfiler.getInstance().end(this.detector.getModuleType());
+      AEProfiler.getInstance().add(1, this.detector.getModuleType(), l);
     } while (this.aiData == null);
     synchronized (this.aiData.getLock())
     {

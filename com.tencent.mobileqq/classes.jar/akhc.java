@@ -1,12 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class akhc
-  implements DialogInterface.OnClickListener
+public class akhc
+  implements ajtg
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, ayaw paramayaw) {}
+  
+  protected void b(boolean paramBoolean, ayaw paramayaw) {}
+  
+  protected void c(boolean paramBoolean, ayaw paramayaw) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      b(paramBoolean, (ayaw)paramObject);
+      return;
+    case 1: 
+      c(paramBoolean, (ayaw)paramObject);
+      return;
+    }
+    a(paramBoolean, (ayaw)paramObject);
   }
 }
 

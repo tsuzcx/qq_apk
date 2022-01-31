@@ -1,6 +1,14 @@
-public abstract interface pjw
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
+public class pjw
+  implements ViewBase.IBuilder
 {
-  public abstract void a();
+  public ViewBase build(VafContext paramVafContext)
+  {
+    return new pjv(paramVafContext);
+  }
 }
 
 

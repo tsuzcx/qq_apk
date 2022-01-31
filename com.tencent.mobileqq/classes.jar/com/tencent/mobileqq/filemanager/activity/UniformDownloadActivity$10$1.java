@@ -2,18 +2,18 @@ package com.tencent.mobileqq.filemanager.activity;
 
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anyr;
+import aopk;
 
 public class UniformDownloadActivity$10$1
   implements Runnable
 {
-  public UniformDownloadActivity$10$1(anyr paramanyr) {}
+  public UniformDownloadActivity$10$1(aopk paramaopk) {}
   
   public void run()
   {
     UniformDownloadActivity.b(this.a.a).setVisibility(0);
     UniformDownloadActivity.a(this.a.a).setVisibility(0);
-    UniformDownloadActivity.b(this.a.a).setText(this.a.a.getString(2131626356, new Object[] { "0%" }));
+    UniformDownloadActivity.b(this.a.a).setText(this.a.a.getString(2131691939, new Object[] { "0%" }));
   }
 }
 

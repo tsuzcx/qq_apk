@@ -1,34 +1,17 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import java.io.File;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.customviews.PicProgressView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-class adwa
-  implements begw
+public class adwa
+  extends acun
 {
-  adwa(advv paramadvv, begr parambegr, AIOImageData paramAIOImageData, File paramFile) {}
+  public ImageView a;
+  public URLDrawable a;
+  public PicProgressView a;
+  public BubbleImageView a;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-    }
-    paramView = this.jdField_a_of_type_Begr.a(paramInt);
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-    }
-    if (TextUtils.isEmpty(paramView))
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-    }
-    if (this.jdField_a_of_type_Advv.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_JavaIoFile)) {}
-    this.jdField_a_of_type_Begr.dismiss();
-  }
+  public adwa(advu paramadvu) {}
 }
 
 

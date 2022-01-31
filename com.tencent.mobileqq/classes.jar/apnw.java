@@ -1,36 +1,32 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.DeleteFaceFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
 
-public class apnw
-  implements View.OnClickListener
+class apnw
+  extends xay
 {
-  public apnw(DeleteFaceFragment paramDeleteFaceFragment) {}
+  apnw(apnm paramapnm) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
-    awqx.b(null, "dc00898", "", "", "0X800A320", "0X800A320", 0, 0, "", "", "", "");
-    if ((DeleteFaceFragment.a(this.a) != null) && (DeleteFaceFragment.a(this.a).isShowing())) {
-      DeleteFaceFragment.a(this.a).dismiss();
-    }
-    if (!badq.d(this.a.getActivity()))
+    if (paramFileInfo != null)
     {
-      bbmy.a(this.a.getActivity(), this.a.getString(2131626719), 0).b(this.a.a());
-      return;
+      String str = bbcl.h(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(this.a.jdField_a_of_type_Apkp.a().TroopUin), paramFileInfo.uint64_uploader_uin.get() + "");
+      paramFileInfo = new Date(paramFileInfo.uint32_upload_time.get() * 1000L);
+      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
+      paramFileInfo = " 于" + localSimpleDateFormat.format(paramFileInfo) + "上传";
+      if (this.a.jdField_a_of_type_Apnc != null) {
+        this.a.jdField_a_of_type_Apnc.b(str, paramFileInfo);
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DeleteFaceFragment", 2, "user confirm delete");
-    }
-    this.a.a();
-    awcq.a(this.a.getActivity().app, new apnx(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apnw
  * JD-Core Version:    0.7.0.1
  */

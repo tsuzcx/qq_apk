@@ -1,18 +1,20 @@
-public abstract interface asor
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class asor
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  asor(asoh paramasoh) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    axqw.b(this.a.a, "CliOper", "", "", asoh.b, asoh.b, 0, 0, "", "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asor
  * JD-Core Version:    0.7.0.1
  */

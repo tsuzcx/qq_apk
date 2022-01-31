@@ -5,12 +5,12 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimerTask;
-import rcx;
+import rpl;
 
 public class ReadInJoyGlobalReporter$1
   extends TimerTask
 {
-  public ReadInJoyGlobalReporter$1(rcx paramrcx) {}
+  public ReadInJoyGlobalReporter$1(rpl paramrpl) {}
   
   public void run()
   {

@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.report;
 
-import bdko;
-import bdsr;
+import beor;
+import beyo;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,12 +13,12 @@ public final class SDKMiniProgramLpReportDC04239$13
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
-      bdko localbdko = (bdko)localIterator.next();
-      if (localbdko != null) {
-        localbdko.a();
+      beor localbeor = (beor)localIterator.next();
+      if (localbeor != null) {
+        localbeor.a();
       }
     }
-    bdsr.a().b();
+    beyo.a().b();
   }
 }
 

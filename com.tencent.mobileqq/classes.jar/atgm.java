@@ -1,17 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
 
 public class atgm
-  implements ValueAnimator.AnimatorUpdateListener
+  extends Handler
 {
-  public atgm(ScanOcrView paramScanOcrView, atgn paramatgn) {}
+  public atgm(StoryPlayController paramStoryPlayController) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_Atgn.e = i;
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      StoryPlayController.a(this.a, this.a.a);
+    }
   }
 }
 

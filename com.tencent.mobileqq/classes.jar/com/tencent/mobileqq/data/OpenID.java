@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class OpenID
-  extends atmo
+  extends aukm
 {
-  @atoc
+  @auma
   public String appID;
   public String openID;
   

@@ -1,31 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager;
+import org.json.JSONObject;
 
 public class bepg
-  implements ValueAnimator.AnimatorUpdateListener
+  implements AsyncResult
 {
-  public bepg(XPanelContainer paramXPanelContainer, int paramInt) {}
+  public bepg(AppBrandLaunchManager paramAppBrandLaunchManager) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("XPanelContainer", 2, "colseAnim resetPosition");
-      }
-      XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, 0);
-      return;
-    }
-    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
+    besl.b("minisdk-start_AppBrandLaunchManager", "---startApp---- useUserApp isSuccess = " + paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bepg
  * JD-Core Version:    0.7.0.1
  */

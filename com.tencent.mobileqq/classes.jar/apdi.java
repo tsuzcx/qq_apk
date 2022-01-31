@@ -1,28 +1,39 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import android.content.Context;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 
-public class apdi
-  implements Comparator<FileInfo>
+class apdi
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  float jdField_a_of_type_Float = 14.0F;
+  int jdField_a_of_type_Int = 0;
+  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
+  Integer jdField_a_of_type_JavaLangInteger = null;
+  final String jdField_a_of_type_JavaLangString = "SearchForText";
+  float jdField_b_of_type_Float = 16.0F;
+  Integer jdField_b_of_type_JavaLangInteger = null;
+  final String jdField_b_of_type_JavaLangString = "SearchForTitle";
+  
+  apdi(apdg paramapdg, Context paramContext)
   {
-    if (paramFileInfo1.c()) {
-      if (paramFileInfo2.c()) {
-        break label25;
-      }
+    if (paramContext != null) {
+      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
     }
-    label25:
-    while (paramFileInfo1.b() > paramFileInfo2.b())
-    {
-      return -1;
-      if (paramFileInfo2.c()) {
-        return 1;
-      }
-    }
-    if (paramFileInfo1.b() == paramFileInfo2.b()) {
-      return 0;
-    }
-    return 1;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public Integer a()
+  {
+    return this.jdField_b_of_type_JavaLangInteger;
+  }
+  
+  public float b()
+  {
+    return this.jdField_b_of_type_Float;
   }
 }
 

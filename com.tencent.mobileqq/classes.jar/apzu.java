@@ -1,26 +1,13 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
-
-public class apzu
-  implements bbpw
+class apzu
+  implements ajvb
 {
-  public apzu(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  apzu(apzt paramapzt) {}
   
-  public void a(View paramView, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    if ((paramInt == 5) || (paramInt == 4))
-    {
-      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", "2747277822");
-      this.a.startActivity(paramView);
+    if (paramBoolean) {
+      this.a.a();
     }
-    while (paramInt != 1) {
-      return;
-    }
-    this.a.getActivity().finish();
   }
 }
 

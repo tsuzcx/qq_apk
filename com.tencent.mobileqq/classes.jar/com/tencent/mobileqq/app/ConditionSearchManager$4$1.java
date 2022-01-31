@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import ajfi;
-import ajfw;
-import ajjj;
+import ajtk;
+import ajty;
+import ajxn;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 
@@ -46,8 +46,8 @@ class ConditionSearchManager$4$1
           }
           localCard.strHometownDesc = ((String)localObject);
         }
-        ((ajjj)ajfw.a(this.a.this$0).getManager(51)).a(localCard);
-        ((ajfi)ajfw.a(this.a.this$0).a(2)).notifyUI(43, true, localCard);
+        ((ajxn)ajty.a(this.a.this$0).getManager(51)).a(localCard);
+        ((ajtk)ajty.a(this.a.this$0).a(2)).notifyUI(43, true, localCard);
       }
       this.a.this$0.d = false;
       this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard = null;

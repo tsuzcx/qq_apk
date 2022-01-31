@@ -28,12 +28,12 @@ class DesktopDataManager$8
       if ((this.val$moduleInfo != null) && (this.val$moduleInfo.useOld.get() == 1)) {
         return;
       }
-      if ((this.val$moduleInfo == null) || (DesktopDataManager.access$1300(this.this$0) == null) || (this.val$moduleInfo.useOld.get() != 0) || (this.val$moduleInfo.userAppList.get() == null) || (this.val$moduleInfo.userAppList.get().size() <= 0)) {
+      if ((this.val$moduleInfo == null) || (DesktopDataManager.access$1500(this.this$0) == null) || (this.val$moduleInfo.useOld.get() != 0) || (this.val$moduleInfo.userAppList.get() == null) || (this.val$moduleInfo.userAppList.get().size() <= 0)) {
         break label554;
       }
       localObject1 = new DesktopAppModuleInfo(this.val$moduleInfo.moduleType.get(), this.val$moduleInfo.title.get());
       if (((DesktopAppModuleInfo)localObject1).getModuleType() == 2) {
-        DesktopDataManager.access$1700(this.this$0).clear();
+        DesktopDataManager.access$1600(this.this$0).clear();
       }
       ArrayList localArrayList1 = new ArrayList();
       localObject2 = this.val$moduleInfo.userAppList.get().iterator();
@@ -49,7 +49,7 @@ class DesktopDataManager$8
         {
           RecommendAppInfo localRecommendAppInfo = new RecommendAppInfo(((DesktopAppInfo)localObject3).mMiniAppInfo.appId, 0, System.currentTimeMillis());
           QLog.d("DesktopDataManager-Recommend", 2, "updateModuleInfo add " + localRecommendAppInfo.toString());
-          DesktopDataManager.access$1700(this.this$0).add(localRecommendAppInfo);
+          DesktopDataManager.access$1600(this.this$0).add(localRecommendAppInfo);
         }
         localArrayList1.add(localObject3);
       }
@@ -64,16 +64,16 @@ class DesktopDataManager$8
     {
       do
       {
-        if (i >= DesktopDataManager.access$1300(this.this$0).size()) {
+        if (i >= DesktopDataManager.access$1500(this.this$0).size()) {
           break;
         }
-        localObject1 = (DesktopItemInfo)DesktopDataManager.access$1300(this.this$0).get(i);
+        localObject1 = (DesktopItemInfo)DesktopDataManager.access$1500(this.this$0).get(i);
       } while ((!(localObject1 instanceof DesktopAppInfo)) || (((DesktopItemInfo)localObject1).mModuleType != this.val$moduleInfo.moduleType.get()));
       localObject1 = (DesktopAppInfo)localObject1;
     } while ((((DesktopAppInfo)localObject1).mMiniAppInfo == null) || (((DesktopAppInfo)localObject1).mMiniAppInfo.isSpecialMiniApp()));
     for (;;)
     {
-      localObject1 = DesktopDataManager.access$1300(this.this$0).iterator();
+      localObject1 = DesktopDataManager.access$1500(this.this$0).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (DesktopItemInfo)((Iterator)localObject1).next();
@@ -86,19 +86,19 @@ class DesktopDataManager$8
         }
       }
       if ((i != -1) && (localThrowable.size() > 0)) {
-        DesktopDataManager.access$1300(this.this$0).addAll(i, localThrowable);
+        DesktopDataManager.access$1500(this.this$0).addAll(i, localThrowable);
       }
       QLog.d("DesktopDataManager", 1, "updateModuleInfo, recommend list: " + localThrowable.toString());
       label554:
-      DesktopDataManager.access$1800(this.this$0);
-      DesktopDataManager.access$1900(DesktopDataManager.access$1300(this.this$0));
+      DesktopDataManager.access$1700(this.this$0);
+      DesktopDataManager.access$1800(DesktopDataManager.access$1500(this.this$0));
       ArrayList localArrayList2 = new ArrayList();
-      localArrayList2.addAll(DesktopDataManager.access$1300(this.this$0));
-      DesktopDataManager.access$2000(this.this$0, localArrayList2);
-      if (DesktopDataManager.access$1500(this.this$0) == null) {
+      localArrayList2.addAll(DesktopDataManager.access$1500(this.this$0));
+      DesktopDataManager.access$1900(this.this$0, localArrayList2);
+      if (DesktopDataManager.access$1400(this.this$0) == null) {
         break;
       }
-      DesktopDataManager.access$1500(this.this$0).onDataChanged();
+      DesktopDataManager.access$1400(this.this$0).onDataChanged();
       return;
       i = -1;
     }

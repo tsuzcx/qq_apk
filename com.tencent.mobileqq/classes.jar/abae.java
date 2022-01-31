@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
-import com.tencent.mobileqq.data.KplCard;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.12.1;
 
 public class abae
-  extends ajfo
+  extends ajxl
 {
-  public abae(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  public abae(EditInfoActivity paramEditInfoActivity) {}
   
-  protected void onGetKplCard(boolean paramBoolean, Object paramObject)
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("KPLProfileCardActivity", 2, "onGetKplCard, isSuccess=" + paramBoolean);
+    if (!this.a.f.equals(paramString1)) {}
+    while (!this.a.j) {
+      return;
     }
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof KplCard)))
-    {
-      KPLProfileCardActivity.a(this.a, (KplCard)paramObject);
-      this.a.a = ((KplCard)paramObject);
-    }
+    this.a.j = false;
+    this.a.runOnUiThread(new EditInfoActivity.12.1(this, paramBoolean, paramString2));
   }
 }
 

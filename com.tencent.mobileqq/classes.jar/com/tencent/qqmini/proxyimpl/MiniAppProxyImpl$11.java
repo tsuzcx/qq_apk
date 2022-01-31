@@ -1,58 +1,35 @@
 package com.tencent.qqmini.proxyimpl;
 
-import android.content.Intent;
-import bdel;
-import bdem;
-import com.tencent.qphone.base.util.QLog;
+import besl;
+import bhzu;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import org.json.JSONException;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 import org.json.JSONObject;
 
 class MiniAppProxyImpl$11
-  implements bdem
+  implements bhzu
 {
   MiniAppProxyImpl$11(MiniAppProxyImpl paramMiniAppProxyImpl, AsyncResult paramAsyncResult) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
-    if (paramInt1 == 3)
+    JSONObject localJSONObject;
+    if (this.val$asyncResult != null) {
+      localJSONObject = new JSONObject();
+    }
+    try
     {
-      String str1;
-      String str2;
-      double d1;
-      double d2;
-      if ((paramInt2 == -1) && (paramIntent != null))
+      localJSONObject.put("response", paramGetAdsRsp);
+      this.val$asyncResult.onReceiveResult(paramBoolean, localJSONObject);
+      return;
+    }
+    catch (Throwable paramGetAdsRsp)
+    {
+      for (;;)
       {
-        str1 = paramIntent.getStringExtra("name");
-        str2 = paramIntent.getStringExtra("address");
-        d1 = paramIntent.getIntExtra("latitude", 0) / 1000000.0D;
-        d2 = paramIntent.getIntExtra("longitude", 0) / 1000000.0D;
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult name=" + str1 + ",address=" + str2 + ",latitude=" + d1 + ",longitude=" + d2);
-        }
-        paramIntent = new JSONObject();
-      }
-      try
-      {
-        paramIntent.put("name", str1);
-        paramIntent.put("address", str2);
-        paramIntent.put("latitude", d1);
-        paramIntent.put("longitude", d2);
-        this.val$asyncResult.onReceiveResult(true, paramIntent);
-        bdel.a().b(this);
-        return true;
-      }
-      catch (JSONException paramIntent)
-      {
-        for (;;)
-        {
-          QLog.e("MiniAppProxyImpl", 1, " error, ", paramIntent);
-          this.val$asyncResult.onReceiveResult(false, new JSONObject());
-        }
+        besl.d("MiniAppProxyImpl", "tianshuRequestAdv", paramGetAdsRsp);
       }
     }
-    return false;
   }
 }
 

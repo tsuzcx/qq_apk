@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.danmaku.core.DanmakuManager;
-
-public class ampi
-  implements ampm
+public final class ampi
 {
-  public ampi(DanmakuManager paramDanmakuManager) {}
+  @Deprecated
+  public int a;
+  public String a;
   
-  public void a(ampo paramampo)
+  ampi(int paramInt, String paramString)
   {
-    DanmakuManager.a(this.a).b(paramampo);
-    if (DanmakuManager.a(this.a) != null) {
-      DanmakuManager.a(this.a).f();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.data;
 
-import aons;
+import apen;
 
 public class FileManagerProxy$1
   implements Runnable
 {
-  public FileManagerProxy$1(aons paramaons, FileManagerEntity paramFileManagerEntity) {}
+  public FileManagerProxy$1(apen paramapen, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {

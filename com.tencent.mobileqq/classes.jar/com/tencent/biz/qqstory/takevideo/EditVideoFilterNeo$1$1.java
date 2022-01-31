@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import uty;
-import utz;
-import vdk;
+import vgu;
+import vgv;
+import vqg;
 
 public class EditVideoFilterNeo$1$1
   implements Runnable
 {
-  public EditVideoFilterNeo$1$1(utz paramutz, int paramInt) {}
+  public EditVideoFilterNeo$1$1(vgv paramvgv, int paramInt) {}
   
   public void run()
   {
-    if (uty.a(this.jdField_a_of_type_Utz.a) != null) {
-      uty.a(this.jdField_a_of_type_Utz.a).a(this.jdField_a_of_type_Int);
+    if (vgu.a(this.jdField_a_of_type_Vgv.a) != null) {
+      vgu.a(this.jdField_a_of_type_Vgv.a).a(this.jdField_a_of_type_Int);
     }
   }
 }

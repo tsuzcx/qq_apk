@@ -76,6 +76,8 @@ public class Engine
   
   private static native long nCreateSwapChainFromRawPointer(long paramLong1, long paramLong2, long paramLong3);
   
+  private static native long nCreateSwapChainHeadless(long paramLong1, int paramInt1, int paramInt2, long paramLong2);
+  
   private static native long nCreateView(long paramLong);
   
   private static native void nDestroyCamera(long paramLong1, long paramLong2);
@@ -170,6 +172,20 @@ public class Engine
       throw new IllegalStateException("Couldn't create Scene");
     }
     return new Scene(l);
+  }
+  
+  @NonNull
+  public SwapChain createSwapChain(int paramInt1, int paramInt2, long paramLong)
+  {
+    if ((paramInt1 >= 0) && (paramInt2 >= 0))
+    {
+      paramLong = nCreateSwapChainHeadless(getNativeObject(), paramInt1, paramInt2, paramLong);
+      if (paramLong == 0L) {
+        throw new IllegalStateException("Couldn't create SwapChain");
+      }
+      return new SwapChain(paramLong, null);
+    }
+    throw new IllegalArgumentException("Invalid parameters");
   }
   
   @NonNull

@@ -1,29 +1,24 @@
-import java.util.concurrent.atomic.AtomicReference;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-class wtz
-  implements wtn
+public class wtz
+  implements bctp
 {
-  wtz(wtw paramwtw, AtomicReference paramAtomicReference) {}
+  public wtz(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(String paramString)
+  public boolean a()
   {
-    auur localauur = (auur)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
-    if (localauur != null) {
-      localauur.a(paramString);
-    }
+    return false;
   }
   
-  public void a(wtr paramwtr)
+  public boolean a(int paramInt1, int paramInt2)
   {
-    auur localauur = (auur)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
-    if (localauur != null) {
-      localauur.a(paramwtr);
-    }
+    VideoPlayerView.d(this.a, true);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wtz
  * JD-Core Version:    0.7.0.1
  */

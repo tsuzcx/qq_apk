@@ -3,12 +3,12 @@ package com.tencent.qidian;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bcqm;
+import bdun;
 
 public class QidianProfileCardActivity$QidianCompoundProfileItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<QidianCompoundProfileItem> CREATOR = new bcqm();
+  public static final Parcelable.Creator<QidianCompoundProfileItem> CREATOR = new bdun();
   public int a;
   public String a;
   public boolean a;

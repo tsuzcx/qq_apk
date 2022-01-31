@@ -9,7 +9,6 @@ public class ProteusItemData
 {
   public String V;
   public TemplateBean a;
-  public float b = -1000.0F;
   public JSONObject b;
   public boolean f = true;
   public int s = 0;

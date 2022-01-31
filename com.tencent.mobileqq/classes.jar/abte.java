@@ -1,20 +1,61 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class abte
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public abte(SplashActivity paramSplashActivity) {}
+  public abte(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    switch (paramView.getId())
+    {
+    default: 
+    case 2131368429: 
+    case 2131368457: 
+    case 2131363816: 
+      Object localObject;
+      do
+      {
+        return;
+        this.a.finish();
+        return;
+        abtt.a(this.a);
+        noo.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573A", "0X800573A", 0, 0, "", "", "", "", false);
+        paramView = (avpq)this.a.app.getManager(36);
+        localObject = paramView.a("101000.101001");
+        if ((localObject != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject).iNewFlag.get() == 1)) {
+          axqw.b(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X80060E3", "0X80060E3", 0, 0, "", "", "", "");
+        }
+        paramView.b("101000.101001");
+        return;
+        localObject = (String)paramView.getTag(-1);
+        paramView = (String)paramView.getTag(-2);
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramView))) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.w("PublicAccountListActivity", 2, "onClick - uin = " + (String)localObject + ", name = " + paramView);
+      return;
+      nbc.a(this.a.app, this.a, paramView, (String)localObject, "IvrEnterpriseDetailEngineFalse");
+      return;
+    case 2131372108: 
+      abtt.a(this.a, (String)this.a.d.getTag());
+      noo.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573D", "0X800573D", 0, 0, "", "", "", "", false);
+      return;
+    }
+    abtt.a(this.a, (String)this.a.d.getTag());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abte
  * JD-Core Version:    0.7.0.1
  */

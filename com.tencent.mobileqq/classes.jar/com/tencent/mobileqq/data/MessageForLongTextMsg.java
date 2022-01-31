@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import akbm;
+import akpy;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 
 public class MessageForLongTextMsg
@@ -24,7 +24,7 @@ public class MessageForLongTextMsg
   
   public boolean isSupportFTS()
   {
-    return akbm.v(this.istroop);
+    return akpy.v(this.istroop);
   }
   
   public boolean isSupportReply()

@@ -1,31 +1,23 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 
-class agjg
-  extends AsyncTask<String, Void, AnimationView.AnimationInfo>
+public class agjg
+  extends ajxl
 {
-  private agjg(agje paramagje) {}
+  public agjg(ContactListView paramContactListView) {}
   
-  protected AnimationView.AnimationInfo a(String... paramVarArgs)
-  {
-    if ("1".equals(paramVarArgs[1])) {
-      return AnimationView.AnimationInfo.loadFromZip(paramVarArgs[0]);
-    }
-    return AnimationView.AnimationInfo.loadFromFolder(paramVarArgs[0]);
-  }
+  protected void onAddFriend(String paramString) {}
   
-  protected void a(AnimationView.AnimationInfo paramAnimationInfo)
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FrameAnimHelper", 2, "task over info = " + paramAnimationInfo);
+    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
+      this.a.j();
     }
-    this.a.a(paramAnimationInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agjg
  * JD-Core Version:    0.7.0.1
  */

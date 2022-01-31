@@ -1,45 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import com.tencent.gdtad.aditem.GdtPreLoader.1;
+import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
 import org.json.JSONObject;
 
 public class ysy
-  extends ysw
+  implements MiniAppPrePullManager.IPrePullListener
 {
-  public ysy(JSONObject paramJSONObject)
-  {
-    a(paramJSONObject);
-  }
+  public ysy(GdtPreLoader.1 param1) {}
   
-  public String a()
+  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    String str = super.a();
-    try
-    {
-      Object localObject = new JSONObject(str);
-      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patchUrl", this.b);
-      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigArtLM writeToJsonString", localJSONException);
-    }
-    return str;
-  }
-  
-  protected void a(JSONObject paramJSONObject)
-  {
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
+    yxs.b("GdtPreLoader", String.format("MiniAppPrePullManager.getInstance().prePullAppinfoByLink end:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ysy
  * JD-Core Version:    0.7.0.1
  */

@@ -137,13 +137,13 @@ public class PathTraceService
   public Notification a(Context paramContext, PendingIntent paramPendingIntent)
   {
     this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder = new NotificationCompat.Builder(paramContext);
-    this.jdField_a_of_type_AndroidWidgetRemoteViews = new RemoteViews(paramContext.getPackageName(), 2131493777);
+    this.jdField_a_of_type_AndroidWidgetRemoteViews = new RemoteViews(paramContext.getPackageName(), 2131559348);
     this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setContentIntent(paramPendingIntent);
     this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setContentTitle("QQ运动");
-    this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setSmallIcon(2130838173);
+    this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setSmallIcon(2130838180);
     try
     {
-      paramContext = BitmapFactory.decodeResource(getResources(), 2130838173);
+      paramContext = BitmapFactory.decodeResource(getResources(), 2130838180);
       if (paramContext != null) {
         this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setLargeIcon(paramContext);
       }

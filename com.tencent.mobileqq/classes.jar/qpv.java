@@ -1,65 +1,47 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView;
-import com.tencent.widget.ListView;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
 
 public class qpv
-  implements qsb
+  extends qpw
 {
-  public qpv(ReadInJoyDailyXListView paramReadInJoyDailyXListView) {}
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private int c;
+  private int d;
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public qpv(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView, Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext()) {
-      ((belq)localIterator.next()).a(paramInt, paramView, paramListView);
-    }
+    super(paramLikeExplosionView);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_c_of_type_Int = paramInt1;
+    this.jdField_d_of_type_Int = paramInt2;
   }
   
-  public void a(int paramInt1, View paramView, ListView paramListView, int paramInt2)
+  public qpv(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView, Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.a(paramInt1, paramView, paramListView, paramInt2);
+    super(paramLikeExplosionView);
+    double d1 = Math.toRadians(paramInt3);
+    this.e = ((float)Math.cos(d1));
+    this.f = ((float)Math.sin(d1));
+    a();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_c_of_type_Int = paramInt1;
+    this.jdField_d_of_type_Int = paramInt2;
   }
   
-  public void a(View paramView, ListView paramListView, int paramInt)
+  public void a(Canvas paramCanvas)
   {
-    this.a.a(paramView, paramListView, paramInt);
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.a.iterator();
-    boolean bool = false;
-    if (localIterator.hasNext())
-    {
-      if (!((belq)localIterator.next()).a(paramInt, paramView, paramListView)) {
-        break label57;
-      }
-      bool = true;
-    }
-    label57:
-    for (;;)
-    {
-      break;
-      return bool;
-    }
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext()) {
-      ((belq)localIterator.next()).b(paramInt, paramView, paramListView);
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext()) {
-      ((belq)localIterator.next()).c(paramInt, paramView, paramListView);
-    }
+    int i = (int)(this.jdField_c_of_type_Float - this.jdField_c_of_type_Int / 2);
+    int j = (int)(this.jdField_d_of_type_Float - this.jdField_c_of_type_Int / 2);
+    int k = this.jdField_c_of_type_Int;
+    int m = this.jdField_c_of_type_Int;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i, j, k + i, m + j);
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView).reset();
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView).setRotate(this.jdField_d_of_type_Int, VideoFeedsLikeAnimate.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a), VideoFeedsLikeAnimate.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a));
+    paramCanvas.setMatrix(VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
   }
 }
 

@@ -1,25 +1,70 @@
-import android.widget.RelativeLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeExposeReplyCommentView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
 public class okp
+  extends ViewBase
 {
-  public RelativeLayout a;
-  public URLImageView a;
-  public DragTextView a;
-  public DragTextView b;
+  private NativeExposeReplyCommentView a;
   
-  public okp(DragTextView paramDragTextView1, RelativeLayout paramRelativeLayout, URLImageView paramURLImageView, DragTextView paramDragTextView2)
+  public okp(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = paramDragTextView1;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_ComTencentImageURLImageView = paramURLImageView;
-    this.b = paramDragTextView2;
+    super(paramVafContext);
+    this.a = new NativeExposeReplyCommentView(paramVafContext.getContext());
+  }
+  
+  public void a(ogq paramogq)
+  {
+    this.a.setAdapter(paramogq);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return super.setAttribute(paramInt, paramObject);
+    } while ((!(paramObject instanceof oii)) || (((oii)paramObject).a == null));
+    this.a.a((oii)paramObject);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     okp
  * JD-Core Version:    0.7.0.1
  */

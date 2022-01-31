@@ -1,78 +1,145 @@
 import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
-import java.util.List;
+import android.util.Xml;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import java.util.HashMap;
+import org.xmlpull.v1.XmlPullParser;
 
 public class aljs
-  extends aljo
+  extends aljg
 {
-  private float a;
-  private float b = -1.0F;
-  private float c = -1.0F;
-  float[] d = new float[3];
-  private float[] e = new float[16];
+  private static final Object a;
+  public static boolean b;
   
-  public aljs(Context paramContext, int paramInt, SensorManager paramSensorManager, aljg paramaljg)
+  static
   {
-    super(paramContext, paramInt, paramSensorManager, paramaljg);
-    this.jdField_a_of_type_Float = -1.0F;
-    if (paramSensorManager.getDefaultSensor(3) != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager.getDefaultSensor(3));
-      return;
-    }
-    throw new OrientationProviderNotFound(String.valueOf(3));
+    jdField_a_of_type_JavaLangObject = new Object();
   }
   
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  public static byte a(String paramString)
   {
-    if (this.jdField_a_of_type_Aljg == null) {
-      return;
-    }
-    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
-    {
-      this.jdField_a_of_type_Float = paramFloat1;
-      this.jdField_a_of_type_Aljg.updateAzimuth(paramFloat1);
-    }
-    if (Math.abs(paramFloat2 - this.b) > 1.0F)
-    {
-      this.b = paramFloat2;
-      this.jdField_a_of_type_Aljg.updatePitch(paramFloat2);
-    }
-    if (Math.abs(paramFloat3 - this.c) > 1.0F)
-    {
-      this.c = paramFloat3;
-      this.jdField_a_of_type_Aljg.updateRoll(paramFloat3);
-    }
-    this.jdField_a_of_type_Aljg.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+    return aljg.a(0, paramString);
   }
   
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public static Object a()
   {
-    if (paramSensorEvent.sensor.getType() == 3)
+    return jdField_a_of_type_JavaLangObject;
+  }
+  
+  public static String a()
+  {
+    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localObject == null)
     {
-      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
-      if (this.jdField_a_of_type_Int != 1)
+      if (QLog.isColorLevel()) {
+        QLog.i("MiniRecog.MiniScanDecodeSoLoader", 2, "getFilesDir is null");
+      }
+      localObject = "";
+    }
+    String str;
+    do
+    {
+      return localObject;
+      str = localObject + "/pddata/prd/" + "qq.android.minidecode.so_v8.2.0";
+      localObject = str;
+    } while (!QLog.isColorLevel());
+    QLog.i("MiniRecog.MiniScanDecodeSoLoader", 2, "getLibDir ,path = " + str);
+    return str;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (jdField_a_of_type_Boolean) {
+      return "lib" + paramString + "_64" + ".so";
+    }
+    return "lib" + paramString + ".so";
+  }
+  
+  protected static void a(boolean paramBoolean)
+  {
+    b = paramBoolean;
+  }
+  
+  public static boolean a()
+  {
+    if (!aljg.a(0, b, "minicode"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MiniRecog.MiniScanDecodeSoLoader", 2, "native so is not exist!");
+      }
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    boolean bool = true;
+    XmlPullParser localXmlPullParser = Xml.newPullParser();
+    paramHashMap.clear();
+    for (;;)
+    {
+      try
       {
-        this.d[0] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[0]));
-        this.d[1] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[1]));
-        this.d[2] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[2]));
-        alji.a(alji.a(this.d), this.e);
-        super.a(this.e);
+        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+        i = localXmlPullParser.getEventType();
+      }
+      catch (Exception paramHashMap)
+      {
+        String str;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MiniRecog.MiniScanDecodeSoLoader", 2, paramString, paramHashMap);
+        bool = false;
+        return bool;
+      }
+      int i = localXmlPullParser.next();
+      break label165;
+      str = localXmlPullParser.getName();
+      if (str.equalsIgnoreCase("minicode")) {
+        paramHashMap.put("minicode", localXmlPullParser.nextText());
+      }
+      if (str.equalsIgnoreCase("minicode_64"))
+      {
+        paramHashMap.put("minicode_64", localXmlPullParser.nextText());
+        break label132;
+        ;;
+        label132:
+        if (QLog.isColorLevel())
+        {
+          QLog.d("MiniRecog.MiniScanDecodeSoLoader", 2, "parseConfig success|config=" + paramHashMap);
+          return true;
+          label165:
+          if (i != 1) {
+            switch (i)
+            {
+            }
+          }
+        }
       }
     }
-    else
-    {
-      return;
-    }
-    a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2]);
+  }
+  
+  public static byte b(String paramString)
+  {
+    return aljg.a(0, b, paramString);
+  }
+  
+  public static String b(String paramString)
+  {
+    return "lib" + paramString + ".so";
+  }
+  
+  public static String c(String paramString)
+  {
+    return aljg.a(0, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aljs
  * JD-Core Version:    0.7.0.1
  */

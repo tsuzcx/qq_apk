@@ -1,16 +1,22 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.music.SongInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface arze
-  extends IInterface
+class arze
+  implements View.OnClickListener
 {
-  public abstract void onPlaySongChanged(SongInfo paramSongInfo);
+  arze(arza paramarza, View.OnClickListener paramOnClickListener) {}
   
-  public abstract void onPlayStateChanged(int paramInt);
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
+    this.jdField_a_of_type_Arza.b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arze
  * JD-Core Version:    0.7.0.1
  */

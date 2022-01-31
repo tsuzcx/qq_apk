@@ -1,23 +1,27 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
 public class ahzu
-  extends ahyy
+  implements MediaPlayer.OnCompletionListener
 {
-  public View a;
-  public TextView a;
-  public boolean a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
-  public TextView d;
+  public ahzu(FixedSizeVideoView paramFixedSizeVideoView) {}
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    if (this.a.a != null)
+    {
+      if (FixedSizeVideoView.a(this.a) != null) {
+        FixedSizeVideoView.a(this.a).removeMessages(0);
+      }
+      this.a.a.a(paramMediaPlayer);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahzu
  * JD-Core Version:    0.7.0.1
  */

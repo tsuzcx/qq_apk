@@ -1,42 +1,62 @@
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
+import com.tencent.mobileqq.friends.intimate.CommonTroopListActivity;
+import java.util.List;
 
-class aqke
-  extends WtloginListener
+public class aqke
+  extends BaseAdapter
 {
-  aqke(aqkd paramaqkd, String paramString) {}
+  private List<IntimateInfo.CommonTroopInfo> jdField_a_of_type_JavaUtilList;
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  private aqke(CommonTroopListActivity paramCommonTroopListActivity) {}
+  
+  public IntimateInfo.CommonTroopInfo a(int paramInt)
   {
-    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
-    if (QLog.isColorLevel()) {
-      QLog.i("XProxy", 2, "获取Now结合版A1票据返回异常，cmd = " + paramInt + " errmsg = " + paramErrMsg.getMessage());
-    }
-    aqkd.a(this.jdField_a_of_type_Aqkd, this.jdField_a_of_type_JavaLangString, false, paramInt);
+    return (IntimateInfo.CommonTroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  public void a(List<IntimateInfo.CommonTroopInfo> paramList)
   {
-    if (paramInt2 == 0)
-    {
-      this.jdField_a_of_type_Aqkd.jdField_a_of_type_Aqkg.a = this.jdField_a_of_type_Aqkd.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
-      this.jdField_a_of_type_Aqkd.jdField_a_of_type_Long = System.currentTimeMillis();
-      aqkd.a(this.jdField_a_of_type_Aqkd, this.jdField_a_of_type_JavaLangString, true, 0);
-      return;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("XProxy", 2, "获取Now结合版A1票据返回失败，retCode = " + paramInt2);
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = LayoutInflater.from(CommonTroopListActivity.a(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity)).inflate(2131559148, null);
     }
-    aqkd.a(this.jdField_a_of_type_Aqkd, this.jdField_a_of_type_JavaLangString, false, paramInt2);
+    paramView = a(paramInt);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131364561);
+    TextView localTextView = (TextView)paramViewGroup.findViewById(2131364563);
+    localImageView.setImageDrawable(baxt.a(CommonTroopListActivity.a(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity), 4, paramView.troopCode));
+    localTextView.setText(paramView.troopName);
+    paramViewGroup.setTag(paramView);
+    paramViewGroup.setOnClickListener(CommonTroopListActivity.a(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity));
+    return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqke
  * JD-Core Version:    0.7.0.1
  */

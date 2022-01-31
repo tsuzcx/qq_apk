@@ -1,33 +1,50 @@
-import android.app.Application;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
-import com.tencent.mobileqq.widget.TabBarView2;
-import java.util.HashMap;
+import android.os.Handler;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.2;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.3;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.4;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.5;
+import java.util.List;
 
 public class apfr
-  implements bbom
+  extends awkc<awog, awwp>
 {
-  public apfr(QfileTabBarView paramQfileTabBarView) {}
+  public apfr(FileSelectorSearchFragment paramFileSelectorSearchFragment) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  protected awrb<awog, awwp> a(int paramInt)
   {
-    if (this.a.a(paramInt2) == null) {}
-    do
+    apfx localapfx = new apfx();
+    localapfx.a(new apfs(this));
+    return localapfx;
+  }
+  
+  protected awwq a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new apga(paramViewGroup);
+  }
+  
+  public void a(List<awog> paramList)
+  {
+    super.a(paramList);
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.setSelected(true);
-      this.a.b(paramInt2);
-    } while (!this.a.jdField_a_of_type_Boolean);
-    try
-    {
-      SharedPreferences.Editor localEditor = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
-      localEditor.putInt("last_select_tab_view", ((Integer)this.a.c.get(Integer.valueOf(paramInt2))).intValue());
-      localEditor.commit();
+      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.2(this));
       return;
     }
-    catch (Exception localException) {}
+    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.3(this));
+  }
+  
+  public void a(List<awog> paramList, boolean paramBoolean)
+  {
+    super.a(paramList, paramBoolean);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.4(this));
+      return;
+    }
+    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.5(this));
   }
 }
 

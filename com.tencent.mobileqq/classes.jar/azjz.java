@@ -1,62 +1,39 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xa48.oidb_0xa48.RspBody;
-import tencent.im.oidb.cmd0xa48.oidb_0xa48.SendItem;
-import tencent.im.oidb.cmd0xa48.oidb_0xa48.SendListRsp;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class azjz
-  extends mmm
+  implements wxw
 {
-  azjz(azjq paramazjq, azjp paramazjp) {}
+  azjz(azjy paramazjy, String paramString) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(Bundle paramBundle)
   {
-    int j = 0;
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "requestGiftMemberList. onResult error=" + paramInt + " data=" + paramArrayOfByte);
-      }
-      this.jdField_a_of_type_Azjp.a(paramInt, "");
-      return;
-    }
-    paramBundle = new oidb_0xa48.RspBody();
+    long l = paramBundle.getLong("lastMsgTime");
+    paramBundle = paramBundle.getString("lastMsgContent");
     try
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = new long[paramBundle.msg_send_list_rsp.rpt_today_birth.size()];
-      int i = 0;
-      while (i < paramArrayOfByte.length)
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("lastMsgTime", l);
+      localJSONObject.put("lastMsgContent", paramBundle);
+      if (!TextUtils.isEmpty(paramBundle))
       {
-        paramArrayOfByte[i] = ((oidb_0xa48.SendItem)paramBundle.msg_send_list_rsp.rpt_today_birth.get(i)).uint64_uin.get();
-        i += 1;
+        localJSONObject.put("ret", 0);
+        localJSONObject.put("errorMsg", "");
       }
-      long[] arrayOfLong1 = new long[paramBundle.msg_send_list_rsp.rpt_send_gift.size()];
-      i = 0;
-      while (i < arrayOfLong1.length)
+      for (;;)
       {
-        arrayOfLong1[i] = ((oidb_0xa48.SendItem)paramBundle.msg_send_list_rsp.rpt_send_gift.get(i)).uint64_uin.get();
-        i += 1;
+        this.jdField_a_of_type_Azjy.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+        localJSONObject.put("ret", -1);
+        localJSONObject.put("errorMsg", "lastSpeakMsg is empty");
       }
-      long[] arrayOfLong2 = new long[paramBundle.msg_send_list_rsp.rpt_recv_gift.size()];
-      i = j;
-      while (i < arrayOfLong2.length)
-      {
-        arrayOfLong2[i] = ((oidb_0xa48.SendItem)paramBundle.msg_send_list_rsp.rpt_recv_gift.get(i)).uint64_uin.get();
-        i += 1;
-      }
-      this.jdField_a_of_type_Azjp.a(paramArrayOfByte, arrayOfLong1, arrayOfLong2);
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    catch (JSONException paramBundle)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "requestGiftMemberList. error=" + QLog.getStackTraceString(paramArrayOfByte));
-      }
-      this.jdField_a_of_type_Azjp.a(paramInt, "InvalidProtocolBufferMicroException");
+      paramBundle.printStackTrace();
     }
   }
 }

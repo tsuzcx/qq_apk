@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aojd;
+import aozx;
 
 public final class FileVideoManager$11
   implements Runnable
@@ -9,7 +9,7 @@ public final class FileVideoManager$11
   
   public void run()
   {
-    aojd.b(this.a);
+    aozx.b(this.a);
   }
 }
 

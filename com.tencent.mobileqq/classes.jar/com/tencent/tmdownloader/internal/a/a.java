@@ -13,8 +13,8 @@ import com.tencent.tmassistant.common.jce.Response;
 import com.tencent.tmassistantbase.network.PostHttpRequest;
 import com.tencent.tmassistantbase.util.GlobalUtil;
 import com.tencent.tmassistantbase.util.Settings;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.t;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.s;
 import com.tencent.tmdownloader.f;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -88,12 +88,12 @@ public class a
       {
         if ((paramGetConfigResponse.settingList == null) || (paramGetConfigResponse.settingList.size() == 0))
         {
-          ac.c("GetConfigEngine", "<onRequestFinished> request failed!");
+          ab.c("GetConfigEngine", "<onRequestFinished> request failed!");
           return;
         }
         localObject1 = paramGetConfigResponse.settingList;
         i = ((ArrayList)localObject1).size();
-        ac.c("GetConfigEngine", "<onRequestFinished> response.settingList size = " + paramGetConfigResponse.settingList.size() + ",current process : " + t.e());
+        ab.c("GetConfigEngine", "<onRequestFinished> response.settingList size = " + paramGetConfigResponse.settingList.size() + ",current process : " + s.e());
         paramGetConfigResponse = ((ArrayList)localObject1).iterator();
         if (!paramGetConfigResponse.hasNext()) {
           break label717;
@@ -102,7 +102,7 @@ public class a
         if ((localObject1 == null) || (((ConfigItem)localObject1).configuration == null)) {
           continue;
         }
-        ac.c("GetConfigEngine", "<onRequestFinished> item.type = " + ((ConfigItem)localObject1).type);
+        ab.c("GetConfigEngine", "<onRequestFinished> item.type = " + ((ConfigItem)localObject1).type);
         switch (((ConfigItem)localObject1).type)
         {
         case 6: 
@@ -110,7 +110,7 @@ public class a
           if (localObject2 == null) {
             continue;
           }
-          ac.c("GetConfigEngine", "<onRequestFinished>  reportConfig.batchReportInterval = " + ((BatchReportConfig)localObject2).batchReportInterval + " reportConfig.batchReportMaxCount = " + ((BatchReportConfig)localObject2).batchReportMaxCount + " reportConfig.reportRetryCount = " + ((BatchReportConfig)localObject2).reportRetryCount);
+          ab.c("GetConfigEngine", "<onRequestFinished>  reportConfig.batchReportInterval = " + ((BatchReportConfig)localObject2).batchReportInterval + " reportConfig.batchReportMaxCount = " + ((BatchReportConfig)localObject2).batchReportMaxCount + " reportConfig.reportRetryCount = " + ((BatchReportConfig)localObject2).reportRetryCount);
           com.tencent.tmdownloader.internal.storage.b.a().a(((ConfigItem)localObject1).configuration);
           break;
         case 8: 
@@ -121,35 +121,35 @@ public class a
       continue;
       Object localObject2 = (BypassInterceptConfig)ProtocolPackage.bytes2JceObj(((ConfigItem)localObject1).configuration, BypassInterceptConfig.class);
       if (localObject2 != null) {
-        ac.c("GetConfigEngine", "<onRequestFinished>  status = " + ((BypassInterceptConfig)localObject2).status + " config.pkgList = " + ((BypassInterceptConfig)localObject2).pkgList);
+        ab.c("GetConfigEngine", "<onRequestFinished>  status = " + ((BypassInterceptConfig)localObject2).status + " config.pkgList = " + ((BypassInterceptConfig)localObject2).pkgList);
       }
       com.tencent.tmdownloader.internal.storage.b.a().a("key_bypass_config", ((ConfigItem)localObject1).configuration, BypassInterceptConfig.class);
       continue;
       localObject2 = (BoutiqueGameConfig)ProtocolPackage.bytes2JceObj(((ConfigItem)localObject1).configuration, BoutiqueGameConfig.class);
       if ((localObject2 != null) && (((BoutiqueGameConfig)localObject2).pkgList != null) && (((BoutiqueGameConfig)localObject2).pkgList.size() != 0))
       {
-        ac.c("nemo_bgg", "<onRequestFinished> CONFIG_RECOMMEND_GAMES  size = " + ((BoutiqueGameConfig)localObject2).pkgList.size() + "\ncontent=" + ((BoutiqueGameConfig)localObject2).pkgList);
+        ab.c("nemo_bgg", "<onRequestFinished> CONFIG_RECOMMEND_GAMES  size = " + ((BoutiqueGameConfig)localObject2).pkgList.size() + "\ncontent=" + ((BoutiqueGameConfig)localObject2).pkgList);
         com.tencent.tmdownloader.internal.storage.b.a().a("key_recommend_games_config", ((ConfigItem)localObject1).configuration, BoutiqueGameConfig.class);
         localObject1 = GlobalUtil.getCurrentDay();
         Settings.getInstance().setString("KEY_CRG_DATE", (String)localObject1);
-        ac.c("nemo_bgg", "save KEY_CRG_DATE:" + (String)localObject1);
+        ab.c("nemo_bgg", "save KEY_CRG_DATE:" + (String)localObject1);
       }
       else
       {
-        ac.e("nemo_bgg", "<onRequestFinished> CONFIG_RECOMMEND_GAMES error, boutiqueGameConfig is null!");
+        ab.e("nemo_bgg", "<onRequestFinished> CONFIG_RECOMMEND_GAMES error, boutiqueGameConfig is null!");
         continue;
         localObject2 = (NewQqCenterConfig)ProtocolPackage.bytes2JceObj(((ConfigItem)localObject1).configuration, NewQqCenterConfig.class);
         if (localObject2 != null)
         {
-          ac.c("GetConfigEngine", "get NewQqCenterConfig succ.\ndetailSwitch=" + ((NewQqCenterConfig)localObject2).detailSwitch + "\nentranceSwitch=" + ((NewQqCenterConfig)localObject2).entranceSwitch + "\nenterOldViaList=" + ((NewQqCenterConfig)localObject2).enterOldViaList + "\nmap=" + a(((NewQqCenterConfig)localObject2).appNewsUrlMap));
+          ab.c("GetConfigEngine", "get NewQqCenterConfig succ.\ndetailSwitch=" + ((NewQqCenterConfig)localObject2).detailSwitch + "\nentranceSwitch=" + ((NewQqCenterConfig)localObject2).entranceSwitch + "\nenterOldViaList=" + ((NewQqCenterConfig)localObject2).enterOldViaList + "\nmap=" + a(((NewQqCenterConfig)localObject2).appNewsUrlMap));
           com.tencent.tmdownloader.internal.storage.b.a().c(((ConfigItem)localObject1).configuration);
         }
         else
         {
-          ac.e("GetConfigEngine", "CONFIG_NEW_APP_CENTER Bad content!");
+          ab.e("GetConfigEngine", "CONFIG_NEW_APP_CENTER Bad content!");
           continue;
           localObject1 = (AppDataReportConfig)ProtocolPackage.bytes2JceObj(((ConfigItem)localObject1).configuration, AppDataReportConfig.class);
-          ac.e("GetConfigEngine", "config 12=" + localObject1);
+          ab.e("GetConfigEngine", "config 12=" + localObject1);
           if (localObject1 != null)
           {
             com.tencent.tmassistant.a.b.a().a((AppDataReportConfig)localObject1);
@@ -172,7 +172,7 @@ public class a
               Settings.getInstance().setString("KEY_GET_CFG_REQUEST_DAY", paramGetConfigResponse);
               Settings.getInstance().setString("KEY_GET_CFG_REQUEST_HOUR", (String)localObject1);
               Settings.getInstance().setInt("KEY_GET_CFG_SUCC_COUNT", i + 1);
-              ac.c("GetConfigEngine", "[onRequestFinished] day=" + paramGetConfigResponse + ",dayAndHour=" + (String)localObject1 + ",count=" + i);
+              ab.c("GetConfigEngine", "[onRequestFinished] day=" + paramGetConfigResponse + ",dayAndHour=" + (String)localObject1 + ",count=" + i);
             }
           }
         }
@@ -211,12 +211,12 @@ public class a
     //   48: astore_1
     //   49: ldc 124
     //   51: ldc_w 346
-    //   54: invokestatic 131	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   54: invokestatic 131	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   57: aload_0
     //   58: aload_1
     //   59: invokevirtual 350	com/tencent/tmdownloader/internal/a/a:sendRequest	([B)Z
     //   62: ifne +22 -> 84
-    //   65: invokestatic 355	com/tencent/tmassistantbase/util/l:a	()Landroid/os/Handler;
+    //   65: invokestatic 355	com/tencent/tmassistantbase/util/k:a	()Landroid/os/Handler;
     //   68: new 357	com/tencent/tmdownloader/internal/a/b
     //   71: dup
     //   72: aload_0
@@ -230,7 +230,7 @@ public class a
     //   86: return
     //   87: ldc 124
     //   89: ldc_w 370
-    //   92: invokestatic 131	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   92: invokestatic 131	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   95: goto -11 -> 84
     //   98: astore_1
     //   99: aload_0
@@ -252,7 +252,7 @@ public class a
   {
     long l = System.currentTimeMillis();
     if (l - this.f <= 2000L) {
-      ac.c("GetConfigEngine", "[memoryFrequencyControl] last call within 2s, give up this call.");
+      ab.c("GetConfigEngine", "[memoryFrequencyControl] last call within 2s, give up this call.");
     }
     do
     {
@@ -269,7 +269,7 @@ public class a
     String str3 = Settings.getInstance().getString("KEY_GET_CFG_REQUEST_DAY");
     if (TextUtils.equals(str2, Settings.getInstance().getString("KEY_GET_CFG_REQUEST_HOUR")))
     {
-      ac.c("GetConfigEngine", "hour not allowed:" + str2);
+      ab.c("GetConfigEngine", "hour not allowed:" + str2);
       return false;
     }
     int i = Settings.getInstance().getInt("KEY_GET_CFG_SUCC_COUNT");
@@ -280,7 +280,7 @@ public class a
     }
     if (i >= 10)
     {
-      ac.c("GetConfigEngine", "success count not allowed:" + i);
+      ab.c("GetConfigEngine", "success count not allowed:" + i);
       return false;
     }
     return true;
@@ -290,7 +290,7 @@ public class a
   {
     String str1 = GlobalUtil.getCurrentDay();
     String str2 = Settings.getInstance().getString("KEY_CRG_DATE");
-    ac.c("nemo_bgg", "<requestAllConfig> date = " + str1 + ", KEY_CRG_DATE = " + str2);
+    ab.c("nemo_bgg", "<requestAllConfig> date = " + str1 + ", KEY_CRG_DATE = " + str2);
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(c);
     if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
@@ -305,26 +305,26 @@ public class a
     {
       try
       {
-        if (!t.a())
+        if (!s.a())
         {
           f.a().b();
           return;
         }
         if (!e())
         {
-          ac.c("GetConfigEngine", "memoryFrequencyControl is false!");
+          ab.c("GetConfigEngine", "memoryFrequencyControl is false!");
           continue;
         }
-        ac.c("GetConfigEngine", "memoryFrequencyControl passed!");
+        ab.c("GetConfigEngine", "memoryFrequencyControl passed!");
       }
       finally {}
       if (!f())
       {
-        ac.c("GetConfigEngine", "persistenceFrequencyControl is false!");
+        ab.c("GetConfigEngine", "persistenceFrequencyControl is false!");
       }
       else
       {
-        ac.c("GetConfigEngine", "persistenceFrequencyControl passed!");
+        ab.c("GetConfigEngine", "persistenceFrequencyControl passed!");
         a(g());
       }
     }
@@ -337,7 +337,7 @@ public class a
       long l;
       try
       {
-        if (!t.a())
+        if (!s.a())
         {
           f.a().c();
           return;
@@ -345,7 +345,7 @@ public class a
         l = System.currentTimeMillis();
         if (l - this.g <= 2000L)
         {
-          ac.c("GetConfigEngine", "<requestShareUrl> last call within 2s, give up this call!!");
+          ab.c("GetConfigEngine", "<requestShareUrl> last call within 2s, give up this call!!");
           continue;
         }
         this.g = l;
@@ -354,7 +354,7 @@ public class a
       if (l - this.b >= 1800000L) {
         a(d);
       } else {
-        ac.c("GetConfigEngine", "<requestShareUrl> timeGap < REQUEST_TIME_GAP");
+        ab.c("GetConfigEngine", "<requestShareUrl> timeGap < REQUEST_TIME_GAP");
       }
     }
   }
@@ -365,7 +365,7 @@ public class a
     {
       try
       {
-        if (!t.a())
+        if (!s.a())
         {
           f.a().d();
           return;
@@ -373,7 +373,7 @@ public class a
         long l = System.currentTimeMillis();
         if (l - this.h <= 2000L)
         {
-          ac.c("GetConfigEngine", "<requestNewAppCenterConfig> last call within 2s, give up this call!!");
+          ab.c("GetConfigEngine", "<requestNewAppCenterConfig> last call within 2s, give up this call!!");
           continue;
         }
         this.h = l;
@@ -391,10 +391,10 @@ public class a
     {
       try
       {
-        ac.c("GetConfigEngine", "<onFinished> errorCode:" + paramInt);
+        ab.c("GetConfigEngine", "<onFinished> errorCode:" + paramInt);
         if ((paramArrayOfByte2 == null) || (paramInt != 0))
         {
-          ac.c("GetConfigEngine", "<onFinished> response is null || errorCode != TMAssistantDownloadErrorCode.DownloadSDKErrorCode_NONE, returned");
+          ab.c("GetConfigEngine", "<onFinished> response is null || errorCode != TMAssistantDownloadErrorCode.DownloadSDKErrorCode_NONE, returned");
           a(null, false);
           return;
         }
@@ -418,7 +418,7 @@ public class a
       continue;
       label124:
       a(null, false);
-      ac.c("GetConfigEngine", "<onFinished> null == jceResponse || jceResponse is not instanceof GetConfigResponse");
+      ab.c("GetConfigEngine", "<onFinished> null == jceResponse || jceResponse is not instanceof GetConfigResponse");
       continue;
       label141:
       a(null, false);

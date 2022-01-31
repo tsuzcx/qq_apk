@@ -1,41 +1,41 @@
 package com.tencent.mobileqq.ar.model;
 
-import aklr;
-import aklv;
-import akly;
-import akwv;
+import alad;
+import alah;
+import alak;
+import allh;
 import com.tencent.qphone.base.util.QLog;
 
 public class UniformGLRenderManagerImpl$2
   implements Runnable
 {
-  public UniformGLRenderManagerImpl$2(akwv paramakwv, aklr paramaklr, aklv paramaklv) {}
+  public UniformGLRenderManagerImpl$2(allh paramallh, alad paramalad, alah paramalah) {}
   
   public void run()
   {
-    aklr localaklr = this.jdField_a_of_type_Aklr;
-    akwv localakwv = this.this$0;
-    int i = akwv.jdField_a_of_type_Int;
-    localakwv = this.this$0;
-    localaklr.a(i, akwv.b);
-    localaklr = this.this$0.jdField_a_of_type_Aklr;
-    this.this$0.jdField_a_of_type_Aklr = this.jdField_a_of_type_Aklr;
+    alad localalad = this.jdField_a_of_type_Alad;
+    allh localallh = this.this$0;
+    int i = allh.jdField_a_of_type_Int;
+    localallh = this.this$0;
+    localalad.a(i, allh.b);
+    localalad = this.this$0.jdField_a_of_type_Alad;
+    this.this$0.jdField_a_of_type_Alad = this.jdField_a_of_type_Alad;
     if (QLog.isColorLevel()) {
       QLog.d("HSRender", 2, "onARStateChanged, queueEvent");
     }
-    if ((localaklr != null) && (localaklr != this.this$0.jdField_a_of_type_Aklr)) {
-      localaklr.f();
+    if ((localalad != null) && (localalad != this.this$0.jdField_a_of_type_Alad)) {
+      localalad.f();
     }
-    if (this.this$0.jdField_a_of_type_Aklr == null) {
+    if (this.this$0.jdField_a_of_type_Alad == null) {
       return;
     }
-    if ((this.jdField_a_of_type_Aklv.jdField_a_of_type_Int == 5) && ((this.jdField_a_of_type_Aklv.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_Aklv.jdField_a_of_type_Long == 2048L))) {}
+    if ((this.jdField_a_of_type_Alah.jdField_a_of_type_Int == 5) && ((this.jdField_a_of_type_Alah.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_Alah.jdField_a_of_type_Long == 2048L))) {}
     for (boolean bool = true;; bool = false)
     {
-      this.this$0.jdField_a_of_type_Akly.a();
-      this.this$0.jdField_a_of_type_Akly.a(bool, this.jdField_a_of_type_Aklv);
-      this.this$0.jdField_a_of_type_Aklr.c();
-      this.this$0.jdField_a_of_type_Aklr.d();
+      this.this$0.jdField_a_of_type_Alak.a();
+      this.this$0.jdField_a_of_type_Alak.a(bool, this.jdField_a_of_type_Alah);
+      this.this$0.jdField_a_of_type_Alad.c();
+      this.this$0.jdField_a_of_type_Alad.d();
       return;
     }
   }

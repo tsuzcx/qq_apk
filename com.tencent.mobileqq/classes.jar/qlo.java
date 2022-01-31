@@ -1,10 +1,36 @@
-abstract interface qlo
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnExtractFrameListener;
+import java.util.HashMap;
+
+class qlo
+  implements TVK_IMediaPlayer.OnExtractFrameListener
 {
-  public abstract void a();
+  qlo(qlj paramqlj) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public void onExtractFrame(int paramInt, Bitmap paramBitmap)
+  {
+    qlq localqlq = (qlq)qlj.a(this.a).get(Integer.valueOf(paramInt));
+    if (localqlq != null) {}
+    try
+    {
+      localqlq.jdField_b_of_type_Long = qle.a(paramBitmap, true);
+      localqlq.jdField_b_of_type_Int = qle.a(localqlq.a, localqlq.jdField_b_of_type_Long);
+      if (QLog.isColorLevel()) {
+        QLog.d(qlj.a(), 2, "onExtractFrame frameIndex = " + paramInt + ", localHash = " + localqlq.jdField_b_of_type_Long + ", hashDiff = " + localqlq.jdField_b_of_type_Int);
+      }
+      return;
+    }
+    catch (Throwable paramBitmap)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(qlj.a(), 2, "VideoExtractFrameHash.dctImageHash ERROR e = " + paramBitmap.getMessage());
+        }
+      }
+    }
+  }
 }
 
 

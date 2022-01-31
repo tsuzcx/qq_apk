@@ -1,72 +1,60 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.40.1;
-import com.tencent.mobileqq.activity.Conversation.40.2;
-import com.tencent.mobileqq.activity.Conversation.40.3;
-import com.tencent.mobileqq.activity.Conversation.40.4;
-import com.tencent.mobileqq.activity.Conversation.40.5;
-import com.tencent.mobileqq.activity.Conversation.40.6;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 public class aand
-  extends ldc
+  extends ajvq
 {
-  public aand(Conversation paramConversation) {}
+  public aand(BaseChatPie paramBaseChatPie) {}
   
-  protected void a(int paramInt, long paramLong)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramInt = mjg.c(paramInt);
-    this.a.a(8, Long.toString(paramLong), paramInt);
-  }
-  
-  protected void a(int paramInt, long paramLong1, long paramLong2)
-  {
-    paramInt = mjg.c(paramInt);
-    this.a.a(8, Long.toString(paramLong1), paramInt);
-    this.a.b(paramLong1);
-    this.a.a(new Conversation.40.1(this, paramLong1));
-  }
-  
-  protected void a(int paramInt, String paramString1, String paramString2)
-  {
-    this.a.a(8, paramString1, paramInt);
-    this.a.a(new Conversation.40.4(this));
-  }
-  
-  protected void a(String paramString)
-  {
-    super.a(paramString);
-    this.a.a(new Conversation.40.6(this));
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    super.a(paramString1, paramString2);
-    if (!this.a.f) {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((BaseChatPie.a(this.a) == null) || (paramObject == null) || (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx == null));
+      localObject = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
+      paramObject = (EmoticonResp)paramObject;
+      BaseChatPie.a(this.a).a(paramBoolean, paramInt, paramObject, (String)localObject);
       return;
+      if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
+        this.a.jdField_a_of_type_Bcpq.dismiss();
+      }
+    } while (paramObject == null);
+    Object localObject = (EmoticonResp)paramObject;
+    int i;
+    if (paramBoolean)
+    {
+      i = ((EmoticonResp)localObject).delEpId;
+      if ((((EmoticonResp)localObject).keySeq == null) || (((EmoticonResp)localObject).keySeq.equals(""))) {
+        paramObject = ajyc.a(2131700976);
+      }
     }
-    this.a.a(new Conversation.40.5(this));
-  }
-  
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  protected void b(int paramInt, long paramLong)
-  {
-    paramInt = mjg.c(paramInt);
-    this.a.a(8, Long.toString(paramLong), paramInt);
-  }
-  
-  protected void b(int paramInt, long paramLong1, long paramLong2)
-  {
-    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
-      this.a.a(new Conversation.40.2(this, paramLong1));
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(((EmoticonResp)localObject).emoticonId)) {
+        break label240;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "auth type emoticon id is null");
+      return;
+      paramObject = ((EmoticonResp)localObject).keySeq;
+      continue;
+      paramObject = ajyc.a(2131700961);
+      i = -404;
     }
-  }
-  
-  protected void c(int paramInt, long paramLong1, long paramLong2)
-  {
-    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
-      this.a.a(new Conversation.40.3(this, paramLong1));
-    }
+    label240:
+    ((askd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(String.valueOf(((EmoticonResp)localObject).epId), ((EmoticonResp)localObject).emoticonId, new aane(this, paramInt, i, paramObject));
   }
 }
 

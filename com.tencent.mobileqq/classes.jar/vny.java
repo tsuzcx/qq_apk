@@ -1,31 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.Arrays;
+import java.util.List;
 
-final class vny
-  extends vnh
+public class vny
+  implements vlm
 {
-  vny(vnh paramvnh) {}
+  @NonNull
+  private final vlj[] a;
   
-  public void onFailure(String paramString)
+  public vny(vlj... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
+    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+      throw new IllegalArgumentException("layers should not be null or empty");
     }
-    this.a.onFailure(paramString);
-    urp.a("music_composite", "music_clip", 0, 1, new String[0]);
+    this.a = paramVarArgs;
   }
   
-  public void onStart()
+  public void a(List<vlj> paramList, DoodleView paramDoodleView)
   {
-    super.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    paramString = String.valueOf(System.currentTimeMillis() - this.b);
-    urp.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
-    if (QLog.isColorLevel()) {
-      QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "音乐截取成功耗时：" + paramString);
-    }
+    paramList.addAll(Arrays.asList(this.a));
   }
 }
 

@@ -1,23 +1,54 @@
-import android.text.TextUtils;
-import android.webkit.ValueCallback;
-import com.tencent.tissue.v8rt.engine.SpeedUtil;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
 
-class bduo
-  implements ValueCallback
+public final class bduo
+  implements Parcelable.Creator<QidianProfileCardActivity.QidianSimpleProfileItem>
 {
-  bduo(bdun parambdun) {}
-  
-  public void onReceiveValue(Object paramObject)
+  public QidianProfileCardActivity.QidianSimpleProfileItem a(Parcel paramParcel)
   {
-    if ((!TextUtils.isEmpty(bdun.a(this.a))) && (bdun.a(this.a).contains("QLogic.js"))) {
-      SpeedUtil.DEFAULT.event("runQLogicJs finish " + this.a.a);
+    boolean bool2 = true;
+    QidianProfileCardActivity.QidianSimpleProfileItem localQidianSimpleProfileItem = new QidianProfileCardActivity.QidianSimpleProfileItem();
+    localQidianSimpleProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQidianSimpleProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localQidianSimpleProfileItem.jdField_a_of_type_Boolean = bool1;
+      localQidianSimpleProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
+      localQidianSimpleProfileItem.jdField_b_of_type_Int = paramParcel.readInt();
+      localQidianSimpleProfileItem.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      if (paramParcel.readByte() == 0) {
+        break label109;
+      }
+      bool1 = true;
+      label80:
+      localQidianSimpleProfileItem.jdField_b_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label114;
+      }
     }
-    this.a.a.a(bdum.a);
+    label109:
+    label114:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localQidianSimpleProfileItem.jdField_c_of_type_Boolean = bool1;
+      return localQidianSimpleProfileItem;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label80;
+    }
+  }
+  
+  public QidianProfileCardActivity.QidianSimpleProfileItem[] a(int paramInt)
+  {
+    return new QidianProfileCardActivity.QidianSimpleProfileItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bduo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,369 +1,334 @@
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.text.format.Time;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.tencent.biz.subscribe.SubscribeUtils.1;
+import com.tencent.biz.subscribe.SubscribeUtils.2;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import java.io.File;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.AppRuntime;
 
-@SuppressLint({"InlinedApi"})
 public class wiw
-  extends WebViewPlugin
-  implements wiu
 {
-  protected String a;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  wis jdField_a_of_type_Wis = null;
-  wju jdField_a_of_type_Wju = null;
-  
-  public wiw()
+  public static Bitmap a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bitmap.Config paramConfig)
   {
-    this.mPluginNameSpace = "TroopMemberApiPlugin";
-  }
-  
-  private void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          Object localObject = new JSONObject(paramString);
-          paramString = ((JSONObject)localObject).optString("gcode");
-          localObject = ((JSONObject)localObject).optString("id");
-          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramString)))
-          {
-            this.jdField_a_of_type_Wis.b(paramString, (String)localObject);
-            return;
-          }
-        }
-        catch (JSONException paramString)
-        {
-          paramString.printStackTrace();
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(this.TAG, 2, "anonymousReport exception" + paramString.getMessage());
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-    {
-      this.jdField_a_of_type_Wis = wis.a();
-      this.jdField_a_of_type_Wis.a();
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {}
-    String str;
-    do
-    {
-      return;
-      if ("changeAnonymousNick".equals(paramBundle.getString("method")))
-      {
-        boolean bool = paramBundle.getBoolean("result");
-        callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{result : " + bool + "}" });
-        return;
-      }
-      str = paramBundle.getString("callback");
-    } while (TextUtils.isEmpty(str));
-    callJs(str, new String[] { paramBundle.getString("data") });
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ("anonymousReport".equals(paramString3))
-    {
-      a(paramVarArgs[0]);
-      return true;
-    }
-    int i;
-    if ("anonymousNickChanged".equals(paramString3)) {
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        paramString1 = paramJsBridgeListener.optString("troopUin");
-        long l = paramJsBridgeListener.optLong("bubbleId");
-        i = paramJsBridgeListener.optInt("headId");
-        paramString2 = paramJsBridgeListener.optString("nickName");
-        int j = paramJsBridgeListener.optInt("expireTime");
-        paramString3 = paramJsBridgeListener.optString("rankColor");
-        this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
-        if (QLog.isColorLevel()) {
-          QLog.d(this.TAG, 2, "TroopMemberApiPlugin, anonymousNickChanged, json : " + paramJsBridgeListener);
-        }
-        this.jdField_a_of_type_Wis.a(paramString1, l, i, paramString2, j, paramString3, this);
-        return true;
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.TAG, 2, "TroopMemberApiPlugin, anonymousNickChanged, JSONException :" + paramJsBridgeListener);
-        }
-      }
+    if ((TextUtils.isEmpty(paramString)) || (paramInt1 < 0)) {
+      return null;
     }
     for (;;)
     {
-      return false;
-      if ("getUploadInfo".equals(paramString3)) {
-        try
-        {
-          callJs(new JSONObject(paramVarArgs[0]).optString("callback"), new String[] { "{stateus:0}" });
-          return true;
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          for (;;)
-          {
-            paramJsBridgeListener.printStackTrace();
-          }
-        }
-      }
-      if ("cleanDynamicRedPoint".equals(paramString3)) {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-          this.jdField_a_of_type_Wis.c(paramJsBridgeListener, this);
-          return true;
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          for (;;)
-          {
-            paramJsBridgeListener.printStackTrace();
-          }
-        }
-      }
-      Object localObject1;
-      Object localObject2;
-      if (("selectedTribe".endsWith(paramString3)) && (paramVarArgs.length == 1))
+      int k;
+      int i;
+      try
       {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-          paramVarArgs = this.mRuntime.a();
-          paramString3 = paramJsBridgeListener.optString("name");
-          paramString2 = paramJsBridgeListener.optString("bid");
-          localObject1 = paramJsBridgeListener.optJSONObject("condition");
-          paramString1 = paramJsBridgeListener.optString("tribeList");
-          localObject2 = new Intent();
-          paramJsBridgeListener = paramString3;
-          if (TextUtils.isEmpty(paramString3)) {
-            paramJsBridgeListener = "";
-          }
-          ((Intent)localObject2).putExtra("tribeName", paramJsBridgeListener);
-          paramJsBridgeListener = paramString2;
-          if (TextUtils.isEmpty(paramString2)) {
-            paramJsBridgeListener = "";
-          }
-          ((Intent)localObject2).putExtra("bid", paramJsBridgeListener);
-          paramJsBridgeListener = paramString1;
-          if (TextUtils.isEmpty(paramString1)) {
-            paramJsBridgeListener = "";
-          }
-          ((Intent)localObject2).putExtra("tribeList", paramJsBridgeListener);
-          i = ((JSONObject)localObject1).optInt("optionType", -1);
-          if (i != -1) {
-            ((Intent)localObject2).putExtra("optionType", i);
-          }
-          paramVarArgs.setResult(-1, (Intent)localObject2);
-          paramVarArgs.finish();
+        localObject = new HashMap();
+        ((Map)localObject).put(EncodeHintType.CHARACTER_SET, "UTF-8");
+        ((Map)localObject).put(EncodeHintType.MARGIN, Integer.valueOf(2));
+        ((Map)localObject).put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
+        paramString = new in().a(paramString, paramInt1, paramInt1, (Map)localObject);
+        if (paramString == null) {
+          break;
         }
-        catch (JSONException paramJsBridgeListener) {}
-        if (QLog.isColorLevel()) {
-          QLog.e(this.TAG, 2, "JSONException:" + paramJsBridgeListener.toString());
-        }
+        j = paramString.a();
+        k = paramString.b();
+        localObject = new int[j * k];
+        paramInt1 = 0;
       }
-      else if ("getTroopBarPublishInfo".equals(paramString3))
+      catch (OutOfMemoryError paramString)
       {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-          if (this.jdField_a_of_type_Wis == null)
-          {
-            this.jdField_a_of_type_Wis = wis.a();
-            this.jdField_a_of_type_Wis.a();
-          }
-          this.jdField_a_of_type_Wis.a(new wix(this, paramJsBridgeListener));
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          paramJsBridgeListener.printStackTrace();
+        Object localObject;
+        int j;
+        QLog.e("SubscribeUtils", 4, "oom when create qr bitmap", paramString);
+        return null;
+        paramInt1 += 1;
+        break label195;
+        paramString = Bitmap.createBitmap((int[])localObject, j, k, paramConfig);
+        return paramString;
+      }
+      catch (WriterException paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+      if (i < j)
+      {
+        if (paramString.a(i, paramInt1)) {
+          localObject[(paramInt1 * j + i)] = paramInt2;
+        } else {
+          localObject[(paramInt1 * j + i)] = paramInt3;
         }
       }
       else
       {
-        if (("createVideoAndSend".equals(paramString3)) || ("prepareVideoResources".equals(paramString3))) {
-          try
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i(this.TAG, 2, paramString3 + "json:" + paramVarArgs[0]);
-            }
-            paramVarArgs = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramVarArgs.optString("troopUin");
-            paramString2 = paramVarArgs.optString("wording");
-            localObject1 = paramVarArgs.optString("bgMusic");
-            i = paramVarArgs.optInt("tailType");
-            paramJsBridgeListener = paramVarArgs.optString("callback");
-            paramVarArgs = paramVarArgs.optJSONArray("videos");
-            if ((("createVideoAndSend".equals(paramString3)) && (TextUtils.isEmpty(paramString1))) || (TextUtils.isEmpty(paramString2)) || (paramVarArgs == null) || (paramVarArgs.length() == 0))
-            {
-              paramString3 = new JSONObject();
-              paramString3.put("retCode", 1);
-              paramString3.put("errorMsg", "params error: troopUin = " + paramString1 + " wroding = " + paramString2 + " array = " + paramVarArgs);
-              callJs(paramJsBridgeListener, new String[] { paramString3.toString() });
-              return true;
-            }
-            if (this.jdField_a_of_type_Wju == null) {
-              this.jdField_a_of_type_Wju = new wju((BaseActivity)this.mRuntime.a());
-            }
-            localObject2 = this.jdField_a_of_type_Wju;
-            localObject2.getClass();
-            localObject2 = new wke((wju)localObject2);
-            ((wke)localObject2).jdField_a_of_type_JavaLangString = paramString1;
-            ((wke)localObject2).b = ((String)localObject1);
-            ((wke)localObject2).c = paramString2;
-            ((wke)localObject2).jdField_a_of_type_Int = i;
-            i = 0;
-            while (i < paramVarArgs.length())
-            {
-              paramString1 = paramVarArgs.getString(i);
-              ((wke)localObject2).jdField_a_of_type_JavaUtilArrayList.add(paramString1);
-              i += 1;
-            }
-            if ("createVideoAndSend".equals(paramString3)) {
-              this.jdField_a_of_type_Wju.a((wke)localObject2, new wiy(this, paramJsBridgeListener));
-            } else {
-              this.jdField_a_of_type_Wju.a((wke)localObject2, new wiz(this, paramJsBridgeListener));
-            }
-          }
-          catch (Exception paramJsBridgeListener)
-          {
-            QLog.e(this.TAG, 1, "invoke createVideoAndSend failed", paramJsBridgeListener);
-          }
-        }
-        if ("checkVideoLib".equals(paramString3))
-        {
-          try
-          {
-            paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-            paramString1 = new JSONObject();
-            if (!VideoEnvironment.e(this.mRuntime.a())) {
-              break label1112;
-            }
-            paramString1.put("retCode", 0);
-            callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-          }
-          catch (Exception paramJsBridgeListener)
-          {
-            paramJsBridgeListener.printStackTrace();
-          }
+        label195:
+        if (paramInt1 >= k) {
           continue;
-          label1112:
-          paramString1.put("retCode", -1);
-          callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-          if (this.jdField_a_of_type_Wis == null)
-          {
-            this.jdField_a_of_type_Wis = wis.a();
-            this.jdField_a_of_type_Wis.a();
-          }
-          this.jdField_a_of_type_Wis.d();
         }
-        else if (("setTribePublishTopic".equals(paramString3)) && (paramVarArgs.length == 1))
-        {
-          try
-          {
-            paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-            paramString2 = paramJsBridgeListener.optString("callback");
-            paramString3 = new JSONObject();
-            paramVarArgs = this.mRuntime.a();
-            i = paramJsBridgeListener.optInt("theme_id", -1);
-            paramString1 = paramJsBridgeListener.optString("theme_name");
-            localObject1 = new Intent();
-            if ((i == -1) || (paramString1 != null)) {
-              break label1384;
-            }
-            paramVarArgs.setResult(0, (Intent)localObject1);
-            paramString3.put("retCode", -1);
-            if (QLog.isColorLevel()) {
-              QLog.d(this.TAG, 2, "setTribePublishTopic JSAPI mThemeID = " + i + " mThemeName = " + paramString1);
-            }
-            callJs(paramString2, new String[] { paramString3.toString() });
-          }
-          catch (JSONException paramJsBridgeListener) {}
-          if (QLog.isColorLevel())
-          {
-            QLog.e(this.TAG, 2, "selectedTheme JSONException:" + paramJsBridgeListener.toString());
-            continue;
-            label1384:
-            ((Intent)localObject1).putExtra("theme_id", i);
-            if (TextUtils.isEmpty(paramString1)) {}
-            for (paramJsBridgeListener = "";; paramJsBridgeListener = paramString1)
-            {
-              ((Intent)localObject1).putExtra("theme_name", paramJsBridgeListener);
-              paramVarArgs.setResult(-1, (Intent)localObject1);
-              paramString3.put("retCode", 0);
-              break;
-            }
-          }
-        }
-        else if (("enableShortVideoPublish".equals(paramString3)) && (paramVarArgs.length == 1))
-        {
-          try
-          {
-            paramJsBridgeListener = new JSONObject();
-            paramJsBridgeListener.put("enableShortVideoPublish", autt.a());
-            if (QLog.isColorLevel()) {
-              QLog.d(this.TAG, 2, "retJson=" + paramJsBridgeListener);
-            }
-            callJs(new JSONObject(paramVarArgs[0]).optString("callback"), new String[] { paramJsBridgeListener.toString() });
-          }
-          catch (Exception paramJsBridgeListener) {}
-          if (QLog.isColorLevel()) {
-            QLog.e(this.TAG, 2, "enableShortVideoPublish exp:" + paramJsBridgeListener.toString());
-          }
-        }
+        i = 0;
+        continue;
+      }
+      i += 1;
+    }
+  }
+  
+  public static String a()
+  {
+    return wip.c("certified_account_download_pics");
+  }
+  
+  public static String a(int paramInt)
+  {
+    DecimalFormat localDecimalFormat;
+    if (paramInt >= 10000)
+    {
+      localDecimalFormat = new DecimalFormat(".#");
+      return localDecimalFormat.format(paramInt / 10000.0D) + "w";
+    }
+    if (paramInt >= 1000)
+    {
+      localDecimalFormat = new DecimalFormat(".#");
+      return localDecimalFormat.format(paramInt / 1000.0D) + "k";
+    }
+    return String.valueOf(paramInt);
+  }
+  
+  public static String a(long paramLong)
+  {
+    Object localObject2 = new SimpleDateFormat("yyyy年MM月dd日");
+    if (paramLong == 0L) {}
+    Time localTime;
+    int i;
+    for (Object localObject1 = new Date();; localObject1 = new Date(paramLong))
+    {
+      localObject2 = ((SimpleDateFormat)localObject2).format((Date)localObject1);
+      localObject1 = new Time();
+      ((Time)localObject1).set(paramLong);
+      paramLong = System.currentTimeMillis();
+      localTime = new Time();
+      localTime.set(paramLong);
+      i = localTime.yearDay;
+      if ((((Time)localObject1).year == localTime.year) && (localTime.yearDay >= ((Time)localObject1).yearDay)) {
+        break;
+      }
+      return localObject2;
+    }
+    if (localTime.yearDay == ((Time)localObject1).yearDay)
+    {
+      localObject2 = new StringBuilder().append(((Time)localObject1).hour).append(":");
+      if (((Time)localObject1).minute < 10) {}
+      for (localObject1 = "0" + ((Time)localObject1).minute;; localObject1 = Integer.valueOf(((Time)localObject1).minute)) {
+        return localObject1;
       }
     }
-    return true;
+    if (((Time)localObject1).yearDay == i - 1) {
+      return BaseApplicationImpl.getApplication().getString(2131720919);
+    }
+    return ((Time)localObject1).month + 1 + BaseApplicationImpl.getApplication().getString(2131694301) + ((Time)localObject1).monthDay + BaseApplicationImpl.getApplication().getString(2131691459);
   }
   
-  public void onCreate()
+  /* Error */
+  public static String a(Bitmap paramBitmap)
   {
-    AppInterface localAppInterface = this.mRuntime.a();
-    Activity localActivity = this.mRuntime.a();
-    if ((localAppInterface == null) || (localActivity == null)) {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore_1
+    //   4: aload_0
+    //   5: ifnull +128 -> 133
+    //   8: new 209	java/io/ByteArrayOutputStream
+    //   11: dup
+    //   12: sipush 1024
+    //   15: invokespecial 212	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   18: astore_2
+    //   19: aload_2
+    //   20: astore_1
+    //   21: aload_0
+    //   22: getstatic 218	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   25: bipush 100
+    //   27: aload_2
+    //   28: invokevirtual 222	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   31: pop
+    //   32: aload_2
+    //   33: astore_1
+    //   34: aload_2
+    //   35: invokevirtual 226	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   38: iconst_2
+    //   39: invokestatic 232	bbca:encodeToString	([BI)Ljava/lang/String;
+    //   42: astore_0
+    //   43: aload_0
+    //   44: astore_1
+    //   45: aload_2
+    //   46: ifnull +13 -> 59
+    //   49: aload_2
+    //   50: invokevirtual 235	java/io/ByteArrayOutputStream:flush	()V
+    //   53: aload_2
+    //   54: invokevirtual 238	java/io/ByteArrayOutputStream:close	()V
+    //   57: aload_0
+    //   58: astore_1
+    //   59: aload_1
+    //   60: areturn
+    //   61: astore_1
+    //   62: aload_1
+    //   63: invokevirtual 239	java/io/IOException:printStackTrace	()V
+    //   66: aload_0
+    //   67: areturn
+    //   68: astore_0
+    //   69: aconst_null
+    //   70: astore_2
+    //   71: aload_2
+    //   72: astore_1
+    //   73: aload_0
+    //   74: invokevirtual 240	java/lang/Exception:printStackTrace	()V
+    //   77: aload_3
+    //   78: astore_1
+    //   79: aload_2
+    //   80: ifnull -21 -> 59
+    //   83: aload_2
+    //   84: invokevirtual 235	java/io/ByteArrayOutputStream:flush	()V
+    //   87: aload_2
+    //   88: invokevirtual 238	java/io/ByteArrayOutputStream:close	()V
+    //   91: aconst_null
+    //   92: areturn
+    //   93: astore_0
+    //   94: aload_0
+    //   95: invokevirtual 239	java/io/IOException:printStackTrace	()V
+    //   98: aconst_null
+    //   99: areturn
+    //   100: astore_0
+    //   101: aconst_null
+    //   102: astore_1
+    //   103: aload_1
+    //   104: ifnull +11 -> 115
+    //   107: aload_1
+    //   108: invokevirtual 235	java/io/ByteArrayOutputStream:flush	()V
+    //   111: aload_1
+    //   112: invokevirtual 238	java/io/ByteArrayOutputStream:close	()V
+    //   115: aload_0
+    //   116: athrow
+    //   117: astore_1
+    //   118: aload_1
+    //   119: invokevirtual 239	java/io/IOException:printStackTrace	()V
+    //   122: goto -7 -> 115
+    //   125: astore_0
+    //   126: goto -23 -> 103
+    //   129: astore_0
+    //   130: goto -59 -> 71
+    //   133: aconst_null
+    //   134: astore_2
+    //   135: aload_1
+    //   136: astore_0
+    //   137: goto -94 -> 43
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	140	0	paramBitmap	Bitmap
+    //   3	57	1	localObject1	Object
+    //   61	2	1	localIOException1	java.io.IOException
+    //   72	40	1	localObject2	Object
+    //   117	19	1	localIOException2	java.io.IOException
+    //   18	117	2	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   1	77	3	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   49	57	61	java/io/IOException
+    //   8	19	68	java/lang/Exception
+    //   83	91	93	java/io/IOException
+    //   8	19	100	finally
+    //   107	115	117	java/io/IOException
+    //   21	32	125	finally
+    //   34	43	125	finally
+    //   73	77	125	finally
+    //   21	32	129	java/lang/Exception
+    //   34	43	129	java/lang/Exception
+  }
+  
+  public static void a(File paramFile, String paramString)
+  {
+    a(paramFile, paramString, wip.a);
+  }
+  
+  public static void a(File paramFile, String paramString1, String paramString2)
+  {
+    try
+    {
+      ThreadManagerV2.executeOnFileThread(new SubscribeUtils.1(paramString2, new File(paramFile.getPath() + ".zip"), paramString1));
       return;
     }
-    a();
+    catch (Exception paramFile)
+    {
+      paramFile.printStackTrace();
+    }
   }
   
-  public void onDestroy()
+  public static void a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      this.jdField_a_of_type_Wis.b();
+    QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").postDelayed(new SubscribeUtils.2(paramString), 0L);
+  }
+  
+  public static boolean a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return ThemeUtil.isInNightMode((QQAppInterface)localAppRuntime);
     }
-    this.jdField_a_of_type_Wju = null;
+    return false;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 2) || (paramInt == 1);
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    return a(paramLong, 1);
+  }
+  
+  public static boolean a(long paramLong, int paramInt)
+  {
+    return (1 << paramInt & paramLong) > 0L;
+  }
+  
+  public static boolean a(CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    return paramStFeed.poster.followState.get() == 1;
+  }
+  
+  public static boolean b(long paramLong)
+  {
+    return a(paramLong, 4);
+  }
+  
+  public static boolean c(long paramLong)
+  {
+    return (a(paramLong)) && (b(paramLong));
+  }
+  
+  public static boolean d(long paramLong)
+  {
+    return a(paramLong, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wiw
  * JD-Core Version:    0.7.0.1
  */

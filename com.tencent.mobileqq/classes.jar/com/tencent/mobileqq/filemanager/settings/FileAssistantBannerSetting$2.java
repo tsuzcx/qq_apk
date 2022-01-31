@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.settings;
 
-import amlc;
+import anbg;
 import android.text.TextUtils;
-import apbv;
-import apbw;
-import apck;
-import axro;
-import axrr;
-import axsp;
-import axsr;
-import badq;
+import aptp;
+import aptq;
+import apue;
+import ayrv;
+import ayry;
+import aysw;
+import aysy;
+import bbev;
 import com.tencent.commonsdk.util.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ import java.io.File;
 public class FileAssistantBannerSetting$2
   implements Runnable
 {
-  public FileAssistantBannerSetting$2(apbv paramapbv, amlc paramamlc) {}
+  public FileAssistantBannerSetting$2(aptp paramaptp, anbg paramanbg) {}
   
   public void run()
   {
@@ -30,7 +30,7 @@ public class FileAssistantBannerSetting$2
       do
       {
         return;
-        localObject = HexUtil.bytes2HexStr(apck.d(this.a.e()));
+        localObject = HexUtil.bytes2HexStr(apue.d(this.a.e()));
         if ((localObject == null) || (!((String)localObject).equalsIgnoreCase(this.a.a()))) {
           break;
         }
@@ -38,13 +38,13 @@ public class FileAssistantBannerSetting$2
       QLog.i("FileAssistantBannerSetting", 1, "server pic md5 == localMd5 return!");
       return;
       new File(this.a.e()).delete();
-      Object localObject = new axro();
-      ((axro)localObject).jdField_a_of_type_Axrt = new apbw(this);
-      ((axro)localObject).jdField_a_of_type_JavaLangString = this.a.b();
-      ((axro)localObject).jdField_a_of_type_Int = 0;
-      ((axro)localObject).jdField_c_of_type_JavaLangString = this.a.e();
-      ((axro)localObject).jdField_c_of_type_Int = badq.a(axsr.a().a());
-      apbv.a(this.this$0).getNetEngine(0).a((axsp)localObject);
+      Object localObject = new ayrv();
+      ((ayrv)localObject).jdField_a_of_type_Aysa = new aptq(this);
+      ((ayrv)localObject).jdField_a_of_type_JavaLangString = this.a.b();
+      ((ayrv)localObject).jdField_a_of_type_Int = 0;
+      ((ayrv)localObject).jdField_c_of_type_JavaLangString = this.a.e();
+      ((ayrv)localObject).jdField_c_of_type_Int = bbev.a(aysy.a().a());
+      aptp.a(this.this$0).getNetEngine(0).a((aysw)localObject);
     } while (!QLog.isColorLevel());
     QLog.i("FileAssistantBannerSetting", 1, "preLoadBannerResources, url: " + this.a.b());
   }

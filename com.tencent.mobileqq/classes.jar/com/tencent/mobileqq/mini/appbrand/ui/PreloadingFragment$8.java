@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import bbmy;
+import bcpw;
 import com.tencent.qphone.base.util.QLog;
 
 class PreloadingFragment$8
@@ -12,7 +12,7 @@ class PreloadingFragment$8
   {
     try
     {
-      bbmy.a(this.this$0.getActivity(), this.val$msg, 0).a();
+      bcpw.a(this.this$0.getActivity(), this.val$msg, 0).a();
       return;
     }
     catch (Throwable localThrowable)

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import aqwy;
-import aqxa;
+import arso;
+import arsq;
 import com.tencent.qphone.base.util.QLog;
 
 public class LyricsController$12
   implements Runnable
 {
-  public LyricsController$12(aqxa paramaqxa) {}
+  public LyricsController$12(arsq paramarsq) {}
   
   public void run()
   {
     this.this$0.a.f = true;
     if (this.this$0.b)
     {
-      if (aqxa.a(this.this$0)) {
+      if (arsq.a(this.this$0)) {
         break label77;
       }
       int i = this.this$0.a.e;
@@ -26,7 +26,7 @@ public class LyricsController$12
     }
     return;
     label77:
-    aqxa.a(this.this$0);
+    arsq.a(this.this$0);
   }
 }
 

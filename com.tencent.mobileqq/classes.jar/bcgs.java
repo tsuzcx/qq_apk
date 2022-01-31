@@ -1,24 +1,43 @@
-import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
 
-class bcgs
-  implements bcge
+public class bcgs
 {
-  bcgs(bcgo parambcgo) {}
+  public int a;
+  public long a;
+  public Handler a;
+  public bcgo a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public volatile String d;
+  public String e;
+  public String f = "";
   
-  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
+  public bcgs()
   {
-    bcds.c("DownloadManager_", "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
-    paramBundle = new Bundle();
-    paramBundle.putString("PackageName", paramString1);
-    paramBundle.putString("Code", paramString2);
-    paramBundle.putInt("VersionCode", paramInt);
-    paramBundle.putBoolean("IsSuccess", paramBoolean);
-    bcgo.a(this.a, paramBundle);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("unikey=").append(this.jdField_a_of_type_JavaLangString).append(",url=").append(this.jdField_b_of_type_JavaLangString).append(" ,header=").append(this.jdField_c_of_type_JavaLangString).append(",htmlbody len=");
+    if (TextUtils.isEmpty(this.d)) {}
+    for (int i = 0;; i = this.d.length()) {
+      return i + ",reqState=" + this.jdField_a_of_type_Int + ",httpStatusCode=" + this.jdField_b_of_type_Int + ",needBase64Rsp=" + this.jdField_a_of_type_Boolean + ",jsCallback=" + this.e + ",resultCode=" + this.jdField_c_of_type_Int + ",errorMsg=" + this.f;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcgs
  * JD-Core Version:    0.7.0.1
  */

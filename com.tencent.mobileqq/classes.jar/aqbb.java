@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.haoliyou.JefsClass;
+import android.app.Activity;
 
-public class aqbb
-  extends ThreadLocal<Boolean>
+class aqbb
+  implements alpc
 {
-  public aqbb(JefsClass paramJefsClass) {}
+  aqbb(aqba paramaqba) {}
   
-  protected Boolean a()
+  public void a(boolean paramBoolean)
   {
-    return Boolean.valueOf(false);
+    if (!paramBoolean) {
+      this.a.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqbb
  * JD-Core Version:    0.7.0.1
  */

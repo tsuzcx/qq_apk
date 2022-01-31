@@ -13,19 +13,30 @@ public class ExcitingTransferNative
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
     {
-      for (;;)
+      try
       {
-        try
+        for (;;)
         {
-          SoLoadUtil.a(BaseApplicationImpl.getContext(), "excitingtransfer", 0, false);
-          return;
+          SoLoadUtil.a(BaseApplicationImpl.getContext(), "mbedtlsall", 0, false);
+          try
+          {
+            SoLoadUtil.a(BaseApplicationImpl.getContext(), "excitingtransfer", 0, false);
+            return;
+          }
+          catch (UnsatisfiedLinkError localUnsatisfiedLinkError3)
+          {
+            localUnsatisfiedLinkError3.printStackTrace();
+          }
+          localUnsatisfiedLinkError1 = localUnsatisfiedLinkError1;
+          localUnsatisfiedLinkError1.printStackTrace();
         }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+      {
+        for (;;)
         {
           localUnsatisfiedLinkError2.printStackTrace();
         }
-        localUnsatisfiedLinkError1 = localUnsatisfiedLinkError1;
-        localUnsatisfiedLinkError1.printStackTrace();
       }
     }
   }

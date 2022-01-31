@@ -1,20 +1,47 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.image.URLImageView;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-class abrz
-  extends RecyclerView.ViewHolder
+public class abrz
+  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  URLImageView b;
-  
-  public abrz(abry paramabry, View paramView)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131302286));
-    this.b = ((URLImageView)paramView.findViewById(2131302301));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131303812);
+    return false;
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

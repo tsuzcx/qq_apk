@@ -1,52 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2.1.1;
 
 public class ajpu
-  extends DefaultHandler
+  implements Animation.AnimationListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public ajpu(ApolloGameViewBinder.GameListAdapter.2.1.1 param1) {}
   
-  public ajpu(QQAppInterface paramQQAppInterface) {}
-  
-  public HashMap<String, String> a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return this.jdField_a_of_type_JavaUtilHashMap;
+    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.a.a.a.jdField_a_of_type_AndroidViewViewGroup.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.a.a.a.jdField_a_of_type_Ajpv.a = null;
   }
   
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramArrayOfChar);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void endDocument()
-  {
-    super.endDocument();
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-  }
-  
-  public void startDocument()
-  {
-    super.startDocument();
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString2;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajpu
  * JD-Core Version:    0.7.0.1
  */

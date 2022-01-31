@@ -1,54 +1,35 @@
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.graphics.Paint;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class abvl
-  extends ajjh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abvl(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public abvl(QQMapActivity paramQQMapActivity) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public void onGlobalLayout()
   {
-    if (this.a.jdField_a_of_type_Aidk == null) {}
-    do
+    int i = this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getWidth();
+    if (i > 0)
     {
-      do
+      int j = bawz.a(this.a, 10.0F);
+      Object localObject = new Paint();
+      ((Paint)localObject).setTextSize(bawz.a(this.a, 14.0F));
+      ((Paint)localObject).setAntiAlias(true);
+      int k = (int)(((Paint)localObject).measureText(this.a.e.getText().toString()) + 1.0F);
+      ((Paint)localObject).setTextSize(bawz.a(this.a, 20.0F));
+      if ((int)(((Paint)localObject).measureText(this.a.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) + 1.0F) + (k + j) > i)
       {
-        return;
-      } while (!paramBoolean1);
-      this.a.jdField_a_of_type_JavaUtilMap = ariz.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
-    } while (this.a.jdField_a_of_type_JavaUtilMap == null);
-    this.a.jdField_a_of_type_Aidk.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_Aidk.notifyDataSetChanged();
-    this.a.b();
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    if (this.a.jdField_a_of_type_Aidk == null) {
-      return;
-    }
-    if ((paramBoolean) && (paramMap != null))
-    {
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Integer localInteger = (Integer)paramMap.get(str);
-        if (localInteger != null) {
-          this.a.jdField_a_of_type_JavaUtilMap.put(str, localInteger);
-        }
+        localObject = this.a.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).width = (i - j - k);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
-      this.a.jdField_a_of_type_Aidk.a(this.a.jdField_a_of_type_JavaUtilMap);
-      this.a.jdField_a_of_type_Aidk.notifyDataSetChanged();
-      this.a.b();
-      return;
+      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
-    this.a.jdField_a_of_type_Aidk.notifyDataSetChanged();
-    this.a.b();
-    bbmy.a(this.a.app.getApp(), 1, this.a.getString(2131654642), 0).b(this.a.getTitleBarHeight());
   }
 }
 

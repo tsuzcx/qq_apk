@@ -1,6 +1,6 @@
-class adar
+public abstract interface adar
 {
-  public static final adao a = new adao();
+  public abstract void a(boolean paramBoolean);
 }
 
 

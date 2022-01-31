@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
-import sis;
-import sjd;
-import sjv;
+import svo;
+import svz;
+import swr;
 
 public class StoryVideoUploadManager$VideoCompositeRec$1
   implements Runnable
 {
-  public StoryVideoUploadManager$VideoCompositeRec$1(sjd paramsjd, sis paramsis, sjv paramsjv) {}
+  public StoryVideoUploadManager$VideoCompositeRec$1(svz paramsvz, svo paramsvo, swr paramswr) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Sis.a(this.jdField_a_of_type_Sjv.a, this.jdField_a_of_type_Sjv.b);
+    this.jdField_a_of_type_Svo.a(this.jdField_a_of_type_Swr.a, this.jdField_a_of_type_Swr.b);
   }
 }
 

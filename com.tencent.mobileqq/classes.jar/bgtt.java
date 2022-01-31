@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import cooperation.qqreader.host.webview.ReaderBaseWebViewPlugin;
+import cooperation.qqreader.proxy.ReaderJsCallback;
 
-final class bgtt
-  implements bbrx
+class bgtt
+  implements ReaderJsCallback
 {
-  bgtt(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
+  bgtt(bgtr parambgtr) {}
   
-  public void a(int paramInt)
+  public void onCallback(String paramString1, String paramString2) {}
+  
+  public void onInitPluginCallBack(ReaderBaseWebViewPlugin paramReaderBaseWebViewPlugin)
   {
-    if (paramInt == 2) {
-      apck.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
-    }
+    paramReaderBaseWebViewPlugin.init(bgtr.a(this.a), null);
   }
 }
 

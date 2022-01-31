@@ -1,20 +1,59 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abwx
-  implements mrj
+  implements aymd
 {
-  public abwx(TroopInfoActivity paramTroopInfoActivity) {}
+  public abwx(QQSettingMe paramQQSettingMe) {}
   
-  public void a()
+  public void a(Bundle paramBundle)
   {
-    TroopInfoActivity.a(this.a, true, 0L, "", this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
+    this.a.n();
   }
   
-  public void a(String paramString)
+  public void b(Bundle paramBundle)
   {
-    this.a.j();
-    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
+    int i = paramBundle.getInt("start_status");
+    if (i == 1) {
+      this.a.n();
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (i == 2)
+        {
+          this.a.n();
+          return;
+        }
+      } while (i != 3);
+      if (!(this.a.jdField_b_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+        break;
+      }
+      i = paramBundle.getInt("percent");
+      paramBundle = String.valueOf(i) + "%";
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramBundle);
+    } while (!QLog.isDevelopLevel());
+    QLog.d("QQSettingRedesign", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
+    return;
+    if (QQSettingMe.f(this.a)) {}
+    for (Drawable localDrawable = this.a.a.getResources().getDrawable(2130845207);; localDrawable = this.a.a.getResources().getDrawable(2130845208))
+    {
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
+      if (!(localDrawable instanceof Animatable)) {
+        break;
+      }
+      ((Animatable)localDrawable).start();
+      break;
+    }
   }
 }
 

@@ -2,23 +2,23 @@ package com.tencent.biz.qqstory.storyHome.model;
 
 import com.tencent.biz.qqstory.model.BaseUIItem;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
-import srk;
-import vik;
-import vil;
+import teg;
+import vvg;
+import vvh;
 
 public class TagUserItem
   extends BaseUIItem
-  implements srk
+  implements teg
 {
   public long tagId;
-  public vik tagItem;
+  public vvg tagItem;
   public String tagName;
   
   public void convertFrom(qqstory_struct.TagItem paramTagItem)
   {
     if (paramTagItem.has())
     {
-      this.tagItem = new vik(paramTagItem);
+      this.tagItem = new vvg(paramTagItem);
       this.tagId = this.tagItem.a.jdField_a_of_type_Long;
       this.tagName = this.tagItem.a.jdField_a_of_type_JavaLangString;
     }

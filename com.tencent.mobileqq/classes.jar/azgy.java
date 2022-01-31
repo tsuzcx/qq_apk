@@ -1,41 +1,64 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity.2.1;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity.2.2;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
 public class azgy
-  extends AsyncTask<Boolean, Void, Bitmap>
+  implements bftk
 {
-  private WeakReference<RollangleImageView> a;
+  public azgy(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
   
-  public azgy(RollangleImageView paramRollangleImageView)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.a = new WeakReference(paramRollangleImageView);
-  }
-  
-  protected Bitmap a(Boolean... paramVarArgs)
-  {
-    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
-    if (localRollangleImageView != null) {
-      return RollangleImageView.a(localRollangleImageView, paramVarArgs[0].booleanValue());
-    }
-    return null;
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
-    if (localRollangleImageView != null)
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
     {
-      if (paramBitmap != null) {
-        localRollangleImageView.setImageBitmap(paramBitmap);
-      }
-    }
-    else {
+      paramView.c(l);
       return;
     }
-    localRollangleImageView.setImageResource(apck.b(localRollangleImageView.a));
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    paramListView = (PullRefreshHeader)paramView;
+    long l;
+    if (this.a.jdField_a_of_type_Long == 0L)
+    {
+      l = System.currentTimeMillis();
+      paramListView.a(l);
+      if (!bbev.g(this.a.getActivity())) {
+        break label97;
+      }
+      this.a.a(0, true);
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopBarPublishLocationSelectActivity.2.1(this), 300L);
+    }
+    for (;;)
+    {
+      ((aavx)paramView.getTag()).a = true;
+      return true;
+      l = this.a.jdField_a_of_type_Long;
+      break;
+      label97:
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopBarPublishLocationSelectActivity.2.2(this), 300L);
+    }
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.b(l);
+      return;
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

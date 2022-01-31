@@ -1,20 +1,16 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class aanu
-  extends GestureDetector.SimpleOnGestureListener
+  implements aekd
 {
-  public aanu(Conversation paramConversation) {}
+  public aanu(BaseChatPie paramBaseChatPie) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, " gestureDetector onDoubleTap");
+    if (this.a.K) {
+      this.a.bc();
     }
-    Conversation.i(this.a);
-    return super.onDoubleTap(paramMotionEvent);
+    ((adiu)this.a.a.a(7)).b(this.a.hashCode());
   }
 }
 

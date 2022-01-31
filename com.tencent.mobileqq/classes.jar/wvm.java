@@ -1,25 +1,25 @@
-import com.tencent.common.app.AppInterface;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class wvm
-  extends avzo
+public class wvm
+  implements View.OnClickListener
 {
-  wvm(wvk paramwvk, AppInterface paramAppInterface) {}
+  public wvm(CommodityListView paramCommodityListView, CertifiedAccountMeta.StUser paramStUser) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
-    if (paramBoolean) {
-      synchronized (wvk.a(this.jdField_a_of_type_Wvk))
-      {
-        wvk.a(this.jdField_a_of_type_Wvk, paramInt);
-        return;
-      }
-    }
+    xhe.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + wva.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView.a()), "clk_shop", 0, 0, new String[0]);
+    wiv.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wvm
  * JD-Core Version:    0.7.0.1
  */

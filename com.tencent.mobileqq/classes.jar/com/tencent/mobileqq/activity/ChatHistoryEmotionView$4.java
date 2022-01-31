@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import aaid;
-import advs;
+import aarv;
+import aegr;
 
 public class ChatHistoryEmotionView$4
   implements Runnable
 {
-  public ChatHistoryEmotionView$4(aaid paramaaid) {}
+  public ChatHistoryEmotionView$4(aarv paramaarv) {}
   
   public void run()
   {
     if (this.this$0.a) {
-      advs.a(aaid.a(this.this$0));
+      aegr.a(aarv.a(this.this$0));
     }
     this.this$0.f();
   }

@@ -1,51 +1,57 @@
+import com.tencent.component.network.module.base.inter.Log;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-final class bhiy
-  implements vnq
+public class bhiy
+  implements Log
 {
-  bhiy(String paramString, bhjl parambhjl) {}
-  
-  public void onFailure(String paramString)
+  public void d(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onFailure: invoked. info: Failed to convert sample rate. message = " + paramString);
-    }
+    QLog.d(paramString1, 1, paramString2);
   }
   
-  public void onFinish(boolean paramBoolean)
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_Bhjl != null) && (localFile.exists()))
-    {
-      this.jdField_a_of_type_Bhjl.a(localFile);
-      this.jdField_a_of_type_Bhjl.c();
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("HumUtils", 2, "onFinish: audioFile not exist. audioFile = " + localFile);
+    QLog.d(paramString1, 1, paramString2, paramThrowable);
   }
   
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
+  public void e(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onStart: invoked. info: ");
-    }
+    QLog.e(paramString1, 1, paramString2);
   }
   
-  public void onSuccess(String paramString)
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onSuccess: invoked. info: message = " + paramString);
-    }
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public int getLogLevel()
+  {
+    return 1;
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w(paramString1, 1, paramString2, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhiy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,628 +1,308 @@
-import IPwdPxyMQQ.RespondQueryIPwdStat;
-import RegisterProxySvcPack.OnlineInfos;
-import RegisterProxySvcPack.SvcRespParam;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.CmshowAppController.1;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.CmshowAppController.4;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.CmshowAppController.5;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.CmshowAppController.6;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.wadl.ipc.WadlResult;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.MobileQQ;
-import tencent.im.statsvc.getonline.StatSvcGetOnline.Instance;
-import tencent.im.statsvc.getonline.StatSvcGetOnline.ReqBody;
-import tencent.im.statsvc.getonline.StatSvcGetOnline.RspBody;
-import tencent.im.statsvc.stat.mute.StatSetMute.ReqBody;
-import tencent.im.statsvc.stat.mute.StatSetMute.RspBody;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class ajrc
-  extends ajfb
+  extends bbwf
+  implements View.OnClickListener, bdos
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  protected Handler a;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private int d = 1;
-  private int e = 1;
-  private int f;
-  private int g = 1;
-  private int h;
+  private float jdField_a_of_type_Float;
+  private volatile int jdField_a_of_type_Int = 0;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private bdoq jdField_a_of_type_Bdoq = new bdoq();
+  private ApolloLottieAnim jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
   
-  public ajrc(QQAppInterface paramQQAppInterface)
+  public ajrc(ApolloPanel paramApolloPanel)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_AndroidOsHandler = new ajrd(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Bdoq.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim = new ApolloLottieAnim(paramApolloPanel.a.a, paramApolloPanel.a.a());
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a(ApolloPanel.a(paramApolloPanel), aisl.d, ajmu.k + "kapu/apollo_kapu_progress_lottie.zip", false);
   }
   
-  public int a()
+  private Drawable a()
+  {
+    Object localObject = aisl.c;
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.getResources().getDrawable(2130838296);
+    localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.getResources().getDrawable(2130838296);
+    localObject = ajhu.a("" + ((String)localObject).hashCode(), localURLDrawableOptions, (String)localObject, false);
+    if (localObject != null) {
+      ((URLDrawable)localObject).startDownload();
+    }
+    return localObject;
+  }
+  
+  private JSONObject a()
   {
     try
     {
-      int i = this.jdField_a_of_type_Int;
-      return i;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("appId", aisl.g);
+      localJSONObject.put("iconUrl", aisl.c);
+      localJSONObject.put("apkUrl", aisl.b);
+      localJSONObject.put("packageName", aisl.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("versionCode", aisl.jdField_a_of_type_Int);
+      localJSONObject.put("apkSign", aisl.h);
+      localJSONObject.put("appName", aisl.i);
+      localJSONObject.put("sourceId", "biz_src_zf_lmx");
+      return localJSONObject;
     }
-    finally
+    catch (Exception localException)
     {
-      localObject = finally;
-      throw localObject;
+      QLog.e("CmshowAppController", 1, localException, new Object[0]);
     }
+    return null;
   }
   
-  public long a()
+  private void a(float paramFloat)
   {
-    try
-    {
-      long l = this.jdField_a_of_type_Long;
-      return l;
+    ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).post(new ApolloPanel.CmshowAppController.4(this, paramFloat));
+  }
+  
+  private boolean a()
+  {
+    boolean bool = true;
+    Object localObject = aisl.b;
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a == null) || (TextUtils.isEmpty((CharSequence)localObject))) {
+      bool = false;
     }
-    finally
+    do
     {
-      localObject = finally;
-      throw localObject;
+      return bool;
+      localObject = a();
+    } while (localObject == null);
+    ApolloPanel.c(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, true);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Bdoq.a((JSONObject)localObject, 2);
+      return true;
     }
+    this.b = true;
+    return true;
+  }
+  
+  private void d()
+  {
+    if (ApolloPanel.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).getBackground() == null) {
+      ApolloPanel.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).setBackgroundDrawable(a());
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      a(this.jdField_a_of_type_Float);
+      return;
+    }
+    ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).endAnimation();
+    ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.postDelayed(new ApolloPanel.CmshowAppController.1(this), 1000L);
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_Bdoq.a(a(), 5);
   }
   
   public void a()
   {
-    send(createToServiceMsg("RegPrxySvc.infoAndroid"));
+    c();
+    d();
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt, WadlResult paramWadlResult)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("CmshowAppController", 2, new Object[] { "onTaskStatusChanged localStatus:", Integer.valueOf(paramInt), ",wadlResult:", paramWadlResult });
+    }
+    switch (paramInt)
     {
-      this.h = paramInt;
+    default: 
+      return;
+    case 4: 
+      ApolloPanel.c(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, false);
+      this.jdField_a_of_type_Int = 2;
+      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).post(new ApolloPanel.CmshowAppController.5(this));
+      return;
+    case -2: 
+      ApolloPanel.c(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, false);
+      this.jdField_a_of_type_Int = 0;
+      ThreadManager.getUIHandler().post(new ApolloPanel.CmshowAppController.6(this));
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.jdField_a_of_type_Float = (paramWadlResult.d / 100.0F);
+    a(this.jdField_a_of_type_Float);
   }
   
-  public void a(long paramLong)
+  public void a(ArrayList<WadlResult> paramArrayList)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("CmshowAppController", 2, new Object[] { "onTaskQuery resInfos:", paramArrayList, ",mIsNeedDownload:", Boolean.valueOf(this.b) });
+    }
+    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Bdoq.a(aisl.g, aisl.b, aisl.jdField_a_of_type_Int, paramArrayList))
     {
-      QLog.d("RegisterProxySvcPack", 2, "setSelfPcSuppViewPcVersion:" + paramLong);
-      this.jdField_a_of_type_Long = paramLong;
+      this.jdField_a_of_type_Int = 0;
+      if (this.b)
+      {
+        a();
+        this.jdField_a_of_type_Int = 1;
+        this.b = false;
+      }
+    }
+    do
+    {
       return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    StatSetMute.ReqBody localReqBody = new StatSetMute.ReqBody();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localReqBody.set_mute.set(i);
-      ToServiceMsg localToServiceMsg = createToServiceMsg("StatSvc.SetMute");
-      localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
-      localToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
-      localToServiceMsg.extraData.putBoolean("param_is_mute", paramBoolean);
-      send(localToServiceMsg);
-      return;
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public int b()
-  {
-    try
-    {
-      int i = this.jdField_b_of_type_Int;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+      if (this.jdField_a_of_type_Int == 1) {
+        e();
+      }
+      this.jdField_a_of_type_Int = 2;
+    } while (!QLog.isColorLevel());
+    QLog.d("CmshowAppController", 2, new Object[] { "onTaskQuery find apk already download, mStatus:", Integer.valueOf(this.jdField_a_of_type_Int) });
   }
   
   public void b()
   {
-    StatSvcGetOnline.ReqBody localReqBody = new StatSvcGetOnline.ReqBody();
-    localReqBody.uint64_uin.set(this.app.getLongAccountUin());
-    localReqBody.uint32_appid.set(0);
-    ToServiceMsg localToServiceMsg = createToServiceMsg("StatSvc.GetOnlineStatus");
-    localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
-    localToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
-    send(localToServiceMsg);
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.c();
+    this.jdField_a_of_type_Bdoq.a();
   }
   
-  public void b(int paramInt)
+  void c()
   {
-    try
+    if (bbfd.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.getContext(), aisl.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Int = paramInt;
-      return;
+      this.jdField_a_of_type_Int = 3;
+      this.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.getContext().getPackageManager().getLaunchIntentForPackage(aisl.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_AndroidContentIntent != null) {
+        this.jdField_a_of_type_AndroidContentIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+      }
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    try
-    {
-      this.jdField_b_of_type_Long = paramLong;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public int c()
-  {
-    try
-    {
-      int i = this.jdField_c_of_type_Int;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterProxySvcPack", 2, "iState:" + this.jdField_a_of_type_Int + ", clientType:" + this.jdField_b_of_type_Long + ", appId:" + this.jdField_c_of_type_Long);
-    }
-    if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(102)) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(102, 1000L);
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    try
-    {
-      this.jdField_b_of_type_Int = paramInt;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void c(long paramLong)
-  {
-    try
-    {
-      this.jdField_c_of_type_Long = paramLong;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public int d()
-  {
-    try
-    {
-      int i = this.d;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void d(int paramInt)
-  {
-    try
-    {
-      this.jdField_c_of_type_Int = paramInt;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void d(long paramLong)
-  {
-    int i = 0;
     for (;;)
     {
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          break label162;
-        }
-        QLog.d("RegisterProxySvcPack", 2, "uIsSetPwd = " + paramLong);
+      if (QLog.isColorLevel()) {
+        QLog.d("CmshowAppController", 2, new Object[] { "checkStatus mStatus:", Integer.valueOf(this.jdField_a_of_type_Int) });
       }
-      finally {}
-      if ((this.app != null) && (i != -1))
+      if (this.jdField_a_of_type_Int == 0) {}
+      return;
+      if (ApolloPanel.e(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel))
       {
-        this.app.getApplication().getSharedPreferences("vip_message_roam_banner_file", 0).edit().putInt("message_roam_is_set_password" + this.app.getCurrentAccountUin(), i).commit();
-        return;
-        if (paramLong != 2L) {
-          i = -1;
-        }
+        this.jdField_a_of_type_Int = 1;
       }
-      else if (QLog.isColorLevel())
+      else
       {
-        QLog.d("RegisterProxySvcPack", 2, "RegisterProxySvcPackHandler.app is null or isSetPassword is error ,isSetPassword = " + i);
-        continue;
-        label162:
-        if (paramLong != 1L) {
-          break;
-        }
-        i = 1;
+        this.jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Bdoq.a(aisl.g);
       }
     }
   }
   
-  public int e()
+  public void onClick(View paramView)
   {
     try
     {
-      int i = this.f;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void e(int paramInt)
-  {
-    try
-    {
-      this.d = paramInt;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public int f()
-  {
-    try
-    {
-      int i = this.g;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void f(int paramInt)
-  {
-    try
-    {
-      this.f = paramInt;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void g(int paramInt)
-  {
-    try
-    {
-      this.g = paramInt;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  protected Class<? extends ajfe> observerClass()
-  {
-    return ajre.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int j = 0;
-    boolean bool = true;
-    int i = 1;
-    if (paramFromServiceMsg.getServiceCmd().equals("RegPrxySvc.infoAndroid")) {
-      QLog.d("RegisterProxySvcPack", 2, "resp of RegPrxySvc.infoAndroid");
-    }
-    label140:
-    label309:
-    label318:
-    label508:
-    do
-    {
-      do
+      switch (this.jdField_a_of_type_Int)
       {
-        do
+      case 1: 
+      case 0: 
+        for (;;)
         {
-          do
-          {
-            return;
-            if (paramFromServiceMsg.getServiceCmd().equals("RegPrxySvc.PushParam"))
-            {
-              if (paramObject != null)
-              {
-                paramObject = (SvcRespParam)paramObject;
-                e(paramObject.iIsSupportDataLine);
-                f(paramObject.iIsSupportPrintable);
-                g(paramObject.iIsSupportViewPCFile);
-                a(paramObject.iPcVersion);
-                ArrayList localArrayList = paramObject.onlineinfos;
-                paramFromServiceMsg = null;
-                paramToServiceMsg = null;
-                if (localArrayList == null) {
-                  break label1082;
-                }
-                i = 0;
-                paramFromServiceMsg = paramToServiceMsg;
-                if (i >= localArrayList.size()) {
-                  break label1082;
-                }
-                paramFromServiceMsg = (OnlineInfos)localArrayList.get(i);
-                if (paramFromServiceMsg.clientType == 9)
-                {
-                  i = paramFromServiceMsg.onlineStatus;
-                  c(i);
-                  if ((paramToServiceMsg == null) || (paramToServiceMsg.onlineStatus != 1)) {
-                    break label318;
-                  }
-                  b(1);
-                  b(66831L);
-                  c(paramToServiceMsg.instanceId);
-                }
-                for (;;)
-                {
-                  i = j;
-                  if (((vvk)this.app.getManager(335)).a(paramObject)) {
-                    i = 1;
-                  }
-                  this.h = i;
-                  c();
-                  QLog.d("RegisterProxySvcPack", 2, "online status of pc: state:" + paramObject.PCstat + "- ram:" + paramObject.iIsSupportC2CRoamMsg + "- supportdataline:" + paramObject.iIsSupportDataLine + "- PcVersion:" + paramObject.iPcVersion + "- uRoamFlag:" + paramObject.uRoamFlag);
-                  return;
-                  if (paramFromServiceMsg.clientType != 15) {
-                    break label1079;
-                  }
-                  paramToServiceMsg = paramFromServiceMsg;
-                  i += 1;
-                  break;
-                  if ((paramObject.iPCClientType == 65793) || (paramObject.iPCClientType == 77313))
-                  {
-                    i = paramObject.PCstat;
-                    if (paramObject.iIsSupportDataLine == 2) {
-                      i = 0;
-                    }
-                    b(i);
-                    if (i == 1)
-                    {
-                      b(paramObject.iPCClientType);
-                      c(1L);
-                    }
-                    notifyUI(1, true, new Object[] { Integer.valueOf(i), Integer.valueOf(paramObject.iIsSupportDataLine) });
-                  }
-                }
-              }
-              QLog.d("RegisterProxySvcPack", 2, "RegPrxySvc.PushParam is null");
-              return;
-            }
-            if (!paramFromServiceMsg.getServiceCmd().equals("RegPrxySvc.QueryIpwdStat")) {
-              break label508;
-            }
-            if (paramObject == null) {
-              break;
-            }
-            paramToServiceMsg = (RespondQueryIPwdStat)paramObject;
-          } while (paramToServiceMsg == null);
-          d(paramToServiceMsg.uIsSetPwd);
-        } while (!QLog.isColorLevel());
-        QLog.d("RegisterProxySvcPack", 2, "QueryIPwdStat:" + paramToServiceMsg.uIsSetPwd);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("RegisterProxySvcPack", 2, "IPwdPxyMQQ.RespondQueryIPwdStat is null");
-      return;
-      if (!paramFromServiceMsg.getServiceCmd().equals("StatSvc.GetOnlineStatus")) {
-        break label873;
+          if (this.jdField_a_of_type_Int != 3) {
+            break label342;
+          }
+          i = 0;
+          label46:
+          VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a, "cmshow", "Apollo", "aio_clickkapoo", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.b()), i, new String[0]);
+          return;
+          paramView = this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.getContext();
+          if (bbev.g(paramView)) {
+            break;
+          }
+          bcpw.a(paramView, 1, paramView.getString(2131694971), 0).b(0);
+        }
       }
-      if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null)) {
-        break;
-      }
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterProxySvcPack", 2, "CMD_GET_SELFPCSTATUS_KICKED onReceive :" + bool);
-      }
-    } while (!bool);
-    for (;;)
+    }
+    catch (Exception paramView)
     {
-      try
-      {
-        label534:
-        paramToServiceMsg = new StatSvcGetOnline.RspBody();
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        j = paramToServiceMsg.error_code.get();
-        if (j != 0) {
-          break label818;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("RegisterProxySvcPack", 2, "errorCode: " + j);
-        }
-        if (i == 0) {
-          break label824;
-        }
-        if ((!paramToServiceMsg.uint64_uin.has()) || (this.app.getLongAccountUin() != paramToServiceMsg.uint64_uin.get()) || (!paramToServiceMsg.msg_instances.has())) {
-          break;
-        }
-        paramToServiceMsg = paramToServiceMsg.msg_instances.get().iterator();
-        if (!paramToServiceMsg.hasNext()) {
-          break;
-        }
-        paramFromServiceMsg = (StatSvcGetOnline.Instance)paramToServiceMsg.next();
-        if (paramFromServiceMsg == null) {
-          continue;
-        }
-        i = paramFromServiceMsg.uint32_client_type.get();
-        if (!QLog.isColorLevel()) {
-          break label1090;
-        }
-        QLog.e("RegisterProxySvcPack", 2, "uint32_client_type: " + i);
-      }
-      catch (Exception paramToServiceMsg) {}
-      b(1);
-      b(i);
-      c(paramFromServiceMsg.uint32_instance_id.get());
-      c();
-      continue;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("RegisterProxySvcPack", 2, "CMD_GET_SELFPCSTATUS_KICKED onReceive fail: ", paramToServiceMsg);
-      return;
-      bool = false;
-      break label534;
-      label818:
-      i = 0;
-      continue;
-      label824:
-      if ((!paramToServiceMsg.error_msg.has()) || (!QLog.isColorLevel())) {
-        break;
-      }
-      QLog.e("RegisterProxySvcPack", 2, "err msg: " + paramToServiceMsg.error_msg.get());
-      return;
-      label873:
-      if (!paramFromServiceMsg.getServiceCmd().equals("StatSvc.SetMute")) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterProxySvcPack", 2, "CMD_REQ_SET_MUTE onReceive :" + paramFromServiceMsg.isSuccess());
-      }
-      if (paramObject == null) {
-        break;
-      }
       for (;;)
       {
-        try
+        int i;
+        QLog.e("CmshowAppController", 2, paramView, new Object[0]);
+        if (this.jdField_a_of_type_Int == 3) {
+          bcpw.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.getContext(), 1, ajyc.a(2131700474), 0).b(0);
+        }
+        for (;;)
         {
-          paramToServiceMsg = new StatSetMute.RspBody();
-          paramToServiceMsg.mergeFrom((byte[])paramObject);
-          i = paramToServiceMsg.error_code.get();
-          if (i != 0) {
-            break label1038;
-          }
-          if (paramToServiceMsg.set_mute_resp.get() == 1)
+          a();
+          return;
+          if (bbev.h(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.getContext()))
           {
-            SettingCloneUtil.writeValue(this.app.getApp().getApplicationContext(), this.app.c(), null, "qqsetting_qrlogin_set_mute", bool);
-            if (!QLog.isColorLevel()) {
+            if (!a()) {
               break;
             }
-            QLog.d("RegisterProxySvcPack", 2, new Object[] { "setmute success ismute:", Boolean.valueOf(bool) });
-            return;
+            this.jdField_a_of_type_Int = 1;
+            d();
+            this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.r();
+            break;
           }
+          ajrd localajrd = new ajrd(this);
+          ajre localajre = new ajre(this);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("即将消耗");
+          localStringBuilder.append(aisl.f);
+          localStringBuilder.append("流量下载厘米秀APP，当前为非WIFI网络，是否继续下载？");
+          bbcv.a(paramView, 230, ajyc.a(2131700465), localStringBuilder.toString(), ajyc.a(2131700461), ajyc.a(2131700459), localajre, localajrd).show();
+          break;
+          e();
+          break;
+          if (this.jdField_a_of_type_AndroidContentIntent != null)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.getContext().startActivity(this.jdField_a_of_type_AndroidContentIntent);
+            break;
+          }
+          a();
+          break;
+          label342:
+          i = this.jdField_a_of_type_Int;
+          if (i == 2)
+          {
+            i = 2;
+            break label46;
+          }
+          i = 1;
+          break label46;
+          bcpw.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.getContext(), 1, ajyc.a(2131700466), 0).b(0);
         }
-        catch (Exception paramToServiceMsg)
-        {
-          paramToServiceMsg.printStackTrace();
-          return;
-        }
-        bool = false;
-      }
-      label1038:
-      QLog.d("RegisterProxySvcPack", 1, new Object[] { "setmute err:", Integer.valueOf(i), " ,msg:", paramToServiceMsg.error_msg.get() });
-      return;
-      label1079:
-      break label309;
-      label1082:
-      i = 0;
-      paramToServiceMsg = paramFromServiceMsg;
-      break label140;
-      label1090:
-      if ((i != 65793) && (i != 77313)) {
-        if (i != 66831) {}
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajrc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
 
-public class qpm
-  implements qpk
+class qpm
+  implements rwi
 {
-  public qpm(ReadInJoyBaseListView paramReadInJoyBaseListView) {}
+  qpm(qpl paramqpl, Bundle paramBundle) {}
   
   public void a()
   {
-    if (obr.a(obr.a()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", Integer.valueOf(this.a.c) });
-      }
-      if ((this.a.c == 0) && ((!rvf.a(this.a.d)) || (!this.a.b)))
-      {
-        this.a.a(4);
-        QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch ON, loadingMore()");
-      }
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch OFF, mCurrentStatus = ", Integer.valueOf(this.a.c) });
-      }
-    } while ((rvf.a(this.a.d)) && ((this.a.c != 0) || (this.a.b)));
-    this.a.a(4);
-    QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch OFF, loadingMore()");
+    onk.a(qpl.a(this.jdField_a_of_type_Qpl), qpl.a(this.jdField_a_of_type_Qpl).a, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

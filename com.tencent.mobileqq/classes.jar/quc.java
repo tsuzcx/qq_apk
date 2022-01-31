@@ -1,32 +1,38 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
+import android.graphics.Bitmap;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
 
-public class quc
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract class quc
 {
-  public quc(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
+  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo) {}
   
-  @SuppressLint({"NewApi"})
-  public void onGlobalLayout()
+  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo, qub paramqub)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
-    {
-      ReadinjoySlidingIndicator.a(this.a, ReadinjoySlidingIndicator.a(this.a));
-      View localView = ReadinjoySlidingIndicator.a(this.a).getChildAt(ReadinjoySlidingIndicator.a(this.a));
-      ReadinjoySlidingIndicator.a(this.a, localView.getLeft());
-      this.a.invalidate();
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
+    a(paramTVK_NetVideoInfo);
   }
+  
+  public void a(qub paramqub) {}
+  
+  public abstract void a(qub paramqub, Object paramObject);
+  
+  public void a(qub paramqub, String paramString) {}
+  
+  public void a(qub paramqub, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
+  
+  public boolean a(qub paramqub, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    return false;
+  }
+  
+  public boolean a(qub paramqub, int paramInt, Object paramObject)
+  {
+    return false;
+  }
+  
+  public void b(qub paramqub) {}
+  
+  public void b(qub paramqub, String paramString) {}
+  
+  public void d(qub paramqub) {}
 }
 
 

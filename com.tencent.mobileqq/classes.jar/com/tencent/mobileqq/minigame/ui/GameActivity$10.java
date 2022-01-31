@@ -1,17 +1,46 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.minigame.utils.GameActivityStatusWatcher.OnWatcherActionListener;
+import com.tencent.qphone.base.util.QLog;
 
 class GameActivity$10
-  extends AnimatorListenerAdapter
+  implements GameActivityStatusWatcher.OnWatcherActionListener
 {
   GameActivity$10(GameActivity paramGameActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onHomePressed()
   {
-    GameActivity.access$1700(this.this$0).setVisibility(8);
+    QLog.e("[minigame] GameActivity", 1, "home pressed!");
+    this.this$0.notifyGameStop();
+  }
+  
+  public void onRecentTaskPressed()
+  {
+    QLog.e("[minigame] GameActivity", 1, "rencent task to front!");
+    this.this$0.notifyGameStop();
+  }
+  
+  public void onScreenOff()
+  {
+    QLog.e("[minigame] GameActivity", 1, "screen off");
+    this.this$0.notifyGameStop();
+  }
+  
+  public void onShowMonitorView(boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("onReceive action action.qq.miniapp.show.monitorview, ");
+    if (paramBoolean) {}
+    for (String str = "show";; str = "hide")
+    {
+      QLog.d("[minigame] GameActivity", 1, str + " monitor view!");
+      if (GameActivity.access$1300(this.this$0) != paramBoolean) {
+        GameActivity.access$1302(this.this$0, this.this$0.clickMonitorPanel());
+      }
+      if (GameActivity.access$1400(this.this$0) == null) {
+        GameActivity.access$1500(this.this$0);
+      }
+      return;
+    }
   }
 }
 

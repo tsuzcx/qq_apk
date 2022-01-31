@@ -1,18 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBlackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-public final class tme
-  implements Parcelable.Creator<AnimationParam>
+public class tme
+  extends syv<toc>
 {
-  public AnimationParam a(Parcel paramParcel)
+  public static final String a = sxp.a("StorySvc.get_user_black_status");
+  public String b;
+  
+  public String a()
   {
-    return new AnimationParam(paramParcel);
+    return a;
   }
   
-  public AnimationParam[] a(int paramInt)
+  public syq a(byte[] paramArrayOfByte)
   {
-    return new AnimationParam[paramInt];
+    qqstory_service.RspGetBlackList localRspGetBlackList = new qqstory_service.RspGetBlackList();
+    try
+    {
+      localRspGetBlackList.mergeFrom(paramArrayOfByte);
+      return new toc(localRspGetBlackList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetBlackList localReqGetBlackList = new qqstory_service.ReqGetBlackList();
+    localReqGetBlackList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localReqGetBlackList.toByteArray();
   }
 }
 

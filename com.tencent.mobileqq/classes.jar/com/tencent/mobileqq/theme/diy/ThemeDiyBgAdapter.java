@@ -53,7 +53,7 @@ public class ThemeDiyBgAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if (paramView == null) {
-      paramView = this.mInflater.inflate(2131496071, paramViewGroup, false);
+      paramView = this.mInflater.inflate(2131561663, paramViewGroup, false);
     }
     for (;;)
     {

@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.base;
 
-import sgc;
-import sgd;
+import ssy;
+import ssz;
 
 public class QQStoryObserver$1$1
   implements Runnable
 {
-  public QQStoryObserver$1$1(sgd paramsgd) {}
+  public QQStoryObserver$1$1(ssz paramssz) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Sgc.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_JavaLangBoolean.booleanValue(), this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
+    this.a.jdField_a_of_type_Ssy.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_JavaLangBoolean.booleanValue(), this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

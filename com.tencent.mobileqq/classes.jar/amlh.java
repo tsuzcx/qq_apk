@@ -1,46 +1,84 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amlh
-  extends alzl<amlg>
+  extends ampb<amli>
 {
-  public static amlg a()
+  private static boolean a;
+  
+  public static boolean e()
   {
-    return (amlg)alzw.a().a(261);
+    amli localamli = (amli)ampm.a().a(576);
+    if ((localamli != null) && (!TextUtils.isEmpty(localamli.a))) {
+      a = "1".equals(localamli.a);
+    }
+    return a;
   }
   
   public int a()
   {
-    return 261;
+    return 576;
   }
   
   @NonNull
-  public amlg a(int paramInt)
+  public amli a(int paramInt)
   {
-    return new amlg();
+    return new amli();
   }
   
-  @Nullable
-  public amlg a(alzs[] paramArrayOfalzs)
+  public amli a(String paramString)
   {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return amlg.a(paramArrayOfalzs);
+    try
+    {
+      paramString = new JSONObject(paramString).optString("IsDanmuEnable");
+      if (QLog.isColorLevel()) {
+        QLog.e("DanmuConfProcessor", 2, "parse conf, IsDanmuEnable:" + paramString);
+      }
+      paramString = new amli(paramString.trim());
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
     return null;
   }
   
-  public Class<amlg> a()
+  @Nullable
+  public amli a(ampi[] paramArrayOfampi)
   {
-    return amlg.class;
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    {
+      amli localamli = a(paramArrayOfampi[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("DanmuConfProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
+      }
+      return localamli;
+    }
+    return new amli();
   }
   
-  public void a(int paramInt)
+  public Class<amli> a()
   {
-    QLog.d("TencentDocConvertConfigProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
+    return amli.class;
   }
   
-  public void a(amlg paramamlg) {}
+  public void a(int paramInt) {}
+  
+  public void a(amli paramamli)
+  {
+    if ((paramamli != null) && (!TextUtils.isEmpty(paramamli.a)))
+    {
+      a = "1".equals(paramamli.a);
+      if (QLog.isColorLevel()) {
+        QLog.e("DanmuConfProcessor", 2, "onUpdate, isDanmuEnable:" + a);
+      }
+    }
+  }
   
   public int b()
   {
@@ -59,7 +97,7 @@ public class amlh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amlh
  * JD-Core Version:    0.7.0.1
  */

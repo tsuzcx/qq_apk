@@ -1,19 +1,10 @@
-public abstract class bfqa
+public abstract interface bfqa
 {
-  public static bfqa a = new bfqb();
-  
-  public abstract int a();
-  
-  public abstract String a();
-  
-  public String toString()
-  {
-    return a() + ':' + a();
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfqa
  * JD-Core Version:    0.7.0.1
  */

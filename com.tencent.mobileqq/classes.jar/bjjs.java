@@ -1,204 +1,77 @@
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import dov.com.qq.im.capture.view.MusicFragmentProviderView;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bjjs
-  implements bjjw, bjkc
+  implements bjdh
 {
-  private int jdField_a_of_type_Int = 0;
-  private bjkb jdField_a_of_type_Bjkb = new bjkb();
-  private VideoSourceHelper jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper;
-  private final String jdField_a_of_type_JavaLangString = "HwEncodeHelper";
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private long[] jdField_a_of_type_ArrayOfLong = new long[1];
-  private bjkb jdField_b_of_type_Bjkb = new bjkb();
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private String c;
+  public bjjs(MusicFragmentProviderView paramMusicFragmentProviderView) {}
   
-  public bjjs(String paramString1, String paramString2, String paramString3)
+  public void a()
   {
-    this.jdField_b_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper = new VideoSourceHelper(paramString1, paramString2);
+    this.a.i();
   }
   
-  private boolean a()
+  public void a(int paramInt, MusicItemInfo paramMusicItemInfo)
   {
-    boolean bool = true;
-    int[] arrayOfInt = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getBufferSize();
-    if ((arrayOfInt == null) || (arrayOfInt.length < 2)) {
-      bool = false;
+    if (paramInt != -1)
+    {
+      this.a.a(paramInt);
+      MusicFragmentProviderView.a(this.a).set(-1);
+      this.a.j();
+      return;
+    }
+    this.a.i();
+  }
+  
+  public void a(MusicItemInfo paramMusicItemInfo)
+  {
+    if (this.a.a != null)
+    {
+      if (paramMusicItemInfo.mType == 2) {
+        this.a.a.a(true);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.a.a(false);
+  }
+  
+  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    this.a.a(paramInt);
+    if (paramInt != -1)
+    {
+      MusicFragmentProviderView.a(this.a).set(-1);
+      this.a.j();
     }
     for (;;)
     {
-      return bool;
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEncodeHelper", 4, "initMediaBuffer videosize=" + arrayOfInt[0] + ", audiosize=" + arrayOfInt[1]);
+      if (MusicFragmentProviderView.a(this.a) != null) {
+        MusicFragmentProviderView.a(this.a).f();
       }
-      try
-      {
-        if (this.jdField_a_of_type_ArrayOfByte == null) {
-          this.jdField_a_of_type_ArrayOfByte = new byte[arrayOfInt[0]];
-        }
-        if (this.jdField_b_of_type_ArrayOfByte == null)
-        {
-          this.jdField_b_of_type_ArrayOfByte = new byte[arrayOfInt[1]];
-          return true;
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        localOutOfMemoryError.printStackTrace();
-      }
+      return;
+      this.a.i();
     }
-    return false;
   }
   
-  public int a()
+  public void b(MusicItemInfo paramMusicItemInfo) {}
+  
+  public void c(int paramInt, MusicItemInfo paramMusicItemInfo)
   {
-    int j = 2;
-    if (!bjjt.a()) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.initHelperParam() != 0)
+    if (paramInt != -1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEncodeHelper", 4, "initHelperParam error");
-      }
-      return -1;
+      this.a.j();
+      return;
     }
-    if (!a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEncodeHelper", 4, "initMediaBuffer error");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.closeHelper();
-      return -1;
-    }
-    SVHwEncoder localSVHwEncoder = new SVHwEncoder();
-    int i;
-    if (awje.o == 16)
-    {
-      i = 1;
-      if (awje.p != 2) {
-        break label233;
-      }
-    }
-    for (;;)
-    {
-      int k = awje.q;
-      localSVHwEncoder.a(awje.q, i, k * i * j * 8, j);
-      int[] arrayOfInt = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getSourceVideoParam();
-      localSVHwEncoder.a(this.jdField_b_of_type_JavaLangString, arrayOfInt[0], arrayOfInt[1]);
-      boolean bool = localSVHwEncoder.a(awje.z, awje.y, this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.mOrientationDegree);
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEncodeHelper", 4, "startHwEncode mRecordFrames=" + awje.z + ", mRecordTime=" + awje.y + " successCode=" + bool);
-      }
-      if (bool) {
-        break label238;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.closeHelper();
-      return -1;
-      i = 2;
-      break;
-      label233:
-      j = 1;
-    }
-    label238:
-    localSVHwEncoder.a(this, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.closeHelper();
-    return this.jdField_a_of_type_Int;
+    this.a.i();
   }
   
-  public bjkb a()
+  public void d(int paramInt, MusicItemInfo paramMusicItemInfo)
   {
-    boolean bool = false;
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper != null) && (!this.jdField_a_of_type_Boolean))
-    {
-      int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getNextAudioFrame(this.jdField_b_of_type_ArrayOfByte);
-      this.jdField_b_of_type_Bjkb.jdField_a_of_type_ArrayOfByte = this.jdField_b_of_type_ArrayOfByte;
-      this.jdField_b_of_type_Bjkb.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Bjkb.jdField_b_of_type_Int = i;
-      this.jdField_b_of_type_Bjkb.jdField_b_of_type_Boolean = false;
-      bjkb localbjkb = this.jdField_b_of_type_Bjkb;
-      if (i > 0) {}
-      for (;;)
-      {
-        localbjkb.jdField_a_of_type_Boolean = bool;
-        localbjkb = this.jdField_b_of_type_Bjkb;
-        this.jdField_b_of_type_Bjkb.c = -1;
-        localbjkb.jdField_a_of_type_Long = -1;
-        this.jdField_b_of_type_Bjkb.jdField_a_of_type_Float = -1.0F;
-        if (QLog.isColorLevel()) {
-          QLog.d("HwEncodeHelper", 4, "getAudioFrame() bufferSize=" + this.jdField_b_of_type_ArrayOfByte.length + ", readSize=" + i);
-        }
-        this.jdField_a_of_type_Boolean = this.jdField_b_of_type_Bjkb.jdField_a_of_type_Boolean;
-        return this.jdField_b_of_type_Bjkb;
-        bool = true;
-      }
-    }
-    return null;
+    this.a.i();
   }
-  
-  public bjkb a(int paramInt)
-  {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper != null) && (!this.jdField_b_of_type_Boolean))
-    {
-      paramInt = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getNextVideoFrame(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfLong, paramInt);
-      this.jdField_a_of_type_Bjkb.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      this.jdField_a_of_type_Bjkb.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Bjkb.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_Bjkb.jdField_b_of_type_Boolean = true;
-      bjkb localbjkb = this.jdField_a_of_type_Bjkb;
-      if (paramInt > 0) {
-        bool = false;
-      }
-      localbjkb.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Bjkb.jdField_a_of_type_Long = this.jdField_a_of_type_ArrayOfLong[0];
-      this.jdField_a_of_type_Bjkb.c = -1;
-      this.jdField_a_of_type_Bjkb.jdField_a_of_type_Float = -1.0F;
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEncodeHelper", 4, "getVideoFrame() bufferSize=" + this.jdField_a_of_type_ArrayOfByte.length + ", readSize=" + paramInt + ", frametime=" + this.jdField_a_of_type_ArrayOfLong[0]);
-      }
-      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Bjkb.jdField_a_of_type_Boolean;
-      return this.jdField_a_of_type_Bjkb;
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.c;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEncodeHelper", 4, "svErrorOcured() code=" + paramInt1 + ", subcode=" + paramInt2);
-    }
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2) {}
-  
-  public void a(String paramString, int paramInt, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEncodeHelper", 4, "svMergeOK() path=" + paramString + ", totalTime=" + paramInt + " mergetime=" + paramLong + " us");
-    }
-    this.c = paramString;
-  }
-  
-  public void b() {}
 }
 
 

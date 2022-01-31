@@ -1,24 +1,18 @@
-import android.support.annotation.NonNull;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-
 public class bikt
-  extends sfo
 {
-  public final int a;
-  public final long a;
-  @NonNull
-  public final DoodleEmojiItem a;
-  public final boolean a;
-  public final long b;
-  public boolean b;
+  public double a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public bikt(@NonNull DoodleEmojiItem paramDoodleEmojiItem, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
+  public bikt()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = paramDoodleEmojiItem;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = ajyc.a(2131715824);
+    this.jdField_b_of_type_JavaLangString = ajyc.a(2131715826);
+    this.jdField_a_of_type_Double = 0.8D;
   }
 }
 

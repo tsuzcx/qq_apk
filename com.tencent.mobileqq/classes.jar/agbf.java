@@ -1,16 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class agbf
-  implements DialogInterface.OnClickListener
 {
-  public agbf(PhotoListActivity paramPhotoListActivity) {}
+  ArrayList<Object> a = new ArrayList();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private boolean a()
   {
-    paramDialogInterface.dismiss();
-    this.a.setResult(8001);
+    boolean bool = false;
+    if (this.a != null) {}
+    for (int i = this.a.size() + 0;; i = 0)
+    {
+      if (i >= 20) {
+        bool = true;
+      }
+      if ((bool) && (QLog.isColorLevel())) {
+        QLog.d("Q.history.", 2, "isOverLimit");
+      }
+      return bool;
+    }
+  }
+  
+  public List<Object> a()
+  {
+    return this.a;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (a(paramObject))
+    {
+      this.a.remove(paramObject);
+      return;
+    }
+    if (a())
+    {
+      aptv.a(2131692562);
+      return;
+    }
+    this.a.add(paramObject);
+  }
+  
+  public boolean a(Object paramObject)
+  {
+    return this.a.contains(paramObject);
   }
 }
 

@@ -1,15 +1,18 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvGVideoLevelInfo;
 
-class lxy
-  implements vuw
+public final class lxy
+  implements Parcelable.Creator<RecvGVideoLevelInfo>
 {
-  lxy(lxx paramlxx, Activity paramActivity, long paramLong) {}
-  
-  public void a()
+  public RecvGVideoLevelInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Lxx.b(this.jdField_a_of_type_AndroidAppActivity);
-    QLog.d("QavSharpnessSVIPHelper", 2, "launchQQPayFunction time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    return new RecvGVideoLevelInfo(paramParcel);
+  }
+  
+  public RecvGVideoLevelInfo[] a(int paramInt)
+  {
+    return new RecvGVideoLevelInfo[paramInt];
   }
 }
 

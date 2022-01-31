@@ -1,12 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
-class aort
-  implements DialogInterface.OnClickListener
+public class aort
+  implements axod
 {
-  aort(aorq paramaorq) {}
+  public aort(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    FileAssistantActivity.b(this.a);
+  }
+  
+  public void b()
+  {
+    FileAssistantActivity.b(this.a);
+  }
 }
 
 

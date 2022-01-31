@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajjy;
+import ajyc;
 import com.tencent.mobileqq.mini.widget.AuthDialog;
 
 class BaseJsPluginEngine$5$1
@@ -10,10 +10,10 @@ class BaseJsPluginEngine$5$1
   
   public void run()
   {
-    if ((this.this$1.this$0.authDialog == null) || (BaseJsPluginEngine.access$200(this.this$1.this$0))) {
+    if ((this.this$1.this$0.authDialog == null) || (BaseJsPluginEngine.access$300(this.this$1.this$0))) {
       return;
     }
-    this.this$1.this$0.authDialog.show(this.this$1.val$miniIconUrl, this.this$1.val$miniAppName, this.this$1.val$authTitle, this.val$avatarUrl, this.val$nickName, this.this$1.val$authDesc, ajjy.a(2131635213), new BaseJsPluginEngine.5.1.1(this), ajjy.a(2131635217), new BaseJsPluginEngine.5.1.2(this));
+    this.this$1.this$0.authDialog.show(this.this$1.val$miniIconUrl, this.this$1.val$miniAppName, this.this$1.val$authTitle, this.val$avatarUrl, this.val$nickName, this.this$1.val$authDesc, ajyc.a(2131700997), new BaseJsPluginEngine.5.1.1(this), ajyc.a(2131701001), new BaseJsPluginEngine.5.1.2(this));
   }
 }
 

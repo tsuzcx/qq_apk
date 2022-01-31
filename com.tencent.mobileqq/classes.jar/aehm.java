@@ -1,32 +1,52 @@
-import android.view.View;
+import android.app.Activity;
+import android.os.MessageQueue.IdleHandler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import java.util.Locale;
 
 class aehm
-  implements begw
+  implements MessageQueue.IdleHandler
 {
-  aehm(aegy paramaegy) {}
+  aehm(aegu paramaegu) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean queueIdle()
   {
-    if (this.a.ah) {
-      return;
-    }
-    this.a.ah = true;
-    if ((this.a.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0))
+    Object localObject = this.a.jdField_a_of_type_Aeie.a();
+    if ((localObject != null) && (AIOImageData.class.isInstance(((aeja)localObject).a)))
     {
-      this.a.A(2131629938);
-      paramInt = this.a.jdField_a_of_type_ArrayOfInt[0];
-      if (paramInt == 0) {
-        this.a.b(true, 0);
+      AIOImageData localAIOImageData = (AIOImageData)((aeja)localObject).a;
+      if ((localAIOImageData != null) && (localAIOImageData.a(4)) && (localAIOImageData.a(4) == null))
+      {
+        this.a.c(true);
+        this.a.u();
+      }
+    }
+    if ((localObject != null) && (AIOFilePicData.class.isInstance(((aeja)localObject).a)))
+    {
+      localObject = (AIOFilePicData)((aeja)localObject).a;
+      if ((localObject != null) && (((AIOFilePicData)localObject).a(20)) && (((AIOFilePicData)localObject).a(20) == null))
+      {
+        if ((!((AIOFilePicData)localObject).d) || (!bbet.a(((AIOFilePicData)localObject).b))) {
+          break label211;
+        }
+        this.a.c(true);
+        this.a.a(false);
+        this.a.jdField_a_of_type_Aeht = null;
       }
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Begr.dismiss();
-      return;
-      this.a.b(false, paramInt);
-      continue;
-      this.a.A(2131629938);
-      this.a.b(true, 0);
+      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, aegu.d(this.a).getString(2131695341), new Object[] { apvb.a(((AIOFilePicData)localObject).a) }));
+      }
+      return false;
+      label211:
+      if (((AIOFilePicData)localObject).e) {
+        this.a.c(false);
+      } else {
+        this.a.c(true);
+      }
     }
   }
 }

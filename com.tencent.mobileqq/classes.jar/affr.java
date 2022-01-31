@@ -1,37 +1,29 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.XListView;
 
-class affr
-  implements View.OnClickListener
+public class affr
+  extends akdo
 {
-  affr(affq paramaffq) {}
+  public affr(PublicView paramPublicView) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    switch (paramView.getId())
+    if (true == paramBoolean)
     {
-    }
-    String str;
-    do
-    {
+      PublicView.a(this.a).a(0);
+      PublicView.a(this.a).sendEmptyMessage(1);
+      PublicView.a(this.a).sendEmptyMessage(3);
       return;
-      str = (String)paramView.getTag(-1);
-      paramView = (String)paramView.getTag(-2);
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramView))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w("Contacts.PublicAccountFragment", 2, "onClick - uin = " + str + ", name = " + paramView);
-    return;
-    mqb.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView, str, "IvrEnterpriseDetailEngineFalse");
+    }
+    PublicView.a(this.a).springBackOverScrollHeaderView();
+    PublicView.a(this.a, 1, 2131719788);
+    PublicView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     affr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,19 @@
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
-class ahmq
-  implements Comparator<aute>
+public abstract interface ahmq
 {
-  ahmq(ahmp paramahmp) {}
+  public abstract void a(View paramView, RecentBaseData paramRecentBaseData, String paramString, boolean paramBoolean);
   
-  public int a(aute paramaute1, aute paramaute2)
-  {
-    if ((paramaute1 != null) && (paramaute2 != null)) {
-      return paramaute1.b - paramaute2.b;
-    }
-    return -1;
-  }
+  public abstract void a(View paramView, Object paramObject);
+  
+  public abstract void a(RecentBaseData paramRecentBaseData, String paramString);
+  
+  public abstract void a(String paramString1, RecentBaseData paramRecentBaseData, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahmq
  * JD-Core Version:    0.7.0.1
  */

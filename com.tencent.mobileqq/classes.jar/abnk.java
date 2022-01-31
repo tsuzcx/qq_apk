@@ -1,18 +1,9 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
 
 public class abnk
-  extends ajjh
 {
-  public abnk(QQSettingSettingActivity paramQQSettingSettingActivity) {}
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if ((!paramBoolean) || (paramString == null)) {
-      return;
-    }
-    this.a.a(this.a.app.getCurrentAccountUin());
-  }
+  public ResourcePluginInfo a;
+  public String a;
 }
 
 

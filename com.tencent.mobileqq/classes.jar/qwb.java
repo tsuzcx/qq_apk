@@ -1,31 +1,20 @@
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.widget.LinearLayout;
 
-public class qwb
+class qwb
   implements Animation.AnimationListener
 {
-  public qwb(FastWebActivity paramFastWebActivity, boolean paramBoolean) {}
+  qwb(qwa paramqwa) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      FastWebActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, false);
-      FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).setVisibility(4);
-    }
+    qwa.a(this.a).startAnimation(qwa.a(this.a));
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).setVisibility(0);
-    if (this.jdField_a_of_type_Boolean) {
-      FastWebActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, true);
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

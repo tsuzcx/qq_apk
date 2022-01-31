@@ -40,16 +40,18 @@ import java.io.InputStream;
 import java.nio.channels.FileChannel;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 public class DecodeImageTask
   extends ImageTask
 {
   private static final int MAX_CROP_PIC_WIDTH = 500;
   private static final int MAX_CROP_TRY_TIME = 3;
-  private static String TAG = DecodeImageTask.class.getSimpleName();
+  private static final long MIN_LOG_DECODE_COST;
+  private static String TAG = "DecodeImageTask";
   private static ConcurrentHashMap<Integer, Integer> mImageKey2SampleSizeMap;
-  private static ConcurrentHashMap<String, DecodeImageTask.ImageAttri> mImagePath2AttriMap = new ConcurrentHashMap();
-  private static ConcurrentHashMap<String, Integer> mImagePath2RotationMap = new ConcurrentHashMap();
+  private static ConcurrentHashMap<String, DecodeImageTask.ImageAttri> mImagePath2AttriMap;
+  private static ConcurrentHashMap<String, Integer> mImagePath2RotationMap;
   private static BaseHandler mMainHandler;
   private static int mObjectPoolSize = 0;
   private static DecodeImageTask sPool;
@@ -58,6 +60,9 @@ public class DecodeImageTask
   
   static
   {
+    MIN_LOG_DECODE_COST = TimeUnit.SECONDS.toNanos(2L);
+    mImagePath2AttriMap = new ConcurrentHashMap();
+    mImagePath2RotationMap = new ConcurrentHashMap();
     mImageKey2SampleSizeMap = new ConcurrentHashMap();
     mMainHandler = new BaseHandler(Looper.getMainLooper());
     sPool = null;
@@ -163,18 +168,18 @@ public class DecodeImageTask
       }
       localNewGifImage = new NewGifImage(paramImageKey, j, i);
       if (localNewGifImage == null) {
-        break label382;
+        break label383;
       }
     }
-    label379:
-    label382:
+    label380:
+    label383:
     for (paramImageAttri = localNewGifImage.getDrawable();; paramImageAttri = null)
     {
       ImageManagerEnv.g().reportImageDecodingResMTA("gif_collect", "normal/gif");
       if (paramImageAttri != null)
       {
         if ((paramImageKey.options == null) || (!(paramImageKey.options.extraProcessor instanceof NewGifDrawableSpecifiedRegionProcessor))) {
-          break label379;
+          break label380;
         }
         paramImageAttri = paramImageKey.options.extraProcessor.doProcess(paramImageAttri);
       }
@@ -250,7 +255,7 @@ public class DecodeImageTask
   
   private boolean decodeNormalImage(ImageKey paramImageKey, DecodeImageTask.ImageAttri paramImageAttri, FileInputStream paramFileInputStream, BitmapFactory.Options paramOptions)
   {
-    boolean bool1 = true;
+    long l = System.nanoTime();
     int j = paramImageKey.hashCodeEx();
     if ((paramImageKey.options != null) && (!TextUtils.isEmpty(paramImageKey.filePath)) && (paramImageKey.options.isNeedPieceLoad))
     {
@@ -259,15 +264,16 @@ public class DecodeImageTask
     }
     Object localObject1 = (Integer)mImageKey2SampleSizeMap.get(Integer.valueOf(j));
     int i;
-    label166:
-    label313:
+    label168:
+    label315:
     Object localObject2;
+    StringBuilder localStringBuilder;
     if (localObject1 == null)
     {
       i = ImageOptionSampleSize.computeSampleSize(paramImageKey.options, paramImageAttri.srcWidth, paramImageAttri.srcHeight);
       mImageKey2SampleSizeMap.put(Integer.valueOf(j), Integer.valueOf(i));
       if ((paramImageKey.options == null) || (paramImageKey.options.imageConfig == null)) {
-        break label645;
+        break label638;
       }
       paramOptions.inPreferredConfig = paramImageKey.options.imageConfig;
       if ((i == 1) && (paramOptions.inPreferredConfig == Bitmap.Config.ARGB_8888))
@@ -283,7 +289,7 @@ public class DecodeImageTask
       if ((paramImageKey.options != null) && ((paramImageKey.options.mImageType == 3) || (paramImageKey.options.mImageType == 4)))
       {
         if (paramImageKey.options.imageConfig == null) {
-          break label677;
+          break label670;
         }
         paramOptions.inPreferredConfig = paramImageKey.options.imageConfig;
       }
@@ -312,56 +318,53 @@ public class DecodeImageTask
       if (localObject1 == null)
       {
         localObject2 = TAG;
-        StringBuilder localStringBuilder = new StringBuilder().append("decodeNormalImage: other mode ");
+        localStringBuilder = new StringBuilder().append("decodeNormalImage: other mode ");
         if (paramImageKey.options != null) {
-          break label728;
+          break label721;
         }
-        localObject1 = "null";
-        label468:
-        Log.i((String)localObject2, (String)localObject1);
-        localObject2 = decodeImageStream(ImageManager.getInstance().getDecoder(), paramFileInputStream, paramOptions, false);
       }
+    }
+    label670:
+    label721:
+    for (localObject1 = "null";; localObject1 = paramImageKey.options.cropHead + " " + paramImageKey.options.cropHwRation)
+    {
+      ImageManagerLog.i((String)localObject2, (String)localObject1);
+      localObject2 = decodeImageStream(ImageManager.getInstance().getDecoder(), paramFileInputStream, paramOptions, false);
       if ((localObject2 != null) || (TextUtils.isEmpty(paramImageKey.filePath)) || (!SharpPUtils.isSharpP(new File(paramImageKey.filePath)))) {
-        break label769;
+        break label762;
       }
       ImageManagerLog.e(TAG, "decodeNormalImage --url=" + paramImageKey.url + "  is not normal picture,try sharpP decode");
-      boolean bool2 = handlerSharpPDecodeMessage(paramImageKey);
-      bool1 = bool2;
-      if (!bool2)
+      boolean bool = handlerSharpPDecodeMessage(paramImageKey);
+      if (!bool)
       {
         setResult(9, new Object[0]);
         ImageManagerLog.e(TAG, "decodeNormalImage -- url=" + paramImageKey.url + "  is not normal picture,try sharpP decode failed");
-        bool1 = bool2;
       }
-    }
-    label645:
-    label677:
-    label728:
-    do
-    {
-      return bool1;
+      return bool;
       i = ((Integer)localObject1).intValue();
       break;
+      label638:
       if (isPng(paramImageAttri.mimeType))
       {
         paramOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        break label166;
+        break label168;
       }
       paramOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-      break label166;
+      break label168;
       if ((paramImageAttri.srcWidth != 0) && (paramImageAttri.srcHeight != 0) && (paramImageAttri.srcWidth / paramImageAttri.srcHeight == 2.0F))
       {
         paramOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-        break label313;
+        break label315;
       }
       paramOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
-      break label313;
-      localObject1 = paramImageKey.options.cropHead + " " + paramImageKey.options.cropHwRation;
-      break label468;
-      processBitmap((BitmapReference)localObject2, paramImageKey, j, true, paramImageAttri.mimeType);
-    } while (localObject2 != null);
-    label769:
-    return false;
+      break label315;
+    }
+    label762:
+    if (System.nanoTime() - l > MIN_LOG_DECODE_COST) {
+      ImageManagerLog.w(TAG, "decodeNormalImage: decode " + paramImageKey.filePath + " " + paramImageKey.url + " cost too much time");
+    }
+    processBitmap((BitmapReference)localObject2, paramImageKey, j, true, paramImageAttri.mimeType);
+    return localObject2 != null;
   }
   
   private BitmapReference decodePicCropHead(InputStream paramInputStream, float paramFloat)
@@ -490,133 +493,133 @@ public class DecodeImageTask
     // Byte code:
     //   0: iconst_0
     //   1: istore_2
-    //   2: invokestatic 250	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   5: invokevirtual 588	com/tencent/component/media/ImageManagerEnv:getCurrentLoadingImgStatus	()Z
+    //   2: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   5: invokevirtual 608	com/tencent/component/media/ImageManagerEnv:getCurrentLoadingImgStatus	()Z
     //   8: ifne +112 -> 120
-    //   11: ldc_w 590
-    //   14: new 318	java/lang/StringBuilder
+    //   11: ldc_w 610
+    //   14: new 331	java/lang/StringBuilder
     //   17: dup
-    //   18: invokespecial 319	java/lang/StringBuilder:<init>	()V
-    //   21: ldc_w 592
-    //   24: invokevirtual 325	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: invokespecial 332	java/lang/StringBuilder:<init>	()V
+    //   21: ldc_w 612
+    //   24: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: aload_1
-    //   28: getfield 109	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
-    //   31: invokevirtual 325	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: ldc_w 594
-    //   37: invokevirtual 325	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   31: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: ldc_w 614
+    //   37: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   40: aload_1
-    //   41: getfield 122	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
-    //   44: invokevirtual 325	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 330	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokestatic 549	com/tencent/component/media/utils/ImageManagerLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   41: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   44: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: invokevirtual 343	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   50: invokestatic 569	com/tencent/component/media/utils/ImageManagerLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   53: aload_1
-    //   54: getfield 109	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
-    //   57: invokestatic 597	com/tencent/component/media/image/ImageTracer:startDecode	(Ljava/lang/String;)V
+    //   54: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   57: invokestatic 617	com/tencent/component/media/image/ImageTracer:startDecode	(Ljava/lang/String;)V
     //   60: iconst_3
     //   61: aload_1
-    //   62: getfield 190	com/tencent/component/media/image/ImageKey:urlKey	Ljava/lang/String;
-    //   65: invokestatic 603	com/tencent/component/media/image/ProgressTracer:print	(ILjava/lang/String;)V
-    //   68: invokestatic 183	com/tencent/component/media/image/ImageManager:getInstance	()Lcom/tencent/component/media/image/ImageManager;
+    //   62: getfield 203	com/tencent/component/media/image/ImageKey:urlKey	Ljava/lang/String;
+    //   65: invokestatic 623	com/tencent/component/media/image/ProgressTracer:print	(ILjava/lang/String;)V
+    //   68: invokestatic 196	com/tencent/component/media/image/ImageManager:getInstance	()Lcom/tencent/component/media/image/ImageManager;
     //   71: aload_1
-    //   72: invokevirtual 606	com/tencent/component/media/image/ImageManager:imageKeyFilePathCheck	(Lcom/tencent/component/media/image/ImageKey;)V
-    //   75: invokestatic 357	java/lang/System:currentTimeMillis	()J
+    //   72: invokevirtual 626	com/tencent/component/media/image/ImageManager:imageKeyFilePathCheck	(Lcom/tencent/component/media/image/ImageKey;)V
+    //   75: invokestatic 370	java/lang/System:currentTimeMillis	()J
     //   78: lstore 5
-    //   80: new 308	java/io/File
+    //   80: new 321	java/io/File
     //   83: dup
     //   84: aload_1
-    //   85: getfield 122	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
-    //   88: invokespecial 310	java/io/File:<init>	(Ljava/lang/String;)V
+    //   85: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   88: invokespecial 323	java/io/File:<init>	(Ljava/lang/String;)V
     //   91: astore 10
     //   93: lconst_0
     //   94: lstore_3
     //   95: aload_1
-    //   96: getfield 122	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
-    //   99: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   96: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   99: invokestatic 319	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   102: ifne +9 -> 111
     //   105: aload 10
-    //   107: invokevirtual 349	java/io/File:length	()J
+    //   107: invokevirtual 362	java/io/File:length	()J
     //   110: lstore_3
     //   111: aload_0
     //   112: aload_1
-    //   113: invokespecial 608	com/tencent/component/media/image/DecodeImageTask:decodeVideoThumb	(Lcom/tencent/component/media/image/ImageKey;)Z
+    //   113: invokespecial 628	com/tencent/component/media/image/DecodeImageTask:decodeVideoThumb	(Lcom/tencent/component/media/image/ImageKey;)Z
     //   116: ifeq +49 -> 165
     //   119: return
-    //   120: ldc_w 610
-    //   123: new 318	java/lang/StringBuilder
+    //   120: ldc_w 630
+    //   123: new 331	java/lang/StringBuilder
     //   126: dup
-    //   127: invokespecial 319	java/lang/StringBuilder:<init>	()V
-    //   130: ldc_w 612
-    //   133: invokevirtual 325	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   127: invokespecial 332	java/lang/StringBuilder:<init>	()V
+    //   130: ldc_w 632
+    //   133: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   136: aload_1
-    //   137: getfield 109	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
-    //   140: invokevirtual 325	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: ldc_w 594
-    //   146: invokevirtual 325	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   140: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   143: ldc_w 614
+    //   146: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   149: aload_1
-    //   150: getfield 122	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
-    //   153: invokevirtual 325	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   156: invokevirtual 330	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   159: invokestatic 549	com/tencent/component/media/utils/ImageManagerLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   150: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   153: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: invokevirtual 343	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   159: invokestatic 569	com/tencent/component/media/utils/ImageManagerLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   162: goto -109 -> 53
     //   165: aload_0
     //   166: aload_1
-    //   167: invokespecial 614	com/tencent/component/media/image/DecodeImageTask:decodeSharpP	(Lcom/tencent/component/media/image/ImageKey;)Z
+    //   167: invokespecial 634	com/tencent/component/media/image/DecodeImageTask:decodeSharpP	(Lcom/tencent/component/media/image/ImageKey;)Z
     //   170: ifeq +30 -> 200
-    //   173: invokestatic 357	java/lang/System:currentTimeMillis	()J
+    //   173: invokestatic 370	java/lang/System:currentTimeMillis	()J
     //   176: lstore 7
-    //   178: invokestatic 250	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   181: ldc_w 559
+    //   178: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   181: ldc_w 579
     //   184: aload_1
-    //   185: getfield 109	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   185: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
     //   188: lload_3
     //   189: iconst_1
     //   190: lload 7
     //   192: lload 5
     //   194: lsub
     //   195: iconst_0
-    //   196: invokevirtual 618	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
+    //   196: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
     //   199: return
     //   200: aload_0
     //   201: aload_1
-    //   202: invokespecial 620	com/tencent/component/media/image/DecodeImageTask:decodeImageFrame	(Lcom/tencent/component/media/image/ImageKey;)Z
+    //   202: invokespecial 640	com/tencent/component/media/image/DecodeImageTask:decodeImageFrame	(Lcom/tencent/component/media/image/ImageKey;)Z
     //   205: ifeq +30 -> 235
-    //   208: invokestatic 357	java/lang/System:currentTimeMillis	()J
+    //   208: invokestatic 370	java/lang/System:currentTimeMillis	()J
     //   211: lstore 7
-    //   213: invokestatic 250	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   216: ldc_w 345
+    //   213: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   216: ldc_w 358
     //   219: aload_1
-    //   220: getfield 109	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   220: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
     //   223: lload_3
     //   224: iconst_1
     //   225: lload 7
     //   227: lload 5
     //   229: lsub
     //   230: iconst_0
-    //   231: invokevirtual 618	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
+    //   231: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
     //   234: return
     //   235: aload_0
     //   236: aload_1
-    //   237: invokespecial 622	com/tencent/component/media/image/DecodeImageTask:decodeAnimateWebp	(Lcom/tencent/component/media/image/ImageKey;)Z
+    //   237: invokespecial 642	com/tencent/component/media/image/DecodeImageTask:decodeAnimateWebp	(Lcom/tencent/component/media/image/ImageKey;)Z
     //   240: ifne -121 -> 119
-    //   243: getstatic 43	com/tencent/component/media/image/DecodeImageTask:mImagePath2AttriMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   243: getstatic 55	com/tencent/component/media/image/DecodeImageTask:mImagePath2AttriMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   246: aload_1
-    //   247: getfield 122	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
-    //   250: invokevirtual 393	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   253: checkcast 221	com/tencent/component/media/image/DecodeImageTask$ImageAttri
+    //   247: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   250: invokevirtual 409	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   253: checkcast 234	com/tencent/component/media/image/DecodeImageTask$ImageAttri
     //   256: astore 15
-    //   258: invokestatic 628	com/tencent/component/media/utils/BitmapUtils:getOptions	()Landroid/graphics/BitmapFactory$Options;
+    //   258: invokestatic 648	com/tencent/component/media/utils/BitmapUtils:getOptions	()Landroid/graphics/BitmapFactory$Options;
     //   261: astore 16
     //   263: aload 15
     //   265: ifnonnull +790 -> 1055
-    //   268: new 221	com/tencent/component/media/image/DecodeImageTask$ImageAttri
+    //   268: new 234	com/tencent/component/media/image/DecodeImageTask$ImageAttri
     //   271: dup
-    //   272: invokespecial 629	com/tencent/component/media/image/DecodeImageTask$ImageAttri:<init>	()V
+    //   272: invokespecial 649	com/tencent/component/media/image/DecodeImageTask$ImageAttri:<init>	()V
     //   275: astore 15
-    //   277: new 631	java/io/FileInputStream
+    //   277: new 651	java/io/FileInputStream
     //   280: dup
     //   281: aload_1
-    //   282: getfield 122	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
-    //   285: invokespecial 632	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   282: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   285: invokespecial 652	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   288: astore 10
     //   290: aload 10
     //   292: astore 11
@@ -628,13 +631,13 @@ public class DecodeImageTask
     //   304: astore 14
     //   306: aload_0
     //   307: aload_1
-    //   308: new 634	java/io/BufferedInputStream
+    //   308: new 654	java/io/BufferedInputStream
     //   311: dup
     //   312: aload 10
-    //   314: invokespecial 637	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   314: invokespecial 657	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   317: aload 15
     //   319: aload 16
-    //   321: invokespecial 639	com/tencent/component/media/image/DecodeImageTask:decodeBounds	(Lcom/tencent/component/media/image/ImageKey;Ljava/io/InputStream;Lcom/tencent/component/media/image/DecodeImageTask$ImageAttri;Landroid/graphics/BitmapFactory$Options;)V
+    //   321: invokespecial 659	com/tencent/component/media/image/DecodeImageTask:decodeBounds	(Lcom/tencent/component/media/image/ImageKey;Ljava/io/InputStream;Lcom/tencent/component/media/image/DecodeImageTask$ImageAttri;Landroid/graphics/BitmapFactory$Options;)V
     //   324: aload 10
     //   326: astore 11
     //   328: aload 10
@@ -646,7 +649,7 @@ public class DecodeImageTask
     //   340: aload_0
     //   341: aload_1
     //   342: aload 15
-    //   344: invokespecial 641	com/tencent/component/media/image/DecodeImageTask:decodeGif	(Lcom/tencent/component/media/image/ImageKey;Lcom/tencent/component/media/image/DecodeImageTask$ImageAttri;)Z
+    //   344: invokespecial 661	com/tencent/component/media/image/DecodeImageTask:decodeGif	(Lcom/tencent/component/media/image/ImageKey;Lcom/tencent/component/media/image/DecodeImageTask$ImageAttri;)Z
     //   347: ifne +301 -> 648
     //   350: aload 10
     //   352: ifnonnull +146 -> 498
@@ -658,39 +661,39 @@ public class DecodeImageTask
     //   365: astore 13
     //   367: aload 10
     //   369: astore 14
-    //   371: new 631	java/io/FileInputStream
+    //   371: new 651	java/io/FileInputStream
     //   374: dup
     //   375: aload_1
-    //   376: getfield 122	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
-    //   379: invokespecial 632	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   376: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   379: invokespecial 652	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   382: astore 10
     //   384: aload 16
     //   386: iconst_0
-    //   387: putfield 210	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   387: putfield 223	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   390: aload_0
     //   391: aload_1
     //   392: aload 15
     //   394: aload 10
     //   396: aload 16
-    //   398: invokespecial 643	com/tencent/component/media/image/DecodeImageTask:decodeNormalImage	(Lcom/tencent/component/media/image/ImageKey;Lcom/tencent/component/media/image/DecodeImageTask$ImageAttri;Ljava/io/FileInputStream;Landroid/graphics/BitmapFactory$Options;)Z
+    //   398: invokespecial 663	com/tencent/component/media/image/DecodeImageTask:decodeNormalImage	(Lcom/tencent/component/media/image/ImageKey;Lcom/tencent/component/media/image/DecodeImageTask$ImageAttri;Ljava/io/FileInputStream;Landroid/graphics/BitmapFactory$Options;)Z
     //   401: istore 9
     //   403: aload 10
     //   405: astore 11
     //   407: aload 15
-    //   409: getfield 224	com/tencent/component/media/image/DecodeImageTask$ImageAttri:mimeType	Ljava/lang/String;
+    //   409: getfield 237	com/tencent/component/media/image/DecodeImageTask$ImageAttri:mimeType	Ljava/lang/String;
     //   412: astore 13
     //   414: aload 10
     //   416: astore 11
-    //   418: invokestatic 357	java/lang/System:currentTimeMillis	()J
+    //   418: invokestatic 370	java/lang/System:currentTimeMillis	()J
     //   421: lstore 7
     //   423: aload 10
     //   425: astore 11
-    //   427: invokestatic 250	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   427: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
     //   430: astore 12
     //   432: aload 10
     //   434: astore 11
     //   436: aload_1
-    //   437: getfield 109	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   437: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
     //   440: astore 14
     //   442: iload 9
     //   444: ifeq +210 -> 654
@@ -705,18 +708,18 @@ public class DecodeImageTask
     //   462: lload 5
     //   464: lsub
     //   465: iload_2
-    //   466: invokevirtual 618	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
+    //   466: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
     //   469: iload 9
     //   471: ifne +14 -> 485
     //   474: aload 10
     //   476: astore 11
-    //   478: invokestatic 183	com/tencent/component/media/image/ImageManager:getInstance	()Lcom/tencent/component/media/image/ImageManager;
+    //   478: invokestatic 196	com/tencent/component/media/image/ImageManager:getInstance	()Lcom/tencent/component/media/image/ImageManager;
     //   481: aload_1
-    //   482: invokevirtual 552	com/tencent/component/media/image/ImageManager:checkBitmapDecodeFailCount	(Lcom/tencent/component/media/image/ImageKey;)V
+    //   482: invokevirtual 572	com/tencent/component/media/image/ImageManager:checkBitmapDecodeFailCount	(Lcom/tencent/component/media/image/ImageKey;)V
     //   485: aload 10
     //   487: ifnull -368 -> 119
     //   490: aload 10
-    //   492: invokevirtual 646	java/io/FileInputStream:close	()V
+    //   492: invokevirtual 666	java/io/FileInputStream:close	()V
     //   495: return
     //   496: astore_1
     //   497: return
@@ -730,64 +733,64 @@ public class DecodeImageTask
     //   512: astore 14
     //   514: aload_0
     //   515: aload 10
-    //   517: invokespecial 650	com/tencent/component/media/image/DecodeImageTask:reset	(Ljava/io/FileInputStream;)V
+    //   517: invokespecial 670	com/tencent/component/media/image/DecodeImageTask:reset	(Ljava/io/FileInputStream;)V
     //   520: goto -136 -> 384
     //   523: astore 12
     //   525: aload 11
     //   527: astore 10
-    //   529: ldc 242
+    //   529: ldc 255
     //   531: astore 13
     //   533: aload 10
     //   535: astore 11
     //   537: aload_1
-    //   538: getfield 151	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
+    //   538: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
     //   541: ifnull +20 -> 561
     //   544: aload 10
     //   546: astore 11
     //   548: aload_1
-    //   549: getfield 151	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
+    //   549: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
     //   552: aload_1
     //   553: bipush 110
-    //   555: invokestatic 157	com/tencent/component/media/image/ImageManager:getErrorString	(Lcom/tencent/component/media/image/ImageKey;I)Ljava/lang/String;
-    //   558: putfield 162	com/tencent/component/media/image/ImageLoader$Options:errCode	Ljava/lang/String;
+    //   555: invokestatic 170	com/tencent/component/media/image/ImageManager:getErrorString	(Lcom/tencent/component/media/image/ImageKey;I)Ljava/lang/String;
+    //   558: putfield 175	com/tencent/component/media/image/ImageLoader$Options:errCode	Ljava/lang/String;
     //   561: aload 10
     //   563: astore 11
-    //   565: getstatic 36	com/tencent/component/media/image/DecodeImageTask:TAG	Ljava/lang/String;
+    //   565: getstatic 34	com/tencent/component/media/image/DecodeImageTask:TAG	Ljava/lang/String;
     //   568: aload 12
-    //   570: invokestatic 654	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   573: invokestatic 147	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   570: invokestatic 674	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   573: invokestatic 160	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   576: aload 10
     //   578: astore 11
-    //   580: invokestatic 357	java/lang/System:currentTimeMillis	()J
+    //   580: invokestatic 370	java/lang/System:currentTimeMillis	()J
     //   583: lstore 7
     //   585: aload 10
     //   587: astore 11
-    //   589: invokestatic 250	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   589: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
     //   592: aload 13
     //   594: aload_1
-    //   595: getfield 109	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   595: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
     //   598: lload_3
     //   599: iconst_0
     //   600: lload 7
     //   602: lload 5
     //   604: lsub
     //   605: iconst_3
-    //   606: invokevirtual 618	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
+    //   606: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
     //   609: aload 10
     //   611: astore 11
-    //   613: invokestatic 250	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   613: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
     //   616: aload 13
     //   618: aload_1
-    //   619: getfield 109	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   619: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
     //   622: lload_3
-    //   623: ldc_w 350
-    //   626: ldc_w 656
-    //   629: invokestatic 357	java/lang/System:currentTimeMillis	()J
-    //   632: invokevirtual 361	com/tencent/component/media/ImageManagerEnv:reportImageDecodingTask	(Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;J)V
+    //   623: ldc_w 363
+    //   626: ldc_w 676
+    //   629: invokestatic 370	java/lang/System:currentTimeMillis	()J
+    //   632: invokevirtual 374	com/tencent/component/media/ImageManagerEnv:reportImageDecodingTask	(Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;J)V
     //   635: aload 10
     //   637: ifnull -518 -> 119
     //   640: aload 10
-    //   642: invokevirtual 646	java/io/FileInputStream:close	()V
+    //   642: invokevirtual 666	java/io/FileInputStream:close	()V
     //   645: return
     //   646: astore_1
     //   647: return
@@ -800,118 +803,118 @@ public class DecodeImageTask
     //   659: astore 12
     //   661: aconst_null
     //   662: astore 10
-    //   664: ldc 242
+    //   664: ldc 255
     //   666: astore 13
     //   668: aload 10
     //   670: astore 11
     //   672: aload_1
-    //   673: getfield 151	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
+    //   673: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
     //   676: ifnull +20 -> 696
     //   679: aload 10
     //   681: astore 11
     //   683: aload_1
-    //   684: getfield 151	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
+    //   684: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
     //   687: aload_1
     //   688: bipush 111
-    //   690: invokestatic 157	com/tencent/component/media/image/ImageManager:getErrorString	(Lcom/tencent/component/media/image/ImageKey;I)Ljava/lang/String;
-    //   693: putfield 162	com/tencent/component/media/image/ImageLoader$Options:errCode	Ljava/lang/String;
+    //   690: invokestatic 170	com/tencent/component/media/image/ImageManager:getErrorString	(Lcom/tencent/component/media/image/ImageKey;I)Ljava/lang/String;
+    //   693: putfield 175	com/tencent/component/media/image/ImageLoader$Options:errCode	Ljava/lang/String;
     //   696: aload 10
     //   698: astore 11
-    //   700: getstatic 36	com/tencent/component/media/image/DecodeImageTask:TAG	Ljava/lang/String;
+    //   700: getstatic 34	com/tencent/component/media/image/DecodeImageTask:TAG	Ljava/lang/String;
     //   703: aload 12
-    //   705: invokestatic 654	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   708: invokestatic 147	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   705: invokestatic 674	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   708: invokestatic 160	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   711: aload 10
     //   713: astore 11
-    //   715: invokestatic 357	java/lang/System:currentTimeMillis	()J
+    //   715: invokestatic 370	java/lang/System:currentTimeMillis	()J
     //   718: lstore 7
     //   720: aload 10
     //   722: astore 11
-    //   724: invokestatic 250	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   724: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
     //   727: aload 13
     //   729: aload_1
-    //   730: getfield 109	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   730: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
     //   733: lload_3
     //   734: iconst_0
     //   735: lload 7
     //   737: lload 5
     //   739: lsub
     //   740: iconst_2
-    //   741: invokevirtual 618	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
+    //   741: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
     //   744: aload 10
     //   746: astore 11
-    //   748: invokestatic 250	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   748: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
     //   751: aload 13
     //   753: aload_1
-    //   754: getfield 109	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   754: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
     //   757: lload_3
-    //   758: ldc_w 350
-    //   761: ldc_w 658
-    //   764: invokestatic 357	java/lang/System:currentTimeMillis	()J
-    //   767: invokevirtual 361	com/tencent/component/media/ImageManagerEnv:reportImageDecodingTask	(Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;J)V
+    //   758: ldc_w 363
+    //   761: ldc_w 678
+    //   764: invokestatic 370	java/lang/System:currentTimeMillis	()J
+    //   767: invokevirtual 374	com/tencent/component/media/ImageManagerEnv:reportImageDecodingTask	(Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;J)V
     //   770: aload 10
     //   772: ifnull -653 -> 119
     //   775: aload 10
-    //   777: invokevirtual 646	java/io/FileInputStream:close	()V
+    //   777: invokevirtual 666	java/io/FileInputStream:close	()V
     //   780: return
     //   781: astore_1
     //   782: return
     //   783: astore 12
     //   785: aconst_null
     //   786: astore 10
-    //   788: ldc 242
+    //   788: ldc 255
     //   790: astore 13
     //   792: aload 10
     //   794: astore 11
     //   796: aload_1
-    //   797: getfield 151	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
+    //   797: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
     //   800: ifnull +20 -> 820
     //   803: aload 10
     //   805: astore 11
     //   807: aload_1
-    //   808: getfield 151	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
+    //   808: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
     //   811: aload_1
     //   812: bipush 112
-    //   814: invokestatic 157	com/tencent/component/media/image/ImageManager:getErrorString	(Lcom/tencent/component/media/image/ImageKey;I)Ljava/lang/String;
-    //   817: putfield 162	com/tencent/component/media/image/ImageLoader$Options:errCode	Ljava/lang/String;
+    //   814: invokestatic 170	com/tencent/component/media/image/ImageManager:getErrorString	(Lcom/tencent/component/media/image/ImageKey;I)Ljava/lang/String;
+    //   817: putfield 175	com/tencent/component/media/image/ImageLoader$Options:errCode	Ljava/lang/String;
     //   820: aload 10
     //   822: astore 11
-    //   824: getstatic 36	com/tencent/component/media/image/DecodeImageTask:TAG	Ljava/lang/String;
+    //   824: getstatic 34	com/tencent/component/media/image/DecodeImageTask:TAG	Ljava/lang/String;
     //   827: aload 12
-    //   829: invokestatic 654	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   832: invokestatic 147	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   829: invokestatic 674	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   832: invokestatic 160	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   835: aload 10
     //   837: astore 11
-    //   839: invokestatic 357	java/lang/System:currentTimeMillis	()J
+    //   839: invokestatic 370	java/lang/System:currentTimeMillis	()J
     //   842: lstore 7
     //   844: aload 10
     //   846: astore 11
-    //   848: invokestatic 250	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   848: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
     //   851: aload 13
     //   853: aload_1
-    //   854: getfield 109	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   854: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
     //   857: lload_3
     //   858: iconst_0
     //   859: lload 7
     //   861: lload 5
     //   863: lsub
     //   864: iconst_4
-    //   865: invokevirtual 618	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
+    //   865: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
     //   868: aload 10
     //   870: astore 11
-    //   872: invokestatic 250	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   872: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
     //   875: aload 13
     //   877: aload_1
-    //   878: getfield 109	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   878: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
     //   881: lload_3
-    //   882: ldc_w 350
-    //   885: ldc_w 660
-    //   888: invokestatic 357	java/lang/System:currentTimeMillis	()J
-    //   891: invokevirtual 361	com/tencent/component/media/ImageManagerEnv:reportImageDecodingTask	(Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;J)V
+    //   882: ldc_w 363
+    //   885: ldc_w 680
+    //   888: invokestatic 370	java/lang/System:currentTimeMillis	()J
+    //   891: invokevirtual 374	com/tencent/component/media/ImageManagerEnv:reportImageDecodingTask	(Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;J)V
     //   894: aload 10
     //   896: ifnull -777 -> 119
     //   899: aload 10
-    //   901: invokevirtual 646	java/io/FileInputStream:close	()V
+    //   901: invokevirtual 666	java/io/FileInputStream:close	()V
     //   904: return
     //   905: astore_1
     //   906: return
@@ -921,7 +924,7 @@ public class DecodeImageTask
     //   911: aload 11
     //   913: ifnull +8 -> 921
     //   916: aload 11
-    //   918: invokevirtual 646	java/io/FileInputStream:close	()V
+    //   918: invokevirtual 666	java/io/FileInputStream:close	()V
     //   921: aload_1
     //   922: athrow
     //   923: astore 10
@@ -939,15 +942,15 @@ public class DecodeImageTask
     //   948: astore 12
     //   950: aload 13
     //   952: astore 10
-    //   954: ldc 242
+    //   954: ldc 255
     //   956: astore 13
     //   958: goto -166 -> 792
     //   961: astore 12
-    //   963: ldc 242
+    //   963: ldc 255
     //   965: astore 13
     //   967: goto -175 -> 792
     //   970: astore 12
-    //   972: ldc 242
+    //   972: ldc 255
     //   974: astore 13
     //   976: goto -184 -> 792
     //   979: astore 12
@@ -955,15 +958,15 @@ public class DecodeImageTask
     //   984: astore 12
     //   986: aload 14
     //   988: astore 10
-    //   990: ldc 242
+    //   990: ldc 255
     //   992: astore 13
     //   994: goto -326 -> 668
     //   997: astore 12
-    //   999: ldc 242
+    //   999: ldc 255
     //   1001: astore 13
     //   1003: goto -335 -> 668
     //   1006: astore 12
-    //   1008: ldc 242
+    //   1008: ldc 255
     //   1010: astore 13
     //   1012: goto -344 -> 668
     //   1015: astore 12
@@ -971,15 +974,15 @@ public class DecodeImageTask
     //   1020: astore 12
     //   1022: aconst_null
     //   1023: astore 10
-    //   1025: ldc 242
+    //   1025: ldc 255
     //   1027: astore 13
     //   1029: goto -496 -> 533
     //   1032: astore 12
-    //   1034: ldc 242
+    //   1034: ldc 255
     //   1036: astore 13
     //   1038: goto -505 -> 533
     //   1041: astore 12
-    //   1043: ldc 242
+    //   1043: ldc 255
     //   1045: astore 13
     //   1047: goto -514 -> 533
     //   1050: astore 12
@@ -1331,12 +1334,14 @@ public class DecodeImageTask
   
   private void processBitmap(BitmapReference paramBitmapReference, ImageKey paramImageKey, int paramInt, boolean paramBoolean, String paramString)
   {
+    long l;
     Object localObject;
     int j;
     int k;
     int i;
     if (paramBitmapReference != null)
     {
+      l = System.nanoTime();
       ImageManager.getInstance().updateLruFile(paramImageKey);
       localObject = paramBitmapReference;
       if (paramBoolean) {
@@ -1351,7 +1356,7 @@ public class DecodeImageTask
         k = paramImageKey.options.clipHeight;
       }
       if ((!paramImageKey.needSuperResolution) || (!ImageManagerEnv.g().enableSuperResolution()) || (paramImageKey.url == null) || (!paramImageKey.url.contains("sce="))) {
-        break label950;
+        break label1003;
       }
       if ((ImageManagerEnv.g().checkShouldRunSuperResolutionBenchmark()) && (ImageManagerEnv.g().needRerunSuperResolutionBenchmark(paramImageKey.url))) {
         ImageManagerEnv.g().clearSuperResolutionBenchmark();
@@ -1384,7 +1389,7 @@ public class DecodeImageTask
           ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, paramInt, new FeedsBitmapImage(paramString), paramBitmapReference, paramImageKey.options);
           setResult(8, new Object[] { paramBitmapReference, paramString, paramImageKey.urlKey, Integer.valueOf(paramInt), new FeedsBitmapImage(paramString), paramBitmapReference });
           ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
-          label367:
+          label372:
           ImageTracer.endDecode(paramImageKey.url);
         }
       }
@@ -1395,15 +1400,18 @@ public class DecodeImageTask
           ImageTracer.reportDecodeTime(paramImageKey.url, false);
           ImageTracer.reportDownloadTime(paramImageKey.url, false);
         }
+        if (System.nanoTime() - l > MIN_LOG_DECODE_COST) {
+          ImageManagerLog.w(TAG, "processBitmap: " + paramImageKey.url + " cost too much time");
+        }
         return;
         if (!ImageManagerEnv.g().needSuperResolution(paramImageKey.url)) {
-          break label950;
+          break label1003;
         }
         i = ((BitmapImage)localObject).getBitmap().getWidth();
         int m = ((BitmapImage)localObject).getBitmap().getHeight();
         ImageManagerLog.d(TAG, "super resolution. width=" + i + " height=" + m + " url=" + paramImageKey.url);
         if (!ImageManagerEnv.g().canDoSuperResolution(i, m)) {
-          break label950;
+          break label1003;
         }
         paramBitmapReference = ((BitmapImage)localObject).getBitmap().getBitmap();
         ImageTracer.requestSuperResolution(paramImageKey.url);
@@ -1417,13 +1425,13 @@ public class DecodeImageTask
           ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, paramInt, (Image)localObject, paramBitmapReference, paramImageKey.options);
           setResult(8, new Object[] { paramBitmapReference, paramString, paramImageKey.urlKey, Integer.valueOf(paramInt), localObject, paramBitmapReference });
           ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
-          break label367;
+          break label372;
         }
         paramString = ((BitmapImage)localObject).getBitmap();
         ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, paramInt, (Image)localObject, paramBitmapReference, paramImageKey.options);
         setResult(8, new Object[] { paramBitmapReference, paramString, paramImageKey.urlKey, Integer.valueOf(paramInt), localObject, paramBitmapReference });
         ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
-        break label367;
+        break label372;
         paramBitmapReference = new SpecifiedBitmapDrawable(((BitmapImage)localObject).getBitmap());
         ImageTracer.endDecode(paramImageKey.url);
         ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, paramInt, (Image)localObject, paramBitmapReference, paramImageKey.options);
@@ -1443,7 +1451,7 @@ public class DecodeImageTask
       ImageTaskTracer.addImageDecodeFailedRecord(paramImageKey.hashCodeEx());
       ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
       return;
-      label950:
+      label1003:
       i = 0;
     }
   }

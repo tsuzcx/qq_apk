@@ -1,22 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
-
-public class adhv
-  extends AnimatorListenerAdapter
+class adhv
+  implements ajpy
 {
-  public adhv(HeartCombolEffectView paramHeartCombolEffectView) {}
+  adhv(adhu paramadhu) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(boolean paramBoolean, ajco paramajco)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.setVisibility(8);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.a.setVisibility(8);
+    if ((paramBoolean) && (paramajco != null)) {
+      paramajco.f();
+    }
   }
 }
 

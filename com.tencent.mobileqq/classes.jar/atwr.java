@@ -1,20 +1,13 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
+import android.widget.TextView;
 
 public class atwr
-  implements Comparator<atwm>
+  extends atuy
 {
-  Point jdField_a_of_type_AndroidGraphicsPoint;
+  public TextView g;
   
-  public atwr(TagCloudView paramTagCloudView, Point paramPoint)
+  public atwr(atwq paramatwq)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-  }
-  
-  public int a(atwm paramatwm1, atwm paramatwm2)
-  {
-    return TagCloudView.a(paramatwm1.a(), this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramatwm2.a(), this.jdField_a_of_type_AndroidGraphicsPoint);
+    super(paramatwq);
   }
 }
 

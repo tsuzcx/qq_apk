@@ -1,11 +1,14 @@
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
+
 public class tkd
-  extends tjs
+  extends ssk
 {
-  public uiw a;
+  public List<umx> a;
   
-  public tkd(String paramString)
+  public tkd(ErrorMessage paramErrorMessage)
   {
-    super(paramString);
+    this.a = paramErrorMessage;
   }
 }
 

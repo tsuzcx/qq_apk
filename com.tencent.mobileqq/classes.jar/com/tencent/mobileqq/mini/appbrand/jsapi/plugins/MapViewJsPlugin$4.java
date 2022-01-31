@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
-import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.MapContext;
@@ -17,17 +14,15 @@ class MapViewJsPlugin$4
   
   public void run()
   {
-    Object localObject1 = ((AppBrandPageContainer)this.this$0.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(this.val$webview.getPageWebViewId());
-    if (localObject1 != null) {}
-    Object localObject2;
-    for (localObject1 = ((AbsAppBrandPage)localObject1).getCurrentWebviewContainer(); localObject1 != null; localObject2 = null) {
+    Object localObject = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
+    if (localObject != null) {
       try
       {
         JSONObject localJSONObject = new JSONObject(this.val$jsonParams);
-        localObject1 = ((WebviewContainer)localObject1).getMapContext(localJSONObject.optInt("mapId"));
-        if (localObject1 != null)
+        localObject = ((WebviewContainer)localObject).getMapContext(localJSONObject.optInt("mapId"));
+        if (localObject != null)
         {
-          ((MapContext)localObject1).addMapPolygons(localJSONObject);
+          ((MapContext)localObject).addMapPolygons(localJSONObject);
           this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$eventName, null, this.val$callbackId);
           return;
         }
@@ -38,7 +33,6 @@ class MapViewJsPlugin$4
       {
         QLog.e("[mini] MapViewJsPlugin", 1, this.val$eventName + " error.", localJSONException);
         this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$eventName, null, this.val$callbackId);
-        return;
       }
     }
   }

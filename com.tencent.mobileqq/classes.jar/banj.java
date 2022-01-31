@@ -1,189 +1,410 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Canvas;
+import android.text.Layout.Alignment;
+import android.text.SpannableString;
+import android.text.SpannedString;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.text.TextUtils.TruncateAt;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
-import java.util.Map;
+import java.util.ArrayList;
 
-class banj
-  extends VasQuickUpdateManager.CallBacker
+public class banj
 {
-  banj(bani parambani) {}
+  private int jdField_a_of_type_Int;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private int jdField_c_of_type_Int;
+  private ArrayList<CharSequence> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+  private int d;
+  private int e;
+  private int f;
+  private int g;
+  private int h;
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public banj(EllipsizingTextView paramEllipsizingTextView) {}
+  
+  private float a(int paramInt, TextUtils.TruncateAt paramTruncateAt)
   {
-    if ((16L != paramLong) || (TextUtils.isEmpty(paramString1))) {
+    int i = b() - (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText("...");
+    if (paramTruncateAt == TextUtils.TruncateAt.MIDDLE)
+    {
+      if (this.h <= 0) {
+        return i / 2;
+      }
+      if (paramInt == 1)
+      {
+        if (i < this.h) {
+          return i;
+        }
+        return this.h;
+      }
+      if (i < this.h) {
+        return 0.0F;
+      }
+      return i - this.h;
+    }
+    if (paramTruncateAt == TextUtils.TruncateAt.END)
+    {
+      if (this.h <= 0) {
+        return i;
+      }
+      if (i < this.h) {
+        return i;
+      }
+      return i - this.h;
+    }
+    return i;
+  }
+  
+  private int a(String paramString)
+  {
+    return (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramString, 0, paramString.length());
+  }
+  
+  private int a(String paramString, int paramInt)
+  {
+    if ((paramString == null) || (paramInt < 0) || (paramInt > paramString.length() - 1)) {
+      return 0;
+    }
+    char c1 = paramString.charAt(paramInt);
+    paramString = new float[1];
+    this.jdField_a_of_type_AndroidTextTextPaint.getTextWidths(String.valueOf(c1), paramString);
+    return (int)Math.ceil(paramString[0]);
+  }
+  
+  private String a(int paramInt)
+  {
+    int k = (int)a(0, TextUtils.TruncateAt.MIDDLE);
+    int m = this.jdField_a_of_type_JavaLangString.length();
+    int j = 0;
+    int i = paramInt;
+    for (;;)
+    {
+      if (i < m)
+      {
+        j += a(this.jdField_a_of_type_JavaLangString, i);
+        if (j <= k) {}
+      }
+      else
+      {
+        return this.jdField_a_of_type_JavaLangString.substring(paramInt, i);
+      }
+      i += 1;
+    }
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_b_of_type_JavaUtilArrayList.clear();
+    this.jdField_c_of_type_JavaUtilArrayList.clear();
+    int n = b();
+    if (n <= 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("EllipsizingTextView", 2, "lineWidth=" + n);
+      }
       return;
     }
-    label94:
-    boolean bool;
-    label118:
-    int i;
-    if ((QLog.isColorLevel()) || (paramInt1 != 0))
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    label71:
+    if (i < this.jdField_a_of_type_JavaLangString.length())
     {
-      localObject1 = new StringBuilder().append("callBacker, from:").append(paramString3).append(",httpCode=").append(paramInt2).append(",errorCode:").append(paramInt1).append(", scid:").append(paramString1).append(", cfgScid:").append(paramString2);
-      if (paramInt1 != 0)
-      {
-        paramVasQuickUpdateManager = ", Error ";
-        QLog.d("IndividualRedPacketResDownloader", 2, paramVasQuickUpdateManager);
+      if (this.jdField_a_of_type_JavaLangString.charAt(i) != '\n') {
+        break label166;
       }
-    }
-    else
-    {
-      if (paramInt1 != 0) {
-        break label328;
+      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString.substring(k, i));
+      if (EllipsizingTextView.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView)) {
+        this.jdField_c_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, i));
       }
-      bool = true;
-      if (!bool) {
-        break label334;
-      }
-      i = 2;
-    }
-    label328:
-    label334:
-    label340:
-    do
-    {
-      for (;;)
-      {
-        try
-        {
-          if (!"iRedPacket_v3.json".equals(paramString1)) {
-            break label340;
-          }
-          this.a.a(true, false);
-          if (QLog.isColorLevel()) {
-            QLog.d("IndividualRedPacketResDownloader", 2, "callBacker, from:" + paramString3 + ",httpCode=" + paramInt2 + ",errorCode:" + paramInt1 + ", scid:" + paramString1 + ", cfgScid:" + paramString2 + ", downloadOK=" + bool);
-          }
-          if ((TextUtils.isEmpty(paramString3)) || (!paramString3.startsWith("silent_download.redbag"))) {
-            break;
-          }
-          this.a.a();
-          return;
-        }
-        catch (Exception paramVasQuickUpdateManager)
-        {
-          QLog.d("IndividualRedPacketResDownloader", 2, "callBacker, from:" + paramString3 + ",httpCode=" + paramInt2 + ",errorCode:" + paramInt1 + ", scid:" + paramString1 + ", cfgScid:" + paramString2, paramVasQuickUpdateManager);
-          return;
-        }
-        paramVasQuickUpdateManager = ", ok ";
-        break label94;
-        bool = false;
-        break label118;
-        i = -1;
-        continue;
-        if ("iRedPacket_v3.char300.json".equals(paramString1))
-        {
-          if (bool)
-          {
-            paramVasQuickUpdateManager = BaseApplicationImpl.getContext().getFilesDir() + File.separator + "pddata/vas/redpacket/" + "iRedPacket_v3.char300.json";
-            paramVasQuickUpdateManager = VasQuickUpdateManager.getFileFromLocal(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 16L, "iRedPacket_v3.char300.json", paramVasQuickUpdateManager, false, this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-            this.a.a(true, false, paramString1, paramVasQuickUpdateManager);
-          }
-          localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          ??? = ajkz.c;
-          if (!bool) {
-            break label1059;
-          }
-          paramVasQuickUpdateManager = "1";
-          awqx.b((QQAppInterface)localObject1, "CliOper", "", "", "0X800612D", "0X800612D", 0, 0, (String)???, paramVasQuickUpdateManager, "1", "");
-        }
-        else if ("iRedPacket_v3.font.zip".equals(paramString1))
-        {
-          this.a.jdField_a_of_type_Bann.e = i;
-          if (bool)
-          {
-            paramVasQuickUpdateManager = new File(ajkz.a(null, null, 21, 0, 0));
-            this.a.a(true, false, paramString1, paramVasQuickUpdateManager);
-          }
-          localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          ??? = ajkz.c;
-          if (!bool) {
-            break label1066;
-          }
-          paramVasQuickUpdateManager = "1";
-          awqx.b((QQAppInterface)localObject1, "CliOper", "", "", "0X800612C", "0X800612C", 0, 0, (String)???, paramVasQuickUpdateManager, "1", "");
-        }
-        else
-        {
-          if (!"iRedPacket_v3.specialChar.zip".equals(paramString1)) {
-            break label647;
-          }
-          this.a.b.e = i;
-          if (bool)
-          {
-            paramVasQuickUpdateManager = new File(ajkz.a(null, null, 25, 0, 0));
-            this.a.a(true, false, paramString1, paramVasQuickUpdateManager);
-          }
-        }
-      }
-    } while (!paramString1.startsWith("luckyMoney.item."));
-    label453:
-    Object localObject1 = ajkz.a(paramString1);
-    label560:
-    if (bool)
-    {
-      paramVasQuickUpdateManager = this.a.a((String)localObject1);
-      if ((paramVasQuickUpdateManager != null) && (this.a.jdField_a_of_type_Ajkz != null))
-      {
-        ??? = ajkz.a((String)localObject1, null, paramVasQuickUpdateManager.jdField_a_of_type_Banl.f, paramVasQuickUpdateManager.jdField_a_of_type_Banl.d, 0);
-        ??? = (String)??? + "_dir2";
-        VasQuickUpdateEngine.safeDeleteFile(new File((String)???));
-        if (QLog.isColorLevel()) {
-          QLog.d("IndividualRedPacketResDownloader", 2, "callBacker delete animateDir: " + (String)???);
-        }
-      }
+      this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
+      k = i + 1;
+      j = 0;
     }
     for (;;)
     {
-      label647:
-      synchronized (this.a.jdField_a_of_type_JavaUtilMap)
-      {
-        if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(localObject1)) {
-          break label998;
-        }
-        localObject3 = (List)this.a.jdField_a_of_type_JavaUtilMap.get(localObject1);
-        i = 0;
-        if (i < ((List)localObject3).size())
-        {
-          String str = (String)((List)localObject3).get(i);
-          if (TextUtils.isEmpty(str)) {
-            break label1073;
-          }
-          this.a.jdField_a_of_type_Ajkz.a(str, paramVasQuickUpdateManager.jdField_a_of_type_Banl.f);
-          this.a.jdField_a_of_type_Ajkz.a(str + "_tp", paramVasQuickUpdateManager.b.f);
-          this.a.jdField_a_of_type_Ajkz.a(str + "_send", paramVasQuickUpdateManager.c.f);
-        }
-      }
-      this.a.jdField_a_of_type_JavaUtilMap.remove(paramVasQuickUpdateManager.jdField_a_of_type_JavaLangString);
-      label998:
-      ??? = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      Object localObject3 = ajkz.c;
-      if (bool) {}
-      for (paramVasQuickUpdateManager = "1";; paramVasQuickUpdateManager = "0")
-      {
-        awqx.b((QQAppInterface)???, "CliOper", "", "", "0X800612E", "0X800612E", 0, 0, (String)localObject3, paramVasQuickUpdateManager, "1", (String)localObject1);
-        break;
-      }
-      label1059:
-      paramVasQuickUpdateManager = "0";
-      break label453;
-      label1066:
-      paramVasQuickUpdateManager = "0";
-      break label560;
-      label1073:
       i += 1;
+      break label71;
+      break;
+      label166:
+      int m = a(this.jdField_a_of_type_JavaLangString.substring(k, i + 1));
+      if (m > n)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString.substring(k, i));
+        if (EllipsizingTextView.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView)) {
+          this.jdField_c_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, i));
+        }
+        this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_JavaLangString.length()) {
+          break;
+        }
+        k = i;
+        i -= 1;
+        j = 0;
+        continue;
+      }
+      if (i == this.jdField_a_of_type_JavaLangString.length() - 1)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString.substring(k, this.jdField_a_of_type_JavaLangString.length()));
+        if (EllipsizingTextView.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView)) {
+          this.jdField_c_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, this.jdField_a_of_type_JavaLangCharSequence.length()));
+        }
+        this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(m));
+      }
+      else
+      {
+        j = m;
+      }
+    }
+  }
+  
+  private int b()
+  {
+    return this.jdField_a_of_type_Int - this.f - this.d;
+  }
+  
+  private String b(int paramInt)
+  {
+    int k = (int)a(1, TextUtils.TruncateAt.MIDDLE);
+    int j = 0;
+    int i = paramInt;
+    for (;;)
+    {
+      if (i > 0)
+      {
+        j += a(this.jdField_a_of_type_JavaLangString, i);
+        if (j <= k) {}
+      }
+      else
+      {
+        return this.jdField_a_of_type_JavaLangString.substring(i + 1, paramInt + 1);
+      }
+      i -= 1;
+    }
+  }
+  
+  private String c(int paramInt)
+  {
+    int k = this.jdField_a_of_type_JavaLangString.length();
+    int m = (int)a(1, TextUtils.TruncateAt.END);
+    int j = 0;
+    int i = paramInt;
+    for (;;)
+    {
+      if ((i >= k) || (j > m))
+      {
+        if (i - 1 >= paramInt) {
+          break;
+        }
+        return "";
+      }
+      j += a(this.jdField_a_of_type_JavaLangString, i);
+      i += 1;
+    }
+    if (i - 1 > k) {
+      return this.jdField_a_of_type_JavaLangString.substring(paramInt, k);
+    }
+    return this.jdField_a_of_type_JavaLangString.substring(paramInt, i - 1);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = 0;
+    int j = 0;
+    while (i <= paramInt)
+    {
+      j += ((String)this.jdField_a_of_type_JavaUtilArrayList.get(i)).length();
+      i += 1;
+    }
+    if (j <= 0) {
+      return 0;
+    }
+    return j - 1;
+  }
+  
+  public void a(Canvas paramCanvas, TextUtils.TruncateAt paramTruncateAt)
+  {
+    int j;
+    int m;
+    Object localObject1;
+    int k;
+    label39:
+    String str;
+    Object localObject2;
+    int i;
+    if ((this.jdField_c_of_type_Int > 0) && (this.jdField_c_of_type_Int <= this.jdField_a_of_type_JavaUtilArrayList.size()))
+    {
+      j = this.jdField_c_of_type_Int;
+      m = b();
+      localObject1 = null;
+      k = 0;
+      if (k >= j) {
+        break label758;
+      }
+      str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(k);
+      localObject2 = localObject1;
+      if (EllipsizingTextView.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView))
+      {
+        localObject2 = localObject1;
+        if (this.jdField_c_of_type_JavaUtilArrayList.size() > k) {
+          localObject2 = (CharSequence)this.jdField_c_of_type_JavaUtilArrayList.get(k);
+        }
+      }
+      i = ((Integer)this.jdField_b_of_type_JavaUtilArrayList.get(k)).intValue();
+      if (paramTruncateAt != TextUtils.TruncateAt.END) {
+        break label462;
+      }
+      if ((j < 2) || (k != j - 1) || (k >= this.jdField_a_of_type_JavaUtilArrayList.size() - 1)) {
+        break label359;
+      }
+      i = a(j - 2);
+      str = c(i + 1) + "...";
+      localObject1 = str;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label759;
+      }
+      i = (m - a(str)) / 2;
+      localObject1 = str;
+    }
+    for (;;)
+    {
+      label219:
+      if ((EllipsizingTextView.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView)) && (localObject2 != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("EllipsizingTextView", 2, "text is " + ((CharSequence)localObject2).toString() + "and i is" + k + " offset: " + i);
+        }
+        if (k == 0)
+        {
+          paramCanvas.translate(i + this.d, 0.0F);
+          new StaticLayout((CharSequence)localObject2, this.jdField_a_of_type_AndroidTextTextPaint, paramCanvas.getWidth(), Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false).draw(paramCanvas);
+        }
+      }
+      for (;;)
+      {
+        label307:
+        k += 1;
+        localObject1 = localObject2;
+        break label39;
+        j = this.jdField_a_of_type_JavaUtilArrayList.size();
+        break;
+        label359:
+        if ((k == j - 1) && (k < this.jdField_a_of_type_JavaUtilArrayList.size() - 1))
+        {
+          str = c(0) + "...";
+          localObject1 = str;
+          if (!this.jdField_a_of_type_Boolean) {
+            break label759;
+          }
+          i = (m - a(str)) / 2;
+          localObject1 = str;
+          break label219;
+        }
+        localObject1 = str;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label759;
+        }
+        i = (m - i) / 2;
+        localObject1 = str;
+        break label219;
+        label462:
+        localObject1 = str;
+        if (paramTruncateAt != TextUtils.TruncateAt.MIDDLE) {
+          break label759;
+        }
+        if ((j >= 2) && (k == j - 1) && (k < this.jdField_a_of_type_JavaUtilArrayList.size() - 1))
+        {
+          i = a(j - 2);
+          str = a(i + 1) + "..." + b(this.jdField_a_of_type_JavaLangString.length() - 1);
+          localObject1 = str;
+          if (!this.jdField_a_of_type_Boolean) {
+            break label759;
+          }
+          i = (m - a(str)) / 2;
+          localObject1 = str;
+          break label219;
+        }
+        if ((k == j - 1) && (k < this.jdField_a_of_type_JavaUtilArrayList.size() - 1))
+        {
+          str = a(0) + "..." + b(this.jdField_a_of_type_JavaLangString.length() - 1);
+          localObject1 = str;
+          if (!this.jdField_a_of_type_Boolean) {
+            break label759;
+          }
+          i = (m - a(str)) / 2;
+          localObject1 = str;
+          break label219;
+        }
+        localObject1 = str;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label759;
+        }
+        i = (m - i) / 2;
+        localObject1 = str;
+        break label219;
+        paramCanvas.translate(0.0F, this.jdField_b_of_type_Int);
+        break label307;
+        paramCanvas.drawText(localObject1, i + this.d, this.jdField_a_of_type_AndroidTextTextPaint.getTextSize() + this.jdField_b_of_type_Int * k + this.e, this.jdField_a_of_type_AndroidTextTextPaint);
+      }
+      label758:
+      return;
+      label759:
+      i = 0;
+    }
+  }
+  
+  public void a(CharSequence paramCharSequence, TextView paramTextView, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if ((paramCharSequence == null) || (paramTextView == null)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    if (EllipsizingTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView))
+    {
+      if (!(paramCharSequence instanceof SpannableString)) {
+        break label128;
+      }
+      EllipsizingTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView, true);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
+      this.jdField_a_of_type_AndroidTextTextPaint = paramTextView.getPaint();
+      this.jdField_a_of_type_Int = paramTextView.getMeasuredWidth();
+      this.jdField_b_of_type_Int = paramTextView.getLineHeight();
+      this.d = paramTextView.getPaddingLeft();
+      this.e = paramTextView.getPaddingTop();
+      this.f = paramTextView.getPaddingRight();
+      this.g = paramTextView.getPaddingBottom();
+      this.jdField_c_of_type_Int = paramInt1;
+      this.h = paramInt2;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      a();
+      return;
+      label128:
+      if ((paramCharSequence instanceof SpannedString)) {
+        EllipsizingTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView, true);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     banj
  * JD-Core Version:    0.7.0.1
  */

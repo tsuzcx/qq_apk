@@ -1,19 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public class quq
-  implements DialogInterface.OnClickListener
+public abstract interface quq
 {
-  public quq(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog change cancel");
-    }
-  }
+  public abstract void a(boolean paramBoolean, BaseArticleInfo paramBaseArticleInfo);
 }
 
 

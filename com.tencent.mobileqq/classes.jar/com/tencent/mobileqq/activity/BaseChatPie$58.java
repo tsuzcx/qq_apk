@@ -7,7 +7,7 @@ class BaseChatPie$58
   
   public void run()
   {
-    this.this$0.ba();
+    this.this$0.bc();
   }
 }
 

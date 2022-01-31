@@ -1,143 +1,49 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.ActionSheetHelper.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.core.ViolaInstance;
-import java.lang.ref.WeakReference;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommentHeaderData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendTitleData;
 
-public class rkr
-  implements begz
+class rkr
+  extends rkj
 {
-  public static String a;
-  private int jdField_a_of_type_Int;
-  private begr jdField_a_of_type_Begr;
-  private WeakReference<BridgeModule> jdField_a_of_type_JavaLangRefWeakReference;
-  public boolean a;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private View b;
+  private View c;
   
-  static
+  public rkr(rkn paramrkn, View paramView, BaseData paramBaseData)
   {
-    jdField_a_of_type_JavaLangString = "BridgeModule.ActionSheetHelper";
+    super(paramView, paramBaseData);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378378));
+    this.b = paramView.findViewById(2131365276);
+    this.c = paramView.findViewById(2131376353);
   }
   
-  public rkr(BridgeModule paramBridgeModule)
+  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBridgeModule);
-  }
-  
-  private void b(JSONObject paramJSONObject, String paramString)
-  {
-    int k = 0;
-    if ((paramJSONObject == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null)) {}
-    Object localObject1;
-    do
+    paramBaseData1 = "";
+    if (paramBaseData2.p == 7)
     {
-      return;
-      localObject1 = ((BridgeModule)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getViolaInstance().getActivity();
-    } while (localObject1 == null);
+      paramBaseData1 = ((RecommendTitleData)paramBaseData2).jdField_a_of_type_JavaLangString;
+      this.b.setVisibility(0);
+    }
     for (;;)
     {
-      int n;
-      try
-      {
-        localObject1 = begr.a((Context)localObject1);
-        Object localObject2 = paramJSONObject.optString("title");
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          ((begr)localObject1).a((CharSequence)localObject2);
-        }
-        localObject2 = paramJSONObject.optJSONArray("items");
-        int m = paramJSONObject.optInt("selected", -1);
-        this.jdField_a_of_type_Boolean = false;
-        String str = paramJSONObject.optString("close");
-        if (TextUtils.isEmpty(str)) {
-          break label367;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        ((begr)localObject1).a(str, 3);
-        i = 1;
-        j = i;
-        if (localObject2 != null)
-        {
-          j = i;
-          if (((JSONArray)localObject2).length() > 0)
-          {
-            n = ((JSONArray)localObject2).length();
-            j = k;
-            if (m >= 0)
-            {
-              j = k;
-              if (m < n)
-              {
-                j = 0;
-                if (j >= n) {
-                  break label378;
-                }
-                str = ((JSONArray)localObject2).getString(j);
-                if (j != m) {
-                  break label372;
-                }
-                bool = true;
-                ((begr)localObject1).a(str, bool);
-                j += 1;
-                continue;
-              }
-            }
-            if (j >= n) {
-              break label378;
-            }
-            ((begr)localObject1).c(((JSONArray)localObject2).getString(j));
-            j += 1;
-            continue;
-          }
-        }
-        paramJSONObject = paramJSONObject.optString("cancel");
-        if (!TextUtils.isEmpty(paramJSONObject)) {
-          ((begr)localObject1).d(paramJSONObject);
-        }
-        ((begr)localObject1).a(new rks(this, paramString));
-        ((begr)localObject1).a(new rkt(this, paramString));
-        ((begr)localObject1).setOnCancelListener(new rku(this, paramString));
-        ((begr)localObject1).a(this);
-        this.jdField_a_of_type_Begr = ((begr)localObject1);
-        this.jdField_a_of_type_Int = j;
-        this.jdField_a_of_type_Begr.show();
-        return;
-      }
-      catch (JSONException paramJSONObject) {}
-      if (!QLog.isColorLevel()) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      if ((paramBaseData2.p != 7) || (!((RecommendTitleData)paramBaseData2).jdField_a_of_type_Boolean)) {
         break;
       }
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "showActionSheet error:" + paramJSONObject.getMessage());
+      this.c.setVisibility(8);
       return;
-      label367:
-      int i = 0;
-      continue;
-      label372:
-      boolean bool = false;
-      continue;
-      label378:
-      int j = i + n;
+      if (paramBaseData2.p == 13)
+      {
+        paramBaseData1 = ((CommentHeaderData)paramBaseData2).jdField_a_of_type_JavaLangString;
+        this.b.setVisibility(8);
+      }
     }
+    this.c.setVisibility(0);
   }
-  
-  public void a(JSONObject paramJSONObject, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return;
-    }
-    if (Looper.myLooper() == null) {
-      Looper.prepare();
-    }
-    new Handler(BaseActivity.sTopActivity.getMainLooper()).post(new ActionSheetHelper.1(this, paramJSONObject, paramString));
-  }
-  
-  public void an_() {}
 }
 
 

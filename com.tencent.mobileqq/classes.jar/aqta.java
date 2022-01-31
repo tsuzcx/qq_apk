@@ -1,39 +1,17 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 
 public class aqta
-  implements wiu
+  implements View.OnClickListener
 {
-  public aqta(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public aqta(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQGameMsgInfo paramQQGameMsgInfo) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    paramBundle = paramBundle.getString("sayhiinfo");
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      if (TextUtils.isEmpty(paramBundle)) {
-        localJSONObject.put("result", "fail");
-      }
-      for (;;)
-      {
-        paramBundle = localJSONObject.toString();
-        QLog.i("UiApiPlugin", 1, "getTribeSayHelloRedInfo callback result = " + paramBundle);
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-        return;
-        localJSONObject.put("result", "success");
-        localJSONObject.put("data", new JSONObject(paramBundle));
-      }
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      QLog.e("UiApiPlugin", 1, "getTribeSayHelloRedInfo callback Exception:", paramBundle);
-    }
+    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId);
   }
 }
 

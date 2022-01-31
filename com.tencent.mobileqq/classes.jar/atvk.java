@@ -1,41 +1,31 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ObjectAnimator;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import java.util.List;
 
 public class atvk
-  implements Animator.AnimatorListener
+  implements atvw
 {
-  public atvk(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ObjectAnimator paramObjectAnimator) {}
+  public atvk(NearbyMomentFragment paramNearbyMomentFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(boolean paramBoolean1, List<atwv> paramList, boolean paramBoolean2, int paramInt)
   {
-    paramAnimator = (ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget();
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {}
-    for (int i = 2130844743;; i = 2130844735)
+    NearbyMomentFragment.a(this.a, false);
+    if (paramBoolean1)
     {
-      paramAnimator.setImageResource(i);
-      ((ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget()).setRotation(0.0F);
-      return;
+      NearbyMomentFragment.b(this.a, paramBoolean2);
+      if (paramBoolean2) {
+        NearbyMomentFragment.a(this.a).setText(ajyc.a(2131707213));
+      }
+      NearbyMomentFragment.a(this.a, paramInt);
+      if ((paramList != null) && (paramList.size() > 0))
+      {
+        paramList = NearbyMomentFragment.a(this.a, paramList);
+        NearbyMomentFragment.a(this.a).addAll(paramList);
+        NearbyMomentFragment.a(this.a).b(paramList);
+        NearbyMomentFragment.a(this.a, paramList);
+      }
     }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    paramAnimator = (ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget();
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {}
-    for (int i = 2130844743;; i = 2130844735)
-    {
-      paramAnimator.setImageResource(i);
-      ((ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget()).setRotation(0.0F);
-      return;
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,21 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import mqq.app.AppRuntime.Status;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class atjw
-  implements DialogInterface.OnClickListener
+public class atjw
+  implements View.OnClickListener
 {
-  atjw(atjj paramatjj, AppRuntime.Status paramStatus, long paramLong) {}
+  public atjw(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    atjj.a(this.jdField_a_of_type_Atjj, this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
-    awqx.b(atjj.a(this.jdField_a_of_type_Atjj), "dc00898", "", "", "0X8009DE1", "0X8009DE1", 0, 0, "", "", "", "");
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjw
  * JD-Core Version:    0.7.0.1
  */

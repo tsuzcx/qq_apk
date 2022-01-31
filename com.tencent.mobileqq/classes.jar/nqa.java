@@ -1,6 +1,6 @@
-public abstract interface nqa
+public class nqa
 {
-  public abstract void a();
+  public static final String a = ajyc.a(2131716417);
 }
 
 

@@ -1,11 +1,24 @@
-public class bcfh
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import mqq.os.MqqHandler;
+
+class bcfh
+  implements View.OnClickListener
 {
-  public static final String a = bbtm.a().f();
-  public static final String b = bbtm.a().f();
+  bcfh(bcfe parambcfe) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(102));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcfh
  * JD-Core Version:    0.7.0.1
  */

@@ -18,61 +18,63 @@ class OpenDataPlugin$5
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QLog.d("OpenDataPlugin", 1, "getPotentialFriendList receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
+    QLog.d("OpenDataPlugin", 1, "modifyFriendInteractiveStorage receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
     if (paramJSONObject == null)
     {
       GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , ret == null");
       GameLog.vconsoleLog("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , ret == null");
       this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "modifyFriendInteractiveStorage", null, this.val$callbackId);
-    }
-    Object localObject;
-    int i;
-    for (;;)
-    {
       return;
-      if (!paramBoolean) {
-        break label423;
-      }
-      try
+    }
+    if (paramBoolean)
+    {
+      Object localObject;
+      int i;
+      for (;;)
       {
-        localObject = (CloudStorage.StModifyFriendInteractiveStorageRsp)paramJSONObject.get("response");
-        i = paramJSONObject.getInt("retCode");
-        localObject = paramJSONObject.getString("errMsg");
-        paramJSONObject = new JSONObject();
-        if (i == 0)
+        try
         {
+          localObject = (CloudStorage.StModifyFriendInteractiveStorageRsp)paramJSONObject.get("response");
+          i = paramJSONObject.getInt("retCode");
+          localObject = paramJSONObject.getString("errMsg");
+          paramJSONObject = new JSONObject();
+          if (i != 0) {
+            break label408;
+          }
           if ((!TextUtils.isEmpty(this.val$title)) && (!this.val$quiet.booleanValue()))
           {
             localObject = this.val$object + this.val$action;
             String str = "已" + this.val$action + "\n马上QQ告诉好友？";
-            OpenDataPlugin.access$100(this.this$0, (String)localObject, str, "告诉他", Boolean.valueOf(true), "下次吧", new OpenDataPlugin.5.1(this));
+            OpenDataPlugin.access$100(this.this$0, (String)localObject, str, "告诉他", Boolean.valueOf(true), "下次吧", new OpenDataPlugin.5.1(this), new OpenDataPlugin.5.2(this), new OpenDataPlugin.5.3(this));
+            if ((this.this$0.jsPluginEngine == null) || (!(this.this$0.jsPluginEngine instanceof GameJsPluginEngine)) || (((GameJsPluginEngine)this.this$0.jsPluginEngine).getGameJsRuntime(1) == null)) {
+              break;
+            }
+            localObject = ((GameJsPluginEngine)this.this$0.jsPluginEngine).getGameJsRuntime(1);
+            if (localObject == null) {
+              break;
+            }
+            paramJSONObject.put("key", this.val$key);
+            ((GameJsRuntime)localObject).evaluateSubcribeJS("onInteractiveStorageModified", paramJSONObject.toString(), -1);
+            return;
           }
-          if ((this.this$0.jsPluginEngine == null) || (!(this.this$0.jsPluginEngine instanceof GameJsPluginEngine)) || (((GameJsPluginEngine)this.this$0.jsPluginEngine).getGameJsRuntime(1) == null)) {
-            continue;
-          }
-          localObject = ((GameJsPluginEngine)this.this$0.jsPluginEngine).getGameJsRuntime(1);
-          if (localObject == null) {
-            continue;
-          }
-          paramJSONObject.put("key", this.val$key);
-          ((GameJsRuntime)localObject).evaluateSubcribeJS("onInteractiveStorageModified", paramJSONObject.toString(), -1);
         }
+        catch (Exception paramJSONObject)
+        {
+          GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ", paramJSONObject);
+          GameLog.vconsoleLog("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramJSONObject.getMessage());
+          this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "modifyFriendInteractiveStorage", null, this.val$callbackId);
+          return;
+        }
+        this.this$0.jsPluginEngine.callbackJsEventOK(this.val$jsRuntime, "modifyFriendInteractiveStorage", null, this.val$callbackId);
       }
-      catch (Exception paramJSONObject)
-      {
-        GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ", paramJSONObject);
-        GameLog.vconsoleLog("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramJSONObject.getMessage());
-        this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "modifyFriendInteractiveStorage", null, this.val$callbackId);
-        return;
-      }
+      label408:
+      paramJSONObject.put("errMsg", localObject);
+      paramJSONObject.put("errCode", i);
+      GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE ret != null");
+      GameLog.vconsoleLog("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ret != null");
+      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "modifyFriendInteractiveStorage", paramJSONObject, this.val$callbackId);
+      return;
     }
-    paramJSONObject.put("errMsg", localObject);
-    paramJSONObject.put("errCode", i);
-    GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE ret != null");
-    GameLog.vconsoleLog("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ret != null");
-    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "modifyFriendInteractiveStorage", paramJSONObject, this.val$callbackId);
-    return;
-    label423:
     GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , isSuc false");
     GameLog.vconsoleLog("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , isSuc false");
     this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "modifyFriendInteractiveStorage", null, this.val$callbackId);

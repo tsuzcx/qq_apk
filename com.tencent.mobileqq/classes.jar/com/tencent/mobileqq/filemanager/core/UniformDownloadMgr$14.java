@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aome;
-import aomj;
-import apen;
+import apcy;
+import apdd;
+import apwh;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,30 +13,30 @@ import java.util.Set;
 public class UniformDownloadMgr$14
   implements Runnable
 {
-  public UniformDownloadMgr$14(aome paramaome) {}
+  public UniformDownloadMgr$14(apcy paramapcy) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    synchronized (aome.a(this.this$0))
+    synchronized (apcy.a(this.this$0))
     {
-      if (aome.a(this.this$0).size() > 0)
+      if (apcy.a(this.this$0).size() > 0)
       {
-        Iterator localIterator = aome.a(this.this$0).entrySet().iterator();
+        Iterator localIterator = apcy.a(this.this$0).entrySet().iterator();
         while (localIterator.hasNext())
         {
-          aomj localaomj = (aomj)((Map.Entry)localIterator.next()).getValue();
-          if ((localaomj != null) && (localaomj.a != null) && (localaomj.a.b()) && (2 == localaomj.a.g())) {
-            localArrayList.add(localaomj);
+          apdd localapdd = (apdd)((Map.Entry)localIterator.next()).getValue();
+          if ((localapdd != null) && (localapdd.a != null) && (localapdd.a.b()) && (2 == localapdd.a.g())) {
+            localArrayList.add(localapdd);
           }
         }
       }
     }
     ??? = localObject2.iterator();
     while (((Iterator)???).hasNext()) {
-      ((aomj)((Iterator)???).next()).a.e();
+      ((apdd)((Iterator)???).next()).a.e();
     }
-    aome.b(this.this$0);
+    apcy.b(this.this$0);
   }
 }
 

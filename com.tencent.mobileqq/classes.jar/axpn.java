@@ -1,39 +1,61 @@
+import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import java.io.OutputStream;
-import java.net.URL;
+import com.tencent.qphone.base.util.QLog;
 
 public class axpn
 {
-  int jdField_a_of_type_Int;
-  public long a;
-  public atpn a;
-  public atqd a;
-  BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
-  URLDrawableHandler jdField_a_of_type_ComTencentImageURLDrawableHandler;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public MessageForPic a;
-  OutputStream jdField_a_of_type_JavaIoOutputStream;
-  String jdField_a_of_type_JavaLangString;
-  URL jdField_a_of_type_JavaNetURL;
-  boolean jdField_a_of_type_Boolean;
-  public int b = 1;
-  String b;
-  public int c;
-  public String c;
-  public int d = -1;
+  public static String a = "";
   
-  public axpn(axpm paramaxpm)
+  private static String a(String paramString1, String paramString2, String paramString3, axpo paramaxpo, int paramInt)
   {
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_JavaLangString = atpv.a();
+    QLog.e("AVShortVideoReportController", 1, "getReportingDetail");
+    paramString1 = new StringBuilder(64);
+    paramString1.append(paramString2).append('|');
+    paramString1.append(paramString3).append('|');
+    paramString1.append("${count_unknown}").append('|');
+    paramString1.append(paramaxpo.a).append('|');
+    paramString1.append(paramaxpo.b).append('|');
+    paramString1.append(paramaxpo.c).append('|');
+    paramString1.append(paramaxpo.d).append('|');
+    paramString1.append(paramaxpo.e).append('|');
+    paramString1.append(paramaxpo.f).append('|');
+    paramString1.append(paramaxpo.g).append('|');
+    paramString1.append(paramaxpo.h).append('|');
+    paramString1.append(paramaxpo.i).append('|');
+    paramString1.append(paramaxpo.j).append('|');
+    paramString1.append(paramaxpo.k).append('|');
+    paramString1.append(paramaxpo.l).append('|');
+    paramString1.append(paramaxpo.m).append('|');
+    paramString1.append(paramaxpo.n).append('|');
+    paramString1.append(paramaxpo.o).append('|');
+    paramString1.append(paramaxpo.p).append('|');
+    paramString1.append(paramaxpo.q).append('|');
+    paramString1.append(paramaxpo.r).append('|');
+    paramString1.append(paramaxpo.s).append('|');
+    paramString1.append(paramaxpo.t).append('|');
+    paramString1.append(paramaxpo.u).append('|');
+    paramString1.append(paramaxpo.v).append('|');
+    return paramString1.toString();
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, axpo paramaxpo)
+  {
+    paramString1 = a(paramString2, paramString1, paramString3, paramaxpo, 1);
+    if (QLog.isColorLevel()) {
+      QLog.i("AVShortVideoReportController", 2, "POST getReportingDetail=" + paramString1);
+    }
+    paramString3 = new Intent();
+    paramString3.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+    paramString3.putExtra("reporting_tag", paramString2);
+    paramString3.putExtra("reporting_detail", paramString1);
+    paramString3.putExtra("reporting_count", 1);
+    paramString3.putExtra("is_runtime", 0);
+    BaseApplicationImpl.getApplication().sendBroadcast(paramString3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axpn
  * JD-Core Version:    0.7.0.1
  */

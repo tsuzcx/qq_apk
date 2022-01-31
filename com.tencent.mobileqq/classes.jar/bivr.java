@@ -1,37 +1,24 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bivr
-  implements Animator.AnimatorListener
+class bivr
+  implements ViewPager.OnPageChangeListener
 {
-  public bivr(SlideBottomPanel paramSlideBottomPanel) {}
+  bivr(bivq parambivq) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.b = false;
-    this.a.e = false;
-    if (this.a.jdField_a_of_type_Bivd != null) {
-      this.a.jdField_a_of_type_Bivd.hidePanelFinish();
-    }
+    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrollStateChanged");
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.b = false;
-    this.a.e = false;
-    if (this.a.jdField_a_of_type_Bivd != null) {
-      this.a.jdField_a_of_type_Bivd.hidePanelFinish();
-    }
+    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrolled");
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onPageSelected(int paramInt)
   {
-    this.a.jdField_a_of_type_Boolean = true;
+    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageSelected");
   }
 }
 

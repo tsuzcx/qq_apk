@@ -1,21 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import android.os.Bundle;
 
-class acsw
-  implements DialogInterface.OnClickListener
+public abstract interface acsw
 {
-  acsw(acsv paramacsv) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    DoodlePanel.a(this.a.a, false);
-  }
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 

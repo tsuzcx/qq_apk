@@ -1,34 +1,33 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class afrm
-  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  protected afrm(afrl paramafrl) {}
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public afrm(PublicAccountInfo paramPublicAccountInfo)
   {
-    if (paramInt == 3)
-    {
-      this.a.a();
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
   }
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(String paramString)
   {
-    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
-    {
-      if (paramKeyEvent.getAction() == 1) {
-        this.a.a();
-      }
-      return true;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    return false;
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
   }
 }
 

@@ -1,12 +1,32 @@
-import android.os.Bundle;
+import org.json.JSONObject;
 
-public abstract interface wiu
+public class wiu
+  extends JSONObject
 {
-  public abstract void a(Bundle paramBundle);
+  public wiu(wis paramwis, String paramString)
+  {
+    super(paramString);
+  }
+  
+  public int getInt(String paramString)
+  {
+    if (!has(paramString)) {
+      return 0;
+    }
+    return super.getInt(paramString);
+  }
+  
+  public String getString(String paramString)
+  {
+    if (!has(paramString)) {
+      return "";
+    }
+    return super.getString(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wiu
  * JD-Core Version:    0.7.0.1
  */

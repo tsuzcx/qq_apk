@@ -1,28 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin.7;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
 public class barn
-  implements TVK_SDKMgr.InstallListener
+  implements aycb
 {
-  public barn(HealthBusinessPlugin.7 param7) {}
+  public barn(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView, aycb paramaycb) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void a()
   {
-    this.a.this$0.c = ((int)(100.0F * paramFloat));
-    this.a.this$0.b.sendEmptyMessage(2);
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    this.a.this$0.d = paramInt;
-    this.a.this$0.b.sendEmptyMessage(1);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    this.a.this$0.b.sendEmptyMessage(0);
+    if (this.jdField_a_of_type_Aycb != null) {
+      this.jdField_a_of_type_Aycb.a();
+    }
   }
 }
 

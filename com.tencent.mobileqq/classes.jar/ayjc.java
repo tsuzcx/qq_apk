@@ -1,69 +1,47 @@
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.troop.aioapp.GrayGroupAppsDbHelper.1;
-import com.tencent.mobileqq.troop.aioapp.data.GrayGroupAppEntity;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class ayjc
+  extends ayhq
 {
-  private final QQAppInterface a;
+  protected int a;
   
-  ayjc(QQAppInterface paramQQAppInterface)
+  public ayjc(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
-    this.a = paramQQAppInterface;
+    super(paramQQAppInterface, paramContext, paramBaseAdapter, paramInt);
+    this.jdField_a_of_type_Int = 0;
   }
   
-  private void a(boolean paramBoolean)
+  public View a(int paramInt1, ayir paramayir, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2)
   {
-    atmp localatmp = this.a.getEntityManagerFactory().createEntityManager();
-    ayja localayja = ayja.a(this.a);
-    Object localObject = localatmp.a(GrayGroupAppEntity.class);
-    if (!ayjf.a((Collection)localObject))
+    if (paramView == null)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        GrayGroupAppEntity localGrayGroupAppEntity = (GrayGroupAppEntity)((Iterator)localObject).next();
-        if (paramBoolean)
-        {
-          localGrayGroupAppEntity.updatedTimestamp = 0L;
-          b(localGrayGroupAppEntity);
-        }
-        localayja.a.put(Long.valueOf(localGrayGroupAppEntity.groupUin), localGrayGroupAppEntity);
-      }
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559129, null);
+      paramayir = new ayje(null);
+      paramayir.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367227));
+      paramayir.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367228));
+      paramView.setTag(paramayir);
     }
-    localatmp.a();
-  }
-  
-  private void b(GrayGroupAppEntity paramGrayGroupAppEntity)
-  {
-    atmp localatmp = this.a.getEntityManagerFactory().createEntityManager();
-    paramGrayGroupAppEntity.setStatus(1000);
-    localatmp.b(paramGrayGroupAppEntity);
-    localatmp.a();
-  }
-  
-  public void a()
-  {
-    a(false);
-  }
-  
-  void a(GrayGroupAppEntity paramGrayGroupAppEntity)
-  {
-    ThreadManagerV2.excute(new GrayGroupAppsDbHelper.1(this, paramGrayGroupAppEntity), 32, null, false);
-  }
-  
-  public void b()
-  {
-    a(true);
+    for (;;)
+    {
+      paramayir.jdField_a_of_type_AndroidWidgetTextView.setText(2131693217);
+      paramayir.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839726);
+      return paramView;
+      paramayir = (ayje)paramView.getTag();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayjc
  * JD-Core Version:    0.7.0.1
  */

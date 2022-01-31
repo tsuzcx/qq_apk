@@ -1,65 +1,203 @@
-import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.report.lp.LpReportInfo_dc02880;
+import cooperation.qzone.report.lp.LpReportManager;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class axqt
-  extends axql
+public class axqt
 {
-  private boolean a;
+  public static int a;
+  private static long jdField_a_of_type_Long;
+  private static axqv jdField_a_of_type_Axqv = new axqv();
+  private static Calendar jdField_a_of_type_JavaUtilCalendar;
+  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  private static AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong;
+  public static boolean a;
+  private static int b = 2;
+  private static int c;
+  private static int d;
+  private static int e;
   
-  axqt(axqk paramaxqk)
+  static
   {
-    super(paramaxqk);
-    this.jdField_a_of_type_JavaLangString = "SendMsgStep";
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(2);
+    jdField_a_of_type_Int = 3;
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong();
+    jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
   }
   
-  protected boolean a()
+  public static int a()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "SendMsgStep|process");
-    }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    String str = ((AppRuntime)localObject).getAccount();
+    if (TextUtils.isEmpty(str))
     {
-      f();
+      if (QLog.isColorLevel()) {
+        QLog.w("QZoneReport", 2, "qzone report with empty account");
+      }
+      return -1;
+    }
+    if (!((akdi)((AppRuntime)localObject).getManager(56)).a(Long.valueOf(Long.parseLong("2290230341"))))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("QZoneReport", 2, "haven't yet follow qzone");
+      }
+      return -1;
+    }
+    long l = NetConnInfoCenter.getServerTime();
+    if (jdField_a_of_type_Long == 0L)
+    {
+      localObject = BaseApplicationImpl.getApplication().getRuntime().getPreferences();
+      b = ((SharedPreferences)localObject).getInt(str + "_" + "qzone_xp_max_req", 2);
+      jdField_a_of_type_Long = ((SharedPreferences)localObject).getLong(str + "_" + "qzone_xp_first_req", l);
+      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(((SharedPreferences)localObject).getInt(str + "_" + "qzone_xp_req_left", b));
+      jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt(str + "_" + "qzone_xp_req_gap", 3);
+      jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(jdField_a_of_type_Long * 1000L);
+      d = jdField_a_of_type_JavaUtilCalendar.get(5);
+      e = 0;
+      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    }
+    if ((e >= 5) || (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("QZoneReport", 2, "retry: " + e + ", sending: " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      }
+      return -1;
+    }
+    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(l * 1000L);
+    if (jdField_a_of_type_JavaUtilCalendar.get(5) != d)
+    {
+      jdField_a_of_type_Long = l;
+      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(b);
+      BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt(str + "_" + "qzone_xp_req_left", b).putLong(str + "_" + "qzone_xp_first_req", jdField_a_of_type_Long).apply();
+    }
+    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("QZoneReport", 2, "left: 0");
+      }
+      jdField_a_of_type_JavaUtilCalendar.set(5, jdField_a_of_type_JavaUtilCalendar.get(5) + 1);
+      jdField_a_of_type_JavaUtilCalendar.set(11, 0);
+      jdField_a_of_type_JavaUtilCalendar.set(12, 0);
+      jdField_a_of_type_JavaUtilCalendar.set(13, 0);
+      return (int)((jdField_a_of_type_JavaUtilCalendar.getTimeInMillis() - l * 1000L) / 1000L);
+    }
+    return Math.max(0, (int)(c - l));
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_Long = 0L;
+  }
+  
+  public static void a(int paramInt)
+  {
+    if ((paramInt == 1) && (jdField_a_of_type_Boolean)) {
       return;
     }
-    if (!badq.g(this.jdField_b_of_type_Axqk.jdField_a_of_type_AndroidContentContext))
+    if (paramInt == 1) {
+      jdField_a_of_type_Boolean = true;
+    }
+    LpReportInfo_dc02880 localLpReportInfo_dc02880 = new LpReportInfo_dc02880(6, paramInt);
+    LpReportManager.getInstance().reportToDC02880(localLpReportInfo_dc02880, false, false);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    bhkl.a().a(new axqu(paramQQAppInterface));
+    long l = LocalMultiProcConfig.getLong("SP_LAST_UPDATE_TIME", 0L);
+    QLog.d("[PhotoAlbum]QZoneReport", 1, new Object[] { "getTravelGroup SP_LAST_UPDATE_TIME lastUpdateTime:", Long.valueOf(l) });
+    bhkl.a().a().a(l);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig, int paramInt, String paramString)
+  {
+    int i = paramConfig.version.get();
+    int j = bbjn.a(paramQQAppInterface.getApp(), "qzone_xp_config_version", paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneReport", 2, String.format(Locale.getDefault(), "received qzone xp Config remote version: %d, localVersion: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
+    }
+    if (i != j)
     {
-      QLog.w("Q.share.ForwardSdkShareProcessor", 1, "SendMsgStep|no network");
-      if ((axqk.a(this.jdField_b_of_type_Axqk) > 0) || (!axqk.a(this.jdField_b_of_type_Axqk).get()) || (!axqk.c(this.jdField_b_of_type_Axqk).get()) || (axqk.a(this.jdField_b_of_type_Axqk).jdField_a_of_type_Int != 1))
-      {
-        this.jdField_b_of_type_Axqk.b(9004, "no network");
-        c();
-        return;
+      paramConfig = ando.b(paramConfig, j, paramInt);
+      if (!TextUtils.isEmpty(paramConfig)) {
+        if (QLog.isColorLevel()) {
+          QLog.i("QZoneReport", 2, "receiveAllConfigs|type: " + paramInt + ",content: " + paramConfig + ",version: " + i);
+        }
       }
     }
-    Object localObject = this.jdField_b_of_type_Axqk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_b_of_type_Axqk.jdField_a_of_type_Axvt.c, this.jdField_b_of_type_Axqk.jdField_a_of_type_Axvt.jdField_a_of_type_Int, this.jdField_b_of_type_Axqk.jdField_a_of_type_Axvt.jdField_a_of_type_Long);
-    if (localObject != null) {
-      this.jdField_b_of_type_Axqk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b((MessageRecord)localObject, null);
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        try
+        {
+          paramInt = Math.max(0, b - jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+          paramConfig = new JSONObject(paramConfig);
+          b = paramConfig.optInt("maxReq", 2);
+          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(Math.max(0, b - paramInt));
+          jdField_a_of_type_Int = paramConfig.optInt("reqGap", 3);
+          BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt(paramString + "_" + "qzone_xp_max_req", b).putInt(paramString + "_" + "qzone_xp_req_gap", jdField_a_of_type_Int).putInt(paramString + "_" + "qzone_xp_req_left", jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()).apply();
+          bbjn.a(paramQQAppInterface.getApp(), "qzone_xp_config_version", paramString, i);
+          return;
+        }
+        catch (JSONException paramConfig)
+        {
+          for (;;)
+          {
+            if (QLog.isDevelopLevel()) {
+              paramConfig.printStackTrace();
+            }
+          }
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("QZoneReport", 2, "config is null");
+      return;
     }
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("report_type", "102");
-    ((Bundle)localObject).putString("act_type", "14");
-    ((Bundle)localObject).putString("intext_2", "" + axqk.a(this.jdField_b_of_type_Axqk));
-    ((Bundle)localObject).putString("stringext_1", "" + axqk.e(this.jdField_b_of_type_Axqk));
-    ((Bundle)localObject).putString("intext_3", "0");
-    bcad.a().a((Bundle)localObject, "", this.jdField_b_of_type_Axqk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-    this.jdField_a_of_type_Boolean = true;
-    b();
-    this.jdField_b_of_type_Axqk.e();
+    QLog.i("QZoneReport", 2, "config version not updated, nothing to do");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneReport", 2, "sending");
+    }
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(NetConnInfoCenter.getServerTime());
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), axcq.class);
+    localNewIntent.putExtra("key_uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
+    if (paramBoolean) {}
+    for (String str = "1";; str = "0")
+    {
+      localNewIntent.putExtra("has_photo", str);
+      BaseApplicationImpl.getApplication().getRuntime().registObserver(jdField_a_of_type_Axqv);
+      BaseApplicationImpl.getApplication().getRuntime().startServlet(localNewIntent);
+      axqw.b(paramQQAppInterface, "CliOper", "", "", "0X800915C", "0X800915C", 0, 0, "", "", "", "");
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axqt
  * JD-Core Version:    0.7.0.1
  */

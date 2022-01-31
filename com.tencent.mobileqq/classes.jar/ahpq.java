@@ -1,19 +1,8 @@
-import android.support.annotation.Nullable;
-import android.view.View;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 
 public abstract interface ahpq
 {
-  public abstract int a();
-  
-  public abstract void a();
-  
-  public abstract void a(@Nullable ahpo paramahpo);
-  
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
+  public abstract void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout);
 }
 
 

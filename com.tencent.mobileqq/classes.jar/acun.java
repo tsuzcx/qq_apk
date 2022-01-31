@@ -1,18 +1,18 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 
-public class acun
-  implements View.OnClickListener
+public abstract class acun
+  extends acve
 {
-  public acun(ColorView paramColorView) {}
-  
-  public void onClick(View paramView)
-  {
-    if (ColorView.a(this.a) != null) {
-      ColorView.a(this.a).a();
-    }
-  }
+  public int a;
+  public ambh a;
+  public View a;
+  public BaseChatItemLayout a;
+  public String a;
+  public int b;
+  public View b;
+  public int c;
+  public int d;
 }
 
 

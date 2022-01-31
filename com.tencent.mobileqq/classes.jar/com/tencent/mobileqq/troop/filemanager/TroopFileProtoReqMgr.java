@@ -1,142 +1,142 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import ajmn;
+import akaw;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import ayro;
-import ayrp;
-import ayrq;
-import ayrr;
-import aysb;
-import bakc;
+import azse;
+import azsf;
+import azsg;
+import azsh;
+import azsr;
+import bblm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import java.util.concurrent.ConcurrentHashMap;
-import mmn;
 import mqq.app.BuiltInServlet;
 import mqq.app.NewIntent;
+import mxm;
 
 public class TroopFileProtoReqMgr
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private ConcurrentHashMap<Intent, ayrq> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<Intent, azsg> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
   public TroopFileProtoReqMgr(AppInterface paramAppInterface)
   {
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
-  void a(Intent paramIntent, ayrq paramayrq)
+  void a(Intent paramIntent, azsg paramazsg)
   {
     int i = paramIntent.getIntExtra("key_runnable_index", 0);
-    paramayrq.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i].jdField_b_of_type_Boolean = true;
-    paramayrq.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i].jdField_c_of_type_Long = System.currentTimeMillis();
+    paramazsg.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i].jdField_b_of_type_Boolean = true;
+    paramazsg.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i].jdField_c_of_type_Long = System.currentTimeMillis();
   }
   
   public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    mmn localmmn = null;
+    mxm localmxm = null;
     int m = 0;
     if ((paramIntent != null) && (paramFromServiceMsg != null)) {}
     for (;;)
     {
       try
       {
-        localayrq = (ayrq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramIntent);
-        if (localayrq == null) {
+        localazsg = (azsg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramIntent);
+        if (localazsg == null) {
           break label727;
         }
-        if (localayrq.jdField_a_of_type_Boolean)
+        if (localazsg.jdField_a_of_type_Boolean)
         {
           j = -1;
           paramIntent = null;
           k = 0;
           i = 1;
-          localObject1 = localmmn;
+          localObject1 = localmxm;
           if (localObject1 != null)
           {
             if (k == 0) {
               break label626;
             }
-            aysb.c("TroopFileProtoReqMgr", aysb.jdField_a_of_type_Int, "cookie<" + localayrq.jdField_a_of_type_Ayrp.jdField_b_of_type_Long + "> onProtoResponse suc end. scheduleIndex:" + j + " retryCount:" + localayrq.jdField_a_of_type_Ajmn.c);
-            ((mmn)localObject1).onReceive(i, true, paramIntent);
+            azsr.c("TroopFileProtoReqMgr", azsr.jdField_a_of_type_Int, "cookie<" + localazsg.jdField_a_of_type_Azsf.jdField_b_of_type_Long + "> onProtoResponse suc end. scheduleIndex:" + j + " retryCount:" + localazsg.jdField_a_of_type_Akaw.c);
+            ((mxm)localObject1).onReceive(i, true, paramIntent);
           }
         }
         else
         {
           j = paramIntent.getIntExtra("key_runnable_index", 0);
-          a(paramIntent, localayrq);
+          a(paramIntent, localazsg);
           Object localObject2 = paramIntent.getExtras();
           localObject1 = localObject2;
           if (localObject2 == null) {
             localObject1 = new Bundle();
           }
-          localObject2 = localayrq.jdField_a_of_type_Ayrp;
-          i = ((ayrp)localObject2).f;
-          localayrq.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-          localayrq.jdField_a_of_type_Ajmn.jdField_b_of_type_Int = localayrq.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getResultCode();
+          localObject2 = localazsg.jdField_a_of_type_Azsf;
+          i = ((azsf)localObject2).f;
+          localazsg.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
+          localazsg.jdField_a_of_type_Akaw.jdField_b_of_type_Int = localazsg.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getResultCode();
           int n = paramFromServiceMsg.getResultCode();
-          aysb.c("TroopFileProtoReqMgr", aysb.jdField_a_of_type_Int, "cookie<" + localayrq.jdField_a_of_type_Ayrp.jdField_b_of_type_Long + "> onProtoResponse. scheduleIndex:" + j + " retCode:" + n);
+          azsr.c("TroopFileProtoReqMgr", azsr.jdField_a_of_type_Int, "cookie<" + localazsg.jdField_a_of_type_Azsf.jdField_b_of_type_Long + "> onProtoResponse. scheduleIndex:" + j + " retCode:" + n);
           if (n == 1000)
           {
-            a(localayrq);
+            a(localazsg);
             this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramIntent);
             k = 1;
-            if (((ayrp)localObject2).jdField_a_of_type_Mmn == null) {
+            if (((azsf)localObject2).jdField_a_of_type_Mxm == null) {
               break label717;
             }
-            ((Bundle)localObject1).putByteArray("data", bakc.b(paramFromServiceMsg.getWupBuffer()));
-            localmmn = ((ayrp)localObject2).jdField_a_of_type_Mmn;
+            ((Bundle)localObject1).putByteArray("data", bblm.b(paramFromServiceMsg.getWupBuffer()));
+            localmxm = ((azsf)localObject2).jdField_a_of_type_Mxm;
             paramIntent = (Intent)localObject1;
             k = 1;
-            localObject1 = localmmn;
+            localObject1 = localmxm;
             continue;
           }
           if (n == 2901)
           {
-            long l1 = System.currentTimeMillis() - localayrq.jdField_a_of_type_Long;
-            if ((l1 < ((ayrp)localObject2).e) && (localayrq.jdField_a_of_type_Int < ((ayrp)localObject2).jdField_b_of_type_Int))
+            long l1 = System.currentTimeMillis() - localazsg.jdField_a_of_type_Long;
+            if ((l1 < ((azsf)localObject2).e) && (localazsg.jdField_a_of_type_Int < ((azsf)localObject2).jdField_b_of_type_Int))
             {
-              long l2 = ((ayrp)localObject2).jdField_a_of_type_Int;
-              paramIntent = localayrq.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[localayrq.jdField_a_of_type_Int];
-              localayrq.jdField_a_of_type_Int += 1;
+              long l2 = ((azsf)localObject2).jdField_a_of_type_Int;
+              paramIntent = localazsg.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[localazsg.jdField_a_of_type_Int];
+              localazsg.jdField_a_of_type_Int += 1;
               paramIntent.jdField_a_of_type_Long = (l2 - l1 - 5000L);
               a(paramIntent, 0L);
               paramIntent = (Intent)localObject1;
               k = 0;
-              localObject1 = localmmn;
+              localObject1 = localmxm;
               continue;
             }
-            aysb.d("TroopFileProtoReqMgr", aysb.jdField_b_of_type_Int, "onReceive found 2901 but do not retry : elapse:" + l1 + " index:" + localayrq.jdField_a_of_type_Int);
+            azsr.d("TroopFileProtoReqMgr", azsr.jdField_b_of_type_Int, "onReceive found 2901 but do not retry : elapse:" + l1 + " index:" + localazsg.jdField_a_of_type_Int);
           }
           k = m;
-          if (!a(localayrq)) {
+          if (!a(localazsg)) {
             break label717;
           }
-          a(localayrq);
+          a(localazsg);
           this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramIntent);
           if (n == 1013)
           {
             paramIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), BuiltInServlet.class);
-            paramIntent.setObserver(new ayro(this, localayrq, (ayrp)localObject2));
+            paramIntent.setObserver(new azse(this, localazsg, (azsf)localObject2));
             paramIntent.putExtra("action", 2201);
             this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramIntent);
             paramIntent = (Intent)localObject1;
             k = 0;
-            localObject1 = localmmn;
+            localObject1 = localmxm;
             continue;
           }
           k = m;
-          if (((ayrp)localObject2).jdField_a_of_type_Mmn == null) {
+          if (((azsf)localObject2).jdField_a_of_type_Mxm == null) {
             break label717;
           }
-          localmmn = ((ayrp)localObject2).jdField_a_of_type_Mmn;
+          localmxm = ((azsf)localObject2).jdField_a_of_type_Mxm;
           paramIntent = (Intent)localObject1;
           k = 0;
-          localObject1 = localmmn;
+          localObject1 = localmxm;
           continue;
         }
         paramIntent.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
@@ -144,89 +144,89 @@ public class TroopFileProtoReqMgr
       finally {}
       label626:
       paramIntent.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
-      aysb.a("TroopFileProtoReqMgr", aysb.jdField_a_of_type_Int, "cookie<" + localayrq.jdField_a_of_type_Ayrp.jdField_b_of_type_Long + "> onProtoResponse fail end. failCode:" + paramFromServiceMsg.getBusinessFailCode() + " retryCount:" + localayrq.jdField_a_of_type_Ajmn.c);
-      ((mmn)localObject1).a(-1, null, paramIntent);
+      azsr.a("TroopFileProtoReqMgr", azsr.jdField_a_of_type_Int, "cookie<" + localazsg.jdField_a_of_type_Azsf.jdField_b_of_type_Long + "> onProtoResponse fail end. failCode:" + paramFromServiceMsg.getBusinessFailCode() + " retryCount:" + localazsg.jdField_a_of_type_Akaw.c);
+      ((mxm)localObject1).a(-1, null, paramIntent);
       return;
       label717:
       paramIntent = (Intent)localObject1;
-      Object localObject1 = localmmn;
+      Object localObject1 = localmxm;
       continue;
       label727:
       int j = -1;
       paramIntent = null;
       int k = 0;
       int i = 1;
-      localObject1 = localmmn;
+      localObject1 = localmxm;
       continue;
       j = -1;
       paramIntent = null;
       k = 0;
-      ayrq localayrq = null;
+      azsg localazsg = null;
       i = 1;
-      localObject1 = localmmn;
+      localObject1 = localmxm;
     }
   }
   
-  public void a(ayrp paramayrp)
+  public void a(azsf paramazsf)
   {
     int k = 0;
-    if (paramayrp != null) {}
+    if (paramazsf != null) {}
     for (;;)
     {
       try
       {
-        aysb.c("TroopFileProtoReqMgr", aysb.jdField_a_of_type_Int, "cookie<" + paramayrp.jdField_b_of_type_Long + "> sendProtoRequest. ssocmd:" + paramayrp.jdField_a_of_type_JavaLangString + " tryCount:" + paramayrp.jdField_b_of_type_Int + " fixtryCount:" + paramayrp.c + " fastResend:" + paramayrp.jdField_a_of_type_Boolean + " RemindSlowNet:" + paramayrp.jdField_b_of_type_Boolean);
-        ayrq localayrq = new ayrq();
-        paramayrp.jdField_a_of_type_Ayrq = localayrq;
-        localayrq.jdField_a_of_type_Ayrp = paramayrp;
-        localayrq.jdField_a_of_type_Long = System.currentTimeMillis();
-        localayrq.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable = new TroopFileProtoReqMgr.ProtoRequestRunnable[paramayrp.jdField_b_of_type_Int];
+        azsr.c("TroopFileProtoReqMgr", azsr.jdField_a_of_type_Int, "cookie<" + paramazsf.jdField_b_of_type_Long + "> sendProtoRequest. ssocmd:" + paramazsf.jdField_a_of_type_JavaLangString + " tryCount:" + paramazsf.jdField_b_of_type_Int + " fixtryCount:" + paramazsf.c + " fastResend:" + paramazsf.jdField_a_of_type_Boolean + " RemindSlowNet:" + paramazsf.jdField_b_of_type_Boolean);
+        azsg localazsg = new azsg();
+        paramazsf.jdField_a_of_type_Azsg = localazsg;
+        localazsg.jdField_a_of_type_Azsf = paramazsf;
+        localazsg.jdField_a_of_type_Long = System.currentTimeMillis();
+        localazsg.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable = new TroopFileProtoReqMgr.ProtoRequestRunnable[paramazsf.jdField_b_of_type_Int];
         int i = 0;
         int j = k;
-        if (i < paramayrp.jdField_b_of_type_Int)
+        if (i < paramazsf.jdField_b_of_type_Int)
         {
           Object localObject = new TroopFileProtoReqMgr.ProtoRequestRunnable(this);
-          localayrq.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i] = localObject;
-          ((TroopFileProtoReqMgr.ProtoRequestRunnable)localObject).jdField_a_of_type_Ayrq = localayrq;
-          ((TroopFileProtoReqMgr.ProtoRequestRunnable)localObject).jdField_a_of_type_MqqAppNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ayrr.class);
+          localazsg.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i] = localObject;
+          ((TroopFileProtoReqMgr.ProtoRequestRunnable)localObject).jdField_a_of_type_Azsg = localazsg;
+          ((TroopFileProtoReqMgr.ProtoRequestRunnable)localObject).jdField_a_of_type_MqqAppNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), azsh.class);
           localObject = ((TroopFileProtoReqMgr.ProtoRequestRunnable)localObject).jdField_a_of_type_MqqAppNewIntent;
-          if (paramayrp.jdField_a_of_type_AndroidOsBundle != null) {
-            ((NewIntent)localObject).putExtras(paramayrp.jdField_a_of_type_AndroidOsBundle);
+          if (paramazsf.jdField_a_of_type_AndroidOsBundle != null) {
+            ((NewIntent)localObject).putExtras(paramazsf.jdField_a_of_type_AndroidOsBundle);
           }
-          ((NewIntent)localObject).putExtra("data", paramayrp.jdField_a_of_type_ArrayOfByte);
-          ((NewIntent)localObject).putExtra("cmd", paramayrp.jdField_a_of_type_JavaLangString);
+          ((NewIntent)localObject).putExtra("data", paramazsf.jdField_a_of_type_ArrayOfByte);
+          ((NewIntent)localObject).putExtra("cmd", paramazsf.jdField_a_of_type_JavaLangString);
           ((NewIntent)localObject).putExtra("key_runnable_index", i);
-          ((NewIntent)localObject).putExtra("fastresendenable", paramayrp.jdField_a_of_type_Boolean);
-          ((NewIntent)localObject).putExtra("remind_slown_network", paramayrp.jdField_b_of_type_Boolean);
+          ((NewIntent)localObject).putExtra("fastresendenable", paramazsf.jdField_a_of_type_Boolean);
+          ((NewIntent)localObject).putExtra("remind_slown_network", paramazsf.jdField_b_of_type_Boolean);
           i += 1;
           continue;
         }
-        if (j < paramayrp.c)
+        if (j < paramazsf.c)
         {
-          long l1 = paramayrp.jdField_a_of_type_Int * j / paramayrp.c;
-          long l2 = paramayrp.jdField_a_of_type_Int;
-          long l3 = paramayrp.d * j;
-          localayrq.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[j].jdField_a_of_type_Long = (l2 - l1 - l3);
-          a(localayrq.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[j], l1);
+          long l1 = paramazsf.jdField_a_of_type_Int * j / paramazsf.c;
+          long l2 = paramazsf.jdField_a_of_type_Int;
+          long l3 = paramazsf.d * j;
+          localazsg.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[j].jdField_a_of_type_Long = (l2 - l1 - l3);
+          a(localazsg.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[j], l1);
           j += 1;
           continue;
         }
-        localayrq.jdField_a_of_type_Int = paramayrp.c;
+        localazsg.jdField_a_of_type_Int = paramazsf.c;
         return;
       }
       finally {}
-      aysb.a("TroopFileProtoReqMgr", aysb.jdField_a_of_type_Int, "sendProtoRequest req=null");
+      azsr.a("TroopFileProtoReqMgr", azsr.jdField_a_of_type_Int, "sendProtoRequest req=null");
     }
   }
   
-  void a(ayrq paramayrq)
+  void a(azsg paramazsg)
   {
-    paramayrq.jdField_a_of_type_Boolean = true;
+    paramazsg.jdField_a_of_type_Boolean = true;
     int i = 0;
-    while (i < paramayrq.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable.length)
+    while (i < paramazsg.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable.length)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramayrq.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i].jdField_a_of_type_MqqAppNewIntent);
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramayrq.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i]);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramazsg.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i].jdField_a_of_type_MqqAppNewIntent);
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramazsg.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i]);
       i += 1;
     }
   }
@@ -242,12 +242,12 @@ public class TroopFileProtoReqMgr
     this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramNewIntent);
   }
   
-  boolean a(ayrq paramayrq)
+  boolean a(azsg paramazsg)
   {
     int i = 0;
-    while (i < paramayrq.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable.length)
+    while (i < paramazsg.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable.length)
     {
-      if ((!paramayrq.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i].jdField_b_of_type_Boolean) && ((paramayrq.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i].jdField_a_of_type_Boolean == true) || (paramayrq.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i].jdField_c_of_type_Boolean == true))) {
+      if ((!paramazsg.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i].jdField_b_of_type_Boolean) && ((paramazsg.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i].jdField_a_of_type_Boolean == true) || (paramazsg.jdField_a_of_type_ArrayOfComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequestRunnable[i].jdField_c_of_type_Boolean == true))) {
         return false;
       }
       i += 1;
@@ -255,22 +255,22 @@ public class TroopFileProtoReqMgr
     return true;
   }
   
-  public void b(ayrp paramayrp)
+  public void b(azsf paramazsf)
   {
-    if (paramayrp != null) {}
+    if (paramazsf != null) {}
     try
     {
-      if (paramayrp.jdField_a_of_type_Ayrq != null)
+      if (paramazsf.jdField_a_of_type_Azsg != null)
       {
-        aysb.c("TroopFileProtoReqMgr", aysb.jdField_a_of_type_Int, "cookie<" + paramayrp.jdField_b_of_type_Long + "> cancelRequest.");
-        a(paramayrp.jdField_a_of_type_Ayrq);
+        azsr.c("TroopFileProtoReqMgr", azsr.jdField_a_of_type_Int, "cookie<" + paramazsf.jdField_b_of_type_Long + "> cancelRequest.");
+        a(paramazsf.jdField_a_of_type_Azsg);
       }
       return;
     }
     finally
     {
-      paramayrp = finally;
-      throw paramayrp;
+      paramazsf = finally;
+      throw paramazsf;
     }
   }
 }

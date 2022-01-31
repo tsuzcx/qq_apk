@@ -1,19 +1,15 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class aatl
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aatl(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public aatl(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.getActivity().isFinishing()) {
-      ForwardTroopListFragment.a(this.a).dismiss();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

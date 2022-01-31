@@ -1,28 +1,28 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter;
 
-import ajjy;
-import bbmy;
-import bior;
-import bipg;
-import bipi;
+import ajyc;
+import bcpw;
+import bkfm;
+import bkgb;
+import bkgd;
 import dov.com.qq.im.capture.view.QIMCommonLoadingView;
 
 public class InformationFaceAdapter$DownloadProgressCallback$2
   implements Runnable
 {
-  public InformationFaceAdapter$DownloadProgressCallback$2(bipi parambipi, boolean paramBoolean, bior parambior) {}
+  public InformationFaceAdapter$DownloadProgressCallback$2(bkgd parambkgd, boolean paramBoolean, bkfm parambkfm) {}
   
   public void run()
   {
-    bipi.a(this.jdField_a_of_type_Bipi).setVisibility(8);
+    bkgd.a(this.jdField_a_of_type_Bkgd).setVisibility(8);
     if (this.jdField_a_of_type_Boolean) {
-      bipg.a(this.jdField_a_of_type_Bipi.a, bipi.a(this.jdField_a_of_type_Bipi), bipi.a(this.jdField_a_of_type_Bipi), this.jdField_a_of_type_Bior);
+      bkgb.a(this.jdField_a_of_type_Bkgd.a, bkgd.a(this.jdField_a_of_type_Bkgd), bkgd.a(this.jdField_a_of_type_Bkgd), this.jdField_a_of_type_Bkfm);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bipi.a();
+      this.jdField_a_of_type_Bkgd.a();
       return;
-      bbmy.a(bipi.a(this.jdField_a_of_type_Bipi).getContext(), 0, ajjy.a(2131639972), 0).a();
+      bcpw.a(bkgd.a(this.jdField_a_of_type_Bkgd).getContext(), 0, ajyc.a(2131705757), 0).a();
     }
   }
 }

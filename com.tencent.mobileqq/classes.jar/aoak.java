@@ -1,31 +1,43 @@
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 public class aoak
-  implements aoaq
 {
-  public aoak(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  public int a;
+  public EmoticonPackage a;
+  public int b;
   
-  public View.OnClickListener a(TextView paramTextView)
+  public aoak(int paramInt1, int paramInt2, EmoticonPackage paramEmoticonPackage)
   {
-    this.a.a = paramTextView;
-    return new aoal(this);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = paramEmoticonPackage;
   }
   
-  public boolean a()
+  public boolean equals(Object paramObject)
   {
-    return this.a.c;
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if (!(paramObject instanceof aoak)) {
+        return false;
+      }
+      paramObject = (aoak)paramObject;
+      if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {
+        break;
+      }
+    } while (((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null)) || ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId.equals(paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId))));
+    return false;
+    return false;
   }
   
-  public boolean b()
+  public String toString()
   {
-    return this.a.b;
-  }
-  
-  public boolean c()
-  {
-    return QfileCloudFileTabView.a(this.a);
+    String str = "";
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) {
+      str = this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
+    }
+    return "EmotionPanelInfo [type=" + this.jdField_a_of_type_Int + ", columnNum=" + this.b + ", epid=" + str + "]";
   }
 }
 

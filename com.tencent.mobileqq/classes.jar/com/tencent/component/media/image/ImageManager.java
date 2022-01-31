@@ -68,10 +68,10 @@ public class ImageManager
   public static final byte FLAG_GET_FROM_MEMORY = 0;
   public static final byte FLAG_GET_FROM_MEMORY_LOCAL = 1;
   public static final byte FLAG_GET_FROM_MEMORY_LOCAL_NETWORK = 2;
-  private static final String IMAGE_DIR_NAME_NOCACHE = "nocache";
-  private static final String IMAGE_DIR_NAME_SR = "image_sr";
-  private static final String IMAGE_DIR_NAME_V1 = "image";
-  private static final String IMAGE_DIR_NAME_V2 = "imageV2";
+  public static final String IMAGE_DIR_NAME_NOCACHE = "nocache";
+  public static final String IMAGE_DIR_NAME_SR = "image_sr";
+  public static final String IMAGE_DIR_NAME_V1 = "image";
+  public static final String IMAGE_DIR_NAME_V2 = "imageV2";
   private static final int IMAGE_HIT = 16;
   private static final ConcurrentHashMap<String, Object> INVALIDATE_URLS;
   private static final boolean IS_ICE_CREAM_SANDWICH;
@@ -1239,85 +1239,86 @@ public class ImageManager
   public static String getStorePath(Context paramContext, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     String str1 = "";
-    localObject = str1;
-    for (;;)
+    localObject2 = str1;
+    try
     {
-      try
+      String str2 = Environment.getExternalStorageState();
+      localObject2 = str1;
+      maxCacheSize = MAX_INNER_SIZE_LIMIT;
+      localObject2 = str1;
+      isUseExternalStorage = false;
+      localObject1 = str1;
+      if (!paramBoolean1)
       {
-        String str2 = Environment.getExternalStorageState();
-        localObject = str1;
-        maxCacheSize = MAX_INNER_SIZE_LIMIT;
-        localObject = str1;
-        isUseExternalStorage = false;
-        paramContext = str1;
-        if (!paramBoolean1)
+        localObject1 = str1;
+        localObject2 = str1;
+        if ("mounted".equals(str2))
         {
-          paramContext = str1;
-          localObject = str1;
-          if ("mounted".equals(str2))
+          localObject1 = str1;
+          localObject2 = str1;
+          if (paramContext.getExternalCacheDir().canWrite())
           {
-            if (paramBoolean2 != true) {
-              continue;
-            }
-            localObject = str1;
-            if (TextUtils.isEmpty(maxAvailableSizePath)) {
-              continue;
-            }
-            localObject = str1;
-            storeRootPath = maxAvailableSizePath;
-            localObject = str1;
-            paramContext = storeRootPath + File.separator + ImageManagerEnv.g().getImageCacheDir(true);
-            localObject = paramContext;
-            maxCacheSize = MAX_SDCARD_SIZE_LIMIT;
-            localObject = paramContext;
-            isUseExternalStorage = true;
+            localObject2 = str1;
+            storeRootPath = Environment.getExternalStorageDirectory().getAbsolutePath();
+            localObject2 = str1;
+            localObject1 = ImageManagerEnv.g().getImageCacheDir(true);
           }
         }
       }
-      catch (Exception paramContext)
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
       {
-        paramContext.printStackTrace();
-        paramContext = (Context)localObject;
-        continue;
-      }
-      localObject = paramContext;
-      if (!isUseExternalStorage)
-      {
-        storeRootPath = Environment.getDataDirectory().getAbsolutePath();
-        localObject = ImageManagerEnv.g().getImageCacheDir(false);
-      }
-      paramContext = paramString;
-      if (!paramString.startsWith(File.separator)) {
-        paramContext = File.separator + paramString;
-      }
-      paramString = paramContext;
-      if (!paramContext.endsWith(File.separator)) {
-        paramString = paramContext + File.separator;
-      }
-      paramContext = new File((String)localObject + paramString);
-      if (!paramContext.exists()) {
-        paramContext.mkdirs();
-      }
-      paramString = paramContext.getAbsolutePath();
-      paramContext = paramString;
-      if (!paramString.endsWith(File.separator)) {
-        paramContext = paramString + File.separator;
-      }
-      return paramContext;
-      paramContext = str1;
-      localObject = str1;
-      if (Environment.getExternalStorageDirectory().canWrite())
-      {
-        localObject = str1;
-        storeRootPath = Environment.getExternalStorageDirectory().getAbsolutePath();
-        localObject = str1;
-        paramContext = storeRootPath + File.separator + ImageManagerEnv.g().getImageCacheDir(true);
-        localObject = paramContext;
-        maxCacheSize = MAX_SDCARD_SIZE_LIMIT;
-        localObject = paramContext;
-        isUseExternalStorage = true;
+        label145:
+        Object localObject1 = localObject2;
+        localException1.printStackTrace();
       }
     }
+    try
+    {
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label397;
+      }
+      localObject2 = paramContext.getExternalCacheDir() + File.separator + "qzone";
+      localObject1 = localObject2;
+    }
+    catch (Exception localException2)
+    {
+      break label384;
+      break label145;
+    }
+    localObject2 = localObject1;
+    maxCacheSize = MAX_SDCARD_SIZE_LIMIT;
+    localObject2 = localObject1;
+    isUseExternalStorage = true;
+    if (!isUseExternalStorage)
+    {
+      storeRootPath = Environment.getDataDirectory().getAbsolutePath();
+      localObject2 = ImageManagerEnv.g().getImageCacheDir(false);
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = paramContext.getCacheDir().getAbsolutePath() + File.separator + "qzone";
+      }
+    }
+    paramContext = paramString;
+    if (!paramString.startsWith(File.separator)) {
+      paramContext = File.separator + paramString;
+    }
+    paramString = paramContext;
+    if (!paramContext.endsWith(File.separator)) {
+      paramString = paramContext + File.separator;
+    }
+    paramContext = new File((String)localObject1 + paramString);
+    if (!paramContext.exists()) {
+      paramContext.mkdirs();
+    }
+    paramString = paramContext.getAbsolutePath();
+    paramContext = paramString;
+    if (!paramString.endsWith(File.separator)) {
+      paramContext = paramString + File.separator;
+    }
+    return paramContext;
   }
   
   public static Handler getSuperResolutionHandler()
@@ -1741,12 +1742,12 @@ public class ImageManager
     //   8: aload_2
     //   9: iload_1
     //   10: invokestatic 722	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   13: invokeinterface 1393 2 0
+    //   13: invokeinterface 1401 2 0
     //   18: checkcast 833	android/graphics/drawable/Drawable
-    //   21: invokestatic 1441	com/tencent/component/media/image/ImageManager:drawableToBitmap	(Landroid/graphics/drawable/Drawable;)Landroid/graphics/Bitmap;
+    //   21: invokestatic 1449	com/tencent/component/media/image/ImageManager:drawableToBitmap	(Landroid/graphics/drawable/Drawable;)Landroid/graphics/Bitmap;
     //   24: astore 5
-    //   26: invokestatic 1125	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-    //   29: invokevirtual 1113	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   26: invokestatic 1112	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   29: invokevirtual 1115	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   32: astore_2
     //   33: new 681	java/io/File
     //   36: dup
@@ -1757,7 +1758,7 @@ public class ImageManager
     //   45: invokevirtual 455	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: getstatic 964	java/io/File:separator	Ljava/lang/String;
     //   51: invokevirtual 455	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: ldc_w 1443
+    //   54: ldc_w 1121
     //   57: invokevirtual 455	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   60: invokevirtual 468	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   63: invokespecial 686	java/io/File:<init>	(Ljava/lang/String;)V
@@ -1766,7 +1767,7 @@ public class ImageManager
     //   70: invokevirtual 689	java/io/File:exists	()Z
     //   73: ifne +9 -> 82
     //   76: aload 4
-    //   78: invokevirtual 1122	java/io/File:mkdirs	()Z
+    //   78: invokevirtual 1136	java/io/File:mkdirs	()Z
     //   81: pop
     //   82: iload_3
     //   83: ifne +84 -> 167
@@ -1775,7 +1776,7 @@ public class ImageManager
     //   90: invokespecial 449	java/lang/StringBuilder:<init>	()V
     //   93: iload_1
     //   94: invokevirtual 458	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   97: ldc_w 1445
+    //   97: ldc_w 1451
     //   100: invokevirtual 455	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   103: invokevirtual 468	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   106: astore_2
@@ -1783,22 +1784,22 @@ public class ImageManager
     //   110: dup
     //   111: aload 4
     //   113: aload_2
-    //   114: invokespecial 1447	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   114: invokespecial 1453	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   117: astore_2
     //   118: new 888	java/io/FileOutputStream
     //   121: dup
     //   122: aload_2
-    //   123: invokespecial 1448	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   123: invokespecial 1454	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   126: astore 4
     //   128: iload_3
     //   129: ifne +62 -> 191
     //   132: aload 4
     //   134: astore_2
     //   135: aload 5
-    //   137: getstatic 1454	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   137: getstatic 1460	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   140: bipush 100
     //   142: aload 4
-    //   144: invokevirtual 1458	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   144: invokevirtual 1464	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   147: pop
     //   148: aload 4
     //   150: astore_2
@@ -1814,7 +1815,7 @@ public class ImageManager
     //   171: invokespecial 449	java/lang/StringBuilder:<init>	()V
     //   174: iload_1
     //   175: invokevirtual 458	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   178: ldc_w 1460
+    //   178: ldc_w 1466
     //   181: invokevirtual 455	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   184: invokevirtual 468	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   187: astore_2
@@ -1822,10 +1823,10 @@ public class ImageManager
     //   191: aload 4
     //   193: astore_2
     //   194: aload 5
-    //   196: getstatic 1463	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   196: getstatic 1469	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   199: bipush 100
     //   201: aload 4
-    //   203: invokevirtual 1458	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   203: invokevirtual 1464	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   206: pop
     //   207: goto -59 -> 148
     //   210: astore 5
@@ -1930,32 +1931,32 @@ public class ImageManager
     //   9: aload_0
     //   10: invokevirtual 689	java/io/File:exists	()Z
     //   13: ifeq +113 -> 126
-    //   16: new 1342	java/io/BufferedReader
+    //   16: new 1350	java/io/BufferedReader
     //   19: dup
-    //   20: new 1344	java/io/FileReader
+    //   20: new 1352	java/io/FileReader
     //   23: dup
     //   24: aload_0
-    //   25: invokespecial 1347	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   28: invokespecial 1350	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   25: invokespecial 1355	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   28: invokespecial 1358	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   31: astore_1
     //   32: aload_1
     //   33: astore_0
     //   34: aload_1
-    //   35: invokevirtual 1353	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   35: invokevirtual 1361	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   38: astore_2
     //   39: aload_2
     //   40: ifnull +87 -> 127
     //   43: aload_1
     //   44: astore_0
     //   45: aload_2
-    //   46: ldc_w 1476
-    //   49: invokevirtual 1116	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   46: ldc_w 1482
+    //   49: invokevirtual 1130	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   52: ifeq -20 -> 32
     //   55: aload_1
     //   56: astore_0
     //   57: aload_2
-    //   58: ldc_w 1478
-    //   61: invokevirtual 1357	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   58: ldc_w 1484
+    //   61: invokevirtual 1365	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   64: astore_3
     //   65: aload_1
     //   66: astore_0
@@ -1984,7 +1985,7 @@ public class ImageManager
     //   99: getstatic 224	com/tencent/component/media/image/ImageManager:mSDCardName2PathMap	Ljava/util/HashMap;
     //   102: aload_3
     //   103: aload_2
-    //   104: invokevirtual 1340	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   104: invokevirtual 1348	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   107: pop
     //   108: goto -76 -> 32
     //   111: astore_2
@@ -1995,16 +1996,16 @@ public class ImageManager
     //   118: aload_1
     //   119: ifnull +7 -> 126
     //   122: aload_1
-    //   123: invokevirtual 1479	java/io/BufferedReader:close	()V
+    //   123: invokevirtual 1485	java/io/BufferedReader:close	()V
     //   126: return
     //   127: aload_1
     //   128: astore_0
     //   129: aload_1
-    //   130: invokevirtual 1479	java/io/BufferedReader:close	()V
+    //   130: invokevirtual 1485	java/io/BufferedReader:close	()V
     //   133: aload_1
     //   134: ifnull -8 -> 126
     //   137: aload_1
-    //   138: invokevirtual 1479	java/io/BufferedReader:close	()V
+    //   138: invokevirtual 1485	java/io/BufferedReader:close	()V
     //   141: return
     //   142: astore_0
     //   143: aload_0
@@ -2020,7 +2021,7 @@ public class ImageManager
     //   157: aload_0
     //   158: ifnull +7 -> 165
     //   161: aload_0
-    //   162: invokevirtual 1479	java/io/BufferedReader:close	()V
+    //   162: invokevirtual 1485	java/io/BufferedReader:close	()V
     //   165: aload_1
     //   166: athrow
     //   167: astore_0
@@ -2098,13 +2099,13 @@ public class ImageManager
           if (TextUtils.isEmpty(maxAvailableSizePath)) {
             break label238;
           }
-          mCachePath = getStorePath(this.mContext, "image", false, true);
+          mCachePath = getStorePath(this.mContext, "imageV2", false, true);
           paramImageKey.filePath = (getCachePath(this.mContext) + urlKey2FileName(paramImageKey.urlKey, true));
           clearAllImageFile();
           this.isStorageLow = isAvailableStorageSizeLow();
           if (this.isStorageLow)
           {
-            mCachePath = getStorePath(this.mContext, "image", true, false);
+            mCachePath = getStorePath(this.mContext, "imageV2", true, false);
             paramImageKey.filePath = (getCachePath(this.mContext) + urlKey2FileName(paramImageKey.urlKey, true));
             clearAllImageFile();
           }
@@ -2121,7 +2122,7 @@ public class ImageManager
       }
       return false;
       label238:
-      mCachePath = getStorePath(this.mContext, "image", true, false);
+      mCachePath = getStorePath(this.mContext, "imageV2", true, false);
       paramImageKey.filePath = (getCachePath(this.mContext) + urlKey2FileName(paramImageKey.urlKey, true));
       clearAllImageFile();
     }
@@ -2850,7 +2851,7 @@ public class ImageManager
       if (paramImageKey.filePath.startsWith("/data")) {
         break label438;
       }
-      mCachePath = getStorePath(this.mContext, "image", true, false);
+      mCachePath = getStorePath(this.mContext, "imageV2", true, false);
       paramImageKey.filePath = (getCachePath(this.mContext) + urlKey2FileName(paramImageKey.urlKey, true));
       paramImageKey = new File(paramImageKey.filePath);
       if (!ImageManagerEnv.g().copyFiles(new File(paramString2), paramImageKey)) {

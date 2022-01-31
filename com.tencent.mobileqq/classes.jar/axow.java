@@ -1,84 +1,111 @@
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.startup.step.ProcessInfoUtil.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+
 public class axow
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public int c;
-  
-  public axow()
+  public static int a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public long a()
-  {
-    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long != 0L)) {}
-    for (long l = (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000000L;; l = 0L)
+    if (paramContext != null)
     {
-      if (l < 0L) {
-        return 0L;
-      }
-      return l;
-    }
-  }
-  
-  public String a(int paramInt)
-  {
-    long l2 = 0L;
-    long l1 = l2;
-    if (this.jdField_a_of_type_Int != -1)
-    {
-      l1 = l2;
-      if (this.jdField_a_of_type_Long != 0L)
+      paramContext = (ActivityManager)paramContext.getSystemService("activity");
+      if (paramContext != null)
       {
-        l1 = l2;
-        if (this.jdField_b_of_type_Long != 0L) {
-          l1 = (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000000L;
+        paramContext = paramContext.getRunningAppProcesses();
+        if (paramContext != null)
+        {
+          paramContext = paramContext.iterator();
+          while (paramContext.hasNext())
+          {
+            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+            if (paramString.compareTo(localRunningAppProcessInfo.processName) == 0) {
+              return localRunningAppProcessInfo.pid;
+            }
+          }
         }
       }
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt).append("_").append(this.jdField_a_of_type_Int).append("_").append(this.jdField_b_of_type_Int).append("_").append(this.c).append("_").append(l1);
-    return localStringBuilder.toString();
+    return -1;
   }
   
-  public void a()
+  public static int a(String paramString)
   {
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = System.nanoTime();
+    int i = -1;
+    SharedPreferences localSharedPreferences = b();
+    if (localSharedPreferences != null) {
+      i = localSharedPreferences.getInt("pid" + paramString, -1);
     }
+    return i;
   }
   
-  public void a(long paramLong)
+  public static long a(String paramString)
   {
-    if (paramLong >= this.jdField_b_of_type_Long) {
-      this.jdField_a_of_type_Long = 0L;
+    long l2 = 0L;
+    int i = a(BaseApplicationImpl.getContext(), paramString);
+    long l1;
+    if (i == -1) {
+      l1 = l2;
     }
-    while (paramLong <= this.jdField_a_of_type_Long) {
-      return;
-    }
-    this.jdField_a_of_type_Long = paramLong;
+    do
+    {
+      long l3;
+      do
+      {
+        int j;
+        do
+        {
+          do
+          {
+            return l1;
+            j = a(paramString);
+            l1 = l2;
+          } while (j == -1);
+          l1 = l2;
+        } while (i != j);
+        l3 = b(paramString);
+        l1 = l2;
+      } while (l3 == -1L);
+      l2 = System.currentTimeMillis() - l3;
+      l1 = l2;
+    } while (!QLog.isColorLevel());
+    QLog.d("ProcessUtils", 2, "getProcessRunningTime - " + paramString + ":" + l2);
+    return l2;
   }
   
-  void b()
+  public static void a(String paramString)
   {
-    long l = System.nanoTime();
-    if (l > this.jdField_b_of_type_Long) {
-      this.jdField_b_of_type_Long = l;
-    }
+    ThreadManager.post(new ProcessInfoUtil.1(paramString), 5, null, true);
   }
   
-  public String toString()
+  public static long b(String paramString)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("startTime: ").append(this.jdField_a_of_type_Long).append(" finishTime: ").append(this.jdField_b_of_type_Long);
-    return localStringBuffer.toString();
+    long l = -1L;
+    SharedPreferences localSharedPreferences = b();
+    if (localSharedPreferences != null) {
+      l = localSharedPreferences.getLong("start_time" + paramString, -1L);
+    }
+    return l;
+  }
+  
+  private static SharedPreferences b()
+  {
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl != null) {
+      return localBaseApplicationImpl.getSharedPreferences("process_info_pref", 4);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axow
  * JD-Core Version:    0.7.0.1
  */

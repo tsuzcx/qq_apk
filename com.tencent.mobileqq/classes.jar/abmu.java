@@ -1,75 +1,39 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.QQSettingMe.31.1;
-import com.tencent.mobileqq.activity.QQSettingMe.31.2;
-import com.tencent.mobileqq.activity.QQSettingMe.31.3;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashSet;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.SSOAccountObserver;
 
 public class abmu
-  extends ajjh
+  extends SSOAccountObserver
 {
-  public abmu(QQSettingMe paramQQSettingMe) {}
+  public abmu(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
   
-  protected void onGetStoreFace(boolean paramBoolean, HashSet<String> paramHashSet)
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramHashSet.contains(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    }
+    this.a.c();
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
   {
-    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (azzz.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.b(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("SSOAccountObserver", 2, "onGetTicketNoPasswd wtTicket=" + paramArrayOfByte);
     }
+    String str = null;
+    if (paramInt == 4096) {
+      str = new String(paramArrayOfByte);
+    }
+    paramArrayOfByte = new Intent();
+    paramArrayOfByte.putExtra("last_account", paramString);
+    paramArrayOfByte.putExtra("wtTicket", str);
+    paramArrayOfByte.putExtra("ssobundle", paramBundle);
+    this.a.setResult(-1, paramArrayOfByte);
+    this.a.finish();
   }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
   {
-    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (azzz.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.31.1(this));
-    }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean2) && (paramBoolean1) && (this.a.c)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.31.2(this));
-    }
-  }
-  
-  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    int k = 0;
-    String str;
-    int i;
-    if ((paramBoolean) && (this.a.c) && (paramArrayOfString != null) && (paramArrayOfString.length > 0))
-    {
-      str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      i = 0;
-    }
-    for (;;)
-    {
-      int j = k;
-      if (str != null)
-      {
-        j = k;
-        if (i < paramArrayOfString.length)
-        {
-          if (!str.equals(paramArrayOfString[i])) {
-            break label97;
-          }
-          j = 1;
-        }
-      }
-      if (j != 0) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.31.3(this));
-      }
-      return;
-      label97:
-      i += 1;
-    }
+    this.a.c();
   }
 }
 

@@ -1,21 +1,21 @@
 class aouo
-  implements aotu
+  extends aown
 {
-  aouo(aoum paramaoum) {}
+  aouo(aouk paramaouk, aoup paramaoup) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
-    this.a.a(true, apbf.a(this.a.a.a()), this.a.c(), new aoup(this));
-  }
-  
-  public void b()
-  {
-    aoum.b(this.a);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Aoup.a(paramString2);
+      return;
+    }
+    this.jdField_a_of_type_Aoup.a(paramInt, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aouo
  * JD-Core Version:    0.7.0.1
  */

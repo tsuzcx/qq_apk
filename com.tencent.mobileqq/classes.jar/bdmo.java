@@ -1,26 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.DebugInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import com.tencent.open.filedownload.ApkFileDownloadFragment.3.1;
+import mqq.os.MqqHandler;
 
-public final class bdmo
-  implements Parcelable.Creator<DebugInfo>
+public class bdmo
+  extends bdmx
 {
-  public DebugInfo a(Parcel paramParcel)
-  {
-    DebugInfo localDebugInfo = new DebugInfo();
-    localDebugInfo.a = paramParcel.readString();
-    localDebugInfo.b = paramParcel.readString();
-    return localDebugInfo;
-  }
+  public bdmo(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
   
-  public DebugInfo[] a(int paramInt)
+  public void a()
   {
-    return new DebugInfo[paramInt];
+    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdmo
  * JD-Core Version:    0.7.0.1
  */

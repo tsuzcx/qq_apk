@@ -1,24 +1,22 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class qus
-  implements DialogInterface.OnClickListener
+class qus
+  implements DialogInterface.OnDismissListener
 {
-  public qus(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  qus(qur paramqur) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog remain cancel");
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
     }
-    paramDialogInterface = ogy.a().a();
-    if (paramDialogInterface != null) {
-      paramDialogInterface.b();
+    if (qur.a(this.a) != null) {
+      qur.a(this.a).a(qur.a(this.a), qur.b(this.a), false, false);
     }
-    ogy.a().b(41695);
+    qur.a(this.a, true);
+    qur.b(this.a, false);
   }
 }
 

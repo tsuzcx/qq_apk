@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
 import org.json.JSONObject;
-import rkr;
+import rxh;
 
 public class ActionSheetHelper$1
   implements Runnable
 {
-  public ActionSheetHelper$1(rkr paramrkr, JSONObject paramJSONObject, String paramString) {}
+  public ActionSheetHelper$1(rxh paramrxh, JSONObject paramJSONObject, String paramString) {}
   
   public void run()
   {
-    rkr.a(this.this$0, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangString);
+    rxh.a(this.this$0, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangString);
   }
 }
 

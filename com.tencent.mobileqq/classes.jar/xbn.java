@@ -1,25 +1,30 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
-
-class xbn
-  extends akfx
+public class xbn
 {
-  xbn(xbm paramxbm, String paramString)
+  public static int a;
+  public static int b;
+  String a;
+  public boolean a;
+  String b;
+  public int c;
+  String c;
+  public int d;
+  
+  static
   {
-    super(paramString);
+    jdField_b_of_type_Int = 1;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public xbn(String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("LocationPlugin", 2, "onLocationFinish errCode = " + paramInt);
-    }
-    xbl.a(this.a.jdField_a_of_type_Xbl, paramSosoLbsInfo, this.a.jdField_a_of_type_JavaLangString);
+    this.jdField_c_of_type_Int = jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xbn
  * JD-Core Version:    0.7.0.1
  */

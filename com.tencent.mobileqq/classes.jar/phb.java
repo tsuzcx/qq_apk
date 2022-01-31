@@ -1,13 +1,14 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+
 class phb
-  implements pjw
+  implements oxl
 {
-  phb(pha parampha) {}
+  phb(pgz parampgz, ViewBase paramViewBase) {}
   
-  public void a()
+  public void a(long paramLong)
   {
-    qpj localqpj = this.a.jdField_a_of_type_Qoe.a();
-    if (localqpj != null) {
-      localqpj.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getVisibility() == 0) && (paramLong >= 4000L)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.setVisibility(8);
     }
   }
 }

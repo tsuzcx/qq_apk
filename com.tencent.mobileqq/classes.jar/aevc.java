@@ -1,15 +1,23 @@
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-class aevc
+public class aevc
+  implements baji
 {
-  public int a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
+  public String a;
   
-  aevc(aeva paramaeva) {}
+  public aevc(String paramString)
+  {
+    this.a = paramString;
+  }
+  
+  public long a()
+  {
+    try
+    {
+      long l = Long.parseLong(this.a);
+      return l;
+    }
+    catch (Exception localException) {}
+    return 0L;
+  }
 }
 
 

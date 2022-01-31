@@ -3,25 +3,25 @@ package com.tencent.av.ui;
 import android.os.Handler;
 import android.widget.TextView;
 import com.tencent.av.VideoController;
-import max;
+import mlo;
 
 public class VoiceChangeChooseDialog$1
   implements Runnable
 {
   public void run()
   {
-    if ((max.a(this.this$0) == 1) && (!this.this$0.jdField_a_of_type_Boolean))
+    if ((mlo.a(this.this$0) == 1) && (!this.this$0.jdField_a_of_type_Boolean))
     {
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131630557);
-      max.a(this.this$0, 2);
+      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131696260);
+      mlo.a(this.this$0, 2);
       this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().ax = true;
       this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 10000L);
     }
-    while (max.a(this.this$0) != 2) {
+    while (mlo.a(this.this$0) != 2) {
       return;
     }
-    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131630559);
-    max.a(this.this$0, 0);
+    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131696262);
+    mlo.a(this.this$0, 0);
   }
 }
 

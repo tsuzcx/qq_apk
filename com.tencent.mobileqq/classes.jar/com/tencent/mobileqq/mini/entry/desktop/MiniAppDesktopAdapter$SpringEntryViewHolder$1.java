@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import agtk;
+import ahfz;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.common.app.AppInterface;
@@ -15,7 +15,7 @@ class MiniAppDesktopAdapter$SpringEntryViewHolder$1
   {
     paramView = MiniAppUtils.getAppInterface();
     if (paramView != null) {
-      ((agtk)paramView.getManager(342)).a(3);
+      ((ahfz)paramView.getManager(342)).a(3);
     }
   }
 }

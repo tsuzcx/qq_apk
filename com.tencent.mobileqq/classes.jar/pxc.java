@@ -1,32 +1,49 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import java.lang.ref.WeakReference;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
 
-class pxc
-  implements MediaPlayer.OnPreparedListener
+public class pxc
+  extends ClickableSpan
+  implements rfs
 {
-  pxc(pxb parampxb) {}
+  private int jdField_a_of_type_Int = -1;
+  protected long a;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public pxc(ComponentHeaderNewSocial paramComponentHeaderNewSocial, long paramLong, int paramInt)
   {
-    try
-    {
-      paramMediaPlayer.start();
-      pxb.a(this.a).a = true;
-      paramMediaPlayer = (pxe)pxb.a(this.a).get();
-      if (paramMediaPlayer != null)
-      {
-        paramMediaPlayer.a(pxb.a(this.a));
-        this.a.a(true, "ugc voice play");
-      }
-      return;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
     }
-    catch (Exception paramMediaPlayer)
+  }
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_Long);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.jdField_a_of_type_Int;; i = -1)
     {
-      for (;;)
-      {
-        paramMediaPlayer.printStackTrace();
-      }
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+      return;
     }
   }
 }

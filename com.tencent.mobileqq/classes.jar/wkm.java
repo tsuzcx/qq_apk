@@ -1,24 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 
-class wkm
-  extends wkp
+public class wkm
+  implements View.OnClickListener
 {
-  wkm(wkf paramwkf, wkc paramwkc, String paramString)
-  {
-    super(paramwkf.a);
-  }
+  public wkm(BaseWidgetView paramBaseWidgetView) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "watermark doen");
+    if ((this.a.a() != null) && (!this.a.a(paramView)))
+    {
+      this.a.b(this.a.a());
+      this.a.a().onClick(paramView);
     }
-    this.jdField_a_of_type_Wkc.a(this.jdField_a_of_type_JavaLangString, paramBoolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wkm
  * JD-Core Version:    0.7.0.1
  */

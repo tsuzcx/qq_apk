@@ -1,65 +1,50 @@
-import android.content.Context;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.manager.FeatureManager;
-import java.io.File;
+import android.view.View;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchActivity;
+import java.util.List;
 
 public class awly
+  extends awlx
 {
-  public static int a;
-  public static int[] a;
-  public static final String[] a;
+  private int a;
   
-  static
+  public awly(List<awog> paramList, String paramString, int paramInt)
   {
-    jdField_a_of_type_Int = -4;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "libgnustl_shared.so", "libSNPE.so", "libQMCF_snpe.so" };
-    jdField_a_of_type_ArrayOfInt = new int[] { -4, -4, -4 };
+    super(paramList, paramString);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static boolean a()
+  public int a()
   {
-    return FeatureManager.isBasicFeaturesFunctionReady();
+    return awil.a("fts_native_chathistory_maxnum", 3);
   }
   
-  public static boolean a(Context paramContext)
+  public String a()
   {
-    paramContext = awlw.c(paramContext);
-    if (paramContext == null)
+    return ajyc.a(2131704948);
+  }
+  
+  public void a(View paramView)
+  {
+    awvy.a(this.jdField_a_of_type_JavaLangString, 40, 0, paramView);
+    if ((paramView.getContext() instanceof UniteSearchActivity))
     {
-      VideoEnvironment.a("PtvFilterSoLoad", "isFilterSoExist:getSVFilterSoPath soRootPath=null", null);
-      return false;
+      awvy.a("all_result", "more_talk", new String[] { "" + this.jdField_a_of_type_JavaLangString });
+      awso.a(null, 0, this.jdField_a_of_type_Int, "0X8009D4F", 0, 0, null, null);
     }
-    if (!new File(paramContext).exists())
-    {
-      VideoEnvironment.a("PtvFilterSoLoad", "isFilterSoExist:getSVFilterSoPath soRootPath=" + paramContext + ",exists=false", null);
-      return false;
-    }
-    return a(paramContext);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return FeatureManager.isBasicFeaturesReadyInDir(paramString);
-  }
-  
-  public static boolean b(Context arg0)
-  {
-    String str = awlw.d(???);
-    synchronized (awlw.a())
-    {
-      boolean bool1 = bace.a(str + "libQMCF.so");
-      boolean bool2 = bace.a(str + jdField_a_of_type_ArrayOfJavaLangString[2]);
-      if (QLog.isColorLevel()) {
-        QLog.i("SVAF_SoLoad", 2, String.format("isArtFilterSoExist, qmcfso[%s], snpeso[%s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-      }
-      return bool1;
-    }
+    bbmb.d = -1;
+    bbmb.f = 0;
+    bbmb.g = -1;
+    bbmb.h = -1;
+    bbmb.i = -1;
+    bbmb.j = -1;
+    bbma.a(paramView);
+    FTSEntitySearchActivity.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awly
  * JD-Core Version:    0.7.0.1
  */

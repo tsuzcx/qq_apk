@@ -1,25 +1,25 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class aomj
+  implements Animation.AnimationListener
 {
-  public final int a;
-  final long jdField_a_of_type_Long;
-  final Bundle jdField_a_of_type_AndroidOsBundle;
-  public apen a;
-  public final String a;
-  final int b;
+  public aomj(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, View paramView) {}
   
-  public aomj(aome paramaome, Bundle paramBundle, int paramInt1, apen paramapen, long paramLong, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Apen = paramapen;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramapen.a();
-    this.b = paramInt2;
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] new DownloadInst.[ mUDID:[" + this.jdField_a_of_type_Long + "] url:" + this.jdField_a_of_type_JavaLangString + " ]");
+    paramAnimation = new AlphaAnimation(0.2F, 0.0F);
+    paramAnimation.setDuration(500L);
+    paramAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

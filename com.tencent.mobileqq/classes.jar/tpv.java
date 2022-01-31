@@ -1,8 +1,17 @@
-import android.support.v4.view.PagerAdapter;
-
-public abstract interface tpv
+class tpv
+  extends ukz
 {
-  public abstract void a(PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
+  tpv(tpu paramtpu) {}
+  
+  protected void a(Error paramError)
+  {
+    this.a.a(paramError);
+  }
+  
+  protected void a(ukn paramukn)
+  {
+    this.a.a(paramukn);
+  }
 }
 
 

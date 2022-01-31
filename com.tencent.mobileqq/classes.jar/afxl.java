@@ -1,24 +1,28 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimTipsInfo;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class afxl
-  implements bfkv
 {
-  public afxl(ContactListView paramContactListView) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
+  private TextView c;
   
-  public void a(QQPimTipsInfo paramQQPimTipsInfo)
+  afxl(afxi paramafxi, View paramView)
   {
-    if (paramQQPimTipsInfo == null) {
-      return;
-    }
-    QLog.i("ContactListView", 2, "getQQPimTips() callback ");
-    bflc.b(this.a.getContext(), paramQQPimTipsInfo);
-    Message localMessage = new Message();
-    localMessage.what = 6;
-    localMessage.obj = paramQQPimTipsInfo;
-    this.a.a.sendMessage(localMessage);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368396);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369250));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369256));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377435));
+    this.b = ((TextView)paramView.findViewById(2131364918));
+    this.c = ((TextView)paramView.findViewById(2131370829));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365036));
   }
 }
 

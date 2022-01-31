@@ -1,18 +1,36 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adhw
-  implements ValueAnimator.AnimatorUpdateListener
+  implements adih
 {
-  public adhw(HeartCombolEffectView paramHeartCombolEffectView, adhx paramadhx) {}
+  private BaseChatPie a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public adhw(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_Adhx.jdField_b_of_type_Float = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((!this.jdField_a_of_type_Adhx.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Adhx.jdField_b_of_type_Float > 0.0F)) {
-      this.jdField_a_of_type_Adhx.jdField_b_of_type_Boolean = true;
+    this.a = paramBaseChatPie;
+  }
+  
+  private void a()
+  {
+    if ((this.a != null) && (this.a.a != null)) {
+      ((asuu)this.a.a.getManager(324)).onDestroy();
     }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 11 };
   }
 }
 

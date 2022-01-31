@@ -1,12 +1,13 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
 
 public class azdw
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public List<afou> a;
-  public boolean a;
-  public int[] a;
-  public String[] a;
+  public azdw(MediaPreviewActivity paramMediaPreviewActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

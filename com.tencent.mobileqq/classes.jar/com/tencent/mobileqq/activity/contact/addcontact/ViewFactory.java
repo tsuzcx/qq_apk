@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
@@ -25,20 +25,20 @@ public class ViewFactory
     switch (paramInt)
     {
     default: 
-      return 2131624199;
+      return 2131689739;
     case 80000000: 
-      return 2131624174;
+      return 2131689714;
     case 80000001: 
-      return 2131624230;
+      return 2131689770;
     case 80000002: 
       if (UniteSearchActivity.d == 12) {
-        return 2131624226;
+        return 2131689766;
       }
-      return 2131624224;
+      return 2131689764;
     case 80000003: 
-      return 2131624181;
+      return 2131689721;
     }
-    return 2131654130;
+    return 2131720020;
   }
   
   private View a(Context paramContext)
@@ -47,14 +47,14 @@ public class ViewFactory
     localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
     localLinearLayout.setOrientation(1);
     TextView localTextView = new TextView(paramContext);
-    localTextView.setText(ajjy.a(2131650668));
-    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131167721));
-    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131167090), 0, 0);
-    localTextView.setTextColor(paramContext.getResources().getColor(2131101334));
+    localTextView.setText(ajyc.a(2131716459));
+    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131298820));
+    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131298182), 0, 0);
+    localTextView.setTextColor(paramContext.getResources().getColor(2131166929));
     paramContext = new LinearLayout.LayoutParams(-2, -2);
     paramContext.gravity = 1;
     localLinearLayout.addView(localTextView, paramContext);
-    localLinearLayout.setContentDescription(ajjy.a(2131650669));
+    localLinearLayout.setContentDescription(ajyc.a(2131716460));
     return localLinearLayout;
   }
   

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aefv;
-import aqux;
+import aequ;
+import arqn;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class LimitChatPie$5
   implements Runnable
 {
-  public LimitChatPie$5(aefv paramaefv, String paramString1, String paramString2) {}
+  public LimitChatPie$5(aequ paramaequ, String paramString1, String paramString2) {}
   
   public void run()
   {
-    aqux.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.a, 3342339, this.b, 36, false, aefv.a(this.this$0), aefv.d(this.this$0));
+    arqn.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.a, 3342339, this.b, 36, false, aequ.a(this.this$0), aequ.d(this.this$0));
   }
 }
 

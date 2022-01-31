@@ -103,16 +103,6 @@ public class ReuseBitmapCache
     //   2	22	31	finally
   }
   
-  public void clear()
-  {
-    if (this.smallBitmapBucket != null) {
-      this.smallBitmapBucket.clear();
-    }
-    if (this.bigBitmapBucket != null) {
-      this.bigBitmapBucket.clear();
-    }
-  }
-  
   public Bitmap getBitmapFromPool(int paramInt)
   {
     try

@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
-class ajsw
-  extends axmg
+public class ajsw
+  extends BroadcastReceiver
 {
-  ajsw(ajsv paramajsv) {}
+  private ajsw(BaseActivity2 paramBaseActivity2) {}
   
-  public boolean a(axmb paramaxmb)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    String str = ThemeUtil.getCurrentThemeId();
-    if (!paramaxmb.a().equals(str)) {
-      bbmy.a(this.a.app.getApplication(), ajjy.a(2131649123), 4000).a();
+    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
+    {
+      BaseActivity2.ab = false;
+      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.ab);
     }
-    return false;
+    while (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
+      return;
+    }
+    BaseActivity2.ab = GesturePWDUtils.isAppOnForegroundByTasks(paramContext);
+    GesturePWDUtils.setAppForground(paramContext, BaseActivity2.ab);
   }
 }
 

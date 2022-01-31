@@ -1,49 +1,37 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
 
 public class acrh
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public acrh(VoiceTextEditPanel paramVoiceTextEditPanel) {}
+  public acrh(ActivateFriendGrid paramActivateFriendGrid) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    paramView = (ActivateFriendGridItem)paramView;
+    if (paramView.jdField_a_of_type_Boolean)
     {
-      if ((VoiceTextEditPanel.a(this.a).get() > 0) && (baip.a(VoiceTextEditPanel.a(this.a))) && (!VoiceTextEditPanel.a(this.a).isEnabled())) {
-        this.a.setSendEnable(true);
+      ActivateFriendGrid.a(this.a);
+      if (paramView.jdField_a_of_type_Boolean) {
+        break label101;
       }
-      if (VoiceTextEditPanel.a(this.a) != null) {
-        VoiceTextEditPanel.a(this.a).edit().putBoolean("businessinfo_ptt_vt_send_type_" + VoiceTextEditPanel.a(this.a).getCurrentAccountUin(), true).commit();
-      }
-      VoiceTextEditPanel.a(this.a).setText(2131653449);
-      if (this.a.a())
-      {
-        awqx.b(null, "dc00898", "", "", "0X800A1D8", "0X800A1D8", 2, 0, "", "", "", "");
-        return;
-      }
-      awqx.b(null, "dc00898", "", "", "0X800A1D8", "0X800A1D8", 1, 0, "", "", "", "");
-      return;
     }
-    if (VoiceTextEditPanel.a(this.a) != null) {
-      VoiceTextEditPanel.a(this.a).edit().putBoolean("businessinfo_ptt_vt_send_type_" + VoiceTextEditPanel.a(this.a).getCurrentAccountUin(), false).commit();
-    }
-    VoiceTextEditPanel.a(this.a).setText(2131653447);
-    if ((VoiceTextEditPanel.a(this.a).get() == 5) && (baip.a(VoiceTextEditPanel.a(this.a)))) {
-      this.a.setSendEnable(false);
-    }
-    if (this.a.a())
+    label101:
+    for (boolean bool = true;; bool = false)
     {
-      awqx.b(null, "dc00898", "", "", "0X800A1D9", "0X800A1D9", 2, 0, "", "", "", "");
+      paramView.setChecked(bool);
+      if (ActivateFriendGrid.a(this.a) != null) {
+        ActivateFriendGrid.a(this.a).a(ActivateFriendGrid.c(this.a));
+      }
+      if (ActivateFriendGrid.a(this.a) != null) {
+        ActivateFriendGrid.a(this.a).a(paramView.jdField_a_of_type_Int);
+      }
       return;
+      ActivateFriendGrid.b(this.a);
+      break;
     }
-    awqx.b(null, "dc00898", "", "", "0X800A1D9", "0X800A1D9", 1, 0, "", "", "", "");
   }
 }
 

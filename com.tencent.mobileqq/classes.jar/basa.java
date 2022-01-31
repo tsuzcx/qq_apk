@@ -1,42 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 import org.json.JSONObject;
 
 public class basa
-  extends Handler
+  implements aycb
 {
-  public basa(PathTraceManager paramPathTraceManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public basa(TroopInteractGiftAnimationController.1.1 param1, int paramInt1, int paramInt2, String paramString, JSONObject paramJSONObject1, int paramInt3, JSONObject paramJSONObject2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
+    if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int) {
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a != null) {}
     }
-    for (;;)
+    do
     {
       return;
-      try
-      {
-        paramMessage = (JSONObject)paramMessage.obj;
-        String str = paramMessage.getString("callback");
-        if (this.a.a != null)
-        {
-          barq localbarq = (barq)this.a.a.get();
-          if (localbarq != null)
-          {
-            localbarq.callJs(str, new String[] { paramMessage.toString() });
-            return;
-          }
-        }
-      }
-      catch (Exception paramMessage) {}
-    }
+      String str = this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_OrgJsonJSONObject.optString("videoPath", "2.mp4");
+      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a.a(str, new basb(this));
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a();
+    } while (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a == null);
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a.a();
   }
 }
 

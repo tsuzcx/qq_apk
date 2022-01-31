@@ -1,33 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.AddRequestSuspiciousMsgFragment;
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aexs
-  extends ajjh
+class aexs
+  implements View.OnClickListener
 {
-  public aexs(AddRequestSuspiciousMsgFragment paramAddRequestSuspiciousMsgFragment) {}
+  aexs(aexr paramaexr) {}
   
-  public void onAgreeSuspiciousMsg(boolean paramBoolean, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddRequestSuspiciousMsgFragment", 2, "onAgreeSuspiciousMsg " + paramBoolean + " " + paramInt + " " + paramLong);
-    }
-    if ((AddRequestSuspiciousMsgFragment.a(this.a) != null) && (AddRequestSuspiciousMsgFragment.a(this.a).uin == paramLong))
-    {
-      AddRequestSuspiciousMsgFragment.a(this.a);
-      if (paramBoolean)
-      {
-        bbmy.a(this.a.getActivity(), ajjy.a(2131634078), 0).a();
-        AddRequestSuspiciousMsgFragment.b(this.a);
-        this.a.getActivity().finish();
-      }
-    }
-    else
-    {
-      return;
-    }
-    bbmy.a(this.a.getActivity(), ajjy.a(2131634079), 0).a();
+    aexr.a(this.a).a();
+    ChatActivityUtils.a(aexr.a(this.a), aexr.a(this.a), aexr.a(this.a).jdField_a_of_type_Int, aexr.a(this.a).jdField_a_of_type_JavaLangString, true, true, null, null);
+    axqw.b(aexr.a(this.a), "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
   }
 }
 

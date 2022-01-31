@@ -1,26 +1,42 @@
-import java.util.HashMap;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.util.Pair;
+import cooperation.qqreader.net.BusinessTask;
+import mqq.app.AppRuntime;
 
-final class bguy
-  implements axrs
+public class bguy
 {
-  public void a(axsp paramaxsp, axsq paramaxsq)
+  private static bguy jdField_a_of_type_Bguy;
+  private static final Pair<Integer, Integer> jdField_a_of_type_ComTencentUtilPair = new Pair(Integer.valueOf(1494), Integer.valueOf(2));
+  private static boolean jdField_a_of_type_Boolean;
+  
+  public static SharedPreferences a()
   {
-    if ((paramaxsp == null) || (paramaxsq == null)) {}
-    do
+    return BaseApplicationImpl.getApplication().getSharedPreferences("Reader_shadow_gray" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 4);
+  }
+  
+  public static bguy a()
+  {
+    if (jdField_a_of_type_Bguy == null) {}
+    try
     {
-      do
-      {
-        return;
-      } while (!(paramaxsp instanceof axro));
-      paramaxsp = (axro)paramaxsp;
-      paramaxsp.jdField_a_of_type_Long += paramaxsq.c;
-      paramaxsq.c = 0L;
-      paramaxsq = "bytes=" + paramaxsp.jdField_a_of_type_Long + "-";
-      paramaxsp.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsq);
-      paramaxsq = paramaxsp.jdField_a_of_type_JavaLangString;
-    } while (!paramaxsq.contains("range="));
-    paramaxsq = paramaxsq.substring(0, paramaxsq.lastIndexOf("range="));
-    paramaxsp.jdField_a_of_type_JavaLangString = (paramaxsq + "range=" + paramaxsp.jdField_a_of_type_Long);
+      if (jdField_a_of_type_Bguy == null) {
+        jdField_a_of_type_Bguy = new bguy();
+      }
+      return jdField_a_of_type_Bguy;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    bgvo.e("ReaderShadowGrayManager", "[fetchConfig] sIsRequestedGray = " + jdField_a_of_type_Boolean);
+    if (jdField_a_of_type_Boolean) {
+      return;
+    }
+    BusinessTask localBusinessTask = new BusinessTask("ReaderShadowGray", jdField_a_of_type_ComTencentUtilPair);
+    localBusinessTask.a(new bguz(this), true);
+    localBusinessTask.a();
   }
 }
 

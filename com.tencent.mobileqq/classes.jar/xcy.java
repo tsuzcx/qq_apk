@@ -1,21 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.image.URLImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
-class xcy
-  implements Animation.AnimationListener
+public class xcy
+  implements View.OnClickListener
 {
-  xcy(xcv paramxcv, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  public xcy(TroopGiftPanel paramTroopGiftPanel, xck paramxck) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    if (this.jdField_a_of_type_Xck.jdField_a_of_type_Int == 1) {
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(this.jdField_a_of_type_Xck.c);
+    }
+    for (;;)
+    {
+      axqw.b(null, "dc00899", "grp_lbs", "", "qq_gift", "aio_top_click", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", "", this.jdField_a_of_type_Xck.jdField_a_of_type_JavaLangString);
+      return;
+      TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, this.jdField_a_of_type_Xck.c);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

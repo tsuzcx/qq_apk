@@ -1,124 +1,154 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import java.util.HashMap;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStarLeague;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeaz
-  extends aeav
+  extends BaseBubbleBuilder
 {
-  public static String[] a;
-  public int a;
-  public Bitmap a;
-  public AnimationView.AnimationInfo a;
-  public HashMap<String, Bitmap> a;
-  public String b;
-  public String c;
-  public String d;
+  View.OnClickListener a;
   
-  static
+  public aeaz(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "icon_def", "icon_txt", "icon_voice", "icon_video", "icon_sp" };
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aeba(this);
   }
   
-  public aeaz(String paramString)
+  public int a(ChatMessage paramChatMessage)
   {
-    super(paramString);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    return 0;
   }
   
-  public Bitmap a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public acun a()
   {
-    Object localObject;
-    if (paramRedPacketInfo == null)
+    return new aebb(this);
+  }
+  
+  public View a(ChatMessage paramChatMessage, acun paramacun, View paramView, BaseChatItemLayout paramBaseChatItemLayout, acxn paramacxn)
+  {
+    Context localContext = paramBaseChatItemLayout.getContext();
+    if ((paramacun instanceof aebb))
     {
-      localObject = null;
-      return localObject;
-    }
-    if ((paramRedPacketInfo.a instanceof MessageForQQWalletMsg))
-    {
-      paramRedPacketInfo = (MessageForQQWalletMsg)paramRedPacketInfo.a;
-      if (paramRedPacketInfo.messageType == 6) {
-        paramRedPacketInfo = "icon_txt";
+      paramacxn = (aebb)paramacun;
+      paramacun = paramView;
+      paramView = paramacxn;
+      if (paramacun != null) {
+        break label498;
       }
+      paramacun = LayoutInflater.from(localContext).inflate(2131560403, null);
+      paramView.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramacun.findViewById(2131376420));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramacun.findViewById(2131376425));
+      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramacun.findViewById(2131376426));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramacun.findViewById(2131376427));
+      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramacun.findViewById(2131378654));
+      paramView.jdField_c_of_type_AndroidViewView = paramacun.findViewById(2131365335);
+      paramView.d = paramacun.findViewById(2131364702);
+      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramacun.findViewById(2131365308));
+      paramView.d.getLayoutParams().width = BaseChatItemLayout.d;
     }
+    label424:
+    label498:
     for (;;)
     {
-      label38:
-      if (paramRedPacketInfo != null) {}
-      for (paramRedPacketInfo = (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get(paramRedPacketInfo);; paramRedPacketInfo = null)
+      for (;;)
       {
-        localObject = paramRedPacketInfo;
-        if (paramRedPacketInfo != null) {
+        paramBaseChatItemLayout.setHeadIconVisible(false);
+        if (paramBaseChatItemLayout.c != null) {
+          paramBaseChatItemLayout.c.setVisibility(8);
+        }
+        paramBaseChatItemLayout.b().setVisibility(4);
+        if ((paramChatMessage instanceof MessageForStarLeague))
+        {
+          paramBaseChatItemLayout = (MessageForStarLeague)paramChatMessage;
+          paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.starName);
+          paramView.jdField_b_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.subTitle);
+          if (paramBaseChatItemLayout.levelStatus != 1) {
+            break label424;
+          }
+          paramView.d.setBackgroundResource(2130843294);
+          paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843290);
+          paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+          paramView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+          paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+          paramView.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
+          if (paramBaseChatItemLayout.starAvatar.isEmpty()) {}
+        }
+        try
+        {
+          paramacxn = URLDrawable.URLDrawableOptions.obtain();
+          paramacxn.mRequestWidth = bawz.a(localContext, 64.0F);
+          paramacxn.mRequestHeight = bawz.a(localContext, 64.0F);
+          paramacxn.mFailedDrawable = null;
+          paramacxn.mLoadingDrawable = null;
+          paramacxn = URLDrawable.getDrawable(paramBaseChatItemLayout.starAvatar, paramacxn);
+          paramView.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable(paramacxn);
+          paramView.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(bawz.a(localContext, 32.0F));
+          paramView.d.setContentDescription(paramBaseChatItemLayout.brief);
+          paramView.d.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+          paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+          return paramacun;
+          paramView = (aebb)a();
+          paramView.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = paramBaseChatItemLayout;
+          paramBaseChatItemLayout.setTag(paramView);
+          paramacun = null;
           break;
+          paramView.d.setBackgroundResource(2130843291);
+          paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843289);
+          paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+          paramView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+          paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+          paramView.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
         }
-        return (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get("icon_def");
-        if (paramRedPacketInfo.messageType == 14)
+        catch (Throwable paramacxn)
         {
-          paramRedPacketInfo = "icon_video";
-          break label38;
+          for (;;)
+          {
+            QLog.e("ChatItemBuilder", 1, "levelStatus parse failed!", paramacxn);
+          }
         }
-        if ((paramRedPacketInfo.messageType == 13) || (paramRedPacketInfo.messageType == 15))
-        {
-          paramRedPacketInfo = "icon_voice";
-          break label38;
-        }
-        if (paramRedPacketInfo.messageType == 18)
-        {
-          paramRedPacketInfo = "icon_ksong";
-          break label38;
-        }
-        if (paramRedPacketInfo.messageType == 19)
-        {
-          paramRedPacketInfo = "icon_emoji";
-          break label38;
-        }
-        if (paramRedPacketInfo.messageType == 22)
-        {
-          paramRedPacketInfo = "icon_draw";
-          break label38;
-        }
-        if ((paramRedPacketInfo.messageType != 7) && (paramRedPacketInfo.messageType != 8) && (paramRedPacketInfo.messageType != 11) && (paramRedPacketInfo.messageType != 12) && (paramRedPacketInfo.messageType != 23)) {
-          break label213;
-        }
-        paramRedPacketInfo = "icon_sp";
-        break label38;
       }
-      label213:
-      paramRedPacketInfo = null;
     }
   }
   
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public String a(ChatMessage paramChatMessage)
   {
-    if (paramRedPacketInfo != null)
+    return null;
+  }
+  
+  public void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, acun paramacun, int paramInt1, int paramInt2)
+  {
+    super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramacun, paramInt1, paramInt2);
+    paramChatMessage = (aebb)paramacun;
+    if (paramChatMessage.jdField_a_of_type_AndroidViewView != null)
     {
-      this.b = paramRedPacketInfo.background;
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.corner;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.animInfo;
-      this.c = paramRedPacketInfo.title;
-      this.jdField_a_of_type_Int = paramRedPacketInfo.isHideTitle;
-      this.d = paramRedPacketInfo.resPath;
-      String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = arrayOfString[i];
-        if (paramRedPacketInfo.attribute.containsKey(str))
-        {
-          Bitmap localBitmap = (Bitmap)paramRedPacketInfo.attribute.getParcelable(str);
-          this.jdField_a_of_type_JavaUtilHashMap.put(str, localBitmap);
-        }
-        i += 1;
-      }
+      paramContext = paramChatMessage.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      paramContext.width = -1;
+      paramContext.height = -1;
+      paramChatMessage.jdField_a_of_type_AndroidViewView.setLayoutParams(paramContext);
     }
   }
   
-  public boolean a()
+  public bblt[] a(View paramView)
   {
-    return (this.b != null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null);
+    paramView = new bblr();
+    aaod.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    super.e(paramView, this.jdField_a_of_type_AndroidContentContext);
+    return paramView.a();
   }
 }
 

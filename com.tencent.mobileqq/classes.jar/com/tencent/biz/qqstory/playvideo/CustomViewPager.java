@@ -15,8 +15,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import urk;
-import vky;
+import veg;
+import vxu;
 
 public class CustomViewPager
   extends ViewPager
@@ -24,7 +24,7 @@ public class CustomViewPager
 {
   public float a;
   public GestureDetector.SimpleOnGestureListener a;
-  public vky a;
+  public vxu a;
   public boolean a;
   public float b;
   public float c;
@@ -39,8 +39,8 @@ public class CustomViewPager
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Vky = new vky(paramContext, this);
-    this.jdField_a_of_type_Vky.a(this);
+    this.jdField_a_of_type_Vxu = new vxu(paramContext, this);
+    this.jdField_a_of_type_Vxu.a(this);
   }
   
   public int getChildDrawingOrder(int paramInt1, int paramInt2)
@@ -53,7 +53,7 @@ public class CustomViewPager
       localObject = (ArrayList)((Field)localObject).get(this);
       if ((localObject == null) || (((ArrayList)localObject).size() != getChildCount()))
       {
-        urk.d("Q.qqstory.player.ViewPager", "getChildDrawingOrder invoke sortChildDrawingOrder() by ourselves !");
+        veg.d("Q.qqstory.player.ViewPager", "getChildDrawingOrder invoke sortChildDrawingOrder() by ourselves !");
         localObject = ViewPager.class.getDeclaredMethod("sortChildDrawingOrder", new Class[0]);
         ((Method)localObject).setAccessible(true);
         ((Method)localObject).invoke(this, new Object[0]);
@@ -63,28 +63,28 @@ public class CustomViewPager
     {
       for (;;)
       {
-        urk.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localNoSuchMethodException);
+        veg.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localNoSuchMethodException);
       }
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
       for (;;)
       {
-        urk.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localIllegalAccessException);
+        veg.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localIllegalAccessException);
       }
     }
     catch (InvocationTargetException localInvocationTargetException)
     {
       for (;;)
       {
-        urk.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localInvocationTargetException);
+        veg.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localInvocationTargetException);
       }
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
       for (;;)
       {
-        urk.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localNoSuchFieldException);
+        veg.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localNoSuchFieldException);
       }
     }
     return super.getChildDrawingOrder(paramInt1, paramInt2);
@@ -140,7 +140,7 @@ public class CustomViewPager
   {
     long l = SystemClock.uptimeMillis();
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    urk.a("Q.qqstory.player.ViewPager", "onLayout, cost=%d", Long.valueOf(SystemClock.uptimeMillis() - l));
+    veg.a("Q.qqstory.player.ViewPager", "onLayout, cost=%d", Long.valueOf(SystemClock.uptimeMillis() - l));
   }
   
   public void onLongPress(MotionEvent paramMotionEvent)
@@ -183,7 +183,7 @@ public class CustomViewPager
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = this.jdField_a_of_type_Vky.a(paramMotionEvent);
+    boolean bool = this.jdField_a_of_type_Vxu.a(paramMotionEvent);
     if (!this.jdField_a_of_type_Boolean) {
       return bool;
     }
@@ -227,7 +227,7 @@ public class CustomViewPager
   {
     long l = SystemClock.uptimeMillis();
     super.setAdapter(paramPagerAdapter);
-    urk.a("Q.qqstory.player.ViewPager", "setAdapter, cost=%d", Long.valueOf(SystemClock.uptimeMillis() - l));
+    veg.a("Q.qqstory.player.ViewPager", "setAdapter, cost=%d", Long.valueOf(SystemClock.uptimeMillis() - l));
   }
   
   public void setGestureListener(GestureDetector.SimpleOnGestureListener paramSimpleOnGestureListener)

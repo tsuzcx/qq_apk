@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aaen;
+import aaof;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 public class ChatActivityFacade$17$1$1
   implements Runnable
 {
-  public ChatActivityFacade$17$1$1(aaen paramaaen) {}
+  public ChatActivityFacade$17$1$1(aaof paramaaof) {}
   
   public void run()
   {

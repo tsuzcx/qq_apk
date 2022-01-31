@@ -1,12 +1,23 @@
-public abstract interface vep
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
+
+public class vep
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public vep(DanceMachineQQBrowserActivity paramDanceMachineQQBrowserActivity) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void c(int paramInt1, int paramInt2, int paramInt3);
+  public void onSystemUiVisibilityChange(int paramInt)
+  {
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 4870;; paramInt = 775)
+    {
+      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
+      return;
+    }
+  }
 }
 
 

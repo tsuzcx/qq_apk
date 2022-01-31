@@ -1,219 +1,101 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScanTask;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScaner.1;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScaner.2;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScaner.3;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.app.Application;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.ProtocolDownloader.Adapter;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class aytz
-  implements ayty
+  extends ProtocolDownloader.Adapter
 {
-  private static long jdField_a_of_type_Long = 1L;
-  private static aytz jdField_a_of_type_Aytz;
-  private LinkedList<Long> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private Map<Long, TroopFileScanTask> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private LinkedList<TroopFileScanTask> b = new LinkedList();
-  private LinkedList<TroopFileScanTask> c = new LinkedList();
+  public aytz(Application paramApplication) {}
   
-  public static aytz a()
+  public static URL a(String paramString, int paramInt1, int paramInt2)
   {
-    try
-    {
-      if (jdField_a_of_type_Aytz == null) {
-        jdField_a_of_type_Aytz = new aytz();
-      }
-      aytz localaytz = jdField_a_of_type_Aytz;
-      return localaytz;
-    }
-    finally {}
+    return a(paramString, paramInt1, paramInt2, true);
   }
   
-  private String a()
+  public static URL a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    return " WS:" + this.jdField_a_of_type_JavaUtilMap.size() + " QS:" + this.jdField_a_of_type_JavaUtilLinkedList.size() + " PRS:" + this.c.size() + " RS:" + this.b.size();
-  }
-  
-  private LinkedList<TroopFileScanTask> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
+    if (paramString == null) {
       return null;
     }
-    LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    TroopFileScanTask localTroopFileScanTask;
-    while (localIterator.hasNext())
-    {
-      localTroopFileScanTask = (TroopFileScanTask)((Map.Entry)localIterator.next()).getValue();
-      if (paramString.equalsIgnoreCase(localTroopFileScanTask.a()))
-      {
-        localLinkedList.add(localTroopFileScanTask);
-        localIterator.remove();
-      }
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo.path = paramString;
+    paramString = new File(paramString);
+    if (paramString.exists()) {
+      localLocalMediaInfo.modifiedDate = paramString.lastModified();
     }
-    localIterator = this.c.iterator();
-    while (localIterator.hasNext())
+    localLocalMediaInfo.thumbWidth = paramInt1;
+    localLocalMediaInfo.thumbHeight = paramInt2;
+    localLocalMediaInfo.isRegionThumbUseNewDecoder = paramBoolean;
+    try
     {
-      localTroopFileScanTask = (TroopFileScanTask)localIterator.next();
-      if (paramString.equalsIgnoreCase(localTroopFileScanTask.a()))
-      {
-        localLinkedList.add(localTroopFileScanTask);
-        localIterator.remove();
-      }
+      paramString = new URL("regionalthumb", null, LocalMediaInfo.getUrl(localLocalMediaInfo));
+      return paramString;
     }
-    return localLinkedList;
-  }
-  
-  private void a()
-  {
-    if (this.b.size() >= 2) {}
-    label146:
-    for (;;)
+    catch (MalformedURLException paramString)
     {
-      return;
       for (;;)
       {
-        if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
-          break label146;
-        }
-        long l = ((Long)this.jdField_a_of_type_JavaUtilLinkedList.remove(0)).longValue();
-        TroopFileScanTask localTroopFileScanTask = (TroopFileScanTask)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(l));
-        if (localTroopFileScanTask != null) {
-          if (a(localTroopFileScanTask.a()))
-          {
-            aysb.b("TroopFileScaner", aysb.a, "[" + localTroopFileScanTask.a() + "] has same task gening. add WD task");
-            this.c.add(localTroopFileScanTask);
-            localTroopFileScanTask.b();
-          }
-          else
-          {
-            this.b.add(localTroopFileScanTask);
-            if (localTroopFileScanTask.a()) {
-              break;
-            }
-            this.b.remove(localTroopFileScanTask);
-          }
-        }
+        paramString = null;
       }
     }
   }
   
-  private boolean a(long paramLong)
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    int i = 1;
-    Iterator localIterator = this.b.iterator();
-    TroopFileScanTask localTroopFileScanTask;
-    while (localIterator.hasNext())
+    paramFile = null;
+    paramURLDrawableHandler = LocalMediaInfo.parseUrl(paramDownloadParams.url);
+    if (paramURLDrawableHandler != null) {
+      if (!paramURLDrawableHandler.isRegionThumbUseNewDecoder) {
+        break label58;
+      }
+    }
+    label58:
+    for (paramFile = new agmp();; paramFile = new agpl())
     {
-      localTroopFileScanTask = (TroopFileScanTask)localIterator.next();
-      if (paramLong == localTroopFileScanTask.a())
-      {
-        localTroopFileScanTask.a();
-        localIterator.remove();
-      }
+      paramFile = paramFile.a(paramDownloadParams.url);
+      paramDownloadParams.outWidth = paramFile.getWidth();
+      paramDownloadParams.outHeight = paramFile.getHeight();
+      return paramFile;
     }
-    for (boolean bool1 = true;; bool1 = false)
+  }
+  
+  public boolean hasDiskFile(DownloadParams paramDownloadParams)
+  {
+    boolean bool2 = false;
+    paramDownloadParams = LocalMediaInfo.parseUrl(paramDownloadParams.url);
+    boolean bool1 = bool2;
+    if (paramDownloadParams != null)
     {
-      boolean bool2 = bool1;
-      if (!bool1)
-      {
-        localIterator = this.c.iterator();
-        if (localIterator.hasNext())
-        {
-          localTroopFileScanTask = (TroopFileScanTask)localIterator.next();
-          if (paramLong != localTroopFileScanTask.a()) {
-            break label215;
-          }
-          localTroopFileScanTask.a();
-          localIterator.remove();
-          bool1 = true;
-        }
-      }
-      label215:
-      for (;;)
-      {
-        break;
-        if ((TroopFileScanTask)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong)) != null) {}
-        for (;;)
-        {
-          bool2 = bool1 | i | this.jdField_a_of_type_JavaUtilLinkedList.remove(Long.valueOf(paramLong));
-          if (bool2) {
-            aysb.c("TroopFileScaner", aysb.a, "[" + paramLong + "] stopScan." + a());
-          }
-          return bool2;
-          i = 0;
-        }
+      bool1 = bool2;
+      if (new File(paramDownloadParams.path).exists()) {
+        bool1 = true;
       }
     }
+    return bool1;
   }
   
-  private boolean a(String paramString)
+  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      if (paramString.equalsIgnoreCase(((TroopFileScanTask)localIterator.next()).a())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private void b(long paramLong, boolean paramBoolean, int paramInt, TroopFileScanTask paramTroopFileScanTask)
-  {
-    this.b.remove(paramTroopFileScanTask);
-    this.c.remove(paramTroopFileScanTask);
-    aysb.c("TroopFileScaner", aysb.a, "[" + paramLong + "] onTaskDoneInter.  bSuc:" + paramBoolean + " errCode:" + paramInt + a());
-    Object localObject = a(paramTroopFileScanTask.a());
-    if ((localObject != null) && (((LinkedList)localObject).size() > 0))
+    paramDownloadParams = LocalMediaInfo.parseUrl(paramDownloadParams.url);
+    if (paramDownloadParams != null)
     {
-      aysb.b("TroopFileScaner", aysb.a, "[" + paramLong + "] onTaskDoneInter. " + ((LinkedList)localObject).size() + " same task passive complete. " + a());
-      localObject = ((LinkedList)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((TroopFileScanTask)((Iterator)localObject).next()).a(paramBoolean, paramInt, paramTroopFileScanTask.a(), paramTroopFileScanTask.b(), paramTroopFileScanTask.a(), paramTroopFileScanTask.b(), paramTroopFileScanTask.c(), paramTroopFileScanTask.a());
+      paramDownloadParams = new File(paramDownloadParams.path);
+      if (paramDownloadParams.exists()) {
+        return paramDownloadParams;
       }
     }
-    a();
-  }
-  
-  public long a(String paramString, ayua paramayua, Bundle paramBundle)
-  {
-    long l2 = jdField_a_of_type_Long;
-    jdField_a_of_type_Long = l2 + 1L;
-    long l1 = l2;
-    if (l2 == 0L)
-    {
-      l1 = jdField_a_of_type_Long;
-      jdField_a_of_type_Long = l1 + 1L;
-    }
-    paramayua = TroopFileScanTask.a(l1, paramString, this, paramayua);
-    if (paramayua == null) {
-      return 0L;
-    }
-    ayrs.a(new TroopFileScaner.1(this, l1, paramayua, paramString), true);
-    return l1;
-  }
-  
-  public void a(long paramLong)
-  {
-    ayrs.a(new TroopFileScaner.2(this, paramLong), true);
-  }
-  
-  public void a(long paramLong, boolean paramBoolean, int paramInt, TroopFileScanTask paramTroopFileScanTask)
-  {
-    ayrs.a(new TroopFileScaner.3(this, paramLong, paramBoolean, paramInt, paramTroopFileScanTask), false);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aytz
  * JD-Core Version:    0.7.0.1
  */

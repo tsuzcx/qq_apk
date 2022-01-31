@@ -1,32 +1,36 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
 
-class akcs
-  implements axta
+public class akcs
+  extends ajyb
 {
-  akcs(akcl paramakcl, long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public void a(axtc paramaxtc, axtb paramaxtb)
+  protected void a()
   {
-    try
+    super.a();
+    if (this.d >= ajxz.a().a / 12000L)
     {
-      paramaxtc = paramaxtc.a.getWupBuffer();
-      paramaxtb = new structmsg.RspSystemMsgRead();
-      paramaxtb.mergeFrom(paramaxtc);
-      int i = paramaxtb.head.result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "sendGroupSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
-      }
+      CoreService.stopTempService();
+      this.a.c();
+      this.d = 0L;
+    }
+  }
+  
+  protected void a(String paramString)
+  {
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
+    {
+      localGuardManager.a(i, paramString);
       return;
     }
-    catch (Exception paramaxtc)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramaxtc);
-    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.b();
+    CoreService.startTempService();
   }
 }
 

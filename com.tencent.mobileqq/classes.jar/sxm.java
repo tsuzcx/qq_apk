@@ -1,41 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
 public class sxm
-  extends soi
+  implements sxb
 {
-  qqstory_service.RspIconPostfix a;
+  public sxm(StoryVideoUploadTask paramStoryVideoUploadTask, ter paramter, swx paramswx) {}
   
-  public sxm() {}
-  
-  public sxm(qqstory_service.RspIconPostfix paramRspIconPostfix)
+  public void a(sxa paramsxa)
   {
-    super(paramRspIconPostfix.result);
-    this.a = paramRspIconPostfix;
-  }
-  
-  public void a()
-  {
-    if ((this.a.icon_info.has()) && (this.a.icon_info.size() > 0)) {
-      Bosses.get().postJob(new sxn(this, "GetUserIconHandler"));
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
+    paramsxa = this.jdField_a_of_type_Ter;
+    if (this.jdField_a_of_type_Swx.a == 0) {}
+    for (int i = 2;; i = 3)
+    {
+      paramsxa.jdField_b_of_type_Int = i;
+      this.jdField_a_of_type_Ter.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Swx.jdField_b_of_type_JavaLangString;
+      this.jdField_a_of_type_Ter.c = this.jdField_a_of_type_Swx.c;
+      return;
     }
   }
 }

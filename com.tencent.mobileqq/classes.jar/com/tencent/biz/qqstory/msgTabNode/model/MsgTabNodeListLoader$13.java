@@ -2,13 +2,13 @@ package com.tencent.biz.qqstory.msgTabNode.model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import ssr;
-import ssy;
+import tfn;
+import tfu;
 
 public class MsgTabNodeListLoader$13
   implements Runnable
 {
-  public MsgTabNodeListLoader$13(ssr paramssr) {}
+  public MsgTabNodeListLoader$13(tfn paramtfn) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class MsgTabNodeListLoader$13
     {
       Iterator localIterator = this.this$0.d.iterator();
       if (localIterator.hasNext()) {
-        ((ssy)localIterator.next()).a();
+        ((tfu)localIterator.next()).a();
       }
     }
   }

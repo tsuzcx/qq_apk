@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import java.util.Map;
-import nia;
+import ntk;
 
 class ReadInJoyListViewGroup$15
   implements Runnable
@@ -12,7 +12,7 @@ class ReadInJoyListViewGroup$15
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      if (nia.b(this.this$0.a)) {
+      if (ntk.b(this.this$0.a)) {
         this.this$0.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString);
       }
       return;

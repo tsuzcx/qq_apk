@@ -1,66 +1,52 @@
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
+
 public class bcaj
+  extends ajsp
 {
-  public static int a(int paramInt)
-  {
-    int i = 1;
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 4)) {
-      i = 2;
-    }
-    while (paramInt == 5) {
-      return i;
-    }
-    return 3;
-  }
+  public bcaj(WebProcessManager paramWebProcessManager) {}
   
-  public static int a(int paramInt, String paramString)
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    int i = 1;
-    if (paramInt == 0) {
-      i = 0;
-    }
-    while (paramInt == 1) {
-      return i;
-    }
-    if (paramInt == 3000) {
-      return 2;
-    }
-    if (ajed.aF.equals(paramString)) {
-      return 3;
-    }
-    if (ajed.L.equals(paramString)) {
-      return 4;
-    }
-    if (ajed.A.equals(paramString)) {
-      return 5;
-    }
-    return -1;
-  }
-  
-  public static int b(int paramInt)
-  {
-    switch (paramInt)
+    int j = -1;
+    int i = j;
+    if (paramObject != null)
     {
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      return -1;
-    case 1: 
-      return 0;
-    case 2: 
-      return 1;
-    case 3: 
-      return 2;
-    case 4: 
-      return 3;
+      i = j;
+      if ((paramObject instanceof Bundle))
+      {
+        paramObject = (Bundle)paramObject;
+        i = paramObject.getInt("ad_bbq_code", -1);
+        if (i == 0)
+        {
+          paramObject = paramObject.getString("ad_bbq_message");
+          Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+          if ((localObject instanceof QQAppInterface))
+          {
+            localObject = (ajsk)((QQAppInterface)localObject).a(53);
+            if (localObject != null) {
+              ((ajsk)localObject).b(paramObject);
+            }
+          }
+        }
+      }
     }
-    return 4;
+    paramObject = new Intent("com.tencent.mobileqq.babyq.added");
+    paramObject.setPackage(BaseApplicationImpl.getApplication().getPackageName());
+    paramObject.putExtra("result", i);
+    BaseApplicationImpl.getApplication().sendBroadcast(paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebProcessManager", 2, "babyq observer return result=" + i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bcaj
  * JD-Core Version:    0.7.0.1
  */

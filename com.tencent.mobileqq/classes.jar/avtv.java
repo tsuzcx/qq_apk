@@ -1,30 +1,55 @@
-import java.util.Comparator;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-final class avtv
-  implements Comparator<avoj>
+public class avtv
+  extends AnimatorListenerAdapter
 {
-  public int a(avoj paramavoj1, avoj paramavoj2)
+  public avtv(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    int i;
-    if (paramavoj2.a() == null) {
-      i = -1;
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
     }
-    int j;
-    do
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.a.get() + ", mActionUpAnimator:" + this.a.b.get());
+    }
+    if (!this.a.b.get())
     {
-      return i;
-      if (paramavoj1.a() == null) {
-        return 1;
-      }
-      j = Integer.signum(paramavoj2.a().c - paramavoj1.a().c);
-      i = j;
-    } while (j != 0);
-    return avtu.a(paramavoj1, paramavoj2);
+      this.a.a.set(true);
+      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(2);
+      CameraCaptureButtonLayout.a(this.a, System.currentTimeMillis());
+      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(5);
+    }
+    for (;;)
+    {
+      this.a.b.set(false);
+      return;
+      CameraCaptureButtonLayout.a(this.a).setVisibility(8);
+      CameraCaptureButtonLayout.a(this.a);
+      CameraCaptureButtonLayout.a(this.a, 1.0F);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avtv
  * JD-Core Version:    0.7.0.1
  */

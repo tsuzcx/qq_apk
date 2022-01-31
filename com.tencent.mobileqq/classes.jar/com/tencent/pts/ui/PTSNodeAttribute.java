@@ -20,6 +20,11 @@ public class PTSNodeAttribute
     super(paramJSONObject);
   }
   
+  public String getAttributeID()
+  {
+    return PTSValueConvertUtil.getString(get("id"));
+  }
+  
   public String getClickEvent()
   {
     return PTSValueConvertUtil.getString(get("bindtap"));

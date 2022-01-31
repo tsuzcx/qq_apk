@@ -1435,6 +1435,12 @@ public class IpContainer
     }
   }
   
+  public void cleanIpv6Cfg(Context paramContext)
+  {
+    this.mCfg.mIpv6List.clear();
+    write2disk(paramContext, this.mFileName, this.mCfg);
+  }
+  
   public boolean fail(String paramString, boolean paramBoolean)
   {
     boolean bool1 = false;
@@ -1545,7 +1551,7 @@ public class IpContainer
     //   34: getfield 34	com/tencent/mobileqq/highway/config/IpContainer:mCfg	Lcom/tencent/mobileqq/highway/config/IpContainer$PersistentConfig;
     //   37: getfield 245	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpv6List	Ljava/util/concurrent/ConcurrentHashMap;
     //   40: aload_1
-    //   41: invokevirtual 479	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   41: invokevirtual 480	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   44: checkcast 38	java/util/ArrayList
     //   47: astore_1
     //   48: aload_1
@@ -1566,7 +1572,7 @@ public class IpContainer
     //   73: getfield 34	com/tencent/mobileqq/highway/config/IpContainer:mCfg	Lcom/tencent/mobileqq/highway/config/IpContainer$PersistentConfig;
     //   76: getfield 242	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpList	Ljava/util/concurrent/ConcurrentHashMap;
     //   79: aload_1
-    //   80: invokevirtual 479	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   80: invokevirtual 480	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   83: checkcast 38	java/util/ArrayList
     //   86: astore_1
     //   87: goto -39 -> 48
@@ -1616,7 +1622,7 @@ public class IpContainer
     //   37: getfield 34	com/tencent/mobileqq/highway/config/IpContainer:mCfg	Lcom/tencent/mobileqq/highway/config/IpContainer$PersistentConfig;
     //   40: getfield 245	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpv6List	Ljava/util/concurrent/ConcurrentHashMap;
     //   43: aload_1
-    //   44: invokevirtual 479	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   44: invokevirtual 480	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   47: checkcast 38	java/util/ArrayList
     //   50: astore_1
     //   51: aload_1
@@ -1634,7 +1640,7 @@ public class IpContainer
     //   69: getfield 34	com/tencent/mobileqq/highway/config/IpContainer:mCfg	Lcom/tencent/mobileqq/highway/config/IpContainer$PersistentConfig;
     //   72: getfield 242	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpList	Ljava/util/concurrent/ConcurrentHashMap;
     //   75: aload_1
-    //   76: invokevirtual 479	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   76: invokevirtual 480	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   79: checkcast 38	java/util/ArrayList
     //   82: astore_1
     //   83: goto -32 -> 51

@@ -1,12 +1,25 @@
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import java.util.HashSet;
+import java.util.Set;
 
 public class pqp
 {
+  public int a;
   public long a;
-  public String a;
-  public ArrayList<pra> a = new ArrayList();
-  public long b;
-  public long c;
+  public Set<String> a;
+  public Set<String> b = new HashSet();
+  
+  public pqp()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "time:" + this.jdField_a_of_type_Long + "effectTime:" + this.jdField_a_of_type_Int + "  " + this.jdField_a_of_type_JavaUtilSet + "  " + this.b;
+  }
 }
 
 

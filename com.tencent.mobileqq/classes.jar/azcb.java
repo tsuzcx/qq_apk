@@ -1,40 +1,89 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
-import java.util.ArrayList;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-class azcb
-  implements begw
+final class azcb
+  implements BusinessObserver
 {
-  azcb(azca paramazca, begr parambegr, boolean paramBoolean, azac paramazac) {}
+  azcb(azcc paramazcc) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Begr.dismiss();
-    int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
-    }
-    switch (i)
-    {
-    default: 
-      paramView = "";
+    localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    String str = localContext.getString(2131696568);
+    Object localObject2 = null;
+    int i = -1;
+    if (paramBoolean) {
+      paramInt = i;
     }
     for (;;)
     {
-      azzx.a("Grp_edu", "Grp_recite", "Blueword_Clk", 0, 0, new String[] { this.jdField_a_of_type_Azac.f, paramView });
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          continue;
+        }
+        paramInt = i;
+        localObject1 = new WebSsoBody.WebSsoResponseBody();
+        paramInt = i;
+        ((WebSsoBody.WebSsoResponseBody)localObject1).mergeFrom(paramBundle);
+        paramInt = i;
+        i = ((WebSsoBody.WebSsoResponseBody)localObject1).ret.get();
+        paramInt = i;
+        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject1).data.get());
+        if (i == 0) {
+          continue;
+        }
+        paramInt = i;
+        str = paramBundle.optString("msg");
+        localObject1 = localObject2;
+        paramBundle = str;
+        paramInt = i;
+        if (TextUtils.isEmpty(str))
+        {
+          paramInt = i;
+          paramBundle = localContext.getString(2131696569, new Object[] { Integer.valueOf(i) });
+          localObject1 = localObject2;
+        }
+        localObject2 = localObject1;
+        paramInt = i;
+        localObject1 = paramBundle;
+        paramBundle = localObject2;
+      }
+      catch (Exception paramBundle)
+      {
+        Object localObject1 = localContext.getString(2131696569, new Object[] { Integer.valueOf(9992) });
+        paramBundle = null;
+        continue;
+      }
+      this.a.a(paramInt, (String)localObject1, paramBundle);
       return;
-      SelectReciteParagraphFragment.a(paramView.getContext(), this.jdField_a_of_type_Azac.f, this.jdField_a_of_type_Azac.jdField_a_of_type_JavaLangString, new ArrayList(this.jdField_a_of_type_Azac.jdField_a_of_type_JavaUtilList), this.jdField_a_of_type_Azac.c);
-      paramView = "2";
+      paramInt = i;
+      localObject1 = azbz.a(paramBundle.getJSONObject("result").optJSONArray("feeds"));
+      paramBundle = str;
       continue;
-      SearchReciteArticleFragment.a(paramView.getContext(), this.jdField_a_of_type_Azac.f, "", this.jdField_a_of_type_Azac.c);
-      paramView = "0";
+      paramInt = i;
+      localObject1 = localContext.getString(2131696569, new Object[] { Integer.valueOf(9991) });
+      paramBundle = null;
+      paramInt = -1;
+      continue;
+      paramInt = i;
+      localObject1 = localContext.getString(2131696569, new Object[] { Integer.valueOf(9992) });
+      paramBundle = null;
+      paramInt = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azcb
  * JD-Core Version:    0.7.0.1
  */

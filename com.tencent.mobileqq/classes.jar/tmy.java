@@ -1,10 +1,52 @@
-public abstract interface tmy
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetShareGroupInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.Iterator;
+import java.util.List;
+
+public class tmy
+  extends syv<too>
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  private final String a;
+  public List<String> a;
   
-  public abstract void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3);
+  public tmy()
+  {
+    this.jdField_a_of_type_JavaLangString = sxp.a("StorySvc.get_share_group_info");
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public syq a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetShareGroupInfo localRspGetShareGroupInfo = new qqstory_service.RspGetShareGroupInfo();
+    try
+    {
+      localRspGetShareGroupInfo.mergeFrom(paramArrayOfByte);
+      return new too(localRspGetShareGroupInfo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      veg.b("Q.qqstory.shareGroup:GetShareGroupInfoRequest", a(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetShareGroupInfo localReqGetShareGroupInfo = new qqstory_service.ReqGetShareGroupInfo();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqGetShareGroupInfo.share_group_id_list.add(str);
+    }
+    return localReqGetShareGroupInfo.toByteArray();
+  }
 }
 
 

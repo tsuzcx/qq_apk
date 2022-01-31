@@ -1,80 +1,37 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class azsh
-  extends BaseAdapter
+  extends MSFServlet
 {
-  public azsh(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
-  
-  public int getCount()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    return this.a.a.length;
+    ((AppInterface)getAppRuntime()).getTroopFileProtoReqMgr().a(paramIntent, paramFromServiceMsg);
   }
   
-  public Object getItem(int paramInt)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return this.a.a[paramInt];
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return this.a.a[paramInt].jdField_a_of_type_Int;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = new azsk();
-      Object localObject = LayoutInflater.from(this.a).inflate(2131496967, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131312051));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131312053));
-      paramView.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131312052);
-      ((View)localObject).setTag(paramView);
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      ColorDrawable localColorDrawable = new ColorDrawable(0);
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-      localObject = URLDrawable.getDrawable(this.a.a[paramInt].jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setTag(azue.b(190, 270, azvv.a(this.a, 3.0F)));
-      ((URLDrawable)localObject).setDecodeHandler(azue.i);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.a[paramInt].jdField_a_of_type_JavaLangString);
-      localObject = new GradientDrawable();
-      ((GradientDrawable)localObject).setShape(0);
-      ((GradientDrawable)localObject).setCornerRadii(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, azvv.a(this.a, 5.0F), azvv.a(this.a, 5.0F), azvv.a(this.a, 5.0F), azvv.a(this.a, 5.0F) });
-      ((GradientDrawable)localObject).setColor(this.a.a[paramInt].jdField_b_of_type_Int);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable((Drawable)localObject);
-      paramViewGroup = paramViewGroup.jdField_a_of_type_AndroidViewView;
-      if (!this.a.a[paramInt].jdField_a_of_type_Boolean) {
-        break label345;
-      }
+    if (paramIntent == null) {
+      return;
     }
-    label345:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      paramViewGroup.setVisibility(paramInt);
-      return paramView;
-      paramViewGroup = (azsk)paramView.getTag();
-      break;
-    }
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bblm.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    boolean bool = paramIntent.getBooleanExtra("fastresendenable", false);
+    paramPacket.addAttribute("fastresend", Boolean.valueOf(bool));
+    paramPacket.autoResend = bool;
+    paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
+    paramPacket.addAttribute("remind_slown_network", Boolean.valueOf(paramIntent.getBooleanExtra("remind_slown_network", true)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azsh
  * JD-Core Version:    0.7.0.1
  */

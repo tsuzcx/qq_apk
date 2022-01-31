@@ -1,18 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class pos
-  implements Parcelable.Creator<ArticleInfo>
+class pos
+  implements URLDrawable.DownloadListener
 {
-  public ArticleInfo a(Parcel paramParcel)
+  int jdField_a_of_type_Int = 0;
+  
+  pos(pop parampop, String paramString, DrawableUtil.DrawableCallBack paramDrawableCallBack, URLDrawable paramURLDrawable) {}
+  
+  public void onFileDownloadFailed(int paramInt)
   {
-    return new ArticleInfo(paramParcel);
+    paramInt = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (paramInt + 1);
+    if (paramInt < 3) {
+      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+    }
+    for (;;)
+    {
+      QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadFailed :" + this.jdField_a_of_type_JavaLangString + "  reTry: " + this.jdField_a_of_type_Int);
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(false, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    }
   }
   
-  public ArticleInfo[] a(int paramInt)
+  public void onFileDownloadStarted()
   {
-    return new ArticleInfo[paramInt];
+    QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadStarted :" + this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadSucceed :" + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 

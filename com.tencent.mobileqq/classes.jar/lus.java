@@ -1,50 +1,49 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
-import java.util.ArrayList;
-
 public class lus
-  implements lxc
+  extends lur
 {
-  public lus(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion, long paramLong) {}
-  
-  public void a()
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.j = true;
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.L();
-  }
-  
-  public void b()
-  {
-    kvq localkvq = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a();
-    if (localkvq != null)
+    paramLong -= this.a;
+    int j = 0;
+    float f2 = 1.0F;
+    int i;
+    float f1;
+    if ((paramLong > 3865L) && (paramLong < 4198L))
     {
-      krx.d(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.c, " TYPE_NOTIFY_CAMERA_CLOSE 2: " + localkvq.j + "|" + localkvq.d);
-      if (localkvq.j) {
-        this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.jdField_b_of_type_Lru.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
-      }
-    }
-    MultiVideoCtrlLayerUI4Discussion.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion, this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.d(true);
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.e)
-    {
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.jdField_a_of_type_Long, 100);
-      awqx.b(null, "CliOper", "", "", "0X8004CF2", "0X8004CF2", 0, 0, "", "", "", "");
-      if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f != 90) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f != 270)) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().a() == -1) || (((leb)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().c.get(0)).a != 1)) {
-        break label318;
-      }
-      awqx.b(null, "CliOper", "", "", "0X8004CFB", "0X8004CFB", 0, 0, "", "", "", "");
+      i = (int)(255L * (paramLong - 3865L) / 333L);
+      f1 = (0.5F * (float)(paramLong + 4198L) - 3865.0F) / 333.0F;
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.j = false;
+      a(i);
+      b(f1);
       return;
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.e, this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.jdField_b_of_type_Long, 101);
-      break;
-      label318:
-      if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 90) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 270)) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().a() != -1) && (((leb)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().c.get(0)).a == 2)) {
-        awqx.b(null, "CliOper", "", "", "0X8004CFC", "0X8004CFC", 0, 0, "", "", "", "");
+      if ((paramLong >= 4198L) && (paramLong <= 4631L))
+      {
+        i = 255;
+        f1 = f2;
+      }
+      else
+      {
+        f1 = f2;
+        i = j;
+        if (paramLong > 4631L)
+        {
+          f1 = f2;
+          i = j;
+          if (paramLong < 4798L)
+          {
+            i = (int)(255L * (4798L - paramLong) / 167L);
+            f1 = (167.0F - (float)(4631L - paramLong) * 0.5F) / 167.0F;
+          }
+        }
       }
     }
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a(paramInt1 * 548 / 1500, paramInt2 - paramInt1 * 1032 / 1500, paramInt1 * 952 / 1500, paramInt2 - paramInt1 * 472 / 1500);
   }
 }
 

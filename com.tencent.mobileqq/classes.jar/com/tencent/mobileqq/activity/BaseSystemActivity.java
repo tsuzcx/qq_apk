@@ -35,16 +35,16 @@ public class BaseSystemActivity
     int j = (int)((System.currentTimeMillis() + jdField_a_of_type_Int) / 86400000L);
     int k = (int)((jdField_a_of_type_Int + paramLong) / 86400000L);
     if (k == j) {
-      i = 2131654440;
+      i = 2131720335;
     }
     do
     {
       return i;
       if (k == j - 1) {
-        return 2131655021;
+        return 2131720919;
       }
     } while (k != j - 2);
-    return 2131624895;
+    return 2131690456;
   }
   
   public static String a(long paramLong, boolean paramBoolean)
@@ -55,7 +55,7 @@ public class BaseSystemActivity
     int k = a(paramLong);
     if (k != -1)
     {
-      if (k != 2131654440) {
+      if (k != 2131720335) {
         jdField_a_of_type_JavaLangStringBuffer.append(BaseApplication.getContext().getString(k));
       }
       i = 1;
@@ -63,7 +63,7 @@ public class BaseSystemActivity
     int m = jdField_a_of_type_JavaUtilCalendar.get(11);
     int j = jdField_a_of_type_JavaUtilCalendar.get(12);
     if (i != 0) {
-      if (k == 2131654440) {
+      if (k == 2131720335) {
         if (m == 24)
         {
           i = 24;
@@ -114,9 +114,9 @@ public class BaseSystemActivity
   
   private void c()
   {
-    super.setContentView(2131495540);
-    setContentBackgroundResource(2130838503);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131310968));
+    super.setContentView(2131561128);
+    setContentBackgroundResource(2130838514);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131376777));
     this.jdField_a_of_type_JavaLangString = a();
     if (this.jdField_a_of_type_JavaLangString == null) {
       throw new Exception("peerUin is null");
@@ -207,7 +207,7 @@ public class BaseSystemActivity
   {
     super.onCreateRightView();
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130849253, 0, 0, 0);
+    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130849488, 0, 0, 0);
     return this.rightViewText;
   }
   

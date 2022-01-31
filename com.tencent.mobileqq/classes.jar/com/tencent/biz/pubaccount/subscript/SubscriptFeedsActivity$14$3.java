@@ -2,24 +2,24 @@ package com.tencent.biz.pubaccount.subscript;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import rpa;
-import rpf;
+import sbs;
+import sbx;
 
 public class SubscriptFeedsActivity$14$3
   implements Runnable
 {
-  public SubscriptFeedsActivity$14$3(rpa paramrpa, Serializable paramSerializable) {}
+  public SubscriptFeedsActivity$14$3(sbs paramsbs, Serializable paramSerializable) {}
   
   public void run()
   {
     SubscriptFeedsActivity localSubscriptFeedsActivity;
-    if ((this.jdField_a_of_type_JavaIoSerializable != null) && (SubscriptFeedsActivity.a(this.jdField_a_of_type_Rpa.a) != null))
+    if ((this.jdField_a_of_type_JavaIoSerializable != null) && (SubscriptFeedsActivity.a(this.jdField_a_of_type_Sbs.a) != null))
     {
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Rpa.a, (ArrayList)this.jdField_a_of_type_JavaIoSerializable);
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Rpa.a).b(SubscriptFeedsActivity.a(this.jdField_a_of_type_Rpa.a));
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Rpa.a).a = true;
-      localSubscriptFeedsActivity = this.jdField_a_of_type_Rpa.a;
-      if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Rpa.a).f != 1) {
+      SubscriptFeedsActivity.a(this.jdField_a_of_type_Sbs.a, (ArrayList)this.jdField_a_of_type_JavaIoSerializable);
+      SubscriptFeedsActivity.a(this.jdField_a_of_type_Sbs.a).b(SubscriptFeedsActivity.a(this.jdField_a_of_type_Sbs.a));
+      SubscriptFeedsActivity.a(this.jdField_a_of_type_Sbs.a).a = true;
+      localSubscriptFeedsActivity = this.jdField_a_of_type_Sbs.a;
+      if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Sbs.a).f != 1) {
         break label110;
       }
     }

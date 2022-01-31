@@ -1,29 +1,25 @@
-import android.os.Bundle;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.gallery.view.AIOGalleryActivity;
 
-class aqoa
-  implements wiu
+public class aqoa
+  extends BroadcastReceiver
 {
-  aqoa(aqnz paramaqnz) {}
+  public aqoa(AIOGalleryActivity paramAIOGalleryActivity) {}
   
-  public void a(Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = paramBundle.getInt("msg");
-    if (i == 90)
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
     {
-      aqnz.a(this.a, paramBundle.getInt("state"));
-      aqnz.a(this.a, aqnz.a(this.a), aqnz.b(this.a));
+      aqmb.a().a().a("AIOGalleryActivity", 4, "receive videochat in aiogallery");
+      this.a.finish();
     }
-    while (i != 91) {
-      return;
-    }
-    i = paramBundle.getInt("errCode");
-    paramBundle = paramBundle.getString("desc");
-    aqnz.a(this.a, i, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqoa
  * JD-Core Version:    0.7.0.1
  */

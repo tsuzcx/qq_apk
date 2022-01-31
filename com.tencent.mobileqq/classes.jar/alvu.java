@@ -1,19 +1,18 @@
-public class alvu
+import android.os.HandlerThread;
+import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
+import com.tencent.mobileqq.app.ThreadManager;
+
+final class alvu
+  implements ArkEnvironmentManager.ThreadCreater
 {
-  public String a = "";
-  public String b = "";
-  
-  public alvu() {}
-  
-  public alvu(String paramString1, String paramString2)
+  public HandlerThread createHanderThread(String paramString)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    return ThreadManager.newFreeHandlerThread(paramString, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alvu
  * JD-Core Version:    0.7.0.1
  */

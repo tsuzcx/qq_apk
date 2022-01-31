@@ -1,22 +1,42 @@
-public abstract interface aotv
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTDocFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
+
+public class aotv
+  extends apvd
 {
-  public abstract long a();
+  public aotv(QfileRecentTDocFileTabView paramQfileRecentTDocFileTabView) {}
   
-  public abstract String a();
+  public void a() {}
   
-  public abstract void a(long paramLong);
+  public void b() {}
   
-  public abstract void a(aojh paramaojh);
+  public void c() {}
   
-  public abstract void a(String paramString);
+  public void d() {}
   
-  public abstract void a(boolean paramBoolean);
+  public void e()
+  {
+    Object localObject = apeh.b();
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (apef.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
+          axqw.b(QfileRecentTDocFileTabView.b(this.a), "dc00898", "", "", "0X800A08C", "0X800A08C", 0, 0, "", "", "", "");
+        }
+      }
+    }
+  }
   
-  public abstract boolean a();
+  public void f() {}
   
-  public abstract String b();
-  
-  public abstract String c();
+  public void g()
+  {
+    this.a.a.a().G();
+  }
 }
 
 

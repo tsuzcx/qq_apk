@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import atvv;
+import autt;
 
 public class PersonalityLabelGalleryActivity$ListViewAdapter$2
   implements Runnable
 {
-  public PersonalityLabelGalleryActivity$ListViewAdapter$2(atvv paramatvv) {}
+  public PersonalityLabelGalleryActivity$ListViewAdapter$2(autt paramautt) {}
   
   public void run()
   {

@@ -1,48 +1,35 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.ims.signature.SignatureReport;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.app.NewIntent;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class ajsj
-  extends Handler
+  implements EIPCResultCallback
 {
-  ajsj(ajsi paramajsi, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  ajsj(ajsh paramajsh) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    switch (paramMessage.what)
+    if ((paramEIPCResult == null) || (paramEIPCResult.data == null))
     {
-    case 2: 
-    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : result == null or data == null");
+      }
       return;
-    case 1: 
-      Object localObject;
-      if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
-      {
-        localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), mmi.class);
-        ((NewIntent)localObject).putExtra("data", ((ajsn)paramMessage.obj).a.toByteArray());
-        ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
-        ((NewIntent)localObject).setObserver(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Boolean = false;
-        this.a.jdField_a_of_type_Ajsn = null;
-        return;
-        localObject = this.a.createToServiceMsg("SecCheckSigSvc.UploadReq");
-        ((ToServiceMsg)localObject).putWupBuffer(((ajsn)paramMessage.obj).a.toByteArray());
-        this.a.sendPbReq((ToServiceMsg)localObject);
-      }
     }
-    new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
+    boolean bool = paramEIPCResult.isSuccess();
+    String str2 = paramEIPCResult.data.getString("key_method_action");
+    String str3 = paramEIPCResult.data.getString("web_js_call_back_id");
+    if (QLog.isColorLevel()) {
+      QLog.d("BabyQFriendStatusWebViewPlugin", 2, new Object[] { "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : issuccess = ", Boolean.valueOf(bool), ",action = ", str2, ",jscallback = ", str3 });
+    }
+    String str1 = "";
+    if ("setFriendGrouping".equals(str2))
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("key_handle_set_get_group");
+      str1 = "{ \"ret\": 0, \"group\": \"" + paramEIPCResult + "\"}";
+    }
+    ajsh.a(this.a, str3, str1, str2);
   }
 }
 

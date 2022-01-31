@@ -1,23 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
+import android.content.ComponentName;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class asex
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  asex(asew paramasew, URLDrawable paramURLDrawable) {}
+  asex(asew paramasew) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Asew.a.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    ObjectAnimator.ofFloat(this.jdField_a_of_type_Asew.a, "alpha", new float[] { 0.1F, 1.0F }).setDuration(1500L).start();
+    Intent localIntent = new Intent();
+    localIntent.setComponent(new ComponentName("com.tencent.tim", "com.tencent.mobileqq.activity.SplashActivity"));
+    localIntent.setFlags(268435456);
+    asew.a(this.a).getApp().startActivity(localIntent);
+    paramDialogInterface.dismiss();
+    axqw.b(asew.a(this.a), "dc00898", "", "", "0X80085DA", "0X80085DA", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asex
  * JD-Core Version:    0.7.0.1
  */

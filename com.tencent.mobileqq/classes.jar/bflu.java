@@ -1,121 +1,65 @@
-import android.content.Context;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.support.annotation.UiThread;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import cooperation.qqreader.helper.LoadingAnimationManager.1;
-import cooperation.qqreader.helper.LoadingAnimationManager.2;
-import cooperation.qqreader.helper.LoadingAnimationManager.3;
-import cooperation.qqreader.helper.LoadingAnimationManager.4;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.BeautyResource;
+import com.tencent.mobileqq.shortvideo.resource.GestureGameResource;
+import com.tencent.mobileqq.shortvideo.resource.GestureResource;
+import com.tencent.mobileqq.shortvideo.resource.LowLightResource;
+import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.Resources;
+import com.tencent.mobileqq.shortvideo.resource.SensorResource;
+import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
 
-public final class bflu
+public class bflu
+  implements Resources
 {
-  private static bflu jdField_a_of_type_Bflu;
-  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = new LottieDrawable();
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static bflu a()
+  public SpecialAVFilterResource getAVFilterResource()
   {
-    if (jdField_a_of_type_Bflu == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bflu == null) {
-        jdField_a_of_type_Bflu = new bflu();
-      }
-      return jdField_a_of_type_Bflu;
-    }
-    finally {}
+    return new bflw();
   }
   
-  private void a(long paramLong)
+  public ArtFilterResource getArtFilterResource()
   {
-    if (paramLong > 0L)
-    {
-      Message localMessage = Message.obtain(null, new LoadingAnimationManager.3(this));
-      localMessage.what = 30002;
-      ThreadManager.getUIHandler().sendMessageDelayed(localMessage, paramLong);
-      return;
-    }
-    b();
+    return new bfll();
   }
   
-  private void b()
+  public AVFilterResource getAvFilterResource()
   {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localImageView == null) {
-      return;
-    }
-    localImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-    localImageView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
-    c();
+    return new bflk();
   }
   
-  private void c()
+  public BeautyResource getBeautyResource()
   {
-    ThreadManager.getUIHandler().removeMessages(30001);
-    Message localMessage = Message.obtain(null, new LoadingAnimationManager.4(this));
-    localMessage.what = 30001;
-    ThreadManager.getUIHandler().sendMessageDelayed(localMessage, 5000L);
+    return new bflm();
   }
   
-  @UiThread
-  public void a()
+  public GestureResource getGestureResource()
   {
-    ThreadManager.getUIHandler().removeMessages(30002);
-    ThreadManager.getUIHandler().removeMessages(30001);
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localImageView != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.stop();
-      localImageView.setVisibility(8);
-    }
-    this.jdField_a_of_type_JavaLangRunnable = null;
+    return new bflp();
   }
   
-  @UiThread
-  public void a(@NonNull Context paramContext, @NonNull ImageView paramImageView)
+  public LowLightResource getLowLightResource()
   {
-    a(paramContext, paramImageView, 0L);
+    return new bflr();
   }
   
-  @UiThread
-  public void a(@NonNull Context paramContext, @NonNull ImageView paramImageView, long paramLong)
+  public PtuFilterResource getPtuFilterResource()
   {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localImageView != paramImageView) && (localImageView != null)) {
-      a();
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.getComposition() == null)
-    {
-      this.jdField_a_of_type_JavaLangRunnable = new LoadingAnimationManager.1(this, paramLong);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-      try
-      {
-        ThreadManager.getSubThreadHandler().post(new LoadingAnimationManager.2(this, paramContext));
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        bfne.b("LoadingAnimationManager", "loadLottieAnimation  fail :", paramContext);
-        return;
-      }
-    }
-    a(paramLong);
+    return new bfls();
+  }
+  
+  public SensorResource getSensorResource()
+  {
+    return new bflv();
+  }
+  
+  public GestureGameResource geteGestureGameResource()
+  {
+    return new bflo();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bflu
  * JD-Core Version:    0.7.0.1
  */

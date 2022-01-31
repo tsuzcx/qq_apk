@@ -3,11 +3,11 @@ package com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import omg;
+import oxu;
 
 public class MediaVideoView
   extends VideoView
-  implements omg
+  implements oxu
 {
   public MediaVideoView(Context paramContext)
   {
@@ -25,14 +25,19 @@ public class MediaVideoView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void D_()
+  public void B_()
   {
-    a();
+    b();
   }
   
-  public void E_()
+  public void C_()
   {
-    F_();
+    b();
+  }
+  
+  public void D_()
+  {
+    c();
   }
   
   public boolean a()
@@ -40,14 +45,9 @@ public class MediaVideoView
     return a() == 7;
   }
   
-  public void c()
-  {
-    G_();
-  }
-  
   public void d()
   {
-    f();
+    e();
   }
   
   public void setMediaCoverUrl(String paramString)

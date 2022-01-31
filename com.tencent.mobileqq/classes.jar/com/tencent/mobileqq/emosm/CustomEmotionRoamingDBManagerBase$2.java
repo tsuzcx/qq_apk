@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emosm;
 
-import anae;
-import atmp;
-import atmq;
+import anqm;
+import aukn;
+import auko;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.qphone.base.util.QLog;
@@ -10,17 +10,17 @@ import com.tencent.qphone.base.util.QLog;
 public class CustomEmotionRoamingDBManagerBase$2
   implements Runnable
 {
-  public CustomEmotionRoamingDBManagerBase$2(anae paramanae, int paramInt, CustomEmotionBase paramCustomEmotionBase) {}
+  public CustomEmotionRoamingDBManagerBase$2(anqm paramanqm, int paramInt, CustomEmotionBase paramCustomEmotionBase) {}
   
   public void run()
   {
     if (this.this$0.a == null) {}
-    atmp localatmp;
+    aukn localaukn;
     do
     {
       return;
-      localatmp = this.this$0.a.getEntityManagerFactory().createEntityManager();
-    } while (localatmp == null);
+      localaukn = this.this$0.a.getEntityManagerFactory().createEntityManager();
+    } while (localaukn == null);
     boolean bool2 = false;
     boolean bool1;
     switch (this.jdField_a_of_type_Int)
@@ -37,19 +37,19 @@ public class CustomEmotionRoamingDBManagerBase$2
     }
     for (;;)
     {
-      localatmp.a();
+      localaukn.a();
       if (!QLog.isColorLevel()) {
         break;
       }
       QLog.d("CustomEmotionRoamingDBManagerBase", 2, "updateCustomEmotionDataListInDB type:" + this.jdField_a_of_type_Int + "save result: " + bool1);
       return;
       this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase.setStatus(1000);
-      localatmp.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
+      localaukn.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
       bool1 = bool2;
       continue;
-      bool1 = localatmp.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
+      bool1 = localaukn.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
       continue;
-      bool1 = localatmp.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
+      bool1 = localaukn.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
     }
   }
 }

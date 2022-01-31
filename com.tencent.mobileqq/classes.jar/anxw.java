@@ -1,54 +1,76 @@
+import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.widget.BubblePopupWindow;
+import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
+import java.util.List;
 
 public class anxw
-  implements bbob
+  extends anzf
 {
-  public anxw(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  private anyb jdField_a_of_type_Anyb;
+  private anyf jdField_a_of_type_Anyf;
+  private List<anyc> jdField_a_of_type_JavaUtilList;
+  private int[] jdField_a_of_type_ArrayOfInt;
   
-  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  public anxw(Context paramContext, anyb paramanyb, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-    }
-    if (!this.a.b())
-    {
-      this.a.jdField_a_of_type_Aonw.a(null);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-      paramView.setPressed(false);
-    }
-    do
-    {
-      return;
-      paramSlideDetectListView = paramView.findViewById(2131310229);
-      paramView = (FileInfo)this.a.jdField_a_of_type_Aonw.getItem(paramInt);
-      this.a.jdField_a_of_type_Aonw.a(paramView);
-    } while (paramSlideDetectListView == null);
-    paramView = (Button)paramSlideDetectListView.findViewById(2131299406);
-    paramView.setTag(Integer.valueOf(paramInt));
-    paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-    ((ShaderAnimLayout)paramSlideDetectListView).a();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
+    super(paramContext, 7, paramInt);
+    this.jdField_a_of_type_Anyb = paramanyb;
+    this.jdField_a_of_type_ArrayOfInt = aocr.a();
   }
   
-  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  public int a()
   {
-    paramSlideDetectListView = paramView.findViewById(2131310229);
-    this.a.jdField_a_of_type_Aonw.a(null);
-    if (paramSlideDetectListView != null)
+    return aocp.a(this.jdField_a_of_type_ArrayOfInt);
+  }
+  
+  protected int a(int paramInt)
+  {
+    return 2007;
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_Anyb = null;
+  }
+  
+  protected void a(View paramView, int paramInt)
+  {
+    if (paramView == null) {}
+    int i;
+    do
     {
-      ((ShaderAnimLayout)paramSlideDetectListView).e();
-      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131299406);
-      paramSlideDetectListView.setTag(null);
-      paramSlideDetectListView.setOnClickListener(null);
+      do
+      {
+        return;
+        i = a(paramInt);
+      } while (paramInt >= b());
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        this.jdField_a_of_type_JavaUtilList = aocp.a(this.jdField_a_of_type_ArrayOfInt);
+      }
+    } while (i != 2007);
+    if (this.jdField_a_of_type_Anyf == null)
+    {
+      this.jdField_a_of_type_Anyf = new anzg(this, 2007);
+      this.jdField_a_of_type_Anyf.a(true);
+      this.jdField_a_of_type_Anyf.c(false);
+      this.jdField_a_of_type_Anyf.b(false);
+      anyc localanyc = new anyc();
+      localanyc.h = "delete";
+      this.jdField_a_of_type_Anyf.a(localanyc);
     }
-    LocalFileBrowserActivity.a(this.a);
+    paramView = (EmoticonLinearLayout)paramView;
+    paramView.setCallBack(this.jdField_a_of_type_Anyb);
+    paramView.setAdapter(this.jdField_a_of_type_Anyf);
+    this.jdField_a_of_type_Anyf.a(3, 7);
+    this.jdField_a_of_type_Anyf.a(paramInt);
+    this.jdField_a_of_type_Anyf.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Anyf.a();
+  }
+  
+  public int b()
+  {
+    return a() + aocp.h;
   }
 }
 

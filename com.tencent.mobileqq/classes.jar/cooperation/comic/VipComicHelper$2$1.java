@@ -1,12 +1,12 @@
 package cooperation.comic;
 
-import bezf;
+import bggw;
 import com.tencent.webbundle.sdk.WebBundleManager;
 
 public class VipComicHelper$2$1
   implements Runnable
 {
-  public VipComicHelper$2$1(bezf parambezf) {}
+  public VipComicHelper$2$1(bggw parambggw) {}
   
   public void run()
   {

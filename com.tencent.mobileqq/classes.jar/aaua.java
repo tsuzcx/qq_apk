@@ -1,27 +1,17 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class aaua
-  extends bajp
+  implements View.OnClickListener
 {
-  public aaua(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
-  {
-    super(paramInt);
-  }
+  public aaua(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.e == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (this.a.jdField_a_of_type_Aaxd != null) {
-        this.a.jdField_a_of_type_Aaxd.a(bool);
-      }
-      VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "defaultcard", "click_customized", "", 1, 0, 0, "", "", "");
-      this.a.b(3);
-      return;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }

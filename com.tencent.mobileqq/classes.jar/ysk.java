@@ -1,34 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Rect;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxEnterImageView;
-import com.tencent.gdtad.views.videoimax.TransitionContext;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import java.lang.ref.WeakReference;
 
-public class ysk
-  implements ValueAnimator.AnimatorUpdateListener
+class ysk
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public ysk(TransitionContext paramTransitionContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Rect paramRect) {}
+  ysk(ysj paramysj, AdQQMINIProgramAdapter.Params paramParams, GdtAd paramGdtAd) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    int j = this.jdField_a_of_type_Int;
-    int k = Math.round((0 - this.jdField_a_of_type_Int) * f1);
-    int m = this.b;
-    int n = Math.round((0 - this.b) * f1);
-    int i1 = this.c;
-    int i2 = Math.round((this.d - this.c) * f1);
-    if (this.e < TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).getHeight()) {}
-    for (int i = TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).getHeight();; i = this.e)
-    {
-      int i3 = this.f;
-      i = Math.round((i - this.f) * f1);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(k + j, n + m, i2 + i1, i + i3);
-      TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).setClipBoundsCompact(this.jdField_a_of_type_AndroidGraphicsRect);
-      TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).invalidate();
-      yny.a("TransitionContext", "onAnimationUpdate() mPreviewView.getHeight = [" + TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).getHeight() + "]");
-      return;
-    }
+    yxs.b("GdtQQMINIProgramAdapter", String.format("onLaunchResult %b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    AdReporterForAnalysis.reportForLaunchQQMINIProgramEND((Context)this.jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter$Params.context.get(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramBoolean);
   }
 }
 

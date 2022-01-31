@@ -1,95 +1,55 @@
 import android.os.Bundle;
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.UrlExchangeStep.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.provider.LocalPhotoGroupData;
+import java.util.ArrayList;
 
-public class axqu
-  extends axql
+final class axqu
+  implements bhko
 {
-  private AtomicInteger a;
-  private AtomicInteger b;
+  axqu(QQAppInterface paramQQAppInterface) {}
   
-  axqu(axqk paramaxqk)
+  public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    super(paramaxqk);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
-    this.jdField_a_of_type_JavaLangString = "UrlExchangeStep";
-  }
-  
-  protected boolean a()
-  {
-    return (axqk.c(this.jdField_b_of_type_Axqk).get()) || (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != -1) || (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 2);
-  }
-  
-  protected void d()
-  {
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if ((paramBundle == null) || (!paramBundle.containsKey("data")))
     {
-      f();
+      QLog.e("[PhotoAlbum]QZoneReport", 1, "onWebEvent data == null || !data.containsKey(\"data\")");
       return;
     }
-    if ((apmf.a()) && (axqk.b(this.jdField_b_of_type_Axqk) == 11))
+    paramBundle = paramBundle.getBundle("data");
+    if (paramBundle == null)
     {
-      QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|ServerShareOpen, skip UrlExchangeStep");
-      axqk.c(this.jdField_b_of_type_Axqk).set(true);
-      b();
+      QLog.e("[PhotoAlbum]QZoneReport", 1, "onWebEvent getTravelGroup bundle is empty");
       return;
     }
-    if ((!TextUtils.isEmpty(axqk.e(this.jdField_b_of_type_Axqk))) && (axqk.e(this.jdField_b_of_type_Axqk).length() > 150)) {
-      axqk.a(this.jdField_b_of_type_Axqk).put("targetUrl", axqk.e(this.jdField_b_of_type_Axqk));
-    }
-    if (!TextUtils.isEmpty(axqk.a(this.jdField_b_of_type_Axqk).c)) {
-      axqk.a(this.jdField_b_of_type_Axqk).put("sourceUrl", axqk.a(this.jdField_b_of_type_Axqk).c);
-    }
-    if (!TextUtils.isEmpty(axqk.a(this.jdField_b_of_type_Axqk).d)) {
-      axqk.a(this.jdField_b_of_type_Axqk).put("sourceIcon", axqk.a(this.jdField_b_of_type_Axqk).d);
-    }
-    if ((axqk.e(this.jdField_b_of_type_Axqk) == 2) && (mpl.a(axqk.h(this.jdField_b_of_type_Axqk)))) {
-      axqk.a(this.jdField_b_of_type_Axqk).put("audioUrl", axqk.h(this.jdField_b_of_type_Axqk));
-    }
-    Bundle localBundle;
-    if (TextUtils.isEmpty(axqk.a(this.jdField_b_of_type_Axqk)))
+    boolean bool;
+    if ("cmd.getTravelGroup".equals(paramString))
     {
-      axqk.c(this.jdField_b_of_type_Axqk, axqk.a(this.jdField_b_of_type_Axqk).e);
-      axqk.b(this.jdField_b_of_type_Axqk).set(false);
-      QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|use app icon:" + axqk.a(this.jdField_b_of_type_Axqk));
-      localBundle = new Bundle();
-      localBundle.putString("report_type", "102");
-      localBundle.putString("act_type", "18");
-      if (!TextUtils.isEmpty(axqk.a(this.jdField_b_of_type_Axqk))) {
-        break label506;
+      QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent CMD_GET_TRAVEL_GROUP");
+      paramString = (LocalPhotoGroupData)paramBundle.getSerializable("groupData");
+      if ((paramString == null) || (paramString.pathList == null) || (paramString.pathList.size() == 0))
+      {
+        QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent localPhotoGroupData == null");
+        bool = false;
       }
     }
-    label506:
-    for (String str = "1";; str = "0")
+    for (;;)
     {
-      localBundle.putString("intext_1", str);
-      bcad.a().a(localBundle, "" + axqk.a(this.jdField_b_of_type_Axqk), this.jdField_b_of_type_Axqk.a.c(), false);
-      if ((!axqk.b(this.jdField_b_of_type_Axqk).get()) && (mpl.a(axqk.a(this.jdField_b_of_type_Axqk)))) {
-        axqk.a(this.jdField_b_of_type_Axqk).put("imageUrl", axqk.a(this.jdField_b_of_type_Axqk));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.share.ForwardSdkShareProcessor", 2, "UrlExchangeStep|process|url=" + axqk.a(this.jdField_b_of_type_Axqk).toString());
-      }
-      if (!axqk.a(this.jdField_b_of_type_Axqk).isEmpty()) {
-        break;
-      }
-      axqk.c(this.jdField_b_of_type_Axqk).set(true);
-      b();
+      axqt.a(this.a, bool);
+      bhkl.a().b(this);
       return;
+      QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent localPhotoGroupData:" + paramString.toString());
+      LocalMultiProcConfig.putLong("SP_LAST_UPDATE_TIME", paramString.startTime);
+      bool = true;
+      continue;
+      bool = false;
     }
-    ThreadManager.post(new ForwardSdkShareProcessor.UrlExchangeStep.1(this), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axqu
  * JD-Core Version:    0.7.0.1
  */

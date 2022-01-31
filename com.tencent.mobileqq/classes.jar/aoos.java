@@ -1,6 +1,17 @@
-public abstract interface aoos
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+
+public class aoos
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(int paramInt);
+  public aoos(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a.a(null);
+    LocalFileBrowserActivity.a(this.a);
+  }
 }
 
 

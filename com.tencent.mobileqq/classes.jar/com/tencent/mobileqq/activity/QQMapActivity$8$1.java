@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import ably;
-import akfu;
+import abvz;
+import akug;
 
 public class QQMapActivity$8$1
   implements Runnable
 {
-  public QQMapActivity$8$1(ably paramably) {}
+  public QQMapActivity$8$1(abvz paramabvz) {}
   
   public void run()
   {
-    akfu.b(this.a.a.a);
+    akug.b(this.a.a.a);
   }
 }
 

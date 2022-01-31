@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ptt.player;
 
 import android.media.MediaPlayer;
-import aucz;
-import befq;
+import avcf;
+import bfnk;
 import com.tencent.qphone.base.util.QLog;
 
 class AmrPlayer$AmrPlayerThread

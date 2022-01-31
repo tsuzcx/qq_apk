@@ -1,91 +1,88 @@
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Message;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.mini.sdk.MiniAppException;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.IEventReceiver;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import cooperation.weiyun.WeiyunSaveTipsFactory.1;
+import mqq.os.MqqHandler;
 
 public class bide
-  extends bifz
-  implements IEventReceiver
 {
-  private bidf a;
-  
-  public bide(@NonNull bigb parambigb)
+  private static void a(Activity paramActivity, String paramString, int paramInt)
   {
-    super(parambigb);
-    this.jdField_a_of_type_Bidf = new bidf(this.jdField_a_of_type_Bigb);
+    MiniAppLauncher.startMiniApp(paramActivity, "mqqapi://miniapp/open?_ext=&_mappid=1107999468&_mvid=&_nq=&_path=&_q=&referer=2011&via=2011&_sig=31ba7125a22d3462e9dc4f8abff74d9e9c445cdd46e8ea446f39a839ebb110b4", 2011, null);
   }
   
-  public void a()
+  private static void a(QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    bici localbici = (bici)a(bici.class);
-    if (localbici != null) {
-      localbici.d();
+    if (paramQQAppInterface.a().a() == true)
+    {
+      paramQQAppInterface.a().c();
+      return;
     }
+    if (bbev.d(BaseApplication.getContext()))
+    {
+      paramQQAppInterface = new Intent(paramActivity, FMActivity.class);
+      paramQQAppInterface.putExtra("tab_tab_type", 3);
+      paramQQAppInterface.putExtra("from", "FileAssistant");
+      paramActivity.startActivityForResult(paramQQAppInterface, 101);
+      return;
+    }
+    aptv.a(BaseApplication.getContext().getString(2131694607));
   }
   
-  protected boolean a(Message paramMessage)
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt)
   {
-    switch (paramMessage.what)
-    {
+    a(paramQQAppInterface, paramActivity, paramInt, 2131691313);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt1, int paramInt2)
+  {
+    if ((paramQQAppInterface == null) || (paramActivity == null)) {
+      return;
     }
-    for (;;)
+    ThreadManager.getUIHandler().postDelayed(new WeiyunSaveTipsFactory.1(paramActivity, paramInt2, paramInt1, paramQQAppInterface), 1000L);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Context paramContext)
+  {
+    int i = bbjn.aR(paramContext, paramQQAppInterface.getCurrentAccountUin());
+    if (i == 1)
     {
-      return super.a(paramMessage);
-      int i;
-      DynamicTextConfigManager localDynamicTextConfigManager;
-      DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean;
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("EditVideoAblumList", 2, "handle message MESSAGE_DOODLE_LAYOUT_LOADED");
+      String str = bbjn.t(paramContext, paramQQAppInterface.getCurrentAccountUin());
+      i = bbjn.aS(paramContext, paramQQAppInterface.getCurrentAccountUin());
+      if (!TextUtils.isEmpty(str)) {
+        try
+        {
+          a(paramActivity, str, i);
+          return;
         }
-        Object localObject = (EditVideoParams)this.jdField_a_of_type_Bihj.getActivity().getIntent().getParcelableExtra(EditVideoParams.class.getName());
-        i = ((EditVideoParams)localObject).a("extra_slide_sticker_id", -1);
-        localObject = ((EditVideoParams)localObject).a("extra_slide_sticker_str");
-        if ((TextUtils.isEmpty((CharSequence)localObject)) || (i == -1)) {
-          continue;
+        catch (MiniAppException paramContext)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("WeiyunSaveTipsFactory", 2, "fail to open weiyun mini app!");
+          }
+          a(paramQQAppInterface, paramActivity);
+          return;
         }
-        localDynamicTextConfigManager = (DynamicTextConfigManager)bhfm.a(7);
-        if (!localDynamicTextConfigManager.a()) {
-          localDynamicTextConfigManager.c();
-        }
-        localDynamicTextConfigBean = localDynamicTextConfigManager.a(i + "");
-        if (localDynamicTextConfigBean == null) {
-          continue;
-        }
-        if (!localDynamicTextConfigManager.a(localDynamicTextConfigBean)) {
-          break label226;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("EditVideoAblumList", 2, "isDynamicTextUsable, addSticker : " + localDynamicTextConfigBean.text_id);
-        }
-        this.jdField_a_of_type_Bigb.a(i, (String)localObject);
       }
-      catch (Exception localException) {}
-      if (QLog.isColorLevel())
-      {
-        QLog.d("EditVideoAblumList", 2, befj.a(localException));
-        continue;
-        label226:
-        if (QLog.isColorLevel()) {
-          QLog.d("EditVideoAblumList", 2, "configBean has not downloaded, start download : " + localDynamicTextConfigBean.text_id);
-        }
-        this.jdField_a_of_type_Bidf.a(i);
-        this.jdField_a_of_type_Bidf.a(localException);
-        localDynamicTextConfigManager.a(localDynamicTextConfigBean, this.jdField_a_of_type_Bidf);
-      }
+      QLog.w("WeiyunSaveTipsFactory", 2, "can not to start WeiYun Mini app, apkgUrl = " + str + ", version = " + i);
+      a(paramQQAppInterface, paramActivity);
+      return;
     }
+    QLog.w("WeiyunSaveTipsFactory", 2, "can not to start WeiYun Mini app, weiYunGrayConfig = " + i);
+    a(paramQQAppInterface, paramActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bide
  * JD-Core Version:    0.7.0.1
  */

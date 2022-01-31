@@ -1,42 +1,64 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.ThemeImageView;
+import android.content.Context;
+import android.os.SystemClock;
+import com.tencent.mobileqq.richmedia.dc.DataReport;
+import com.tencent.mobileqq.richmedia.dc.DataReport.ReportTask;
 
 public class avwp
-  extends avwq
+  extends avxb
 {
-  public Button a;
+  private avwr a;
+  private boolean b;
   
-  public avwp(ViewGroup paramViewGroup, int paramInt)
+  public avwp(Context paramContext)
   {
-    super(paramViewGroup, paramInt);
+    super(paramContext);
   }
   
-  public Button a()
+  public void a()
   {
-    return this.a;
+    if ((this.a != null) && (!this.b))
+    {
+      DataReport.ReportTask localReportTask = new DataReport.ReportTask("Pic.AioPreview.Progressive", this.a.a("Pic.AioPreview.Progressive"));
+      DataReport.a().a(localReportTask);
+      this.b = true;
+    }
   }
   
-  protected void a()
+  public void a(boolean paramBoolean)
   {
-    this.h = ((TextView)this.b.findViewById(2131305159));
-    this.e = ((ImageView)this.b.findViewById(2131296259));
-    this.i = ((TextView)this.b.findViewById(2131309446));
-    this.k = ((TextView)this.b.findViewById(2131310547));
-    this.a = ((Button)this.b.findViewById(2131309433));
-    this.a.setText(ajjy.a(2131624088));
-    this.j = ((TextView)this.b.findViewById(2131309443));
-    if ((this.e instanceof ThemeImageView)) {
-      ((ThemeImageView)this.e).setSupportMaskView(true);
+    if ((this.a == null) && (!this.b))
+    {
+      avwr localavwr = new avwr(null);
+      avwr.a(localavwr, paramBoolean);
+      avwr.a(localavwr, SystemClock.uptimeMillis());
+      this.a = localavwr;
+    }
+  }
+  
+  public void b()
+  {
+    if ((this.a != null) && (!this.b)) {
+      avwr.b(this.a, SystemClock.uptimeMillis());
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.a != null) && (!this.b)) {
+      avwr.c(this.a, SystemClock.uptimeMillis());
+    }
+  }
+  
+  public void d()
+  {
+    if ((this.a != null) && (!this.b)) {
+      avwr.b(this.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avwp
  * JD-Core Version:    0.7.0.1
  */

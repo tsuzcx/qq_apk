@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
 
 public class acdl
-  extends atog
+  implements DialogInterface.OnKeyListener
 {
-  public acdl(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public acdl(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  protected void a(boolean paramBoolean)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramBoolean)
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
+    if (paramInt == 4) {
+      this.a.finish();
     }
+    return false;
   }
 }
 

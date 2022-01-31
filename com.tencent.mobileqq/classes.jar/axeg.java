@@ -1,67 +1,144 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import java.util.ArrayList;
 
 public class axeg
+  implements Comparable<axeg>
 {
-  public static FileManagerEntity a(ForwardFileInfo paramForwardFileInfo)
+  public int a;
+  public long a;
+  public axdr a;
+  public axdt a;
+  public axee a;
+  public axew a;
+  public axez a;
+  public MessageForShortVideo a;
+  public String a;
+  public ArrayList<axdt> a;
+  public boolean a;
+  public String[] a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e = 201;
+  public int f;
+  
+  public axeg()
   {
-    FileManagerEntity localFileManagerEntity = new FileManagerEntity();
-    localFileManagerEntity.fileName = paramForwardFileInfo.d();
-    localFileManagerEntity.nFileType = apck.a(localFileManagerEntity.fileName);
-    localFileManagerEntity.nSessionId = paramForwardFileInfo.b();
-    localFileManagerEntity.cloudType = paramForwardFileInfo.d();
-    return localFileManagerEntity;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = aunt.a();
   }
   
-  public static String a(int paramInt)
+  public int a(axeg paramaxeg)
   {
-    String str = ajjy.a(2131649003);
-    if (paramInt == 3) {
-      str = "word";
+    if (this.e < paramaxeg.e) {
+      return -1;
     }
-    do
+    if (this.e > paramaxeg.e) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public void a(axdr paramaxdr)
+  {
+    int j = 6;
+    if (paramaxdr == null)
     {
-      return str;
-      if (paramInt == 6) {
-        return "excel";
+      aune.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "downInfo == null");
+      return;
+    }
+    paramaxdr.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Axdr = paramaxdr;
+    int i;
+    if (paramaxdr.e == 1002) {
+      i = 7;
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_JavaLangString = aune.a(this.jdField_a_of_type_Axdr.jdField_b_of_type_Int, 0, i);
+      return;
+      if (paramaxdr.e == 1006)
+      {
+        i = 18;
       }
-      if (paramInt == 7) {
-        return "ppt";
+      else if (paramaxdr.e == 1004)
+      {
+        i = 16;
       }
-    } while (paramInt != 9);
-    return "pdf";
+      else
+      {
+        i = j;
+        if (paramaxdr.e != 1001) {
+          if (paramaxdr.e == 1005)
+          {
+            i = 17;
+          }
+          else
+          {
+            i = j;
+            if (paramaxdr.e == 1003) {
+              i = 9;
+            }
+          }
+        }
+      }
+    }
   }
   
-  public static void a(Activity paramActivity, String paramString)
+  public void a(axdt paramaxdt)
   {
-    a(paramActivity, paramString, false);
+    if (paramaxdt == null)
+    {
+      aune.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "forwardInfo == null");
+      return;
+    }
+    paramaxdt.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Axdt = paramaxdt;
+    this.jdField_b_of_type_JavaLangString = aune.a(this.jdField_a_of_type_Axdt.jdField_b_of_type_Int, 2, 20);
   }
   
-  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
+  public void a(axew paramaxew)
   {
-    Object localObject = new FileManagerEntity();
-    ((FileManagerEntity)localObject).nSessionId = apck.a().longValue();
-    ((FileManagerEntity)localObject).fileName = paramString;
-    paramString = new ForwardFileInfo();
-    paramString.d(9);
-    paramString.b(10001);
-    paramString.d(((FileManagerEntity)localObject).fileName);
-    paramString.b(((FileManagerEntity)localObject).nSessionId);
-    localObject = new Bundle();
-    ((Bundle)localObject).putBoolean("isMiniProgram", paramBoolean);
-    Intent localIntent = new Intent(paramActivity, FileBrowserActivity.class);
-    localIntent.putExtra("fileinfo", paramString);
-    localIntent.putExtra("file_browser_extra_params", (Bundle)localObject);
-    paramActivity.startActivityForResult(localIntent, 102);
+    int i = 6;
+    if (paramaxew == null)
+    {
+      aune.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "upInfo == null");
+      return;
+    }
+    paramaxew.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Axew = paramaxew;
+    if (paramaxew.jdField_b_of_type_Int == 0) {}
+    for (;;)
+    {
+      this.jdField_b_of_type_JavaLangString = aune.a(this.jdField_a_of_type_Axew.jdField_b_of_type_Int, 1, i);
+      return;
+      if (paramaxew.jdField_b_of_type_Int == 3000) {
+        i = 17;
+      } else if (paramaxew.jdField_b_of_type_Int == 1) {
+        i = 9;
+      }
+    }
+  }
+  
+  public void a(axez paramaxez)
+  {
+    this.jdField_a_of_type_Axez = paramaxez;
+  }
+  
+  public void a(MessageForShortVideo paramMessageForShortVideo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+  }
+  
+  public void a(ArrayList<axdt> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axeg
  * JD-Core Version:    0.7.0.1
  */

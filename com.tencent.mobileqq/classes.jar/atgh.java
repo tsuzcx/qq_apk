@@ -1,28 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class atgh
-  extends Handler
+  extends ajtd
 {
-  public atgh(ScanOcrView paramScanOcrView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public atgh(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScanOcrView", 2, "handleMessage, MSG_SCANLINE");
-    }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.a(paramMessage.arg1);
-    }
+    super(paramQQAppInterface);
   }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return atgi.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

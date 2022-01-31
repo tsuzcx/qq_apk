@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.statistics;
 
-import ajia;
-import ajlo;
+import ajwe;
+import ajzv;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application.ActivityLifecycleCallbacks;
@@ -13,8 +13,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.Fragment.IFragmentAttachCallback;
 import android.support.v4.app.Fragment.IFragmentLifecycleCallback;
 import android.support.v4.app.FragmentActivity;
-import awsb;
-import baip;
+import axrz;
+import bbjw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -28,7 +28,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import xfq;
+import xoq;
 
 @TargetApi(14)
 public final class UEC
@@ -204,7 +204,7 @@ public final class UEC
   private String b(String paramString)
   {
     String str;
-    if (baip.a(paramString)) {
+    if (bbjw.a(paramString)) {
       str = "null";
     }
     int i;
@@ -241,7 +241,7 @@ public final class UEC
   private String c(String paramString)
   {
     String str;
-    if (baip.a(paramString)) {
+    if (bbjw.a(paramString)) {
       str = "null";
     }
     int i;
@@ -284,7 +284,7 @@ public final class UEC
         }
       }
       paramObject.f = paramString3;
-      paramObject.e = "8.2.6";
+      paramObject.e = "8.2.8";
       this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString1, paramObject);
     }
     for (paramString1 = paramObject;; paramString1 = paramObject)
@@ -361,15 +361,15 @@ public final class UEC
         localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
         if (localObject != null)
         {
-          awsb localawsb = (awsb)((QQAppInterface)localObject).getManager(134);
-          if (localawsb != null) {
-            localawsb.a(paramArrayList);
+          axrz localaxrz = (axrz)((QQAppInterface)localObject).getManager(134);
+          if (localaxrz != null) {
+            localaxrz.a(paramArrayList);
           }
         }
       } while (localObject == null);
-      localObject = (awsb)((QQAppInterface)localObject).getManager(158);
+      localObject = (axrz)((QQAppInterface)localObject).getManager(158);
     } while (localObject == null);
-    ((awsb)localObject).a(paramArrayList);
+    ((axrz)localObject).a(paramArrayList);
   }
   
   public void b(String paramString1, int paramInt, String paramString2, Object paramObject)
@@ -448,7 +448,7 @@ public final class UEC
     String str = c(paramActivity);
     a((String)localObject, paramActivity.hashCode(), str, paramActivity);
     if (Build.VERSION.SDK_INT >= 23) {
-      xfq.b(paramActivity);
+      xoq.b(paramActivity);
     }
   }
   
@@ -462,7 +462,7 @@ public final class UEC
     String str = c(paramActivity);
     b((String)localObject, paramActivity.hashCode(), str, paramActivity);
     if (Build.VERSION.SDK_INT >= 23) {
-      xfq.a(paramActivity);
+      xoq.a(paramActivity);
     }
   }
   
@@ -475,9 +475,9 @@ public final class UEC
       ((Application.ActivityLifecycleCallbacks)localIterator.next()).onActivityStarted(paramActivity);
     }
     this.jdField_a_of_type_Int += 1;
-    ajlo.b(paramActivity);
+    ajzv.b(paramActivity);
     if (Build.VERSION.SDK_INT >= 26) {
-      ajia.a(paramActivity, true, false);
+      ajwe.a(paramActivity, true, false);
     }
   }
   

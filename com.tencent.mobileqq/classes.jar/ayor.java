@@ -1,103 +1,104 @@
+import android.text.TextUtils;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.net.URL;
+
 public class ayor
+  extends ayog
 {
-  public static int a(String paramString)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    int i = -1;
-    if (paramString.equals("SCANNING")) {
-      i = 0;
+    if ((paramDownloadParams == null) || (paramDownloadParams.url == null)) {
+      paramOutputStream = null;
     }
+    String str;
+    Object localObject2;
     do
     {
-      return i;
-      if (paramString.equals("UPLOADING")) {
-        return 1;
+      return paramOutputStream;
+      paramOutputStream = paramDownloadParams.url.getHost();
+      str = paramDownloadParams.url.getFile();
+      if (!"DEFAULT_HEAD".equals(paramOutputStream)) {
+        break;
       }
-      if (paramString.equals("UPLOAD_SUSPEND")) {
-        return 2;
-      }
-      if (paramString.equals("UPLOAD_INTERRUPT")) {
-        return 3;
-      }
-      if (paramString.equals("FORWARDING")) {
-        return 4;
-      }
-      if (paramString.equals("FORWARD_FAILED")) {
-        return 5;
-      }
-      if (paramString.equals("UPLOADED")) {
-        return 6;
-      }
-      if (paramString.equals("NOT_DOWNLOAD")) {
-        return 7;
-      }
-      if (paramString.equals("DOWNLOADING")) {
-        return 8;
-      }
-      if (paramString.equals("DOWNLOAD_SUSPEND")) {
-        return 9;
-      }
-      if (paramString.equals("DOWNLOAD_INTERRUPT")) {
-        return 10;
-      }
-      if (paramString.equals("DOWNLOADED")) {
-        return 11;
-      }
-      if (paramString.equals("DELETED")) {
-        return 12;
-      }
-    } while (!paramString.equals("OTHER_UPLOADING"));
-    return 13;
-  }
-  
-  public static String a(int paramInt)
-  {
-    switch (paramInt)
+      localObject2 = ajsf.aW + "avatarPendantDefaultHead" + str;
+      localObject1 = new File((String)localObject2);
+      paramOutputStream = (OutputStream)localObject1;
+    } while (((File)localObject1).exists());
+    Object localObject1 = "https://i.gtimg.cn/qqshow/admindata/comdata/mobileDefaultHead/" + str;
+    paramOutputStream = (OutputStream)localObject2;
+    for (;;)
     {
-    default: 
-      return "";
-    case 0: 
-      return "SCANNING";
-    case 1: 
-      return "UPLOADING";
-    case 2: 
-      return "UPLOAD_SUSPEND";
-    case 3: 
-      return "UPLOAD_INTERRUPT";
-    case 4: 
-      return "FORWARDING";
-    case 5: 
-      return "FORWARD_FAILED";
-    case 6: 
-      return "UPLOADED";
-    case 7: 
-      return "NOT_DOWNLOAD";
-    case 8: 
-      return "DOWNLOADING";
-    case 9: 
-      return "DOWNLOAD_SUSPEND";
-    case 10: 
-      return "DOWNLOAD_INTERRUPT";
-    case 11: 
-      return "DOWNLOADED";
-    case 12: 
-      return "DELETED";
+      for (;;)
+      {
+        if (localObject1 != null)
+        {
+          paramDownloadParams.url = new URL((String)localObject1);
+          if (QLog.isDevelopLevel()) {
+            QLog.d("AvatarPendantDownloader", 4, "downloadImage pendant: " + (String)localObject1 + " -> " + paramOutputStream);
+          }
+          paramURLDrawableHandler.publishProgress(0);
+          localObject2 = new FileOutputStream(paramOutputStream);
+          try
+          {
+            new ayrn().a((OutputStream)localObject2, paramDownloadParams, paramURLDrawableHandler);
+            ((FileOutputStream)localObject2).close();
+            paramDownloadParams = new File(paramOutputStream);
+            paramOutputStream = paramDownloadParams;
+            if (paramDownloadParams.exists()) {
+              break;
+            }
+            if (QLog.isDevelopLevel()) {
+              QLog.d("AvatarPendantDownloader", 2, "downloadImage pendant fail.-> " + (String)localObject1);
+            }
+            return null;
+            if ((!"AIO_STATIC".equals(paramOutputStream)) || (TextUtils.isEmpty(str))) {
+              break label410;
+            }
+            paramOutputStream = new File(ajsf.bP + str);
+            if (!paramOutputStream.exists()) {
+              paramOutputStream.mkdir();
+            }
+            long l = Long.valueOf(str.split("/")[1]).longValue();
+            localObject1 = bbby.b(l, 5);
+            localObject2 = new File((String)localObject1);
+            paramOutputStream = (OutputStream)localObject2;
+            if (((File)localObject2).exists()) {
+              break;
+            }
+            localObject2 = bbby.c(l, 5);
+            paramOutputStream = (OutputStream)localObject1;
+            localObject1 = localObject2;
+          }
+          catch (Exception paramDownloadParams)
+          {
+            for (;;)
+            {
+              ((FileOutputStream)localObject2).close();
+              new File(paramOutputStream).delete();
+            }
+          }
+        }
+      }
+      return null;
+      label410:
+      paramOutputStream = null;
+      localObject1 = null;
     }
-    return "OTHER_UPLOADING";
   }
   
-  public static boolean a(int paramInt)
+  public boolean a()
   {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == 8) || (paramInt == 10) || (paramInt == 9);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayor
  * JD-Core Version:    0.7.0.1
  */

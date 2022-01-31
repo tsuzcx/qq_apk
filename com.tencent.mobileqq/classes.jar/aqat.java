@@ -1,53 +1,103 @@
 import android.content.Intent;
-import android.view.View;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-class aqat
-  implements anft
+public class aqat
+  extends aqbc
 {
-  aqat(aqas paramaqas) {}
-  
-  public void a(View paramView)
+  public aqat(Intent paramIntent)
   {
-    String str = bant.a("aioEmojiStickerDetail");
-    ViewParent localViewParent = paramView.getParent();
-    if (localViewParent != null)
+    super(paramIntent);
+    this.b = true;
+  }
+  
+  public List<RecentUser> a(List<RecentUser> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      localViewParent = localViewParent.getParent();
-      if ((localViewParent instanceof ChatXListView)) {
-        EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
+      RecentUser localRecentUser = (RecentUser)paramList.next();
+      if ((localRecentUser != null) && (!bbbd.a(localRecentUser.uin)) && (localRecentUser.getType() != 1003) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1021) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(aqas.h))) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!nbc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
+        localArrayList.add(localRecentUser);
       }
     }
-    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
-    paramView.setFlags(268435456);
-    paramView.putExtra("vasUsePreWebview", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
-    int i;
-    if (EmojiStickerManager.a().a == 0) {
-      i = 1;
-    }
-    for (;;)
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    super.a();
+    if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("k_dataline", true))
     {
-      VasWebviewUtil.reportCommercialDrainage(this.a.a.c(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      this.jdField_a_of_type_JavaUtilSet.add(f);
+      this.jdField_a_of_type_JavaUtilSet.add(k);
+    }
+  }
+  
+  protected void a(Intent paramIntent)
+  {
+    ArrayList localArrayList3 = null;
+    ArrayList localArrayList4 = this.jdField_a_of_type_AndroidOsBundle.getParcelableArrayList("fileinfo_array");
+    ArrayList localArrayList1 = localArrayList3;
+    if (localArrayList4 != null) {}
+    try
+    {
+      localArrayList1 = (ArrayList)localArrayList4;
+      localArrayList3 = (ArrayList)this.jdField_a_of_type_AndroidOsBundle.get("android.intent.extra.STREAM");
+      localArrayList3 = (ArrayList)this.jdField_a_of_type_AndroidOsBundle.get("PhotoConst.PHOTO_PATHS");
+      paramIntent.putExtra("dataline_forward_type", 101);
+      paramIntent.putExtra("sendMultiple", true);
+      if (localArrayList1 == null) {
+        paramIntent.putStringArrayListExtra("dataline_forward_pathlist", localArrayList3);
+      }
       return;
-      if (EmojiStickerManager.a().a == 1) {
-        i = 2;
-      } else if (EmojiStickerManager.a().a == 3000) {
-        i = 3;
-      } else {
-        i = -1;
+    }
+    catch (ClassCastException localClassCastException)
+    {
+      for (;;)
+      {
+        ArrayList localArrayList2 = localArrayList3;
       }
     }
+  }
+  
+  protected void a(Drawable paramDrawable, boolean paramBoolean)
+  {
+    URLDrawable localURLDrawable;
+    if (paramBoolean)
+    {
+      localURLDrawable = (URLDrawable)paramDrawable;
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        break label33;
+      }
+      aywk.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+    }
+    while (paramDrawable == null)
+    {
+      return;
+      label33:
+      aywk.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+    }
+    paramDrawable.setBounds(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int);
+  }
+  
+  protected void b()
+  {
+    this.jdField_a_of_type_Bbgg.setMessage(null);
+    this.jdField_a_of_type_Bbgg.setMessageCount(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqat
  * JD-Core Version:    0.7.0.1
  */

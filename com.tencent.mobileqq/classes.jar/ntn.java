@@ -1,12 +1,16 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.biz.widgets.TabLayout;
 
 class ntn
+  implements bfrx
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  BubbleImageView jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView;
+  ntn(ntk paramntk) {}
+  
+  public void onScrollStateChanged(int paramInt)
+  {
+    if (paramInt == 4098) {
+      ntk.a(this.a).setOverScrollMode(0);
+    }
+  }
 }
 
 

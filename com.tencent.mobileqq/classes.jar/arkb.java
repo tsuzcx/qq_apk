@@ -1,21 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.intervideo.singtogether.SingTogetherSession;
 
-class arkb
-  implements DialogInterface.OnDismissListener
+public final class arkb
+  implements Parcelable.Creator<SingTogetherSession>
 {
-  arkb(arjz paramarjz, DialogInterface.OnDismissListener paramOnDismissListener) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public SingTogetherSession a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
-    }
+    return new SingTogetherSession(paramParcel, null);
+  }
+  
+  public SingTogetherSession[] a(int paramInt)
+  {
+    return new SingTogetherSession[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arkb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import java.io.Serializable;
 
 public class TempMsgInfo
-  extends atmo
+  extends aukm
   implements Serializable
 {
   public long timeStamp;
-  @atoc
+  @auma
   public String typeWithUin;
   
   public TempMsgInfo() {}

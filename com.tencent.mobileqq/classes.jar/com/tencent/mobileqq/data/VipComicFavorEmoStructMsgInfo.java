@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import atmo;
+import aukm;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="picMd5")
 public class VipComicFavorEmoStructMsgInfo
-  extends atmo
+  extends aukm
 {
   public static final int init = 1;
   public static final int updated = 2;

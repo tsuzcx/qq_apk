@@ -1,38 +1,33 @@
-import android.widget.EditText;
+import android.view.SurfaceView;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class agom
-  extends agnx
+  implements bbvc
 {
-  public agom(EditText paramEditText)
-  {
-    super(paramEditText);
-  }
+  public agom(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt)
   {
-    paramInt1 = 1;
-    paramCharSequence = paramCharSequence.toString();
-    if (paramCharSequence.startsWith("0"))
+    if (paramInt == 1)
     {
-      paramInt2 = bfod.a(paramCharSequence, 1);
-      if (paramInt2 != 0) {
-        break label53;
-      }
+      this.a.a.setVisibility(0);
+      this.a.e();
     }
     for (;;)
     {
-      paramCharSequence = String.valueOf(paramInt1);
-      this.a.setText(paramCharSequence);
-      this.a.setSelection(paramCharSequence.length());
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
+      }
       return;
-      label53:
-      paramInt1 = paramInt2;
+      this.a.a.setVisibility(8);
+      this.a.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agom
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,8 @@ class TroopActivity$12
     if (this.this$0.f)
     {
       int i = this.this$0.app.a().b();
-      TextView localTextView = (TextView)this.this$0.findViewById(2131312188);
-      ImageView localImageView = (ImageView)this.this$0.findViewById(2131303102);
+      TextView localTextView = (TextView)this.this$0.findViewById(2131378010);
+      ImageView localImageView = (ImageView)this.this$0.findViewById(2131368742);
       localTextView.setVisibility(0);
       localImageView.setVisibility(0);
       localTextView.setText("" + i);

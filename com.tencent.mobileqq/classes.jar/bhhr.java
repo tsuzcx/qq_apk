@@ -1,422 +1,179 @@
 import android.app.Activity;
-import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.widget.Toast;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
+import com.tencent.mobileqq.pluginsdk.PluginProxyService;
+import com.tencent.mobileqq.pluginsdk.SplashDialogWrapper;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import dov.com.qq.im.capture.data.TemplateSet.1;
-import dov.com.qq.im.capture.part.QIMTemplateItem;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArraySet;
+import cooperation.qzone.plugin.IQZonePluginManager.4;
+import cooperation.qzone.plugin.PluginRecord;
+import java.io.File;
 import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
 
-public class bhhr
-  extends bhha
-  implements bhgo
+public abstract class bhhr
+  extends bhju
 {
-  private final CopyOnWriteArraySet<bhgn> a;
-  float b;
-  public long b;
-  public WeakReference<Activity> b;
-  public boolean b;
-  public ArrayList<bhgn> c = new ArrayList();
-  
-  public bhhr(Object paramObject)
+  public static void a(Activity paramActivity, bhhx parambhhx)
   {
-    super(paramObject);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-    this.jdField_b_of_type_Float = 1.0F;
-  }
-  
-  public float a()
-  {
-    try
+    if (parambhhx.f != null)
     {
-      Iterator localIterator = this.c.iterator();
-      float f2;
-      float f3;
-      for (float f1 = 0.0F; localIterator.hasNext(); f1 += f3 * f2)
-      {
-        bhgn localbhgn = (bhgn)localIterator.next();
-        f2 = localbhgn.a();
-        if (QLog.isDevelopLevel()) {
-          QLog.i("QTemplate", 2, "getProgress " + localbhgn.toString() + " progress =" + f2);
-        }
-        f3 = this.jdField_b_of_type_Float;
-      }
-      return f1;
+      localObject = Toast.makeText(BaseApplicationImpl.getContext(), parambhhx.f, 0);
+      ((Toast)localObject).setGravity(17, 0, 0);
+      ((Toast)localObject).show();
     }
-    catch (Exception localException) {}
-    return 0.0F;
-  }
-  
-  public int a()
-  {
-    int j = 0;
-    int k = 1;
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    Object localObject = new bhhs();
+    if ((parambhhx.jdField_a_of_type_AndroidAppDialog != null) && (!paramActivity.isFinishing())) {
+      new SplashDialogWrapper(paramActivity, parambhhx.jdField_a_of_type_AndroidAppDialog, parambhhx.d, parambhhx.jdField_b_of_type_JavaLangString, parambhhx.jdField_a_of_type_Boolean, parambhhx.c).show();
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if (!(localAppRuntime instanceof QQAppInterface))
     {
-      localStringBuilder = new StringBuilder("getState = ");
-      localStringBuilder.append(toString());
-      localStringBuilder.append("  ");
-    }
-    for (;;)
-    {
-      Iterator localIterator = this.c.iterator();
-      int i;
-      if (localIterator.hasNext())
-      {
-        bhgn localbhgn = (bhgn)localIterator.next();
-        i = localbhgn.a();
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder.append(i);
-          localStringBuilder.append("|");
-          localStringBuilder.append(localbhgn.toString());
-          localStringBuilder.append("   ");
-        }
-        if (i == 2)
-        {
-          i = 0;
-          j = 1;
-        }
-      }
-      for (;;)
-      {
-        label125:
-        if (QLog.isColorLevel()) {
-          QLog.i("QTemplate", 2, localStringBuilder.toString());
-        }
-        if (j != 0)
-        {
-          b(2);
-          i = 2;
-        }
-        do
-        {
-          return i;
-          if (i != 1) {
-            break;
-          }
-          i = 1;
-          break label125;
-          if (i == 0) {
-            break label211;
-          }
-          if (this.jdField_a_of_type_Int != 1) {
-            b();
-          }
-          i = k;
-        } while (System.currentTimeMillis() - this.jdField_b_of_type_Long <= 15000L);
-        b(2);
-        a(5);
-        return 2;
-        label211:
-        b(3);
-        return 3;
-        i = 0;
-      }
-      localStringBuilder = null;
-    }
-  }
-  
-  public int a(Activity paramActivity, int paramInt)
-  {
-    Object localObject1;
-    if ((this instanceof bhhr))
-    {
-      localObject1 = (bhhb)bhfm.a(15);
-      if (((bhhb)localObject1).a(this, paramInt))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("QTemplate", 2, "apply already" + toString());
-        }
-        ((bhhb)localObject1).a(this, paramActivity, paramInt);
-      }
-    }
-    label338:
-    do
-    {
-      Object localObject3;
-      do
-      {
-        do
-        {
-          do
-          {
-            return 0;
-            localObject3 = (QIMTemplateItem)this.jdField_a_of_type_JavaLangObject;
-            if ((localObject3 != null) && (paramInt == 0))
-            {
-              localObject2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-              if ("back".equals(((QIMTemplateItem)localObject3).f))
-              {
-                localObject3 = new Bundle();
-                ((Bundle)localObject3).putInt(awij.b, 2);
-                ((AppRuntime)localObject2).notifyObservers(bhgy.class, 970, true, (Bundle)localObject3);
-              }
-            }
-            else
-            {
-              localObject2 = localObject1.a[paramInt];
-              if (localObject2 != null) {
-                ((bhhr)localObject2).a(paramActivity, paramInt);
-              }
-              ((bhhb)localObject1).a(this, paramActivity, paramInt);
-              if (QLog.isColorLevel()) {
-                QLog.i("QTemplate", 2, "apply " + toString() + ", " + paramInt);
-              }
-              localObject1 = new ArrayList();
-              localObject2 = this.c.iterator();
-            }
-            for (;;)
-            {
-              if (!((Iterator)localObject2).hasNext()) {
-                break label338;
-              }
-              localObject3 = (bhgn)((Iterator)localObject2).next();
-              if ((localObject3 instanceof bhgp))
-              {
-                ((List)localObject1).add(((bhgp)localObject3).a);
-                continue;
-                if ((!"front".equals(((QIMTemplateItem)localObject3).f)) || (!awih.c())) {
-                  break;
-                }
-                localObject3 = new Bundle();
-                ((Bundle)localObject3).putInt(awij.b, 1);
-                ((AppRuntime)localObject2).notifyObservers(bhgy.class, 970, true, (Bundle)localObject3);
-                break;
-              }
-              ((bhgn)localObject3).a(paramActivity, paramInt);
-            }
-          } while (!(this instanceof bhhr));
-          localObject2 = (bhgs)bhfm.a(5);
-          if (((bhgs)localObject2).a(paramInt).a()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("QCombo", 2, "apply " + toString() + ", " + paramInt + " comboApplyFilterAborted");
-        return 0;
-        localObject3 = ((bhgs)localObject2).a;
-      } while (localObject3 == null);
-      Object localObject2 = ((bhgs)localObject2).a(this, ((bjad)localObject3).a(paramInt).c);
-      if (localObject2 != null) {
-        bjac.a().b((QIMFilterCategoryItem)localObject2, paramActivity, paramInt);
-      }
-      bjac.a().a((QIMFilterCategoryItem)localObject2, paramInt);
-      bhgp.a(paramActivity, (List)localObject1, this, paramInt);
-      paramActivity = this.jdField_a_of_type_JavaLangObject;
-    } while ((!(this.jdField_a_of_type_JavaLangObject instanceof QIMTemplateItem)) || (!((QIMTemplateItem)this.jdField_a_of_type_JavaLangObject).a()) || (paramInt == 1) || (paramInt == 3));
-    ((bhiu)bhfm.a().c(8)).a(paramInt);
-    return 0;
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    bhgs localbhgs = (bhgs)bhfm.b(5);
-    if (localbhgs != null) {
-      localbhgs.a(this, paramInt);
-    }
-  }
-  
-  public void a(Activity paramActivity, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QTemplate", 2, "unApply " + toString() + ", " + paramInt);
-    }
-    Object localObject1 = this.c.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (bhgn)((Iterator)localObject1).next();
-      if (((localObject2 instanceof bhii)) && ((paramInt == 2) || (paramInt == 4))) {
-        ((bhii)localObject2).c(paramActivity, paramInt);
-      } else {
-        ((bhgn)localObject2).a(paramActivity, paramInt);
-      }
-    }
-    bjac.a().b(null, paramActivity, paramInt);
-    localObject1 = (bhhb)bhfm.a(15);
-    Object localObject2 = localObject1.a[paramInt];
-    if ((localObject2 != null) && (((bhhr)localObject2).b().equals(b()))) {
-      ((bhhb)localObject1).a(null, paramActivity, paramInt);
-    }
-  }
-  
-  public void a(bhgn parambhgn)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QTemplate", 2, "onDownloadStart " + toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
-    }
-  }
-  
-  public void a(bhgn parambhgn, int paramInt)
-  {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(parambhgn);
-    if (QLog.isColorLevel()) {
-      QLog.i("QTemplate", 2, "onDownloadError " + toString() + ":" + parambhgn.toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
-    {
-      b(2);
-      a(paramInt);
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QTemplate", 2, "download " + toString());
-    }
-    if (!badq.g(BaseApplicationImpl.getContext()))
-    {
-      a(6);
-      return 2;
-    }
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    ThreadManager.getSubThreadHandler().post(new TemplateSet.1(this));
-    return 1;
-  }
-  
-  public String b()
-  {
-    if (this.jdField_a_of_type_JavaLangObject != null) {
-      return ((QIMTemplateItem)this.jdField_a_of_type_JavaLangObject).a;
-    }
-    return "unknown" + hashCode();
-  }
-  
-  public void b()
-  {
-    super.b();
-    bhgs localbhgs = (bhgs)bhfm.b(5);
-    if (localbhgs != null) {
-      localbhgs.a(this);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void b(Activity paramActivity, int paramInt)
-  {
-    super.b(paramActivity, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("QTemplate", 2, "select " + toString());
-    }
-    QIMTemplateItem localQIMTemplateItem = (QIMTemplateItem)this.jdField_a_of_type_JavaLangObject;
-    ((bhhb)bhfm.a(15)).a(localQIMTemplateItem, paramActivity, paramInt);
-    ((bhgs)bhfm.a(5)).a(paramInt).a(this);
-  }
-  
-  public void b(bhgn parambhgn)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(parambhgn);
-    if (QLog.isColorLevel()) {
-      QLog.i("QTemplate", 2, "onDownloadSuccess= " + toString() + ":" + parambhgn.toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
-    {
-      if (this.jdField_b_of_type_Boolean)
-      {
-        b(2);
-        a(4);
-      }
-    }
-    else {
+      b(paramActivity, parambhhx, (bhhw)localObject);
       return;
     }
-    b(3);
-    if (QLog.isColorLevel()) {
-      QLog.i("QCombo", 2, "onDownloadFinish= " + toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
-    }
-    b();
+    ((bhhr)((QQAppInterface)localAppRuntime).getManager(175)).a(paramActivity, parambhhx, (bhhw)localObject);
   }
   
-  public int c()
+  public static void a(Context paramContext, bhhx parambhhx)
   {
-    Object localObject = this.c.iterator();
-    int j = 0;
-    int i = 0;
-    bhgn localbhgn;
-    if (((Iterator)localObject).hasNext())
+    bhht localbhht = new bhht();
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if (!(localAppRuntime instanceof QQAppInterface))
     {
-      localbhgn = (bhgn)((Iterator)localObject).next();
-      if (localbhgn.a() == 2)
-      {
-        localbhgn.a(this);
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(localbhgn);
-        localbhgn.b();
-        if (QLog.isColorLevel()) {
-          QLog.i("QTemplate", 2, "download " + toString() + "  " + localbhgn.toString());
-        }
-        i = j;
-        j = 1;
-      }
+      b(paramContext, parambhhx, localbhht);
+      return;
     }
+    ((bhhr)((QQAppInterface)localAppRuntime).getManager(175)).a(paramContext, parambhhx, localbhht);
+  }
+  
+  static void b(Activity paramActivity, bhhx parambhhx)
+  {
+    if ((parambhhx == null) || (paramActivity == null) || (parambhhx.jdField_a_of_type_AndroidContentIntent == null)) {}
     for (;;)
     {
-      int k = j;
-      j = i;
-      i = k;
-      break;
-      if (localbhgn.a() == 1)
+      return;
+      parambhhx.jdField_a_of_type_AndroidContentIntent.setClass(paramActivity, parambhhx.jdField_a_of_type_JavaLangClass);
+      if (TextUtils.isEmpty(parambhhx.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin")))
       {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(localbhgn);
-        localbhgn.a(this);
-        if (QLog.isColorLevel()) {
-          QLog.i("QTemplate", 2, "downloading " + toString() + ":" + localbhgn.toString());
-        }
-        k = 1;
-        j = i;
-        i = k;
-        continue;
-        if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size() > 0)
-        {
-          b(1);
-          a();
-          localObject = (bhgs)bhfm.b(5);
-          if (localObject != null) {
-            ((bhgs)localObject).b(this);
-          }
-        }
-        if ((i != 0) || (j != 0))
-        {
-          b(1);
-          return 1;
-        }
-        b(3);
-        b();
-        return 3;
+        parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("uin", parambhhx.jdField_a_of_type_JavaLangString);
+        parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", parambhhx.jdField_a_of_type_JavaLangString);
       }
-      else
+      parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", parambhhx.jdField_a_of_type_JavaLangString);
+      parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", axqp.class.getName());
+      try
       {
-        k = i;
-        i = j;
-        j = k;
+        File localFile = new File(bhjq.a(paramActivity), parambhhx.jdField_b_of_type_JavaLangString);
+        PluginProxyActivity.openActivityForResult(paramActivity, parambhhx.d, parambhhx.jdField_b_of_type_JavaLangString, localFile.getCanonicalPath(), parambhhx.e, parambhhx.jdField_a_of_type_AndroidContentIntent, parambhhx.jdField_b_of_type_Int);
+        if ((parambhhx.jdField_a_of_type_AndroidAppDialog != null) && ((parambhhx.jdField_a_of_type_AndroidAppDialog instanceof bcqg)) && (paramActivity != null))
+        {
+          paramActivity.overridePendingTransition(2130772097, 2130772097);
+          return;
+        }
+      }
+      catch (Exception paramActivity)
+      {
+        QLog.e("feilongzou", 1, paramActivity, new Object[0]);
       }
     }
   }
   
-  public void d(bhgn parambhgn)
+  public static void b(Context paramContext, bhhx parambhhx)
   {
-    this.c.add(parambhgn);
-    parambhgn.c = (this.c.size() - 1);
-    this.jdField_b_of_type_Float = (1.0F / this.c.size());
+    bhhu localbhhu = new bhhu();
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if (!(localAppRuntime instanceof QQAppInterface))
+    {
+      b(paramContext, parambhhx, localbhhu);
+      return;
+    }
+    ((bhhr)((QQAppInterface)localAppRuntime).getManager(175)).a(paramContext, parambhhx, localbhhu);
   }
+  
+  private static void b(Context paramContext, bhhx parambhhx, bhhw parambhhw)
+  {
+    bhji.a(paramContext, new bhhv(paramContext, parambhhx, parambhhw));
+  }
+  
+  static void c(Context paramContext, bhhx parambhhx)
+  {
+    if ((TextUtils.isEmpty(parambhhx.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin"))) && (!TextUtils.isEmpty(parambhhx.jdField_a_of_type_JavaLangString)))
+    {
+      parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("uin", parambhhx.jdField_a_of_type_JavaLangString);
+      parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", parambhhx.jdField_a_of_type_JavaLangString);
+    }
+    parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", parambhhx.jdField_a_of_type_JavaLangString);
+    parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", axqp.class.getName());
+    Object localObject = parambhhx.jdField_b_of_type_JavaLangString;
+    localObject = new File(bhjq.a(paramContext), (String)localObject);
+    try
+    {
+      PluginProxyBroadcastReceiver.sendBroadcastReceiver(paramContext, parambhhx.d, parambhhx.jdField_b_of_type_JavaLangString, ((File)localObject).getCanonicalPath(), parambhhx.e, parambhhx.jdField_a_of_type_AndroidContentIntent);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("PluginDebug", 2, "doLaunchPluginBroadcast", paramContext);
+    }
+  }
+  
+  static void d(Context paramContext, bhhx parambhhx)
+  {
+    if ((TextUtils.isEmpty(parambhhx.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin"))) && (!TextUtils.isEmpty(parambhhx.jdField_a_of_type_JavaLangString)))
+    {
+      parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("uin", parambhhx.jdField_a_of_type_JavaLangString);
+      parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", parambhhx.jdField_a_of_type_JavaLangString);
+    }
+    parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", parambhhx.jdField_a_of_type_JavaLangString);
+    parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", axqp.class.getName());
+    Object localObject = parambhhx.jdField_b_of_type_JavaLangString;
+    localObject = new File(bhjq.a(paramContext), (String)localObject);
+    try
+    {
+      localObject = ((File)localObject).getCanonicalPath();
+      if (parambhhx.jdField_a_of_type_AndroidContentServiceConnection != null)
+      {
+        PluginProxyService.bindService(paramContext, parambhhx.d, parambhhx.jdField_b_of_type_JavaLangString, (String)localObject, parambhhx.e, parambhhx.jdField_a_of_type_AndroidContentIntent, parambhhx.jdField_a_of_type_AndroidContentServiceConnection);
+        return;
+      }
+      ThreadManager.post(new IQZonePluginManager.4(paramContext, parambhhx, (String)localObject), 5, null, false);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PluginDebug", 2, "doLaunchPluginService", paramContext);
+      }
+    }
+  }
+  
+  public abstract PluginRecord a(String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(Context paramContext, bhhx parambhhx, bhhw parambhhw);
+  
+  public abstract void a(bhhy parambhhy, int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract boolean a(String paramString, bhib parambhib, int paramInt);
+  
+  public abstract boolean b(String paramString);
+  
+  public abstract boolean c(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhhr
  * JD-Core Version:    0.7.0.1
  */

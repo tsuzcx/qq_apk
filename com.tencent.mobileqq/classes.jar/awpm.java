@@ -1,79 +1,111 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import com.tencent.mobileqq.startup.step.InitMemoryCache;
-import com.tencent.mobileqq.startup.step.LoadDex;
-import com.tencent.mobileqq.startup.step.OldApplication;
-import com.tencent.mobileqq.startup.step.SetSplash;
-import com.tencent.mobileqq.startup.step.StartService;
-import com.tencent.mobileqq.startup.step.Step;
-import com.tencent.mobileqq.startup.step.Update;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
 
 public class awpm
-  implements awpn
+  extends awop
 {
-  private static awpn a;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private int d;
+  private String j;
   
-  public static void a()
+  public awpm(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    a = (awpn)BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.startup.step.Step$AfterDexStepFactory").newInstance();
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public static Step b(int paramInt, awoa paramawoa, int[] paramArrayOfInt)
+  public void a(int paramInt)
   {
-    Object localObject;
-    switch (paramInt)
-    {
-    case 5: 
-    case 6: 
-    case 10: 
-    case 11: 
-    case 13: 
-    case 14: 
-    case 15: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    default: 
-      if (a != null) {
-        localObject = a.a(paramInt, paramawoa, paramArrayOfInt);
-      }
-      break;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return;
     }
-    for (;;)
+    try
     {
-      ((Step)localObject).mId = paramInt;
-      ((Step)localObject).mDirector = paramawoa;
-      if (paramInt == 0) {
-        Step.access$002((Step)localObject, paramArrayOfInt);
-      }
-      return localObject;
-      localObject = new LoadDex();
-      continue;
-      localObject = new InitMemoryCache();
-      continue;
-      localObject = new OldApplication();
-      continue;
-      localObject = new SetSplash();
-      continue;
-      localObject = new CheckPermission();
-      continue;
-      localObject = new Update();
-      continue;
-      localObject = new StartService();
-      continue;
-      localObject = new Step();
+      this.d = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("appid");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e(c, 2, "parseLayoutExtensions exception:" + paramString);
     }
   }
   
-  public Step a(int paramInt, awoa paramawoa, int[] paramArrayOfInt)
+  public void a(boolean paramBoolean)
   {
-    return null;
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(String paramString)
+  {
+    this.j = paramString;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public String d()
+  {
+    return this.j;
+  }
+  
+  public String e()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public int f()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int g()
+  {
+    return this.d;
+  }
+  
+  public int h()
+  {
+    return this.jdField_b_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 class asoo
-  implements asow
+  implements DialogInterface.OnClickListener
 {
-  asoo(asoi paramasoi, VideoData paramVideoData) {}
+  asoo(asoh paramasoh) {}
   
-  public boolean a(asot paramasot, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Asoi.a != null) {
-      this.jdField_a_of_type_Asoi.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, paramInt1, paramInt2, "use sdk play error");
+    paramDialogInterface.dismiss();
+    axqw.b(this.a.a, "CliOper", "", "", "0X80067F7", "0X80067F7", 0, 0, "", "", "", "");
+    if (this.a.c()) {
+      asoh.a(this.a).a(false, null, false);
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asoo
  * JD-Core Version:    0.7.0.1
  */

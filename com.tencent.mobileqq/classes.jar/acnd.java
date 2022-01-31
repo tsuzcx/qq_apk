@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-final class acnd
-  implements begy
+public class acnd
+  implements View.OnClickListener
 {
-  acnd(QQAppInterface paramQQAppInterface) {}
+  public acnd(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    awqx.b(this.a, "CliOper", "", "", "0X8004862", "0X8004862", 0, 0, "", "", "", "");
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acnd
  * JD-Core Version:    0.7.0.1
  */

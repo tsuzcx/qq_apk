@@ -1,31 +1,21 @@
-import android.app.Dialog;
-import android.graphics.Color;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import mqq.os.MqqHandler;
+import java.util.Map;
 
-public class aapk
-  implements bbhz
+public final class aapk
+  implements DialogInterface.OnClickListener
 {
-  public aapk(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aapk(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean, Map paramMap) {}
   
-  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.app.a().a(DiscussionInfoCardActivity.a(this.a), 3000);
-    this.a.app.a().e(DiscussionInfoCardActivity.a(this.a), 3000);
-    aisc.a(this.a.app, "chat_history_confirm_del_msg");
-    paramDialog = this.a.app.getHandler(Conversation.class);
-    paramView = paramDialog.obtainMessage(1017);
-    paramView.obj = DiscussionInfoCardActivity.a(this.a);
-    paramView.arg1 = 3000;
-    paramDialog.sendMessage(paramView);
-    bbmy.a(this.a, 2, this.a.getString(2131625258), 0).a();
-    if (this.a.a != null) {
-      ((TextView)this.a.a.findViewById(2131311534)).setTextColor(Color.parseColor("#cccccc"));
+    ChatActivityUtils.a(-1034L, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_JavaUtilMap);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

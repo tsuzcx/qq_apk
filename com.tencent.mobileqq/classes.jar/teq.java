@@ -1,10 +1,22 @@
-public abstract interface teq
+public class teq
 {
-  public abstract void a();
+  @vym(a="pkIconUrl")
+  public String a;
+  @vym(a="pkWording")
+  public String b;
+  @vym(a="pkAction")
+  public String c;
+  @vym(a="pkIconUrlSelf")
+  public String d;
+  @vym(a="pkWordingSelf")
+  public String e;
+  @vym(a="pkActionSelf")
+  public String f;
   
-  public abstract void b();
-  
-  public abstract void c();
+  public String toString()
+  {
+    return "VideoLinkGameInfo {, pkBody='" + this.b + '\'' + ", pkIconUrl='" + this.a + '\'' + ", pkAction='" + this.c + '\'' + ", pkBodySelf='" + this.e + '\'' + ", pkIconUrlSelf='" + this.d + '\'' + ", pkActionSelf='" + this.f + '\'' + '}';
+  }
 }
 
 

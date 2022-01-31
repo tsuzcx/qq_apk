@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode.util;
 
-import vvp;
+import wim;
 
 public final class QRUtils$2
   implements Runnable
@@ -9,7 +9,7 @@ public final class QRUtils$2
   
   public void run()
   {
-    vvp.a(this.a, this.b);
+    wim.a(this.a, this.b);
   }
 }
 

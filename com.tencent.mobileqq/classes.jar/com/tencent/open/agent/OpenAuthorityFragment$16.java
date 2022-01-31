@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import bbmy;
+import bcpw;
 
 class OpenAuthorityFragment$16
   implements Runnable
@@ -9,20 +9,20 @@ class OpenAuthorityFragment$16
   
   public void run()
   {
-    bbmy localbbmy = new bbmy(this.this$0.getActivity());
+    bcpw localbcpw = new bcpw(this.this$0.getActivity());
     if (this.jdField_a_of_type_Boolean)
     {
-      localbbmy.a(bbmy.a(2));
-      localbbmy.b(2);
+      localbcpw.a(bcpw.a(2));
+      localbcpw.b(2);
     }
     for (;;)
     {
-      localbbmy.d(2000);
-      localbbmy.a(this.jdField_a_of_type_JavaLangString);
-      localbbmy.a();
+      localbcpw.d(2000);
+      localbcpw.a(this.jdField_a_of_type_JavaLangString);
+      localbcpw.a();
       return;
-      localbbmy.a(bbmy.a(1));
-      localbbmy.b(1);
+      localbcpw.a(bcpw.a(1));
+      localbcpw.b(1);
     }
   }
 }

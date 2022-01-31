@@ -1,21 +1,44 @@
-import android.view.View;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.3;
-import com.tencent.shadow.dynamic.host.EnterCallback;
+import android.util.Log;
+import java.nio.charset.Charset;
 
 public class aqlc
-  implements EnterCallback
+  implements aqlb
 {
-  public aqlc(GroupVideoManager.3 param3) {}
+  public static final Charset a = Charset.forName("UTF-8");
   
-  public void onCloseLoadingView() {}
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    a(paramString1, paramString2, paramString3, null);
+  }
   
-  public void onEnterComplete() {}
-  
-  public void onShowLoadingView(View paramView) {}
+  public void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
+  {
+    if ("d".equals(paramString2))
+    {
+      Log.d(paramString1, paramString3, paramThrowable);
+      return;
+    }
+    if ("e".equals(paramString2))
+    {
+      Log.e(paramString1, paramString3, paramThrowable);
+      return;
+    }
+    if ("w".equals(paramString2))
+    {
+      Log.w(paramString1, paramString3, paramThrowable);
+      return;
+    }
+    if ("i".equals(paramString2))
+    {
+      Log.i(paramString1, paramString3, paramThrowable);
+      return;
+    }
+    Log.i(paramString1, paramString3, paramThrowable);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqlc
  * JD-Core Version:    0.7.0.1
  */

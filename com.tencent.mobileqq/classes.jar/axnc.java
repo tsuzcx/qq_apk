@@ -1,28 +1,39 @@
+import com.tencent.mobileqq.soload.LoadExtResult;
+import java.util.List;
+
 public class axnc
-  implements ajfe
+  implements axmx
 {
-  protected void a() {}
+  private axmx jdField_a_of_type_Axmx;
+  private LoadExtResult jdField_a_of_type_ComTencentMobileqqSoloadLoadExtResult;
   
-  protected void a(axnf paramaxnf, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, axnf paramaxnf, int paramInt, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  private void a(axna paramaxna, axne paramaxne, int paramInt)
   {
-    switch (paramInt)
-    {
+    axna localaxna = new axna();
+    localaxna.jdField_a_of_type_JavaUtilList.add(paramaxna.jdField_a_of_type_JavaUtilList.get(paramInt));
+    localaxna.jdField_a_of_type_Long = paramaxna.jdField_a_of_type_Long;
+    this.jdField_a_of_type_Axmx = new axmu();
+    this.jdField_a_of_type_Axmx.a(localaxna, new axnd(this, paramInt, paramaxna, paramaxne));
+  }
+  
+  public void a(axna paramaxna, axne paramaxne)
+  {
+    a(paramaxna, paramaxne, 0);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Axmx != null) {
+      this.jdField_a_of_type_Axmx.a(paramString);
     }
-    do
-    {
-      return;
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (axnf)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-      return;
-      paramObject = (Object[])paramObject;
-      a((axnf)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Long)paramObject[3]).longValue(), ((Long)paramObject[4]).longValue(), paramObject[5]);
-      return;
-    } while (!paramBoolean);
-    a();
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (this.jdField_a_of_type_Axmx != null) {
+      return this.jdField_a_of_type_Axmx.a(paramString);
+    }
+    return false;
   }
 }
 

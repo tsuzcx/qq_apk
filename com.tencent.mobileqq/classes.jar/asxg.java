@@ -1,71 +1,48 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
 
-class asxg
-  implements View.OnClickListener
+public class asxg
 {
-  asxg(asxa paramasxa) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
   
-  public void onClick(View paramView)
+  public asxg()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard == null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString.contains("icon");
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e != 1);
-      beex.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-      if (!badq.d(BaseApplication.getContext()))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getString(2131628948));
-        return;
-      }
-    } while (!asxa.a(this.a));
-    this.a.b();
-    boolean bool1 = this.a.a();
-    boolean bool2 = ((Boolean)asfc.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.getCurrentAccountUin(), "nearby_profile_edit_isFirst", Boolean.valueOf(true))).booleanValue();
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.godFlag) && (bool1))
-    {
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getString(2131628936, new Object[] { this.a.jdField_a_of_type_JavaLangString });
-      paramView = babr.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, paramView, 0, 0, null, null);
-      paramView.setPositiveButton(ajjy.a(2131641485), new asxh(this, paramView));
-      paramView.setNegativeButton(ajjy.a(2131641480), new asxi(this, paramView));
-      paramView.show();
-      return;
-    }
-    if ((bool1) && (bool2))
-    {
-      paramView = ajjy.a(2131641509);
-      paramView = babr.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, paramView, 0, 0, null, null);
-      paramView.setPositiveButton(ajjy.a(2131641531), new asxj(this, paramView));
-      paramView.setNegativeButton(ajjy.a(2131641564), new asxk(this, paramView));
-      paramView.show();
-      asfc.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.getCurrentAccountUin(), "nearby_profile_edit_isFirst", Boolean.valueOf(false));
-      return;
-    }
-    if (bool1)
-    {
-      this.a.e();
-      paramView = new Intent("tribe_profile_edit_finish");
-      BaseApplicationImpl.getApplication().sendBroadcast(paramView);
-      return;
-    }
-    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, "", "", "", "");
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.c();
+    return false;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GrayTipHighlightItemInfo{");
+    localStringBuilder.append("old_key:").append(this.jdField_a_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("old_start:").append(this.jdField_b_of_type_Int).append(", ");
+    localStringBuilder.append("id:").append(this.jdField_b_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("start:").append(this.jdField_c_of_type_Int).append(", ");
+    localStringBuilder.append("end:").append(this.jdField_d_of_type_Int).append(", ");
+    localStringBuilder.append("key:").append(this.jdField_c_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("url:").append(this.jdField_d_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asxg
  * JD-Core Version:    0.7.0.1
  */

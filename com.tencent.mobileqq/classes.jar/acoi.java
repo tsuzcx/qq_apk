@@ -1,24 +1,24 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
-class acoi
-  extends AnimatorListenerAdapter
+public class acoi
+  implements DialogInterface.OnKeyListener
 {
-  acoi(acoh paramacoh) {}
+  public acoi(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.d();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.d();
+    if (paramInt == 4) {
+      this.a.a();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acoi
  * JD-Core Version:    0.7.0.1
  */

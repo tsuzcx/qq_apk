@@ -1,127 +1,27 @@
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 
-public class basx
-  extends WebViewPlugin
+class basx
+  implements akig
 {
-  protected anad a;
-  public final String a;
-  public String b;
+  public basy a;
   
-  public basx()
-  {
-    this.jdField_a_of_type_JavaLangString = "VideoApiPlugin";
-    this.jdField_a_of_type_Anad = new basy(this);
-    this.mPluginNameSpace = "video";
-  }
+  private basx(basv parambasv) {}
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoApiPlugin", 2, "handleJsRequest, url=" + paramString1);
-    }
-    boolean bool1;
-    if ((!"video".equals(paramString2)) || (paramString1 == null) || (paramString3 == null)) {
-      bool1 = false;
-    }
-    label154:
-    do
+    if ((this.jdField_a_of_type_Basy != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(this.jdField_a_of_type_Basy.jdField_a_of_type_JavaLangString, paramTroopMemberInfo.memberuin)))
     {
-      do
-      {
-        do
-        {
-          return bool1;
-          for (;;)
-          {
-            try
-            {
-              paramString1 = new JSONObject(paramVarArgs[0]);
-              if (paramString1.has("callback"))
-              {
-                paramJsBridgeListener = paramString1.getString("callback");
-                if (!"isInstalled".equals(paramString3)) {
-                  break label154;
-                }
-                bool1 = bool2;
-                if (!anfc.a().a()) {
-                  break;
-                }
-                paramString1 = new Bundle();
-                paramJsBridgeListener = anah.a("ipc_video_isinstalled", paramJsBridgeListener, this.jdField_a_of_type_Anad.key, paramString1);
-                anfc.a().a(paramJsBridgeListener);
-                return true;
-              }
-            }
-            catch (Exception paramJsBridgeListener)
-            {
-              paramJsBridgeListener.printStackTrace();
-              return true;
-            }
-            paramJsBridgeListener = "";
-          }
-          if (!"installPlugin".equals(paramString3)) {
-            break;
-          }
-          bool1 = bool2;
-        } while (!anfc.a().a());
-        paramString1 = new Bundle();
-        paramJsBridgeListener = anah.a("ipc_video_install_plugin", paramJsBridgeListener, this.jdField_a_of_type_Anad.key, paramString1);
-        anfc.a().a(paramJsBridgeListener);
-        return true;
-        bool1 = bool2;
-      } while (!"playVideo".equals(paramString3));
-      paramString2 = paramString1.optString("vid", "");
-      paramString3 = paramString1.optString("format", "");
-      int i = paramString1.optInt("playType", 0);
-      paramString1 = paramString1.optString("screenOrientation", "landscape");
-      if (!TextUtils.isEmpty(paramJsBridgeListener)) {
-        this.b = paramJsBridgeListener;
+      paramTroopMemberInfo = new ayju(((TroopManager)this.jdField_a_of_type_Basv.a.getManager(52)).a(paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin), 13).a();
+      this.jdField_a_of_type_Basy.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopMemberInfo);
+      if (AppSetting.d) {
+        basv.a(this.jdField_a_of_type_Basv, this.jdField_a_of_type_Basy);
       }
-      if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (i > 0))
-      {
-        paramJsBridgeListener = new Intent(this.mRuntime.a(), VipVideoPlayActivity.class);
-        paramJsBridgeListener.putExtra("vid", paramString2);
-        paramJsBridgeListener.putExtra("videoFormat", paramString3);
-        paramJsBridgeListener.putExtra("vtype", i);
-        paramJsBridgeListener.putExtra("screenOrientation", paramString1);
-        startActivityForResult(paramJsBridgeListener, (byte)100);
-        return true;
-      }
-      bool1 = bool2;
-    } while (TextUtils.isEmpty(this.b));
-    callJs(this.b, new String[] { String.valueOf(4) });
-    return true;
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoApiPlugin", 2, "vip video api plugin on activity result requestCode=" + paramByte + ",resultCode=" + paramInt);
     }
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    if ((paramByte == 100) && (!TextUtils.isEmpty(this.b))) {
-      callJs(this.b, new String[] { String.valueOf(paramInt) });
-    }
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    anfc.a().a(this.jdField_a_of_type_Anad);
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    anfc.a().b(this.jdField_a_of_type_Anad);
   }
 }
 

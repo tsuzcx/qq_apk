@@ -1,34 +1,135 @@
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.transaction.TransReport;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.transfile.GroupPicUploadProcessor.2.1;
+import com.tencent.mobileqq.transfile.GroupPicUploadProcessor.2.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
 public class ayre
+  implements ITransactionCallback
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public int d;
+  ayre(ayrd paramayrd) {}
   
-  public ayre(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, int paramInt4, long paramLong)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
+    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
+    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
+    String str1 = (String)paramHashMap.get("rep_bdhTrans");
+    String str2 = (String)paramHashMap.get("segspercnt");
+    String str3 = (String)paramHashMap.get("param_conf_segSize");
+    String str4 = (String)paramHashMap.get("param_conf_segNum");
+    String str5 = (String)paramHashMap.get("param_conf_connNum");
+    String str6 = (String)paramHashMap.get("param_fin_lost");
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupPicUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l1 - ayrd.a(this.a)) + "ms");
+    }
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("serverip", paramHashMap.get("ip"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", paramArrayOfByte);
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", str5);
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_fin_lost", str6);
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_retry_code", paramHashMap.get("param_retry_code"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_heart_resp", paramHashMap.get("param_heart_resp"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_ip_index", paramHashMap.get("param_ip_index"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_Ip_ConnCost", paramHashMap.get("param_Ip_ConnCost"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_is_ipv6", paramHashMap.get("param_is_ipv6"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_net_ip_type", paramHashMap.get("param_net_ip_type"));
+    ThreadManager.post(new GroupPicUploadProcessor.2.2(this, l2, l3, l4, l5), 5, null, false);
+    this.a.a(paramInt, "OnFailed.", "", this.a.jdField_b_of_type_Aypb);
+    this.a.d();
   }
   
-  public String toString()
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    return String.format("{id: %d, uin: %s, troopUin: %s, createTime: %d, svipLevel: %d, svipType: %d, globalTroopLevel: %d, mode: %d}", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c), Integer.valueOf(this.d), Long.valueOf(this.jdField_b_of_type_Long) });
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
+    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
+    paramArrayOfByte = (String)paramHashMap.get("rep_bdhTrans");
+    String str1 = (String)paramHashMap.get("segspercnt");
+    String str2 = (String)paramHashMap.get("param_conf_segSize");
+    String str3 = (String)paramHashMap.get("param_conf_segNum");
+    String str4 = (String)paramHashMap.get("param_conf_connNum");
+    String str5 = (String)paramHashMap.get("param_fin_lost");
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupPicUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l1 - ayrd.a(this.a)) + "ms ,fileSize:" + this.a.jdField_a_of_type_Ayqm.a + " transInfo:" + paramArrayOfByte);
+    }
+    this.a.m = this.a.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.mTransReport.timeCost_Ht;
+    this.a.jdField_o_of_type_Long = this.a.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.mTransReport.timeCost_Cache;
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("serverip", paramHashMap.get("ip"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", String.valueOf(this.a.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.mTransReport.timeCost_Cache));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", paramArrayOfByte);
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str1);
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str2);
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str3);
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", str4);
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_fin_lost", str5);
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_retry_code", paramHashMap.get("param_retry_code"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_heart_resp", paramHashMap.get("param_heart_resp"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_ip_index", paramHashMap.get("param_ip_index"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_Ip_ConnCost", paramHashMap.get("param_Ip_ConnCost"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_is_ipv6", paramHashMap.get("param_is_ipv6"));
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_net_ip_type", paramHashMap.get("param_net_ip_type"));
+    this.a.jdField_b_of_type_Aypb.b();
+    this.a.jdField_b_of_type_Aypb.a = 1;
+    this.a.s = this.a.jdField_q_of_type_Long;
+    this.a.jdField_q_of_type_Boolean = true;
+    this.a.t();
+    ThreadManager.post(new GroupPicUploadProcessor.2.1(this, l2, l3, l4, l5), 5, null, false);
+    this.a.jdField_a_of_type_Ayqm.a();
+    paramArrayOfByte = (String)paramHashMap.get("ip");
+    paramHashMap = (String)paramHashMap.get("port");
+    this.a.a(true, 0, paramArrayOfByte, paramHashMap);
+  }
+  
+  public void onSwitch2BackupChannel()
+  {
+    long l = SystemClock.uptimeMillis();
+    this.a.d("<BDH_LOG> onSwitch2BackupChannel() switch to HTTP channel");
+    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_switchChannel", String.valueOf(l - ayrd.a(this.a)));
+  }
+  
+  public void onTransStart()
+  {
+    this.a.jdField_b_of_type_Aypb.a();
+  }
+  
+  public void onUpdateProgress(int paramInt)
+  {
+    ayrd localayrd = this.a;
+    ayqm localayqm = this.a.jdField_a_of_type_Ayqm;
+    long l = paramInt;
+    localayqm.e = l;
+    localayrd.s = l;
+    if ((paramInt < this.a.jdField_q_of_type_Long) && (!this.a.jdField_o_of_type_Boolean) && (!this.a.k))
+    {
+      this.a.i();
+      if (ayrd.a(this.a)) {
+        bjmd.a(ayrd.a(this.a), 1002, this.a.f());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayre
  * JD-Core Version:    0.7.0.1
  */

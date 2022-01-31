@@ -1,173 +1,52 @@
-import UserGrowth.stSimpleGetFeedListRsp;
-import UserGrowth.stSimpleMetaFeed;
-import android.text.TextUtils;
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.1;
-import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.2;
-import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.3;
-import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.5;
-import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.6;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
-public class rxc
+class rxc
+  implements rvz
 {
-  private stSimpleGetFeedListRsp a(int paramInt)
+  rxc(rxb paramrxb, FrameLayout paramFrameLayout) {}
+  
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    Object localObject = "";
-    if (paramInt == 1) {
-      localObject = a();
+    if (rxb.a(this.jdField_a_of_type_Rxb) != null) {
+      rxb.a(this.jdField_a_of_type_Rxb).a(paramInt);
     }
-    while (TextUtils.isEmpty((CharSequence)localObject))
+  }
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 5)
     {
-      return null;
-      if (paramInt == 2) {
-        localObject = b();
-      }
+      Intent localIntent = new Intent();
+      localIntent.setAction("float_layer_finsh_action");
+      rxb.a(this.jdField_a_of_type_Rxb).getActivity().sendBroadcast(localIntent);
     }
-    localObject = bace.a((String)localObject);
-    return (stSimpleGetFeedListRsp)a(new stSimpleGetFeedListRsp(), (byte[])localObject);
+    rxb.a(this.jdField_a_of_type_Rxb).getActivity().doOnBackPressed();
+    rxb.a(this.jdField_a_of_type_Rxb).getActivity().overridePendingTransition(0, 0);
   }
   
-  private String a()
+  public void b()
   {
-    return BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath() + "/file/weishi/ws_recommend_data";
-  }
-  
-  public static rxc a()
-  {
-    return rxd.a();
-  }
-  
-  private boolean a(List<stSimpleMetaFeed> paramList, String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramList.size() > 0)
-    {
-      Object localObject = new stSimpleGetFeedListRsp();
-      ((stSimpleGetFeedListRsp)localObject).feeds = new ArrayList(paramList);
-      localObject = a((JceStruct)localObject);
-      bool1 = bool2;
-      if (localObject != null)
-      {
-        bool1 = bool2;
-        if (localObject.length > 0)
-        {
-          bool1 = bace.a((byte[])localObject, paramString, false);
-          sai.d("WeiShiCacheManager", "cacheRecommendData writeSuccess = " + bool1 + ", cache list size = " + paramList.size() + ", bytes length = " + localObject.length);
-        }
-      }
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 0) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
     }
-    return bool1;
   }
   
-  private int b()
+  public void b(int paramInt)
   {
-    return rxf.a().f();
-  }
-  
-  private String b()
-  {
-    return BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath() + "/file/weishi/ws_reddot_data";
-  }
-  
-  public int a()
-  {
-    return LocalMultiProcConfig.getInt("weishi_usergrowth", "key_red_msg_valid_count", 0);
-  }
-  
-  public <T extends JceStruct> T a(T paramT, byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
+    if ((paramInt == 2) && (rxb.a(this.jdField_a_of_type_Rxb).b()) && (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 8)) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
     }
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-      paramArrayOfByte.setServerEncoding("utf8");
-      paramT.readFrom(paramArrayOfByte);
-      return paramT;
-    }
-    catch (Exception paramT)
-    {
-      paramT.printStackTrace();
-    }
-    return null;
   }
   
-  public void a()
-  {
-    ThreadManager.executeOnFileThread(new WeiShiCacheManager.6(this));
-  }
-  
-  public void a(List<stSimpleMetaFeed> paramList, int paramInt)
-  {
-    if (b() == 0) {
-      ThreadManager.executeOnFileThread(new WeiShiCacheManager.2(this));
-    }
-    while ((paramList == null) || (paramList.size() <= 0)) {
-      return;
-    }
-    ThreadManager.executeOnFileThread(new WeiShiCacheManager.3(this, new ArrayList(paramList), paramInt));
-  }
-  
-  public void a(List<stSimpleMetaFeed> paramList, long paramLong)
-  {
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      ThreadManager.executeOnFileThread(new WeiShiCacheManager.5(this, new ArrayList(paramList), paramLong, paramList));
-      return;
-    }
-    a();
-  }
-  
-  public void a(rwy paramrwy)
-  {
-    ThreadManager.executeOnFileThread(new WeiShiCacheManager.1(this, paramrwy));
-  }
-  
-  public boolean a()
-  {
-    long l1 = LocalMultiProcConfig.getLong("weishi_usergrowth", "key_red_msg_valid_timestamp", 0L);
-    long l2 = System.currentTimeMillis();
-    long l3 = l1 - l2;
-    sai.d("WeiShiCacheManager", "validTimestamp-currentTimestamp = " + l1 + "-" + l2 + " = " + l3);
-    return l3 > 0L;
-  }
-  
-  public byte[] a(JceStruct paramJceStruct)
-  {
-    if (paramJceStruct != null) {
-      try
-      {
-        JceOutputStream localJceOutputStream = new JceOutputStream();
-        localJceOutputStream.setServerEncoding("utf8");
-        paramJceStruct.writeTo(localJceOutputStream);
-        paramJceStruct = localJceOutputStream.toByteArray();
-        return paramJceStruct;
-      }
-      catch (Exception paramJceStruct)
-      {
-        paramJceStruct.printStackTrace();
-      }
-    }
-    return null;
-  }
-  
-  public boolean b()
-  {
-    String str1 = sam.b();
-    String str2 = LocalMultiProcConfig.getString("weishi_usergrowth", "key_ws_cache_v", "");
-    sai.b("CacheResponseLog", "getCachedTrendsWSData versionName = " + str1 + ", cachedVersionName = " + str2);
-    return (!TextUtils.isEmpty(str1)) && (TextUtils.equals(str1, str2));
-  }
+  public void c() {}
 }
 
 

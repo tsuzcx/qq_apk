@@ -1,38 +1,19 @@
-import NS_MINI_APP_MISC.MISC.StGetFriendPlayListV2Rsp;
-import com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class apqz
-  implements MiniAppCmdInterface
+class apqz
+  implements View.OnClickListener
 {
-  public apqz(IntimatePlayTogetherMiniGameCardView paramIntimatePlayTogetherMiniGameCardView, MISC.StGetFriendPlayListV2Rsp paramStGetFriendPlayListV2Rsp) {}
+  apqz(apqx paramapqx, String paramString) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramJSONObject != null))
-    {
-      paramJSONObject = (MiniAppInfo)paramJSONObject.opt("appInfo");
-      if (paramJSONObject != null)
-      {
-        MiniAppController.preloadPackage(paramJSONObject);
-        paramJSONObject = new MiniAppConfig(paramJSONObject);
-        if (paramJSONObject.launchParam != null) {
-          paramJSONObject.launchParam.scene = 2064;
-        }
-        MiniProgramLpReportDC04239.reportAsync(paramJSONObject, "page_view", "expo", null, String.valueOf(this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.total.get()));
-      }
-    }
+    apue.b(this.jdField_a_of_type_Apqx.a, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apqz
  * JD-Core Version:    0.7.0.1
  */

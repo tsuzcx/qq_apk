@@ -1,125 +1,46 @@
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0x438.oidb_0x438.ReqBody;
-import tencent.im.oidb.cmd0x438.oidb_0x438.ReqInfo;
-import tencent.im.oidb.cmd0x438.oidb_0x438.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ajqm
-  extends ajfb
+  implements DialogInterface.OnClickListener
 {
-  public ajqm(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public ajqm(ApolloPanel paramApolloPanel, String paramString1, String paramString2, String paramString3) {}
   
-  private static oidb_sso.OIDBSSOPkg a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000)) {
-      paramToServiceMsg = null;
-    }
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.n();
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null))
     {
-      return paramToServiceMsg;
-      paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-      try
-      {
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.uint32_result.get() == 0))
-        {
-          paramToServiceMsg = paramFromServiceMsg;
-          if (paramFromServiceMsg.bytes_bodybuffer.get() != null) {
-            continue;
-          }
-        }
-        return null;
-      }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QWalletHandler", 2, "parseSSOPkg: oidb_sso parseFrom byte InvalidProtocolBufferMicroException ");
-          }
-        }
-      }
+      paramDialogInterface = (bbqp)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(71);
+      if (!this.jdField_a_of_type_JavaLangString.equals(String.valueOf(2))) {}
     }
-  }
-  
-  public void a(int paramInt, List<oidb_0x438.ReqInfo> paramList)
-  {
-    Object localObject = new oidb_0x438.ReqBody();
-    ((oidb_0x438.ReqBody)localObject).stReqInfo.set(paramList);
-    paramList = new oidb_sso.OIDBSSOPkg();
-    paramList.uint32_command.set(1080);
-    paramList.uint32_result.set(0);
-    paramList.uint32_service_type.set(paramInt);
-    paramList.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x438.ReqBody)localObject).toByteArray()));
-    localObject = createToServiceMsg("OidbSvc.0x438");
-    ((ToServiceMsg)localObject).putWupBuffer(paramList.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  protected Class<? extends ajfe> observerClass()
-  {
-    return ajqn.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("QWalletHandler", 4, "onReceive");
-    }
-    String str = paramToServiceMsg.getServiceCmd();
-    if (QLog.isDevelopLevel())
-    {
-      QLog.i("QWalletHandler", 4, "cmd=" + str);
-      QLog.i("QWalletHandler", 4, "data length =" + ((byte[])paramObject).length);
-    }
-    if (TextUtils.isEmpty(str)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (str.compareTo("OidbSvc.0x438") != 0);
-      paramToServiceMsg = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      if (paramToServiceMsg != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QWalletHandler", 2, "onReceive: ssoPkg parse failed");
-    return;
-    paramFromServiceMsg = new oidb_0x438.RspBody();
     try
     {
-      paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-      paramFromServiceMsg = paramFromServiceMsg.PasswdRedBag.get();
-      if (paramFromServiceMsg != null)
-      {
-        notifyUI(paramToServiceMsg.uint32_service_type.get(), true, paramFromServiceMsg);
-        return;
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "icon_alert_clickbuy", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + this.b });
       }
+      String str = new JSONObject(this.c).getString("packageId");
+      paramDialogInterface.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin(), Integer.parseInt(this.b), Integer.parseInt(str));
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+    catch (JSONException paramDialogInterface)
     {
-      paramFromServiceMsg.printStackTrace();
-      notifyUI(paramToServiceMsg.uint32_service_type.get(), false, null);
+      QLog.e("ApolloPanel", 1, "[showAioDialog] Exception:", paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajqm
  * JD-Core Version:    0.7.0.1
  */

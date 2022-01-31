@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
 import UserGrowth.stSimpleGetFeedListRsp;
-import rxc;
-import rys;
-import sai;
+import sjy;
+import slo;
+import sne;
 
 public class WeiShiCacheManager$4
   implements Runnable
 {
   public void run()
   {
-    sai.b("CacheResponseLog", "getCachedRecommendData startTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
+    sne.b("CacheResponseLog", "getCachedRecommendData startTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
     if (!this.this$0.b()) {
       return;
     }
-    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = rxc.a(this.this$0, 1);
-    rys.a().a(new WeiShiCacheManager.4.1(this, localstSimpleGetFeedListRsp));
+    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = sjy.a(this.this$0, 1);
+    slo.a().a(new WeiShiCacheManager.4.1(this, localstSimpleGetFeedListRsp));
   }
 }
 

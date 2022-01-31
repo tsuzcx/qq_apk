@@ -1,17 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.QavBeautyMenuPanel;
+import android.os.IInterface;
 
-public class lwn
-  implements DialogInterface.OnClickListener
+public abstract interface lwn
+  extends IInterface
 {
-  public lwn(QavBeautyMenuPanel paramQavBeautyMenuPanel) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.onClick(this.a.a);
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

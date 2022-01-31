@@ -1,339 +1,308 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.buscard.BuscardPluginRemoteCommand.1;
-import mqq.app.AppRuntime;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class beyl
-  extends RemoteCommand
 {
-  boolean a = true;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  private String jdField_a_of_type_JavaLangString;
+  private List<Long> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private List<Long> jdField_b_of_type_JavaUtilList;
+  private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long;
+  private String jdField_c_of_type_JavaLangString;
+  private List<Long> jdField_c_of_type_JavaUtilList;
+  private int jdField_d_of_type_Int;
+  private long jdField_d_of_type_Long;
+  private String jdField_d_of_type_JavaLangString;
+  private List<Long> jdField_d_of_type_JavaUtilList;
+  private int jdField_e_of_type_Int;
+  private long jdField_e_of_type_Long;
+  private String jdField_e_of_type_JavaLangString;
+  private long jdField_f_of_type_Long;
+  private String jdField_f_of_type_JavaLangString;
+  private long jdField_g_of_type_Long;
+  private String jdField_g_of_type_JavaLangString;
+  private long jdField_h_of_type_Long;
+  private String jdField_h_of_type_JavaLangString;
+  private long jdField_i_of_type_Long;
+  private String jdField_i_of_type_JavaLangString;
+  private long jdField_j_of_type_Long;
+  private String jdField_j_of_type_JavaLangString;
+  private long jdField_k_of_type_Long;
+  private String jdField_k_of_type_JavaLangString;
+  private long jdField_l_of_type_Long;
+  private String jdField_l_of_type_JavaLangString;
+  private long jdField_m_of_type_Long;
+  private String jdField_m_of_type_JavaLangString;
+  private long jdField_n_of_type_Long;
+  private String jdField_n_of_type_JavaLangString;
+  private long jdField_o_of_type_Long;
+  private String jdField_o_of_type_JavaLangString;
+  private long jdField_p_of_type_Long;
+  private String jdField_p_of_type_JavaLangString;
+  private String q;
+  private String r;
   
-  public beyl(String paramString, boolean paramBoolean)
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
-    super(paramString);
-    this.a = paramBoolean;
+    this.jdField_c_of_type_Int = ((int)paramFloat1);
+    this.jdField_d_of_type_Int = ((int)paramFloat2);
+    this.jdField_e_of_type_Int = ((int)paramFloat3);
+    this.jdField_a_of_type_Int = ((int)paramFloat4);
+    this.jdField_b_of_type_Int = ((int)paramFloat5);
   }
   
-  public static Bitmap a(String paramString, Resources paramResources, int paramInt1, int paramInt2, boolean paramBoolean)
+  private void b()
   {
-    long l1 = System.currentTimeMillis();
-    Object localObject = vvp.a(paramString, -1);
-    int m = ((gq)localObject).a();
-    paramString = new int[m * m];
-    int i = 0;
-    while (i < m)
-    {
-      int j = 0;
-      if (j < m)
-      {
-        if (((gq)localObject).a(j, i)) {}
-        for (int k = -16777216;; k = 16777215)
-        {
-          paramString[(i * m + j)] = k;
-          j += 1;
-          break;
-        }
-      }
-      i += 1;
-    }
-    localObject = Bitmap.createBitmap(m, m, Bitmap.Config.ARGB_8888);
-    ((Bitmap)localObject).setPixels(paramString, 0, m, 0, 0, m, m);
+    long l2 = 0L;
     try
     {
-      paramString = Bitmap.createBitmap(paramInt1, paramInt1, Bitmap.Config.ARGB_8888);
-      if (paramString == null)
+      this.jdField_d_of_type_Long = this.jdField_a_of_type_Long;
+      int i1;
+      Iterator localIterator;
+      long l1;
+      if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
       {
-        ((Bitmap)localObject).recycle();
-        return null;
+        i1 = this.jdField_a_of_type_JavaUtilList.size();
+        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        for (l1 = 0L; localIterator.hasNext(); l1 = ((Long)localIterator.next()).longValue() + l1) {}
+        this.jdField_e_of_type_Long = (l1 / i1);
       }
+      if (!this.jdField_b_of_type_JavaUtilList.isEmpty())
+      {
+        localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+        for (l1 = 0L; localIterator.hasNext(); l1 = ((Long)localIterator.next()).longValue() + l1) {}
+        this.jdField_h_of_type_Long = (l1 / this.jdField_b_of_type_JavaUtilList.size());
+      }
+      if (!this.jdField_c_of_type_JavaUtilList.isEmpty())
+      {
+        i1 = this.jdField_c_of_type_JavaUtilList.size();
+        localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
+        for (l1 = 0L; localIterator.hasNext(); l1 = Math.max(((Long)localIterator.next()).longValue(), 0L) + l1) {}
+        this.jdField_i_of_type_Long = (l1 / i1);
+      }
+      if (!this.jdField_d_of_type_JavaUtilList.isEmpty())
+      {
+        localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
+        for (l1 = l2; localIterator.hasNext(); l1 = ((Long)localIterator.next()).longValue() + l1) {}
+        this.jdField_l_of_type_Long = (l1 / this.jdField_d_of_type_JavaUtilList.size());
+      }
+      return;
     }
-    catch (OutOfMemoryError paramString)
+    finally {}
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    b();
+    int i1;
+    label47:
+    StringBuilder localStringBuilder2;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null)
     {
-      for (;;)
-      {
-        System.gc();
-        try
-        {
-          paramString = Bitmap.createBitmap(paramInt1, paramInt1, Bitmap.Config.ARGB_8888);
-        }
-        catch (OutOfMemoryError paramString)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("com.tencent.nfc.buscard.remotecommand", 2, paramString.getMessage());
-          }
-          return null;
-        }
+      localObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId;
+      localObject = localStringBuilder1.append((String)localObject).append('|');
+      if (!this.jdField_a_of_type_Boolean) {
+        break label695;
       }
-      Canvas localCanvas = new Canvas(paramString);
-      localCanvas.drawBitmap((Bitmap)localObject, null, new Rect(paramInt2, paramInt2, paramInt1 - paramInt2, paramInt1 - paramInt2), null);
-      if (paramBoolean)
-      {
-        paramInt1 = (paramInt1 - 60) / 2;
-        Paint localPaint = new Paint();
-        localPaint.setAntiAlias(true);
-        Rect localRect = new Rect(paramInt1, paramInt1, paramInt1 + 60, 60 + paramInt1);
-        paramResources = azvq.a(paramResources, 2130842884);
-        if (paramResources != null)
-        {
-          localCanvas.drawBitmap(paramResources, null, localRect, localPaint);
-          paramResources.recycle();
-        }
+      i1 = 1;
+      localStringBuilder2 = ((StringBuilder)localObject).append(i1).append('|').append(this.jdField_a_of_type_Long).append('|').append(this.jdField_b_of_type_Long).append('|').append(this.jdField_c_of_type_Long).append('|').append(this.jdField_a_of_type_JavaLangString).append('|').append(this.jdField_d_of_type_Long).append('|').append(this.jdField_a_of_type_Int).append('|').append(this.jdField_b_of_type_Int).append('|').append(this.jdField_c_of_type_Int).append('|').append(this.jdField_d_of_type_Int).append('|').append(this.jdField_e_of_type_Int).append('|').append(this.jdField_e_of_type_Long).append('|').append(this.jdField_f_of_type_Long).append('|').append(this.jdField_g_of_type_Long).append('|').append(this.jdField_h_of_type_Long).append('|').append(this.jdField_i_of_type_Long).append('|').append(this.jdField_j_of_type_Long).append('|').append(this.jdField_k_of_type_Long).append('|').append(this.jdField_l_of_type_Long).append('|').append(this.jdField_m_of_type_Long).append('|').append(this.jdField_n_of_type_Long).append('|').append(this.jdField_o_of_type_Long).append('|').append(this.jdField_b_of_type_JavaLangString).append('|').append(this.jdField_p_of_type_Long).append('|');
+      if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null) || (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.launchParam == null)) {
+        break label700;
       }
-      ((Bitmap)localObject).recycle();
-      long l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("com.tencent.nfc.buscard.remotecommand", 2, "getQrCode cost time:" + (l2 - l1));
+      localObject = Integer.valueOf(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.launchParam.jdField_a_of_type_Int);
+      label366:
+      localStringBuilder2 = localStringBuilder2.append(localObject).append('|').append(System.currentTimeMillis()).append('|');
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null) {
+        break label706;
+      }
+      localObject = Integer.valueOf(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.getReportType());
+      label408:
+      localStringBuilder2 = localStringBuilder2.append(localObject).append('|').append(this.jdField_k_of_type_JavaLangString).append('|').append(this.jdField_j_of_type_JavaLangString).append('|').append(this.jdField_e_of_type_JavaLangString).append('|');
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null) {
+        break label712;
+      }
+      localObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.version;
+      label472:
+      localStringBuilder2 = localStringBuilder2.append((String)localObject).append('|');
+      if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null) || (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.baseLibInfo == null)) {
+        break label718;
       }
     }
-    return paramString;
-  }
-  
-  private Bundle a(Bundle paramBundle1, Bundle paramBundle2, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    if (paramBundle1 == null) {
-      return paramBundle2;
-    }
-    if (paramBundle2 == null) {}
-    label179:
-    label227:
-    label742:
-    for (Bundle localBundle = new Bundle();; localBundle = paramBundle2)
+    label695:
+    label700:
+    label706:
+    label712:
+    label718:
+    for (Object localObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.baseLibInfo.baseLibVersion;; localObject = "null")
     {
-      paramBundle2 = paramBundle1.getString("cmd");
-      int i;
-      int j;
-      Object localObject1;
-      if (!TextUtils.isEmpty(paramBundle2))
-      {
-        if (!paramBundle2.equals("getQrCode")) {
-          break label227;
-        }
-        paramBundle2 = paramBundle1.getString("sharelink");
-        i = paramBundle1.getInt("imgsize");
-        j = paramBundle1.getInt("margin");
-        bool1 = paramBundle1.getBoolean("showlogo");
-        if (!TextUtils.isEmpty(paramBundle2))
-        {
-          localObject1 = azsq.a(paramBundle2, BaseApplicationImpl.getContext().getResources(), i, j, bool1);
-          if (localObject1 != null) {
-            localBundle.putString("path", vvp.a(BaseApplicationImpl.getContext(), paramBundle2.hashCode() + "", (Bitmap)localObject1));
-          }
-        }
+      localStringBuilder2.append((String)localObject).append('|').append(this.jdField_c_of_type_JavaLangString).append('|').append(this.jdField_f_of_type_JavaLangString).append('|').append(this.jdField_g_of_type_JavaLangString).append('|').append(this.jdField_h_of_type_JavaLangString).append('|').append(this.jdField_i_of_type_JavaLangString).append('|').append(this.jdField_l_of_type_JavaLangString).append('|').append(this.jdField_m_of_type_JavaLangString).append('|').append(this.jdField_n_of_type_JavaLangString).append('|').append(this.jdField_d_of_type_JavaLangString);
+      if (!bfgt.a()) {
+        localStringBuilder1.append("|").append(this.jdField_o_of_type_JavaLangString).append("|").append(this.jdField_p_of_type_JavaLangString).append("|").append(this.q).append("|").append(this.r);
       }
-      if (QLog.isColorLevel())
-      {
-        paramBundle2 = new StringBuilder().append("dispatchRemoteCmd,req=").append(paramBundle1).append("; rsp=");
-        if (localBundle == null) {
-          break label755;
-        }
-        paramBundle1 = localBundle.toString();
-        paramBundle1 = paramBundle2.append(paramBundle1).append(";mIsSynchronized=").append(this.a).append("; linstener is null=");
-        if (paramOnInvokeFinishLinstener == null) {
-          break label762;
-        }
-      }
-      label619:
-      label748:
-      label755:
-      label762:
-      for (boolean bool1 = true;; bool1 = false)
-      {
-        QLog.d("BuscardPluginRemoteCommand", 2, bool1);
-        return localBundle;
-        if (paramBundle2.equals("genQrCode"))
-        {
-          paramBundle2 = paramBundle1.getString("qrcontent");
-          i = paramBundle1.getInt("imgsize");
-          j = paramBundle1.getInt("margin");
-          bool1 = paramBundle1.getBoolean("showlogo");
-          if (TextUtils.isEmpty(paramBundle2)) {
-            break;
-          }
-          localBundle.putParcelable("qrcode", a(paramBundle2, BaseApplicationImpl.getContext().getResources(), i, j, bool1));
-          break;
-        }
-        if (paramBundle2.equals("location"))
-        {
-          SosoInterface.a(new beym(this, 3, true, true, 300000L, false, false, "buscardLocation", localBundle, paramOnInvokeFinishLinstener));
-          break;
-        }
-        Object localObject2;
-        if (paramBundle2.equals("publicAccount"))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("BuscardPluginRemoteCommand", 2, "publicAccount.");
-          }
-          if (a() == null) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("BuscardPluginRemoteCommand", 2, "publicAccount.enter");
-          }
-          localObject1 = paramBundle1.getString("publicAccount_uin");
-          if (QLog.isColorLevel())
-          {
-            localObject2 = new StringBuilder().append("publicAccount.enter, publicAccount_uin=");
-            if (localObject1 == null) {
-              break label461;
-            }
-          }
-          for (paramBundle2 = (Bundle)localObject1;; paramBundle2 = "null")
-          {
-            QLog.d("BuscardPluginRemoteCommand", 2, paramBundle2);
-            rtr.a(a(), a().getApp(), (String)localObject1, new beyn(this, localBundle, paramOnInvokeFinishLinstener));
-            break;
-          }
-        }
-        if (!paramBundle2.equals("queryPublicAccount")) {
-          break;
-        }
-        paramBundle2 = paramBundle1.getString("publicAccount_uin");
-        boolean bool2;
-        if (QLog.isColorLevel())
-        {
-          localObject2 = new StringBuilder().append("publicAccount.queryPublicAccount, publicAccount_uin=");
-          if (paramBundle2 != null)
-          {
-            localObject1 = paramBundle2;
-            QLog.d("BuscardPluginRemoteCommand", 2, (String)localObject1);
-          }
-        }
-        else
-        {
-          boolean bool3 = false;
-          bool1 = false;
-          bool2 = bool3;
-          if (a() != null)
-          {
-            bool2 = bool3;
-            if (!TextUtils.isEmpty(paramBundle2))
-            {
-              localObject2 = (ajoy)a().getManager(56);
-              if (localObject2 != null) {
-                bool1 = ((ajoy)localObject2).a(Long.valueOf(paramBundle2));
-              }
-              bool2 = bool1;
-              if (QLog.isColorLevel())
-              {
-                StringBuilder localStringBuilder = new StringBuilder().append("publicAccount.queryPublicAccount, publicAccount_uin=");
-                if (paramBundle2 == null) {
-                  break label734;
-                }
-                localObject1 = paramBundle2;
-                localObject1 = localStringBuilder.append((String)localObject1).append(";PublicAccountDataManager not null=");
-                if (localObject2 == null) {
-                  break label742;
-                }
-                bool2 = true;
-                QLog.d("BuscardPluginRemoteCommand", 2, bool2);
-                bool2 = bool1;
-              }
-            }
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject1 = new StringBuilder().append("publicAccount.queryPublicAccount, publicAccount_uin=");
-            if (paramBundle2 == null) {
-              break label748;
-            }
-          }
-        }
-        for (;;)
-        {
-          QLog.d("BuscardPluginRemoteCommand", 2, paramBundle2 + ";isFlow=" + bool2);
-          localBundle.putBoolean("isFollowed", bool2);
-          break;
-          localObject1 = "null";
-          break label513;
-          localObject1 = "null";
-          break label619;
-          bool2 = false;
-          break label642;
-          paramBundle2 = "null";
-        }
-        paramBundle1 = "null";
-        break label179;
-      }
+      return localStringBuilder1.toString();
+      localObject = "null";
+      break;
+      i1 = 0;
+      break label47;
+      localObject = "null";
+      break label366;
+      localObject = "null";
+      break label408;
+      localObject = "null";
+      break label472;
     }
   }
   
-  private QQAppInterface a()
+  public void a()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  public static void a()
-  {
-    PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
-    if ((localPluginCommunicationHandler != null) && (!localPluginCommunicationHandler.containsCmd("com.tencent.nfc.buscard.remotecommand"))) {
-      localPluginCommunicationHandler.register(new beyl("com.tencent.nfc.buscard.remotecommand", true));
-    }
-    if ((localPluginCommunicationHandler != null) && (!localPluginCommunicationHandler.containsCmd("com.tencent.nfc.buscard.remotecommand.async"))) {
-      localPluginCommunicationHandler.register(new beyl("com.tencent.nfc.buscard.remotecommand.async", false));
-    }
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    if (paramBundle == null) {
-      return null;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("ipc_async_req_seq", paramBundle.getLong("ipc_async_req_seq"));
     try
     {
-      if ((!this.a) && (Thread.currentThread() != Looper.getMainLooper().getThread()))
-      {
-        new Handler(Looper.getMainLooper()).post(new BuscardPluginRemoteCommand.1(this, paramBundle, localBundle, paramOnInvokeFinishLinstener));
-        return localBundle;
-      }
-      paramOnInvokeFinishLinstener = a(paramBundle, localBundle, paramOnInvokeFinishLinstener);
-      return paramOnInvokeFinishLinstener;
+      this.jdField_k_of_type_Long = 0L;
+      this.jdField_j_of_type_Long = 0L;
+      this.jdField_d_of_type_JavaUtilList.clear();
+      this.jdField_c_of_type_JavaUtilList.clear();
+      this.jdField_g_of_type_Long = 0L;
+      this.jdField_f_of_type_Long = 0L;
+      this.jdField_b_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.clear();
+      return;
     }
-    catch (Exception paramOnInvokeFinishLinstener)
+    finally
     {
-      if (!QLog.isColorLevel()) {
-        break label128;
-      }
-    }
-    paramOnInvokeFinishLinstener = new StringBuilder().append("params=");
-    if (paramBundle != null) {}
-    for (paramBundle = paramBundle.toString();; paramBundle = "null")
-    {
-      QLog.d("BuscardPluginRemoteCommand", 2, paramBundle);
-      label128:
-      return localBundle;
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public boolean isSynchronized()
+  /* Error */
+  public void a(long paramLong1, long paramLong2, int paramInt)
   {
-    return this.a;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: aload_0
+    //   4: getfield 138	beyl:jdField_f_of_type_Long	J
+    //   7: lconst_1
+    //   8: ladd
+    //   9: putfield 138	beyl:jdField_f_of_type_Long	J
+    //   12: iload 5
+    //   14: ifge +16 -> 30
+    //   17: aload_0
+    //   18: aload_0
+    //   19: getfield 140	beyl:jdField_g_of_type_Long	J
+    //   22: lconst_1
+    //   23: ladd
+    //   24: putfield 140	beyl:jdField_g_of_type_Long	J
+    //   27: aload_0
+    //   28: monitorexit
+    //   29: return
+    //   30: aload_0
+    //   31: getfield 51	beyl:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   34: lload_1
+    //   35: invokestatic 240	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   38: invokeinterface 244 2 0
+    //   43: pop
+    //   44: aload_0
+    //   45: getfield 84	beyl:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   48: lload_3
+    //   49: invokestatic 240	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   52: invokeinterface 244 2 0
+    //   57: pop
+    //   58: goto -31 -> 27
+    //   61: astore 6
+    //   63: aload_0
+    //   64: monitorexit
+    //   65: aload 6
+    //   67: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	68	0	this	beyl
+    //   0	68	1	paramLong1	long
+    //   0	68	3	paramLong2	long
+    //   0	68	5	paramInt	int
+    //   61	5	6	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	12	61	finally
+    //   17	27	61	finally
+    //   30	58	61	finally
+  }
+  
+  /* Error */
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: aload_0
+    //   4: getfield 142	beyl:jdField_j_of_type_Long	J
+    //   7: lconst_1
+    //   8: ladd
+    //   9: putfield 142	beyl:jdField_j_of_type_Long	J
+    //   12: iload 5
+    //   14: ifeq +16 -> 30
+    //   17: aload_0
+    //   18: aload_0
+    //   19: getfield 144	beyl:jdField_k_of_type_Long	J
+    //   22: lconst_1
+    //   23: ladd
+    //   24: putfield 144	beyl:jdField_k_of_type_Long	J
+    //   27: aload_0
+    //   28: monitorexit
+    //   29: return
+    //   30: aload_0
+    //   31: getfield 88	beyl:jdField_c_of_type_JavaUtilList	Ljava/util/List;
+    //   34: lload_1
+    //   35: invokestatic 240	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   38: invokeinterface 244 2 0
+    //   43: pop
+    //   44: aload_0
+    //   45: getfield 98	beyl:jdField_d_of_type_JavaUtilList	Ljava/util/List;
+    //   48: lload_3
+    //   49: invokestatic 240	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   52: invokeinterface 244 2 0
+    //   57: pop
+    //   58: goto -31 -> 27
+    //   61: astore 6
+    //   63: aload_0
+    //   64: monitorexit
+    //   65: aload 6
+    //   67: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	68	0	this	beyl
+    //   0	68	1	paramLong1	long
+    //   0	68	3	paramLong2	long
+    //   0	68	5	paramBoolean	boolean
+    //   61	5	6	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	12	61	finally
+    //   17	27	61	finally
+    //   30	58	61	finally
+  }
+  
+  public String toString()
+  {
+    return "ReportModel{launchFlag=" + this.jdField_a_of_type_Boolean + ", launchCost=" + this.jdField_a_of_type_Long + ", relaunchCost=" + this.jdField_b_of_type_Long + ", pkgDownloadCost=" + this.jdField_c_of_type_Long + ", pkgDownloadResult='" + this.jdField_a_of_type_JavaLangString + '\'' + ", gamePrepareCost=" + this.jdField_d_of_type_Long + ", fpsAVG=" + this.jdField_a_of_type_Int + ", fpsVARI=" + this.jdField_b_of_type_Int + ", cpuAVG=" + this.jdField_c_of_type_Int + ", memAVG=" + this.jdField_d_of_type_Int + ", memINC=" + this.jdField_e_of_type_Int + ", httpRequestCost=" + this.jdField_e_of_type_Long + ", httpRequestNum=" + this.jdField_f_of_type_Long + ", httpRequestErrorNum=" + this.jdField_g_of_type_Long + ", httpRequestLength=" + this.jdField_h_of_type_Long + ", downloadRequestCost=" + this.jdField_i_of_type_Long + ", downloadRequestNum=" + this.jdField_j_of_type_Long + ", downloadRequestErrorNum=" + this.jdField_k_of_type_Long + ", downloadRequestLength=" + this.jdField_l_of_type_Long + ", jsErrorNum=" + this.jdField_m_of_type_Long + ", oomErrorNum=" + this.jdField_n_of_type_Long + ", crashErrorNum=" + this.jdField_o_of_type_Long + ", launchResult='" + this.jdField_b_of_type_JavaLangString + '\'' + ", gameUseTime=" + this.jdField_p_of_type_Long + ", x5Version='" + this.jdField_c_of_type_JavaLangString + '\'' + ", openID='" + this.jdField_d_of_type_JavaLangString + '\'' + ", clientVersion='" + this.jdField_e_of_type_JavaLangString + '\'' + ", devicePlatform='" + this.jdField_f_of_type_JavaLangString + '\'' + ", deviceManufacturer='" + this.jdField_g_of_type_JavaLangString + '\'' + ", deviceModel='" + this.jdField_h_of_type_JavaLangString + '\'' + ", deviceVersion='" + this.jdField_i_of_type_JavaLangString + '\'' + ", qua='" + this.jdField_j_of_type_JavaLangString + '\'' + ", networkType='" + this.jdField_k_of_type_JavaLangString + '\'' + ", networkGateWayIP='" + this.jdField_l_of_type_JavaLangString + '\'' + ", networkSSID='" + this.jdField_m_of_type_JavaLangString + '\'' + ", androidID='" + this.jdField_n_of_type_JavaLangString + '\'' + ", sdk_version='" + this.jdField_o_of_type_JavaLangString + '\'' + ", source_app='" + this.jdField_p_of_type_JavaLangString + '\'' + ", source_version='" + this.q + '\'' + ", source_uin_platform='" + this.r + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beyl
  * JD-Core Version:    0.7.0.1
  */

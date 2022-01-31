@@ -2,22 +2,22 @@ package com.tencent.biz.videostory.video;
 
 import android.media.MediaPlayer;
 import java.util.TimerTask;
-import wyr;
-import wzj;
+import xhr;
+import xij;
 
 public class VsMediaPlayer$1
   extends TimerTask
 {
-  public VsMediaPlayer$1(wyr paramwyr) {}
+  public VsMediaPlayer$1(xhr paramxhr) {}
   
   public void run()
   {
-    wyr.a(this.this$0, wyr.a(this.this$0) + 1000);
-    if (wyr.a(this.this$0) != null) {
-      wzj.a().a(wyr.a(this.this$0).getCurrentPosition());
+    xhr.a(this.this$0, xhr.a(this.this$0) + 1000);
+    if (xhr.a(this.this$0) != null) {
+      xij.a().a(xhr.a(this.this$0).getCurrentPosition());
     }
-    if ((wyr.a(this.this$0) != null) && (wyr.b(this.this$0) != -1) && (wyr.a(this.this$0) >= wyr.b(this.this$0))) {
-      wyr.a(this.this$0);
+    if ((xhr.a(this.this$0) != null) && (xhr.b(this.this$0) != -1) && (xhr.a(this.this$0) >= xhr.b(this.this$0))) {
+      xhr.a(this.this$0);
     }
   }
 }

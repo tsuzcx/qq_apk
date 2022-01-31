@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public final class aqeo
-  extends batl
+class aqeo
+  implements View.OnClickListener
 {
-  public aqeo(String paramString) {}
+  aqeo(aqen paramaqen) {}
   
-  public void onDone(batm parambatm)
+  public void onClick(View paramView)
   {
-    PayLikeFloatViewBuilder.a(false);
-    if (parambatm.a == 0)
-    {
-      parambatm = new File(this.a + ".tmp");
-      if (parambatm.exists()) {
-        parambatm.renameTo(new File(this.a));
-      }
-    }
-    while (!QLog.isColorLevel()) {
+    if (this.a.a == null) {
       return;
     }
-    QLog.d("PayLikeFloatViewBuilder", 2, "getPayZanAnimBitmap download failed");
+    this.a.a.hideSoftInputFromWindow();
+    aqen.a(this.a, aqen.a(this.a).uniseq);
+    this.a.D();
   }
 }
 

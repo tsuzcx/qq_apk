@@ -1,18 +1,18 @@
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
 class ageo
-  implements QQPermissionCallback
+  implements View.OnTouchListener
 {
-  ageo(agen paramagen) {}
+  ageo(agei paramagei) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    babr.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    agem.a(this.a.a);
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

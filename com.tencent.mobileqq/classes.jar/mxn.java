@@ -1,52 +1,82 @@
+import android.graphics.Rect;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
-import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class mxn
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public mxn(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  private final int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private mxo jdField_a_of_type_Mxo;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public mxn(View paramView, mxo parammxo)
   {
-    switch (paramView.getId())
+    this(paramView, parammxo, vzo.a(paramView.getContext(), 160.0F));
+  }
+  
+  public mxn(View paramView, mxo parammxo, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Mxo = parammxo;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(this);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Mxo = null;
+    try
     {
-    default: 
-    case 2131313110: 
-    case 2131313130: 
-      do
-      {
-        return;
-        PublicAccountAdvertisementActivity.a(this.a);
-        PublicAccountAdvertisementActivity.c(this.a);
-        PublicAccountAdvertisementActivity.b(this.a);
-        myd.a().a(this.a.getAppInterface(), 4, PublicAccountAdvertisementActivity.a(this.a));
-        PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
-        this.a.finish();
-        return;
-      } while ((!PublicAccountAdvertisementActivity.c(this.a)) || (PublicAccountAdvertisementActivity.a(this.a) == null));
-      PublicAccountAdvertisementActivity.a(this.a).setCurrentPage(1);
-      PublicAccountAdvertisementActivity.b(this.a, 1);
-      return;
-    case 2131313123: 
-      this.a.b();
-      return;
-    case 2131296503: 
-      awqx.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8009032", "0X8009032", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
-      PublicAccountAdvertisementActivity.d(this.a);
-      return;
-    case 2131304756: 
-      PublicAccountAdvertisementActivity.a(this.a, 2);
+      if (Build.VERSION.SDK_INT >= 16) {
+        this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      }
       return;
     }
-    PublicAccountAdvertisementActivity.a(this.a, 1);
+    catch (Throwable localThrowable) {}
+  }
+  
+  public void onGlobalLayout()
+  {
+    boolean bool = true;
+    Rect localRect = new Rect();
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+        int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+        int j = localRect.bottom;
+        int k = localRect.top;
+        if (this.jdField_a_of_type_Mxo != null)
+        {
+          if (i - (j - k) < this.jdField_a_of_type_Int) {
+            break label113;
+          }
+          if (bool != this.jdField_a_of_type_Boolean)
+          {
+            this.jdField_a_of_type_Boolean = bool;
+            this.jdField_a_of_type_Mxo.a(bool, localRect.right, localRect.bottom);
+          }
+        }
+        return;
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        QLog.e("SoftKeyboardObserver", 1, "getWindowVisibleDisplayFrame error", localNullPointerException);
+        return;
+      }
+      label113:
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     mxn
  * JD-Core Version:    0.7.0.1
  */

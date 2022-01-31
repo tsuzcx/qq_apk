@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class acek
-  implements DialogInterface.OnDismissListener
+  implements View.OnFocusChangeListener
 {
-  public acek(UpgradeActivity paramUpgradeActivity) {}
+  public acek(SubLoginActivity paramSubLoginActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.a.finish();
+    if (true == paramBoolean) {
+      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+    }
   }
 }
 

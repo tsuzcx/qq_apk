@@ -1,44 +1,26 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import java.util.HashMap;
 
 public class arpl
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public static HashMap<Long, String> a = new HashMap();
   
-  public arpk a()
+  static
   {
-    return new arpk(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
-  }
-  
-  public arpl a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public arpl a(MsgBackupUserData paramMsgBackupUserData)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    return this;
-  }
-  
-  public arpl a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public arpl b(String paramString)
-  {
-    this.b = paramString;
-    return this;
+    a.put(Long.valueOf(1047L), "biz_src_qqmusic");
+    a.put(Long.valueOf(5362L), "biz_src_zz_dianjing");
+    a.put(Long.valueOf(1113L), "biz_src_zz_bodong");
+    a.put(Long.valueOf(3053L), "biz_src_zf_dongtai_qianbao");
+    a.put(Long.valueOf(763L), "biz_src_zf_dongtai_qianbao");
+    a.put(Long.valueOf(883L), "biz_src_zf_dongtai_qianbao");
+    a.put(Long.valueOf(4559L), "biz_src_zf_sport");
+    a.put(Long.valueOf(826L), "biz_src_feeds_buluo");
+    a.put(Long.valueOf(489L), "biz_src_zf_games");
+    a.put(Long.valueOf(879L), "biz_src_hdsp_dtzbj");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arpl
  * JD-Core Version:    0.7.0.1
  */

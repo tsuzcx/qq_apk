@@ -1,10 +1,8 @@
 package cooperation.qwallet.plugin.pay;
 
-import aciy;
-import agkl;
-import agkm;
-import anai;
-import anaj;
+import actn;
+import agxa;
+import agxb;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -21,8 +19,10 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import babr;
-import bafb;
+import anqq;
+import anqr;
+import bbcv;
+import bbgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
@@ -60,7 +60,7 @@ public class PayLogic
   protected boolean isLockWithdraw;
   protected boolean isPCPushDesc;
   private BaseActivity mActivity;
-  private anai mEmojiPayReqData;
+  private anqq mEmojiPayReqData;
   public boolean mIsStartReport;
   private String mMidasAid;
   private String mMidasOfferid;
@@ -126,16 +126,16 @@ public class PayLogic
     add(this);
   }
   
-  private void OnEmojimallPayResult(anai paramanai, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString)
+  private void OnEmojimallPayResult(anqq paramanqq, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString)
   {
-    if (paramanai == null)
+    if (paramanqq == null)
     {
       end();
       return;
     }
     Intent localIntent = new Intent();
-    paramString = new anaj(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramString);
-    localIntent.putExtras(paramanai.a());
+    paramString = new anqr(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramString);
+    localIntent.putExtras(paramanqq.a());
     localIntent.putExtras(paramString.a());
     this.mActivity.setResult(-1, localIntent);
     saveNonePCPayResultData(-1, localIntent);
@@ -295,9 +295,9 @@ public class PayLogic
     }
   }
   
-  private boolean checkEmojiPayParam(anai paramanai)
+  private boolean checkEmojiPayParam(anqq paramanqq)
   {
-    return (paramanai != null) && (!TextUtils.isEmpty(paramanai.b)) && (!TextUtils.isEmpty(paramanai.a)) && (!TextUtils.isEmpty(paramanai.c)) && (!TextUtils.isEmpty(paramanai.d)) && (!TextUtils.isEmpty(paramanai.j));
+    return (paramanqq != null) && (!TextUtils.isEmpty(paramanqq.b)) && (!TextUtils.isEmpty(paramanqq.a)) && (!TextUtils.isEmpty(paramanqq.c)) && (!TextUtils.isEmpty(paramanqq.d)) && (!TextUtils.isEmpty(paramanqq.j));
   }
   
   public static void clearCache()
@@ -309,51 +309,51 @@ public class PayLogic
   
   private Dialog createCustomDialog(String paramString1, String paramString2, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    Dialog localDialog = new Dialog(this.mActivity, 2131690181);
-    localDialog.setContentView(2131493323);
-    TextView localTextView = (TextView)localDialog.findViewById(2131299583);
+    Dialog localDialog = new Dialog(this.mActivity, 2131755791);
+    localDialog.setContentView(2131558883);
+    TextView localTextView = (TextView)localDialog.findViewById(2131365151);
     if (localTextView != null) {
       localTextView.setText(paramString1);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131299579);
+    paramString1 = (TextView)localDialog.findViewById(2131365147);
     if (paramString1 != null) {
       paramString1.setText(paramString2);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131299568);
+    paramString1 = (TextView)localDialog.findViewById(2131365136);
     if (paramString1 != null) {
       paramString1.setText(17039360);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131299574);
+    paramString1 = (TextView)localDialog.findViewById(2131365142);
     if (paramString1 != null) {
-      paramString1.setText(2131651595);
+      paramString1.setText(2131717387);
     }
     localDialog.setOnDismissListener(paramOnDismissListener);
     return localDialog;
   }
   
-  private void doEmojimallPay(anai paramanai)
+  private void doEmojimallPay(anqq paramanqq)
   {
-    this.mEmojiPayReqData = paramanai;
-    this.mMidasOfferid = paramanai.b;
-    this.mMidasAid = getAidFromPf(paramanai.h);
+    this.mEmojiPayReqData = paramanqq;
+    this.mMidasOfferid = paramanqq.b;
+    this.mMidasAid = getAidFromPf(paramanqq.h);
     Bundle localBundle = new Bundle();
     localBundle.putString("setEnv", "release");
     localBundle.putBoolean("setLogEnable", false);
-    localBundle.putString("offerId", paramanai.b);
+    localBundle.putString("offerId", paramanqq.b);
     localBundle.putBoolean("isShowNum", false);
-    localBundle.putString("userId", paramanai.c);
-    localBundle.putString("userKey", paramanai.d);
-    localBundle.putString("sessionId", paramanai.e);
-    localBundle.putString("sessionType", paramanai.f);
-    localBundle.putString("zoneId", paramanai.g);
-    localBundle.putString("pf", paramanai.h);
-    localBundle.putString("pfKey", paramanai.i);
-    localBundle.putString("tokenUrl", paramanai.j);
-    localBundle.putInt("resId", 2130839352);
-    localBundle.putString("discountId", paramanai.k);
-    localBundle.putString("other", paramanai.l);
-    localBundle.putString("payload", paramanai.m);
-    localBundle.putString("drmInfo", paramanai.n);
+    localBundle.putString("userId", paramanqq.c);
+    localBundle.putString("userKey", paramanqq.d);
+    localBundle.putString("sessionId", paramanqq.e);
+    localBundle.putString("sessionType", paramanqq.f);
+    localBundle.putString("zoneId", paramanqq.g);
+    localBundle.putString("pf", paramanqq.h);
+    localBundle.putString("pfKey", paramanqq.i);
+    localBundle.putString("tokenUrl", paramanqq.j);
+    localBundle.putInt("resId", 2130839382);
+    localBundle.putString("discountId", paramanqq.k);
+    localBundle.putString("other", paramanqq.l);
+    localBundle.putString("payload", paramanqq.m);
+    localBundle.putString("drmInfo", paramanqq.n);
     localBundle.putInt("PayInvokerId", 1);
     localBundle.putInt("payparmas_paytype", this.mPayType);
     QWalletPayBridge.launchForeground(this.mActivity, this.app, localBundle);
@@ -383,7 +383,7 @@ public class PayLogic
     paramBundle.putString("pf", str3);
     paramBundle.putString("pfKey", "pfKey");
     paramBundle.putString("acctType", "common");
-    paramBundle.putInt("resId", 2130845865);
+    paramBundle.putInt("resId", 2130846046);
     paramBundle.putString("discountId", str4);
     paramBundle.putString("other", str5);
     paramBundle.putString("payload", str6);
@@ -422,7 +422,7 @@ public class PayLogic
     localBundle.putString("pfKey", "pfKey");
     localBundle.putString("serviceCode", "QQYFSC");
     localBundle.putString("serviceName", "腾讯文学包月VIP");
-    localBundle.putInt("resId", 2130845865);
+    localBundle.putInt("resId", 2130846046);
     localBundle.putString("saveValue", "3");
     localBundle.putBoolean("isCanChange", true);
     localBundle.putString("remark", "");
@@ -999,9 +999,9 @@ public class PayLogic
   private void onF2FRedpackCheckError()
   {
     Object localObject = this.mActivity;
-    localObject = babr.a((Context)localObject, 231, null, ((BaseActivity)localObject).getResources().getString(2131626660), ((BaseActivity)localObject).getResources().getString(2131626659), null, null, new PayLogic.1(this));
-    ((bafb)localObject).setCancelable(false);
-    ((bafb)localObject).show();
+    localObject = bbcv.a((Context)localObject, 231, null, ((BaseActivity)localObject).getResources().getString(2131692246), ((BaseActivity)localObject).getResources().getString(2131692245), null, null, new PayLogic.1(this));
+    ((bbgg)localObject).setCancelable(false);
+    ((bbgg)localObject).show();
   }
   
   private void onGoldChargeResult(int paramInt1, String paramString1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString2)
@@ -1173,7 +1173,7 @@ public class PayLogic
               if (i != -1)
               {
                 localObject2 = this.mActivity;
-                localIntent = aciy.a(new Intent((Context)localObject2, SplashActivity.class), null);
+                localIntent = actn.a(new Intent((Context)localObject2, SplashActivity.class), null);
                 localIntent.putExtra("uin", (String)localObject1);
                 localIntent.putExtra("uintype", i);
                 localIntent.putExtra("isBack2Root", true);
@@ -1236,17 +1236,17 @@ public class PayLogic
     Object localObject2 = this.intent.getStringExtra("content");
     String str1 = this.intent.getStringExtra("btn");
     String str2 = this.intent.getStringExtra("url");
-    bafb localbafb = babr.a(localBaseActivity, 0);
-    localbafb.setTitle((String)localObject1);
-    localbafb.setMessage((CharSequence)localObject2);
-    localbafb.setCancelable(false);
+    bbgg localbbgg = bbcv.a(localBaseActivity, 0);
+    localbbgg.setTitle((String)localObject1);
+    localbbgg.setMessage((CharSequence)localObject2);
+    localbbgg.setCancelable(false);
     localObject2 = new PayLogic.2(this, str2);
     localObject1 = str1;
     if (TextUtils.isEmpty(str1)) {
-      localObject1 = localBaseActivity.getResources().getString(2131629116);
+      localObject1 = localBaseActivity.getResources().getString(2131694793);
     }
-    localbafb.setPositiveButton((String)localObject1, (DialogInterface.OnClickListener)localObject2);
-    localbafb.show();
+    localbbgg.setPositiveButton((String)localObject1, (DialogInterface.OnClickListener)localObject2);
+    localbbgg.show();
   }
   
   private void openQzoneVipService(Bundle paramBundle)
@@ -3532,8 +3532,8 @@ public class PayLogic
     if (QLog.isColorLevel()) {
       QLog.i("Q.qwallet.pay.PayLogic", 2, "end()");
     }
-    agkl.a();
-    int i = agkl.a();
+    agxa.a();
+    int i = agxa.a();
     if (QLog.isColorLevel()) {
       QLog.i("Q.qwallet.pay.PayLogic", 2, "finish idlePayCount=" + i);
     }
@@ -3548,12 +3548,12 @@ public class PayLogic
     Object localObject2 = new Intent((Context)localObject1, PayBridgeActivity.class);
     ((Intent)localObject2).addFlags(536870912);
     ((BaseActivity)localObject1).startActivity((Intent)localObject2);
-    localObject2 = String.format(((BaseActivity)localObject1).getString(2131651596), new Object[] { Integer.valueOf(i) });
-    localObject1 = createCustomDialog(((BaseActivity)localObject1).getString(2131633659), (String)localObject2, null);
+    localObject2 = String.format(((BaseActivity)localObject1).getString(2131717388), new Object[] { Integer.valueOf(i) });
+    localObject1 = createCustomDialog(((BaseActivity)localObject1).getString(2131699428), (String)localObject2, null);
     ((Dialog)localObject1).setCancelable(false);
     localObject2 = new PayLogic.3(this, (Dialog)localObject1);
-    ((Dialog)localObject1).findViewById(2131299574).setOnClickListener((View.OnClickListener)localObject2);
-    ((Dialog)localObject1).findViewById(2131299568).setOnClickListener((View.OnClickListener)localObject2);
+    ((Dialog)localObject1).findViewById(2131365142).setOnClickListener((View.OnClickListener)localObject2);
+    ((Dialog)localObject1).findViewById(2131365136).setOnClickListener((View.OnClickListener)localObject2);
     ((Dialog)localObject1).setOnDismissListener(new PayLogic.4(this));
     try
     {
@@ -3591,7 +3591,7 @@ public class PayLogic
       isPaying = true;
       this.isFromPCPush = true;
       this.isPCPushDesc = true;
-      startPCPushPay(agkl.a(this.isPCPushDesc));
+      startPCPushPay(agxa.a(this.isPCPushDesc));
       return;
     }
     isPaying = true;
@@ -3601,10 +3601,10 @@ public class PayLogic
       end();
       return;
     case 1: 
-      localObject = anai.a(this.intentData);
-      if ((localObject == null) || (!checkEmojiPayParam((anai)localObject)))
+      localObject = anqq.a(this.intentData);
+      if ((localObject == null) || (!checkEmojiPayParam((anqq)localObject)))
       {
-        OnEmojimallPayResult((anai)localObject, -1, 0, -1, -1, -1, "param error");
+        OnEmojimallPayResult((anqq)localObject, -1, 0, -1, -1, -1, "param error");
         if (localObject == null) {
           if (QLog.isColorLevel()) {
             QLog.i("Q.qwallet.pay.PayLogic", 2, "emojimall pay paramerror: reqData:null");
@@ -3616,11 +3616,11 @@ public class PayLogic
           end();
           return;
           if (QLog.isColorLevel()) {
-            QLog.i("Q.qwallet.pay.PayLogic", 2, "emojimall pay paramerror:userid:" + ((anai)localObject).c + "userkey:" + ((anai)localObject).d + "sessionid:" + ((anai)localObject).e + "sessionType:" + ((anai)localObject).f + "zoneId:" + ((anai)localObject).g + "pf:" + ((anai)localObject).h + "pfKey:" + ((anai)localObject).i + "tokenUrl:" + ((anai)localObject).j + "discountId:" + ((anai)localObject).k + "other:" + ((anai)localObject).l + "payload:" + ((anai)localObject).m);
+            QLog.i("Q.qwallet.pay.PayLogic", 2, "emojimall pay paramerror:userid:" + ((anqq)localObject).c + "userkey:" + ((anqq)localObject).d + "sessionid:" + ((anqq)localObject).e + "sessionType:" + ((anqq)localObject).f + "zoneId:" + ((anqq)localObject).g + "pf:" + ((anqq)localObject).h + "pfKey:" + ((anqq)localObject).i + "tokenUrl:" + ((anqq)localObject).j + "discountId:" + ((anqq)localObject).k + "other:" + ((anqq)localObject).l + "payload:" + ((anqq)localObject).m);
           }
         }
       }
-      doEmojimallPay((anai)localObject);
+      doEmojimallPay((anqq)localObject);
       return;
     case 2: 
       doGoldCharge(this.intentData);
@@ -3781,18 +3781,18 @@ public class PayLogic
     remove(this);
   }
   
-  public void startPCPushPay(agkm paramagkm)
+  public void startPCPushPay(agxb paramagxb)
   {
-    if (paramagkm == null)
+    if (paramagxb == null)
     {
       end();
       return;
     }
-    paramagkm.c = 1;
+    paramagxb.c = 1;
     Bundle localBundle = new Bundle();
-    localBundle.putString("json", paramagkm.a);
+    localBundle.putString("json", paramagxb.a);
     localBundle.putString("callbackSn", "0");
-    int i = agkl.a(paramagkm.b);
+    int i = agxa.a(paramagxb.b);
     switch (i)
     {
     case 10: 
@@ -3814,7 +3814,7 @@ public class PayLogic
       return;
     }
     localBundle = this.intent.getExtras();
-    localBundle.putString("json", paramagkm.a);
+    localBundle.putString("json", paramagxb.a);
     localBundle.putString("callbackSn", "0");
     openTenpayView(localBundle);
   }

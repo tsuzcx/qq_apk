@@ -1,48 +1,15 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
 
 class afyw
-  implements DialogInterface.OnClickListener
+  implements aprx
 {
-  afyw(afyu paramafyu) {}
+  afyw(afyv paramafyv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (this.a.a.jdField_a_of_type_Int == 2) {
-      this.a.a.a("0X8005B8A", 1);
+    if ((paramInt1 == 3) && (paramInt2 == 0)) {
+      axqw.b(this.a.a.a, "dc00898", "", "", "0X800A0BE", "0X800A0BE", 3, 0, "", "", "", "");
     }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      if (badq.d(this.a.a)) {
-        break;
-      }
-      this.a.a.b(2131629008);
-      return;
-      if (this.a.a.jdField_a_of_type_Int == 6) {
-        this.a.a.a("0X8005B8A", 2);
-      } else if (this.a.a.jdField_a_of_type_Int == 7) {
-        this.a.a.a("0X8005B8A", 3);
-      }
-    }
-    paramDialogInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a();
-    if ((paramDialogInterface == null) || (paramDialogInterface.nationCode == null) || (paramDialogInterface.mobileNo == null))
-    {
-      this.a.a.setResult(0);
-      this.a.a.finish();
-      return;
-    }
-    if (this.a.a.b == null)
-    {
-      this.a.a.b = new afyx(this);
-      this.a.a.app.registObserver(this.a.a.b);
-    }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(paramDialogInterface.nationCode, paramDialogInterface.mobileNo);
-    this.a.a.a(2131653452, 300L, true);
   }
 }
 

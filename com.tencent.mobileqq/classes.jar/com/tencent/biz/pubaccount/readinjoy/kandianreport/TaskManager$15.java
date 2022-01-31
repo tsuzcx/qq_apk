@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import babp;
+import bbct;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
 import com.tencent.common.config.AppSetting;
@@ -15,8 +15,8 @@ class TaskManager$15
   {
     paramJSContext = new JSONObject();
     paramJSContext.put("platform", "Android");
-    paramJSContext.put("sys_version", babp.e());
-    paramJSContext.put("qq_version", babp.c());
+    paramJSContext.put("sys_version", bbct.e());
+    paramJSContext.put("qq_version", bbct.c());
     paramJSContext.put("framework_version", String.valueOf(TaskManager.scriptVersion));
     paramJSContext.putOpt("app_id", Integer.valueOf(AppSetting.a()));
     return paramJSContext.toString();

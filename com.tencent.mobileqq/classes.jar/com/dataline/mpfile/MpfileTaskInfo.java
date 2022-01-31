@@ -3,12 +3,12 @@ package com.dataline.mpfile;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import dh;
+import fa;
 
 public class MpfileTaskInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<MpfileTaskInfo> CREATOR = new dh();
+  public static final Parcelable.Creator<MpfileTaskInfo> CREATOR = new fa();
   public static int a;
   public static int b;
   public static int c;

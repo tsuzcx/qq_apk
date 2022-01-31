@@ -1,28 +1,38 @@
 import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
 
-public class arsu
-  extends AnimatorListenerAdapter
+class arsu
+  implements Animator.AnimatorListener
 {
-  public arsu(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView) {}
+  arsu(arsq paramarsq, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    super.onAnimationCancel(paramAnimator);
-    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
+    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
+    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
+    this.jdField_a_of_type_Arsq.jdField_a_of_type_AndroidAnimationValueAnimator = null;
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    super.onAnimationEnd(paramAnimator);
-    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
+    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
+    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
+    this.jdField_a_of_type_Arsq.jdField_a_of_type_AndroidAnimationValueAnimator = null;
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arsu
  * JD-Core Version:    0.7.0.1
  */

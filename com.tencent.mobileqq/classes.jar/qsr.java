@@ -1,34 +1,31 @@
-import android.net.Uri;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.biz.pubaccount.VideoInfo;
+import java.lang.ref.WeakReference;
 
-final class qsr
-  implements rvo
+class qsr
+  implements shf
 {
-  public void a(Uri paramUri, String paramString, int paramInt)
+  private int jdField_a_of_type_Int;
+  private VideoInfo jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private int b;
+  private int c;
+  private int d;
+  
+  public qsr(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, VideoInfo paramVideoInfo)
   {
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder().append("onDetectScreenshot() path=").append(paramString).append(", channelID=");
-      if (qsq.a(qsq.a()) != null) {
-        break label129;
-      }
-      paramUri = "null";
-      paramString = paramString.append(paramUri).append(", channelType=");
-      if (qsq.b(qsq.a()) != null) {
-        break label139;
-      }
-    }
-    label129:
-    label139:
-    for (paramUri = "null";; paramUri = qsq.b(qsq.a()))
-    {
-      QLog.d("ReadInJoyScreenShotReporter", 2, paramUri);
-      if (qsq.a(qsq.a()) != null) {
-        ndn.b(null, "", "0X8008100", "0X8008100", 0, 0, String.valueOf(System.currentTimeMillis() / 1000L), String.valueOf(qsq.b(qsq.a())), String.valueOf(qsq.a(qsq.a())), null, false);
-      }
-      return;
-      paramUri = qsq.a(qsq.a());
-      break;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      qrw.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.c, this.d, false, paramBoolean);
     }
   }
 }

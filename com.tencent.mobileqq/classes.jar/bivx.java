@@ -1,32 +1,74 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
-
 public class bivx
 {
-  TroopInfo a;
-  public boolean a;
+  public static final bivx a;
+  private static final bivx[] jdField_a_of_type_ArrayOfBivx;
+  public static final bivx b;
+  private static final bivx[] b;
+  public static final bivx c;
+  private static final bivx[] c;
+  private static final bivx[] d = { jdField_b_of_type_Bivx };
+  private static final bivx[] e = { jdField_b_of_type_Bivx, jdField_c_of_type_Bivx };
+  public final int a;
+  private boolean jdField_a_of_type_Boolean;
+  public final int b;
   
-  public bivx(boolean paramBoolean, TroopInfo paramTroopInfo)
+  static
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
+    jdField_a_of_type_Bivx = new bivx(0, 2131689819);
+    jdField_b_of_type_Bivx = new bivx(1, 2131689820);
+    jdField_c_of_type_Bivx = new bivx(2, 2131689818);
+    jdField_a_of_type_ArrayOfBivx = new bivx[] { jdField_a_of_type_Bivx, jdField_b_of_type_Bivx, jdField_c_of_type_Bivx };
+    jdField_b_of_type_ArrayOfBivx = new bivx[] { jdField_a_of_type_Bivx, jdField_b_of_type_Bivx };
+    jdField_c_of_type_ArrayOfBivx = new bivx[] { jdField_a_of_type_Bivx, jdField_c_of_type_Bivx };
   }
   
-  public static ArrayList<bivx> a(ArrayList<TroopInfo> paramArrayList, ArrayList<String> paramArrayList1)
+  bivx(int paramInt1, int paramInt2)
   {
-    ArrayList localArrayList = new ArrayList(paramArrayList.size());
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      TroopInfo localTroopInfo = (TroopInfo)paramArrayList.get(i);
-      bivx localbivx = new bivx(false, localTroopInfo);
-      if ((paramArrayList1 != null) && (paramArrayList1.contains(localTroopInfo.troopuin))) {
-        localbivx.jdField_a_of_type_Boolean = true;
-      }
-      localArrayList.add(localbivx);
-      i += 1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public static bivx a(bivx parambivx)
+  {
+    return new bivx(parambivx.jdField_a_of_type_Int, parambivx.jdField_b_of_type_Int);
+  }
+  
+  public static boolean a(bivx parambivx1, bivx parambivx2)
+  {
+    return parambivx1.jdField_a_of_type_Int == parambivx2.jdField_a_of_type_Int;
+  }
+  
+  public static bivx[] a(biim parambiim)
+  {
+    int i = birc.a(parambiim);
+    if (i == 204) {
+      return jdField_b_of_type_ArrayOfBivx;
     }
-    return localArrayList;
+    if (i == 205) {
+      return jdField_c_of_type_ArrayOfBivx;
+    }
+    if (i == 206) {
+      return d;
+    }
+    if (i == 207) {
+      return e;
+    }
+    return jdField_a_of_type_ArrayOfBivx;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String toString()
+  {
+    return "AE_CAPTURE_MODE{index=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

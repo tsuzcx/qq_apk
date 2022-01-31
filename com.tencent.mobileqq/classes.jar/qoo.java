@@ -1,17 +1,30 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class qoo
-  implements PopupWindow.OnDismissListener
+final class qoo
+  implements View.OnClickListener
 {
-  qoo(qoe paramqoe) {}
+  qoo(String paramString, Context paramContext, View.OnClickListener paramOnClickListener) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    qoe.a(this.a).a(1.0F);
-    if (this.a.b)
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video", 2, "handleKingCardHintTextView span is clicked, guideUrl=" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      this.a.a.c();
-      this.a.b = false;
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("big_brother_source_key", onk.f(0));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    }
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
     }
   }
 }

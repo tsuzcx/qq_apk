@@ -1,9 +1,9 @@
 package com.tencent.open.appcommon;
 
 import android.text.TextUtils;
-import bcax;
-import bcdp;
-import bcds;
+import bdey;
+import bdhq;
+import bdht;
 import java.io.File;
 
 public final class Common$1
@@ -11,7 +11,7 @@ public final class Common$1
 {
   public void run()
   {
-    File localFile1 = new File(bcax.c());
+    File localFile1 = new File(bdey.c());
     if (localFile1.exists())
     {
       File[] arrayOfFile = localFile1.listFiles();
@@ -20,19 +20,19 @@ public final class Common$1
       if (i < j)
       {
         File localFile2 = arrayOfFile[i];
-        if ((localFile2.getName().startsWith("system_old_")) || ((localFile2.isDirectory()) && (!localFile2.getName().equals("tmp")) && (!TextUtils.isEmpty(bcax.p())) && (!localFile2.getName().equals(bcax.p()))))
+        if ((localFile2.getName().startsWith("system_old_")) || ((localFile2.isDirectory()) && (!localFile2.getName().equals("tmp")) && (!TextUtils.isEmpty(bdey.q())) && (!localFile2.getName().equals(bdey.q()))))
         {
-          if (!bcdp.a(new File(localFile1 + File.separator + localFile2.getName()))) {
+          if (!bdhq.a(new File(localFile1 + File.separator + localFile2.getName()))) {
             break label179;
           }
-          bcds.b("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> successful");
+          bdht.b("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> successful");
         }
         for (;;)
         {
           i += 1;
           break;
           label179:
-          bcds.c("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> failed");
+          bdht.c("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> failed");
         }
       }
     }

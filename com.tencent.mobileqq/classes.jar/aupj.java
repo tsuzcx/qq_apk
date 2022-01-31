@@ -1,16 +1,43 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aupj
-  implements Comparator<ReceiptMessageReadMemberListFragment.MemberInfo>
+public final class aupj
 {
-  public aupj(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  final TroopAIOAppInfo a = new TroopAIOAppInfo();
   
-  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
+  private void a(String paramString)
   {
-    return ChnToSpell.a(paramMemberInfo1.b, 1).compareTo(ChnToSpell.a(paramMemberInfo2.b, 1));
+    if (!TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOPlusPanelAppInfoConfigProcessor", 2, "Config parse configText -> " + paramString);
+      }
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.a.appid = paramString.optInt("appid");
+      this.a.name = paramString.optString("title");
+      this.a.enName = paramString.optString("eng_title");
+      this.a.iconUrl = paramString.optString("iconNormal");
+      this.a.iconPress = paramString.optString("iconPress");
+      this.a.simpleDayUrl = paramString.optString("iconConciseNormal");
+      this.a.simpleDayPressUrl = paramString.optString("iconConcisePress");
+      this.a.simpleNightUrl = paramString.optString("iconConciseNightNormal");
+      this.a.simpleNightPressUrl = paramString.optString("iconConciseNightPress");
+      this.a.redDotID = auqe.a(this.a.appid);
+      this.a.actionType = paramString.optString("actionType");
+      this.a.action = paramString.optString("action");
+      this.a.enableC2C = paramString.optInt("enableC2C");
+      this.a.enableGroup = paramString.optInt("enableGroup");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("AIOPlusPanelAppInfoConfigProcessor", 1, paramString, new Object[0]);
+    }
   }
 }
 

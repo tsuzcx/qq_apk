@@ -1,42 +1,23 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetCollectListEventReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import java.util.List;
 
 public class ugc
-  extends QQUIEventReceiver<uga, swq>
+  extends ucy
 {
-  public ugc(@NonNull uga paramuga)
-  {
-    super(paramuga);
-  }
+  public ugc(AbsVideoInfoWidget paramAbsVideoInfoWidget, StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
   
-  public void a(@NonNull uga paramuga, @NonNull swq paramswq)
+  public void a(int paramInt)
   {
-    if (paramswq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    super.a(paramInt);
+    paramInt = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.b;
+    if ((paramInt >= this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) || (paramInt < 0))
     {
-      urk.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(paramswq.jdField_a_of_type_Int));
-      if ((TextUtils.isEmpty(paramswq.b)) || (paramswq.b.equals(paramuga.jdField_a_of_type_JavaLangString))) {
-        break label49;
-      }
-    }
-    label49:
-    do
-    {
+      veg.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b, "Position error , get data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) });
       return;
-      if (paramswq.jdField_a_of_type_Int != -1) {
-        uga.a(paramuga, paramswq.jdField_a_of_type_Int);
-      }
-    } while (paramuga.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null);
-    paramuga.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = uga.a(paramuga);
-    ThreadManager.post(new MemoriesProfilePresenter.GetCollectListEventReceiver.1(this, paramuga), 5, null, false);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return swq.class;
+    }
+    uav localuav = (uav)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.get(paramInt);
+    AbsVideoInfoWidget.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget, localuav);
   }
 }
 

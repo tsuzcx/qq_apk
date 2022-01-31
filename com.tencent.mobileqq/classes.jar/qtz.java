@@ -1,10 +1,6 @@
 public abstract interface qtz
 {
-  public abstract void a();
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void a(qty paramqty, boolean paramBoolean);
 }
 
 

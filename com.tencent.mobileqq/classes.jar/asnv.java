@@ -1,38 +1,104 @@
-import android.text.Editable;
-import android.text.Selection;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Map;
 
 public class asnv
-  implements TextWatcher
+  extends asnn
 {
-  public asnv(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  private static final String b = azaa.a(asoa.jdField_a_of_type_JavaLangString + "shortvideo" + File.separator);
+  private String c = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
+  private String d = (String)this.jdField_a_of_type_JavaUtilMap.get("thumbMd5");
   
-  public void afterTextChanged(Editable paramEditable)
+  public asnv(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    if (ShortVideoCommentsView.a(this.a) == null) {}
-    while (asmp.a(paramEditable.toString()) <= 140) {
-      return;
+    super(paramMsgBackupResEntity);
+    if ((TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.d))) {
+      a("md5:" + this.c + " mThumbMD5:" + this.d);
     }
-    int j = Selection.getSelectionEnd(paramEditable);
-    paramEditable = asmp.a(paramEditable.toString(), 0, 140).toString();
-    ShortVideoCommentsView.a(this.a).setText(paramEditable);
-    paramEditable = ShortVideoCommentsView.a(this.a).getText();
-    int i = j;
-    if (j > paramEditable.length()) {
-      i = paramEditable.length();
-    }
-    Selection.setSelection(paramEditable, i);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public static String a(String paramString)
+  {
+    return ShortVideoUtils.a(paramString, "jpg");
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public static String b(String paramString)
+  {
+    paramString = ShortVideoUtils.a(paramString);
+    return paramString + "MsgBackUp";
+  }
+  
+  private String c(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(b);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  private String d(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(b);
+    localStringBuilder.append("thumbs");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  public aslm a()
+  {
+    MsgBackupResEntity localMsgBackupResEntity = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
+    int i = localMsgBackupResEntity.msgSubType;
+    aslm localaslm = new aslm();
+    String str1 = a();
+    String str2 = b();
+    boolean bool1 = a(str1);
+    boolean bool2 = a(str2);
+    if (QLog.isColorLevel()) {
+      a("getResDownloadObject,entity:" + localMsgBackupResEntity.toLogString() + " tempPath:" + str1 + " exist:" + bool1 + " realPath:" + str2 + " exist:" + bool2);
+    }
+    localaslm.jdField_a_of_type_JavaLangString = str1;
+    if ((!bool1) && (!bool2)) {}
+    for (bool1 = true;; bool1 = false)
+    {
+      localaslm.jdField_a_of_type_Boolean = bool1;
+      return localaslm;
+    }
+  }
+  
+  public String a()
+  {
+    switch (this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity.msgSubType)
+    {
+    default: 
+      return null;
+    case 4: 
+    case 5: 
+    case 6: 
+      return c(this.c);
+    }
+    return d(this.d);
+  }
+  
+  public String b()
+  {
+    switch (this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity.msgSubType)
+    {
+    default: 
+      return null;
+    case 4: 
+    case 5: 
+    case 6: 
+      return b(this.c);
+    }
+    return a(this.d);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asnv
  * JD-Core Version:    0.7.0.1
  */

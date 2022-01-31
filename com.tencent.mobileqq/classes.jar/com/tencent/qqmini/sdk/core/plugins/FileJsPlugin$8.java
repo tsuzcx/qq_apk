@@ -1,42 +1,33 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bdeu;
-import bdfz;
-import bdgo;
-import bdnw;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import beiu;
+import beka;
+import java.io.File;
+import org.json.JSONObject;
 
 class FileJsPlugin$8
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$8(FileJsPlugin paramFileJsPlugin, String paramString1, bdfz parambdfz, String paramString2, long paramLong) {}
+  FileJsPlugin$8(FileJsPlugin paramFileJsPlugin, String paramString, JSONObject paramJSONObject, beka parambeka) {}
   
   public String run()
   {
-    if ((bdeu.a().a(this.val$srcPath) == 9999) && (!bdeu.a().a(this.val$srcPath))) {
-      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$srcPath);
+    if ((TextUtils.isEmpty(this.val$dirPath)) || (this.val$reqParamObj.isNull("dirPath"))) {
+      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "invalid path");
     }
-    if (bdeu.a().a(this.val$destPath) != 2) {
-      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$srcPath);
-    }
-    String str1 = bdeu.a().a(this.val$srcPath);
-    String str2 = bdeu.a().c(this.val$destPath);
-    MiniAppInfo localMiniAppInfo = this.this$0.mMiniAppInfo;
-    if (localMiniAppInfo != null) {}
-    for (long l = localMiniAppInfo.usrFileSizeLimit; !bdeu.a().a(2, bdgo.a(str1), this.this$0.mIsMiniGame, l); l = 0L) {
-      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "the maximum size of the file storage is exceeded");
-    }
-    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
+    if (beiu.a().a(this.val$dirPath) == 2)
     {
-      boolean bool = bdgo.b(str1, str2);
-      bdnw.a("FileJsPlugin", "copyFile [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], src:" + str1 + ", dest:" + str2);
-      if (bool) {
+      if (!TextUtils.isEmpty(beiu.a().a(this.val$dirPath))) {
+        return FileJsPlugin.access$100(this.this$0, this.val$req, null, "file already exists " + this.val$dirPath);
+      }
+      String str = beiu.a().c(this.val$dirPath);
+      if ((!TextUtils.isEmpty(str)) && (new File(str).mkdirs())) {
         return FileJsPlugin.access$200(this.this$0, this.val$req, null);
       }
-      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open ");
+      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$dirPath);
     }
-    return FileJsPlugin.access$100(this.this$0, this.val$req, null, "no such file or directory, open ");
+    return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$dirPath);
   }
 }
 

@@ -1,22 +1,69 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
 
 public class axgy
-  extends axgv
 {
-  public axgy(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, axhb paramaxhb)
+  public static int a;
+  public static boolean a;
+  public static boolean b;
+  
+  static
   {
-    super(paramQQAppInterface, paramDataLineMsgRecord, paramaxhb);
+    jdField_a_of_type_Int = 1500;
   }
   
-  protected String a()
+  public static boolean a()
   {
-    return this.a.filename;
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
+    }
+    boolean bool = axho.a(axho.r);
+    if (bool) {
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:black=" + bool);
+      }
+    }
+    while (Build.VERSION.SDK_INT < 18) {
+      return false;
+    }
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static boolean b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportPre_SendEncode=" + b + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
+    }
+    if (Build.VERSION.SDK_INT < 18) {}
+    do
+    {
+      boolean bool;
+      do
+      {
+        do
+        {
+          return false;
+          bool = axho.e(axho.o);
+          if (!bool) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool);
+        return false;
+        bool = axho.a(axho.r);
+        if (!bool) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool + " hardware Black");
+      return false;
+    } while ((!b) || (!jdField_a_of_type_Boolean));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axgy
  * JD-Core Version:    0.7.0.1
  */

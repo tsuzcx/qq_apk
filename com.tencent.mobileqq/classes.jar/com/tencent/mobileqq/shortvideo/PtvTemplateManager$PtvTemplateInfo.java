@@ -3,8 +3,8 @@ package com.tencent.mobileqq.shortvideo;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import awrn;
-import azxx;
+import axrl;
+import bazb;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +15,7 @@ import org.json.JSONException;
 public class PtvTemplateManager$PtvTemplateInfo
 {
   public static final int AR_PARTICLE = 9;
+  public static final int Category_BeautyMakeup = 3;
   public static final int Category_Face = 0;
   public static final int Category_FaceAndGesture = 2;
   public static final int Category_Gesture = 1;
@@ -131,7 +132,7 @@ public class PtvTemplateManager$PtvTemplateInfo
         if (i >= j) {
           break label188;
         }
-        PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateInfo)azxx.a(paramJSONArray.getJSONObject(i), PtvTemplateInfo.class);
+        PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateInfo)bazb.a(paramJSONArray.getJSONObject(i), PtvTemplateInfo.class);
         if (localPtvTemplateInfo == null) {
           break label193;
         }
@@ -200,7 +201,7 @@ public class PtvTemplateManager$PtvTemplateInfo
     localHashMap.put("timems", "" + (l1 - l2));
     localHashMap.put("totalsize", "" + this.totalLen);
     localHashMap.put("success", "" + this.usable);
-    awrn.a(VideoEnvironment.a()).a(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
+    axrl.a(VideoEnvironment.a()).a(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
   }
   
   public String getLbsActivityType(int paramInt)

@@ -1,47 +1,96 @@
-import android.os.Handler;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.open.agent.BindGroupActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.vfs.CancellationSignalCompat;
+import com.tencent.mm.vfs.StatisticsCallback;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.app.AppRuntime;
 
 public class bbuu
-  extends mps
+  implements StatisticsCallback
 {
-  public bbuu(BindGroupActivity paramBindGroupActivity) {}
+  private static CopyOnWriteArrayList<Map<String, Object>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private static boolean jdField_a_of_type_Boolean;
+  private static CopyOnWriteArrayList<Throwable> b = new CopyOnWriteArrayList();
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  private void a(Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindGroupActivity", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString());
-    }
-    if ((this.a.isFinishing()) || (this.a.jdField_c_of_type_Boolean)) {}
-    do
+    axps.a(paramThrowable);
+  }
+  
+  protected void a()
+  {
+    try
     {
-      return;
-      this.a.jdField_b_of_type_Bbms.hide();
-      if (this.a.a != null) {
-        this.a.a.removeCallbacksAndMessages(null);
-      }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      jdField_a_of_type_Boolean = true;
+      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      Iterator localIterator2 = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator2.hasNext())
       {
+        Map localMap = (Map)localIterator2.next();
         if (QLog.isColorLevel()) {
-          QLog.d("BindGroupActivity", 2, "openIdObserver success");
+          QLog.d("VFSRegisterProxy", 2, "statisticsReportCache params -> " + localMap);
         }
-        this.a.jdField_c_of_type_JavaLangString = paramOpenID.openID;
-        if (!paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString))
+        axrl.a(BaseApplicationImpl.getContext()).a(str, "vfs_statistics_tag", true, 0L, 0L, (HashMap)localMap, null);
+      }
+      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    }
+    catch (Exception localException)
+    {
+      QLog.d("VFSRegisterProxy", 1, "statisticsReportCache report error!", localException);
+      return;
+    }
+    Iterator localIterator1 = b.iterator();
+    while (localIterator1.hasNext()) {
+      a((Throwable)localIterator1.next());
+    }
+    b.clear();
+  }
+  
+  public void deleteFiles(CancellationSignalCompat paramCancellationSignalCompat) {}
+  
+  public void reportError(Throwable paramThrowable)
+  {
+    if (jdField_a_of_type_Boolean)
+    {
+      a(paramThrowable);
+      return;
+    }
+    b.add(paramThrowable);
+  }
+  
+  public void statistics(String paramString, int paramInt, Map<String, Object> paramMap)
+  {
+    if (paramMap != null) {
+      try
+      {
+        paramMap.put("id", paramString);
+        paramMap.put("phase", String.valueOf(paramInt));
+        if (jdField_a_of_type_Boolean)
         {
-          this.a.b();
-          return;
+          paramString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+          axrl.a(BaseApplicationImpl.getContext()).a(paramString, "vfs_statistics_tag", true, 0L, 0L, (HashMap)paramMap, null);
         }
-        this.a.a();
+        while (QLog.isColorLevel())
+        {
+          QLog.d("VFSRegisterProxy", 2, "report params -> " + paramMap + ", mCanAccurReport = " + jdField_a_of_type_Boolean);
+          return;
+          jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramMap);
+        }
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("BindGroupActivity", 2, "openIdObserver fail");
+      catch (Exception paramString)
+      {
+        QLog.d("VFSRegisterProxy", 1, "vfs report error!", paramString);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbuu
  * JD-Core Version:    0.7.0.1
  */

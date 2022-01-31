@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.model;
 
-import arnz;
+import askd;
 
 public class EmoticonManager$2
   implements Runnable
 {
-  public EmoticonManager$2(arnz paramarnz) {}
+  public EmoticonManager$2(askd paramaskd) {}
   
   public void run()
   {
-    arnz.a(this.this$0);
+    askd.a(this.this$0);
   }
 }
 

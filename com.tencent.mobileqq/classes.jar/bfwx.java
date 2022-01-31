@@ -1,23 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastAudio;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
-public final class bfwx
-  implements Parcelable.Creator<BroadcastAudio>
+public class bfwx
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public BroadcastAudio a(Parcel paramParcel)
-  {
-    return new BroadcastAudio(paramParcel);
-  }
+  public bfwx(XPanelContainer paramXPanelContainer) {}
   
-  public BroadcastAudio[] a(int paramInt)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    return new BroadcastAudio[paramInt];
+    if (paramInt == 0) {}
+    for (boolean bool = false;; bool = true)
+    {
+      if (XPanelContainer.b != bool)
+      {
+        XPanelContainer.a(this.a, true);
+        XPanelContainer.b = bool;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("XPanelContainer", 2, "onSystemUiVisibilityChange..visibility =  " + paramInt + " context = " + this.a.getContext().getClass().getName());
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfwx
  * JD-Core Version:    0.7.0.1
  */

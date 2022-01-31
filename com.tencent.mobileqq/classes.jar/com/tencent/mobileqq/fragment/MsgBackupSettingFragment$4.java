@@ -1,29 +1,36 @@
 package com.tencent.mobileqq.fragment;
 
+import aaod;
 import android.support.v4.app.FragmentActivity;
-import arsc;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msgbackup.transport.MsgBackupEndPoint;
-import com.tencent.mobileqq.msgbackup.transport.MsgBackupJniProxy;
-import com.tencent.mobileqq.msgbackup.transport.MsgBackupNotifier;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class MsgBackupSettingFragment$4
   implements Runnable
 {
-  MsgBackupSettingFragment$4(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  MsgBackupSettingFragment$4(MsgBackupSettingFragment paramMsgBackupSettingFragment, int paramInt, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
-    QLog.d("MsgBackup", 1, "loadSo start");
-    MsgBackupJniProxy localMsgBackupJniProxy = new MsgBackupJniProxy(this.this$0.getActivity());
-    QLog.d("MsgBackup", 1, "loadSo end");
-    long l = localMsgBackupJniProxy.createSession(1, Long.parseLong(this.this$0.getActivity().app.getCurrentAccountUin()), new MsgBackupNotifier());
-    QLog.d("MsgBackup", 1, "createSession end, session = " + l);
-    MsgBackupSettingFragment.a(this.this$0, new MsgBackupEndPoint());
-    MsgBackupSettingFragment.b(this.this$0, new MsgBackupEndPoint());
-    int i = localMsgBackupJniProxy.start(l, MsgBackupSettingFragment.a(this.this$0), MsgBackupSettingFragment.b(this.this$0));
-    QLog.d("MsgBackup", 1, "after start called with ret = " + i + ", ipv4 = " + arsc.a(MsgBackupSettingFragment.a(this.this$0).ipv4) + ", port = " + MsgBackupSettingFragment.a(this.this$0).port);
+    int i = 0;
+    for (;;)
+    {
+      if (i < this.jdField_a_of_type_Int)
+      {
+        aaod.b(this.this$0.getActivity().app, this.this$0.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, String.valueOf(i));
+        try
+        {
+          Thread.sleep(20L);
+          i += 1;
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
+      }
+    }
   }
 }
 

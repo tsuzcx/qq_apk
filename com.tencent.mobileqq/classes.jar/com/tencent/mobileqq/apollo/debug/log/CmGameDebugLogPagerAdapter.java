@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.debug.log;
 
-import aikj;
+import aixc;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +10,10 @@ import java.util.List;
 public class CmGameDebugLogPagerAdapter
   extends PagerAdapter
 {
-  List<aikj> a = new ArrayList();
+  List<aixc> a = new ArrayList();
   List<String> b = new ArrayList();
   
-  public CmGameDebugLogPagerAdapter(List<aikj> paramList, List<String> paramList1)
+  public CmGameDebugLogPagerAdapter(List<aixc> paramList, List<String> paramList1)
   {
     this.a = paramList;
     this.b = paramList1;
@@ -36,7 +36,7 @@ public class CmGameDebugLogPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    View localView = ((aikj)this.a.get(paramInt)).a();
+    View localView = ((aixc)this.a.get(paramInt)).a();
     paramViewGroup.addView(localView);
     return localView;
   }

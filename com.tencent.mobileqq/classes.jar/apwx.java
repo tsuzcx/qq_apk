@@ -1,21 +1,30 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class apwx
-  extends AnimatorListenerAdapter
+public abstract class apwx
+  implements View.OnClickListener
 {
-  apwx(apwu paramapwu) {}
+  private long a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public abstract void a(View paramView);
+  
+  public void b(View paramView) {}
+  
+  public void onClick(View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
-    apwu.a(this.a).sendEmptyMessage(2);
+    long l = System.currentTimeMillis();
+    if (l - this.a >= 500L)
+    {
+      a(paramView);
+      this.a = l;
+      return;
+    }
+    b(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apwx
  * JD-Core Version:    0.7.0.1
  */

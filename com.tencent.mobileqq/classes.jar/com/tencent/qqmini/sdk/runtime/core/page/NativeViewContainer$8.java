@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bdfs;
+import bejs;
 import org.json.JSONObject;
 
 class NativeViewContainer$8
   implements Runnable
 {
-  NativeViewContainer$8(NativeViewContainer paramNativeViewContainer, int paramInt, bdfs parambdfs, JSONObject paramJSONObject) {}
+  NativeViewContainer$8(NativeViewContainer paramNativeViewContainer, int paramInt, bejs parambejs, JSONObject paramJSONObject) {}
   
   public void run()
   {
     this.this$0.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bdfs.a(this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_Bejs.a(this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

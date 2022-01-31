@@ -1,16 +1,53 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aejb;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import axqw;
+import bamj;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.Iterator;
+import java.util.List;
 
-public class TroopChatPie$2
+class TroopChatPie$2
   implements Runnable
 {
-  public TroopChatPie$2(aejb paramaejb) {}
+  TroopChatPie$2(TroopChatPie paramTroopChatPie) {}
   
   public void run()
   {
-    this.this$0.a.showOverScrollHeader();
+    TroopManager localTroopManager = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+    Object localObject = localTroopManager.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    long l;
+    TroopMemberInfo localTroopMemberInfo;
+    if (localObject != null)
+    {
+      l = NetConnInfoCenter.getServerTime();
+      localObject = ((List)localObject).iterator();
+      l += 2592000L;
+      if (((Iterator)localObject).hasNext())
+      {
+        localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject).next();
+        if ((localTroopMemberInfo.mUniqueTitleExpire > 0) && (localTroopMemberInfo.mUniqueTitleExpire - NetConnInfoCenter.getServerTime() < 259200L) && (!localTroopManager.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localTroopMemberInfo.memberuin)))
+        {
+          ((bamj)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(81)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.a(localTroopMemberInfo), NetConnInfoCenter.getServerTime(), localTroopMemberInfo.mUniqueTitleExpire, 0, 1);
+          localTroopManager.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localTroopMemberInfo.memberuin, true);
+          axqw.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_manage", "", "grp_aio", "exp_expire", 0, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+        }
+      }
+    }
+    for (;;)
+    {
+      break;
+      if ((localTroopMemberInfo.mUniqueTitleExpire != 0) && (localTroopMemberInfo.mUniqueTitleExpire != -1) && (localTroopMemberInfo.mUniqueTitleExpire < l))
+      {
+        l = localTroopMemberInfo.mUniqueTitleExpire;
+        continue;
+        localTroopManager.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l);
+        return;
+      }
+    }
   }
 }
 

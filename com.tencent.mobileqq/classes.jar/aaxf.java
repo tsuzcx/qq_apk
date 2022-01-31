@@ -1,10 +1,68 @@
-public abstract interface aaxf
+import android.annotation.TargetApi;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class aaxf
+  implements ahml
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public aaxf(Conversation paramConversation) {}
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public void a(int paramInt)
+  {
+    if (this.a.jdField_a_of_type_Ahmx != null) {
+      this.a.jdField_a_of_type_Ahmx.e();
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a())) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.v();
+    }
+    if (this.a.jdField_a_of_type_Thy != null) {
+      this.a.jdField_a_of_type_Thy.f();
+    }
+  }
   
-  public abstract void b(byte[] paramArrayOfByte);
+  @TargetApi(11)
+  public void a(int paramInt, float paramFloat) {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a.jdField_a_of_type_Auqi.i();
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        alwx localalwx = (alwx)localIterator.next();
+        if (localalwx != null) {
+          localalwx.l();
+        }
+      }
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.H();
+    }
+    if (this.a.jdField_a_of_type_Thy != null) {
+      this.a.jdField_a_of_type_Thy.g();
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    Conversation.h(this.a);
+    this.a.jdField_a_of_type_Auqi.j();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.G();
+    }
+    if (this.a.jdField_a_of_type_Thy != null) {
+      this.a.jdField_a_of_type_Thy.k();
+    }
+    if (this.a.jdField_a_of_type_Ahra != null) {
+      this.a.jdField_a_of_type_Ahra.f();
+    }
+  }
 }
 
 

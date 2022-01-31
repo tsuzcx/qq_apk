@@ -1,77 +1,89 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
-import tencent.nearby.now.nearby_now_anchor.RspBatchGetAnchorStatus;
 
-public abstract class amwn
-  extends mmn
+public class amwn
+  extends ampb<amwm>
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  @NonNull
+  public static amwm a()
   {
-    boolean bool4 = false;
-    boolean bool3 = false;
-    Object localObject = null;
-    nearby_now_anchor.RspBatchGetAnchorStatus localRspBatchGetAnchorStatus;
-    boolean bool1;
-    if (paramInt == 0)
-    {
-      localRspBatchGetAnchorStatus = new nearby_now_anchor.RspBatchGetAnchorStatus();
-      bool1 = bool4;
+    amwm localamwm2 = (amwm)ampm.a().a(550);
+    amwm localamwm1 = localamwm2;
+    if (localamwm2 == null) {
+      localamwm1 = new amwm();
     }
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "loadConfig(): bean = " + localamwm1.toString());
+    }
+    return localamwm1;
+  }
+  
+  public int a()
+  {
+    return 550;
+  }
+  
+  @NonNull
+  public amwm a(int paramInt)
+  {
+    return new amwm();
+  }
+  
+  @Nullable
+  public amwm a(ampi[] paramArrayOfampi)
+  {
+    return amwm.a(paramArrayOfampi);
+  }
+  
+  public Class a()
+  {
+    return amwm.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(amwm paramamwm)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      try
+      localObject = (QQAppInterface)localObject;
+      if (((QQAppInterface)localObject).a(347))
       {
-        localRspBatchGetAnchorStatus.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = localObject;
-        bool2 = bool3;
-        bool1 = bool4;
-        if (localRspBatchGetAnchorStatus.uint32_result.has())
-        {
-          paramArrayOfByte = localObject;
-          bool2 = bool3;
-          bool1 = bool4;
-          if (localRspBatchGetAnchorStatus.uint32_result.get() == 0)
-          {
-            bool1 = true;
-            bool2 = true;
-            paramArrayOfByte = localRspBatchGetAnchorStatus.msg_anchor_stats.get();
-          }
+        ((astm)((QQAppInterface)localObject).getManager(347)).a = paramamwm;
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onUpdate bean = " + paramamwm.toString());
         }
-      }
-      catch (Exception localException)
-      {
-        paramArrayOfByte = localObject;
-        bool2 = bool1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w("Q.msg_box.protocol", 2, localException.toString());
-        paramArrayOfByte = localObject;
-        bool2 = bool1;
-        continue;
-      }
-      a(bool2, paramArrayOfByte, paramBundle);
-      return;
-      paramArrayOfByte = localObject;
-      boolean bool2 = bool3;
-      if (QLog.isColorLevel())
-      {
-        QLog.w("Q.msg_box.protocol", 2, "getNowState failed, errorCode=" + paramInt);
-        paramArrayOfByte = localObject;
-        bool2 = bool3;
       }
     }
   }
   
-  public abstract void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle);
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amwn
  * JD-Core Version:    0.7.0.1
  */

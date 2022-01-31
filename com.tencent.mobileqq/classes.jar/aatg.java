@@ -1,39 +1,17 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class aatg
-  extends ajey
+  implements awcd
 {
-  public aatg(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public aatg(ChatSettingActivity paramChatSettingActivity) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (paramInt2 == 0)
-    {
-      this.a.a();
-      if (this.a.isResumed()) {
-        if (paramInt1 != 0) {
-          break label47;
-        }
-      }
+    if ((this.a.f != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
+      ChatSettingActivity.a(this.a, this.a.a, this.a.f);
     }
-    label47:
-    while (!this.a.isResumed())
-    {
-      bbmy.a(this.a.getActivity(), 2, ajjy.a(2131639053), 0).a();
-      do
-      {
-        return;
-      } while (paramInt1 != 1);
-      bbmy.a(this.a.getActivity(), 2, ajjy.a(2131639052), 0).a();
-      return;
-    }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131629250);
-    }
-    bbmy.a(this.a.getActivity(), 1, paramString1, 0).a();
   }
 }
 

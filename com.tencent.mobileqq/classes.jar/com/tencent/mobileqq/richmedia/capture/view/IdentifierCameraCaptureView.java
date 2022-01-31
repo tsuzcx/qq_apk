@@ -5,13 +5,13 @@ import android.hardware.Camera;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import auvu;
+import avvl;
 import javax.microedition.khronos.opengles.GL10;
 
 public class IdentifierCameraCaptureView
   extends CameraCaptureView
 {
-  public auvu a;
+  public avvl a;
   
   public IdentifierCameraCaptureView(@NonNull Context paramContext)
   {
@@ -36,9 +36,9 @@ public class IdentifierCameraCaptureView
     super.onDrawFrame(paramGL10);
   }
   
-  public void setPreviewCallback(auvu paramauvu)
+  public void setPreviewCallback(avvl paramavvl)
   {
-    this.a = paramauvu;
+    this.a = paramavvl;
   }
 }
 

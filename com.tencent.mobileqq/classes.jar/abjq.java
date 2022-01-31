@@ -1,16 +1,28 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.QLog;
 
 public class abjq
-  implements Comparator<abjm>
+  extends ajxl
 {
-  public abjq(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public abjq(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public int a(abjm paramabjm1, abjm paramabjm2)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    long l = paramabjm1.a.certifiedGrade;
-    return (int)(paramabjm2.a.certifiedGrade - l);
+    if (paramBoolean)
+    {
+      paramString = ((ajxn)this.a.app.getManager(51)).e(this.a.a + "");
+      if (paramString != null)
+      {
+        this.a.e = paramString.name;
+        JoinDiscussionActivity.a(this.a);
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
   }
 }
 

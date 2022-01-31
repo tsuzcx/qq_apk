@@ -1,211 +1,135 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
-import com.tencent.biz.qrcode.activity.QRJumpActivity;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.net.URLEncoder;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tribe.async.async.JobContext;
 
 public class vsr
+  extends vsq<vsd, vsd>
 {
-  public static int a(QQAppInterface paramQQAppInterface, Activity paramActivity, vsn paramvsn, String paramString, Bundle paramBundle)
+  public final String a;
+  private boolean a;
+  
+  public vsr(String paramString)
   {
-    if ((paramvsn == null) || (paramvsn.a() == 0))
-    {
-      a(paramQQAppInterface, paramActivity, paramString);
-      return 0;
+    this(true, paramString);
+  }
+  
+  public vsr(boolean paramBoolean)
+  {
+    this(paramBoolean, null);
+  }
+  
+  public vsr(boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected void a(JobContext paramJobContext, vsd paramvsd)
+  {
+    boolean bool2 = false;
+    int i = 1;
+    String str = this.jdField_a_of_type_JavaLangString;
+    paramJobContext = str;
+    if (str == null) {
+      paramJobContext = vst.a(paramvsd.jdField_a_of_type_Int, paramvsd.jdField_b_of_type_JavaLangString, ".jpg");
     }
+    if ((this.jdField_a_of_type_Boolean) && (paramvsd.jdField_a_of_type_Boolean)) {
+      veg.b("Q.qqstory.publish.edit.MergePicSegment", "merge has doodle");
+    }
+    boolean bool1;
     for (;;)
     {
       try
       {
-        switch (paramvsn.c)
-        {
-        case 4: 
-        case 5: 
-        case 7: 
-        case 8: 
-        case 9: 
-          a(paramQQAppInterface, paramActivity, paramString);
-          return 0;
+        bool1 = vxy.a(vxy.c(paramvsd.jdField_a_of_type_Vsh.jdField_a_of_type_AndroidGraphicsBitmap, paramvsd.jdField_a_of_type_Vsh.jdField_b_of_type_AndroidGraphicsBitmap), paramJobContext);
+        i = 0;
+        bool2 = true;
+        avtb.d = bool2;
+        if ((i != 0) || (bool1)) {
+          break;
         }
+        veg.e("Q.qqstory.publish.edit.MergePicSegment", "save err");
+        super.notifyError(new ErrorMessage(-1, ajyc.a(2131706551)));
+        return;
       }
-      catch (Exception paramvsn)
+      catch (Throwable paramJobContext)
       {
-        String str2;
-        String str3;
-        String str1;
-        Uri localUri;
-        a(paramQQAppInterface, paramActivity, paramString);
-        return 0;
+        veg.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
+        paramJobContext = null;
+        bool1 = false;
+        continue;
       }
-      a(paramQQAppInterface, paramActivity, paramvsn.a().a() + "", paramBundle.getBoolean("issupportwpa", false));
-      return 1;
-      str2 = "";
-      str3 = paramBundle.getString("authSig");
-      str1 = str2;
-      if (!TextUtils.isEmpty(paramString))
+      if (paramvsd.jdField_a_of_type_Vsh.jdField_a_of_type_Int > 0)
       {
-        localUri = Uri.parse(paramString);
-        str1 = str2;
-        if (localUri != null)
+        veg.b("Q.qqstory.publish.edit.MergePicSegment", "merge use display");
+        try
         {
-          str1 = str2;
-          if (localUri.isHierarchical()) {
-            str1 = localUri.getQueryParameter("jump_from");
+          bool1 = vxy.a(paramvsd.jdField_a_of_type_Vsh.jdField_a_of_type_AndroidGraphicsBitmap, paramJobContext);
+          i = 0;
+          bool2 = true;
+        }
+        catch (Throwable paramJobContext)
+        {
+          for (;;)
+          {
+            veg.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
+            paramJobContext = null;
+            bool1 = false;
           }
         }
       }
-      a(paramQQAppInterface, paramActivity, paramvsn.a().a() + "", str1, paramBundle.getString("authKey"), str3);
-      return 2;
-      a(paramQQAppInterface, paramActivity, paramvsn.a().a() + "", paramBundle);
-      return 3;
-      a(paramActivity, paramvsn);
-      return paramvsn.c;
-      a(paramQQAppInterface, paramActivity, rqk.a(paramvsn.a().a()), paramBundle);
-      return 10;
-    }
-  }
-  
-  private static String a(String paramString)
-  {
-    if ((paramString == null) || ("".equals(paramString)) || (paramString.length() == 0)) {
-      return null;
-    }
-    try
-    {
-      paramString = new String(baaw.decode(paramString, 0));
-      return paramString;
-    }
-    catch (Exception paramString) {}
-    return null;
-  }
-  
-  private static void a(Context paramContext, vsn paramvsn)
-  {
-    mqb.a(paramContext, null, String.valueOf(paramvsn.a().a()), false, 1, true, -1);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
-  {
-    paramQQAppInterface = new Intent(paramActivity, QQBrowserActivity.class);
-    paramString = 1024 + "http://qm.qq.com/cgi-bin/result" + "?p=a&v=" + babp.c() + "&r=" + URLEncoder.encode(paramString).replaceAll("\\+", "%20") + "&_wv=1027";
-    paramQQAppInterface.putExtra("title", paramActivity.getString(2131653080));
-    paramQQAppInterface.putExtra("url", paramString);
-    paramQQAppInterface.putExtra("key_isReadModeEnabled", true);
-    if (paramActivity.getIntent().getBooleanExtra("QRDecode", false) == true)
-    {
-      paramActivity.startActivityForResult(paramQQAppInterface, 2);
-      return;
-    }
-    paramActivity.startActivity(paramQQAppInterface);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, int paramInt)
-  {
-    paramQQAppInterface = new Intent(paramActivity, QRCardActivity.class);
-    paramQQAppInterface.putExtra("CARDMODE", paramInt);
-    paramQQAppInterface.putExtra("QRCARDSTR", paramString);
-    paramActivity.startActivity(paramQQAppInterface);
-  }
-  
-  private static final void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, Bundle paramBundle)
-  {
-    Intent localIntent = new Intent();
-    if (paramBundle != null)
-    {
-      String str = paramBundle.getString("extvalue");
-      paramBundle = paramBundle.getString("exttype");
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBundle)))
+      else
       {
-        localIntent.putExtra("extvalue", str);
-        localIntent.putExtra("exttype", paramBundle);
+        veg.b("Q.qqstory.publish.edit.MergePicSegment", "merge use origin");
+        paramJobContext = paramvsd.jdField_a_of_type_Vsh.jdField_a_of_type_JavaLangString;
+        vem.b("0X80075C9");
+        paramvsd.jdField_a_of_type_Vsh.jdField_b_of_type_Boolean = true;
+        bool1 = false;
       }
     }
-    localIntent.putExtra("source", 1);
-    rtr.a(localIntent, paramQQAppInterface, paramActivity, paramString, -1);
-    PublicAccountHandler.a(paramQQAppInterface, paramString, "Pb_account_lifeservice", "mp_msg_sys_1", "scan");
+    paramvsd.jdField_a_of_type_Vsh.jdField_b_of_type_JavaLangString = paramJobContext;
+    paramvsd.jdField_a_of_type_Vsh.jdField_a_of_type_Boolean = bool1;
+    if ((paramvsd.jdField_a_of_type_Int == 3) && (bool1)) {
+      a(paramvsd, paramvsd.jdField_a_of_type_Vsh.jdField_a_of_type_JavaLangString, paramJobContext);
+    }
+    super.notifyResult(paramvsd);
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4)
+  public void a(vsd paramvsd, String paramString1, String paramString2)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("src_type", "internal");
-    localBundle.putString("version", "1");
-    localBundle.putString("callback_type", "scheme");
-    localBundle.putString("callback_name", "open_card");
-    localBundle.putString("uin", paramString1);
-    localBundle.putString("card_type", "group");
-    localBundle.putString("authKey", paramString3);
-    localBundle.putString("authSig", paramString4);
-    localBundle.putString("from", "qrcode");
-    if (!TextUtils.isEmpty(bacn.i)) {
-      localBundle.putString("appid", bacn.i);
-    }
-    if (!TextUtils.isEmpty(bacn.j)) {
-      localBundle.putString("openid", a(bacn.j));
-    }
-    bacn.i = null;
-    bacn.j = null;
-    paramString1 = paramString2;
-    if (baip.a(paramString2))
+    double d1;
+    double d2;
+    if (((paramvsd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditTakePhotoSource)) && (((EditTakePhotoSource)paramvsd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).b != 4.9E-324D) && (((EditTakePhotoSource)paramvsd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a != 4.9E-324D))
     {
-      if (!(paramActivity instanceof ScannerActivity)) {
-        break label219;
-      }
-      paramString1 = "ScannerActivity";
-    }
-    for (;;)
-    {
-      localBundle.putString("jump_from", paramString1);
-      paramQQAppInterface = bade.a(paramQQAppInterface, paramActivity, Uri.parse("mqqapi://card/show_pslcard?" + mpl.a(localBundle)).toString());
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.c();
-      }
-      return;
-      label219:
-      paramString1 = paramString2;
-      if ((paramActivity instanceof QRJumpActivity)) {
-        if (paramActivity.getIntent().getBooleanExtra("fromQrcode", false)) {
-          paramString1 = "ScannerActivity";
-        } else {
-          paramString1 = "QRJumpActivity";
+      d1 = ((EditTakePhotoSource)paramvsd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).b;
+      d2 = ((EditTakePhotoSource)paramvsd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a;
+      if (!TextUtils.isEmpty(paramString1)) {
+        if (!bhnu.a(paramString1, paramString2)) {
+          bhnu.b(paramString2, d2, d1);
         }
       }
     }
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("src_type", "internal");
-    localBundle.putString("version", "1");
-    localBundle.putString("callback_type", "scheme");
-    localBundle.putString("callback_name", "open_card");
-    localBundle.putString("uin", paramString);
-    if (paramBoolean) {}
-    for (paramString = "1";; paramString = "0")
+    do
     {
-      localBundle.putString("wpa", paramString);
-      paramQQAppInterface = bade.a(paramQQAppInterface, paramActivity, Uri.parse("mqqapi://card/show_pslcard?" + mpl.a(localBundle)).toString());
-      if (paramQQAppInterface != null)
+      do
       {
-        paramQQAppInterface.b();
-        paramQQAppInterface.c();
-      }
-      return;
-    }
+        return;
+        bhnu.b(paramString2, d2, d1);
+        return;
+      } while ((!(paramvsd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditLocalPhotoSource)) || (TextUtils.isEmpty(paramvsd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a())) || (bhnu.a(paramvsd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a(), paramString2)));
+      paramvsd = ((EditLocalPhotoSource)paramvsd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a;
+    } while (paramvsd == null);
+    bhnu.a(paramString2, paramvsd.longitude / 1000000.0D, paramvsd.latitude / 1000000.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vsr
  * JD-Core Version:    0.7.0.1
  */

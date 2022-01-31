@@ -13,7 +13,7 @@ import java.lang.ref.WeakReference;
 class MiniAppDesktopAdapter$ModuleViewHolder$1
   implements View.OnClickListener
 {
-  MiniAppDesktopAdapter$ModuleViewHolder$1(MiniAppDesktopAdapter.ModuleViewHolder paramModuleViewHolder) {}
+  MiniAppDesktopAdapter$ModuleViewHolder$1(MiniAppDesktopAdapter.ModuleViewHolder paramModuleViewHolder, int paramInt) {}
   
   public void onClick(View paramView)
   {
@@ -22,16 +22,23 @@ class MiniAppDesktopAdapter$ModuleViewHolder$1
     if ((paramView != null) && (MiniAppDesktopAdapter.ModuleViewHolder.access$2700(this.this$0) != null))
     {
       localLaunchParam = new LaunchParam();
-      localLaunchParam.scene = 3005;
+      if (this.val$moduleType != 1) {
+        break label66;
+      }
     }
-    try
+    for (int i = 3005;; i = 3004)
     {
-      MiniAppController.launchMiniAppByAppInfo(paramView, MiniAppDesktopAdapter.ModuleViewHolder.access$2700(this.this$0), localLaunchParam);
-      return;
-    }
-    catch (MiniAppException paramView)
-    {
-      QLog.e("MiniAppDesktopAdapter", 1, "desktop start app store exception: " + Log.getStackTraceString(paramView));
+      localLaunchParam.scene = i;
+      try
+      {
+        MiniAppController.launchMiniAppByAppInfo(paramView, MiniAppDesktopAdapter.ModuleViewHolder.access$2700(this.this$0), localLaunchParam);
+        return;
+      }
+      catch (MiniAppException paramView)
+      {
+        label66:
+        QLog.e("MiniAppDesktopAdapter", 1, "desktop start app store exception: " + Log.getStackTraceString(paramView));
+      }
     }
   }
 }

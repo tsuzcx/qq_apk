@@ -1,24 +1,24 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import bdfz;
-import bdqa;
-import bdrb;
+import beka;
+import bevi;
+import bewt;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class OpenDataJsPlugin$4
   implements AsyncResult
 {
-  OpenDataJsPlugin$4(OpenDataJsPlugin paramOpenDataJsPlugin, bdfz parambdfz) {}
+  OpenDataJsPlugin$4(OpenDataJsPlugin paramOpenDataJsPlugin, beka parambeka) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    bdrb localbdrb = bdrb.a();
-    StringBuilder localStringBuilder = new StringBuilder().append("setUserCloudStorage callback appid:").append(bdqa.a().a()).append(", isSuc").append(paramBoolean).append(", ret:");
+    bewt localbewt = bewt.a();
+    StringBuilder localStringBuilder = new StringBuilder().append("setUserCloudStorage callback appid:").append(bevi.a().a()).append(", isSuc").append(paramBoolean).append(", ret:");
     if (paramJSONObject != null) {}
     for (paramJSONObject = paramJSONObject.toString();; paramJSONObject = "")
     {
-      localbdrb.i("OpenDataJsPlugin", paramJSONObject);
+      localbewt.i("OpenDataJsPlugin", paramJSONObject);
       paramJSONObject = new JSONObject();
       if (!paramBoolean) {
         break;
@@ -31,7 +31,7 @@ class OpenDataJsPlugin$4
       }
       catch (Throwable paramJSONObject)
       {
-        bdrb.a().e("OpenDataJsPlugin", "setUserCloudStorage error " + paramJSONObject.getMessage());
+        bewt.a().e("OpenDataJsPlugin", "setUserCloudStorage error " + paramJSONObject.getMessage());
         this.val$req.b();
       }
     }

@@ -1,17 +1,18 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.List;
 
-final class aobh
-  implements apca
+class aobh
+  implements aoaj
 {
-  aobh(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
+  aobh(aobg paramaobg) {}
   
-  public void a()
+  public void a(List<aoah> paramList)
   {
-    apck.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
+    if (paramList != null)
+    {
+      this.a.a(paramList);
+      this.a.notifyDataSetChanged();
+    }
   }
-  
-  public void b() {}
 }
 
 

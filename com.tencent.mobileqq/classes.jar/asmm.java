@@ -1,34 +1,49 @@
 import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
 
-class asmm
-  implements bbsh
+public class asmm
+  implements RadioGroup.OnCheckedChangeListener
 {
-  asmm(asml paramasml) {}
+  public asmm(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    switch (paramInt)
     {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label59;
+    }
+    while (MsgBackupDateFragment.a(this.a)) {
+      if ((MsgBackupDateFragment.b(this.a)) && (MsgBackupDateFragment.c(this.a)))
+      {
+        this.a.setRightButtonEnable(true);
+        return;
+        MsgBackupDateFragment.a(this.a, false);
+        MsgBackupDateFragment.a(this.a, 0L);
+        MsgBackupDateFragment.b(this.a, 0L);
+        MsgBackupDateFragment.a(this.a).setVisibility(8);
+        continue;
+        MsgBackupDateFragment.a(this.a, true);
+        MsgBackupDateFragment.a(this.a).setVisibility(0);
       }
-      if (this.a.jdField_a_of_type_Asmo != null) {
-        this.a.jdField_a_of_type_Asmo.a(true);
+      else
+      {
+        if ((!TextUtils.isEmpty(MsgBackupDateFragment.a(this.a))) && (!TextUtils.isEmpty(MsgBackupDateFragment.b(this.a))))
+        {
+          this.a.setRightButtonEnable(true);
+          return;
+        }
+        this.a.setRightButtonEnable(false);
+        return;
       }
     }
-    label59:
-    while (this.a.jdField_a_of_type_Asmo == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Asmo.a(false);
+    this.a.setRightButtonEnable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asmm
  * JD-Core Version:    0.7.0.1
  */

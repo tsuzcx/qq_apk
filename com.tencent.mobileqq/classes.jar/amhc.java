@@ -1,54 +1,70 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public class amhc
+public final class amhc
 {
-  private String a = "";
-  private String b = "";
-  private String c = "";
-  private String d = "";
+  public int a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public static amhc a(JSONObject paramJSONObject)
+  public amhc()
   {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    amhc localamhc = new amhc();
-    localamhc.a = paramJSONObject.getString("tips");
-    localamhc.b = paramJSONObject.getString("buttonText");
-    localamhc.c = paramJSONObject.getString("url");
-    localamhc.d = paramJSONObject.getString("icon");
-    return localamhc;
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public String a()
+  public amhc a(int paramInt)
   {
-    return this.a;
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  public boolean a()
+  public amhc a(String paramString)
   {
-    return (TextUtils.isEmpty(this.a)) && (TextUtils.isEmpty(this.b)) && (TextUtils.isEmpty(this.c)) && (TextUtils.isEmpty(this.d));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
   
-  public String b()
+  public amhc a(byte[] paramArrayOfByte)
   {
-    return this.b;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    return this;
   }
   
-  public String c()
+  public ColorNote a()
   {
-    return this.c;
+    return new ColorNote(this);
   }
   
-  public String d()
+  public amhc b(int paramInt)
   {
-    return this.d;
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public amhc b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public amhc c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public amhc d(String paramString)
+  {
+    this.d = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amhc
  * JD-Core Version:    0.7.0.1
  */

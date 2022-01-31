@@ -1,16 +1,20 @@
-import android.view.animation.Interpolator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
 public class agzx
-  implements Interpolator
+  implements DialogInterface.OnClickListener
 {
-  public float getInterpolation(float paramFloat)
+  public agzx(QzoneHbFragment paramQzoneHbFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (float)(Math.pow(paramFloat - 1.0D, 3.0D) + 1.0D);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agzx
  * JD-Core Version:    0.7.0.1
  */

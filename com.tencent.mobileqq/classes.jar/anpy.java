@@ -1,61 +1,76 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QavVideoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
 
 public class anpy
+  extends anpi
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<anpv> a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
-  
-  public anpy()
+  public anpy(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super("qq.android.qav.video", paramQQAppInterface);
   }
   
-  public boolean equals(Object paramObject)
+  public int a()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramObject != null)
-    {
-      bool1 = bool2;
-      if ((paramObject instanceof anpy))
-      {
-        paramObject = (anpy)paramObject;
-        bool1 = bool2;
-        if (paramObject.jdField_a_of_type_JavaLangString != null)
-        {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
-            bool1 = true;
-          }
-        }
-      }
+    return 10049;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QavVideoData.class;
+  }
+  
+  public String a()
+  {
+    return "qavDownloadVideoDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavVideoDownloadHandler", 2, "download success: " + paramString);
     }
-    return bool1;
+    try
+    {
+      bbdj.a(paramString, mrv.c(), false);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  public String toString()
+  public void a(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" ").append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" ").append("mSearchKey").append("=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" ").append("mLoadOver").append("=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" ").append("mCurPos").append("=").append(this.b);
-    localStringBuilder.append(" ").append("mOffset").append("=").append(this.c);
-    localStringBuilder.append(" ").append("size").append("=").append(this.jdField_a_of_type_JavaUtilList.size());
-    return localStringBuilder.toString();
+    QavVideoData localQavVideoData = (QavVideoData)a();
+    if ((localQavVideoData != null) && (!localQavVideoData.autoDownload))
+    {
+      localQavVideoData.autoDownload = true;
+      anow.a(localQavVideoData, new String[] { "autoDownload" });
+    }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    return ((QavVideoData)a()).autoDownload;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anpy
  * JD-Core Version:    0.7.0.1
  */

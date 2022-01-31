@@ -1,38 +1,34 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
 
-class afdu
-  implements begw
+public class afdu
+  implements View.OnTouchListener
 {
-  afdu(afdq paramafdq, boolean paramBoolean, TroopInfo paramTroopInfo, begr parambegr) {}
+  float jdField_a_of_type_Float = 0.0F;
   
-  public void OnClick(View paramView, int paramInt)
+  public afdu(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!badq.g(this.jdField_a_of_type_Afdq.jdField_a_of_type_AndroidContentContext)) {
-      bbmy.a(this.jdField_a_of_type_Afdq.jdField_a_of_type_AndroidContentContext, 1, 2131626719, 0).a();
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_Float = paramView.getAlpha();
+      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Begr.e();
-      return;
-      paramView = (ajex)this.jdField_a_of_type_Afdq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, 1);
-        awqx.b(this.jdField_a_of_type_Afdq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808D", "0X800808D", 0, 0, "", "", "", "");
-      }
-      else
-      {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, 0);
-        awqx.b(this.jdField_a_of_type_Afdq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808C", "0X800808C", 0, 0, "", "", "", "");
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(this.jdField_a_of_type_Float);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afdu
  * JD-Core Version:    0.7.0.1
  */

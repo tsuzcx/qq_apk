@@ -44,6 +44,7 @@ public abstract interface Constants$Action
   public static final int ACTION_TRANSFILE_CHECK_MSF_CONERRO = 2201;
   public static final int ACTION_UNREGIST_MESSAGE_PUSH_PROXY = 1026;
   public static final int ACTION_UNREGIST_PROXY = 1028;
+  public static final int ACTION_UPDATE_BATTERY_STATUS = 2214;
   public static final int ACTION_VERIFY_PASSWD = 2205;
   public static final int ACTION_VERIFY_PASSWD_REFRESH_IMAGECODE = 2207;
   public static final int ACTION_VERIFY_PASSWD_SUBMIT_IMAGECODE = 2206;

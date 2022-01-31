@@ -1,72 +1,104 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 
 public class amec
-  extends alzl<ameb>
+  implements TextWatcher
 {
-  public int a()
+  int jdField_a_of_type_Int;
+  EditText jdField_a_of_type_AndroidWidgetEditText;
+  String jdField_a_of_type_JavaLangString = "";
+  boolean jdField_a_of_type_Boolean = true;
+  int b;
+  public boolean b;
+  
+  public amec(BusinessCardEditActivity paramBusinessCardEditActivity, int paramInt, EditText paramEditText)
   {
-    return 488;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.jdField_b_of_type_Int = 0;
   }
   
-  @NonNull
-  public ameb a(int paramInt)
+  public amec(BusinessCardEditActivity paramBusinessCardEditActivity, int paramInt1, EditText paramEditText, int paramInt2)
   {
-    return new ameb();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  @Nullable
-  public ameb a(alzs[] paramArrayOfalzs)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0) && (paramArrayOfalzs[0] != null))
+    int j = 1;
+    boolean bool;
+    label69:
+    int i;
+    if ((this.jdField_b_of_type_Int == 1) && (!this.jdField_a_of_type_JavaLangString.equals(paramEditable.toString())))
     {
-      ameb localameb = ameb.a(paramArrayOfalzs[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PttWithTextSwitchProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        bool = this.jdField_b_of_type_Boolean;
+        this.jdField_b_of_type_Boolean = bool;
       }
-      return localameb;
     }
-    return null;
-  }
-  
-  public Class<ameb> a()
-  {
-    return ameb.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(ameb paramameb)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttWithTextSwitchProcessor", 2, "onUpdate " + paramameb.toString());
+    else
+    {
+      this.jdField_a_of_type_Boolean = false;
+      if (!(this.jdField_a_of_type_AndroidWidgetEditText instanceof ClearEllipsisEditText)) {
+        break label155;
+      }
+      paramEditable = ((ClearEllipsisEditText)this.jdField_a_of_type_AndroidWidgetEditText).a();
+      i = paramEditable.length();
+      if ((this.jdField_a_of_type_AndroidWidgetEditText.getTag() == null) || (!((String)this.jdField_a_of_type_AndroidWidgetEditText.getTag()).equals("name"))) {
+        break label197;
+      }
+      i = paramEditable.getBytes().length;
+    }
+    for (;;)
+    {
+      if (i > this.jdField_a_of_type_Int)
+      {
+        for (;;)
+        {
+          if (i <= this.jdField_a_of_type_Int) {
+            break label177;
+          }
+          paramEditable = paramEditable.substring(0, paramEditable.length() - 1);
+          if (j != 0)
+          {
+            i = paramEditable.getBytes().length;
+            continue;
+            bool = true;
+            break;
+            label155:
+            paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+            break label69;
+          }
+          i = paramEditable.length();
+        }
+        label177:
+        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramEditable);
+        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramEditable.length());
+      }
+      return;
+      label197:
+      j = 0;
     }
   }
   
-  public boolean a()
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    return true;
+    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
   }
   
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amec
  * JD-Core Version:    0.7.0.1
  */

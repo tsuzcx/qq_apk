@@ -1,80 +1,41 @@
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.app.Dialog;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public abstract class bgnh
-  extends Binder
-  implements bgng
+public class bgnh
 {
-  public bgnh()
+  private static void b(String paramString)
   {
-    attachInterface(this, "cooperation.smartdevice.ipc.ISmartDeviceService");
-  }
-  
-  public static bgng a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
+    Dialog localDialog = new Dialog(BaseApplicationImpl.getApplication(), 2131755791);
+    localDialog.getWindow().setType(2003);
+    localDialog.setContentView(2131558883);
+    TextView localTextView = (TextView)localDialog.findViewById(2131365151);
+    if (localTextView != null) {
+      localTextView.setText("dump文件保存地址");
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.smartdevice.ipc.ISmartDeviceService");
-    if ((localIInterface != null) && ((localIInterface instanceof bgng))) {
-      return (bgng)localIInterface;
+    localTextView = (TextView)localDialog.findViewById(2131365147);
+    if ((localTextView != null) && (paramString != null)) {
+      localTextView.setText(paramString);
     }
-    return new bgni(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    String str1 = null;
-    Object localObject = null;
-    switch (paramInt1)
+    localTextView = (TextView)localDialog.findViewById(2131365136);
+    if (localTextView != null)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.smartdevice.ipc.ISmartDeviceService");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("cooperation.smartdevice.ipc.ISmartDeviceService");
-      str1 = paramParcel1.readString();
-      if (paramParcel1.readInt() != 0) {
-        localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
-      }
-      paramParcel1 = a(str1, (Bundle)localObject);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
-      }
+      localTextView.setText(2131690596);
+      localTextView.setOnClickListener(new bgnj(localDialog));
     }
-    paramParcel1.enforceInterface("cooperation.smartdevice.ipc.ISmartDeviceService");
-    String str2 = paramParcel1.readString();
-    localObject = str1;
-    if (paramParcel1.readInt() != 0) {
-      localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+    localTextView = (TextView)localDialog.findViewById(2131365142);
+    if (localTextView != null)
+    {
+      localTextView.setText(2131691547);
+      localTextView.setOnClickListener(new bgnk(localDialog, paramString));
     }
-    a(str2, (Bundle)localObject);
-    paramParcel2.writeNoException();
-    return true;
+    localDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgnh
  * JD-Core Version:    0.7.0.1
  */

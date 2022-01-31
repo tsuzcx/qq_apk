@@ -1,30 +1,26 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.data.AppShareID;
-import mqq.os.MqqHandler;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.widget.XEditTextEx;
 
 public class aamv
-  extends ajgf
+  implements aeka
 {
-  public aamv(Conversation paramConversation) {}
+  public aamv(BaseChatPie paramBaseChatPie) {}
   
-  protected void a(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3)
+  public boolean a(PhotoListPanel paramPhotoListPanel)
   {
-    if ((!paramBoolean1.booleanValue()) && (paramBoolean2.booleanValue()) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
-    {
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008272", "0X8008272", 0, 0, "", "", "", "");
-      if (!this.a.h) {
-        this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1134068, new String[] { paramString1, paramString2, paramString3 }).sendToTarget();
-      }
-    }
+    return false;
   }
   
-  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  public boolean b(PhotoListPanel paramPhotoListPanel)
   {
-    if (paramBoolean) {
-      this.a.a(0L);
+    if (this.a.K) {}
+    while ((this.a.o()) || (this.a.a == null) || (this.a.a.getText() == null) || (this.a.a.getText().length() <= 0)) {
+      return false;
     }
+    this.a.aq();
+    return true;
   }
 }
 

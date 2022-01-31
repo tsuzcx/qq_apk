@@ -1,13 +1,43 @@
-import com.tencent.pts.nativemodule.IPTSHandleJSException;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class pec
-  implements IPTSHandleJSException
 {
-  private final String a = "PTSHandleJSException";
-  
-  public void handleJSException(int paramInt1, int paramInt2, String paramString)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    pen.a("0X800A7C6", "", "", "", new peo().a("type", "1").a("line", "" + paramInt1).a("column", "" + paramInt2).a("msg", paramString).a());
+    JSONObject localJSONObject1 = new JSONObject();
+    localJSONObject1.put("id_test", new JSONObject());
+    JSONObject localJSONObject2 = new JSONObject();
+    String str;
+    if (paramBaseArticleInfo.mSinglePicture != null)
+    {
+      str = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_large_imge_url", str);
+      localJSONObject1.put("id_article_large_imge", localJSONObject2);
+      pen.a(paramBaseArticleInfo, localJSONObject1, true);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label130;
+      }
+      pen.a(paramBaseArticleInfo, localJSONObject1);
+      pen.b(paramBaseArticleInfo, localJSONObject1);
+    }
+    for (;;)
+    {
+      pen.m(paramBaseArticleInfo, localJSONObject1);
+      pen.e(paramBaseArticleInfo, localJSONObject1);
+      pen.g(paramBaseArticleInfo, localJSONObject1);
+      pen.Y(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
+      pen.a(localJSONObject1, paramBaseArticleInfo);
+      pen.ab(paramBaseArticleInfo, localJSONObject1);
+      return localJSONObject1;
+      str = null;
+      break;
+      label130:
+      pen.d(paramBaseArticleInfo, localJSONObject1);
+    }
   }
 }
 

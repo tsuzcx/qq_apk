@@ -1,26 +1,30 @@
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aedu
-  implements Animation.AnimationListener
+public class aedu
+  extends aedl
 {
-  aedu(aedt paramaedt) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public aedu(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
   {
-    if (this.a.a.q != null)
-    {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.a.a, 2130772209);
-      paramAnimation.setAnimationListener(this);
-      this.a.a.q.startAnimation(paramAnimation);
-    }
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public acun a()
+  {
+    return new aedw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public View a(BaseChatItemLayout paramBaseChatItemLayout)
+  {
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562535, paramBaseChatItemLayout, false);
+  }
 }
 
 

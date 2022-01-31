@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry;
 
-import agtk;
-import agtx;
+import ahfz;
+import ahgm;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpakcetPreviewConfBean.PreviewInfo;
@@ -10,25 +10,25 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class SpringHbEntryManager$11
   implements Runnable
 {
-  public SpringHbEntryManager$11(agtk paramagtk, long paramLong, SharedPreferences paramSharedPreferences, String paramString) {}
+  public SpringHbEntryManager$11(ahfz paramahfz, long paramLong, SharedPreferences paramSharedPreferences, String paramString) {}
   
   public void run()
   {
     SpringFestivalRedpakcetPreviewConfBean.PreviewInfo localPreviewInfo;
-    if (agtk.a(this.this$0) != null)
+    if (ahfz.a(this.this$0) != null)
     {
       localPreviewInfo = this.this$0.a(this.jdField_a_of_type_Long);
       if (localPreviewInfo == null) {}
     }
     try
     {
-      agtk.a(this.this$0).a(localPreviewInfo.resourceUrl, localPreviewInfo.actionUrl);
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString + "_" + agtk.a(this.this$0).getCurrentAccountUin() + "_" + "spring_active_dialog_show", true).apply();
+      ahfz.a(this.this$0).a(localPreviewInfo.resourceUrl, localPreviewInfo.actionUrl);
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString + "_" + ahfz.a(this.this$0).getCurrentAccountUin() + "_" + "spring_active_dialog_show", true).apply();
       return;
     }
     catch (Exception localException)
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString + "_" + agtk.a(this.this$0).getCurrentAccountUin() + "_" + "spring_active_dialog_show", false).apply();
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString + "_" + ahfz.a(this.this$0).getCurrentAccountUin() + "_" + "spring_active_dialog_show", false).apply();
     }
   }
 }

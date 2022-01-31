@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount;
 
-import ajjy;
+import ajyc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
 import java.util.Arrays;
-import nem;
+import npn;
 
 public class VideoInfo$InterruptedWeishiAd
   implements Parcelable
 {
-  public static final Parcelable.Creator<InterruptedWeishiAd> CREATOR = new nem();
+  public static final Parcelable.Creator<InterruptedWeishiAd> CREATOR = new npn();
   public int a;
   public UrlJumpInfo a;
   public String a;
@@ -81,7 +81,7 @@ public class VideoInfo$InterruptedWeishiAd
       if (this.jdField_b_of_type_Int != 1) {
         break;
       }
-      str = ajjy.a(2131650491);
+      str = ajyc.a(2131716282);
       break;
     }
   }

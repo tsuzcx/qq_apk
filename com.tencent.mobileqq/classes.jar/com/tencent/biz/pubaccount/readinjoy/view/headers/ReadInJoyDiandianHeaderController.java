@@ -12,7 +12,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhqx;
+import bjlp;
 import com.tencent.biz.pubaccount.readinjoy.model.CommunityConfigInfo;
 import com.tencent.biz.pubaccount.readinjoy.model.DiandianTopConfig;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.DisableSlideHorizontalListView;
@@ -25,22 +25,22 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import ndn;
-import njd;
-import ohb;
-import ohe;
-import onj;
-import rbg;
-import rbh;
-import rbi;
-import rbj;
-import rbk;
-import rbm;
-import rbn;
-import rbq;
+import noo;
+import nuo;
+import osm;
+import osp;
+import oyy;
+import rny;
+import rnz;
+import roa;
+import rob;
+import roc;
+import roe;
+import rof;
+import roi;
 
 public class ReadInJoyDiandianHeaderController
-  extends rbg
+  extends rny
 {
   public int a;
   public Context a;
@@ -56,9 +56,9 @@ public class ReadInJoyDiandianHeaderController
   public String a;
   public List<CommunityConfigInfo> a;
   private Set<Long> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private njd jdField_a_of_type_Njd;
-  private ohe jdField_a_of_type_Ohe = new rbi(this);
-  public rbn a;
+  private nuo jdField_a_of_type_Nuo;
+  private osp jdField_a_of_type_Osp = new roa(this);
+  public rof a;
   private boolean jdField_a_of_type_Boolean;
   private View[] jdField_a_of_type_ArrayOfAndroidViewView;
   private View jdField_b_of_type_AndroidViewView;
@@ -76,42 +76,42 @@ public class ReadInJoyDiandianHeaderController
   public ReadInJoyDiandianHeaderController(Context paramContext)
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
-    this.jdField_a_of_type_AndroidOsHandler = new rbh(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new rnz(this, Looper.getMainLooper());
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131494337, null);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131311782);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager = ((RollViewPager)this.jdField_b_of_type_AndroidViewView.findViewById(2131313342));
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559907, null);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131377597);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager = ((RollViewPager)this.jdField_b_of_type_AndroidViewView.findViewById(2131379177));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController$ViewPagerAdapter = new ReadInJoyDiandianHeaderController.ViewPagerAdapter(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController$ViewPagerAdapter);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setOnPageChangeListener(new ReadInJoyDiandianHeaderController.RollerChangeListener(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setOnTouchStateChangeListener(new rbj(this));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131299008));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setOnTouchStateChangeListener(new rob(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131364568));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131299011));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131304754));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView = ((DisableSlideHorizontalListView)this.jdField_b_of_type_AndroidViewView.findViewById(2131299009));
-    bhqx localbhqx = new bhqx(this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator());
-    localbhqx.a(600);
-    localbhqx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131301839);
-    ohb.a().a(this.jdField_a_of_type_Ohe);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131310861));
-    this.jdField_a_of_type_Njd = new njd((Activity)paramContext, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364571));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370411));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView = ((DisableSlideHorizontalListView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364569));
+    bjlp localbjlp = new bjlp(this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator());
+    localbjlp.a(600);
+    localbjlp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131367451);
+    osm.a().a(this.jdField_a_of_type_Osp);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131376668));
+    this.jdField_a_of_type_Nuo = new nuo((Activity)paramContext, this.jdField_a_of_type_AndroidWidgetFrameLayout);
   }
   
   private View a(int paramInt)
   {
     MeasureGridView localMeasureGridView = new MeasureGridView(this.jdField_a_of_type_AndroidContentContext);
     localMeasureGridView.setSelector(new ColorDrawable(0));
-    rbq localrbq = new rbq(this, this.jdField_b_of_type_JavaUtilList, paramInt);
+    roi localroi = new roi(this, this.jdField_b_of_type_JavaUtilList, paramInt);
     localMeasureGridView.setNumColumns(2);
-    localMeasureGridView.setAdapter(localrbq);
+    localMeasureGridView.setAdapter(localroi);
     return localMeasureGridView;
   }
   
   private void i()
   {
-    onj.a().a();
+    oyy.a().a();
   }
   
   public void a() {}
@@ -124,7 +124,7 @@ public class ReadInJoyDiandianHeaderController
   
   public void b()
   {
-    ohb.a().b(this.jdField_a_of_type_Ohe);
+    osm.a().b(this.jdField_a_of_type_Osp);
   }
   
   public void c()
@@ -140,7 +140,7 @@ public class ReadInJoyDiandianHeaderController
   
   public void e()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setOnScrollStateChangedListener(new rbm(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setOnScrollStateChangedListener(new roe(this));
   }
   
   public void f()
@@ -152,10 +152,10 @@ public class ReadInJoyDiandianHeaderController
   
   public void g()
   {
-    onj.a().a(this.d, new rbk(this));
+    oyy.a().a(this.d, new roc(this));
     if (this.jdField_a_of_type_JavaUtilSet.size() != 0)
     {
-      ndn.a(null, "", "0X8009B9E", "0X8009B9E", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), "", this.jdField_a_of_type_JavaUtilSet.size() + "", "", false);
+      noo.a(null, "", "0X8009B9E", "0X8009B9E", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), "", this.jdField_a_of_type_JavaUtilSet.size() + "", "", false);
       this.jdField_a_of_type_JavaUtilSet.clear();
     }
   }

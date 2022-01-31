@@ -2,11 +2,11 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
 import android.content.IntentFilter;
-import bdcy;
-import bdcz;
-import bdfz;
-import bdgg;
-import bdnw;
+import begy;
+import begz;
+import beka;
+import bekg;
+import besl;
 import org.json.JSONObject;
 
 public class BatteryJsPlugin
@@ -20,37 +20,37 @@ public class BatteryJsPlugin
   private boolean isCharging;
   private BatteryJsPlugin.PowerConnectionReceiver mPowerConnectionReceiver = new BatteryJsPlugin.PowerConnectionReceiver(this);
   
-  public String getBatteryInfo(bdfz parambdfz)
+  public String getBatteryInfo(beka parambeka)
   {
     Object localObject = new JSONObject();
     try
     {
       ((JSONObject)localObject).put("level", (int)(this.batteryPct * 100.0F));
       ((JSONObject)localObject).put("isCharging", this.isCharging);
-      localObject = bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, (JSONObject)localObject).toString();
-      if ("getBatteryInfo".equals(parambdfz.jdField_a_of_type_JavaLangString)) {
-        parambdfz.jdField_a_of_type_Bdcy.a(parambdfz.b, (String)localObject);
+      localObject = bekg.a(parambeka.jdField_a_of_type_JavaLangString, (JSONObject)localObject).toString();
+      if ("getBatteryInfo".equals(parambeka.jdField_a_of_type_JavaLangString)) {
+        parambeka.jdField_a_of_type_Begy.a(parambeka.b, (String)localObject);
       }
       return localObject;
     }
     catch (Throwable localThrowable)
     {
-      bdnw.d("BatteryJsPlugin", localThrowable.getMessage(), localThrowable);
-      if ("getBatteryInfo".equals(parambdfz.jdField_a_of_type_JavaLangString))
+      besl.d("BatteryJsPlugin", localThrowable.getMessage(), localThrowable);
+      if ("getBatteryInfo".equals(parambeka.jdField_a_of_type_JavaLangString))
       {
-        String str = bdgg.b(parambdfz.jdField_a_of_type_JavaLangString, null).toString();
-        parambdfz.jdField_a_of_type_Bdcy.a(parambdfz.b, str);
+        String str = bekg.b(parambeka.jdField_a_of_type_JavaLangString, null).toString();
+        parambeka.jdField_a_of_type_Begy.a(parambeka.b, str);
       }
     }
     return "";
   }
   
-  public void onCreate(bdcz parambdcz)
+  public void onCreate(begz parambegz)
   {
-    super.onCreate(parambdcz);
-    parambdcz = new IntentFilter();
-    parambdcz.addAction("android.intent.action.BATTERY_CHANGED");
-    this.mContext.registerReceiver(this.mPowerConnectionReceiver, parambdcz);
+    super.onCreate(parambegz);
+    parambegz = new IntentFilter();
+    parambegz.addAction("android.intent.action.BATTERY_CHANGED");
+    this.mContext.registerReceiver(this.mPowerConnectionReceiver, parambegz);
   }
   
   public void onDestroy()
@@ -62,7 +62,7 @@ public class BatteryJsPlugin
     }
     catch (Throwable localThrowable)
     {
-      bdnw.d("BatteryJsPlugin", "unregisterReceiver exception.", localThrowable);
+      besl.d("BatteryJsPlugin", "unregisterReceiver exception.", localThrowable);
     }
   }
 }

@@ -1,42 +1,18 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetYearNodeListReceiver.1;
-import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
 
 public class uge
-  extends QQUIEventReceiver<uga, ugu>
+  extends uai
 {
-  public uge(uga paramuga)
-  {
-    super(paramuga);
-  }
+  public uge(AbsVideoInfoWidget paramAbsVideoInfoWidget) {}
   
-  public void a(@NonNull uga paramuga, @NonNull ugu paramugu)
+  public void g()
   {
-    if (paramugu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    super.g();
+    if (this.a.jdField_b_of_type_Boolean)
     {
-      paramugu = paramugu.jdField_a_of_type_JavaUtilList.iterator();
-      for (int i = 0; paramugu.hasNext(); i = ((MomeriesYearNode)paramugu.next()).videoCount + i) {}
-      if (i >= 0)
-      {
-        urk.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(i));
-        uga.a(paramuga, i);
-        if (paramuga.a != null)
-        {
-          paramuga.a.videoCount = uga.a(paramuga);
-          ThreadManager.post(new MemoriesProfilePresenter.GetYearNodeListReceiver.1(this, paramuga), 5, null, false);
-        }
-      }
+      AbsVideoInfoWidget.a(this.a);
+      veg.b(this.a.jdField_b_of_type_JavaLangString, "destroy by activity");
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return ugu.class;
   }
 }
 

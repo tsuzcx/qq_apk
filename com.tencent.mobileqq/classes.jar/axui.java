@@ -1,189 +1,176 @@
-import android.os.SystemClock;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.network.utils.NetworkUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.structmsg.AIOVideoPlayController.1;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.widget.PAVideoView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.List;
 
 public class axui
-  extends axox
 {
-  public axui(axos paramaxos, axvt paramaxvt)
+  private static axui jdField_a_of_type_Axui;
+  private amqe jdField_a_of_type_Amqe;
+  public boolean a;
+  @Deprecated
+  public boolean b;
+  private boolean c;
+  
+  private axui()
   {
-    super(paramaxos, paramaxvt);
+    ThreadManager.executeOnSubThread(new AIOVideoPlayController.1(this));
   }
   
-  private final void g()
+  public static axui a()
   {
-    this.jdField_a_of_type_Axow.a();
-    axyg localaxyg = a();
-    if (!e())
+    if (jdField_a_of_type_Axui == null) {}
+    try
     {
-      a(9366, "illegal app", null, this.jdField_a_of_type_Axow);
-      d();
+      if (jdField_a_of_type_Axui == null) {
+        jdField_a_of_type_Axui = new axui();
+      }
+      return jdField_a_of_type_Axui;
     }
-    do
+    finally {}
+  }
+  
+  private boolean b()
+  {
+    if (this.jdField_a_of_type_Amqe != null) {
+      return this.jdField_a_of_type_Amqe.jdField_a_of_type_Boolean;
+    }
+    return false;
+  }
+  
+  private boolean c()
+  {
+    if (this.jdField_a_of_type_Amqe != null) {
+      return this.jdField_a_of_type_Amqe.b;
+    }
+    return false;
+  }
+  
+  private boolean d()
+  {
+    if (this.jdField_a_of_type_Amqe != null) {
+      return this.jdField_a_of_type_Amqe.c;
+    }
+    return false;
+  }
+  
+  private boolean e()
+  {
+    if (this.jdField_a_of_type_Amqe != null) {
+      return this.jdField_a_of_type_Amqe.d;
+    }
+    return false;
+  }
+  
+  public void a(amqe paramamqe)
+  {
+    this.jdField_a_of_type_Amqe = paramamqe;
+  }
+  
+  public void a(View paramView, StructMsgForGeneralShare paramStructMsgForGeneralShare)
+  {
+    paramView = (PAVideoView)paramView.findViewById(2131376577);
+    if (paramView != null) {
+      paramView.c();
+    }
+  }
+  
+  public boolean a()
+  {
+    Object localObject;
+    if (!this.jdField_a_of_type_Boolean)
     {
-      return;
+      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_gifplay.name(), null);
       if (QLog.isColorLevel()) {
-        b("requestStart", localaxyg.toString());
+        QLog.d("AIOVideoPlayController", 2, "isAllowDPC(): parseConfig, aio_gifplay =" + (String)localObject);
       }
-    } while ((!f()) || (localaxyg == null));
-    this.jdField_a_of_type_Axyg = localaxyg;
-    axzm.a(localaxyg);
-  }
-  
-  protected axyg a()
-  {
-    axyg localaxyg = new axyg();
-    axyp localaxyp = new axyp();
-    localaxyp.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-    localaxyp.jdField_a_of_type_Long = this.jdField_q_of_type_Long;
-    localaxyp.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    localaxyp.jdField_c_of_type_Int = this.p;
-    localaxyp.jdField_d_of_type_Int = this.jdField_q_of_type_Int;
-    localaxyp.b = this.jdField_l_of_type_Boolean;
-    localaxyp.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    localaxyp.jdField_a_of_type_Boolean = this.jdField_a_of_type_Axvt.k;
-    localaxyp.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Axvt.jdField_c_of_type_JavaLangString;
-    localaxyg.jdField_a_of_type_Axzn = this;
-    localaxyg.jdField_a_of_type_JavaLangString = "share_pic_to_wx";
-    localaxyg.jdField_a_of_type_JavaUtilList.add(localaxyp);
-    localaxyg.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getProtoReqManager();
-    return localaxyg;
-  }
-  
-  public final void a(axyg paramaxyg, axyv paramaxyv)
-  {
-    if (paramaxyv != null)
-    {
-      int i = 0;
-      if (i < paramaxyv.jdField_a_of_type_JavaUtilList.size())
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        paramaxyg = (axyx)paramaxyv.jdField_a_of_type_JavaUtilList.get(i);
-        if (QLog.isColorLevel()) {
-          b("onBusiProtoResp", paramaxyg.toString());
-        }
-        a(this.jdField_a_of_type_Axow, paramaxyg);
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareToWXUploadProcessor", 2, "onBusiProtoResp()------response.result = " + paramaxyg.jdField_c_of_type_Int);
-        }
-        if (paramaxyg.jdField_c_of_type_Int == 0)
-        {
-          this.jdField_l_of_type_JavaLangString = paramaxyg.jdField_c_of_type_JavaLangString;
-          this.jdField_a_of_type_Axqf.m = paramaxyg.jdField_d_of_type_JavaLangString;
-          if (paramaxyg.jdField_a_of_type_Boolean)
-          {
-            this.jdField_a_of_type_Axqf.a();
-            e();
-            if (QLog.isColorLevel()) {
-              QLog.d("ShareToWXUploadProcessor", 2, "onBusiProtoResp()---- file is Exsit! " + this.jdField_a_of_type_Axvt.i);
-            }
-          }
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          this.r = paramaxyg.jdField_a_of_type_Long;
-          f();
+        localObject = ((String)localObject).split("\\|");
+        if (localObject.length < 8) {}
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        if (Integer.parseInt(localObject[7]) != 0) {
           continue;
-          d();
+        }
+        this.c = false;
+        if (Integer.parseInt(localObject[9]) != 0) {
+          continue;
+        }
+        this.b = false;
+      }
+      catch (Exception localException)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        continue;
+        this.b = true;
+        continue;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOVideoPlayController", 2, "isAllowDPC(): mDPCAllow =" + this.c + ", mEnbleAutoPlayInNotPAAIO = " + this.b);
+      }
+      return this.c;
+      this.c = true;
+    }
+  }
+  
+  public boolean a(Context paramContext, int paramInt1, int paramInt2)
+  {
+    boolean bool;
+    if (a())
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localQQAppInterface == null) {
+        return false;
+      }
+      if (paramInt1 == 3)
+      {
+        if ((!NetworkUtils.isWifiConnected(paramContext)) || (!bhvh.f(localQQAppInterface))) {
+          break label169;
+        }
+        bool = true;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOVideoPlayController", 2, "allowAutoPlay(): playType=" + paramInt1 + ", uinType = " + paramInt2 + ", result = " + bool + ", mDPCAllow = " + this.c);
+      }
+      return bool;
+      if (paramInt1 == 1)
+      {
+        if (paramInt2 == 1) {
+          bool = b();
+        } else {
+          bool = c();
         }
       }
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    long l = System.currentTimeMillis() - this.k;
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareToWXUploadProcessor", 2, "doReport, timeCost:" + l + " mFileSize:" + this.jdField_q_of_type_Long + " errorCode:" + this.j);
-    }
-    if (paramBoolean) {
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_succ_flag", "1");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_picSize", String.valueOf(this.jdField_q_of_type_Long));
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_errorDesc", this.i);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", String.valueOf(this.j));
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_time_cost", String.valueOf(l));
-      awrn.a(BaseApplication.getContext()).a(null, "actPicShareToWXUpload", paramBoolean, l, this.jdField_q_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, null);
-      return;
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_succ_flag", "0");
-    }
-  }
-  
-  public final void aU_()
-  {
-    super.aU_();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareToWXUploadProcessor", 2, "start()");
-    }
-    if ((this.jdField_a_of_type_ArrayOfByte == null) && (!j()))
-    {
-      d();
-      return;
-    }
-    String str = this.jdField_a_of_type_Axvt.i;
-    long l = new File(str).length();
-    this.jdField_a_of_type_Axqf.jdField_a_of_type_Long = l;
-    this.jdField_q_of_type_Long = l;
-    str = bace.b(str);
-    if (!TextUtils.isEmpty(str)) {
-      this.e = str;
-    }
-    g();
-  }
-  
-  void e()
-  {
-    super.e();
-    if (this.jdField_a_of_type_Axvt.jdField_a_of_type_Atqq != null)
-    {
-      atqr localatqr = new atqr();
-      localatqr.jdField_a_of_type_Int = 0;
-      localatqr.jdField_a_of_type_Long = this.jdField_q_of_type_Long;
-      localatqr.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-      localatqr.e = this.jdField_a_of_type_Axqf.m;
-      this.jdField_a_of_type_Axvt.jdField_a_of_type_Atqq.b(localatqr);
-    }
-    for (;;)
-    {
-      d(1003);
-      if (this.jdField_a_of_type_Axyg != null)
+      else if (paramInt1 == 2)
       {
-        axzm.b(this.jdField_a_of_type_Axyg);
-        this.jdField_a_of_type_Axyg = null;
+        if (paramInt2 == 1) {
+          bool = d();
+        } else {
+          bool = e();
+        }
       }
-      return;
-      d(true);
-    }
-  }
-  
-  public final void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareToWXUploadProcessor", 2, "sendFileBDH");
-    }
-    this.b.a();
-    Object localObject = new axuj(this, SystemClock.uptimeMillis());
-    byte[] arrayOfByte = bach.a(this.jdField_l_of_type_JavaLangString);
-    localObject = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 73, this.jdField_a_of_type_Axvt.i, (int)this.r, arrayOfByte, this.jdField_a_of_type_ArrayOfByte, (ITransactionCallback)localObject);
-    int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask((Transaction)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction submit RetCode:" + i + " T_ID:" + ((Transaction)localObject).getTransationId() + " UniSeq:" + this.jdField_a_of_type_Axvt.jdField_a_of_type_Long + " MD5:" + this.jdField_c_of_type_JavaLangString + " Path:" + ((Transaction)localObject).filePath + " Cmd:" + 73);
-    }
-    if (i != 0)
-    {
-      a(i, "SubmitError.", "", this.b);
-      d();
+      else {
+        label169:
+        bool = false;
+      }
     }
   }
 }

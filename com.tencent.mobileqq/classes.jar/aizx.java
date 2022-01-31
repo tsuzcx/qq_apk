@@ -1,13 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import eipc.EIPCResult;
 
 class aizx
-  extends ajad
+  implements oei
 {
-  aizx(aizv paramaizv) {}
+  aizx(aizw paramaizw, int paramInt) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void a(int paramInt)
   {
-    QLog.d("ApolloGameUtil", 2, " onSuccess  the http retcode = " + paramInt);
+    aizw.b = false;
+    if (paramInt == 1)
+    {
+      EIPCResult localEIPCResult = EIPCResult.createResult(0, new Bundle());
+      this.jdField_a_of_type_Aizw.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+    }
   }
 }
 

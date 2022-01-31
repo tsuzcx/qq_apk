@@ -1,86 +1,90 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import pttcenterservice.PttShortVideo.PttShortVideoUploadResp;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import com.tencent.mobileqq.statistics.UnifiedMonitor.StackGetterJob;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
-class axsb
-  implements ITransactionCallback
+public class axsb
 {
-  axsb(axrz paramaxrz, String paramString, long paramLong) {}
+  public float a;
+  public int a;
+  public long a;
+  public volatile UnifiedMonitor.StackGetterJob a;
+  public volatile String a;
+  public AbstractUnifiedMonitor.ThreadMonitorCallback a;
+  public boolean a;
+  public float b;
+  public int b;
+  public volatile long b;
+  public volatile boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e = 5;
+  public int f = 300;
+  public int g = 0;
+  public int h = 0;
+  public int i = 0;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public axsb()
   {
-    this.jdField_a_of_type_Axrz.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Axrz.b);
-    this.jdField_a_of_type_Axrz.d();
+    this.jdField_a_of_type_Int = 100;
+    this.jdField_b_of_type_Int = 10;
+    this.jdField_a_of_type_Float = 0.001F;
+    this.jdField_b_of_type_Float = 0.1F;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 500;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public axsb(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
   {
-    SystemClock.uptimeMillis();
-    try
+    this.jdField_a_of_type_Int = 100;
+    this.jdField_b_of_type_Int = 10;
+    this.jdField_a_of_type_Float = 0.001F;
+    this.jdField_b_of_type_Float = 0.1F;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 500;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.i = paramInt4;
+    this.jdField_d_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(int paramInt)
+  {
+    if ((UnifiedMonitor.d()) && (paramInt != 9) && (this.jdField_a_of_type_Float > 0.0F))
     {
-      paramArrayOfByte = (PttShortVideo.PttShortVideoUploadResp)new PttShortVideo.PttShortVideoUploadResp().mergeFrom(paramArrayOfByte);
-      if (paramArrayOfByte.str_fileid.has())
-      {
-        paramArrayOfByte = paramArrayOfByte.str_fileid.get();
-        if (paramArrayOfByte.length() > 0)
-        {
-          this.jdField_a_of_type_Axrz.f = paramArrayOfByte;
-          if (QLog.isColorLevel()) {
-            QLog.d("LightVideoUploadProcessor", 2, "set uuid from BDH ");
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. ,fileSize:" + this.jdField_a_of_type_Axrz.jdField_a_of_type_Axqf.jdField_a_of_type_Long);
-      }
-      this.jdField_a_of_type_Axrz.s = this.jdField_a_of_type_Axrz.q;
-      this.jdField_a_of_type_Axrz.d(1007);
-      this.jdField_a_of_type_Axrz.b(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG> Transaction Success,delete combined file");
-      }
-      bace.d(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Float = 1.0F;
+      this.jdField_b_of_type_Float = 1.0F;
+      this.jdField_b_of_type_Int = 2147483647;
+    }
+    if (Math.random() <= this.jdField_a_of_type_Float) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
       return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.e("LightVideoUploadProcessor", 2, "get uuid from BDH error", paramArrayOfByte);
-        }
-      }
-    }
-  }
-  
-  public void onSwitch2BackupChannel()
-  {
-    long l = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_Axrz.d("<BDH_LOG> onSwitch2BackupChannel()");
-    this.jdField_a_of_type_Axrz.jdField_a_of_type_JavaUtilHashMap.put("param_switchChannel", String.valueOf(l - this.jdField_a_of_type_Long));
-  }
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    axrz localaxrz = this.jdField_a_of_type_Axrz;
-    axqf localaxqf = this.jdField_a_of_type_Axrz.jdField_a_of_type_Axqf;
-    long l = paramInt;
-    localaxqf.e = l;
-    localaxrz.s = l;
-    if ((paramInt < this.jdField_a_of_type_Axrz.q) && (!this.jdField_a_of_type_Axrz.o) && (!this.jdField_a_of_type_Axrz.k)) {
-      this.jdField_a_of_type_Axrz.i();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axsb
  * JD-Core Version:    0.7.0.1
  */
